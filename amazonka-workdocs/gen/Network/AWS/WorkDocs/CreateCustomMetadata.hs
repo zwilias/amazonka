@@ -44,18 +44,16 @@ import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 import Network.AWS.WorkDocs.Types
-import Network.AWS.WorkDocs.Types.Product
 
 -- | /See:/ 'createCustomMetadata' smart constructor.
-data CreateCustomMetadata =
-  CreateCustomMetadata'
-    { _ccmVersionId           :: !(Maybe Text)
-    , _ccmAuthenticationToken :: !(Maybe (Sensitive Text))
-    , _ccmResourceId          :: !Text
-    , _ccmCustomMetadata      :: !(Map Text Text)
-    }
-  deriving (Eq, Show, Data, Typeable, Generic)
-
+data CreateCustomMetadata = CreateCustomMetadata'{_ccmVersionId
+                                                  :: !(Maybe Text),
+                                                  _ccmAuthenticationToken ::
+                                                  !(Maybe (Sensitive Text)),
+                                                  _ccmResourceId :: !Text,
+                                                  _ccmCustomMetadata ::
+                                                  !(Map Text Text)}
+                              deriving (Eq, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'CreateCustomMetadata' with the minimum fields required to make a request.
 --
@@ -71,14 +69,11 @@ data CreateCustomMetadata =
 createCustomMetadata
     :: Text -- ^ 'ccmResourceId'
     -> CreateCustomMetadata
-createCustomMetadata pResourceId_ =
-  CreateCustomMetadata'
-    { _ccmVersionId = Nothing
-    , _ccmAuthenticationToken = Nothing
-    , _ccmResourceId = pResourceId_
-    , _ccmCustomMetadata = mempty
-    }
-
+createCustomMetadata pResourceId_
+  = CreateCustomMetadata'{_ccmVersionId = Nothing,
+                          _ccmAuthenticationToken = Nothing,
+                          _ccmResourceId = pResourceId_,
+                          _ccmCustomMetadata = mempty}
 
 -- | The ID of the version, if the custom metadata is being added to a document version.
 ccmVersionId :: Lens' CreateCustomMetadata (Maybe Text)
@@ -134,12 +129,10 @@ instance ToQuery CreateCustomMetadata where
           = mconcat ["versionid" =: _ccmVersionId]
 
 -- | /See:/ 'createCustomMetadataResponse' smart constructor.
-newtype CreateCustomMetadataResponse =
-  CreateCustomMetadataResponse'
-    { _ccmrsResponseStatus :: Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+newtype CreateCustomMetadataResponse = CreateCustomMetadataResponse'{_ccmrsResponseStatus
+                                                                     :: Int}
+                                         deriving (Eq, Read, Show, Data,
+                                                   Typeable, Generic)
 
 -- | Creates a value of 'CreateCustomMetadataResponse' with the minimum fields required to make a request.
 --
@@ -149,9 +142,9 @@ newtype CreateCustomMetadataResponse =
 createCustomMetadataResponse
     :: Int -- ^ 'ccmrsResponseStatus'
     -> CreateCustomMetadataResponse
-createCustomMetadataResponse pResponseStatus_ =
-  CreateCustomMetadataResponse' {_ccmrsResponseStatus = pResponseStatus_}
-
+createCustomMetadataResponse pResponseStatus_
+  = CreateCustomMetadataResponse'{_ccmrsResponseStatus
+                                    = pResponseStatus_}
 
 -- | -- | The response status code.
 ccmrsResponseStatus :: Lens' CreateCustomMetadataResponse Int

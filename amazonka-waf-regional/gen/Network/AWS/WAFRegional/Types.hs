@@ -1,4 +1,4 @@
-{-# LANGUAGE OverloadedStrings #-}
+{-# LANGUAGE OverloadedStrings  #-}
 
 -- Derived from AWS service descriptions, licensed under Apache 2.0.
 
@@ -417,63 +417,121 @@ module Network.AWS.WAFRegional.Types
 import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.Sign.V4
-import Network.AWS.WAFRegional.Types.Product
-import Network.AWS.WAFRegional.Types.Sum
+import Network.AWS.WAFRegional.Types.ChangeAction
+import Network.AWS.WAFRegional.Types.ChangeTokenStatus
+import Network.AWS.WAFRegional.Types.ComparisonOperator
+import Network.AWS.WAFRegional.Types.GeoMatchConstraintType
+import Network.AWS.WAFRegional.Types.GeoMatchConstraintValue
+import Network.AWS.WAFRegional.Types.IPSetDescriptorType
+import Network.AWS.WAFRegional.Types.MatchFieldType
+import Network.AWS.WAFRegional.Types.PositionalConstraint
+import Network.AWS.WAFRegional.Types.PredicateType
+import Network.AWS.WAFRegional.Types.RateKey
+import Network.AWS.WAFRegional.Types.TextTransformation
+import Network.AWS.WAFRegional.Types.WafActionType
+import Network.AWS.WAFRegional.Types.WafOverrideActionType
+import Network.AWS.WAFRegional.Types.WafRuleType
+import Network.AWS.WAFRegional.Types.ActivatedRule
+import Network.AWS.WAFRegional.Types.ByteMatchSet
+import Network.AWS.WAFRegional.Types.ByteMatchSetSummary
+import Network.AWS.WAFRegional.Types.ByteMatchSetUpdate
+import Network.AWS.WAFRegional.Types.ByteMatchTuple
+import Network.AWS.WAFRegional.Types.FieldToMatch
+import Network.AWS.WAFRegional.Types.GeoMatchConstraint
+import Network.AWS.WAFRegional.Types.GeoMatchSet
+import Network.AWS.WAFRegional.Types.GeoMatchSetSummary
+import Network.AWS.WAFRegional.Types.GeoMatchSetUpdate
+import Network.AWS.WAFRegional.Types.HTTPHeader
+import Network.AWS.WAFRegional.Types.HTTPRequest
+import Network.AWS.WAFRegional.Types.IPSet
+import Network.AWS.WAFRegional.Types.IPSetDescriptor
+import Network.AWS.WAFRegional.Types.IPSetSummary
+import Network.AWS.WAFRegional.Types.IPSetUpdate
+import Network.AWS.WAFRegional.Types.Predicate
+import Network.AWS.WAFRegional.Types.RateBasedRule
+import Network.AWS.WAFRegional.Types.RegexMatchSet
+import Network.AWS.WAFRegional.Types.RegexMatchSetSummary
+import Network.AWS.WAFRegional.Types.RegexMatchSetUpdate
+import Network.AWS.WAFRegional.Types.RegexMatchTuple
+import Network.AWS.WAFRegional.Types.RegexPatternSet
+import Network.AWS.WAFRegional.Types.RegexPatternSetSummary
+import Network.AWS.WAFRegional.Types.RegexPatternSetUpdate
+import Network.AWS.WAFRegional.Types.Rule
+import Network.AWS.WAFRegional.Types.RuleGroup
+import Network.AWS.WAFRegional.Types.RuleGroupSummary
+import Network.AWS.WAFRegional.Types.RuleGroupUpdate
+import Network.AWS.WAFRegional.Types.RuleSummary
+import Network.AWS.WAFRegional.Types.RuleUpdate
+import Network.AWS.WAFRegional.Types.SampledHTTPRequest
+import Network.AWS.WAFRegional.Types.SizeConstraint
+import Network.AWS.WAFRegional.Types.SizeConstraintSet
+import Network.AWS.WAFRegional.Types.SizeConstraintSetSummary
+import Network.AWS.WAFRegional.Types.SizeConstraintSetUpdate
+import Network.AWS.WAFRegional.Types.SqlInjectionMatchSet
+import Network.AWS.WAFRegional.Types.SqlInjectionMatchSetSummary
+import Network.AWS.WAFRegional.Types.SqlInjectionMatchSetUpdate
+import Network.AWS.WAFRegional.Types.SqlInjectionMatchTuple
+import Network.AWS.WAFRegional.Types.SubscribedRuleGroupSummary
+import Network.AWS.WAFRegional.Types.TimeWindow
+import Network.AWS.WAFRegional.Types.WafAction
+import Network.AWS.WAFRegional.Types.WafOverrideAction
+import Network.AWS.WAFRegional.Types.WebACL
+import Network.AWS.WAFRegional.Types.WebACLSummary
+import Network.AWS.WAFRegional.Types.WebACLUpdate
+import Network.AWS.WAFRegional.Types.XSSMatchSet
+import Network.AWS.WAFRegional.Types.XSSMatchSetSummary
+import Network.AWS.WAFRegional.Types.XSSMatchSetUpdate
+import Network.AWS.WAFRegional.Types.XSSMatchTuple
 
 -- | API version @2016-11-28@ of the Amazon WAF Regional SDK configuration.
 wAFRegional :: Service
-wAFRegional =
-  Service
-    { _svcAbbrev = "WAFRegional"
-    , _svcSigner = v4
-    , _svcPrefix = "waf-regional"
-    , _svcVersion = "2016-11-28"
-    , _svcEndpoint = defaultEndpoint wAFRegional
-    , _svcTimeout = Just 70
-    , _svcCheck = statusSuccess
-    , _svcError = parseJSONError "WAFRegional"
-    , _svcRetry = retry
-    }
-  where
-    retry =
-      Exponential
-        { _retryBase = 5.0e-2
-        , _retryGrowth = 2
-        , _retryAttempts = 5
-        , _retryCheck = check
-        }
-    check e
-      | has (hasCode "ThrottledException" . hasStatus 400) e =
-        Just "throttled_exception"
-      | has (hasStatus 429) e = Just "too_many_requests"
-      | has (hasCode "ThrottlingException" . hasStatus 400) e =
-        Just "throttling_exception"
-      | has (hasCode "Throttling" . hasStatus 400) e = Just "throttling"
-      | has (hasStatus 504) e = Just "gateway_timeout"
-      | has (hasCode "RequestThrottledException" . hasStatus 400) e =
-        Just "request_throttled_exception"
-      | has (hasStatus 502) e = Just "bad_gateway"
-      | has (hasStatus 503) e = Just "service_unavailable"
-      | has (hasStatus 500) e = Just "general_server_error"
-      | has (hasStatus 509) e = Just "limit_exceeded"
-      | otherwise = Nothing
-
+wAFRegional
+  = Service{_svcAbbrev = "WAFRegional",
+            _svcSigner = v4, _svcPrefix = "waf-regional",
+            _svcVersion = "2016-11-28",
+            _svcEndpoint = defaultEndpoint wAFRegional,
+            _svcTimeout = Just 70, _svcCheck = statusSuccess,
+            _svcError = parseJSONError "WAFRegional",
+            _svcRetry = retry}
+  where retry
+          = Exponential{_retryBase = 5.0e-2, _retryGrowth = 2,
+                        _retryAttempts = 5, _retryCheck = check}
+        check e
+          | has (hasCode "ThrottledException" . hasStatus 400)
+              e
+            = Just "throttled_exception"
+          | has (hasStatus 429) e = Just "too_many_requests"
+          | has (hasCode "ThrottlingException" . hasStatus 400)
+              e
+            = Just "throttling_exception"
+          | has (hasCode "Throttling" . hasStatus 400) e =
+            Just "throttling"
+          | has (hasStatus 504) e = Just "gateway_timeout"
+          | has
+              (hasCode "RequestThrottledException" . hasStatus 400)
+              e
+            = Just "request_throttled_exception"
+          | has (hasStatus 502) e = Just "bad_gateway"
+          | has (hasStatus 503) e = Just "service_unavailable"
+          | has (hasStatus 500) e = Just "general_server_error"
+          | has (hasStatus 509) e = Just "limit_exceeded"
+          | otherwise = Nothing
 
 -- | The operation failed because you tried to create, update, or delete an object by using an invalid account identifier.
 --
 --
 _WAFInvalidAccountException :: AsError a => Getting (First ServiceError) a ServiceError
-_WAFInvalidAccountException =
-  _MatchServiceError wAFRegional "WAFInvalidAccountException"
-
+_WAFInvalidAccountException
+  = _MatchServiceError wAFRegional
+      "WAFInvalidAccountException"
 
 -- | The specified subscription does not exist.
 --
 --
 _WAFSubscriptionNotFoundException :: AsError a => Getting (First ServiceError) a ServiceError
-_WAFSubscriptionNotFoundException =
-  _MatchServiceError wAFRegional "WAFSubscriptionNotFoundException"
-
+_WAFSubscriptionNotFoundException
+  = _MatchServiceError wAFRegional
+      "WAFSubscriptionNotFoundException"
 
 -- | The operation failed because you tried to delete an object that is still in use. For example:
 --
@@ -485,17 +543,17 @@ _WAFSubscriptionNotFoundException =
 --
 --
 _WAFReferencedItemException :: AsError a => Getting (First ServiceError) a ServiceError
-_WAFReferencedItemException =
-  _MatchServiceError wAFRegional "WAFReferencedItemException"
-
+_WAFReferencedItemException
+  = _MatchServiceError wAFRegional
+      "WAFReferencedItemException"
 
 -- | The regular expression (regex) you specified in @RegexPatternString@ is invalid.
 --
 --
 _WAFInvalidRegexPatternException :: AsError a => Getting (First ServiceError) a ServiceError
-_WAFInvalidRegexPatternException =
-  _MatchServiceError wAFRegional "WAFInvalidRegexPatternException"
-
+_WAFInvalidRegexPatternException
+  = _MatchServiceError wAFRegional
+      "WAFInvalidRegexPatternException"
 
 -- | The operation failed because there was nothing to do. For example:
 --
@@ -515,17 +573,17 @@ _WAFInvalidRegexPatternException =
 --
 --
 _WAFInvalidOperationException :: AsError a => Getting (First ServiceError) a ServiceError
-_WAFInvalidOperationException =
-  _MatchServiceError wAFRegional "WAFInvalidOperationException"
-
+_WAFInvalidOperationException
+  = _MatchServiceError wAFRegional
+      "WAFInvalidOperationException"
 
 -- | The operation failed because the referenced object doesn't exist.
 --
 --
 _WAFNonexistentItemException :: AsError a => Getting (First ServiceError) a ServiceError
-_WAFNonexistentItemException =
-  _MatchServiceError wAFRegional "WAFNonexistentItemException"
-
+_WAFNonexistentItemException
+  = _MatchServiceError wAFRegional
+      "WAFNonexistentItemException"
 
 -- | The operation failed because AWS WAF didn't recognize a parameter in the request. For example:
 --
@@ -551,26 +609,26 @@ _WAFNonexistentItemException =
 --
 --
 _WAFInvalidParameterException :: AsError a => Getting (First ServiceError) a ServiceError
-_WAFInvalidParameterException =
-  _MatchServiceError wAFRegional "WAFInvalidParameterException"
-
+_WAFInvalidParameterException
+  = _MatchServiceError wAFRegional
+      "WAFInvalidParameterException"
 
 -- | The operation exceeds a resource limit, for example, the maximum number of @WebACL@ objects that you can create for an AWS account. For more information, see <http://docs.aws.amazon.com/waf/latest/developerguide/limits.html Limits> in the /AWS WAF Developer Guide/ .
 --
 --
 _WAFLimitsExceededException :: AsError a => Getting (First ServiceError) a ServiceError
-_WAFLimitsExceededException =
-  _MatchServiceError wAFRegional "WAFLimitsExceededException"
+_WAFLimitsExceededException
+  = _MatchServiceError wAFRegional
+      "WAFLimitsExceededException"
 
-
--- | The operation failed because the specified policy is not in the proper format.
+-- | The operation failed because the specified policy is not in the proper format. 
 --
 --
 -- The policy is subject to the following restrictions:
 --
 --     * You can attach only one policy with each @PutPermissionPolicy@ request.
 --
---     * The policy must include an @Effect@ , @Action@ and @Principal@ .
+--     * The policy must include an @Effect@ , @Action@ and @Principal@ . 
 --
 --     * @Effect@ must specify @Allow@ .
 --
@@ -587,24 +645,25 @@ _WAFLimitsExceededException =
 --
 --
 _WAFInvalidPermissionPolicyException :: AsError a => Getting (First ServiceError) a ServiceError
-_WAFInvalidPermissionPolicyException =
-  _MatchServiceError wAFRegional "WAFInvalidPermissionPolicyException"
-
+_WAFInvalidPermissionPolicyException
+  = _MatchServiceError wAFRegional
+      "WAFInvalidPermissionPolicyException"
 
 -- | The operation failed because you tried to create, update, or delete an object by using a change token that has already been used.
 --
 --
 _WAFStaleDataException :: AsError a => Getting (First ServiceError) a ServiceError
-_WAFStaleDataException = _MatchServiceError wAFRegional "WAFStaleDataException"
-
+_WAFStaleDataException
+  = _MatchServiceError wAFRegional
+      "WAFStaleDataException"
 
 -- | The operation failed because of a system problem, even though the request was valid. Retry your request.
 --
 --
 _WAFInternalErrorException :: AsError a => Getting (First ServiceError) a ServiceError
-_WAFInternalErrorException =
-  _MatchServiceError wAFRegional "WAFInternalErrorException"
-
+_WAFInternalErrorException
+  = _MatchServiceError wAFRegional
+      "WAFInternalErrorException"
 
 -- | The operation failed because you tried to add an object to or delete an object from another object that doesn't exist. For example:
 --
@@ -620,25 +679,25 @@ _WAFInternalErrorException =
 --
 --
 _WAFNonexistentContainerException :: AsError a => Getting (First ServiceError) a ServiceError
-_WAFNonexistentContainerException =
-  _MatchServiceError wAFRegional "WAFNonexistentContainerException"
-
+_WAFNonexistentContainerException
+  = _MatchServiceError wAFRegional
+      "WAFNonexistentContainerException"
 
 -- | The operation failed because the entity referenced is temporarily unavailable. Retry your request.
 --
 --
 _WAFUnavailableEntityException :: AsError a => Getting (First ServiceError) a ServiceError
-_WAFUnavailableEntityException =
-  _MatchServiceError wAFRegional "WAFUnavailableEntityException"
-
+_WAFUnavailableEntityException
+  = _MatchServiceError wAFRegional
+      "WAFUnavailableEntityException"
 
 -- | The name specified is invalid.
 --
 --
 _WAFDisallowedNameException :: AsError a => Getting (First ServiceError) a ServiceError
-_WAFDisallowedNameException =
-  _MatchServiceError wAFRegional "WAFDisallowedNameException"
-
+_WAFDisallowedNameException
+  = _MatchServiceError wAFRegional
+      "WAFDisallowedNameException"
 
 -- | The operation failed because you tried to delete an object that isn't empty. For example:
 --
@@ -654,6 +713,6 @@ _WAFDisallowedNameException =
 --
 --
 _WAFNonEmptyEntityException :: AsError a => Getting (First ServiceError) a ServiceError
-_WAFNonEmptyEntityException =
-  _MatchServiceError wAFRegional "WAFNonEmptyEntityException"
-
+_WAFNonEmptyEntityException
+  = _MatchServiceError wAFRegional
+      "WAFNonEmptyEntityException"

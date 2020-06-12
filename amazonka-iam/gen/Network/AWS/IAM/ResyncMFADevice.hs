@@ -40,22 +40,18 @@ module Network.AWS.IAM.ResyncMFADevice
     ) where
 
 import Network.AWS.IAM.Types
-import Network.AWS.IAM.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 
 -- | /See:/ 'resyncMFADevice' smart constructor.
-data ResyncMFADevice =
-  ResyncMFADevice'
-    { _rmdUserName            :: !Text
-    , _rmdSerialNumber        :: !Text
-    , _rmdAuthenticationCode1 :: !Text
-    , _rmdAuthenticationCode2 :: !Text
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data ResyncMFADevice = ResyncMFADevice'{_rmdUserName
+                                        :: !Text,
+                                        _rmdSerialNumber :: !Text,
+                                        _rmdAuthenticationCode1 :: !Text,
+                                        _rmdAuthenticationCode2 :: !Text}
+                         deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'ResyncMFADevice' with the minimum fields required to make a request.
 --
@@ -74,14 +70,12 @@ resyncMFADevice
     -> Text -- ^ 'rmdAuthenticationCode1'
     -> Text -- ^ 'rmdAuthenticationCode2'
     -> ResyncMFADevice
-resyncMFADevice pUserName_ pSerialNumber_ pAuthenticationCode1_ pAuthenticationCode2_ =
-  ResyncMFADevice'
-    { _rmdUserName = pUserName_
-    , _rmdSerialNumber = pSerialNumber_
-    , _rmdAuthenticationCode1 = pAuthenticationCode1_
-    , _rmdAuthenticationCode2 = pAuthenticationCode2_
-    }
-
+resyncMFADevice pUserName_ pSerialNumber_
+  pAuthenticationCode1_ pAuthenticationCode2_
+  = ResyncMFADevice'{_rmdUserName = pUserName_,
+                     _rmdSerialNumber = pSerialNumber_,
+                     _rmdAuthenticationCode1 = pAuthenticationCode1_,
+                     _rmdAuthenticationCode2 = pAuthenticationCode2_}
 
 -- | The name of the user whose MFA device you want to resynchronize. This parameter allows (per its <http://wikipedia.org/wiki/regex regex pattern> ) a string of characters consisting of upper and lowercase alphanumeric characters with no spaces. You can also include any of the following characters: _+=,.@-
 rmdUserName :: Lens' ResyncMFADevice Text
@@ -125,16 +119,14 @@ instance ToQuery ResyncMFADevice where
                "AuthenticationCode2" =: _rmdAuthenticationCode2]
 
 -- | /See:/ 'resyncMFADeviceResponse' smart constructor.
-data ResyncMFADeviceResponse =
-  ResyncMFADeviceResponse'
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data ResyncMFADeviceResponse = ResyncMFADeviceResponse'
+                                 deriving (Eq, Read, Show, Data, Typeable,
+                                           Generic)
 
 -- | Creates a value of 'ResyncMFADeviceResponse' with the minimum fields required to make a request.
 --
 resyncMFADeviceResponse
     :: ResyncMFADeviceResponse
 resyncMFADeviceResponse = ResyncMFADeviceResponse'
-
 
 instance NFData ResyncMFADeviceResponse where

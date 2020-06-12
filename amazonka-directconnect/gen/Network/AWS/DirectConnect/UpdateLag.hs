@@ -25,7 +25,7 @@
 --
 --     * The name of the LAG.
 --
---     * The value for the minimum number of connections that must be operational for the LAG itself to be operational.
+--     * The value for the minimum number of connections that must be operational for the LAG itself to be operational. 
 --
 --
 --
@@ -65,21 +65,16 @@ module Network.AWS.DirectConnect.UpdateLag
     ) where
 
 import Network.AWS.DirectConnect.Types
-import Network.AWS.DirectConnect.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 
 -- | /See:/ 'updateLag' smart constructor.
-data UpdateLag =
-  UpdateLag'
-    { _ulMinimumLinks :: !(Maybe Int)
-    , _ulLagName      :: !(Maybe Text)
-    , _ulLagId        :: !Text
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data UpdateLag = UpdateLag'{_ulMinimumLinks ::
+                            !(Maybe Int),
+                            _ulLagName :: !(Maybe Text), _ulLagId :: !Text}
+                   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'UpdateLag' with the minimum fields required to make a request.
 --
@@ -93,10 +88,9 @@ data UpdateLag =
 updateLag
     :: Text -- ^ 'ulLagId'
     -> UpdateLag
-updateLag pLagId_ =
-  UpdateLag'
-    {_ulMinimumLinks = Nothing, _ulLagName = Nothing, _ulLagId = pLagId_}
-
+updateLag pLagId_
+  = UpdateLag'{_ulMinimumLinks = Nothing,
+               _ulLagName = Nothing, _ulLagId = pLagId_}
 
 -- | The minimum number of physical connections that must be operational for the LAG itself to be operational.
 ulMinimumLinks :: Lens' UpdateLag (Maybe Int)

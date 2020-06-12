@@ -38,9 +38,9 @@
 --
 --
 --
--- __API Summary__
+-- __API Summary__ 
 --
--- The Application Auto Scaling service API includes three key sets of actions:
+-- The Application Auto Scaling service API includes three key sets of actions: 
 --
 --     * Register and manage scalable targets - Register AWS or custom resources as scalable targets (a resource that Application Auto Scaling can scale), set minimum and maximum capacity limits, and retrieve information on existing scalable targets.
 --
@@ -87,22 +87,22 @@ module Network.AWS.ApplicationAutoScaling
     -- * Operations
     -- $operations
 
-    -- ** DeleteScalingPolicy
+    -- ** DeleteScalingPolicy 
     , module Network.AWS.ApplicationAutoScaling.DeleteScalingPolicy
 
-    -- ** PutScalingPolicy
+    -- ** PutScalingPolicy 
     , module Network.AWS.ApplicationAutoScaling.PutScalingPolicy
 
-    -- ** RegisterScalableTarget
+    -- ** RegisterScalableTarget 
     , module Network.AWS.ApplicationAutoScaling.RegisterScalableTarget
 
     -- ** DescribeScalingPolicies (Paginated)
     , module Network.AWS.ApplicationAutoScaling.DescribeScalingPolicies
 
-    -- ** PutScheduledAction
+    -- ** PutScheduledAction 
     , module Network.AWS.ApplicationAutoScaling.PutScheduledAction
 
-    -- ** DeleteScheduledAction
+    -- ** DeleteScheduledAction 
     , module Network.AWS.ApplicationAutoScaling.DeleteScheduledAction
 
     -- ** DescribeScheduledActions (Paginated)
@@ -114,7 +114,7 @@ module Network.AWS.ApplicationAutoScaling
     -- ** DescribeScalingActivities (Paginated)
     , module Network.AWS.ApplicationAutoScaling.DescribeScalingActivities
 
-    -- ** DeregisterScalableTarget
+    -- ** DeregisterScalableTarget 
     , module Network.AWS.ApplicationAutoScaling.DeregisterScalableTarget
 
     -- * Types

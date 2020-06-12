@@ -44,19 +44,15 @@ module Network.AWS.CloudWatchEvents.DescribeEventBus
     ) where
 
 import Network.AWS.CloudWatchEvents.Types
-import Network.AWS.CloudWatchEvents.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 
 -- | /See:/ 'describeEventBus' smart constructor.
-newtype DescribeEventBus =
-  DescribeEventBus'
-    { _debName :: Maybe Text
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+newtype DescribeEventBus = DescribeEventBus'{_debName
+                                             :: Maybe Text}
+                             deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'DescribeEventBus' with the minimum fields required to make a request.
 --
@@ -65,8 +61,8 @@ newtype DescribeEventBus =
 -- * 'debName' - The name of the event bus to show details for. If you omit this, the default event bus is displayed.
 describeEventBus
     :: DescribeEventBus
-describeEventBus = DescribeEventBus' {_debName = Nothing}
-
+describeEventBus
+  = DescribeEventBus'{_debName = Nothing}
 
 -- | The name of the event bus to show details for. If you omit this, the default event bus is displayed.
 debName :: Lens' DescribeEventBus (Maybe Text)
@@ -106,15 +102,16 @@ instance ToQuery DescribeEventBus where
         toQuery = const mempty
 
 -- | /See:/ 'describeEventBusResponse' smart constructor.
-data DescribeEventBusResponse =
-  DescribeEventBusResponse'
-    { _debrsARN            :: !(Maybe Text)
-    , _debrsName           :: !(Maybe Text)
-    , _debrsPolicy         :: !(Maybe Text)
-    , _debrsResponseStatus :: !Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data DescribeEventBusResponse = DescribeEventBusResponse'{_debrsARN
+                                                          :: !(Maybe Text),
+                                                          _debrsName ::
+                                                          !(Maybe Text),
+                                                          _debrsPolicy ::
+                                                          !(Maybe Text),
+                                                          _debrsResponseStatus
+                                                          :: !Int}
+                                  deriving (Eq, Read, Show, Data, Typeable,
+                                            Generic)
 
 -- | Creates a value of 'DescribeEventBusResponse' with the minimum fields required to make a request.
 --
@@ -130,14 +127,10 @@ data DescribeEventBusResponse =
 describeEventBusResponse
     :: Int -- ^ 'debrsResponseStatus'
     -> DescribeEventBusResponse
-describeEventBusResponse pResponseStatus_ =
-  DescribeEventBusResponse'
-    { _debrsARN = Nothing
-    , _debrsName = Nothing
-    , _debrsPolicy = Nothing
-    , _debrsResponseStatus = pResponseStatus_
-    }
-
+describeEventBusResponse pResponseStatus_
+  = DescribeEventBusResponse'{_debrsARN = Nothing,
+                              _debrsName = Nothing, _debrsPolicy = Nothing,
+                              _debrsResponseStatus = pResponseStatus_}
 
 -- | The Amazon Resource Name (ARN) of the account permitted to write events to the current account.
 debrsARN :: Lens' DescribeEventBusResponse (Maybe Text)

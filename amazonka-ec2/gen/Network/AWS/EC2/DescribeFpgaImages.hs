@@ -46,7 +46,6 @@ module Network.AWS.EC2.DescribeFpgaImages
     ) where
 
 import Network.AWS.EC2.Types
-import Network.AWS.EC2.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Pager
 import Network.AWS.Prelude
@@ -54,17 +53,15 @@ import Network.AWS.Request
 import Network.AWS.Response
 
 -- | /See:/ 'describeFpgaImages' smart constructor.
-data DescribeFpgaImages =
-  DescribeFpgaImages'
-    { _dfifOwners       :: !(Maybe [Text])
-    , _dfifFilters      :: !(Maybe [Filter])
-    , _dfifNextToken    :: !(Maybe Text)
-    , _dfifDryRun       :: !(Maybe Bool)
-    , _dfifMaxResults   :: !(Maybe Nat)
-    , _dfifFpgaImageIds :: !(Maybe [Text])
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data DescribeFpgaImages = DescribeFpgaImages'{_dfifOwners
+                                              :: !(Maybe [Text]),
+                                              _dfifFilters :: !(Maybe [Filter]),
+                                              _dfifNextToken :: !(Maybe Text),
+                                              _dfifDryRun :: !(Maybe Bool),
+                                              _dfifMaxResults :: !(Maybe Nat),
+                                              _dfifFpgaImageIds ::
+                                              !(Maybe [Text])}
+                            deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'DescribeFpgaImages' with the minimum fields required to make a request.
 --
@@ -83,16 +80,11 @@ data DescribeFpgaImages =
 -- * 'dfifFpgaImageIds' - The AFI IDs.
 describeFpgaImages
     :: DescribeFpgaImages
-describeFpgaImages =
-  DescribeFpgaImages'
-    { _dfifOwners = Nothing
-    , _dfifFilters = Nothing
-    , _dfifNextToken = Nothing
-    , _dfifDryRun = Nothing
-    , _dfifMaxResults = Nothing
-    , _dfifFpgaImageIds = Nothing
-    }
-
+describeFpgaImages
+  = DescribeFpgaImages'{_dfifOwners = Nothing,
+                        _dfifFilters = Nothing, _dfifNextToken = Nothing,
+                        _dfifDryRun = Nothing, _dfifMaxResults = Nothing,
+                        _dfifFpgaImageIds = Nothing}
 
 -- | Filters the AFI by owner. Specify an AWS account ID, @self@ (owner is the sender of the request), or an AWS owner alias (valid values are @amazon@ | @aws-marketplace@ ).
 dfifOwners :: Lens' DescribeFpgaImages [Text]
@@ -162,14 +154,16 @@ instance ToQuery DescribeFpgaImages where
                  (toQueryList "FpgaImageId" <$> _dfifFpgaImageIds)]
 
 -- | /See:/ 'describeFpgaImagesResponse' smart constructor.
-data DescribeFpgaImagesResponse =
-  DescribeFpgaImagesResponse'
-    { _dfirsFpgaImages     :: !(Maybe [FpgaImage])
-    , _dfirsNextToken      :: !(Maybe Text)
-    , _dfirsResponseStatus :: !Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data DescribeFpgaImagesResponse = DescribeFpgaImagesResponse'{_dfirsFpgaImages
+                                                              ::
+                                                              !(Maybe
+                                                                  [FpgaImage]),
+                                                              _dfirsNextToken ::
+                                                              !(Maybe Text),
+                                                              _dfirsResponseStatus
+                                                              :: !Int}
+                                    deriving (Eq, Read, Show, Data, Typeable,
+                                              Generic)
 
 -- | Creates a value of 'DescribeFpgaImagesResponse' with the minimum fields required to make a request.
 --
@@ -183,13 +177,11 @@ data DescribeFpgaImagesResponse =
 describeFpgaImagesResponse
     :: Int -- ^ 'dfirsResponseStatus'
     -> DescribeFpgaImagesResponse
-describeFpgaImagesResponse pResponseStatus_ =
-  DescribeFpgaImagesResponse'
-    { _dfirsFpgaImages = Nothing
-    , _dfirsNextToken = Nothing
-    , _dfirsResponseStatus = pResponseStatus_
-    }
-
+describeFpgaImagesResponse pResponseStatus_
+  = DescribeFpgaImagesResponse'{_dfirsFpgaImages =
+                                  Nothing,
+                                _dfirsNextToken = Nothing,
+                                _dfirsResponseStatus = pResponseStatus_}
 
 -- | Information about the FPGA images.
 dfirsFpgaImages :: Lens' DescribeFpgaImagesResponse [FpgaImage]

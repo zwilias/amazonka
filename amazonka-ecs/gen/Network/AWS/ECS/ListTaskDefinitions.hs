@@ -45,7 +45,6 @@ module Network.AWS.ECS.ListTaskDefinitions
     ) where
 
 import Network.AWS.ECS.Types
-import Network.AWS.ECS.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Pager
 import Network.AWS.Prelude
@@ -53,16 +52,15 @@ import Network.AWS.Request
 import Network.AWS.Response
 
 -- | /See:/ 'listTaskDefinitions' smart constructor.
-data ListTaskDefinitions =
-  ListTaskDefinitions'
-    { _ltdStatus       :: !(Maybe TaskDefinitionStatus)
-    , _ltdFamilyPrefix :: !(Maybe Text)
-    , _ltdNextToken    :: !(Maybe Text)
-    , _ltdSort         :: !(Maybe SortOrder)
-    , _ltdMaxResults   :: !(Maybe Int)
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data ListTaskDefinitions = ListTaskDefinitions'{_ltdStatus
+                                                ::
+                                                !(Maybe TaskDefinitionStatus),
+                                                _ltdFamilyPrefix ::
+                                                !(Maybe Text),
+                                                _ltdNextToken :: !(Maybe Text),
+                                                _ltdSort :: !(Maybe SortOrder),
+                                                _ltdMaxResults :: !(Maybe Int)}
+                             deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'ListTaskDefinitions' with the minimum fields required to make a request.
 --
@@ -79,15 +77,10 @@ data ListTaskDefinitions =
 -- * 'ltdMaxResults' - The maximum number of task definition results returned by @ListTaskDefinitions@ in paginated output. When this parameter is used, @ListTaskDefinitions@ only returns @maxResults@ results in a single page along with a @nextToken@ response element. The remaining results of the initial request can be seen by sending another @ListTaskDefinitions@ request with the returned @nextToken@ value. This value can be between 1 and 100. If this parameter is not used, then @ListTaskDefinitions@ returns up to 100 results and a @nextToken@ value if applicable.
 listTaskDefinitions
     :: ListTaskDefinitions
-listTaskDefinitions =
-  ListTaskDefinitions'
-    { _ltdStatus = Nothing
-    , _ltdFamilyPrefix = Nothing
-    , _ltdNextToken = Nothing
-    , _ltdSort = Nothing
-    , _ltdMaxResults = Nothing
-    }
-
+listTaskDefinitions
+  = ListTaskDefinitions'{_ltdStatus = Nothing,
+                         _ltdFamilyPrefix = Nothing, _ltdNextToken = Nothing,
+                         _ltdSort = Nothing, _ltdMaxResults = Nothing}
 
 -- | The task definition status with which to filter the @ListTaskDefinitions@ results. By default, only @ACTIVE@ task definitions are listed. By setting this parameter to @INACTIVE@ , you can view task definitions that are @INACTIVE@ as long as an active task or service still references them. If you paginate the resulting output, be sure to keep the @status@ value constant in each subsequent request.
 ltdStatus :: Lens' ListTaskDefinitions (Maybe TaskDefinitionStatus)
@@ -159,14 +152,16 @@ instance ToQuery ListTaskDefinitions where
         toQuery = const mempty
 
 -- | /See:/ 'listTaskDefinitionsResponse' smart constructor.
-data ListTaskDefinitionsResponse =
-  ListTaskDefinitionsResponse'
-    { _ltdrsTaskDefinitionARNs :: !(Maybe [Text])
-    , _ltdrsNextToken          :: !(Maybe Text)
-    , _ltdrsResponseStatus     :: !Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data ListTaskDefinitionsResponse = ListTaskDefinitionsResponse'{_ltdrsTaskDefinitionARNs
+                                                                ::
+                                                                !(Maybe [Text]),
+                                                                _ltdrsNextToken
+                                                                ::
+                                                                !(Maybe Text),
+                                                                _ltdrsResponseStatus
+                                                                :: !Int}
+                                     deriving (Eq, Read, Show, Data, Typeable,
+                                               Generic)
 
 -- | Creates a value of 'ListTaskDefinitionsResponse' with the minimum fields required to make a request.
 --
@@ -180,13 +175,11 @@ data ListTaskDefinitionsResponse =
 listTaskDefinitionsResponse
     :: Int -- ^ 'ltdrsResponseStatus'
     -> ListTaskDefinitionsResponse
-listTaskDefinitionsResponse pResponseStatus_ =
-  ListTaskDefinitionsResponse'
-    { _ltdrsTaskDefinitionARNs = Nothing
-    , _ltdrsNextToken = Nothing
-    , _ltdrsResponseStatus = pResponseStatus_
-    }
-
+listTaskDefinitionsResponse pResponseStatus_
+  = ListTaskDefinitionsResponse'{_ltdrsTaskDefinitionARNs
+                                   = Nothing,
+                                 _ltdrsNextToken = Nothing,
+                                 _ltdrsResponseStatus = pResponseStatus_}
 
 -- | The list of task definition Amazon Resource Name (ARN) entries for the @ListTaskDefinitions@ request.
 ltdrsTaskDefinitionARNs :: Lens' ListTaskDefinitionsResponse [Text]

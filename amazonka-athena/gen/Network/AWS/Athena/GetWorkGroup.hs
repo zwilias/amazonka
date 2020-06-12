@@ -38,19 +38,15 @@ module Network.AWS.Athena.GetWorkGroup
     ) where
 
 import Network.AWS.Athena.Types
-import Network.AWS.Athena.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 
 -- | /See:/ 'getWorkGroup' smart constructor.
-newtype GetWorkGroup =
-  GetWorkGroup'
-    { _gwgWorkGroup :: Text
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+newtype GetWorkGroup = GetWorkGroup'{_gwgWorkGroup ::
+                                     Text}
+                         deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'GetWorkGroup' with the minimum fields required to make a request.
 --
@@ -60,8 +56,8 @@ newtype GetWorkGroup =
 getWorkGroup
     :: Text -- ^ 'gwgWorkGroup'
     -> GetWorkGroup
-getWorkGroup pWorkGroup_ = GetWorkGroup' {_gwgWorkGroup = pWorkGroup_}
-
+getWorkGroup pWorkGroup_
+  = GetWorkGroup'{_gwgWorkGroup = pWorkGroup_}
 
 -- | The name of the workgroup.
 gwgWorkGroup :: Lens' GetWorkGroup Text
@@ -101,13 +97,10 @@ instance ToQuery GetWorkGroup where
         toQuery = const mempty
 
 -- | /See:/ 'getWorkGroupResponse' smart constructor.
-data GetWorkGroupResponse =
-  GetWorkGroupResponse'
-    { _gwgrsWorkGroup      :: !(Maybe WorkGroup)
-    , _gwgrsResponseStatus :: !Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data GetWorkGroupResponse = GetWorkGroupResponse'{_gwgrsWorkGroup
+                                                  :: !(Maybe WorkGroup),
+                                                  _gwgrsResponseStatus :: !Int}
+                              deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'GetWorkGroupResponse' with the minimum fields required to make a request.
 --
@@ -119,10 +112,9 @@ data GetWorkGroupResponse =
 getWorkGroupResponse
     :: Int -- ^ 'gwgrsResponseStatus'
     -> GetWorkGroupResponse
-getWorkGroupResponse pResponseStatus_ =
-  GetWorkGroupResponse'
-    {_gwgrsWorkGroup = Nothing, _gwgrsResponseStatus = pResponseStatus_}
-
+getWorkGroupResponse pResponseStatus_
+  = GetWorkGroupResponse'{_gwgrsWorkGroup = Nothing,
+                          _gwgrsResponseStatus = pResponseStatus_}
 
 -- | Information about the workgroup.
 gwgrsWorkGroup :: Lens' GetWorkGroupResponse (Maybe WorkGroup)

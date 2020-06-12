@@ -25,7 +25,7 @@
 --
 --     * You can attach only one policy with each @PutPermissionPolicy@ request.
 --
---     * The policy must include an @Effect@ , @Action@ and @Principal@ .
+--     * The policy must include an @Effect@ , @Action@ and @Principal@ . 
 --
 --     * @Effect@ must specify @Allow@ .
 --
@@ -41,7 +41,7 @@
 --
 --
 --
--- For more information, see <https://docs.aws.amazon.com/IAM/latest/UserGuide/access_policies.html IAM Policies> .
+-- For more information, see <https://docs.aws.amazon.com/IAM/latest/UserGuide/access_policies.html IAM Policies> . 
 --
 -- An example of a valid policy parameter is shown in the Examples section below.
 --
@@ -66,16 +66,12 @@ import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 import Network.AWS.WAFRegional.Types
-import Network.AWS.WAFRegional.Types.Product
 
 -- | /See:/ 'putPermissionPolicy' smart constructor.
-data PutPermissionPolicy =
-  PutPermissionPolicy'
-    { _pppResourceARN :: !Text
-    , _pppPolicy      :: !Text
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data PutPermissionPolicy = PutPermissionPolicy'{_pppResourceARN
+                                                :: !Text,
+                                                _pppPolicy :: !Text}
+                             deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'PutPermissionPolicy' with the minimum fields required to make a request.
 --
@@ -88,9 +84,10 @@ putPermissionPolicy
     :: Text -- ^ 'pppResourceARN'
     -> Text -- ^ 'pppPolicy'
     -> PutPermissionPolicy
-putPermissionPolicy pResourceARN_ pPolicy_ =
-  PutPermissionPolicy' {_pppResourceARN = pResourceARN_, _pppPolicy = pPolicy_}
-
+putPermissionPolicy pResourceARN_ pPolicy_
+  = PutPermissionPolicy'{_pppResourceARN =
+                           pResourceARN_,
+                         _pppPolicy = pPolicy_}
 
 -- | The Amazon Resource Name (ARN) of the RuleGroup to which you want to attach the policy.
 pppResourceARN :: Lens' PutPermissionPolicy Text
@@ -137,12 +134,10 @@ instance ToQuery PutPermissionPolicy where
         toQuery = const mempty
 
 -- | /See:/ 'putPermissionPolicyResponse' smart constructor.
-newtype PutPermissionPolicyResponse =
-  PutPermissionPolicyResponse'
-    { _ppprsResponseStatus :: Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+newtype PutPermissionPolicyResponse = PutPermissionPolicyResponse'{_ppprsResponseStatus
+                                                                   :: Int}
+                                        deriving (Eq, Read, Show, Data,
+                                                  Typeable, Generic)
 
 -- | Creates a value of 'PutPermissionPolicyResponse' with the minimum fields required to make a request.
 --
@@ -152,9 +147,9 @@ newtype PutPermissionPolicyResponse =
 putPermissionPolicyResponse
     :: Int -- ^ 'ppprsResponseStatus'
     -> PutPermissionPolicyResponse
-putPermissionPolicyResponse pResponseStatus_ =
-  PutPermissionPolicyResponse' {_ppprsResponseStatus = pResponseStatus_}
-
+putPermissionPolicyResponse pResponseStatus_
+  = PutPermissionPolicyResponse'{_ppprsResponseStatus =
+                                   pResponseStatus_}
 
 -- | -- | The response status code.
 ppprsResponseStatus :: Lens' PutPermissionPolicyResponse Int

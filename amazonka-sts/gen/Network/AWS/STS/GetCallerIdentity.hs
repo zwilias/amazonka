@@ -42,20 +42,16 @@ import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 import Network.AWS.STS.Types
-import Network.AWS.STS.Types.Product
 
 -- | /See:/ 'getCallerIdentity' smart constructor.
-data GetCallerIdentity =
-  GetCallerIdentity'
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data GetCallerIdentity = GetCallerIdentity'
+                           deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'GetCallerIdentity' with the minimum fields required to make a request.
 --
 getCallerIdentity
     :: GetCallerIdentity
 getCallerIdentity = GetCallerIdentity'
-
 
 instance AWSRequest GetCallerIdentity where
         type Rs GetCallerIdentity = GetCallerIdentityResponse
@@ -90,15 +86,16 @@ instance ToQuery GetCallerIdentity where
 --
 --
 -- /See:/ 'getCallerIdentityResponse' smart constructor.
-data GetCallerIdentityResponse =
-  GetCallerIdentityResponse'
-    { _gcirsARN            :: !(Maybe Text)
-    , _gcirsAccount        :: !(Maybe Text)
-    , _gcirsUserId         :: !(Maybe Text)
-    , _gcirsResponseStatus :: !Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data GetCallerIdentityResponse = GetCallerIdentityResponse'{_gcirsARN
+                                                            :: !(Maybe Text),
+                                                            _gcirsAccount ::
+                                                            !(Maybe Text),
+                                                            _gcirsUserId ::
+                                                            !(Maybe Text),
+                                                            _gcirsResponseStatus
+                                                            :: !Int}
+                                   deriving (Eq, Read, Show, Data, Typeable,
+                                             Generic)
 
 -- | Creates a value of 'GetCallerIdentityResponse' with the minimum fields required to make a request.
 --
@@ -114,14 +111,10 @@ data GetCallerIdentityResponse =
 getCallerIdentityResponse
     :: Int -- ^ 'gcirsResponseStatus'
     -> GetCallerIdentityResponse
-getCallerIdentityResponse pResponseStatus_ =
-  GetCallerIdentityResponse'
-    { _gcirsARN = Nothing
-    , _gcirsAccount = Nothing
-    , _gcirsUserId = Nothing
-    , _gcirsResponseStatus = pResponseStatus_
-    }
-
+getCallerIdentityResponse pResponseStatus_
+  = GetCallerIdentityResponse'{_gcirsARN = Nothing,
+                               _gcirsAccount = Nothing, _gcirsUserId = Nothing,
+                               _gcirsResponseStatus = pResponseStatus_}
 
 -- | The AWS ARN associated with the calling entity.
 gcirsARN :: Lens' GetCallerIdentityResponse (Maybe Text)

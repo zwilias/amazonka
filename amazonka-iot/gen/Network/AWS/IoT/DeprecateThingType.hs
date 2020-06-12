@@ -38,7 +38,6 @@ module Network.AWS.IoT.DeprecateThingType
     ) where
 
 import Network.AWS.IoT.Types
-import Network.AWS.IoT.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.Request
@@ -49,13 +48,10 @@ import Network.AWS.Response
 --
 --
 -- /See:/ 'deprecateThingType' smart constructor.
-data DeprecateThingType =
-  DeprecateThingType'
-    { _depUndoDeprecate :: !(Maybe Bool)
-    , _depThingTypeName :: !Text
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data DeprecateThingType = DeprecateThingType'{_depUndoDeprecate
+                                              :: !(Maybe Bool),
+                                              _depThingTypeName :: !Text}
+                            deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'DeprecateThingType' with the minimum fields required to make a request.
 --
@@ -67,10 +63,9 @@ data DeprecateThingType =
 deprecateThingType
     :: Text -- ^ 'depThingTypeName'
     -> DeprecateThingType
-deprecateThingType pThingTypeName_ =
-  DeprecateThingType'
-    {_depUndoDeprecate = Nothing, _depThingTypeName = pThingTypeName_}
-
+deprecateThingType pThingTypeName_
+  = DeprecateThingType'{_depUndoDeprecate = Nothing,
+                        _depThingTypeName = pThingTypeName_}
 
 -- | Whether to undeprecate a deprecated thing type. If __true__ , the thing type will not be deprecated anymore and you can associate it with things.
 depUndoDeprecate :: Lens' DeprecateThingType (Maybe Bool)
@@ -116,12 +111,10 @@ instance ToQuery DeprecateThingType where
 --
 --
 -- /See:/ 'deprecateThingTypeResponse' smart constructor.
-newtype DeprecateThingTypeResponse =
-  DeprecateThingTypeResponse'
-    { _deprsResponseStatus :: Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+newtype DeprecateThingTypeResponse = DeprecateThingTypeResponse'{_deprsResponseStatus
+                                                                 :: Int}
+                                       deriving (Eq, Read, Show, Data, Typeable,
+                                                 Generic)
 
 -- | Creates a value of 'DeprecateThingTypeResponse' with the minimum fields required to make a request.
 --
@@ -131,9 +124,9 @@ newtype DeprecateThingTypeResponse =
 deprecateThingTypeResponse
     :: Int -- ^ 'deprsResponseStatus'
     -> DeprecateThingTypeResponse
-deprecateThingTypeResponse pResponseStatus_ =
-  DeprecateThingTypeResponse' {_deprsResponseStatus = pResponseStatus_}
-
+deprecateThingTypeResponse pResponseStatus_
+  = DeprecateThingTypeResponse'{_deprsResponseStatus =
+                                  pResponseStatus_}
 
 -- | -- | The response status code.
 deprsResponseStatus :: Lens' DeprecateThingTypeResponse Int

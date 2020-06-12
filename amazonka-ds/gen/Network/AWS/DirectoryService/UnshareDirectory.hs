@@ -18,7 +18,7 @@
 -- Stability   : auto-generated
 -- Portability : non-portable (GHC extensions)
 --
--- Stops the directory sharing between the directory owner and consumer accounts.
+-- Stops the directory sharing between the directory owner and consumer accounts. 
 --
 --
 module Network.AWS.DirectoryService.UnshareDirectory
@@ -39,20 +39,16 @@ module Network.AWS.DirectoryService.UnshareDirectory
     ) where
 
 import Network.AWS.DirectoryService.Types
-import Network.AWS.DirectoryService.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 
 -- | /See:/ 'unshareDirectory' smart constructor.
-data UnshareDirectory =
-  UnshareDirectory'
-    { _udDirectoryId   :: !Text
-    , _udUnshareTarget :: !UnshareTarget
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data UnshareDirectory = UnshareDirectory'{_udDirectoryId
+                                          :: !Text,
+                                          _udUnshareTarget :: !UnshareTarget}
+                          deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'UnshareDirectory' with the minimum fields required to make a request.
 --
@@ -65,10 +61,9 @@ unshareDirectory
     :: Text -- ^ 'udDirectoryId'
     -> UnshareTarget -- ^ 'udUnshareTarget'
     -> UnshareDirectory
-unshareDirectory pDirectoryId_ pUnshareTarget_ =
-  UnshareDirectory'
-    {_udDirectoryId = pDirectoryId_, _udUnshareTarget = pUnshareTarget_}
-
+unshareDirectory pDirectoryId_ pUnshareTarget_
+  = UnshareDirectory'{_udDirectoryId = pDirectoryId_,
+                      _udUnshareTarget = pUnshareTarget_}
 
 -- | The identifier of the AWS Managed Microsoft AD directory that you want to stop sharing.
 udDirectoryId :: Lens' UnshareDirectory Text
@@ -115,13 +110,12 @@ instance ToQuery UnshareDirectory where
         toQuery = const mempty
 
 -- | /See:/ 'unshareDirectoryResponse' smart constructor.
-data UnshareDirectoryResponse =
-  UnshareDirectoryResponse'
-    { _udrsSharedDirectoryId :: !(Maybe Text)
-    , _udrsResponseStatus    :: !Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data UnshareDirectoryResponse = UnshareDirectoryResponse'{_udrsSharedDirectoryId
+                                                          :: !(Maybe Text),
+                                                          _udrsResponseStatus ::
+                                                          !Int}
+                                  deriving (Eq, Read, Show, Data, Typeable,
+                                            Generic)
 
 -- | Creates a value of 'UnshareDirectoryResponse' with the minimum fields required to make a request.
 --
@@ -133,10 +127,10 @@ data UnshareDirectoryResponse =
 unshareDirectoryResponse
     :: Int -- ^ 'udrsResponseStatus'
     -> UnshareDirectoryResponse
-unshareDirectoryResponse pResponseStatus_ =
-  UnshareDirectoryResponse'
-    {_udrsSharedDirectoryId = Nothing, _udrsResponseStatus = pResponseStatus_}
-
+unshareDirectoryResponse pResponseStatus_
+  = UnshareDirectoryResponse'{_udrsSharedDirectoryId =
+                                Nothing,
+                              _udrsResponseStatus = pResponseStatus_}
 
 -- | Identifier of the directory stored in the directory consumer account that is to be unshared from the specified directory (@DirectoryId@ ).
 udrsSharedDirectoryId :: Lens' UnshareDirectoryResponse (Maybe Text)

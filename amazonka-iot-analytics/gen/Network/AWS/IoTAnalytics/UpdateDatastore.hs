@@ -36,20 +36,16 @@ module Network.AWS.IoTAnalytics.UpdateDatastore
     ) where
 
 import Network.AWS.IoTAnalytics.Types
-import Network.AWS.IoTAnalytics.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 
 -- | /See:/ 'updateDatastore' smart constructor.
-data UpdateDatastore =
-  UpdateDatastore'
-    { _udRetentionPeriod :: !(Maybe RetentionPeriod)
-    , _udDatastoreName   :: !Text
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data UpdateDatastore = UpdateDatastore'{_udRetentionPeriod
+                                        :: !(Maybe RetentionPeriod),
+                                        _udDatastoreName :: !Text}
+                         deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'UpdateDatastore' with the minimum fields required to make a request.
 --
@@ -61,10 +57,9 @@ data UpdateDatastore =
 updateDatastore
     :: Text -- ^ 'udDatastoreName'
     -> UpdateDatastore
-updateDatastore pDatastoreName_ =
-  UpdateDatastore'
-    {_udRetentionPeriod = Nothing, _udDatastoreName = pDatastoreName_}
-
+updateDatastore pDatastoreName_
+  = UpdateDatastore'{_udRetentionPeriod = Nothing,
+                     _udDatastoreName = pDatastoreName_}
 
 -- | How long, in days, message data is kept for the data store.
 udRetentionPeriod :: Lens' UpdateDatastore (Maybe RetentionPeriod)
@@ -100,16 +95,14 @@ instance ToQuery UpdateDatastore where
         toQuery = const mempty
 
 -- | /See:/ 'updateDatastoreResponse' smart constructor.
-data UpdateDatastoreResponse =
-  UpdateDatastoreResponse'
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data UpdateDatastoreResponse = UpdateDatastoreResponse'
+                                 deriving (Eq, Read, Show, Data, Typeable,
+                                           Generic)
 
 -- | Creates a value of 'UpdateDatastoreResponse' with the minimum fields required to make a request.
 --
 updateDatastoreResponse
     :: UpdateDatastoreResponse
 updateDatastoreResponse = UpdateDatastoreResponse'
-
 
 instance NFData UpdateDatastoreResponse where

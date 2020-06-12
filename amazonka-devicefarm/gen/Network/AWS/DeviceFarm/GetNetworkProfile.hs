@@ -38,19 +38,15 @@ module Network.AWS.DeviceFarm.GetNetworkProfile
     ) where
 
 import Network.AWS.DeviceFarm.Types
-import Network.AWS.DeviceFarm.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 
 -- | /See:/ 'getNetworkProfile' smart constructor.
-newtype GetNetworkProfile =
-  GetNetworkProfile'
-    { _gnpArn :: Text
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+newtype GetNetworkProfile = GetNetworkProfile'{_gnpArn
+                                               :: Text}
+                              deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'GetNetworkProfile' with the minimum fields required to make a request.
 --
@@ -60,8 +56,8 @@ newtype GetNetworkProfile =
 getNetworkProfile
     :: Text -- ^ 'gnpArn'
     -> GetNetworkProfile
-getNetworkProfile pArn_ = GetNetworkProfile' {_gnpArn = pArn_}
-
+getNetworkProfile pArn_
+  = GetNetworkProfile'{_gnpArn = pArn_}
 
 -- | The ARN of the network profile to return information about.
 gnpArn :: Lens' GetNetworkProfile Text
@@ -101,13 +97,14 @@ instance ToQuery GetNetworkProfile where
         toQuery = const mempty
 
 -- | /See:/ 'getNetworkProfileResponse' smart constructor.
-data GetNetworkProfileResponse =
-  GetNetworkProfileResponse'
-    { _gnprsNetworkProfile :: !(Maybe NetworkProfile)
-    , _gnprsResponseStatus :: !Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data GetNetworkProfileResponse = GetNetworkProfileResponse'{_gnprsNetworkProfile
+                                                            ::
+                                                            !(Maybe
+                                                                NetworkProfile),
+                                                            _gnprsResponseStatus
+                                                            :: !Int}
+                                   deriving (Eq, Read, Show, Data, Typeable,
+                                             Generic)
 
 -- | Creates a value of 'GetNetworkProfileResponse' with the minimum fields required to make a request.
 --
@@ -119,10 +116,10 @@ data GetNetworkProfileResponse =
 getNetworkProfileResponse
     :: Int -- ^ 'gnprsResponseStatus'
     -> GetNetworkProfileResponse
-getNetworkProfileResponse pResponseStatus_ =
-  GetNetworkProfileResponse'
-    {_gnprsNetworkProfile = Nothing, _gnprsResponseStatus = pResponseStatus_}
-
+getNetworkProfileResponse pResponseStatus_
+  = GetNetworkProfileResponse'{_gnprsNetworkProfile =
+                                 Nothing,
+                               _gnprsResponseStatus = pResponseStatus_}
 
 -- | The network profile.
 gnprsNetworkProfile :: Lens' GetNetworkProfileResponse (Maybe NetworkProfile)

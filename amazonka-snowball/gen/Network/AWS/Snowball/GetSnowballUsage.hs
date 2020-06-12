@@ -43,20 +43,16 @@ import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 import Network.AWS.Snowball.Types
-import Network.AWS.Snowball.Types.Product
 
 -- | /See:/ 'getSnowballUsage' smart constructor.
-data GetSnowballUsage =
-  GetSnowballUsage'
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data GetSnowballUsage = GetSnowballUsage'
+                          deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'GetSnowballUsage' with the minimum fields required to make a request.
 --
 getSnowballUsage
     :: GetSnowballUsage
 getSnowballUsage = GetSnowballUsage'
-
 
 instance AWSRequest GetSnowballUsage where
         type Rs GetSnowballUsage = GetSnowballUsageResponse
@@ -92,14 +88,14 @@ instance ToQuery GetSnowballUsage where
         toQuery = const mempty
 
 -- | /See:/ 'getSnowballUsageResponse' smart constructor.
-data GetSnowballUsageResponse =
-  GetSnowballUsageResponse'
-    { _gsursSnowballsInUse :: !(Maybe Int)
-    , _gsursSnowballLimit  :: !(Maybe Int)
-    , _gsursResponseStatus :: !Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data GetSnowballUsageResponse = GetSnowballUsageResponse'{_gsursSnowballsInUse
+                                                          :: !(Maybe Int),
+                                                          _gsursSnowballLimit ::
+                                                          !(Maybe Int),
+                                                          _gsursResponseStatus
+                                                          :: !Int}
+                                  deriving (Eq, Read, Show, Data, Typeable,
+                                            Generic)
 
 -- | Creates a value of 'GetSnowballUsageResponse' with the minimum fields required to make a request.
 --
@@ -113,13 +109,11 @@ data GetSnowballUsageResponse =
 getSnowballUsageResponse
     :: Int -- ^ 'gsursResponseStatus'
     -> GetSnowballUsageResponse
-getSnowballUsageResponse pResponseStatus_ =
-  GetSnowballUsageResponse'
-    { _gsursSnowballsInUse = Nothing
-    , _gsursSnowballLimit = Nothing
-    , _gsursResponseStatus = pResponseStatus_
-    }
-
+getSnowballUsageResponse pResponseStatus_
+  = GetSnowballUsageResponse'{_gsursSnowballsInUse =
+                                Nothing,
+                              _gsursSnowballLimit = Nothing,
+                              _gsursResponseStatus = pResponseStatus_}
 
 -- | The number of Snowballs that this account is currently using.
 gsursSnowballsInUse :: Lens' GetSnowballUsageResponse (Maybe Int)

@@ -42,21 +42,25 @@ module Network.AWS.EC2.CreateTransitGatewayMulticastDomain
     ) where
 
 import Network.AWS.EC2.Types
-import Network.AWS.EC2.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 
 -- | /See:/ 'createTransitGatewayMulticastDomain' smart constructor.
-data CreateTransitGatewayMulticastDomain =
-  CreateTransitGatewayMulticastDomain'
-    { _ctgmdTagSpecifications :: !(Maybe [TagSpecification])
-    , _ctgmdDryRun            :: !(Maybe Bool)
-    , _ctgmdTransitGatewayId  :: !Text
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data CreateTransitGatewayMulticastDomain = CreateTransitGatewayMulticastDomain'{_ctgmdTagSpecifications
+                                                                                ::
+                                                                                !(Maybe
+                                                                                    [TagSpecification]),
+                                                                                _ctgmdDryRun
+                                                                                ::
+                                                                                !(Maybe
+                                                                                    Bool),
+                                                                                _ctgmdTransitGatewayId
+                                                                                ::
+                                                                                !Text}
+                                             deriving (Eq, Read, Show, Data,
+                                                       Typeable, Generic)
 
 -- | Creates a value of 'CreateTransitGatewayMulticastDomain' with the minimum fields required to make a request.
 --
@@ -70,13 +74,13 @@ data CreateTransitGatewayMulticastDomain =
 createTransitGatewayMulticastDomain
     :: Text -- ^ 'ctgmdTransitGatewayId'
     -> CreateTransitGatewayMulticastDomain
-createTransitGatewayMulticastDomain pTransitGatewayId_ =
-  CreateTransitGatewayMulticastDomain'
-    { _ctgmdTagSpecifications = Nothing
-    , _ctgmdDryRun = Nothing
-    , _ctgmdTransitGatewayId = pTransitGatewayId_
-    }
-
+createTransitGatewayMulticastDomain
+  pTransitGatewayId_
+  = CreateTransitGatewayMulticastDomain'{_ctgmdTagSpecifications
+                                           = Nothing,
+                                         _ctgmdDryRun = Nothing,
+                                         _ctgmdTransitGatewayId =
+                                           pTransitGatewayId_}
 
 -- | The tags for the transit gateway multicast domain.
 ctgmdTagSpecifications :: Lens' CreateTransitGatewayMulticastDomain [TagSpecification]
@@ -133,13 +137,16 @@ instance ToQuery CreateTransitGatewayMulticastDomain
                "TransitGatewayId" =: _ctgmdTransitGatewayId]
 
 -- | /See:/ 'createTransitGatewayMulticastDomainResponse' smart constructor.
-data CreateTransitGatewayMulticastDomainResponse =
-  CreateTransitGatewayMulticastDomainResponse'
-    { _ctgmdrsTransitGatewayMulticastDomain :: !(Maybe TransitGatewayMulticastDomain)
-    , _ctgmdrsResponseStatus :: !Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data CreateTransitGatewayMulticastDomainResponse = CreateTransitGatewayMulticastDomainResponse'{_ctgmdrsTransitGatewayMulticastDomain
+                                                                                                ::
+                                                                                                !(Maybe
+                                                                                                    TransitGatewayMulticastDomain),
+                                                                                                _ctgmdrsResponseStatus
+                                                                                                ::
+                                                                                                !Int}
+                                                     deriving (Eq, Read, Show,
+                                                               Data, Typeable,
+                                                               Generic)
 
 -- | Creates a value of 'CreateTransitGatewayMulticastDomainResponse' with the minimum fields required to make a request.
 --
@@ -151,12 +158,12 @@ data CreateTransitGatewayMulticastDomainResponse =
 createTransitGatewayMulticastDomainResponse
     :: Int -- ^ 'ctgmdrsResponseStatus'
     -> CreateTransitGatewayMulticastDomainResponse
-createTransitGatewayMulticastDomainResponse pResponseStatus_ =
-  CreateTransitGatewayMulticastDomainResponse'
-    { _ctgmdrsTransitGatewayMulticastDomain = Nothing
-    , _ctgmdrsResponseStatus = pResponseStatus_
-    }
-
+createTransitGatewayMulticastDomainResponse
+  pResponseStatus_
+  = CreateTransitGatewayMulticastDomainResponse'{_ctgmdrsTransitGatewayMulticastDomain
+                                                   = Nothing,
+                                                 _ctgmdrsResponseStatus =
+                                                   pResponseStatus_}
 
 -- | Information about the transit gateway multicast domain.
 ctgmdrsTransitGatewayMulticastDomain :: Lens' CreateTransitGatewayMulticastDomainResponse (Maybe TransitGatewayMulticastDomain)

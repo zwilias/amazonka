@@ -47,29 +47,25 @@ import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 import Network.AWS.StorageGateway.Types
-import Network.AWS.StorageGateway.Types.Product
 
 -- | A JSON object that contains one or more of the following fields:
 --
 --
---     * 'ListTapesInput$Limit'
+--     * 'ListTapesInput$Limit' 
 --
---     * 'ListTapesInput$Marker'
+--     * 'ListTapesInput$Marker' 
 --
---     * 'ListTapesInput$TapeARNs'
+--     * 'ListTapesInput$TapeARNs' 
 --
 --
 --
 --
 -- /See:/ 'listTapes' smart constructor.
-data ListTapes =
-  ListTapes'
-    { _ltMarker   :: !(Maybe Text)
-    , _ltLimit    :: !(Maybe Nat)
-    , _ltTapeARNs :: !(Maybe [Text])
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data ListTapes = ListTapes'{_ltMarker ::
+                            !(Maybe Text),
+                            _ltLimit :: !(Maybe Nat),
+                            _ltTapeARNs :: !(Maybe [Text])}
+                   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'ListTapes' with the minimum fields required to make a request.
 --
@@ -82,9 +78,9 @@ data ListTapes =
 -- * 'ltTapeARNs' - Undocumented member.
 listTapes
     :: ListTapes
-listTapes =
-  ListTapes' {_ltMarker = Nothing, _ltLimit = Nothing, _ltTapeARNs = Nothing}
-
+listTapes
+  = ListTapes'{_ltMarker = Nothing, _ltLimit = Nothing,
+               _ltTapeARNs = Nothing}
 
 -- | A string that indicates the position at which to begin the returned list of tapes.
 ltMarker :: Lens' ListTapes (Maybe Text)
@@ -138,22 +134,20 @@ instance ToQuery ListTapes where
 -- | A JSON object containing the following fields:
 --
 --
---     * 'ListTapesOutput$Marker'
+--     * 'ListTapesOutput$Marker' 
 --
---     * 'ListTapesOutput$VolumeInfos'
+--     * 'ListTapesOutput$VolumeInfos' 
 --
 --
 --
 --
 -- /See:/ 'listTapesResponse' smart constructor.
-data ListTapesResponse =
-  ListTapesResponse'
-    { _ltrsMarker         :: !(Maybe Text)
-    , _ltrsTapeInfos      :: !(Maybe [TapeInfo])
-    , _ltrsResponseStatus :: !Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data ListTapesResponse = ListTapesResponse'{_ltrsMarker
+                                            :: !(Maybe Text),
+                                            _ltrsTapeInfos ::
+                                            !(Maybe [TapeInfo]),
+                                            _ltrsResponseStatus :: !Int}
+                           deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'ListTapesResponse' with the minimum fields required to make a request.
 --
@@ -167,13 +161,10 @@ data ListTapesResponse =
 listTapesResponse
     :: Int -- ^ 'ltrsResponseStatus'
     -> ListTapesResponse
-listTapesResponse pResponseStatus_ =
-  ListTapesResponse'
-    { _ltrsMarker = Nothing
-    , _ltrsTapeInfos = Nothing
-    , _ltrsResponseStatus = pResponseStatus_
-    }
-
+listTapesResponse pResponseStatus_
+  = ListTapesResponse'{_ltrsMarker = Nothing,
+                       _ltrsTapeInfos = Nothing,
+                       _ltrsResponseStatus = pResponseStatus_}
 
 -- | A string that indicates the position at which to begin returning the next list of tapes. Use the marker in your next request to continue pagination of tapes. If there are no more tapes to list, this element does not appear in the response body.
 ltrsMarker :: Lens' ListTapesResponse (Maybe Text)

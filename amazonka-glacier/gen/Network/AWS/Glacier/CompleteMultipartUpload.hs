@@ -29,7 +29,7 @@
 --
 -- An AWS account has full permission to perform all operations (actions). However, AWS Identity and Access Management (IAM) users don't have any permissions by default. You must grant them explicit permission to perform specific actions. For more information, see <http://docs.aws.amazon.com/amazonglacier/latest/dev/using-iam-with-amazon-glacier.html Access Control Using AWS Identity and Access Management (IAM)> .
 --
--- For conceptual information and underlying REST API, see <http://docs.aws.amazon.com/amazonglacier/latest/dev/uploading-archive-mpu.html Uploading Large Archives in Parts (Multipart Upload)> and <http://docs.aws.amazon.com/amazonglacier/latest/dev/api-multipart-complete-upload.html Complete Multipart Upload> in the /Amazon Glacier Developer Guide/ .
+-- For conceptual information and underlying REST API, see <http://docs.aws.amazon.com/amazonglacier/latest/dev/uploading-archive-mpu.html Uploading Large Archives in Parts (Multipart Upload)> and <http://docs.aws.amazon.com/amazonglacier/latest/dev/api-multipart-complete-upload.html Complete Multipart Upload> in the /Amazon Glacier Developer Guide/ . 
 --
 module Network.AWS.Glacier.CompleteMultipartUpload
     (
@@ -53,7 +53,6 @@ module Network.AWS.Glacier.CompleteMultipartUpload
     ) where
 
 import Network.AWS.Glacier.Types
-import Network.AWS.Glacier.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.Request
@@ -64,16 +63,15 @@ import Network.AWS.Response
 --
 --
 -- /See:/ 'completeMultipartUpload' smart constructor.
-data CompleteMultipartUpload =
-  CompleteMultipartUpload'
-    { _cmuChecksum    :: !(Maybe Text)
-    , _cmuArchiveSize :: !(Maybe Text)
-    , _cmuAccountId   :: !Text
-    , _cmuVaultName   :: !Text
-    , _cmuUploadId    :: !Text
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data CompleteMultipartUpload = CompleteMultipartUpload'{_cmuChecksum
+                                                        :: !(Maybe Text),
+                                                        _cmuArchiveSize ::
+                                                        !(Maybe Text),
+                                                        _cmuAccountId :: !Text,
+                                                        _cmuVaultName :: !Text,
+                                                        _cmuUploadId :: !Text}
+                                 deriving (Eq, Read, Show, Data, Typeable,
+                                           Generic)
 
 -- | Creates a value of 'CompleteMultipartUpload' with the minimum fields required to make a request.
 --
@@ -93,15 +91,13 @@ completeMultipartUpload
     -> Text -- ^ 'cmuVaultName'
     -> Text -- ^ 'cmuUploadId'
     -> CompleteMultipartUpload
-completeMultipartUpload pAccountId_ pVaultName_ pUploadId_ =
-  CompleteMultipartUpload'
-    { _cmuChecksum = Nothing
-    , _cmuArchiveSize = Nothing
-    , _cmuAccountId = pAccountId_
-    , _cmuVaultName = pVaultName_
-    , _cmuUploadId = pUploadId_
-    }
-
+completeMultipartUpload pAccountId_ pVaultName_
+  pUploadId_
+  = CompleteMultipartUpload'{_cmuChecksum = Nothing,
+                             _cmuArchiveSize = Nothing,
+                             _cmuAccountId = pAccountId_,
+                             _cmuVaultName = pVaultName_,
+                             _cmuUploadId = pUploadId_}
 
 -- | The SHA256 tree hash of the entire archive. It is the tree hash of SHA256 tree hash of the individual parts. If the value you specify in the request does not match the SHA256 tree hash of the final assembled archive as computed by Amazon Glacier, Amazon Glacier returns an error and the request fails.
 cmuChecksum :: Lens' CompleteMultipartUpload (Maybe Text)

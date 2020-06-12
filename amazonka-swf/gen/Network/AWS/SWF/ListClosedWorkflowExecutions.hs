@@ -21,7 +21,7 @@
 -- Returns a list of closed workflow executions in the specified domain that meet the filtering criteria. The results may be split into multiple pages. To retrieve subsequent pages, make the call again using the nextPageToken returned by the initial call.
 --
 --
--- __Access Control__
+-- __Access Control__ 
 --
 -- You can use IAM policies to control this action's access to Amazon SWF resources as follows:
 --
@@ -76,24 +76,45 @@ import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 import Network.AWS.SWF.Types
-import Network.AWS.SWF.Types.Product
 
 -- | /See:/ 'listClosedWorkflowExecutions' smart constructor.
-data ListClosedWorkflowExecutions =
-  ListClosedWorkflowExecutions'
-    { _lcweNextPageToken     :: !(Maybe Text)
-    , _lcweExecutionFilter   :: !(Maybe WorkflowExecutionFilter)
-    , _lcweCloseStatusFilter :: !(Maybe CloseStatusFilter)
-    , _lcweTypeFilter        :: !(Maybe WorkflowTypeFilter)
-    , _lcweCloseTimeFilter   :: !(Maybe ExecutionTimeFilter)
-    , _lcweReverseOrder      :: !(Maybe Bool)
-    , _lcweTagFilter         :: !(Maybe TagFilter)
-    , _lcweStartTimeFilter   :: !(Maybe ExecutionTimeFilter)
-    , _lcweMaximumPageSize   :: !(Maybe Nat)
-    , _lcweDomain            :: !Text
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data ListClosedWorkflowExecutions = ListClosedWorkflowExecutions'{_lcweNextPageToken
+                                                                  ::
+                                                                  !(Maybe Text),
+                                                                  _lcweExecutionFilter
+                                                                  ::
+                                                                  !(Maybe
+                                                                      WorkflowExecutionFilter),
+                                                                  _lcweCloseStatusFilter
+                                                                  ::
+                                                                  !(Maybe
+                                                                      CloseStatusFilter),
+                                                                  _lcweTypeFilter
+                                                                  ::
+                                                                  !(Maybe
+                                                                      WorkflowTypeFilter),
+                                                                  _lcweCloseTimeFilter
+                                                                  ::
+                                                                  !(Maybe
+                                                                      ExecutionTimeFilter),
+                                                                  _lcweReverseOrder
+                                                                  ::
+                                                                  !(Maybe Bool),
+                                                                  _lcweTagFilter
+                                                                  ::
+                                                                  !(Maybe
+                                                                      TagFilter),
+                                                                  _lcweStartTimeFilter
+                                                                  ::
+                                                                  !(Maybe
+                                                                      ExecutionTimeFilter),
+                                                                  _lcweMaximumPageSize
+                                                                  ::
+                                                                  !(Maybe Nat),
+                                                                  _lcweDomain ::
+                                                                  !Text}
+                                      deriving (Eq, Read, Show, Data, Typeable,
+                                                Generic)
 
 -- | Creates a value of 'ListClosedWorkflowExecutions' with the minimum fields required to make a request.
 --
@@ -121,20 +142,18 @@ data ListClosedWorkflowExecutions =
 listClosedWorkflowExecutions
     :: Text -- ^ 'lcweDomain'
     -> ListClosedWorkflowExecutions
-listClosedWorkflowExecutions pDomain_ =
-  ListClosedWorkflowExecutions'
-    { _lcweNextPageToken = Nothing
-    , _lcweExecutionFilter = Nothing
-    , _lcweCloseStatusFilter = Nothing
-    , _lcweTypeFilter = Nothing
-    , _lcweCloseTimeFilter = Nothing
-    , _lcweReverseOrder = Nothing
-    , _lcweTagFilter = Nothing
-    , _lcweStartTimeFilter = Nothing
-    , _lcweMaximumPageSize = Nothing
-    , _lcweDomain = pDomain_
-    }
-
+listClosedWorkflowExecutions pDomain_
+  = ListClosedWorkflowExecutions'{_lcweNextPageToken =
+                                    Nothing,
+                                  _lcweExecutionFilter = Nothing,
+                                  _lcweCloseStatusFilter = Nothing,
+                                  _lcweTypeFilter = Nothing,
+                                  _lcweCloseTimeFilter = Nothing,
+                                  _lcweReverseOrder = Nothing,
+                                  _lcweTagFilter = Nothing,
+                                  _lcweStartTimeFilter = Nothing,
+                                  _lcweMaximumPageSize = Nothing,
+                                  _lcweDomain = pDomain_}
 
 -- | If a @NextPageToken@ was returned by a previous call, there are more results available. To retrieve the next page of results, make the call again using the returned token in @nextPageToken@ . Keep all other arguments unchanged. The configured @maximumPageSize@ determines how many results can be returned in a single call.
 lcweNextPageToken :: Lens' ListClosedWorkflowExecutions (Maybe Text)

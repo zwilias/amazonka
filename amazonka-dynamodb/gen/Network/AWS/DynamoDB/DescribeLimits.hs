@@ -73,7 +73,6 @@ module Network.AWS.DynamoDB.DescribeLimits
     ) where
 
 import Network.AWS.DynamoDB.Types
-import Network.AWS.DynamoDB.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.Request
@@ -84,17 +83,14 @@ import Network.AWS.Response
 --
 --
 -- /See:/ 'describeLimits' smart constructor.
-data DescribeLimits =
-  DescribeLimits'
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data DescribeLimits = DescribeLimits'
+                        deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'DescribeLimits' with the minimum fields required to make a request.
 --
 describeLimits
     :: DescribeLimits
 describeLimits = DescribeLimits'
-
 
 instance AWSRequest DescribeLimits where
         type Rs DescribeLimits = DescribeLimitsResponse
@@ -136,16 +132,18 @@ instance ToQuery DescribeLimits where
 --
 --
 -- /See:/ 'describeLimitsResponse' smart constructor.
-data DescribeLimitsResponse =
-  DescribeLimitsResponse'
-    { _dlrsTableMaxWriteCapacityUnits   :: !(Maybe Nat)
-    , _dlrsTableMaxReadCapacityUnits    :: !(Maybe Nat)
-    , _dlrsAccountMaxWriteCapacityUnits :: !(Maybe Nat)
-    , _dlrsAccountMaxReadCapacityUnits  :: !(Maybe Nat)
-    , _dlrsResponseStatus               :: !Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data DescribeLimitsResponse = DescribeLimitsResponse'{_dlrsTableMaxWriteCapacityUnits
+                                                      :: !(Maybe Nat),
+                                                      _dlrsTableMaxReadCapacityUnits
+                                                      :: !(Maybe Nat),
+                                                      _dlrsAccountMaxWriteCapacityUnits
+                                                      :: !(Maybe Nat),
+                                                      _dlrsAccountMaxReadCapacityUnits
+                                                      :: !(Maybe Nat),
+                                                      _dlrsResponseStatus ::
+                                                      !Int}
+                                deriving (Eq, Read, Show, Data, Typeable,
+                                          Generic)
 
 -- | Creates a value of 'DescribeLimitsResponse' with the minimum fields required to make a request.
 --
@@ -163,15 +161,13 @@ data DescribeLimitsResponse =
 describeLimitsResponse
     :: Int -- ^ 'dlrsResponseStatus'
     -> DescribeLimitsResponse
-describeLimitsResponse pResponseStatus_ =
-  DescribeLimitsResponse'
-    { _dlrsTableMaxWriteCapacityUnits = Nothing
-    , _dlrsTableMaxReadCapacityUnits = Nothing
-    , _dlrsAccountMaxWriteCapacityUnits = Nothing
-    , _dlrsAccountMaxReadCapacityUnits = Nothing
-    , _dlrsResponseStatus = pResponseStatus_
-    }
-
+describeLimitsResponse pResponseStatus_
+  = DescribeLimitsResponse'{_dlrsTableMaxWriteCapacityUnits
+                              = Nothing,
+                            _dlrsTableMaxReadCapacityUnits = Nothing,
+                            _dlrsAccountMaxWriteCapacityUnits = Nothing,
+                            _dlrsAccountMaxReadCapacityUnits = Nothing,
+                            _dlrsResponseStatus = pResponseStatus_}
 
 -- | The maximum write capacity units that your account allows you to provision for a new table that you are creating in this Region, including the write capacity units provisioned for its global secondary indexes (GSIs).
 dlrsTableMaxWriteCapacityUnits :: Lens' DescribeLimitsResponse (Maybe Natural)

@@ -42,20 +42,17 @@ module Network.AWS.EC2.SendDiagnosticInterrupt
     ) where
 
 import Network.AWS.EC2.Types
-import Network.AWS.EC2.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 
 -- | /See:/ 'sendDiagnosticInterrupt' smart constructor.
-data SendDiagnosticInterrupt =
-  SendDiagnosticInterrupt'
-    { _sdiDryRun     :: !(Maybe Bool)
-    , _sdiInstanceId :: !Text
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data SendDiagnosticInterrupt = SendDiagnosticInterrupt'{_sdiDryRun
+                                                        :: !(Maybe Bool),
+                                                        _sdiInstanceId :: !Text}
+                                 deriving (Eq, Read, Show, Data, Typeable,
+                                           Generic)
 
 -- | Creates a value of 'SendDiagnosticInterrupt' with the minimum fields required to make a request.
 --
@@ -67,9 +64,9 @@ data SendDiagnosticInterrupt =
 sendDiagnosticInterrupt
     :: Text -- ^ 'sdiInstanceId'
     -> SendDiagnosticInterrupt
-sendDiagnosticInterrupt pInstanceId_ =
-  SendDiagnosticInterrupt' {_sdiDryRun = Nothing, _sdiInstanceId = pInstanceId_}
-
+sendDiagnosticInterrupt pInstanceId_
+  = SendDiagnosticInterrupt'{_sdiDryRun = Nothing,
+                             _sdiInstanceId = pInstanceId_}
 
 -- | Checks whether you have the required permissions for the action, without actually making the request, and provides an error response. If you have the required permissions, the error response is @DryRunOperation@ . Otherwise, it is @UnauthorizedOperation@ .
 sdiDryRun :: Lens' SendDiagnosticInterrupt (Maybe Bool)
@@ -106,16 +103,15 @@ instance ToQuery SendDiagnosticInterrupt where
                "InstanceId" =: _sdiInstanceId]
 
 -- | /See:/ 'sendDiagnosticInterruptResponse' smart constructor.
-data SendDiagnosticInterruptResponse =
-  SendDiagnosticInterruptResponse'
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data SendDiagnosticInterruptResponse = SendDiagnosticInterruptResponse'
+                                         deriving (Eq, Read, Show, Data,
+                                                   Typeable, Generic)
 
 -- | Creates a value of 'SendDiagnosticInterruptResponse' with the minimum fields required to make a request.
 --
 sendDiagnosticInterruptResponse
     :: SendDiagnosticInterruptResponse
-sendDiagnosticInterruptResponse = SendDiagnosticInterruptResponse'
-
+sendDiagnosticInterruptResponse
+  = SendDiagnosticInterruptResponse'
 
 instance NFData SendDiagnosticInterruptResponse where

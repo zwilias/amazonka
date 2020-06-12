@@ -38,20 +38,16 @@ module Network.AWS.IAM.DeleteUserPolicy
     ) where
 
 import Network.AWS.IAM.Types
-import Network.AWS.IAM.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 
 -- | /See:/ 'deleteUserPolicy' smart constructor.
-data DeleteUserPolicy =
-  DeleteUserPolicy'
-    { _dupUserName   :: !Text
-    , _dupPolicyName :: !Text
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data DeleteUserPolicy = DeleteUserPolicy'{_dupUserName
+                                          :: !Text,
+                                          _dupPolicyName :: !Text}
+                          deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'DeleteUserPolicy' with the minimum fields required to make a request.
 --
@@ -64,9 +60,9 @@ deleteUserPolicy
     :: Text -- ^ 'dupUserName'
     -> Text -- ^ 'dupPolicyName'
     -> DeleteUserPolicy
-deleteUserPolicy pUserName_ pPolicyName_ =
-  DeleteUserPolicy' {_dupUserName = pUserName_, _dupPolicyName = pPolicyName_}
-
+deleteUserPolicy pUserName_ pPolicyName_
+  = DeleteUserPolicy'{_dupUserName = pUserName_,
+                      _dupPolicyName = pPolicyName_}
 
 -- | The name (friendly name, not ARN) identifying the user that the policy is embedded in. This parameter allows (per its <http://wikipedia.org/wiki/regex regex pattern> ) a string of characters consisting of upper and lowercase alphanumeric characters with no spaces. You can also include any of the following characters: _+=,.@-
 dupUserName :: Lens' DeleteUserPolicy Text
@@ -100,16 +96,14 @@ instance ToQuery DeleteUserPolicy where
                "PolicyName" =: _dupPolicyName]
 
 -- | /See:/ 'deleteUserPolicyResponse' smart constructor.
-data DeleteUserPolicyResponse =
-  DeleteUserPolicyResponse'
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data DeleteUserPolicyResponse = DeleteUserPolicyResponse'
+                                  deriving (Eq, Read, Show, Data, Typeable,
+                                            Generic)
 
 -- | Creates a value of 'DeleteUserPolicyResponse' with the minimum fields required to make a request.
 --
 deleteUserPolicyResponse
     :: DeleteUserPolicyResponse
 deleteUserPolicyResponse = DeleteUserPolicyResponse'
-
 
 instance NFData DeleteUserPolicyResponse where

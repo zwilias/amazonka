@@ -48,27 +48,30 @@ module Network.AWS.ELBv2.ModifyTargetGroup
     ) where
 
 import Network.AWS.ELBv2.Types
-import Network.AWS.ELBv2.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 
 -- | /See:/ 'modifyTargetGroup' smart constructor.
-data ModifyTargetGroup =
-  ModifyTargetGroup'
-    { _mtgMatcher                    :: !(Maybe Matcher)
-    , _mtgHealthCheckPath            :: !(Maybe Text)
-    , _mtgUnhealthyThresholdCount    :: !(Maybe Nat)
-    , _mtgHealthCheckIntervalSeconds :: !(Maybe Nat)
-    , _mtgHealthyThresholdCount      :: !(Maybe Nat)
-    , _mtgHealthCheckProtocol        :: !(Maybe ProtocolEnum)
-    , _mtgHealthCheckTimeoutSeconds  :: !(Maybe Nat)
-    , _mtgHealthCheckPort            :: !(Maybe Text)
-    , _mtgTargetGroupARN             :: !Text
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data ModifyTargetGroup = ModifyTargetGroup'{_mtgMatcher
+                                            :: !(Maybe Matcher),
+                                            _mtgHealthCheckPath ::
+                                            !(Maybe Text),
+                                            _mtgUnhealthyThresholdCount ::
+                                            !(Maybe Nat),
+                                            _mtgHealthCheckIntervalSeconds ::
+                                            !(Maybe Nat),
+                                            _mtgHealthyThresholdCount ::
+                                            !(Maybe Nat),
+                                            _mtgHealthCheckProtocol ::
+                                            !(Maybe ProtocolEnum),
+                                            _mtgHealthCheckTimeoutSeconds ::
+                                            !(Maybe Nat),
+                                            _mtgHealthCheckPort ::
+                                            !(Maybe Text),
+                                            _mtgTargetGroupARN :: !Text}
+                           deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'ModifyTargetGroup' with the minimum fields required to make a request.
 --
@@ -94,19 +97,16 @@ data ModifyTargetGroup =
 modifyTargetGroup
     :: Text -- ^ 'mtgTargetGroupARN'
     -> ModifyTargetGroup
-modifyTargetGroup pTargetGroupARN_ =
-  ModifyTargetGroup'
-    { _mtgMatcher = Nothing
-    , _mtgHealthCheckPath = Nothing
-    , _mtgUnhealthyThresholdCount = Nothing
-    , _mtgHealthCheckIntervalSeconds = Nothing
-    , _mtgHealthyThresholdCount = Nothing
-    , _mtgHealthCheckProtocol = Nothing
-    , _mtgHealthCheckTimeoutSeconds = Nothing
-    , _mtgHealthCheckPort = Nothing
-    , _mtgTargetGroupARN = pTargetGroupARN_
-    }
-
+modifyTargetGroup pTargetGroupARN_
+  = ModifyTargetGroup'{_mtgMatcher = Nothing,
+                       _mtgHealthCheckPath = Nothing,
+                       _mtgUnhealthyThresholdCount = Nothing,
+                       _mtgHealthCheckIntervalSeconds = Nothing,
+                       _mtgHealthyThresholdCount = Nothing,
+                       _mtgHealthCheckProtocol = Nothing,
+                       _mtgHealthCheckTimeoutSeconds = Nothing,
+                       _mtgHealthCheckPort = Nothing,
+                       _mtgTargetGroupARN = pTargetGroupARN_}
 
 -- | [HTTP/HTTPS health checks] The HTTP codes to use when checking for a successful response from a target.
 mtgMatcher :: Lens' ModifyTargetGroup (Maybe Matcher)
@@ -184,13 +184,14 @@ instance ToQuery ModifyTargetGroup where
                "TargetGroupArn" =: _mtgTargetGroupARN]
 
 -- | /See:/ 'modifyTargetGroupResponse' smart constructor.
-data ModifyTargetGroupResponse =
-  ModifyTargetGroupResponse'
-    { _mtgrsTargetGroups   :: !(Maybe [TargetGroup])
-    , _mtgrsResponseStatus :: !Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data ModifyTargetGroupResponse = ModifyTargetGroupResponse'{_mtgrsTargetGroups
+                                                            ::
+                                                            !(Maybe
+                                                                [TargetGroup]),
+                                                            _mtgrsResponseStatus
+                                                            :: !Int}
+                                   deriving (Eq, Read, Show, Data, Typeable,
+                                             Generic)
 
 -- | Creates a value of 'ModifyTargetGroupResponse' with the minimum fields required to make a request.
 --
@@ -202,10 +203,10 @@ data ModifyTargetGroupResponse =
 modifyTargetGroupResponse
     :: Int -- ^ 'mtgrsResponseStatus'
     -> ModifyTargetGroupResponse
-modifyTargetGroupResponse pResponseStatus_ =
-  ModifyTargetGroupResponse'
-    {_mtgrsTargetGroups = Nothing, _mtgrsResponseStatus = pResponseStatus_}
-
+modifyTargetGroupResponse pResponseStatus_
+  = ModifyTargetGroupResponse'{_mtgrsTargetGroups =
+                                 Nothing,
+                               _mtgrsResponseStatus = pResponseStatus_}
 
 -- | Information about the target group.
 mtgrsTargetGroups :: Lens' ModifyTargetGroupResponse [TargetGroup]

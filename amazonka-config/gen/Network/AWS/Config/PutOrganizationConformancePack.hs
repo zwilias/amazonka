@@ -46,25 +46,38 @@ module Network.AWS.Config.PutOrganizationConformancePack
     ) where
 
 import Network.AWS.Config.Types
-import Network.AWS.Config.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 
 -- | /See:/ 'putOrganizationConformancePack' smart constructor.
-data PutOrganizationConformancePack =
-  PutOrganizationConformancePack'
-    { _pocpDeliveryS3KeyPrefix :: !(Maybe Text)
-    , _pocpTemplateS3URI :: !(Maybe Text)
-    , _pocpConformancePackInputParameters :: !(Maybe [ConformancePackInputParameter])
-    , _pocpExcludedAccounts :: !(Maybe [Text])
-    , _pocpTemplateBody :: !(Maybe Text)
-    , _pocpOrganizationConformancePackName :: !Text
-    , _pocpDeliveryS3Bucket :: !Text
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data PutOrganizationConformancePack = PutOrganizationConformancePack'{_pocpDeliveryS3KeyPrefix
+                                                                      ::
+                                                                      !(Maybe
+                                                                          Text),
+                                                                      _pocpTemplateS3URI
+                                                                      ::
+                                                                      !(Maybe
+                                                                          Text),
+                                                                      _pocpConformancePackInputParameters
+                                                                      ::
+                                                                      !(Maybe
+                                                                          [ConformancePackInputParameter]),
+                                                                      _pocpExcludedAccounts
+                                                                      ::
+                                                                      !(Maybe
+                                                                          [Text]),
+                                                                      _pocpTemplateBody
+                                                                      ::
+                                                                      !(Maybe
+                                                                          Text),
+                                                                      _pocpOrganizationConformancePackName
+                                                                      :: !Text,
+                                                                      _pocpDeliveryS3Bucket
+                                                                      :: !Text}
+                                        deriving (Eq, Read, Show, Data,
+                                                  Typeable, Generic)
 
 -- | Creates a value of 'PutOrganizationConformancePack' with the minimum fields required to make a request.
 --
@@ -87,17 +100,18 @@ putOrganizationConformancePack
     :: Text -- ^ 'pocpOrganizationConformancePackName'
     -> Text -- ^ 'pocpDeliveryS3Bucket'
     -> PutOrganizationConformancePack
-putOrganizationConformancePack pOrganizationConformancePackName_ pDeliveryS3Bucket_ =
-  PutOrganizationConformancePack'
-    { _pocpDeliveryS3KeyPrefix = Nothing
-    , _pocpTemplateS3URI = Nothing
-    , _pocpConformancePackInputParameters = Nothing
-    , _pocpExcludedAccounts = Nothing
-    , _pocpTemplateBody = Nothing
-    , _pocpOrganizationConformancePackName = pOrganizationConformancePackName_
-    , _pocpDeliveryS3Bucket = pDeliveryS3Bucket_
-    }
-
+putOrganizationConformancePack
+  pOrganizationConformancePackName_ pDeliveryS3Bucket_
+  = PutOrganizationConformancePack'{_pocpDeliveryS3KeyPrefix
+                                      = Nothing,
+                                    _pocpTemplateS3URI = Nothing,
+                                    _pocpConformancePackInputParameters =
+                                      Nothing,
+                                    _pocpExcludedAccounts = Nothing,
+                                    _pocpTemplateBody = Nothing,
+                                    _pocpOrganizationConformancePackName =
+                                      pOrganizationConformancePackName_,
+                                    _pocpDeliveryS3Bucket = pDeliveryS3Bucket_}
 
 -- | The prefix for the Amazon S3 bucket.
 pocpDeliveryS3KeyPrefix :: Lens' PutOrganizationConformancePack (Maybe Text)
@@ -178,13 +192,15 @@ instance ToQuery PutOrganizationConformancePack where
         toQuery = const mempty
 
 -- | /See:/ 'putOrganizationConformancePackResponse' smart constructor.
-data PutOrganizationConformancePackResponse =
-  PutOrganizationConformancePackResponse'
-    { _pocprsOrganizationConformancePackARN :: !(Maybe Text)
-    , _pocprsResponseStatus                 :: !Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data PutOrganizationConformancePackResponse = PutOrganizationConformancePackResponse'{_pocprsOrganizationConformancePackARN
+                                                                                      ::
+                                                                                      !(Maybe
+                                                                                          Text),
+                                                                                      _pocprsResponseStatus
+                                                                                      ::
+                                                                                      !Int}
+                                                deriving (Eq, Read, Show, Data,
+                                                          Typeable, Generic)
 
 -- | Creates a value of 'PutOrganizationConformancePackResponse' with the minimum fields required to make a request.
 --
@@ -196,12 +212,12 @@ data PutOrganizationConformancePackResponse =
 putOrganizationConformancePackResponse
     :: Int -- ^ 'pocprsResponseStatus'
     -> PutOrganizationConformancePackResponse
-putOrganizationConformancePackResponse pResponseStatus_ =
-  PutOrganizationConformancePackResponse'
-    { _pocprsOrganizationConformancePackARN = Nothing
-    , _pocprsResponseStatus = pResponseStatus_
-    }
-
+putOrganizationConformancePackResponse
+  pResponseStatus_
+  = PutOrganizationConformancePackResponse'{_pocprsOrganizationConformancePackARN
+                                              = Nothing,
+                                            _pocprsResponseStatus =
+                                              pResponseStatus_}
 
 -- | ARN of the organization conformance pack.
 pocprsOrganizationConformancePackARN :: Lens' PutOrganizationConformancePackResponse (Maybe Text)

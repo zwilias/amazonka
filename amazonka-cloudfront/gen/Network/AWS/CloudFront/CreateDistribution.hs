@@ -42,7 +42,6 @@ module Network.AWS.CloudFront.CreateDistribution
     ) where
 
 import Network.AWS.CloudFront.Types
-import Network.AWS.CloudFront.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.Request
@@ -53,12 +52,9 @@ import Network.AWS.Response
 --
 --
 -- /See:/ 'createDistribution' smart constructor.
-newtype CreateDistribution =
-  CreateDistribution'
-    { _cdDistributionConfig :: DistributionConfig
-    }
-  deriving (Eq, Show, Data, Typeable, Generic)
-
+newtype CreateDistribution = CreateDistribution'{_cdDistributionConfig
+                                                 :: DistributionConfig}
+                               deriving (Eq, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'CreateDistribution' with the minimum fields required to make a request.
 --
@@ -68,9 +64,9 @@ newtype CreateDistribution =
 createDistribution
     :: DistributionConfig -- ^ 'cdDistributionConfig'
     -> CreateDistribution
-createDistribution pDistributionConfig_ =
-  CreateDistribution' {_cdDistributionConfig = pDistributionConfig_}
-
+createDistribution pDistributionConfig_
+  = CreateDistribution'{_cdDistributionConfig =
+                          pDistributionConfig_}
 
 -- | The distribution's configuration information.
 cdDistributionConfig :: Lens' CreateDistribution DistributionConfig
@@ -113,15 +109,17 @@ instance ToQuery CreateDistribution where
 --
 --
 -- /See:/ 'createDistributionResponse' smart constructor.
-data CreateDistributionResponse =
-  CreateDistributionResponse'
-    { _cdrsETag           :: !(Maybe Text)
-    , _cdrsDistribution   :: !(Maybe Distribution)
-    , _cdrsLocation       :: !(Maybe Text)
-    , _cdrsResponseStatus :: !Int
-    }
-  deriving (Eq, Show, Data, Typeable, Generic)
-
+data CreateDistributionResponse = CreateDistributionResponse'{_cdrsETag
+                                                              :: !(Maybe Text),
+                                                              _cdrsDistribution
+                                                              ::
+                                                              !(Maybe
+                                                                  Distribution),
+                                                              _cdrsLocation ::
+                                                              !(Maybe Text),
+                                                              _cdrsResponseStatus
+                                                              :: !Int}
+                                    deriving (Eq, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'CreateDistributionResponse' with the minimum fields required to make a request.
 --
@@ -137,14 +135,11 @@ data CreateDistributionResponse =
 createDistributionResponse
     :: Int -- ^ 'cdrsResponseStatus'
     -> CreateDistributionResponse
-createDistributionResponse pResponseStatus_ =
-  CreateDistributionResponse'
-    { _cdrsETag = Nothing
-    , _cdrsDistribution = Nothing
-    , _cdrsLocation = Nothing
-    , _cdrsResponseStatus = pResponseStatus_
-    }
-
+createDistributionResponse pResponseStatus_
+  = CreateDistributionResponse'{_cdrsETag = Nothing,
+                                _cdrsDistribution = Nothing,
+                                _cdrsLocation = Nothing,
+                                _cdrsResponseStatus = pResponseStatus_}
 
 -- | The current version of the distribution created.
 cdrsETag :: Lens' CreateDistributionResponse (Maybe Text)

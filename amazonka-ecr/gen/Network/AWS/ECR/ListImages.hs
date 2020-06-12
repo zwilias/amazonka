@@ -47,7 +47,6 @@ module Network.AWS.ECR.ListImages
     ) where
 
 import Network.AWS.ECR.Types
-import Network.AWS.ECR.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Pager
 import Network.AWS.Prelude
@@ -55,16 +54,13 @@ import Network.AWS.Request
 import Network.AWS.Response
 
 -- | /See:/ 'listImages' smart constructor.
-data ListImages =
-  ListImages'
-    { _liRegistryId     :: !(Maybe Text)
-    , _liNextToken      :: !(Maybe Text)
-    , _liFilter         :: !(Maybe ListImagesFilter)
-    , _liMaxResults     :: !(Maybe Nat)
-    , _liRepositoryName :: !Text
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data ListImages = ListImages'{_liRegistryId ::
+                              !(Maybe Text),
+                              _liNextToken :: !(Maybe Text),
+                              _liFilter :: !(Maybe ListImagesFilter),
+                              _liMaxResults :: !(Maybe Nat),
+                              _liRepositoryName :: !Text}
+                    deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'ListImages' with the minimum fields required to make a request.
 --
@@ -82,15 +78,11 @@ data ListImages =
 listImages
     :: Text -- ^ 'liRepositoryName'
     -> ListImages
-listImages pRepositoryName_ =
-  ListImages'
-    { _liRegistryId = Nothing
-    , _liNextToken = Nothing
-    , _liFilter = Nothing
-    , _liMaxResults = Nothing
-    , _liRepositoryName = pRepositoryName_
-    }
-
+listImages pRepositoryName_
+  = ListImages'{_liRegistryId = Nothing,
+                _liNextToken = Nothing, _liFilter = Nothing,
+                _liMaxResults = Nothing,
+                _liRepositoryName = pRepositoryName_}
 
 -- | The AWS account ID associated with the registry that contains the repository in which to list images. If you do not specify a registry, the default registry is assumed.
 liRegistryId :: Lens' ListImages (Maybe Text)
@@ -160,14 +152,11 @@ instance ToQuery ListImages where
         toQuery = const mempty
 
 -- | /See:/ 'listImagesResponse' smart constructor.
-data ListImagesResponse =
-  ListImagesResponse'
-    { _lirsImageIds       :: !(Maybe [ImageIdentifier])
-    , _lirsNextToken      :: !(Maybe Text)
-    , _lirsResponseStatus :: !Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data ListImagesResponse = ListImagesResponse'{_lirsImageIds
+                                              :: !(Maybe [ImageIdentifier]),
+                                              _lirsNextToken :: !(Maybe Text),
+                                              _lirsResponseStatus :: !Int}
+                            deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'ListImagesResponse' with the minimum fields required to make a request.
 --
@@ -181,13 +170,10 @@ data ListImagesResponse =
 listImagesResponse
     :: Int -- ^ 'lirsResponseStatus'
     -> ListImagesResponse
-listImagesResponse pResponseStatus_ =
-  ListImagesResponse'
-    { _lirsImageIds = Nothing
-    , _lirsNextToken = Nothing
-    , _lirsResponseStatus = pResponseStatus_
-    }
-
+listImagesResponse pResponseStatus_
+  = ListImagesResponse'{_lirsImageIds = Nothing,
+                        _lirsNextToken = Nothing,
+                        _lirsResponseStatus = pResponseStatus_}
 
 -- | The list of image IDs for the requested repository.
 lirsImageIds :: Lens' ListImagesResponse [ImageIdentifier]

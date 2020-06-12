@@ -76,154 +76,154 @@ module Network.AWS.Comprehend
     -- * Operations
     -- $operations
 
-    -- ** BatchDetectSentiment
+    -- ** BatchDetectSentiment 
     , module Network.AWS.Comprehend.BatchDetectSentiment
 
-    -- ** DeleteEntityRecognizer
+    -- ** DeleteEntityRecognizer 
     , module Network.AWS.Comprehend.DeleteEntityRecognizer
 
-    -- ** DescribeKeyPhrasesDetectionJob
+    -- ** DescribeKeyPhrasesDetectionJob 
     , module Network.AWS.Comprehend.DescribeKeyPhrasesDetectionJob
 
     -- ** ListEntitiesDetectionJobs (Paginated)
     , module Network.AWS.Comprehend.ListEntitiesDetectionJobs
 
-    -- ** CreateEndpoint
+    -- ** CreateEndpoint 
     , module Network.AWS.Comprehend.CreateEndpoint
 
-    -- ** StartSentimentDetectionJob
+    -- ** StartSentimentDetectionJob 
     , module Network.AWS.Comprehend.StartSentimentDetectionJob
 
-    -- ** BatchDetectSyntax
+    -- ** BatchDetectSyntax 
     , module Network.AWS.Comprehend.BatchDetectSyntax
 
-    -- ** StartTopicsDetectionJob
+    -- ** StartTopicsDetectionJob 
     , module Network.AWS.Comprehend.StartTopicsDetectionJob
 
-    -- ** DeleteEndpoint
+    -- ** DeleteEndpoint 
     , module Network.AWS.Comprehend.DeleteEndpoint
 
-    -- ** UpdateEndpoint
+    -- ** UpdateEndpoint 
     , module Network.AWS.Comprehend.UpdateEndpoint
 
-    -- ** ListTagsForResource
+    -- ** ListTagsForResource 
     , module Network.AWS.Comprehend.ListTagsForResource
 
-    -- ** BatchDetectKeyPhrases
+    -- ** BatchDetectKeyPhrases 
     , module Network.AWS.Comprehend.BatchDetectKeyPhrases
 
-    -- ** DescribeSentimentDetectionJob
+    -- ** DescribeSentimentDetectionJob 
     , module Network.AWS.Comprehend.DescribeSentimentDetectionJob
 
-    -- ** StartEntitiesDetectionJob
+    -- ** StartEntitiesDetectionJob 
     , module Network.AWS.Comprehend.StartEntitiesDetectionJob
 
-    -- ** DescribeEntityRecognizer
+    -- ** DescribeEntityRecognizer 
     , module Network.AWS.Comprehend.DescribeEntityRecognizer
 
-    -- ** DetectSentiment
+    -- ** DetectSentiment 
     , module Network.AWS.Comprehend.DetectSentiment
 
-    -- ** StartDominantLanguageDetectionJob
+    -- ** StartDominantLanguageDetectionJob 
     , module Network.AWS.Comprehend.StartDominantLanguageDetectionJob
 
-    -- ** StopTrainingDocumentClassifier
+    -- ** StopTrainingDocumentClassifier 
     , module Network.AWS.Comprehend.StopTrainingDocumentClassifier
 
-    -- ** DescribeDocumentClassificationJob
+    -- ** DescribeDocumentClassificationJob 
     , module Network.AWS.Comprehend.DescribeDocumentClassificationJob
 
-    -- ** BatchDetectEntities
+    -- ** BatchDetectEntities 
     , module Network.AWS.Comprehend.BatchDetectEntities
 
-    -- ** CreateEntityRecognizer
+    -- ** CreateEntityRecognizer 
     , module Network.AWS.Comprehend.CreateEntityRecognizer
 
-    -- ** StopKeyPhrasesDetectionJob
+    -- ** StopKeyPhrasesDetectionJob 
     , module Network.AWS.Comprehend.StopKeyPhrasesDetectionJob
 
-    -- ** CreateDocumentClassifier
+    -- ** CreateDocumentClassifier 
     , module Network.AWS.Comprehend.CreateDocumentClassifier
 
     -- ** ListEntityRecognizers (Paginated)
     , module Network.AWS.Comprehend.ListEntityRecognizers
 
-    -- ** StopSentimentDetectionJob
+    -- ** StopSentimentDetectionJob 
     , module Network.AWS.Comprehend.StopSentimentDetectionJob
 
-    -- ** DetectDominantLanguage
+    -- ** DetectDominantLanguage 
     , module Network.AWS.Comprehend.DetectDominantLanguage
 
-    -- ** ClassifyDocument
+    -- ** ClassifyDocument 
     , module Network.AWS.Comprehend.ClassifyDocument
 
-    -- ** DescribeTopicsDetectionJob
+    -- ** DescribeTopicsDetectionJob 
     , module Network.AWS.Comprehend.DescribeTopicsDetectionJob
 
     -- ** ListDocumentClassificationJobs (Paginated)
     , module Network.AWS.Comprehend.ListDocumentClassificationJobs
 
-    -- ** ListEndpoints
+    -- ** ListEndpoints 
     , module Network.AWS.Comprehend.ListEndpoints
 
-    -- ** DetectEntities
+    -- ** DetectEntities 
     , module Network.AWS.Comprehend.DetectEntities
 
-    -- ** DescribeDocumentClassifier
+    -- ** DescribeDocumentClassifier 
     , module Network.AWS.Comprehend.DescribeDocumentClassifier
 
-    -- ** DescribeDominantLanguageDetectionJob
+    -- ** DescribeDominantLanguageDetectionJob 
     , module Network.AWS.Comprehend.DescribeDominantLanguageDetectionJob
 
-    -- ** StopEntitiesDetectionJob
+    -- ** StopEntitiesDetectionJob 
     , module Network.AWS.Comprehend.StopEntitiesDetectionJob
 
-    -- ** StopTrainingEntityRecognizer
+    -- ** StopTrainingEntityRecognizer 
     , module Network.AWS.Comprehend.StopTrainingEntityRecognizer
 
     -- ** ListKeyPhrasesDetectionJobs (Paginated)
     , module Network.AWS.Comprehend.ListKeyPhrasesDetectionJobs
 
-    -- ** DescribeEntitiesDetectionJob
+    -- ** DescribeEntitiesDetectionJob 
     , module Network.AWS.Comprehend.DescribeEntitiesDetectionJob
 
-    -- ** StopDominantLanguageDetectionJob
+    -- ** StopDominantLanguageDetectionJob 
     , module Network.AWS.Comprehend.StopDominantLanguageDetectionJob
 
-    -- ** TagResource
+    -- ** TagResource 
     , module Network.AWS.Comprehend.TagResource
 
     -- ** ListTopicsDetectionJobs (Paginated)
     , module Network.AWS.Comprehend.ListTopicsDetectionJobs
 
-    -- ** UntagResource
+    -- ** UntagResource 
     , module Network.AWS.Comprehend.UntagResource
 
-    -- ** BatchDetectDominantLanguage
+    -- ** BatchDetectDominantLanguage 
     , module Network.AWS.Comprehend.BatchDetectDominantLanguage
 
-    -- ** StartDocumentClassificationJob
+    -- ** StartDocumentClassificationJob 
     , module Network.AWS.Comprehend.StartDocumentClassificationJob
 
-    -- ** DetectKeyPhrases
+    -- ** DetectKeyPhrases 
     , module Network.AWS.Comprehend.DetectKeyPhrases
 
-    -- ** DetectSyntax
+    -- ** DetectSyntax 
     , module Network.AWS.Comprehend.DetectSyntax
 
-    -- ** DescribeEndpoint
+    -- ** DescribeEndpoint 
     , module Network.AWS.Comprehend.DescribeEndpoint
 
     -- ** ListSentimentDetectionJobs (Paginated)
     , module Network.AWS.Comprehend.ListSentimentDetectionJobs
 
-    -- ** DeleteDocumentClassifier
+    -- ** DeleteDocumentClassifier 
     , module Network.AWS.Comprehend.DeleteDocumentClassifier
 
     -- ** ListDominantLanguageDetectionJobs (Paginated)
     , module Network.AWS.Comprehend.ListDominantLanguageDetectionJobs
 
-    -- ** StartKeyPhrasesDetectionJob
+    -- ** StartKeyPhrasesDetectionJob 
     , module Network.AWS.Comprehend.StartKeyPhrasesDetectionJob
 
     -- ** ListDocumentClassifiers (Paginated)

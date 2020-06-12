@@ -38,19 +38,18 @@ module Network.AWS.Pinpoint.UpdateAPNSVoipSandboxChannel
 
 import Network.AWS.Lens
 import Network.AWS.Pinpoint.Types
-import Network.AWS.Pinpoint.Types.Product
 import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 
 -- | /See:/ 'updateAPNSVoipSandboxChannel' smart constructor.
-data UpdateAPNSVoipSandboxChannel =
-  UpdateAPNSVoipSandboxChannel'
-    { _uavscApplicationId                 :: !Text
-    , _uavscAPNSVoipSandboxChannelRequest :: !APNSVoipSandboxChannelRequest
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data UpdateAPNSVoipSandboxChannel = UpdateAPNSVoipSandboxChannel'{_uavscApplicationId
+                                                                  :: !Text,
+                                                                  _uavscAPNSVoipSandboxChannelRequest
+                                                                  ::
+                                                                  !APNSVoipSandboxChannelRequest}
+                                      deriving (Eq, Read, Show, Data, Typeable,
+                                                Generic)
 
 -- | Creates a value of 'UpdateAPNSVoipSandboxChannel' with the minimum fields required to make a request.
 --
@@ -63,12 +62,12 @@ updateAPNSVoipSandboxChannel
     :: Text -- ^ 'uavscApplicationId'
     -> APNSVoipSandboxChannelRequest -- ^ 'uavscAPNSVoipSandboxChannelRequest'
     -> UpdateAPNSVoipSandboxChannel
-updateAPNSVoipSandboxChannel pApplicationId_ pAPNSVoipSandboxChannelRequest_ =
-  UpdateAPNSVoipSandboxChannel'
-    { _uavscApplicationId = pApplicationId_
-    , _uavscAPNSVoipSandboxChannelRequest = pAPNSVoipSandboxChannelRequest_
-    }
-
+updateAPNSVoipSandboxChannel pApplicationId_
+  pAPNSVoipSandboxChannelRequest_
+  = UpdateAPNSVoipSandboxChannel'{_uavscApplicationId =
+                                    pApplicationId_,
+                                  _uavscAPNSVoipSandboxChannelRequest =
+                                    pAPNSVoipSandboxChannelRequest_}
 
 -- | Undocumented member.
 uavscApplicationId :: Lens' UpdateAPNSVoipSandboxChannel Text
@@ -118,13 +117,14 @@ instance ToQuery UpdateAPNSVoipSandboxChannel where
         toQuery = const mempty
 
 -- | /See:/ 'updateAPNSVoipSandboxChannelResponse' smart constructor.
-data UpdateAPNSVoipSandboxChannelResponse =
-  UpdateAPNSVoipSandboxChannelResponse'
-    { _uavscrsResponseStatus                 :: !Int
-    , _uavscrsAPNSVoipSandboxChannelResponse :: !APNSVoipSandboxChannelResponse
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data UpdateAPNSVoipSandboxChannelResponse = UpdateAPNSVoipSandboxChannelResponse'{_uavscrsResponseStatus
+                                                                                  ::
+                                                                                  !Int,
+                                                                                  _uavscrsAPNSVoipSandboxChannelResponse
+                                                                                  ::
+                                                                                  !APNSVoipSandboxChannelResponse}
+                                              deriving (Eq, Read, Show, Data,
+                                                        Typeable, Generic)
 
 -- | Creates a value of 'UpdateAPNSVoipSandboxChannelResponse' with the minimum fields required to make a request.
 --
@@ -137,12 +137,12 @@ updateAPNSVoipSandboxChannelResponse
     :: Int -- ^ 'uavscrsResponseStatus'
     -> APNSVoipSandboxChannelResponse -- ^ 'uavscrsAPNSVoipSandboxChannelResponse'
     -> UpdateAPNSVoipSandboxChannelResponse
-updateAPNSVoipSandboxChannelResponse pResponseStatus_ pAPNSVoipSandboxChannelResponse_ =
-  UpdateAPNSVoipSandboxChannelResponse'
-    { _uavscrsResponseStatus = pResponseStatus_
-    , _uavscrsAPNSVoipSandboxChannelResponse = pAPNSVoipSandboxChannelResponse_
-    }
-
+updateAPNSVoipSandboxChannelResponse pResponseStatus_
+  pAPNSVoipSandboxChannelResponse_
+  = UpdateAPNSVoipSandboxChannelResponse'{_uavscrsResponseStatus
+                                            = pResponseStatus_,
+                                          _uavscrsAPNSVoipSandboxChannelResponse
+                                            = pAPNSVoipSandboxChannelResponse_}
 
 -- | -- | The response status code.
 uavscrsResponseStatus :: Lens' UpdateAPNSVoipSandboxChannelResponse Int

@@ -42,7 +42,6 @@ module Network.AWS.CognitoIdentity.GetIdentityPoolRoles
     ) where
 
 import Network.AWS.CognitoIdentity.Types
-import Network.AWS.CognitoIdentity.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.Request
@@ -53,12 +52,10 @@ import Network.AWS.Response
 --
 --
 -- /See:/ 'getIdentityPoolRoles' smart constructor.
-newtype GetIdentityPoolRoles =
-  GetIdentityPoolRoles'
-    { _giprIdentityPoolId :: Text
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+newtype GetIdentityPoolRoles = GetIdentityPoolRoles'{_giprIdentityPoolId
+                                                     :: Text}
+                                 deriving (Eq, Read, Show, Data, Typeable,
+                                           Generic)
 
 -- | Creates a value of 'GetIdentityPoolRoles' with the minimum fields required to make a request.
 --
@@ -68,9 +65,9 @@ newtype GetIdentityPoolRoles =
 getIdentityPoolRoles
     :: Text -- ^ 'giprIdentityPoolId'
     -> GetIdentityPoolRoles
-getIdentityPoolRoles pIdentityPoolId_ =
-  GetIdentityPoolRoles' {_giprIdentityPoolId = pIdentityPoolId_}
-
+getIdentityPoolRoles pIdentityPoolId_
+  = GetIdentityPoolRoles'{_giprIdentityPoolId =
+                            pIdentityPoolId_}
 
 -- | An identity pool ID in the format REGION:GUID.
 giprIdentityPoolId :: Lens' GetIdentityPoolRoles Text
@@ -120,15 +117,23 @@ instance ToQuery GetIdentityPoolRoles where
 --
 --
 -- /See:/ 'getIdentityPoolRolesResponse' smart constructor.
-data GetIdentityPoolRolesResponse =
-  GetIdentityPoolRolesResponse'
-    { _giprrsRoles          :: !(Maybe (Map Text Text))
-    , _giprrsIdentityPoolId :: !(Maybe Text)
-    , _giprrsRoleMappings   :: !(Maybe (Map Text RoleMapping))
-    , _giprrsResponseStatus :: !Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data GetIdentityPoolRolesResponse = GetIdentityPoolRolesResponse'{_giprrsRoles
+                                                                  ::
+                                                                  !(Maybe
+                                                                      (Map Text
+                                                                         Text)),
+                                                                  _giprrsIdentityPoolId
+                                                                  ::
+                                                                  !(Maybe Text),
+                                                                  _giprrsRoleMappings
+                                                                  ::
+                                                                  !(Maybe
+                                                                      (Map Text
+                                                                         RoleMapping)),
+                                                                  _giprrsResponseStatus
+                                                                  :: !Int}
+                                      deriving (Eq, Read, Show, Data, Typeable,
+                                                Generic)
 
 -- | Creates a value of 'GetIdentityPoolRolesResponse' with the minimum fields required to make a request.
 --
@@ -144,14 +149,12 @@ data GetIdentityPoolRolesResponse =
 getIdentityPoolRolesResponse
     :: Int -- ^ 'giprrsResponseStatus'
     -> GetIdentityPoolRolesResponse
-getIdentityPoolRolesResponse pResponseStatus_ =
-  GetIdentityPoolRolesResponse'
-    { _giprrsRoles = Nothing
-    , _giprrsIdentityPoolId = Nothing
-    , _giprrsRoleMappings = Nothing
-    , _giprrsResponseStatus = pResponseStatus_
-    }
-
+getIdentityPoolRolesResponse pResponseStatus_
+  = GetIdentityPoolRolesResponse'{_giprrsRoles =
+                                    Nothing,
+                                  _giprrsIdentityPoolId = Nothing,
+                                  _giprrsRoleMappings = Nothing,
+                                  _giprrsResponseStatus = pResponseStatus_}
 
 -- | The map of roles associated with this pool. Currently only authenticated and unauthenticated roles are supported.
 giprrsRoles :: Lens' GetIdentityPoolRolesResponse (HashMap Text Text)

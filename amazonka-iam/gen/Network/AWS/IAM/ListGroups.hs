@@ -46,7 +46,6 @@ module Network.AWS.IAM.ListGroups
     ) where
 
 import Network.AWS.IAM.Types
-import Network.AWS.IAM.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Pager
 import Network.AWS.Prelude
@@ -54,14 +53,11 @@ import Network.AWS.Request
 import Network.AWS.Response
 
 -- | /See:/ 'listGroups' smart constructor.
-data ListGroups =
-  ListGroups'
-    { _lgPathPrefix :: !(Maybe Text)
-    , _lgMarker     :: !(Maybe Text)
-    , _lgMaxItems   :: !(Maybe Nat)
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data ListGroups = ListGroups'{_lgPathPrefix ::
+                              !(Maybe Text),
+                              _lgMarker :: !(Maybe Text),
+                              _lgMaxItems :: !(Maybe Nat)}
+                    deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'ListGroups' with the minimum fields required to make a request.
 --
@@ -74,10 +70,9 @@ data ListGroups =
 -- * 'lgMaxItems' - (Optional) Use this only when paginating results to indicate the maximum number of items you want in the response. If additional items exist beyond the maximum you specify, the @IsTruncated@ response element is @true@ . If you do not include this parameter, it defaults to 100. Note that IAM might return fewer results, even when there are more results available. In that case, the @IsTruncated@ response element returns @true@ and @Marker@ contains a value to include in the subsequent call that tells the service where to continue from.
 listGroups
     :: ListGroups
-listGroups =
-  ListGroups'
-    {_lgPathPrefix = Nothing, _lgMarker = Nothing, _lgMaxItems = Nothing}
-
+listGroups
+  = ListGroups'{_lgPathPrefix = Nothing,
+                _lgMarker = Nothing, _lgMaxItems = Nothing}
 
 -- | The path prefix for filtering the results. For example, the prefix @/division_abc/subdivision_xyz/@ gets all groups whose path starts with @/division_abc/subdivision_xyz/@ . This parameter is optional. If it is not included, it defaults to a slash (/), listing all groups. This parameter allows (per its <http://wikipedia.org/wiki/regex regex pattern> ) a string of characters consisting of either a forward slash (/) by itself or a string that must begin and end with forward slashes. In addition, it can contain any ASCII character from the ! (\u0021) through the DEL character (\u007F), including most punctuation characters, digits, and upper and lowercased letters.
 lgPathPrefix :: Lens' ListGroups (Maybe Text)
@@ -129,20 +124,17 @@ instance ToQuery ListGroups where
                "PathPrefix" =: _lgPathPrefix, "Marker" =: _lgMarker,
                "MaxItems" =: _lgMaxItems]
 
--- | Contains the response to a successful 'ListGroups' request.
+-- | Contains the response to a successful 'ListGroups' request. 
 --
 --
 --
 -- /See:/ 'listGroupsResponse' smart constructor.
-data ListGroupsResponse =
-  ListGroupsResponse'
-    { _lgrsMarker         :: !(Maybe Text)
-    , _lgrsIsTruncated    :: !(Maybe Bool)
-    , _lgrsResponseStatus :: !Int
-    , _lgrsGroups         :: ![Group]
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data ListGroupsResponse = ListGroupsResponse'{_lgrsMarker
+                                              :: !(Maybe Text),
+                                              _lgrsIsTruncated :: !(Maybe Bool),
+                                              _lgrsResponseStatus :: !Int,
+                                              _lgrsGroups :: ![Group]}
+                            deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'ListGroupsResponse' with the minimum fields required to make a request.
 --
@@ -158,14 +150,11 @@ data ListGroupsResponse =
 listGroupsResponse
     :: Int -- ^ 'lgrsResponseStatus'
     -> ListGroupsResponse
-listGroupsResponse pResponseStatus_ =
-  ListGroupsResponse'
-    { _lgrsMarker = Nothing
-    , _lgrsIsTruncated = Nothing
-    , _lgrsResponseStatus = pResponseStatus_
-    , _lgrsGroups = mempty
-    }
-
+listGroupsResponse pResponseStatus_
+  = ListGroupsResponse'{_lgrsMarker = Nothing,
+                        _lgrsIsTruncated = Nothing,
+                        _lgrsResponseStatus = pResponseStatus_,
+                        _lgrsGroups = mempty}
 
 -- | When @IsTruncated@ is @true@ , this element is present and contains the value to use for the @Marker@ parameter in a subsequent pagination request.
 lgrsMarker :: Lens' ListGroupsResponse (Maybe Text)

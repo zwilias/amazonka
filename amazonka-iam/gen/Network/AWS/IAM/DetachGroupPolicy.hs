@@ -38,20 +38,16 @@ module Network.AWS.IAM.DetachGroupPolicy
     ) where
 
 import Network.AWS.IAM.Types
-import Network.AWS.IAM.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 
 -- | /See:/ 'detachGroupPolicy' smart constructor.
-data DetachGroupPolicy =
-  DetachGroupPolicy'
-    { _dgpGroupName :: !Text
-    , _dgpPolicyARN :: !Text
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data DetachGroupPolicy = DetachGroupPolicy'{_dgpGroupName
+                                            :: !Text,
+                                            _dgpPolicyARN :: !Text}
+                           deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'DetachGroupPolicy' with the minimum fields required to make a request.
 --
@@ -64,9 +60,9 @@ detachGroupPolicy
     :: Text -- ^ 'dgpGroupName'
     -> Text -- ^ 'dgpPolicyARN'
     -> DetachGroupPolicy
-detachGroupPolicy pGroupName_ pPolicyARN_ =
-  DetachGroupPolicy' {_dgpGroupName = pGroupName_, _dgpPolicyARN = pPolicyARN_}
-
+detachGroupPolicy pGroupName_ pPolicyARN_
+  = DetachGroupPolicy'{_dgpGroupName = pGroupName_,
+                       _dgpPolicyARN = pPolicyARN_}
 
 -- | The name (friendly name, not ARN) of the IAM group to detach the policy from. This parameter allows (per its <http://wikipedia.org/wiki/regex regex pattern> ) a string of characters consisting of upper and lowercase alphanumeric characters with no spaces. You can also include any of the following characters: _+=,.@-
 dgpGroupName :: Lens' DetachGroupPolicy Text
@@ -100,16 +96,15 @@ instance ToQuery DetachGroupPolicy where
                "PolicyArn" =: _dgpPolicyARN]
 
 -- | /See:/ 'detachGroupPolicyResponse' smart constructor.
-data DetachGroupPolicyResponse =
-  DetachGroupPolicyResponse'
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data DetachGroupPolicyResponse = DetachGroupPolicyResponse'
+                                   deriving (Eq, Read, Show, Data, Typeable,
+                                             Generic)
 
 -- | Creates a value of 'DetachGroupPolicyResponse' with the minimum fields required to make a request.
 --
 detachGroupPolicyResponse
     :: DetachGroupPolicyResponse
-detachGroupPolicyResponse = DetachGroupPolicyResponse'
-
+detachGroupPolicyResponse
+  = DetachGroupPolicyResponse'
 
 instance NFData DetachGroupPolicyResponse where

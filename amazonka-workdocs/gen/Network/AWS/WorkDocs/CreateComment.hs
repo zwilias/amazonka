@@ -49,22 +49,20 @@ import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 import Network.AWS.WorkDocs.Types
-import Network.AWS.WorkDocs.Types.Product
 
 -- | /See:/ 'createComment' smart constructor.
-data CreateComment =
-  CreateComment'
-    { _ccNotifyCollaborators :: !(Maybe Bool)
-    , _ccAuthenticationToken :: !(Maybe (Sensitive Text))
-    , _ccVisibility          :: !(Maybe CommentVisibilityType)
-    , _ccThreadId            :: !(Maybe Text)
-    , _ccParentId            :: !(Maybe Text)
-    , _ccDocumentId          :: !Text
-    , _ccVersionId           :: !Text
-    , _ccText                :: !(Sensitive Text)
-    }
-  deriving (Eq, Show, Data, Typeable, Generic)
-
+data CreateComment = CreateComment'{_ccNotifyCollaborators
+                                    :: !(Maybe Bool),
+                                    _ccAuthenticationToken ::
+                                    !(Maybe (Sensitive Text)),
+                                    _ccVisibility ::
+                                    !(Maybe CommentVisibilityType),
+                                    _ccThreadId :: !(Maybe Text),
+                                    _ccParentId :: !(Maybe Text),
+                                    _ccDocumentId :: !Text,
+                                    _ccVersionId :: !Text,
+                                    _ccText :: !(Sensitive Text)}
+                       deriving (Eq, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'CreateComment' with the minimum fields required to make a request.
 --
@@ -90,18 +88,13 @@ createComment
     -> Text -- ^ 'ccVersionId'
     -> Text -- ^ 'ccText'
     -> CreateComment
-createComment pDocumentId_ pVersionId_ pText_ =
-  CreateComment'
-    { _ccNotifyCollaborators = Nothing
-    , _ccAuthenticationToken = Nothing
-    , _ccVisibility = Nothing
-    , _ccThreadId = Nothing
-    , _ccParentId = Nothing
-    , _ccDocumentId = pDocumentId_
-    , _ccVersionId = pVersionId_
-    , _ccText = _Sensitive # pText_
-    }
-
+createComment pDocumentId_ pVersionId_ pText_
+  = CreateComment'{_ccNotifyCollaborators = Nothing,
+                   _ccAuthenticationToken = Nothing,
+                   _ccVisibility = Nothing, _ccThreadId = Nothing,
+                   _ccParentId = Nothing, _ccDocumentId = pDocumentId_,
+                   _ccVersionId = pVersionId_,
+                   _ccText = _Sensitive # pText_}
 
 -- | Set this parameter to TRUE to send an email out to the document collaborators after the comment is created.
 ccNotifyCollaborators :: Lens' CreateComment (Maybe Bool)
@@ -176,13 +169,10 @@ instance ToQuery CreateComment where
         toQuery = const mempty
 
 -- | /See:/ 'createCommentResponse' smart constructor.
-data CreateCommentResponse =
-  CreateCommentResponse'
-    { _ccrsComment        :: !(Maybe Comment)
-    , _ccrsResponseStatus :: !Int
-    }
-  deriving (Eq, Show, Data, Typeable, Generic)
-
+data CreateCommentResponse = CreateCommentResponse'{_ccrsComment
+                                                    :: !(Maybe Comment),
+                                                    _ccrsResponseStatus :: !Int}
+                               deriving (Eq, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'CreateCommentResponse' with the minimum fields required to make a request.
 --
@@ -194,10 +184,9 @@ data CreateCommentResponse =
 createCommentResponse
     :: Int -- ^ 'ccrsResponseStatus'
     -> CreateCommentResponse
-createCommentResponse pResponseStatus_ =
-  CreateCommentResponse'
-    {_ccrsComment = Nothing, _ccrsResponseStatus = pResponseStatus_}
-
+createCommentResponse pResponseStatus_
+  = CreateCommentResponse'{_ccrsComment = Nothing,
+                           _ccrsResponseStatus = pResponseStatus_}
 
 -- | The comment that has been created.
 ccrsComment :: Lens' CreateCommentResponse (Maybe Comment)

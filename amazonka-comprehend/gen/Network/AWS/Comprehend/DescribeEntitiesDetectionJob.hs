@@ -38,19 +38,16 @@ module Network.AWS.Comprehend.DescribeEntitiesDetectionJob
     ) where
 
 import Network.AWS.Comprehend.Types
-import Network.AWS.Comprehend.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 
 -- | /See:/ 'describeEntitiesDetectionJob' smart constructor.
-newtype DescribeEntitiesDetectionJob =
-  DescribeEntitiesDetectionJob'
-    { _dedjJobId :: Text
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+newtype DescribeEntitiesDetectionJob = DescribeEntitiesDetectionJob'{_dedjJobId
+                                                                     :: Text}
+                                         deriving (Eq, Read, Show, Data,
+                                                   Typeable, Generic)
 
 -- | Creates a value of 'DescribeEntitiesDetectionJob' with the minimum fields required to make a request.
 --
@@ -60,9 +57,8 @@ newtype DescribeEntitiesDetectionJob =
 describeEntitiesDetectionJob
     :: Text -- ^ 'dedjJobId'
     -> DescribeEntitiesDetectionJob
-describeEntitiesDetectionJob pJobId_ =
-  DescribeEntitiesDetectionJob' {_dedjJobId = pJobId_}
-
+describeEntitiesDetectionJob pJobId_
+  = DescribeEntitiesDetectionJob'{_dedjJobId = pJobId_}
 
 -- | The identifier that Amazon Comprehend generated for the job. The operation returns this identifier in its response.
 dedjJobId :: Lens' DescribeEntitiesDetectionJob Text
@@ -105,13 +101,15 @@ instance ToQuery DescribeEntitiesDetectionJob where
         toQuery = const mempty
 
 -- | /See:/ 'describeEntitiesDetectionJobResponse' smart constructor.
-data DescribeEntitiesDetectionJobResponse =
-  DescribeEntitiesDetectionJobResponse'
-    { _dedjrsEntitiesDetectionJobProperties :: !(Maybe EntitiesDetectionJobProperties)
-    , _dedjrsResponseStatus :: !Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data DescribeEntitiesDetectionJobResponse = DescribeEntitiesDetectionJobResponse'{_dedjrsEntitiesDetectionJobProperties
+                                                                                  ::
+                                                                                  !(Maybe
+                                                                                      EntitiesDetectionJobProperties),
+                                                                                  _dedjrsResponseStatus
+                                                                                  ::
+                                                                                  !Int}
+                                              deriving (Eq, Read, Show, Data,
+                                                        Typeable, Generic)
 
 -- | Creates a value of 'DescribeEntitiesDetectionJobResponse' with the minimum fields required to make a request.
 --
@@ -123,12 +121,11 @@ data DescribeEntitiesDetectionJobResponse =
 describeEntitiesDetectionJobResponse
     :: Int -- ^ 'dedjrsResponseStatus'
     -> DescribeEntitiesDetectionJobResponse
-describeEntitiesDetectionJobResponse pResponseStatus_ =
-  DescribeEntitiesDetectionJobResponse'
-    { _dedjrsEntitiesDetectionJobProperties = Nothing
-    , _dedjrsResponseStatus = pResponseStatus_
-    }
-
+describeEntitiesDetectionJobResponse pResponseStatus_
+  = DescribeEntitiesDetectionJobResponse'{_dedjrsEntitiesDetectionJobProperties
+                                            = Nothing,
+                                          _dedjrsResponseStatus =
+                                            pResponseStatus_}
 
 -- | An object that contains the properties associated with an entities detection job.
 dedjrsEntitiesDetectionJobProperties :: Lens' DescribeEntitiesDetectionJobResponse (Maybe EntitiesDetectionJobProperties)

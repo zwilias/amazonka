@@ -44,7 +44,6 @@ module Network.AWS.CognitoIdentityProvider.ConfirmSignUp
     ) where
 
 import Network.AWS.CognitoIdentityProvider.Types
-import Network.AWS.CognitoIdentityProvider.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.Request
@@ -55,19 +54,18 @@ import Network.AWS.Response
 --
 --
 -- /See:/ 'confirmSignUp' smart constructor.
-data ConfirmSignUp =
-  ConfirmSignUp'
-    { _csuClientMetadata     :: !(Maybe (Map Text Text))
-    , _csuForceAliasCreation :: !(Maybe Bool)
-    , _csuAnalyticsMetadata  :: !(Maybe AnalyticsMetadataType)
-    , _csuUserContextData    :: !(Maybe UserContextDataType)
-    , _csuSecretHash         :: !(Maybe (Sensitive Text))
-    , _csuClientId           :: !(Sensitive Text)
-    , _csuUsername           :: !(Sensitive Text)
-    , _csuConfirmationCode   :: !Text
-    }
-  deriving (Eq, Show, Data, Typeable, Generic)
-
+data ConfirmSignUp = ConfirmSignUp'{_csuClientMetadata
+                                    :: !(Maybe (Map Text Text)),
+                                    _csuForceAliasCreation :: !(Maybe Bool),
+                                    _csuAnalyticsMetadata ::
+                                    !(Maybe AnalyticsMetadataType),
+                                    _csuUserContextData ::
+                                    !(Maybe UserContextDataType),
+                                    _csuSecretHash :: !(Maybe (Sensitive Text)),
+                                    _csuClientId :: !(Sensitive Text),
+                                    _csuUsername :: !(Sensitive Text),
+                                    _csuConfirmationCode :: !Text}
+                       deriving (Eq, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'ConfirmSignUp' with the minimum fields required to make a request.
 --
@@ -93,18 +91,16 @@ confirmSignUp
     -> Text -- ^ 'csuUsername'
     -> Text -- ^ 'csuConfirmationCode'
     -> ConfirmSignUp
-confirmSignUp pClientId_ pUsername_ pConfirmationCode_ =
-  ConfirmSignUp'
-    { _csuClientMetadata = Nothing
-    , _csuForceAliasCreation = Nothing
-    , _csuAnalyticsMetadata = Nothing
-    , _csuUserContextData = Nothing
-    , _csuSecretHash = Nothing
-    , _csuClientId = _Sensitive # pClientId_
-    , _csuUsername = _Sensitive # pUsername_
-    , _csuConfirmationCode = pConfirmationCode_
-    }
-
+confirmSignUp pClientId_ pUsername_
+  pConfirmationCode_
+  = ConfirmSignUp'{_csuClientMetadata = Nothing,
+                   _csuForceAliasCreation = Nothing,
+                   _csuAnalyticsMetadata = Nothing,
+                   _csuUserContextData = Nothing,
+                   _csuSecretHash = Nothing,
+                   _csuClientId = _Sensitive # pClientId_,
+                   _csuUsername = _Sensitive # pUsername_,
+                   _csuConfirmationCode = pConfirmationCode_}
 
 -- | A map of custom key-value pairs that you can provide as input for any custom workflows that this action triggers.  You create custom workflows by assigning AWS Lambda functions to user pool triggers. When you use the ConfirmSignUp API action, Amazon Cognito invokes the function that is assigned to the /post confirmation/ trigger. When Amazon Cognito invokes this function, it passes a JSON payload, which the function receives as input. This payload contains a @clientMetadata@ attribute, which provides the data that you assigned to the ClientMetadata parameter in your ConfirmSignUp request. In your function code in AWS Lambda, you can process the @clientMetadata@ value to enhance your workflow for your specific needs. For more information, see <https://docs.aws.amazon.com/cognito/latest/developerguide/cognito-user-identity-pools-working-with-aws-lambda-triggers.html Customizing User Pool Workflows with Lambda Triggers> in the /Amazon Cognito Developer Guide/ .
 csuClientMetadata :: Lens' ConfirmSignUp (HashMap Text Text)
@@ -184,12 +180,10 @@ instance ToQuery ConfirmSignUp where
 --
 --
 -- /See:/ 'confirmSignUpResponse' smart constructor.
-newtype ConfirmSignUpResponse =
-  ConfirmSignUpResponse'
-    { _csursResponseStatus :: Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+newtype ConfirmSignUpResponse = ConfirmSignUpResponse'{_csursResponseStatus
+                                                       :: Int}
+                                  deriving (Eq, Read, Show, Data, Typeable,
+                                            Generic)
 
 -- | Creates a value of 'ConfirmSignUpResponse' with the minimum fields required to make a request.
 --
@@ -199,9 +193,9 @@ newtype ConfirmSignUpResponse =
 confirmSignUpResponse
     :: Int -- ^ 'csursResponseStatus'
     -> ConfirmSignUpResponse
-confirmSignUpResponse pResponseStatus_ =
-  ConfirmSignUpResponse' {_csursResponseStatus = pResponseStatus_}
-
+confirmSignUpResponse pResponseStatus_
+  = ConfirmSignUpResponse'{_csursResponseStatus =
+                             pResponseStatus_}
 
 -- | -- | The response status code.
 csursResponseStatus :: Lens' ConfirmSignUpResponse Int

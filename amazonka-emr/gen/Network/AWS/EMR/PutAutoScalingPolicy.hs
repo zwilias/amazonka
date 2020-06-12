@@ -42,21 +42,18 @@ module Network.AWS.EMR.PutAutoScalingPolicy
     ) where
 
 import Network.AWS.EMR.Types
-import Network.AWS.EMR.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 
 -- | /See:/ 'putAutoScalingPolicy' smart constructor.
-data PutAutoScalingPolicy =
-  PutAutoScalingPolicy'
-    { _paspClusterId         :: !Text
-    , _paspInstanceGroupId   :: !Text
-    , _paspAutoScalingPolicy :: !AutoScalingPolicy
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data PutAutoScalingPolicy = PutAutoScalingPolicy'{_paspClusterId
+                                                  :: !Text,
+                                                  _paspInstanceGroupId :: !Text,
+                                                  _paspAutoScalingPolicy ::
+                                                  !AutoScalingPolicy}
+                              deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'PutAutoScalingPolicy' with the minimum fields required to make a request.
 --
@@ -72,13 +69,11 @@ putAutoScalingPolicy
     -> Text -- ^ 'paspInstanceGroupId'
     -> AutoScalingPolicy -- ^ 'paspAutoScalingPolicy'
     -> PutAutoScalingPolicy
-putAutoScalingPolicy pClusterId_ pInstanceGroupId_ pAutoScalingPolicy_ =
-  PutAutoScalingPolicy'
-    { _paspClusterId = pClusterId_
-    , _paspInstanceGroupId = pInstanceGroupId_
-    , _paspAutoScalingPolicy = pAutoScalingPolicy_
-    }
-
+putAutoScalingPolicy pClusterId_ pInstanceGroupId_
+  pAutoScalingPolicy_
+  = PutAutoScalingPolicy'{_paspClusterId = pClusterId_,
+                          _paspInstanceGroupId = pInstanceGroupId_,
+                          _paspAutoScalingPolicy = pAutoScalingPolicy_}
 
 -- | Specifies the ID of a cluster. The instance group to which the automatic scaling policy is applied is within this cluster.
 paspClusterId :: Lens' PutAutoScalingPolicy Text
@@ -134,15 +129,20 @@ instance ToQuery PutAutoScalingPolicy where
         toQuery = const mempty
 
 -- | /See:/ 'putAutoScalingPolicyResponse' smart constructor.
-data PutAutoScalingPolicyResponse =
-  PutAutoScalingPolicyResponse'
-    { _pasprsClusterId         :: !(Maybe Text)
-    , _pasprsAutoScalingPolicy :: !(Maybe AutoScalingPolicyDescription)
-    , _pasprsInstanceGroupId   :: !(Maybe Text)
-    , _pasprsResponseStatus    :: !Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data PutAutoScalingPolicyResponse = PutAutoScalingPolicyResponse'{_pasprsClusterId
+                                                                  ::
+                                                                  !(Maybe Text),
+                                                                  _pasprsAutoScalingPolicy
+                                                                  ::
+                                                                  !(Maybe
+                                                                      AutoScalingPolicyDescription),
+                                                                  _pasprsInstanceGroupId
+                                                                  ::
+                                                                  !(Maybe Text),
+                                                                  _pasprsResponseStatus
+                                                                  :: !Int}
+                                      deriving (Eq, Read, Show, Data, Typeable,
+                                                Generic)
 
 -- | Creates a value of 'PutAutoScalingPolicyResponse' with the minimum fields required to make a request.
 --
@@ -158,14 +158,12 @@ data PutAutoScalingPolicyResponse =
 putAutoScalingPolicyResponse
     :: Int -- ^ 'pasprsResponseStatus'
     -> PutAutoScalingPolicyResponse
-putAutoScalingPolicyResponse pResponseStatus_ =
-  PutAutoScalingPolicyResponse'
-    { _pasprsClusterId = Nothing
-    , _pasprsAutoScalingPolicy = Nothing
-    , _pasprsInstanceGroupId = Nothing
-    , _pasprsResponseStatus = pResponseStatus_
-    }
-
+putAutoScalingPolicyResponse pResponseStatus_
+  = PutAutoScalingPolicyResponse'{_pasprsClusterId =
+                                    Nothing,
+                                  _pasprsAutoScalingPolicy = Nothing,
+                                  _pasprsInstanceGroupId = Nothing,
+                                  _pasprsResponseStatus = pResponseStatus_}
 
 -- | Specifies the ID of a cluster. The instance group to which the automatic scaling policy is applied is within this cluster.
 pasprsClusterId :: Lens' PutAutoScalingPolicyResponse (Maybe Text)

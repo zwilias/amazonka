@@ -42,19 +42,16 @@ module Network.AWS.Greengrass.GetLoggerDefinition
     ) where
 
 import Network.AWS.Greengrass.Types
-import Network.AWS.Greengrass.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 
 -- | /See:/ 'getLoggerDefinition' smart constructor.
-newtype GetLoggerDefinition =
-  GetLoggerDefinition'
-    { _gldLoggerDefinitionId :: Text
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+newtype GetLoggerDefinition = GetLoggerDefinition'{_gldLoggerDefinitionId
+                                                   :: Text}
+                                deriving (Eq, Read, Show, Data, Typeable,
+                                          Generic)
 
 -- | Creates a value of 'GetLoggerDefinition' with the minimum fields required to make a request.
 --
@@ -64,9 +61,9 @@ newtype GetLoggerDefinition =
 getLoggerDefinition
     :: Text -- ^ 'gldLoggerDefinitionId'
     -> GetLoggerDefinition
-getLoggerDefinition pLoggerDefinitionId_ =
-  GetLoggerDefinition' {_gldLoggerDefinitionId = pLoggerDefinitionId_}
-
+getLoggerDefinition pLoggerDefinitionId_
+  = GetLoggerDefinition'{_gldLoggerDefinitionId =
+                           pLoggerDefinitionId_}
 
 -- | The ID of the logger definition.
 gldLoggerDefinitionId :: Lens' GetLoggerDefinition Text
@@ -109,19 +106,28 @@ instance ToQuery GetLoggerDefinition where
         toQuery = const mempty
 
 -- | /See:/ 'getLoggerDefinitionResponse' smart constructor.
-data GetLoggerDefinitionResponse =
-  GetLoggerDefinitionResponse'
-    { _gldrsLatestVersionARN     :: !(Maybe Text)
-    , _gldrsARN                  :: !(Maybe Text)
-    , _gldrsName                 :: !(Maybe Text)
-    , _gldrsCreationTimestamp    :: !(Maybe Text)
-    , _gldrsId                   :: !(Maybe Text)
-    , _gldrsLatestVersion        :: !(Maybe Text)
-    , _gldrsLastUpdatedTimestamp :: !(Maybe Text)
-    , _gldrsResponseStatus       :: !Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data GetLoggerDefinitionResponse = GetLoggerDefinitionResponse'{_gldrsLatestVersionARN
+                                                                ::
+                                                                !(Maybe Text),
+                                                                _gldrsARN ::
+                                                                !(Maybe Text),
+                                                                _gldrsName ::
+                                                                !(Maybe Text),
+                                                                _gldrsCreationTimestamp
+                                                                ::
+                                                                !(Maybe Text),
+                                                                _gldrsId ::
+                                                                !(Maybe Text),
+                                                                _gldrsLatestVersion
+                                                                ::
+                                                                !(Maybe Text),
+                                                                _gldrsLastUpdatedTimestamp
+                                                                ::
+                                                                !(Maybe Text),
+                                                                _gldrsResponseStatus
+                                                                :: !Int}
+                                     deriving (Eq, Read, Show, Data, Typeable,
+                                               Generic)
 
 -- | Creates a value of 'GetLoggerDefinitionResponse' with the minimum fields required to make a request.
 --
@@ -145,18 +151,15 @@ data GetLoggerDefinitionResponse =
 getLoggerDefinitionResponse
     :: Int -- ^ 'gldrsResponseStatus'
     -> GetLoggerDefinitionResponse
-getLoggerDefinitionResponse pResponseStatus_ =
-  GetLoggerDefinitionResponse'
-    { _gldrsLatestVersionARN = Nothing
-    , _gldrsARN = Nothing
-    , _gldrsName = Nothing
-    , _gldrsCreationTimestamp = Nothing
-    , _gldrsId = Nothing
-    , _gldrsLatestVersion = Nothing
-    , _gldrsLastUpdatedTimestamp = Nothing
-    , _gldrsResponseStatus = pResponseStatus_
-    }
-
+getLoggerDefinitionResponse pResponseStatus_
+  = GetLoggerDefinitionResponse'{_gldrsLatestVersionARN
+                                   = Nothing,
+                                 _gldrsARN = Nothing, _gldrsName = Nothing,
+                                 _gldrsCreationTimestamp = Nothing,
+                                 _gldrsId = Nothing,
+                                 _gldrsLatestVersion = Nothing,
+                                 _gldrsLastUpdatedTimestamp = Nothing,
+                                 _gldrsResponseStatus = pResponseStatus_}
 
 -- | The ARN of the latest version of the definition.
 gldrsLatestVersionARN :: Lens' GetLoggerDefinitionResponse (Maybe Text)

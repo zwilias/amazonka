@@ -38,7 +38,6 @@ module Network.AWS.IoT.ListPolicyVersions
     ) where
 
 import Network.AWS.IoT.Types
-import Network.AWS.IoT.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.Request
@@ -49,12 +48,10 @@ import Network.AWS.Response
 --
 --
 -- /See:/ 'listPolicyVersions' smart constructor.
-newtype ListPolicyVersions =
-  ListPolicyVersions'
-    { _lpvPolicyName :: Text
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+newtype ListPolicyVersions = ListPolicyVersions'{_lpvPolicyName
+                                                 :: Text}
+                               deriving (Eq, Read, Show, Data, Typeable,
+                                         Generic)
 
 -- | Creates a value of 'ListPolicyVersions' with the minimum fields required to make a request.
 --
@@ -64,9 +61,8 @@ newtype ListPolicyVersions =
 listPolicyVersions
     :: Text -- ^ 'lpvPolicyName'
     -> ListPolicyVersions
-listPolicyVersions pPolicyName_ =
-  ListPolicyVersions' {_lpvPolicyName = pPolicyName_}
-
+listPolicyVersions pPolicyName_
+  = ListPolicyVersions'{_lpvPolicyName = pPolicyName_}
 
 -- | The policy name.
 lpvPolicyName :: Lens' ListPolicyVersions Text
@@ -103,13 +99,14 @@ instance ToQuery ListPolicyVersions where
 --
 --
 -- /See:/ 'listPolicyVersionsResponse' smart constructor.
-data ListPolicyVersionsResponse =
-  ListPolicyVersionsResponse'
-    { _lpvrsPolicyVersions :: !(Maybe [PolicyVersion])
-    , _lpvrsResponseStatus :: !Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data ListPolicyVersionsResponse = ListPolicyVersionsResponse'{_lpvrsPolicyVersions
+                                                              ::
+                                                              !(Maybe
+                                                                  [PolicyVersion]),
+                                                              _lpvrsResponseStatus
+                                                              :: !Int}
+                                    deriving (Eq, Read, Show, Data, Typeable,
+                                              Generic)
 
 -- | Creates a value of 'ListPolicyVersionsResponse' with the minimum fields required to make a request.
 --
@@ -121,10 +118,10 @@ data ListPolicyVersionsResponse =
 listPolicyVersionsResponse
     :: Int -- ^ 'lpvrsResponseStatus'
     -> ListPolicyVersionsResponse
-listPolicyVersionsResponse pResponseStatus_ =
-  ListPolicyVersionsResponse'
-    {_lpvrsPolicyVersions = Nothing, _lpvrsResponseStatus = pResponseStatus_}
-
+listPolicyVersionsResponse pResponseStatus_
+  = ListPolicyVersionsResponse'{_lpvrsPolicyVersions =
+                                  Nothing,
+                                _lpvrsResponseStatus = pResponseStatus_}
 
 -- | The policy versions.
 lpvrsPolicyVersions :: Lens' ListPolicyVersionsResponse [PolicyVersion]

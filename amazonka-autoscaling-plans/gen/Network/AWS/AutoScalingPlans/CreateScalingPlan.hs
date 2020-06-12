@@ -40,21 +40,19 @@ module Network.AWS.AutoScalingPlans.CreateScalingPlan
     ) where
 
 import Network.AWS.AutoScalingPlans.Types
-import Network.AWS.AutoScalingPlans.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 
 -- | /See:/ 'createScalingPlan' smart constructor.
-data CreateScalingPlan =
-  CreateScalingPlan'
-    { _cspScalingPlanName     :: !Text
-    , _cspApplicationSource   :: !ApplicationSource
-    , _cspScalingInstructions :: ![ScalingInstruction]
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data CreateScalingPlan = CreateScalingPlan'{_cspScalingPlanName
+                                            :: !Text,
+                                            _cspApplicationSource ::
+                                            !ApplicationSource,
+                                            _cspScalingInstructions ::
+                                            ![ScalingInstruction]}
+                           deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'CreateScalingPlan' with the minimum fields required to make a request.
 --
@@ -69,13 +67,12 @@ createScalingPlan
     :: Text -- ^ 'cspScalingPlanName'
     -> ApplicationSource -- ^ 'cspApplicationSource'
     -> CreateScalingPlan
-createScalingPlan pScalingPlanName_ pApplicationSource_ =
-  CreateScalingPlan'
-    { _cspScalingPlanName = pScalingPlanName_
-    , _cspApplicationSource = pApplicationSource_
-    , _cspScalingInstructions = mempty
-    }
-
+createScalingPlan pScalingPlanName_
+  pApplicationSource_
+  = CreateScalingPlan'{_cspScalingPlanName =
+                         pScalingPlanName_,
+                       _cspApplicationSource = pApplicationSource_,
+                       _cspScalingInstructions = mempty}
 
 -- | The name of the scaling plan. Names cannot contain vertical bars, colons, or forward slashes.
 cspScalingPlanName :: Lens' CreateScalingPlan Text
@@ -128,13 +125,12 @@ instance ToQuery CreateScalingPlan where
         toQuery = const mempty
 
 -- | /See:/ 'createScalingPlanResponse' smart constructor.
-data CreateScalingPlanResponse =
-  CreateScalingPlanResponse'
-    { _csprsResponseStatus     :: !Int
-    , _csprsScalingPlanVersion :: !Integer
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data CreateScalingPlanResponse = CreateScalingPlanResponse'{_csprsResponseStatus
+                                                            :: !Int,
+                                                            _csprsScalingPlanVersion
+                                                            :: !Integer}
+                                   deriving (Eq, Read, Show, Data, Typeable,
+                                             Generic)
 
 -- | Creates a value of 'CreateScalingPlanResponse' with the minimum fields required to make a request.
 --
@@ -147,12 +143,11 @@ createScalingPlanResponse
     :: Int -- ^ 'csprsResponseStatus'
     -> Integer -- ^ 'csprsScalingPlanVersion'
     -> CreateScalingPlanResponse
-createScalingPlanResponse pResponseStatus_ pScalingPlanVersion_ =
-  CreateScalingPlanResponse'
-    { _csprsResponseStatus = pResponseStatus_
-    , _csprsScalingPlanVersion = pScalingPlanVersion_
-    }
-
+createScalingPlanResponse pResponseStatus_
+  pScalingPlanVersion_
+  = CreateScalingPlanResponse'{_csprsResponseStatus =
+                                 pResponseStatus_,
+                               _csprsScalingPlanVersion = pScalingPlanVersion_}
 
 -- | -- | The response status code.
 csprsResponseStatus :: Lens' CreateScalingPlanResponse Int

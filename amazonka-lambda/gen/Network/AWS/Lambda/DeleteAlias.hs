@@ -38,20 +38,16 @@ module Network.AWS.Lambda.DeleteAlias
     ) where
 
 import Network.AWS.Lambda.Types
-import Network.AWS.Lambda.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 
 -- | /See:/ 'deleteAlias' smart constructor.
-data DeleteAlias =
-  DeleteAlias'
-    { _daFunctionName :: !Text
-    , _daName         :: !Text
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data DeleteAlias = DeleteAlias'{_daFunctionName ::
+                                !Text,
+                                _daName :: !Text}
+                     deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'DeleteAlias' with the minimum fields required to make a request.
 --
@@ -64,9 +60,9 @@ deleteAlias
     :: Text -- ^ 'daFunctionName'
     -> Text -- ^ 'daName'
     -> DeleteAlias
-deleteAlias pFunctionName_ pName_ =
-  DeleteAlias' {_daFunctionName = pFunctionName_, _daName = pName_}
-
+deleteAlias pFunctionName_ pName_
+  = DeleteAlias'{_daFunctionName = pFunctionName_,
+                 _daName = pName_}
 
 -- | The Lambda function name for which the alias is created. Deleting an alias does not delete the function version to which it is pointing. Note that the length constraint applies only to the ARN. If you specify only the function name, it is limited to 64 characters in length.
 daFunctionName :: Lens' DeleteAlias Text
@@ -98,16 +94,13 @@ instance ToQuery DeleteAlias where
         toQuery = const mempty
 
 -- | /See:/ 'deleteAliasResponse' smart constructor.
-data DeleteAliasResponse =
-  DeleteAliasResponse'
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data DeleteAliasResponse = DeleteAliasResponse'
+                             deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'DeleteAliasResponse' with the minimum fields required to make a request.
 --
 deleteAliasResponse
     :: DeleteAliasResponse
 deleteAliasResponse = DeleteAliasResponse'
-
 
 instance NFData DeleteAliasResponse where

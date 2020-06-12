@@ -36,20 +36,15 @@ module Network.AWS.Connect.DeleteUser
     ) where
 
 import Network.AWS.Connect.Types
-import Network.AWS.Connect.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 
 -- | /See:/ 'deleteUser' smart constructor.
-data DeleteUser =
-  DeleteUser'
-    { _dInstanceId :: !Text
-    , _dUserId     :: !Text
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data DeleteUser = DeleteUser'{_dInstanceId :: !Text,
+                              _dUserId :: !Text}
+                    deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'DeleteUser' with the minimum fields required to make a request.
 --
@@ -62,9 +57,9 @@ deleteUser
     :: Text -- ^ 'dInstanceId'
     -> Text -- ^ 'dUserId'
     -> DeleteUser
-deleteUser pInstanceId_ pUserId_ =
-  DeleteUser' {_dInstanceId = pInstanceId_, _dUserId = pUserId_}
-
+deleteUser pInstanceId_ pUserId_
+  = DeleteUser'{_dInstanceId = pInstanceId_,
+                _dUserId = pUserId_}
 
 -- | The identifier of the Amazon Connect instance.
 dInstanceId :: Lens' DeleteUser Text
@@ -99,16 +94,13 @@ instance ToQuery DeleteUser where
         toQuery = const mempty
 
 -- | /See:/ 'deleteUserResponse' smart constructor.
-data DeleteUserResponse =
-  DeleteUserResponse'
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data DeleteUserResponse = DeleteUserResponse'
+                            deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'DeleteUserResponse' with the minimum fields required to make a request.
 --
 deleteUserResponse
     :: DeleteUserResponse
 deleteUserResponse = DeleteUserResponse'
-
 
 instance NFData DeleteUserResponse where

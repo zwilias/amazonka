@@ -45,20 +45,16 @@ module Network.AWS.Organizations.ListRoots
 
 import Network.AWS.Lens
 import Network.AWS.Organizations.Types
-import Network.AWS.Organizations.Types.Product
 import Network.AWS.Pager
 import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 
 -- | /See:/ 'listRoots' smart constructor.
-data ListRoots =
-  ListRoots'
-    { _lrNextToken  :: !(Maybe Text)
-    , _lrMaxResults :: !(Maybe Nat)
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data ListRoots = ListRoots'{_lrNextToken ::
+                            !(Maybe Text),
+                            _lrMaxResults :: !(Maybe Nat)}
+                   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'ListRoots' with the minimum fields required to make a request.
 --
@@ -69,8 +65,9 @@ data ListRoots =
 -- * 'lrMaxResults' - (Optional) Use this to limit the number of results you want included in the response. If you do not include this parameter, it defaults to a value that is specific to the operation. If additional items exist beyond the maximum you specify, the @NextToken@ response element is present and has a value (is not null). Include that value as the @NextToken@ request parameter in the next call to the operation to get the next part of the results. Note that Organizations might return fewer results than the maximum even when there are more results available. You should check @NextToken@ after every operation to ensure that you receive all of the results.
 listRoots
     :: ListRoots
-listRoots = ListRoots' {_lrNextToken = Nothing, _lrMaxResults = Nothing}
-
+listRoots
+  = ListRoots'{_lrNextToken = Nothing,
+               _lrMaxResults = Nothing}
 
 -- | Use this parameter if you receive a @NextToken@ response in a previous request that indicates that there is more output available. Set it to the value of the previous call's @NextToken@ response to indicate where the output should continue from.
 lrNextToken :: Lens' ListRoots (Maybe Text)
@@ -125,14 +122,11 @@ instance ToQuery ListRoots where
         toQuery = const mempty
 
 -- | /See:/ 'listRootsResponse' smart constructor.
-data ListRootsResponse =
-  ListRootsResponse'
-    { _lrrsRoots          :: !(Maybe [Root])
-    , _lrrsNextToken      :: !(Maybe Text)
-    , _lrrsResponseStatus :: !Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data ListRootsResponse = ListRootsResponse'{_lrrsRoots
+                                            :: !(Maybe [Root]),
+                                            _lrrsNextToken :: !(Maybe Text),
+                                            _lrrsResponseStatus :: !Int}
+                           deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'ListRootsResponse' with the minimum fields required to make a request.
 --
@@ -146,13 +140,10 @@ data ListRootsResponse =
 listRootsResponse
     :: Int -- ^ 'lrrsResponseStatus'
     -> ListRootsResponse
-listRootsResponse pResponseStatus_ =
-  ListRootsResponse'
-    { _lrrsRoots = Nothing
-    , _lrrsNextToken = Nothing
-    , _lrrsResponseStatus = pResponseStatus_
-    }
-
+listRootsResponse pResponseStatus_
+  = ListRootsResponse'{_lrrsRoots = Nothing,
+                       _lrrsNextToken = Nothing,
+                       _lrrsResponseStatus = pResponseStatus_}
 
 -- | A list of roots that are defined in an organization.
 lrrsRoots :: Lens' ListRootsResponse [Root]

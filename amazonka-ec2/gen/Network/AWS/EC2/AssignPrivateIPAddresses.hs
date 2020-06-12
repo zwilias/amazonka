@@ -50,7 +50,6 @@ module Network.AWS.EC2.AssignPrivateIPAddresses
     ) where
 
 import Network.AWS.EC2.Types
-import Network.AWS.EC2.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.Request
@@ -61,15 +60,16 @@ import Network.AWS.Response
 --
 --
 -- /See:/ 'assignPrivateIPAddresses' smart constructor.
-data AssignPrivateIPAddresses =
-  AssignPrivateIPAddresses'
-    { _apiaPrivateIPAddresses             :: !(Maybe [Text])
-    , _apiaAllowReassignment              :: !(Maybe Bool)
-    , _apiaSecondaryPrivateIPAddressCount :: !(Maybe Int)
-    , _apiaNetworkInterfaceId             :: !Text
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data AssignPrivateIPAddresses = AssignPrivateIPAddresses'{_apiaPrivateIPAddresses
+                                                          :: !(Maybe [Text]),
+                                                          _apiaAllowReassignment
+                                                          :: !(Maybe Bool),
+                                                          _apiaSecondaryPrivateIPAddressCount
+                                                          :: !(Maybe Int),
+                                                          _apiaNetworkInterfaceId
+                                                          :: !Text}
+                                  deriving (Eq, Read, Show, Data, Typeable,
+                                            Generic)
 
 -- | Creates a value of 'AssignPrivateIPAddresses' with the minimum fields required to make a request.
 --
@@ -85,14 +85,12 @@ data AssignPrivateIPAddresses =
 assignPrivateIPAddresses
     :: Text -- ^ 'apiaNetworkInterfaceId'
     -> AssignPrivateIPAddresses
-assignPrivateIPAddresses pNetworkInterfaceId_ =
-  AssignPrivateIPAddresses'
-    { _apiaPrivateIPAddresses = Nothing
-    , _apiaAllowReassignment = Nothing
-    , _apiaSecondaryPrivateIPAddressCount = Nothing
-    , _apiaNetworkInterfaceId = pNetworkInterfaceId_
-    }
-
+assignPrivateIPAddresses pNetworkInterfaceId_
+  = AssignPrivateIPAddresses'{_apiaPrivateIPAddresses =
+                                Nothing,
+                              _apiaAllowReassignment = Nothing,
+                              _apiaSecondaryPrivateIPAddressCount = Nothing,
+                              _apiaNetworkInterfaceId = pNetworkInterfaceId_}
 
 -- | One or more IP addresses to be assigned as a secondary private IP address to the network interface. You can't specify this parameter when also specifying a number of secondary IP addresses. If you don't specify an IP address, Amazon EC2 automatically selects an IP address within the subnet range.
 apiaPrivateIPAddresses :: Lens' AssignPrivateIPAddresses [Text]
@@ -148,14 +146,19 @@ instance ToQuery AssignPrivateIPAddresses where
                "NetworkInterfaceId" =: _apiaNetworkInterfaceId]
 
 -- | /See:/ 'assignPrivateIPAddressesResponse' smart constructor.
-data AssignPrivateIPAddressesResponse =
-  AssignPrivateIPAddressesResponse'
-    { _apiarsAssignedPrivateIPAddresses :: !(Maybe [AssignedPrivateIPAddress])
-    , _apiarsNetworkInterfaceId         :: !(Maybe Text)
-    , _apiarsResponseStatus             :: !Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data AssignPrivateIPAddressesResponse = AssignPrivateIPAddressesResponse'{_apiarsAssignedPrivateIPAddresses
+                                                                          ::
+                                                                          !(Maybe
+                                                                              [AssignedPrivateIPAddress]),
+                                                                          _apiarsNetworkInterfaceId
+                                                                          ::
+                                                                          !(Maybe
+                                                                              Text),
+                                                                          _apiarsResponseStatus
+                                                                          ::
+                                                                          !Int}
+                                          deriving (Eq, Read, Show, Data,
+                                                    Typeable, Generic)
 
 -- | Creates a value of 'AssignPrivateIPAddressesResponse' with the minimum fields required to make a request.
 --
@@ -169,13 +172,11 @@ data AssignPrivateIPAddressesResponse =
 assignPrivateIPAddressesResponse
     :: Int -- ^ 'apiarsResponseStatus'
     -> AssignPrivateIPAddressesResponse
-assignPrivateIPAddressesResponse pResponseStatus_ =
-  AssignPrivateIPAddressesResponse'
-    { _apiarsAssignedPrivateIPAddresses = Nothing
-    , _apiarsNetworkInterfaceId = Nothing
-    , _apiarsResponseStatus = pResponseStatus_
-    }
-
+assignPrivateIPAddressesResponse pResponseStatus_
+  = AssignPrivateIPAddressesResponse'{_apiarsAssignedPrivateIPAddresses
+                                        = Nothing,
+                                      _apiarsNetworkInterfaceId = Nothing,
+                                      _apiarsResponseStatus = pResponseStatus_}
 
 -- | The private IP addresses assigned to the network interface.
 apiarsAssignedPrivateIPAddresses :: Lens' AssignPrivateIPAddressesResponse [AssignedPrivateIPAddress]

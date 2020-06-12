@@ -47,7 +47,6 @@ module Network.AWS.Config.ListAggregateDiscoveredResources
     ) where
 
 import Network.AWS.Config.Types
-import Network.AWS.Config.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Pager
 import Network.AWS.Prelude
@@ -55,16 +54,26 @@ import Network.AWS.Request
 import Network.AWS.Response
 
 -- | /See:/ 'listAggregateDiscoveredResources' smart constructor.
-data ListAggregateDiscoveredResources =
-  ListAggregateDiscoveredResources'
-    { _ladrFilters                     :: !(Maybe ResourceFilters)
-    , _ladrNextToken                   :: !(Maybe Text)
-    , _ladrLimit                       :: !(Maybe Nat)
-    , _ladrConfigurationAggregatorName :: !Text
-    , _ladrResourceType                :: !ResourceType
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data ListAggregateDiscoveredResources = ListAggregateDiscoveredResources'{_ladrFilters
+                                                                          ::
+                                                                          !(Maybe
+                                                                              ResourceFilters),
+                                                                          _ladrNextToken
+                                                                          ::
+                                                                          !(Maybe
+                                                                              Text),
+                                                                          _ladrLimit
+                                                                          ::
+                                                                          !(Maybe
+                                                                              Nat),
+                                                                          _ladrConfigurationAggregatorName
+                                                                          ::
+                                                                          !Text,
+                                                                          _ladrResourceType
+                                                                          ::
+                                                                          !ResourceType}
+                                          deriving (Eq, Read, Show, Data,
+                                                    Typeable, Generic)
 
 -- | Creates a value of 'ListAggregateDiscoveredResources' with the minimum fields required to make a request.
 --
@@ -76,22 +85,22 @@ data ListAggregateDiscoveredResources =
 --
 -- * 'ladrLimit' - The maximum number of resource identifiers returned on each page. The default is 100. You cannot specify a number greater than 100. If you specify 0, AWS Config uses the default.
 --
--- * 'ladrConfigurationAggregatorName' - The name of the configuration aggregator.
+-- * 'ladrConfigurationAggregatorName' - The name of the configuration aggregator. 
 --
 -- * 'ladrResourceType' - The type of resources that you want AWS Config to list in the response.
 listAggregateDiscoveredResources
     :: Text -- ^ 'ladrConfigurationAggregatorName'
     -> ResourceType -- ^ 'ladrResourceType'
     -> ListAggregateDiscoveredResources
-listAggregateDiscoveredResources pConfigurationAggregatorName_ pResourceType_ =
-  ListAggregateDiscoveredResources'
-    { _ladrFilters = Nothing
-    , _ladrNextToken = Nothing
-    , _ladrLimit = Nothing
-    , _ladrConfigurationAggregatorName = pConfigurationAggregatorName_
-    , _ladrResourceType = pResourceType_
-    }
-
+listAggregateDiscoveredResources
+  pConfigurationAggregatorName_ pResourceType_
+  = ListAggregateDiscoveredResources'{_ladrFilters =
+                                        Nothing,
+                                      _ladrNextToken = Nothing,
+                                      _ladrLimit = Nothing,
+                                      _ladrConfigurationAggregatorName =
+                                        pConfigurationAggregatorName_,
+                                      _ladrResourceType = pResourceType_}
 
 -- | Filters the results based on the @ResourceFilters@ object.
 ladrFilters :: Lens' ListAggregateDiscoveredResources (Maybe ResourceFilters)
@@ -105,7 +114,7 @@ ladrNextToken = lens _ladrNextToken (\ s a -> s{_ladrNextToken = a})
 ladrLimit :: Lens' ListAggregateDiscoveredResources (Maybe Natural)
 ladrLimit = lens _ladrLimit (\ s a -> s{_ladrLimit = a}) . mapping _Nat
 
--- | The name of the configuration aggregator.
+-- | The name of the configuration aggregator. 
 ladrConfigurationAggregatorName :: Lens' ListAggregateDiscoveredResources Text
 ladrConfigurationAggregatorName = lens _ladrConfigurationAggregatorName (\ s a -> s{_ladrConfigurationAggregatorName = a})
 
@@ -173,14 +182,20 @@ instance ToQuery ListAggregateDiscoveredResources
         toQuery = const mempty
 
 -- | /See:/ 'listAggregateDiscoveredResourcesResponse' smart constructor.
-data ListAggregateDiscoveredResourcesResponse =
-  ListAggregateDiscoveredResourcesResponse'
-    { _ladrrsNextToken           :: !(Maybe Text)
-    , _ladrrsResourceIdentifiers :: !(Maybe [AggregateResourceIdentifier])
-    , _ladrrsResponseStatus      :: !Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data ListAggregateDiscoveredResourcesResponse = ListAggregateDiscoveredResourcesResponse'{_ladrrsNextToken
+                                                                                          ::
+                                                                                          !(Maybe
+                                                                                              Text),
+                                                                                          _ladrrsResourceIdentifiers
+                                                                                          ::
+                                                                                          !(Maybe
+                                                                                              [AggregateResourceIdentifier]),
+                                                                                          _ladrrsResponseStatus
+                                                                                          ::
+                                                                                          !Int}
+                                                  deriving (Eq, Read, Show,
+                                                            Data, Typeable,
+                                                            Generic)
 
 -- | Creates a value of 'ListAggregateDiscoveredResourcesResponse' with the minimum fields required to make a request.
 --
@@ -194,13 +209,14 @@ data ListAggregateDiscoveredResourcesResponse =
 listAggregateDiscoveredResourcesResponse
     :: Int -- ^ 'ladrrsResponseStatus'
     -> ListAggregateDiscoveredResourcesResponse
-listAggregateDiscoveredResourcesResponse pResponseStatus_ =
-  ListAggregateDiscoveredResourcesResponse'
-    { _ladrrsNextToken = Nothing
-    , _ladrrsResourceIdentifiers = Nothing
-    , _ladrrsResponseStatus = pResponseStatus_
-    }
-
+listAggregateDiscoveredResourcesResponse
+  pResponseStatus_
+  = ListAggregateDiscoveredResourcesResponse'{_ladrrsNextToken
+                                                = Nothing,
+                                              _ladrrsResourceIdentifiers =
+                                                Nothing,
+                                              _ladrrsResponseStatus =
+                                                pResponseStatus_}
 
 -- | The @nextToken@ string returned on a previous page that you use to get the next page of results in a paginated response.
 ladrrsNextToken :: Lens' ListAggregateDiscoveredResourcesResponse (Maybe Text)

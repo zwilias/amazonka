@@ -40,21 +40,17 @@ module Network.AWS.Pinpoint.GetCampaignVersions
 
 import Network.AWS.Lens
 import Network.AWS.Pinpoint.Types
-import Network.AWS.Pinpoint.Types.Product
 import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 
 -- | /See:/ 'getCampaignVersions' smart constructor.
-data GetCampaignVersions =
-  GetCampaignVersions'
-    { _gcvToken         :: !(Maybe Text)
-    , _gcvPageSize      :: !(Maybe Text)
-    , _gcvApplicationId :: !Text
-    , _gcvCampaignId    :: !Text
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data GetCampaignVersions = GetCampaignVersions'{_gcvToken
+                                                :: !(Maybe Text),
+                                                _gcvPageSize :: !(Maybe Text),
+                                                _gcvApplicationId :: !Text,
+                                                _gcvCampaignId :: !Text}
+                             deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'GetCampaignVersions' with the minimum fields required to make a request.
 --
@@ -71,14 +67,11 @@ getCampaignVersions
     :: Text -- ^ 'gcvApplicationId'
     -> Text -- ^ 'gcvCampaignId'
     -> GetCampaignVersions
-getCampaignVersions pApplicationId_ pCampaignId_ =
-  GetCampaignVersions'
-    { _gcvToken = Nothing
-    , _gcvPageSize = Nothing
-    , _gcvApplicationId = pApplicationId_
-    , _gcvCampaignId = pCampaignId_
-    }
-
+getCampaignVersions pApplicationId_ pCampaignId_
+  = GetCampaignVersions'{_gcvToken = Nothing,
+                         _gcvPageSize = Nothing,
+                         _gcvApplicationId = pApplicationId_,
+                         _gcvCampaignId = pCampaignId_}
 
 -- | The NextToken string returned on a previous page that you use to get the next page of results in a paginated response.
 gcvToken :: Lens' GetCampaignVersions (Maybe Text)
@@ -129,13 +122,13 @@ instance ToQuery GetCampaignVersions where
               ["token" =: _gcvToken, "page-size" =: _gcvPageSize]
 
 -- | /See:/ 'getCampaignVersionsResponse' smart constructor.
-data GetCampaignVersionsResponse =
-  GetCampaignVersionsResponse'
-    { _gcvrsResponseStatus    :: !Int
-    , _gcvrsCampaignsResponse :: !CampaignsResponse
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data GetCampaignVersionsResponse = GetCampaignVersionsResponse'{_gcvrsResponseStatus
+                                                                :: !Int,
+                                                                _gcvrsCampaignsResponse
+                                                                ::
+                                                                !CampaignsResponse}
+                                     deriving (Eq, Read, Show, Data, Typeable,
+                                               Generic)
 
 -- | Creates a value of 'GetCampaignVersionsResponse' with the minimum fields required to make a request.
 --
@@ -148,12 +141,11 @@ getCampaignVersionsResponse
     :: Int -- ^ 'gcvrsResponseStatus'
     -> CampaignsResponse -- ^ 'gcvrsCampaignsResponse'
     -> GetCampaignVersionsResponse
-getCampaignVersionsResponse pResponseStatus_ pCampaignsResponse_ =
-  GetCampaignVersionsResponse'
-    { _gcvrsResponseStatus = pResponseStatus_
-    , _gcvrsCampaignsResponse = pCampaignsResponse_
-    }
-
+getCampaignVersionsResponse pResponseStatus_
+  pCampaignsResponse_
+  = GetCampaignVersionsResponse'{_gcvrsResponseStatus =
+                                   pResponseStatus_,
+                                 _gcvrsCampaignsResponse = pCampaignsResponse_}
 
 -- | -- | The response status code.
 gcvrsResponseStatus :: Lens' GetCampaignVersionsResponse Int

@@ -21,7 +21,7 @@
 -- Updates the code for the specified Lambda function. This operation must only be used on an existing Lambda function and cannot be used to update the function configuration.
 --
 --
--- If you are using the versioning feature, note this API will always update the $LATEST version of your Lambda function. For information about the versioning feature, see <http://docs.aws.amazon.com/lambda/latest/dg/versioning-aliases.html AWS Lambda Function Versioning and Aliases> .
+-- If you are using the versioning feature, note this API will always update the $LATEST version of your Lambda function. For information about the versioning feature, see <http://docs.aws.amazon.com/lambda/latest/dg/versioning-aliases.html AWS Lambda Function Versioning and Aliases> . 
 --
 -- This operation requires permission for the @lambda:UpdateFunctionCode@ action.
 --
@@ -66,30 +66,27 @@ module Network.AWS.Lambda.UpdateFunctionCode
     ) where
 
 import Network.AWS.Lambda.Types
-import Network.AWS.Lambda.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 
--- |
+-- | 
 --
 --
 --
 -- /See:/ 'updateFunctionCode' smart constructor.
-data UpdateFunctionCode =
-  UpdateFunctionCode'
-    { _uS3ObjectVersion :: !(Maybe Text)
-    , _uS3Key           :: !(Maybe Text)
-    , _uZipFile         :: !(Maybe (Sensitive Base64))
-    , _uS3Bucket        :: !(Maybe Text)
-    , _uDryRun          :: !(Maybe Bool)
-    , _uRevisionId      :: !(Maybe Text)
-    , _uPublish         :: !(Maybe Bool)
-    , _uFunctionName    :: !Text
-    }
-  deriving (Eq, Show, Data, Typeable, Generic)
-
+data UpdateFunctionCode = UpdateFunctionCode'{_uS3ObjectVersion
+                                              :: !(Maybe Text),
+                                              _uS3Key :: !(Maybe Text),
+                                              _uZipFile ::
+                                              !(Maybe (Sensitive Base64)),
+                                              _uS3Bucket :: !(Maybe Text),
+                                              _uDryRun :: !(Maybe Bool),
+                                              _uRevisionId :: !(Maybe Text),
+                                              _uPublish :: !(Maybe Bool),
+                                              _uFunctionName :: !Text}
+                            deriving (Eq, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'UpdateFunctionCode' with the minimum fields required to make a request.
 --
@@ -109,22 +106,16 @@ data UpdateFunctionCode =
 --
 -- * 'uPublish' - This boolean parameter can be used to request AWS Lambda to update the Lambda function and publish a version as an atomic operation.
 --
--- * 'uFunctionName' - The existing Lambda function name whose code you want to replace. You can specify a function name (for example, @Thumbnail@ ) or you can specify Amazon Resource Name (ARN) of the function (for example, @arn:aws:lambda:us-west-2:account-id:function:ThumbNail@ ). AWS Lambda also allows you to specify a partial ARN (for example, @account-id:Thumbnail@ ). Note that the length constraint applies only to the ARN. If you specify only the function name, it is limited to 64 characters in length.
+-- * 'uFunctionName' - The existing Lambda function name whose code you want to replace. You can specify a function name (for example, @Thumbnail@ ) or you can specify Amazon Resource Name (ARN) of the function (for example, @arn:aws:lambda:us-west-2:account-id:function:ThumbNail@ ). AWS Lambda also allows you to specify a partial ARN (for example, @account-id:Thumbnail@ ). Note that the length constraint applies only to the ARN. If you specify only the function name, it is limited to 64 characters in length. 
 updateFunctionCode
     :: Text -- ^ 'uFunctionName'
     -> UpdateFunctionCode
-updateFunctionCode pFunctionName_ =
-  UpdateFunctionCode'
-    { _uS3ObjectVersion = Nothing
-    , _uS3Key = Nothing
-    , _uZipFile = Nothing
-    , _uS3Bucket = Nothing
-    , _uDryRun = Nothing
-    , _uRevisionId = Nothing
-    , _uPublish = Nothing
-    , _uFunctionName = pFunctionName_
-    }
-
+updateFunctionCode pFunctionName_
+  = UpdateFunctionCode'{_uS3ObjectVersion = Nothing,
+                        _uS3Key = Nothing, _uZipFile = Nothing,
+                        _uS3Bucket = Nothing, _uDryRun = Nothing,
+                        _uRevisionId = Nothing, _uPublish = Nothing,
+                        _uFunctionName = pFunctionName_}
 
 -- | The Amazon S3 object (the deployment package) version you want to upload.
 uS3ObjectVersion :: Lens' UpdateFunctionCode (Maybe Text)
@@ -154,7 +145,7 @@ uRevisionId = lens _uRevisionId (\ s a -> s{_uRevisionId = a})
 uPublish :: Lens' UpdateFunctionCode (Maybe Bool)
 uPublish = lens _uPublish (\ s a -> s{_uPublish = a})
 
--- | The existing Lambda function name whose code you want to replace. You can specify a function name (for example, @Thumbnail@ ) or you can specify Amazon Resource Name (ARN) of the function (for example, @arn:aws:lambda:us-west-2:account-id:function:ThumbNail@ ). AWS Lambda also allows you to specify a partial ARN (for example, @account-id:Thumbnail@ ). Note that the length constraint applies only to the ARN. If you specify only the function name, it is limited to 64 characters in length.
+-- | The existing Lambda function name whose code you want to replace. You can specify a function name (for example, @Thumbnail@ ) or you can specify Amazon Resource Name (ARN) of the function (for example, @arn:aws:lambda:us-west-2:account-id:function:ThumbNail@ ). AWS Lambda also allows you to specify a partial ARN (for example, @account-id:Thumbnail@ ). Note that the length constraint applies only to the ARN. If you specify only the function name, it is limited to 64 characters in length. 
 uFunctionName :: Lens' UpdateFunctionCode Text
 uFunctionName = lens _uFunctionName (\ s a -> s{_uFunctionName = a})
 

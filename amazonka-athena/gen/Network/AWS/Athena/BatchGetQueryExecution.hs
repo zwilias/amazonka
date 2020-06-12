@@ -39,19 +39,16 @@ module Network.AWS.Athena.BatchGetQueryExecution
     ) where
 
 import Network.AWS.Athena.Types
-import Network.AWS.Athena.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 
 -- | /See:/ 'batchGetQueryExecution' smart constructor.
-newtype BatchGetQueryExecution =
-  BatchGetQueryExecution'
-    { _bgqeQueryExecutionIds :: List1 Text
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+newtype BatchGetQueryExecution = BatchGetQueryExecution'{_bgqeQueryExecutionIds
+                                                         :: List1 Text}
+                                   deriving (Eq, Read, Show, Data, Typeable,
+                                             Generic)
 
 -- | Creates a value of 'BatchGetQueryExecution' with the minimum fields required to make a request.
 --
@@ -61,10 +58,9 @@ newtype BatchGetQueryExecution =
 batchGetQueryExecution
     :: NonEmpty Text -- ^ 'bgqeQueryExecutionIds'
     -> BatchGetQueryExecution
-batchGetQueryExecution pQueryExecutionIds_ =
-  BatchGetQueryExecution'
-    {_bgqeQueryExecutionIds = _List1 # pQueryExecutionIds_}
-
+batchGetQueryExecution pQueryExecutionIds_
+  = BatchGetQueryExecution'{_bgqeQueryExecutionIds =
+                              _List1 # pQueryExecutionIds_}
 
 -- | An array of query execution IDs.
 bgqeQueryExecutionIds :: Lens' BatchGetQueryExecution (NonEmpty Text)
@@ -110,14 +106,18 @@ instance ToQuery BatchGetQueryExecution where
         toQuery = const mempty
 
 -- | /See:/ 'batchGetQueryExecutionResponse' smart constructor.
-data BatchGetQueryExecutionResponse =
-  BatchGetQueryExecutionResponse'
-    { _bgqersUnprocessedQueryExecutionIds :: !(Maybe [UnprocessedQueryExecutionId])
-    , _bgqersQueryExecutions :: !(Maybe [QueryExecution])
-    , _bgqersResponseStatus :: !Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data BatchGetQueryExecutionResponse = BatchGetQueryExecutionResponse'{_bgqersUnprocessedQueryExecutionIds
+                                                                      ::
+                                                                      !(Maybe
+                                                                          [UnprocessedQueryExecutionId]),
+                                                                      _bgqersQueryExecutions
+                                                                      ::
+                                                                      !(Maybe
+                                                                          [QueryExecution]),
+                                                                      _bgqersResponseStatus
+                                                                      :: !Int}
+                                        deriving (Eq, Read, Show, Data,
+                                                  Typeable, Generic)
 
 -- | Creates a value of 'BatchGetQueryExecutionResponse' with the minimum fields required to make a request.
 --
@@ -131,13 +131,11 @@ data BatchGetQueryExecutionResponse =
 batchGetQueryExecutionResponse
     :: Int -- ^ 'bgqersResponseStatus'
     -> BatchGetQueryExecutionResponse
-batchGetQueryExecutionResponse pResponseStatus_ =
-  BatchGetQueryExecutionResponse'
-    { _bgqersUnprocessedQueryExecutionIds = Nothing
-    , _bgqersQueryExecutions = Nothing
-    , _bgqersResponseStatus = pResponseStatus_
-    }
-
+batchGetQueryExecutionResponse pResponseStatus_
+  = BatchGetQueryExecutionResponse'{_bgqersUnprocessedQueryExecutionIds
+                                      = Nothing,
+                                    _bgqersQueryExecutions = Nothing,
+                                    _bgqersResponseStatus = pResponseStatus_}
 
 -- | Information about the query executions that failed to run.
 bgqersUnprocessedQueryExecutionIds :: Lens' BatchGetQueryExecutionResponse [UnprocessedQueryExecutionId]

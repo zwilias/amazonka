@@ -41,21 +41,17 @@ module Network.AWS.IAM.UpdateAccessKey
     ) where
 
 import Network.AWS.IAM.Types
-import Network.AWS.IAM.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 
 -- | /See:/ 'updateAccessKey' smart constructor.
-data UpdateAccessKey =
-  UpdateAccessKey'
-    { _uakUserName    :: !(Maybe Text)
-    , _uakAccessKeyId :: !AccessKey
-    , _uakStatus      :: !StatusType
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data UpdateAccessKey = UpdateAccessKey'{_uakUserName
+                                        :: !(Maybe Text),
+                                        _uakAccessKeyId :: !AccessKey,
+                                        _uakStatus :: !StatusType}
+                         deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'UpdateAccessKey' with the minimum fields required to make a request.
 --
@@ -70,13 +66,10 @@ updateAccessKey
     :: AccessKey -- ^ 'uakAccessKeyId'
     -> StatusType -- ^ 'uakStatus'
     -> UpdateAccessKey
-updateAccessKey pAccessKeyId_ pStatus_ =
-  UpdateAccessKey'
-    { _uakUserName = Nothing
-    , _uakAccessKeyId = pAccessKeyId_
-    , _uakStatus = pStatus_
-    }
-
+updateAccessKey pAccessKeyId_ pStatus_
+  = UpdateAccessKey'{_uakUserName = Nothing,
+                     _uakAccessKeyId = pAccessKeyId_,
+                     _uakStatus = pStatus_}
 
 -- | The name of the user whose key you want to update. This parameter allows (per its <http://wikipedia.org/wiki/regex regex pattern> ) a string of characters consisting of upper and lowercase alphanumeric characters with no spaces. You can also include any of the following characters: _+=,.@-
 uakUserName :: Lens' UpdateAccessKey (Maybe Text)
@@ -115,16 +108,14 @@ instance ToQuery UpdateAccessKey where
                "Status" =: _uakStatus]
 
 -- | /See:/ 'updateAccessKeyResponse' smart constructor.
-data UpdateAccessKeyResponse =
-  UpdateAccessKeyResponse'
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data UpdateAccessKeyResponse = UpdateAccessKeyResponse'
+                                 deriving (Eq, Read, Show, Data, Typeable,
+                                           Generic)
 
 -- | Creates a value of 'UpdateAccessKeyResponse' with the minimum fields required to make a request.
 --
 updateAccessKeyResponse
     :: UpdateAccessKeyResponse
 updateAccessKeyResponse = UpdateAccessKeyResponse'
-
 
 instance NFData UpdateAccessKeyResponse where

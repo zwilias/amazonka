@@ -38,20 +38,16 @@ module Network.AWS.IAM.DeleteRolePolicy
     ) where
 
 import Network.AWS.IAM.Types
-import Network.AWS.IAM.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 
 -- | /See:/ 'deleteRolePolicy' smart constructor.
-data DeleteRolePolicy =
-  DeleteRolePolicy'
-    { _delRoleName   :: !Text
-    , _delPolicyName :: !Text
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data DeleteRolePolicy = DeleteRolePolicy'{_delRoleName
+                                          :: !Text,
+                                          _delPolicyName :: !Text}
+                          deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'DeleteRolePolicy' with the minimum fields required to make a request.
 --
@@ -64,9 +60,9 @@ deleteRolePolicy
     :: Text -- ^ 'delRoleName'
     -> Text -- ^ 'delPolicyName'
     -> DeleteRolePolicy
-deleteRolePolicy pRoleName_ pPolicyName_ =
-  DeleteRolePolicy' {_delRoleName = pRoleName_, _delPolicyName = pPolicyName_}
-
+deleteRolePolicy pRoleName_ pPolicyName_
+  = DeleteRolePolicy'{_delRoleName = pRoleName_,
+                      _delPolicyName = pPolicyName_}
 
 -- | The name (friendly name, not ARN) identifying the role that the policy is embedded in. This parameter allows (per its <http://wikipedia.org/wiki/regex regex pattern> ) a string of characters consisting of upper and lowercase alphanumeric characters with no spaces. You can also include any of the following characters: _+=,.@-
 delRoleName :: Lens' DeleteRolePolicy Text
@@ -100,16 +96,14 @@ instance ToQuery DeleteRolePolicy where
                "PolicyName" =: _delPolicyName]
 
 -- | /See:/ 'deleteRolePolicyResponse' smart constructor.
-data DeleteRolePolicyResponse =
-  DeleteRolePolicyResponse'
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data DeleteRolePolicyResponse = DeleteRolePolicyResponse'
+                                  deriving (Eq, Read, Show, Data, Typeable,
+                                            Generic)
 
 -- | Creates a value of 'DeleteRolePolicyResponse' with the minimum fields required to make a request.
 --
 deleteRolePolicyResponse
     :: DeleteRolePolicyResponse
 deleteRolePolicyResponse = DeleteRolePolicyResponse'
-
 
 instance NFData DeleteRolePolicyResponse where

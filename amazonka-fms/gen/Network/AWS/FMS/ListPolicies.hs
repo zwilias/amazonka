@@ -40,20 +40,16 @@ module Network.AWS.FMS.ListPolicies
     ) where
 
 import Network.AWS.FMS.Types
-import Network.AWS.FMS.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 
 -- | /See:/ 'listPolicies' smart constructor.
-data ListPolicies =
-  ListPolicies'
-    { _lpNextToken  :: !(Maybe Text)
-    , _lpMaxResults :: !(Maybe Nat)
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data ListPolicies = ListPolicies'{_lpNextToken ::
+                                  !(Maybe Text),
+                                  _lpMaxResults :: !(Maybe Nat)}
+                      deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'ListPolicies' with the minimum fields required to make a request.
 --
@@ -64,8 +60,9 @@ data ListPolicies =
 -- * 'lpMaxResults' - Specifies the number of @PolicySummary@ objects that you want AWS Firewall Manager to return for this request. If you have more @PolicySummary@ objects than the number that you specify for @MaxResults@ , the response includes a @NextToken@ value that you can use to get another batch of @PolicySummary@ objects.
 listPolicies
     :: ListPolicies
-listPolicies = ListPolicies' {_lpNextToken = Nothing, _lpMaxResults = Nothing}
-
+listPolicies
+  = ListPolicies'{_lpNextToken = Nothing,
+                  _lpMaxResults = Nothing}
 
 -- | If you specify a value for @MaxResults@ and you have more @PolicySummary@ objects than the number that you specify for @MaxResults@ , AWS Firewall Manager returns a @NextToken@ value in the response that allows you to list another group of @PolicySummary@ objects. For the second and subsequent @ListPolicies@ requests, specify the value of @NextToken@ from the previous response to get information about another batch of @PolicySummary@ objects.
 lpNextToken :: Lens' ListPolicies (Maybe Text)
@@ -113,14 +110,12 @@ instance ToQuery ListPolicies where
         toQuery = const mempty
 
 -- | /See:/ 'listPoliciesResponse' smart constructor.
-data ListPoliciesResponse =
-  ListPoliciesResponse'
-    { _lprsNextToken      :: !(Maybe Text)
-    , _lprsPolicyList     :: !(Maybe [PolicySummary])
-    , _lprsResponseStatus :: !Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data ListPoliciesResponse = ListPoliciesResponse'{_lprsNextToken
+                                                  :: !(Maybe Text),
+                                                  _lprsPolicyList ::
+                                                  !(Maybe [PolicySummary]),
+                                                  _lprsResponseStatus :: !Int}
+                              deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'ListPoliciesResponse' with the minimum fields required to make a request.
 --
@@ -134,13 +129,10 @@ data ListPoliciesResponse =
 listPoliciesResponse
     :: Int -- ^ 'lprsResponseStatus'
     -> ListPoliciesResponse
-listPoliciesResponse pResponseStatus_ =
-  ListPoliciesResponse'
-    { _lprsNextToken = Nothing
-    , _lprsPolicyList = Nothing
-    , _lprsResponseStatus = pResponseStatus_
-    }
-
+listPoliciesResponse pResponseStatus_
+  = ListPoliciesResponse'{_lprsNextToken = Nothing,
+                          _lprsPolicyList = Nothing,
+                          _lprsResponseStatus = pResponseStatus_}
 
 -- | If you have more @PolicySummary@ objects than the number that you specified for @MaxResults@ in the request, the response includes a @NextToken@ value. To list more @PolicySummary@ objects, submit another @ListPolicies@ request, and specify the @NextToken@ value from the response in the @NextToken@ value in the next request.
 lprsNextToken :: Lens' ListPoliciesResponse (Maybe Text)

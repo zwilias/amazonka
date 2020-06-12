@@ -18,10 +18,10 @@
 -- Stability   : auto-generated
 -- Portability : non-portable (GHC extensions)
 --
--- Creates a display name for a customer master key (CMK). You can use an alias to identify a CMK in selected operations, such as 'Encrypt' and 'GenerateDataKey' .
+-- Creates a display name for a customer master key (CMK). You can use an alias to identify a CMK in selected operations, such as 'Encrypt' and 'GenerateDataKey' . 
 --
 --
--- Each CMK can have multiple aliases, but each alias points to only one CMK. The alias name must be unique in the AWS account and region. To simplify code that runs in multiple regions, use the same alias name, but point it to a different CMK in each region.
+-- Each CMK can have multiple aliases, but each alias points to only one CMK. The alias name must be unique in the AWS account and region. To simplify code that runs in multiple regions, use the same alias name, but point it to a different CMK in each region. 
 --
 -- Because an alias is not a property of a CMK, you can delete and change the aliases of a CMK without affecting the CMK. Also, aliases do not appear in the response from the 'DescribeKey' operation. To get the aliases of all CMKs, use the 'ListAliases' operation.
 --
@@ -46,20 +46,16 @@ module Network.AWS.KMS.CreateAlias
     ) where
 
 import Network.AWS.KMS.Types
-import Network.AWS.KMS.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 
 -- | /See:/ 'createAlias' smart constructor.
-data CreateAlias =
-  CreateAlias'
-    { _caAliasName   :: !Text
-    , _caTargetKeyId :: !Text
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data CreateAlias = CreateAlias'{_caAliasName ::
+                                !Text,
+                                _caTargetKeyId :: !Text}
+                     deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'CreateAlias' with the minimum fields required to make a request.
 --
@@ -72,9 +68,9 @@ createAlias
     :: Text -- ^ 'caAliasName'
     -> Text -- ^ 'caTargetKeyId'
     -> CreateAlias
-createAlias pAliasName_ pTargetKeyId_ =
-  CreateAlias' {_caAliasName = pAliasName_, _caTargetKeyId = pTargetKeyId_}
-
+createAlias pAliasName_ pTargetKeyId_
+  = CreateAlias'{_caAliasName = pAliasName_,
+                 _caTargetKeyId = pTargetKeyId_}
 
 -- | String that contains the display name. The name must start with the word "alias" followed by a forward slash (alias/). Aliases that begin with "alias/AWS" are reserved.
 caAliasName :: Lens' CreateAlias Text
@@ -116,16 +112,13 @@ instance ToQuery CreateAlias where
         toQuery = const mempty
 
 -- | /See:/ 'createAliasResponse' smart constructor.
-data CreateAliasResponse =
-  CreateAliasResponse'
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data CreateAliasResponse = CreateAliasResponse'
+                             deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'CreateAliasResponse' with the minimum fields required to make a request.
 --
 createAliasResponse
     :: CreateAliasResponse
 createAliasResponse = CreateAliasResponse'
-
 
 instance NFData CreateAliasResponse where

@@ -42,21 +42,26 @@ module Network.AWS.DirectConnect.UpdateDirectConnectGatewayAssociation
     ) where
 
 import Network.AWS.DirectConnect.Types
-import Network.AWS.DirectConnect.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 
 -- | /See:/ 'updateDirectConnectGatewayAssociation' smart constructor.
-data UpdateDirectConnectGatewayAssociation =
-  UpdateDirectConnectGatewayAssociation'
-    { _udcgaAssociationId :: !(Maybe Text)
-    , _udcgaAddAllowedPrefixesToDirectConnectGateway :: !(Maybe [RouteFilterPrefix])
-    , _udcgaRemoveAllowedPrefixesToDirectConnectGateway :: !(Maybe [RouteFilterPrefix])
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data UpdateDirectConnectGatewayAssociation = UpdateDirectConnectGatewayAssociation'{_udcgaAssociationId
+                                                                                    ::
+                                                                                    !(Maybe
+                                                                                        Text),
+                                                                                    _udcgaAddAllowedPrefixesToDirectConnectGateway
+                                                                                    ::
+                                                                                    !(Maybe
+                                                                                        [RouteFilterPrefix]),
+                                                                                    _udcgaRemoveAllowedPrefixesToDirectConnectGateway
+                                                                                    ::
+                                                                                    !(Maybe
+                                                                                        [RouteFilterPrefix])}
+                                               deriving (Eq, Read, Show, Data,
+                                                         Typeable, Generic)
 
 -- | Creates a value of 'UpdateDirectConnectGatewayAssociation' with the minimum fields required to make a request.
 --
@@ -69,13 +74,13 @@ data UpdateDirectConnectGatewayAssociation =
 -- * 'udcgaRemoveAllowedPrefixesToDirectConnectGateway' - The Amazon VPC prefixes to no longer advertise to the Direct Connect gateway.
 updateDirectConnectGatewayAssociation
     :: UpdateDirectConnectGatewayAssociation
-updateDirectConnectGatewayAssociation =
-  UpdateDirectConnectGatewayAssociation'
-    { _udcgaAssociationId = Nothing
-    , _udcgaAddAllowedPrefixesToDirectConnectGateway = Nothing
-    , _udcgaRemoveAllowedPrefixesToDirectConnectGateway = Nothing
-    }
-
+updateDirectConnectGatewayAssociation
+  = UpdateDirectConnectGatewayAssociation'{_udcgaAssociationId
+                                             = Nothing,
+                                           _udcgaAddAllowedPrefixesToDirectConnectGateway
+                                             = Nothing,
+                                           _udcgaRemoveAllowedPrefixesToDirectConnectGateway
+                                             = Nothing}
 
 -- | The ID of the Direct Connect gateway association.
 udcgaAssociationId :: Lens' UpdateDirectConnectGatewayAssociation (Maybe Text)
@@ -143,13 +148,16 @@ instance ToQuery
         toQuery = const mempty
 
 -- | /See:/ 'updateDirectConnectGatewayAssociationResponse' smart constructor.
-data UpdateDirectConnectGatewayAssociationResponse =
-  UpdateDirectConnectGatewayAssociationResponse'
-    { _udcgarsDirectConnectGatewayAssociation :: !(Maybe DirectConnectGatewayAssociation)
-    , _udcgarsResponseStatus :: !Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data UpdateDirectConnectGatewayAssociationResponse = UpdateDirectConnectGatewayAssociationResponse'{_udcgarsDirectConnectGatewayAssociation
+                                                                                                    ::
+                                                                                                    !(Maybe
+                                                                                                        DirectConnectGatewayAssociation),
+                                                                                                    _udcgarsResponseStatus
+                                                                                                    ::
+                                                                                                    !Int}
+                                                       deriving (Eq, Read, Show,
+                                                                 Data, Typeable,
+                                                                 Generic)
 
 -- | Creates a value of 'UpdateDirectConnectGatewayAssociationResponse' with the minimum fields required to make a request.
 --
@@ -161,12 +169,12 @@ data UpdateDirectConnectGatewayAssociationResponse =
 updateDirectConnectGatewayAssociationResponse
     :: Int -- ^ 'udcgarsResponseStatus'
     -> UpdateDirectConnectGatewayAssociationResponse
-updateDirectConnectGatewayAssociationResponse pResponseStatus_ =
-  UpdateDirectConnectGatewayAssociationResponse'
-    { _udcgarsDirectConnectGatewayAssociation = Nothing
-    , _udcgarsResponseStatus = pResponseStatus_
-    }
-
+updateDirectConnectGatewayAssociationResponse
+  pResponseStatus_
+  = UpdateDirectConnectGatewayAssociationResponse'{_udcgarsDirectConnectGatewayAssociation
+                                                     = Nothing,
+                                                   _udcgarsResponseStatus =
+                                                     pResponseStatus_}
 
 -- | Undocumented member.
 udcgarsDirectConnectGatewayAssociation :: Lens' UpdateDirectConnectGatewayAssociationResponse (Maybe DirectConnectGatewayAssociation)

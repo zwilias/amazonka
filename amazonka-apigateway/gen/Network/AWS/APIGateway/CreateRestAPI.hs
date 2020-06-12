@@ -57,7 +57,6 @@ module Network.AWS.APIGateway.CreateRestAPI
     ) where
 
 import Network.AWS.APIGateway.Types
-import Network.AWS.APIGateway.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.Request
@@ -68,21 +67,20 @@ import Network.AWS.Response
 --
 --
 -- /See:/ 'createRestAPI' smart constructor.
-data CreateRestAPI =
-  CreateRestAPI'
-    { _craMinimumCompressionSize :: !(Maybe Int)
-    , _craBinaryMediaTypes       :: !(Maybe [Text])
-    , _craVersion                :: !(Maybe Text)
-    , _craApiKeySource           :: !(Maybe APIKeySourceType)
-    , _craCloneFrom              :: !(Maybe Text)
-    , _craPolicy                 :: !(Maybe Text)
-    , _craEndpointConfiguration  :: !(Maybe EndpointConfiguration)
-    , _craDescription            :: !(Maybe Text)
-    , _craTags                   :: !(Maybe (Map Text Text))
-    , _craName                   :: !Text
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data CreateRestAPI = CreateRestAPI'{_craMinimumCompressionSize
+                                    :: !(Maybe Int),
+                                    _craBinaryMediaTypes :: !(Maybe [Text]),
+                                    _craVersion :: !(Maybe Text),
+                                    _craApiKeySource ::
+                                    !(Maybe APIKeySourceType),
+                                    _craCloneFrom :: !(Maybe Text),
+                                    _craPolicy :: !(Maybe Text),
+                                    _craEndpointConfiguration ::
+                                    !(Maybe EndpointConfiguration),
+                                    _craDescription :: !(Maybe Text),
+                                    _craTags :: !(Maybe (Map Text Text)),
+                                    _craName :: !Text}
+                       deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'CreateRestAPI' with the minimum fields required to make a request.
 --
@@ -98,9 +96,9 @@ data CreateRestAPI =
 --
 -- * 'craCloneFrom' - The ID of the 'RestApi' that you want to clone from.
 --
--- * 'craPolicy' - 'Method'
+-- * 'craPolicy' - 'Method' 
 --
--- * 'craEndpointConfiguration' - The endpoint configuration of this 'RestApi' showing the endpoint types of the API.
+-- * 'craEndpointConfiguration' - The endpoint configuration of this 'RestApi' showing the endpoint types of the API. 
 --
 -- * 'craDescription' - The description of the 'RestApi' .
 --
@@ -110,20 +108,15 @@ data CreateRestAPI =
 createRestAPI
     :: Text -- ^ 'craName'
     -> CreateRestAPI
-createRestAPI pName_ =
-  CreateRestAPI'
-    { _craMinimumCompressionSize = Nothing
-    , _craBinaryMediaTypes = Nothing
-    , _craVersion = Nothing
-    , _craApiKeySource = Nothing
-    , _craCloneFrom = Nothing
-    , _craPolicy = Nothing
-    , _craEndpointConfiguration = Nothing
-    , _craDescription = Nothing
-    , _craTags = Nothing
-    , _craName = pName_
-    }
-
+createRestAPI pName_
+  = CreateRestAPI'{_craMinimumCompressionSize =
+                     Nothing,
+                   _craBinaryMediaTypes = Nothing,
+                   _craVersion = Nothing, _craApiKeySource = Nothing,
+                   _craCloneFrom = Nothing, _craPolicy = Nothing,
+                   _craEndpointConfiguration = Nothing,
+                   _craDescription = Nothing, _craTags = Nothing,
+                   _craName = pName_}
 
 -- | A nullable integer that is used to enable compression (with non-negative between 0 and 10485760 (10M) bytes, inclusive) or disable compression (with a null value) on an API. When compression is enabled, compression or decompression is not applied on the payload if the payload size is smaller than this value. Setting it to zero allows compression for any payload size.
 craMinimumCompressionSize :: Lens' CreateRestAPI (Maybe Int)
@@ -145,11 +138,11 @@ craApiKeySource = lens _craApiKeySource (\ s a -> s{_craApiKeySource = a})
 craCloneFrom :: Lens' CreateRestAPI (Maybe Text)
 craCloneFrom = lens _craCloneFrom (\ s a -> s{_craCloneFrom = a})
 
--- | 'Method'
+-- | 'Method' 
 craPolicy :: Lens' CreateRestAPI (Maybe Text)
 craPolicy = lens _craPolicy (\ s a -> s{_craPolicy = a})
 
--- | The endpoint configuration of this 'RestApi' showing the endpoint types of the API.
+-- | The endpoint configuration of this 'RestApi' showing the endpoint types of the API. 
 craEndpointConfiguration :: Lens' CreateRestAPI (Maybe EndpointConfiguration)
 craEndpointConfiguration = lens _craEndpointConfiguration (\ s a -> s{_craEndpointConfiguration = a})
 

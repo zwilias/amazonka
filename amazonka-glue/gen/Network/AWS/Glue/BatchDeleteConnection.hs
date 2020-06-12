@@ -40,20 +40,18 @@ module Network.AWS.Glue.BatchDeleteConnection
     ) where
 
 import Network.AWS.Glue.Types
-import Network.AWS.Glue.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 
 -- | /See:/ 'batchDeleteConnection' smart constructor.
-data BatchDeleteConnection =
-  BatchDeleteConnection'
-    { _bdcCatalogId          :: !(Maybe Text)
-    , _bdcConnectionNameList :: ![Text]
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data BatchDeleteConnection = BatchDeleteConnection'{_bdcCatalogId
+                                                    :: !(Maybe Text),
+                                                    _bdcConnectionNameList ::
+                                                    ![Text]}
+                               deriving (Eq, Read, Show, Data, Typeable,
+                                         Generic)
 
 -- | Creates a value of 'BatchDeleteConnection' with the minimum fields required to make a request.
 --
@@ -64,10 +62,9 @@ data BatchDeleteConnection =
 -- * 'bdcConnectionNameList' - A list of names of the connections to delete.
 batchDeleteConnection
     :: BatchDeleteConnection
-batchDeleteConnection =
-  BatchDeleteConnection'
-    {_bdcCatalogId = Nothing, _bdcConnectionNameList = mempty}
-
+batchDeleteConnection
+  = BatchDeleteConnection'{_bdcCatalogId = Nothing,
+                           _bdcConnectionNameList = mempty}
 
 -- | The ID of the Data Catalog in which the connections reside. If none is supplied, the AWS account ID is used by default.
 bdcCatalogId :: Lens' BatchDeleteConnection (Maybe Text)
@@ -117,14 +114,20 @@ instance ToQuery BatchDeleteConnection where
         toQuery = const mempty
 
 -- | /See:/ 'batchDeleteConnectionResponse' smart constructor.
-data BatchDeleteConnectionResponse =
-  BatchDeleteConnectionResponse'
-    { _bdcrsSucceeded      :: !(Maybe [Text])
-    , _bdcrsErrors         :: !(Maybe (Map Text ErrorDetail))
-    , _bdcrsResponseStatus :: !Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data BatchDeleteConnectionResponse = BatchDeleteConnectionResponse'{_bdcrsSucceeded
+                                                                    ::
+                                                                    !(Maybe
+                                                                        [Text]),
+                                                                    _bdcrsErrors
+                                                                    ::
+                                                                    !(Maybe
+                                                                        (Map
+                                                                           Text
+                                                                           ErrorDetail)),
+                                                                    _bdcrsResponseStatus
+                                                                    :: !Int}
+                                       deriving (Eq, Read, Show, Data, Typeable,
+                                                 Generic)
 
 -- | Creates a value of 'BatchDeleteConnectionResponse' with the minimum fields required to make a request.
 --
@@ -138,13 +141,11 @@ data BatchDeleteConnectionResponse =
 batchDeleteConnectionResponse
     :: Int -- ^ 'bdcrsResponseStatus'
     -> BatchDeleteConnectionResponse
-batchDeleteConnectionResponse pResponseStatus_ =
-  BatchDeleteConnectionResponse'
-    { _bdcrsSucceeded = Nothing
-    , _bdcrsErrors = Nothing
-    , _bdcrsResponseStatus = pResponseStatus_
-    }
-
+batchDeleteConnectionResponse pResponseStatus_
+  = BatchDeleteConnectionResponse'{_bdcrsSucceeded =
+                                     Nothing,
+                                   _bdcrsErrors = Nothing,
+                                   _bdcrsResponseStatus = pResponseStatus_}
 
 -- | A list of names of the connection definitions that were successfully deleted.
 bdcrsSucceeded :: Lens' BatchDeleteConnectionResponse [Text]

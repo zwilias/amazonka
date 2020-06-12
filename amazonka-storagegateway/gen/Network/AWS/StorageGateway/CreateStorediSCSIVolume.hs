@@ -53,36 +53,37 @@ import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 import Network.AWS.StorageGateway.Types
-import Network.AWS.StorageGateway.Types.Product
 
 -- | A JSON object containing one or more of the following fields:
 --
 --
---     * 'CreateStorediSCSIVolumeInput$DiskId'
+--     * 'CreateStorediSCSIVolumeInput$DiskId' 
 --
---     * 'CreateStorediSCSIVolumeInput$NetworkInterfaceId'
+--     * 'CreateStorediSCSIVolumeInput$NetworkInterfaceId' 
 --
---     * 'CreateStorediSCSIVolumeInput$PreserveExistingData'
+--     * 'CreateStorediSCSIVolumeInput$PreserveExistingData' 
 --
---     * 'CreateStorediSCSIVolumeInput$SnapshotId'
+--     * 'CreateStorediSCSIVolumeInput$SnapshotId' 
 --
---     * 'CreateStorediSCSIVolumeInput$TargetName'
+--     * 'CreateStorediSCSIVolumeInput$TargetName' 
 --
 --
 --
 --
 -- /See:/ 'createStorediSCSIVolume' smart constructor.
-data CreateStorediSCSIVolume =
-  CreateStorediSCSIVolume'
-    { _csscsivSnapshotId           :: !(Maybe Text)
-    , _csscsivGatewayARN           :: !Text
-    , _csscsivDiskId               :: !Text
-    , _csscsivPreserveExistingData :: !Bool
-    , _csscsivTargetName           :: !Text
-    , _csscsivNetworkInterfaceId   :: !Text
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data CreateStorediSCSIVolume = CreateStorediSCSIVolume'{_csscsivSnapshotId
+                                                        :: !(Maybe Text),
+                                                        _csscsivGatewayARN ::
+                                                        !Text,
+                                                        _csscsivDiskId :: !Text,
+                                                        _csscsivPreserveExistingData
+                                                        :: !Bool,
+                                                        _csscsivTargetName ::
+                                                        !Text,
+                                                        _csscsivNetworkInterfaceId
+                                                        :: !Text}
+                                 deriving (Eq, Read, Show, Data, Typeable,
+                                           Generic)
 
 -- | Creates a value of 'CreateStorediSCSIVolume' with the minimum fields required to make a request.
 --
@@ -106,16 +107,17 @@ createStorediSCSIVolume
     -> Text -- ^ 'csscsivTargetName'
     -> Text -- ^ 'csscsivNetworkInterfaceId'
     -> CreateStorediSCSIVolume
-createStorediSCSIVolume pGatewayARN_ pDiskId_ pPreserveExistingData_ pTargetName_ pNetworkInterfaceId_ =
-  CreateStorediSCSIVolume'
-    { _csscsivSnapshotId = Nothing
-    , _csscsivGatewayARN = pGatewayARN_
-    , _csscsivDiskId = pDiskId_
-    , _csscsivPreserveExistingData = pPreserveExistingData_
-    , _csscsivTargetName = pTargetName_
-    , _csscsivNetworkInterfaceId = pNetworkInterfaceId_
-    }
-
+createStorediSCSIVolume pGatewayARN_ pDiskId_
+  pPreserveExistingData_ pTargetName_
+  pNetworkInterfaceId_
+  = CreateStorediSCSIVolume'{_csscsivSnapshotId =
+                               Nothing,
+                             _csscsivGatewayARN = pGatewayARN_,
+                             _csscsivDiskId = pDiskId_,
+                             _csscsivPreserveExistingData =
+                               pPreserveExistingData_,
+                             _csscsivTargetName = pTargetName_,
+                             _csscsivNetworkInterfaceId = pNetworkInterfaceId_}
 
 -- | The snapshot ID (e.g. "snap-1122aabb") of the snapshot to restore as the new stored volume. Specify this field if you want to create the iSCSI storage volume from a snapshot otherwise do not include this field. To list snapshots for your account use <http://docs.aws.amazon.com/AWSEC2/latest/APIReference/ApiReference-query-DescribeSnapshots.html DescribeSnapshots> in the /Amazon Elastic Compute Cloud API Reference/ .
 csscsivSnapshotId :: Lens' CreateStorediSCSIVolume (Maybe Text)
@@ -193,15 +195,22 @@ instance ToQuery CreateStorediSCSIVolume where
 --
 --
 -- /See:/ 'createStorediSCSIVolumeResponse' smart constructor.
-data CreateStorediSCSIVolumeResponse =
-  CreateStorediSCSIVolumeResponse'
-    { _csscsivrsTargetARN         :: !(Maybe Text)
-    , _csscsivrsVolumeARN         :: !(Maybe Text)
-    , _csscsivrsVolumeSizeInBytes :: !(Maybe Integer)
-    , _csscsivrsResponseStatus    :: !Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data CreateStorediSCSIVolumeResponse = CreateStorediSCSIVolumeResponse'{_csscsivrsTargetARN
+                                                                        ::
+                                                                        !(Maybe
+                                                                            Text),
+                                                                        _csscsivrsVolumeARN
+                                                                        ::
+                                                                        !(Maybe
+                                                                            Text),
+                                                                        _csscsivrsVolumeSizeInBytes
+                                                                        ::
+                                                                        !(Maybe
+                                                                            Integer),
+                                                                        _csscsivrsResponseStatus
+                                                                        :: !Int}
+                                         deriving (Eq, Read, Show, Data,
+                                                   Typeable, Generic)
 
 -- | Creates a value of 'CreateStorediSCSIVolumeResponse' with the minimum fields required to make a request.
 --
@@ -217,14 +226,13 @@ data CreateStorediSCSIVolumeResponse =
 createStorediSCSIVolumeResponse
     :: Int -- ^ 'csscsivrsResponseStatus'
     -> CreateStorediSCSIVolumeResponse
-createStorediSCSIVolumeResponse pResponseStatus_ =
-  CreateStorediSCSIVolumeResponse'
-    { _csscsivrsTargetARN = Nothing
-    , _csscsivrsVolumeARN = Nothing
-    , _csscsivrsVolumeSizeInBytes = Nothing
-    , _csscsivrsResponseStatus = pResponseStatus_
-    }
-
+createStorediSCSIVolumeResponse pResponseStatus_
+  = CreateStorediSCSIVolumeResponse'{_csscsivrsTargetARN
+                                       = Nothing,
+                                     _csscsivrsVolumeARN = Nothing,
+                                     _csscsivrsVolumeSizeInBytes = Nothing,
+                                     _csscsivrsResponseStatus =
+                                       pResponseStatus_}
 
 -- | he Amazon Resource Name (ARN) of the volume target that includes the iSCSI name that initiators can use to connect to the target.
 csscsivrsTargetARN :: Lens' CreateStorediSCSIVolumeResponse (Maybe Text)

@@ -46,7 +46,6 @@ module Network.AWS.CodeCommit.GetCommentsForPullRequest
     ) where
 
 import Network.AWS.CodeCommit.Types
-import Network.AWS.CodeCommit.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Pager
 import Network.AWS.Prelude
@@ -54,17 +53,20 @@ import Network.AWS.Request
 import Network.AWS.Response
 
 -- | /See:/ 'getCommentsForPullRequest' smart constructor.
-data GetCommentsForPullRequest =
-  GetCommentsForPullRequest'
-    { _gcfprAfterCommitId  :: !(Maybe Text)
-    , _gcfprNextToken      :: !(Maybe Text)
-    , _gcfprBeforeCommitId :: !(Maybe Text)
-    , _gcfprRepositoryName :: !(Maybe Text)
-    , _gcfprMaxResults     :: !(Maybe Int)
-    , _gcfprPullRequestId  :: !Text
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data GetCommentsForPullRequest = GetCommentsForPullRequest'{_gcfprAfterCommitId
+                                                            :: !(Maybe Text),
+                                                            _gcfprNextToken ::
+                                                            !(Maybe Text),
+                                                            _gcfprBeforeCommitId
+                                                            :: !(Maybe Text),
+                                                            _gcfprRepositoryName
+                                                            :: !(Maybe Text),
+                                                            _gcfprMaxResults ::
+                                                            !(Maybe Int),
+                                                            _gcfprPullRequestId
+                                                            :: !Text}
+                                   deriving (Eq, Read, Show, Data, Typeable,
+                                             Generic)
 
 -- | Creates a value of 'GetCommentsForPullRequest' with the minimum fields required to make a request.
 --
@@ -84,16 +86,14 @@ data GetCommentsForPullRequest =
 getCommentsForPullRequest
     :: Text -- ^ 'gcfprPullRequestId'
     -> GetCommentsForPullRequest
-getCommentsForPullRequest pPullRequestId_ =
-  GetCommentsForPullRequest'
-    { _gcfprAfterCommitId = Nothing
-    , _gcfprNextToken = Nothing
-    , _gcfprBeforeCommitId = Nothing
-    , _gcfprRepositoryName = Nothing
-    , _gcfprMaxResults = Nothing
-    , _gcfprPullRequestId = pPullRequestId_
-    }
-
+getCommentsForPullRequest pPullRequestId_
+  = GetCommentsForPullRequest'{_gcfprAfterCommitId =
+                                 Nothing,
+                               _gcfprNextToken = Nothing,
+                               _gcfprBeforeCommitId = Nothing,
+                               _gcfprRepositoryName = Nothing,
+                               _gcfprMaxResults = Nothing,
+                               _gcfprPullRequestId = pPullRequestId_}
 
 -- | The full commit ID of the commit in the source branch that was the tip of the branch at the time the comment was made.
 gcfprAfterCommitId :: Lens' GetCommentsForPullRequest (Maybe Text)
@@ -171,14 +171,19 @@ instance ToQuery GetCommentsForPullRequest where
         toQuery = const mempty
 
 -- | /See:/ 'getCommentsForPullRequestResponse' smart constructor.
-data GetCommentsForPullRequestResponse =
-  GetCommentsForPullRequestResponse'
-    { _gcfprrsCommentsForPullRequestData :: !(Maybe [CommentsForPullRequest])
-    , _gcfprrsNextToken                  :: !(Maybe Text)
-    , _gcfprrsResponseStatus             :: !Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data GetCommentsForPullRequestResponse = GetCommentsForPullRequestResponse'{_gcfprrsCommentsForPullRequestData
+                                                                            ::
+                                                                            !(Maybe
+                                                                                [CommentsForPullRequest]),
+                                                                            _gcfprrsNextToken
+                                                                            ::
+                                                                            !(Maybe
+                                                                                Text),
+                                                                            _gcfprrsResponseStatus
+                                                                            ::
+                                                                            !Int}
+                                           deriving (Eq, Read, Show, Data,
+                                                     Typeable, Generic)
 
 -- | Creates a value of 'GetCommentsForPullRequestResponse' with the minimum fields required to make a request.
 --
@@ -192,13 +197,12 @@ data GetCommentsForPullRequestResponse =
 getCommentsForPullRequestResponse
     :: Int -- ^ 'gcfprrsResponseStatus'
     -> GetCommentsForPullRequestResponse
-getCommentsForPullRequestResponse pResponseStatus_ =
-  GetCommentsForPullRequestResponse'
-    { _gcfprrsCommentsForPullRequestData = Nothing
-    , _gcfprrsNextToken = Nothing
-    , _gcfprrsResponseStatus = pResponseStatus_
-    }
-
+getCommentsForPullRequestResponse pResponseStatus_
+  = GetCommentsForPullRequestResponse'{_gcfprrsCommentsForPullRequestData
+                                         = Nothing,
+                                       _gcfprrsNextToken = Nothing,
+                                       _gcfprrsResponseStatus =
+                                         pResponseStatus_}
 
 -- | An array of comment objects on the pull request.
 gcfprrsCommentsForPullRequestData :: Lens' GetCommentsForPullRequestResponse [CommentsForPullRequest]

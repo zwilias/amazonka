@@ -37,18 +37,14 @@ module Network.AWS.Pinpoint.CreateApp
 
 import Network.AWS.Lens
 import Network.AWS.Pinpoint.Types
-import Network.AWS.Pinpoint.Types.Product
 import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 
 -- | /See:/ 'createApp' smart constructor.
-newtype CreateApp =
-  CreateApp'
-    { _caCreateApplicationRequest :: CreateApplicationRequest
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+newtype CreateApp = CreateApp'{_caCreateApplicationRequest
+                               :: CreateApplicationRequest}
+                      deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'CreateApp' with the minimum fields required to make a request.
 --
@@ -58,9 +54,9 @@ newtype CreateApp =
 createApp
     :: CreateApplicationRequest -- ^ 'caCreateApplicationRequest'
     -> CreateApp
-createApp pCreateApplicationRequest_ =
-  CreateApp' {_caCreateApplicationRequest = pCreateApplicationRequest_}
-
+createApp pCreateApplicationRequest_
+  = CreateApp'{_caCreateApplicationRequest =
+                 pCreateApplicationRequest_}
 
 -- | Undocumented member.
 caCreateApplicationRequest :: Lens' CreateApp CreateApplicationRequest
@@ -101,13 +97,11 @@ instance ToQuery CreateApp where
         toQuery = const mempty
 
 -- | /See:/ 'createAppResponse' smart constructor.
-data CreateAppResponse =
-  CreateAppResponse'
-    { _carsResponseStatus      :: !Int
-    , _carsApplicationResponse :: !ApplicationResponse
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data CreateAppResponse = CreateAppResponse'{_carsResponseStatus
+                                            :: !Int,
+                                            _carsApplicationResponse ::
+                                            !ApplicationResponse}
+                           deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'CreateAppResponse' with the minimum fields required to make a request.
 --
@@ -120,12 +114,11 @@ createAppResponse
     :: Int -- ^ 'carsResponseStatus'
     -> ApplicationResponse -- ^ 'carsApplicationResponse'
     -> CreateAppResponse
-createAppResponse pResponseStatus_ pApplicationResponse_ =
-  CreateAppResponse'
-    { _carsResponseStatus = pResponseStatus_
-    , _carsApplicationResponse = pApplicationResponse_
-    }
-
+createAppResponse pResponseStatus_
+  pApplicationResponse_
+  = CreateAppResponse'{_carsResponseStatus =
+                         pResponseStatus_,
+                       _carsApplicationResponse = pApplicationResponse_}
 
 -- | -- | The response status code.
 carsResponseStatus :: Lens' CreateAppResponse Int

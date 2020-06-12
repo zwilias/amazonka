@@ -40,20 +40,19 @@ module Network.AWS.MigrationHub.NotifyApplicationState
 
 import Network.AWS.Lens
 import Network.AWS.MigrationHub.Types
-import Network.AWS.MigrationHub.Types.Product
 import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 
 -- | /See:/ 'notifyApplicationState' smart constructor.
-data NotifyApplicationState =
-  NotifyApplicationState'
-    { _nasDryRun        :: !(Maybe Bool)
-    , _nasApplicationId :: !Text
-    , _nasStatus        :: !ApplicationStatus
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data NotifyApplicationState = NotifyApplicationState'{_nasDryRun
+                                                      :: !(Maybe Bool),
+                                                      _nasApplicationId ::
+                                                      !Text,
+                                                      _nasStatus ::
+                                                      !ApplicationStatus}
+                                deriving (Eq, Read, Show, Data, Typeable,
+                                          Generic)
 
 -- | Creates a value of 'NotifyApplicationState' with the minimum fields required to make a request.
 --
@@ -68,13 +67,10 @@ notifyApplicationState
     :: Text -- ^ 'nasApplicationId'
     -> ApplicationStatus -- ^ 'nasStatus'
     -> NotifyApplicationState
-notifyApplicationState pApplicationId_ pStatus_ =
-  NotifyApplicationState'
-    { _nasDryRun = Nothing
-    , _nasApplicationId = pApplicationId_
-    , _nasStatus = pStatus_
-    }
-
+notifyApplicationState pApplicationId_ pStatus_
+  = NotifyApplicationState'{_nasDryRun = Nothing,
+                            _nasApplicationId = pApplicationId_,
+                            _nasStatus = pStatus_}
 
 -- | Optional boolean flag to indicate whether any effect should take place. Used to test if the caller has permission to make the call.
 nasDryRun :: Lens' NotifyApplicationState (Maybe Bool)
@@ -127,12 +123,10 @@ instance ToQuery NotifyApplicationState where
         toQuery = const mempty
 
 -- | /See:/ 'notifyApplicationStateResponse' smart constructor.
-newtype NotifyApplicationStateResponse =
-  NotifyApplicationStateResponse'
-    { _nasrsResponseStatus :: Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+newtype NotifyApplicationStateResponse = NotifyApplicationStateResponse'{_nasrsResponseStatus
+                                                                         :: Int}
+                                           deriving (Eq, Read, Show, Data,
+                                                     Typeable, Generic)
 
 -- | Creates a value of 'NotifyApplicationStateResponse' with the minimum fields required to make a request.
 --
@@ -142,9 +136,9 @@ newtype NotifyApplicationStateResponse =
 notifyApplicationStateResponse
     :: Int -- ^ 'nasrsResponseStatus'
     -> NotifyApplicationStateResponse
-notifyApplicationStateResponse pResponseStatus_ =
-  NotifyApplicationStateResponse' {_nasrsResponseStatus = pResponseStatus_}
-
+notifyApplicationStateResponse pResponseStatus_
+  = NotifyApplicationStateResponse'{_nasrsResponseStatus
+                                      = pResponseStatus_}
 
 -- | -- | The response status code.
 nasrsResponseStatus :: Lens' NotifyApplicationStateResponse Int

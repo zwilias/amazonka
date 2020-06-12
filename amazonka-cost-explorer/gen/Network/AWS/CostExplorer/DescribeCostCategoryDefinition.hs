@@ -21,7 +21,7 @@
 -- Returns the name, ARN, rules, definition, and effective dates of a Cost Category that's defined in the account.
 --
 --
--- You have the option to use @EffectiveOn@ to return a Cost Category that is active on a specific date. If there is no @EffectiveOn@ specified, you’ll see a Cost Category that is effective on the current date. If Cost Category is still effective, @EffectiveEnd@ is omitted in the response.
+-- You have the option to use @EffectiveOn@ to return a Cost Category that is active on a specific date. If there is no @EffectiveOn@ specified, you’ll see a Cost Category that is effective on the current date. If Cost Category is still effective, @EffectiveEnd@ is omitted in the response. 
 --
 module Network.AWS.CostExplorer.DescribeCostCategoryDefinition
     (
@@ -41,41 +41,41 @@ module Network.AWS.CostExplorer.DescribeCostCategoryDefinition
     ) where
 
 import Network.AWS.CostExplorer.Types
-import Network.AWS.CostExplorer.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 
 -- | /See:/ 'describeCostCategoryDefinition' smart constructor.
-data DescribeCostCategoryDefinition =
-  DescribeCostCategoryDefinition'
-    { _dEffectiveOn     :: !(Maybe Text)
-    , _dCostCategoryARN :: !Text
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data DescribeCostCategoryDefinition = DescribeCostCategoryDefinition'{_dEffectiveOn
+                                                                      ::
+                                                                      !(Maybe
+                                                                          Text),
+                                                                      _dCostCategoryARN
+                                                                      :: !Text}
+                                        deriving (Eq, Read, Show, Data,
+                                                  Typeable, Generic)
 
 -- | Creates a value of 'DescribeCostCategoryDefinition' with the minimum fields required to make a request.
 --
 -- Use one of the following lenses to modify other fields as desired:
 --
--- * 'dEffectiveOn' - The date when the Cost Category was effective.
+-- * 'dEffectiveOn' - The date when the Cost Category was effective. 
 --
--- * 'dCostCategoryARN' - The unique identifier for your Cost Category.
+-- * 'dCostCategoryARN' - The unique identifier for your Cost Category. 
 describeCostCategoryDefinition
     :: Text -- ^ 'dCostCategoryARN'
     -> DescribeCostCategoryDefinition
-describeCostCategoryDefinition pCostCategoryARN_ =
-  DescribeCostCategoryDefinition'
-    {_dEffectiveOn = Nothing, _dCostCategoryARN = pCostCategoryARN_}
+describeCostCategoryDefinition pCostCategoryARN_
+  = DescribeCostCategoryDefinition'{_dEffectiveOn =
+                                      Nothing,
+                                    _dCostCategoryARN = pCostCategoryARN_}
 
-
--- | The date when the Cost Category was effective.
+-- | The date when the Cost Category was effective. 
 dEffectiveOn :: Lens' DescribeCostCategoryDefinition (Maybe Text)
 dEffectiveOn = lens _dEffectiveOn (\ s a -> s{_dEffectiveOn = a})
 
--- | The unique identifier for your Cost Category.
+-- | The unique identifier for your Cost Category. 
 dCostCategoryARN :: Lens' DescribeCostCategoryDefinition Text
 dCostCategoryARN = lens _dCostCategoryARN (\ s a -> s{_dCostCategoryARN = a})
 
@@ -120,13 +120,15 @@ instance ToQuery DescribeCostCategoryDefinition where
         toQuery = const mempty
 
 -- | /See:/ 'describeCostCategoryDefinitionResponse' smart constructor.
-data DescribeCostCategoryDefinitionResponse =
-  DescribeCostCategoryDefinitionResponse'
-    { _drsCostCategory   :: !(Maybe CostCategory)
-    , _drsResponseStatus :: !Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data DescribeCostCategoryDefinitionResponse = DescribeCostCategoryDefinitionResponse'{_drsCostCategory
+                                                                                      ::
+                                                                                      !(Maybe
+                                                                                          CostCategory),
+                                                                                      _drsResponseStatus
+                                                                                      ::
+                                                                                      !Int}
+                                                deriving (Eq, Read, Show, Data,
+                                                          Typeable, Generic)
 
 -- | Creates a value of 'DescribeCostCategoryDefinitionResponse' with the minimum fields required to make a request.
 --
@@ -138,10 +140,12 @@ data DescribeCostCategoryDefinitionResponse =
 describeCostCategoryDefinitionResponse
     :: Int -- ^ 'drsResponseStatus'
     -> DescribeCostCategoryDefinitionResponse
-describeCostCategoryDefinitionResponse pResponseStatus_ =
-  DescribeCostCategoryDefinitionResponse'
-    {_drsCostCategory = Nothing, _drsResponseStatus = pResponseStatus_}
-
+describeCostCategoryDefinitionResponse
+  pResponseStatus_
+  = DescribeCostCategoryDefinitionResponse'{_drsCostCategory
+                                              = Nothing,
+                                            _drsResponseStatus =
+                                              pResponseStatus_}
 
 -- | Undocumented member.
 drsCostCategory :: Lens' DescribeCostCategoryDefinitionResponse (Maybe CostCategory)

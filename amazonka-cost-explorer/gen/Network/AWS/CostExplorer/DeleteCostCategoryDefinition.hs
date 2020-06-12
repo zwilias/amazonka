@@ -39,33 +39,30 @@ module Network.AWS.CostExplorer.DeleteCostCategoryDefinition
     ) where
 
 import Network.AWS.CostExplorer.Types
-import Network.AWS.CostExplorer.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 
 -- | /See:/ 'deleteCostCategoryDefinition' smart constructor.
-newtype DeleteCostCategoryDefinition =
-  DeleteCostCategoryDefinition'
-    { _dccdCostCategoryARN :: Text
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+newtype DeleteCostCategoryDefinition = DeleteCostCategoryDefinition'{_dccdCostCategoryARN
+                                                                     :: Text}
+                                         deriving (Eq, Read, Show, Data,
+                                                   Typeable, Generic)
 
 -- | Creates a value of 'DeleteCostCategoryDefinition' with the minimum fields required to make a request.
 --
 -- Use one of the following lenses to modify other fields as desired:
 --
--- * 'dccdCostCategoryARN' - The unique identifier for your Cost Category.
+-- * 'dccdCostCategoryARN' - The unique identifier for your Cost Category. 
 deleteCostCategoryDefinition
     :: Text -- ^ 'dccdCostCategoryARN'
     -> DeleteCostCategoryDefinition
-deleteCostCategoryDefinition pCostCategoryARN_ =
-  DeleteCostCategoryDefinition' {_dccdCostCategoryARN = pCostCategoryARN_}
+deleteCostCategoryDefinition pCostCategoryARN_
+  = DeleteCostCategoryDefinition'{_dccdCostCategoryARN
+                                    = pCostCategoryARN_}
 
-
--- | The unique identifier for your Cost Category.
+-- | The unique identifier for your Cost Category. 
 dccdCostCategoryARN :: Lens' DeleteCostCategoryDefinition Text
 dccdCostCategoryARN = lens _dccdCostCategoryARN (\ s a -> s{_dccdCostCategoryARN = a})
 
@@ -108,40 +105,44 @@ instance ToQuery DeleteCostCategoryDefinition where
         toQuery = const mempty
 
 -- | /See:/ 'deleteCostCategoryDefinitionResponse' smart constructor.
-data DeleteCostCategoryDefinitionResponse =
-  DeleteCostCategoryDefinitionResponse'
-    { _dccdrsCostCategoryARN :: !(Maybe Text)
-    , _dccdrsEffectiveEnd    :: !(Maybe Text)
-    , _dccdrsResponseStatus  :: !Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data DeleteCostCategoryDefinitionResponse = DeleteCostCategoryDefinitionResponse'{_dccdrsCostCategoryARN
+                                                                                  ::
+                                                                                  !(Maybe
+                                                                                      Text),
+                                                                                  _dccdrsEffectiveEnd
+                                                                                  ::
+                                                                                  !(Maybe
+                                                                                      Text),
+                                                                                  _dccdrsResponseStatus
+                                                                                  ::
+                                                                                  !Int}
+                                              deriving (Eq, Read, Show, Data,
+                                                        Typeable, Generic)
 
 -- | Creates a value of 'DeleteCostCategoryDefinitionResponse' with the minimum fields required to make a request.
 --
 -- Use one of the following lenses to modify other fields as desired:
 --
--- * 'dccdrsCostCategoryARN' - The unique identifier for your Cost Category.
+-- * 'dccdrsCostCategoryARN' - The unique identifier for your Cost Category. 
 --
--- * 'dccdrsEffectiveEnd' - The effective end date of the Cost Category as a result of deleting it. No costs after this date will be categorized by the deleted Cost Category.
+-- * 'dccdrsEffectiveEnd' - The effective end date of the Cost Category as a result of deleting it. No costs after this date will be categorized by the deleted Cost Category. 
 --
 -- * 'dccdrsResponseStatus' - -- | The response status code.
 deleteCostCategoryDefinitionResponse
     :: Int -- ^ 'dccdrsResponseStatus'
     -> DeleteCostCategoryDefinitionResponse
-deleteCostCategoryDefinitionResponse pResponseStatus_ =
-  DeleteCostCategoryDefinitionResponse'
-    { _dccdrsCostCategoryARN = Nothing
-    , _dccdrsEffectiveEnd = Nothing
-    , _dccdrsResponseStatus = pResponseStatus_
-    }
+deleteCostCategoryDefinitionResponse pResponseStatus_
+  = DeleteCostCategoryDefinitionResponse'{_dccdrsCostCategoryARN
+                                            = Nothing,
+                                          _dccdrsEffectiveEnd = Nothing,
+                                          _dccdrsResponseStatus =
+                                            pResponseStatus_}
 
-
--- | The unique identifier for your Cost Category.
+-- | The unique identifier for your Cost Category. 
 dccdrsCostCategoryARN :: Lens' DeleteCostCategoryDefinitionResponse (Maybe Text)
 dccdrsCostCategoryARN = lens _dccdrsCostCategoryARN (\ s a -> s{_dccdrsCostCategoryARN = a})
 
--- | The effective end date of the Cost Category as a result of deleting it. No costs after this date will be categorized by the deleted Cost Category.
+-- | The effective end date of the Cost Category as a result of deleting it. No costs after this date will be categorized by the deleted Cost Category. 
 dccdrsEffectiveEnd :: Lens' DeleteCostCategoryDefinitionResponse (Maybe Text)
 dccdrsEffectiveEnd = lens _dccdrsEffectiveEnd (\ s a -> s{_dccdrsEffectiveEnd = a})
 

@@ -1,4 +1,4 @@
-{-# LANGUAGE OverloadedStrings #-}
+{-# LANGUAGE OverloadedStrings  #-}
 
 -- Derived from AWS service descriptions, licensed under Apache 2.0.
 
@@ -483,93 +483,148 @@ module Network.AWS.Firehose.Types
     , tagKey
     ) where
 
-import Network.AWS.Firehose.Types.Product
-import Network.AWS.Firehose.Types.Sum
 import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.Sign.V4
+import Network.AWS.Firehose.Types.CompressionFormat
+import Network.AWS.Firehose.Types.DeliveryStreamStatus
+import Network.AWS.Firehose.Types.DeliveryStreamType
+import Network.AWS.Firehose.Types.ElasticsearchIndexRotationPeriod
+import Network.AWS.Firehose.Types.ElasticsearchS3BackupMode
+import Network.AWS.Firehose.Types.HECEndpointType
+import Network.AWS.Firehose.Types.NoEncryptionConfig
+import Network.AWS.Firehose.Types.OrcCompression
+import Network.AWS.Firehose.Types.OrcFormatVersion
+import Network.AWS.Firehose.Types.ParquetCompression
+import Network.AWS.Firehose.Types.ParquetWriterVersion
+import Network.AWS.Firehose.Types.ProcessorParameterName
+import Network.AWS.Firehose.Types.ProcessorType
+import Network.AWS.Firehose.Types.RedshiftS3BackupMode
+import Network.AWS.Firehose.Types.S3BackupMode
+import Network.AWS.Firehose.Types.SplunkS3BackupMode
+import Network.AWS.Firehose.Types.BufferingHints
+import Network.AWS.Firehose.Types.CloudWatchLoggingOptions
+import Network.AWS.Firehose.Types.CopyCommand
+import Network.AWS.Firehose.Types.DataFormatConversionConfiguration
+import Network.AWS.Firehose.Types.DeliveryStreamDescription
+import Network.AWS.Firehose.Types.Deserializer
+import Network.AWS.Firehose.Types.DestinationDescription
+import Network.AWS.Firehose.Types.ElasticsearchBufferingHints
+import Network.AWS.Firehose.Types.ElasticsearchDestinationConfiguration
+import Network.AWS.Firehose.Types.ElasticsearchDestinationDescription
+import Network.AWS.Firehose.Types.ElasticsearchDestinationUpdate
+import Network.AWS.Firehose.Types.ElasticsearchRetryOptions
+import Network.AWS.Firehose.Types.EncryptionConfiguration
+import Network.AWS.Firehose.Types.ExtendedS3DestinationConfiguration
+import Network.AWS.Firehose.Types.ExtendedS3DestinationDescription
+import Network.AWS.Firehose.Types.ExtendedS3DestinationUpdate
+import Network.AWS.Firehose.Types.HiveJSONSerDe
+import Network.AWS.Firehose.Types.InputFormatConfiguration
+import Network.AWS.Firehose.Types.KMSEncryptionConfig
+import Network.AWS.Firehose.Types.KinesisStreamSourceConfiguration
+import Network.AWS.Firehose.Types.KinesisStreamSourceDescription
+import Network.AWS.Firehose.Types.OpenXJSONSerDe
+import Network.AWS.Firehose.Types.OrcSerDe
+import Network.AWS.Firehose.Types.OutputFormatConfiguration
+import Network.AWS.Firehose.Types.ParquetSerDe
+import Network.AWS.Firehose.Types.ProcessingConfiguration
+import Network.AWS.Firehose.Types.Processor
+import Network.AWS.Firehose.Types.ProcessorParameter
+import Network.AWS.Firehose.Types.PutRecordBatchResponseEntry
+import Network.AWS.Firehose.Types.Record
+import Network.AWS.Firehose.Types.RedshiftDestinationConfiguration
+import Network.AWS.Firehose.Types.RedshiftDestinationDescription
+import Network.AWS.Firehose.Types.RedshiftDestinationUpdate
+import Network.AWS.Firehose.Types.RedshiftRetryOptions
+import Network.AWS.Firehose.Types.S3DestinationConfiguration
+import Network.AWS.Firehose.Types.S3DestinationDescription
+import Network.AWS.Firehose.Types.S3DestinationUpdate
+import Network.AWS.Firehose.Types.SchemaConfiguration
+import Network.AWS.Firehose.Types.Serializer
+import Network.AWS.Firehose.Types.SourceDescription
+import Network.AWS.Firehose.Types.SplunkDestinationConfiguration
+import Network.AWS.Firehose.Types.SplunkDestinationDescription
+import Network.AWS.Firehose.Types.SplunkDestinationUpdate
+import Network.AWS.Firehose.Types.SplunkRetryOptions
+import Network.AWS.Firehose.Types.Tag
 
 -- | API version @2015-08-04@ of the Amazon Kinesis Firehose SDK configuration.
 firehose :: Service
-firehose =
-  Service
-    { _svcAbbrev = "Firehose"
-    , _svcSigner = v4
-    , _svcPrefix = "firehose"
-    , _svcVersion = "2015-08-04"
-    , _svcEndpoint = defaultEndpoint firehose
-    , _svcTimeout = Just 70
-    , _svcCheck = statusSuccess
-    , _svcError = parseJSONError "Firehose"
-    , _svcRetry = retry
-    }
-  where
-    retry =
-      Exponential
-        { _retryBase = 5.0e-2
-        , _retryGrowth = 2
-        , _retryAttempts = 5
-        , _retryCheck = check
-        }
-    check e
-      | has (hasCode "ThrottledException" . hasStatus 400) e =
-        Just "throttled_exception"
-      | has (hasStatus 429) e = Just "too_many_requests"
-      | has (hasCode "ThrottlingException" . hasStatus 400) e =
-        Just "throttling_exception"
-      | has (hasCode "Throttling" . hasStatus 400) e = Just "throttling"
-      | has (hasStatus 504) e = Just "gateway_timeout"
-      | has (hasCode "RequestThrottledException" . hasStatus 400) e =
-        Just "request_throttled_exception"
-      | has (hasStatus 502) e = Just "bad_gateway"
-      | has (hasStatus 503) e = Just "service_unavailable"
-      | has (hasStatus 500) e = Just "general_server_error"
-      | has (hasStatus 509) e = Just "limit_exceeded"
-      | otherwise = Nothing
-
+firehose
+  = Service{_svcAbbrev = "Firehose", _svcSigner = v4,
+            _svcPrefix = "firehose", _svcVersion = "2015-08-04",
+            _svcEndpoint = defaultEndpoint firehose,
+            _svcTimeout = Just 70, _svcCheck = statusSuccess,
+            _svcError = parseJSONError "Firehose",
+            _svcRetry = retry}
+  where retry
+          = Exponential{_retryBase = 5.0e-2, _retryGrowth = 2,
+                        _retryAttempts = 5, _retryCheck = check}
+        check e
+          | has (hasCode "ThrottledException" . hasStatus 400)
+              e
+            = Just "throttled_exception"
+          | has (hasStatus 429) e = Just "too_many_requests"
+          | has (hasCode "ThrottlingException" . hasStatus 400)
+              e
+            = Just "throttling_exception"
+          | has (hasCode "Throttling" . hasStatus 400) e =
+            Just "throttling"
+          | has (hasStatus 504) e = Just "gateway_timeout"
+          | has
+              (hasCode "RequestThrottledException" . hasStatus 400)
+              e
+            = Just "request_throttled_exception"
+          | has (hasStatus 502) e = Just "bad_gateway"
+          | has (hasStatus 503) e = Just "service_unavailable"
+          | has (hasStatus 500) e = Just "general_server_error"
+          | has (hasStatus 509) e = Just "limit_exceeded"
+          | otherwise = Nothing
 
 -- | The specified input parameter has a value that is not valid.
 --
 --
 _InvalidArgumentException :: AsError a => Getting (First ServiceError) a ServiceError
-_InvalidArgumentException =
-  _MatchServiceError firehose "InvalidArgumentException"
-
+_InvalidArgumentException
+  = _MatchServiceError firehose
+      "InvalidArgumentException"
 
 -- | Another modification has already happened. Fetch __VersionId__ again and use it to update the destination.
 --
 --
 _ConcurrentModificationException :: AsError a => Getting (First ServiceError) a ServiceError
-_ConcurrentModificationException =
-  _MatchServiceError firehose "ConcurrentModificationException"
-
+_ConcurrentModificationException
+  = _MatchServiceError firehose
+      "ConcurrentModificationException"
 
 -- | The service is unavailable. Back off and retry the operation. If you continue to see the exception, throughput limits for the delivery stream may have been exceeded. For more information about limits and how to request an increase, see <http://docs.aws.amazon.com/firehose/latest/dev/limits.html Amazon Kinesis Data Firehose Limits> .
 --
 --
 _ServiceUnavailableException :: AsError a => Getting (First ServiceError) a ServiceError
-_ServiceUnavailableException =
-  _MatchServiceError firehose "ServiceUnavailableException"
-
+_ServiceUnavailableException
+  = _MatchServiceError firehose
+      "ServiceUnavailableException"
 
 -- | The specified resource could not be found.
 --
 --
 _ResourceNotFoundException :: AsError a => Getting (First ServiceError) a ServiceError
-_ResourceNotFoundException =
-  _MatchServiceError firehose "ResourceNotFoundException"
-
+_ResourceNotFoundException
+  = _MatchServiceError firehose
+      "ResourceNotFoundException"
 
 -- | You have already reached the limit for a requested resource.
 --
 --
 _LimitExceededException :: AsError a => Getting (First ServiceError) a ServiceError
-_LimitExceededException = _MatchServiceError firehose "LimitExceededException"
-
+_LimitExceededException
+  = _MatchServiceError firehose
+      "LimitExceededException"
 
 -- | The resource is already in use and not available for this operation.
 --
 --
 _ResourceInUseException :: AsError a => Getting (First ServiceError) a ServiceError
-_ResourceInUseException = _MatchServiceError firehose "ResourceInUseException"
-
+_ResourceInUseException
+  = _MatchServiceError firehose
+      "ResourceInUseException"

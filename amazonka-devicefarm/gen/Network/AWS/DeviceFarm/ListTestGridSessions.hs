@@ -46,26 +46,30 @@ module Network.AWS.DeviceFarm.ListTestGridSessions
     ) where
 
 import Network.AWS.DeviceFarm.Types
-import Network.AWS.DeviceFarm.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 
 -- | /See:/ 'listTestGridSessions' smart constructor.
-data ListTestGridSessions =
-  ListTestGridSessions'
-    { _ltgsStatus             :: !(Maybe TestGridSessionStatus)
-    , _ltgsMaxResult          :: !(Maybe Nat)
-    , _ltgsCreationTimeAfter  :: !(Maybe POSIX)
-    , _ltgsEndTimeBefore      :: !(Maybe POSIX)
-    , _ltgsEndTimeAfter       :: !(Maybe POSIX)
-    , _ltgsNextToken          :: !(Maybe Text)
-    , _ltgsCreationTimeBefore :: !(Maybe POSIX)
-    , _ltgsProjectARN         :: !Text
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data ListTestGridSessions = ListTestGridSessions'{_ltgsStatus
+                                                  ::
+                                                  !(Maybe
+                                                      TestGridSessionStatus),
+                                                  _ltgsMaxResult ::
+                                                  !(Maybe Nat),
+                                                  _ltgsCreationTimeAfter ::
+                                                  !(Maybe POSIX),
+                                                  _ltgsEndTimeBefore ::
+                                                  !(Maybe POSIX),
+                                                  _ltgsEndTimeAfter ::
+                                                  !(Maybe POSIX),
+                                                  _ltgsNextToken ::
+                                                  !(Maybe Text),
+                                                  _ltgsCreationTimeBefore ::
+                                                  !(Maybe POSIX),
+                                                  _ltgsProjectARN :: !Text}
+                              deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'ListTestGridSessions' with the minimum fields required to make a request.
 --
@@ -89,18 +93,15 @@ data ListTestGridSessions =
 listTestGridSessions
     :: Text -- ^ 'ltgsProjectARN'
     -> ListTestGridSessions
-listTestGridSessions pProjectARN_ =
-  ListTestGridSessions'
-    { _ltgsStatus = Nothing
-    , _ltgsMaxResult = Nothing
-    , _ltgsCreationTimeAfter = Nothing
-    , _ltgsEndTimeBefore = Nothing
-    , _ltgsEndTimeAfter = Nothing
-    , _ltgsNextToken = Nothing
-    , _ltgsCreationTimeBefore = Nothing
-    , _ltgsProjectARN = pProjectARN_
-    }
-
+listTestGridSessions pProjectARN_
+  = ListTestGridSessions'{_ltgsStatus = Nothing,
+                          _ltgsMaxResult = Nothing,
+                          _ltgsCreationTimeAfter = Nothing,
+                          _ltgsEndTimeBefore = Nothing,
+                          _ltgsEndTimeAfter = Nothing,
+                          _ltgsNextToken = Nothing,
+                          _ltgsCreationTimeBefore = Nothing,
+                          _ltgsProjectARN = pProjectARN_}
 
 -- | Return only sessions in this state.
 ltgsStatus :: Lens' ListTestGridSessions (Maybe TestGridSessionStatus)
@@ -181,14 +182,17 @@ instance ToQuery ListTestGridSessions where
         toQuery = const mempty
 
 -- | /See:/ 'listTestGridSessionsResponse' smart constructor.
-data ListTestGridSessionsResponse =
-  ListTestGridSessionsResponse'
-    { _ltgsrsNextToken        :: !(Maybe Text)
-    , _ltgsrsTestGridSessions :: !(Maybe [TestGridSession])
-    , _ltgsrsResponseStatus   :: !Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data ListTestGridSessionsResponse = ListTestGridSessionsResponse'{_ltgsrsNextToken
+                                                                  ::
+                                                                  !(Maybe Text),
+                                                                  _ltgsrsTestGridSessions
+                                                                  ::
+                                                                  !(Maybe
+                                                                      [TestGridSession]),
+                                                                  _ltgsrsResponseStatus
+                                                                  :: !Int}
+                                      deriving (Eq, Read, Show, Data, Typeable,
+                                                Generic)
 
 -- | Creates a value of 'ListTestGridSessionsResponse' with the minimum fields required to make a request.
 --
@@ -196,25 +200,23 @@ data ListTestGridSessionsResponse =
 --
 -- * 'ltgsrsNextToken' - Pagination token.
 --
--- * 'ltgsrsTestGridSessions' - The sessions that match the criteria in a 'ListTestGridSessionsRequest' .
+-- * 'ltgsrsTestGridSessions' - The sessions that match the criteria in a 'ListTestGridSessionsRequest' . 
 --
 -- * 'ltgsrsResponseStatus' - -- | The response status code.
 listTestGridSessionsResponse
     :: Int -- ^ 'ltgsrsResponseStatus'
     -> ListTestGridSessionsResponse
-listTestGridSessionsResponse pResponseStatus_ =
-  ListTestGridSessionsResponse'
-    { _ltgsrsNextToken = Nothing
-    , _ltgsrsTestGridSessions = Nothing
-    , _ltgsrsResponseStatus = pResponseStatus_
-    }
-
+listTestGridSessionsResponse pResponseStatus_
+  = ListTestGridSessionsResponse'{_ltgsrsNextToken =
+                                    Nothing,
+                                  _ltgsrsTestGridSessions = Nothing,
+                                  _ltgsrsResponseStatus = pResponseStatus_}
 
 -- | Pagination token.
 ltgsrsNextToken :: Lens' ListTestGridSessionsResponse (Maybe Text)
 ltgsrsNextToken = lens _ltgsrsNextToken (\ s a -> s{_ltgsrsNextToken = a})
 
--- | The sessions that match the criteria in a 'ListTestGridSessionsRequest' .
+-- | The sessions that match the criteria in a 'ListTestGridSessionsRequest' . 
 ltgsrsTestGridSessions :: Lens' ListTestGridSessionsResponse [TestGridSession]
 ltgsrsTestGridSessions = lens _ltgsrsTestGridSessions (\ s a -> s{_ltgsrsTestGridSessions = a}) . _Default . _Coerce
 

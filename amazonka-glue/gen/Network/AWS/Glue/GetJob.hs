@@ -38,19 +38,14 @@ module Network.AWS.Glue.GetJob
     ) where
 
 import Network.AWS.Glue.Types
-import Network.AWS.Glue.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 
 -- | /See:/ 'getJob' smart constructor.
-newtype GetJob =
-  GetJob'
-    { _gjJobName :: Text
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+newtype GetJob = GetJob'{_gjJobName :: Text}
+                   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'GetJob' with the minimum fields required to make a request.
 --
@@ -60,8 +55,7 @@ newtype GetJob =
 getJob
     :: Text -- ^ 'gjJobName'
     -> GetJob
-getJob pJobName_ = GetJob' {_gjJobName = pJobName_}
-
+getJob pJobName_ = GetJob'{_gjJobName = pJobName_}
 
 -- | The name of the job definition to retrieve.
 gjJobName :: Lens' GetJob Text
@@ -99,13 +93,10 @@ instance ToQuery GetJob where
         toQuery = const mempty
 
 -- | /See:/ 'getJobResponse' smart constructor.
-data GetJobResponse =
-  GetJobResponse'
-    { _gjrsJob            :: !(Maybe Job)
-    , _gjrsResponseStatus :: !Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data GetJobResponse = GetJobResponse'{_gjrsJob ::
+                                      !(Maybe Job),
+                                      _gjrsResponseStatus :: !Int}
+                        deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'GetJobResponse' with the minimum fields required to make a request.
 --
@@ -117,9 +108,9 @@ data GetJobResponse =
 getJobResponse
     :: Int -- ^ 'gjrsResponseStatus'
     -> GetJobResponse
-getJobResponse pResponseStatus_ =
-  GetJobResponse' {_gjrsJob = Nothing, _gjrsResponseStatus = pResponseStatus_}
-
+getJobResponse pResponseStatus_
+  = GetJobResponse'{_gjrsJob = Nothing,
+                    _gjrsResponseStatus = pResponseStatus_}
 
 -- | The requested job definition.
 gjrsJob :: Lens' GetJobResponse (Maybe Job)

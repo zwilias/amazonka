@@ -44,21 +44,23 @@ module Network.AWS.DirectConnect.AllocateTransitVirtualInterface
     ) where
 
 import Network.AWS.DirectConnect.Types
-import Network.AWS.DirectConnect.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 
 -- | /See:/ 'allocateTransitVirtualInterface' smart constructor.
-data AllocateTransitVirtualInterface =
-  AllocateTransitVirtualInterface'
-    { _atviConnectionId :: !Text
-    , _atviOwnerAccount :: !Text
-    , _atviNewTransitVirtualInterfaceAllocation :: !NewTransitVirtualInterfaceAllocation
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data AllocateTransitVirtualInterface = AllocateTransitVirtualInterface'{_atviConnectionId
+                                                                        ::
+                                                                        !Text,
+                                                                        _atviOwnerAccount
+                                                                        ::
+                                                                        !Text,
+                                                                        _atviNewTransitVirtualInterfaceAllocation
+                                                                        ::
+                                                                        !NewTransitVirtualInterfaceAllocation}
+                                         deriving (Eq, Read, Show, Data,
+                                                   Typeable, Generic)
 
 -- | Creates a value of 'AllocateTransitVirtualInterface' with the minimum fields required to make a request.
 --
@@ -74,14 +76,13 @@ allocateTransitVirtualInterface
     -> Text -- ^ 'atviOwnerAccount'
     -> NewTransitVirtualInterfaceAllocation -- ^ 'atviNewTransitVirtualInterfaceAllocation'
     -> AllocateTransitVirtualInterface
-allocateTransitVirtualInterface pConnectionId_ pOwnerAccount_ pNewTransitVirtualInterfaceAllocation_ =
-  AllocateTransitVirtualInterface'
-    { _atviConnectionId = pConnectionId_
-    , _atviOwnerAccount = pOwnerAccount_
-    , _atviNewTransitVirtualInterfaceAllocation =
-        pNewTransitVirtualInterfaceAllocation_
-    }
-
+allocateTransitVirtualInterface pConnectionId_
+  pOwnerAccount_ pNewTransitVirtualInterfaceAllocation_
+  = AllocateTransitVirtualInterface'{_atviConnectionId
+                                       = pConnectionId_,
+                                     _atviOwnerAccount = pOwnerAccount_,
+                                     _atviNewTransitVirtualInterfaceAllocation =
+                                       pNewTransitVirtualInterfaceAllocation_}
 
 -- | The ID of the connection on which the transit virtual interface is provisioned.
 atviConnectionId :: Lens' AllocateTransitVirtualInterface Text
@@ -140,13 +141,15 @@ instance ToQuery AllocateTransitVirtualInterface
         toQuery = const mempty
 
 -- | /See:/ 'allocateTransitVirtualInterfaceResponse' smart constructor.
-data AllocateTransitVirtualInterfaceResponse =
-  AllocateTransitVirtualInterfaceResponse'
-    { _atvirsVirtualInterface :: !(Maybe VirtualInterface)
-    , _atvirsResponseStatus   :: !Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data AllocateTransitVirtualInterfaceResponse = AllocateTransitVirtualInterfaceResponse'{_atvirsVirtualInterface
+                                                                                        ::
+                                                                                        !(Maybe
+                                                                                            VirtualInterface),
+                                                                                        _atvirsResponseStatus
+                                                                                        ::
+                                                                                        !Int}
+                                                 deriving (Eq, Read, Show, Data,
+                                                           Typeable, Generic)
 
 -- | Creates a value of 'AllocateTransitVirtualInterfaceResponse' with the minimum fields required to make a request.
 --
@@ -158,12 +161,12 @@ data AllocateTransitVirtualInterfaceResponse =
 allocateTransitVirtualInterfaceResponse
     :: Int -- ^ 'atvirsResponseStatus'
     -> AllocateTransitVirtualInterfaceResponse
-allocateTransitVirtualInterfaceResponse pResponseStatus_ =
-  AllocateTransitVirtualInterfaceResponse'
-    { _atvirsVirtualInterface = Nothing
-    , _atvirsResponseStatus = pResponseStatus_
-    }
-
+allocateTransitVirtualInterfaceResponse
+  pResponseStatus_
+  = AllocateTransitVirtualInterfaceResponse'{_atvirsVirtualInterface
+                                               = Nothing,
+                                             _atvirsResponseStatus =
+                                               pResponseStatus_}
 
 -- | Undocumented member.
 atvirsVirtualInterface :: Lens' AllocateTransitVirtualInterfaceResponse (Maybe VirtualInterface)

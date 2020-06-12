@@ -21,7 +21,7 @@
 -- Returns the URL of an existing queue. This action provides a simple way to retrieve the URL of an Amazon SQS queue.
 --
 --
--- To access a queue that belongs to another AWS account, use the @QueueOwnerAWSAccountId@ parameter to specify the account ID of the queue's owner. The queue's owner must grant you permission to access the queue. For more information about shared queue access, see @'AddPermission' @ or see <http://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/acp-overview.html Shared Queues> in the /Amazon Simple Queue Service Developer Guide/ .
+-- To access a queue that belongs to another AWS account, use the @QueueOwnerAWSAccountId@ parameter to specify the account ID of the queue's owner. The queue's owner must grant you permission to access the queue. For more information about shared queue access, see @'AddPermission' @ or see <http://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/acp-overview.html Shared Queues> in the /Amazon Simple Queue Service Developer Guide/ . 
 --
 module Network.AWS.SQS.GetQueueURL
     (
@@ -45,20 +45,16 @@ import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 import Network.AWS.SQS.Types
-import Network.AWS.SQS.Types.Product
 
--- |
+-- | 
 --
 --
 --
 -- /See:/ 'getQueueURL' smart constructor.
-data GetQueueURL =
-  GetQueueURL'
-    { _gquQueueOwnerAWSAccountId :: !(Maybe Text)
-    , _gquQueueName              :: !Text
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data GetQueueURL = GetQueueURL'{_gquQueueOwnerAWSAccountId
+                                :: !(Maybe Text),
+                                _gquQueueName :: !Text}
+                     deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'GetQueueURL' with the minimum fields required to make a request.
 --
@@ -70,10 +66,9 @@ data GetQueueURL =
 getQueueURL
     :: Text -- ^ 'gquQueueName'
     -> GetQueueURL
-getQueueURL pQueueName_ =
-  GetQueueURL'
-    {_gquQueueOwnerAWSAccountId = Nothing, _gquQueueName = pQueueName_}
-
+getQueueURL pQueueName_
+  = GetQueueURL'{_gquQueueOwnerAWSAccountId = Nothing,
+                 _gquQueueName = pQueueName_}
 
 -- | The AWS account ID of the account that created the queue.
 gquQueueOwnerAWSAccountId :: Lens' GetQueueURL (Maybe Text)
@@ -116,13 +111,10 @@ instance ToQuery GetQueueURL where
 --
 --
 -- /See:/ 'getQueueURLResponse' smart constructor.
-data GetQueueURLResponse =
-  GetQueueURLResponse'
-    { _gqursResponseStatus :: !Int
-    , _gqursQueueURL       :: !Text
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data GetQueueURLResponse = GetQueueURLResponse'{_gqursResponseStatus
+                                                :: !Int,
+                                                _gqursQueueURL :: !Text}
+                             deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'GetQueueURLResponse' with the minimum fields required to make a request.
 --
@@ -135,10 +127,10 @@ getQueueURLResponse
     :: Int -- ^ 'gqursResponseStatus'
     -> Text -- ^ 'gqursQueueURL'
     -> GetQueueURLResponse
-getQueueURLResponse pResponseStatus_ pQueueURL_ =
-  GetQueueURLResponse'
-    {_gqursResponseStatus = pResponseStatus_, _gqursQueueURL = pQueueURL_}
-
+getQueueURLResponse pResponseStatus_ pQueueURL_
+  = GetQueueURLResponse'{_gqursResponseStatus =
+                           pResponseStatus_,
+                         _gqursQueueURL = pQueueURL_}
 
 -- | -- | The response status code.
 gqursResponseStatus :: Lens' GetQueueURLResponse Int

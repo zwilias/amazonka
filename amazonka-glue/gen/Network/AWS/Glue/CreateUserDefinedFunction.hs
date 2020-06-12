@@ -39,21 +39,21 @@ module Network.AWS.Glue.CreateUserDefinedFunction
     ) where
 
 import Network.AWS.Glue.Types
-import Network.AWS.Glue.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 
 -- | /See:/ 'createUserDefinedFunction' smart constructor.
-data CreateUserDefinedFunction =
-  CreateUserDefinedFunction'
-    { _cudfCatalogId     :: !(Maybe Text)
-    , _cudfDatabaseName  :: !Text
-    , _cudfFunctionInput :: !UserDefinedFunctionInput
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data CreateUserDefinedFunction = CreateUserDefinedFunction'{_cudfCatalogId
+                                                            :: !(Maybe Text),
+                                                            _cudfDatabaseName ::
+                                                            !Text,
+                                                            _cudfFunctionInput
+                                                            ::
+                                                            !UserDefinedFunctionInput}
+                                   deriving (Eq, Read, Show, Data, Typeable,
+                                             Generic)
 
 -- | Creates a value of 'CreateUserDefinedFunction' with the minimum fields required to make a request.
 --
@@ -68,13 +68,12 @@ createUserDefinedFunction
     :: Text -- ^ 'cudfDatabaseName'
     -> UserDefinedFunctionInput -- ^ 'cudfFunctionInput'
     -> CreateUserDefinedFunction
-createUserDefinedFunction pDatabaseName_ pFunctionInput_ =
-  CreateUserDefinedFunction'
-    { _cudfCatalogId = Nothing
-    , _cudfDatabaseName = pDatabaseName_
-    , _cudfFunctionInput = pFunctionInput_
-    }
-
+createUserDefinedFunction pDatabaseName_
+  pFunctionInput_
+  = CreateUserDefinedFunction'{_cudfCatalogId =
+                                 Nothing,
+                               _cudfDatabaseName = pDatabaseName_,
+                               _cudfFunctionInput = pFunctionInput_}
 
 -- | The ID of the Data Catalog in which to create the function. If none is supplied, the AWS account ID is used by default.
 cudfCatalogId :: Lens' CreateUserDefinedFunction (Maybe Text)
@@ -126,12 +125,11 @@ instance ToQuery CreateUserDefinedFunction where
         toQuery = const mempty
 
 -- | /See:/ 'createUserDefinedFunctionResponse' smart constructor.
-newtype CreateUserDefinedFunctionResponse =
-  CreateUserDefinedFunctionResponse'
-    { _cudfrsResponseStatus :: Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+newtype CreateUserDefinedFunctionResponse = CreateUserDefinedFunctionResponse'{_cudfrsResponseStatus
+                                                                               ::
+                                                                               Int}
+                                              deriving (Eq, Read, Show, Data,
+                                                        Typeable, Generic)
 
 -- | Creates a value of 'CreateUserDefinedFunctionResponse' with the minimum fields required to make a request.
 --
@@ -141,9 +139,9 @@ newtype CreateUserDefinedFunctionResponse =
 createUserDefinedFunctionResponse
     :: Int -- ^ 'cudfrsResponseStatus'
     -> CreateUserDefinedFunctionResponse
-createUserDefinedFunctionResponse pResponseStatus_ =
-  CreateUserDefinedFunctionResponse' {_cudfrsResponseStatus = pResponseStatus_}
-
+createUserDefinedFunctionResponse pResponseStatus_
+  = CreateUserDefinedFunctionResponse'{_cudfrsResponseStatus
+                                         = pResponseStatus_}
 
 -- | -- | The response status code.
 cudfrsResponseStatus :: Lens' CreateUserDefinedFunctionResponse Int

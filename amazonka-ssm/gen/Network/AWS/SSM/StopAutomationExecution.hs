@@ -42,16 +42,14 @@ import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 import Network.AWS.SSM.Types
-import Network.AWS.SSM.Types.Product
 
 -- | /See:/ 'stopAutomationExecution' smart constructor.
-data StopAutomationExecution =
-  StopAutomationExecution'
-    { _saeType                  :: !(Maybe StopType)
-    , _saeAutomationExecutionId :: !Text
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data StopAutomationExecution = StopAutomationExecution'{_saeType
+                                                        :: !(Maybe StopType),
+                                                        _saeAutomationExecutionId
+                                                        :: !Text}
+                                 deriving (Eq, Read, Show, Data, Typeable,
+                                           Generic)
 
 -- | Creates a value of 'StopAutomationExecution' with the minimum fields required to make a request.
 --
@@ -63,10 +61,10 @@ data StopAutomationExecution =
 stopAutomationExecution
     :: Text -- ^ 'saeAutomationExecutionId'
     -> StopAutomationExecution
-stopAutomationExecution pAutomationExecutionId_ =
-  StopAutomationExecution'
-    {_saeType = Nothing, _saeAutomationExecutionId = pAutomationExecutionId_}
-
+stopAutomationExecution pAutomationExecutionId_
+  = StopAutomationExecution'{_saeType = Nothing,
+                             _saeAutomationExecutionId =
+                               pAutomationExecutionId_}
 
 -- | The stop request type. Valid types include the following: Cancel and Complete. The default type is Cancel.
 saeType :: Lens' StopAutomationExecution (Maybe StopType)
@@ -115,12 +113,11 @@ instance ToQuery StopAutomationExecution where
         toQuery = const mempty
 
 -- | /See:/ 'stopAutomationExecutionResponse' smart constructor.
-newtype StopAutomationExecutionResponse =
-  StopAutomationExecutionResponse'
-    { _saersResponseStatus :: Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+newtype StopAutomationExecutionResponse = StopAutomationExecutionResponse'{_saersResponseStatus
+                                                                           ::
+                                                                           Int}
+                                            deriving (Eq, Read, Show, Data,
+                                                      Typeable, Generic)
 
 -- | Creates a value of 'StopAutomationExecutionResponse' with the minimum fields required to make a request.
 --
@@ -130,9 +127,9 @@ newtype StopAutomationExecutionResponse =
 stopAutomationExecutionResponse
     :: Int -- ^ 'saersResponseStatus'
     -> StopAutomationExecutionResponse
-stopAutomationExecutionResponse pResponseStatus_ =
-  StopAutomationExecutionResponse' {_saersResponseStatus = pResponseStatus_}
-
+stopAutomationExecutionResponse pResponseStatus_
+  = StopAutomationExecutionResponse'{_saersResponseStatus
+                                       = pResponseStatus_}
 
 -- | -- | The response status code.
 saersResponseStatus :: Lens' StopAutomationExecutionResponse Int

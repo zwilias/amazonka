@@ -52,21 +52,17 @@ import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 import Network.AWS.SageMaker.Types
-import Network.AWS.SageMaker.Types.Product
 
 -- | /See:/ 'listModels' smart constructor.
-data ListModels =
-  ListModels'
-    { _lmNameContains       :: !(Maybe Text)
-    , _lmCreationTimeAfter  :: !(Maybe POSIX)
-    , _lmNextToken          :: !(Maybe Text)
-    , _lmSortOrder          :: !(Maybe OrderKey)
-    , _lmCreationTimeBefore :: !(Maybe POSIX)
-    , _lmMaxResults         :: !(Maybe Nat)
-    , _lmSortBy             :: !(Maybe ModelSortKey)
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data ListModels = ListModels'{_lmNameContains ::
+                              !(Maybe Text),
+                              _lmCreationTimeAfter :: !(Maybe POSIX),
+                              _lmNextToken :: !(Maybe Text),
+                              _lmSortOrder :: !(Maybe OrderKey),
+                              _lmCreationTimeBefore :: !(Maybe POSIX),
+                              _lmMaxResults :: !(Maybe Nat),
+                              _lmSortBy :: !(Maybe ModelSortKey)}
+                    deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'ListModels' with the minimum fields required to make a request.
 --
@@ -87,17 +83,12 @@ data ListModels =
 -- * 'lmSortBy' - Sorts the list of results. The default is @CreationTime@ .
 listModels
     :: ListModels
-listModels =
-  ListModels'
-    { _lmNameContains = Nothing
-    , _lmCreationTimeAfter = Nothing
-    , _lmNextToken = Nothing
-    , _lmSortOrder = Nothing
-    , _lmCreationTimeBefore = Nothing
-    , _lmMaxResults = Nothing
-    , _lmSortBy = Nothing
-    }
-
+listModels
+  = ListModels'{_lmNameContains = Nothing,
+                _lmCreationTimeAfter = Nothing,
+                _lmNextToken = Nothing, _lmSortOrder = Nothing,
+                _lmCreationTimeBefore = Nothing,
+                _lmMaxResults = Nothing, _lmSortBy = Nothing}
 
 -- | A string in the training job name. This filter returns only models in the training job whose name contains the specified string.
 lmNameContains :: Lens' ListModels (Maybe Text)
@@ -176,20 +167,17 @@ instance ToQuery ListModels where
         toQuery = const mempty
 
 -- | /See:/ 'listModelsResponse' smart constructor.
-data ListModelsResponse =
-  ListModelsResponse'
-    { _lmrsNextToken      :: !(Maybe Text)
-    , _lmrsResponseStatus :: !Int
-    , _lmrsModels         :: ![ModelSummary]
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data ListModelsResponse = ListModelsResponse'{_lmrsNextToken
+                                              :: !(Maybe Text),
+                                              _lmrsResponseStatus :: !Int,
+                                              _lmrsModels :: ![ModelSummary]}
+                            deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'ListModelsResponse' with the minimum fields required to make a request.
 --
 -- Use one of the following lenses to modify other fields as desired:
 --
--- * 'lmrsNextToken' - If the response is truncated, Amazon SageMaker returns this token. To retrieve the next set of models, use it in the subsequent request.
+-- * 'lmrsNextToken' - If the response is truncated, Amazon SageMaker returns this token. To retrieve the next set of models, use it in the subsequent request. 
 --
 -- * 'lmrsResponseStatus' - -- | The response status code.
 --
@@ -197,15 +185,12 @@ data ListModelsResponse =
 listModelsResponse
     :: Int -- ^ 'lmrsResponseStatus'
     -> ListModelsResponse
-listModelsResponse pResponseStatus_ =
-  ListModelsResponse'
-    { _lmrsNextToken = Nothing
-    , _lmrsResponseStatus = pResponseStatus_
-    , _lmrsModels = mempty
-    }
+listModelsResponse pResponseStatus_
+  = ListModelsResponse'{_lmrsNextToken = Nothing,
+                        _lmrsResponseStatus = pResponseStatus_,
+                        _lmrsModels = mempty}
 
-
--- | If the response is truncated, Amazon SageMaker returns this token. To retrieve the next set of models, use it in the subsequent request.
+-- | If the response is truncated, Amazon SageMaker returns this token. To retrieve the next set of models, use it in the subsequent request. 
 lmrsNextToken :: Lens' ListModelsResponse (Maybe Text)
 lmrsNextToken = lens _lmrsNextToken (\ s a -> s{_lmrsNextToken = a})
 

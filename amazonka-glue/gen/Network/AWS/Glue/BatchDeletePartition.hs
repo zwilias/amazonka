@@ -41,22 +41,19 @@ module Network.AWS.Glue.BatchDeletePartition
     ) where
 
 import Network.AWS.Glue.Types
-import Network.AWS.Glue.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 
 -- | /See:/ 'batchDeletePartition' smart constructor.
-data BatchDeletePartition =
-  BatchDeletePartition'
-    { _bdpCatalogId          :: !(Maybe Text)
-    , _bdpDatabaseName       :: !Text
-    , _bdpTableName          :: !Text
-    , _bdpPartitionsToDelete :: ![PartitionValueList]
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data BatchDeletePartition = BatchDeletePartition'{_bdpCatalogId
+                                                  :: !(Maybe Text),
+                                                  _bdpDatabaseName :: !Text,
+                                                  _bdpTableName :: !Text,
+                                                  _bdpPartitionsToDelete ::
+                                                  ![PartitionValueList]}
+                              deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'BatchDeletePartition' with the minimum fields required to make a request.
 --
@@ -73,14 +70,11 @@ batchDeletePartition
     :: Text -- ^ 'bdpDatabaseName'
     -> Text -- ^ 'bdpTableName'
     -> BatchDeletePartition
-batchDeletePartition pDatabaseName_ pTableName_ =
-  BatchDeletePartition'
-    { _bdpCatalogId = Nothing
-    , _bdpDatabaseName = pDatabaseName_
-    , _bdpTableName = pTableName_
-    , _bdpPartitionsToDelete = mempty
-    }
-
+batchDeletePartition pDatabaseName_ pTableName_
+  = BatchDeletePartition'{_bdpCatalogId = Nothing,
+                          _bdpDatabaseName = pDatabaseName_,
+                          _bdpTableName = pTableName_,
+                          _bdpPartitionsToDelete = mempty}
 
 -- | The ID of the Data Catalog where the partition to be deleted resides. If none is supplied, the AWS account ID is used by default.
 bdpCatalogId :: Lens' BatchDeletePartition (Maybe Text)
@@ -138,13 +132,14 @@ instance ToQuery BatchDeletePartition where
         toQuery = const mempty
 
 -- | /See:/ 'batchDeletePartitionResponse' smart constructor.
-data BatchDeletePartitionResponse =
-  BatchDeletePartitionResponse'
-    { _bdprsErrors         :: !(Maybe [PartitionError])
-    , _bdprsResponseStatus :: !Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data BatchDeletePartitionResponse = BatchDeletePartitionResponse'{_bdprsErrors
+                                                                  ::
+                                                                  !(Maybe
+                                                                      [PartitionError]),
+                                                                  _bdprsResponseStatus
+                                                                  :: !Int}
+                                      deriving (Eq, Read, Show, Data, Typeable,
+                                                Generic)
 
 -- | Creates a value of 'BatchDeletePartitionResponse' with the minimum fields required to make a request.
 --
@@ -156,10 +151,10 @@ data BatchDeletePartitionResponse =
 batchDeletePartitionResponse
     :: Int -- ^ 'bdprsResponseStatus'
     -> BatchDeletePartitionResponse
-batchDeletePartitionResponse pResponseStatus_ =
-  BatchDeletePartitionResponse'
-    {_bdprsErrors = Nothing, _bdprsResponseStatus = pResponseStatus_}
-
+batchDeletePartitionResponse pResponseStatus_
+  = BatchDeletePartitionResponse'{_bdprsErrors =
+                                    Nothing,
+                                  _bdprsResponseStatus = pResponseStatus_}
 
 -- | Errors encountered when trying to delete the requested partitions.
 bdprsErrors :: Lens' BatchDeletePartitionResponse [PartitionError]

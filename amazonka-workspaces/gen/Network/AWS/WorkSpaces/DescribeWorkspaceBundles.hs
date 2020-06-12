@@ -50,17 +50,17 @@ import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 import Network.AWS.WorkSpaces.Types
-import Network.AWS.WorkSpaces.Types.Product
 
 -- | /See:/ 'describeWorkspaceBundles' smart constructor.
-data DescribeWorkspaceBundles =
-  DescribeWorkspaceBundles'
-    { _dwbBundleIds :: !(Maybe (List1 Text))
-    , _dwbOwner     :: !(Maybe Text)
-    , _dwbNextToken :: !(Maybe Text)
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data DescribeWorkspaceBundles = DescribeWorkspaceBundles'{_dwbBundleIds
+                                                          ::
+                                                          !(Maybe (List1 Text)),
+                                                          _dwbOwner ::
+                                                          !(Maybe Text),
+                                                          _dwbNextToken ::
+                                                          !(Maybe Text)}
+                                  deriving (Eq, Read, Show, Data, Typeable,
+                                            Generic)
 
 -- | Creates a value of 'DescribeWorkspaceBundles' with the minimum fields required to make a request.
 --
@@ -73,10 +73,9 @@ data DescribeWorkspaceBundles =
 -- * 'dwbNextToken' - The token for the next set of results. (You received this token from a previous call.)
 describeWorkspaceBundles
     :: DescribeWorkspaceBundles
-describeWorkspaceBundles =
-  DescribeWorkspaceBundles'
-    {_dwbBundleIds = Nothing, _dwbOwner = Nothing, _dwbNextToken = Nothing}
-
+describeWorkspaceBundles
+  = DescribeWorkspaceBundles'{_dwbBundleIds = Nothing,
+                              _dwbOwner = Nothing, _dwbNextToken = Nothing}
 
 -- | The IDs of the bundles. This parameter cannot be combined with any other filter.
 dwbBundleIds :: Lens' DescribeWorkspaceBundles (Maybe (NonEmpty Text))
@@ -137,14 +136,19 @@ instance ToQuery DescribeWorkspaceBundles where
         toQuery = const mempty
 
 -- | /See:/ 'describeWorkspaceBundlesResponse' smart constructor.
-data DescribeWorkspaceBundlesResponse =
-  DescribeWorkspaceBundlesResponse'
-    { _dwbrsBundles        :: !(Maybe [WorkspaceBundle])
-    , _dwbrsNextToken      :: !(Maybe Text)
-    , _dwbrsResponseStatus :: !Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data DescribeWorkspaceBundlesResponse = DescribeWorkspaceBundlesResponse'{_dwbrsBundles
+                                                                          ::
+                                                                          !(Maybe
+                                                                              [WorkspaceBundle]),
+                                                                          _dwbrsNextToken
+                                                                          ::
+                                                                          !(Maybe
+                                                                              Text),
+                                                                          _dwbrsResponseStatus
+                                                                          ::
+                                                                          !Int}
+                                          deriving (Eq, Read, Show, Data,
+                                                    Typeable, Generic)
 
 -- | Creates a value of 'DescribeWorkspaceBundlesResponse' with the minimum fields required to make a request.
 --
@@ -158,13 +162,11 @@ data DescribeWorkspaceBundlesResponse =
 describeWorkspaceBundlesResponse
     :: Int -- ^ 'dwbrsResponseStatus'
     -> DescribeWorkspaceBundlesResponse
-describeWorkspaceBundlesResponse pResponseStatus_ =
-  DescribeWorkspaceBundlesResponse'
-    { _dwbrsBundles = Nothing
-    , _dwbrsNextToken = Nothing
-    , _dwbrsResponseStatus = pResponseStatus_
-    }
-
+describeWorkspaceBundlesResponse pResponseStatus_
+  = DescribeWorkspaceBundlesResponse'{_dwbrsBundles =
+                                        Nothing,
+                                      _dwbrsNextToken = Nothing,
+                                      _dwbrsResponseStatus = pResponseStatus_}
 
 -- | Information about the bundles.
 dwbrsBundles :: Lens' DescribeWorkspaceBundlesResponse [WorkspaceBundle]

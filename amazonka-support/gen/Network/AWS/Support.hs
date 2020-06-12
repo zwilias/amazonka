@@ -11,19 +11,19 @@
 -- Stability   : auto-generated
 -- Portability : non-portable (GHC extensions)
 --
--- __AWS Support__
+-- __AWS Support__ 
 --
 -- The AWS Support API reference is intended for programmers who need detailed information about the AWS Support operations and data types. This service enables you to manage your AWS Support cases programmatically. It uses HTTP methods that return results in JSON format.
 --
--- The AWS Support service also exposes a set of <http://aws.amazon.com/premiumsupport/trustedadvisor/ Trusted Advisor> features. You can retrieve a list of checks and their descriptions, get check results, specify checks to refresh, and get the refresh status of checks.
+-- The AWS Support service also exposes a set of <http://aws.amazon.com/premiumsupport/trustedadvisor/ Trusted Advisor> features. You can retrieve a list of checks and their descriptions, get check results, specify checks to refresh, and get the refresh status of checks. 
 --
 -- The following list describes the AWS Support case management operations:
 --
---     * __Service names, issue categories, and available severity levels. __ The 'DescribeServices' and 'DescribeSeverityLevels' operations return AWS service names, service codes, service categories, and problem severity levels. You use these values when you call the 'CreateCase' operation.
+--     * __Service names, issue categories, and available severity levels. __ The 'DescribeServices' and 'DescribeSeverityLevels' operations return AWS service names, service codes, service categories, and problem severity levels. You use these values when you call the 'CreateCase' operation. 
 --
 --     * __Case creation, case details, and case resolution.__ The 'CreateCase' , 'DescribeCases' , 'DescribeAttachment' , and 'ResolveCase' operations create AWS Support cases, retrieve information about cases, and resolve cases.
 --
---     * __Case communication.__ The 'DescribeCommunications' , 'AddCommunicationToCase' , and 'AddAttachmentsToSet' operations retrieve and add communications and attachments to AWS Support cases.
+--     * __Case communication.__ The 'DescribeCommunications' , 'AddCommunicationToCase' , and 'AddAttachmentsToSet' operations retrieve and add communications and attachments to AWS Support cases. 
 --
 --
 --
@@ -35,15 +35,15 @@
 --
 --     * 'DescribeTrustedAdvisorCheckSummaries' returns summarized results for one or more Trusted Advisor checks.
 --
---     * 'RefreshTrustedAdvisorCheck' requests that Trusted Advisor rerun a specified check.
+--     * 'RefreshTrustedAdvisorCheck' requests that Trusted Advisor rerun a specified check. 
 --
---     * 'DescribeTrustedAdvisorCheckRefreshStatuses' reports the refresh status of one or more checks.
+--     * 'DescribeTrustedAdvisorCheckRefreshStatuses' reports the refresh status of one or more checks. 
 --
 --
 --
 -- For authentication of requests, AWS Support uses <http://docs.aws.amazon.com/general/latest/gr/signature-version-4.html Signature Version 4 Signing Process> .
 --
--- See <http://docs.aws.amazon.com/awssupport/latest/user/Welcome.html About the AWS Support API> in the /AWS Support User Guide/ for information about how to use this service to create and manage your support cases, and how to call Trusted Advisor for results of checks on your resources.
+-- See <http://docs.aws.amazon.com/awssupport/latest/user/Welcome.html About the AWS Support API> in the /AWS Support User Guide/ for information about how to use this service to create and manage your support cases, and how to call Trusted Advisor for results of checks on your resources. 
 --
 module Network.AWS.Support
     (
@@ -86,46 +86,46 @@ module Network.AWS.Support
     -- * Operations
     -- $operations
 
-    -- ** RefreshTrustedAdvisorCheck
+    -- ** RefreshTrustedAdvisorCheck 
     , module Network.AWS.Support.RefreshTrustedAdvisorCheck
 
     -- ** DescribeCases (Paginated)
     , module Network.AWS.Support.DescribeCases
 
-    -- ** DescribeTrustedAdvisorCheckRefreshStatuses
+    -- ** DescribeTrustedAdvisorCheckRefreshStatuses 
     , module Network.AWS.Support.DescribeTrustedAdvisorCheckRefreshStatuses
 
-    -- ** DescribeTrustedAdvisorCheckSummaries
+    -- ** DescribeTrustedAdvisorCheckSummaries 
     , module Network.AWS.Support.DescribeTrustedAdvisorCheckSummaries
 
-    -- ** CreateCase
+    -- ** CreateCase 
     , module Network.AWS.Support.CreateCase
 
-    -- ** ResolveCase
+    -- ** ResolveCase 
     , module Network.AWS.Support.ResolveCase
 
-    -- ** DescribeSeverityLevels
+    -- ** DescribeSeverityLevels 
     , module Network.AWS.Support.DescribeSeverityLevels
 
-    -- ** DescribeTrustedAdvisorChecks
+    -- ** DescribeTrustedAdvisorChecks 
     , module Network.AWS.Support.DescribeTrustedAdvisorChecks
 
-    -- ** DescribeAttachment
+    -- ** DescribeAttachment 
     , module Network.AWS.Support.DescribeAttachment
 
-    -- ** AddAttachmentsToSet
+    -- ** AddAttachmentsToSet 
     , module Network.AWS.Support.AddAttachmentsToSet
 
-    -- ** DescribeTrustedAdvisorCheckResult
+    -- ** DescribeTrustedAdvisorCheckResult 
     , module Network.AWS.Support.DescribeTrustedAdvisorCheckResult
 
-    -- ** DescribeServices
+    -- ** DescribeServices 
     , module Network.AWS.Support.DescribeServices
 
     -- ** DescribeCommunications (Paginated)
     , module Network.AWS.Support.DescribeCommunications
 
-    -- ** AddCommunicationToCase
+    -- ** AddCommunicationToCase 
     , module Network.AWS.Support.AddCommunicationToCase
 
     -- * Types
@@ -267,8 +267,8 @@ import Network.AWS.Support.DescribeServices
 import Network.AWS.Support.DescribeSeverityLevels
 import Network.AWS.Support.DescribeTrustedAdvisorCheckRefreshStatuses
 import Network.AWS.Support.DescribeTrustedAdvisorCheckResult
-import Network.AWS.Support.DescribeTrustedAdvisorChecks
 import Network.AWS.Support.DescribeTrustedAdvisorCheckSummaries
+import Network.AWS.Support.DescribeTrustedAdvisorChecks
 import Network.AWS.Support.RefreshTrustedAdvisorCheck
 import Network.AWS.Support.ResolveCase
 import Network.AWS.Support.Types

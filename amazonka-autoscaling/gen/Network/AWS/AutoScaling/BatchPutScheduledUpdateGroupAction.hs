@@ -39,20 +39,20 @@ module Network.AWS.AutoScaling.BatchPutScheduledUpdateGroupAction
     ) where
 
 import Network.AWS.AutoScaling.Types
-import Network.AWS.AutoScaling.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 
 -- | /See:/ 'batchPutScheduledUpdateGroupAction' smart constructor.
-data BatchPutScheduledUpdateGroupAction =
-  BatchPutScheduledUpdateGroupAction'
-    { _bpsugaAutoScalingGroupName        :: !Text
-    , _bpsugaScheduledUpdateGroupActions :: ![ScheduledUpdateGroupActionRequest]
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data BatchPutScheduledUpdateGroupAction = BatchPutScheduledUpdateGroupAction'{_bpsugaAutoScalingGroupName
+                                                                              ::
+                                                                              !Text,
+                                                                              _bpsugaScheduledUpdateGroupActions
+                                                                              ::
+                                                                              ![ScheduledUpdateGroupActionRequest]}
+                                            deriving (Eq, Read, Show, Data,
+                                                      Typeable, Generic)
 
 -- | Creates a value of 'BatchPutScheduledUpdateGroupAction' with the minimum fields required to make a request.
 --
@@ -64,12 +64,12 @@ data BatchPutScheduledUpdateGroupAction =
 batchPutScheduledUpdateGroupAction
     :: Text -- ^ 'bpsugaAutoScalingGroupName'
     -> BatchPutScheduledUpdateGroupAction
-batchPutScheduledUpdateGroupAction pAutoScalingGroupName_ =
-  BatchPutScheduledUpdateGroupAction'
-    { _bpsugaAutoScalingGroupName = pAutoScalingGroupName_
-    , _bpsugaScheduledUpdateGroupActions = mempty
-    }
-
+batchPutScheduledUpdateGroupAction
+  pAutoScalingGroupName_
+  = BatchPutScheduledUpdateGroupAction'{_bpsugaAutoScalingGroupName
+                                          = pAutoScalingGroupName_,
+                                        _bpsugaScheduledUpdateGroupActions =
+                                          mempty}
 
 -- | The name of the Auto Scaling group.
 bpsugaAutoScalingGroupName :: Lens' BatchPutScheduledUpdateGroupAction Text
@@ -122,13 +122,16 @@ instance ToQuery BatchPutScheduledUpdateGroupAction
                    _bpsugaScheduledUpdateGroupActions]
 
 -- | /See:/ 'batchPutScheduledUpdateGroupActionResponse' smart constructor.
-data BatchPutScheduledUpdateGroupActionResponse =
-  BatchPutScheduledUpdateGroupActionResponse'
-    { _bpsugarsFailedScheduledUpdateGroupActions :: !(Maybe [FailedScheduledUpdateGroupActionRequest])
-    , _bpsugarsResponseStatus :: !Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data BatchPutScheduledUpdateGroupActionResponse = BatchPutScheduledUpdateGroupActionResponse'{_bpsugarsFailedScheduledUpdateGroupActions
+                                                                                              ::
+                                                                                              !(Maybe
+                                                                                                  [FailedScheduledUpdateGroupActionRequest]),
+                                                                                              _bpsugarsResponseStatus
+                                                                                              ::
+                                                                                              !Int}
+                                                    deriving (Eq, Read, Show,
+                                                              Data, Typeable,
+                                                              Generic)
 
 -- | Creates a value of 'BatchPutScheduledUpdateGroupActionResponse' with the minimum fields required to make a request.
 --
@@ -140,12 +143,12 @@ data BatchPutScheduledUpdateGroupActionResponse =
 batchPutScheduledUpdateGroupActionResponse
     :: Int -- ^ 'bpsugarsResponseStatus'
     -> BatchPutScheduledUpdateGroupActionResponse
-batchPutScheduledUpdateGroupActionResponse pResponseStatus_ =
-  BatchPutScheduledUpdateGroupActionResponse'
-    { _bpsugarsFailedScheduledUpdateGroupActions = Nothing
-    , _bpsugarsResponseStatus = pResponseStatus_
-    }
-
+batchPutScheduledUpdateGroupActionResponse
+  pResponseStatus_
+  = BatchPutScheduledUpdateGroupActionResponse'{_bpsugarsFailedScheduledUpdateGroupActions
+                                                  = Nothing,
+                                                _bpsugarsResponseStatus =
+                                                  pResponseStatus_}
 
 -- | The names of the scheduled actions that could not be created or updated, including an error message.
 bpsugarsFailedScheduledUpdateGroupActions :: Lens' BatchPutScheduledUpdateGroupActionResponse [FailedScheduledUpdateGroupActionRequest]

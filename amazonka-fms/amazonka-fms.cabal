@@ -61,8 +61,17 @@ library
         , Network.AWS.FMS.Waiters
 
     other-modules:
-          Network.AWS.FMS.Types.Product
-        , Network.AWS.FMS.Types.Sum
+          Network.AWS.FMS.Types.ComplianceViolator
+        , Network.AWS.FMS.Types.EvaluationResult
+        , Network.AWS.FMS.Types.Policy
+        , Network.AWS.FMS.Types.PolicyComplianceDetail
+        , Network.AWS.FMS.Types.PolicyComplianceStatus
+        , Network.AWS.FMS.Types.PolicyComplianceStatusType
+        , Network.AWS.FMS.Types.PolicySummary
+        , Network.AWS.FMS.Types.ResourceTag
+        , Network.AWS.FMS.Types.SecurityServicePolicyData
+        , Network.AWS.FMS.Types.SecurityServiceType
+        , Network.AWS.FMS.Types.ViolationReason
 
     build-depends:
           amazonka-core == 1.6.1.*

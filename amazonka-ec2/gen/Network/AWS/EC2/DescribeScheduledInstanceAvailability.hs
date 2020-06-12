@@ -52,7 +52,6 @@ module Network.AWS.EC2.DescribeScheduledInstanceAvailability
     ) where
 
 import Network.AWS.EC2.Types
-import Network.AWS.EC2.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Pager
 import Network.AWS.Prelude
@@ -64,19 +63,38 @@ import Network.AWS.Response
 --
 --
 -- /See:/ 'describeScheduledInstanceAvailability' smart constructor.
-data DescribeScheduledInstanceAvailability =
-  DescribeScheduledInstanceAvailability'
-    { _dsiaMinSlotDurationInHours  :: !(Maybe Int)
-    , _dsiaFilters                 :: !(Maybe [Filter])
-    , _dsiaNextToken               :: !(Maybe Text)
-    , _dsiaMaxSlotDurationInHours  :: !(Maybe Int)
-    , _dsiaDryRun                  :: !(Maybe Bool)
-    , _dsiaMaxResults              :: !(Maybe Nat)
-    , _dsiaFirstSlotStartTimeRange :: !SlotDateTimeRangeRequest
-    , _dsiaRecurrence              :: !ScheduledInstanceRecurrenceRequest
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data DescribeScheduledInstanceAvailability = DescribeScheduledInstanceAvailability'{_dsiaMinSlotDurationInHours
+                                                                                    ::
+                                                                                    !(Maybe
+                                                                                        Int),
+                                                                                    _dsiaFilters
+                                                                                    ::
+                                                                                    !(Maybe
+                                                                                        [Filter]),
+                                                                                    _dsiaNextToken
+                                                                                    ::
+                                                                                    !(Maybe
+                                                                                        Text),
+                                                                                    _dsiaMaxSlotDurationInHours
+                                                                                    ::
+                                                                                    !(Maybe
+                                                                                        Int),
+                                                                                    _dsiaDryRun
+                                                                                    ::
+                                                                                    !(Maybe
+                                                                                        Bool),
+                                                                                    _dsiaMaxResults
+                                                                                    ::
+                                                                                    !(Maybe
+                                                                                        Nat),
+                                                                                    _dsiaFirstSlotStartTimeRange
+                                                                                    ::
+                                                                                    !SlotDateTimeRangeRequest,
+                                                                                    _dsiaRecurrence
+                                                                                    ::
+                                                                                    !ScheduledInstanceRecurrenceRequest}
+                                               deriving (Eq, Read, Show, Data,
+                                                         Typeable, Generic)
 
 -- | Creates a value of 'DescribeScheduledInstanceAvailability' with the minimum fields required to make a request.
 --
@@ -101,18 +119,19 @@ describeScheduledInstanceAvailability
     :: SlotDateTimeRangeRequest -- ^ 'dsiaFirstSlotStartTimeRange'
     -> ScheduledInstanceRecurrenceRequest -- ^ 'dsiaRecurrence'
     -> DescribeScheduledInstanceAvailability
-describeScheduledInstanceAvailability pFirstSlotStartTimeRange_ pRecurrence_ =
-  DescribeScheduledInstanceAvailability'
-    { _dsiaMinSlotDurationInHours = Nothing
-    , _dsiaFilters = Nothing
-    , _dsiaNextToken = Nothing
-    , _dsiaMaxSlotDurationInHours = Nothing
-    , _dsiaDryRun = Nothing
-    , _dsiaMaxResults = Nothing
-    , _dsiaFirstSlotStartTimeRange = pFirstSlotStartTimeRange_
-    , _dsiaRecurrence = pRecurrence_
-    }
-
+describeScheduledInstanceAvailability
+  pFirstSlotStartTimeRange_ pRecurrence_
+  = DescribeScheduledInstanceAvailability'{_dsiaMinSlotDurationInHours
+                                             = Nothing,
+                                           _dsiaFilters = Nothing,
+                                           _dsiaNextToken = Nothing,
+                                           _dsiaMaxSlotDurationInHours =
+                                             Nothing,
+                                           _dsiaDryRun = Nothing,
+                                           _dsiaMaxResults = Nothing,
+                                           _dsiaFirstSlotStartTimeRange =
+                                             pFirstSlotStartTimeRange_,
+                                           _dsiaRecurrence = pRecurrence_}
 
 -- | The minimum available duration, in hours. The minimum required duration is 1,200 hours per year. For example, the minimum daily schedule is 4 hours, the minimum weekly schedule is 24 hours, and the minimum monthly schedule is 100 hours.
 dsiaMinSlotDurationInHours :: Lens' DescribeScheduledInstanceAvailability (Maybe Int)
@@ -213,14 +232,20 @@ instance ToQuery
 --
 --
 -- /See:/ 'describeScheduledInstanceAvailabilityResponse' smart constructor.
-data DescribeScheduledInstanceAvailabilityResponse =
-  DescribeScheduledInstanceAvailabilityResponse'
-    { _dsiarsScheduledInstanceAvailabilitySet :: !(Maybe [ScheduledInstanceAvailability])
-    , _dsiarsNextToken :: !(Maybe Text)
-    , _dsiarsResponseStatus :: !Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data DescribeScheduledInstanceAvailabilityResponse = DescribeScheduledInstanceAvailabilityResponse'{_dsiarsScheduledInstanceAvailabilitySet
+                                                                                                    ::
+                                                                                                    !(Maybe
+                                                                                                        [ScheduledInstanceAvailability]),
+                                                                                                    _dsiarsNextToken
+                                                                                                    ::
+                                                                                                    !(Maybe
+                                                                                                        Text),
+                                                                                                    _dsiarsResponseStatus
+                                                                                                    ::
+                                                                                                    !Int}
+                                                       deriving (Eq, Read, Show,
+                                                                 Data, Typeable,
+                                                                 Generic)
 
 -- | Creates a value of 'DescribeScheduledInstanceAvailabilityResponse' with the minimum fields required to make a request.
 --
@@ -234,13 +259,13 @@ data DescribeScheduledInstanceAvailabilityResponse =
 describeScheduledInstanceAvailabilityResponse
     :: Int -- ^ 'dsiarsResponseStatus'
     -> DescribeScheduledInstanceAvailabilityResponse
-describeScheduledInstanceAvailabilityResponse pResponseStatus_ =
-  DescribeScheduledInstanceAvailabilityResponse'
-    { _dsiarsScheduledInstanceAvailabilitySet = Nothing
-    , _dsiarsNextToken = Nothing
-    , _dsiarsResponseStatus = pResponseStatus_
-    }
-
+describeScheduledInstanceAvailabilityResponse
+  pResponseStatus_
+  = DescribeScheduledInstanceAvailabilityResponse'{_dsiarsScheduledInstanceAvailabilitySet
+                                                     = Nothing,
+                                                   _dsiarsNextToken = Nothing,
+                                                   _dsiarsResponseStatus =
+                                                     pResponseStatus_}
 
 -- | Information about the available Scheduled Instances.
 dsiarsScheduledInstanceAvailabilitySet :: Lens' DescribeScheduledInstanceAvailabilityResponse [ScheduledInstanceAvailability]

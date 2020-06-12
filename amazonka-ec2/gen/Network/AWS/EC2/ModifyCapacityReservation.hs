@@ -42,23 +42,25 @@ module Network.AWS.EC2.ModifyCapacityReservation
     ) where
 
 import Network.AWS.EC2.Types
-import Network.AWS.EC2.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 
 -- | /See:/ 'modifyCapacityReservation' smart constructor.
-data ModifyCapacityReservation =
-  ModifyCapacityReservation'
-    { _mcrInstanceCount         :: !(Maybe Int)
-    , _mcrEndDate               :: !(Maybe ISO8601)
-    , _mcrEndDateType           :: !(Maybe EndDateType)
-    , _mcrDryRun                :: !(Maybe Bool)
-    , _mcrCapacityReservationId :: !Text
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data ModifyCapacityReservation = ModifyCapacityReservation'{_mcrInstanceCount
+                                                            :: !(Maybe Int),
+                                                            _mcrEndDate ::
+                                                            !(Maybe ISO8601),
+                                                            _mcrEndDateType ::
+                                                            !(Maybe
+                                                                EndDateType),
+                                                            _mcrDryRun ::
+                                                            !(Maybe Bool),
+                                                            _mcrCapacityReservationId
+                                                            :: !Text}
+                                   deriving (Eq, Read, Show, Data, Typeable,
+                                             Generic)
 
 -- | Creates a value of 'ModifyCapacityReservation' with the minimum fields required to make a request.
 --
@@ -76,15 +78,13 @@ data ModifyCapacityReservation =
 modifyCapacityReservation
     :: Text -- ^ 'mcrCapacityReservationId'
     -> ModifyCapacityReservation
-modifyCapacityReservation pCapacityReservationId_ =
-  ModifyCapacityReservation'
-    { _mcrInstanceCount = Nothing
-    , _mcrEndDate = Nothing
-    , _mcrEndDateType = Nothing
-    , _mcrDryRun = Nothing
-    , _mcrCapacityReservationId = pCapacityReservationId_
-    }
-
+modifyCapacityReservation pCapacityReservationId_
+  = ModifyCapacityReservation'{_mcrInstanceCount =
+                                 Nothing,
+                               _mcrEndDate = Nothing, _mcrEndDateType = Nothing,
+                               _mcrDryRun = Nothing,
+                               _mcrCapacityReservationId =
+                                 pCapacityReservationId_}
 
 -- | The number of instances for which to reserve capacity.
 mcrInstanceCount :: Lens' ModifyCapacityReservation (Maybe Int)
@@ -139,13 +139,15 @@ instance ToQuery ModifyCapacityReservation where
                "CapacityReservationId" =: _mcrCapacityReservationId]
 
 -- | /See:/ 'modifyCapacityReservationResponse' smart constructor.
-data ModifyCapacityReservationResponse =
-  ModifyCapacityReservationResponse'
-    { _mcrrsReturn         :: !(Maybe Bool)
-    , _mcrrsResponseStatus :: !Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data ModifyCapacityReservationResponse = ModifyCapacityReservationResponse'{_mcrrsReturn
+                                                                            ::
+                                                                            !(Maybe
+                                                                                Bool),
+                                                                            _mcrrsResponseStatus
+                                                                            ::
+                                                                            !Int}
+                                           deriving (Eq, Read, Show, Data,
+                                                     Typeable, Generic)
 
 -- | Creates a value of 'ModifyCapacityReservationResponse' with the minimum fields required to make a request.
 --
@@ -157,10 +159,10 @@ data ModifyCapacityReservationResponse =
 modifyCapacityReservationResponse
     :: Int -- ^ 'mcrrsResponseStatus'
     -> ModifyCapacityReservationResponse
-modifyCapacityReservationResponse pResponseStatus_ =
-  ModifyCapacityReservationResponse'
-    {_mcrrsReturn = Nothing, _mcrrsResponseStatus = pResponseStatus_}
-
+modifyCapacityReservationResponse pResponseStatus_
+  = ModifyCapacityReservationResponse'{_mcrrsReturn =
+                                         Nothing,
+                                       _mcrrsResponseStatus = pResponseStatus_}
 
 -- | Returns @true@ if the request succeeds; otherwise, it returns an error.
 mcrrsReturn :: Lens' ModifyCapacityReservationResponse (Maybe Bool)

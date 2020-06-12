@@ -47,29 +47,33 @@ import Network.AWS.Lens
 import Network.AWS.Pager
 import Network.AWS.Prelude
 import Network.AWS.Redshift.Types
-import Network.AWS.Redshift.Types.Product
 import Network.AWS.Request
 import Network.AWS.Response
 
--- |
+-- | 
 --
 --
 --
 -- /See:/ 'describeDefaultClusterParameters' smart constructor.
-data DescribeDefaultClusterParameters =
-  DescribeDefaultClusterParameters'
-    { _ddcpMarker               :: !(Maybe Text)
-    , _ddcpMaxRecords           :: !(Maybe Int)
-    , _ddcpParameterGroupFamily :: !Text
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data DescribeDefaultClusterParameters = DescribeDefaultClusterParameters'{_ddcpMarker
+                                                                          ::
+                                                                          !(Maybe
+                                                                              Text),
+                                                                          _ddcpMaxRecords
+                                                                          ::
+                                                                          !(Maybe
+                                                                              Int),
+                                                                          _ddcpParameterGroupFamily
+                                                                          ::
+                                                                          !Text}
+                                          deriving (Eq, Read, Show, Data,
+                                                    Typeable, Generic)
 
 -- | Creates a value of 'DescribeDefaultClusterParameters' with the minimum fields required to make a request.
 --
 -- Use one of the following lenses to modify other fields as desired:
 --
--- * 'ddcpMarker' - An optional parameter that specifies the starting point to return a set of response records. When the results of a 'DescribeDefaultClusterParameters' request exceed the value specified in @MaxRecords@ , AWS returns a value in the @Marker@ field of the response. You can retrieve the next set of response records by providing the returned marker value in the @Marker@ parameter and retrying the request.
+-- * 'ddcpMarker' - An optional parameter that specifies the starting point to return a set of response records. When the results of a 'DescribeDefaultClusterParameters' request exceed the value specified in @MaxRecords@ , AWS returns a value in the @Marker@ field of the response. You can retrieve the next set of response records by providing the returned marker value in the @Marker@ parameter and retrying the request. 
 --
 -- * 'ddcpMaxRecords' - The maximum number of response records to return in each call. If the number of remaining response records exceeds the specified @MaxRecords@ value, a value is returned in a @marker@ field of the response. You can retrieve the next set of records by retrying the command with the returned marker value.  Default: @100@  Constraints: minimum 20, maximum 100.
 --
@@ -77,15 +81,15 @@ data DescribeDefaultClusterParameters =
 describeDefaultClusterParameters
     :: Text -- ^ 'ddcpParameterGroupFamily'
     -> DescribeDefaultClusterParameters
-describeDefaultClusterParameters pParameterGroupFamily_ =
-  DescribeDefaultClusterParameters'
-    { _ddcpMarker = Nothing
-    , _ddcpMaxRecords = Nothing
-    , _ddcpParameterGroupFamily = pParameterGroupFamily_
-    }
+describeDefaultClusterParameters
+  pParameterGroupFamily_
+  = DescribeDefaultClusterParameters'{_ddcpMarker =
+                                        Nothing,
+                                      _ddcpMaxRecords = Nothing,
+                                      _ddcpParameterGroupFamily =
+                                        pParameterGroupFamily_}
 
-
--- | An optional parameter that specifies the starting point to return a set of response records. When the results of a 'DescribeDefaultClusterParameters' request exceed the value specified in @MaxRecords@ , AWS returns a value in the @Marker@ field of the response. You can retrieve the next set of response records by providing the returned marker value in the @Marker@ parameter and retrying the request.
+-- | An optional parameter that specifies the starting point to return a set of response records. When the results of a 'DescribeDefaultClusterParameters' request exceed the value specified in @MaxRecords@ , AWS returns a value in the @Marker@ field of the response. You can retrieve the next set of response records by providing the returned marker value in the @Marker@ parameter and retrying the request. 
 ddcpMarker :: Lens' DescribeDefaultClusterParameters (Maybe Text)
 ddcpMarker = lens _ddcpMarker (\ s a -> s{_ddcpMarker = a})
 
@@ -153,13 +157,15 @@ instance ToQuery DescribeDefaultClusterParameters
                "ParameterGroupFamily" =: _ddcpParameterGroupFamily]
 
 -- | /See:/ 'describeDefaultClusterParametersResponse' smart constructor.
-data DescribeDefaultClusterParametersResponse =
-  DescribeDefaultClusterParametersResponse'
-    { _ddcprsResponseStatus           :: !Int
-    , _ddcprsDefaultClusterParameters :: !DefaultClusterParameters
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data DescribeDefaultClusterParametersResponse = DescribeDefaultClusterParametersResponse'{_ddcprsResponseStatus
+                                                                                          ::
+                                                                                          !Int,
+                                                                                          _ddcprsDefaultClusterParameters
+                                                                                          ::
+                                                                                          !DefaultClusterParameters}
+                                                  deriving (Eq, Read, Show,
+                                                            Data, Typeable,
+                                                            Generic)
 
 -- | Creates a value of 'DescribeDefaultClusterParametersResponse' with the minimum fields required to make a request.
 --
@@ -172,12 +178,12 @@ describeDefaultClusterParametersResponse
     :: Int -- ^ 'ddcprsResponseStatus'
     -> DefaultClusterParameters -- ^ 'ddcprsDefaultClusterParameters'
     -> DescribeDefaultClusterParametersResponse
-describeDefaultClusterParametersResponse pResponseStatus_ pDefaultClusterParameters_ =
-  DescribeDefaultClusterParametersResponse'
-    { _ddcprsResponseStatus = pResponseStatus_
-    , _ddcprsDefaultClusterParameters = pDefaultClusterParameters_
-    }
-
+describeDefaultClusterParametersResponse
+  pResponseStatus_ pDefaultClusterParameters_
+  = DescribeDefaultClusterParametersResponse'{_ddcprsResponseStatus
+                                                = pResponseStatus_,
+                                              _ddcprsDefaultClusterParameters =
+                                                pDefaultClusterParameters_}
 
 -- | -- | The response status code.
 ddcprsResponseStatus :: Lens' DescribeDefaultClusterParametersResponse Int

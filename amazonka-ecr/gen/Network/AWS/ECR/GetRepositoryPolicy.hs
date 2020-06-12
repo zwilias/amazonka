@@ -41,20 +41,16 @@ module Network.AWS.ECR.GetRepositoryPolicy
     ) where
 
 import Network.AWS.ECR.Types
-import Network.AWS.ECR.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 
 -- | /See:/ 'getRepositoryPolicy' smart constructor.
-data GetRepositoryPolicy =
-  GetRepositoryPolicy'
-    { _grpRegistryId     :: !(Maybe Text)
-    , _grpRepositoryName :: !Text
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data GetRepositoryPolicy = GetRepositoryPolicy'{_grpRegistryId
+                                                :: !(Maybe Text),
+                                                _grpRepositoryName :: !Text}
+                             deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'GetRepositoryPolicy' with the minimum fields required to make a request.
 --
@@ -66,10 +62,9 @@ data GetRepositoryPolicy =
 getRepositoryPolicy
     :: Text -- ^ 'grpRepositoryName'
     -> GetRepositoryPolicy
-getRepositoryPolicy pRepositoryName_ =
-  GetRepositoryPolicy'
-    {_grpRegistryId = Nothing, _grpRepositoryName = pRepositoryName_}
-
+getRepositoryPolicy pRepositoryName_
+  = GetRepositoryPolicy'{_grpRegistryId = Nothing,
+                         _grpRepositoryName = pRepositoryName_}
 
 -- | The AWS account ID associated with the registry that contains the repository. If you do not specify a registry, the default registry is assumed.
 grpRegistryId :: Lens' GetRepositoryPolicy (Maybe Text)
@@ -119,15 +114,19 @@ instance ToQuery GetRepositoryPolicy where
         toQuery = const mempty
 
 -- | /See:/ 'getRepositoryPolicyResponse' smart constructor.
-data GetRepositoryPolicyResponse =
-  GetRepositoryPolicyResponse'
-    { _grprsRegistryId     :: !(Maybe Text)
-    , _grprsRepositoryName :: !(Maybe Text)
-    , _grprsPolicyText     :: !(Maybe Text)
-    , _grprsResponseStatus :: !Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data GetRepositoryPolicyResponse = GetRepositoryPolicyResponse'{_grprsRegistryId
+                                                                ::
+                                                                !(Maybe Text),
+                                                                _grprsRepositoryName
+                                                                ::
+                                                                !(Maybe Text),
+                                                                _grprsPolicyText
+                                                                ::
+                                                                !(Maybe Text),
+                                                                _grprsResponseStatus
+                                                                :: !Int}
+                                     deriving (Eq, Read, Show, Data, Typeable,
+                                               Generic)
 
 -- | Creates a value of 'GetRepositoryPolicyResponse' with the minimum fields required to make a request.
 --
@@ -143,14 +142,12 @@ data GetRepositoryPolicyResponse =
 getRepositoryPolicyResponse
     :: Int -- ^ 'grprsResponseStatus'
     -> GetRepositoryPolicyResponse
-getRepositoryPolicyResponse pResponseStatus_ =
-  GetRepositoryPolicyResponse'
-    { _grprsRegistryId = Nothing
-    , _grprsRepositoryName = Nothing
-    , _grprsPolicyText = Nothing
-    , _grprsResponseStatus = pResponseStatus_
-    }
-
+getRepositoryPolicyResponse pResponseStatus_
+  = GetRepositoryPolicyResponse'{_grprsRegistryId =
+                                   Nothing,
+                                 _grprsRepositoryName = Nothing,
+                                 _grprsPolicyText = Nothing,
+                                 _grprsResponseStatus = pResponseStatus_}
 
 -- | The registry ID associated with the request.
 grprsRegistryId :: Lens' GetRepositoryPolicyResponse (Maybe Text)

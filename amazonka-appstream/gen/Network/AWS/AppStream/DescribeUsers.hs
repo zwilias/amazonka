@@ -43,7 +43,6 @@ module Network.AWS.AppStream.DescribeUsers
     ) where
 
 import Network.AWS.AppStream.Types
-import Network.AWS.AppStream.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Pager
 import Network.AWS.Prelude
@@ -51,14 +50,12 @@ import Network.AWS.Request
 import Network.AWS.Response
 
 -- | /See:/ 'describeUsers' smart constructor.
-data DescribeUsers =
-  DescribeUsers'
-    { _duNextToken          :: !(Maybe Text)
-    , _duMaxResults         :: !(Maybe Int)
-    , _duAuthenticationType :: !AuthenticationType
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data DescribeUsers = DescribeUsers'{_duNextToken ::
+                                    !(Maybe Text),
+                                    _duMaxResults :: !(Maybe Int),
+                                    _duAuthenticationType ::
+                                    !AuthenticationType}
+                       deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'DescribeUsers' with the minimum fields required to make a request.
 --
@@ -72,13 +69,10 @@ data DescribeUsers =
 describeUsers
     :: AuthenticationType -- ^ 'duAuthenticationType'
     -> DescribeUsers
-describeUsers pAuthenticationType_ =
-  DescribeUsers'
-    { _duNextToken = Nothing
-    , _duMaxResults = Nothing
-    , _duAuthenticationType = pAuthenticationType_
-    }
-
+describeUsers pAuthenticationType_
+  = DescribeUsers'{_duNextToken = Nothing,
+                   _duMaxResults = Nothing,
+                   _duAuthenticationType = pAuthenticationType_}
 
 -- | The pagination token to use to retrieve the next page of results for this operation. If this value is null, it retrieves the first page.
 duNextToken :: Lens' DescribeUsers (Maybe Text)
@@ -139,14 +133,12 @@ instance ToQuery DescribeUsers where
         toQuery = const mempty
 
 -- | /See:/ 'describeUsersResponse' smart constructor.
-data DescribeUsersResponse =
-  DescribeUsersResponse'
-    { _dursUsers          :: !(Maybe [User])
-    , _dursNextToken      :: !(Maybe Text)
-    , _dursResponseStatus :: !Int
-    }
-  deriving (Eq, Show, Data, Typeable, Generic)
-
+data DescribeUsersResponse = DescribeUsersResponse'{_dursUsers
+                                                    :: !(Maybe [User]),
+                                                    _dursNextToken ::
+                                                    !(Maybe Text),
+                                                    _dursResponseStatus :: !Int}
+                               deriving (Eq, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'DescribeUsersResponse' with the minimum fields required to make a request.
 --
@@ -160,13 +152,10 @@ data DescribeUsersResponse =
 describeUsersResponse
     :: Int -- ^ 'dursResponseStatus'
     -> DescribeUsersResponse
-describeUsersResponse pResponseStatus_ =
-  DescribeUsersResponse'
-    { _dursUsers = Nothing
-    , _dursNextToken = Nothing
-    , _dursResponseStatus = pResponseStatus_
-    }
-
+describeUsersResponse pResponseStatus_
+  = DescribeUsersResponse'{_dursUsers = Nothing,
+                           _dursNextToken = Nothing,
+                           _dursResponseStatus = pResponseStatus_}
 
 -- | Information about users in the user pool.
 dursUsers :: Lens' DescribeUsersResponse [User]

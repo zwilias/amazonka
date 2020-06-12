@@ -52,17 +52,13 @@ import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.ResourceGroupsTagging.Types
-import Network.AWS.ResourceGroupsTagging.Types.Product
 import Network.AWS.Response
 
 -- | /See:/ 'tagResources' smart constructor.
-data TagResources =
-  TagResources'
-    { _trResourceARNList :: !(List1 Text)
-    , _trTags            :: !(Map Text Text)
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data TagResources = TagResources'{_trResourceARNList
+                                  :: !(List1 Text),
+                                  _trTags :: !(Map Text Text)}
+                      deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'TagResources' with the minimum fields required to make a request.
 --
@@ -74,10 +70,10 @@ data TagResources =
 tagResources
     :: NonEmpty Text -- ^ 'trResourceARNList'
     -> TagResources
-tagResources pResourceARNList_ =
-  TagResources'
-    {_trResourceARNList = _List1 # pResourceARNList_, _trTags = mempty}
-
+tagResources pResourceARNList_
+  = TagResources'{_trResourceARNList =
+                    _List1 # pResourceARNList_,
+                  _trTags = mempty}
 
 -- | A list of ARNs. An ARN (Amazon Resource Name) uniquely identifies a resource. You can specify a minimum of 1 and a maximum of 20 ARNs (resources) to tag. An ARN can be set to a maximum of 1600 characters. For more information, see <http://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html Amazon Resource Names (ARNs) and AWS Service Namespaces> in the /AWS General Reference/ .
 trResourceARNList :: Lens' TagResources (NonEmpty Text)
@@ -125,13 +121,12 @@ instance ToQuery TagResources where
         toQuery = const mempty
 
 -- | /See:/ 'tagResourcesResponse' smart constructor.
-data TagResourcesResponse =
-  TagResourcesResponse'
-    { _trrsFailedResourcesMap :: !(Maybe (Map Text FailureInfo))
-    , _trrsResponseStatus     :: !Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data TagResourcesResponse = TagResourcesResponse'{_trrsFailedResourcesMap
+                                                  ::
+                                                  !(Maybe
+                                                      (Map Text FailureInfo)),
+                                                  _trrsResponseStatus :: !Int}
+                              deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'TagResourcesResponse' with the minimum fields required to make a request.
 --
@@ -143,10 +138,10 @@ data TagResourcesResponse =
 tagResourcesResponse
     :: Int -- ^ 'trrsResponseStatus'
     -> TagResourcesResponse
-tagResourcesResponse pResponseStatus_ =
-  TagResourcesResponse'
-    {_trrsFailedResourcesMap = Nothing, _trrsResponseStatus = pResponseStatus_}
-
+tagResourcesResponse pResponseStatus_
+  = TagResourcesResponse'{_trrsFailedResourcesMap =
+                            Nothing,
+                          _trrsResponseStatus = pResponseStatus_}
 
 -- | Details of resources that could not be tagged. An error code, status code, and error message are returned for each failed item.
 trrsFailedResourcesMap :: Lens' TagResourcesResponse (HashMap Text FailureInfo)

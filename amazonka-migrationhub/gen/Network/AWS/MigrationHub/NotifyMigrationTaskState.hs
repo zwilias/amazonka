@@ -51,23 +51,24 @@ module Network.AWS.MigrationHub.NotifyMigrationTaskState
 
 import Network.AWS.Lens
 import Network.AWS.MigrationHub.Types
-import Network.AWS.MigrationHub.Types.Product
 import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 
 -- | /See:/ 'notifyMigrationTaskState' smart constructor.
-data NotifyMigrationTaskState =
-  NotifyMigrationTaskState'
-    { _nmtsDryRun               :: !(Maybe Bool)
-    , _nmtsProgressUpdateStream :: !Text
-    , _nmtsMigrationTaskName    :: !Text
-    , _nmtsTask                 :: !Task
-    , _nmtsUpdateDateTime       :: !POSIX
-    , _nmtsNextUpdateSeconds    :: !Nat
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data NotifyMigrationTaskState = NotifyMigrationTaskState'{_nmtsDryRun
+                                                          :: !(Maybe Bool),
+                                                          _nmtsProgressUpdateStream
+                                                          :: !Text,
+                                                          _nmtsMigrationTaskName
+                                                          :: !Text,
+                                                          _nmtsTask :: !Task,
+                                                          _nmtsUpdateDateTime ::
+                                                          !POSIX,
+                                                          _nmtsNextUpdateSeconds
+                                                          :: !Nat}
+                                  deriving (Eq, Read, Show, Data, Typeable,
+                                            Generic)
 
 -- | Creates a value of 'NotifyMigrationTaskState' with the minimum fields required to make a request.
 --
@@ -75,7 +76,7 @@ data NotifyMigrationTaskState =
 --
 -- * 'nmtsDryRun' - Optional boolean flag to indicate whether any effect should take place. Used to test if the caller has permission to make the call.
 --
--- * 'nmtsProgressUpdateStream' - The name of the ProgressUpdateStream.
+-- * 'nmtsProgressUpdateStream' - The name of the ProgressUpdateStream. 
 --
 -- * 'nmtsMigrationTaskName' - Unique identifier that references the migration task.
 --
@@ -91,22 +92,23 @@ notifyMigrationTaskState
     -> UTCTime -- ^ 'nmtsUpdateDateTime'
     -> Natural -- ^ 'nmtsNextUpdateSeconds'
     -> NotifyMigrationTaskState
-notifyMigrationTaskState pProgressUpdateStream_ pMigrationTaskName_ pTask_ pUpdateDateTime_ pNextUpdateSeconds_ =
-  NotifyMigrationTaskState'
-    { _nmtsDryRun = Nothing
-    , _nmtsProgressUpdateStream = pProgressUpdateStream_
-    , _nmtsMigrationTaskName = pMigrationTaskName_
-    , _nmtsTask = pTask_
-    , _nmtsUpdateDateTime = _Time # pUpdateDateTime_
-    , _nmtsNextUpdateSeconds = _Nat # pNextUpdateSeconds_
-    }
-
+notifyMigrationTaskState pProgressUpdateStream_
+  pMigrationTaskName_ pTask_ pUpdateDateTime_
+  pNextUpdateSeconds_
+  = NotifyMigrationTaskState'{_nmtsDryRun = Nothing,
+                              _nmtsProgressUpdateStream =
+                                pProgressUpdateStream_,
+                              _nmtsMigrationTaskName = pMigrationTaskName_,
+                              _nmtsTask = pTask_,
+                              _nmtsUpdateDateTime = _Time # pUpdateDateTime_,
+                              _nmtsNextUpdateSeconds =
+                                _Nat # pNextUpdateSeconds_}
 
 -- | Optional boolean flag to indicate whether any effect should take place. Used to test if the caller has permission to make the call.
 nmtsDryRun :: Lens' NotifyMigrationTaskState (Maybe Bool)
 nmtsDryRun = lens _nmtsDryRun (\ s a -> s{_nmtsDryRun = a})
 
--- | The name of the ProgressUpdateStream.
+-- | The name of the ProgressUpdateStream. 
 nmtsProgressUpdateStream :: Lens' NotifyMigrationTaskState Text
 nmtsProgressUpdateStream = lens _nmtsProgressUpdateStream (\ s a -> s{_nmtsProgressUpdateStream = a})
 
@@ -171,12 +173,11 @@ instance ToQuery NotifyMigrationTaskState where
         toQuery = const mempty
 
 -- | /See:/ 'notifyMigrationTaskStateResponse' smart constructor.
-newtype NotifyMigrationTaskStateResponse =
-  NotifyMigrationTaskStateResponse'
-    { _nmtsrsResponseStatus :: Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+newtype NotifyMigrationTaskStateResponse = NotifyMigrationTaskStateResponse'{_nmtsrsResponseStatus
+                                                                             ::
+                                                                             Int}
+                                             deriving (Eq, Read, Show, Data,
+                                                       Typeable, Generic)
 
 -- | Creates a value of 'NotifyMigrationTaskStateResponse' with the minimum fields required to make a request.
 --
@@ -186,9 +187,9 @@ newtype NotifyMigrationTaskStateResponse =
 notifyMigrationTaskStateResponse
     :: Int -- ^ 'nmtsrsResponseStatus'
     -> NotifyMigrationTaskStateResponse
-notifyMigrationTaskStateResponse pResponseStatus_ =
-  NotifyMigrationTaskStateResponse' {_nmtsrsResponseStatus = pResponseStatus_}
-
+notifyMigrationTaskStateResponse pResponseStatus_
+  = NotifyMigrationTaskStateResponse'{_nmtsrsResponseStatus
+                                        = pResponseStatus_}
 
 -- | -- | The response status code.
 nmtsrsResponseStatus :: Lens' NotifyMigrationTaskStateResponse Int

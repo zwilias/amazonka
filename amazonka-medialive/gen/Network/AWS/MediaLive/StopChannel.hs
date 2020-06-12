@@ -47,7 +47,6 @@ module Network.AWS.MediaLive.StopChannel
 
 import Network.AWS.Lens
 import Network.AWS.MediaLive.Types
-import Network.AWS.MediaLive.Types.Product
 import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
@@ -55,12 +54,9 @@ import Network.AWS.Response
 -- | Placeholder documentation for StopChannelRequest
 --
 -- /See:/ 'stopChannel' smart constructor.
-newtype StopChannel =
-  StopChannel'
-    { _sChannelId :: Text
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+newtype StopChannel = StopChannel'{_sChannelId ::
+                                   Text}
+                        deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'StopChannel' with the minimum fields required to make a request.
 --
@@ -70,8 +66,8 @@ newtype StopChannel =
 stopChannel
     :: Text -- ^ 'sChannelId'
     -> StopChannel
-stopChannel pChannelId_ = StopChannel' {_sChannelId = pChannelId_}
-
+stopChannel pChannelId_
+  = StopChannel'{_sChannelId = pChannelId_}
 
 -- | A request to stop a running channel
 sChannelId :: Lens' StopChannel Text
@@ -121,23 +117,27 @@ instance ToQuery StopChannel where
 -- | Placeholder documentation for StopChannelResponse
 --
 -- /See:/ 'stopChannelResponse' smart constructor.
-data StopChannelResponse =
-  StopChannelResponse'
-    { _srsState                 :: !(Maybe ChannelState)
-    , _srsARN                   :: !(Maybe Text)
-    , _srsPipelinesRunningCount :: !(Maybe Int)
-    , _srsInputSpecification    :: !(Maybe InputSpecification)
-    , _srsInputAttachments      :: !(Maybe [InputAttachment])
-    , _srsDestinations          :: !(Maybe [OutputDestination])
-    , _srsName                  :: !(Maybe Text)
-    , _srsId                    :: !(Maybe Text)
-    , _srsEgressEndpoints       :: !(Maybe [ChannelEgressEndpoint])
-    , _srsEncoderSettings       :: !(Maybe EncoderSettings)
-    , _srsRoleARN               :: !(Maybe Text)
-    , _srsResponseStatus        :: !Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data StopChannelResponse = StopChannelResponse'{_srsState
+                                                :: !(Maybe ChannelState),
+                                                _srsARN :: !(Maybe Text),
+                                                _srsPipelinesRunningCount ::
+                                                !(Maybe Int),
+                                                _srsInputSpecification ::
+                                                !(Maybe InputSpecification),
+                                                _srsInputAttachments ::
+                                                !(Maybe [InputAttachment]),
+                                                _srsDestinations ::
+                                                !(Maybe [OutputDestination]),
+                                                _srsName :: !(Maybe Text),
+                                                _srsId :: !(Maybe Text),
+                                                _srsEgressEndpoints ::
+                                                !(Maybe
+                                                    [ChannelEgressEndpoint]),
+                                                _srsEncoderSettings ::
+                                                !(Maybe EncoderSettings),
+                                                _srsRoleARN :: !(Maybe Text),
+                                                _srsResponseStatus :: !Int}
+                             deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'StopChannelResponse' with the minimum fields required to make a request.
 --
@@ -169,22 +169,16 @@ data StopChannelResponse =
 stopChannelResponse
     :: Int -- ^ 'srsResponseStatus'
     -> StopChannelResponse
-stopChannelResponse pResponseStatus_ =
-  StopChannelResponse'
-    { _srsState = Nothing
-    , _srsARN = Nothing
-    , _srsPipelinesRunningCount = Nothing
-    , _srsInputSpecification = Nothing
-    , _srsInputAttachments = Nothing
-    , _srsDestinations = Nothing
-    , _srsName = Nothing
-    , _srsId = Nothing
-    , _srsEgressEndpoints = Nothing
-    , _srsEncoderSettings = Nothing
-    , _srsRoleARN = Nothing
-    , _srsResponseStatus = pResponseStatus_
-    }
-
+stopChannelResponse pResponseStatus_
+  = StopChannelResponse'{_srsState = Nothing,
+                         _srsARN = Nothing,
+                         _srsPipelinesRunningCount = Nothing,
+                         _srsInputSpecification = Nothing,
+                         _srsInputAttachments = Nothing,
+                         _srsDestinations = Nothing, _srsName = Nothing,
+                         _srsId = Nothing, _srsEgressEndpoints = Nothing,
+                         _srsEncoderSettings = Nothing, _srsRoleARN = Nothing,
+                         _srsResponseStatus = pResponseStatus_}
 
 -- | Undocumented member.
 srsState :: Lens' StopChannelResponse (Maybe ChannelState)

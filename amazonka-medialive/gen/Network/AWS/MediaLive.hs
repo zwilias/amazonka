@@ -59,49 +59,49 @@ module Network.AWS.MediaLive
     -- ** ListChannels (Paginated)
     , module Network.AWS.MediaLive.ListChannels
 
-    -- ** DescribeInputSecurityGroup
+    -- ** DescribeInputSecurityGroup 
     , module Network.AWS.MediaLive.DescribeInputSecurityGroup
 
-    -- ** CreateInput
+    -- ** CreateInput 
     , module Network.AWS.MediaLive.CreateInput
 
-    -- ** DeleteChannel
+    -- ** DeleteChannel 
     , module Network.AWS.MediaLive.DeleteChannel
 
-    -- ** UpdateChannel
+    -- ** UpdateChannel 
     , module Network.AWS.MediaLive.UpdateChannel
 
-    -- ** CreateInputSecurityGroup
+    -- ** CreateInputSecurityGroup 
     , module Network.AWS.MediaLive.CreateInputSecurityGroup
 
-    -- ** StartChannel
+    -- ** StartChannel 
     , module Network.AWS.MediaLive.StartChannel
 
     -- ** ListInputSecurityGroups (Paginated)
     , module Network.AWS.MediaLive.ListInputSecurityGroups
 
-    -- ** CreateChannel
+    -- ** CreateChannel 
     , module Network.AWS.MediaLive.CreateChannel
 
-    -- ** DeleteInput
+    -- ** DeleteInput 
     , module Network.AWS.MediaLive.DeleteInput
 
-    -- ** UpdateInput
+    -- ** UpdateInput 
     , module Network.AWS.MediaLive.UpdateInput
 
-    -- ** StopChannel
+    -- ** StopChannel 
     , module Network.AWS.MediaLive.StopChannel
 
-    -- ** DescribeInput
+    -- ** DescribeInput 
     , module Network.AWS.MediaLive.DescribeInput
 
-    -- ** DescribeChannel
+    -- ** DescribeChannel 
     , module Network.AWS.MediaLive.DescribeChannel
 
-    -- ** UpdateInputSecurityGroup
+    -- ** UpdateInputSecurityGroup 
     , module Network.AWS.MediaLive.UpdateInputSecurityGroup
 
-    -- ** DeleteInputSecurityGroup
+    -- ** DeleteInputSecurityGroup 
     , module Network.AWS.MediaLive.DeleteInputSecurityGroup
 
     -- * Types
@@ -1532,8 +1532,8 @@ import Network.AWS.MediaLive.DescribeChannel
 import Network.AWS.MediaLive.DescribeInput
 import Network.AWS.MediaLive.DescribeInputSecurityGroup
 import Network.AWS.MediaLive.ListChannels
-import Network.AWS.MediaLive.ListInputs
 import Network.AWS.MediaLive.ListInputSecurityGroups
+import Network.AWS.MediaLive.ListInputs
 import Network.AWS.MediaLive.StartChannel
 import Network.AWS.MediaLive.StopChannel
 import Network.AWS.MediaLive.Types

@@ -42,21 +42,21 @@ module Network.AWS.DynamoDB.UpdateContributorInsights
     ) where
 
 import Network.AWS.DynamoDB.Types
-import Network.AWS.DynamoDB.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 
 -- | /See:/ 'updateContributorInsights' smart constructor.
-data UpdateContributorInsights =
-  UpdateContributorInsights'
-    { _uciIndexName                 :: !(Maybe Text)
-    , _uciTableName                 :: !Text
-    , _uciContributorInsightsAction :: !ContributorInsightsAction
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data UpdateContributorInsights = UpdateContributorInsights'{_uciIndexName
+                                                            :: !(Maybe Text),
+                                                            _uciTableName ::
+                                                            !Text,
+                                                            _uciContributorInsightsAction
+                                                            ::
+                                                            !ContributorInsightsAction}
+                                   deriving (Eq, Read, Show, Data, Typeable,
+                                             Generic)
 
 -- | Creates a value of 'UpdateContributorInsights' with the minimum fields required to make a request.
 --
@@ -71,13 +71,12 @@ updateContributorInsights
     :: Text -- ^ 'uciTableName'
     -> ContributorInsightsAction -- ^ 'uciContributorInsightsAction'
     -> UpdateContributorInsights
-updateContributorInsights pTableName_ pContributorInsightsAction_ =
-  UpdateContributorInsights'
-    { _uciIndexName = Nothing
-    , _uciTableName = pTableName_
-    , _uciContributorInsightsAction = pContributorInsightsAction_
-    }
-
+updateContributorInsights pTableName_
+  pContributorInsightsAction_
+  = UpdateContributorInsights'{_uciIndexName = Nothing,
+                               _uciTableName = pTableName_,
+                               _uciContributorInsightsAction =
+                                 pContributorInsightsAction_}
 
 -- | The global secondary index name, if applicable.
 uciIndexName :: Lens' UpdateContributorInsights (Maybe Text)
@@ -135,15 +134,23 @@ instance ToQuery UpdateContributorInsights where
         toQuery = const mempty
 
 -- | /See:/ 'updateContributorInsightsResponse' smart constructor.
-data UpdateContributorInsightsResponse =
-  UpdateContributorInsightsResponse'
-    { _ucirsContributorInsightsStatus :: !(Maybe ContributorInsightsStatus)
-    , _ucirsTableName                 :: !(Maybe Text)
-    , _ucirsIndexName                 :: !(Maybe Text)
-    , _ucirsResponseStatus            :: !Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data UpdateContributorInsightsResponse = UpdateContributorInsightsResponse'{_ucirsContributorInsightsStatus
+                                                                            ::
+                                                                            !(Maybe
+                                                                                ContributorInsightsStatus),
+                                                                            _ucirsTableName
+                                                                            ::
+                                                                            !(Maybe
+                                                                                Text),
+                                                                            _ucirsIndexName
+                                                                            ::
+                                                                            !(Maybe
+                                                                                Text),
+                                                                            _ucirsResponseStatus
+                                                                            ::
+                                                                            !Int}
+                                           deriving (Eq, Read, Show, Data,
+                                                     Typeable, Generic)
 
 -- | Creates a value of 'UpdateContributorInsightsResponse' with the minimum fields required to make a request.
 --
@@ -159,14 +166,12 @@ data UpdateContributorInsightsResponse =
 updateContributorInsightsResponse
     :: Int -- ^ 'ucirsResponseStatus'
     -> UpdateContributorInsightsResponse
-updateContributorInsightsResponse pResponseStatus_ =
-  UpdateContributorInsightsResponse'
-    { _ucirsContributorInsightsStatus = Nothing
-    , _ucirsTableName = Nothing
-    , _ucirsIndexName = Nothing
-    , _ucirsResponseStatus = pResponseStatus_
-    }
-
+updateContributorInsightsResponse pResponseStatus_
+  = UpdateContributorInsightsResponse'{_ucirsContributorInsightsStatus
+                                         = Nothing,
+                                       _ucirsTableName = Nothing,
+                                       _ucirsIndexName = Nothing,
+                                       _ucirsResponseStatus = pResponseStatus_}
 
 -- | The status of contributor insights
 ucirsContributorInsightsStatus :: Lens' UpdateContributorInsightsResponse (Maybe ContributorInsightsStatus)

@@ -36,7 +36,6 @@ module Network.AWS.IoT.GetRegistrationCode
     ) where
 
 import Network.AWS.IoT.Types
-import Network.AWS.IoT.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.Request
@@ -47,17 +46,14 @@ import Network.AWS.Response
 --
 --
 -- /See:/ 'getRegistrationCode' smart constructor.
-data GetRegistrationCode =
-  GetRegistrationCode'
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data GetRegistrationCode = GetRegistrationCode'
+                             deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'GetRegistrationCode' with the minimum fields required to make a request.
 --
 getRegistrationCode
     :: GetRegistrationCode
 getRegistrationCode = GetRegistrationCode'
-
 
 instance AWSRequest GetRegistrationCode where
         type Rs GetRegistrationCode =
@@ -87,13 +83,13 @@ instance ToQuery GetRegistrationCode where
 --
 --
 -- /See:/ 'getRegistrationCodeResponse' smart constructor.
-data GetRegistrationCodeResponse =
-  GetRegistrationCodeResponse'
-    { _grcrsRegistrationCode :: !(Maybe Text)
-    , _grcrsResponseStatus   :: !Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data GetRegistrationCodeResponse = GetRegistrationCodeResponse'{_grcrsRegistrationCode
+                                                                ::
+                                                                !(Maybe Text),
+                                                                _grcrsResponseStatus
+                                                                :: !Int}
+                                     deriving (Eq, Read, Show, Data, Typeable,
+                                               Generic)
 
 -- | Creates a value of 'GetRegistrationCodeResponse' with the minimum fields required to make a request.
 --
@@ -105,10 +101,10 @@ data GetRegistrationCodeResponse =
 getRegistrationCodeResponse
     :: Int -- ^ 'grcrsResponseStatus'
     -> GetRegistrationCodeResponse
-getRegistrationCodeResponse pResponseStatus_ =
-  GetRegistrationCodeResponse'
-    {_grcrsRegistrationCode = Nothing, _grcrsResponseStatus = pResponseStatus_}
-
+getRegistrationCodeResponse pResponseStatus_
+  = GetRegistrationCodeResponse'{_grcrsRegistrationCode
+                                   = Nothing,
+                                 _grcrsResponseStatus = pResponseStatus_}
 
 -- | The CA certificate registration code.
 grcrsRegistrationCode :: Lens' GetRegistrationCodeResponse (Maybe Text)

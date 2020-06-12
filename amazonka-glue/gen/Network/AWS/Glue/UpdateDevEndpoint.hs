@@ -40,22 +40,20 @@ module Network.AWS.Glue.UpdateDevEndpoint
     ) where
 
 import Network.AWS.Glue.Types
-import Network.AWS.Glue.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 
 -- | /See:/ 'updateDevEndpoint' smart constructor.
-data UpdateDevEndpoint =
-  UpdateDevEndpoint'
-    { _udeCustomLibraries    :: !(Maybe DevEndpointCustomLibraries)
-    , _udePublicKey          :: !(Maybe Text)
-    , _udeUpdateEtlLibraries :: !(Maybe Bool)
-    , _udeEndpointName       :: !Text
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data UpdateDevEndpoint = UpdateDevEndpoint'{_udeCustomLibraries
+                                            ::
+                                            !(Maybe DevEndpointCustomLibraries),
+                                            _udePublicKey :: !(Maybe Text),
+                                            _udeUpdateEtlLibraries ::
+                                            !(Maybe Bool),
+                                            _udeEndpointName :: !Text}
+                           deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'UpdateDevEndpoint' with the minimum fields required to make a request.
 --
@@ -71,14 +69,11 @@ data UpdateDevEndpoint =
 updateDevEndpoint
     :: Text -- ^ 'udeEndpointName'
     -> UpdateDevEndpoint
-updateDevEndpoint pEndpointName_ =
-  UpdateDevEndpoint'
-    { _udeCustomLibraries = Nothing
-    , _udePublicKey = Nothing
-    , _udeUpdateEtlLibraries = Nothing
-    , _udeEndpointName = pEndpointName_
-    }
-
+updateDevEndpoint pEndpointName_
+  = UpdateDevEndpoint'{_udeCustomLibraries = Nothing,
+                       _udePublicKey = Nothing,
+                       _udeUpdateEtlLibraries = Nothing,
+                       _udeEndpointName = pEndpointName_}
 
 -- | Custom Python or Java libraries to be loaded in the DevEndpoint.
 udeCustomLibraries :: Lens' UpdateDevEndpoint (Maybe DevEndpointCustomLibraries)
@@ -133,12 +128,10 @@ instance ToQuery UpdateDevEndpoint where
         toQuery = const mempty
 
 -- | /See:/ 'updateDevEndpointResponse' smart constructor.
-newtype UpdateDevEndpointResponse =
-  UpdateDevEndpointResponse'
-    { _udersResponseStatus :: Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+newtype UpdateDevEndpointResponse = UpdateDevEndpointResponse'{_udersResponseStatus
+                                                               :: Int}
+                                      deriving (Eq, Read, Show, Data, Typeable,
+                                                Generic)
 
 -- | Creates a value of 'UpdateDevEndpointResponse' with the minimum fields required to make a request.
 --
@@ -148,9 +141,9 @@ newtype UpdateDevEndpointResponse =
 updateDevEndpointResponse
     :: Int -- ^ 'udersResponseStatus'
     -> UpdateDevEndpointResponse
-updateDevEndpointResponse pResponseStatus_ =
-  UpdateDevEndpointResponse' {_udersResponseStatus = pResponseStatus_}
-
+updateDevEndpointResponse pResponseStatus_
+  = UpdateDevEndpointResponse'{_udersResponseStatus =
+                                 pResponseStatus_}
 
 -- | -- | The response status code.
 udersResponseStatus :: Lens' UpdateDevEndpointResponse Int

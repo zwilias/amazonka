@@ -46,7 +46,6 @@ module Network.AWS.EC2.DescribeTags
     ) where
 
 import Network.AWS.EC2.Types
-import Network.AWS.EC2.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Pager
 import Network.AWS.Prelude
@@ -54,15 +53,12 @@ import Network.AWS.Request
 import Network.AWS.Response
 
 -- | /See:/ 'describeTags' smart constructor.
-data DescribeTags =
-  DescribeTags'
-    { _dtFilters    :: !(Maybe [Filter])
-    , _dtNextToken  :: !(Maybe Text)
-    , _dtDryRun     :: !(Maybe Bool)
-    , _dtMaxResults :: !(Maybe Int)
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data DescribeTags = DescribeTags'{_dtFilters ::
+                                  !(Maybe [Filter]),
+                                  _dtNextToken :: !(Maybe Text),
+                                  _dtDryRun :: !(Maybe Bool),
+                                  _dtMaxResults :: !(Maybe Int)}
+                      deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'DescribeTags' with the minimum fields required to make a request.
 --
@@ -77,14 +73,10 @@ data DescribeTags =
 -- * 'dtMaxResults' - The maximum number of results to return in a single call. This value can be between 5 and 1000. To retrieve the remaining results, make another call with the returned @NextToken@ value.
 describeTags
     :: DescribeTags
-describeTags =
-  DescribeTags'
-    { _dtFilters = Nothing
-    , _dtNextToken = Nothing
-    , _dtDryRun = Nothing
-    , _dtMaxResults = Nothing
-    }
-
+describeTags
+  = DescribeTags'{_dtFilters = Nothing,
+                  _dtNextToken = Nothing, _dtDryRun = Nothing,
+                  _dtMaxResults = Nothing}
 
 -- | The filters.     * @key@ - The tag key.     * @resource-id@ - The ID of the resource.     * @resource-type@ - The resource type (@customer-gateway@ | @dedicated-host@ | @dhcp-options@ | @elastic-ip@ | @fleet@ | @fpga-image@ | @host-reservation@ | @image@ | @instance@ | @internet-gateway@ | @key-pair@ | @launch-template@ | @natgateway@ | @network-acl@ | @network-interface@ | @placement-group@ | @reserved-instances@ | @route-table@ | @security-group@ | @snapshot@ | @spot-instances-request@ | @subnet@ | @volume@ | @vpc@ | @vpc-endpoint@ | @vpc-endpoint-service@ | @vpc-peering-connection@ | @vpn-connection@ | @vpn-gateway@ ).     * @tag@ :<key> - The key/value combination of the tag. For example, specify "tag:Owner" for the filter name and "TeamA" for the filter value to find resources with the tag "Owner=TeamA".     * @value@ - The tag value.
 dtFilters :: Lens' DescribeTags [Filter]
@@ -141,14 +133,12 @@ instance ToQuery DescribeTags where
                "MaxResults" =: _dtMaxResults]
 
 -- | /See:/ 'describeTagsResponse' smart constructor.
-data DescribeTagsResponse =
-  DescribeTagsResponse'
-    { _dtrsNextToken      :: !(Maybe Text)
-    , _dtrsTags           :: !(Maybe [TagDescription])
-    , _dtrsResponseStatus :: !Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data DescribeTagsResponse = DescribeTagsResponse'{_dtrsNextToken
+                                                  :: !(Maybe Text),
+                                                  _dtrsTags ::
+                                                  !(Maybe [TagDescription]),
+                                                  _dtrsResponseStatus :: !Int}
+                              deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'DescribeTagsResponse' with the minimum fields required to make a request.
 --
@@ -162,13 +152,10 @@ data DescribeTagsResponse =
 describeTagsResponse
     :: Int -- ^ 'dtrsResponseStatus'
     -> DescribeTagsResponse
-describeTagsResponse pResponseStatus_ =
-  DescribeTagsResponse'
-    { _dtrsNextToken = Nothing
-    , _dtrsTags = Nothing
-    , _dtrsResponseStatus = pResponseStatus_
-    }
-
+describeTagsResponse pResponseStatus_
+  = DescribeTagsResponse'{_dtrsNextToken = Nothing,
+                          _dtrsTags = Nothing,
+                          _dtrsResponseStatus = pResponseStatus_}
 
 -- | The token to use to retrieve the next page of results. This value is @null@ when there are no more results to return.
 dtrsNextToken :: Lens' DescribeTagsResponse (Maybe Text)

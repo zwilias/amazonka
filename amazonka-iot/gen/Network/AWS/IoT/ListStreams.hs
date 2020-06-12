@@ -41,21 +41,17 @@ module Network.AWS.IoT.ListStreams
     ) where
 
 import Network.AWS.IoT.Types
-import Network.AWS.IoT.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 
 -- | /See:/ 'listStreams' smart constructor.
-data ListStreams =
-  ListStreams'
-    { _lsNextToken      :: !(Maybe Text)
-    , _lsAscendingOrder :: !(Maybe Bool)
-    , _lsMaxResults     :: !(Maybe Nat)
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data ListStreams = ListStreams'{_lsNextToken ::
+                                !(Maybe Text),
+                                _lsAscendingOrder :: !(Maybe Bool),
+                                _lsMaxResults :: !(Maybe Nat)}
+                     deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'ListStreams' with the minimum fields required to make a request.
 --
@@ -68,13 +64,9 @@ data ListStreams =
 -- * 'lsMaxResults' - The maximum number of results to return at a time.
 listStreams
     :: ListStreams
-listStreams =
-  ListStreams'
-    { _lsNextToken = Nothing
-    , _lsAscendingOrder = Nothing
-    , _lsMaxResults = Nothing
-    }
-
+listStreams
+  = ListStreams'{_lsNextToken = Nothing,
+                 _lsAscendingOrder = Nothing, _lsMaxResults = Nothing}
 
 -- | A token used to get the next set of results.
 lsNextToken :: Lens' ListStreams (Maybe Text)
@@ -116,14 +108,12 @@ instance ToQuery ListStreams where
                "maxResults" =: _lsMaxResults]
 
 -- | /See:/ 'listStreamsResponse' smart constructor.
-data ListStreamsResponse =
-  ListStreamsResponse'
-    { _lsrsNextToken      :: !(Maybe Text)
-    , _lsrsStreams        :: !(Maybe [StreamSummary])
-    , _lsrsResponseStatus :: !Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data ListStreamsResponse = ListStreamsResponse'{_lsrsNextToken
+                                                :: !(Maybe Text),
+                                                _lsrsStreams ::
+                                                !(Maybe [StreamSummary]),
+                                                _lsrsResponseStatus :: !Int}
+                             deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'ListStreamsResponse' with the minimum fields required to make a request.
 --
@@ -137,13 +127,10 @@ data ListStreamsResponse =
 listStreamsResponse
     :: Int -- ^ 'lsrsResponseStatus'
     -> ListStreamsResponse
-listStreamsResponse pResponseStatus_ =
-  ListStreamsResponse'
-    { _lsrsNextToken = Nothing
-    , _lsrsStreams = Nothing
-    , _lsrsResponseStatus = pResponseStatus_
-    }
-
+listStreamsResponse pResponseStatus_
+  = ListStreamsResponse'{_lsrsNextToken = Nothing,
+                         _lsrsStreams = Nothing,
+                         _lsrsResponseStatus = pResponseStatus_}
 
 -- | A token used to get the next set of results.
 lsrsNextToken :: Lens' ListStreamsResponse (Maybe Text)

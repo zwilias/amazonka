@@ -39,20 +39,16 @@ module Network.AWS.CodePipeline.PutWebhook
     ) where
 
 import Network.AWS.CodePipeline.Types
-import Network.AWS.CodePipeline.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 
 -- | /See:/ 'putWebhook' smart constructor.
-data PutWebhook =
-  PutWebhook'
-    { _pwTags    :: !(Maybe [Tag])
-    , _pwWebhook :: !WebhookDefinition
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data PutWebhook = PutWebhook'{_pwTags ::
+                              !(Maybe [Tag]),
+                              _pwWebhook :: !WebhookDefinition}
+                    deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'PutWebhook' with the minimum fields required to make a request.
 --
@@ -64,8 +60,9 @@ data PutWebhook =
 putWebhook
     :: WebhookDefinition -- ^ 'pwWebhook'
     -> PutWebhook
-putWebhook pWebhook_ = PutWebhook' {_pwTags = Nothing, _pwWebhook = pWebhook_}
-
+putWebhook pWebhook_
+  = PutWebhook'{_pwTags = Nothing,
+                _pwWebhook = pWebhook_}
 
 -- | The tags for the webhook.
 pwTags :: Lens' PutWebhook [Tag]
@@ -111,13 +108,10 @@ instance ToQuery PutWebhook where
         toQuery = const mempty
 
 -- | /See:/ 'putWebhookResponse' smart constructor.
-data PutWebhookResponse =
-  PutWebhookResponse'
-    { _pwrsWebhook        :: !(Maybe ListWebhookItem)
-    , _pwrsResponseStatus :: !Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data PutWebhookResponse = PutWebhookResponse'{_pwrsWebhook
+                                              :: !(Maybe ListWebhookItem),
+                                              _pwrsResponseStatus :: !Int}
+                            deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'PutWebhookResponse' with the minimum fields required to make a request.
 --
@@ -129,10 +123,9 @@ data PutWebhookResponse =
 putWebhookResponse
     :: Int -- ^ 'pwrsResponseStatus'
     -> PutWebhookResponse
-putWebhookResponse pResponseStatus_ =
-  PutWebhookResponse'
-    {_pwrsWebhook = Nothing, _pwrsResponseStatus = pResponseStatus_}
-
+putWebhookResponse pResponseStatus_
+  = PutWebhookResponse'{_pwrsWebhook = Nothing,
+                        _pwrsResponseStatus = pResponseStatus_}
 
 -- | The detail returned from creating the webhook, such as the webhook name, webhook URL, and webhook ARN.
 pwrsWebhook :: Lens' PutWebhookResponse (Maybe ListWebhookItem)

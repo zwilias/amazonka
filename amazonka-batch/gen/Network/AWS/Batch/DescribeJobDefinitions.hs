@@ -45,7 +45,6 @@ module Network.AWS.Batch.DescribeJobDefinitions
     ) where
 
 import Network.AWS.Batch.Types
-import Network.AWS.Batch.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Pager
 import Network.AWS.Prelude
@@ -53,16 +52,18 @@ import Network.AWS.Request
 import Network.AWS.Response
 
 -- | /See:/ 'describeJobDefinitions' smart constructor.
-data DescribeJobDefinitions =
-  DescribeJobDefinitions'
-    { _djdStatus            :: !(Maybe Text)
-    , _djdJobDefinitionName :: !(Maybe Text)
-    , _djdJobDefinitions    :: !(Maybe [Text])
-    , _djdNextToken         :: !(Maybe Text)
-    , _djdMaxResults        :: !(Maybe Int)
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data DescribeJobDefinitions = DescribeJobDefinitions'{_djdStatus
+                                                      :: !(Maybe Text),
+                                                      _djdJobDefinitionName ::
+                                                      !(Maybe Text),
+                                                      _djdJobDefinitions ::
+                                                      !(Maybe [Text]),
+                                                      _djdNextToken ::
+                                                      !(Maybe Text),
+                                                      _djdMaxResults ::
+                                                      !(Maybe Int)}
+                                deriving (Eq, Read, Show, Data, Typeable,
+                                          Generic)
 
 -- | Creates a value of 'DescribeJobDefinitions' with the minimum fields required to make a request.
 --
@@ -79,15 +80,11 @@ data DescribeJobDefinitions =
 -- * 'djdMaxResults' - The maximum number of results returned by @DescribeJobDefinitions@ in paginated output. When this parameter is used, @DescribeJobDefinitions@ only returns @maxResults@ results in a single page along with a @nextToken@ response element. The remaining results of the initial request can be seen by sending another @DescribeJobDefinitions@ request with the returned @nextToken@ value. This value can be between 1 and 100. If this parameter is not used, then @DescribeJobDefinitions@ returns up to 100 results and a @nextToken@ value if applicable.
 describeJobDefinitions
     :: DescribeJobDefinitions
-describeJobDefinitions =
-  DescribeJobDefinitions'
-    { _djdStatus = Nothing
-    , _djdJobDefinitionName = Nothing
-    , _djdJobDefinitions = Nothing
-    , _djdNextToken = Nothing
-    , _djdMaxResults = Nothing
-    }
-
+describeJobDefinitions
+  = DescribeJobDefinitions'{_djdStatus = Nothing,
+                            _djdJobDefinitionName = Nothing,
+                            _djdJobDefinitions = Nothing,
+                            _djdNextToken = Nothing, _djdMaxResults = Nothing}
 
 -- | The status with which to filter job definitions.
 djdStatus :: Lens' DescribeJobDefinitions (Maybe Text)
@@ -156,14 +153,18 @@ instance ToQuery DescribeJobDefinitions where
         toQuery = const mempty
 
 -- | /See:/ 'describeJobDefinitionsResponse' smart constructor.
-data DescribeJobDefinitionsResponse =
-  DescribeJobDefinitionsResponse'
-    { _djdrsJobDefinitions :: !(Maybe [JobDefinition])
-    , _djdrsNextToken      :: !(Maybe Text)
-    , _djdrsResponseStatus :: !Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data DescribeJobDefinitionsResponse = DescribeJobDefinitionsResponse'{_djdrsJobDefinitions
+                                                                      ::
+                                                                      !(Maybe
+                                                                          [JobDefinition]),
+                                                                      _djdrsNextToken
+                                                                      ::
+                                                                      !(Maybe
+                                                                          Text),
+                                                                      _djdrsResponseStatus
+                                                                      :: !Int}
+                                        deriving (Eq, Read, Show, Data,
+                                                  Typeable, Generic)
 
 -- | Creates a value of 'DescribeJobDefinitionsResponse' with the minimum fields required to make a request.
 --
@@ -177,13 +178,11 @@ data DescribeJobDefinitionsResponse =
 describeJobDefinitionsResponse
     :: Int -- ^ 'djdrsResponseStatus'
     -> DescribeJobDefinitionsResponse
-describeJobDefinitionsResponse pResponseStatus_ =
-  DescribeJobDefinitionsResponse'
-    { _djdrsJobDefinitions = Nothing
-    , _djdrsNextToken = Nothing
-    , _djdrsResponseStatus = pResponseStatus_
-    }
-
+describeJobDefinitionsResponse pResponseStatus_
+  = DescribeJobDefinitionsResponse'{_djdrsJobDefinitions
+                                      = Nothing,
+                                    _djdrsNextToken = Nothing,
+                                    _djdrsResponseStatus = pResponseStatus_}
 
 -- | The list of job definitions.
 djdrsJobDefinitions :: Lens' DescribeJobDefinitionsResponse [JobDefinition]

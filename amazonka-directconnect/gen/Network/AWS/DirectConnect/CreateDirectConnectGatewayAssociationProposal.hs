@@ -44,23 +44,32 @@ module Network.AWS.DirectConnect.CreateDirectConnectGatewayAssociationProposal
     ) where
 
 import Network.AWS.DirectConnect.Types
-import Network.AWS.DirectConnect.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 
 -- | /See:/ 'createDirectConnectGatewayAssociationProposal' smart constructor.
-data CreateDirectConnectGatewayAssociationProposal =
-  CreateDirectConnectGatewayAssociationProposal'
-    { _cdcgapAddAllowedPrefixesToDirectConnectGateway :: !(Maybe [RouteFilterPrefix])
-    , _cdcgapRemoveAllowedPrefixesToDirectConnectGateway :: !(Maybe [RouteFilterPrefix])
-    , _cdcgapDirectConnectGatewayId :: !Text
-    , _cdcgapDirectConnectGatewayOwnerAccount :: !Text
-    , _cdcgapGatewayId :: !Text
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data CreateDirectConnectGatewayAssociationProposal = CreateDirectConnectGatewayAssociationProposal'{_cdcgapAddAllowedPrefixesToDirectConnectGateway
+                                                                                                    ::
+                                                                                                    !(Maybe
+                                                                                                        [RouteFilterPrefix]),
+                                                                                                    _cdcgapRemoveAllowedPrefixesToDirectConnectGateway
+                                                                                                    ::
+                                                                                                    !(Maybe
+                                                                                                        [RouteFilterPrefix]),
+                                                                                                    _cdcgapDirectConnectGatewayId
+                                                                                                    ::
+                                                                                                    !Text,
+                                                                                                    _cdcgapDirectConnectGatewayOwnerAccount
+                                                                                                    ::
+                                                                                                    !Text,
+                                                                                                    _cdcgapGatewayId
+                                                                                                    ::
+                                                                                                    !Text}
+                                                       deriving (Eq, Read, Show,
+                                                                 Data, Typeable,
+                                                                 Generic)
 
 -- | Creates a value of 'CreateDirectConnectGatewayAssociationProposal' with the minimum fields required to make a request.
 --
@@ -80,16 +89,20 @@ createDirectConnectGatewayAssociationProposal
     -> Text -- ^ 'cdcgapDirectConnectGatewayOwnerAccount'
     -> Text -- ^ 'cdcgapGatewayId'
     -> CreateDirectConnectGatewayAssociationProposal
-createDirectConnectGatewayAssociationProposal pDirectConnectGatewayId_ pDirectConnectGatewayOwnerAccount_ pGatewayId_ =
-  CreateDirectConnectGatewayAssociationProposal'
-    { _cdcgapAddAllowedPrefixesToDirectConnectGateway = Nothing
-    , _cdcgapRemoveAllowedPrefixesToDirectConnectGateway = Nothing
-    , _cdcgapDirectConnectGatewayId = pDirectConnectGatewayId_
-    , _cdcgapDirectConnectGatewayOwnerAccount =
-        pDirectConnectGatewayOwnerAccount_
-    , _cdcgapGatewayId = pGatewayId_
-    }
-
+createDirectConnectGatewayAssociationProposal
+  pDirectConnectGatewayId_
+  pDirectConnectGatewayOwnerAccount_ pGatewayId_
+  = CreateDirectConnectGatewayAssociationProposal'{_cdcgapAddAllowedPrefixesToDirectConnectGateway
+                                                     = Nothing,
+                                                   _cdcgapRemoveAllowedPrefixesToDirectConnectGateway
+                                                     = Nothing,
+                                                   _cdcgapDirectConnectGatewayId
+                                                     = pDirectConnectGatewayId_,
+                                                   _cdcgapDirectConnectGatewayOwnerAccount
+                                                     =
+                                                     pDirectConnectGatewayOwnerAccount_,
+                                                   _cdcgapGatewayId =
+                                                     pGatewayId_}
 
 -- | The Amazon VPC prefixes to advertise to the Direct Connect gateway.
 cdcgapAddAllowedPrefixesToDirectConnectGateway :: Lens' CreateDirectConnectGatewayAssociationProposal [RouteFilterPrefix]
@@ -177,13 +190,19 @@ instance ToQuery
         toQuery = const mempty
 
 -- | /See:/ 'createDirectConnectGatewayAssociationProposalResponse' smart constructor.
-data CreateDirectConnectGatewayAssociationProposalResponse =
-  CreateDirectConnectGatewayAssociationProposalResponse'
-    { _cdcgaprsDirectConnectGatewayAssociationProposal :: !(Maybe DirectConnectGatewayAssociationProposal)
-    , _cdcgaprsResponseStatus :: !Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data CreateDirectConnectGatewayAssociationProposalResponse = CreateDirectConnectGatewayAssociationProposalResponse'{_cdcgaprsDirectConnectGatewayAssociationProposal
+                                                                                                                    ::
+                                                                                                                    !(Maybe
+                                                                                                                        DirectConnectGatewayAssociationProposal),
+                                                                                                                    _cdcgaprsResponseStatus
+                                                                                                                    ::
+                                                                                                                    !Int}
+                                                               deriving (Eq,
+                                                                         Read,
+                                                                         Show,
+                                                                         Data,
+                                                                         Typeable,
+                                                                         Generic)
 
 -- | Creates a value of 'CreateDirectConnectGatewayAssociationProposalResponse' with the minimum fields required to make a request.
 --
@@ -195,12 +214,12 @@ data CreateDirectConnectGatewayAssociationProposalResponse =
 createDirectConnectGatewayAssociationProposalResponse
     :: Int -- ^ 'cdcgaprsResponseStatus'
     -> CreateDirectConnectGatewayAssociationProposalResponse
-createDirectConnectGatewayAssociationProposalResponse pResponseStatus_ =
-  CreateDirectConnectGatewayAssociationProposalResponse'
-    { _cdcgaprsDirectConnectGatewayAssociationProposal = Nothing
-    , _cdcgaprsResponseStatus = pResponseStatus_
-    }
-
+createDirectConnectGatewayAssociationProposalResponse
+  pResponseStatus_
+  = CreateDirectConnectGatewayAssociationProposalResponse'{_cdcgaprsDirectConnectGatewayAssociationProposal
+                                                             = Nothing,
+                                                           _cdcgaprsResponseStatus
+                                                             = pResponseStatus_}
 
 -- | Information about the Direct Connect gateway proposal.
 cdcgaprsDirectConnectGatewayAssociationProposal :: Lens' CreateDirectConnectGatewayAssociationProposalResponse (Maybe DirectConnectGatewayAssociationProposal)

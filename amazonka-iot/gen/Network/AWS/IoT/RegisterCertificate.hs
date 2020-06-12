@@ -42,7 +42,6 @@ module Network.AWS.IoT.RegisterCertificate
     ) where
 
 import Network.AWS.IoT.Types
-import Network.AWS.IoT.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.Request
@@ -53,15 +52,13 @@ import Network.AWS.Response
 --
 --
 -- /See:/ 'registerCertificate' smart constructor.
-data RegisterCertificate =
-  RegisterCertificate'
-    { _rcStatus           :: !(Maybe CertificateStatus)
-    , _rcCaCertificatePem :: !(Maybe Text)
-    , _rcSetAsActive      :: !(Maybe Bool)
-    , _rcCertificatePem   :: !Text
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data RegisterCertificate = RegisterCertificate'{_rcStatus
+                                                :: !(Maybe CertificateStatus),
+                                                _rcCaCertificatePem ::
+                                                !(Maybe Text),
+                                                _rcSetAsActive :: !(Maybe Bool),
+                                                _rcCertificatePem :: !Text}
+                             deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'RegisterCertificate' with the minimum fields required to make a request.
 --
@@ -77,14 +74,11 @@ data RegisterCertificate =
 registerCertificate
     :: Text -- ^ 'rcCertificatePem'
     -> RegisterCertificate
-registerCertificate pCertificatePem_ =
-  RegisterCertificate'
-    { _rcStatus = Nothing
-    , _rcCaCertificatePem = Nothing
-    , _rcSetAsActive = Nothing
-    , _rcCertificatePem = pCertificatePem_
-    }
-
+registerCertificate pCertificatePem_
+  = RegisterCertificate'{_rcStatus = Nothing,
+                         _rcCaCertificatePem = Nothing,
+                         _rcSetAsActive = Nothing,
+                         _rcCertificatePem = pCertificatePem_}
 
 -- | The status of the register certificate request.
 rcStatus :: Lens' RegisterCertificate (Maybe CertificateStatus)
@@ -140,14 +134,16 @@ instance ToQuery RegisterCertificate where
 --
 --
 -- /See:/ 'registerCertificateResponse' smart constructor.
-data RegisterCertificateResponse =
-  RegisterCertificateResponse'
-    { _rcrsCertificateARN :: !(Maybe Text)
-    , _rcrsCertificateId  :: !(Maybe Text)
-    , _rcrsResponseStatus :: !Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data RegisterCertificateResponse = RegisterCertificateResponse'{_rcrsCertificateARN
+                                                                ::
+                                                                !(Maybe Text),
+                                                                _rcrsCertificateId
+                                                                ::
+                                                                !(Maybe Text),
+                                                                _rcrsResponseStatus
+                                                                :: !Int}
+                                     deriving (Eq, Read, Show, Data, Typeable,
+                                               Generic)
 
 -- | Creates a value of 'RegisterCertificateResponse' with the minimum fields required to make a request.
 --
@@ -161,13 +157,11 @@ data RegisterCertificateResponse =
 registerCertificateResponse
     :: Int -- ^ 'rcrsResponseStatus'
     -> RegisterCertificateResponse
-registerCertificateResponse pResponseStatus_ =
-  RegisterCertificateResponse'
-    { _rcrsCertificateARN = Nothing
-    , _rcrsCertificateId = Nothing
-    , _rcrsResponseStatus = pResponseStatus_
-    }
-
+registerCertificateResponse pResponseStatus_
+  = RegisterCertificateResponse'{_rcrsCertificateARN =
+                                   Nothing,
+                                 _rcrsCertificateId = Nothing,
+                                 _rcrsResponseStatus = pResponseStatus_}
 
 -- | The certificate ARN.
 rcrsCertificateARN :: Lens' RegisterCertificateResponse (Maybe Text)

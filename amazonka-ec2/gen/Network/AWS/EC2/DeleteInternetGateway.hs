@@ -36,20 +36,18 @@ module Network.AWS.EC2.DeleteInternetGateway
     ) where
 
 import Network.AWS.EC2.Types
-import Network.AWS.EC2.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 
 -- | /See:/ 'deleteInternetGateway' smart constructor.
-data DeleteInternetGateway =
-  DeleteInternetGateway'
-    { _digiDryRun            :: !(Maybe Bool)
-    , _digiInternetGatewayId :: !Text
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data DeleteInternetGateway = DeleteInternetGateway'{_digiDryRun
+                                                    :: !(Maybe Bool),
+                                                    _digiInternetGatewayId ::
+                                                    !Text}
+                               deriving (Eq, Read, Show, Data, Typeable,
+                                         Generic)
 
 -- | Creates a value of 'DeleteInternetGateway' with the minimum fields required to make a request.
 --
@@ -61,10 +59,9 @@ data DeleteInternetGateway =
 deleteInternetGateway
     :: Text -- ^ 'digiInternetGatewayId'
     -> DeleteInternetGateway
-deleteInternetGateway pInternetGatewayId_ =
-  DeleteInternetGateway'
-    {_digiDryRun = Nothing, _digiInternetGatewayId = pInternetGatewayId_}
-
+deleteInternetGateway pInternetGatewayId_
+  = DeleteInternetGateway'{_digiDryRun = Nothing,
+                           _digiInternetGatewayId = pInternetGatewayId_}
 
 -- | Checks whether you have the required permissions for the action, without actually making the request, and provides an error response. If you have the required permissions, the error response is @DryRunOperation@ . Otherwise, it is @UnauthorizedOperation@ .
 digiDryRun :: Lens' DeleteInternetGateway (Maybe Bool)
@@ -99,16 +96,15 @@ instance ToQuery DeleteInternetGateway where
                "InternetGatewayId" =: _digiInternetGatewayId]
 
 -- | /See:/ 'deleteInternetGatewayResponse' smart constructor.
-data DeleteInternetGatewayResponse =
-  DeleteInternetGatewayResponse'
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data DeleteInternetGatewayResponse = DeleteInternetGatewayResponse'
+                                       deriving (Eq, Read, Show, Data, Typeable,
+                                                 Generic)
 
 -- | Creates a value of 'DeleteInternetGatewayResponse' with the minimum fields required to make a request.
 --
 deleteInternetGatewayResponse
     :: DeleteInternetGatewayResponse
-deleteInternetGatewayResponse = DeleteInternetGatewayResponse'
-
+deleteInternetGatewayResponse
+  = DeleteInternetGatewayResponse'
 
 instance NFData DeleteInternetGatewayResponse where

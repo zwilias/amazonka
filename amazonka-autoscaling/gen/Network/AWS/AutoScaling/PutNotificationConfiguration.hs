@@ -41,21 +41,20 @@ module Network.AWS.AutoScaling.PutNotificationConfiguration
     ) where
 
 import Network.AWS.AutoScaling.Types
-import Network.AWS.AutoScaling.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 
 -- | /See:/ 'putNotificationConfiguration' smart constructor.
-data PutNotificationConfiguration =
-  PutNotificationConfiguration'
-    { _pncAutoScalingGroupName :: !Text
-    , _pncTopicARN             :: !Text
-    , _pncNotificationTypes    :: ![Text]
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data PutNotificationConfiguration = PutNotificationConfiguration'{_pncAutoScalingGroupName
+                                                                  :: !Text,
+                                                                  _pncTopicARN
+                                                                  :: !Text,
+                                                                  _pncNotificationTypes
+                                                                  :: ![Text]}
+                                      deriving (Eq, Read, Show, Data, Typeable,
+                                                Generic)
 
 -- | Creates a value of 'PutNotificationConfiguration' with the minimum fields required to make a request.
 --
@@ -70,13 +69,12 @@ putNotificationConfiguration
     :: Text -- ^ 'pncAutoScalingGroupName'
     -> Text -- ^ 'pncTopicARN'
     -> PutNotificationConfiguration
-putNotificationConfiguration pAutoScalingGroupName_ pTopicARN_ =
-  PutNotificationConfiguration'
-    { _pncAutoScalingGroupName = pAutoScalingGroupName_
-    , _pncTopicARN = pTopicARN_
-    , _pncNotificationTypes = mempty
-    }
-
+putNotificationConfiguration pAutoScalingGroupName_
+  pTopicARN_
+  = PutNotificationConfiguration'{_pncAutoScalingGroupName
+                                    = pAutoScalingGroupName_,
+                                  _pncTopicARN = pTopicARN_,
+                                  _pncNotificationTypes = mempty}
 
 -- | The name of the Auto Scaling group.
 pncAutoScalingGroupName :: Lens' PutNotificationConfiguration Text
@@ -120,17 +118,16 @@ instance ToQuery PutNotificationConfiguration where
                  toQueryList "member" _pncNotificationTypes]
 
 -- | /See:/ 'putNotificationConfigurationResponse' smart constructor.
-data PutNotificationConfigurationResponse =
-  PutNotificationConfigurationResponse'
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data PutNotificationConfigurationResponse = PutNotificationConfigurationResponse'
+                                              deriving (Eq, Read, Show, Data,
+                                                        Typeable, Generic)
 
 -- | Creates a value of 'PutNotificationConfigurationResponse' with the minimum fields required to make a request.
 --
 putNotificationConfigurationResponse
     :: PutNotificationConfigurationResponse
-putNotificationConfigurationResponse = PutNotificationConfigurationResponse'
-
+putNotificationConfigurationResponse
+  = PutNotificationConfigurationResponse'
 
 instance NFData PutNotificationConfigurationResponse
          where

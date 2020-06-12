@@ -38,7 +38,6 @@ module Network.AWS.CognitoIdentityProvider.SetUserSettings
     ) where
 
 import Network.AWS.CognitoIdentityProvider.Types
-import Network.AWS.CognitoIdentityProvider.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.Request
@@ -49,13 +48,10 @@ import Network.AWS.Response
 --
 --
 -- /See:/ 'setUserSettings' smart constructor.
-data SetUserSettings =
-  SetUserSettings'
-    { _susAccessToken :: !(Sensitive Text)
-    , _susMFAOptions  :: ![MFAOptionType]
-    }
-  deriving (Eq, Show, Data, Typeable, Generic)
-
+data SetUserSettings = SetUserSettings'{_susAccessToken
+                                        :: !(Sensitive Text),
+                                        _susMFAOptions :: ![MFAOptionType]}
+                         deriving (Eq, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'SetUserSettings' with the minimum fields required to make a request.
 --
@@ -67,10 +63,10 @@ data SetUserSettings =
 setUserSettings
     :: Text -- ^ 'susAccessToken'
     -> SetUserSettings
-setUserSettings pAccessToken_ =
-  SetUserSettings'
-    {_susAccessToken = _Sensitive # pAccessToken_, _susMFAOptions = mempty}
-
+setUserSettings pAccessToken_
+  = SetUserSettings'{_susAccessToken =
+                       _Sensitive # pAccessToken_,
+                     _susMFAOptions = mempty}
 
 -- | The access token for the set user settings request.
 susAccessToken :: Lens' SetUserSettings Text
@@ -120,12 +116,10 @@ instance ToQuery SetUserSettings where
 --
 --
 -- /See:/ 'setUserSettingsResponse' smart constructor.
-newtype SetUserSettingsResponse =
-  SetUserSettingsResponse'
-    { _susrsResponseStatus :: Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+newtype SetUserSettingsResponse = SetUserSettingsResponse'{_susrsResponseStatus
+                                                           :: Int}
+                                    deriving (Eq, Read, Show, Data, Typeable,
+                                              Generic)
 
 -- | Creates a value of 'SetUserSettingsResponse' with the minimum fields required to make a request.
 --
@@ -135,9 +129,9 @@ newtype SetUserSettingsResponse =
 setUserSettingsResponse
     :: Int -- ^ 'susrsResponseStatus'
     -> SetUserSettingsResponse
-setUserSettingsResponse pResponseStatus_ =
-  SetUserSettingsResponse' {_susrsResponseStatus = pResponseStatus_}
-
+setUserSettingsResponse pResponseStatus_
+  = SetUserSettingsResponse'{_susrsResponseStatus =
+                               pResponseStatus_}
 
 -- | -- | The response status code.
 susrsResponseStatus :: Lens' SetUserSettingsResponse Int

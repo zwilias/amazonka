@@ -39,17 +39,18 @@ import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 import Network.AWS.S3.Types
-import Network.AWS.S3.Types.Product
 
 -- | /See:/ 'putBucketMetricsConfiguration' smart constructor.
-data PutBucketMetricsConfiguration =
-  PutBucketMetricsConfiguration'
-    { _pbmcBucket               :: !BucketName
-    , _pbmcId                   :: !Text
-    , _pbmcMetricsConfiguration :: !MetricsConfiguration
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data PutBucketMetricsConfiguration = PutBucketMetricsConfiguration'{_pbmcBucket
+                                                                    ::
+                                                                    !BucketName,
+                                                                    _pbmcId ::
+                                                                    !Text,
+                                                                    _pbmcMetricsConfiguration
+                                                                    ::
+                                                                    !MetricsConfiguration}
+                                       deriving (Eq, Read, Show, Data, Typeable,
+                                                 Generic)
 
 -- | Creates a value of 'PutBucketMetricsConfiguration' with the minimum fields required to make a request.
 --
@@ -65,13 +66,13 @@ putBucketMetricsConfiguration
     -> Text -- ^ 'pbmcId'
     -> MetricsConfiguration -- ^ 'pbmcMetricsConfiguration'
     -> PutBucketMetricsConfiguration
-putBucketMetricsConfiguration pBucket_ pId_ pMetricsConfiguration_ =
-  PutBucketMetricsConfiguration'
-    { _pbmcBucket = pBucket_
-    , _pbmcId = pId_
-    , _pbmcMetricsConfiguration = pMetricsConfiguration_
-    }
-
+putBucketMetricsConfiguration pBucket_ pId_
+  pMetricsConfiguration_
+  = PutBucketMetricsConfiguration'{_pbmcBucket =
+                                     pBucket_,
+                                   _pbmcId = pId_,
+                                   _pbmcMetricsConfiguration =
+                                     pMetricsConfiguration_}
 
 -- | The name of the bucket for which the metrics configuration is set.
 pbmcBucket :: Lens' PutBucketMetricsConfiguration BucketName
@@ -118,17 +119,16 @@ instance ToQuery PutBucketMetricsConfiguration where
           = mconcat ["id" =: _pbmcId, "metrics"]
 
 -- | /See:/ 'putBucketMetricsConfigurationResponse' smart constructor.
-data PutBucketMetricsConfigurationResponse =
-  PutBucketMetricsConfigurationResponse'
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data PutBucketMetricsConfigurationResponse = PutBucketMetricsConfigurationResponse'
+                                               deriving (Eq, Read, Show, Data,
+                                                         Typeable, Generic)
 
 -- | Creates a value of 'PutBucketMetricsConfigurationResponse' with the minimum fields required to make a request.
 --
 putBucketMetricsConfigurationResponse
     :: PutBucketMetricsConfigurationResponse
-putBucketMetricsConfigurationResponse = PutBucketMetricsConfigurationResponse'
-
+putBucketMetricsConfigurationResponse
+  = PutBucketMetricsConfigurationResponse'
 
 instance NFData PutBucketMetricsConfigurationResponse
          where

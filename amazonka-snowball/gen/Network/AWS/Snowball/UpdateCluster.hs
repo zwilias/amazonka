@@ -48,22 +48,19 @@ import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 import Network.AWS.Snowball.Types
-import Network.AWS.Snowball.Types.Product
 
 -- | /See:/ 'updateCluster' smart constructor.
-data UpdateCluster =
-  UpdateCluster'
-    { _ucNotification        :: !(Maybe Notification)
-    , _ucForwardingAddressId :: !(Maybe Text)
-    , _ucAddressId           :: !(Maybe Text)
-    , _ucShippingOption      :: !(Maybe ShippingOption)
-    , _ucResources           :: !(Maybe JobResource)
-    , _ucDescription         :: !(Maybe Text)
-    , _ucRoleARN             :: !(Maybe Text)
-    , _ucClusterId           :: !Text
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data UpdateCluster = UpdateCluster'{_ucNotification
+                                    :: !(Maybe Notification),
+                                    _ucForwardingAddressId :: !(Maybe Text),
+                                    _ucAddressId :: !(Maybe Text),
+                                    _ucShippingOption ::
+                                    !(Maybe ShippingOption),
+                                    _ucResources :: !(Maybe JobResource),
+                                    _ucDescription :: !(Maybe Text),
+                                    _ucRoleARN :: !(Maybe Text),
+                                    _ucClusterId :: !Text}
+                       deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'UpdateCluster' with the minimum fields required to make a request.
 --
@@ -87,18 +84,12 @@ data UpdateCluster =
 updateCluster
     :: Text -- ^ 'ucClusterId'
     -> UpdateCluster
-updateCluster pClusterId_ =
-  UpdateCluster'
-    { _ucNotification = Nothing
-    , _ucForwardingAddressId = Nothing
-    , _ucAddressId = Nothing
-    , _ucShippingOption = Nothing
-    , _ucResources = Nothing
-    , _ucDescription = Nothing
-    , _ucRoleARN = Nothing
-    , _ucClusterId = pClusterId_
-    }
-
+updateCluster pClusterId_
+  = UpdateCluster'{_ucNotification = Nothing,
+                   _ucForwardingAddressId = Nothing,
+                   _ucAddressId = Nothing, _ucShippingOption = Nothing,
+                   _ucResources = Nothing, _ucDescription = Nothing,
+                   _ucRoleARN = Nothing, _ucClusterId = pClusterId_}
 
 -- | The new or updated 'Notification' object.
 ucNotification :: Lens' UpdateCluster (Maybe Notification)
@@ -175,12 +166,10 @@ instance ToQuery UpdateCluster where
         toQuery = const mempty
 
 -- | /See:/ 'updateClusterResponse' smart constructor.
-newtype UpdateClusterResponse =
-  UpdateClusterResponse'
-    { _ucrsResponseStatus :: Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+newtype UpdateClusterResponse = UpdateClusterResponse'{_ucrsResponseStatus
+                                                       :: Int}
+                                  deriving (Eq, Read, Show, Data, Typeable,
+                                            Generic)
 
 -- | Creates a value of 'UpdateClusterResponse' with the minimum fields required to make a request.
 --
@@ -190,9 +179,9 @@ newtype UpdateClusterResponse =
 updateClusterResponse
     :: Int -- ^ 'ucrsResponseStatus'
     -> UpdateClusterResponse
-updateClusterResponse pResponseStatus_ =
-  UpdateClusterResponse' {_ucrsResponseStatus = pResponseStatus_}
-
+updateClusterResponse pResponseStatus_
+  = UpdateClusterResponse'{_ucrsResponseStatus =
+                             pResponseStatus_}
 
 -- | -- | The response status code.
 ucrsResponseStatus :: Lens' UpdateClusterResponse Int

@@ -46,20 +46,16 @@ module Network.AWS.ELBv2.RegisterTargets
     ) where
 
 import Network.AWS.ELBv2.Types
-import Network.AWS.ELBv2.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 
 -- | /See:/ 'registerTargets' smart constructor.
-data RegisterTargets =
-  RegisterTargets'
-    { _rtTargetGroupARN :: !Text
-    , _rtTargets        :: ![TargetDescription]
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data RegisterTargets = RegisterTargets'{_rtTargetGroupARN
+                                        :: !Text,
+                                        _rtTargets :: ![TargetDescription]}
+                         deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'RegisterTargets' with the minimum fields required to make a request.
 --
@@ -71,9 +67,10 @@ data RegisterTargets =
 registerTargets
     :: Text -- ^ 'rtTargetGroupARN'
     -> RegisterTargets
-registerTargets pTargetGroupARN_ =
-  RegisterTargets' {_rtTargetGroupARN = pTargetGroupARN_, _rtTargets = mempty}
-
+registerTargets pTargetGroupARN_
+  = RegisterTargets'{_rtTargetGroupARN =
+                       pTargetGroupARN_,
+                     _rtTargets = mempty}
 
 -- | The Amazon Resource Name (ARN) of the target group.
 rtTargetGroupARN :: Lens' RegisterTargets Text
@@ -110,12 +107,10 @@ instance ToQuery RegisterTargets where
                "Targets" =: toQueryList "member" _rtTargets]
 
 -- | /See:/ 'registerTargetsResponse' smart constructor.
-newtype RegisterTargetsResponse =
-  RegisterTargetsResponse'
-    { _rrsResponseStatus :: Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+newtype RegisterTargetsResponse = RegisterTargetsResponse'{_rrsResponseStatus
+                                                           :: Int}
+                                    deriving (Eq, Read, Show, Data, Typeable,
+                                              Generic)
 
 -- | Creates a value of 'RegisterTargetsResponse' with the minimum fields required to make a request.
 --
@@ -125,9 +120,9 @@ newtype RegisterTargetsResponse =
 registerTargetsResponse
     :: Int -- ^ 'rrsResponseStatus'
     -> RegisterTargetsResponse
-registerTargetsResponse pResponseStatus_ =
-  RegisterTargetsResponse' {_rrsResponseStatus = pResponseStatus_}
-
+registerTargetsResponse pResponseStatus_
+  = RegisterTargetsResponse'{_rrsResponseStatus =
+                               pResponseStatus_}
 
 -- | -- | The response status code.
 rrsResponseStatus :: Lens' RegisterTargetsResponse Int

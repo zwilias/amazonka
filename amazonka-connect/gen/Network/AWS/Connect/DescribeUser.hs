@@ -39,20 +39,15 @@ module Network.AWS.Connect.DescribeUser
     ) where
 
 import Network.AWS.Connect.Types
-import Network.AWS.Connect.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 
 -- | /See:/ 'describeUser' smart constructor.
-data DescribeUser =
-  DescribeUser'
-    { _duUserId     :: !Text
-    , _duInstanceId :: !Text
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data DescribeUser = DescribeUser'{_duUserId :: !Text,
+                                  _duInstanceId :: !Text}
+                      deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'DescribeUser' with the minimum fields required to make a request.
 --
@@ -65,9 +60,9 @@ describeUser
     :: Text -- ^ 'duUserId'
     -> Text -- ^ 'duInstanceId'
     -> DescribeUser
-describeUser pUserId_ pInstanceId_ =
-  DescribeUser' {_duUserId = pUserId_, _duInstanceId = pInstanceId_}
-
+describeUser pUserId_ pInstanceId_
+  = DescribeUser'{_duUserId = pUserId_,
+                  _duInstanceId = pInstanceId_}
 
 -- | The identifier of the user account.
 duUserId :: Lens' DescribeUser Text
@@ -106,13 +101,10 @@ instance ToQuery DescribeUser where
         toQuery = const mempty
 
 -- | /See:/ 'describeUserResponse' smart constructor.
-data DescribeUserResponse =
-  DescribeUserResponse'
-    { _dursUser           :: !(Maybe User)
-    , _dursResponseStatus :: !Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data DescribeUserResponse = DescribeUserResponse'{_dursUser
+                                                  :: !(Maybe User),
+                                                  _dursResponseStatus :: !Int}
+                              deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'DescribeUserResponse' with the minimum fields required to make a request.
 --
@@ -124,10 +116,9 @@ data DescribeUserResponse =
 describeUserResponse
     :: Int -- ^ 'dursResponseStatus'
     -> DescribeUserResponse
-describeUserResponse pResponseStatus_ =
-  DescribeUserResponse'
-    {_dursUser = Nothing, _dursResponseStatus = pResponseStatus_}
-
+describeUserResponse pResponseStatus_
+  = DescribeUserResponse'{_dursUser = Nothing,
+                          _dursResponseStatus = pResponseStatus_}
 
 -- | Information about the user account and configuration settings.
 dursUser :: Lens' DescribeUserResponse (Maybe User)

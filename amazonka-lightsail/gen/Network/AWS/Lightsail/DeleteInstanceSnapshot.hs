@@ -39,18 +39,15 @@ module Network.AWS.Lightsail.DeleteInstanceSnapshot
 
 import Network.AWS.Lens
 import Network.AWS.Lightsail.Types
-import Network.AWS.Lightsail.Types.Product
 import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 
 -- | /See:/ 'deleteInstanceSnapshot' smart constructor.
-newtype DeleteInstanceSnapshot =
-  DeleteInstanceSnapshot'
-    { _disInstanceSnapshotName :: Text
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+newtype DeleteInstanceSnapshot = DeleteInstanceSnapshot'{_disInstanceSnapshotName
+                                                         :: Text}
+                                   deriving (Eq, Read, Show, Data, Typeable,
+                                             Generic)
 
 -- | Creates a value of 'DeleteInstanceSnapshot' with the minimum fields required to make a request.
 --
@@ -60,9 +57,9 @@ newtype DeleteInstanceSnapshot =
 deleteInstanceSnapshot
     :: Text -- ^ 'disInstanceSnapshotName'
     -> DeleteInstanceSnapshot
-deleteInstanceSnapshot pInstanceSnapshotName_ =
-  DeleteInstanceSnapshot' {_disInstanceSnapshotName = pInstanceSnapshotName_}
-
+deleteInstanceSnapshot pInstanceSnapshotName_
+  = DeleteInstanceSnapshot'{_disInstanceSnapshotName =
+                              pInstanceSnapshotName_}
 
 -- | The name of the snapshot to delete.
 disInstanceSnapshotName :: Lens' DeleteInstanceSnapshot Text
@@ -108,13 +105,14 @@ instance ToQuery DeleteInstanceSnapshot where
         toQuery = const mempty
 
 -- | /See:/ 'deleteInstanceSnapshotResponse' smart constructor.
-data DeleteInstanceSnapshotResponse =
-  DeleteInstanceSnapshotResponse'
-    { _disrsOperations     :: !(Maybe [Operation])
-    , _disrsResponseStatus :: !Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data DeleteInstanceSnapshotResponse = DeleteInstanceSnapshotResponse'{_disrsOperations
+                                                                      ::
+                                                                      !(Maybe
+                                                                          [Operation]),
+                                                                      _disrsResponseStatus
+                                                                      :: !Int}
+                                        deriving (Eq, Read, Show, Data,
+                                                  Typeable, Generic)
 
 -- | Creates a value of 'DeleteInstanceSnapshotResponse' with the minimum fields required to make a request.
 --
@@ -126,10 +124,10 @@ data DeleteInstanceSnapshotResponse =
 deleteInstanceSnapshotResponse
     :: Int -- ^ 'disrsResponseStatus'
     -> DeleteInstanceSnapshotResponse
-deleteInstanceSnapshotResponse pResponseStatus_ =
-  DeleteInstanceSnapshotResponse'
-    {_disrsOperations = Nothing, _disrsResponseStatus = pResponseStatus_}
-
+deleteInstanceSnapshotResponse pResponseStatus_
+  = DeleteInstanceSnapshotResponse'{_disrsOperations =
+                                      Nothing,
+                                    _disrsResponseStatus = pResponseStatus_}
 
 -- | An array of key-value pairs containing information about the results of your delete instance snapshot request.
 disrsOperations :: Lens' DeleteInstanceSnapshotResponse [Operation]

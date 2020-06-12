@@ -44,7 +44,6 @@ module Network.AWS.APIGateway.GetExport
     ) where
 
 import Network.AWS.APIGateway.Types
-import Network.AWS.APIGateway.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.Request
@@ -55,16 +54,11 @@ import Network.AWS.Response
 --
 --
 -- /See:/ 'getExport' smart constructor.
-data GetExport =
-  GetExport'
-    { _geParameters :: !(Maybe (Map Text Text))
-    , _geAccepts    :: !(Maybe Text)
-    , _geRestAPIId  :: !Text
-    , _geStageName  :: !Text
-    , _geExportType :: !Text
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data GetExport = GetExport'{_geParameters ::
+                            !(Maybe (Map Text Text)),
+                            _geAccepts :: !(Maybe Text), _geRestAPIId :: !Text,
+                            _geStageName :: !Text, _geExportType :: !Text}
+                   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'GetExport' with the minimum fields required to make a request.
 --
@@ -84,15 +78,11 @@ getExport
     -> Text -- ^ 'geStageName'
     -> Text -- ^ 'geExportType'
     -> GetExport
-getExport pRestAPIId_ pStageName_ pExportType_ =
-  GetExport'
-    { _geParameters = Nothing
-    , _geAccepts = Nothing
-    , _geRestAPIId = pRestAPIId_
-    , _geStageName = pStageName_
-    , _geExportType = pExportType_
-    }
-
+getExport pRestAPIId_ pStageName_ pExportType_
+  = GetExport'{_geParameters = Nothing,
+               _geAccepts = Nothing, _geRestAPIId = pRestAPIId_,
+               _geStageName = pStageName_,
+               _geExportType = pExportType_}
 
 -- | A key-value map of query string parameters that specify properties of the export, depending on the requested @exportType@ . For @exportType@ @oas30@ and @swagger@ , any combination of the following parameters are supported: @extensions='integrations'@ or @extensions='apigateway'@ will export the API with x-amazon-apigateway-integration extensions. @extensions='authorizers'@ will export the API with x-amazon-apigateway-authorizer extensions. @postman@ will export the API with Postman extensions, allowing for import to the Postman tool
 geParameters :: Lens' GetExport (HashMap Text Text)
@@ -153,15 +143,13 @@ instance ToQuery GetExport where
 --
 --
 -- /See:/ 'getExportResponse' smart constructor.
-data GetExportResponse =
-  GetExportResponse'
-    { _gersBody               :: !(Maybe ByteString)
-    , _gersContentDisposition :: !(Maybe Text)
-    , _gersContentType        :: !(Maybe Text)
-    , _gersResponseStatus     :: !Int
-    }
-  deriving (Eq, Show, Data, Typeable, Generic)
-
+data GetExportResponse = GetExportResponse'{_gersBody
+                                            :: !(Maybe ByteString),
+                                            _gersContentDisposition ::
+                                            !(Maybe Text),
+                                            _gersContentType :: !(Maybe Text),
+                                            _gersResponseStatus :: !Int}
+                           deriving (Eq, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'GetExportResponse' with the minimum fields required to make a request.
 --
@@ -177,14 +165,11 @@ data GetExportResponse =
 getExportResponse
     :: Int -- ^ 'gersResponseStatus'
     -> GetExportResponse
-getExportResponse pResponseStatus_ =
-  GetExportResponse'
-    { _gersBody = Nothing
-    , _gersContentDisposition = Nothing
-    , _gersContentType = Nothing
-    , _gersResponseStatus = pResponseStatus_
-    }
-
+getExportResponse pResponseStatus_
+  = GetExportResponse'{_gersBody = Nothing,
+                       _gersContentDisposition = Nothing,
+                       _gersContentType = Nothing,
+                       _gersResponseStatus = pResponseStatus_}
 
 -- | The binary blob response to 'GetExport' , which contains the export.
 gersBody :: Lens' GetExportResponse (Maybe ByteString)

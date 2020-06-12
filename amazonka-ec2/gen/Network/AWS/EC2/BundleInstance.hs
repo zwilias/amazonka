@@ -42,7 +42,6 @@ module Network.AWS.EC2.BundleInstance
     ) where
 
 import Network.AWS.EC2.Types
-import Network.AWS.EC2.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.Request
@@ -53,14 +52,11 @@ import Network.AWS.Response
 --
 --
 -- /See:/ 'bundleInstance' smart constructor.
-data BundleInstance =
-  BundleInstance'
-    { _biDryRun     :: !(Maybe Bool)
-    , _biInstanceId :: !Text
-    , _biStorage    :: !Storage
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data BundleInstance = BundleInstance'{_biDryRun ::
+                                      !(Maybe Bool),
+                                      _biInstanceId :: !Text,
+                                      _biStorage :: !Storage}
+                        deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'BundleInstance' with the minimum fields required to make a request.
 --
@@ -75,10 +71,9 @@ bundleInstance
     :: Text -- ^ 'biInstanceId'
     -> Storage -- ^ 'biStorage'
     -> BundleInstance
-bundleInstance pInstanceId_ pStorage_ =
-  BundleInstance'
-    {_biDryRun = Nothing, _biInstanceId = pInstanceId_, _biStorage = pStorage_}
-
+bundleInstance pInstanceId_ pStorage_
+  = BundleInstance'{_biDryRun = Nothing,
+                    _biInstanceId = pInstanceId_, _biStorage = pStorage_}
 
 -- | Checks whether you have the required permissions for the action, without actually making the request, and provides an error response. If you have the required permissions, the error response is @DryRunOperation@ . Otherwise, it is @UnauthorizedOperation@ .
 biDryRun :: Lens' BundleInstance (Maybe Bool)
@@ -124,13 +119,12 @@ instance ToQuery BundleInstance where
 --
 --
 -- /See:/ 'bundleInstanceResponse' smart constructor.
-data BundleInstanceResponse =
-  BundleInstanceResponse'
-    { _birsBundleTask     :: !(Maybe BundleTask)
-    , _birsResponseStatus :: !Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data BundleInstanceResponse = BundleInstanceResponse'{_birsBundleTask
+                                                      :: !(Maybe BundleTask),
+                                                      _birsResponseStatus ::
+                                                      !Int}
+                                deriving (Eq, Read, Show, Data, Typeable,
+                                          Generic)
 
 -- | Creates a value of 'BundleInstanceResponse' with the minimum fields required to make a request.
 --
@@ -142,10 +136,9 @@ data BundleInstanceResponse =
 bundleInstanceResponse
     :: Int -- ^ 'birsResponseStatus'
     -> BundleInstanceResponse
-bundleInstanceResponse pResponseStatus_ =
-  BundleInstanceResponse'
-    {_birsBundleTask = Nothing, _birsResponseStatus = pResponseStatus_}
-
+bundleInstanceResponse pResponseStatus_
+  = BundleInstanceResponse'{_birsBundleTask = Nothing,
+                            _birsResponseStatus = pResponseStatus_}
 
 -- | Information about the bundle task.
 birsBundleTask :: Lens' BundleInstanceResponse (Maybe BundleTask)

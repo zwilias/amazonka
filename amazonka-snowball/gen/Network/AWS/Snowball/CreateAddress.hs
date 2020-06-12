@@ -42,15 +42,11 @@ import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 import Network.AWS.Snowball.Types
-import Network.AWS.Snowball.Types.Product
 
 -- | /See:/ 'createAddress' smart constructor.
-newtype CreateAddress =
-  CreateAddress'
-    { _caAddress :: Address
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+newtype CreateAddress = CreateAddress'{_caAddress ::
+                                       Address}
+                          deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'CreateAddress' with the minimum fields required to make a request.
 --
@@ -60,8 +56,8 @@ newtype CreateAddress =
 createAddress
     :: Address -- ^ 'caAddress'
     -> CreateAddress
-createAddress pAddress_ = CreateAddress' {_caAddress = pAddress_}
-
+createAddress pAddress_
+  = CreateAddress'{_caAddress = pAddress_}
 
 -- | The address that you want the Snowball shipped to.
 caAddress :: Lens' CreateAddress Address
@@ -101,13 +97,11 @@ instance ToQuery CreateAddress where
         toQuery = const mempty
 
 -- | /See:/ 'createAddressResponse' smart constructor.
-data CreateAddressResponse =
-  CreateAddressResponse'
-    { _carsAddressId      :: !(Maybe Text)
-    , _carsResponseStatus :: !Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data CreateAddressResponse = CreateAddressResponse'{_carsAddressId
+                                                    :: !(Maybe Text),
+                                                    _carsResponseStatus :: !Int}
+                               deriving (Eq, Read, Show, Data, Typeable,
+                                         Generic)
 
 -- | Creates a value of 'CreateAddressResponse' with the minimum fields required to make a request.
 --
@@ -119,10 +113,9 @@ data CreateAddressResponse =
 createAddressResponse
     :: Int -- ^ 'carsResponseStatus'
     -> CreateAddressResponse
-createAddressResponse pResponseStatus_ =
-  CreateAddressResponse'
-    {_carsAddressId = Nothing, _carsResponseStatus = pResponseStatus_}
-
+createAddressResponse pResponseStatus_
+  = CreateAddressResponse'{_carsAddressId = Nothing,
+                           _carsResponseStatus = pResponseStatus_}
 
 -- | The automatically generated ID for a specific address. You'll use this ID when you create a job to specify which address you want the Snowball for that job shipped to.
 carsAddressId :: Lens' CreateAddressResponse (Maybe Text)

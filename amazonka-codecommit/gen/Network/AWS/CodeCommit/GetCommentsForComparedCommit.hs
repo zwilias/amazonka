@@ -45,7 +45,6 @@ module Network.AWS.CodeCommit.GetCommentsForComparedCommit
     ) where
 
 import Network.AWS.CodeCommit.Types
-import Network.AWS.CodeCommit.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Pager
 import Network.AWS.Prelude
@@ -53,22 +52,27 @@ import Network.AWS.Request
 import Network.AWS.Response
 
 -- | /See:/ 'getCommentsForComparedCommit' smart constructor.
-data GetCommentsForComparedCommit =
-  GetCommentsForComparedCommit'
-    { _gcfccNextToken      :: !(Maybe Text)
-    , _gcfccBeforeCommitId :: !(Maybe Text)
-    , _gcfccMaxResults     :: !(Maybe Int)
-    , _gcfccRepositoryName :: !Text
-    , _gcfccAfterCommitId  :: !Text
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data GetCommentsForComparedCommit = GetCommentsForComparedCommit'{_gcfccNextToken
+                                                                  ::
+                                                                  !(Maybe Text),
+                                                                  _gcfccBeforeCommitId
+                                                                  ::
+                                                                  !(Maybe Text),
+                                                                  _gcfccMaxResults
+                                                                  ::
+                                                                  !(Maybe Int),
+                                                                  _gcfccRepositoryName
+                                                                  :: !Text,
+                                                                  _gcfccAfterCommitId
+                                                                  :: !Text}
+                                      deriving (Eq, Read, Show, Data, Typeable,
+                                                Generic)
 
 -- | Creates a value of 'GetCommentsForComparedCommit' with the minimum fields required to make a request.
 --
 -- Use one of the following lenses to modify other fields as desired:
 --
--- * 'gcfccNextToken' - An enumeration token that when provided in a request, returns the next batch of the results.
+-- * 'gcfccNextToken' - An enumeration token that when provided in a request, returns the next batch of the results. 
 --
 -- * 'gcfccBeforeCommitId' - To establish the directionality of the comparison, the full commit ID of the before commit.
 --
@@ -81,17 +85,16 @@ getCommentsForComparedCommit
     :: Text -- ^ 'gcfccRepositoryName'
     -> Text -- ^ 'gcfccAfterCommitId'
     -> GetCommentsForComparedCommit
-getCommentsForComparedCommit pRepositoryName_ pAfterCommitId_ =
-  GetCommentsForComparedCommit'
-    { _gcfccNextToken = Nothing
-    , _gcfccBeforeCommitId = Nothing
-    , _gcfccMaxResults = Nothing
-    , _gcfccRepositoryName = pRepositoryName_
-    , _gcfccAfterCommitId = pAfterCommitId_
-    }
+getCommentsForComparedCommit pRepositoryName_
+  pAfterCommitId_
+  = GetCommentsForComparedCommit'{_gcfccNextToken =
+                                    Nothing,
+                                  _gcfccBeforeCommitId = Nothing,
+                                  _gcfccMaxResults = Nothing,
+                                  _gcfccRepositoryName = pRepositoryName_,
+                                  _gcfccAfterCommitId = pAfterCommitId_}
 
-
--- | An enumeration token that when provided in a request, returns the next batch of the results.
+-- | An enumeration token that when provided in a request, returns the next batch of the results. 
 gcfccNextToken :: Lens' GetCommentsForComparedCommit (Maybe Text)
 gcfccNextToken = lens _gcfccNextToken (\ s a -> s{_gcfccNextToken = a})
 
@@ -163,14 +166,19 @@ instance ToQuery GetCommentsForComparedCommit where
         toQuery = const mempty
 
 -- | /See:/ 'getCommentsForComparedCommitResponse' smart constructor.
-data GetCommentsForComparedCommitResponse =
-  GetCommentsForComparedCommitResponse'
-    { _gcfccrsCommentsForComparedCommitData :: !(Maybe [CommentsForComparedCommit])
-    , _gcfccrsNextToken :: !(Maybe Text)
-    , _gcfccrsResponseStatus :: !Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data GetCommentsForComparedCommitResponse = GetCommentsForComparedCommitResponse'{_gcfccrsCommentsForComparedCommitData
+                                                                                  ::
+                                                                                  !(Maybe
+                                                                                      [CommentsForComparedCommit]),
+                                                                                  _gcfccrsNextToken
+                                                                                  ::
+                                                                                  !(Maybe
+                                                                                      Text),
+                                                                                  _gcfccrsResponseStatus
+                                                                                  ::
+                                                                                  !Int}
+                                              deriving (Eq, Read, Show, Data,
+                                                        Typeable, Generic)
 
 -- | Creates a value of 'GetCommentsForComparedCommitResponse' with the minimum fields required to make a request.
 --
@@ -184,13 +192,12 @@ data GetCommentsForComparedCommitResponse =
 getCommentsForComparedCommitResponse
     :: Int -- ^ 'gcfccrsResponseStatus'
     -> GetCommentsForComparedCommitResponse
-getCommentsForComparedCommitResponse pResponseStatus_ =
-  GetCommentsForComparedCommitResponse'
-    { _gcfccrsCommentsForComparedCommitData = Nothing
-    , _gcfccrsNextToken = Nothing
-    , _gcfccrsResponseStatus = pResponseStatus_
-    }
-
+getCommentsForComparedCommitResponse pResponseStatus_
+  = GetCommentsForComparedCommitResponse'{_gcfccrsCommentsForComparedCommitData
+                                            = Nothing,
+                                          _gcfccrsNextToken = Nothing,
+                                          _gcfccrsResponseStatus =
+                                            pResponseStatus_}
 
 -- | A list of comment objects on the compared commit.
 gcfccrsCommentsForComparedCommitData :: Lens' GetCommentsForComparedCommitResponse [CommentsForComparedCommit]

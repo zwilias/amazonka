@@ -41,20 +41,16 @@ module Network.AWS.IoTAnalytics.CreateDatastore
     ) where
 
 import Network.AWS.IoTAnalytics.Types
-import Network.AWS.IoTAnalytics.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 
 -- | /See:/ 'createDatastore' smart constructor.
-data CreateDatastore =
-  CreateDatastore'
-    { _cdRetentionPeriod :: !(Maybe RetentionPeriod)
-    , _cdDatastoreName   :: !Text
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data CreateDatastore = CreateDatastore'{_cdRetentionPeriod
+                                        :: !(Maybe RetentionPeriod),
+                                        _cdDatastoreName :: !Text}
+                         deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'CreateDatastore' with the minimum fields required to make a request.
 --
@@ -66,10 +62,9 @@ data CreateDatastore =
 createDatastore
     :: Text -- ^ 'cdDatastoreName'
     -> CreateDatastore
-createDatastore pDatastoreName_ =
-  CreateDatastore'
-    {_cdRetentionPeriod = Nothing, _cdDatastoreName = pDatastoreName_}
-
+createDatastore pDatastoreName_
+  = CreateDatastore'{_cdRetentionPeriod = Nothing,
+                     _cdDatastoreName = pDatastoreName_}
 
 -- | How long, in days, message data is kept for the data store.
 cdRetentionPeriod :: Lens' CreateDatastore (Maybe RetentionPeriod)
@@ -111,15 +106,17 @@ instance ToQuery CreateDatastore where
         toQuery = const mempty
 
 -- | /See:/ 'createDatastoreResponse' smart constructor.
-data CreateDatastoreResponse =
-  CreateDatastoreResponse'
-    { _cdrsDatastoreARN    :: !(Maybe Text)
-    , _cdrsDatastoreName   :: !(Maybe Text)
-    , _cdrsRetentionPeriod :: !(Maybe RetentionPeriod)
-    , _cdrsResponseStatus  :: !Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data CreateDatastoreResponse = CreateDatastoreResponse'{_cdrsDatastoreARN
+                                                        :: !(Maybe Text),
+                                                        _cdrsDatastoreName ::
+                                                        !(Maybe Text),
+                                                        _cdrsRetentionPeriod ::
+                                                        !(Maybe
+                                                            RetentionPeriod),
+                                                        _cdrsResponseStatus ::
+                                                        !Int}
+                                 deriving (Eq, Read, Show, Data, Typeable,
+                                           Generic)
 
 -- | Creates a value of 'CreateDatastoreResponse' with the minimum fields required to make a request.
 --
@@ -135,14 +132,12 @@ data CreateDatastoreResponse =
 createDatastoreResponse
     :: Int -- ^ 'cdrsResponseStatus'
     -> CreateDatastoreResponse
-createDatastoreResponse pResponseStatus_ =
-  CreateDatastoreResponse'
-    { _cdrsDatastoreARN = Nothing
-    , _cdrsDatastoreName = Nothing
-    , _cdrsRetentionPeriod = Nothing
-    , _cdrsResponseStatus = pResponseStatus_
-    }
-
+createDatastoreResponse pResponseStatus_
+  = CreateDatastoreResponse'{_cdrsDatastoreARN =
+                               Nothing,
+                             _cdrsDatastoreName = Nothing,
+                             _cdrsRetentionPeriod = Nothing,
+                             _cdrsResponseStatus = pResponseStatus_}
 
 -- | The ARN of the data store.
 cdrsDatastoreARN :: Lens' CreateDatastoreResponse (Maybe Text)

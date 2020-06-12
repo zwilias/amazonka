@@ -45,20 +45,18 @@ import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 import Network.AWS.SMS.Types
-import Network.AWS.SMS.Types.Product
 
 -- | /See:/ 'createReplicationJob' smart constructor.
-data CreateReplicationJob =
-  CreateReplicationJob'
-    { _crjLicenseType         :: !(Maybe LicenseType)
-    , _crjRoleName            :: !(Maybe Text)
-    , _crjDescription         :: !(Maybe Text)
-    , _crjServerId            :: !Text
-    , _crjSeedReplicationTime :: !POSIX
-    , _crjFrequency           :: !Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data CreateReplicationJob = CreateReplicationJob'{_crjLicenseType
+                                                  :: !(Maybe LicenseType),
+                                                  _crjRoleName :: !(Maybe Text),
+                                                  _crjDescription ::
+                                                  !(Maybe Text),
+                                                  _crjServerId :: !Text,
+                                                  _crjSeedReplicationTime ::
+                                                  !POSIX,
+                                                  _crjFrequency :: !Int}
+                              deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'CreateReplicationJob' with the minimum fields required to make a request.
 --
@@ -80,16 +78,14 @@ createReplicationJob
     -> UTCTime -- ^ 'crjSeedReplicationTime'
     -> Int -- ^ 'crjFrequency'
     -> CreateReplicationJob
-createReplicationJob pServerId_ pSeedReplicationTime_ pFrequency_ =
-  CreateReplicationJob'
-    { _crjLicenseType = Nothing
-    , _crjRoleName = Nothing
-    , _crjDescription = Nothing
-    , _crjServerId = pServerId_
-    , _crjSeedReplicationTime = _Time # pSeedReplicationTime_
-    , _crjFrequency = pFrequency_
-    }
-
+createReplicationJob pServerId_ pSeedReplicationTime_
+  pFrequency_
+  = CreateReplicationJob'{_crjLicenseType = Nothing,
+                          _crjRoleName = Nothing, _crjDescription = Nothing,
+                          _crjServerId = pServerId_,
+                          _crjSeedReplicationTime =
+                            _Time # pSeedReplicationTime_,
+                          _crjFrequency = pFrequency_}
 
 -- | Undocumented member.
 crjLicenseType :: Lens' CreateReplicationJob (Maybe LicenseType)
@@ -158,13 +154,13 @@ instance ToQuery CreateReplicationJob where
         toQuery = const mempty
 
 -- | /See:/ 'createReplicationJobResponse' smart constructor.
-data CreateReplicationJobResponse =
-  CreateReplicationJobResponse'
-    { _crjrsReplicationJobId :: !(Maybe Text)
-    , _crjrsResponseStatus   :: !Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data CreateReplicationJobResponse = CreateReplicationJobResponse'{_crjrsReplicationJobId
+                                                                  ::
+                                                                  !(Maybe Text),
+                                                                  _crjrsResponseStatus
+                                                                  :: !Int}
+                                      deriving (Eq, Read, Show, Data, Typeable,
+                                                Generic)
 
 -- | Creates a value of 'CreateReplicationJobResponse' with the minimum fields required to make a request.
 --
@@ -176,10 +172,10 @@ data CreateReplicationJobResponse =
 createReplicationJobResponse
     :: Int -- ^ 'crjrsResponseStatus'
     -> CreateReplicationJobResponse
-createReplicationJobResponse pResponseStatus_ =
-  CreateReplicationJobResponse'
-    {_crjrsReplicationJobId = Nothing, _crjrsResponseStatus = pResponseStatus_}
-
+createReplicationJobResponse pResponseStatus_
+  = CreateReplicationJobResponse'{_crjrsReplicationJobId
+                                    = Nothing,
+                                  _crjrsResponseStatus = pResponseStatus_}
 
 -- | Undocumented member.
 crjrsReplicationJobId :: Lens' CreateReplicationJobResponse (Maybe Text)

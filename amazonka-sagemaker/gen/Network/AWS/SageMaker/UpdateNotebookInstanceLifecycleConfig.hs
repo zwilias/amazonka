@@ -43,17 +43,21 @@ import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 import Network.AWS.SageMaker.Types
-import Network.AWS.SageMaker.Types.Product
 
 -- | /See:/ 'updateNotebookInstanceLifecycleConfig' smart constructor.
-data UpdateNotebookInstanceLifecycleConfig =
-  UpdateNotebookInstanceLifecycleConfig'
-    { _unilcOnCreate :: !(Maybe [NotebookInstanceLifecycleHook])
-    , _unilcOnStart :: !(Maybe [NotebookInstanceLifecycleHook])
-    , _unilcNotebookInstanceLifecycleConfigName :: !Text
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data UpdateNotebookInstanceLifecycleConfig = UpdateNotebookInstanceLifecycleConfig'{_unilcOnCreate
+                                                                                    ::
+                                                                                    !(Maybe
+                                                                                        [NotebookInstanceLifecycleHook]),
+                                                                                    _unilcOnStart
+                                                                                    ::
+                                                                                    !(Maybe
+                                                                                        [NotebookInstanceLifecycleHook]),
+                                                                                    _unilcNotebookInstanceLifecycleConfigName
+                                                                                    ::
+                                                                                    !Text}
+                                               deriving (Eq, Read, Show, Data,
+                                                         Typeable, Generic)
 
 -- | Creates a value of 'UpdateNotebookInstanceLifecycleConfig' with the minimum fields required to make a request.
 --
@@ -67,14 +71,14 @@ data UpdateNotebookInstanceLifecycleConfig =
 updateNotebookInstanceLifecycleConfig
     :: Text -- ^ 'unilcNotebookInstanceLifecycleConfigName'
     -> UpdateNotebookInstanceLifecycleConfig
-updateNotebookInstanceLifecycleConfig pNotebookInstanceLifecycleConfigName_ =
-  UpdateNotebookInstanceLifecycleConfig'
-    { _unilcOnCreate = Nothing
-    , _unilcOnStart = Nothing
-    , _unilcNotebookInstanceLifecycleConfigName =
-        pNotebookInstanceLifecycleConfigName_
-    }
-
+updateNotebookInstanceLifecycleConfig
+  pNotebookInstanceLifecycleConfigName_
+  = UpdateNotebookInstanceLifecycleConfig'{_unilcOnCreate
+                                             = Nothing,
+                                           _unilcOnStart = Nothing,
+                                           _unilcNotebookInstanceLifecycleConfigName
+                                             =
+                                             pNotebookInstanceLifecycleConfigName_}
 
 -- | The shell script that runs only once, when you create a notebook instance
 unilcOnCreate :: Lens' UpdateNotebookInstanceLifecycleConfig [NotebookInstanceLifecycleHook]
@@ -140,12 +144,13 @@ instance ToQuery
         toQuery = const mempty
 
 -- | /See:/ 'updateNotebookInstanceLifecycleConfigResponse' smart constructor.
-newtype UpdateNotebookInstanceLifecycleConfigResponse =
-  UpdateNotebookInstanceLifecycleConfigResponse'
-    { _unilcrsResponseStatus :: Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+newtype UpdateNotebookInstanceLifecycleConfigResponse = UpdateNotebookInstanceLifecycleConfigResponse'{_unilcrsResponseStatus
+                                                                                                       ::
+                                                                                                       Int}
+                                                          deriving (Eq, Read,
+                                                                    Show, Data,
+                                                                    Typeable,
+                                                                    Generic)
 
 -- | Creates a value of 'UpdateNotebookInstanceLifecycleConfigResponse' with the minimum fields required to make a request.
 --
@@ -155,10 +160,10 @@ newtype UpdateNotebookInstanceLifecycleConfigResponse =
 updateNotebookInstanceLifecycleConfigResponse
     :: Int -- ^ 'unilcrsResponseStatus'
     -> UpdateNotebookInstanceLifecycleConfigResponse
-updateNotebookInstanceLifecycleConfigResponse pResponseStatus_ =
-  UpdateNotebookInstanceLifecycleConfigResponse'
-    {_unilcrsResponseStatus = pResponseStatus_}
-
+updateNotebookInstanceLifecycleConfigResponse
+  pResponseStatus_
+  = UpdateNotebookInstanceLifecycleConfigResponse'{_unilcrsResponseStatus
+                                                     = pResponseStatus_}
 
 -- | -- | The response status code.
 unilcrsResponseStatus :: Lens' UpdateNotebookInstanceLifecycleConfigResponse Int

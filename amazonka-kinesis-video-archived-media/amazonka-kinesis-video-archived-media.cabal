@@ -51,8 +51,10 @@ library
         , Network.AWS.KinesisVideoArchivedMedia.Waiters
 
     other-modules:
-          Network.AWS.KinesisVideoArchivedMedia.Types.Product
-        , Network.AWS.KinesisVideoArchivedMedia.Types.Sum
+          Network.AWS.KinesisVideoArchivedMedia.Types.Fragment
+        , Network.AWS.KinesisVideoArchivedMedia.Types.FragmentSelector
+        , Network.AWS.KinesisVideoArchivedMedia.Types.FragmentSelectorType
+        , Network.AWS.KinesisVideoArchivedMedia.Types.TimestampRange
 
     build-depends:
           amazonka-core == 1.6.1.*

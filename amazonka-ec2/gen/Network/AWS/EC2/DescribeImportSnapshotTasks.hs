@@ -45,7 +45,6 @@ module Network.AWS.EC2.DescribeImportSnapshotTasks
     ) where
 
 import Network.AWS.EC2.Types
-import Network.AWS.EC2.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Pager
 import Network.AWS.Prelude
@@ -53,16 +52,22 @@ import Network.AWS.Request
 import Network.AWS.Response
 
 -- | /See:/ 'describeImportSnapshotTasks' smart constructor.
-data DescribeImportSnapshotTasks =
-  DescribeImportSnapshotTasks'
-    { _distFilters       :: !(Maybe [Filter])
-    , _distImportTaskIds :: !(Maybe [Text])
-    , _distNextToken     :: !(Maybe Text)
-    , _distDryRun        :: !(Maybe Bool)
-    , _distMaxResults    :: !(Maybe Int)
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data DescribeImportSnapshotTasks = DescribeImportSnapshotTasks'{_distFilters
+                                                                ::
+                                                                !(Maybe
+                                                                    [Filter]),
+                                                                _distImportTaskIds
+                                                                ::
+                                                                !(Maybe [Text]),
+                                                                _distNextToken
+                                                                ::
+                                                                !(Maybe Text),
+                                                                _distDryRun ::
+                                                                !(Maybe Bool),
+                                                                _distMaxResults
+                                                                :: !(Maybe Int)}
+                                     deriving (Eq, Read, Show, Data, Typeable,
+                                               Generic)
 
 -- | Creates a value of 'DescribeImportSnapshotTasks' with the minimum fields required to make a request.
 --
@@ -79,15 +84,13 @@ data DescribeImportSnapshotTasks =
 -- * 'distMaxResults' - The maximum number of results to return in a single call. To retrieve the remaining results, make another call with the returned @NextToken@ value.
 describeImportSnapshotTasks
     :: DescribeImportSnapshotTasks
-describeImportSnapshotTasks =
-  DescribeImportSnapshotTasks'
-    { _distFilters = Nothing
-    , _distImportTaskIds = Nothing
-    , _distNextToken = Nothing
-    , _distDryRun = Nothing
-    , _distMaxResults = Nothing
-    }
-
+describeImportSnapshotTasks
+  = DescribeImportSnapshotTasks'{_distFilters =
+                                   Nothing,
+                                 _distImportTaskIds = Nothing,
+                                 _distNextToken = Nothing,
+                                 _distDryRun = Nothing,
+                                 _distMaxResults = Nothing}
 
 -- | The filters.
 distFilters :: Lens' DescribeImportSnapshotTasks [Filter]
@@ -153,14 +156,19 @@ instance ToQuery DescribeImportSnapshotTasks where
                "MaxResults" =: _distMaxResults]
 
 -- | /See:/ 'describeImportSnapshotTasksResponse' smart constructor.
-data DescribeImportSnapshotTasksResponse =
-  DescribeImportSnapshotTasksResponse'
-    { _distrsNextToken           :: !(Maybe Text)
-    , _distrsImportSnapshotTasks :: !(Maybe [ImportSnapshotTask])
-    , _distrsResponseStatus      :: !Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data DescribeImportSnapshotTasksResponse = DescribeImportSnapshotTasksResponse'{_distrsNextToken
+                                                                                ::
+                                                                                !(Maybe
+                                                                                    Text),
+                                                                                _distrsImportSnapshotTasks
+                                                                                ::
+                                                                                !(Maybe
+                                                                                    [ImportSnapshotTask]),
+                                                                                _distrsResponseStatus
+                                                                                ::
+                                                                                !Int}
+                                             deriving (Eq, Read, Show, Data,
+                                                       Typeable, Generic)
 
 -- | Creates a value of 'DescribeImportSnapshotTasksResponse' with the minimum fields required to make a request.
 --
@@ -174,13 +182,12 @@ data DescribeImportSnapshotTasksResponse =
 describeImportSnapshotTasksResponse
     :: Int -- ^ 'distrsResponseStatus'
     -> DescribeImportSnapshotTasksResponse
-describeImportSnapshotTasksResponse pResponseStatus_ =
-  DescribeImportSnapshotTasksResponse'
-    { _distrsNextToken = Nothing
-    , _distrsImportSnapshotTasks = Nothing
-    , _distrsResponseStatus = pResponseStatus_
-    }
-
+describeImportSnapshotTasksResponse pResponseStatus_
+  = DescribeImportSnapshotTasksResponse'{_distrsNextToken
+                                           = Nothing,
+                                         _distrsImportSnapshotTasks = Nothing,
+                                         _distrsResponseStatus =
+                                           pResponseStatus_}
 
 -- | The token to use to get the next page of results. This value is @null@ when there are no more results to return.
 distrsNextToken :: Lens' DescribeImportSnapshotTasksResponse (Maybe Text)

@@ -38,20 +38,18 @@ module Network.AWS.CostAndUsageReport.ModifyReportDefinition
     ) where
 
 import Network.AWS.CostAndUsageReport.Types
-import Network.AWS.CostAndUsageReport.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 
 -- | /See:/ 'modifyReportDefinition' smart constructor.
-data ModifyReportDefinition =
-  ModifyReportDefinition'
-    { _mrdReportName       :: !Text
-    , _mrdReportDefinition :: !ReportDefinition
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data ModifyReportDefinition = ModifyReportDefinition'{_mrdReportName
+                                                      :: !Text,
+                                                      _mrdReportDefinition ::
+                                                      !ReportDefinition}
+                                deriving (Eq, Read, Show, Data, Typeable,
+                                          Generic)
 
 -- | Creates a value of 'ModifyReportDefinition' with the minimum fields required to make a request.
 --
@@ -64,10 +62,11 @@ modifyReportDefinition
     :: Text -- ^ 'mrdReportName'
     -> ReportDefinition -- ^ 'mrdReportDefinition'
     -> ModifyReportDefinition
-modifyReportDefinition pReportName_ pReportDefinition_ =
-  ModifyReportDefinition'
-    {_mrdReportName = pReportName_, _mrdReportDefinition = pReportDefinition_}
-
+modifyReportDefinition pReportName_
+  pReportDefinition_
+  = ModifyReportDefinition'{_mrdReportName =
+                              pReportName_,
+                            _mrdReportDefinition = pReportDefinition_}
 
 -- | Undocumented member.
 mrdReportName :: Lens' ModifyReportDefinition Text
@@ -115,12 +114,10 @@ instance ToQuery ModifyReportDefinition where
         toQuery = const mempty
 
 -- | /See:/ 'modifyReportDefinitionResponse' smart constructor.
-newtype ModifyReportDefinitionResponse =
-  ModifyReportDefinitionResponse'
-    { _mrdrsResponseStatus :: Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+newtype ModifyReportDefinitionResponse = ModifyReportDefinitionResponse'{_mrdrsResponseStatus
+                                                                         :: Int}
+                                           deriving (Eq, Read, Show, Data,
+                                                     Typeable, Generic)
 
 -- | Creates a value of 'ModifyReportDefinitionResponse' with the minimum fields required to make a request.
 --
@@ -130,9 +127,9 @@ newtype ModifyReportDefinitionResponse =
 modifyReportDefinitionResponse
     :: Int -- ^ 'mrdrsResponseStatus'
     -> ModifyReportDefinitionResponse
-modifyReportDefinitionResponse pResponseStatus_ =
-  ModifyReportDefinitionResponse' {_mrdrsResponseStatus = pResponseStatus_}
-
+modifyReportDefinitionResponse pResponseStatus_
+  = ModifyReportDefinitionResponse'{_mrdrsResponseStatus
+                                      = pResponseStatus_}
 
 -- | -- | The response status code.
 mrdrsResponseStatus :: Lens' ModifyReportDefinitionResponse Int

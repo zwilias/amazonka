@@ -42,23 +42,19 @@ module Network.AWS.MediaConvert.CreateJob
 
 import Network.AWS.Lens
 import Network.AWS.MediaConvert.Types
-import Network.AWS.MediaConvert.Types.Product
 import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 
 -- | /See:/ 'createJob' smart constructor.
-data CreateJob =
-  CreateJob'
-    { _cjJobTemplate        :: !(Maybe Text)
-    , _cjSettings           :: !(Maybe JobSettings)
-    , _cjQueue              :: !(Maybe Text)
-    , _cjUserMetadata       :: !(Maybe (Map Text Text))
-    , _cjRole               :: !(Maybe Text)
-    , _cjClientRequestToken :: !(Maybe Text)
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data CreateJob = CreateJob'{_cjJobTemplate ::
+                            !(Maybe Text),
+                            _cjSettings :: !(Maybe JobSettings),
+                            _cjQueue :: !(Maybe Text),
+                            _cjUserMetadata :: !(Maybe (Map Text Text)),
+                            _cjRole :: !(Maybe Text),
+                            _cjClientRequestToken :: !(Maybe Text)}
+                   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'CreateJob' with the minimum fields required to make a request.
 --
@@ -77,16 +73,11 @@ data CreateJob =
 -- * 'cjClientRequestToken' - Idempotency token for CreateJob operation.
 createJob
     :: CreateJob
-createJob =
-  CreateJob'
-    { _cjJobTemplate = Nothing
-    , _cjSettings = Nothing
-    , _cjQueue = Nothing
-    , _cjUserMetadata = Nothing
-    , _cjRole = Nothing
-    , _cjClientRequestToken = Nothing
-    }
-
+createJob
+  = CreateJob'{_cjJobTemplate = Nothing,
+               _cjSettings = Nothing, _cjQueue = Nothing,
+               _cjUserMetadata = Nothing, _cjRole = Nothing,
+               _cjClientRequestToken = Nothing}
 
 -- | When you create a job, you can either specify a job template or specify the transcoding settings individually
 cjJobTemplate :: Lens' CreateJob (Maybe Text)
@@ -150,13 +141,10 @@ instance ToQuery CreateJob where
         toQuery = const mempty
 
 -- | /See:/ 'createJobResponse' smart constructor.
-data CreateJobResponse =
-  CreateJobResponse'
-    { _cjrsJob            :: !(Maybe Job)
-    , _cjrsResponseStatus :: !Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data CreateJobResponse = CreateJobResponse'{_cjrsJob
+                                            :: !(Maybe Job),
+                                            _cjrsResponseStatus :: !Int}
+                           deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'CreateJobResponse' with the minimum fields required to make a request.
 --
@@ -168,10 +156,9 @@ data CreateJobResponse =
 createJobResponse
     :: Int -- ^ 'cjrsResponseStatus'
     -> CreateJobResponse
-createJobResponse pResponseStatus_ =
-  CreateJobResponse'
-    {_cjrsJob = Nothing, _cjrsResponseStatus = pResponseStatus_}
-
+createJobResponse pResponseStatus_
+  = CreateJobResponse'{_cjrsJob = Nothing,
+                       _cjrsResponseStatus = pResponseStatus_}
 
 -- | Undocumented member.
 cjrsJob :: Lens' CreateJobResponse (Maybe Job)

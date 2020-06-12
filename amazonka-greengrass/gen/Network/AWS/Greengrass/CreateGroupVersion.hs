@@ -46,26 +46,28 @@ module Network.AWS.Greengrass.CreateGroupVersion
     ) where
 
 import Network.AWS.Greengrass.Types
-import Network.AWS.Greengrass.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 
 -- | /See:/ 'createGroupVersion' smart constructor.
-data CreateGroupVersion =
-  CreateGroupVersion'
-    { _cgvAmznClientToken                  :: !(Maybe Text)
-    , _cgvResourceDefinitionVersionARN     :: !(Maybe Text)
-    , _cgvSubscriptionDefinitionVersionARN :: !(Maybe Text)
-    , _cgvCoreDefinitionVersionARN         :: !(Maybe Text)
-    , _cgvDeviceDefinitionVersionARN       :: !(Maybe Text)
-    , _cgvFunctionDefinitionVersionARN     :: !(Maybe Text)
-    , _cgvLoggerDefinitionVersionARN       :: !(Maybe Text)
-    , _cgvGroupId                          :: !Text
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data CreateGroupVersion = CreateGroupVersion'{_cgvAmznClientToken
+                                              :: !(Maybe Text),
+                                              _cgvResourceDefinitionVersionARN
+                                              :: !(Maybe Text),
+                                              _cgvSubscriptionDefinitionVersionARN
+                                              :: !(Maybe Text),
+                                              _cgvCoreDefinitionVersionARN ::
+                                              !(Maybe Text),
+                                              _cgvDeviceDefinitionVersionARN ::
+                                              !(Maybe Text),
+                                              _cgvFunctionDefinitionVersionARN
+                                              :: !(Maybe Text),
+                                              _cgvLoggerDefinitionVersionARN ::
+                                              !(Maybe Text),
+                                              _cgvGroupId :: !Text}
+                            deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'CreateGroupVersion' with the minimum fields required to make a request.
 --
@@ -89,18 +91,15 @@ data CreateGroupVersion =
 createGroupVersion
     :: Text -- ^ 'cgvGroupId'
     -> CreateGroupVersion
-createGroupVersion pGroupId_ =
-  CreateGroupVersion'
-    { _cgvAmznClientToken = Nothing
-    , _cgvResourceDefinitionVersionARN = Nothing
-    , _cgvSubscriptionDefinitionVersionARN = Nothing
-    , _cgvCoreDefinitionVersionARN = Nothing
-    , _cgvDeviceDefinitionVersionARN = Nothing
-    , _cgvFunctionDefinitionVersionARN = Nothing
-    , _cgvLoggerDefinitionVersionARN = Nothing
-    , _cgvGroupId = pGroupId_
-    }
-
+createGroupVersion pGroupId_
+  = CreateGroupVersion'{_cgvAmznClientToken = Nothing,
+                        _cgvResourceDefinitionVersionARN = Nothing,
+                        _cgvSubscriptionDefinitionVersionARN = Nothing,
+                        _cgvCoreDefinitionVersionARN = Nothing,
+                        _cgvDeviceDefinitionVersionARN = Nothing,
+                        _cgvFunctionDefinitionVersionARN = Nothing,
+                        _cgvLoggerDefinitionVersionARN = Nothing,
+                        _cgvGroupId = pGroupId_}
 
 -- | A client token used to correlate requests and responses.
 cgvAmznClientToken :: Lens' CreateGroupVersion (Maybe Text)
@@ -185,16 +184,18 @@ instance ToQuery CreateGroupVersion where
         toQuery = const mempty
 
 -- | /See:/ 'createGroupVersionResponse' smart constructor.
-data CreateGroupVersionResponse =
-  CreateGroupVersionResponse'
-    { _cgvrsARN               :: !(Maybe Text)
-    , _cgvrsCreationTimestamp :: !(Maybe Text)
-    , _cgvrsVersion           :: !(Maybe Text)
-    , _cgvrsId                :: !(Maybe Text)
-    , _cgvrsResponseStatus    :: !Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data CreateGroupVersionResponse = CreateGroupVersionResponse'{_cgvrsARN
+                                                              :: !(Maybe Text),
+                                                              _cgvrsCreationTimestamp
+                                                              :: !(Maybe Text),
+                                                              _cgvrsVersion ::
+                                                              !(Maybe Text),
+                                                              _cgvrsId ::
+                                                              !(Maybe Text),
+                                                              _cgvrsResponseStatus
+                                                              :: !Int}
+                                    deriving (Eq, Read, Show, Data, Typeable,
+                                              Generic)
 
 -- | Creates a value of 'CreateGroupVersionResponse' with the minimum fields required to make a request.
 --
@@ -212,15 +213,11 @@ data CreateGroupVersionResponse =
 createGroupVersionResponse
     :: Int -- ^ 'cgvrsResponseStatus'
     -> CreateGroupVersionResponse
-createGroupVersionResponse pResponseStatus_ =
-  CreateGroupVersionResponse'
-    { _cgvrsARN = Nothing
-    , _cgvrsCreationTimestamp = Nothing
-    , _cgvrsVersion = Nothing
-    , _cgvrsId = Nothing
-    , _cgvrsResponseStatus = pResponseStatus_
-    }
-
+createGroupVersionResponse pResponseStatus_
+  = CreateGroupVersionResponse'{_cgvrsARN = Nothing,
+                                _cgvrsCreationTimestamp = Nothing,
+                                _cgvrsVersion = Nothing, _cgvrsId = Nothing,
+                                _cgvrsResponseStatus = pResponseStatus_}
 
 -- | The ARN of the version.
 cgvrsARN :: Lens' CreateGroupVersionResponse (Maybe Text)

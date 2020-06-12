@@ -42,16 +42,12 @@ import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 import Network.AWS.WorkSpaces.Types
-import Network.AWS.WorkSpaces.Types.Product
 
 -- | /See:/ 'associateIPGroups' smart constructor.
-data AssociateIPGroups =
-  AssociateIPGroups'
-    { _aigDirectoryId :: !Text
-    , _aigGroupIds    :: ![Text]
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data AssociateIPGroups = AssociateIPGroups'{_aigDirectoryId
+                                            :: !Text,
+                                            _aigGroupIds :: ![Text]}
+                           deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'AssociateIPGroups' with the minimum fields required to make a request.
 --
@@ -63,9 +59,9 @@ data AssociateIPGroups =
 associateIPGroups
     :: Text -- ^ 'aigDirectoryId'
     -> AssociateIPGroups
-associateIPGroups pDirectoryId_ =
-  AssociateIPGroups' {_aigDirectoryId = pDirectoryId_, _aigGroupIds = mempty}
-
+associateIPGroups pDirectoryId_
+  = AssociateIPGroups'{_aigDirectoryId = pDirectoryId_,
+                       _aigGroupIds = mempty}
 
 -- | The ID of the directory.
 aigDirectoryId :: Lens' AssociateIPGroups Text
@@ -111,12 +107,10 @@ instance ToQuery AssociateIPGroups where
         toQuery = const mempty
 
 -- | /See:/ 'associateIPGroupsResponse' smart constructor.
-newtype AssociateIPGroupsResponse =
-  AssociateIPGroupsResponse'
-    { _aigrsResponseStatus :: Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+newtype AssociateIPGroupsResponse = AssociateIPGroupsResponse'{_aigrsResponseStatus
+                                                               :: Int}
+                                      deriving (Eq, Read, Show, Data, Typeable,
+                                                Generic)
 
 -- | Creates a value of 'AssociateIPGroupsResponse' with the minimum fields required to make a request.
 --
@@ -126,9 +120,9 @@ newtype AssociateIPGroupsResponse =
 associateIPGroupsResponse
     :: Int -- ^ 'aigrsResponseStatus'
     -> AssociateIPGroupsResponse
-associateIPGroupsResponse pResponseStatus_ =
-  AssociateIPGroupsResponse' {_aigrsResponseStatus = pResponseStatus_}
-
+associateIPGroupsResponse pResponseStatus_
+  = AssociateIPGroupsResponse'{_aigrsResponseStatus =
+                                 pResponseStatus_}
 
 -- | -- | The response status code.
 aigrsResponseStatus :: Lens' AssociateIPGroupsResponse Int

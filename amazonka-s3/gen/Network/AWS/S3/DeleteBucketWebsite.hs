@@ -37,15 +37,12 @@ import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 import Network.AWS.S3.Types
-import Network.AWS.S3.Types.Product
 
 -- | /See:/ 'deleteBucketWebsite' smart constructor.
-newtype DeleteBucketWebsite =
-  DeleteBucketWebsite'
-    { _dbwBucket :: BucketName
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+newtype DeleteBucketWebsite = DeleteBucketWebsite'{_dbwBucket
+                                                   :: BucketName}
+                                deriving (Eq, Read, Show, Data, Typeable,
+                                          Generic)
 
 -- | Creates a value of 'DeleteBucketWebsite' with the minimum fields required to make a request.
 --
@@ -55,8 +52,8 @@ newtype DeleteBucketWebsite =
 deleteBucketWebsite
     :: BucketName -- ^ 'dbwBucket'
     -> DeleteBucketWebsite
-deleteBucketWebsite pBucket_ = DeleteBucketWebsite' {_dbwBucket = pBucket_}
-
+deleteBucketWebsite pBucket_
+  = DeleteBucketWebsite'{_dbwBucket = pBucket_}
 
 -- | Undocumented member.
 dbwBucket :: Lens' DeleteBucketWebsite BucketName
@@ -83,16 +80,15 @@ instance ToQuery DeleteBucketWebsite where
         toQuery = const (mconcat ["website"])
 
 -- | /See:/ 'deleteBucketWebsiteResponse' smart constructor.
-data DeleteBucketWebsiteResponse =
-  DeleteBucketWebsiteResponse'
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data DeleteBucketWebsiteResponse = DeleteBucketWebsiteResponse'
+                                     deriving (Eq, Read, Show, Data, Typeable,
+                                               Generic)
 
 -- | Creates a value of 'DeleteBucketWebsiteResponse' with the minimum fields required to make a request.
 --
 deleteBucketWebsiteResponse
     :: DeleteBucketWebsiteResponse
-deleteBucketWebsiteResponse = DeleteBucketWebsiteResponse'
-
+deleteBucketWebsiteResponse
+  = DeleteBucketWebsiteResponse'
 
 instance NFData DeleteBucketWebsiteResponse where

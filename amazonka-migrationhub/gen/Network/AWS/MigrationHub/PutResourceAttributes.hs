@@ -47,21 +47,21 @@ module Network.AWS.MigrationHub.PutResourceAttributes
 
 import Network.AWS.Lens
 import Network.AWS.MigrationHub.Types
-import Network.AWS.MigrationHub.Types.Product
 import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 
 -- | /See:/ 'putResourceAttributes' smart constructor.
-data PutResourceAttributes =
-  PutResourceAttributes'
-    { _praDryRun                :: !(Maybe Bool)
-    , _praProgressUpdateStream  :: !Text
-    , _praMigrationTaskName     :: !Text
-    , _praResourceAttributeList :: !(List1 ResourceAttribute)
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data PutResourceAttributes = PutResourceAttributes'{_praDryRun
+                                                    :: !(Maybe Bool),
+                                                    _praProgressUpdateStream ::
+                                                    !Text,
+                                                    _praMigrationTaskName ::
+                                                    !Text,
+                                                    _praResourceAttributeList ::
+                                                    !(List1 ResourceAttribute)}
+                               deriving (Eq, Read, Show, Data, Typeable,
+                                         Generic)
 
 -- | Creates a value of 'PutResourceAttributes' with the minimum fields required to make a request.
 --
@@ -69,7 +69,7 @@ data PutResourceAttributes =
 --
 -- * 'praDryRun' - Optional boolean flag to indicate whether any effect should take place. Used to test if the caller has permission to make the call.
 --
--- * 'praProgressUpdateStream' - The name of the ProgressUpdateStream.
+-- * 'praProgressUpdateStream' - The name of the ProgressUpdateStream. 
 --
 -- * 'praMigrationTaskName' - Unique identifier that references the migration task.
 --
@@ -79,20 +79,19 @@ putResourceAttributes
     -> Text -- ^ 'praMigrationTaskName'
     -> NonEmpty ResourceAttribute -- ^ 'praResourceAttributeList'
     -> PutResourceAttributes
-putResourceAttributes pProgressUpdateStream_ pMigrationTaskName_ pResourceAttributeList_ =
-  PutResourceAttributes'
-    { _praDryRun = Nothing
-    , _praProgressUpdateStream = pProgressUpdateStream_
-    , _praMigrationTaskName = pMigrationTaskName_
-    , _praResourceAttributeList = _List1 # pResourceAttributeList_
-    }
-
+putResourceAttributes pProgressUpdateStream_
+  pMigrationTaskName_ pResourceAttributeList_
+  = PutResourceAttributes'{_praDryRun = Nothing,
+                           _praProgressUpdateStream = pProgressUpdateStream_,
+                           _praMigrationTaskName = pMigrationTaskName_,
+                           _praResourceAttributeList =
+                             _List1 # pResourceAttributeList_}
 
 -- | Optional boolean flag to indicate whether any effect should take place. Used to test if the caller has permission to make the call.
 praDryRun :: Lens' PutResourceAttributes (Maybe Bool)
 praDryRun = lens _praDryRun (\ s a -> s{_praDryRun = a})
 
--- | The name of the ProgressUpdateStream.
+-- | The name of the ProgressUpdateStream. 
 praProgressUpdateStream :: Lens' PutResourceAttributes Text
 praProgressUpdateStream = lens _praProgressUpdateStream (\ s a -> s{_praProgressUpdateStream = a})
 
@@ -147,12 +146,10 @@ instance ToQuery PutResourceAttributes where
         toQuery = const mempty
 
 -- | /See:/ 'putResourceAttributesResponse' smart constructor.
-newtype PutResourceAttributesResponse =
-  PutResourceAttributesResponse'
-    { _prarsResponseStatus :: Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+newtype PutResourceAttributesResponse = PutResourceAttributesResponse'{_prarsResponseStatus
+                                                                       :: Int}
+                                          deriving (Eq, Read, Show, Data,
+                                                    Typeable, Generic)
 
 -- | Creates a value of 'PutResourceAttributesResponse' with the minimum fields required to make a request.
 --
@@ -162,9 +159,9 @@ newtype PutResourceAttributesResponse =
 putResourceAttributesResponse
     :: Int -- ^ 'prarsResponseStatus'
     -> PutResourceAttributesResponse
-putResourceAttributesResponse pResponseStatus_ =
-  PutResourceAttributesResponse' {_prarsResponseStatus = pResponseStatus_}
-
+putResourceAttributesResponse pResponseStatus_
+  = PutResourceAttributesResponse'{_prarsResponseStatus
+                                     = pResponseStatus_}
 
 -- | -- | The response status code.
 prarsResponseStatus :: Lens' PutResourceAttributesResponse Int

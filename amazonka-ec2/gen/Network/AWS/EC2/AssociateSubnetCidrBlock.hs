@@ -40,20 +40,18 @@ module Network.AWS.EC2.AssociateSubnetCidrBlock
     ) where
 
 import Network.AWS.EC2.Types
-import Network.AWS.EC2.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 
 -- | /See:/ 'associateSubnetCidrBlock' smart constructor.
-data AssociateSubnetCidrBlock =
-  AssociateSubnetCidrBlock'
-    { _ascbIPv6CidrBlock :: !Text
-    , _ascbSubnetId      :: !Text
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data AssociateSubnetCidrBlock = AssociateSubnetCidrBlock'{_ascbIPv6CidrBlock
+                                                          :: !Text,
+                                                          _ascbSubnetId ::
+                                                          !Text}
+                                  deriving (Eq, Read, Show, Data, Typeable,
+                                            Generic)
 
 -- | Creates a value of 'AssociateSubnetCidrBlock' with the minimum fields required to make a request.
 --
@@ -66,10 +64,10 @@ associateSubnetCidrBlock
     :: Text -- ^ 'ascbIPv6CidrBlock'
     -> Text -- ^ 'ascbSubnetId'
     -> AssociateSubnetCidrBlock
-associateSubnetCidrBlock pIPv6CidrBlock_ pSubnetId_ =
-  AssociateSubnetCidrBlock'
-    {_ascbIPv6CidrBlock = pIPv6CidrBlock_, _ascbSubnetId = pSubnetId_}
-
+associateSubnetCidrBlock pIPv6CidrBlock_ pSubnetId_
+  = AssociateSubnetCidrBlock'{_ascbIPv6CidrBlock =
+                                pIPv6CidrBlock_,
+                              _ascbSubnetId = pSubnetId_}
 
 -- | The IPv6 CIDR block for your subnet. The subnet must have a /64 prefix length.
 ascbIPv6CidrBlock :: Lens' AssociateSubnetCidrBlock Text
@@ -111,14 +109,19 @@ instance ToQuery AssociateSubnetCidrBlock where
                "SubnetId" =: _ascbSubnetId]
 
 -- | /See:/ 'associateSubnetCidrBlockResponse' smart constructor.
-data AssociateSubnetCidrBlockResponse =
-  AssociateSubnetCidrBlockResponse'
-    { _ascbrsSubnetId                 :: !(Maybe Text)
-    , _ascbrsIPv6CidrBlockAssociation :: !(Maybe SubnetIPv6CidrBlockAssociation)
-    , _ascbrsResponseStatus           :: !Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data AssociateSubnetCidrBlockResponse = AssociateSubnetCidrBlockResponse'{_ascbrsSubnetId
+                                                                          ::
+                                                                          !(Maybe
+                                                                              Text),
+                                                                          _ascbrsIPv6CidrBlockAssociation
+                                                                          ::
+                                                                          !(Maybe
+                                                                              SubnetIPv6CidrBlockAssociation),
+                                                                          _ascbrsResponseStatus
+                                                                          ::
+                                                                          !Int}
+                                          deriving (Eq, Read, Show, Data,
+                                                    Typeable, Generic)
 
 -- | Creates a value of 'AssociateSubnetCidrBlockResponse' with the minimum fields required to make a request.
 --
@@ -132,13 +135,11 @@ data AssociateSubnetCidrBlockResponse =
 associateSubnetCidrBlockResponse
     :: Int -- ^ 'ascbrsResponseStatus'
     -> AssociateSubnetCidrBlockResponse
-associateSubnetCidrBlockResponse pResponseStatus_ =
-  AssociateSubnetCidrBlockResponse'
-    { _ascbrsSubnetId = Nothing
-    , _ascbrsIPv6CidrBlockAssociation = Nothing
-    , _ascbrsResponseStatus = pResponseStatus_
-    }
-
+associateSubnetCidrBlockResponse pResponseStatus_
+  = AssociateSubnetCidrBlockResponse'{_ascbrsSubnetId =
+                                        Nothing,
+                                      _ascbrsIPv6CidrBlockAssociation = Nothing,
+                                      _ascbrsResponseStatus = pResponseStatus_}
 
 -- | The ID of the subnet.
 ascbrsSubnetId :: Lens' AssociateSubnetCidrBlockResponse (Maybe Text)

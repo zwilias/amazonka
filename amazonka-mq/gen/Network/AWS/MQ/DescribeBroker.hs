@@ -52,18 +52,14 @@ module Network.AWS.MQ.DescribeBroker
 
 import Network.AWS.Lens
 import Network.AWS.MQ.Types
-import Network.AWS.MQ.Types.Product
 import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 
 -- | /See:/ 'describeBroker' smart constructor.
-newtype DescribeBroker =
-  DescribeBroker'
-    { _desBrokerId :: Text
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+newtype DescribeBroker = DescribeBroker'{_desBrokerId
+                                         :: Text}
+                           deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'DescribeBroker' with the minimum fields required to make a request.
 --
@@ -73,8 +69,8 @@ newtype DescribeBroker =
 describeBroker
     :: Text -- ^ 'desBrokerId'
     -> DescribeBroker
-describeBroker pBrokerId_ = DescribeBroker' {_desBrokerId = pBrokerId_}
-
+describeBroker pBrokerId_
+  = DescribeBroker'{_desBrokerId = pBrokerId_}
 
 -- | The name of the broker. This value must be unique in your AWS account, 1-50 characters long, must contain only letters, numbers, dashes, and underscores, and must not contain whitespaces, brackets, wildcard characters, or special characters.
 desBrokerId :: Lens' DescribeBroker Text
@@ -123,28 +119,43 @@ instance ToQuery DescribeBroker where
         toQuery = const mempty
 
 -- | /See:/ 'describeBrokerResponse' smart constructor.
-data DescribeBrokerResponse =
-  DescribeBrokerResponse'
-    { _dbrsBrokerName                 :: !(Maybe Text)
-    , _dbrsEngineVersion              :: !(Maybe Text)
-    , _dbrsBrokerState                :: !(Maybe BrokerState)
-    , _dbrsPubliclyAccessible         :: !(Maybe Bool)
-    , _dbrsAutoMinorVersionUpgrade    :: !(Maybe Bool)
-    , _dbrsSecurityGroups             :: !(Maybe [Text])
-    , _dbrsUsers                      :: !(Maybe [UserSummary])
-    , _dbrsSubnetIds                  :: !(Maybe [Text])
-    , _dbrsConfigurations             :: !(Maybe Configurations)
-    , _dbrsMaintenanceWindowStartTime :: !(Maybe WeeklyStartTime)
-    , _dbrsDeploymentMode             :: !(Maybe DeploymentMode)
-    , _dbrsBrokerId                   :: !(Maybe Text)
-    , _dbrsEngineType                 :: !(Maybe EngineType)
-    , _dbrsBrokerARN                  :: !(Maybe Text)
-    , _dbrsBrokerInstances            :: !(Maybe [BrokerInstance])
-    , _dbrsHostInstanceType           :: !(Maybe Text)
-    , _dbrsResponseStatus             :: !Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data DescribeBrokerResponse = DescribeBrokerResponse'{_dbrsBrokerName
+                                                      :: !(Maybe Text),
+                                                      _dbrsEngineVersion ::
+                                                      !(Maybe Text),
+                                                      _dbrsBrokerState ::
+                                                      !(Maybe BrokerState),
+                                                      _dbrsPubliclyAccessible ::
+                                                      !(Maybe Bool),
+                                                      _dbrsAutoMinorVersionUpgrade
+                                                      :: !(Maybe Bool),
+                                                      _dbrsSecurityGroups ::
+                                                      !(Maybe [Text]),
+                                                      _dbrsUsers ::
+                                                      !(Maybe [UserSummary]),
+                                                      _dbrsSubnetIds ::
+                                                      !(Maybe [Text]),
+                                                      _dbrsConfigurations ::
+                                                      !(Maybe Configurations),
+                                                      _dbrsMaintenanceWindowStartTime
+                                                      ::
+                                                      !(Maybe WeeklyStartTime),
+                                                      _dbrsDeploymentMode ::
+                                                      !(Maybe DeploymentMode),
+                                                      _dbrsBrokerId ::
+                                                      !(Maybe Text),
+                                                      _dbrsEngineType ::
+                                                      !(Maybe EngineType),
+                                                      _dbrsBrokerARN ::
+                                                      !(Maybe Text),
+                                                      _dbrsBrokerInstances ::
+                                                      !(Maybe [BrokerInstance]),
+                                                      _dbrsHostInstanceType ::
+                                                      !(Maybe Text),
+                                                      _dbrsResponseStatus ::
+                                                      !Int}
+                                deriving (Eq, Read, Show, Data, Typeable,
+                                          Generic)
 
 -- | Creates a value of 'DescribeBrokerResponse' with the minimum fields required to make a request.
 --
@@ -186,27 +197,22 @@ data DescribeBrokerResponse =
 describeBrokerResponse
     :: Int -- ^ 'dbrsResponseStatus'
     -> DescribeBrokerResponse
-describeBrokerResponse pResponseStatus_ =
-  DescribeBrokerResponse'
-    { _dbrsBrokerName = Nothing
-    , _dbrsEngineVersion = Nothing
-    , _dbrsBrokerState = Nothing
-    , _dbrsPubliclyAccessible = Nothing
-    , _dbrsAutoMinorVersionUpgrade = Nothing
-    , _dbrsSecurityGroups = Nothing
-    , _dbrsUsers = Nothing
-    , _dbrsSubnetIds = Nothing
-    , _dbrsConfigurations = Nothing
-    , _dbrsMaintenanceWindowStartTime = Nothing
-    , _dbrsDeploymentMode = Nothing
-    , _dbrsBrokerId = Nothing
-    , _dbrsEngineType = Nothing
-    , _dbrsBrokerARN = Nothing
-    , _dbrsBrokerInstances = Nothing
-    , _dbrsHostInstanceType = Nothing
-    , _dbrsResponseStatus = pResponseStatus_
-    }
-
+describeBrokerResponse pResponseStatus_
+  = DescribeBrokerResponse'{_dbrsBrokerName = Nothing,
+                            _dbrsEngineVersion = Nothing,
+                            _dbrsBrokerState = Nothing,
+                            _dbrsPubliclyAccessible = Nothing,
+                            _dbrsAutoMinorVersionUpgrade = Nothing,
+                            _dbrsSecurityGroups = Nothing, _dbrsUsers = Nothing,
+                            _dbrsSubnetIds = Nothing,
+                            _dbrsConfigurations = Nothing,
+                            _dbrsMaintenanceWindowStartTime = Nothing,
+                            _dbrsDeploymentMode = Nothing,
+                            _dbrsBrokerId = Nothing, _dbrsEngineType = Nothing,
+                            _dbrsBrokerARN = Nothing,
+                            _dbrsBrokerInstances = Nothing,
+                            _dbrsHostInstanceType = Nothing,
+                            _dbrsResponseStatus = pResponseStatus_}
 
 -- | The name of the broker. This value must be unique in your AWS account, 1-50 characters long, must contain only letters, numbers, dashes, and underscores, and must not contain whitespaces, brackets, wildcard characters, or special characters.
 dbrsBrokerName :: Lens' DescribeBrokerResponse (Maybe Text)

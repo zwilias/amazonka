@@ -38,19 +38,16 @@ module Network.AWS.Inspector.CreateResourceGroup
     ) where
 
 import Network.AWS.Inspector.Types
-import Network.AWS.Inspector.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 
 -- | /See:/ 'createResourceGroup' smart constructor.
-newtype CreateResourceGroup =
-  CreateResourceGroup'
-    { _crgResourceGroupTags :: List1 ResourceGroupTag
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+newtype CreateResourceGroup = CreateResourceGroup'{_crgResourceGroupTags
+                                                   :: List1 ResourceGroupTag}
+                                deriving (Eq, Read, Show, Data, Typeable,
+                                          Generic)
 
 -- | Creates a value of 'CreateResourceGroup' with the minimum fields required to make a request.
 --
@@ -60,9 +57,9 @@ newtype CreateResourceGroup =
 createResourceGroup
     :: NonEmpty ResourceGroupTag -- ^ 'crgResourceGroupTags'
     -> CreateResourceGroup
-createResourceGroup pResourceGroupTags_ =
-  CreateResourceGroup' {_crgResourceGroupTags = _List1 # pResourceGroupTags_}
-
+createResourceGroup pResourceGroupTags_
+  = CreateResourceGroup'{_crgResourceGroupTags =
+                           _List1 # pResourceGroupTags_}
 
 -- | A collection of keys and an array of possible values, '[{"key":"key1","values":["Value1","Value2"]},{"key":"Key2","values":["Value3"]}]'. For example,'[{"key":"Name","values":["TestEC2Instance"]}]'.
 crgResourceGroupTags :: Lens' CreateResourceGroup (NonEmpty ResourceGroupTag)
@@ -106,13 +103,12 @@ instance ToQuery CreateResourceGroup where
         toQuery = const mempty
 
 -- | /See:/ 'createResourceGroupResponse' smart constructor.
-data CreateResourceGroupResponse =
-  CreateResourceGroupResponse'
-    { _crgrsResponseStatus   :: !Int
-    , _crgrsResourceGroupARN :: !Text
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data CreateResourceGroupResponse = CreateResourceGroupResponse'{_crgrsResponseStatus
+                                                                :: !Int,
+                                                                _crgrsResourceGroupARN
+                                                                :: !Text}
+                                     deriving (Eq, Read, Show, Data, Typeable,
+                                               Generic)
 
 -- | Creates a value of 'CreateResourceGroupResponse' with the minimum fields required to make a request.
 --
@@ -125,12 +121,11 @@ createResourceGroupResponse
     :: Int -- ^ 'crgrsResponseStatus'
     -> Text -- ^ 'crgrsResourceGroupARN'
     -> CreateResourceGroupResponse
-createResourceGroupResponse pResponseStatus_ pResourceGroupARN_ =
-  CreateResourceGroupResponse'
-    { _crgrsResponseStatus = pResponseStatus_
-    , _crgrsResourceGroupARN = pResourceGroupARN_
-    }
-
+createResourceGroupResponse pResponseStatus_
+  pResourceGroupARN_
+  = CreateResourceGroupResponse'{_crgrsResponseStatus =
+                                   pResponseStatus_,
+                                 _crgrsResourceGroupARN = pResourceGroupARN_}
 
 -- | -- | The response status code.
 crgrsResponseStatus :: Lens' CreateResourceGroupResponse Int

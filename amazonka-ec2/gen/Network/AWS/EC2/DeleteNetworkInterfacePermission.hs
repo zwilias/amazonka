@@ -40,7 +40,6 @@ module Network.AWS.EC2.DeleteNetworkInterfacePermission
     ) where
 
 import Network.AWS.EC2.Types
-import Network.AWS.EC2.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.Request
@@ -51,14 +50,19 @@ import Network.AWS.Response
 --
 --
 -- /See:/ 'deleteNetworkInterfacePermission' smart constructor.
-data DeleteNetworkInterfacePermission =
-  DeleteNetworkInterfacePermission'
-    { _dnipForce                        :: !(Maybe Bool)
-    , _dnipDryRun                       :: !(Maybe Bool)
-    , _dnipNetworkInterfacePermissionId :: !Text
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data DeleteNetworkInterfacePermission = DeleteNetworkInterfacePermission'{_dnipForce
+                                                                          ::
+                                                                          !(Maybe
+                                                                              Bool),
+                                                                          _dnipDryRun
+                                                                          ::
+                                                                          !(Maybe
+                                                                              Bool),
+                                                                          _dnipNetworkInterfacePermissionId
+                                                                          ::
+                                                                          !Text}
+                                          deriving (Eq, Read, Show, Data,
+                                                    Typeable, Generic)
 
 -- | Creates a value of 'DeleteNetworkInterfacePermission' with the minimum fields required to make a request.
 --
@@ -72,13 +76,13 @@ data DeleteNetworkInterfacePermission =
 deleteNetworkInterfacePermission
     :: Text -- ^ 'dnipNetworkInterfacePermissionId'
     -> DeleteNetworkInterfacePermission
-deleteNetworkInterfacePermission pNetworkInterfacePermissionId_ =
-  DeleteNetworkInterfacePermission'
-    { _dnipForce = Nothing
-    , _dnipDryRun = Nothing
-    , _dnipNetworkInterfacePermissionId = pNetworkInterfacePermissionId_
-    }
-
+deleteNetworkInterfacePermission
+  pNetworkInterfacePermissionId_
+  = DeleteNetworkInterfacePermission'{_dnipForce =
+                                        Nothing,
+                                      _dnipDryRun = Nothing,
+                                      _dnipNetworkInterfacePermissionId =
+                                        pNetworkInterfacePermissionId_}
 
 -- | Specify @true@ to remove the permission even if the network interface is attached to an instance.
 dnipForce :: Lens' DeleteNetworkInterfacePermission (Maybe Bool)
@@ -133,13 +137,16 @@ instance ToQuery DeleteNetworkInterfacePermission
 --
 --
 -- /See:/ 'deleteNetworkInterfacePermissionResponse' smart constructor.
-data DeleteNetworkInterfacePermissionResponse =
-  DeleteNetworkInterfacePermissionResponse'
-    { _dniprsReturn         :: !(Maybe Bool)
-    , _dniprsResponseStatus :: !Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data DeleteNetworkInterfacePermissionResponse = DeleteNetworkInterfacePermissionResponse'{_dniprsReturn
+                                                                                          ::
+                                                                                          !(Maybe
+                                                                                              Bool),
+                                                                                          _dniprsResponseStatus
+                                                                                          ::
+                                                                                          !Int}
+                                                  deriving (Eq, Read, Show,
+                                                            Data, Typeable,
+                                                            Generic)
 
 -- | Creates a value of 'DeleteNetworkInterfacePermissionResponse' with the minimum fields required to make a request.
 --
@@ -151,10 +158,12 @@ data DeleteNetworkInterfacePermissionResponse =
 deleteNetworkInterfacePermissionResponse
     :: Int -- ^ 'dniprsResponseStatus'
     -> DeleteNetworkInterfacePermissionResponse
-deleteNetworkInterfacePermissionResponse pResponseStatus_ =
-  DeleteNetworkInterfacePermissionResponse'
-    {_dniprsReturn = Nothing, _dniprsResponseStatus = pResponseStatus_}
-
+deleteNetworkInterfacePermissionResponse
+  pResponseStatus_
+  = DeleteNetworkInterfacePermissionResponse'{_dniprsReturn
+                                                = Nothing,
+                                              _dniprsResponseStatus =
+                                                pResponseStatus_}
 
 -- | Returns @true@ if the request succeeds, otherwise returns an error.
 dniprsReturn :: Lens' DeleteNetworkInterfacePermissionResponse (Maybe Bool)

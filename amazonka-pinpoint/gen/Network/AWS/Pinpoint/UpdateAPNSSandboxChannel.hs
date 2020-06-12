@@ -38,19 +38,18 @@ module Network.AWS.Pinpoint.UpdateAPNSSandboxChannel
 
 import Network.AWS.Lens
 import Network.AWS.Pinpoint.Types
-import Network.AWS.Pinpoint.Types.Product
 import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 
 -- | /See:/ 'updateAPNSSandboxChannel' smart constructor.
-data UpdateAPNSSandboxChannel =
-  UpdateAPNSSandboxChannel'
-    { _uascApplicationId             :: !Text
-    , _uascAPNSSandboxChannelRequest :: !APNSSandboxChannelRequest
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data UpdateAPNSSandboxChannel = UpdateAPNSSandboxChannel'{_uascApplicationId
+                                                          :: !Text,
+                                                          _uascAPNSSandboxChannelRequest
+                                                          ::
+                                                          !APNSSandboxChannelRequest}
+                                  deriving (Eq, Read, Show, Data, Typeable,
+                                            Generic)
 
 -- | Creates a value of 'UpdateAPNSSandboxChannel' with the minimum fields required to make a request.
 --
@@ -63,12 +62,12 @@ updateAPNSSandboxChannel
     :: Text -- ^ 'uascApplicationId'
     -> APNSSandboxChannelRequest -- ^ 'uascAPNSSandboxChannelRequest'
     -> UpdateAPNSSandboxChannel
-updateAPNSSandboxChannel pApplicationId_ pAPNSSandboxChannelRequest_ =
-  UpdateAPNSSandboxChannel'
-    { _uascApplicationId = pApplicationId_
-    , _uascAPNSSandboxChannelRequest = pAPNSSandboxChannelRequest_
-    }
-
+updateAPNSSandboxChannel pApplicationId_
+  pAPNSSandboxChannelRequest_
+  = UpdateAPNSSandboxChannel'{_uascApplicationId =
+                                pApplicationId_,
+                              _uascAPNSSandboxChannelRequest =
+                                pAPNSSandboxChannelRequest_}
 
 -- | Undocumented member.
 uascApplicationId :: Lens' UpdateAPNSSandboxChannel Text
@@ -117,13 +116,14 @@ instance ToQuery UpdateAPNSSandboxChannel where
         toQuery = const mempty
 
 -- | /See:/ 'updateAPNSSandboxChannelResponse' smart constructor.
-data UpdateAPNSSandboxChannelResponse =
-  UpdateAPNSSandboxChannelResponse'
-    { _uascrsResponseStatus             :: !Int
-    , _uascrsAPNSSandboxChannelResponse :: !APNSSandboxChannelResponse
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data UpdateAPNSSandboxChannelResponse = UpdateAPNSSandboxChannelResponse'{_uascrsResponseStatus
+                                                                          ::
+                                                                          !Int,
+                                                                          _uascrsAPNSSandboxChannelResponse
+                                                                          ::
+                                                                          !APNSSandboxChannelResponse}
+                                          deriving (Eq, Read, Show, Data,
+                                                    Typeable, Generic)
 
 -- | Creates a value of 'UpdateAPNSSandboxChannelResponse' with the minimum fields required to make a request.
 --
@@ -136,12 +136,12 @@ updateAPNSSandboxChannelResponse
     :: Int -- ^ 'uascrsResponseStatus'
     -> APNSSandboxChannelResponse -- ^ 'uascrsAPNSSandboxChannelResponse'
     -> UpdateAPNSSandboxChannelResponse
-updateAPNSSandboxChannelResponse pResponseStatus_ pAPNSSandboxChannelResponse_ =
-  UpdateAPNSSandboxChannelResponse'
-    { _uascrsResponseStatus = pResponseStatus_
-    , _uascrsAPNSSandboxChannelResponse = pAPNSSandboxChannelResponse_
-    }
-
+updateAPNSSandboxChannelResponse pResponseStatus_
+  pAPNSSandboxChannelResponse_
+  = UpdateAPNSSandboxChannelResponse'{_uascrsResponseStatus
+                                        = pResponseStatus_,
+                                      _uascrsAPNSSandboxChannelResponse =
+                                        pAPNSSandboxChannelResponse_}
 
 -- | -- | The response status code.
 uascrsResponseStatus :: Lens' UpdateAPNSSandboxChannelResponse Int

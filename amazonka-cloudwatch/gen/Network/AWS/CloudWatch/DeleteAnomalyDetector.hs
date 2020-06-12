@@ -40,22 +40,19 @@ module Network.AWS.CloudWatch.DeleteAnomalyDetector
     ) where
 
 import Network.AWS.CloudWatch.Types
-import Network.AWS.CloudWatch.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 
 -- | /See:/ 'deleteAnomalyDetector' smart constructor.
-data DeleteAnomalyDetector =
-  DeleteAnomalyDetector'
-    { _dadDimensions :: !(Maybe [Dimension])
-    , _dadNamespace  :: !Text
-    , _dadMetricName :: !Text
-    , _dadStat       :: !Text
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data DeleteAnomalyDetector = DeleteAnomalyDetector'{_dadDimensions
+                                                    :: !(Maybe [Dimension]),
+                                                    _dadNamespace :: !Text,
+                                                    _dadMetricName :: !Text,
+                                                    _dadStat :: !Text}
+                               deriving (Eq, Read, Show, Data, Typeable,
+                                         Generic)
 
 -- | Creates a value of 'DeleteAnomalyDetector' with the minimum fields required to make a request.
 --
@@ -73,14 +70,10 @@ deleteAnomalyDetector
     -> Text -- ^ 'dadMetricName'
     -> Text -- ^ 'dadStat'
     -> DeleteAnomalyDetector
-deleteAnomalyDetector pNamespace_ pMetricName_ pStat_ =
-  DeleteAnomalyDetector'
-    { _dadDimensions = Nothing
-    , _dadNamespace = pNamespace_
-    , _dadMetricName = pMetricName_
-    , _dadStat = pStat_
-    }
-
+deleteAnomalyDetector pNamespace_ pMetricName_ pStat_
+  = DeleteAnomalyDetector'{_dadDimensions = Nothing,
+                           _dadNamespace = pNamespace_,
+                           _dadMetricName = pMetricName_, _dadStat = pStat_}
 
 -- | The metric dimensions associated with the anomaly detection model to delete.
 dadDimensions :: Lens' DeleteAnomalyDetector [Dimension]
@@ -129,12 +122,10 @@ instance ToQuery DeleteAnomalyDetector where
                "MetricName" =: _dadMetricName, "Stat" =: _dadStat]
 
 -- | /See:/ 'deleteAnomalyDetectorResponse' smart constructor.
-newtype DeleteAnomalyDetectorResponse =
-  DeleteAnomalyDetectorResponse'
-    { _delrsResponseStatus :: Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+newtype DeleteAnomalyDetectorResponse = DeleteAnomalyDetectorResponse'{_delrsResponseStatus
+                                                                       :: Int}
+                                          deriving (Eq, Read, Show, Data,
+                                                    Typeable, Generic)
 
 -- | Creates a value of 'DeleteAnomalyDetectorResponse' with the minimum fields required to make a request.
 --
@@ -144,9 +135,9 @@ newtype DeleteAnomalyDetectorResponse =
 deleteAnomalyDetectorResponse
     :: Int -- ^ 'delrsResponseStatus'
     -> DeleteAnomalyDetectorResponse
-deleteAnomalyDetectorResponse pResponseStatus_ =
-  DeleteAnomalyDetectorResponse' {_delrsResponseStatus = pResponseStatus_}
-
+deleteAnomalyDetectorResponse pResponseStatus_
+  = DeleteAnomalyDetectorResponse'{_delrsResponseStatus
+                                     = pResponseStatus_}
 
 -- | -- | The response status code.
 delrsResponseStatus :: Lens' DeleteAnomalyDetectorResponse Int

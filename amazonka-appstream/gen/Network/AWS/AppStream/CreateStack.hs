@@ -18,7 +18,7 @@
 -- Stability   : auto-generated
 -- Portability : non-portable (GHC extensions)
 --
--- Creates a stack to start streaming applications to users. A stack consists of an associated fleet, user access policies, and storage configurations.
+-- Creates a stack to start streaming applications to users. A stack consists of an associated fleet, user access policies, and storage configurations. 
 --
 --
 module Network.AWS.AppStream.CreateStack
@@ -48,35 +48,34 @@ module Network.AWS.AppStream.CreateStack
     ) where
 
 import Network.AWS.AppStream.Types
-import Network.AWS.AppStream.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 
 -- | /See:/ 'createStack' smart constructor.
-data CreateStack =
-  CreateStack'
-    { _csUserSettings        :: !(Maybe (List1 UserSetting))
-    , _csApplicationSettings :: !(Maybe ApplicationSettings)
-    , _csFeedbackURL         :: !(Maybe Text)
-    , _csStorageConnectors   :: !(Maybe [StorageConnector])
-    , _csAccessEndpoints     :: !(Maybe (List1 AccessEndpoint))
-    , _csDisplayName         :: !(Maybe Text)
-    , _csEmbedHostDomains    :: !(Maybe (List1 Text))
-    , _csDescription         :: !(Maybe Text)
-    , _csTags                :: !(Maybe (Map Text Text))
-    , _csRedirectURL         :: !(Maybe Text)
-    , _csName                :: !Text
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data CreateStack = CreateStack'{_csUserSettings ::
+                                !(Maybe (List1 UserSetting)),
+                                _csApplicationSettings ::
+                                !(Maybe ApplicationSettings),
+                                _csFeedbackURL :: !(Maybe Text),
+                                _csStorageConnectors ::
+                                !(Maybe [StorageConnector]),
+                                _csAccessEndpoints ::
+                                !(Maybe (List1 AccessEndpoint)),
+                                _csDisplayName :: !(Maybe Text),
+                                _csEmbedHostDomains :: !(Maybe (List1 Text)),
+                                _csDescription :: !(Maybe Text),
+                                _csTags :: !(Maybe (Map Text Text)),
+                                _csRedirectURL :: !(Maybe Text),
+                                _csName :: !Text}
+                     deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'CreateStack' with the minimum fields required to make a request.
 --
 -- Use one of the following lenses to modify other fields as desired:
 --
--- * 'csUserSettings' - The actions that are enabled or disabled for users during their streaming sessions. By default, these actions are enabled.
+-- * 'csUserSettings' - The actions that are enabled or disabled for users during their streaming sessions. By default, these actions are enabled. 
 --
 -- * 'csApplicationSettings' - The persistent application settings for users of a stack. When these settings are enabled, changes that users make to applications and Windows settings are automatically saved after each session and applied to the next session.
 --
@@ -100,23 +99,18 @@ data CreateStack =
 createStack
     :: Text -- ^ 'csName'
     -> CreateStack
-createStack pName_ =
-  CreateStack'
-    { _csUserSettings = Nothing
-    , _csApplicationSettings = Nothing
-    , _csFeedbackURL = Nothing
-    , _csStorageConnectors = Nothing
-    , _csAccessEndpoints = Nothing
-    , _csDisplayName = Nothing
-    , _csEmbedHostDomains = Nothing
-    , _csDescription = Nothing
-    , _csTags = Nothing
-    , _csRedirectURL = Nothing
-    , _csName = pName_
-    }
+createStack pName_
+  = CreateStack'{_csUserSettings = Nothing,
+                 _csApplicationSettings = Nothing,
+                 _csFeedbackURL = Nothing,
+                 _csStorageConnectors = Nothing,
+                 _csAccessEndpoints = Nothing,
+                 _csDisplayName = Nothing,
+                 _csEmbedHostDomains = Nothing,
+                 _csDescription = Nothing, _csTags = Nothing,
+                 _csRedirectURL = Nothing, _csName = pName_}
 
-
--- | The actions that are enabled or disabled for users during their streaming sessions. By default, these actions are enabled.
+-- | The actions that are enabled or disabled for users during their streaming sessions. By default, these actions are enabled. 
 csUserSettings :: Lens' CreateStack (Maybe (NonEmpty UserSetting))
 csUserSettings = lens _csUserSettings (\ s a -> s{_csUserSettings = a}) . mapping _List1
 
@@ -207,13 +201,10 @@ instance ToQuery CreateStack where
         toQuery = const mempty
 
 -- | /See:/ 'createStackResponse' smart constructor.
-data CreateStackResponse =
-  CreateStackResponse'
-    { _csrsStack          :: !(Maybe Stack)
-    , _csrsResponseStatus :: !Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data CreateStackResponse = CreateStackResponse'{_csrsStack
+                                                :: !(Maybe Stack),
+                                                _csrsResponseStatus :: !Int}
+                             deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'CreateStackResponse' with the minimum fields required to make a request.
 --
@@ -225,10 +216,9 @@ data CreateStackResponse =
 createStackResponse
     :: Int -- ^ 'csrsResponseStatus'
     -> CreateStackResponse
-createStackResponse pResponseStatus_ =
-  CreateStackResponse'
-    {_csrsStack = Nothing, _csrsResponseStatus = pResponseStatus_}
-
+createStackResponse pResponseStatus_
+  = CreateStackResponse'{_csrsStack = Nothing,
+                         _csrsResponseStatus = pResponseStatus_}
 
 -- | Information about the stack.
 csrsStack :: Lens' CreateStackResponse (Maybe Stack)

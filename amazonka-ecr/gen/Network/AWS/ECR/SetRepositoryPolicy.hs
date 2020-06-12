@@ -43,22 +43,18 @@ module Network.AWS.ECR.SetRepositoryPolicy
     ) where
 
 import Network.AWS.ECR.Types
-import Network.AWS.ECR.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 
 -- | /See:/ 'setRepositoryPolicy' smart constructor.
-data SetRepositoryPolicy =
-  SetRepositoryPolicy'
-    { _srpForce          :: !(Maybe Bool)
-    , _srpRegistryId     :: !(Maybe Text)
-    , _srpRepositoryName :: !Text
-    , _srpPolicyText     :: !Text
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data SetRepositoryPolicy = SetRepositoryPolicy'{_srpForce
+                                                :: !(Maybe Bool),
+                                                _srpRegistryId :: !(Maybe Text),
+                                                _srpRepositoryName :: !Text,
+                                                _srpPolicyText :: !Text}
+                             deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'SetRepositoryPolicy' with the minimum fields required to make a request.
 --
@@ -75,14 +71,11 @@ setRepositoryPolicy
     :: Text -- ^ 'srpRepositoryName'
     -> Text -- ^ 'srpPolicyText'
     -> SetRepositoryPolicy
-setRepositoryPolicy pRepositoryName_ pPolicyText_ =
-  SetRepositoryPolicy'
-    { _srpForce = Nothing
-    , _srpRegistryId = Nothing
-    , _srpRepositoryName = pRepositoryName_
-    , _srpPolicyText = pPolicyText_
-    }
-
+setRepositoryPolicy pRepositoryName_ pPolicyText_
+  = SetRepositoryPolicy'{_srpForce = Nothing,
+                         _srpRegistryId = Nothing,
+                         _srpRepositoryName = pRepositoryName_,
+                         _srpPolicyText = pPolicyText_}
 
 -- | If the policy you are attempting to set on a repository policy would prevent you from setting another policy in the future, you must force the 'SetRepositoryPolicy' operation. This is intended to prevent accidental repository lock outs.
 srpForce :: Lens' SetRepositoryPolicy (Maybe Bool)
@@ -142,15 +135,19 @@ instance ToQuery SetRepositoryPolicy where
         toQuery = const mempty
 
 -- | /See:/ 'setRepositoryPolicyResponse' smart constructor.
-data SetRepositoryPolicyResponse =
-  SetRepositoryPolicyResponse'
-    { _srprsRegistryId     :: !(Maybe Text)
-    , _srprsRepositoryName :: !(Maybe Text)
-    , _srprsPolicyText     :: !(Maybe Text)
-    , _srprsResponseStatus :: !Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data SetRepositoryPolicyResponse = SetRepositoryPolicyResponse'{_srprsRegistryId
+                                                                ::
+                                                                !(Maybe Text),
+                                                                _srprsRepositoryName
+                                                                ::
+                                                                !(Maybe Text),
+                                                                _srprsPolicyText
+                                                                ::
+                                                                !(Maybe Text),
+                                                                _srprsResponseStatus
+                                                                :: !Int}
+                                     deriving (Eq, Read, Show, Data, Typeable,
+                                               Generic)
 
 -- | Creates a value of 'SetRepositoryPolicyResponse' with the minimum fields required to make a request.
 --
@@ -166,14 +163,12 @@ data SetRepositoryPolicyResponse =
 setRepositoryPolicyResponse
     :: Int -- ^ 'srprsResponseStatus'
     -> SetRepositoryPolicyResponse
-setRepositoryPolicyResponse pResponseStatus_ =
-  SetRepositoryPolicyResponse'
-    { _srprsRegistryId = Nothing
-    , _srprsRepositoryName = Nothing
-    , _srprsPolicyText = Nothing
-    , _srprsResponseStatus = pResponseStatus_
-    }
-
+setRepositoryPolicyResponse pResponseStatus_
+  = SetRepositoryPolicyResponse'{_srprsRegistryId =
+                                   Nothing,
+                                 _srprsRepositoryName = Nothing,
+                                 _srprsPolicyText = Nothing,
+                                 _srprsResponseStatus = pResponseStatus_}
 
 -- | The registry ID associated with the request.
 srprsRegistryId :: Lens' SetRepositoryPolicyResponse (Maybe Text)

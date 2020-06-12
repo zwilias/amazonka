@@ -38,19 +38,16 @@ module Network.AWS.Pinpoint.UpdateGCMChannel
 
 import Network.AWS.Lens
 import Network.AWS.Pinpoint.Types
-import Network.AWS.Pinpoint.Types.Product
 import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 
 -- | /See:/ 'updateGCMChannel' smart constructor.
-data UpdateGCMChannel =
-  UpdateGCMChannel'
-    { _ugcApplicationId     :: !Text
-    , _ugcGCMChannelRequest :: !GCMChannelRequest
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data UpdateGCMChannel = UpdateGCMChannel'{_ugcApplicationId
+                                          :: !Text,
+                                          _ugcGCMChannelRequest ::
+                                          !GCMChannelRequest}
+                          deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'UpdateGCMChannel' with the minimum fields required to make a request.
 --
@@ -63,12 +60,10 @@ updateGCMChannel
     :: Text -- ^ 'ugcApplicationId'
     -> GCMChannelRequest -- ^ 'ugcGCMChannelRequest'
     -> UpdateGCMChannel
-updateGCMChannel pApplicationId_ pGCMChannelRequest_ =
-  UpdateGCMChannel'
-    { _ugcApplicationId = pApplicationId_
-    , _ugcGCMChannelRequest = pGCMChannelRequest_
-    }
-
+updateGCMChannel pApplicationId_ pGCMChannelRequest_
+  = UpdateGCMChannel'{_ugcApplicationId =
+                        pApplicationId_,
+                      _ugcGCMChannelRequest = pGCMChannelRequest_}
 
 -- | Undocumented member.
 ugcApplicationId :: Lens' UpdateGCMChannel Text
@@ -115,13 +110,13 @@ instance ToQuery UpdateGCMChannel where
         toQuery = const mempty
 
 -- | /See:/ 'updateGCMChannelResponse' smart constructor.
-data UpdateGCMChannelResponse =
-  UpdateGCMChannelResponse'
-    { _ugcrsResponseStatus     :: !Int
-    , _ugcrsGCMChannelResponse :: !GCMChannelResponse
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data UpdateGCMChannelResponse = UpdateGCMChannelResponse'{_ugcrsResponseStatus
+                                                          :: !Int,
+                                                          _ugcrsGCMChannelResponse
+                                                          ::
+                                                          !GCMChannelResponse}
+                                  deriving (Eq, Read, Show, Data, Typeable,
+                                            Generic)
 
 -- | Creates a value of 'UpdateGCMChannelResponse' with the minimum fields required to make a request.
 --
@@ -134,12 +129,11 @@ updateGCMChannelResponse
     :: Int -- ^ 'ugcrsResponseStatus'
     -> GCMChannelResponse -- ^ 'ugcrsGCMChannelResponse'
     -> UpdateGCMChannelResponse
-updateGCMChannelResponse pResponseStatus_ pGCMChannelResponse_ =
-  UpdateGCMChannelResponse'
-    { _ugcrsResponseStatus = pResponseStatus_
-    , _ugcrsGCMChannelResponse = pGCMChannelResponse_
-    }
-
+updateGCMChannelResponse pResponseStatus_
+  pGCMChannelResponse_
+  = UpdateGCMChannelResponse'{_ugcrsResponseStatus =
+                                pResponseStatus_,
+                              _ugcrsGCMChannelResponse = pGCMChannelResponse_}
 
 -- | -- | The response status code.
 ugcrsResponseStatus :: Lens' UpdateGCMChannelResponse Int

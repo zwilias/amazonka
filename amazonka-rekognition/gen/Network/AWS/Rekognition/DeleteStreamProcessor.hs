@@ -39,17 +39,14 @@ module Network.AWS.Rekognition.DeleteStreamProcessor
 import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.Rekognition.Types
-import Network.AWS.Rekognition.Types.Product
 import Network.AWS.Request
 import Network.AWS.Response
 
 -- | /See:/ 'deleteStreamProcessor' smart constructor.
-newtype DeleteStreamProcessor =
-  DeleteStreamProcessor'
-    { _dName :: Text
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+newtype DeleteStreamProcessor = DeleteStreamProcessor'{_dName
+                                                       :: Text}
+                                  deriving (Eq, Read, Show, Data, Typeable,
+                                            Generic)
 
 -- | Creates a value of 'DeleteStreamProcessor' with the minimum fields required to make a request.
 --
@@ -59,8 +56,8 @@ newtype DeleteStreamProcessor =
 deleteStreamProcessor
     :: Text -- ^ 'dName'
     -> DeleteStreamProcessor
-deleteStreamProcessor pName_ = DeleteStreamProcessor' {_dName = pName_}
-
+deleteStreamProcessor pName_
+  = DeleteStreamProcessor'{_dName = pName_}
 
 -- | The name of the stream processor you want to delete.
 dName :: Lens' DeleteStreamProcessor Text
@@ -101,12 +98,10 @@ instance ToQuery DeleteStreamProcessor where
         toQuery = const mempty
 
 -- | /See:/ 'deleteStreamProcessorResponse' smart constructor.
-newtype DeleteStreamProcessorResponse =
-  DeleteStreamProcessorResponse'
-    { _drsResponseStatus :: Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+newtype DeleteStreamProcessorResponse = DeleteStreamProcessorResponse'{_drsResponseStatus
+                                                                       :: Int}
+                                          deriving (Eq, Read, Show, Data,
+                                                    Typeable, Generic)
 
 -- | Creates a value of 'DeleteStreamProcessorResponse' with the minimum fields required to make a request.
 --
@@ -116,9 +111,9 @@ newtype DeleteStreamProcessorResponse =
 deleteStreamProcessorResponse
     :: Int -- ^ 'drsResponseStatus'
     -> DeleteStreamProcessorResponse
-deleteStreamProcessorResponse pResponseStatus_ =
-  DeleteStreamProcessorResponse' {_drsResponseStatus = pResponseStatus_}
-
+deleteStreamProcessorResponse pResponseStatus_
+  = DeleteStreamProcessorResponse'{_drsResponseStatus =
+                                     pResponseStatus_}
 
 -- | -- | The response status code.
 drsResponseStatus :: Lens' DeleteStreamProcessorResponse Int

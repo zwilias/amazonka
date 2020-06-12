@@ -39,18 +39,15 @@ module Network.AWS.Lightsail.DeleteLoadBalancer
 
 import Network.AWS.Lens
 import Network.AWS.Lightsail.Types
-import Network.AWS.Lightsail.Types.Product
 import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 
 -- | /See:/ 'deleteLoadBalancer' smart constructor.
-newtype DeleteLoadBalancer =
-  DeleteLoadBalancer'
-    { _dlbLoadBalancerName :: Text
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+newtype DeleteLoadBalancer = DeleteLoadBalancer'{_dlbLoadBalancerName
+                                                 :: Text}
+                               deriving (Eq, Read, Show, Data, Typeable,
+                                         Generic)
 
 -- | Creates a value of 'DeleteLoadBalancer' with the minimum fields required to make a request.
 --
@@ -60,9 +57,9 @@ newtype DeleteLoadBalancer =
 deleteLoadBalancer
     :: Text -- ^ 'dlbLoadBalancerName'
     -> DeleteLoadBalancer
-deleteLoadBalancer pLoadBalancerName_ =
-  DeleteLoadBalancer' {_dlbLoadBalancerName = pLoadBalancerName_}
-
+deleteLoadBalancer pLoadBalancerName_
+  = DeleteLoadBalancer'{_dlbLoadBalancerName =
+                          pLoadBalancerName_}
 
 -- | The name of the load balancer you want to delete.
 dlbLoadBalancerName :: Lens' DeleteLoadBalancer Text
@@ -106,13 +103,14 @@ instance ToQuery DeleteLoadBalancer where
         toQuery = const mempty
 
 -- | /See:/ 'deleteLoadBalancerResponse' smart constructor.
-data DeleteLoadBalancerResponse =
-  DeleteLoadBalancerResponse'
-    { _dlbrsOperations     :: !(Maybe [Operation])
-    , _dlbrsResponseStatus :: !Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data DeleteLoadBalancerResponse = DeleteLoadBalancerResponse'{_dlbrsOperations
+                                                              ::
+                                                              !(Maybe
+                                                                  [Operation]),
+                                                              _dlbrsResponseStatus
+                                                              :: !Int}
+                                    deriving (Eq, Read, Show, Data, Typeable,
+                                              Generic)
 
 -- | Creates a value of 'DeleteLoadBalancerResponse' with the minimum fields required to make a request.
 --
@@ -124,10 +122,10 @@ data DeleteLoadBalancerResponse =
 deleteLoadBalancerResponse
     :: Int -- ^ 'dlbrsResponseStatus'
     -> DeleteLoadBalancerResponse
-deleteLoadBalancerResponse pResponseStatus_ =
-  DeleteLoadBalancerResponse'
-    {_dlbrsOperations = Nothing, _dlbrsResponseStatus = pResponseStatus_}
-
+deleteLoadBalancerResponse pResponseStatus_
+  = DeleteLoadBalancerResponse'{_dlbrsOperations =
+                                  Nothing,
+                                _dlbrsResponseStatus = pResponseStatus_}
 
 -- | An object describing the API operations.
 dlbrsOperations :: Lens' DeleteLoadBalancerResponse [Operation]

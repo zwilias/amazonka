@@ -55,19 +55,15 @@ module Network.AWS.DirectConnect.DeleteConnection
     ) where
 
 import Network.AWS.DirectConnect.Types
-import Network.AWS.DirectConnect.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 
 -- | /See:/ 'deleteConnection' smart constructor.
-newtype DeleteConnection =
-  DeleteConnection'
-    { _dcConnectionId :: Text
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+newtype DeleteConnection = DeleteConnection'{_dcConnectionId
+                                             :: Text}
+                             deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'DeleteConnection' with the minimum fields required to make a request.
 --
@@ -77,9 +73,8 @@ newtype DeleteConnection =
 deleteConnection
     :: Text -- ^ 'dcConnectionId'
     -> DeleteConnection
-deleteConnection pConnectionId_ =
-  DeleteConnection' {_dcConnectionId = pConnectionId_}
-
+deleteConnection pConnectionId_
+  = DeleteConnection'{_dcConnectionId = pConnectionId_}
 
 -- | The ID of the connection.
 dcConnectionId :: Lens' DeleteConnection Text

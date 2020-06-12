@@ -37,21 +37,18 @@ module Network.AWS.RDS.DeleteDBParameterGroup
 import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.RDS.Types
-import Network.AWS.RDS.Types.Product
 import Network.AWS.Request
 import Network.AWS.Response
 
--- |
+-- | 
 --
 --
 --
 -- /See:/ 'deleteDBParameterGroup' smart constructor.
-newtype DeleteDBParameterGroup =
-  DeleteDBParameterGroup'
-    { _ddbpgDBParameterGroupName :: Text
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+newtype DeleteDBParameterGroup = DeleteDBParameterGroup'{_ddbpgDBParameterGroupName
+                                                         :: Text}
+                                   deriving (Eq, Read, Show, Data, Typeable,
+                                             Generic)
 
 -- | Creates a value of 'DeleteDBParameterGroup' with the minimum fields required to make a request.
 --
@@ -61,9 +58,9 @@ newtype DeleteDBParameterGroup =
 deleteDBParameterGroup
     :: Text -- ^ 'ddbpgDBParameterGroupName'
     -> DeleteDBParameterGroup
-deleteDBParameterGroup pDBParameterGroupName_ =
-  DeleteDBParameterGroup' {_ddbpgDBParameterGroupName = pDBParameterGroupName_}
-
+deleteDBParameterGroup pDBParameterGroupName_
+  = DeleteDBParameterGroup'{_ddbpgDBParameterGroupName
+                              = pDBParameterGroupName_}
 
 -- | The name of the DB parameter group. Constraints:     * Must be the name of an existing DB parameter group     * You can't delete a default DB parameter group     * Cannot be associated with any DB instances
 ddbpgDBParameterGroupName :: Lens' DeleteDBParameterGroup Text
@@ -95,16 +92,15 @@ instance ToQuery DeleteDBParameterGroup where
                "DBParameterGroupName" =: _ddbpgDBParameterGroupName]
 
 -- | /See:/ 'deleteDBParameterGroupResponse' smart constructor.
-data DeleteDBParameterGroupResponse =
-  DeleteDBParameterGroupResponse'
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data DeleteDBParameterGroupResponse = DeleteDBParameterGroupResponse'
+                                        deriving (Eq, Read, Show, Data,
+                                                  Typeable, Generic)
 
 -- | Creates a value of 'DeleteDBParameterGroupResponse' with the minimum fields required to make a request.
 --
 deleteDBParameterGroupResponse
     :: DeleteDBParameterGroupResponse
-deleteDBParameterGroupResponse = DeleteDBParameterGroupResponse'
-
+deleteDBParameterGroupResponse
+  = DeleteDBParameterGroupResponse'
 
 instance NFData DeleteDBParameterGroupResponse where

@@ -52,7 +52,6 @@ module Network.AWS.IAM.ListEntitiesForPolicy
     ) where
 
 import Network.AWS.IAM.Types
-import Network.AWS.IAM.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Pager
 import Network.AWS.Prelude
@@ -60,16 +59,17 @@ import Network.AWS.Request
 import Network.AWS.Response
 
 -- | /See:/ 'listEntitiesForPolicy' smart constructor.
-data ListEntitiesForPolicy =
-  ListEntitiesForPolicy'
-    { _lefpPathPrefix   :: !(Maybe Text)
-    , _lefpEntityFilter :: !(Maybe EntityType)
-    , _lefpMarker       :: !(Maybe Text)
-    , _lefpMaxItems     :: !(Maybe Nat)
-    , _lefpPolicyARN    :: !Text
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data ListEntitiesForPolicy = ListEntitiesForPolicy'{_lefpPathPrefix
+                                                    :: !(Maybe Text),
+                                                    _lefpEntityFilter ::
+                                                    !(Maybe EntityType),
+                                                    _lefpMarker ::
+                                                    !(Maybe Text),
+                                                    _lefpMaxItems ::
+                                                    !(Maybe Nat),
+                                                    _lefpPolicyARN :: !Text}
+                               deriving (Eq, Read, Show, Data, Typeable,
+                                         Generic)
 
 -- | Creates a value of 'ListEntitiesForPolicy' with the minimum fields required to make a request.
 --
@@ -87,15 +87,11 @@ data ListEntitiesForPolicy =
 listEntitiesForPolicy
     :: Text -- ^ 'lefpPolicyARN'
     -> ListEntitiesForPolicy
-listEntitiesForPolicy pPolicyARN_ =
-  ListEntitiesForPolicy'
-    { _lefpPathPrefix = Nothing
-    , _lefpEntityFilter = Nothing
-    , _lefpMarker = Nothing
-    , _lefpMaxItems = Nothing
-    , _lefpPolicyARN = pPolicyARN_
-    }
-
+listEntitiesForPolicy pPolicyARN_
+  = ListEntitiesForPolicy'{_lefpPathPrefix = Nothing,
+                           _lefpEntityFilter = Nothing, _lefpMarker = Nothing,
+                           _lefpMaxItems = Nothing,
+                           _lefpPolicyARN = pPolicyARN_}
 
 -- | The path prefix for filtering the results. This parameter is optional. If it is not included, it defaults to a slash (/), listing all entities. This parameter allows (per its <http://wikipedia.org/wiki/regex regex pattern> ) a string of characters consisting of either a forward slash (/) by itself or a string that must begin and end with forward slashes. In addition, it can contain any ASCII character from the ! (\u0021) through the DEL character (\u007F), including most punctuation characters, digits, and upper and lowercased letters.
 lefpPathPrefix :: Lens' ListEntitiesForPolicy (Maybe Text)
@@ -164,22 +160,35 @@ instance ToQuery ListEntitiesForPolicy where
                "Marker" =: _lefpMarker, "MaxItems" =: _lefpMaxItems,
                "PolicyArn" =: _lefpPolicyARN]
 
--- | Contains the response to a successful 'ListEntitiesForPolicy' request.
+-- | Contains the response to a successful 'ListEntitiesForPolicy' request. 
 --
 --
 --
 -- /See:/ 'listEntitiesForPolicyResponse' smart constructor.
-data ListEntitiesForPolicyResponse =
-  ListEntitiesForPolicyResponse'
-    { _lefprsPolicyGroups   :: !(Maybe [PolicyGroup])
-    , _lefprsPolicyRoles    :: !(Maybe [PolicyRole])
-    , _lefprsMarker         :: !(Maybe Text)
-    , _lefprsPolicyUsers    :: !(Maybe [PolicyUser])
-    , _lefprsIsTruncated    :: !(Maybe Bool)
-    , _lefprsResponseStatus :: !Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data ListEntitiesForPolicyResponse = ListEntitiesForPolicyResponse'{_lefprsPolicyGroups
+                                                                    ::
+                                                                    !(Maybe
+                                                                        [PolicyGroup]),
+                                                                    _lefprsPolicyRoles
+                                                                    ::
+                                                                    !(Maybe
+                                                                        [PolicyRole]),
+                                                                    _lefprsMarker
+                                                                    ::
+                                                                    !(Maybe
+                                                                        Text),
+                                                                    _lefprsPolicyUsers
+                                                                    ::
+                                                                    !(Maybe
+                                                                        [PolicyUser]),
+                                                                    _lefprsIsTruncated
+                                                                    ::
+                                                                    !(Maybe
+                                                                        Bool),
+                                                                    _lefprsResponseStatus
+                                                                    :: !Int}
+                                       deriving (Eq, Read, Show, Data, Typeable,
+                                                 Generic)
 
 -- | Creates a value of 'ListEntitiesForPolicyResponse' with the minimum fields required to make a request.
 --
@@ -199,16 +208,14 @@ data ListEntitiesForPolicyResponse =
 listEntitiesForPolicyResponse
     :: Int -- ^ 'lefprsResponseStatus'
     -> ListEntitiesForPolicyResponse
-listEntitiesForPolicyResponse pResponseStatus_ =
-  ListEntitiesForPolicyResponse'
-    { _lefprsPolicyGroups = Nothing
-    , _lefprsPolicyRoles = Nothing
-    , _lefprsMarker = Nothing
-    , _lefprsPolicyUsers = Nothing
-    , _lefprsIsTruncated = Nothing
-    , _lefprsResponseStatus = pResponseStatus_
-    }
-
+listEntitiesForPolicyResponse pResponseStatus_
+  = ListEntitiesForPolicyResponse'{_lefprsPolicyGroups
+                                     = Nothing,
+                                   _lefprsPolicyRoles = Nothing,
+                                   _lefprsMarker = Nothing,
+                                   _lefprsPolicyUsers = Nothing,
+                                   _lefprsIsTruncated = Nothing,
+                                   _lefprsResponseStatus = pResponseStatus_}
 
 -- | A list of IAM groups that the policy is attached to.
 lefprsPolicyGroups :: Lens' ListEntitiesForPolicyResponse [PolicyGroup]

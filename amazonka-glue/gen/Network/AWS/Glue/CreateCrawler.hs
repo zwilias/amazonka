@@ -46,28 +46,23 @@ module Network.AWS.Glue.CreateCrawler
     ) where
 
 import Network.AWS.Glue.Types
-import Network.AWS.Glue.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 
 -- | /See:/ 'createCrawler' smart constructor.
-data CreateCrawler =
-  CreateCrawler'
-    { _ccSchemaChangePolicy :: !(Maybe SchemaChangePolicy)
-    , _ccSchedule           :: !(Maybe Text)
-    , _ccClassifiers        :: !(Maybe [Text])
-    , _ccConfiguration      :: !(Maybe Text)
-    , _ccTablePrefix        :: !(Maybe Text)
-    , _ccDescription        :: !(Maybe Text)
-    , _ccName               :: !Text
-    , _ccRole               :: !Text
-    , _ccDatabaseName       :: !Text
-    , _ccTargets            :: !CrawlerTargets
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data CreateCrawler = CreateCrawler'{_ccSchemaChangePolicy
+                                    :: !(Maybe SchemaChangePolicy),
+                                    _ccSchedule :: !(Maybe Text),
+                                    _ccClassifiers :: !(Maybe [Text]),
+                                    _ccConfiguration :: !(Maybe Text),
+                                    _ccTablePrefix :: !(Maybe Text),
+                                    _ccDescription :: !(Maybe Text),
+                                    _ccName :: !Text, _ccRole :: !Text,
+                                    _ccDatabaseName :: !Text,
+                                    _ccTargets :: !CrawlerTargets}
+                       deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'CreateCrawler' with the minimum fields required to make a request.
 --
@@ -79,7 +74,7 @@ data CreateCrawler =
 --
 -- * 'ccClassifiers' - A list of custom classifiers that the user has registered. By default, all AWS classifiers are included in a crawl, but these custom classifiers always override the default classifiers for a given classification.
 --
--- * 'ccConfiguration' - Crawler configuration information. This versioned JSON string allows users to specify aspects of a Crawler's behavior. You can use this field to force partitions to inherit metadata such as classification, input format, output format, serde information, and schema from their parent table, rather than detect this information separately for each partition. Use the following JSON string to specify that behavior: Example: @'{ "Version": 1.0, "CrawlerOutput": { "Partitions": { "AddOrUpdateBehavior": "InheritFromTable" } } }'@
+-- * 'ccConfiguration' - Crawler configuration information. This versioned JSON string allows users to specify aspects of a Crawler's behavior. You can use this field to force partitions to inherit metadata such as classification, input format, output format, serde information, and schema from their parent table, rather than detect this information separately for each partition. Use the following JSON string to specify that behavior: Example: @'{ "Version": 1.0, "CrawlerOutput": { "Partitions": { "AddOrUpdateBehavior": "InheritFromTable" } } }'@ 
 --
 -- * 'ccTablePrefix' - The table prefix used for catalog tables that are created.
 --
@@ -98,20 +93,13 @@ createCrawler
     -> Text -- ^ 'ccDatabaseName'
     -> CrawlerTargets -- ^ 'ccTargets'
     -> CreateCrawler
-createCrawler pName_ pRole_ pDatabaseName_ pTargets_ =
-  CreateCrawler'
-    { _ccSchemaChangePolicy = Nothing
-    , _ccSchedule = Nothing
-    , _ccClassifiers = Nothing
-    , _ccConfiguration = Nothing
-    , _ccTablePrefix = Nothing
-    , _ccDescription = Nothing
-    , _ccName = pName_
-    , _ccRole = pRole_
-    , _ccDatabaseName = pDatabaseName_
-    , _ccTargets = pTargets_
-    }
-
+createCrawler pName_ pRole_ pDatabaseName_ pTargets_
+  = CreateCrawler'{_ccSchemaChangePolicy = Nothing,
+                   _ccSchedule = Nothing, _ccClassifiers = Nothing,
+                   _ccConfiguration = Nothing, _ccTablePrefix = Nothing,
+                   _ccDescription = Nothing, _ccName = pName_,
+                   _ccRole = pRole_, _ccDatabaseName = pDatabaseName_,
+                   _ccTargets = pTargets_}
 
 -- | Policy for the crawler's update and deletion behavior.
 ccSchemaChangePolicy :: Lens' CreateCrawler (Maybe SchemaChangePolicy)
@@ -125,7 +113,7 @@ ccSchedule = lens _ccSchedule (\ s a -> s{_ccSchedule = a})
 ccClassifiers :: Lens' CreateCrawler [Text]
 ccClassifiers = lens _ccClassifiers (\ s a -> s{_ccClassifiers = a}) . _Default . _Coerce
 
--- | Crawler configuration information. This versioned JSON string allows users to specify aspects of a Crawler's behavior. You can use this field to force partitions to inherit metadata such as classification, input format, output format, serde information, and schema from their parent table, rather than detect this information separately for each partition. Use the following JSON string to specify that behavior: Example: @'{ "Version": 1.0, "CrawlerOutput": { "Partitions": { "AddOrUpdateBehavior": "InheritFromTable" } } }'@
+-- | Crawler configuration information. This versioned JSON string allows users to specify aspects of a Crawler's behavior. You can use this field to force partitions to inherit metadata such as classification, input format, output format, serde information, and schema from their parent table, rather than detect this information separately for each partition. Use the following JSON string to specify that behavior: Example: @'{ "Version": 1.0, "CrawlerOutput": { "Partitions": { "AddOrUpdateBehavior": "InheritFromTable" } } }'@ 
 ccConfiguration :: Lens' CreateCrawler (Maybe Text)
 ccConfiguration = lens _ccConfiguration (\ s a -> s{_ccConfiguration = a})
 
@@ -195,12 +183,10 @@ instance ToQuery CreateCrawler where
         toQuery = const mempty
 
 -- | /See:/ 'createCrawlerResponse' smart constructor.
-newtype CreateCrawlerResponse =
-  CreateCrawlerResponse'
-    { _crersResponseStatus :: Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+newtype CreateCrawlerResponse = CreateCrawlerResponse'{_crersResponseStatus
+                                                       :: Int}
+                                  deriving (Eq, Read, Show, Data, Typeable,
+                                            Generic)
 
 -- | Creates a value of 'CreateCrawlerResponse' with the minimum fields required to make a request.
 --
@@ -210,9 +196,9 @@ newtype CreateCrawlerResponse =
 createCrawlerResponse
     :: Int -- ^ 'crersResponseStatus'
     -> CreateCrawlerResponse
-createCrawlerResponse pResponseStatus_ =
-  CreateCrawlerResponse' {_crersResponseStatus = pResponseStatus_}
-
+createCrawlerResponse pResponseStatus_
+  = CreateCrawlerResponse'{_crersResponseStatus =
+                             pResponseStatus_}
 
 -- | -- | The response status code.
 crersResponseStatus :: Lens' CreateCrawlerResponse Int

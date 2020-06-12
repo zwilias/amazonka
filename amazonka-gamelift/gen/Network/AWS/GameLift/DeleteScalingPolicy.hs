@@ -25,11 +25,11 @@
 --
 -- Operations related to fleet capacity scaling include:
 --
---     * 'DescribeFleetCapacity'
+--     * 'DescribeFleetCapacity' 
 --
---     * 'UpdateFleetCapacity'
+--     * 'UpdateFleetCapacity' 
 --
---     * 'DescribeEC2InstanceLimits'
+--     * 'DescribeEC2InstanceLimits' 
 --
 --     * Manage scaling policies:
 --
@@ -43,9 +43,9 @@
 --
 --     * Manage fleet actions:
 --
---     * 'StartFleetActions'
+--     * 'StartFleetActions' 
 --
---     * 'StopFleetActions'
+--     * 'StopFleetActions' 
 --
 --
 --
@@ -66,7 +66,6 @@ module Network.AWS.GameLift.DeleteScalingPolicy
     ) where
 
 import Network.AWS.GameLift.Types
-import Network.AWS.GameLift.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.Request
@@ -77,13 +76,10 @@ import Network.AWS.Response
 --
 --
 -- /See:/ 'deleteScalingPolicy' smart constructor.
-data DeleteScalingPolicy =
-  DeleteScalingPolicy'
-    { _dspName    :: !Text
-    , _dspFleetId :: !Text
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data DeleteScalingPolicy = DeleteScalingPolicy'{_dspName
+                                                :: !Text,
+                                                _dspFleetId :: !Text}
+                             deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'DeleteScalingPolicy' with the minimum fields required to make a request.
 --
@@ -96,9 +92,9 @@ deleteScalingPolicy
     :: Text -- ^ 'dspName'
     -> Text -- ^ 'dspFleetId'
     -> DeleteScalingPolicy
-deleteScalingPolicy pName_ pFleetId_ =
-  DeleteScalingPolicy' {_dspName = pName_, _dspFleetId = pFleetId_}
-
+deleteScalingPolicy pName_ pFleetId_
+  = DeleteScalingPolicy'{_dspName = pName_,
+                         _dspFleetId = pFleetId_}
 
 -- | Descriptive label that is associated with a scaling policy. Policy names do not need to be unique.
 dspName :: Lens' DeleteScalingPolicy Text
@@ -141,16 +137,15 @@ instance ToQuery DeleteScalingPolicy where
         toQuery = const mempty
 
 -- | /See:/ 'deleteScalingPolicyResponse' smart constructor.
-data DeleteScalingPolicyResponse =
-  DeleteScalingPolicyResponse'
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data DeleteScalingPolicyResponse = DeleteScalingPolicyResponse'
+                                     deriving (Eq, Read, Show, Data, Typeable,
+                                               Generic)
 
 -- | Creates a value of 'DeleteScalingPolicyResponse' with the minimum fields required to make a request.
 --
 deleteScalingPolicyResponse
     :: DeleteScalingPolicyResponse
-deleteScalingPolicyResponse = DeleteScalingPolicyResponse'
-
+deleteScalingPolicyResponse
+  = DeleteScalingPolicyResponse'
 
 instance NFData DeleteScalingPolicyResponse where

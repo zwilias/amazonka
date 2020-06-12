@@ -38,19 +38,16 @@ module Network.AWS.ECS.DescribeTaskDefinition
     ) where
 
 import Network.AWS.ECS.Types
-import Network.AWS.ECS.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 
 -- | /See:/ 'describeTaskDefinition' smart constructor.
-newtype DescribeTaskDefinition =
-  DescribeTaskDefinition'
-    { _dtdTaskDefinition :: Text
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+newtype DescribeTaskDefinition = DescribeTaskDefinition'{_dtdTaskDefinition
+                                                         :: Text}
+                                   deriving (Eq, Read, Show, Data, Typeable,
+                                             Generic)
 
 -- | Creates a value of 'DescribeTaskDefinition' with the minimum fields required to make a request.
 --
@@ -60,9 +57,9 @@ newtype DescribeTaskDefinition =
 describeTaskDefinition
     :: Text -- ^ 'dtdTaskDefinition'
     -> DescribeTaskDefinition
-describeTaskDefinition pTaskDefinition_ =
-  DescribeTaskDefinition' {_dtdTaskDefinition = pTaskDefinition_}
-
+describeTaskDefinition pTaskDefinition_
+  = DescribeTaskDefinition'{_dtdTaskDefinition =
+                              pTaskDefinition_}
 
 -- | The @family@ for the latest @ACTIVE@ revision, @family@ and @revision@ (@family:revision@ ) for a specific revision in the family, or full Amazon Resource Name (ARN) of the task definition to describe.
 dtdTaskDefinition :: Lens' DescribeTaskDefinition Text
@@ -105,13 +102,14 @@ instance ToQuery DescribeTaskDefinition where
         toQuery = const mempty
 
 -- | /See:/ 'describeTaskDefinitionResponse' smart constructor.
-data DescribeTaskDefinitionResponse =
-  DescribeTaskDefinitionResponse'
-    { _desrsTaskDefinition :: !(Maybe TaskDefinition)
-    , _desrsResponseStatus :: !Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data DescribeTaskDefinitionResponse = DescribeTaskDefinitionResponse'{_desrsTaskDefinition
+                                                                      ::
+                                                                      !(Maybe
+                                                                          TaskDefinition),
+                                                                      _desrsResponseStatus
+                                                                      :: !Int}
+                                        deriving (Eq, Read, Show, Data,
+                                                  Typeable, Generic)
 
 -- | Creates a value of 'DescribeTaskDefinitionResponse' with the minimum fields required to make a request.
 --
@@ -123,10 +121,10 @@ data DescribeTaskDefinitionResponse =
 describeTaskDefinitionResponse
     :: Int -- ^ 'desrsResponseStatus'
     -> DescribeTaskDefinitionResponse
-describeTaskDefinitionResponse pResponseStatus_ =
-  DescribeTaskDefinitionResponse'
-    {_desrsTaskDefinition = Nothing, _desrsResponseStatus = pResponseStatus_}
-
+describeTaskDefinitionResponse pResponseStatus_
+  = DescribeTaskDefinitionResponse'{_desrsTaskDefinition
+                                      = Nothing,
+                                    _desrsResponseStatus = pResponseStatus_}
 
 -- | The full task definition description.
 desrsTaskDefinition :: Lens' DescribeTaskDefinitionResponse (Maybe TaskDefinition)

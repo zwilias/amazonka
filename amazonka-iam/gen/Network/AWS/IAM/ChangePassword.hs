@@ -38,20 +38,16 @@ module Network.AWS.IAM.ChangePassword
     ) where
 
 import Network.AWS.IAM.Types
-import Network.AWS.IAM.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 
 -- | /See:/ 'changePassword' smart constructor.
-data ChangePassword =
-  ChangePassword'
-    { _cpOldPassword :: !(Sensitive Text)
-    , _cpNewPassword :: !(Sensitive Text)
-    }
-  deriving (Eq, Show, Data, Typeable, Generic)
-
+data ChangePassword = ChangePassword'{_cpOldPassword
+                                      :: !(Sensitive Text),
+                                      _cpNewPassword :: !(Sensitive Text)}
+                        deriving (Eq, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'ChangePassword' with the minimum fields required to make a request.
 --
@@ -64,12 +60,10 @@ changePassword
     :: Text -- ^ 'cpOldPassword'
     -> Text -- ^ 'cpNewPassword'
     -> ChangePassword
-changePassword pOldPassword_ pNewPassword_ =
-  ChangePassword'
-    { _cpOldPassword = _Sensitive # pOldPassword_
-    , _cpNewPassword = _Sensitive # pNewPassword_
-    }
-
+changePassword pOldPassword_ pNewPassword_
+  = ChangePassword'{_cpOldPassword =
+                      _Sensitive # pOldPassword_,
+                    _cpNewPassword = _Sensitive # pNewPassword_}
 
 -- | The IAM user's current password.
 cpOldPassword :: Lens' ChangePassword Text
@@ -103,16 +97,14 @@ instance ToQuery ChangePassword where
                "NewPassword" =: _cpNewPassword]
 
 -- | /See:/ 'changePasswordResponse' smart constructor.
-data ChangePasswordResponse =
-  ChangePasswordResponse'
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data ChangePasswordResponse = ChangePasswordResponse'
+                                deriving (Eq, Read, Show, Data, Typeable,
+                                          Generic)
 
 -- | Creates a value of 'ChangePasswordResponse' with the minimum fields required to make a request.
 --
 changePasswordResponse
     :: ChangePasswordResponse
 changePasswordResponse = ChangePasswordResponse'
-
 
 instance NFData ChangePasswordResponse where

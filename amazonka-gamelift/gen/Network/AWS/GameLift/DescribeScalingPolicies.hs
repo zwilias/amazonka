@@ -27,11 +27,11 @@
 --
 -- Operations related to fleet capacity scaling include:
 --
---     * 'DescribeFleetCapacity'
+--     * 'DescribeFleetCapacity' 
 --
---     * 'UpdateFleetCapacity'
+--     * 'UpdateFleetCapacity' 
 --
---     * 'DescribeEC2InstanceLimits'
+--     * 'DescribeEC2InstanceLimits' 
 --
 --     * Manage scaling policies:
 --
@@ -45,9 +45,9 @@
 --
 --     * Manage fleet actions:
 --
---     * 'StartFleetActions'
+--     * 'StartFleetActions' 
 --
---     * 'StopFleetActions'
+--     * 'StopFleetActions' 
 --
 --
 --
@@ -74,7 +74,6 @@ module Network.AWS.GameLift.DescribeScalingPolicies
     ) where
 
 import Network.AWS.GameLift.Types
-import Network.AWS.GameLift.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.Request
@@ -85,15 +84,15 @@ import Network.AWS.Response
 --
 --
 -- /See:/ 'describeScalingPolicies' smart constructor.
-data DescribeScalingPolicies =
-  DescribeScalingPolicies'
-    { _dNextToken    :: !(Maybe Text)
-    , _dStatusFilter :: !(Maybe ScalingStatusType)
-    , _dLimit        :: !(Maybe Nat)
-    , _dFleetId      :: !Text
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data DescribeScalingPolicies = DescribeScalingPolicies'{_dNextToken
+                                                        :: !(Maybe Text),
+                                                        _dStatusFilter ::
+                                                        !(Maybe
+                                                            ScalingStatusType),
+                                                        _dLimit :: !(Maybe Nat),
+                                                        _dFleetId :: !Text}
+                                 deriving (Eq, Read, Show, Data, Typeable,
+                                           Generic)
 
 -- | Creates a value of 'DescribeScalingPolicies' with the minimum fields required to make a request.
 --
@@ -109,14 +108,10 @@ data DescribeScalingPolicies =
 describeScalingPolicies
     :: Text -- ^ 'dFleetId'
     -> DescribeScalingPolicies
-describeScalingPolicies pFleetId_ =
-  DescribeScalingPolicies'
-    { _dNextToken = Nothing
-    , _dStatusFilter = Nothing
-    , _dLimit = Nothing
-    , _dFleetId = pFleetId_
-    }
-
+describeScalingPolicies pFleetId_
+  = DescribeScalingPolicies'{_dNextToken = Nothing,
+                             _dStatusFilter = Nothing, _dLimit = Nothing,
+                             _dFleetId = pFleetId_}
 
 -- | Token that indicates the start of the next sequential page of results. Use the token that is returned with a previous call to this action. To start at the beginning of the result set, do not specify a value.
 dNextToken :: Lens' DescribeScalingPolicies (Maybe Text)
@@ -179,14 +174,18 @@ instance ToQuery DescribeScalingPolicies where
 --
 --
 -- /See:/ 'describeScalingPoliciesResponse' smart constructor.
-data DescribeScalingPoliciesResponse =
-  DescribeScalingPoliciesResponse'
-    { _dsprsNextToken       :: !(Maybe Text)
-    , _dsprsScalingPolicies :: !(Maybe [ScalingPolicy])
-    , _dsprsResponseStatus  :: !Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data DescribeScalingPoliciesResponse = DescribeScalingPoliciesResponse'{_dsprsNextToken
+                                                                        ::
+                                                                        !(Maybe
+                                                                            Text),
+                                                                        _dsprsScalingPolicies
+                                                                        ::
+                                                                        !(Maybe
+                                                                            [ScalingPolicy]),
+                                                                        _dsprsResponseStatus
+                                                                        :: !Int}
+                                         deriving (Eq, Read, Show, Data,
+                                                   Typeable, Generic)
 
 -- | Creates a value of 'DescribeScalingPoliciesResponse' with the minimum fields required to make a request.
 --
@@ -200,13 +199,11 @@ data DescribeScalingPoliciesResponse =
 describeScalingPoliciesResponse
     :: Int -- ^ 'dsprsResponseStatus'
     -> DescribeScalingPoliciesResponse
-describeScalingPoliciesResponse pResponseStatus_ =
-  DescribeScalingPoliciesResponse'
-    { _dsprsNextToken = Nothing
-    , _dsprsScalingPolicies = Nothing
-    , _dsprsResponseStatus = pResponseStatus_
-    }
-
+describeScalingPoliciesResponse pResponseStatus_
+  = DescribeScalingPoliciesResponse'{_dsprsNextToken =
+                                       Nothing,
+                                     _dsprsScalingPolicies = Nothing,
+                                     _dsprsResponseStatus = pResponseStatus_}
 
 -- | Token that indicates where to resume retrieving results on the next call to this action. If no token is returned, these results represent the end of the list.
 dsprsNextToken :: Lens' DescribeScalingPoliciesResponse (Maybe Text)

@@ -39,17 +39,14 @@ import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 import Network.AWS.S3.Types
-import Network.AWS.S3.Types.Product
 
 -- | /See:/ 'putBucketWebsite' smart constructor.
-data PutBucketWebsite =
-  PutBucketWebsite'
-    { _pbwContentMD5           :: !(Maybe Text)
-    , _pbwBucket               :: !BucketName
-    , _pbwWebsiteConfiguration :: !WebsiteConfiguration
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data PutBucketWebsite = PutBucketWebsite'{_pbwContentMD5
+                                          :: !(Maybe Text),
+                                          _pbwBucket :: !BucketName,
+                                          _pbwWebsiteConfiguration ::
+                                          !WebsiteConfiguration}
+                          deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'PutBucketWebsite' with the minimum fields required to make a request.
 --
@@ -64,13 +61,10 @@ putBucketWebsite
     :: BucketName -- ^ 'pbwBucket'
     -> WebsiteConfiguration -- ^ 'pbwWebsiteConfiguration'
     -> PutBucketWebsite
-putBucketWebsite pBucket_ pWebsiteConfiguration_ =
-  PutBucketWebsite'
-    { _pbwContentMD5 = Nothing
-    , _pbwBucket = pBucket_
-    , _pbwWebsiteConfiguration = pWebsiteConfiguration_
-    }
-
+putBucketWebsite pBucket_ pWebsiteConfiguration_
+  = PutBucketWebsite'{_pbwContentMD5 = Nothing,
+                      _pbwBucket = pBucket_,
+                      _pbwWebsiteConfiguration = pWebsiteConfiguration_}
 
 -- | Undocumented member.
 pbwContentMD5 :: Lens' PutBucketWebsite (Maybe Text)
@@ -112,16 +106,14 @@ instance ToQuery PutBucketWebsite where
         toQuery = const (mconcat ["website"])
 
 -- | /See:/ 'putBucketWebsiteResponse' smart constructor.
-data PutBucketWebsiteResponse =
-  PutBucketWebsiteResponse'
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data PutBucketWebsiteResponse = PutBucketWebsiteResponse'
+                                  deriving (Eq, Read, Show, Data, Typeable,
+                                            Generic)
 
 -- | Creates a value of 'PutBucketWebsiteResponse' with the minimum fields required to make a request.
 --
 putBucketWebsiteResponse
     :: PutBucketWebsiteResponse
 putBucketWebsiteResponse = PutBucketWebsiteResponse'
-
 
 instance NFData PutBucketWebsiteResponse where

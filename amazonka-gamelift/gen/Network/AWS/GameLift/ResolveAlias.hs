@@ -23,17 +23,17 @@
 --
 -- Alias-related operations include:
 --
---     * 'CreateAlias'
+--     * 'CreateAlias' 
 --
---     * 'ListAliases'
+--     * 'ListAliases' 
 --
---     * 'DescribeAlias'
+--     * 'DescribeAlias' 
 --
---     * 'UpdateAlias'
+--     * 'UpdateAlias' 
 --
---     * 'DeleteAlias'
+--     * 'DeleteAlias' 
 --
---     * 'ResolveAlias'
+--     * 'ResolveAlias' 
 --
 --
 --
@@ -54,7 +54,6 @@ module Network.AWS.GameLift.ResolveAlias
     ) where
 
 import Network.AWS.GameLift.Types
-import Network.AWS.GameLift.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.Request
@@ -65,12 +64,9 @@ import Network.AWS.Response
 --
 --
 -- /See:/ 'resolveAlias' smart constructor.
-newtype ResolveAlias =
-  ResolveAlias'
-    { _raAliasId :: Text
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+newtype ResolveAlias = ResolveAlias'{_raAliasId ::
+                                     Text}
+                         deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'ResolveAlias' with the minimum fields required to make a request.
 --
@@ -80,8 +76,8 @@ newtype ResolveAlias =
 resolveAlias
     :: Text -- ^ 'raAliasId'
     -> ResolveAlias
-resolveAlias pAliasId_ = ResolveAlias' {_raAliasId = pAliasId_}
-
+resolveAlias pAliasId_
+  = ResolveAlias'{_raAliasId = pAliasId_}
 
 -- | Unique identifier for the alias you want to resolve.
 raAliasId :: Lens' ResolveAlias Text
@@ -124,13 +120,10 @@ instance ToQuery ResolveAlias where
 --
 --
 -- /See:/ 'resolveAliasResponse' smart constructor.
-data ResolveAliasResponse =
-  ResolveAliasResponse'
-    { _rarsFleetId        :: !(Maybe Text)
-    , _rarsResponseStatus :: !Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data ResolveAliasResponse = ResolveAliasResponse'{_rarsFleetId
+                                                  :: !(Maybe Text),
+                                                  _rarsResponseStatus :: !Int}
+                              deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'ResolveAliasResponse' with the minimum fields required to make a request.
 --
@@ -142,10 +135,9 @@ data ResolveAliasResponse =
 resolveAliasResponse
     :: Int -- ^ 'rarsResponseStatus'
     -> ResolveAliasResponse
-resolveAliasResponse pResponseStatus_ =
-  ResolveAliasResponse'
-    {_rarsFleetId = Nothing, _rarsResponseStatus = pResponseStatus_}
-
+resolveAliasResponse pResponseStatus_
+  = ResolveAliasResponse'{_rarsFleetId = Nothing,
+                          _rarsResponseStatus = pResponseStatus_}
 
 -- | Fleet identifier that is associated with the requested alias.
 rarsFleetId :: Lens' ResolveAliasResponse (Maybe Text)

@@ -18,7 +18,7 @@
 -- Stability   : auto-generated
 -- Portability : non-portable (GHC extensions)
 --
--- Removes AWS Shield Advanced from an account. AWS Shield Advanced requires a 1-year subscription commitment. You cannot delete a subscription prior to the completion of that commitment.
+-- Removes AWS Shield Advanced from an account. AWS Shield Advanced requires a 1-year subscription commitment. You cannot delete a subscription prior to the completion of that commitment. 
 --
 --
 module Network.AWS.Shield.DeleteSubscription
@@ -39,20 +39,16 @@ import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 import Network.AWS.Shield.Types
-import Network.AWS.Shield.Types.Product
 
 -- | /See:/ 'deleteSubscription' smart constructor.
-data DeleteSubscription =
-  DeleteSubscription'
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data DeleteSubscription = DeleteSubscription'
+                            deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'DeleteSubscription' with the minimum fields required to make a request.
 --
 deleteSubscription
     :: DeleteSubscription
 deleteSubscription = DeleteSubscription'
-
 
 instance AWSRequest DeleteSubscription where
         type Rs DeleteSubscription =
@@ -87,12 +83,10 @@ instance ToQuery DeleteSubscription where
         toQuery = const mempty
 
 -- | /See:/ 'deleteSubscriptionResponse' smart constructor.
-newtype DeleteSubscriptionResponse =
-  DeleteSubscriptionResponse'
-    { _drsResponseStatus :: Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+newtype DeleteSubscriptionResponse = DeleteSubscriptionResponse'{_drsResponseStatus
+                                                                 :: Int}
+                                       deriving (Eq, Read, Show, Data, Typeable,
+                                                 Generic)
 
 -- | Creates a value of 'DeleteSubscriptionResponse' with the minimum fields required to make a request.
 --
@@ -102,9 +96,9 @@ newtype DeleteSubscriptionResponse =
 deleteSubscriptionResponse
     :: Int -- ^ 'drsResponseStatus'
     -> DeleteSubscriptionResponse
-deleteSubscriptionResponse pResponseStatus_ =
-  DeleteSubscriptionResponse' {_drsResponseStatus = pResponseStatus_}
-
+deleteSubscriptionResponse pResponseStatus_
+  = DeleteSubscriptionResponse'{_drsResponseStatus =
+                                  pResponseStatus_}
 
 -- | -- | The response status code.
 drsResponseStatus :: Lens' DeleteSubscriptionResponse Int

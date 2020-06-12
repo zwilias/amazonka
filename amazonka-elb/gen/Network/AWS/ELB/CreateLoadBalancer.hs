@@ -50,7 +50,6 @@ module Network.AWS.ELB.CreateLoadBalancer
     ) where
 
 import Network.AWS.ELB.Types
-import Network.AWS.ELB.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.Request
@@ -61,18 +60,16 @@ import Network.AWS.Response
 --
 --
 -- /See:/ 'createLoadBalancer' smart constructor.
-data CreateLoadBalancer =
-  CreateLoadBalancer'
-    { _clbSecurityGroups    :: !(Maybe [Text])
-    , _clbSubnets           :: !(Maybe [Text])
-    , _clbAvailabilityZones :: !(Maybe [Text])
-    , _clbScheme            :: !(Maybe Text)
-    , _clbTags              :: !(Maybe (List1 Tag))
-    , _clbLoadBalancerName  :: !Text
-    , _clbListeners         :: ![Listener]
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data CreateLoadBalancer = CreateLoadBalancer'{_clbSecurityGroups
+                                              :: !(Maybe [Text]),
+                                              _clbSubnets :: !(Maybe [Text]),
+                                              _clbAvailabilityZones ::
+                                              !(Maybe [Text]),
+                                              _clbScheme :: !(Maybe Text),
+                                              _clbTags :: !(Maybe (List1 Tag)),
+                                              _clbLoadBalancerName :: !Text,
+                                              _clbListeners :: ![Listener]}
+                            deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'CreateLoadBalancer' with the minimum fields required to make a request.
 --
@@ -94,17 +91,13 @@ data CreateLoadBalancer =
 createLoadBalancer
     :: Text -- ^ 'clbLoadBalancerName'
     -> CreateLoadBalancer
-createLoadBalancer pLoadBalancerName_ =
-  CreateLoadBalancer'
-    { _clbSecurityGroups = Nothing
-    , _clbSubnets = Nothing
-    , _clbAvailabilityZones = Nothing
-    , _clbScheme = Nothing
-    , _clbTags = Nothing
-    , _clbLoadBalancerName = pLoadBalancerName_
-    , _clbListeners = mempty
-    }
-
+createLoadBalancer pLoadBalancerName_
+  = CreateLoadBalancer'{_clbSecurityGroups = Nothing,
+                        _clbSubnets = Nothing,
+                        _clbAvailabilityZones = Nothing,
+                        _clbScheme = Nothing, _clbTags = Nothing,
+                        _clbLoadBalancerName = pLoadBalancerName_,
+                        _clbListeners = mempty}
 
 -- | The IDs of the security groups to assign to the load balancer.
 clbSecurityGroups :: Lens' CreateLoadBalancer [Text]
@@ -178,13 +171,12 @@ instance ToQuery CreateLoadBalancer where
 --
 --
 -- /See:/ 'createLoadBalancerResponse' smart constructor.
-data CreateLoadBalancerResponse =
-  CreateLoadBalancerResponse'
-    { _clbrsDNSName        :: !(Maybe Text)
-    , _clbrsResponseStatus :: !Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data CreateLoadBalancerResponse = CreateLoadBalancerResponse'{_clbrsDNSName
+                                                              :: !(Maybe Text),
+                                                              _clbrsResponseStatus
+                                                              :: !Int}
+                                    deriving (Eq, Read, Show, Data, Typeable,
+                                              Generic)
 
 -- | Creates a value of 'CreateLoadBalancerResponse' with the minimum fields required to make a request.
 --
@@ -196,10 +188,10 @@ data CreateLoadBalancerResponse =
 createLoadBalancerResponse
     :: Int -- ^ 'clbrsResponseStatus'
     -> CreateLoadBalancerResponse
-createLoadBalancerResponse pResponseStatus_ =
-  CreateLoadBalancerResponse'
-    {_clbrsDNSName = Nothing, _clbrsResponseStatus = pResponseStatus_}
-
+createLoadBalancerResponse pResponseStatus_
+  = CreateLoadBalancerResponse'{_clbrsDNSName =
+                                  Nothing,
+                                _clbrsResponseStatus = pResponseStatus_}
 
 -- | The DNS name of the load balancer.
 clbrsDNSName :: Lens' CreateLoadBalancerResponse (Maybe Text)

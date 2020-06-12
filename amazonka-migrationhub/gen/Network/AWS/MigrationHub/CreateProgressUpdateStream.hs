@@ -39,19 +39,17 @@ module Network.AWS.MigrationHub.CreateProgressUpdateStream
 
 import Network.AWS.Lens
 import Network.AWS.MigrationHub.Types
-import Network.AWS.MigrationHub.Types.Product
 import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 
 -- | /See:/ 'createProgressUpdateStream' smart constructor.
-data CreateProgressUpdateStream =
-  CreateProgressUpdateStream'
-    { _cpusDryRun                   :: !(Maybe Bool)
-    , _cpusProgressUpdateStreamName :: !Text
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data CreateProgressUpdateStream = CreateProgressUpdateStream'{_cpusDryRun
+                                                              :: !(Maybe Bool),
+                                                              _cpusProgressUpdateStreamName
+                                                              :: !Text}
+                                    deriving (Eq, Read, Show, Data, Typeable,
+                                              Generic)
 
 -- | Creates a value of 'CreateProgressUpdateStream' with the minimum fields required to make a request.
 --
@@ -59,22 +57,20 @@ data CreateProgressUpdateStream =
 --
 -- * 'cpusDryRun' - Optional boolean flag to indicate whether any effect should take place. Used to test if the caller has permission to make the call.
 --
--- * 'cpusProgressUpdateStreamName' - The name of the ProgressUpdateStream.
+-- * 'cpusProgressUpdateStreamName' - The name of the ProgressUpdateStream. 
 createProgressUpdateStream
     :: Text -- ^ 'cpusProgressUpdateStreamName'
     -> CreateProgressUpdateStream
-createProgressUpdateStream pProgressUpdateStreamName_ =
-  CreateProgressUpdateStream'
-    { _cpusDryRun = Nothing
-    , _cpusProgressUpdateStreamName = pProgressUpdateStreamName_
-    }
-
+createProgressUpdateStream pProgressUpdateStreamName_
+  = CreateProgressUpdateStream'{_cpusDryRun = Nothing,
+                                _cpusProgressUpdateStreamName =
+                                  pProgressUpdateStreamName_}
 
 -- | Optional boolean flag to indicate whether any effect should take place. Used to test if the caller has permission to make the call.
 cpusDryRun :: Lens' CreateProgressUpdateStream (Maybe Bool)
 cpusDryRun = lens _cpusDryRun (\ s a -> s{_cpusDryRun = a})
 
--- | The name of the ProgressUpdateStream.
+-- | The name of the ProgressUpdateStream. 
 cpusProgressUpdateStreamName :: Lens' CreateProgressUpdateStream Text
 cpusProgressUpdateStreamName = lens _cpusProgressUpdateStreamName (\ s a -> s{_cpusProgressUpdateStreamName = a})
 
@@ -118,12 +114,11 @@ instance ToQuery CreateProgressUpdateStream where
         toQuery = const mempty
 
 -- | /See:/ 'createProgressUpdateStreamResponse' smart constructor.
-newtype CreateProgressUpdateStreamResponse =
-  CreateProgressUpdateStreamResponse'
-    { _cpusrsResponseStatus :: Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+newtype CreateProgressUpdateStreamResponse = CreateProgressUpdateStreamResponse'{_cpusrsResponseStatus
+                                                                                 ::
+                                                                                 Int}
+                                               deriving (Eq, Read, Show, Data,
+                                                         Typeable, Generic)
 
 -- | Creates a value of 'CreateProgressUpdateStreamResponse' with the minimum fields required to make a request.
 --
@@ -133,9 +128,9 @@ newtype CreateProgressUpdateStreamResponse =
 createProgressUpdateStreamResponse
     :: Int -- ^ 'cpusrsResponseStatus'
     -> CreateProgressUpdateStreamResponse
-createProgressUpdateStreamResponse pResponseStatus_ =
-  CreateProgressUpdateStreamResponse' {_cpusrsResponseStatus = pResponseStatus_}
-
+createProgressUpdateStreamResponse pResponseStatus_
+  = CreateProgressUpdateStreamResponse'{_cpusrsResponseStatus
+                                          = pResponseStatus_}
 
 -- | -- | The response status code.
 cpusrsResponseStatus :: Lens' CreateProgressUpdateStreamResponse Int

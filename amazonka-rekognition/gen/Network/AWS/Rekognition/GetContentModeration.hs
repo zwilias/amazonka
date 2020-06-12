@@ -21,11 +21,11 @@
 -- Gets the content moderation analysis results for a Rekognition Video analysis started by .
 --
 --
--- Content moderation analysis of a video is an asynchronous operation. You start analysis by calling . which returns a job identifier (@JobId@ ). When analysis finishes, Rekognition Video publishes a completion status to the Amazon Simple Notification Service topic registered in the initial call to @StartContentModeration@ . To get the results of the content moderation analysis, first check that the status value published to the Amazon SNS topic is @SUCCEEDED@ . If so, call @GetCelebrityDetection@ and pass the job identifier (@JobId@ ) from the initial call to @StartCelebrityDetection@ . For more information, see 'video' .
+-- Content moderation analysis of a video is an asynchronous operation. You start analysis by calling . which returns a job identifier (@JobId@ ). When analysis finishes, Rekognition Video publishes a completion status to the Amazon Simple Notification Service topic registered in the initial call to @StartContentModeration@ . To get the results of the content moderation analysis, first check that the status value published to the Amazon SNS topic is @SUCCEEDED@ . If so, call @GetCelebrityDetection@ and pass the job identifier (@JobId@ ) from the initial call to @StartCelebrityDetection@ . For more information, see 'video' . 
 --
--- @GetContentModeration@ returns detected content moderation labels, and the time they are detected, in an array, @ModerationLabels@ , of objects.
+-- @GetContentModeration@ returns detected content moderation labels, and the time they are detected, in an array, @ModerationLabels@ , of objects. 
 --
--- By default, the moderated labels are returned sorted by time, in milliseconds from the start of the video. You can also sort them by moderated label by specifying @NAME@ for the @SortBy@ input parameter.
+-- By default, the moderated labels are returned sorted by time, in milliseconds from the start of the video. You can also sort them by moderated label by specifying @NAME@ for the @SortBy@ input parameter. 
 --
 -- Since video analysis can return a large number of results, use the @MaxResults@ parameter to limit the number of labels returned in a single call to @GetContentModeration@ . If there are more results than specified in @MaxResults@ , the value of @NextToken@ in the operation response contains a pagination token for getting the next set of results. To get the next page of results, call @GetContentModeration@ and populate the @NextToken@ request parameter with the value of @NextToken@ returned from the previous call to @GetContentModeration@ .
 --
@@ -57,20 +57,19 @@ module Network.AWS.Rekognition.GetContentModeration
 import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.Rekognition.Types
-import Network.AWS.Rekognition.Types.Product
 import Network.AWS.Request
 import Network.AWS.Response
 
 -- | /See:/ 'getContentModeration' smart constructor.
-data GetContentModeration =
-  GetContentModeration'
-    { _gcmNextToken  :: !(Maybe Text)
-    , _gcmMaxResults :: !(Maybe Nat)
-    , _gcmSortBy     :: !(Maybe ContentModerationSortBy)
-    , _gcmJobId      :: !Text
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data GetContentModeration = GetContentModeration'{_gcmNextToken
+                                                  :: !(Maybe Text),
+                                                  _gcmMaxResults ::
+                                                  !(Maybe Nat),
+                                                  _gcmSortBy ::
+                                                  !(Maybe
+                                                      ContentModerationSortBy),
+                                                  _gcmJobId :: !Text}
+                              deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'GetContentModeration' with the minimum fields required to make a request.
 --
@@ -86,14 +85,10 @@ data GetContentModeration =
 getContentModeration
     :: Text -- ^ 'gcmJobId'
     -> GetContentModeration
-getContentModeration pJobId_ =
-  GetContentModeration'
-    { _gcmNextToken = Nothing
-    , _gcmMaxResults = Nothing
-    , _gcmSortBy = Nothing
-    , _gcmJobId = pJobId_
-    }
-
+getContentModeration pJobId_
+  = GetContentModeration'{_gcmNextToken = Nothing,
+                          _gcmMaxResults = Nothing, _gcmSortBy = Nothing,
+                          _gcmJobId = pJobId_}
 
 -- | If the previous response was incomplete (because there is more data to retrieve), Amazon Rekognition returns a pagination token in the response. You can use this pagination token to retrieve the next set of content moderation labels.
 gcmNextToken :: Lens' GetContentModeration (Maybe Text)
@@ -155,25 +150,36 @@ instance ToQuery GetContentModeration where
         toQuery = const mempty
 
 -- | /See:/ 'getContentModerationResponse' smart constructor.
-data GetContentModerationResponse =
-  GetContentModerationResponse'
-    { _gcmrsNextToken        :: !(Maybe Text)
-    , _gcmrsVideoMetadata    :: !(Maybe VideoMetadata)
-    , _gcmrsStatusMessage    :: !(Maybe Text)
-    , _gcmrsJobStatus        :: !(Maybe VideoJobStatus)
-    , _gcmrsModerationLabels :: !(Maybe [ContentModerationDetection])
-    , _gcmrsResponseStatus   :: !Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data GetContentModerationResponse = GetContentModerationResponse'{_gcmrsNextToken
+                                                                  ::
+                                                                  !(Maybe Text),
+                                                                  _gcmrsVideoMetadata
+                                                                  ::
+                                                                  !(Maybe
+                                                                      VideoMetadata),
+                                                                  _gcmrsStatusMessage
+                                                                  ::
+                                                                  !(Maybe Text),
+                                                                  _gcmrsJobStatus
+                                                                  ::
+                                                                  !(Maybe
+                                                                      VideoJobStatus),
+                                                                  _gcmrsModerationLabels
+                                                                  ::
+                                                                  !(Maybe
+                                                                      [ContentModerationDetection]),
+                                                                  _gcmrsResponseStatus
+                                                                  :: !Int}
+                                      deriving (Eq, Read, Show, Data, Typeable,
+                                                Generic)
 
 -- | Creates a value of 'GetContentModerationResponse' with the minimum fields required to make a request.
 --
 -- Use one of the following lenses to modify other fields as desired:
 --
--- * 'gcmrsNextToken' - If the response is truncated, Rekognition Video returns this token that you can use in the subsequent request to retrieve the next set of moderation labels.
+-- * 'gcmrsNextToken' - If the response is truncated, Rekognition Video returns this token that you can use in the subsequent request to retrieve the next set of moderation labels. 
 --
--- * 'gcmrsVideoMetadata' - Information about a video that Amazon Rekognition analyzed. @Videometadata@ is returned in every page of paginated responses from @GetContentModeration@ .
+-- * 'gcmrsVideoMetadata' - Information about a video that Amazon Rekognition analyzed. @Videometadata@ is returned in every page of paginated responses from @GetContentModeration@ . 
 --
 -- * 'gcmrsStatusMessage' - If the job fails, @StatusMessage@ provides a descriptive error message.
 --
@@ -185,22 +191,20 @@ data GetContentModerationResponse =
 getContentModerationResponse
     :: Int -- ^ 'gcmrsResponseStatus'
     -> GetContentModerationResponse
-getContentModerationResponse pResponseStatus_ =
-  GetContentModerationResponse'
-    { _gcmrsNextToken = Nothing
-    , _gcmrsVideoMetadata = Nothing
-    , _gcmrsStatusMessage = Nothing
-    , _gcmrsJobStatus = Nothing
-    , _gcmrsModerationLabels = Nothing
-    , _gcmrsResponseStatus = pResponseStatus_
-    }
+getContentModerationResponse pResponseStatus_
+  = GetContentModerationResponse'{_gcmrsNextToken =
+                                    Nothing,
+                                  _gcmrsVideoMetadata = Nothing,
+                                  _gcmrsStatusMessage = Nothing,
+                                  _gcmrsJobStatus = Nothing,
+                                  _gcmrsModerationLabels = Nothing,
+                                  _gcmrsResponseStatus = pResponseStatus_}
 
-
--- | If the response is truncated, Rekognition Video returns this token that you can use in the subsequent request to retrieve the next set of moderation labels.
+-- | If the response is truncated, Rekognition Video returns this token that you can use in the subsequent request to retrieve the next set of moderation labels. 
 gcmrsNextToken :: Lens' GetContentModerationResponse (Maybe Text)
 gcmrsNextToken = lens _gcmrsNextToken (\ s a -> s{_gcmrsNextToken = a})
 
--- | Information about a video that Amazon Rekognition analyzed. @Videometadata@ is returned in every page of paginated responses from @GetContentModeration@ .
+-- | Information about a video that Amazon Rekognition analyzed. @Videometadata@ is returned in every page of paginated responses from @GetContentModeration@ . 
 gcmrsVideoMetadata :: Lens' GetContentModerationResponse (Maybe VideoMetadata)
 gcmrsVideoMetadata = lens _gcmrsVideoMetadata (\ s a -> s{_gcmrsVideoMetadata = a})
 

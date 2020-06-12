@@ -18,7 +18,7 @@
 -- Stability   : auto-generated
 -- Portability : non-portable (GHC extensions)
 --
--- Stores a resource policy for the ARN of a @Project@ or @ReportGroup@ object.
+-- Stores a resource policy for the ARN of a @Project@ or @ReportGroup@ object. 
 --
 --
 module Network.AWS.CodeBuild.PutResourcePolicy
@@ -39,41 +39,37 @@ module Network.AWS.CodeBuild.PutResourcePolicy
     ) where
 
 import Network.AWS.CodeBuild.Types
-import Network.AWS.CodeBuild.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 
 -- | /See:/ 'putResourcePolicy' smart constructor.
-data PutResourcePolicy =
-  PutResourcePolicy'
-    { _prpPolicy      :: !Text
-    , _prpResourceARN :: !Text
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data PutResourcePolicy = PutResourcePolicy'{_prpPolicy
+                                            :: !Text,
+                                            _prpResourceARN :: !Text}
+                           deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'PutResourcePolicy' with the minimum fields required to make a request.
 --
 -- Use one of the following lenses to modify other fields as desired:
 --
--- * 'prpPolicy' - A JSON-formatted resource policy. For more information, see <https://docs.aws.amazon.com/codebuild/latest/userguide/project-sharing.html#project-sharing-share Sharing a Project> and <https://docs.aws.amazon.com/codebuild/latest/userguide/report-groups-sharing.html#report-groups-sharing-share Sharing a Report Group> in the /AWS CodeBuild User Guide/ .
+-- * 'prpPolicy' - A JSON-formatted resource policy. For more information, see <https://docs.aws.amazon.com/codebuild/latest/userguide/project-sharing.html#project-sharing-share Sharing a Project> and <https://docs.aws.amazon.com/codebuild/latest/userguide/report-groups-sharing.html#report-groups-sharing-share Sharing a Report Group> in the /AWS CodeBuild User Guide/ . 
 --
--- * 'prpResourceARN' - The ARN of the @Project@ or @ReportGroup@ resource you want to associate with a resource policy.
+-- * 'prpResourceARN' - The ARN of the @Project@ or @ReportGroup@ resource you want to associate with a resource policy. 
 putResourcePolicy
     :: Text -- ^ 'prpPolicy'
     -> Text -- ^ 'prpResourceARN'
     -> PutResourcePolicy
-putResourcePolicy pPolicy_ pResourceARN_ =
-  PutResourcePolicy' {_prpPolicy = pPolicy_, _prpResourceARN = pResourceARN_}
+putResourcePolicy pPolicy_ pResourceARN_
+  = PutResourcePolicy'{_prpPolicy = pPolicy_,
+                       _prpResourceARN = pResourceARN_}
 
-
--- | A JSON-formatted resource policy. For more information, see <https://docs.aws.amazon.com/codebuild/latest/userguide/project-sharing.html#project-sharing-share Sharing a Project> and <https://docs.aws.amazon.com/codebuild/latest/userguide/report-groups-sharing.html#report-groups-sharing-share Sharing a Report Group> in the /AWS CodeBuild User Guide/ .
+-- | A JSON-formatted resource policy. For more information, see <https://docs.aws.amazon.com/codebuild/latest/userguide/project-sharing.html#project-sharing-share Sharing a Project> and <https://docs.aws.amazon.com/codebuild/latest/userguide/report-groups-sharing.html#report-groups-sharing-share Sharing a Report Group> in the /AWS CodeBuild User Guide/ . 
 prpPolicy :: Lens' PutResourcePolicy Text
 prpPolicy = lens _prpPolicy (\ s a -> s{_prpPolicy = a})
 
--- | The ARN of the @Project@ or @ReportGroup@ resource you want to associate with a resource policy.
+-- | The ARN of the @Project@ or @ReportGroup@ resource you want to associate with a resource policy. 
 prpResourceARN :: Lens' PutResourcePolicy Text
 prpResourceARN = lens _prpResourceARN (\ s a -> s{_prpResourceARN = a})
 
@@ -114,30 +110,29 @@ instance ToQuery PutResourcePolicy where
         toQuery = const mempty
 
 -- | /See:/ 'putResourcePolicyResponse' smart constructor.
-data PutResourcePolicyResponse =
-  PutResourcePolicyResponse'
-    { _prprsResourceARN    :: !(Maybe Text)
-    , _prprsResponseStatus :: !Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data PutResourcePolicyResponse = PutResourcePolicyResponse'{_prprsResourceARN
+                                                            :: !(Maybe Text),
+                                                            _prprsResponseStatus
+                                                            :: !Int}
+                                   deriving (Eq, Read, Show, Data, Typeable,
+                                             Generic)
 
 -- | Creates a value of 'PutResourcePolicyResponse' with the minimum fields required to make a request.
 --
 -- Use one of the following lenses to modify other fields as desired:
 --
--- * 'prprsResourceARN' - The ARN of the @Project@ or @ReportGroup@ resource that is associated with a resource policy.
+-- * 'prprsResourceARN' - The ARN of the @Project@ or @ReportGroup@ resource that is associated with a resource policy. 
 --
 -- * 'prprsResponseStatus' - -- | The response status code.
 putResourcePolicyResponse
     :: Int -- ^ 'prprsResponseStatus'
     -> PutResourcePolicyResponse
-putResourcePolicyResponse pResponseStatus_ =
-  PutResourcePolicyResponse'
-    {_prprsResourceARN = Nothing, _prprsResponseStatus = pResponseStatus_}
+putResourcePolicyResponse pResponseStatus_
+  = PutResourcePolicyResponse'{_prprsResourceARN =
+                                 Nothing,
+                               _prprsResponseStatus = pResponseStatus_}
 
-
--- | The ARN of the @Project@ or @ReportGroup@ resource that is associated with a resource policy.
+-- | The ARN of the @Project@ or @ReportGroup@ resource that is associated with a resource policy. 
 prprsResourceARN :: Lens' PutResourcePolicyResponse (Maybe Text)
 prprsResourceARN = lens _prprsResourceARN (\ s a -> s{_prprsResourceARN = a})
 

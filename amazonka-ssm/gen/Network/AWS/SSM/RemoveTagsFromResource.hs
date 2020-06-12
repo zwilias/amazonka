@@ -43,17 +43,15 @@ import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 import Network.AWS.SSM.Types
-import Network.AWS.SSM.Types.Product
 
 -- | /See:/ 'removeTagsFromResource' smart constructor.
-data RemoveTagsFromResource =
-  RemoveTagsFromResource'
-    { _rtfrResourceType :: !ResourceTypeForTagging
-    , _rtfrResourceId   :: !Text
-    , _rtfrTagKeys      :: ![Text]
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data RemoveTagsFromResource = RemoveTagsFromResource'{_rtfrResourceType
+                                                      ::
+                                                      !ResourceTypeForTagging,
+                                                      _rtfrResourceId :: !Text,
+                                                      _rtfrTagKeys :: ![Text]}
+                                deriving (Eq, Read, Show, Data, Typeable,
+                                          Generic)
 
 -- | Creates a value of 'RemoveTagsFromResource' with the minimum fields required to make a request.
 --
@@ -68,13 +66,11 @@ removeTagsFromResource
     :: ResourceTypeForTagging -- ^ 'rtfrResourceType'
     -> Text -- ^ 'rtfrResourceId'
     -> RemoveTagsFromResource
-removeTagsFromResource pResourceType_ pResourceId_ =
-  RemoveTagsFromResource'
-    { _rtfrResourceType = pResourceType_
-    , _rtfrResourceId = pResourceId_
-    , _rtfrTagKeys = mempty
-    }
-
+removeTagsFromResource pResourceType_ pResourceId_
+  = RemoveTagsFromResource'{_rtfrResourceType =
+                              pResourceType_,
+                            _rtfrResourceId = pResourceId_,
+                            _rtfrTagKeys = mempty}
 
 -- | The type of resource of which you want to remove a tag.
 rtfrResourceType :: Lens' RemoveTagsFromResource ResourceTypeForTagging
@@ -126,12 +122,10 @@ instance ToQuery RemoveTagsFromResource where
         toQuery = const mempty
 
 -- | /See:/ 'removeTagsFromResourceResponse' smart constructor.
-newtype RemoveTagsFromResourceResponse =
-  RemoveTagsFromResourceResponse'
-    { _rtfrrsResponseStatus :: Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+newtype RemoveTagsFromResourceResponse = RemoveTagsFromResourceResponse'{_rtfrrsResponseStatus
+                                                                         :: Int}
+                                           deriving (Eq, Read, Show, Data,
+                                                     Typeable, Generic)
 
 -- | Creates a value of 'RemoveTagsFromResourceResponse' with the minimum fields required to make a request.
 --
@@ -141,9 +135,9 @@ newtype RemoveTagsFromResourceResponse =
 removeTagsFromResourceResponse
     :: Int -- ^ 'rtfrrsResponseStatus'
     -> RemoveTagsFromResourceResponse
-removeTagsFromResourceResponse pResponseStatus_ =
-  RemoveTagsFromResourceResponse' {_rtfrrsResponseStatus = pResponseStatus_}
-
+removeTagsFromResourceResponse pResponseStatus_
+  = RemoveTagsFromResourceResponse'{_rtfrrsResponseStatus
+                                      = pResponseStatus_}
 
 -- | -- | The response status code.
 rtfrrsResponseStatus :: Lens' RemoveTagsFromResourceResponse Int

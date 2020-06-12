@@ -72,16 +72,16 @@ import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 import Network.AWS.Route53.Types
-import Network.AWS.Route53.Types.Product
 
 -- | /See:/ 'createReusableDelegationSet' smart constructor.
-data CreateReusableDelegationSet =
-  CreateReusableDelegationSet'
-    { _crdsHostedZoneId    :: !(Maybe ResourceId)
-    , _crdsCallerReference :: !Text
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data CreateReusableDelegationSet = CreateReusableDelegationSet'{_crdsHostedZoneId
+                                                                ::
+                                                                !(Maybe
+                                                                    ResourceId),
+                                                                _crdsCallerReference
+                                                                :: !Text}
+                                     deriving (Eq, Read, Show, Data, Typeable,
+                                               Generic)
 
 -- | Creates a value of 'CreateReusableDelegationSet' with the minimum fields required to make a request.
 --
@@ -93,10 +93,10 @@ data CreateReusableDelegationSet =
 createReusableDelegationSet
     :: Text -- ^ 'crdsCallerReference'
     -> CreateReusableDelegationSet
-createReusableDelegationSet pCallerReference_ =
-  CreateReusableDelegationSet'
-    {_crdsHostedZoneId = Nothing, _crdsCallerReference = pCallerReference_}
-
+createReusableDelegationSet pCallerReference_
+  = CreateReusableDelegationSet'{_crdsHostedZoneId =
+                                   Nothing,
+                                 _crdsCallerReference = pCallerReference_}
 
 -- | If you want to mark the delegation set for an existing hosted zone as reusable, the ID for that hosted zone.
 crdsHostedZoneId :: Lens' CreateReusableDelegationSet (Maybe ResourceId)
@@ -142,14 +142,17 @@ instance ToXML CreateReusableDelegationSet where
                "CallerReference" @= _crdsCallerReference]
 
 -- | /See:/ 'createReusableDelegationSetResponse' smart constructor.
-data CreateReusableDelegationSetResponse =
-  CreateReusableDelegationSetResponse'
-    { _crdsrsResponseStatus :: !Int
-    , _crdsrsDelegationSet  :: !DelegationSet
-    , _crdsrsLocation       :: !Text
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data CreateReusableDelegationSetResponse = CreateReusableDelegationSetResponse'{_crdsrsResponseStatus
+                                                                                ::
+                                                                                !Int,
+                                                                                _crdsrsDelegationSet
+                                                                                ::
+                                                                                !DelegationSet,
+                                                                                _crdsrsLocation
+                                                                                ::
+                                                                                !Text}
+                                             deriving (Eq, Read, Show, Data,
+                                                       Typeable, Generic)
 
 -- | Creates a value of 'CreateReusableDelegationSetResponse' with the minimum fields required to make a request.
 --
@@ -165,13 +168,12 @@ createReusableDelegationSetResponse
     -> DelegationSet -- ^ 'crdsrsDelegationSet'
     -> Text -- ^ 'crdsrsLocation'
     -> CreateReusableDelegationSetResponse
-createReusableDelegationSetResponse pResponseStatus_ pDelegationSet_ pLocation_ =
-  CreateReusableDelegationSetResponse'
-    { _crdsrsResponseStatus = pResponseStatus_
-    , _crdsrsDelegationSet = pDelegationSet_
-    , _crdsrsLocation = pLocation_
-    }
-
+createReusableDelegationSetResponse pResponseStatus_
+  pDelegationSet_ pLocation_
+  = CreateReusableDelegationSetResponse'{_crdsrsResponseStatus
+                                           = pResponseStatus_,
+                                         _crdsrsDelegationSet = pDelegationSet_,
+                                         _crdsrsLocation = pLocation_}
 
 -- | -- | The response status code.
 crdsrsResponseStatus :: Lens' CreateReusableDelegationSetResponse Int

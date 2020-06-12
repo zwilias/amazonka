@@ -41,21 +41,20 @@ module Network.AWS.CloudWatchEvents.ListPartnerEventSources
     ) where
 
 import Network.AWS.CloudWatchEvents.Types
-import Network.AWS.CloudWatchEvents.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 
 -- | /See:/ 'listPartnerEventSources' smart constructor.
-data ListPartnerEventSources =
-  ListPartnerEventSources'
-    { _lpesNextToken  :: !(Maybe Text)
-    , _lpesLimit      :: !(Maybe Nat)
-    , _lpesNamePrefix :: !Text
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data ListPartnerEventSources = ListPartnerEventSources'{_lpesNextToken
+                                                        :: !(Maybe Text),
+                                                        _lpesLimit ::
+                                                        !(Maybe Nat),
+                                                        _lpesNamePrefix ::
+                                                        !Text}
+                                 deriving (Eq, Read, Show, Data, Typeable,
+                                           Generic)
 
 -- | Creates a value of 'ListPartnerEventSources' with the minimum fields required to make a request.
 --
@@ -69,13 +68,10 @@ data ListPartnerEventSources =
 listPartnerEventSources
     :: Text -- ^ 'lpesNamePrefix'
     -> ListPartnerEventSources
-listPartnerEventSources pNamePrefix_ =
-  ListPartnerEventSources'
-    { _lpesNextToken = Nothing
-    , _lpesLimit = Nothing
-    , _lpesNamePrefix = pNamePrefix_
-    }
-
+listPartnerEventSources pNamePrefix_
+  = ListPartnerEventSources'{_lpesNextToken = Nothing,
+                             _lpesLimit = Nothing,
+                             _lpesNamePrefix = pNamePrefix_}
 
 -- | The token returned by a previous call to this operation. Specifying this retrieves the next set of results.
 lpesNextToken :: Lens' ListPartnerEventSources (Maybe Text)
@@ -129,14 +125,18 @@ instance ToQuery ListPartnerEventSources where
         toQuery = const mempty
 
 -- | /See:/ 'listPartnerEventSourcesResponse' smart constructor.
-data ListPartnerEventSourcesResponse =
-  ListPartnerEventSourcesResponse'
-    { _lpesrsPartnerEventSources :: !(Maybe [PartnerEventSource])
-    , _lpesrsNextToken           :: !(Maybe Text)
-    , _lpesrsResponseStatus      :: !Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data ListPartnerEventSourcesResponse = ListPartnerEventSourcesResponse'{_lpesrsPartnerEventSources
+                                                                        ::
+                                                                        !(Maybe
+                                                                            [PartnerEventSource]),
+                                                                        _lpesrsNextToken
+                                                                        ::
+                                                                        !(Maybe
+                                                                            Text),
+                                                                        _lpesrsResponseStatus
+                                                                        :: !Int}
+                                         deriving (Eq, Read, Show, Data,
+                                                   Typeable, Generic)
 
 -- | Creates a value of 'ListPartnerEventSourcesResponse' with the minimum fields required to make a request.
 --
@@ -150,13 +150,11 @@ data ListPartnerEventSourcesResponse =
 listPartnerEventSourcesResponse
     :: Int -- ^ 'lpesrsResponseStatus'
     -> ListPartnerEventSourcesResponse
-listPartnerEventSourcesResponse pResponseStatus_ =
-  ListPartnerEventSourcesResponse'
-    { _lpesrsPartnerEventSources = Nothing
-    , _lpesrsNextToken = Nothing
-    , _lpesrsResponseStatus = pResponseStatus_
-    }
-
+listPartnerEventSourcesResponse pResponseStatus_
+  = ListPartnerEventSourcesResponse'{_lpesrsPartnerEventSources
+                                       = Nothing,
+                                     _lpesrsNextToken = Nothing,
+                                     _lpesrsResponseStatus = pResponseStatus_}
 
 -- | The list of partner event sources returned by the operation.
 lpesrsPartnerEventSources :: Lens' ListPartnerEventSourcesResponse [PartnerEventSource]

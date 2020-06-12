@@ -52,8 +52,7 @@ library
         , Network.AWS.APIGatewayManagementAPI.Waiters
 
     other-modules:
-          Network.AWS.APIGatewayManagementAPI.Types.Product
-        , Network.AWS.APIGatewayManagementAPI.Types.Sum
+          Network.AWS.APIGatewayManagementAPI.Types.Identity
 
     build-depends:
           amazonka-core == 1.6.1.*

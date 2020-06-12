@@ -18,7 +18,7 @@
 -- Stability   : auto-generated
 -- Portability : non-portable (GHC extensions)
 --
--- Launches an ML compute instance with the latest version of the libraries and attaches your ML storage volume. After configuring the notebook instance, Amazon SageMaker sets the notebook instance status to @InService@ . A notebook instance's status must be @InService@ before you can connect to your Jupyter notebook.
+-- Launches an ML compute instance with the latest version of the libraries and attaches your ML storage volume. After configuring the notebook instance, Amazon SageMaker sets the notebook instance status to @InService@ . A notebook instance's status must be @InService@ before you can connect to your Jupyter notebook. 
 --
 --
 module Network.AWS.SageMaker.StartNotebookInstance
@@ -39,15 +39,12 @@ import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 import Network.AWS.SageMaker.Types
-import Network.AWS.SageMaker.Types.Product
 
 -- | /See:/ 'startNotebookInstance' smart constructor.
-newtype StartNotebookInstance =
-  StartNotebookInstance'
-    { _sNotebookInstanceName :: Text
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+newtype StartNotebookInstance = StartNotebookInstance'{_sNotebookInstanceName
+                                                       :: Text}
+                                  deriving (Eq, Read, Show, Data, Typeable,
+                                            Generic)
 
 -- | Creates a value of 'StartNotebookInstance' with the minimum fields required to make a request.
 --
@@ -57,9 +54,9 @@ newtype StartNotebookInstance =
 startNotebookInstance
     :: Text -- ^ 'sNotebookInstanceName'
     -> StartNotebookInstance
-startNotebookInstance pNotebookInstanceName_ =
-  StartNotebookInstance' {_sNotebookInstanceName = pNotebookInstanceName_}
-
+startNotebookInstance pNotebookInstanceName_
+  = StartNotebookInstance'{_sNotebookInstanceName =
+                             pNotebookInstanceName_}
 
 -- | The name of the notebook instance to start.
 sNotebookInstanceName :: Lens' StartNotebookInstance Text
@@ -98,16 +95,15 @@ instance ToQuery StartNotebookInstance where
         toQuery = const mempty
 
 -- | /See:/ 'startNotebookInstanceResponse' smart constructor.
-data StartNotebookInstanceResponse =
-  StartNotebookInstanceResponse'
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data StartNotebookInstanceResponse = StartNotebookInstanceResponse'
+                                       deriving (Eq, Read, Show, Data, Typeable,
+                                                 Generic)
 
 -- | Creates a value of 'StartNotebookInstanceResponse' with the minimum fields required to make a request.
 --
 startNotebookInstanceResponse
     :: StartNotebookInstanceResponse
-startNotebookInstanceResponse = StartNotebookInstanceResponse'
-
+startNotebookInstanceResponse
+  = StartNotebookInstanceResponse'
 
 instance NFData StartNotebookInstanceResponse where

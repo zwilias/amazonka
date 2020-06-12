@@ -43,7 +43,6 @@ module Network.AWS.Connect.ListSecurityProfiles
     ) where
 
 import Network.AWS.Connect.Types
-import Network.AWS.Connect.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Pager
 import Network.AWS.Prelude
@@ -51,14 +50,12 @@ import Network.AWS.Request
 import Network.AWS.Response
 
 -- | /See:/ 'listSecurityProfiles' smart constructor.
-data ListSecurityProfiles =
-  ListSecurityProfiles'
-    { _lspNextToken  :: !(Maybe Text)
-    , _lspMaxResults :: !(Maybe Nat)
-    , _lspInstanceId :: !Text
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data ListSecurityProfiles = ListSecurityProfiles'{_lspNextToken
+                                                  :: !(Maybe Text),
+                                                  _lspMaxResults ::
+                                                  !(Maybe Nat),
+                                                  _lspInstanceId :: !Text}
+                              deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'ListSecurityProfiles' with the minimum fields required to make a request.
 --
@@ -72,13 +69,10 @@ data ListSecurityProfiles =
 listSecurityProfiles
     :: Text -- ^ 'lspInstanceId'
     -> ListSecurityProfiles
-listSecurityProfiles pInstanceId_ =
-  ListSecurityProfiles'
-    { _lspNextToken = Nothing
-    , _lspMaxResults = Nothing
-    , _lspInstanceId = pInstanceId_
-    }
-
+listSecurityProfiles pInstanceId_
+  = ListSecurityProfiles'{_lspNextToken = Nothing,
+                          _lspMaxResults = Nothing,
+                          _lspInstanceId = pInstanceId_}
 
 -- | The token for the next set of results. Use the value returned in the previous response in the next request to retrieve the next set of results.
 lspNextToken :: Lens' ListSecurityProfiles (Maybe Text)
@@ -135,14 +129,17 @@ instance ToQuery ListSecurityProfiles where
                "maxResults" =: _lspMaxResults]
 
 -- | /See:/ 'listSecurityProfilesResponse' smart constructor.
-data ListSecurityProfilesResponse =
-  ListSecurityProfilesResponse'
-    { _lsprsNextToken                  :: !(Maybe Text)
-    , _lsprsSecurityProfileSummaryList :: !(Maybe [SecurityProfileSummary])
-    , _lsprsResponseStatus             :: !Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data ListSecurityProfilesResponse = ListSecurityProfilesResponse'{_lsprsNextToken
+                                                                  ::
+                                                                  !(Maybe Text),
+                                                                  _lsprsSecurityProfileSummaryList
+                                                                  ::
+                                                                  !(Maybe
+                                                                      [SecurityProfileSummary]),
+                                                                  _lsprsResponseStatus
+                                                                  :: !Int}
+                                      deriving (Eq, Read, Show, Data, Typeable,
+                                                Generic)
 
 -- | Creates a value of 'ListSecurityProfilesResponse' with the minimum fields required to make a request.
 --
@@ -156,13 +153,11 @@ data ListSecurityProfilesResponse =
 listSecurityProfilesResponse
     :: Int -- ^ 'lsprsResponseStatus'
     -> ListSecurityProfilesResponse
-listSecurityProfilesResponse pResponseStatus_ =
-  ListSecurityProfilesResponse'
-    { _lsprsNextToken = Nothing
-    , _lsprsSecurityProfileSummaryList = Nothing
-    , _lsprsResponseStatus = pResponseStatus_
-    }
-
+listSecurityProfilesResponse pResponseStatus_
+  = ListSecurityProfilesResponse'{_lsprsNextToken =
+                                    Nothing,
+                                  _lsprsSecurityProfileSummaryList = Nothing,
+                                  _lsprsResponseStatus = pResponseStatus_}
 
 -- | If there are additional results, this is the token for the next set of results.
 lsprsNextToken :: Lens' ListSecurityProfilesResponse (Maybe Text)

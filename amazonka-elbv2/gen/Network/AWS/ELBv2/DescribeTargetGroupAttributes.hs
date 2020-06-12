@@ -38,19 +38,16 @@ module Network.AWS.ELBv2.DescribeTargetGroupAttributes
     ) where
 
 import Network.AWS.ELBv2.Types
-import Network.AWS.ELBv2.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 
 -- | /See:/ 'describeTargetGroupAttributes' smart constructor.
-newtype DescribeTargetGroupAttributes =
-  DescribeTargetGroupAttributes'
-    { _dtgaTargetGroupARN :: Text
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+newtype DescribeTargetGroupAttributes = DescribeTargetGroupAttributes'{_dtgaTargetGroupARN
+                                                                       :: Text}
+                                          deriving (Eq, Read, Show, Data,
+                                                    Typeable, Generic)
 
 -- | Creates a value of 'DescribeTargetGroupAttributes' with the minimum fields required to make a request.
 --
@@ -60,9 +57,9 @@ newtype DescribeTargetGroupAttributes =
 describeTargetGroupAttributes
     :: Text -- ^ 'dtgaTargetGroupARN'
     -> DescribeTargetGroupAttributes
-describeTargetGroupAttributes pTargetGroupARN_ =
-  DescribeTargetGroupAttributes' {_dtgaTargetGroupARN = pTargetGroupARN_}
-
+describeTargetGroupAttributes pTargetGroupARN_
+  = DescribeTargetGroupAttributes'{_dtgaTargetGroupARN
+                                     = pTargetGroupARN_}
 
 -- | The Amazon Resource Name (ARN) of the target group.
 dtgaTargetGroupARN :: Lens' DescribeTargetGroupAttributes Text
@@ -102,13 +99,15 @@ instance ToQuery DescribeTargetGroupAttributes where
                "TargetGroupArn" =: _dtgaTargetGroupARN]
 
 -- | /See:/ 'describeTargetGroupAttributesResponse' smart constructor.
-data DescribeTargetGroupAttributesResponse =
-  DescribeTargetGroupAttributesResponse'
-    { _dtgarsAttributes     :: !(Maybe [TargetGroupAttribute])
-    , _dtgarsResponseStatus :: !Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data DescribeTargetGroupAttributesResponse = DescribeTargetGroupAttributesResponse'{_dtgarsAttributes
+                                                                                    ::
+                                                                                    !(Maybe
+                                                                                        [TargetGroupAttribute]),
+                                                                                    _dtgarsResponseStatus
+                                                                                    ::
+                                                                                    !Int}
+                                               deriving (Eq, Read, Show, Data,
+                                                         Typeable, Generic)
 
 -- | Creates a value of 'DescribeTargetGroupAttributesResponse' with the minimum fields required to make a request.
 --
@@ -120,10 +119,12 @@ data DescribeTargetGroupAttributesResponse =
 describeTargetGroupAttributesResponse
     :: Int -- ^ 'dtgarsResponseStatus'
     -> DescribeTargetGroupAttributesResponse
-describeTargetGroupAttributesResponse pResponseStatus_ =
-  DescribeTargetGroupAttributesResponse'
-    {_dtgarsAttributes = Nothing, _dtgarsResponseStatus = pResponseStatus_}
-
+describeTargetGroupAttributesResponse
+  pResponseStatus_
+  = DescribeTargetGroupAttributesResponse'{_dtgarsAttributes
+                                             = Nothing,
+                                           _dtgarsResponseStatus =
+                                             pResponseStatus_}
 
 -- | Information about the target group attributes
 dtgarsAttributes :: Lens' DescribeTargetGroupAttributesResponse [TargetGroupAttribute]

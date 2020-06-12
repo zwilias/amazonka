@@ -42,20 +42,20 @@ import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 import Network.AWS.SES.Types
-import Network.AWS.SES.Types.Product
 
 -- | Represents a request to enable or disable the email sending capabilities for a specific configuration set.
 --
 --
 --
 -- /See:/ 'updateConfigurationSetSendingEnabled' smart constructor.
-data UpdateConfigurationSetSendingEnabled =
-  UpdateConfigurationSetSendingEnabled'
-    { _ucsseConfigurationSetName :: !Text
-    , _ucsseEnabled              :: !Bool
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data UpdateConfigurationSetSendingEnabled = UpdateConfigurationSetSendingEnabled'{_ucsseConfigurationSetName
+                                                                                  ::
+                                                                                  !Text,
+                                                                                  _ucsseEnabled
+                                                                                  ::
+                                                                                  !Bool}
+                                              deriving (Eq, Read, Show, Data,
+                                                        Typeable, Generic)
 
 -- | Creates a value of 'UpdateConfigurationSetSendingEnabled' with the minimum fields required to make a request.
 --
@@ -63,23 +63,22 @@ data UpdateConfigurationSetSendingEnabled =
 --
 -- * 'ucsseConfigurationSetName' - The name of the configuration set that you want to update.
 --
--- * 'ucsseEnabled' - Describes whether email sending is enabled or disabled for the configuration set.
+-- * 'ucsseEnabled' - Describes whether email sending is enabled or disabled for the configuration set. 
 updateConfigurationSetSendingEnabled
     :: Text -- ^ 'ucsseConfigurationSetName'
     -> Bool -- ^ 'ucsseEnabled'
     -> UpdateConfigurationSetSendingEnabled
-updateConfigurationSetSendingEnabled pConfigurationSetName_ pEnabled_ =
-  UpdateConfigurationSetSendingEnabled'
-    { _ucsseConfigurationSetName = pConfigurationSetName_
-    , _ucsseEnabled = pEnabled_
-    }
-
+updateConfigurationSetSendingEnabled
+  pConfigurationSetName_ pEnabled_
+  = UpdateConfigurationSetSendingEnabled'{_ucsseConfigurationSetName
+                                            = pConfigurationSetName_,
+                                          _ucsseEnabled = pEnabled_}
 
 -- | The name of the configuration set that you want to update.
 ucsseConfigurationSetName :: Lens' UpdateConfigurationSetSendingEnabled Text
 ucsseConfigurationSetName = lens _ucsseConfigurationSetName (\ s a -> s{_ucsseConfigurationSetName = a})
 
--- | Describes whether email sending is enabled or disabled for the configuration set.
+-- | Describes whether email sending is enabled or disabled for the configuration set. 
 ucsseEnabled :: Lens' UpdateConfigurationSetSendingEnabled Bool
 ucsseEnabled = lens _ucsseEnabled (\ s a -> s{_ucsseEnabled = a})
 
@@ -121,18 +120,17 @@ instance ToQuery UpdateConfigurationSetSendingEnabled
                "Enabled" =: _ucsseEnabled]
 
 -- | /See:/ 'updateConfigurationSetSendingEnabledResponse' smart constructor.
-data UpdateConfigurationSetSendingEnabledResponse =
-  UpdateConfigurationSetSendingEnabledResponse'
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data UpdateConfigurationSetSendingEnabledResponse = UpdateConfigurationSetSendingEnabledResponse'
+                                                      deriving (Eq, Read, Show,
+                                                                Data, Typeable,
+                                                                Generic)
 
 -- | Creates a value of 'UpdateConfigurationSetSendingEnabledResponse' with the minimum fields required to make a request.
 --
 updateConfigurationSetSendingEnabledResponse
     :: UpdateConfigurationSetSendingEnabledResponse
-updateConfigurationSetSendingEnabledResponse =
-  UpdateConfigurationSetSendingEnabledResponse'
-
+updateConfigurationSetSendingEnabledResponse
+  = UpdateConfigurationSetSendingEnabledResponse'
 
 instance NFData
            UpdateConfigurationSetSendingEnabledResponse

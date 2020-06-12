@@ -45,16 +45,16 @@ import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 import Network.AWS.SSM.Types
-import Network.AWS.SSM.Types.Product
 
 -- | /See:/ 'getPatchBaselineForPatchGroup' smart constructor.
-data GetPatchBaselineForPatchGroup =
-  GetPatchBaselineForPatchGroup'
-    { _gpbfpgOperatingSystem :: !(Maybe OperatingSystem)
-    , _gpbfpgPatchGroup      :: !Text
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data GetPatchBaselineForPatchGroup = GetPatchBaselineForPatchGroup'{_gpbfpgOperatingSystem
+                                                                    ::
+                                                                    !(Maybe
+                                                                        OperatingSystem),
+                                                                    _gpbfpgPatchGroup
+                                                                    :: !Text}
+                                       deriving (Eq, Read, Show, Data, Typeable,
+                                                 Generic)
 
 -- | Creates a value of 'GetPatchBaselineForPatchGroup' with the minimum fields required to make a request.
 --
@@ -66,10 +66,10 @@ data GetPatchBaselineForPatchGroup =
 getPatchBaselineForPatchGroup
     :: Text -- ^ 'gpbfpgPatchGroup'
     -> GetPatchBaselineForPatchGroup
-getPatchBaselineForPatchGroup pPatchGroup_ =
-  GetPatchBaselineForPatchGroup'
-    {_gpbfpgOperatingSystem = Nothing, _gpbfpgPatchGroup = pPatchGroup_}
-
+getPatchBaselineForPatchGroup pPatchGroup_
+  = GetPatchBaselineForPatchGroup'{_gpbfpgOperatingSystem
+                                     = Nothing,
+                                   _gpbfpgPatchGroup = pPatchGroup_}
 
 -- | Returns he operating system rule specified for patch groups using the patch baseline.
 gpbfpgOperatingSystem :: Lens' GetPatchBaselineForPatchGroup (Maybe OperatingSystem)
@@ -121,15 +121,23 @@ instance ToQuery GetPatchBaselineForPatchGroup where
         toQuery = const mempty
 
 -- | /See:/ 'getPatchBaselineForPatchGroupResponse' smart constructor.
-data GetPatchBaselineForPatchGroupResponse =
-  GetPatchBaselineForPatchGroupResponse'
-    { _gpbfpgrsOperatingSystem :: !(Maybe OperatingSystem)
-    , _gpbfpgrsBaselineId      :: !(Maybe Text)
-    , _gpbfpgrsPatchGroup      :: !(Maybe Text)
-    , _gpbfpgrsResponseStatus  :: !Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data GetPatchBaselineForPatchGroupResponse = GetPatchBaselineForPatchGroupResponse'{_gpbfpgrsOperatingSystem
+                                                                                    ::
+                                                                                    !(Maybe
+                                                                                        OperatingSystem),
+                                                                                    _gpbfpgrsBaselineId
+                                                                                    ::
+                                                                                    !(Maybe
+                                                                                        Text),
+                                                                                    _gpbfpgrsPatchGroup
+                                                                                    ::
+                                                                                    !(Maybe
+                                                                                        Text),
+                                                                                    _gpbfpgrsResponseStatus
+                                                                                    ::
+                                                                                    !Int}
+                                               deriving (Eq, Read, Show, Data,
+                                                         Typeable, Generic)
 
 -- | Creates a value of 'GetPatchBaselineForPatchGroupResponse' with the minimum fields required to make a request.
 --
@@ -145,14 +153,14 @@ data GetPatchBaselineForPatchGroupResponse =
 getPatchBaselineForPatchGroupResponse
     :: Int -- ^ 'gpbfpgrsResponseStatus'
     -> GetPatchBaselineForPatchGroupResponse
-getPatchBaselineForPatchGroupResponse pResponseStatus_ =
-  GetPatchBaselineForPatchGroupResponse'
-    { _gpbfpgrsOperatingSystem = Nothing
-    , _gpbfpgrsBaselineId = Nothing
-    , _gpbfpgrsPatchGroup = Nothing
-    , _gpbfpgrsResponseStatus = pResponseStatus_
-    }
-
+getPatchBaselineForPatchGroupResponse
+  pResponseStatus_
+  = GetPatchBaselineForPatchGroupResponse'{_gpbfpgrsOperatingSystem
+                                             = Nothing,
+                                           _gpbfpgrsBaselineId = Nothing,
+                                           _gpbfpgrsPatchGroup = Nothing,
+                                           _gpbfpgrsResponseStatus =
+                                             pResponseStatus_}
 
 -- | The operating system rule specified for patch groups using the patch baseline.
 gpbfpgrsOperatingSystem :: Lens' GetPatchBaselineForPatchGroupResponse (Maybe OperatingSystem)

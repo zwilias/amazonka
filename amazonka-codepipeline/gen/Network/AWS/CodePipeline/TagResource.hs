@@ -18,7 +18,7 @@
 -- Stability   : auto-generated
 -- Portability : non-portable (GHC extensions)
 --
--- Adds to or modifies the tags of the given resource. Tags are metadata that can be used to manage a resource.
+-- Adds to or modifies the tags of the given resource. Tags are metadata that can be used to manage a resource. 
 --
 --
 module Network.AWS.CodePipeline.TagResource
@@ -38,20 +38,16 @@ module Network.AWS.CodePipeline.TagResource
     ) where
 
 import Network.AWS.CodePipeline.Types
-import Network.AWS.CodePipeline.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 
 -- | /See:/ 'tagResource' smart constructor.
-data TagResource =
-  TagResource'
-    { _trResourceARN :: !Text
-    , _trTags        :: ![Tag]
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data TagResource = TagResource'{_trResourceARN ::
+                                !Text,
+                                _trTags :: ![Tag]}
+                     deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'TagResource' with the minimum fields required to make a request.
 --
@@ -63,9 +59,9 @@ data TagResource =
 tagResource
     :: Text -- ^ 'trResourceARN'
     -> TagResource
-tagResource pResourceARN_ =
-  TagResource' {_trResourceARN = pResourceARN_, _trTags = mempty}
-
+tagResource pResourceARN_
+  = TagResource'{_trResourceARN = pResourceARN_,
+                 _trTags = mempty}
 
 -- | The Amazon Resource Name (ARN) of the resource you want to add tags to.
 trResourceARN :: Lens' TagResource Text
@@ -110,12 +106,10 @@ instance ToQuery TagResource where
         toQuery = const mempty
 
 -- | /See:/ 'tagResourceResponse' smart constructor.
-newtype TagResourceResponse =
-  TagResourceResponse'
-    { _trrsResponseStatus :: Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+newtype TagResourceResponse = TagResourceResponse'{_trrsResponseStatus
+                                                   :: Int}
+                                deriving (Eq, Read, Show, Data, Typeable,
+                                          Generic)
 
 -- | Creates a value of 'TagResourceResponse' with the minimum fields required to make a request.
 --
@@ -125,9 +119,9 @@ newtype TagResourceResponse =
 tagResourceResponse
     :: Int -- ^ 'trrsResponseStatus'
     -> TagResourceResponse
-tagResourceResponse pResponseStatus_ =
-  TagResourceResponse' {_trrsResponseStatus = pResponseStatus_}
-
+tagResourceResponse pResponseStatus_
+  = TagResourceResponse'{_trrsResponseStatus =
+                           pResponseStatus_}
 
 -- | -- | The response status code.
 trrsResponseStatus :: Lens' TagResourceResponse Int

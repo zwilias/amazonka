@@ -40,20 +40,16 @@ module Network.AWS.CloudWatchLogs.TagLogGroup
     ) where
 
 import Network.AWS.CloudWatchLogs.Types
-import Network.AWS.CloudWatchLogs.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 
 -- | /See:/ 'tagLogGroup' smart constructor.
-data TagLogGroup =
-  TagLogGroup'
-    { _tlgLogGroupName :: !Text
-    , _tlgTags         :: !(Map Text Text)
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data TagLogGroup = TagLogGroup'{_tlgLogGroupName ::
+                                !Text,
+                                _tlgTags :: !(Map Text Text)}
+                     deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'TagLogGroup' with the minimum fields required to make a request.
 --
@@ -65,9 +61,9 @@ data TagLogGroup =
 tagLogGroup
     :: Text -- ^ 'tlgLogGroupName'
     -> TagLogGroup
-tagLogGroup pLogGroupName_ =
-  TagLogGroup' {_tlgLogGroupName = pLogGroupName_, _tlgTags = mempty}
-
+tagLogGroup pLogGroupName_
+  = TagLogGroup'{_tlgLogGroupName = pLogGroupName_,
+                 _tlgTags = mempty}
 
 -- | The name of the log group.
 tlgLogGroupName :: Lens' TagLogGroup Text
@@ -109,16 +105,13 @@ instance ToQuery TagLogGroup where
         toQuery = const mempty
 
 -- | /See:/ 'tagLogGroupResponse' smart constructor.
-data TagLogGroupResponse =
-  TagLogGroupResponse'
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data TagLogGroupResponse = TagLogGroupResponse'
+                             deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'TagLogGroupResponse' with the minimum fields required to make a request.
 --
 tagLogGroupResponse
     :: TagLogGroupResponse
 tagLogGroupResponse = TagLogGroupResponse'
-
 
 instance NFData TagLogGroupResponse where

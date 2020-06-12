@@ -91,8 +91,37 @@ library
         , Network.AWS.Organizations.Waiters
 
     other-modules:
-          Network.AWS.Organizations.Types.Product
-        , Network.AWS.Organizations.Types.Sum
+          Network.AWS.Organizations.Types.Account
+        , Network.AWS.Organizations.Types.AccountJoinedMethod
+        , Network.AWS.Organizations.Types.AccountStatus
+        , Network.AWS.Organizations.Types.ActionType
+        , Network.AWS.Organizations.Types.Child
+        , Network.AWS.Organizations.Types.ChildType
+        , Network.AWS.Organizations.Types.CreateAccountFailureReason
+        , Network.AWS.Organizations.Types.CreateAccountState
+        , Network.AWS.Organizations.Types.CreateAccountStatus
+        , Network.AWS.Organizations.Types.EnabledServicePrincipal
+        , Network.AWS.Organizations.Types.Handshake
+        , Network.AWS.Organizations.Types.HandshakeFilter
+        , Network.AWS.Organizations.Types.HandshakeParty
+        , Network.AWS.Organizations.Types.HandshakePartyType
+        , Network.AWS.Organizations.Types.HandshakeResource
+        , Network.AWS.Organizations.Types.HandshakeResourceType
+        , Network.AWS.Organizations.Types.HandshakeState
+        , Network.AWS.Organizations.Types.IAMUserAccessToBilling
+        , Network.AWS.Organizations.Types.Organization
+        , Network.AWS.Organizations.Types.OrganizationFeatureSet
+        , Network.AWS.Organizations.Types.OrganizationalUnit
+        , Network.AWS.Organizations.Types.Parent
+        , Network.AWS.Organizations.Types.ParentType
+        , Network.AWS.Organizations.Types.Policy
+        , Network.AWS.Organizations.Types.PolicySummary
+        , Network.AWS.Organizations.Types.PolicyTargetSummary
+        , Network.AWS.Organizations.Types.PolicyType
+        , Network.AWS.Organizations.Types.PolicyTypeStatus
+        , Network.AWS.Organizations.Types.PolicyTypeSummary
+        , Network.AWS.Organizations.Types.Root
+        , Network.AWS.Organizations.Types.TargetType
 
     build-depends:
           amazonka-core == 1.6.1.*

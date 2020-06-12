@@ -43,19 +43,15 @@ module Network.AWS.LexModels.DeleteUtterances
 
 import Network.AWS.Lens
 import Network.AWS.LexModels.Types
-import Network.AWS.LexModels.Types.Product
 import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 
 -- | /See:/ 'deleteUtterances' smart constructor.
-data DeleteUtterances =
-  DeleteUtterances'
-    { _duBotName :: !Text
-    , _duUserId  :: !Text
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data DeleteUtterances = DeleteUtterances'{_duBotName
+                                          :: !Text,
+                                          _duUserId :: !Text}
+                          deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'DeleteUtterances' with the minimum fields required to make a request.
 --
@@ -68,9 +64,9 @@ deleteUtterances
     :: Text -- ^ 'duBotName'
     -> Text -- ^ 'duUserId'
     -> DeleteUtterances
-deleteUtterances pBotName_ pUserId_ =
-  DeleteUtterances' {_duBotName = pBotName_, _duUserId = pUserId_}
-
+deleteUtterances pBotName_ pUserId_
+  = DeleteUtterances'{_duBotName = pBotName_,
+                      _duUserId = pUserId_}
 
 -- | The name of the bot that stored the utterances.
 duBotName :: Lens' DeleteUtterances Text
@@ -106,16 +102,14 @@ instance ToQuery DeleteUtterances where
         toQuery = const mempty
 
 -- | /See:/ 'deleteUtterancesResponse' smart constructor.
-data DeleteUtterancesResponse =
-  DeleteUtterancesResponse'
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data DeleteUtterancesResponse = DeleteUtterancesResponse'
+                                  deriving (Eq, Read, Show, Data, Typeable,
+                                            Generic)
 
 -- | Creates a value of 'DeleteUtterancesResponse' with the minimum fields required to make a request.
 --
 deleteUtterancesResponse
     :: DeleteUtterancesResponse
 deleteUtterancesResponse = DeleteUtterancesResponse'
-
 
 instance NFData DeleteUtterancesResponse where

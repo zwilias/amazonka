@@ -47,7 +47,6 @@ module Network.AWS.MediaLive.DescribeChannel
 
 import Network.AWS.Lens
 import Network.AWS.MediaLive.Types
-import Network.AWS.MediaLive.Types.Product
 import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
@@ -55,12 +54,9 @@ import Network.AWS.Response
 -- | Placeholder documentation for DescribeChannelRequest
 --
 -- /See:/ 'describeChannel' smart constructor.
-newtype DescribeChannel =
-  DescribeChannel'
-    { _dChannelId :: Text
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+newtype DescribeChannel = DescribeChannel'{_dChannelId
+                                           :: Text}
+                            deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'DescribeChannel' with the minimum fields required to make a request.
 --
@@ -70,8 +66,8 @@ newtype DescribeChannel =
 describeChannel
     :: Text -- ^ 'dChannelId'
     -> DescribeChannel
-describeChannel pChannelId_ = DescribeChannel' {_dChannelId = pChannelId_}
-
+describeChannel pChannelId_
+  = DescribeChannel'{_dChannelId = pChannelId_}
 
 -- | channel ID
 dChannelId :: Lens' DescribeChannel Text
@@ -117,23 +113,39 @@ instance ToQuery DescribeChannel where
 -- | Placeholder documentation for DescribeChannelResponse
 --
 -- /See:/ 'describeChannelResponse' smart constructor.
-data DescribeChannelResponse =
-  DescribeChannelResponse'
-    { _dcrsState                 :: !(Maybe ChannelState)
-    , _dcrsARN                   :: !(Maybe Text)
-    , _dcrsPipelinesRunningCount :: !(Maybe Int)
-    , _dcrsInputSpecification    :: !(Maybe InputSpecification)
-    , _dcrsInputAttachments      :: !(Maybe [InputAttachment])
-    , _dcrsDestinations          :: !(Maybe [OutputDestination])
-    , _dcrsName                  :: !(Maybe Text)
-    , _dcrsId                    :: !(Maybe Text)
-    , _dcrsEgressEndpoints       :: !(Maybe [ChannelEgressEndpoint])
-    , _dcrsEncoderSettings       :: !(Maybe EncoderSettings)
-    , _dcrsRoleARN               :: !(Maybe Text)
-    , _dcrsResponseStatus        :: !Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data DescribeChannelResponse = DescribeChannelResponse'{_dcrsState
+                                                        ::
+                                                        !(Maybe ChannelState),
+                                                        _dcrsARN ::
+                                                        !(Maybe Text),
+                                                        _dcrsPipelinesRunningCount
+                                                        :: !(Maybe Int),
+                                                        _dcrsInputSpecification
+                                                        ::
+                                                        !(Maybe
+                                                            InputSpecification),
+                                                        _dcrsInputAttachments ::
+                                                        !(Maybe
+                                                            [InputAttachment]),
+                                                        _dcrsDestinations ::
+                                                        !(Maybe
+                                                            [OutputDestination]),
+                                                        _dcrsName ::
+                                                        !(Maybe Text),
+                                                        _dcrsId ::
+                                                        !(Maybe Text),
+                                                        _dcrsEgressEndpoints ::
+                                                        !(Maybe
+                                                            [ChannelEgressEndpoint]),
+                                                        _dcrsEncoderSettings ::
+                                                        !(Maybe
+                                                            EncoderSettings),
+                                                        _dcrsRoleARN ::
+                                                        !(Maybe Text),
+                                                        _dcrsResponseStatus ::
+                                                        !Int}
+                                 deriving (Eq, Read, Show, Data, Typeable,
+                                           Generic)
 
 -- | Creates a value of 'DescribeChannelResponse' with the minimum fields required to make a request.
 --
@@ -165,22 +177,17 @@ data DescribeChannelResponse =
 describeChannelResponse
     :: Int -- ^ 'dcrsResponseStatus'
     -> DescribeChannelResponse
-describeChannelResponse pResponseStatus_ =
-  DescribeChannelResponse'
-    { _dcrsState = Nothing
-    , _dcrsARN = Nothing
-    , _dcrsPipelinesRunningCount = Nothing
-    , _dcrsInputSpecification = Nothing
-    , _dcrsInputAttachments = Nothing
-    , _dcrsDestinations = Nothing
-    , _dcrsName = Nothing
-    , _dcrsId = Nothing
-    , _dcrsEgressEndpoints = Nothing
-    , _dcrsEncoderSettings = Nothing
-    , _dcrsRoleARN = Nothing
-    , _dcrsResponseStatus = pResponseStatus_
-    }
-
+describeChannelResponse pResponseStatus_
+  = DescribeChannelResponse'{_dcrsState = Nothing,
+                             _dcrsARN = Nothing,
+                             _dcrsPipelinesRunningCount = Nothing,
+                             _dcrsInputSpecification = Nothing,
+                             _dcrsInputAttachments = Nothing,
+                             _dcrsDestinations = Nothing, _dcrsName = Nothing,
+                             _dcrsId = Nothing, _dcrsEgressEndpoints = Nothing,
+                             _dcrsEncoderSettings = Nothing,
+                             _dcrsRoleARN = Nothing,
+                             _dcrsResponseStatus = pResponseStatus_}
 
 -- | Undocumented member.
 dcrsState :: Lens' DescribeChannelResponse (Maybe ChannelState)

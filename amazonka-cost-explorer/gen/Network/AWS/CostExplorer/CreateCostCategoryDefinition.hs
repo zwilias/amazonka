@@ -41,21 +41,22 @@ module Network.AWS.CostExplorer.CreateCostCategoryDefinition
     ) where
 
 import Network.AWS.CostExplorer.Types
-import Network.AWS.CostExplorer.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 
 -- | /See:/ 'createCostCategoryDefinition' smart constructor.
-data CreateCostCategoryDefinition =
-  CreateCostCategoryDefinition'
-    { _cccdName        :: !Text
-    , _cccdRuleVersion :: !CostCategoryRuleVersion
-    , _cccdRules       :: !(List1 CostCategoryRule)
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data CreateCostCategoryDefinition = CreateCostCategoryDefinition'{_cccdName
+                                                                  :: !Text,
+                                                                  _cccdRuleVersion
+                                                                  ::
+                                                                  !CostCategoryRuleVersion,
+                                                                  _cccdRules ::
+                                                                  !(List1
+                                                                      CostCategoryRule)}
+                                      deriving (Eq, Read, Show, Data, Typeable,
+                                                Generic)
 
 -- | Creates a value of 'CreateCostCategoryDefinition' with the minimum fields required to make a request.
 --
@@ -71,13 +72,11 @@ createCostCategoryDefinition
     -> CostCategoryRuleVersion -- ^ 'cccdRuleVersion'
     -> NonEmpty CostCategoryRule -- ^ 'cccdRules'
     -> CreateCostCategoryDefinition
-createCostCategoryDefinition pName_ pRuleVersion_ pRules_ =
-  CreateCostCategoryDefinition'
-    { _cccdName = pName_
-    , _cccdRuleVersion = pRuleVersion_
-    , _cccdRules = _List1 # pRules_
-    }
-
+createCostCategoryDefinition pName_ pRuleVersion_
+  pRules_
+  = CreateCostCategoryDefinition'{_cccdName = pName_,
+                                  _cccdRuleVersion = pRuleVersion_,
+                                  _cccdRules = _List1 # pRules_}
 
 -- | Undocumented member.
 cccdName :: Lens' CreateCostCategoryDefinition Text
@@ -133,40 +132,44 @@ instance ToQuery CreateCostCategoryDefinition where
         toQuery = const mempty
 
 -- | /See:/ 'createCostCategoryDefinitionResponse' smart constructor.
-data CreateCostCategoryDefinitionResponse =
-  CreateCostCategoryDefinitionResponse'
-    { _cccdrsEffectiveStart  :: !(Maybe Text)
-    , _cccdrsCostCategoryARN :: !(Maybe Text)
-    , _cccdrsResponseStatus  :: !Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data CreateCostCategoryDefinitionResponse = CreateCostCategoryDefinitionResponse'{_cccdrsEffectiveStart
+                                                                                  ::
+                                                                                  !(Maybe
+                                                                                      Text),
+                                                                                  _cccdrsCostCategoryARN
+                                                                                  ::
+                                                                                  !(Maybe
+                                                                                      Text),
+                                                                                  _cccdrsResponseStatus
+                                                                                  ::
+                                                                                  !Int}
+                                              deriving (Eq, Read, Show, Data,
+                                                        Typeable, Generic)
 
 -- | Creates a value of 'CreateCostCategoryDefinitionResponse' with the minimum fields required to make a request.
 --
 -- Use one of the following lenses to modify other fields as desired:
 --
--- * 'cccdrsEffectiveStart' - The Cost Category's effective start date.
+-- * 'cccdrsEffectiveStart' - The Cost Category's effective start date. 
 --
--- * 'cccdrsCostCategoryARN' - The unique identifier for your newly created Cost Category.
+-- * 'cccdrsCostCategoryARN' - The unique identifier for your newly created Cost Category. 
 --
 -- * 'cccdrsResponseStatus' - -- | The response status code.
 createCostCategoryDefinitionResponse
     :: Int -- ^ 'cccdrsResponseStatus'
     -> CreateCostCategoryDefinitionResponse
-createCostCategoryDefinitionResponse pResponseStatus_ =
-  CreateCostCategoryDefinitionResponse'
-    { _cccdrsEffectiveStart = Nothing
-    , _cccdrsCostCategoryARN = Nothing
-    , _cccdrsResponseStatus = pResponseStatus_
-    }
+createCostCategoryDefinitionResponse pResponseStatus_
+  = CreateCostCategoryDefinitionResponse'{_cccdrsEffectiveStart
+                                            = Nothing,
+                                          _cccdrsCostCategoryARN = Nothing,
+                                          _cccdrsResponseStatus =
+                                            pResponseStatus_}
 
-
--- | The Cost Category's effective start date.
+-- | The Cost Category's effective start date. 
 cccdrsEffectiveStart :: Lens' CreateCostCategoryDefinitionResponse (Maybe Text)
 cccdrsEffectiveStart = lens _cccdrsEffectiveStart (\ s a -> s{_cccdrsEffectiveStart = a})
 
--- | The unique identifier for your newly created Cost Category.
+-- | The unique identifier for your newly created Cost Category. 
 cccdrsCostCategoryARN :: Lens' CreateCostCategoryDefinitionResponse (Maybe Text)
 cccdrsCostCategoryARN = lens _cccdrsCostCategoryARN (\ s a -> s{_cccdrsCostCategoryARN = a})
 

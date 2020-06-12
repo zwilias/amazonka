@@ -27,7 +27,7 @@
 --
 --     * The message must be sent from a verified email address or domain.
 --
---     * If your account is still in the Amazon SES sandbox, you may only send to verified addresses or domains, or to email addresses associated with the Amazon SES Mailbox Simulator. For more information, see <http://docs.aws.amazon.com/ses/latest/DeveloperGuide/verify-addresses-and-domains.html Verifying Email Addresses and Domains> in the /Amazon SES Developer Guide./
+--     * If your account is still in the Amazon SES sandbox, you may only send to verified addresses or domains, or to email addresses associated with the Amazon SES Mailbox Simulator. For more information, see <http://docs.aws.amazon.com/ses/latest/DeveloperGuide/verify-addresses-and-domains.html Verifying Email Addresses and Domains> in the /Amazon SES Developer Guide./ 
 --
 --     * The total size of the message, including attachments, must be less than 10 MB.
 --
@@ -68,35 +68,34 @@ import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 import Network.AWS.SES.Types
-import Network.AWS.SES.Types.Product
 
 -- | Represents a request to send a templated email using Amazon SES. For more information, see the <http://docs.aws.amazon.com/ses/latest/DeveloperGuide/send-personalized-email-api.html Amazon SES Developer Guide> .
 --
 --
 --
 -- /See:/ 'sendTemplatedEmail' smart constructor.
-data SendTemplatedEmail =
-  SendTemplatedEmail'
-    { _steReturnPath           :: !(Maybe Text)
-    , _steConfigurationSetName :: !(Maybe Text)
-    , _steSourceARN            :: !(Maybe Text)
-    , _steReturnPathARN        :: !(Maybe Text)
-    , _steTemplateARN          :: !(Maybe Text)
-    , _steTags                 :: !(Maybe [MessageTag])
-    , _steReplyToAddresses     :: !(Maybe [Text])
-    , _steSource               :: !Text
-    , _steDestination          :: !Destination
-    , _steTemplate             :: !Text
-    , _steTemplateData         :: !Text
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data SendTemplatedEmail = SendTemplatedEmail'{_steReturnPath
+                                              :: !(Maybe Text),
+                                              _steConfigurationSetName ::
+                                              !(Maybe Text),
+                                              _steSourceARN :: !(Maybe Text),
+                                              _steReturnPathARN ::
+                                              !(Maybe Text),
+                                              _steTemplateARN :: !(Maybe Text),
+                                              _steTags :: !(Maybe [MessageTag]),
+                                              _steReplyToAddresses ::
+                                              !(Maybe [Text]),
+                                              _steSource :: !Text,
+                                              _steDestination :: !Destination,
+                                              _steTemplate :: !Text,
+                                              _steTemplateData :: !Text}
+                            deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'SendTemplatedEmail' with the minimum fields required to make a request.
 --
 -- Use one of the following lenses to modify other fields as desired:
 --
--- * 'steReturnPath' - The email address that bounces and complaints will be forwarded to when feedback forwarding is enabled. If the message cannot be delivered to the recipient, then an error message will be returned from the recipient's ISP; this message will then be forwarded to the email address specified by the @ReturnPath@ parameter. The @ReturnPath@ parameter is never overwritten. This email address must be either individually verified with Amazon SES, or from a domain that has been verified with Amazon SES.
+-- * 'steReturnPath' - The email address that bounces and complaints will be forwarded to when feedback forwarding is enabled. If the message cannot be delivered to the recipient, then an error message will be returned from the recipient's ISP; this message will then be forwarded to the email address specified by the @ReturnPath@ parameter. The @ReturnPath@ parameter is never overwritten. This email address must be either individually verified with Amazon SES, or from a domain that has been verified with Amazon SES. 
 --
 -- * 'steConfigurationSetName' - The name of the configuration set to use when you send an email using @SendTemplatedEmail@ .
 --
@@ -123,23 +122,19 @@ sendTemplatedEmail
     -> Text -- ^ 'steTemplate'
     -> Text -- ^ 'steTemplateData'
     -> SendTemplatedEmail
-sendTemplatedEmail pSource_ pDestination_ pTemplate_ pTemplateData_ =
-  SendTemplatedEmail'
-    { _steReturnPath = Nothing
-    , _steConfigurationSetName = Nothing
-    , _steSourceARN = Nothing
-    , _steReturnPathARN = Nothing
-    , _steTemplateARN = Nothing
-    , _steTags = Nothing
-    , _steReplyToAddresses = Nothing
-    , _steSource = pSource_
-    , _steDestination = pDestination_
-    , _steTemplate = pTemplate_
-    , _steTemplateData = pTemplateData_
-    }
+sendTemplatedEmail pSource_ pDestination_ pTemplate_
+  pTemplateData_
+  = SendTemplatedEmail'{_steReturnPath = Nothing,
+                        _steConfigurationSetName = Nothing,
+                        _steSourceARN = Nothing, _steReturnPathARN = Nothing,
+                        _steTemplateARN = Nothing, _steTags = Nothing,
+                        _steReplyToAddresses = Nothing,
+                        _steSource = pSource_,
+                        _steDestination = pDestination_,
+                        _steTemplate = pTemplate_,
+                        _steTemplateData = pTemplateData_}
 
-
--- | The email address that bounces and complaints will be forwarded to when feedback forwarding is enabled. If the message cannot be delivered to the recipient, then an error message will be returned from the recipient's ISP; this message will then be forwarded to the email address specified by the @ReturnPath@ parameter. The @ReturnPath@ parameter is never overwritten. This email address must be either individually verified with Amazon SES, or from a domain that has been verified with Amazon SES.
+-- | The email address that bounces and complaints will be forwarded to when feedback forwarding is enabled. If the message cannot be delivered to the recipient, then an error message will be returned from the recipient's ISP; this message will then be forwarded to the email address specified by the @ReturnPath@ parameter. The @ReturnPath@ parameter is never overwritten. This email address must be either individually verified with Amazon SES, or from a domain that has been verified with Amazon SES. 
 steReturnPath :: Lens' SendTemplatedEmail (Maybe Text)
 steReturnPath = lens _steReturnPath (\ s a -> s{_steReturnPath = a})
 
@@ -224,13 +219,12 @@ instance ToQuery SendTemplatedEmail where
                "TemplateData" =: _steTemplateData]
 
 -- | /See:/ 'sendTemplatedEmailResponse' smart constructor.
-data SendTemplatedEmailResponse =
-  SendTemplatedEmailResponse'
-    { _stersResponseStatus :: !Int
-    , _stersMessageId      :: !Text
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data SendTemplatedEmailResponse = SendTemplatedEmailResponse'{_stersResponseStatus
+                                                              :: !Int,
+                                                              _stersMessageId ::
+                                                              !Text}
+                                    deriving (Eq, Read, Show, Data, Typeable,
+                                              Generic)
 
 -- | Creates a value of 'SendTemplatedEmailResponse' with the minimum fields required to make a request.
 --
@@ -238,21 +232,22 @@ data SendTemplatedEmailResponse =
 --
 -- * 'stersResponseStatus' - -- | The response status code.
 --
--- * 'stersMessageId' - The unique message identifier returned from the @SendTemplatedEmail@ action.
+-- * 'stersMessageId' - The unique message identifier returned from the @SendTemplatedEmail@ action. 
 sendTemplatedEmailResponse
     :: Int -- ^ 'stersResponseStatus'
     -> Text -- ^ 'stersMessageId'
     -> SendTemplatedEmailResponse
-sendTemplatedEmailResponse pResponseStatus_ pMessageId_ =
-  SendTemplatedEmailResponse'
-    {_stersResponseStatus = pResponseStatus_, _stersMessageId = pMessageId_}
-
+sendTemplatedEmailResponse pResponseStatus_
+  pMessageId_
+  = SendTemplatedEmailResponse'{_stersResponseStatus =
+                                  pResponseStatus_,
+                                _stersMessageId = pMessageId_}
 
 -- | -- | The response status code.
 stersResponseStatus :: Lens' SendTemplatedEmailResponse Int
 stersResponseStatus = lens _stersResponseStatus (\ s a -> s{_stersResponseStatus = a})
 
--- | The unique message identifier returned from the @SendTemplatedEmail@ action.
+-- | The unique message identifier returned from the @SendTemplatedEmail@ action. 
 stersMessageId :: Lens' SendTemplatedEmailResponse Text
 stersMessageId = lens _stersMessageId (\ s a -> s{_stersMessageId = a})
 

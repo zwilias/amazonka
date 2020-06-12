@@ -21,7 +21,7 @@
 -- Records a @WorkflowExecutionSignaled@ event in the workflow execution history and creates a decision task for the workflow execution identified by the given domain, workflowId and runId. The event is recorded with the specified user defined signalName and input (if provided).
 --
 --
--- __Access Control__
+-- __Access Control__ 
 --
 -- You can use IAM policies to control this action's access to Amazon SWF resources as follows:
 --
@@ -57,19 +57,17 @@ import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 import Network.AWS.SWF.Types
-import Network.AWS.SWF.Types.Product
 
 -- | /See:/ 'signalWorkflowExecution' smart constructor.
-data SignalWorkflowExecution =
-  SignalWorkflowExecution'
-    { _sweInput      :: !(Maybe Text)
-    , _sweRunId      :: !(Maybe Text)
-    , _sweDomain     :: !Text
-    , _sweWorkflowId :: !Text
-    , _sweSignalName :: !Text
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data SignalWorkflowExecution = SignalWorkflowExecution'{_sweInput
+                                                        :: !(Maybe Text),
+                                                        _sweRunId ::
+                                                        !(Maybe Text),
+                                                        _sweDomain :: !Text,
+                                                        _sweWorkflowId :: !Text,
+                                                        _sweSignalName :: !Text}
+                                 deriving (Eq, Read, Show, Data, Typeable,
+                                           Generic)
 
 -- | Creates a value of 'SignalWorkflowExecution' with the minimum fields required to make a request.
 --
@@ -89,15 +87,12 @@ signalWorkflowExecution
     -> Text -- ^ 'sweWorkflowId'
     -> Text -- ^ 'sweSignalName'
     -> SignalWorkflowExecution
-signalWorkflowExecution pDomain_ pWorkflowId_ pSignalName_ =
-  SignalWorkflowExecution'
-    { _sweInput = Nothing
-    , _sweRunId = Nothing
-    , _sweDomain = pDomain_
-    , _sweWorkflowId = pWorkflowId_
-    , _sweSignalName = pSignalName_
-    }
-
+signalWorkflowExecution pDomain_ pWorkflowId_
+  pSignalName_
+  = SignalWorkflowExecution'{_sweInput = Nothing,
+                             _sweRunId = Nothing, _sweDomain = pDomain_,
+                             _sweWorkflowId = pWorkflowId_,
+                             _sweSignalName = pSignalName_}
 
 -- | Data to attach to the @WorkflowExecutionSignaled@ event in the target workflow execution's history.
 sweInput :: Lens' SignalWorkflowExecution (Maybe Text)
@@ -157,16 +152,15 @@ instance ToQuery SignalWorkflowExecution where
         toQuery = const mempty
 
 -- | /See:/ 'signalWorkflowExecutionResponse' smart constructor.
-data SignalWorkflowExecutionResponse =
-  SignalWorkflowExecutionResponse'
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data SignalWorkflowExecutionResponse = SignalWorkflowExecutionResponse'
+                                         deriving (Eq, Read, Show, Data,
+                                                   Typeable, Generic)
 
 -- | Creates a value of 'SignalWorkflowExecutionResponse' with the minimum fields required to make a request.
 --
 signalWorkflowExecutionResponse
     :: SignalWorkflowExecutionResponse
-signalWorkflowExecutionResponse = SignalWorkflowExecutionResponse'
-
+signalWorkflowExecutionResponse
+  = SignalWorkflowExecutionResponse'
 
 instance NFData SignalWorkflowExecutionResponse where

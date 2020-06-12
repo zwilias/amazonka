@@ -58,7 +58,6 @@ module Network.AWS.IAM.SimulateCustomPolicy
     ) where
 
 import Network.AWS.IAM.Types
-import Network.AWS.IAM.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Pager
 import Network.AWS.Prelude
@@ -66,21 +65,24 @@ import Network.AWS.Request
 import Network.AWS.Response
 
 -- | /See:/ 'simulateCustomPolicy' smart constructor.
-data SimulateCustomPolicy =
-  SimulateCustomPolicy'
-    { _scpResourcePolicy         :: !(Maybe Text)
-    , _scpCallerARN              :: !(Maybe Text)
-    , _scpResourceHandlingOption :: !(Maybe Text)
-    , _scpResourceARNs           :: !(Maybe [Text])
-    , _scpMarker                 :: !(Maybe Text)
-    , _scpMaxItems               :: !(Maybe Nat)
-    , _scpContextEntries         :: !(Maybe [ContextEntry])
-    , _scpResourceOwner          :: !(Maybe Text)
-    , _scpPolicyInputList        :: ![Text]
-    , _scpActionNames            :: ![Text]
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data SimulateCustomPolicy = SimulateCustomPolicy'{_scpResourcePolicy
+                                                  :: !(Maybe Text),
+                                                  _scpCallerARN ::
+                                                  !(Maybe Text),
+                                                  _scpResourceHandlingOption ::
+                                                  !(Maybe Text),
+                                                  _scpResourceARNs ::
+                                                  !(Maybe [Text]),
+                                                  _scpMarker :: !(Maybe Text),
+                                                  _scpMaxItems :: !(Maybe Nat),
+                                                  _scpContextEntries ::
+                                                  !(Maybe [ContextEntry]),
+                                                  _scpResourceOwner ::
+                                                  !(Maybe Text),
+                                                  _scpPolicyInputList ::
+                                                  ![Text],
+                                                  _scpActionNames :: ![Text]}
+                              deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'SimulateCustomPolicy' with the minimum fields required to make a request.
 --
@@ -107,20 +109,15 @@ data SimulateCustomPolicy =
 -- * 'scpActionNames' - A list of names of API operations to evaluate in the simulation. Each operation is evaluated against each resource. Each operation must include the service identifier, such as @iam:CreateUser@ .
 simulateCustomPolicy
     :: SimulateCustomPolicy
-simulateCustomPolicy =
-  SimulateCustomPolicy'
-    { _scpResourcePolicy = Nothing
-    , _scpCallerARN = Nothing
-    , _scpResourceHandlingOption = Nothing
-    , _scpResourceARNs = Nothing
-    , _scpMarker = Nothing
-    , _scpMaxItems = Nothing
-    , _scpContextEntries = Nothing
-    , _scpResourceOwner = Nothing
-    , _scpPolicyInputList = mempty
-    , _scpActionNames = mempty
-    }
-
+simulateCustomPolicy
+  = SimulateCustomPolicy'{_scpResourcePolicy = Nothing,
+                          _scpCallerARN = Nothing,
+                          _scpResourceHandlingOption = Nothing,
+                          _scpResourceARNs = Nothing, _scpMarker = Nothing,
+                          _scpMaxItems = Nothing, _scpContextEntries = Nothing,
+                          _scpResourceOwner = Nothing,
+                          _scpPolicyInputList = mempty,
+                          _scpActionNames = mempty}
 
 -- | A resource-based policy to include in the simulation provided as a string. Each resource in the simulation is treated as if it had this policy attached. You can include only one resource-based policy in a simulation. The <http://wikipedia.org/wiki/regex regex pattern> used to validate this parameter is a string of characters consisting of the following:     * Any printable ASCII character ranging from the space character (\u0020) through the end of the ASCII character range     * The printable characters in the Basic Latin and Latin-1 Supplement character set (through \u00FF)     * The special characters tab (\u0009), line feed (\u000A), and carriage return (\u000D)
 scpResourcePolicy :: Lens' SimulateCustomPolicy (Maybe Text)

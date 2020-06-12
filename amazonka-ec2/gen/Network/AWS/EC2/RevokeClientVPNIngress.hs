@@ -18,7 +18,7 @@
 -- Stability   : auto-generated
 -- Portability : non-portable (GHC extensions)
 --
--- Removes an ingress authorization rule from a Client VPN endpoint.
+-- Removes an ingress authorization rule from a Client VPN endpoint. 
 --
 --
 module Network.AWS.EC2.RevokeClientVPNIngress
@@ -42,29 +42,30 @@ module Network.AWS.EC2.RevokeClientVPNIngress
     ) where
 
 import Network.AWS.EC2.Types
-import Network.AWS.EC2.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 
 -- | /See:/ 'revokeClientVPNIngress' smart constructor.
-data RevokeClientVPNIngress =
-  RevokeClientVPNIngress'
-    { _rcviAccessGroupId       :: !(Maybe Text)
-    , _rcviRevokeAllGroups     :: !(Maybe Bool)
-    , _rcviDryRun              :: !(Maybe Bool)
-    , _rcviClientVPNEndpointId :: !Text
-    , _rcviTargetNetworkCidr   :: !Text
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data RevokeClientVPNIngress = RevokeClientVPNIngress'{_rcviAccessGroupId
+                                                      :: !(Maybe Text),
+                                                      _rcviRevokeAllGroups ::
+                                                      !(Maybe Bool),
+                                                      _rcviDryRun ::
+                                                      !(Maybe Bool),
+                                                      _rcviClientVPNEndpointId
+                                                      :: !Text,
+                                                      _rcviTargetNetworkCidr ::
+                                                      !Text}
+                                deriving (Eq, Read, Show, Data, Typeable,
+                                          Generic)
 
 -- | Creates a value of 'RevokeClientVPNIngress' with the minimum fields required to make a request.
 --
 -- Use one of the following lenses to modify other fields as desired:
 --
--- * 'rcviAccessGroupId' - The ID of the Active Directory group for which to revoke access.
+-- * 'rcviAccessGroupId' - The ID of the Active Directory group for which to revoke access. 
 --
 -- * 'rcviRevokeAllGroups' - Indicates whether access should be revoked for all clients.
 --
@@ -77,17 +78,16 @@ revokeClientVPNIngress
     :: Text -- ^ 'rcviClientVPNEndpointId'
     -> Text -- ^ 'rcviTargetNetworkCidr'
     -> RevokeClientVPNIngress
-revokeClientVPNIngress pClientVPNEndpointId_ pTargetNetworkCidr_ =
-  RevokeClientVPNIngress'
-    { _rcviAccessGroupId = Nothing
-    , _rcviRevokeAllGroups = Nothing
-    , _rcviDryRun = Nothing
-    , _rcviClientVPNEndpointId = pClientVPNEndpointId_
-    , _rcviTargetNetworkCidr = pTargetNetworkCidr_
-    }
+revokeClientVPNIngress pClientVPNEndpointId_
+  pTargetNetworkCidr_
+  = RevokeClientVPNIngress'{_rcviAccessGroupId =
+                              Nothing,
+                            _rcviRevokeAllGroups = Nothing,
+                            _rcviDryRun = Nothing,
+                            _rcviClientVPNEndpointId = pClientVPNEndpointId_,
+                            _rcviTargetNetworkCidr = pTargetNetworkCidr_}
 
-
--- | The ID of the Active Directory group for which to revoke access.
+-- | The ID of the Active Directory group for which to revoke access. 
 rcviAccessGroupId :: Lens' RevokeClientVPNIngress (Maybe Text)
 rcviAccessGroupId = lens _rcviAccessGroupId (\ s a -> s{_rcviAccessGroupId = a})
 
@@ -140,13 +140,14 @@ instance ToQuery RevokeClientVPNIngress where
                "TargetNetworkCidr" =: _rcviTargetNetworkCidr]
 
 -- | /See:/ 'revokeClientVPNIngressResponse' smart constructor.
-data RevokeClientVPNIngressResponse =
-  RevokeClientVPNIngressResponse'
-    { _rcvirsStatus         :: !(Maybe ClientVPNAuthorizationRuleStatus)
-    , _rcvirsResponseStatus :: !Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data RevokeClientVPNIngressResponse = RevokeClientVPNIngressResponse'{_rcvirsStatus
+                                                                      ::
+                                                                      !(Maybe
+                                                                          ClientVPNAuthorizationRuleStatus),
+                                                                      _rcvirsResponseStatus
+                                                                      :: !Int}
+                                        deriving (Eq, Read, Show, Data,
+                                                  Typeable, Generic)
 
 -- | Creates a value of 'RevokeClientVPNIngressResponse' with the minimum fields required to make a request.
 --
@@ -158,10 +159,10 @@ data RevokeClientVPNIngressResponse =
 revokeClientVPNIngressResponse
     :: Int -- ^ 'rcvirsResponseStatus'
     -> RevokeClientVPNIngressResponse
-revokeClientVPNIngressResponse pResponseStatus_ =
-  RevokeClientVPNIngressResponse'
-    {_rcvirsStatus = Nothing, _rcvirsResponseStatus = pResponseStatus_}
-
+revokeClientVPNIngressResponse pResponseStatus_
+  = RevokeClientVPNIngressResponse'{_rcvirsStatus =
+                                      Nothing,
+                                    _rcvirsResponseStatus = pResponseStatus_}
 
 -- | The current state of the authorization rule.
 rcvirsStatus :: Lens' RevokeClientVPNIngressResponse (Maybe ClientVPNAuthorizationRuleStatus)

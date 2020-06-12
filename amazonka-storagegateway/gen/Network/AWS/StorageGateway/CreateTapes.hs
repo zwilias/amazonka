@@ -46,23 +46,19 @@ import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 import Network.AWS.StorageGateway.Types
-import Network.AWS.StorageGateway.Types.Product
 
 -- | CreateTapesInput
 --
 --
 --
 -- /See:/ 'createTapes' smart constructor.
-data CreateTapes =
-  CreateTapes'
-    { _ctGatewayARN        :: !Text
-    , _ctTapeSizeInBytes   :: !Integer
-    , _ctClientToken       :: !Text
-    , _ctNumTapesToCreate  :: !Nat
-    , _ctTapeBarcodePrefix :: !Text
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data CreateTapes = CreateTapes'{_ctGatewayARN ::
+                                !Text,
+                                _ctTapeSizeInBytes :: !Integer,
+                                _ctClientToken :: !Text,
+                                _ctNumTapesToCreate :: !Nat,
+                                _ctTapeBarcodePrefix :: !Text}
+                     deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'CreateTapes' with the minimum fields required to make a request.
 --
@@ -84,15 +80,13 @@ createTapes
     -> Natural -- ^ 'ctNumTapesToCreate'
     -> Text -- ^ 'ctTapeBarcodePrefix'
     -> CreateTapes
-createTapes pGatewayARN_ pTapeSizeInBytes_ pClientToken_ pNumTapesToCreate_ pTapeBarcodePrefix_ =
-  CreateTapes'
-    { _ctGatewayARN = pGatewayARN_
-    , _ctTapeSizeInBytes = pTapeSizeInBytes_
-    , _ctClientToken = pClientToken_
-    , _ctNumTapesToCreate = _Nat # pNumTapesToCreate_
-    , _ctTapeBarcodePrefix = pTapeBarcodePrefix_
-    }
-
+createTapes pGatewayARN_ pTapeSizeInBytes_
+  pClientToken_ pNumTapesToCreate_ pTapeBarcodePrefix_
+  = CreateTapes'{_ctGatewayARN = pGatewayARN_,
+                 _ctTapeSizeInBytes = pTapeSizeInBytes_,
+                 _ctClientToken = pClientToken_,
+                 _ctNumTapesToCreate = _Nat # pNumTapesToCreate_,
+                 _ctTapeBarcodePrefix = pTapeBarcodePrefix_}
 
 -- | The unique Amazon Resource Name (ARN) that represents the gateway to associate the virtual tapes with. Use the 'ListGateways' operation to return a list of gateways for your account and region.
 ctGatewayARN :: Lens' CreateTapes Text
@@ -159,13 +153,10 @@ instance ToQuery CreateTapes where
 --
 --
 -- /See:/ 'createTapesResponse' smart constructor.
-data CreateTapesResponse =
-  CreateTapesResponse'
-    { _ctrsTapeARNs       :: !(Maybe [Text])
-    , _ctrsResponseStatus :: !Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data CreateTapesResponse = CreateTapesResponse'{_ctrsTapeARNs
+                                                :: !(Maybe [Text]),
+                                                _ctrsResponseStatus :: !Int}
+                             deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'CreateTapesResponse' with the minimum fields required to make a request.
 --
@@ -177,10 +168,9 @@ data CreateTapesResponse =
 createTapesResponse
     :: Int -- ^ 'ctrsResponseStatus'
     -> CreateTapesResponse
-createTapesResponse pResponseStatus_ =
-  CreateTapesResponse'
-    {_ctrsTapeARNs = Nothing, _ctrsResponseStatus = pResponseStatus_}
-
+createTapesResponse pResponseStatus_
+  = CreateTapesResponse'{_ctrsTapeARNs = Nothing,
+                         _ctrsResponseStatus = pResponseStatus_}
 
 -- | A list of unique Amazon Resource Names (ARNs) that represents the virtual tapes that were created.
 ctrsTapeARNs :: Lens' CreateTapesResponse [Text]

@@ -43,21 +43,19 @@ module Network.AWS.Firehose.ListDeliveryStreams
     ) where
 
 import Network.AWS.Firehose.Types
-import Network.AWS.Firehose.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 
 -- | /See:/ 'listDeliveryStreams' smart constructor.
-data ListDeliveryStreams =
-  ListDeliveryStreams'
-    { _ldsLimit                            :: !(Maybe Nat)
-    , _ldsDeliveryStreamType               :: !(Maybe DeliveryStreamType)
-    , _ldsExclusiveStartDeliveryStreamName :: !(Maybe Text)
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data ListDeliveryStreams = ListDeliveryStreams'{_ldsLimit
+                                                :: !(Maybe Nat),
+                                                _ldsDeliveryStreamType ::
+                                                !(Maybe DeliveryStreamType),
+                                                _ldsExclusiveStartDeliveryStreamName
+                                                :: !(Maybe Text)}
+                             deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'ListDeliveryStreams' with the minimum fields required to make a request.
 --
@@ -70,13 +68,10 @@ data ListDeliveryStreams =
 -- * 'ldsExclusiveStartDeliveryStreamName' - The name of the delivery stream to start the list with.
 listDeliveryStreams
     :: ListDeliveryStreams
-listDeliveryStreams =
-  ListDeliveryStreams'
-    { _ldsLimit = Nothing
-    , _ldsDeliveryStreamType = Nothing
-    , _ldsExclusiveStartDeliveryStreamName = Nothing
-    }
-
+listDeliveryStreams
+  = ListDeliveryStreams'{_ldsLimit = Nothing,
+                         _ldsDeliveryStreamType = Nothing,
+                         _ldsExclusiveStartDeliveryStreamName = Nothing}
 
 -- | The maximum number of delivery streams to list. The default value is 10.
 ldsLimit :: Lens' ListDeliveryStreams (Maybe Natural)
@@ -132,14 +127,14 @@ instance ToQuery ListDeliveryStreams where
         toQuery = const mempty
 
 -- | /See:/ 'listDeliveryStreamsResponse' smart constructor.
-data ListDeliveryStreamsResponse =
-  ListDeliveryStreamsResponse'
-    { _ldsrsResponseStatus         :: !Int
-    , _ldsrsDeliveryStreamNames    :: ![Text]
-    , _ldsrsHasMoreDeliveryStreams :: !Bool
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data ListDeliveryStreamsResponse = ListDeliveryStreamsResponse'{_ldsrsResponseStatus
+                                                                :: !Int,
+                                                                _ldsrsDeliveryStreamNames
+                                                                :: ![Text],
+                                                                _ldsrsHasMoreDeliveryStreams
+                                                                :: !Bool}
+                                     deriving (Eq, Read, Show, Data, Typeable,
+                                               Generic)
 
 -- | Creates a value of 'ListDeliveryStreamsResponse' with the minimum fields required to make a request.
 --
@@ -154,13 +149,13 @@ listDeliveryStreamsResponse
     :: Int -- ^ 'ldsrsResponseStatus'
     -> Bool -- ^ 'ldsrsHasMoreDeliveryStreams'
     -> ListDeliveryStreamsResponse
-listDeliveryStreamsResponse pResponseStatus_ pHasMoreDeliveryStreams_ =
-  ListDeliveryStreamsResponse'
-    { _ldsrsResponseStatus = pResponseStatus_
-    , _ldsrsDeliveryStreamNames = mempty
-    , _ldsrsHasMoreDeliveryStreams = pHasMoreDeliveryStreams_
-    }
-
+listDeliveryStreamsResponse pResponseStatus_
+  pHasMoreDeliveryStreams_
+  = ListDeliveryStreamsResponse'{_ldsrsResponseStatus =
+                                   pResponseStatus_,
+                                 _ldsrsDeliveryStreamNames = mempty,
+                                 _ldsrsHasMoreDeliveryStreams =
+                                   pHasMoreDeliveryStreams_}
 
 -- | -- | The response status code.
 ldsrsResponseStatus :: Lens' ListDeliveryStreamsResponse Int

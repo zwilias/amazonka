@@ -45,7 +45,6 @@ module Network.AWS.EC2.DescribeTransitGatewayAttachments
     ) where
 
 import Network.AWS.EC2.Types
-import Network.AWS.EC2.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Pager
 import Network.AWS.Prelude
@@ -53,16 +52,28 @@ import Network.AWS.Request
 import Network.AWS.Response
 
 -- | /See:/ 'describeTransitGatewayAttachments' smart constructor.
-data DescribeTransitGatewayAttachments =
-  DescribeTransitGatewayAttachments'
-    { _dtgaFilters                     :: !(Maybe [Filter])
-    , _dtgaNextToken                   :: !(Maybe Text)
-    , _dtgaTransitGatewayAttachmentIds :: !(Maybe [Text])
-    , _dtgaDryRun                      :: !(Maybe Bool)
-    , _dtgaMaxResults                  :: !(Maybe Nat)
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data DescribeTransitGatewayAttachments = DescribeTransitGatewayAttachments'{_dtgaFilters
+                                                                            ::
+                                                                            !(Maybe
+                                                                                [Filter]),
+                                                                            _dtgaNextToken
+                                                                            ::
+                                                                            !(Maybe
+                                                                                Text),
+                                                                            _dtgaTransitGatewayAttachmentIds
+                                                                            ::
+                                                                            !(Maybe
+                                                                                [Text]),
+                                                                            _dtgaDryRun
+                                                                            ::
+                                                                            !(Maybe
+                                                                                Bool),
+                                                                            _dtgaMaxResults
+                                                                            ::
+                                                                            !(Maybe
+                                                                                Nat)}
+                                           deriving (Eq, Read, Show, Data,
+                                                     Typeable, Generic)
 
 -- | Creates a value of 'DescribeTransitGatewayAttachments' with the minimum fields required to make a request.
 --
@@ -79,15 +90,14 @@ data DescribeTransitGatewayAttachments =
 -- * 'dtgaMaxResults' - The maximum number of results to return with a single call. To retrieve the remaining results, make another call with the returned @nextToken@ value.
 describeTransitGatewayAttachments
     :: DescribeTransitGatewayAttachments
-describeTransitGatewayAttachments =
-  DescribeTransitGatewayAttachments'
-    { _dtgaFilters = Nothing
-    , _dtgaNextToken = Nothing
-    , _dtgaTransitGatewayAttachmentIds = Nothing
-    , _dtgaDryRun = Nothing
-    , _dtgaMaxResults = Nothing
-    }
-
+describeTransitGatewayAttachments
+  = DescribeTransitGatewayAttachments'{_dtgaFilters =
+                                         Nothing,
+                                       _dtgaNextToken = Nothing,
+                                       _dtgaTransitGatewayAttachmentIds =
+                                         Nothing,
+                                       _dtgaDryRun = Nothing,
+                                       _dtgaMaxResults = Nothing}
 
 -- | One or more filters. The possible values are:     * @association.state@ - The state of the association (@associating@ | @associated@ | @disassociating@ ).     * @association.transit-gateway-route-table-id@ - The ID of the route table for the transit gateway.     * @resource-id@ - The ID of the resource.     * @resource-owner-id@ - The ID of the AWS account that owns the resource.     * @resource-type@ - The resource type (@vpc@ | @vpn@ ).     * @state@ - The state of the attachment (@available@ | @deleted@ | @deleting@ | @failed@ | @modifying@ | @pendingAcceptance@ | @pending@ | @rollingBack@ | @rejected@ | @rejecting@ ).     * @transit-gateway-attachment-id@ - The ID of the attachment.     * @transit-gateway-id@ - The ID of the transit gateway.     * @transit-gateway-owner-id@ - The ID of the AWS account that owns the transit gateway.
 dtgaFilters :: Lens' DescribeTransitGatewayAttachments [Filter]
@@ -162,14 +172,20 @@ instance ToQuery DescribeTransitGatewayAttachments
                "MaxResults" =: _dtgaMaxResults]
 
 -- | /See:/ 'describeTransitGatewayAttachmentsResponse' smart constructor.
-data DescribeTransitGatewayAttachmentsResponse =
-  DescribeTransitGatewayAttachmentsResponse'
-    { _dtgarsNextToken                 :: !(Maybe Text)
-    , _dtgarsTransitGatewayAttachments :: !(Maybe [TransitGatewayAttachment])
-    , _dtgarsResponseStatus            :: !Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data DescribeTransitGatewayAttachmentsResponse = DescribeTransitGatewayAttachmentsResponse'{_dtgarsNextToken
+                                                                                            ::
+                                                                                            !(Maybe
+                                                                                                Text),
+                                                                                            _dtgarsTransitGatewayAttachments
+                                                                                            ::
+                                                                                            !(Maybe
+                                                                                                [TransitGatewayAttachment]),
+                                                                                            _dtgarsResponseStatus
+                                                                                            ::
+                                                                                            !Int}
+                                                   deriving (Eq, Read, Show,
+                                                             Data, Typeable,
+                                                             Generic)
 
 -- | Creates a value of 'DescribeTransitGatewayAttachmentsResponse' with the minimum fields required to make a request.
 --
@@ -183,13 +199,14 @@ data DescribeTransitGatewayAttachmentsResponse =
 describeTransitGatewayAttachmentsResponse
     :: Int -- ^ 'dtgarsResponseStatus'
     -> DescribeTransitGatewayAttachmentsResponse
-describeTransitGatewayAttachmentsResponse pResponseStatus_ =
-  DescribeTransitGatewayAttachmentsResponse'
-    { _dtgarsNextToken = Nothing
-    , _dtgarsTransitGatewayAttachments = Nothing
-    , _dtgarsResponseStatus = pResponseStatus_
-    }
-
+describeTransitGatewayAttachmentsResponse
+  pResponseStatus_
+  = DescribeTransitGatewayAttachmentsResponse'{_dtgarsNextToken
+                                                 = Nothing,
+                                               _dtgarsTransitGatewayAttachments
+                                                 = Nothing,
+                                               _dtgarsResponseStatus =
+                                                 pResponseStatus_}
 
 -- | The token to use to retrieve the next page of results. This value is @null@ when there are no more results to return.
 dtgarsNextToken :: Lens' DescribeTransitGatewayAttachmentsResponse (Maybe Text)

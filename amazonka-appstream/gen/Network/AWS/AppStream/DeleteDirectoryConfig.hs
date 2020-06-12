@@ -37,19 +37,16 @@ module Network.AWS.AppStream.DeleteDirectoryConfig
     ) where
 
 import Network.AWS.AppStream.Types
-import Network.AWS.AppStream.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 
 -- | /See:/ 'deleteDirectoryConfig' smart constructor.
-newtype DeleteDirectoryConfig =
-  DeleteDirectoryConfig'
-    { _ddcDirectoryName :: Text
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+newtype DeleteDirectoryConfig = DeleteDirectoryConfig'{_ddcDirectoryName
+                                                       :: Text}
+                                  deriving (Eq, Read, Show, Data, Typeable,
+                                            Generic)
 
 -- | Creates a value of 'DeleteDirectoryConfig' with the minimum fields required to make a request.
 --
@@ -59,9 +56,9 @@ newtype DeleteDirectoryConfig =
 deleteDirectoryConfig
     :: Text -- ^ 'ddcDirectoryName'
     -> DeleteDirectoryConfig
-deleteDirectoryConfig pDirectoryName_ =
-  DeleteDirectoryConfig' {_ddcDirectoryName = pDirectoryName_}
-
+deleteDirectoryConfig pDirectoryName_
+  = DeleteDirectoryConfig'{_ddcDirectoryName =
+                             pDirectoryName_}
 
 -- | The name of the directory configuration.
 ddcDirectoryName :: Lens' DeleteDirectoryConfig Text
@@ -104,12 +101,10 @@ instance ToQuery DeleteDirectoryConfig where
         toQuery = const mempty
 
 -- | /See:/ 'deleteDirectoryConfigResponse' smart constructor.
-newtype DeleteDirectoryConfigResponse =
-  DeleteDirectoryConfigResponse'
-    { _ddcdrsResponseStatus :: Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+newtype DeleteDirectoryConfigResponse = DeleteDirectoryConfigResponse'{_ddcdrsResponseStatus
+                                                                       :: Int}
+                                          deriving (Eq, Read, Show, Data,
+                                                    Typeable, Generic)
 
 -- | Creates a value of 'DeleteDirectoryConfigResponse' with the minimum fields required to make a request.
 --
@@ -119,9 +114,9 @@ newtype DeleteDirectoryConfigResponse =
 deleteDirectoryConfigResponse
     :: Int -- ^ 'ddcdrsResponseStatus'
     -> DeleteDirectoryConfigResponse
-deleteDirectoryConfigResponse pResponseStatus_ =
-  DeleteDirectoryConfigResponse' {_ddcdrsResponseStatus = pResponseStatus_}
-
+deleteDirectoryConfigResponse pResponseStatus_
+  = DeleteDirectoryConfigResponse'{_ddcdrsResponseStatus
+                                     = pResponseStatus_}
 
 -- | -- | The response status code.
 ddcdrsResponseStatus :: Lens' DeleteDirectoryConfigResponse Int

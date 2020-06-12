@@ -37,7 +37,6 @@ module Network.AWS.IoT.GetLoggingOptions
     ) where
 
 import Network.AWS.IoT.Types
-import Network.AWS.IoT.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.Request
@@ -48,17 +47,14 @@ import Network.AWS.Response
 --
 --
 -- /See:/ 'getLoggingOptions' smart constructor.
-data GetLoggingOptions =
-  GetLoggingOptions'
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data GetLoggingOptions = GetLoggingOptions'
+                           deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'GetLoggingOptions' with the minimum fields required to make a request.
 --
 getLoggingOptions
     :: GetLoggingOptions
 getLoggingOptions = GetLoggingOptions'
-
 
 instance AWSRequest GetLoggingOptions where
         type Rs GetLoggingOptions = GetLoggingOptionsResponse
@@ -88,14 +84,15 @@ instance ToQuery GetLoggingOptions where
 --
 --
 -- /See:/ 'getLoggingOptionsResponse' smart constructor.
-data GetLoggingOptionsResponse =
-  GetLoggingOptionsResponse'
-    { _glorsLogLevel       :: !(Maybe LogLevel)
-    , _glorsRoleARN        :: !(Maybe Text)
-    , _glorsResponseStatus :: !Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data GetLoggingOptionsResponse = GetLoggingOptionsResponse'{_glorsLogLevel
+                                                            ::
+                                                            !(Maybe LogLevel),
+                                                            _glorsRoleARN ::
+                                                            !(Maybe Text),
+                                                            _glorsResponseStatus
+                                                            :: !Int}
+                                   deriving (Eq, Read, Show, Data, Typeable,
+                                             Generic)
 
 -- | Creates a value of 'GetLoggingOptionsResponse' with the minimum fields required to make a request.
 --
@@ -109,13 +106,11 @@ data GetLoggingOptionsResponse =
 getLoggingOptionsResponse
     :: Int -- ^ 'glorsResponseStatus'
     -> GetLoggingOptionsResponse
-getLoggingOptionsResponse pResponseStatus_ =
-  GetLoggingOptionsResponse'
-    { _glorsLogLevel = Nothing
-    , _glorsRoleARN = Nothing
-    , _glorsResponseStatus = pResponseStatus_
-    }
-
+getLoggingOptionsResponse pResponseStatus_
+  = GetLoggingOptionsResponse'{_glorsLogLevel =
+                                 Nothing,
+                               _glorsRoleARN = Nothing,
+                               _glorsResponseStatus = pResponseStatus_}
 
 -- | The logging level.
 glorsLogLevel :: Lens' GetLoggingOptionsResponse (Maybe LogLevel)

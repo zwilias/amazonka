@@ -39,20 +39,18 @@ module Network.AWS.EC2.DeleteClientVPNEndpoint
     ) where
 
 import Network.AWS.EC2.Types
-import Network.AWS.EC2.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 
 -- | /See:/ 'deleteClientVPNEndpoint' smart constructor.
-data DeleteClientVPNEndpoint =
-  DeleteClientVPNEndpoint'
-    { _dcvpneDryRun              :: !(Maybe Bool)
-    , _dcvpneClientVPNEndpointId :: !Text
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data DeleteClientVPNEndpoint = DeleteClientVPNEndpoint'{_dcvpneDryRun
+                                                        :: !(Maybe Bool),
+                                                        _dcvpneClientVPNEndpointId
+                                                        :: !Text}
+                                 deriving (Eq, Read, Show, Data, Typeable,
+                                           Generic)
 
 -- | Creates a value of 'DeleteClientVPNEndpoint' with the minimum fields required to make a request.
 --
@@ -64,12 +62,9 @@ data DeleteClientVPNEndpoint =
 deleteClientVPNEndpoint
     :: Text -- ^ 'dcvpneClientVPNEndpointId'
     -> DeleteClientVPNEndpoint
-deleteClientVPNEndpoint pClientVPNEndpointId_ =
-  DeleteClientVPNEndpoint'
-    { _dcvpneDryRun = Nothing
-    , _dcvpneClientVPNEndpointId = pClientVPNEndpointId_
-    }
-
+deleteClientVPNEndpoint pClientVPNEndpointId_
+  = DeleteClientVPNEndpoint'{_dcvpneDryRun = Nothing,
+                             _dcvpneClientVPNEndpointId = pClientVPNEndpointId_}
 
 -- | Checks whether you have the required permissions for the action, without actually making the request, and provides an error response. If you have the required permissions, the error response is @DryRunOperation@ . Otherwise, it is @UnauthorizedOperation@ .
 dcvpneDryRun :: Lens' DeleteClientVPNEndpoint (Maybe Bool)
@@ -109,13 +104,14 @@ instance ToQuery DeleteClientVPNEndpoint where
                "ClientVpnEndpointId" =: _dcvpneClientVPNEndpointId]
 
 -- | /See:/ 'deleteClientVPNEndpointResponse' smart constructor.
-data DeleteClientVPNEndpointResponse =
-  DeleteClientVPNEndpointResponse'
-    { _dcvpnersStatus         :: !(Maybe ClientVPNEndpointStatus)
-    , _dcvpnersResponseStatus :: !Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data DeleteClientVPNEndpointResponse = DeleteClientVPNEndpointResponse'{_dcvpnersStatus
+                                                                        ::
+                                                                        !(Maybe
+                                                                            ClientVPNEndpointStatus),
+                                                                        _dcvpnersResponseStatus
+                                                                        :: !Int}
+                                         deriving (Eq, Read, Show, Data,
+                                                   Typeable, Generic)
 
 -- | Creates a value of 'DeleteClientVPNEndpointResponse' with the minimum fields required to make a request.
 --
@@ -127,10 +123,10 @@ data DeleteClientVPNEndpointResponse =
 deleteClientVPNEndpointResponse
     :: Int -- ^ 'dcvpnersResponseStatus'
     -> DeleteClientVPNEndpointResponse
-deleteClientVPNEndpointResponse pResponseStatus_ =
-  DeleteClientVPNEndpointResponse'
-    {_dcvpnersStatus = Nothing, _dcvpnersResponseStatus = pResponseStatus_}
-
+deleteClientVPNEndpointResponse pResponseStatus_
+  = DeleteClientVPNEndpointResponse'{_dcvpnersStatus =
+                                       Nothing,
+                                     _dcvpnersResponseStatus = pResponseStatus_}
 
 -- | The current state of the Client VPN endpoint.
 dcvpnersStatus :: Lens' DeleteClientVPNEndpointResponse (Maybe ClientVPNEndpointStatus)

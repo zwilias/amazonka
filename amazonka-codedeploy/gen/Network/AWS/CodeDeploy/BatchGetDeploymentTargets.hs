@@ -21,13 +21,13 @@
 -- Returns an array of one or more targets associated with a deployment. This method works with all compute types and should be used instead of the deprecated @BatchGetDeploymentInstances@ . The maximum number of targets that can be returned is 25.
 --
 --
--- The type of targets returned depends on the deployment's compute platform:
+-- The type of targets returned depends on the deployment's compute platform: 
 --
---     * __EC2/On-premises__ : Information about EC2 instance targets.
+--     * __EC2/On-premises__ : Information about EC2 instance targets. 
 --
---     * __AWS Lambda__ : Information about Lambda functions targets.
+--     * __AWS Lambda__ : Information about Lambda functions targets. 
 --
---     * __Amazon ECS__ : Information about Amazon ECS service targets.
+--     * __Amazon ECS__ : Information about Amazon ECS service targets. 
 --
 --
 --
@@ -49,40 +49,38 @@ module Network.AWS.CodeDeploy.BatchGetDeploymentTargets
     ) where
 
 import Network.AWS.CodeDeploy.Types
-import Network.AWS.CodeDeploy.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 
 -- | /See:/ 'batchGetDeploymentTargets' smart constructor.
-data BatchGetDeploymentTargets =
-  BatchGetDeploymentTargets'
-    { _bgdtDeploymentId :: !(Maybe Text)
-    , _bgdtTargetIds    :: !(Maybe [Text])
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data BatchGetDeploymentTargets = BatchGetDeploymentTargets'{_bgdtDeploymentId
+                                                            :: !(Maybe Text),
+                                                            _bgdtTargetIds ::
+                                                            !(Maybe [Text])}
+                                   deriving (Eq, Read, Show, Data, Typeable,
+                                             Generic)
 
 -- | Creates a value of 'BatchGetDeploymentTargets' with the minimum fields required to make a request.
 --
 -- Use one of the following lenses to modify other fields as desired:
 --
--- * 'bgdtDeploymentId' - The unique ID of a deployment.
+-- * 'bgdtDeploymentId' - The unique ID of a deployment. 
 --
--- * 'bgdtTargetIds' - The unique IDs of the deployment targets. The compute platform of the deployment determines the type of the targets and their formats. The maximum number of deployment target IDs you can specify is 25.     * For deployments that use the EC2/On-premises compute platform, the target IDs are EC2 or on-premises instances IDs, and their target type is @instanceTarget@ .      * For deployments that use the AWS Lambda compute platform, the target IDs are the names of Lambda functions, and their target type is @instanceTarget@ .      * For deployments that use the Amazon ECS compute platform, the target IDs are pairs of Amazon ECS clusters and services specified using the format @<clustername>:<servicename>@ . Their target type is @ecsTarget@ .
+-- * 'bgdtTargetIds' - The unique IDs of the deployment targets. The compute platform of the deployment determines the type of the targets and their formats. The maximum number of deployment target IDs you can specify is 25.     * For deployments that use the EC2/On-premises compute platform, the target IDs are EC2 or on-premises instances IDs, and their target type is @instanceTarget@ .      * For deployments that use the AWS Lambda compute platform, the target IDs are the names of Lambda functions, and their target type is @instanceTarget@ .      * For deployments that use the Amazon ECS compute platform, the target IDs are pairs of Amazon ECS clusters and services specified using the format @<clustername>:<servicename>@ . Their target type is @ecsTarget@ . 
 batchGetDeploymentTargets
     :: BatchGetDeploymentTargets
-batchGetDeploymentTargets =
-  BatchGetDeploymentTargets'
-    {_bgdtDeploymentId = Nothing, _bgdtTargetIds = Nothing}
+batchGetDeploymentTargets
+  = BatchGetDeploymentTargets'{_bgdtDeploymentId =
+                                 Nothing,
+                               _bgdtTargetIds = Nothing}
 
-
--- | The unique ID of a deployment.
+-- | The unique ID of a deployment. 
 bgdtDeploymentId :: Lens' BatchGetDeploymentTargets (Maybe Text)
 bgdtDeploymentId = lens _bgdtDeploymentId (\ s a -> s{_bgdtDeploymentId = a})
 
--- | The unique IDs of the deployment targets. The compute platform of the deployment determines the type of the targets and their formats. The maximum number of deployment target IDs you can specify is 25.     * For deployments that use the EC2/On-premises compute platform, the target IDs are EC2 or on-premises instances IDs, and their target type is @instanceTarget@ .      * For deployments that use the AWS Lambda compute platform, the target IDs are the names of Lambda functions, and their target type is @instanceTarget@ .      * For deployments that use the Amazon ECS compute platform, the target IDs are pairs of Amazon ECS clusters and services specified using the format @<clustername>:<servicename>@ . Their target type is @ecsTarget@ .
+-- | The unique IDs of the deployment targets. The compute platform of the deployment determines the type of the targets and their formats. The maximum number of deployment target IDs you can specify is 25.     * For deployments that use the EC2/On-premises compute platform, the target IDs are EC2 or on-premises instances IDs, and their target type is @instanceTarget@ .      * For deployments that use the AWS Lambda compute platform, the target IDs are the names of Lambda functions, and their target type is @instanceTarget@ .      * For deployments that use the Amazon ECS compute platform, the target IDs are pairs of Amazon ECS clusters and services specified using the format @<clustername>:<servicename>@ . Their target type is @ecsTarget@ . 
 bgdtTargetIds :: Lens' BatchGetDeploymentTargets [Text]
 bgdtTargetIds = lens _bgdtTargetIds (\ s a -> s{_bgdtTargetIds = a}) . _Default . _Coerce
 
@@ -125,32 +123,32 @@ instance ToQuery BatchGetDeploymentTargets where
         toQuery = const mempty
 
 -- | /See:/ 'batchGetDeploymentTargetsResponse' smart constructor.
-data BatchGetDeploymentTargetsResponse =
-  BatchGetDeploymentTargetsResponse'
-    { _bgdtrsDeploymentTargets :: !(Maybe [DeploymentTarget])
-    , _bgdtrsResponseStatus    :: !Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data BatchGetDeploymentTargetsResponse = BatchGetDeploymentTargetsResponse'{_bgdtrsDeploymentTargets
+                                                                            ::
+                                                                            !(Maybe
+                                                                                [DeploymentTarget]),
+                                                                            _bgdtrsResponseStatus
+                                                                            ::
+                                                                            !Int}
+                                           deriving (Eq, Read, Show, Data,
+                                                     Typeable, Generic)
 
 -- | Creates a value of 'BatchGetDeploymentTargetsResponse' with the minimum fields required to make a request.
 --
 -- Use one of the following lenses to modify other fields as desired:
 --
--- * 'bgdtrsDeploymentTargets' - A list of target objects for a deployment. Each target object contains details about the target, such as its status and lifecycle events. The type of the target objects depends on the deployment' compute platform.      * __EC2/On-premises__ : Each target object is an EC2 or on-premises instance.      * __AWS Lambda__ : The target object is a specific version of an AWS Lambda function.      * __Amazon ECS__ : The target object is an Amazon ECS service.
+-- * 'bgdtrsDeploymentTargets' - A list of target objects for a deployment. Each target object contains details about the target, such as its status and lifecycle events. The type of the target objects depends on the deployment' compute platform.      * __EC2/On-premises__ : Each target object is an EC2 or on-premises instance.      * __AWS Lambda__ : The target object is a specific version of an AWS Lambda function.      * __Amazon ECS__ : The target object is an Amazon ECS service. 
 --
 -- * 'bgdtrsResponseStatus' - -- | The response status code.
 batchGetDeploymentTargetsResponse
     :: Int -- ^ 'bgdtrsResponseStatus'
     -> BatchGetDeploymentTargetsResponse
-batchGetDeploymentTargetsResponse pResponseStatus_ =
-  BatchGetDeploymentTargetsResponse'
-    { _bgdtrsDeploymentTargets = Nothing
-    , _bgdtrsResponseStatus = pResponseStatus_
-    }
+batchGetDeploymentTargetsResponse pResponseStatus_
+  = BatchGetDeploymentTargetsResponse'{_bgdtrsDeploymentTargets
+                                         = Nothing,
+                                       _bgdtrsResponseStatus = pResponseStatus_}
 
-
--- | A list of target objects for a deployment. Each target object contains details about the target, such as its status and lifecycle events. The type of the target objects depends on the deployment' compute platform.      * __EC2/On-premises__ : Each target object is an EC2 or on-premises instance.      * __AWS Lambda__ : The target object is a specific version of an AWS Lambda function.      * __Amazon ECS__ : The target object is an Amazon ECS service.
+-- | A list of target objects for a deployment. Each target object contains details about the target, such as its status and lifecycle events. The type of the target objects depends on the deployment' compute platform.      * __EC2/On-premises__ : Each target object is an EC2 or on-premises instance.      * __AWS Lambda__ : The target object is a specific version of an AWS Lambda function.      * __Amazon ECS__ : The target object is an Amazon ECS service. 
 bgdtrsDeploymentTargets :: Lens' BatchGetDeploymentTargetsResponse [DeploymentTarget]
 bgdtrsDeploymentTargets = lens _bgdtrsDeploymentTargets (\ s a -> s{_bgdtrsDeploymentTargets = a}) . _Default . _Coerce
 

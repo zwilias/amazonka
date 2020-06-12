@@ -46,23 +46,22 @@ module Network.AWS.Lightsail.CreateLoadBalancer
 
 import Network.AWS.Lens
 import Network.AWS.Lightsail.Types
-import Network.AWS.Lightsail.Types.Product
 import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 
 -- | /See:/ 'createLoadBalancer' smart constructor.
-data CreateLoadBalancer =
-  CreateLoadBalancer'
-    { _clbHealthCheckPath             :: !(Maybe Text)
-    , _clbCertificateName             :: !(Maybe Text)
-    , _clbCertificateDomainName       :: !(Maybe Text)
-    , _clbCertificateAlternativeNames :: !(Maybe [Text])
-    , _clbLoadBalancerName            :: !Text
-    , _clbInstancePort                :: !Nat
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data CreateLoadBalancer = CreateLoadBalancer'{_clbHealthCheckPath
+                                              :: !(Maybe Text),
+                                              _clbCertificateName ::
+                                              !(Maybe Text),
+                                              _clbCertificateDomainName ::
+                                              !(Maybe Text),
+                                              _clbCertificateAlternativeNames ::
+                                              !(Maybe [Text]),
+                                              _clbLoadBalancerName :: !Text,
+                                              _clbInstancePort :: !Nat}
+                            deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'CreateLoadBalancer' with the minimum fields required to make a request.
 --
@@ -83,16 +82,13 @@ createLoadBalancer
     :: Text -- ^ 'clbLoadBalancerName'
     -> Natural -- ^ 'clbInstancePort'
     -> CreateLoadBalancer
-createLoadBalancer pLoadBalancerName_ pInstancePort_ =
-  CreateLoadBalancer'
-    { _clbHealthCheckPath = Nothing
-    , _clbCertificateName = Nothing
-    , _clbCertificateDomainName = Nothing
-    , _clbCertificateAlternativeNames = Nothing
-    , _clbLoadBalancerName = pLoadBalancerName_
-    , _clbInstancePort = _Nat # pInstancePort_
-    }
-
+createLoadBalancer pLoadBalancerName_ pInstancePort_
+  = CreateLoadBalancer'{_clbHealthCheckPath = Nothing,
+                        _clbCertificateName = Nothing,
+                        _clbCertificateDomainName = Nothing,
+                        _clbCertificateAlternativeNames = Nothing,
+                        _clbLoadBalancerName = pLoadBalancerName_,
+                        _clbInstancePort = _Nat # pInstancePort_}
 
 -- | The path you provided to perform the load balancer health check. If you didn't specify a health check path, Lightsail uses the root path of your website (e.g., @"/"@ ). You may want to specify a custom health check path other than the root of your application if your home page loads slowly or has a lot of media or scripting on it.
 clbHealthCheckPath :: Lens' CreateLoadBalancer (Maybe Text)
@@ -163,13 +159,14 @@ instance ToQuery CreateLoadBalancer where
         toQuery = const mempty
 
 -- | /See:/ 'createLoadBalancerResponse' smart constructor.
-data CreateLoadBalancerResponse =
-  CreateLoadBalancerResponse'
-    { _clbrsOperations     :: !(Maybe [Operation])
-    , _clbrsResponseStatus :: !Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data CreateLoadBalancerResponse = CreateLoadBalancerResponse'{_clbrsOperations
+                                                              ::
+                                                              !(Maybe
+                                                                  [Operation]),
+                                                              _clbrsResponseStatus
+                                                              :: !Int}
+                                    deriving (Eq, Read, Show, Data, Typeable,
+                                              Generic)
 
 -- | Creates a value of 'CreateLoadBalancerResponse' with the minimum fields required to make a request.
 --
@@ -181,10 +178,10 @@ data CreateLoadBalancerResponse =
 createLoadBalancerResponse
     :: Int -- ^ 'clbrsResponseStatus'
     -> CreateLoadBalancerResponse
-createLoadBalancerResponse pResponseStatus_ =
-  CreateLoadBalancerResponse'
-    {_clbrsOperations = Nothing, _clbrsResponseStatus = pResponseStatus_}
-
+createLoadBalancerResponse pResponseStatus_
+  = CreateLoadBalancerResponse'{_clbrsOperations =
+                                  Nothing,
+                                _clbrsResponseStatus = pResponseStatus_}
 
 -- | An object containing information about the API operations.
 clbrsOperations :: Lens' CreateLoadBalancerResponse [Operation]

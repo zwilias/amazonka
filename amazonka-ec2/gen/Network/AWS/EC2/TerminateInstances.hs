@@ -18,7 +18,7 @@
 -- Stability   : auto-generated
 -- Portability : non-portable (GHC extensions)
 --
--- Shuts down the specified instances. This operation is idempotent; if you terminate an instance more than once, each call succeeds.
+-- Shuts down the specified instances. This operation is idempotent; if you terminate an instance more than once, each call succeeds. 
 --
 --
 -- If you specify multiple instances and the request fails (for example, because of a single incorrect instance ID), none of the instances are terminated.
@@ -49,20 +49,16 @@ module Network.AWS.EC2.TerminateInstances
     ) where
 
 import Network.AWS.EC2.Types
-import Network.AWS.EC2.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 
 -- | /See:/ 'terminateInstances' smart constructor.
-data TerminateInstances =
-  TerminateInstances'
-    { _tiDryRun      :: !(Maybe Bool)
-    , _tiInstanceIds :: ![Text]
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data TerminateInstances = TerminateInstances'{_tiDryRun
+                                              :: !(Maybe Bool),
+                                              _tiInstanceIds :: ![Text]}
+                            deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'TerminateInstances' with the minimum fields required to make a request.
 --
@@ -73,9 +69,9 @@ data TerminateInstances =
 -- * 'tiInstanceIds' - The IDs of the instances. Constraints: Up to 1000 instance IDs. We recommend breaking up this request into smaller batches.
 terminateInstances
     :: TerminateInstances
-terminateInstances =
-  TerminateInstances' {_tiDryRun = Nothing, _tiInstanceIds = mempty}
-
+terminateInstances
+  = TerminateInstances'{_tiDryRun = Nothing,
+                        _tiInstanceIds = mempty}
 
 -- | Checks whether you have the required permissions for the action, without actually making the request, and provides an error response. If you have the required permissions, the error response is @DryRunOperation@ . Otherwise, it is @UnauthorizedOperation@ .
 tiDryRun :: Lens' TerminateInstances (Maybe Bool)
@@ -116,13 +112,14 @@ instance ToQuery TerminateInstances where
                toQueryList "InstanceId" _tiInstanceIds]
 
 -- | /See:/ 'terminateInstancesResponse' smart constructor.
-data TerminateInstancesResponse =
-  TerminateInstancesResponse'
-    { _tirsTerminatingInstances :: !(Maybe [InstanceStateChange])
-    , _tirsResponseStatus       :: !Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data TerminateInstancesResponse = TerminateInstancesResponse'{_tirsTerminatingInstances
+                                                              ::
+                                                              !(Maybe
+                                                                  [InstanceStateChange]),
+                                                              _tirsResponseStatus
+                                                              :: !Int}
+                                    deriving (Eq, Read, Show, Data, Typeable,
+                                              Generic)
 
 -- | Creates a value of 'TerminateInstancesResponse' with the minimum fields required to make a request.
 --
@@ -134,12 +131,10 @@ data TerminateInstancesResponse =
 terminateInstancesResponse
     :: Int -- ^ 'tirsResponseStatus'
     -> TerminateInstancesResponse
-terminateInstancesResponse pResponseStatus_ =
-  TerminateInstancesResponse'
-    { _tirsTerminatingInstances = Nothing
-    , _tirsResponseStatus = pResponseStatus_
-    }
-
+terminateInstancesResponse pResponseStatus_
+  = TerminateInstancesResponse'{_tirsTerminatingInstances
+                                  = Nothing,
+                                _tirsResponseStatus = pResponseStatus_}
 
 -- | Information about the terminated instances.
 tirsTerminatingInstances :: Lens' TerminateInstancesResponse [InstanceStateChange]

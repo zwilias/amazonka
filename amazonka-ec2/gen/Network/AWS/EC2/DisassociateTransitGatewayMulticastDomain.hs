@@ -18,7 +18,7 @@
 -- Stability   : auto-generated
 -- Portability : non-portable (GHC extensions)
 --
--- Disassociates the specified subnets from the transit gateway multicast domain.
+-- Disassociates the specified subnets from the transit gateway multicast domain. 
 --
 --
 module Network.AWS.EC2.DisassociateTransitGatewayMulticastDomain
@@ -41,22 +41,31 @@ module Network.AWS.EC2.DisassociateTransitGatewayMulticastDomain
     ) where
 
 import Network.AWS.EC2.Types
-import Network.AWS.EC2.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 
 -- | /See:/ 'disassociateTransitGatewayMulticastDomain' smart constructor.
-data DisassociateTransitGatewayMulticastDomain =
-  DisassociateTransitGatewayMulticastDomain'
-    { _dtgmdtSubnetIds                       :: !(Maybe [Text])
-    , _dtgmdtTransitGatewayMulticastDomainId :: !(Maybe Text)
-    , _dtgmdtTransitGatewayAttachmentId      :: !(Maybe Text)
-    , _dtgmdtDryRun                          :: !(Maybe Bool)
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data DisassociateTransitGatewayMulticastDomain = DisassociateTransitGatewayMulticastDomain'{_dtgmdtSubnetIds
+                                                                                            ::
+                                                                                            !(Maybe
+                                                                                                [Text]),
+                                                                                            _dtgmdtTransitGatewayMulticastDomainId
+                                                                                            ::
+                                                                                            !(Maybe
+                                                                                                Text),
+                                                                                            _dtgmdtTransitGatewayAttachmentId
+                                                                                            ::
+                                                                                            !(Maybe
+                                                                                                Text),
+                                                                                            _dtgmdtDryRun
+                                                                                            ::
+                                                                                            !(Maybe
+                                                                                                Bool)}
+                                                   deriving (Eq, Read, Show,
+                                                             Data, Typeable,
+                                                             Generic)
 
 -- | Creates a value of 'DisassociateTransitGatewayMulticastDomain' with the minimum fields required to make a request.
 --
@@ -71,14 +80,14 @@ data DisassociateTransitGatewayMulticastDomain =
 -- * 'dtgmdtDryRun' - Checks whether you have the required permissions for the action, without actually making the request, and provides an error response. If you have the required permissions, the error response is @DryRunOperation@ . Otherwise, it is @UnauthorizedOperation@ .
 disassociateTransitGatewayMulticastDomain
     :: DisassociateTransitGatewayMulticastDomain
-disassociateTransitGatewayMulticastDomain =
-  DisassociateTransitGatewayMulticastDomain'
-    { _dtgmdtSubnetIds = Nothing
-    , _dtgmdtTransitGatewayMulticastDomainId = Nothing
-    , _dtgmdtTransitGatewayAttachmentId = Nothing
-    , _dtgmdtDryRun = Nothing
-    }
-
+disassociateTransitGatewayMulticastDomain
+  = DisassociateTransitGatewayMulticastDomain'{_dtgmdtSubnetIds
+                                                 = Nothing,
+                                               _dtgmdtTransitGatewayMulticastDomainId
+                                                 = Nothing,
+                                               _dtgmdtTransitGatewayAttachmentId
+                                                 = Nothing,
+                                               _dtgmdtDryRun = Nothing}
 
 -- | The IDs of the subnets;
 dtgmdtSubnetIds :: Lens' DisassociateTransitGatewayMulticastDomain [Text]
@@ -145,13 +154,17 @@ instance ToQuery
                "DryRun" =: _dtgmdtDryRun]
 
 -- | /See:/ 'disassociateTransitGatewayMulticastDomainResponse' smart constructor.
-data DisassociateTransitGatewayMulticastDomainResponse =
-  DisassociateTransitGatewayMulticastDomainResponse'
-    { _dtgmdrsAssociations :: !(Maybe TransitGatewayMulticastDomainAssociations)
-    , _dtgmdrsResponseStatus :: !Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data DisassociateTransitGatewayMulticastDomainResponse = DisassociateTransitGatewayMulticastDomainResponse'{_dtgmdrsAssociations
+                                                                                                            ::
+                                                                                                            !(Maybe
+                                                                                                                TransitGatewayMulticastDomainAssociations),
+                                                                                                            _dtgmdrsResponseStatus
+                                                                                                            ::
+                                                                                                            !Int}
+                                                           deriving (Eq, Read,
+                                                                     Show, Data,
+                                                                     Typeable,
+                                                                     Generic)
 
 -- | Creates a value of 'DisassociateTransitGatewayMulticastDomainResponse' with the minimum fields required to make a request.
 --
@@ -163,10 +176,12 @@ data DisassociateTransitGatewayMulticastDomainResponse =
 disassociateTransitGatewayMulticastDomainResponse
     :: Int -- ^ 'dtgmdrsResponseStatus'
     -> DisassociateTransitGatewayMulticastDomainResponse
-disassociateTransitGatewayMulticastDomainResponse pResponseStatus_ =
-  DisassociateTransitGatewayMulticastDomainResponse'
-    {_dtgmdrsAssociations = Nothing, _dtgmdrsResponseStatus = pResponseStatus_}
-
+disassociateTransitGatewayMulticastDomainResponse
+  pResponseStatus_
+  = DisassociateTransitGatewayMulticastDomainResponse'{_dtgmdrsAssociations
+                                                         = Nothing,
+                                                       _dtgmdrsResponseStatus =
+                                                         pResponseStatus_}
 
 -- | Information about the association.
 dtgmdrsAssociations :: Lens' DisassociateTransitGatewayMulticastDomainResponse (Maybe TransitGatewayMulticastDomainAssociations)

@@ -37,21 +37,20 @@ module Network.AWS.Inspector.UpdateAssessmentTarget
     ) where
 
 import Network.AWS.Inspector.Types
-import Network.AWS.Inspector.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 
 -- | /See:/ 'updateAssessmentTarget' smart constructor.
-data UpdateAssessmentTarget =
-  UpdateAssessmentTarget'
-    { _uatAssessmentTargetARN  :: !Text
-    , _uatAssessmentTargetName :: !Text
-    , _uatResourceGroupARN     :: !Text
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data UpdateAssessmentTarget = UpdateAssessmentTarget'{_uatAssessmentTargetARN
+                                                      :: !Text,
+                                                      _uatAssessmentTargetName
+                                                      :: !Text,
+                                                      _uatResourceGroupARN ::
+                                                      !Text}
+                                deriving (Eq, Read, Show, Data, Typeable,
+                                          Generic)
 
 -- | Creates a value of 'UpdateAssessmentTarget' with the minimum fields required to make a request.
 --
@@ -67,13 +66,12 @@ updateAssessmentTarget
     -> Text -- ^ 'uatAssessmentTargetName'
     -> Text -- ^ 'uatResourceGroupARN'
     -> UpdateAssessmentTarget
-updateAssessmentTarget pAssessmentTargetARN_ pAssessmentTargetName_ pResourceGroupARN_ =
-  UpdateAssessmentTarget'
-    { _uatAssessmentTargetARN = pAssessmentTargetARN_
-    , _uatAssessmentTargetName = pAssessmentTargetName_
-    , _uatResourceGroupARN = pResourceGroupARN_
-    }
-
+updateAssessmentTarget pAssessmentTargetARN_
+  pAssessmentTargetName_ pResourceGroupARN_
+  = UpdateAssessmentTarget'{_uatAssessmentTargetARN =
+                              pAssessmentTargetARN_,
+                            _uatAssessmentTargetName = pAssessmentTargetName_,
+                            _uatResourceGroupARN = pResourceGroupARN_}
 
 -- | The ARN of the assessment target that you want to update.
 uatAssessmentTargetARN :: Lens' UpdateAssessmentTarget Text
@@ -125,16 +123,15 @@ instance ToQuery UpdateAssessmentTarget where
         toQuery = const mempty
 
 -- | /See:/ 'updateAssessmentTargetResponse' smart constructor.
-data UpdateAssessmentTargetResponse =
-  UpdateAssessmentTargetResponse'
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data UpdateAssessmentTargetResponse = UpdateAssessmentTargetResponse'
+                                        deriving (Eq, Read, Show, Data,
+                                                  Typeable, Generic)
 
 -- | Creates a value of 'UpdateAssessmentTargetResponse' with the minimum fields required to make a request.
 --
 updateAssessmentTargetResponse
     :: UpdateAssessmentTargetResponse
-updateAssessmentTargetResponse = UpdateAssessmentTargetResponse'
-
+updateAssessmentTargetResponse
+  = UpdateAssessmentTargetResponse'
 
 instance NFData UpdateAssessmentTargetResponse where

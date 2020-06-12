@@ -36,20 +36,16 @@ module Network.AWS.APIGatewayManagementAPI.PostToConnection
     ) where
 
 import Network.AWS.APIGatewayManagementAPI.Types
-import Network.AWS.APIGatewayManagementAPI.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 
 -- | /See:/ 'postToConnection' smart constructor.
-data PostToConnection =
-  PostToConnection'
-    { _ptcConnectionId :: !Text
-    , _ptcData         :: !ByteString
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data PostToConnection = PostToConnection'{_ptcConnectionId
+                                          :: !Text,
+                                          _ptcData :: !ByteString}
+                          deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'PostToConnection' with the minimum fields required to make a request.
 --
@@ -62,9 +58,10 @@ postToConnection
     :: Text -- ^ 'ptcConnectionId'
     -> ByteString -- ^ 'ptcData'
     -> PostToConnection
-postToConnection pConnectionId_ pData_ =
-  PostToConnection' {_ptcConnectionId = pConnectionId_, _ptcData = pData_}
-
+postToConnection pConnectionId_ pData_
+  = PostToConnection'{_ptcConnectionId =
+                        pConnectionId_,
+                      _ptcData = pData_}
 
 -- | The identifier of the connection that a specific client is using.
 ptcConnectionId :: Lens' PostToConnection Text
@@ -101,16 +98,14 @@ instance ToQuery PostToConnection where
         toQuery = const mempty
 
 -- | /See:/ 'postToConnectionResponse' smart constructor.
-data PostToConnectionResponse =
-  PostToConnectionResponse'
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data PostToConnectionResponse = PostToConnectionResponse'
+                                  deriving (Eq, Read, Show, Data, Typeable,
+                                            Generic)
 
 -- | Creates a value of 'PostToConnectionResponse' with the minimum fields required to make a request.
 --
 postToConnectionResponse
     :: PostToConnectionResponse
 postToConnectionResponse = PostToConnectionResponse'
-
 
 instance NFData PostToConnectionResponse where

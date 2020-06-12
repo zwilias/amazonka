@@ -37,19 +37,16 @@ module Network.AWS.Glue.ImportCatalogToGlue
     ) where
 
 import Network.AWS.Glue.Types
-import Network.AWS.Glue.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 
 -- | /See:/ 'importCatalogToGlue' smart constructor.
-newtype ImportCatalogToGlue =
-  ImportCatalogToGlue'
-    { _ictgCatalogId :: Maybe Text
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+newtype ImportCatalogToGlue = ImportCatalogToGlue'{_ictgCatalogId
+                                                   :: Maybe Text}
+                                deriving (Eq, Read, Show, Data, Typeable,
+                                          Generic)
 
 -- | Creates a value of 'ImportCatalogToGlue' with the minimum fields required to make a request.
 --
@@ -58,8 +55,8 @@ newtype ImportCatalogToGlue =
 -- * 'ictgCatalogId' - The ID of the catalog to import. Currently, this should be the AWS account ID.
 importCatalogToGlue
     :: ImportCatalogToGlue
-importCatalogToGlue = ImportCatalogToGlue' {_ictgCatalogId = Nothing}
-
+importCatalogToGlue
+  = ImportCatalogToGlue'{_ictgCatalogId = Nothing}
 
 -- | The ID of the catalog to import. Currently, this should be the AWS account ID.
 ictgCatalogId :: Lens' ImportCatalogToGlue (Maybe Text)
@@ -99,12 +96,10 @@ instance ToQuery ImportCatalogToGlue where
         toQuery = const mempty
 
 -- | /See:/ 'importCatalogToGlueResponse' smart constructor.
-newtype ImportCatalogToGlueResponse =
-  ImportCatalogToGlueResponse'
-    { _ictgrsResponseStatus :: Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+newtype ImportCatalogToGlueResponse = ImportCatalogToGlueResponse'{_ictgrsResponseStatus
+                                                                   :: Int}
+                                        deriving (Eq, Read, Show, Data,
+                                                  Typeable, Generic)
 
 -- | Creates a value of 'ImportCatalogToGlueResponse' with the minimum fields required to make a request.
 --
@@ -114,9 +109,9 @@ newtype ImportCatalogToGlueResponse =
 importCatalogToGlueResponse
     :: Int -- ^ 'ictgrsResponseStatus'
     -> ImportCatalogToGlueResponse
-importCatalogToGlueResponse pResponseStatus_ =
-  ImportCatalogToGlueResponse' {_ictgrsResponseStatus = pResponseStatus_}
-
+importCatalogToGlueResponse pResponseStatus_
+  = ImportCatalogToGlueResponse'{_ictgrsResponseStatus
+                                   = pResponseStatus_}
 
 -- | -- | The response status code.
 ictgrsResponseStatus :: Lens' ImportCatalogToGlueResponse Int

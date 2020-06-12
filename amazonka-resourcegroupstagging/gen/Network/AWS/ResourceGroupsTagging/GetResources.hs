@@ -49,20 +49,16 @@ import Network.AWS.Pager
 import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.ResourceGroupsTagging.Types
-import Network.AWS.ResourceGroupsTagging.Types.Product
 import Network.AWS.Response
 
 -- | /See:/ 'getResources' smart constructor.
-data GetResources =
-  GetResources'
-    { _grPaginationToken     :: !(Maybe Text)
-    , _grResourcesPerPage    :: !(Maybe Int)
-    , _grResourceTypeFilters :: !(Maybe [Text])
-    , _grTagFilters          :: !(Maybe [TagFilter])
-    , _grTagsPerPage         :: !(Maybe Int)
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data GetResources = GetResources'{_grPaginationToken
+                                  :: !(Maybe Text),
+                                  _grResourcesPerPage :: !(Maybe Int),
+                                  _grResourceTypeFilters :: !(Maybe [Text]),
+                                  _grTagFilters :: !(Maybe [TagFilter]),
+                                  _grTagsPerPage :: !(Maybe Int)}
+                      deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'GetResources' with the minimum fields required to make a request.
 --
@@ -70,7 +66,7 @@ data GetResources =
 --
 -- * 'grPaginationToken' - A string that indicates that additional data is available. Leave this value empty for your initial request. If the response includes a @PaginationToken@ , use that string for this value to request an additional page of data.
 --
--- * 'grResourcesPerPage' - A limit that restricts the number of resources returned by GetResources in paginated output. You can set ResourcesPerPage to a minimum of 1 item and the maximum of 50 items.
+-- * 'grResourcesPerPage' - A limit that restricts the number of resources returned by GetResources in paginated output. You can set ResourcesPerPage to a minimum of 1 item and the maximum of 50 items. 
 --
 -- * 'grResourceTypeFilters' - The constraints on the resources that you want returned. The format of each resource type is @service[:resourceType]@ . For example, specifying a resource type of @ec2@ returns all tagged Amazon EC2 resources (which includes tagged EC2 instances). Specifying a resource type of @ec2:instance@ returns only EC2 instances.  The string for each service name and resource type is the same as that embedded in a resource's Amazon Resource Name (ARN). Consult the /AWS General Reference/ for the following:     * For a list of service name strings, see <http://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html#genref-aws-service-namespaces AWS Service Namespaces> .     * For resource type strings, see <http://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html#arns-syntax Example ARNs> .     * For more information about ARNs, see <http://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html Amazon Resource Names (ARNs) and AWS Service Namespaces> .
 --
@@ -79,21 +75,17 @@ data GetResources =
 -- * 'grTagsPerPage' - A limit that restricts the number of tags (key and value pairs) returned by GetResources in paginated output. A resource with no tags is counted as having one tag (one key and value pair). @GetResources@ does not split a resource and its associated tags across pages. If the specified @TagsPerPage@ would cause such a break, a @PaginationToken@ is returned in place of the affected resource and its tags. Use that token in another request to get the remaining data. For example, if you specify a @TagsPerPage@ of @100@ and the account has 22 resources with 10 tags each (meaning that each resource has 10 key and value pairs), the output will consist of 3 pages, with the first page displaying the first 10 resources, each with its 10 tags, the second page displaying the next 10 resources each with its 10 tags, and the third page displaying the remaining 2 resources, each with its 10 tags. You can set @TagsPerPage@ to a minimum of 100 items and the maximum of 500 items.
 getResources
     :: GetResources
-getResources =
-  GetResources'
-    { _grPaginationToken = Nothing
-    , _grResourcesPerPage = Nothing
-    , _grResourceTypeFilters = Nothing
-    , _grTagFilters = Nothing
-    , _grTagsPerPage = Nothing
-    }
-
+getResources
+  = GetResources'{_grPaginationToken = Nothing,
+                  _grResourcesPerPage = Nothing,
+                  _grResourceTypeFilters = Nothing,
+                  _grTagFilters = Nothing, _grTagsPerPage = Nothing}
 
 -- | A string that indicates that additional data is available. Leave this value empty for your initial request. If the response includes a @PaginationToken@ , use that string for this value to request an additional page of data.
 grPaginationToken :: Lens' GetResources (Maybe Text)
 grPaginationToken = lens _grPaginationToken (\ s a -> s{_grPaginationToken = a})
 
--- | A limit that restricts the number of resources returned by GetResources in paginated output. You can set ResourcesPerPage to a minimum of 1 item and the maximum of 50 items.
+-- | A limit that restricts the number of resources returned by GetResources in paginated output. You can set ResourcesPerPage to a minimum of 1 item and the maximum of 50 items. 
 grResourcesPerPage :: Lens' GetResources (Maybe Int)
 grResourcesPerPage = lens _grResourcesPerPage (\ s a -> s{_grResourcesPerPage = a})
 
@@ -160,14 +152,12 @@ instance ToQuery GetResources where
         toQuery = const mempty
 
 -- | /See:/ 'getResourcesResponse' smart constructor.
-data GetResourcesResponse =
-  GetResourcesResponse'
-    { _grrsPaginationToken        :: !(Maybe Text)
-    , _grrsResourceTagMappingList :: !(Maybe [ResourceTagMapping])
-    , _grrsResponseStatus         :: !Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data GetResourcesResponse = GetResourcesResponse'{_grrsPaginationToken
+                                                  :: !(Maybe Text),
+                                                  _grrsResourceTagMappingList ::
+                                                  !(Maybe [ResourceTagMapping]),
+                                                  _grrsResponseStatus :: !Int}
+                              deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'GetResourcesResponse' with the minimum fields required to make a request.
 --
@@ -181,13 +171,11 @@ data GetResourcesResponse =
 getResourcesResponse
     :: Int -- ^ 'grrsResponseStatus'
     -> GetResourcesResponse
-getResourcesResponse pResponseStatus_ =
-  GetResourcesResponse'
-    { _grrsPaginationToken = Nothing
-    , _grrsResourceTagMappingList = Nothing
-    , _grrsResponseStatus = pResponseStatus_
-    }
-
+getResourcesResponse pResponseStatus_
+  = GetResourcesResponse'{_grrsPaginationToken =
+                            Nothing,
+                          _grrsResourceTagMappingList = Nothing,
+                          _grrsResponseStatus = pResponseStatus_}
 
 -- | A string that indicates that the response contains more data than can be returned in a single response. To receive additional data, specify this string for the @PaginationToken@ value in a subsequent request.
 grrsPaginationToken :: Lens' GetResourcesResponse (Maybe Text)

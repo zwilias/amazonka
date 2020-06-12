@@ -40,21 +40,20 @@ module Network.AWS.EC2.DescribeFpgaImageAttribute
     ) where
 
 import Network.AWS.EC2.Types
-import Network.AWS.EC2.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 
 -- | /See:/ 'describeFpgaImageAttribute' smart constructor.
-data DescribeFpgaImageAttribute =
-  DescribeFpgaImageAttribute'
-    { _dfiaDryRun      :: !(Maybe Bool)
-    , _dfiaFpgaImageId :: !Text
-    , _dfiaAttribute   :: !FpgaImageAttributeName
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data DescribeFpgaImageAttribute = DescribeFpgaImageAttribute'{_dfiaDryRun
+                                                              :: !(Maybe Bool),
+                                                              _dfiaFpgaImageId
+                                                              :: !Text,
+                                                              _dfiaAttribute ::
+                                                              !FpgaImageAttributeName}
+                                    deriving (Eq, Read, Show, Data, Typeable,
+                                              Generic)
 
 -- | Creates a value of 'DescribeFpgaImageAttribute' with the minimum fields required to make a request.
 --
@@ -69,13 +68,10 @@ describeFpgaImageAttribute
     :: Text -- ^ 'dfiaFpgaImageId'
     -> FpgaImageAttributeName -- ^ 'dfiaAttribute'
     -> DescribeFpgaImageAttribute
-describeFpgaImageAttribute pFpgaImageId_ pAttribute_ =
-  DescribeFpgaImageAttribute'
-    { _dfiaDryRun = Nothing
-    , _dfiaFpgaImageId = pFpgaImageId_
-    , _dfiaAttribute = pAttribute_
-    }
-
+describeFpgaImageAttribute pFpgaImageId_ pAttribute_
+  = DescribeFpgaImageAttribute'{_dfiaDryRun = Nothing,
+                                _dfiaFpgaImageId = pFpgaImageId_,
+                                _dfiaAttribute = pAttribute_}
 
 -- | Checks whether you have the required permissions for the action, without actually making the request, and provides an error response. If you have the required permissions, the error response is @DryRunOperation@ . Otherwise, it is @UnauthorizedOperation@ .
 dfiaDryRun :: Lens' DescribeFpgaImageAttribute (Maybe Bool)
@@ -120,13 +116,15 @@ instance ToQuery DescribeFpgaImageAttribute where
                "Attribute" =: _dfiaAttribute]
 
 -- | /See:/ 'describeFpgaImageAttributeResponse' smart constructor.
-data DescribeFpgaImageAttributeResponse =
-  DescribeFpgaImageAttributeResponse'
-    { _dfiarsFpgaImageAttribute :: !(Maybe FpgaImageAttribute)
-    , _dfiarsResponseStatus     :: !Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data DescribeFpgaImageAttributeResponse = DescribeFpgaImageAttributeResponse'{_dfiarsFpgaImageAttribute
+                                                                              ::
+                                                                              !(Maybe
+                                                                                  FpgaImageAttribute),
+                                                                              _dfiarsResponseStatus
+                                                                              ::
+                                                                              !Int}
+                                            deriving (Eq, Read, Show, Data,
+                                                      Typeable, Generic)
 
 -- | Creates a value of 'DescribeFpgaImageAttributeResponse' with the minimum fields required to make a request.
 --
@@ -138,12 +136,11 @@ data DescribeFpgaImageAttributeResponse =
 describeFpgaImageAttributeResponse
     :: Int -- ^ 'dfiarsResponseStatus'
     -> DescribeFpgaImageAttributeResponse
-describeFpgaImageAttributeResponse pResponseStatus_ =
-  DescribeFpgaImageAttributeResponse'
-    { _dfiarsFpgaImageAttribute = Nothing
-    , _dfiarsResponseStatus = pResponseStatus_
-    }
-
+describeFpgaImageAttributeResponse pResponseStatus_
+  = DescribeFpgaImageAttributeResponse'{_dfiarsFpgaImageAttribute
+                                          = Nothing,
+                                        _dfiarsResponseStatus =
+                                          pResponseStatus_}
 
 -- | Information about the attribute.
 dfiarsFpgaImageAttribute :: Lens' DescribeFpgaImageAttributeResponse (Maybe FpgaImageAttribute)

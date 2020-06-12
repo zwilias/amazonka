@@ -44,17 +44,13 @@ import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 import Network.AWS.Route53Domains.Types
-import Network.AWS.Route53Domains.Types.Product
 
 -- | /See:/ 'getDomainSuggestions' smart constructor.
-data GetDomainSuggestions =
-  GetDomainSuggestions'
-    { _gdsDomainName      :: !Text
-    , _gdsSuggestionCount :: !Int
-    , _gdsOnlyAvailable   :: !Bool
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data GetDomainSuggestions = GetDomainSuggestions'{_gdsDomainName
+                                                  :: !Text,
+                                                  _gdsSuggestionCount :: !Int,
+                                                  _gdsOnlyAvailable :: !Bool}
+                              deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'GetDomainSuggestions' with the minimum fields required to make a request.
 --
@@ -70,13 +66,12 @@ getDomainSuggestions
     -> Int -- ^ 'gdsSuggestionCount'
     -> Bool -- ^ 'gdsOnlyAvailable'
     -> GetDomainSuggestions
-getDomainSuggestions pDomainName_ pSuggestionCount_ pOnlyAvailable_ =
-  GetDomainSuggestions'
-    { _gdsDomainName = pDomainName_
-    , _gdsSuggestionCount = pSuggestionCount_
-    , _gdsOnlyAvailable = pOnlyAvailable_
-    }
-
+getDomainSuggestions pDomainName_ pSuggestionCount_
+  pOnlyAvailable_
+  = GetDomainSuggestions'{_gdsDomainName =
+                            pDomainName_,
+                          _gdsSuggestionCount = pSuggestionCount_,
+                          _gdsOnlyAvailable = pOnlyAvailable_}
 
 -- | A domain name that you want to use as the basis for a list of possible domain names. The domain name must contain a top-level domain (TLD), such as .com, that Amazon Route 53 supports. For a list of TLDs, see <http://docs.aws.amazon.com/Route53/latest/DeveloperGuide/registrar-tld-list.html Domains that You Can Register with Amazon Route 53> in the /Amazon Route 53 Developer Guide/ .
 gdsDomainName :: Lens' GetDomainSuggestions Text
@@ -130,13 +125,14 @@ instance ToQuery GetDomainSuggestions where
         toQuery = const mempty
 
 -- | /See:/ 'getDomainSuggestionsResponse' smart constructor.
-data GetDomainSuggestionsResponse =
-  GetDomainSuggestionsResponse'
-    { _gdsrsSuggestionsList :: !(Maybe [DomainSuggestion])
-    , _gdsrsResponseStatus  :: !Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data GetDomainSuggestionsResponse = GetDomainSuggestionsResponse'{_gdsrsSuggestionsList
+                                                                  ::
+                                                                  !(Maybe
+                                                                      [DomainSuggestion]),
+                                                                  _gdsrsResponseStatus
+                                                                  :: !Int}
+                                      deriving (Eq, Read, Show, Data, Typeable,
+                                                Generic)
 
 -- | Creates a value of 'GetDomainSuggestionsResponse' with the minimum fields required to make a request.
 --
@@ -148,10 +144,10 @@ data GetDomainSuggestionsResponse =
 getDomainSuggestionsResponse
     :: Int -- ^ 'gdsrsResponseStatus'
     -> GetDomainSuggestionsResponse
-getDomainSuggestionsResponse pResponseStatus_ =
-  GetDomainSuggestionsResponse'
-    {_gdsrsSuggestionsList = Nothing, _gdsrsResponseStatus = pResponseStatus_}
-
+getDomainSuggestionsResponse pResponseStatus_
+  = GetDomainSuggestionsResponse'{_gdsrsSuggestionsList
+                                    = Nothing,
+                                  _gdsrsResponseStatus = pResponseStatus_}
 
 -- | A list of possible domain names. If you specified @true@ for @OnlyAvailable@ in the request, the list contains only domains that are available for registration.
 gdsrsSuggestionsList :: Lens' GetDomainSuggestionsResponse [DomainSuggestion]

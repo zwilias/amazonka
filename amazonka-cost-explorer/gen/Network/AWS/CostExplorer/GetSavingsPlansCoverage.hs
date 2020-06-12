@@ -21,13 +21,13 @@
 -- Retrieves the Savings Plans covered for your account. This enables you to see how much of your cost is covered by a Savings Plan. An organization’s master account can see the coverage of the associated member accounts. This supports dimensions, Cost Categories, and nested expressions. For any time period, you can filter data for Savings Plans usage with the following dimensions:
 --
 --
---     * @LINKED_ACCOUNT@
+--     * @LINKED_ACCOUNT@ 
 --
---     * @REGION@
+--     * @REGION@ 
 --
---     * @SERVICE@
+--     * @SERVICE@ 
 --
---     * @INSTANCE_FAMILY@
+--     * @INSTANCE_FAMILY@ 
 --
 --
 --
@@ -57,25 +57,30 @@ module Network.AWS.CostExplorer.GetSavingsPlansCoverage
     ) where
 
 import Network.AWS.CostExplorer.Types
-import Network.AWS.CostExplorer.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 
 -- | /See:/ 'getSavingsPlansCoverage' smart constructor.
-data GetSavingsPlansCoverage =
-  GetSavingsPlansCoverage'
-    { _gspcGroupBy     :: !(Maybe [GroupDefinition])
-    , _gspcMetrics     :: !(Maybe [Text])
-    , _gspcGranularity :: !(Maybe Granularity)
-    , _gspcNextToken   :: !(Maybe Text)
-    , _gspcFilter      :: !(Maybe Expression)
-    , _gspcMaxResults  :: !(Maybe Nat)
-    , _gspcTimePeriod  :: !DateInterval
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data GetSavingsPlansCoverage = GetSavingsPlansCoverage'{_gspcGroupBy
+                                                        ::
+                                                        !(Maybe
+                                                            [GroupDefinition]),
+                                                        _gspcMetrics ::
+                                                        !(Maybe [Text]),
+                                                        _gspcGranularity ::
+                                                        !(Maybe Granularity),
+                                                        _gspcNextToken ::
+                                                        !(Maybe Text),
+                                                        _gspcFilter ::
+                                                        !(Maybe Expression),
+                                                        _gspcMaxResults ::
+                                                        !(Maybe Nat),
+                                                        _gspcTimePeriod ::
+                                                        !DateInterval}
+                                 deriving (Eq, Read, Show, Data, Typeable,
+                                           Generic)
 
 -- | Creates a value of 'GetSavingsPlansCoverage' with the minimum fields required to make a request.
 --
@@ -97,17 +102,12 @@ data GetSavingsPlansCoverage =
 getSavingsPlansCoverage
     :: DateInterval -- ^ 'gspcTimePeriod'
     -> GetSavingsPlansCoverage
-getSavingsPlansCoverage pTimePeriod_ =
-  GetSavingsPlansCoverage'
-    { _gspcGroupBy = Nothing
-    , _gspcMetrics = Nothing
-    , _gspcGranularity = Nothing
-    , _gspcNextToken = Nothing
-    , _gspcFilter = Nothing
-    , _gspcMaxResults = Nothing
-    , _gspcTimePeriod = pTimePeriod_
-    }
-
+getSavingsPlansCoverage pTimePeriod_
+  = GetSavingsPlansCoverage'{_gspcGroupBy = Nothing,
+                             _gspcMetrics = Nothing, _gspcGranularity = Nothing,
+                             _gspcNextToken = Nothing, _gspcFilter = Nothing,
+                             _gspcMaxResults = Nothing,
+                             _gspcTimePeriod = pTimePeriod_}
 
 -- | You can group the data using the attributes @INSTANCE_FAMILY@ , @REGION@ , or @SERVICE@ .
 gspcGroupBy :: Lens' GetSavingsPlansCoverage [GroupDefinition]
@@ -181,14 +181,17 @@ instance ToQuery GetSavingsPlansCoverage where
         toQuery = const mempty
 
 -- | /See:/ 'getSavingsPlansCoverageResponse' smart constructor.
-data GetSavingsPlansCoverageResponse =
-  GetSavingsPlansCoverageResponse'
-    { _gspcrsNextToken             :: !(Maybe Text)
-    , _gspcrsResponseStatus        :: !Int
-    , _gspcrsSavingsPlansCoverages :: ![SavingsPlansCoverage]
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data GetSavingsPlansCoverageResponse = GetSavingsPlansCoverageResponse'{_gspcrsNextToken
+                                                                        ::
+                                                                        !(Maybe
+                                                                            Text),
+                                                                        _gspcrsResponseStatus
+                                                                        :: !Int,
+                                                                        _gspcrsSavingsPlansCoverages
+                                                                        ::
+                                                                        ![SavingsPlansCoverage]}
+                                         deriving (Eq, Read, Show, Data,
+                                                   Typeable, Generic)
 
 -- | Creates a value of 'GetSavingsPlansCoverageResponse' with the minimum fields required to make a request.
 --
@@ -202,13 +205,11 @@ data GetSavingsPlansCoverageResponse =
 getSavingsPlansCoverageResponse
     :: Int -- ^ 'gspcrsResponseStatus'
     -> GetSavingsPlansCoverageResponse
-getSavingsPlansCoverageResponse pResponseStatus_ =
-  GetSavingsPlansCoverageResponse'
-    { _gspcrsNextToken = Nothing
-    , _gspcrsResponseStatus = pResponseStatus_
-    , _gspcrsSavingsPlansCoverages = mempty
-    }
-
+getSavingsPlansCoverageResponse pResponseStatus_
+  = GetSavingsPlansCoverageResponse'{_gspcrsNextToken =
+                                       Nothing,
+                                     _gspcrsResponseStatus = pResponseStatus_,
+                                     _gspcrsSavingsPlansCoverages = mempty}
 
 -- | The token to retrieve the next set of results. Amazon Web Services provides the token when the response from a previous call has more results than the maximum page size.
 gspcrsNextToken :: Lens' GetSavingsPlansCoverageResponse (Maybe Text)

@@ -23,17 +23,17 @@
 --
 -- Alias-related operations include:
 --
---     * 'CreateAlias'
+--     * 'CreateAlias' 
 --
---     * 'ListAliases'
+--     * 'ListAliases' 
 --
---     * 'DescribeAlias'
+--     * 'DescribeAlias' 
 --
---     * 'UpdateAlias'
+--     * 'UpdateAlias' 
 --
---     * 'DeleteAlias'
+--     * 'DeleteAlias' 
 --
---     * 'ResolveAlias'
+--     * 'ResolveAlias' 
 --
 --
 --
@@ -58,7 +58,6 @@ module Network.AWS.GameLift.ListAliases
     ) where
 
 import Network.AWS.GameLift.Types
-import Network.AWS.GameLift.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.Request
@@ -69,15 +68,12 @@ import Network.AWS.Response
 --
 --
 -- /See:/ 'listAliases' smart constructor.
-data ListAliases =
-  ListAliases'
-    { _laRoutingStrategyType :: !(Maybe RoutingStrategyType)
-    , _laNextToken           :: !(Maybe Text)
-    , _laName                :: !(Maybe Text)
-    , _laLimit               :: !(Maybe Nat)
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data ListAliases = ListAliases'{_laRoutingStrategyType
+                                :: !(Maybe RoutingStrategyType),
+                                _laNextToken :: !(Maybe Text),
+                                _laName :: !(Maybe Text),
+                                _laLimit :: !(Maybe Nat)}
+                     deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'ListAliases' with the minimum fields required to make a request.
 --
@@ -92,14 +88,10 @@ data ListAliases =
 -- * 'laLimit' - Maximum number of results to return. Use this parameter with @NextToken@ to get results as a set of sequential pages.
 listAliases
     :: ListAliases
-listAliases =
-  ListAliases'
-    { _laRoutingStrategyType = Nothing
-    , _laNextToken = Nothing
-    , _laName = Nothing
-    , _laLimit = Nothing
-    }
-
+listAliases
+  = ListAliases'{_laRoutingStrategyType = Nothing,
+                 _laNextToken = Nothing, _laName = Nothing,
+                 _laLimit = Nothing}
 
 -- | Type of routing to filter results on. Use this parameter to retrieve only aliases of a certain type. To retrieve all aliases, leave this parameter empty. Possible routing types include the following:     * __SIMPLE__ -- The alias resolves to one specific fleet. Use this type when routing to active fleets.     * __TERMINAL__ -- The alias does not resolve to a fleet but instead can be used to display a message to the user. A terminal alias throws a TerminalRoutingStrategyException with the 'RoutingStrategy' message embedded.
 laRoutingStrategyType :: Lens' ListAliases (Maybe RoutingStrategyType)
@@ -160,14 +152,11 @@ instance ToQuery ListAliases where
 --
 --
 -- /See:/ 'listAliasesResponse' smart constructor.
-data ListAliasesResponse =
-  ListAliasesResponse'
-    { _larsAliases        :: !(Maybe [Alias])
-    , _larsNextToken      :: !(Maybe Text)
-    , _larsResponseStatus :: !Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data ListAliasesResponse = ListAliasesResponse'{_larsAliases
+                                                :: !(Maybe [Alias]),
+                                                _larsNextToken :: !(Maybe Text),
+                                                _larsResponseStatus :: !Int}
+                             deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'ListAliasesResponse' with the minimum fields required to make a request.
 --
@@ -181,13 +170,10 @@ data ListAliasesResponse =
 listAliasesResponse
     :: Int -- ^ 'larsResponseStatus'
     -> ListAliasesResponse
-listAliasesResponse pResponseStatus_ =
-  ListAliasesResponse'
-    { _larsAliases = Nothing
-    , _larsNextToken = Nothing
-    , _larsResponseStatus = pResponseStatus_
-    }
-
+listAliasesResponse pResponseStatus_
+  = ListAliasesResponse'{_larsAliases = Nothing,
+                         _larsNextToken = Nothing,
+                         _larsResponseStatus = pResponseStatus_}
 
 -- | Collection of alias records that match the list request.
 larsAliases :: Lens' ListAliasesResponse [Alias]

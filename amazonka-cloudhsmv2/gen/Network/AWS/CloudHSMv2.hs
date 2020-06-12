@@ -49,40 +49,40 @@ module Network.AWS.CloudHSMv2
     -- ** DescribeClusters (Paginated)
     , module Network.AWS.CloudHSMv2.DescribeClusters
 
-    -- ** DeleteBackup
+    -- ** DeleteBackup 
     , module Network.AWS.CloudHSMv2.DeleteBackup
 
-    -- ** InitializeCluster
+    -- ** InitializeCluster 
     , module Network.AWS.CloudHSMv2.InitializeCluster
 
-    -- ** CreateHSM
+    -- ** CreateHSM 
     , module Network.AWS.CloudHSMv2.CreateHSM
 
     -- ** DescribeBackups (Paginated)
     , module Network.AWS.CloudHSMv2.DescribeBackups
 
-    -- ** CopyBackupToRegion
+    -- ** CopyBackupToRegion 
     , module Network.AWS.CloudHSMv2.CopyBackupToRegion
 
-    -- ** DeleteCluster
+    -- ** DeleteCluster 
     , module Network.AWS.CloudHSMv2.DeleteCluster
 
-    -- ** CreateCluster
+    -- ** CreateCluster 
     , module Network.AWS.CloudHSMv2.CreateCluster
 
-    -- ** RestoreBackup
+    -- ** RestoreBackup 
     , module Network.AWS.CloudHSMv2.RestoreBackup
 
-    -- ** DeleteHSM
+    -- ** DeleteHSM 
     , module Network.AWS.CloudHSMv2.DeleteHSM
 
-    -- ** TagResource
+    -- ** TagResource 
     , module Network.AWS.CloudHSMv2.TagResource
 
     -- ** ListTags (Paginated)
     , module Network.AWS.CloudHSMv2.ListTags
 
-    -- ** UntagResource
+    -- ** UntagResource 
     , module Network.AWS.CloudHSMv2.UntagResource
 
     -- * Types

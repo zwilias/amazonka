@@ -43,19 +43,18 @@ import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 import Network.AWS.SES.Types
-import Network.AWS.SES.Types.Product
 
--- | Represents a request to delete open and click tracking options in a configuration set.
+-- | Represents a request to delete open and click tracking options in a configuration set. 
 --
 --
 --
 -- /See:/ 'deleteConfigurationSetTrackingOptions' smart constructor.
-newtype DeleteConfigurationSetTrackingOptions =
-  DeleteConfigurationSetTrackingOptions'
-    { _dcstoConfigurationSetName :: Text
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+newtype DeleteConfigurationSetTrackingOptions = DeleteConfigurationSetTrackingOptions'{_dcstoConfigurationSetName
+                                                                                       ::
+                                                                                       Text}
+                                                  deriving (Eq, Read, Show,
+                                                            Data, Typeable,
+                                                            Generic)
 
 -- | Creates a value of 'DeleteConfigurationSetTrackingOptions' with the minimum fields required to make a request.
 --
@@ -65,10 +64,10 @@ newtype DeleteConfigurationSetTrackingOptions =
 deleteConfigurationSetTrackingOptions
     :: Text -- ^ 'dcstoConfigurationSetName'
     -> DeleteConfigurationSetTrackingOptions
-deleteConfigurationSetTrackingOptions pConfigurationSetName_ =
-  DeleteConfigurationSetTrackingOptions'
-    {_dcstoConfigurationSetName = pConfigurationSetName_}
-
+deleteConfigurationSetTrackingOptions
+  pConfigurationSetName_
+  = DeleteConfigurationSetTrackingOptions'{_dcstoConfigurationSetName
+                                             = pConfigurationSetName_}
 
 -- | The name of the configuration set from which you want to delete the tracking options.
 dcstoConfigurationSetName :: Lens' DeleteConfigurationSetTrackingOptions Text
@@ -119,12 +118,13 @@ instance ToQuery
 --
 --
 -- /See:/ 'deleteConfigurationSetTrackingOptionsResponse' smart constructor.
-newtype DeleteConfigurationSetTrackingOptionsResponse =
-  DeleteConfigurationSetTrackingOptionsResponse'
-    { _dcstorsResponseStatus :: Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+newtype DeleteConfigurationSetTrackingOptionsResponse = DeleteConfigurationSetTrackingOptionsResponse'{_dcstorsResponseStatus
+                                                                                                       ::
+                                                                                                       Int}
+                                                          deriving (Eq, Read,
+                                                                    Show, Data,
+                                                                    Typeable,
+                                                                    Generic)
 
 -- | Creates a value of 'DeleteConfigurationSetTrackingOptionsResponse' with the minimum fields required to make a request.
 --
@@ -134,10 +134,10 @@ newtype DeleteConfigurationSetTrackingOptionsResponse =
 deleteConfigurationSetTrackingOptionsResponse
     :: Int -- ^ 'dcstorsResponseStatus'
     -> DeleteConfigurationSetTrackingOptionsResponse
-deleteConfigurationSetTrackingOptionsResponse pResponseStatus_ =
-  DeleteConfigurationSetTrackingOptionsResponse'
-    {_dcstorsResponseStatus = pResponseStatus_}
-
+deleteConfigurationSetTrackingOptionsResponse
+  pResponseStatus_
+  = DeleteConfigurationSetTrackingOptionsResponse'{_dcstorsResponseStatus
+                                                     = pResponseStatus_}
 
 -- | -- | The response status code.
 dcstorsResponseStatus :: Lens' DeleteConfigurationSetTrackingOptionsResponse Int

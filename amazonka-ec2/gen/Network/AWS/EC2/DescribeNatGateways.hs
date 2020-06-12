@@ -45,7 +45,6 @@ module Network.AWS.EC2.DescribeNatGateways
     ) where
 
 import Network.AWS.EC2.Types
-import Network.AWS.EC2.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Pager
 import Network.AWS.Prelude
@@ -53,16 +52,13 @@ import Network.AWS.Request
 import Network.AWS.Response
 
 -- | /See:/ 'describeNatGateways' smart constructor.
-data DescribeNatGateways =
-  DescribeNatGateways'
-    { _dngNatGatewayIds :: !(Maybe [Text])
-    , _dngNextToken     :: !(Maybe Text)
-    , _dngFilter        :: !(Maybe [Filter])
-    , _dngDryRun        :: !(Maybe Bool)
-    , _dngMaxResults    :: !(Maybe Nat)
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data DescribeNatGateways = DescribeNatGateways'{_dngNatGatewayIds
+                                                :: !(Maybe [Text]),
+                                                _dngNextToken :: !(Maybe Text),
+                                                _dngFilter :: !(Maybe [Filter]),
+                                                _dngDryRun :: !(Maybe Bool),
+                                                _dngMaxResults :: !(Maybe Nat)}
+                             deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'DescribeNatGateways' with the minimum fields required to make a request.
 --
@@ -79,15 +75,10 @@ data DescribeNatGateways =
 -- * 'dngMaxResults' - The maximum number of results to return with a single call. To retrieve the remaining results, make another call with the returned @nextToken@ value.
 describeNatGateways
     :: DescribeNatGateways
-describeNatGateways =
-  DescribeNatGateways'
-    { _dngNatGatewayIds = Nothing
-    , _dngNextToken = Nothing
-    , _dngFilter = Nothing
-    , _dngDryRun = Nothing
-    , _dngMaxResults = Nothing
-    }
-
+describeNatGateways
+  = DescribeNatGateways'{_dngNatGatewayIds = Nothing,
+                         _dngNextToken = Nothing, _dngFilter = Nothing,
+                         _dngDryRun = Nothing, _dngMaxResults = Nothing}
 
 -- | One or more NAT gateway IDs.
 dngNatGatewayIds :: Lens' DescribeNatGateways [Text]
@@ -152,14 +143,17 @@ instance ToQuery DescribeNatGateways where
                "MaxResults" =: _dngMaxResults]
 
 -- | /See:/ 'describeNatGatewaysResponse' smart constructor.
-data DescribeNatGatewaysResponse =
-  DescribeNatGatewaysResponse'
-    { _dngrsNatGateways    :: !(Maybe [NatGateway])
-    , _dngrsNextToken      :: !(Maybe Text)
-    , _dngrsResponseStatus :: !Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data DescribeNatGatewaysResponse = DescribeNatGatewaysResponse'{_dngrsNatGateways
+                                                                ::
+                                                                !(Maybe
+                                                                    [NatGateway]),
+                                                                _dngrsNextToken
+                                                                ::
+                                                                !(Maybe Text),
+                                                                _dngrsResponseStatus
+                                                                :: !Int}
+                                     deriving (Eq, Read, Show, Data, Typeable,
+                                               Generic)
 
 -- | Creates a value of 'DescribeNatGatewaysResponse' with the minimum fields required to make a request.
 --
@@ -173,13 +167,11 @@ data DescribeNatGatewaysResponse =
 describeNatGatewaysResponse
     :: Int -- ^ 'dngrsResponseStatus'
     -> DescribeNatGatewaysResponse
-describeNatGatewaysResponse pResponseStatus_ =
-  DescribeNatGatewaysResponse'
-    { _dngrsNatGateways = Nothing
-    , _dngrsNextToken = Nothing
-    , _dngrsResponseStatus = pResponseStatus_
-    }
-
+describeNatGatewaysResponse pResponseStatus_
+  = DescribeNatGatewaysResponse'{_dngrsNatGateways =
+                                   Nothing,
+                                 _dngrsNextToken = Nothing,
+                                 _dngrsResponseStatus = pResponseStatus_}
 
 -- | Information about the NAT gateways.
 dngrsNatGateways :: Lens' DescribeNatGatewaysResponse [NatGateway]

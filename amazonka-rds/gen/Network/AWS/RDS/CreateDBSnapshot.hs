@@ -42,23 +42,19 @@ module Network.AWS.RDS.CreateDBSnapshot
 import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.RDS.Types
-import Network.AWS.RDS.Types.Product
 import Network.AWS.Request
 import Network.AWS.Response
 
--- |
+-- | 
 --
 --
 --
 -- /See:/ 'createDBSnapshot' smart constructor.
-data CreateDBSnapshot =
-  CreateDBSnapshot'
-    { _cdbsTags                 :: !(Maybe [Tag])
-    , _cdbsDBSnapshotIdentifier :: !Text
-    , _cdbsDBInstanceIdentifier :: !Text
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data CreateDBSnapshot = CreateDBSnapshot'{_cdbsTags
+                                          :: !(Maybe [Tag]),
+                                          _cdbsDBSnapshotIdentifier :: !Text,
+                                          _cdbsDBInstanceIdentifier :: !Text}
+                          deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'CreateDBSnapshot' with the minimum fields required to make a request.
 --
@@ -66,26 +62,24 @@ data CreateDBSnapshot =
 --
 -- * 'cdbsTags' - Undocumented member.
 --
--- * 'cdbsDBSnapshotIdentifier' - The identifier for the DB snapshot. Constraints:     * Cannot be null, empty, or blank     * Must contain from 1 to 255 letters, numbers, or hyphens     * First character must be a letter     * Cannot end with a hyphen or contain two consecutive hyphens Example: @my-snapshot-id@
+-- * 'cdbsDBSnapshotIdentifier' - The identifier for the DB snapshot. Constraints:     * Cannot be null, empty, or blank     * Must contain from 1 to 255 letters, numbers, or hyphens     * First character must be a letter     * Cannot end with a hyphen or contain two consecutive hyphens Example: @my-snapshot-id@ 
 --
 -- * 'cdbsDBInstanceIdentifier' - The identifier of the DB instance that you want to create the snapshot of. Constraints:     * Must match the identifier of an existing DBInstance.
 createDBSnapshot
     :: Text -- ^ 'cdbsDBSnapshotIdentifier'
     -> Text -- ^ 'cdbsDBInstanceIdentifier'
     -> CreateDBSnapshot
-createDBSnapshot pDBSnapshotIdentifier_ pDBInstanceIdentifier_ =
-  CreateDBSnapshot'
-    { _cdbsTags = Nothing
-    , _cdbsDBSnapshotIdentifier = pDBSnapshotIdentifier_
-    , _cdbsDBInstanceIdentifier = pDBInstanceIdentifier_
-    }
-
+createDBSnapshot pDBSnapshotIdentifier_
+  pDBInstanceIdentifier_
+  = CreateDBSnapshot'{_cdbsTags = Nothing,
+                      _cdbsDBSnapshotIdentifier = pDBSnapshotIdentifier_,
+                      _cdbsDBInstanceIdentifier = pDBInstanceIdentifier_}
 
 -- | Undocumented member.
 cdbsTags :: Lens' CreateDBSnapshot [Tag]
 cdbsTags = lens _cdbsTags (\ s a -> s{_cdbsTags = a}) . _Default . _Coerce
 
--- | The identifier for the DB snapshot. Constraints:     * Cannot be null, empty, or blank     * Must contain from 1 to 255 letters, numbers, or hyphens     * First character must be a letter     * Cannot end with a hyphen or contain two consecutive hyphens Example: @my-snapshot-id@
+-- | The identifier for the DB snapshot. Constraints:     * Cannot be null, empty, or blank     * Must contain from 1 to 255 letters, numbers, or hyphens     * First character must be a letter     * Cannot end with a hyphen or contain two consecutive hyphens Example: @my-snapshot-id@ 
 cdbsDBSnapshotIdentifier :: Lens' CreateDBSnapshot Text
 cdbsDBSnapshotIdentifier = lens _cdbsDBSnapshotIdentifier (\ s a -> s{_cdbsDBSnapshotIdentifier = a})
 
@@ -122,13 +116,13 @@ instance ToQuery CreateDBSnapshot where
                "DBInstanceIdentifier" =: _cdbsDBInstanceIdentifier]
 
 -- | /See:/ 'createDBSnapshotResponse' smart constructor.
-data CreateDBSnapshotResponse =
-  CreateDBSnapshotResponse'
-    { _cdbsrsDBSnapshot     :: !(Maybe DBSnapshot)
-    , _cdbsrsResponseStatus :: !Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data CreateDBSnapshotResponse = CreateDBSnapshotResponse'{_cdbsrsDBSnapshot
+                                                          ::
+                                                          !(Maybe DBSnapshot),
+                                                          _cdbsrsResponseStatus
+                                                          :: !Int}
+                                  deriving (Eq, Read, Show, Data, Typeable,
+                                            Generic)
 
 -- | Creates a value of 'CreateDBSnapshotResponse' with the minimum fields required to make a request.
 --
@@ -140,10 +134,10 @@ data CreateDBSnapshotResponse =
 createDBSnapshotResponse
     :: Int -- ^ 'cdbsrsResponseStatus'
     -> CreateDBSnapshotResponse
-createDBSnapshotResponse pResponseStatus_ =
-  CreateDBSnapshotResponse'
-    {_cdbsrsDBSnapshot = Nothing, _cdbsrsResponseStatus = pResponseStatus_}
-
+createDBSnapshotResponse pResponseStatus_
+  = CreateDBSnapshotResponse'{_cdbsrsDBSnapshot =
+                                Nothing,
+                              _cdbsrsResponseStatus = pResponseStatus_}
 
 -- | Undocumented member.
 cdbsrsDBSnapshot :: Lens' CreateDBSnapshotResponse (Maybe DBSnapshot)

@@ -18,7 +18,7 @@
 -- Stability   : auto-generated
 -- Portability : non-portable (GHC extensions)
 --
--- Inspects text and returns an inference of the prevailing sentiment (@POSITIVE@ , @NEUTRAL@ , @MIXED@ , or @NEGATIVE@ ).
+-- Inspects text and returns an inference of the prevailing sentiment (@POSITIVE@ , @NEUTRAL@ , @MIXED@ , or @NEGATIVE@ ). 
 --
 --
 module Network.AWS.Comprehend.DetectSentiment
@@ -40,20 +40,16 @@ module Network.AWS.Comprehend.DetectSentiment
     ) where
 
 import Network.AWS.Comprehend.Types
-import Network.AWS.Comprehend.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 
 -- | /See:/ 'detectSentiment' smart constructor.
-data DetectSentiment =
-  DetectSentiment'
-    { _dsText         :: !Text
-    , _dsLanguageCode :: !LanguageCode
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data DetectSentiment = DetectSentiment'{_dsText ::
+                                        !Text,
+                                        _dsLanguageCode :: !LanguageCode}
+                         deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'DetectSentiment' with the minimum fields required to make a request.
 --
@@ -66,9 +62,9 @@ detectSentiment
     :: Text -- ^ 'dsText'
     -> LanguageCode -- ^ 'dsLanguageCode'
     -> DetectSentiment
-detectSentiment pText_ pLanguageCode_ =
-  DetectSentiment' {_dsText = pText_, _dsLanguageCode = pLanguageCode_}
-
+detectSentiment pText_ pLanguageCode_
+  = DetectSentiment'{_dsText = pText_,
+                     _dsLanguageCode = pLanguageCode_}
 
 -- | A UTF-8 text string. Each string must contain fewer that 5,000 bytes of UTF-8 encoded characters.
 dsText :: Lens' DetectSentiment Text
@@ -116,14 +112,15 @@ instance ToQuery DetectSentiment where
         toQuery = const mempty
 
 -- | /See:/ 'detectSentimentResponse' smart constructor.
-data DetectSentimentResponse =
-  DetectSentimentResponse'
-    { _detrsSentiment      :: !(Maybe SentimentType)
-    , _detrsSentimentScore :: !(Maybe SentimentScore)
-    , _detrsResponseStatus :: !Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data DetectSentimentResponse = DetectSentimentResponse'{_detrsSentiment
+                                                        ::
+                                                        !(Maybe SentimentType),
+                                                        _detrsSentimentScore ::
+                                                        !(Maybe SentimentScore),
+                                                        _detrsResponseStatus ::
+                                                        !Int}
+                                 deriving (Eq, Read, Show, Data, Typeable,
+                                           Generic)
 
 -- | Creates a value of 'DetectSentimentResponse' with the minimum fields required to make a request.
 --
@@ -137,13 +134,10 @@ data DetectSentimentResponse =
 detectSentimentResponse
     :: Int -- ^ 'detrsResponseStatus'
     -> DetectSentimentResponse
-detectSentimentResponse pResponseStatus_ =
-  DetectSentimentResponse'
-    { _detrsSentiment = Nothing
-    , _detrsSentimentScore = Nothing
-    , _detrsResponseStatus = pResponseStatus_
-    }
-
+detectSentimentResponse pResponseStatus_
+  = DetectSentimentResponse'{_detrsSentiment = Nothing,
+                             _detrsSentimentScore = Nothing,
+                             _detrsResponseStatus = pResponseStatus_}
 
 -- | The inferred sentiment that Amazon Comprehend has the highest level of confidence in.
 detrsSentiment :: Lens' DetectSentimentResponse (Maybe SentimentType)

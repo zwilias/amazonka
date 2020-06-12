@@ -53,7 +53,6 @@ module Network.AWS.CognitoIdentityProvider.CreateUserPoolClient
     ) where
 
 import Network.AWS.CognitoIdentityProvider.Types
-import Network.AWS.CognitoIdentityProvider.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.Request
@@ -64,27 +63,41 @@ import Network.AWS.Response
 --
 --
 -- /See:/ 'createUserPoolClient' smart constructor.
-data CreateUserPoolClient =
-  CreateUserPoolClient'
-    { _cupcRefreshTokenValidity :: !(Maybe Nat)
-    , _cupcExplicitAuthFlows :: !(Maybe [ExplicitAuthFlowsType])
-    , _cupcSupportedIdentityProviders :: !(Maybe [Text])
-    , _cupcLogoutURLs :: !(Maybe [Text])
-    , _cupcAllowedOAuthFlowsUserPoolClient :: !(Maybe Bool)
-    , _cupcGenerateSecret :: !(Maybe Bool)
-    , _cupcDefaultRedirectURI :: !(Maybe Text)
-    , _cupcWriteAttributes :: !(Maybe [Text])
-    , _cupcPreventUserExistenceErrors :: !(Maybe PreventUserExistenceErrorTypes)
-    , _cupcReadAttributes :: !(Maybe [Text])
-    , _cupcAllowedOAuthScopes :: !(Maybe [Text])
-    , _cupcAllowedOAuthFlows :: !(Maybe [OAuthFlowType])
-    , _cupcAnalyticsConfiguration :: !(Maybe AnalyticsConfigurationType)
-    , _cupcCallbackURLs :: !(Maybe [Text])
-    , _cupcUserPoolId :: !Text
-    , _cupcClientName :: !Text
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data CreateUserPoolClient = CreateUserPoolClient'{_cupcRefreshTokenValidity
+                                                  :: !(Maybe Nat),
+                                                  _cupcExplicitAuthFlows ::
+                                                  !(Maybe
+                                                      [ExplicitAuthFlowsType]),
+                                                  _cupcSupportedIdentityProviders
+                                                  :: !(Maybe [Text]),
+                                                  _cupcLogoutURLs ::
+                                                  !(Maybe [Text]),
+                                                  _cupcAllowedOAuthFlowsUserPoolClient
+                                                  :: !(Maybe Bool),
+                                                  _cupcGenerateSecret ::
+                                                  !(Maybe Bool),
+                                                  _cupcDefaultRedirectURI ::
+                                                  !(Maybe Text),
+                                                  _cupcWriteAttributes ::
+                                                  !(Maybe [Text]),
+                                                  _cupcPreventUserExistenceErrors
+                                                  ::
+                                                  !(Maybe
+                                                      PreventUserExistenceErrorTypes),
+                                                  _cupcReadAttributes ::
+                                                  !(Maybe [Text]),
+                                                  _cupcAllowedOAuthScopes ::
+                                                  !(Maybe [Text]),
+                                                  _cupcAllowedOAuthFlows ::
+                                                  !(Maybe [OAuthFlowType]),
+                                                  _cupcAnalyticsConfiguration ::
+                                                  !(Maybe
+                                                      AnalyticsConfigurationType),
+                                                  _cupcCallbackURLs ::
+                                                  !(Maybe [Text]),
+                                                  _cupcUserPoolId :: !Text,
+                                                  _cupcClientName :: !Text}
+                              deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'CreateUserPoolClient' with the minimum fields required to make a request.
 --
@@ -106,7 +119,7 @@ data CreateUserPoolClient =
 --
 -- * 'cupcWriteAttributes' - The user pool attributes that the app client can write to. If your app client allows users to sign in through an identity provider, this array must include all attributes that are mapped to identity provider attributes. Amazon Cognito updates mapped attributes when users sign in to your application through an identity provider. If your app client lacks write access to a mapped attribute, Amazon Cognito throws an error when it attempts to update the attribute. For more information, see <https://docs.aws.amazon.com/cognito/latest/developerguide/cognito-user-pools-specifying-attribute-mapping.html Specifying Identity Provider Attribute Mappings for Your User Pool> .
 --
--- * 'cupcPreventUserExistenceErrors' - Use this setting to choose which errors and responses are returned by Cognito APIs during authentication, account confirmation, and password recovery when the user does not exist in the user pool. When set to @ENABLED@ and the user does not exist, authentication returns an error indicating either the username or password was incorrect, and account confirmation and password recovery return a response indicating a code was sent to a simulated destination. When set to @LEGACY@ , those APIs will return a @UserNotFoundException@ exception if the user does not exist in the user pool. Valid values include:     * @ENABLED@ - This prevents user existence-related errors.     * @LEGACY@ - This represents the old behavior of Cognito where user existence related errors are not prevented. This setting affects the behavior of following APIs:     * 'AdminInitiateAuth'      * 'AdminRespondToAuthChallenge'      * 'InitiateAuth'      * 'RespondToAuthChallenge'      * 'ForgotPassword'      * 'ConfirmForgotPassword'      * 'ConfirmSignUp'      * 'ResendConfirmationCode'
+-- * 'cupcPreventUserExistenceErrors' - Use this setting to choose which errors and responses are returned by Cognito APIs during authentication, account confirmation, and password recovery when the user does not exist in the user pool. When set to @ENABLED@ and the user does not exist, authentication returns an error indicating either the username or password was incorrect, and account confirmation and password recovery return a response indicating a code was sent to a simulated destination. When set to @LEGACY@ , those APIs will return a @UserNotFoundException@ exception if the user does not exist in the user pool. Valid values include:     * @ENABLED@ - This prevents user existence-related errors.     * @LEGACY@ - This represents the old behavior of Cognito where user existence related errors are not prevented. This setting affects the behavior of following APIs:     * 'AdminInitiateAuth'      * 'AdminRespondToAuthChallenge'      * 'InitiateAuth'      * 'RespondToAuthChallenge'      * 'ForgotPassword'      * 'ConfirmForgotPassword'      * 'ConfirmSignUp'      * 'ResendConfirmationCode' 
 --
 -- * 'cupcReadAttributes' - The read attributes.
 --
@@ -125,26 +138,24 @@ createUserPoolClient
     :: Text -- ^ 'cupcUserPoolId'
     -> Text -- ^ 'cupcClientName'
     -> CreateUserPoolClient
-createUserPoolClient pUserPoolId_ pClientName_ =
-  CreateUserPoolClient'
-    { _cupcRefreshTokenValidity = Nothing
-    , _cupcExplicitAuthFlows = Nothing
-    , _cupcSupportedIdentityProviders = Nothing
-    , _cupcLogoutURLs = Nothing
-    , _cupcAllowedOAuthFlowsUserPoolClient = Nothing
-    , _cupcGenerateSecret = Nothing
-    , _cupcDefaultRedirectURI = Nothing
-    , _cupcWriteAttributes = Nothing
-    , _cupcPreventUserExistenceErrors = Nothing
-    , _cupcReadAttributes = Nothing
-    , _cupcAllowedOAuthScopes = Nothing
-    , _cupcAllowedOAuthFlows = Nothing
-    , _cupcAnalyticsConfiguration = Nothing
-    , _cupcCallbackURLs = Nothing
-    , _cupcUserPoolId = pUserPoolId_
-    , _cupcClientName = pClientName_
-    }
-
+createUserPoolClient pUserPoolId_ pClientName_
+  = CreateUserPoolClient'{_cupcRefreshTokenValidity =
+                            Nothing,
+                          _cupcExplicitAuthFlows = Nothing,
+                          _cupcSupportedIdentityProviders = Nothing,
+                          _cupcLogoutURLs = Nothing,
+                          _cupcAllowedOAuthFlowsUserPoolClient = Nothing,
+                          _cupcGenerateSecret = Nothing,
+                          _cupcDefaultRedirectURI = Nothing,
+                          _cupcWriteAttributes = Nothing,
+                          _cupcPreventUserExistenceErrors = Nothing,
+                          _cupcReadAttributes = Nothing,
+                          _cupcAllowedOAuthScopes = Nothing,
+                          _cupcAllowedOAuthFlows = Nothing,
+                          _cupcAnalyticsConfiguration = Nothing,
+                          _cupcCallbackURLs = Nothing,
+                          _cupcUserPoolId = pUserPoolId_,
+                          _cupcClientName = pClientName_}
 
 -- | The time limit, in days, after which the refresh token is no longer valid and cannot be used.
 cupcRefreshTokenValidity :: Lens' CreateUserPoolClient (Maybe Natural)
@@ -178,7 +189,7 @@ cupcDefaultRedirectURI = lens _cupcDefaultRedirectURI (\ s a -> s{_cupcDefaultRe
 cupcWriteAttributes :: Lens' CreateUserPoolClient [Text]
 cupcWriteAttributes = lens _cupcWriteAttributes (\ s a -> s{_cupcWriteAttributes = a}) . _Default . _Coerce
 
--- | Use this setting to choose which errors and responses are returned by Cognito APIs during authentication, account confirmation, and password recovery when the user does not exist in the user pool. When set to @ENABLED@ and the user does not exist, authentication returns an error indicating either the username or password was incorrect, and account confirmation and password recovery return a response indicating a code was sent to a simulated destination. When set to @LEGACY@ , those APIs will return a @UserNotFoundException@ exception if the user does not exist in the user pool. Valid values include:     * @ENABLED@ - This prevents user existence-related errors.     * @LEGACY@ - This represents the old behavior of Cognito where user existence related errors are not prevented. This setting affects the behavior of following APIs:     * 'AdminInitiateAuth'      * 'AdminRespondToAuthChallenge'      * 'InitiateAuth'      * 'RespondToAuthChallenge'      * 'ForgotPassword'      * 'ConfirmForgotPassword'      * 'ConfirmSignUp'      * 'ResendConfirmationCode'
+-- | Use this setting to choose which errors and responses are returned by Cognito APIs during authentication, account confirmation, and password recovery when the user does not exist in the user pool. When set to @ENABLED@ and the user does not exist, authentication returns an error indicating either the username or password was incorrect, and account confirmation and password recovery return a response indicating a code was sent to a simulated destination. When set to @LEGACY@ , those APIs will return a @UserNotFoundException@ exception if the user does not exist in the user pool. Valid values include:     * @ENABLED@ - This prevents user existence-related errors.     * @LEGACY@ - This represents the old behavior of Cognito where user existence related errors are not prevented. This setting affects the behavior of following APIs:     * 'AdminInitiateAuth'      * 'AdminRespondToAuthChallenge'      * 'InitiateAuth'      * 'RespondToAuthChallenge'      * 'ForgotPassword'      * 'ConfirmForgotPassword'      * 'ConfirmSignUp'      * 'ResendConfirmationCode' 
 cupcPreventUserExistenceErrors :: Lens' CreateUserPoolClient (Maybe PreventUserExistenceErrorTypes)
 cupcPreventUserExistenceErrors = lens _cupcPreventUserExistenceErrors (\ s a -> s{_cupcPreventUserExistenceErrors = a})
 
@@ -273,13 +284,14 @@ instance ToQuery CreateUserPoolClient where
 --
 --
 -- /See:/ 'createUserPoolClientResponse' smart constructor.
-data CreateUserPoolClientResponse =
-  CreateUserPoolClientResponse'
-    { _cupcrsUserPoolClient :: !(Maybe UserPoolClientType)
-    , _cupcrsResponseStatus :: !Int
-    }
-  deriving (Eq, Show, Data, Typeable, Generic)
-
+data CreateUserPoolClientResponse = CreateUserPoolClientResponse'{_cupcrsUserPoolClient
+                                                                  ::
+                                                                  !(Maybe
+                                                                      UserPoolClientType),
+                                                                  _cupcrsResponseStatus
+                                                                  :: !Int}
+                                      deriving (Eq, Show, Data, Typeable,
+                                                Generic)
 
 -- | Creates a value of 'CreateUserPoolClientResponse' with the minimum fields required to make a request.
 --
@@ -291,10 +303,10 @@ data CreateUserPoolClientResponse =
 createUserPoolClientResponse
     :: Int -- ^ 'cupcrsResponseStatus'
     -> CreateUserPoolClientResponse
-createUserPoolClientResponse pResponseStatus_ =
-  CreateUserPoolClientResponse'
-    {_cupcrsUserPoolClient = Nothing, _cupcrsResponseStatus = pResponseStatus_}
-
+createUserPoolClientResponse pResponseStatus_
+  = CreateUserPoolClientResponse'{_cupcrsUserPoolClient
+                                    = Nothing,
+                                  _cupcrsResponseStatus = pResponseStatus_}
 
 -- | The user pool client that was just created.
 cupcrsUserPoolClient :: Lens' CreateUserPoolClientResponse (Maybe UserPoolClientType)

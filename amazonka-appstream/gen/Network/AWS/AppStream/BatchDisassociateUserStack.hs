@@ -38,19 +38,18 @@ module Network.AWS.AppStream.BatchDisassociateUserStack
     ) where
 
 import Network.AWS.AppStream.Types
-import Network.AWS.AppStream.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 
 -- | /See:/ 'batchDisassociateUserStack' smart constructor.
-newtype BatchDisassociateUserStack =
-  BatchDisassociateUserStack'
-    { _bdusUserStackAssociations :: List1 UserStackAssociation
-    }
-  deriving (Eq, Show, Data, Typeable, Generic)
-
+newtype BatchDisassociateUserStack = BatchDisassociateUserStack'{_bdusUserStackAssociations
+                                                                 ::
+                                                                 List1
+                                                                   UserStackAssociation}
+                                       deriving (Eq, Show, Data, Typeable,
+                                                 Generic)
 
 -- | Creates a value of 'BatchDisassociateUserStack' with the minimum fields required to make a request.
 --
@@ -60,10 +59,9 @@ newtype BatchDisassociateUserStack =
 batchDisassociateUserStack
     :: NonEmpty UserStackAssociation -- ^ 'bdusUserStackAssociations'
     -> BatchDisassociateUserStack
-batchDisassociateUserStack pUserStackAssociations_ =
-  BatchDisassociateUserStack'
-    {_bdusUserStackAssociations = _List1 # pUserStackAssociations_}
-
+batchDisassociateUserStack pUserStackAssociations_
+  = BatchDisassociateUserStack'{_bdusUserStackAssociations
+                                  = _List1 # pUserStackAssociations_}
 
 -- | The list of UserStackAssociation objects.
 bdusUserStackAssociations :: Lens' BatchDisassociateUserStack (NonEmpty UserStackAssociation)
@@ -108,13 +106,15 @@ instance ToQuery BatchDisassociateUserStack where
         toQuery = const mempty
 
 -- | /See:/ 'batchDisassociateUserStackResponse' smart constructor.
-data BatchDisassociateUserStackResponse =
-  BatchDisassociateUserStackResponse'
-    { _bdusrsErrors         :: !(Maybe [UserStackAssociationError])
-    , _bdusrsResponseStatus :: !Int
-    }
-  deriving (Eq, Show, Data, Typeable, Generic)
-
+data BatchDisassociateUserStackResponse = BatchDisassociateUserStackResponse'{_bdusrsErrors
+                                                                              ::
+                                                                              !(Maybe
+                                                                                  [UserStackAssociationError]),
+                                                                              _bdusrsResponseStatus
+                                                                              ::
+                                                                              !Int}
+                                            deriving (Eq, Show, Data, Typeable,
+                                                      Generic)
 
 -- | Creates a value of 'BatchDisassociateUserStackResponse' with the minimum fields required to make a request.
 --
@@ -126,10 +126,11 @@ data BatchDisassociateUserStackResponse =
 batchDisassociateUserStackResponse
     :: Int -- ^ 'bdusrsResponseStatus'
     -> BatchDisassociateUserStackResponse
-batchDisassociateUserStackResponse pResponseStatus_ =
-  BatchDisassociateUserStackResponse'
-    {_bdusrsErrors = Nothing, _bdusrsResponseStatus = pResponseStatus_}
-
+batchDisassociateUserStackResponse pResponseStatus_
+  = BatchDisassociateUserStackResponse'{_bdusrsErrors =
+                                          Nothing,
+                                        _bdusrsResponseStatus =
+                                          pResponseStatus_}
 
 -- | The list of UserStackAssociationError objects.
 bdusrsErrors :: Lens' BatchDisassociateUserStackResponse [UserStackAssociationError]

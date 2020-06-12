@@ -44,7 +44,6 @@ module Network.AWS.IoT.DescribeThing
     ) where
 
 import Network.AWS.IoT.Types
-import Network.AWS.IoT.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.Request
@@ -55,12 +54,9 @@ import Network.AWS.Response
 --
 --
 -- /See:/ 'describeThing' smart constructor.
-newtype DescribeThing =
-  DescribeThing'
-    { _dThingName :: Text
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+newtype DescribeThing = DescribeThing'{_dThingName ::
+                                       Text}
+                          deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'DescribeThing' with the minimum fields required to make a request.
 --
@@ -70,8 +66,8 @@ newtype DescribeThing =
 describeThing
     :: Text -- ^ 'dThingName'
     -> DescribeThing
-describeThing pThingName_ = DescribeThing' {_dThingName = pThingName_}
-
+describeThing pThingName_
+  = DescribeThing'{_dThingName = pThingName_}
 
 -- | The name of the thing.
 dThingName :: Lens' DescribeThing Text
@@ -111,19 +107,23 @@ instance ToQuery DescribeThing where
 --
 --
 -- /See:/ 'describeThingResponse' smart constructor.
-data DescribeThingResponse =
-  DescribeThingResponse'
-    { _dtrsDefaultClientId :: !(Maybe Text)
-    , _dtrsThingTypeName   :: !(Maybe Text)
-    , _dtrsThingARN        :: !(Maybe Text)
-    , _dtrsAttributes      :: !(Maybe (Map Text Text))
-    , _dtrsVersion         :: !(Maybe Integer)
-    , _dtrsThingName       :: !(Maybe Text)
-    , _dtrsThingId         :: !(Maybe Text)
-    , _dtrsResponseStatus  :: !Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data DescribeThingResponse = DescribeThingResponse'{_dtrsDefaultClientId
+                                                    :: !(Maybe Text),
+                                                    _dtrsThingTypeName ::
+                                                    !(Maybe Text),
+                                                    _dtrsThingARN ::
+                                                    !(Maybe Text),
+                                                    _dtrsAttributes ::
+                                                    !(Maybe (Map Text Text)),
+                                                    _dtrsVersion ::
+                                                    !(Maybe Integer),
+                                                    _dtrsThingName ::
+                                                    !(Maybe Text),
+                                                    _dtrsThingId ::
+                                                    !(Maybe Text),
+                                                    _dtrsResponseStatus :: !Int}
+                               deriving (Eq, Read, Show, Data, Typeable,
+                                         Generic)
 
 -- | Creates a value of 'DescribeThingResponse' with the minimum fields required to make a request.
 --
@@ -147,18 +147,14 @@ data DescribeThingResponse =
 describeThingResponse
     :: Int -- ^ 'dtrsResponseStatus'
     -> DescribeThingResponse
-describeThingResponse pResponseStatus_ =
-  DescribeThingResponse'
-    { _dtrsDefaultClientId = Nothing
-    , _dtrsThingTypeName = Nothing
-    , _dtrsThingARN = Nothing
-    , _dtrsAttributes = Nothing
-    , _dtrsVersion = Nothing
-    , _dtrsThingName = Nothing
-    , _dtrsThingId = Nothing
-    , _dtrsResponseStatus = pResponseStatus_
-    }
-
+describeThingResponse pResponseStatus_
+  = DescribeThingResponse'{_dtrsDefaultClientId =
+                             Nothing,
+                           _dtrsThingTypeName = Nothing,
+                           _dtrsThingARN = Nothing, _dtrsAttributes = Nothing,
+                           _dtrsVersion = Nothing, _dtrsThingName = Nothing,
+                           _dtrsThingId = Nothing,
+                           _dtrsResponseStatus = pResponseStatus_}
 
 -- | The default client ID.
 dtrsDefaultClientId :: Lens' DescribeThingResponse (Maybe Text)

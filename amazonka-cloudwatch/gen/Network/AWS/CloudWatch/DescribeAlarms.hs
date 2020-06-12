@@ -50,7 +50,6 @@ module Network.AWS.CloudWatch.DescribeAlarms
     ) where
 
 import Network.AWS.CloudWatch.Types
-import Network.AWS.CloudWatch.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Pager
 import Network.AWS.Prelude
@@ -58,20 +57,17 @@ import Network.AWS.Request
 import Network.AWS.Response
 
 -- | /See:/ 'describeAlarms' smart constructor.
-data DescribeAlarms =
-  DescribeAlarms'
-    { _daAlarmNamePrefix     :: !(Maybe Text)
-    , _daAlarmTypes          :: !(Maybe [AlarmType])
-    , _daActionPrefix        :: !(Maybe Text)
-    , _daNextToken           :: !(Maybe Text)
-    , _daStateValue          :: !(Maybe StateValue)
-    , _daAlarmNames          :: !(Maybe [Text])
-    , _daMaxRecords          :: !(Maybe Nat)
-    , _daParentsOfAlarmName  :: !(Maybe Text)
-    , _daChildrenOfAlarmName :: !(Maybe Text)
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data DescribeAlarms = DescribeAlarms'{_daAlarmNamePrefix
+                                      :: !(Maybe Text),
+                                      _daAlarmTypes :: !(Maybe [AlarmType]),
+                                      _daActionPrefix :: !(Maybe Text),
+                                      _daNextToken :: !(Maybe Text),
+                                      _daStateValue :: !(Maybe StateValue),
+                                      _daAlarmNames :: !(Maybe [Text]),
+                                      _daMaxRecords :: !(Maybe Nat),
+                                      _daParentsOfAlarmName :: !(Maybe Text),
+                                      _daChildrenOfAlarmName :: !(Maybe Text)}
+                        deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'DescribeAlarms' with the minimum fields required to make a request.
 --
@@ -96,19 +92,13 @@ data DescribeAlarms =
 -- * 'daChildrenOfAlarmName' - If you use this parameter and specify the name of a composite alarm, the operation returns information about the "children" alarms of the alarm you specify. These are the metric alarms and composite alarms referenced in the @AlarmRule@ field of the composite alarm that you specify in @ChildrenOfAlarmName@ . Information about the composite alarm that you name in @ChildrenOfAlarmName@ is not returned. If you specify @ChildrenOfAlarmName@ , you cannot specify any other parameters in the request except for @MaxRecords@ and @NextToken@ . If you do so, you will receive a validation error.
 describeAlarms
     :: DescribeAlarms
-describeAlarms =
-  DescribeAlarms'
-    { _daAlarmNamePrefix = Nothing
-    , _daAlarmTypes = Nothing
-    , _daActionPrefix = Nothing
-    , _daNextToken = Nothing
-    , _daStateValue = Nothing
-    , _daAlarmNames = Nothing
-    , _daMaxRecords = Nothing
-    , _daParentsOfAlarmName = Nothing
-    , _daChildrenOfAlarmName = Nothing
-    }
-
+describeAlarms
+  = DescribeAlarms'{_daAlarmNamePrefix = Nothing,
+                    _daAlarmTypes = Nothing, _daActionPrefix = Nothing,
+                    _daNextToken = Nothing, _daStateValue = Nothing,
+                    _daAlarmNames = Nothing, _daMaxRecords = Nothing,
+                    _daParentsOfAlarmName = Nothing,
+                    _daChildrenOfAlarmName = Nothing}
 
 -- | An alarm name prefix. If you specify this parameter, you receive information about all alarms that have names that start with this prefix. If this parameter is specified, you cannot specify @AlarmNames@ .
 daAlarmNamePrefix :: Lens' DescribeAlarms (Maybe Text)
@@ -197,15 +187,16 @@ instance ToQuery DescribeAlarms where
                "ChildrenOfAlarmName" =: _daChildrenOfAlarmName]
 
 -- | /See:/ 'describeAlarmsResponse' smart constructor.
-data DescribeAlarmsResponse =
-  DescribeAlarmsResponse'
-    { _darsMetricAlarms    :: !(Maybe [MetricAlarm])
-    , _darsCompositeAlarms :: !(Maybe [CompositeAlarm])
-    , _darsNextToken       :: !(Maybe Text)
-    , _darsResponseStatus  :: !Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data DescribeAlarmsResponse = DescribeAlarmsResponse'{_darsMetricAlarms
+                                                      :: !(Maybe [MetricAlarm]),
+                                                      _darsCompositeAlarms ::
+                                                      !(Maybe [CompositeAlarm]),
+                                                      _darsNextToken ::
+                                                      !(Maybe Text),
+                                                      _darsResponseStatus ::
+                                                      !Int}
+                                deriving (Eq, Read, Show, Data, Typeable,
+                                          Generic)
 
 -- | Creates a value of 'DescribeAlarmsResponse' with the minimum fields required to make a request.
 --
@@ -221,14 +212,12 @@ data DescribeAlarmsResponse =
 describeAlarmsResponse
     :: Int -- ^ 'darsResponseStatus'
     -> DescribeAlarmsResponse
-describeAlarmsResponse pResponseStatus_ =
-  DescribeAlarmsResponse'
-    { _darsMetricAlarms = Nothing
-    , _darsCompositeAlarms = Nothing
-    , _darsNextToken = Nothing
-    , _darsResponseStatus = pResponseStatus_
-    }
-
+describeAlarmsResponse pResponseStatus_
+  = DescribeAlarmsResponse'{_darsMetricAlarms =
+                              Nothing,
+                            _darsCompositeAlarms = Nothing,
+                            _darsNextToken = Nothing,
+                            _darsResponseStatus = pResponseStatus_}
 
 -- | The information about any metric alarms returned by the operation.
 darsMetricAlarms :: Lens' DescribeAlarmsResponse [MetricAlarm]

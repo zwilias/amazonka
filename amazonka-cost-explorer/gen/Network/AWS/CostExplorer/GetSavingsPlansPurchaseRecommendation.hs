@@ -18,7 +18,7 @@
 -- Stability   : auto-generated
 -- Portability : non-portable (GHC extensions)
 --
--- Retrieves your request parameters, Savings Plan Recommendations Summary and Details.
+-- Retrieves your request parameters, Savings Plan Recommendations Summary and Details. 
 --
 --
 module Network.AWS.CostExplorer.GetSavingsPlansPurchaseRecommendation
@@ -47,26 +47,42 @@ module Network.AWS.CostExplorer.GetSavingsPlansPurchaseRecommendation
     ) where
 
 import Network.AWS.CostExplorer.Types
-import Network.AWS.CostExplorer.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 
 -- | /See:/ 'getSavingsPlansPurchaseRecommendation' smart constructor.
-data GetSavingsPlansPurchaseRecommendation =
-  GetSavingsPlansPurchaseRecommendation'
-    { _gspprNextPageToken        :: !(Maybe Text)
-    , _gspprAccountScope         :: !(Maybe AccountScope)
-    , _gspprFilter               :: !(Maybe Expression)
-    , _gspprPageSize             :: !(Maybe Nat)
-    , _gspprSavingsPlansType     :: !SupportedSavingsPlansType
-    , _gspprTermInYears          :: !TermInYears
-    , _gspprPaymentOption        :: !PaymentOption
-    , _gspprLookbackPeriodInDays :: !LookbackPeriodInDays
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data GetSavingsPlansPurchaseRecommendation = GetSavingsPlansPurchaseRecommendation'{_gspprNextPageToken
+                                                                                    ::
+                                                                                    !(Maybe
+                                                                                        Text),
+                                                                                    _gspprAccountScope
+                                                                                    ::
+                                                                                    !(Maybe
+                                                                                        AccountScope),
+                                                                                    _gspprFilter
+                                                                                    ::
+                                                                                    !(Maybe
+                                                                                        Expression),
+                                                                                    _gspprPageSize
+                                                                                    ::
+                                                                                    !(Maybe
+                                                                                        Nat),
+                                                                                    _gspprSavingsPlansType
+                                                                                    ::
+                                                                                    !SupportedSavingsPlansType,
+                                                                                    _gspprTermInYears
+                                                                                    ::
+                                                                                    !TermInYears,
+                                                                                    _gspprPaymentOption
+                                                                                    ::
+                                                                                    !PaymentOption,
+                                                                                    _gspprLookbackPeriodInDays
+                                                                                    ::
+                                                                                    !LookbackPeriodInDays}
+                                               deriving (Eq, Read, Show, Data,
+                                                         Typeable, Generic)
 
 -- | Creates a value of 'GetSavingsPlansPurchaseRecommendation' with the minimum fields required to make a request.
 --
@@ -93,18 +109,21 @@ getSavingsPlansPurchaseRecommendation
     -> PaymentOption -- ^ 'gspprPaymentOption'
     -> LookbackPeriodInDays -- ^ 'gspprLookbackPeriodInDays'
     -> GetSavingsPlansPurchaseRecommendation
-getSavingsPlansPurchaseRecommendation pSavingsPlansType_ pTermInYears_ pPaymentOption_ pLookbackPeriodInDays_ =
-  GetSavingsPlansPurchaseRecommendation'
-    { _gspprNextPageToken = Nothing
-    , _gspprAccountScope = Nothing
-    , _gspprFilter = Nothing
-    , _gspprPageSize = Nothing
-    , _gspprSavingsPlansType = pSavingsPlansType_
-    , _gspprTermInYears = pTermInYears_
-    , _gspprPaymentOption = pPaymentOption_
-    , _gspprLookbackPeriodInDays = pLookbackPeriodInDays_
-    }
-
+getSavingsPlansPurchaseRecommendation
+  pSavingsPlansType_ pTermInYears_ pPaymentOption_
+  pLookbackPeriodInDays_
+  = GetSavingsPlansPurchaseRecommendation'{_gspprNextPageToken
+                                             = Nothing,
+                                           _gspprAccountScope = Nothing,
+                                           _gspprFilter = Nothing,
+                                           _gspprPageSize = Nothing,
+                                           _gspprSavingsPlansType =
+                                             pSavingsPlansType_,
+                                           _gspprTermInYears = pTermInYears_,
+                                           _gspprPaymentOption =
+                                             pPaymentOption_,
+                                           _gspprLookbackPeriodInDays =
+                                             pLookbackPeriodInDays_}
 
 -- | The token to retrieve the next set of results. Amazon Web Services provides the token when the response from a previous call has more results than the maximum page size.
 gspprNextPageToken :: Lens' GetSavingsPlansPurchaseRecommendation (Maybe Text)
@@ -198,15 +217,24 @@ instance ToQuery
         toQuery = const mempty
 
 -- | /See:/ 'getSavingsPlansPurchaseRecommendationResponse' smart constructor.
-data GetSavingsPlansPurchaseRecommendationResponse =
-  GetSavingsPlansPurchaseRecommendationResponse'
-    { _gspprrsNextPageToken :: !(Maybe Text)
-    , _gspprrsSavingsPlansPurchaseRecommendation :: !(Maybe SavingsPlansPurchaseRecommendation)
-    , _gspprrsMetadata :: !(Maybe SavingsPlansPurchaseRecommendationMetadata)
-    , _gspprrsResponseStatus :: !Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data GetSavingsPlansPurchaseRecommendationResponse = GetSavingsPlansPurchaseRecommendationResponse'{_gspprrsNextPageToken
+                                                                                                    ::
+                                                                                                    !(Maybe
+                                                                                                        Text),
+                                                                                                    _gspprrsSavingsPlansPurchaseRecommendation
+                                                                                                    ::
+                                                                                                    !(Maybe
+                                                                                                        SavingsPlansPurchaseRecommendation),
+                                                                                                    _gspprrsMetadata
+                                                                                                    ::
+                                                                                                    !(Maybe
+                                                                                                        SavingsPlansPurchaseRecommendationMetadata),
+                                                                                                    _gspprrsResponseStatus
+                                                                                                    ::
+                                                                                                    !Int}
+                                                       deriving (Eq, Read, Show,
+                                                                 Data, Typeable,
+                                                                 Generic)
 
 -- | Creates a value of 'GetSavingsPlansPurchaseRecommendationResponse' with the minimum fields required to make a request.
 --
@@ -222,14 +250,15 @@ data GetSavingsPlansPurchaseRecommendationResponse =
 getSavingsPlansPurchaseRecommendationResponse
     :: Int -- ^ 'gspprrsResponseStatus'
     -> GetSavingsPlansPurchaseRecommendationResponse
-getSavingsPlansPurchaseRecommendationResponse pResponseStatus_ =
-  GetSavingsPlansPurchaseRecommendationResponse'
-    { _gspprrsNextPageToken = Nothing
-    , _gspprrsSavingsPlansPurchaseRecommendation = Nothing
-    , _gspprrsMetadata = Nothing
-    , _gspprrsResponseStatus = pResponseStatus_
-    }
-
+getSavingsPlansPurchaseRecommendationResponse
+  pResponseStatus_
+  = GetSavingsPlansPurchaseRecommendationResponse'{_gspprrsNextPageToken
+                                                     = Nothing,
+                                                   _gspprrsSavingsPlansPurchaseRecommendation
+                                                     = Nothing,
+                                                   _gspprrsMetadata = Nothing,
+                                                   _gspprrsResponseStatus =
+                                                     pResponseStatus_}
 
 -- | The token for the next set of retrievable results. AWS provides the token when the response from a previous call has more results than the maximum page size.
 gspprrsNextPageToken :: Lens' GetSavingsPlansPurchaseRecommendationResponse (Maybe Text)

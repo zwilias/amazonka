@@ -47,7 +47,6 @@ module Network.AWS.EC2.DescribeDHCPOptions
     ) where
 
 import Network.AWS.EC2.Types
-import Network.AWS.EC2.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Pager
 import Network.AWS.Prelude
@@ -55,16 +54,14 @@ import Network.AWS.Request
 import Network.AWS.Response
 
 -- | /See:/ 'describeDHCPOptions' smart constructor.
-data DescribeDHCPOptions =
-  DescribeDHCPOptions'
-    { _ddoFilters        :: !(Maybe [Filter])
-    , _ddoDHCPOptionsIds :: !(Maybe [Text])
-    , _ddoNextToken      :: !(Maybe Text)
-    , _ddoDryRun         :: !(Maybe Bool)
-    , _ddoMaxResults     :: !(Maybe Nat)
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data DescribeDHCPOptions = DescribeDHCPOptions'{_ddoFilters
+                                                :: !(Maybe [Filter]),
+                                                _ddoDHCPOptionsIds ::
+                                                !(Maybe [Text]),
+                                                _ddoNextToken :: !(Maybe Text),
+                                                _ddoDryRun :: !(Maybe Bool),
+                                                _ddoMaxResults :: !(Maybe Nat)}
+                             deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'DescribeDHCPOptions' with the minimum fields required to make a request.
 --
@@ -81,15 +78,11 @@ data DescribeDHCPOptions =
 -- * 'ddoMaxResults' - The maximum number of results to return with a single call. To retrieve the remaining results, make another call with the returned @nextToken@ value.
 describeDHCPOptions
     :: DescribeDHCPOptions
-describeDHCPOptions =
-  DescribeDHCPOptions'
-    { _ddoFilters = Nothing
-    , _ddoDHCPOptionsIds = Nothing
-    , _ddoNextToken = Nothing
-    , _ddoDryRun = Nothing
-    , _ddoMaxResults = Nothing
-    }
-
+describeDHCPOptions
+  = DescribeDHCPOptions'{_ddoFilters = Nothing,
+                         _ddoDHCPOptionsIds = Nothing,
+                         _ddoNextToken = Nothing, _ddoDryRun = Nothing,
+                         _ddoMaxResults = Nothing}
 
 -- | One or more filters.     * @dhcp-options-id@ - The ID of a DHCP options set.     * @key@ - The key for one of the options (for example, @domain-name@ ).     * @value@ - The value for one of the options.     * @owner-id@ - The ID of the AWS account that owns the DHCP options set.     * @tag@ :<key> - The key/value combination of a tag assigned to the resource. Use the tag key in the filter name and the tag value as the filter value. For example, to find all resources that have a tag with the key @Owner@ and the value @TeamA@ , specify @tag:Owner@ for the filter name and @TeamA@ for the filter value.     * @tag-key@ - The key of a tag assigned to the resource. Use this filter to find all resources assigned a tag with a specific key, regardless of the tag value.
 ddoFilters :: Lens' DescribeDHCPOptions [Filter]
@@ -153,14 +146,17 @@ instance ToQuery DescribeDHCPOptions where
                "MaxResults" =: _ddoMaxResults]
 
 -- | /See:/ 'describeDHCPOptionsResponse' smart constructor.
-data DescribeDHCPOptionsResponse =
-  DescribeDHCPOptionsResponse'
-    { _ddorsDHCPOptions    :: !(Maybe [DHCPOptions])
-    , _ddorsNextToken      :: !(Maybe Text)
-    , _ddorsResponseStatus :: !Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data DescribeDHCPOptionsResponse = DescribeDHCPOptionsResponse'{_ddorsDHCPOptions
+                                                                ::
+                                                                !(Maybe
+                                                                    [DHCPOptions]),
+                                                                _ddorsNextToken
+                                                                ::
+                                                                !(Maybe Text),
+                                                                _ddorsResponseStatus
+                                                                :: !Int}
+                                     deriving (Eq, Read, Show, Data, Typeable,
+                                               Generic)
 
 -- | Creates a value of 'DescribeDHCPOptionsResponse' with the minimum fields required to make a request.
 --
@@ -174,13 +170,11 @@ data DescribeDHCPOptionsResponse =
 describeDHCPOptionsResponse
     :: Int -- ^ 'ddorsResponseStatus'
     -> DescribeDHCPOptionsResponse
-describeDHCPOptionsResponse pResponseStatus_ =
-  DescribeDHCPOptionsResponse'
-    { _ddorsDHCPOptions = Nothing
-    , _ddorsNextToken = Nothing
-    , _ddorsResponseStatus = pResponseStatus_
-    }
-
+describeDHCPOptionsResponse pResponseStatus_
+  = DescribeDHCPOptionsResponse'{_ddorsDHCPOptions =
+                                   Nothing,
+                                 _ddorsNextToken = Nothing,
+                                 _ddorsResponseStatus = pResponseStatus_}
 
 -- | Information about one or more DHCP options sets.
 ddorsDHCPOptions :: Lens' DescribeDHCPOptionsResponse [DHCPOptions]

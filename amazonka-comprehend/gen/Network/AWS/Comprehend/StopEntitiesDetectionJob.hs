@@ -23,7 +23,7 @@
 --
 -- If the job state is @IN_PROGRESS@ the job is marked for termination and put into the @STOP_REQUESTED@ state. If the job completes before it can be stopped, it is put into the @COMPLETED@ state; otherwise the job is stopped and put into the @STOPPED@ state.
 --
--- If the job is in the @COMPLETED@ or @FAILED@ state when you call the @StopDominantLanguageDetectionJob@ operation, the operation returns a 400 Internal Request Exception.
+-- If the job is in the @COMPLETED@ or @FAILED@ state when you call the @StopDominantLanguageDetectionJob@ operation, the operation returns a 400 Internal Request Exception. 
 --
 -- When a job is stopped, any documents already processed are written to the output location.
 --
@@ -45,19 +45,16 @@ module Network.AWS.Comprehend.StopEntitiesDetectionJob
     ) where
 
 import Network.AWS.Comprehend.Types
-import Network.AWS.Comprehend.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 
 -- | /See:/ 'stopEntitiesDetectionJob' smart constructor.
-newtype StopEntitiesDetectionJob =
-  StopEntitiesDetectionJob'
-    { _sedjJobId :: Text
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+newtype StopEntitiesDetectionJob = StopEntitiesDetectionJob'{_sedjJobId
+                                                             :: Text}
+                                     deriving (Eq, Read, Show, Data, Typeable,
+                                               Generic)
 
 -- | Creates a value of 'StopEntitiesDetectionJob' with the minimum fields required to make a request.
 --
@@ -67,9 +64,8 @@ newtype StopEntitiesDetectionJob =
 stopEntitiesDetectionJob
     :: Text -- ^ 'sedjJobId'
     -> StopEntitiesDetectionJob
-stopEntitiesDetectionJob pJobId_ =
-  StopEntitiesDetectionJob' {_sedjJobId = pJobId_}
-
+stopEntitiesDetectionJob pJobId_
+  = StopEntitiesDetectionJob'{_sedjJobId = pJobId_}
 
 -- | The identifier of the entities detection job to stop.
 sedjJobId :: Lens' StopEntitiesDetectionJob Text
@@ -111,14 +107,19 @@ instance ToQuery StopEntitiesDetectionJob where
         toQuery = const mempty
 
 -- | /See:/ 'stopEntitiesDetectionJobResponse' smart constructor.
-data StopEntitiesDetectionJobResponse =
-  StopEntitiesDetectionJobResponse'
-    { _sedjrsJobId          :: !(Maybe Text)
-    , _sedjrsJobStatus      :: !(Maybe JobStatus)
-    , _sedjrsResponseStatus :: !Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data StopEntitiesDetectionJobResponse = StopEntitiesDetectionJobResponse'{_sedjrsJobId
+                                                                          ::
+                                                                          !(Maybe
+                                                                              Text),
+                                                                          _sedjrsJobStatus
+                                                                          ::
+                                                                          !(Maybe
+                                                                              JobStatus),
+                                                                          _sedjrsResponseStatus
+                                                                          ::
+                                                                          !Int}
+                                          deriving (Eq, Read, Show, Data,
+                                                    Typeable, Generic)
 
 -- | Creates a value of 'StopEntitiesDetectionJobResponse' with the minimum fields required to make a request.
 --
@@ -132,13 +133,11 @@ data StopEntitiesDetectionJobResponse =
 stopEntitiesDetectionJobResponse
     :: Int -- ^ 'sedjrsResponseStatus'
     -> StopEntitiesDetectionJobResponse
-stopEntitiesDetectionJobResponse pResponseStatus_ =
-  StopEntitiesDetectionJobResponse'
-    { _sedjrsJobId = Nothing
-    , _sedjrsJobStatus = Nothing
-    , _sedjrsResponseStatus = pResponseStatus_
-    }
-
+stopEntitiesDetectionJobResponse pResponseStatus_
+  = StopEntitiesDetectionJobResponse'{_sedjrsJobId =
+                                        Nothing,
+                                      _sedjrsJobStatus = Nothing,
+                                      _sedjrsResponseStatus = pResponseStatus_}
 
 -- | The identifier of the entities detection job to stop.
 sedjrsJobId :: Lens' StopEntitiesDetectionJobResponse (Maybe Text)

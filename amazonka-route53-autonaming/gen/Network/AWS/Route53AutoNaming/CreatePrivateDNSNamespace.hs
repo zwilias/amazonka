@@ -45,18 +45,17 @@ import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 import Network.AWS.Route53AutoNaming.Types
-import Network.AWS.Route53AutoNaming.Types.Product
 
 -- | /See:/ 'createPrivateDNSNamespace' smart constructor.
-data CreatePrivateDNSNamespace =
-  CreatePrivateDNSNamespace'
-    { _cpdnsnCreatorRequestId :: !(Maybe Text)
-    , _cpdnsnDescription      :: !(Maybe Text)
-    , _cpdnsnName             :: !Text
-    , _cpdnsnVPC              :: !Text
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data CreatePrivateDNSNamespace = CreatePrivateDNSNamespace'{_cpdnsnCreatorRequestId
+                                                            :: !(Maybe Text),
+                                                            _cpdnsnDescription
+                                                            :: !(Maybe Text),
+                                                            _cpdnsnName ::
+                                                            !Text,
+                                                            _cpdnsnVPC :: !Text}
+                                   deriving (Eq, Read, Show, Data, Typeable,
+                                             Generic)
 
 -- | Creates a value of 'CreatePrivateDNSNamespace' with the minimum fields required to make a request.
 --
@@ -73,14 +72,11 @@ createPrivateDNSNamespace
     :: Text -- ^ 'cpdnsnName'
     -> Text -- ^ 'cpdnsnVPC'
     -> CreatePrivateDNSNamespace
-createPrivateDNSNamespace pName_ pVPC_ =
-  CreatePrivateDNSNamespace'
-    { _cpdnsnCreatorRequestId = Nothing
-    , _cpdnsnDescription = Nothing
-    , _cpdnsnName = pName_
-    , _cpdnsnVPC = pVPC_
-    }
-
+createPrivateDNSNamespace pName_ pVPC_
+  = CreatePrivateDNSNamespace'{_cpdnsnCreatorRequestId
+                                 = Nothing,
+                               _cpdnsnDescription = Nothing,
+                               _cpdnsnName = pName_, _cpdnsnVPC = pVPC_}
 
 -- | A unique string that identifies the request and that allows failed @CreatePrivateDnsNamespace@ requests to be retried without the risk of executing the operation twice. @CreatorRequestId@ can be any unique string, for example, a date/time stamp.
 cpdnsnCreatorRequestId :: Lens' CreatePrivateDNSNamespace (Maybe Text)
@@ -138,13 +134,15 @@ instance ToQuery CreatePrivateDNSNamespace where
         toQuery = const mempty
 
 -- | /See:/ 'createPrivateDNSNamespaceResponse' smart constructor.
-data CreatePrivateDNSNamespaceResponse =
-  CreatePrivateDNSNamespaceResponse'
-    { _cpdnsnrsOperationId    :: !(Maybe Text)
-    , _cpdnsnrsResponseStatus :: !Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data CreatePrivateDNSNamespaceResponse = CreatePrivateDNSNamespaceResponse'{_cpdnsnrsOperationId
+                                                                            ::
+                                                                            !(Maybe
+                                                                                Text),
+                                                                            _cpdnsnrsResponseStatus
+                                                                            ::
+                                                                            !Int}
+                                           deriving (Eq, Read, Show, Data,
+                                                     Typeable, Generic)
 
 -- | Creates a value of 'CreatePrivateDNSNamespaceResponse' with the minimum fields required to make a request.
 --
@@ -156,10 +154,11 @@ data CreatePrivateDNSNamespaceResponse =
 createPrivateDNSNamespaceResponse
     :: Int -- ^ 'cpdnsnrsResponseStatus'
     -> CreatePrivateDNSNamespaceResponse
-createPrivateDNSNamespaceResponse pResponseStatus_ =
-  CreatePrivateDNSNamespaceResponse'
-    {_cpdnsnrsOperationId = Nothing, _cpdnsnrsResponseStatus = pResponseStatus_}
-
+createPrivateDNSNamespaceResponse pResponseStatus_
+  = CreatePrivateDNSNamespaceResponse'{_cpdnsnrsOperationId
+                                         = Nothing,
+                                       _cpdnsnrsResponseStatus =
+                                         pResponseStatus_}
 
 -- | A value that you can use to determine whether the request completed successfully. To get the status of the operation, see 'GetOperation' .
 cpdnsnrsOperationId :: Lens' CreatePrivateDNSNamespaceResponse (Maybe Text)

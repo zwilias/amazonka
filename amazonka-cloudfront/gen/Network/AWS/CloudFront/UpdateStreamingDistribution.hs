@@ -18,7 +18,7 @@
 -- Stability   : auto-generated
 -- Portability : non-portable (GHC extensions)
 --
--- Update a streaming distribution.
+-- Update a streaming distribution. 
 --
 --
 module Network.AWS.CloudFront.UpdateStreamingDistribution
@@ -41,7 +41,6 @@ module Network.AWS.CloudFront.UpdateStreamingDistribution
     ) where
 
 import Network.AWS.CloudFront.Types
-import Network.AWS.CloudFront.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.Request
@@ -52,14 +51,15 @@ import Network.AWS.Response
 --
 --
 -- /See:/ 'updateStreamingDistribution' smart constructor.
-data UpdateStreamingDistribution =
-  UpdateStreamingDistribution'
-    { _usdIfMatch                     :: !(Maybe Text)
-    , _usdStreamingDistributionConfig :: !StreamingDistributionConfig
-    , _usdId                          :: !Text
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data UpdateStreamingDistribution = UpdateStreamingDistribution'{_usdIfMatch
+                                                                ::
+                                                                !(Maybe Text),
+                                                                _usdStreamingDistributionConfig
+                                                                ::
+                                                                !StreamingDistributionConfig,
+                                                                _usdId :: !Text}
+                                     deriving (Eq, Read, Show, Data, Typeable,
+                                               Generic)
 
 -- | Creates a value of 'UpdateStreamingDistribution' with the minimum fields required to make a request.
 --
@@ -74,13 +74,12 @@ updateStreamingDistribution
     :: StreamingDistributionConfig -- ^ 'usdStreamingDistributionConfig'
     -> Text -- ^ 'usdId'
     -> UpdateStreamingDistribution
-updateStreamingDistribution pStreamingDistributionConfig_ pId_ =
-  UpdateStreamingDistribution'
-    { _usdIfMatch = Nothing
-    , _usdStreamingDistributionConfig = pStreamingDistributionConfig_
-    , _usdId = pId_
-    }
-
+updateStreamingDistribution
+  pStreamingDistributionConfig_ pId_
+  = UpdateStreamingDistribution'{_usdIfMatch = Nothing,
+                                 _usdStreamingDistributionConfig =
+                                   pStreamingDistributionConfig_,
+                                 _usdId = pId_}
 
 -- | The value of the @ETag@ header that you received when retrieving the streaming distribution's configuration. For example: @E2QWRUHAPOMQZL@ .
 usdIfMatch :: Lens' UpdateStreamingDistribution (Maybe Text)
@@ -134,14 +133,19 @@ instance ToQuery UpdateStreamingDistribution where
 --
 --
 -- /See:/ 'updateStreamingDistributionResponse' smart constructor.
-data UpdateStreamingDistributionResponse =
-  UpdateStreamingDistributionResponse'
-    { _usdrsETag                  :: !(Maybe Text)
-    , _usdrsStreamingDistribution :: !(Maybe StreamingDistribution)
-    , _usdrsResponseStatus        :: !Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data UpdateStreamingDistributionResponse = UpdateStreamingDistributionResponse'{_usdrsETag
+                                                                                ::
+                                                                                !(Maybe
+                                                                                    Text),
+                                                                                _usdrsStreamingDistribution
+                                                                                ::
+                                                                                !(Maybe
+                                                                                    StreamingDistribution),
+                                                                                _usdrsResponseStatus
+                                                                                ::
+                                                                                !Int}
+                                             deriving (Eq, Read, Show, Data,
+                                                       Typeable, Generic)
 
 -- | Creates a value of 'UpdateStreamingDistributionResponse' with the minimum fields required to make a request.
 --
@@ -155,13 +159,12 @@ data UpdateStreamingDistributionResponse =
 updateStreamingDistributionResponse
     :: Int -- ^ 'usdrsResponseStatus'
     -> UpdateStreamingDistributionResponse
-updateStreamingDistributionResponse pResponseStatus_ =
-  UpdateStreamingDistributionResponse'
-    { _usdrsETag = Nothing
-    , _usdrsStreamingDistribution = Nothing
-    , _usdrsResponseStatus = pResponseStatus_
-    }
-
+updateStreamingDistributionResponse pResponseStatus_
+  = UpdateStreamingDistributionResponse'{_usdrsETag =
+                                           Nothing,
+                                         _usdrsStreamingDistribution = Nothing,
+                                         _usdrsResponseStatus =
+                                           pResponseStatus_}
 
 -- | The current version of the configuration. For example: @E2QWRUHAPOMQZL@ .
 usdrsETag :: Lens' UpdateStreamingDistributionResponse (Maybe Text)

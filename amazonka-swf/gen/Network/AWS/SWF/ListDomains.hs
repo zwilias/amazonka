@@ -21,7 +21,7 @@
 -- Returns the list of domains registered in the account. The results may be split into multiple pages. To retrieve subsequent pages, make the call again using the nextPageToken returned by the initial call.
 --
 --
--- __Access Control__
+-- __Access Control__ 
 --
 -- You can use IAM policies to control this action's access to Amazon SWF resources as follows:
 --
@@ -63,18 +63,14 @@ import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 import Network.AWS.SWF.Types
-import Network.AWS.SWF.Types.Product
 
 -- | /See:/ 'listDomains' smart constructor.
-data ListDomains =
-  ListDomains'
-    { _ldNextPageToken      :: !(Maybe Text)
-    , _ldReverseOrder       :: !(Maybe Bool)
-    , _ldMaximumPageSize    :: !(Maybe Nat)
-    , _ldRegistrationStatus :: !RegistrationStatus
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data ListDomains = ListDomains'{_ldNextPageToken ::
+                                !(Maybe Text),
+                                _ldReverseOrder :: !(Maybe Bool),
+                                _ldMaximumPageSize :: !(Maybe Nat),
+                                _ldRegistrationStatus :: !RegistrationStatus}
+                     deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'ListDomains' with the minimum fields required to make a request.
 --
@@ -90,14 +86,11 @@ data ListDomains =
 listDomains
     :: RegistrationStatus -- ^ 'ldRegistrationStatus'
     -> ListDomains
-listDomains pRegistrationStatus_ =
-  ListDomains'
-    { _ldNextPageToken = Nothing
-    , _ldReverseOrder = Nothing
-    , _ldMaximumPageSize = Nothing
-    , _ldRegistrationStatus = pRegistrationStatus_
-    }
-
+listDomains pRegistrationStatus_
+  = ListDomains'{_ldNextPageToken = Nothing,
+                 _ldReverseOrder = Nothing,
+                 _ldMaximumPageSize = Nothing,
+                 _ldRegistrationStatus = pRegistrationStatus_}
 
 -- | If a @NextPageToken@ was returned by a previous call, there are more results available. To retrieve the next page of results, make the call again using the returned token in @nextPageToken@ . Keep all other arguments unchanged. The configured @maximumPageSize@ determines how many results can be returned in a single call.
 ldNextPageToken :: Lens' ListDomains (Maybe Text)
@@ -167,14 +160,12 @@ instance ToQuery ListDomains where
 --
 --
 -- /See:/ 'listDomainsResponse' smart constructor.
-data ListDomainsResponse =
-  ListDomainsResponse'
-    { _ldrsNextPageToken  :: !(Maybe Text)
-    , _ldrsResponseStatus :: !Int
-    , _ldrsDomainInfos    :: ![DomainInfo]
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data ListDomainsResponse = ListDomainsResponse'{_ldrsNextPageToken
+                                                :: !(Maybe Text),
+                                                _ldrsResponseStatus :: !Int,
+                                                _ldrsDomainInfos ::
+                                                ![DomainInfo]}
+                             deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'ListDomainsResponse' with the minimum fields required to make a request.
 --
@@ -188,13 +179,10 @@ data ListDomainsResponse =
 listDomainsResponse
     :: Int -- ^ 'ldrsResponseStatus'
     -> ListDomainsResponse
-listDomainsResponse pResponseStatus_ =
-  ListDomainsResponse'
-    { _ldrsNextPageToken = Nothing
-    , _ldrsResponseStatus = pResponseStatus_
-    , _ldrsDomainInfos = mempty
-    }
-
+listDomainsResponse pResponseStatus_
+  = ListDomainsResponse'{_ldrsNextPageToken = Nothing,
+                         _ldrsResponseStatus = pResponseStatus_,
+                         _ldrsDomainInfos = mempty}
 
 -- | If a @NextPageToken@ was returned by a previous call, there are more results available. To retrieve the next page of results, make the call again using the returned token in @nextPageToken@ . Keep all other arguments unchanged. The configured @maximumPageSize@ determines how many results can be returned in a single call.
 ldrsNextPageToken :: Lens' ListDomainsResponse (Maybe Text)

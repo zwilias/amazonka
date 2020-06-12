@@ -38,18 +38,14 @@ module Network.AWS.OpsWorks.StartInstance
 
 import Network.AWS.Lens
 import Network.AWS.OpsWorks.Types
-import Network.AWS.OpsWorks.Types.Product
 import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 
 -- | /See:/ 'startInstance' smart constructor.
-newtype StartInstance =
-  StartInstance'
-    { _sInstanceId :: Text
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+newtype StartInstance = StartInstance'{_sInstanceId
+                                       :: Text}
+                          deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'StartInstance' with the minimum fields required to make a request.
 --
@@ -59,8 +55,8 @@ newtype StartInstance =
 startInstance
     :: Text -- ^ 'sInstanceId'
     -> StartInstance
-startInstance pInstanceId_ = StartInstance' {_sInstanceId = pInstanceId_}
-
+startInstance pInstanceId_
+  = StartInstance'{_sInstanceId = pInstanceId_}
 
 -- | The instance ID.
 sInstanceId :: Lens' StartInstance Text
@@ -96,16 +92,14 @@ instance ToQuery StartInstance where
         toQuery = const mempty
 
 -- | /See:/ 'startInstanceResponse' smart constructor.
-data StartInstanceResponse =
-  StartInstanceResponse'
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data StartInstanceResponse = StartInstanceResponse'
+                               deriving (Eq, Read, Show, Data, Typeable,
+                                         Generic)
 
 -- | Creates a value of 'StartInstanceResponse' with the minimum fields required to make a request.
 --
 startInstanceResponse
     :: StartInstanceResponse
 startInstanceResponse = StartInstanceResponse'
-
 
 instance NFData StartInstanceResponse where

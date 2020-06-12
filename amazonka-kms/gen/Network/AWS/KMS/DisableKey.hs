@@ -37,19 +37,14 @@ module Network.AWS.KMS.DisableKey
     ) where
 
 import Network.AWS.KMS.Types
-import Network.AWS.KMS.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 
 -- | /See:/ 'disableKey' smart constructor.
-newtype DisableKey =
-  DisableKey'
-    { _dkKeyId :: Text
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+newtype DisableKey = DisableKey'{_dkKeyId :: Text}
+                       deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'DisableKey' with the minimum fields required to make a request.
 --
@@ -59,8 +54,7 @@ newtype DisableKey =
 disableKey
     :: Text -- ^ 'dkKeyId'
     -> DisableKey
-disableKey pKeyId_ = DisableKey' {_dkKeyId = pKeyId_}
-
+disableKey pKeyId_ = DisableKey'{_dkKeyId = pKeyId_}
 
 -- | A unique identifier for the customer master key (CMK). Specify the key ID or the Amazon Resource Name (ARN) of the CMK. For example:     * Key ID: @1234abcd-12ab-34cd-56ef-1234567890ab@      * Key ARN: @arn:aws:kms:us-east-2:111122223333:key/1234abcd-12ab-34cd-56ef-1234567890ab@  To get the key ID and key ARN for a CMK, use 'ListKeys' or 'DescribeKey' .
 dkKeyId :: Lens' DisableKey Text
@@ -95,16 +89,13 @@ instance ToQuery DisableKey where
         toQuery = const mempty
 
 -- | /See:/ 'disableKeyResponse' smart constructor.
-data DisableKeyResponse =
-  DisableKeyResponse'
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data DisableKeyResponse = DisableKeyResponse'
+                            deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'DisableKeyResponse' with the minimum fields required to make a request.
 --
 disableKeyResponse
     :: DisableKeyResponse
 disableKeyResponse = DisableKeyResponse'
-
 
 instance NFData DisableKeyResponse where

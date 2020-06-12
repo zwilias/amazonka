@@ -40,7 +40,6 @@ module Network.AWS.IoT.UpdateCertificate
     ) where
 
 import Network.AWS.IoT.Types
-import Network.AWS.IoT.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.Request
@@ -51,13 +50,10 @@ import Network.AWS.Response
 --
 --
 -- /See:/ 'updateCertificate' smart constructor.
-data UpdateCertificate =
-  UpdateCertificate'
-    { _ucCertificateId :: !Text
-    , _ucNewStatus     :: !CertificateStatus
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data UpdateCertificate = UpdateCertificate'{_ucCertificateId
+                                            :: !Text,
+                                            _ucNewStatus :: !CertificateStatus}
+                           deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'UpdateCertificate' with the minimum fields required to make a request.
 --
@@ -70,10 +66,10 @@ updateCertificate
     :: Text -- ^ 'ucCertificateId'
     -> CertificateStatus -- ^ 'ucNewStatus'
     -> UpdateCertificate
-updateCertificate pCertificateId_ pNewStatus_ =
-  UpdateCertificate'
-    {_ucCertificateId = pCertificateId_, _ucNewStatus = pNewStatus_}
-
+updateCertificate pCertificateId_ pNewStatus_
+  = UpdateCertificate'{_ucCertificateId =
+                         pCertificateId_,
+                       _ucNewStatus = pNewStatus_}
 
 -- | The ID of the certificate. (The last part of the certificate ARN contains the certificate ID.)
 ucCertificateId :: Lens' UpdateCertificate Text
@@ -107,16 +103,15 @@ instance ToQuery UpdateCertificate where
           = mconcat ["newStatus" =: _ucNewStatus]
 
 -- | /See:/ 'updateCertificateResponse' smart constructor.
-data UpdateCertificateResponse =
-  UpdateCertificateResponse'
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data UpdateCertificateResponse = UpdateCertificateResponse'
+                                   deriving (Eq, Read, Show, Data, Typeable,
+                                             Generic)
 
 -- | Creates a value of 'UpdateCertificateResponse' with the minimum fields required to make a request.
 --
 updateCertificateResponse
     :: UpdateCertificateResponse
-updateCertificateResponse = UpdateCertificateResponse'
-
+updateCertificateResponse
+  = UpdateCertificateResponse'
 
 instance NFData UpdateCertificateResponse where

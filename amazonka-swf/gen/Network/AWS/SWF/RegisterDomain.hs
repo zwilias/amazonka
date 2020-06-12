@@ -21,7 +21,7 @@
 -- Registers a new domain.
 --
 --
--- __Access Control__
+-- __Access Control__ 
 --
 -- You can use IAM policies to control this action's access to Amazon SWF resources as follows:
 --
@@ -55,17 +55,14 @@ import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 import Network.AWS.SWF.Types
-import Network.AWS.SWF.Types.Product
 
 -- | /See:/ 'registerDomain' smart constructor.
-data RegisterDomain =
-  RegisterDomain'
-    { _rdDescription                            :: !(Maybe Text)
-    , _rdName                                   :: !Text
-    , _rdWorkflowExecutionRetentionPeriodInDays :: !Text
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data RegisterDomain = RegisterDomain'{_rdDescription
+                                      :: !(Maybe Text),
+                                      _rdName :: !Text,
+                                      _rdWorkflowExecutionRetentionPeriodInDays
+                                      :: !Text}
+                        deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'RegisterDomain' with the minimum fields required to make a request.
 --
@@ -80,14 +77,12 @@ registerDomain
     :: Text -- ^ 'rdName'
     -> Text -- ^ 'rdWorkflowExecutionRetentionPeriodInDays'
     -> RegisterDomain
-registerDomain pName_ pWorkflowExecutionRetentionPeriodInDays_ =
-  RegisterDomain'
-    { _rdDescription = Nothing
-    , _rdName = pName_
-    , _rdWorkflowExecutionRetentionPeriodInDays =
-        pWorkflowExecutionRetentionPeriodInDays_
-    }
-
+registerDomain pName_
+  pWorkflowExecutionRetentionPeriodInDays_
+  = RegisterDomain'{_rdDescription = Nothing,
+                    _rdName = pName_,
+                    _rdWorkflowExecutionRetentionPeriodInDays =
+                      pWorkflowExecutionRetentionPeriodInDays_}
 
 -- | A text description of the domain.
 rdDescription :: Lens' RegisterDomain (Maybe Text)
@@ -137,16 +132,14 @@ instance ToQuery RegisterDomain where
         toQuery = const mempty
 
 -- | /See:/ 'registerDomainResponse' smart constructor.
-data RegisterDomainResponse =
-  RegisterDomainResponse'
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data RegisterDomainResponse = RegisterDomainResponse'
+                                deriving (Eq, Read, Show, Data, Typeable,
+                                          Generic)
 
 -- | Creates a value of 'RegisterDomainResponse' with the minimum fields required to make a request.
 --
 registerDomainResponse
     :: RegisterDomainResponse
 registerDomainResponse = RegisterDomainResponse'
-
 
 instance NFData RegisterDomainResponse where

@@ -38,19 +38,16 @@ module Network.AWS.Pinpoint.UpdateADMChannel
 
 import Network.AWS.Lens
 import Network.AWS.Pinpoint.Types
-import Network.AWS.Pinpoint.Types.Product
 import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 
 -- | /See:/ 'updateADMChannel' smart constructor.
-data UpdateADMChannel =
-  UpdateADMChannel'
-    { _uadmcApplicationId     :: !Text
-    , _uadmcADMChannelRequest :: !ADMChannelRequest
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data UpdateADMChannel = UpdateADMChannel'{_uadmcApplicationId
+                                          :: !Text,
+                                          _uadmcADMChannelRequest ::
+                                          !ADMChannelRequest}
+                          deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'UpdateADMChannel' with the minimum fields required to make a request.
 --
@@ -63,12 +60,10 @@ updateADMChannel
     :: Text -- ^ 'uadmcApplicationId'
     -> ADMChannelRequest -- ^ 'uadmcADMChannelRequest'
     -> UpdateADMChannel
-updateADMChannel pApplicationId_ pADMChannelRequest_ =
-  UpdateADMChannel'
-    { _uadmcApplicationId = pApplicationId_
-    , _uadmcADMChannelRequest = pADMChannelRequest_
-    }
-
+updateADMChannel pApplicationId_ pADMChannelRequest_
+  = UpdateADMChannel'{_uadmcApplicationId =
+                        pApplicationId_,
+                      _uadmcADMChannelRequest = pADMChannelRequest_}
 
 -- | Undocumented member.
 uadmcApplicationId :: Lens' UpdateADMChannel Text
@@ -115,13 +110,13 @@ instance ToQuery UpdateADMChannel where
         toQuery = const mempty
 
 -- | /See:/ 'updateADMChannelResponse' smart constructor.
-data UpdateADMChannelResponse =
-  UpdateADMChannelResponse'
-    { _uadmcrsResponseStatus     :: !Int
-    , _uadmcrsADMChannelResponse :: !ADMChannelResponse
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data UpdateADMChannelResponse = UpdateADMChannelResponse'{_uadmcrsResponseStatus
+                                                          :: !Int,
+                                                          _uadmcrsADMChannelResponse
+                                                          ::
+                                                          !ADMChannelResponse}
+                                  deriving (Eq, Read, Show, Data, Typeable,
+                                            Generic)
 
 -- | Creates a value of 'UpdateADMChannelResponse' with the minimum fields required to make a request.
 --
@@ -134,12 +129,11 @@ updateADMChannelResponse
     :: Int -- ^ 'uadmcrsResponseStatus'
     -> ADMChannelResponse -- ^ 'uadmcrsADMChannelResponse'
     -> UpdateADMChannelResponse
-updateADMChannelResponse pResponseStatus_ pADMChannelResponse_ =
-  UpdateADMChannelResponse'
-    { _uadmcrsResponseStatus = pResponseStatus_
-    , _uadmcrsADMChannelResponse = pADMChannelResponse_
-    }
-
+updateADMChannelResponse pResponseStatus_
+  pADMChannelResponse_
+  = UpdateADMChannelResponse'{_uadmcrsResponseStatus =
+                                pResponseStatus_,
+                              _uadmcrsADMChannelResponse = pADMChannelResponse_}
 
 -- | -- | The response status code.
 uadmcrsResponseStatus :: Lens' UpdateADMChannelResponse Int

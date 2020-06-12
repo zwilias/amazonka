@@ -57,17 +57,13 @@ import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 import Network.AWS.WAF.Types
-import Network.AWS.WAF.Types.Product
 
 -- | /See:/ 'createRuleGroup' smart constructor.
-data CreateRuleGroup =
-  CreateRuleGroup'
-    { _crgName        :: !Text
-    , _crgMetricName  :: !Text
-    , _crgChangeToken :: !Text
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data CreateRuleGroup = CreateRuleGroup'{_crgName ::
+                                        !Text,
+                                        _crgMetricName :: !Text,
+                                        _crgChangeToken :: !Text}
+                         deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'CreateRuleGroup' with the minimum fields required to make a request.
 --
@@ -83,13 +79,10 @@ createRuleGroup
     -> Text -- ^ 'crgMetricName'
     -> Text -- ^ 'crgChangeToken'
     -> CreateRuleGroup
-createRuleGroup pName_ pMetricName_ pChangeToken_ =
-  CreateRuleGroup'
-    { _crgName = pName_
-    , _crgMetricName = pMetricName_
-    , _crgChangeToken = pChangeToken_
-    }
-
+createRuleGroup pName_ pMetricName_ pChangeToken_
+  = CreateRuleGroup'{_crgName = pName_,
+                     _crgMetricName = pMetricName_,
+                     _crgChangeToken = pChangeToken_}
 
 -- | A friendly name or description of the 'RuleGroup' . You can't change @Name@ after you create a @RuleGroup@ .
 crgName :: Lens' CreateRuleGroup Text
@@ -141,14 +134,14 @@ instance ToQuery CreateRuleGroup where
         toQuery = const mempty
 
 -- | /See:/ 'createRuleGroupResponse' smart constructor.
-data CreateRuleGroupResponse =
-  CreateRuleGroupResponse'
-    { _crgrsChangeToken    :: !(Maybe Text)
-    , _crgrsRuleGroup      :: !(Maybe RuleGroup)
-    , _crgrsResponseStatus :: !Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data CreateRuleGroupResponse = CreateRuleGroupResponse'{_crgrsChangeToken
+                                                        :: !(Maybe Text),
+                                                        _crgrsRuleGroup ::
+                                                        !(Maybe RuleGroup),
+                                                        _crgrsResponseStatus ::
+                                                        !Int}
+                                 deriving (Eq, Read, Show, Data, Typeable,
+                                           Generic)
 
 -- | Creates a value of 'CreateRuleGroupResponse' with the minimum fields required to make a request.
 --
@@ -162,13 +155,11 @@ data CreateRuleGroupResponse =
 createRuleGroupResponse
     :: Int -- ^ 'crgrsResponseStatus'
     -> CreateRuleGroupResponse
-createRuleGroupResponse pResponseStatus_ =
-  CreateRuleGroupResponse'
-    { _crgrsChangeToken = Nothing
-    , _crgrsRuleGroup = Nothing
-    , _crgrsResponseStatus = pResponseStatus_
-    }
-
+createRuleGroupResponse pResponseStatus_
+  = CreateRuleGroupResponse'{_crgrsChangeToken =
+                               Nothing,
+                             _crgrsRuleGroup = Nothing,
+                             _crgrsResponseStatus = pResponseStatus_}
 
 -- | The @ChangeToken@ that you used to submit the @CreateRuleGroup@ request. You can also use this value to query the status of the request. For more information, see 'GetChangeTokenStatus' .
 crgrsChangeToken :: Lens' CreateRuleGroupResponse (Maybe Text)

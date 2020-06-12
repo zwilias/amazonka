@@ -1,4 +1,4 @@
-{-# LANGUAGE OverloadedStrings #-}
+{-# LANGUAGE OverloadedStrings  #-}
 
 -- Derived from AWS service descriptions, licensed under Apache 2.0.
 
@@ -150,95 +150,105 @@ module Network.AWS.Discovery.Types
     , tfValues
     ) where
 
-import Network.AWS.Discovery.Types.Product
-import Network.AWS.Discovery.Types.Sum
 import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.Sign.V4
+import Network.AWS.Discovery.Types.AgentStatus
+import Network.AWS.Discovery.Types.ConfigurationItemType
+import Network.AWS.Discovery.Types.ExportDataFormat
+import Network.AWS.Discovery.Types.ExportStatus
+import Network.AWS.Discovery.Types.OrderString
+import Network.AWS.Discovery.Types.AgentConfigurationStatus
+import Network.AWS.Discovery.Types.AgentInfo
+import Network.AWS.Discovery.Types.AgentNetworkInfo
+import Network.AWS.Discovery.Types.ConfigurationTag
+import Network.AWS.Discovery.Types.CustomerAgentInfo
+import Network.AWS.Discovery.Types.CustomerConnectorInfo
+import Network.AWS.Discovery.Types.ExportFilter
+import Network.AWS.Discovery.Types.ExportInfo
+import Network.AWS.Discovery.Types.Filter
+import Network.AWS.Discovery.Types.NeighborConnectionDetail
+import Network.AWS.Discovery.Types.OrderByElement
+import Network.AWS.Discovery.Types.Tag
+import Network.AWS.Discovery.Types.TagFilter
 
 -- | API version @2015-11-01@ of the Amazon Application Discovery Service SDK configuration.
 discovery :: Service
-discovery =
-  Service
-    { _svcAbbrev = "Discovery"
-    , _svcSigner = v4
-    , _svcPrefix = "discovery"
-    , _svcVersion = "2015-11-01"
-    , _svcEndpoint = defaultEndpoint discovery
-    , _svcTimeout = Just 70
-    , _svcCheck = statusSuccess
-    , _svcError = parseJSONError "Discovery"
-    , _svcRetry = retry
-    }
-  where
-    retry =
-      Exponential
-        { _retryBase = 5.0e-2
-        , _retryGrowth = 2
-        , _retryAttempts = 5
-        , _retryCheck = check
-        }
-    check e
-      | has (hasCode "ThrottledException" . hasStatus 400) e =
-        Just "throttled_exception"
-      | has (hasStatus 429) e = Just "too_many_requests"
-      | has (hasCode "ThrottlingException" . hasStatus 400) e =
-        Just "throttling_exception"
-      | has (hasCode "Throttling" . hasStatus 400) e = Just "throttling"
-      | has (hasStatus 504) e = Just "gateway_timeout"
-      | has (hasCode "RequestThrottledException" . hasStatus 400) e =
-        Just "request_throttled_exception"
-      | has (hasStatus 502) e = Just "bad_gateway"
-      | has (hasStatus 503) e = Just "service_unavailable"
-      | has (hasStatus 500) e = Just "general_server_error"
-      | has (hasStatus 509) e = Just "limit_exceeded"
-      | otherwise = Nothing
-
+discovery
+  = Service{_svcAbbrev = "Discovery", _svcSigner = v4,
+            _svcPrefix = "discovery", _svcVersion = "2015-11-01",
+            _svcEndpoint = defaultEndpoint discovery,
+            _svcTimeout = Just 70, _svcCheck = statusSuccess,
+            _svcError = parseJSONError "Discovery",
+            _svcRetry = retry}
+  where retry
+          = Exponential{_retryBase = 5.0e-2, _retryGrowth = 2,
+                        _retryAttempts = 5, _retryCheck = check}
+        check e
+          | has (hasCode "ThrottledException" . hasStatus 400)
+              e
+            = Just "throttled_exception"
+          | has (hasStatus 429) e = Just "too_many_requests"
+          | has (hasCode "ThrottlingException" . hasStatus 400)
+              e
+            = Just "throttling_exception"
+          | has (hasCode "Throttling" . hasStatus 400) e =
+            Just "throttling"
+          | has (hasStatus 504) e = Just "gateway_timeout"
+          | has
+              (hasCode "RequestThrottledException" . hasStatus 400)
+              e
+            = Just "request_throttled_exception"
+          | has (hasStatus 502) e = Just "bad_gateway"
+          | has (hasStatus 503) e = Just "service_unavailable"
+          | has (hasStatus 500) e = Just "general_server_error"
+          | has (hasStatus 509) e = Just "limit_exceeded"
+          | otherwise = Nothing
 
 -- | The AWS user account does not have permission to perform the action. Check the IAM policy associated with this account.
 --
 --
 _AuthorizationErrorException :: AsError a => Getting (First ServiceError) a ServiceError
-_AuthorizationErrorException =
-  _MatchServiceError discovery "AuthorizationErrorException"
-
+_AuthorizationErrorException
+  = _MatchServiceError discovery
+      "AuthorizationErrorException"
 
 -- | One or more parameters are not valid. Verify the parameters and try again.
 --
 --
 _InvalidParameterException :: AsError a => Getting (First ServiceError) a ServiceError
-_InvalidParameterException =
-  _MatchServiceError discovery "InvalidParameterException"
-
+_InvalidParameterException
+  = _MatchServiceError discovery
+      "InvalidParameterException"
 
 -- | The value of one or more parameters are either invalid or out of range. Verify the parameter values and try again.
 --
 --
 _InvalidParameterValueException :: AsError a => Getting (First ServiceError) a ServiceError
-_InvalidParameterValueException =
-  _MatchServiceError discovery "InvalidParameterValueException"
-
+_InvalidParameterValueException
+  = _MatchServiceError discovery
+      "InvalidParameterValueException"
 
 -- | The server experienced an internal error. Try again.
 --
 --
 _ServerInternalErrorException :: AsError a => Getting (First ServiceError) a ServiceError
-_ServerInternalErrorException =
-  _MatchServiceError discovery "ServerInternalErrorException"
-
+_ServerInternalErrorException
+  = _MatchServiceError discovery
+      "ServerInternalErrorException"
 
 -- | This operation is not permitted.
 --
 --
 _OperationNotPermittedException :: AsError a => Getting (First ServiceError) a ServiceError
-_OperationNotPermittedException =
-  _MatchServiceError discovery "OperationNotPermittedException"
-
+_OperationNotPermittedException
+  = _MatchServiceError discovery
+      "OperationNotPermittedException"
 
 -- | The specified configuration ID was not located. Verify the configuration ID and try again.
 --
 --
 _ResourceNotFoundException :: AsError a => Getting (First ServiceError) a ServiceError
-_ResourceNotFoundException =
-  _MatchServiceError discovery "ResourceNotFoundException"
-
+_ResourceNotFoundException
+  = _MatchServiceError discovery
+      "ResourceNotFoundException"

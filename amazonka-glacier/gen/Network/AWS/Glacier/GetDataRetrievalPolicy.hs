@@ -38,7 +38,6 @@ module Network.AWS.Glacier.GetDataRetrievalPolicy
     ) where
 
 import Network.AWS.Glacier.Types
-import Network.AWS.Glacier.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.Request
@@ -49,26 +48,24 @@ import Network.AWS.Response
 --
 --
 -- /See:/ 'getDataRetrievalPolicy' smart constructor.
-newtype GetDataRetrievalPolicy =
-  GetDataRetrievalPolicy'
-    { _gdrpAccountId :: Text
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+newtype GetDataRetrievalPolicy = GetDataRetrievalPolicy'{_gdrpAccountId
+                                                         :: Text}
+                                   deriving (Eq, Read, Show, Data, Typeable,
+                                             Generic)
 
 -- | Creates a value of 'GetDataRetrievalPolicy' with the minimum fields required to make a request.
 --
 -- Use one of the following lenses to modify other fields as desired:
 --
--- * 'gdrpAccountId' - The @AccountId@ value is the AWS account ID. This value must match the AWS account ID associated with the credentials used to sign the request. You can either specify an AWS account ID or optionally a single '@-@ ' (hyphen), in which case Amazon Glacier uses the AWS account ID associated with the credentials used to sign the request. If you specify your account ID, do not include any hyphens ('-') in the ID.
+-- * 'gdrpAccountId' - The @AccountId@ value is the AWS account ID. This value must match the AWS account ID associated with the credentials used to sign the request. You can either specify an AWS account ID or optionally a single '@-@ ' (hyphen), in which case Amazon Glacier uses the AWS account ID associated with the credentials used to sign the request. If you specify your account ID, do not include any hyphens ('-') in the ID. 
 getDataRetrievalPolicy
     :: Text -- ^ 'gdrpAccountId'
     -> GetDataRetrievalPolicy
-getDataRetrievalPolicy pAccountId_ =
-  GetDataRetrievalPolicy' {_gdrpAccountId = pAccountId_}
+getDataRetrievalPolicy pAccountId_
+  = GetDataRetrievalPolicy'{_gdrpAccountId =
+                              pAccountId_}
 
-
--- | The @AccountId@ value is the AWS account ID. This value must match the AWS account ID associated with the credentials used to sign the request. You can either specify an AWS account ID or optionally a single '@-@ ' (hyphen), in which case Amazon Glacier uses the AWS account ID associated with the credentials used to sign the request. If you specify your account ID, do not include any hyphens ('-') in the ID.
+-- | The @AccountId@ value is the AWS account ID. This value must match the AWS account ID associated with the credentials used to sign the request. You can either specify an AWS account ID or optionally a single '@-@ ' (hyphen), in which case Amazon Glacier uses the AWS account ID associated with the credentials used to sign the request. If you specify your account ID, do not include any hyphens ('-') in the ID. 
 gdrpAccountId :: Lens' GetDataRetrievalPolicy Text
 gdrpAccountId = lens _gdrpAccountId (\ s a -> s{_gdrpAccountId = a})
 
@@ -103,13 +100,14 @@ instance ToQuery GetDataRetrievalPolicy where
 --
 --
 -- /See:/ 'getDataRetrievalPolicyResponse' smart constructor.
-data GetDataRetrievalPolicyResponse =
-  GetDataRetrievalPolicyResponse'
-    { _gdrprsPolicy         :: !(Maybe DataRetrievalPolicy)
-    , _gdrprsResponseStatus :: !Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data GetDataRetrievalPolicyResponse = GetDataRetrievalPolicyResponse'{_gdrprsPolicy
+                                                                      ::
+                                                                      !(Maybe
+                                                                          DataRetrievalPolicy),
+                                                                      _gdrprsResponseStatus
+                                                                      :: !Int}
+                                        deriving (Eq, Read, Show, Data,
+                                                  Typeable, Generic)
 
 -- | Creates a value of 'GetDataRetrievalPolicyResponse' with the minimum fields required to make a request.
 --
@@ -121,10 +119,10 @@ data GetDataRetrievalPolicyResponse =
 getDataRetrievalPolicyResponse
     :: Int -- ^ 'gdrprsResponseStatus'
     -> GetDataRetrievalPolicyResponse
-getDataRetrievalPolicyResponse pResponseStatus_ =
-  GetDataRetrievalPolicyResponse'
-    {_gdrprsPolicy = Nothing, _gdrprsResponseStatus = pResponseStatus_}
-
+getDataRetrievalPolicyResponse pResponseStatus_
+  = GetDataRetrievalPolicyResponse'{_gdrprsPolicy =
+                                      Nothing,
+                                    _gdrprsResponseStatus = pResponseStatus_}
 
 -- | Contains the returned data retrieval policy in JSON format.
 gdrprsPolicy :: Lens' GetDataRetrievalPolicyResponse (Maybe DataRetrievalPolicy)

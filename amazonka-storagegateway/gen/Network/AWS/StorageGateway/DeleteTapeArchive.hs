@@ -42,19 +42,15 @@ import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 import Network.AWS.StorageGateway.Types
-import Network.AWS.StorageGateway.Types.Product
 
 -- | DeleteTapeArchiveInput
 --
 --
 --
 -- /See:/ 'deleteTapeArchive' smart constructor.
-newtype DeleteTapeArchive =
-  DeleteTapeArchive'
-    { _dtaTapeARN :: Text
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+newtype DeleteTapeArchive = DeleteTapeArchive'{_dtaTapeARN
+                                               :: Text}
+                              deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'DeleteTapeArchive' with the minimum fields required to make a request.
 --
@@ -64,8 +60,8 @@ newtype DeleteTapeArchive =
 deleteTapeArchive
     :: Text -- ^ 'dtaTapeARN'
     -> DeleteTapeArchive
-deleteTapeArchive pTapeARN_ = DeleteTapeArchive' {_dtaTapeARN = pTapeARN_}
-
+deleteTapeArchive pTapeARN_
+  = DeleteTapeArchive'{_dtaTapeARN = pTapeARN_}
 
 -- | The Amazon Resource Name (ARN) of the virtual tape to delete from the virtual tape shelf (VTS).
 dtaTapeARN :: Lens' DeleteTapeArchive Text
@@ -110,13 +106,12 @@ instance ToQuery DeleteTapeArchive where
 --
 --
 -- /See:/ 'deleteTapeArchiveResponse' smart constructor.
-data DeleteTapeArchiveResponse =
-  DeleteTapeArchiveResponse'
-    { _dtatrsTapeARN        :: !(Maybe Text)
-    , _dtatrsResponseStatus :: !Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data DeleteTapeArchiveResponse = DeleteTapeArchiveResponse'{_dtatrsTapeARN
+                                                            :: !(Maybe Text),
+                                                            _dtatrsResponseStatus
+                                                            :: !Int}
+                                   deriving (Eq, Read, Show, Data, Typeable,
+                                             Generic)
 
 -- | Creates a value of 'DeleteTapeArchiveResponse' with the minimum fields required to make a request.
 --
@@ -128,10 +123,10 @@ data DeleteTapeArchiveResponse =
 deleteTapeArchiveResponse
     :: Int -- ^ 'dtatrsResponseStatus'
     -> DeleteTapeArchiveResponse
-deleteTapeArchiveResponse pResponseStatus_ =
-  DeleteTapeArchiveResponse'
-    {_dtatrsTapeARN = Nothing, _dtatrsResponseStatus = pResponseStatus_}
-
+deleteTapeArchiveResponse pResponseStatus_
+  = DeleteTapeArchiveResponse'{_dtatrsTapeARN =
+                                 Nothing,
+                               _dtatrsResponseStatus = pResponseStatus_}
 
 -- | The Amazon Resource Name (ARN) of the virtual tape that was deleted from the virtual tape shelf (VTS).
 dtatrsTapeARN :: Lens' DeleteTapeArchiveResponse (Maybe Text)

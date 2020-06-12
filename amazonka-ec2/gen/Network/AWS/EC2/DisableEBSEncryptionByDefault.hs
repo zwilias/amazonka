@@ -44,19 +44,18 @@ module Network.AWS.EC2.DisableEBSEncryptionByDefault
     ) where
 
 import Network.AWS.EC2.Types
-import Network.AWS.EC2.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 
 -- | /See:/ 'disableEBSEncryptionByDefault' smart constructor.
-newtype DisableEBSEncryptionByDefault =
-  DisableEBSEncryptionByDefault'
-    { _deebdDryRun :: Maybe Bool
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+newtype DisableEBSEncryptionByDefault = DisableEBSEncryptionByDefault'{_deebdDryRun
+                                                                       ::
+                                                                       Maybe
+                                                                         Bool}
+                                          deriving (Eq, Read, Show, Data,
+                                                    Typeable, Generic)
 
 -- | Creates a value of 'DisableEBSEncryptionByDefault' with the minimum fields required to make a request.
 --
@@ -65,9 +64,9 @@ newtype DisableEBSEncryptionByDefault =
 -- * 'deebdDryRun' - Checks whether you have the required permissions for the action, without actually making the request, and provides an error response. If you have the required permissions, the error response is @DryRunOperation@ . Otherwise, it is @UnauthorizedOperation@ .
 disableEBSEncryptionByDefault
     :: DisableEBSEncryptionByDefault
-disableEBSEncryptionByDefault =
-  DisableEBSEncryptionByDefault' {_deebdDryRun = Nothing}
-
+disableEBSEncryptionByDefault
+  = DisableEBSEncryptionByDefault'{_deebdDryRun =
+                                     Nothing}
 
 -- | Checks whether you have the required permissions for the action, without actually making the request, and provides an error response. If you have the required permissions, the error response is @DryRunOperation@ . Otherwise, it is @UnauthorizedOperation@ .
 deebdDryRun :: Lens' DisableEBSEncryptionByDefault (Maybe Bool)
@@ -105,13 +104,15 @@ instance ToQuery DisableEBSEncryptionByDefault where
                "DryRun" =: _deebdDryRun]
 
 -- | /See:/ 'disableEBSEncryptionByDefaultResponse' smart constructor.
-data DisableEBSEncryptionByDefaultResponse =
-  DisableEBSEncryptionByDefaultResponse'
-    { _deebdrsEBSEncryptionByDefault :: !(Maybe Bool)
-    , _deebdrsResponseStatus         :: !Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data DisableEBSEncryptionByDefaultResponse = DisableEBSEncryptionByDefaultResponse'{_deebdrsEBSEncryptionByDefault
+                                                                                    ::
+                                                                                    !(Maybe
+                                                                                        Bool),
+                                                                                    _deebdrsResponseStatus
+                                                                                    ::
+                                                                                    !Int}
+                                               deriving (Eq, Read, Show, Data,
+                                                         Typeable, Generic)
 
 -- | Creates a value of 'DisableEBSEncryptionByDefaultResponse' with the minimum fields required to make a request.
 --
@@ -123,12 +124,12 @@ data DisableEBSEncryptionByDefaultResponse =
 disableEBSEncryptionByDefaultResponse
     :: Int -- ^ 'deebdrsResponseStatus'
     -> DisableEBSEncryptionByDefaultResponse
-disableEBSEncryptionByDefaultResponse pResponseStatus_ =
-  DisableEBSEncryptionByDefaultResponse'
-    { _deebdrsEBSEncryptionByDefault = Nothing
-    , _deebdrsResponseStatus = pResponseStatus_
-    }
-
+disableEBSEncryptionByDefaultResponse
+  pResponseStatus_
+  = DisableEBSEncryptionByDefaultResponse'{_deebdrsEBSEncryptionByDefault
+                                             = Nothing,
+                                           _deebdrsResponseStatus =
+                                             pResponseStatus_}
 
 -- | The updated status of encryption by default.
 deebdrsEBSEncryptionByDefault :: Lens' DisableEBSEncryptionByDefaultResponse (Maybe Bool)

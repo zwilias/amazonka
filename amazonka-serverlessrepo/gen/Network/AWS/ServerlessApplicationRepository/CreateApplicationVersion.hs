@@ -51,19 +51,20 @@ import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 import Network.AWS.ServerlessApplicationRepository.Types
-import Network.AWS.ServerlessApplicationRepository.Types.Product
 
 -- | /See:/ 'createApplicationVersion' smart constructor.
-data CreateApplicationVersion =
-  CreateApplicationVersion'
-    { _cavSourceCodeURL   :: !(Maybe Text)
-    , _cavTemplateBody    :: !(Maybe Text)
-    , _cavTemplateURL     :: !(Maybe Text)
-    , _cavApplicationId   :: !Text
-    , _cavSemanticVersion :: !Text
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data CreateApplicationVersion = CreateApplicationVersion'{_cavSourceCodeURL
+                                                          :: !(Maybe Text),
+                                                          _cavTemplateBody ::
+                                                          !(Maybe Text),
+                                                          _cavTemplateURL ::
+                                                          !(Maybe Text),
+                                                          _cavApplicationId ::
+                                                          !Text,
+                                                          _cavSemanticVersion ::
+                                                          !Text}
+                                  deriving (Eq, Read, Show, Data, Typeable,
+                                            Generic)
 
 -- | Creates a value of 'CreateApplicationVersion' with the minimum fields required to make a request.
 --
@@ -82,15 +83,14 @@ createApplicationVersion
     :: Text -- ^ 'cavApplicationId'
     -> Text -- ^ 'cavSemanticVersion'
     -> CreateApplicationVersion
-createApplicationVersion pApplicationId_ pSemanticVersion_ =
-  CreateApplicationVersion'
-    { _cavSourceCodeURL = Nothing
-    , _cavTemplateBody = Nothing
-    , _cavTemplateURL = Nothing
-    , _cavApplicationId = pApplicationId_
-    , _cavSemanticVersion = pSemanticVersion_
-    }
-
+createApplicationVersion pApplicationId_
+  pSemanticVersion_
+  = CreateApplicationVersion'{_cavSourceCodeURL =
+                                Nothing,
+                              _cavTemplateBody = Nothing,
+                              _cavTemplateURL = Nothing,
+                              _cavApplicationId = pApplicationId_,
+                              _cavSemanticVersion = pSemanticVersion_}
 
 -- | A link to a public repository for the source code of your application.
 cavSourceCodeURL :: Lens' CreateApplicationVersion (Maybe Text)
@@ -157,18 +157,35 @@ instance ToQuery CreateApplicationVersion where
         toQuery = const mempty
 
 -- | /See:/ 'createApplicationVersionResponse' smart constructor.
-data CreateApplicationVersionResponse =
-  CreateApplicationVersionResponse'
-    { _cavrsCreationTime         :: !(Maybe Text)
-    , _cavrsParameterDefinitions :: !(Maybe [ParameterDefinition])
-    , _cavrsSemanticVersion      :: !(Maybe Text)
-    , _cavrsSourceCodeURL        :: !(Maybe Text)
-    , _cavrsApplicationId        :: !(Maybe Text)
-    , _cavrsTemplateURL          :: !(Maybe Text)
-    , _cavrsResponseStatus       :: !Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data CreateApplicationVersionResponse = CreateApplicationVersionResponse'{_cavrsCreationTime
+                                                                          ::
+                                                                          !(Maybe
+                                                                              Text),
+                                                                          _cavrsParameterDefinitions
+                                                                          ::
+                                                                          !(Maybe
+                                                                              [ParameterDefinition]),
+                                                                          _cavrsSemanticVersion
+                                                                          ::
+                                                                          !(Maybe
+                                                                              Text),
+                                                                          _cavrsSourceCodeURL
+                                                                          ::
+                                                                          !(Maybe
+                                                                              Text),
+                                                                          _cavrsApplicationId
+                                                                          ::
+                                                                          !(Maybe
+                                                                              Text),
+                                                                          _cavrsTemplateURL
+                                                                          ::
+                                                                          !(Maybe
+                                                                              Text),
+                                                                          _cavrsResponseStatus
+                                                                          ::
+                                                                          !Int}
+                                          deriving (Eq, Read, Show, Data,
+                                                    Typeable, Generic)
 
 -- | Creates a value of 'CreateApplicationVersionResponse' with the minimum fields required to make a request.
 --
@@ -178,7 +195,7 @@ data CreateApplicationVersionResponse =
 --
 -- * 'cavrsParameterDefinitions' - Array of parameter types supported by the application.
 --
--- * 'cavrsSemanticVersion' - The semantic version of the application: <https://semver.org/ https://semver.org/>
+-- * 'cavrsSemanticVersion' - The semantic version of the application: <https://semver.org/ https://semver.org/> 
 --
 -- * 'cavrsSourceCodeURL' - A link to a public repository for the source code of your application.
 --
@@ -190,17 +207,15 @@ data CreateApplicationVersionResponse =
 createApplicationVersionResponse
     :: Int -- ^ 'cavrsResponseStatus'
     -> CreateApplicationVersionResponse
-createApplicationVersionResponse pResponseStatus_ =
-  CreateApplicationVersionResponse'
-    { _cavrsCreationTime = Nothing
-    , _cavrsParameterDefinitions = Nothing
-    , _cavrsSemanticVersion = Nothing
-    , _cavrsSourceCodeURL = Nothing
-    , _cavrsApplicationId = Nothing
-    , _cavrsTemplateURL = Nothing
-    , _cavrsResponseStatus = pResponseStatus_
-    }
-
+createApplicationVersionResponse pResponseStatus_
+  = CreateApplicationVersionResponse'{_cavrsCreationTime
+                                        = Nothing,
+                                      _cavrsParameterDefinitions = Nothing,
+                                      _cavrsSemanticVersion = Nothing,
+                                      _cavrsSourceCodeURL = Nothing,
+                                      _cavrsApplicationId = Nothing,
+                                      _cavrsTemplateURL = Nothing,
+                                      _cavrsResponseStatus = pResponseStatus_}
 
 -- | The date/time this resource was created.
 cavrsCreationTime :: Lens' CreateApplicationVersionResponse (Maybe Text)
@@ -210,7 +225,7 @@ cavrsCreationTime = lens _cavrsCreationTime (\ s a -> s{_cavrsCreationTime = a})
 cavrsParameterDefinitions :: Lens' CreateApplicationVersionResponse [ParameterDefinition]
 cavrsParameterDefinitions = lens _cavrsParameterDefinitions (\ s a -> s{_cavrsParameterDefinitions = a}) . _Default . _Coerce
 
--- | The semantic version of the application: <https://semver.org/ https://semver.org/>
+-- | The semantic version of the application: <https://semver.org/ https://semver.org/> 
 cavrsSemanticVersion :: Lens' CreateApplicationVersionResponse (Maybe Text)
 cavrsSemanticVersion = lens _cavrsSemanticVersion (\ s a -> s{_cavrsSemanticVersion = a})
 

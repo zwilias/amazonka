@@ -50,15 +50,11 @@ import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 import Network.AWS.StorageGateway.Types
-import Network.AWS.StorageGateway.Types.Product
 
 -- | /See:/ 'describeCache' smart constructor.
-newtype DescribeCache =
-  DescribeCache'
-    { _dcGatewayARN :: Text
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+newtype DescribeCache = DescribeCache'{_dcGatewayARN
+                                       :: Text}
+                          deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'DescribeCache' with the minimum fields required to make a request.
 --
@@ -68,8 +64,8 @@ newtype DescribeCache =
 describeCache
     :: Text -- ^ 'dcGatewayARN'
     -> DescribeCache
-describeCache pGatewayARN_ = DescribeCache' {_dcGatewayARN = pGatewayARN_}
-
+describeCache pGatewayARN_
+  = DescribeCache'{_dcGatewayARN = pGatewayARN_}
 
 -- | Undocumented member.
 dcGatewayARN :: Lens' DescribeCache Text
@@ -116,19 +112,23 @@ instance ToQuery DescribeCache where
         toQuery = const mempty
 
 -- | /See:/ 'describeCacheResponse' smart constructor.
-data DescribeCacheResponse =
-  DescribeCacheResponse'
-    { _dcrsGatewayARN            :: !(Maybe Text)
-    , _dcrsDiskIds               :: !(Maybe [Text])
-    , _dcrsCacheUsedPercentage   :: !(Maybe Double)
-    , _dcrsCacheHitPercentage    :: !(Maybe Double)
-    , _dcrsCacheMissPercentage   :: !(Maybe Double)
-    , _dcrsCacheAllocatedInBytes :: !(Maybe Integer)
-    , _dcrsCacheDirtyPercentage  :: !(Maybe Double)
-    , _dcrsResponseStatus        :: !Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data DescribeCacheResponse = DescribeCacheResponse'{_dcrsGatewayARN
+                                                    :: !(Maybe Text),
+                                                    _dcrsDiskIds ::
+                                                    !(Maybe [Text]),
+                                                    _dcrsCacheUsedPercentage ::
+                                                    !(Maybe Double),
+                                                    _dcrsCacheHitPercentage ::
+                                                    !(Maybe Double),
+                                                    _dcrsCacheMissPercentage ::
+                                                    !(Maybe Double),
+                                                    _dcrsCacheAllocatedInBytes
+                                                    :: !(Maybe Integer),
+                                                    _dcrsCacheDirtyPercentage ::
+                                                    !(Maybe Double),
+                                                    _dcrsResponseStatus :: !Int}
+                               deriving (Eq, Read, Show, Data, Typeable,
+                                         Generic)
 
 -- | Creates a value of 'DescribeCacheResponse' with the minimum fields required to make a request.
 --
@@ -152,18 +152,15 @@ data DescribeCacheResponse =
 describeCacheResponse
     :: Int -- ^ 'dcrsResponseStatus'
     -> DescribeCacheResponse
-describeCacheResponse pResponseStatus_ =
-  DescribeCacheResponse'
-    { _dcrsGatewayARN = Nothing
-    , _dcrsDiskIds = Nothing
-    , _dcrsCacheUsedPercentage = Nothing
-    , _dcrsCacheHitPercentage = Nothing
-    , _dcrsCacheMissPercentage = Nothing
-    , _dcrsCacheAllocatedInBytes = Nothing
-    , _dcrsCacheDirtyPercentage = Nothing
-    , _dcrsResponseStatus = pResponseStatus_
-    }
-
+describeCacheResponse pResponseStatus_
+  = DescribeCacheResponse'{_dcrsGatewayARN = Nothing,
+                           _dcrsDiskIds = Nothing,
+                           _dcrsCacheUsedPercentage = Nothing,
+                           _dcrsCacheHitPercentage = Nothing,
+                           _dcrsCacheMissPercentage = Nothing,
+                           _dcrsCacheAllocatedInBytes = Nothing,
+                           _dcrsCacheDirtyPercentage = Nothing,
+                           _dcrsResponseStatus = pResponseStatus_}
 
 -- | Undocumented member.
 dcrsGatewayARN :: Lens' DescribeCacheResponse (Maybe Text)

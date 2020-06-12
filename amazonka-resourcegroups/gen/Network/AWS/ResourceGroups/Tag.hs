@@ -43,17 +43,12 @@ import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.ResourceGroups.Types
-import Network.AWS.ResourceGroups.Types.Product
 import Network.AWS.Response
 
 -- | /See:/ 'tag' smart constructor.
-data Tag =
-  Tag'
-    { _tagARN  :: !Text
-    , _tagTags :: !(Map Text Text)
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data Tag = Tag'{_tagARN :: !Text,
+                _tagTags :: !(Map Text Text)}
+             deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'Tag' with the minimum fields required to make a request.
 --
@@ -65,8 +60,7 @@ data Tag =
 tag
     :: Text -- ^ 'tagARN'
     -> Tag
-tag pARN_ = Tag' {_tagARN = pARN_, _tagTags = mempty}
-
+tag pARN_ = Tag'{_tagARN = pARN_, _tagTags = mempty}
 
 -- | The ARN of the resource to which to add tags.
 tagARN :: Lens' Tag Text
@@ -105,14 +99,11 @@ instance ToQuery Tag where
         toQuery = const mempty
 
 -- | /See:/ 'tagResponse' smart constructor.
-data TagResponse =
-  TagResponse'
-    { _tagrsARN            :: !(Maybe Text)
-    , _tagrsTags           :: !(Maybe (Map Text Text))
-    , _tagrsResponseStatus :: !Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data TagResponse = TagResponse'{_tagrsARN ::
+                                !(Maybe Text),
+                                _tagrsTags :: !(Maybe (Map Text Text)),
+                                _tagrsResponseStatus :: !Int}
+                     deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'TagResponse' with the minimum fields required to make a request.
 --
@@ -126,13 +117,10 @@ data TagResponse =
 tagResponse
     :: Int -- ^ 'tagrsResponseStatus'
     -> TagResponse
-tagResponse pResponseStatus_ =
-  TagResponse'
-    { _tagrsARN = Nothing
-    , _tagrsTags = Nothing
-    , _tagrsResponseStatus = pResponseStatus_
-    }
-
+tagResponse pResponseStatus_
+  = TagResponse'{_tagrsARN = Nothing,
+                 _tagrsTags = Nothing,
+                 _tagrsResponseStatus = pResponseStatus_}
 
 -- | The ARN of the tagged resource.
 tagrsARN :: Lens' TagResponse (Maybe Text)

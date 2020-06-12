@@ -46,7 +46,6 @@ module Network.AWS.IAM.ListPolicyVersions
     ) where
 
 import Network.AWS.IAM.Types
-import Network.AWS.IAM.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Pager
 import Network.AWS.Prelude
@@ -54,14 +53,11 @@ import Network.AWS.Request
 import Network.AWS.Response
 
 -- | /See:/ 'listPolicyVersions' smart constructor.
-data ListPolicyVersions =
-  ListPolicyVersions'
-    { _lpvMarker    :: !(Maybe Text)
-    , _lpvMaxItems  :: !(Maybe Nat)
-    , _lpvPolicyARN :: !Text
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data ListPolicyVersions = ListPolicyVersions'{_lpvMarker
+                                              :: !(Maybe Text),
+                                              _lpvMaxItems :: !(Maybe Nat),
+                                              _lpvPolicyARN :: !Text}
+                            deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'ListPolicyVersions' with the minimum fields required to make a request.
 --
@@ -75,10 +71,9 @@ data ListPolicyVersions =
 listPolicyVersions
     :: Text -- ^ 'lpvPolicyARN'
     -> ListPolicyVersions
-listPolicyVersions pPolicyARN_ =
-  ListPolicyVersions'
-    {_lpvMarker = Nothing, _lpvMaxItems = Nothing, _lpvPolicyARN = pPolicyARN_}
-
+listPolicyVersions pPolicyARN_
+  = ListPolicyVersions'{_lpvMarker = Nothing,
+                        _lpvMaxItems = Nothing, _lpvPolicyARN = pPolicyARN_}
 
 -- | Use this parameter only when paginating results and only after you receive a response indicating that the results are truncated. Set it to the value of the @Marker@ element in the response that you received to indicate where the next call should start.
 lpvMarker :: Lens' ListPolicyVersions (Maybe Text)
@@ -131,20 +126,23 @@ instance ToQuery ListPolicyVersions where
                "Marker" =: _lpvMarker, "MaxItems" =: _lpvMaxItems,
                "PolicyArn" =: _lpvPolicyARN]
 
--- | Contains the response to a successful 'ListPolicyVersions' request.
+-- | Contains the response to a successful 'ListPolicyVersions' request. 
 --
 --
 --
 -- /See:/ 'listPolicyVersionsResponse' smart constructor.
-data ListPolicyVersionsResponse =
-  ListPolicyVersionsResponse'
-    { _lpvrsVersions       :: !(Maybe [PolicyVersion])
-    , _lpvrsMarker         :: !(Maybe Text)
-    , _lpvrsIsTruncated    :: !(Maybe Bool)
-    , _lpvrsResponseStatus :: !Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data ListPolicyVersionsResponse = ListPolicyVersionsResponse'{_lpvrsVersions
+                                                              ::
+                                                              !(Maybe
+                                                                  [PolicyVersion]),
+                                                              _lpvrsMarker ::
+                                                              !(Maybe Text),
+                                                              _lpvrsIsTruncated
+                                                              :: !(Maybe Bool),
+                                                              _lpvrsResponseStatus
+                                                              :: !Int}
+                                    deriving (Eq, Read, Show, Data, Typeable,
+                                              Generic)
 
 -- | Creates a value of 'ListPolicyVersionsResponse' with the minimum fields required to make a request.
 --
@@ -160,14 +158,12 @@ data ListPolicyVersionsResponse =
 listPolicyVersionsResponse
     :: Int -- ^ 'lpvrsResponseStatus'
     -> ListPolicyVersionsResponse
-listPolicyVersionsResponse pResponseStatus_ =
-  ListPolicyVersionsResponse'
-    { _lpvrsVersions = Nothing
-    , _lpvrsMarker = Nothing
-    , _lpvrsIsTruncated = Nothing
-    , _lpvrsResponseStatus = pResponseStatus_
-    }
-
+listPolicyVersionsResponse pResponseStatus_
+  = ListPolicyVersionsResponse'{_lpvrsVersions =
+                                  Nothing,
+                                _lpvrsMarker = Nothing,
+                                _lpvrsIsTruncated = Nothing,
+                                _lpvrsResponseStatus = pResponseStatus_}
 
 -- | A list of policy versions. For more information about managed policy versions, see <http://docs.aws.amazon.com/IAM/latest/UserGuide/policies-managed-versions.html Versioning for Managed Policies> in the /IAM User Guide/ .
 lpvrsVersions :: Lens' ListPolicyVersionsResponse [PolicyVersion]

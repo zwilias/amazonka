@@ -18,7 +18,7 @@
 -- Stability   : auto-generated
 -- Portability : non-portable (GHC extensions)
 --
--- Checks whether a domain name can be transferred to Amazon Route 53.
+-- Checks whether a domain name can be transferred to Amazon Route 53. 
 --
 --
 module Network.AWS.Route53Domains.CheckDomainTransferability
@@ -43,20 +43,20 @@ import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 import Network.AWS.Route53Domains.Types
-import Network.AWS.Route53Domains.Types.Product
 
 -- | The CheckDomainTransferability request contains the following elements.
 --
 --
 --
 -- /See:/ 'checkDomainTransferability' smart constructor.
-data CheckDomainTransferability =
-  CheckDomainTransferability'
-    { _cdtAuthCode   :: !(Maybe (Sensitive Text))
-    , _cdtDomainName :: !Text
-    }
-  deriving (Eq, Show, Data, Typeable, Generic)
-
+data CheckDomainTransferability = CheckDomainTransferability'{_cdtAuthCode
+                                                              ::
+                                                              !(Maybe
+                                                                  (Sensitive
+                                                                     Text)),
+                                                              _cdtDomainName ::
+                                                              !Text}
+                                    deriving (Eq, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'CheckDomainTransferability' with the minimum fields required to make a request.
 --
@@ -68,10 +68,9 @@ data CheckDomainTransferability =
 checkDomainTransferability
     :: Text -- ^ 'cdtDomainName'
     -> CheckDomainTransferability
-checkDomainTransferability pDomainName_ =
-  CheckDomainTransferability'
-    {_cdtAuthCode = Nothing, _cdtDomainName = pDomainName_}
-
+checkDomainTransferability pDomainName_
+  = CheckDomainTransferability'{_cdtAuthCode = Nothing,
+                                _cdtDomainName = pDomainName_}
 
 -- | If the registrar for the top-level domain (TLD) requires an authorization code to transfer the domain, the code that you got from the current registrar for the domain.
 cdtAuthCode :: Lens' CheckDomainTransferability (Maybe Text)
@@ -123,13 +122,14 @@ instance ToQuery CheckDomainTransferability where
 --
 --
 -- /See:/ 'checkDomainTransferabilityResponse' smart constructor.
-data CheckDomainTransferabilityResponse =
-  CheckDomainTransferabilityResponse'
-    { _cdtrsResponseStatus  :: !Int
-    , _cdtrsTransferability :: !DomainTransferability
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data CheckDomainTransferabilityResponse = CheckDomainTransferabilityResponse'{_cdtrsResponseStatus
+                                                                              ::
+                                                                              !Int,
+                                                                              _cdtrsTransferability
+                                                                              ::
+                                                                              !DomainTransferability}
+                                            deriving (Eq, Read, Show, Data,
+                                                      Typeable, Generic)
 
 -- | Creates a value of 'CheckDomainTransferabilityResponse' with the minimum fields required to make a request.
 --
@@ -142,12 +142,12 @@ checkDomainTransferabilityResponse
     :: Int -- ^ 'cdtrsResponseStatus'
     -> DomainTransferability -- ^ 'cdtrsTransferability'
     -> CheckDomainTransferabilityResponse
-checkDomainTransferabilityResponse pResponseStatus_ pTransferability_ =
-  CheckDomainTransferabilityResponse'
-    { _cdtrsResponseStatus = pResponseStatus_
-    , _cdtrsTransferability = pTransferability_
-    }
-
+checkDomainTransferabilityResponse pResponseStatus_
+  pTransferability_
+  = CheckDomainTransferabilityResponse'{_cdtrsResponseStatus
+                                          = pResponseStatus_,
+                                        _cdtrsTransferability =
+                                          pTransferability_}
 
 -- | -- | The response status code.
 cdtrsResponseStatus :: Lens' CheckDomainTransferabilityResponse Int

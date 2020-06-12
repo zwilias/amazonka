@@ -45,20 +45,16 @@ module Network.AWS.IAM.GetUserPolicy
     ) where
 
 import Network.AWS.IAM.Types
-import Network.AWS.IAM.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 
 -- | /See:/ 'getUserPolicy' smart constructor.
-data GetUserPolicy =
-  GetUserPolicy'
-    { _gupUserName   :: !Text
-    , _gupPolicyName :: !Text
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data GetUserPolicy = GetUserPolicy'{_gupUserName ::
+                                    !Text,
+                                    _gupPolicyName :: !Text}
+                       deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'GetUserPolicy' with the minimum fields required to make a request.
 --
@@ -71,9 +67,9 @@ getUserPolicy
     :: Text -- ^ 'gupUserName'
     -> Text -- ^ 'gupPolicyName'
     -> GetUserPolicy
-getUserPolicy pUserName_ pPolicyName_ =
-  GetUserPolicy' {_gupUserName = pUserName_, _gupPolicyName = pPolicyName_}
-
+getUserPolicy pUserName_ pPolicyName_
+  = GetUserPolicy'{_gupUserName = pUserName_,
+                   _gupPolicyName = pPolicyName_}
 
 -- | The name of the user who the policy is associated with. This parameter allows (per its <http://wikipedia.org/wiki/regex regex pattern> ) a string of characters consisting of upper and lowercase alphanumeric characters with no spaces. You can also include any of the following characters: _+=,.@-
 gupUserName :: Lens' GetUserPolicy Text
@@ -112,20 +108,19 @@ instance ToQuery GetUserPolicy where
                "UserName" =: _gupUserName,
                "PolicyName" =: _gupPolicyName]
 
--- | Contains the response to a successful 'GetUserPolicy' request.
+-- | Contains the response to a successful 'GetUserPolicy' request. 
 --
 --
 --
 -- /See:/ 'getUserPolicyResponse' smart constructor.
-data GetUserPolicyResponse =
-  GetUserPolicyResponse'
-    { _guprsResponseStatus :: !Int
-    , _guprsUserName       :: !Text
-    , _guprsPolicyName     :: !Text
-    , _guprsPolicyDocument :: !Text
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data GetUserPolicyResponse = GetUserPolicyResponse'{_guprsResponseStatus
+                                                    :: !Int,
+                                                    _guprsUserName :: !Text,
+                                                    _guprsPolicyName :: !Text,
+                                                    _guprsPolicyDocument ::
+                                                    !Text}
+                               deriving (Eq, Read, Show, Data, Typeable,
+                                         Generic)
 
 -- | Creates a value of 'GetUserPolicyResponse' with the minimum fields required to make a request.
 --
@@ -144,14 +139,13 @@ getUserPolicyResponse
     -> Text -- ^ 'guprsPolicyName'
     -> Text -- ^ 'guprsPolicyDocument'
     -> GetUserPolicyResponse
-getUserPolicyResponse pResponseStatus_ pUserName_ pPolicyName_ pPolicyDocument_ =
-  GetUserPolicyResponse'
-    { _guprsResponseStatus = pResponseStatus_
-    , _guprsUserName = pUserName_
-    , _guprsPolicyName = pPolicyName_
-    , _guprsPolicyDocument = pPolicyDocument_
-    }
-
+getUserPolicyResponse pResponseStatus_ pUserName_
+  pPolicyName_ pPolicyDocument_
+  = GetUserPolicyResponse'{_guprsResponseStatus =
+                             pResponseStatus_,
+                           _guprsUserName = pUserName_,
+                           _guprsPolicyName = pPolicyName_,
+                           _guprsPolicyDocument = pPolicyDocument_}
 
 -- | -- | The response status code.
 guprsResponseStatus :: Lens' GetUserPolicyResponse Int

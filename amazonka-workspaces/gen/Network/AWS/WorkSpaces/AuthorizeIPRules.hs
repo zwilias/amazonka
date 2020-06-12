@@ -44,16 +44,12 @@ import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 import Network.AWS.WorkSpaces.Types
-import Network.AWS.WorkSpaces.Types.Product
 
 -- | /See:/ 'authorizeIPRules' smart constructor.
-data AuthorizeIPRules =
-  AuthorizeIPRules'
-    { _airGroupId   :: !Text
-    , _airUserRules :: ![IPRuleItem]
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data AuthorizeIPRules = AuthorizeIPRules'{_airGroupId
+                                          :: !Text,
+                                          _airUserRules :: ![IPRuleItem]}
+                          deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'AuthorizeIPRules' with the minimum fields required to make a request.
 --
@@ -65,9 +61,9 @@ data AuthorizeIPRules =
 authorizeIPRules
     :: Text -- ^ 'airGroupId'
     -> AuthorizeIPRules
-authorizeIPRules pGroupId_ =
-  AuthorizeIPRules' {_airGroupId = pGroupId_, _airUserRules = mempty}
-
+authorizeIPRules pGroupId_
+  = AuthorizeIPRules'{_airGroupId = pGroupId_,
+                      _airUserRules = mempty}
 
 -- | The ID of the group.
 airGroupId :: Lens' AuthorizeIPRules Text
@@ -112,12 +108,10 @@ instance ToQuery AuthorizeIPRules where
         toQuery = const mempty
 
 -- | /See:/ 'authorizeIPRulesResponse' smart constructor.
-newtype AuthorizeIPRulesResponse =
-  AuthorizeIPRulesResponse'
-    { _airrsResponseStatus :: Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+newtype AuthorizeIPRulesResponse = AuthorizeIPRulesResponse'{_airrsResponseStatus
+                                                             :: Int}
+                                     deriving (Eq, Read, Show, Data, Typeable,
+                                               Generic)
 
 -- | Creates a value of 'AuthorizeIPRulesResponse' with the minimum fields required to make a request.
 --
@@ -127,9 +121,9 @@ newtype AuthorizeIPRulesResponse =
 authorizeIPRulesResponse
     :: Int -- ^ 'airrsResponseStatus'
     -> AuthorizeIPRulesResponse
-authorizeIPRulesResponse pResponseStatus_ =
-  AuthorizeIPRulesResponse' {_airrsResponseStatus = pResponseStatus_}
-
+authorizeIPRulesResponse pResponseStatus_
+  = AuthorizeIPRulesResponse'{_airrsResponseStatus =
+                                pResponseStatus_}
 
 -- | -- | The response status code.
 airrsResponseStatus :: Lens' AuthorizeIPRulesResponse Int

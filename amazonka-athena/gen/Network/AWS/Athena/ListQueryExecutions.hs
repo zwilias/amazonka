@@ -45,7 +45,6 @@ module Network.AWS.Athena.ListQueryExecutions
     ) where
 
 import Network.AWS.Athena.Types
-import Network.AWS.Athena.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Pager
 import Network.AWS.Prelude
@@ -53,14 +52,11 @@ import Network.AWS.Request
 import Network.AWS.Response
 
 -- | /See:/ 'listQueryExecutions' smart constructor.
-data ListQueryExecutions =
-  ListQueryExecutions'
-    { _lqeNextToken  :: !(Maybe Text)
-    , _lqeWorkGroup  :: !(Maybe Text)
-    , _lqeMaxResults :: !(Maybe Nat)
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data ListQueryExecutions = ListQueryExecutions'{_lqeNextToken
+                                                :: !(Maybe Text),
+                                                _lqeWorkGroup :: !(Maybe Text),
+                                                _lqeMaxResults :: !(Maybe Nat)}
+                             deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'ListQueryExecutions' with the minimum fields required to make a request.
 --
@@ -73,10 +69,9 @@ data ListQueryExecutions =
 -- * 'lqeMaxResults' - The maximum number of query executions to return in this request.
 listQueryExecutions
     :: ListQueryExecutions
-listQueryExecutions =
-  ListQueryExecutions'
-    {_lqeNextToken = Nothing, _lqeWorkGroup = Nothing, _lqeMaxResults = Nothing}
-
+listQueryExecutions
+  = ListQueryExecutions'{_lqeNextToken = Nothing,
+                         _lqeWorkGroup = Nothing, _lqeMaxResults = Nothing}
 
 -- | The token that specifies where to start pagination if a previous request was truncated.
 lqeNextToken :: Lens' ListQueryExecutions (Maybe Text)
@@ -136,14 +131,18 @@ instance ToQuery ListQueryExecutions where
         toQuery = const mempty
 
 -- | /See:/ 'listQueryExecutionsResponse' smart constructor.
-data ListQueryExecutionsResponse =
-  ListQueryExecutionsResponse'
-    { _lqersQueryExecutionIds :: !(Maybe (List1 Text))
-    , _lqersNextToken         :: !(Maybe Text)
-    , _lqersResponseStatus    :: !Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data ListQueryExecutionsResponse = ListQueryExecutionsResponse'{_lqersQueryExecutionIds
+                                                                ::
+                                                                !(Maybe
+                                                                    (List1
+                                                                       Text)),
+                                                                _lqersNextToken
+                                                                ::
+                                                                !(Maybe Text),
+                                                                _lqersResponseStatus
+                                                                :: !Int}
+                                     deriving (Eq, Read, Show, Data, Typeable,
+                                               Generic)
 
 -- | Creates a value of 'ListQueryExecutionsResponse' with the minimum fields required to make a request.
 --
@@ -157,13 +156,11 @@ data ListQueryExecutionsResponse =
 listQueryExecutionsResponse
     :: Int -- ^ 'lqersResponseStatus'
     -> ListQueryExecutionsResponse
-listQueryExecutionsResponse pResponseStatus_ =
-  ListQueryExecutionsResponse'
-    { _lqersQueryExecutionIds = Nothing
-    , _lqersNextToken = Nothing
-    , _lqersResponseStatus = pResponseStatus_
-    }
-
+listQueryExecutionsResponse pResponseStatus_
+  = ListQueryExecutionsResponse'{_lqersQueryExecutionIds
+                                   = Nothing,
+                                 _lqersNextToken = Nothing,
+                                 _lqersResponseStatus = pResponseStatus_}
 
 -- | The unique IDs of each query execution as an array of strings.
 lqersQueryExecutionIds :: Lens' ListQueryExecutionsResponse (Maybe (NonEmpty Text))

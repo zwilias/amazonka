@@ -45,7 +45,6 @@ module Network.AWS.EC2.DescribeLocalGatewayRouteTableVPCAssociations
     ) where
 
 import Network.AWS.EC2.Types
-import Network.AWS.EC2.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Pager
 import Network.AWS.Prelude
@@ -53,16 +52,29 @@ import Network.AWS.Request
 import Network.AWS.Response
 
 -- | /See:/ 'describeLocalGatewayRouteTableVPCAssociations' smart constructor.
-data DescribeLocalGatewayRouteTableVPCAssociations =
-  DescribeLocalGatewayRouteTableVPCAssociations'
-    { _dlgrtvpcaLocalGatewayRouteTableVPCAssociationIds :: !(Maybe [Text])
-    , _dlgrtvpcaFilters                                 :: !(Maybe [Filter])
-    , _dlgrtvpcaNextToken                               :: !(Maybe Text)
-    , _dlgrtvpcaDryRun                                  :: !(Maybe Bool)
-    , _dlgrtvpcaMaxResults                              :: !(Maybe Nat)
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data DescribeLocalGatewayRouteTableVPCAssociations = DescribeLocalGatewayRouteTableVPCAssociations'{_dlgrtvpcaLocalGatewayRouteTableVPCAssociationIds
+                                                                                                    ::
+                                                                                                    !(Maybe
+                                                                                                        [Text]),
+                                                                                                    _dlgrtvpcaFilters
+                                                                                                    ::
+                                                                                                    !(Maybe
+                                                                                                        [Filter]),
+                                                                                                    _dlgrtvpcaNextToken
+                                                                                                    ::
+                                                                                                    !(Maybe
+                                                                                                        Text),
+                                                                                                    _dlgrtvpcaDryRun
+                                                                                                    ::
+                                                                                                    !(Maybe
+                                                                                                        Bool),
+                                                                                                    _dlgrtvpcaMaxResults
+                                                                                                    ::
+                                                                                                    !(Maybe
+                                                                                                        Nat)}
+                                                       deriving (Eq, Read, Show,
+                                                                 Data, Typeable,
+                                                                 Generic)
 
 -- | Creates a value of 'DescribeLocalGatewayRouteTableVPCAssociations' with the minimum fields required to make a request.
 --
@@ -79,15 +91,15 @@ data DescribeLocalGatewayRouteTableVPCAssociations =
 -- * 'dlgrtvpcaMaxResults' - The maximum number of results to return with a single call. To retrieve the remaining results, make another call with the returned @nextToken@ value.
 describeLocalGatewayRouteTableVPCAssociations
     :: DescribeLocalGatewayRouteTableVPCAssociations
-describeLocalGatewayRouteTableVPCAssociations =
-  DescribeLocalGatewayRouteTableVPCAssociations'
-    { _dlgrtvpcaLocalGatewayRouteTableVPCAssociationIds = Nothing
-    , _dlgrtvpcaFilters = Nothing
-    , _dlgrtvpcaNextToken = Nothing
-    , _dlgrtvpcaDryRun = Nothing
-    , _dlgrtvpcaMaxResults = Nothing
-    }
-
+describeLocalGatewayRouteTableVPCAssociations
+  = DescribeLocalGatewayRouteTableVPCAssociations'{_dlgrtvpcaLocalGatewayRouteTableVPCAssociationIds
+                                                     = Nothing,
+                                                   _dlgrtvpcaFilters = Nothing,
+                                                   _dlgrtvpcaNextToken =
+                                                     Nothing,
+                                                   _dlgrtvpcaDryRun = Nothing,
+                                                   _dlgrtvpcaMaxResults =
+                                                     Nothing}
 
 -- | The IDs of the associations.
 dlgrtvpcaLocalGatewayRouteTableVPCAssociationIds :: Lens' DescribeLocalGatewayRouteTableVPCAssociations [Text]
@@ -178,14 +190,23 @@ instance ToQuery
                "MaxResults" =: _dlgrtvpcaMaxResults]
 
 -- | /See:/ 'describeLocalGatewayRouteTableVPCAssociationsResponse' smart constructor.
-data DescribeLocalGatewayRouteTableVPCAssociationsResponse =
-  DescribeLocalGatewayRouteTableVPCAssociationsResponse'
-    { _dlgrtvpcarsLocalGatewayRouteTableVPCAssociations :: !(Maybe [LocalGatewayRouteTableVPCAssociation])
-    , _dlgrtvpcarsNextToken :: !(Maybe Text)
-    , _dlgrtvpcarsResponseStatus :: !Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data DescribeLocalGatewayRouteTableVPCAssociationsResponse = DescribeLocalGatewayRouteTableVPCAssociationsResponse'{_dlgrtvpcarsLocalGatewayRouteTableVPCAssociations
+                                                                                                                    ::
+                                                                                                                    !(Maybe
+                                                                                                                        [LocalGatewayRouteTableVPCAssociation]),
+                                                                                                                    _dlgrtvpcarsNextToken
+                                                                                                                    ::
+                                                                                                                    !(Maybe
+                                                                                                                        Text),
+                                                                                                                    _dlgrtvpcarsResponseStatus
+                                                                                                                    ::
+                                                                                                                    !Int}
+                                                               deriving (Eq,
+                                                                         Read,
+                                                                         Show,
+                                                                         Data,
+                                                                         Typeable,
+                                                                         Generic)
 
 -- | Creates a value of 'DescribeLocalGatewayRouteTableVPCAssociationsResponse' with the minimum fields required to make a request.
 --
@@ -199,13 +220,14 @@ data DescribeLocalGatewayRouteTableVPCAssociationsResponse =
 describeLocalGatewayRouteTableVPCAssociationsResponse
     :: Int -- ^ 'dlgrtvpcarsResponseStatus'
     -> DescribeLocalGatewayRouteTableVPCAssociationsResponse
-describeLocalGatewayRouteTableVPCAssociationsResponse pResponseStatus_ =
-  DescribeLocalGatewayRouteTableVPCAssociationsResponse'
-    { _dlgrtvpcarsLocalGatewayRouteTableVPCAssociations = Nothing
-    , _dlgrtvpcarsNextToken = Nothing
-    , _dlgrtvpcarsResponseStatus = pResponseStatus_
-    }
-
+describeLocalGatewayRouteTableVPCAssociationsResponse
+  pResponseStatus_
+  = DescribeLocalGatewayRouteTableVPCAssociationsResponse'{_dlgrtvpcarsLocalGatewayRouteTableVPCAssociations
+                                                             = Nothing,
+                                                           _dlgrtvpcarsNextToken
+                                                             = Nothing,
+                                                           _dlgrtvpcarsResponseStatus
+                                                             = pResponseStatus_}
 
 -- | Information about the associations.
 dlgrtvpcarsLocalGatewayRouteTableVPCAssociations :: Lens' DescribeLocalGatewayRouteTableVPCAssociationsResponse [LocalGatewayRouteTableVPCAssociation]

@@ -43,19 +43,15 @@ module Network.AWS.EC2.ReleaseHosts
     ) where
 
 import Network.AWS.EC2.Types
-import Network.AWS.EC2.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 
 -- | /See:/ 'releaseHosts' smart constructor.
-newtype ReleaseHosts =
-  ReleaseHosts'
-    { _rhHostIds :: [Text]
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+newtype ReleaseHosts = ReleaseHosts'{_rhHostIds ::
+                                     [Text]}
+                         deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'ReleaseHosts' with the minimum fields required to make a request.
 --
@@ -64,8 +60,7 @@ newtype ReleaseHosts =
 -- * 'rhHostIds' - The IDs of the Dedicated Hosts to release.
 releaseHosts
     :: ReleaseHosts
-releaseHosts = ReleaseHosts' {_rhHostIds = mempty}
-
+releaseHosts = ReleaseHosts'{_rhHostIds = mempty}
 
 -- | The IDs of the Dedicated Hosts to release.
 rhHostIds :: Lens' ReleaseHosts [Text]
@@ -103,14 +98,13 @@ instance ToQuery ReleaseHosts where
                toQueryList "HostId" _rhHostIds]
 
 -- | /See:/ 'releaseHostsResponse' smart constructor.
-data ReleaseHostsResponse =
-  ReleaseHostsResponse'
-    { _rhrsUnsuccessful   :: !(Maybe [UnsuccessfulItem])
-    , _rhrsSuccessful     :: !(Maybe [Text])
-    , _rhrsResponseStatus :: !Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data ReleaseHostsResponse = ReleaseHostsResponse'{_rhrsUnsuccessful
+                                                  ::
+                                                  !(Maybe [UnsuccessfulItem]),
+                                                  _rhrsSuccessful ::
+                                                  !(Maybe [Text]),
+                                                  _rhrsResponseStatus :: !Int}
+                              deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'ReleaseHostsResponse' with the minimum fields required to make a request.
 --
@@ -124,13 +118,10 @@ data ReleaseHostsResponse =
 releaseHostsResponse
     :: Int -- ^ 'rhrsResponseStatus'
     -> ReleaseHostsResponse
-releaseHostsResponse pResponseStatus_ =
-  ReleaseHostsResponse'
-    { _rhrsUnsuccessful = Nothing
-    , _rhrsSuccessful = Nothing
-    , _rhrsResponseStatus = pResponseStatus_
-    }
-
+releaseHostsResponse pResponseStatus_
+  = ReleaseHostsResponse'{_rhrsUnsuccessful = Nothing,
+                          _rhrsSuccessful = Nothing,
+                          _rhrsResponseStatus = pResponseStatus_}
 
 -- | The IDs of the Dedicated Hosts that could not be released, including an error message.
 rhrsUnsuccessful :: Lens' ReleaseHostsResponse [UnsuccessfulItem]

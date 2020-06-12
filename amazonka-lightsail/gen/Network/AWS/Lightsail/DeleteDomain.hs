@@ -39,18 +39,14 @@ module Network.AWS.Lightsail.DeleteDomain
 
 import Network.AWS.Lens
 import Network.AWS.Lightsail.Types
-import Network.AWS.Lightsail.Types.Product
 import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 
 -- | /See:/ 'deleteDomain' smart constructor.
-newtype DeleteDomain =
-  DeleteDomain'
-    { _ddDomainName :: Text
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+newtype DeleteDomain = DeleteDomain'{_ddDomainName ::
+                                     Text}
+                         deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'DeleteDomain' with the minimum fields required to make a request.
 --
@@ -60,8 +56,8 @@ newtype DeleteDomain =
 deleteDomain
     :: Text -- ^ 'ddDomainName'
     -> DeleteDomain
-deleteDomain pDomainName_ = DeleteDomain' {_ddDomainName = pDomainName_}
-
+deleteDomain pDomainName_
+  = DeleteDomain'{_ddDomainName = pDomainName_}
 
 -- | The specific domain name to delete.
 ddDomainName :: Lens' DeleteDomain Text
@@ -101,13 +97,10 @@ instance ToQuery DeleteDomain where
         toQuery = const mempty
 
 -- | /See:/ 'deleteDomainResponse' smart constructor.
-data DeleteDomainResponse =
-  DeleteDomainResponse'
-    { _delrsOperation      :: !(Maybe Operation)
-    , _delrsResponseStatus :: !Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data DeleteDomainResponse = DeleteDomainResponse'{_delrsOperation
+                                                  :: !(Maybe Operation),
+                                                  _delrsResponseStatus :: !Int}
+                              deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'DeleteDomainResponse' with the minimum fields required to make a request.
 --
@@ -119,10 +112,9 @@ data DeleteDomainResponse =
 deleteDomainResponse
     :: Int -- ^ 'delrsResponseStatus'
     -> DeleteDomainResponse
-deleteDomainResponse pResponseStatus_ =
-  DeleteDomainResponse'
-    {_delrsOperation = Nothing, _delrsResponseStatus = pResponseStatus_}
-
+deleteDomainResponse pResponseStatus_
+  = DeleteDomainResponse'{_delrsOperation = Nothing,
+                          _delrsResponseStatus = pResponseStatus_}
 
 -- | An array of key-value pairs containing information about the results of your delete domain request.
 delrsOperation :: Lens' DeleteDomainResponse (Maybe Operation)

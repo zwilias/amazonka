@@ -41,7 +41,6 @@ module Network.AWS.EC2.CancelSpotInstanceRequests
     ) where
 
 import Network.AWS.EC2.Types
-import Network.AWS.EC2.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.Request
@@ -52,13 +51,12 @@ import Network.AWS.Response
 --
 --
 -- /See:/ 'cancelSpotInstanceRequests' smart constructor.
-data CancelSpotInstanceRequests =
-  CancelSpotInstanceRequests'
-    { _csirDryRun                 :: !(Maybe Bool)
-    , _csirSpotInstanceRequestIds :: ![Text]
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data CancelSpotInstanceRequests = CancelSpotInstanceRequests'{_csirDryRun
+                                                              :: !(Maybe Bool),
+                                                              _csirSpotInstanceRequestIds
+                                                              :: ![Text]}
+                                    deriving (Eq, Read, Show, Data, Typeable,
+                                              Generic)
 
 -- | Creates a value of 'CancelSpotInstanceRequests' with the minimum fields required to make a request.
 --
@@ -69,10 +67,9 @@ data CancelSpotInstanceRequests =
 -- * 'csirSpotInstanceRequestIds' - One or more Spot Instance request IDs.
 cancelSpotInstanceRequests
     :: CancelSpotInstanceRequests
-cancelSpotInstanceRequests =
-  CancelSpotInstanceRequests'
-    {_csirDryRun = Nothing, _csirSpotInstanceRequestIds = mempty}
-
+cancelSpotInstanceRequests
+  = CancelSpotInstanceRequests'{_csirDryRun = Nothing,
+                                _csirSpotInstanceRequestIds = mempty}
 
 -- | Checks whether you have the required permissions for the action, without actually making the request, and provides an error response. If you have the required permissions, the error response is @DryRunOperation@ . Otherwise, it is @UnauthorizedOperation@ .
 csirDryRun :: Lens' CancelSpotInstanceRequests (Maybe Bool)
@@ -119,13 +116,15 @@ instance ToQuery CancelSpotInstanceRequests where
 --
 --
 -- /See:/ 'cancelSpotInstanceRequestsResponse' smart constructor.
-data CancelSpotInstanceRequestsResponse =
-  CancelSpotInstanceRequestsResponse'
-    { _csirrsCancelledSpotInstanceRequests :: !(Maybe [CancelledSpotInstanceRequest])
-    , _csirrsResponseStatus :: !Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data CancelSpotInstanceRequestsResponse = CancelSpotInstanceRequestsResponse'{_csirrsCancelledSpotInstanceRequests
+                                                                              ::
+                                                                              !(Maybe
+                                                                                  [CancelledSpotInstanceRequest]),
+                                                                              _csirrsResponseStatus
+                                                                              ::
+                                                                              !Int}
+                                            deriving (Eq, Read, Show, Data,
+                                                      Typeable, Generic)
 
 -- | Creates a value of 'CancelSpotInstanceRequestsResponse' with the minimum fields required to make a request.
 --
@@ -137,12 +136,11 @@ data CancelSpotInstanceRequestsResponse =
 cancelSpotInstanceRequestsResponse
     :: Int -- ^ 'csirrsResponseStatus'
     -> CancelSpotInstanceRequestsResponse
-cancelSpotInstanceRequestsResponse pResponseStatus_ =
-  CancelSpotInstanceRequestsResponse'
-    { _csirrsCancelledSpotInstanceRequests = Nothing
-    , _csirrsResponseStatus = pResponseStatus_
-    }
-
+cancelSpotInstanceRequestsResponse pResponseStatus_
+  = CancelSpotInstanceRequestsResponse'{_csirrsCancelledSpotInstanceRequests
+                                          = Nothing,
+                                        _csirrsResponseStatus =
+                                          pResponseStatus_}
 
 -- | One or more Spot Instance requests.
 csirrsCancelledSpotInstanceRequests :: Lens' CancelSpotInstanceRequestsResponse [CancelledSpotInstanceRequest]

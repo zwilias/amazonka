@@ -61,20 +61,15 @@ import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 import Network.AWS.S3.Types
-import Network.AWS.S3.Types.Product
 
 -- | /See:/ 'listParts' smart constructor.
-data ListParts =
-  ListParts'
-    { _lpMaxParts         :: !(Maybe Int)
-    , _lpRequestPayer     :: !(Maybe RequestPayer)
-    , _lpPartNumberMarker :: !(Maybe Int)
-    , _lpBucket           :: !BucketName
-    , _lpKey              :: !ObjectKey
-    , _lpUploadId         :: !Text
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data ListParts = ListParts'{_lpMaxParts ::
+                            !(Maybe Int),
+                            _lpRequestPayer :: !(Maybe RequestPayer),
+                            _lpPartNumberMarker :: !(Maybe Int),
+                            _lpBucket :: !BucketName, _lpKey :: !ObjectKey,
+                            _lpUploadId :: !Text}
+                   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'ListParts' with the minimum fields required to make a request.
 --
@@ -96,16 +91,11 @@ listParts
     -> ObjectKey -- ^ 'lpKey'
     -> Text -- ^ 'lpUploadId'
     -> ListParts
-listParts pBucket_ pKey_ pUploadId_ =
-  ListParts'
-    { _lpMaxParts = Nothing
-    , _lpRequestPayer = Nothing
-    , _lpPartNumberMarker = Nothing
-    , _lpBucket = pBucket_
-    , _lpKey = pKey_
-    , _lpUploadId = pUploadId_
-    }
-
+listParts pBucket_ pKey_ pUploadId_
+  = ListParts'{_lpMaxParts = Nothing,
+               _lpRequestPayer = Nothing,
+               _lpPartNumberMarker = Nothing, _lpBucket = pBucket_,
+               _lpKey = pKey_, _lpUploadId = pUploadId_}
 
 -- | Sets the maximum number of parts to return.
 lpMaxParts :: Lens' ListParts (Maybe Int)
@@ -183,26 +173,28 @@ instance ToQuery ListParts where
                "uploadId" =: _lpUploadId]
 
 -- | /See:/ 'listPartsResponse' smart constructor.
-data ListPartsResponse =
-  ListPartsResponse'
-    { _lprsParts                :: !(Maybe [Part])
-    , _lprsRequestCharged       :: !(Maybe RequestCharged)
-    , _lprsMaxParts             :: !(Maybe Int)
-    , _lprsInitiator            :: !(Maybe Initiator)
-    , _lprsBucket               :: !(Maybe BucketName)
-    , _lprsAbortDate            :: !(Maybe RFC822)
-    , _lprsNextPartNumberMarker :: !(Maybe Int)
-    , _lprsAbortRuleId          :: !(Maybe Text)
-    , _lprsOwner                :: !(Maybe Owner)
-    , _lprsKey                  :: !(Maybe ObjectKey)
-    , _lprsStorageClass         :: !(Maybe StorageClass)
-    , _lprsIsTruncated          :: !(Maybe Bool)
-    , _lprsPartNumberMarker     :: !(Maybe Int)
-    , _lprsUploadId             :: !(Maybe Text)
-    , _lprsResponseStatus       :: !Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data ListPartsResponse = ListPartsResponse'{_lprsParts
+                                            :: !(Maybe [Part]),
+                                            _lprsRequestCharged ::
+                                            !(Maybe RequestCharged),
+                                            _lprsMaxParts :: !(Maybe Int),
+                                            _lprsInitiator ::
+                                            !(Maybe Initiator),
+                                            _lprsBucket :: !(Maybe BucketName),
+                                            _lprsAbortDate :: !(Maybe RFC822),
+                                            _lprsNextPartNumberMarker ::
+                                            !(Maybe Int),
+                                            _lprsAbortRuleId :: !(Maybe Text),
+                                            _lprsOwner :: !(Maybe Owner),
+                                            _lprsKey :: !(Maybe ObjectKey),
+                                            _lprsStorageClass ::
+                                            !(Maybe StorageClass),
+                                            _lprsIsTruncated :: !(Maybe Bool),
+                                            _lprsPartNumberMarker ::
+                                            !(Maybe Int),
+                                            _lprsUploadId :: !(Maybe Text),
+                                            _lprsResponseStatus :: !Int}
+                           deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'ListPartsResponse' with the minimum fields required to make a request.
 --
@@ -240,25 +232,18 @@ data ListPartsResponse =
 listPartsResponse
     :: Int -- ^ 'lprsResponseStatus'
     -> ListPartsResponse
-listPartsResponse pResponseStatus_ =
-  ListPartsResponse'
-    { _lprsParts = Nothing
-    , _lprsRequestCharged = Nothing
-    , _lprsMaxParts = Nothing
-    , _lprsInitiator = Nothing
-    , _lprsBucket = Nothing
-    , _lprsAbortDate = Nothing
-    , _lprsNextPartNumberMarker = Nothing
-    , _lprsAbortRuleId = Nothing
-    , _lprsOwner = Nothing
-    , _lprsKey = Nothing
-    , _lprsStorageClass = Nothing
-    , _lprsIsTruncated = Nothing
-    , _lprsPartNumberMarker = Nothing
-    , _lprsUploadId = Nothing
-    , _lprsResponseStatus = pResponseStatus_
-    }
-
+listPartsResponse pResponseStatus_
+  = ListPartsResponse'{_lprsParts = Nothing,
+                       _lprsRequestCharged = Nothing,
+                       _lprsMaxParts = Nothing, _lprsInitiator = Nothing,
+                       _lprsBucket = Nothing, _lprsAbortDate = Nothing,
+                       _lprsNextPartNumberMarker = Nothing,
+                       _lprsAbortRuleId = Nothing, _lprsOwner = Nothing,
+                       _lprsKey = Nothing, _lprsStorageClass = Nothing,
+                       _lprsIsTruncated = Nothing,
+                       _lprsPartNumberMarker = Nothing,
+                       _lprsUploadId = Nothing,
+                       _lprsResponseStatus = pResponseStatus_}
 
 -- | Undocumented member.
 lprsParts :: Lens' ListPartsResponse [Part]

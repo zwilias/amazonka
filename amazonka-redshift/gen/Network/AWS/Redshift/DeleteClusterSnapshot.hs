@@ -18,7 +18,7 @@
 -- Stability   : auto-generated
 -- Portability : non-portable (GHC extensions)
 --
--- Deletes the specified manual snapshot. The snapshot must be in the @available@ state, with no other users authorized to access the snapshot.
+-- Deletes the specified manual snapshot. The snapshot must be in the @available@ state, with no other users authorized to access the snapshot. 
 --
 --
 -- Unlike automated snapshots, manual snapshots are retained even after you delete your cluster. Amazon Redshift does not delete your manual snapshots. You must delete manual snapshot explicitly to avoid getting charged. If other accounts are authorized to access the snapshot, you must revoke all of the authorizations before you can delete the snapshot.
@@ -43,22 +43,20 @@ module Network.AWS.Redshift.DeleteClusterSnapshot
 import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.Redshift.Types
-import Network.AWS.Redshift.Types.Product
 import Network.AWS.Request
 import Network.AWS.Response
 
--- |
+-- | 
 --
 --
 --
 -- /See:/ 'deleteClusterSnapshot' smart constructor.
-data DeleteClusterSnapshot =
-  DeleteClusterSnapshot'
-    { _dcsSnapshotClusterIdentifier :: !(Maybe Text)
-    , _dcsSnapshotIdentifier        :: !Text
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data DeleteClusterSnapshot = DeleteClusterSnapshot'{_dcsSnapshotClusterIdentifier
+                                                    :: !(Maybe Text),
+                                                    _dcsSnapshotIdentifier ::
+                                                    !Text}
+                               deriving (Eq, Read, Show, Data, Typeable,
+                                         Generic)
 
 -- | Creates a value of 'DeleteClusterSnapshot' with the minimum fields required to make a request.
 --
@@ -70,12 +68,10 @@ data DeleteClusterSnapshot =
 deleteClusterSnapshot
     :: Text -- ^ 'dcsSnapshotIdentifier'
     -> DeleteClusterSnapshot
-deleteClusterSnapshot pSnapshotIdentifier_ =
-  DeleteClusterSnapshot'
-    { _dcsSnapshotClusterIdentifier = Nothing
-    , _dcsSnapshotIdentifier = pSnapshotIdentifier_
-    }
-
+deleteClusterSnapshot pSnapshotIdentifier_
+  = DeleteClusterSnapshot'{_dcsSnapshotClusterIdentifier
+                             = Nothing,
+                           _dcsSnapshotIdentifier = pSnapshotIdentifier_}
 
 -- | The unique identifier of the cluster the snapshot was created from. This parameter is required if your IAM user has a policy containing a snapshot resource element that specifies anything other than * for the cluster name. Constraints: Must be the name of valid cluster.
 dcsSnapshotClusterIdentifier :: Lens' DeleteClusterSnapshot (Maybe Text)
@@ -115,13 +111,14 @@ instance ToQuery DeleteClusterSnapshot where
                "SnapshotIdentifier" =: _dcsSnapshotIdentifier]
 
 -- | /See:/ 'deleteClusterSnapshotResponse' smart constructor.
-data DeleteClusterSnapshotResponse =
-  DeleteClusterSnapshotResponse'
-    { _dcsrsSnapshot       :: !(Maybe Snapshot)
-    , _dcsrsResponseStatus :: !Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data DeleteClusterSnapshotResponse = DeleteClusterSnapshotResponse'{_dcsrsSnapshot
+                                                                    ::
+                                                                    !(Maybe
+                                                                        Snapshot),
+                                                                    _dcsrsResponseStatus
+                                                                    :: !Int}
+                                       deriving (Eq, Read, Show, Data, Typeable,
+                                                 Generic)
 
 -- | Creates a value of 'DeleteClusterSnapshotResponse' with the minimum fields required to make a request.
 --
@@ -133,10 +130,10 @@ data DeleteClusterSnapshotResponse =
 deleteClusterSnapshotResponse
     :: Int -- ^ 'dcsrsResponseStatus'
     -> DeleteClusterSnapshotResponse
-deleteClusterSnapshotResponse pResponseStatus_ =
-  DeleteClusterSnapshotResponse'
-    {_dcsrsSnapshot = Nothing, _dcsrsResponseStatus = pResponseStatus_}
-
+deleteClusterSnapshotResponse pResponseStatus_
+  = DeleteClusterSnapshotResponse'{_dcsrsSnapshot =
+                                     Nothing,
+                                   _dcsrsResponseStatus = pResponseStatus_}
 
 -- | Undocumented member.
 dcsrsSnapshot :: Lens' DeleteClusterSnapshotResponse (Maybe Snapshot)

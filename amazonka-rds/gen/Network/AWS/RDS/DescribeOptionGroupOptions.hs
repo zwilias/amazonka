@@ -48,25 +48,27 @@ import Network.AWS.Lens
 import Network.AWS.Pager
 import Network.AWS.Prelude
 import Network.AWS.RDS.Types
-import Network.AWS.RDS.Types.Product
 import Network.AWS.Request
 import Network.AWS.Response
 
--- |
+-- | 
 --
 --
 --
 -- /See:/ 'describeOptionGroupOptions' smart constructor.
-data DescribeOptionGroupOptions =
-  DescribeOptionGroupOptions'
-    { _dogoFilters            :: !(Maybe [Filter])
-    , _dogoMajorEngineVersion :: !(Maybe Text)
-    , _dogoMarker             :: !(Maybe Text)
-    , _dogoMaxRecords         :: !(Maybe Int)
-    , _dogoEngineName         :: !Text
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data DescribeOptionGroupOptions = DescribeOptionGroupOptions'{_dogoFilters
+                                                              ::
+                                                              !(Maybe [Filter]),
+                                                              _dogoMajorEngineVersion
+                                                              :: !(Maybe Text),
+                                                              _dogoMarker ::
+                                                              !(Maybe Text),
+                                                              _dogoMaxRecords ::
+                                                              !(Maybe Int),
+                                                              _dogoEngineName ::
+                                                              !Text}
+                                    deriving (Eq, Read, Show, Data, Typeable,
+                                              Generic)
 
 -- | Creates a value of 'DescribeOptionGroupOptions' with the minimum fields required to make a request.
 --
@@ -84,15 +86,12 @@ data DescribeOptionGroupOptions =
 describeOptionGroupOptions
     :: Text -- ^ 'dogoEngineName'
     -> DescribeOptionGroupOptions
-describeOptionGroupOptions pEngineName_ =
-  DescribeOptionGroupOptions'
-    { _dogoFilters = Nothing
-    , _dogoMajorEngineVersion = Nothing
-    , _dogoMarker = Nothing
-    , _dogoMaxRecords = Nothing
-    , _dogoEngineName = pEngineName_
-    }
-
+describeOptionGroupOptions pEngineName_
+  = DescribeOptionGroupOptions'{_dogoFilters = Nothing,
+                                _dogoMajorEngineVersion = Nothing,
+                                _dogoMarker = Nothing,
+                                _dogoMaxRecords = Nothing,
+                                _dogoEngineName = pEngineName_}
 
 -- | This parameter is not currently supported.
 dogoFilters :: Lens' DescribeOptionGroupOptions [Filter]
@@ -158,19 +157,24 @@ instance ToQuery DescribeOptionGroupOptions where
                "MaxRecords" =: _dogoMaxRecords,
                "EngineName" =: _dogoEngineName]
 
--- |
+-- | 
 --
 --
 --
 -- /See:/ 'describeOptionGroupOptionsResponse' smart constructor.
-data DescribeOptionGroupOptionsResponse =
-  DescribeOptionGroupOptionsResponse'
-    { _dogorsOptionGroupOptions :: !(Maybe [OptionGroupOption])
-    , _dogorsMarker             :: !(Maybe Text)
-    , _dogorsResponseStatus     :: !Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data DescribeOptionGroupOptionsResponse = DescribeOptionGroupOptionsResponse'{_dogorsOptionGroupOptions
+                                                                              ::
+                                                                              !(Maybe
+                                                                                  [OptionGroupOption]),
+                                                                              _dogorsMarker
+                                                                              ::
+                                                                              !(Maybe
+                                                                                  Text),
+                                                                              _dogorsResponseStatus
+                                                                              ::
+                                                                              !Int}
+                                            deriving (Eq, Read, Show, Data,
+                                                      Typeable, Generic)
 
 -- | Creates a value of 'DescribeOptionGroupOptionsResponse' with the minimum fields required to make a request.
 --
@@ -184,13 +188,12 @@ data DescribeOptionGroupOptionsResponse =
 describeOptionGroupOptionsResponse
     :: Int -- ^ 'dogorsResponseStatus'
     -> DescribeOptionGroupOptionsResponse
-describeOptionGroupOptionsResponse pResponseStatus_ =
-  DescribeOptionGroupOptionsResponse'
-    { _dogorsOptionGroupOptions = Nothing
-    , _dogorsMarker = Nothing
-    , _dogorsResponseStatus = pResponseStatus_
-    }
-
+describeOptionGroupOptionsResponse pResponseStatus_
+  = DescribeOptionGroupOptionsResponse'{_dogorsOptionGroupOptions
+                                          = Nothing,
+                                        _dogorsMarker = Nothing,
+                                        _dogorsResponseStatus =
+                                          pResponseStatus_}
 
 -- | Undocumented member.
 dogorsOptionGroupOptions :: Lens' DescribeOptionGroupOptionsResponse [OptionGroupOption]

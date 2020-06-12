@@ -42,21 +42,18 @@ module Network.AWS.CodeBuild.CreateWebhook
     ) where
 
 import Network.AWS.CodeBuild.Types
-import Network.AWS.CodeBuild.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 
 -- | /See:/ 'createWebhook' smart constructor.
-data CreateWebhook =
-  CreateWebhook'
-    { _cwBranchFilter :: !(Maybe Text)
-    , _cwFilterGroups :: !(Maybe [[WebhookFilter]])
-    , _cwProjectName  :: !Text
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data CreateWebhook = CreateWebhook'{_cwBranchFilter
+                                    :: !(Maybe Text),
+                                    _cwFilterGroups ::
+                                    !(Maybe [[WebhookFilter]]),
+                                    _cwProjectName :: !Text}
+                       deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'CreateWebhook' with the minimum fields required to make a request.
 --
@@ -64,25 +61,22 @@ data CreateWebhook =
 --
 -- * 'cwBranchFilter' - A regular expression used to determine which repository branches are built when a webhook is triggered. If the name of a branch matches the regular expression, then it is built. If @branchFilter@ is empty, then all branches are built.
 --
--- * 'cwFilterGroups' - An array of arrays of @WebhookFilter@ objects used to determine which webhooks are triggered. At least one @WebhookFilter@ in the array must specify @EVENT@ as its @type@ .  For a build to be triggered, at least one filter group in the @filterGroups@ array must pass. For a filter group to pass, each of its filters must pass.
+-- * 'cwFilterGroups' - An array of arrays of @WebhookFilter@ objects used to determine which webhooks are triggered. At least one @WebhookFilter@ in the array must specify @EVENT@ as its @type@ .  For a build to be triggered, at least one filter group in the @filterGroups@ array must pass. For a filter group to pass, each of its filters must pass. 
 --
 -- * 'cwProjectName' - The name of the AWS CodeBuild project.
 createWebhook
     :: Text -- ^ 'cwProjectName'
     -> CreateWebhook
-createWebhook pProjectName_ =
-  CreateWebhook'
-    { _cwBranchFilter = Nothing
-    , _cwFilterGroups = Nothing
-    , _cwProjectName = pProjectName_
-    }
-
+createWebhook pProjectName_
+  = CreateWebhook'{_cwBranchFilter = Nothing,
+                   _cwFilterGroups = Nothing,
+                   _cwProjectName = pProjectName_}
 
 -- | A regular expression used to determine which repository branches are built when a webhook is triggered. If the name of a branch matches the regular expression, then it is built. If @branchFilter@ is empty, then all branches are built.
 cwBranchFilter :: Lens' CreateWebhook (Maybe Text)
 cwBranchFilter = lens _cwBranchFilter (\ s a -> s{_cwBranchFilter = a})
 
--- | An array of arrays of @WebhookFilter@ objects used to determine which webhooks are triggered. At least one @WebhookFilter@ in the array must specify @EVENT@ as its @type@ .  For a build to be triggered, at least one filter group in the @filterGroups@ array must pass. For a filter group to pass, each of its filters must pass.
+-- | An array of arrays of @WebhookFilter@ objects used to determine which webhooks are triggered. At least one @WebhookFilter@ in the array must specify @EVENT@ as its @type@ .  For a build to be triggered, at least one filter group in the @filterGroups@ array must pass. For a filter group to pass, each of its filters must pass. 
 cwFilterGroups :: Lens' CreateWebhook [[WebhookFilter]]
 cwFilterGroups = lens _cwFilterGroups (\ s a -> s{_cwFilterGroups = a}) . _Default . _Coerce
 
@@ -127,13 +121,11 @@ instance ToQuery CreateWebhook where
         toQuery = const mempty
 
 -- | /See:/ 'createWebhookResponse' smart constructor.
-data CreateWebhookResponse =
-  CreateWebhookResponse'
-    { _cwrsWebhook        :: !(Maybe Webhook)
-    , _cwrsResponseStatus :: !Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data CreateWebhookResponse = CreateWebhookResponse'{_cwrsWebhook
+                                                    :: !(Maybe Webhook),
+                                                    _cwrsResponseStatus :: !Int}
+                               deriving (Eq, Read, Show, Data, Typeable,
+                                         Generic)
 
 -- | Creates a value of 'CreateWebhookResponse' with the minimum fields required to make a request.
 --
@@ -145,10 +137,9 @@ data CreateWebhookResponse =
 createWebhookResponse
     :: Int -- ^ 'cwrsResponseStatus'
     -> CreateWebhookResponse
-createWebhookResponse pResponseStatus_ =
-  CreateWebhookResponse'
-    {_cwrsWebhook = Nothing, _cwrsResponseStatus = pResponseStatus_}
-
+createWebhookResponse pResponseStatus_
+  = CreateWebhookResponse'{_cwrsWebhook = Nothing,
+                           _cwrsResponseStatus = pResponseStatus_}
 
 -- | Information about a webhook that connects repository events to a build project in AWS CodeBuild.
 cwrsWebhook :: Lens' CreateWebhookResponse (Maybe Webhook)

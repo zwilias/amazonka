@@ -44,20 +44,19 @@ module Network.AWS.DynamoDB.DescribeContributorInsights
     ) where
 
 import Network.AWS.DynamoDB.Types
-import Network.AWS.DynamoDB.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 
 -- | /See:/ 'describeContributorInsights' smart constructor.
-data DescribeContributorInsights =
-  DescribeContributorInsights'
-    { _dciIndexName :: !(Maybe Text)
-    , _dciTableName :: !Text
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data DescribeContributorInsights = DescribeContributorInsights'{_dciIndexName
+                                                                ::
+                                                                !(Maybe Text),
+                                                                _dciTableName ::
+                                                                !Text}
+                                     deriving (Eq, Read, Show, Data, Typeable,
+                                               Generic)
 
 -- | Creates a value of 'DescribeContributorInsights' with the minimum fields required to make a request.
 --
@@ -69,10 +68,10 @@ data DescribeContributorInsights =
 describeContributorInsights
     :: Text -- ^ 'dciTableName'
     -> DescribeContributorInsights
-describeContributorInsights pTableName_ =
-  DescribeContributorInsights'
-    {_dciIndexName = Nothing, _dciTableName = pTableName_}
-
+describeContributorInsights pTableName_
+  = DescribeContributorInsights'{_dciIndexName =
+                                   Nothing,
+                                 _dciTableName = pTableName_}
 
 -- | The name of the global secondary index to describe, if applicable.
 dciIndexName :: Lens' DescribeContributorInsights (Maybe Text)
@@ -126,18 +125,35 @@ instance ToQuery DescribeContributorInsights where
         toQuery = const mempty
 
 -- | /See:/ 'describeContributorInsightsResponse' smart constructor.
-data DescribeContributorInsightsResponse =
-  DescribeContributorInsightsResponse'
-    { _dcirsContributorInsightsRuleList :: !(Maybe [Text])
-    , _dcirsFailureException            :: !(Maybe FailureException)
-    , _dcirsContributorInsightsStatus   :: !(Maybe ContributorInsightsStatus)
-    , _dcirsLastUpdateDateTime          :: !(Maybe POSIX)
-    , _dcirsTableName                   :: !(Maybe Text)
-    , _dcirsIndexName                   :: !(Maybe Text)
-    , _dcirsResponseStatus              :: !Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data DescribeContributorInsightsResponse = DescribeContributorInsightsResponse'{_dcirsContributorInsightsRuleList
+                                                                                ::
+                                                                                !(Maybe
+                                                                                    [Text]),
+                                                                                _dcirsFailureException
+                                                                                ::
+                                                                                !(Maybe
+                                                                                    FailureException),
+                                                                                _dcirsContributorInsightsStatus
+                                                                                ::
+                                                                                !(Maybe
+                                                                                    ContributorInsightsStatus),
+                                                                                _dcirsLastUpdateDateTime
+                                                                                ::
+                                                                                !(Maybe
+                                                                                    POSIX),
+                                                                                _dcirsTableName
+                                                                                ::
+                                                                                !(Maybe
+                                                                                    Text),
+                                                                                _dcirsIndexName
+                                                                                ::
+                                                                                !(Maybe
+                                                                                    Text),
+                                                                                _dcirsResponseStatus
+                                                                                ::
+                                                                                !Int}
+                                             deriving (Eq, Read, Show, Data,
+                                                       Typeable, Generic)
 
 -- | Creates a value of 'DescribeContributorInsightsResponse' with the minimum fields required to make a request.
 --
@@ -159,17 +175,17 @@ data DescribeContributorInsightsResponse =
 describeContributorInsightsResponse
     :: Int -- ^ 'dcirsResponseStatus'
     -> DescribeContributorInsightsResponse
-describeContributorInsightsResponse pResponseStatus_ =
-  DescribeContributorInsightsResponse'
-    { _dcirsContributorInsightsRuleList = Nothing
-    , _dcirsFailureException = Nothing
-    , _dcirsContributorInsightsStatus = Nothing
-    , _dcirsLastUpdateDateTime = Nothing
-    , _dcirsTableName = Nothing
-    , _dcirsIndexName = Nothing
-    , _dcirsResponseStatus = pResponseStatus_
-    }
-
+describeContributorInsightsResponse pResponseStatus_
+  = DescribeContributorInsightsResponse'{_dcirsContributorInsightsRuleList
+                                           = Nothing,
+                                         _dcirsFailureException = Nothing,
+                                         _dcirsContributorInsightsStatus =
+                                           Nothing,
+                                         _dcirsLastUpdateDateTime = Nothing,
+                                         _dcirsTableName = Nothing,
+                                         _dcirsIndexName = Nothing,
+                                         _dcirsResponseStatus =
+                                           pResponseStatus_}
 
 -- | List of names of the associated Alpine rules.
 dcirsContributorInsightsRuleList :: Lens' DescribeContributorInsightsResponse [Text]

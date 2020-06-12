@@ -44,21 +44,17 @@ module Network.AWS.IoT.TestInvokeAuthorizer
     ) where
 
 import Network.AWS.IoT.Types
-import Network.AWS.IoT.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 
 -- | /See:/ 'testInvokeAuthorizer' smart constructor.
-data TestInvokeAuthorizer =
-  TestInvokeAuthorizer'
-    { _tiaAuthorizerName :: !Text
-    , _tiaToken          :: !Text
-    , _tiaTokenSignature :: !Text
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data TestInvokeAuthorizer = TestInvokeAuthorizer'{_tiaAuthorizerName
+                                                  :: !Text,
+                                                  _tiaToken :: !Text,
+                                                  _tiaTokenSignature :: !Text}
+                              deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'TestInvokeAuthorizer' with the minimum fields required to make a request.
 --
@@ -74,13 +70,12 @@ testInvokeAuthorizer
     -> Text -- ^ 'tiaToken'
     -> Text -- ^ 'tiaTokenSignature'
     -> TestInvokeAuthorizer
-testInvokeAuthorizer pAuthorizerName_ pToken_ pTokenSignature_ =
-  TestInvokeAuthorizer'
-    { _tiaAuthorizerName = pAuthorizerName_
-    , _tiaToken = pToken_
-    , _tiaTokenSignature = pTokenSignature_
-    }
-
+testInvokeAuthorizer pAuthorizerName_ pToken_
+  pTokenSignature_
+  = TestInvokeAuthorizer'{_tiaAuthorizerName =
+                            pAuthorizerName_,
+                          _tiaToken = pToken_,
+                          _tiaTokenSignature = pTokenSignature_}
 
 -- | The custom authorizer name.
 tiaAuthorizerName :: Lens' TestInvokeAuthorizer Text
@@ -132,17 +127,26 @@ instance ToQuery TestInvokeAuthorizer where
         toQuery = const mempty
 
 -- | /See:/ 'testInvokeAuthorizerResponse' smart constructor.
-data TestInvokeAuthorizerResponse =
-  TestInvokeAuthorizerResponse'
-    { _tiarsPolicyDocuments          :: !(Maybe [Text])
-    , _tiarsPrincipalId              :: !(Maybe Text)
-    , _tiarsDisconnectAfterInSeconds :: !(Maybe Int)
-    , _tiarsIsAuthenticated          :: !(Maybe Bool)
-    , _tiarsRefreshAfterInSeconds    :: !(Maybe Int)
-    , _tiarsResponseStatus           :: !Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data TestInvokeAuthorizerResponse = TestInvokeAuthorizerResponse'{_tiarsPolicyDocuments
+                                                                  ::
+                                                                  !(Maybe
+                                                                      [Text]),
+                                                                  _tiarsPrincipalId
+                                                                  ::
+                                                                  !(Maybe Text),
+                                                                  _tiarsDisconnectAfterInSeconds
+                                                                  ::
+                                                                  !(Maybe Int),
+                                                                  _tiarsIsAuthenticated
+                                                                  ::
+                                                                  !(Maybe Bool),
+                                                                  _tiarsRefreshAfterInSeconds
+                                                                  ::
+                                                                  !(Maybe Int),
+                                                                  _tiarsResponseStatus
+                                                                  :: !Int}
+                                      deriving (Eq, Read, Show, Data, Typeable,
+                                                Generic)
 
 -- | Creates a value of 'TestInvokeAuthorizerResponse' with the minimum fields required to make a request.
 --
@@ -162,16 +166,14 @@ data TestInvokeAuthorizerResponse =
 testInvokeAuthorizerResponse
     :: Int -- ^ 'tiarsResponseStatus'
     -> TestInvokeAuthorizerResponse
-testInvokeAuthorizerResponse pResponseStatus_ =
-  TestInvokeAuthorizerResponse'
-    { _tiarsPolicyDocuments = Nothing
-    , _tiarsPrincipalId = Nothing
-    , _tiarsDisconnectAfterInSeconds = Nothing
-    , _tiarsIsAuthenticated = Nothing
-    , _tiarsRefreshAfterInSeconds = Nothing
-    , _tiarsResponseStatus = pResponseStatus_
-    }
-
+testInvokeAuthorizerResponse pResponseStatus_
+  = TestInvokeAuthorizerResponse'{_tiarsPolicyDocuments
+                                    = Nothing,
+                                  _tiarsPrincipalId = Nothing,
+                                  _tiarsDisconnectAfterInSeconds = Nothing,
+                                  _tiarsIsAuthenticated = Nothing,
+                                  _tiarsRefreshAfterInSeconds = Nothing,
+                                  _tiarsResponseStatus = pResponseStatus_}
 
 -- | IAM policy documents.
 tiarsPolicyDocuments :: Lens' TestInvokeAuthorizerResponse [Text]

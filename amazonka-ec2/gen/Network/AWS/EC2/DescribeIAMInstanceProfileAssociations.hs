@@ -44,7 +44,6 @@ module Network.AWS.EC2.DescribeIAMInstanceProfileAssociations
     ) where
 
 import Network.AWS.EC2.Types
-import Network.AWS.EC2.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Pager
 import Network.AWS.Prelude
@@ -52,15 +51,24 @@ import Network.AWS.Request
 import Network.AWS.Response
 
 -- | /See:/ 'describeIAMInstanceProfileAssociations' smart constructor.
-data DescribeIAMInstanceProfileAssociations =
-  DescribeIAMInstanceProfileAssociations'
-    { _diapaFilters        :: !(Maybe [Filter])
-    , _diapaNextToken      :: !(Maybe Text)
-    , _diapaAssociationIds :: !(Maybe [Text])
-    , _diapaMaxResults     :: !(Maybe Nat)
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data DescribeIAMInstanceProfileAssociations = DescribeIAMInstanceProfileAssociations'{_diapaFilters
+                                                                                      ::
+                                                                                      !(Maybe
+                                                                                          [Filter]),
+                                                                                      _diapaNextToken
+                                                                                      ::
+                                                                                      !(Maybe
+                                                                                          Text),
+                                                                                      _diapaAssociationIds
+                                                                                      ::
+                                                                                      !(Maybe
+                                                                                          [Text]),
+                                                                                      _diapaMaxResults
+                                                                                      ::
+                                                                                      !(Maybe
+                                                                                          Nat)}
+                                                deriving (Eq, Read, Show, Data,
+                                                          Typeable, Generic)
 
 -- | Creates a value of 'DescribeIAMInstanceProfileAssociations' with the minimum fields required to make a request.
 --
@@ -75,14 +83,12 @@ data DescribeIAMInstanceProfileAssociations =
 -- * 'diapaMaxResults' - The maximum number of results to return in a single call. To retrieve the remaining results, make another call with the returned @NextToken@ value.
 describeIAMInstanceProfileAssociations
     :: DescribeIAMInstanceProfileAssociations
-describeIAMInstanceProfileAssociations =
-  DescribeIAMInstanceProfileAssociations'
-    { _diapaFilters = Nothing
-    , _diapaNextToken = Nothing
-    , _diapaAssociationIds = Nothing
-    , _diapaMaxResults = Nothing
-    }
-
+describeIAMInstanceProfileAssociations
+  = DescribeIAMInstanceProfileAssociations'{_diapaFilters
+                                              = Nothing,
+                                            _diapaNextToken = Nothing,
+                                            _diapaAssociationIds = Nothing,
+                                            _diapaMaxResults = Nothing}
 
 -- | The filters.     * @instance-id@ - The ID of the instance.     * @state@ - The state of the association (@associating@ | @associated@ | @disassociating@ ).
 diapaFilters :: Lens' DescribeIAMInstanceProfileAssociations [Filter]
@@ -160,14 +166,21 @@ instance ToQuery
                "MaxResults" =: _diapaMaxResults]
 
 -- | /See:/ 'describeIAMInstanceProfileAssociationsResponse' smart constructor.
-data DescribeIAMInstanceProfileAssociationsResponse =
-  DescribeIAMInstanceProfileAssociationsResponse'
-    { _diaparsIAMInstanceProfileAssociations :: !(Maybe [IAMInstanceProfileAssociation])
-    , _diaparsNextToken :: !(Maybe Text)
-    , _diaparsResponseStatus :: !Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data DescribeIAMInstanceProfileAssociationsResponse = DescribeIAMInstanceProfileAssociationsResponse'{_diaparsIAMInstanceProfileAssociations
+                                                                                                      ::
+                                                                                                      !(Maybe
+                                                                                                          [IAMInstanceProfileAssociation]),
+                                                                                                      _diaparsNextToken
+                                                                                                      ::
+                                                                                                      !(Maybe
+                                                                                                          Text),
+                                                                                                      _diaparsResponseStatus
+                                                                                                      ::
+                                                                                                      !Int}
+                                                        deriving (Eq, Read,
+                                                                  Show, Data,
+                                                                  Typeable,
+                                                                  Generic)
 
 -- | Creates a value of 'DescribeIAMInstanceProfileAssociationsResponse' with the minimum fields required to make a request.
 --
@@ -181,13 +194,13 @@ data DescribeIAMInstanceProfileAssociationsResponse =
 describeIAMInstanceProfileAssociationsResponse
     :: Int -- ^ 'diaparsResponseStatus'
     -> DescribeIAMInstanceProfileAssociationsResponse
-describeIAMInstanceProfileAssociationsResponse pResponseStatus_ =
-  DescribeIAMInstanceProfileAssociationsResponse'
-    { _diaparsIAMInstanceProfileAssociations = Nothing
-    , _diaparsNextToken = Nothing
-    , _diaparsResponseStatus = pResponseStatus_
-    }
-
+describeIAMInstanceProfileAssociationsResponse
+  pResponseStatus_
+  = DescribeIAMInstanceProfileAssociationsResponse'{_diaparsIAMInstanceProfileAssociations
+                                                      = Nothing,
+                                                    _diaparsNextToken = Nothing,
+                                                    _diaparsResponseStatus =
+                                                      pResponseStatus_}
 
 -- | Information about the IAM instance profile associations.
 diaparsIAMInstanceProfileAssociations :: Lens' DescribeIAMInstanceProfileAssociationsResponse [IAMInstanceProfileAssociation]

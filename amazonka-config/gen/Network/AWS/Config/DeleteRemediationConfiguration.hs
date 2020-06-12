@@ -38,20 +38,20 @@ module Network.AWS.Config.DeleteRemediationConfiguration
     ) where
 
 import Network.AWS.Config.Types
-import Network.AWS.Config.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 
 -- | /See:/ 'deleteRemediationConfiguration' smart constructor.
-data DeleteRemediationConfiguration =
-  DeleteRemediationConfiguration'
-    { _delResourceType   :: !(Maybe Text)
-    , _delConfigRuleName :: !Text
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data DeleteRemediationConfiguration = DeleteRemediationConfiguration'{_delResourceType
+                                                                      ::
+                                                                      !(Maybe
+                                                                          Text),
+                                                                      _delConfigRuleName
+                                                                      :: !Text}
+                                        deriving (Eq, Read, Show, Data,
+                                                  Typeable, Generic)
 
 -- | Creates a value of 'DeleteRemediationConfiguration' with the minimum fields required to make a request.
 --
@@ -63,10 +63,10 @@ data DeleteRemediationConfiguration =
 deleteRemediationConfiguration
     :: Text -- ^ 'delConfigRuleName'
     -> DeleteRemediationConfiguration
-deleteRemediationConfiguration pConfigRuleName_ =
-  DeleteRemediationConfiguration'
-    {_delResourceType = Nothing, _delConfigRuleName = pConfigRuleName_}
-
+deleteRemediationConfiguration pConfigRuleName_
+  = DeleteRemediationConfiguration'{_delResourceType =
+                                      Nothing,
+                                    _delConfigRuleName = pConfigRuleName_}
 
 -- | The type of a resource.
 delResourceType :: Lens' DeleteRemediationConfiguration (Maybe Text)
@@ -117,12 +117,12 @@ instance ToQuery DeleteRemediationConfiguration where
         toQuery = const mempty
 
 -- | /See:/ 'deleteRemediationConfigurationResponse' smart constructor.
-newtype DeleteRemediationConfigurationResponse =
-  DeleteRemediationConfigurationResponse'
-    { _drcrsResponseStatus :: Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+newtype DeleteRemediationConfigurationResponse = DeleteRemediationConfigurationResponse'{_drcrsResponseStatus
+                                                                                         ::
+                                                                                         Int}
+                                                   deriving (Eq, Read, Show,
+                                                             Data, Typeable,
+                                                             Generic)
 
 -- | Creates a value of 'DeleteRemediationConfigurationResponse' with the minimum fields required to make a request.
 --
@@ -132,10 +132,10 @@ newtype DeleteRemediationConfigurationResponse =
 deleteRemediationConfigurationResponse
     :: Int -- ^ 'drcrsResponseStatus'
     -> DeleteRemediationConfigurationResponse
-deleteRemediationConfigurationResponse pResponseStatus_ =
-  DeleteRemediationConfigurationResponse'
-    {_drcrsResponseStatus = pResponseStatus_}
-
+deleteRemediationConfigurationResponse
+  pResponseStatus_
+  = DeleteRemediationConfigurationResponse'{_drcrsResponseStatus
+                                              = pResponseStatus_}
 
 -- | -- | The response status code.
 drcrsResponseStatus :: Lens' DeleteRemediationConfigurationResponse Int

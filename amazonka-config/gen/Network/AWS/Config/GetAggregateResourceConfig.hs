@@ -39,20 +39,19 @@ module Network.AWS.Config.GetAggregateResourceConfig
     ) where
 
 import Network.AWS.Config.Types
-import Network.AWS.Config.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 
 -- | /See:/ 'getAggregateResourceConfig' smart constructor.
-data GetAggregateResourceConfig =
-  GetAggregateResourceConfig'
-    { _garcConfigurationAggregatorName :: !Text
-    , _garcResourceIdentifier          :: !AggregateResourceIdentifier
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data GetAggregateResourceConfig = GetAggregateResourceConfig'{_garcConfigurationAggregatorName
+                                                              :: !Text,
+                                                              _garcResourceIdentifier
+                                                              ::
+                                                              !AggregateResourceIdentifier}
+                                    deriving (Eq, Read, Show, Data, Typeable,
+                                              Generic)
 
 -- | Creates a value of 'GetAggregateResourceConfig' with the minimum fields required to make a request.
 --
@@ -65,12 +64,11 @@ getAggregateResourceConfig
     :: Text -- ^ 'garcConfigurationAggregatorName'
     -> AggregateResourceIdentifier -- ^ 'garcResourceIdentifier'
     -> GetAggregateResourceConfig
-getAggregateResourceConfig pConfigurationAggregatorName_ pResourceIdentifier_ =
-  GetAggregateResourceConfig'
-    { _garcConfigurationAggregatorName = pConfigurationAggregatorName_
-    , _garcResourceIdentifier = pResourceIdentifier_
-    }
-
+getAggregateResourceConfig
+  pConfigurationAggregatorName_ pResourceIdentifier_
+  = GetAggregateResourceConfig'{_garcConfigurationAggregatorName
+                                  = pConfigurationAggregatorName_,
+                                _garcResourceIdentifier = pResourceIdentifier_}
 
 -- | The name of the configuration aggregator.
 garcConfigurationAggregatorName :: Lens' GetAggregateResourceConfig Text
@@ -121,13 +119,15 @@ instance ToQuery GetAggregateResourceConfig where
         toQuery = const mempty
 
 -- | /See:/ 'getAggregateResourceConfigResponse' smart constructor.
-data GetAggregateResourceConfigResponse =
-  GetAggregateResourceConfigResponse'
-    { _garcrsConfigurationItem :: !(Maybe ConfigurationItem)
-    , _garcrsResponseStatus    :: !Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data GetAggregateResourceConfigResponse = GetAggregateResourceConfigResponse'{_garcrsConfigurationItem
+                                                                              ::
+                                                                              !(Maybe
+                                                                                  ConfigurationItem),
+                                                                              _garcrsResponseStatus
+                                                                              ::
+                                                                              !Int}
+                                            deriving (Eq, Read, Show, Data,
+                                                      Typeable, Generic)
 
 -- | Creates a value of 'GetAggregateResourceConfigResponse' with the minimum fields required to make a request.
 --
@@ -139,12 +139,11 @@ data GetAggregateResourceConfigResponse =
 getAggregateResourceConfigResponse
     :: Int -- ^ 'garcrsResponseStatus'
     -> GetAggregateResourceConfigResponse
-getAggregateResourceConfigResponse pResponseStatus_ =
-  GetAggregateResourceConfigResponse'
-    { _garcrsConfigurationItem = Nothing
-    , _garcrsResponseStatus = pResponseStatus_
-    }
-
+getAggregateResourceConfigResponse pResponseStatus_
+  = GetAggregateResourceConfigResponse'{_garcrsConfigurationItem
+                                          = Nothing,
+                                        _garcrsResponseStatus =
+                                          pResponseStatus_}
 
 -- | Returns a @ConfigurationItem@ object.
 garcrsConfigurationItem :: Lens' GetAggregateResourceConfigResponse (Maybe ConfigurationItem)

@@ -18,24 +18,24 @@
 -- Stability   : auto-generated
 -- Portability : non-portable (GHC extensions)
 --
--- Retrieves properties for an alias. This operation returns all alias metadata and settings. To get an alias's target fleet ID only, use @ResolveAlias@ .
+-- Retrieves properties for an alias. This operation returns all alias metadata and settings. To get an alias's target fleet ID only, use @ResolveAlias@ . 
 --
 --
 -- To get alias properties, specify the alias ID. If successful, the requested alias record is returned.
 --
 -- Alias-related operations include:
 --
---     * 'CreateAlias'
+--     * 'CreateAlias' 
 --
---     * 'ListAliases'
+--     * 'ListAliases' 
 --
---     * 'DescribeAlias'
+--     * 'DescribeAlias' 
 --
---     * 'UpdateAlias'
+--     * 'UpdateAlias' 
 --
---     * 'DeleteAlias'
+--     * 'DeleteAlias' 
 --
---     * 'ResolveAlias'
+--     * 'ResolveAlias' 
 --
 --
 --
@@ -56,7 +56,6 @@ module Network.AWS.GameLift.DescribeAlias
     ) where
 
 import Network.AWS.GameLift.Types
-import Network.AWS.GameLift.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.Request
@@ -67,12 +66,9 @@ import Network.AWS.Response
 --
 --
 -- /See:/ 'describeAlias' smart constructor.
-newtype DescribeAlias =
-  DescribeAlias'
-    { _dAliasId :: Text
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+newtype DescribeAlias = DescribeAlias'{_dAliasId ::
+                                       Text}
+                          deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'DescribeAlias' with the minimum fields required to make a request.
 --
@@ -82,8 +78,8 @@ newtype DescribeAlias =
 describeAlias
     :: Text -- ^ 'dAliasId'
     -> DescribeAlias
-describeAlias pAliasId_ = DescribeAlias' {_dAliasId = pAliasId_}
-
+describeAlias pAliasId_
+  = DescribeAlias'{_dAliasId = pAliasId_}
 
 -- | Unique identifier for a fleet alias. Specify the alias you want to retrieve.
 dAliasId :: Lens' DescribeAlias Text
@@ -126,13 +122,11 @@ instance ToQuery DescribeAlias where
 --
 --
 -- /See:/ 'describeAliasResponse' smart constructor.
-data DescribeAliasResponse =
-  DescribeAliasResponse'
-    { _darsAlias          :: !(Maybe Alias)
-    , _darsResponseStatus :: !Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data DescribeAliasResponse = DescribeAliasResponse'{_darsAlias
+                                                    :: !(Maybe Alias),
+                                                    _darsResponseStatus :: !Int}
+                               deriving (Eq, Read, Show, Data, Typeable,
+                                         Generic)
 
 -- | Creates a value of 'DescribeAliasResponse' with the minimum fields required to make a request.
 --
@@ -144,10 +138,9 @@ data DescribeAliasResponse =
 describeAliasResponse
     :: Int -- ^ 'darsResponseStatus'
     -> DescribeAliasResponse
-describeAliasResponse pResponseStatus_ =
-  DescribeAliasResponse'
-    {_darsAlias = Nothing, _darsResponseStatus = pResponseStatus_}
-
+describeAliasResponse pResponseStatus_
+  = DescribeAliasResponse'{_darsAlias = Nothing,
+                           _darsResponseStatus = pResponseStatus_}
 
 -- | Object that contains the requested alias.
 darsAlias :: Lens' DescribeAliasResponse (Maybe Alias)

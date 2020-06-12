@@ -11,7 +11,7 @@
 -- Stability   : auto-generated
 -- Portability : non-portable (GHC extensions)
 --
--- __AWS Glue__
+-- __AWS Glue__ 
 --
 -- Defines the public endpoint for the AWS Glue service.
 --
@@ -86,40 +86,40 @@ module Network.AWS.Glue
     -- * Operations
     -- $operations
 
-    -- ** StartCrawler
+    -- ** StartCrawler 
     , module Network.AWS.Glue.StartCrawler
 
-    -- ** GetCatalogImportStatus
+    -- ** GetCatalogImportStatus 
     , module Network.AWS.Glue.GetCatalogImportStatus
 
-    -- ** GetPartition
+    -- ** GetPartition 
     , module Network.AWS.Glue.GetPartition
 
-    -- ** CreateTrigger
+    -- ** CreateTrigger 
     , module Network.AWS.Glue.CreateTrigger
 
-    -- ** DeleteTable
+    -- ** DeleteTable 
     , module Network.AWS.Glue.DeleteTable
 
-    -- ** UpdateTable
+    -- ** UpdateTable 
     , module Network.AWS.Glue.UpdateTable
 
-    -- ** DeleteConnection
+    -- ** DeleteConnection 
     , module Network.AWS.Glue.DeleteConnection
 
-    -- ** UpdateConnection
+    -- ** UpdateConnection 
     , module Network.AWS.Glue.UpdateConnection
 
     -- ** GetUserDefinedFunctions (Paginated)
     , module Network.AWS.Glue.GetUserDefinedFunctions
 
-    -- ** BatchCreatePartition
+    -- ** BatchCreatePartition 
     , module Network.AWS.Glue.BatchCreatePartition
 
-    -- ** GetMapping
+    -- ** GetMapping 
     , module Network.AWS.Glue.GetMapping
 
-    -- ** GetTableVersion
+    -- ** GetTableVersion 
     , module Network.AWS.Glue.GetTableVersion
 
     -- ** GetJobs (Paginated)
@@ -128,196 +128,196 @@ module Network.AWS.Glue
     -- ** GetClassifiers (Paginated)
     , module Network.AWS.Glue.GetClassifiers
 
-    -- ** CreateConnection
+    -- ** CreateConnection 
     , module Network.AWS.Glue.CreateConnection
 
-    -- ** DeleteTableVersion
+    -- ** DeleteTableVersion 
     , module Network.AWS.Glue.DeleteTableVersion
 
-    -- ** DeleteDevEndpoint
+    -- ** DeleteDevEndpoint 
     , module Network.AWS.Glue.DeleteDevEndpoint
 
-    -- ** UpdateDevEndpoint
+    -- ** UpdateDevEndpoint 
     , module Network.AWS.Glue.UpdateDevEndpoint
 
-    -- ** DeleteCrawler
+    -- ** DeleteCrawler 
     , module Network.AWS.Glue.DeleteCrawler
 
-    -- ** UpdateCrawler
+    -- ** UpdateCrawler 
     , module Network.AWS.Glue.UpdateCrawler
 
-    -- ** GetConnection
+    -- ** GetConnection 
     , module Network.AWS.Glue.GetConnection
 
-    -- ** BatchGetPartition
+    -- ** BatchGetPartition 
     , module Network.AWS.Glue.BatchGetPartition
 
-    -- ** StopTrigger
+    -- ** StopTrigger 
     , module Network.AWS.Glue.StopTrigger
 
-    -- ** UpdateCrawlerSchedule
+    -- ** UpdateCrawlerSchedule 
     , module Network.AWS.Glue.UpdateCrawlerSchedule
 
-    -- ** DeleteUserDefinedFunction
+    -- ** DeleteUserDefinedFunction 
     , module Network.AWS.Glue.DeleteUserDefinedFunction
 
-    -- ** UpdateUserDefinedFunction
+    -- ** UpdateUserDefinedFunction 
     , module Network.AWS.Glue.UpdateUserDefinedFunction
 
-    -- ** BatchDeleteTable
+    -- ** BatchDeleteTable 
     , module Network.AWS.Glue.BatchDeleteTable
 
     -- ** GetTables (Paginated)
     , module Network.AWS.Glue.GetTables
 
-    -- ** CreateClassifier
+    -- ** CreateClassifier 
     , module Network.AWS.Glue.CreateClassifier
 
-    -- ** BatchDeleteConnection
+    -- ** BatchDeleteConnection 
     , module Network.AWS.Glue.BatchDeleteConnection
 
-    -- ** CreateJob
+    -- ** CreateJob 
     , module Network.AWS.Glue.CreateJob
 
     -- ** GetJobRuns (Paginated)
     , module Network.AWS.Glue.GetJobRuns
 
-    -- ** CreateUserDefinedFunction
+    -- ** CreateUserDefinedFunction 
     , module Network.AWS.Glue.CreateUserDefinedFunction
 
-    -- ** ResetJobBookmark
+    -- ** ResetJobBookmark 
     , module Network.AWS.Glue.ResetJobBookmark
 
-    -- ** DeleteJob
+    -- ** DeleteJob 
     , module Network.AWS.Glue.DeleteJob
 
-    -- ** UpdateJob
+    -- ** UpdateJob 
     , module Network.AWS.Glue.UpdateJob
 
     -- ** GetCrawlers (Paginated)
     , module Network.AWS.Glue.GetCrawlers
 
-    -- ** GetClassifier
+    -- ** GetClassifier 
     , module Network.AWS.Glue.GetClassifier
 
-    -- ** GetJob
+    -- ** GetJob 
     , module Network.AWS.Glue.GetJob
 
-    -- ** BatchDeleteTableVersion
+    -- ** BatchDeleteTableVersion 
     , module Network.AWS.Glue.BatchDeleteTableVersion
 
     -- ** GetDevEndpoints (Paginated)
     , module Network.AWS.Glue.GetDevEndpoints
 
-    -- ** StartCrawlerSchedule
+    -- ** StartCrawlerSchedule 
     , module Network.AWS.Glue.StartCrawlerSchedule
 
-    -- ** GetUserDefinedFunction
+    -- ** GetUserDefinedFunction 
     , module Network.AWS.Glue.GetUserDefinedFunction
 
-    -- ** DeleteDatabase
+    -- ** DeleteDatabase 
     , module Network.AWS.Glue.DeleteDatabase
 
-    -- ** UpdateDatabase
+    -- ** UpdateDatabase 
     , module Network.AWS.Glue.UpdateDatabase
 
-    -- ** StopCrawler
+    -- ** StopCrawler 
     , module Network.AWS.Glue.StopCrawler
 
     -- ** GetPartitions (Paginated)
     , module Network.AWS.Glue.GetPartitions
 
-    -- ** BatchDeletePartition
+    -- ** BatchDeletePartition 
     , module Network.AWS.Glue.BatchDeletePartition
 
-    -- ** GetCrawler
+    -- ** GetCrawler 
     , module Network.AWS.Glue.GetCrawler
 
-    -- ** BatchStopJobRun
+    -- ** BatchStopJobRun 
     , module Network.AWS.Glue.BatchStopJobRun
 
-    -- ** GetDevEndpoint
+    -- ** GetDevEndpoint 
     , module Network.AWS.Glue.GetDevEndpoint
 
-    -- ** CreateTable
+    -- ** CreateTable 
     , module Network.AWS.Glue.CreateTable
 
     -- ** GetCrawlerMetrics (Paginated)
     , module Network.AWS.Glue.GetCrawlerMetrics
 
-    -- ** GetPlan
+    -- ** GetPlan 
     , module Network.AWS.Glue.GetPlan
 
     -- ** GetTriggers (Paginated)
     , module Network.AWS.Glue.GetTriggers
 
-    -- ** StartTrigger
+    -- ** StartTrigger 
     , module Network.AWS.Glue.StartTrigger
 
-    -- ** GetDataflowGraph
+    -- ** GetDataflowGraph 
     , module Network.AWS.Glue.GetDataflowGraph
 
     -- ** GetDatabases (Paginated)
     , module Network.AWS.Glue.GetDatabases
 
-    -- ** GetTable
+    -- ** GetTable 
     , module Network.AWS.Glue.GetTable
 
-    -- ** CreateCrawler
+    -- ** CreateCrawler 
     , module Network.AWS.Glue.CreateCrawler
 
-    -- ** GetJobRun
+    -- ** GetJobRun 
     , module Network.AWS.Glue.GetJobRun
 
-    -- ** CreateDevEndpoint
+    -- ** CreateDevEndpoint 
     , module Network.AWS.Glue.CreateDevEndpoint
 
-    -- ** GetDatabase
+    -- ** GetDatabase 
     , module Network.AWS.Glue.GetDatabase
 
-    -- ** DeletePartition
+    -- ** DeletePartition 
     , module Network.AWS.Glue.DeletePartition
 
-    -- ** UpdatePartition
+    -- ** UpdatePartition 
     , module Network.AWS.Glue.UpdatePartition
 
-    -- ** CreateScript
+    -- ** CreateScript 
     , module Network.AWS.Glue.CreateScript
 
     -- ** GetConnections (Paginated)
     , module Network.AWS.Glue.GetConnections
 
-    -- ** GetTrigger
+    -- ** GetTrigger 
     , module Network.AWS.Glue.GetTrigger
 
-    -- ** ImportCatalogToGlue
+    -- ** ImportCatalogToGlue 
     , module Network.AWS.Glue.ImportCatalogToGlue
 
-    -- ** DeleteClassifier
+    -- ** DeleteClassifier 
     , module Network.AWS.Glue.DeleteClassifier
 
-    -- ** UpdateClassifier
+    -- ** UpdateClassifier 
     , module Network.AWS.Glue.UpdateClassifier
 
-    -- ** StartJobRun
+    -- ** StartJobRun 
     , module Network.AWS.Glue.StartJobRun
 
-    -- ** CreatePartition
+    -- ** CreatePartition 
     , module Network.AWS.Glue.CreatePartition
 
-    -- ** StopCrawlerSchedule
+    -- ** StopCrawlerSchedule 
     , module Network.AWS.Glue.StopCrawlerSchedule
 
-    -- ** CreateDatabase
+    -- ** CreateDatabase 
     , module Network.AWS.Glue.CreateDatabase
 
     -- ** GetTableVersions (Paginated)
     , module Network.AWS.Glue.GetTableVersions
 
-    -- ** DeleteTrigger
+    -- ** DeleteTrigger 
     , module Network.AWS.Glue.DeleteTrigger
 
-    -- ** UpdateTrigger
+    -- ** UpdateTrigger 
     , module Network.AWS.Glue.UpdateTrigger
 
     -- * Types
@@ -1006,9 +1006,9 @@ import Network.AWS.Glue.GetPartition
 import Network.AWS.Glue.GetPartitions
 import Network.AWS.Glue.GetPlan
 import Network.AWS.Glue.GetTable
-import Network.AWS.Glue.GetTables
 import Network.AWS.Glue.GetTableVersion
 import Network.AWS.Glue.GetTableVersions
+import Network.AWS.Glue.GetTables
 import Network.AWS.Glue.GetTrigger
 import Network.AWS.Glue.GetTriggers
 import Network.AWS.Glue.GetUserDefinedFunction

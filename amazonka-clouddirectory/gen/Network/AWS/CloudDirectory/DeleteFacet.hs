@@ -38,20 +38,16 @@ module Network.AWS.CloudDirectory.DeleteFacet
     ) where
 
 import Network.AWS.CloudDirectory.Types
-import Network.AWS.CloudDirectory.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 
 -- | /See:/ 'deleteFacet' smart constructor.
-data DeleteFacet =
-  DeleteFacet'
-    { _dfSchemaARN :: !Text
-    , _dfName      :: !Text
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data DeleteFacet = DeleteFacet'{_dfSchemaARN ::
+                                !Text,
+                                _dfName :: !Text}
+                     deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'DeleteFacet' with the minimum fields required to make a request.
 --
@@ -64,9 +60,9 @@ deleteFacet
     :: Text -- ^ 'dfSchemaARN'
     -> Text -- ^ 'dfName'
     -> DeleteFacet
-deleteFacet pSchemaARN_ pName_ =
-  DeleteFacet' {_dfSchemaARN = pSchemaARN_, _dfName = pName_}
-
+deleteFacet pSchemaARN_ pName_
+  = DeleteFacet'{_dfSchemaARN = pSchemaARN_,
+                 _dfName = pName_}
 
 -- | The Amazon Resource Name (ARN) that is associated with the 'Facet' . For more information, see 'arns' .
 dfSchemaARN :: Lens' DeleteFacet Text
@@ -105,12 +101,10 @@ instance ToQuery DeleteFacet where
         toQuery = const mempty
 
 -- | /See:/ 'deleteFacetResponse' smart constructor.
-newtype DeleteFacetResponse =
-  DeleteFacetResponse'
-    { _dfrsResponseStatus :: Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+newtype DeleteFacetResponse = DeleteFacetResponse'{_dfrsResponseStatus
+                                                   :: Int}
+                                deriving (Eq, Read, Show, Data, Typeable,
+                                          Generic)
 
 -- | Creates a value of 'DeleteFacetResponse' with the minimum fields required to make a request.
 --
@@ -120,9 +114,9 @@ newtype DeleteFacetResponse =
 deleteFacetResponse
     :: Int -- ^ 'dfrsResponseStatus'
     -> DeleteFacetResponse
-deleteFacetResponse pResponseStatus_ =
-  DeleteFacetResponse' {_dfrsResponseStatus = pResponseStatus_}
-
+deleteFacetResponse pResponseStatus_
+  = DeleteFacetResponse'{_dfrsResponseStatus =
+                           pResponseStatus_}
 
 -- | -- | The response status code.
 dfrsResponseStatus :: Lens' DeleteFacetResponse Int

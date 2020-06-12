@@ -43,22 +43,23 @@ module Network.AWS.EC2.ExportTransitGatewayRoutes
     ) where
 
 import Network.AWS.EC2.Types
-import Network.AWS.EC2.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 
 -- | /See:/ 'exportTransitGatewayRoutes' smart constructor.
-data ExportTransitGatewayRoutes =
-  ExportTransitGatewayRoutes'
-    { _etgrFilters                    :: !(Maybe [Filter])
-    , _etgrDryRun                     :: !(Maybe Bool)
-    , _etgrTransitGatewayRouteTableId :: !Text
-    , _etgrS3Bucket                   :: !Text
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data ExportTransitGatewayRoutes = ExportTransitGatewayRoutes'{_etgrFilters
+                                                              ::
+                                                              !(Maybe [Filter]),
+                                                              _etgrDryRun ::
+                                                              !(Maybe Bool),
+                                                              _etgrTransitGatewayRouteTableId
+                                                              :: !Text,
+                                                              _etgrS3Bucket ::
+                                                              !Text}
+                                    deriving (Eq, Read, Show, Data, Typeable,
+                                              Generic)
 
 -- | Creates a value of 'ExportTransitGatewayRoutes' with the minimum fields required to make a request.
 --
@@ -75,14 +76,13 @@ exportTransitGatewayRoutes
     :: Text -- ^ 'etgrTransitGatewayRouteTableId'
     -> Text -- ^ 'etgrS3Bucket'
     -> ExportTransitGatewayRoutes
-exportTransitGatewayRoutes pTransitGatewayRouteTableId_ pS3Bucket_ =
-  ExportTransitGatewayRoutes'
-    { _etgrFilters = Nothing
-    , _etgrDryRun = Nothing
-    , _etgrTransitGatewayRouteTableId = pTransitGatewayRouteTableId_
-    , _etgrS3Bucket = pS3Bucket_
-    }
-
+exportTransitGatewayRoutes
+  pTransitGatewayRouteTableId_ pS3Bucket_
+  = ExportTransitGatewayRoutes'{_etgrFilters = Nothing,
+                                _etgrDryRun = Nothing,
+                                _etgrTransitGatewayRouteTableId =
+                                  pTransitGatewayRouteTableId_,
+                                _etgrS3Bucket = pS3Bucket_}
 
 -- | One or more filters. The possible values are:     * @attachment.transit-gateway-attachment-id@ - The id of the transit gateway attachment.     * @attachment.resource-id@ - The resource id of the transit gateway attachment.     * @route-search.exact-match@ - The exact match of the specified filter.     * @route-search.longest-prefix-match@ - The longest prefix that matches the route.     * @route-search.subnet-of-match@ - The routes with a subnet that match the specified CIDR filter.     * @route-search.supernet-of-match@ - The routes with a CIDR that encompass the CIDR filter. For example, if you have 10.0.1.0/29 and 10.0.1.0/31 routes in your route table and you specify supernet-of-match as 10.0.1.0/30, then the result returns 10.0.1.0/29.     * @state@ - The state of the attachment (@available@ | @deleted@ | @deleting@ | @failed@ | @modifying@ | @pendingAcceptance@ | @pending@ | @rollingBack@ | @rejected@ | @rejecting@ ).     * @transit-gateway-route-destination-cidr-block@ - The CIDR range.     * @type@ - The type of route (@active@ | @blackhole@ ).
 etgrFilters :: Lens' ExportTransitGatewayRoutes [Filter]
@@ -133,13 +133,15 @@ instance ToQuery ExportTransitGatewayRoutes where
                "S3Bucket" =: _etgrS3Bucket]
 
 -- | /See:/ 'exportTransitGatewayRoutesResponse' smart constructor.
-data ExportTransitGatewayRoutesResponse =
-  ExportTransitGatewayRoutesResponse'
-    { _etgrrsS3Location     :: !(Maybe Text)
-    , _etgrrsResponseStatus :: !Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data ExportTransitGatewayRoutesResponse = ExportTransitGatewayRoutesResponse'{_etgrrsS3Location
+                                                                              ::
+                                                                              !(Maybe
+                                                                                  Text),
+                                                                              _etgrrsResponseStatus
+                                                                              ::
+                                                                              !Int}
+                                            deriving (Eq, Read, Show, Data,
+                                                      Typeable, Generic)
 
 -- | Creates a value of 'ExportTransitGatewayRoutesResponse' with the minimum fields required to make a request.
 --
@@ -151,10 +153,11 @@ data ExportTransitGatewayRoutesResponse =
 exportTransitGatewayRoutesResponse
     :: Int -- ^ 'etgrrsResponseStatus'
     -> ExportTransitGatewayRoutesResponse
-exportTransitGatewayRoutesResponse pResponseStatus_ =
-  ExportTransitGatewayRoutesResponse'
-    {_etgrrsS3Location = Nothing, _etgrrsResponseStatus = pResponseStatus_}
-
+exportTransitGatewayRoutesResponse pResponseStatus_
+  = ExportTransitGatewayRoutesResponse'{_etgrrsS3Location
+                                          = Nothing,
+                                        _etgrrsResponseStatus =
+                                          pResponseStatus_}
 
 -- | The URL of the exported file in Amazon S3. For example, s3:///bucket_name/ /VPCTransitGateway/TransitGatewayRouteTables//file_name/ .
 etgrrsS3Location :: Lens' ExportTransitGatewayRoutesResponse (Maybe Text)

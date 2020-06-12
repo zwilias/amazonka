@@ -41,21 +41,19 @@ module Network.AWS.OpsWorks.RegisterRDSDBInstance
 
 import Network.AWS.Lens
 import Network.AWS.OpsWorks.Types
-import Network.AWS.OpsWorks.Types.Product
 import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 
 -- | /See:/ 'registerRDSDBInstance' smart constructor.
-data RegisterRDSDBInstance =
-  RegisterRDSDBInstance'
-    { _rrdiStackId          :: !Text
-    , _rrdiRDSDBInstanceARN :: !Text
-    , _rrdiDBUser           :: !Text
-    , _rrdiDBPassword       :: !Text
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data RegisterRDSDBInstance = RegisterRDSDBInstance'{_rrdiStackId
+                                                    :: !Text,
+                                                    _rrdiRDSDBInstanceARN ::
+                                                    !Text,
+                                                    _rrdiDBUser :: !Text,
+                                                    _rrdiDBPassword :: !Text}
+                               deriving (Eq, Read, Show, Data, Typeable,
+                                         Generic)
 
 -- | Creates a value of 'RegisterRDSDBInstance' with the minimum fields required to make a request.
 --
@@ -74,14 +72,12 @@ registerRDSDBInstance
     -> Text -- ^ 'rrdiDBUser'
     -> Text -- ^ 'rrdiDBPassword'
     -> RegisterRDSDBInstance
-registerRDSDBInstance pStackId_ pRDSDBInstanceARN_ pDBUser_ pDBPassword_ =
-  RegisterRDSDBInstance'
-    { _rrdiStackId = pStackId_
-    , _rrdiRDSDBInstanceARN = pRDSDBInstanceARN_
-    , _rrdiDBUser = pDBUser_
-    , _rrdiDBPassword = pDBPassword_
-    }
-
+registerRDSDBInstance pStackId_ pRDSDBInstanceARN_
+  pDBUser_ pDBPassword_
+  = RegisterRDSDBInstance'{_rrdiStackId = pStackId_,
+                           _rrdiRDSDBInstanceARN = pRDSDBInstanceARN_,
+                           _rrdiDBUser = pDBUser_,
+                           _rrdiDBPassword = pDBPassword_}
 
 -- | The stack ID.
 rrdiStackId :: Lens' RegisterRDSDBInstance Text
@@ -135,16 +131,15 @@ instance ToQuery RegisterRDSDBInstance where
         toQuery = const mempty
 
 -- | /See:/ 'registerRDSDBInstanceResponse' smart constructor.
-data RegisterRDSDBInstanceResponse =
-  RegisterRDSDBInstanceResponse'
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data RegisterRDSDBInstanceResponse = RegisterRDSDBInstanceResponse'
+                                       deriving (Eq, Read, Show, Data, Typeable,
+                                                 Generic)
 
 -- | Creates a value of 'RegisterRDSDBInstanceResponse' with the minimum fields required to make a request.
 --
 registerRDSDBInstanceResponse
     :: RegisterRDSDBInstanceResponse
-registerRDSDBInstanceResponse = RegisterRDSDBInstanceResponse'
-
+registerRDSDBInstanceResponse
+  = RegisterRDSDBInstanceResponse'
 
 instance NFData RegisterRDSDBInstanceResponse where

@@ -14,11 +14,11 @@
 module Test.AWS.Gen.SSM where
 
 import Data.Proxy
-import Network.AWS.SSM
 import Test.AWS.Fixture
 import Test.AWS.Prelude
-import Test.AWS.SSM.Internal
 import Test.Tasty
+import Network.AWS.SSM
+import Test.AWS.SSM.Internal
 
 -- Auto-generated: the actual test selection needs to be manually placed into
 -- the top-level so that real test data can be incrementally added.

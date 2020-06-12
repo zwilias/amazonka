@@ -59,124 +59,124 @@ module Network.AWS.S3
     -- * Operations
     -- $operations
 
-    -- ** PutBucketRequestPayment
+    -- ** PutBucketRequestPayment 
     , module Network.AWS.S3.PutBucketRequestPayment
 
-    -- ** PutObject
+    -- ** PutObject 
     , module Network.AWS.S3.PutObject
 
-    -- ** DeleteObject
+    -- ** DeleteObject 
     , module Network.AWS.S3.DeleteObject
 
-    -- ** PutBucketLogging
+    -- ** PutBucketLogging 
     , module Network.AWS.S3.PutBucketLogging
 
-    -- ** GetBucketMetricsConfiguration
+    -- ** GetBucketMetricsConfiguration 
     , module Network.AWS.S3.GetBucketMetricsConfiguration
 
-    -- ** ListBuckets
+    -- ** ListBuckets 
     , module Network.AWS.S3.ListBuckets
 
-    -- ** DeleteBucket
+    -- ** DeleteBucket 
     , module Network.AWS.S3.DeleteBucket
 
-    -- ** CreateBucket
+    -- ** CreateBucket 
     , module Network.AWS.S3.CreateBucket
 
-    -- ** DeleteBucketTagging
+    -- ** DeleteBucketTagging 
     , module Network.AWS.S3.DeleteBucketTagging
 
-    -- ** PutObjectACL
+    -- ** PutObjectACL 
     , module Network.AWS.S3.PutObjectACL
 
-    -- ** PutBucketTagging
+    -- ** PutBucketTagging 
     , module Network.AWS.S3.PutBucketTagging
 
-    -- ** GetBucketInventoryConfiguration
+    -- ** GetBucketInventoryConfiguration 
     , module Network.AWS.S3.GetBucketInventoryConfiguration
 
-    -- ** PutBucketInventoryConfiguration
+    -- ** PutBucketInventoryConfiguration 
     , module Network.AWS.S3.PutBucketInventoryConfiguration
 
-    -- ** GetBucketLocation
+    -- ** GetBucketLocation 
     , module Network.AWS.S3.GetBucketLocation
 
-    -- ** ListBucketInventoryConfigurations
+    -- ** ListBucketInventoryConfigurations 
     , module Network.AWS.S3.ListBucketInventoryConfigurations
 
-    -- ** DeleteBucketInventoryConfiguration
+    -- ** DeleteBucketInventoryConfiguration 
     , module Network.AWS.S3.DeleteBucketInventoryConfiguration
 
-    -- ** GetBucketNotificationConfiguration
+    -- ** GetBucketNotificationConfiguration 
     , module Network.AWS.S3.GetBucketNotificationConfiguration
 
-    -- ** PutBucketAccelerateConfiguration
+    -- ** PutBucketAccelerateConfiguration 
     , module Network.AWS.S3.PutBucketAccelerateConfiguration
 
-    -- ** PutBucketMetricsConfiguration
+    -- ** PutBucketMetricsConfiguration 
     , module Network.AWS.S3.PutBucketMetricsConfiguration
 
-    -- ** DeleteBucketMetricsConfiguration
+    -- ** DeleteBucketMetricsConfiguration 
     , module Network.AWS.S3.DeleteBucketMetricsConfiguration
 
     -- ** ListObjectsV2 (Paginated)
     , module Network.AWS.S3.ListObjectsV2
 
-    -- ** GetObject
+    -- ** GetObject 
     , module Network.AWS.S3.GetObject
 
-    -- ** PutBucketReplication
+    -- ** PutBucketReplication 
     , module Network.AWS.S3.PutBucketReplication
 
-    -- ** GetBucketWebsite
+    -- ** GetBucketWebsite 
     , module Network.AWS.S3.GetBucketWebsite
 
-    -- ** GetBucketRequestPayment
+    -- ** GetBucketRequestPayment 
     , module Network.AWS.S3.GetBucketRequestPayment
 
-    -- ** DeleteBucketReplication
+    -- ** DeleteBucketReplication 
     , module Network.AWS.S3.DeleteBucketReplication
 
     -- ** ListObjectVersions (Paginated)
     , module Network.AWS.S3.ListObjectVersions
 
-    -- ** HeadBucket
+    -- ** HeadBucket 
     , module Network.AWS.S3.HeadBucket
 
-    -- ** DeleteBucketLifecycle
+    -- ** DeleteBucketLifecycle 
     , module Network.AWS.S3.DeleteBucketLifecycle
 
-    -- ** PutBucketLifecycleConfiguration
+    -- ** PutBucketLifecycleConfiguration 
     , module Network.AWS.S3.PutBucketLifecycleConfiguration
 
-    -- ** PutBucketAnalyticsConfiguration
+    -- ** PutBucketAnalyticsConfiguration 
     , module Network.AWS.S3.PutBucketAnalyticsConfiguration
 
-    -- ** ListBucketAnalyticsConfigurations
+    -- ** ListBucketAnalyticsConfigurations 
     , module Network.AWS.S3.ListBucketAnalyticsConfigurations
 
-    -- ** DeleteBucketAnalyticsConfiguration
+    -- ** DeleteBucketAnalyticsConfiguration 
     , module Network.AWS.S3.DeleteBucketAnalyticsConfiguration
 
-    -- ** CreateMultipartUpload
+    -- ** CreateMultipartUpload 
     , module Network.AWS.S3.CreateMultipartUpload
 
-    -- ** UploadPart
+    -- ** UploadPart 
     , module Network.AWS.S3.UploadPart
 
-    -- ** SelectObjectContent
+    -- ** SelectObjectContent 
     , module Network.AWS.S3.SelectObjectContent
 
-    -- ** GetBucketReplication
+    -- ** GetBucketReplication 
     , module Network.AWS.S3.GetBucketReplication
 
-    -- ** PutBucketWebsite
+    -- ** PutBucketWebsite 
     , module Network.AWS.S3.PutBucketWebsite
 
-    -- ** DeleteBucketWebsite
+    -- ** DeleteBucketWebsite 
     , module Network.AWS.S3.DeleteBucketWebsite
 
-    -- ** CompleteMultipartUpload
+    -- ** CompleteMultipartUpload 
     , module Network.AWS.S3.CompleteMultipartUpload
 
     -- ** ListMultipartUploads (Paginated)
@@ -185,100 +185,100 @@ module Network.AWS.S3
     -- ** ListObjects (Paginated)
     , module Network.AWS.S3.ListObjects
 
-    -- ** DeleteBucketPolicy
+    -- ** DeleteBucketPolicy 
     , module Network.AWS.S3.DeleteBucketPolicy
 
-    -- ** GetBucketEncryption
+    -- ** GetBucketEncryption 
     , module Network.AWS.S3.GetBucketEncryption
 
-    -- ** AbortMultipartUpload
+    -- ** AbortMultipartUpload 
     , module Network.AWS.S3.AbortMultipartUpload
 
-    -- ** PutBucketPolicy
+    -- ** PutBucketPolicy 
     , module Network.AWS.S3.PutBucketPolicy
 
-    -- ** GetBucketAccelerateConfiguration
+    -- ** GetBucketAccelerateConfiguration 
     , module Network.AWS.S3.GetBucketAccelerateConfiguration
 
-    -- ** GetObjectTorrent
+    -- ** GetObjectTorrent 
     , module Network.AWS.S3.GetObjectTorrent
 
-    -- ** DeleteObjects
+    -- ** DeleteObjects 
     , module Network.AWS.S3.DeleteObjects
 
-    -- ** PutBucketNotificationConfiguration
+    -- ** PutBucketNotificationConfiguration 
     , module Network.AWS.S3.PutBucketNotificationConfiguration
 
-    -- ** GetBucketVersioning
+    -- ** GetBucketVersioning 
     , module Network.AWS.S3.GetBucketVersioning
 
-    -- ** DeleteBucketCORS
+    -- ** DeleteBucketCORS 
     , module Network.AWS.S3.DeleteBucketCORS
 
-    -- ** PutBucketCORS
+    -- ** PutBucketCORS 
     , module Network.AWS.S3.PutBucketCORS
 
-    -- ** GetBucketCORS
+    -- ** GetBucketCORS 
     , module Network.AWS.S3.GetBucketCORS
 
-    -- ** GetObjectACL
+    -- ** GetObjectACL 
     , module Network.AWS.S3.GetObjectACL
 
-    -- ** RestoreObject
+    -- ** RestoreObject 
     , module Network.AWS.S3.RestoreObject
 
-    -- ** HeadObject
+    -- ** HeadObject 
     , module Network.AWS.S3.HeadObject
 
-    -- ** PutBucketVersioning
+    -- ** PutBucketVersioning 
     , module Network.AWS.S3.PutBucketVersioning
 
-    -- ** GetBucketTagging
+    -- ** GetBucketTagging 
     , module Network.AWS.S3.GetBucketTagging
 
-    -- ** CopyObject
+    -- ** CopyObject 
     , module Network.AWS.S3.CopyObject
 
-    -- ** ListBucketMetricsConfigurations
+    -- ** ListBucketMetricsConfigurations 
     , module Network.AWS.S3.ListBucketMetricsConfigurations
 
-    -- ** GetBucketPolicy
+    -- ** GetBucketPolicy 
     , module Network.AWS.S3.GetBucketPolicy
 
-    -- ** PutBucketEncryption
+    -- ** PutBucketEncryption 
     , module Network.AWS.S3.PutBucketEncryption
 
-    -- ** DeleteBucketEncryption
+    -- ** DeleteBucketEncryption 
     , module Network.AWS.S3.DeleteBucketEncryption
 
-    -- ** GetBucketLogging
+    -- ** GetBucketLogging 
     , module Network.AWS.S3.GetBucketLogging
 
-    -- ** GetBucketACL
+    -- ** GetBucketACL 
     , module Network.AWS.S3.GetBucketACL
 
-    -- ** GetBucketLifecycleConfiguration
+    -- ** GetBucketLifecycleConfiguration 
     , module Network.AWS.S3.GetBucketLifecycleConfiguration
 
-    -- ** GetBucketAnalyticsConfiguration
+    -- ** GetBucketAnalyticsConfiguration 
     , module Network.AWS.S3.GetBucketAnalyticsConfiguration
 
-    -- ** GetObjectTagging
+    -- ** GetObjectTagging 
     , module Network.AWS.S3.GetObjectTagging
 
     -- ** ListParts (Paginated)
     , module Network.AWS.S3.ListParts
 
-    -- ** DeleteObjectTagging
+    -- ** DeleteObjectTagging 
     , module Network.AWS.S3.DeleteObjectTagging
 
-    -- ** UploadPartCopy
+    -- ** UploadPartCopy 
     , module Network.AWS.S3.UploadPartCopy
 
-    -- ** PutObjectTagging
+    -- ** PutObjectTagging 
     , module Network.AWS.S3.PutObjectTagging
 
-    -- ** PutBucketACL
+    -- ** PutBucketACL 
     , module Network.AWS.S3.PutBucketACL
 
     -- * Types
@@ -1108,10 +1108,10 @@ import Network.AWS.S3.DeleteBucketReplication
 import Network.AWS.S3.DeleteBucketTagging
 import Network.AWS.S3.DeleteBucketWebsite
 import Network.AWS.S3.DeleteObject
-import Network.AWS.S3.DeleteObjects
 import Network.AWS.S3.DeleteObjectTagging
-import Network.AWS.S3.GetBucketAccelerateConfiguration
+import Network.AWS.S3.DeleteObjects
 import Network.AWS.S3.GetBucketACL
+import Network.AWS.S3.GetBucketAccelerateConfiguration
 import Network.AWS.S3.GetBucketAnalyticsConfiguration
 import Network.AWS.S3.GetBucketCORS
 import Network.AWS.S3.GetBucketEncryption
@@ -1133,18 +1133,17 @@ import Network.AWS.S3.GetObjectTagging
 import Network.AWS.S3.GetObjectTorrent
 import Network.AWS.S3.HeadBucket
 import Network.AWS.S3.HeadObject
-import Network.AWS.S3.Internal
 import Network.AWS.S3.ListBucketAnalyticsConfigurations
 import Network.AWS.S3.ListBucketInventoryConfigurations
 import Network.AWS.S3.ListBucketMetricsConfigurations
 import Network.AWS.S3.ListBuckets
 import Network.AWS.S3.ListMultipartUploads
+import Network.AWS.S3.ListObjectVersions
 import Network.AWS.S3.ListObjects
 import Network.AWS.S3.ListObjectsV2
-import Network.AWS.S3.ListObjectVersions
 import Network.AWS.S3.ListParts
-import Network.AWS.S3.PutBucketAccelerateConfiguration
 import Network.AWS.S3.PutBucketACL
+import Network.AWS.S3.PutBucketAccelerateConfiguration
 import Network.AWS.S3.PutBucketAnalyticsConfiguration
 import Network.AWS.S3.PutBucketCORS
 import Network.AWS.S3.PutBucketEncryption
@@ -1168,6 +1167,7 @@ import Network.AWS.S3.Types
 import Network.AWS.S3.UploadPart
 import Network.AWS.S3.UploadPartCopy
 import Network.AWS.S3.Waiters
+import Network.AWS.S3.Internal
 
 {- $errors
 Error matchers are designed for use with the functions provided by

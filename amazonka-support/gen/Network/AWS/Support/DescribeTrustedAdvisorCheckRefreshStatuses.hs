@@ -42,19 +42,18 @@ import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 import Network.AWS.Support.Types
-import Network.AWS.Support.Types.Product
 
--- |
+-- | 
 --
 --
 --
 -- /See:/ 'describeTrustedAdvisorCheckRefreshStatuses' smart constructor.
-newtype DescribeTrustedAdvisorCheckRefreshStatuses =
-  DescribeTrustedAdvisorCheckRefreshStatuses'
-    { _dtacrsCheckIds :: [Text]
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+newtype DescribeTrustedAdvisorCheckRefreshStatuses = DescribeTrustedAdvisorCheckRefreshStatuses'{_dtacrsCheckIds
+                                                                                                 ::
+                                                                                                 [Text]}
+                                                       deriving (Eq, Read, Show,
+                                                                 Data, Typeable,
+                                                                 Generic)
 
 -- | Creates a value of 'DescribeTrustedAdvisorCheckRefreshStatuses' with the minimum fields required to make a request.
 --
@@ -63,9 +62,9 @@ newtype DescribeTrustedAdvisorCheckRefreshStatuses =
 -- * 'dtacrsCheckIds' - The IDs of the Trusted Advisor checks to get the status of. __Note:__ Specifying the check ID of a check that is automatically refreshed causes an @InvalidParameterValue@ error.
 describeTrustedAdvisorCheckRefreshStatuses
     :: DescribeTrustedAdvisorCheckRefreshStatuses
-describeTrustedAdvisorCheckRefreshStatuses =
-  DescribeTrustedAdvisorCheckRefreshStatuses' {_dtacrsCheckIds = mempty}
-
+describeTrustedAdvisorCheckRefreshStatuses
+  = DescribeTrustedAdvisorCheckRefreshStatuses'{_dtacrsCheckIds
+                                                  = mempty}
 
 -- | The IDs of the Trusted Advisor checks to get the status of. __Note:__ Specifying the check ID of a check that is automatically refreshed causes an @InvalidParameterValue@ error.
 dtacrsCheckIds :: Lens' DescribeTrustedAdvisorCheckRefreshStatuses [Text]
@@ -128,13 +127,17 @@ instance ToQuery
 --
 --
 -- /See:/ 'describeTrustedAdvisorCheckRefreshStatusesResponse' smart constructor.
-data DescribeTrustedAdvisorCheckRefreshStatusesResponse =
-  DescribeTrustedAdvisorCheckRefreshStatusesResponse'
-    { _dtacrsrsResponseStatus :: !Int
-    , _dtacrsrsStatuses       :: ![TrustedAdvisorCheckRefreshStatus]
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data DescribeTrustedAdvisorCheckRefreshStatusesResponse = DescribeTrustedAdvisorCheckRefreshStatusesResponse'{_dtacrsrsResponseStatus
+                                                                                                              ::
+                                                                                                              !Int,
+                                                                                                              _dtacrsrsStatuses
+                                                                                                              ::
+                                                                                                              ![TrustedAdvisorCheckRefreshStatus]}
+                                                            deriving (Eq, Read,
+                                                                      Show,
+                                                                      Data,
+                                                                      Typeable,
+                                                                      Generic)
 
 -- | Creates a value of 'DescribeTrustedAdvisorCheckRefreshStatusesResponse' with the minimum fields required to make a request.
 --
@@ -146,10 +149,12 @@ data DescribeTrustedAdvisorCheckRefreshStatusesResponse =
 describeTrustedAdvisorCheckRefreshStatusesResponse
     :: Int -- ^ 'dtacrsrsResponseStatus'
     -> DescribeTrustedAdvisorCheckRefreshStatusesResponse
-describeTrustedAdvisorCheckRefreshStatusesResponse pResponseStatus_ =
-  DescribeTrustedAdvisorCheckRefreshStatusesResponse'
-    {_dtacrsrsResponseStatus = pResponseStatus_, _dtacrsrsStatuses = mempty}
-
+describeTrustedAdvisorCheckRefreshStatusesResponse
+  pResponseStatus_
+  = DescribeTrustedAdvisorCheckRefreshStatusesResponse'{_dtacrsrsResponseStatus
+                                                          = pResponseStatus_,
+                                                        _dtacrsrsStatuses =
+                                                          mempty}
 
 -- | -- | The response status code.
 dtacrsrsResponseStatus :: Lens' DescribeTrustedAdvisorCheckRefreshStatusesResponse Int

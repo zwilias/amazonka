@@ -39,19 +39,15 @@ module Network.AWS.MQ.ListBrokers
 
 import Network.AWS.Lens
 import Network.AWS.MQ.Types
-import Network.AWS.MQ.Types.Product
 import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 
 -- | /See:/ 'listBrokers' smart constructor.
-data ListBrokers =
-  ListBrokers'
-    { _lbNextToken  :: !(Maybe Text)
-    , _lbMaxResults :: !(Maybe Nat)
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data ListBrokers = ListBrokers'{_lbNextToken ::
+                                !(Maybe Text),
+                                _lbMaxResults :: !(Maybe Nat)}
+                     deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'ListBrokers' with the minimum fields required to make a request.
 --
@@ -62,8 +58,9 @@ data ListBrokers =
 -- * 'lbMaxResults' - The maximum number of brokers that Amazon MQ can return per page (20 by default). This value must be an integer from 5 to 100.
 listBrokers
     :: ListBrokers
-listBrokers = ListBrokers' {_lbNextToken = Nothing, _lbMaxResults = Nothing}
-
+listBrokers
+  = ListBrokers'{_lbNextToken = Nothing,
+                 _lbMaxResults = Nothing}
 
 -- | The token that specifies the next page of results Amazon MQ should return. To request the first page, leave nextToken empty.
 lbNextToken :: Lens' ListBrokers (Maybe Text)
@@ -105,14 +102,12 @@ instance ToQuery ListBrokers where
                "maxResults" =: _lbMaxResults]
 
 -- | /See:/ 'listBrokersResponse' smart constructor.
-data ListBrokersResponse =
-  ListBrokersResponse'
-    { _lbrsNextToken       :: !(Maybe Text)
-    , _lbrsBrokerSummaries :: !(Maybe [BrokerSummary])
-    , _lbrsResponseStatus  :: !Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data ListBrokersResponse = ListBrokersResponse'{_lbrsNextToken
+                                                :: !(Maybe Text),
+                                                _lbrsBrokerSummaries ::
+                                                !(Maybe [BrokerSummary]),
+                                                _lbrsResponseStatus :: !Int}
+                             deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'ListBrokersResponse' with the minimum fields required to make a request.
 --
@@ -126,13 +121,10 @@ data ListBrokersResponse =
 listBrokersResponse
     :: Int -- ^ 'lbrsResponseStatus'
     -> ListBrokersResponse
-listBrokersResponse pResponseStatus_ =
-  ListBrokersResponse'
-    { _lbrsNextToken = Nothing
-    , _lbrsBrokerSummaries = Nothing
-    , _lbrsResponseStatus = pResponseStatus_
-    }
-
+listBrokersResponse pResponseStatus_
+  = ListBrokersResponse'{_lbrsNextToken = Nothing,
+                         _lbrsBrokerSummaries = Nothing,
+                         _lbrsResponseStatus = pResponseStatus_}
 
 -- | The token that specifies the next page of results Amazon MQ should return. To request the first page, leave nextToken empty.
 lbrsNextToken :: Lens' ListBrokersResponse (Maybe Text)

@@ -54,26 +54,29 @@ module Network.AWS.Firehose.UpdateDestination
     ) where
 
 import Network.AWS.Firehose.Types
-import Network.AWS.Firehose.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 
 -- | /See:/ 'updateDestination' smart constructor.
-data UpdateDestination =
-  UpdateDestination'
-    { _udSplunkDestinationUpdate :: !(Maybe SplunkDestinationUpdate)
-    , _udS3DestinationUpdate :: !(Maybe S3DestinationUpdate)
-    , _udRedshiftDestinationUpdate :: !(Maybe RedshiftDestinationUpdate)
-    , _udElasticsearchDestinationUpdate :: !(Maybe ElasticsearchDestinationUpdate)
-    , _udExtendedS3DestinationUpdate :: !(Maybe ExtendedS3DestinationUpdate)
-    , _udDeliveryStreamName :: !Text
-    , _udCurrentDeliveryStreamVersionId :: !Text
-    , _udDestinationId :: !Text
-    }
-  deriving (Eq, Show, Data, Typeable, Generic)
-
+data UpdateDestination = UpdateDestination'{_udSplunkDestinationUpdate
+                                            :: !(Maybe SplunkDestinationUpdate),
+                                            _udS3DestinationUpdate ::
+                                            !(Maybe S3DestinationUpdate),
+                                            _udRedshiftDestinationUpdate ::
+                                            !(Maybe RedshiftDestinationUpdate),
+                                            _udElasticsearchDestinationUpdate ::
+                                            !(Maybe
+                                                ElasticsearchDestinationUpdate),
+                                            _udExtendedS3DestinationUpdate ::
+                                            !(Maybe
+                                                ExtendedS3DestinationUpdate),
+                                            _udDeliveryStreamName :: !Text,
+                                            _udCurrentDeliveryStreamVersionId ::
+                                            !Text,
+                                            _udDestinationId :: !Text}
+                           deriving (Eq, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'UpdateDestination' with the minimum fields required to make a request.
 --
@@ -99,18 +102,18 @@ updateDestination
     -> Text -- ^ 'udCurrentDeliveryStreamVersionId'
     -> Text -- ^ 'udDestinationId'
     -> UpdateDestination
-updateDestination pDeliveryStreamName_ pCurrentDeliveryStreamVersionId_ pDestinationId_ =
-  UpdateDestination'
-    { _udSplunkDestinationUpdate = Nothing
-    , _udS3DestinationUpdate = Nothing
-    , _udRedshiftDestinationUpdate = Nothing
-    , _udElasticsearchDestinationUpdate = Nothing
-    , _udExtendedS3DestinationUpdate = Nothing
-    , _udDeliveryStreamName = pDeliveryStreamName_
-    , _udCurrentDeliveryStreamVersionId = pCurrentDeliveryStreamVersionId_
-    , _udDestinationId = pDestinationId_
-    }
-
+updateDestination pDeliveryStreamName_
+  pCurrentDeliveryStreamVersionId_ pDestinationId_
+  = UpdateDestination'{_udSplunkDestinationUpdate =
+                         Nothing,
+                       _udS3DestinationUpdate = Nothing,
+                       _udRedshiftDestinationUpdate = Nothing,
+                       _udElasticsearchDestinationUpdate = Nothing,
+                       _udExtendedS3DestinationUpdate = Nothing,
+                       _udDeliveryStreamName = pDeliveryStreamName_,
+                       _udCurrentDeliveryStreamVersionId =
+                         pCurrentDeliveryStreamVersionId_,
+                       _udDestinationId = pDestinationId_}
 
 -- | Describes an update for a destination in Splunk.
 udSplunkDestinationUpdate :: Lens' UpdateDestination (Maybe SplunkDestinationUpdate)
@@ -193,12 +196,10 @@ instance ToQuery UpdateDestination where
         toQuery = const mempty
 
 -- | /See:/ 'updateDestinationResponse' smart constructor.
-newtype UpdateDestinationResponse =
-  UpdateDestinationResponse'
-    { _udrsResponseStatus :: Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+newtype UpdateDestinationResponse = UpdateDestinationResponse'{_udrsResponseStatus
+                                                               :: Int}
+                                      deriving (Eq, Read, Show, Data, Typeable,
+                                                Generic)
 
 -- | Creates a value of 'UpdateDestinationResponse' with the minimum fields required to make a request.
 --
@@ -208,9 +209,9 @@ newtype UpdateDestinationResponse =
 updateDestinationResponse
     :: Int -- ^ 'udrsResponseStatus'
     -> UpdateDestinationResponse
-updateDestinationResponse pResponseStatus_ =
-  UpdateDestinationResponse' {_udrsResponseStatus = pResponseStatus_}
-
+updateDestinationResponse pResponseStatus_
+  = UpdateDestinationResponse'{_udrsResponseStatus =
+                                 pResponseStatus_}
 
 -- | -- | The response status code.
 udrsResponseStatus :: Lens' UpdateDestinationResponse Int

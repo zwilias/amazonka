@@ -43,17 +43,12 @@ import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 import Network.AWS.WorkMail.Types
-import Network.AWS.WorkMail.Types.Product
 
 -- | /See:/ 'createAlias' smart constructor.
-data CreateAlias =
-  CreateAlias'
-    { _caOrganizationId :: !Text
-    , _caEntityId       :: !Text
-    , _caAlias          :: !Text
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data CreateAlias = CreateAlias'{_caOrganizationId ::
+                                !Text,
+                                _caEntityId :: !Text, _caAlias :: !Text}
+                     deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'CreateAlias' with the minimum fields required to make a request.
 --
@@ -69,13 +64,9 @@ createAlias
     -> Text -- ^ 'caEntityId'
     -> Text -- ^ 'caAlias'
     -> CreateAlias
-createAlias pOrganizationId_ pEntityId_ pAlias_ =
-  CreateAlias'
-    { _caOrganizationId = pOrganizationId_
-    , _caEntityId = pEntityId_
-    , _caAlias = pAlias_
-    }
-
+createAlias pOrganizationId_ pEntityId_ pAlias_
+  = CreateAlias'{_caOrganizationId = pOrganizationId_,
+                 _caEntityId = pEntityId_, _caAlias = pAlias_}
 
 -- | The organization under which the member exists.
 caOrganizationId :: Lens' CreateAlias Text
@@ -125,12 +116,10 @@ instance ToQuery CreateAlias where
         toQuery = const mempty
 
 -- | /See:/ 'createAliasResponse' smart constructor.
-newtype CreateAliasResponse =
-  CreateAliasResponse'
-    { _carsResponseStatus :: Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+newtype CreateAliasResponse = CreateAliasResponse'{_carsResponseStatus
+                                                   :: Int}
+                                deriving (Eq, Read, Show, Data, Typeable,
+                                          Generic)
 
 -- | Creates a value of 'CreateAliasResponse' with the minimum fields required to make a request.
 --
@@ -140,9 +129,9 @@ newtype CreateAliasResponse =
 createAliasResponse
     :: Int -- ^ 'carsResponseStatus'
     -> CreateAliasResponse
-createAliasResponse pResponseStatus_ =
-  CreateAliasResponse' {_carsResponseStatus = pResponseStatus_}
-
+createAliasResponse pResponseStatus_
+  = CreateAliasResponse'{_carsResponseStatus =
+                           pResponseStatus_}
 
 -- | -- | The response status code.
 carsResponseStatus :: Lens' CreateAliasResponse Int

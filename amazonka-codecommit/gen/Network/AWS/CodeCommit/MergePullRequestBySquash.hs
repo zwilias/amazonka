@@ -47,28 +47,40 @@ module Network.AWS.CodeCommit.MergePullRequestBySquash
     ) where
 
 import Network.AWS.CodeCommit.Types
-import Network.AWS.CodeCommit.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 
 -- | /See:/ 'mergePullRequestBySquash' smart constructor.
-data MergePullRequestBySquash =
-  MergePullRequestBySquash'
-    { _mprbsEmail :: !(Maybe Text)
-    , _mprbsAuthorName :: !(Maybe Text)
-    , _mprbsConflictDetailLevel :: !(Maybe ConflictDetailLevelTypeEnum)
-    , _mprbsCommitMessage :: !(Maybe Text)
-    , _mprbsConflictResolution :: !(Maybe ConflictResolution)
-    , _mprbsConflictResolutionStrategy :: !(Maybe ConflictResolutionStrategyTypeEnum)
-    , _mprbsKeepEmptyFolders :: !(Maybe Bool)
-    , _mprbsSourceCommitId :: !(Maybe Text)
-    , _mprbsPullRequestId :: !Text
-    , _mprbsRepositoryName :: !Text
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data MergePullRequestBySquash = MergePullRequestBySquash'{_mprbsEmail
+                                                          :: !(Maybe Text),
+                                                          _mprbsAuthorName ::
+                                                          !(Maybe Text),
+                                                          _mprbsConflictDetailLevel
+                                                          ::
+                                                          !(Maybe
+                                                              ConflictDetailLevelTypeEnum),
+                                                          _mprbsCommitMessage ::
+                                                          !(Maybe Text),
+                                                          _mprbsConflictResolution
+                                                          ::
+                                                          !(Maybe
+                                                              ConflictResolution),
+                                                          _mprbsConflictResolutionStrategy
+                                                          ::
+                                                          !(Maybe
+                                                              ConflictResolutionStrategyTypeEnum),
+                                                          _mprbsKeepEmptyFolders
+                                                          :: !(Maybe Bool),
+                                                          _mprbsSourceCommitId
+                                                          :: !(Maybe Text),
+                                                          _mprbsPullRequestId ::
+                                                          !Text,
+                                                          _mprbsRepositoryName
+                                                          :: !Text}
+                                  deriving (Eq, Read, Show, Data, Typeable,
+                                            Generic)
 
 -- | Creates a value of 'MergePullRequestBySquash' with the minimum fields required to make a request.
 --
@@ -97,20 +109,18 @@ mergePullRequestBySquash
     :: Text -- ^ 'mprbsPullRequestId'
     -> Text -- ^ 'mprbsRepositoryName'
     -> MergePullRequestBySquash
-mergePullRequestBySquash pPullRequestId_ pRepositoryName_ =
-  MergePullRequestBySquash'
-    { _mprbsEmail = Nothing
-    , _mprbsAuthorName = Nothing
-    , _mprbsConflictDetailLevel = Nothing
-    , _mprbsCommitMessage = Nothing
-    , _mprbsConflictResolution = Nothing
-    , _mprbsConflictResolutionStrategy = Nothing
-    , _mprbsKeepEmptyFolders = Nothing
-    , _mprbsSourceCommitId = Nothing
-    , _mprbsPullRequestId = pPullRequestId_
-    , _mprbsRepositoryName = pRepositoryName_
-    }
-
+mergePullRequestBySquash pPullRequestId_
+  pRepositoryName_
+  = MergePullRequestBySquash'{_mprbsEmail = Nothing,
+                              _mprbsAuthorName = Nothing,
+                              _mprbsConflictDetailLevel = Nothing,
+                              _mprbsCommitMessage = Nothing,
+                              _mprbsConflictResolution = Nothing,
+                              _mprbsConflictResolutionStrategy = Nothing,
+                              _mprbsKeepEmptyFolders = Nothing,
+                              _mprbsSourceCommitId = Nothing,
+                              _mprbsPullRequestId = pPullRequestId_,
+                              _mprbsRepositoryName = pRepositoryName_}
 
 -- | The email address of the person merging the branches. This information is used in the commit information for the merge.
 mprbsEmail :: Lens' MergePullRequestBySquash (Maybe Text)
@@ -201,13 +211,15 @@ instance ToQuery MergePullRequestBySquash where
         toQuery = const mempty
 
 -- | /See:/ 'mergePullRequestBySquashResponse' smart constructor.
-data MergePullRequestBySquashResponse =
-  MergePullRequestBySquashResponse'
-    { _mprbsrsPullRequest    :: !(Maybe PullRequest)
-    , _mprbsrsResponseStatus :: !Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data MergePullRequestBySquashResponse = MergePullRequestBySquashResponse'{_mprbsrsPullRequest
+                                                                          ::
+                                                                          !(Maybe
+                                                                              PullRequest),
+                                                                          _mprbsrsResponseStatus
+                                                                          ::
+                                                                          !Int}
+                                          deriving (Eq, Read, Show, Data,
+                                                    Typeable, Generic)
 
 -- | Creates a value of 'MergePullRequestBySquashResponse' with the minimum fields required to make a request.
 --
@@ -219,10 +231,10 @@ data MergePullRequestBySquashResponse =
 mergePullRequestBySquashResponse
     :: Int -- ^ 'mprbsrsResponseStatus'
     -> MergePullRequestBySquashResponse
-mergePullRequestBySquashResponse pResponseStatus_ =
-  MergePullRequestBySquashResponse'
-    {_mprbsrsPullRequest = Nothing, _mprbsrsResponseStatus = pResponseStatus_}
-
+mergePullRequestBySquashResponse pResponseStatus_
+  = MergePullRequestBySquashResponse'{_mprbsrsPullRequest
+                                        = Nothing,
+                                      _mprbsrsResponseStatus = pResponseStatus_}
 
 -- | Undocumented member.
 mprbsrsPullRequest :: Lens' MergePullRequestBySquashResponse (Maybe PullRequest)

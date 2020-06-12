@@ -23,7 +23,7 @@
 --
 -- /Important:/ A @TypeAlreadyExists@ fault is returned if the type already exists in the domain. You cannot change any configuration settings of the type after its registration, and it must be registered as a new version.
 --
--- __Access Control__
+-- __Access Control__ 
 --
 -- You can use IAM policies to control this action's access to Amazon SWF resources as follows:
 --
@@ -72,24 +72,26 @@ import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 import Network.AWS.SWF.Types
-import Network.AWS.SWF.Types.Product
 
 -- | /See:/ 'registerActivityType' smart constructor.
-data RegisterActivityType =
-  RegisterActivityType'
-    { _ratDefaultTaskScheduleToStartTimeout :: !(Maybe Text)
-    , _ratDefaultTaskList                   :: !(Maybe TaskList)
-    , _ratDefaultTaskPriority               :: !(Maybe Text)
-    , _ratDefaultTaskHeartbeatTimeout       :: !(Maybe Text)
-    , _ratDefaultTaskScheduleToCloseTimeout :: !(Maybe Text)
-    , _ratDefaultTaskStartToCloseTimeout    :: !(Maybe Text)
-    , _ratDescription                       :: !(Maybe Text)
-    , _ratDomain                            :: !Text
-    , _ratName                              :: !Text
-    , _ratVersion                           :: !Text
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data RegisterActivityType = RegisterActivityType'{_ratDefaultTaskScheduleToStartTimeout
+                                                  :: !(Maybe Text),
+                                                  _ratDefaultTaskList ::
+                                                  !(Maybe TaskList),
+                                                  _ratDefaultTaskPriority ::
+                                                  !(Maybe Text),
+                                                  _ratDefaultTaskHeartbeatTimeout
+                                                  :: !(Maybe Text),
+                                                  _ratDefaultTaskScheduleToCloseTimeout
+                                                  :: !(Maybe Text),
+                                                  _ratDefaultTaskStartToCloseTimeout
+                                                  :: !(Maybe Text),
+                                                  _ratDescription ::
+                                                  !(Maybe Text),
+                                                  _ratDomain :: !Text,
+                                                  _ratName :: !Text,
+                                                  _ratVersion :: !Text}
+                              deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'RegisterActivityType' with the minimum fields required to make a request.
 --
@@ -119,20 +121,16 @@ registerActivityType
     -> Text -- ^ 'ratName'
     -> Text -- ^ 'ratVersion'
     -> RegisterActivityType
-registerActivityType pDomain_ pName_ pVersion_ =
-  RegisterActivityType'
-    { _ratDefaultTaskScheduleToStartTimeout = Nothing
-    , _ratDefaultTaskList = Nothing
-    , _ratDefaultTaskPriority = Nothing
-    , _ratDefaultTaskHeartbeatTimeout = Nothing
-    , _ratDefaultTaskScheduleToCloseTimeout = Nothing
-    , _ratDefaultTaskStartToCloseTimeout = Nothing
-    , _ratDescription = Nothing
-    , _ratDomain = pDomain_
-    , _ratName = pName_
-    , _ratVersion = pVersion_
-    }
-
+registerActivityType pDomain_ pName_ pVersion_
+  = RegisterActivityType'{_ratDefaultTaskScheduleToStartTimeout
+                            = Nothing,
+                          _ratDefaultTaskList = Nothing,
+                          _ratDefaultTaskPriority = Nothing,
+                          _ratDefaultTaskHeartbeatTimeout = Nothing,
+                          _ratDefaultTaskScheduleToCloseTimeout = Nothing,
+                          _ratDefaultTaskStartToCloseTimeout = Nothing,
+                          _ratDescription = Nothing, _ratDomain = pDomain_,
+                          _ratName = pName_, _ratVersion = pVersion_}
 
 -- | If set, specifies the default maximum duration that a task of this activity type can wait before being assigned to a worker. This default can be overridden when scheduling an activity task using the @ScheduleActivityTask@ 'Decision' . The duration is specified in seconds, an integer greater than or equal to @0@ . You can use @NONE@ to specify unlimited duration.
 ratDefaultTaskScheduleToStartTimeout :: Lens' RegisterActivityType (Maybe Text)
@@ -221,16 +219,15 @@ instance ToQuery RegisterActivityType where
         toQuery = const mempty
 
 -- | /See:/ 'registerActivityTypeResponse' smart constructor.
-data RegisterActivityTypeResponse =
-  RegisterActivityTypeResponse'
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data RegisterActivityTypeResponse = RegisterActivityTypeResponse'
+                                      deriving (Eq, Read, Show, Data, Typeable,
+                                                Generic)
 
 -- | Creates a value of 'RegisterActivityTypeResponse' with the minimum fields required to make a request.
 --
 registerActivityTypeResponse
     :: RegisterActivityTypeResponse
-registerActivityTypeResponse = RegisterActivityTypeResponse'
-
+registerActivityTypeResponse
+  = RegisterActivityTypeResponse'
 
 instance NFData RegisterActivityTypeResponse where

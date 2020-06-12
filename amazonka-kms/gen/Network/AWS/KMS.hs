@@ -11,7 +11,7 @@
 -- Stability   : auto-generated
 -- Portability : non-portable (GHC extensions)
 --
--- __AWS Key Management Service__
+-- __AWS Key Management Service__ 
 --
 -- AWS Key Management Service (AWS KMS) is an encryption and key management web service. This guide describes the AWS KMS operations that you can call programmatically. For general information about AWS KMS, see the <http://docs.aws.amazon.com/kms/latest/developerguide/ AWS Key Management Service Developer Guide> .
 --
@@ -19,17 +19,17 @@
 --
 -- Clients must support TLS (Transport Layer Security) 1.0. We recommend TLS 1.2. Clients must also support cipher suites with Perfect Forward Secrecy (PFS) such as Ephemeral Diffie-Hellman (DHE) or Elliptic Curve Ephemeral Diffie-Hellman (ECDHE). Most modern systems such as Java 7 and later support these modes.
 --
--- __Signing Requests__
+-- __Signing Requests__ 
 --
 -- Requests must be signed by using an access key ID and a secret access key. We strongly recommend that you /do not/ use your AWS account (root) access key ID and secret key for everyday work with AWS KMS. Instead, use the access key ID and secret access key for an IAM user, or you can use the AWS Security Token Service to generate temporary security credentials that you can use to sign requests.
 --
 -- All AWS KMS operations require <http://docs.aws.amazon.com/general/latest/gr/signature-version-4.html Signature Version 4> .
 --
--- __Logging API Requests__
+-- __Logging API Requests__ 
 --
 -- AWS KMS supports AWS CloudTrail, a service that logs AWS API calls and related events for your AWS account and delivers them to an Amazon S3 bucket that you specify. By using the information collected by CloudTrail, you can determine what requests were made to AWS KMS, who made the request, when it was made, and so on. To learn more about CloudTrail, including how to turn it on and find your log files, see the <http://docs.aws.amazon.com/awscloudtrail/latest/userguide/ AWS CloudTrail User Guide> .
 --
--- __Additional Resources__
+-- __Additional Resources__ 
 --
 -- For more information about credentials and request signing, see the following:
 --
@@ -41,17 +41,17 @@
 --
 --
 --
--- __Commonly Used APIs__
+-- __Commonly Used APIs__ 
 --
 -- Of the APIs discussed in this guide, the following will prove the most useful for most applications. You will likely perform actions other than these, such as creating keys and assigning policies, by using the console.
 --
---     * 'Encrypt'
+--     * 'Encrypt' 
 --
---     * 'Decrypt'
+--     * 'Decrypt' 
 --
---     * 'GenerateDataKey'
+--     * 'GenerateDataKey' 
 --
---     * 'GenerateDataKeyWithoutPlaintext'
+--     * 'GenerateDataKeyWithoutPlaintext' 
 --
 --
 --
@@ -132,109 +132,109 @@ module Network.AWS.KMS
     -- * Operations
     -- $operations
 
-    -- ** Encrypt
+    -- ** Encrypt 
     , module Network.AWS.KMS.Encrypt
 
     -- ** ListGrants (Paginated)
     , module Network.AWS.KMS.ListGrants
 
-    -- ** DisableKeyRotation
+    -- ** DisableKeyRotation 
     , module Network.AWS.KMS.DisableKeyRotation
 
-    -- ** GenerateDataKeyWithoutPlaintext
+    -- ** GenerateDataKeyWithoutPlaintext 
     , module Network.AWS.KMS.GenerateDataKeyWithoutPlaintext
 
-    -- ** GetParametersForImport
+    -- ** GetParametersForImport 
     , module Network.AWS.KMS.GetParametersForImport
 
-    -- ** EnableKeyRotation
+    -- ** EnableKeyRotation 
     , module Network.AWS.KMS.EnableKeyRotation
 
-    -- ** CreateAlias
+    -- ** CreateAlias 
     , module Network.AWS.KMS.CreateAlias
 
-    -- ** CreateGrant
+    -- ** CreateGrant 
     , module Network.AWS.KMS.CreateGrant
 
     -- ** ListAliases (Paginated)
     , module Network.AWS.KMS.ListAliases
 
-    -- ** ListRetirableGrants
+    -- ** ListRetirableGrants 
     , module Network.AWS.KMS.ListRetirableGrants
 
-    -- ** GenerateRandom
+    -- ** GenerateRandom 
     , module Network.AWS.KMS.GenerateRandom
 
-    -- ** CreateKey
+    -- ** CreateKey 
     , module Network.AWS.KMS.CreateKey
 
-    -- ** DisableKey
+    -- ** DisableKey 
     , module Network.AWS.KMS.DisableKey
 
-    -- ** RetireGrant
+    -- ** RetireGrant 
     , module Network.AWS.KMS.RetireGrant
 
     -- ** ListKeys (Paginated)
     , module Network.AWS.KMS.ListKeys
 
-    -- ** ListResourceTags
+    -- ** ListResourceTags 
     , module Network.AWS.KMS.ListResourceTags
 
-    -- ** GetKeyRotationStatus
+    -- ** GetKeyRotationStatus 
     , module Network.AWS.KMS.GetKeyRotationStatus
 
-    -- ** GenerateDataKey
+    -- ** GenerateDataKey 
     , module Network.AWS.KMS.GenerateDataKey
 
-    -- ** DeleteAlias
+    -- ** DeleteAlias 
     , module Network.AWS.KMS.DeleteAlias
 
-    -- ** UpdateAlias
+    -- ** UpdateAlias 
     , module Network.AWS.KMS.UpdateAlias
 
-    -- ** DescribeKey
+    -- ** DescribeKey 
     , module Network.AWS.KMS.DescribeKey
 
-    -- ** CancelKeyDeletion
+    -- ** CancelKeyDeletion 
     , module Network.AWS.KMS.CancelKeyDeletion
 
-    -- ** Decrypt
+    -- ** Decrypt 
     , module Network.AWS.KMS.Decrypt
 
-    -- ** UpdateKeyDescription
+    -- ** UpdateKeyDescription 
     , module Network.AWS.KMS.UpdateKeyDescription
 
-    -- ** ReEncrypt
+    -- ** ReEncrypt 
     , module Network.AWS.KMS.ReEncrypt
 
-    -- ** TagResource
+    -- ** TagResource 
     , module Network.AWS.KMS.TagResource
 
     -- ** ListKeyPolicies (Paginated)
     , module Network.AWS.KMS.ListKeyPolicies
 
-    -- ** UntagResource
+    -- ** UntagResource 
     , module Network.AWS.KMS.UntagResource
 
-    -- ** ScheduleKeyDeletion
+    -- ** ScheduleKeyDeletion 
     , module Network.AWS.KMS.ScheduleKeyDeletion
 
-    -- ** PutKeyPolicy
+    -- ** PutKeyPolicy 
     , module Network.AWS.KMS.PutKeyPolicy
 
-    -- ** EnableKey
+    -- ** EnableKey 
     , module Network.AWS.KMS.EnableKey
 
-    -- ** RevokeGrant
+    -- ** RevokeGrant 
     , module Network.AWS.KMS.RevokeGrant
 
-    -- ** GetKeyPolicy
+    -- ** GetKeyPolicy 
     , module Network.AWS.KMS.GetKeyPolicy
 
-    -- ** ImportKeyMaterial
+    -- ** ImportKeyMaterial 
     , module Network.AWS.KMS.ImportKeyMaterial
 
-    -- ** DeleteImportedKeyMaterial
+    -- ** DeleteImportedKeyMaterial 
     , module Network.AWS.KMS.DeleteImportedKeyMaterial
 
     -- * Types

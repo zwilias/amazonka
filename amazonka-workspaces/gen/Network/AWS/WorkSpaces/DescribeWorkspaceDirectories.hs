@@ -47,16 +47,18 @@ import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 import Network.AWS.WorkSpaces.Types
-import Network.AWS.WorkSpaces.Types.Product
 
 -- | /See:/ 'describeWorkspaceDirectories' smart constructor.
-data DescribeWorkspaceDirectories =
-  DescribeWorkspaceDirectories'
-    { _dwdNextToken    :: !(Maybe Text)
-    , _dwdDirectoryIds :: !(Maybe (List1 Text))
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data DescribeWorkspaceDirectories = DescribeWorkspaceDirectories'{_dwdNextToken
+                                                                  ::
+                                                                  !(Maybe Text),
+                                                                  _dwdDirectoryIds
+                                                                  ::
+                                                                  !(Maybe
+                                                                      (List1
+                                                                         Text))}
+                                      deriving (Eq, Read, Show, Data, Typeable,
+                                                Generic)
 
 -- | Creates a value of 'DescribeWorkspaceDirectories' with the minimum fields required to make a request.
 --
@@ -67,10 +69,10 @@ data DescribeWorkspaceDirectories =
 -- * 'dwdDirectoryIds' - The identifiers of the directories. If the value is null, all directories are retrieved.
 describeWorkspaceDirectories
     :: DescribeWorkspaceDirectories
-describeWorkspaceDirectories =
-  DescribeWorkspaceDirectories'
-    {_dwdNextToken = Nothing, _dwdDirectoryIds = Nothing}
-
+describeWorkspaceDirectories
+  = DescribeWorkspaceDirectories'{_dwdNextToken =
+                                    Nothing,
+                                  _dwdDirectoryIds = Nothing}
 
 -- | The token for the next set of results. (You received this token from a previous call.)
 dwdNextToken :: Lens' DescribeWorkspaceDirectories (Maybe Text)
@@ -128,14 +130,19 @@ instance ToQuery DescribeWorkspaceDirectories where
         toQuery = const mempty
 
 -- | /See:/ 'describeWorkspaceDirectoriesResponse' smart constructor.
-data DescribeWorkspaceDirectoriesResponse =
-  DescribeWorkspaceDirectoriesResponse'
-    { _dwdrsDirectories    :: !(Maybe [WorkspaceDirectory])
-    , _dwdrsNextToken      :: !(Maybe Text)
-    , _dwdrsResponseStatus :: !Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data DescribeWorkspaceDirectoriesResponse = DescribeWorkspaceDirectoriesResponse'{_dwdrsDirectories
+                                                                                  ::
+                                                                                  !(Maybe
+                                                                                      [WorkspaceDirectory]),
+                                                                                  _dwdrsNextToken
+                                                                                  ::
+                                                                                  !(Maybe
+                                                                                      Text),
+                                                                                  _dwdrsResponseStatus
+                                                                                  ::
+                                                                                  !Int}
+                                              deriving (Eq, Read, Show, Data,
+                                                        Typeable, Generic)
 
 -- | Creates a value of 'DescribeWorkspaceDirectoriesResponse' with the minimum fields required to make a request.
 --
@@ -149,13 +156,12 @@ data DescribeWorkspaceDirectoriesResponse =
 describeWorkspaceDirectoriesResponse
     :: Int -- ^ 'dwdrsResponseStatus'
     -> DescribeWorkspaceDirectoriesResponse
-describeWorkspaceDirectoriesResponse pResponseStatus_ =
-  DescribeWorkspaceDirectoriesResponse'
-    { _dwdrsDirectories = Nothing
-    , _dwdrsNextToken = Nothing
-    , _dwdrsResponseStatus = pResponseStatus_
-    }
-
+describeWorkspaceDirectoriesResponse pResponseStatus_
+  = DescribeWorkspaceDirectoriesResponse'{_dwdrsDirectories
+                                            = Nothing,
+                                          _dwdrsNextToken = Nothing,
+                                          _dwdrsResponseStatus =
+                                            pResponseStatus_}
 
 -- | Information about the directories.
 dwdrsDirectories :: Lens' DescribeWorkspaceDirectoriesResponse [WorkspaceDirectory]

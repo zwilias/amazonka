@@ -40,21 +40,20 @@ module Network.AWS.EC2.ModifyVPNTunnelCertificate
     ) where
 
 import Network.AWS.EC2.Types
-import Network.AWS.EC2.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 
 -- | /See:/ 'modifyVPNTunnelCertificate' smart constructor.
-data ModifyVPNTunnelCertificate =
-  ModifyVPNTunnelCertificate'
-    { _mvtcDryRun                    :: !(Maybe Bool)
-    , _mvtcVPNConnectionId           :: !Text
-    , _mvtcVPNTunnelOutsideIPAddress :: !Text
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data ModifyVPNTunnelCertificate = ModifyVPNTunnelCertificate'{_mvtcDryRun
+                                                              :: !(Maybe Bool),
+                                                              _mvtcVPNConnectionId
+                                                              :: !Text,
+                                                              _mvtcVPNTunnelOutsideIPAddress
+                                                              :: !Text}
+                                    deriving (Eq, Read, Show, Data, Typeable,
+                                              Generic)
 
 -- | Creates a value of 'ModifyVPNTunnelCertificate' with the minimum fields required to make a request.
 --
@@ -69,13 +68,12 @@ modifyVPNTunnelCertificate
     :: Text -- ^ 'mvtcVPNConnectionId'
     -> Text -- ^ 'mvtcVPNTunnelOutsideIPAddress'
     -> ModifyVPNTunnelCertificate
-modifyVPNTunnelCertificate pVPNConnectionId_ pVPNTunnelOutsideIPAddress_ =
-  ModifyVPNTunnelCertificate'
-    { _mvtcDryRun = Nothing
-    , _mvtcVPNConnectionId = pVPNConnectionId_
-    , _mvtcVPNTunnelOutsideIPAddress = pVPNTunnelOutsideIPAddress_
-    }
-
+modifyVPNTunnelCertificate pVPNConnectionId_
+  pVPNTunnelOutsideIPAddress_
+  = ModifyVPNTunnelCertificate'{_mvtcDryRun = Nothing,
+                                _mvtcVPNConnectionId = pVPNConnectionId_,
+                                _mvtcVPNTunnelOutsideIPAddress =
+                                  pVPNTunnelOutsideIPAddress_}
 
 -- | Checks whether you have the required permissions for the action, without actually making the request, and provides an error response. If you have the required permissions, the error response is @DryRunOperation@ . Otherwise, it is @UnauthorizedOperation@ .
 mvtcDryRun :: Lens' ModifyVPNTunnelCertificate (Maybe Bool)
@@ -121,13 +119,15 @@ instance ToQuery ModifyVPNTunnelCertificate where
                  _mvtcVPNTunnelOutsideIPAddress]
 
 -- | /See:/ 'modifyVPNTunnelCertificateResponse' smart constructor.
-data ModifyVPNTunnelCertificateResponse =
-  ModifyVPNTunnelCertificateResponse'
-    { _mvtcrsVPNConnection  :: !(Maybe VPNConnection)
-    , _mvtcrsResponseStatus :: !Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data ModifyVPNTunnelCertificateResponse = ModifyVPNTunnelCertificateResponse'{_mvtcrsVPNConnection
+                                                                              ::
+                                                                              !(Maybe
+                                                                                  VPNConnection),
+                                                                              _mvtcrsResponseStatus
+                                                                              ::
+                                                                              !Int}
+                                            deriving (Eq, Read, Show, Data,
+                                                      Typeable, Generic)
 
 -- | Creates a value of 'ModifyVPNTunnelCertificateResponse' with the minimum fields required to make a request.
 --
@@ -139,10 +139,11 @@ data ModifyVPNTunnelCertificateResponse =
 modifyVPNTunnelCertificateResponse
     :: Int -- ^ 'mvtcrsResponseStatus'
     -> ModifyVPNTunnelCertificateResponse
-modifyVPNTunnelCertificateResponse pResponseStatus_ =
-  ModifyVPNTunnelCertificateResponse'
-    {_mvtcrsVPNConnection = Nothing, _mvtcrsResponseStatus = pResponseStatus_}
-
+modifyVPNTunnelCertificateResponse pResponseStatus_
+  = ModifyVPNTunnelCertificateResponse'{_mvtcrsVPNConnection
+                                          = Nothing,
+                                        _mvtcrsResponseStatus =
+                                          pResponseStatus_}
 
 -- | Undocumented member.
 mvtcrsVPNConnection :: Lens' ModifyVPNTunnelCertificateResponse (Maybe VPNConnection)

@@ -42,19 +42,16 @@ module Network.AWS.Greengrass.GetFunctionDefinition
     ) where
 
 import Network.AWS.Greengrass.Types
-import Network.AWS.Greengrass.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 
 -- | /See:/ 'getFunctionDefinition' smart constructor.
-newtype GetFunctionDefinition =
-  GetFunctionDefinition'
-    { _gfdFunctionDefinitionId :: Text
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+newtype GetFunctionDefinition = GetFunctionDefinition'{_gfdFunctionDefinitionId
+                                                       :: Text}
+                                  deriving (Eq, Read, Show, Data, Typeable,
+                                            Generic)
 
 -- | Creates a value of 'GetFunctionDefinition' with the minimum fields required to make a request.
 --
@@ -64,9 +61,9 @@ newtype GetFunctionDefinition =
 getFunctionDefinition
     :: Text -- ^ 'gfdFunctionDefinitionId'
     -> GetFunctionDefinition
-getFunctionDefinition pFunctionDefinitionId_ =
-  GetFunctionDefinition' {_gfdFunctionDefinitionId = pFunctionDefinitionId_}
-
+getFunctionDefinition pFunctionDefinitionId_
+  = GetFunctionDefinition'{_gfdFunctionDefinitionId =
+                             pFunctionDefinitionId_}
 
 -- | The ID of the Lambda function definition.
 gfdFunctionDefinitionId :: Lens' GetFunctionDefinition Text
@@ -109,19 +106,36 @@ instance ToQuery GetFunctionDefinition where
         toQuery = const mempty
 
 -- | /See:/ 'getFunctionDefinitionResponse' smart constructor.
-data GetFunctionDefinitionResponse =
-  GetFunctionDefinitionResponse'
-    { _gfdrsLatestVersionARN     :: !(Maybe Text)
-    , _gfdrsARN                  :: !(Maybe Text)
-    , _gfdrsName                 :: !(Maybe Text)
-    , _gfdrsCreationTimestamp    :: !(Maybe Text)
-    , _gfdrsId                   :: !(Maybe Text)
-    , _gfdrsLatestVersion        :: !(Maybe Text)
-    , _gfdrsLastUpdatedTimestamp :: !(Maybe Text)
-    , _gfdrsResponseStatus       :: !Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data GetFunctionDefinitionResponse = GetFunctionDefinitionResponse'{_gfdrsLatestVersionARN
+                                                                    ::
+                                                                    !(Maybe
+                                                                        Text),
+                                                                    _gfdrsARN ::
+                                                                    !(Maybe
+                                                                        Text),
+                                                                    _gfdrsName
+                                                                    ::
+                                                                    !(Maybe
+                                                                        Text),
+                                                                    _gfdrsCreationTimestamp
+                                                                    ::
+                                                                    !(Maybe
+                                                                        Text),
+                                                                    _gfdrsId ::
+                                                                    !(Maybe
+                                                                        Text),
+                                                                    _gfdrsLatestVersion
+                                                                    ::
+                                                                    !(Maybe
+                                                                        Text),
+                                                                    _gfdrsLastUpdatedTimestamp
+                                                                    ::
+                                                                    !(Maybe
+                                                                        Text),
+                                                                    _gfdrsResponseStatus
+                                                                    :: !Int}
+                                       deriving (Eq, Read, Show, Data, Typeable,
+                                                 Generic)
 
 -- | Creates a value of 'GetFunctionDefinitionResponse' with the minimum fields required to make a request.
 --
@@ -145,18 +159,15 @@ data GetFunctionDefinitionResponse =
 getFunctionDefinitionResponse
     :: Int -- ^ 'gfdrsResponseStatus'
     -> GetFunctionDefinitionResponse
-getFunctionDefinitionResponse pResponseStatus_ =
-  GetFunctionDefinitionResponse'
-    { _gfdrsLatestVersionARN = Nothing
-    , _gfdrsARN = Nothing
-    , _gfdrsName = Nothing
-    , _gfdrsCreationTimestamp = Nothing
-    , _gfdrsId = Nothing
-    , _gfdrsLatestVersion = Nothing
-    , _gfdrsLastUpdatedTimestamp = Nothing
-    , _gfdrsResponseStatus = pResponseStatus_
-    }
-
+getFunctionDefinitionResponse pResponseStatus_
+  = GetFunctionDefinitionResponse'{_gfdrsLatestVersionARN
+                                     = Nothing,
+                                   _gfdrsARN = Nothing, _gfdrsName = Nothing,
+                                   _gfdrsCreationTimestamp = Nothing,
+                                   _gfdrsId = Nothing,
+                                   _gfdrsLatestVersion = Nothing,
+                                   _gfdrsLastUpdatedTimestamp = Nothing,
+                                   _gfdrsResponseStatus = pResponseStatus_}
 
 -- | The ARN of the latest version of the definition.
 gfdrsLatestVersionARN :: Lens' GetFunctionDefinitionResponse (Maybe Text)

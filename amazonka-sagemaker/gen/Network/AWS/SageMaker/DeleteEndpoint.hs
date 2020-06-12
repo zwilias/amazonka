@@ -18,7 +18,7 @@
 -- Stability   : auto-generated
 -- Portability : non-portable (GHC extensions)
 --
--- Deletes an endpoint. Amazon SageMaker frees up all of the resources that were deployed when the endpoint was created.
+-- Deletes an endpoint. Amazon SageMaker frees up all of the resources that were deployed when the endpoint was created. 
 --
 --
 module Network.AWS.SageMaker.DeleteEndpoint
@@ -39,15 +39,11 @@ import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 import Network.AWS.SageMaker.Types
-import Network.AWS.SageMaker.Types.Product
 
 -- | /See:/ 'deleteEndpoint' smart constructor.
-newtype DeleteEndpoint =
-  DeleteEndpoint'
-    { _deEndpointName :: Text
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+newtype DeleteEndpoint = DeleteEndpoint'{_deEndpointName
+                                         :: Text}
+                           deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'DeleteEndpoint' with the minimum fields required to make a request.
 --
@@ -57,9 +53,8 @@ newtype DeleteEndpoint =
 deleteEndpoint
     :: Text -- ^ 'deEndpointName'
     -> DeleteEndpoint
-deleteEndpoint pEndpointName_ =
-  DeleteEndpoint' {_deEndpointName = pEndpointName_}
-
+deleteEndpoint pEndpointName_
+  = DeleteEndpoint'{_deEndpointName = pEndpointName_}
 
 -- | The name of the endpoint that you want to delete.
 deEndpointName :: Lens' DeleteEndpoint Text
@@ -96,16 +91,14 @@ instance ToQuery DeleteEndpoint where
         toQuery = const mempty
 
 -- | /See:/ 'deleteEndpointResponse' smart constructor.
-data DeleteEndpointResponse =
-  DeleteEndpointResponse'
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data DeleteEndpointResponse = DeleteEndpointResponse'
+                                deriving (Eq, Read, Show, Data, Typeable,
+                                          Generic)
 
 -- | Creates a value of 'DeleteEndpointResponse' with the minimum fields required to make a request.
 --
 deleteEndpointResponse
     :: DeleteEndpointResponse
 deleteEndpointResponse = DeleteEndpointResponse'
-
 
 instance NFData DeleteEndpointResponse where

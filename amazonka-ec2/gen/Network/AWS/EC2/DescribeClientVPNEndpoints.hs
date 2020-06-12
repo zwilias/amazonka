@@ -45,7 +45,6 @@ module Network.AWS.EC2.DescribeClientVPNEndpoints
     ) where
 
 import Network.AWS.EC2.Types
-import Network.AWS.EC2.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Pager
 import Network.AWS.Prelude
@@ -53,16 +52,20 @@ import Network.AWS.Request
 import Network.AWS.Response
 
 -- | /See:/ 'describeClientVPNEndpoints' smart constructor.
-data DescribeClientVPNEndpoints =
-  DescribeClientVPNEndpoints'
-    { _dcveFilters              :: !(Maybe [Filter])
-    , _dcveClientVPNEndpointIds :: !(Maybe [Text])
-    , _dcveNextToken            :: !(Maybe Text)
-    , _dcveDryRun               :: !(Maybe Bool)
-    , _dcveMaxResults           :: !(Maybe Nat)
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data DescribeClientVPNEndpoints = DescribeClientVPNEndpoints'{_dcveFilters
+                                                              ::
+                                                              !(Maybe [Filter]),
+                                                              _dcveClientVPNEndpointIds
+                                                              ::
+                                                              !(Maybe [Text]),
+                                                              _dcveNextToken ::
+                                                              !(Maybe Text),
+                                                              _dcveDryRun ::
+                                                              !(Maybe Bool),
+                                                              _dcveMaxResults ::
+                                                              !(Maybe Nat)}
+                                    deriving (Eq, Read, Show, Data, Typeable,
+                                              Generic)
 
 -- | Creates a value of 'DescribeClientVPNEndpoints' with the minimum fields required to make a request.
 --
@@ -79,15 +82,11 @@ data DescribeClientVPNEndpoints =
 -- * 'dcveMaxResults' - The maximum number of results to return for the request in a single page. The remaining results can be seen by sending another request with the nextToken value.
 describeClientVPNEndpoints
     :: DescribeClientVPNEndpoints
-describeClientVPNEndpoints =
-  DescribeClientVPNEndpoints'
-    { _dcveFilters = Nothing
-    , _dcveClientVPNEndpointIds = Nothing
-    , _dcveNextToken = Nothing
-    , _dcveDryRun = Nothing
-    , _dcveMaxResults = Nothing
-    }
-
+describeClientVPNEndpoints
+  = DescribeClientVPNEndpoints'{_dcveFilters = Nothing,
+                                _dcveClientVPNEndpointIds = Nothing,
+                                _dcveNextToken = Nothing, _dcveDryRun = Nothing,
+                                _dcveMaxResults = Nothing}
 
 -- | One or more filters. Filter names and values are case-sensitive.     * @endpoint-id@ - The ID of the Client VPN endpoint.     * @transport-protocol@ - The transport protocol (@tcp@ | @udp@ ).
 dcveFilters :: Lens' DescribeClientVPNEndpoints [Filter]
@@ -154,14 +153,19 @@ instance ToQuery DescribeClientVPNEndpoints where
                "MaxResults" =: _dcveMaxResults]
 
 -- | /See:/ 'describeClientVPNEndpointsResponse' smart constructor.
-data DescribeClientVPNEndpointsResponse =
-  DescribeClientVPNEndpointsResponse'
-    { _dcversNextToken          :: !(Maybe Text)
-    , _dcversClientVPNEndpoints :: !(Maybe [ClientVPNEndpoint])
-    , _dcversResponseStatus     :: !Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data DescribeClientVPNEndpointsResponse = DescribeClientVPNEndpointsResponse'{_dcversNextToken
+                                                                              ::
+                                                                              !(Maybe
+                                                                                  Text),
+                                                                              _dcversClientVPNEndpoints
+                                                                              ::
+                                                                              !(Maybe
+                                                                                  [ClientVPNEndpoint]),
+                                                                              _dcversResponseStatus
+                                                                              ::
+                                                                              !Int}
+                                            deriving (Eq, Read, Show, Data,
+                                                      Typeable, Generic)
 
 -- | Creates a value of 'DescribeClientVPNEndpointsResponse' with the minimum fields required to make a request.
 --
@@ -175,13 +179,12 @@ data DescribeClientVPNEndpointsResponse =
 describeClientVPNEndpointsResponse
     :: Int -- ^ 'dcversResponseStatus'
     -> DescribeClientVPNEndpointsResponse
-describeClientVPNEndpointsResponse pResponseStatus_ =
-  DescribeClientVPNEndpointsResponse'
-    { _dcversNextToken = Nothing
-    , _dcversClientVPNEndpoints = Nothing
-    , _dcversResponseStatus = pResponseStatus_
-    }
-
+describeClientVPNEndpointsResponse pResponseStatus_
+  = DescribeClientVPNEndpointsResponse'{_dcversNextToken
+                                          = Nothing,
+                                        _dcversClientVPNEndpoints = Nothing,
+                                        _dcversResponseStatus =
+                                          pResponseStatus_}
 
 -- | The token to use to retrieve the next page of results. This value is @null@ when there are no more results to return.
 dcversNextToken :: Lens' DescribeClientVPNEndpointsResponse (Maybe Text)

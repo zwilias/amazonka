@@ -44,25 +44,20 @@ module Network.AWS.Glue.CreateTrigger
     ) where
 
 import Network.AWS.Glue.Types
-import Network.AWS.Glue.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 
 -- | /See:/ 'createTrigger' smart constructor.
-data CreateTrigger =
-  CreateTrigger'
-    { _ctSchedule        :: !(Maybe Text)
-    , _ctPredicate       :: !(Maybe Predicate)
-    , _ctStartOnCreation :: !(Maybe Bool)
-    , _ctDescription     :: !(Maybe Text)
-    , _ctName            :: !Text
-    , _ctType            :: !TriggerType
-    , _ctActions         :: ![Action]
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data CreateTrigger = CreateTrigger'{_ctSchedule ::
+                                    !(Maybe Text),
+                                    _ctPredicate :: !(Maybe Predicate),
+                                    _ctStartOnCreation :: !(Maybe Bool),
+                                    _ctDescription :: !(Maybe Text),
+                                    _ctName :: !Text, _ctType :: !TriggerType,
+                                    _ctActions :: ![Action]}
+                       deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'CreateTrigger' with the minimum fields required to make a request.
 --
@@ -85,17 +80,11 @@ createTrigger
     :: Text -- ^ 'ctName'
     -> TriggerType -- ^ 'ctType'
     -> CreateTrigger
-createTrigger pName_ pType_ =
-  CreateTrigger'
-    { _ctSchedule = Nothing
-    , _ctPredicate = Nothing
-    , _ctStartOnCreation = Nothing
-    , _ctDescription = Nothing
-    , _ctName = pName_
-    , _ctType = pType_
-    , _ctActions = mempty
-    }
-
+createTrigger pName_ pType_
+  = CreateTrigger'{_ctSchedule = Nothing,
+                   _ctPredicate = Nothing, _ctStartOnCreation = Nothing,
+                   _ctDescription = Nothing, _ctName = pName_,
+                   _ctType = pType_, _ctActions = mempty}
 
 -- | A @cron@ expression used to specify the schedule (see <http://docs.aws.amazon.com/glue/latest/dg/monitor-data-warehouse-schedule.html Time-Based Schedules for Jobs and Crawlers> . For example, to run something every day at 12:15 UTC, you would specify: @cron(15 12 * * ? *)@ . This field is required when the trigger type is SCHEDULED.
 ctSchedule :: Lens' CreateTrigger (Maybe Text)
@@ -165,13 +154,11 @@ instance ToQuery CreateTrigger where
         toQuery = const mempty
 
 -- | /See:/ 'createTriggerResponse' smart constructor.
-data CreateTriggerResponse =
-  CreateTriggerResponse'
-    { _ctrsName           :: !(Maybe Text)
-    , _ctrsResponseStatus :: !Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data CreateTriggerResponse = CreateTriggerResponse'{_ctrsName
+                                                    :: !(Maybe Text),
+                                                    _ctrsResponseStatus :: !Int}
+                               deriving (Eq, Read, Show, Data, Typeable,
+                                         Generic)
 
 -- | Creates a value of 'CreateTriggerResponse' with the minimum fields required to make a request.
 --
@@ -183,10 +170,9 @@ data CreateTriggerResponse =
 createTriggerResponse
     :: Int -- ^ 'ctrsResponseStatus'
     -> CreateTriggerResponse
-createTriggerResponse pResponseStatus_ =
-  CreateTriggerResponse'
-    {_ctrsName = Nothing, _ctrsResponseStatus = pResponseStatus_}
-
+createTriggerResponse pResponseStatus_
+  = CreateTriggerResponse'{_ctrsName = Nothing,
+                           _ctrsResponseStatus = pResponseStatus_}
 
 -- | The name of the trigger.
 ctrsName :: Lens' CreateTriggerResponse (Maybe Text)

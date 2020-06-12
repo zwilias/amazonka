@@ -39,20 +39,16 @@ module Network.AWS.Pinpoint.UpdateEndpoint
 
 import Network.AWS.Lens
 import Network.AWS.Pinpoint.Types
-import Network.AWS.Pinpoint.Types.Product
 import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 
 -- | /See:/ 'updateEndpoint' smart constructor.
-data UpdateEndpoint =
-  UpdateEndpoint'
-    { _ueApplicationId   :: !Text
-    , _ueEndpointId      :: !Text
-    , _ueEndpointRequest :: !EndpointRequest
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data UpdateEndpoint = UpdateEndpoint'{_ueApplicationId
+                                      :: !Text,
+                                      _ueEndpointId :: !Text,
+                                      _ueEndpointRequest :: !EndpointRequest}
+                        deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'UpdateEndpoint' with the minimum fields required to make a request.
 --
@@ -68,13 +64,11 @@ updateEndpoint
     -> Text -- ^ 'ueEndpointId'
     -> EndpointRequest -- ^ 'ueEndpointRequest'
     -> UpdateEndpoint
-updateEndpoint pApplicationId_ pEndpointId_ pEndpointRequest_ =
-  UpdateEndpoint'
-    { _ueApplicationId = pApplicationId_
-    , _ueEndpointId = pEndpointId_
-    , _ueEndpointRequest = pEndpointRequest_
-    }
-
+updateEndpoint pApplicationId_ pEndpointId_
+  pEndpointRequest_
+  = UpdateEndpoint'{_ueApplicationId = pApplicationId_,
+                    _ueEndpointId = pEndpointId_,
+                    _ueEndpointRequest = pEndpointRequest_}
 
 -- | Undocumented member.
 ueApplicationId :: Lens' UpdateEndpoint Text
@@ -124,13 +118,12 @@ instance ToQuery UpdateEndpoint where
         toQuery = const mempty
 
 -- | /See:/ 'updateEndpointResponse' smart constructor.
-data UpdateEndpointResponse =
-  UpdateEndpointResponse'
-    { _uersResponseStatus :: !Int
-    , _uersMessageBody    :: !MessageBody
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data UpdateEndpointResponse = UpdateEndpointResponse'{_uersResponseStatus
+                                                      :: !Int,
+                                                      _uersMessageBody ::
+                                                      !MessageBody}
+                                deriving (Eq, Read, Show, Data, Typeable,
+                                          Generic)
 
 -- | Creates a value of 'UpdateEndpointResponse' with the minimum fields required to make a request.
 --
@@ -143,10 +136,10 @@ updateEndpointResponse
     :: Int -- ^ 'uersResponseStatus'
     -> MessageBody -- ^ 'uersMessageBody'
     -> UpdateEndpointResponse
-updateEndpointResponse pResponseStatus_ pMessageBody_ =
-  UpdateEndpointResponse'
-    {_uersResponseStatus = pResponseStatus_, _uersMessageBody = pMessageBody_}
-
+updateEndpointResponse pResponseStatus_ pMessageBody_
+  = UpdateEndpointResponse'{_uersResponseStatus =
+                              pResponseStatus_,
+                            _uersMessageBody = pMessageBody_}
 
 -- | -- | The response status code.
 uersResponseStatus :: Lens' UpdateEndpointResponse Int

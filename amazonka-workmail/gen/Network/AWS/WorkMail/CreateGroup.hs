@@ -43,16 +43,12 @@ import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 import Network.AWS.WorkMail.Types
-import Network.AWS.WorkMail.Types.Product
 
 -- | /See:/ 'createGroup' smart constructor.
-data CreateGroup =
-  CreateGroup'
-    { _cgOrganizationId :: !Text
-    , _cgName           :: !Text
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data CreateGroup = CreateGroup'{_cgOrganizationId ::
+                                !Text,
+                                _cgName :: !Text}
+                     deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'CreateGroup' with the minimum fields required to make a request.
 --
@@ -65,9 +61,9 @@ createGroup
     :: Text -- ^ 'cgOrganizationId'
     -> Text -- ^ 'cgName'
     -> CreateGroup
-createGroup pOrganizationId_ pName_ =
-  CreateGroup' {_cgOrganizationId = pOrganizationId_, _cgName = pName_}
-
+createGroup pOrganizationId_ pName_
+  = CreateGroup'{_cgOrganizationId = pOrganizationId_,
+                 _cgName = pName_}
 
 -- | The organization under which the group is to be created.
 cgOrganizationId :: Lens' CreateGroup Text
@@ -113,13 +109,10 @@ instance ToQuery CreateGroup where
         toQuery = const mempty
 
 -- | /See:/ 'createGroupResponse' smart constructor.
-data CreateGroupResponse =
-  CreateGroupResponse'
-    { _cgrsGroupId        :: !(Maybe Text)
-    , _cgrsResponseStatus :: !Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data CreateGroupResponse = CreateGroupResponse'{_cgrsGroupId
+                                                :: !(Maybe Text),
+                                                _cgrsResponseStatus :: !Int}
+                             deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'CreateGroupResponse' with the minimum fields required to make a request.
 --
@@ -131,10 +124,9 @@ data CreateGroupResponse =
 createGroupResponse
     :: Int -- ^ 'cgrsResponseStatus'
     -> CreateGroupResponse
-createGroupResponse pResponseStatus_ =
-  CreateGroupResponse'
-    {_cgrsGroupId = Nothing, _cgrsResponseStatus = pResponseStatus_}
-
+createGroupResponse pResponseStatus_
+  = CreateGroupResponse'{_cgrsGroupId = Nothing,
+                         _cgrsResponseStatus = pResponseStatus_}
 
 -- | The ID of the group.
 cgrsGroupId :: Lens' CreateGroupResponse (Maybe Text)

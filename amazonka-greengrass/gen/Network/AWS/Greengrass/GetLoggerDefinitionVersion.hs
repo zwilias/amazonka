@@ -41,20 +41,18 @@ module Network.AWS.Greengrass.GetLoggerDefinitionVersion
     ) where
 
 import Network.AWS.Greengrass.Types
-import Network.AWS.Greengrass.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 
 -- | /See:/ 'getLoggerDefinitionVersion' smart constructor.
-data GetLoggerDefinitionVersion =
-  GetLoggerDefinitionVersion'
-    { _gldvLoggerDefinitionVersionId :: !Text
-    , _gldvLoggerDefinitionId        :: !Text
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data GetLoggerDefinitionVersion = GetLoggerDefinitionVersion'{_gldvLoggerDefinitionVersionId
+                                                              :: !Text,
+                                                              _gldvLoggerDefinitionId
+                                                              :: !Text}
+                                    deriving (Eq, Read, Show, Data, Typeable,
+                                              Generic)
 
 -- | Creates a value of 'GetLoggerDefinitionVersion' with the minimum fields required to make a request.
 --
@@ -67,12 +65,11 @@ getLoggerDefinitionVersion
     :: Text -- ^ 'gldvLoggerDefinitionVersionId'
     -> Text -- ^ 'gldvLoggerDefinitionId'
     -> GetLoggerDefinitionVersion
-getLoggerDefinitionVersion pLoggerDefinitionVersionId_ pLoggerDefinitionId_ =
-  GetLoggerDefinitionVersion'
-    { _gldvLoggerDefinitionVersionId = pLoggerDefinitionVersionId_
-    , _gldvLoggerDefinitionId = pLoggerDefinitionId_
-    }
-
+getLoggerDefinitionVersion
+  pLoggerDefinitionVersionId_ pLoggerDefinitionId_
+  = GetLoggerDefinitionVersion'{_gldvLoggerDefinitionVersionId
+                                  = pLoggerDefinitionVersionId_,
+                                _gldvLoggerDefinitionId = pLoggerDefinitionId_}
 
 -- | The ID of the logger definition version.
 gldvLoggerDefinitionVersionId :: Lens' GetLoggerDefinitionVersion Text
@@ -118,17 +115,31 @@ instance ToQuery GetLoggerDefinitionVersion where
         toQuery = const mempty
 
 -- | /See:/ 'getLoggerDefinitionVersionResponse' smart constructor.
-data GetLoggerDefinitionVersionResponse =
-  GetLoggerDefinitionVersionResponse'
-    { _gldvrsDefinition        :: !(Maybe LoggerDefinitionVersion)
-    , _gldvrsARN               :: !(Maybe Text)
-    , _gldvrsCreationTimestamp :: !(Maybe Text)
-    , _gldvrsVersion           :: !(Maybe Text)
-    , _gldvrsId                :: !(Maybe Text)
-    , _gldvrsResponseStatus    :: !Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data GetLoggerDefinitionVersionResponse = GetLoggerDefinitionVersionResponse'{_gldvrsDefinition
+                                                                              ::
+                                                                              !(Maybe
+                                                                                  LoggerDefinitionVersion),
+                                                                              _gldvrsARN
+                                                                              ::
+                                                                              !(Maybe
+                                                                                  Text),
+                                                                              _gldvrsCreationTimestamp
+                                                                              ::
+                                                                              !(Maybe
+                                                                                  Text),
+                                                                              _gldvrsVersion
+                                                                              ::
+                                                                              !(Maybe
+                                                                                  Text),
+                                                                              _gldvrsId
+                                                                              ::
+                                                                              !(Maybe
+                                                                                  Text),
+                                                                              _gldvrsResponseStatus
+                                                                              ::
+                                                                              !Int}
+                                            deriving (Eq, Read, Show, Data,
+                                                      Typeable, Generic)
 
 -- | Creates a value of 'GetLoggerDefinitionVersionResponse' with the minimum fields required to make a request.
 --
@@ -148,16 +159,15 @@ data GetLoggerDefinitionVersionResponse =
 getLoggerDefinitionVersionResponse
     :: Int -- ^ 'gldvrsResponseStatus'
     -> GetLoggerDefinitionVersionResponse
-getLoggerDefinitionVersionResponse pResponseStatus_ =
-  GetLoggerDefinitionVersionResponse'
-    { _gldvrsDefinition = Nothing
-    , _gldvrsARN = Nothing
-    , _gldvrsCreationTimestamp = Nothing
-    , _gldvrsVersion = Nothing
-    , _gldvrsId = Nothing
-    , _gldvrsResponseStatus = pResponseStatus_
-    }
-
+getLoggerDefinitionVersionResponse pResponseStatus_
+  = GetLoggerDefinitionVersionResponse'{_gldvrsDefinition
+                                          = Nothing,
+                                        _gldvrsARN = Nothing,
+                                        _gldvrsCreationTimestamp = Nothing,
+                                        _gldvrsVersion = Nothing,
+                                        _gldvrsId = Nothing,
+                                        _gldvrsResponseStatus =
+                                          pResponseStatus_}
 
 -- | Information about the logger definition version.
 gldvrsDefinition :: Lens' GetLoggerDefinitionVersionResponse (Maybe LoggerDefinitionVersion)

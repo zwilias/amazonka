@@ -39,20 +39,22 @@ module Network.AWS.EC2.DeleteLocalGatewayRouteTableVPCAssociation
     ) where
 
 import Network.AWS.EC2.Types
-import Network.AWS.EC2.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 
 -- | /See:/ 'deleteLocalGatewayRouteTableVPCAssociation' smart constructor.
-data DeleteLocalGatewayRouteTableVPCAssociation =
-  DeleteLocalGatewayRouteTableVPCAssociation'
-    { _dlgrtvaDryRun                                 :: !(Maybe Bool)
-    , _dlgrtvaLocalGatewayRouteTableVPCAssociationId :: !Text
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data DeleteLocalGatewayRouteTableVPCAssociation = DeleteLocalGatewayRouteTableVPCAssociation'{_dlgrtvaDryRun
+                                                                                              ::
+                                                                                              !(Maybe
+                                                                                                  Bool),
+                                                                                              _dlgrtvaLocalGatewayRouteTableVPCAssociationId
+                                                                                              ::
+                                                                                              !Text}
+                                                    deriving (Eq, Read, Show,
+                                                              Data, Typeable,
+                                                              Generic)
 
 -- | Creates a value of 'DeleteLocalGatewayRouteTableVPCAssociation' with the minimum fields required to make a request.
 --
@@ -64,13 +66,13 @@ data DeleteLocalGatewayRouteTableVPCAssociation =
 deleteLocalGatewayRouteTableVPCAssociation
     :: Text -- ^ 'dlgrtvaLocalGatewayRouteTableVPCAssociationId'
     -> DeleteLocalGatewayRouteTableVPCAssociation
-deleteLocalGatewayRouteTableVPCAssociation pLocalGatewayRouteTableVPCAssociationId_ =
-  DeleteLocalGatewayRouteTableVPCAssociation'
-    { _dlgrtvaDryRun = Nothing
-    , _dlgrtvaLocalGatewayRouteTableVPCAssociationId =
-        pLocalGatewayRouteTableVPCAssociationId_
-    }
-
+deleteLocalGatewayRouteTableVPCAssociation
+  pLocalGatewayRouteTableVPCAssociationId_
+  = DeleteLocalGatewayRouteTableVPCAssociation'{_dlgrtvaDryRun
+                                                  = Nothing,
+                                                _dlgrtvaLocalGatewayRouteTableVPCAssociationId
+                                                  =
+                                                  pLocalGatewayRouteTableVPCAssociationId_}
 
 -- | Checks whether you have the required permissions for the action, without actually making the request, and provides an error response. If you have the required permissions, the error response is @DryRunOperation@ . Otherwise, it is @UnauthorizedOperation@ .
 dlgrtvaDryRun :: Lens' DeleteLocalGatewayRouteTableVPCAssociation (Maybe Bool)
@@ -127,13 +129,18 @@ instance ToQuery
                  _dlgrtvaLocalGatewayRouteTableVPCAssociationId]
 
 -- | /See:/ 'deleteLocalGatewayRouteTableVPCAssociationResponse' smart constructor.
-data DeleteLocalGatewayRouteTableVPCAssociationResponse =
-  DeleteLocalGatewayRouteTableVPCAssociationResponse'
-    { _dlgrtvarsLocalGatewayRouteTableVPCAssociation :: !(Maybe LocalGatewayRouteTableVPCAssociation)
-    , _dlgrtvarsResponseStatus :: !Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data DeleteLocalGatewayRouteTableVPCAssociationResponse = DeleteLocalGatewayRouteTableVPCAssociationResponse'{_dlgrtvarsLocalGatewayRouteTableVPCAssociation
+                                                                                                              ::
+                                                                                                              !(Maybe
+                                                                                                                  LocalGatewayRouteTableVPCAssociation),
+                                                                                                              _dlgrtvarsResponseStatus
+                                                                                                              ::
+                                                                                                              !Int}
+                                                            deriving (Eq, Read,
+                                                                      Show,
+                                                                      Data,
+                                                                      Typeable,
+                                                                      Generic)
 
 -- | Creates a value of 'DeleteLocalGatewayRouteTableVPCAssociationResponse' with the minimum fields required to make a request.
 --
@@ -145,12 +152,12 @@ data DeleteLocalGatewayRouteTableVPCAssociationResponse =
 deleteLocalGatewayRouteTableVPCAssociationResponse
     :: Int -- ^ 'dlgrtvarsResponseStatus'
     -> DeleteLocalGatewayRouteTableVPCAssociationResponse
-deleteLocalGatewayRouteTableVPCAssociationResponse pResponseStatus_ =
-  DeleteLocalGatewayRouteTableVPCAssociationResponse'
-    { _dlgrtvarsLocalGatewayRouteTableVPCAssociation = Nothing
-    , _dlgrtvarsResponseStatus = pResponseStatus_
-    }
-
+deleteLocalGatewayRouteTableVPCAssociationResponse
+  pResponseStatus_
+  = DeleteLocalGatewayRouteTableVPCAssociationResponse'{_dlgrtvarsLocalGatewayRouteTableVPCAssociation
+                                                          = Nothing,
+                                                        _dlgrtvarsResponseStatus
+                                                          = pResponseStatus_}
 
 -- | Information about the association.
 dlgrtvarsLocalGatewayRouteTableVPCAssociation :: Lens' DeleteLocalGatewayRouteTableVPCAssociationResponse (Maybe LocalGatewayRouteTableVPCAssociation)

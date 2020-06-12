@@ -39,18 +39,14 @@ module Network.AWS.Lightsail.GetStaticIP
 
 import Network.AWS.Lens
 import Network.AWS.Lightsail.Types
-import Network.AWS.Lightsail.Types.Product
 import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 
 -- | /See:/ 'getStaticIP' smart constructor.
-newtype GetStaticIP =
-  GetStaticIP'
-    { _gsiStaticIPName :: Text
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+newtype GetStaticIP = GetStaticIP'{_gsiStaticIPName
+                                   :: Text}
+                        deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'GetStaticIP' with the minimum fields required to make a request.
 --
@@ -60,8 +56,8 @@ newtype GetStaticIP =
 getStaticIP
     :: Text -- ^ 'gsiStaticIPName'
     -> GetStaticIP
-getStaticIP pStaticIPName_ = GetStaticIP' {_gsiStaticIPName = pStaticIPName_}
-
+getStaticIP pStaticIPName_
+  = GetStaticIP'{_gsiStaticIPName = pStaticIPName_}
 
 -- | The name of the static IP in Lightsail.
 gsiStaticIPName :: Lens' GetStaticIP Text
@@ -102,13 +98,10 @@ instance ToQuery GetStaticIP where
         toQuery = const mempty
 
 -- | /See:/ 'getStaticIPResponse' smart constructor.
-data GetStaticIPResponse =
-  GetStaticIPResponse'
-    { _gsirsStaticIP       :: !(Maybe StaticIP)
-    , _gsirsResponseStatus :: !Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data GetStaticIPResponse = GetStaticIPResponse'{_gsirsStaticIP
+                                                :: !(Maybe StaticIP),
+                                                _gsirsResponseStatus :: !Int}
+                             deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'GetStaticIPResponse' with the minimum fields required to make a request.
 --
@@ -120,10 +113,9 @@ data GetStaticIPResponse =
 getStaticIPResponse
     :: Int -- ^ 'gsirsResponseStatus'
     -> GetStaticIPResponse
-getStaticIPResponse pResponseStatus_ =
-  GetStaticIPResponse'
-    {_gsirsStaticIP = Nothing, _gsirsResponseStatus = pResponseStatus_}
-
+getStaticIPResponse pResponseStatus_
+  = GetStaticIPResponse'{_gsirsStaticIP = Nothing,
+                         _gsirsResponseStatus = pResponseStatus_}
 
 -- | An array of key-value pairs containing information about the requested static IP.
 gsirsStaticIP :: Lens' GetStaticIPResponse (Maybe StaticIP)

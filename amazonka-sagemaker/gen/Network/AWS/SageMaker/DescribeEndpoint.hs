@@ -49,15 +49,11 @@ import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 import Network.AWS.SageMaker.Types
-import Network.AWS.SageMaker.Types.Product
 
 -- | /See:/ 'describeEndpoint' smart constructor.
-newtype DescribeEndpoint =
-  DescribeEndpoint'
-    { _dEndpointName :: Text
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+newtype DescribeEndpoint = DescribeEndpoint'{_dEndpointName
+                                             :: Text}
+                             deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'DescribeEndpoint' with the minimum fields required to make a request.
 --
@@ -67,9 +63,8 @@ newtype DescribeEndpoint =
 describeEndpoint
     :: Text -- ^ 'dEndpointName'
     -> DescribeEndpoint
-describeEndpoint pEndpointName_ =
-  DescribeEndpoint' {_dEndpointName = pEndpointName_}
-
+describeEndpoint pEndpointName_
+  = DescribeEndpoint'{_dEndpointName = pEndpointName_}
 
 -- | The name of the endpoint.
 dEndpointName :: Lens' DescribeEndpoint Text
@@ -117,28 +112,37 @@ instance ToQuery DescribeEndpoint where
         toQuery = const mempty
 
 -- | /See:/ 'describeEndpointResponse' smart constructor.
-data DescribeEndpointResponse =
-  DescribeEndpointResponse'
-    { _dersFailureReason      :: !(Maybe Text)
-    , _dersProductionVariants :: !(Maybe (List1 ProductionVariantSummary))
-    , _dersResponseStatus     :: !Int
-    , _dersEndpointName       :: !Text
-    , _dersEndpointARN        :: !Text
-    , _dersEndpointConfigName :: !Text
-    , _dersEndpointStatus     :: !EndpointStatus
-    , _dersCreationTime       :: !POSIX
-    , _dersLastModifiedTime   :: !POSIX
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data DescribeEndpointResponse = DescribeEndpointResponse'{_dersFailureReason
+                                                          :: !(Maybe Text),
+                                                          _dersProductionVariants
+                                                          ::
+                                                          !(Maybe
+                                                              (List1
+                                                                 ProductionVariantSummary)),
+                                                          _dersResponseStatus ::
+                                                          !Int,
+                                                          _dersEndpointName ::
+                                                          !Text,
+                                                          _dersEndpointARN ::
+                                                          !Text,
+                                                          _dersEndpointConfigName
+                                                          :: !Text,
+                                                          _dersEndpointStatus ::
+                                                          !EndpointStatus,
+                                                          _dersCreationTime ::
+                                                          !POSIX,
+                                                          _dersLastModifiedTime
+                                                          :: !POSIX}
+                                  deriving (Eq, Read, Show, Data, Typeable,
+                                            Generic)
 
 -- | Creates a value of 'DescribeEndpointResponse' with the minimum fields required to make a request.
 --
 -- Use one of the following lenses to modify other fields as desired:
 --
--- * 'dersFailureReason' - If the status of the endpoint is @Failed@ , the reason why it failed.
+-- * 'dersFailureReason' - If the status of the endpoint is @Failed@ , the reason why it failed. 
 --
--- * 'dersProductionVariants' - An array of ProductionVariant objects, one for each model hosted behind this endpoint.
+-- * 'dersProductionVariants' - An array of ProductionVariant objects, one for each model hosted behind this endpoint. 
 --
 -- * 'dersResponseStatus' - -- | The response status code.
 --
@@ -162,25 +166,26 @@ describeEndpointResponse
     -> UTCTime -- ^ 'dersCreationTime'
     -> UTCTime -- ^ 'dersLastModifiedTime'
     -> DescribeEndpointResponse
-describeEndpointResponse pResponseStatus_ pEndpointName_ pEndpointARN_ pEndpointConfigName_ pEndpointStatus_ pCreationTime_ pLastModifiedTime_ =
-  DescribeEndpointResponse'
-    { _dersFailureReason = Nothing
-    , _dersProductionVariants = Nothing
-    , _dersResponseStatus = pResponseStatus_
-    , _dersEndpointName = pEndpointName_
-    , _dersEndpointARN = pEndpointARN_
-    , _dersEndpointConfigName = pEndpointConfigName_
-    , _dersEndpointStatus = pEndpointStatus_
-    , _dersCreationTime = _Time # pCreationTime_
-    , _dersLastModifiedTime = _Time # pLastModifiedTime_
-    }
+describeEndpointResponse pResponseStatus_
+  pEndpointName_ pEndpointARN_ pEndpointConfigName_
+  pEndpointStatus_ pCreationTime_ pLastModifiedTime_
+  = DescribeEndpointResponse'{_dersFailureReason =
+                                Nothing,
+                              _dersProductionVariants = Nothing,
+                              _dersResponseStatus = pResponseStatus_,
+                              _dersEndpointName = pEndpointName_,
+                              _dersEndpointARN = pEndpointARN_,
+                              _dersEndpointConfigName = pEndpointConfigName_,
+                              _dersEndpointStatus = pEndpointStatus_,
+                              _dersCreationTime = _Time # pCreationTime_,
+                              _dersLastModifiedTime =
+                                _Time # pLastModifiedTime_}
 
-
--- | If the status of the endpoint is @Failed@ , the reason why it failed.
+-- | If the status of the endpoint is @Failed@ , the reason why it failed. 
 dersFailureReason :: Lens' DescribeEndpointResponse (Maybe Text)
 dersFailureReason = lens _dersFailureReason (\ s a -> s{_dersFailureReason = a})
 
--- | An array of ProductionVariant objects, one for each model hosted behind this endpoint.
+-- | An array of ProductionVariant objects, one for each model hosted behind this endpoint. 
 dersProductionVariants :: Lens' DescribeEndpointResponse (Maybe (NonEmpty ProductionVariantSummary))
 dersProductionVariants = lens _dersProductionVariants (\ s a -> s{_dersProductionVariants = a}) . mapping _List1
 

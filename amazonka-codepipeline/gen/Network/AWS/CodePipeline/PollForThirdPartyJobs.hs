@@ -41,7 +41,6 @@ module Network.AWS.CodePipeline.PollForThirdPartyJobs
     ) where
 
 import Network.AWS.CodePipeline.Types
-import Network.AWS.CodePipeline.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.Request
@@ -52,13 +51,12 @@ import Network.AWS.Response
 --
 --
 -- /See:/ 'pollForThirdPartyJobs' smart constructor.
-data PollForThirdPartyJobs =
-  PollForThirdPartyJobs'
-    { _pftpjMaxBatchSize :: !(Maybe Nat)
-    , _pftpjActionTypeId :: !ActionTypeId
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data PollForThirdPartyJobs = PollForThirdPartyJobs'{_pftpjMaxBatchSize
+                                                    :: !(Maybe Nat),
+                                                    _pftpjActionTypeId ::
+                                                    !ActionTypeId}
+                               deriving (Eq, Read, Show, Data, Typeable,
+                                         Generic)
 
 -- | Creates a value of 'PollForThirdPartyJobs' with the minimum fields required to make a request.
 --
@@ -70,10 +68,10 @@ data PollForThirdPartyJobs =
 pollForThirdPartyJobs
     :: ActionTypeId -- ^ 'pftpjActionTypeId'
     -> PollForThirdPartyJobs
-pollForThirdPartyJobs pActionTypeId_ =
-  PollForThirdPartyJobs'
-    {_pftpjMaxBatchSize = Nothing, _pftpjActionTypeId = pActionTypeId_}
-
+pollForThirdPartyJobs pActionTypeId_
+  = PollForThirdPartyJobs'{_pftpjMaxBatchSize =
+                             Nothing,
+                           _pftpjActionTypeId = pActionTypeId_}
 
 -- | The maximum number of jobs to return in a poll for jobs call.
 pftpjMaxBatchSize :: Lens' PollForThirdPartyJobs (Maybe Natural)
@@ -125,13 +123,14 @@ instance ToQuery PollForThirdPartyJobs where
 --
 --
 -- /See:/ 'pollForThirdPartyJobsResponse' smart constructor.
-data PollForThirdPartyJobsResponse =
-  PollForThirdPartyJobsResponse'
-    { _pftpjrsJobs           :: !(Maybe [ThirdPartyJob])
-    , _pftpjrsResponseStatus :: !Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data PollForThirdPartyJobsResponse = PollForThirdPartyJobsResponse'{_pftpjrsJobs
+                                                                    ::
+                                                                    !(Maybe
+                                                                        [ThirdPartyJob]),
+                                                                    _pftpjrsResponseStatus
+                                                                    :: !Int}
+                                       deriving (Eq, Read, Show, Data, Typeable,
+                                                 Generic)
 
 -- | Creates a value of 'PollForThirdPartyJobsResponse' with the minimum fields required to make a request.
 --
@@ -143,10 +142,10 @@ data PollForThirdPartyJobsResponse =
 pollForThirdPartyJobsResponse
     :: Int -- ^ 'pftpjrsResponseStatus'
     -> PollForThirdPartyJobsResponse
-pollForThirdPartyJobsResponse pResponseStatus_ =
-  PollForThirdPartyJobsResponse'
-    {_pftpjrsJobs = Nothing, _pftpjrsResponseStatus = pResponseStatus_}
-
+pollForThirdPartyJobsResponse pResponseStatus_
+  = PollForThirdPartyJobsResponse'{_pftpjrsJobs =
+                                     Nothing,
+                                   _pftpjrsResponseStatus = pResponseStatus_}
 
 -- | Information about the jobs to take action on.
 pftpjrsJobs :: Lens' PollForThirdPartyJobsResponse [ThirdPartyJob]

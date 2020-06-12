@@ -43,7 +43,6 @@ module Network.AWS.AppSync.ListAPIKeys
     ) where
 
 import Network.AWS.AppSync.Types
-import Network.AWS.AppSync.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Pager
 import Network.AWS.Prelude
@@ -51,14 +50,11 @@ import Network.AWS.Request
 import Network.AWS.Response
 
 -- | /See:/ 'listAPIKeys' smart constructor.
-data ListAPIKeys =
-  ListAPIKeys'
-    { _lakNextToken  :: !(Maybe Text)
-    , _lakMaxResults :: !(Maybe Nat)
-    , _lakApiId      :: !Text
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data ListAPIKeys = ListAPIKeys'{_lakNextToken ::
+                                !(Maybe Text),
+                                _lakMaxResults :: !(Maybe Nat),
+                                _lakApiId :: !Text}
+                     deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'ListAPIKeys' with the minimum fields required to make a request.
 --
@@ -72,10 +68,9 @@ data ListAPIKeys =
 listAPIKeys
     :: Text -- ^ 'lakApiId'
     -> ListAPIKeys
-listAPIKeys pApiId_ =
-  ListAPIKeys'
-    {_lakNextToken = Nothing, _lakMaxResults = Nothing, _lakApiId = pApiId_}
-
+listAPIKeys pApiId_
+  = ListAPIKeys'{_lakNextToken = Nothing,
+                 _lakMaxResults = Nothing, _lakApiId = pApiId_}
 
 -- | An identifier that was returned from the previous call to this operation, which can be used to return the next set of items in the list.
 lakNextToken :: Lens' ListAPIKeys (Maybe Text)
@@ -128,14 +123,12 @@ instance ToQuery ListAPIKeys where
                "maxResults" =: _lakMaxResults]
 
 -- | /See:/ 'listAPIKeysResponse' smart constructor.
-data ListAPIKeysResponse =
-  ListAPIKeysResponse'
-    { _lakrsApiKeys        :: !(Maybe [APIKey])
-    , _lakrsNextToken      :: !(Maybe Text)
-    , _lakrsResponseStatus :: !Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data ListAPIKeysResponse = ListAPIKeysResponse'{_lakrsApiKeys
+                                                :: !(Maybe [APIKey]),
+                                                _lakrsNextToken ::
+                                                !(Maybe Text),
+                                                _lakrsResponseStatus :: !Int}
+                             deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'ListAPIKeysResponse' with the minimum fields required to make a request.
 --
@@ -149,13 +142,10 @@ data ListAPIKeysResponse =
 listAPIKeysResponse
     :: Int -- ^ 'lakrsResponseStatus'
     -> ListAPIKeysResponse
-listAPIKeysResponse pResponseStatus_ =
-  ListAPIKeysResponse'
-    { _lakrsApiKeys = Nothing
-    , _lakrsNextToken = Nothing
-    , _lakrsResponseStatus = pResponseStatus_
-    }
-
+listAPIKeysResponse pResponseStatus_
+  = ListAPIKeysResponse'{_lakrsApiKeys = Nothing,
+                         _lakrsNextToken = Nothing,
+                         _lakrsResponseStatus = pResponseStatus_}
 
 -- | The @ApiKey@ objects.
 lakrsApiKeys :: Lens' ListAPIKeysResponse [APIKey]

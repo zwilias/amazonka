@@ -56,8 +56,8 @@ library
         , Network.AWS.STS.Waiters
 
     other-modules:
-          Network.AWS.STS.Types.Product
-        , Network.AWS.STS.Types.Sum
+          Network.AWS.STS.Types.AssumedRoleUser
+        , Network.AWS.STS.Types.FederatedUser
 
     build-depends:
           amazonka-core == 1.6.1.*

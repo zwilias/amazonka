@@ -43,7 +43,6 @@ module Network.AWS.CodeBuild.ListBuildsForProject
     ) where
 
 import Network.AWS.CodeBuild.Types
-import Network.AWS.CodeBuild.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Pager
 import Network.AWS.Prelude
@@ -51,14 +50,12 @@ import Network.AWS.Request
 import Network.AWS.Response
 
 -- | /See:/ 'listBuildsForProject' smart constructor.
-data ListBuildsForProject =
-  ListBuildsForProject'
-    { _lbfpSortOrder   :: !(Maybe SortOrderType)
-    , _lbfpNextToken   :: !(Maybe Text)
-    , _lbfpProjectName :: !Text
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data ListBuildsForProject = ListBuildsForProject'{_lbfpSortOrder
+                                                  :: !(Maybe SortOrderType),
+                                                  _lbfpNextToken ::
+                                                  !(Maybe Text),
+                                                  _lbfpProjectName :: !Text}
+                              deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'ListBuildsForProject' with the minimum fields required to make a request.
 --
@@ -72,13 +69,10 @@ data ListBuildsForProject =
 listBuildsForProject
     :: Text -- ^ 'lbfpProjectName'
     -> ListBuildsForProject
-listBuildsForProject pProjectName_ =
-  ListBuildsForProject'
-    { _lbfpSortOrder = Nothing
-    , _lbfpNextToken = Nothing
-    , _lbfpProjectName = pProjectName_
-    }
-
+listBuildsForProject pProjectName_
+  = ListBuildsForProject'{_lbfpSortOrder = Nothing,
+                          _lbfpNextToken = Nothing,
+                          _lbfpProjectName = pProjectName_}
 
 -- | The order to list build IDs. Valid values include:     * @ASCENDING@ : List the build IDs in ascending order by build ID.     * @DESCENDING@ : List the build IDs in descending order by build ID.
 lbfpSortOrder :: Lens' ListBuildsForProject (Maybe SortOrderType)
@@ -139,14 +133,18 @@ instance ToQuery ListBuildsForProject where
         toQuery = const mempty
 
 -- | /See:/ 'listBuildsForProjectResponse' smart constructor.
-data ListBuildsForProjectResponse =
-  ListBuildsForProjectResponse'
-    { _lbfprsIds            :: !(Maybe (List1 Text))
-    , _lbfprsNextToken      :: !(Maybe Text)
-    , _lbfprsResponseStatus :: !Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data ListBuildsForProjectResponse = ListBuildsForProjectResponse'{_lbfprsIds
+                                                                  ::
+                                                                  !(Maybe
+                                                                      (List1
+                                                                         Text)),
+                                                                  _lbfprsNextToken
+                                                                  ::
+                                                                  !(Maybe Text),
+                                                                  _lbfprsResponseStatus
+                                                                  :: !Int}
+                                      deriving (Eq, Read, Show, Data, Typeable,
+                                                Generic)
 
 -- | Creates a value of 'ListBuildsForProjectResponse' with the minimum fields required to make a request.
 --
@@ -160,13 +158,10 @@ data ListBuildsForProjectResponse =
 listBuildsForProjectResponse
     :: Int -- ^ 'lbfprsResponseStatus'
     -> ListBuildsForProjectResponse
-listBuildsForProjectResponse pResponseStatus_ =
-  ListBuildsForProjectResponse'
-    { _lbfprsIds = Nothing
-    , _lbfprsNextToken = Nothing
-    , _lbfprsResponseStatus = pResponseStatus_
-    }
-
+listBuildsForProjectResponse pResponseStatus_
+  = ListBuildsForProjectResponse'{_lbfprsIds = Nothing,
+                                  _lbfprsNextToken = Nothing,
+                                  _lbfprsResponseStatus = pResponseStatus_}
 
 -- | A list of build IDs for the specified build project, with each build ID representing a single build.
 lbfprsIds :: Lens' ListBuildsForProjectResponse (Maybe (NonEmpty Text))

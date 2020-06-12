@@ -42,18 +42,15 @@ module Network.AWS.Organizations.EnableAWSServiceAccess
 
 import Network.AWS.Lens
 import Network.AWS.Organizations.Types
-import Network.AWS.Organizations.Types.Product
 import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 
 -- | /See:/ 'enableAWSServiceAccess' smart constructor.
-newtype EnableAWSServiceAccess =
-  EnableAWSServiceAccess'
-    { _easaServicePrincipal :: Text
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+newtype EnableAWSServiceAccess = EnableAWSServiceAccess'{_easaServicePrincipal
+                                                         :: Text}
+                                   deriving (Eq, Read, Show, Data, Typeable,
+                                             Generic)
 
 -- | Creates a value of 'EnableAWSServiceAccess' with the minimum fields required to make a request.
 --
@@ -63,9 +60,9 @@ newtype EnableAWSServiceAccess =
 enableAWSServiceAccess
     :: Text -- ^ 'easaServicePrincipal'
     -> EnableAWSServiceAccess
-enableAWSServiceAccess pServicePrincipal_ =
-  EnableAWSServiceAccess' {_easaServicePrincipal = pServicePrincipal_}
-
+enableAWSServiceAccess pServicePrincipal_
+  = EnableAWSServiceAccess'{_easaServicePrincipal =
+                              pServicePrincipal_}
 
 -- | The service principal name of the AWS service for which you want to enable integration with your organization. This is typically in the form of a URL, such as @/service-abbreviation/ .amazonaws.com@ .
 easaServicePrincipal :: Lens' EnableAWSServiceAccess Text
@@ -105,16 +102,15 @@ instance ToQuery EnableAWSServiceAccess where
         toQuery = const mempty
 
 -- | /See:/ 'enableAWSServiceAccessResponse' smart constructor.
-data EnableAWSServiceAccessResponse =
-  EnableAWSServiceAccessResponse'
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data EnableAWSServiceAccessResponse = EnableAWSServiceAccessResponse'
+                                        deriving (Eq, Read, Show, Data,
+                                                  Typeable, Generic)
 
 -- | Creates a value of 'EnableAWSServiceAccessResponse' with the minimum fields required to make a request.
 --
 enableAWSServiceAccessResponse
     :: EnableAWSServiceAccessResponse
-enableAWSServiceAccessResponse = EnableAWSServiceAccessResponse'
-
+enableAWSServiceAccessResponse
+  = EnableAWSServiceAccessResponse'
 
 instance NFData EnableAWSServiceAccessResponse where

@@ -62,8 +62,15 @@ library
         , Network.AWS.Cloud9.Waiters
 
     other-modules:
-          Network.AWS.Cloud9.Types.Product
-        , Network.AWS.Cloud9.Types.Sum
+          Network.AWS.Cloud9.Types.Environment
+        , Network.AWS.Cloud9.Types.EnvironmentLifecycle
+        , Network.AWS.Cloud9.Types.EnvironmentLifecycleStatus
+        , Network.AWS.Cloud9.Types.EnvironmentMember
+        , Network.AWS.Cloud9.Types.EnvironmentStatus
+        , Network.AWS.Cloud9.Types.EnvironmentType
+        , Network.AWS.Cloud9.Types.MemberPermissions
+        , Network.AWS.Cloud9.Types.Permissions
+        , Network.AWS.Cloud9.Types.Tag
 
     build-depends:
           amazonka-core == 1.6.1.*

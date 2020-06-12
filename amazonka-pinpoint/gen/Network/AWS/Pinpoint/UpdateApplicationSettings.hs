@@ -38,19 +38,18 @@ module Network.AWS.Pinpoint.UpdateApplicationSettings
 
 import Network.AWS.Lens
 import Network.AWS.Pinpoint.Types
-import Network.AWS.Pinpoint.Types.Product
 import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 
 -- | /See:/ 'updateApplicationSettings' smart constructor.
-data UpdateApplicationSettings =
-  UpdateApplicationSettings'
-    { _uasApplicationId                   :: !Text
-    , _uasWriteApplicationSettingsRequest :: !WriteApplicationSettingsRequest
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data UpdateApplicationSettings = UpdateApplicationSettings'{_uasApplicationId
+                                                            :: !Text,
+                                                            _uasWriteApplicationSettingsRequest
+                                                            ::
+                                                            !WriteApplicationSettingsRequest}
+                                   deriving (Eq, Read, Show, Data, Typeable,
+                                             Generic)
 
 -- | Creates a value of 'UpdateApplicationSettings' with the minimum fields required to make a request.
 --
@@ -63,12 +62,12 @@ updateApplicationSettings
     :: Text -- ^ 'uasApplicationId'
     -> WriteApplicationSettingsRequest -- ^ 'uasWriteApplicationSettingsRequest'
     -> UpdateApplicationSettings
-updateApplicationSettings pApplicationId_ pWriteApplicationSettingsRequest_ =
-  UpdateApplicationSettings'
-    { _uasApplicationId = pApplicationId_
-    , _uasWriteApplicationSettingsRequest = pWriteApplicationSettingsRequest_
-    }
-
+updateApplicationSettings pApplicationId_
+  pWriteApplicationSettingsRequest_
+  = UpdateApplicationSettings'{_uasApplicationId =
+                                 pApplicationId_,
+                               _uasWriteApplicationSettingsRequest =
+                                 pWriteApplicationSettingsRequest_}
 
 -- | Undocumented member.
 uasApplicationId :: Lens' UpdateApplicationSettings Text
@@ -116,13 +115,14 @@ instance ToQuery UpdateApplicationSettings where
         toQuery = const mempty
 
 -- | /See:/ 'updateApplicationSettingsResponse' smart constructor.
-data UpdateApplicationSettingsResponse =
-  UpdateApplicationSettingsResponse'
-    { _uasrsResponseStatus              :: !Int
-    , _uasrsApplicationSettingsResource :: !ApplicationSettingsResource
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data UpdateApplicationSettingsResponse = UpdateApplicationSettingsResponse'{_uasrsResponseStatus
+                                                                            ::
+                                                                            !Int,
+                                                                            _uasrsApplicationSettingsResource
+                                                                            ::
+                                                                            !ApplicationSettingsResource}
+                                           deriving (Eq, Read, Show, Data,
+                                                     Typeable, Generic)
 
 -- | Creates a value of 'UpdateApplicationSettingsResponse' with the minimum fields required to make a request.
 --
@@ -135,12 +135,12 @@ updateApplicationSettingsResponse
     :: Int -- ^ 'uasrsResponseStatus'
     -> ApplicationSettingsResource -- ^ 'uasrsApplicationSettingsResource'
     -> UpdateApplicationSettingsResponse
-updateApplicationSettingsResponse pResponseStatus_ pApplicationSettingsResource_ =
-  UpdateApplicationSettingsResponse'
-    { _uasrsResponseStatus = pResponseStatus_
-    , _uasrsApplicationSettingsResource = pApplicationSettingsResource_
-    }
-
+updateApplicationSettingsResponse pResponseStatus_
+  pApplicationSettingsResource_
+  = UpdateApplicationSettingsResponse'{_uasrsResponseStatus
+                                         = pResponseStatus_,
+                                       _uasrsApplicationSettingsResource =
+                                         pApplicationSettingsResource_}
 
 -- | -- | The response status code.
 uasrsResponseStatus :: Lens' UpdateApplicationSettingsResponse Int

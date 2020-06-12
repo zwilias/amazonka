@@ -49,22 +49,22 @@ module Network.AWS.EC2.CreateTransitGateway
     ) where
 
 import Network.AWS.EC2.Types
-import Network.AWS.EC2.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 
 -- | /See:/ 'createTransitGateway' smart constructor.
-data CreateTransitGateway =
-  CreateTransitGateway'
-    { _ctgTagSpecifications :: !(Maybe [TagSpecification])
-    , _ctgOptions           :: !(Maybe TransitGatewayRequestOptions)
-    , _ctgDescription       :: !(Maybe Text)
-    , _ctgDryRun            :: !(Maybe Bool)
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data CreateTransitGateway = CreateTransitGateway'{_ctgTagSpecifications
+                                                  ::
+                                                  !(Maybe [TagSpecification]),
+                                                  _ctgOptions ::
+                                                  !(Maybe
+                                                      TransitGatewayRequestOptions),
+                                                  _ctgDescription ::
+                                                  !(Maybe Text),
+                                                  _ctgDryRun :: !(Maybe Bool)}
+                              deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'CreateTransitGateway' with the minimum fields required to make a request.
 --
@@ -79,14 +79,11 @@ data CreateTransitGateway =
 -- * 'ctgDryRun' - Checks whether you have the required permissions for the action, without actually making the request, and provides an error response. If you have the required permissions, the error response is @DryRunOperation@ . Otherwise, it is @UnauthorizedOperation@ .
 createTransitGateway
     :: CreateTransitGateway
-createTransitGateway =
-  CreateTransitGateway'
-    { _ctgTagSpecifications = Nothing
-    , _ctgOptions = Nothing
-    , _ctgDescription = Nothing
-    , _ctgDryRun = Nothing
-    }
-
+createTransitGateway
+  = CreateTransitGateway'{_ctgTagSpecifications =
+                            Nothing,
+                          _ctgOptions = Nothing, _ctgDescription = Nothing,
+                          _ctgDryRun = Nothing}
 
 -- | The tags to apply to the transit gateway.
 ctgTagSpecifications :: Lens' CreateTransitGateway [TagSpecification]
@@ -137,13 +134,14 @@ instance ToQuery CreateTransitGateway where
                "DryRun" =: _ctgDryRun]
 
 -- | /See:/ 'createTransitGatewayResponse' smart constructor.
-data CreateTransitGatewayResponse =
-  CreateTransitGatewayResponse'
-    { _ctgrsTransitGateway :: !(Maybe TransitGateway)
-    , _ctgrsResponseStatus :: !Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data CreateTransitGatewayResponse = CreateTransitGatewayResponse'{_ctgrsTransitGateway
+                                                                  ::
+                                                                  !(Maybe
+                                                                      TransitGateway),
+                                                                  _ctgrsResponseStatus
+                                                                  :: !Int}
+                                      deriving (Eq, Read, Show, Data, Typeable,
+                                                Generic)
 
 -- | Creates a value of 'CreateTransitGatewayResponse' with the minimum fields required to make a request.
 --
@@ -155,10 +153,10 @@ data CreateTransitGatewayResponse =
 createTransitGatewayResponse
     :: Int -- ^ 'ctgrsResponseStatus'
     -> CreateTransitGatewayResponse
-createTransitGatewayResponse pResponseStatus_ =
-  CreateTransitGatewayResponse'
-    {_ctgrsTransitGateway = Nothing, _ctgrsResponseStatus = pResponseStatus_}
-
+createTransitGatewayResponse pResponseStatus_
+  = CreateTransitGatewayResponse'{_ctgrsTransitGateway
+                                    = Nothing,
+                                  _ctgrsResponseStatus = pResponseStatus_}
 
 -- | Information about the transit gateway.
 ctgrsTransitGateway :: Lens' CreateTransitGatewayResponse (Maybe TransitGateway)

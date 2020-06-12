@@ -39,19 +39,15 @@ module Network.AWS.Athena.DeleteNamedQuery
     ) where
 
 import Network.AWS.Athena.Types
-import Network.AWS.Athena.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 
 -- | /See:/ 'deleteNamedQuery' smart constructor.
-newtype DeleteNamedQuery =
-  DeleteNamedQuery'
-    { _dnqNamedQueryId :: Text
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+newtype DeleteNamedQuery = DeleteNamedQuery'{_dnqNamedQueryId
+                                             :: Text}
+                             deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'DeleteNamedQuery' with the minimum fields required to make a request.
 --
@@ -61,9 +57,9 @@ newtype DeleteNamedQuery =
 deleteNamedQuery
     :: Text -- ^ 'dnqNamedQueryId'
     -> DeleteNamedQuery
-deleteNamedQuery pNamedQueryId_ =
-  DeleteNamedQuery' {_dnqNamedQueryId = pNamedQueryId_}
-
+deleteNamedQuery pNamedQueryId_
+  = DeleteNamedQuery'{_dnqNamedQueryId =
+                        pNamedQueryId_}
 
 -- | The unique ID of the query to delete.
 dnqNamedQueryId :: Lens' DeleteNamedQuery Text
@@ -103,12 +99,10 @@ instance ToQuery DeleteNamedQuery where
         toQuery = const mempty
 
 -- | /See:/ 'deleteNamedQueryResponse' smart constructor.
-newtype DeleteNamedQueryResponse =
-  DeleteNamedQueryResponse'
-    { _dnqrsResponseStatus :: Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+newtype DeleteNamedQueryResponse = DeleteNamedQueryResponse'{_dnqrsResponseStatus
+                                                             :: Int}
+                                     deriving (Eq, Read, Show, Data, Typeable,
+                                               Generic)
 
 -- | Creates a value of 'DeleteNamedQueryResponse' with the minimum fields required to make a request.
 --
@@ -118,9 +112,9 @@ newtype DeleteNamedQueryResponse =
 deleteNamedQueryResponse
     :: Int -- ^ 'dnqrsResponseStatus'
     -> DeleteNamedQueryResponse
-deleteNamedQueryResponse pResponseStatus_ =
-  DeleteNamedQueryResponse' {_dnqrsResponseStatus = pResponseStatus_}
-
+deleteNamedQueryResponse pResponseStatus_
+  = DeleteNamedQueryResponse'{_dnqrsResponseStatus =
+                                pResponseStatus_}
 
 -- | -- | The response status code.
 dnqrsResponseStatus :: Lens' DeleteNamedQueryResponse Int

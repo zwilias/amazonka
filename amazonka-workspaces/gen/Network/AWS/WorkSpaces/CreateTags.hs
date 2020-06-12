@@ -42,16 +42,11 @@ import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 import Network.AWS.WorkSpaces.Types
-import Network.AWS.WorkSpaces.Types.Product
 
 -- | /See:/ 'createTags' smart constructor.
-data CreateTags =
-  CreateTags'
-    { _ctResourceId :: !Text
-    , _ctTags       :: ![Tag]
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data CreateTags = CreateTags'{_ctResourceId :: !Text,
+                              _ctTags :: ![Tag]}
+                    deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'CreateTags' with the minimum fields required to make a request.
 --
@@ -63,9 +58,9 @@ data CreateTags =
 createTags
     :: Text -- ^ 'ctResourceId'
     -> CreateTags
-createTags pResourceId_ =
-  CreateTags' {_ctResourceId = pResourceId_, _ctTags = mempty}
-
+createTags pResourceId_
+  = CreateTags'{_ctResourceId = pResourceId_,
+                _ctTags = mempty}
 
 -- | The ID of the WorkSpace. To find this ID, use 'DescribeWorkspaces' .
 ctResourceId :: Lens' CreateTags Text
@@ -110,12 +105,10 @@ instance ToQuery CreateTags where
         toQuery = const mempty
 
 -- | /See:/ 'createTagsResponse' smart constructor.
-newtype CreateTagsResponse =
-  CreateTagsResponse'
-    { _ctrsResponseStatus :: Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+newtype CreateTagsResponse = CreateTagsResponse'{_ctrsResponseStatus
+                                                 :: Int}
+                               deriving (Eq, Read, Show, Data, Typeable,
+                                         Generic)
 
 -- | Creates a value of 'CreateTagsResponse' with the minimum fields required to make a request.
 --
@@ -125,9 +118,9 @@ newtype CreateTagsResponse =
 createTagsResponse
     :: Int -- ^ 'ctrsResponseStatus'
     -> CreateTagsResponse
-createTagsResponse pResponseStatus_ =
-  CreateTagsResponse' {_ctrsResponseStatus = pResponseStatus_}
-
+createTagsResponse pResponseStatus_
+  = CreateTagsResponse'{_ctrsResponseStatus =
+                          pResponseStatus_}
 
 -- | -- | The response status code.
 ctrsResponseStatus :: Lens' CreateTagsResponse Int

@@ -38,20 +38,16 @@ module Network.AWS.Athena.DeleteWorkGroup
     ) where
 
 import Network.AWS.Athena.Types
-import Network.AWS.Athena.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 
 -- | /See:/ 'deleteWorkGroup' smart constructor.
-data DeleteWorkGroup =
-  DeleteWorkGroup'
-    { _dwgRecursiveDeleteOption :: !(Maybe Bool)
-    , _dwgWorkGroup             :: !Text
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data DeleteWorkGroup = DeleteWorkGroup'{_dwgRecursiveDeleteOption
+                                        :: !(Maybe Bool),
+                                        _dwgWorkGroup :: !Text}
+                         deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'DeleteWorkGroup' with the minimum fields required to make a request.
 --
@@ -63,10 +59,10 @@ data DeleteWorkGroup =
 deleteWorkGroup
     :: Text -- ^ 'dwgWorkGroup'
     -> DeleteWorkGroup
-deleteWorkGroup pWorkGroup_ =
-  DeleteWorkGroup'
-    {_dwgRecursiveDeleteOption = Nothing, _dwgWorkGroup = pWorkGroup_}
-
+deleteWorkGroup pWorkGroup_
+  = DeleteWorkGroup'{_dwgRecursiveDeleteOption =
+                       Nothing,
+                     _dwgWorkGroup = pWorkGroup_}
 
 -- | The option to delete the workgroup and its contents even if the workgroup contains any named queries.
 dwgRecursiveDeleteOption :: Lens' DeleteWorkGroup (Maybe Bool)
@@ -112,12 +108,10 @@ instance ToQuery DeleteWorkGroup where
         toQuery = const mempty
 
 -- | /See:/ 'deleteWorkGroupResponse' smart constructor.
-newtype DeleteWorkGroupResponse =
-  DeleteWorkGroupResponse'
-    { _dwgrsResponseStatus :: Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+newtype DeleteWorkGroupResponse = DeleteWorkGroupResponse'{_dwgrsResponseStatus
+                                                           :: Int}
+                                    deriving (Eq, Read, Show, Data, Typeable,
+                                              Generic)
 
 -- | Creates a value of 'DeleteWorkGroupResponse' with the minimum fields required to make a request.
 --
@@ -127,9 +121,9 @@ newtype DeleteWorkGroupResponse =
 deleteWorkGroupResponse
     :: Int -- ^ 'dwgrsResponseStatus'
     -> DeleteWorkGroupResponse
-deleteWorkGroupResponse pResponseStatus_ =
-  DeleteWorkGroupResponse' {_dwgrsResponseStatus = pResponseStatus_}
-
+deleteWorkGroupResponse pResponseStatus_
+  = DeleteWorkGroupResponse'{_dwgrsResponseStatus =
+                               pResponseStatus_}
 
 -- | -- | The response status code.
 dwgrsResponseStatus :: Lens' DeleteWorkGroupResponse Int

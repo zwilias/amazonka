@@ -53,22 +53,28 @@ import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 import Network.AWS.ServiceCatalog.Types
-import Network.AWS.ServiceCatalog.Types.Product
 
 -- | /See:/ 'updateProvisionedProduct' smart constructor.
-data UpdateProvisionedProduct =
-  UpdateProvisionedProduct'
-    { _uppProvisionedProductName :: !(Maybe Text)
-    , _uppProvisioningArtifactId :: !(Maybe Text)
-    , _uppAcceptLanguage         :: !(Maybe Text)
-    , _uppPathId                 :: !(Maybe Text)
-    , _uppProvisioningParameters :: !(Maybe [UpdateProvisioningParameter])
-    , _uppProvisionedProductId   :: !(Maybe Text)
-    , _uppProductId              :: !(Maybe Text)
-    , _uppUpdateToken            :: !Text
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data UpdateProvisionedProduct = UpdateProvisionedProduct'{_uppProvisionedProductName
+                                                          :: !(Maybe Text),
+                                                          _uppProvisioningArtifactId
+                                                          :: !(Maybe Text),
+                                                          _uppAcceptLanguage ::
+                                                          !(Maybe Text),
+                                                          _uppPathId ::
+                                                          !(Maybe Text),
+                                                          _uppProvisioningParameters
+                                                          ::
+                                                          !(Maybe
+                                                              [UpdateProvisioningParameter]),
+                                                          _uppProvisionedProductId
+                                                          :: !(Maybe Text),
+                                                          _uppProductId ::
+                                                          !(Maybe Text),
+                                                          _uppUpdateToken ::
+                                                          !Text}
+                                  deriving (Eq, Read, Show, Data, Typeable,
+                                            Generic)
 
 -- | Creates a value of 'UpdateProvisionedProduct' with the minimum fields required to make a request.
 --
@@ -92,18 +98,16 @@ data UpdateProvisionedProduct =
 updateProvisionedProduct
     :: Text -- ^ 'uppUpdateToken'
     -> UpdateProvisionedProduct
-updateProvisionedProduct pUpdateToken_ =
-  UpdateProvisionedProduct'
-    { _uppProvisionedProductName = Nothing
-    , _uppProvisioningArtifactId = Nothing
-    , _uppAcceptLanguage = Nothing
-    , _uppPathId = Nothing
-    , _uppProvisioningParameters = Nothing
-    , _uppProvisionedProductId = Nothing
-    , _uppProductId = Nothing
-    , _uppUpdateToken = pUpdateToken_
-    }
-
+updateProvisionedProduct pUpdateToken_
+  = UpdateProvisionedProduct'{_uppProvisionedProductName
+                                = Nothing,
+                              _uppProvisioningArtifactId = Nothing,
+                              _uppAcceptLanguage = Nothing,
+                              _uppPathId = Nothing,
+                              _uppProvisioningParameters = Nothing,
+                              _uppProvisionedProductId = Nothing,
+                              _uppProductId = Nothing,
+                              _uppUpdateToken = pUpdateToken_}
 
 -- | The updated name of the provisioned product. You cannot specify both @ProvisionedProductName@ and @ProvisionedProductId@ .
 uppProvisionedProductName :: Lens' UpdateProvisionedProduct (Maybe Text)
@@ -185,13 +189,15 @@ instance ToQuery UpdateProvisionedProduct where
         toQuery = const mempty
 
 -- | /See:/ 'updateProvisionedProductResponse' smart constructor.
-data UpdateProvisionedProductResponse =
-  UpdateProvisionedProductResponse'
-    { _upprsRecordDetail   :: !(Maybe RecordDetail)
-    , _upprsResponseStatus :: !Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data UpdateProvisionedProductResponse = UpdateProvisionedProductResponse'{_upprsRecordDetail
+                                                                          ::
+                                                                          !(Maybe
+                                                                              RecordDetail),
+                                                                          _upprsResponseStatus
+                                                                          ::
+                                                                          !Int}
+                                          deriving (Eq, Read, Show, Data,
+                                                    Typeable, Generic)
 
 -- | Creates a value of 'UpdateProvisionedProductResponse' with the minimum fields required to make a request.
 --
@@ -203,10 +209,10 @@ data UpdateProvisionedProductResponse =
 updateProvisionedProductResponse
     :: Int -- ^ 'upprsResponseStatus'
     -> UpdateProvisionedProductResponse
-updateProvisionedProductResponse pResponseStatus_ =
-  UpdateProvisionedProductResponse'
-    {_upprsRecordDetail = Nothing, _upprsResponseStatus = pResponseStatus_}
-
+updateProvisionedProductResponse pResponseStatus_
+  = UpdateProvisionedProductResponse'{_upprsRecordDetail
+                                        = Nothing,
+                                      _upprsResponseStatus = pResponseStatus_}
 
 -- | Information about the result of the request.
 upprsRecordDetail :: Lens' UpdateProvisionedProductResponse (Maybe RecordDetail)

@@ -40,22 +40,19 @@ module Network.AWS.Athena.UpdateWorkGroup
     ) where
 
 import Network.AWS.Athena.Types
-import Network.AWS.Athena.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 
 -- | /See:/ 'updateWorkGroup' smart constructor.
-data UpdateWorkGroup =
-  UpdateWorkGroup'
-    { _uwgState                :: !(Maybe WorkGroupState)
-    , _uwgConfigurationUpdates :: !(Maybe WorkGroupConfigurationUpdates)
-    , _uwgDescription          :: !(Maybe Text)
-    , _uwgWorkGroup            :: !Text
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data UpdateWorkGroup = UpdateWorkGroup'{_uwgState ::
+                                        !(Maybe WorkGroupState),
+                                        _uwgConfigurationUpdates ::
+                                        !(Maybe WorkGroupConfigurationUpdates),
+                                        _uwgDescription :: !(Maybe Text),
+                                        _uwgWorkGroup :: !Text}
+                         deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'UpdateWorkGroup' with the minimum fields required to make a request.
 --
@@ -71,14 +68,11 @@ data UpdateWorkGroup =
 updateWorkGroup
     :: Text -- ^ 'uwgWorkGroup'
     -> UpdateWorkGroup
-updateWorkGroup pWorkGroup_ =
-  UpdateWorkGroup'
-    { _uwgState = Nothing
-    , _uwgConfigurationUpdates = Nothing
-    , _uwgDescription = Nothing
-    , _uwgWorkGroup = pWorkGroup_
-    }
-
+updateWorkGroup pWorkGroup_
+  = UpdateWorkGroup'{_uwgState = Nothing,
+                     _uwgConfigurationUpdates = Nothing,
+                     _uwgDescription = Nothing,
+                     _uwgWorkGroup = pWorkGroup_}
 
 -- | The workgroup state that will be updated for the given workgroup.
 uwgState :: Lens' UpdateWorkGroup (Maybe WorkGroupState)
@@ -134,12 +128,10 @@ instance ToQuery UpdateWorkGroup where
         toQuery = const mempty
 
 -- | /See:/ 'updateWorkGroupResponse' smart constructor.
-newtype UpdateWorkGroupResponse =
-  UpdateWorkGroupResponse'
-    { _uwgrsResponseStatus :: Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+newtype UpdateWorkGroupResponse = UpdateWorkGroupResponse'{_uwgrsResponseStatus
+                                                           :: Int}
+                                    deriving (Eq, Read, Show, Data, Typeable,
+                                              Generic)
 
 -- | Creates a value of 'UpdateWorkGroupResponse' with the minimum fields required to make a request.
 --
@@ -149,9 +141,9 @@ newtype UpdateWorkGroupResponse =
 updateWorkGroupResponse
     :: Int -- ^ 'uwgrsResponseStatus'
     -> UpdateWorkGroupResponse
-updateWorkGroupResponse pResponseStatus_ =
-  UpdateWorkGroupResponse' {_uwgrsResponseStatus = pResponseStatus_}
-
+updateWorkGroupResponse pResponseStatus_
+  = UpdateWorkGroupResponse'{_uwgrsResponseStatus =
+                               pResponseStatus_}
 
 -- | -- | The response status code.
 uwgrsResponseStatus :: Lens' UpdateWorkGroupResponse Int

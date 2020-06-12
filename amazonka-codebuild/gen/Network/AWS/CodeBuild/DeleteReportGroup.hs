@@ -18,7 +18,7 @@
 -- Stability   : auto-generated
 -- Portability : non-portable (GHC extensions)
 --
--- @DeleteReportGroup@ : Deletes a report group. Before you delete a report group, you must delete its reports. Use <https://docs.aws.amazon.com/codebuild/latest/APIReference/API_ListReportsForReportGroup.html ListReportsForReportGroup> to get the reports in a report group. Use <https://docs.aws.amazon.com/codebuild/latest/APIReference/API_DeleteReport.html DeleteReport> to delete the reports. If you call @DeleteReportGroup@ for a report group that contains one or more reports, an exception is thrown.
+-- @DeleteReportGroup@ : Deletes a report group. Before you delete a report group, you must delete its reports. Use <https://docs.aws.amazon.com/codebuild/latest/APIReference/API_ListReportsForReportGroup.html ListReportsForReportGroup> to get the reports in a report group. Use <https://docs.aws.amazon.com/codebuild/latest/APIReference/API_DeleteReport.html DeleteReport> to delete the reports. If you call @DeleteReportGroup@ for a report group that contains one or more reports, an exception is thrown. 
 --
 --
 module Network.AWS.CodeBuild.DeleteReportGroup
@@ -37,32 +37,28 @@ module Network.AWS.CodeBuild.DeleteReportGroup
     ) where
 
 import Network.AWS.CodeBuild.Types
-import Network.AWS.CodeBuild.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 
 -- | /See:/ 'deleteReportGroup' smart constructor.
-newtype DeleteReportGroup =
-  DeleteReportGroup'
-    { _drgArn :: Text
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+newtype DeleteReportGroup = DeleteReportGroup'{_drgArn
+                                               :: Text}
+                              deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'DeleteReportGroup' with the minimum fields required to make a request.
 --
 -- Use one of the following lenses to modify other fields as desired:
 --
--- * 'drgArn' - The ARN of the report group to delete.
+-- * 'drgArn' - The ARN of the report group to delete. 
 deleteReportGroup
     :: Text -- ^ 'drgArn'
     -> DeleteReportGroup
-deleteReportGroup pArn_ = DeleteReportGroup' {_drgArn = pArn_}
+deleteReportGroup pArn_
+  = DeleteReportGroup'{_drgArn = pArn_}
 
-
--- | The ARN of the report group to delete.
+-- | The ARN of the report group to delete. 
 drgArn :: Lens' DeleteReportGroup Text
 drgArn = lens _drgArn (\ s a -> s{_drgArn = a})
 
@@ -99,12 +95,10 @@ instance ToQuery DeleteReportGroup where
         toQuery = const mempty
 
 -- | /See:/ 'deleteReportGroupResponse' smart constructor.
-newtype DeleteReportGroupResponse =
-  DeleteReportGroupResponse'
-    { _drgrsResponseStatus :: Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+newtype DeleteReportGroupResponse = DeleteReportGroupResponse'{_drgrsResponseStatus
+                                                               :: Int}
+                                      deriving (Eq, Read, Show, Data, Typeable,
+                                                Generic)
 
 -- | Creates a value of 'DeleteReportGroupResponse' with the minimum fields required to make a request.
 --
@@ -114,9 +108,9 @@ newtype DeleteReportGroupResponse =
 deleteReportGroupResponse
     :: Int -- ^ 'drgrsResponseStatus'
     -> DeleteReportGroupResponse
-deleteReportGroupResponse pResponseStatus_ =
-  DeleteReportGroupResponse' {_drgrsResponseStatus = pResponseStatus_}
-
+deleteReportGroupResponse pResponseStatus_
+  = DeleteReportGroupResponse'{_drgrsResponseStatus =
+                                 pResponseStatus_}
 
 -- | -- | The response status code.
 drgrsResponseStatus :: Lens' DeleteReportGroupResponse Int

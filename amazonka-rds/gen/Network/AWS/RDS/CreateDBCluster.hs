@@ -23,7 +23,7 @@
 --
 -- You can use the @ReplicationSourceIdentifier@ parameter to create the DB cluster as a Read Replica of another DB cluster or Amazon RDS MySQL DB instance. For cross-region replication where the DB cluster identified by @ReplicationSourceIdentifier@ is encrypted, you must also specify the @PreSignedUrl@ parameter.
 --
--- For more information on Amazon Aurora, see <http://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/CHAP_Aurora.html Aurora on Amazon RDS> in the /Amazon RDS User Guide./
+-- For more information on Amazon Aurora, see <http://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/CHAP_Aurora.html Aurora on Amazon RDS> in the /Amazon RDS User Guide./ 
 --
 module Network.AWS.RDS.CreateDBCluster
     (
@@ -66,49 +66,53 @@ module Network.AWS.RDS.CreateDBCluster
 import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.RDS.Types
-import Network.AWS.RDS.Types.Product
 import Network.AWS.Request
 import Network.AWS.Response
 
--- |
+-- | 
 --
 --
 --
 -- /See:/ 'createDBCluster' smart constructor.
-data CreateDBCluster =
-  CreateDBCluster'
-    { _cdcEngineVersion                   :: !(Maybe Text)
-    , _cdcStorageEncrypted                :: !(Maybe Bool)
-    , _cdcMasterUserPassword              :: !(Maybe Text)
-    , _cdcReplicationSourceIdentifier     :: !(Maybe Text)
-    , _cdcMasterUsername                  :: !(Maybe Text)
-    , _cdcDBSubnetGroupName               :: !(Maybe Text)
-    , _cdcBacktrackWindow                 :: !(Maybe Integer)
-    , _cdcPreSignedURL                    :: !(Maybe Text)
-    , _cdcPreferredMaintenanceWindow      :: !(Maybe Text)
-    , _cdcAvailabilityZones               :: !(Maybe [Text])
-    , _cdcCharacterSetName                :: !(Maybe Text)
-    , _cdcKMSKeyId                        :: !(Maybe Text)
-    , _cdcPreferredBackupWindow           :: !(Maybe Text)
-    , _cdcBackupRetentionPeriod           :: !(Maybe Int)
-    , _cdcVPCSecurityGroupIds             :: !(Maybe [Text])
-    , _cdcDatabaseName                    :: !(Maybe Text)
-    , _cdcDBClusterParameterGroupName     :: !(Maybe Text)
-    , _cdcOptionGroupName                 :: !(Maybe Text)
-    , _cdcTags                            :: !(Maybe [Tag])
-    , _cdcPort                            :: !(Maybe Int)
-    , _cdcEnableIAMDatabaseAuthentication :: !(Maybe Bool)
-    , _cdcDBClusterIdentifier             :: !Text
-    , _cdcEngine                          :: !Text
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data CreateDBCluster = CreateDBCluster'{_cdcEngineVersion
+                                        :: !(Maybe Text),
+                                        _cdcStorageEncrypted :: !(Maybe Bool),
+                                        _cdcMasterUserPassword :: !(Maybe Text),
+                                        _cdcReplicationSourceIdentifier ::
+                                        !(Maybe Text),
+                                        _cdcMasterUsername :: !(Maybe Text),
+                                        _cdcDBSubnetGroupName :: !(Maybe Text),
+                                        _cdcBacktrackWindow :: !(Maybe Integer),
+                                        _cdcPreSignedURL :: !(Maybe Text),
+                                        _cdcPreferredMaintenanceWindow ::
+                                        !(Maybe Text),
+                                        _cdcAvailabilityZones ::
+                                        !(Maybe [Text]),
+                                        _cdcCharacterSetName :: !(Maybe Text),
+                                        _cdcKMSKeyId :: !(Maybe Text),
+                                        _cdcPreferredBackupWindow ::
+                                        !(Maybe Text),
+                                        _cdcBackupRetentionPeriod ::
+                                        !(Maybe Int),
+                                        _cdcVPCSecurityGroupIds ::
+                                        !(Maybe [Text]),
+                                        _cdcDatabaseName :: !(Maybe Text),
+                                        _cdcDBClusterParameterGroupName ::
+                                        !(Maybe Text),
+                                        _cdcOptionGroupName :: !(Maybe Text),
+                                        _cdcTags :: !(Maybe [Tag]),
+                                        _cdcPort :: !(Maybe Int),
+                                        _cdcEnableIAMDatabaseAuthentication ::
+                                        !(Maybe Bool),
+                                        _cdcDBClusterIdentifier :: !Text,
+                                        _cdcEngine :: !Text}
+                         deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'CreateDBCluster' with the minimum fields required to make a request.
 --
 -- Use one of the following lenses to modify other fields as desired:
 --
--- * 'cdcEngineVersion' - The version number of the database engine to use. __Aurora MySQL__  Example: @5.6.10a@ , @5.7.12@  __Aurora PostgreSQL__  Example: @9.6.3@
+-- * 'cdcEngineVersion' - The version number of the database engine to use. __Aurora MySQL__  Example: @5.6.10a@ , @5.7.12@  __Aurora PostgreSQL__  Example: @9.6.3@ 
 --
 -- * 'cdcStorageEncrypted' - Specifies whether the DB cluster is encrypted.
 --
@@ -118,7 +122,7 @@ data CreateDBCluster =
 --
 -- * 'cdcMasterUsername' - The name of the master user for the DB cluster. Constraints:     * Must be 1 to 16 letters or numbers.     * First character must be a letter.     * Cannot be a reserved word for the chosen database engine.
 --
--- * 'cdcDBSubnetGroupName' - A DB subnet group to associate with this DB cluster. Constraints: Must match the name of an existing DBSubnetGroup. Must not be default. Example: @mySubnetgroup@
+-- * 'cdcDBSubnetGroupName' - A DB subnet group to associate with this DB cluster. Constraints: Must match the name of an existing DBSubnetGroup. Must not be default. Example: @mySubnetgroup@ 
 --
 -- * 'cdcBacktrackWindow' - The target backtrack window, in seconds. To disable backtracking, set this value to 0.  Default: 0 Constraints:     * If specified, this value must be set to a number from 0 to 259,200 (72 hours).
 --
@@ -126,7 +130,7 @@ data CreateDBCluster =
 --
 -- * 'cdcPreferredMaintenanceWindow' - The weekly time range during which system maintenance can occur, in Universal Coordinated Time (UTC). Format: @ddd:hh24:mi-ddd:hh24:mi@  The default is a 30-minute window selected at random from an 8-hour block of time for each AWS Region, occurring on a random day of the week. To see the time blocks available, see <http://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/AdjustingTheMaintenanceWindow.html Adjusting the Preferred Maintenance Window> in the /Amazon RDS User Guide./  Valid Days: Mon, Tue, Wed, Thu, Fri, Sat, Sun. Constraints: Minimum 30-minute window.
 --
--- * 'cdcAvailabilityZones' - A list of EC2 Availability Zones that instances in the DB cluster can be created in. For information on AWS Regions and Availability Zones, see <http://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/Concepts.RegionsAndAvailabilityZones.html Regions and Availability Zones> .
+-- * 'cdcAvailabilityZones' - A list of EC2 Availability Zones that instances in the DB cluster can be created in. For information on AWS Regions and Availability Zones, see <http://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/Concepts.RegionsAndAvailabilityZones.html Regions and Availability Zones> . 
 --
 -- * 'cdcCharacterSetName' - A value that indicates that the DB cluster should be associated with the specified CharacterSet.
 --
@@ -146,46 +150,42 @@ data CreateDBCluster =
 --
 -- * 'cdcTags' - Undocumented member.
 --
--- * 'cdcPort' - The port number on which the instances in the DB cluster accept connections. Default: @3306@ if engine is set as aurora or @5432@ if set to aurora-postgresql.
+-- * 'cdcPort' - The port number on which the instances in the DB cluster accept connections. Default: @3306@ if engine is set as aurora or @5432@ if set to aurora-postgresql. 
 --
--- * 'cdcEnableIAMDatabaseAuthentication' - True to enable mapping of AWS Identity and Access Management (IAM) accounts to database accounts, and otherwise false. Default: @false@
+-- * 'cdcEnableIAMDatabaseAuthentication' - True to enable mapping of AWS Identity and Access Management (IAM) accounts to database accounts, and otherwise false. Default: @false@ 
 --
--- * 'cdcDBClusterIdentifier' - The DB cluster identifier. This parameter is stored as a lowercase string. Constraints:     * Must contain from 1 to 63 letters, numbers, or hyphens.     * First character must be a letter.     * Cannot end with a hyphen or contain two consecutive hyphens. Example: @my-cluster1@
+-- * 'cdcDBClusterIdentifier' - The DB cluster identifier. This parameter is stored as a lowercase string. Constraints:     * Must contain from 1 to 63 letters, numbers, or hyphens.     * First character must be a letter.     * Cannot end with a hyphen or contain two consecutive hyphens. Example: @my-cluster1@ 
 --
--- * 'cdcEngine' - The name of the database engine to be used for this DB cluster. Valid Values: @aurora@ (for MySQL 5.6-compatible Aurora), @aurora-mysql@ (for MySQL 5.7-compatible Aurora), and @aurora-postgresql@
+-- * 'cdcEngine' - The name of the database engine to be used for this DB cluster. Valid Values: @aurora@ (for MySQL 5.6-compatible Aurora), @aurora-mysql@ (for MySQL 5.7-compatible Aurora), and @aurora-postgresql@ 
 createDBCluster
     :: Text -- ^ 'cdcDBClusterIdentifier'
     -> Text -- ^ 'cdcEngine'
     -> CreateDBCluster
-createDBCluster pDBClusterIdentifier_ pEngine_ =
-  CreateDBCluster'
-    { _cdcEngineVersion = Nothing
-    , _cdcStorageEncrypted = Nothing
-    , _cdcMasterUserPassword = Nothing
-    , _cdcReplicationSourceIdentifier = Nothing
-    , _cdcMasterUsername = Nothing
-    , _cdcDBSubnetGroupName = Nothing
-    , _cdcBacktrackWindow = Nothing
-    , _cdcPreSignedURL = Nothing
-    , _cdcPreferredMaintenanceWindow = Nothing
-    , _cdcAvailabilityZones = Nothing
-    , _cdcCharacterSetName = Nothing
-    , _cdcKMSKeyId = Nothing
-    , _cdcPreferredBackupWindow = Nothing
-    , _cdcBackupRetentionPeriod = Nothing
-    , _cdcVPCSecurityGroupIds = Nothing
-    , _cdcDatabaseName = Nothing
-    , _cdcDBClusterParameterGroupName = Nothing
-    , _cdcOptionGroupName = Nothing
-    , _cdcTags = Nothing
-    , _cdcPort = Nothing
-    , _cdcEnableIAMDatabaseAuthentication = Nothing
-    , _cdcDBClusterIdentifier = pDBClusterIdentifier_
-    , _cdcEngine = pEngine_
-    }
+createDBCluster pDBClusterIdentifier_ pEngine_
+  = CreateDBCluster'{_cdcEngineVersion = Nothing,
+                     _cdcStorageEncrypted = Nothing,
+                     _cdcMasterUserPassword = Nothing,
+                     _cdcReplicationSourceIdentifier = Nothing,
+                     _cdcMasterUsername = Nothing,
+                     _cdcDBSubnetGroupName = Nothing,
+                     _cdcBacktrackWindow = Nothing,
+                     _cdcPreSignedURL = Nothing,
+                     _cdcPreferredMaintenanceWindow = Nothing,
+                     _cdcAvailabilityZones = Nothing,
+                     _cdcCharacterSetName = Nothing,
+                     _cdcKMSKeyId = Nothing,
+                     _cdcPreferredBackupWindow = Nothing,
+                     _cdcBackupRetentionPeriod = Nothing,
+                     _cdcVPCSecurityGroupIds = Nothing,
+                     _cdcDatabaseName = Nothing,
+                     _cdcDBClusterParameterGroupName = Nothing,
+                     _cdcOptionGroupName = Nothing, _cdcTags = Nothing,
+                     _cdcPort = Nothing,
+                     _cdcEnableIAMDatabaseAuthentication = Nothing,
+                     _cdcDBClusterIdentifier = pDBClusterIdentifier_,
+                     _cdcEngine = pEngine_}
 
-
--- | The version number of the database engine to use. __Aurora MySQL__  Example: @5.6.10a@ , @5.7.12@  __Aurora PostgreSQL__  Example: @9.6.3@
+-- | The version number of the database engine to use. __Aurora MySQL__  Example: @5.6.10a@ , @5.7.12@  __Aurora PostgreSQL__  Example: @9.6.3@ 
 cdcEngineVersion :: Lens' CreateDBCluster (Maybe Text)
 cdcEngineVersion = lens _cdcEngineVersion (\ s a -> s{_cdcEngineVersion = a})
 
@@ -205,7 +205,7 @@ cdcReplicationSourceIdentifier = lens _cdcReplicationSourceIdentifier (\ s a -> 
 cdcMasterUsername :: Lens' CreateDBCluster (Maybe Text)
 cdcMasterUsername = lens _cdcMasterUsername (\ s a -> s{_cdcMasterUsername = a})
 
--- | A DB subnet group to associate with this DB cluster. Constraints: Must match the name of an existing DBSubnetGroup. Must not be default. Example: @mySubnetgroup@
+-- | A DB subnet group to associate with this DB cluster. Constraints: Must match the name of an existing DBSubnetGroup. Must not be default. Example: @mySubnetgroup@ 
 cdcDBSubnetGroupName :: Lens' CreateDBCluster (Maybe Text)
 cdcDBSubnetGroupName = lens _cdcDBSubnetGroupName (\ s a -> s{_cdcDBSubnetGroupName = a})
 
@@ -221,7 +221,7 @@ cdcPreSignedURL = lens _cdcPreSignedURL (\ s a -> s{_cdcPreSignedURL = a})
 cdcPreferredMaintenanceWindow :: Lens' CreateDBCluster (Maybe Text)
 cdcPreferredMaintenanceWindow = lens _cdcPreferredMaintenanceWindow (\ s a -> s{_cdcPreferredMaintenanceWindow = a})
 
--- | A list of EC2 Availability Zones that instances in the DB cluster can be created in. For information on AWS Regions and Availability Zones, see <http://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/Concepts.RegionsAndAvailabilityZones.html Regions and Availability Zones> .
+-- | A list of EC2 Availability Zones that instances in the DB cluster can be created in. For information on AWS Regions and Availability Zones, see <http://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/Concepts.RegionsAndAvailabilityZones.html Regions and Availability Zones> . 
 cdcAvailabilityZones :: Lens' CreateDBCluster [Text]
 cdcAvailabilityZones = lens _cdcAvailabilityZones (\ s a -> s{_cdcAvailabilityZones = a}) . _Default . _Coerce
 
@@ -261,19 +261,19 @@ cdcOptionGroupName = lens _cdcOptionGroupName (\ s a -> s{_cdcOptionGroupName = 
 cdcTags :: Lens' CreateDBCluster [Tag]
 cdcTags = lens _cdcTags (\ s a -> s{_cdcTags = a}) . _Default . _Coerce
 
--- | The port number on which the instances in the DB cluster accept connections. Default: @3306@ if engine is set as aurora or @5432@ if set to aurora-postgresql.
+-- | The port number on which the instances in the DB cluster accept connections. Default: @3306@ if engine is set as aurora or @5432@ if set to aurora-postgresql. 
 cdcPort :: Lens' CreateDBCluster (Maybe Int)
 cdcPort = lens _cdcPort (\ s a -> s{_cdcPort = a})
 
--- | True to enable mapping of AWS Identity and Access Management (IAM) accounts to database accounts, and otherwise false. Default: @false@
+-- | True to enable mapping of AWS Identity and Access Management (IAM) accounts to database accounts, and otherwise false. Default: @false@ 
 cdcEnableIAMDatabaseAuthentication :: Lens' CreateDBCluster (Maybe Bool)
 cdcEnableIAMDatabaseAuthentication = lens _cdcEnableIAMDatabaseAuthentication (\ s a -> s{_cdcEnableIAMDatabaseAuthentication = a})
 
--- | The DB cluster identifier. This parameter is stored as a lowercase string. Constraints:     * Must contain from 1 to 63 letters, numbers, or hyphens.     * First character must be a letter.     * Cannot end with a hyphen or contain two consecutive hyphens. Example: @my-cluster1@
+-- | The DB cluster identifier. This parameter is stored as a lowercase string. Constraints:     * Must contain from 1 to 63 letters, numbers, or hyphens.     * First character must be a letter.     * Cannot end with a hyphen or contain two consecutive hyphens. Example: @my-cluster1@ 
 cdcDBClusterIdentifier :: Lens' CreateDBCluster Text
 cdcDBClusterIdentifier = lens _cdcDBClusterIdentifier (\ s a -> s{_cdcDBClusterIdentifier = a})
 
--- | The name of the database engine to be used for this DB cluster. Valid Values: @aurora@ (for MySQL 5.6-compatible Aurora), @aurora-mysql@ (for MySQL 5.7-compatible Aurora), and @aurora-postgresql@
+-- | The name of the database engine to be used for this DB cluster. Valid Values: @aurora@ (for MySQL 5.6-compatible Aurora), @aurora-mysql@ (for MySQL 5.7-compatible Aurora), and @aurora-postgresql@ 
 cdcEngine :: Lens' CreateDBCluster Text
 cdcEngine = lens _cdcEngine (\ s a -> s{_cdcEngine = a})
 
@@ -336,13 +336,12 @@ instance ToQuery CreateDBCluster where
                "Engine" =: _cdcEngine]
 
 -- | /See:/ 'createDBClusterResponse' smart constructor.
-data CreateDBClusterResponse =
-  CreateDBClusterResponse'
-    { _cdcrsDBCluster      :: !(Maybe DBCluster)
-    , _cdcrsResponseStatus :: !Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data CreateDBClusterResponse = CreateDBClusterResponse'{_cdcrsDBCluster
+                                                        :: !(Maybe DBCluster),
+                                                        _cdcrsResponseStatus ::
+                                                        !Int}
+                                 deriving (Eq, Read, Show, Data, Typeable,
+                                           Generic)
 
 -- | Creates a value of 'CreateDBClusterResponse' with the minimum fields required to make a request.
 --
@@ -354,10 +353,9 @@ data CreateDBClusterResponse =
 createDBClusterResponse
     :: Int -- ^ 'cdcrsResponseStatus'
     -> CreateDBClusterResponse
-createDBClusterResponse pResponseStatus_ =
-  CreateDBClusterResponse'
-    {_cdcrsDBCluster = Nothing, _cdcrsResponseStatus = pResponseStatus_}
-
+createDBClusterResponse pResponseStatus_
+  = CreateDBClusterResponse'{_cdcrsDBCluster = Nothing,
+                             _cdcrsResponseStatus = pResponseStatus_}
 
 -- | Undocumented member.
 cdcrsDBCluster :: Lens' CreateDBClusterResponse (Maybe DBCluster)

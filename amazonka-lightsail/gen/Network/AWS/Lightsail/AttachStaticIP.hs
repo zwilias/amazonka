@@ -40,19 +40,15 @@ module Network.AWS.Lightsail.AttachStaticIP
 
 import Network.AWS.Lens
 import Network.AWS.Lightsail.Types
-import Network.AWS.Lightsail.Types.Product
 import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 
 -- | /See:/ 'attachStaticIP' smart constructor.
-data AttachStaticIP =
-  AttachStaticIP'
-    { _asipStaticIPName :: !Text
-    , _asipInstanceName :: !Text
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data AttachStaticIP = AttachStaticIP'{_asipStaticIPName
+                                      :: !Text,
+                                      _asipInstanceName :: !Text}
+                        deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'AttachStaticIP' with the minimum fields required to make a request.
 --
@@ -65,10 +61,9 @@ attachStaticIP
     :: Text -- ^ 'asipStaticIPName'
     -> Text -- ^ 'asipInstanceName'
     -> AttachStaticIP
-attachStaticIP pStaticIPName_ pInstanceName_ =
-  AttachStaticIP'
-    {_asipStaticIPName = pStaticIPName_, _asipInstanceName = pInstanceName_}
-
+attachStaticIP pStaticIPName_ pInstanceName_
+  = AttachStaticIP'{_asipStaticIPName = pStaticIPName_,
+                    _asipInstanceName = pInstanceName_}
 
 -- | The name of the static IP.
 asipStaticIPName :: Lens' AttachStaticIP Text
@@ -115,13 +110,12 @@ instance ToQuery AttachStaticIP where
         toQuery = const mempty
 
 -- | /See:/ 'attachStaticIPResponse' smart constructor.
-data AttachStaticIPResponse =
-  AttachStaticIPResponse'
-    { _asiprsOperations     :: !(Maybe [Operation])
-    , _asiprsResponseStatus :: !Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data AttachStaticIPResponse = AttachStaticIPResponse'{_asiprsOperations
+                                                      :: !(Maybe [Operation]),
+                                                      _asiprsResponseStatus ::
+                                                      !Int}
+                                deriving (Eq, Read, Show, Data, Typeable,
+                                          Generic)
 
 -- | Creates a value of 'AttachStaticIPResponse' with the minimum fields required to make a request.
 --
@@ -133,10 +127,10 @@ data AttachStaticIPResponse =
 attachStaticIPResponse
     :: Int -- ^ 'asiprsResponseStatus'
     -> AttachStaticIPResponse
-attachStaticIPResponse pResponseStatus_ =
-  AttachStaticIPResponse'
-    {_asiprsOperations = Nothing, _asiprsResponseStatus = pResponseStatus_}
-
+attachStaticIPResponse pResponseStatus_
+  = AttachStaticIPResponse'{_asiprsOperations =
+                              Nothing,
+                            _asiprsResponseStatus = pResponseStatus_}
 
 -- | An array of key-value pairs containing information about your API operations.
 asiprsOperations :: Lens' AttachStaticIPResponse [Operation]

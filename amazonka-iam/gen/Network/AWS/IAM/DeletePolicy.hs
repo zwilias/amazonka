@@ -47,19 +47,15 @@ module Network.AWS.IAM.DeletePolicy
     ) where
 
 import Network.AWS.IAM.Types
-import Network.AWS.IAM.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 
 -- | /See:/ 'deletePolicy' smart constructor.
-newtype DeletePolicy =
-  DeletePolicy'
-    { _dpPolicyARN :: Text
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+newtype DeletePolicy = DeletePolicy'{_dpPolicyARN ::
+                                     Text}
+                         deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'DeletePolicy' with the minimum fields required to make a request.
 --
@@ -69,8 +65,8 @@ newtype DeletePolicy =
 deletePolicy
     :: Text -- ^ 'dpPolicyARN'
     -> DeletePolicy
-deletePolicy pPolicyARN_ = DeletePolicy' {_dpPolicyARN = pPolicyARN_}
-
+deletePolicy pPolicyARN_
+  = DeletePolicy'{_dpPolicyARN = pPolicyARN_}
 
 -- | The Amazon Resource Name (ARN) of the IAM policy you want to delete. For more information about ARNs, see <http://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html Amazon Resource Names (ARNs) and AWS Service Namespaces> in the /AWS General Reference/ .
 dpPolicyARN :: Lens' DeletePolicy Text
@@ -99,16 +95,13 @@ instance ToQuery DeletePolicy where
                "PolicyArn" =: _dpPolicyARN]
 
 -- | /See:/ 'deletePolicyResponse' smart constructor.
-data DeletePolicyResponse =
-  DeletePolicyResponse'
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data DeletePolicyResponse = DeletePolicyResponse'
+                              deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'DeletePolicyResponse' with the minimum fields required to make a request.
 --
 deletePolicyResponse
     :: DeletePolicyResponse
 deletePolicyResponse = DeletePolicyResponse'
-
 
 instance NFData DeletePolicyResponse where

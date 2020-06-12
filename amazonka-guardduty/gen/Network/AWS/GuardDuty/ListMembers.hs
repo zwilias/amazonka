@@ -42,7 +42,6 @@ module Network.AWS.GuardDuty.ListMembers
     ) where
 
 import Network.AWS.GuardDuty.Types
-import Network.AWS.GuardDuty.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Pager
 import Network.AWS.Prelude
@@ -50,15 +49,12 @@ import Network.AWS.Request
 import Network.AWS.Response
 
 -- | /See:/ 'listMembers' smart constructor.
-data ListMembers =
-  ListMembers'
-    { _lmOnlyAssociated :: !(Maybe Text)
-    , _lmNextToken      :: !(Maybe Text)
-    , _lmMaxResults     :: !(Maybe Nat)
-    , _lmDetectorId     :: !Text
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data ListMembers = ListMembers'{_lmOnlyAssociated ::
+                                !(Maybe Text),
+                                _lmNextToken :: !(Maybe Text),
+                                _lmMaxResults :: !(Maybe Nat),
+                                _lmDetectorId :: !Text}
+                     deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'ListMembers' with the minimum fields required to make a request.
 --
@@ -74,14 +70,10 @@ data ListMembers =
 listMembers
     :: Text -- ^ 'lmDetectorId'
     -> ListMembers
-listMembers pDetectorId_ =
-  ListMembers'
-    { _lmOnlyAssociated = Nothing
-    , _lmNextToken = Nothing
-    , _lmMaxResults = Nothing
-    , _lmDetectorId = pDetectorId_
-    }
-
+listMembers pDetectorId_
+  = ListMembers'{_lmOnlyAssociated = Nothing,
+                 _lmNextToken = Nothing, _lmMaxResults = Nothing,
+                 _lmDetectorId = pDetectorId_}
 
 -- | Specifies what member accounts the response is to include based on their relationship status with the master account. The default value is TRUE. If onlyAssociated is set to TRUE, the response will include member accounts whose relationship status with the master is set to Enabled, Disabled. If onlyAssociated is set to FALSE, the response will include all existing member accounts.
 lmOnlyAssociated :: Lens' ListMembers (Maybe Text)
@@ -140,14 +132,11 @@ instance ToQuery ListMembers where
                "maxResults" =: _lmMaxResults]
 
 -- | /See:/ 'listMembersResponse' smart constructor.
-data ListMembersResponse =
-  ListMembersResponse'
-    { _lmrsMembers        :: !(Maybe [Member])
-    , _lmrsNextToken      :: !(Maybe Text)
-    , _lmrsResponseStatus :: !Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data ListMembersResponse = ListMembersResponse'{_lmrsMembers
+                                                :: !(Maybe [Member]),
+                                                _lmrsNextToken :: !(Maybe Text),
+                                                _lmrsResponseStatus :: !Int}
+                             deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'ListMembersResponse' with the minimum fields required to make a request.
 --
@@ -161,13 +150,10 @@ data ListMembersResponse =
 listMembersResponse
     :: Int -- ^ 'lmrsResponseStatus'
     -> ListMembersResponse
-listMembersResponse pResponseStatus_ =
-  ListMembersResponse'
-    { _lmrsMembers = Nothing
-    , _lmrsNextToken = Nothing
-    , _lmrsResponseStatus = pResponseStatus_
-    }
-
+listMembersResponse pResponseStatus_
+  = ListMembersResponse'{_lmrsMembers = Nothing,
+                         _lmrsNextToken = Nothing,
+                         _lmrsResponseStatus = pResponseStatus_}
 
 -- | Undocumented member.
 lmrsMembers :: Lens' ListMembersResponse [Member]

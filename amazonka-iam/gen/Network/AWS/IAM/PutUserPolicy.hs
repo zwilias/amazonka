@@ -41,21 +41,17 @@ module Network.AWS.IAM.PutUserPolicy
     ) where
 
 import Network.AWS.IAM.Types
-import Network.AWS.IAM.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 
 -- | /See:/ 'putUserPolicy' smart constructor.
-data PutUserPolicy =
-  PutUserPolicy'
-    { _pupUserName       :: !Text
-    , _pupPolicyName     :: !Text
-    , _pupPolicyDocument :: !Text
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data PutUserPolicy = PutUserPolicy'{_pupUserName ::
+                                    !Text,
+                                    _pupPolicyName :: !Text,
+                                    _pupPolicyDocument :: !Text}
+                       deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'PutUserPolicy' with the minimum fields required to make a request.
 --
@@ -71,13 +67,11 @@ putUserPolicy
     -> Text -- ^ 'pupPolicyName'
     -> Text -- ^ 'pupPolicyDocument'
     -> PutUserPolicy
-putUserPolicy pUserName_ pPolicyName_ pPolicyDocument_ =
-  PutUserPolicy'
-    { _pupUserName = pUserName_
-    , _pupPolicyName = pPolicyName_
-    , _pupPolicyDocument = pPolicyDocument_
-    }
-
+putUserPolicy pUserName_ pPolicyName_
+  pPolicyDocument_
+  = PutUserPolicy'{_pupUserName = pUserName_,
+                   _pupPolicyName = pPolicyName_,
+                   _pupPolicyDocument = pPolicyDocument_}
 
 -- | The name of the user to associate the policy with. This parameter allows (per its <http://wikipedia.org/wiki/regex regex pattern> ) a string of characters consisting of upper and lowercase alphanumeric characters with no spaces. You can also include any of the following characters: _+=,.@-
 pupUserName :: Lens' PutUserPolicy Text
@@ -116,16 +110,14 @@ instance ToQuery PutUserPolicy where
                "PolicyDocument" =: _pupPolicyDocument]
 
 -- | /See:/ 'putUserPolicyResponse' smart constructor.
-data PutUserPolicyResponse =
-  PutUserPolicyResponse'
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data PutUserPolicyResponse = PutUserPolicyResponse'
+                               deriving (Eq, Read, Show, Data, Typeable,
+                                         Generic)
 
 -- | Creates a value of 'PutUserPolicyResponse' with the minimum fields required to make a request.
 --
 putUserPolicyResponse
     :: PutUserPolicyResponse
 putUserPolicyResponse = PutUserPolicyResponse'
-
 
 instance NFData PutUserPolicyResponse where

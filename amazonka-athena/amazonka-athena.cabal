@@ -68,8 +68,31 @@ library
         , Network.AWS.Athena.Waiters
 
     other-modules:
-          Network.AWS.Athena.Types.Product
-        , Network.AWS.Athena.Types.Sum
+          Network.AWS.Athena.Types.ColumnInfo
+        , Network.AWS.Athena.Types.ColumnNullable
+        , Network.AWS.Athena.Types.Datum
+        , Network.AWS.Athena.Types.EncryptionConfiguration
+        , Network.AWS.Athena.Types.EncryptionOption
+        , Network.AWS.Athena.Types.NamedQuery
+        , Network.AWS.Athena.Types.QueryExecution
+        , Network.AWS.Athena.Types.QueryExecutionContext
+        , Network.AWS.Athena.Types.QueryExecutionState
+        , Network.AWS.Athena.Types.QueryExecutionStatistics
+        , Network.AWS.Athena.Types.QueryExecutionStatus
+        , Network.AWS.Athena.Types.ResultConfiguration
+        , Network.AWS.Athena.Types.ResultConfigurationUpdates
+        , Network.AWS.Athena.Types.ResultSet
+        , Network.AWS.Athena.Types.ResultSetMetadata
+        , Network.AWS.Athena.Types.Row
+        , Network.AWS.Athena.Types.StatementType
+        , Network.AWS.Athena.Types.Tag
+        , Network.AWS.Athena.Types.UnprocessedNamedQueryId
+        , Network.AWS.Athena.Types.UnprocessedQueryExecutionId
+        , Network.AWS.Athena.Types.WorkGroup
+        , Network.AWS.Athena.Types.WorkGroupConfiguration
+        , Network.AWS.Athena.Types.WorkGroupConfigurationUpdates
+        , Network.AWS.Athena.Types.WorkGroupState
+        , Network.AWS.Athena.Types.WorkGroupSummary
 
     build-depends:
           amazonka-core == 1.6.1.*

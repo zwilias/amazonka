@@ -52,28 +52,41 @@ module Network.AWS.CodeCommit.BatchDescribeMergeConflicts
     ) where
 
 import Network.AWS.CodeCommit.Types
-import Network.AWS.CodeCommit.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 
 -- | /See:/ 'batchDescribeMergeConflicts' smart constructor.
-data BatchDescribeMergeConflicts =
-  BatchDescribeMergeConflicts'
-    { _bdmcFilePaths :: !(Maybe [Text])
-    , _bdmcConflictDetailLevel :: !(Maybe ConflictDetailLevelTypeEnum)
-    , _bdmcNextToken :: !(Maybe Text)
-    , _bdmcMaxConflictFiles :: !(Maybe Int)
-    , _bdmcMaxMergeHunks :: !(Maybe Int)
-    , _bdmcConflictResolutionStrategy :: !(Maybe ConflictResolutionStrategyTypeEnum)
-    , _bdmcRepositoryName :: !Text
-    , _bdmcDestinationCommitSpecifier :: !Text
-    , _bdmcSourceCommitSpecifier :: !Text
-    , _bdmcMergeOption :: !MergeOptionTypeEnum
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data BatchDescribeMergeConflicts = BatchDescribeMergeConflicts'{_bdmcFilePaths
+                                                                ::
+                                                                !(Maybe [Text]),
+                                                                _bdmcConflictDetailLevel
+                                                                ::
+                                                                !(Maybe
+                                                                    ConflictDetailLevelTypeEnum),
+                                                                _bdmcNextToken
+                                                                ::
+                                                                !(Maybe Text),
+                                                                _bdmcMaxConflictFiles
+                                                                :: !(Maybe Int),
+                                                                _bdmcMaxMergeHunks
+                                                                :: !(Maybe Int),
+                                                                _bdmcConflictResolutionStrategy
+                                                                ::
+                                                                !(Maybe
+                                                                    ConflictResolutionStrategyTypeEnum),
+                                                                _bdmcRepositoryName
+                                                                :: !Text,
+                                                                _bdmcDestinationCommitSpecifier
+                                                                :: !Text,
+                                                                _bdmcSourceCommitSpecifier
+                                                                :: !Text,
+                                                                _bdmcMergeOption
+                                                                ::
+                                                                !MergeOptionTypeEnum}
+                                     deriving (Eq, Read, Show, Data, Typeable,
+                                               Generic)
 
 -- | Creates a value of 'BatchDescribeMergeConflicts' with the minimum fields required to make a request.
 --
@@ -104,20 +117,22 @@ batchDescribeMergeConflicts
     -> Text -- ^ 'bdmcSourceCommitSpecifier'
     -> MergeOptionTypeEnum -- ^ 'bdmcMergeOption'
     -> BatchDescribeMergeConflicts
-batchDescribeMergeConflicts pRepositoryName_ pDestinationCommitSpecifier_ pSourceCommitSpecifier_ pMergeOption_ =
-  BatchDescribeMergeConflicts'
-    { _bdmcFilePaths = Nothing
-    , _bdmcConflictDetailLevel = Nothing
-    , _bdmcNextToken = Nothing
-    , _bdmcMaxConflictFiles = Nothing
-    , _bdmcMaxMergeHunks = Nothing
-    , _bdmcConflictResolutionStrategy = Nothing
-    , _bdmcRepositoryName = pRepositoryName_
-    , _bdmcDestinationCommitSpecifier = pDestinationCommitSpecifier_
-    , _bdmcSourceCommitSpecifier = pSourceCommitSpecifier_
-    , _bdmcMergeOption = pMergeOption_
-    }
-
+batchDescribeMergeConflicts pRepositoryName_
+  pDestinationCommitSpecifier_ pSourceCommitSpecifier_
+  pMergeOption_
+  = BatchDescribeMergeConflicts'{_bdmcFilePaths =
+                                   Nothing,
+                                 _bdmcConflictDetailLevel = Nothing,
+                                 _bdmcNextToken = Nothing,
+                                 _bdmcMaxConflictFiles = Nothing,
+                                 _bdmcMaxMergeHunks = Nothing,
+                                 _bdmcConflictResolutionStrategy = Nothing,
+                                 _bdmcRepositoryName = pRepositoryName_,
+                                 _bdmcDestinationCommitSpecifier =
+                                   pDestinationCommitSpecifier_,
+                                 _bdmcSourceCommitSpecifier =
+                                   pSourceCommitSpecifier_,
+                                 _bdmcMergeOption = pMergeOption_}
 
 -- | The path of the target files used to describe the conflicts. If not specified, the default is all conflict files.
 bdmcFilePaths :: Lens' BatchDescribeMergeConflicts [Text]
@@ -216,18 +231,32 @@ instance ToQuery BatchDescribeMergeConflicts where
         toQuery = const mempty
 
 -- | /See:/ 'batchDescribeMergeConflictsResponse' smart constructor.
-data BatchDescribeMergeConflictsResponse =
-  BatchDescribeMergeConflictsResponse'
-    { _bdmcrsBaseCommitId        :: !(Maybe Text)
-    , _bdmcrsNextToken           :: !(Maybe Text)
-    , _bdmcrsErrors              :: !(Maybe [BatchDescribeMergeConflictsError])
-    , _bdmcrsResponseStatus      :: !Int
-    , _bdmcrsConflicts           :: ![Conflict]
-    , _bdmcrsDestinationCommitId :: !Text
-    , _bdmcrsSourceCommitId      :: !Text
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data BatchDescribeMergeConflictsResponse = BatchDescribeMergeConflictsResponse'{_bdmcrsBaseCommitId
+                                                                                ::
+                                                                                !(Maybe
+                                                                                    Text),
+                                                                                _bdmcrsNextToken
+                                                                                ::
+                                                                                !(Maybe
+                                                                                    Text),
+                                                                                _bdmcrsErrors
+                                                                                ::
+                                                                                !(Maybe
+                                                                                    [BatchDescribeMergeConflictsError]),
+                                                                                _bdmcrsResponseStatus
+                                                                                ::
+                                                                                !Int,
+                                                                                _bdmcrsConflicts
+                                                                                ::
+                                                                                ![Conflict],
+                                                                                _bdmcrsDestinationCommitId
+                                                                                ::
+                                                                                !Text,
+                                                                                _bdmcrsSourceCommitId
+                                                                                ::
+                                                                                !Text}
+                                             deriving (Eq, Read, Show, Data,
+                                                       Typeable, Generic)
 
 -- | Creates a value of 'BatchDescribeMergeConflictsResponse' with the minimum fields required to make a request.
 --
@@ -251,17 +280,19 @@ batchDescribeMergeConflictsResponse
     -> Text -- ^ 'bdmcrsDestinationCommitId'
     -> Text -- ^ 'bdmcrsSourceCommitId'
     -> BatchDescribeMergeConflictsResponse
-batchDescribeMergeConflictsResponse pResponseStatus_ pDestinationCommitId_ pSourceCommitId_ =
-  BatchDescribeMergeConflictsResponse'
-    { _bdmcrsBaseCommitId = Nothing
-    , _bdmcrsNextToken = Nothing
-    , _bdmcrsErrors = Nothing
-    , _bdmcrsResponseStatus = pResponseStatus_
-    , _bdmcrsConflicts = mempty
-    , _bdmcrsDestinationCommitId = pDestinationCommitId_
-    , _bdmcrsSourceCommitId = pSourceCommitId_
-    }
-
+batchDescribeMergeConflictsResponse pResponseStatus_
+  pDestinationCommitId_ pSourceCommitId_
+  = BatchDescribeMergeConflictsResponse'{_bdmcrsBaseCommitId
+                                           = Nothing,
+                                         _bdmcrsNextToken = Nothing,
+                                         _bdmcrsErrors = Nothing,
+                                         _bdmcrsResponseStatus =
+                                           pResponseStatus_,
+                                         _bdmcrsConflicts = mempty,
+                                         _bdmcrsDestinationCommitId =
+                                           pDestinationCommitId_,
+                                         _bdmcrsSourceCommitId =
+                                           pSourceCommitId_}
 
 -- | The commit ID of the merge base.
 bdmcrsBaseCommitId :: Lens' BatchDescribeMergeConflictsResponse (Maybe Text)

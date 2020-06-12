@@ -23,7 +23,7 @@
 --
 -- Only those recognizers that are in terminated states (IN_ERROR, TRAINED) will be deleted. If an active inference job is using the model, a @ResourceInUseException@ will be returned.
 --
--- This is an asynchronous action that puts the recognizer into a DELETING state, and it is then removed by a background job. Once removed, the recognizer disappears from your account and is no longer available for use.
+-- This is an asynchronous action that puts the recognizer into a DELETING state, and it is then removed by a background job. Once removed, the recognizer disappears from your account and is no longer available for use. 
 --
 module Network.AWS.Comprehend.DeleteEntityRecognizer
     (
@@ -41,19 +41,16 @@ module Network.AWS.Comprehend.DeleteEntityRecognizer
     ) where
 
 import Network.AWS.Comprehend.Types
-import Network.AWS.Comprehend.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 
 -- | /See:/ 'deleteEntityRecognizer' smart constructor.
-newtype DeleteEntityRecognizer =
-  DeleteEntityRecognizer'
-    { _derEntityRecognizerARN :: Text
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+newtype DeleteEntityRecognizer = DeleteEntityRecognizer'{_derEntityRecognizerARN
+                                                         :: Text}
+                                   deriving (Eq, Read, Show, Data, Typeable,
+                                             Generic)
 
 -- | Creates a value of 'DeleteEntityRecognizer' with the minimum fields required to make a request.
 --
@@ -63,9 +60,9 @@ newtype DeleteEntityRecognizer =
 deleteEntityRecognizer
     :: Text -- ^ 'derEntityRecognizerARN'
     -> DeleteEntityRecognizer
-deleteEntityRecognizer pEntityRecognizerARN_ =
-  DeleteEntityRecognizer' {_derEntityRecognizerARN = pEntityRecognizerARN_}
-
+deleteEntityRecognizer pEntityRecognizerARN_
+  = DeleteEntityRecognizer'{_derEntityRecognizerARN =
+                              pEntityRecognizerARN_}
 
 -- | The Amazon Resource Name (ARN) that identifies the entity recognizer.
 derEntityRecognizerARN :: Lens' DeleteEntityRecognizer Text
@@ -109,12 +106,10 @@ instance ToQuery DeleteEntityRecognizer where
         toQuery = const mempty
 
 -- | /See:/ 'deleteEntityRecognizerResponse' smart constructor.
-newtype DeleteEntityRecognizerResponse =
-  DeleteEntityRecognizerResponse'
-    { _derrsResponseStatus :: Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+newtype DeleteEntityRecognizerResponse = DeleteEntityRecognizerResponse'{_derrsResponseStatus
+                                                                         :: Int}
+                                           deriving (Eq, Read, Show, Data,
+                                                     Typeable, Generic)
 
 -- | Creates a value of 'DeleteEntityRecognizerResponse' with the minimum fields required to make a request.
 --
@@ -124,9 +119,9 @@ newtype DeleteEntityRecognizerResponse =
 deleteEntityRecognizerResponse
     :: Int -- ^ 'derrsResponseStatus'
     -> DeleteEntityRecognizerResponse
-deleteEntityRecognizerResponse pResponseStatus_ =
-  DeleteEntityRecognizerResponse' {_derrsResponseStatus = pResponseStatus_}
-
+deleteEntityRecognizerResponse pResponseStatus_
+  = DeleteEntityRecognizerResponse'{_derrsResponseStatus
+                                      = pResponseStatus_}
 
 -- | -- | The response status code.
 derrsResponseStatus :: Lens' DeleteEntityRecognizerResponse Int

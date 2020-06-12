@@ -45,7 +45,6 @@ module Network.AWS.APIGateway.UpdateUsagePlan
     ) where
 
 import Network.AWS.APIGateway.Types
-import Network.AWS.APIGateway.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.Request
@@ -56,13 +55,10 @@ import Network.AWS.Response
 --
 --
 -- /See:/ 'updateUsagePlan' smart constructor.
-data UpdateUsagePlan =
-  UpdateUsagePlan'
-    { _uupPatchOperations :: !(Maybe [PatchOperation])
-    , _uupUsagePlanId     :: !Text
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data UpdateUsagePlan = UpdateUsagePlan'{_uupPatchOperations
+                                        :: !(Maybe [PatchOperation]),
+                                        _uupUsagePlanId :: !Text}
+                         deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'UpdateUsagePlan' with the minimum fields required to make a request.
 --
@@ -74,10 +70,9 @@ data UpdateUsagePlan =
 updateUsagePlan
     :: Text -- ^ 'uupUsagePlanId'
     -> UpdateUsagePlan
-updateUsagePlan pUsagePlanId_ =
-  UpdateUsagePlan'
-    {_uupPatchOperations = Nothing, _uupUsagePlanId = pUsagePlanId_}
-
+updateUsagePlan pUsagePlanId_
+  = UpdateUsagePlan'{_uupPatchOperations = Nothing,
+                     _uupUsagePlanId = pUsagePlanId_}
 
 -- | A list of update operations to be applied to the specified resource and in the order specified in this list.
 uupPatchOperations :: Lens' UpdateUsagePlan [PatchOperation]

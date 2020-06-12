@@ -41,21 +41,17 @@ module Network.AWS.CodeStar.ListTagsForProject
     ) where
 
 import Network.AWS.CodeStar.Types
-import Network.AWS.CodeStar.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 
 -- | /See:/ 'listTagsForProject' smart constructor.
-data ListTagsForProject =
-  ListTagsForProject'
-    { _ltfpNextToken  :: !(Maybe Text)
-    , _ltfpMaxResults :: !(Maybe Nat)
-    , _ltfpId         :: !Text
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data ListTagsForProject = ListTagsForProject'{_ltfpNextToken
+                                              :: !(Maybe Text),
+                                              _ltfpMaxResults :: !(Maybe Nat),
+                                              _ltfpId :: !Text}
+                            deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'ListTagsForProject' with the minimum fields required to make a request.
 --
@@ -69,10 +65,9 @@ data ListTagsForProject =
 listTagsForProject
     :: Text -- ^ 'ltfpId'
     -> ListTagsForProject
-listTagsForProject pId_ =
-  ListTagsForProject'
-    {_ltfpNextToken = Nothing, _ltfpMaxResults = Nothing, _ltfpId = pId_}
-
+listTagsForProject pId_
+  = ListTagsForProject'{_ltfpNextToken = Nothing,
+                        _ltfpMaxResults = Nothing, _ltfpId = pId_}
 
 -- | Reserved for future use.
 ltfpNextToken :: Lens' ListTagsForProject (Maybe Text)
@@ -126,14 +121,16 @@ instance ToQuery ListTagsForProject where
         toQuery = const mempty
 
 -- | /See:/ 'listTagsForProjectResponse' smart constructor.
-data ListTagsForProjectResponse =
-  ListTagsForProjectResponse'
-    { _ltfprsNextToken      :: !(Maybe Text)
-    , _ltfprsTags           :: !(Maybe (Map Text Text))
-    , _ltfprsResponseStatus :: !Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data ListTagsForProjectResponse = ListTagsForProjectResponse'{_ltfprsNextToken
+                                                              :: !(Maybe Text),
+                                                              _ltfprsTags ::
+                                                              !(Maybe
+                                                                  (Map Text
+                                                                     Text)),
+                                                              _ltfprsResponseStatus
+                                                              :: !Int}
+                                    deriving (Eq, Read, Show, Data, Typeable,
+                                              Generic)
 
 -- | Creates a value of 'ListTagsForProjectResponse' with the minimum fields required to make a request.
 --
@@ -147,13 +144,11 @@ data ListTagsForProjectResponse =
 listTagsForProjectResponse
     :: Int -- ^ 'ltfprsResponseStatus'
     -> ListTagsForProjectResponse
-listTagsForProjectResponse pResponseStatus_ =
-  ListTagsForProjectResponse'
-    { _ltfprsNextToken = Nothing
-    , _ltfprsTags = Nothing
-    , _ltfprsResponseStatus = pResponseStatus_
-    }
-
+listTagsForProjectResponse pResponseStatus_
+  = ListTagsForProjectResponse'{_ltfprsNextToken =
+                                  Nothing,
+                                _ltfprsTags = Nothing,
+                                _ltfprsResponseStatus = pResponseStatus_}
 
 -- | Reserved for future use.
 ltfprsNextToken :: Lens' ListTagsForProjectResponse (Maybe Text)

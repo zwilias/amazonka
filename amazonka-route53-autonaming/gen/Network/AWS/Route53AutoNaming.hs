@@ -64,55 +64,55 @@ module Network.AWS.Route53AutoNaming
     -- ** ListServices (Paginated)
     , module Network.AWS.Route53AutoNaming.ListServices
 
-    -- ** DeleteService
+    -- ** DeleteService 
     , module Network.AWS.Route53AutoNaming.DeleteService
 
-    -- ** UpdateService
+    -- ** UpdateService 
     , module Network.AWS.Route53AutoNaming.UpdateService
 
     -- ** ListOperations (Paginated)
     , module Network.AWS.Route53AutoNaming.ListOperations
 
-    -- ** CreatePublicDNSNamespace
+    -- ** CreatePublicDNSNamespace 
     , module Network.AWS.Route53AutoNaming.CreatePublicDNSNamespace
 
-    -- ** GetInstance
+    -- ** GetInstance 
     , module Network.AWS.Route53AutoNaming.GetInstance
 
     -- ** ListNamespaces (Paginated)
     , module Network.AWS.Route53AutoNaming.ListNamespaces
 
-    -- ** DeleteNamespace
+    -- ** DeleteNamespace 
     , module Network.AWS.Route53AutoNaming.DeleteNamespace
 
-    -- ** GetInstancesHealthStatus
+    -- ** GetInstancesHealthStatus 
     , module Network.AWS.Route53AutoNaming.GetInstancesHealthStatus
 
-    -- ** GetNamespace
+    -- ** GetNamespace 
     , module Network.AWS.Route53AutoNaming.GetNamespace
 
-    -- ** RegisterInstance
+    -- ** RegisterInstance 
     , module Network.AWS.Route53AutoNaming.RegisterInstance
 
     -- ** ListInstances (Paginated)
     , module Network.AWS.Route53AutoNaming.ListInstances
 
-    -- ** GetOperation
+    -- ** GetOperation 
     , module Network.AWS.Route53AutoNaming.GetOperation
 
-    -- ** UpdateInstanceCustomHealthStatus
+    -- ** UpdateInstanceCustomHealthStatus 
     , module Network.AWS.Route53AutoNaming.UpdateInstanceCustomHealthStatus
 
-    -- ** GetService
+    -- ** GetService 
     , module Network.AWS.Route53AutoNaming.GetService
 
-    -- ** CreatePrivateDNSNamespace
+    -- ** CreatePrivateDNSNamespace 
     , module Network.AWS.Route53AutoNaming.CreatePrivateDNSNamespace
 
-    -- ** CreateService
+    -- ** CreateService 
     , module Network.AWS.Route53AutoNaming.CreateService
 
-    -- ** DeregisterInstance
+    -- ** DeregisterInstance 
     , module Network.AWS.Route53AutoNaming.DeregisterInstance
 
     -- * Types

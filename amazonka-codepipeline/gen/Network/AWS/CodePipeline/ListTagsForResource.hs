@@ -43,7 +43,6 @@ module Network.AWS.CodePipeline.ListTagsForResource
     ) where
 
 import Network.AWS.CodePipeline.Types
-import Network.AWS.CodePipeline.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Pager
 import Network.AWS.Prelude
@@ -51,14 +50,11 @@ import Network.AWS.Request
 import Network.AWS.Response
 
 -- | /See:/ 'listTagsForResource' smart constructor.
-data ListTagsForResource =
-  ListTagsForResource'
-    { _ltfrNextToken   :: !(Maybe Text)
-    , _ltfrMaxResults  :: !(Maybe Nat)
-    , _ltfrResourceARN :: !Text
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data ListTagsForResource = ListTagsForResource'{_ltfrNextToken
+                                                :: !(Maybe Text),
+                                                _ltfrMaxResults :: !(Maybe Nat),
+                                                _ltfrResourceARN :: !Text}
+                             deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'ListTagsForResource' with the minimum fields required to make a request.
 --
@@ -72,13 +68,10 @@ data ListTagsForResource =
 listTagsForResource
     :: Text -- ^ 'ltfrResourceARN'
     -> ListTagsForResource
-listTagsForResource pResourceARN_ =
-  ListTagsForResource'
-    { _ltfrNextToken = Nothing
-    , _ltfrMaxResults = Nothing
-    , _ltfrResourceARN = pResourceARN_
-    }
-
+listTagsForResource pResourceARN_
+  = ListTagsForResource'{_ltfrNextToken = Nothing,
+                         _ltfrMaxResults = Nothing,
+                         _ltfrResourceARN = pResourceARN_}
 
 -- | The token that was returned from the previous API call, which would be used to return the next page of the list. The ListTagsforResource call lists all available tags in one call and does not use pagination.
 ltfrNextToken :: Lens' ListTagsForResource (Maybe Text)
@@ -139,14 +132,15 @@ instance ToQuery ListTagsForResource where
         toQuery = const mempty
 
 -- | /See:/ 'listTagsForResourceResponse' smart constructor.
-data ListTagsForResourceResponse =
-  ListTagsForResourceResponse'
-    { _ltfrrsNextToken      :: !(Maybe Text)
-    , _ltfrrsTags           :: !(Maybe [Tag])
-    , _ltfrrsResponseStatus :: !Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data ListTagsForResourceResponse = ListTagsForResourceResponse'{_ltfrrsNextToken
+                                                                ::
+                                                                !(Maybe Text),
+                                                                _ltfrrsTags ::
+                                                                !(Maybe [Tag]),
+                                                                _ltfrrsResponseStatus
+                                                                :: !Int}
+                                     deriving (Eq, Read, Show, Data, Typeable,
+                                               Generic)
 
 -- | Creates a value of 'ListTagsForResourceResponse' with the minimum fields required to make a request.
 --
@@ -160,13 +154,11 @@ data ListTagsForResourceResponse =
 listTagsForResourceResponse
     :: Int -- ^ 'ltfrrsResponseStatus'
     -> ListTagsForResourceResponse
-listTagsForResourceResponse pResponseStatus_ =
-  ListTagsForResourceResponse'
-    { _ltfrrsNextToken = Nothing
-    , _ltfrrsTags = Nothing
-    , _ltfrrsResponseStatus = pResponseStatus_
-    }
-
+listTagsForResourceResponse pResponseStatus_
+  = ListTagsForResourceResponse'{_ltfrrsNextToken =
+                                   Nothing,
+                                 _ltfrrsTags = Nothing,
+                                 _ltfrrsResponseStatus = pResponseStatus_}
 
 -- | If the amount of returned information is significantly large, an identifier is also returned and can be used in a subsequent API call to return the next page of the list. The ListTagsforResource call lists all available tags in one call and does not use pagination.
 ltfrrsNextToken :: Lens' ListTagsForResourceResponse (Maybe Text)

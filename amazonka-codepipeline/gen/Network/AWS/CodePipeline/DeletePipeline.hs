@@ -35,7 +35,6 @@ module Network.AWS.CodePipeline.DeletePipeline
     ) where
 
 import Network.AWS.CodePipeline.Types
-import Network.AWS.CodePipeline.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.Request
@@ -46,12 +45,9 @@ import Network.AWS.Response
 --
 --
 -- /See:/ 'deletePipeline' smart constructor.
-newtype DeletePipeline =
-  DeletePipeline'
-    { _dpName :: Text
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+newtype DeletePipeline = DeletePipeline'{_dpName ::
+                                         Text}
+                           deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'DeletePipeline' with the minimum fields required to make a request.
 --
@@ -61,8 +57,8 @@ newtype DeletePipeline =
 deletePipeline
     :: Text -- ^ 'dpName'
     -> DeletePipeline
-deletePipeline pName_ = DeletePipeline' {_dpName = pName_}
-
+deletePipeline pName_
+  = DeletePipeline'{_dpName = pName_}
 
 -- | The name of the pipeline to be deleted.
 dpName :: Lens' DeletePipeline Text
@@ -98,16 +94,14 @@ instance ToQuery DeletePipeline where
         toQuery = const mempty
 
 -- | /See:/ 'deletePipelineResponse' smart constructor.
-data DeletePipelineResponse =
-  DeletePipelineResponse'
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data DeletePipelineResponse = DeletePipelineResponse'
+                                deriving (Eq, Read, Show, Data, Typeable,
+                                          Generic)
 
 -- | Creates a value of 'DeletePipelineResponse' with the minimum fields required to make a request.
 --
 deletePipelineResponse
     :: DeletePipelineResponse
 deletePipelineResponse = DeletePipelineResponse'
-
 
 instance NFData DeletePipelineResponse where

@@ -31,29 +31,29 @@
 --
 -- __Game session logs.__ Logs are retained for all active game sessions for 14 days. To access the logs, call 'GetGameSessionLogUrl' to download the log files.
 --
--- /Available in Amazon GameLift Local./
+-- /Available in Amazon GameLift Local./ 
 --
 -- Game-session-related operations include:
 --
---     * 'CreateGameSession'
+--     * 'CreateGameSession' 
 --
---     * 'DescribeGameSessions'
+--     * 'DescribeGameSessions' 
 --
---     * 'DescribeGameSessionDetails'
+--     * 'DescribeGameSessionDetails' 
 --
---     * 'SearchGameSessions'
+--     * 'SearchGameSessions' 
 --
---     * 'UpdateGameSession'
+--     * 'UpdateGameSession' 
 --
---     * 'GetGameSessionLogUrl'
+--     * 'GetGameSessionLogUrl' 
 --
 --     * Game session placements
 --
---     * 'StartGameSessionPlacement'
+--     * 'StartGameSessionPlacement' 
 --
---     * 'DescribeGameSessionPlacement'
+--     * 'DescribeGameSessionPlacement' 
 --
---     * 'StopGameSessionPlacement'
+--     * 'StopGameSessionPlacement' 
 --
 --
 --
@@ -84,7 +84,6 @@ module Network.AWS.GameLift.CreateGameSession
     ) where
 
 import Network.AWS.GameLift.Types
-import Network.AWS.GameLift.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.Request
@@ -95,20 +94,20 @@ import Network.AWS.Response
 --
 --
 -- /See:/ 'createGameSession' smart constructor.
-data CreateGameSession =
-  CreateGameSession'
-    { _cgsIdempotencyToken          :: !(Maybe Text)
-    , _cgsGameProperties            :: !(Maybe [GameProperty])
-    , _cgsGameSessionId             :: !(Maybe Text)
-    , _cgsAliasId                   :: !(Maybe Text)
-    , _cgsName                      :: !(Maybe Text)
-    , _cgsGameSessionData           :: !(Maybe Text)
-    , _cgsFleetId                   :: !(Maybe Text)
-    , _cgsCreatorId                 :: !(Maybe Text)
-    , _cgsMaximumPlayerSessionCount :: !Nat
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data CreateGameSession = CreateGameSession'{_cgsIdempotencyToken
+                                            :: !(Maybe Text),
+                                            _cgsGameProperties ::
+                                            !(Maybe [GameProperty]),
+                                            _cgsGameSessionId :: !(Maybe Text),
+                                            _cgsAliasId :: !(Maybe Text),
+                                            _cgsName :: !(Maybe Text),
+                                            _cgsGameSessionData ::
+                                            !(Maybe Text),
+                                            _cgsFleetId :: !(Maybe Text),
+                                            _cgsCreatorId :: !(Maybe Text),
+                                            _cgsMaximumPlayerSessionCount ::
+                                            !Nat}
+                           deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'CreateGameSession' with the minimum fields required to make a request.
 --
@@ -118,7 +117,7 @@ data CreateGameSession =
 --
 -- * 'cgsGameProperties' - Set of custom properties for a game session, formatted as key:value pairs. These properties are passed to a game server process in the 'GameSession' object with a request to start a new game session (see <http://docs.aws.amazon.com/gamelift/latest/developerguide/gamelift-sdk-server-api.html#gamelift-sdk-server-startsession Start a Game Session> ).
 --
--- * 'cgsGameSessionId' - /This parameter is no longer preferred. Please use @IdempotencyToken@ instead./ Custom string that uniquely identifies a request for a new game session. Maximum token length is 48 characters. If provided, this string is included in the new game session's ID. (A game session ARN has the following format: @arn:aws:gamelift:<region>::gamesession/<fleet ID>/<custom ID string or idempotency token>@ .)
+-- * 'cgsGameSessionId' - /This parameter is no longer preferred. Please use @IdempotencyToken@ instead./ Custom string that uniquely identifies a request for a new game session. Maximum token length is 48 characters. If provided, this string is included in the new game session's ID. (A game session ARN has the following format: @arn:aws:gamelift:<region>::gamesession/<fleet ID>/<custom ID string or idempotency token>@ .) 
 --
 -- * 'cgsAliasId' - Unique identifier for an alias associated with the fleet to create a game session in. Each request must reference either a fleet ID or alias ID, but not both.
 --
@@ -134,19 +133,14 @@ data CreateGameSession =
 createGameSession
     :: Natural -- ^ 'cgsMaximumPlayerSessionCount'
     -> CreateGameSession
-createGameSession pMaximumPlayerSessionCount_ =
-  CreateGameSession'
-    { _cgsIdempotencyToken = Nothing
-    , _cgsGameProperties = Nothing
-    , _cgsGameSessionId = Nothing
-    , _cgsAliasId = Nothing
-    , _cgsName = Nothing
-    , _cgsGameSessionData = Nothing
-    , _cgsFleetId = Nothing
-    , _cgsCreatorId = Nothing
-    , _cgsMaximumPlayerSessionCount = _Nat # pMaximumPlayerSessionCount_
-    }
-
+createGameSession pMaximumPlayerSessionCount_
+  = CreateGameSession'{_cgsIdempotencyToken = Nothing,
+                       _cgsGameProperties = Nothing,
+                       _cgsGameSessionId = Nothing, _cgsAliasId = Nothing,
+                       _cgsName = Nothing, _cgsGameSessionData = Nothing,
+                       _cgsFleetId = Nothing, _cgsCreatorId = Nothing,
+                       _cgsMaximumPlayerSessionCount =
+                         _Nat # pMaximumPlayerSessionCount_}
 
 -- | Custom string that uniquely identifies a request for a new game session. Maximum token length is 48 characters. If provided, this string is included in the new game session's ID. (A game session ARN has the following format: @arn:aws:gamelift:<region>::gamesession/<fleet ID>/<custom ID string or idempotency token>@ .) Idempotency tokens remain in use for 30 days after a game session has ended; game session objects are retained for this time period and then deleted.
 cgsIdempotencyToken :: Lens' CreateGameSession (Maybe Text)
@@ -156,7 +150,7 @@ cgsIdempotencyToken = lens _cgsIdempotencyToken (\ s a -> s{_cgsIdempotencyToken
 cgsGameProperties :: Lens' CreateGameSession [GameProperty]
 cgsGameProperties = lens _cgsGameProperties (\ s a -> s{_cgsGameProperties = a}) . _Default . _Coerce
 
--- | /This parameter is no longer preferred. Please use @IdempotencyToken@ instead./ Custom string that uniquely identifies a request for a new game session. Maximum token length is 48 characters. If provided, this string is included in the new game session's ID. (A game session ARN has the following format: @arn:aws:gamelift:<region>::gamesession/<fleet ID>/<custom ID string or idempotency token>@ .)
+-- | /This parameter is no longer preferred. Please use @IdempotencyToken@ instead./ Custom string that uniquely identifies a request for a new game session. Maximum token length is 48 characters. If provided, this string is included in the new game session's ID. (A game session ARN has the following format: @arn:aws:gamelift:<region>::gamesession/<fleet ID>/<custom ID string or idempotency token>@ .) 
 cgsGameSessionId :: Lens' CreateGameSession (Maybe Text)
 cgsGameSessionId = lens _cgsGameSessionId (\ s a -> s{_cgsGameSessionId = a})
 
@@ -233,13 +227,14 @@ instance ToQuery CreateGameSession where
 --
 --
 -- /See:/ 'createGameSessionResponse' smart constructor.
-data CreateGameSessionResponse =
-  CreateGameSessionResponse'
-    { _cgsrsGameSession    :: !(Maybe GameSession)
-    , _cgsrsResponseStatus :: !Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data CreateGameSessionResponse = CreateGameSessionResponse'{_cgsrsGameSession
+                                                            ::
+                                                            !(Maybe
+                                                                GameSession),
+                                                            _cgsrsResponseStatus
+                                                            :: !Int}
+                                   deriving (Eq, Read, Show, Data, Typeable,
+                                             Generic)
 
 -- | Creates a value of 'CreateGameSessionResponse' with the minimum fields required to make a request.
 --
@@ -251,10 +246,10 @@ data CreateGameSessionResponse =
 createGameSessionResponse
     :: Int -- ^ 'cgsrsResponseStatus'
     -> CreateGameSessionResponse
-createGameSessionResponse pResponseStatus_ =
-  CreateGameSessionResponse'
-    {_cgsrsGameSession = Nothing, _cgsrsResponseStatus = pResponseStatus_}
-
+createGameSessionResponse pResponseStatus_
+  = CreateGameSessionResponse'{_cgsrsGameSession =
+                                 Nothing,
+                               _cgsrsResponseStatus = pResponseStatus_}
 
 -- | Object that describes the newly created game session record.
 cgsrsGameSession :: Lens' CreateGameSessionResponse (Maybe GameSession)

@@ -43,7 +43,6 @@ module Network.AWS.Glue.GetCrawlerMetrics
     ) where
 
 import Network.AWS.Glue.Types
-import Network.AWS.Glue.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Pager
 import Network.AWS.Prelude
@@ -51,14 +50,12 @@ import Network.AWS.Request
 import Network.AWS.Response
 
 -- | /See:/ 'getCrawlerMetrics' smart constructor.
-data GetCrawlerMetrics =
-  GetCrawlerMetrics'
-    { _gcmNextToken       :: !(Maybe Text)
-    , _gcmMaxResults      :: !(Maybe Nat)
-    , _gcmCrawlerNameList :: !(Maybe [Text])
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data GetCrawlerMetrics = GetCrawlerMetrics'{_gcmNextToken
+                                            :: !(Maybe Text),
+                                            _gcmMaxResults :: !(Maybe Nat),
+                                            _gcmCrawlerNameList ::
+                                            !(Maybe [Text])}
+                           deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'GetCrawlerMetrics' with the minimum fields required to make a request.
 --
@@ -71,13 +68,10 @@ data GetCrawlerMetrics =
 -- * 'gcmCrawlerNameList' - A list of the names of crawlers about which to retrieve metrics.
 getCrawlerMetrics
     :: GetCrawlerMetrics
-getCrawlerMetrics =
-  GetCrawlerMetrics'
-    { _gcmNextToken = Nothing
-    , _gcmMaxResults = Nothing
-    , _gcmCrawlerNameList = Nothing
-    }
-
+getCrawlerMetrics
+  = GetCrawlerMetrics'{_gcmNextToken = Nothing,
+                       _gcmMaxResults = Nothing,
+                       _gcmCrawlerNameList = Nothing}
 
 -- | A continuation token, if this is a continuation call.
 gcmNextToken :: Lens' GetCrawlerMetrics (Maybe Text)
@@ -137,14 +131,16 @@ instance ToQuery GetCrawlerMetrics where
         toQuery = const mempty
 
 -- | /See:/ 'getCrawlerMetricsResponse' smart constructor.
-data GetCrawlerMetricsResponse =
-  GetCrawlerMetricsResponse'
-    { _gcmrsCrawlerMetricsList :: !(Maybe [CrawlerMetrics])
-    , _gcmrsNextToken          :: !(Maybe Text)
-    , _gcmrsResponseStatus     :: !Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data GetCrawlerMetricsResponse = GetCrawlerMetricsResponse'{_gcmrsCrawlerMetricsList
+                                                            ::
+                                                            !(Maybe
+                                                                [CrawlerMetrics]),
+                                                            _gcmrsNextToken ::
+                                                            !(Maybe Text),
+                                                            _gcmrsResponseStatus
+                                                            :: !Int}
+                                   deriving (Eq, Read, Show, Data, Typeable,
+                                             Generic)
 
 -- | Creates a value of 'GetCrawlerMetricsResponse' with the minimum fields required to make a request.
 --
@@ -158,13 +154,11 @@ data GetCrawlerMetricsResponse =
 getCrawlerMetricsResponse
     :: Int -- ^ 'gcmrsResponseStatus'
     -> GetCrawlerMetricsResponse
-getCrawlerMetricsResponse pResponseStatus_ =
-  GetCrawlerMetricsResponse'
-    { _gcmrsCrawlerMetricsList = Nothing
-    , _gcmrsNextToken = Nothing
-    , _gcmrsResponseStatus = pResponseStatus_
-    }
-
+getCrawlerMetricsResponse pResponseStatus_
+  = GetCrawlerMetricsResponse'{_gcmrsCrawlerMetricsList
+                                 = Nothing,
+                               _gcmrsNextToken = Nothing,
+                               _gcmrsResponseStatus = pResponseStatus_}
 
 -- | A list of metrics for the specified crawler.
 gcmrsCrawlerMetricsList :: Lens' GetCrawlerMetricsResponse [CrawlerMetrics]

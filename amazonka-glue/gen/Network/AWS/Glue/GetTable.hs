@@ -40,21 +40,16 @@ module Network.AWS.Glue.GetTable
     ) where
 
 import Network.AWS.Glue.Types
-import Network.AWS.Glue.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 
 -- | /See:/ 'getTable' smart constructor.
-data GetTable =
-  GetTable'
-    { _gttCatalogId    :: !(Maybe Text)
-    , _gttDatabaseName :: !Text
-    , _gttName         :: !Text
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data GetTable = GetTable'{_gttCatalogId ::
+                          !(Maybe Text),
+                          _gttDatabaseName :: !Text, _gttName :: !Text}
+                  deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'GetTable' with the minimum fields required to make a request.
 --
@@ -69,13 +64,9 @@ getTable
     :: Text -- ^ 'gttDatabaseName'
     -> Text -- ^ 'gttName'
     -> GetTable
-getTable pDatabaseName_ pName_ =
-  GetTable'
-    { _gttCatalogId = Nothing
-    , _gttDatabaseName = pDatabaseName_
-    , _gttName = pName_
-    }
-
+getTable pDatabaseName_ pName_
+  = GetTable'{_gttCatalogId = Nothing,
+              _gttDatabaseName = pDatabaseName_, _gttName = pName_}
 
 -- | The ID of the Data Catalog where the table resides. If none is supplied, the AWS account ID is used by default.
 gttCatalogId :: Lens' GetTable (Maybe Text)
@@ -126,13 +117,10 @@ instance ToQuery GetTable where
         toQuery = const mempty
 
 -- | /See:/ 'getTableResponse' smart constructor.
-data GetTableResponse =
-  GetTableResponse'
-    { _ggrsTable          :: !(Maybe Table)
-    , _ggrsResponseStatus :: !Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data GetTableResponse = GetTableResponse'{_ggrsTable
+                                          :: !(Maybe Table),
+                                          _ggrsResponseStatus :: !Int}
+                          deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'GetTableResponse' with the minimum fields required to make a request.
 --
@@ -144,10 +132,9 @@ data GetTableResponse =
 getTableResponse
     :: Int -- ^ 'ggrsResponseStatus'
     -> GetTableResponse
-getTableResponse pResponseStatus_ =
-  GetTableResponse'
-    {_ggrsTable = Nothing, _ggrsResponseStatus = pResponseStatus_}
-
+getTableResponse pResponseStatus_
+  = GetTableResponse'{_ggrsTable = Nothing,
+                      _ggrsResponseStatus = pResponseStatus_}
 
 -- | The @Table@ object that defines the specified table.
 ggrsTable :: Lens' GetTableResponse (Maybe Table)

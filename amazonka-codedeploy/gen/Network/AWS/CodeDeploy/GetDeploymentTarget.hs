@@ -18,7 +18,7 @@
 -- Stability   : auto-generated
 -- Portability : non-portable (GHC extensions)
 --
--- Returns information about a deployment target.
+-- Returns information about a deployment target. 
 --
 --
 module Network.AWS.CodeDeploy.GetDeploymentTarget
@@ -39,39 +39,36 @@ module Network.AWS.CodeDeploy.GetDeploymentTarget
     ) where
 
 import Network.AWS.CodeDeploy.Types
-import Network.AWS.CodeDeploy.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 
 -- | /See:/ 'getDeploymentTarget' smart constructor.
-data GetDeploymentTarget =
-  GetDeploymentTarget'
-    { _gdtTargetId     :: !(Maybe Text)
-    , _gdtDeploymentId :: !(Maybe Text)
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data GetDeploymentTarget = GetDeploymentTarget'{_gdtTargetId
+                                                :: !(Maybe Text),
+                                                _gdtDeploymentId ::
+                                                !(Maybe Text)}
+                             deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'GetDeploymentTarget' with the minimum fields required to make a request.
 --
 -- Use one of the following lenses to modify other fields as desired:
 --
--- * 'gdtTargetId' - The unique ID of a deployment target.
+-- * 'gdtTargetId' - The unique ID of a deployment target. 
 --
--- * 'gdtDeploymentId' - The unique ID of a deployment.
+-- * 'gdtDeploymentId' - The unique ID of a deployment. 
 getDeploymentTarget
     :: GetDeploymentTarget
-getDeploymentTarget =
-  GetDeploymentTarget' {_gdtTargetId = Nothing, _gdtDeploymentId = Nothing}
+getDeploymentTarget
+  = GetDeploymentTarget'{_gdtTargetId = Nothing,
+                         _gdtDeploymentId = Nothing}
 
-
--- | The unique ID of a deployment target.
+-- | The unique ID of a deployment target. 
 gdtTargetId :: Lens' GetDeploymentTarget (Maybe Text)
 gdtTargetId = lens _gdtTargetId (\ s a -> s{_gdtTargetId = a})
 
--- | The unique ID of a deployment.
+-- | The unique ID of a deployment. 
 gdtDeploymentId :: Lens' GetDeploymentTarget (Maybe Text)
 gdtDeploymentId = lens _gdtDeploymentId (\ s a -> s{_gdtDeploymentId = a})
 
@@ -113,30 +110,31 @@ instance ToQuery GetDeploymentTarget where
         toQuery = const mempty
 
 -- | /See:/ 'getDeploymentTargetResponse' smart constructor.
-data GetDeploymentTargetResponse =
-  GetDeploymentTargetResponse'
-    { _gdtrsDeploymentTarget :: !(Maybe DeploymentTarget)
-    , _gdtrsResponseStatus   :: !Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data GetDeploymentTargetResponse = GetDeploymentTargetResponse'{_gdtrsDeploymentTarget
+                                                                ::
+                                                                !(Maybe
+                                                                    DeploymentTarget),
+                                                                _gdtrsResponseStatus
+                                                                :: !Int}
+                                     deriving (Eq, Read, Show, Data, Typeable,
+                                               Generic)
 
 -- | Creates a value of 'GetDeploymentTargetResponse' with the minimum fields required to make a request.
 --
 -- Use one of the following lenses to modify other fields as desired:
 --
--- * 'gdtrsDeploymentTarget' - A deployment target that contains information about a deployment such as its status, lifecyle events, and when it was last updated. It also contains metadata about the deployment target. The deployment target metadata depends on the deployment target's type (@instanceTarget@ , @lambdaTarget@ , or @ecsTarget@ ).
+-- * 'gdtrsDeploymentTarget' - A deployment target that contains information about a deployment such as its status, lifecyle events, and when it was last updated. It also contains metadata about the deployment target. The deployment target metadata depends on the deployment target's type (@instanceTarget@ , @lambdaTarget@ , or @ecsTarget@ ). 
 --
 -- * 'gdtrsResponseStatus' - -- | The response status code.
 getDeploymentTargetResponse
     :: Int -- ^ 'gdtrsResponseStatus'
     -> GetDeploymentTargetResponse
-getDeploymentTargetResponse pResponseStatus_ =
-  GetDeploymentTargetResponse'
-    {_gdtrsDeploymentTarget = Nothing, _gdtrsResponseStatus = pResponseStatus_}
+getDeploymentTargetResponse pResponseStatus_
+  = GetDeploymentTargetResponse'{_gdtrsDeploymentTarget
+                                   = Nothing,
+                                 _gdtrsResponseStatus = pResponseStatus_}
 
-
--- | A deployment target that contains information about a deployment such as its status, lifecyle events, and when it was last updated. It also contains metadata about the deployment target. The deployment target metadata depends on the deployment target's type (@instanceTarget@ , @lambdaTarget@ , or @ecsTarget@ ).
+-- | A deployment target that contains information about a deployment such as its status, lifecyle events, and when it was last updated. It also contains metadata about the deployment target. The deployment target metadata depends on the deployment target's type (@instanceTarget@ , @lambdaTarget@ , or @ecsTarget@ ). 
 gdtrsDeploymentTarget :: Lens' GetDeploymentTargetResponse (Maybe DeploymentTarget)
 gdtrsDeploymentTarget = lens _gdtrsDeploymentTarget (\ s a -> s{_gdtrsDeploymentTarget = a})
 

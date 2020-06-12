@@ -42,7 +42,6 @@ module Network.AWS.CodeStar.ListProjects
     ) where
 
 import Network.AWS.CodeStar.Types
-import Network.AWS.CodeStar.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Pager
 import Network.AWS.Prelude
@@ -50,13 +49,10 @@ import Network.AWS.Request
 import Network.AWS.Response
 
 -- | /See:/ 'listProjects' smart constructor.
-data ListProjects =
-  ListProjects'
-    { _lpNextToken  :: !(Maybe Text)
-    , _lpMaxResults :: !(Maybe Nat)
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data ListProjects = ListProjects'{_lpNextToken ::
+                                  !(Maybe Text),
+                                  _lpMaxResults :: !(Maybe Nat)}
+                      deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'ListProjects' with the minimum fields required to make a request.
 --
@@ -67,8 +63,9 @@ data ListProjects =
 -- * 'lpMaxResults' - The maximum amount of data that can be contained in a single set of results.
 listProjects
     :: ListProjects
-listProjects = ListProjects' {_lpNextToken = Nothing, _lpMaxResults = Nothing}
-
+listProjects
+  = ListProjects'{_lpNextToken = Nothing,
+                  _lpMaxResults = Nothing}
 
 -- | The continuation token to be used to return the next set of results, if the results cannot be returned in one response.
 lpNextToken :: Lens' ListProjects (Maybe Text)
@@ -122,14 +119,12 @@ instance ToQuery ListProjects where
         toQuery = const mempty
 
 -- | /See:/ 'listProjectsResponse' smart constructor.
-data ListProjectsResponse =
-  ListProjectsResponse'
-    { _lprsNextToken      :: !(Maybe Text)
-    , _lprsResponseStatus :: !Int
-    , _lprsProjects       :: ![ProjectSummary]
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data ListProjectsResponse = ListProjectsResponse'{_lprsNextToken
+                                                  :: !(Maybe Text),
+                                                  _lprsResponseStatus :: !Int,
+                                                  _lprsProjects ::
+                                                  ![ProjectSummary]}
+                              deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'ListProjectsResponse' with the minimum fields required to make a request.
 --
@@ -143,13 +138,10 @@ data ListProjectsResponse =
 listProjectsResponse
     :: Int -- ^ 'lprsResponseStatus'
     -> ListProjectsResponse
-listProjectsResponse pResponseStatus_ =
-  ListProjectsResponse'
-    { _lprsNextToken = Nothing
-    , _lprsResponseStatus = pResponseStatus_
-    , _lprsProjects = mempty
-    }
-
+listProjectsResponse pResponseStatus_
+  = ListProjectsResponse'{_lprsNextToken = Nothing,
+                          _lprsResponseStatus = pResponseStatus_,
+                          _lprsProjects = mempty}
 
 -- | The continuation token to use when requesting the next set of results, if there are more results to be returned.
 lprsNextToken :: Lens' ListProjectsResponse (Maybe Text)

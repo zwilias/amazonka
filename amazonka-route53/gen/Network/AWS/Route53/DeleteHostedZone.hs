@@ -56,19 +56,15 @@ import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 import Network.AWS.Route53.Types
-import Network.AWS.Route53.Types.Product
 
 -- | A request to delete a hosted zone.
 --
 --
 --
 -- /See:/ 'deleteHostedZone' smart constructor.
-newtype DeleteHostedZone =
-  DeleteHostedZone'
-    { _dhzId :: ResourceId
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+newtype DeleteHostedZone = DeleteHostedZone'{_dhzId
+                                             :: ResourceId}
+                             deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'DeleteHostedZone' with the minimum fields required to make a request.
 --
@@ -78,8 +74,8 @@ newtype DeleteHostedZone =
 deleteHostedZone
     :: ResourceId -- ^ 'dhzId'
     -> DeleteHostedZone
-deleteHostedZone pId_ = DeleteHostedZone' {_dhzId = pId_}
-
+deleteHostedZone pId_
+  = DeleteHostedZone'{_dhzId = pId_}
 
 -- | The ID of the hosted zone you want to delete.
 dhzId :: Lens' DeleteHostedZone ResourceId
@@ -113,13 +109,12 @@ instance ToQuery DeleteHostedZone where
 --
 --
 -- /See:/ 'deleteHostedZoneResponse' smart constructor.
-data DeleteHostedZoneResponse =
-  DeleteHostedZoneResponse'
-    { _dhzrsResponseStatus :: !Int
-    , _dhzrsChangeInfo     :: !ChangeInfo
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data DeleteHostedZoneResponse = DeleteHostedZoneResponse'{_dhzrsResponseStatus
+                                                          :: !Int,
+                                                          _dhzrsChangeInfo ::
+                                                          !ChangeInfo}
+                                  deriving (Eq, Read, Show, Data, Typeable,
+                                            Generic)
 
 -- | Creates a value of 'DeleteHostedZoneResponse' with the minimum fields required to make a request.
 --
@@ -132,10 +127,11 @@ deleteHostedZoneResponse
     :: Int -- ^ 'dhzrsResponseStatus'
     -> ChangeInfo -- ^ 'dhzrsChangeInfo'
     -> DeleteHostedZoneResponse
-deleteHostedZoneResponse pResponseStatus_ pChangeInfo_ =
-  DeleteHostedZoneResponse'
-    {_dhzrsResponseStatus = pResponseStatus_, _dhzrsChangeInfo = pChangeInfo_}
-
+deleteHostedZoneResponse pResponseStatus_
+  pChangeInfo_
+  = DeleteHostedZoneResponse'{_dhzrsResponseStatus =
+                                pResponseStatus_,
+                              _dhzrsChangeInfo = pChangeInfo_}
 
 -- | -- | The response status code.
 dhzrsResponseStatus :: Lens' DeleteHostedZoneResponse Int

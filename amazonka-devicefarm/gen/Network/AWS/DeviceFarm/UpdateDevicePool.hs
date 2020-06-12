@@ -43,7 +43,6 @@ module Network.AWS.DeviceFarm.UpdateDevicePool
     ) where
 
 import Network.AWS.DeviceFarm.Types
-import Network.AWS.DeviceFarm.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.Request
@@ -54,17 +53,14 @@ import Network.AWS.Response
 --
 --
 -- /See:/ 'updateDevicePool' smart constructor.
-data UpdateDevicePool =
-  UpdateDevicePool'
-    { _udpRules           :: !(Maybe [Rule])
-    , _udpClearMaxDevices :: !(Maybe Bool)
-    , _udpName            :: !(Maybe Text)
-    , _udpMaxDevices      :: !(Maybe Int)
-    , _udpDescription     :: !(Maybe Text)
-    , _udpArn             :: !Text
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data UpdateDevicePool = UpdateDevicePool'{_udpRules
+                                          :: !(Maybe [Rule]),
+                                          _udpClearMaxDevices :: !(Maybe Bool),
+                                          _udpName :: !(Maybe Text),
+                                          _udpMaxDevices :: !(Maybe Int),
+                                          _udpDescription :: !(Maybe Text),
+                                          _udpArn :: !Text}
+                          deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'UpdateDevicePool' with the minimum fields required to make a request.
 --
@@ -84,16 +80,11 @@ data UpdateDevicePool =
 updateDevicePool
     :: Text -- ^ 'udpArn'
     -> UpdateDevicePool
-updateDevicePool pArn_ =
-  UpdateDevicePool'
-    { _udpRules = Nothing
-    , _udpClearMaxDevices = Nothing
-    , _udpName = Nothing
-    , _udpMaxDevices = Nothing
-    , _udpDescription = Nothing
-    , _udpArn = pArn_
-    }
-
+updateDevicePool pArn_
+  = UpdateDevicePool'{_udpRules = Nothing,
+                      _udpClearMaxDevices = Nothing, _udpName = Nothing,
+                      _udpMaxDevices = Nothing, _udpDescription = Nothing,
+                      _udpArn = pArn_}
 
 -- | Represents the rules to modify for the device pool. Updating rules is optional. If you update rules for your request, the update replaces the existing rules.
 udpRules :: Lens' UpdateDevicePool [Rule]
@@ -164,13 +155,13 @@ instance ToQuery UpdateDevicePool where
 --
 --
 -- /See:/ 'updateDevicePoolResponse' smart constructor.
-data UpdateDevicePoolResponse =
-  UpdateDevicePoolResponse'
-    { _udprsDevicePool     :: !(Maybe DevicePool)
-    , _udprsResponseStatus :: !Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data UpdateDevicePoolResponse = UpdateDevicePoolResponse'{_udprsDevicePool
+                                                          ::
+                                                          !(Maybe DevicePool),
+                                                          _udprsResponseStatus
+                                                          :: !Int}
+                                  deriving (Eq, Read, Show, Data, Typeable,
+                                            Generic)
 
 -- | Creates a value of 'UpdateDevicePoolResponse' with the minimum fields required to make a request.
 --
@@ -182,10 +173,10 @@ data UpdateDevicePoolResponse =
 updateDevicePoolResponse
     :: Int -- ^ 'udprsResponseStatus'
     -> UpdateDevicePoolResponse
-updateDevicePoolResponse pResponseStatus_ =
-  UpdateDevicePoolResponse'
-    {_udprsDevicePool = Nothing, _udprsResponseStatus = pResponseStatus_}
-
+updateDevicePoolResponse pResponseStatus_
+  = UpdateDevicePoolResponse'{_udprsDevicePool =
+                                Nothing,
+                              _udprsResponseStatus = pResponseStatus_}
 
 -- | The device pool you just updated.
 udprsDevicePool :: Lens' UpdateDevicePoolResponse (Maybe DevicePool)

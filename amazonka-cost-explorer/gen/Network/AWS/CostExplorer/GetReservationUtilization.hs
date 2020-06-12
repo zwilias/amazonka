@@ -18,7 +18,7 @@
 -- Stability   : auto-generated
 -- Portability : non-portable (GHC extensions)
 --
--- Retrieves the reservation utilization for your account. Master accounts in an organization have access to member accounts. You can filter data by dimensions in a time period. You can use @GetDimensionValues@ to determine the possible dimension values. Currently, you can group only by @SUBSCRIPTION_ID@ .
+-- Retrieves the reservation utilization for your account. Master accounts in an organization have access to member accounts. You can filter data by dimensions in a time period. You can use @GetDimensionValues@ to determine the possible dimension values. Currently, you can group only by @SUBSCRIPTION_ID@ . 
 --
 --
 module Network.AWS.CostExplorer.GetReservationUtilization
@@ -44,23 +44,27 @@ module Network.AWS.CostExplorer.GetReservationUtilization
     ) where
 
 import Network.AWS.CostExplorer.Types
-import Network.AWS.CostExplorer.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 
 -- | /See:/ 'getReservationUtilization' smart constructor.
-data GetReservationUtilization =
-  GetReservationUtilization'
-    { _gruGroupBy       :: !(Maybe [GroupDefinition])
-    , _gruNextPageToken :: !(Maybe Text)
-    , _gruGranularity   :: !(Maybe Granularity)
-    , _gruFilter        :: !(Maybe Expression)
-    , _gruTimePeriod    :: !DateInterval
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data GetReservationUtilization = GetReservationUtilization'{_gruGroupBy
+                                                            ::
+                                                            !(Maybe
+                                                                [GroupDefinition]),
+                                                            _gruNextPageToken ::
+                                                            !(Maybe Text),
+                                                            _gruGranularity ::
+                                                            !(Maybe
+                                                                Granularity),
+                                                            _gruFilter ::
+                                                            !(Maybe Expression),
+                                                            _gruTimePeriod ::
+                                                            !DateInterval}
+                                   deriving (Eq, Read, Show, Data, Typeable,
+                                             Generic)
 
 -- | Creates a value of 'GetReservationUtilization' with the minimum fields required to make a request.
 --
@@ -74,19 +78,15 @@ data GetReservationUtilization =
 --
 -- * 'gruFilter' - Filters utilization data by dimensions. You can filter by the following dimensions:     * AZ     * CACHE_ENGINE     * DEPLOYMENT_OPTION     * INSTANCE_TYPE     * LINKED_ACCOUNT     * OPERATING_SYSTEM     * PLATFORM     * REGION     * SERVICE     * SCOPE     * TENANCY @GetReservationUtilization@ uses the same <https://docs.aws.amazon.com/aws-cost-management/latest/APIReference/API_Expression.html Expression> object as the other operations, but only @AND@ is supported among each dimension, and nesting is supported up to only one level deep. If there are multiple values for a dimension, they are OR'd together.
 --
--- * 'gruTimePeriod' - Sets the start and end dates for retrieving RI utilization. The start date is inclusive, but the end date is exclusive. For example, if @start@ is @2017-01-01@ and @end@ is @2017-05-01@ , then the cost and usage data is retrieved from @2017-01-01@ up to and including @2017-04-30@ but not including @2017-05-01@ .
+-- * 'gruTimePeriod' - Sets the start and end dates for retrieving RI utilization. The start date is inclusive, but the end date is exclusive. For example, if @start@ is @2017-01-01@ and @end@ is @2017-05-01@ , then the cost and usage data is retrieved from @2017-01-01@ up to and including @2017-04-30@ but not including @2017-05-01@ . 
 getReservationUtilization
     :: DateInterval -- ^ 'gruTimePeriod'
     -> GetReservationUtilization
-getReservationUtilization pTimePeriod_ =
-  GetReservationUtilization'
-    { _gruGroupBy = Nothing
-    , _gruNextPageToken = Nothing
-    , _gruGranularity = Nothing
-    , _gruFilter = Nothing
-    , _gruTimePeriod = pTimePeriod_
-    }
-
+getReservationUtilization pTimePeriod_
+  = GetReservationUtilization'{_gruGroupBy = Nothing,
+                               _gruNextPageToken = Nothing,
+                               _gruGranularity = Nothing, _gruFilter = Nothing,
+                               _gruTimePeriod = pTimePeriod_}
 
 -- | Groups only by @SUBSCRIPTION_ID@ . Metadata is included.
 gruGroupBy :: Lens' GetReservationUtilization [GroupDefinition]
@@ -104,7 +104,7 @@ gruGranularity = lens _gruGranularity (\ s a -> s{_gruGranularity = a})
 gruFilter :: Lens' GetReservationUtilization (Maybe Expression)
 gruFilter = lens _gruFilter (\ s a -> s{_gruFilter = a})
 
--- | Sets the start and end dates for retrieving RI utilization. The start date is inclusive, but the end date is exclusive. For example, if @start@ is @2017-01-01@ and @end@ is @2017-05-01@ , then the cost and usage data is retrieved from @2017-01-01@ up to and including @2017-04-30@ but not including @2017-05-01@ .
+-- | Sets the start and end dates for retrieving RI utilization. The start date is inclusive, but the end date is exclusive. For example, if @start@ is @2017-01-01@ and @end@ is @2017-05-01@ , then the cost and usage data is retrieved from @2017-01-01@ up to and including @2017-04-30@ but not including @2017-05-01@ . 
 gruTimePeriod :: Lens' GetReservationUtilization DateInterval
 gruTimePeriod = lens _gruTimePeriod (\ s a -> s{_gruTimePeriod = a})
 
@@ -151,15 +151,22 @@ instance ToQuery GetReservationUtilization where
         toQuery = const mempty
 
 -- | /See:/ 'getReservationUtilizationResponse' smart constructor.
-data GetReservationUtilizationResponse =
-  GetReservationUtilizationResponse'
-    { _grursNextPageToken      :: !(Maybe Text)
-    , _grursTotal              :: !(Maybe ReservationAggregates)
-    , _grursResponseStatus     :: !Int
-    , _grursUtilizationsByTime :: ![UtilizationByTime]
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data GetReservationUtilizationResponse = GetReservationUtilizationResponse'{_grursNextPageToken
+                                                                            ::
+                                                                            !(Maybe
+                                                                                Text),
+                                                                            _grursTotal
+                                                                            ::
+                                                                            !(Maybe
+                                                                                ReservationAggregates),
+                                                                            _grursResponseStatus
+                                                                            ::
+                                                                            !Int,
+                                                                            _grursUtilizationsByTime
+                                                                            ::
+                                                                            ![UtilizationByTime]}
+                                           deriving (Eq, Read, Show, Data,
+                                                     Typeable, Generic)
 
 -- | Creates a value of 'GetReservationUtilizationResponse' with the minimum fields required to make a request.
 --
@@ -175,14 +182,12 @@ data GetReservationUtilizationResponse =
 getReservationUtilizationResponse
     :: Int -- ^ 'grursResponseStatus'
     -> GetReservationUtilizationResponse
-getReservationUtilizationResponse pResponseStatus_ =
-  GetReservationUtilizationResponse'
-    { _grursNextPageToken = Nothing
-    , _grursTotal = Nothing
-    , _grursResponseStatus = pResponseStatus_
-    , _grursUtilizationsByTime = mempty
-    }
-
+getReservationUtilizationResponse pResponseStatus_
+  = GetReservationUtilizationResponse'{_grursNextPageToken
+                                         = Nothing,
+                                       _grursTotal = Nothing,
+                                       _grursResponseStatus = pResponseStatus_,
+                                       _grursUtilizationsByTime = mempty}
 
 -- | The token for the next set of retrievable results. AWS provides the token when the response from a previous call has more results than the maximum page size.
 grursNextPageToken :: Lens' GetReservationUtilizationResponse (Maybe Text)

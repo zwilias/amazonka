@@ -37,21 +37,18 @@ module Network.AWS.Connect.UpdateUserIdentityInfo
     ) where
 
 import Network.AWS.Connect.Types
-import Network.AWS.Connect.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 
 -- | /See:/ 'updateUserIdentityInfo' smart constructor.
-data UpdateUserIdentityInfo =
-  UpdateUserIdentityInfo'
-    { _uuiiIdentityInfo :: !UserIdentityInfo
-    , _uuiiUserId       :: !Text
-    , _uuiiInstanceId   :: !Text
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data UpdateUserIdentityInfo = UpdateUserIdentityInfo'{_uuiiIdentityInfo
+                                                      :: !UserIdentityInfo,
+                                                      _uuiiUserId :: !Text,
+                                                      _uuiiInstanceId :: !Text}
+                                deriving (Eq, Read, Show, Data, Typeable,
+                                          Generic)
 
 -- | Creates a value of 'UpdateUserIdentityInfo' with the minimum fields required to make a request.
 --
@@ -67,13 +64,12 @@ updateUserIdentityInfo
     -> Text -- ^ 'uuiiUserId'
     -> Text -- ^ 'uuiiInstanceId'
     -> UpdateUserIdentityInfo
-updateUserIdentityInfo pIdentityInfo_ pUserId_ pInstanceId_ =
-  UpdateUserIdentityInfo'
-    { _uuiiIdentityInfo = pIdentityInfo_
-    , _uuiiUserId = pUserId_
-    , _uuiiInstanceId = pInstanceId_
-    }
-
+updateUserIdentityInfo pIdentityInfo_ pUserId_
+  pInstanceId_
+  = UpdateUserIdentityInfo'{_uuiiIdentityInfo =
+                              pIdentityInfo_,
+                            _uuiiUserId = pUserId_,
+                            _uuiiInstanceId = pInstanceId_}
 
 -- | The identity information for the user.
 uuiiIdentityInfo :: Lens' UpdateUserIdentityInfo UserIdentityInfo
@@ -121,16 +117,15 @@ instance ToQuery UpdateUserIdentityInfo where
         toQuery = const mempty
 
 -- | /See:/ 'updateUserIdentityInfoResponse' smart constructor.
-data UpdateUserIdentityInfoResponse =
-  UpdateUserIdentityInfoResponse'
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data UpdateUserIdentityInfoResponse = UpdateUserIdentityInfoResponse'
+                                        deriving (Eq, Read, Show, Data,
+                                                  Typeable, Generic)
 
 -- | Creates a value of 'UpdateUserIdentityInfoResponse' with the minimum fields required to make a request.
 --
 updateUserIdentityInfoResponse
     :: UpdateUserIdentityInfoResponse
-updateUserIdentityInfoResponse = UpdateUserIdentityInfoResponse'
-
+updateUserIdentityInfoResponse
+  = UpdateUserIdentityInfoResponse'
 
 instance NFData UpdateUserIdentityInfoResponse where

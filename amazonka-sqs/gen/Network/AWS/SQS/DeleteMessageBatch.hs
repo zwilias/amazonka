@@ -46,20 +46,17 @@ import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 import Network.AWS.SQS.Types
-import Network.AWS.SQS.Types.Product
 
--- |
+-- | 
 --
 --
 --
 -- /See:/ 'deleteMessageBatch' smart constructor.
-data DeleteMessageBatch =
-  DeleteMessageBatch'
-    { _dmbQueueURL :: !Text
-    , _dmbEntries  :: ![DeleteMessageBatchRequestEntry]
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data DeleteMessageBatch = DeleteMessageBatch'{_dmbQueueURL
+                                              :: !Text,
+                                              _dmbEntries ::
+                                              ![DeleteMessageBatchRequestEntry]}
+                            deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'DeleteMessageBatch' with the minimum fields required to make a request.
 --
@@ -71,9 +68,9 @@ data DeleteMessageBatch =
 deleteMessageBatch
     :: Text -- ^ 'dmbQueueURL'
     -> DeleteMessageBatch
-deleteMessageBatch pQueueURL_ =
-  DeleteMessageBatch' {_dmbQueueURL = pQueueURL_, _dmbEntries = mempty}
-
+deleteMessageBatch pQueueURL_
+  = DeleteMessageBatch'{_dmbQueueURL = pQueueURL_,
+                        _dmbEntries = mempty}
 
 -- | The URL of the Amazon SQS queue from which messages are deleted. Queue URLs are case-sensitive.
 dmbQueueURL :: Lens' DeleteMessageBatch Text
@@ -119,14 +116,15 @@ instance ToQuery DeleteMessageBatch where
 --
 --
 -- /See:/ 'deleteMessageBatchResponse' smart constructor.
-data DeleteMessageBatchResponse =
-  DeleteMessageBatchResponse'
-    { _dmbrsResponseStatus :: !Int
-    , _dmbrsSuccessful     :: ![DeleteMessageBatchResultEntry]
-    , _dmbrsFailed         :: ![BatchResultErrorEntry]
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data DeleteMessageBatchResponse = DeleteMessageBatchResponse'{_dmbrsResponseStatus
+                                                              :: !Int,
+                                                              _dmbrsSuccessful
+                                                              ::
+                                                              ![DeleteMessageBatchResultEntry],
+                                                              _dmbrsFailed ::
+                                                              ![BatchResultErrorEntry]}
+                                    deriving (Eq, Read, Show, Data, Typeable,
+                                              Generic)
 
 -- | Creates a value of 'DeleteMessageBatchResponse' with the minimum fields required to make a request.
 --
@@ -140,13 +138,11 @@ data DeleteMessageBatchResponse =
 deleteMessageBatchResponse
     :: Int -- ^ 'dmbrsResponseStatus'
     -> DeleteMessageBatchResponse
-deleteMessageBatchResponse pResponseStatus_ =
-  DeleteMessageBatchResponse'
-    { _dmbrsResponseStatus = pResponseStatus_
-    , _dmbrsSuccessful = mempty
-    , _dmbrsFailed = mempty
-    }
-
+deleteMessageBatchResponse pResponseStatus_
+  = DeleteMessageBatchResponse'{_dmbrsResponseStatus =
+                                  pResponseStatus_,
+                                _dmbrsSuccessful = mempty,
+                                _dmbrsFailed = mempty}
 
 -- | -- | The response status code.
 dmbrsResponseStatus :: Lens' DeleteMessageBatchResponse Int

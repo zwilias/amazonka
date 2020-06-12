@@ -116,8 +116,70 @@ library
         , Network.AWS.GameLift.Waiters
 
     other-modules:
-          Network.AWS.GameLift.Types.Product
-        , Network.AWS.GameLift.Types.Sum
+          Network.AWS.GameLift.Types.AWSCredentials
+        , Network.AWS.GameLift.Types.AcceptanceType
+        , Network.AWS.GameLift.Types.Alias
+        , Network.AWS.GameLift.Types.AttributeValue
+        , Network.AWS.GameLift.Types.Build
+        , Network.AWS.GameLift.Types.BuildStatus
+        , Network.AWS.GameLift.Types.ComparisonOperatorType
+        , Network.AWS.GameLift.Types.DesiredPlayerSession
+        , Network.AWS.GameLift.Types.EC2InstanceCounts
+        , Network.AWS.GameLift.Types.EC2InstanceLimit
+        , Network.AWS.GameLift.Types.EC2InstanceType
+        , Network.AWS.GameLift.Types.Event
+        , Network.AWS.GameLift.Types.EventCode
+        , Network.AWS.GameLift.Types.FleetAction
+        , Network.AWS.GameLift.Types.FleetAttributes
+        , Network.AWS.GameLift.Types.FleetCapacity
+        , Network.AWS.GameLift.Types.FleetStatus
+        , Network.AWS.GameLift.Types.FleetType
+        , Network.AWS.GameLift.Types.FleetUtilization
+        , Network.AWS.GameLift.Types.GameProperty
+        , Network.AWS.GameLift.Types.GameSession
+        , Network.AWS.GameLift.Types.GameSessionConnectionInfo
+        , Network.AWS.GameLift.Types.GameSessionDetail
+        , Network.AWS.GameLift.Types.GameSessionPlacement
+        , Network.AWS.GameLift.Types.GameSessionPlacementState
+        , Network.AWS.GameLift.Types.GameSessionQueue
+        , Network.AWS.GameLift.Types.GameSessionQueueDestination
+        , Network.AWS.GameLift.Types.GameSessionStatus
+        , Network.AWS.GameLift.Types.GameSessionStatusReason
+        , Network.AWS.GameLift.Types.IPPermission
+        , Network.AWS.GameLift.Types.IPProtocol
+        , Network.AWS.GameLift.Types.Instance
+        , Network.AWS.GameLift.Types.InstanceAccess
+        , Network.AWS.GameLift.Types.InstanceCredentials
+        , Network.AWS.GameLift.Types.InstanceStatus
+        , Network.AWS.GameLift.Types.MatchedPlayerSession
+        , Network.AWS.GameLift.Types.MatchmakingConfiguration
+        , Network.AWS.GameLift.Types.MatchmakingConfigurationStatus
+        , Network.AWS.GameLift.Types.MatchmakingRuleSet
+        , Network.AWS.GameLift.Types.MatchmakingTicket
+        , Network.AWS.GameLift.Types.MetricName
+        , Network.AWS.GameLift.Types.OperatingSystem
+        , Network.AWS.GameLift.Types.PlacedPlayerSession
+        , Network.AWS.GameLift.Types.Player
+        , Network.AWS.GameLift.Types.PlayerLatency
+        , Network.AWS.GameLift.Types.PlayerLatencyPolicy
+        , Network.AWS.GameLift.Types.PlayerSession
+        , Network.AWS.GameLift.Types.PlayerSessionCreationPolicy
+        , Network.AWS.GameLift.Types.PlayerSessionStatus
+        , Network.AWS.GameLift.Types.PolicyType
+        , Network.AWS.GameLift.Types.ProtectionPolicy
+        , Network.AWS.GameLift.Types.ResourceCreationLimitPolicy
+        , Network.AWS.GameLift.Types.RoutingStrategy
+        , Network.AWS.GameLift.Types.RoutingStrategyType
+        , Network.AWS.GameLift.Types.RuntimeConfiguration
+        , Network.AWS.GameLift.Types.S3Location
+        , Network.AWS.GameLift.Types.ScalingAdjustmentType
+        , Network.AWS.GameLift.Types.ScalingPolicy
+        , Network.AWS.GameLift.Types.ScalingStatusType
+        , Network.AWS.GameLift.Types.ServerProcess
+        , Network.AWS.GameLift.Types.TargetConfiguration
+        , Network.AWS.GameLift.Types.VPCPeeringAuthorization
+        , Network.AWS.GameLift.Types.VPCPeeringConnection
+        , Network.AWS.GameLift.Types.VPCPeeringConnectionStatus
 
     build-depends:
           amazonka-core == 1.6.1.*

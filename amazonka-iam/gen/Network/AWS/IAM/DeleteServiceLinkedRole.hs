@@ -42,19 +42,16 @@ module Network.AWS.IAM.DeleteServiceLinkedRole
     ) where
 
 import Network.AWS.IAM.Types
-import Network.AWS.IAM.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 
 -- | /See:/ 'deleteServiceLinkedRole' smart constructor.
-newtype DeleteServiceLinkedRole =
-  DeleteServiceLinkedRole'
-    { _dslrRoleName :: Text
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+newtype DeleteServiceLinkedRole = DeleteServiceLinkedRole'{_dslrRoleName
+                                                           :: Text}
+                                    deriving (Eq, Read, Show, Data, Typeable,
+                                              Generic)
 
 -- | Creates a value of 'DeleteServiceLinkedRole' with the minimum fields required to make a request.
 --
@@ -64,9 +61,9 @@ newtype DeleteServiceLinkedRole =
 deleteServiceLinkedRole
     :: Text -- ^ 'dslrRoleName'
     -> DeleteServiceLinkedRole
-deleteServiceLinkedRole pRoleName_ =
-  DeleteServiceLinkedRole' {_dslrRoleName = pRoleName_}
-
+deleteServiceLinkedRole pRoleName_
+  = DeleteServiceLinkedRole'{_dslrRoleName =
+                               pRoleName_}
 
 -- | The name of the service-linked role to be deleted.
 dslrRoleName :: Lens' DeleteServiceLinkedRole Text
@@ -101,13 +98,13 @@ instance ToQuery DeleteServiceLinkedRole where
                "RoleName" =: _dslrRoleName]
 
 -- | /See:/ 'deleteServiceLinkedRoleResponse' smart constructor.
-data DeleteServiceLinkedRoleResponse =
-  DeleteServiceLinkedRoleResponse'
-    { _dslrrsResponseStatus :: !Int
-    , _dslrrsDeletionTaskId :: !Text
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data DeleteServiceLinkedRoleResponse = DeleteServiceLinkedRoleResponse'{_dslrrsResponseStatus
+                                                                        :: !Int,
+                                                                        _dslrrsDeletionTaskId
+                                                                        ::
+                                                                        !Text}
+                                         deriving (Eq, Read, Show, Data,
+                                                   Typeable, Generic)
 
 -- | Creates a value of 'DeleteServiceLinkedRoleResponse' with the minimum fields required to make a request.
 --
@@ -120,12 +117,11 @@ deleteServiceLinkedRoleResponse
     :: Int -- ^ 'dslrrsResponseStatus'
     -> Text -- ^ 'dslrrsDeletionTaskId'
     -> DeleteServiceLinkedRoleResponse
-deleteServiceLinkedRoleResponse pResponseStatus_ pDeletionTaskId_ =
-  DeleteServiceLinkedRoleResponse'
-    { _dslrrsResponseStatus = pResponseStatus_
-    , _dslrrsDeletionTaskId = pDeletionTaskId_
-    }
-
+deleteServiceLinkedRoleResponse pResponseStatus_
+  pDeletionTaskId_
+  = DeleteServiceLinkedRoleResponse'{_dslrrsResponseStatus
+                                       = pResponseStatus_,
+                                     _dslrrsDeletionTaskId = pDeletionTaskId_}
 
 -- | -- | The response status code.
 dslrrsResponseStatus :: Lens' DeleteServiceLinkedRoleResponse Int

@@ -43,15 +43,11 @@ import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 import Network.AWS.StepFunctions.Types
-import Network.AWS.StepFunctions.Types.Product
 
 -- | /See:/ 'createActivity' smart constructor.
-newtype CreateActivity =
-  CreateActivity'
-    { _caName :: Text
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+newtype CreateActivity = CreateActivity'{_caName ::
+                                         Text}
+                           deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'CreateActivity' with the minimum fields required to make a request.
 --
@@ -61,8 +57,8 @@ newtype CreateActivity =
 createActivity
     :: Text -- ^ 'caName'
     -> CreateActivity
-createActivity pName_ = CreateActivity' {_caName = pName_}
-
+createActivity pName_
+  = CreateActivity'{_caName = pName_}
 
 -- | The name of the activity to create. This name must be unique for your AWS account and region for 90 days. For more information, see <http://docs.aws.amazon.com/step-functions/latest/dg/limits.html#service-limits-state-machine-executions Limits Related to State Machine Executions> in the /AWS Step Functions Developer Guide/ . A name must /not/ contain:     * whitespace     * brackets @< > { } [ ]@      * wildcard characters @? *@      * special characters @" # % \ ^ | ~ ` $ & , ; : /@      * control characters (@U+0000-001F@ , @U+007F-009F@ )
 caName :: Lens' CreateActivity Text
@@ -102,14 +98,13 @@ instance ToQuery CreateActivity where
         toQuery = const mempty
 
 -- | /See:/ 'createActivityResponse' smart constructor.
-data CreateActivityResponse =
-  CreateActivityResponse'
-    { _carsResponseStatus :: !Int
-    , _carsActivityARN    :: !Text
-    , _carsCreationDate   :: !POSIX
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data CreateActivityResponse = CreateActivityResponse'{_carsResponseStatus
+                                                      :: !Int,
+                                                      _carsActivityARN :: !Text,
+                                                      _carsCreationDate ::
+                                                      !POSIX}
+                                deriving (Eq, Read, Show, Data, Typeable,
+                                          Generic)
 
 -- | Creates a value of 'CreateActivityResponse' with the minimum fields required to make a request.
 --
@@ -125,13 +120,12 @@ createActivityResponse
     -> Text -- ^ 'carsActivityARN'
     -> UTCTime -- ^ 'carsCreationDate'
     -> CreateActivityResponse
-createActivityResponse pResponseStatus_ pActivityARN_ pCreationDate_ =
-  CreateActivityResponse'
-    { _carsResponseStatus = pResponseStatus_
-    , _carsActivityARN = pActivityARN_
-    , _carsCreationDate = _Time # pCreationDate_
-    }
-
+createActivityResponse pResponseStatus_ pActivityARN_
+  pCreationDate_
+  = CreateActivityResponse'{_carsResponseStatus =
+                              pResponseStatus_,
+                            _carsActivityARN = pActivityARN_,
+                            _carsCreationDate = _Time # pCreationDate_}
 
 -- | -- | The response status code.
 carsResponseStatus :: Lens' CreateActivityResponse Int

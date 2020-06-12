@@ -18,7 +18,7 @@
 -- Stability   : auto-generated
 -- Portability : non-portable (GHC extensions)
 --
--- Returns a URL that you can use to connect to the Juypter server from a notebook instance. In the Amazon SageMaker console, when you choose @Open@ next to a notebook instance, Amazon SageMaker opens a new tab showing the Jupyter server home page from the notebook instance. The console uses this API to get the URL and show the page.
+-- Returns a URL that you can use to connect to the Juypter server from a notebook instance. In the Amazon SageMaker console, when you choose @Open@ next to a notebook instance, Amazon SageMaker opens a new tab showing the Jupyter server home page from the notebook instance. The console uses this API to get the URL and show the page. 
 --
 --
 module Network.AWS.SageMaker.CreatePresignedNotebookInstanceURL
@@ -43,16 +43,17 @@ import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 import Network.AWS.SageMaker.Types
-import Network.AWS.SageMaker.Types.Product
 
 -- | /See:/ 'createPresignedNotebookInstanceURL' smart constructor.
-data CreatePresignedNotebookInstanceURL =
-  CreatePresignedNotebookInstanceURL'
-    { _cpniuSessionExpirationDurationInSeconds :: !(Maybe Nat)
-    , _cpniuNotebookInstanceName               :: !Text
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data CreatePresignedNotebookInstanceURL = CreatePresignedNotebookInstanceURL'{_cpniuSessionExpirationDurationInSeconds
+                                                                              ::
+                                                                              !(Maybe
+                                                                                  Nat),
+                                                                              _cpniuNotebookInstanceName
+                                                                              ::
+                                                                              !Text}
+                                            deriving (Eq, Read, Show, Data,
+                                                      Typeable, Generic)
 
 -- | Creates a value of 'CreatePresignedNotebookInstanceURL' with the minimum fields required to make a request.
 --
@@ -64,12 +65,12 @@ data CreatePresignedNotebookInstanceURL =
 createPresignedNotebookInstanceURL
     :: Text -- ^ 'cpniuNotebookInstanceName'
     -> CreatePresignedNotebookInstanceURL
-createPresignedNotebookInstanceURL pNotebookInstanceName_ =
-  CreatePresignedNotebookInstanceURL'
-    { _cpniuSessionExpirationDurationInSeconds = Nothing
-    , _cpniuNotebookInstanceName = pNotebookInstanceName_
-    }
-
+createPresignedNotebookInstanceURL
+  pNotebookInstanceName_
+  = CreatePresignedNotebookInstanceURL'{_cpniuSessionExpirationDurationInSeconds
+                                          = Nothing,
+                                        _cpniuNotebookInstanceName =
+                                          pNotebookInstanceName_}
 
 -- | The duration of the session, in seconds. The default is 12 hours.
 cpniuSessionExpirationDurationInSeconds :: Lens' CreatePresignedNotebookInstanceURL (Maybe Natural)
@@ -128,30 +129,35 @@ instance ToQuery CreatePresignedNotebookInstanceURL
         toQuery = const mempty
 
 -- | /See:/ 'createPresignedNotebookInstanceURLResponse' smart constructor.
-data CreatePresignedNotebookInstanceURLResponse =
-  CreatePresignedNotebookInstanceURLResponse'
-    { _cpniursAuthorizedURL  :: !(Maybe Text)
-    , _cpniursResponseStatus :: !Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data CreatePresignedNotebookInstanceURLResponse = CreatePresignedNotebookInstanceURLResponse'{_cpniursAuthorizedURL
+                                                                                              ::
+                                                                                              !(Maybe
+                                                                                                  Text),
+                                                                                              _cpniursResponseStatus
+                                                                                              ::
+                                                                                              !Int}
+                                                    deriving (Eq, Read, Show,
+                                                              Data, Typeable,
+                                                              Generic)
 
 -- | Creates a value of 'CreatePresignedNotebookInstanceURLResponse' with the minimum fields required to make a request.
 --
 -- Use one of the following lenses to modify other fields as desired:
 --
--- * 'cpniursAuthorizedURL' - A JSON object that contains the URL string.
+-- * 'cpniursAuthorizedURL' - A JSON object that contains the URL string. 
 --
 -- * 'cpniursResponseStatus' - -- | The response status code.
 createPresignedNotebookInstanceURLResponse
     :: Int -- ^ 'cpniursResponseStatus'
     -> CreatePresignedNotebookInstanceURLResponse
-createPresignedNotebookInstanceURLResponse pResponseStatus_ =
-  CreatePresignedNotebookInstanceURLResponse'
-    {_cpniursAuthorizedURL = Nothing, _cpniursResponseStatus = pResponseStatus_}
+createPresignedNotebookInstanceURLResponse
+  pResponseStatus_
+  = CreatePresignedNotebookInstanceURLResponse'{_cpniursAuthorizedURL
+                                                  = Nothing,
+                                                _cpniursResponseStatus =
+                                                  pResponseStatus_}
 
-
--- | A JSON object that contains the URL string.
+-- | A JSON object that contains the URL string. 
 cpniursAuthorizedURL :: Lens' CreatePresignedNotebookInstanceURLResponse (Maybe Text)
 cpniursAuthorizedURL = lens _cpniursAuthorizedURL (\ s a -> s{_cpniursAuthorizedURL = a})
 

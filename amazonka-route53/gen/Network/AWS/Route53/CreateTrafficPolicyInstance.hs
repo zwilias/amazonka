@@ -47,23 +47,24 @@ import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 import Network.AWS.Route53.Types
-import Network.AWS.Route53.Types.Product
 
 -- | A complex type that contains information about the resource record sets that you want to create based on a specified traffic policy.
 --
 --
 --
 -- /See:/ 'createTrafficPolicyInstance' smart constructor.
-data CreateTrafficPolicyInstance =
-  CreateTrafficPolicyInstance'
-    { _ctpiHostedZoneId         :: !ResourceId
-    , _ctpiName                 :: !Text
-    , _ctpiTTL                  :: !Nat
-    , _ctpiTrafficPolicyId      :: !Text
-    , _ctpiTrafficPolicyVersion :: !Nat
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data CreateTrafficPolicyInstance = CreateTrafficPolicyInstance'{_ctpiHostedZoneId
+                                                                :: !ResourceId,
+                                                                _ctpiName ::
+                                                                !Text,
+                                                                _ctpiTTL ::
+                                                                !Nat,
+                                                                _ctpiTrafficPolicyId
+                                                                :: !Text,
+                                                                _ctpiTrafficPolicyVersion
+                                                                :: !Nat}
+                                     deriving (Eq, Read, Show, Data, Typeable,
+                                               Generic)
 
 -- | Creates a value of 'CreateTrafficPolicyInstance' with the minimum fields required to make a request.
 --
@@ -85,15 +86,14 @@ createTrafficPolicyInstance
     -> Text -- ^ 'ctpiTrafficPolicyId'
     -> Natural -- ^ 'ctpiTrafficPolicyVersion'
     -> CreateTrafficPolicyInstance
-createTrafficPolicyInstance pHostedZoneId_ pName_ pTTL_ pTrafficPolicyId_ pTrafficPolicyVersion_ =
-  CreateTrafficPolicyInstance'
-    { _ctpiHostedZoneId = pHostedZoneId_
-    , _ctpiName = pName_
-    , _ctpiTTL = _Nat # pTTL_
-    , _ctpiTrafficPolicyId = pTrafficPolicyId_
-    , _ctpiTrafficPolicyVersion = _Nat # pTrafficPolicyVersion_
-    }
-
+createTrafficPolicyInstance pHostedZoneId_ pName_
+  pTTL_ pTrafficPolicyId_ pTrafficPolicyVersion_
+  = CreateTrafficPolicyInstance'{_ctpiHostedZoneId =
+                                   pHostedZoneId_,
+                                 _ctpiName = pName_, _ctpiTTL = _Nat # pTTL_,
+                                 _ctpiTrafficPolicyId = pTrafficPolicyId_,
+                                 _ctpiTrafficPolicyVersion =
+                                   _Nat # pTrafficPolicyVersion_}
 
 -- | The ID of the hosted zone in which you want Amazon Route 53 to create resource record sets by using the configuration in a traffic policy.
 ctpiHostedZoneId :: Lens' CreateTrafficPolicyInstance ResourceId
@@ -158,14 +158,17 @@ instance ToXML CreateTrafficPolicyInstance where
 --
 --
 -- /See:/ 'createTrafficPolicyInstanceResponse' smart constructor.
-data CreateTrafficPolicyInstanceResponse =
-  CreateTrafficPolicyInstanceResponse'
-    { _ctpirsResponseStatus        :: !Int
-    , _ctpirsTrafficPolicyInstance :: !TrafficPolicyInstance
-    , _ctpirsLocation              :: !Text
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data CreateTrafficPolicyInstanceResponse = CreateTrafficPolicyInstanceResponse'{_ctpirsResponseStatus
+                                                                                ::
+                                                                                !Int,
+                                                                                _ctpirsTrafficPolicyInstance
+                                                                                ::
+                                                                                !TrafficPolicyInstance,
+                                                                                _ctpirsLocation
+                                                                                ::
+                                                                                !Text}
+                                             deriving (Eq, Read, Show, Data,
+                                                       Typeable, Generic)
 
 -- | Creates a value of 'CreateTrafficPolicyInstanceResponse' with the minimum fields required to make a request.
 --
@@ -181,13 +184,13 @@ createTrafficPolicyInstanceResponse
     -> TrafficPolicyInstance -- ^ 'ctpirsTrafficPolicyInstance'
     -> Text -- ^ 'ctpirsLocation'
     -> CreateTrafficPolicyInstanceResponse
-createTrafficPolicyInstanceResponse pResponseStatus_ pTrafficPolicyInstance_ pLocation_ =
-  CreateTrafficPolicyInstanceResponse'
-    { _ctpirsResponseStatus = pResponseStatus_
-    , _ctpirsTrafficPolicyInstance = pTrafficPolicyInstance_
-    , _ctpirsLocation = pLocation_
-    }
-
+createTrafficPolicyInstanceResponse pResponseStatus_
+  pTrafficPolicyInstance_ pLocation_
+  = CreateTrafficPolicyInstanceResponse'{_ctpirsResponseStatus
+                                           = pResponseStatus_,
+                                         _ctpirsTrafficPolicyInstance =
+                                           pTrafficPolicyInstance_,
+                                         _ctpirsLocation = pLocation_}
 
 -- | -- | The response status code.
 ctpirsResponseStatus :: Lens' CreateTrafficPolicyInstanceResponse Int

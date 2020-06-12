@@ -49,20 +49,16 @@ module Network.AWS.EC2.GetPasswordData
     ) where
 
 import Network.AWS.EC2.Types
-import Network.AWS.EC2.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 
 -- | /See:/ 'getPasswordData' smart constructor.
-data GetPasswordData =
-  GetPasswordData'
-    { _gpdDryRun     :: !(Maybe Bool)
-    , _gpdInstanceId :: !Text
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data GetPasswordData = GetPasswordData'{_gpdDryRun ::
+                                        !(Maybe Bool),
+                                        _gpdInstanceId :: !Text}
+                         deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'GetPasswordData' with the minimum fields required to make a request.
 --
@@ -74,9 +70,9 @@ data GetPasswordData =
 getPasswordData
     :: Text -- ^ 'gpdInstanceId'
     -> GetPasswordData
-getPasswordData pInstanceId_ =
-  GetPasswordData' {_gpdDryRun = Nothing, _gpdInstanceId = pInstanceId_}
-
+getPasswordData pInstanceId_
+  = GetPasswordData'{_gpdDryRun = Nothing,
+                     _gpdInstanceId = pInstanceId_}
 
 -- | Checks whether you have the required permissions for the action, without actually making the request, and provides an error response. If you have the required permissions, the error response is @DryRunOperation@ . Otherwise, it is @UnauthorizedOperation@ .
 gpdDryRun :: Lens' GetPasswordData (Maybe Bool)
@@ -116,15 +112,16 @@ instance ToQuery GetPasswordData where
                "InstanceId" =: _gpdInstanceId]
 
 -- | /See:/ 'getPasswordDataResponse' smart constructor.
-data GetPasswordDataResponse =
-  GetPasswordDataResponse'
-    { _gpdrsResponseStatus :: !Int
-    , _gpdrsInstanceId     :: !Text
-    , _gpdrsPasswordData   :: !Text
-    , _gpdrsTimestamp      :: !ISO8601
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data GetPasswordDataResponse = GetPasswordDataResponse'{_gpdrsResponseStatus
+                                                        :: !Int,
+                                                        _gpdrsInstanceId ::
+                                                        !Text,
+                                                        _gpdrsPasswordData ::
+                                                        !Text,
+                                                        _gpdrsTimestamp ::
+                                                        !ISO8601}
+                                 deriving (Eq, Read, Show, Data, Typeable,
+                                           Generic)
 
 -- | Creates a value of 'GetPasswordDataResponse' with the minimum fields required to make a request.
 --
@@ -143,14 +140,13 @@ getPasswordDataResponse
     -> Text -- ^ 'gpdrsPasswordData'
     -> UTCTime -- ^ 'gpdrsTimestamp'
     -> GetPasswordDataResponse
-getPasswordDataResponse pResponseStatus_ pInstanceId_ pPasswordData_ pTimestamp_ =
-  GetPasswordDataResponse'
-    { _gpdrsResponseStatus = pResponseStatus_
-    , _gpdrsInstanceId = pInstanceId_
-    , _gpdrsPasswordData = pPasswordData_
-    , _gpdrsTimestamp = _Time # pTimestamp_
-    }
-
+getPasswordDataResponse pResponseStatus_ pInstanceId_
+  pPasswordData_ pTimestamp_
+  = GetPasswordDataResponse'{_gpdrsResponseStatus =
+                               pResponseStatus_,
+                             _gpdrsInstanceId = pInstanceId_,
+                             _gpdrsPasswordData = pPasswordData_,
+                             _gpdrsTimestamp = _Time # pTimestamp_}
 
 -- | -- | The response status code.
 gpdrsResponseStatus :: Lens' GetPasswordDataResponse Int

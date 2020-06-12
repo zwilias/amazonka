@@ -51,25 +51,29 @@ module Network.AWS.CodeCommit.PostCommentForPullRequest
     ) where
 
 import Network.AWS.CodeCommit.Types
-import Network.AWS.CodeCommit.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 
 -- | /See:/ 'postCommentForPullRequest' smart constructor.
-data PostCommentForPullRequest =
-  PostCommentForPullRequest'
-    { _pcfprLocation           :: !(Maybe Location)
-    , _pcfprClientRequestToken :: !(Maybe Text)
-    , _pcfprPullRequestId      :: !Text
-    , _pcfprRepositoryName     :: !Text
-    , _pcfprBeforeCommitId     :: !Text
-    , _pcfprAfterCommitId      :: !Text
-    , _pcfprContent            :: !Text
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data PostCommentForPullRequest = PostCommentForPullRequest'{_pcfprLocation
+                                                            ::
+                                                            !(Maybe Location),
+                                                            _pcfprClientRequestToken
+                                                            :: !(Maybe Text),
+                                                            _pcfprPullRequestId
+                                                            :: !Text,
+                                                            _pcfprRepositoryName
+                                                            :: !Text,
+                                                            _pcfprBeforeCommitId
+                                                            :: !Text,
+                                                            _pcfprAfterCommitId
+                                                            :: !Text,
+                                                            _pcfprContent ::
+                                                            !Text}
+                                   deriving (Eq, Read, Show, Data, Typeable,
+                                             Generic)
 
 -- | Creates a value of 'PostCommentForPullRequest' with the minimum fields required to make a request.
 --
@@ -95,17 +99,17 @@ postCommentForPullRequest
     -> Text -- ^ 'pcfprAfterCommitId'
     -> Text -- ^ 'pcfprContent'
     -> PostCommentForPullRequest
-postCommentForPullRequest pPullRequestId_ pRepositoryName_ pBeforeCommitId_ pAfterCommitId_ pContent_ =
-  PostCommentForPullRequest'
-    { _pcfprLocation = Nothing
-    , _pcfprClientRequestToken = Nothing
-    , _pcfprPullRequestId = pPullRequestId_
-    , _pcfprRepositoryName = pRepositoryName_
-    , _pcfprBeforeCommitId = pBeforeCommitId_
-    , _pcfprAfterCommitId = pAfterCommitId_
-    , _pcfprContent = pContent_
-    }
-
+postCommentForPullRequest pPullRequestId_
+  pRepositoryName_ pBeforeCommitId_ pAfterCommitId_
+  pContent_
+  = PostCommentForPullRequest'{_pcfprLocation =
+                                 Nothing,
+                               _pcfprClientRequestToken = Nothing,
+                               _pcfprPullRequestId = pPullRequestId_,
+                               _pcfprRepositoryName = pRepositoryName_,
+                               _pcfprBeforeCommitId = pBeforeCommitId_,
+                               _pcfprAfterCommitId = pAfterCommitId_,
+                               _pcfprContent = pContent_}
 
 -- | The location of the change where you want to post your comment. If no location is provided, the comment is posted as a general comment on the pull request difference between the before commit ID and the after commit ID.
 pcfprLocation :: Lens' PostCommentForPullRequest (Maybe Location)
@@ -186,20 +190,43 @@ instance ToQuery PostCommentForPullRequest where
         toQuery = const mempty
 
 -- | /See:/ 'postCommentForPullRequestResponse' smart constructor.
-data PostCommentForPullRequestResponse =
-  PostCommentForPullRequestResponse'
-    { _pcfprrsBeforeBlobId   :: !(Maybe Text)
-    , _pcfprrsLocation       :: !(Maybe Location)
-    , _pcfprrsAfterCommitId  :: !(Maybe Text)
-    , _pcfprrsPullRequestId  :: !(Maybe Text)
-    , _pcfprrsAfterBlobId    :: !(Maybe Text)
-    , _pcfprrsBeforeCommitId :: !(Maybe Text)
-    , _pcfprrsRepositoryName :: !(Maybe Text)
-    , _pcfprrsComment        :: !(Maybe Comment)
-    , _pcfprrsResponseStatus :: !Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data PostCommentForPullRequestResponse = PostCommentForPullRequestResponse'{_pcfprrsBeforeBlobId
+                                                                            ::
+                                                                            !(Maybe
+                                                                                Text),
+                                                                            _pcfprrsLocation
+                                                                            ::
+                                                                            !(Maybe
+                                                                                Location),
+                                                                            _pcfprrsAfterCommitId
+                                                                            ::
+                                                                            !(Maybe
+                                                                                Text),
+                                                                            _pcfprrsPullRequestId
+                                                                            ::
+                                                                            !(Maybe
+                                                                                Text),
+                                                                            _pcfprrsAfterBlobId
+                                                                            ::
+                                                                            !(Maybe
+                                                                                Text),
+                                                                            _pcfprrsBeforeCommitId
+                                                                            ::
+                                                                            !(Maybe
+                                                                                Text),
+                                                                            _pcfprrsRepositoryName
+                                                                            ::
+                                                                            !(Maybe
+                                                                                Text),
+                                                                            _pcfprrsComment
+                                                                            ::
+                                                                            !(Maybe
+                                                                                Comment),
+                                                                            _pcfprrsResponseStatus
+                                                                            ::
+                                                                            !Int}
+                                           deriving (Eq, Read, Show, Data,
+                                                     Typeable, Generic)
 
 -- | Creates a value of 'PostCommentForPullRequestResponse' with the minimum fields required to make a request.
 --
@@ -211,7 +238,7 @@ data PostCommentForPullRequestResponse =
 --
 -- * 'pcfprrsAfterCommitId' - The full commit ID of the commit in the destination branch where the pull request is merged.
 --
--- * 'pcfprrsPullRequestId' - The system-generated ID of the pull request.
+-- * 'pcfprrsPullRequestId' - The system-generated ID of the pull request. 
 --
 -- * 'pcfprrsAfterBlobId' - In the directionality of the pull request, the blob ID of the after blob.
 --
@@ -225,19 +252,18 @@ data PostCommentForPullRequestResponse =
 postCommentForPullRequestResponse
     :: Int -- ^ 'pcfprrsResponseStatus'
     -> PostCommentForPullRequestResponse
-postCommentForPullRequestResponse pResponseStatus_ =
-  PostCommentForPullRequestResponse'
-    { _pcfprrsBeforeBlobId = Nothing
-    , _pcfprrsLocation = Nothing
-    , _pcfprrsAfterCommitId = Nothing
-    , _pcfprrsPullRequestId = Nothing
-    , _pcfprrsAfterBlobId = Nothing
-    , _pcfprrsBeforeCommitId = Nothing
-    , _pcfprrsRepositoryName = Nothing
-    , _pcfprrsComment = Nothing
-    , _pcfprrsResponseStatus = pResponseStatus_
-    }
-
+postCommentForPullRequestResponse pResponseStatus_
+  = PostCommentForPullRequestResponse'{_pcfprrsBeforeBlobId
+                                         = Nothing,
+                                       _pcfprrsLocation = Nothing,
+                                       _pcfprrsAfterCommitId = Nothing,
+                                       _pcfprrsPullRequestId = Nothing,
+                                       _pcfprrsAfterBlobId = Nothing,
+                                       _pcfprrsBeforeCommitId = Nothing,
+                                       _pcfprrsRepositoryName = Nothing,
+                                       _pcfprrsComment = Nothing,
+                                       _pcfprrsResponseStatus =
+                                         pResponseStatus_}
 
 -- | In the directionality of the pull request, the blob ID of the before blob.
 pcfprrsBeforeBlobId :: Lens' PostCommentForPullRequestResponse (Maybe Text)
@@ -251,7 +277,7 @@ pcfprrsLocation = lens _pcfprrsLocation (\ s a -> s{_pcfprrsLocation = a})
 pcfprrsAfterCommitId :: Lens' PostCommentForPullRequestResponse (Maybe Text)
 pcfprrsAfterCommitId = lens _pcfprrsAfterCommitId (\ s a -> s{_pcfprrsAfterCommitId = a})
 
--- | The system-generated ID of the pull request.
+-- | The system-generated ID of the pull request. 
 pcfprrsPullRequestId :: Lens' PostCommentForPullRequestResponse (Maybe Text)
 pcfprrsPullRequestId = lens _pcfprrsPullRequestId (\ s a -> s{_pcfprrsPullRequestId = a})
 

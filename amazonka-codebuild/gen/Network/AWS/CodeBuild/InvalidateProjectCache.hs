@@ -37,19 +37,16 @@ module Network.AWS.CodeBuild.InvalidateProjectCache
     ) where
 
 import Network.AWS.CodeBuild.Types
-import Network.AWS.CodeBuild.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 
 -- | /See:/ 'invalidateProjectCache' smart constructor.
-newtype InvalidateProjectCache =
-  InvalidateProjectCache'
-    { _ipcProjectName :: Text
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+newtype InvalidateProjectCache = InvalidateProjectCache'{_ipcProjectName
+                                                         :: Text}
+                                   deriving (Eq, Read, Show, Data, Typeable,
+                                             Generic)
 
 -- | Creates a value of 'InvalidateProjectCache' with the minimum fields required to make a request.
 --
@@ -59,9 +56,9 @@ newtype InvalidateProjectCache =
 invalidateProjectCache
     :: Text -- ^ 'ipcProjectName'
     -> InvalidateProjectCache
-invalidateProjectCache pProjectName_ =
-  InvalidateProjectCache' {_ipcProjectName = pProjectName_}
-
+invalidateProjectCache pProjectName_
+  = InvalidateProjectCache'{_ipcProjectName =
+                              pProjectName_}
 
 -- | The name of the AWS CodeBuild build project that the cache is reset for.
 ipcProjectName :: Lens' InvalidateProjectCache Text
@@ -103,12 +100,10 @@ instance ToQuery InvalidateProjectCache where
         toQuery = const mempty
 
 -- | /See:/ 'invalidateProjectCacheResponse' smart constructor.
-newtype InvalidateProjectCacheResponse =
-  InvalidateProjectCacheResponse'
-    { _ipcrsResponseStatus :: Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+newtype InvalidateProjectCacheResponse = InvalidateProjectCacheResponse'{_ipcrsResponseStatus
+                                                                         :: Int}
+                                           deriving (Eq, Read, Show, Data,
+                                                     Typeable, Generic)
 
 -- | Creates a value of 'InvalidateProjectCacheResponse' with the minimum fields required to make a request.
 --
@@ -118,9 +113,9 @@ newtype InvalidateProjectCacheResponse =
 invalidateProjectCacheResponse
     :: Int -- ^ 'ipcrsResponseStatus'
     -> InvalidateProjectCacheResponse
-invalidateProjectCacheResponse pResponseStatus_ =
-  InvalidateProjectCacheResponse' {_ipcrsResponseStatus = pResponseStatus_}
-
+invalidateProjectCacheResponse pResponseStatus_
+  = InvalidateProjectCacheResponse'{_ipcrsResponseStatus
+                                      = pResponseStatus_}
 
 -- | -- | The response status code.
 ipcrsResponseStatus :: Lens' InvalidateProjectCacheResponse Int

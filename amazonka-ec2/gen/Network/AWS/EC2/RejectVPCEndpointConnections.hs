@@ -40,21 +40,21 @@ module Network.AWS.EC2.RejectVPCEndpointConnections
     ) where
 
 import Network.AWS.EC2.Types
-import Network.AWS.EC2.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 
 -- | /See:/ 'rejectVPCEndpointConnections' smart constructor.
-data RejectVPCEndpointConnections =
-  RejectVPCEndpointConnections'
-    { _rvecDryRun         :: !(Maybe Bool)
-    , _rvecServiceId      :: !Text
-    , _rvecVPCEndpointIds :: ![Text]
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data RejectVPCEndpointConnections = RejectVPCEndpointConnections'{_rvecDryRun
+                                                                  ::
+                                                                  !(Maybe Bool),
+                                                                  _rvecServiceId
+                                                                  :: !Text,
+                                                                  _rvecVPCEndpointIds
+                                                                  :: ![Text]}
+                                      deriving (Eq, Read, Show, Data, Typeable,
+                                                Generic)
 
 -- | Creates a value of 'RejectVPCEndpointConnections' with the minimum fields required to make a request.
 --
@@ -68,13 +68,11 @@ data RejectVPCEndpointConnections =
 rejectVPCEndpointConnections
     :: Text -- ^ 'rvecServiceId'
     -> RejectVPCEndpointConnections
-rejectVPCEndpointConnections pServiceId_ =
-  RejectVPCEndpointConnections'
-    { _rvecDryRun = Nothing
-    , _rvecServiceId = pServiceId_
-    , _rvecVPCEndpointIds = mempty
-    }
-
+rejectVPCEndpointConnections pServiceId_
+  = RejectVPCEndpointConnections'{_rvecDryRun =
+                                    Nothing,
+                                  _rvecServiceId = pServiceId_,
+                                  _rvecVPCEndpointIds = mempty}
 
 -- | Checks whether you have the required permissions for the action, without actually making the request, and provides an error response. If you have the required permissions, the error response is @DryRunOperation@ . Otherwise, it is @UnauthorizedOperation@ .
 rvecDryRun :: Lens' RejectVPCEndpointConnections (Maybe Bool)
@@ -122,13 +120,15 @@ instance ToQuery RejectVPCEndpointConnections where
                toQueryList "VpcEndpointId" _rvecVPCEndpointIds]
 
 -- | /See:/ 'rejectVPCEndpointConnectionsResponse' smart constructor.
-data RejectVPCEndpointConnectionsResponse =
-  RejectVPCEndpointConnectionsResponse'
-    { _rvecrsUnsuccessful   :: !(Maybe [UnsuccessfulItem])
-    , _rvecrsResponseStatus :: !Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data RejectVPCEndpointConnectionsResponse = RejectVPCEndpointConnectionsResponse'{_rvecrsUnsuccessful
+                                                                                  ::
+                                                                                  !(Maybe
+                                                                                      [UnsuccessfulItem]),
+                                                                                  _rvecrsResponseStatus
+                                                                                  ::
+                                                                                  !Int}
+                                              deriving (Eq, Read, Show, Data,
+                                                        Typeable, Generic)
 
 -- | Creates a value of 'RejectVPCEndpointConnectionsResponse' with the minimum fields required to make a request.
 --
@@ -140,10 +140,11 @@ data RejectVPCEndpointConnectionsResponse =
 rejectVPCEndpointConnectionsResponse
     :: Int -- ^ 'rvecrsResponseStatus'
     -> RejectVPCEndpointConnectionsResponse
-rejectVPCEndpointConnectionsResponse pResponseStatus_ =
-  RejectVPCEndpointConnectionsResponse'
-    {_rvecrsUnsuccessful = Nothing, _rvecrsResponseStatus = pResponseStatus_}
-
+rejectVPCEndpointConnectionsResponse pResponseStatus_
+  = RejectVPCEndpointConnectionsResponse'{_rvecrsUnsuccessful
+                                            = Nothing,
+                                          _rvecrsResponseStatus =
+                                            pResponseStatus_}
 
 -- | Information about the endpoints that were not rejected, if applicable.
 rvecrsUnsuccessful :: Lens' RejectVPCEndpointConnectionsResponse [UnsuccessfulItem]

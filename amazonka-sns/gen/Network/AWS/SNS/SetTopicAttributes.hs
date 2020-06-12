@@ -41,21 +41,17 @@ import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 import Network.AWS.SNS.Types
-import Network.AWS.SNS.Types.Product
 
 -- | Input for SetTopicAttributes action.
 --
 --
 --
 -- /See:/ 'setTopicAttributes' smart constructor.
-data SetTopicAttributes =
-  SetTopicAttributes'
-    { _staAttributeValue :: !(Maybe Text)
-    , _staTopicARN       :: !Text
-    , _staAttributeName  :: !Text
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data SetTopicAttributes = SetTopicAttributes'{_staAttributeValue
+                                              :: !(Maybe Text),
+                                              _staTopicARN :: !Text,
+                                              _staAttributeName :: !Text}
+                            deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'SetTopicAttributes' with the minimum fields required to make a request.
 --
@@ -65,18 +61,15 @@ data SetTopicAttributes =
 --
 -- * 'staTopicARN' - The ARN of the topic to modify.
 --
--- * 'staAttributeName' - The name of the attribute you want to set. Only a subset of the topic's attributes are mutable. Valid values: @Policy@ | @DisplayName@ | @DeliveryPolicy@
+-- * 'staAttributeName' - The name of the attribute you want to set. Only a subset of the topic's attributes are mutable. Valid values: @Policy@ | @DisplayName@ | @DeliveryPolicy@ 
 setTopicAttributes
     :: Text -- ^ 'staTopicARN'
     -> Text -- ^ 'staAttributeName'
     -> SetTopicAttributes
-setTopicAttributes pTopicARN_ pAttributeName_ =
-  SetTopicAttributes'
-    { _staAttributeValue = Nothing
-    , _staTopicARN = pTopicARN_
-    , _staAttributeName = pAttributeName_
-    }
-
+setTopicAttributes pTopicARN_ pAttributeName_
+  = SetTopicAttributes'{_staAttributeValue = Nothing,
+                        _staTopicARN = pTopicARN_,
+                        _staAttributeName = pAttributeName_}
 
 -- | The new value for the attribute.
 staAttributeValue :: Lens' SetTopicAttributes (Maybe Text)
@@ -86,7 +79,7 @@ staAttributeValue = lens _staAttributeValue (\ s a -> s{_staAttributeValue = a})
 staTopicARN :: Lens' SetTopicAttributes Text
 staTopicARN = lens _staTopicARN (\ s a -> s{_staTopicARN = a})
 
--- | The name of the attribute you want to set. Only a subset of the topic's attributes are mutable. Valid values: @Policy@ | @DisplayName@ | @DeliveryPolicy@
+-- | The name of the attribute you want to set. Only a subset of the topic's attributes are mutable. Valid values: @Policy@ | @DisplayName@ | @DeliveryPolicy@ 
 staAttributeName :: Lens' SetTopicAttributes Text
 staAttributeName = lens _staAttributeName (\ s a -> s{_staAttributeName = a})
 
@@ -116,16 +109,15 @@ instance ToQuery SetTopicAttributes where
                "AttributeName" =: _staAttributeName]
 
 -- | /See:/ 'setTopicAttributesResponse' smart constructor.
-data SetTopicAttributesResponse =
-  SetTopicAttributesResponse'
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data SetTopicAttributesResponse = SetTopicAttributesResponse'
+                                    deriving (Eq, Read, Show, Data, Typeable,
+                                              Generic)
 
 -- | Creates a value of 'SetTopicAttributesResponse' with the minimum fields required to make a request.
 --
 setTopicAttributesResponse
     :: SetTopicAttributesResponse
-setTopicAttributesResponse = SetTopicAttributesResponse'
-
+setTopicAttributesResponse
+  = SetTopicAttributesResponse'
 
 instance NFData SetTopicAttributesResponse where

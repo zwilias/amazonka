@@ -43,25 +43,35 @@ module Network.AWS.Greengrass.CreateSoftwareUpdateJob
     ) where
 
 import Network.AWS.Greengrass.Types
-import Network.AWS.Greengrass.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 
 -- | /See:/ 'createSoftwareUpdateJob' smart constructor.
-data CreateSoftwareUpdateJob =
-  CreateSoftwareUpdateJob'
-    { _csujUpdateAgentLogLevel          :: !(Maybe UpdateAgentLogLevel)
-    , _csujAmznClientToken              :: !(Maybe Text)
-    , _csujSoftwareToUpdate             :: !(Maybe SoftwareToUpdate)
-    , _csujUpdateTargetsOperatingSystem :: !(Maybe UpdateTargetsOperatingSystem)
-    , _csujS3URLSignerRole              :: !(Maybe Text)
-    , _csujUpdateTargets                :: !(Maybe [Text])
-    , _csujUpdateTargetsArchitecture    :: !(Maybe UpdateTargetsArchitecture)
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data CreateSoftwareUpdateJob = CreateSoftwareUpdateJob'{_csujUpdateAgentLogLevel
+                                                        ::
+                                                        !(Maybe
+                                                            UpdateAgentLogLevel),
+                                                        _csujAmznClientToken ::
+                                                        !(Maybe Text),
+                                                        _csujSoftwareToUpdate ::
+                                                        !(Maybe
+                                                            SoftwareToUpdate),
+                                                        _csujUpdateTargetsOperatingSystem
+                                                        ::
+                                                        !(Maybe
+                                                            UpdateTargetsOperatingSystem),
+                                                        _csujS3URLSignerRole ::
+                                                        !(Maybe Text),
+                                                        _csujUpdateTargets ::
+                                                        !(Maybe [Text]),
+                                                        _csujUpdateTargetsArchitecture
+                                                        ::
+                                                        !(Maybe
+                                                            UpdateTargetsArchitecture)}
+                                 deriving (Eq, Read, Show, Data, Typeable,
+                                           Generic)
 
 -- | Creates a value of 'CreateSoftwareUpdateJob' with the minimum fields required to make a request.
 --
@@ -82,17 +92,15 @@ data CreateSoftwareUpdateJob =
 -- * 'csujUpdateTargetsArchitecture' - Undocumented member.
 createSoftwareUpdateJob
     :: CreateSoftwareUpdateJob
-createSoftwareUpdateJob =
-  CreateSoftwareUpdateJob'
-    { _csujUpdateAgentLogLevel = Nothing
-    , _csujAmznClientToken = Nothing
-    , _csujSoftwareToUpdate = Nothing
-    , _csujUpdateTargetsOperatingSystem = Nothing
-    , _csujS3URLSignerRole = Nothing
-    , _csujUpdateTargets = Nothing
-    , _csujUpdateTargetsArchitecture = Nothing
-    }
-
+createSoftwareUpdateJob
+  = CreateSoftwareUpdateJob'{_csujUpdateAgentLogLevel =
+                               Nothing,
+                             _csujAmznClientToken = Nothing,
+                             _csujSoftwareToUpdate = Nothing,
+                             _csujUpdateTargetsOperatingSystem = Nothing,
+                             _csujS3URLSignerRole = Nothing,
+                             _csujUpdateTargets = Nothing,
+                             _csujUpdateTargetsArchitecture = Nothing}
 
 -- | Undocumented member.
 csujUpdateAgentLogLevel :: Lens' CreateSoftwareUpdateJob (Maybe UpdateAgentLogLevel)
@@ -165,14 +173,18 @@ instance ToQuery CreateSoftwareUpdateJob where
         toQuery = const mempty
 
 -- | /See:/ 'createSoftwareUpdateJobResponse' smart constructor.
-data CreateSoftwareUpdateJobResponse =
-  CreateSoftwareUpdateJobResponse'
-    { _csujrsIotJobARN      :: !(Maybe Text)
-    , _csujrsIotJobId       :: !(Maybe Text)
-    , _csujrsResponseStatus :: !Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data CreateSoftwareUpdateJobResponse = CreateSoftwareUpdateJobResponse'{_csujrsIotJobARN
+                                                                        ::
+                                                                        !(Maybe
+                                                                            Text),
+                                                                        _csujrsIotJobId
+                                                                        ::
+                                                                        !(Maybe
+                                                                            Text),
+                                                                        _csujrsResponseStatus
+                                                                        :: !Int}
+                                         deriving (Eq, Read, Show, Data,
+                                                   Typeable, Generic)
 
 -- | Creates a value of 'CreateSoftwareUpdateJobResponse' with the minimum fields required to make a request.
 --
@@ -186,13 +198,11 @@ data CreateSoftwareUpdateJobResponse =
 createSoftwareUpdateJobResponse
     :: Int -- ^ 'csujrsResponseStatus'
     -> CreateSoftwareUpdateJobResponse
-createSoftwareUpdateJobResponse pResponseStatus_ =
-  CreateSoftwareUpdateJobResponse'
-    { _csujrsIotJobARN = Nothing
-    , _csujrsIotJobId = Nothing
-    , _csujrsResponseStatus = pResponseStatus_
-    }
-
+createSoftwareUpdateJobResponse pResponseStatus_
+  = CreateSoftwareUpdateJobResponse'{_csujrsIotJobARN =
+                                       Nothing,
+                                     _csujrsIotJobId = Nothing,
+                                     _csujrsResponseStatus = pResponseStatus_}
 
 -- | The IoT Job ARN corresponding to this update.
 csujrsIotJobARN :: Lens' CreateSoftwareUpdateJobResponse (Maybe Text)

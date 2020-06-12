@@ -43,23 +43,19 @@ module Network.AWS.Glue.GetPlan
     ) where
 
 import Network.AWS.Glue.Types
-import Network.AWS.Glue.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 
 -- | /See:/ 'getPlan' smart constructor.
-data GetPlan =
-  GetPlan'
-    { _gpSinks    :: !(Maybe [CatalogEntry])
-    , _gpLocation :: !(Maybe Location)
-    , _gpLanguage :: !(Maybe Language)
-    , _gpMapping  :: ![MappingEntry]
-    , _gpSource   :: !CatalogEntry
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data GetPlan = GetPlan'{_gpSinks ::
+                        !(Maybe [CatalogEntry]),
+                        _gpLocation :: !(Maybe Location),
+                        _gpLanguage :: !(Maybe Language),
+                        _gpMapping :: ![MappingEntry],
+                        _gpSource :: !CatalogEntry}
+                 deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'GetPlan' with the minimum fields required to make a request.
 --
@@ -77,15 +73,10 @@ data GetPlan =
 getPlan
     :: CatalogEntry -- ^ 'gpSource'
     -> GetPlan
-getPlan pSource_ =
-  GetPlan'
-    { _gpSinks = Nothing
-    , _gpLocation = Nothing
-    , _gpLanguage = Nothing
-    , _gpMapping = mempty
-    , _gpSource = pSource_
-    }
-
+getPlan pSource_
+  = GetPlan'{_gpSinks = Nothing, _gpLocation = Nothing,
+             _gpLanguage = Nothing, _gpMapping = mempty,
+             _gpSource = pSource_}
 
 -- | The target tables.
 gpSinks :: Lens' GetPlan [CatalogEntry]
@@ -146,14 +137,11 @@ instance ToQuery GetPlan where
         toQuery = const mempty
 
 -- | /See:/ 'getPlanResponse' smart constructor.
-data GetPlanResponse =
-  GetPlanResponse'
-    { _gpprsPythonScript   :: !(Maybe Text)
-    , _gpprsScalaCode      :: !(Maybe Text)
-    , _gpprsResponseStatus :: !Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data GetPlanResponse = GetPlanResponse'{_gpprsPythonScript
+                                        :: !(Maybe Text),
+                                        _gpprsScalaCode :: !(Maybe Text),
+                                        _gpprsResponseStatus :: !Int}
+                         deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'GetPlanResponse' with the minimum fields required to make a request.
 --
@@ -167,13 +155,10 @@ data GetPlanResponse =
 getPlanResponse
     :: Int -- ^ 'gpprsResponseStatus'
     -> GetPlanResponse
-getPlanResponse pResponseStatus_ =
-  GetPlanResponse'
-    { _gpprsPythonScript = Nothing
-    , _gpprsScalaCode = Nothing
-    , _gpprsResponseStatus = pResponseStatus_
-    }
-
+getPlanResponse pResponseStatus_
+  = GetPlanResponse'{_gpprsPythonScript = Nothing,
+                     _gpprsScalaCode = Nothing,
+                     _gpprsResponseStatus = pResponseStatus_}
 
 -- | A Python script to perform the mapping.
 gpprsPythonScript :: Lens' GetPlanResponse (Maybe Text)

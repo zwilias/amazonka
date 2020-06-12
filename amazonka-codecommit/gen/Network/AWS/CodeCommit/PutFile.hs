@@ -48,27 +48,20 @@ module Network.AWS.CodeCommit.PutFile
     ) where
 
 import Network.AWS.CodeCommit.Types
-import Network.AWS.CodeCommit.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 
 -- | /See:/ 'putFile' smart constructor.
-data PutFile =
-  PutFile'
-    { _pfEmail          :: !(Maybe Text)
-    , _pfFileMode       :: !(Maybe FileModeTypeEnum)
-    , _pfParentCommitId :: !(Maybe Text)
-    , _pfName           :: !(Maybe Text)
-    , _pfCommitMessage  :: !(Maybe Text)
-    , _pfRepositoryName :: !Text
-    , _pfBranchName     :: !Text
-    , _pfFileContent    :: !Base64
-    , _pfFilePath       :: !Text
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data PutFile = PutFile'{_pfEmail :: !(Maybe Text),
+                        _pfFileMode :: !(Maybe FileModeTypeEnum),
+                        _pfParentCommitId :: !(Maybe Text),
+                        _pfName :: !(Maybe Text),
+                        _pfCommitMessage :: !(Maybe Text),
+                        _pfRepositoryName :: !Text, _pfBranchName :: !Text,
+                        _pfFileContent :: !Base64, _pfFilePath :: !Text}
+                 deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'PutFile' with the minimum fields required to make a request.
 --
@@ -97,19 +90,15 @@ putFile
     -> ByteString -- ^ 'pfFileContent'
     -> Text -- ^ 'pfFilePath'
     -> PutFile
-putFile pRepositoryName_ pBranchName_ pFileContent_ pFilePath_ =
-  PutFile'
-    { _pfEmail = Nothing
-    , _pfFileMode = Nothing
-    , _pfParentCommitId = Nothing
-    , _pfName = Nothing
-    , _pfCommitMessage = Nothing
-    , _pfRepositoryName = pRepositoryName_
-    , _pfBranchName = pBranchName_
-    , _pfFileContent = _Base64 # pFileContent_
-    , _pfFilePath = pFilePath_
-    }
-
+putFile pRepositoryName_ pBranchName_ pFileContent_
+  pFilePath_
+  = PutFile'{_pfEmail = Nothing, _pfFileMode = Nothing,
+             _pfParentCommitId = Nothing, _pfName = Nothing,
+             _pfCommitMessage = Nothing,
+             _pfRepositoryName = pRepositoryName_,
+             _pfBranchName = pBranchName_,
+             _pfFileContent = _Base64 # pFileContent_,
+             _pfFilePath = pFilePath_}
 
 -- | An email address for the person adding or updating the file.
 pfEmail :: Lens' PutFile (Maybe Text)
@@ -192,15 +181,12 @@ instance ToQuery PutFile where
         toQuery = const mempty
 
 -- | /See:/ 'putFileResponse' smart constructor.
-data PutFileResponse =
-  PutFileResponse'
-    { _pfrsResponseStatus :: !Int
-    , _pfrsCommitId       :: !Text
-    , _pfrsBlobId         :: !Text
-    , _pfrsTreeId         :: !Text
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data PutFileResponse = PutFileResponse'{_pfrsResponseStatus
+                                        :: !Int,
+                                        _pfrsCommitId :: !Text,
+                                        _pfrsBlobId :: !Text,
+                                        _pfrsTreeId :: !Text}
+                         deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'PutFileResponse' with the minimum fields required to make a request.
 --
@@ -219,14 +205,12 @@ putFileResponse
     -> Text -- ^ 'pfrsBlobId'
     -> Text -- ^ 'pfrsTreeId'
     -> PutFileResponse
-putFileResponse pResponseStatus_ pCommitId_ pBlobId_ pTreeId_ =
-  PutFileResponse'
-    { _pfrsResponseStatus = pResponseStatus_
-    , _pfrsCommitId = pCommitId_
-    , _pfrsBlobId = pBlobId_
-    , _pfrsTreeId = pTreeId_
-    }
-
+putFileResponse pResponseStatus_ pCommitId_ pBlobId_
+  pTreeId_
+  = PutFileResponse'{_pfrsResponseStatus =
+                       pResponseStatus_,
+                     _pfrsCommitId = pCommitId_, _pfrsBlobId = pBlobId_,
+                     _pfrsTreeId = pTreeId_}
 
 -- | -- | The response status code.
 pfrsResponseStatus :: Lens' PutFileResponse Int

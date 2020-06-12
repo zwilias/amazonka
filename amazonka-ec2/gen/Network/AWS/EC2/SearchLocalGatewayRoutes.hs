@@ -45,7 +45,6 @@ module Network.AWS.EC2.SearchLocalGatewayRoutes
     ) where
 
 import Network.AWS.EC2.Types
-import Network.AWS.EC2.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Pager
 import Network.AWS.Prelude
@@ -53,16 +52,18 @@ import Network.AWS.Request
 import Network.AWS.Response
 
 -- | /See:/ 'searchLocalGatewayRoutes' smart constructor.
-data SearchLocalGatewayRoutes =
-  SearchLocalGatewayRoutes'
-    { _slgrNextToken                :: !(Maybe Text)
-    , _slgrDryRun                   :: !(Maybe Bool)
-    , _slgrMaxResults               :: !(Maybe Int)
-    , _slgrLocalGatewayRouteTableId :: !Text
-    , _slgrFilters                  :: ![Filter]
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data SearchLocalGatewayRoutes = SearchLocalGatewayRoutes'{_slgrNextToken
+                                                          :: !(Maybe Text),
+                                                          _slgrDryRun ::
+                                                          !(Maybe Bool),
+                                                          _slgrMaxResults ::
+                                                          !(Maybe Int),
+                                                          _slgrLocalGatewayRouteTableId
+                                                          :: !Text,
+                                                          _slgrFilters ::
+                                                          ![Filter]}
+                                  deriving (Eq, Read, Show, Data, Typeable,
+                                            Generic)
 
 -- | Creates a value of 'SearchLocalGatewayRoutes' with the minimum fields required to make a request.
 --
@@ -80,15 +81,12 @@ data SearchLocalGatewayRoutes =
 searchLocalGatewayRoutes
     :: Text -- ^ 'slgrLocalGatewayRouteTableId'
     -> SearchLocalGatewayRoutes
-searchLocalGatewayRoutes pLocalGatewayRouteTableId_ =
-  SearchLocalGatewayRoutes'
-    { _slgrNextToken = Nothing
-    , _slgrDryRun = Nothing
-    , _slgrMaxResults = Nothing
-    , _slgrLocalGatewayRouteTableId = pLocalGatewayRouteTableId_
-    , _slgrFilters = mempty
-    }
-
+searchLocalGatewayRoutes pLocalGatewayRouteTableId_
+  = SearchLocalGatewayRoutes'{_slgrNextToken = Nothing,
+                              _slgrDryRun = Nothing, _slgrMaxResults = Nothing,
+                              _slgrLocalGatewayRouteTableId =
+                                pLocalGatewayRouteTableId_,
+                              _slgrFilters = mempty}
 
 -- | The token for the next page of results.
 slgrNextToken :: Lens' SearchLocalGatewayRoutes (Maybe Text)
@@ -154,14 +152,19 @@ instance ToQuery SearchLocalGatewayRoutes where
                toQueryList "Filter" _slgrFilters]
 
 -- | /See:/ 'searchLocalGatewayRoutesResponse' smart constructor.
-data SearchLocalGatewayRoutesResponse =
-  SearchLocalGatewayRoutesResponse'
-    { _slgrrsRoutes         :: !(Maybe [LocalGatewayRoute])
-    , _slgrrsNextToken      :: !(Maybe Text)
-    , _slgrrsResponseStatus :: !Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data SearchLocalGatewayRoutesResponse = SearchLocalGatewayRoutesResponse'{_slgrrsRoutes
+                                                                          ::
+                                                                          !(Maybe
+                                                                              [LocalGatewayRoute]),
+                                                                          _slgrrsNextToken
+                                                                          ::
+                                                                          !(Maybe
+                                                                              Text),
+                                                                          _slgrrsResponseStatus
+                                                                          ::
+                                                                          !Int}
+                                          deriving (Eq, Read, Show, Data,
+                                                    Typeable, Generic)
 
 -- | Creates a value of 'SearchLocalGatewayRoutesResponse' with the minimum fields required to make a request.
 --
@@ -175,13 +178,11 @@ data SearchLocalGatewayRoutesResponse =
 searchLocalGatewayRoutesResponse
     :: Int -- ^ 'slgrrsResponseStatus'
     -> SearchLocalGatewayRoutesResponse
-searchLocalGatewayRoutesResponse pResponseStatus_ =
-  SearchLocalGatewayRoutesResponse'
-    { _slgrrsRoutes = Nothing
-    , _slgrrsNextToken = Nothing
-    , _slgrrsResponseStatus = pResponseStatus_
-    }
-
+searchLocalGatewayRoutesResponse pResponseStatus_
+  = SearchLocalGatewayRoutesResponse'{_slgrrsRoutes =
+                                        Nothing,
+                                      _slgrrsNextToken = Nothing,
+                                      _slgrrsResponseStatus = pResponseStatus_}
 
 -- | Information about the routes.
 slgrrsRoutes :: Lens' SearchLocalGatewayRoutesResponse [LocalGatewayRoute]

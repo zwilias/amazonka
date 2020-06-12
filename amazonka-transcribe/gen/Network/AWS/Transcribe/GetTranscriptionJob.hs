@@ -42,15 +42,12 @@ import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 import Network.AWS.Transcribe.Types
-import Network.AWS.Transcribe.Types.Product
 
 -- | /See:/ 'getTranscriptionJob' smart constructor.
-newtype GetTranscriptionJob =
-  GetTranscriptionJob'
-    { _gtjTranscriptionJobName :: Text
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+newtype GetTranscriptionJob = GetTranscriptionJob'{_gtjTranscriptionJobName
+                                                   :: Text}
+                                deriving (Eq, Read, Show, Data, Typeable,
+                                          Generic)
 
 -- | Creates a value of 'GetTranscriptionJob' with the minimum fields required to make a request.
 --
@@ -60,9 +57,9 @@ newtype GetTranscriptionJob =
 getTranscriptionJob
     :: Text -- ^ 'gtjTranscriptionJobName'
     -> GetTranscriptionJob
-getTranscriptionJob pTranscriptionJobName_ =
-  GetTranscriptionJob' {_gtjTranscriptionJobName = pTranscriptionJobName_}
-
+getTranscriptionJob pTranscriptionJobName_
+  = GetTranscriptionJob'{_gtjTranscriptionJobName =
+                           pTranscriptionJobName_}
 
 -- | The name of the job.
 gtjTranscriptionJobName :: Lens' GetTranscriptionJob Text
@@ -106,13 +103,14 @@ instance ToQuery GetTranscriptionJob where
         toQuery = const mempty
 
 -- | /See:/ 'getTranscriptionJobResponse' smart constructor.
-data GetTranscriptionJobResponse =
-  GetTranscriptionJobResponse'
-    { _gtjrsTranscriptionJob :: !(Maybe TranscriptionJob)
-    , _gtjrsResponseStatus   :: !Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data GetTranscriptionJobResponse = GetTranscriptionJobResponse'{_gtjrsTranscriptionJob
+                                                                ::
+                                                                !(Maybe
+                                                                    TranscriptionJob),
+                                                                _gtjrsResponseStatus
+                                                                :: !Int}
+                                     deriving (Eq, Read, Show, Data, Typeable,
+                                               Generic)
 
 -- | Creates a value of 'GetTranscriptionJobResponse' with the minimum fields required to make a request.
 --
@@ -124,10 +122,10 @@ data GetTranscriptionJobResponse =
 getTranscriptionJobResponse
     :: Int -- ^ 'gtjrsResponseStatus'
     -> GetTranscriptionJobResponse
-getTranscriptionJobResponse pResponseStatus_ =
-  GetTranscriptionJobResponse'
-    {_gtjrsTranscriptionJob = Nothing, _gtjrsResponseStatus = pResponseStatus_}
-
+getTranscriptionJobResponse pResponseStatus_
+  = GetTranscriptionJobResponse'{_gtjrsTranscriptionJob
+                                   = Nothing,
+                                 _gtjrsResponseStatus = pResponseStatus_}
 
 -- | An object that contains the results of the transcription job.
 gtjrsTranscriptionJob :: Lens' GetTranscriptionJobResponse (Maybe TranscriptionJob)

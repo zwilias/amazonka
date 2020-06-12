@@ -60,8 +60,21 @@ library
         , Network.AWS.SMS.Waiters
 
     other-modules:
-          Network.AWS.SMS.Types.Product
-        , Network.AWS.SMS.Types.Sum
+          Network.AWS.SMS.Types.Connector
+        , Network.AWS.SMS.Types.ConnectorCapability
+        , Network.AWS.SMS.Types.ConnectorStatus
+        , Network.AWS.SMS.Types.LicenseType
+        , Network.AWS.SMS.Types.ReplicationJob
+        , Network.AWS.SMS.Types.ReplicationJobState
+        , Network.AWS.SMS.Types.ReplicationRun
+        , Network.AWS.SMS.Types.ReplicationRunState
+        , Network.AWS.SMS.Types.ReplicationRunType
+        , Network.AWS.SMS.Types.Server
+        , Network.AWS.SMS.Types.ServerCatalogStatus
+        , Network.AWS.SMS.Types.ServerType
+        , Network.AWS.SMS.Types.VMManagerType
+        , Network.AWS.SMS.Types.VMServer
+        , Network.AWS.SMS.Types.VMServerAddress
 
     build-depends:
           amazonka-core == 1.6.1.*

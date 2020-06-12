@@ -53,154 +53,154 @@ module Network.AWS.Lightsail
     -- * Operations
     -- $operations
 
-    -- ** CloseInstancePublicPorts
+    -- ** CloseInstancePublicPorts 
     , module Network.AWS.Lightsail.CloseInstancePublicPorts
 
-    -- ** AllocateStaticIP
+    -- ** AllocateStaticIP 
     , module Network.AWS.Lightsail.AllocateStaticIP
 
-    -- ** DeleteKeyPair
+    -- ** DeleteKeyPair 
     , module Network.AWS.Lightsail.DeleteKeyPair
 
-    -- ** DeleteInstanceSnapshot
+    -- ** DeleteInstanceSnapshot 
     , module Network.AWS.Lightsail.DeleteInstanceSnapshot
 
     -- ** GetInstances (Paginated)
     , module Network.AWS.Lightsail.GetInstances
 
-    -- ** GetLoadBalancer
+    -- ** GetLoadBalancer 
     , module Network.AWS.Lightsail.GetLoadBalancer
 
-    -- ** GetInstance
+    -- ** GetInstance 
     , module Network.AWS.Lightsail.GetInstance
 
-    -- ** AttachStaticIP
+    -- ** AttachStaticIP 
     , module Network.AWS.Lightsail.AttachStaticIP
 
-    -- ** DetachDisk
+    -- ** DetachDisk 
     , module Network.AWS.Lightsail.DetachDisk
 
-    -- ** DownloadDefaultKeyPair
+    -- ** DownloadDefaultKeyPair 
     , module Network.AWS.Lightsail.DownloadDefaultKeyPair
 
-    -- ** DeleteLoadBalancerTLSCertificate
+    -- ** DeleteLoadBalancerTLSCertificate 
     , module Network.AWS.Lightsail.DeleteLoadBalancerTLSCertificate
 
     -- ** GetDomains (Paginated)
     , module Network.AWS.Lightsail.GetDomains
 
-    -- ** CreateLoadBalancerTLSCertificate
+    -- ** CreateLoadBalancerTLSCertificate 
     , module Network.AWS.Lightsail.CreateLoadBalancerTLSCertificate
 
-    -- ** CreateDomainEntry
+    -- ** CreateDomainEntry 
     , module Network.AWS.Lightsail.CreateDomainEntry
 
-    -- ** ImportKeyPair
+    -- ** ImportKeyPair 
     , module Network.AWS.Lightsail.ImportKeyPair
 
     -- ** GetInstanceSnapshots (Paginated)
     , module Network.AWS.Lightsail.GetInstanceSnapshots
 
-    -- ** ReleaseStaticIP
+    -- ** ReleaseStaticIP 
     , module Network.AWS.Lightsail.ReleaseStaticIP
 
-    -- ** DeleteInstance
+    -- ** DeleteInstance 
     , module Network.AWS.Lightsail.DeleteInstance
 
-    -- ** RebootInstance
+    -- ** RebootInstance 
     , module Network.AWS.Lightsail.RebootInstance
 
-    -- ** DeleteLoadBalancer
+    -- ** DeleteLoadBalancer 
     , module Network.AWS.Lightsail.DeleteLoadBalancer
 
-    -- ** CreateDiskFromSnapshot
+    -- ** CreateDiskFromSnapshot 
     , module Network.AWS.Lightsail.CreateDiskFromSnapshot
 
-    -- ** GetInstanceSnapshot
+    -- ** GetInstanceSnapshot 
     , module Network.AWS.Lightsail.GetInstanceSnapshot
 
-    -- ** GetDomain
+    -- ** GetDomain 
     , module Network.AWS.Lightsail.GetDomain
 
     -- ** GetActiveNames (Paginated)
     , module Network.AWS.Lightsail.GetActiveNames
 
-    -- ** GetInstanceAccessDetails
+    -- ** GetInstanceAccessDetails 
     , module Network.AWS.Lightsail.GetInstanceAccessDetails
 
-    -- ** StopInstance
+    -- ** StopInstance 
     , module Network.AWS.Lightsail.StopInstance
 
-    -- ** DetachInstancesFromLoadBalancer
+    -- ** DetachInstancesFromLoadBalancer 
     , module Network.AWS.Lightsail.DetachInstancesFromLoadBalancer
 
-    -- ** CreateInstanceSnapshot
+    -- ** CreateInstanceSnapshot 
     , module Network.AWS.Lightsail.CreateInstanceSnapshot
 
-    -- ** IsVPCPeered
+    -- ** IsVPCPeered 
     , module Network.AWS.Lightsail.IsVPCPeered
 
     -- ** GetStaticIPs (Paginated)
     , module Network.AWS.Lightsail.GetStaticIPs
 
-    -- ** UnpeerVPC
+    -- ** UnpeerVPC 
     , module Network.AWS.Lightsail.UnpeerVPC
 
-    -- ** DeleteDisk
+    -- ** DeleteDisk 
     , module Network.AWS.Lightsail.DeleteDisk
 
-    -- ** CreateInstancesFromSnapshot
+    -- ** CreateInstancesFromSnapshot 
     , module Network.AWS.Lightsail.CreateInstancesFromSnapshot
 
-    -- ** CreateDomain
+    -- ** CreateDomain 
     , module Network.AWS.Lightsail.CreateDomain
 
-    -- ** GetDiskSnapshots
+    -- ** GetDiskSnapshots 
     , module Network.AWS.Lightsail.GetDiskSnapshots
 
-    -- ** PeerVPC
+    -- ** PeerVPC 
     , module Network.AWS.Lightsail.PeerVPC
 
-    -- ** GetLoadBalancers
+    -- ** GetLoadBalancers 
     , module Network.AWS.Lightsail.GetLoadBalancers
 
-    -- ** AttachLoadBalancerTLSCertificate
+    -- ** AttachLoadBalancerTLSCertificate 
     , module Network.AWS.Lightsail.AttachLoadBalancerTLSCertificate
 
-    -- ** UpdateLoadBalancerAttribute
+    -- ** UpdateLoadBalancerAttribute 
     , module Network.AWS.Lightsail.UpdateLoadBalancerAttribute
 
-    -- ** GetDiskSnapshot
+    -- ** GetDiskSnapshot 
     , module Network.AWS.Lightsail.GetDiskSnapshot
 
-    -- ** GetStaticIP
+    -- ** GetStaticIP 
     , module Network.AWS.Lightsail.GetStaticIP
 
     -- ** GetBlueprints (Paginated)
     , module Network.AWS.Lightsail.GetBlueprints
 
-    -- ** GetInstancePortStates
+    -- ** GetInstancePortStates 
     , module Network.AWS.Lightsail.GetInstancePortStates
 
-    -- ** CreateDiskSnapshot
+    -- ** CreateDiskSnapshot 
     , module Network.AWS.Lightsail.CreateDiskSnapshot
 
-    -- ** DeleteDomainEntry
+    -- ** DeleteDomainEntry 
     , module Network.AWS.Lightsail.DeleteDomainEntry
 
-    -- ** UpdateDomainEntry
+    -- ** UpdateDomainEntry 
     , module Network.AWS.Lightsail.UpdateDomainEntry
 
-    -- ** GetRegions
+    -- ** GetRegions 
     , module Network.AWS.Lightsail.GetRegions
 
-    -- ** DeleteDiskSnapshot
+    -- ** DeleteDiskSnapshot 
     , module Network.AWS.Lightsail.DeleteDiskSnapshot
 
-    -- ** GetLoadBalancerMetricData
+    -- ** GetLoadBalancerMetricData 
     , module Network.AWS.Lightsail.GetLoadBalancerMetricData
 
-    -- ** GetInstanceState
+    -- ** GetInstanceState 
     , module Network.AWS.Lightsail.GetInstanceState
 
     -- ** GetKeyPairs (Paginated)
@@ -209,61 +209,61 @@ module Network.AWS.Lightsail
     -- ** GetOperations (Paginated)
     , module Network.AWS.Lightsail.GetOperations
 
-    -- ** GetDisks
+    -- ** GetDisks 
     , module Network.AWS.Lightsail.GetDisks
 
-    -- ** AttachInstancesToLoadBalancer
+    -- ** AttachInstancesToLoadBalancer 
     , module Network.AWS.Lightsail.AttachInstancesToLoadBalancer
 
-    -- ** GetOperation
+    -- ** GetOperation 
     , module Network.AWS.Lightsail.GetOperation
 
-    -- ** GetInstanceMetricData
+    -- ** GetInstanceMetricData 
     , module Network.AWS.Lightsail.GetInstanceMetricData
 
-    -- ** GetKeyPair
+    -- ** GetKeyPair 
     , module Network.AWS.Lightsail.GetKeyPair
 
-    -- ** PutInstancePublicPorts
+    -- ** PutInstancePublicPorts 
     , module Network.AWS.Lightsail.PutInstancePublicPorts
 
-    -- ** GetDisk
+    -- ** GetDisk 
     , module Network.AWS.Lightsail.GetDisk
 
-    -- ** CreateLoadBalancer
+    -- ** CreateLoadBalancer 
     , module Network.AWS.Lightsail.CreateLoadBalancer
 
-    -- ** AttachDisk
+    -- ** AttachDisk 
     , module Network.AWS.Lightsail.AttachDisk
 
-    -- ** DetachStaticIP
+    -- ** DetachStaticIP 
     , module Network.AWS.Lightsail.DetachStaticIP
 
-    -- ** CreateInstances
+    -- ** CreateInstances 
     , module Network.AWS.Lightsail.CreateInstances
 
-    -- ** OpenInstancePublicPorts
+    -- ** OpenInstancePublicPorts 
     , module Network.AWS.Lightsail.OpenInstancePublicPorts
 
     -- ** GetBundles (Paginated)
     , module Network.AWS.Lightsail.GetBundles
 
-    -- ** DeleteDomain
+    -- ** DeleteDomain 
     , module Network.AWS.Lightsail.DeleteDomain
 
-    -- ** GetLoadBalancerTLSCertificates
+    -- ** GetLoadBalancerTLSCertificates 
     , module Network.AWS.Lightsail.GetLoadBalancerTLSCertificates
 
-    -- ** CreateDisk
+    -- ** CreateDisk 
     , module Network.AWS.Lightsail.CreateDisk
 
-    -- ** GetOperationsForResource
+    -- ** GetOperationsForResource 
     , module Network.AWS.Lightsail.GetOperationsForResource
 
-    -- ** CreateKeyPair
+    -- ** CreateKeyPair 
     , module Network.AWS.Lightsail.CreateKeyPair
 
-    -- ** StartInstance
+    -- ** StartInstance 
     , module Network.AWS.Lightsail.StartInstance
 
     -- * Types
@@ -718,9 +718,9 @@ import Network.AWS.Lightsail.CreateDiskFromSnapshot
 import Network.AWS.Lightsail.CreateDiskSnapshot
 import Network.AWS.Lightsail.CreateDomain
 import Network.AWS.Lightsail.CreateDomainEntry
+import Network.AWS.Lightsail.CreateInstanceSnapshot
 import Network.AWS.Lightsail.CreateInstances
 import Network.AWS.Lightsail.CreateInstancesFromSnapshot
-import Network.AWS.Lightsail.CreateInstanceSnapshot
 import Network.AWS.Lightsail.CreateKeyPair
 import Network.AWS.Lightsail.CreateLoadBalancer
 import Network.AWS.Lightsail.CreateLoadBalancerTLSCertificate
@@ -741,25 +741,25 @@ import Network.AWS.Lightsail.GetActiveNames
 import Network.AWS.Lightsail.GetBlueprints
 import Network.AWS.Lightsail.GetBundles
 import Network.AWS.Lightsail.GetDisk
-import Network.AWS.Lightsail.GetDisks
 import Network.AWS.Lightsail.GetDiskSnapshot
 import Network.AWS.Lightsail.GetDiskSnapshots
+import Network.AWS.Lightsail.GetDisks
 import Network.AWS.Lightsail.GetDomain
 import Network.AWS.Lightsail.GetDomains
 import Network.AWS.Lightsail.GetInstance
 import Network.AWS.Lightsail.GetInstanceAccessDetails
 import Network.AWS.Lightsail.GetInstanceMetricData
 import Network.AWS.Lightsail.GetInstancePortStates
-import Network.AWS.Lightsail.GetInstances
 import Network.AWS.Lightsail.GetInstanceSnapshot
 import Network.AWS.Lightsail.GetInstanceSnapshots
 import Network.AWS.Lightsail.GetInstanceState
+import Network.AWS.Lightsail.GetInstances
 import Network.AWS.Lightsail.GetKeyPair
 import Network.AWS.Lightsail.GetKeyPairs
 import Network.AWS.Lightsail.GetLoadBalancer
 import Network.AWS.Lightsail.GetLoadBalancerMetricData
-import Network.AWS.Lightsail.GetLoadBalancers
 import Network.AWS.Lightsail.GetLoadBalancerTLSCertificates
+import Network.AWS.Lightsail.GetLoadBalancers
 import Network.AWS.Lightsail.GetOperation
 import Network.AWS.Lightsail.GetOperations
 import Network.AWS.Lightsail.GetOperationsForResource

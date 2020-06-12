@@ -40,21 +40,17 @@ module Network.AWS.Glue.GetMapping
     ) where
 
 import Network.AWS.Glue.Types
-import Network.AWS.Glue.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 
 -- | /See:/ 'getMapping' smart constructor.
-data GetMapping =
-  GetMapping'
-    { _gmSinks    :: !(Maybe [CatalogEntry])
-    , _gmLocation :: !(Maybe Location)
-    , _gmSource   :: !CatalogEntry
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data GetMapping = GetMapping'{_gmSinks ::
+                              !(Maybe [CatalogEntry]),
+                              _gmLocation :: !(Maybe Location),
+                              _gmSource :: !CatalogEntry}
+                    deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'GetMapping' with the minimum fields required to make a request.
 --
@@ -68,9 +64,9 @@ data GetMapping =
 getMapping
     :: CatalogEntry -- ^ 'gmSource'
     -> GetMapping
-getMapping pSource_ =
-  GetMapping' {_gmSinks = Nothing, _gmLocation = Nothing, _gmSource = pSource_}
-
+getMapping pSource_
+  = GetMapping'{_gmSinks = Nothing,
+                _gmLocation = Nothing, _gmSource = pSource_}
 
 -- | A list of target tables.
 gmSinks :: Lens' GetMapping [CatalogEntry]
@@ -121,13 +117,10 @@ instance ToQuery GetMapping where
         toQuery = const mempty
 
 -- | /See:/ 'getMappingResponse' smart constructor.
-data GetMappingResponse =
-  GetMappingResponse'
-    { _gmrsResponseStatus :: !Int
-    , _gmrsMapping        :: ![MappingEntry]
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data GetMappingResponse = GetMappingResponse'{_gmrsResponseStatus
+                                              :: !Int,
+                                              _gmrsMapping :: ![MappingEntry]}
+                            deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'GetMappingResponse' with the minimum fields required to make a request.
 --
@@ -139,10 +132,10 @@ data GetMappingResponse =
 getMappingResponse
     :: Int -- ^ 'gmrsResponseStatus'
     -> GetMappingResponse
-getMappingResponse pResponseStatus_ =
-  GetMappingResponse'
-    {_gmrsResponseStatus = pResponseStatus_, _gmrsMapping = mempty}
-
+getMappingResponse pResponseStatus_
+  = GetMappingResponse'{_gmrsResponseStatus =
+                          pResponseStatus_,
+                        _gmrsMapping = mempty}
 
 -- | -- | The response status code.
 gmrsResponseStatus :: Lens' GetMappingResponse Int

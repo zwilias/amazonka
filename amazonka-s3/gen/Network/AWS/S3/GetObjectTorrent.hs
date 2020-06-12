@@ -43,17 +43,13 @@ import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 import Network.AWS.S3.Types
-import Network.AWS.S3.Types.Product
 
 -- | /See:/ 'getObjectTorrent' smart constructor.
-data GetObjectTorrent =
-  GetObjectTorrent'
-    { _gotRequestPayer :: !(Maybe RequestPayer)
-    , _gotBucket       :: !BucketName
-    , _gotKey          :: !ObjectKey
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data GetObjectTorrent = GetObjectTorrent'{_gotRequestPayer
+                                          :: !(Maybe RequestPayer),
+                                          _gotBucket :: !BucketName,
+                                          _gotKey :: !ObjectKey}
+                          deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'GetObjectTorrent' with the minimum fields required to make a request.
 --
@@ -68,10 +64,9 @@ getObjectTorrent
     :: BucketName -- ^ 'gotBucket'
     -> ObjectKey -- ^ 'gotKey'
     -> GetObjectTorrent
-getObjectTorrent pBucket_ pKey_ =
-  GetObjectTorrent'
-    {_gotRequestPayer = Nothing, _gotBucket = pBucket_, _gotKey = pKey_}
-
+getObjectTorrent pBucket_ pKey_
+  = GetObjectTorrent'{_gotRequestPayer = Nothing,
+                      _gotBucket = pBucket_, _gotKey = pKey_}
 
 -- | Undocumented member.
 gotRequestPayer :: Lens' GetObjectTorrent (Maybe RequestPayer)
@@ -112,14 +107,14 @@ instance ToQuery GetObjectTorrent where
         toQuery = const (mconcat ["torrent"])
 
 -- | /See:/ 'getObjectTorrentResponse' smart constructor.
-data GetObjectTorrentResponse =
-  GetObjectTorrentResponse'
-    { _getrsRequestCharged :: !(Maybe RequestCharged)
-    , _getrsResponseStatus :: !Int
-    , _getrsBody           :: !RsBody
-    }
-  deriving (Show, Generic)
-
+data GetObjectTorrentResponse = GetObjectTorrentResponse'{_getrsRequestCharged
+                                                          ::
+                                                          !(Maybe
+                                                              RequestCharged),
+                                                          _getrsResponseStatus
+                                                          :: !Int,
+                                                          _getrsBody :: !RsBody}
+                                  deriving (Show, Generic)
 
 -- | Creates a value of 'GetObjectTorrentResponse' with the minimum fields required to make a request.
 --
@@ -134,13 +129,11 @@ getObjectTorrentResponse
     :: Int -- ^ 'getrsResponseStatus'
     -> RsBody -- ^ 'getrsBody'
     -> GetObjectTorrentResponse
-getObjectTorrentResponse pResponseStatus_ pBody_ =
-  GetObjectTorrentResponse'
-    { _getrsRequestCharged = Nothing
-    , _getrsResponseStatus = pResponseStatus_
-    , _getrsBody = pBody_
-    }
-
+getObjectTorrentResponse pResponseStatus_ pBody_
+  = GetObjectTorrentResponse'{_getrsRequestCharged =
+                                Nothing,
+                              _getrsResponseStatus = pResponseStatus_,
+                              _getrsBody = pBody_}
 
 -- | Undocumented member.
 getrsRequestCharged :: Lens' GetObjectTorrentResponse (Maybe RequestCharged)

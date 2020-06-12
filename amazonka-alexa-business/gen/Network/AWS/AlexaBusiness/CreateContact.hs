@@ -42,23 +42,19 @@ module Network.AWS.AlexaBusiness.CreateContact
     ) where
 
 import Network.AWS.AlexaBusiness.Types
-import Network.AWS.AlexaBusiness.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 
 -- | /See:/ 'createContact' smart constructor.
-data CreateContact =
-  CreateContact'
-    { _ccLastName           :: !(Maybe Text)
-    , _ccDisplayName        :: !(Maybe Text)
-    , _ccClientRequestToken :: !(Maybe Text)
-    , _ccFirstName          :: !Text
-    , _ccPhoneNumber        :: !Text
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data CreateContact = CreateContact'{_ccLastName ::
+                                    !(Maybe Text),
+                                    _ccDisplayName :: !(Maybe Text),
+                                    _ccClientRequestToken :: !(Maybe Text),
+                                    _ccFirstName :: !Text,
+                                    _ccPhoneNumber :: !Text}
+                       deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'CreateContact' with the minimum fields required to make a request.
 --
@@ -77,15 +73,12 @@ createContact
     :: Text -- ^ 'ccFirstName'
     -> Text -- ^ 'ccPhoneNumber'
     -> CreateContact
-createContact pFirstName_ pPhoneNumber_ =
-  CreateContact'
-    { _ccLastName = Nothing
-    , _ccDisplayName = Nothing
-    , _ccClientRequestToken = Nothing
-    , _ccFirstName = pFirstName_
-    , _ccPhoneNumber = pPhoneNumber_
-    }
-
+createContact pFirstName_ pPhoneNumber_
+  = CreateContact'{_ccLastName = Nothing,
+                   _ccDisplayName = Nothing,
+                   _ccClientRequestToken = Nothing,
+                   _ccFirstName = pFirstName_,
+                   _ccPhoneNumber = pPhoneNumber_}
 
 -- | The last name of the contact that is used to call the contact on the device.
 ccLastName :: Lens' CreateContact (Maybe Text)
@@ -146,13 +139,11 @@ instance ToQuery CreateContact where
         toQuery = const mempty
 
 -- | /See:/ 'createContactResponse' smart constructor.
-data CreateContactResponse =
-  CreateContactResponse'
-    { _ccrsContactARN     :: !(Maybe Text)
-    , _ccrsResponseStatus :: !Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data CreateContactResponse = CreateContactResponse'{_ccrsContactARN
+                                                    :: !(Maybe Text),
+                                                    _ccrsResponseStatus :: !Int}
+                               deriving (Eq, Read, Show, Data, Typeable,
+                                         Generic)
 
 -- | Creates a value of 'CreateContactResponse' with the minimum fields required to make a request.
 --
@@ -164,10 +155,9 @@ data CreateContactResponse =
 createContactResponse
     :: Int -- ^ 'ccrsResponseStatus'
     -> CreateContactResponse
-createContactResponse pResponseStatus_ =
-  CreateContactResponse'
-    {_ccrsContactARN = Nothing, _ccrsResponseStatus = pResponseStatus_}
-
+createContactResponse pResponseStatus_
+  = CreateContactResponse'{_ccrsContactARN = Nothing,
+                           _ccrsResponseStatus = pResponseStatus_}
 
 -- | The ARN of the newly created address book.
 ccrsContactARN :: Lens' CreateContactResponse (Maybe Text)

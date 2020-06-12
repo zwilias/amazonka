@@ -38,7 +38,6 @@ module Network.AWS.DeviceFarm.StopRun
     ) where
 
 import Network.AWS.DeviceFarm.Types
-import Network.AWS.DeviceFarm.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.Request
@@ -49,12 +48,8 @@ import Network.AWS.Response
 --
 --
 -- /See:/ 'stopRun' smart constructor.
-newtype StopRun =
-  StopRun'
-    { _srArn :: Text
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+newtype StopRun = StopRun'{_srArn :: Text}
+                    deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'StopRun' with the minimum fields required to make a request.
 --
@@ -64,8 +59,7 @@ newtype StopRun =
 stopRun
     :: Text -- ^ 'srArn'
     -> StopRun
-stopRun pArn_ = StopRun' {_srArn = pArn_}
-
+stopRun pArn_ = StopRun'{_srArn = pArn_}
 
 -- | Represents the Amazon Resource Name (ARN) of the Device Farm run to stop.
 srArn :: Lens' StopRun Text
@@ -108,13 +102,10 @@ instance ToQuery StopRun where
 --
 --
 -- /See:/ 'stopRunResponse' smart constructor.
-data StopRunResponse =
-  StopRunResponse'
-    { _srsRun            :: !(Maybe Run)
-    , _srsResponseStatus :: !Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data StopRunResponse = StopRunResponse'{_srsRun ::
+                                        !(Maybe Run),
+                                        _srsResponseStatus :: !Int}
+                         deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'StopRunResponse' with the minimum fields required to make a request.
 --
@@ -126,9 +117,9 @@ data StopRunResponse =
 stopRunResponse
     :: Int -- ^ 'srsResponseStatus'
     -> StopRunResponse
-stopRunResponse pResponseStatus_ =
-  StopRunResponse' {_srsRun = Nothing, _srsResponseStatus = pResponseStatus_}
-
+stopRunResponse pResponseStatus_
+  = StopRunResponse'{_srsRun = Nothing,
+                     _srsResponseStatus = pResponseStatus_}
 
 -- | The run that was stopped.
 srsRun :: Lens' StopRunResponse (Maybe Run)

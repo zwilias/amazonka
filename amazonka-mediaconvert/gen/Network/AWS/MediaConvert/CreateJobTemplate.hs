@@ -41,22 +41,18 @@ module Network.AWS.MediaConvert.CreateJobTemplate
 
 import Network.AWS.Lens
 import Network.AWS.MediaConvert.Types
-import Network.AWS.MediaConvert.Types.Product
 import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 
 -- | /See:/ 'createJobTemplate' smart constructor.
-data CreateJobTemplate =
-  CreateJobTemplate'
-    { _cjtSettings    :: !(Maybe JobTemplateSettings)
-    , _cjtCategory    :: !(Maybe Text)
-    , _cjtQueue       :: !(Maybe Text)
-    , _cjtName        :: !(Maybe Text)
-    , _cjtDescription :: !(Maybe Text)
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data CreateJobTemplate = CreateJobTemplate'{_cjtSettings
+                                            :: !(Maybe JobTemplateSettings),
+                                            _cjtCategory :: !(Maybe Text),
+                                            _cjtQueue :: !(Maybe Text),
+                                            _cjtName :: !(Maybe Text),
+                                            _cjtDescription :: !(Maybe Text)}
+                           deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'CreateJobTemplate' with the minimum fields required to make a request.
 --
@@ -73,15 +69,10 @@ data CreateJobTemplate =
 -- * 'cjtDescription' - Optional. A description of the job template you are creating.
 createJobTemplate
     :: CreateJobTemplate
-createJobTemplate =
-  CreateJobTemplate'
-    { _cjtSettings = Nothing
-    , _cjtCategory = Nothing
-    , _cjtQueue = Nothing
-    , _cjtName = Nothing
-    , _cjtDescription = Nothing
-    }
-
+createJobTemplate
+  = CreateJobTemplate'{_cjtSettings = Nothing,
+                       _cjtCategory = Nothing, _cjtQueue = Nothing,
+                       _cjtName = Nothing, _cjtDescription = Nothing}
 
 -- | Undocumented member.
 cjtSettings :: Lens' CreateJobTemplate (Maybe JobTemplateSettings)
@@ -139,13 +130,14 @@ instance ToQuery CreateJobTemplate where
         toQuery = const mempty
 
 -- | /See:/ 'createJobTemplateResponse' smart constructor.
-data CreateJobTemplateResponse =
-  CreateJobTemplateResponse'
-    { _cjtrsJobTemplate    :: !(Maybe JobTemplate)
-    , _cjtrsResponseStatus :: !Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data CreateJobTemplateResponse = CreateJobTemplateResponse'{_cjtrsJobTemplate
+                                                            ::
+                                                            !(Maybe
+                                                                JobTemplate),
+                                                            _cjtrsResponseStatus
+                                                            :: !Int}
+                                   deriving (Eq, Read, Show, Data, Typeable,
+                                             Generic)
 
 -- | Creates a value of 'CreateJobTemplateResponse' with the minimum fields required to make a request.
 --
@@ -157,10 +149,10 @@ data CreateJobTemplateResponse =
 createJobTemplateResponse
     :: Int -- ^ 'cjtrsResponseStatus'
     -> CreateJobTemplateResponse
-createJobTemplateResponse pResponseStatus_ =
-  CreateJobTemplateResponse'
-    {_cjtrsJobTemplate = Nothing, _cjtrsResponseStatus = pResponseStatus_}
-
+createJobTemplateResponse pResponseStatus_
+  = CreateJobTemplateResponse'{_cjtrsJobTemplate =
+                                 Nothing,
+                               _cjtrsResponseStatus = pResponseStatus_}
 
 -- | Undocumented member.
 cjtrsJobTemplate :: Lens' CreateJobTemplateResponse (Maybe JobTemplate)

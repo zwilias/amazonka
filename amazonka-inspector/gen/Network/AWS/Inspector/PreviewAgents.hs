@@ -43,7 +43,6 @@ module Network.AWS.Inspector.PreviewAgents
     ) where
 
 import Network.AWS.Inspector.Types
-import Network.AWS.Inspector.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Pager
 import Network.AWS.Prelude
@@ -51,14 +50,11 @@ import Network.AWS.Request
 import Network.AWS.Response
 
 -- | /See:/ 'previewAgents' smart constructor.
-data PreviewAgents =
-  PreviewAgents'
-    { _paNextToken        :: !(Maybe Text)
-    , _paMaxResults       :: !(Maybe Int)
-    , _paPreviewAgentsARN :: !Text
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data PreviewAgents = PreviewAgents'{_paNextToken ::
+                                    !(Maybe Text),
+                                    _paMaxResults :: !(Maybe Int),
+                                    _paPreviewAgentsARN :: !Text}
+                       deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'PreviewAgents' with the minimum fields required to make a request.
 --
@@ -72,13 +68,10 @@ data PreviewAgents =
 previewAgents
     :: Text -- ^ 'paPreviewAgentsARN'
     -> PreviewAgents
-previewAgents pPreviewAgentsARN_ =
-  PreviewAgents'
-    { _paNextToken = Nothing
-    , _paMaxResults = Nothing
-    , _paPreviewAgentsARN = pPreviewAgentsARN_
-    }
-
+previewAgents pPreviewAgentsARN_
+  = PreviewAgents'{_paNextToken = Nothing,
+                   _paMaxResults = Nothing,
+                   _paPreviewAgentsARN = pPreviewAgentsARN_}
 
 -- | You can use this parameter when paginating results. Set the value of this parameter to null on your first call to the __PreviewAgents__ action. Subsequent calls to the action fill __nextToken__ in the request with the value of __NextToken__ from the previous response to continue listing data.
 paNextToken :: Lens' PreviewAgents (Maybe Text)
@@ -137,14 +130,13 @@ instance ToQuery PreviewAgents where
         toQuery = const mempty
 
 -- | /See:/ 'previewAgentsResponse' smart constructor.
-data PreviewAgentsResponse =
-  PreviewAgentsResponse'
-    { _parsNextToken      :: !(Maybe Text)
-    , _parsResponseStatus :: !Int
-    , _parsAgentPreviews  :: ![AgentPreview]
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data PreviewAgentsResponse = PreviewAgentsResponse'{_parsNextToken
+                                                    :: !(Maybe Text),
+                                                    _parsResponseStatus :: !Int,
+                                                    _parsAgentPreviews ::
+                                                    ![AgentPreview]}
+                               deriving (Eq, Read, Show, Data, Typeable,
+                                         Generic)
 
 -- | Creates a value of 'PreviewAgentsResponse' with the minimum fields required to make a request.
 --
@@ -158,13 +150,10 @@ data PreviewAgentsResponse =
 previewAgentsResponse
     :: Int -- ^ 'parsResponseStatus'
     -> PreviewAgentsResponse
-previewAgentsResponse pResponseStatus_ =
-  PreviewAgentsResponse'
-    { _parsNextToken = Nothing
-    , _parsResponseStatus = pResponseStatus_
-    , _parsAgentPreviews = mempty
-    }
-
+previewAgentsResponse pResponseStatus_
+  = PreviewAgentsResponse'{_parsNextToken = Nothing,
+                           _parsResponseStatus = pResponseStatus_,
+                           _parsAgentPreviews = mempty}
 
 -- | When a response is generated, if there is more data to be listed, this parameter is present in the response and contains the value to use for the __nextToken__ parameter in a subsequent pagination request. If there is no more data to be listed, this parameter is set to null.
 parsNextToken :: Lens' PreviewAgentsResponse (Maybe Text)

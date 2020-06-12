@@ -37,7 +37,6 @@ module Network.AWS.GuardDuty.DeleteMembers
     ) where
 
 import Network.AWS.GuardDuty.Types
-import Network.AWS.GuardDuty.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.Request
@@ -46,13 +45,10 @@ import Network.AWS.Response
 -- | DeleteMembers request body.
 --
 -- /See:/ 'deleteMembers' smart constructor.
-data DeleteMembers =
-  DeleteMembers'
-    { _dmAccountIds :: !(Maybe [Text])
-    , _dmDetectorId :: !Text
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data DeleteMembers = DeleteMembers'{_dmAccountIds ::
+                                    !(Maybe [Text]),
+                                    _dmDetectorId :: !Text}
+                       deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'DeleteMembers' with the minimum fields required to make a request.
 --
@@ -64,9 +60,9 @@ data DeleteMembers =
 deleteMembers
     :: Text -- ^ 'dmDetectorId'
     -> DeleteMembers
-deleteMembers pDetectorId_ =
-  DeleteMembers' {_dmAccountIds = Nothing, _dmDetectorId = pDetectorId_}
-
+deleteMembers pDetectorId_
+  = DeleteMembers'{_dmAccountIds = Nothing,
+                   _dmDetectorId = pDetectorId_}
 
 -- | A list of account IDs of the GuardDuty member accounts that you want to delete.
 dmAccountIds :: Lens' DeleteMembers [Text]
@@ -111,13 +107,13 @@ instance ToQuery DeleteMembers where
         toQuery = const mempty
 
 -- | /See:/ 'deleteMembersResponse' smart constructor.
-data DeleteMembersResponse =
-  DeleteMembersResponse'
-    { _drsUnprocessedAccounts :: !(Maybe [UnprocessedAccount])
-    , _drsResponseStatus      :: !Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data DeleteMembersResponse = DeleteMembersResponse'{_drsUnprocessedAccounts
+                                                    ::
+                                                    !(Maybe
+                                                        [UnprocessedAccount]),
+                                                    _drsResponseStatus :: !Int}
+                               deriving (Eq, Read, Show, Data, Typeable,
+                                         Generic)
 
 -- | Creates a value of 'DeleteMembersResponse' with the minimum fields required to make a request.
 --
@@ -129,10 +125,10 @@ data DeleteMembersResponse =
 deleteMembersResponse
     :: Int -- ^ 'drsResponseStatus'
     -> DeleteMembersResponse
-deleteMembersResponse pResponseStatus_ =
-  DeleteMembersResponse'
-    {_drsUnprocessedAccounts = Nothing, _drsResponseStatus = pResponseStatus_}
-
+deleteMembersResponse pResponseStatus_
+  = DeleteMembersResponse'{_drsUnprocessedAccounts =
+                             Nothing,
+                           _drsResponseStatus = pResponseStatus_}
 
 -- | A list of objects containing the unprocessed account and a result string explaining why it was unprocessed.
 drsUnprocessedAccounts :: Lens' DeleteMembersResponse [UnprocessedAccount]

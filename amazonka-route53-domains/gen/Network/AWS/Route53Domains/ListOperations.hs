@@ -48,21 +48,17 @@ import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 import Network.AWS.Route53Domains.Types
-import Network.AWS.Route53Domains.Types.Product
 
 -- | The ListOperations request includes the following elements.
 --
 --
 --
 -- /See:/ 'listOperations' smart constructor.
-data ListOperations =
-  ListOperations'
-    { _loMarker         :: !(Maybe Text)
-    , _loMaxItems       :: !(Maybe Int)
-    , _loSubmittedSince :: !(Maybe POSIX)
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data ListOperations = ListOperations'{_loMarker ::
+                                      !(Maybe Text),
+                                      _loMaxItems :: !(Maybe Int),
+                                      _loSubmittedSince :: !(Maybe POSIX)}
+                        deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'ListOperations' with the minimum fields required to make a request.
 --
@@ -75,10 +71,9 @@ data ListOperations =
 -- * 'loSubmittedSince' - An optional parameter that lets you get information about all the operations that you submitted after a specified date and time. Specify the date and time in Coordinated Universal time (UTC).
 listOperations
     :: ListOperations
-listOperations =
-  ListOperations'
-    {_loMarker = Nothing, _loMaxItems = Nothing, _loSubmittedSince = Nothing}
-
+listOperations
+  = ListOperations'{_loMarker = Nothing,
+                    _loMaxItems = Nothing, _loSubmittedSince = Nothing}
 
 -- | For an initial request for a list of operations, omit this element. If the number of operations that are not yet complete is greater than the value that you specified for @MaxItems@ , you can use @Marker@ to return additional operations. Get the value of @NextPageMarker@ from the previous response, and submit another request that includes the value of @NextPageMarker@ in the @Marker@ element.
 loMarker :: Lens' ListOperations (Maybe Text)
@@ -142,14 +137,14 @@ instance ToQuery ListOperations where
 --
 --
 -- /See:/ 'listOperationsResponse' smart constructor.
-data ListOperationsResponse =
-  ListOperationsResponse'
-    { _lorsNextPageMarker :: !(Maybe Text)
-    , _lorsResponseStatus :: !Int
-    , _lorsOperations     :: ![OperationSummary]
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data ListOperationsResponse = ListOperationsResponse'{_lorsNextPageMarker
+                                                      :: !(Maybe Text),
+                                                      _lorsResponseStatus ::
+                                                      !Int,
+                                                      _lorsOperations ::
+                                                      ![OperationSummary]}
+                                deriving (Eq, Read, Show, Data, Typeable,
+                                          Generic)
 
 -- | Creates a value of 'ListOperationsResponse' with the minimum fields required to make a request.
 --
@@ -163,13 +158,11 @@ data ListOperationsResponse =
 listOperationsResponse
     :: Int -- ^ 'lorsResponseStatus'
     -> ListOperationsResponse
-listOperationsResponse pResponseStatus_ =
-  ListOperationsResponse'
-    { _lorsNextPageMarker = Nothing
-    , _lorsResponseStatus = pResponseStatus_
-    , _lorsOperations = mempty
-    }
-
+listOperationsResponse pResponseStatus_
+  = ListOperationsResponse'{_lorsNextPageMarker =
+                              Nothing,
+                            _lorsResponseStatus = pResponseStatus_,
+                            _lorsOperations = mempty}
 
 -- | If there are more operations than you specified for @MaxItems@ in the request, submit another request and include the value of @NextPageMarker@ in the value of @Marker@ .
 lorsNextPageMarker :: Lens' ListOperationsResponse (Maybe Text)

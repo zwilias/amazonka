@@ -41,20 +41,18 @@ module Network.AWS.EC2.DeleteTrafficMirrorFilter
     ) where
 
 import Network.AWS.EC2.Types
-import Network.AWS.EC2.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 
 -- | /See:/ 'deleteTrafficMirrorFilter' smart constructor.
-data DeleteTrafficMirrorFilter =
-  DeleteTrafficMirrorFilter'
-    { _dtmftDryRun                :: !(Maybe Bool)
-    , _dtmftTrafficMirrorFilterId :: !Text
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data DeleteTrafficMirrorFilter = DeleteTrafficMirrorFilter'{_dtmftDryRun
+                                                            :: !(Maybe Bool),
+                                                            _dtmftTrafficMirrorFilterId
+                                                            :: !Text}
+                                   deriving (Eq, Read, Show, Data, Typeable,
+                                             Generic)
 
 -- | Creates a value of 'DeleteTrafficMirrorFilter' with the minimum fields required to make a request.
 --
@@ -66,12 +64,10 @@ data DeleteTrafficMirrorFilter =
 deleteTrafficMirrorFilter
     :: Text -- ^ 'dtmftTrafficMirrorFilterId'
     -> DeleteTrafficMirrorFilter
-deleteTrafficMirrorFilter pTrafficMirrorFilterId_ =
-  DeleteTrafficMirrorFilter'
-    { _dtmftDryRun = Nothing
-    , _dtmftTrafficMirrorFilterId = pTrafficMirrorFilterId_
-    }
-
+deleteTrafficMirrorFilter pTrafficMirrorFilterId_
+  = DeleteTrafficMirrorFilter'{_dtmftDryRun = Nothing,
+                               _dtmftTrafficMirrorFilterId =
+                                 pTrafficMirrorFilterId_}
 
 -- | Checks whether you have the required permissions for the action, without actually making the request, and provides an error response. If you have the required permissions, the error response is @DryRunOperation@ . Otherwise, it is @UnauthorizedOperation@ .
 dtmftDryRun :: Lens' DeleteTrafficMirrorFilter (Maybe Bool)
@@ -113,13 +109,15 @@ instance ToQuery DeleteTrafficMirrorFilter where
                  _dtmftTrafficMirrorFilterId]
 
 -- | /See:/ 'deleteTrafficMirrorFilterResponse' smart constructor.
-data DeleteTrafficMirrorFilterResponse =
-  DeleteTrafficMirrorFilterResponse'
-    { _dtmfrsTrafficMirrorFilterId :: !(Maybe Text)
-    , _dtmfrsResponseStatus        :: !Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data DeleteTrafficMirrorFilterResponse = DeleteTrafficMirrorFilterResponse'{_dtmfrsTrafficMirrorFilterId
+                                                                            ::
+                                                                            !(Maybe
+                                                                                Text),
+                                                                            _dtmfrsResponseStatus
+                                                                            ::
+                                                                            !Int}
+                                           deriving (Eq, Read, Show, Data,
+                                                     Typeable, Generic)
 
 -- | Creates a value of 'DeleteTrafficMirrorFilterResponse' with the minimum fields required to make a request.
 --
@@ -131,12 +129,10 @@ data DeleteTrafficMirrorFilterResponse =
 deleteTrafficMirrorFilterResponse
     :: Int -- ^ 'dtmfrsResponseStatus'
     -> DeleteTrafficMirrorFilterResponse
-deleteTrafficMirrorFilterResponse pResponseStatus_ =
-  DeleteTrafficMirrorFilterResponse'
-    { _dtmfrsTrafficMirrorFilterId = Nothing
-    , _dtmfrsResponseStatus = pResponseStatus_
-    }
-
+deleteTrafficMirrorFilterResponse pResponseStatus_
+  = DeleteTrafficMirrorFilterResponse'{_dtmfrsTrafficMirrorFilterId
+                                         = Nothing,
+                                       _dtmfrsResponseStatus = pResponseStatus_}
 
 -- | The ID of the Traffic Mirror filter.
 dtmfrsTrafficMirrorFilterId :: Lens' DeleteTrafficMirrorFilterResponse (Maybe Text)

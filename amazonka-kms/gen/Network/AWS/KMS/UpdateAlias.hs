@@ -23,7 +23,7 @@
 --
 -- This operation works only on existing aliases. To change the alias of a CMK to a new value, use 'CreateAlias' to create a new alias and 'DeleteAlias' to delete the old alias.
 --
--- Because an alias is not a property of a CMK, you can create, update, and delete the aliases of a CMK without affecting the CMK. Also, aliases do not appear in the response from the 'DescribeKey' operation. To get the aliases of all CMKs in the account, use the 'ListAliases' operation.
+-- Because an alias is not a property of a CMK, you can create, update, and delete the aliases of a CMK without affecting the CMK. Also, aliases do not appear in the response from the 'DescribeKey' operation. To get the aliases of all CMKs in the account, use the 'ListAliases' operation. 
 --
 -- An alias name can contain only alphanumeric characters, forward slashes (/), underscores (_), and dashes (-). An alias must start with the word @alias@ followed by a forward slash (@alias/@ ). The alias name can contain only alphanumeric characters, forward slashes (/), underscores (_), and dashes (-). Alias names cannot begin with @aws@ ; that alias name prefix is reserved by Amazon Web Services (AWS).
 --
@@ -42,20 +42,16 @@ module Network.AWS.KMS.UpdateAlias
     ) where
 
 import Network.AWS.KMS.Types
-import Network.AWS.KMS.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 
 -- | /See:/ 'updateAlias' smart constructor.
-data UpdateAlias =
-  UpdateAlias'
-    { _uaAliasName   :: !Text
-    , _uaTargetKeyId :: !Text
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data UpdateAlias = UpdateAlias'{_uaAliasName ::
+                                !Text,
+                                _uaTargetKeyId :: !Text}
+                     deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'UpdateAlias' with the minimum fields required to make a request.
 --
@@ -68,9 +64,9 @@ updateAlias
     :: Text -- ^ 'uaAliasName'
     -> Text -- ^ 'uaTargetKeyId'
     -> UpdateAlias
-updateAlias pAliasName_ pTargetKeyId_ =
-  UpdateAlias' {_uaAliasName = pAliasName_, _uaTargetKeyId = pTargetKeyId_}
-
+updateAlias pAliasName_ pTargetKeyId_
+  = UpdateAlias'{_uaAliasName = pAliasName_,
+                 _uaTargetKeyId = pTargetKeyId_}
 
 -- | String that contains the name of the alias to be modified. The name must start with the word "alias" followed by a forward slash (alias/). Aliases that begin with "alias/aws" are reserved.
 uaAliasName :: Lens' UpdateAlias Text
@@ -112,16 +108,13 @@ instance ToQuery UpdateAlias where
         toQuery = const mempty
 
 -- | /See:/ 'updateAliasResponse' smart constructor.
-data UpdateAliasResponse =
-  UpdateAliasResponse'
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data UpdateAliasResponse = UpdateAliasResponse'
+                             deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'UpdateAliasResponse' with the minimum fields required to make a request.
 --
 updateAliasResponse
     :: UpdateAliasResponse
 updateAliasResponse = UpdateAliasResponse'
-
 
 instance NFData UpdateAliasResponse where

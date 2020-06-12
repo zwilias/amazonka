@@ -37,18 +37,14 @@ module Network.AWS.Pinpoint.GetADMChannel
 
 import Network.AWS.Lens
 import Network.AWS.Pinpoint.Types
-import Network.AWS.Pinpoint.Types.Product
 import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 
 -- | /See:/ 'getADMChannel' smart constructor.
-newtype GetADMChannel =
-  GetADMChannel'
-    { _gadmcApplicationId :: Text
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+newtype GetADMChannel = GetADMChannel'{_gadmcApplicationId
+                                       :: Text}
+                          deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'GetADMChannel' with the minimum fields required to make a request.
 --
@@ -58,9 +54,9 @@ newtype GetADMChannel =
 getADMChannel
     :: Text -- ^ 'gadmcApplicationId'
     -> GetADMChannel
-getADMChannel pApplicationId_ =
-  GetADMChannel' {_gadmcApplicationId = pApplicationId_}
-
+getADMChannel pApplicationId_
+  = GetADMChannel'{_gadmcApplicationId =
+                     pApplicationId_}
 
 -- | Undocumented member.
 gadmcApplicationId :: Lens' GetADMChannel Text
@@ -96,13 +92,12 @@ instance ToQuery GetADMChannel where
         toQuery = const mempty
 
 -- | /See:/ 'getADMChannelResponse' smart constructor.
-data GetADMChannelResponse =
-  GetADMChannelResponse'
-    { _gadmcrsResponseStatus     :: !Int
-    , _gadmcrsADMChannelResponse :: !ADMChannelResponse
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data GetADMChannelResponse = GetADMChannelResponse'{_gadmcrsResponseStatus
+                                                    :: !Int,
+                                                    _gadmcrsADMChannelResponse
+                                                    :: !ADMChannelResponse}
+                               deriving (Eq, Read, Show, Data, Typeable,
+                                         Generic)
 
 -- | Creates a value of 'GetADMChannelResponse' with the minimum fields required to make a request.
 --
@@ -115,12 +110,11 @@ getADMChannelResponse
     :: Int -- ^ 'gadmcrsResponseStatus'
     -> ADMChannelResponse -- ^ 'gadmcrsADMChannelResponse'
     -> GetADMChannelResponse
-getADMChannelResponse pResponseStatus_ pADMChannelResponse_ =
-  GetADMChannelResponse'
-    { _gadmcrsResponseStatus = pResponseStatus_
-    , _gadmcrsADMChannelResponse = pADMChannelResponse_
-    }
-
+getADMChannelResponse pResponseStatus_
+  pADMChannelResponse_
+  = GetADMChannelResponse'{_gadmcrsResponseStatus =
+                             pResponseStatus_,
+                           _gadmcrsADMChannelResponse = pADMChannelResponse_}
 
 -- | -- | The response status code.
 gadmcrsResponseStatus :: Lens' GetADMChannelResponse Int

@@ -23,7 +23,7 @@
 --
 -- When you update a traffic policy instance, Amazon Route 53 continues to respond to DNS queries for the root resource record set name (such as example.com) while it replaces one group of resource record sets with another. Amazon Route 53 performs the following operations:
 --
---     * Amazon Route 53 creates a new group of resource record sets based on the specified traffic policy. This is true regardless of how significant the differences are between the existing resource record sets and the new resource record sets.
+--     * Amazon Route 53 creates a new group of resource record sets based on the specified traffic policy. This is true regardless of how significant the differences are between the existing resource record sets and the new resource record sets. 
 --
 --     * When all of the new resource record sets have been created, Amazon Route 53 starts to respond to DNS queries for the root resource record set name (such as example.com) by using the new resource record sets.
 --
@@ -55,22 +55,22 @@ import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 import Network.AWS.Route53.Types
-import Network.AWS.Route53.Types.Product
 
 -- | A complex type that contains information about the resource record sets that you want to update based on a specified traffic policy instance.
 --
 --
 --
 -- /See:/ 'updateTrafficPolicyInstance' smart constructor.
-data UpdateTrafficPolicyInstance =
-  UpdateTrafficPolicyInstance'
-    { _utpiId                   :: !Text
-    , _utpiTTL                  :: !Nat
-    , _utpiTrafficPolicyId      :: !Text
-    , _utpiTrafficPolicyVersion :: !Nat
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data UpdateTrafficPolicyInstance = UpdateTrafficPolicyInstance'{_utpiId
+                                                                :: !Text,
+                                                                _utpiTTL ::
+                                                                !Nat,
+                                                                _utpiTrafficPolicyId
+                                                                :: !Text,
+                                                                _utpiTrafficPolicyVersion
+                                                                :: !Nat}
+                                     deriving (Eq, Read, Show, Data, Typeable,
+                                               Generic)
 
 -- | Creates a value of 'UpdateTrafficPolicyInstance' with the minimum fields required to make a request.
 --
@@ -89,14 +89,13 @@ updateTrafficPolicyInstance
     -> Text -- ^ 'utpiTrafficPolicyId'
     -> Natural -- ^ 'utpiTrafficPolicyVersion'
     -> UpdateTrafficPolicyInstance
-updateTrafficPolicyInstance pId_ pTTL_ pTrafficPolicyId_ pTrafficPolicyVersion_ =
-  UpdateTrafficPolicyInstance'
-    { _utpiId = pId_
-    , _utpiTTL = _Nat # pTTL_
-    , _utpiTrafficPolicyId = pTrafficPolicyId_
-    , _utpiTrafficPolicyVersion = _Nat # pTrafficPolicyVersion_
-    }
-
+updateTrafficPolicyInstance pId_ pTTL_
+  pTrafficPolicyId_ pTrafficPolicyVersion_
+  = UpdateTrafficPolicyInstance'{_utpiId = pId_,
+                                 _utpiTTL = _Nat # pTTL_,
+                                 _utpiTrafficPolicyId = pTrafficPolicyId_,
+                                 _utpiTrafficPolicyVersion =
+                                   _Nat # pTrafficPolicyVersion_}
 
 -- | The ID of the traffic policy instance that you want to update.
 utpiId :: Lens' UpdateTrafficPolicyInstance Text
@@ -157,13 +156,14 @@ instance ToXML UpdateTrafficPolicyInstance where
 --
 --
 -- /See:/ 'updateTrafficPolicyInstanceResponse' smart constructor.
-data UpdateTrafficPolicyInstanceResponse =
-  UpdateTrafficPolicyInstanceResponse'
-    { _utpirsResponseStatus        :: !Int
-    , _utpirsTrafficPolicyInstance :: !TrafficPolicyInstance
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data UpdateTrafficPolicyInstanceResponse = UpdateTrafficPolicyInstanceResponse'{_utpirsResponseStatus
+                                                                                ::
+                                                                                !Int,
+                                                                                _utpirsTrafficPolicyInstance
+                                                                                ::
+                                                                                !TrafficPolicyInstance}
+                                             deriving (Eq, Read, Show, Data,
+                                                       Typeable, Generic)
 
 -- | Creates a value of 'UpdateTrafficPolicyInstanceResponse' with the minimum fields required to make a request.
 --
@@ -176,12 +176,12 @@ updateTrafficPolicyInstanceResponse
     :: Int -- ^ 'utpirsResponseStatus'
     -> TrafficPolicyInstance -- ^ 'utpirsTrafficPolicyInstance'
     -> UpdateTrafficPolicyInstanceResponse
-updateTrafficPolicyInstanceResponse pResponseStatus_ pTrafficPolicyInstance_ =
-  UpdateTrafficPolicyInstanceResponse'
-    { _utpirsResponseStatus = pResponseStatus_
-    , _utpirsTrafficPolicyInstance = pTrafficPolicyInstance_
-    }
-
+updateTrafficPolicyInstanceResponse pResponseStatus_
+  pTrafficPolicyInstance_
+  = UpdateTrafficPolicyInstanceResponse'{_utpirsResponseStatus
+                                           = pResponseStatus_,
+                                         _utpirsTrafficPolicyInstance =
+                                           pTrafficPolicyInstance_}
 
 -- | -- | The response status code.
 utpirsResponseStatus :: Lens' UpdateTrafficPolicyInstanceResponse Int

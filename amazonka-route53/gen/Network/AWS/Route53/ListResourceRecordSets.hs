@@ -23,7 +23,7 @@
 --
 -- @ListResourceRecordSets@ returns up to 100 resource record sets at a time in ASCII order, beginning at a position specified by the @name@ and @type@ elements. The action sorts results first by DNS name with the labels reversed, for example:
 --
--- @com.example.www.@
+-- @com.example.www.@ 
 --
 -- Note the trailing dot, which can change the sort order in some circumstances.
 --
@@ -78,23 +78,24 @@ import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 import Network.AWS.Route53.Types
-import Network.AWS.Route53.Types.Product
 
 -- | A request for the resource record sets that are associated with a specified hosted zone.
 --
 --
 --
 -- /See:/ 'listResourceRecordSets' smart constructor.
-data ListResourceRecordSets =
-  ListResourceRecordSets'
-    { _lrrsStartRecordName       :: !(Maybe Text)
-    , _lrrsStartRecordType       :: !(Maybe RecordType)
-    , _lrrsStartRecordIdentifier :: !(Maybe Text)
-    , _lrrsMaxItems              :: !(Maybe Text)
-    , _lrrsHostedZoneId          :: !ResourceId
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data ListResourceRecordSets = ListResourceRecordSets'{_lrrsStartRecordName
+                                                      :: !(Maybe Text),
+                                                      _lrrsStartRecordType ::
+                                                      !(Maybe RecordType),
+                                                      _lrrsStartRecordIdentifier
+                                                      :: !(Maybe Text),
+                                                      _lrrsMaxItems ::
+                                                      !(Maybe Text),
+                                                      _lrrsHostedZoneId ::
+                                                      !ResourceId}
+                                deriving (Eq, Read, Show, Data, Typeable,
+                                          Generic)
 
 -- | Creates a value of 'ListResourceRecordSets' with the minimum fields required to make a request.
 --
@@ -112,15 +113,13 @@ data ListResourceRecordSets =
 listResourceRecordSets
     :: ResourceId -- ^ 'lrrsHostedZoneId'
     -> ListResourceRecordSets
-listResourceRecordSets pHostedZoneId_ =
-  ListResourceRecordSets'
-    { _lrrsStartRecordName = Nothing
-    , _lrrsStartRecordType = Nothing
-    , _lrrsStartRecordIdentifier = Nothing
-    , _lrrsMaxItems = Nothing
-    , _lrrsHostedZoneId = pHostedZoneId_
-    }
-
+listResourceRecordSets pHostedZoneId_
+  = ListResourceRecordSets'{_lrrsStartRecordName =
+                              Nothing,
+                            _lrrsStartRecordType = Nothing,
+                            _lrrsStartRecordIdentifier = Nothing,
+                            _lrrsMaxItems = Nothing,
+                            _lrrsHostedZoneId = pHostedZoneId_}
 
 -- | The first name in the lexicographic ordering of resource record sets that you want to list.
 lrrsStartRecordName :: Lens' ListResourceRecordSets (Maybe Text)
@@ -200,26 +199,37 @@ instance ToQuery ListResourceRecordSets where
 --
 --
 -- /See:/ 'listResourceRecordSetsResponse' smart constructor.
-data ListResourceRecordSetsResponse =
-  ListResourceRecordSetsResponse'
-    { _lrrsrsNextRecordType       :: !(Maybe RecordType)
-    , _lrrsrsNextRecordName       :: !(Maybe Text)
-    , _lrrsrsNextRecordIdentifier :: !(Maybe Text)
-    , _lrrsrsResponseStatus       :: !Int
-    , _lrrsrsResourceRecordSets   :: ![ResourceRecordSet]
-    , _lrrsrsIsTruncated          :: !Bool
-    , _lrrsrsMaxItems             :: !Text
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data ListResourceRecordSetsResponse = ListResourceRecordSetsResponse'{_lrrsrsNextRecordType
+                                                                      ::
+                                                                      !(Maybe
+                                                                          RecordType),
+                                                                      _lrrsrsNextRecordName
+                                                                      ::
+                                                                      !(Maybe
+                                                                          Text),
+                                                                      _lrrsrsNextRecordIdentifier
+                                                                      ::
+                                                                      !(Maybe
+                                                                          Text),
+                                                                      _lrrsrsResponseStatus
+                                                                      :: !Int,
+                                                                      _lrrsrsResourceRecordSets
+                                                                      ::
+                                                                      ![ResourceRecordSet],
+                                                                      _lrrsrsIsTruncated
+                                                                      :: !Bool,
+                                                                      _lrrsrsMaxItems
+                                                                      :: !Text}
+                                        deriving (Eq, Read, Show, Data,
+                                                  Typeable, Generic)
 
 -- | Creates a value of 'ListResourceRecordSetsResponse' with the minimum fields required to make a request.
 --
 -- Use one of the following lenses to modify other fields as desired:
 --
--- * 'lrrsrsNextRecordType' - If the results were truncated, the type of the next record in the list. This element is present only if @IsTruncated@ is true.
+-- * 'lrrsrsNextRecordType' - If the results were truncated, the type of the next record in the list. This element is present only if @IsTruncated@ is true. 
 --
--- * 'lrrsrsNextRecordName' - If the results were truncated, the name of the next record in the list. This element is present only if @IsTruncated@ is true.
+-- * 'lrrsrsNextRecordName' - If the results were truncated, the name of the next record in the list. This element is present only if @IsTruncated@ is true. 
 --
 -- * 'lrrsrsNextRecordIdentifier' - /Weighted, latency, geolocation, and failover resource record sets only/ : If results were truncated for a given DNS name and type, the value of @SetIdentifier@ for the next resource record set that has the current DNS name and type.
 --
@@ -235,23 +245,22 @@ listResourceRecordSetsResponse
     -> Bool -- ^ 'lrrsrsIsTruncated'
     -> Text -- ^ 'lrrsrsMaxItems'
     -> ListResourceRecordSetsResponse
-listResourceRecordSetsResponse pResponseStatus_ pIsTruncated_ pMaxItems_ =
-  ListResourceRecordSetsResponse'
-    { _lrrsrsNextRecordType = Nothing
-    , _lrrsrsNextRecordName = Nothing
-    , _lrrsrsNextRecordIdentifier = Nothing
-    , _lrrsrsResponseStatus = pResponseStatus_
-    , _lrrsrsResourceRecordSets = mempty
-    , _lrrsrsIsTruncated = pIsTruncated_
-    , _lrrsrsMaxItems = pMaxItems_
-    }
+listResourceRecordSetsResponse pResponseStatus_
+  pIsTruncated_ pMaxItems_
+  = ListResourceRecordSetsResponse'{_lrrsrsNextRecordType
+                                      = Nothing,
+                                    _lrrsrsNextRecordName = Nothing,
+                                    _lrrsrsNextRecordIdentifier = Nothing,
+                                    _lrrsrsResponseStatus = pResponseStatus_,
+                                    _lrrsrsResourceRecordSets = mempty,
+                                    _lrrsrsIsTruncated = pIsTruncated_,
+                                    _lrrsrsMaxItems = pMaxItems_}
 
-
--- | If the results were truncated, the type of the next record in the list. This element is present only if @IsTruncated@ is true.
+-- | If the results were truncated, the type of the next record in the list. This element is present only if @IsTruncated@ is true. 
 lrrsrsNextRecordType :: Lens' ListResourceRecordSetsResponse (Maybe RecordType)
 lrrsrsNextRecordType = lens _lrrsrsNextRecordType (\ s a -> s{_lrrsrsNextRecordType = a})
 
--- | If the results were truncated, the name of the next record in the list. This element is present only if @IsTruncated@ is true.
+-- | If the results were truncated, the name of the next record in the list. This element is present only if @IsTruncated@ is true. 
 lrrsrsNextRecordName :: Lens' ListResourceRecordSetsResponse (Maybe Text)
 lrrsrsNextRecordName = lens _lrrsrsNextRecordName (\ s a -> s{_lrrsrsNextRecordName = a})
 

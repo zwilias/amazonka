@@ -44,16 +44,16 @@ import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 import Network.AWS.SSM.Types
-import Network.AWS.SSM.Types.Product
 
 -- | /See:/ 'registerPatchBaselineForPatchGroup' smart constructor.
-data RegisterPatchBaselineForPatchGroup =
-  RegisterPatchBaselineForPatchGroup'
-    { _rpbfpgBaselineId :: !Text
-    , _rpbfpgPatchGroup :: !Text
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data RegisterPatchBaselineForPatchGroup = RegisterPatchBaselineForPatchGroup'{_rpbfpgBaselineId
+                                                                              ::
+                                                                              !Text,
+                                                                              _rpbfpgPatchGroup
+                                                                              ::
+                                                                              !Text}
+                                            deriving (Eq, Read, Show, Data,
+                                                      Typeable, Generic)
 
 -- | Creates a value of 'RegisterPatchBaselineForPatchGroup' with the minimum fields required to make a request.
 --
@@ -66,10 +66,11 @@ registerPatchBaselineForPatchGroup
     :: Text -- ^ 'rpbfpgBaselineId'
     -> Text -- ^ 'rpbfpgPatchGroup'
     -> RegisterPatchBaselineForPatchGroup
-registerPatchBaselineForPatchGroup pBaselineId_ pPatchGroup_ =
-  RegisterPatchBaselineForPatchGroup'
-    {_rpbfpgBaselineId = pBaselineId_, _rpbfpgPatchGroup = pPatchGroup_}
-
+registerPatchBaselineForPatchGroup pBaselineId_
+  pPatchGroup_
+  = RegisterPatchBaselineForPatchGroup'{_rpbfpgBaselineId
+                                          = pBaselineId_,
+                                        _rpbfpgPatchGroup = pPatchGroup_}
 
 -- | The ID of the patch baseline to register the patch group with.
 rpbfpgBaselineId :: Lens' RegisterPatchBaselineForPatchGroup Text
@@ -126,14 +127,20 @@ instance ToQuery RegisterPatchBaselineForPatchGroup
         toQuery = const mempty
 
 -- | /See:/ 'registerPatchBaselineForPatchGroupResponse' smart constructor.
-data RegisterPatchBaselineForPatchGroupResponse =
-  RegisterPatchBaselineForPatchGroupResponse'
-    { _rpbfpgrsBaselineId     :: !(Maybe Text)
-    , _rpbfpgrsPatchGroup     :: !(Maybe Text)
-    , _rpbfpgrsResponseStatus :: !Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data RegisterPatchBaselineForPatchGroupResponse = RegisterPatchBaselineForPatchGroupResponse'{_rpbfpgrsBaselineId
+                                                                                              ::
+                                                                                              !(Maybe
+                                                                                                  Text),
+                                                                                              _rpbfpgrsPatchGroup
+                                                                                              ::
+                                                                                              !(Maybe
+                                                                                                  Text),
+                                                                                              _rpbfpgrsResponseStatus
+                                                                                              ::
+                                                                                              !Int}
+                                                    deriving (Eq, Read, Show,
+                                                              Data, Typeable,
+                                                              Generic)
 
 -- | Creates a value of 'RegisterPatchBaselineForPatchGroupResponse' with the minimum fields required to make a request.
 --
@@ -147,13 +154,13 @@ data RegisterPatchBaselineForPatchGroupResponse =
 registerPatchBaselineForPatchGroupResponse
     :: Int -- ^ 'rpbfpgrsResponseStatus'
     -> RegisterPatchBaselineForPatchGroupResponse
-registerPatchBaselineForPatchGroupResponse pResponseStatus_ =
-  RegisterPatchBaselineForPatchGroupResponse'
-    { _rpbfpgrsBaselineId = Nothing
-    , _rpbfpgrsPatchGroup = Nothing
-    , _rpbfpgrsResponseStatus = pResponseStatus_
-    }
-
+registerPatchBaselineForPatchGroupResponse
+  pResponseStatus_
+  = RegisterPatchBaselineForPatchGroupResponse'{_rpbfpgrsBaselineId
+                                                  = Nothing,
+                                                _rpbfpgrsPatchGroup = Nothing,
+                                                _rpbfpgrsResponseStatus =
+                                                  pResponseStatus_}
 
 -- | The ID of the patch baseline the patch group was registered with.
 rpbfpgrsBaselineId :: Lens' RegisterPatchBaselineForPatchGroupResponse (Maybe Text)

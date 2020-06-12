@@ -46,19 +46,15 @@ import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.ResourceGroups.Types
-import Network.AWS.ResourceGroups.Types.Product
 import Network.AWS.Response
 
 -- | /See:/ 'createGroup' smart constructor.
-data CreateGroup =
-  CreateGroup'
-    { _cgDescription   :: !(Maybe Text)
-    , _cgTags          :: !(Maybe (Map Text Text))
-    , _cgName          :: !Text
-    , _cgResourceQuery :: !ResourceQuery
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data CreateGroup = CreateGroup'{_cgDescription ::
+                                !(Maybe Text),
+                                _cgTags :: !(Maybe (Map Text Text)),
+                                _cgName :: !Text,
+                                _cgResourceQuery :: !ResourceQuery}
+                     deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'CreateGroup' with the minimum fields required to make a request.
 --
@@ -75,14 +71,10 @@ createGroup
     :: Text -- ^ 'cgName'
     -> ResourceQuery -- ^ 'cgResourceQuery'
     -> CreateGroup
-createGroup pName_ pResourceQuery_ =
-  CreateGroup'
-    { _cgDescription = Nothing
-    , _cgTags = Nothing
-    , _cgName = pName_
-    , _cgResourceQuery = pResourceQuery_
-    }
-
+createGroup pName_ pResourceQuery_
+  = CreateGroup'{_cgDescription = Nothing,
+                 _cgTags = Nothing, _cgName = pName_,
+                 _cgResourceQuery = pResourceQuery_}
 
 -- | The description of the resource group. Descriptions can have a maximum of 511 characters, including letters, numbers, hyphens, underscores, punctuation, and spaces.
 cgDescription :: Lens' CreateGroup (Maybe Text)
@@ -133,15 +125,14 @@ instance ToQuery CreateGroup where
         toQuery = const mempty
 
 -- | /See:/ 'createGroupResponse' smart constructor.
-data CreateGroupResponse =
-  CreateGroupResponse'
-    { _cgrsGroup          :: !(Maybe Group)
-    , _cgrsResourceQuery  :: !(Maybe ResourceQuery)
-    , _cgrsTags           :: !(Maybe (Map Text Text))
-    , _cgrsResponseStatus :: !Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data CreateGroupResponse = CreateGroupResponse'{_cgrsGroup
+                                                :: !(Maybe Group),
+                                                _cgrsResourceQuery ::
+                                                !(Maybe ResourceQuery),
+                                                _cgrsTags ::
+                                                !(Maybe (Map Text Text)),
+                                                _cgrsResponseStatus :: !Int}
+                             deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'CreateGroupResponse' with the minimum fields required to make a request.
 --
@@ -157,14 +148,10 @@ data CreateGroupResponse =
 createGroupResponse
     :: Int -- ^ 'cgrsResponseStatus'
     -> CreateGroupResponse
-createGroupResponse pResponseStatus_ =
-  CreateGroupResponse'
-    { _cgrsGroup = Nothing
-    , _cgrsResourceQuery = Nothing
-    , _cgrsTags = Nothing
-    , _cgrsResponseStatus = pResponseStatus_
-    }
-
+createGroupResponse pResponseStatus_
+  = CreateGroupResponse'{_cgrsGroup = Nothing,
+                         _cgrsResourceQuery = Nothing, _cgrsTags = Nothing,
+                         _cgrsResponseStatus = pResponseStatus_}
 
 -- | A full description of the resource group after it is created.
 cgrsGroup :: Lens' CreateGroupResponse (Maybe Group)

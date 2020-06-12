@@ -14,11 +14,11 @@
 module Test.AWS.Gen.Transcribe where
 
 import Data.Proxy
-import Network.AWS.Transcribe
 import Test.AWS.Fixture
 import Test.AWS.Prelude
-import Test.AWS.Transcribe.Internal
 import Test.Tasty
+import Network.AWS.Transcribe
+import Test.AWS.Transcribe.Internal
 
 -- Auto-generated: the actual test selection needs to be manually placed into
 -- the top-level so that real test data can be incrementally added.

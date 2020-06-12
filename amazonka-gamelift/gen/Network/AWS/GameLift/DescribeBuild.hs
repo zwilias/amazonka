@@ -23,15 +23,15 @@
 --
 -- Build-related operations include:
 --
---     * 'CreateBuild'
+--     * 'CreateBuild' 
 --
---     * 'ListBuilds'
+--     * 'ListBuilds' 
 --
---     * 'DescribeBuild'
+--     * 'DescribeBuild' 
 --
---     * 'UpdateBuild'
+--     * 'UpdateBuild' 
 --
---     * 'DeleteBuild'
+--     * 'DeleteBuild' 
 --
 --
 --
@@ -52,7 +52,6 @@ module Network.AWS.GameLift.DescribeBuild
     ) where
 
 import Network.AWS.GameLift.Types
-import Network.AWS.GameLift.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.Request
@@ -63,12 +62,9 @@ import Network.AWS.Response
 --
 --
 -- /See:/ 'describeBuild' smart constructor.
-newtype DescribeBuild =
-  DescribeBuild'
-    { _dBuildId :: Text
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+newtype DescribeBuild = DescribeBuild'{_dBuildId ::
+                                       Text}
+                          deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'DescribeBuild' with the minimum fields required to make a request.
 --
@@ -78,8 +74,8 @@ newtype DescribeBuild =
 describeBuild
     :: Text -- ^ 'dBuildId'
     -> DescribeBuild
-describeBuild pBuildId_ = DescribeBuild' {_dBuildId = pBuildId_}
-
+describeBuild pBuildId_
+  = DescribeBuild'{_dBuildId = pBuildId_}
 
 -- | Unique identifier for a build to retrieve properties for.
 dBuildId :: Lens' DescribeBuild Text
@@ -122,13 +118,11 @@ instance ToQuery DescribeBuild where
 --
 --
 -- /See:/ 'describeBuildResponse' smart constructor.
-data DescribeBuildResponse =
-  DescribeBuildResponse'
-    { _dbrsBuild          :: !(Maybe Build)
-    , _dbrsResponseStatus :: !Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data DescribeBuildResponse = DescribeBuildResponse'{_dbrsBuild
+                                                    :: !(Maybe Build),
+                                                    _dbrsResponseStatus :: !Int}
+                               deriving (Eq, Read, Show, Data, Typeable,
+                                         Generic)
 
 -- | Creates a value of 'DescribeBuildResponse' with the minimum fields required to make a request.
 --
@@ -140,10 +134,9 @@ data DescribeBuildResponse =
 describeBuildResponse
     :: Int -- ^ 'dbrsResponseStatus'
     -> DescribeBuildResponse
-describeBuildResponse pResponseStatus_ =
-  DescribeBuildResponse'
-    {_dbrsBuild = Nothing, _dbrsResponseStatus = pResponseStatus_}
-
+describeBuildResponse pResponseStatus_
+  = DescribeBuildResponse'{_dbrsBuild = Nothing,
+                           _dbrsResponseStatus = pResponseStatus_}
 
 -- | Set of properties describing the requested build.
 dbrsBuild :: Lens' DescribeBuildResponse (Maybe Build)

@@ -47,28 +47,30 @@ module Network.AWS.AppSync.UpdateDataSource
     ) where
 
 import Network.AWS.AppSync.Types
-import Network.AWS.AppSync.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 
 -- | /See:/ 'updateDataSource' smart constructor.
-data UpdateDataSource =
-  UpdateDataSource'
-    { _udsServiceRoleARN :: !(Maybe Text)
-    , _udsRelationalDatabaseConfig :: !(Maybe RelationalDatabaseDataSourceConfig)
-    , _udsDynamodbConfig :: !(Maybe DynamodbDataSourceConfig)
-    , _udsHttpConfig :: !(Maybe HTTPDataSourceConfig)
-    , _udsLambdaConfig :: !(Maybe LambdaDataSourceConfig)
-    , _udsDescription :: !(Maybe Text)
-    , _udsElasticsearchConfig :: !(Maybe ElasticsearchDataSourceConfig)
-    , _udsApiId :: !Text
-    , _udsName :: !Text
-    , _udsType :: !DataSourceType
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data UpdateDataSource = UpdateDataSource'{_udsServiceRoleARN
+                                          :: !(Maybe Text),
+                                          _udsRelationalDatabaseConfig ::
+                                          !(Maybe
+                                              RelationalDatabaseDataSourceConfig),
+                                          _udsDynamodbConfig ::
+                                          !(Maybe DynamodbDataSourceConfig),
+                                          _udsHttpConfig ::
+                                          !(Maybe HTTPDataSourceConfig),
+                                          _udsLambdaConfig ::
+                                          !(Maybe LambdaDataSourceConfig),
+                                          _udsDescription :: !(Maybe Text),
+                                          _udsElasticsearchConfig ::
+                                          !(Maybe
+                                              ElasticsearchDataSourceConfig),
+                                          _udsApiId :: !Text, _udsName :: !Text,
+                                          _udsType :: !DataSourceType}
+                          deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'UpdateDataSource' with the minimum fields required to make a request.
 --
@@ -98,20 +100,15 @@ updateDataSource
     -> Text -- ^ 'udsName'
     -> DataSourceType -- ^ 'udsType'
     -> UpdateDataSource
-updateDataSource pApiId_ pName_ pType_ =
-  UpdateDataSource'
-    { _udsServiceRoleARN = Nothing
-    , _udsRelationalDatabaseConfig = Nothing
-    , _udsDynamodbConfig = Nothing
-    , _udsHttpConfig = Nothing
-    , _udsLambdaConfig = Nothing
-    , _udsDescription = Nothing
-    , _udsElasticsearchConfig = Nothing
-    , _udsApiId = pApiId_
-    , _udsName = pName_
-    , _udsType = pType_
-    }
-
+updateDataSource pApiId_ pName_ pType_
+  = UpdateDataSource'{_udsServiceRoleARN = Nothing,
+                      _udsRelationalDatabaseConfig = Nothing,
+                      _udsDynamodbConfig = Nothing,
+                      _udsHttpConfig = Nothing, _udsLambdaConfig = Nothing,
+                      _udsDescription = Nothing,
+                      _udsElasticsearchConfig = Nothing,
+                      _udsApiId = pApiId_, _udsName = pName_,
+                      _udsType = pType_}
 
 -- | The new service role ARN for the data source.
 udsServiceRoleARN :: Lens' UpdateDataSource (Maybe Text)
@@ -198,13 +195,13 @@ instance ToQuery UpdateDataSource where
         toQuery = const mempty
 
 -- | /See:/ 'updateDataSourceResponse' smart constructor.
-data UpdateDataSourceResponse =
-  UpdateDataSourceResponse'
-    { _udsrsDataSource     :: !(Maybe DataSource)
-    , _udsrsResponseStatus :: !Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data UpdateDataSourceResponse = UpdateDataSourceResponse'{_udsrsDataSource
+                                                          ::
+                                                          !(Maybe DataSource),
+                                                          _udsrsResponseStatus
+                                                          :: !Int}
+                                  deriving (Eq, Read, Show, Data, Typeable,
+                                            Generic)
 
 -- | Creates a value of 'UpdateDataSourceResponse' with the minimum fields required to make a request.
 --
@@ -216,10 +213,10 @@ data UpdateDataSourceResponse =
 updateDataSourceResponse
     :: Int -- ^ 'udsrsResponseStatus'
     -> UpdateDataSourceResponse
-updateDataSourceResponse pResponseStatus_ =
-  UpdateDataSourceResponse'
-    {_udsrsDataSource = Nothing, _udsrsResponseStatus = pResponseStatus_}
-
+updateDataSourceResponse pResponseStatus_
+  = UpdateDataSourceResponse'{_udsrsDataSource =
+                                Nothing,
+                              _udsrsResponseStatus = pResponseStatus_}
 
 -- | The updated @DataSource@ object.
 udsrsDataSource :: Lens' UpdateDataSourceResponse (Maybe DataSource)

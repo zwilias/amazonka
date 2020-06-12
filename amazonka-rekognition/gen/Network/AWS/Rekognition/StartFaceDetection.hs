@@ -46,31 +46,30 @@ module Network.AWS.Rekognition.StartFaceDetection
 import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.Rekognition.Types
-import Network.AWS.Rekognition.Types.Product
 import Network.AWS.Request
 import Network.AWS.Response
 
 -- | /See:/ 'startFaceDetection' smart constructor.
-data StartFaceDetection =
-  StartFaceDetection'
-    { _sfdJobTag              :: !(Maybe Text)
-    , _sfdNotificationChannel :: !(Maybe NotificationChannel)
-    , _sfdClientRequestToken  :: !(Maybe Text)
-    , _sfdFaceAttributes      :: !(Maybe FaceAttributes)
-    , _sfdVideo               :: !Video
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data StartFaceDetection = StartFaceDetection'{_sfdJobTag
+                                              :: !(Maybe Text),
+                                              _sfdNotificationChannel ::
+                                              !(Maybe NotificationChannel),
+                                              _sfdClientRequestToken ::
+                                              !(Maybe Text),
+                                              _sfdFaceAttributes ::
+                                              !(Maybe FaceAttributes),
+                                              _sfdVideo :: !Video}
+                            deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'StartFaceDetection' with the minimum fields required to make a request.
 --
 -- Use one of the following lenses to modify other fields as desired:
 --
--- * 'sfdJobTag' - Unique identifier you specify to identify the job in the completion status published to the Amazon Simple Notification Service topic.
+-- * 'sfdJobTag' - Unique identifier you specify to identify the job in the completion status published to the Amazon Simple Notification Service topic. 
 --
 -- * 'sfdNotificationChannel' - The ARN of the Amazon SNS topic to which you want Rekognition Video to publish the completion status of the face detection operation.
 --
--- * 'sfdClientRequestToken' - Idempotent token used to identify the start request. If you use the same token with multiple @StartFaceDetection@ requests, the same @JobId@ is returned. Use @ClientRequestToken@ to prevent the same job from being accidently started more than once.
+-- * 'sfdClientRequestToken' - Idempotent token used to identify the start request. If you use the same token with multiple @StartFaceDetection@ requests, the same @JobId@ is returned. Use @ClientRequestToken@ to prevent the same job from being accidently started more than once. 
 --
 -- * 'sfdFaceAttributes' - The face attributes you want returned. @DEFAULT@ - The following subset of facial attributes are returned: BoundingBox, Confidence, Pose, Quality and Landmarks.  @ALL@ - All facial attributes are returned.
 --
@@ -78,17 +77,13 @@ data StartFaceDetection =
 startFaceDetection
     :: Video -- ^ 'sfdVideo'
     -> StartFaceDetection
-startFaceDetection pVideo_ =
-  StartFaceDetection'
-    { _sfdJobTag = Nothing
-    , _sfdNotificationChannel = Nothing
-    , _sfdClientRequestToken = Nothing
-    , _sfdFaceAttributes = Nothing
-    , _sfdVideo = pVideo_
-    }
+startFaceDetection pVideo_
+  = StartFaceDetection'{_sfdJobTag = Nothing,
+                        _sfdNotificationChannel = Nothing,
+                        _sfdClientRequestToken = Nothing,
+                        _sfdFaceAttributes = Nothing, _sfdVideo = pVideo_}
 
-
--- | Unique identifier you specify to identify the job in the completion status published to the Amazon Simple Notification Service topic.
+-- | Unique identifier you specify to identify the job in the completion status published to the Amazon Simple Notification Service topic. 
 sfdJobTag :: Lens' StartFaceDetection (Maybe Text)
 sfdJobTag = lens _sfdJobTag (\ s a -> s{_sfdJobTag = a})
 
@@ -96,7 +91,7 @@ sfdJobTag = lens _sfdJobTag (\ s a -> s{_sfdJobTag = a})
 sfdNotificationChannel :: Lens' StartFaceDetection (Maybe NotificationChannel)
 sfdNotificationChannel = lens _sfdNotificationChannel (\ s a -> s{_sfdNotificationChannel = a})
 
--- | Idempotent token used to identify the start request. If you use the same token with multiple @StartFaceDetection@ requests, the same @JobId@ is returned. Use @ClientRequestToken@ to prevent the same job from being accidently started more than once.
+-- | Idempotent token used to identify the start request. If you use the same token with multiple @StartFaceDetection@ requests, the same @JobId@ is returned. Use @ClientRequestToken@ to prevent the same job from being accidently started more than once. 
 sfdClientRequestToken :: Lens' StartFaceDetection (Maybe Text)
 sfdClientRequestToken = lens _sfdClientRequestToken (\ s a -> s{_sfdClientRequestToken = a})
 
@@ -150,13 +145,12 @@ instance ToQuery StartFaceDetection where
         toQuery = const mempty
 
 -- | /See:/ 'startFaceDetectionResponse' smart constructor.
-data StartFaceDetectionResponse =
-  StartFaceDetectionResponse'
-    { _sfdrsJobId          :: !(Maybe Text)
-    , _sfdrsResponseStatus :: !Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data StartFaceDetectionResponse = StartFaceDetectionResponse'{_sfdrsJobId
+                                                              :: !(Maybe Text),
+                                                              _sfdrsResponseStatus
+                                                              :: !Int}
+                                    deriving (Eq, Read, Show, Data, Typeable,
+                                              Generic)
 
 -- | Creates a value of 'StartFaceDetectionResponse' with the minimum fields required to make a request.
 --
@@ -168,10 +162,9 @@ data StartFaceDetectionResponse =
 startFaceDetectionResponse
     :: Int -- ^ 'sfdrsResponseStatus'
     -> StartFaceDetectionResponse
-startFaceDetectionResponse pResponseStatus_ =
-  StartFaceDetectionResponse'
-    {_sfdrsJobId = Nothing, _sfdrsResponseStatus = pResponseStatus_}
-
+startFaceDetectionResponse pResponseStatus_
+  = StartFaceDetectionResponse'{_sfdrsJobId = Nothing,
+                                _sfdrsResponseStatus = pResponseStatus_}
 
 -- | The identifier for the face detection job. Use @JobId@ to identify the job in a subsequent call to @GetFaceDetection@ .
 sfdrsJobId :: Lens' StartFaceDetectionResponse (Maybe Text)

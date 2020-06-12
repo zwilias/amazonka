@@ -47,27 +47,34 @@ module Network.AWS.EC2.RevokeSecurityGroupEgress
     ) where
 
 import Network.AWS.EC2.Types
-import Network.AWS.EC2.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 
 -- | /See:/ 'revokeSecurityGroupEgress' smart constructor.
-data RevokeSecurityGroupEgress =
-  RevokeSecurityGroupEgress'
-    { _rsgeFromPort                   :: !(Maybe Int)
-    , _rsgeIPPermissions              :: !(Maybe [IPPermission])
-    , _rsgeIPProtocol                 :: !(Maybe Text)
-    , _rsgeToPort                     :: !(Maybe Int)
-    , _rsgeCidrIP                     :: !(Maybe Text)
-    , _rsgeSourceSecurityGroupOwnerId :: !(Maybe Text)
-    , _rsgeSourceSecurityGroupName    :: !(Maybe Text)
-    , _rsgeDryRun                     :: !(Maybe Bool)
-    , _rsgeGroupId                    :: !Text
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data RevokeSecurityGroupEgress = RevokeSecurityGroupEgress'{_rsgeFromPort
+                                                            :: !(Maybe Int),
+                                                            _rsgeIPPermissions
+                                                            ::
+                                                            !(Maybe
+                                                                [IPPermission]),
+                                                            _rsgeIPProtocol ::
+                                                            !(Maybe Text),
+                                                            _rsgeToPort ::
+                                                            !(Maybe Int),
+                                                            _rsgeCidrIP ::
+                                                            !(Maybe Text),
+                                                            _rsgeSourceSecurityGroupOwnerId
+                                                            :: !(Maybe Text),
+                                                            _rsgeSourceSecurityGroupName
+                                                            :: !(Maybe Text),
+                                                            _rsgeDryRun ::
+                                                            !(Maybe Bool),
+                                                            _rsgeGroupId ::
+                                                            !Text}
+                                   deriving (Eq, Read, Show, Data, Typeable,
+                                             Generic)
 
 -- | Creates a value of 'RevokeSecurityGroupEgress' with the minimum fields required to make a request.
 --
@@ -93,19 +100,14 @@ data RevokeSecurityGroupEgress =
 revokeSecurityGroupEgress
     :: Text -- ^ 'rsgeGroupId'
     -> RevokeSecurityGroupEgress
-revokeSecurityGroupEgress pGroupId_ =
-  RevokeSecurityGroupEgress'
-    { _rsgeFromPort = Nothing
-    , _rsgeIPPermissions = Nothing
-    , _rsgeIPProtocol = Nothing
-    , _rsgeToPort = Nothing
-    , _rsgeCidrIP = Nothing
-    , _rsgeSourceSecurityGroupOwnerId = Nothing
-    , _rsgeSourceSecurityGroupName = Nothing
-    , _rsgeDryRun = Nothing
-    , _rsgeGroupId = pGroupId_
-    }
-
+revokeSecurityGroupEgress pGroupId_
+  = RevokeSecurityGroupEgress'{_rsgeFromPort = Nothing,
+                               _rsgeIPPermissions = Nothing,
+                               _rsgeIPProtocol = Nothing, _rsgeToPort = Nothing,
+                               _rsgeCidrIP = Nothing,
+                               _rsgeSourceSecurityGroupOwnerId = Nothing,
+                               _rsgeSourceSecurityGroupName = Nothing,
+                               _rsgeDryRun = Nothing, _rsgeGroupId = pGroupId_}
 
 -- | Not supported. Use a set of IP permissions to specify the port.
 rsgeFromPort :: Lens' RevokeSecurityGroupEgress (Maybe Int)
@@ -178,17 +180,16 @@ instance ToQuery RevokeSecurityGroupEgress where
                "DryRun" =: _rsgeDryRun, "GroupId" =: _rsgeGroupId]
 
 -- | /See:/ 'revokeSecurityGroupEgressResponse' smart constructor.
-data RevokeSecurityGroupEgressResponse =
-  RevokeSecurityGroupEgressResponse'
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data RevokeSecurityGroupEgressResponse = RevokeSecurityGroupEgressResponse'
+                                           deriving (Eq, Read, Show, Data,
+                                                     Typeable, Generic)
 
 -- | Creates a value of 'RevokeSecurityGroupEgressResponse' with the minimum fields required to make a request.
 --
 revokeSecurityGroupEgressResponse
     :: RevokeSecurityGroupEgressResponse
-revokeSecurityGroupEgressResponse = RevokeSecurityGroupEgressResponse'
-
+revokeSecurityGroupEgressResponse
+  = RevokeSecurityGroupEgressResponse'
 
 instance NFData RevokeSecurityGroupEgressResponse
          where

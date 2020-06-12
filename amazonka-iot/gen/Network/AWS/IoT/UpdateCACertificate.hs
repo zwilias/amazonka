@@ -39,7 +39,6 @@ module Network.AWS.IoT.UpdateCACertificate
     ) where
 
 import Network.AWS.IoT.Types
-import Network.AWS.IoT.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.Request
@@ -50,16 +49,17 @@ import Network.AWS.Response
 --
 --
 -- /See:/ 'updateCACertificate' smart constructor.
-data UpdateCACertificate =
-  UpdateCACertificate'
-    { _ucacRemoveAutoRegistration    :: !(Maybe Bool)
-    , _ucacNewStatus                 :: !(Maybe CACertificateStatus)
-    , _ucacRegistrationConfig        :: !(Maybe RegistrationConfig)
-    , _ucacNewAutoRegistrationStatus :: !(Maybe AutoRegistrationStatus)
-    , _ucacCertificateId             :: !Text
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data UpdateCACertificate = UpdateCACertificate'{_ucacRemoveAutoRegistration
+                                                :: !(Maybe Bool),
+                                                _ucacNewStatus ::
+                                                !(Maybe CACertificateStatus),
+                                                _ucacRegistrationConfig ::
+                                                !(Maybe RegistrationConfig),
+                                                _ucacNewAutoRegistrationStatus
+                                                ::
+                                                !(Maybe AutoRegistrationStatus),
+                                                _ucacCertificateId :: !Text}
+                             deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'UpdateCACertificate' with the minimum fields required to make a request.
 --
@@ -77,15 +77,13 @@ data UpdateCACertificate =
 updateCACertificate
     :: Text -- ^ 'ucacCertificateId'
     -> UpdateCACertificate
-updateCACertificate pCertificateId_ =
-  UpdateCACertificate'
-    { _ucacRemoveAutoRegistration = Nothing
-    , _ucacNewStatus = Nothing
-    , _ucacRegistrationConfig = Nothing
-    , _ucacNewAutoRegistrationStatus = Nothing
-    , _ucacCertificateId = pCertificateId_
-    }
-
+updateCACertificate pCertificateId_
+  = UpdateCACertificate'{_ucacRemoveAutoRegistration =
+                           Nothing,
+                         _ucacNewStatus = Nothing,
+                         _ucacRegistrationConfig = Nothing,
+                         _ucacNewAutoRegistrationStatus = Nothing,
+                         _ucacCertificateId = pCertificateId_}
 
 -- | If true, remove auto registration.
 ucacRemoveAutoRegistration :: Lens' UpdateCACertificate (Maybe Bool)
@@ -142,16 +140,15 @@ instance ToQuery UpdateCACertificate where
                  _ucacNewAutoRegistrationStatus]
 
 -- | /See:/ 'updateCACertificateResponse' smart constructor.
-data UpdateCACertificateResponse =
-  UpdateCACertificateResponse'
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data UpdateCACertificateResponse = UpdateCACertificateResponse'
+                                     deriving (Eq, Read, Show, Data, Typeable,
+                                               Generic)
 
 -- | Creates a value of 'UpdateCACertificateResponse' with the minimum fields required to make a request.
 --
 updateCACertificateResponse
     :: UpdateCACertificateResponse
-updateCACertificateResponse = UpdateCACertificateResponse'
-
+updateCACertificateResponse
+  = UpdateCACertificateResponse'
 
 instance NFData UpdateCACertificateResponse where

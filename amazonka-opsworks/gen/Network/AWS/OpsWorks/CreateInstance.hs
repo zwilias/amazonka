@@ -58,41 +58,40 @@ module Network.AWS.OpsWorks.CreateInstance
 
 import Network.AWS.Lens
 import Network.AWS.OpsWorks.Types
-import Network.AWS.OpsWorks.Types.Product
 import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 
 -- | /See:/ 'createInstance' smart constructor.
-data CreateInstance =
-  CreateInstance'
-    { _ciInstallUpdatesOnBoot :: !(Maybe Bool)
-    , _ciVirtualizationType   :: !(Maybe Text)
-    , _ciHostname             :: !(Maybe Text)
-    , _ciSSHKeyName           :: !(Maybe Text)
-    , _ciAgentVersion         :: !(Maybe Text)
-    , _ciSubnetId             :: !(Maybe Text)
-    , _ciEBSOptimized         :: !(Maybe Bool)
-    , _ciOS                   :: !(Maybe Text)
-    , _ciAvailabilityZone     :: !(Maybe Text)
-    , _ciTenancy              :: !(Maybe Text)
-    , _ciAutoScalingType      :: !(Maybe AutoScalingType)
-    , _ciArchitecture         :: !(Maybe Architecture)
-    , _ciAMIId                :: !(Maybe Text)
-    , _ciRootDeviceType       :: !(Maybe RootDeviceType)
-    , _ciBlockDeviceMappings  :: !(Maybe [BlockDeviceMapping])
-    , _ciStackId              :: !Text
-    , _ciLayerIds             :: ![Text]
-    , _ciInstanceType         :: !Text
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data CreateInstance = CreateInstance'{_ciInstallUpdatesOnBoot
+                                      :: !(Maybe Bool),
+                                      _ciVirtualizationType :: !(Maybe Text),
+                                      _ciHostname :: !(Maybe Text),
+                                      _ciSSHKeyName :: !(Maybe Text),
+                                      _ciAgentVersion :: !(Maybe Text),
+                                      _ciSubnetId :: !(Maybe Text),
+                                      _ciEBSOptimized :: !(Maybe Bool),
+                                      _ciOS :: !(Maybe Text),
+                                      _ciAvailabilityZone :: !(Maybe Text),
+                                      _ciTenancy :: !(Maybe Text),
+                                      _ciAutoScalingType ::
+                                      !(Maybe AutoScalingType),
+                                      _ciArchitecture :: !(Maybe Architecture),
+                                      _ciAMIId :: !(Maybe Text),
+                                      _ciRootDeviceType ::
+                                      !(Maybe RootDeviceType),
+                                      _ciBlockDeviceMappings ::
+                                      !(Maybe [BlockDeviceMapping]),
+                                      _ciStackId :: !Text,
+                                      _ciLayerIds :: ![Text],
+                                      _ciInstanceType :: !Text}
+                        deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'CreateInstance' with the minimum fields required to make a request.
 --
 -- Use one of the following lenses to modify other fields as desired:
 --
--- * 'ciInstallUpdatesOnBoot' - Whether to install operating system and package updates when the instance boots. The default value is @true@ . To control when updates are installed, set this value to @false@ . You must then update your instances manually by using 'CreateDeployment' to run the @update_dependencies@ stack command or by manually running @yum@ (Amazon Linux) or @apt-get@ (Ubuntu) on the instances.
+-- * 'ciInstallUpdatesOnBoot' - Whether to install operating system and package updates when the instance boots. The default value is @true@ . To control when updates are installed, set this value to @false@ . You must then update your instances manually by using 'CreateDeployment' to run the @update_dependencies@ stack command or by manually running @yum@ (Amazon Linux) or @apt-get@ (Ubuntu) on the instances. 
 --
 -- * 'ciVirtualizationType' - The instance's virtualization type, @paravirtual@ or @hvm@ .
 --
@@ -131,30 +130,21 @@ createInstance
     :: Text -- ^ 'ciStackId'
     -> Text -- ^ 'ciInstanceType'
     -> CreateInstance
-createInstance pStackId_ pInstanceType_ =
-  CreateInstance'
-    { _ciInstallUpdatesOnBoot = Nothing
-    , _ciVirtualizationType = Nothing
-    , _ciHostname = Nothing
-    , _ciSSHKeyName = Nothing
-    , _ciAgentVersion = Nothing
-    , _ciSubnetId = Nothing
-    , _ciEBSOptimized = Nothing
-    , _ciOS = Nothing
-    , _ciAvailabilityZone = Nothing
-    , _ciTenancy = Nothing
-    , _ciAutoScalingType = Nothing
-    , _ciArchitecture = Nothing
-    , _ciAMIId = Nothing
-    , _ciRootDeviceType = Nothing
-    , _ciBlockDeviceMappings = Nothing
-    , _ciStackId = pStackId_
-    , _ciLayerIds = mempty
-    , _ciInstanceType = pInstanceType_
-    }
+createInstance pStackId_ pInstanceType_
+  = CreateInstance'{_ciInstallUpdatesOnBoot = Nothing,
+                    _ciVirtualizationType = Nothing,
+                    _ciHostname = Nothing, _ciSSHKeyName = Nothing,
+                    _ciAgentVersion = Nothing, _ciSubnetId = Nothing,
+                    _ciEBSOptimized = Nothing, _ciOS = Nothing,
+                    _ciAvailabilityZone = Nothing, _ciTenancy = Nothing,
+                    _ciAutoScalingType = Nothing,
+                    _ciArchitecture = Nothing, _ciAMIId = Nothing,
+                    _ciRootDeviceType = Nothing,
+                    _ciBlockDeviceMappings = Nothing,
+                    _ciStackId = pStackId_, _ciLayerIds = mempty,
+                    _ciInstanceType = pInstanceType_}
 
-
--- | Whether to install operating system and package updates when the instance boots. The default value is @true@ . To control when updates are installed, set this value to @false@ . You must then update your instances manually by using 'CreateDeployment' to run the @update_dependencies@ stack command or by manually running @yum@ (Amazon Linux) or @apt-get@ (Ubuntu) on the instances.
+-- | Whether to install operating system and package updates when the instance boots. The default value is @true@ . To control when updates are installed, set this value to @false@ . You must then update your instances manually by using 'CreateDeployment' to run the @update_dependencies@ stack command or by manually running @yum@ (Amazon Linux) or @apt-get@ (Ubuntu) on the instances. 
 ciInstallUpdatesOnBoot :: Lens' CreateInstance (Maybe Bool)
 ciInstallUpdatesOnBoot = lens _ciInstallUpdatesOnBoot (\ s a -> s{_ciInstallUpdatesOnBoot = a})
 
@@ -284,13 +274,12 @@ instance ToQuery CreateInstance where
 --
 --
 -- /See:/ 'createInstanceResponse' smart constructor.
-data CreateInstanceResponse =
-  CreateInstanceResponse'
-    { _cirsInstanceId     :: !(Maybe Text)
-    , _cirsResponseStatus :: !Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data CreateInstanceResponse = CreateInstanceResponse'{_cirsInstanceId
+                                                      :: !(Maybe Text),
+                                                      _cirsResponseStatus ::
+                                                      !Int}
+                                deriving (Eq, Read, Show, Data, Typeable,
+                                          Generic)
 
 -- | Creates a value of 'CreateInstanceResponse' with the minimum fields required to make a request.
 --
@@ -302,10 +291,9 @@ data CreateInstanceResponse =
 createInstanceResponse
     :: Int -- ^ 'cirsResponseStatus'
     -> CreateInstanceResponse
-createInstanceResponse pResponseStatus_ =
-  CreateInstanceResponse'
-    {_cirsInstanceId = Nothing, _cirsResponseStatus = pResponseStatus_}
-
+createInstanceResponse pResponseStatus_
+  = CreateInstanceResponse'{_cirsInstanceId = Nothing,
+                            _cirsResponseStatus = pResponseStatus_}
 
 -- | The instance ID.
 cirsInstanceId :: Lens' CreateInstanceResponse (Maybe Text)

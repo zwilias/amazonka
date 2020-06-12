@@ -38,19 +38,16 @@ module Network.AWS.Comprehend.DescribeDocumentClassifier
     ) where
 
 import Network.AWS.Comprehend.Types
-import Network.AWS.Comprehend.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 
 -- | /See:/ 'describeDocumentClassifier' smart constructor.
-newtype DescribeDocumentClassifier =
-  DescribeDocumentClassifier'
-    { _ddcDocumentClassifierARN :: Text
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+newtype DescribeDocumentClassifier = DescribeDocumentClassifier'{_ddcDocumentClassifierARN
+                                                                 :: Text}
+                                       deriving (Eq, Read, Show, Data, Typeable,
+                                                 Generic)
 
 -- | Creates a value of 'DescribeDocumentClassifier' with the minimum fields required to make a request.
 --
@@ -60,10 +57,9 @@ newtype DescribeDocumentClassifier =
 describeDocumentClassifier
     :: Text -- ^ 'ddcDocumentClassifierARN'
     -> DescribeDocumentClassifier
-describeDocumentClassifier pDocumentClassifierARN_ =
-  DescribeDocumentClassifier'
-    {_ddcDocumentClassifierARN = pDocumentClassifierARN_}
-
+describeDocumentClassifier pDocumentClassifierARN_
+  = DescribeDocumentClassifier'{_ddcDocumentClassifierARN
+                                  = pDocumentClassifierARN_}
 
 -- | The Amazon Resource Name (ARN) that identifies the document classifier. The operation returns this identifier in its response.
 ddcDocumentClassifierARN :: Lens' DescribeDocumentClassifier Text
@@ -109,13 +105,15 @@ instance ToQuery DescribeDocumentClassifier where
         toQuery = const mempty
 
 -- | /See:/ 'describeDocumentClassifierResponse' smart constructor.
-data DescribeDocumentClassifierResponse =
-  DescribeDocumentClassifierResponse'
-    { _ddcrsDocumentClassifierProperties :: !(Maybe DocumentClassifierProperties)
-    , _ddcrsResponseStatus :: !Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data DescribeDocumentClassifierResponse = DescribeDocumentClassifierResponse'{_ddcrsDocumentClassifierProperties
+                                                                              ::
+                                                                              !(Maybe
+                                                                                  DocumentClassifierProperties),
+                                                                              _ddcrsResponseStatus
+                                                                              ::
+                                                                              !Int}
+                                            deriving (Eq, Read, Show, Data,
+                                                      Typeable, Generic)
 
 -- | Creates a value of 'DescribeDocumentClassifierResponse' with the minimum fields required to make a request.
 --
@@ -127,12 +125,10 @@ data DescribeDocumentClassifierResponse =
 describeDocumentClassifierResponse
     :: Int -- ^ 'ddcrsResponseStatus'
     -> DescribeDocumentClassifierResponse
-describeDocumentClassifierResponse pResponseStatus_ =
-  DescribeDocumentClassifierResponse'
-    { _ddcrsDocumentClassifierProperties = Nothing
-    , _ddcrsResponseStatus = pResponseStatus_
-    }
-
+describeDocumentClassifierResponse pResponseStatus_
+  = DescribeDocumentClassifierResponse'{_ddcrsDocumentClassifierProperties
+                                          = Nothing,
+                                        _ddcrsResponseStatus = pResponseStatus_}
 
 -- | An object that contains the properties associated with a document classifier.
 ddcrsDocumentClassifierProperties :: Lens' DescribeDocumentClassifierResponse (Maybe DocumentClassifierProperties)

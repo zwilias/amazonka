@@ -38,20 +38,16 @@ module Network.AWS.Glue.DeleteDatabase
     ) where
 
 import Network.AWS.Glue.Types
-import Network.AWS.Glue.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 
 -- | /See:/ 'deleteDatabase' smart constructor.
-data DeleteDatabase =
-  DeleteDatabase'
-    { _ddCatalogId :: !(Maybe Text)
-    , _ddName      :: !Text
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data DeleteDatabase = DeleteDatabase'{_ddCatalogId ::
+                                      !(Maybe Text),
+                                      _ddName :: !Text}
+                        deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'DeleteDatabase' with the minimum fields required to make a request.
 --
@@ -63,9 +59,9 @@ data DeleteDatabase =
 deleteDatabase
     :: Text -- ^ 'ddName'
     -> DeleteDatabase
-deleteDatabase pName_ =
-  DeleteDatabase' {_ddCatalogId = Nothing, _ddName = pName_}
-
+deleteDatabase pName_
+  = DeleteDatabase'{_ddCatalogId = Nothing,
+                    _ddName = pName_}
 
 -- | The ID of the Data Catalog in which the database resides. If none is supplied, the AWS account ID is used by default.
 ddCatalogId :: Lens' DeleteDatabase (Maybe Text)
@@ -110,12 +106,10 @@ instance ToQuery DeleteDatabase where
         toQuery = const mempty
 
 -- | /See:/ 'deleteDatabaseResponse' smart constructor.
-newtype DeleteDatabaseResponse =
-  DeleteDatabaseResponse'
-    { _ddrsResponseStatus :: Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+newtype DeleteDatabaseResponse = DeleteDatabaseResponse'{_ddrsResponseStatus
+                                                         :: Int}
+                                   deriving (Eq, Read, Show, Data, Typeable,
+                                             Generic)
 
 -- | Creates a value of 'DeleteDatabaseResponse' with the minimum fields required to make a request.
 --
@@ -125,9 +119,9 @@ newtype DeleteDatabaseResponse =
 deleteDatabaseResponse
     :: Int -- ^ 'ddrsResponseStatus'
     -> DeleteDatabaseResponse
-deleteDatabaseResponse pResponseStatus_ =
-  DeleteDatabaseResponse' {_ddrsResponseStatus = pResponseStatus_}
-
+deleteDatabaseResponse pResponseStatus_
+  = DeleteDatabaseResponse'{_ddrsResponseStatus =
+                              pResponseStatus_}
 
 -- | -- | The response status code.
 ddrsResponseStatus :: Lens' DeleteDatabaseResponse Int

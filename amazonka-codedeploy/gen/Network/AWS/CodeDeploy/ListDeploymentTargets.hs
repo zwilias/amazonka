@@ -18,7 +18,7 @@
 -- Stability   : auto-generated
 -- Portability : non-portable (GHC extensions)
 --
--- Returns an array of target IDs that are associated a deployment.
+-- Returns an array of target IDs that are associated a deployment. 
 --
 --
 --
@@ -43,7 +43,6 @@ module Network.AWS.CodeDeploy.ListDeploymentTargets
     ) where
 
 import Network.AWS.CodeDeploy.Types
-import Network.AWS.CodeDeploy.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Pager
 import Network.AWS.Prelude
@@ -51,43 +50,41 @@ import Network.AWS.Request
 import Network.AWS.Response
 
 -- | /See:/ 'listDeploymentTargets' smart constructor.
-data ListDeploymentTargets =
-  ListDeploymentTargets'
-    { _ldtDeploymentId  :: !(Maybe Text)
-    , _ldtTargetFilters :: !(Maybe (Map TargetFilterName [Text]))
-    , _ldtNextToken     :: !(Maybe Text)
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data ListDeploymentTargets = ListDeploymentTargets'{_ldtDeploymentId
+                                                    :: !(Maybe Text),
+                                                    _ldtTargetFilters ::
+                                                    !(Maybe
+                                                        (Map TargetFilterName
+                                                           [Text])),
+                                                    _ldtNextToken ::
+                                                    !(Maybe Text)}
+                               deriving (Eq, Read, Show, Data, Typeable,
+                                         Generic)
 
 -- | Creates a value of 'ListDeploymentTargets' with the minimum fields required to make a request.
 --
 -- Use one of the following lenses to modify other fields as desired:
 --
--- * 'ldtDeploymentId' - The unique ID of a deployment.
+-- * 'ldtDeploymentId' - The unique ID of a deployment. 
 --
--- * 'ldtTargetFilters' - A key used to filter the returned targets. The two valid values are:     * @TargetStatus@ - A @TargetStatus@ filter string can be @Failed@ , @InProgress@ , @Pending@ , @Ready@ , @Skipped@ , @Succeeded@ , or @Unknown@ .      * @ServerInstanceLabel@ - A @ServerInstanceLabel@ filter string can be @Blue@ or @Green@ .
+-- * 'ldtTargetFilters' - A key used to filter the returned targets. The two valid values are:     * @TargetStatus@ - A @TargetStatus@ filter string can be @Failed@ , @InProgress@ , @Pending@ , @Ready@ , @Skipped@ , @Succeeded@ , or @Unknown@ .      * @ServerInstanceLabel@ - A @ServerInstanceLabel@ filter string can be @Blue@ or @Green@ . 
 --
--- * 'ldtNextToken' - A token identifier returned from the previous @ListDeploymentTargets@ call. It can be used to return the next set of deployment targets in the list.
+-- * 'ldtNextToken' - A token identifier returned from the previous @ListDeploymentTargets@ call. It can be used to return the next set of deployment targets in the list. 
 listDeploymentTargets
     :: ListDeploymentTargets
-listDeploymentTargets =
-  ListDeploymentTargets'
-    { _ldtDeploymentId = Nothing
-    , _ldtTargetFilters = Nothing
-    , _ldtNextToken = Nothing
-    }
+listDeploymentTargets
+  = ListDeploymentTargets'{_ldtDeploymentId = Nothing,
+                           _ldtTargetFilters = Nothing, _ldtNextToken = Nothing}
 
-
--- | The unique ID of a deployment.
+-- | The unique ID of a deployment. 
 ldtDeploymentId :: Lens' ListDeploymentTargets (Maybe Text)
 ldtDeploymentId = lens _ldtDeploymentId (\ s a -> s{_ldtDeploymentId = a})
 
--- | A key used to filter the returned targets. The two valid values are:     * @TargetStatus@ - A @TargetStatus@ filter string can be @Failed@ , @InProgress@ , @Pending@ , @Ready@ , @Skipped@ , @Succeeded@ , or @Unknown@ .      * @ServerInstanceLabel@ - A @ServerInstanceLabel@ filter string can be @Blue@ or @Green@ .
+-- | A key used to filter the returned targets. The two valid values are:     * @TargetStatus@ - A @TargetStatus@ filter string can be @Failed@ , @InProgress@ , @Pending@ , @Ready@ , @Skipped@ , @Succeeded@ , or @Unknown@ .      * @ServerInstanceLabel@ - A @ServerInstanceLabel@ filter string can be @Blue@ or @Green@ . 
 ldtTargetFilters :: Lens' ListDeploymentTargets (HashMap TargetFilterName [Text])
 ldtTargetFilters = lens _ldtTargetFilters (\ s a -> s{_ldtTargetFilters = a}) . _Default . _Map
 
--- | A token identifier returned from the previous @ListDeploymentTargets@ call. It can be used to return the next set of deployment targets in the list.
+-- | A token identifier returned from the previous @ListDeploymentTargets@ call. It can be used to return the next set of deployment targets in the list. 
 ldtNextToken :: Lens' ListDeploymentTargets (Maybe Text)
 ldtNextToken = lens _ldtNextToken (\ s a -> s{_ldtNextToken = a})
 
@@ -139,40 +136,42 @@ instance ToQuery ListDeploymentTargets where
         toQuery = const mempty
 
 -- | /See:/ 'listDeploymentTargetsResponse' smart constructor.
-data ListDeploymentTargetsResponse =
-  ListDeploymentTargetsResponse'
-    { _ldtrsNextToken      :: !(Maybe Text)
-    , _ldtrsTargetIds      :: !(Maybe [Text])
-    , _ldtrsResponseStatus :: !Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data ListDeploymentTargetsResponse = ListDeploymentTargetsResponse'{_ldtrsNextToken
+                                                                    ::
+                                                                    !(Maybe
+                                                                        Text),
+                                                                    _ldtrsTargetIds
+                                                                    ::
+                                                                    !(Maybe
+                                                                        [Text]),
+                                                                    _ldtrsResponseStatus
+                                                                    :: !Int}
+                                       deriving (Eq, Read, Show, Data, Typeable,
+                                                 Generic)
 
 -- | Creates a value of 'ListDeploymentTargetsResponse' with the minimum fields required to make a request.
 --
 -- Use one of the following lenses to modify other fields as desired:
 --
--- * 'ldtrsNextToken' - If a large amount of information is returned, a token identifier is also returned. It can be used in a subsequent @ListDeploymentTargets@ call to return the next set of deployment targets in the list.
+-- * 'ldtrsNextToken' - If a large amount of information is returned, a token identifier is also returned. It can be used in a subsequent @ListDeploymentTargets@ call to return the next set of deployment targets in the list. 
 --
--- * 'ldtrsTargetIds' - The unique IDs of deployment targets.
+-- * 'ldtrsTargetIds' - The unique IDs of deployment targets. 
 --
 -- * 'ldtrsResponseStatus' - -- | The response status code.
 listDeploymentTargetsResponse
     :: Int -- ^ 'ldtrsResponseStatus'
     -> ListDeploymentTargetsResponse
-listDeploymentTargetsResponse pResponseStatus_ =
-  ListDeploymentTargetsResponse'
-    { _ldtrsNextToken = Nothing
-    , _ldtrsTargetIds = Nothing
-    , _ldtrsResponseStatus = pResponseStatus_
-    }
+listDeploymentTargetsResponse pResponseStatus_
+  = ListDeploymentTargetsResponse'{_ldtrsNextToken =
+                                     Nothing,
+                                   _ldtrsTargetIds = Nothing,
+                                   _ldtrsResponseStatus = pResponseStatus_}
 
-
--- | If a large amount of information is returned, a token identifier is also returned. It can be used in a subsequent @ListDeploymentTargets@ call to return the next set of deployment targets in the list.
+-- | If a large amount of information is returned, a token identifier is also returned. It can be used in a subsequent @ListDeploymentTargets@ call to return the next set of deployment targets in the list. 
 ldtrsNextToken :: Lens' ListDeploymentTargetsResponse (Maybe Text)
 ldtrsNextToken = lens _ldtrsNextToken (\ s a -> s{_ldtrsNextToken = a})
 
--- | The unique IDs of deployment targets.
+-- | The unique IDs of deployment targets. 
 ldtrsTargetIds :: Lens' ListDeploymentTargetsResponse [Text]
 ldtrsTargetIds = lens _ldtrsTargetIds (\ s a -> s{_ldtrsTargetIds = a}) . _Default . _Coerce
 

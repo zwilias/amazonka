@@ -37,7 +37,7 @@
 --
 -- In EventBridge, you could create rules that lead to infinite loops, where a rule is fired repeatedly. For example, a rule might detect that ACLs have changed on an S3 bucket, and trigger software to change them to the desired state. If you don't write the rule carefully, the subsequent change to the ACLs fires the rule again, creating an infinite loop.
 --
--- To prevent this, write the rules so that the triggered actions don't refire the same rule. For example, your rule could fire only if ACLs are found to be in a bad state, instead of after any change.
+-- To prevent this, write the rules so that the triggered actions don't refire the same rule. For example, your rule could fire only if ACLs are found to be in a bad state, instead of after any change. 
 --
 -- An infinite loop can quickly cause higher than expected charges. We recommend that you use budgeting, which alerts you when charges exceed your specified limit. For more information, see <https://docs.aws.amazon.com/awsaccountbilling/latest/aboutv2/budgets-managing-costs.html Managing Your Costs with Budgets> .
 --
@@ -65,26 +65,21 @@ module Network.AWS.CloudWatchEvents.PutRule
     ) where
 
 import Network.AWS.CloudWatchEvents.Types
-import Network.AWS.CloudWatchEvents.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 
 -- | /See:/ 'putRule' smart constructor.
-data PutRule =
-  PutRule'
-    { _prEventPattern       :: !(Maybe Text)
-    , _prState              :: !(Maybe RuleState)
-    , _prEventBusName       :: !(Maybe Text)
-    , _prScheduleExpression :: !(Maybe Text)
-    , _prDescription        :: !(Maybe Text)
-    , _prTags               :: !(Maybe [Tag])
-    , _prRoleARN            :: !(Maybe Text)
-    , _prName               :: !Text
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data PutRule = PutRule'{_prEventPattern ::
+                        !(Maybe Text),
+                        _prState :: !(Maybe RuleState),
+                        _prEventBusName :: !(Maybe Text),
+                        _prScheduleExpression :: !(Maybe Text),
+                        _prDescription :: !(Maybe Text),
+                        _prTags :: !(Maybe [Tag]),
+                        _prRoleARN :: !(Maybe Text), _prName :: !Text}
+                 deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'PutRule' with the minimum fields required to make a request.
 --
@@ -108,18 +103,12 @@ data PutRule =
 putRule
     :: Text -- ^ 'prName'
     -> PutRule
-putRule pName_ =
-  PutRule'
-    { _prEventPattern = Nothing
-    , _prState = Nothing
-    , _prEventBusName = Nothing
-    , _prScheduleExpression = Nothing
-    , _prDescription = Nothing
-    , _prTags = Nothing
-    , _prRoleARN = Nothing
-    , _prName = pName_
-    }
-
+putRule pName_
+  = PutRule'{_prEventPattern = Nothing,
+             _prState = Nothing, _prEventBusName = Nothing,
+             _prScheduleExpression = Nothing,
+             _prDescription = Nothing, _prTags = Nothing,
+             _prRoleARN = Nothing, _prName = pName_}
 
 -- | The event pattern. For more information, see <https://docs.aws.amazon.com/eventbridge/latest/userguide/eventbridge-and-event-patterns.html Event Patterns> in the /Amazon EventBridge User Guide/ .
 prEventPattern :: Lens' PutRule (Maybe Text)
@@ -195,13 +184,10 @@ instance ToQuery PutRule where
         toQuery = const mempty
 
 -- | /See:/ 'putRuleResponse' smart constructor.
-data PutRuleResponse =
-  PutRuleResponse'
-    { _prrsRuleARN        :: !(Maybe Text)
-    , _prrsResponseStatus :: !Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data PutRuleResponse = PutRuleResponse'{_prrsRuleARN
+                                        :: !(Maybe Text),
+                                        _prrsResponseStatus :: !Int}
+                         deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'PutRuleResponse' with the minimum fields required to make a request.
 --
@@ -213,10 +199,9 @@ data PutRuleResponse =
 putRuleResponse
     :: Int -- ^ 'prrsResponseStatus'
     -> PutRuleResponse
-putRuleResponse pResponseStatus_ =
-  PutRuleResponse'
-    {_prrsRuleARN = Nothing, _prrsResponseStatus = pResponseStatus_}
-
+putRuleResponse pResponseStatus_
+  = PutRuleResponse'{_prrsRuleARN = Nothing,
+                     _prrsResponseStatus = pResponseStatus_}
 
 -- | The Amazon Resource Name (ARN) of the rule.
 prrsRuleARN :: Lens' PutRuleResponse (Maybe Text)

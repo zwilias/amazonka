@@ -23,7 +23,7 @@
 --
 -- Each scalable target is identified by a service namespace, resource ID, and scalable dimension. A scaling policy applies to the scalable target identified by those three attributes. You cannot create a scaling policy until you have registered the resource as a scalable target.
 --
--- Multiple scaling policies can be in force at the same time for the same scalable target. You can have one or more target tracking scaling policies, one or more step scaling policies, or both. However, there is a chance that multiple policies could conflict, instructing the scalable target to scale out or in at the same time. Application Auto Scaling gives precedence to the policy that provides the largest capacity for both scale out and scale in. For example, if one policy increases capacity by 3, another policy increases capacity by 200 percent, and the current capacity is 10, Application Auto Scaling uses the policy with the highest calculated capacity (200% of 10 = 20) and scales out to 30.
+-- Multiple scaling policies can be in force at the same time for the same scalable target. You can have one or more target tracking scaling policies, one or more step scaling policies, or both. However, there is a chance that multiple policies could conflict, instructing the scalable target to scale out or in at the same time. Application Auto Scaling gives precedence to the policy that provides the largest capacity for both scale out and scale in. For example, if one policy increases capacity by 3, another policy increases capacity by 200 percent, and the current capacity is 10, Application Auto Scaling uses the policy with the highest calculated capacity (200% of 10 = 20) and scales out to 30. 
 --
 -- For more information, see <https://docs.aws.amazon.com/autoscaling/application/userguide/application-auto-scaling-target-tracking.html Target Tracking Scaling Policies> and <https://docs.aws.amazon.com/autoscaling/application/userguide/application-auto-scaling-step-scaling-policies.html Step Scaling Policies> in the /Application Auto Scaling User Guide/ .
 --
@@ -51,25 +51,28 @@ module Network.AWS.ApplicationAutoScaling.PutScalingPolicy
     ) where
 
 import Network.AWS.ApplicationAutoScaling.Types
-import Network.AWS.ApplicationAutoScaling.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 
 -- | /See:/ 'putScalingPolicy' smart constructor.
-data PutScalingPolicy =
-  PutScalingPolicy'
-    { _pspPolicyType :: !(Maybe PolicyType)
-    , _pspTargetTrackingScalingPolicyConfiguration :: !(Maybe TargetTrackingScalingPolicyConfiguration)
-    , _pspStepScalingPolicyConfiguration :: !(Maybe StepScalingPolicyConfiguration)
-    , _pspPolicyName :: !Text
-    , _pspServiceNamespace :: !ServiceNamespace
-    , _pspResourceId :: !Text
-    , _pspScalableDimension :: !ScalableDimension
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data PutScalingPolicy = PutScalingPolicy'{_pspPolicyType
+                                          :: !(Maybe PolicyType),
+                                          _pspTargetTrackingScalingPolicyConfiguration
+                                          ::
+                                          !(Maybe
+                                              TargetTrackingScalingPolicyConfiguration),
+                                          _pspStepScalingPolicyConfiguration ::
+                                          !(Maybe
+                                              StepScalingPolicyConfiguration),
+                                          _pspPolicyName :: !Text,
+                                          _pspServiceNamespace ::
+                                          !ServiceNamespace,
+                                          _pspResourceId :: !Text,
+                                          _pspScalableDimension ::
+                                          !ScalableDimension}
+                          deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'PutScalingPolicy' with the minimum fields required to make a request.
 --
@@ -94,17 +97,16 @@ putScalingPolicy
     -> Text -- ^ 'pspResourceId'
     -> ScalableDimension -- ^ 'pspScalableDimension'
     -> PutScalingPolicy
-putScalingPolicy pPolicyName_ pServiceNamespace_ pResourceId_ pScalableDimension_ =
-  PutScalingPolicy'
-    { _pspPolicyType = Nothing
-    , _pspTargetTrackingScalingPolicyConfiguration = Nothing
-    , _pspStepScalingPolicyConfiguration = Nothing
-    , _pspPolicyName = pPolicyName_
-    , _pspServiceNamespace = pServiceNamespace_
-    , _pspResourceId = pResourceId_
-    , _pspScalableDimension = pScalableDimension_
-    }
-
+putScalingPolicy pPolicyName_ pServiceNamespace_
+  pResourceId_ pScalableDimension_
+  = PutScalingPolicy'{_pspPolicyType = Nothing,
+                      _pspTargetTrackingScalingPolicyConfiguration =
+                        Nothing,
+                      _pspStepScalingPolicyConfiguration = Nothing,
+                      _pspPolicyName = pPolicyName_,
+                      _pspServiceNamespace = pServiceNamespace_,
+                      _pspResourceId = pResourceId_,
+                      _pspScalableDimension = pScalableDimension_}
 
 -- | The policy type. This parameter is required if you are creating a scaling policy. The following policy types are supported:  @TargetTrackingScaling@ —Not supported for Amazon EMR @StepScaling@ —Not supported for DynamoDB, Amazon Comprehend, Lambda, or Amazon Keyspaces for Apache Cassandra. For more information, see <https://docs.aws.amazon.com/autoscaling/application/userguide/application-auto-scaling-target-tracking.html Target Tracking Scaling Policies> and <https://docs.aws.amazon.com/autoscaling/application/userguide/application-auto-scaling-step-scaling-policies.html Step Scaling Policies> in the /Application Auto Scaling User Guide/ .
 pspPolicyType :: Lens' PutScalingPolicy (Maybe PolicyType)
@@ -179,14 +181,14 @@ instance ToQuery PutScalingPolicy where
         toQuery = const mempty
 
 -- | /See:/ 'putScalingPolicyResponse' smart constructor.
-data PutScalingPolicyResponse =
-  PutScalingPolicyResponse'
-    { _psprsAlarms         :: !(Maybe [Alarm])
-    , _psprsResponseStatus :: !Int
-    , _psprsPolicyARN      :: !Text
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data PutScalingPolicyResponse = PutScalingPolicyResponse'{_psprsAlarms
+                                                          :: !(Maybe [Alarm]),
+                                                          _psprsResponseStatus
+                                                          :: !Int,
+                                                          _psprsPolicyARN ::
+                                                          !Text}
+                                  deriving (Eq, Read, Show, Data, Typeable,
+                                            Generic)
 
 -- | Creates a value of 'PutScalingPolicyResponse' with the minimum fields required to make a request.
 --
@@ -201,13 +203,10 @@ putScalingPolicyResponse
     :: Int -- ^ 'psprsResponseStatus'
     -> Text -- ^ 'psprsPolicyARN'
     -> PutScalingPolicyResponse
-putScalingPolicyResponse pResponseStatus_ pPolicyARN_ =
-  PutScalingPolicyResponse'
-    { _psprsAlarms = Nothing
-    , _psprsResponseStatus = pResponseStatus_
-    , _psprsPolicyARN = pPolicyARN_
-    }
-
+putScalingPolicyResponse pResponseStatus_ pPolicyARN_
+  = PutScalingPolicyResponse'{_psprsAlarms = Nothing,
+                              _psprsResponseStatus = pResponseStatus_,
+                              _psprsPolicyARN = pPolicyARN_}
 
 -- | The CloudWatch alarms created for the target tracking scaling policy.
 psprsAlarms :: Lens' PutScalingPolicyResponse [Alarm]

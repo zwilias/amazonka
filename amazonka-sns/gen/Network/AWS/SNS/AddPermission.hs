@@ -42,18 +42,14 @@ import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 import Network.AWS.SNS.Types
-import Network.AWS.SNS.Types.Product
 
 -- | /See:/ 'addPermission' smart constructor.
-data AddPermission =
-  AddPermission'
-    { _apTopicARN     :: !Text
-    , _apLabel        :: !Text
-    , _apAWSAccountId :: ![Text]
-    , _apActionName   :: ![Text]
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data AddPermission = AddPermission'{_apTopicARN ::
+                                    !Text,
+                                    _apLabel :: !Text,
+                                    _apAWSAccountId :: ![Text],
+                                    _apActionName :: ![Text]}
+                       deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'AddPermission' with the minimum fields required to make a request.
 --
@@ -70,14 +66,10 @@ addPermission
     :: Text -- ^ 'apTopicARN'
     -> Text -- ^ 'apLabel'
     -> AddPermission
-addPermission pTopicARN_ pLabel_ =
-  AddPermission'
-    { _apTopicARN = pTopicARN_
-    , _apLabel = pLabel_
-    , _apAWSAccountId = mempty
-    , _apActionName = mempty
-    }
-
+addPermission pTopicARN_ pLabel_
+  = AddPermission'{_apTopicARN = pTopicARN_,
+                   _apLabel = pLabel_, _apAWSAccountId = mempty,
+                   _apActionName = mempty}
 
 -- | The ARN of the topic whose access control policy you wish to modify.
 apTopicARN :: Lens' AddPermission Text
@@ -121,16 +113,14 @@ instance ToQuery AddPermission where
                "ActionName" =: toQueryList "member" _apActionName]
 
 -- | /See:/ 'addPermissionResponse' smart constructor.
-data AddPermissionResponse =
-  AddPermissionResponse'
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data AddPermissionResponse = AddPermissionResponse'
+                               deriving (Eq, Read, Show, Data, Typeable,
+                                         Generic)
 
 -- | Creates a value of 'AddPermissionResponse' with the minimum fields required to make a request.
 --
 addPermissionResponse
     :: AddPermissionResponse
 addPermissionResponse = AddPermissionResponse'
-
 
 instance NFData AddPermissionResponse where

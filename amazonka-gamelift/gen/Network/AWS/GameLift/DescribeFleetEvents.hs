@@ -23,47 +23,47 @@
 --
 -- Fleet-related operations include:
 --
---     * 'CreateFleet'
+--     * 'CreateFleet' 
 --
---     * 'ListFleets'
+--     * 'ListFleets' 
 --
---     * 'DeleteFleet'
+--     * 'DeleteFleet' 
 --
 --     * Describe fleets:
 --
---     * 'DescribeFleetAttributes'
+--     * 'DescribeFleetAttributes' 
 --
---     * 'DescribeFleetCapacity'
+--     * 'DescribeFleetCapacity' 
 --
---     * 'DescribeFleetPortSettings'
+--     * 'DescribeFleetPortSettings' 
 --
---     * 'DescribeFleetUtilization'
+--     * 'DescribeFleetUtilization' 
 --
---     * 'DescribeRuntimeConfiguration'
+--     * 'DescribeRuntimeConfiguration' 
 --
---     * 'DescribeEC2InstanceLimits'
+--     * 'DescribeEC2InstanceLimits' 
 --
---     * 'DescribeFleetEvents'
+--     * 'DescribeFleetEvents' 
 --
 --
 --
 --     * Update fleets:
 --
---     * 'UpdateFleetAttributes'
+--     * 'UpdateFleetAttributes' 
 --
---     * 'UpdateFleetCapacity'
+--     * 'UpdateFleetCapacity' 
 --
---     * 'UpdateFleetPortSettings'
+--     * 'UpdateFleetPortSettings' 
 --
---     * 'UpdateRuntimeConfiguration'
+--     * 'UpdateRuntimeConfiguration' 
 --
 --
 --
 --     * Manage fleet actions:
 --
---     * 'StartFleetActions'
+--     * 'StartFleetActions' 
 --
---     * 'StopFleetActions'
+--     * 'StopFleetActions' 
 --
 --
 --
@@ -91,7 +91,6 @@ module Network.AWS.GameLift.DescribeFleetEvents
     ) where
 
 import Network.AWS.GameLift.Types
-import Network.AWS.GameLift.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.Request
@@ -102,16 +101,13 @@ import Network.AWS.Response
 --
 --
 -- /See:/ 'describeFleetEvents' smart constructor.
-data DescribeFleetEvents =
-  DescribeFleetEvents'
-    { _dfeStartTime :: !(Maybe POSIX)
-    , _dfeNextToken :: !(Maybe Text)
-    , _dfeEndTime   :: !(Maybe POSIX)
-    , _dfeLimit     :: !(Maybe Nat)
-    , _dfeFleetId   :: !Text
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data DescribeFleetEvents = DescribeFleetEvents'{_dfeStartTime
+                                                :: !(Maybe POSIX),
+                                                _dfeNextToken :: !(Maybe Text),
+                                                _dfeEndTime :: !(Maybe POSIX),
+                                                _dfeLimit :: !(Maybe Nat),
+                                                _dfeFleetId :: !Text}
+                             deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'DescribeFleetEvents' with the minimum fields required to make a request.
 --
@@ -129,15 +125,10 @@ data DescribeFleetEvents =
 describeFleetEvents
     :: Text -- ^ 'dfeFleetId'
     -> DescribeFleetEvents
-describeFleetEvents pFleetId_ =
-  DescribeFleetEvents'
-    { _dfeStartTime = Nothing
-    , _dfeNextToken = Nothing
-    , _dfeEndTime = Nothing
-    , _dfeLimit = Nothing
-    , _dfeFleetId = pFleetId_
-    }
-
+describeFleetEvents pFleetId_
+  = DescribeFleetEvents'{_dfeStartTime = Nothing,
+                         _dfeNextToken = Nothing, _dfeEndTime = Nothing,
+                         _dfeLimit = Nothing, _dfeFleetId = pFleetId_}
 
 -- | Earliest date to retrieve event logs for. If no start time is specified, this call returns entries starting from when the fleet was created to the specified end time. Format is a number expressed in Unix time as milliseconds (ex: "1469498468.057").
 dfeStartTime :: Lens' DescribeFleetEvents (Maybe UTCTime)
@@ -204,14 +195,16 @@ instance ToQuery DescribeFleetEvents where
 --
 --
 -- /See:/ 'describeFleetEventsResponse' smart constructor.
-data DescribeFleetEventsResponse =
-  DescribeFleetEventsResponse'
-    { _dfersNextToken      :: !(Maybe Text)
-    , _dfersEvents         :: !(Maybe [Event])
-    , _dfersResponseStatus :: !Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data DescribeFleetEventsResponse = DescribeFleetEventsResponse'{_dfersNextToken
+                                                                ::
+                                                                !(Maybe Text),
+                                                                _dfersEvents ::
+                                                                !(Maybe
+                                                                    [Event]),
+                                                                _dfersResponseStatus
+                                                                :: !Int}
+                                     deriving (Eq, Read, Show, Data, Typeable,
+                                               Generic)
 
 -- | Creates a value of 'DescribeFleetEventsResponse' with the minimum fields required to make a request.
 --
@@ -225,13 +218,11 @@ data DescribeFleetEventsResponse =
 describeFleetEventsResponse
     :: Int -- ^ 'dfersResponseStatus'
     -> DescribeFleetEventsResponse
-describeFleetEventsResponse pResponseStatus_ =
-  DescribeFleetEventsResponse'
-    { _dfersNextToken = Nothing
-    , _dfersEvents = Nothing
-    , _dfersResponseStatus = pResponseStatus_
-    }
-
+describeFleetEventsResponse pResponseStatus_
+  = DescribeFleetEventsResponse'{_dfersNextToken =
+                                   Nothing,
+                                 _dfersEvents = Nothing,
+                                 _dfersResponseStatus = pResponseStatus_}
 
 -- | Token that indicates where to resume retrieving results on the next call to this action. If no token is returned, these results represent the end of the list.
 dfersNextToken :: Lens' DescribeFleetEventsResponse (Maybe Text)

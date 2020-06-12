@@ -41,7 +41,6 @@ module Network.AWS.CodePipeline.GetThirdPartyJobDetails
     ) where
 
 import Network.AWS.CodePipeline.Types
-import Network.AWS.CodePipeline.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.Request
@@ -52,13 +51,12 @@ import Network.AWS.Response
 --
 --
 -- /See:/ 'getThirdPartyJobDetails' smart constructor.
-data GetThirdPartyJobDetails =
-  GetThirdPartyJobDetails'
-    { _gtpjdJobId       :: !Text
-    , _gtpjdClientToken :: !Text
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data GetThirdPartyJobDetails = GetThirdPartyJobDetails'{_gtpjdJobId
+                                                        :: !Text,
+                                                        _gtpjdClientToken ::
+                                                        !Text}
+                                 deriving (Eq, Read, Show, Data, Typeable,
+                                           Generic)
 
 -- | Creates a value of 'GetThirdPartyJobDetails' with the minimum fields required to make a request.
 --
@@ -71,10 +69,9 @@ getThirdPartyJobDetails
     :: Text -- ^ 'gtpjdJobId'
     -> Text -- ^ 'gtpjdClientToken'
     -> GetThirdPartyJobDetails
-getThirdPartyJobDetails pJobId_ pClientToken_ =
-  GetThirdPartyJobDetails'
-    {_gtpjdJobId = pJobId_, _gtpjdClientToken = pClientToken_}
-
+getThirdPartyJobDetails pJobId_ pClientToken_
+  = GetThirdPartyJobDetails'{_gtpjdJobId = pJobId_,
+                             _gtpjdClientToken = pClientToken_}
 
 -- | The unique system-generated ID used for identifying the job.
 gtpjdJobId :: Lens' GetThirdPartyJobDetails Text
@@ -126,13 +123,14 @@ instance ToQuery GetThirdPartyJobDetails where
 --
 --
 -- /See:/ 'getThirdPartyJobDetailsResponse' smart constructor.
-data GetThirdPartyJobDetailsResponse =
-  GetThirdPartyJobDetailsResponse'
-    { _gtpjdrsJobDetails     :: !(Maybe ThirdPartyJobDetails)
-    , _gtpjdrsResponseStatus :: !Int
-    }
-  deriving (Eq, Show, Data, Typeable, Generic)
-
+data GetThirdPartyJobDetailsResponse = GetThirdPartyJobDetailsResponse'{_gtpjdrsJobDetails
+                                                                        ::
+                                                                        !(Maybe
+                                                                            ThirdPartyJobDetails),
+                                                                        _gtpjdrsResponseStatus
+                                                                        :: !Int}
+                                         deriving (Eq, Show, Data, Typeable,
+                                                   Generic)
 
 -- | Creates a value of 'GetThirdPartyJobDetailsResponse' with the minimum fields required to make a request.
 --
@@ -144,10 +142,10 @@ data GetThirdPartyJobDetailsResponse =
 getThirdPartyJobDetailsResponse
     :: Int -- ^ 'gtpjdrsResponseStatus'
     -> GetThirdPartyJobDetailsResponse
-getThirdPartyJobDetailsResponse pResponseStatus_ =
-  GetThirdPartyJobDetailsResponse'
-    {_gtpjdrsJobDetails = Nothing, _gtpjdrsResponseStatus = pResponseStatus_}
-
+getThirdPartyJobDetailsResponse pResponseStatus_
+  = GetThirdPartyJobDetailsResponse'{_gtpjdrsJobDetails
+                                       = Nothing,
+                                     _gtpjdrsResponseStatus = pResponseStatus_}
 
 -- | The details of the job, including any protected values defined for the job.
 gtpjdrsJobDetails :: Lens' GetThirdPartyJobDetailsResponse (Maybe ThirdPartyJobDetails)

@@ -45,22 +45,18 @@ module Network.AWS.IAM.CreatePolicy
     ) where
 
 import Network.AWS.IAM.Types
-import Network.AWS.IAM.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 
 -- | /See:/ 'createPolicy' smart constructor.
-data CreatePolicy =
-  CreatePolicy'
-    { _cpPath           :: !(Maybe Text)
-    , _cpDescription    :: !(Maybe Text)
-    , _cpPolicyName     :: !Text
-    , _cpPolicyDocument :: !Text
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data CreatePolicy = CreatePolicy'{_cpPath ::
+                                  !(Maybe Text),
+                                  _cpDescription :: !(Maybe Text),
+                                  _cpPolicyName :: !Text,
+                                  _cpPolicyDocument :: !Text}
+                      deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'CreatePolicy' with the minimum fields required to make a request.
 --
@@ -77,14 +73,11 @@ createPolicy
     :: Text -- ^ 'cpPolicyName'
     -> Text -- ^ 'cpPolicyDocument'
     -> CreatePolicy
-createPolicy pPolicyName_ pPolicyDocument_ =
-  CreatePolicy'
-    { _cpPath = Nothing
-    , _cpDescription = Nothing
-    , _cpPolicyName = pPolicyName_
-    , _cpPolicyDocument = pPolicyDocument_
-    }
-
+createPolicy pPolicyName_ pPolicyDocument_
+  = CreatePolicy'{_cpPath = Nothing,
+                  _cpDescription = Nothing,
+                  _cpPolicyName = pPolicyName_,
+                  _cpPolicyDocument = pPolicyDocument_}
 
 -- | The path for the policy. For more information about paths, see <http://docs.aws.amazon.com/IAM/latest/UserGuide/Using_Identifiers.html IAM Identifiers> in the /IAM User Guide/ . This parameter is optional. If it is not included, it defaults to a slash (/). This parameter allows (per its <http://wikipedia.org/wiki/regex regex pattern> ) a string of characters consisting of either a forward slash (/) by itself or a string that must begin and end with forward slashes. In addition, it can contain any ASCII character from the ! (\u0021) through the DEL character (\u007F), including most punctuation characters, digits, and upper and lowercased letters.
 cpPath :: Lens' CreatePolicy (Maybe Text)
@@ -130,18 +123,15 @@ instance ToQuery CreatePolicy where
                "PolicyName" =: _cpPolicyName,
                "PolicyDocument" =: _cpPolicyDocument]
 
--- | Contains the response to a successful 'CreatePolicy' request.
+-- | Contains the response to a successful 'CreatePolicy' request. 
 --
 --
 --
 -- /See:/ 'createPolicyResponse' smart constructor.
-data CreatePolicyResponse =
-  CreatePolicyResponse'
-    { _cprsPolicy         :: !(Maybe Policy)
-    , _cprsResponseStatus :: !Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data CreatePolicyResponse = CreatePolicyResponse'{_cprsPolicy
+                                                  :: !(Maybe Policy),
+                                                  _cprsResponseStatus :: !Int}
+                              deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'CreatePolicyResponse' with the minimum fields required to make a request.
 --
@@ -153,10 +143,9 @@ data CreatePolicyResponse =
 createPolicyResponse
     :: Int -- ^ 'cprsResponseStatus'
     -> CreatePolicyResponse
-createPolicyResponse pResponseStatus_ =
-  CreatePolicyResponse'
-    {_cprsPolicy = Nothing, _cprsResponseStatus = pResponseStatus_}
-
+createPolicyResponse pResponseStatus_
+  = CreatePolicyResponse'{_cprsPolicy = Nothing,
+                          _cprsResponseStatus = pResponseStatus_}
 
 -- | A structure containing details about the new policy.
 cprsPolicy :: Lens' CreatePolicyResponse (Maybe Policy)

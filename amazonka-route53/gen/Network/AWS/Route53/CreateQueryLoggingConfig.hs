@@ -29,7 +29,7 @@
 --
 --     * DNS record type, such as A or AAAA
 --
---     * DNS response code, such as @NoError@ or @ServFail@
+--     * DNS response code, such as @NoError@ or @ServFail@ 
 --
 --
 --
@@ -43,7 +43,7 @@
 --
 --     * When you create log groups for query logging, we recommend that you use a consistent prefix, for example:
 --
--- @/aws/route53//hosted zone name/ @
+-- @/aws/route53//hosted zone name/ @ 
 --
 -- In the next step, you'll create a resource policy, which controls access to one or more log groups and the associated AWS resources, such as Amazon Route 53 hosted zones. There's a limit on the number of resource policies that you can create, so we recommend that you use a consistent prefix so you can use the same resource policy for all the log groups that you create for query logging.
 --
@@ -51,7 +51,7 @@
 --
 --     * Create a CloudWatch Logs resource policy, and give it the permissions that Amazon Route 53 needs to create log streams and to send query logs to log streams. For the value of @Resource@ , specify the ARN for the log group that you created in the previous step. To use the same resource policy for all the CloudWatch Logs log groups that you created for query logging configurations, replace the hosted zone name with @*@ , for example:
 --
--- @arn:aws:logs:us-east-1:123412341234:log-group:/aws/route53/*@
+-- @arn:aws:logs:us-east-1:123412341234:log-group:/aws/route53/*@ 
 --
 --
 --
@@ -65,7 +65,7 @@
 --
 -- The name of each log stream is in the following format:
 --
--- @/hosted zone ID/ //edge location code/ @
+-- @/hosted zone ID/ //edge location code/ @ 
 --
 -- The edge location code is a three-letter code and an arbitrarily assigned number, for example, DFW3. The three-letter code typically corresponds with the International Air Transport Association airport code for an airport near the edge location. (These abbreviations might change in the future.) For a list of edge locations, see "The Amazon Route 53 Global Network" on the <http://aws.amazon.com/route53/details/ Amazon Route 53 Product Details> page.
 --
@@ -102,16 +102,14 @@ import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 import Network.AWS.Route53.Types
-import Network.AWS.Route53.Types.Product
 
 -- | /See:/ 'createQueryLoggingConfig' smart constructor.
-data CreateQueryLoggingConfig =
-  CreateQueryLoggingConfig'
-    { _cqlcHostedZoneId              :: !ResourceId
-    , _cqlcCloudWatchLogsLogGroupARN :: !Text
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data CreateQueryLoggingConfig = CreateQueryLoggingConfig'{_cqlcHostedZoneId
+                                                          :: !ResourceId,
+                                                          _cqlcCloudWatchLogsLogGroupARN
+                                                          :: !Text}
+                                  deriving (Eq, Read, Show, Data, Typeable,
+                                            Generic)
 
 -- | Creates a value of 'CreateQueryLoggingConfig' with the minimum fields required to make a request.
 --
@@ -124,12 +122,12 @@ createQueryLoggingConfig
     :: ResourceId -- ^ 'cqlcHostedZoneId'
     -> Text -- ^ 'cqlcCloudWatchLogsLogGroupARN'
     -> CreateQueryLoggingConfig
-createQueryLoggingConfig pHostedZoneId_ pCloudWatchLogsLogGroupARN_ =
-  CreateQueryLoggingConfig'
-    { _cqlcHostedZoneId = pHostedZoneId_
-    , _cqlcCloudWatchLogsLogGroupARN = pCloudWatchLogsLogGroupARN_
-    }
-
+createQueryLoggingConfig pHostedZoneId_
+  pCloudWatchLogsLogGroupARN_
+  = CreateQueryLoggingConfig'{_cqlcHostedZoneId =
+                                pHostedZoneId_,
+                              _cqlcCloudWatchLogsLogGroupARN =
+                                pCloudWatchLogsLogGroupARN_}
 
 -- | The ID of the hosted zone that you want to log queries for. You can log queries only for public hosted zones.
 cqlcHostedZoneId :: Lens' CreateQueryLoggingConfig ResourceId
@@ -176,14 +174,17 @@ instance ToXML CreateQueryLoggingConfig where
                  _cqlcCloudWatchLogsLogGroupARN]
 
 -- | /See:/ 'createQueryLoggingConfigResponse' smart constructor.
-data CreateQueryLoggingConfigResponse =
-  CreateQueryLoggingConfigResponse'
-    { _cqlcrsResponseStatus     :: !Int
-    , _cqlcrsQueryLoggingConfig :: !QueryLoggingConfig
-    , _cqlcrsLocation           :: !Text
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data CreateQueryLoggingConfigResponse = CreateQueryLoggingConfigResponse'{_cqlcrsResponseStatus
+                                                                          ::
+                                                                          !Int,
+                                                                          _cqlcrsQueryLoggingConfig
+                                                                          ::
+                                                                          !QueryLoggingConfig,
+                                                                          _cqlcrsLocation
+                                                                          ::
+                                                                          !Text}
+                                          deriving (Eq, Read, Show, Data,
+                                                    Typeable, Generic)
 
 -- | Creates a value of 'CreateQueryLoggingConfigResponse' with the minimum fields required to make a request.
 --
@@ -199,13 +200,13 @@ createQueryLoggingConfigResponse
     -> QueryLoggingConfig -- ^ 'cqlcrsQueryLoggingConfig'
     -> Text -- ^ 'cqlcrsLocation'
     -> CreateQueryLoggingConfigResponse
-createQueryLoggingConfigResponse pResponseStatus_ pQueryLoggingConfig_ pLocation_ =
-  CreateQueryLoggingConfigResponse'
-    { _cqlcrsResponseStatus = pResponseStatus_
-    , _cqlcrsQueryLoggingConfig = pQueryLoggingConfig_
-    , _cqlcrsLocation = pLocation_
-    }
-
+createQueryLoggingConfigResponse pResponseStatus_
+  pQueryLoggingConfig_ pLocation_
+  = CreateQueryLoggingConfigResponse'{_cqlcrsResponseStatus
+                                        = pResponseStatus_,
+                                      _cqlcrsQueryLoggingConfig =
+                                        pQueryLoggingConfig_,
+                                      _cqlcrsLocation = pLocation_}
 
 -- | -- | The response status code.
 cqlcrsResponseStatus :: Lens' CreateQueryLoggingConfigResponse Int

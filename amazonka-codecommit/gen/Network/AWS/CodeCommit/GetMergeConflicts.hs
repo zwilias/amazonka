@@ -50,26 +50,29 @@ module Network.AWS.CodeCommit.GetMergeConflicts
     ) where
 
 import Network.AWS.CodeCommit.Types
-import Network.AWS.CodeCommit.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 
 -- | /See:/ 'getMergeConflicts' smart constructor.
-data GetMergeConflicts =
-  GetMergeConflicts'
-    { _gmcsConflictDetailLevel :: !(Maybe ConflictDetailLevelTypeEnum)
-    , _gmcsNextToken :: !(Maybe Text)
-    , _gmcsMaxConflictFiles :: !(Maybe Int)
-    , _gmcsConflictResolutionStrategy :: !(Maybe ConflictResolutionStrategyTypeEnum)
-    , _gmcsRepositoryName :: !Text
-    , _gmcsDestinationCommitSpecifier :: !Text
-    , _gmcsSourceCommitSpecifier :: !Text
-    , _gmcsMergeOption :: !MergeOptionTypeEnum
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data GetMergeConflicts = GetMergeConflicts'{_gmcsConflictDetailLevel
+                                            ::
+                                            !(Maybe
+                                                ConflictDetailLevelTypeEnum),
+                                            _gmcsNextToken :: !(Maybe Text),
+                                            _gmcsMaxConflictFiles ::
+                                            !(Maybe Int),
+                                            _gmcsConflictResolutionStrategy ::
+                                            !(Maybe
+                                                ConflictResolutionStrategyTypeEnum),
+                                            _gmcsRepositoryName :: !Text,
+                                            _gmcsDestinationCommitSpecifier ::
+                                            !Text,
+                                            _gmcsSourceCommitSpecifier :: !Text,
+                                            _gmcsMergeOption ::
+                                            !MergeOptionTypeEnum}
+                           deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'GetMergeConflicts' with the minimum fields required to make a request.
 --
@@ -89,25 +92,26 @@ data GetMergeConflicts =
 --
 -- * 'gmcsSourceCommitSpecifier' - The branch, tag, HEAD, or other fully qualified reference used to identify a commit (for example, a branch name or a full commit ID).
 --
--- * 'gmcsMergeOption' - The merge option or strategy you want to use to merge the code.
+-- * 'gmcsMergeOption' - The merge option or strategy you want to use to merge the code. 
 getMergeConflicts
     :: Text -- ^ 'gmcsRepositoryName'
     -> Text -- ^ 'gmcsDestinationCommitSpecifier'
     -> Text -- ^ 'gmcsSourceCommitSpecifier'
     -> MergeOptionTypeEnum -- ^ 'gmcsMergeOption'
     -> GetMergeConflicts
-getMergeConflicts pRepositoryName_ pDestinationCommitSpecifier_ pSourceCommitSpecifier_ pMergeOption_ =
-  GetMergeConflicts'
-    { _gmcsConflictDetailLevel = Nothing
-    , _gmcsNextToken = Nothing
-    , _gmcsMaxConflictFiles = Nothing
-    , _gmcsConflictResolutionStrategy = Nothing
-    , _gmcsRepositoryName = pRepositoryName_
-    , _gmcsDestinationCommitSpecifier = pDestinationCommitSpecifier_
-    , _gmcsSourceCommitSpecifier = pSourceCommitSpecifier_
-    , _gmcsMergeOption = pMergeOption_
-    }
-
+getMergeConflicts pRepositoryName_
+  pDestinationCommitSpecifier_ pSourceCommitSpecifier_
+  pMergeOption_
+  = GetMergeConflicts'{_gmcsConflictDetailLevel =
+                         Nothing,
+                       _gmcsNextToken = Nothing,
+                       _gmcsMaxConflictFiles = Nothing,
+                       _gmcsConflictResolutionStrategy = Nothing,
+                       _gmcsRepositoryName = pRepositoryName_,
+                       _gmcsDestinationCommitSpecifier =
+                         pDestinationCommitSpecifier_,
+                       _gmcsSourceCommitSpecifier = pSourceCommitSpecifier_,
+                       _gmcsMergeOption = pMergeOption_}
 
 -- | The level of conflict detail to use. If unspecified, the default FILE_LEVEL is used, which returns a not-mergeable result if the same file has differences in both branches. If LINE_LEVEL is specified, a conflict is considered not mergeable if the same file in both branches has differences on the same line.
 gmcsConflictDetailLevel :: Lens' GetMergeConflicts (Maybe ConflictDetailLevelTypeEnum)
@@ -137,7 +141,7 @@ gmcsDestinationCommitSpecifier = lens _gmcsDestinationCommitSpecifier (\ s a -> 
 gmcsSourceCommitSpecifier :: Lens' GetMergeConflicts Text
 gmcsSourceCommitSpecifier = lens _gmcsSourceCommitSpecifier (\ s a -> s{_gmcsSourceCommitSpecifier = a})
 
--- | The merge option or strategy you want to use to merge the code.
+-- | The merge option or strategy you want to use to merge the code. 
 gmcsMergeOption :: Lens' GetMergeConflicts MergeOptionTypeEnum
 gmcsMergeOption = lens _gmcsMergeOption (\ s a -> s{_gmcsMergeOption = a})
 
@@ -195,18 +199,23 @@ instance ToQuery GetMergeConflicts where
         toQuery = const mempty
 
 -- | /See:/ 'getMergeConflictsResponse' smart constructor.
-data GetMergeConflictsResponse =
-  GetMergeConflictsResponse'
-    { _gmcsrsBaseCommitId         :: !(Maybe Text)
-    , _gmcsrsNextToken            :: !(Maybe Text)
-    , _gmcsrsResponseStatus       :: !Int
-    , _gmcsrsMergeable            :: !Bool
-    , _gmcsrsDestinationCommitId  :: !Text
-    , _gmcsrsSourceCommitId       :: !Text
-    , _gmcsrsConflictMetadataList :: ![ConflictMetadata]
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data GetMergeConflictsResponse = GetMergeConflictsResponse'{_gmcsrsBaseCommitId
+                                                            :: !(Maybe Text),
+                                                            _gmcsrsNextToken ::
+                                                            !(Maybe Text),
+                                                            _gmcsrsResponseStatus
+                                                            :: !Int,
+                                                            _gmcsrsMergeable ::
+                                                            !Bool,
+                                                            _gmcsrsDestinationCommitId
+                                                            :: !Text,
+                                                            _gmcsrsSourceCommitId
+                                                            :: !Text,
+                                                            _gmcsrsConflictMetadataList
+                                                            ::
+                                                            ![ConflictMetadata]}
+                                   deriving (Eq, Read, Show, Data, Typeable,
+                                             Generic)
 
 -- | Creates a value of 'GetMergeConflictsResponse' with the minimum fields required to make a request.
 --
@@ -231,17 +240,17 @@ getMergeConflictsResponse
     -> Text -- ^ 'gmcsrsDestinationCommitId'
     -> Text -- ^ 'gmcsrsSourceCommitId'
     -> GetMergeConflictsResponse
-getMergeConflictsResponse pResponseStatus_ pMergeable_ pDestinationCommitId_ pSourceCommitId_ =
-  GetMergeConflictsResponse'
-    { _gmcsrsBaseCommitId = Nothing
-    , _gmcsrsNextToken = Nothing
-    , _gmcsrsResponseStatus = pResponseStatus_
-    , _gmcsrsMergeable = pMergeable_
-    , _gmcsrsDestinationCommitId = pDestinationCommitId_
-    , _gmcsrsSourceCommitId = pSourceCommitId_
-    , _gmcsrsConflictMetadataList = mempty
-    }
-
+getMergeConflictsResponse pResponseStatus_
+  pMergeable_ pDestinationCommitId_ pSourceCommitId_
+  = GetMergeConflictsResponse'{_gmcsrsBaseCommitId =
+                                 Nothing,
+                               _gmcsrsNextToken = Nothing,
+                               _gmcsrsResponseStatus = pResponseStatus_,
+                               _gmcsrsMergeable = pMergeable_,
+                               _gmcsrsDestinationCommitId =
+                                 pDestinationCommitId_,
+                               _gmcsrsSourceCommitId = pSourceCommitId_,
+                               _gmcsrsConflictMetadataList = mempty}
 
 -- | The commit ID of the merge base.
 gmcsrsBaseCommitId :: Lens' GetMergeConflictsResponse (Maybe Text)

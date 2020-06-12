@@ -18,7 +18,7 @@
 -- Stability   : auto-generated
 -- Portability : non-portable (GHC extensions)
 --
--- Returns summary information about operations performed on a stack set.
+-- Returns summary information about operations performed on a stack set. 
 --
 --
 module Network.AWS.CloudFormation.ListStackSetOperations
@@ -41,21 +41,20 @@ module Network.AWS.CloudFormation.ListStackSetOperations
     ) where
 
 import Network.AWS.CloudFormation.Types
-import Network.AWS.CloudFormation.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 
 -- | /See:/ 'listStackSetOperations' smart constructor.
-data ListStackSetOperations =
-  ListStackSetOperations'
-    { _lssoNextToken    :: !(Maybe Text)
-    , _lssoMaxResults   :: !(Maybe Nat)
-    , _lssoStackSetName :: !Text
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data ListStackSetOperations = ListStackSetOperations'{_lssoNextToken
+                                                      :: !(Maybe Text),
+                                                      _lssoMaxResults ::
+                                                      !(Maybe Nat),
+                                                      _lssoStackSetName ::
+                                                      !Text}
+                                deriving (Eq, Read, Show, Data, Typeable,
+                                          Generic)
 
 -- | Creates a value of 'ListStackSetOperations' with the minimum fields required to make a request.
 --
@@ -69,13 +68,10 @@ data ListStackSetOperations =
 listStackSetOperations
     :: Text -- ^ 'lssoStackSetName'
     -> ListStackSetOperations
-listStackSetOperations pStackSetName_ =
-  ListStackSetOperations'
-    { _lssoNextToken = Nothing
-    , _lssoMaxResults = Nothing
-    , _lssoStackSetName = pStackSetName_
-    }
-
+listStackSetOperations pStackSetName_
+  = ListStackSetOperations'{_lssoNextToken = Nothing,
+                            _lssoMaxResults = Nothing,
+                            _lssoStackSetName = pStackSetName_}
 
 -- | If the previous paginated request didn't return all of the remaining results, the response object's @NextToken@ parameter value is set to a token. To retrieve the next set of results, call @ListStackSetOperations@ again and assign that token to the request object's @NextToken@ parameter. If there are no remaining results, the previous response object's @NextToken@ parameter is set to @null@ .
 lssoNextToken :: Lens' ListStackSetOperations (Maybe Text)
@@ -123,14 +119,18 @@ instance ToQuery ListStackSetOperations where
                "StackSetName" =: _lssoStackSetName]
 
 -- | /See:/ 'listStackSetOperationsResponse' smart constructor.
-data ListStackSetOperationsResponse =
-  ListStackSetOperationsResponse'
-    { _lssorsNextToken      :: !(Maybe Text)
-    , _lssorsSummaries      :: !(Maybe [StackSetOperationSummary])
-    , _lssorsResponseStatus :: !Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data ListStackSetOperationsResponse = ListStackSetOperationsResponse'{_lssorsNextToken
+                                                                      ::
+                                                                      !(Maybe
+                                                                          Text),
+                                                                      _lssorsSummaries
+                                                                      ::
+                                                                      !(Maybe
+                                                                          [StackSetOperationSummary]),
+                                                                      _lssorsResponseStatus
+                                                                      :: !Int}
+                                        deriving (Eq, Read, Show, Data,
+                                                  Typeable, Generic)
 
 -- | Creates a value of 'ListStackSetOperationsResponse' with the minimum fields required to make a request.
 --
@@ -144,13 +144,11 @@ data ListStackSetOperationsResponse =
 listStackSetOperationsResponse
     :: Int -- ^ 'lssorsResponseStatus'
     -> ListStackSetOperationsResponse
-listStackSetOperationsResponse pResponseStatus_ =
-  ListStackSetOperationsResponse'
-    { _lssorsNextToken = Nothing
-    , _lssorsSummaries = Nothing
-    , _lssorsResponseStatus = pResponseStatus_
-    }
-
+listStackSetOperationsResponse pResponseStatus_
+  = ListStackSetOperationsResponse'{_lssorsNextToken =
+                                      Nothing,
+                                    _lssorsSummaries = Nothing,
+                                    _lssorsResponseStatus = pResponseStatus_}
 
 -- | If the request doesn't return all results, @NextToken@ is set to a token. To retrieve the next set of results, call @ListOperationResults@ again and assign that token to the request object's @NextToken@ parameter. If there are no remaining results, @NextToken@ is set to @null@ .
 lssorsNextToken :: Lens' ListStackSetOperationsResponse (Maybe Text)

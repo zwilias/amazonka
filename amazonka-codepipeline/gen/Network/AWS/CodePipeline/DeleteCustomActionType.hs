@@ -39,7 +39,6 @@ module Network.AWS.CodePipeline.DeleteCustomActionType
     ) where
 
 import Network.AWS.CodePipeline.Types
-import Network.AWS.CodePipeline.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.Request
@@ -50,14 +49,12 @@ import Network.AWS.Response
 --
 --
 -- /See:/ 'deleteCustomActionType' smart constructor.
-data DeleteCustomActionType =
-  DeleteCustomActionType'
-    { _dcatCategory :: !ActionCategory
-    , _dcatProvider :: !Text
-    , _dcatVersion  :: !Text
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data DeleteCustomActionType = DeleteCustomActionType'{_dcatCategory
+                                                      :: !ActionCategory,
+                                                      _dcatProvider :: !Text,
+                                                      _dcatVersion :: !Text}
+                                deriving (Eq, Read, Show, Data, Typeable,
+                                          Generic)
 
 -- | Creates a value of 'DeleteCustomActionType' with the minimum fields required to make a request.
 --
@@ -73,13 +70,11 @@ deleteCustomActionType
     -> Text -- ^ 'dcatProvider'
     -> Text -- ^ 'dcatVersion'
     -> DeleteCustomActionType
-deleteCustomActionType pCategory_ pProvider_ pVersion_ =
-  DeleteCustomActionType'
-    { _dcatCategory = pCategory_
-    , _dcatProvider = pProvider_
-    , _dcatVersion = pVersion_
-    }
-
+deleteCustomActionType pCategory_ pProvider_
+  pVersion_
+  = DeleteCustomActionType'{_dcatCategory = pCategory_,
+                            _dcatProvider = pProvider_,
+                            _dcatVersion = pVersion_}
 
 -- | The category of the custom action that you want to delete, such as source or deploy.
 dcatCategory :: Lens' DeleteCustomActionType ActionCategory
@@ -129,16 +124,15 @@ instance ToQuery DeleteCustomActionType where
         toQuery = const mempty
 
 -- | /See:/ 'deleteCustomActionTypeResponse' smart constructor.
-data DeleteCustomActionTypeResponse =
-  DeleteCustomActionTypeResponse'
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data DeleteCustomActionTypeResponse = DeleteCustomActionTypeResponse'
+                                        deriving (Eq, Read, Show, Data,
+                                                  Typeable, Generic)
 
 -- | Creates a value of 'DeleteCustomActionTypeResponse' with the minimum fields required to make a request.
 --
 deleteCustomActionTypeResponse
     :: DeleteCustomActionTypeResponse
-deleteCustomActionTypeResponse = DeleteCustomActionTypeResponse'
-
+deleteCustomActionTypeResponse
+  = DeleteCustomActionTypeResponse'
 
 instance NFData DeleteCustomActionTypeResponse where

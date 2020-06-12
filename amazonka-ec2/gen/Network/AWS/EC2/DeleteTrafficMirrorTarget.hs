@@ -41,20 +41,18 @@ module Network.AWS.EC2.DeleteTrafficMirrorTarget
     ) where
 
 import Network.AWS.EC2.Types
-import Network.AWS.EC2.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 
 -- | /See:/ 'deleteTrafficMirrorTarget' smart constructor.
-data DeleteTrafficMirrorTarget =
-  DeleteTrafficMirrorTarget'
-    { _dtmttDryRun                :: !(Maybe Bool)
-    , _dtmttTrafficMirrorTargetId :: !Text
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data DeleteTrafficMirrorTarget = DeleteTrafficMirrorTarget'{_dtmttDryRun
+                                                            :: !(Maybe Bool),
+                                                            _dtmttTrafficMirrorTargetId
+                                                            :: !Text}
+                                   deriving (Eq, Read, Show, Data, Typeable,
+                                             Generic)
 
 -- | Creates a value of 'DeleteTrafficMirrorTarget' with the minimum fields required to make a request.
 --
@@ -66,12 +64,10 @@ data DeleteTrafficMirrorTarget =
 deleteTrafficMirrorTarget
     :: Text -- ^ 'dtmttTrafficMirrorTargetId'
     -> DeleteTrafficMirrorTarget
-deleteTrafficMirrorTarget pTrafficMirrorTargetId_ =
-  DeleteTrafficMirrorTarget'
-    { _dtmttDryRun = Nothing
-    , _dtmttTrafficMirrorTargetId = pTrafficMirrorTargetId_
-    }
-
+deleteTrafficMirrorTarget pTrafficMirrorTargetId_
+  = DeleteTrafficMirrorTarget'{_dtmttDryRun = Nothing,
+                               _dtmttTrafficMirrorTargetId =
+                                 pTrafficMirrorTargetId_}
 
 -- | Checks whether you have the required permissions for the action, without actually making the request, and provides an error response. If you have the required permissions, the error response is @DryRunOperation@ . Otherwise, it is @UnauthorizedOperation@ .
 dtmttDryRun :: Lens' DeleteTrafficMirrorTarget (Maybe Bool)
@@ -113,13 +109,15 @@ instance ToQuery DeleteTrafficMirrorTarget where
                  _dtmttTrafficMirrorTargetId]
 
 -- | /See:/ 'deleteTrafficMirrorTargetResponse' smart constructor.
-data DeleteTrafficMirrorTargetResponse =
-  DeleteTrafficMirrorTargetResponse'
-    { _dtmttrsTrafficMirrorTargetId :: !(Maybe Text)
-    , _dtmttrsResponseStatus        :: !Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data DeleteTrafficMirrorTargetResponse = DeleteTrafficMirrorTargetResponse'{_dtmttrsTrafficMirrorTargetId
+                                                                            ::
+                                                                            !(Maybe
+                                                                                Text),
+                                                                            _dtmttrsResponseStatus
+                                                                            ::
+                                                                            !Int}
+                                           deriving (Eq, Read, Show, Data,
+                                                     Typeable, Generic)
 
 -- | Creates a value of 'DeleteTrafficMirrorTargetResponse' with the minimum fields required to make a request.
 --
@@ -131,12 +129,11 @@ data DeleteTrafficMirrorTargetResponse =
 deleteTrafficMirrorTargetResponse
     :: Int -- ^ 'dtmttrsResponseStatus'
     -> DeleteTrafficMirrorTargetResponse
-deleteTrafficMirrorTargetResponse pResponseStatus_ =
-  DeleteTrafficMirrorTargetResponse'
-    { _dtmttrsTrafficMirrorTargetId = Nothing
-    , _dtmttrsResponseStatus = pResponseStatus_
-    }
-
+deleteTrafficMirrorTargetResponse pResponseStatus_
+  = DeleteTrafficMirrorTargetResponse'{_dtmttrsTrafficMirrorTargetId
+                                         = Nothing,
+                                       _dtmttrsResponseStatus =
+                                         pResponseStatus_}
 
 -- | The ID of the deleted Traffic Mirror target.
 dtmttrsTrafficMirrorTargetId :: Lens' DeleteTrafficMirrorTargetResponse (Maybe Text)

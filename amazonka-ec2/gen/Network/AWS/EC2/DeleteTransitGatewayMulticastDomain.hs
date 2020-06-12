@@ -39,20 +39,21 @@ module Network.AWS.EC2.DeleteTransitGatewayMulticastDomain
     ) where
 
 import Network.AWS.EC2.Types
-import Network.AWS.EC2.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 
 -- | /See:/ 'deleteTransitGatewayMulticastDomain' smart constructor.
-data DeleteTransitGatewayMulticastDomain =
-  DeleteTransitGatewayMulticastDomain'
-    { _dtgmdDryRun                          :: !(Maybe Bool)
-    , _dtgmdTransitGatewayMulticastDomainId :: !Text
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data DeleteTransitGatewayMulticastDomain = DeleteTransitGatewayMulticastDomain'{_dtgmdDryRun
+                                                                                ::
+                                                                                !(Maybe
+                                                                                    Bool),
+                                                                                _dtgmdTransitGatewayMulticastDomainId
+                                                                                ::
+                                                                                !Text}
+                                             deriving (Eq, Read, Show, Data,
+                                                       Typeable, Generic)
 
 -- | Creates a value of 'DeleteTransitGatewayMulticastDomain' with the minimum fields required to make a request.
 --
@@ -64,12 +65,12 @@ data DeleteTransitGatewayMulticastDomain =
 deleteTransitGatewayMulticastDomain
     :: Text -- ^ 'dtgmdTransitGatewayMulticastDomainId'
     -> DeleteTransitGatewayMulticastDomain
-deleteTransitGatewayMulticastDomain pTransitGatewayMulticastDomainId_ =
-  DeleteTransitGatewayMulticastDomain'
-    { _dtgmdDryRun = Nothing
-    , _dtgmdTransitGatewayMulticastDomainId = pTransitGatewayMulticastDomainId_
-    }
-
+deleteTransitGatewayMulticastDomain
+  pTransitGatewayMulticastDomainId_
+  = DeleteTransitGatewayMulticastDomain'{_dtgmdDryRun =
+                                           Nothing,
+                                         _dtgmdTransitGatewayMulticastDomainId =
+                                           pTransitGatewayMulticastDomainId_}
 
 -- | Checks whether you have the required permissions for the action, without actually making the request, and provides an error response. If you have the required permissions, the error response is @DryRunOperation@ . Otherwise, it is @UnauthorizedOperation@ .
 dtgmdDryRun :: Lens' DeleteTransitGatewayMulticastDomain (Maybe Bool)
@@ -120,13 +121,16 @@ instance ToQuery DeleteTransitGatewayMulticastDomain
                  _dtgmdTransitGatewayMulticastDomainId]
 
 -- | /See:/ 'deleteTransitGatewayMulticastDomainResponse' smart constructor.
-data DeleteTransitGatewayMulticastDomainResponse =
-  DeleteTransitGatewayMulticastDomainResponse'
-    { _delrsTransitGatewayMulticastDomain :: !(Maybe TransitGatewayMulticastDomain)
-    , _delrsResponseStatus :: !Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data DeleteTransitGatewayMulticastDomainResponse = DeleteTransitGatewayMulticastDomainResponse'{_delrsTransitGatewayMulticastDomain
+                                                                                                ::
+                                                                                                !(Maybe
+                                                                                                    TransitGatewayMulticastDomain),
+                                                                                                _delrsResponseStatus
+                                                                                                ::
+                                                                                                !Int}
+                                                     deriving (Eq, Read, Show,
+                                                               Data, Typeable,
+                                                               Generic)
 
 -- | Creates a value of 'DeleteTransitGatewayMulticastDomainResponse' with the minimum fields required to make a request.
 --
@@ -138,12 +142,12 @@ data DeleteTransitGatewayMulticastDomainResponse =
 deleteTransitGatewayMulticastDomainResponse
     :: Int -- ^ 'delrsResponseStatus'
     -> DeleteTransitGatewayMulticastDomainResponse
-deleteTransitGatewayMulticastDomainResponse pResponseStatus_ =
-  DeleteTransitGatewayMulticastDomainResponse'
-    { _delrsTransitGatewayMulticastDomain = Nothing
-    , _delrsResponseStatus = pResponseStatus_
-    }
-
+deleteTransitGatewayMulticastDomainResponse
+  pResponseStatus_
+  = DeleteTransitGatewayMulticastDomainResponse'{_delrsTransitGatewayMulticastDomain
+                                                   = Nothing,
+                                                 _delrsResponseStatus =
+                                                   pResponseStatus_}
 
 -- | Information about the deleted transit gateway multicast domain.
 delrsTransitGatewayMulticastDomain :: Lens' DeleteTransitGatewayMulticastDomainResponse (Maybe TransitGatewayMulticastDomain)

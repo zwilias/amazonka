@@ -41,16 +41,15 @@ import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 import Network.AWS.SMS.Types
-import Network.AWS.SMS.Types.Product
 
 -- | /See:/ 'startOnDemandReplicationRun' smart constructor.
-data StartOnDemandReplicationRun =
-  StartOnDemandReplicationRun'
-    { _sodrrDescription      :: !(Maybe Text)
-    , _sodrrReplicationJobId :: !Text
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data StartOnDemandReplicationRun = StartOnDemandReplicationRun'{_sodrrDescription
+                                                                ::
+                                                                !(Maybe Text),
+                                                                _sodrrReplicationJobId
+                                                                :: !Text}
+                                     deriving (Eq, Read, Show, Data, Typeable,
+                                               Generic)
 
 -- | Creates a value of 'StartOnDemandReplicationRun' with the minimum fields required to make a request.
 --
@@ -62,10 +61,10 @@ data StartOnDemandReplicationRun =
 startOnDemandReplicationRun
     :: Text -- ^ 'sodrrReplicationJobId'
     -> StartOnDemandReplicationRun
-startOnDemandReplicationRun pReplicationJobId_ =
-  StartOnDemandReplicationRun'
-    {_sodrrDescription = Nothing, _sodrrReplicationJobId = pReplicationJobId_}
-
+startOnDemandReplicationRun pReplicationJobId_
+  = StartOnDemandReplicationRun'{_sodrrDescription =
+                                   Nothing,
+                                 _sodrrReplicationJobId = pReplicationJobId_}
 
 -- | Undocumented member.
 sodrrDescription :: Lens' StartOnDemandReplicationRun (Maybe Text)
@@ -113,13 +112,15 @@ instance ToQuery StartOnDemandReplicationRun where
         toQuery = const mempty
 
 -- | /See:/ 'startOnDemandReplicationRunResponse' smart constructor.
-data StartOnDemandReplicationRunResponse =
-  StartOnDemandReplicationRunResponse'
-    { _sodrrrsReplicationRunId :: !(Maybe Text)
-    , _sodrrrsResponseStatus   :: !Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data StartOnDemandReplicationRunResponse = StartOnDemandReplicationRunResponse'{_sodrrrsReplicationRunId
+                                                                                ::
+                                                                                !(Maybe
+                                                                                    Text),
+                                                                                _sodrrrsResponseStatus
+                                                                                ::
+                                                                                !Int}
+                                             deriving (Eq, Read, Show, Data,
+                                                       Typeable, Generic)
 
 -- | Creates a value of 'StartOnDemandReplicationRunResponse' with the minimum fields required to make a request.
 --
@@ -131,12 +132,11 @@ data StartOnDemandReplicationRunResponse =
 startOnDemandReplicationRunResponse
     :: Int -- ^ 'sodrrrsResponseStatus'
     -> StartOnDemandReplicationRunResponse
-startOnDemandReplicationRunResponse pResponseStatus_ =
-  StartOnDemandReplicationRunResponse'
-    { _sodrrrsReplicationRunId = Nothing
-    , _sodrrrsResponseStatus = pResponseStatus_
-    }
-
+startOnDemandReplicationRunResponse pResponseStatus_
+  = StartOnDemandReplicationRunResponse'{_sodrrrsReplicationRunId
+                                           = Nothing,
+                                         _sodrrrsResponseStatus =
+                                           pResponseStatus_}
 
 -- | Undocumented member.
 sodrrrsReplicationRunId :: Lens' StartOnDemandReplicationRunResponse (Maybe Text)

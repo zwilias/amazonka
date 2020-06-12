@@ -45,7 +45,6 @@ module Network.AWS.EC2.DescribeLocalGatewayVirtualInterfaces
     ) where
 
 import Network.AWS.EC2.Types
-import Network.AWS.EC2.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Pager
 import Network.AWS.Prelude
@@ -53,16 +52,28 @@ import Network.AWS.Request
 import Network.AWS.Response
 
 -- | /See:/ 'describeLocalGatewayVirtualInterfaces' smart constructor.
-data DescribeLocalGatewayVirtualInterfaces =
-  DescribeLocalGatewayVirtualInterfaces'
-    { _dlgviFilters                         :: !(Maybe [Filter])
-    , _dlgviNextToken                       :: !(Maybe Text)
-    , _dlgviLocalGatewayVirtualInterfaceIds :: !(Maybe [Text])
-    , _dlgviDryRun                          :: !(Maybe Bool)
-    , _dlgviMaxResults                      :: !(Maybe Nat)
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data DescribeLocalGatewayVirtualInterfaces = DescribeLocalGatewayVirtualInterfaces'{_dlgviFilters
+                                                                                    ::
+                                                                                    !(Maybe
+                                                                                        [Filter]),
+                                                                                    _dlgviNextToken
+                                                                                    ::
+                                                                                    !(Maybe
+                                                                                        Text),
+                                                                                    _dlgviLocalGatewayVirtualInterfaceIds
+                                                                                    ::
+                                                                                    !(Maybe
+                                                                                        [Text]),
+                                                                                    _dlgviDryRun
+                                                                                    ::
+                                                                                    !(Maybe
+                                                                                        Bool),
+                                                                                    _dlgviMaxResults
+                                                                                    ::
+                                                                                    !(Maybe
+                                                                                        Nat)}
+                                               deriving (Eq, Read, Show, Data,
+                                                         Typeable, Generic)
 
 -- | Creates a value of 'DescribeLocalGatewayVirtualInterfaces' with the minimum fields required to make a request.
 --
@@ -79,15 +90,14 @@ data DescribeLocalGatewayVirtualInterfaces =
 -- * 'dlgviMaxResults' - The maximum number of results to return with a single call. To retrieve the remaining results, make another call with the returned @nextToken@ value.
 describeLocalGatewayVirtualInterfaces
     :: DescribeLocalGatewayVirtualInterfaces
-describeLocalGatewayVirtualInterfaces =
-  DescribeLocalGatewayVirtualInterfaces'
-    { _dlgviFilters = Nothing
-    , _dlgviNextToken = Nothing
-    , _dlgviLocalGatewayVirtualInterfaceIds = Nothing
-    , _dlgviDryRun = Nothing
-    , _dlgviMaxResults = Nothing
-    }
-
+describeLocalGatewayVirtualInterfaces
+  = DescribeLocalGatewayVirtualInterfaces'{_dlgviFilters
+                                             = Nothing,
+                                           _dlgviNextToken = Nothing,
+                                           _dlgviLocalGatewayVirtualInterfaceIds
+                                             = Nothing,
+                                           _dlgviDryRun = Nothing,
+                                           _dlgviMaxResults = Nothing}
 
 -- | One or more filters.
 dlgviFilters :: Lens' DescribeLocalGatewayVirtualInterfaces [Filter]
@@ -168,14 +178,20 @@ instance ToQuery
                "MaxResults" =: _dlgviMaxResults]
 
 -- | /See:/ 'describeLocalGatewayVirtualInterfacesResponse' smart constructor.
-data DescribeLocalGatewayVirtualInterfacesResponse =
-  DescribeLocalGatewayVirtualInterfacesResponse'
-    { _dlgvirsNextToken :: !(Maybe Text)
-    , _dlgvirsLocalGatewayVirtualInterfaces :: !(Maybe [LocalGatewayVirtualInterface])
-    , _dlgvirsResponseStatus :: !Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data DescribeLocalGatewayVirtualInterfacesResponse = DescribeLocalGatewayVirtualInterfacesResponse'{_dlgvirsNextToken
+                                                                                                    ::
+                                                                                                    !(Maybe
+                                                                                                        Text),
+                                                                                                    _dlgvirsLocalGatewayVirtualInterfaces
+                                                                                                    ::
+                                                                                                    !(Maybe
+                                                                                                        [LocalGatewayVirtualInterface]),
+                                                                                                    _dlgvirsResponseStatus
+                                                                                                    ::
+                                                                                                    !Int}
+                                                       deriving (Eq, Read, Show,
+                                                                 Data, Typeable,
+                                                                 Generic)
 
 -- | Creates a value of 'DescribeLocalGatewayVirtualInterfacesResponse' with the minimum fields required to make a request.
 --
@@ -189,13 +205,14 @@ data DescribeLocalGatewayVirtualInterfacesResponse =
 describeLocalGatewayVirtualInterfacesResponse
     :: Int -- ^ 'dlgvirsResponseStatus'
     -> DescribeLocalGatewayVirtualInterfacesResponse
-describeLocalGatewayVirtualInterfacesResponse pResponseStatus_ =
-  DescribeLocalGatewayVirtualInterfacesResponse'
-    { _dlgvirsNextToken = Nothing
-    , _dlgvirsLocalGatewayVirtualInterfaces = Nothing
-    , _dlgvirsResponseStatus = pResponseStatus_
-    }
-
+describeLocalGatewayVirtualInterfacesResponse
+  pResponseStatus_
+  = DescribeLocalGatewayVirtualInterfacesResponse'{_dlgvirsNextToken
+                                                     = Nothing,
+                                                   _dlgvirsLocalGatewayVirtualInterfaces
+                                                     = Nothing,
+                                                   _dlgvirsResponseStatus =
+                                                     pResponseStatus_}
 
 -- | The token to use to retrieve the next page of results. This value is @null@ when there are no more results to return.
 dlgvirsNextToken :: Lens' DescribeLocalGatewayVirtualInterfacesResponse (Maybe Text)

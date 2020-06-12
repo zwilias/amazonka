@@ -46,18 +46,18 @@ import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 import Network.AWS.Route53AutoNaming.Types
-import Network.AWS.Route53AutoNaming.Types.Product
 
 -- | /See:/ 'getInstancesHealthStatus' smart constructor.
-data GetInstancesHealthStatus =
-  GetInstancesHealthStatus'
-    { _gihsNextToken  :: !(Maybe Text)
-    , _gihsInstances  :: !(Maybe (List1 Text))
-    , _gihsMaxResults :: !(Maybe Nat)
-    , _gihsServiceId  :: !Text
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data GetInstancesHealthStatus = GetInstancesHealthStatus'{_gihsNextToken
+                                                          :: !(Maybe Text),
+                                                          _gihsInstances ::
+                                                          !(Maybe (List1 Text)),
+                                                          _gihsMaxResults ::
+                                                          !(Maybe Nat),
+                                                          _gihsServiceId ::
+                                                          !Text}
+                                  deriving (Eq, Read, Show, Data, Typeable,
+                                            Generic)
 
 -- | Creates a value of 'GetInstancesHealthStatus' with the minimum fields required to make a request.
 --
@@ -73,14 +73,11 @@ data GetInstancesHealthStatus =
 getInstancesHealthStatus
     :: Text -- ^ 'gihsServiceId'
     -> GetInstancesHealthStatus
-getInstancesHealthStatus pServiceId_ =
-  GetInstancesHealthStatus'
-    { _gihsNextToken = Nothing
-    , _gihsInstances = Nothing
-    , _gihsMaxResults = Nothing
-    , _gihsServiceId = pServiceId_
-    }
-
+getInstancesHealthStatus pServiceId_
+  = GetInstancesHealthStatus'{_gihsNextToken = Nothing,
+                              _gihsInstances = Nothing,
+                              _gihsMaxResults = Nothing,
+                              _gihsServiceId = pServiceId_}
 
 -- | For the first @GetInstancesHealthStatus@ request, omit this value. If more than @MaxResults@ instances match the specified criteria, you can submit another @GetInstancesHealthStatus@ request to get the next group of results. Specify the value of @NextToken@ from the previous response in the next request.
 gihsNextToken :: Lens' GetInstancesHealthStatus (Maybe Text)
@@ -139,14 +136,21 @@ instance ToQuery GetInstancesHealthStatus where
         toQuery = const mempty
 
 -- | /See:/ 'getInstancesHealthStatusResponse' smart constructor.
-data GetInstancesHealthStatusResponse =
-  GetInstancesHealthStatusResponse'
-    { _gihsrsStatus         :: !(Maybe (Map Text HealthStatus))
-    , _gihsrsNextToken      :: !(Maybe Text)
-    , _gihsrsResponseStatus :: !Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data GetInstancesHealthStatusResponse = GetInstancesHealthStatusResponse'{_gihsrsStatus
+                                                                          ::
+                                                                          !(Maybe
+                                                                              (Map
+                                                                                 Text
+                                                                                 HealthStatus)),
+                                                                          _gihsrsNextToken
+                                                                          ::
+                                                                          !(Maybe
+                                                                              Text),
+                                                                          _gihsrsResponseStatus
+                                                                          ::
+                                                                          !Int}
+                                          deriving (Eq, Read, Show, Data,
+                                                    Typeable, Generic)
 
 -- | Creates a value of 'GetInstancesHealthStatusResponse' with the minimum fields required to make a request.
 --
@@ -160,13 +164,11 @@ data GetInstancesHealthStatusResponse =
 getInstancesHealthStatusResponse
     :: Int -- ^ 'gihsrsResponseStatus'
     -> GetInstancesHealthStatusResponse
-getInstancesHealthStatusResponse pResponseStatus_ =
-  GetInstancesHealthStatusResponse'
-    { _gihsrsStatus = Nothing
-    , _gihsrsNextToken = Nothing
-    , _gihsrsResponseStatus = pResponseStatus_
-    }
-
+getInstancesHealthStatusResponse pResponseStatus_
+  = GetInstancesHealthStatusResponse'{_gihsrsStatus =
+                                        Nothing,
+                                      _gihsrsNextToken = Nothing,
+                                      _gihsrsResponseStatus = pResponseStatus_}
 
 -- | A complex type that contains the IDs and the health status of the instances that you specified in the @GetInstancesHealthStatus@ request.
 gihsrsStatus :: Lens' GetInstancesHealthStatusResponse (HashMap Text HealthStatus)

@@ -18,7 +18,7 @@
 -- Stability   : auto-generated
 -- Portability : non-portable (GHC extensions)
 --
--- Modify a setting for an Amazon Aurora DB cluster. You can change one or more database configuration parameters by specifying these parameters and the new values in the request. For more information on Amazon Aurora, see <http://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/CHAP_Aurora.html Aurora on Amazon RDS> in the /Amazon RDS User Guide./
+-- Modify a setting for an Amazon Aurora DB cluster. You can change one or more database configuration parameters by specifying these parameters and the new values in the request. For more information on Amazon Aurora, see <http://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/CHAP_Aurora.html Aurora on Amazon RDS> in the /Amazon RDS User Guide./ 
 --
 --
 module Network.AWS.RDS.ModifyDBCluster
@@ -53,34 +53,37 @@ module Network.AWS.RDS.ModifyDBCluster
 import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.RDS.Types
-import Network.AWS.RDS.Types.Product
 import Network.AWS.Request
 import Network.AWS.Response
 
--- |
+-- | 
 --
 --
 --
 -- /See:/ 'modifyDBCluster' smart constructor.
-data ModifyDBCluster =
-  ModifyDBCluster'
-    { _mdcEngineVersion                   :: !(Maybe Text)
-    , _mdcMasterUserPassword              :: !(Maybe Text)
-    , _mdcBacktrackWindow                 :: !(Maybe Integer)
-    , _mdcPreferredMaintenanceWindow      :: !(Maybe Text)
-    , _mdcPreferredBackupWindow           :: !(Maybe Text)
-    , _mdcBackupRetentionPeriod           :: !(Maybe Int)
-    , _mdcVPCSecurityGroupIds             :: !(Maybe [Text])
-    , _mdcDBClusterParameterGroupName     :: !(Maybe Text)
-    , _mdcApplyImmediately                :: !(Maybe Bool)
-    , _mdcOptionGroupName                 :: !(Maybe Text)
-    , _mdcNewDBClusterIdentifier          :: !(Maybe Text)
-    , _mdcPort                            :: !(Maybe Int)
-    , _mdcEnableIAMDatabaseAuthentication :: !(Maybe Bool)
-    , _mdcDBClusterIdentifier             :: !Text
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data ModifyDBCluster = ModifyDBCluster'{_mdcEngineVersion
+                                        :: !(Maybe Text),
+                                        _mdcMasterUserPassword :: !(Maybe Text),
+                                        _mdcBacktrackWindow :: !(Maybe Integer),
+                                        _mdcPreferredMaintenanceWindow ::
+                                        !(Maybe Text),
+                                        _mdcPreferredBackupWindow ::
+                                        !(Maybe Text),
+                                        _mdcBackupRetentionPeriod ::
+                                        !(Maybe Int),
+                                        _mdcVPCSecurityGroupIds ::
+                                        !(Maybe [Text]),
+                                        _mdcDBClusterParameterGroupName ::
+                                        !(Maybe Text),
+                                        _mdcApplyImmediately :: !(Maybe Bool),
+                                        _mdcOptionGroupName :: !(Maybe Text),
+                                        _mdcNewDBClusterIdentifier ::
+                                        !(Maybe Text),
+                                        _mdcPort :: !(Maybe Int),
+                                        _mdcEnableIAMDatabaseAuthentication ::
+                                        !(Maybe Bool),
+                                        _mdcDBClusterIdentifier :: !Text}
+                         deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'ModifyDBCluster' with the minimum fields required to make a request.
 --
@@ -102,38 +105,35 @@ data ModifyDBCluster =
 --
 -- * 'mdcDBClusterParameterGroupName' - The name of the DB cluster parameter group to use for the DB cluster.
 --
--- * 'mdcApplyImmediately' - A value that specifies whether the modifications in this request and any pending modifications are asynchronously applied as soon as possible, regardless of the @PreferredMaintenanceWindow@ setting for the DB cluster. If this parameter is set to @false@ , changes to the DB cluster are applied during the next maintenance window. The @ApplyImmediately@ parameter only affects the @NewDBClusterIdentifier@ and @MasterUserPassword@ values. If you set the @ApplyImmediately@ parameter value to false, then changes to the @NewDBClusterIdentifier@ and @MasterUserPassword@ values are applied during the next maintenance window. All other changes are applied immediately, regardless of the value of the @ApplyImmediately@ parameter. Default: @false@
+-- * 'mdcApplyImmediately' - A value that specifies whether the modifications in this request and any pending modifications are asynchronously applied as soon as possible, regardless of the @PreferredMaintenanceWindow@ setting for the DB cluster. If this parameter is set to @false@ , changes to the DB cluster are applied during the next maintenance window. The @ApplyImmediately@ parameter only affects the @NewDBClusterIdentifier@ and @MasterUserPassword@ values. If you set the @ApplyImmediately@ parameter value to false, then changes to the @NewDBClusterIdentifier@ and @MasterUserPassword@ values are applied during the next maintenance window. All other changes are applied immediately, regardless of the value of the @ApplyImmediately@ parameter. Default: @false@ 
 --
 -- * 'mdcOptionGroupName' - A value that indicates that the DB cluster should be associated with the specified option group. Changing this parameter doesn't result in an outage except in the following case, and the change is applied during the next maintenance window unless the @ApplyImmediately@ parameter is set to @true@ for this request. If the parameter change results in an option group that enables OEM, this change can cause a brief (sub-second) period during which new connections are rejected but existing connections are not interrupted.  Permanent options can't be removed from an option group. The option group can't be removed from a DB cluster once it is associated with a DB cluster.
 --
--- * 'mdcNewDBClusterIdentifier' - The new DB cluster identifier for the DB cluster when renaming a DB cluster. This value is stored as a lowercase string. Constraints:     * Must contain from 1 to 63 letters, numbers, or hyphens     * The first character must be a letter     * Cannot end with a hyphen or contain two consecutive hyphens Example: @my-cluster2@
+-- * 'mdcNewDBClusterIdentifier' - The new DB cluster identifier for the DB cluster when renaming a DB cluster. This value is stored as a lowercase string. Constraints:     * Must contain from 1 to 63 letters, numbers, or hyphens     * The first character must be a letter     * Cannot end with a hyphen or contain two consecutive hyphens Example: @my-cluster2@ 
 --
 -- * 'mdcPort' - The port number on which the DB cluster accepts connections. Constraints: Value must be @1150-65535@  Default: The same port as the original DB cluster.
 --
--- * 'mdcEnableIAMDatabaseAuthentication' - True to enable mapping of AWS Identity and Access Management (IAM) accounts to database accounts, and otherwise false. Default: @false@
+-- * 'mdcEnableIAMDatabaseAuthentication' - True to enable mapping of AWS Identity and Access Management (IAM) accounts to database accounts, and otherwise false. Default: @false@ 
 --
 -- * 'mdcDBClusterIdentifier' - The DB cluster identifier for the cluster being modified. This parameter is not case-sensitive. Constraints:     * Must match the identifier of an existing DBCluster.
 modifyDBCluster
     :: Text -- ^ 'mdcDBClusterIdentifier'
     -> ModifyDBCluster
-modifyDBCluster pDBClusterIdentifier_ =
-  ModifyDBCluster'
-    { _mdcEngineVersion = Nothing
-    , _mdcMasterUserPassword = Nothing
-    , _mdcBacktrackWindow = Nothing
-    , _mdcPreferredMaintenanceWindow = Nothing
-    , _mdcPreferredBackupWindow = Nothing
-    , _mdcBackupRetentionPeriod = Nothing
-    , _mdcVPCSecurityGroupIds = Nothing
-    , _mdcDBClusterParameterGroupName = Nothing
-    , _mdcApplyImmediately = Nothing
-    , _mdcOptionGroupName = Nothing
-    , _mdcNewDBClusterIdentifier = Nothing
-    , _mdcPort = Nothing
-    , _mdcEnableIAMDatabaseAuthentication = Nothing
-    , _mdcDBClusterIdentifier = pDBClusterIdentifier_
-    }
-
+modifyDBCluster pDBClusterIdentifier_
+  = ModifyDBCluster'{_mdcEngineVersion = Nothing,
+                     _mdcMasterUserPassword = Nothing,
+                     _mdcBacktrackWindow = Nothing,
+                     _mdcPreferredMaintenanceWindow = Nothing,
+                     _mdcPreferredBackupWindow = Nothing,
+                     _mdcBackupRetentionPeriod = Nothing,
+                     _mdcVPCSecurityGroupIds = Nothing,
+                     _mdcDBClusterParameterGroupName = Nothing,
+                     _mdcApplyImmediately = Nothing,
+                     _mdcOptionGroupName = Nothing,
+                     _mdcNewDBClusterIdentifier = Nothing,
+                     _mdcPort = Nothing,
+                     _mdcEnableIAMDatabaseAuthentication = Nothing,
+                     _mdcDBClusterIdentifier = pDBClusterIdentifier_}
 
 -- | The version number of the database engine to which you want to upgrade. Changing this parameter results in an outage. The change is applied during the next maintenance window unless the ApplyImmediately parameter is set to true. For a list of valid engine versions, see 'CreateDBInstance' , or call 'DescribeDBEngineVersions' .
 mdcEngineVersion :: Lens' ModifyDBCluster (Maybe Text)
@@ -167,7 +167,7 @@ mdcVPCSecurityGroupIds = lens _mdcVPCSecurityGroupIds (\ s a -> s{_mdcVPCSecurit
 mdcDBClusterParameterGroupName :: Lens' ModifyDBCluster (Maybe Text)
 mdcDBClusterParameterGroupName = lens _mdcDBClusterParameterGroupName (\ s a -> s{_mdcDBClusterParameterGroupName = a})
 
--- | A value that specifies whether the modifications in this request and any pending modifications are asynchronously applied as soon as possible, regardless of the @PreferredMaintenanceWindow@ setting for the DB cluster. If this parameter is set to @false@ , changes to the DB cluster are applied during the next maintenance window. The @ApplyImmediately@ parameter only affects the @NewDBClusterIdentifier@ and @MasterUserPassword@ values. If you set the @ApplyImmediately@ parameter value to false, then changes to the @NewDBClusterIdentifier@ and @MasterUserPassword@ values are applied during the next maintenance window. All other changes are applied immediately, regardless of the value of the @ApplyImmediately@ parameter. Default: @false@
+-- | A value that specifies whether the modifications in this request and any pending modifications are asynchronously applied as soon as possible, regardless of the @PreferredMaintenanceWindow@ setting for the DB cluster. If this parameter is set to @false@ , changes to the DB cluster are applied during the next maintenance window. The @ApplyImmediately@ parameter only affects the @NewDBClusterIdentifier@ and @MasterUserPassword@ values. If you set the @ApplyImmediately@ parameter value to false, then changes to the @NewDBClusterIdentifier@ and @MasterUserPassword@ values are applied during the next maintenance window. All other changes are applied immediately, regardless of the value of the @ApplyImmediately@ parameter. Default: @false@ 
 mdcApplyImmediately :: Lens' ModifyDBCluster (Maybe Bool)
 mdcApplyImmediately = lens _mdcApplyImmediately (\ s a -> s{_mdcApplyImmediately = a})
 
@@ -175,7 +175,7 @@ mdcApplyImmediately = lens _mdcApplyImmediately (\ s a -> s{_mdcApplyImmediately
 mdcOptionGroupName :: Lens' ModifyDBCluster (Maybe Text)
 mdcOptionGroupName = lens _mdcOptionGroupName (\ s a -> s{_mdcOptionGroupName = a})
 
--- | The new DB cluster identifier for the DB cluster when renaming a DB cluster. This value is stored as a lowercase string. Constraints:     * Must contain from 1 to 63 letters, numbers, or hyphens     * The first character must be a letter     * Cannot end with a hyphen or contain two consecutive hyphens Example: @my-cluster2@
+-- | The new DB cluster identifier for the DB cluster when renaming a DB cluster. This value is stored as a lowercase string. Constraints:     * Must contain from 1 to 63 letters, numbers, or hyphens     * The first character must be a letter     * Cannot end with a hyphen or contain two consecutive hyphens Example: @my-cluster2@ 
 mdcNewDBClusterIdentifier :: Lens' ModifyDBCluster (Maybe Text)
 mdcNewDBClusterIdentifier = lens _mdcNewDBClusterIdentifier (\ s a -> s{_mdcNewDBClusterIdentifier = a})
 
@@ -183,7 +183,7 @@ mdcNewDBClusterIdentifier = lens _mdcNewDBClusterIdentifier (\ s a -> s{_mdcNewD
 mdcPort :: Lens' ModifyDBCluster (Maybe Int)
 mdcPort = lens _mdcPort (\ s a -> s{_mdcPort = a})
 
--- | True to enable mapping of AWS Identity and Access Management (IAM) accounts to database accounts, and otherwise false. Default: @false@
+-- | True to enable mapping of AWS Identity and Access Management (IAM) accounts to database accounts, and otherwise false. Default: @false@ 
 mdcEnableIAMDatabaseAuthentication :: Lens' ModifyDBCluster (Maybe Bool)
 mdcEnableIAMDatabaseAuthentication = lens _mdcEnableIAMDatabaseAuthentication (\ s a -> s{_mdcEnableIAMDatabaseAuthentication = a})
 
@@ -238,13 +238,12 @@ instance ToQuery ModifyDBCluster where
                "DBClusterIdentifier" =: _mdcDBClusterIdentifier]
 
 -- | /See:/ 'modifyDBClusterResponse' smart constructor.
-data ModifyDBClusterResponse =
-  ModifyDBClusterResponse'
-    { _mdcrsDBCluster      :: !(Maybe DBCluster)
-    , _mdcrsResponseStatus :: !Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data ModifyDBClusterResponse = ModifyDBClusterResponse'{_mdcrsDBCluster
+                                                        :: !(Maybe DBCluster),
+                                                        _mdcrsResponseStatus ::
+                                                        !Int}
+                                 deriving (Eq, Read, Show, Data, Typeable,
+                                           Generic)
 
 -- | Creates a value of 'ModifyDBClusterResponse' with the minimum fields required to make a request.
 --
@@ -256,10 +255,9 @@ data ModifyDBClusterResponse =
 modifyDBClusterResponse
     :: Int -- ^ 'mdcrsResponseStatus'
     -> ModifyDBClusterResponse
-modifyDBClusterResponse pResponseStatus_ =
-  ModifyDBClusterResponse'
-    {_mdcrsDBCluster = Nothing, _mdcrsResponseStatus = pResponseStatus_}
-
+modifyDBClusterResponse pResponseStatus_
+  = ModifyDBClusterResponse'{_mdcrsDBCluster = Nothing,
+                             _mdcrsResponseStatus = pResponseStatus_}
 
 -- | Undocumented member.
 mdcrsDBCluster :: Lens' ModifyDBClusterResponse (Maybe DBCluster)

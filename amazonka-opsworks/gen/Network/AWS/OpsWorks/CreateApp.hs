@@ -52,29 +52,25 @@ module Network.AWS.OpsWorks.CreateApp
 
 import Network.AWS.Lens
 import Network.AWS.OpsWorks.Types
-import Network.AWS.OpsWorks.Types.Product
 import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 
 -- | /See:/ 'createApp' smart constructor.
-data CreateApp =
-  CreateApp'
-    { _caSSLConfiguration :: !(Maybe SSLConfiguration)
-    , _caEnvironment      :: !(Maybe [EnvironmentVariable])
-    , _caEnableSSL        :: !(Maybe Bool)
-    , _caShortname        :: !(Maybe Text)
-    , _caDataSources      :: !(Maybe [DataSource])
-    , _caAppSource        :: !(Maybe Source)
-    , _caAttributes       :: !(Maybe (Map AppAttributesKeys Text))
-    , _caDomains          :: !(Maybe [Text])
-    , _caDescription      :: !(Maybe Text)
-    , _caStackId          :: !Text
-    , _caName             :: !Text
-    , _caType             :: !AppType
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data CreateApp = CreateApp'{_caSSLConfiguration ::
+                            !(Maybe SSLConfiguration),
+                            _caEnvironment :: !(Maybe [EnvironmentVariable]),
+                            _caEnableSSL :: !(Maybe Bool),
+                            _caShortname :: !(Maybe Text),
+                            _caDataSources :: !(Maybe [DataSource]),
+                            _caAppSource :: !(Maybe Source),
+                            _caAttributes ::
+                            !(Maybe (Map AppAttributesKeys Text)),
+                            _caDomains :: !(Maybe [Text]),
+                            _caDescription :: !(Maybe Text),
+                            _caStackId :: !Text, _caName :: !Text,
+                            _caType :: !AppType}
+                   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'CreateApp' with the minimum fields required to make a request.
 --
@@ -94,7 +90,7 @@ data CreateApp =
 --
 -- * 'caAttributes' - One or more user-defined key/value pairs to be added to the stack attributes.
 --
--- * 'caDomains' - The app virtual host settings, with multiple domains separated by commas. For example: @'www.example.com, example.com'@
+-- * 'caDomains' - The app virtual host settings, with multiple domains separated by commas. For example: @'www.example.com, example.com'@ 
 --
 -- * 'caDescription' - A description of the app.
 --
@@ -108,22 +104,14 @@ createApp
     -> Text -- ^ 'caName'
     -> AppType -- ^ 'caType'
     -> CreateApp
-createApp pStackId_ pName_ pType_ =
-  CreateApp'
-    { _caSSLConfiguration = Nothing
-    , _caEnvironment = Nothing
-    , _caEnableSSL = Nothing
-    , _caShortname = Nothing
-    , _caDataSources = Nothing
-    , _caAppSource = Nothing
-    , _caAttributes = Nothing
-    , _caDomains = Nothing
-    , _caDescription = Nothing
-    , _caStackId = pStackId_
-    , _caName = pName_
-    , _caType = pType_
-    }
-
+createApp pStackId_ pName_ pType_
+  = CreateApp'{_caSSLConfiguration = Nothing,
+               _caEnvironment = Nothing, _caEnableSSL = Nothing,
+               _caShortname = Nothing, _caDataSources = Nothing,
+               _caAppSource = Nothing, _caAttributes = Nothing,
+               _caDomains = Nothing, _caDescription = Nothing,
+               _caStackId = pStackId_, _caName = pName_,
+               _caType = pType_}
 
 -- | An @SslConfiguration@ object with the SSL configuration.
 caSSLConfiguration :: Lens' CreateApp (Maybe SSLConfiguration)
@@ -153,7 +141,7 @@ caAppSource = lens _caAppSource (\ s a -> s{_caAppSource = a})
 caAttributes :: Lens' CreateApp (HashMap AppAttributesKeys Text)
 caAttributes = lens _caAttributes (\ s a -> s{_caAttributes = a}) . _Default . _Map
 
--- | The app virtual host settings, with multiple domains separated by commas. For example: @'www.example.com, example.com'@
+-- | The app virtual host settings, with multiple domains separated by commas. For example: @'www.example.com, example.com'@ 
 caDomains :: Lens' CreateApp [Text]
 caDomains = lens _caDomains (\ s a -> s{_caDomains = a}) . _Default . _Coerce
 
@@ -222,13 +210,10 @@ instance ToQuery CreateApp where
 --
 --
 -- /See:/ 'createAppResponse' smart constructor.
-data CreateAppResponse =
-  CreateAppResponse'
-    { _carsAppId          :: !(Maybe Text)
-    , _carsResponseStatus :: !Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data CreateAppResponse = CreateAppResponse'{_carsAppId
+                                            :: !(Maybe Text),
+                                            _carsResponseStatus :: !Int}
+                           deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'CreateAppResponse' with the minimum fields required to make a request.
 --
@@ -240,10 +225,9 @@ data CreateAppResponse =
 createAppResponse
     :: Int -- ^ 'carsResponseStatus'
     -> CreateAppResponse
-createAppResponse pResponseStatus_ =
-  CreateAppResponse'
-    {_carsAppId = Nothing, _carsResponseStatus = pResponseStatus_}
-
+createAppResponse pResponseStatus_
+  = CreateAppResponse'{_carsAppId = Nothing,
+                       _carsResponseStatus = pResponseStatus_}
 
 -- | The app ID.
 carsAppId :: Lens' CreateAppResponse (Maybe Text)

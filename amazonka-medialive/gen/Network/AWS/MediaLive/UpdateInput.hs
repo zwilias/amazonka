@@ -41,7 +41,6 @@ module Network.AWS.MediaLive.UpdateInput
 
 import Network.AWS.Lens
 import Network.AWS.MediaLive.Types
-import Network.AWS.MediaLive.Types.Product
 import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
@@ -49,16 +48,13 @@ import Network.AWS.Response
 -- | A request to update an input.
 --
 -- /See:/ 'updateInput' smart constructor.
-data UpdateInput =
-  UpdateInput'
-    { _uiSources             :: !(Maybe [InputSourceRequest])
-    , _uiInputSecurityGroups :: !(Maybe [Text])
-    , _uiDestinations        :: !(Maybe [InputDestinationRequest])
-    , _uiName                :: !(Maybe Text)
-    , _uiInputId             :: !Text
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data UpdateInput = UpdateInput'{_uiSources ::
+                                !(Maybe [InputSourceRequest]),
+                                _uiInputSecurityGroups :: !(Maybe [Text]),
+                                _uiDestinations ::
+                                !(Maybe [InputDestinationRequest]),
+                                _uiName :: !(Maybe Text), _uiInputId :: !Text}
+                     deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'UpdateInput' with the minimum fields required to make a request.
 --
@@ -76,15 +72,11 @@ data UpdateInput =
 updateInput
     :: Text -- ^ 'uiInputId'
     -> UpdateInput
-updateInput pInputId_ =
-  UpdateInput'
-    { _uiSources = Nothing
-    , _uiInputSecurityGroups = Nothing
-    , _uiDestinations = Nothing
-    , _uiName = Nothing
-    , _uiInputId = pInputId_
-    }
-
+updateInput pInputId_
+  = UpdateInput'{_uiSources = Nothing,
+                 _uiInputSecurityGroups = Nothing,
+                 _uiDestinations = Nothing, _uiName = Nothing,
+                 _uiInputId = pInputId_}
 
 -- | The source URLs for a PULL-type input. Every PULL type input needs exactly two source URLs for redundancy. Only specify sources for PULL type Inputs. Leave Destinations empty.
 uiSources :: Lens' UpdateInput [InputSourceRequest]
@@ -146,13 +138,10 @@ instance ToQuery UpdateInput where
 -- | Placeholder documentation for UpdateInputResponse
 --
 -- /See:/ 'updateInputResponse' smart constructor.
-data UpdateInputResponse =
-  UpdateInputResponse'
-    { _uirsInput          :: !(Maybe Input)
-    , _uirsResponseStatus :: !Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data UpdateInputResponse = UpdateInputResponse'{_uirsInput
+                                                :: !(Maybe Input),
+                                                _uirsResponseStatus :: !Int}
+                             deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'UpdateInputResponse' with the minimum fields required to make a request.
 --
@@ -164,10 +153,9 @@ data UpdateInputResponse =
 updateInputResponse
     :: Int -- ^ 'uirsResponseStatus'
     -> UpdateInputResponse
-updateInputResponse pResponseStatus_ =
-  UpdateInputResponse'
-    {_uirsInput = Nothing, _uirsResponseStatus = pResponseStatus_}
-
+updateInputResponse pResponseStatus_
+  = UpdateInputResponse'{_uirsInput = Nothing,
+                         _uirsResponseStatus = pResponseStatus_}
 
 -- | Undocumented member.
 uirsInput :: Lens' UpdateInputResponse (Maybe Input)

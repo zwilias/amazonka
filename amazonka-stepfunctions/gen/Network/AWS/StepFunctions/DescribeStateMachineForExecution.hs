@@ -46,15 +46,13 @@ import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 import Network.AWS.StepFunctions.Types
-import Network.AWS.StepFunctions.Types.Product
 
 -- | /See:/ 'describeStateMachineForExecution' smart constructor.
-newtype DescribeStateMachineForExecution =
-  DescribeStateMachineForExecution'
-    { _dsmfeExecutionARN :: Text
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+newtype DescribeStateMachineForExecution = DescribeStateMachineForExecution'{_dsmfeExecutionARN
+                                                                             ::
+                                                                             Text}
+                                             deriving (Eq, Read, Show, Data,
+                                                       Typeable, Generic)
 
 -- | Creates a value of 'DescribeStateMachineForExecution' with the minimum fields required to make a request.
 --
@@ -64,9 +62,9 @@ newtype DescribeStateMachineForExecution =
 describeStateMachineForExecution
     :: Text -- ^ 'dsmfeExecutionARN'
     -> DescribeStateMachineForExecution
-describeStateMachineForExecution pExecutionARN_ =
-  DescribeStateMachineForExecution' {_dsmfeExecutionARN = pExecutionARN_}
-
+describeStateMachineForExecution pExecutionARN_
+  = DescribeStateMachineForExecution'{_dsmfeExecutionARN
+                                        = pExecutionARN_}
 
 -- | The Amazon Resource Name (ARN) of the execution you want state machine information for.
 dsmfeExecutionARN :: Lens' DescribeStateMachineForExecution Text
@@ -120,17 +118,27 @@ instance ToQuery DescribeStateMachineForExecution
         toQuery = const mempty
 
 -- | /See:/ 'describeStateMachineForExecutionResponse' smart constructor.
-data DescribeStateMachineForExecutionResponse =
-  DescribeStateMachineForExecutionResponse'
-    { _dsmfersResponseStatus  :: !Int
-    , _dsmfersStateMachineARN :: !Text
-    , _dsmfersName            :: !Text
-    , _dsmfersDefinition      :: !Text
-    , _dsmfersRoleARN         :: !Text
-    , _dsmfersUpdateDate      :: !POSIX
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data DescribeStateMachineForExecutionResponse = DescribeStateMachineForExecutionResponse'{_dsmfersResponseStatus
+                                                                                          ::
+                                                                                          !Int,
+                                                                                          _dsmfersStateMachineARN
+                                                                                          ::
+                                                                                          !Text,
+                                                                                          _dsmfersName
+                                                                                          ::
+                                                                                          !Text,
+                                                                                          _dsmfersDefinition
+                                                                                          ::
+                                                                                          !Text,
+                                                                                          _dsmfersRoleARN
+                                                                                          ::
+                                                                                          !Text,
+                                                                                          _dsmfersUpdateDate
+                                                                                          ::
+                                                                                          !POSIX}
+                                                  deriving (Eq, Read, Show,
+                                                            Data, Typeable,
+                                                            Generic)
 
 -- | Creates a value of 'DescribeStateMachineForExecutionResponse' with the minimum fields required to make a request.
 --
@@ -144,7 +152,7 @@ data DescribeStateMachineForExecutionResponse =
 --
 -- * 'dsmfersDefinition' - The Amazon States Language definition of the state machine.
 --
--- * 'dsmfersRoleARN' - The Amazon Resource Name (ARN) of the IAM role of the State Machine for the execution.
+-- * 'dsmfersRoleARN' - The Amazon Resource Name (ARN) of the IAM role of the State Machine for the execution. 
 --
 -- * 'dsmfersUpdateDate' - The date and time the state machine associated with an execution was updated. For a newly created state machine, this is the creation date.
 describeStateMachineForExecutionResponse
@@ -155,16 +163,18 @@ describeStateMachineForExecutionResponse
     -> Text -- ^ 'dsmfersRoleARN'
     -> UTCTime -- ^ 'dsmfersUpdateDate'
     -> DescribeStateMachineForExecutionResponse
-describeStateMachineForExecutionResponse pResponseStatus_ pStateMachineARN_ pName_ pDefinition_ pRoleARN_ pUpdateDate_ =
-  DescribeStateMachineForExecutionResponse'
-    { _dsmfersResponseStatus = pResponseStatus_
-    , _dsmfersStateMachineARN = pStateMachineARN_
-    , _dsmfersName = pName_
-    , _dsmfersDefinition = pDefinition_
-    , _dsmfersRoleARN = pRoleARN_
-    , _dsmfersUpdateDate = _Time # pUpdateDate_
-    }
-
+describeStateMachineForExecutionResponse
+  pResponseStatus_ pStateMachineARN_ pName_
+  pDefinition_ pRoleARN_ pUpdateDate_
+  = DescribeStateMachineForExecutionResponse'{_dsmfersResponseStatus
+                                                = pResponseStatus_,
+                                              _dsmfersStateMachineARN =
+                                                pStateMachineARN_,
+                                              _dsmfersName = pName_,
+                                              _dsmfersDefinition = pDefinition_,
+                                              _dsmfersRoleARN = pRoleARN_,
+                                              _dsmfersUpdateDate =
+                                                _Time # pUpdateDate_}
 
 -- | -- | The response status code.
 dsmfersResponseStatus :: Lens' DescribeStateMachineForExecutionResponse Int
@@ -182,7 +192,7 @@ dsmfersName = lens _dsmfersName (\ s a -> s{_dsmfersName = a})
 dsmfersDefinition :: Lens' DescribeStateMachineForExecutionResponse Text
 dsmfersDefinition = lens _dsmfersDefinition (\ s a -> s{_dsmfersDefinition = a})
 
--- | The Amazon Resource Name (ARN) of the IAM role of the State Machine for the execution.
+-- | The Amazon Resource Name (ARN) of the IAM role of the State Machine for the execution. 
 dsmfersRoleARN :: Lens' DescribeStateMachineForExecutionResponse Text
 dsmfersRoleARN = lens _dsmfersRoleARN (\ s a -> s{_dsmfersRoleARN = a})
 

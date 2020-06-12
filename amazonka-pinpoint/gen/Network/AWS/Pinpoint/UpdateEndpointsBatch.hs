@@ -38,19 +38,16 @@ module Network.AWS.Pinpoint.UpdateEndpointsBatch
 
 import Network.AWS.Lens
 import Network.AWS.Pinpoint.Types
-import Network.AWS.Pinpoint.Types.Product
 import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 
 -- | /See:/ 'updateEndpointsBatch' smart constructor.
-data UpdateEndpointsBatch =
-  UpdateEndpointsBatch'
-    { _uebApplicationId        :: !Text
-    , _uebEndpointBatchRequest :: !EndpointBatchRequest
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data UpdateEndpointsBatch = UpdateEndpointsBatch'{_uebApplicationId
+                                                  :: !Text,
+                                                  _uebEndpointBatchRequest ::
+                                                  !EndpointBatchRequest}
+                              deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'UpdateEndpointsBatch' with the minimum fields required to make a request.
 --
@@ -63,12 +60,11 @@ updateEndpointsBatch
     :: Text -- ^ 'uebApplicationId'
     -> EndpointBatchRequest -- ^ 'uebEndpointBatchRequest'
     -> UpdateEndpointsBatch
-updateEndpointsBatch pApplicationId_ pEndpointBatchRequest_ =
-  UpdateEndpointsBatch'
-    { _uebApplicationId = pApplicationId_
-    , _uebEndpointBatchRequest = pEndpointBatchRequest_
-    }
-
+updateEndpointsBatch pApplicationId_
+  pEndpointBatchRequest_
+  = UpdateEndpointsBatch'{_uebApplicationId =
+                            pApplicationId_,
+                          _uebEndpointBatchRequest = pEndpointBatchRequest_}
 
 -- | Undocumented member.
 uebApplicationId :: Lens' UpdateEndpointsBatch Text
@@ -116,13 +112,13 @@ instance ToQuery UpdateEndpointsBatch where
         toQuery = const mempty
 
 -- | /See:/ 'updateEndpointsBatchResponse' smart constructor.
-data UpdateEndpointsBatchResponse =
-  UpdateEndpointsBatchResponse'
-    { _uebrsResponseStatus :: !Int
-    , _uebrsMessageBody    :: !MessageBody
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data UpdateEndpointsBatchResponse = UpdateEndpointsBatchResponse'{_uebrsResponseStatus
+                                                                  :: !Int,
+                                                                  _uebrsMessageBody
+                                                                  ::
+                                                                  !MessageBody}
+                                      deriving (Eq, Read, Show, Data, Typeable,
+                                                Generic)
 
 -- | Creates a value of 'UpdateEndpointsBatchResponse' with the minimum fields required to make a request.
 --
@@ -135,10 +131,11 @@ updateEndpointsBatchResponse
     :: Int -- ^ 'uebrsResponseStatus'
     -> MessageBody -- ^ 'uebrsMessageBody'
     -> UpdateEndpointsBatchResponse
-updateEndpointsBatchResponse pResponseStatus_ pMessageBody_ =
-  UpdateEndpointsBatchResponse'
-    {_uebrsResponseStatus = pResponseStatus_, _uebrsMessageBody = pMessageBody_}
-
+updateEndpointsBatchResponse pResponseStatus_
+  pMessageBody_
+  = UpdateEndpointsBatchResponse'{_uebrsResponseStatus
+                                    = pResponseStatus_,
+                                  _uebrsMessageBody = pMessageBody_}
 
 -- | -- | The response status code.
 uebrsResponseStatus :: Lens' UpdateEndpointsBatchResponse Int

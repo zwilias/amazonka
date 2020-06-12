@@ -40,20 +40,15 @@ module Network.AWS.GuardDuty.GetIPSet
     ) where
 
 import Network.AWS.GuardDuty.Types
-import Network.AWS.GuardDuty.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 
 -- | /See:/ 'getIPSet' smart constructor.
-data GetIPSet =
-  GetIPSet'
-    { _gisDetectorId :: !Text
-    , _gisIPSetId    :: !Text
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data GetIPSet = GetIPSet'{_gisDetectorId :: !Text,
+                          _gisIPSetId :: !Text}
+                  deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'GetIPSet' with the minimum fields required to make a request.
 --
@@ -66,9 +61,9 @@ getIPSet
     :: Text -- ^ 'gisDetectorId'
     -> Text -- ^ 'gisIPSetId'
     -> GetIPSet
-getIPSet pDetectorId_ pIPSetId_ =
-  GetIPSet' {_gisDetectorId = pDetectorId_, _gisIPSetId = pIPSetId_}
-
+getIPSet pDetectorId_ pIPSetId_
+  = GetIPSet'{_gisDetectorId = pDetectorId_,
+              _gisIPSetId = pIPSetId_}
 
 -- | The detectorID that specifies the GuardDuty service whose IPSet you want to retrieve.
 gisDetectorId :: Lens' GetIPSet Text
@@ -111,16 +106,13 @@ instance ToQuery GetIPSet where
         toQuery = const mempty
 
 -- | /See:/ 'getIPSetResponse' smart constructor.
-data GetIPSetResponse =
-  GetIPSetResponse'
-    { _gisrsStatus         :: !(Maybe IPSetStatus)
-    , _gisrsLocation       :: !(Maybe Text)
-    , _gisrsFormat         :: !(Maybe IPSetFormat)
-    , _gisrsName           :: !(Maybe Text)
-    , _gisrsResponseStatus :: !Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data GetIPSetResponse = GetIPSetResponse'{_gisrsStatus
+                                          :: !(Maybe IPSetStatus),
+                                          _gisrsLocation :: !(Maybe Text),
+                                          _gisrsFormat :: !(Maybe IPSetFormat),
+                                          _gisrsName :: !(Maybe Text),
+                                          _gisrsResponseStatus :: !Int}
+                          deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'GetIPSetResponse' with the minimum fields required to make a request.
 --
@@ -138,15 +130,11 @@ data GetIPSetResponse =
 getIPSetResponse
     :: Int -- ^ 'gisrsResponseStatus'
     -> GetIPSetResponse
-getIPSetResponse pResponseStatus_ =
-  GetIPSetResponse'
-    { _gisrsStatus = Nothing
-    , _gisrsLocation = Nothing
-    , _gisrsFormat = Nothing
-    , _gisrsName = Nothing
-    , _gisrsResponseStatus = pResponseStatus_
-    }
-
+getIPSetResponse pResponseStatus_
+  = GetIPSetResponse'{_gisrsStatus = Nothing,
+                      _gisrsLocation = Nothing, _gisrsFormat = Nothing,
+                      _gisrsName = Nothing,
+                      _gisrsResponseStatus = pResponseStatus_}
 
 -- | The status of ipSet file uploaded.
 gisrsStatus :: Lens' GetIPSetResponse (Maybe IPSetStatus)

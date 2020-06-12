@@ -11,7 +11,7 @@
 -- Stability   : auto-generated
 -- Portability : non-portable (GHC extensions)
 --
--- __AWS Storage Gateway Service__
+-- __AWS Storage Gateway Service__ 
 --
 -- AWS Storage Gateway is the service that connects an on-premises software appliance with cloud-based storage to provide seamless and secure integration between an organization's on-premises IT environment and AWS's storage infrastructure. The service enables you to securely upload data to the AWS cloud for cost effective backup and rapid disaster recovery.
 --
@@ -25,7 +25,7 @@
 --
 --     * <http://docs.aws.amazon.com/storagegateway/latest/APIReference/API_Operations.html Operations in AWS Storage Gateway> : Contains detailed descriptions of all AWS Storage Gateway operations, their request parameters, response elements, possible errors, and examples of requests and responses.
 --
---     * <http://docs.aws.amazon.com/general/latest/gr/rande.html#sg_region AWS Storage Gateway Regions and Endpoints:> Provides a list of each region and endpoints available for use with AWS Storage Gateway.
+--     * <http://docs.aws.amazon.com/general/latest/gr/rande.html#sg_region AWS Storage Gateway Regions and Endpoints:> Provides a list of each region and endpoints available for use with AWS Storage Gateway. 
 --
 --
 --
@@ -62,193 +62,193 @@ module Network.AWS.StorageGateway
     -- * Operations
     -- $operations
 
-    -- ** CancelArchival
+    -- ** CancelArchival 
     , module Network.AWS.StorageGateway.CancelArchival
 
-    -- ** CreateStorediSCSIVolume
+    -- ** CreateStorediSCSIVolume 
     , module Network.AWS.StorageGateway.CreateStorediSCSIVolume
 
-    -- ** CreateNFSFileShare
+    -- ** CreateNFSFileShare 
     , module Network.AWS.StorageGateway.CreateNFSFileShare
 
-    -- ** DescribeChapCredentials
+    -- ** DescribeChapCredentials 
     , module Network.AWS.StorageGateway.DescribeChapCredentials
 
-    -- ** SetLocalConsolePassword
+    -- ** SetLocalConsolePassword 
     , module Network.AWS.StorageGateway.SetLocalConsolePassword
 
-    -- ** CreateTapes
+    -- ** CreateTapes 
     , module Network.AWS.StorageGateway.CreateTapes
 
-    -- ** UpdateVTLDeviceType
+    -- ** UpdateVTLDeviceType 
     , module Network.AWS.StorageGateway.UpdateVTLDeviceType
 
-    -- ** CreateCachediSCSIVolume
+    -- ** CreateCachediSCSIVolume 
     , module Network.AWS.StorageGateway.CreateCachediSCSIVolume
 
-    -- ** ListFileShares
+    -- ** ListFileShares 
     , module Network.AWS.StorageGateway.ListFileShares
 
-    -- ** DeleteFileShare
+    -- ** DeleteFileShare 
     , module Network.AWS.StorageGateway.DeleteFileShare
 
-    -- ** ListVolumeInitiators
+    -- ** ListVolumeInitiators 
     , module Network.AWS.StorageGateway.ListVolumeInitiators
 
-    -- ** AddUploadBuffer
+    -- ** AddUploadBuffer 
     , module Network.AWS.StorageGateway.AddUploadBuffer
 
-    -- ** ListTagsForResource
+    -- ** ListTagsForResource 
     , module Network.AWS.StorageGateway.ListTagsForResource
 
-    -- ** NotifyWhenUploaded
+    -- ** NotifyWhenUploaded 
     , module Network.AWS.StorageGateway.NotifyWhenUploaded
 
-    -- ** UpdateGatewayInformation
+    -- ** UpdateGatewayInformation 
     , module Network.AWS.StorageGateway.UpdateGatewayInformation
 
-    -- ** DescribeMaintenanceStartTime
+    -- ** DescribeMaintenanceStartTime 
     , module Network.AWS.StorageGateway.DescribeMaintenanceStartTime
 
-    -- ** DescribeWorkingStorage
+    -- ** DescribeWorkingStorage 
     , module Network.AWS.StorageGateway.DescribeWorkingStorage
 
-    -- ** DescribeCachediSCSIVolumes
+    -- ** DescribeCachediSCSIVolumes 
     , module Network.AWS.StorageGateway.DescribeCachediSCSIVolumes
 
-    -- ** AddCache
+    -- ** AddCache 
     , module Network.AWS.StorageGateway.AddCache
 
-    -- ** StartGateway
+    -- ** StartGateway 
     , module Network.AWS.StorageGateway.StartGateway
 
-    -- ** ShutdownGateway
+    -- ** ShutdownGateway 
     , module Network.AWS.StorageGateway.ShutdownGateway
 
-    -- ** UpdateGatewaySoftwareNow
+    -- ** UpdateGatewaySoftwareNow 
     , module Network.AWS.StorageGateway.UpdateGatewaySoftwareNow
 
-    -- ** RemoveTagsFromResource
+    -- ** RemoveTagsFromResource 
     , module Network.AWS.StorageGateway.RemoveTagsFromResource
 
-    -- ** DeleteChapCredentials
+    -- ** DeleteChapCredentials 
     , module Network.AWS.StorageGateway.DeleteChapCredentials
 
-    -- ** UpdateChapCredentials
+    -- ** UpdateChapCredentials 
     , module Network.AWS.StorageGateway.UpdateChapCredentials
 
-    -- ** DescribeUploadBuffer
+    -- ** DescribeUploadBuffer 
     , module Network.AWS.StorageGateway.DescribeUploadBuffer
 
     -- ** DescribeTapes (Paginated)
     , module Network.AWS.StorageGateway.DescribeTapes
 
-    -- ** DescribeStorediSCSIVolumes
+    -- ** DescribeStorediSCSIVolumes 
     , module Network.AWS.StorageGateway.DescribeStorediSCSIVolumes
 
-    -- ** CreateSnapshotFromVolumeRecoveryPoint
+    -- ** CreateSnapshotFromVolumeRecoveryPoint 
     , module Network.AWS.StorageGateway.CreateSnapshotFromVolumeRecoveryPoint
 
-    -- ** RetrieveTapeRecoveryPoint
+    -- ** RetrieveTapeRecoveryPoint 
     , module Network.AWS.StorageGateway.RetrieveTapeRecoveryPoint
 
-    -- ** AddTagsToResource
+    -- ** AddTagsToResource 
     , module Network.AWS.StorageGateway.AddTagsToResource
 
-    -- ** DeleteGateway
+    -- ** DeleteGateway 
     , module Network.AWS.StorageGateway.DeleteGateway
 
-    -- ** UpdateMaintenanceStartTime
+    -- ** UpdateMaintenanceStartTime 
     , module Network.AWS.StorageGateway.UpdateMaintenanceStartTime
 
-    -- ** DescribeGatewayInformation
+    -- ** DescribeGatewayInformation 
     , module Network.AWS.StorageGateway.DescribeGatewayInformation
 
-    -- ** RefreshCache
+    -- ** RefreshCache 
     , module Network.AWS.StorageGateway.RefreshCache
 
-    -- ** UpdateNFSFileShare
+    -- ** UpdateNFSFileShare 
     , module Network.AWS.StorageGateway.UpdateNFSFileShare
 
-    -- ** RetrieveTapeArchive
+    -- ** RetrieveTapeArchive 
     , module Network.AWS.StorageGateway.RetrieveTapeArchive
 
     -- ** DescribeTapeArchives (Paginated)
     , module Network.AWS.StorageGateway.DescribeTapeArchives
 
-    -- ** DisableGateway
+    -- ** DisableGateway 
     , module Network.AWS.StorageGateway.DisableGateway
 
-    -- ** DescribeSnapshotSchedule
+    -- ** DescribeSnapshotSchedule 
     , module Network.AWS.StorageGateway.DescribeSnapshotSchedule
 
-    -- ** CreateTapeWithBarcode
+    -- ** CreateTapeWithBarcode 
     , module Network.AWS.StorageGateway.CreateTapeWithBarcode
 
-    -- ** DescribeBandwidthRateLimit
+    -- ** DescribeBandwidthRateLimit 
     , module Network.AWS.StorageGateway.DescribeBandwidthRateLimit
 
-    -- ** DeleteSnapshotSchedule
+    -- ** DeleteSnapshotSchedule 
     , module Network.AWS.StorageGateway.DeleteSnapshotSchedule
 
-    -- ** UpdateSnapshotSchedule
+    -- ** UpdateSnapshotSchedule 
     , module Network.AWS.StorageGateway.UpdateSnapshotSchedule
 
-    -- ** CreateSnapshot
+    -- ** CreateSnapshot 
     , module Network.AWS.StorageGateway.CreateSnapshot
 
-    -- ** CancelRetrieval
+    -- ** CancelRetrieval 
     , module Network.AWS.StorageGateway.CancelRetrieval
 
     -- ** DescribeVTLDevices (Paginated)
     , module Network.AWS.StorageGateway.DescribeVTLDevices
 
-    -- ** DeleteTapeArchive
+    -- ** DeleteTapeArchive 
     , module Network.AWS.StorageGateway.DeleteTapeArchive
 
-    -- ** DescribeNFSFileShares
+    -- ** DescribeNFSFileShares 
     , module Network.AWS.StorageGateway.DescribeNFSFileShares
 
-    -- ** ListVolumeRecoveryPoints
+    -- ** ListVolumeRecoveryPoints 
     , module Network.AWS.StorageGateway.ListVolumeRecoveryPoints
 
-    -- ** ListTapes
+    -- ** ListTapes 
     , module Network.AWS.StorageGateway.ListTapes
 
-    -- ** ResetCache
+    -- ** ResetCache 
     , module Network.AWS.StorageGateway.ResetCache
 
     -- ** ListGateways (Paginated)
     , module Network.AWS.StorageGateway.ListGateways
 
-    -- ** DeleteTape
+    -- ** DeleteTape 
     , module Network.AWS.StorageGateway.DeleteTape
 
-    -- ** ListLocalDisks
+    -- ** ListLocalDisks 
     , module Network.AWS.StorageGateway.ListLocalDisks
 
     -- ** ListVolumes (Paginated)
     , module Network.AWS.StorageGateway.ListVolumes
 
-    -- ** UpdateBandwidthRateLimit
+    -- ** UpdateBandwidthRateLimit 
     , module Network.AWS.StorageGateway.UpdateBandwidthRateLimit
 
-    -- ** AddWorkingStorage
+    -- ** AddWorkingStorage 
     , module Network.AWS.StorageGateway.AddWorkingStorage
 
     -- ** DescribeTapeRecoveryPoints (Paginated)
     , module Network.AWS.StorageGateway.DescribeTapeRecoveryPoints
 
-    -- ** DeleteBandwidthRateLimit
+    -- ** DeleteBandwidthRateLimit 
     , module Network.AWS.StorageGateway.DeleteBandwidthRateLimit
 
-    -- ** ActivateGateway
+    -- ** ActivateGateway 
     , module Network.AWS.StorageGateway.ActivateGateway
 
-    -- ** DescribeCache
+    -- ** DescribeCache 
     , module Network.AWS.StorageGateway.DescribeCache
 
-    -- ** DeleteVolume
+    -- ** DeleteVolume 
     , module Network.AWS.StorageGateway.DeleteVolume
 
     -- * Types
@@ -462,8 +462,8 @@ import Network.AWS.StorageGateway.CreateNFSFileShare
 import Network.AWS.StorageGateway.CreateSnapshot
 import Network.AWS.StorageGateway.CreateSnapshotFromVolumeRecoveryPoint
 import Network.AWS.StorageGateway.CreateStorediSCSIVolume
-import Network.AWS.StorageGateway.CreateTapes
 import Network.AWS.StorageGateway.CreateTapeWithBarcode
+import Network.AWS.StorageGateway.CreateTapes
 import Network.AWS.StorageGateway.DeleteBandwidthRateLimit
 import Network.AWS.StorageGateway.DeleteChapCredentials
 import Network.AWS.StorageGateway.DeleteFileShare

@@ -45,7 +45,6 @@ module Network.AWS.CodeCommit.DescribePullRequestEvents
     ) where
 
 import Network.AWS.CodeCommit.Types
-import Network.AWS.CodeCommit.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Pager
 import Network.AWS.Prelude
@@ -53,16 +52,20 @@ import Network.AWS.Request
 import Network.AWS.Response
 
 -- | /See:/ 'describePullRequestEvents' smart constructor.
-data DescribePullRequestEvents =
-  DescribePullRequestEvents'
-    { _dprePullRequestEventType :: !(Maybe PullRequestEventType)
-    , _dpreActorARN             :: !(Maybe Text)
-    , _dpreNextToken            :: !(Maybe Text)
-    , _dpreMaxResults           :: !(Maybe Int)
-    , _dprePullRequestId        :: !Text
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data DescribePullRequestEvents = DescribePullRequestEvents'{_dprePullRequestEventType
+                                                            ::
+                                                            !(Maybe
+                                                                PullRequestEventType),
+                                                            _dpreActorARN ::
+                                                            !(Maybe Text),
+                                                            _dpreNextToken ::
+                                                            !(Maybe Text),
+                                                            _dpreMaxResults ::
+                                                            !(Maybe Int),
+                                                            _dprePullRequestId
+                                                            :: !Text}
+                                   deriving (Eq, Read, Show, Data, Typeable,
+                                             Generic)
 
 -- | Creates a value of 'DescribePullRequestEvents' with the minimum fields required to make a request.
 --
@@ -80,15 +83,13 @@ data DescribePullRequestEvents =
 describePullRequestEvents
     :: Text -- ^ 'dprePullRequestId'
     -> DescribePullRequestEvents
-describePullRequestEvents pPullRequestId_ =
-  DescribePullRequestEvents'
-    { _dprePullRequestEventType = Nothing
-    , _dpreActorARN = Nothing
-    , _dpreNextToken = Nothing
-    , _dpreMaxResults = Nothing
-    , _dprePullRequestId = pPullRequestId_
-    }
-
+describePullRequestEvents pPullRequestId_
+  = DescribePullRequestEvents'{_dprePullRequestEventType
+                                 = Nothing,
+                               _dpreActorARN = Nothing,
+                               _dpreNextToken = Nothing,
+                               _dpreMaxResults = Nothing,
+                               _dprePullRequestId = pPullRequestId_}
 
 -- | Optional. The pull request event type about which you want to return information.
 dprePullRequestEventType :: Lens' DescribePullRequestEvents (Maybe PullRequestEventType)
@@ -160,14 +161,18 @@ instance ToQuery DescribePullRequestEvents where
         toQuery = const mempty
 
 -- | /See:/ 'describePullRequestEventsResponse' smart constructor.
-data DescribePullRequestEventsResponse =
-  DescribePullRequestEventsResponse'
-    { _dprersNextToken         :: !(Maybe Text)
-    , _dprersResponseStatus    :: !Int
-    , _dprersPullRequestEvents :: ![PullRequestEvent]
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data DescribePullRequestEventsResponse = DescribePullRequestEventsResponse'{_dprersNextToken
+                                                                            ::
+                                                                            !(Maybe
+                                                                                Text),
+                                                                            _dprersResponseStatus
+                                                                            ::
+                                                                            !Int,
+                                                                            _dprersPullRequestEvents
+                                                                            ::
+                                                                            ![PullRequestEvent]}
+                                           deriving (Eq, Read, Show, Data,
+                                                     Typeable, Generic)
 
 -- | Creates a value of 'DescribePullRequestEventsResponse' with the minimum fields required to make a request.
 --
@@ -181,13 +186,11 @@ data DescribePullRequestEventsResponse =
 describePullRequestEventsResponse
     :: Int -- ^ 'dprersResponseStatus'
     -> DescribePullRequestEventsResponse
-describePullRequestEventsResponse pResponseStatus_ =
-  DescribePullRequestEventsResponse'
-    { _dprersNextToken = Nothing
-    , _dprersResponseStatus = pResponseStatus_
-    , _dprersPullRequestEvents = mempty
-    }
-
+describePullRequestEventsResponse pResponseStatus_
+  = DescribePullRequestEventsResponse'{_dprersNextToken
+                                         = Nothing,
+                                       _dprersResponseStatus = pResponseStatus_,
+                                       _dprersPullRequestEvents = mempty}
 
 -- | An enumeration token that can be used in a request to return the next batch of the results.
 dprersNextToken :: Lens' DescribePullRequestEventsResponse (Maybe Text)

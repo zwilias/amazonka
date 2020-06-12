@@ -49,7 +49,7 @@
 --
 --
 --
--- When the service scheduler stops running tasks, it attempts to maintain balance across the Availability Zones in your cluster using the following logic:
+-- When the service scheduler stops running tasks, it attempts to maintain balance across the Availability Zones in your cluster using the following logic: 
 --
 --     * Sort the container instances by the largest number of running tasks for this service in the same Availability Zone as the instance. For example, if zone A has one running service task and zones B and C each have two, container instances in either zone B or C are considered optimal for termination.
 --
@@ -82,27 +82,26 @@ module Network.AWS.ECS.UpdateService
     ) where
 
 import Network.AWS.ECS.Types
-import Network.AWS.ECS.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 
 -- | /See:/ 'updateService' smart constructor.
-data UpdateService =
-  UpdateService'
-    { _usCluster                       :: !(Maybe Text)
-    , _usPlatformVersion               :: !(Maybe Text)
-    , _usDesiredCount                  :: !(Maybe Int)
-    , _usForceNewDeployment            :: !(Maybe Bool)
-    , _usTaskDefinition                :: !(Maybe Text)
-    , _usHealthCheckGracePeriodSeconds :: !(Maybe Int)
-    , _usNetworkConfiguration          :: !(Maybe NetworkConfiguration)
-    , _usDeploymentConfiguration       :: !(Maybe DeploymentConfiguration)
-    , _usService                       :: !Text
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data UpdateService = UpdateService'{_usCluster ::
+                                    !(Maybe Text),
+                                    _usPlatformVersion :: !(Maybe Text),
+                                    _usDesiredCount :: !(Maybe Int),
+                                    _usForceNewDeployment :: !(Maybe Bool),
+                                    _usTaskDefinition :: !(Maybe Text),
+                                    _usHealthCheckGracePeriodSeconds ::
+                                    !(Maybe Int),
+                                    _usNetworkConfiguration ::
+                                    !(Maybe NetworkConfiguration),
+                                    _usDeploymentConfiguration ::
+                                    !(Maybe DeploymentConfiguration),
+                                    _usService :: !Text}
+                       deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'UpdateService' with the minimum fields required to make a request.
 --
@@ -128,19 +127,16 @@ data UpdateService =
 updateService
     :: Text -- ^ 'usService'
     -> UpdateService
-updateService pService_ =
-  UpdateService'
-    { _usCluster = Nothing
-    , _usPlatformVersion = Nothing
-    , _usDesiredCount = Nothing
-    , _usForceNewDeployment = Nothing
-    , _usTaskDefinition = Nothing
-    , _usHealthCheckGracePeriodSeconds = Nothing
-    , _usNetworkConfiguration = Nothing
-    , _usDeploymentConfiguration = Nothing
-    , _usService = pService_
-    }
-
+updateService pService_
+  = UpdateService'{_usCluster = Nothing,
+                   _usPlatformVersion = Nothing,
+                   _usDesiredCount = Nothing,
+                   _usForceNewDeployment = Nothing,
+                   _usTaskDefinition = Nothing,
+                   _usHealthCheckGracePeriodSeconds = Nothing,
+                   _usNetworkConfiguration = Nothing,
+                   _usDeploymentConfiguration = Nothing,
+                   _usService = pService_}
 
 -- | The short name or full Amazon Resource Name (ARN) of the cluster that your service is running on. If you do not specify a cluster, the default cluster is assumed.
 usCluster :: Lens' UpdateService (Maybe Text)
@@ -225,13 +221,12 @@ instance ToQuery UpdateService where
         toQuery = const mempty
 
 -- | /See:/ 'updateServiceResponse' smart constructor.
-data UpdateServiceResponse =
-  UpdateServiceResponse'
-    { _usrsService        :: !(Maybe ContainerService)
-    , _usrsResponseStatus :: !Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data UpdateServiceResponse = UpdateServiceResponse'{_usrsService
+                                                    ::
+                                                    !(Maybe ContainerService),
+                                                    _usrsResponseStatus :: !Int}
+                               deriving (Eq, Read, Show, Data, Typeable,
+                                         Generic)
 
 -- | Creates a value of 'UpdateServiceResponse' with the minimum fields required to make a request.
 --
@@ -243,10 +238,9 @@ data UpdateServiceResponse =
 updateServiceResponse
     :: Int -- ^ 'usrsResponseStatus'
     -> UpdateServiceResponse
-updateServiceResponse pResponseStatus_ =
-  UpdateServiceResponse'
-    {_usrsService = Nothing, _usrsResponseStatus = pResponseStatus_}
-
+updateServiceResponse pResponseStatus_
+  = UpdateServiceResponse'{_usrsService = Nothing,
+                           _usrsResponseStatus = pResponseStatus_}
 
 -- | The full description of your service following the update call.
 usrsService :: Lens' UpdateServiceResponse (Maybe ContainerService)

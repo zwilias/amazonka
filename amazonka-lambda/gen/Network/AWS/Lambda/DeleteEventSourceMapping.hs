@@ -46,23 +46,20 @@ module Network.AWS.Lambda.DeleteEventSourceMapping
     ) where
 
 import Network.AWS.Lambda.Types
-import Network.AWS.Lambda.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 
--- |
+-- | 
 --
 --
 --
 -- /See:/ 'deleteEventSourceMapping' smart constructor.
-newtype DeleteEventSourceMapping =
-  DeleteEventSourceMapping'
-    { _desmUUId :: Text
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+newtype DeleteEventSourceMapping = DeleteEventSourceMapping'{_desmUUId
+                                                             :: Text}
+                                     deriving (Eq, Read, Show, Data, Typeable,
+                                               Generic)
 
 -- | Creates a value of 'DeleteEventSourceMapping' with the minimum fields required to make a request.
 --
@@ -72,8 +69,8 @@ newtype DeleteEventSourceMapping =
 deleteEventSourceMapping
     :: Text -- ^ 'desmUUId'
     -> DeleteEventSourceMapping
-deleteEventSourceMapping pUUId_ = DeleteEventSourceMapping' {_desmUUId = pUUId_}
-
+deleteEventSourceMapping pUUId_
+  = DeleteEventSourceMapping'{_desmUUId = pUUId_}
 
 -- | The event source mapping ID.
 desmUUId :: Lens' DeleteEventSourceMapping Text

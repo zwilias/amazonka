@@ -18,7 +18,7 @@
 -- Stability   : auto-generated
 -- Portability : non-portable (GHC extensions)
 --
--- Updates the structure of an approval rule created specifically for a pull request. For example, you can change the number of required approvers and the approval pool for approvers.
+-- Updates the structure of an approval rule created specifically for a pull request. For example, you can change the number of required approvers and the approval pool for approvers. 
 --
 --
 module Network.AWS.CodeCommit.UpdatePullRequestApprovalRuleContent
@@ -41,22 +41,27 @@ module Network.AWS.CodeCommit.UpdatePullRequestApprovalRuleContent
     ) where
 
 import Network.AWS.CodeCommit.Types
-import Network.AWS.CodeCommit.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 
 -- | /See:/ 'updatePullRequestApprovalRuleContent' smart constructor.
-data UpdatePullRequestApprovalRuleContent =
-  UpdatePullRequestApprovalRuleContent'
-    { _uprarcExistingRuleContentSha256 :: !(Maybe Text)
-    , _uprarcPullRequestId             :: !Text
-    , _uprarcApprovalRuleName          :: !Text
-    , _uprarcNewRuleContent            :: !Text
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data UpdatePullRequestApprovalRuleContent = UpdatePullRequestApprovalRuleContent'{_uprarcExistingRuleContentSha256
+                                                                                  ::
+                                                                                  !(Maybe
+                                                                                      Text),
+                                                                                  _uprarcPullRequestId
+                                                                                  ::
+                                                                                  !Text,
+                                                                                  _uprarcApprovalRuleName
+                                                                                  ::
+                                                                                  !Text,
+                                                                                  _uprarcNewRuleContent
+                                                                                  ::
+                                                                                  !Text}
+                                              deriving (Eq, Read, Show, Data,
+                                                        Typeable, Generic)
 
 -- | Creates a value of 'UpdatePullRequestApprovalRuleContent' with the minimum fields required to make a request.
 --
@@ -74,14 +79,16 @@ updatePullRequestApprovalRuleContent
     -> Text -- ^ 'uprarcApprovalRuleName'
     -> Text -- ^ 'uprarcNewRuleContent'
     -> UpdatePullRequestApprovalRuleContent
-updatePullRequestApprovalRuleContent pPullRequestId_ pApprovalRuleName_ pNewRuleContent_ =
-  UpdatePullRequestApprovalRuleContent'
-    { _uprarcExistingRuleContentSha256 = Nothing
-    , _uprarcPullRequestId = pPullRequestId_
-    , _uprarcApprovalRuleName = pApprovalRuleName_
-    , _uprarcNewRuleContent = pNewRuleContent_
-    }
-
+updatePullRequestApprovalRuleContent pPullRequestId_
+  pApprovalRuleName_ pNewRuleContent_
+  = UpdatePullRequestApprovalRuleContent'{_uprarcExistingRuleContentSha256
+                                            = Nothing,
+                                          _uprarcPullRequestId =
+                                            pPullRequestId_,
+                                          _uprarcApprovalRuleName =
+                                            pApprovalRuleName_,
+                                          _uprarcNewRuleContent =
+                                            pNewRuleContent_}
 
 -- | The SHA-256 hash signature for the content of the approval rule. You can retrieve this information by using 'GetPullRequest' .
 uprarcExistingRuleContentSha256 :: Lens' UpdatePullRequestApprovalRuleContent (Maybe Text)
@@ -150,13 +157,15 @@ instance ToQuery UpdatePullRequestApprovalRuleContent
         toQuery = const mempty
 
 -- | /See:/ 'updatePullRequestApprovalRuleContentResponse' smart constructor.
-data UpdatePullRequestApprovalRuleContentResponse =
-  UpdatePullRequestApprovalRuleContentResponse'
-    { _uprarcrsResponseStatus :: !Int
-    , _uprarcrsApprovalRule   :: !ApprovalRule
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data UpdatePullRequestApprovalRuleContentResponse = UpdatePullRequestApprovalRuleContentResponse'{_uprarcrsResponseStatus
+                                                                                                  ::
+                                                                                                  !Int,
+                                                                                                  _uprarcrsApprovalRule
+                                                                                                  ::
+                                                                                                  !ApprovalRule}
+                                                      deriving (Eq, Read, Show,
+                                                                Data, Typeable,
+                                                                Generic)
 
 -- | Creates a value of 'UpdatePullRequestApprovalRuleContentResponse' with the minimum fields required to make a request.
 --
@@ -169,12 +178,12 @@ updatePullRequestApprovalRuleContentResponse
     :: Int -- ^ 'uprarcrsResponseStatus'
     -> ApprovalRule -- ^ 'uprarcrsApprovalRule'
     -> UpdatePullRequestApprovalRuleContentResponse
-updatePullRequestApprovalRuleContentResponse pResponseStatus_ pApprovalRule_ =
-  UpdatePullRequestApprovalRuleContentResponse'
-    { _uprarcrsResponseStatus = pResponseStatus_
-    , _uprarcrsApprovalRule = pApprovalRule_
-    }
-
+updatePullRequestApprovalRuleContentResponse
+  pResponseStatus_ pApprovalRule_
+  = UpdatePullRequestApprovalRuleContentResponse'{_uprarcrsResponseStatus
+                                                    = pResponseStatus_,
+                                                  _uprarcrsApprovalRule =
+                                                    pApprovalRule_}
 
 -- | -- | The response status code.
 uprarcrsResponseStatus :: Lens' UpdatePullRequestApprovalRuleContentResponse Int

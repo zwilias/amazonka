@@ -72,103 +72,103 @@ module Network.AWS.Glacier
     -- * Operations
     -- $operations
 
-    -- ** SetVaultAccessPolicy
+    -- ** SetVaultAccessPolicy 
     , module Network.AWS.Glacier.SetVaultAccessPolicy
 
-    -- ** InitiateJob
+    -- ** InitiateJob 
     , module Network.AWS.Glacier.InitiateJob
 
-    -- ** SetDataRetrievalPolicy
+    -- ** SetDataRetrievalPolicy 
     , module Network.AWS.Glacier.SetDataRetrievalPolicy
 
-    -- ** DeleteVaultAccessPolicy
+    -- ** DeleteVaultAccessPolicy 
     , module Network.AWS.Glacier.DeleteVaultAccessPolicy
 
-    -- ** GetVaultNotifications
+    -- ** GetVaultNotifications 
     , module Network.AWS.Glacier.GetVaultNotifications
 
-    -- ** ListTagsForVault
+    -- ** ListTagsForVault 
     , module Network.AWS.Glacier.ListTagsForVault
 
-    -- ** UploadMultipartPart
+    -- ** UploadMultipartPart 
     , module Network.AWS.Glacier.UploadMultipartPart
 
-    -- ** DeleteVaultNotifications
+    -- ** DeleteVaultNotifications 
     , module Network.AWS.Glacier.DeleteVaultNotifications
 
-    -- ** CompleteVaultLock
+    -- ** CompleteVaultLock 
     , module Network.AWS.Glacier.CompleteVaultLock
 
-    -- ** AbortVaultLock
+    -- ** AbortVaultLock 
     , module Network.AWS.Glacier.AbortVaultLock
 
     -- ** ListVaults (Paginated)
     , module Network.AWS.Glacier.ListVaults
 
-    -- ** ListProvisionedCapacity
+    -- ** ListProvisionedCapacity 
     , module Network.AWS.Glacier.ListProvisionedCapacity
 
     -- ** ListJobs (Paginated)
     , module Network.AWS.Glacier.ListJobs
 
-    -- ** SetVaultNotifications
+    -- ** SetVaultNotifications 
     , module Network.AWS.Glacier.SetVaultNotifications
 
-    -- ** GetJobOutput
+    -- ** GetJobOutput 
     , module Network.AWS.Glacier.GetJobOutput
 
-    -- ** CompleteMultipartUpload
+    -- ** CompleteMultipartUpload 
     , module Network.AWS.Glacier.CompleteMultipartUpload
 
     -- ** ListMultipartUploads (Paginated)
     , module Network.AWS.Glacier.ListMultipartUploads
 
-    -- ** AbortMultipartUpload
+    -- ** AbortMultipartUpload 
     , module Network.AWS.Glacier.AbortMultipartUpload
 
-    -- ** PurchaseProvisionedCapacity
+    -- ** PurchaseProvisionedCapacity 
     , module Network.AWS.Glacier.PurchaseProvisionedCapacity
 
-    -- ** DescribeVault
+    -- ** DescribeVault 
     , module Network.AWS.Glacier.DescribeVault
 
-    -- ** GetVaultLock
+    -- ** GetVaultLock 
     , module Network.AWS.Glacier.GetVaultLock
 
-    -- ** DescribeJob
+    -- ** DescribeJob 
     , module Network.AWS.Glacier.DescribeJob
 
-    -- ** InitiateVaultLock
+    -- ** InitiateVaultLock 
     , module Network.AWS.Glacier.InitiateVaultLock
 
-    -- ** GetVaultAccessPolicy
+    -- ** GetVaultAccessPolicy 
     , module Network.AWS.Glacier.GetVaultAccessPolicy
 
-    -- ** GetDataRetrievalPolicy
+    -- ** GetDataRetrievalPolicy 
     , module Network.AWS.Glacier.GetDataRetrievalPolicy
 
-    -- ** RemoveTagsFromVault
+    -- ** RemoveTagsFromVault 
     , module Network.AWS.Glacier.RemoveTagsFromVault
 
-    -- ** DeleteVault
+    -- ** DeleteVault 
     , module Network.AWS.Glacier.DeleteVault
 
-    -- ** DeleteArchive
+    -- ** DeleteArchive 
     , module Network.AWS.Glacier.DeleteArchive
 
-    -- ** CreateVault
+    -- ** CreateVault 
     , module Network.AWS.Glacier.CreateVault
 
-    -- ** InitiateMultipartUpload
+    -- ** InitiateMultipartUpload 
     , module Network.AWS.Glacier.InitiateMultipartUpload
 
     -- ** ListParts (Paginated)
     , module Network.AWS.Glacier.ListParts
 
-    -- ** AddTagsToVault
+    -- ** AddTagsToVault 
     , module Network.AWS.Glacier.AddTagsToVault
 
-    -- ** UploadArchive
+    -- ** UploadArchive 
     , module Network.AWS.Glacier.UploadArchive
 
     -- * Types

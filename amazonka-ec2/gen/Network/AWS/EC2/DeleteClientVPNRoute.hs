@@ -41,22 +41,21 @@ module Network.AWS.EC2.DeleteClientVPNRoute
     ) where
 
 import Network.AWS.EC2.Types
-import Network.AWS.EC2.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 
 -- | /See:/ 'deleteClientVPNRoute' smart constructor.
-data DeleteClientVPNRoute =
-  DeleteClientVPNRoute'
-    { _dcvpnrTargetVPCSubnetId    :: !(Maybe Text)
-    , _dcvpnrDryRun               :: !(Maybe Bool)
-    , _dcvpnrClientVPNEndpointId  :: !Text
-    , _dcvpnrDestinationCidrBlock :: !Text
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data DeleteClientVPNRoute = DeleteClientVPNRoute'{_dcvpnrTargetVPCSubnetId
+                                                  :: !(Maybe Text),
+                                                  _dcvpnrDryRun ::
+                                                  !(Maybe Bool),
+                                                  _dcvpnrClientVPNEndpointId ::
+                                                  !Text,
+                                                  _dcvpnrDestinationCidrBlock ::
+                                                  !Text}
+                              deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'DeleteClientVPNRoute' with the minimum fields required to make a request.
 --
@@ -73,14 +72,13 @@ deleteClientVPNRoute
     :: Text -- ^ 'dcvpnrClientVPNEndpointId'
     -> Text -- ^ 'dcvpnrDestinationCidrBlock'
     -> DeleteClientVPNRoute
-deleteClientVPNRoute pClientVPNEndpointId_ pDestinationCidrBlock_ =
-  DeleteClientVPNRoute'
-    { _dcvpnrTargetVPCSubnetId = Nothing
-    , _dcvpnrDryRun = Nothing
-    , _dcvpnrClientVPNEndpointId = pClientVPNEndpointId_
-    , _dcvpnrDestinationCidrBlock = pDestinationCidrBlock_
-    }
-
+deleteClientVPNRoute pClientVPNEndpointId_
+  pDestinationCidrBlock_
+  = DeleteClientVPNRoute'{_dcvpnrTargetVPCSubnetId =
+                            Nothing,
+                          _dcvpnrDryRun = Nothing,
+                          _dcvpnrClientVPNEndpointId = pClientVPNEndpointId_,
+                          _dcvpnrDestinationCidrBlock = pDestinationCidrBlock_}
 
 -- | The ID of the target subnet used by the route.
 dcvpnrTargetVPCSubnetId :: Lens' DeleteClientVPNRoute (Maybe Text)
@@ -130,13 +128,14 @@ instance ToQuery DeleteClientVPNRoute where
                  _dcvpnrDestinationCidrBlock]
 
 -- | /See:/ 'deleteClientVPNRouteResponse' smart constructor.
-data DeleteClientVPNRouteResponse =
-  DeleteClientVPNRouteResponse'
-    { _dcvrrsStatus         :: !(Maybe ClientVPNRouteStatus)
-    , _dcvrrsResponseStatus :: !Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data DeleteClientVPNRouteResponse = DeleteClientVPNRouteResponse'{_dcvrrsStatus
+                                                                  ::
+                                                                  !(Maybe
+                                                                      ClientVPNRouteStatus),
+                                                                  _dcvrrsResponseStatus
+                                                                  :: !Int}
+                                      deriving (Eq, Read, Show, Data, Typeable,
+                                                Generic)
 
 -- | Creates a value of 'DeleteClientVPNRouteResponse' with the minimum fields required to make a request.
 --
@@ -148,10 +147,10 @@ data DeleteClientVPNRouteResponse =
 deleteClientVPNRouteResponse
     :: Int -- ^ 'dcvrrsResponseStatus'
     -> DeleteClientVPNRouteResponse
-deleteClientVPNRouteResponse pResponseStatus_ =
-  DeleteClientVPNRouteResponse'
-    {_dcvrrsStatus = Nothing, _dcvrrsResponseStatus = pResponseStatus_}
-
+deleteClientVPNRouteResponse pResponseStatus_
+  = DeleteClientVPNRouteResponse'{_dcvrrsStatus =
+                                    Nothing,
+                                  _dcvrrsResponseStatus = pResponseStatus_}
 
 -- | The current state of the route.
 dcvrrsStatus :: Lens' DeleteClientVPNRouteResponse (Maybe ClientVPNRouteStatus)

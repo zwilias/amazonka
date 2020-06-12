@@ -51,18 +51,16 @@ import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 import Network.AWS.SSM.Types
-import Network.AWS.SSM.Types.Product
 
 -- | /See:/ 'describeParameters' smart constructor.
-data DescribeParameters =
-  DescribeParameters'
-    { _dpParameterFilters :: !(Maybe [ParameterStringFilter])
-    , _dpFilters          :: !(Maybe [ParametersFilter])
-    , _dpNextToken        :: !(Maybe Text)
-    , _dpMaxResults       :: !(Maybe Nat)
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data DescribeParameters = DescribeParameters'{_dpParameterFilters
+                                              ::
+                                              !(Maybe [ParameterStringFilter]),
+                                              _dpFilters ::
+                                              !(Maybe [ParametersFilter]),
+                                              _dpNextToken :: !(Maybe Text),
+                                              _dpMaxResults :: !(Maybe Nat)}
+                            deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'DescribeParameters' with the minimum fields required to make a request.
 --
@@ -77,14 +75,10 @@ data DescribeParameters =
 -- * 'dpMaxResults' - The maximum number of items to return for this call. The call also returns a token that you can specify in a subsequent call to get the next set of results.
 describeParameters
     :: DescribeParameters
-describeParameters =
-  DescribeParameters'
-    { _dpParameterFilters = Nothing
-    , _dpFilters = Nothing
-    , _dpNextToken = Nothing
-    , _dpMaxResults = Nothing
-    }
-
+describeParameters
+  = DescribeParameters'{_dpParameterFilters = Nothing,
+                        _dpFilters = Nothing, _dpNextToken = Nothing,
+                        _dpMaxResults = Nothing}
 
 -- | Filters to limit the request results.
 dpParameterFilters :: Lens' DescribeParameters [ParameterStringFilter]
@@ -150,14 +144,15 @@ instance ToQuery DescribeParameters where
         toQuery = const mempty
 
 -- | /See:/ 'describeParametersResponse' smart constructor.
-data DescribeParametersResponse =
-  DescribeParametersResponse'
-    { _dprsNextToken      :: !(Maybe Text)
-    , _dprsParameters     :: !(Maybe [ParameterMetadata])
-    , _dprsResponseStatus :: !Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data DescribeParametersResponse = DescribeParametersResponse'{_dprsNextToken
+                                                              :: !(Maybe Text),
+                                                              _dprsParameters ::
+                                                              !(Maybe
+                                                                  [ParameterMetadata]),
+                                                              _dprsResponseStatus
+                                                              :: !Int}
+                                    deriving (Eq, Read, Show, Data, Typeable,
+                                              Generic)
 
 -- | Creates a value of 'DescribeParametersResponse' with the minimum fields required to make a request.
 --
@@ -171,13 +166,11 @@ data DescribeParametersResponse =
 describeParametersResponse
     :: Int -- ^ 'dprsResponseStatus'
     -> DescribeParametersResponse
-describeParametersResponse pResponseStatus_ =
-  DescribeParametersResponse'
-    { _dprsNextToken = Nothing
-    , _dprsParameters = Nothing
-    , _dprsResponseStatus = pResponseStatus_
-    }
-
+describeParametersResponse pResponseStatus_
+  = DescribeParametersResponse'{_dprsNextToken =
+                                  Nothing,
+                                _dprsParameters = Nothing,
+                                _dprsResponseStatus = pResponseStatus_}
 
 -- | The token to use when requesting the next set of items. If there are no additional items to return, the string is empty.
 dprsNextToken :: Lens' DescribeParametersResponse (Maybe Text)

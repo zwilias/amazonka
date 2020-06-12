@@ -44,25 +44,30 @@ module Network.AWS.ECS.SubmitContainerStateChange
     ) where
 
 import Network.AWS.ECS.Types
-import Network.AWS.ECS.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 
 -- | /See:/ 'submitContainerStateChange' smart constructor.
-data SubmitContainerStateChange =
-  SubmitContainerStateChange'
-    { _scscNetworkBindings :: !(Maybe [NetworkBinding])
-    , _scscStatus          :: !(Maybe Text)
-    , _scscCluster         :: !(Maybe Text)
-    , _scscContainerName   :: !(Maybe Text)
-    , _scscReason          :: !(Maybe Text)
-    , _scscExitCode        :: !(Maybe Int)
-    , _scscTask            :: !(Maybe Text)
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data SubmitContainerStateChange = SubmitContainerStateChange'{_scscNetworkBindings
+                                                              ::
+                                                              !(Maybe
+                                                                  [NetworkBinding]),
+                                                              _scscStatus ::
+                                                              !(Maybe Text),
+                                                              _scscCluster ::
+                                                              !(Maybe Text),
+                                                              _scscContainerName
+                                                              :: !(Maybe Text),
+                                                              _scscReason ::
+                                                              !(Maybe Text),
+                                                              _scscExitCode ::
+                                                              !(Maybe Int),
+                                                              _scscTask ::
+                                                              !(Maybe Text)}
+                                    deriving (Eq, Read, Show, Data, Typeable,
+                                              Generic)
 
 -- | Creates a value of 'SubmitContainerStateChange' with the minimum fields required to make a request.
 --
@@ -83,17 +88,13 @@ data SubmitContainerStateChange =
 -- * 'scscTask' - The task ID or full Amazon Resource Name (ARN) of the task that hosts the container.
 submitContainerStateChange
     :: SubmitContainerStateChange
-submitContainerStateChange =
-  SubmitContainerStateChange'
-    { _scscNetworkBindings = Nothing
-    , _scscStatus = Nothing
-    , _scscCluster = Nothing
-    , _scscContainerName = Nothing
-    , _scscReason = Nothing
-    , _scscExitCode = Nothing
-    , _scscTask = Nothing
-    }
-
+submitContainerStateChange
+  = SubmitContainerStateChange'{_scscNetworkBindings =
+                                  Nothing,
+                                _scscStatus = Nothing, _scscCluster = Nothing,
+                                _scscContainerName = Nothing,
+                                _scscReason = Nothing, _scscExitCode = Nothing,
+                                _scscTask = Nothing}
 
 -- | The network bindings of the container.
 scscNetworkBindings :: Lens' SubmitContainerStateChange [NetworkBinding]
@@ -166,13 +167,15 @@ instance ToQuery SubmitContainerStateChange where
         toQuery = const mempty
 
 -- | /See:/ 'submitContainerStateChangeResponse' smart constructor.
-data SubmitContainerStateChangeResponse =
-  SubmitContainerStateChangeResponse'
-    { _scscrsAcknowledgment :: !(Maybe Text)
-    , _scscrsResponseStatus :: !Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data SubmitContainerStateChangeResponse = SubmitContainerStateChangeResponse'{_scscrsAcknowledgment
+                                                                              ::
+                                                                              !(Maybe
+                                                                                  Text),
+                                                                              _scscrsResponseStatus
+                                                                              ::
+                                                                              !Int}
+                                            deriving (Eq, Read, Show, Data,
+                                                      Typeable, Generic)
 
 -- | Creates a value of 'SubmitContainerStateChangeResponse' with the minimum fields required to make a request.
 --
@@ -184,10 +187,11 @@ data SubmitContainerStateChangeResponse =
 submitContainerStateChangeResponse
     :: Int -- ^ 'scscrsResponseStatus'
     -> SubmitContainerStateChangeResponse
-submitContainerStateChangeResponse pResponseStatus_ =
-  SubmitContainerStateChangeResponse'
-    {_scscrsAcknowledgment = Nothing, _scscrsResponseStatus = pResponseStatus_}
-
+submitContainerStateChangeResponse pResponseStatus_
+  = SubmitContainerStateChangeResponse'{_scscrsAcknowledgment
+                                          = Nothing,
+                                        _scscrsResponseStatus =
+                                          pResponseStatus_}
 
 -- | Acknowledgement of the state change.
 scscrsAcknowledgment :: Lens' SubmitContainerStateChangeResponse (Maybe Text)

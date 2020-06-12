@@ -41,7 +41,6 @@ module Network.AWS.CodePipeline.ListPipelines
     ) where
 
 import Network.AWS.CodePipeline.Types
-import Network.AWS.CodePipeline.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Pager
 import Network.AWS.Prelude
@@ -53,12 +52,9 @@ import Network.AWS.Response
 --
 --
 -- /See:/ 'listPipelines' smart constructor.
-newtype ListPipelines =
-  ListPipelines'
-    { _lpNextToken :: Maybe Text
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+newtype ListPipelines = ListPipelines'{_lpNextToken
+                                       :: Maybe Text}
+                          deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'ListPipelines' with the minimum fields required to make a request.
 --
@@ -67,8 +63,8 @@ newtype ListPipelines =
 -- * 'lpNextToken' - An identifier that was returned from the previous list pipelines call. It can be used to return the next set of pipelines in the list.
 listPipelines
     :: ListPipelines
-listPipelines = ListPipelines' {_lpNextToken = Nothing}
-
+listPipelines
+  = ListPipelines'{_lpNextToken = Nothing}
 
 -- | An identifier that was returned from the previous list pipelines call. It can be used to return the next set of pipelines in the list.
 lpNextToken :: Lens' ListPipelines (Maybe Text)
@@ -122,14 +118,14 @@ instance ToQuery ListPipelines where
 --
 --
 -- /See:/ 'listPipelinesResponse' smart constructor.
-data ListPipelinesResponse =
-  ListPipelinesResponse'
-    { _lprsPipelines      :: !(Maybe [PipelineSummary])
-    , _lprsNextToken      :: !(Maybe Text)
-    , _lprsResponseStatus :: !Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data ListPipelinesResponse = ListPipelinesResponse'{_lprsPipelines
+                                                    ::
+                                                    !(Maybe [PipelineSummary]),
+                                                    _lprsNextToken ::
+                                                    !(Maybe Text),
+                                                    _lprsResponseStatus :: !Int}
+                               deriving (Eq, Read, Show, Data, Typeable,
+                                         Generic)
 
 -- | Creates a value of 'ListPipelinesResponse' with the minimum fields required to make a request.
 --
@@ -143,13 +139,10 @@ data ListPipelinesResponse =
 listPipelinesResponse
     :: Int -- ^ 'lprsResponseStatus'
     -> ListPipelinesResponse
-listPipelinesResponse pResponseStatus_ =
-  ListPipelinesResponse'
-    { _lprsPipelines = Nothing
-    , _lprsNextToken = Nothing
-    , _lprsResponseStatus = pResponseStatus_
-    }
-
+listPipelinesResponse pResponseStatus_
+  = ListPipelinesResponse'{_lprsPipelines = Nothing,
+                           _lprsNextToken = Nothing,
+                           _lprsResponseStatus = pResponseStatus_}
 
 -- | The list of pipelines.
 lprsPipelines :: Lens' ListPipelinesResponse [PipelineSummary]

@@ -49,7 +49,6 @@ module Network.AWS.DeviceFarm.CreateRemoteAccessSession
     ) where
 
 import Network.AWS.DeviceFarm.Types
-import Network.AWS.DeviceFarm.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.Request
@@ -60,23 +59,36 @@ import Network.AWS.Response
 --
 --
 -- /See:/ 'createRemoteAccessSession' smart constructor.
-data CreateRemoteAccessSession =
-  CreateRemoteAccessSession'
-    { _crasClientId :: !(Maybe Text)
-    , _crasSkipAppResign :: !(Maybe Bool)
-    , _crasInstanceARN :: !(Maybe Text)
-    , _crasRemoteRecordEnabled :: !(Maybe Bool)
-    , _crasRemoteRecordAppARN :: !(Maybe Text)
-    , _crasSshPublicKey :: !(Maybe Text)
-    , _crasName :: !(Maybe Text)
-    , _crasRemoteDebugEnabled :: !(Maybe Bool)
-    , _crasConfiguration :: !(Maybe CreateRemoteAccessSessionConfiguration)
-    , _crasInteractionMode :: !(Maybe InteractionMode)
-    , _crasProjectARN :: !Text
-    , _crasDeviceARN :: !Text
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data CreateRemoteAccessSession = CreateRemoteAccessSession'{_crasClientId
+                                                            :: !(Maybe Text),
+                                                            _crasSkipAppResign
+                                                            :: !(Maybe Bool),
+                                                            _crasInstanceARN ::
+                                                            !(Maybe Text),
+                                                            _crasRemoteRecordEnabled
+                                                            :: !(Maybe Bool),
+                                                            _crasRemoteRecordAppARN
+                                                            :: !(Maybe Text),
+                                                            _crasSshPublicKey ::
+                                                            !(Maybe Text),
+                                                            _crasName ::
+                                                            !(Maybe Text),
+                                                            _crasRemoteDebugEnabled
+                                                            :: !(Maybe Bool),
+                                                            _crasConfiguration
+                                                            ::
+                                                            !(Maybe
+                                                                CreateRemoteAccessSessionConfiguration),
+                                                            _crasInteractionMode
+                                                            ::
+                                                            !(Maybe
+                                                                InteractionMode),
+                                                            _crasProjectARN ::
+                                                            !Text,
+                                                            _crasDeviceARN ::
+                                                            !Text}
+                                   deriving (Eq, Read, Show, Data, Typeable,
+                                             Generic)
 
 -- | Creates a value of 'CreateRemoteAccessSession' with the minimum fields required to make a request.
 --
@@ -84,7 +96,7 @@ data CreateRemoteAccessSession =
 --
 -- * 'crasClientId' - Unique identifier for the client. If you want access to multiple devices on the same client, you should pass the same @clientId@ value in each call to @CreateRemoteAccessSession@ . This identifier is required only if @remoteDebugEnabled@ is set to @true@ . Remote debugging is <https://docs.aws.amazon.com/devicefarm/latest/developerguide/history.html no longer supported> .
 --
--- * 'crasSkipAppResign' - When set to @true@ , for private devices, Device Farm does not sign your app again. For public devices, Device Farm always signs your apps again. For more information on how Device Farm modifies your uploads during tests, see <https://aws.amazon.com/device-farm/faq/ Do you modify my app?>
+-- * 'crasSkipAppResign' - When set to @true@ , for private devices, Device Farm does not sign your app again. For public devices, Device Farm always signs your apps again. For more information on how Device Farm modifies your uploads during tests, see <https://aws.amazon.com/device-farm/faq/ Do you modify my app?> 
 --
 -- * 'crasInstanceARN' - The Amazon Resource Name (ARN) of the device instance for which you want to create a remote access session.
 --
@@ -109,28 +121,24 @@ createRemoteAccessSession
     :: Text -- ^ 'crasProjectARN'
     -> Text -- ^ 'crasDeviceARN'
     -> CreateRemoteAccessSession
-createRemoteAccessSession pProjectARN_ pDeviceARN_ =
-  CreateRemoteAccessSession'
-    { _crasClientId = Nothing
-    , _crasSkipAppResign = Nothing
-    , _crasInstanceARN = Nothing
-    , _crasRemoteRecordEnabled = Nothing
-    , _crasRemoteRecordAppARN = Nothing
-    , _crasSshPublicKey = Nothing
-    , _crasName = Nothing
-    , _crasRemoteDebugEnabled = Nothing
-    , _crasConfiguration = Nothing
-    , _crasInteractionMode = Nothing
-    , _crasProjectARN = pProjectARN_
-    , _crasDeviceARN = pDeviceARN_
-    }
-
+createRemoteAccessSession pProjectARN_ pDeviceARN_
+  = CreateRemoteAccessSession'{_crasClientId = Nothing,
+                               _crasSkipAppResign = Nothing,
+                               _crasInstanceARN = Nothing,
+                               _crasRemoteRecordEnabled = Nothing,
+                               _crasRemoteRecordAppARN = Nothing,
+                               _crasSshPublicKey = Nothing, _crasName = Nothing,
+                               _crasRemoteDebugEnabled = Nothing,
+                               _crasConfiguration = Nothing,
+                               _crasInteractionMode = Nothing,
+                               _crasProjectARN = pProjectARN_,
+                               _crasDeviceARN = pDeviceARN_}
 
 -- | Unique identifier for the client. If you want access to multiple devices on the same client, you should pass the same @clientId@ value in each call to @CreateRemoteAccessSession@ . This identifier is required only if @remoteDebugEnabled@ is set to @true@ . Remote debugging is <https://docs.aws.amazon.com/devicefarm/latest/developerguide/history.html no longer supported> .
 crasClientId :: Lens' CreateRemoteAccessSession (Maybe Text)
 crasClientId = lens _crasClientId (\ s a -> s{_crasClientId = a})
 
--- | When set to @true@ , for private devices, Device Farm does not sign your app again. For public devices, Device Farm always signs your apps again. For more information on how Device Farm modifies your uploads during tests, see <https://aws.amazon.com/device-farm/faq/ Do you modify my app?>
+-- | When set to @true@ , for private devices, Device Farm does not sign your app again. For public devices, Device Farm always signs your apps again. For more information on how Device Farm modifies your uploads during tests, see <https://aws.amazon.com/device-farm/faq/ Do you modify my app?> 
 crasSkipAppResign :: Lens' CreateRemoteAccessSession (Maybe Bool)
 crasSkipAppResign = lens _crasSkipAppResign (\ s a -> s{_crasSkipAppResign = a})
 
@@ -230,13 +238,15 @@ instance ToQuery CreateRemoteAccessSession where
 --
 --
 -- /See:/ 'createRemoteAccessSessionResponse' smart constructor.
-data CreateRemoteAccessSessionResponse =
-  CreateRemoteAccessSessionResponse'
-    { _crasrsRemoteAccessSession :: !(Maybe RemoteAccessSession)
-    , _crasrsResponseStatus      :: !Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data CreateRemoteAccessSessionResponse = CreateRemoteAccessSessionResponse'{_crasrsRemoteAccessSession
+                                                                            ::
+                                                                            !(Maybe
+                                                                                RemoteAccessSession),
+                                                                            _crasrsResponseStatus
+                                                                            ::
+                                                                            !Int}
+                                           deriving (Eq, Read, Show, Data,
+                                                     Typeable, Generic)
 
 -- | Creates a value of 'CreateRemoteAccessSessionResponse' with the minimum fields required to make a request.
 --
@@ -248,12 +258,10 @@ data CreateRemoteAccessSessionResponse =
 createRemoteAccessSessionResponse
     :: Int -- ^ 'crasrsResponseStatus'
     -> CreateRemoteAccessSessionResponse
-createRemoteAccessSessionResponse pResponseStatus_ =
-  CreateRemoteAccessSessionResponse'
-    { _crasrsRemoteAccessSession = Nothing
-    , _crasrsResponseStatus = pResponseStatus_
-    }
-
+createRemoteAccessSessionResponse pResponseStatus_
+  = CreateRemoteAccessSessionResponse'{_crasrsRemoteAccessSession
+                                         = Nothing,
+                                       _crasrsResponseStatus = pResponseStatus_}
 
 -- | A container that describes the remote access session when the request to create a remote access session is sent.
 crasrsRemoteAccessSession :: Lens' CreateRemoteAccessSessionResponse (Maybe RemoteAccessSession)

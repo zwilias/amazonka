@@ -40,20 +40,16 @@ module Network.AWS.DirectoryService.UpdateTrust
     ) where
 
 import Network.AWS.DirectoryService.Types
-import Network.AWS.DirectoryService.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 
 -- | /See:/ 'updateTrust' smart constructor.
-data UpdateTrust =
-  UpdateTrust'
-    { _utSelectiveAuth :: !(Maybe SelectiveAuth)
-    , _utTrustId       :: !Text
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data UpdateTrust = UpdateTrust'{_utSelectiveAuth ::
+                                !(Maybe SelectiveAuth),
+                                _utTrustId :: !Text}
+                     deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'UpdateTrust' with the minimum fields required to make a request.
 --
@@ -65,9 +61,9 @@ data UpdateTrust =
 updateTrust
     :: Text -- ^ 'utTrustId'
     -> UpdateTrust
-updateTrust pTrustId_ =
-  UpdateTrust' {_utSelectiveAuth = Nothing, _utTrustId = pTrustId_}
-
+updateTrust pTrustId_
+  = UpdateTrust'{_utSelectiveAuth = Nothing,
+                 _utTrustId = pTrustId_}
 
 -- | Updates selective authentication for the trust.
 utSelectiveAuth :: Lens' UpdateTrust (Maybe SelectiveAuth)
@@ -115,14 +111,11 @@ instance ToQuery UpdateTrust where
         toQuery = const mempty
 
 -- | /See:/ 'updateTrustResponse' smart constructor.
-data UpdateTrustResponse =
-  UpdateTrustResponse'
-    { _utrsRequestId      :: !(Maybe Text)
-    , _utrsTrustId        :: !(Maybe Text)
-    , _utrsResponseStatus :: !Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data UpdateTrustResponse = UpdateTrustResponse'{_utrsRequestId
+                                                :: !(Maybe Text),
+                                                _utrsTrustId :: !(Maybe Text),
+                                                _utrsResponseStatus :: !Int}
+                             deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'UpdateTrustResponse' with the minimum fields required to make a request.
 --
@@ -136,13 +129,10 @@ data UpdateTrustResponse =
 updateTrustResponse
     :: Int -- ^ 'utrsResponseStatus'
     -> UpdateTrustResponse
-updateTrustResponse pResponseStatus_ =
-  UpdateTrustResponse'
-    { _utrsRequestId = Nothing
-    , _utrsTrustId = Nothing
-    , _utrsResponseStatus = pResponseStatus_
-    }
-
+updateTrustResponse pResponseStatus_
+  = UpdateTrustResponse'{_utrsRequestId = Nothing,
+                         _utrsTrustId = Nothing,
+                         _utrsResponseStatus = pResponseStatus_}
 
 -- | Undocumented member.
 utrsRequestId :: Lens' UpdateTrustResponse (Maybe Text)

@@ -45,23 +45,21 @@ module Network.AWS.CodeCommit.GetMergeCommit
     ) where
 
 import Network.AWS.CodeCommit.Types
-import Network.AWS.CodeCommit.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 
 -- | /See:/ 'getMergeCommit' smart constructor.
-data GetMergeCommit =
-  GetMergeCommit'
-    { _gmcConflictDetailLevel :: !(Maybe ConflictDetailLevelTypeEnum)
-    , _gmcConflictResolutionStrategy :: !(Maybe ConflictResolutionStrategyTypeEnum)
-    , _gmcRepositoryName :: !Text
-    , _gmcSourceCommitSpecifier :: !Text
-    , _gmcDestinationCommitSpecifier :: !Text
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data GetMergeCommit = GetMergeCommit'{_gmcConflictDetailLevel
+                                      :: !(Maybe ConflictDetailLevelTypeEnum),
+                                      _gmcConflictResolutionStrategy ::
+                                      !(Maybe
+                                          ConflictResolutionStrategyTypeEnum),
+                                      _gmcRepositoryName :: !Text,
+                                      _gmcSourceCommitSpecifier :: !Text,
+                                      _gmcDestinationCommitSpecifier :: !Text}
+                        deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'GetMergeCommit' with the minimum fields required to make a request.
 --
@@ -81,15 +79,14 @@ getMergeCommit
     -> Text -- ^ 'gmcSourceCommitSpecifier'
     -> Text -- ^ 'gmcDestinationCommitSpecifier'
     -> GetMergeCommit
-getMergeCommit pRepositoryName_ pSourceCommitSpecifier_ pDestinationCommitSpecifier_ =
-  GetMergeCommit'
-    { _gmcConflictDetailLevel = Nothing
-    , _gmcConflictResolutionStrategy = Nothing
-    , _gmcRepositoryName = pRepositoryName_
-    , _gmcSourceCommitSpecifier = pSourceCommitSpecifier_
-    , _gmcDestinationCommitSpecifier = pDestinationCommitSpecifier_
-    }
-
+getMergeCommit pRepositoryName_
+  pSourceCommitSpecifier_ pDestinationCommitSpecifier_
+  = GetMergeCommit'{_gmcConflictDetailLevel = Nothing,
+                    _gmcConflictResolutionStrategy = Nothing,
+                    _gmcRepositoryName = pRepositoryName_,
+                    _gmcSourceCommitSpecifier = pSourceCommitSpecifier_,
+                    _gmcDestinationCommitSpecifier =
+                      pDestinationCommitSpecifier_}
 
 -- | The level of conflict detail to use. If unspecified, the default FILE_LEVEL is used, which returns a not-mergeable result if the same file has differences in both branches. If LINE_LEVEL is specified, a conflict is considered not mergeable if the same file in both branches has differences on the same line.
 gmcConflictDetailLevel :: Lens' GetMergeCommit (Maybe ConflictDetailLevelTypeEnum)
@@ -160,16 +157,18 @@ instance ToQuery GetMergeCommit where
         toQuery = const mempty
 
 -- | /See:/ 'getMergeCommitResponse' smart constructor.
-data GetMergeCommitResponse =
-  GetMergeCommitResponse'
-    { _gmcrsMergedCommitId      :: !(Maybe Text)
-    , _gmcrsDestinationCommitId :: !(Maybe Text)
-    , _gmcrsBaseCommitId        :: !(Maybe Text)
-    , _gmcrsSourceCommitId      :: !(Maybe Text)
-    , _gmcrsResponseStatus      :: !Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data GetMergeCommitResponse = GetMergeCommitResponse'{_gmcrsMergedCommitId
+                                                      :: !(Maybe Text),
+                                                      _gmcrsDestinationCommitId
+                                                      :: !(Maybe Text),
+                                                      _gmcrsBaseCommitId ::
+                                                      !(Maybe Text),
+                                                      _gmcrsSourceCommitId ::
+                                                      !(Maybe Text),
+                                                      _gmcrsResponseStatus ::
+                                                      !Int}
+                                deriving (Eq, Read, Show, Data, Typeable,
+                                          Generic)
 
 -- | Creates a value of 'GetMergeCommitResponse' with the minimum fields required to make a request.
 --
@@ -187,15 +186,13 @@ data GetMergeCommitResponse =
 getMergeCommitResponse
     :: Int -- ^ 'gmcrsResponseStatus'
     -> GetMergeCommitResponse
-getMergeCommitResponse pResponseStatus_ =
-  GetMergeCommitResponse'
-    { _gmcrsMergedCommitId = Nothing
-    , _gmcrsDestinationCommitId = Nothing
-    , _gmcrsBaseCommitId = Nothing
-    , _gmcrsSourceCommitId = Nothing
-    , _gmcrsResponseStatus = pResponseStatus_
-    }
-
+getMergeCommitResponse pResponseStatus_
+  = GetMergeCommitResponse'{_gmcrsMergedCommitId =
+                              Nothing,
+                            _gmcrsDestinationCommitId = Nothing,
+                            _gmcrsBaseCommitId = Nothing,
+                            _gmcrsSourceCommitId = Nothing,
+                            _gmcrsResponseStatus = pResponseStatus_}
 
 -- | The commit ID for the merge commit created when the source branch was merged into the destination branch. If the fast-forward merge strategy was used, there is no merge commit.
 gmcrsMergedCommitId :: Lens' GetMergeCommitResponse (Maybe Text)

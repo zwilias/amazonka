@@ -44,22 +44,29 @@ module Network.AWS.CostExplorer.GetSavingsPlansUtilizationDetails
     ) where
 
 import Network.AWS.CostExplorer.Types
-import Network.AWS.CostExplorer.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 
 -- | /See:/ 'getSavingsPlansUtilizationDetails' smart constructor.
-data GetSavingsPlansUtilizationDetails =
-  GetSavingsPlansUtilizationDetails'
-    { _gspudNextToken  :: !(Maybe Text)
-    , _gspudFilter     :: !(Maybe Expression)
-    , _gspudMaxResults :: !(Maybe Nat)
-    , _gspudTimePeriod :: !DateInterval
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data GetSavingsPlansUtilizationDetails = GetSavingsPlansUtilizationDetails'{_gspudNextToken
+                                                                            ::
+                                                                            !(Maybe
+                                                                                Text),
+                                                                            _gspudFilter
+                                                                            ::
+                                                                            !(Maybe
+                                                                                Expression),
+                                                                            _gspudMaxResults
+                                                                            ::
+                                                                            !(Maybe
+                                                                                Nat),
+                                                                            _gspudTimePeriod
+                                                                            ::
+                                                                            !DateInterval}
+                                           deriving (Eq, Read, Show, Data,
+                                                     Typeable, Generic)
 
 -- | Creates a value of 'GetSavingsPlansUtilizationDetails' with the minimum fields required to make a request.
 --
@@ -75,14 +82,12 @@ data GetSavingsPlansUtilizationDetails =
 getSavingsPlansUtilizationDetails
     :: DateInterval -- ^ 'gspudTimePeriod'
     -> GetSavingsPlansUtilizationDetails
-getSavingsPlansUtilizationDetails pTimePeriod_ =
-  GetSavingsPlansUtilizationDetails'
-    { _gspudNextToken = Nothing
-    , _gspudFilter = Nothing
-    , _gspudMaxResults = Nothing
-    , _gspudTimePeriod = pTimePeriod_
-    }
-
+getSavingsPlansUtilizationDetails pTimePeriod_
+  = GetSavingsPlansUtilizationDetails'{_gspudNextToken
+                                         = Nothing,
+                                       _gspudFilter = Nothing,
+                                       _gspudMaxResults = Nothing,
+                                       _gspudTimePeriod = pTimePeriod_}
 
 -- | The token to retrieve the next set of results. Amazon Web Services provides the token when the response from a previous call has more results than the maximum page size.
 gspudNextToken :: Lens' GetSavingsPlansUtilizationDetails (Maybe Text)
@@ -151,16 +156,26 @@ instance ToQuery GetSavingsPlansUtilizationDetails
         toQuery = const mempty
 
 -- | /See:/ 'getSavingsPlansUtilizationDetailsResponse' smart constructor.
-data GetSavingsPlansUtilizationDetailsResponse =
-  GetSavingsPlansUtilizationDetailsResponse'
-    { _gspudrsNextToken :: !(Maybe Text)
-    , _gspudrsTotal :: !(Maybe SavingsPlansUtilizationAggregates)
-    , _gspudrsResponseStatus :: !Int
-    , _gspudrsSavingsPlansUtilizationDetails :: ![SavingsPlansUtilizationDetail]
-    , _gspudrsTimePeriod :: !DateInterval
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data GetSavingsPlansUtilizationDetailsResponse = GetSavingsPlansUtilizationDetailsResponse'{_gspudrsNextToken
+                                                                                            ::
+                                                                                            !(Maybe
+                                                                                                Text),
+                                                                                            _gspudrsTotal
+                                                                                            ::
+                                                                                            !(Maybe
+                                                                                                SavingsPlansUtilizationAggregates),
+                                                                                            _gspudrsResponseStatus
+                                                                                            ::
+                                                                                            !Int,
+                                                                                            _gspudrsSavingsPlansUtilizationDetails
+                                                                                            ::
+                                                                                            ![SavingsPlansUtilizationDetail],
+                                                                                            _gspudrsTimePeriod
+                                                                                            ::
+                                                                                            !DateInterval}
+                                                   deriving (Eq, Read, Show,
+                                                             Data, Typeable,
+                                                             Generic)
 
 -- | Creates a value of 'GetSavingsPlansUtilizationDetailsResponse' with the minimum fields required to make a request.
 --
@@ -179,15 +194,17 @@ getSavingsPlansUtilizationDetailsResponse
     :: Int -- ^ 'gspudrsResponseStatus'
     -> DateInterval -- ^ 'gspudrsTimePeriod'
     -> GetSavingsPlansUtilizationDetailsResponse
-getSavingsPlansUtilizationDetailsResponse pResponseStatus_ pTimePeriod_ =
-  GetSavingsPlansUtilizationDetailsResponse'
-    { _gspudrsNextToken = Nothing
-    , _gspudrsTotal = Nothing
-    , _gspudrsResponseStatus = pResponseStatus_
-    , _gspudrsSavingsPlansUtilizationDetails = mempty
-    , _gspudrsTimePeriod = pTimePeriod_
-    }
-
+getSavingsPlansUtilizationDetailsResponse
+  pResponseStatus_ pTimePeriod_
+  = GetSavingsPlansUtilizationDetailsResponse'{_gspudrsNextToken
+                                                 = Nothing,
+                                               _gspudrsTotal = Nothing,
+                                               _gspudrsResponseStatus =
+                                                 pResponseStatus_,
+                                               _gspudrsSavingsPlansUtilizationDetails
+                                                 = mempty,
+                                               _gspudrsTimePeriod =
+                                                 pTimePeriod_}
 
 -- | The token to retrieve the next set of results. Amazon Web Services provides the token when the response from a previous call has more results than the maximum page size.
 gspudrsNextToken :: Lens' GetSavingsPlansUtilizationDetailsResponse (Maybe Text)

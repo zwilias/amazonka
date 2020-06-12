@@ -36,7 +36,6 @@ module Network.AWS.GuardDuty.ArchiveFindings
     ) where
 
 import Network.AWS.GuardDuty.Types
-import Network.AWS.GuardDuty.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.Request
@@ -45,13 +44,10 @@ import Network.AWS.Response
 -- | ArchiveFindings request body.
 --
 -- /See:/ 'archiveFindings' smart constructor.
-data ArchiveFindings =
-  ArchiveFindings'
-    { _afFindingIds :: !(Maybe [Text])
-    , _afDetectorId :: !Text
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data ArchiveFindings = ArchiveFindings'{_afFindingIds
+                                        :: !(Maybe [Text]),
+                                        _afDetectorId :: !Text}
+                         deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'ArchiveFindings' with the minimum fields required to make a request.
 --
@@ -63,9 +59,9 @@ data ArchiveFindings =
 archiveFindings
     :: Text -- ^ 'afDetectorId'
     -> ArchiveFindings
-archiveFindings pDetectorId_ =
-  ArchiveFindings' {_afFindingIds = Nothing, _afDetectorId = pDetectorId_}
-
+archiveFindings pDetectorId_
+  = ArchiveFindings'{_afFindingIds = Nothing,
+                     _afDetectorId = pDetectorId_}
 
 -- | IDs of the findings that you want to archive.
 afFindingIds :: Lens' ArchiveFindings [Text]
@@ -109,12 +105,10 @@ instance ToQuery ArchiveFindings where
         toQuery = const mempty
 
 -- | /See:/ 'archiveFindingsResponse' smart constructor.
-newtype ArchiveFindingsResponse =
-  ArchiveFindingsResponse'
-    { _afrsResponseStatus :: Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+newtype ArchiveFindingsResponse = ArchiveFindingsResponse'{_afrsResponseStatus
+                                                           :: Int}
+                                    deriving (Eq, Read, Show, Data, Typeable,
+                                              Generic)
 
 -- | Creates a value of 'ArchiveFindingsResponse' with the minimum fields required to make a request.
 --
@@ -124,9 +118,9 @@ newtype ArchiveFindingsResponse =
 archiveFindingsResponse
     :: Int -- ^ 'afrsResponseStatus'
     -> ArchiveFindingsResponse
-archiveFindingsResponse pResponseStatus_ =
-  ArchiveFindingsResponse' {_afrsResponseStatus = pResponseStatus_}
-
+archiveFindingsResponse pResponseStatus_
+  = ArchiveFindingsResponse'{_afrsResponseStatus =
+                               pResponseStatus_}
 
 -- | -- | The response status code.
 afrsResponseStatus :: Lens' ArchiveFindingsResponse Int

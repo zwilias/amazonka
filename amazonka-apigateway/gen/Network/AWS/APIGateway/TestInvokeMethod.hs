@@ -51,7 +51,6 @@ module Network.AWS.APIGateway.TestInvokeMethod
     ) where
 
 import Network.AWS.APIGateway.Types
-import Network.AWS.APIGateway.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.Request
@@ -62,20 +61,21 @@ import Network.AWS.Response
 --
 --
 -- /See:/ 'testInvokeMethod' smart constructor.
-data TestInvokeMethod =
-  TestInvokeMethod'
-    { _timPathWithQueryString :: !(Maybe Text)
-    , _timBody                :: !(Maybe Text)
-    , _timClientCertificateId :: !(Maybe Text)
-    , _timStageVariables      :: !(Maybe (Map Text Text))
-    , _timHeaders             :: !(Maybe (Map Text Text))
-    , _timMultiValueHeaders   :: !(Maybe (Map Text [Text]))
-    , _timRestAPIId           :: !Text
-    , _timResourceId          :: !Text
-    , _timHttpMethod          :: !Text
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data TestInvokeMethod = TestInvokeMethod'{_timPathWithQueryString
+                                          :: !(Maybe Text),
+                                          _timBody :: !(Maybe Text),
+                                          _timClientCertificateId ::
+                                          !(Maybe Text),
+                                          _timStageVariables ::
+                                          !(Maybe (Map Text Text)),
+                                          _timHeaders ::
+                                          !(Maybe (Map Text Text)),
+                                          _timMultiValueHeaders ::
+                                          !(Maybe (Map Text [Text])),
+                                          _timRestAPIId :: !Text,
+                                          _timResourceId :: !Text,
+                                          _timHttpMethod :: !Text}
+                          deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'TestInvokeMethod' with the minimum fields required to make a request.
 --
@@ -103,19 +103,17 @@ testInvokeMethod
     -> Text -- ^ 'timResourceId'
     -> Text -- ^ 'timHttpMethod'
     -> TestInvokeMethod
-testInvokeMethod pRestAPIId_ pResourceId_ pHttpMethod_ =
-  TestInvokeMethod'
-    { _timPathWithQueryString = Nothing
-    , _timBody = Nothing
-    , _timClientCertificateId = Nothing
-    , _timStageVariables = Nothing
-    , _timHeaders = Nothing
-    , _timMultiValueHeaders = Nothing
-    , _timRestAPIId = pRestAPIId_
-    , _timResourceId = pResourceId_
-    , _timHttpMethod = pHttpMethod_
-    }
-
+testInvokeMethod pRestAPIId_ pResourceId_
+  pHttpMethod_
+  = TestInvokeMethod'{_timPathWithQueryString =
+                        Nothing,
+                      _timBody = Nothing,
+                      _timClientCertificateId = Nothing,
+                      _timStageVariables = Nothing, _timHeaders = Nothing,
+                      _timMultiValueHeaders = Nothing,
+                      _timRestAPIId = pRestAPIId_,
+                      _timResourceId = pResourceId_,
+                      _timHttpMethod = pHttpMethod_}
 
 -- | The URI path, including query string, of the simulated invocation request. Use this to specify path parameters and query string parameters.
 timPathWithQueryString :: Lens' TestInvokeMethod (Maybe Text)
@@ -202,21 +200,29 @@ instance ToQuery TestInvokeMethod where
 -- | Represents the response of the test invoke request in the HTTP method.
 --
 --
--- <https://docs.aws.amazon.com/apigateway/latest/developerguide/how-to-test-method.html#how-to-test-method-console Test API using the API Gateway console>
+-- <https://docs.aws.amazon.com/apigateway/latest/developerguide/how-to-test-method.html#how-to-test-method-console Test API using the API Gateway console> 
 --
 -- /See:/ 'testInvokeMethodResponse' smart constructor.
-data TestInvokeMethodResponse =
-  TestInvokeMethodResponse'
-    { _timrsLog               :: !(Maybe Text)
-    , _timrsStatus            :: !(Maybe Int)
-    , _timrsBody              :: !(Maybe Text)
-    , _timrsLatency           :: !(Maybe Integer)
-    , _timrsHeaders           :: !(Maybe (Map Text Text))
-    , _timrsMultiValueHeaders :: !(Maybe (Map Text [Text]))
-    , _timrsResponseStatus    :: !Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data TestInvokeMethodResponse = TestInvokeMethodResponse'{_timrsLog
+                                                          :: !(Maybe Text),
+                                                          _timrsStatus ::
+                                                          !(Maybe Int),
+                                                          _timrsBody ::
+                                                          !(Maybe Text),
+                                                          _timrsLatency ::
+                                                          !(Maybe Integer),
+                                                          _timrsHeaders ::
+                                                          !(Maybe
+                                                              (Map Text Text)),
+                                                          _timrsMultiValueHeaders
+                                                          ::
+                                                          !(Maybe
+                                                              (Map Text
+                                                                 [Text])),
+                                                          _timrsResponseStatus
+                                                          :: !Int}
+                                  deriving (Eq, Read, Show, Data, Typeable,
+                                            Generic)
 
 -- | Creates a value of 'TestInvokeMethodResponse' with the minimum fields required to make a request.
 --
@@ -238,17 +244,12 @@ data TestInvokeMethodResponse =
 testInvokeMethodResponse
     :: Int -- ^ 'timrsResponseStatus'
     -> TestInvokeMethodResponse
-testInvokeMethodResponse pResponseStatus_ =
-  TestInvokeMethodResponse'
-    { _timrsLog = Nothing
-    , _timrsStatus = Nothing
-    , _timrsBody = Nothing
-    , _timrsLatency = Nothing
-    , _timrsHeaders = Nothing
-    , _timrsMultiValueHeaders = Nothing
-    , _timrsResponseStatus = pResponseStatus_
-    }
-
+testInvokeMethodResponse pResponseStatus_
+  = TestInvokeMethodResponse'{_timrsLog = Nothing,
+                              _timrsStatus = Nothing, _timrsBody = Nothing,
+                              _timrsLatency = Nothing, _timrsHeaders = Nothing,
+                              _timrsMultiValueHeaders = Nothing,
+                              _timrsResponseStatus = pResponseStatus_}
 
 -- | The API Gateway execution log for the test invoke request.
 timrsLog :: Lens' TestInvokeMethodResponse (Maybe Text)

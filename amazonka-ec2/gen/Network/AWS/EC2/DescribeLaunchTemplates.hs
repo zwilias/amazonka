@@ -46,7 +46,6 @@ module Network.AWS.EC2.DescribeLaunchTemplates
     ) where
 
 import Network.AWS.EC2.Types
-import Network.AWS.EC2.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Pager
 import Network.AWS.Prelude
@@ -54,17 +53,20 @@ import Network.AWS.Request
 import Network.AWS.Response
 
 -- | /See:/ 'describeLaunchTemplates' smart constructor.
-data DescribeLaunchTemplates =
-  DescribeLaunchTemplates'
-    { _dltsFilters             :: !(Maybe [Filter])
-    , _dltsNextToken           :: !(Maybe Text)
-    , _dltsLaunchTemplateIds   :: !(Maybe [Text])
-    , _dltsDryRun              :: !(Maybe Bool)
-    , _dltsMaxResults          :: !(Maybe Nat)
-    , _dltsLaunchTemplateNames :: !(Maybe [Text])
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data DescribeLaunchTemplates = DescribeLaunchTemplates'{_dltsFilters
+                                                        :: !(Maybe [Filter]),
+                                                        _dltsNextToken ::
+                                                        !(Maybe Text),
+                                                        _dltsLaunchTemplateIds
+                                                        :: !(Maybe [Text]),
+                                                        _dltsDryRun ::
+                                                        !(Maybe Bool),
+                                                        _dltsMaxResults ::
+                                                        !(Maybe Nat),
+                                                        _dltsLaunchTemplateNames
+                                                        :: !(Maybe [Text])}
+                                 deriving (Eq, Read, Show, Data, Typeable,
+                                           Generic)
 
 -- | Creates a value of 'DescribeLaunchTemplates' with the minimum fields required to make a request.
 --
@@ -83,16 +85,12 @@ data DescribeLaunchTemplates =
 -- * 'dltsLaunchTemplateNames' - One or more launch template names.
 describeLaunchTemplates
     :: DescribeLaunchTemplates
-describeLaunchTemplates =
-  DescribeLaunchTemplates'
-    { _dltsFilters = Nothing
-    , _dltsNextToken = Nothing
-    , _dltsLaunchTemplateIds = Nothing
-    , _dltsDryRun = Nothing
-    , _dltsMaxResults = Nothing
-    , _dltsLaunchTemplateNames = Nothing
-    }
-
+describeLaunchTemplates
+  = DescribeLaunchTemplates'{_dltsFilters = Nothing,
+                             _dltsNextToken = Nothing,
+                             _dltsLaunchTemplateIds = Nothing,
+                             _dltsDryRun = Nothing, _dltsMaxResults = Nothing,
+                             _dltsLaunchTemplateNames = Nothing}
 
 -- | One or more filters.     * @create-time@ - The time the launch template was created.     * @launch-template-name@ - The name of the launch template.     * @tag@ :<key> - The key/value combination of a tag assigned to the resource. Use the tag key in the filter name and the tag value as the filter value. For example, to find all resources that have a tag with the key @Owner@ and the value @TeamA@ , specify @tag:Owner@ for the filter name and @TeamA@ for the filter value.     * @tag-key@ - The key of a tag assigned to the resource. Use this filter to find all resources assigned a tag with a specific key, regardless of the tag value.
 dltsFilters :: Lens' DescribeLaunchTemplates [Filter]
@@ -166,14 +164,18 @@ instance ToQuery DescribeLaunchTemplates where
                     _dltsLaunchTemplateNames)]
 
 -- | /See:/ 'describeLaunchTemplatesResponse' smart constructor.
-data DescribeLaunchTemplatesResponse =
-  DescribeLaunchTemplatesResponse'
-    { _dltsrsLaunchTemplates :: !(Maybe [LaunchTemplate])
-    , _dltsrsNextToken       :: !(Maybe Text)
-    , _dltsrsResponseStatus  :: !Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data DescribeLaunchTemplatesResponse = DescribeLaunchTemplatesResponse'{_dltsrsLaunchTemplates
+                                                                        ::
+                                                                        !(Maybe
+                                                                            [LaunchTemplate]),
+                                                                        _dltsrsNextToken
+                                                                        ::
+                                                                        !(Maybe
+                                                                            Text),
+                                                                        _dltsrsResponseStatus
+                                                                        :: !Int}
+                                         deriving (Eq, Read, Show, Data,
+                                                   Typeable, Generic)
 
 -- | Creates a value of 'DescribeLaunchTemplatesResponse' with the minimum fields required to make a request.
 --
@@ -187,13 +189,11 @@ data DescribeLaunchTemplatesResponse =
 describeLaunchTemplatesResponse
     :: Int -- ^ 'dltsrsResponseStatus'
     -> DescribeLaunchTemplatesResponse
-describeLaunchTemplatesResponse pResponseStatus_ =
-  DescribeLaunchTemplatesResponse'
-    { _dltsrsLaunchTemplates = Nothing
-    , _dltsrsNextToken = Nothing
-    , _dltsrsResponseStatus = pResponseStatus_
-    }
-
+describeLaunchTemplatesResponse pResponseStatus_
+  = DescribeLaunchTemplatesResponse'{_dltsrsLaunchTemplates
+                                       = Nothing,
+                                     _dltsrsNextToken = Nothing,
+                                     _dltsrsResponseStatus = pResponseStatus_}
 
 -- | Information about the launch templates.
 dltsrsLaunchTemplates :: Lens' DescribeLaunchTemplatesResponse [LaunchTemplate]

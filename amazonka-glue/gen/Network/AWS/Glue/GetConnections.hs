@@ -44,7 +44,6 @@ module Network.AWS.Glue.GetConnections
     ) where
 
 import Network.AWS.Glue.Types
-import Network.AWS.Glue.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Pager
 import Network.AWS.Prelude
@@ -52,15 +51,13 @@ import Network.AWS.Request
 import Network.AWS.Response
 
 -- | /See:/ 'getConnections' smart constructor.
-data GetConnections =
-  GetConnections'
-    { _gcsCatalogId  :: !(Maybe Text)
-    , _gcsNextToken  :: !(Maybe Text)
-    , _gcsFilter     :: !(Maybe GetConnectionsFilter)
-    , _gcsMaxResults :: !(Maybe Nat)
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data GetConnections = GetConnections'{_gcsCatalogId
+                                      :: !(Maybe Text),
+                                      _gcsNextToken :: !(Maybe Text),
+                                      _gcsFilter ::
+                                      !(Maybe GetConnectionsFilter),
+                                      _gcsMaxResults :: !(Maybe Nat)}
+                        deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'GetConnections' with the minimum fields required to make a request.
 --
@@ -75,14 +72,10 @@ data GetConnections =
 -- * 'gcsMaxResults' - The maximum number of connections to return in one response.
 getConnections
     :: GetConnections
-getConnections =
-  GetConnections'
-    { _gcsCatalogId = Nothing
-    , _gcsNextToken = Nothing
-    , _gcsFilter = Nothing
-    , _gcsMaxResults = Nothing
-    }
-
+getConnections
+  = GetConnections'{_gcsCatalogId = Nothing,
+                    _gcsNextToken = Nothing, _gcsFilter = Nothing,
+                    _gcsMaxResults = Nothing}
 
 -- | The ID of the Data Catalog in which the connections reside. If none is supplied, the AWS account ID is used by default.
 gcsCatalogId :: Lens' GetConnections (Maybe Text)
@@ -147,14 +140,14 @@ instance ToQuery GetConnections where
         toQuery = const mempty
 
 -- | /See:/ 'getConnectionsResponse' smart constructor.
-data GetConnectionsResponse =
-  GetConnectionsResponse'
-    { _gccrsNextToken      :: !(Maybe Text)
-    , _gccrsConnectionList :: !(Maybe [Connection])
-    , _gccrsResponseStatus :: !Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data GetConnectionsResponse = GetConnectionsResponse'{_gccrsNextToken
+                                                      :: !(Maybe Text),
+                                                      _gccrsConnectionList ::
+                                                      !(Maybe [Connection]),
+                                                      _gccrsResponseStatus ::
+                                                      !Int}
+                                deriving (Eq, Read, Show, Data, Typeable,
+                                          Generic)
 
 -- | Creates a value of 'GetConnectionsResponse' with the minimum fields required to make a request.
 --
@@ -168,13 +161,10 @@ data GetConnectionsResponse =
 getConnectionsResponse
     :: Int -- ^ 'gccrsResponseStatus'
     -> GetConnectionsResponse
-getConnectionsResponse pResponseStatus_ =
-  GetConnectionsResponse'
-    { _gccrsNextToken = Nothing
-    , _gccrsConnectionList = Nothing
-    , _gccrsResponseStatus = pResponseStatus_
-    }
-
+getConnectionsResponse pResponseStatus_
+  = GetConnectionsResponse'{_gccrsNextToken = Nothing,
+                            _gccrsConnectionList = Nothing,
+                            _gccrsResponseStatus = pResponseStatus_}
 
 -- | A continuation token, if the list of connections returned does not include the last of the filtered connections.
 gccrsNextToken :: Lens' GetConnectionsResponse (Maybe Text)

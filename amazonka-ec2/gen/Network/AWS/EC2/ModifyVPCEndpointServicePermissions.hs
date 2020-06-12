@@ -43,22 +43,29 @@ module Network.AWS.EC2.ModifyVPCEndpointServicePermissions
     ) where
 
 import Network.AWS.EC2.Types
-import Network.AWS.EC2.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 
 -- | /See:/ 'modifyVPCEndpointServicePermissions' smart constructor.
-data ModifyVPCEndpointServicePermissions =
-  ModifyVPCEndpointServicePermissions'
-    { _mvespRemoveAllowedPrincipals :: !(Maybe [Text])
-    , _mvespAddAllowedPrincipals    :: !(Maybe [Text])
-    , _mvespDryRun                  :: !(Maybe Bool)
-    , _mvespServiceId               :: !Text
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data ModifyVPCEndpointServicePermissions = ModifyVPCEndpointServicePermissions'{_mvespRemoveAllowedPrincipals
+                                                                                ::
+                                                                                !(Maybe
+                                                                                    [Text]),
+                                                                                _mvespAddAllowedPrincipals
+                                                                                ::
+                                                                                !(Maybe
+                                                                                    [Text]),
+                                                                                _mvespDryRun
+                                                                                ::
+                                                                                !(Maybe
+                                                                                    Bool),
+                                                                                _mvespServiceId
+                                                                                ::
+                                                                                !Text}
+                                             deriving (Eq, Read, Show, Data,
+                                                       Typeable, Generic)
 
 -- | Creates a value of 'ModifyVPCEndpointServicePermissions' with the minimum fields required to make a request.
 --
@@ -74,14 +81,12 @@ data ModifyVPCEndpointServicePermissions =
 modifyVPCEndpointServicePermissions
     :: Text -- ^ 'mvespServiceId'
     -> ModifyVPCEndpointServicePermissions
-modifyVPCEndpointServicePermissions pServiceId_ =
-  ModifyVPCEndpointServicePermissions'
-    { _mvespRemoveAllowedPrincipals = Nothing
-    , _mvespAddAllowedPrincipals = Nothing
-    , _mvespDryRun = Nothing
-    , _mvespServiceId = pServiceId_
-    }
-
+modifyVPCEndpointServicePermissions pServiceId_
+  = ModifyVPCEndpointServicePermissions'{_mvespRemoveAllowedPrincipals
+                                           = Nothing,
+                                         _mvespAddAllowedPrincipals = Nothing,
+                                         _mvespDryRun = Nothing,
+                                         _mvespServiceId = pServiceId_}
 
 -- | The Amazon Resource Names (ARN) of one or more principals. Permissions are revoked for principals in this list.
 mvespRemoveAllowedPrincipals :: Lens' ModifyVPCEndpointServicePermissions [Text]
@@ -144,13 +149,16 @@ instance ToQuery ModifyVPCEndpointServicePermissions
                "ServiceId" =: _mvespServiceId]
 
 -- | /See:/ 'modifyVPCEndpointServicePermissionsResponse' smart constructor.
-data ModifyVPCEndpointServicePermissionsResponse =
-  ModifyVPCEndpointServicePermissionsResponse'
-    { _mvesprsReturnValue    :: !(Maybe Bool)
-    , _mvesprsResponseStatus :: !Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data ModifyVPCEndpointServicePermissionsResponse = ModifyVPCEndpointServicePermissionsResponse'{_mvesprsReturnValue
+                                                                                                ::
+                                                                                                !(Maybe
+                                                                                                    Bool),
+                                                                                                _mvesprsResponseStatus
+                                                                                                ::
+                                                                                                !Int}
+                                                     deriving (Eq, Read, Show,
+                                                               Data, Typeable,
+                                                               Generic)
 
 -- | Creates a value of 'ModifyVPCEndpointServicePermissionsResponse' with the minimum fields required to make a request.
 --
@@ -162,10 +170,12 @@ data ModifyVPCEndpointServicePermissionsResponse =
 modifyVPCEndpointServicePermissionsResponse
     :: Int -- ^ 'mvesprsResponseStatus'
     -> ModifyVPCEndpointServicePermissionsResponse
-modifyVPCEndpointServicePermissionsResponse pResponseStatus_ =
-  ModifyVPCEndpointServicePermissionsResponse'
-    {_mvesprsReturnValue = Nothing, _mvesprsResponseStatus = pResponseStatus_}
-
+modifyVPCEndpointServicePermissionsResponse
+  pResponseStatus_
+  = ModifyVPCEndpointServicePermissionsResponse'{_mvesprsReturnValue
+                                                   = Nothing,
+                                                 _mvesprsResponseStatus =
+                                                   pResponseStatus_}
 
 -- | Returns @true@ if the request succeeds; otherwise, it returns an error.
 mvesprsReturnValue :: Lens' ModifyVPCEndpointServicePermissionsResponse (Maybe Bool)

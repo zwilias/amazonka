@@ -11,9 +11,9 @@
 -- Stability   : auto-generated
 -- Portability : non-portable (GHC extensions)
 --
--- __AWS Lambda__
+-- __AWS Lambda__ 
 --
--- __Overview__
+-- __Overview__ 
 --
 -- This is the /AWS Lambda API Reference/ . The AWS Lambda Developer Guide provides additional information. For the service overview, see <http://docs.aws.amazon.com/lambda/latest/dg/welcome.html What is AWS Lambda> , and for information about how the service works, see <http://docs.aws.amazon.com/lambda/latest/dg/lambda-introduction.html AWS Lambda: How it Works> in the __AWS Lambda Developer Guide__ .
 --
@@ -103,91 +103,91 @@ module Network.AWS.Lambda
     -- * Operations
     -- $operations
 
-    -- ** GetFunctionConfiguration
+    -- ** GetFunctionConfiguration 
     , module Network.AWS.Lambda.GetFunctionConfiguration
 
-    -- ** DeleteEventSourceMapping
+    -- ** DeleteEventSourceMapping 
     , module Network.AWS.Lambda.DeleteEventSourceMapping
 
-    -- ** UpdateEventSourceMapping
+    -- ** UpdateEventSourceMapping 
     , module Network.AWS.Lambda.UpdateEventSourceMapping
 
-    -- ** CreateAlias
+    -- ** CreateAlias 
     , module Network.AWS.Lambda.CreateAlias
 
-    -- ** ListVersionsByFunction
+    -- ** ListVersionsByFunction 
     , module Network.AWS.Lambda.ListVersionsByFunction
 
     -- ** ListAliases (Paginated)
     , module Network.AWS.Lambda.ListAliases
 
-    -- ** RemovePermission
+    -- ** RemovePermission 
     , module Network.AWS.Lambda.RemovePermission
 
-    -- ** Invoke
+    -- ** Invoke 
     , module Network.AWS.Lambda.Invoke
 
-    -- ** GetAlias
+    -- ** GetAlias 
     , module Network.AWS.Lambda.GetAlias
 
-    -- ** GetEventSourceMapping
+    -- ** GetEventSourceMapping 
     , module Network.AWS.Lambda.GetEventSourceMapping
 
-    -- ** PutFunctionConcurrency
+    -- ** PutFunctionConcurrency 
     , module Network.AWS.Lambda.PutFunctionConcurrency
 
-    -- ** CreateFunction
+    -- ** CreateFunction 
     , module Network.AWS.Lambda.CreateFunction
 
-    -- ** DeleteFunctionConcurrency
+    -- ** DeleteFunctionConcurrency 
     , module Network.AWS.Lambda.DeleteFunctionConcurrency
 
-    -- ** CreateEventSourceMapping
+    -- ** CreateEventSourceMapping 
     , module Network.AWS.Lambda.CreateEventSourceMapping
 
-    -- ** GetFunction
+    -- ** GetFunction 
     , module Network.AWS.Lambda.GetFunction
 
     -- ** ListEventSourceMappings (Paginated)
     , module Network.AWS.Lambda.ListEventSourceMappings
 
-    -- ** DeleteAlias
+    -- ** DeleteAlias 
     , module Network.AWS.Lambda.DeleteAlias
 
-    -- ** UpdateAlias
+    -- ** UpdateAlias 
     , module Network.AWS.Lambda.UpdateAlias
 
-    -- ** GetAccountSettings
+    -- ** GetAccountSettings 
     , module Network.AWS.Lambda.GetAccountSettings
 
-    -- ** AddPermission
+    -- ** AddPermission 
     , module Network.AWS.Lambda.AddPermission
 
-    -- ** TagResource
+    -- ** TagResource 
     , module Network.AWS.Lambda.TagResource
 
-    -- ** PublishVersion
+    -- ** PublishVersion 
     , module Network.AWS.Lambda.PublishVersion
 
-    -- ** ListTags
+    -- ** ListTags 
     , module Network.AWS.Lambda.ListTags
 
-    -- ** DeleteFunction
+    -- ** DeleteFunction 
     , module Network.AWS.Lambda.DeleteFunction
 
-    -- ** UntagResource
+    -- ** UntagResource 
     , module Network.AWS.Lambda.UntagResource
 
-    -- ** UpdateFunctionConfiguration
+    -- ** UpdateFunctionConfiguration 
     , module Network.AWS.Lambda.UpdateFunctionConfiguration
 
     -- ** ListFunctions (Paginated)
     , module Network.AWS.Lambda.ListFunctions
 
-    -- ** UpdateFunctionCode
+    -- ** UpdateFunctionCode 
     , module Network.AWS.Lambda.UpdateFunctionCode
 
-    -- ** GetPolicy
+    -- ** GetPolicy 
     , module Network.AWS.Lambda.GetPolicy
 
     -- * Types

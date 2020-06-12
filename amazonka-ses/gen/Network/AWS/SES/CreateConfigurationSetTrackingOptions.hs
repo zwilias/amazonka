@@ -18,7 +18,7 @@
 -- Stability   : auto-generated
 -- Portability : non-portable (GHC extensions)
 --
--- Creates an association between a configuration set and a custom domain for open and click event tracking.
+-- Creates an association between a configuration set and a custom domain for open and click event tracking. 
 --
 --
 -- By default, images and links used for tracking open and click events are hosted on domains operated by Amazon SES. You can configure a subdomain of your own to handle these events. For information about using configuration sets, see <http://docs.aws.amazon.com/ses/latest/DeveloperGuide/configure-custom-open-click-domains.html Configuring Custom Domains to Handle Open and Click Tracking> in the <http://docs.aws.amazon.com/ses/latest/DeveloperGuide/Welcome.html Amazon SES Developer Guide> .
@@ -44,20 +44,20 @@ import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 import Network.AWS.SES.Types
-import Network.AWS.SES.Types.Product
 
--- | Represents a request to create an open and click tracking option object in a configuration set.
+-- | Represents a request to create an open and click tracking option object in a configuration set. 
 --
 --
 --
 -- /See:/ 'createConfigurationSetTrackingOptions' smart constructor.
-data CreateConfigurationSetTrackingOptions =
-  CreateConfigurationSetTrackingOptions'
-    { _ccstoConfigurationSetName :: !Text
-    , _ccstoTrackingOptions      :: !TrackingOptions
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data CreateConfigurationSetTrackingOptions = CreateConfigurationSetTrackingOptions'{_ccstoConfigurationSetName
+                                                                                    ::
+                                                                                    !Text,
+                                                                                    _ccstoTrackingOptions
+                                                                                    ::
+                                                                                    !TrackingOptions}
+                                               deriving (Eq, Read, Show, Data,
+                                                         Typeable, Generic)
 
 -- | Creates a value of 'CreateConfigurationSetTrackingOptions' with the minimum fields required to make a request.
 --
@@ -70,12 +70,12 @@ createConfigurationSetTrackingOptions
     :: Text -- ^ 'ccstoConfigurationSetName'
     -> TrackingOptions -- ^ 'ccstoTrackingOptions'
     -> CreateConfigurationSetTrackingOptions
-createConfigurationSetTrackingOptions pConfigurationSetName_ pTrackingOptions_ =
-  CreateConfigurationSetTrackingOptions'
-    { _ccstoConfigurationSetName = pConfigurationSetName_
-    , _ccstoTrackingOptions = pTrackingOptions_
-    }
-
+createConfigurationSetTrackingOptions
+  pConfigurationSetName_ pTrackingOptions_
+  = CreateConfigurationSetTrackingOptions'{_ccstoConfigurationSetName
+                                             = pConfigurationSetName_,
+                                           _ccstoTrackingOptions =
+                                             pTrackingOptions_}
 
 -- | The name of the configuration set that the tracking options should be associated with.
 ccstoConfigurationSetName :: Lens' CreateConfigurationSetTrackingOptions Text
@@ -131,12 +131,13 @@ instance ToQuery
 --
 --
 -- /See:/ 'createConfigurationSetTrackingOptionsResponse' smart constructor.
-newtype CreateConfigurationSetTrackingOptionsResponse =
-  CreateConfigurationSetTrackingOptionsResponse'
-    { _ccstorsResponseStatus :: Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+newtype CreateConfigurationSetTrackingOptionsResponse = CreateConfigurationSetTrackingOptionsResponse'{_ccstorsResponseStatus
+                                                                                                       ::
+                                                                                                       Int}
+                                                          deriving (Eq, Read,
+                                                                    Show, Data,
+                                                                    Typeable,
+                                                                    Generic)
 
 -- | Creates a value of 'CreateConfigurationSetTrackingOptionsResponse' with the minimum fields required to make a request.
 --
@@ -146,10 +147,10 @@ newtype CreateConfigurationSetTrackingOptionsResponse =
 createConfigurationSetTrackingOptionsResponse
     :: Int -- ^ 'ccstorsResponseStatus'
     -> CreateConfigurationSetTrackingOptionsResponse
-createConfigurationSetTrackingOptionsResponse pResponseStatus_ =
-  CreateConfigurationSetTrackingOptionsResponse'
-    {_ccstorsResponseStatus = pResponseStatus_}
-
+createConfigurationSetTrackingOptionsResponse
+  pResponseStatus_
+  = CreateConfigurationSetTrackingOptionsResponse'{_ccstorsResponseStatus
+                                                     = pResponseStatus_}
 
 -- | -- | The response status code.
 ccstorsResponseStatus :: Lens' CreateConfigurationSetTrackingOptionsResponse Int

@@ -66,8 +66,43 @@ library
         , Network.AWS.ElasticSearch.Waiters
 
     other-modules:
-          Network.AWS.ElasticSearch.Types.Product
-        , Network.AWS.ElasticSearch.Types.Sum
+          Network.AWS.ElasticSearch.Types.AccessPoliciesStatus
+        , Network.AWS.ElasticSearch.Types.AdditionalLimit
+        , Network.AWS.ElasticSearch.Types.AdvancedOptionsStatus
+        , Network.AWS.ElasticSearch.Types.CognitoOptions
+        , Network.AWS.ElasticSearch.Types.CognitoOptionsStatus
+        , Network.AWS.ElasticSearch.Types.DomainInfo
+        , Network.AWS.ElasticSearch.Types.EBSOptions
+        , Network.AWS.ElasticSearch.Types.EBSOptionsStatus
+        , Network.AWS.ElasticSearch.Types.ESPartitionInstanceType
+        , Network.AWS.ElasticSearch.Types.ElasticsearchClusterConfig
+        , Network.AWS.ElasticSearch.Types.ElasticsearchClusterConfigStatus
+        , Network.AWS.ElasticSearch.Types.ElasticsearchDomainConfig
+        , Network.AWS.ElasticSearch.Types.ElasticsearchDomainStatus
+        , Network.AWS.ElasticSearch.Types.ElasticsearchVersionStatus
+        , Network.AWS.ElasticSearch.Types.EncryptionAtRestOptions
+        , Network.AWS.ElasticSearch.Types.EncryptionAtRestOptionsStatus
+        , Network.AWS.ElasticSearch.Types.InstanceCountLimits
+        , Network.AWS.ElasticSearch.Types.InstanceLimits
+        , Network.AWS.ElasticSearch.Types.Limits
+        , Network.AWS.ElasticSearch.Types.LogPublishingOption
+        , Network.AWS.ElasticSearch.Types.LogPublishingOptionsStatus
+        , Network.AWS.ElasticSearch.Types.LogType
+        , Network.AWS.ElasticSearch.Types.OptionState
+        , Network.AWS.ElasticSearch.Types.OptionStatus
+        , Network.AWS.ElasticSearch.Types.RecurringCharge
+        , Network.AWS.ElasticSearch.Types.ReservedElasticsearchInstance
+        , Network.AWS.ElasticSearch.Types.ReservedElasticsearchInstanceOffering
+        , Network.AWS.ElasticSearch.Types.ReservedElasticsearchInstancePaymentOption
+        , Network.AWS.ElasticSearch.Types.SnapshotOptions
+        , Network.AWS.ElasticSearch.Types.SnapshotOptionsStatus
+        , Network.AWS.ElasticSearch.Types.StorageType
+        , Network.AWS.ElasticSearch.Types.StorageTypeLimit
+        , Network.AWS.ElasticSearch.Types.Tag
+        , Network.AWS.ElasticSearch.Types.VPCDerivedInfo
+        , Network.AWS.ElasticSearch.Types.VPCDerivedInfoStatus
+        , Network.AWS.ElasticSearch.Types.VPCOptions
+        , Network.AWS.ElasticSearch.Types.VolumeType
 
     build-depends:
           amazonka-core == 1.6.1.*

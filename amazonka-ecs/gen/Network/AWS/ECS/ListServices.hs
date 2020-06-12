@@ -44,7 +44,6 @@ module Network.AWS.ECS.ListServices
     ) where
 
 import Network.AWS.ECS.Types
-import Network.AWS.ECS.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Pager
 import Network.AWS.Prelude
@@ -52,15 +51,12 @@ import Network.AWS.Request
 import Network.AWS.Response
 
 -- | /See:/ 'listServices' smart constructor.
-data ListServices =
-  ListServices'
-    { _lsCluster    :: !(Maybe Text)
-    , _lsNextToken  :: !(Maybe Text)
-    , _lsLaunchType :: !(Maybe LaunchType)
-    , _lsMaxResults :: !(Maybe Int)
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data ListServices = ListServices'{_lsCluster ::
+                                  !(Maybe Text),
+                                  _lsNextToken :: !(Maybe Text),
+                                  _lsLaunchType :: !(Maybe LaunchType),
+                                  _lsMaxResults :: !(Maybe Int)}
+                      deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'ListServices' with the minimum fields required to make a request.
 --
@@ -75,14 +71,10 @@ data ListServices =
 -- * 'lsMaxResults' - The maximum number of service results returned by @ListServices@ in paginated output. When this parameter is used, @ListServices@ only returns @maxResults@ results in a single page along with a @nextToken@ response element. The remaining results of the initial request can be seen by sending another @ListServices@ request with the returned @nextToken@ value. This value can be between 1 and 10. If this parameter is not used, then @ListServices@ returns up to 10 results and a @nextToken@ value if applicable.
 listServices
     :: ListServices
-listServices =
-  ListServices'
-    { _lsCluster = Nothing
-    , _lsNextToken = Nothing
-    , _lsLaunchType = Nothing
-    , _lsMaxResults = Nothing
-    }
-
+listServices
+  = ListServices'{_lsCluster = Nothing,
+                  _lsNextToken = Nothing, _lsLaunchType = Nothing,
+                  _lsMaxResults = Nothing}
 
 -- | The short name or full Amazon Resource Name (ARN) of the cluster that hosts the services to list. If you do not specify a cluster, the default cluster is assumed.
 lsCluster :: Lens' ListServices (Maybe Text)
@@ -148,14 +140,12 @@ instance ToQuery ListServices where
         toQuery = const mempty
 
 -- | /See:/ 'listServicesResponse' smart constructor.
-data ListServicesResponse =
-  ListServicesResponse'
-    { _lsrsServiceARNs    :: !(Maybe [Text])
-    , _lsrsNextToken      :: !(Maybe Text)
-    , _lsrsResponseStatus :: !Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data ListServicesResponse = ListServicesResponse'{_lsrsServiceARNs
+                                                  :: !(Maybe [Text]),
+                                                  _lsrsNextToken ::
+                                                  !(Maybe Text),
+                                                  _lsrsResponseStatus :: !Int}
+                              deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'ListServicesResponse' with the minimum fields required to make a request.
 --
@@ -169,13 +159,10 @@ data ListServicesResponse =
 listServicesResponse
     :: Int -- ^ 'lsrsResponseStatus'
     -> ListServicesResponse
-listServicesResponse pResponseStatus_ =
-  ListServicesResponse'
-    { _lsrsServiceARNs = Nothing
-    , _lsrsNextToken = Nothing
-    , _lsrsResponseStatus = pResponseStatus_
-    }
-
+listServicesResponse pResponseStatus_
+  = ListServicesResponse'{_lsrsServiceARNs = Nothing,
+                          _lsrsNextToken = Nothing,
+                          _lsrsResponseStatus = pResponseStatus_}
 
 -- | The list of full ARN entries for each service associated with the specified cluster.
 lsrsServiceARNs :: Lens' ListServicesResponse [Text]

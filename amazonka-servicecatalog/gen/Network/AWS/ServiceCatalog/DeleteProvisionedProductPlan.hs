@@ -43,17 +43,18 @@ import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 import Network.AWS.ServiceCatalog.Types
-import Network.AWS.ServiceCatalog.Types.Product
 
 -- | /See:/ 'deleteProvisionedProductPlan' smart constructor.
-data DeleteProvisionedProductPlan =
-  DeleteProvisionedProductPlan'
-    { _delAcceptLanguage :: !(Maybe Text)
-    , _delIgnoreErrors   :: !(Maybe Bool)
-    , _delPlanId         :: !Text
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data DeleteProvisionedProductPlan = DeleteProvisionedProductPlan'{_delAcceptLanguage
+                                                                  ::
+                                                                  !(Maybe Text),
+                                                                  _delIgnoreErrors
+                                                                  ::
+                                                                  !(Maybe Bool),
+                                                                  _delPlanId ::
+                                                                  !Text}
+                                      deriving (Eq, Read, Show, Data, Typeable,
+                                                Generic)
 
 -- | Creates a value of 'DeleteProvisionedProductPlan' with the minimum fields required to make a request.
 --
@@ -67,13 +68,11 @@ data DeleteProvisionedProductPlan =
 deleteProvisionedProductPlan
     :: Text -- ^ 'delPlanId'
     -> DeleteProvisionedProductPlan
-deleteProvisionedProductPlan pPlanId_ =
-  DeleteProvisionedProductPlan'
-    { _delAcceptLanguage = Nothing
-    , _delIgnoreErrors = Nothing
-    , _delPlanId = pPlanId_
-    }
-
+deleteProvisionedProductPlan pPlanId_
+  = DeleteProvisionedProductPlan'{_delAcceptLanguage =
+                                    Nothing,
+                                  _delIgnoreErrors = Nothing,
+                                  _delPlanId = pPlanId_}
 
 -- | The language code.     * @en@ - English (default)     * @jp@ - Japanese     * @zh@ - Chinese
 delAcceptLanguage :: Lens' DeleteProvisionedProductPlan (Maybe Text)
@@ -127,12 +126,11 @@ instance ToQuery DeleteProvisionedProductPlan where
         toQuery = const mempty
 
 -- | /See:/ 'deleteProvisionedProductPlanResponse' smart constructor.
-newtype DeleteProvisionedProductPlanResponse =
-  DeleteProvisionedProductPlanResponse'
-    { _dppprsResponseStatus :: Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+newtype DeleteProvisionedProductPlanResponse = DeleteProvisionedProductPlanResponse'{_dppprsResponseStatus
+                                                                                     ::
+                                                                                     Int}
+                                                 deriving (Eq, Read, Show, Data,
+                                                           Typeable, Generic)
 
 -- | Creates a value of 'DeleteProvisionedProductPlanResponse' with the minimum fields required to make a request.
 --
@@ -142,10 +140,9 @@ newtype DeleteProvisionedProductPlanResponse =
 deleteProvisionedProductPlanResponse
     :: Int -- ^ 'dppprsResponseStatus'
     -> DeleteProvisionedProductPlanResponse
-deleteProvisionedProductPlanResponse pResponseStatus_ =
-  DeleteProvisionedProductPlanResponse'
-    {_dppprsResponseStatus = pResponseStatus_}
-
+deleteProvisionedProductPlanResponse pResponseStatus_
+  = DeleteProvisionedProductPlanResponse'{_dppprsResponseStatus
+                                            = pResponseStatus_}
 
 -- | -- | The response status code.
 dppprsResponseStatus :: Lens' DeleteProvisionedProductPlanResponse Int

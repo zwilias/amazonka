@@ -23,7 +23,7 @@
 --
 -- To start matchmaking, provide a unique ticket ID, specify a matchmaking configuration, and include the players to be matched. You must also include a set of player attributes relevant for the matchmaking configuration. If successful, a matchmaking ticket is returned with status set to @QUEUED@ . Track the status of the ticket to respond as needed and acquire game session connection information for successfully completed matches.
 --
--- __Tracking ticket status__ -- A couple of options are available for tracking the status of matchmaking requests:
+-- __Tracking ticket status__ -- A couple of options are available for tracking the status of matchmaking requests: 
 --
 --     * Polling -- Call @DescribeMatchmaking@ . This operation returns the full ticket object, including current status and (for completed tickets) game session connection info. We recommend polling no more than once every 10 seconds.
 --
@@ -31,31 +31,31 @@
 --
 --
 --
--- __Processing a matchmaking request__ -- FlexMatch handles a matchmaking request as follows:
+-- __Processing a matchmaking request__ -- FlexMatch handles a matchmaking request as follows: 
 --
---     * Your client code submits a @StartMatchmaking@ request for one or more players and tracks the status of the request ticket.
+--     * Your client code submits a @StartMatchmaking@ request for one or more players and tracks the status of the request ticket. 
 --
---     * FlexMatch uses this ticket and others in process to build an acceptable match. When a potential match is identified, all tickets in the proposed match are advanced to the next status.
+--     * FlexMatch uses this ticket and others in process to build an acceptable match. When a potential match is identified, all tickets in the proposed match are advanced to the next status. 
 --
 --     * If the match requires player acceptance (set in the matchmaking configuration), the tickets move into status @REQUIRES_ACCEPTANCE@ . This status triggers your client code to solicit acceptance from all players in every ticket involved in the match, and then call 'AcceptMatch' for each player. If any player rejects or fails to accept the match before a specified timeout, the proposed match is dropped (see @AcceptMatch@ for more details).
 --
---     * Once a match is proposed and accepted, the matchmaking tickets move into status @PLACING@ . FlexMatch locates resources for a new game session using the game session queue (set in the matchmaking configuration) and creates the game session based on the match data.
+--     * Once a match is proposed and accepted, the matchmaking tickets move into status @PLACING@ . FlexMatch locates resources for a new game session using the game session queue (set in the matchmaking configuration) and creates the game session based on the match data. 
 --
---     * When the match is successfully placed, the matchmaking tickets move into @COMPLETED@ status. Connection information (including game session endpoint and player session) is added to the matchmaking tickets. Matched players can use the connection information to join the game.
+--     * When the match is successfully placed, the matchmaking tickets move into @COMPLETED@ status. Connection information (including game session endpoint and player session) is added to the matchmaking tickets. Matched players can use the connection information to join the game. 
 --
 --
 --
 -- Matchmaking-related operations include:
 --
---     * 'StartMatchmaking'
+--     * 'StartMatchmaking' 
 --
---     * 'DescribeMatchmaking'
+--     * 'DescribeMatchmaking' 
 --
---     * 'StopMatchmaking'
+--     * 'StopMatchmaking' 
 --
---     * 'AcceptMatch'
+--     * 'AcceptMatch' 
 --
---     * 'StartMatchBackfill'
+--     * 'StartMatchBackfill' 
 --
 --
 --
@@ -78,7 +78,6 @@ module Network.AWS.GameLift.StartMatchmaking
     ) where
 
 import Network.AWS.GameLift.Types
-import Network.AWS.GameLift.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.Request
@@ -89,14 +88,11 @@ import Network.AWS.Response
 --
 --
 -- /See:/ 'startMatchmaking' smart constructor.
-data StartMatchmaking =
-  StartMatchmaking'
-    { _sTicketId          :: !(Maybe Text)
-    , _sConfigurationName :: !Text
-    , _sPlayers           :: ![Player]
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data StartMatchmaking = StartMatchmaking'{_sTicketId
+                                          :: !(Maybe Text),
+                                          _sConfigurationName :: !Text,
+                                          _sPlayers :: ![Player]}
+                          deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'StartMatchmaking' with the minimum fields required to make a request.
 --
@@ -110,13 +106,10 @@ data StartMatchmaking =
 startMatchmaking
     :: Text -- ^ 'sConfigurationName'
     -> StartMatchmaking
-startMatchmaking pConfigurationName_ =
-  StartMatchmaking'
-    { _sTicketId = Nothing
-    , _sConfigurationName = pConfigurationName_
-    , _sPlayers = mempty
-    }
-
+startMatchmaking pConfigurationName_
+  = StartMatchmaking'{_sTicketId = Nothing,
+                      _sConfigurationName = pConfigurationName_,
+                      _sPlayers = mempty}
 
 -- | Unique identifier for a matchmaking ticket. If no ticket ID is specified here, Amazon GameLift will generate one in the form of a UUID. Use this identifier to track the matchmaking ticket status and retrieve match results.
 sTicketId :: Lens' StartMatchmaking (Maybe Text)
@@ -171,13 +164,14 @@ instance ToQuery StartMatchmaking where
 --
 --
 -- /See:/ 'startMatchmakingResponse' smart constructor.
-data StartMatchmakingResponse =
-  StartMatchmakingResponse'
-    { _srsMatchmakingTicket :: !(Maybe MatchmakingTicket)
-    , _srsResponseStatus    :: !Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data StartMatchmakingResponse = StartMatchmakingResponse'{_srsMatchmakingTicket
+                                                          ::
+                                                          !(Maybe
+                                                              MatchmakingTicket),
+                                                          _srsResponseStatus ::
+                                                          !Int}
+                                  deriving (Eq, Read, Show, Data, Typeable,
+                                            Generic)
 
 -- | Creates a value of 'StartMatchmakingResponse' with the minimum fields required to make a request.
 --
@@ -189,10 +183,10 @@ data StartMatchmakingResponse =
 startMatchmakingResponse
     :: Int -- ^ 'srsResponseStatus'
     -> StartMatchmakingResponse
-startMatchmakingResponse pResponseStatus_ =
-  StartMatchmakingResponse'
-    {_srsMatchmakingTicket = Nothing, _srsResponseStatus = pResponseStatus_}
-
+startMatchmakingResponse pResponseStatus_
+  = StartMatchmakingResponse'{_srsMatchmakingTicket =
+                                Nothing,
+                              _srsResponseStatus = pResponseStatus_}
 
 -- | Ticket representing the matchmaking request. This object include the information included in the request, ticket status, and match results as generated during the matchmaking process.
 srsMatchmakingTicket :: Lens' StartMatchmakingResponse (Maybe MatchmakingTicket)

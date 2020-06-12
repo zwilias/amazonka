@@ -40,20 +40,23 @@ module Network.AWS.EC2.ExportClientVPNClientCertificateRevocationList
     ) where
 
 import Network.AWS.EC2.Types
-import Network.AWS.EC2.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 
 -- | /See:/ 'exportClientVPNClientCertificateRevocationList' smart constructor.
-data ExportClientVPNClientCertificateRevocationList =
-  ExportClientVPNClientCertificateRevocationList'
-    { _ecvccrlDryRun              :: !(Maybe Bool)
-    , _ecvccrlClientVPNEndpointId :: !Text
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data ExportClientVPNClientCertificateRevocationList = ExportClientVPNClientCertificateRevocationList'{_ecvccrlDryRun
+                                                                                                      ::
+                                                                                                      !(Maybe
+                                                                                                          Bool),
+                                                                                                      _ecvccrlClientVPNEndpointId
+                                                                                                      ::
+                                                                                                      !Text}
+                                                        deriving (Eq, Read,
+                                                                  Show, Data,
+                                                                  Typeable,
+                                                                  Generic)
 
 -- | Creates a value of 'ExportClientVPNClientCertificateRevocationList' with the minimum fields required to make a request.
 --
@@ -65,12 +68,12 @@ data ExportClientVPNClientCertificateRevocationList =
 exportClientVPNClientCertificateRevocationList
     :: Text -- ^ 'ecvccrlClientVPNEndpointId'
     -> ExportClientVPNClientCertificateRevocationList
-exportClientVPNClientCertificateRevocationList pClientVPNEndpointId_ =
-  ExportClientVPNClientCertificateRevocationList'
-    { _ecvccrlDryRun = Nothing
-    , _ecvccrlClientVPNEndpointId = pClientVPNEndpointId_
-    }
-
+exportClientVPNClientCertificateRevocationList
+  pClientVPNEndpointId_
+  = ExportClientVPNClientCertificateRevocationList'{_ecvccrlDryRun
+                                                      = Nothing,
+                                                    _ecvccrlClientVPNEndpointId
+                                                      = pClientVPNEndpointId_}
 
 -- | Checks whether you have the required permissions for the action, without actually making the request, and provides an error response. If you have the required permissions, the error response is @DryRunOperation@ . Otherwise, it is @UnauthorizedOperation@ .
 ecvccrlDryRun :: Lens' ExportClientVPNClientCertificateRevocationList (Maybe Bool)
@@ -129,14 +132,23 @@ instance ToQuery
                "ClientVpnEndpointId" =: _ecvccrlClientVPNEndpointId]
 
 -- | /See:/ 'exportClientVPNClientCertificateRevocationListResponse' smart constructor.
-data ExportClientVPNClientCertificateRevocationListResponse =
-  ExportClientVPNClientCertificateRevocationListResponse'
-    { _ecvccrlrsStatus :: !(Maybe ClientCertificateRevocationListStatus)
-    , _ecvccrlrsCertificateRevocationList :: !(Maybe Text)
-    , _ecvccrlrsResponseStatus :: !Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data ExportClientVPNClientCertificateRevocationListResponse = ExportClientVPNClientCertificateRevocationListResponse'{_ecvccrlrsStatus
+                                                                                                                      ::
+                                                                                                                      !(Maybe
+                                                                                                                          ClientCertificateRevocationListStatus),
+                                                                                                                      _ecvccrlrsCertificateRevocationList
+                                                                                                                      ::
+                                                                                                                      !(Maybe
+                                                                                                                          Text),
+                                                                                                                      _ecvccrlrsResponseStatus
+                                                                                                                      ::
+                                                                                                                      !Int}
+                                                                deriving (Eq,
+                                                                          Read,
+                                                                          Show,
+                                                                          Data,
+                                                                          Typeable,
+                                                                          Generic)
 
 -- | Creates a value of 'ExportClientVPNClientCertificateRevocationListResponse' with the minimum fields required to make a request.
 --
@@ -150,13 +162,15 @@ data ExportClientVPNClientCertificateRevocationListResponse =
 exportClientVPNClientCertificateRevocationListResponse
     :: Int -- ^ 'ecvccrlrsResponseStatus'
     -> ExportClientVPNClientCertificateRevocationListResponse
-exportClientVPNClientCertificateRevocationListResponse pResponseStatus_ =
-  ExportClientVPNClientCertificateRevocationListResponse'
-    { _ecvccrlrsStatus = Nothing
-    , _ecvccrlrsCertificateRevocationList = Nothing
-    , _ecvccrlrsResponseStatus = pResponseStatus_
-    }
-
+exportClientVPNClientCertificateRevocationListResponse
+  pResponseStatus_
+  = ExportClientVPNClientCertificateRevocationListResponse'{_ecvccrlrsStatus
+                                                              = Nothing,
+                                                            _ecvccrlrsCertificateRevocationList
+                                                              = Nothing,
+                                                            _ecvccrlrsResponseStatus
+                                                              =
+                                                              pResponseStatus_}
 
 -- | The current state of the client certificate revocation list.
 ecvccrlrsStatus :: Lens' ExportClientVPNClientCertificateRevocationListResponse (Maybe ClientCertificateRevocationListStatus)

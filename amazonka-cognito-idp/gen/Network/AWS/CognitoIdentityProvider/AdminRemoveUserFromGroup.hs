@@ -39,21 +39,19 @@ module Network.AWS.CognitoIdentityProvider.AdminRemoveUserFromGroup
     ) where
 
 import Network.AWS.CognitoIdentityProvider.Types
-import Network.AWS.CognitoIdentityProvider.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 
 -- | /See:/ 'adminRemoveUserFromGroup' smart constructor.
-data AdminRemoveUserFromGroup =
-  AdminRemoveUserFromGroup'
-    { _arufgUserPoolId :: !Text
-    , _arufgUsername   :: !(Sensitive Text)
-    , _arufgGroupName  :: !Text
-    }
-  deriving (Eq, Show, Data, Typeable, Generic)
-
+data AdminRemoveUserFromGroup = AdminRemoveUserFromGroup'{_arufgUserPoolId
+                                                          :: !Text,
+                                                          _arufgUsername ::
+                                                          !(Sensitive Text),
+                                                          _arufgGroupName ::
+                                                          !Text}
+                                  deriving (Eq, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'AdminRemoveUserFromGroup' with the minimum fields required to make a request.
 --
@@ -69,13 +67,12 @@ adminRemoveUserFromGroup
     -> Text -- ^ 'arufgUsername'
     -> Text -- ^ 'arufgGroupName'
     -> AdminRemoveUserFromGroup
-adminRemoveUserFromGroup pUserPoolId_ pUsername_ pGroupName_ =
-  AdminRemoveUserFromGroup'
-    { _arufgUserPoolId = pUserPoolId_
-    , _arufgUsername = _Sensitive # pUsername_
-    , _arufgGroupName = pGroupName_
-    }
-
+adminRemoveUserFromGroup pUserPoolId_ pUsername_
+  pGroupName_
+  = AdminRemoveUserFromGroup'{_arufgUserPoolId =
+                                pUserPoolId_,
+                              _arufgUsername = _Sensitive # pUsername_,
+                              _arufgGroupName = pGroupName_}
 
 -- | The user pool ID for the user pool.
 arufgUserPoolId :: Lens' AdminRemoveUserFromGroup Text
@@ -125,17 +122,16 @@ instance ToQuery AdminRemoveUserFromGroup where
         toQuery = const mempty
 
 -- | /See:/ 'adminRemoveUserFromGroupResponse' smart constructor.
-data AdminRemoveUserFromGroupResponse =
-  AdminRemoveUserFromGroupResponse'
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data AdminRemoveUserFromGroupResponse = AdminRemoveUserFromGroupResponse'
+                                          deriving (Eq, Read, Show, Data,
+                                                    Typeable, Generic)
 
 -- | Creates a value of 'AdminRemoveUserFromGroupResponse' with the minimum fields required to make a request.
 --
 adminRemoveUserFromGroupResponse
     :: AdminRemoveUserFromGroupResponse
-adminRemoveUserFromGroupResponse = AdminRemoveUserFromGroupResponse'
-
+adminRemoveUserFromGroupResponse
+  = AdminRemoveUserFromGroupResponse'
 
 instance NFData AdminRemoveUserFromGroupResponse
          where

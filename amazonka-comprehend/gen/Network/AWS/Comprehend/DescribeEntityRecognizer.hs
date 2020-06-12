@@ -38,19 +38,16 @@ module Network.AWS.Comprehend.DescribeEntityRecognizer
     ) where
 
 import Network.AWS.Comprehend.Types
-import Network.AWS.Comprehend.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 
 -- | /See:/ 'describeEntityRecognizer' smart constructor.
-newtype DescribeEntityRecognizer =
-  DescribeEntityRecognizer'
-    { _dEntityRecognizerARN :: Text
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+newtype DescribeEntityRecognizer = DescribeEntityRecognizer'{_dEntityRecognizerARN
+                                                             :: Text}
+                                     deriving (Eq, Read, Show, Data, Typeable,
+                                               Generic)
 
 -- | Creates a value of 'DescribeEntityRecognizer' with the minimum fields required to make a request.
 --
@@ -60,9 +57,9 @@ newtype DescribeEntityRecognizer =
 describeEntityRecognizer
     :: Text -- ^ 'dEntityRecognizerARN'
     -> DescribeEntityRecognizer
-describeEntityRecognizer pEntityRecognizerARN_ =
-  DescribeEntityRecognizer' {_dEntityRecognizerARN = pEntityRecognizerARN_}
-
+describeEntityRecognizer pEntityRecognizerARN_
+  = DescribeEntityRecognizer'{_dEntityRecognizerARN =
+                                pEntityRecognizerARN_}
 
 -- | The Amazon Resource Name (ARN) that identifies the entity recognizer.
 dEntityRecognizerARN :: Lens' DescribeEntityRecognizer Text
@@ -107,13 +104,15 @@ instance ToQuery DescribeEntityRecognizer where
         toQuery = const mempty
 
 -- | /See:/ 'describeEntityRecognizerResponse' smart constructor.
-data DescribeEntityRecognizerResponse =
-  DescribeEntityRecognizerResponse'
-    { _drsEntityRecognizerProperties :: !(Maybe EntityRecognizerProperties)
-    , _drsResponseStatus             :: !Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data DescribeEntityRecognizerResponse = DescribeEntityRecognizerResponse'{_drsEntityRecognizerProperties
+                                                                          ::
+                                                                          !(Maybe
+                                                                              EntityRecognizerProperties),
+                                                                          _drsResponseStatus
+                                                                          ::
+                                                                          !Int}
+                                          deriving (Eq, Read, Show, Data,
+                                                    Typeable, Generic)
 
 -- | Creates a value of 'DescribeEntityRecognizerResponse' with the minimum fields required to make a request.
 --
@@ -125,12 +124,10 @@ data DescribeEntityRecognizerResponse =
 describeEntityRecognizerResponse
     :: Int -- ^ 'drsResponseStatus'
     -> DescribeEntityRecognizerResponse
-describeEntityRecognizerResponse pResponseStatus_ =
-  DescribeEntityRecognizerResponse'
-    { _drsEntityRecognizerProperties = Nothing
-    , _drsResponseStatus = pResponseStatus_
-    }
-
+describeEntityRecognizerResponse pResponseStatus_
+  = DescribeEntityRecognizerResponse'{_drsEntityRecognizerProperties
+                                        = Nothing,
+                                      _drsResponseStatus = pResponseStatus_}
 
 -- | Describes information associated with an entity recognizer.
 drsEntityRecognizerProperties :: Lens' DescribeEntityRecognizerResponse (Maybe EntityRecognizerProperties)

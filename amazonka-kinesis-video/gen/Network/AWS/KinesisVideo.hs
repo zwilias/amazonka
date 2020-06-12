@@ -11,7 +11,7 @@
 -- Stability   : auto-generated
 -- Portability : non-portable (GHC extensions)
 --
---
+-- 
 --
 --
 module Network.AWS.KinesisVideo
@@ -61,34 +61,34 @@ module Network.AWS.KinesisVideo
     -- * Operations
     -- $operations
 
-    -- ** UntagStream
+    -- ** UntagStream 
     , module Network.AWS.KinesisVideo.UntagStream
 
-    -- ** UpdateDataRetention
+    -- ** UpdateDataRetention 
     , module Network.AWS.KinesisVideo.UpdateDataRetention
 
-    -- ** GetDataEndpoint
+    -- ** GetDataEndpoint 
     , module Network.AWS.KinesisVideo.GetDataEndpoint
 
-    -- ** ListTagsForStream
+    -- ** ListTagsForStream 
     , module Network.AWS.KinesisVideo.ListTagsForStream
 
-    -- ** UpdateStream
+    -- ** UpdateStream 
     , module Network.AWS.KinesisVideo.UpdateStream
 
-    -- ** DeleteStream
+    -- ** DeleteStream 
     , module Network.AWS.KinesisVideo.DeleteStream
 
-    -- ** ListStreams
+    -- ** ListStreams 
     , module Network.AWS.KinesisVideo.ListStreams
 
-    -- ** CreateStream
+    -- ** CreateStream 
     , module Network.AWS.KinesisVideo.CreateStream
 
-    -- ** TagStream
+    -- ** TagStream 
     , module Network.AWS.KinesisVideo.TagStream
 
-    -- ** DescribeStream
+    -- ** DescribeStream 
     , module Network.AWS.KinesisVideo.DescribeStream
 
     -- * Types

@@ -39,20 +39,16 @@ module Network.AWS.Glue.GetConnection
     ) where
 
 import Network.AWS.Glue.Types
-import Network.AWS.Glue.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 
 -- | /See:/ 'getConnection' smart constructor.
-data GetConnection =
-  GetConnection'
-    { _gCatalogId :: !(Maybe Text)
-    , _gName      :: !Text
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data GetConnection = GetConnection'{_gCatalogId ::
+                                    !(Maybe Text),
+                                    _gName :: !Text}
+                       deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'GetConnection' with the minimum fields required to make a request.
 --
@@ -64,8 +60,9 @@ data GetConnection =
 getConnection
     :: Text -- ^ 'gName'
     -> GetConnection
-getConnection pName_ = GetConnection' {_gCatalogId = Nothing, _gName = pName_}
-
+getConnection pName_
+  = GetConnection'{_gCatalogId = Nothing,
+                   _gName = pName_}
 
 -- | The ID of the Data Catalog in which the connection resides. If none is supplied, the AWS account ID is used by default.
 gCatalogId :: Lens' GetConnection (Maybe Text)
@@ -111,13 +108,12 @@ instance ToQuery GetConnection where
         toQuery = const mempty
 
 -- | /See:/ 'getConnectionResponse' smart constructor.
-data GetConnectionResponse =
-  GetConnectionResponse'
-    { _getrsConnection     :: !(Maybe Connection)
-    , _getrsResponseStatus :: !Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data GetConnectionResponse = GetConnectionResponse'{_getrsConnection
+                                                    :: !(Maybe Connection),
+                                                    _getrsResponseStatus ::
+                                                    !Int}
+                               deriving (Eq, Read, Show, Data, Typeable,
+                                         Generic)
 
 -- | Creates a value of 'GetConnectionResponse' with the minimum fields required to make a request.
 --
@@ -129,10 +125,9 @@ data GetConnectionResponse =
 getConnectionResponse
     :: Int -- ^ 'getrsResponseStatus'
     -> GetConnectionResponse
-getConnectionResponse pResponseStatus_ =
-  GetConnectionResponse'
-    {_getrsConnection = Nothing, _getrsResponseStatus = pResponseStatus_}
-
+getConnectionResponse pResponseStatus_
+  = GetConnectionResponse'{_getrsConnection = Nothing,
+                           _getrsResponseStatus = pResponseStatus_}
 
 -- | The requested connection definition.
 getrsConnection :: Lens' GetConnectionResponse (Maybe Connection)

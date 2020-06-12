@@ -18,7 +18,7 @@
 -- Stability   : auto-generated
 -- Portability : non-portable (GHC extensions)
 --
--- Creates a new table from an existing backup. Any number of users can execute up to 4 concurrent restores (any type of restore) in a given account.
+-- Creates a new table from an existing backup. Any number of users can execute up to 4 concurrent restores (any type of restore) in a given account. 
 --
 --
 -- You can call @RestoreTableFromBackup@ at a maximum rate of 10 times per second.
@@ -62,25 +62,34 @@ module Network.AWS.DynamoDB.RestoreTableFromBackup
     ) where
 
 import Network.AWS.DynamoDB.Types
-import Network.AWS.DynamoDB.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 
 -- | /See:/ 'restoreTableFromBackup' smart constructor.
-data RestoreTableFromBackup =
-  RestoreTableFromBackup'
-    { _rtfbBillingModeOverride           :: !(Maybe BillingMode)
-    , _rtfbGlobalSecondaryIndexOverride  :: !(Maybe [GlobalSecondaryIndex])
-    , _rtfbProvisionedThroughputOverride :: !(Maybe ProvisionedThroughput)
-    , _rtfbSSESpecificationOverride      :: !(Maybe SSESpecification)
-    , _rtfbLocalSecondaryIndexOverride   :: !(Maybe [LocalSecondaryIndex])
-    , _rtfbTargetTableName               :: !Text
-    , _rtfbBackupARN                     :: !Text
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data RestoreTableFromBackup = RestoreTableFromBackup'{_rtfbBillingModeOverride
+                                                      :: !(Maybe BillingMode),
+                                                      _rtfbGlobalSecondaryIndexOverride
+                                                      ::
+                                                      !(Maybe
+                                                          [GlobalSecondaryIndex]),
+                                                      _rtfbProvisionedThroughputOverride
+                                                      ::
+                                                      !(Maybe
+                                                          ProvisionedThroughput),
+                                                      _rtfbSSESpecificationOverride
+                                                      ::
+                                                      !(Maybe SSESpecification),
+                                                      _rtfbLocalSecondaryIndexOverride
+                                                      ::
+                                                      !(Maybe
+                                                          [LocalSecondaryIndex]),
+                                                      _rtfbTargetTableName ::
+                                                      !Text,
+                                                      _rtfbBackupARN :: !Text}
+                                deriving (Eq, Read, Show, Data, Typeable,
+                                          Generic)
 
 -- | Creates a value of 'RestoreTableFromBackup' with the minimum fields required to make a request.
 --
@@ -103,17 +112,15 @@ restoreTableFromBackup
     :: Text -- ^ 'rtfbTargetTableName'
     -> Text -- ^ 'rtfbBackupARN'
     -> RestoreTableFromBackup
-restoreTableFromBackup pTargetTableName_ pBackupARN_ =
-  RestoreTableFromBackup'
-    { _rtfbBillingModeOverride = Nothing
-    , _rtfbGlobalSecondaryIndexOverride = Nothing
-    , _rtfbProvisionedThroughputOverride = Nothing
-    , _rtfbSSESpecificationOverride = Nothing
-    , _rtfbLocalSecondaryIndexOverride = Nothing
-    , _rtfbTargetTableName = pTargetTableName_
-    , _rtfbBackupARN = pBackupARN_
-    }
-
+restoreTableFromBackup pTargetTableName_ pBackupARN_
+  = RestoreTableFromBackup'{_rtfbBillingModeOverride =
+                              Nothing,
+                            _rtfbGlobalSecondaryIndexOverride = Nothing,
+                            _rtfbProvisionedThroughputOverride = Nothing,
+                            _rtfbSSESpecificationOverride = Nothing,
+                            _rtfbLocalSecondaryIndexOverride = Nothing,
+                            _rtfbTargetTableName = pTargetTableName_,
+                            _rtfbBackupARN = pBackupARN_}
 
 -- | The billing mode of the restored table.
 rtfbBillingModeOverride :: Lens' RestoreTableFromBackup (Maybe BillingMode)
@@ -191,13 +198,14 @@ instance ToQuery RestoreTableFromBackup where
         toQuery = const mempty
 
 -- | /See:/ 'restoreTableFromBackupResponse' smart constructor.
-data RestoreTableFromBackupResponse =
-  RestoreTableFromBackupResponse'
-    { _rtfbrsTableDescription :: !(Maybe TableDescription)
-    , _rtfbrsResponseStatus   :: !Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data RestoreTableFromBackupResponse = RestoreTableFromBackupResponse'{_rtfbrsTableDescription
+                                                                      ::
+                                                                      !(Maybe
+                                                                          TableDescription),
+                                                                      _rtfbrsResponseStatus
+                                                                      :: !Int}
+                                        deriving (Eq, Read, Show, Data,
+                                                  Typeable, Generic)
 
 -- | Creates a value of 'RestoreTableFromBackupResponse' with the minimum fields required to make a request.
 --
@@ -209,12 +217,10 @@ data RestoreTableFromBackupResponse =
 restoreTableFromBackupResponse
     :: Int -- ^ 'rtfbrsResponseStatus'
     -> RestoreTableFromBackupResponse
-restoreTableFromBackupResponse pResponseStatus_ =
-  RestoreTableFromBackupResponse'
-    { _rtfbrsTableDescription = Nothing
-    , _rtfbrsResponseStatus = pResponseStatus_
-    }
-
+restoreTableFromBackupResponse pResponseStatus_
+  = RestoreTableFromBackupResponse'{_rtfbrsTableDescription
+                                      = Nothing,
+                                    _rtfbrsResponseStatus = pResponseStatus_}
 
 -- | The description of the table created from an existing backup.
 rtfbrsTableDescription :: Lens' RestoreTableFromBackupResponse (Maybe TableDescription)

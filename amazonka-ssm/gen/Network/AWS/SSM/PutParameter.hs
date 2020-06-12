@@ -48,21 +48,16 @@ import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 import Network.AWS.SSM.Types
-import Network.AWS.SSM.Types.Product
 
 -- | /See:/ 'putParameter' smart constructor.
-data PutParameter =
-  PutParameter'
-    { _ppKeyId          :: !(Maybe Text)
-    , _ppAllowedPattern :: !(Maybe Text)
-    , _ppOverwrite      :: !(Maybe Bool)
-    , _ppDescription    :: !(Maybe Text)
-    , _ppName           :: !Text
-    , _ppValue          :: !Text
-    , _ppType           :: !ParameterType
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data PutParameter = PutParameter'{_ppKeyId ::
+                                  !(Maybe Text),
+                                  _ppAllowedPattern :: !(Maybe Text),
+                                  _ppOverwrite :: !(Maybe Bool),
+                                  _ppDescription :: !(Maybe Text),
+                                  _ppName :: !Text, _ppValue :: !Text,
+                                  _ppType :: !ParameterType}
+                      deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'PutParameter' with the minimum fields required to make a request.
 --
@@ -70,7 +65,7 @@ data PutParameter =
 --
 -- * 'ppKeyId' - The KMS Key ID that you want to use to encrypt a parameter when you choose the SecureString data type. If you don't specify a key ID, the system uses the default key associated with your AWS account.
 --
--- * 'ppAllowedPattern' - A regular expression used to validate the parameter value. For example, for String types with values restricted to numbers, you can specify the following: AllowedPattern=^\d+$
+-- * 'ppAllowedPattern' - A regular expression used to validate the parameter value. For example, for String types with values restricted to numbers, you can specify the following: AllowedPattern=^\d+$ 
 --
 -- * 'ppOverwrite' - Overwrite an existing parameter. If not specified, will default to "false".
 --
@@ -86,23 +81,17 @@ putParameter
     -> Text -- ^ 'ppValue'
     -> ParameterType -- ^ 'ppType'
     -> PutParameter
-putParameter pName_ pValue_ pType_ =
-  PutParameter'
-    { _ppKeyId = Nothing
-    , _ppAllowedPattern = Nothing
-    , _ppOverwrite = Nothing
-    , _ppDescription = Nothing
-    , _ppName = pName_
-    , _ppValue = pValue_
-    , _ppType = pType_
-    }
-
+putParameter pName_ pValue_ pType_
+  = PutParameter'{_ppKeyId = Nothing,
+                  _ppAllowedPattern = Nothing, _ppOverwrite = Nothing,
+                  _ppDescription = Nothing, _ppName = pName_,
+                  _ppValue = pValue_, _ppType = pType_}
 
 -- | The KMS Key ID that you want to use to encrypt a parameter when you choose the SecureString data type. If you don't specify a key ID, the system uses the default key associated with your AWS account.
 ppKeyId :: Lens' PutParameter (Maybe Text)
 ppKeyId = lens _ppKeyId (\ s a -> s{_ppKeyId = a})
 
--- | A regular expression used to validate the parameter value. For example, for String types with values restricted to numbers, you can specify the following: AllowedPattern=^\d+$
+-- | A regular expression used to validate the parameter value. For example, for String types with values restricted to numbers, you can specify the following: AllowedPattern=^\d+$ 
 ppAllowedPattern :: Lens' PutParameter (Maybe Text)
 ppAllowedPattern = lens _ppAllowedPattern (\ s a -> s{_ppAllowedPattern = a})
 
@@ -166,13 +155,10 @@ instance ToQuery PutParameter where
         toQuery = const mempty
 
 -- | /See:/ 'putParameterResponse' smart constructor.
-data PutParameterResponse =
-  PutParameterResponse'
-    { _pprsVersion        :: !(Maybe Integer)
-    , _pprsResponseStatus :: !Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data PutParameterResponse = PutParameterResponse'{_pprsVersion
+                                                  :: !(Maybe Integer),
+                                                  _pprsResponseStatus :: !Int}
+                              deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'PutParameterResponse' with the minimum fields required to make a request.
 --
@@ -184,10 +170,9 @@ data PutParameterResponse =
 putParameterResponse
     :: Int -- ^ 'pprsResponseStatus'
     -> PutParameterResponse
-putParameterResponse pResponseStatus_ =
-  PutParameterResponse'
-    {_pprsVersion = Nothing, _pprsResponseStatus = pResponseStatus_}
-
+putParameterResponse pResponseStatus_
+  = PutParameterResponse'{_pprsVersion = Nothing,
+                          _pprsResponseStatus = pResponseStatus_}
 
 -- | The new version number of a parameter. If you edit a parameter value, Parameter Store automatically creates a new version and assigns this new version a unique ID. You can reference a parameter version ID in API actions or in Systems Manager documents (SSM documents). By default, if you don't specify a specific version, the system returns the latest parameter value when a parameter is called.
 pprsVersion :: Lens' PutParameterResponse (Maybe Integer)

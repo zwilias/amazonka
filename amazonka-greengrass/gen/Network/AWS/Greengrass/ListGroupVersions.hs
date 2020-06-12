@@ -39,21 +39,17 @@ module Network.AWS.Greengrass.ListGroupVersions
     ) where
 
 import Network.AWS.Greengrass.Types
-import Network.AWS.Greengrass.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 
 -- | /See:/ 'listGroupVersions' smart constructor.
-data ListGroupVersions =
-  ListGroupVersions'
-    { _lgvNextToken  :: !(Maybe Text)
-    , _lgvMaxResults :: !(Maybe Text)
-    , _lgvGroupId    :: !Text
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data ListGroupVersions = ListGroupVersions'{_lgvNextToken
+                                            :: !(Maybe Text),
+                                            _lgvMaxResults :: !(Maybe Text),
+                                            _lgvGroupId :: !Text}
+                           deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'ListGroupVersions' with the minimum fields required to make a request.
 --
@@ -67,10 +63,9 @@ data ListGroupVersions =
 listGroupVersions
     :: Text -- ^ 'lgvGroupId'
     -> ListGroupVersions
-listGroupVersions pGroupId_ =
-  ListGroupVersions'
-    {_lgvNextToken = Nothing, _lgvMaxResults = Nothing, _lgvGroupId = pGroupId_}
-
+listGroupVersions pGroupId_
+  = ListGroupVersions'{_lgvNextToken = Nothing,
+                       _lgvMaxResults = Nothing, _lgvGroupId = pGroupId_}
 
 -- | The token for the next set of results, or ''null'' if there are no additional results.
 lgvNextToken :: Lens' ListGroupVersions (Maybe Text)
@@ -118,14 +113,16 @@ instance ToQuery ListGroupVersions where
                "MaxResults" =: _lgvMaxResults]
 
 -- | /See:/ 'listGroupVersionsResponse' smart constructor.
-data ListGroupVersionsResponse =
-  ListGroupVersionsResponse'
-    { _lgvrsVersions       :: !(Maybe [VersionInformation])
-    , _lgvrsNextToken      :: !(Maybe Text)
-    , _lgvrsResponseStatus :: !Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data ListGroupVersionsResponse = ListGroupVersionsResponse'{_lgvrsVersions
+                                                            ::
+                                                            !(Maybe
+                                                                [VersionInformation]),
+                                                            _lgvrsNextToken ::
+                                                            !(Maybe Text),
+                                                            _lgvrsResponseStatus
+                                                            :: !Int}
+                                   deriving (Eq, Read, Show, Data, Typeable,
+                                             Generic)
 
 -- | Creates a value of 'ListGroupVersionsResponse' with the minimum fields required to make a request.
 --
@@ -139,13 +136,11 @@ data ListGroupVersionsResponse =
 listGroupVersionsResponse
     :: Int -- ^ 'lgvrsResponseStatus'
     -> ListGroupVersionsResponse
-listGroupVersionsResponse pResponseStatus_ =
-  ListGroupVersionsResponse'
-    { _lgvrsVersions = Nothing
-    , _lgvrsNextToken = Nothing
-    , _lgvrsResponseStatus = pResponseStatus_
-    }
-
+listGroupVersionsResponse pResponseStatus_
+  = ListGroupVersionsResponse'{_lgvrsVersions =
+                                 Nothing,
+                               _lgvrsNextToken = Nothing,
+                               _lgvrsResponseStatus = pResponseStatus_}
 
 -- | Information about a version.
 lgvrsVersions :: Lens' ListGroupVersionsResponse [VersionInformation]

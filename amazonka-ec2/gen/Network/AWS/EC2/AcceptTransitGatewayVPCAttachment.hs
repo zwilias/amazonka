@@ -41,20 +41,21 @@ module Network.AWS.EC2.AcceptTransitGatewayVPCAttachment
     ) where
 
 import Network.AWS.EC2.Types
-import Network.AWS.EC2.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 
 -- | /See:/ 'acceptTransitGatewayVPCAttachment' smart constructor.
-data AcceptTransitGatewayVPCAttachment =
-  AcceptTransitGatewayVPCAttachment'
-    { _atgvaDryRun                     :: !(Maybe Bool)
-    , _atgvaTransitGatewayAttachmentId :: !Text
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data AcceptTransitGatewayVPCAttachment = AcceptTransitGatewayVPCAttachment'{_atgvaDryRun
+                                                                            ::
+                                                                            !(Maybe
+                                                                                Bool),
+                                                                            _atgvaTransitGatewayAttachmentId
+                                                                            ::
+                                                                            !Text}
+                                           deriving (Eq, Read, Show, Data,
+                                                     Typeable, Generic)
 
 -- | Creates a value of 'AcceptTransitGatewayVPCAttachment' with the minimum fields required to make a request.
 --
@@ -66,12 +67,12 @@ data AcceptTransitGatewayVPCAttachment =
 acceptTransitGatewayVPCAttachment
     :: Text -- ^ 'atgvaTransitGatewayAttachmentId'
     -> AcceptTransitGatewayVPCAttachment
-acceptTransitGatewayVPCAttachment pTransitGatewayAttachmentId_ =
-  AcceptTransitGatewayVPCAttachment'
-    { _atgvaDryRun = Nothing
-    , _atgvaTransitGatewayAttachmentId = pTransitGatewayAttachmentId_
-    }
-
+acceptTransitGatewayVPCAttachment
+  pTransitGatewayAttachmentId_
+  = AcceptTransitGatewayVPCAttachment'{_atgvaDryRun =
+                                         Nothing,
+                                       _atgvaTransitGatewayAttachmentId =
+                                         pTransitGatewayAttachmentId_}
 
 -- | Checks whether you have the required permissions for the action, without actually making the request, and provides an error response. If you have the required permissions, the error response is @DryRunOperation@ . Otherwise, it is @UnauthorizedOperation@ .
 atgvaDryRun :: Lens' AcceptTransitGatewayVPCAttachment (Maybe Bool)
@@ -119,13 +120,16 @@ instance ToQuery AcceptTransitGatewayVPCAttachment
                  _atgvaTransitGatewayAttachmentId]
 
 -- | /See:/ 'acceptTransitGatewayVPCAttachmentResponse' smart constructor.
-data AcceptTransitGatewayVPCAttachmentResponse =
-  AcceptTransitGatewayVPCAttachmentResponse'
-    { _atgvarsTransitGatewayVPCAttachment :: !(Maybe TransitGatewayVPCAttachment)
-    , _atgvarsResponseStatus :: !Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data AcceptTransitGatewayVPCAttachmentResponse = AcceptTransitGatewayVPCAttachmentResponse'{_atgvarsTransitGatewayVPCAttachment
+                                                                                            ::
+                                                                                            !(Maybe
+                                                                                                TransitGatewayVPCAttachment),
+                                                                                            _atgvarsResponseStatus
+                                                                                            ::
+                                                                                            !Int}
+                                                   deriving (Eq, Read, Show,
+                                                             Data, Typeable,
+                                                             Generic)
 
 -- | Creates a value of 'AcceptTransitGatewayVPCAttachmentResponse' with the minimum fields required to make a request.
 --
@@ -137,12 +141,12 @@ data AcceptTransitGatewayVPCAttachmentResponse =
 acceptTransitGatewayVPCAttachmentResponse
     :: Int -- ^ 'atgvarsResponseStatus'
     -> AcceptTransitGatewayVPCAttachmentResponse
-acceptTransitGatewayVPCAttachmentResponse pResponseStatus_ =
-  AcceptTransitGatewayVPCAttachmentResponse'
-    { _atgvarsTransitGatewayVPCAttachment = Nothing
-    , _atgvarsResponseStatus = pResponseStatus_
-    }
-
+acceptTransitGatewayVPCAttachmentResponse
+  pResponseStatus_
+  = AcceptTransitGatewayVPCAttachmentResponse'{_atgvarsTransitGatewayVPCAttachment
+                                                 = Nothing,
+                                               _atgvarsResponseStatus =
+                                                 pResponseStatus_}
 
 -- | The VPC attachment.
 atgvarsTransitGatewayVPCAttachment :: Lens' AcceptTransitGatewayVPCAttachmentResponse (Maybe TransitGatewayVPCAttachment)

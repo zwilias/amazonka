@@ -47,20 +47,16 @@ module Network.AWS.IAM.GetPolicyVersion
     ) where
 
 import Network.AWS.IAM.Types
-import Network.AWS.IAM.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 
 -- | /See:/ 'getPolicyVersion' smart constructor.
-data GetPolicyVersion =
-  GetPolicyVersion'
-    { _gpvPolicyARN :: !Text
-    , _gpvVersionId :: !Text
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data GetPolicyVersion = GetPolicyVersion'{_gpvPolicyARN
+                                          :: !Text,
+                                          _gpvVersionId :: !Text}
+                          deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'GetPolicyVersion' with the minimum fields required to make a request.
 --
@@ -73,9 +69,9 @@ getPolicyVersion
     :: Text -- ^ 'gpvPolicyARN'
     -> Text -- ^ 'gpvVersionId'
     -> GetPolicyVersion
-getPolicyVersion pPolicyARN_ pVersionId_ =
-  GetPolicyVersion' {_gpvPolicyARN = pPolicyARN_, _gpvVersionId = pVersionId_}
-
+getPolicyVersion pPolicyARN_ pVersionId_
+  = GetPolicyVersion'{_gpvPolicyARN = pPolicyARN_,
+                      _gpvVersionId = pVersionId_}
 
 -- | The Amazon Resource Name (ARN) of the managed policy that you want information about. For more information about ARNs, see <http://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html Amazon Resource Names (ARNs) and AWS Service Namespaces> in the /AWS General Reference/ .
 gpvPolicyARN :: Lens' GetPolicyVersion Text
@@ -112,18 +108,19 @@ instance ToQuery GetPolicyVersion where
                "PolicyArn" =: _gpvPolicyARN,
                "VersionId" =: _gpvVersionId]
 
--- | Contains the response to a successful 'GetPolicyVersion' request.
+-- | Contains the response to a successful 'GetPolicyVersion' request. 
 --
 --
 --
 -- /See:/ 'getPolicyVersionResponse' smart constructor.
-data GetPolicyVersionResponse =
-  GetPolicyVersionResponse'
-    { _gpvrsPolicyVersion  :: !(Maybe PolicyVersion)
-    , _gpvrsResponseStatus :: !Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data GetPolicyVersionResponse = GetPolicyVersionResponse'{_gpvrsPolicyVersion
+                                                          ::
+                                                          !(Maybe
+                                                              PolicyVersion),
+                                                          _gpvrsResponseStatus
+                                                          :: !Int}
+                                  deriving (Eq, Read, Show, Data, Typeable,
+                                            Generic)
 
 -- | Creates a value of 'GetPolicyVersionResponse' with the minimum fields required to make a request.
 --
@@ -135,10 +132,10 @@ data GetPolicyVersionResponse =
 getPolicyVersionResponse
     :: Int -- ^ 'gpvrsResponseStatus'
     -> GetPolicyVersionResponse
-getPolicyVersionResponse pResponseStatus_ =
-  GetPolicyVersionResponse'
-    {_gpvrsPolicyVersion = Nothing, _gpvrsResponseStatus = pResponseStatus_}
-
+getPolicyVersionResponse pResponseStatus_
+  = GetPolicyVersionResponse'{_gpvrsPolicyVersion =
+                                Nothing,
+                              _gpvrsResponseStatus = pResponseStatus_}
 
 -- | A structure containing details about the policy version.
 gpvrsPolicyVersion :: Lens' GetPolicyVersionResponse (Maybe PolicyVersion)

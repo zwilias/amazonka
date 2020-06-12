@@ -42,19 +42,17 @@ module Network.AWS.Lightsail.GetOperationsForResource
 
 import Network.AWS.Lens
 import Network.AWS.Lightsail.Types
-import Network.AWS.Lightsail.Types.Product
 import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 
 -- | /See:/ 'getOperationsForResource' smart constructor.
-data GetOperationsForResource =
-  GetOperationsForResource'
-    { _gofrPageToken    :: !(Maybe Text)
-    , _gofrResourceName :: !Text
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data GetOperationsForResource = GetOperationsForResource'{_gofrPageToken
+                                                          :: !(Maybe Text),
+                                                          _gofrResourceName ::
+                                                          !Text}
+                                  deriving (Eq, Read, Show, Data, Typeable,
+                                            Generic)
 
 -- | Creates a value of 'GetOperationsForResource' with the minimum fields required to make a request.
 --
@@ -66,10 +64,9 @@ data GetOperationsForResource =
 getOperationsForResource
     :: Text -- ^ 'gofrResourceName'
     -> GetOperationsForResource
-getOperationsForResource pResourceName_ =
-  GetOperationsForResource'
-    {_gofrPageToken = Nothing, _gofrResourceName = pResourceName_}
-
+getOperationsForResource pResourceName_
+  = GetOperationsForResource'{_gofrPageToken = Nothing,
+                              _gofrResourceName = pResourceName_}
 
 -- | A token used for advancing to the next page of results from your get operations for resource request.
 gofrPageToken :: Lens' GetOperationsForResource (Maybe Text)
@@ -119,15 +116,23 @@ instance ToQuery GetOperationsForResource where
         toQuery = const mempty
 
 -- | /See:/ 'getOperationsForResourceResponse' smart constructor.
-data GetOperationsForResourceResponse =
-  GetOperationsForResourceResponse'
-    { _gofrrsNextPageCount  :: !(Maybe Text)
-    , _gofrrsNextPageToken  :: !(Maybe Text)
-    , _gofrrsOperations     :: !(Maybe [Operation])
-    , _gofrrsResponseStatus :: !Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data GetOperationsForResourceResponse = GetOperationsForResourceResponse'{_gofrrsNextPageCount
+                                                                          ::
+                                                                          !(Maybe
+                                                                              Text),
+                                                                          _gofrrsNextPageToken
+                                                                          ::
+                                                                          !(Maybe
+                                                                              Text),
+                                                                          _gofrrsOperations
+                                                                          ::
+                                                                          !(Maybe
+                                                                              [Operation]),
+                                                                          _gofrrsResponseStatus
+                                                                          ::
+                                                                          !Int}
+                                          deriving (Eq, Read, Show, Data,
+                                                    Typeable, Generic)
 
 -- | Creates a value of 'GetOperationsForResourceResponse' with the minimum fields required to make a request.
 --
@@ -143,14 +148,12 @@ data GetOperationsForResourceResponse =
 getOperationsForResourceResponse
     :: Int -- ^ 'gofrrsResponseStatus'
     -> GetOperationsForResourceResponse
-getOperationsForResourceResponse pResponseStatus_ =
-  GetOperationsForResourceResponse'
-    { _gofrrsNextPageCount = Nothing
-    , _gofrrsNextPageToken = Nothing
-    , _gofrrsOperations = Nothing
-    , _gofrrsResponseStatus = pResponseStatus_
-    }
-
+getOperationsForResourceResponse pResponseStatus_
+  = GetOperationsForResourceResponse'{_gofrrsNextPageCount
+                                        = Nothing,
+                                      _gofrrsNextPageToken = Nothing,
+                                      _gofrrsOperations = Nothing,
+                                      _gofrrsResponseStatus = pResponseStatus_}
 
 -- | (Deprecated) Returns the number of pages of results that remain.
 gofrrsNextPageCount :: Lens' GetOperationsForResourceResponse (Maybe Text)

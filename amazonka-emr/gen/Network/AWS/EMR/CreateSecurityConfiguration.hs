@@ -40,20 +40,18 @@ module Network.AWS.EMR.CreateSecurityConfiguration
     ) where
 
 import Network.AWS.EMR.Types
-import Network.AWS.EMR.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 
 -- | /See:/ 'createSecurityConfiguration' smart constructor.
-data CreateSecurityConfiguration =
-  CreateSecurityConfiguration'
-    { _cscName                  :: !Text
-    , _cscSecurityConfiguration :: !Text
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data CreateSecurityConfiguration = CreateSecurityConfiguration'{_cscName
+                                                                :: !Text,
+                                                                _cscSecurityConfiguration
+                                                                :: !Text}
+                                     deriving (Eq, Read, Show, Data, Typeable,
+                                               Generic)
 
 -- | Creates a value of 'CreateSecurityConfiguration' with the minimum fields required to make a request.
 --
@@ -66,10 +64,11 @@ createSecurityConfiguration
     :: Text -- ^ 'cscName'
     -> Text -- ^ 'cscSecurityConfiguration'
     -> CreateSecurityConfiguration
-createSecurityConfiguration pName_ pSecurityConfiguration_ =
-  CreateSecurityConfiguration'
-    {_cscName = pName_, _cscSecurityConfiguration = pSecurityConfiguration_}
-
+createSecurityConfiguration pName_
+  pSecurityConfiguration_
+  = CreateSecurityConfiguration'{_cscName = pName_,
+                                 _cscSecurityConfiguration =
+                                   pSecurityConfiguration_}
 
 -- | The name of the security configuration.
 cscName :: Lens' CreateSecurityConfiguration Text
@@ -120,14 +119,17 @@ instance ToQuery CreateSecurityConfiguration where
         toQuery = const mempty
 
 -- | /See:/ 'createSecurityConfigurationResponse' smart constructor.
-data CreateSecurityConfigurationResponse =
-  CreateSecurityConfigurationResponse'
-    { _cscrsResponseStatus   :: !Int
-    , _cscrsName             :: !Text
-    , _cscrsCreationDateTime :: !POSIX
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data CreateSecurityConfigurationResponse = CreateSecurityConfigurationResponse'{_cscrsResponseStatus
+                                                                                ::
+                                                                                !Int,
+                                                                                _cscrsName
+                                                                                ::
+                                                                                !Text,
+                                                                                _cscrsCreationDateTime
+                                                                                ::
+                                                                                !POSIX}
+                                             deriving (Eq, Read, Show, Data,
+                                                       Typeable, Generic)
 
 -- | Creates a value of 'CreateSecurityConfigurationResponse' with the minimum fields required to make a request.
 --
@@ -143,13 +145,13 @@ createSecurityConfigurationResponse
     -> Text -- ^ 'cscrsName'
     -> UTCTime -- ^ 'cscrsCreationDateTime'
     -> CreateSecurityConfigurationResponse
-createSecurityConfigurationResponse pResponseStatus_ pName_ pCreationDateTime_ =
-  CreateSecurityConfigurationResponse'
-    { _cscrsResponseStatus = pResponseStatus_
-    , _cscrsName = pName_
-    , _cscrsCreationDateTime = _Time # pCreationDateTime_
-    }
-
+createSecurityConfigurationResponse pResponseStatus_
+  pName_ pCreationDateTime_
+  = CreateSecurityConfigurationResponse'{_cscrsResponseStatus
+                                           = pResponseStatus_,
+                                         _cscrsName = pName_,
+                                         _cscrsCreationDateTime =
+                                           _Time # pCreationDateTime_}
 
 -- | -- | The response status code.
 cscrsResponseStatus :: Lens' CreateSecurityConfigurationResponse Int

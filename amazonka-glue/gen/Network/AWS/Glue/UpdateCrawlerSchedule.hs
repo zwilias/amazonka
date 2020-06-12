@@ -18,7 +18,7 @@
 -- Stability   : auto-generated
 -- Portability : non-portable (GHC extensions)
 --
--- Updates the schedule of a crawler using a @cron@ expression.
+-- Updates the schedule of a crawler using a @cron@ expression. 
 --
 --
 module Network.AWS.Glue.UpdateCrawlerSchedule
@@ -38,20 +38,17 @@ module Network.AWS.Glue.UpdateCrawlerSchedule
     ) where
 
 import Network.AWS.Glue.Types
-import Network.AWS.Glue.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 
 -- | /See:/ 'updateCrawlerSchedule' smart constructor.
-data UpdateCrawlerSchedule =
-  UpdateCrawlerSchedule'
-    { _ucsSchedule    :: !(Maybe Text)
-    , _ucsCrawlerName :: !Text
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data UpdateCrawlerSchedule = UpdateCrawlerSchedule'{_ucsSchedule
+                                                    :: !(Maybe Text),
+                                                    _ucsCrawlerName :: !Text}
+                               deriving (Eq, Read, Show, Data, Typeable,
+                                         Generic)
 
 -- | Creates a value of 'UpdateCrawlerSchedule' with the minimum fields required to make a request.
 --
@@ -63,10 +60,9 @@ data UpdateCrawlerSchedule =
 updateCrawlerSchedule
     :: Text -- ^ 'ucsCrawlerName'
     -> UpdateCrawlerSchedule
-updateCrawlerSchedule pCrawlerName_ =
-  UpdateCrawlerSchedule'
-    {_ucsSchedule = Nothing, _ucsCrawlerName = pCrawlerName_}
-
+updateCrawlerSchedule pCrawlerName_
+  = UpdateCrawlerSchedule'{_ucsSchedule = Nothing,
+                           _ucsCrawlerName = pCrawlerName_}
 
 -- | The updated @cron@ expression used to specify the schedule (see <http://docs.aws.amazon.com/glue/latest/dg/monitor-data-warehouse-schedule.html Time-Based Schedules for Jobs and Crawlers> . For example, to run something every day at 12:15 UTC, you would specify: @cron(15 12 * * ? *)@ .
 ucsSchedule :: Lens' UpdateCrawlerSchedule (Maybe Text)
@@ -113,12 +109,10 @@ instance ToQuery UpdateCrawlerSchedule where
         toQuery = const mempty
 
 -- | /See:/ 'updateCrawlerScheduleResponse' smart constructor.
-newtype UpdateCrawlerScheduleResponse =
-  UpdateCrawlerScheduleResponse'
-    { _ucsrsResponseStatus :: Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+newtype UpdateCrawlerScheduleResponse = UpdateCrawlerScheduleResponse'{_ucsrsResponseStatus
+                                                                       :: Int}
+                                          deriving (Eq, Read, Show, Data,
+                                                    Typeable, Generic)
 
 -- | Creates a value of 'UpdateCrawlerScheduleResponse' with the minimum fields required to make a request.
 --
@@ -128,9 +122,9 @@ newtype UpdateCrawlerScheduleResponse =
 updateCrawlerScheduleResponse
     :: Int -- ^ 'ucsrsResponseStatus'
     -> UpdateCrawlerScheduleResponse
-updateCrawlerScheduleResponse pResponseStatus_ =
-  UpdateCrawlerScheduleResponse' {_ucsrsResponseStatus = pResponseStatus_}
-
+updateCrawlerScheduleResponse pResponseStatus_
+  = UpdateCrawlerScheduleResponse'{_ucsrsResponseStatus
+                                     = pResponseStatus_}
 
 -- | -- | The response status code.
 ucsrsResponseStatus :: Lens' UpdateCrawlerScheduleResponse Int

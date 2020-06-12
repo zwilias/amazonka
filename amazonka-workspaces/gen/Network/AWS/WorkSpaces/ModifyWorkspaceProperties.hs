@@ -42,16 +42,15 @@ import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 import Network.AWS.WorkSpaces.Types
-import Network.AWS.WorkSpaces.Types.Product
 
 -- | /See:/ 'modifyWorkspaceProperties' smart constructor.
-data ModifyWorkspaceProperties =
-  ModifyWorkspaceProperties'
-    { _mwpWorkspaceId         :: !Text
-    , _mwpWorkspaceProperties :: !WorkspaceProperties
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data ModifyWorkspaceProperties = ModifyWorkspaceProperties'{_mwpWorkspaceId
+                                                            :: !Text,
+                                                            _mwpWorkspaceProperties
+                                                            ::
+                                                            !WorkspaceProperties}
+                                   deriving (Eq, Read, Show, Data, Typeable,
+                                             Generic)
 
 -- | Creates a value of 'ModifyWorkspaceProperties' with the minimum fields required to make a request.
 --
@@ -64,12 +63,11 @@ modifyWorkspaceProperties
     :: Text -- ^ 'mwpWorkspaceId'
     -> WorkspaceProperties -- ^ 'mwpWorkspaceProperties'
     -> ModifyWorkspaceProperties
-modifyWorkspaceProperties pWorkspaceId_ pWorkspaceProperties_ =
-  ModifyWorkspaceProperties'
-    { _mwpWorkspaceId = pWorkspaceId_
-    , _mwpWorkspaceProperties = pWorkspaceProperties_
-    }
-
+modifyWorkspaceProperties pWorkspaceId_
+  pWorkspaceProperties_
+  = ModifyWorkspaceProperties'{_mwpWorkspaceId =
+                                 pWorkspaceId_,
+                               _mwpWorkspaceProperties = pWorkspaceProperties_}
 
 -- | The ID of the WorkSpace.
 mwpWorkspaceId :: Lens' ModifyWorkspaceProperties Text
@@ -118,12 +116,11 @@ instance ToQuery ModifyWorkspaceProperties where
         toQuery = const mempty
 
 -- | /See:/ 'modifyWorkspacePropertiesResponse' smart constructor.
-newtype ModifyWorkspacePropertiesResponse =
-  ModifyWorkspacePropertiesResponse'
-    { _mwprsResponseStatus :: Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+newtype ModifyWorkspacePropertiesResponse = ModifyWorkspacePropertiesResponse'{_mwprsResponseStatus
+                                                                               ::
+                                                                               Int}
+                                              deriving (Eq, Read, Show, Data,
+                                                        Typeable, Generic)
 
 -- | Creates a value of 'ModifyWorkspacePropertiesResponse' with the minimum fields required to make a request.
 --
@@ -133,9 +130,9 @@ newtype ModifyWorkspacePropertiesResponse =
 modifyWorkspacePropertiesResponse
     :: Int -- ^ 'mwprsResponseStatus'
     -> ModifyWorkspacePropertiesResponse
-modifyWorkspacePropertiesResponse pResponseStatus_ =
-  ModifyWorkspacePropertiesResponse' {_mwprsResponseStatus = pResponseStatus_}
-
+modifyWorkspacePropertiesResponse pResponseStatus_
+  = ModifyWorkspacePropertiesResponse'{_mwprsResponseStatus
+                                         = pResponseStatus_}
 
 -- | -- | The response status code.
 mwprsResponseStatus :: Lens' ModifyWorkspacePropertiesResponse Int

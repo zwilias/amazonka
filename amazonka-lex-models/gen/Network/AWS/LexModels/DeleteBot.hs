@@ -40,31 +40,25 @@ module Network.AWS.LexModels.DeleteBot
 
 import Network.AWS.Lens
 import Network.AWS.LexModels.Types
-import Network.AWS.LexModels.Types.Product
 import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 
 -- | /See:/ 'deleteBot' smart constructor.
-newtype DeleteBot =
-  DeleteBot'
-    { _dbName :: Text
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+newtype DeleteBot = DeleteBot'{_dbName :: Text}
+                      deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'DeleteBot' with the minimum fields required to make a request.
 --
 -- Use one of the following lenses to modify other fields as desired:
 --
--- * 'dbName' - The name of the bot. The name is case sensitive.
+-- * 'dbName' - The name of the bot. The name is case sensitive. 
 deleteBot
     :: Text -- ^ 'dbName'
     -> DeleteBot
-deleteBot pName_ = DeleteBot' {_dbName = pName_}
+deleteBot pName_ = DeleteBot'{_dbName = pName_}
 
-
--- | The name of the bot. The name is case sensitive.
+-- | The name of the bot. The name is case sensitive. 
 dbName :: Lens' DeleteBot Text
 dbName = lens _dbName (\ s a -> s{_dbName = a})
 
@@ -92,16 +86,13 @@ instance ToQuery DeleteBot where
         toQuery = const mempty
 
 -- | /See:/ 'deleteBotResponse' smart constructor.
-data DeleteBotResponse =
-  DeleteBotResponse'
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data DeleteBotResponse = DeleteBotResponse'
+                           deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'DeleteBotResponse' with the minimum fields required to make a request.
 --
 deleteBotResponse
     :: DeleteBotResponse
 deleteBotResponse = DeleteBotResponse'
-
 
 instance NFData DeleteBotResponse where

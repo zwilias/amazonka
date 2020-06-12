@@ -40,22 +40,25 @@ module Network.AWS.CognitoIdentityProvider.AdminSetUserMFAPreference
     ) where
 
 import Network.AWS.CognitoIdentityProvider.Types
-import Network.AWS.CognitoIdentityProvider.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 
 -- | /See:/ 'adminSetUserMFAPreference' smart constructor.
-data AdminSetUserMFAPreference =
-  AdminSetUserMFAPreference'
-    { _asumpSMSMFASettings           :: !(Maybe SMSMFASettingsType)
-    , _asumpSoftwareTokenMFASettings :: !(Maybe SoftwareTokenMFASettingsType)
-    , _asumpUsername                 :: !(Sensitive Text)
-    , _asumpUserPoolId               :: !Text
-    }
-  deriving (Eq, Show, Data, Typeable, Generic)
-
+data AdminSetUserMFAPreference = AdminSetUserMFAPreference'{_asumpSMSMFASettings
+                                                            ::
+                                                            !(Maybe
+                                                                SMSMFASettingsType),
+                                                            _asumpSoftwareTokenMFASettings
+                                                            ::
+                                                            !(Maybe
+                                                                SoftwareTokenMFASettingsType),
+                                                            _asumpUsername ::
+                                                            !(Sensitive Text),
+                                                            _asumpUserPoolId ::
+                                                            !Text}
+                                   deriving (Eq, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'AdminSetUserMFAPreference' with the minimum fields required to make a request.
 --
@@ -72,14 +75,12 @@ adminSetUserMFAPreference
     :: Text -- ^ 'asumpUsername'
     -> Text -- ^ 'asumpUserPoolId'
     -> AdminSetUserMFAPreference
-adminSetUserMFAPreference pUsername_ pUserPoolId_ =
-  AdminSetUserMFAPreference'
-    { _asumpSMSMFASettings = Nothing
-    , _asumpSoftwareTokenMFASettings = Nothing
-    , _asumpUsername = _Sensitive # pUsername_
-    , _asumpUserPoolId = pUserPoolId_
-    }
-
+adminSetUserMFAPreference pUsername_ pUserPoolId_
+  = AdminSetUserMFAPreference'{_asumpSMSMFASettings =
+                                 Nothing,
+                               _asumpSoftwareTokenMFASettings = Nothing,
+                               _asumpUsername = _Sensitive # pUsername_,
+                               _asumpUserPoolId = pUserPoolId_}
 
 -- | The SMS text message MFA settings.
 asumpSMSMFASettings :: Lens' AdminSetUserMFAPreference (Maybe SMSMFASettingsType)
@@ -138,12 +139,11 @@ instance ToQuery AdminSetUserMFAPreference where
         toQuery = const mempty
 
 -- | /See:/ 'adminSetUserMFAPreferenceResponse' smart constructor.
-newtype AdminSetUserMFAPreferenceResponse =
-  AdminSetUserMFAPreferenceResponse'
-    { _asumprsResponseStatus :: Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+newtype AdminSetUserMFAPreferenceResponse = AdminSetUserMFAPreferenceResponse'{_asumprsResponseStatus
+                                                                               ::
+                                                                               Int}
+                                              deriving (Eq, Read, Show, Data,
+                                                        Typeable, Generic)
 
 -- | Creates a value of 'AdminSetUserMFAPreferenceResponse' with the minimum fields required to make a request.
 --
@@ -153,9 +153,9 @@ newtype AdminSetUserMFAPreferenceResponse =
 adminSetUserMFAPreferenceResponse
     :: Int -- ^ 'asumprsResponseStatus'
     -> AdminSetUserMFAPreferenceResponse
-adminSetUserMFAPreferenceResponse pResponseStatus_ =
-  AdminSetUserMFAPreferenceResponse' {_asumprsResponseStatus = pResponseStatus_}
-
+adminSetUserMFAPreferenceResponse pResponseStatus_
+  = AdminSetUserMFAPreferenceResponse'{_asumprsResponseStatus
+                                         = pResponseStatus_}
 
 -- | -- | The response status code.
 asumprsResponseStatus :: Lens' AdminSetUserMFAPreferenceResponse Int

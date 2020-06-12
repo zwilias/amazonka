@@ -50,7 +50,6 @@ module Network.AWS.ApplicationAutoScaling.DescribeScheduledActions
     ) where
 
 import Network.AWS.ApplicationAutoScaling.Types
-import Network.AWS.ApplicationAutoScaling.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Pager
 import Network.AWS.Prelude
@@ -58,17 +57,22 @@ import Network.AWS.Request
 import Network.AWS.Response
 
 -- | /See:/ 'describeScheduledActions' smart constructor.
-data DescribeScheduledActions =
-  DescribeScheduledActions'
-    { _dsasScalableDimension    :: !(Maybe ScalableDimension)
-    , _dsasResourceId           :: !(Maybe Text)
-    , _dsasNextToken            :: !(Maybe Text)
-    , _dsasScheduledActionNames :: !(Maybe [Text])
-    , _dsasMaxResults           :: !(Maybe Int)
-    , _dsasServiceNamespace     :: !ServiceNamespace
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data DescribeScheduledActions = DescribeScheduledActions'{_dsasScalableDimension
+                                                          ::
+                                                          !(Maybe
+                                                              ScalableDimension),
+                                                          _dsasResourceId ::
+                                                          !(Maybe Text),
+                                                          _dsasNextToken ::
+                                                          !(Maybe Text),
+                                                          _dsasScheduledActionNames
+                                                          :: !(Maybe [Text]),
+                                                          _dsasMaxResults ::
+                                                          !(Maybe Int),
+                                                          _dsasServiceNamespace
+                                                          :: !ServiceNamespace}
+                                  deriving (Eq, Read, Show, Data, Typeable,
+                                            Generic)
 
 -- | Creates a value of 'DescribeScheduledActions' with the minimum fields required to make a request.
 --
@@ -88,16 +92,14 @@ data DescribeScheduledActions =
 describeScheduledActions
     :: ServiceNamespace -- ^ 'dsasServiceNamespace'
     -> DescribeScheduledActions
-describeScheduledActions pServiceNamespace_ =
-  DescribeScheduledActions'
-    { _dsasScalableDimension = Nothing
-    , _dsasResourceId = Nothing
-    , _dsasNextToken = Nothing
-    , _dsasScheduledActionNames = Nothing
-    , _dsasMaxResults = Nothing
-    , _dsasServiceNamespace = pServiceNamespace_
-    }
-
+describeScheduledActions pServiceNamespace_
+  = DescribeScheduledActions'{_dsasScalableDimension =
+                                Nothing,
+                              _dsasResourceId = Nothing,
+                              _dsasNextToken = Nothing,
+                              _dsasScheduledActionNames = Nothing,
+                              _dsasMaxResults = Nothing,
+                              _dsasServiceNamespace = pServiceNamespace_}
 
 -- | The scalable dimension. This string consists of the service namespace, resource type, and scaling property. If you specify a scalable dimension, you must also specify a resource ID.     * @ecs:service:DesiredCount@ - The desired task count of an ECS service.     * @ec2:spot-fleet-request:TargetCapacity@ - The target capacity of a Spot Fleet request.     * @elasticmapreduce:instancegroup:InstanceCount@ - The instance count of an EMR Instance Group.     * @appstream:fleet:DesiredCapacity@ - The desired capacity of an AppStream 2.0 fleet.     * @dynamodb:table:ReadCapacityUnits@ - The provisioned read capacity for a DynamoDB table.     * @dynamodb:table:WriteCapacityUnits@ - The provisioned write capacity for a DynamoDB table.     * @dynamodb:index:ReadCapacityUnits@ - The provisioned read capacity for a DynamoDB global secondary index.     * @dynamodb:index:WriteCapacityUnits@ - The provisioned write capacity for a DynamoDB global secondary index.     * @rds:cluster:ReadReplicaCount@ - The count of Aurora Replicas in an Aurora DB cluster. Available for Aurora MySQL-compatible edition and Aurora PostgreSQL-compatible edition.     * @sagemaker:variant:DesiredInstanceCount@ - The number of EC2 instances for an Amazon SageMaker model endpoint variant.     * @custom-resource:ResourceType:Property@ - The scalable dimension for a custom resource provided by your own application or service.     * @comprehend:document-classifier-endpoint:DesiredInferenceUnits@ - The number of inference units for an Amazon Comprehend document classification endpoint.     * @lambda:function:ProvisionedConcurrency@ - The provisioned concurrency for a Lambda function.     * @cassandra:table:ReadCapacityUnits@ - The provisioned read capacity for an Amazon Keyspaces table.     * @cassandra:table:WriteCapacityUnits@ - The provisioned write capacity for an Amazon Keyspaces table.
 dsasScalableDimension :: Lens' DescribeScheduledActions (Maybe ScalableDimension)
@@ -175,14 +177,19 @@ instance ToQuery DescribeScheduledActions where
         toQuery = const mempty
 
 -- | /See:/ 'describeScheduledActionsResponse' smart constructor.
-data DescribeScheduledActionsResponse =
-  DescribeScheduledActionsResponse'
-    { _dsarsNextToken        :: !(Maybe Text)
-    , _dsarsScheduledActions :: !(Maybe [ScheduledAction])
-    , _dsarsResponseStatus   :: !Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data DescribeScheduledActionsResponse = DescribeScheduledActionsResponse'{_dsarsNextToken
+                                                                          ::
+                                                                          !(Maybe
+                                                                              Text),
+                                                                          _dsarsScheduledActions
+                                                                          ::
+                                                                          !(Maybe
+                                                                              [ScheduledAction]),
+                                                                          _dsarsResponseStatus
+                                                                          ::
+                                                                          !Int}
+                                          deriving (Eq, Read, Show, Data,
+                                                    Typeable, Generic)
 
 -- | Creates a value of 'DescribeScheduledActionsResponse' with the minimum fields required to make a request.
 --
@@ -196,13 +203,11 @@ data DescribeScheduledActionsResponse =
 describeScheduledActionsResponse
     :: Int -- ^ 'dsarsResponseStatus'
     -> DescribeScheduledActionsResponse
-describeScheduledActionsResponse pResponseStatus_ =
-  DescribeScheduledActionsResponse'
-    { _dsarsNextToken = Nothing
-    , _dsarsScheduledActions = Nothing
-    , _dsarsResponseStatus = pResponseStatus_
-    }
-
+describeScheduledActionsResponse pResponseStatus_
+  = DescribeScheduledActionsResponse'{_dsarsNextToken =
+                                        Nothing,
+                                      _dsarsScheduledActions = Nothing,
+                                      _dsarsResponseStatus = pResponseStatus_}
 
 -- | The token required to get the next set of results. This value is @null@ if there are no more results to return.
 dsarsNextToken :: Lens' DescribeScheduledActionsResponse (Maybe Text)

@@ -38,19 +38,17 @@ module Network.AWS.Comprehend.DescribeDocumentClassificationJob
     ) where
 
 import Network.AWS.Comprehend.Types
-import Network.AWS.Comprehend.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 
 -- | /See:/ 'describeDocumentClassificationJob' smart constructor.
-newtype DescribeDocumentClassificationJob =
-  DescribeDocumentClassificationJob'
-    { _ddcjJobId :: Text
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+newtype DescribeDocumentClassificationJob = DescribeDocumentClassificationJob'{_ddcjJobId
+                                                                               ::
+                                                                               Text}
+                                              deriving (Eq, Read, Show, Data,
+                                                        Typeable, Generic)
 
 -- | Creates a value of 'DescribeDocumentClassificationJob' with the minimum fields required to make a request.
 --
@@ -60,9 +58,9 @@ newtype DescribeDocumentClassificationJob =
 describeDocumentClassificationJob
     :: Text -- ^ 'ddcjJobId'
     -> DescribeDocumentClassificationJob
-describeDocumentClassificationJob pJobId_ =
-  DescribeDocumentClassificationJob' {_ddcjJobId = pJobId_}
-
+describeDocumentClassificationJob pJobId_
+  = DescribeDocumentClassificationJob'{_ddcjJobId =
+                                         pJobId_}
 
 -- | The identifier that Amazon Comprehend generated for the job. The operation returns this identifier in its response.
 ddcjJobId :: Lens' DescribeDocumentClassificationJob Text
@@ -111,13 +109,16 @@ instance ToQuery DescribeDocumentClassificationJob
         toQuery = const mempty
 
 -- | /See:/ 'describeDocumentClassificationJobResponse' smart constructor.
-data DescribeDocumentClassificationJobResponse =
-  DescribeDocumentClassificationJobResponse'
-    { _ddcjrsDocumentClassificationJobProperties :: !(Maybe DocumentClassificationJobProperties)
-    , _ddcjrsResponseStatus :: !Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data DescribeDocumentClassificationJobResponse = DescribeDocumentClassificationJobResponse'{_ddcjrsDocumentClassificationJobProperties
+                                                                                            ::
+                                                                                            !(Maybe
+                                                                                                DocumentClassificationJobProperties),
+                                                                                            _ddcjrsResponseStatus
+                                                                                            ::
+                                                                                            !Int}
+                                                   deriving (Eq, Read, Show,
+                                                             Data, Typeable,
+                                                             Generic)
 
 -- | Creates a value of 'DescribeDocumentClassificationJobResponse' with the minimum fields required to make a request.
 --
@@ -129,12 +130,12 @@ data DescribeDocumentClassificationJobResponse =
 describeDocumentClassificationJobResponse
     :: Int -- ^ 'ddcjrsResponseStatus'
     -> DescribeDocumentClassificationJobResponse
-describeDocumentClassificationJobResponse pResponseStatus_ =
-  DescribeDocumentClassificationJobResponse'
-    { _ddcjrsDocumentClassificationJobProperties = Nothing
-    , _ddcjrsResponseStatus = pResponseStatus_
-    }
-
+describeDocumentClassificationJobResponse
+  pResponseStatus_
+  = DescribeDocumentClassificationJobResponse'{_ddcjrsDocumentClassificationJobProperties
+                                                 = Nothing,
+                                               _ddcjrsResponseStatus =
+                                                 pResponseStatus_}
 
 -- | An object that describes the properties associated with the document classification job.
 ddcjrsDocumentClassificationJobProperties :: Lens' DescribeDocumentClassificationJobResponse (Maybe DocumentClassificationJobProperties)

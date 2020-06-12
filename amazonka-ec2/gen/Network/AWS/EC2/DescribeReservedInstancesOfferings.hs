@@ -59,7 +59,6 @@ module Network.AWS.EC2.DescribeReservedInstancesOfferings
     ) where
 
 import Network.AWS.EC2.Types
-import Network.AWS.EC2.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Pager
 import Network.AWS.Prelude
@@ -71,26 +70,68 @@ import Network.AWS.Response
 --
 --
 -- /See:/ 'describeReservedInstancesOfferings' smart constructor.
-data DescribeReservedInstancesOfferings =
-  DescribeReservedInstancesOfferings'
-    { _drioMaxDuration                  :: !(Maybe Integer)
-    , _drioProductDescription           :: !(Maybe RIProductDescription)
-    , _drioFilters                      :: !(Maybe [Filter])
-    , _drioIncludeMarketplace           :: !(Maybe Bool)
-    , _drioInstanceType                 :: !(Maybe InstanceType)
-    , _drioNextToken                    :: !(Maybe Text)
-    , _drioMinDuration                  :: !(Maybe Integer)
-    , _drioAvailabilityZone             :: !(Maybe Text)
-    , _drioOfferingType                 :: !(Maybe OfferingTypeValues)
-    , _drioReservedInstancesOfferingIds :: !(Maybe [Text])
-    , _drioInstanceTenancy              :: !(Maybe Tenancy)
-    , _drioOfferingClass                :: !(Maybe OfferingClassType)
-    , _drioMaxInstanceCount             :: !(Maybe Int)
-    , _drioDryRun                       :: !(Maybe Bool)
-    , _drioMaxResults                   :: !(Maybe Int)
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data DescribeReservedInstancesOfferings = DescribeReservedInstancesOfferings'{_drioMaxDuration
+                                                                              ::
+                                                                              !(Maybe
+                                                                                  Integer),
+                                                                              _drioProductDescription
+                                                                              ::
+                                                                              !(Maybe
+                                                                                  RIProductDescription),
+                                                                              _drioFilters
+                                                                              ::
+                                                                              !(Maybe
+                                                                                  [Filter]),
+                                                                              _drioIncludeMarketplace
+                                                                              ::
+                                                                              !(Maybe
+                                                                                  Bool),
+                                                                              _drioInstanceType
+                                                                              ::
+                                                                              !(Maybe
+                                                                                  InstanceType),
+                                                                              _drioNextToken
+                                                                              ::
+                                                                              !(Maybe
+                                                                                  Text),
+                                                                              _drioMinDuration
+                                                                              ::
+                                                                              !(Maybe
+                                                                                  Integer),
+                                                                              _drioAvailabilityZone
+                                                                              ::
+                                                                              !(Maybe
+                                                                                  Text),
+                                                                              _drioOfferingType
+                                                                              ::
+                                                                              !(Maybe
+                                                                                  OfferingTypeValues),
+                                                                              _drioReservedInstancesOfferingIds
+                                                                              ::
+                                                                              !(Maybe
+                                                                                  [Text]),
+                                                                              _drioInstanceTenancy
+                                                                              ::
+                                                                              !(Maybe
+                                                                                  Tenancy),
+                                                                              _drioOfferingClass
+                                                                              ::
+                                                                              !(Maybe
+                                                                                  OfferingClassType),
+                                                                              _drioMaxInstanceCount
+                                                                              ::
+                                                                              !(Maybe
+                                                                                  Int),
+                                                                              _drioDryRun
+                                                                              ::
+                                                                              !(Maybe
+                                                                                  Bool),
+                                                                              _drioMaxResults
+                                                                              ::
+                                                                              !(Maybe
+                                                                                  Int)}
+                                            deriving (Eq, Read, Show, Data,
+                                                      Typeable, Generic)
 
 -- | Creates a value of 'DescribeReservedInstancesOfferings' with the minimum fields required to make a request.
 --
@@ -112,11 +153,11 @@ data DescribeReservedInstancesOfferings =
 --
 -- * 'drioAvailabilityZone' - The Availability Zone in which the Reserved Instance can be used.
 --
--- * 'drioOfferingType' - The Reserved Instance offering type. If you are using tools that predate the 2011-11-01 API version, you only have access to the @Medium Utilization@ Reserved Instance offering type.
+-- * 'drioOfferingType' - The Reserved Instance offering type. If you are using tools that predate the 2011-11-01 API version, you only have access to the @Medium Utilization@ Reserved Instance offering type. 
 --
 -- * 'drioReservedInstancesOfferingIds' - One or more Reserved Instances offering IDs.
 --
--- * 'drioInstanceTenancy' - The tenancy of the instances covered by the reservation. A Reserved Instance with a tenancy of @dedicated@ is applied to instances that run in a VPC on single-tenant hardware (i.e., Dedicated Instances). __Important:__ The @host@ value cannot be used with this parameter. Use the @default@ or @dedicated@ values only. Default: @default@
+-- * 'drioInstanceTenancy' - The tenancy of the instances covered by the reservation. A Reserved Instance with a tenancy of @dedicated@ is applied to instances that run in a VPC on single-tenant hardware (i.e., Dedicated Instances). __Important:__ The @host@ value cannot be used with this parameter. Use the @default@ or @dedicated@ values only. Default: @default@ 
 --
 -- * 'drioOfferingClass' - The offering class of the Reserved Instance. Can be @standard@ or @convertible@ .
 --
@@ -127,25 +168,24 @@ data DescribeReservedInstancesOfferings =
 -- * 'drioMaxResults' - The maximum number of results to return for the request in a single page. The remaining results of the initial request can be seen by sending another request with the returned @NextToken@ value. The maximum is 100. Default: 100
 describeReservedInstancesOfferings
     :: DescribeReservedInstancesOfferings
-describeReservedInstancesOfferings =
-  DescribeReservedInstancesOfferings'
-    { _drioMaxDuration = Nothing
-    , _drioProductDescription = Nothing
-    , _drioFilters = Nothing
-    , _drioIncludeMarketplace = Nothing
-    , _drioInstanceType = Nothing
-    , _drioNextToken = Nothing
-    , _drioMinDuration = Nothing
-    , _drioAvailabilityZone = Nothing
-    , _drioOfferingType = Nothing
-    , _drioReservedInstancesOfferingIds = Nothing
-    , _drioInstanceTenancy = Nothing
-    , _drioOfferingClass = Nothing
-    , _drioMaxInstanceCount = Nothing
-    , _drioDryRun = Nothing
-    , _drioMaxResults = Nothing
-    }
-
+describeReservedInstancesOfferings
+  = DescribeReservedInstancesOfferings'{_drioMaxDuration
+                                          = Nothing,
+                                        _drioProductDescription = Nothing,
+                                        _drioFilters = Nothing,
+                                        _drioIncludeMarketplace = Nothing,
+                                        _drioInstanceType = Nothing,
+                                        _drioNextToken = Nothing,
+                                        _drioMinDuration = Nothing,
+                                        _drioAvailabilityZone = Nothing,
+                                        _drioOfferingType = Nothing,
+                                        _drioReservedInstancesOfferingIds =
+                                          Nothing,
+                                        _drioInstanceTenancy = Nothing,
+                                        _drioOfferingClass = Nothing,
+                                        _drioMaxInstanceCount = Nothing,
+                                        _drioDryRun = Nothing,
+                                        _drioMaxResults = Nothing}
 
 -- | The maximum duration (in seconds) to filter when searching for offerings. Default: 94608000 (3 years)
 drioMaxDuration :: Lens' DescribeReservedInstancesOfferings (Maybe Integer)
@@ -179,7 +219,7 @@ drioMinDuration = lens _drioMinDuration (\ s a -> s{_drioMinDuration = a})
 drioAvailabilityZone :: Lens' DescribeReservedInstancesOfferings (Maybe Text)
 drioAvailabilityZone = lens _drioAvailabilityZone (\ s a -> s{_drioAvailabilityZone = a})
 
--- | The Reserved Instance offering type. If you are using tools that predate the 2011-11-01 API version, you only have access to the @Medium Utilization@ Reserved Instance offering type.
+-- | The Reserved Instance offering type. If you are using tools that predate the 2011-11-01 API version, you only have access to the @Medium Utilization@ Reserved Instance offering type. 
 drioOfferingType :: Lens' DescribeReservedInstancesOfferings (Maybe OfferingTypeValues)
 drioOfferingType = lens _drioOfferingType (\ s a -> s{_drioOfferingType = a})
 
@@ -187,7 +227,7 @@ drioOfferingType = lens _drioOfferingType (\ s a -> s{_drioOfferingType = a})
 drioReservedInstancesOfferingIds :: Lens' DescribeReservedInstancesOfferings [Text]
 drioReservedInstancesOfferingIds = lens _drioReservedInstancesOfferingIds (\ s a -> s{_drioReservedInstancesOfferingIds = a}) . _Default . _Coerce
 
--- | The tenancy of the instances covered by the reservation. A Reserved Instance with a tenancy of @dedicated@ is applied to instances that run in a VPC on single-tenant hardware (i.e., Dedicated Instances). __Important:__ The @host@ value cannot be used with this parameter. Use the @default@ or @dedicated@ values only. Default: @default@
+-- | The tenancy of the instances covered by the reservation. A Reserved Instance with a tenancy of @dedicated@ is applied to instances that run in a VPC on single-tenant hardware (i.e., Dedicated Instances). __Important:__ The @host@ value cannot be used with this parameter. Use the @default@ or @dedicated@ values only. Default: @default@ 
 drioInstanceTenancy :: Lens' DescribeReservedInstancesOfferings (Maybe Tenancy)
 drioInstanceTenancy = lens _drioInstanceTenancy (\ s a -> s{_drioInstanceTenancy = a})
 
@@ -275,14 +315,20 @@ instance ToQuery DescribeReservedInstancesOfferings
 --
 --
 -- /See:/ 'describeReservedInstancesOfferingsResponse' smart constructor.
-data DescribeReservedInstancesOfferingsResponse =
-  DescribeReservedInstancesOfferingsResponse'
-    { _driorsNextToken                  :: !(Maybe Text)
-    , _driorsReservedInstancesOfferings :: !(Maybe [ReservedInstancesOffering])
-    , _driorsResponseStatus             :: !Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data DescribeReservedInstancesOfferingsResponse = DescribeReservedInstancesOfferingsResponse'{_driorsNextToken
+                                                                                              ::
+                                                                                              !(Maybe
+                                                                                                  Text),
+                                                                                              _driorsReservedInstancesOfferings
+                                                                                              ::
+                                                                                              !(Maybe
+                                                                                                  [ReservedInstancesOffering]),
+                                                                                              _driorsResponseStatus
+                                                                                              ::
+                                                                                              !Int}
+                                                    deriving (Eq, Read, Show,
+                                                              Data, Typeable,
+                                                              Generic)
 
 -- | Creates a value of 'DescribeReservedInstancesOfferingsResponse' with the minimum fields required to make a request.
 --
@@ -296,13 +342,14 @@ data DescribeReservedInstancesOfferingsResponse =
 describeReservedInstancesOfferingsResponse
     :: Int -- ^ 'driorsResponseStatus'
     -> DescribeReservedInstancesOfferingsResponse
-describeReservedInstancesOfferingsResponse pResponseStatus_ =
-  DescribeReservedInstancesOfferingsResponse'
-    { _driorsNextToken = Nothing
-    , _driorsReservedInstancesOfferings = Nothing
-    , _driorsResponseStatus = pResponseStatus_
-    }
-
+describeReservedInstancesOfferingsResponse
+  pResponseStatus_
+  = DescribeReservedInstancesOfferingsResponse'{_driorsNextToken
+                                                  = Nothing,
+                                                _driorsReservedInstancesOfferings
+                                                  = Nothing,
+                                                _driorsResponseStatus =
+                                                  pResponseStatus_}
 
 -- | The token to use to retrieve the next page of results. This value is @null@ when there are no more results to return.
 driorsNextToken :: Lens' DescribeReservedInstancesOfferingsResponse (Maybe Text)

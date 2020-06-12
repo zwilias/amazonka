@@ -37,21 +37,18 @@ module Network.AWS.EC2.ModifyVPCAttribute
     ) where
 
 import Network.AWS.EC2.Types
-import Network.AWS.EC2.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 
 -- | /See:/ 'modifyVPCAttribute' smart constructor.
-data ModifyVPCAttribute =
-  ModifyVPCAttribute'
-    { _mvaEnableDNSHostnames :: !(Maybe AttributeBooleanValue)
-    , _mvaEnableDNSSupport   :: !(Maybe AttributeBooleanValue)
-    , _mvaVPCId              :: !Text
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data ModifyVPCAttribute = ModifyVPCAttribute'{_mvaEnableDNSHostnames
+                                              :: !(Maybe AttributeBooleanValue),
+                                              _mvaEnableDNSSupport ::
+                                              !(Maybe AttributeBooleanValue),
+                                              _mvaVPCId :: !Text}
+                            deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'ModifyVPCAttribute' with the minimum fields required to make a request.
 --
@@ -65,13 +62,10 @@ data ModifyVPCAttribute =
 modifyVPCAttribute
     :: Text -- ^ 'mvaVPCId'
     -> ModifyVPCAttribute
-modifyVPCAttribute pVPCId_ =
-  ModifyVPCAttribute'
-    { _mvaEnableDNSHostnames = Nothing
-    , _mvaEnableDNSSupport = Nothing
-    , _mvaVPCId = pVPCId_
-    }
-
+modifyVPCAttribute pVPCId_
+  = ModifyVPCAttribute'{_mvaEnableDNSHostnames =
+                          Nothing,
+                        _mvaEnableDNSSupport = Nothing, _mvaVPCId = pVPCId_}
 
 -- | Indicates whether the instances launched in the VPC get DNS hostnames. If enabled, instances in the VPC get DNS hostnames; otherwise, they do not. You cannot modify the DNS resolution and DNS hostnames attributes in the same request. Use separate requests for each attribute. You can only enable DNS hostnames if you've enabled DNS support.
 mvaEnableDNSHostnames :: Lens' ModifyVPCAttribute (Maybe AttributeBooleanValue)
@@ -111,16 +105,15 @@ instance ToQuery ModifyVPCAttribute where
                "VpcId" =: _mvaVPCId]
 
 -- | /See:/ 'modifyVPCAttributeResponse' smart constructor.
-data ModifyVPCAttributeResponse =
-  ModifyVPCAttributeResponse'
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data ModifyVPCAttributeResponse = ModifyVPCAttributeResponse'
+                                    deriving (Eq, Read, Show, Data, Typeable,
+                                              Generic)
 
 -- | Creates a value of 'ModifyVPCAttributeResponse' with the minimum fields required to make a request.
 --
 modifyVPCAttributeResponse
     :: ModifyVPCAttributeResponse
-modifyVPCAttributeResponse = ModifyVPCAttributeResponse'
-
+modifyVPCAttributeResponse
+  = ModifyVPCAttributeResponse'
 
 instance NFData ModifyVPCAttributeResponse where

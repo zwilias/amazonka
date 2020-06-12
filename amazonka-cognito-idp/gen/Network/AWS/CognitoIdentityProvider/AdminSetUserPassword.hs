@@ -18,10 +18,10 @@
 -- Stability   : auto-generated
 -- Portability : non-portable (GHC extensions)
 --
--- Sets the specified user's password in a user pool as an administrator. Works on any user.
+-- Sets the specified user's password in a user pool as an administrator. Works on any user. 
 --
 --
--- The password can be temporary or permanent. If it is temporary, the user status will be placed into the @FORCE_CHANGE_PASSWORD@ state. When the user next tries to sign in, the InitiateAuth/AdminInitiateAuth response will contain the @NEW_PASSWORD_REQUIRED@ challenge. If the user does not sign in before it expires, the user will not be able to sign in and their password will need to be reset by an administrator.
+-- The password can be temporary or permanent. If it is temporary, the user status will be placed into the @FORCE_CHANGE_PASSWORD@ state. When the user next tries to sign in, the InitiateAuth/AdminInitiateAuth response will contain the @NEW_PASSWORD_REQUIRED@ challenge. If the user does not sign in before it expires, the user will not be able to sign in and their password will need to be reset by an administrator. 
 --
 -- Once the user has set a new password, or the password is permanent, the user status will be set to @Confirmed@ .
 --
@@ -44,22 +44,20 @@ module Network.AWS.CognitoIdentityProvider.AdminSetUserPassword
     ) where
 
 import Network.AWS.CognitoIdentityProvider.Types
-import Network.AWS.CognitoIdentityProvider.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 
 -- | /See:/ 'adminSetUserPassword' smart constructor.
-data AdminSetUserPassword =
-  AdminSetUserPassword'
-    { _asupPermanent  :: !(Maybe Bool)
-    , _asupUserPoolId :: !Text
-    , _asupUsername   :: !(Sensitive Text)
-    , _asupPassword   :: !(Sensitive Text)
-    }
-  deriving (Eq, Show, Data, Typeable, Generic)
-
+data AdminSetUserPassword = AdminSetUserPassword'{_asupPermanent
+                                                  :: !(Maybe Bool),
+                                                  _asupUserPoolId :: !Text,
+                                                  _asupUsername ::
+                                                  !(Sensitive Text),
+                                                  _asupPassword ::
+                                                  !(Sensitive Text)}
+                              deriving (Eq, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'AdminSetUserPassword' with the minimum fields required to make a request.
 --
@@ -77,14 +75,12 @@ adminSetUserPassword
     -> Text -- ^ 'asupUsername'
     -> Text -- ^ 'asupPassword'
     -> AdminSetUserPassword
-adminSetUserPassword pUserPoolId_ pUsername_ pPassword_ =
-  AdminSetUserPassword'
-    { _asupPermanent = Nothing
-    , _asupUserPoolId = pUserPoolId_
-    , _asupUsername = _Sensitive # pUsername_
-    , _asupPassword = _Sensitive # pPassword_
-    }
-
+adminSetUserPassword pUserPoolId_ pUsername_
+  pPassword_
+  = AdminSetUserPassword'{_asupPermanent = Nothing,
+                          _asupUserPoolId = pUserPoolId_,
+                          _asupUsername = _Sensitive # pUsername_,
+                          _asupPassword = _Sensitive # pPassword_}
 
 -- | @True@ if the password is permanent, @False@ if it is temporary.
 asupPermanent :: Lens' AdminSetUserPassword (Maybe Bool)
@@ -142,12 +138,10 @@ instance ToQuery AdminSetUserPassword where
         toQuery = const mempty
 
 -- | /See:/ 'adminSetUserPasswordResponse' smart constructor.
-newtype AdminSetUserPasswordResponse =
-  AdminSetUserPasswordResponse'
-    { _asuprsResponseStatus :: Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+newtype AdminSetUserPasswordResponse = AdminSetUserPasswordResponse'{_asuprsResponseStatus
+                                                                     :: Int}
+                                         deriving (Eq, Read, Show, Data,
+                                                   Typeable, Generic)
 
 -- | Creates a value of 'AdminSetUserPasswordResponse' with the minimum fields required to make a request.
 --
@@ -157,9 +151,9 @@ newtype AdminSetUserPasswordResponse =
 adminSetUserPasswordResponse
     :: Int -- ^ 'asuprsResponseStatus'
     -> AdminSetUserPasswordResponse
-adminSetUserPasswordResponse pResponseStatus_ =
-  AdminSetUserPasswordResponse' {_asuprsResponseStatus = pResponseStatus_}
-
+adminSetUserPasswordResponse pResponseStatus_
+  = AdminSetUserPasswordResponse'{_asuprsResponseStatus
+                                    = pResponseStatus_}
 
 -- | -- | The response status code.
 asuprsResponseStatus :: Lens' AdminSetUserPasswordResponse Int

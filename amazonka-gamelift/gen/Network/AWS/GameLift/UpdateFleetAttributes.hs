@@ -23,47 +23,47 @@
 --
 -- Fleet-related operations include:
 --
---     * 'CreateFleet'
+--     * 'CreateFleet' 
 --
---     * 'ListFleets'
+--     * 'ListFleets' 
 --
---     * 'DeleteFleet'
+--     * 'DeleteFleet' 
 --
 --     * Describe fleets:
 --
---     * 'DescribeFleetAttributes'
+--     * 'DescribeFleetAttributes' 
 --
---     * 'DescribeFleetCapacity'
+--     * 'DescribeFleetCapacity' 
 --
---     * 'DescribeFleetPortSettings'
+--     * 'DescribeFleetPortSettings' 
 --
---     * 'DescribeFleetUtilization'
+--     * 'DescribeFleetUtilization' 
 --
---     * 'DescribeRuntimeConfiguration'
+--     * 'DescribeRuntimeConfiguration' 
 --
---     * 'DescribeEC2InstanceLimits'
+--     * 'DescribeEC2InstanceLimits' 
 --
---     * 'DescribeFleetEvents'
+--     * 'DescribeFleetEvents' 
 --
 --
 --
 --     * Update fleets:
 --
---     * 'UpdateFleetAttributes'
+--     * 'UpdateFleetAttributes' 
 --
---     * 'UpdateFleetCapacity'
+--     * 'UpdateFleetCapacity' 
 --
---     * 'UpdateFleetPortSettings'
+--     * 'UpdateFleetPortSettings' 
 --
---     * 'UpdateRuntimeConfiguration'
+--     * 'UpdateRuntimeConfiguration' 
 --
 --
 --
 --     * Manage fleet actions:
 --
---     * 'StartFleetActions'
+--     * 'StartFleetActions' 
 --
---     * 'StopFleetActions'
+--     * 'StopFleetActions' 
 --
 --
 --
@@ -91,7 +91,6 @@ module Network.AWS.GameLift.UpdateFleetAttributes
     ) where
 
 import Network.AWS.GameLift.Types
-import Network.AWS.GameLift.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.Request
@@ -102,17 +101,21 @@ import Network.AWS.Response
 --
 --
 -- /See:/ 'updateFleetAttributes' smart constructor.
-data UpdateFleetAttributes =
-  UpdateFleetAttributes'
-    { _ufaNewGameSessionProtectionPolicy :: !(Maybe ProtectionPolicy)
-    , _ufaName                           :: !(Maybe Text)
-    , _ufaMetricGroups                   :: !(Maybe [Text])
-    , _ufaDescription                    :: !(Maybe Text)
-    , _ufaResourceCreationLimitPolicy    :: !(Maybe ResourceCreationLimitPolicy)
-    , _ufaFleetId                        :: !Text
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data UpdateFleetAttributes = UpdateFleetAttributes'{_ufaNewGameSessionProtectionPolicy
+                                                    ::
+                                                    !(Maybe ProtectionPolicy),
+                                                    _ufaName :: !(Maybe Text),
+                                                    _ufaMetricGroups ::
+                                                    !(Maybe [Text]),
+                                                    _ufaDescription ::
+                                                    !(Maybe Text),
+                                                    _ufaResourceCreationLimitPolicy
+                                                    ::
+                                                    !(Maybe
+                                                        ResourceCreationLimitPolicy),
+                                                    _ufaFleetId :: !Text}
+                               deriving (Eq, Read, Show, Data, Typeable,
+                                         Generic)
 
 -- | Creates a value of 'UpdateFleetAttributes' with the minimum fields required to make a request.
 --
@@ -126,22 +129,19 @@ data UpdateFleetAttributes =
 --
 -- * 'ufaDescription' - Human-readable description of a fleet.
 --
--- * 'ufaResourceCreationLimitPolicy' - Policy that limits the number of game sessions an individual player can create over a span of time.
+-- * 'ufaResourceCreationLimitPolicy' - Policy that limits the number of game sessions an individual player can create over a span of time. 
 --
 -- * 'ufaFleetId' - Unique identifier for a fleet to update attribute metadata for.
 updateFleetAttributes
     :: Text -- ^ 'ufaFleetId'
     -> UpdateFleetAttributes
-updateFleetAttributes pFleetId_ =
-  UpdateFleetAttributes'
-    { _ufaNewGameSessionProtectionPolicy = Nothing
-    , _ufaName = Nothing
-    , _ufaMetricGroups = Nothing
-    , _ufaDescription = Nothing
-    , _ufaResourceCreationLimitPolicy = Nothing
-    , _ufaFleetId = pFleetId_
-    }
-
+updateFleetAttributes pFleetId_
+  = UpdateFleetAttributes'{_ufaNewGameSessionProtectionPolicy
+                             = Nothing,
+                           _ufaName = Nothing, _ufaMetricGroups = Nothing,
+                           _ufaDescription = Nothing,
+                           _ufaResourceCreationLimitPolicy = Nothing,
+                           _ufaFleetId = pFleetId_}
 
 -- | Game session protection policy to apply to all new instances created in this fleet. Instances that already exist are not affected. You can set protection for individual instances using 'UpdateGameSession' .     * __NoProtection__ -- The game session can be terminated during a scale-down event.     * __FullProtection__ -- If the game session is in an @ACTIVE@ status, it cannot be terminated during a scale-down event.
 ufaNewGameSessionProtectionPolicy :: Lens' UpdateFleetAttributes (Maybe ProtectionPolicy)
@@ -159,7 +159,7 @@ ufaMetricGroups = lens _ufaMetricGroups (\ s a -> s{_ufaMetricGroups = a}) . _De
 ufaDescription :: Lens' UpdateFleetAttributes (Maybe Text)
 ufaDescription = lens _ufaDescription (\ s a -> s{_ufaDescription = a})
 
--- | Policy that limits the number of game sessions an individual player can create over a span of time.
+-- | Policy that limits the number of game sessions an individual player can create over a span of time. 
 ufaResourceCreationLimitPolicy :: Lens' UpdateFleetAttributes (Maybe ResourceCreationLimitPolicy)
 ufaResourceCreationLimitPolicy = lens _ufaResourceCreationLimitPolicy (\ s a -> s{_ufaResourceCreationLimitPolicy = a})
 
@@ -214,13 +214,14 @@ instance ToQuery UpdateFleetAttributes where
 --
 --
 -- /See:/ 'updateFleetAttributesResponse' smart constructor.
-data UpdateFleetAttributesResponse =
-  UpdateFleetAttributesResponse'
-    { _ufarsFleetId        :: !(Maybe Text)
-    , _ufarsResponseStatus :: !Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data UpdateFleetAttributesResponse = UpdateFleetAttributesResponse'{_ufarsFleetId
+                                                                    ::
+                                                                    !(Maybe
+                                                                        Text),
+                                                                    _ufarsResponseStatus
+                                                                    :: !Int}
+                                       deriving (Eq, Read, Show, Data, Typeable,
+                                                 Generic)
 
 -- | Creates a value of 'UpdateFleetAttributesResponse' with the minimum fields required to make a request.
 --
@@ -232,10 +233,10 @@ data UpdateFleetAttributesResponse =
 updateFleetAttributesResponse
     :: Int -- ^ 'ufarsResponseStatus'
     -> UpdateFleetAttributesResponse
-updateFleetAttributesResponse pResponseStatus_ =
-  UpdateFleetAttributesResponse'
-    {_ufarsFleetId = Nothing, _ufarsResponseStatus = pResponseStatus_}
-
+updateFleetAttributesResponse pResponseStatus_
+  = UpdateFleetAttributesResponse'{_ufarsFleetId =
+                                     Nothing,
+                                   _ufarsResponseStatus = pResponseStatus_}
 
 -- | Unique identifier for a fleet that was updated.
 ufarsFleetId :: Lens' UpdateFleetAttributesResponse (Maybe Text)

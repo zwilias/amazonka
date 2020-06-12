@@ -41,22 +41,17 @@ module Network.AWS.AppSync.UpdateAPIKey
     ) where
 
 import Network.AWS.AppSync.Types
-import Network.AWS.AppSync.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 
 -- | /See:/ 'updateAPIKey' smart constructor.
-data UpdateAPIKey =
-  UpdateAPIKey'
-    { _uakExpires     :: !(Maybe Integer)
-    , _uakDescription :: !(Maybe Text)
-    , _uakApiId       :: !Text
-    , _uakId          :: !Text
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data UpdateAPIKey = UpdateAPIKey'{_uakExpires ::
+                                  !(Maybe Integer),
+                                  _uakDescription :: !(Maybe Text),
+                                  _uakApiId :: !Text, _uakId :: !Text}
+                      deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'UpdateAPIKey' with the minimum fields required to make a request.
 --
@@ -73,14 +68,10 @@ updateAPIKey
     :: Text -- ^ 'uakApiId'
     -> Text -- ^ 'uakId'
     -> UpdateAPIKey
-updateAPIKey pApiId_ pId_ =
-  UpdateAPIKey'
-    { _uakExpires = Nothing
-    , _uakDescription = Nothing
-    , _uakApiId = pApiId_
-    , _uakId = pId_
-    }
-
+updateAPIKey pApiId_ pId_
+  = UpdateAPIKey'{_uakExpires = Nothing,
+                  _uakDescription = Nothing, _uakApiId = pApiId_,
+                  _uakId = pId_}
 
 -- | The time from update time after which the API key expires. The date is represented as seconds since the epoch. For more information, see .
 uakExpires :: Lens' UpdateAPIKey (Maybe Integer)
@@ -135,13 +126,10 @@ instance ToQuery UpdateAPIKey where
         toQuery = const mempty
 
 -- | /See:/ 'updateAPIKeyResponse' smart constructor.
-data UpdateAPIKeyResponse =
-  UpdateAPIKeyResponse'
-    { _uakrsApiKey         :: !(Maybe APIKey)
-    , _uakrsResponseStatus :: !Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data UpdateAPIKeyResponse = UpdateAPIKeyResponse'{_uakrsApiKey
+                                                  :: !(Maybe APIKey),
+                                                  _uakrsResponseStatus :: !Int}
+                              deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'UpdateAPIKeyResponse' with the minimum fields required to make a request.
 --
@@ -153,10 +141,9 @@ data UpdateAPIKeyResponse =
 updateAPIKeyResponse
     :: Int -- ^ 'uakrsResponseStatus'
     -> UpdateAPIKeyResponse
-updateAPIKeyResponse pResponseStatus_ =
-  UpdateAPIKeyResponse'
-    {_uakrsApiKey = Nothing, _uakrsResponseStatus = pResponseStatus_}
-
+updateAPIKeyResponse pResponseStatus_
+  = UpdateAPIKeyResponse'{_uakrsApiKey = Nothing,
+                          _uakrsResponseStatus = pResponseStatus_}
 
 -- | The API key.
 uakrsApiKey :: Lens' UpdateAPIKeyResponse (Maybe APIKey)

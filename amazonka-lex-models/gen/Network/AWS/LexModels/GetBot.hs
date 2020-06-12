@@ -18,10 +18,10 @@
 -- Stability   : auto-generated
 -- Portability : non-portable (GHC extensions)
 --
--- Returns metadata information for a specific bot. You must provide the bot name and the bot version or alias.
+-- Returns metadata information for a specific bot. You must provide the bot name and the bot version or alias. 
 --
 --
--- This operation requires permissions for the @lex:GetBot@ action.
+-- This operation requires permissions for the @lex:GetBot@ action. 
 --
 module Network.AWS.LexModels.GetBot
     (
@@ -56,36 +56,31 @@ module Network.AWS.LexModels.GetBot
 
 import Network.AWS.Lens
 import Network.AWS.LexModels.Types
-import Network.AWS.LexModels.Types.Product
 import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 
 -- | /See:/ 'getBot' smart constructor.
-data GetBot =
-  GetBot'
-    { _gbName           :: !Text
-    , _gbVersionOrAlias :: !Text
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data GetBot = GetBot'{_gbName :: !Text,
+                      _gbVersionOrAlias :: !Text}
+                deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'GetBot' with the minimum fields required to make a request.
 --
 -- Use one of the following lenses to modify other fields as desired:
 --
--- * 'gbName' - The name of the bot. The name is case sensitive.
+-- * 'gbName' - The name of the bot. The name is case sensitive. 
 --
 -- * 'gbVersionOrAlias' - The version or alias of the bot.
 getBot
     :: Text -- ^ 'gbName'
     -> Text -- ^ 'gbVersionOrAlias'
     -> GetBot
-getBot pName_ pVersionOrAlias_ =
-  GetBot' {_gbName = pName_, _gbVersionOrAlias = pVersionOrAlias_}
+getBot pName_ pVersionOrAlias_
+  = GetBot'{_gbName = pName_,
+            _gbVersionOrAlias = pVersionOrAlias_}
 
-
--- | The name of the bot. The name is case sensitive.
+-- | The name of the bot. The name is case sensitive. 
 gbName :: Lens' GetBot Text
 gbName = lens _gbName (\ s a -> s{_gbName = a})
 
@@ -137,27 +132,26 @@ instance ToQuery GetBot where
         toQuery = const mempty
 
 -- | /See:/ 'getBotResponse' smart constructor.
-data GetBotResponse =
-  GetBotResponse'
-    { _gbrsFailureReason           :: !(Maybe Text)
-    , _gbrsStatus                  :: !(Maybe LexStatus)
-    , _gbrsAbortStatement          :: !(Maybe Statement)
-    , _gbrsIntents                 :: !(Maybe [Intent])
-    , _gbrsChecksum                :: !(Maybe Text)
-    , _gbrsLocale                  :: !(Maybe Locale)
-    , _gbrsCreatedDate             :: !(Maybe POSIX)
-    , _gbrsName                    :: !(Maybe Text)
-    , _gbrsVersion                 :: !(Maybe Text)
-    , _gbrsIdleSessionTTLInSeconds :: !(Maybe Nat)
-    , _gbrsClarificationPrompt     :: !(Maybe Prompt)
-    , _gbrsVoiceId                 :: !(Maybe Text)
-    , _gbrsLastUpdatedDate         :: !(Maybe POSIX)
-    , _gbrsChildDirected           :: !(Maybe Bool)
-    , _gbrsDescription             :: !(Maybe Text)
-    , _gbrsResponseStatus          :: !Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data GetBotResponse = GetBotResponse'{_gbrsFailureReason
+                                      :: !(Maybe Text),
+                                      _gbrsStatus :: !(Maybe LexStatus),
+                                      _gbrsAbortStatement :: !(Maybe Statement),
+                                      _gbrsIntents :: !(Maybe [Intent]),
+                                      _gbrsChecksum :: !(Maybe Text),
+                                      _gbrsLocale :: !(Maybe Locale),
+                                      _gbrsCreatedDate :: !(Maybe POSIX),
+                                      _gbrsName :: !(Maybe Text),
+                                      _gbrsVersion :: !(Maybe Text),
+                                      _gbrsIdleSessionTTLInSeconds ::
+                                      !(Maybe Nat),
+                                      _gbrsClarificationPrompt ::
+                                      !(Maybe Prompt),
+                                      _gbrsVoiceId :: !(Maybe Text),
+                                      _gbrsLastUpdatedDate :: !(Maybe POSIX),
+                                      _gbrsChildDirected :: !(Maybe Bool),
+                                      _gbrsDescription :: !(Maybe Text),
+                                      _gbrsResponseStatus :: !Int}
+                        deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'GetBotResponse' with the minimum fields required to make a request.
 --
@@ -173,7 +167,7 @@ data GetBotResponse =
 --
 -- * 'gbrsChecksum' - Checksum of the bot used to identify a specific revision of the bot's @> LATEST@ version.
 --
--- * 'gbrsLocale' - The target locale for the bot.
+-- * 'gbrsLocale' - The target locale for the bot. 
 --
 -- * 'gbrsCreatedDate' - The date that the bot was created.
 --
@@ -183,13 +177,13 @@ data GetBotResponse =
 --
 -- * 'gbrsIdleSessionTTLInSeconds' - The maximum time in seconds that Amazon Lex retains the data gathered in a conversation. For more information, see 'PutBot' .
 --
--- * 'gbrsClarificationPrompt' - The message Amazon Lex uses when it doesn't understand the user's request. For more information, see 'PutBot' .
+-- * 'gbrsClarificationPrompt' - The message Amazon Lex uses when it doesn't understand the user's request. For more information, see 'PutBot' . 
 --
 -- * 'gbrsVoiceId' - The Amazon Polly voice ID that Amazon Lex uses for voice interaction with the user. For more information, see 'PutBot' .
 --
--- * 'gbrsLastUpdatedDate' - The date that the bot was updated. When you create a resource, the creation date and last updated date are the same.
+-- * 'gbrsLastUpdatedDate' - The date that the bot was updated. When you create a resource, the creation date and last updated date are the same. 
 --
--- * 'gbrsChildDirected' - For each Amazon Lex bot created with the Amazon Lex Model Building Service, you must specify whether your use of Amazon Lex is related to a website, program, or other application that is directed or targeted, in whole or in part, to children under age 13 and subject to the Children's Online Privacy Protection Act (COPPA) by specifying @true@ or @false@ in the @childDirected@ field. By specifying @true@ in the @childDirected@ field, you confirm that your use of Amazon Lex __is__ related to a website, program, or other application that is directed or targeted, in whole or in part, to children under age 13 and subject to COPPA. By specifying @false@ in the @childDirected@ field, you confirm that your use of Amazon Lex __is not__ related to a website, program, or other application that is directed or targeted, in whole or in part, to children under age 13 and subject to COPPA. You may not specify a default value for the @childDirected@ field that does not accurately reflect whether your use of Amazon Lex is related to a website, program, or other application that is directed or targeted, in whole or in part, to children under age 13 and subject to COPPA. If your use of Amazon Lex relates to a website, program, or other application that is directed in whole or in part, to children under age 13, you must obtain any required verifiable parental consent under COPPA. For information regarding the use of Amazon Lex in connection with websites, programs, or other applications that are directed or targeted, in whole or in part, to children under age 13, see the <https://aws.amazon.com/lex/faqs#data-security Amazon Lex FAQ.>
+-- * 'gbrsChildDirected' - For each Amazon Lex bot created with the Amazon Lex Model Building Service, you must specify whether your use of Amazon Lex is related to a website, program, or other application that is directed or targeted, in whole or in part, to children under age 13 and subject to the Children's Online Privacy Protection Act (COPPA) by specifying @true@ or @false@ in the @childDirected@ field. By specifying @true@ in the @childDirected@ field, you confirm that your use of Amazon Lex __is__ related to a website, program, or other application that is directed or targeted, in whole or in part, to children under age 13 and subject to COPPA. By specifying @false@ in the @childDirected@ field, you confirm that your use of Amazon Lex __is not__ related to a website, program, or other application that is directed or targeted, in whole or in part, to children under age 13 and subject to COPPA. You may not specify a default value for the @childDirected@ field that does not accurately reflect whether your use of Amazon Lex is related to a website, program, or other application that is directed or targeted, in whole or in part, to children under age 13 and subject to COPPA. If your use of Amazon Lex relates to a website, program, or other application that is directed in whole or in part, to children under age 13, you must obtain any required verifiable parental consent under COPPA. For information regarding the use of Amazon Lex in connection with websites, programs, or other applications that are directed or targeted, in whole or in part, to children under age 13, see the <https://aws.amazon.com/lex/faqs#data-security Amazon Lex FAQ.> 
 --
 -- * 'gbrsDescription' - A description of the bot.
 --
@@ -197,26 +191,19 @@ data GetBotResponse =
 getBotResponse
     :: Int -- ^ 'gbrsResponseStatus'
     -> GetBotResponse
-getBotResponse pResponseStatus_ =
-  GetBotResponse'
-    { _gbrsFailureReason = Nothing
-    , _gbrsStatus = Nothing
-    , _gbrsAbortStatement = Nothing
-    , _gbrsIntents = Nothing
-    , _gbrsChecksum = Nothing
-    , _gbrsLocale = Nothing
-    , _gbrsCreatedDate = Nothing
-    , _gbrsName = Nothing
-    , _gbrsVersion = Nothing
-    , _gbrsIdleSessionTTLInSeconds = Nothing
-    , _gbrsClarificationPrompt = Nothing
-    , _gbrsVoiceId = Nothing
-    , _gbrsLastUpdatedDate = Nothing
-    , _gbrsChildDirected = Nothing
-    , _gbrsDescription = Nothing
-    , _gbrsResponseStatus = pResponseStatus_
-    }
-
+getBotResponse pResponseStatus_
+  = GetBotResponse'{_gbrsFailureReason = Nothing,
+                    _gbrsStatus = Nothing, _gbrsAbortStatement = Nothing,
+                    _gbrsIntents = Nothing, _gbrsChecksum = Nothing,
+                    _gbrsLocale = Nothing, _gbrsCreatedDate = Nothing,
+                    _gbrsName = Nothing, _gbrsVersion = Nothing,
+                    _gbrsIdleSessionTTLInSeconds = Nothing,
+                    _gbrsClarificationPrompt = Nothing,
+                    _gbrsVoiceId = Nothing,
+                    _gbrsLastUpdatedDate = Nothing,
+                    _gbrsChildDirected = Nothing,
+                    _gbrsDescription = Nothing,
+                    _gbrsResponseStatus = pResponseStatus_}
 
 -- | If @status@ is @FAILED@ , Amazon Lex explains why it failed to build the bot.
 gbrsFailureReason :: Lens' GetBotResponse (Maybe Text)
@@ -238,7 +225,7 @@ gbrsIntents = lens _gbrsIntents (\ s a -> s{_gbrsIntents = a}) . _Default . _Coe
 gbrsChecksum :: Lens' GetBotResponse (Maybe Text)
 gbrsChecksum = lens _gbrsChecksum (\ s a -> s{_gbrsChecksum = a})
 
--- | The target locale for the bot.
+-- | The target locale for the bot. 
 gbrsLocale :: Lens' GetBotResponse (Maybe Locale)
 gbrsLocale = lens _gbrsLocale (\ s a -> s{_gbrsLocale = a})
 
@@ -258,7 +245,7 @@ gbrsVersion = lens _gbrsVersion (\ s a -> s{_gbrsVersion = a})
 gbrsIdleSessionTTLInSeconds :: Lens' GetBotResponse (Maybe Natural)
 gbrsIdleSessionTTLInSeconds = lens _gbrsIdleSessionTTLInSeconds (\ s a -> s{_gbrsIdleSessionTTLInSeconds = a}) . mapping _Nat
 
--- | The message Amazon Lex uses when it doesn't understand the user's request. For more information, see 'PutBot' .
+-- | The message Amazon Lex uses when it doesn't understand the user's request. For more information, see 'PutBot' . 
 gbrsClarificationPrompt :: Lens' GetBotResponse (Maybe Prompt)
 gbrsClarificationPrompt = lens _gbrsClarificationPrompt (\ s a -> s{_gbrsClarificationPrompt = a})
 
@@ -266,11 +253,11 @@ gbrsClarificationPrompt = lens _gbrsClarificationPrompt (\ s a -> s{_gbrsClarifi
 gbrsVoiceId :: Lens' GetBotResponse (Maybe Text)
 gbrsVoiceId = lens _gbrsVoiceId (\ s a -> s{_gbrsVoiceId = a})
 
--- | The date that the bot was updated. When you create a resource, the creation date and last updated date are the same.
+-- | The date that the bot was updated. When you create a resource, the creation date and last updated date are the same. 
 gbrsLastUpdatedDate :: Lens' GetBotResponse (Maybe UTCTime)
 gbrsLastUpdatedDate = lens _gbrsLastUpdatedDate (\ s a -> s{_gbrsLastUpdatedDate = a}) . mapping _Time
 
--- | For each Amazon Lex bot created with the Amazon Lex Model Building Service, you must specify whether your use of Amazon Lex is related to a website, program, or other application that is directed or targeted, in whole or in part, to children under age 13 and subject to the Children's Online Privacy Protection Act (COPPA) by specifying @true@ or @false@ in the @childDirected@ field. By specifying @true@ in the @childDirected@ field, you confirm that your use of Amazon Lex __is__ related to a website, program, or other application that is directed or targeted, in whole or in part, to children under age 13 and subject to COPPA. By specifying @false@ in the @childDirected@ field, you confirm that your use of Amazon Lex __is not__ related to a website, program, or other application that is directed or targeted, in whole or in part, to children under age 13 and subject to COPPA. You may not specify a default value for the @childDirected@ field that does not accurately reflect whether your use of Amazon Lex is related to a website, program, or other application that is directed or targeted, in whole or in part, to children under age 13 and subject to COPPA. If your use of Amazon Lex relates to a website, program, or other application that is directed in whole or in part, to children under age 13, you must obtain any required verifiable parental consent under COPPA. For information regarding the use of Amazon Lex in connection with websites, programs, or other applications that are directed or targeted, in whole or in part, to children under age 13, see the <https://aws.amazon.com/lex/faqs#data-security Amazon Lex FAQ.>
+-- | For each Amazon Lex bot created with the Amazon Lex Model Building Service, you must specify whether your use of Amazon Lex is related to a website, program, or other application that is directed or targeted, in whole or in part, to children under age 13 and subject to the Children's Online Privacy Protection Act (COPPA) by specifying @true@ or @false@ in the @childDirected@ field. By specifying @true@ in the @childDirected@ field, you confirm that your use of Amazon Lex __is__ related to a website, program, or other application that is directed or targeted, in whole or in part, to children under age 13 and subject to COPPA. By specifying @false@ in the @childDirected@ field, you confirm that your use of Amazon Lex __is not__ related to a website, program, or other application that is directed or targeted, in whole or in part, to children under age 13 and subject to COPPA. You may not specify a default value for the @childDirected@ field that does not accurately reflect whether your use of Amazon Lex is related to a website, program, or other application that is directed or targeted, in whole or in part, to children under age 13 and subject to COPPA. If your use of Amazon Lex relates to a website, program, or other application that is directed in whole or in part, to children under age 13, you must obtain any required verifiable parental consent under COPPA. For information regarding the use of Amazon Lex in connection with websites, programs, or other applications that are directed or targeted, in whole or in part, to children under age 13, see the <https://aws.amazon.com/lex/faqs#data-security Amazon Lex FAQ.> 
 gbrsChildDirected :: Lens' GetBotResponse (Maybe Bool)
 gbrsChildDirected = lens _gbrsChildDirected (\ s a -> s{_gbrsChildDirected = a})
 

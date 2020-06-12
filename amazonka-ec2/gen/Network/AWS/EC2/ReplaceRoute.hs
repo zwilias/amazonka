@@ -49,31 +49,28 @@ module Network.AWS.EC2.ReplaceRoute
     ) where
 
 import Network.AWS.EC2.Types
-import Network.AWS.EC2.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 
 -- | /See:/ 'replaceRoute' smart constructor.
-data ReplaceRoute =
-  ReplaceRoute'
-    { _rrVPCPeeringConnectionId      :: !(Maybe Text)
-    , _rrInstanceId                  :: !(Maybe Text)
-    , _rrEgressOnlyInternetGatewayId :: !(Maybe Text)
-    , _rrDestinationIPv6CidrBlock    :: !(Maybe Text)
-    , _rrLocalGatewayId              :: !(Maybe Text)
-    , _rrNatGatewayId                :: !(Maybe Text)
-    , _rrNetworkInterfaceId          :: !(Maybe Text)
-    , _rrLocalTarget                 :: !(Maybe Bool)
-    , _rrTransitGatewayId            :: !(Maybe Text)
-    , _rrGatewayId                   :: !(Maybe Text)
-    , _rrDryRun                      :: !(Maybe Bool)
-    , _rrDestinationCidrBlock        :: !(Maybe Text)
-    , _rrRouteTableId                :: !Text
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data ReplaceRoute = ReplaceRoute'{_rrVPCPeeringConnectionId
+                                  :: !(Maybe Text),
+                                  _rrInstanceId :: !(Maybe Text),
+                                  _rrEgressOnlyInternetGatewayId ::
+                                  !(Maybe Text),
+                                  _rrDestinationIPv6CidrBlock :: !(Maybe Text),
+                                  _rrLocalGatewayId :: !(Maybe Text),
+                                  _rrNatGatewayId :: !(Maybe Text),
+                                  _rrNetworkInterfaceId :: !(Maybe Text),
+                                  _rrLocalTarget :: !(Maybe Bool),
+                                  _rrTransitGatewayId :: !(Maybe Text),
+                                  _rrGatewayId :: !(Maybe Text),
+                                  _rrDryRun :: !(Maybe Bool),
+                                  _rrDestinationCidrBlock :: !(Maybe Text),
+                                  _rrRouteTableId :: !Text}
+                      deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'ReplaceRoute' with the minimum fields required to make a request.
 --
@@ -107,23 +104,19 @@ data ReplaceRoute =
 replaceRoute
     :: Text -- ^ 'rrRouteTableId'
     -> ReplaceRoute
-replaceRoute pRouteTableId_ =
-  ReplaceRoute'
-    { _rrVPCPeeringConnectionId = Nothing
-    , _rrInstanceId = Nothing
-    , _rrEgressOnlyInternetGatewayId = Nothing
-    , _rrDestinationIPv6CidrBlock = Nothing
-    , _rrLocalGatewayId = Nothing
-    , _rrNatGatewayId = Nothing
-    , _rrNetworkInterfaceId = Nothing
-    , _rrLocalTarget = Nothing
-    , _rrTransitGatewayId = Nothing
-    , _rrGatewayId = Nothing
-    , _rrDryRun = Nothing
-    , _rrDestinationCidrBlock = Nothing
-    , _rrRouteTableId = pRouteTableId_
-    }
-
+replaceRoute pRouteTableId_
+  = ReplaceRoute'{_rrVPCPeeringConnectionId = Nothing,
+                  _rrInstanceId = Nothing,
+                  _rrEgressOnlyInternetGatewayId = Nothing,
+                  _rrDestinationIPv6CidrBlock = Nothing,
+                  _rrLocalGatewayId = Nothing,
+                  _rrNatGatewayId = Nothing,
+                  _rrNetworkInterfaceId = Nothing,
+                  _rrLocalTarget = Nothing,
+                  _rrTransitGatewayId = Nothing,
+                  _rrGatewayId = Nothing, _rrDryRun = Nothing,
+                  _rrDestinationCidrBlock = Nothing,
+                  _rrRouteTableId = pRouteTableId_}
 
 -- | The ID of a VPC peering connection.
 rrVPCPeeringConnectionId :: Lens' ReplaceRoute (Maybe Text)
@@ -214,16 +207,13 @@ instance ToQuery ReplaceRoute where
                "RouteTableId" =: _rrRouteTableId]
 
 -- | /See:/ 'replaceRouteResponse' smart constructor.
-data ReplaceRouteResponse =
-  ReplaceRouteResponse'
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data ReplaceRouteResponse = ReplaceRouteResponse'
+                              deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'ReplaceRouteResponse' with the minimum fields required to make a request.
 --
 replaceRouteResponse
     :: ReplaceRouteResponse
 replaceRouteResponse = ReplaceRouteResponse'
-
 
 instance NFData ReplaceRouteResponse where

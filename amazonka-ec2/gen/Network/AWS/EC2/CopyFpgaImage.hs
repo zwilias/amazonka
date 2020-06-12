@@ -43,24 +43,20 @@ module Network.AWS.EC2.CopyFpgaImage
     ) where
 
 import Network.AWS.EC2.Types
-import Network.AWS.EC2.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 
 -- | /See:/ 'copyFpgaImage' smart constructor.
-data CopyFpgaImage =
-  CopyFpgaImage'
-    { _cfiClientToken       :: !(Maybe Text)
-    , _cfiName              :: !(Maybe Text)
-    , _cfiDescription       :: !(Maybe Text)
-    , _cfiDryRun            :: !(Maybe Bool)
-    , _cfiSourceFpgaImageId :: !Text
-    , _cfiSourceRegion      :: !Text
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data CopyFpgaImage = CopyFpgaImage'{_cfiClientToken
+                                    :: !(Maybe Text),
+                                    _cfiName :: !(Maybe Text),
+                                    _cfiDescription :: !(Maybe Text),
+                                    _cfiDryRun :: !(Maybe Bool),
+                                    _cfiSourceFpgaImageId :: !Text,
+                                    _cfiSourceRegion :: !Text}
+                       deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'CopyFpgaImage' with the minimum fields required to make a request.
 --
@@ -81,16 +77,12 @@ copyFpgaImage
     :: Text -- ^ 'cfiSourceFpgaImageId'
     -> Text -- ^ 'cfiSourceRegion'
     -> CopyFpgaImage
-copyFpgaImage pSourceFpgaImageId_ pSourceRegion_ =
-  CopyFpgaImage'
-    { _cfiClientToken = Nothing
-    , _cfiName = Nothing
-    , _cfiDescription = Nothing
-    , _cfiDryRun = Nothing
-    , _cfiSourceFpgaImageId = pSourceFpgaImageId_
-    , _cfiSourceRegion = pSourceRegion_
-    }
-
+copyFpgaImage pSourceFpgaImageId_ pSourceRegion_
+  = CopyFpgaImage'{_cfiClientToken = Nothing,
+                   _cfiName = Nothing, _cfiDescription = Nothing,
+                   _cfiDryRun = Nothing,
+                   _cfiSourceFpgaImageId = pSourceFpgaImageId_,
+                   _cfiSourceRegion = pSourceRegion_}
 
 -- | Unique, case-sensitive identifier that you provide to ensure the idempotency of the request. For more information, see <https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/Run_Instance_Idempotency.html Ensuring Idempotency> .
 cfiClientToken :: Lens' CopyFpgaImage (Maybe Text)
@@ -147,13 +139,12 @@ instance ToQuery CopyFpgaImage where
                "SourceRegion" =: _cfiSourceRegion]
 
 -- | /See:/ 'copyFpgaImageResponse' smart constructor.
-data CopyFpgaImageResponse =
-  CopyFpgaImageResponse'
-    { _coprsFpgaImageId    :: !(Maybe Text)
-    , _coprsResponseStatus :: !Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data CopyFpgaImageResponse = CopyFpgaImageResponse'{_coprsFpgaImageId
+                                                    :: !(Maybe Text),
+                                                    _coprsResponseStatus ::
+                                                    !Int}
+                               deriving (Eq, Read, Show, Data, Typeable,
+                                         Generic)
 
 -- | Creates a value of 'CopyFpgaImageResponse' with the minimum fields required to make a request.
 --
@@ -165,10 +156,9 @@ data CopyFpgaImageResponse =
 copyFpgaImageResponse
     :: Int -- ^ 'coprsResponseStatus'
     -> CopyFpgaImageResponse
-copyFpgaImageResponse pResponseStatus_ =
-  CopyFpgaImageResponse'
-    {_coprsFpgaImageId = Nothing, _coprsResponseStatus = pResponseStatus_}
-
+copyFpgaImageResponse pResponseStatus_
+  = CopyFpgaImageResponse'{_coprsFpgaImageId = Nothing,
+                           _coprsResponseStatus = pResponseStatus_}
 
 -- | The ID of the new AFI.
 coprsFpgaImageId :: Lens' CopyFpgaImageResponse (Maybe Text)

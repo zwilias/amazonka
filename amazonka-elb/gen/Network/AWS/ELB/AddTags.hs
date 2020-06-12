@@ -42,7 +42,6 @@ module Network.AWS.ELB.AddTags
     ) where
 
 import Network.AWS.ELB.Types
-import Network.AWS.ELB.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.Request
@@ -53,13 +52,10 @@ import Network.AWS.Response
 --
 --
 -- /See:/ 'addTags' smart constructor.
-data AddTags =
-  AddTags'
-    { _atLoadBalancerNames :: ![Text]
-    , _atTags              :: !(List1 Tag)
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data AddTags = AddTags'{_atLoadBalancerNames ::
+                        ![Text],
+                        _atTags :: !(List1 Tag)}
+                 deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'AddTags' with the minimum fields required to make a request.
 --
@@ -71,9 +67,9 @@ data AddTags =
 addTags
     :: NonEmpty Tag -- ^ 'atTags'
     -> AddTags
-addTags pTags_ =
-  AddTags' {_atLoadBalancerNames = mempty, _atTags = _List1 # pTags_}
-
+addTags pTags_
+  = AddTags'{_atLoadBalancerNames = mempty,
+             _atTags = _List1 # pTags_}
 
 -- | The name of the load balancer. You can specify one load balancer only.
 atLoadBalancerNames :: Lens' AddTags [Text]
@@ -114,12 +110,9 @@ instance ToQuery AddTags where
 --
 --
 -- /See:/ 'addTagsResponse' smart constructor.
-newtype AddTagsResponse =
-  AddTagsResponse'
-    { _atrsResponseStatus :: Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+newtype AddTagsResponse = AddTagsResponse'{_atrsResponseStatus
+                                           :: Int}
+                            deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'AddTagsResponse' with the minimum fields required to make a request.
 --
@@ -129,9 +122,9 @@ newtype AddTagsResponse =
 addTagsResponse
     :: Int -- ^ 'atrsResponseStatus'
     -> AddTagsResponse
-addTagsResponse pResponseStatus_ =
-  AddTagsResponse' {_atrsResponseStatus = pResponseStatus_}
-
+addTagsResponse pResponseStatus_
+  = AddTagsResponse'{_atrsResponseStatus =
+                       pResponseStatus_}
 
 -- | -- | The response status code.
 atrsResponseStatus :: Lens' AddTagsResponse Int

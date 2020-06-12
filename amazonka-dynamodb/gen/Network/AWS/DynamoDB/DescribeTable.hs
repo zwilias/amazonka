@@ -38,7 +38,6 @@ module Network.AWS.DynamoDB.DescribeTable
     ) where
 
 import Network.AWS.DynamoDB.Types
-import Network.AWS.DynamoDB.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.Request
@@ -49,12 +48,9 @@ import Network.AWS.Response
 --
 --
 -- /See:/ 'describeTable' smart constructor.
-newtype DescribeTable =
-  DescribeTable'
-    { _desTableName :: Text
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+newtype DescribeTable = DescribeTable'{_desTableName
+                                       :: Text}
+                          deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'DescribeTable' with the minimum fields required to make a request.
 --
@@ -64,8 +60,8 @@ newtype DescribeTable =
 describeTable
     :: Text -- ^ 'desTableName'
     -> DescribeTable
-describeTable pTableName_ = DescribeTable' {_desTableName = pTableName_}
-
+describeTable pTableName_
+  = DescribeTable'{_desTableName = pTableName_}
 
 -- | The name of the table to describe.
 desTableName :: Lens' DescribeTable Text
@@ -109,13 +105,12 @@ instance ToQuery DescribeTable where
 --
 --
 -- /See:/ 'describeTableResponse' smart constructor.
-data DescribeTableResponse =
-  DescribeTableResponse'
-    { _drsTable          :: !(Maybe TableDescription)
-    , _drsResponseStatus :: !Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data DescribeTableResponse = DescribeTableResponse'{_drsTable
+                                                    ::
+                                                    !(Maybe TableDescription),
+                                                    _drsResponseStatus :: !Int}
+                               deriving (Eq, Read, Show, Data, Typeable,
+                                         Generic)
 
 -- | Creates a value of 'DescribeTableResponse' with the minimum fields required to make a request.
 --
@@ -127,10 +122,9 @@ data DescribeTableResponse =
 describeTableResponse
     :: Int -- ^ 'drsResponseStatus'
     -> DescribeTableResponse
-describeTableResponse pResponseStatus_ =
-  DescribeTableResponse'
-    {_drsTable = Nothing, _drsResponseStatus = pResponseStatus_}
-
+describeTableResponse pResponseStatus_
+  = DescribeTableResponse'{_drsTable = Nothing,
+                           _drsResponseStatus = pResponseStatus_}
 
 -- | The properties of the table.
 drsTable :: Lens' DescribeTableResponse (Maybe TableDescription)

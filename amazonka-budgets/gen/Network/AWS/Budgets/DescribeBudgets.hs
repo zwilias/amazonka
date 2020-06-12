@@ -21,7 +21,7 @@
 -- Lists the budgets that are associated with an account.
 --
 --
--- /Important:/ The Request Syntax section shows the @BudgetLimit@ syntax. For @PlannedBudgetLimits@ , see the <https://docs.aws.amazon.com/aws-cost-management/latest/APIReference/API_budgets_DescribeBudgets.html#API_DescribeBudgets_Examples Examples> section.
+-- /Important:/ The Request Syntax section shows the @BudgetLimit@ syntax. For @PlannedBudgetLimits@ , see the <https://docs.aws.amazon.com/aws-cost-management/latest/APIReference/API_budgets_DescribeBudgets.html#API_DescribeBudgets_Examples Examples> section. 
 --
 --
 -- This operation returns paginated results.
@@ -45,26 +45,22 @@ module Network.AWS.Budgets.DescribeBudgets
     ) where
 
 import Network.AWS.Budgets.Types
-import Network.AWS.Budgets.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Pager
 import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 
--- | Request of DescribeBudgets
+-- | Request of DescribeBudgets 
 --
 --
 --
 -- /See:/ 'describeBudgets' smart constructor.
-data DescribeBudgets =
-  DescribeBudgets'
-    { _dbNextToken  :: !(Maybe Text)
-    , _dbMaxResults :: !(Maybe Nat)
-    , _dbAccountId  :: !Text
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data DescribeBudgets = DescribeBudgets'{_dbNextToken
+                                        :: !(Maybe Text),
+                                        _dbMaxResults :: !(Maybe Nat),
+                                        _dbAccountId :: !Text}
+                         deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'DescribeBudgets' with the minimum fields required to make a request.
 --
@@ -78,13 +74,9 @@ data DescribeBudgets =
 describeBudgets
     :: Text -- ^ 'dbAccountId'
     -> DescribeBudgets
-describeBudgets pAccountId_ =
-  DescribeBudgets'
-    { _dbNextToken = Nothing
-    , _dbMaxResults = Nothing
-    , _dbAccountId = pAccountId_
-    }
-
+describeBudgets pAccountId_
+  = DescribeBudgets'{_dbNextToken = Nothing,
+                     _dbMaxResults = Nothing, _dbAccountId = pAccountId_}
 
 -- | The pagination token that you include in your request to indicate the next set of results that you want to retrieve.
 dbNextToken :: Lens' DescribeBudgets (Maybe Text)
@@ -143,19 +135,19 @@ instance ToPath DescribeBudgets where
 instance ToQuery DescribeBudgets where
         toQuery = const mempty
 
--- | Response of DescribeBudgets
+-- | Response of DescribeBudgets 
 --
 --
 --
 -- /See:/ 'describeBudgetsResponse' smart constructor.
-data DescribeBudgetsResponse =
-  DescribeBudgetsResponse'
-    { _dbrsNextToken      :: !(Maybe Text)
-    , _dbrsBudgets        :: !(Maybe [Budget])
-    , _dbrsResponseStatus :: !Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data DescribeBudgetsResponse = DescribeBudgetsResponse'{_dbrsNextToken
+                                                        :: !(Maybe Text),
+                                                        _dbrsBudgets ::
+                                                        !(Maybe [Budget]),
+                                                        _dbrsResponseStatus ::
+                                                        !Int}
+                                 deriving (Eq, Read, Show, Data, Typeable,
+                                           Generic)
 
 -- | Creates a value of 'DescribeBudgetsResponse' with the minimum fields required to make a request.
 --
@@ -169,13 +161,10 @@ data DescribeBudgetsResponse =
 describeBudgetsResponse
     :: Int -- ^ 'dbrsResponseStatus'
     -> DescribeBudgetsResponse
-describeBudgetsResponse pResponseStatus_ =
-  DescribeBudgetsResponse'
-    { _dbrsNextToken = Nothing
-    , _dbrsBudgets = Nothing
-    , _dbrsResponseStatus = pResponseStatus_
-    }
-
+describeBudgetsResponse pResponseStatus_
+  = DescribeBudgetsResponse'{_dbrsNextToken = Nothing,
+                             _dbrsBudgets = Nothing,
+                             _dbrsResponseStatus = pResponseStatus_}
 
 -- | The pagination token in the service response that indicates the next set of results that you can retrieve.
 dbrsNextToken :: Lens' DescribeBudgetsResponse (Maybe Text)

@@ -11,7 +11,7 @@
 -- Stability   : auto-generated
 -- Portability : non-portable (GHC extensions)
 --
--- __AWS Config__
+-- __AWS Config__ 
 --
 -- AWS Config provides a way to keep track of the configurations of all the AWS resources associated with your AWS account. You can use AWS Config to get the current and historical configurations of each AWS resource and also to get information about the relationship between the resources. An AWS resource can be an Amazon Compute Cloud (Amazon EC2) instance, an Elastic Block Store (EBS) volume, an elastic network Interface (ENI), or a security group. For a complete list of resources currently supported by AWS Config, see <https://docs.aws.amazon.com/config/latest/developerguide/resource-config-reference.html#supported-resources Supported AWS Resources> .
 --
@@ -193,7 +193,7 @@ module Network.AWS.Config
     -- ** GetResourceConfigHistory (Paginated)
     , module Network.AWS.Config.GetResourceConfigHistory
 
-    -- ** GetAggregateResourceConfig
+    -- ** GetAggregateResourceConfig 
     , module Network.AWS.Config.GetAggregateResourceConfig
 
     -- ** DescribeConfigurationAggregators (Paginated)
@@ -205,205 +205,205 @@ module Network.AWS.Config
     -- ** DescribeRetentionConfigurations (Paginated)
     , module Network.AWS.Config.DescribeRetentionConfigurations
 
-    -- ** StopConfigurationRecorder
+    -- ** StopConfigurationRecorder 
     , module Network.AWS.Config.StopConfigurationRecorder
 
-    -- ** GetAggregateConfigRuleComplianceSummary
+    -- ** GetAggregateConfigRuleComplianceSummary 
     , module Network.AWS.Config.GetAggregateConfigRuleComplianceSummary
 
-    -- ** ListTagsForResource
+    -- ** ListTagsForResource 
     , module Network.AWS.Config.ListTagsForResource
 
-    -- ** BatchGetResourceConfig
+    -- ** BatchGetResourceConfig 
     , module Network.AWS.Config.BatchGetResourceConfig
 
     -- ** DescribeConfigRules (Paginated)
     , module Network.AWS.Config.DescribeConfigRules
 
-    -- ** PutRetentionConfiguration
+    -- ** PutRetentionConfiguration 
     , module Network.AWS.Config.PutRetentionConfiguration
 
-    -- ** GetOrganizationConformancePackDetailedStatus
+    -- ** GetOrganizationConformancePackDetailedStatus 
     , module Network.AWS.Config.GetOrganizationConformancePackDetailedStatus
 
     -- ** DescribeAggregateComplianceByConfigRules (Paginated)
     , module Network.AWS.Config.DescribeAggregateComplianceByConfigRules
 
-    -- ** DeleteEvaluationResults
+    -- ** DeleteEvaluationResults 
     , module Network.AWS.Config.DeleteEvaluationResults
 
-    -- ** PutConfigRule
+    -- ** PutConfigRule 
     , module Network.AWS.Config.PutConfigRule
 
-    -- ** GetConformancePackComplianceDetails
+    -- ** GetConformancePackComplianceDetails 
     , module Network.AWS.Config.GetConformancePackComplianceDetails
 
-    -- ** DeleteConfigRule
+    -- ** DeleteConfigRule 
     , module Network.AWS.Config.DeleteConfigRule
 
-    -- ** DeleteRetentionConfiguration
+    -- ** DeleteRetentionConfiguration 
     , module Network.AWS.Config.DeleteRetentionConfiguration
 
-    -- ** SelectResourceConfig
+    -- ** SelectResourceConfig 
     , module Network.AWS.Config.SelectResourceConfig
 
     -- ** ListAggregateDiscoveredResources (Paginated)
     , module Network.AWS.Config.ListAggregateDiscoveredResources
 
-    -- ** DescribeOrganizationConfigRuleStatuses
+    -- ** DescribeOrganizationConfigRuleStatuses 
     , module Network.AWS.Config.DescribeOrganizationConfigRuleStatuses
 
-    -- ** DescribeOrganizationConformancePackStatuses
+    -- ** DescribeOrganizationConformancePackStatuses 
     , module Network.AWS.Config.DescribeOrganizationConformancePackStatuses
 
     -- ** GetComplianceDetailsByResource (Paginated)
     , module Network.AWS.Config.GetComplianceDetailsByResource
 
-    -- ** DeletePendingAggregationRequest
+    -- ** DeletePendingAggregationRequest 
     , module Network.AWS.Config.DeletePendingAggregationRequest
 
-    -- ** DeliverConfigSnapshot
+    -- ** DeliverConfigSnapshot 
     , module Network.AWS.Config.DeliverConfigSnapshot
 
-    -- ** BatchGetAggregateResourceConfig
+    -- ** BatchGetAggregateResourceConfig 
     , module Network.AWS.Config.BatchGetAggregateResourceConfig
 
     -- ** DescribeConfigRuleEvaluationStatus (Paginated)
     , module Network.AWS.Config.DescribeConfigRuleEvaluationStatus
 
-    -- ** GetDiscoveredResourceCounts
+    -- ** GetDiscoveredResourceCounts 
     , module Network.AWS.Config.GetDiscoveredResourceCounts
 
-    -- ** DescribeRemediationExceptions
+    -- ** DescribeRemediationExceptions 
     , module Network.AWS.Config.DescribeRemediationExceptions
 
-    -- ** DeleteOrganizationConformancePack
+    -- ** DeleteOrganizationConformancePack 
     , module Network.AWS.Config.DeleteOrganizationConformancePack
 
-    -- ** PutOrganizationConfigRule
+    -- ** PutOrganizationConfigRule 
     , module Network.AWS.Config.PutOrganizationConfigRule
 
-    -- ** PutOrganizationConformancePack
+    -- ** PutOrganizationConformancePack 
     , module Network.AWS.Config.PutOrganizationConformancePack
 
-    -- ** DeleteOrganizationConfigRule
+    -- ** DeleteOrganizationConfigRule 
     , module Network.AWS.Config.DeleteOrganizationConfigRule
 
-    -- ** PutResourceConfig
+    -- ** PutResourceConfig 
     , module Network.AWS.Config.PutResourceConfig
 
-    -- ** StartConfigRulesEvaluation
+    -- ** StartConfigRulesEvaluation 
     , module Network.AWS.Config.StartConfigRulesEvaluation
 
-    -- ** DescribeOrganizationConfigRules
+    -- ** DescribeOrganizationConfigRules 
     , module Network.AWS.Config.DescribeOrganizationConfigRules
 
-    -- ** SelectAggregateResourceConfig
+    -- ** SelectAggregateResourceConfig 
     , module Network.AWS.Config.SelectAggregateResourceConfig
 
     -- ** DescribeComplianceByResource (Paginated)
     , module Network.AWS.Config.DescribeComplianceByResource
 
-    -- ** DescribeOrganizationConformancePacks
+    -- ** DescribeOrganizationConformancePacks 
     , module Network.AWS.Config.DescribeOrganizationConformancePacks
 
-    -- ** DeleteResourceConfig
+    -- ** DeleteResourceConfig 
     , module Network.AWS.Config.DeleteResourceConfig
 
-    -- ** PutEvaluations
+    -- ** PutEvaluations 
     , module Network.AWS.Config.PutEvaluations
 
-    -- ** DescribeConfigurationRecorders
+    -- ** DescribeConfigurationRecorders 
     , module Network.AWS.Config.DescribeConfigurationRecorders
 
-    -- ** DescribeConformancePackCompliance
+    -- ** DescribeConformancePackCompliance 
     , module Network.AWS.Config.DescribeConformancePackCompliance
 
     -- ** GetAggregateComplianceDetailsByConfigRule (Paginated)
     , module Network.AWS.Config.GetAggregateComplianceDetailsByConfigRule
 
-    -- ** GetAggregateDiscoveredResourceCounts
+    -- ** GetAggregateDiscoveredResourceCounts 
     , module Network.AWS.Config.GetAggregateDiscoveredResourceCounts
 
-    -- ** StartConfigurationRecorder
+    -- ** StartConfigurationRecorder 
     , module Network.AWS.Config.StartConfigurationRecorder
 
-    -- ** DescribeConformancePacks
+    -- ** DescribeConformancePacks 
     , module Network.AWS.Config.DescribeConformancePacks
 
-    -- ** DeleteRemediationExceptions
+    -- ** DeleteRemediationExceptions 
     , module Network.AWS.Config.DeleteRemediationExceptions
 
-    -- ** PutRemediationExceptions
+    -- ** PutRemediationExceptions 
     , module Network.AWS.Config.PutRemediationExceptions
 
-    -- ** GetOrganizationConfigRuleDetailedStatus
+    -- ** GetOrganizationConfigRuleDetailedStatus 
     , module Network.AWS.Config.GetOrganizationConfigRuleDetailedStatus
 
-    -- ** PutRemediationConfigurations
+    -- ** PutRemediationConfigurations 
     , module Network.AWS.Config.PutRemediationConfigurations
 
-    -- ** DeleteConformancePack
+    -- ** DeleteConformancePack 
     , module Network.AWS.Config.DeleteConformancePack
 
-    -- ** PutConformancePack
+    -- ** PutConformancePack 
     , module Network.AWS.Config.PutConformancePack
 
-    -- ** StartRemediationExecution
+    -- ** StartRemediationExecution 
     , module Network.AWS.Config.StartRemediationExecution
 
-    -- ** DescribeConformancePackStatus
+    -- ** DescribeConformancePackStatus 
     , module Network.AWS.Config.DescribeConformancePackStatus
 
-    -- ** GetComplianceSummaryByConfigRule
+    -- ** GetComplianceSummaryByConfigRule 
     , module Network.AWS.Config.GetComplianceSummaryByConfigRule
 
-    -- ** PutConfigurationAggregator
+    -- ** PutConfigurationAggregator 
     , module Network.AWS.Config.PutConfigurationAggregator
 
-    -- ** TagResource
+    -- ** TagResource 
     , module Network.AWS.Config.TagResource
 
-    -- ** DeleteConfigurationAggregator
+    -- ** DeleteConfigurationAggregator 
     , module Network.AWS.Config.DeleteConfigurationAggregator
 
-    -- ** DescribeConfigurationRecorderStatus
+    -- ** DescribeConfigurationRecorderStatus 
     , module Network.AWS.Config.DescribeConfigurationRecorderStatus
 
-    -- ** PutConfigurationRecorder
+    -- ** PutConfigurationRecorder 
     , module Network.AWS.Config.PutConfigurationRecorder
 
-    -- ** UntagResource
+    -- ** UntagResource 
     , module Network.AWS.Config.UntagResource
 
-    -- ** DeleteConfigurationRecorder
+    -- ** DeleteConfigurationRecorder 
     , module Network.AWS.Config.DeleteConfigurationRecorder
 
-    -- ** GetConformancePackComplianceSummary
+    -- ** GetConformancePackComplianceSummary 
     , module Network.AWS.Config.GetConformancePackComplianceSummary
 
-    -- ** GetComplianceSummaryByResourceType
+    -- ** GetComplianceSummaryByResourceType 
     , module Network.AWS.Config.GetComplianceSummaryByResourceType
 
-    -- ** DescribeDeliveryChannelStatus
+    -- ** DescribeDeliveryChannelStatus 
     , module Network.AWS.Config.DescribeDeliveryChannelStatus
 
-    -- ** PutDeliveryChannel
+    -- ** PutDeliveryChannel 
     , module Network.AWS.Config.PutDeliveryChannel
 
     -- ** GetComplianceDetailsByConfigRule (Paginated)
     , module Network.AWS.Config.GetComplianceDetailsByConfigRule
 
-    -- ** DeleteAggregationAuthorization
+    -- ** DeleteAggregationAuthorization 
     , module Network.AWS.Config.DeleteAggregationAuthorization
 
-    -- ** DeleteDeliveryChannel
+    -- ** DeleteDeliveryChannel 
     , module Network.AWS.Config.DeleteDeliveryChannel
 
-    -- ** DeleteRemediationConfiguration
+    -- ** DeleteRemediationConfiguration 
     , module Network.AWS.Config.DeleteRemediationConfiguration
 
-    -- ** PutAggregationAuthorization
+    -- ** PutAggregationAuthorization 
     , module Network.AWS.Config.PutAggregationAuthorization
 
     -- ** DescribeConfigurationAggregatorSourcesStatus (Paginated)
@@ -412,10 +412,10 @@ module Network.AWS.Config
     -- ** ListDiscoveredResources (Paginated)
     , module Network.AWS.Config.ListDiscoveredResources
 
-    -- ** DescribeRemediationConfigurations
+    -- ** DescribeRemediationConfigurations 
     , module Network.AWS.Config.DescribeRemediationConfigurations
 
-    -- ** DescribeDeliveryChannels
+    -- ** DescribeDeliveryChannels 
     , module Network.AWS.Config.DescribeDeliveryChannels
 
     -- ** DescribeAggregationAuthorizations (Paginated)
@@ -1176,19 +1176,19 @@ import Network.AWS.Config.DescribeComplianceByConfigRule
 import Network.AWS.Config.DescribeComplianceByResource
 import Network.AWS.Config.DescribeConfigRuleEvaluationStatus
 import Network.AWS.Config.DescribeConfigRules
-import Network.AWS.Config.DescribeConfigurationAggregators
 import Network.AWS.Config.DescribeConfigurationAggregatorSourcesStatus
-import Network.AWS.Config.DescribeConfigurationRecorders
+import Network.AWS.Config.DescribeConfigurationAggregators
 import Network.AWS.Config.DescribeConfigurationRecorderStatus
+import Network.AWS.Config.DescribeConfigurationRecorders
 import Network.AWS.Config.DescribeConformancePackCompliance
-import Network.AWS.Config.DescribeConformancePacks
 import Network.AWS.Config.DescribeConformancePackStatus
-import Network.AWS.Config.DescribeDeliveryChannels
+import Network.AWS.Config.DescribeConformancePacks
 import Network.AWS.Config.DescribeDeliveryChannelStatus
-import Network.AWS.Config.DescribeOrganizationConfigRules
+import Network.AWS.Config.DescribeDeliveryChannels
 import Network.AWS.Config.DescribeOrganizationConfigRuleStatuses
-import Network.AWS.Config.DescribeOrganizationConformancePacks
+import Network.AWS.Config.DescribeOrganizationConfigRules
 import Network.AWS.Config.DescribeOrganizationConformancePackStatuses
+import Network.AWS.Config.DescribeOrganizationConformancePacks
 import Network.AWS.Config.DescribePendingAggregationRequests
 import Network.AWS.Config.DescribeRemediationConfigurations
 import Network.AWS.Config.DescribeRemediationExceptions

@@ -39,20 +39,17 @@ module Network.AWS.EC2.DescribeExportTasks
     ) where
 
 import Network.AWS.EC2.Types
-import Network.AWS.EC2.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 
 -- | /See:/ 'describeExportTasks' smart constructor.
-data DescribeExportTasks =
-  DescribeExportTasks'
-    { _detFilters       :: !(Maybe [Filter])
-    , _detExportTaskIds :: !(Maybe [Text])
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data DescribeExportTasks = DescribeExportTasks'{_detFilters
+                                                :: !(Maybe [Filter]),
+                                                _detExportTaskIds ::
+                                                !(Maybe [Text])}
+                             deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'DescribeExportTasks' with the minimum fields required to make a request.
 --
@@ -63,9 +60,9 @@ data DescribeExportTasks =
 -- * 'detExportTaskIds' - The export task IDs.
 describeExportTasks
     :: DescribeExportTasks
-describeExportTasks =
-  DescribeExportTasks' {_detFilters = Nothing, _detExportTaskIds = Nothing}
-
+describeExportTasks
+  = DescribeExportTasks'{_detFilters = Nothing,
+                         _detExportTaskIds = Nothing}
 
 -- | the filters for the export tasks.
 detFilters :: Lens' DescribeExportTasks [Filter]
@@ -107,13 +104,14 @@ instance ToQuery DescribeExportTasks where
                  (toQueryList "ExportTaskId" <$> _detExportTaskIds)]
 
 -- | /See:/ 'describeExportTasksResponse' smart constructor.
-data DescribeExportTasksResponse =
-  DescribeExportTasksResponse'
-    { _detrsExportTasks    :: !(Maybe [ExportTask])
-    , _detrsResponseStatus :: !Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data DescribeExportTasksResponse = DescribeExportTasksResponse'{_detrsExportTasks
+                                                                ::
+                                                                !(Maybe
+                                                                    [ExportTask]),
+                                                                _detrsResponseStatus
+                                                                :: !Int}
+                                     deriving (Eq, Read, Show, Data, Typeable,
+                                               Generic)
 
 -- | Creates a value of 'DescribeExportTasksResponse' with the minimum fields required to make a request.
 --
@@ -125,10 +123,10 @@ data DescribeExportTasksResponse =
 describeExportTasksResponse
     :: Int -- ^ 'detrsResponseStatus'
     -> DescribeExportTasksResponse
-describeExportTasksResponse pResponseStatus_ =
-  DescribeExportTasksResponse'
-    {_detrsExportTasks = Nothing, _detrsResponseStatus = pResponseStatus_}
-
+describeExportTasksResponse pResponseStatus_
+  = DescribeExportTasksResponse'{_detrsExportTasks =
+                                   Nothing,
+                                 _detrsResponseStatus = pResponseStatus_}
 
 -- | Information about the export tasks.
 detrsExportTasks :: Lens' DescribeExportTasksResponse [ExportTask]

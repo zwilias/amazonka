@@ -38,20 +38,18 @@ module Network.AWS.IAM.AddRoleToInstanceProfile
     ) where
 
 import Network.AWS.IAM.Types
-import Network.AWS.IAM.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 
 -- | /See:/ 'addRoleToInstanceProfile' smart constructor.
-data AddRoleToInstanceProfile =
-  AddRoleToInstanceProfile'
-    { _artipInstanceProfileName :: !Text
-    , _artipRoleName            :: !Text
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data AddRoleToInstanceProfile = AddRoleToInstanceProfile'{_artipInstanceProfileName
+                                                          :: !Text,
+                                                          _artipRoleName ::
+                                                          !Text}
+                                  deriving (Eq, Read, Show, Data, Typeable,
+                                            Generic)
 
 -- | Creates a value of 'AddRoleToInstanceProfile' with the minimum fields required to make a request.
 --
@@ -64,12 +62,11 @@ addRoleToInstanceProfile
     :: Text -- ^ 'artipInstanceProfileName'
     -> Text -- ^ 'artipRoleName'
     -> AddRoleToInstanceProfile
-addRoleToInstanceProfile pInstanceProfileName_ pRoleName_ =
-  AddRoleToInstanceProfile'
-    { _artipInstanceProfileName = pInstanceProfileName_
-    , _artipRoleName = pRoleName_
-    }
-
+addRoleToInstanceProfile pInstanceProfileName_
+  pRoleName_
+  = AddRoleToInstanceProfile'{_artipInstanceProfileName
+                                = pInstanceProfileName_,
+                              _artipRoleName = pRoleName_}
 
 -- | The name of the instance profile to update. This parameter allows (per its <http://wikipedia.org/wiki/regex regex pattern> ) a string of characters consisting of upper and lowercase alphanumeric characters with no spaces. You can also include any of the following characters: _+=,.@-
 artipInstanceProfileName :: Lens' AddRoleToInstanceProfile Text
@@ -106,17 +103,16 @@ instance ToQuery AddRoleToInstanceProfile where
                "RoleName" =: _artipRoleName]
 
 -- | /See:/ 'addRoleToInstanceProfileResponse' smart constructor.
-data AddRoleToInstanceProfileResponse =
-  AddRoleToInstanceProfileResponse'
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data AddRoleToInstanceProfileResponse = AddRoleToInstanceProfileResponse'
+                                          deriving (Eq, Read, Show, Data,
+                                                    Typeable, Generic)
 
 -- | Creates a value of 'AddRoleToInstanceProfileResponse' with the minimum fields required to make a request.
 --
 addRoleToInstanceProfileResponse
     :: AddRoleToInstanceProfileResponse
-addRoleToInstanceProfileResponse = AddRoleToInstanceProfileResponse'
-
+addRoleToInstanceProfileResponse
+  = AddRoleToInstanceProfileResponse'
 
 instance NFData AddRoleToInstanceProfileResponse
          where

@@ -18,7 +18,7 @@
 -- Stability   : auto-generated
 -- Portability : non-portable (GHC extensions)
 --
--- Creates an Amazon Lex conversational bot or replaces an existing bot. When you create or update a bot you are only required to specify a name, a locale, and whether the bot is directed toward children under age 13. You can use this to add intents later, or to remove intents from an existing bot. When you create a bot with the minimum information, the bot is created or updated but Amazon Lex returns the response @FAILED@ . You can build the bot after you add one or more intents. For more information about Amazon Lex bots, see 'how-it-works' .
+-- Creates an Amazon Lex conversational bot or replaces an existing bot. When you create or update a bot you are only required to specify a name, a locale, and whether the bot is directed toward children under age 13. You can use this to add intents later, or to remove intents from an existing bot. When you create a bot with the minimum information, the bot is created or updated but Amazon Lex returns the response @FAILED@ . You can build the bot after you add one or more intents. For more information about Amazon Lex bots, see 'how-it-works' . 
 --
 --
 -- If you specify the name of an existing bot, the fields in the request replace the existing values in the @> LATEST@ version of the bot. Amazon Lex removes any fields that you don't provide values for in the request, except for the @idleTTLInSeconds@ and @privacySettings@ fields, which are set to their default values. If you don't specify values for required fields, Amazon Lex throws an exception.
@@ -69,29 +69,23 @@ module Network.AWS.LexModels.PutBot
 
 import Network.AWS.Lens
 import Network.AWS.LexModels.Types
-import Network.AWS.LexModels.Types.Product
 import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 
 -- | /See:/ 'putBot' smart constructor.
-data PutBot =
-  PutBot'
-    { _pbAbortStatement          :: !(Maybe Statement)
-    , _pbIntents                 :: !(Maybe [Intent])
-    , _pbChecksum                :: !(Maybe Text)
-    , _pbProcessBehavior         :: !(Maybe ProcessBehavior)
-    , _pbIdleSessionTTLInSeconds :: !(Maybe Nat)
-    , _pbClarificationPrompt     :: !(Maybe Prompt)
-    , _pbVoiceId                 :: !(Maybe Text)
-    , _pbCreateVersion           :: !(Maybe Bool)
-    , _pbDescription             :: !(Maybe Text)
-    , _pbName                    :: !Text
-    , _pbLocale                  :: !Locale
-    , _pbChildDirected           :: !Bool
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data PutBot = PutBot'{_pbAbortStatement ::
+                      !(Maybe Statement),
+                      _pbIntents :: !(Maybe [Intent]),
+                      _pbChecksum :: !(Maybe Text),
+                      _pbProcessBehavior :: !(Maybe ProcessBehavior),
+                      _pbIdleSessionTTLInSeconds :: !(Maybe Nat),
+                      _pbClarificationPrompt :: !(Maybe Prompt),
+                      _pbVoiceId :: !(Maybe Text),
+                      _pbCreateVersion :: !(Maybe Bool),
+                      _pbDescription :: !(Maybe Text), _pbName :: !Text,
+                      _pbLocale :: !Locale, _pbChildDirected :: !Bool}
+                deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'PutBot' with the minimum fields required to make a request.
 --
@@ -115,32 +109,26 @@ data PutBot =
 --
 -- * 'pbDescription' - A description of the bot.
 --
--- * 'pbName' - The name of the bot. The name is /not/ case sensitive.
+-- * 'pbName' - The name of the bot. The name is /not/ case sensitive. 
 --
 -- * 'pbLocale' - Specifies the target locale for the bot. Any intent used in the bot must be compatible with the locale of the bot.  The default is @en-US@ .
 --
--- * 'pbChildDirected' - For each Amazon Lex bot created with the Amazon Lex Model Building Service, you must specify whether your use of Amazon Lex is related to a website, program, or other application that is directed or targeted, in whole or in part, to children under age 13 and subject to the Children's Online Privacy Protection Act (COPPA) by specifying @true@ or @false@ in the @childDirected@ field. By specifying @true@ in the @childDirected@ field, you confirm that your use of Amazon Lex __is__ related to a website, program, or other application that is directed or targeted, in whole or in part, to children under age 13 and subject to COPPA. By specifying @false@ in the @childDirected@ field, you confirm that your use of Amazon Lex __is not__ related to a website, program, or other application that is directed or targeted, in whole or in part, to children under age 13 and subject to COPPA. You may not specify a default value for the @childDirected@ field that does not accurately reflect whether your use of Amazon Lex is related to a website, program, or other application that is directed or targeted, in whole or in part, to children under age 13 and subject to COPPA. If your use of Amazon Lex relates to a website, program, or other application that is directed in whole or in part, to children under age 13, you must obtain any required verifiable parental consent under COPPA. For information regarding the use of Amazon Lex in connection with websites, programs, or other applications that are directed or targeted, in whole or in part, to children under age 13, see the <https://aws.amazon.com/lex/faqs#data-security Amazon Lex FAQ.>
+-- * 'pbChildDirected' - For each Amazon Lex bot created with the Amazon Lex Model Building Service, you must specify whether your use of Amazon Lex is related to a website, program, or other application that is directed or targeted, in whole or in part, to children under age 13 and subject to the Children's Online Privacy Protection Act (COPPA) by specifying @true@ or @false@ in the @childDirected@ field. By specifying @true@ in the @childDirected@ field, you confirm that your use of Amazon Lex __is__ related to a website, program, or other application that is directed or targeted, in whole or in part, to children under age 13 and subject to COPPA. By specifying @false@ in the @childDirected@ field, you confirm that your use of Amazon Lex __is not__ related to a website, program, or other application that is directed or targeted, in whole or in part, to children under age 13 and subject to COPPA. You may not specify a default value for the @childDirected@ field that does not accurately reflect whether your use of Amazon Lex is related to a website, program, or other application that is directed or targeted, in whole or in part, to children under age 13 and subject to COPPA. If your use of Amazon Lex relates to a website, program, or other application that is directed in whole or in part, to children under age 13, you must obtain any required verifiable parental consent under COPPA. For information regarding the use of Amazon Lex in connection with websites, programs, or other applications that are directed or targeted, in whole or in part, to children under age 13, see the <https://aws.amazon.com/lex/faqs#data-security Amazon Lex FAQ.> 
 putBot
     :: Text -- ^ 'pbName'
     -> Locale -- ^ 'pbLocale'
     -> Bool -- ^ 'pbChildDirected'
     -> PutBot
-putBot pName_ pLocale_ pChildDirected_ =
-  PutBot'
-    { _pbAbortStatement = Nothing
-    , _pbIntents = Nothing
-    , _pbChecksum = Nothing
-    , _pbProcessBehavior = Nothing
-    , _pbIdleSessionTTLInSeconds = Nothing
-    , _pbClarificationPrompt = Nothing
-    , _pbVoiceId = Nothing
-    , _pbCreateVersion = Nothing
-    , _pbDescription = Nothing
-    , _pbName = pName_
-    , _pbLocale = pLocale_
-    , _pbChildDirected = pChildDirected_
-    }
-
+putBot pName_ pLocale_ pChildDirected_
+  = PutBot'{_pbAbortStatement = Nothing,
+            _pbIntents = Nothing, _pbChecksum = Nothing,
+            _pbProcessBehavior = Nothing,
+            _pbIdleSessionTTLInSeconds = Nothing,
+            _pbClarificationPrompt = Nothing,
+            _pbVoiceId = Nothing, _pbCreateVersion = Nothing,
+            _pbDescription = Nothing, _pbName = pName_,
+            _pbLocale = pLocale_,
+            _pbChildDirected = pChildDirected_}
 
 -- | When Amazon Lex can't understand the user's input in context, it tries to elicit the information a few times. After that, Amazon Lex sends the message defined in @abortStatement@ to the user, and then aborts the conversation. To set the number of retries, use the @valueElicitationPrompt@ field for the slot type.  For example, in a pizza ordering bot, Amazon Lex might ask a user "What type of crust would you like?" If the user's response is not one of the expected responses (for example, "thin crust, "deep dish," etc.), Amazon Lex tries to elicit a correct response a few more times.  For example, in a pizza ordering application, @OrderPizza@ might be one of the intents. This intent might require the @CrustType@ slot. You specify the @valueElicitationPrompt@ field when you create the @CrustType@ slot.
 pbAbortStatement :: Lens' PutBot (Maybe Statement)
@@ -178,7 +166,7 @@ pbCreateVersion = lens _pbCreateVersion (\ s a -> s{_pbCreateVersion = a})
 pbDescription :: Lens' PutBot (Maybe Text)
 pbDescription = lens _pbDescription (\ s a -> s{_pbDescription = a})
 
--- | The name of the bot. The name is /not/ case sensitive.
+-- | The name of the bot. The name is /not/ case sensitive. 
 pbName :: Lens' PutBot Text
 pbName = lens _pbName (\ s a -> s{_pbName = a})
 
@@ -186,7 +174,7 @@ pbName = lens _pbName (\ s a -> s{_pbName = a})
 pbLocale :: Lens' PutBot Locale
 pbLocale = lens _pbLocale (\ s a -> s{_pbLocale = a})
 
--- | For each Amazon Lex bot created with the Amazon Lex Model Building Service, you must specify whether your use of Amazon Lex is related to a website, program, or other application that is directed or targeted, in whole or in part, to children under age 13 and subject to the Children's Online Privacy Protection Act (COPPA) by specifying @true@ or @false@ in the @childDirected@ field. By specifying @true@ in the @childDirected@ field, you confirm that your use of Amazon Lex __is__ related to a website, program, or other application that is directed or targeted, in whole or in part, to children under age 13 and subject to COPPA. By specifying @false@ in the @childDirected@ field, you confirm that your use of Amazon Lex __is not__ related to a website, program, or other application that is directed or targeted, in whole or in part, to children under age 13 and subject to COPPA. You may not specify a default value for the @childDirected@ field that does not accurately reflect whether your use of Amazon Lex is related to a website, program, or other application that is directed or targeted, in whole or in part, to children under age 13 and subject to COPPA. If your use of Amazon Lex relates to a website, program, or other application that is directed in whole or in part, to children under age 13, you must obtain any required verifiable parental consent under COPPA. For information regarding the use of Amazon Lex in connection with websites, programs, or other applications that are directed or targeted, in whole or in part, to children under age 13, see the <https://aws.amazon.com/lex/faqs#data-security Amazon Lex FAQ.>
+-- | For each Amazon Lex bot created with the Amazon Lex Model Building Service, you must specify whether your use of Amazon Lex is related to a website, program, or other application that is directed or targeted, in whole or in part, to children under age 13 and subject to the Children's Online Privacy Protection Act (COPPA) by specifying @true@ or @false@ in the @childDirected@ field. By specifying @true@ in the @childDirected@ field, you confirm that your use of Amazon Lex __is__ related to a website, program, or other application that is directed or targeted, in whole or in part, to children under age 13 and subject to COPPA. By specifying @false@ in the @childDirected@ field, you confirm that your use of Amazon Lex __is not__ related to a website, program, or other application that is directed or targeted, in whole or in part, to children under age 13 and subject to COPPA. You may not specify a default value for the @childDirected@ field that does not accurately reflect whether your use of Amazon Lex is related to a website, program, or other application that is directed or targeted, in whole or in part, to children under age 13 and subject to COPPA. If your use of Amazon Lex relates to a website, program, or other application that is directed in whole or in part, to children under age 13, you must obtain any required verifiable parental consent under COPPA. For information regarding the use of Amazon Lex in connection with websites, programs, or other applications that are directed or targeted, in whole or in part, to children under age 13, see the <https://aws.amazon.com/lex/faqs#data-security Amazon Lex FAQ.> 
 pbChildDirected :: Lens' PutBot Bool
 pbChildDirected = lens _pbChildDirected (\ s a -> s{_pbChildDirected = a})
 
@@ -252,28 +240,27 @@ instance ToQuery PutBot where
         toQuery = const mempty
 
 -- | /See:/ 'putBotResponse' smart constructor.
-data PutBotResponse =
-  PutBotResponse'
-    { _pbrsFailureReason           :: !(Maybe Text)
-    , _pbrsStatus                  :: !(Maybe LexStatus)
-    , _pbrsAbortStatement          :: !(Maybe Statement)
-    , _pbrsIntents                 :: !(Maybe [Intent])
-    , _pbrsChecksum                :: !(Maybe Text)
-    , _pbrsLocale                  :: !(Maybe Locale)
-    , _pbrsCreatedDate             :: !(Maybe POSIX)
-    , _pbrsName                    :: !(Maybe Text)
-    , _pbrsVersion                 :: !(Maybe Text)
-    , _pbrsIdleSessionTTLInSeconds :: !(Maybe Nat)
-    , _pbrsClarificationPrompt     :: !(Maybe Prompt)
-    , _pbrsVoiceId                 :: !(Maybe Text)
-    , _pbrsLastUpdatedDate         :: !(Maybe POSIX)
-    , _pbrsCreateVersion           :: !(Maybe Bool)
-    , _pbrsChildDirected           :: !(Maybe Bool)
-    , _pbrsDescription             :: !(Maybe Text)
-    , _pbrsResponseStatus          :: !Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data PutBotResponse = PutBotResponse'{_pbrsFailureReason
+                                      :: !(Maybe Text),
+                                      _pbrsStatus :: !(Maybe LexStatus),
+                                      _pbrsAbortStatement :: !(Maybe Statement),
+                                      _pbrsIntents :: !(Maybe [Intent]),
+                                      _pbrsChecksum :: !(Maybe Text),
+                                      _pbrsLocale :: !(Maybe Locale),
+                                      _pbrsCreatedDate :: !(Maybe POSIX),
+                                      _pbrsName :: !(Maybe Text),
+                                      _pbrsVersion :: !(Maybe Text),
+                                      _pbrsIdleSessionTTLInSeconds ::
+                                      !(Maybe Nat),
+                                      _pbrsClarificationPrompt ::
+                                      !(Maybe Prompt),
+                                      _pbrsVoiceId :: !(Maybe Text),
+                                      _pbrsLastUpdatedDate :: !(Maybe POSIX),
+                                      _pbrsCreateVersion :: !(Maybe Bool),
+                                      _pbrsChildDirected :: !(Maybe Bool),
+                                      _pbrsDescription :: !(Maybe Text),
+                                      _pbrsResponseStatus :: !Int}
+                        deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'PutBotResponse' with the minimum fields required to make a request.
 --
@@ -289,7 +276,7 @@ data PutBotResponse =
 --
 -- * 'pbrsChecksum' - Checksum of the bot that you created.
 --
--- * 'pbrsLocale' - The target locale for the bot.
+-- * 'pbrsLocale' - The target locale for the bot. 
 --
 -- * 'pbrsCreatedDate' - The date that the bot was created.
 --
@@ -299,7 +286,7 @@ data PutBotResponse =
 --
 -- * 'pbrsIdleSessionTTLInSeconds' - The maximum length of time that Amazon Lex retains the data gathered in a conversation. For more information, see 'PutBot' .
 --
--- * 'pbrsClarificationPrompt' - The prompts that Amazon Lex uses when it doesn't understand the user's intent. For more information, see 'PutBot' .
+-- * 'pbrsClarificationPrompt' - The prompts that Amazon Lex uses when it doesn't understand the user's intent. For more information, see 'PutBot' . 
 --
 -- * 'pbrsVoiceId' - The Amazon Polly voice ID that Amazon Lex uses for voice interaction with the user. For more information, see 'PutBot' .
 --
@@ -307,7 +294,7 @@ data PutBotResponse =
 --
 -- * 'pbrsCreateVersion' - Undocumented member.
 --
--- * 'pbrsChildDirected' - For each Amazon Lex bot created with the Amazon Lex Model Building Service, you must specify whether your use of Amazon Lex is related to a website, program, or other application that is directed or targeted, in whole or in part, to children under age 13 and subject to the Children's Online Privacy Protection Act (COPPA) by specifying @true@ or @false@ in the @childDirected@ field. By specifying @true@ in the @childDirected@ field, you confirm that your use of Amazon Lex __is__ related to a website, program, or other application that is directed or targeted, in whole or in part, to children under age 13 and subject to COPPA. By specifying @false@ in the @childDirected@ field, you confirm that your use of Amazon Lex __is not__ related to a website, program, or other application that is directed or targeted, in whole or in part, to children under age 13 and subject to COPPA. You may not specify a default value for the @childDirected@ field that does not accurately reflect whether your use of Amazon Lex is related to a website, program, or other application that is directed or targeted, in whole or in part, to children under age 13 and subject to COPPA. If your use of Amazon Lex relates to a website, program, or other application that is directed in whole or in part, to children under age 13, you must obtain any required verifiable parental consent under COPPA. For information regarding the use of Amazon Lex in connection with websites, programs, or other applications that are directed or targeted, in whole or in part, to children under age 13, see the <https://aws.amazon.com/lex/faqs#data-security Amazon Lex FAQ.>
+-- * 'pbrsChildDirected' - For each Amazon Lex bot created with the Amazon Lex Model Building Service, you must specify whether your use of Amazon Lex is related to a website, program, or other application that is directed or targeted, in whole or in part, to children under age 13 and subject to the Children's Online Privacy Protection Act (COPPA) by specifying @true@ or @false@ in the @childDirected@ field. By specifying @true@ in the @childDirected@ field, you confirm that your use of Amazon Lex __is__ related to a website, program, or other application that is directed or targeted, in whole or in part, to children under age 13 and subject to COPPA. By specifying @false@ in the @childDirected@ field, you confirm that your use of Amazon Lex __is not__ related to a website, program, or other application that is directed or targeted, in whole or in part, to children under age 13 and subject to COPPA. You may not specify a default value for the @childDirected@ field that does not accurately reflect whether your use of Amazon Lex is related to a website, program, or other application that is directed or targeted, in whole or in part, to children under age 13 and subject to COPPA. If your use of Amazon Lex relates to a website, program, or other application that is directed in whole or in part, to children under age 13, you must obtain any required verifiable parental consent under COPPA. For information regarding the use of Amazon Lex in connection with websites, programs, or other applications that are directed or targeted, in whole or in part, to children under age 13, see the <https://aws.amazon.com/lex/faqs#data-security Amazon Lex FAQ.> 
 --
 -- * 'pbrsDescription' - A description of the bot.
 --
@@ -315,27 +302,20 @@ data PutBotResponse =
 putBotResponse
     :: Int -- ^ 'pbrsResponseStatus'
     -> PutBotResponse
-putBotResponse pResponseStatus_ =
-  PutBotResponse'
-    { _pbrsFailureReason = Nothing
-    , _pbrsStatus = Nothing
-    , _pbrsAbortStatement = Nothing
-    , _pbrsIntents = Nothing
-    , _pbrsChecksum = Nothing
-    , _pbrsLocale = Nothing
-    , _pbrsCreatedDate = Nothing
-    , _pbrsName = Nothing
-    , _pbrsVersion = Nothing
-    , _pbrsIdleSessionTTLInSeconds = Nothing
-    , _pbrsClarificationPrompt = Nothing
-    , _pbrsVoiceId = Nothing
-    , _pbrsLastUpdatedDate = Nothing
-    , _pbrsCreateVersion = Nothing
-    , _pbrsChildDirected = Nothing
-    , _pbrsDescription = Nothing
-    , _pbrsResponseStatus = pResponseStatus_
-    }
-
+putBotResponse pResponseStatus_
+  = PutBotResponse'{_pbrsFailureReason = Nothing,
+                    _pbrsStatus = Nothing, _pbrsAbortStatement = Nothing,
+                    _pbrsIntents = Nothing, _pbrsChecksum = Nothing,
+                    _pbrsLocale = Nothing, _pbrsCreatedDate = Nothing,
+                    _pbrsName = Nothing, _pbrsVersion = Nothing,
+                    _pbrsIdleSessionTTLInSeconds = Nothing,
+                    _pbrsClarificationPrompt = Nothing,
+                    _pbrsVoiceId = Nothing,
+                    _pbrsLastUpdatedDate = Nothing,
+                    _pbrsCreateVersion = Nothing,
+                    _pbrsChildDirected = Nothing,
+                    _pbrsDescription = Nothing,
+                    _pbrsResponseStatus = pResponseStatus_}
 
 -- | If @status@ is @FAILED@ , Amazon Lex provides the reason that it failed to build the bot.
 pbrsFailureReason :: Lens' PutBotResponse (Maybe Text)
@@ -357,7 +337,7 @@ pbrsIntents = lens _pbrsIntents (\ s a -> s{_pbrsIntents = a}) . _Default . _Coe
 pbrsChecksum :: Lens' PutBotResponse (Maybe Text)
 pbrsChecksum = lens _pbrsChecksum (\ s a -> s{_pbrsChecksum = a})
 
--- | The target locale for the bot.
+-- | The target locale for the bot. 
 pbrsLocale :: Lens' PutBotResponse (Maybe Locale)
 pbrsLocale = lens _pbrsLocale (\ s a -> s{_pbrsLocale = a})
 
@@ -377,7 +357,7 @@ pbrsVersion = lens _pbrsVersion (\ s a -> s{_pbrsVersion = a})
 pbrsIdleSessionTTLInSeconds :: Lens' PutBotResponse (Maybe Natural)
 pbrsIdleSessionTTLInSeconds = lens _pbrsIdleSessionTTLInSeconds (\ s a -> s{_pbrsIdleSessionTTLInSeconds = a}) . mapping _Nat
 
--- | The prompts that Amazon Lex uses when it doesn't understand the user's intent. For more information, see 'PutBot' .
+-- | The prompts that Amazon Lex uses when it doesn't understand the user's intent. For more information, see 'PutBot' . 
 pbrsClarificationPrompt :: Lens' PutBotResponse (Maybe Prompt)
 pbrsClarificationPrompt = lens _pbrsClarificationPrompt (\ s a -> s{_pbrsClarificationPrompt = a})
 
@@ -393,7 +373,7 @@ pbrsLastUpdatedDate = lens _pbrsLastUpdatedDate (\ s a -> s{_pbrsLastUpdatedDate
 pbrsCreateVersion :: Lens' PutBotResponse (Maybe Bool)
 pbrsCreateVersion = lens _pbrsCreateVersion (\ s a -> s{_pbrsCreateVersion = a})
 
--- | For each Amazon Lex bot created with the Amazon Lex Model Building Service, you must specify whether your use of Amazon Lex is related to a website, program, or other application that is directed or targeted, in whole or in part, to children under age 13 and subject to the Children's Online Privacy Protection Act (COPPA) by specifying @true@ or @false@ in the @childDirected@ field. By specifying @true@ in the @childDirected@ field, you confirm that your use of Amazon Lex __is__ related to a website, program, or other application that is directed or targeted, in whole or in part, to children under age 13 and subject to COPPA. By specifying @false@ in the @childDirected@ field, you confirm that your use of Amazon Lex __is not__ related to a website, program, or other application that is directed or targeted, in whole or in part, to children under age 13 and subject to COPPA. You may not specify a default value for the @childDirected@ field that does not accurately reflect whether your use of Amazon Lex is related to a website, program, or other application that is directed or targeted, in whole or in part, to children under age 13 and subject to COPPA. If your use of Amazon Lex relates to a website, program, or other application that is directed in whole or in part, to children under age 13, you must obtain any required verifiable parental consent under COPPA. For information regarding the use of Amazon Lex in connection with websites, programs, or other applications that are directed or targeted, in whole or in part, to children under age 13, see the <https://aws.amazon.com/lex/faqs#data-security Amazon Lex FAQ.>
+-- | For each Amazon Lex bot created with the Amazon Lex Model Building Service, you must specify whether your use of Amazon Lex is related to a website, program, or other application that is directed or targeted, in whole or in part, to children under age 13 and subject to the Children's Online Privacy Protection Act (COPPA) by specifying @true@ or @false@ in the @childDirected@ field. By specifying @true@ in the @childDirected@ field, you confirm that your use of Amazon Lex __is__ related to a website, program, or other application that is directed or targeted, in whole or in part, to children under age 13 and subject to COPPA. By specifying @false@ in the @childDirected@ field, you confirm that your use of Amazon Lex __is not__ related to a website, program, or other application that is directed or targeted, in whole or in part, to children under age 13 and subject to COPPA. You may not specify a default value for the @childDirected@ field that does not accurately reflect whether your use of Amazon Lex is related to a website, program, or other application that is directed or targeted, in whole or in part, to children under age 13 and subject to COPPA. If your use of Amazon Lex relates to a website, program, or other application that is directed in whole or in part, to children under age 13, you must obtain any required verifiable parental consent under COPPA. For information regarding the use of Amazon Lex in connection with websites, programs, or other applications that are directed or targeted, in whole or in part, to children under age 13, see the <https://aws.amazon.com/lex/faqs#data-security Amazon Lex FAQ.> 
 pbrsChildDirected :: Lens' PutBotResponse (Maybe Bool)
 pbrsChildDirected = lens _pbrsChildDirected (\ s a -> s{_pbrsChildDirected = a})
 

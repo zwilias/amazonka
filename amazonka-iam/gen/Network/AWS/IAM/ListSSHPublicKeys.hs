@@ -48,7 +48,6 @@ module Network.AWS.IAM.ListSSHPublicKeys
     ) where
 
 import Network.AWS.IAM.Types
-import Network.AWS.IAM.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Pager
 import Network.AWS.Prelude
@@ -56,14 +55,11 @@ import Network.AWS.Request
 import Network.AWS.Response
 
 -- | /See:/ 'listSSHPublicKeys' smart constructor.
-data ListSSHPublicKeys =
-  ListSSHPublicKeys'
-    { _lspkUserName :: !(Maybe Text)
-    , _lspkMarker   :: !(Maybe Text)
-    , _lspkMaxItems :: !(Maybe Nat)
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data ListSSHPublicKeys = ListSSHPublicKeys'{_lspkUserName
+                                            :: !(Maybe Text),
+                                            _lspkMarker :: !(Maybe Text),
+                                            _lspkMaxItems :: !(Maybe Nat)}
+                           deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'ListSSHPublicKeys' with the minimum fields required to make a request.
 --
@@ -76,10 +72,9 @@ data ListSSHPublicKeys =
 -- * 'lspkMaxItems' - (Optional) Use this only when paginating results to indicate the maximum number of items you want in the response. If additional items exist beyond the maximum you specify, the @IsTruncated@ response element is @true@ . If you do not include this parameter, it defaults to 100. Note that IAM might return fewer results, even when there are more results available. In that case, the @IsTruncated@ response element returns @true@ and @Marker@ contains a value to include in the subsequent call that tells the service where to continue from.
 listSSHPublicKeys
     :: ListSSHPublicKeys
-listSSHPublicKeys =
-  ListSSHPublicKeys'
-    {_lspkUserName = Nothing, _lspkMarker = Nothing, _lspkMaxItems = Nothing}
-
+listSSHPublicKeys
+  = ListSSHPublicKeys'{_lspkUserName = Nothing,
+                       _lspkMarker = Nothing, _lspkMaxItems = Nothing}
 
 -- | The name of the IAM user to list SSH public keys for. If none is specified, the @UserName@ field is determined implicitly based on the AWS access key used to sign the request. This parameter allows (per its <http://wikipedia.org/wiki/regex regex pattern> ) a string of characters consisting of upper and lowercase alphanumeric characters with no spaces. You can also include any of the following characters: _+=,.@-
 lspkUserName :: Lens' ListSSHPublicKeys (Maybe Text)
@@ -136,15 +131,18 @@ instance ToQuery ListSSHPublicKeys where
 --
 --
 -- /See:/ 'listSSHPublicKeysResponse' smart constructor.
-data ListSSHPublicKeysResponse =
-  ListSSHPublicKeysResponse'
-    { _lspkrsSSHPublicKeys  :: !(Maybe [SSHPublicKeyMetadata])
-    , _lspkrsMarker         :: !(Maybe Text)
-    , _lspkrsIsTruncated    :: !(Maybe Bool)
-    , _lspkrsResponseStatus :: !Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data ListSSHPublicKeysResponse = ListSSHPublicKeysResponse'{_lspkrsSSHPublicKeys
+                                                            ::
+                                                            !(Maybe
+                                                                [SSHPublicKeyMetadata]),
+                                                            _lspkrsMarker ::
+                                                            !(Maybe Text),
+                                                            _lspkrsIsTruncated
+                                                            :: !(Maybe Bool),
+                                                            _lspkrsResponseStatus
+                                                            :: !Int}
+                                   deriving (Eq, Read, Show, Data, Typeable,
+                                             Generic)
 
 -- | Creates a value of 'ListSSHPublicKeysResponse' with the minimum fields required to make a request.
 --
@@ -160,14 +158,12 @@ data ListSSHPublicKeysResponse =
 listSSHPublicKeysResponse
     :: Int -- ^ 'lspkrsResponseStatus'
     -> ListSSHPublicKeysResponse
-listSSHPublicKeysResponse pResponseStatus_ =
-  ListSSHPublicKeysResponse'
-    { _lspkrsSSHPublicKeys = Nothing
-    , _lspkrsMarker = Nothing
-    , _lspkrsIsTruncated = Nothing
-    , _lspkrsResponseStatus = pResponseStatus_
-    }
-
+listSSHPublicKeysResponse pResponseStatus_
+  = ListSSHPublicKeysResponse'{_lspkrsSSHPublicKeys =
+                                 Nothing,
+                               _lspkrsMarker = Nothing,
+                               _lspkrsIsTruncated = Nothing,
+                               _lspkrsResponseStatus = pResponseStatus_}
 
 -- | A list of the SSH public keys assigned to IAM user.
 lspkrsSSHPublicKeys :: Lens' ListSSHPublicKeysResponse [SSHPublicKeyMetadata]

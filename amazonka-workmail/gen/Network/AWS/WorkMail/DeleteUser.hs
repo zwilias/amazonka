@@ -18,7 +18,7 @@
 -- Stability   : auto-generated
 -- Portability : non-portable (GHC extensions)
 --
--- Deletes a user from Amazon WorkMail and all subsequent systems. The action can't be undone. The mailbox is kept as-is for a minimum of 30 days, without any means to restore it.
+-- Deletes a user from Amazon WorkMail and all subsequent systems. The action can't be undone. The mailbox is kept as-is for a minimum of 30 days, without any means to restore it. 
 --
 --
 module Network.AWS.WorkMail.DeleteUser
@@ -42,16 +42,12 @@ import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 import Network.AWS.WorkMail.Types
-import Network.AWS.WorkMail.Types.Product
 
 -- | /See:/ 'deleteUser' smart constructor.
-data DeleteUser =
-  DeleteUser'
-    { _delOrganizationId :: !Text
-    , _delUserId         :: !Text
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data DeleteUser = DeleteUser'{_delOrganizationId ::
+                              !Text,
+                              _delUserId :: !Text}
+                    deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'DeleteUser' with the minimum fields required to make a request.
 --
@@ -64,9 +60,9 @@ deleteUser
     :: Text -- ^ 'delOrganizationId'
     -> Text -- ^ 'delUserId'
     -> DeleteUser
-deleteUser pOrganizationId_ pUserId_ =
-  DeleteUser' {_delOrganizationId = pOrganizationId_, _delUserId = pUserId_}
-
+deleteUser pOrganizationId_ pUserId_
+  = DeleteUser'{_delOrganizationId = pOrganizationId_,
+                _delUserId = pUserId_}
 
 -- | The organization that contains the user.
 delOrganizationId :: Lens' DeleteUser Text
@@ -111,12 +107,10 @@ instance ToQuery DeleteUser where
         toQuery = const mempty
 
 -- | /See:/ 'deleteUserResponse' smart constructor.
-newtype DeleteUserResponse =
-  DeleteUserResponse'
-    { _delrsResponseStatus :: Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+newtype DeleteUserResponse = DeleteUserResponse'{_delrsResponseStatus
+                                                 :: Int}
+                               deriving (Eq, Read, Show, Data, Typeable,
+                                         Generic)
 
 -- | Creates a value of 'DeleteUserResponse' with the minimum fields required to make a request.
 --
@@ -126,9 +120,9 @@ newtype DeleteUserResponse =
 deleteUserResponse
     :: Int -- ^ 'delrsResponseStatus'
     -> DeleteUserResponse
-deleteUserResponse pResponseStatus_ =
-  DeleteUserResponse' {_delrsResponseStatus = pResponseStatus_}
-
+deleteUserResponse pResponseStatus_
+  = DeleteUserResponse'{_delrsResponseStatus =
+                          pResponseStatus_}
 
 -- | -- | The response status code.
 delrsResponseStatus :: Lens' DeleteUserResponse Int

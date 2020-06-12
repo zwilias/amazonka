@@ -40,22 +40,18 @@ module Network.AWS.Glue.DeleteTableVersion
     ) where
 
 import Network.AWS.Glue.Types
-import Network.AWS.Glue.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 
 -- | /See:/ 'deleteTableVersion' smart constructor.
-data DeleteTableVersion =
-  DeleteTableVersion'
-    { _dtvCatalogId    :: !(Maybe Text)
-    , _dtvDatabaseName :: !Text
-    , _dtvTableName    :: !Text
-    , _dtvVersionId    :: !Text
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data DeleteTableVersion = DeleteTableVersion'{_dtvCatalogId
+                                              :: !(Maybe Text),
+                                              _dtvDatabaseName :: !Text,
+                                              _dtvTableName :: !Text,
+                                              _dtvVersionId :: !Text}
+                            deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'DeleteTableVersion' with the minimum fields required to make a request.
 --
@@ -73,14 +69,12 @@ deleteTableVersion
     -> Text -- ^ 'dtvTableName'
     -> Text -- ^ 'dtvVersionId'
     -> DeleteTableVersion
-deleteTableVersion pDatabaseName_ pTableName_ pVersionId_ =
-  DeleteTableVersion'
-    { _dtvCatalogId = Nothing
-    , _dtvDatabaseName = pDatabaseName_
-    , _dtvTableName = pTableName_
-    , _dtvVersionId = pVersionId_
-    }
-
+deleteTableVersion pDatabaseName_ pTableName_
+  pVersionId_
+  = DeleteTableVersion'{_dtvCatalogId = Nothing,
+                        _dtvDatabaseName = pDatabaseName_,
+                        _dtvTableName = pTableName_,
+                        _dtvVersionId = pVersionId_}
 
 -- | The ID of the Data Catalog where the tables reside. If none is supplied, the AWS account ID is used by default.
 dtvCatalogId :: Lens' DeleteTableVersion (Maybe Text)
@@ -136,12 +130,10 @@ instance ToQuery DeleteTableVersion where
         toQuery = const mempty
 
 -- | /See:/ 'deleteTableVersionResponse' smart constructor.
-newtype DeleteTableVersionResponse =
-  DeleteTableVersionResponse'
-    { _dtvrsResponseStatus :: Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+newtype DeleteTableVersionResponse = DeleteTableVersionResponse'{_dtvrsResponseStatus
+                                                                 :: Int}
+                                       deriving (Eq, Read, Show, Data, Typeable,
+                                                 Generic)
 
 -- | Creates a value of 'DeleteTableVersionResponse' with the minimum fields required to make a request.
 --
@@ -151,9 +143,9 @@ newtype DeleteTableVersionResponse =
 deleteTableVersionResponse
     :: Int -- ^ 'dtvrsResponseStatus'
     -> DeleteTableVersionResponse
-deleteTableVersionResponse pResponseStatus_ =
-  DeleteTableVersionResponse' {_dtvrsResponseStatus = pResponseStatus_}
-
+deleteTableVersionResponse pResponseStatus_
+  = DeleteTableVersionResponse'{_dtvrsResponseStatus =
+                                  pResponseStatus_}
 
 -- | -- | The response status code.
 dtvrsResponseStatus :: Lens' DeleteTableVersionResponse Int

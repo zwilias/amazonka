@@ -42,19 +42,16 @@ module Network.AWS.Greengrass.GetDeviceDefinition
     ) where
 
 import Network.AWS.Greengrass.Types
-import Network.AWS.Greengrass.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 
 -- | /See:/ 'getDeviceDefinition' smart constructor.
-newtype GetDeviceDefinition =
-  GetDeviceDefinition'
-    { _gddDeviceDefinitionId :: Text
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+newtype GetDeviceDefinition = GetDeviceDefinition'{_gddDeviceDefinitionId
+                                                   :: Text}
+                                deriving (Eq, Read, Show, Data, Typeable,
+                                          Generic)
 
 -- | Creates a value of 'GetDeviceDefinition' with the minimum fields required to make a request.
 --
@@ -64,9 +61,9 @@ newtype GetDeviceDefinition =
 getDeviceDefinition
     :: Text -- ^ 'gddDeviceDefinitionId'
     -> GetDeviceDefinition
-getDeviceDefinition pDeviceDefinitionId_ =
-  GetDeviceDefinition' {_gddDeviceDefinitionId = pDeviceDefinitionId_}
-
+getDeviceDefinition pDeviceDefinitionId_
+  = GetDeviceDefinition'{_gddDeviceDefinitionId =
+                           pDeviceDefinitionId_}
 
 -- | The ID of the device definition.
 gddDeviceDefinitionId :: Lens' GetDeviceDefinition Text
@@ -109,19 +106,28 @@ instance ToQuery GetDeviceDefinition where
         toQuery = const mempty
 
 -- | /See:/ 'getDeviceDefinitionResponse' smart constructor.
-data GetDeviceDefinitionResponse =
-  GetDeviceDefinitionResponse'
-    { _gddrsLatestVersionARN     :: !(Maybe Text)
-    , _gddrsARN                  :: !(Maybe Text)
-    , _gddrsName                 :: !(Maybe Text)
-    , _gddrsCreationTimestamp    :: !(Maybe Text)
-    , _gddrsId                   :: !(Maybe Text)
-    , _gddrsLatestVersion        :: !(Maybe Text)
-    , _gddrsLastUpdatedTimestamp :: !(Maybe Text)
-    , _gddrsResponseStatus       :: !Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data GetDeviceDefinitionResponse = GetDeviceDefinitionResponse'{_gddrsLatestVersionARN
+                                                                ::
+                                                                !(Maybe Text),
+                                                                _gddrsARN ::
+                                                                !(Maybe Text),
+                                                                _gddrsName ::
+                                                                !(Maybe Text),
+                                                                _gddrsCreationTimestamp
+                                                                ::
+                                                                !(Maybe Text),
+                                                                _gddrsId ::
+                                                                !(Maybe Text),
+                                                                _gddrsLatestVersion
+                                                                ::
+                                                                !(Maybe Text),
+                                                                _gddrsLastUpdatedTimestamp
+                                                                ::
+                                                                !(Maybe Text),
+                                                                _gddrsResponseStatus
+                                                                :: !Int}
+                                     deriving (Eq, Read, Show, Data, Typeable,
+                                               Generic)
 
 -- | Creates a value of 'GetDeviceDefinitionResponse' with the minimum fields required to make a request.
 --
@@ -145,18 +151,15 @@ data GetDeviceDefinitionResponse =
 getDeviceDefinitionResponse
     :: Int -- ^ 'gddrsResponseStatus'
     -> GetDeviceDefinitionResponse
-getDeviceDefinitionResponse pResponseStatus_ =
-  GetDeviceDefinitionResponse'
-    { _gddrsLatestVersionARN = Nothing
-    , _gddrsARN = Nothing
-    , _gddrsName = Nothing
-    , _gddrsCreationTimestamp = Nothing
-    , _gddrsId = Nothing
-    , _gddrsLatestVersion = Nothing
-    , _gddrsLastUpdatedTimestamp = Nothing
-    , _gddrsResponseStatus = pResponseStatus_
-    }
-
+getDeviceDefinitionResponse pResponseStatus_
+  = GetDeviceDefinitionResponse'{_gddrsLatestVersionARN
+                                   = Nothing,
+                                 _gddrsARN = Nothing, _gddrsName = Nothing,
+                                 _gddrsCreationTimestamp = Nothing,
+                                 _gddrsId = Nothing,
+                                 _gddrsLatestVersion = Nothing,
+                                 _gddrsLastUpdatedTimestamp = Nothing,
+                                 _gddrsResponseStatus = pResponseStatus_}
 
 -- | The ARN of the latest version of the definition.
 gddrsLatestVersionARN :: Lens' GetDeviceDefinitionResponse (Maybe Text)

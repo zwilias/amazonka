@@ -65,22 +65,18 @@ module Network.AWS.EC2.CreateSnapshot
     ) where
 
 import Network.AWS.EC2.Types
-import Network.AWS.EC2.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 
 -- | /See:/ 'createSnapshot' smart constructor.
-data CreateSnapshot =
-  CreateSnapshot'
-    { _ccTagSpecifications :: !(Maybe [TagSpecification])
-    , _ccDescription       :: !(Maybe Text)
-    , _ccDryRun            :: !(Maybe Bool)
-    , _ccVolumeId          :: !Text
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data CreateSnapshot = CreateSnapshot'{_ccTagSpecifications
+                                      :: !(Maybe [TagSpecification]),
+                                      _ccDescription :: !(Maybe Text),
+                                      _ccDryRun :: !(Maybe Bool),
+                                      _ccVolumeId :: !Text}
+                        deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'CreateSnapshot' with the minimum fields required to make a request.
 --
@@ -96,14 +92,10 @@ data CreateSnapshot =
 createSnapshot
     :: Text -- ^ 'ccVolumeId'
     -> CreateSnapshot
-createSnapshot pVolumeId_ =
-  CreateSnapshot'
-    { _ccTagSpecifications = Nothing
-    , _ccDescription = Nothing
-    , _ccDryRun = Nothing
-    , _ccVolumeId = pVolumeId_
-    }
-
+createSnapshot pVolumeId_
+  = CreateSnapshot'{_ccTagSpecifications = Nothing,
+                    _ccDescription = Nothing, _ccDryRun = Nothing,
+                    _ccVolumeId = pVolumeId_}
 
 -- | The tags to apply to the snapshot during creation.
 ccTagSpecifications :: Lens' CreateSnapshot [TagSpecification]

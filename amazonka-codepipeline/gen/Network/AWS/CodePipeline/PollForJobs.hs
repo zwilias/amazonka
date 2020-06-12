@@ -42,7 +42,6 @@ module Network.AWS.CodePipeline.PollForJobs
     ) where
 
 import Network.AWS.CodePipeline.Types
-import Network.AWS.CodePipeline.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.Request
@@ -53,14 +52,11 @@ import Network.AWS.Response
 --
 --
 -- /See:/ 'pollForJobs' smart constructor.
-data PollForJobs =
-  PollForJobs'
-    { _pfjMaxBatchSize :: !(Maybe Nat)
-    , _pfjQueryParam   :: !(Maybe (Map Text Text))
-    , _pfjActionTypeId :: !ActionTypeId
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data PollForJobs = PollForJobs'{_pfjMaxBatchSize ::
+                                !(Maybe Nat),
+                                _pfjQueryParam :: !(Maybe (Map Text Text)),
+                                _pfjActionTypeId :: !ActionTypeId}
+                     deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'PollForJobs' with the minimum fields required to make a request.
 --
@@ -74,13 +70,10 @@ data PollForJobs =
 pollForJobs
     :: ActionTypeId -- ^ 'pfjActionTypeId'
     -> PollForJobs
-pollForJobs pActionTypeId_ =
-  PollForJobs'
-    { _pfjMaxBatchSize = Nothing
-    , _pfjQueryParam = Nothing
-    , _pfjActionTypeId = pActionTypeId_
-    }
-
+pollForJobs pActionTypeId_
+  = PollForJobs'{_pfjMaxBatchSize = Nothing,
+                 _pfjQueryParam = Nothing,
+                 _pfjActionTypeId = pActionTypeId_}
 
 -- | The maximum number of jobs to return in a poll for jobs call.
 pfjMaxBatchSize :: Lens' PollForJobs (Maybe Natural)
@@ -135,13 +128,10 @@ instance ToQuery PollForJobs where
 --
 --
 -- /See:/ 'pollForJobsResponse' smart constructor.
-data PollForJobsResponse =
-  PollForJobsResponse'
-    { _pfjrsJobs           :: !(Maybe [Job])
-    , _pfjrsResponseStatus :: !Int
-    }
-  deriving (Eq, Show, Data, Typeable, Generic)
-
+data PollForJobsResponse = PollForJobsResponse'{_pfjrsJobs
+                                                :: !(Maybe [Job]),
+                                                _pfjrsResponseStatus :: !Int}
+                             deriving (Eq, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'PollForJobsResponse' with the minimum fields required to make a request.
 --
@@ -153,10 +143,9 @@ data PollForJobsResponse =
 pollForJobsResponse
     :: Int -- ^ 'pfjrsResponseStatus'
     -> PollForJobsResponse
-pollForJobsResponse pResponseStatus_ =
-  PollForJobsResponse'
-    {_pfjrsJobs = Nothing, _pfjrsResponseStatus = pResponseStatus_}
-
+pollForJobsResponse pResponseStatus_
+  = PollForJobsResponse'{_pfjrsJobs = Nothing,
+                         _pfjrsResponseStatus = pResponseStatus_}
 
 -- | Information about the jobs to take action on.
 pfjrsJobs :: Lens' PollForJobsResponse [Job]

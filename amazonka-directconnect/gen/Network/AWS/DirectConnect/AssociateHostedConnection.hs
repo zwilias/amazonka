@@ -54,20 +54,18 @@ module Network.AWS.DirectConnect.AssociateHostedConnection
     ) where
 
 import Network.AWS.DirectConnect.Types
-import Network.AWS.DirectConnect.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 
 -- | /See:/ 'associateHostedConnection' smart constructor.
-data AssociateHostedConnection =
-  AssociateHostedConnection'
-    { _assConnectionId       :: !Text
-    , _assParentConnectionId :: !Text
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data AssociateHostedConnection = AssociateHostedConnection'{_assConnectionId
+                                                            :: !Text,
+                                                            _assParentConnectionId
+                                                            :: !Text}
+                                   deriving (Eq, Read, Show, Data, Typeable,
+                                             Generic)
 
 -- | Creates a value of 'AssociateHostedConnection' with the minimum fields required to make a request.
 --
@@ -80,12 +78,11 @@ associateHostedConnection
     :: Text -- ^ 'assConnectionId'
     -> Text -- ^ 'assParentConnectionId'
     -> AssociateHostedConnection
-associateHostedConnection pConnectionId_ pParentConnectionId_ =
-  AssociateHostedConnection'
-    { _assConnectionId = pConnectionId_
-    , _assParentConnectionId = pParentConnectionId_
-    }
-
+associateHostedConnection pConnectionId_
+  pParentConnectionId_
+  = AssociateHostedConnection'{_assConnectionId =
+                                 pConnectionId_,
+                               _assParentConnectionId = pParentConnectionId_}
 
 -- | The ID of the hosted connection.
 assConnectionId :: Lens' AssociateHostedConnection Text

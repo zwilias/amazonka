@@ -43,16 +43,12 @@ import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 import Network.AWS.SSM.Types
-import Network.AWS.SSM.Types.Product
 
 -- | /See:/ 'describeDocument' smart constructor.
-data DescribeDocument =
-  DescribeDocument'
-    { _ddDocumentVersion :: !(Maybe Text)
-    , _ddName            :: !Text
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data DescribeDocument = DescribeDocument'{_ddDocumentVersion
+                                          :: !(Maybe Text),
+                                          _ddName :: !Text}
+                          deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'DescribeDocument' with the minimum fields required to make a request.
 --
@@ -64,9 +60,9 @@ data DescribeDocument =
 describeDocument
     :: Text -- ^ 'ddName'
     -> DescribeDocument
-describeDocument pName_ =
-  DescribeDocument' {_ddDocumentVersion = Nothing, _ddName = pName_}
-
+describeDocument pName_
+  = DescribeDocument'{_ddDocumentVersion = Nothing,
+                      _ddName = pName_}
 
 -- | The document version for which you want information. Can be a specific version or the default version.
 ddDocumentVersion :: Lens' DescribeDocument (Maybe Text)
@@ -112,13 +108,14 @@ instance ToQuery DescribeDocument where
         toQuery = const mempty
 
 -- | /See:/ 'describeDocumentResponse' smart constructor.
-data DescribeDocumentResponse =
-  DescribeDocumentResponse'
-    { _desrsDocument       :: !(Maybe DocumentDescription)
-    , _desrsResponseStatus :: !Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data DescribeDocumentResponse = DescribeDocumentResponse'{_desrsDocument
+                                                          ::
+                                                          !(Maybe
+                                                              DocumentDescription),
+                                                          _desrsResponseStatus
+                                                          :: !Int}
+                                  deriving (Eq, Read, Show, Data, Typeable,
+                                            Generic)
 
 -- | Creates a value of 'DescribeDocumentResponse' with the minimum fields required to make a request.
 --
@@ -130,10 +127,9 @@ data DescribeDocumentResponse =
 describeDocumentResponse
     :: Int -- ^ 'desrsResponseStatus'
     -> DescribeDocumentResponse
-describeDocumentResponse pResponseStatus_ =
-  DescribeDocumentResponse'
-    {_desrsDocument = Nothing, _desrsResponseStatus = pResponseStatus_}
-
+describeDocumentResponse pResponseStatus_
+  = DescribeDocumentResponse'{_desrsDocument = Nothing,
+                              _desrsResponseStatus = pResponseStatus_}
 
 -- | Information about the Systems Manager document.
 desrsDocument :: Lens' DescribeDocumentResponse (Maybe DocumentDescription)

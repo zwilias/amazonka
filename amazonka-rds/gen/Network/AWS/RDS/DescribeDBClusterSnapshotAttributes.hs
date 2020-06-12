@@ -44,21 +44,19 @@ module Network.AWS.RDS.DescribeDBClusterSnapshotAttributes
 import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.RDS.Types
-import Network.AWS.RDS.Types.Product
 import Network.AWS.Request
 import Network.AWS.Response
 
--- |
+-- | 
 --
 --
 --
 -- /See:/ 'describeDBClusterSnapshotAttributes' smart constructor.
-newtype DescribeDBClusterSnapshotAttributes =
-  DescribeDBClusterSnapshotAttributes'
-    { _ddcsaDBClusterSnapshotIdentifier :: Text
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+newtype DescribeDBClusterSnapshotAttributes = DescribeDBClusterSnapshotAttributes'{_ddcsaDBClusterSnapshotIdentifier
+                                                                                   ::
+                                                                                   Text}
+                                                deriving (Eq, Read, Show, Data,
+                                                          Typeable, Generic)
 
 -- | Creates a value of 'DescribeDBClusterSnapshotAttributes' with the minimum fields required to make a request.
 --
@@ -68,10 +66,10 @@ newtype DescribeDBClusterSnapshotAttributes =
 describeDBClusterSnapshotAttributes
     :: Text -- ^ 'ddcsaDBClusterSnapshotIdentifier'
     -> DescribeDBClusterSnapshotAttributes
-describeDBClusterSnapshotAttributes pDBClusterSnapshotIdentifier_ =
-  DescribeDBClusterSnapshotAttributes'
-    {_ddcsaDBClusterSnapshotIdentifier = pDBClusterSnapshotIdentifier_}
-
+describeDBClusterSnapshotAttributes
+  pDBClusterSnapshotIdentifier_
+  = DescribeDBClusterSnapshotAttributes'{_ddcsaDBClusterSnapshotIdentifier
+                                           = pDBClusterSnapshotIdentifier_}
 
 -- | The identifier for the DB cluster snapshot to describe the attributes for.
 ddcsaDBClusterSnapshotIdentifier :: Lens' DescribeDBClusterSnapshotAttributes Text
@@ -118,13 +116,16 @@ instance ToQuery DescribeDBClusterSnapshotAttributes
                  _ddcsaDBClusterSnapshotIdentifier]
 
 -- | /See:/ 'describeDBClusterSnapshotAttributesResponse' smart constructor.
-data DescribeDBClusterSnapshotAttributesResponse =
-  DescribeDBClusterSnapshotAttributesResponse'
-    { _ddcsarsDBClusterSnapshotAttributesResult :: !(Maybe DBClusterSnapshotAttributesResult)
-    , _ddcsarsResponseStatus :: !Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data DescribeDBClusterSnapshotAttributesResponse = DescribeDBClusterSnapshotAttributesResponse'{_ddcsarsDBClusterSnapshotAttributesResult
+                                                                                                ::
+                                                                                                !(Maybe
+                                                                                                    DBClusterSnapshotAttributesResult),
+                                                                                                _ddcsarsResponseStatus
+                                                                                                ::
+                                                                                                !Int}
+                                                     deriving (Eq, Read, Show,
+                                                               Data, Typeable,
+                                                               Generic)
 
 -- | Creates a value of 'DescribeDBClusterSnapshotAttributesResponse' with the minimum fields required to make a request.
 --
@@ -136,12 +137,12 @@ data DescribeDBClusterSnapshotAttributesResponse =
 describeDBClusterSnapshotAttributesResponse
     :: Int -- ^ 'ddcsarsResponseStatus'
     -> DescribeDBClusterSnapshotAttributesResponse
-describeDBClusterSnapshotAttributesResponse pResponseStatus_ =
-  DescribeDBClusterSnapshotAttributesResponse'
-    { _ddcsarsDBClusterSnapshotAttributesResult = Nothing
-    , _ddcsarsResponseStatus = pResponseStatus_
-    }
-
+describeDBClusterSnapshotAttributesResponse
+  pResponseStatus_
+  = DescribeDBClusterSnapshotAttributesResponse'{_ddcsarsDBClusterSnapshotAttributesResult
+                                                   = Nothing,
+                                                 _ddcsarsResponseStatus =
+                                                   pResponseStatus_}
 
 -- | Undocumented member.
 ddcsarsDBClusterSnapshotAttributesResult :: Lens' DescribeDBClusterSnapshotAttributesResponse (Maybe DBClusterSnapshotAttributesResult)

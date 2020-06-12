@@ -43,7 +43,6 @@ module Network.AWS.CloudTrail.ListPublicKeys
     ) where
 
 import Network.AWS.CloudTrail.Types
-import Network.AWS.CloudTrail.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Pager
 import Network.AWS.Prelude
@@ -55,14 +54,11 @@ import Network.AWS.Response
 --
 --
 -- /See:/ 'listPublicKeys' smart constructor.
-data ListPublicKeys =
-  ListPublicKeys'
-    { _lpkStartTime :: !(Maybe POSIX)
-    , _lpkNextToken :: !(Maybe Text)
-    , _lpkEndTime   :: !(Maybe POSIX)
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data ListPublicKeys = ListPublicKeys'{_lpkStartTime
+                                      :: !(Maybe POSIX),
+                                      _lpkNextToken :: !(Maybe Text),
+                                      _lpkEndTime :: !(Maybe POSIX)}
+                        deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'ListPublicKeys' with the minimum fields required to make a request.
 --
@@ -75,10 +71,9 @@ data ListPublicKeys =
 -- * 'lpkEndTime' - Optionally specifies, in UTC, the end of the time range to look up public keys for CloudTrail digest files. If not specified, the current time is used.
 listPublicKeys
     :: ListPublicKeys
-listPublicKeys =
-  ListPublicKeys'
-    {_lpkStartTime = Nothing, _lpkNextToken = Nothing, _lpkEndTime = Nothing}
-
+listPublicKeys
+  = ListPublicKeys'{_lpkStartTime = Nothing,
+                    _lpkNextToken = Nothing, _lpkEndTime = Nothing}
 
 -- | Optionally specifies, in UTC, the start of the time range to look up public keys for CloudTrail digest files. If not specified, the current time is used, and the current public key is returned.
 lpkStartTime :: Lens' ListPublicKeys (Maybe UTCTime)
@@ -143,14 +138,14 @@ instance ToQuery ListPublicKeys where
 --
 --
 -- /See:/ 'listPublicKeysResponse' smart constructor.
-data ListPublicKeysResponse =
-  ListPublicKeysResponse'
-    { _lpkrsPublicKeyList  :: !(Maybe [PublicKey])
-    , _lpkrsNextToken      :: !(Maybe Text)
-    , _lpkrsResponseStatus :: !Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data ListPublicKeysResponse = ListPublicKeysResponse'{_lpkrsPublicKeyList
+                                                      :: !(Maybe [PublicKey]),
+                                                      _lpkrsNextToken ::
+                                                      !(Maybe Text),
+                                                      _lpkrsResponseStatus ::
+                                                      !Int}
+                                deriving (Eq, Read, Show, Data, Typeable,
+                                          Generic)
 
 -- | Creates a value of 'ListPublicKeysResponse' with the minimum fields required to make a request.
 --
@@ -164,13 +159,11 @@ data ListPublicKeysResponse =
 listPublicKeysResponse
     :: Int -- ^ 'lpkrsResponseStatus'
     -> ListPublicKeysResponse
-listPublicKeysResponse pResponseStatus_ =
-  ListPublicKeysResponse'
-    { _lpkrsPublicKeyList = Nothing
-    , _lpkrsNextToken = Nothing
-    , _lpkrsResponseStatus = pResponseStatus_
-    }
-
+listPublicKeysResponse pResponseStatus_
+  = ListPublicKeysResponse'{_lpkrsPublicKeyList =
+                              Nothing,
+                            _lpkrsNextToken = Nothing,
+                            _lpkrsResponseStatus = pResponseStatus_}
 
 -- | Contains an array of PublicKey objects.
 lpkrsPublicKeyList :: Lens' ListPublicKeysResponse [PublicKey]

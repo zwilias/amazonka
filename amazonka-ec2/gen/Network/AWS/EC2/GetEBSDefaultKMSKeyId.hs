@@ -40,19 +40,16 @@ module Network.AWS.EC2.GetEBSDefaultKMSKeyId
     ) where
 
 import Network.AWS.EC2.Types
-import Network.AWS.EC2.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 
 -- | /See:/ 'getEBSDefaultKMSKeyId' smart constructor.
-newtype GetEBSDefaultKMSKeyId =
-  GetEBSDefaultKMSKeyId'
-    { _gedkkiDryRun :: Maybe Bool
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+newtype GetEBSDefaultKMSKeyId = GetEBSDefaultKMSKeyId'{_gedkkiDryRun
+                                                       :: Maybe Bool}
+                                  deriving (Eq, Read, Show, Data, Typeable,
+                                            Generic)
 
 -- | Creates a value of 'GetEBSDefaultKMSKeyId' with the minimum fields required to make a request.
 --
@@ -61,8 +58,8 @@ newtype GetEBSDefaultKMSKeyId =
 -- * 'gedkkiDryRun' - Checks whether you have the required permissions for the action, without actually making the request, and provides an error response. If you have the required permissions, the error response is @DryRunOperation@ . Otherwise, it is @UnauthorizedOperation@ .
 getEBSDefaultKMSKeyId
     :: GetEBSDefaultKMSKeyId
-getEBSDefaultKMSKeyId = GetEBSDefaultKMSKeyId' {_gedkkiDryRun = Nothing}
-
+getEBSDefaultKMSKeyId
+  = GetEBSDefaultKMSKeyId'{_gedkkiDryRun = Nothing}
 
 -- | Checks whether you have the required permissions for the action, without actually making the request, and provides an error response. If you have the required permissions, the error response is @DryRunOperation@ . Otherwise, it is @UnauthorizedOperation@ .
 gedkkiDryRun :: Lens' GetEBSDefaultKMSKeyId (Maybe Bool)
@@ -96,13 +93,14 @@ instance ToQuery GetEBSDefaultKMSKeyId where
                "DryRun" =: _gedkkiDryRun]
 
 -- | /See:/ 'getEBSDefaultKMSKeyIdResponse' smart constructor.
-data GetEBSDefaultKMSKeyIdResponse =
-  GetEBSDefaultKMSKeyIdResponse'
-    { _gedkkirsKMSKeyId       :: !(Maybe Text)
-    , _gedkkirsResponseStatus :: !Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data GetEBSDefaultKMSKeyIdResponse = GetEBSDefaultKMSKeyIdResponse'{_gedkkirsKMSKeyId
+                                                                    ::
+                                                                    !(Maybe
+                                                                        Text),
+                                                                    _gedkkirsResponseStatus
+                                                                    :: !Int}
+                                       deriving (Eq, Read, Show, Data, Typeable,
+                                                 Generic)
 
 -- | Creates a value of 'GetEBSDefaultKMSKeyIdResponse' with the minimum fields required to make a request.
 --
@@ -114,10 +112,10 @@ data GetEBSDefaultKMSKeyIdResponse =
 getEBSDefaultKMSKeyIdResponse
     :: Int -- ^ 'gedkkirsResponseStatus'
     -> GetEBSDefaultKMSKeyIdResponse
-getEBSDefaultKMSKeyIdResponse pResponseStatus_ =
-  GetEBSDefaultKMSKeyIdResponse'
-    {_gedkkirsKMSKeyId = Nothing, _gedkkirsResponseStatus = pResponseStatus_}
-
+getEBSDefaultKMSKeyIdResponse pResponseStatus_
+  = GetEBSDefaultKMSKeyIdResponse'{_gedkkirsKMSKeyId =
+                                     Nothing,
+                                   _gedkkirsResponseStatus = pResponseStatus_}
 
 -- | The Amazon Resource Name (ARN) of the default CMK for encryption by default.
 gedkkirsKMSKeyId :: Lens' GetEBSDefaultKMSKeyIdResponse (Maybe Text)

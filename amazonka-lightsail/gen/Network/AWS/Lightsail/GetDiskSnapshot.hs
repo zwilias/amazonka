@@ -39,18 +39,14 @@ module Network.AWS.Lightsail.GetDiskSnapshot
 
 import Network.AWS.Lens
 import Network.AWS.Lightsail.Types
-import Network.AWS.Lightsail.Types.Product
 import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 
 -- | /See:/ 'getDiskSnapshot' smart constructor.
-newtype GetDiskSnapshot =
-  GetDiskSnapshot'
-    { _gdsDiskSnapshotName :: Text
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+newtype GetDiskSnapshot = GetDiskSnapshot'{_gdsDiskSnapshotName
+                                           :: Text}
+                            deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'GetDiskSnapshot' with the minimum fields required to make a request.
 --
@@ -60,9 +56,9 @@ newtype GetDiskSnapshot =
 getDiskSnapshot
     :: Text -- ^ 'gdsDiskSnapshotName'
     -> GetDiskSnapshot
-getDiskSnapshot pDiskSnapshotName_ =
-  GetDiskSnapshot' {_gdsDiskSnapshotName = pDiskSnapshotName_}
-
+getDiskSnapshot pDiskSnapshotName_
+  = GetDiskSnapshot'{_gdsDiskSnapshotName =
+                       pDiskSnapshotName_}
 
 -- | The name of the disk snapshot (e.g., @my-disk-snapshot@ ).
 gdsDiskSnapshotName :: Lens' GetDiskSnapshot Text
@@ -103,13 +99,13 @@ instance ToQuery GetDiskSnapshot where
         toQuery = const mempty
 
 -- | /See:/ 'getDiskSnapshotResponse' smart constructor.
-data GetDiskSnapshotResponse =
-  GetDiskSnapshotResponse'
-    { _gdsrsDiskSnapshot   :: !(Maybe DiskSnapshot)
-    , _gdsrsResponseStatus :: !Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data GetDiskSnapshotResponse = GetDiskSnapshotResponse'{_gdsrsDiskSnapshot
+                                                        ::
+                                                        !(Maybe DiskSnapshot),
+                                                        _gdsrsResponseStatus ::
+                                                        !Int}
+                                 deriving (Eq, Read, Show, Data, Typeable,
+                                           Generic)
 
 -- | Creates a value of 'GetDiskSnapshotResponse' with the minimum fields required to make a request.
 --
@@ -121,10 +117,10 @@ data GetDiskSnapshotResponse =
 getDiskSnapshotResponse
     :: Int -- ^ 'gdsrsResponseStatus'
     -> GetDiskSnapshotResponse
-getDiskSnapshotResponse pResponseStatus_ =
-  GetDiskSnapshotResponse'
-    {_gdsrsDiskSnapshot = Nothing, _gdsrsResponseStatus = pResponseStatus_}
-
+getDiskSnapshotResponse pResponseStatus_
+  = GetDiskSnapshotResponse'{_gdsrsDiskSnapshot =
+                               Nothing,
+                             _gdsrsResponseStatus = pResponseStatus_}
 
 -- | An object containing information about the disk snapshot.
 gdsrsDiskSnapshot :: Lens' GetDiskSnapshotResponse (Maybe DiskSnapshot)

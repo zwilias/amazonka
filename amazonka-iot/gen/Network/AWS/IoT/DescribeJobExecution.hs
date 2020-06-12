@@ -40,21 +40,17 @@ module Network.AWS.IoT.DescribeJobExecution
     ) where
 
 import Network.AWS.IoT.Types
-import Network.AWS.IoT.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 
 -- | /See:/ 'describeJobExecution' smart constructor.
-data DescribeJobExecution =
-  DescribeJobExecution'
-    { _djeExecutionNumber :: !(Maybe Integer)
-    , _djeJobId           :: !Text
-    , _djeThingName       :: !Text
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data DescribeJobExecution = DescribeJobExecution'{_djeExecutionNumber
+                                                  :: !(Maybe Integer),
+                                                  _djeJobId :: !Text,
+                                                  _djeThingName :: !Text}
+                              deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'DescribeJobExecution' with the minimum fields required to make a request.
 --
@@ -69,13 +65,10 @@ describeJobExecution
     :: Text -- ^ 'djeJobId'
     -> Text -- ^ 'djeThingName'
     -> DescribeJobExecution
-describeJobExecution pJobId_ pThingName_ =
-  DescribeJobExecution'
-    { _djeExecutionNumber = Nothing
-    , _djeJobId = pJobId_
-    , _djeThingName = pThingName_
-    }
-
+describeJobExecution pJobId_ pThingName_
+  = DescribeJobExecution'{_djeExecutionNumber =
+                            Nothing,
+                          _djeJobId = pJobId_, _djeThingName = pThingName_}
 
 -- | A string (consisting of the digits "0" through "9" which is used to specify a particular job execution on a particular device.
 djeExecutionNumber :: Lens' DescribeJobExecution (Maybe Integer)
@@ -117,13 +110,14 @@ instance ToQuery DescribeJobExecution where
           = mconcat ["executionNumber" =: _djeExecutionNumber]
 
 -- | /See:/ 'describeJobExecutionResponse' smart constructor.
-data DescribeJobExecutionResponse =
-  DescribeJobExecutionResponse'
-    { _djersExecution      :: !(Maybe JobExecution)
-    , _djersResponseStatus :: !Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data DescribeJobExecutionResponse = DescribeJobExecutionResponse'{_djersExecution
+                                                                  ::
+                                                                  !(Maybe
+                                                                      JobExecution),
+                                                                  _djersResponseStatus
+                                                                  :: !Int}
+                                      deriving (Eq, Read, Show, Data, Typeable,
+                                                Generic)
 
 -- | Creates a value of 'DescribeJobExecutionResponse' with the minimum fields required to make a request.
 --
@@ -135,10 +129,10 @@ data DescribeJobExecutionResponse =
 describeJobExecutionResponse
     :: Int -- ^ 'djersResponseStatus'
     -> DescribeJobExecutionResponse
-describeJobExecutionResponse pResponseStatus_ =
-  DescribeJobExecutionResponse'
-    {_djersExecution = Nothing, _djersResponseStatus = pResponseStatus_}
-
+describeJobExecutionResponse pResponseStatus_
+  = DescribeJobExecutionResponse'{_djersExecution =
+                                    Nothing,
+                                  _djersResponseStatus = pResponseStatus_}
 
 -- | Information about the job execution.
 djersExecution :: Lens' DescribeJobExecutionResponse (Maybe JobExecution)

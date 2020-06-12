@@ -38,7 +38,6 @@ module Network.AWS.IoT.AttachThingPrincipal
     ) where
 
 import Network.AWS.IoT.Types
-import Network.AWS.IoT.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.Request
@@ -49,13 +48,10 @@ import Network.AWS.Response
 --
 --
 -- /See:/ 'attachThingPrincipal' smart constructor.
-data AttachThingPrincipal =
-  AttachThingPrincipal'
-    { _atpThingName :: !Text
-    , _atpPrincipal :: !Text
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data AttachThingPrincipal = AttachThingPrincipal'{_atpThingName
+                                                  :: !Text,
+                                                  _atpPrincipal :: !Text}
+                              deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'AttachThingPrincipal' with the minimum fields required to make a request.
 --
@@ -68,10 +64,9 @@ attachThingPrincipal
     :: Text -- ^ 'atpThingName'
     -> Text -- ^ 'atpPrincipal'
     -> AttachThingPrincipal
-attachThingPrincipal pThingName_ pPrincipal_ =
-  AttachThingPrincipal'
-    {_atpThingName = pThingName_, _atpPrincipal = pPrincipal_}
-
+attachThingPrincipal pThingName_ pPrincipal_
+  = AttachThingPrincipal'{_atpThingName = pThingName_,
+                          _atpPrincipal = pPrincipal_}
 
 -- | The name of the thing.
 atpThingName :: Lens' AttachThingPrincipal Text
@@ -115,12 +110,10 @@ instance ToQuery AttachThingPrincipal where
 --
 --
 -- /See:/ 'attachThingPrincipalResponse' smart constructor.
-newtype AttachThingPrincipalResponse =
-  AttachThingPrincipalResponse'
-    { _atprsResponseStatus :: Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+newtype AttachThingPrincipalResponse = AttachThingPrincipalResponse'{_atprsResponseStatus
+                                                                     :: Int}
+                                         deriving (Eq, Read, Show, Data,
+                                                   Typeable, Generic)
 
 -- | Creates a value of 'AttachThingPrincipalResponse' with the minimum fields required to make a request.
 --
@@ -130,9 +123,9 @@ newtype AttachThingPrincipalResponse =
 attachThingPrincipalResponse
     :: Int -- ^ 'atprsResponseStatus'
     -> AttachThingPrincipalResponse
-attachThingPrincipalResponse pResponseStatus_ =
-  AttachThingPrincipalResponse' {_atprsResponseStatus = pResponseStatus_}
-
+attachThingPrincipalResponse pResponseStatus_
+  = AttachThingPrincipalResponse'{_atprsResponseStatus
+                                    = pResponseStatus_}
 
 -- | -- | The response status code.
 atprsResponseStatus :: Lens' AttachThingPrincipalResponse Int

@@ -48,7 +48,6 @@ module Network.AWS.CognitoIdentityProvider.SignUp
     ) where
 
 import Network.AWS.CognitoIdentityProvider.Types
-import Network.AWS.CognitoIdentityProvider.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.Request
@@ -59,20 +58,18 @@ import Network.AWS.Response
 --
 --
 -- /See:/ 'signUp' smart constructor.
-data SignUp =
-  SignUp'
-    { _suClientMetadata    :: !(Maybe (Map Text Text))
-    , _suAnalyticsMetadata :: !(Maybe AnalyticsMetadataType)
-    , _suUserContextData   :: !(Maybe UserContextDataType)
-    , _suUserAttributes    :: !(Maybe [AttributeType])
-    , _suSecretHash        :: !(Maybe (Sensitive Text))
-    , _suValidationData    :: !(Maybe [AttributeType])
-    , _suClientId          :: !(Sensitive Text)
-    , _suUsername          :: !(Sensitive Text)
-    , _suPassword          :: !(Sensitive Text)
-    }
-  deriving (Eq, Show, Data, Typeable, Generic)
-
+data SignUp = SignUp'{_suClientMetadata ::
+                      !(Maybe (Map Text Text)),
+                      _suAnalyticsMetadata ::
+                      !(Maybe AnalyticsMetadataType),
+                      _suUserContextData :: !(Maybe UserContextDataType),
+                      _suUserAttributes :: !(Maybe [AttributeType]),
+                      _suSecretHash :: !(Maybe (Sensitive Text)),
+                      _suValidationData :: !(Maybe [AttributeType]),
+                      _suClientId :: !(Sensitive Text),
+                      _suUsername :: !(Sensitive Text),
+                      _suPassword :: !(Sensitive Text)}
+                deriving (Eq, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'SignUp' with the minimum fields required to make a request.
 --
@@ -100,19 +97,15 @@ signUp
     -> Text -- ^ 'suUsername'
     -> Text -- ^ 'suPassword'
     -> SignUp
-signUp pClientId_ pUsername_ pPassword_ =
-  SignUp'
-    { _suClientMetadata = Nothing
-    , _suAnalyticsMetadata = Nothing
-    , _suUserContextData = Nothing
-    , _suUserAttributes = Nothing
-    , _suSecretHash = Nothing
-    , _suValidationData = Nothing
-    , _suClientId = _Sensitive # pClientId_
-    , _suUsername = _Sensitive # pUsername_
-    , _suPassword = _Sensitive # pPassword_
-    }
-
+signUp pClientId_ pUsername_ pPassword_
+  = SignUp'{_suClientMetadata = Nothing,
+            _suAnalyticsMetadata = Nothing,
+            _suUserContextData = Nothing,
+            _suUserAttributes = Nothing, _suSecretHash = Nothing,
+            _suValidationData = Nothing,
+            _suClientId = _Sensitive # pClientId_,
+            _suUsername = _Sensitive # pUsername_,
+            _suPassword = _Sensitive # pPassword_}
 
 -- | A map of custom key-value pairs that you can provide as input for any custom workflows that this action triggers.  You create custom workflows by assigning AWS Lambda functions to user pool triggers. When you use the SignUp API action, Amazon Cognito invokes any functions that are assigned to the following triggers: /pre sign-up/ , /custom message/ , and /post confirmation/ . When Amazon Cognito invokes any of these functions, it passes a JSON payload, which the function receives as input. This payload contains a @clientMetadata@ attribute, which provides the data that you assigned to the ClientMetadata parameter in your SignUp request. In your function code in AWS Lambda, you can process the @clientMetadata@ value to enhance your workflow for your specific needs. For more information, see <https://docs.aws.amazon.com/cognito/latest/developerguide/cognito-user-identity-pools-working-with-aws-lambda-triggers.html Customizing User Pool Workflows with Lambda Triggers> in the /Amazon Cognito Developer Guide/ .
 suClientMetadata :: Lens' SignUp (HashMap Text Text)
@@ -200,15 +193,12 @@ instance ToQuery SignUp where
 --
 --
 -- /See:/ 'signUpResponse' smart constructor.
-data SignUpResponse =
-  SignUpResponse'
-    { _sursCodeDeliveryDetails :: !(Maybe CodeDeliveryDetailsType)
-    , _sursResponseStatus      :: !Int
-    , _sursUserConfirmed       :: !Bool
-    , _sursUserSub             :: !Text
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data SignUpResponse = SignUpResponse'{_sursCodeDeliveryDetails
+                                      :: !(Maybe CodeDeliveryDetailsType),
+                                      _sursResponseStatus :: !Int,
+                                      _sursUserConfirmed :: !Bool,
+                                      _sursUserSub :: !Text}
+                        deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'SignUpResponse' with the minimum fields required to make a request.
 --
@@ -226,14 +216,12 @@ signUpResponse
     -> Bool -- ^ 'sursUserConfirmed'
     -> Text -- ^ 'sursUserSub'
     -> SignUpResponse
-signUpResponse pResponseStatus_ pUserConfirmed_ pUserSub_ =
-  SignUpResponse'
-    { _sursCodeDeliveryDetails = Nothing
-    , _sursResponseStatus = pResponseStatus_
-    , _sursUserConfirmed = pUserConfirmed_
-    , _sursUserSub = pUserSub_
-    }
-
+signUpResponse pResponseStatus_ pUserConfirmed_
+  pUserSub_
+  = SignUpResponse'{_sursCodeDeliveryDetails = Nothing,
+                    _sursResponseStatus = pResponseStatus_,
+                    _sursUserConfirmed = pUserConfirmed_,
+                    _sursUserSub = pUserSub_}
 
 -- | The code delivery details returned by the server response to the user registration request.
 sursCodeDeliveryDetails :: Lens' SignUpResponse (Maybe CodeDeliveryDetailsType)

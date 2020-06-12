@@ -38,19 +38,14 @@ module Network.AWS.Pinpoint.GetApps
 
 import Network.AWS.Lens
 import Network.AWS.Pinpoint.Types
-import Network.AWS.Pinpoint.Types.Product
 import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 
 -- | /See:/ 'getApps' smart constructor.
-data GetApps =
-  GetApps'
-    { _gaToken    :: !(Maybe Text)
-    , _gaPageSize :: !(Maybe Text)
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data GetApps = GetApps'{_gaToken :: !(Maybe Text),
+                        _gaPageSize :: !(Maybe Text)}
+                 deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'GetApps' with the minimum fields required to make a request.
 --
@@ -61,8 +56,8 @@ data GetApps =
 -- * 'gaPageSize' - Undocumented member.
 getApps
     :: GetApps
-getApps = GetApps' {_gaToken = Nothing, _gaPageSize = Nothing}
-
+getApps
+  = GetApps'{_gaToken = Nothing, _gaPageSize = Nothing}
 
 -- | Undocumented member.
 gaToken :: Lens' GetApps (Maybe Text)
@@ -101,13 +96,11 @@ instance ToQuery GetApps where
               ["token" =: _gaToken, "page-size" =: _gaPageSize]
 
 -- | /See:/ 'getAppsResponse' smart constructor.
-data GetAppsResponse =
-  GetAppsResponse'
-    { _gasrsResponseStatus       :: !Int
-    , _gasrsApplicationsResponse :: !ApplicationsResponse
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data GetAppsResponse = GetAppsResponse'{_gasrsResponseStatus
+                                        :: !Int,
+                                        _gasrsApplicationsResponse ::
+                                        !ApplicationsResponse}
+                         deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'GetAppsResponse' with the minimum fields required to make a request.
 --
@@ -120,12 +113,11 @@ getAppsResponse
     :: Int -- ^ 'gasrsResponseStatus'
     -> ApplicationsResponse -- ^ 'gasrsApplicationsResponse'
     -> GetAppsResponse
-getAppsResponse pResponseStatus_ pApplicationsResponse_ =
-  GetAppsResponse'
-    { _gasrsResponseStatus = pResponseStatus_
-    , _gasrsApplicationsResponse = pApplicationsResponse_
-    }
-
+getAppsResponse pResponseStatus_
+  pApplicationsResponse_
+  = GetAppsResponse'{_gasrsResponseStatus =
+                       pResponseStatus_,
+                     _gasrsApplicationsResponse = pApplicationsResponse_}
 
 -- | -- | The response status code.
 gasrsResponseStatus :: Lens' GetAppsResponse Int

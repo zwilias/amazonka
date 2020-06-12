@@ -113,8 +113,52 @@ library
 
     other-modules:
           Network.AWS.Redshift.Internal
-        , Network.AWS.Redshift.Types.Product
-        , Network.AWS.Redshift.Types.Sum
+        , Network.AWS.Redshift.Types.AccountWithRestoreAccess
+        , Network.AWS.Redshift.Types.AvailabilityZone
+        , Network.AWS.Redshift.Types.Cluster
+        , Network.AWS.Redshift.Types.ClusterIAMRole
+        , Network.AWS.Redshift.Types.ClusterNode
+        , Network.AWS.Redshift.Types.ClusterParameterGroup
+        , Network.AWS.Redshift.Types.ClusterParameterGroupNameMessage
+        , Network.AWS.Redshift.Types.ClusterParameterGroupStatus
+        , Network.AWS.Redshift.Types.ClusterParameterStatus
+        , Network.AWS.Redshift.Types.ClusterSecurityGroup
+        , Network.AWS.Redshift.Types.ClusterSecurityGroupMembership
+        , Network.AWS.Redshift.Types.ClusterSnapshotCopyStatus
+        , Network.AWS.Redshift.Types.ClusterSubnetGroup
+        , Network.AWS.Redshift.Types.ClusterVersion
+        , Network.AWS.Redshift.Types.DefaultClusterParameters
+        , Network.AWS.Redshift.Types.EC2SecurityGroup
+        , Network.AWS.Redshift.Types.ElasticIPStatus
+        , Network.AWS.Redshift.Types.Endpoint
+        , Network.AWS.Redshift.Types.Event
+        , Network.AWS.Redshift.Types.EventCategoriesMap
+        , Network.AWS.Redshift.Types.EventInfoMap
+        , Network.AWS.Redshift.Types.EventSubscription
+        , Network.AWS.Redshift.Types.HSMClientCertificate
+        , Network.AWS.Redshift.Types.HSMConfiguration
+        , Network.AWS.Redshift.Types.HSMStatus
+        , Network.AWS.Redshift.Types.IPRange
+        , Network.AWS.Redshift.Types.LoggingStatus
+        , Network.AWS.Redshift.Types.OrderableClusterOption
+        , Network.AWS.Redshift.Types.Parameter
+        , Network.AWS.Redshift.Types.ParameterApplyType
+        , Network.AWS.Redshift.Types.PendingModifiedValues
+        , Network.AWS.Redshift.Types.RecurringCharge
+        , Network.AWS.Redshift.Types.ReservedNode
+        , Network.AWS.Redshift.Types.ReservedNodeOffering
+        , Network.AWS.Redshift.Types.ReservedNodeOfferingType
+        , Network.AWS.Redshift.Types.RestoreStatus
+        , Network.AWS.Redshift.Types.Snapshot
+        , Network.AWS.Redshift.Types.SnapshotCopyGrant
+        , Network.AWS.Redshift.Types.SourceType
+        , Network.AWS.Redshift.Types.Subnet
+        , Network.AWS.Redshift.Types.SupportedPlatform
+        , Network.AWS.Redshift.Types.TableRestoreStatus
+        , Network.AWS.Redshift.Types.TableRestoreStatusType
+        , Network.AWS.Redshift.Types.Tag
+        , Network.AWS.Redshift.Types.TaggedResource
+        , Network.AWS.Redshift.Types.VPCSecurityGroupMembership
 
     build-depends:
           amazonka-core == 1.6.1.*

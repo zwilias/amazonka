@@ -11,7 +11,7 @@
 -- Stability   : auto-generated
 -- Portability : non-portable (GHC extensions)
 --
--- __Amazon Inspector__
+-- __Amazon Inspector__ 
 --
 -- Amazon Inspector enables you to analyze the behavior of your AWS resources and to identify potential security issues. For more information, see <http://docs.aws.amazon.com/inspector/latest/userguide/inspector_introduction.html Amazon Inspector User Guide> .
 --
@@ -56,7 +56,7 @@ module Network.AWS.Inspector
     -- * Operations
     -- $operations
 
-    -- ** GetTelemetryMetadata
+    -- ** GetTelemetryMetadata 
     , module Network.AWS.Inspector.GetTelemetryMetadata
 
     -- ** ListFindings (Paginated)
@@ -65,94 +65,94 @@ module Network.AWS.Inspector
     -- ** ListAssessmentTemplates (Paginated)
     , module Network.AWS.Inspector.ListAssessmentTemplates
 
-    -- ** SubscribeToEvent
+    -- ** SubscribeToEvent 
     , module Network.AWS.Inspector.SubscribeToEvent
 
     -- ** ListAssessmentRunAgents (Paginated)
     , module Network.AWS.Inspector.ListAssessmentRunAgents
 
-    -- ** StartAssessmentRun
+    -- ** StartAssessmentRun 
     , module Network.AWS.Inspector.StartAssessmentRun
 
-    -- ** DeleteAssessmentTemplate
+    -- ** DeleteAssessmentTemplate 
     , module Network.AWS.Inspector.DeleteAssessmentTemplate
 
-    -- ** CreateAssessmentTemplate
+    -- ** CreateAssessmentTemplate 
     , module Network.AWS.Inspector.CreateAssessmentTemplate
 
-    -- ** ListTagsForResource
+    -- ** ListTagsForResource 
     , module Network.AWS.Inspector.ListTagsForResource
 
-    -- ** SetTagsForResource
+    -- ** SetTagsForResource 
     , module Network.AWS.Inspector.SetTagsForResource
 
-    -- ** DescribeCrossAccountAccessRole
+    -- ** DescribeCrossAccountAccessRole 
     , module Network.AWS.Inspector.DescribeCrossAccountAccessRole
 
-    -- ** DescribeAssessmentTemplates
+    -- ** DescribeAssessmentTemplates 
     , module Network.AWS.Inspector.DescribeAssessmentTemplates
 
-    -- ** DescribeResourceGroups
+    -- ** DescribeResourceGroups 
     , module Network.AWS.Inspector.DescribeResourceGroups
 
-    -- ** CreateAssessmentTarget
+    -- ** CreateAssessmentTarget 
     , module Network.AWS.Inspector.CreateAssessmentTarget
 
     -- ** ListEventSubscriptions (Paginated)
     , module Network.AWS.Inspector.ListEventSubscriptions
 
-    -- ** RegisterCrossAccountAccessRole
+    -- ** RegisterCrossAccountAccessRole 
     , module Network.AWS.Inspector.RegisterCrossAccountAccessRole
 
     -- ** ListAssessmentTargets (Paginated)
     , module Network.AWS.Inspector.ListAssessmentTargets
 
-    -- ** CreateResourceGroup
+    -- ** CreateResourceGroup 
     , module Network.AWS.Inspector.CreateResourceGroup
 
-    -- ** DescribeRulesPackages
+    -- ** DescribeRulesPackages 
     , module Network.AWS.Inspector.DescribeRulesPackages
 
-    -- ** StopAssessmentRun
+    -- ** StopAssessmentRun 
     , module Network.AWS.Inspector.StopAssessmentRun
 
     -- ** PreviewAgents (Paginated)
     , module Network.AWS.Inspector.PreviewAgents
 
-    -- ** DescribeFindings
+    -- ** DescribeFindings 
     , module Network.AWS.Inspector.DescribeFindings
 
-    -- ** AddAttributesToFindings
+    -- ** AddAttributesToFindings 
     , module Network.AWS.Inspector.AddAttributesToFindings
 
-    -- ** UpdateAssessmentTarget
+    -- ** UpdateAssessmentTarget 
     , module Network.AWS.Inspector.UpdateAssessmentTarget
 
-    -- ** DeleteAssessmentTarget
+    -- ** DeleteAssessmentTarget 
     , module Network.AWS.Inspector.DeleteAssessmentTarget
 
-    -- ** DeleteAssessmentRun
+    -- ** DeleteAssessmentRun 
     , module Network.AWS.Inspector.DeleteAssessmentRun
 
     -- ** ListAssessmentRuns (Paginated)
     , module Network.AWS.Inspector.ListAssessmentRuns
 
-    -- ** GetAssessmentReport
+    -- ** GetAssessmentReport 
     , module Network.AWS.Inspector.GetAssessmentReport
 
     -- ** ListRulesPackages (Paginated)
     , module Network.AWS.Inspector.ListRulesPackages
 
-    -- ** DescribeAssessmentRuns
+    -- ** DescribeAssessmentRuns 
     , module Network.AWS.Inspector.DescribeAssessmentRuns
 
-    -- ** UnsubscribeFromEvent
+    -- ** UnsubscribeFromEvent 
     , module Network.AWS.Inspector.UnsubscribeFromEvent
 
-    -- ** RemoveAttributesFromFindings
+    -- ** RemoveAttributesFromFindings 
     , module Network.AWS.Inspector.RemoveAttributesFromFindings
 
-    -- ** DescribeAssessmentTargets
+    -- ** DescribeAssessmentTargets 
     , module Network.AWS.Inspector.DescribeAssessmentTargets
 
     -- * Types

@@ -39,21 +39,20 @@ module Network.AWS.IoT.UpdateThingGroupsForThing
     ) where
 
 import Network.AWS.IoT.Types
-import Network.AWS.IoT.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 
 -- | /See:/ 'updateThingGroupsForThing' smart constructor.
-data UpdateThingGroupsForThing =
-  UpdateThingGroupsForThing'
-    { _utgftThingGroupsToAdd    :: !(Maybe [Text])
-    , _utgftThingGroupsToRemove :: !(Maybe [Text])
-    , _utgftThingName           :: !(Maybe Text)
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data UpdateThingGroupsForThing = UpdateThingGroupsForThing'{_utgftThingGroupsToAdd
+                                                            :: !(Maybe [Text]),
+                                                            _utgftThingGroupsToRemove
+                                                            :: !(Maybe [Text]),
+                                                            _utgftThingName ::
+                                                            !(Maybe Text)}
+                                   deriving (Eq, Read, Show, Data, Typeable,
+                                             Generic)
 
 -- | Creates a value of 'UpdateThingGroupsForThing' with the minimum fields required to make a request.
 --
@@ -66,13 +65,11 @@ data UpdateThingGroupsForThing =
 -- * 'utgftThingName' - The thing whose group memberships will be updated.
 updateThingGroupsForThing
     :: UpdateThingGroupsForThing
-updateThingGroupsForThing =
-  UpdateThingGroupsForThing'
-    { _utgftThingGroupsToAdd = Nothing
-    , _utgftThingGroupsToRemove = Nothing
-    , _utgftThingName = Nothing
-    }
-
+updateThingGroupsForThing
+  = UpdateThingGroupsForThing'{_utgftThingGroupsToAdd =
+                                 Nothing,
+                               _utgftThingGroupsToRemove = Nothing,
+                               _utgftThingName = Nothing}
 
 -- | The groups to which the thing will be added.
 utgftThingGroupsToAdd :: Lens' UpdateThingGroupsForThing [Text]
@@ -120,12 +117,11 @@ instance ToQuery UpdateThingGroupsForThing where
         toQuery = const mempty
 
 -- | /See:/ 'updateThingGroupsForThingResponse' smart constructor.
-newtype UpdateThingGroupsForThingResponse =
-  UpdateThingGroupsForThingResponse'
-    { _utgftrsResponseStatus :: Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+newtype UpdateThingGroupsForThingResponse = UpdateThingGroupsForThingResponse'{_utgftrsResponseStatus
+                                                                               ::
+                                                                               Int}
+                                              deriving (Eq, Read, Show, Data,
+                                                        Typeable, Generic)
 
 -- | Creates a value of 'UpdateThingGroupsForThingResponse' with the minimum fields required to make a request.
 --
@@ -135,9 +131,9 @@ newtype UpdateThingGroupsForThingResponse =
 updateThingGroupsForThingResponse
     :: Int -- ^ 'utgftrsResponseStatus'
     -> UpdateThingGroupsForThingResponse
-updateThingGroupsForThingResponse pResponseStatus_ =
-  UpdateThingGroupsForThingResponse' {_utgftrsResponseStatus = pResponseStatus_}
-
+updateThingGroupsForThingResponse pResponseStatus_
+  = UpdateThingGroupsForThingResponse'{_utgftrsResponseStatus
+                                         = pResponseStatus_}
 
 -- | -- | The response status code.
 utgftrsResponseStatus :: Lens' UpdateThingGroupsForThingResponse Int

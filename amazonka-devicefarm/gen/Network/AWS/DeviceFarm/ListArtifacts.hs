@@ -43,7 +43,6 @@ module Network.AWS.DeviceFarm.ListArtifacts
     ) where
 
 import Network.AWS.DeviceFarm.Types
-import Network.AWS.DeviceFarm.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Pager
 import Network.AWS.Prelude
@@ -55,14 +54,11 @@ import Network.AWS.Response
 --
 --
 -- /See:/ 'listArtifacts' smart constructor.
-data ListArtifacts =
-  ListArtifacts'
-    { _laNextToken :: !(Maybe Text)
-    , _laArn       :: !Text
-    , _laType      :: !ArtifactCategory
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data ListArtifacts = ListArtifacts'{_laNextToken ::
+                                    !(Maybe Text),
+                                    _laArn :: !Text,
+                                    _laType :: !ArtifactCategory}
+                       deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'ListArtifacts' with the minimum fields required to make a request.
 --
@@ -77,9 +73,9 @@ listArtifacts
     :: Text -- ^ 'laArn'
     -> ArtifactCategory -- ^ 'laType'
     -> ListArtifacts
-listArtifacts pArn_ pType_ =
-  ListArtifacts' {_laNextToken = Nothing, _laArn = pArn_, _laType = pType_}
-
+listArtifacts pArn_ pType_
+  = ListArtifacts'{_laNextToken = Nothing,
+                   _laArn = pArn_, _laType = pType_}
 
 -- | An identifier that was returned from the previous call to this operation, which can be used to return the next set of items in the list.
 laNextToken :: Lens' ListArtifacts (Maybe Text)
@@ -142,14 +138,13 @@ instance ToQuery ListArtifacts where
 --
 --
 -- /See:/ 'listArtifactsResponse' smart constructor.
-data ListArtifactsResponse =
-  ListArtifactsResponse'
-    { _larsArtifacts      :: !(Maybe [Artifact])
-    , _larsNextToken      :: !(Maybe Text)
-    , _larsResponseStatus :: !Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data ListArtifactsResponse = ListArtifactsResponse'{_larsArtifacts
+                                                    :: !(Maybe [Artifact]),
+                                                    _larsNextToken ::
+                                                    !(Maybe Text),
+                                                    _larsResponseStatus :: !Int}
+                               deriving (Eq, Read, Show, Data, Typeable,
+                                         Generic)
 
 -- | Creates a value of 'ListArtifactsResponse' with the minimum fields required to make a request.
 --
@@ -163,13 +158,10 @@ data ListArtifactsResponse =
 listArtifactsResponse
     :: Int -- ^ 'larsResponseStatus'
     -> ListArtifactsResponse
-listArtifactsResponse pResponseStatus_ =
-  ListArtifactsResponse'
-    { _larsArtifacts = Nothing
-    , _larsNextToken = Nothing
-    , _larsResponseStatus = pResponseStatus_
-    }
-
+listArtifactsResponse pResponseStatus_
+  = ListArtifactsResponse'{_larsArtifacts = Nothing,
+                           _larsNextToken = Nothing,
+                           _larsResponseStatus = pResponseStatus_}
 
 -- | Information about the artifacts.
 larsArtifacts :: Lens' ListArtifactsResponse [Artifact]

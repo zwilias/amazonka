@@ -43,7 +43,6 @@ module Network.AWS.Comprehend.ListEntitiesDetectionJobs
     ) where
 
 import Network.AWS.Comprehend.Types
-import Network.AWS.Comprehend.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Pager
 import Network.AWS.Prelude
@@ -51,14 +50,15 @@ import Network.AWS.Request
 import Network.AWS.Response
 
 -- | /See:/ 'listEntitiesDetectionJobs' smart constructor.
-data ListEntitiesDetectionJobs =
-  ListEntitiesDetectionJobs'
-    { _ledjNextToken  :: !(Maybe Text)
-    , _ledjFilter     :: !(Maybe EntitiesDetectionJobFilter)
-    , _ledjMaxResults :: !(Maybe Nat)
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data ListEntitiesDetectionJobs = ListEntitiesDetectionJobs'{_ledjNextToken
+                                                            :: !(Maybe Text),
+                                                            _ledjFilter ::
+                                                            !(Maybe
+                                                                EntitiesDetectionJobFilter),
+                                                            _ledjMaxResults ::
+                                                            !(Maybe Nat)}
+                                   deriving (Eq, Read, Show, Data, Typeable,
+                                             Generic)
 
 -- | Creates a value of 'ListEntitiesDetectionJobs' with the minimum fields required to make a request.
 --
@@ -71,10 +71,10 @@ data ListEntitiesDetectionJobs =
 -- * 'ledjMaxResults' - The maximum number of results to return in each page. The default is 100.
 listEntitiesDetectionJobs
     :: ListEntitiesDetectionJobs
-listEntitiesDetectionJobs =
-  ListEntitiesDetectionJobs'
-    {_ledjNextToken = Nothing, _ledjFilter = Nothing, _ledjMaxResults = Nothing}
-
+listEntitiesDetectionJobs
+  = ListEntitiesDetectionJobs'{_ledjNextToken =
+                                 Nothing,
+                               _ledjFilter = Nothing, _ledjMaxResults = Nothing}
 
 -- | Identifies the next page of results to return.
 ledjNextToken :: Lens' ListEntitiesDetectionJobs (Maybe Text)
@@ -139,14 +139,19 @@ instance ToQuery ListEntitiesDetectionJobs where
         toQuery = const mempty
 
 -- | /See:/ 'listEntitiesDetectionJobsResponse' smart constructor.
-data ListEntitiesDetectionJobsResponse =
-  ListEntitiesDetectionJobsResponse'
-    { _ledjrsEntitiesDetectionJobPropertiesList :: !(Maybe [EntitiesDetectionJobProperties])
-    , _ledjrsNextToken :: !(Maybe Text)
-    , _ledjrsResponseStatus :: !Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data ListEntitiesDetectionJobsResponse = ListEntitiesDetectionJobsResponse'{_ledjrsEntitiesDetectionJobPropertiesList
+                                                                            ::
+                                                                            !(Maybe
+                                                                                [EntitiesDetectionJobProperties]),
+                                                                            _ledjrsNextToken
+                                                                            ::
+                                                                            !(Maybe
+                                                                                Text),
+                                                                            _ledjrsResponseStatus
+                                                                            ::
+                                                                            !Int}
+                                           deriving (Eq, Read, Show, Data,
+                                                     Typeable, Generic)
 
 -- | Creates a value of 'ListEntitiesDetectionJobsResponse' with the minimum fields required to make a request.
 --
@@ -160,13 +165,11 @@ data ListEntitiesDetectionJobsResponse =
 listEntitiesDetectionJobsResponse
     :: Int -- ^ 'ledjrsResponseStatus'
     -> ListEntitiesDetectionJobsResponse
-listEntitiesDetectionJobsResponse pResponseStatus_ =
-  ListEntitiesDetectionJobsResponse'
-    { _ledjrsEntitiesDetectionJobPropertiesList = Nothing
-    , _ledjrsNextToken = Nothing
-    , _ledjrsResponseStatus = pResponseStatus_
-    }
-
+listEntitiesDetectionJobsResponse pResponseStatus_
+  = ListEntitiesDetectionJobsResponse'{_ledjrsEntitiesDetectionJobPropertiesList
+                                         = Nothing,
+                                       _ledjrsNextToken = Nothing,
+                                       _ledjrsResponseStatus = pResponseStatus_}
 
 -- | A list containing the properties of each job that is returned.
 ledjrsEntitiesDetectionJobPropertiesList :: Lens' ListEntitiesDetectionJobsResponse [EntitiesDetectionJobProperties]

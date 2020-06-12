@@ -41,21 +41,26 @@ module Network.AWS.Config.DescribeOrganizationConfigRuleStatuses
     ) where
 
 import Network.AWS.Config.Types
-import Network.AWS.Config.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 
 -- | /See:/ 'describeOrganizationConfigRuleStatuses' smart constructor.
-data DescribeOrganizationConfigRuleStatuses =
-  DescribeOrganizationConfigRuleStatuses'
-    { _docrsOrganizationConfigRuleNames :: !(Maybe [Text])
-    , _docrsNextToken                   :: !(Maybe Text)
-    , _docrsLimit                       :: !(Maybe Nat)
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data DescribeOrganizationConfigRuleStatuses = DescribeOrganizationConfigRuleStatuses'{_docrsOrganizationConfigRuleNames
+                                                                                      ::
+                                                                                      !(Maybe
+                                                                                          [Text]),
+                                                                                      _docrsNextToken
+                                                                                      ::
+                                                                                      !(Maybe
+                                                                                          Text),
+                                                                                      _docrsLimit
+                                                                                      ::
+                                                                                      !(Maybe
+                                                                                          Nat)}
+                                                deriving (Eq, Read, Show, Data,
+                                                          Typeable, Generic)
 
 -- | Creates a value of 'DescribeOrganizationConfigRuleStatuses' with the minimum fields required to make a request.
 --
@@ -63,24 +68,22 @@ data DescribeOrganizationConfigRuleStatuses =
 --
 -- * 'docrsOrganizationConfigRuleNames' - The names of organization config rules for which you want status details. If you do not specify any names, AWS Config returns details for all your organization AWS Confg rules.
 --
--- * 'docrsNextToken' - The @nextToken@ string returned on a previous page that you use to get the next page of results in a paginated response.
+-- * 'docrsNextToken' - The @nextToken@ string returned on a previous page that you use to get the next page of results in a paginated response. 
 --
 -- * 'docrsLimit' - The maximum number of @OrganizationConfigRuleStatuses@ returned on each page. If you do no specify a number, AWS Config uses the default. The default is 100.
 describeOrganizationConfigRuleStatuses
     :: DescribeOrganizationConfigRuleStatuses
-describeOrganizationConfigRuleStatuses =
-  DescribeOrganizationConfigRuleStatuses'
-    { _docrsOrganizationConfigRuleNames = Nothing
-    , _docrsNextToken = Nothing
-    , _docrsLimit = Nothing
-    }
-
+describeOrganizationConfigRuleStatuses
+  = DescribeOrganizationConfigRuleStatuses'{_docrsOrganizationConfigRuleNames
+                                              = Nothing,
+                                            _docrsNextToken = Nothing,
+                                            _docrsLimit = Nothing}
 
 -- | The names of organization config rules for which you want status details. If you do not specify any names, AWS Config returns details for all your organization AWS Confg rules.
 docrsOrganizationConfigRuleNames :: Lens' DescribeOrganizationConfigRuleStatuses [Text]
 docrsOrganizationConfigRuleNames = lens _docrsOrganizationConfigRuleNames (\ s a -> s{_docrsOrganizationConfigRuleNames = a}) . _Default . _Coerce
 
--- | The @nextToken@ string returned on a previous page that you use to get the next page of results in a paginated response.
+-- | The @nextToken@ string returned on a previous page that you use to get the next page of results in a paginated response. 
 docrsNextToken :: Lens' DescribeOrganizationConfigRuleStatuses (Maybe Text)
 docrsNextToken = lens _docrsNextToken (\ s a -> s{_docrsNextToken = a})
 
@@ -144,20 +147,27 @@ instance ToQuery
         toQuery = const mempty
 
 -- | /See:/ 'describeOrganizationConfigRuleStatusesResponse' smart constructor.
-data DescribeOrganizationConfigRuleStatusesResponse =
-  DescribeOrganizationConfigRuleStatusesResponse'
-    { _docrsrsNextToken :: !(Maybe Text)
-    , _docrsrsOrganizationConfigRuleStatuses :: !(Maybe [OrganizationConfigRuleStatus])
-    , _docrsrsResponseStatus :: !Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data DescribeOrganizationConfigRuleStatusesResponse = DescribeOrganizationConfigRuleStatusesResponse'{_docrsrsNextToken
+                                                                                                      ::
+                                                                                                      !(Maybe
+                                                                                                          Text),
+                                                                                                      _docrsrsOrganizationConfigRuleStatuses
+                                                                                                      ::
+                                                                                                      !(Maybe
+                                                                                                          [OrganizationConfigRuleStatus]),
+                                                                                                      _docrsrsResponseStatus
+                                                                                                      ::
+                                                                                                      !Int}
+                                                        deriving (Eq, Read,
+                                                                  Show, Data,
+                                                                  Typeable,
+                                                                  Generic)
 
 -- | Creates a value of 'DescribeOrganizationConfigRuleStatusesResponse' with the minimum fields required to make a request.
 --
 -- Use one of the following lenses to modify other fields as desired:
 --
--- * 'docrsrsNextToken' - The @nextToken@ string returned on a previous page that you use to get the next page of results in a paginated response.
+-- * 'docrsrsNextToken' - The @nextToken@ string returned on a previous page that you use to get the next page of results in a paginated response. 
 --
 -- * 'docrsrsOrganizationConfigRuleStatuses' - A list of @OrganizationConfigRuleStatus@ objects.
 --
@@ -165,15 +175,16 @@ data DescribeOrganizationConfigRuleStatusesResponse =
 describeOrganizationConfigRuleStatusesResponse
     :: Int -- ^ 'docrsrsResponseStatus'
     -> DescribeOrganizationConfigRuleStatusesResponse
-describeOrganizationConfigRuleStatusesResponse pResponseStatus_ =
-  DescribeOrganizationConfigRuleStatusesResponse'
-    { _docrsrsNextToken = Nothing
-    , _docrsrsOrganizationConfigRuleStatuses = Nothing
-    , _docrsrsResponseStatus = pResponseStatus_
-    }
+describeOrganizationConfigRuleStatusesResponse
+  pResponseStatus_
+  = DescribeOrganizationConfigRuleStatusesResponse'{_docrsrsNextToken
+                                                      = Nothing,
+                                                    _docrsrsOrganizationConfigRuleStatuses
+                                                      = Nothing,
+                                                    _docrsrsResponseStatus =
+                                                      pResponseStatus_}
 
-
--- | The @nextToken@ string returned on a previous page that you use to get the next page of results in a paginated response.
+-- | The @nextToken@ string returned on a previous page that you use to get the next page of results in a paginated response. 
 docrsrsNextToken :: Lens' DescribeOrganizationConfigRuleStatusesResponse (Maybe Text)
 docrsrsNextToken = lens _docrsrsNextToken (\ s a -> s{_docrsrsNextToken = a})
 

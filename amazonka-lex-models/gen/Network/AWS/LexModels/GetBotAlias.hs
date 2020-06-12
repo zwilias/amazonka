@@ -48,19 +48,14 @@ module Network.AWS.LexModels.GetBotAlias
 
 import Network.AWS.Lens
 import Network.AWS.LexModels.Types
-import Network.AWS.LexModels.Types.Product
 import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 
 -- | /See:/ 'getBotAlias' smart constructor.
-data GetBotAlias =
-  GetBotAlias'
-    { _gbasName    :: !Text
-    , _gbasBotName :: !Text
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data GetBotAlias = GetBotAlias'{_gbasName :: !Text,
+                                _gbasBotName :: !Text}
+                     deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'GetBotAlias' with the minimum fields required to make a request.
 --
@@ -73,9 +68,9 @@ getBotAlias
     :: Text -- ^ 'gbasName'
     -> Text -- ^ 'gbasBotName'
     -> GetBotAlias
-getBotAlias pName_ pBotName_ =
-  GetBotAlias' {_gbasName = pName_, _gbasBotName = pBotName_}
-
+getBotAlias pName_ pBotName_
+  = GetBotAlias'{_gbasName = pName_,
+                 _gbasBotName = pBotName_}
 
 -- | The name of the bot alias. The name is case sensitive.
 gbasName :: Lens' GetBotAlias Text
@@ -121,19 +116,20 @@ instance ToQuery GetBotAlias where
         toQuery = const mempty
 
 -- | /See:/ 'getBotAliasResponse' smart constructor.
-data GetBotAliasResponse =
-  GetBotAliasResponse'
-    { _gbasrsChecksum        :: !(Maybe Text)
-    , _gbasrsBotVersion      :: !(Maybe Text)
-    , _gbasrsBotName         :: !(Maybe Text)
-    , _gbasrsCreatedDate     :: !(Maybe POSIX)
-    , _gbasrsName            :: !(Maybe Text)
-    , _gbasrsLastUpdatedDate :: !(Maybe POSIX)
-    , _gbasrsDescription     :: !(Maybe Text)
-    , _gbasrsResponseStatus  :: !Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data GetBotAliasResponse = GetBotAliasResponse'{_gbasrsChecksum
+                                                :: !(Maybe Text),
+                                                _gbasrsBotVersion ::
+                                                !(Maybe Text),
+                                                _gbasrsBotName :: !(Maybe Text),
+                                                _gbasrsCreatedDate ::
+                                                !(Maybe POSIX),
+                                                _gbasrsName :: !(Maybe Text),
+                                                _gbasrsLastUpdatedDate ::
+                                                !(Maybe POSIX),
+                                                _gbasrsDescription ::
+                                                !(Maybe Text),
+                                                _gbasrsResponseStatus :: !Int}
+                             deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'GetBotAliasResponse' with the minimum fields required to make a request.
 --
@@ -157,18 +153,14 @@ data GetBotAliasResponse =
 getBotAliasResponse
     :: Int -- ^ 'gbasrsResponseStatus'
     -> GetBotAliasResponse
-getBotAliasResponse pResponseStatus_ =
-  GetBotAliasResponse'
-    { _gbasrsChecksum = Nothing
-    , _gbasrsBotVersion = Nothing
-    , _gbasrsBotName = Nothing
-    , _gbasrsCreatedDate = Nothing
-    , _gbasrsName = Nothing
-    , _gbasrsLastUpdatedDate = Nothing
-    , _gbasrsDescription = Nothing
-    , _gbasrsResponseStatus = pResponseStatus_
-    }
-
+getBotAliasResponse pResponseStatus_
+  = GetBotAliasResponse'{_gbasrsChecksum = Nothing,
+                         _gbasrsBotVersion = Nothing,
+                         _gbasrsBotName = Nothing,
+                         _gbasrsCreatedDate = Nothing, _gbasrsName = Nothing,
+                         _gbasrsLastUpdatedDate = Nothing,
+                         _gbasrsDescription = Nothing,
+                         _gbasrsResponseStatus = pResponseStatus_}
 
 -- | Checksum of the bot alias.
 gbasrsChecksum :: Lens' GetBotAliasResponse (Maybe Text)

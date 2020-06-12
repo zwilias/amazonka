@@ -43,23 +43,20 @@ module Network.AWS.Discovery.ListConfigurations
     ) where
 
 import Network.AWS.Discovery.Types
-import Network.AWS.Discovery.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 
 -- | /See:/ 'listConfigurations' smart constructor.
-data ListConfigurations =
-  ListConfigurations'
-    { _lcOrderBy           :: !(Maybe [OrderByElement])
-    , _lcFilters           :: !(Maybe [Filter])
-    , _lcNextToken         :: !(Maybe Text)
-    , _lcMaxResults        :: !(Maybe Int)
-    , _lcConfigurationType :: !ConfigurationItemType
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data ListConfigurations = ListConfigurations'{_lcOrderBy
+                                              :: !(Maybe [OrderByElement]),
+                                              _lcFilters :: !(Maybe [Filter]),
+                                              _lcNextToken :: !(Maybe Text),
+                                              _lcMaxResults :: !(Maybe Int),
+                                              _lcConfigurationType ::
+                                              !ConfigurationItemType}
+                            deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'ListConfigurations' with the minimum fields required to make a request.
 --
@@ -67,31 +64,27 @@ data ListConfigurations =
 --
 -- * 'lcOrderBy' - Certain filter criteria return output that can be sorted in ascending or descending order. For a list of output characteristics for each filter, see <http://docs.aws.amazon.com/application-discovery/latest/APIReference/discovery-api-queries.html#ListConfigurations Using the ListConfigurations Action> .
 --
--- * 'lcFilters' - You can filter the request using various logical operators and a /key/ -/value/ format. For example:  @{"key": "serverType", "value": "webServer"}@  For a complete list of filter options and guidance about using them with this action, see <http://docs.aws.amazon.com/application-discovery/latest/APIReference/discovery-api-queries.html#ListConfigurations Querying Discovered Configuration Items> .
+-- * 'lcFilters' - You can filter the request using various logical operators and a /key/ -/value/ format. For example:  @{"key": "serverType", "value": "webServer"}@  For a complete list of filter options and guidance about using them with this action, see <http://docs.aws.amazon.com/application-discovery/latest/APIReference/discovery-api-queries.html#ListConfigurations Querying Discovered Configuration Items> . 
 --
 -- * 'lcNextToken' - Token to retrieve the next set of results. For example, if a previous call to ListConfigurations returned 100 items, but you set @ListConfigurationsRequest$maxResults@ to 10, you received a set of 10 results along with a token. Use that token in this query to get the next set of 10.
 --
 -- * 'lcMaxResults' - The total number of items to return. The maximum value is 100.
 --
--- * 'lcConfigurationType' - A valid configuration identified by Application Discovery Service.
+-- * 'lcConfigurationType' - A valid configuration identified by Application Discovery Service. 
 listConfigurations
     :: ConfigurationItemType -- ^ 'lcConfigurationType'
     -> ListConfigurations
-listConfigurations pConfigurationType_ =
-  ListConfigurations'
-    { _lcOrderBy = Nothing
-    , _lcFilters = Nothing
-    , _lcNextToken = Nothing
-    , _lcMaxResults = Nothing
-    , _lcConfigurationType = pConfigurationType_
-    }
-
+listConfigurations pConfigurationType_
+  = ListConfigurations'{_lcOrderBy = Nothing,
+                        _lcFilters = Nothing, _lcNextToken = Nothing,
+                        _lcMaxResults = Nothing,
+                        _lcConfigurationType = pConfigurationType_}
 
 -- | Certain filter criteria return output that can be sorted in ascending or descending order. For a list of output characteristics for each filter, see <http://docs.aws.amazon.com/application-discovery/latest/APIReference/discovery-api-queries.html#ListConfigurations Using the ListConfigurations Action> .
 lcOrderBy :: Lens' ListConfigurations [OrderByElement]
 lcOrderBy = lens _lcOrderBy (\ s a -> s{_lcOrderBy = a}) . _Default . _Coerce
 
--- | You can filter the request using various logical operators and a /key/ -/value/ format. For example:  @{"key": "serverType", "value": "webServer"}@  For a complete list of filter options and guidance about using them with this action, see <http://docs.aws.amazon.com/application-discovery/latest/APIReference/discovery-api-queries.html#ListConfigurations Querying Discovered Configuration Items> .
+-- | You can filter the request using various logical operators and a /key/ -/value/ format. For example:  @{"key": "serverType", "value": "webServer"}@  For a complete list of filter options and guidance about using them with this action, see <http://docs.aws.amazon.com/application-discovery/latest/APIReference/discovery-api-queries.html#ListConfigurations Querying Discovered Configuration Items> . 
 lcFilters :: Lens' ListConfigurations [Filter]
 lcFilters = lens _lcFilters (\ s a -> s{_lcFilters = a}) . _Default . _Coerce
 
@@ -103,7 +96,7 @@ lcNextToken = lens _lcNextToken (\ s a -> s{_lcNextToken = a})
 lcMaxResults :: Lens' ListConfigurations (Maybe Int)
 lcMaxResults = lens _lcMaxResults (\ s a -> s{_lcMaxResults = a})
 
--- | A valid configuration identified by Application Discovery Service.
+-- | A valid configuration identified by Application Discovery Service. 
 lcConfigurationType :: Lens' ListConfigurations ConfigurationItemType
 lcConfigurationType = lens _lcConfigurationType (\ s a -> s{_lcConfigurationType = a})
 
@@ -150,14 +143,17 @@ instance ToQuery ListConfigurations where
         toQuery = const mempty
 
 -- | /See:/ 'listConfigurationsResponse' smart constructor.
-data ListConfigurationsResponse =
-  ListConfigurationsResponse'
-    { _lcrsConfigurations :: !(Maybe [Map Text Text])
-    , _lcrsNextToken      :: !(Maybe Text)
-    , _lcrsResponseStatus :: !Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data ListConfigurationsResponse = ListConfigurationsResponse'{_lcrsConfigurations
+                                                              ::
+                                                              !(Maybe
+                                                                  [Map Text
+                                                                     Text]),
+                                                              _lcrsNextToken ::
+                                                              !(Maybe Text),
+                                                              _lcrsResponseStatus
+                                                              :: !Int}
+                                    deriving (Eq, Read, Show, Data, Typeable,
+                                              Generic)
 
 -- | Creates a value of 'ListConfigurationsResponse' with the minimum fields required to make a request.
 --
@@ -171,13 +167,11 @@ data ListConfigurationsResponse =
 listConfigurationsResponse
     :: Int -- ^ 'lcrsResponseStatus'
     -> ListConfigurationsResponse
-listConfigurationsResponse pResponseStatus_ =
-  ListConfigurationsResponse'
-    { _lcrsConfigurations = Nothing
-    , _lcrsNextToken = Nothing
-    , _lcrsResponseStatus = pResponseStatus_
-    }
-
+listConfigurationsResponse pResponseStatus_
+  = ListConfigurationsResponse'{_lcrsConfigurations =
+                                  Nothing,
+                                _lcrsNextToken = Nothing,
+                                _lcrsResponseStatus = pResponseStatus_}
 
 -- | Returns configuration details, including the configuration ID, attribute names, and attribute values.
 lcrsConfigurations :: Lens' ListConfigurationsResponse [HashMap Text Text]

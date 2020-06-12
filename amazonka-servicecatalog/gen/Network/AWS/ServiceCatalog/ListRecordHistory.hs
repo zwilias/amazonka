@@ -47,19 +47,18 @@ import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 import Network.AWS.ServiceCatalog.Types
-import Network.AWS.ServiceCatalog.Types.Product
 
 -- | /See:/ 'listRecordHistory' smart constructor.
-data ListRecordHistory =
-  ListRecordHistory'
-    { _lrhSearchFilter      :: !(Maybe ListRecordHistorySearchFilter)
-    , _lrhAcceptLanguage    :: !(Maybe Text)
-    , _lrhAccessLevelFilter :: !(Maybe AccessLevelFilter)
-    , _lrhPageToken         :: !(Maybe Text)
-    , _lrhPageSize          :: !(Maybe Nat)
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data ListRecordHistory = ListRecordHistory'{_lrhSearchFilter
+                                            ::
+                                            !(Maybe
+                                                ListRecordHistorySearchFilter),
+                                            _lrhAcceptLanguage :: !(Maybe Text),
+                                            _lrhAccessLevelFilter ::
+                                            !(Maybe AccessLevelFilter),
+                                            _lrhPageToken :: !(Maybe Text),
+                                            _lrhPageSize :: !(Maybe Nat)}
+                           deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'ListRecordHistory' with the minimum fields required to make a request.
 --
@@ -76,15 +75,11 @@ data ListRecordHistory =
 -- * 'lrhPageSize' - The maximum number of items to return with this call.
 listRecordHistory
     :: ListRecordHistory
-listRecordHistory =
-  ListRecordHistory'
-    { _lrhSearchFilter = Nothing
-    , _lrhAcceptLanguage = Nothing
-    , _lrhAccessLevelFilter = Nothing
-    , _lrhPageToken = Nothing
-    , _lrhPageSize = Nothing
-    }
-
+listRecordHistory
+  = ListRecordHistory'{_lrhSearchFilter = Nothing,
+                       _lrhAcceptLanguage = Nothing,
+                       _lrhAccessLevelFilter = Nothing,
+                       _lrhPageToken = Nothing, _lrhPageSize = Nothing}
 
 -- | The search filter to scope the results.
 lrhSearchFilter :: Lens' ListRecordHistory (Maybe ListRecordHistorySearchFilter)
@@ -148,14 +143,16 @@ instance ToQuery ListRecordHistory where
         toQuery = const mempty
 
 -- | /See:/ 'listRecordHistoryResponse' smart constructor.
-data ListRecordHistoryResponse =
-  ListRecordHistoryResponse'
-    { _lrhrsNextPageToken  :: !(Maybe Text)
-    , _lrhrsRecordDetails  :: !(Maybe [RecordDetail])
-    , _lrhrsResponseStatus :: !Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data ListRecordHistoryResponse = ListRecordHistoryResponse'{_lrhrsNextPageToken
+                                                            :: !(Maybe Text),
+                                                            _lrhrsRecordDetails
+                                                            ::
+                                                            !(Maybe
+                                                                [RecordDetail]),
+                                                            _lrhrsResponseStatus
+                                                            :: !Int}
+                                   deriving (Eq, Read, Show, Data, Typeable,
+                                             Generic)
 
 -- | Creates a value of 'ListRecordHistoryResponse' with the minimum fields required to make a request.
 --
@@ -169,13 +166,11 @@ data ListRecordHistoryResponse =
 listRecordHistoryResponse
     :: Int -- ^ 'lrhrsResponseStatus'
     -> ListRecordHistoryResponse
-listRecordHistoryResponse pResponseStatus_ =
-  ListRecordHistoryResponse'
-    { _lrhrsNextPageToken = Nothing
-    , _lrhrsRecordDetails = Nothing
-    , _lrhrsResponseStatus = pResponseStatus_
-    }
-
+listRecordHistoryResponse pResponseStatus_
+  = ListRecordHistoryResponse'{_lrhrsNextPageToken =
+                                 Nothing,
+                               _lrhrsRecordDetails = Nothing,
+                               _lrhrsResponseStatus = pResponseStatus_}
 
 -- | The page token to use to retrieve the next set of results. If there are no additional results, this value is null.
 lrhrsNextPageToken :: Lens' ListRecordHistoryResponse (Maybe Text)

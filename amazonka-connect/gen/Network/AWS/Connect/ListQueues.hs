@@ -44,7 +44,6 @@ module Network.AWS.Connect.ListQueues
     ) where
 
 import Network.AWS.Connect.Types
-import Network.AWS.Connect.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Pager
 import Network.AWS.Prelude
@@ -52,15 +51,12 @@ import Network.AWS.Request
 import Network.AWS.Response
 
 -- | /See:/ 'listQueues' smart constructor.
-data ListQueues =
-  ListQueues'
-    { _lqNextToken  :: !(Maybe Text)
-    , _lqQueueTypes :: !(Maybe [QueueType])
-    , _lqMaxResults :: !(Maybe Nat)
-    , _lqInstanceId :: !Text
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data ListQueues = ListQueues'{_lqNextToken ::
+                              !(Maybe Text),
+                              _lqQueueTypes :: !(Maybe [QueueType]),
+                              _lqMaxResults :: !(Maybe Nat),
+                              _lqInstanceId :: !Text}
+                    deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'ListQueues' with the minimum fields required to make a request.
 --
@@ -76,14 +72,10 @@ data ListQueues =
 listQueues
     :: Text -- ^ 'lqInstanceId'
     -> ListQueues
-listQueues pInstanceId_ =
-  ListQueues'
-    { _lqNextToken = Nothing
-    , _lqQueueTypes = Nothing
-    , _lqMaxResults = Nothing
-    , _lqInstanceId = pInstanceId_
-    }
-
+listQueues pInstanceId_
+  = ListQueues'{_lqNextToken = Nothing,
+                _lqQueueTypes = Nothing, _lqMaxResults = Nothing,
+                _lqInstanceId = pInstanceId_}
 
 -- | The token for the next set of results. Use the value returned in the previous response in the next request to retrieve the next set of results.
 lqNextToken :: Lens' ListQueues (Maybe Text)
@@ -143,14 +135,12 @@ instance ToQuery ListQueues where
                "maxResults" =: _lqMaxResults]
 
 -- | /See:/ 'listQueuesResponse' smart constructor.
-data ListQueuesResponse =
-  ListQueuesResponse'
-    { _lqrsNextToken        :: !(Maybe Text)
-    , _lqrsQueueSummaryList :: !(Maybe [QueueSummary])
-    , _lqrsResponseStatus   :: !Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data ListQueuesResponse = ListQueuesResponse'{_lqrsNextToken
+                                              :: !(Maybe Text),
+                                              _lqrsQueueSummaryList ::
+                                              !(Maybe [QueueSummary]),
+                                              _lqrsResponseStatus :: !Int}
+                            deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'ListQueuesResponse' with the minimum fields required to make a request.
 --
@@ -164,13 +154,10 @@ data ListQueuesResponse =
 listQueuesResponse
     :: Int -- ^ 'lqrsResponseStatus'
     -> ListQueuesResponse
-listQueuesResponse pResponseStatus_ =
-  ListQueuesResponse'
-    { _lqrsNextToken = Nothing
-    , _lqrsQueueSummaryList = Nothing
-    , _lqrsResponseStatus = pResponseStatus_
-    }
-
+listQueuesResponse pResponseStatus_
+  = ListQueuesResponse'{_lqrsNextToken = Nothing,
+                        _lqrsQueueSummaryList = Nothing,
+                        _lqrsResponseStatus = pResponseStatus_}
 
 -- | If there are additional results, this is the token for the next set of results.
 lqrsNextToken :: Lens' ListQueuesResponse (Maybe Text)

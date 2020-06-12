@@ -41,15 +41,13 @@ import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 import Network.AWS.S3.Types
-import Network.AWS.S3.Types.Product
 
 -- | /See:/ 'getBucketNotificationConfiguration' smart constructor.
-newtype GetBucketNotificationConfiguration =
-  GetBucketNotificationConfiguration'
-    { _gbncBucket :: BucketName
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+newtype GetBucketNotificationConfiguration = GetBucketNotificationConfiguration'{_gbncBucket
+                                                                                 ::
+                                                                                 BucketName}
+                                               deriving (Eq, Read, Show, Data,
+                                                         Typeable, Generic)
 
 -- | Creates a value of 'GetBucketNotificationConfiguration' with the minimum fields required to make a request.
 --
@@ -59,9 +57,9 @@ newtype GetBucketNotificationConfiguration =
 getBucketNotificationConfiguration
     :: BucketName -- ^ 'gbncBucket'
     -> GetBucketNotificationConfiguration
-getBucketNotificationConfiguration pBucket_ =
-  GetBucketNotificationConfiguration' {_gbncBucket = pBucket_}
-
+getBucketNotificationConfiguration pBucket_
+  = GetBucketNotificationConfiguration'{_gbncBucket =
+                                          pBucket_}
 
 -- | Name of the bucket to get the notification configuration for.
 gbncBucket :: Lens' GetBucketNotificationConfiguration BucketName

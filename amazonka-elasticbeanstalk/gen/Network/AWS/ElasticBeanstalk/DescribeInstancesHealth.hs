@@ -43,7 +43,6 @@ module Network.AWS.ElasticBeanstalk.DescribeInstancesHealth
     ) where
 
 import Network.AWS.ElasticBeanstalk.Types
-import Network.AWS.ElasticBeanstalk.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.Request
@@ -54,15 +53,17 @@ import Network.AWS.Response
 --
 --
 -- /See:/ 'describeInstancesHealth' smart constructor.
-data DescribeInstancesHealth =
-  DescribeInstancesHealth'
-    { _dihNextToken       :: !(Maybe Text)
-    , _dihEnvironmentName :: !(Maybe Text)
-    , _dihAttributeNames  :: !(Maybe [InstancesHealthAttribute])
-    , _dihEnvironmentId   :: !(Maybe Text)
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data DescribeInstancesHealth = DescribeInstancesHealth'{_dihNextToken
+                                                        :: !(Maybe Text),
+                                                        _dihEnvironmentName ::
+                                                        !(Maybe Text),
+                                                        _dihAttributeNames ::
+                                                        !(Maybe
+                                                            [InstancesHealthAttribute]),
+                                                        _dihEnvironmentId ::
+                                                        !(Maybe Text)}
+                                 deriving (Eq, Read, Show, Data, Typeable,
+                                           Generic)
 
 -- | Creates a value of 'DescribeInstancesHealth' with the minimum fields required to make a request.
 --
@@ -77,14 +78,11 @@ data DescribeInstancesHealth =
 -- * 'dihEnvironmentId' - Specify the AWS Elastic Beanstalk environment by ID.
 describeInstancesHealth
     :: DescribeInstancesHealth
-describeInstancesHealth =
-  DescribeInstancesHealth'
-    { _dihNextToken = Nothing
-    , _dihEnvironmentName = Nothing
-    , _dihAttributeNames = Nothing
-    , _dihEnvironmentId = Nothing
-    }
-
+describeInstancesHealth
+  = DescribeInstancesHealth'{_dihNextToken = Nothing,
+                             _dihEnvironmentName = Nothing,
+                             _dihAttributeNames = Nothing,
+                             _dihEnvironmentId = Nothing}
 
 -- | Specify the pagination token returned by a previous call.
 dihNextToken :: Lens' DescribeInstancesHealth (Maybe Text)
@@ -144,15 +142,22 @@ instance ToQuery DescribeInstancesHealth where
 --
 --
 -- /See:/ 'describeInstancesHealthResponse' smart constructor.
-data DescribeInstancesHealthResponse =
-  DescribeInstancesHealthResponse'
-    { _dihrsInstanceHealthList :: !(Maybe [SingleInstanceHealth])
-    , _dihrsNextToken          :: !(Maybe Text)
-    , _dihrsRefreshedAt        :: !(Maybe ISO8601)
-    , _dihrsResponseStatus     :: !Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data DescribeInstancesHealthResponse = DescribeInstancesHealthResponse'{_dihrsInstanceHealthList
+                                                                        ::
+                                                                        !(Maybe
+                                                                            [SingleInstanceHealth]),
+                                                                        _dihrsNextToken
+                                                                        ::
+                                                                        !(Maybe
+                                                                            Text),
+                                                                        _dihrsRefreshedAt
+                                                                        ::
+                                                                        !(Maybe
+                                                                            ISO8601),
+                                                                        _dihrsResponseStatus
+                                                                        :: !Int}
+                                         deriving (Eq, Read, Show, Data,
+                                                   Typeable, Generic)
 
 -- | Creates a value of 'DescribeInstancesHealthResponse' with the minimum fields required to make a request.
 --
@@ -168,14 +173,12 @@ data DescribeInstancesHealthResponse =
 describeInstancesHealthResponse
     :: Int -- ^ 'dihrsResponseStatus'
     -> DescribeInstancesHealthResponse
-describeInstancesHealthResponse pResponseStatus_ =
-  DescribeInstancesHealthResponse'
-    { _dihrsInstanceHealthList = Nothing
-    , _dihrsNextToken = Nothing
-    , _dihrsRefreshedAt = Nothing
-    , _dihrsResponseStatus = pResponseStatus_
-    }
-
+describeInstancesHealthResponse pResponseStatus_
+  = DescribeInstancesHealthResponse'{_dihrsInstanceHealthList
+                                       = Nothing,
+                                     _dihrsNextToken = Nothing,
+                                     _dihrsRefreshedAt = Nothing,
+                                     _dihrsResponseStatus = pResponseStatus_}
 
 -- | Detailed health information about each instance.
 dihrsInstanceHealthList :: Lens' DescribeInstancesHealthResponse [SingleInstanceHealth]

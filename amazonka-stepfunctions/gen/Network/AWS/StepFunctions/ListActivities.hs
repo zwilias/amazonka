@@ -49,16 +49,12 @@ import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 import Network.AWS.StepFunctions.Types
-import Network.AWS.StepFunctions.Types.Product
 
 -- | /See:/ 'listActivities' smart constructor.
-data ListActivities =
-  ListActivities'
-    { _laNextToken  :: !(Maybe Text)
-    , _laMaxResults :: !(Maybe Nat)
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data ListActivities = ListActivities'{_laNextToken ::
+                                      !(Maybe Text),
+                                      _laMaxResults :: !(Maybe Nat)}
+                        deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'ListActivities' with the minimum fields required to make a request.
 --
@@ -69,9 +65,9 @@ data ListActivities =
 -- * 'laMaxResults' - The maximum number of results that are returned per call. You can use @nextToken@ to obtain further pages of results. The default is 100 and the maximum allowed page size is 100. A value of 0 uses the default. This is only an upper limit. The actual number of results returned per call might be fewer than the specified maximum.
 listActivities
     :: ListActivities
-listActivities =
-  ListActivities' {_laNextToken = Nothing, _laMaxResults = Nothing}
-
+listActivities
+  = ListActivities'{_laNextToken = Nothing,
+                    _laMaxResults = Nothing}
 
 -- | If a @nextToken@ is returned by a previous call, there are more results available. To retrieve the next page of results, make the call again using the returned token in @nextToken@ . Keep all other arguments unchanged. The configured @maxResults@ determines how many results can be returned in a single call.
 laNextToken :: Lens' ListActivities (Maybe Text)
@@ -125,14 +121,14 @@ instance ToQuery ListActivities where
         toQuery = const mempty
 
 -- | /See:/ 'listActivitiesResponse' smart constructor.
-data ListActivitiesResponse =
-  ListActivitiesResponse'
-    { _larsNextToken      :: !(Maybe Text)
-    , _larsResponseStatus :: !Int
-    , _larsActivities     :: ![ActivityListItem]
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data ListActivitiesResponse = ListActivitiesResponse'{_larsNextToken
+                                                      :: !(Maybe Text),
+                                                      _larsResponseStatus ::
+                                                      !Int,
+                                                      _larsActivities ::
+                                                      ![ActivityListItem]}
+                                deriving (Eq, Read, Show, Data, Typeable,
+                                          Generic)
 
 -- | Creates a value of 'ListActivitiesResponse' with the minimum fields required to make a request.
 --
@@ -146,13 +142,10 @@ data ListActivitiesResponse =
 listActivitiesResponse
     :: Int -- ^ 'larsResponseStatus'
     -> ListActivitiesResponse
-listActivitiesResponse pResponseStatus_ =
-  ListActivitiesResponse'
-    { _larsNextToken = Nothing
-    , _larsResponseStatus = pResponseStatus_
-    , _larsActivities = mempty
-    }
-
+listActivitiesResponse pResponseStatus_
+  = ListActivitiesResponse'{_larsNextToken = Nothing,
+                            _larsResponseStatus = pResponseStatus_,
+                            _larsActivities = mempty}
 
 -- | If a @nextToken@ is returned by a previous call, there are more results available. To retrieve the next page of results, make the call again using the returned token in @nextToken@ . Keep all other arguments unchanged. The configured @maxResults@ determines how many results can be returned in a single call.
 larsNextToken :: Lens' ListActivitiesResponse (Maybe Text)

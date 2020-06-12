@@ -40,19 +40,16 @@ module Network.AWS.Lightsail.CreateInstanceSnapshot
 
 import Network.AWS.Lens
 import Network.AWS.Lightsail.Types
-import Network.AWS.Lightsail.Types.Product
 import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 
 -- | /See:/ 'createInstanceSnapshot' smart constructor.
-data CreateInstanceSnapshot =
-  CreateInstanceSnapshot'
-    { _cisInstanceSnapshotName :: !Text
-    , _cisInstanceName         :: !Text
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data CreateInstanceSnapshot = CreateInstanceSnapshot'{_cisInstanceSnapshotName
+                                                      :: !Text,
+                                                      _cisInstanceName :: !Text}
+                                deriving (Eq, Read, Show, Data, Typeable,
+                                          Generic)
 
 -- | Creates a value of 'CreateInstanceSnapshot' with the minimum fields required to make a request.
 --
@@ -65,12 +62,11 @@ createInstanceSnapshot
     :: Text -- ^ 'cisInstanceSnapshotName'
     -> Text -- ^ 'cisInstanceName'
     -> CreateInstanceSnapshot
-createInstanceSnapshot pInstanceSnapshotName_ pInstanceName_ =
-  CreateInstanceSnapshot'
-    { _cisInstanceSnapshotName = pInstanceSnapshotName_
-    , _cisInstanceName = pInstanceName_
-    }
-
+createInstanceSnapshot pInstanceSnapshotName_
+  pInstanceName_
+  = CreateInstanceSnapshot'{_cisInstanceSnapshotName =
+                              pInstanceSnapshotName_,
+                            _cisInstanceName = pInstanceName_}
 
 -- | The name for your new snapshot.
 cisInstanceSnapshotName :: Lens' CreateInstanceSnapshot Text
@@ -120,13 +116,14 @@ instance ToQuery CreateInstanceSnapshot where
         toQuery = const mempty
 
 -- | /See:/ 'createInstanceSnapshotResponse' smart constructor.
-data CreateInstanceSnapshotResponse =
-  CreateInstanceSnapshotResponse'
-    { _cisrsOperations     :: !(Maybe [Operation])
-    , _cisrsResponseStatus :: !Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data CreateInstanceSnapshotResponse = CreateInstanceSnapshotResponse'{_cisrsOperations
+                                                                      ::
+                                                                      !(Maybe
+                                                                          [Operation]),
+                                                                      _cisrsResponseStatus
+                                                                      :: !Int}
+                                        deriving (Eq, Read, Show, Data,
+                                                  Typeable, Generic)
 
 -- | Creates a value of 'CreateInstanceSnapshotResponse' with the minimum fields required to make a request.
 --
@@ -138,10 +135,10 @@ data CreateInstanceSnapshotResponse =
 createInstanceSnapshotResponse
     :: Int -- ^ 'cisrsResponseStatus'
     -> CreateInstanceSnapshotResponse
-createInstanceSnapshotResponse pResponseStatus_ =
-  CreateInstanceSnapshotResponse'
-    {_cisrsOperations = Nothing, _cisrsResponseStatus = pResponseStatus_}
-
+createInstanceSnapshotResponse pResponseStatus_
+  = CreateInstanceSnapshotResponse'{_cisrsOperations =
+                                      Nothing,
+                                    _cisrsResponseStatus = pResponseStatus_}
 
 -- | An array of key-value pairs containing information about the results of your create instances snapshot request.
 cisrsOperations :: Lens' CreateInstanceSnapshotResponse [Operation]

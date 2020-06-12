@@ -38,32 +38,30 @@ module Network.AWS.Config.DescribeRemediationConfigurations
     ) where
 
 import Network.AWS.Config.Types
-import Network.AWS.Config.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 
 -- | /See:/ 'describeRemediationConfigurations' smart constructor.
-newtype DescribeRemediationConfigurations =
-  DescribeRemediationConfigurations'
-    { _drcConfigRuleNames :: [Text]
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+newtype DescribeRemediationConfigurations = DescribeRemediationConfigurations'{_drcConfigRuleNames
+                                                                               ::
+                                                                               [Text]}
+                                              deriving (Eq, Read, Show, Data,
+                                                        Typeable, Generic)
 
 -- | Creates a value of 'DescribeRemediationConfigurations' with the minimum fields required to make a request.
 --
 -- Use one of the following lenses to modify other fields as desired:
 --
--- * 'drcConfigRuleNames' - A list of AWS Config rule names of remediation configurations for which you want details.
+-- * 'drcConfigRuleNames' - A list of AWS Config rule names of remediation configurations for which you want details. 
 describeRemediationConfigurations
     :: DescribeRemediationConfigurations
-describeRemediationConfigurations =
-  DescribeRemediationConfigurations' {_drcConfigRuleNames = mempty}
+describeRemediationConfigurations
+  = DescribeRemediationConfigurations'{_drcConfigRuleNames
+                                         = mempty}
 
-
--- | A list of AWS Config rule names of remediation configurations for which you want details.
+-- | A list of AWS Config rule names of remediation configurations for which you want details. 
 drcConfigRuleNames :: Lens' DescribeRemediationConfigurations [Text]
 drcConfigRuleNames = lens _drcConfigRuleNames (\ s a -> s{_drcConfigRuleNames = a}) . _Coerce
 
@@ -112,13 +110,16 @@ instance ToQuery DescribeRemediationConfigurations
         toQuery = const mempty
 
 -- | /See:/ 'describeRemediationConfigurationsResponse' smart constructor.
-data DescribeRemediationConfigurationsResponse =
-  DescribeRemediationConfigurationsResponse'
-    { _drcsrsRemediationConfigurations :: !(Maybe [RemediationConfiguration])
-    , _drcsrsResponseStatus            :: !Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data DescribeRemediationConfigurationsResponse = DescribeRemediationConfigurationsResponse'{_drcsrsRemediationConfigurations
+                                                                                            ::
+                                                                                            !(Maybe
+                                                                                                [RemediationConfiguration]),
+                                                                                            _drcsrsResponseStatus
+                                                                                            ::
+                                                                                            !Int}
+                                                   deriving (Eq, Read, Show,
+                                                             Data, Typeable,
+                                                             Generic)
 
 -- | Creates a value of 'DescribeRemediationConfigurationsResponse' with the minimum fields required to make a request.
 --
@@ -130,12 +131,12 @@ data DescribeRemediationConfigurationsResponse =
 describeRemediationConfigurationsResponse
     :: Int -- ^ 'drcsrsResponseStatus'
     -> DescribeRemediationConfigurationsResponse
-describeRemediationConfigurationsResponse pResponseStatus_ =
-  DescribeRemediationConfigurationsResponse'
-    { _drcsrsRemediationConfigurations = Nothing
-    , _drcsrsResponseStatus = pResponseStatus_
-    }
-
+describeRemediationConfigurationsResponse
+  pResponseStatus_
+  = DescribeRemediationConfigurationsResponse'{_drcsrsRemediationConfigurations
+                                                 = Nothing,
+                                               _drcsrsResponseStatus =
+                                                 pResponseStatus_}
 
 -- | Returns a remediation configuration object.
 drcsrsRemediationConfigurations :: Lens' DescribeRemediationConfigurationsResponse [RemediationConfiguration]

@@ -47,19 +47,30 @@ import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 import Network.AWS.SSM.Types
-import Network.AWS.SSM.Types.Product
 
 -- | /See:/ 'describeMaintenanceWindowExecutionTaskInvocations' smart constructor.
-data DescribeMaintenanceWindowExecutionTaskInvocations =
-  DescribeMaintenanceWindowExecutionTaskInvocations'
-    { _dmwetiFilters           :: !(Maybe [MaintenanceWindowFilter])
-    , _dmwetiNextToken         :: !(Maybe Text)
-    , _dmwetiMaxResults        :: !(Maybe Nat)
-    , _dmwetiWindowExecutionId :: !Text
-    , _dmwetiTaskId            :: !Text
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data DescribeMaintenanceWindowExecutionTaskInvocations = DescribeMaintenanceWindowExecutionTaskInvocations'{_dmwetiFilters
+                                                                                                            ::
+                                                                                                            !(Maybe
+                                                                                                                [MaintenanceWindowFilter]),
+                                                                                                            _dmwetiNextToken
+                                                                                                            ::
+                                                                                                            !(Maybe
+                                                                                                                Text),
+                                                                                                            _dmwetiMaxResults
+                                                                                                            ::
+                                                                                                            !(Maybe
+                                                                                                                Nat),
+                                                                                                            _dmwetiWindowExecutionId
+                                                                                                            ::
+                                                                                                            !Text,
+                                                                                                            _dmwetiTaskId
+                                                                                                            ::
+                                                                                                            !Text}
+                                                           deriving (Eq, Read,
+                                                                     Show, Data,
+                                                                     Typeable,
+                                                                     Generic)
 
 -- | Creates a value of 'DescribeMaintenanceWindowExecutionTaskInvocations' with the minimum fields required to make a request.
 --
@@ -78,15 +89,17 @@ describeMaintenanceWindowExecutionTaskInvocations
     :: Text -- ^ 'dmwetiWindowExecutionId'
     -> Text -- ^ 'dmwetiTaskId'
     -> DescribeMaintenanceWindowExecutionTaskInvocations
-describeMaintenanceWindowExecutionTaskInvocations pWindowExecutionId_ pTaskId_ =
-  DescribeMaintenanceWindowExecutionTaskInvocations'
-    { _dmwetiFilters = Nothing
-    , _dmwetiNextToken = Nothing
-    , _dmwetiMaxResults = Nothing
-    , _dmwetiWindowExecutionId = pWindowExecutionId_
-    , _dmwetiTaskId = pTaskId_
-    }
-
+describeMaintenanceWindowExecutionTaskInvocations
+  pWindowExecutionId_ pTaskId_
+  = DescribeMaintenanceWindowExecutionTaskInvocations'{_dmwetiFilters
+                                                         = Nothing,
+                                                       _dmwetiNextToken =
+                                                         Nothing,
+                                                       _dmwetiMaxResults =
+                                                         Nothing,
+                                                       _dmwetiWindowExecutionId
+                                                         = pWindowExecutionId_,
+                                                       _dmwetiTaskId = pTaskId_}
 
 -- | Optional filters used to scope down the returned task invocations. The supported filter key is STATUS with the corresponding values PENDING, IN_PROGRESS, SUCCESS, FAILED, TIMED_OUT, CANCELLING, and CANCELLED.
 dmwetiFilters :: Lens' DescribeMaintenanceWindowExecutionTaskInvocations [MaintenanceWindowFilter]
@@ -171,14 +184,22 @@ instance ToQuery
         toQuery = const mempty
 
 -- | /See:/ 'describeMaintenanceWindowExecutionTaskInvocationsResponse' smart constructor.
-data DescribeMaintenanceWindowExecutionTaskInvocationsResponse =
-  DescribeMaintenanceWindowExecutionTaskInvocationsResponse'
-    { _dmwetirsWindowExecutionTaskInvocationIdentities :: !(Maybe [MaintenanceWindowExecutionTaskInvocationIdentity])
-    , _dmwetirsNextToken :: !(Maybe Text)
-    , _dmwetirsResponseStatus :: !Int
-    }
-  deriving (Eq, Show, Data, Typeable, Generic)
-
+data DescribeMaintenanceWindowExecutionTaskInvocationsResponse = DescribeMaintenanceWindowExecutionTaskInvocationsResponse'{_dmwetirsWindowExecutionTaskInvocationIdentities
+                                                                                                                            ::
+                                                                                                                            !(Maybe
+                                                                                                                                [MaintenanceWindowExecutionTaskInvocationIdentity]),
+                                                                                                                            _dmwetirsNextToken
+                                                                                                                            ::
+                                                                                                                            !(Maybe
+                                                                                                                                Text),
+                                                                                                                            _dmwetirsResponseStatus
+                                                                                                                            ::
+                                                                                                                            !Int}
+                                                                   deriving (Eq,
+                                                                             Show,
+                                                                             Data,
+                                                                             Typeable,
+                                                                             Generic)
 
 -- | Creates a value of 'DescribeMaintenanceWindowExecutionTaskInvocationsResponse' with the minimum fields required to make a request.
 --
@@ -192,13 +213,15 @@ data DescribeMaintenanceWindowExecutionTaskInvocationsResponse =
 describeMaintenanceWindowExecutionTaskInvocationsResponse
     :: Int -- ^ 'dmwetirsResponseStatus'
     -> DescribeMaintenanceWindowExecutionTaskInvocationsResponse
-describeMaintenanceWindowExecutionTaskInvocationsResponse pResponseStatus_ =
-  DescribeMaintenanceWindowExecutionTaskInvocationsResponse'
-    { _dmwetirsWindowExecutionTaskInvocationIdentities = Nothing
-    , _dmwetirsNextToken = Nothing
-    , _dmwetirsResponseStatus = pResponseStatus_
-    }
-
+describeMaintenanceWindowExecutionTaskInvocationsResponse
+  pResponseStatus_
+  = DescribeMaintenanceWindowExecutionTaskInvocationsResponse'{_dmwetirsWindowExecutionTaskInvocationIdentities
+                                                                 = Nothing,
+                                                               _dmwetirsNextToken
+                                                                 = Nothing,
+                                                               _dmwetirsResponseStatus
+                                                                 =
+                                                                 pResponseStatus_}
 
 -- | Information about the task invocation results per invocation.
 dmwetirsWindowExecutionTaskInvocationIdentities :: Lens' DescribeMaintenanceWindowExecutionTaskInvocationsResponse [MaintenanceWindowExecutionTaskInvocationIdentity]

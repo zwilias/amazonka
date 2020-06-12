@@ -91,8 +91,49 @@ library
         , Network.AWS.GuardDuty.Waiters
 
     other-modules:
-          Network.AWS.GuardDuty.Types.Product
-        , Network.AWS.GuardDuty.Types.Sum
+          Network.AWS.GuardDuty.Types.AWSAPICallAction
+        , Network.AWS.GuardDuty.Types.AccessKeyDetails
+        , Network.AWS.GuardDuty.Types.AccountDetail
+        , Network.AWS.GuardDuty.Types.Action
+        , Network.AWS.GuardDuty.Types.City
+        , Network.AWS.GuardDuty.Types.Condition
+        , Network.AWS.GuardDuty.Types.Country
+        , Network.AWS.GuardDuty.Types.DNSRequestAction
+        , Network.AWS.GuardDuty.Types.DetectorStatus
+        , Network.AWS.GuardDuty.Types.DomainDetails
+        , Network.AWS.GuardDuty.Types.Feedback
+        , Network.AWS.GuardDuty.Types.FilterAction
+        , Network.AWS.GuardDuty.Types.Finding
+        , Network.AWS.GuardDuty.Types.FindingCriteria
+        , Network.AWS.GuardDuty.Types.FindingStatisticType
+        , Network.AWS.GuardDuty.Types.FindingStatistics
+        , Network.AWS.GuardDuty.Types.GeoLocation
+        , Network.AWS.GuardDuty.Types.IAMInstanceProfile
+        , Network.AWS.GuardDuty.Types.IPSetFormat
+        , Network.AWS.GuardDuty.Types.IPSetStatus
+        , Network.AWS.GuardDuty.Types.InstanceDetails
+        , Network.AWS.GuardDuty.Types.Invitation
+        , Network.AWS.GuardDuty.Types.LocalPortDetails
+        , Network.AWS.GuardDuty.Types.Master
+        , Network.AWS.GuardDuty.Types.Member
+        , Network.AWS.GuardDuty.Types.NetworkConnectionAction
+        , Network.AWS.GuardDuty.Types.NetworkInterface
+        , Network.AWS.GuardDuty.Types.OrderBy
+        , Network.AWS.GuardDuty.Types.Organization
+        , Network.AWS.GuardDuty.Types.PortProbeAction
+        , Network.AWS.GuardDuty.Types.PortProbeDetail
+        , Network.AWS.GuardDuty.Types.PrivateIPAddressDetails
+        , Network.AWS.GuardDuty.Types.ProductCode
+        , Network.AWS.GuardDuty.Types.RemoteIPDetails
+        , Network.AWS.GuardDuty.Types.RemotePortDetails
+        , Network.AWS.GuardDuty.Types.Resource
+        , Network.AWS.GuardDuty.Types.SecurityGroup
+        , Network.AWS.GuardDuty.Types.ServiceInfo
+        , Network.AWS.GuardDuty.Types.SortCriteria
+        , Network.AWS.GuardDuty.Types.Tag
+        , Network.AWS.GuardDuty.Types.ThreatIntelSetFormat
+        , Network.AWS.GuardDuty.Types.ThreatIntelSetStatus
+        , Network.AWS.GuardDuty.Types.UnprocessedAccount
 
     build-depends:
           amazonka-core == 1.6.1.*

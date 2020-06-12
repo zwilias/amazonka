@@ -45,7 +45,6 @@ module Network.AWS.MediaLive.DescribeInput
 
 import Network.AWS.Lens
 import Network.AWS.MediaLive.Types
-import Network.AWS.MediaLive.Types.Product
 import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
@@ -53,12 +52,9 @@ import Network.AWS.Response
 -- | Placeholder documentation for DescribeInputRequest
 --
 -- /See:/ 'describeInput' smart constructor.
-newtype DescribeInput =
-  DescribeInput'
-    { _dInputId :: Text
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+newtype DescribeInput = DescribeInput'{_dInputId ::
+                                       Text}
+                          deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'DescribeInput' with the minimum fields required to make a request.
 --
@@ -68,8 +64,8 @@ newtype DescribeInput =
 describeInput
     :: Text -- ^ 'dInputId'
     -> DescribeInput
-describeInput pInputId_ = DescribeInput' {_dInputId = pInputId_}
-
+describeInput pInputId_
+  = DescribeInput'{_dInputId = pInputId_}
 
 -- | Unique ID of the input
 dInputId :: Lens' DescribeInput Text
@@ -114,21 +110,25 @@ instance ToQuery DescribeInput where
 -- | Placeholder documentation for DescribeInputResponse
 --
 -- /See:/ 'describeInputResponse' smart constructor.
-data DescribeInputResponse =
-  DescribeInputResponse'
-    { _diirsState            :: !(Maybe InputState)
-    , _diirsSecurityGroups   :: !(Maybe [Text])
-    , _diirsARN              :: !(Maybe Text)
-    , _diirsSources          :: !(Maybe [InputSource])
-    , _diirsDestinations     :: !(Maybe [InputDestination])
-    , _diirsName             :: !(Maybe Text)
-    , _diirsAttachedChannels :: !(Maybe [Text])
-    , _diirsId               :: !(Maybe Text)
-    , _diirsType             :: !(Maybe InputType)
-    , _diirsResponseStatus   :: !Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data DescribeInputResponse = DescribeInputResponse'{_diirsState
+                                                    :: !(Maybe InputState),
+                                                    _diirsSecurityGroups ::
+                                                    !(Maybe [Text]),
+                                                    _diirsARN :: !(Maybe Text),
+                                                    _diirsSources ::
+                                                    !(Maybe [InputSource]),
+                                                    _diirsDestinations ::
+                                                    !(Maybe [InputDestination]),
+                                                    _diirsName :: !(Maybe Text),
+                                                    _diirsAttachedChannels ::
+                                                    !(Maybe [Text]),
+                                                    _diirsId :: !(Maybe Text),
+                                                    _diirsType ::
+                                                    !(Maybe InputType),
+                                                    _diirsResponseStatus ::
+                                                    !Int}
+                               deriving (Eq, Read, Show, Data, Typeable,
+                                         Generic)
 
 -- | Creates a value of 'DescribeInputResponse' with the minimum fields required to make a request.
 --
@@ -156,20 +156,14 @@ data DescribeInputResponse =
 describeInputResponse
     :: Int -- ^ 'diirsResponseStatus'
     -> DescribeInputResponse
-describeInputResponse pResponseStatus_ =
-  DescribeInputResponse'
-    { _diirsState = Nothing
-    , _diirsSecurityGroups = Nothing
-    , _diirsARN = Nothing
-    , _diirsSources = Nothing
-    , _diirsDestinations = Nothing
-    , _diirsName = Nothing
-    , _diirsAttachedChannels = Nothing
-    , _diirsId = Nothing
-    , _diirsType = Nothing
-    , _diirsResponseStatus = pResponseStatus_
-    }
-
+describeInputResponse pResponseStatus_
+  = DescribeInputResponse'{_diirsState = Nothing,
+                           _diirsSecurityGroups = Nothing, _diirsARN = Nothing,
+                           _diirsSources = Nothing,
+                           _diirsDestinations = Nothing, _diirsName = Nothing,
+                           _diirsAttachedChannels = Nothing, _diirsId = Nothing,
+                           _diirsType = Nothing,
+                           _diirsResponseStatus = pResponseStatus_}
 
 -- | Undocumented member.
 diirsState :: Lens' DescribeInputResponse (Maybe InputState)

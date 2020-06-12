@@ -18,7 +18,7 @@
 -- Stability   : auto-generated
 -- Portability : non-portable (GHC extensions)
 --
--- Returns status information for sources within an aggregator. The status includes information about the last time AWS Config verified authorization between the source account and an aggregator account. In case of a failure, the status contains the related error code or message.
+-- Returns status information for sources within an aggregator. The status includes information about the last time AWS Config verified authorization between the source account and an aggregator account. In case of a failure, the status contains the related error code or message. 
 --
 --
 --
@@ -44,7 +44,6 @@ module Network.AWS.Config.DescribeConfigurationAggregatorSourcesStatus
     ) where
 
 import Network.AWS.Config.Types
-import Network.AWS.Config.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Pager
 import Network.AWS.Prelude
@@ -52,15 +51,25 @@ import Network.AWS.Request
 import Network.AWS.Response
 
 -- | /See:/ 'describeConfigurationAggregatorSourcesStatus' smart constructor.
-data DescribeConfigurationAggregatorSourcesStatus =
-  DescribeConfigurationAggregatorSourcesStatus'
-    { _dcassNextToken :: !(Maybe Text)
-    , _dcassLimit :: !(Maybe Nat)
-    , _dcassUpdateStatus :: !(Maybe (List1 AggregatedSourceStatusType))
-    , _dcassConfigurationAggregatorName :: !Text
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data DescribeConfigurationAggregatorSourcesStatus = DescribeConfigurationAggregatorSourcesStatus'{_dcassNextToken
+                                                                                                  ::
+                                                                                                  !(Maybe
+                                                                                                      Text),
+                                                                                                  _dcassLimit
+                                                                                                  ::
+                                                                                                  !(Maybe
+                                                                                                      Nat),
+                                                                                                  _dcassUpdateStatus
+                                                                                                  ::
+                                                                                                  !(Maybe
+                                                                                                      (List1
+                                                                                                         AggregatedSourceStatusType)),
+                                                                                                  _dcassConfigurationAggregatorName
+                                                                                                  ::
+                                                                                                  !Text}
+                                                      deriving (Eq, Read, Show,
+                                                                Data, Typeable,
+                                                                Generic)
 
 -- | Creates a value of 'DescribeConfigurationAggregatorSourcesStatus' with the minimum fields required to make a request.
 --
@@ -76,14 +85,15 @@ data DescribeConfigurationAggregatorSourcesStatus =
 describeConfigurationAggregatorSourcesStatus
     :: Text -- ^ 'dcassConfigurationAggregatorName'
     -> DescribeConfigurationAggregatorSourcesStatus
-describeConfigurationAggregatorSourcesStatus pConfigurationAggregatorName_ =
-  DescribeConfigurationAggregatorSourcesStatus'
-    { _dcassNextToken = Nothing
-    , _dcassLimit = Nothing
-    , _dcassUpdateStatus = Nothing
-    , _dcassConfigurationAggregatorName = pConfigurationAggregatorName_
-    }
-
+describeConfigurationAggregatorSourcesStatus
+  pConfigurationAggregatorName_
+  = DescribeConfigurationAggregatorSourcesStatus'{_dcassNextToken
+                                                    = Nothing,
+                                                  _dcassLimit = Nothing,
+                                                  _dcassUpdateStatus = Nothing,
+                                                  _dcassConfigurationAggregatorName
+                                                    =
+                                                    pConfigurationAggregatorName_}
 
 -- | The @nextToken@ string returned on a previous page that you use to get the next page of results in a paginated response.
 dcassNextToken :: Lens' DescribeConfigurationAggregatorSourcesStatus (Maybe Text)
@@ -172,20 +182,29 @@ instance ToQuery
         toQuery = const mempty
 
 -- | /See:/ 'describeConfigurationAggregatorSourcesStatusResponse' smart constructor.
-data DescribeConfigurationAggregatorSourcesStatusResponse =
-  DescribeConfigurationAggregatorSourcesStatusResponse'
-    { _dcassrsAggregatedSourceStatusList :: !(Maybe [AggregatedSourceStatus])
-    , _dcassrsNextToken                  :: !(Maybe Text)
-    , _dcassrsResponseStatus             :: !Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data DescribeConfigurationAggregatorSourcesStatusResponse = DescribeConfigurationAggregatorSourcesStatusResponse'{_dcassrsAggregatedSourceStatusList
+                                                                                                                  ::
+                                                                                                                  !(Maybe
+                                                                                                                      [AggregatedSourceStatus]),
+                                                                                                                  _dcassrsNextToken
+                                                                                                                  ::
+                                                                                                                  !(Maybe
+                                                                                                                      Text),
+                                                                                                                  _dcassrsResponseStatus
+                                                                                                                  ::
+                                                                                                                  !Int}
+                                                              deriving (Eq,
+                                                                        Read,
+                                                                        Show,
+                                                                        Data,
+                                                                        Typeable,
+                                                                        Generic)
 
 -- | Creates a value of 'DescribeConfigurationAggregatorSourcesStatusResponse' with the minimum fields required to make a request.
 --
 -- Use one of the following lenses to modify other fields as desired:
 --
--- * 'dcassrsAggregatedSourceStatusList' - Returns an AggregatedSourceStatus object.
+-- * 'dcassrsAggregatedSourceStatusList' - Returns an AggregatedSourceStatus object. 
 --
 -- * 'dcassrsNextToken' - The @nextToken@ string returned on a previous page that you use to get the next page of results in a paginated response.
 --
@@ -193,15 +212,16 @@ data DescribeConfigurationAggregatorSourcesStatusResponse =
 describeConfigurationAggregatorSourcesStatusResponse
     :: Int -- ^ 'dcassrsResponseStatus'
     -> DescribeConfigurationAggregatorSourcesStatusResponse
-describeConfigurationAggregatorSourcesStatusResponse pResponseStatus_ =
-  DescribeConfigurationAggregatorSourcesStatusResponse'
-    { _dcassrsAggregatedSourceStatusList = Nothing
-    , _dcassrsNextToken = Nothing
-    , _dcassrsResponseStatus = pResponseStatus_
-    }
+describeConfigurationAggregatorSourcesStatusResponse
+  pResponseStatus_
+  = DescribeConfigurationAggregatorSourcesStatusResponse'{_dcassrsAggregatedSourceStatusList
+                                                            = Nothing,
+                                                          _dcassrsNextToken =
+                                                            Nothing,
+                                                          _dcassrsResponseStatus
+                                                            = pResponseStatus_}
 
-
--- | Returns an AggregatedSourceStatus object.
+-- | Returns an AggregatedSourceStatus object. 
 dcassrsAggregatedSourceStatusList :: Lens' DescribeConfigurationAggregatorSourcesStatusResponse [AggregatedSourceStatus]
 dcassrsAggregatedSourceStatusList = lens _dcassrsAggregatedSourceStatusList (\ s a -> s{_dcassrsAggregatedSourceStatusList = a}) . _Default . _Coerce
 

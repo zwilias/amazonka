@@ -21,7 +21,7 @@
 -- Lists your resource data sync configurations. Includes information about the last time a sync attempted to start, the last sync status, and the last time a sync successfully completed.
 --
 --
--- The number of sync configurations might be too large to return using a single call to @ListResourceDataSync@ . You can limit the number of sync configurations returned by using the @MaxResults@ parameter. To determine whether there are more sync configurations to list, check the value of @NextToken@ in the output. If there are more sync configurations to list, you can request them by specifying the @NextToken@ returned in the call to the parameter of a subsequent call.
+-- The number of sync configurations might be too large to return using a single call to @ListResourceDataSync@ . You can limit the number of sync configurations returned by using the @MaxResults@ parameter. To determine whether there are more sync configurations to list, check the value of @NextToken@ in the output. If there are more sync configurations to list, you can request them by specifying the @NextToken@ returned in the call to the parameter of a subsequent call. 
 --
 module Network.AWS.SSM.ListResourceDataSync
     (
@@ -46,31 +46,28 @@ import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 import Network.AWS.SSM.Types
-import Network.AWS.SSM.Types.Product
 
 -- | /See:/ 'listResourceDataSync' smart constructor.
-data ListResourceDataSync =
-  ListResourceDataSync'
-    { _lrdsNextToken  :: !(Maybe Text)
-    , _lrdsMaxResults :: !(Maybe Nat)
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data ListResourceDataSync = ListResourceDataSync'{_lrdsNextToken
+                                                  :: !(Maybe Text),
+                                                  _lrdsMaxResults ::
+                                                  !(Maybe Nat)}
+                              deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'ListResourceDataSync' with the minimum fields required to make a request.
 --
 -- Use one of the following lenses to modify other fields as desired:
 --
--- * 'lrdsNextToken' - A token to start the list. Use this token to get the next set of results.
+-- * 'lrdsNextToken' - A token to start the list. Use this token to get the next set of results. 
 --
 -- * 'lrdsMaxResults' - The maximum number of items to return for this call. The call also returns a token that you can specify in a subsequent call to get the next set of results.
 listResourceDataSync
     :: ListResourceDataSync
-listResourceDataSync =
-  ListResourceDataSync' {_lrdsNextToken = Nothing, _lrdsMaxResults = Nothing}
+listResourceDataSync
+  = ListResourceDataSync'{_lrdsNextToken = Nothing,
+                          _lrdsMaxResults = Nothing}
 
-
--- | A token to start the list. Use this token to get the next set of results.
+-- | A token to start the list. Use this token to get the next set of results. 
 lrdsNextToken :: Lens' ListResourceDataSync (Maybe Text)
 lrdsNextToken = lens _lrdsNextToken (\ s a -> s{_lrdsNextToken = a})
 
@@ -117,14 +114,17 @@ instance ToQuery ListResourceDataSync where
         toQuery = const mempty
 
 -- | /See:/ 'listResourceDataSyncResponse' smart constructor.
-data ListResourceDataSyncResponse =
-  ListResourceDataSyncResponse'
-    { _lrdsrsResourceDataSyncItems :: !(Maybe [ResourceDataSyncItem])
-    , _lrdsrsNextToken             :: !(Maybe Text)
-    , _lrdsrsResponseStatus        :: !Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data ListResourceDataSyncResponse = ListResourceDataSyncResponse'{_lrdsrsResourceDataSyncItems
+                                                                  ::
+                                                                  !(Maybe
+                                                                      [ResourceDataSyncItem]),
+                                                                  _lrdsrsNextToken
+                                                                  ::
+                                                                  !(Maybe Text),
+                                                                  _lrdsrsResponseStatus
+                                                                  :: !Int}
+                                      deriving (Eq, Read, Show, Data, Typeable,
+                                                Generic)
 
 -- | Creates a value of 'ListResourceDataSyncResponse' with the minimum fields required to make a request.
 --
@@ -138,13 +138,11 @@ data ListResourceDataSyncResponse =
 listResourceDataSyncResponse
     :: Int -- ^ 'lrdsrsResponseStatus'
     -> ListResourceDataSyncResponse
-listResourceDataSyncResponse pResponseStatus_ =
-  ListResourceDataSyncResponse'
-    { _lrdsrsResourceDataSyncItems = Nothing
-    , _lrdsrsNextToken = Nothing
-    , _lrdsrsResponseStatus = pResponseStatus_
-    }
-
+listResourceDataSyncResponse pResponseStatus_
+  = ListResourceDataSyncResponse'{_lrdsrsResourceDataSyncItems
+                                    = Nothing,
+                                  _lrdsrsNextToken = Nothing,
+                                  _lrdsrsResponseStatus = pResponseStatus_}
 
 -- | A list of your current Resource Data Sync configurations and their statuses.
 lrdsrsResourceDataSyncItems :: Lens' ListResourceDataSyncResponse [ResourceDataSyncItem]

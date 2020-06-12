@@ -45,21 +45,19 @@ module Network.AWS.Connect.UpdateContactAttributes
     ) where
 
 import Network.AWS.Connect.Types
-import Network.AWS.Connect.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 
 -- | /See:/ 'updateContactAttributes' smart constructor.
-data UpdateContactAttributes =
-  UpdateContactAttributes'
-    { _ucaInitialContactId :: !Text
-    , _ucaInstanceId       :: !Text
-    , _ucaAttributes       :: !(Map Text Text)
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data UpdateContactAttributes = UpdateContactAttributes'{_ucaInitialContactId
+                                                        :: !Text,
+                                                        _ucaInstanceId :: !Text,
+                                                        _ucaAttributes ::
+                                                        !(Map Text Text)}
+                                 deriving (Eq, Read, Show, Data, Typeable,
+                                           Generic)
 
 -- | Creates a value of 'UpdateContactAttributes' with the minimum fields required to make a request.
 --
@@ -74,13 +72,12 @@ updateContactAttributes
     :: Text -- ^ 'ucaInitialContactId'
     -> Text -- ^ 'ucaInstanceId'
     -> UpdateContactAttributes
-updateContactAttributes pInitialContactId_ pInstanceId_ =
-  UpdateContactAttributes'
-    { _ucaInitialContactId = pInitialContactId_
-    , _ucaInstanceId = pInstanceId_
-    , _ucaAttributes = mempty
-    }
-
+updateContactAttributes pInitialContactId_
+  pInstanceId_
+  = UpdateContactAttributes'{_ucaInitialContactId =
+                               pInitialContactId_,
+                             _ucaInstanceId = pInstanceId_,
+                             _ucaAttributes = mempty}
 
 -- | The identifier of the contact. This is the identifier of the contact associated with the first interaction with the contact center.
 ucaInitialContactId :: Lens' UpdateContactAttributes Text
@@ -130,12 +127,11 @@ instance ToQuery UpdateContactAttributes where
         toQuery = const mempty
 
 -- | /See:/ 'updateContactAttributesResponse' smart constructor.
-newtype UpdateContactAttributesResponse =
-  UpdateContactAttributesResponse'
-    { _ucarsResponseStatus :: Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+newtype UpdateContactAttributesResponse = UpdateContactAttributesResponse'{_ucarsResponseStatus
+                                                                           ::
+                                                                           Int}
+                                            deriving (Eq, Read, Show, Data,
+                                                      Typeable, Generic)
 
 -- | Creates a value of 'UpdateContactAttributesResponse' with the minimum fields required to make a request.
 --
@@ -145,9 +141,9 @@ newtype UpdateContactAttributesResponse =
 updateContactAttributesResponse
     :: Int -- ^ 'ucarsResponseStatus'
     -> UpdateContactAttributesResponse
-updateContactAttributesResponse pResponseStatus_ =
-  UpdateContactAttributesResponse' {_ucarsResponseStatus = pResponseStatus_}
-
+updateContactAttributesResponse pResponseStatus_
+  = UpdateContactAttributesResponse'{_ucarsResponseStatus
+                                       = pResponseStatus_}
 
 -- | -- | The response status code.
 ucarsResponseStatus :: Lens' UpdateContactAttributesResponse Int

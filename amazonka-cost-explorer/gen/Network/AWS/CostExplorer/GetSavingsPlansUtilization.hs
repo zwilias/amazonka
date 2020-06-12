@@ -41,21 +41,23 @@ module Network.AWS.CostExplorer.GetSavingsPlansUtilization
     ) where
 
 import Network.AWS.CostExplorer.Types
-import Network.AWS.CostExplorer.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 
 -- | /See:/ 'getSavingsPlansUtilization' smart constructor.
-data GetSavingsPlansUtilization =
-  GetSavingsPlansUtilization'
-    { _gspuGranularity :: !(Maybe Granularity)
-    , _gspuFilter      :: !(Maybe Expression)
-    , _gspuTimePeriod  :: !DateInterval
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data GetSavingsPlansUtilization = GetSavingsPlansUtilization'{_gspuGranularity
+                                                              ::
+                                                              !(Maybe
+                                                                  Granularity),
+                                                              _gspuFilter ::
+                                                              !(Maybe
+                                                                  Expression),
+                                                              _gspuTimePeriod ::
+                                                              !DateInterval}
+                                    deriving (Eq, Read, Show, Data, Typeable,
+                                              Generic)
 
 -- | Creates a value of 'GetSavingsPlansUtilization' with the minimum fields required to make a request.
 --
@@ -69,13 +71,11 @@ data GetSavingsPlansUtilization =
 getSavingsPlansUtilization
     :: DateInterval -- ^ 'gspuTimePeriod'
     -> GetSavingsPlansUtilization
-getSavingsPlansUtilization pTimePeriod_ =
-  GetSavingsPlansUtilization'
-    { _gspuGranularity = Nothing
-    , _gspuFilter = Nothing
-    , _gspuTimePeriod = pTimePeriod_
-    }
-
+getSavingsPlansUtilization pTimePeriod_
+  = GetSavingsPlansUtilization'{_gspuGranularity =
+                                  Nothing,
+                                _gspuFilter = Nothing,
+                                _gspuTimePeriod = pTimePeriod_}
 
 -- | The granularity of the Amazon Web Services utillization data for your Savings Plans. The @GetSavingsPlansUtilization@ operation supports only @DAILY@ and @MONTHLY@ granularities.
 gspuGranularity :: Lens' GetSavingsPlansUtilization (Maybe Granularity)
@@ -130,14 +130,18 @@ instance ToQuery GetSavingsPlansUtilization where
         toQuery = const mempty
 
 -- | /See:/ 'getSavingsPlansUtilizationResponse' smart constructor.
-data GetSavingsPlansUtilizationResponse =
-  GetSavingsPlansUtilizationResponse'
-    { _gspursSavingsPlansUtilizationsByTime :: !(Maybe [SavingsPlansUtilizationByTime])
-    , _gspursResponseStatus :: !Int
-    , _gspursTotal :: !SavingsPlansUtilizationAggregates
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data GetSavingsPlansUtilizationResponse = GetSavingsPlansUtilizationResponse'{_gspursSavingsPlansUtilizationsByTime
+                                                                              ::
+                                                                              !(Maybe
+                                                                                  [SavingsPlansUtilizationByTime]),
+                                                                              _gspursResponseStatus
+                                                                              ::
+                                                                              !Int,
+                                                                              _gspursTotal
+                                                                              ::
+                                                                              !SavingsPlansUtilizationAggregates}
+                                            deriving (Eq, Read, Show, Data,
+                                                      Typeable, Generic)
 
 -- | Creates a value of 'GetSavingsPlansUtilizationResponse' with the minimum fields required to make a request.
 --
@@ -152,13 +156,13 @@ getSavingsPlansUtilizationResponse
     :: Int -- ^ 'gspursResponseStatus'
     -> SavingsPlansUtilizationAggregates -- ^ 'gspursTotal'
     -> GetSavingsPlansUtilizationResponse
-getSavingsPlansUtilizationResponse pResponseStatus_ pTotal_ =
-  GetSavingsPlansUtilizationResponse'
-    { _gspursSavingsPlansUtilizationsByTime = Nothing
-    , _gspursResponseStatus = pResponseStatus_
-    , _gspursTotal = pTotal_
-    }
-
+getSavingsPlansUtilizationResponse pResponseStatus_
+  pTotal_
+  = GetSavingsPlansUtilizationResponse'{_gspursSavingsPlansUtilizationsByTime
+                                          = Nothing,
+                                        _gspursResponseStatus =
+                                          pResponseStatus_,
+                                        _gspursTotal = pTotal_}
 
 -- | The amount of cost/commitment you used your Savings Plans. This allows you to specify date ranges.
 gspursSavingsPlansUtilizationsByTime :: Lens' GetSavingsPlansUtilizationResponse [SavingsPlansUtilizationByTime]

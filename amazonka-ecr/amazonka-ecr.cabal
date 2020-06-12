@@ -71,8 +71,26 @@ library
         , Network.AWS.ECR.Waiters
 
     other-modules:
-          Network.AWS.ECR.Types.Product
-        , Network.AWS.ECR.Types.Sum
+          Network.AWS.ECR.Types.AuthorizationData
+        , Network.AWS.ECR.Types.DescribeImagesFilter
+        , Network.AWS.ECR.Types.Image
+        , Network.AWS.ECR.Types.ImageActionType
+        , Network.AWS.ECR.Types.ImageDetail
+        , Network.AWS.ECR.Types.ImageFailure
+        , Network.AWS.ECR.Types.ImageFailureCode
+        , Network.AWS.ECR.Types.ImageIdentifier
+        , Network.AWS.ECR.Types.Layer
+        , Network.AWS.ECR.Types.LayerAvailability
+        , Network.AWS.ECR.Types.LayerFailure
+        , Network.AWS.ECR.Types.LayerFailureCode
+        , Network.AWS.ECR.Types.LifecyclePolicyPreviewFilter
+        , Network.AWS.ECR.Types.LifecyclePolicyPreviewResult
+        , Network.AWS.ECR.Types.LifecyclePolicyPreviewStatus
+        , Network.AWS.ECR.Types.LifecyclePolicyPreviewSummary
+        , Network.AWS.ECR.Types.LifecyclePolicyRuleAction
+        , Network.AWS.ECR.Types.ListImagesFilter
+        , Network.AWS.ECR.Types.Repository
+        , Network.AWS.ECR.Types.TagStatus
 
     build-depends:
           amazonka-core == 1.6.1.*

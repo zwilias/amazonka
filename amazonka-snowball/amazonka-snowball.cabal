@@ -66,8 +66,27 @@ library
         , Network.AWS.Snowball.Waiters
 
     other-modules:
-          Network.AWS.Snowball.Types.Product
-        , Network.AWS.Snowball.Types.Sum
+          Network.AWS.Snowball.Types.Address
+        , Network.AWS.Snowball.Types.ClusterListEntry
+        , Network.AWS.Snowball.Types.ClusterMetadata
+        , Network.AWS.Snowball.Types.ClusterState
+        , Network.AWS.Snowball.Types.DataTransfer
+        , Network.AWS.Snowball.Types.EventTriggerDefinition
+        , Network.AWS.Snowball.Types.JobListEntry
+        , Network.AWS.Snowball.Types.JobLogs
+        , Network.AWS.Snowball.Types.JobMetadata
+        , Network.AWS.Snowball.Types.JobResource
+        , Network.AWS.Snowball.Types.JobState
+        , Network.AWS.Snowball.Types.JobType
+        , Network.AWS.Snowball.Types.KeyRange
+        , Network.AWS.Snowball.Types.LambdaResource
+        , Network.AWS.Snowball.Types.Notification
+        , Network.AWS.Snowball.Types.S3Resource
+        , Network.AWS.Snowball.Types.Shipment
+        , Network.AWS.Snowball.Types.ShippingDetails
+        , Network.AWS.Snowball.Types.ShippingOption
+        , Network.AWS.Snowball.Types.SnowballCapacity
+        , Network.AWS.Snowball.Types.SnowballType
 
     build-depends:
           amazonka-core == 1.6.1.*

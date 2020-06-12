@@ -39,7 +39,6 @@ module Network.AWS.EC2.CancelBundleTask
     ) where
 
 import Network.AWS.EC2.Types
-import Network.AWS.EC2.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.Request
@@ -50,13 +49,10 @@ import Network.AWS.Response
 --
 --
 -- /See:/ 'cancelBundleTask' smart constructor.
-data CancelBundleTask =
-  CancelBundleTask'
-    { _cbtDryRun   :: !(Maybe Bool)
-    , _cbtBundleId :: !Text
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data CancelBundleTask = CancelBundleTask'{_cbtDryRun
+                                          :: !(Maybe Bool),
+                                          _cbtBundleId :: !Text}
+                          deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'CancelBundleTask' with the minimum fields required to make a request.
 --
@@ -68,9 +64,9 @@ data CancelBundleTask =
 cancelBundleTask
     :: Text -- ^ 'cbtBundleId'
     -> CancelBundleTask
-cancelBundleTask pBundleId_ =
-  CancelBundleTask' {_cbtDryRun = Nothing, _cbtBundleId = pBundleId_}
-
+cancelBundleTask pBundleId_
+  = CancelBundleTask'{_cbtDryRun = Nothing,
+                      _cbtBundleId = pBundleId_}
 
 -- | Checks whether you have the required permissions for the action, without actually making the request, and provides an error response. If you have the required permissions, the error response is @DryRunOperation@ . Otherwise, it is @UnauthorizedOperation@ .
 cbtDryRun :: Lens' CancelBundleTask (Maybe Bool)
@@ -111,13 +107,13 @@ instance ToQuery CancelBundleTask where
 --
 --
 -- /See:/ 'cancelBundleTaskResponse' smart constructor.
-data CancelBundleTaskResponse =
-  CancelBundleTaskResponse'
-    { _cbtrsBundleTask     :: !(Maybe BundleTask)
-    , _cbtrsResponseStatus :: !Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data CancelBundleTaskResponse = CancelBundleTaskResponse'{_cbtrsBundleTask
+                                                          ::
+                                                          !(Maybe BundleTask),
+                                                          _cbtrsResponseStatus
+                                                          :: !Int}
+                                  deriving (Eq, Read, Show, Data, Typeable,
+                                            Generic)
 
 -- | Creates a value of 'CancelBundleTaskResponse' with the minimum fields required to make a request.
 --
@@ -129,10 +125,10 @@ data CancelBundleTaskResponse =
 cancelBundleTaskResponse
     :: Int -- ^ 'cbtrsResponseStatus'
     -> CancelBundleTaskResponse
-cancelBundleTaskResponse pResponseStatus_ =
-  CancelBundleTaskResponse'
-    {_cbtrsBundleTask = Nothing, _cbtrsResponseStatus = pResponseStatus_}
-
+cancelBundleTaskResponse pResponseStatus_
+  = CancelBundleTaskResponse'{_cbtrsBundleTask =
+                                Nothing,
+                              _cbtrsResponseStatus = pResponseStatus_}
 
 -- | Information about the bundle task.
 cbtrsBundleTask :: Lens' CancelBundleTaskResponse (Maybe BundleTask)

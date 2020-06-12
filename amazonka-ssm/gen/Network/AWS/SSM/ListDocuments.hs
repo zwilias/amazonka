@@ -49,18 +49,15 @@ import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 import Network.AWS.SSM.Types
-import Network.AWS.SSM.Types.Product
 
 -- | /See:/ 'listDocuments' smart constructor.
-data ListDocuments =
-  ListDocuments'
-    { _ldDocumentFilterList :: !(Maybe (List1 DocumentFilter))
-    , _ldFilters            :: !(Maybe [DocumentKeyValuesFilter])
-    , _ldNextToken          :: !(Maybe Text)
-    , _ldMaxResults         :: !(Maybe Nat)
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data ListDocuments = ListDocuments'{_ldDocumentFilterList
+                                    :: !(Maybe (List1 DocumentFilter)),
+                                    _ldFilters ::
+                                    !(Maybe [DocumentKeyValuesFilter]),
+                                    _ldNextToken :: !(Maybe Text),
+                                    _ldMaxResults :: !(Maybe Nat)}
+                       deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'ListDocuments' with the minimum fields required to make a request.
 --
@@ -75,14 +72,10 @@ data ListDocuments =
 -- * 'ldMaxResults' - The maximum number of items to return for this call. The call also returns a token that you can specify in a subsequent call to get the next set of results.
 listDocuments
     :: ListDocuments
-listDocuments =
-  ListDocuments'
-    { _ldDocumentFilterList = Nothing
-    , _ldFilters = Nothing
-    , _ldNextToken = Nothing
-    , _ldMaxResults = Nothing
-    }
-
+listDocuments
+  = ListDocuments'{_ldDocumentFilterList = Nothing,
+                   _ldFilters = Nothing, _ldNextToken = Nothing,
+                   _ldMaxResults = Nothing}
 
 -- | One or more filters. Use a filter to return a more specific list of results.
 ldDocumentFilterList :: Lens' ListDocuments (Maybe (NonEmpty DocumentFilter))
@@ -147,14 +140,15 @@ instance ToQuery ListDocuments where
         toQuery = const mempty
 
 -- | /See:/ 'listDocumentsResponse' smart constructor.
-data ListDocumentsResponse =
-  ListDocumentsResponse'
-    { _ldrsDocumentIdentifiers :: !(Maybe [DocumentIdentifier])
-    , _ldrsNextToken           :: !(Maybe Text)
-    , _ldrsResponseStatus      :: !Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data ListDocumentsResponse = ListDocumentsResponse'{_ldrsDocumentIdentifiers
+                                                    ::
+                                                    !(Maybe
+                                                        [DocumentIdentifier]),
+                                                    _ldrsNextToken ::
+                                                    !(Maybe Text),
+                                                    _ldrsResponseStatus :: !Int}
+                               deriving (Eq, Read, Show, Data, Typeable,
+                                         Generic)
 
 -- | Creates a value of 'ListDocumentsResponse' with the minimum fields required to make a request.
 --
@@ -168,13 +162,11 @@ data ListDocumentsResponse =
 listDocumentsResponse
     :: Int -- ^ 'ldrsResponseStatus'
     -> ListDocumentsResponse
-listDocumentsResponse pResponseStatus_ =
-  ListDocumentsResponse'
-    { _ldrsDocumentIdentifiers = Nothing
-    , _ldrsNextToken = Nothing
-    , _ldrsResponseStatus = pResponseStatus_
-    }
-
+listDocumentsResponse pResponseStatus_
+  = ListDocumentsResponse'{_ldrsDocumentIdentifiers =
+                             Nothing,
+                           _ldrsNextToken = Nothing,
+                           _ldrsResponseStatus = pResponseStatus_}
 
 -- | The names of the Systems Manager documents.
 ldrsDocumentIdentifiers :: Lens' ListDocumentsResponse [DocumentIdentifier]

@@ -41,21 +41,25 @@ module Network.AWS.CodeCommit.ListRepositoriesForApprovalRuleTemplate
     ) where
 
 import Network.AWS.CodeCommit.Types
-import Network.AWS.CodeCommit.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 
 -- | /See:/ 'listRepositoriesForApprovalRuleTemplate' smart constructor.
-data ListRepositoriesForApprovalRuleTemplate =
-  ListRepositoriesForApprovalRuleTemplate'
-    { _lrfartNextToken                :: !(Maybe Text)
-    , _lrfartMaxResults               :: !(Maybe Int)
-    , _lrfartApprovalRuleTemplateName :: !Text
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data ListRepositoriesForApprovalRuleTemplate = ListRepositoriesForApprovalRuleTemplate'{_lrfartNextToken
+                                                                                        ::
+                                                                                        !(Maybe
+                                                                                            Text),
+                                                                                        _lrfartMaxResults
+                                                                                        ::
+                                                                                        !(Maybe
+                                                                                            Int),
+                                                                                        _lrfartApprovalRuleTemplateName
+                                                                                        ::
+                                                                                        !Text}
+                                                 deriving (Eq, Read, Show, Data,
+                                                           Typeable, Generic)
 
 -- | Creates a value of 'ListRepositoriesForApprovalRuleTemplate' with the minimum fields required to make a request.
 --
@@ -69,13 +73,13 @@ data ListRepositoriesForApprovalRuleTemplate =
 listRepositoriesForApprovalRuleTemplate
     :: Text -- ^ 'lrfartApprovalRuleTemplateName'
     -> ListRepositoriesForApprovalRuleTemplate
-listRepositoriesForApprovalRuleTemplate pApprovalRuleTemplateName_ =
-  ListRepositoriesForApprovalRuleTemplate'
-    { _lrfartNextToken = Nothing
-    , _lrfartMaxResults = Nothing
-    , _lrfartApprovalRuleTemplateName = pApprovalRuleTemplateName_
-    }
-
+listRepositoriesForApprovalRuleTemplate
+  pApprovalRuleTemplateName_
+  = ListRepositoriesForApprovalRuleTemplate'{_lrfartNextToken
+                                               = Nothing,
+                                             _lrfartMaxResults = Nothing,
+                                             _lrfartApprovalRuleTemplateName =
+                                               pApprovalRuleTemplateName_}
 
 -- | An enumeration token that, when provided in a request, returns the next batch of the results.
 lrfartNextToken :: Lens' ListRepositoriesForApprovalRuleTemplate (Maybe Text)
@@ -146,14 +150,21 @@ instance ToQuery
         toQuery = const mempty
 
 -- | /See:/ 'listRepositoriesForApprovalRuleTemplateResponse' smart constructor.
-data ListRepositoriesForApprovalRuleTemplateResponse =
-  ListRepositoriesForApprovalRuleTemplateResponse'
-    { _lrfartrsRepositoryNames :: !(Maybe [Text])
-    , _lrfartrsNextToken       :: !(Maybe Text)
-    , _lrfartrsResponseStatus  :: !Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data ListRepositoriesForApprovalRuleTemplateResponse = ListRepositoriesForApprovalRuleTemplateResponse'{_lrfartrsRepositoryNames
+                                                                                                        ::
+                                                                                                        !(Maybe
+                                                                                                            [Text]),
+                                                                                                        _lrfartrsNextToken
+                                                                                                        ::
+                                                                                                        !(Maybe
+                                                                                                            Text),
+                                                                                                        _lrfartrsResponseStatus
+                                                                                                        ::
+                                                                                                        !Int}
+                                                         deriving (Eq, Read,
+                                                                   Show, Data,
+                                                                   Typeable,
+                                                                   Generic)
 
 -- | Creates a value of 'ListRepositoriesForApprovalRuleTemplateResponse' with the minimum fields required to make a request.
 --
@@ -167,13 +178,14 @@ data ListRepositoriesForApprovalRuleTemplateResponse =
 listRepositoriesForApprovalRuleTemplateResponse
     :: Int -- ^ 'lrfartrsResponseStatus'
     -> ListRepositoriesForApprovalRuleTemplateResponse
-listRepositoriesForApprovalRuleTemplateResponse pResponseStatus_ =
-  ListRepositoriesForApprovalRuleTemplateResponse'
-    { _lrfartrsRepositoryNames = Nothing
-    , _lrfartrsNextToken = Nothing
-    , _lrfartrsResponseStatus = pResponseStatus_
-    }
-
+listRepositoriesForApprovalRuleTemplateResponse
+  pResponseStatus_
+  = ListRepositoriesForApprovalRuleTemplateResponse'{_lrfartrsRepositoryNames
+                                                       = Nothing,
+                                                     _lrfartrsNextToken =
+                                                       Nothing,
+                                                     _lrfartrsResponseStatus =
+                                                       pResponseStatus_}
 
 -- | A list of repository names that are associated with the specified approval rule template.
 lrfartrsRepositoryNames :: Lens' ListRepositoriesForApprovalRuleTemplateResponse [Text]

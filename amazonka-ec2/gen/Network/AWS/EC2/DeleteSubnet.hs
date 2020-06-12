@@ -36,20 +36,16 @@ module Network.AWS.EC2.DeleteSubnet
     ) where
 
 import Network.AWS.EC2.Types
-import Network.AWS.EC2.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 
 -- | /See:/ 'deleteSubnet' smart constructor.
-data DeleteSubnet =
-  DeleteSubnet'
-    { _ddDryRun   :: !(Maybe Bool)
-    , _ddSubnetId :: !Text
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data DeleteSubnet = DeleteSubnet'{_ddDryRun ::
+                                  !(Maybe Bool),
+                                  _ddSubnetId :: !Text}
+                      deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'DeleteSubnet' with the minimum fields required to make a request.
 --
@@ -61,9 +57,9 @@ data DeleteSubnet =
 deleteSubnet
     :: Text -- ^ 'ddSubnetId'
     -> DeleteSubnet
-deleteSubnet pSubnetId_ =
-  DeleteSubnet' {_ddDryRun = Nothing, _ddSubnetId = pSubnetId_}
-
+deleteSubnet pSubnetId_
+  = DeleteSubnet'{_ddDryRun = Nothing,
+                  _ddSubnetId = pSubnetId_}
 
 -- | Checks whether you have the required permissions for the action, without actually making the request, and provides an error response. If you have the required permissions, the error response is @DryRunOperation@ . Otherwise, it is @UnauthorizedOperation@ .
 ddDryRun :: Lens' DeleteSubnet (Maybe Bool)
@@ -96,16 +92,13 @@ instance ToQuery DeleteSubnet where
                "DryRun" =: _ddDryRun, "SubnetId" =: _ddSubnetId]
 
 -- | /See:/ 'deleteSubnetResponse' smart constructor.
-data DeleteSubnetResponse =
-  DeleteSubnetResponse'
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data DeleteSubnetResponse = DeleteSubnetResponse'
+                              deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'DeleteSubnetResponse' with the minimum fields required to make a request.
 --
 deleteSubnetResponse
     :: DeleteSubnetResponse
 deleteSubnetResponse = DeleteSubnetResponse'
-
 
 instance NFData DeleteSubnetResponse where

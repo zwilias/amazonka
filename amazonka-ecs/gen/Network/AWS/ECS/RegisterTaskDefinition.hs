@@ -51,28 +51,35 @@ module Network.AWS.ECS.RegisterTaskDefinition
     ) where
 
 import Network.AWS.ECS.Types
-import Network.AWS.ECS.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 
 -- | /See:/ 'registerTaskDefinition' smart constructor.
-data RegisterTaskDefinition =
-  RegisterTaskDefinition'
-    { _rtdExecutionRoleARN :: !(Maybe Text)
-    , _rtdRequiresCompatibilities :: !(Maybe [Compatibility])
-    , _rtdMemory :: !(Maybe Text)
-    , _rtdTaskRoleARN :: !(Maybe Text)
-    , _rtdPlacementConstraints :: !(Maybe [TaskDefinitionPlacementConstraint])
-    , _rtdNetworkMode :: !(Maybe NetworkMode)
-    , _rtdVolumes :: !(Maybe [Volume])
-    , _rtdCpu :: !(Maybe Text)
-    , _rtdFamily :: !Text
-    , _rtdContainerDefinitions :: ![ContainerDefinition]
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data RegisterTaskDefinition = RegisterTaskDefinition'{_rtdExecutionRoleARN
+                                                      :: !(Maybe Text),
+                                                      _rtdRequiresCompatibilities
+                                                      ::
+                                                      !(Maybe [Compatibility]),
+                                                      _rtdMemory ::
+                                                      !(Maybe Text),
+                                                      _rtdTaskRoleARN ::
+                                                      !(Maybe Text),
+                                                      _rtdPlacementConstraints
+                                                      ::
+                                                      !(Maybe
+                                                          [TaskDefinitionPlacementConstraint]),
+                                                      _rtdNetworkMode ::
+                                                      !(Maybe NetworkMode),
+                                                      _rtdVolumes ::
+                                                      !(Maybe [Volume]),
+                                                      _rtdCpu :: !(Maybe Text),
+                                                      _rtdFamily :: !Text,
+                                                      _rtdContainerDefinitions
+                                                      :: ![ContainerDefinition]}
+                                deriving (Eq, Read, Show, Data, Typeable,
+                                          Generic)
 
 -- | Creates a value of 'RegisterTaskDefinition' with the minimum fields required to make a request.
 --
@@ -100,20 +107,15 @@ data RegisterTaskDefinition =
 registerTaskDefinition
     :: Text -- ^ 'rtdFamily'
     -> RegisterTaskDefinition
-registerTaskDefinition pFamily_ =
-  RegisterTaskDefinition'
-    { _rtdExecutionRoleARN = Nothing
-    , _rtdRequiresCompatibilities = Nothing
-    , _rtdMemory = Nothing
-    , _rtdTaskRoleARN = Nothing
-    , _rtdPlacementConstraints = Nothing
-    , _rtdNetworkMode = Nothing
-    , _rtdVolumes = Nothing
-    , _rtdCpu = Nothing
-    , _rtdFamily = pFamily_
-    , _rtdContainerDefinitions = mempty
-    }
-
+registerTaskDefinition pFamily_
+  = RegisterTaskDefinition'{_rtdExecutionRoleARN =
+                              Nothing,
+                            _rtdRequiresCompatibilities = Nothing,
+                            _rtdMemory = Nothing, _rtdTaskRoleARN = Nothing,
+                            _rtdPlacementConstraints = Nothing,
+                            _rtdNetworkMode = Nothing, _rtdVolumes = Nothing,
+                            _rtdCpu = Nothing, _rtdFamily = pFamily_,
+                            _rtdContainerDefinitions = mempty}
 
 -- | The Amazon Resource Name (ARN) of the task execution role that the Amazon ECS container agent and the Docker daemon can assume.
 rtdExecutionRoleARN :: Lens' RegisterTaskDefinition (Maybe Text)
@@ -205,13 +207,14 @@ instance ToQuery RegisterTaskDefinition where
         toQuery = const mempty
 
 -- | /See:/ 'registerTaskDefinitionResponse' smart constructor.
-data RegisterTaskDefinitionResponse =
-  RegisterTaskDefinitionResponse'
-    { _rtdrsTaskDefinition :: !(Maybe TaskDefinition)
-    , _rtdrsResponseStatus :: !Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data RegisterTaskDefinitionResponse = RegisterTaskDefinitionResponse'{_rtdrsTaskDefinition
+                                                                      ::
+                                                                      !(Maybe
+                                                                          TaskDefinition),
+                                                                      _rtdrsResponseStatus
+                                                                      :: !Int}
+                                        deriving (Eq, Read, Show, Data,
+                                                  Typeable, Generic)
 
 -- | Creates a value of 'RegisterTaskDefinitionResponse' with the minimum fields required to make a request.
 --
@@ -223,10 +226,10 @@ data RegisterTaskDefinitionResponse =
 registerTaskDefinitionResponse
     :: Int -- ^ 'rtdrsResponseStatus'
     -> RegisterTaskDefinitionResponse
-registerTaskDefinitionResponse pResponseStatus_ =
-  RegisterTaskDefinitionResponse'
-    {_rtdrsTaskDefinition = Nothing, _rtdrsResponseStatus = pResponseStatus_}
-
+registerTaskDefinitionResponse pResponseStatus_
+  = RegisterTaskDefinitionResponse'{_rtdrsTaskDefinition
+                                      = Nothing,
+                                    _rtdrsResponseStatus = pResponseStatus_}
 
 -- | The full description of the registered task definition.
 rtdrsTaskDefinition :: Lens' RegisterTaskDefinitionResponse (Maybe TaskDefinition)

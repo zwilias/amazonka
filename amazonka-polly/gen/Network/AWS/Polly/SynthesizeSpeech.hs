@@ -47,24 +47,21 @@ module Network.AWS.Polly.SynthesizeSpeech
 
 import Network.AWS.Lens
 import Network.AWS.Polly.Types
-import Network.AWS.Polly.Types.Product
 import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 
 -- | /See:/ 'synthesizeSpeech' smart constructor.
-data SynthesizeSpeech =
-  SynthesizeSpeech'
-    { _ssSpeechMarkTypes :: !(Maybe [SpeechMarkType])
-    , _ssSampleRate      :: !(Maybe Text)
-    , _ssTextType        :: !(Maybe TextType)
-    , _ssLexiconNames    :: !(Maybe [Sensitive Text])
-    , _ssOutputFormat    :: !OutputFormat
-    , _ssText            :: !Text
-    , _ssVoiceId         :: !VoiceId
-    }
-  deriving (Eq, Show, Data, Typeable, Generic)
-
+data SynthesizeSpeech = SynthesizeSpeech'{_ssSpeechMarkTypes
+                                          :: !(Maybe [SpeechMarkType]),
+                                          _ssSampleRate :: !(Maybe Text),
+                                          _ssTextType :: !(Maybe TextType),
+                                          _ssLexiconNames ::
+                                          !(Maybe [Sensitive Text]),
+                                          _ssOutputFormat :: !OutputFormat,
+                                          _ssText :: !Text,
+                                          _ssVoiceId :: !VoiceId}
+                          deriving (Eq, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'SynthesizeSpeech' with the minimum fields required to make a request.
 --
@@ -72,39 +69,34 @@ data SynthesizeSpeech =
 --
 -- * 'ssSpeechMarkTypes' - The type of speech marks returned for the input text.
 --
--- * 'ssSampleRate' - The audio frequency specified in Hz.  The valid values for @mp3@ and @ogg_vorbis@ are "8000", "16000", and "22050". The default value is "22050".  Valid values for @pcm@ are "8000" and "16000" The default value is "16000".
+-- * 'ssSampleRate' - The audio frequency specified in Hz.  The valid values for @mp3@ and @ogg_vorbis@ are "8000", "16000", and "22050". The default value is "22050".  Valid values for @pcm@ are "8000" and "16000" The default value is "16000". 
 --
 -- * 'ssTextType' - Specifies whether the input text is plain text or SSML. The default value is plain text. For more information, see <http://docs.aws.amazon.com/polly/latest/dg/ssml.html Using SSML> .
 --
 -- * 'ssLexiconNames' - List of one or more pronunciation lexicon names you want the service to apply during synthesis. Lexicons are applied only if the language of the lexicon is the same as the language of the voice. For information about storing lexicons, see <http://docs.aws.amazon.com/polly/latest/dg/API_PutLexicon.html PutLexicon> .
 --
--- * 'ssOutputFormat' - The format in which the returned output will be encoded. For audio stream, this will be mp3, ogg_vorbis, or pcm. For speech marks, this will be json.
+-- * 'ssOutputFormat' - The format in which the returned output will be encoded. For audio stream, this will be mp3, ogg_vorbis, or pcm. For speech marks, this will be json. 
 --
--- * 'ssText' - Input text to synthesize. If you specify @ssml@ as the @TextType@ , follow the SSML format for the input text.
+-- * 'ssText' - Input text to synthesize. If you specify @ssml@ as the @TextType@ , follow the SSML format for the input text. 
 --
--- * 'ssVoiceId' - Voice ID to use for the synthesis. You can get a list of available voice IDs by calling the <http://docs.aws.amazon.com/polly/latest/dg/API_DescribeVoices.html DescribeVoices> operation.
+-- * 'ssVoiceId' - Voice ID to use for the synthesis. You can get a list of available voice IDs by calling the <http://docs.aws.amazon.com/polly/latest/dg/API_DescribeVoices.html DescribeVoices> operation. 
 synthesizeSpeech
     :: OutputFormat -- ^ 'ssOutputFormat'
     -> Text -- ^ 'ssText'
     -> VoiceId -- ^ 'ssVoiceId'
     -> SynthesizeSpeech
-synthesizeSpeech pOutputFormat_ pText_ pVoiceId_ =
-  SynthesizeSpeech'
-    { _ssSpeechMarkTypes = Nothing
-    , _ssSampleRate = Nothing
-    , _ssTextType = Nothing
-    , _ssLexiconNames = Nothing
-    , _ssOutputFormat = pOutputFormat_
-    , _ssText = pText_
-    , _ssVoiceId = pVoiceId_
-    }
-
+synthesizeSpeech pOutputFormat_ pText_ pVoiceId_
+  = SynthesizeSpeech'{_ssSpeechMarkTypes = Nothing,
+                      _ssSampleRate = Nothing, _ssTextType = Nothing,
+                      _ssLexiconNames = Nothing,
+                      _ssOutputFormat = pOutputFormat_, _ssText = pText_,
+                      _ssVoiceId = pVoiceId_}
 
 -- | The type of speech marks returned for the input text.
 ssSpeechMarkTypes :: Lens' SynthesizeSpeech [SpeechMarkType]
 ssSpeechMarkTypes = lens _ssSpeechMarkTypes (\ s a -> s{_ssSpeechMarkTypes = a}) . _Default . _Coerce
 
--- | The audio frequency specified in Hz.  The valid values for @mp3@ and @ogg_vorbis@ are "8000", "16000", and "22050". The default value is "22050".  Valid values for @pcm@ are "8000" and "16000" The default value is "16000".
+-- | The audio frequency specified in Hz.  The valid values for @mp3@ and @ogg_vorbis@ are "8000", "16000", and "22050". The default value is "22050".  Valid values for @pcm@ are "8000" and "16000" The default value is "16000". 
 ssSampleRate :: Lens' SynthesizeSpeech (Maybe Text)
 ssSampleRate = lens _ssSampleRate (\ s a -> s{_ssSampleRate = a})
 
@@ -116,15 +108,15 @@ ssTextType = lens _ssTextType (\ s a -> s{_ssTextType = a})
 ssLexiconNames :: Lens' SynthesizeSpeech [Text]
 ssLexiconNames = lens _ssLexiconNames (\ s a -> s{_ssLexiconNames = a}) . _Default . _Coerce
 
--- | The format in which the returned output will be encoded. For audio stream, this will be mp3, ogg_vorbis, or pcm. For speech marks, this will be json.
+-- | The format in which the returned output will be encoded. For audio stream, this will be mp3, ogg_vorbis, or pcm. For speech marks, this will be json. 
 ssOutputFormat :: Lens' SynthesizeSpeech OutputFormat
 ssOutputFormat = lens _ssOutputFormat (\ s a -> s{_ssOutputFormat = a})
 
--- | Input text to synthesize. If you specify @ssml@ as the @TextType@ , follow the SSML format for the input text.
+-- | Input text to synthesize. If you specify @ssml@ as the @TextType@ , follow the SSML format for the input text. 
 ssText :: Lens' SynthesizeSpeech Text
 ssText = lens _ssText (\ s a -> s{_ssText = a})
 
--- | Voice ID to use for the synthesis. You can get a list of available voice IDs by calling the <http://docs.aws.amazon.com/polly/latest/dg/API_DescribeVoices.html DescribeVoices> operation.
+-- | Voice ID to use for the synthesis. You can get a list of available voice IDs by calling the <http://docs.aws.amazon.com/polly/latest/dg/API_DescribeVoices.html DescribeVoices> operation. 
 ssVoiceId :: Lens' SynthesizeSpeech VoiceId
 ssVoiceId = lens _ssVoiceId (\ s a -> s{_ssVoiceId = a})
 
@@ -166,15 +158,15 @@ instance ToQuery SynthesizeSpeech where
         toQuery = const mempty
 
 -- | /See:/ 'synthesizeSpeechResponse' smart constructor.
-data SynthesizeSpeechResponse =
-  SynthesizeSpeechResponse'
-    { _ssrsRequestCharacters :: !(Maybe Int)
-    , _ssrsContentType       :: !(Maybe Text)
-    , _ssrsResponseStatus    :: !Int
-    , _ssrsAudioStream       :: !RsBody
-    }
-  deriving (Show, Generic)
-
+data SynthesizeSpeechResponse = SynthesizeSpeechResponse'{_ssrsRequestCharacters
+                                                          :: !(Maybe Int),
+                                                          _ssrsContentType ::
+                                                          !(Maybe Text),
+                                                          _ssrsResponseStatus ::
+                                                          !Int,
+                                                          _ssrsAudioStream ::
+                                                          !RsBody}
+                                  deriving (Show, Generic)
 
 -- | Creates a value of 'SynthesizeSpeechResponse' with the minimum fields required to make a request.
 --
@@ -186,19 +178,18 @@ data SynthesizeSpeechResponse =
 --
 -- * 'ssrsResponseStatus' - -- | The response status code.
 --
--- * 'ssrsAudioStream' - Stream containing the synthesized speech.
+-- * 'ssrsAudioStream' - Stream containing the synthesized speech. 
 synthesizeSpeechResponse
     :: Int -- ^ 'ssrsResponseStatus'
     -> RsBody -- ^ 'ssrsAudioStream'
     -> SynthesizeSpeechResponse
-synthesizeSpeechResponse pResponseStatus_ pAudioStream_ =
-  SynthesizeSpeechResponse'
-    { _ssrsRequestCharacters = Nothing
-    , _ssrsContentType = Nothing
-    , _ssrsResponseStatus = pResponseStatus_
-    , _ssrsAudioStream = pAudioStream_
-    }
-
+synthesizeSpeechResponse pResponseStatus_
+  pAudioStream_
+  = SynthesizeSpeechResponse'{_ssrsRequestCharacters =
+                                Nothing,
+                              _ssrsContentType = Nothing,
+                              _ssrsResponseStatus = pResponseStatus_,
+                              _ssrsAudioStream = pAudioStream_}
 
 -- | Number of characters synthesized.
 ssrsRequestCharacters :: Lens' SynthesizeSpeechResponse (Maybe Int)
@@ -212,6 +203,6 @@ ssrsContentType = lens _ssrsContentType (\ s a -> s{_ssrsContentType = a})
 ssrsResponseStatus :: Lens' SynthesizeSpeechResponse Int
 ssrsResponseStatus = lens _ssrsResponseStatus (\ s a -> s{_ssrsResponseStatus = a})
 
--- | Stream containing the synthesized speech.
+-- | Stream containing the synthesized speech. 
 ssrsAudioStream :: Lens' SynthesizeSpeechResponse RsBody
 ssrsAudioStream = lens _ssrsAudioStream (\ s a -> s{_ssrsAudioStream = a})

@@ -39,20 +39,18 @@ module Network.AWS.AutoScaling.BatchDeleteScheduledAction
     ) where
 
 import Network.AWS.AutoScaling.Types
-import Network.AWS.AutoScaling.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 
 -- | /See:/ 'batchDeleteScheduledAction' smart constructor.
-data BatchDeleteScheduledAction =
-  BatchDeleteScheduledAction'
-    { _bdsaAutoScalingGroupName :: !Text
-    , _bdsaScheduledActionNames :: ![Text]
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data BatchDeleteScheduledAction = BatchDeleteScheduledAction'{_bdsaAutoScalingGroupName
+                                                              :: !Text,
+                                                              _bdsaScheduledActionNames
+                                                              :: ![Text]}
+                                    deriving (Eq, Read, Show, Data, Typeable,
+                                              Generic)
 
 -- | Creates a value of 'BatchDeleteScheduledAction' with the minimum fields required to make a request.
 --
@@ -60,22 +58,20 @@ data BatchDeleteScheduledAction =
 --
 -- * 'bdsaAutoScalingGroupName' - The name of the Auto Scaling group.
 --
--- * 'bdsaScheduledActionNames' - The names of the scheduled actions to delete. The maximum number allowed is 50.
+-- * 'bdsaScheduledActionNames' - The names of the scheduled actions to delete. The maximum number allowed is 50. 
 batchDeleteScheduledAction
     :: Text -- ^ 'bdsaAutoScalingGroupName'
     -> BatchDeleteScheduledAction
-batchDeleteScheduledAction pAutoScalingGroupName_ =
-  BatchDeleteScheduledAction'
-    { _bdsaAutoScalingGroupName = pAutoScalingGroupName_
-    , _bdsaScheduledActionNames = mempty
-    }
-
+batchDeleteScheduledAction pAutoScalingGroupName_
+  = BatchDeleteScheduledAction'{_bdsaAutoScalingGroupName
+                                  = pAutoScalingGroupName_,
+                                _bdsaScheduledActionNames = mempty}
 
 -- | The name of the Auto Scaling group.
 bdsaAutoScalingGroupName :: Lens' BatchDeleteScheduledAction Text
 bdsaAutoScalingGroupName = lens _bdsaAutoScalingGroupName (\ s a -> s{_bdsaAutoScalingGroupName = a})
 
--- | The names of the scheduled actions to delete. The maximum number allowed is 50.
+-- | The names of the scheduled actions to delete. The maximum number allowed is 50. 
 bdsaScheduledActionNames :: Lens' BatchDeleteScheduledAction [Text]
 bdsaScheduledActionNames = lens _bdsaScheduledActionNames (\ s a -> s{_bdsaScheduledActionNames = a}) . _Coerce
 
@@ -113,13 +109,15 @@ instance ToQuery BatchDeleteScheduledAction where
                  toQueryList "member" _bdsaScheduledActionNames]
 
 -- | /See:/ 'batchDeleteScheduledActionResponse' smart constructor.
-data BatchDeleteScheduledActionResponse =
-  BatchDeleteScheduledActionResponse'
-    { _bdsarsFailedScheduledActions :: !(Maybe [FailedScheduledUpdateGroupActionRequest])
-    , _bdsarsResponseStatus :: !Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data BatchDeleteScheduledActionResponse = BatchDeleteScheduledActionResponse'{_bdsarsFailedScheduledActions
+                                                                              ::
+                                                                              !(Maybe
+                                                                                  [FailedScheduledUpdateGroupActionRequest]),
+                                                                              _bdsarsResponseStatus
+                                                                              ::
+                                                                              !Int}
+                                            deriving (Eq, Read, Show, Data,
+                                                      Typeable, Generic)
 
 -- | Creates a value of 'BatchDeleteScheduledActionResponse' with the minimum fields required to make a request.
 --
@@ -131,12 +129,11 @@ data BatchDeleteScheduledActionResponse =
 batchDeleteScheduledActionResponse
     :: Int -- ^ 'bdsarsResponseStatus'
     -> BatchDeleteScheduledActionResponse
-batchDeleteScheduledActionResponse pResponseStatus_ =
-  BatchDeleteScheduledActionResponse'
-    { _bdsarsFailedScheduledActions = Nothing
-    , _bdsarsResponseStatus = pResponseStatus_
-    }
-
+batchDeleteScheduledActionResponse pResponseStatus_
+  = BatchDeleteScheduledActionResponse'{_bdsarsFailedScheduledActions
+                                          = Nothing,
+                                        _bdsarsResponseStatus =
+                                          pResponseStatus_}
 
 -- | The names of the scheduled actions that could not be deleted, including an error message.
 bdsarsFailedScheduledActions :: Lens' BatchDeleteScheduledActionResponse [FailedScheduledUpdateGroupActionRequest]

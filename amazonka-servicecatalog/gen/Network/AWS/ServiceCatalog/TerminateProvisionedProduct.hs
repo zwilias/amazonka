@@ -50,19 +50,24 @@ import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 import Network.AWS.ServiceCatalog.Types
-import Network.AWS.ServiceCatalog.Types.Product
 
 -- | /See:/ 'terminateProvisionedProduct' smart constructor.
-data TerminateProvisionedProduct =
-  TerminateProvisionedProduct'
-    { _tppProvisionedProductName :: !(Maybe Text)
-    , _tppAcceptLanguage         :: !(Maybe Text)
-    , _tppIgnoreErrors           :: !(Maybe Bool)
-    , _tppProvisionedProductId   :: !(Maybe Text)
-    , _tppTerminateToken         :: !Text
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data TerminateProvisionedProduct = TerminateProvisionedProduct'{_tppProvisionedProductName
+                                                                ::
+                                                                !(Maybe Text),
+                                                                _tppAcceptLanguage
+                                                                ::
+                                                                !(Maybe Text),
+                                                                _tppIgnoreErrors
+                                                                ::
+                                                                !(Maybe Bool),
+                                                                _tppProvisionedProductId
+                                                                ::
+                                                                !(Maybe Text),
+                                                                _tppTerminateToken
+                                                                :: !Text}
+                                     deriving (Eq, Read, Show, Data, Typeable,
+                                               Generic)
 
 -- | Creates a value of 'TerminateProvisionedProduct' with the minimum fields required to make a request.
 --
@@ -80,15 +85,13 @@ data TerminateProvisionedProduct =
 terminateProvisionedProduct
     :: Text -- ^ 'tppTerminateToken'
     -> TerminateProvisionedProduct
-terminateProvisionedProduct pTerminateToken_ =
-  TerminateProvisionedProduct'
-    { _tppProvisionedProductName = Nothing
-    , _tppAcceptLanguage = Nothing
-    , _tppIgnoreErrors = Nothing
-    , _tppProvisionedProductId = Nothing
-    , _tppTerminateToken = pTerminateToken_
-    }
-
+terminateProvisionedProduct pTerminateToken_
+  = TerminateProvisionedProduct'{_tppProvisionedProductName
+                                   = Nothing,
+                                 _tppAcceptLanguage = Nothing,
+                                 _tppIgnoreErrors = Nothing,
+                                 _tppProvisionedProductId = Nothing,
+                                 _tppTerminateToken = pTerminateToken_}
 
 -- | The name of the provisioned product. You cannot specify both @ProvisionedProductName@ and @ProvisionedProductId@ .
 tppProvisionedProductName :: Lens' TerminateProvisionedProduct (Maybe Text)
@@ -153,13 +156,15 @@ instance ToQuery TerminateProvisionedProduct where
         toQuery = const mempty
 
 -- | /See:/ 'terminateProvisionedProductResponse' smart constructor.
-data TerminateProvisionedProductResponse =
-  TerminateProvisionedProductResponse'
-    { _tpprsRecordDetail   :: !(Maybe RecordDetail)
-    , _tpprsResponseStatus :: !Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data TerminateProvisionedProductResponse = TerminateProvisionedProductResponse'{_tpprsRecordDetail
+                                                                                ::
+                                                                                !(Maybe
+                                                                                    RecordDetail),
+                                                                                _tpprsResponseStatus
+                                                                                ::
+                                                                                !Int}
+                                             deriving (Eq, Read, Show, Data,
+                                                       Typeable, Generic)
 
 -- | Creates a value of 'TerminateProvisionedProductResponse' with the minimum fields required to make a request.
 --
@@ -171,10 +176,11 @@ data TerminateProvisionedProductResponse =
 terminateProvisionedProductResponse
     :: Int -- ^ 'tpprsResponseStatus'
     -> TerminateProvisionedProductResponse
-terminateProvisionedProductResponse pResponseStatus_ =
-  TerminateProvisionedProductResponse'
-    {_tpprsRecordDetail = Nothing, _tpprsResponseStatus = pResponseStatus_}
-
+terminateProvisionedProductResponse pResponseStatus_
+  = TerminateProvisionedProductResponse'{_tpprsRecordDetail
+                                           = Nothing,
+                                         _tpprsResponseStatus =
+                                           pResponseStatus_}
 
 -- | Information about the result of this request.
 tpprsRecordDetail :: Lens' TerminateProvisionedProductResponse (Maybe RecordDetail)

@@ -39,20 +39,21 @@ module Network.AWS.EC2.DeleteTransitGatewayVPCAttachment
     ) where
 
 import Network.AWS.EC2.Types
-import Network.AWS.EC2.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 
 -- | /See:/ 'deleteTransitGatewayVPCAttachment' smart constructor.
-data DeleteTransitGatewayVPCAttachment =
-  DeleteTransitGatewayVPCAttachment'
-    { _dtgvaDryRun                     :: !(Maybe Bool)
-    , _dtgvaTransitGatewayAttachmentId :: !Text
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data DeleteTransitGatewayVPCAttachment = DeleteTransitGatewayVPCAttachment'{_dtgvaDryRun
+                                                                            ::
+                                                                            !(Maybe
+                                                                                Bool),
+                                                                            _dtgvaTransitGatewayAttachmentId
+                                                                            ::
+                                                                            !Text}
+                                           deriving (Eq, Read, Show, Data,
+                                                     Typeable, Generic)
 
 -- | Creates a value of 'DeleteTransitGatewayVPCAttachment' with the minimum fields required to make a request.
 --
@@ -64,12 +65,12 @@ data DeleteTransitGatewayVPCAttachment =
 deleteTransitGatewayVPCAttachment
     :: Text -- ^ 'dtgvaTransitGatewayAttachmentId'
     -> DeleteTransitGatewayVPCAttachment
-deleteTransitGatewayVPCAttachment pTransitGatewayAttachmentId_ =
-  DeleteTransitGatewayVPCAttachment'
-    { _dtgvaDryRun = Nothing
-    , _dtgvaTransitGatewayAttachmentId = pTransitGatewayAttachmentId_
-    }
-
+deleteTransitGatewayVPCAttachment
+  pTransitGatewayAttachmentId_
+  = DeleteTransitGatewayVPCAttachment'{_dtgvaDryRun =
+                                         Nothing,
+                                       _dtgvaTransitGatewayAttachmentId =
+                                         pTransitGatewayAttachmentId_}
 
 -- | Checks whether you have the required permissions for the action, without actually making the request, and provides an error response. If you have the required permissions, the error response is @DryRunOperation@ . Otherwise, it is @UnauthorizedOperation@ .
 dtgvaDryRun :: Lens' DeleteTransitGatewayVPCAttachment (Maybe Bool)
@@ -117,13 +118,16 @@ instance ToQuery DeleteTransitGatewayVPCAttachment
                  _dtgvaTransitGatewayAttachmentId]
 
 -- | /See:/ 'deleteTransitGatewayVPCAttachmentResponse' smart constructor.
-data DeleteTransitGatewayVPCAttachmentResponse =
-  DeleteTransitGatewayVPCAttachmentResponse'
-    { _dtgvpcarsTransitGatewayVPCAttachment :: !(Maybe TransitGatewayVPCAttachment)
-    , _dtgvpcarsResponseStatus :: !Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data DeleteTransitGatewayVPCAttachmentResponse = DeleteTransitGatewayVPCAttachmentResponse'{_dtgvpcarsTransitGatewayVPCAttachment
+                                                                                            ::
+                                                                                            !(Maybe
+                                                                                                TransitGatewayVPCAttachment),
+                                                                                            _dtgvpcarsResponseStatus
+                                                                                            ::
+                                                                                            !Int}
+                                                   deriving (Eq, Read, Show,
+                                                             Data, Typeable,
+                                                             Generic)
 
 -- | Creates a value of 'DeleteTransitGatewayVPCAttachmentResponse' with the minimum fields required to make a request.
 --
@@ -135,12 +139,12 @@ data DeleteTransitGatewayVPCAttachmentResponse =
 deleteTransitGatewayVPCAttachmentResponse
     :: Int -- ^ 'dtgvpcarsResponseStatus'
     -> DeleteTransitGatewayVPCAttachmentResponse
-deleteTransitGatewayVPCAttachmentResponse pResponseStatus_ =
-  DeleteTransitGatewayVPCAttachmentResponse'
-    { _dtgvpcarsTransitGatewayVPCAttachment = Nothing
-    , _dtgvpcarsResponseStatus = pResponseStatus_
-    }
-
+deleteTransitGatewayVPCAttachmentResponse
+  pResponseStatus_
+  = DeleteTransitGatewayVPCAttachmentResponse'{_dtgvpcarsTransitGatewayVPCAttachment
+                                                 = Nothing,
+                                               _dtgvpcarsResponseStatus =
+                                                 pResponseStatus_}
 
 -- | Information about the deleted VPC attachment.
 dtgvpcarsTransitGatewayVPCAttachment :: Lens' DeleteTransitGatewayVPCAttachmentResponse (Maybe TransitGatewayVPCAttachment)

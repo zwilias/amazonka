@@ -40,15 +40,11 @@ import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 import Network.AWS.S3.Types
-import Network.AWS.S3.Types.Product
 
 -- | /See:/ 'getBucketLocation' smart constructor.
-newtype GetBucketLocation =
-  GetBucketLocation'
-    { _gblBucket :: BucketName
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+newtype GetBucketLocation = GetBucketLocation'{_gblBucket
+                                               :: BucketName}
+                              deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'GetBucketLocation' with the minimum fields required to make a request.
 --
@@ -58,8 +54,8 @@ newtype GetBucketLocation =
 getBucketLocation
     :: BucketName -- ^ 'gblBucket'
     -> GetBucketLocation
-getBucketLocation pBucket_ = GetBucketLocation' {_gblBucket = pBucket_}
-
+getBucketLocation pBucket_
+  = GetBucketLocation'{_gblBucket = pBucket_}
 
 -- | Undocumented member.
 gblBucket :: Lens' GetBucketLocation BucketName
@@ -89,13 +85,13 @@ instance ToQuery GetBucketLocation where
         toQuery = const (mconcat ["location"])
 
 -- | /See:/ 'getBucketLocationResponse' smart constructor.
-data GetBucketLocationResponse =
-  GetBucketLocationResponse'
-    { _gblbrsResponseStatus     :: !Int
-    , _gblbrsLocationConstraint :: !LocationConstraint
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data GetBucketLocationResponse = GetBucketLocationResponse'{_gblbrsResponseStatus
+                                                            :: !Int,
+                                                            _gblbrsLocationConstraint
+                                                            ::
+                                                            !LocationConstraint}
+                                   deriving (Eq, Read, Show, Data, Typeable,
+                                             Generic)
 
 -- | Creates a value of 'GetBucketLocationResponse' with the minimum fields required to make a request.
 --
@@ -108,12 +104,11 @@ getBucketLocationResponse
     :: Int -- ^ 'gblbrsResponseStatus'
     -> LocationConstraint -- ^ 'gblbrsLocationConstraint'
     -> GetBucketLocationResponse
-getBucketLocationResponse pResponseStatus_ pLocationConstraint_ =
-  GetBucketLocationResponse'
-    { _gblbrsResponseStatus = pResponseStatus_
-    , _gblbrsLocationConstraint = pLocationConstraint_
-    }
-
+getBucketLocationResponse pResponseStatus_
+  pLocationConstraint_
+  = GetBucketLocationResponse'{_gblbrsResponseStatus =
+                                 pResponseStatus_,
+                               _gblbrsLocationConstraint = pLocationConstraint_}
 
 -- | -- | The response status code.
 gblbrsResponseStatus :: Lens' GetBucketLocationResponse Int

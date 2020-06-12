@@ -53,32 +53,48 @@ module Network.AWS.EC2.CreateClientVPNEndpoint
     ) where
 
 import Network.AWS.EC2.Types
-import Network.AWS.EC2.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 
 -- | /See:/ 'createClientVPNEndpoint' smart constructor.
-data CreateClientVPNEndpoint =
-  CreateClientVPNEndpoint'
-    { _ccveSecurityGroupIds      :: !(Maybe [Text])
-    , _ccveSplitTunnel           :: !(Maybe Bool)
-    , _ccveClientToken           :: !(Maybe Text)
-    , _ccveTransportProtocol     :: !(Maybe TransportProtocol)
-    , _ccveVPCId                 :: !(Maybe Text)
-    , _ccveVPNPort               :: !(Maybe Int)
-    , _ccveTagSpecifications     :: !(Maybe [TagSpecification])
-    , _ccveDNSServers            :: !(Maybe [Text])
-    , _ccveDescription           :: !(Maybe Text)
-    , _ccveDryRun                :: !(Maybe Bool)
-    , _ccveClientCidrBlock       :: !Text
-    , _ccveServerCertificateARN  :: !Text
-    , _ccveAuthenticationOptions :: ![ClientVPNAuthenticationRequest]
-    , _ccveConnectionLogOptions  :: !ConnectionLogOptions
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data CreateClientVPNEndpoint = CreateClientVPNEndpoint'{_ccveSecurityGroupIds
+                                                        :: !(Maybe [Text]),
+                                                        _ccveSplitTunnel ::
+                                                        !(Maybe Bool),
+                                                        _ccveClientToken ::
+                                                        !(Maybe Text),
+                                                        _ccveTransportProtocol
+                                                        ::
+                                                        !(Maybe
+                                                            TransportProtocol),
+                                                        _ccveVPCId ::
+                                                        !(Maybe Text),
+                                                        _ccveVPNPort ::
+                                                        !(Maybe Int),
+                                                        _ccveTagSpecifications
+                                                        ::
+                                                        !(Maybe
+                                                            [TagSpecification]),
+                                                        _ccveDNSServers ::
+                                                        !(Maybe [Text]),
+                                                        _ccveDescription ::
+                                                        !(Maybe Text),
+                                                        _ccveDryRun ::
+                                                        !(Maybe Bool),
+                                                        _ccveClientCidrBlock ::
+                                                        !Text,
+                                                        _ccveServerCertificateARN
+                                                        :: !Text,
+                                                        _ccveAuthenticationOptions
+                                                        ::
+                                                        ![ClientVPNAuthenticationRequest],
+                                                        _ccveConnectionLogOptions
+                                                        ::
+                                                        !ConnectionLogOptions}
+                                 deriving (Eq, Read, Show, Data, Typeable,
+                                           Generic)
 
 -- | Creates a value of 'CreateClientVPNEndpoint' with the minimum fields required to make a request.
 --
@@ -90,11 +106,11 @@ data CreateClientVPNEndpoint =
 --
 -- * 'ccveClientToken' - Unique, case-sensitive identifier that you provide to ensure the idempotency of the request. For more information, see <https://docs.aws.amazon.com/AWSEC2/latest/APIReference/Run_Instance_Idempotency.html How to Ensure Idempotency> .
 --
--- * 'ccveTransportProtocol' - The transport protocol to be used by the VPN session. Default value: @udp@
+-- * 'ccveTransportProtocol' - The transport protocol to be used by the VPN session. Default value: @udp@ 
 --
 -- * 'ccveVPCId' - The ID of the VPC to associate with the Client VPN endpoint. If no security group IDs are specified in the request, the default security group for the VPC is applied.
 --
--- * 'ccveVPNPort' - The port number to assign to the Client VPN endpoint for TCP and UDP traffic. Valid Values: @443@ | @1194@  Default Value: @443@
+-- * 'ccveVPNPort' - The port number to assign to the Client VPN endpoint for TCP and UDP traffic. Valid Values: @443@ | @1194@  Default Value: @443@ 
 --
 -- * 'ccveTagSpecifications' - The tags to apply to the Client VPN endpoint during creation.
 --
@@ -116,24 +132,21 @@ createClientVPNEndpoint
     -> Text -- ^ 'ccveServerCertificateARN'
     -> ConnectionLogOptions -- ^ 'ccveConnectionLogOptions'
     -> CreateClientVPNEndpoint
-createClientVPNEndpoint pClientCidrBlock_ pServerCertificateARN_ pConnectionLogOptions_ =
-  CreateClientVPNEndpoint'
-    { _ccveSecurityGroupIds = Nothing
-    , _ccveSplitTunnel = Nothing
-    , _ccveClientToken = Nothing
-    , _ccveTransportProtocol = Nothing
-    , _ccveVPCId = Nothing
-    , _ccveVPNPort = Nothing
-    , _ccveTagSpecifications = Nothing
-    , _ccveDNSServers = Nothing
-    , _ccveDescription = Nothing
-    , _ccveDryRun = Nothing
-    , _ccveClientCidrBlock = pClientCidrBlock_
-    , _ccveServerCertificateARN = pServerCertificateARN_
-    , _ccveAuthenticationOptions = mempty
-    , _ccveConnectionLogOptions = pConnectionLogOptions_
-    }
-
+createClientVPNEndpoint pClientCidrBlock_
+  pServerCertificateARN_ pConnectionLogOptions_
+  = CreateClientVPNEndpoint'{_ccveSecurityGroupIds =
+                               Nothing,
+                             _ccveSplitTunnel = Nothing,
+                             _ccveClientToken = Nothing,
+                             _ccveTransportProtocol = Nothing,
+                             _ccveVPCId = Nothing, _ccveVPNPort = Nothing,
+                             _ccveTagSpecifications = Nothing,
+                             _ccveDNSServers = Nothing,
+                             _ccveDescription = Nothing, _ccveDryRun = Nothing,
+                             _ccveClientCidrBlock = pClientCidrBlock_,
+                             _ccveServerCertificateARN = pServerCertificateARN_,
+                             _ccveAuthenticationOptions = mempty,
+                             _ccveConnectionLogOptions = pConnectionLogOptions_}
 
 -- | The IDs of one or more security groups to apply to the target network. You must also specify the ID of the VPC that contains the security groups.
 ccveSecurityGroupIds :: Lens' CreateClientVPNEndpoint [Text]
@@ -147,7 +160,7 @@ ccveSplitTunnel = lens _ccveSplitTunnel (\ s a -> s{_ccveSplitTunnel = a})
 ccveClientToken :: Lens' CreateClientVPNEndpoint (Maybe Text)
 ccveClientToken = lens _ccveClientToken (\ s a -> s{_ccveClientToken = a})
 
--- | The transport protocol to be used by the VPN session. Default value: @udp@
+-- | The transport protocol to be used by the VPN session. Default value: @udp@ 
 ccveTransportProtocol :: Lens' CreateClientVPNEndpoint (Maybe TransportProtocol)
 ccveTransportProtocol = lens _ccveTransportProtocol (\ s a -> s{_ccveTransportProtocol = a})
 
@@ -155,7 +168,7 @@ ccveTransportProtocol = lens _ccveTransportProtocol (\ s a -> s{_ccveTransportPr
 ccveVPCId :: Lens' CreateClientVPNEndpoint (Maybe Text)
 ccveVPCId = lens _ccveVPCId (\ s a -> s{_ccveVPCId = a})
 
--- | The port number to assign to the Client VPN endpoint for TCP and UDP traffic. Valid Values: @443@ | @1194@  Default Value: @443@
+-- | The port number to assign to the Client VPN endpoint for TCP and UDP traffic. Valid Values: @443@ | @1194@  Default Value: @443@ 
 ccveVPNPort :: Lens' CreateClientVPNEndpoint (Maybe Int)
 ccveVPNPort = lens _ccveVPNPort (\ s a -> s{_ccveVPNPort = a})
 
@@ -240,15 +253,22 @@ instance ToQuery CreateClientVPNEndpoint where
                "ConnectionLogOptions" =: _ccveConnectionLogOptions]
 
 -- | /See:/ 'createClientVPNEndpointResponse' smart constructor.
-data CreateClientVPNEndpointResponse =
-  CreateClientVPNEndpointResponse'
-    { _ccversStatus              :: !(Maybe ClientVPNEndpointStatus)
-    , _ccversClientVPNEndpointId :: !(Maybe Text)
-    , _ccversDNSName             :: !(Maybe Text)
-    , _ccversResponseStatus      :: !Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data CreateClientVPNEndpointResponse = CreateClientVPNEndpointResponse'{_ccversStatus
+                                                                        ::
+                                                                        !(Maybe
+                                                                            ClientVPNEndpointStatus),
+                                                                        _ccversClientVPNEndpointId
+                                                                        ::
+                                                                        !(Maybe
+                                                                            Text),
+                                                                        _ccversDNSName
+                                                                        ::
+                                                                        !(Maybe
+                                                                            Text),
+                                                                        _ccversResponseStatus
+                                                                        :: !Int}
+                                         deriving (Eq, Read, Show, Data,
+                                                   Typeable, Generic)
 
 -- | Creates a value of 'CreateClientVPNEndpointResponse' with the minimum fields required to make a request.
 --
@@ -264,14 +284,12 @@ data CreateClientVPNEndpointResponse =
 createClientVPNEndpointResponse
     :: Int -- ^ 'ccversResponseStatus'
     -> CreateClientVPNEndpointResponse
-createClientVPNEndpointResponse pResponseStatus_ =
-  CreateClientVPNEndpointResponse'
-    { _ccversStatus = Nothing
-    , _ccversClientVPNEndpointId = Nothing
-    , _ccversDNSName = Nothing
-    , _ccversResponseStatus = pResponseStatus_
-    }
-
+createClientVPNEndpointResponse pResponseStatus_
+  = CreateClientVPNEndpointResponse'{_ccversStatus =
+                                       Nothing,
+                                     _ccversClientVPNEndpointId = Nothing,
+                                     _ccversDNSName = Nothing,
+                                     _ccversResponseStatus = pResponseStatus_}
 
 -- | The current state of the Client VPN endpoint.
 ccversStatus :: Lens' CreateClientVPNEndpointResponse (Maybe ClientVPNEndpointStatus)

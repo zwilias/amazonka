@@ -49,21 +49,19 @@ import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 import Network.AWS.WorkDocs.Types
-import Network.AWS.WorkDocs.Types.Product
 
 -- | /See:/ 'describeActivities' smart constructor.
-data DescribeActivities =
-  DescribeActivities'
-    { _daStartTime           :: !(Maybe POSIX)
-    , _daAuthenticationToken :: !(Maybe (Sensitive Text))
-    , _daUserId              :: !(Maybe Text)
-    , _daMarker              :: !(Maybe Text)
-    , _daEndTime             :: !(Maybe POSIX)
-    , _daLimit               :: !(Maybe Nat)
-    , _daOrganizationId      :: !(Maybe Text)
-    }
-  deriving (Eq, Show, Data, Typeable, Generic)
-
+data DescribeActivities = DescribeActivities'{_daStartTime
+                                              :: !(Maybe POSIX),
+                                              _daAuthenticationToken ::
+                                              !(Maybe (Sensitive Text)),
+                                              _daUserId :: !(Maybe Text),
+                                              _daMarker :: !(Maybe Text),
+                                              _daEndTime :: !(Maybe POSIX),
+                                              _daLimit :: !(Maybe Nat),
+                                              _daOrganizationId ::
+                                              !(Maybe Text)}
+                            deriving (Eq, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'DescribeActivities' with the minimum fields required to make a request.
 --
@@ -84,17 +82,12 @@ data DescribeActivities =
 -- * 'daOrganizationId' - The ID of the organization. This is a mandatory parameter when using administrative API (SigV4) requests.
 describeActivities
     :: DescribeActivities
-describeActivities =
-  DescribeActivities'
-    { _daStartTime = Nothing
-    , _daAuthenticationToken = Nothing
-    , _daUserId = Nothing
-    , _daMarker = Nothing
-    , _daEndTime = Nothing
-    , _daLimit = Nothing
-    , _daOrganizationId = Nothing
-    }
-
+describeActivities
+  = DescribeActivities'{_daStartTime = Nothing,
+                        _daAuthenticationToken = Nothing,
+                        _daUserId = Nothing, _daMarker = Nothing,
+                        _daEndTime = Nothing, _daLimit = Nothing,
+                        _daOrganizationId = Nothing}
 
 -- | The timestamp that determines the starting time of the activities. The response includes the activities performed after the specified timestamp.
 daStartTime :: Lens' DescribeActivities (Maybe UTCTime)
@@ -159,14 +152,16 @@ instance ToQuery DescribeActivities where
                "organizationId" =: _daOrganizationId]
 
 -- | /See:/ 'describeActivitiesResponse' smart constructor.
-data DescribeActivitiesResponse =
-  DescribeActivitiesResponse'
-    { _darsUserActivities :: !(Maybe [Activity])
-    , _darsMarker         :: !(Maybe Text)
-    , _darsResponseStatus :: !Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data DescribeActivitiesResponse = DescribeActivitiesResponse'{_darsUserActivities
+                                                              ::
+                                                              !(Maybe
+                                                                  [Activity]),
+                                                              _darsMarker ::
+                                                              !(Maybe Text),
+                                                              _darsResponseStatus
+                                                              :: !Int}
+                                    deriving (Eq, Read, Show, Data, Typeable,
+                                              Generic)
 
 -- | Creates a value of 'DescribeActivitiesResponse' with the minimum fields required to make a request.
 --
@@ -180,13 +175,11 @@ data DescribeActivitiesResponse =
 describeActivitiesResponse
     :: Int -- ^ 'darsResponseStatus'
     -> DescribeActivitiesResponse
-describeActivitiesResponse pResponseStatus_ =
-  DescribeActivitiesResponse'
-    { _darsUserActivities = Nothing
-    , _darsMarker = Nothing
-    , _darsResponseStatus = pResponseStatus_
-    }
-
+describeActivitiesResponse pResponseStatus_
+  = DescribeActivitiesResponse'{_darsUserActivities =
+                                  Nothing,
+                                _darsMarker = Nothing,
+                                _darsResponseStatus = pResponseStatus_}
 
 -- | The list of activities for the specified user and time period.
 darsUserActivities :: Lens' DescribeActivitiesResponse [Activity]

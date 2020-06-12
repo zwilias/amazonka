@@ -47,22 +47,23 @@ module Network.AWS.EC2.GetCapacityReservationUsage
     ) where
 
 import Network.AWS.EC2.Types
-import Network.AWS.EC2.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 
 -- | /See:/ 'getCapacityReservationUsage' smart constructor.
-data GetCapacityReservationUsage =
-  GetCapacityReservationUsage'
-    { _gcruNextToken             :: !(Maybe Text)
-    , _gcruDryRun                :: !(Maybe Bool)
-    , _gcruMaxResults            :: !(Maybe Nat)
-    , _gcruCapacityReservationId :: !Text
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data GetCapacityReservationUsage = GetCapacityReservationUsage'{_gcruNextToken
+                                                                ::
+                                                                !(Maybe Text),
+                                                                _gcruDryRun ::
+                                                                !(Maybe Bool),
+                                                                _gcruMaxResults
+                                                                :: !(Maybe Nat),
+                                                                _gcruCapacityReservationId
+                                                                :: !Text}
+                                     deriving (Eq, Read, Show, Data, Typeable,
+                                               Generic)
 
 -- | Creates a value of 'GetCapacityReservationUsage' with the minimum fields required to make a request.
 --
@@ -78,14 +79,13 @@ data GetCapacityReservationUsage =
 getCapacityReservationUsage
     :: Text -- ^ 'gcruCapacityReservationId'
     -> GetCapacityReservationUsage
-getCapacityReservationUsage pCapacityReservationId_ =
-  GetCapacityReservationUsage'
-    { _gcruNextToken = Nothing
-    , _gcruDryRun = Nothing
-    , _gcruMaxResults = Nothing
-    , _gcruCapacityReservationId = pCapacityReservationId_
-    }
-
+getCapacityReservationUsage pCapacityReservationId_
+  = GetCapacityReservationUsage'{_gcruNextToken =
+                                   Nothing,
+                                 _gcruDryRun = Nothing,
+                                 _gcruMaxResults = Nothing,
+                                 _gcruCapacityReservationId =
+                                   pCapacityReservationId_}
 
 -- | The token to retrieve the next page of results.
 gcruNextToken :: Lens' GetCapacityReservationUsage (Maybe Text)
@@ -144,19 +144,39 @@ instance ToQuery GetCapacityReservationUsage where
                  _gcruCapacityReservationId]
 
 -- | /See:/ 'getCapacityReservationUsageResponse' smart constructor.
-data GetCapacityReservationUsageResponse =
-  GetCapacityReservationUsageResponse'
-    { _gcrursState                  :: !(Maybe CapacityReservationState)
-    , _gcrursInstanceUsages         :: !(Maybe [InstanceUsage])
-    , _gcrursAvailableInstanceCount :: !(Maybe Int)
-    , _gcrursCapacityReservationId  :: !(Maybe Text)
-    , _gcrursInstanceType           :: !(Maybe Text)
-    , _gcrursNextToken              :: !(Maybe Text)
-    , _gcrursTotalInstanceCount     :: !(Maybe Int)
-    , _gcrursResponseStatus         :: !Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data GetCapacityReservationUsageResponse = GetCapacityReservationUsageResponse'{_gcrursState
+                                                                                ::
+                                                                                !(Maybe
+                                                                                    CapacityReservationState),
+                                                                                _gcrursInstanceUsages
+                                                                                ::
+                                                                                !(Maybe
+                                                                                    [InstanceUsage]),
+                                                                                _gcrursAvailableInstanceCount
+                                                                                ::
+                                                                                !(Maybe
+                                                                                    Int),
+                                                                                _gcrursCapacityReservationId
+                                                                                ::
+                                                                                !(Maybe
+                                                                                    Text),
+                                                                                _gcrursInstanceType
+                                                                                ::
+                                                                                !(Maybe
+                                                                                    Text),
+                                                                                _gcrursNextToken
+                                                                                ::
+                                                                                !(Maybe
+                                                                                    Text),
+                                                                                _gcrursTotalInstanceCount
+                                                                                ::
+                                                                                !(Maybe
+                                                                                    Int),
+                                                                                _gcrursResponseStatus
+                                                                                ::
+                                                                                !Int}
+                                             deriving (Eq, Read, Show, Data,
+                                                       Typeable, Generic)
 
 -- | Creates a value of 'GetCapacityReservationUsageResponse' with the minimum fields required to make a request.
 --
@@ -180,18 +200,18 @@ data GetCapacityReservationUsageResponse =
 getCapacityReservationUsageResponse
     :: Int -- ^ 'gcrursResponseStatus'
     -> GetCapacityReservationUsageResponse
-getCapacityReservationUsageResponse pResponseStatus_ =
-  GetCapacityReservationUsageResponse'
-    { _gcrursState = Nothing
-    , _gcrursInstanceUsages = Nothing
-    , _gcrursAvailableInstanceCount = Nothing
-    , _gcrursCapacityReservationId = Nothing
-    , _gcrursInstanceType = Nothing
-    , _gcrursNextToken = Nothing
-    , _gcrursTotalInstanceCount = Nothing
-    , _gcrursResponseStatus = pResponseStatus_
-    }
-
+getCapacityReservationUsageResponse pResponseStatus_
+  = GetCapacityReservationUsageResponse'{_gcrursState =
+                                           Nothing,
+                                         _gcrursInstanceUsages = Nothing,
+                                         _gcrursAvailableInstanceCount =
+                                           Nothing,
+                                         _gcrursCapacityReservationId = Nothing,
+                                         _gcrursInstanceType = Nothing,
+                                         _gcrursNextToken = Nothing,
+                                         _gcrursTotalInstanceCount = Nothing,
+                                         _gcrursResponseStatus =
+                                           pResponseStatus_}
 
 -- | The current state of the Capacity Reservation. A Capacity Reservation can be in one of the following states:     * @active@ - The Capacity Reservation is active and the capacity is available for your use.     * @expired@ - The Capacity Reservation expired automatically at the date and time specified in your request. The reserved capacity is no longer available for your use.     * @cancelled@ - The Capacity Reservation was manually cancelled. The reserved capacity is no longer available for your use.     * @pending@ - The Capacity Reservation request was successful but the capacity provisioning is still pending.     * @failed@ - The Capacity Reservation request has failed. A request might fail due to invalid request parameters, capacity constraints, or instance limit constraints. Failed requests are retained for 60 minutes.
 gcrursState :: Lens' GetCapacityReservationUsageResponse (Maybe CapacityReservationState)

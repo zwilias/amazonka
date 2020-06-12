@@ -38,19 +38,15 @@ module Network.AWS.Pinpoint.GetImportJob
 
 import Network.AWS.Lens
 import Network.AWS.Pinpoint.Types
-import Network.AWS.Pinpoint.Types.Product
 import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 
 -- | /See:/ 'getImportJob' smart constructor.
-data GetImportJob =
-  GetImportJob'
-    { _gijApplicationId :: !Text
-    , _gijJobId         :: !Text
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data GetImportJob = GetImportJob'{_gijApplicationId
+                                  :: !Text,
+                                  _gijJobId :: !Text}
+                      deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'GetImportJob' with the minimum fields required to make a request.
 --
@@ -63,9 +59,9 @@ getImportJob
     :: Text -- ^ 'gijApplicationId'
     -> Text -- ^ 'gijJobId'
     -> GetImportJob
-getImportJob pApplicationId_ pJobId_ =
-  GetImportJob' {_gijApplicationId = pApplicationId_, _gijJobId = pJobId_}
-
+getImportJob pApplicationId_ pJobId_
+  = GetImportJob'{_gijApplicationId = pApplicationId_,
+                  _gijJobId = pJobId_}
 
 -- | Undocumented member.
 gijApplicationId :: Lens' GetImportJob Text
@@ -105,13 +101,11 @@ instance ToQuery GetImportJob where
         toQuery = const mempty
 
 -- | /See:/ 'getImportJobResponse' smart constructor.
-data GetImportJobResponse =
-  GetImportJobResponse'
-    { _gijrsResponseStatus    :: !Int
-    , _gijrsImportJobResponse :: !ImportJobResponse
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data GetImportJobResponse = GetImportJobResponse'{_gijrsResponseStatus
+                                                  :: !Int,
+                                                  _gijrsImportJobResponse ::
+                                                  !ImportJobResponse}
+                              deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'GetImportJobResponse' with the minimum fields required to make a request.
 --
@@ -124,12 +118,11 @@ getImportJobResponse
     :: Int -- ^ 'gijrsResponseStatus'
     -> ImportJobResponse -- ^ 'gijrsImportJobResponse'
     -> GetImportJobResponse
-getImportJobResponse pResponseStatus_ pImportJobResponse_ =
-  GetImportJobResponse'
-    { _gijrsResponseStatus = pResponseStatus_
-    , _gijrsImportJobResponse = pImportJobResponse_
-    }
-
+getImportJobResponse pResponseStatus_
+  pImportJobResponse_
+  = GetImportJobResponse'{_gijrsResponseStatus =
+                            pResponseStatus_,
+                          _gijrsImportJobResponse = pImportJobResponse_}
 
 -- | -- | The response status code.
 gijrsResponseStatus :: Lens' GetImportJobResponse Int

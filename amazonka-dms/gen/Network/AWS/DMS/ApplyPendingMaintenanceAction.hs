@@ -40,25 +40,24 @@ module Network.AWS.DMS.ApplyPendingMaintenanceAction
     ) where
 
 import Network.AWS.DMS.Types
-import Network.AWS.DMS.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 
--- |
+-- | 
 --
 --
 --
 -- /See:/ 'applyPendingMaintenanceAction' smart constructor.
-data ApplyPendingMaintenanceAction =
-  ApplyPendingMaintenanceAction'
-    { _apmaReplicationInstanceARN :: !Text
-    , _apmaApplyAction            :: !Text
-    , _apmaOptInType              :: !Text
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data ApplyPendingMaintenanceAction = ApplyPendingMaintenanceAction'{_apmaReplicationInstanceARN
+                                                                    :: !Text,
+                                                                    _apmaApplyAction
+                                                                    :: !Text,
+                                                                    _apmaOptInType
+                                                                    :: !Text}
+                                       deriving (Eq, Read, Show, Data, Typeable,
+                                                 Generic)
 
 -- | Creates a value of 'ApplyPendingMaintenanceAction' with the minimum fields required to make a request.
 --
@@ -74,13 +73,12 @@ applyPendingMaintenanceAction
     -> Text -- ^ 'apmaApplyAction'
     -> Text -- ^ 'apmaOptInType'
     -> ApplyPendingMaintenanceAction
-applyPendingMaintenanceAction pReplicationInstanceARN_ pApplyAction_ pOptInType_ =
-  ApplyPendingMaintenanceAction'
-    { _apmaReplicationInstanceARN = pReplicationInstanceARN_
-    , _apmaApplyAction = pApplyAction_
-    , _apmaOptInType = pOptInType_
-    }
-
+applyPendingMaintenanceAction
+  pReplicationInstanceARN_ pApplyAction_ pOptInType_
+  = ApplyPendingMaintenanceAction'{_apmaReplicationInstanceARN
+                                     = pReplicationInstanceARN_,
+                                   _apmaApplyAction = pApplyAction_,
+                                   _apmaOptInType = pOptInType_}
 
 -- | The Amazon Resource Name (ARN) of the AWS DMS resource that the pending maintenance action applies to.
 apmaReplicationInstanceARN :: Lens' ApplyPendingMaintenanceAction Text
@@ -137,18 +135,20 @@ instance ToPath ApplyPendingMaintenanceAction where
 instance ToQuery ApplyPendingMaintenanceAction where
         toQuery = const mempty
 
--- |
+-- | 
 --
 --
 --
 -- /See:/ 'applyPendingMaintenanceActionResponse' smart constructor.
-data ApplyPendingMaintenanceActionResponse =
-  ApplyPendingMaintenanceActionResponse'
-    { _apmarsResourcePendingMaintenanceActions :: !(Maybe ResourcePendingMaintenanceActions)
-    , _apmarsResponseStatus :: !Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data ApplyPendingMaintenanceActionResponse = ApplyPendingMaintenanceActionResponse'{_apmarsResourcePendingMaintenanceActions
+                                                                                    ::
+                                                                                    !(Maybe
+                                                                                        ResourcePendingMaintenanceActions),
+                                                                                    _apmarsResponseStatus
+                                                                                    ::
+                                                                                    !Int}
+                                               deriving (Eq, Read, Show, Data,
+                                                         Typeable, Generic)
 
 -- | Creates a value of 'ApplyPendingMaintenanceActionResponse' with the minimum fields required to make a request.
 --
@@ -160,12 +160,12 @@ data ApplyPendingMaintenanceActionResponse =
 applyPendingMaintenanceActionResponse
     :: Int -- ^ 'apmarsResponseStatus'
     -> ApplyPendingMaintenanceActionResponse
-applyPendingMaintenanceActionResponse pResponseStatus_ =
-  ApplyPendingMaintenanceActionResponse'
-    { _apmarsResourcePendingMaintenanceActions = Nothing
-    , _apmarsResponseStatus = pResponseStatus_
-    }
-
+applyPendingMaintenanceActionResponse
+  pResponseStatus_
+  = ApplyPendingMaintenanceActionResponse'{_apmarsResourcePendingMaintenanceActions
+                                             = Nothing,
+                                           _apmarsResponseStatus =
+                                             pResponseStatus_}
 
 -- | The AWS DMS resource that the pending maintenance action will be applied to.
 apmarsResourcePendingMaintenanceActions :: Lens' ApplyPendingMaintenanceActionResponse (Maybe ResourcePendingMaintenanceActions)

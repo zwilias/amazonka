@@ -40,21 +40,17 @@ module Network.AWS.ECR.DeleteRepository
     ) where
 
 import Network.AWS.ECR.Types
-import Network.AWS.ECR.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 
 -- | /See:/ 'deleteRepository' smart constructor.
-data DeleteRepository =
-  DeleteRepository'
-    { _dForce          :: !(Maybe Bool)
-    , _dRegistryId     :: !(Maybe Text)
-    , _dRepositoryName :: !Text
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data DeleteRepository = DeleteRepository'{_dForce ::
+                                          !(Maybe Bool),
+                                          _dRegistryId :: !(Maybe Text),
+                                          _dRepositoryName :: !Text}
+                          deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'DeleteRepository' with the minimum fields required to make a request.
 --
@@ -68,13 +64,10 @@ data DeleteRepository =
 deleteRepository
     :: Text -- ^ 'dRepositoryName'
     -> DeleteRepository
-deleteRepository pRepositoryName_ =
-  DeleteRepository'
-    { _dForce = Nothing
-    , _dRegistryId = Nothing
-    , _dRepositoryName = pRepositoryName_
-    }
-
+deleteRepository pRepositoryName_
+  = DeleteRepository'{_dForce = Nothing,
+                      _dRegistryId = Nothing,
+                      _dRepositoryName = pRepositoryName_}
 
 -- | If a repository contains images, forces the deletion.
 dForce :: Lens' DeleteRepository (Maybe Bool)
@@ -126,13 +119,13 @@ instance ToQuery DeleteRepository where
         toQuery = const mempty
 
 -- | /See:/ 'deleteRepositoryResponse' smart constructor.
-data DeleteRepositoryResponse =
-  DeleteRepositoryResponse'
-    { _drsRepository     :: !(Maybe Repository)
-    , _drsResponseStatus :: !Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data DeleteRepositoryResponse = DeleteRepositoryResponse'{_drsRepository
+                                                          ::
+                                                          !(Maybe Repository),
+                                                          _drsResponseStatus ::
+                                                          !Int}
+                                  deriving (Eq, Read, Show, Data, Typeable,
+                                            Generic)
 
 -- | Creates a value of 'DeleteRepositoryResponse' with the minimum fields required to make a request.
 --
@@ -144,10 +137,9 @@ data DeleteRepositoryResponse =
 deleteRepositoryResponse
     :: Int -- ^ 'drsResponseStatus'
     -> DeleteRepositoryResponse
-deleteRepositoryResponse pResponseStatus_ =
-  DeleteRepositoryResponse'
-    {_drsRepository = Nothing, _drsResponseStatus = pResponseStatus_}
-
+deleteRepositoryResponse pResponseStatus_
+  = DeleteRepositoryResponse'{_drsRepository = Nothing,
+                              _drsResponseStatus = pResponseStatus_}
 
 -- | The repository that was deleted.
 drsRepository :: Lens' DeleteRepositoryResponse (Maybe Repository)

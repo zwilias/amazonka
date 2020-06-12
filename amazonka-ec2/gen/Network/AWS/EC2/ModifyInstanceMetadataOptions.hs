@@ -43,23 +43,32 @@ module Network.AWS.EC2.ModifyInstanceMetadataOptions
     ) where
 
 import Network.AWS.EC2.Types
-import Network.AWS.EC2.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 
 -- | /See:/ 'modifyInstanceMetadataOptions' smart constructor.
-data ModifyInstanceMetadataOptions =
-  ModifyInstanceMetadataOptions'
-    { _mimoHTTPEndpoint            :: !(Maybe InstanceMetadataEndpointState)
-    , _mimoHTTPPutResponseHopLimit :: !(Maybe Int)
-    , _mimoHTTPTokens              :: !(Maybe HTTPTokensState)
-    , _mimoDryRun                  :: !(Maybe Bool)
-    , _mimoInstanceId              :: !Text
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data ModifyInstanceMetadataOptions = ModifyInstanceMetadataOptions'{_mimoHTTPEndpoint
+                                                                    ::
+                                                                    !(Maybe
+                                                                        InstanceMetadataEndpointState),
+                                                                    _mimoHTTPPutResponseHopLimit
+                                                                    ::
+                                                                    !(Maybe
+                                                                        Int),
+                                                                    _mimoHTTPTokens
+                                                                    ::
+                                                                    !(Maybe
+                                                                        HTTPTokensState),
+                                                                    _mimoDryRun
+                                                                    ::
+                                                                    !(Maybe
+                                                                        Bool),
+                                                                    _mimoInstanceId
+                                                                    :: !Text}
+                                       deriving (Eq, Read, Show, Data, Typeable,
+                                                 Generic)
 
 -- | Creates a value of 'ModifyInstanceMetadataOptions' with the minimum fields required to make a request.
 --
@@ -77,15 +86,13 @@ data ModifyInstanceMetadataOptions =
 modifyInstanceMetadataOptions
     :: Text -- ^ 'mimoInstanceId'
     -> ModifyInstanceMetadataOptions
-modifyInstanceMetadataOptions pInstanceId_ =
-  ModifyInstanceMetadataOptions'
-    { _mimoHTTPEndpoint = Nothing
-    , _mimoHTTPPutResponseHopLimit = Nothing
-    , _mimoHTTPTokens = Nothing
-    , _mimoDryRun = Nothing
-    , _mimoInstanceId = pInstanceId_
-    }
-
+modifyInstanceMetadataOptions pInstanceId_
+  = ModifyInstanceMetadataOptions'{_mimoHTTPEndpoint =
+                                     Nothing,
+                                   _mimoHTTPPutResponseHopLimit = Nothing,
+                                   _mimoHTTPTokens = Nothing,
+                                   _mimoDryRun = Nothing,
+                                   _mimoInstanceId = pInstanceId_}
 
 -- | This parameter enables or disables the HTTP metadata endpoint on your instances. If the parameter is not specified, the existing state is maintained.
 mimoHTTPEndpoint :: Lens' ModifyInstanceMetadataOptions (Maybe InstanceMetadataEndpointState)
@@ -145,14 +152,19 @@ instance ToQuery ModifyInstanceMetadataOptions where
                "InstanceId" =: _mimoInstanceId]
 
 -- | /See:/ 'modifyInstanceMetadataOptionsResponse' smart constructor.
-data ModifyInstanceMetadataOptionsResponse =
-  ModifyInstanceMetadataOptionsResponse'
-    { _mimorsInstanceId              :: !(Maybe Text)
-    , _mimorsInstanceMetadataOptions :: !(Maybe InstanceMetadataOptionsResponse)
-    , _mimorsResponseStatus          :: !Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data ModifyInstanceMetadataOptionsResponse = ModifyInstanceMetadataOptionsResponse'{_mimorsInstanceId
+                                                                                    ::
+                                                                                    !(Maybe
+                                                                                        Text),
+                                                                                    _mimorsInstanceMetadataOptions
+                                                                                    ::
+                                                                                    !(Maybe
+                                                                                        InstanceMetadataOptionsResponse),
+                                                                                    _mimorsResponseStatus
+                                                                                    ::
+                                                                                    !Int}
+                                               deriving (Eq, Read, Show, Data,
+                                                         Typeable, Generic)
 
 -- | Creates a value of 'ModifyInstanceMetadataOptionsResponse' with the minimum fields required to make a request.
 --
@@ -166,13 +178,14 @@ data ModifyInstanceMetadataOptionsResponse =
 modifyInstanceMetadataOptionsResponse
     :: Int -- ^ 'mimorsResponseStatus'
     -> ModifyInstanceMetadataOptionsResponse
-modifyInstanceMetadataOptionsResponse pResponseStatus_ =
-  ModifyInstanceMetadataOptionsResponse'
-    { _mimorsInstanceId = Nothing
-    , _mimorsInstanceMetadataOptions = Nothing
-    , _mimorsResponseStatus = pResponseStatus_
-    }
-
+modifyInstanceMetadataOptionsResponse
+  pResponseStatus_
+  = ModifyInstanceMetadataOptionsResponse'{_mimorsInstanceId
+                                             = Nothing,
+                                           _mimorsInstanceMetadataOptions =
+                                             Nothing,
+                                           _mimorsResponseStatus =
+                                             pResponseStatus_}
 
 -- | The ID of the instance.
 mimorsInstanceId :: Lens' ModifyInstanceMetadataOptionsResponse (Maybe Text)

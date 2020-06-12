@@ -21,7 +21,7 @@
 -- Creates a @Rule@ , which contains the @IPSet@ objects, @ByteMatchSet@ objects, and other predicates that identify the requests that you want to block. If you add more than one predicate to a @Rule@ , a request must match all of the specifications to be allowed or blocked. For example, suppose you add the following to a @Rule@ :
 --
 --
---     * An @IPSet@ that matches the IP address @192.0.2.44/32@
+--     * An @IPSet@ that matches the IP address @192.0.2.44/32@ 
 --
 --     * A @ByteMatchSet@ that matches @BadBot@ in the @User-Agent@ header
 --
@@ -71,17 +71,11 @@ import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 import Network.AWS.WAFRegional.Types
-import Network.AWS.WAFRegional.Types.Product
 
 -- | /See:/ 'createRule' smart constructor.
-data CreateRule =
-  CreateRule'
-    { _crName        :: !Text
-    , _crMetricName  :: !Text
-    , _crChangeToken :: !Text
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data CreateRule = CreateRule'{_crName :: !Text,
+                              _crMetricName :: !Text, _crChangeToken :: !Text}
+                    deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'CreateRule' with the minimum fields required to make a request.
 --
@@ -97,13 +91,10 @@ createRule
     -> Text -- ^ 'crMetricName'
     -> Text -- ^ 'crChangeToken'
     -> CreateRule
-createRule pName_ pMetricName_ pChangeToken_ =
-  CreateRule'
-    { _crName = pName_
-    , _crMetricName = pMetricName_
-    , _crChangeToken = pChangeToken_
-    }
-
+createRule pName_ pMetricName_ pChangeToken_
+  = CreateRule'{_crName = pName_,
+                _crMetricName = pMetricName_,
+                _crChangeToken = pChangeToken_}
 
 -- | A friendly name or description of the 'Rule' . You can't change the name of a @Rule@ after you create it.
 crName :: Lens' CreateRule Text
@@ -156,14 +147,11 @@ instance ToQuery CreateRule where
         toQuery = const mempty
 
 -- | /See:/ 'createRuleResponse' smart constructor.
-data CreateRuleResponse =
-  CreateRuleResponse'
-    { _crrsRule           :: !(Maybe Rule)
-    , _crrsChangeToken    :: !(Maybe Text)
-    , _crrsResponseStatus :: !Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data CreateRuleResponse = CreateRuleResponse'{_crrsRule
+                                              :: !(Maybe Rule),
+                                              _crrsChangeToken :: !(Maybe Text),
+                                              _crrsResponseStatus :: !Int}
+                            deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'CreateRuleResponse' with the minimum fields required to make a request.
 --
@@ -177,13 +165,10 @@ data CreateRuleResponse =
 createRuleResponse
     :: Int -- ^ 'crrsResponseStatus'
     -> CreateRuleResponse
-createRuleResponse pResponseStatus_ =
-  CreateRuleResponse'
-    { _crrsRule = Nothing
-    , _crrsChangeToken = Nothing
-    , _crrsResponseStatus = pResponseStatus_
-    }
-
+createRuleResponse pResponseStatus_
+  = CreateRuleResponse'{_crrsRule = Nothing,
+                        _crrsChangeToken = Nothing,
+                        _crrsResponseStatus = pResponseStatus_}
 
 -- | The 'Rule' returned in the @CreateRule@ response.
 crrsRule :: Lens' CreateRuleResponse (Maybe Rule)

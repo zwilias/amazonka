@@ -21,13 +21,13 @@
 -- Modifies the set of security groups in effect for a mount target.
 --
 --
--- When you create a mount target, Amazon EFS also creates a new network interface. For more information, see 'CreateMountTarget' . This operation replaces the security groups in effect for the network interface associated with a mount target, with the @SecurityGroups@ provided in the request. This operation requires that the network interface of the mount target has been created and the lifecycle state of the mount target is not @deleted@ .
+-- When you create a mount target, Amazon EFS also creates a new network interface. For more information, see 'CreateMountTarget' . This operation replaces the security groups in effect for the network interface associated with a mount target, with the @SecurityGroups@ provided in the request. This operation requires that the network interface of the mount target has been created and the lifecycle state of the mount target is not @deleted@ . 
 --
 -- The operation requires permissions for the following actions:
 --
---     * @elasticfilesystem:ModifyMountTargetSecurityGroups@ action on the mount target's file system.
+--     * @elasticfilesystem:ModifyMountTargetSecurityGroups@ action on the mount target's file system. 
 --
---     * @ec2:ModifyNetworkInterfaceAttribute@ action on the mount target's network interface.
+--     * @ec2:ModifyNetworkInterfaceAttribute@ action on the mount target's network interface. 
 --
 --
 --
@@ -46,24 +46,25 @@ module Network.AWS.EFS.ModifyMountTargetSecurityGroups
     ) where
 
 import Network.AWS.EFS.Types
-import Network.AWS.EFS.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 
--- |
+-- | 
 --
 --
 --
 -- /See:/ 'modifyMountTargetSecurityGroups' smart constructor.
-data ModifyMountTargetSecurityGroups =
-  ModifyMountTargetSecurityGroups'
-    { _mmtsgSecurityGroups :: !(Maybe [Text])
-    , _mmtsgMountTargetId  :: !Text
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data ModifyMountTargetSecurityGroups = ModifyMountTargetSecurityGroups'{_mmtsgSecurityGroups
+                                                                        ::
+                                                                        !(Maybe
+                                                                            [Text]),
+                                                                        _mmtsgMountTargetId
+                                                                        ::
+                                                                        !Text}
+                                         deriving (Eq, Read, Show, Data,
+                                                   Typeable, Generic)
 
 -- | Creates a value of 'ModifyMountTargetSecurityGroups' with the minimum fields required to make a request.
 --
@@ -75,10 +76,10 @@ data ModifyMountTargetSecurityGroups =
 modifyMountTargetSecurityGroups
     :: Text -- ^ 'mmtsgMountTargetId'
     -> ModifyMountTargetSecurityGroups
-modifyMountTargetSecurityGroups pMountTargetId_ =
-  ModifyMountTargetSecurityGroups'
-    {_mmtsgSecurityGroups = Nothing, _mmtsgMountTargetId = pMountTargetId_}
-
+modifyMountTargetSecurityGroups pMountTargetId_
+  = ModifyMountTargetSecurityGroups'{_mmtsgSecurityGroups
+                                       = Nothing,
+                                     _mmtsgMountTargetId = pMountTargetId_}
 
 -- | Array of up to five VPC security group IDs.
 mmtsgSecurityGroups :: Lens' ModifyMountTargetSecurityGroups [Text]
@@ -123,18 +124,16 @@ instance ToQuery ModifyMountTargetSecurityGroups
         toQuery = const mempty
 
 -- | /See:/ 'modifyMountTargetSecurityGroupsResponse' smart constructor.
-data ModifyMountTargetSecurityGroupsResponse =
-  ModifyMountTargetSecurityGroupsResponse'
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data ModifyMountTargetSecurityGroupsResponse = ModifyMountTargetSecurityGroupsResponse'
+                                                 deriving (Eq, Read, Show, Data,
+                                                           Typeable, Generic)
 
 -- | Creates a value of 'ModifyMountTargetSecurityGroupsResponse' with the minimum fields required to make a request.
 --
 modifyMountTargetSecurityGroupsResponse
     :: ModifyMountTargetSecurityGroupsResponse
-modifyMountTargetSecurityGroupsResponse =
-  ModifyMountTargetSecurityGroupsResponse'
-
+modifyMountTargetSecurityGroupsResponse
+  = ModifyMountTargetSecurityGroupsResponse'
 
 instance NFData
            ModifyMountTargetSecurityGroupsResponse

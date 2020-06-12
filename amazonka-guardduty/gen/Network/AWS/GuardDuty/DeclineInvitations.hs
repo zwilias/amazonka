@@ -36,7 +36,6 @@ module Network.AWS.GuardDuty.DeclineInvitations
     ) where
 
 import Network.AWS.GuardDuty.Types
-import Network.AWS.GuardDuty.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.Request
@@ -45,12 +44,10 @@ import Network.AWS.Response
 -- | DeclineInvitations request body.
 --
 -- /See:/ 'declineInvitations' smart constructor.
-newtype DeclineInvitations =
-  DeclineInvitations'
-    { _dAccountIds :: Maybe [Text]
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+newtype DeclineInvitations = DeclineInvitations'{_dAccountIds
+                                                 :: Maybe [Text]}
+                               deriving (Eq, Read, Show, Data, Typeable,
+                                         Generic)
 
 -- | Creates a value of 'DeclineInvitations' with the minimum fields required to make a request.
 --
@@ -59,8 +56,8 @@ newtype DeclineInvitations =
 -- * 'dAccountIds' - A list of account IDs of the AWS accounts that sent invitations to the current member account that you want to decline invitations from.
 declineInvitations
     :: DeclineInvitations
-declineInvitations = DeclineInvitations' {_dAccountIds = Nothing}
-
+declineInvitations
+  = DeclineInvitations'{_dAccountIds = Nothing}
 
 -- | A list of account IDs of the AWS accounts that sent invitations to the current member account that you want to decline invitations from.
 dAccountIds :: Lens' DeclineInvitations [Text]
@@ -100,13 +97,14 @@ instance ToQuery DeclineInvitations where
         toQuery = const mempty
 
 -- | /See:/ 'declineInvitationsResponse' smart constructor.
-data DeclineInvitationsResponse =
-  DeclineInvitationsResponse'
-    { _disrsUnprocessedAccounts :: !(Maybe [UnprocessedAccount])
-    , _disrsResponseStatus      :: !Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data DeclineInvitationsResponse = DeclineInvitationsResponse'{_disrsUnprocessedAccounts
+                                                              ::
+                                                              !(Maybe
+                                                                  [UnprocessedAccount]),
+                                                              _disrsResponseStatus
+                                                              :: !Int}
+                                    deriving (Eq, Read, Show, Data, Typeable,
+                                              Generic)
 
 -- | Creates a value of 'DeclineInvitationsResponse' with the minimum fields required to make a request.
 --
@@ -118,12 +116,10 @@ data DeclineInvitationsResponse =
 declineInvitationsResponse
     :: Int -- ^ 'disrsResponseStatus'
     -> DeclineInvitationsResponse
-declineInvitationsResponse pResponseStatus_ =
-  DeclineInvitationsResponse'
-    { _disrsUnprocessedAccounts = Nothing
-    , _disrsResponseStatus = pResponseStatus_
-    }
-
+declineInvitationsResponse pResponseStatus_
+  = DeclineInvitationsResponse'{_disrsUnprocessedAccounts
+                                  = Nothing,
+                                _disrsResponseStatus = pResponseStatus_}
 
 -- | A list of objects containing the unprocessed account and a result string explaining why it was unprocessed.
 disrsUnprocessedAccounts :: Lens' DeclineInvitationsResponse [UnprocessedAccount]

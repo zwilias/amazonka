@@ -63,8 +63,23 @@ library
         , Network.AWS.Budgets.Waiters
 
     other-modules:
-          Network.AWS.Budgets.Types.Product
-        , Network.AWS.Budgets.Types.Sum
+          Network.AWS.Budgets.Types.Budget
+        , Network.AWS.Budgets.Types.BudgetPerformanceHistory
+        , Network.AWS.Budgets.Types.BudgetType
+        , Network.AWS.Budgets.Types.BudgetedAndActualAmounts
+        , Network.AWS.Budgets.Types.CalculatedSpend
+        , Network.AWS.Budgets.Types.ComparisonOperator
+        , Network.AWS.Budgets.Types.CostTypes
+        , Network.AWS.Budgets.Types.Notification
+        , Network.AWS.Budgets.Types.NotificationState
+        , Network.AWS.Budgets.Types.NotificationType
+        , Network.AWS.Budgets.Types.NotificationWithSubscribers
+        , Network.AWS.Budgets.Types.Spend
+        , Network.AWS.Budgets.Types.Subscriber
+        , Network.AWS.Budgets.Types.SubscriptionType
+        , Network.AWS.Budgets.Types.ThresholdType
+        , Network.AWS.Budgets.Types.TimePeriod
+        , Network.AWS.Budgets.Types.TimeUnit
 
     build-depends:
           amazonka-core == 1.6.1.*

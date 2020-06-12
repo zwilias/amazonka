@@ -37,15 +37,11 @@ import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 import Network.AWS.S3.Types
-import Network.AWS.S3.Types.Product
 
 -- | /See:/ 'headBucket' smart constructor.
-newtype HeadBucket =
-  HeadBucket'
-    { _hbBucket :: BucketName
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+newtype HeadBucket = HeadBucket'{_hbBucket ::
+                                 BucketName}
+                       deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'HeadBucket' with the minimum fields required to make a request.
 --
@@ -55,8 +51,8 @@ newtype HeadBucket =
 headBucket
     :: BucketName -- ^ 'hbBucket'
     -> HeadBucket
-headBucket pBucket_ = HeadBucket' {_hbBucket = pBucket_}
-
+headBucket pBucket_
+  = HeadBucket'{_hbBucket = pBucket_}
 
 -- | Undocumented member.
 hbBucket :: Lens' HeadBucket BucketName
@@ -82,16 +78,13 @@ instance ToQuery HeadBucket where
         toQuery = const mempty
 
 -- | /See:/ 'headBucketResponse' smart constructor.
-data HeadBucketResponse =
-  HeadBucketResponse'
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data HeadBucketResponse = HeadBucketResponse'
+                            deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'HeadBucketResponse' with the minimum fields required to make a request.
 --
 headBucketResponse
     :: HeadBucketResponse
 headBucketResponse = HeadBucketResponse'
-
 
 instance NFData HeadBucketResponse where

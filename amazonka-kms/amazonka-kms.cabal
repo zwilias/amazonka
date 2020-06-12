@@ -84,8 +84,22 @@ library
         , Network.AWS.KMS.Waiters
 
     other-modules:
-          Network.AWS.KMS.Types.Product
-        , Network.AWS.KMS.Types.Sum
+          Network.AWS.KMS.Types.AlgorithmSpec
+        , Network.AWS.KMS.Types.AliasListEntry
+        , Network.AWS.KMS.Types.DataKeySpec
+        , Network.AWS.KMS.Types.ExpirationModelType
+        , Network.AWS.KMS.Types.GrantConstraints
+        , Network.AWS.KMS.Types.GrantListEntry
+        , Network.AWS.KMS.Types.GrantOperation
+        , Network.AWS.KMS.Types.KeyListEntry
+        , Network.AWS.KMS.Types.KeyManagerType
+        , Network.AWS.KMS.Types.KeyMetadata
+        , Network.AWS.KMS.Types.KeyState
+        , Network.AWS.KMS.Types.KeyUsageType
+        , Network.AWS.KMS.Types.ListGrantsResponse
+        , Network.AWS.KMS.Types.OriginType
+        , Network.AWS.KMS.Types.Tag
+        , Network.AWS.KMS.Types.WrappingKeySpec
 
     build-depends:
           amazonka-core == 1.6.1.*

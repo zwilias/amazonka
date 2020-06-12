@@ -21,7 +21,7 @@
 -- Stops a document classifier training job while in progress.
 --
 --
--- If the training job state is @TRAINING@ , the job is marked for termination and put into the @STOP_REQUESTED@ state. If the training job completes before it can be stopped, it is put into the @TRAINED@ ; otherwise the training job is stopped and put into the @STOPPED@ state and the service sends back an HTTP 200 response with an empty HTTP body.
+-- If the training job state is @TRAINING@ , the job is marked for termination and put into the @STOP_REQUESTED@ state. If the training job completes before it can be stopped, it is put into the @TRAINED@ ; otherwise the training job is stopped and put into the @STOPPED@ state and the service sends back an HTTP 200 response with an empty HTTP body. 
 --
 module Network.AWS.Comprehend.StopTrainingDocumentClassifier
     (
@@ -39,19 +39,17 @@ module Network.AWS.Comprehend.StopTrainingDocumentClassifier
     ) where
 
 import Network.AWS.Comprehend.Types
-import Network.AWS.Comprehend.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 
 -- | /See:/ 'stopTrainingDocumentClassifier' smart constructor.
-newtype StopTrainingDocumentClassifier =
-  StopTrainingDocumentClassifier'
-    { _stdcDocumentClassifierARN :: Text
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+newtype StopTrainingDocumentClassifier = StopTrainingDocumentClassifier'{_stdcDocumentClassifierARN
+                                                                         ::
+                                                                         Text}
+                                           deriving (Eq, Read, Show, Data,
+                                                     Typeable, Generic)
 
 -- | Creates a value of 'StopTrainingDocumentClassifier' with the minimum fields required to make a request.
 --
@@ -61,10 +59,10 @@ newtype StopTrainingDocumentClassifier =
 stopTrainingDocumentClassifier
     :: Text -- ^ 'stdcDocumentClassifierARN'
     -> StopTrainingDocumentClassifier
-stopTrainingDocumentClassifier pDocumentClassifierARN_ =
-  StopTrainingDocumentClassifier'
-    {_stdcDocumentClassifierARN = pDocumentClassifierARN_}
-
+stopTrainingDocumentClassifier
+  pDocumentClassifierARN_
+  = StopTrainingDocumentClassifier'{_stdcDocumentClassifierARN
+                                      = pDocumentClassifierARN_}
 
 -- | The Amazon Resource Name (ARN) that identifies the document classifier currently being trained.
 stdcDocumentClassifierARN :: Lens' StopTrainingDocumentClassifier Text
@@ -112,12 +110,12 @@ instance ToQuery StopTrainingDocumentClassifier where
         toQuery = const mempty
 
 -- | /See:/ 'stopTrainingDocumentClassifierResponse' smart constructor.
-newtype StopTrainingDocumentClassifierResponse =
-  StopTrainingDocumentClassifierResponse'
-    { _stdcrsResponseStatus :: Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+newtype StopTrainingDocumentClassifierResponse = StopTrainingDocumentClassifierResponse'{_stdcrsResponseStatus
+                                                                                         ::
+                                                                                         Int}
+                                                   deriving (Eq, Read, Show,
+                                                             Data, Typeable,
+                                                             Generic)
 
 -- | Creates a value of 'StopTrainingDocumentClassifierResponse' with the minimum fields required to make a request.
 --
@@ -127,10 +125,10 @@ newtype StopTrainingDocumentClassifierResponse =
 stopTrainingDocumentClassifierResponse
     :: Int -- ^ 'stdcrsResponseStatus'
     -> StopTrainingDocumentClassifierResponse
-stopTrainingDocumentClassifierResponse pResponseStatus_ =
-  StopTrainingDocumentClassifierResponse'
-    {_stdcrsResponseStatus = pResponseStatus_}
-
+stopTrainingDocumentClassifierResponse
+  pResponseStatus_
+  = StopTrainingDocumentClassifierResponse'{_stdcrsResponseStatus
+                                              = pResponseStatus_}
 
 -- | -- | The response status code.
 stdcrsResponseStatus :: Lens' StopTrainingDocumentClassifierResponse Int

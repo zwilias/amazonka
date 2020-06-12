@@ -36,7 +36,6 @@ module Network.AWS.EMR.SetVisibleToAllUsers
     ) where
 
 import Network.AWS.EMR.Types
-import Network.AWS.EMR.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.Request
@@ -47,13 +46,11 @@ import Network.AWS.Response
 --
 --
 -- /See:/ 'setVisibleToAllUsers' smart constructor.
-data SetVisibleToAllUsers =
-  SetVisibleToAllUsers'
-    { _svtauJobFlowIds        :: ![Text]
-    , _svtauVisibleToAllUsers :: !Bool
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data SetVisibleToAllUsers = SetVisibleToAllUsers'{_svtauJobFlowIds
+                                                  :: ![Text],
+                                                  _svtauVisibleToAllUsers ::
+                                                  !Bool}
+                              deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'SetVisibleToAllUsers' with the minimum fields required to make a request.
 --
@@ -65,10 +62,9 @@ data SetVisibleToAllUsers =
 setVisibleToAllUsers
     :: Bool -- ^ 'svtauVisibleToAllUsers'
     -> SetVisibleToAllUsers
-setVisibleToAllUsers pVisibleToAllUsers_ =
-  SetVisibleToAllUsers'
-    {_svtauJobFlowIds = mempty, _svtauVisibleToAllUsers = pVisibleToAllUsers_}
-
+setVisibleToAllUsers pVisibleToAllUsers_
+  = SetVisibleToAllUsers'{_svtauJobFlowIds = mempty,
+                          _svtauVisibleToAllUsers = pVisibleToAllUsers_}
 
 -- | Identifiers of the job flows to receive the new visibility setting.
 svtauJobFlowIds :: Lens' SetVisibleToAllUsers [Text]
@@ -113,16 +109,15 @@ instance ToQuery SetVisibleToAllUsers where
         toQuery = const mempty
 
 -- | /See:/ 'setVisibleToAllUsersResponse' smart constructor.
-data SetVisibleToAllUsersResponse =
-  SetVisibleToAllUsersResponse'
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data SetVisibleToAllUsersResponse = SetVisibleToAllUsersResponse'
+                                      deriving (Eq, Read, Show, Data, Typeable,
+                                                Generic)
 
 -- | Creates a value of 'SetVisibleToAllUsersResponse' with the minimum fields required to make a request.
 --
 setVisibleToAllUsersResponse
     :: SetVisibleToAllUsersResponse
-setVisibleToAllUsersResponse = SetVisibleToAllUsersResponse'
-
+setVisibleToAllUsersResponse
+  = SetVisibleToAllUsersResponse'
 
 instance NFData SetVisibleToAllUsersResponse where

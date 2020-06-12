@@ -41,50 +41,55 @@ module Network.AWS.Config.DescribeOrganizationConformancePackStatuses
     ) where
 
 import Network.AWS.Config.Types
-import Network.AWS.Config.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 
 -- | /See:/ 'describeOrganizationConformancePackStatuses' smart constructor.
-data DescribeOrganizationConformancePackStatuses =
-  DescribeOrganizationConformancePackStatuses'
-    { _docpsNextToken                        :: !(Maybe Text)
-    , _docpsLimit                            :: !(Maybe Nat)
-    , _docpsOrganizationConformancePackNames :: !(Maybe [Text])
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data DescribeOrganizationConformancePackStatuses = DescribeOrganizationConformancePackStatuses'{_docpsNextToken
+                                                                                                ::
+                                                                                                !(Maybe
+                                                                                                    Text),
+                                                                                                _docpsLimit
+                                                                                                ::
+                                                                                                !(Maybe
+                                                                                                    Nat),
+                                                                                                _docpsOrganizationConformancePackNames
+                                                                                                ::
+                                                                                                !(Maybe
+                                                                                                    [Text])}
+                                                     deriving (Eq, Read, Show,
+                                                               Data, Typeable,
+                                                               Generic)
 
 -- | Creates a value of 'DescribeOrganizationConformancePackStatuses' with the minimum fields required to make a request.
 --
 -- Use one of the following lenses to modify other fields as desired:
 --
--- * 'docpsNextToken' - The nextToken string returned on a previous page that you use to get the next page of results in a paginated response.
+-- * 'docpsNextToken' - The nextToken string returned on a previous page that you use to get the next page of results in a paginated response. 
 --
--- * 'docpsLimit' - The maximum number of OrganizationConformancePackStatuses returned on each page. If you do no specify a number, AWS Config uses the default. The default is 100.
+-- * 'docpsLimit' - The maximum number of OrganizationConformancePackStatuses returned on each page. If you do no specify a number, AWS Config uses the default. The default is 100. 
 --
--- * 'docpsOrganizationConformancePackNames' - The names of organization conformance packs for which you want status details. If you do not specify any names, AWS Config returns details for all your organization conformance packs.
+-- * 'docpsOrganizationConformancePackNames' - The names of organization conformance packs for which you want status details. If you do not specify any names, AWS Config returns details for all your organization conformance packs. 
 describeOrganizationConformancePackStatuses
     :: DescribeOrganizationConformancePackStatuses
-describeOrganizationConformancePackStatuses =
-  DescribeOrganizationConformancePackStatuses'
-    { _docpsNextToken = Nothing
-    , _docpsLimit = Nothing
-    , _docpsOrganizationConformancePackNames = Nothing
-    }
+describeOrganizationConformancePackStatuses
+  = DescribeOrganizationConformancePackStatuses'{_docpsNextToken
+                                                   = Nothing,
+                                                 _docpsLimit = Nothing,
+                                                 _docpsOrganizationConformancePackNames
+                                                   = Nothing}
 
-
--- | The nextToken string returned on a previous page that you use to get the next page of results in a paginated response.
+-- | The nextToken string returned on a previous page that you use to get the next page of results in a paginated response. 
 docpsNextToken :: Lens' DescribeOrganizationConformancePackStatuses (Maybe Text)
 docpsNextToken = lens _docpsNextToken (\ s a -> s{_docpsNextToken = a})
 
--- | The maximum number of OrganizationConformancePackStatuses returned on each page. If you do no specify a number, AWS Config uses the default. The default is 100.
+-- | The maximum number of OrganizationConformancePackStatuses returned on each page. If you do no specify a number, AWS Config uses the default. The default is 100. 
 docpsLimit :: Lens' DescribeOrganizationConformancePackStatuses (Maybe Natural)
 docpsLimit = lens _docpsLimit (\ s a -> s{_docpsLimit = a}) . mapping _Nat
 
--- | The names of organization conformance packs for which you want status details. If you do not specify any names, AWS Config returns details for all your organization conformance packs.
+-- | The names of organization conformance packs for which you want status details. If you do not specify any names, AWS Config returns details for all your organization conformance packs. 
 docpsOrganizationConformancePackNames :: Lens' DescribeOrganizationConformancePackStatuses [Text]
 docpsOrganizationConformancePackNames = lens _docpsOrganizationConformancePackNames (\ s a -> s{_docpsOrganizationConformancePackNames = a}) . _Default . _Coerce
 
@@ -147,40 +152,49 @@ instance ToQuery
         toQuery = const mempty
 
 -- | /See:/ 'describeOrganizationConformancePackStatusesResponse' smart constructor.
-data DescribeOrganizationConformancePackStatusesResponse =
-  DescribeOrganizationConformancePackStatusesResponse'
-    { _docpsrsOrganizationConformancePackStatuses :: !(Maybe [OrganizationConformancePackStatus])
-    , _docpsrsNextToken :: !(Maybe Text)
-    , _docpsrsResponseStatus :: !Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data DescribeOrganizationConformancePackStatusesResponse = DescribeOrganizationConformancePackStatusesResponse'{_docpsrsOrganizationConformancePackStatuses
+                                                                                                                ::
+                                                                                                                !(Maybe
+                                                                                                                    [OrganizationConformancePackStatus]),
+                                                                                                                _docpsrsNextToken
+                                                                                                                ::
+                                                                                                                !(Maybe
+                                                                                                                    Text),
+                                                                                                                _docpsrsResponseStatus
+                                                                                                                ::
+                                                                                                                !Int}
+                                                             deriving (Eq, Read,
+                                                                       Show,
+                                                                       Data,
+                                                                       Typeable,
+                                                                       Generic)
 
 -- | Creates a value of 'DescribeOrganizationConformancePackStatusesResponse' with the minimum fields required to make a request.
 --
 -- Use one of the following lenses to modify other fields as desired:
 --
--- * 'docpsrsOrganizationConformancePackStatuses' - A list of @OrganizationConformancePackStatus@ objects.
+-- * 'docpsrsOrganizationConformancePackStatuses' - A list of @OrganizationConformancePackStatus@ objects. 
 --
--- * 'docpsrsNextToken' - The nextToken string returned on a previous page that you use to get the next page of results in a paginated response.
+-- * 'docpsrsNextToken' - The nextToken string returned on a previous page that you use to get the next page of results in a paginated response. 
 --
 -- * 'docpsrsResponseStatus' - -- | The response status code.
 describeOrganizationConformancePackStatusesResponse
     :: Int -- ^ 'docpsrsResponseStatus'
     -> DescribeOrganizationConformancePackStatusesResponse
-describeOrganizationConformancePackStatusesResponse pResponseStatus_ =
-  DescribeOrganizationConformancePackStatusesResponse'
-    { _docpsrsOrganizationConformancePackStatuses = Nothing
-    , _docpsrsNextToken = Nothing
-    , _docpsrsResponseStatus = pResponseStatus_
-    }
+describeOrganizationConformancePackStatusesResponse
+  pResponseStatus_
+  = DescribeOrganizationConformancePackStatusesResponse'{_docpsrsOrganizationConformancePackStatuses
+                                                           = Nothing,
+                                                         _docpsrsNextToken =
+                                                           Nothing,
+                                                         _docpsrsResponseStatus
+                                                           = pResponseStatus_}
 
-
--- | A list of @OrganizationConformancePackStatus@ objects.
+-- | A list of @OrganizationConformancePackStatus@ objects. 
 docpsrsOrganizationConformancePackStatuses :: Lens' DescribeOrganizationConformancePackStatusesResponse [OrganizationConformancePackStatus]
 docpsrsOrganizationConformancePackStatuses = lens _docpsrsOrganizationConformancePackStatuses (\ s a -> s{_docpsrsOrganizationConformancePackStatuses = a}) . _Default . _Coerce
 
--- | The nextToken string returned on a previous page that you use to get the next page of results in a paginated response.
+-- | The nextToken string returned on a previous page that you use to get the next page of results in a paginated response. 
 docpsrsNextToken :: Lens' DescribeOrganizationConformancePackStatusesResponse (Maybe Text)
 docpsrsNextToken = lens _docpsrsNextToken (\ s a -> s{_docpsrsNextToken = a})
 

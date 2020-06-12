@@ -47,19 +47,15 @@ import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 import Network.AWS.WorkDocs.Types
-import Network.AWS.WorkDocs.Types.Product
 
 -- | /See:/ 'describeGroups' smart constructor.
-data DescribeGroups =
-  DescribeGroups'
-    { _dgAuthenticationToken :: !(Maybe (Sensitive Text))
-    , _dgMarker              :: !(Maybe Text)
-    , _dgLimit               :: !(Maybe Nat)
-    , _dgOrganizationId      :: !(Maybe Text)
-    , _dgSearchQuery         :: !(Sensitive Text)
-    }
-  deriving (Eq, Show, Data, Typeable, Generic)
-
+data DescribeGroups = DescribeGroups'{_dgAuthenticationToken
+                                      :: !(Maybe (Sensitive Text)),
+                                      _dgMarker :: !(Maybe Text),
+                                      _dgLimit :: !(Maybe Nat),
+                                      _dgOrganizationId :: !(Maybe Text),
+                                      _dgSearchQuery :: !(Sensitive Text)}
+                        deriving (Eq, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'DescribeGroups' with the minimum fields required to make a request.
 --
@@ -77,15 +73,11 @@ data DescribeGroups =
 describeGroups
     :: Text -- ^ 'dgSearchQuery'
     -> DescribeGroups
-describeGroups pSearchQuery_ =
-  DescribeGroups'
-    { _dgAuthenticationToken = Nothing
-    , _dgMarker = Nothing
-    , _dgLimit = Nothing
-    , _dgOrganizationId = Nothing
-    , _dgSearchQuery = _Sensitive # pSearchQuery_
-    }
-
+describeGroups pSearchQuery_
+  = DescribeGroups'{_dgAuthenticationToken = Nothing,
+                    _dgMarker = Nothing, _dgLimit = Nothing,
+                    _dgOrganizationId = Nothing,
+                    _dgSearchQuery = _Sensitive # pSearchQuery_}
 
 -- | Amazon WorkDocs authentication token. Do not set this field when using administrative API actions, as in accessing the API using AWS credentials.
 dgAuthenticationToken :: Lens' DescribeGroups (Maybe Text)
@@ -139,14 +131,15 @@ instance ToQuery DescribeGroups where
                "searchQuery" =: _dgSearchQuery]
 
 -- | /See:/ 'describeGroupsResponse' smart constructor.
-data DescribeGroupsResponse =
-  DescribeGroupsResponse'
-    { _dgrsGroups         :: !(Maybe [GroupMetadata])
-    , _dgrsMarker         :: !(Maybe Text)
-    , _dgrsResponseStatus :: !Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data DescribeGroupsResponse = DescribeGroupsResponse'{_dgrsGroups
+                                                      ::
+                                                      !(Maybe [GroupMetadata]),
+                                                      _dgrsMarker ::
+                                                      !(Maybe Text),
+                                                      _dgrsResponseStatus ::
+                                                      !Int}
+                                deriving (Eq, Read, Show, Data, Typeable,
+                                          Generic)
 
 -- | Creates a value of 'DescribeGroupsResponse' with the minimum fields required to make a request.
 --
@@ -160,13 +153,10 @@ data DescribeGroupsResponse =
 describeGroupsResponse
     :: Int -- ^ 'dgrsResponseStatus'
     -> DescribeGroupsResponse
-describeGroupsResponse pResponseStatus_ =
-  DescribeGroupsResponse'
-    { _dgrsGroups = Nothing
-    , _dgrsMarker = Nothing
-    , _dgrsResponseStatus = pResponseStatus_
-    }
-
+describeGroupsResponse pResponseStatus_
+  = DescribeGroupsResponse'{_dgrsGroups = Nothing,
+                            _dgrsMarker = Nothing,
+                            _dgrsResponseStatus = pResponseStatus_}
 
 -- | The list of groups.
 dgrsGroups :: Lens' DescribeGroupsResponse [GroupMetadata]

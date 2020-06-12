@@ -48,19 +48,15 @@ import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 import Network.AWS.WorkDocs.Types
-import Network.AWS.WorkDocs.Types.Product
 
 -- | /See:/ 'getFolderPath' smart constructor.
-data GetFolderPath =
-  GetFolderPath'
-    { _gfpAuthenticationToken :: !(Maybe (Sensitive Text))
-    , _gfpMarker              :: !(Maybe Text)
-    , _gfpLimit               :: !(Maybe Nat)
-    , _gfpFields              :: !(Maybe Text)
-    , _gfpFolderId            :: !Text
-    }
-  deriving (Eq, Show, Data, Typeable, Generic)
-
+data GetFolderPath = GetFolderPath'{_gfpAuthenticationToken
+                                    :: !(Maybe (Sensitive Text)),
+                                    _gfpMarker :: !(Maybe Text),
+                                    _gfpLimit :: !(Maybe Nat),
+                                    _gfpFields :: !(Maybe Text),
+                                    _gfpFolderId :: !Text}
+                       deriving (Eq, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'GetFolderPath' with the minimum fields required to make a request.
 --
@@ -78,15 +74,10 @@ data GetFolderPath =
 getFolderPath
     :: Text -- ^ 'gfpFolderId'
     -> GetFolderPath
-getFolderPath pFolderId_ =
-  GetFolderPath'
-    { _gfpAuthenticationToken = Nothing
-    , _gfpMarker = Nothing
-    , _gfpLimit = Nothing
-    , _gfpFields = Nothing
-    , _gfpFolderId = pFolderId_
-    }
-
+getFolderPath pFolderId_
+  = GetFolderPath'{_gfpAuthenticationToken = Nothing,
+                   _gfpMarker = Nothing, _gfpLimit = Nothing,
+                   _gfpFields = Nothing, _gfpFolderId = pFolderId_}
 
 -- | Amazon WorkDocs authentication token. Do not set this field when using administrative API actions, as in accessing the API using AWS credentials.
 gfpAuthenticationToken :: Lens' GetFolderPath (Maybe Text)
@@ -140,13 +131,12 @@ instance ToQuery GetFolderPath where
                "fields" =: _gfpFields]
 
 -- | /See:/ 'getFolderPathResponse' smart constructor.
-data GetFolderPathResponse =
-  GetFolderPathResponse'
-    { _gfprsPath           :: !(Maybe ResourcePath)
-    , _gfprsResponseStatus :: !Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data GetFolderPathResponse = GetFolderPathResponse'{_gfprsPath
+                                                    :: !(Maybe ResourcePath),
+                                                    _gfprsResponseStatus ::
+                                                    !Int}
+                               deriving (Eq, Read, Show, Data, Typeable,
+                                         Generic)
 
 -- | Creates a value of 'GetFolderPathResponse' with the minimum fields required to make a request.
 --
@@ -158,10 +148,9 @@ data GetFolderPathResponse =
 getFolderPathResponse
     :: Int -- ^ 'gfprsResponseStatus'
     -> GetFolderPathResponse
-getFolderPathResponse pResponseStatus_ =
-  GetFolderPathResponse'
-    {_gfprsPath = Nothing, _gfprsResponseStatus = pResponseStatus_}
-
+getFolderPathResponse pResponseStatus_
+  = GetFolderPathResponse'{_gfprsPath = Nothing,
+                           _gfprsResponseStatus = pResponseStatus_}
 
 -- | The path information.
 gfprsPath :: Lens' GetFolderPathResponse (Maybe ResourcePath)

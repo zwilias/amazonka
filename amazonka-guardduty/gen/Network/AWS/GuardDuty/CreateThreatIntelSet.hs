@@ -40,7 +40,6 @@ module Network.AWS.GuardDuty.CreateThreatIntelSet
     ) where
 
 import Network.AWS.GuardDuty.Types
-import Network.AWS.GuardDuty.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.Request
@@ -49,16 +48,15 @@ import Network.AWS.Response
 -- | CreateThreatIntelSet request body.
 --
 -- /See:/ 'createThreatIntelSet' smart constructor.
-data CreateThreatIntelSet =
-  CreateThreatIntelSet'
-    { _ctisLocation   :: !(Maybe Text)
-    , _ctisFormat     :: !(Maybe ThreatIntelSetFormat)
-    , _ctisActivate   :: !(Maybe Bool)
-    , _ctisName       :: !(Maybe Text)
-    , _ctisDetectorId :: !Text
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data CreateThreatIntelSet = CreateThreatIntelSet'{_ctisLocation
+                                                  :: !(Maybe Text),
+                                                  _ctisFormat ::
+                                                  !(Maybe ThreatIntelSetFormat),
+                                                  _ctisActivate ::
+                                                  !(Maybe Bool),
+                                                  _ctisName :: !(Maybe Text),
+                                                  _ctisDetectorId :: !Text}
+                              deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'CreateThreatIntelSet' with the minimum fields required to make a request.
 --
@@ -76,15 +74,10 @@ data CreateThreatIntelSet =
 createThreatIntelSet
     :: Text -- ^ 'ctisDetectorId'
     -> CreateThreatIntelSet
-createThreatIntelSet pDetectorId_ =
-  CreateThreatIntelSet'
-    { _ctisLocation = Nothing
-    , _ctisFormat = Nothing
-    , _ctisActivate = Nothing
-    , _ctisName = Nothing
-    , _ctisDetectorId = pDetectorId_
-    }
-
+createThreatIntelSet pDetectorId_
+  = CreateThreatIntelSet'{_ctisLocation = Nothing,
+                          _ctisFormat = Nothing, _ctisActivate = Nothing,
+                          _ctisName = Nothing, _ctisDetectorId = pDetectorId_}
 
 -- | The URI of the file that contains the ThreatIntelSet. For example (https://s3.us-west-2.amazonaws.com/my-bucket/my-object-key).
 ctisLocation :: Lens' CreateThreatIntelSet (Maybe Text)
@@ -146,13 +139,13 @@ instance ToQuery CreateThreatIntelSet where
         toQuery = const mempty
 
 -- | /See:/ 'createThreatIntelSetResponse' smart constructor.
-data CreateThreatIntelSetResponse =
-  CreateThreatIntelSetResponse'
-    { _ctisrsThreatIntelSetId :: !(Maybe Text)
-    , _ctisrsResponseStatus   :: !Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data CreateThreatIntelSetResponse = CreateThreatIntelSetResponse'{_ctisrsThreatIntelSetId
+                                                                  ::
+                                                                  !(Maybe Text),
+                                                                  _ctisrsResponseStatus
+                                                                  :: !Int}
+                                      deriving (Eq, Read, Show, Data, Typeable,
+                                                Generic)
 
 -- | Creates a value of 'CreateThreatIntelSetResponse' with the minimum fields required to make a request.
 --
@@ -164,12 +157,10 @@ data CreateThreatIntelSetResponse =
 createThreatIntelSetResponse
     :: Int -- ^ 'ctisrsResponseStatus'
     -> CreateThreatIntelSetResponse
-createThreatIntelSetResponse pResponseStatus_ =
-  CreateThreatIntelSetResponse'
-    { _ctisrsThreatIntelSetId = Nothing
-    , _ctisrsResponseStatus = pResponseStatus_
-    }
-
+createThreatIntelSetResponse pResponseStatus_
+  = CreateThreatIntelSetResponse'{_ctisrsThreatIntelSetId
+                                    = Nothing,
+                                  _ctisrsResponseStatus = pResponseStatus_}
 
 -- | Undocumented member.
 ctisrsThreatIntelSetId :: Lens' CreateThreatIntelSetResponse (Maybe Text)

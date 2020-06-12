@@ -37,19 +37,18 @@ module Network.AWS.IoT.UpdateIndexingConfiguration
     ) where
 
 import Network.AWS.IoT.Types
-import Network.AWS.IoT.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 
 -- | /See:/ 'updateIndexingConfiguration' smart constructor.
-newtype UpdateIndexingConfiguration =
-  UpdateIndexingConfiguration'
-    { _uicThingIndexingConfiguration :: Maybe ThingIndexingConfiguration
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+newtype UpdateIndexingConfiguration = UpdateIndexingConfiguration'{_uicThingIndexingConfiguration
+                                                                   ::
+                                                                   Maybe
+                                                                     ThingIndexingConfiguration}
+                                        deriving (Eq, Read, Show, Data,
+                                                  Typeable, Generic)
 
 -- | Creates a value of 'UpdateIndexingConfiguration' with the minimum fields required to make a request.
 --
@@ -58,9 +57,9 @@ newtype UpdateIndexingConfiguration =
 -- * 'uicThingIndexingConfiguration' - Thing indexing configuration.
 updateIndexingConfiguration
     :: UpdateIndexingConfiguration
-updateIndexingConfiguration =
-  UpdateIndexingConfiguration' {_uicThingIndexingConfiguration = Nothing}
-
+updateIndexingConfiguration
+  = UpdateIndexingConfiguration'{_uicThingIndexingConfiguration
+                                   = Nothing}
 
 -- | Thing indexing configuration.
 uicThingIndexingConfiguration :: Lens' UpdateIndexingConfiguration (Maybe ThingIndexingConfiguration)
@@ -97,12 +96,11 @@ instance ToQuery UpdateIndexingConfiguration where
         toQuery = const mempty
 
 -- | /See:/ 'updateIndexingConfigurationResponse' smart constructor.
-newtype UpdateIndexingConfigurationResponse =
-  UpdateIndexingConfigurationResponse'
-    { _uicrsResponseStatus :: Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+newtype UpdateIndexingConfigurationResponse = UpdateIndexingConfigurationResponse'{_uicrsResponseStatus
+                                                                                   ::
+                                                                                   Int}
+                                                deriving (Eq, Read, Show, Data,
+                                                          Typeable, Generic)
 
 -- | Creates a value of 'UpdateIndexingConfigurationResponse' with the minimum fields required to make a request.
 --
@@ -112,9 +110,9 @@ newtype UpdateIndexingConfigurationResponse =
 updateIndexingConfigurationResponse
     :: Int -- ^ 'uicrsResponseStatus'
     -> UpdateIndexingConfigurationResponse
-updateIndexingConfigurationResponse pResponseStatus_ =
-  UpdateIndexingConfigurationResponse' {_uicrsResponseStatus = pResponseStatus_}
-
+updateIndexingConfigurationResponse pResponseStatus_
+  = UpdateIndexingConfigurationResponse'{_uicrsResponseStatus
+                                           = pResponseStatus_}
 
 -- | -- | The response status code.
 uicrsResponseStatus :: Lens' UpdateIndexingConfigurationResponse Int

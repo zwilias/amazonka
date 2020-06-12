@@ -18,30 +18,30 @@
 -- Stability   : auto-generated
 -- Portability : non-portable (GHC extensions)
 --
--- Updates game session properties. This includes the session name, maximum player count, protection policy, which controls whether or not an active game session can be terminated during a scale-down event, and the player session creation policy, which controls whether or not new players can join the session. To update a game session, specify the game session ID and the values you want to change. If successful, an updated 'GameSession' object is returned.
+-- Updates game session properties. This includes the session name, maximum player count, protection policy, which controls whether or not an active game session can be terminated during a scale-down event, and the player session creation policy, which controls whether or not new players can join the session. To update a game session, specify the game session ID and the values you want to change. If successful, an updated 'GameSession' object is returned. 
 --
 --
 -- Game-session-related operations include:
 --
---     * 'CreateGameSession'
+--     * 'CreateGameSession' 
 --
---     * 'DescribeGameSessions'
+--     * 'DescribeGameSessions' 
 --
---     * 'DescribeGameSessionDetails'
+--     * 'DescribeGameSessionDetails' 
 --
---     * 'SearchGameSessions'
+--     * 'SearchGameSessions' 
 --
---     * 'UpdateGameSession'
+--     * 'UpdateGameSession' 
 --
---     * 'GetGameSessionLogUrl'
+--     * 'GetGameSessionLogUrl' 
 --
 --     * Game session placements
 --
---     * 'StartGameSessionPlacement'
+--     * 'StartGameSessionPlacement' 
 --
---     * 'DescribeGameSessionPlacement'
+--     * 'DescribeGameSessionPlacement' 
 --
---     * 'StopGameSessionPlacement'
+--     * 'StopGameSessionPlacement' 
 --
 --
 --
@@ -68,7 +68,6 @@ module Network.AWS.GameLift.UpdateGameSession
     ) where
 
 import Network.AWS.GameLift.Types
-import Network.AWS.GameLift.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.Request
@@ -79,16 +78,16 @@ import Network.AWS.Response
 --
 --
 -- /See:/ 'updateGameSession' smart constructor.
-data UpdateGameSession =
-  UpdateGameSession'
-    { _ugsMaximumPlayerSessionCount   :: !(Maybe Nat)
-    , _ugsPlayerSessionCreationPolicy :: !(Maybe PlayerSessionCreationPolicy)
-    , _ugsName                        :: !(Maybe Text)
-    , _ugsProtectionPolicy            :: !(Maybe ProtectionPolicy)
-    , _ugsGameSessionId               :: !Text
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data UpdateGameSession = UpdateGameSession'{_ugsMaximumPlayerSessionCount
+                                            :: !(Maybe Nat),
+                                            _ugsPlayerSessionCreationPolicy ::
+                                            !(Maybe
+                                                PlayerSessionCreationPolicy),
+                                            _ugsName :: !(Maybe Text),
+                                            _ugsProtectionPolicy ::
+                                            !(Maybe ProtectionPolicy),
+                                            _ugsGameSessionId :: !Text}
+                           deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'UpdateGameSession' with the minimum fields required to make a request.
 --
@@ -106,15 +105,12 @@ data UpdateGameSession =
 updateGameSession
     :: Text -- ^ 'ugsGameSessionId'
     -> UpdateGameSession
-updateGameSession pGameSessionId_ =
-  UpdateGameSession'
-    { _ugsMaximumPlayerSessionCount = Nothing
-    , _ugsPlayerSessionCreationPolicy = Nothing
-    , _ugsName = Nothing
-    , _ugsProtectionPolicy = Nothing
-    , _ugsGameSessionId = pGameSessionId_
-    }
-
+updateGameSession pGameSessionId_
+  = UpdateGameSession'{_ugsMaximumPlayerSessionCount =
+                         Nothing,
+                       _ugsPlayerSessionCreationPolicy = Nothing,
+                       _ugsName = Nothing, _ugsProtectionPolicy = Nothing,
+                       _ugsGameSessionId = pGameSessionId_}
 
 -- | Maximum number of players that can be connected simultaneously to the game session.
 ugsMaximumPlayerSessionCount :: Lens' UpdateGameSession (Maybe Natural)
@@ -181,13 +177,14 @@ instance ToQuery UpdateGameSession where
 --
 --
 -- /See:/ 'updateGameSessionResponse' smart constructor.
-data UpdateGameSessionResponse =
-  UpdateGameSessionResponse'
-    { _ugsrsGameSession    :: !(Maybe GameSession)
-    , _ugsrsResponseStatus :: !Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data UpdateGameSessionResponse = UpdateGameSessionResponse'{_ugsrsGameSession
+                                                            ::
+                                                            !(Maybe
+                                                                GameSession),
+                                                            _ugsrsResponseStatus
+                                                            :: !Int}
+                                   deriving (Eq, Read, Show, Data, Typeable,
+                                             Generic)
 
 -- | Creates a value of 'UpdateGameSessionResponse' with the minimum fields required to make a request.
 --
@@ -199,10 +196,10 @@ data UpdateGameSessionResponse =
 updateGameSessionResponse
     :: Int -- ^ 'ugsrsResponseStatus'
     -> UpdateGameSessionResponse
-updateGameSessionResponse pResponseStatus_ =
-  UpdateGameSessionResponse'
-    {_ugsrsGameSession = Nothing, _ugsrsResponseStatus = pResponseStatus_}
-
+updateGameSessionResponse pResponseStatus_
+  = UpdateGameSessionResponse'{_ugsrsGameSession =
+                                 Nothing,
+                               _ugsrsResponseStatus = pResponseStatus_}
 
 -- | Object that contains the updated game session metadata.
 ugsrsGameSession :: Lens' UpdateGameSessionResponse (Maybe GameSession)

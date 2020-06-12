@@ -61,42 +61,43 @@ import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 import Network.AWS.Route53Domains.Types
-import Network.AWS.Route53Domains.Types.Product
 
 -- | The TransferDomain request includes the following elements.
 --
 --
 --
 -- /See:/ 'transferDomain' smart constructor.
-data TransferDomain =
-  TransferDomain'
-    { _tdPrivacyProtectTechContact       :: !(Maybe Bool)
-    , _tdPrivacyProtectRegistrantContact :: !(Maybe Bool)
-    , _tdAutoRenew                       :: !(Maybe Bool)
-    , _tdPrivacyProtectAdminContact      :: !(Maybe Bool)
-    , _tdIdNLangCode                     :: !(Maybe Text)
-    , _tdAuthCode                        :: !(Maybe (Sensitive Text))
-    , _tdNameservers                     :: !(Maybe [Nameserver])
-    , _tdDomainName                      :: !Text
-    , _tdDurationInYears                 :: !Nat
-    , _tdAdminContact                    :: !(Sensitive ContactDetail)
-    , _tdRegistrantContact               :: !(Sensitive ContactDetail)
-    , _tdTechContact                     :: !(Sensitive ContactDetail)
-    }
-  deriving (Eq, Show, Data, Typeable, Generic)
-
+data TransferDomain = TransferDomain'{_tdPrivacyProtectTechContact
+                                      :: !(Maybe Bool),
+                                      _tdPrivacyProtectRegistrantContact ::
+                                      !(Maybe Bool),
+                                      _tdAutoRenew :: !(Maybe Bool),
+                                      _tdPrivacyProtectAdminContact ::
+                                      !(Maybe Bool),
+                                      _tdIdNLangCode :: !(Maybe Text),
+                                      _tdAuthCode :: !(Maybe (Sensitive Text)),
+                                      _tdNameservers :: !(Maybe [Nameserver]),
+                                      _tdDomainName :: !Text,
+                                      _tdDurationInYears :: !Nat,
+                                      _tdAdminContact ::
+                                      !(Sensitive ContactDetail),
+                                      _tdRegistrantContact ::
+                                      !(Sensitive ContactDetail),
+                                      _tdTechContact ::
+                                      !(Sensitive ContactDetail)}
+                        deriving (Eq, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'TransferDomain' with the minimum fields required to make a request.
 --
 -- Use one of the following lenses to modify other fields as desired:
 --
--- * 'tdPrivacyProtectTechContact' - Whether you want to conceal contact information from WHOIS queries. If you specify @true@ , WHOIS ("who is") queries return contact information either for Amazon Registrar (for .com, .net, and .org domains) or for our registrar associate, Gandi (for all other TLDs). If you specify @false@ , WHOIS queries return the information that you entered for the technical contact. Default: @true@
+-- * 'tdPrivacyProtectTechContact' - Whether you want to conceal contact information from WHOIS queries. If you specify @true@ , WHOIS ("who is") queries return contact information either for Amazon Registrar (for .com, .net, and .org domains) or for our registrar associate, Gandi (for all other TLDs). If you specify @false@ , WHOIS queries return the information that you entered for the technical contact. Default: @true@ 
 --
--- * 'tdPrivacyProtectRegistrantContact' - Whether you want to conceal contact information from WHOIS queries. If you specify @true@ , WHOIS ("who is") queries return contact information either for Amazon Registrar (for .com, .net, and .org domains) or for our registrar associate, Gandi (for all other TLDs). If you specify @false@ , WHOIS queries return the information that you entered for the registrant contact (domain owner). Default: @true@
+-- * 'tdPrivacyProtectRegistrantContact' - Whether you want to conceal contact information from WHOIS queries. If you specify @true@ , WHOIS ("who is") queries return contact information either for Amazon Registrar (for .com, .net, and .org domains) or for our registrar associate, Gandi (for all other TLDs). If you specify @false@ , WHOIS queries return the information that you entered for the registrant contact (domain owner). Default: @true@ 
 --
 -- * 'tdAutoRenew' - Indicates whether the domain will be automatically renewed (true) or not (false). Autorenewal only takes effect after the account is charged. Default: true
 --
--- * 'tdPrivacyProtectAdminContact' - Whether you want to conceal contact information from WHOIS queries. If you specify @true@ , WHOIS ("who is") queries return contact information either for Amazon Registrar (for .com, .net, and .org domains) or for our registrar associate, Gandi (for all other TLDs). If you specify @false@ , WHOIS queries return the information that you entered for the admin contact. Default: @true@
+-- * 'tdPrivacyProtectAdminContact' - Whether you want to conceal contact information from WHOIS queries. If you specify @true@ , WHOIS ("who is") queries return contact information either for Amazon Registrar (for .com, .net, and .org domains) or for our registrar associate, Gandi (for all other TLDs). If you specify @false@ , WHOIS queries return the information that you entered for the admin contact. Default: @true@ 
 --
 -- * 'tdIdNLangCode' - Reserved for future use.
 --
@@ -120,28 +121,27 @@ transferDomain
     -> ContactDetail -- ^ 'tdRegistrantContact'
     -> ContactDetail -- ^ 'tdTechContact'
     -> TransferDomain
-transferDomain pDomainName_ pDurationInYears_ pAdminContact_ pRegistrantContact_ pTechContact_ =
-  TransferDomain'
-    { _tdPrivacyProtectTechContact = Nothing
-    , _tdPrivacyProtectRegistrantContact = Nothing
-    , _tdAutoRenew = Nothing
-    , _tdPrivacyProtectAdminContact = Nothing
-    , _tdIdNLangCode = Nothing
-    , _tdAuthCode = Nothing
-    , _tdNameservers = Nothing
-    , _tdDomainName = pDomainName_
-    , _tdDurationInYears = _Nat # pDurationInYears_
-    , _tdAdminContact = _Sensitive # pAdminContact_
-    , _tdRegistrantContact = _Sensitive # pRegistrantContact_
-    , _tdTechContact = _Sensitive # pTechContact_
-    }
+transferDomain pDomainName_ pDurationInYears_
+  pAdminContact_ pRegistrantContact_ pTechContact_
+  = TransferDomain'{_tdPrivacyProtectTechContact =
+                      Nothing,
+                    _tdPrivacyProtectRegistrantContact = Nothing,
+                    _tdAutoRenew = Nothing,
+                    _tdPrivacyProtectAdminContact = Nothing,
+                    _tdIdNLangCode = Nothing, _tdAuthCode = Nothing,
+                    _tdNameservers = Nothing,
+                    _tdDomainName = pDomainName_,
+                    _tdDurationInYears = _Nat # pDurationInYears_,
+                    _tdAdminContact = _Sensitive # pAdminContact_,
+                    _tdRegistrantContact =
+                      _Sensitive # pRegistrantContact_,
+                    _tdTechContact = _Sensitive # pTechContact_}
 
-
--- | Whether you want to conceal contact information from WHOIS queries. If you specify @true@ , WHOIS ("who is") queries return contact information either for Amazon Registrar (for .com, .net, and .org domains) or for our registrar associate, Gandi (for all other TLDs). If you specify @false@ , WHOIS queries return the information that you entered for the technical contact. Default: @true@
+-- | Whether you want to conceal contact information from WHOIS queries. If you specify @true@ , WHOIS ("who is") queries return contact information either for Amazon Registrar (for .com, .net, and .org domains) or for our registrar associate, Gandi (for all other TLDs). If you specify @false@ , WHOIS queries return the information that you entered for the technical contact. Default: @true@ 
 tdPrivacyProtectTechContact :: Lens' TransferDomain (Maybe Bool)
 tdPrivacyProtectTechContact = lens _tdPrivacyProtectTechContact (\ s a -> s{_tdPrivacyProtectTechContact = a})
 
--- | Whether you want to conceal contact information from WHOIS queries. If you specify @true@ , WHOIS ("who is") queries return contact information either for Amazon Registrar (for .com, .net, and .org domains) or for our registrar associate, Gandi (for all other TLDs). If you specify @false@ , WHOIS queries return the information that you entered for the registrant contact (domain owner). Default: @true@
+-- | Whether you want to conceal contact information from WHOIS queries. If you specify @true@ , WHOIS ("who is") queries return contact information either for Amazon Registrar (for .com, .net, and .org domains) or for our registrar associate, Gandi (for all other TLDs). If you specify @false@ , WHOIS queries return the information that you entered for the registrant contact (domain owner). Default: @true@ 
 tdPrivacyProtectRegistrantContact :: Lens' TransferDomain (Maybe Bool)
 tdPrivacyProtectRegistrantContact = lens _tdPrivacyProtectRegistrantContact (\ s a -> s{_tdPrivacyProtectRegistrantContact = a})
 
@@ -149,7 +149,7 @@ tdPrivacyProtectRegistrantContact = lens _tdPrivacyProtectRegistrantContact (\ s
 tdAutoRenew :: Lens' TransferDomain (Maybe Bool)
 tdAutoRenew = lens _tdAutoRenew (\ s a -> s{_tdAutoRenew = a})
 
--- | Whether you want to conceal contact information from WHOIS queries. If you specify @true@ , WHOIS ("who is") queries return contact information either for Amazon Registrar (for .com, .net, and .org domains) or for our registrar associate, Gandi (for all other TLDs). If you specify @false@ , WHOIS queries return the information that you entered for the admin contact. Default: @true@
+-- | Whether you want to conceal contact information from WHOIS queries. If you specify @true@ , WHOIS ("who is") queries return contact information either for Amazon Registrar (for .com, .net, and .org domains) or for our registrar associate, Gandi (for all other TLDs). If you specify @false@ , WHOIS queries return the information that you entered for the admin contact. Default: @true@ 
 tdPrivacyProtectAdminContact :: Lens' TransferDomain (Maybe Bool)
 tdPrivacyProtectAdminContact = lens _tdPrivacyProtectAdminContact (\ s a -> s{_tdPrivacyProtectAdminContact = a})
 
@@ -239,13 +239,11 @@ instance ToQuery TransferDomain where
 --
 --
 -- /See:/ 'transferDomainResponse' smart constructor.
-data TransferDomainResponse =
-  TransferDomainResponse'
-    { _tdrsResponseStatus :: !Int
-    , _tdrsOperationId    :: !Text
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data TransferDomainResponse = TransferDomainResponse'{_tdrsResponseStatus
+                                                      :: !Int,
+                                                      _tdrsOperationId :: !Text}
+                                deriving (Eq, Read, Show, Data, Typeable,
+                                          Generic)
 
 -- | Creates a value of 'TransferDomainResponse' with the minimum fields required to make a request.
 --
@@ -258,10 +256,10 @@ transferDomainResponse
     :: Int -- ^ 'tdrsResponseStatus'
     -> Text -- ^ 'tdrsOperationId'
     -> TransferDomainResponse
-transferDomainResponse pResponseStatus_ pOperationId_ =
-  TransferDomainResponse'
-    {_tdrsResponseStatus = pResponseStatus_, _tdrsOperationId = pOperationId_}
-
+transferDomainResponse pResponseStatus_ pOperationId_
+  = TransferDomainResponse'{_tdrsResponseStatus =
+                              pResponseStatus_,
+                            _tdrsOperationId = pOperationId_}
 
 -- | -- | The response status code.
 tdrsResponseStatus :: Lens' TransferDomainResponse Int

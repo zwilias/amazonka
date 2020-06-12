@@ -43,19 +43,14 @@ import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 import Network.AWS.SQS.Types
-import Network.AWS.SQS.Types.Product
 
--- |
+-- | 
 --
 --
 --
 -- /See:/ 'purgeQueue' smart constructor.
-newtype PurgeQueue =
-  PurgeQueue'
-    { _pqQueueURL :: Text
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+newtype PurgeQueue = PurgeQueue'{_pqQueueURL :: Text}
+                       deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'PurgeQueue' with the minimum fields required to make a request.
 --
@@ -65,8 +60,8 @@ newtype PurgeQueue =
 purgeQueue
     :: Text -- ^ 'pqQueueURL'
     -> PurgeQueue
-purgeQueue pQueueURL_ = PurgeQueue' {_pqQueueURL = pQueueURL_}
-
+purgeQueue pQueueURL_
+  = PurgeQueue'{_pqQueueURL = pQueueURL_}
 
 -- | The URL of the queue from which the @PurgeQueue@ action deletes messages. Queue URLs are case-sensitive.
 pqQueueURL :: Lens' PurgeQueue Text
@@ -95,16 +90,13 @@ instance ToQuery PurgeQueue where
                "QueueUrl" =: _pqQueueURL]
 
 -- | /See:/ 'purgeQueueResponse' smart constructor.
-data PurgeQueueResponse =
-  PurgeQueueResponse'
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data PurgeQueueResponse = PurgeQueueResponse'
+                            deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'PurgeQueueResponse' with the minimum fields required to make a request.
 --
 purgeQueueResponse
     :: PurgeQueueResponse
 purgeQueueResponse = PurgeQueueResponse'
-
 
 instance NFData PurgeQueueResponse where

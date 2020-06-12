@@ -41,21 +41,17 @@ module Network.AWS.Athena.ListTagsForResource
     ) where
 
 import Network.AWS.Athena.Types
-import Network.AWS.Athena.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 
 -- | /See:/ 'listTagsForResource' smart constructor.
-data ListTagsForResource =
-  ListTagsForResource'
-    { _ltfrNextToken   :: !(Maybe Text)
-    , _ltfrMaxResults  :: !(Maybe Nat)
-    , _ltfrResourceARN :: !Text
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data ListTagsForResource = ListTagsForResource'{_ltfrNextToken
+                                                :: !(Maybe Text),
+                                                _ltfrMaxResults :: !(Maybe Nat),
+                                                _ltfrResourceARN :: !Text}
+                             deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'ListTagsForResource' with the minimum fields required to make a request.
 --
@@ -69,13 +65,10 @@ data ListTagsForResource =
 listTagsForResource
     :: Text -- ^ 'ltfrResourceARN'
     -> ListTagsForResource
-listTagsForResource pResourceARN_ =
-  ListTagsForResource'
-    { _ltfrNextToken = Nothing
-    , _ltfrMaxResults = Nothing
-    , _ltfrResourceARN = pResourceARN_
-    }
-
+listTagsForResource pResourceARN_
+  = ListTagsForResource'{_ltfrNextToken = Nothing,
+                         _ltfrMaxResults = Nothing,
+                         _ltfrResourceARN = pResourceARN_}
 
 -- | The token for the next set of results, or null if there are no additional results for this request, where the request lists the tags for the workgroup resource with the specified ARN.
 ltfrNextToken :: Lens' ListTagsForResource (Maybe Text)
@@ -128,14 +121,15 @@ instance ToQuery ListTagsForResource where
         toQuery = const mempty
 
 -- | /See:/ 'listTagsForResourceResponse' smart constructor.
-data ListTagsForResourceResponse =
-  ListTagsForResourceResponse'
-    { _ltfrrsNextToken      :: !(Maybe Text)
-    , _ltfrrsTags           :: !(Maybe [Tag])
-    , _ltfrrsResponseStatus :: !Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data ListTagsForResourceResponse = ListTagsForResourceResponse'{_ltfrrsNextToken
+                                                                ::
+                                                                !(Maybe Text),
+                                                                _ltfrrsTags ::
+                                                                !(Maybe [Tag]),
+                                                                _ltfrrsResponseStatus
+                                                                :: !Int}
+                                     deriving (Eq, Read, Show, Data, Typeable,
+                                               Generic)
 
 -- | Creates a value of 'ListTagsForResourceResponse' with the minimum fields required to make a request.
 --
@@ -149,13 +143,11 @@ data ListTagsForResourceResponse =
 listTagsForResourceResponse
     :: Int -- ^ 'ltfrrsResponseStatus'
     -> ListTagsForResourceResponse
-listTagsForResourceResponse pResponseStatus_ =
-  ListTagsForResourceResponse'
-    { _ltfrrsNextToken = Nothing
-    , _ltfrrsTags = Nothing
-    , _ltfrrsResponseStatus = pResponseStatus_
-    }
-
+listTagsForResourceResponse pResponseStatus_
+  = ListTagsForResourceResponse'{_ltfrrsNextToken =
+                                   Nothing,
+                                 _ltfrrsTags = Nothing,
+                                 _ltfrrsResponseStatus = pResponseStatus_}
 
 -- | A token to be used by the next request if this request is truncated.
 ltfrrsNextToken :: Lens' ListTagsForResourceResponse (Maybe Text)

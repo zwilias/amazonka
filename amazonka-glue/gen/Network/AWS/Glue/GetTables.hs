@@ -45,7 +45,6 @@ module Network.AWS.Glue.GetTables
     ) where
 
 import Network.AWS.Glue.Types
-import Network.AWS.Glue.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Pager
 import Network.AWS.Prelude
@@ -53,16 +52,13 @@ import Network.AWS.Request
 import Network.AWS.Response
 
 -- | /See:/ 'getTables' smart constructor.
-data GetTables =
-  GetTables'
-    { _gtCatalogId    :: !(Maybe Text)
-    , _gtNextToken    :: !(Maybe Text)
-    , _gtExpression   :: !(Maybe Text)
-    , _gtMaxResults   :: !(Maybe Nat)
-    , _gtDatabaseName :: !Text
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data GetTables = GetTables'{_gtCatalogId ::
+                            !(Maybe Text),
+                            _gtNextToken :: !(Maybe Text),
+                            _gtExpression :: !(Maybe Text),
+                            _gtMaxResults :: !(Maybe Nat),
+                            _gtDatabaseName :: !Text}
+                   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'GetTables' with the minimum fields required to make a request.
 --
@@ -80,15 +76,11 @@ data GetTables =
 getTables
     :: Text -- ^ 'gtDatabaseName'
     -> GetTables
-getTables pDatabaseName_ =
-  GetTables'
-    { _gtCatalogId = Nothing
-    , _gtNextToken = Nothing
-    , _gtExpression = Nothing
-    , _gtMaxResults = Nothing
-    , _gtDatabaseName = pDatabaseName_
-    }
-
+getTables pDatabaseName_
+  = GetTables'{_gtCatalogId = Nothing,
+               _gtNextToken = Nothing, _gtExpression = Nothing,
+               _gtMaxResults = Nothing,
+               _gtDatabaseName = pDatabaseName_}
 
 -- | The ID of the Data Catalog where the tables reside. If none is supplied, the AWS account ID is used by default.
 gtCatalogId :: Lens' GetTables (Maybe Text)
@@ -158,14 +150,11 @@ instance ToQuery GetTables where
         toQuery = const mempty
 
 -- | /See:/ 'getTablesResponse' smart constructor.
-data GetTablesResponse =
-  GetTablesResponse'
-    { _gtsrsTableList      :: !(Maybe [Table])
-    , _gtsrsNextToken      :: !(Maybe Text)
-    , _gtsrsResponseStatus :: !Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data GetTablesResponse = GetTablesResponse'{_gtsrsTableList
+                                            :: !(Maybe [Table]),
+                                            _gtsrsNextToken :: !(Maybe Text),
+                                            _gtsrsResponseStatus :: !Int}
+                           deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'GetTablesResponse' with the minimum fields required to make a request.
 --
@@ -179,13 +168,10 @@ data GetTablesResponse =
 getTablesResponse
     :: Int -- ^ 'gtsrsResponseStatus'
     -> GetTablesResponse
-getTablesResponse pResponseStatus_ =
-  GetTablesResponse'
-    { _gtsrsTableList = Nothing
-    , _gtsrsNextToken = Nothing
-    , _gtsrsResponseStatus = pResponseStatus_
-    }
-
+getTablesResponse pResponseStatus_
+  = GetTablesResponse'{_gtsrsTableList = Nothing,
+                       _gtsrsNextToken = Nothing,
+                       _gtsrsResponseStatus = pResponseStatus_}
 
 -- | A list of the requested @Table@ objects.
 gtsrsTableList :: Lens' GetTablesResponse [Table]

@@ -39,7 +39,6 @@ module Network.AWS.GuardDuty.UpdateIPSet
     ) where
 
 import Network.AWS.GuardDuty.Types
-import Network.AWS.GuardDuty.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.Request
@@ -48,16 +47,12 @@ import Network.AWS.Response
 -- | UpdateIPSet request body.
 --
 -- /See:/ 'updateIPSet' smart constructor.
-data UpdateIPSet =
-  UpdateIPSet'
-    { _uisLocation   :: !(Maybe Text)
-    , _uisActivate   :: !(Maybe Bool)
-    , _uisName       :: !(Maybe Text)
-    , _uisDetectorId :: !Text
-    , _uisIPSetId    :: !Text
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data UpdateIPSet = UpdateIPSet'{_uisLocation ::
+                                !(Maybe Text),
+                                _uisActivate :: !(Maybe Bool),
+                                _uisName :: !(Maybe Text),
+                                _uisDetectorId :: !Text, _uisIPSetId :: !Text}
+                     deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'UpdateIPSet' with the minimum fields required to make a request.
 --
@@ -76,15 +71,11 @@ updateIPSet
     :: Text -- ^ 'uisDetectorId'
     -> Text -- ^ 'uisIPSetId'
     -> UpdateIPSet
-updateIPSet pDetectorId_ pIPSetId_ =
-  UpdateIPSet'
-    { _uisLocation = Nothing
-    , _uisActivate = Nothing
-    , _uisName = Nothing
-    , _uisDetectorId = pDetectorId_
-    , _uisIPSetId = pIPSetId_
-    }
-
+updateIPSet pDetectorId_ pIPSetId_
+  = UpdateIPSet'{_uisLocation = Nothing,
+                 _uisActivate = Nothing, _uisName = Nothing,
+                 _uisDetectorId = pDetectorId_,
+                 _uisIPSetId = pIPSetId_}
 
 -- | The updated URI of the file that contains the IPSet. For example (https://s3.us-west-2.amazonaws.com/my-bucket/my-object-key).
 uisLocation :: Lens' UpdateIPSet (Maybe Text)
@@ -143,12 +134,10 @@ instance ToQuery UpdateIPSet where
         toQuery = const mempty
 
 -- | /See:/ 'updateIPSetResponse' smart constructor.
-newtype UpdateIPSetResponse =
-  UpdateIPSetResponse'
-    { _uisrsResponseStatus :: Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+newtype UpdateIPSetResponse = UpdateIPSetResponse'{_uisrsResponseStatus
+                                                   :: Int}
+                                deriving (Eq, Read, Show, Data, Typeable,
+                                          Generic)
 
 -- | Creates a value of 'UpdateIPSetResponse' with the minimum fields required to make a request.
 --
@@ -158,9 +147,9 @@ newtype UpdateIPSetResponse =
 updateIPSetResponse
     :: Int -- ^ 'uisrsResponseStatus'
     -> UpdateIPSetResponse
-updateIPSetResponse pResponseStatus_ =
-  UpdateIPSetResponse' {_uisrsResponseStatus = pResponseStatus_}
-
+updateIPSetResponse pResponseStatus_
+  = UpdateIPSetResponse'{_uisrsResponseStatus =
+                           pResponseStatus_}
 
 -- | -- | The response status code.
 uisrsResponseStatus :: Lens' UpdateIPSetResponse Int

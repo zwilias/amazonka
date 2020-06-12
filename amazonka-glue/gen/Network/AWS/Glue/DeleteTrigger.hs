@@ -38,19 +38,15 @@ module Network.AWS.Glue.DeleteTrigger
     ) where
 
 import Network.AWS.Glue.Types
-import Network.AWS.Glue.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 
 -- | /See:/ 'deleteTrigger' smart constructor.
-newtype DeleteTrigger =
-  DeleteTrigger'
-    { _dttName :: Text
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+newtype DeleteTrigger = DeleteTrigger'{_dttName ::
+                                       Text}
+                          deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'DeleteTrigger' with the minimum fields required to make a request.
 --
@@ -60,8 +56,8 @@ newtype DeleteTrigger =
 deleteTrigger
     :: Text -- ^ 'dttName'
     -> DeleteTrigger
-deleteTrigger pName_ = DeleteTrigger' {_dttName = pName_}
-
+deleteTrigger pName_
+  = DeleteTrigger'{_dttName = pName_}
 
 -- | The name of the trigger to delete.
 dttName :: Lens' DeleteTrigger Text
@@ -100,13 +96,12 @@ instance ToQuery DeleteTrigger where
         toQuery = const mempty
 
 -- | /See:/ 'deleteTriggerResponse' smart constructor.
-data DeleteTriggerResponse =
-  DeleteTriggerResponse'
-    { _delrsName           :: !(Maybe Text)
-    , _delrsResponseStatus :: !Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data DeleteTriggerResponse = DeleteTriggerResponse'{_delrsName
+                                                    :: !(Maybe Text),
+                                                    _delrsResponseStatus ::
+                                                    !Int}
+                               deriving (Eq, Read, Show, Data, Typeable,
+                                         Generic)
 
 -- | Creates a value of 'DeleteTriggerResponse' with the minimum fields required to make a request.
 --
@@ -118,10 +113,9 @@ data DeleteTriggerResponse =
 deleteTriggerResponse
     :: Int -- ^ 'delrsResponseStatus'
     -> DeleteTriggerResponse
-deleteTriggerResponse pResponseStatus_ =
-  DeleteTriggerResponse'
-    {_delrsName = Nothing, _delrsResponseStatus = pResponseStatus_}
-
+deleteTriggerResponse pResponseStatus_
+  = DeleteTriggerResponse'{_delrsName = Nothing,
+                           _delrsResponseStatus = pResponseStatus_}
 
 -- | The name of the trigger that was deleted.
 delrsName :: Lens' DeleteTriggerResponse (Maybe Text)

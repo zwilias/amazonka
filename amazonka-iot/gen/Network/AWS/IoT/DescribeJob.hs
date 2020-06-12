@@ -39,19 +39,14 @@ module Network.AWS.IoT.DescribeJob
     ) where
 
 import Network.AWS.IoT.Types
-import Network.AWS.IoT.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 
 -- | /See:/ 'describeJob' smart constructor.
-newtype DescribeJob =
-  DescribeJob'
-    { _djJobId :: Text
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+newtype DescribeJob = DescribeJob'{_djJobId :: Text}
+                        deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'DescribeJob' with the minimum fields required to make a request.
 --
@@ -61,8 +56,8 @@ newtype DescribeJob =
 describeJob
     :: Text -- ^ 'djJobId'
     -> DescribeJob
-describeJob pJobId_ = DescribeJob' {_djJobId = pJobId_}
-
+describeJob pJobId_
+  = DescribeJob'{_djJobId = pJobId_}
 
 -- | The unique identifier you assigned to this job when it was created.
 djJobId :: Lens' DescribeJob Text
@@ -93,14 +88,11 @@ instance ToQuery DescribeJob where
         toQuery = const mempty
 
 -- | /See:/ 'describeJobResponse' smart constructor.
-data DescribeJobResponse =
-  DescribeJobResponse'
-    { _djrsDocumentSource :: !(Maybe Text)
-    , _djrsJob            :: !(Maybe Job)
-    , _djrsResponseStatus :: !Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data DescribeJobResponse = DescribeJobResponse'{_djrsDocumentSource
+                                                :: !(Maybe Text),
+                                                _djrsJob :: !(Maybe Job),
+                                                _djrsResponseStatus :: !Int}
+                             deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'DescribeJobResponse' with the minimum fields required to make a request.
 --
@@ -114,13 +106,10 @@ data DescribeJobResponse =
 describeJobResponse
     :: Int -- ^ 'djrsResponseStatus'
     -> DescribeJobResponse
-describeJobResponse pResponseStatus_ =
-  DescribeJobResponse'
-    { _djrsDocumentSource = Nothing
-    , _djrsJob = Nothing
-    , _djrsResponseStatus = pResponseStatus_
-    }
-
+describeJobResponse pResponseStatus_
+  = DescribeJobResponse'{_djrsDocumentSource = Nothing,
+                         _djrsJob = Nothing,
+                         _djrsResponseStatus = pResponseStatus_}
 
 -- | An S3 link to the job document.
 djrsDocumentSource :: Lens' DescribeJobResponse (Maybe Text)

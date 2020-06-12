@@ -48,15 +48,11 @@ import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 import Network.AWS.Snowball.Types
-import Network.AWS.Snowball.Types.Product
 
 -- | /See:/ 'getJobManifest' smart constructor.
-newtype GetJobManifest =
-  GetJobManifest'
-    { _gjmJobId :: Text
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+newtype GetJobManifest = GetJobManifest'{_gjmJobId ::
+                                         Text}
+                           deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'GetJobManifest' with the minimum fields required to make a request.
 --
@@ -66,8 +62,8 @@ newtype GetJobManifest =
 getJobManifest
     :: Text -- ^ 'gjmJobId'
     -> GetJobManifest
-getJobManifest pJobId_ = GetJobManifest' {_gjmJobId = pJobId_}
-
+getJobManifest pJobId_
+  = GetJobManifest'{_gjmJobId = pJobId_}
 
 -- | The ID for a job that you want to get the manifest file for, for example @JID123e4567-e89b-12d3-a456-426655440000@ .
 gjmJobId :: Lens' GetJobManifest Text
@@ -107,13 +103,12 @@ instance ToQuery GetJobManifest where
         toQuery = const mempty
 
 -- | /See:/ 'getJobManifestResponse' smart constructor.
-data GetJobManifestResponse =
-  GetJobManifestResponse'
-    { _gjmrsManifestURI    :: !(Maybe Text)
-    , _gjmrsResponseStatus :: !Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data GetJobManifestResponse = GetJobManifestResponse'{_gjmrsManifestURI
+                                                      :: !(Maybe Text),
+                                                      _gjmrsResponseStatus ::
+                                                      !Int}
+                                deriving (Eq, Read, Show, Data, Typeable,
+                                          Generic)
 
 -- | Creates a value of 'GetJobManifestResponse' with the minimum fields required to make a request.
 --
@@ -125,10 +120,10 @@ data GetJobManifestResponse =
 getJobManifestResponse
     :: Int -- ^ 'gjmrsResponseStatus'
     -> GetJobManifestResponse
-getJobManifestResponse pResponseStatus_ =
-  GetJobManifestResponse'
-    {_gjmrsManifestURI = Nothing, _gjmrsResponseStatus = pResponseStatus_}
-
+getJobManifestResponse pResponseStatus_
+  = GetJobManifestResponse'{_gjmrsManifestURI =
+                              Nothing,
+                            _gjmrsResponseStatus = pResponseStatus_}
 
 -- | The Amazon S3 presigned URL for the manifest file associated with the specified @JobId@ value.
 gjmrsManifestURI :: Lens' GetJobManifestResponse (Maybe Text)

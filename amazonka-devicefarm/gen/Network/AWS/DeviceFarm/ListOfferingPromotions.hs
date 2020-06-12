@@ -41,7 +41,6 @@ module Network.AWS.DeviceFarm.ListOfferingPromotions
     ) where
 
 import Network.AWS.DeviceFarm.Types
-import Network.AWS.DeviceFarm.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Pager
 import Network.AWS.Prelude
@@ -49,12 +48,10 @@ import Network.AWS.Request
 import Network.AWS.Response
 
 -- | /See:/ 'listOfferingPromotions' smart constructor.
-newtype ListOfferingPromotions =
-  ListOfferingPromotions'
-    { _lopNextToken :: Maybe Text
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+newtype ListOfferingPromotions = ListOfferingPromotions'{_lopNextToken
+                                                         :: Maybe Text}
+                                   deriving (Eq, Read, Show, Data, Typeable,
+                                             Generic)
 
 -- | Creates a value of 'ListOfferingPromotions' with the minimum fields required to make a request.
 --
@@ -63,8 +60,8 @@ newtype ListOfferingPromotions =
 -- * 'lopNextToken' - An identifier that was returned from the previous call to this operation, which can be used to return the next set of items in the list.
 listOfferingPromotions
     :: ListOfferingPromotions
-listOfferingPromotions = ListOfferingPromotions' {_lopNextToken = Nothing}
-
+listOfferingPromotions
+  = ListOfferingPromotions'{_lopNextToken = Nothing}
 
 -- | An identifier that was returned from the previous call to this operation, which can be used to return the next set of items in the list.
 lopNextToken :: Lens' ListOfferingPromotions (Maybe Text)
@@ -115,14 +112,18 @@ instance ToQuery ListOfferingPromotions where
         toQuery = const mempty
 
 -- | /See:/ 'listOfferingPromotionsResponse' smart constructor.
-data ListOfferingPromotionsResponse =
-  ListOfferingPromotionsResponse'
-    { _loprsNextToken          :: !(Maybe Text)
-    , _loprsOfferingPromotions :: !(Maybe [OfferingPromotion])
-    , _loprsResponseStatus     :: !Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data ListOfferingPromotionsResponse = ListOfferingPromotionsResponse'{_loprsNextToken
+                                                                      ::
+                                                                      !(Maybe
+                                                                          Text),
+                                                                      _loprsOfferingPromotions
+                                                                      ::
+                                                                      !(Maybe
+                                                                          [OfferingPromotion]),
+                                                                      _loprsResponseStatus
+                                                                      :: !Int}
+                                        deriving (Eq, Read, Show, Data,
+                                                  Typeable, Generic)
 
 -- | Creates a value of 'ListOfferingPromotionsResponse' with the minimum fields required to make a request.
 --
@@ -136,13 +137,11 @@ data ListOfferingPromotionsResponse =
 listOfferingPromotionsResponse
     :: Int -- ^ 'loprsResponseStatus'
     -> ListOfferingPromotionsResponse
-listOfferingPromotionsResponse pResponseStatus_ =
-  ListOfferingPromotionsResponse'
-    { _loprsNextToken = Nothing
-    , _loprsOfferingPromotions = Nothing
-    , _loprsResponseStatus = pResponseStatus_
-    }
-
+listOfferingPromotionsResponse pResponseStatus_
+  = ListOfferingPromotionsResponse'{_loprsNextToken =
+                                      Nothing,
+                                    _loprsOfferingPromotions = Nothing,
+                                    _loprsResponseStatus = pResponseStatus_}
 
 -- | An identifier to be used in the next call to this operation, to return the next set of items in the list.
 loprsNextToken :: Lens' ListOfferingPromotionsResponse (Maybe Text)

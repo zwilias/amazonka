@@ -65,7 +65,6 @@ module Network.AWS.APIGateway.PutIntegration
     ) where
 
 import Network.AWS.APIGateway.Types
-import Network.AWS.APIGateway.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.Request
@@ -76,27 +75,27 @@ import Network.AWS.Response
 --
 --
 -- /See:/ 'putIntegration' smart constructor.
-data PutIntegration =
-  PutIntegration'
-    { _pRequestTemplates      :: !(Maybe (Map Text Text))
-    , _pCredentials           :: !(Maybe Text)
-    , _pConnectionId          :: !(Maybe Text)
-    , _pRequestParameters     :: !(Maybe (Map Text Text))
-    , _pContentHandling       :: !(Maybe ContentHandlingStrategy)
-    , _pPassthroughBehavior   :: !(Maybe Text)
-    , _pUri                   :: !(Maybe Text)
-    , _pCacheNamespace        :: !(Maybe Text)
-    , _pTimeoutInMillis       :: !(Maybe Int)
-    , _pConnectionType        :: !(Maybe ConnectionType)
-    , _pIntegrationHTTPMethod :: !(Maybe Text)
-    , _pCacheKeyParameters    :: !(Maybe [Text])
-    , _pRestAPIId             :: !Text
-    , _pResourceId            :: !Text
-    , _pHttpMethod            :: !Text
-    , _pType                  :: !IntegrationType
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data PutIntegration = PutIntegration'{_pRequestTemplates
+                                      :: !(Maybe (Map Text Text)),
+                                      _pCredentials :: !(Maybe Text),
+                                      _pConnectionId :: !(Maybe Text),
+                                      _pRequestParameters ::
+                                      !(Maybe (Map Text Text)),
+                                      _pContentHandling ::
+                                      !(Maybe ContentHandlingStrategy),
+                                      _pPassthroughBehavior :: !(Maybe Text),
+                                      _pUri :: !(Maybe Text),
+                                      _pCacheNamespace :: !(Maybe Text),
+                                      _pTimeoutInMillis :: !(Maybe Int),
+                                      _pConnectionType ::
+                                      !(Maybe ConnectionType),
+                                      _pIntegrationHTTPMethod :: !(Maybe Text),
+                                      _pCacheKeyParameters :: !(Maybe [Text]),
+                                      _pRestAPIId :: !Text,
+                                      _pResourceId :: !Text,
+                                      _pHttpMethod :: !Text,
+                                      _pType :: !IntegrationType}
+                        deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'PutIntegration' with the minimum fields required to make a request.
 --
@@ -114,7 +113,7 @@ data PutIntegration =
 --
 -- * 'pPassthroughBehavior' - Specifies the pass-through behavior for incoming requests based on the Content-Type header in the request, and the available mapping templates specified as the @requestTemplates@ property on the Integration resource. There are three valid values: @WHEN_NO_MATCH@ , @WHEN_NO_TEMPLATES@ , and @NEVER@ .      * @WHEN_NO_MATCH@ passes the request body for unmapped content types through to the integration back end without transformation.     * @NEVER@ rejects unmapped content types with an HTTP 415 'Unsupported Media Type' response.     * @WHEN_NO_TEMPLATES@ allows pass-through when the integration has NO content types mapped to templates. However if there is at least one content type defined, unmapped content types will be rejected with the same 415 response.
 --
--- * 'pUri' - Specifies Uniform Resource Identifier (URI) of the integration endpoint.     * For @HTTP@ or @HTTP_PROXY@ integrations, the URI must be a fully formed, encoded HTTP(S) URL according to the <https://en.wikipedia.org/wiki/Uniform_Resource_Identifier RFC-3986 specification> , for either standard integration, where @connectionType@ is not @VPC_LINK@ , or private integration, where @connectionType@ is @VPC_LINK@ . For a private HTTP integration, the URI is not used for routing.      * For @AWS@ or @AWS_PROXY@ integrations, the URI is of the form @arn:aws:apigateway:{region}:{subdomain.service|service}:path|action/{service_api}@ . Here, @{Region}@ is the API Gateway region (e.g., @us-east-1@ ); @{service}@ is the name of the integrated AWS service (e.g., @s3@ ); and @{subdomain}@ is a designated subdomain supported by certain AWS service for fast host-name lookup. @action@ can be used for an AWS service action-based API, using an @Action={name}&{p1}={v1}&p2={v2}...@ query string. The ensuing @{service_api}@ refers to a supported action @{name}@ plus any required input parameters. Alternatively, @path@ can be used for an AWS service path-based API. The ensuing @service_api@ refers to the path to an AWS service resource, including the region of the integrated AWS service, if applicable. For example, for integration with the S3 API of @<https://docs.aws.amazon.com/AmazonS3/latest/API/RESTObjectGET.html GetObject> @ , the @uri@ can be either @arn:aws:apigateway:us-west-2:s3:action/GetObject&Bucket={bucket}&Key={key}@ or @arn:aws:apigateway:us-west-2:s3:path/{bucket}/{key}@
+-- * 'pUri' - Specifies Uniform Resource Identifier (URI) of the integration endpoint.     * For @HTTP@ or @HTTP_PROXY@ integrations, the URI must be a fully formed, encoded HTTP(S) URL according to the <https://en.wikipedia.org/wiki/Uniform_Resource_Identifier RFC-3986 specification> , for either standard integration, where @connectionType@ is not @VPC_LINK@ , or private integration, where @connectionType@ is @VPC_LINK@ . For a private HTTP integration, the URI is not used for routing.      * For @AWS@ or @AWS_PROXY@ integrations, the URI is of the form @arn:aws:apigateway:{region}:{subdomain.service|service}:path|action/{service_api}@ . Here, @{Region}@ is the API Gateway region (e.g., @us-east-1@ ); @{service}@ is the name of the integrated AWS service (e.g., @s3@ ); and @{subdomain}@ is a designated subdomain supported by certain AWS service for fast host-name lookup. @action@ can be used for an AWS service action-based API, using an @Action={name}&{p1}={v1}&p2={v2}...@ query string. The ensuing @{service_api}@ refers to a supported action @{name}@ plus any required input parameters. Alternatively, @path@ can be used for an AWS service path-based API. The ensuing @service_api@ refers to the path to an AWS service resource, including the region of the integrated AWS service, if applicable. For example, for integration with the S3 API of @<https://docs.aws.amazon.com/AmazonS3/latest/API/RESTObjectGET.html GetObject> @ , the @uri@ can be either @arn:aws:apigateway:us-west-2:s3:action/GetObject&Bucket={bucket}&Key={key}@ or @arn:aws:apigateway:us-west-2:s3:path/{bucket}/{key}@ 
 --
 -- * 'pCacheNamespace' - A list of request parameters whose values are to be cached.
 --
@@ -139,26 +138,21 @@ putIntegration
     -> Text -- ^ 'pHttpMethod'
     -> IntegrationType -- ^ 'pType'
     -> PutIntegration
-putIntegration pRestAPIId_ pResourceId_ pHttpMethod_ pType_ =
-  PutIntegration'
-    { _pRequestTemplates = Nothing
-    , _pCredentials = Nothing
-    , _pConnectionId = Nothing
-    , _pRequestParameters = Nothing
-    , _pContentHandling = Nothing
-    , _pPassthroughBehavior = Nothing
-    , _pUri = Nothing
-    , _pCacheNamespace = Nothing
-    , _pTimeoutInMillis = Nothing
-    , _pConnectionType = Nothing
-    , _pIntegrationHTTPMethod = Nothing
-    , _pCacheKeyParameters = Nothing
-    , _pRestAPIId = pRestAPIId_
-    , _pResourceId = pResourceId_
-    , _pHttpMethod = pHttpMethod_
-    , _pType = pType_
-    }
-
+putIntegration pRestAPIId_ pResourceId_ pHttpMethod_
+  pType_
+  = PutIntegration'{_pRequestTemplates = Nothing,
+                    _pCredentials = Nothing, _pConnectionId = Nothing,
+                    _pRequestParameters = Nothing,
+                    _pContentHandling = Nothing,
+                    _pPassthroughBehavior = Nothing, _pUri = Nothing,
+                    _pCacheNamespace = Nothing,
+                    _pTimeoutInMillis = Nothing,
+                    _pConnectionType = Nothing,
+                    _pIntegrationHTTPMethod = Nothing,
+                    _pCacheKeyParameters = Nothing,
+                    _pRestAPIId = pRestAPIId_,
+                    _pResourceId = pResourceId_,
+                    _pHttpMethod = pHttpMethod_, _pType = pType_}
 
 -- | Represents a map of Velocity templates that are applied on the request payload based on the value of the Content-Type header sent by the client. The content type value is the key in this map, and the template (as a String) is the value.
 pRequestTemplates :: Lens' PutIntegration (HashMap Text Text)
@@ -184,7 +178,7 @@ pContentHandling = lens _pContentHandling (\ s a -> s{_pContentHandling = a})
 pPassthroughBehavior :: Lens' PutIntegration (Maybe Text)
 pPassthroughBehavior = lens _pPassthroughBehavior (\ s a -> s{_pPassthroughBehavior = a})
 
--- | Specifies Uniform Resource Identifier (URI) of the integration endpoint.     * For @HTTP@ or @HTTP_PROXY@ integrations, the URI must be a fully formed, encoded HTTP(S) URL according to the <https://en.wikipedia.org/wiki/Uniform_Resource_Identifier RFC-3986 specification> , for either standard integration, where @connectionType@ is not @VPC_LINK@ , or private integration, where @connectionType@ is @VPC_LINK@ . For a private HTTP integration, the URI is not used for routing.      * For @AWS@ or @AWS_PROXY@ integrations, the URI is of the form @arn:aws:apigateway:{region}:{subdomain.service|service}:path|action/{service_api}@ . Here, @{Region}@ is the API Gateway region (e.g., @us-east-1@ ); @{service}@ is the name of the integrated AWS service (e.g., @s3@ ); and @{subdomain}@ is a designated subdomain supported by certain AWS service for fast host-name lookup. @action@ can be used for an AWS service action-based API, using an @Action={name}&{p1}={v1}&p2={v2}...@ query string. The ensuing @{service_api}@ refers to a supported action @{name}@ plus any required input parameters. Alternatively, @path@ can be used for an AWS service path-based API. The ensuing @service_api@ refers to the path to an AWS service resource, including the region of the integrated AWS service, if applicable. For example, for integration with the S3 API of @<https://docs.aws.amazon.com/AmazonS3/latest/API/RESTObjectGET.html GetObject> @ , the @uri@ can be either @arn:aws:apigateway:us-west-2:s3:action/GetObject&Bucket={bucket}&Key={key}@ or @arn:aws:apigateway:us-west-2:s3:path/{bucket}/{key}@
+-- | Specifies Uniform Resource Identifier (URI) of the integration endpoint.     * For @HTTP@ or @HTTP_PROXY@ integrations, the URI must be a fully formed, encoded HTTP(S) URL according to the <https://en.wikipedia.org/wiki/Uniform_Resource_Identifier RFC-3986 specification> , for either standard integration, where @connectionType@ is not @VPC_LINK@ , or private integration, where @connectionType@ is @VPC_LINK@ . For a private HTTP integration, the URI is not used for routing.      * For @AWS@ or @AWS_PROXY@ integrations, the URI is of the form @arn:aws:apigateway:{region}:{subdomain.service|service}:path|action/{service_api}@ . Here, @{Region}@ is the API Gateway region (e.g., @us-east-1@ ); @{service}@ is the name of the integrated AWS service (e.g., @s3@ ); and @{subdomain}@ is a designated subdomain supported by certain AWS service for fast host-name lookup. @action@ can be used for an AWS service action-based API, using an @Action={name}&{p1}={v1}&p2={v2}...@ query string. The ensuing @{service_api}@ refers to a supported action @{name}@ plus any required input parameters. Alternatively, @path@ can be used for an AWS service path-based API. The ensuing @service_api@ refers to the path to an AWS service resource, including the region of the integrated AWS service, if applicable. For example, for integration with the S3 API of @<https://docs.aws.amazon.com/AmazonS3/latest/API/RESTObjectGET.html GetObject> @ , the @uri@ can be either @arn:aws:apigateway:us-west-2:s3:action/GetObject&Bucket={bucket}&Key={key}@ or @arn:aws:apigateway:us-west-2:s3:path/{bucket}/{key}@ 
 pUri :: Lens' PutIntegration (Maybe Text)
 pUri = lens _pUri (\ s a -> s{_pUri = a})
 

@@ -11,7 +11,7 @@
 -- Stability   : auto-generated
 -- Portability : non-portable (GHC extensions)
 --
--- The AWS Budgets API enables you to use AWS Budgets to plan your service usage, service costs, and instance reservations. The API reference provides descriptions, syntax, and usage examples for each of the actions and data types for AWS Budgets.
+-- The AWS Budgets API enables you to use AWS Budgets to plan your service usage, service costs, and instance reservations. The API reference provides descriptions, syntax, and usage examples for each of the actions and data types for AWS Budgets. 
 --
 --
 -- Budgets provide you with a way to see the following information:
@@ -95,37 +95,37 @@ module Network.AWS.Budgets
     -- ** DescribeBudgets (Paginated)
     , module Network.AWS.Budgets.DescribeBudgets
 
-    -- ** CreateSubscriber
+    -- ** CreateSubscriber 
     , module Network.AWS.Budgets.CreateSubscriber
 
-    -- ** UpdateBudget
+    -- ** UpdateBudget 
     , module Network.AWS.Budgets.UpdateBudget
 
-    -- ** DeleteBudget
+    -- ** DeleteBudget 
     , module Network.AWS.Budgets.DeleteBudget
 
-    -- ** DeleteNotification
+    -- ** DeleteNotification 
     , module Network.AWS.Budgets.DeleteNotification
 
-    -- ** UpdateNotification
+    -- ** UpdateNotification 
     , module Network.AWS.Budgets.UpdateNotification
 
-    -- ** DescribeBudgetPerformanceHistory
+    -- ** DescribeBudgetPerformanceHistory 
     , module Network.AWS.Budgets.DescribeBudgetPerformanceHistory
 
-    -- ** DescribeBudget
+    -- ** DescribeBudget 
     , module Network.AWS.Budgets.DescribeBudget
 
-    -- ** UpdateSubscriber
+    -- ** UpdateSubscriber 
     , module Network.AWS.Budgets.UpdateSubscriber
 
-    -- ** DeleteSubscriber
+    -- ** DeleteSubscriber 
     , module Network.AWS.Budgets.DeleteSubscriber
 
-    -- ** CreateBudget
+    -- ** CreateBudget 
     , module Network.AWS.Budgets.CreateBudget
 
-    -- ** CreateNotification
+    -- ** CreateNotification 
     , module Network.AWS.Budgets.CreateNotification
 
     -- * Types

@@ -18,7 +18,7 @@
 -- Stability   : auto-generated
 -- Portability : non-portable (GHC extensions)
 --
--- Creates a new RTMP distribution. An RTMP distribution is similar to a web distribution, but an RTMP distribution streams media files using the Adobe Real-Time Messaging Protocol (RTMP) instead of serving files using HTTP.
+-- Creates a new RTMP distribution. An RTMP distribution is similar to a web distribution, but an RTMP distribution streams media files using the Adobe Real-Time Messaging Protocol (RTMP) instead of serving files using HTTP. 
 --
 --
 -- To create a new distribution, submit a @POST@ request to the /CloudFront API version/ /distribution resource. The request body must include a document with a /StreamingDistributionConfig/ element. The response echoes the @StreamingDistributionConfig@ element and returns other information about the RTMP distribution.
@@ -48,7 +48,6 @@ module Network.AWS.CloudFront.CreateStreamingDistribution
     ) where
 
 import Network.AWS.CloudFront.Types
-import Network.AWS.CloudFront.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.Request
@@ -59,12 +58,11 @@ import Network.AWS.Response
 --
 --
 -- /See:/ 'createStreamingDistribution' smart constructor.
-newtype CreateStreamingDistribution =
-  CreateStreamingDistribution'
-    { _csdStreamingDistributionConfig :: StreamingDistributionConfig
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+newtype CreateStreamingDistribution = CreateStreamingDistribution'{_csdStreamingDistributionConfig
+                                                                   ::
+                                                                   StreamingDistributionConfig}
+                                        deriving (Eq, Read, Show, Data,
+                                                  Typeable, Generic)
 
 -- | Creates a value of 'CreateStreamingDistribution' with the minimum fields required to make a request.
 --
@@ -74,10 +72,10 @@ newtype CreateStreamingDistribution =
 createStreamingDistribution
     :: StreamingDistributionConfig -- ^ 'csdStreamingDistributionConfig'
     -> CreateStreamingDistribution
-createStreamingDistribution pStreamingDistributionConfig_ =
-  CreateStreamingDistribution'
-    {_csdStreamingDistributionConfig = pStreamingDistributionConfig_}
-
+createStreamingDistribution
+  pStreamingDistributionConfig_
+  = CreateStreamingDistribution'{_csdStreamingDistributionConfig
+                                   = pStreamingDistributionConfig_}
 
 -- | The streaming distribution's configuration information.
 csdStreamingDistributionConfig :: Lens' CreateStreamingDistribution StreamingDistributionConfig
@@ -120,15 +118,23 @@ instance ToQuery CreateStreamingDistribution where
 --
 --
 -- /See:/ 'createStreamingDistributionResponse' smart constructor.
-data CreateStreamingDistributionResponse =
-  CreateStreamingDistributionResponse'
-    { _csdrsETag                  :: !(Maybe Text)
-    , _csdrsLocation              :: !(Maybe Text)
-    , _csdrsStreamingDistribution :: !(Maybe StreamingDistribution)
-    , _csdrsResponseStatus        :: !Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data CreateStreamingDistributionResponse = CreateStreamingDistributionResponse'{_csdrsETag
+                                                                                ::
+                                                                                !(Maybe
+                                                                                    Text),
+                                                                                _csdrsLocation
+                                                                                ::
+                                                                                !(Maybe
+                                                                                    Text),
+                                                                                _csdrsStreamingDistribution
+                                                                                ::
+                                                                                !(Maybe
+                                                                                    StreamingDistribution),
+                                                                                _csdrsResponseStatus
+                                                                                ::
+                                                                                !Int}
+                                             deriving (Eq, Read, Show, Data,
+                                                       Typeable, Generic)
 
 -- | Creates a value of 'CreateStreamingDistributionResponse' with the minimum fields required to make a request.
 --
@@ -144,14 +150,13 @@ data CreateStreamingDistributionResponse =
 createStreamingDistributionResponse
     :: Int -- ^ 'csdrsResponseStatus'
     -> CreateStreamingDistributionResponse
-createStreamingDistributionResponse pResponseStatus_ =
-  CreateStreamingDistributionResponse'
-    { _csdrsETag = Nothing
-    , _csdrsLocation = Nothing
-    , _csdrsStreamingDistribution = Nothing
-    , _csdrsResponseStatus = pResponseStatus_
-    }
-
+createStreamingDistributionResponse pResponseStatus_
+  = CreateStreamingDistributionResponse'{_csdrsETag =
+                                           Nothing,
+                                         _csdrsLocation = Nothing,
+                                         _csdrsStreamingDistribution = Nothing,
+                                         _csdrsResponseStatus =
+                                           pResponseStatus_}
 
 -- | The current version of the streaming distribution created.
 csdrsETag :: Lens' CreateStreamingDistributionResponse (Maybe Text)

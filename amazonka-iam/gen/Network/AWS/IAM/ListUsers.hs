@@ -46,7 +46,6 @@ module Network.AWS.IAM.ListUsers
     ) where
 
 import Network.AWS.IAM.Types
-import Network.AWS.IAM.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Pager
 import Network.AWS.Prelude
@@ -54,14 +53,11 @@ import Network.AWS.Request
 import Network.AWS.Response
 
 -- | /See:/ 'listUsers' smart constructor.
-data ListUsers =
-  ListUsers'
-    { _luPathPrefix :: !(Maybe Text)
-    , _luMarker     :: !(Maybe Text)
-    , _luMaxItems   :: !(Maybe Nat)
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data ListUsers = ListUsers'{_luPathPrefix ::
+                            !(Maybe Text),
+                            _luMarker :: !(Maybe Text),
+                            _luMaxItems :: !(Maybe Nat)}
+                   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'ListUsers' with the minimum fields required to make a request.
 --
@@ -74,10 +70,9 @@ data ListUsers =
 -- * 'luMaxItems' - (Optional) Use this only when paginating results to indicate the maximum number of items you want in the response. If additional items exist beyond the maximum you specify, the @IsTruncated@ response element is @true@ . If you do not include this parameter, it defaults to 100. Note that IAM might return fewer results, even when there are more results available. In that case, the @IsTruncated@ response element returns @true@ and @Marker@ contains a value to include in the subsequent call that tells the service where to continue from.
 listUsers
     :: ListUsers
-listUsers =
-  ListUsers'
-    {_luPathPrefix = Nothing, _luMarker = Nothing, _luMaxItems = Nothing}
-
+listUsers
+  = ListUsers'{_luPathPrefix = Nothing,
+               _luMarker = Nothing, _luMaxItems = Nothing}
 
 -- | The path prefix for filtering the results. For example: @/division_abc/subdivision_xyz/@ , which would get all user names whose path starts with @/division_abc/subdivision_xyz/@ . This parameter is optional. If it is not included, it defaults to a slash (/), listing all user names. This parameter allows (per its <http://wikipedia.org/wiki/regex regex pattern> ) a string of characters consisting of either a forward slash (/) by itself or a string that must begin and end with forward slashes. In addition, it can contain any ASCII character from the ! (\u0021) through the DEL character (\u007F), including most punctuation characters, digits, and upper and lowercased letters.
 luPathPrefix :: Lens' ListUsers (Maybe Text)
@@ -128,20 +123,17 @@ instance ToQuery ListUsers where
                "PathPrefix" =: _luPathPrefix, "Marker" =: _luMarker,
                "MaxItems" =: _luMaxItems]
 
--- | Contains the response to a successful 'ListUsers' request.
+-- | Contains the response to a successful 'ListUsers' request. 
 --
 --
 --
 -- /See:/ 'listUsersResponse' smart constructor.
-data ListUsersResponse =
-  ListUsersResponse'
-    { _lursMarker         :: !(Maybe Text)
-    , _lursIsTruncated    :: !(Maybe Bool)
-    , _lursResponseStatus :: !Int
-    , _lursUsers          :: ![User]
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data ListUsersResponse = ListUsersResponse'{_lursMarker
+                                            :: !(Maybe Text),
+                                            _lursIsTruncated :: !(Maybe Bool),
+                                            _lursResponseStatus :: !Int,
+                                            _lursUsers :: ![User]}
+                           deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'ListUsersResponse' with the minimum fields required to make a request.
 --
@@ -157,14 +149,11 @@ data ListUsersResponse =
 listUsersResponse
     :: Int -- ^ 'lursResponseStatus'
     -> ListUsersResponse
-listUsersResponse pResponseStatus_ =
-  ListUsersResponse'
-    { _lursMarker = Nothing
-    , _lursIsTruncated = Nothing
-    , _lursResponseStatus = pResponseStatus_
-    , _lursUsers = mempty
-    }
-
+listUsersResponse pResponseStatus_
+  = ListUsersResponse'{_lursMarker = Nothing,
+                       _lursIsTruncated = Nothing,
+                       _lursResponseStatus = pResponseStatus_,
+                       _lursUsers = mempty}
 
 -- | When @IsTruncated@ is @true@ , this element is present and contains the value to use for the @Marker@ parameter in a subsequent pagination request.
 lursMarker :: Lens' ListUsersResponse (Maybe Text)

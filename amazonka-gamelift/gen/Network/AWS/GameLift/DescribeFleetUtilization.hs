@@ -18,52 +18,52 @@
 -- Stability   : auto-generated
 -- Portability : non-portable (GHC extensions)
 --
--- Retrieves utilization statistics for one or more fleets. You can request utilization data for all fleets, or specify a list of one or more fleet IDs. When requesting multiple fleets, use the pagination parameters to retrieve results as a set of sequential pages. If successful, a 'FleetUtilization' object is returned for each requested fleet ID. When specifying a list of fleet IDs, utilization objects are returned only for fleets that currently exist.
+-- Retrieves utilization statistics for one or more fleets. You can request utilization data for all fleets, or specify a list of one or more fleet IDs. When requesting multiple fleets, use the pagination parameters to retrieve results as a set of sequential pages. If successful, a 'FleetUtilization' object is returned for each requested fleet ID. When specifying a list of fleet IDs, utilization objects are returned only for fleets that currently exist. 
 --
 --
 -- Fleet-related operations include:
 --
---     * 'CreateFleet'
+--     * 'CreateFleet' 
 --
---     * 'ListFleets'
+--     * 'ListFleets' 
 --
---     * 'DeleteFleet'
+--     * 'DeleteFleet' 
 --
 --     * Describe fleets:
 --
---     * 'DescribeFleetAttributes'
+--     * 'DescribeFleetAttributes' 
 --
---     * 'DescribeFleetCapacity'
+--     * 'DescribeFleetCapacity' 
 --
---     * 'DescribeFleetPortSettings'
+--     * 'DescribeFleetPortSettings' 
 --
---     * 'DescribeFleetUtilization'
+--     * 'DescribeFleetUtilization' 
 --
---     * 'DescribeRuntimeConfiguration'
+--     * 'DescribeRuntimeConfiguration' 
 --
---     * 'DescribeEC2InstanceLimits'
+--     * 'DescribeEC2InstanceLimits' 
 --
---     * 'DescribeFleetEvents'
+--     * 'DescribeFleetEvents' 
 --
 --
 --
 --     * Update fleets:
 --
---     * 'UpdateFleetAttributes'
+--     * 'UpdateFleetAttributes' 
 --
---     * 'UpdateFleetCapacity'
+--     * 'UpdateFleetCapacity' 
 --
---     * 'UpdateFleetPortSettings'
+--     * 'UpdateFleetPortSettings' 
 --
---     * 'UpdateRuntimeConfiguration'
+--     * 'UpdateRuntimeConfiguration' 
 --
 --
 --
 --     * Manage fleet actions:
 --
---     * 'StartFleetActions'
+--     * 'StartFleetActions' 
 --
---     * 'StopFleetActions'
+--     * 'StopFleetActions' 
 --
 --
 --
@@ -89,7 +89,6 @@ module Network.AWS.GameLift.DescribeFleetUtilization
     ) where
 
 import Network.AWS.GameLift.Types
-import Network.AWS.GameLift.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.Request
@@ -100,14 +99,14 @@ import Network.AWS.Response
 --
 --
 -- /See:/ 'describeFleetUtilization' smart constructor.
-data DescribeFleetUtilization =
-  DescribeFleetUtilization'
-    { _dfuNextToken :: !(Maybe Text)
-    , _dfuLimit     :: !(Maybe Nat)
-    , _dfuFleetIds  :: !(Maybe (List1 Text))
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data DescribeFleetUtilization = DescribeFleetUtilization'{_dfuNextToken
+                                                          :: !(Maybe Text),
+                                                          _dfuLimit ::
+                                                          !(Maybe Nat),
+                                                          _dfuFleetIds ::
+                                                          !(Maybe (List1 Text))}
+                                  deriving (Eq, Read, Show, Data, Typeable,
+                                            Generic)
 
 -- | Creates a value of 'DescribeFleetUtilization' with the minimum fields required to make a request.
 --
@@ -120,10 +119,9 @@ data DescribeFleetUtilization =
 -- * 'dfuFleetIds' - Unique identifier for a fleet(s) to retrieve utilization data for. To request utilization data for all fleets, leave this parameter empty.
 describeFleetUtilization
     :: DescribeFleetUtilization
-describeFleetUtilization =
-  DescribeFleetUtilization'
-    {_dfuNextToken = Nothing, _dfuLimit = Nothing, _dfuFleetIds = Nothing}
-
+describeFleetUtilization
+  = DescribeFleetUtilization'{_dfuNextToken = Nothing,
+                              _dfuLimit = Nothing, _dfuFleetIds = Nothing}
 
 -- | Token that indicates the start of the next sequential page of results. Use the token that is returned with a previous call to this action. To start at the beginning of the result set, do not specify a value. This parameter is ignored when the request specifies one or a list of fleet IDs.
 dfuNextToken :: Lens' DescribeFleetUtilization (Maybe Text)
@@ -181,14 +179,19 @@ instance ToQuery DescribeFleetUtilization where
 --
 --
 -- /See:/ 'describeFleetUtilizationResponse' smart constructor.
-data DescribeFleetUtilizationResponse =
-  DescribeFleetUtilizationResponse'
-    { _dfursNextToken        :: !(Maybe Text)
-    , _dfursFleetUtilization :: !(Maybe [FleetUtilization])
-    , _dfursResponseStatus   :: !Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data DescribeFleetUtilizationResponse = DescribeFleetUtilizationResponse'{_dfursNextToken
+                                                                          ::
+                                                                          !(Maybe
+                                                                              Text),
+                                                                          _dfursFleetUtilization
+                                                                          ::
+                                                                          !(Maybe
+                                                                              [FleetUtilization]),
+                                                                          _dfursResponseStatus
+                                                                          ::
+                                                                          !Int}
+                                          deriving (Eq, Read, Show, Data,
+                                                    Typeable, Generic)
 
 -- | Creates a value of 'DescribeFleetUtilizationResponse' with the minimum fields required to make a request.
 --
@@ -202,13 +205,11 @@ data DescribeFleetUtilizationResponse =
 describeFleetUtilizationResponse
     :: Int -- ^ 'dfursResponseStatus'
     -> DescribeFleetUtilizationResponse
-describeFleetUtilizationResponse pResponseStatus_ =
-  DescribeFleetUtilizationResponse'
-    { _dfursNextToken = Nothing
-    , _dfursFleetUtilization = Nothing
-    , _dfursResponseStatus = pResponseStatus_
-    }
-
+describeFleetUtilizationResponse pResponseStatus_
+  = DescribeFleetUtilizationResponse'{_dfursNextToken =
+                                        Nothing,
+                                      _dfursFleetUtilization = Nothing,
+                                      _dfursResponseStatus = pResponseStatus_}
 
 -- | Token that indicates where to resume retrieving results on the next call to this action. If no token is returned, these results represent the end of the list.
 dfursNextToken :: Lens' DescribeFleetUtilizationResponse (Maybe Text)

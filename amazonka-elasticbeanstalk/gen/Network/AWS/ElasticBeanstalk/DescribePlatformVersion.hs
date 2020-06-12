@@ -38,19 +38,16 @@ module Network.AWS.ElasticBeanstalk.DescribePlatformVersion
     ) where
 
 import Network.AWS.ElasticBeanstalk.Types
-import Network.AWS.ElasticBeanstalk.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 
 -- | /See:/ 'describePlatformVersion' smart constructor.
-newtype DescribePlatformVersion =
-  DescribePlatformVersion'
-    { _dPlatformARN :: Maybe Text
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+newtype DescribePlatformVersion = DescribePlatformVersion'{_dPlatformARN
+                                                           :: Maybe Text}
+                                    deriving (Eq, Read, Show, Data, Typeable,
+                                              Generic)
 
 -- | Creates a value of 'DescribePlatformVersion' with the minimum fields required to make a request.
 --
@@ -59,8 +56,8 @@ newtype DescribePlatformVersion =
 -- * 'dPlatformARN' - The ARN of the version of the platform.
 describePlatformVersion
     :: DescribePlatformVersion
-describePlatformVersion = DescribePlatformVersion' {_dPlatformARN = Nothing}
-
+describePlatformVersion
+  = DescribePlatformVersion'{_dPlatformARN = Nothing}
 
 -- | The ARN of the version of the platform.
 dPlatformARN :: Lens' DescribePlatformVersion (Maybe Text)
@@ -96,13 +93,14 @@ instance ToQuery DescribePlatformVersion where
                "PlatformArn" =: _dPlatformARN]
 
 -- | /See:/ 'describePlatformVersionResponse' smart constructor.
-data DescribePlatformVersionResponse =
-  DescribePlatformVersionResponse'
-    { _drsPlatformDescription :: !(Maybe PlatformDescription)
-    , _drsResponseStatus      :: !Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data DescribePlatformVersionResponse = DescribePlatformVersionResponse'{_drsPlatformDescription
+                                                                        ::
+                                                                        !(Maybe
+                                                                            PlatformDescription),
+                                                                        _drsResponseStatus
+                                                                        :: !Int}
+                                         deriving (Eq, Read, Show, Data,
+                                                   Typeable, Generic)
 
 -- | Creates a value of 'DescribePlatformVersionResponse' with the minimum fields required to make a request.
 --
@@ -114,10 +112,10 @@ data DescribePlatformVersionResponse =
 describePlatformVersionResponse
     :: Int -- ^ 'drsResponseStatus'
     -> DescribePlatformVersionResponse
-describePlatformVersionResponse pResponseStatus_ =
-  DescribePlatformVersionResponse'
-    {_drsPlatformDescription = Nothing, _drsResponseStatus = pResponseStatus_}
-
+describePlatformVersionResponse pResponseStatus_
+  = DescribePlatformVersionResponse'{_drsPlatformDescription
+                                       = Nothing,
+                                     _drsResponseStatus = pResponseStatus_}
 
 -- | Detailed information about the version of the platform.
 drsPlatformDescription :: Lens' DescribePlatformVersionResponse (Maybe PlatformDescription)

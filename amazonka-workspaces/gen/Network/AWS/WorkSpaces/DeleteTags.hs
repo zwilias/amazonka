@@ -42,16 +42,11 @@ import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 import Network.AWS.WorkSpaces.Types
-import Network.AWS.WorkSpaces.Types.Product
 
 -- | /See:/ 'deleteTags' smart constructor.
-data DeleteTags =
-  DeleteTags'
-    { _dResourceId :: !Text
-    , _dTagKeys    :: ![Text]
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data DeleteTags = DeleteTags'{_dResourceId :: !Text,
+                              _dTagKeys :: ![Text]}
+                    deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'DeleteTags' with the minimum fields required to make a request.
 --
@@ -63,9 +58,9 @@ data DeleteTags =
 deleteTags
     :: Text -- ^ 'dResourceId'
     -> DeleteTags
-deleteTags pResourceId_ =
-  DeleteTags' {_dResourceId = pResourceId_, _dTagKeys = mempty}
-
+deleteTags pResourceId_
+  = DeleteTags'{_dResourceId = pResourceId_,
+                _dTagKeys = mempty}
 
 -- | The ID of the WorkSpace. To find this ID, use 'DescribeWorkspaces' .
 dResourceId :: Lens' DeleteTags Text
@@ -110,12 +105,10 @@ instance ToQuery DeleteTags where
         toQuery = const mempty
 
 -- | /See:/ 'deleteTagsResponse' smart constructor.
-newtype DeleteTagsResponse =
-  DeleteTagsResponse'
-    { _drsResponseStatus :: Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+newtype DeleteTagsResponse = DeleteTagsResponse'{_drsResponseStatus
+                                                 :: Int}
+                               deriving (Eq, Read, Show, Data, Typeable,
+                                         Generic)
 
 -- | Creates a value of 'DeleteTagsResponse' with the minimum fields required to make a request.
 --
@@ -125,9 +118,9 @@ newtype DeleteTagsResponse =
 deleteTagsResponse
     :: Int -- ^ 'drsResponseStatus'
     -> DeleteTagsResponse
-deleteTagsResponse pResponseStatus_ =
-  DeleteTagsResponse' {_drsResponseStatus = pResponseStatus_}
-
+deleteTagsResponse pResponseStatus_
+  = DeleteTagsResponse'{_drsResponseStatus =
+                          pResponseStatus_}
 
 -- | -- | The response status code.
 drsResponseStatus :: Lens' DeleteTagsResponse Int

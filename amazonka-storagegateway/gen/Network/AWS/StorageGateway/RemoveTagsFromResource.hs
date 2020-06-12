@@ -43,20 +43,17 @@ import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 import Network.AWS.StorageGateway.Types
-import Network.AWS.StorageGateway.Types.Product
 
 -- | RemoveTagsFromResourceInput
 --
 --
 --
 -- /See:/ 'removeTagsFromResource' smart constructor.
-data RemoveTagsFromResource =
-  RemoveTagsFromResource'
-    { _rtfrResourceARN :: !Text
-    , _rtfrTagKeys     :: ![Text]
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data RemoveTagsFromResource = RemoveTagsFromResource'{_rtfrResourceARN
+                                                      :: !Text,
+                                                      _rtfrTagKeys :: ![Text]}
+                                deriving (Eq, Read, Show, Data, Typeable,
+                                          Generic)
 
 -- | Creates a value of 'RemoveTagsFromResource' with the minimum fields required to make a request.
 --
@@ -68,10 +65,10 @@ data RemoveTagsFromResource =
 removeTagsFromResource
     :: Text -- ^ 'rtfrResourceARN'
     -> RemoveTagsFromResource
-removeTagsFromResource pResourceARN_ =
-  RemoveTagsFromResource'
-    {_rtfrResourceARN = pResourceARN_, _rtfrTagKeys = mempty}
-
+removeTagsFromResource pResourceARN_
+  = RemoveTagsFromResource'{_rtfrResourceARN =
+                              pResourceARN_,
+                            _rtfrTagKeys = mempty}
 
 -- | The Amazon Resource Name (ARN) of the resource you want to remove the tags from.
 rtfrResourceARN :: Lens' RemoveTagsFromResource Text
@@ -123,13 +120,14 @@ instance ToQuery RemoveTagsFromResource where
 --
 --
 -- /See:/ 'removeTagsFromResourceResponse' smart constructor.
-data RemoveTagsFromResourceResponse =
-  RemoveTagsFromResourceResponse'
-    { _rtfrrsResourceARN    :: !(Maybe Text)
-    , _rtfrrsResponseStatus :: !Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data RemoveTagsFromResourceResponse = RemoveTagsFromResourceResponse'{_rtfrrsResourceARN
+                                                                      ::
+                                                                      !(Maybe
+                                                                          Text),
+                                                                      _rtfrrsResponseStatus
+                                                                      :: !Int}
+                                        deriving (Eq, Read, Show, Data,
+                                                  Typeable, Generic)
 
 -- | Creates a value of 'RemoveTagsFromResourceResponse' with the minimum fields required to make a request.
 --
@@ -141,10 +139,10 @@ data RemoveTagsFromResourceResponse =
 removeTagsFromResourceResponse
     :: Int -- ^ 'rtfrrsResponseStatus'
     -> RemoveTagsFromResourceResponse
-removeTagsFromResourceResponse pResponseStatus_ =
-  RemoveTagsFromResourceResponse'
-    {_rtfrrsResourceARN = Nothing, _rtfrrsResponseStatus = pResponseStatus_}
-
+removeTagsFromResourceResponse pResponseStatus_
+  = RemoveTagsFromResourceResponse'{_rtfrrsResourceARN
+                                      = Nothing,
+                                    _rtfrrsResponseStatus = pResponseStatus_}
 
 -- | The Amazon Resource Name (ARN) of the resource that the tags were removed from.
 rtfrrsResourceARN :: Lens' RemoveTagsFromResourceResponse (Maybe Text)

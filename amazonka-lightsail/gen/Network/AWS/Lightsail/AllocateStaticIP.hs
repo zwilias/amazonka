@@ -39,18 +39,14 @@ module Network.AWS.Lightsail.AllocateStaticIP
 
 import Network.AWS.Lens
 import Network.AWS.Lightsail.Types
-import Network.AWS.Lightsail.Types.Product
 import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 
 -- | /See:/ 'allocateStaticIP' smart constructor.
-newtype AllocateStaticIP =
-  AllocateStaticIP'
-    { _asiStaticIPName :: Text
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+newtype AllocateStaticIP = AllocateStaticIP'{_asiStaticIPName
+                                             :: Text}
+                             deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'AllocateStaticIP' with the minimum fields required to make a request.
 --
@@ -60,9 +56,9 @@ newtype AllocateStaticIP =
 allocateStaticIP
     :: Text -- ^ 'asiStaticIPName'
     -> AllocateStaticIP
-allocateStaticIP pStaticIPName_ =
-  AllocateStaticIP' {_asiStaticIPName = pStaticIPName_}
-
+allocateStaticIP pStaticIPName_
+  = AllocateStaticIP'{_asiStaticIPName =
+                        pStaticIPName_}
 
 -- | The name of the static IP address.
 asiStaticIPName :: Lens' AllocateStaticIP Text
@@ -105,13 +101,13 @@ instance ToQuery AllocateStaticIP where
         toQuery = const mempty
 
 -- | /See:/ 'allocateStaticIPResponse' smart constructor.
-data AllocateStaticIPResponse =
-  AllocateStaticIPResponse'
-    { _asirsOperations     :: !(Maybe [Operation])
-    , _asirsResponseStatus :: !Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data AllocateStaticIPResponse = AllocateStaticIPResponse'{_asirsOperations
+                                                          ::
+                                                          !(Maybe [Operation]),
+                                                          _asirsResponseStatus
+                                                          :: !Int}
+                                  deriving (Eq, Read, Show, Data, Typeable,
+                                            Generic)
 
 -- | Creates a value of 'AllocateStaticIPResponse' with the minimum fields required to make a request.
 --
@@ -123,10 +119,10 @@ data AllocateStaticIPResponse =
 allocateStaticIPResponse
     :: Int -- ^ 'asirsResponseStatus'
     -> AllocateStaticIPResponse
-allocateStaticIPResponse pResponseStatus_ =
-  AllocateStaticIPResponse'
-    {_asirsOperations = Nothing, _asirsResponseStatus = pResponseStatus_}
-
+allocateStaticIPResponse pResponseStatus_
+  = AllocateStaticIPResponse'{_asirsOperations =
+                                Nothing,
+                              _asirsResponseStatus = pResponseStatus_}
 
 -- | An array of key-value pairs containing information about the static IP address you allocated.
 asirsOperations :: Lens' AllocateStaticIPResponse [Operation]

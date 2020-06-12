@@ -39,18 +39,13 @@ module Network.AWS.Lightsail.DeleteDisk
 
 import Network.AWS.Lens
 import Network.AWS.Lightsail.Types
-import Network.AWS.Lightsail.Types.Product
 import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 
 -- | /See:/ 'deleteDisk' smart constructor.
-newtype DeleteDisk =
-  DeleteDisk'
-    { _dDiskName :: Text
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+newtype DeleteDisk = DeleteDisk'{_dDiskName :: Text}
+                       deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'DeleteDisk' with the minimum fields required to make a request.
 --
@@ -60,8 +55,8 @@ newtype DeleteDisk =
 deleteDisk
     :: Text -- ^ 'dDiskName'
     -> DeleteDisk
-deleteDisk pDiskName_ = DeleteDisk' {_dDiskName = pDiskName_}
-
+deleteDisk pDiskName_
+  = DeleteDisk'{_dDiskName = pDiskName_}
 
 -- | The unique name of the disk you want to delete (e.g., @my-disk@ ).
 dDiskName :: Lens' DeleteDisk Text
@@ -102,13 +97,10 @@ instance ToQuery DeleteDisk where
         toQuery = const mempty
 
 -- | /See:/ 'deleteDiskResponse' smart constructor.
-data DeleteDiskResponse =
-  DeleteDiskResponse'
-    { _drsOperations     :: !(Maybe [Operation])
-    , _drsResponseStatus :: !Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data DeleteDiskResponse = DeleteDiskResponse'{_drsOperations
+                                              :: !(Maybe [Operation]),
+                                              _drsResponseStatus :: !Int}
+                            deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'DeleteDiskResponse' with the minimum fields required to make a request.
 --
@@ -120,10 +112,9 @@ data DeleteDiskResponse =
 deleteDiskResponse
     :: Int -- ^ 'drsResponseStatus'
     -> DeleteDiskResponse
-deleteDiskResponse pResponseStatus_ =
-  DeleteDiskResponse'
-    {_drsOperations = Nothing, _drsResponseStatus = pResponseStatus_}
-
+deleteDiskResponse pResponseStatus_
+  = DeleteDiskResponse'{_drsOperations = Nothing,
+                        _drsResponseStatus = pResponseStatus_}
 
 -- | An object describing the API operations.
 drsOperations :: Lens' DeleteDiskResponse [Operation]

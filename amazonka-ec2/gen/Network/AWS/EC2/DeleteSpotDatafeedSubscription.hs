@@ -35,7 +35,6 @@ module Network.AWS.EC2.DeleteSpotDatafeedSubscription
     ) where
 
 import Network.AWS.EC2.Types
-import Network.AWS.EC2.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.Request
@@ -46,12 +45,12 @@ import Network.AWS.Response
 --
 --
 -- /See:/ 'deleteSpotDatafeedSubscription' smart constructor.
-newtype DeleteSpotDatafeedSubscription =
-  DeleteSpotDatafeedSubscription'
-    { _dsdssDryRun :: Maybe Bool
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+newtype DeleteSpotDatafeedSubscription = DeleteSpotDatafeedSubscription'{_dsdssDryRun
+                                                                         ::
+                                                                         Maybe
+                                                                           Bool}
+                                           deriving (Eq, Read, Show, Data,
+                                                     Typeable, Generic)
 
 -- | Creates a value of 'DeleteSpotDatafeedSubscription' with the minimum fields required to make a request.
 --
@@ -60,9 +59,9 @@ newtype DeleteSpotDatafeedSubscription =
 -- * 'dsdssDryRun' - Checks whether you have the required permissions for the action, without actually making the request, and provides an error response. If you have the required permissions, the error response is @DryRunOperation@ . Otherwise, it is @UnauthorizedOperation@ .
 deleteSpotDatafeedSubscription
     :: DeleteSpotDatafeedSubscription
-deleteSpotDatafeedSubscription =
-  DeleteSpotDatafeedSubscription' {_dsdssDryRun = Nothing}
-
+deleteSpotDatafeedSubscription
+  = DeleteSpotDatafeedSubscription'{_dsdssDryRun =
+                                      Nothing}
 
 -- | Checks whether you have the required permissions for the action, without actually making the request, and provides an error response. If you have the required permissions, the error response is @DryRunOperation@ . Otherwise, it is @UnauthorizedOperation@ .
 dsdssDryRun :: Lens' DeleteSpotDatafeedSubscription (Maybe Bool)
@@ -97,17 +96,16 @@ instance ToQuery DeleteSpotDatafeedSubscription where
                "DryRun" =: _dsdssDryRun]
 
 -- | /See:/ 'deleteSpotDatafeedSubscriptionResponse' smart constructor.
-data DeleteSpotDatafeedSubscriptionResponse =
-  DeleteSpotDatafeedSubscriptionResponse'
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data DeleteSpotDatafeedSubscriptionResponse = DeleteSpotDatafeedSubscriptionResponse'
+                                                deriving (Eq, Read, Show, Data,
+                                                          Typeable, Generic)
 
 -- | Creates a value of 'DeleteSpotDatafeedSubscriptionResponse' with the minimum fields required to make a request.
 --
 deleteSpotDatafeedSubscriptionResponse
     :: DeleteSpotDatafeedSubscriptionResponse
-deleteSpotDatafeedSubscriptionResponse = DeleteSpotDatafeedSubscriptionResponse'
-
+deleteSpotDatafeedSubscriptionResponse
+  = DeleteSpotDatafeedSubscriptionResponse'
 
 instance NFData
            DeleteSpotDatafeedSubscriptionResponse

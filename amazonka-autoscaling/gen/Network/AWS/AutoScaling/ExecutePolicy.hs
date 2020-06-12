@@ -39,23 +39,19 @@ module Network.AWS.AutoScaling.ExecutePolicy
     ) where
 
 import Network.AWS.AutoScaling.Types
-import Network.AWS.AutoScaling.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 
 -- | /See:/ 'executePolicy' smart constructor.
-data ExecutePolicy =
-  ExecutePolicy'
-    { _epHonorCooldown        :: !(Maybe Bool)
-    , _epMetricValue          :: !(Maybe Double)
-    , _epAutoScalingGroupName :: !(Maybe Text)
-    , _epBreachThreshold      :: !(Maybe Double)
-    , _epPolicyName           :: !Text
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data ExecutePolicy = ExecutePolicy'{_epHonorCooldown
+                                    :: !(Maybe Bool),
+                                    _epMetricValue :: !(Maybe Double),
+                                    _epAutoScalingGroupName :: !(Maybe Text),
+                                    _epBreachThreshold :: !(Maybe Double),
+                                    _epPolicyName :: !Text}
+                       deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'ExecutePolicy' with the minimum fields required to make a request.
 --
@@ -73,15 +69,12 @@ data ExecutePolicy =
 executePolicy
     :: Text -- ^ 'epPolicyName'
     -> ExecutePolicy
-executePolicy pPolicyName_ =
-  ExecutePolicy'
-    { _epHonorCooldown = Nothing
-    , _epMetricValue = Nothing
-    , _epAutoScalingGroupName = Nothing
-    , _epBreachThreshold = Nothing
-    , _epPolicyName = pPolicyName_
-    }
-
+executePolicy pPolicyName_
+  = ExecutePolicy'{_epHonorCooldown = Nothing,
+                   _epMetricValue = Nothing,
+                   _epAutoScalingGroupName = Nothing,
+                   _epBreachThreshold = Nothing,
+                   _epPolicyName = pPolicyName_}
 
 -- | Indicates whether Amazon EC2 Auto Scaling waits for the cooldown period to complete before executing the policy. This parameter is not supported if the policy type is @StepScaling@ or @TargetTrackingScaling@ . For more information, see <https://docs.aws.amazon.com/autoscaling/ec2/userguide/Cooldown.html Scaling Cooldowns> in the /Amazon EC2 Auto Scaling User Guide/ .
 epHonorCooldown :: Lens' ExecutePolicy (Maybe Bool)
@@ -130,16 +123,14 @@ instance ToQuery ExecutePolicy where
                "PolicyName" =: _epPolicyName]
 
 -- | /See:/ 'executePolicyResponse' smart constructor.
-data ExecutePolicyResponse =
-  ExecutePolicyResponse'
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data ExecutePolicyResponse = ExecutePolicyResponse'
+                               deriving (Eq, Read, Show, Data, Typeable,
+                                         Generic)
 
 -- | Creates a value of 'ExecutePolicyResponse' with the minimum fields required to make a request.
 --
 executePolicyResponse
     :: ExecutePolicyResponse
 executePolicyResponse = ExecutePolicyResponse'
-
 
 instance NFData ExecutePolicyResponse where

@@ -40,21 +40,17 @@ module Network.AWS.DeviceFarm.UpdateDeviceInstance
     ) where
 
 import Network.AWS.DeviceFarm.Types
-import Network.AWS.DeviceFarm.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 
 -- | /See:/ 'updateDeviceInstance' smart constructor.
-data UpdateDeviceInstance =
-  UpdateDeviceInstance'
-    { _udiProfileARN :: !(Maybe Text)
-    , _udiLabels     :: !(Maybe [Text])
-    , _udiArn        :: !Text
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data UpdateDeviceInstance = UpdateDeviceInstance'{_udiProfileARN
+                                                  :: !(Maybe Text),
+                                                  _udiLabels :: !(Maybe [Text]),
+                                                  _udiArn :: !Text}
+                              deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'UpdateDeviceInstance' with the minimum fields required to make a request.
 --
@@ -68,10 +64,9 @@ data UpdateDeviceInstance =
 updateDeviceInstance
     :: Text -- ^ 'udiArn'
     -> UpdateDeviceInstance
-updateDeviceInstance pArn_ =
-  UpdateDeviceInstance'
-    {_udiProfileARN = Nothing, _udiLabels = Nothing, _udiArn = pArn_}
-
+updateDeviceInstance pArn_
+  = UpdateDeviceInstance'{_udiProfileARN = Nothing,
+                          _udiLabels = Nothing, _udiArn = pArn_}
 
 -- | The ARN of the profile that you want to associate with the device instance.
 udiProfileARN :: Lens' UpdateDeviceInstance (Maybe Text)
@@ -124,13 +119,14 @@ instance ToQuery UpdateDeviceInstance where
         toQuery = const mempty
 
 -- | /See:/ 'updateDeviceInstanceResponse' smart constructor.
-data UpdateDeviceInstanceResponse =
-  UpdateDeviceInstanceResponse'
-    { _udirsDeviceInstance :: !(Maybe DeviceInstance)
-    , _udirsResponseStatus :: !Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data UpdateDeviceInstanceResponse = UpdateDeviceInstanceResponse'{_udirsDeviceInstance
+                                                                  ::
+                                                                  !(Maybe
+                                                                      DeviceInstance),
+                                                                  _udirsResponseStatus
+                                                                  :: !Int}
+                                      deriving (Eq, Read, Show, Data, Typeable,
+                                                Generic)
 
 -- | Creates a value of 'UpdateDeviceInstanceResponse' with the minimum fields required to make a request.
 --
@@ -142,10 +138,10 @@ data UpdateDeviceInstanceResponse =
 updateDeviceInstanceResponse
     :: Int -- ^ 'udirsResponseStatus'
     -> UpdateDeviceInstanceResponse
-updateDeviceInstanceResponse pResponseStatus_ =
-  UpdateDeviceInstanceResponse'
-    {_udirsDeviceInstance = Nothing, _udirsResponseStatus = pResponseStatus_}
-
+updateDeviceInstanceResponse pResponseStatus_
+  = UpdateDeviceInstanceResponse'{_udirsDeviceInstance
+                                    = Nothing,
+                                  _udirsResponseStatus = pResponseStatus_}
 
 -- | An object that contains information about your device instance.
 udirsDeviceInstance :: Lens' UpdateDeviceInstanceResponse (Maybe DeviceInstance)

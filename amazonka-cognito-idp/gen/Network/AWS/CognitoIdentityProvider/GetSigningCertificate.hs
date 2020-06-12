@@ -38,7 +38,6 @@ module Network.AWS.CognitoIdentityProvider.GetSigningCertificate
     ) where
 
 import Network.AWS.CognitoIdentityProvider.Types
-import Network.AWS.CognitoIdentityProvider.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.Request
@@ -49,12 +48,10 @@ import Network.AWS.Response
 --
 --
 -- /See:/ 'getSigningCertificate' smart constructor.
-newtype GetSigningCertificate =
-  GetSigningCertificate'
-    { _gscUserPoolId :: Text
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+newtype GetSigningCertificate = GetSigningCertificate'{_gscUserPoolId
+                                                       :: Text}
+                                  deriving (Eq, Read, Show, Data, Typeable,
+                                            Generic)
 
 -- | Creates a value of 'GetSigningCertificate' with the minimum fields required to make a request.
 --
@@ -64,9 +61,9 @@ newtype GetSigningCertificate =
 getSigningCertificate
     :: Text -- ^ 'gscUserPoolId'
     -> GetSigningCertificate
-getSigningCertificate pUserPoolId_ =
-  GetSigningCertificate' {_gscUserPoolId = pUserPoolId_}
-
+getSigningCertificate pUserPoolId_
+  = GetSigningCertificate'{_gscUserPoolId =
+                             pUserPoolId_}
 
 -- | The user pool ID.
 gscUserPoolId :: Lens' GetSigningCertificate Text
@@ -112,13 +109,14 @@ instance ToQuery GetSigningCertificate where
 --
 --
 -- /See:/ 'getSigningCertificateResponse' smart constructor.
-data GetSigningCertificateResponse =
-  GetSigningCertificateResponse'
-    { _gscrsCertificate    :: !(Maybe Text)
-    , _gscrsResponseStatus :: !Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data GetSigningCertificateResponse = GetSigningCertificateResponse'{_gscrsCertificate
+                                                                    ::
+                                                                    !(Maybe
+                                                                        Text),
+                                                                    _gscrsResponseStatus
+                                                                    :: !Int}
+                                       deriving (Eq, Read, Show, Data, Typeable,
+                                                 Generic)
 
 -- | Creates a value of 'GetSigningCertificateResponse' with the minimum fields required to make a request.
 --
@@ -130,10 +128,10 @@ data GetSigningCertificateResponse =
 getSigningCertificateResponse
     :: Int -- ^ 'gscrsResponseStatus'
     -> GetSigningCertificateResponse
-getSigningCertificateResponse pResponseStatus_ =
-  GetSigningCertificateResponse'
-    {_gscrsCertificate = Nothing, _gscrsResponseStatus = pResponseStatus_}
-
+getSigningCertificateResponse pResponseStatus_
+  = GetSigningCertificateResponse'{_gscrsCertificate =
+                                     Nothing,
+                                   _gscrsResponseStatus = pResponseStatus_}
 
 -- | The signing certificate.
 gscrsCertificate :: Lens' GetSigningCertificateResponse (Maybe Text)

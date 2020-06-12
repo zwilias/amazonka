@@ -36,7 +36,6 @@ module Network.AWS.EC2.DeleteVPNGateway
     ) where
 
 import Network.AWS.EC2.Types
-import Network.AWS.EC2.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.Request
@@ -47,13 +46,10 @@ import Network.AWS.Response
 --
 --
 -- /See:/ 'deleteVPNGateway' smart constructor.
-data DeleteVPNGateway =
-  DeleteVPNGateway'
-    { _dvgDryRun       :: !(Maybe Bool)
-    , _dvgVPNGatewayId :: !Text
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data DeleteVPNGateway = DeleteVPNGateway'{_dvgDryRun
+                                          :: !(Maybe Bool),
+                                          _dvgVPNGatewayId :: !Text}
+                          deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'DeleteVPNGateway' with the minimum fields required to make a request.
 --
@@ -65,9 +61,9 @@ data DeleteVPNGateway =
 deleteVPNGateway
     :: Text -- ^ 'dvgVPNGatewayId'
     -> DeleteVPNGateway
-deleteVPNGateway pVPNGatewayId_ =
-  DeleteVPNGateway' {_dvgDryRun = Nothing, _dvgVPNGatewayId = pVPNGatewayId_}
-
+deleteVPNGateway pVPNGatewayId_
+  = DeleteVPNGateway'{_dvgDryRun = Nothing,
+                      _dvgVPNGatewayId = pVPNGatewayId_}
 
 -- | Checks whether you have the required permissions for the action, without actually making the request, and provides an error response. If you have the required permissions, the error response is @DryRunOperation@ . Otherwise, it is @UnauthorizedOperation@ .
 dvgDryRun :: Lens' DeleteVPNGateway (Maybe Bool)
@@ -101,16 +97,14 @@ instance ToQuery DeleteVPNGateway where
                "VpnGatewayId" =: _dvgVPNGatewayId]
 
 -- | /See:/ 'deleteVPNGatewayResponse' smart constructor.
-data DeleteVPNGatewayResponse =
-  DeleteVPNGatewayResponse'
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data DeleteVPNGatewayResponse = DeleteVPNGatewayResponse'
+                                  deriving (Eq, Read, Show, Data, Typeable,
+                                            Generic)
 
 -- | Creates a value of 'DeleteVPNGatewayResponse' with the minimum fields required to make a request.
 --
 deleteVPNGatewayResponse
     :: DeleteVPNGatewayResponse
 deleteVPNGatewayResponse = DeleteVPNGatewayResponse'
-
 
 instance NFData DeleteVPNGatewayResponse where

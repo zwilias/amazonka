@@ -55,26 +55,26 @@ module Network.AWS.ELBv2.CreateLoadBalancer
     ) where
 
 import Network.AWS.ELBv2.Types
-import Network.AWS.ELBv2.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 
 -- | /See:/ 'createLoadBalancer' smart constructor.
-data CreateLoadBalancer =
-  CreateLoadBalancer'
-    { _clbSubnetMappings :: !(Maybe [SubnetMapping])
-    , _clbSecurityGroups :: !(Maybe [Text])
-    , _clbSubnets        :: !(Maybe [Text])
-    , _clbIPAddressType  :: !(Maybe IPAddressType)
-    , _clbScheme         :: !(Maybe LoadBalancerSchemeEnum)
-    , _clbType           :: !(Maybe LoadBalancerTypeEnum)
-    , _clbTags           :: !(Maybe (List1 Tag))
-    , _clbName           :: !Text
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data CreateLoadBalancer = CreateLoadBalancer'{_clbSubnetMappings
+                                              :: !(Maybe [SubnetMapping]),
+                                              _clbSecurityGroups ::
+                                              !(Maybe [Text]),
+                                              _clbSubnets :: !(Maybe [Text]),
+                                              _clbIPAddressType ::
+                                              !(Maybe IPAddressType),
+                                              _clbScheme ::
+                                              !(Maybe LoadBalancerSchemeEnum),
+                                              _clbType ::
+                                              !(Maybe LoadBalancerTypeEnum),
+                                              _clbTags :: !(Maybe (List1 Tag)),
+                                              _clbName :: !Text}
+                            deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'CreateLoadBalancer' with the minimum fields required to make a request.
 --
@@ -98,18 +98,12 @@ data CreateLoadBalancer =
 createLoadBalancer
     :: Text -- ^ 'clbName'
     -> CreateLoadBalancer
-createLoadBalancer pName_ =
-  CreateLoadBalancer'
-    { _clbSubnetMappings = Nothing
-    , _clbSecurityGroups = Nothing
-    , _clbSubnets = Nothing
-    , _clbIPAddressType = Nothing
-    , _clbScheme = Nothing
-    , _clbType = Nothing
-    , _clbTags = Nothing
-    , _clbName = pName_
-    }
-
+createLoadBalancer pName_
+  = CreateLoadBalancer'{_clbSubnetMappings = Nothing,
+                        _clbSecurityGroups = Nothing, _clbSubnets = Nothing,
+                        _clbIPAddressType = Nothing, _clbScheme = Nothing,
+                        _clbType = Nothing, _clbTags = Nothing,
+                        _clbName = pName_}
 
 -- | The IDs of the public subnets. You can specify only one subnet per Availability Zone. You must specify either subnets or subnet mappings. [Application Load Balancers] You must specify subnets from at least two Availability Zones. You cannot specify Elastic IP addresses for your subnets. [Network Load Balancers] You can specify subnets from one or more Availability Zones. You can specify one Elastic IP address per subnet.
 clbSubnetMappings :: Lens' CreateLoadBalancer [SubnetMapping]
@@ -185,13 +179,14 @@ instance ToQuery CreateLoadBalancer where
                "Name" =: _clbName]
 
 -- | /See:/ 'createLoadBalancerResponse' smart constructor.
-data CreateLoadBalancerResponse =
-  CreateLoadBalancerResponse'
-    { _clbrsLoadBalancers  :: !(Maybe [LoadBalancer])
-    , _clbrsResponseStatus :: !Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data CreateLoadBalancerResponse = CreateLoadBalancerResponse'{_clbrsLoadBalancers
+                                                              ::
+                                                              !(Maybe
+                                                                  [LoadBalancer]),
+                                                              _clbrsResponseStatus
+                                                              :: !Int}
+                                    deriving (Eq, Read, Show, Data, Typeable,
+                                              Generic)
 
 -- | Creates a value of 'CreateLoadBalancerResponse' with the minimum fields required to make a request.
 --
@@ -203,10 +198,10 @@ data CreateLoadBalancerResponse =
 createLoadBalancerResponse
     :: Int -- ^ 'clbrsResponseStatus'
     -> CreateLoadBalancerResponse
-createLoadBalancerResponse pResponseStatus_ =
-  CreateLoadBalancerResponse'
-    {_clbrsLoadBalancers = Nothing, _clbrsResponseStatus = pResponseStatus_}
-
+createLoadBalancerResponse pResponseStatus_
+  = CreateLoadBalancerResponse'{_clbrsLoadBalancers =
+                                  Nothing,
+                                _clbrsResponseStatus = pResponseStatus_}
 
 -- | Information about the load balancer.
 clbrsLoadBalancers :: Lens' CreateLoadBalancerResponse [LoadBalancer]

@@ -43,16 +43,14 @@ import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 import Network.AWS.ServerlessApplicationRepository.Types
-import Network.AWS.ServerlessApplicationRepository.Types.Product
 
 -- | /See:/ 'putApplicationPolicy' smart constructor.
-data PutApplicationPolicy =
-  PutApplicationPolicy'
-    { _papStatements    :: !(Maybe [ApplicationPolicyStatement])
-    , _papApplicationId :: !Text
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data PutApplicationPolicy = PutApplicationPolicy'{_papStatements
+                                                  ::
+                                                  !(Maybe
+                                                      [ApplicationPolicyStatement]),
+                                                  _papApplicationId :: !Text}
+                              deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'PutApplicationPolicy' with the minimum fields required to make a request.
 --
@@ -64,10 +62,9 @@ data PutApplicationPolicy =
 putApplicationPolicy
     :: Text -- ^ 'papApplicationId'
     -> PutApplicationPolicy
-putApplicationPolicy pApplicationId_ =
-  PutApplicationPolicy'
-    {_papStatements = Nothing, _papApplicationId = pApplicationId_}
-
+putApplicationPolicy pApplicationId_
+  = PutApplicationPolicy'{_papStatements = Nothing,
+                          _papApplicationId = pApplicationId_}
 
 -- | Array of policy statements applied to the application.
 papStatements :: Lens' PutApplicationPolicy [ApplicationPolicyStatement]
@@ -113,13 +110,14 @@ instance ToQuery PutApplicationPolicy where
         toQuery = const mempty
 
 -- | /See:/ 'putApplicationPolicyResponse' smart constructor.
-data PutApplicationPolicyResponse =
-  PutApplicationPolicyResponse'
-    { _paprsStatements     :: !(Maybe [ApplicationPolicyStatement])
-    , _paprsResponseStatus :: !Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data PutApplicationPolicyResponse = PutApplicationPolicyResponse'{_paprsStatements
+                                                                  ::
+                                                                  !(Maybe
+                                                                      [ApplicationPolicyStatement]),
+                                                                  _paprsResponseStatus
+                                                                  :: !Int}
+                                      deriving (Eq, Read, Show, Data, Typeable,
+                                                Generic)
 
 -- | Creates a value of 'PutApplicationPolicyResponse' with the minimum fields required to make a request.
 --
@@ -131,10 +129,10 @@ data PutApplicationPolicyResponse =
 putApplicationPolicyResponse
     :: Int -- ^ 'paprsResponseStatus'
     -> PutApplicationPolicyResponse
-putApplicationPolicyResponse pResponseStatus_ =
-  PutApplicationPolicyResponse'
-    {_paprsStatements = Nothing, _paprsResponseStatus = pResponseStatus_}
-
+putApplicationPolicyResponse pResponseStatus_
+  = PutApplicationPolicyResponse'{_paprsStatements =
+                                    Nothing,
+                                  _paprsResponseStatus = pResponseStatus_}
 
 -- | Array of policy statements applied to the application.
 paprsStatements :: Lens' PutApplicationPolicyResponse [ApplicationPolicyStatement]

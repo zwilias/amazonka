@@ -39,19 +39,16 @@ module Network.AWS.IAM.GetAccessKeyLastUsed
     ) where
 
 import Network.AWS.IAM.Types
-import Network.AWS.IAM.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 
 -- | /See:/ 'getAccessKeyLastUsed' smart constructor.
-newtype GetAccessKeyLastUsed =
-  GetAccessKeyLastUsed'
-    { _gakluAccessKeyId :: AccessKey
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+newtype GetAccessKeyLastUsed = GetAccessKeyLastUsed'{_gakluAccessKeyId
+                                                     :: AccessKey}
+                                 deriving (Eq, Read, Show, Data, Typeable,
+                                           Generic)
 
 -- | Creates a value of 'GetAccessKeyLastUsed' with the minimum fields required to make a request.
 --
@@ -61,9 +58,9 @@ newtype GetAccessKeyLastUsed =
 getAccessKeyLastUsed
     :: AccessKey -- ^ 'gakluAccessKeyId'
     -> GetAccessKeyLastUsed
-getAccessKeyLastUsed pAccessKeyId_ =
-  GetAccessKeyLastUsed' {_gakluAccessKeyId = pAccessKeyId_}
-
+getAccessKeyLastUsed pAccessKeyId_
+  = GetAccessKeyLastUsed'{_gakluAccessKeyId =
+                            pAccessKeyId_}
 
 -- | The identifier of an access key. This parameter allows (per its <http://wikipedia.org/wiki/regex regex pattern> ) a string of characters that can consist of any upper or lowercased letter or digit.
 gakluAccessKeyId :: Lens' GetAccessKeyLastUsed AccessKey
@@ -102,14 +99,17 @@ instance ToQuery GetAccessKeyLastUsed where
 --
 --
 -- /See:/ 'getAccessKeyLastUsedResponse' smart constructor.
-data GetAccessKeyLastUsedResponse =
-  GetAccessKeyLastUsedResponse'
-    { _gaklursUserName          :: !(Maybe Text)
-    , _gaklursAccessKeyLastUsed :: !(Maybe AccessKeyLastUsed)
-    , _gaklursResponseStatus    :: !Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data GetAccessKeyLastUsedResponse = GetAccessKeyLastUsedResponse'{_gaklursUserName
+                                                                  ::
+                                                                  !(Maybe Text),
+                                                                  _gaklursAccessKeyLastUsed
+                                                                  ::
+                                                                  !(Maybe
+                                                                      AccessKeyLastUsed),
+                                                                  _gaklursResponseStatus
+                                                                  :: !Int}
+                                      deriving (Eq, Read, Show, Data, Typeable,
+                                                Generic)
 
 -- | Creates a value of 'GetAccessKeyLastUsedResponse' with the minimum fields required to make a request.
 --
@@ -123,13 +123,11 @@ data GetAccessKeyLastUsedResponse =
 getAccessKeyLastUsedResponse
     :: Int -- ^ 'gaklursResponseStatus'
     -> GetAccessKeyLastUsedResponse
-getAccessKeyLastUsedResponse pResponseStatus_ =
-  GetAccessKeyLastUsedResponse'
-    { _gaklursUserName = Nothing
-    , _gaklursAccessKeyLastUsed = Nothing
-    , _gaklursResponseStatus = pResponseStatus_
-    }
-
+getAccessKeyLastUsedResponse pResponseStatus_
+  = GetAccessKeyLastUsedResponse'{_gaklursUserName =
+                                    Nothing,
+                                  _gaklursAccessKeyLastUsed = Nothing,
+                                  _gaklursResponseStatus = pResponseStatus_}
 
 -- | The name of the AWS IAM user that owns this access key.
 gaklursUserName :: Lens' GetAccessKeyLastUsedResponse (Maybe Text)

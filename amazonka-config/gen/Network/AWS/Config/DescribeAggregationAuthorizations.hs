@@ -42,7 +42,6 @@ module Network.AWS.Config.DescribeAggregationAuthorizations
     ) where
 
 import Network.AWS.Config.Types
-import Network.AWS.Config.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Pager
 import Network.AWS.Prelude
@@ -50,13 +49,16 @@ import Network.AWS.Request
 import Network.AWS.Response
 
 -- | /See:/ 'describeAggregationAuthorizations' smart constructor.
-data DescribeAggregationAuthorizations =
-  DescribeAggregationAuthorizations'
-    { _daaNextToken :: !(Maybe Text)
-    , _daaLimit     :: !(Maybe Nat)
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data DescribeAggregationAuthorizations = DescribeAggregationAuthorizations'{_daaNextToken
+                                                                            ::
+                                                                            !(Maybe
+                                                                                Text),
+                                                                            _daaLimit
+                                                                            ::
+                                                                            !(Maybe
+                                                                                Nat)}
+                                           deriving (Eq, Read, Show, Data,
+                                                     Typeable, Generic)
 
 -- | Creates a value of 'DescribeAggregationAuthorizations' with the minimum fields required to make a request.
 --
@@ -67,10 +69,10 @@ data DescribeAggregationAuthorizations =
 -- * 'daaLimit' - The maximum number of AggregationAuthorizations returned on each page. The default is maximum. If you specify 0, AWS Config uses the default.
 describeAggregationAuthorizations
     :: DescribeAggregationAuthorizations
-describeAggregationAuthorizations =
-  DescribeAggregationAuthorizations'
-    {_daaNextToken = Nothing, _daaLimit = Nothing}
-
+describeAggregationAuthorizations
+  = DescribeAggregationAuthorizations'{_daaNextToken =
+                                         Nothing,
+                                       _daaLimit = Nothing}
 
 -- | The @nextToken@ string returned on a previous page that you use to get the next page of results in a paginated response.
 daaNextToken :: Lens' DescribeAggregationAuthorizations (Maybe Text)
@@ -136,14 +138,20 @@ instance ToQuery DescribeAggregationAuthorizations
         toQuery = const mempty
 
 -- | /See:/ 'describeAggregationAuthorizationsResponse' smart constructor.
-data DescribeAggregationAuthorizationsResponse =
-  DescribeAggregationAuthorizationsResponse'
-    { _daarsAggregationAuthorizations :: !(Maybe [AggregationAuthorization])
-    , _daarsNextToken                 :: !(Maybe Text)
-    , _daarsResponseStatus            :: !Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data DescribeAggregationAuthorizationsResponse = DescribeAggregationAuthorizationsResponse'{_daarsAggregationAuthorizations
+                                                                                            ::
+                                                                                            !(Maybe
+                                                                                                [AggregationAuthorization]),
+                                                                                            _daarsNextToken
+                                                                                            ::
+                                                                                            !(Maybe
+                                                                                                Text),
+                                                                                            _daarsResponseStatus
+                                                                                            ::
+                                                                                            !Int}
+                                                   deriving (Eq, Read, Show,
+                                                             Data, Typeable,
+                                                             Generic)
 
 -- | Creates a value of 'DescribeAggregationAuthorizationsResponse' with the minimum fields required to make a request.
 --
@@ -157,13 +165,13 @@ data DescribeAggregationAuthorizationsResponse =
 describeAggregationAuthorizationsResponse
     :: Int -- ^ 'daarsResponseStatus'
     -> DescribeAggregationAuthorizationsResponse
-describeAggregationAuthorizationsResponse pResponseStatus_ =
-  DescribeAggregationAuthorizationsResponse'
-    { _daarsAggregationAuthorizations = Nothing
-    , _daarsNextToken = Nothing
-    , _daarsResponseStatus = pResponseStatus_
-    }
-
+describeAggregationAuthorizationsResponse
+  pResponseStatus_
+  = DescribeAggregationAuthorizationsResponse'{_daarsAggregationAuthorizations
+                                                 = Nothing,
+                                               _daarsNextToken = Nothing,
+                                               _daarsResponseStatus =
+                                                 pResponseStatus_}
 
 -- | Returns a list of authorizations granted to various aggregator accounts and regions.
 daarsAggregationAuthorizations :: Lens' DescribeAggregationAuthorizationsResponse [AggregationAuthorization]

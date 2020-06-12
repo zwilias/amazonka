@@ -43,7 +43,6 @@ module Network.AWS.AlexaBusiness.ListSkills
     ) where
 
 import Network.AWS.AlexaBusiness.Types
-import Network.AWS.AlexaBusiness.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Pager
 import Network.AWS.Prelude
@@ -51,14 +50,11 @@ import Network.AWS.Request
 import Network.AWS.Response
 
 -- | /See:/ 'listSkills' smart constructor.
-data ListSkills =
-  ListSkills'
-    { _lsSkillGroupARN :: !(Maybe Text)
-    , _lsNextToken     :: !(Maybe Text)
-    , _lsMaxResults    :: !(Maybe Nat)
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data ListSkills = ListSkills'{_lsSkillGroupARN ::
+                              !(Maybe Text),
+                              _lsNextToken :: !(Maybe Text),
+                              _lsMaxResults :: !(Maybe Nat)}
+                    deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'ListSkills' with the minimum fields required to make a request.
 --
@@ -71,13 +67,9 @@ data ListSkills =
 -- * 'lsMaxResults' - The maximum number of results to include in the response. If more results exist than the specified @MaxResults@ value, a token is included in the response so that the remaining results can be retrieved. Required.
 listSkills
     :: ListSkills
-listSkills =
-  ListSkills'
-    { _lsSkillGroupARN = Nothing
-    , _lsNextToken = Nothing
-    , _lsMaxResults = Nothing
-    }
-
+listSkills
+  = ListSkills'{_lsSkillGroupARN = Nothing,
+                _lsNextToken = Nothing, _lsMaxResults = Nothing}
 
 -- | The ARN of the skill group for which to list enabled skills. Required.
 lsSkillGroupARN :: Lens' ListSkills (Maybe Text)
@@ -137,14 +129,12 @@ instance ToQuery ListSkills where
         toQuery = const mempty
 
 -- | /See:/ 'listSkillsResponse' smart constructor.
-data ListSkillsResponse =
-  ListSkillsResponse'
-    { _lsrsNextToken      :: !(Maybe Text)
-    , _lsrsSkillSummaries :: !(Maybe [SkillSummary])
-    , _lsrsResponseStatus :: !Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data ListSkillsResponse = ListSkillsResponse'{_lsrsNextToken
+                                              :: !(Maybe Text),
+                                              _lsrsSkillSummaries ::
+                                              !(Maybe [SkillSummary]),
+                                              _lsrsResponseStatus :: !Int}
+                            deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'ListSkillsResponse' with the minimum fields required to make a request.
 --
@@ -158,13 +148,10 @@ data ListSkillsResponse =
 listSkillsResponse
     :: Int -- ^ 'lsrsResponseStatus'
     -> ListSkillsResponse
-listSkillsResponse pResponseStatus_ =
-  ListSkillsResponse'
-    { _lsrsNextToken = Nothing
-    , _lsrsSkillSummaries = Nothing
-    , _lsrsResponseStatus = pResponseStatus_
-    }
-
+listSkillsResponse pResponseStatus_
+  = ListSkillsResponse'{_lsrsNextToken = Nothing,
+                        _lsrsSkillSummaries = Nothing,
+                        _lsrsResponseStatus = pResponseStatus_}
 
 -- | The token returned to indicate that there is more data available.
 lsrsNextToken :: Lens' ListSkillsResponse (Maybe Text)

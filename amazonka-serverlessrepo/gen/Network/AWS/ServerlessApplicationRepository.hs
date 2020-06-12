@@ -16,11 +16,11 @@
 --  and deploy serverless applications in the AWS Cloud. For more information about serverless applications,
 --  see Serverless Computing and Applications on the AWS website.
 --
--- The AWS Serverless Application Repository is deeply integrated with the AWS Lambda console, so that developers of
---  all levels can get started with serverless computing without needing to learn anything new. You can use category
---  keywords to browse for applications such as web and mobile backends, data processing applications, or chatbots.
---  You can also search for applications by name, publisher, or event source. To use an application, you simply choose it,
---  configure any required fields, and deploy it with a few clicks.
+-- The AWS Serverless Application Repository is deeply integrated with the AWS Lambda console, so that developers of 
+--  all levels can get started with serverless computing without needing to learn anything new. You can use category 
+--  keywords to browse for applications such as web and mobile backends, data processing applications, or chatbots. 
+--  You can also search for applications by name, publisher, or event source. To use an application, you simply choose it, 
+--  configure any required fields, and deploy it with a few clicks. 
 --
 -- You can also easily publish applications, sharing them publicly with the community at large, or privately
 --  within your team or across your organization. To publish a serverless application (or app), you can use the
@@ -33,10 +33,10 @@
 --  experiences available:
 --
 --     * Consuming Applications – Browse for applications and view information about them, including
---  source code and readme files. Also install, configure, and deploy applications of your choosing.
+--  source code and readme files. Also install, configure, and deploy applications of your choosing. 
 --
 -- Publishing Applications – Configure and upload applications to make them available to other
---  developers, and publish new versions of applications.
+--  developers, and publish new versions of applications. 
 --
 --
 --
@@ -72,34 +72,34 @@ module Network.AWS.ServerlessApplicationRepository
     -- * Operations
     -- $operations
 
-    -- ** GetApplicationPolicy
+    -- ** GetApplicationPolicy 
     , module Network.AWS.ServerlessApplicationRepository.GetApplicationPolicy
 
-    -- ** CreateApplicationVersion
+    -- ** CreateApplicationVersion 
     , module Network.AWS.ServerlessApplicationRepository.CreateApplicationVersion
 
-    -- ** DeleteApplication
+    -- ** DeleteApplication 
     , module Network.AWS.ServerlessApplicationRepository.DeleteApplication
 
-    -- ** UpdateApplication
+    -- ** UpdateApplication 
     , module Network.AWS.ServerlessApplicationRepository.UpdateApplication
 
-    -- ** CreateApplication
+    -- ** CreateApplication 
     , module Network.AWS.ServerlessApplicationRepository.CreateApplication
 
-    -- ** ListApplicationVersions
+    -- ** ListApplicationVersions 
     , module Network.AWS.ServerlessApplicationRepository.ListApplicationVersions
 
-    -- ** GetApplication
+    -- ** GetApplication 
     , module Network.AWS.ServerlessApplicationRepository.GetApplication
 
-    -- ** CreateCloudFormationChangeSet
+    -- ** CreateCloudFormationChangeSet 
     , module Network.AWS.ServerlessApplicationRepository.CreateCloudFormationChangeSet
 
-    -- ** PutApplicationPolicy
+    -- ** PutApplicationPolicy 
     , module Network.AWS.ServerlessApplicationRepository.PutApplicationPolicy
 
-    -- ** ListApplications
+    -- ** ListApplications 
     , module Network.AWS.ServerlessApplicationRepository.ListApplications
 
     -- * Types
@@ -171,8 +171,8 @@ import Network.AWS.ServerlessApplicationRepository.CreateCloudFormationChangeSet
 import Network.AWS.ServerlessApplicationRepository.DeleteApplication
 import Network.AWS.ServerlessApplicationRepository.GetApplication
 import Network.AWS.ServerlessApplicationRepository.GetApplicationPolicy
-import Network.AWS.ServerlessApplicationRepository.ListApplications
 import Network.AWS.ServerlessApplicationRepository.ListApplicationVersions
+import Network.AWS.ServerlessApplicationRepository.ListApplications
 import Network.AWS.ServerlessApplicationRepository.PutApplicationPolicy
 import Network.AWS.ServerlessApplicationRepository.Types
 import Network.AWS.ServerlessApplicationRepository.UpdateApplication

@@ -49,7 +49,6 @@ module Network.AWS.EC2.CopyImage
     ) where
 
 import Network.AWS.EC2.Types
-import Network.AWS.EC2.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.Request
@@ -60,19 +59,14 @@ import Network.AWS.Response
 --
 --
 -- /See:/ 'copyImage' smart constructor.
-data CopyImage =
-  CopyImage'
-    { _ciClientToken   :: !(Maybe Text)
-    , _ciEncrypted     :: !(Maybe Bool)
-    , _ciKMSKeyId      :: !(Maybe Text)
-    , _ciDescription   :: !(Maybe Text)
-    , _ciDryRun        :: !(Maybe Bool)
-    , _ciName          :: !Text
-    , _ciSourceImageId :: !Text
-    , _ciSourceRegion  :: !Text
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data CopyImage = CopyImage'{_ciClientToken ::
+                            !(Maybe Text),
+                            _ciEncrypted :: !(Maybe Bool),
+                            _ciKMSKeyId :: !(Maybe Text),
+                            _ciDescription :: !(Maybe Text),
+                            _ciDryRun :: !(Maybe Bool), _ciName :: !Text,
+                            _ciSourceImageId :: !Text, _ciSourceRegion :: !Text}
+                   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'CopyImage' with the minimum fields required to make a request.
 --
@@ -98,18 +92,12 @@ copyImage
     -> Text -- ^ 'ciSourceImageId'
     -> Text -- ^ 'ciSourceRegion'
     -> CopyImage
-copyImage pName_ pSourceImageId_ pSourceRegion_ =
-  CopyImage'
-    { _ciClientToken = Nothing
-    , _ciEncrypted = Nothing
-    , _ciKMSKeyId = Nothing
-    , _ciDescription = Nothing
-    , _ciDryRun = Nothing
-    , _ciName = pName_
-    , _ciSourceImageId = pSourceImageId_
-    , _ciSourceRegion = pSourceRegion_
-    }
-
+copyImage pName_ pSourceImageId_ pSourceRegion_
+  = CopyImage'{_ciClientToken = Nothing,
+               _ciEncrypted = Nothing, _ciKMSKeyId = Nothing,
+               _ciDescription = Nothing, _ciDryRun = Nothing,
+               _ciName = pName_, _ciSourceImageId = pSourceImageId_,
+               _ciSourceRegion = pSourceRegion_}
 
 -- | Unique, case-sensitive identifier you provide to ensure idempotency of the request. For more information, see <https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/Run_Instance_Idempotency.html How to Ensure Idempotency> in the /Amazon Elastic Compute Cloud User Guide/ .
 ciClientToken :: Lens' CopyImage (Maybe Text)
@@ -180,13 +168,10 @@ instance ToQuery CopyImage where
 --
 --
 -- /See:/ 'copyImageResponse' smart constructor.
-data CopyImageResponse =
-  CopyImageResponse'
-    { _ciirsImageId        :: !(Maybe Text)
-    , _ciirsResponseStatus :: !Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data CopyImageResponse = CopyImageResponse'{_ciirsImageId
+                                            :: !(Maybe Text),
+                                            _ciirsResponseStatus :: !Int}
+                           deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'CopyImageResponse' with the minimum fields required to make a request.
 --
@@ -198,10 +183,9 @@ data CopyImageResponse =
 copyImageResponse
     :: Int -- ^ 'ciirsResponseStatus'
     -> CopyImageResponse
-copyImageResponse pResponseStatus_ =
-  CopyImageResponse'
-    {_ciirsImageId = Nothing, _ciirsResponseStatus = pResponseStatus_}
-
+copyImageResponse pResponseStatus_
+  = CopyImageResponse'{_ciirsImageId = Nothing,
+                       _ciirsResponseStatus = pResponseStatus_}
 
 -- | The ID of the new AMI.
 ciirsImageId :: Lens' CopyImageResponse (Maybe Text)

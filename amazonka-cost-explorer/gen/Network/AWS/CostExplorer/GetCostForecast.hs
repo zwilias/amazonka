@@ -18,7 +18,7 @@
 -- Stability   : auto-generated
 -- Portability : non-portable (GHC extensions)
 --
--- Retrieves a forecast for how much Amazon Web Services predicts that you will spend over the forecast time period that you select, based on your past costs.
+-- Retrieves a forecast for how much Amazon Web Services predicts that you will spend over the forecast time period that you select, based on your past costs. 
 --
 --
 module Network.AWS.CostExplorer.GetCostForecast
@@ -43,23 +43,19 @@ module Network.AWS.CostExplorer.GetCostForecast
     ) where
 
 import Network.AWS.CostExplorer.Types
-import Network.AWS.CostExplorer.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 
 -- | /See:/ 'getCostForecast' smart constructor.
-data GetCostForecast =
-  GetCostForecast'
-    { _gcfPredictionIntervalLevel :: !(Maybe Nat)
-    , _gcfFilter                  :: !(Maybe Expression)
-    , _gcfTimePeriod              :: !DateInterval
-    , _gcfMetric                  :: !Metric
-    , _gcfGranularity             :: !Granularity
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data GetCostForecast = GetCostForecast'{_gcfPredictionIntervalLevel
+                                        :: !(Maybe Nat),
+                                        _gcfFilter :: !(Maybe Expression),
+                                        _gcfTimePeriod :: !DateInterval,
+                                        _gcfMetric :: !Metric,
+                                        _gcfGranularity :: !Granularity}
+                         deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'GetCostForecast' with the minimum fields required to make a request.
 --
@@ -79,15 +75,12 @@ getCostForecast
     -> Metric -- ^ 'gcfMetric'
     -> Granularity -- ^ 'gcfGranularity'
     -> GetCostForecast
-getCostForecast pTimePeriod_ pMetric_ pGranularity_ =
-  GetCostForecast'
-    { _gcfPredictionIntervalLevel = Nothing
-    , _gcfFilter = Nothing
-    , _gcfTimePeriod = pTimePeriod_
-    , _gcfMetric = pMetric_
-    , _gcfGranularity = pGranularity_
-    }
-
+getCostForecast pTimePeriod_ pMetric_ pGranularity_
+  = GetCostForecast'{_gcfPredictionIntervalLevel =
+                       Nothing,
+                     _gcfFilter = Nothing, _gcfTimePeriod = pTimePeriod_,
+                     _gcfMetric = pMetric_,
+                     _gcfGranularity = pGranularity_}
 
 -- | Cost Explorer always returns the mean forecast as a single point. You can request a prediction interval around the mean by specifying a confidence level. The higher the confidence level, the more confident Cost Explorer is about the actual value falling in the prediction interval. Higher confidence levels result in wider prediction intervals.
 gcfPredictionIntervalLevel :: Lens' GetCostForecast (Maybe Natural)
@@ -152,14 +145,16 @@ instance ToQuery GetCostForecast where
         toQuery = const mempty
 
 -- | /See:/ 'getCostForecastResponse' smart constructor.
-data GetCostForecastResponse =
-  GetCostForecastResponse'
-    { _gcfrsForecastResultsByTime :: !(Maybe [ForecastResult])
-    , _gcfrsTotal                 :: !(Maybe MetricValue)
-    , _gcfrsResponseStatus        :: !Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data GetCostForecastResponse = GetCostForecastResponse'{_gcfrsForecastResultsByTime
+                                                        ::
+                                                        !(Maybe
+                                                            [ForecastResult]),
+                                                        _gcfrsTotal ::
+                                                        !(Maybe MetricValue),
+                                                        _gcfrsResponseStatus ::
+                                                        !Int}
+                                 deriving (Eq, Read, Show, Data, Typeable,
+                                           Generic)
 
 -- | Creates a value of 'GetCostForecastResponse' with the minimum fields required to make a request.
 --
@@ -173,13 +168,11 @@ data GetCostForecastResponse =
 getCostForecastResponse
     :: Int -- ^ 'gcfrsResponseStatus'
     -> GetCostForecastResponse
-getCostForecastResponse pResponseStatus_ =
-  GetCostForecastResponse'
-    { _gcfrsForecastResultsByTime = Nothing
-    , _gcfrsTotal = Nothing
-    , _gcfrsResponseStatus = pResponseStatus_
-    }
-
+getCostForecastResponse pResponseStatus_
+  = GetCostForecastResponse'{_gcfrsForecastResultsByTime
+                               = Nothing,
+                             _gcfrsTotal = Nothing,
+                             _gcfrsResponseStatus = pResponseStatus_}
 
 -- | The forecasts for your query, in order. For @DAILY@ forecasts, this is a list of days. For @MONTHLY@ forecasts, this is a list of months.
 gcfrsForecastResultsByTime :: Lens' GetCostForecastResponse [ForecastResult]

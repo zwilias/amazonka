@@ -40,19 +40,15 @@ module Network.AWS.DirectConnect.ConfirmConnection
     ) where
 
 import Network.AWS.DirectConnect.Types
-import Network.AWS.DirectConnect.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 
 -- | /See:/ 'confirmConnection' smart constructor.
-newtype ConfirmConnection =
-  ConfirmConnection'
-    { _ccConnectionId :: Text
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+newtype ConfirmConnection = ConfirmConnection'{_ccConnectionId
+                                               :: Text}
+                              deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'ConfirmConnection' with the minimum fields required to make a request.
 --
@@ -62,9 +58,9 @@ newtype ConfirmConnection =
 confirmConnection
     :: Text -- ^ 'ccConnectionId'
     -> ConfirmConnection
-confirmConnection pConnectionId_ =
-  ConfirmConnection' {_ccConnectionId = pConnectionId_}
-
+confirmConnection pConnectionId_
+  = ConfirmConnection'{_ccConnectionId =
+                         pConnectionId_}
 
 -- | The ID of the hosted connection.
 ccConnectionId :: Lens' ConfirmConnection Text
@@ -105,13 +101,14 @@ instance ToQuery ConfirmConnection where
         toQuery = const mempty
 
 -- | /See:/ 'confirmConnectionResponse' smart constructor.
-data ConfirmConnectionResponse =
-  ConfirmConnectionResponse'
-    { _ccrsConnectionState :: !(Maybe ConnectionState)
-    , _ccrsResponseStatus  :: !Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data ConfirmConnectionResponse = ConfirmConnectionResponse'{_ccrsConnectionState
+                                                            ::
+                                                            !(Maybe
+                                                                ConnectionState),
+                                                            _ccrsResponseStatus
+                                                            :: !Int}
+                                   deriving (Eq, Read, Show, Data, Typeable,
+                                             Generic)
 
 -- | Creates a value of 'ConfirmConnectionResponse' with the minimum fields required to make a request.
 --
@@ -123,10 +120,10 @@ data ConfirmConnectionResponse =
 confirmConnectionResponse
     :: Int -- ^ 'ccrsResponseStatus'
     -> ConfirmConnectionResponse
-confirmConnectionResponse pResponseStatus_ =
-  ConfirmConnectionResponse'
-    {_ccrsConnectionState = Nothing, _ccrsResponseStatus = pResponseStatus_}
-
+confirmConnectionResponse pResponseStatus_
+  = ConfirmConnectionResponse'{_ccrsConnectionState =
+                                 Nothing,
+                               _ccrsResponseStatus = pResponseStatus_}
 
 -- | The state of the connection. The following are the possible values:     * @ordering@ : The initial state of a hosted connection provisioned on an interconnect. The connection stays in the ordering state until the owner of the hosted connection confirms or declines the connection order.     * @requested@ : The initial state of a standard connection. The connection stays in the requested state until the Letter of Authorization (LOA) is sent to the customer.     * @pending@ : The connection has been approved and is being initialized.     * @available@ : The network link is up and the connection is ready for use.     * @down@ : The network link is down.     * @deleting@ : The connection is being deleted.     * @deleted@ : The connection has been deleted.     * @rejected@ : A hosted connection in the @ordering@ state enters the @rejected@ state if it is deleted by the customer.     * @unknown@ : The state of the connection is not available.
 ccrsConnectionState :: Lens' ConfirmConnectionResponse (Maybe ConnectionState)

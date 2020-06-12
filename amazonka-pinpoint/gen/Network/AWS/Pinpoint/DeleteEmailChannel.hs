@@ -37,18 +37,15 @@ module Network.AWS.Pinpoint.DeleteEmailChannel
 
 import Network.AWS.Lens
 import Network.AWS.Pinpoint.Types
-import Network.AWS.Pinpoint.Types.Product
 import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 
 -- | /See:/ 'deleteEmailChannel' smart constructor.
-newtype DeleteEmailChannel =
-  DeleteEmailChannel'
-    { _decApplicationId :: Text
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+newtype DeleteEmailChannel = DeleteEmailChannel'{_decApplicationId
+                                                 :: Text}
+                               deriving (Eq, Read, Show, Data, Typeable,
+                                         Generic)
 
 -- | Creates a value of 'DeleteEmailChannel' with the minimum fields required to make a request.
 --
@@ -58,9 +55,9 @@ newtype DeleteEmailChannel =
 deleteEmailChannel
     :: Text -- ^ 'decApplicationId'
     -> DeleteEmailChannel
-deleteEmailChannel pApplicationId_ =
-  DeleteEmailChannel' {_decApplicationId = pApplicationId_}
-
+deleteEmailChannel pApplicationId_
+  = DeleteEmailChannel'{_decApplicationId =
+                          pApplicationId_}
 
 -- | Undocumented member.
 decApplicationId :: Lens' DeleteEmailChannel Text
@@ -97,13 +94,13 @@ instance ToQuery DeleteEmailChannel where
         toQuery = const mempty
 
 -- | /See:/ 'deleteEmailChannelResponse' smart constructor.
-data DeleteEmailChannelResponse =
-  DeleteEmailChannelResponse'
-    { _decrsResponseStatus       :: !Int
-    , _decrsEmailChannelResponse :: !EmailChannelResponse
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data DeleteEmailChannelResponse = DeleteEmailChannelResponse'{_decrsResponseStatus
+                                                              :: !Int,
+                                                              _decrsEmailChannelResponse
+                                                              ::
+                                                              !EmailChannelResponse}
+                                    deriving (Eq, Read, Show, Data, Typeable,
+                                              Generic)
 
 -- | Creates a value of 'DeleteEmailChannelResponse' with the minimum fields required to make a request.
 --
@@ -116,12 +113,12 @@ deleteEmailChannelResponse
     :: Int -- ^ 'decrsResponseStatus'
     -> EmailChannelResponse -- ^ 'decrsEmailChannelResponse'
     -> DeleteEmailChannelResponse
-deleteEmailChannelResponse pResponseStatus_ pEmailChannelResponse_ =
-  DeleteEmailChannelResponse'
-    { _decrsResponseStatus = pResponseStatus_
-    , _decrsEmailChannelResponse = pEmailChannelResponse_
-    }
-
+deleteEmailChannelResponse pResponseStatus_
+  pEmailChannelResponse_
+  = DeleteEmailChannelResponse'{_decrsResponseStatus =
+                                  pResponseStatus_,
+                                _decrsEmailChannelResponse =
+                                  pEmailChannelResponse_}
 
 -- | -- | The response status code.
 decrsResponseStatus :: Lens' DeleteEmailChannelResponse Int

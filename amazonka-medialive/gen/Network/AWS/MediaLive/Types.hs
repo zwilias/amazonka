@@ -1,4 +1,4 @@
-{-# LANGUAGE OverloadedStrings #-}
+{-# LANGUAGE OverloadedStrings  #-}
 
 -- Derived from AWS service descriptions, licensed under Apache 2.0.
 
@@ -1443,100 +1443,360 @@ module Network.AWS.MediaLive.Types
     ) where
 
 import Network.AWS.Lens
-import Network.AWS.MediaLive.Types.Product
-import Network.AWS.MediaLive.Types.Sum
 import Network.AWS.Prelude
 import Network.AWS.Sign.V4
+import Network.AWS.MediaLive.Types.AacCodingMode
+import Network.AWS.MediaLive.Types.AacInputType
+import Network.AWS.MediaLive.Types.AacProfile
+import Network.AWS.MediaLive.Types.AacRateControlMode
+import Network.AWS.MediaLive.Types.AacRawFormat
+import Network.AWS.MediaLive.Types.AacSpec
+import Network.AWS.MediaLive.Types.AacVbrQuality
+import Network.AWS.MediaLive.Types.Ac3BitstreamMode
+import Network.AWS.MediaLive.Types.Ac3CodingMode
+import Network.AWS.MediaLive.Types.Ac3DrcProfile
+import Network.AWS.MediaLive.Types.Ac3LfeFilter
+import Network.AWS.MediaLive.Types.Ac3MetadataControl
+import Network.AWS.MediaLive.Types.AfdSignaling
+import Network.AWS.MediaLive.Types.AudioDescriptionAudioTypeControl
+import Network.AWS.MediaLive.Types.AudioDescriptionLanguageCodeControl
+import Network.AWS.MediaLive.Types.AudioLanguageSelectionPolicy
+import Network.AWS.MediaLive.Types.AudioNormalizationAlgorithm
+import Network.AWS.MediaLive.Types.AudioNormalizationAlgorithmControl
+import Network.AWS.MediaLive.Types.AudioOnlyHlsTrackType
+import Network.AWS.MediaLive.Types.AudioType
+import Network.AWS.MediaLive.Types.AuthenticationScheme
+import Network.AWS.MediaLive.Types.AvailBlankingState
+import Network.AWS.MediaLive.Types.BlackoutSlateNetworkEndBlackout
+import Network.AWS.MediaLive.Types.BlackoutSlateState
+import Network.AWS.MediaLive.Types.BurnInAlignment
+import Network.AWS.MediaLive.Types.BurnInBackgroundColor
+import Network.AWS.MediaLive.Types.BurnInFontColor
+import Network.AWS.MediaLive.Types.BurnInOutlineColor
+import Network.AWS.MediaLive.Types.BurnInShadowColor
+import Network.AWS.MediaLive.Types.BurnInTeletextGridControl
+import Network.AWS.MediaLive.Types.ChannelState
+import Network.AWS.MediaLive.Types.DvbSdtOutputSdt
+import Network.AWS.MediaLive.Types.DvbSubDestinationAlignment
+import Network.AWS.MediaLive.Types.DvbSubDestinationBackgroundColor
+import Network.AWS.MediaLive.Types.DvbSubDestinationFontColor
+import Network.AWS.MediaLive.Types.DvbSubDestinationOutlineColor
+import Network.AWS.MediaLive.Types.DvbSubDestinationShadowColor
+import Network.AWS.MediaLive.Types.DvbSubDestinationTeletextGridControl
+import Network.AWS.MediaLive.Types.Eac3AttenuationControl
+import Network.AWS.MediaLive.Types.Eac3BitstreamMode
+import Network.AWS.MediaLive.Types.Eac3CodingMode
+import Network.AWS.MediaLive.Types.Eac3DcFilter
+import Network.AWS.MediaLive.Types.Eac3DrcLine
+import Network.AWS.MediaLive.Types.Eac3DrcRf
+import Network.AWS.MediaLive.Types.Eac3LfeControl
+import Network.AWS.MediaLive.Types.Eac3LfeFilter
+import Network.AWS.MediaLive.Types.Eac3MetadataControl
+import Network.AWS.MediaLive.Types.Eac3PassthroughControl
+import Network.AWS.MediaLive.Types.Eac3PhaseControl
+import Network.AWS.MediaLive.Types.Eac3StereoDownmix
+import Network.AWS.MediaLive.Types.Eac3SurroundExMode
+import Network.AWS.MediaLive.Types.Eac3SurroundMode
+import Network.AWS.MediaLive.Types.EmbeddedConvert608To708
+import Network.AWS.MediaLive.Types.EmbeddedScte20Detection
+import Network.AWS.MediaLive.Types.FecOutputIncludeFec
+import Network.AWS.MediaLive.Types.FixedAfd
+import Network.AWS.MediaLive.Types.GlobalConfigurationInputEndAction
+import Network.AWS.MediaLive.Types.GlobalConfigurationLowFramerateInputs
+import Network.AWS.MediaLive.Types.GlobalConfigurationOutputTimingSource
+import Network.AWS.MediaLive.Types.H264AdaptiveQuantization
+import Network.AWS.MediaLive.Types.H264ColorMetadata
+import Network.AWS.MediaLive.Types.H264EntropyEncoding
+import Network.AWS.MediaLive.Types.H264FlickerAq
+import Network.AWS.MediaLive.Types.H264FramerateControl
+import Network.AWS.MediaLive.Types.H264GopBReference
+import Network.AWS.MediaLive.Types.H264GopSizeUnits
+import Network.AWS.MediaLive.Types.H264Level
+import Network.AWS.MediaLive.Types.H264LookAheadRateControl
+import Network.AWS.MediaLive.Types.H264ParControl
+import Network.AWS.MediaLive.Types.H264Profile
+import Network.AWS.MediaLive.Types.H264RateControlMode
+import Network.AWS.MediaLive.Types.H264ScanType
+import Network.AWS.MediaLive.Types.H264SceneChangeDetect
+import Network.AWS.MediaLive.Types.H264SpatialAq
+import Network.AWS.MediaLive.Types.H264Syntax
+import Network.AWS.MediaLive.Types.H264TemporalAq
+import Network.AWS.MediaLive.Types.H264TimecodeInsertionBehavior
+import Network.AWS.MediaLive.Types.HlsAdMarkers
+import Network.AWS.MediaLive.Types.HlsAkamaiHTTPTransferMode
+import Network.AWS.MediaLive.Types.HlsCaptionLanguageSetting
+import Network.AWS.MediaLive.Types.HlsClientCache
+import Network.AWS.MediaLive.Types.HlsCodecSpecification
+import Network.AWS.MediaLive.Types.HlsDirectoryStructure
+import Network.AWS.MediaLive.Types.HlsEncryptionType
+import Network.AWS.MediaLive.Types.HlsIvInManifest
+import Network.AWS.MediaLive.Types.HlsIvSource
+import Network.AWS.MediaLive.Types.HlsManifestCompression
+import Network.AWS.MediaLive.Types.HlsManifestDurationFormat
+import Network.AWS.MediaLive.Types.HlsMediaStoreStorageClass
+import Network.AWS.MediaLive.Types.HlsMode
+import Network.AWS.MediaLive.Types.HlsOutputSelection
+import Network.AWS.MediaLive.Types.HlsProgramDateTime
+import Network.AWS.MediaLive.Types.HlsSegmentationMode
+import Network.AWS.MediaLive.Types.HlsStreamInfResolution
+import Network.AWS.MediaLive.Types.HlsTimedMetadataId3Frame
+import Network.AWS.MediaLive.Types.HlsTsFileMode
+import Network.AWS.MediaLive.Types.HlsWebdavHTTPTransferMode
+import Network.AWS.MediaLive.Types.InputCodec
+import Network.AWS.MediaLive.Types.InputDeblockFilter
+import Network.AWS.MediaLive.Types.InputDenoiseFilter
+import Network.AWS.MediaLive.Types.InputFilter
+import Network.AWS.MediaLive.Types.InputLossActionForHlsOut
+import Network.AWS.MediaLive.Types.InputLossActionForMsSmoothOut
+import Network.AWS.MediaLive.Types.InputLossActionForUdpOut
+import Network.AWS.MediaLive.Types.InputLossImageType
+import Network.AWS.MediaLive.Types.InputMaximumBitrate
+import Network.AWS.MediaLive.Types.InputResolution
+import Network.AWS.MediaLive.Types.InputSecurityGroupState
+import Network.AWS.MediaLive.Types.InputSourceEndBehavior
+import Network.AWS.MediaLive.Types.InputState
+import Network.AWS.MediaLive.Types.InputType
+import Network.AWS.MediaLive.Types.M2tsAbsentInputAudioBehavior
+import Network.AWS.MediaLive.Types.M2tsArib
+import Network.AWS.MediaLive.Types.M2tsAribCaptionsPidControl
+import Network.AWS.MediaLive.Types.M2tsAudioBufferModel
+import Network.AWS.MediaLive.Types.M2tsAudioInterval
+import Network.AWS.MediaLive.Types.M2tsAudioStreamType
+import Network.AWS.MediaLive.Types.M2tsBufferModel
+import Network.AWS.MediaLive.Types.M2tsCCDescriptor
+import Network.AWS.MediaLive.Types.M2tsEbifControl
+import Network.AWS.MediaLive.Types.M2tsEbpPlacement
+import Network.AWS.MediaLive.Types.M2tsEsRateInPes
+import Network.AWS.MediaLive.Types.M2tsKlv
+import Network.AWS.MediaLive.Types.M2tsPcrControl
+import Network.AWS.MediaLive.Types.M2tsRateMode
+import Network.AWS.MediaLive.Types.M2tsScte35Control
+import Network.AWS.MediaLive.Types.M2tsSegmentationMarkers
+import Network.AWS.MediaLive.Types.M2tsSegmentationStyle
+import Network.AWS.MediaLive.Types.M2tsTimedMetadataBehavior
+import Network.AWS.MediaLive.Types.M3u8PcrControl
+import Network.AWS.MediaLive.Types.M3u8Scte35Behavior
+import Network.AWS.MediaLive.Types.M3u8TimedMetadataBehavior
+import Network.AWS.MediaLive.Types.Mp2CodingMode
+import Network.AWS.MediaLive.Types.NetworkInputServerValidation
+import Network.AWS.MediaLive.Types.RtmpCacheFullBehavior
+import Network.AWS.MediaLive.Types.RtmpCaptionData
+import Network.AWS.MediaLive.Types.RtmpOutputCertificateMode
+import Network.AWS.MediaLive.Types.Scte20Convert608To708
+import Network.AWS.MediaLive.Types.Scte35AposNoRegionalBlackoutBehavior
+import Network.AWS.MediaLive.Types.Scte35AposWebDeliveryAllowedBehavior
+import Network.AWS.MediaLive.Types.Scte35SpliceInsertNoRegionalBlackoutBehavior
+import Network.AWS.MediaLive.Types.Scte35SpliceInsertWebDeliveryAllowedBehavior
+import Network.AWS.MediaLive.Types.SmoothGroupAudioOnlyTimecodeControl
+import Network.AWS.MediaLive.Types.SmoothGroupCertificateMode
+import Network.AWS.MediaLive.Types.SmoothGroupEventIdMode
+import Network.AWS.MediaLive.Types.SmoothGroupEventStopBehavior
+import Network.AWS.MediaLive.Types.SmoothGroupSegmentationMode
+import Network.AWS.MediaLive.Types.SmoothGroupSparseTrackType
+import Network.AWS.MediaLive.Types.SmoothGroupStreamManifestBehavior
+import Network.AWS.MediaLive.Types.SmoothGroupTimestampOffsetMode
+import Network.AWS.MediaLive.Types.TimecodeConfigSource
+import Network.AWS.MediaLive.Types.TtmlDestinationStyleControl
+import Network.AWS.MediaLive.Types.UdpTimedMetadataId3Frame
+import Network.AWS.MediaLive.Types.VideoDescriptionRespondToAfd
+import Network.AWS.MediaLive.Types.VideoDescriptionScalingBehavior
+import Network.AWS.MediaLive.Types.VideoSelectorColorSpace
+import Network.AWS.MediaLive.Types.VideoSelectorColorSpaceUsage
+import Network.AWS.MediaLive.Types.AacSettings
+import Network.AWS.MediaLive.Types.Ac3Settings
+import Network.AWS.MediaLive.Types.ArchiveContainerSettings
+import Network.AWS.MediaLive.Types.ArchiveGroupSettings
+import Network.AWS.MediaLive.Types.ArchiveOutputSettings
+import Network.AWS.MediaLive.Types.AribDestinationSettings
+import Network.AWS.MediaLive.Types.AribSourceSettings
+import Network.AWS.MediaLive.Types.AudioChannelMapping
+import Network.AWS.MediaLive.Types.AudioCodecSettings
+import Network.AWS.MediaLive.Types.AudioDescription
+import Network.AWS.MediaLive.Types.AudioLanguageSelection
+import Network.AWS.MediaLive.Types.AudioNormalizationSettings
+import Network.AWS.MediaLive.Types.AudioOnlyHlsSettings
+import Network.AWS.MediaLive.Types.AudioPidSelection
+import Network.AWS.MediaLive.Types.AudioSelector
+import Network.AWS.MediaLive.Types.AudioSelectorSettings
+import Network.AWS.MediaLive.Types.AvailBlanking
+import Network.AWS.MediaLive.Types.AvailConfiguration
+import Network.AWS.MediaLive.Types.AvailSettings
+import Network.AWS.MediaLive.Types.BlackoutSlate
+import Network.AWS.MediaLive.Types.BurnInDestinationSettings
+import Network.AWS.MediaLive.Types.CaptionDescription
+import Network.AWS.MediaLive.Types.CaptionDestinationSettings
+import Network.AWS.MediaLive.Types.CaptionLanguageMapping
+import Network.AWS.MediaLive.Types.CaptionSelector
+import Network.AWS.MediaLive.Types.CaptionSelectorSettings
+import Network.AWS.MediaLive.Types.Channel
+import Network.AWS.MediaLive.Types.ChannelEgressEndpoint
+import Network.AWS.MediaLive.Types.ChannelSummary
+import Network.AWS.MediaLive.Types.DvbNitSettings
+import Network.AWS.MediaLive.Types.DvbSdtSettings
+import Network.AWS.MediaLive.Types.DvbSubDestinationSettings
+import Network.AWS.MediaLive.Types.DvbSubSourceSettings
+import Network.AWS.MediaLive.Types.DvbTdtSettings
+import Network.AWS.MediaLive.Types.Eac3Settings
+import Network.AWS.MediaLive.Types.EmbeddedDestinationSettings
+import Network.AWS.MediaLive.Types.EmbeddedPlusScte20DestinationSettings
+import Network.AWS.MediaLive.Types.EmbeddedSourceSettings
+import Network.AWS.MediaLive.Types.EncoderSettings
+import Network.AWS.MediaLive.Types.FecOutputSettings
+import Network.AWS.MediaLive.Types.GlobalConfiguration
+import Network.AWS.MediaLive.Types.H264Settings
+import Network.AWS.MediaLive.Types.HlsAkamaiSettings
+import Network.AWS.MediaLive.Types.HlsBasicPutSettings
+import Network.AWS.MediaLive.Types.HlsCdnSettings
+import Network.AWS.MediaLive.Types.HlsGroupSettings
+import Network.AWS.MediaLive.Types.HlsInputSettings
+import Network.AWS.MediaLive.Types.HlsMediaStoreSettings
+import Network.AWS.MediaLive.Types.HlsOutputSettings
+import Network.AWS.MediaLive.Types.HlsSettings
+import Network.AWS.MediaLive.Types.HlsWebdavSettings
+import Network.AWS.MediaLive.Types.Input
+import Network.AWS.MediaLive.Types.InputAttachment
+import Network.AWS.MediaLive.Types.InputChannelLevel
+import Network.AWS.MediaLive.Types.InputDestination
+import Network.AWS.MediaLive.Types.InputDestinationRequest
+import Network.AWS.MediaLive.Types.InputLocation
+import Network.AWS.MediaLive.Types.InputLossBehavior
+import Network.AWS.MediaLive.Types.InputSecurityGroup
+import Network.AWS.MediaLive.Types.InputSettings
+import Network.AWS.MediaLive.Types.InputSource
+import Network.AWS.MediaLive.Types.InputSourceRequest
+import Network.AWS.MediaLive.Types.InputSpecification
+import Network.AWS.MediaLive.Types.InputWhitelistRule
+import Network.AWS.MediaLive.Types.InputWhitelistRuleCidr
+import Network.AWS.MediaLive.Types.KeyProviderSettings
+import Network.AWS.MediaLive.Types.M2tsSettings
+import Network.AWS.MediaLive.Types.M3u8Settings
+import Network.AWS.MediaLive.Types.Mp2Settings
+import Network.AWS.MediaLive.Types.MsSmoothGroupSettings
+import Network.AWS.MediaLive.Types.MsSmoothOutputSettings
+import Network.AWS.MediaLive.Types.NetworkInputSettings
+import Network.AWS.MediaLive.Types.Output
+import Network.AWS.MediaLive.Types.OutputDestination
+import Network.AWS.MediaLive.Types.OutputDestinationSettings
+import Network.AWS.MediaLive.Types.OutputGroup
+import Network.AWS.MediaLive.Types.OutputGroupSettings
+import Network.AWS.MediaLive.Types.OutputLocationRef
+import Network.AWS.MediaLive.Types.OutputSettings
+import Network.AWS.MediaLive.Types.PassThroughSettings
+import Network.AWS.MediaLive.Types.RemixSettings
+import Network.AWS.MediaLive.Types.RtmpCaptionInfoDestinationSettings
+import Network.AWS.MediaLive.Types.RtmpGroupSettings
+import Network.AWS.MediaLive.Types.RtmpOutputSettings
+import Network.AWS.MediaLive.Types.Scte20PlusEmbeddedDestinationSettings
+import Network.AWS.MediaLive.Types.Scte20SourceSettings
+import Network.AWS.MediaLive.Types.Scte27DestinationSettings
+import Network.AWS.MediaLive.Types.Scte27SourceSettings
+import Network.AWS.MediaLive.Types.Scte35SpliceInsert
+import Network.AWS.MediaLive.Types.Scte35TimeSignalApos
+import Network.AWS.MediaLive.Types.SmpteTtDestinationSettings
+import Network.AWS.MediaLive.Types.StandardHlsSettings
+import Network.AWS.MediaLive.Types.StaticKeySettings
+import Network.AWS.MediaLive.Types.TeletextDestinationSettings
+import Network.AWS.MediaLive.Types.TeletextSourceSettings
+import Network.AWS.MediaLive.Types.TimecodeConfig
+import Network.AWS.MediaLive.Types.TtmlDestinationSettings
+import Network.AWS.MediaLive.Types.UdpContainerSettings
+import Network.AWS.MediaLive.Types.UdpGroupSettings
+import Network.AWS.MediaLive.Types.UdpOutputSettings
+import Network.AWS.MediaLive.Types.VideoCodecSettings
+import Network.AWS.MediaLive.Types.VideoDescription
+import Network.AWS.MediaLive.Types.VideoSelector
+import Network.AWS.MediaLive.Types.VideoSelectorPid
+import Network.AWS.MediaLive.Types.VideoSelectorProgramId
+import Network.AWS.MediaLive.Types.VideoSelectorSettings
+import Network.AWS.MediaLive.Types.WebvttDestinationSettings
 
 -- | API version @2017-10-14@ of the Amazon Elemental MediaLive SDK configuration.
 mediaLive :: Service
-mediaLive =
-  Service
-    { _svcAbbrev = "MediaLive"
-    , _svcSigner = v4
-    , _svcPrefix = "medialive"
-    , _svcVersion = "2017-10-14"
-    , _svcEndpoint = defaultEndpoint mediaLive
-    , _svcTimeout = Just 70
-    , _svcCheck = statusSuccess
-    , _svcError = parseJSONError "MediaLive"
-    , _svcRetry = retry
-    }
-  where
-    retry =
-      Exponential
-        { _retryBase = 5.0e-2
-        , _retryGrowth = 2
-        , _retryAttempts = 5
-        , _retryCheck = check
-        }
-    check e
-      | has (hasCode "ThrottledException" . hasStatus 400) e =
-        Just "throttled_exception"
-      | has (hasStatus 429) e = Just "too_many_requests"
-      | has (hasCode "ThrottlingException" . hasStatus 400) e =
-        Just "throttling_exception"
-      | has (hasCode "Throttling" . hasStatus 400) e = Just "throttling"
-      | has (hasStatus 504) e = Just "gateway_timeout"
-      | has (hasCode "RequestThrottledException" . hasStatus 400) e =
-        Just "request_throttled_exception"
-      | has (hasStatus 502) e = Just "bad_gateway"
-      | has (hasStatus 503) e = Just "service_unavailable"
-      | has (hasStatus 500) e = Just "general_server_error"
-      | has (hasStatus 509) e = Just "limit_exceeded"
-      | otherwise = Nothing
-
+mediaLive
+  = Service{_svcAbbrev = "MediaLive", _svcSigner = v4,
+            _svcPrefix = "medialive", _svcVersion = "2017-10-14",
+            _svcEndpoint = defaultEndpoint mediaLive,
+            _svcTimeout = Just 70, _svcCheck = statusSuccess,
+            _svcError = parseJSONError "MediaLive",
+            _svcRetry = retry}
+  where retry
+          = Exponential{_retryBase = 5.0e-2, _retryGrowth = 2,
+                        _retryAttempts = 5, _retryCheck = check}
+        check e
+          | has (hasCode "ThrottledException" . hasStatus 400)
+              e
+            = Just "throttled_exception"
+          | has (hasStatus 429) e = Just "too_many_requests"
+          | has (hasCode "ThrottlingException" . hasStatus 400)
+              e
+            = Just "throttling_exception"
+          | has (hasCode "Throttling" . hasStatus 400) e =
+            Just "throttling"
+          | has (hasStatus 504) e = Just "gateway_timeout"
+          | has
+              (hasCode "RequestThrottledException" . hasStatus 400)
+              e
+            = Just "request_throttled_exception"
+          | has (hasStatus 502) e = Just "bad_gateway"
+          | has (hasStatus 503) e = Just "service_unavailable"
+          | has (hasStatus 500) e = Just "general_server_error"
+          | has (hasStatus 509) e = Just "limit_exceeded"
+          | otherwise = Nothing
 
 -- | Placeholder documentation for GatewayTimeoutException
 _GatewayTimeoutException :: AsError a => Getting (First ServiceError) a ServiceError
-_GatewayTimeoutException =
-  _MatchServiceError mediaLive "GatewayTimeoutException" . hasStatus 504
-
+_GatewayTimeoutException
+  = _MatchServiceError mediaLive
+      "GatewayTimeoutException"
+      . hasStatus 504
 
 -- | Placeholder documentation for UnprocessableEntityException
 _UnprocessableEntityException :: AsError a => Getting (First ServiceError) a ServiceError
-_UnprocessableEntityException =
-  _MatchServiceError mediaLive "UnprocessableEntityException" . hasStatus 422
-
+_UnprocessableEntityException
+  = _MatchServiceError mediaLive
+      "UnprocessableEntityException"
+      . hasStatus 422
 
 -- | Placeholder documentation for ConflictException
 _ConflictException :: AsError a => Getting (First ServiceError) a ServiceError
-_ConflictException =
-  _MatchServiceError mediaLive "ConflictException" . hasStatus 409
-
+_ConflictException
+  = _MatchServiceError mediaLive "ConflictException" .
+      hasStatus 409
 
 -- | Placeholder documentation for ForbiddenException
 _ForbiddenException :: AsError a => Getting (First ServiceError) a ServiceError
-_ForbiddenException =
-  _MatchServiceError mediaLive "ForbiddenException" . hasStatus 403
-
+_ForbiddenException
+  = _MatchServiceError mediaLive "ForbiddenException" .
+      hasStatus 403
 
 -- | Placeholder documentation for NotFoundException
 _NotFoundException :: AsError a => Getting (First ServiceError) a ServiceError
-_NotFoundException =
-  _MatchServiceError mediaLive "NotFoundException" . hasStatus 404
-
+_NotFoundException
+  = _MatchServiceError mediaLive "NotFoundException" .
+      hasStatus 404
 
 -- | Placeholder documentation for TooManyRequestsException
 _TooManyRequestsException :: AsError a => Getting (First ServiceError) a ServiceError
-_TooManyRequestsException =
-  _MatchServiceError mediaLive "TooManyRequestsException" . hasStatus 429
-
+_TooManyRequestsException
+  = _MatchServiceError mediaLive
+      "TooManyRequestsException"
+      . hasStatus 429
 
 -- | Placeholder documentation for InternalServerErrorException
 _InternalServerErrorException :: AsError a => Getting (First ServiceError) a ServiceError
-_InternalServerErrorException =
-  _MatchServiceError mediaLive "InternalServerErrorException" . hasStatus 500
-
+_InternalServerErrorException
+  = _MatchServiceError mediaLive
+      "InternalServerErrorException"
+      . hasStatus 500
 
 -- | Placeholder documentation for BadGatewayException
 _BadGatewayException :: AsError a => Getting (First ServiceError) a ServiceError
-_BadGatewayException =
-  _MatchServiceError mediaLive "BadGatewayException" . hasStatus 502
-
+_BadGatewayException
+  = _MatchServiceError mediaLive "BadGatewayException"
+      . hasStatus 502
 
 -- | Placeholder documentation for BadRequestException
 _BadRequestException :: AsError a => Getting (First ServiceError) a ServiceError
-_BadRequestException =
-  _MatchServiceError mediaLive "BadRequestException" . hasStatus 400
-
+_BadRequestException
+  = _MatchServiceError mediaLive "BadRequestException"
+      . hasStatus 400

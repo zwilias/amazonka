@@ -39,20 +39,16 @@ module Network.AWS.Glue.GetDatabase
     ) where
 
 import Network.AWS.Glue.Types
-import Network.AWS.Glue.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 
 -- | /See:/ 'getDatabase' smart constructor.
-data GetDatabase =
-  GetDatabase'
-    { _gddCatalogId :: !(Maybe Text)
-    , _gddName      :: !Text
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data GetDatabase = GetDatabase'{_gddCatalogId ::
+                                !(Maybe Text),
+                                _gddName :: !Text}
+                     deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'GetDatabase' with the minimum fields required to make a request.
 --
@@ -64,8 +60,9 @@ data GetDatabase =
 getDatabase
     :: Text -- ^ 'gddName'
     -> GetDatabase
-getDatabase pName_ = GetDatabase' {_gddCatalogId = Nothing, _gddName = pName_}
-
+getDatabase pName_
+  = GetDatabase'{_gddCatalogId = Nothing,
+                 _gddName = pName_}
 
 -- | The ID of the Data Catalog in which the database resides. If none is supplied, the AWS account ID is used by default.
 gddCatalogId :: Lens' GetDatabase (Maybe Text)
@@ -111,13 +108,10 @@ instance ToQuery GetDatabase where
         toQuery = const mempty
 
 -- | /See:/ 'getDatabaseResponse' smart constructor.
-data GetDatabaseResponse =
-  GetDatabaseResponse'
-    { _gdrsDatabase       :: !(Maybe Database)
-    , _gdrsResponseStatus :: !Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data GetDatabaseResponse = GetDatabaseResponse'{_gdrsDatabase
+                                                :: !(Maybe Database),
+                                                _gdrsResponseStatus :: !Int}
+                             deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'GetDatabaseResponse' with the minimum fields required to make a request.
 --
@@ -129,10 +123,9 @@ data GetDatabaseResponse =
 getDatabaseResponse
     :: Int -- ^ 'gdrsResponseStatus'
     -> GetDatabaseResponse
-getDatabaseResponse pResponseStatus_ =
-  GetDatabaseResponse'
-    {_gdrsDatabase = Nothing, _gdrsResponseStatus = pResponseStatus_}
-
+getDatabaseResponse pResponseStatus_
+  = GetDatabaseResponse'{_gdrsDatabase = Nothing,
+                         _gdrsResponseStatus = pResponseStatus_}
 
 -- | The definition of the specified database in the catalog.
 gdrsDatabase :: Lens' GetDatabaseResponse (Maybe Database)

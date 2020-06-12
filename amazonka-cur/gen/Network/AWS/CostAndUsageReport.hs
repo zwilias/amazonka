@@ -50,13 +50,13 @@ module Network.AWS.CostAndUsageReport
     -- * Operations
     -- $operations
 
-    -- ** PutReportDefinition
+    -- ** PutReportDefinition 
     , module Network.AWS.CostAndUsageReport.PutReportDefinition
 
-    -- ** DeleteReportDefinition
+    -- ** DeleteReportDefinition 
     , module Network.AWS.CostAndUsageReport.DeleteReportDefinition
 
-    -- ** ModifyReportDefinition
+    -- ** ModifyReportDefinition 
     , module Network.AWS.CostAndUsageReport.ModifyReportDefinition
 
     -- ** DescribeReportDefinitions (Paginated)

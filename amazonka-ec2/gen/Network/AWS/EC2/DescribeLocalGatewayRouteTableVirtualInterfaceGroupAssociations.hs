@@ -45,7 +45,6 @@ module Network.AWS.EC2.DescribeLocalGatewayRouteTableVirtualInterfaceGroupAssoci
     ) where
 
 import Network.AWS.EC2.Types
-import Network.AWS.EC2.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Pager
 import Network.AWS.Prelude
@@ -53,16 +52,32 @@ import Network.AWS.Request
 import Network.AWS.Response
 
 -- | /See:/ 'describeLocalGatewayRouteTableVirtualInterfaceGroupAssociations' smart constructor.
-data DescribeLocalGatewayRouteTableVirtualInterfaceGroupAssociations =
-  DescribeLocalGatewayRouteTableVirtualInterfaceGroupAssociations'
-    { _dlgrtvigaFilters :: !(Maybe [Filter])
-    , _dlgrtvigaLocalGatewayRouteTableVirtualInterfaceGroupAssociationIds :: !(Maybe [Text])
-    , _dlgrtvigaNextToken :: !(Maybe Text)
-    , _dlgrtvigaDryRun :: !(Maybe Bool)
-    , _dlgrtvigaMaxResults :: !(Maybe Nat)
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data DescribeLocalGatewayRouteTableVirtualInterfaceGroupAssociations = DescribeLocalGatewayRouteTableVirtualInterfaceGroupAssociations'{_dlgrtvigaFilters
+                                                                                                                                        ::
+                                                                                                                                        !(Maybe
+                                                                                                                                            [Filter]),
+                                                                                                                                        _dlgrtvigaLocalGatewayRouteTableVirtualInterfaceGroupAssociationIds
+                                                                                                                                        ::
+                                                                                                                                        !(Maybe
+                                                                                                                                            [Text]),
+                                                                                                                                        _dlgrtvigaNextToken
+                                                                                                                                        ::
+                                                                                                                                        !(Maybe
+                                                                                                                                            Text),
+                                                                                                                                        _dlgrtvigaDryRun
+                                                                                                                                        ::
+                                                                                                                                        !(Maybe
+                                                                                                                                            Bool),
+                                                                                                                                        _dlgrtvigaMaxResults
+                                                                                                                                        ::
+                                                                                                                                        !(Maybe
+                                                                                                                                            Nat)}
+                                                                         deriving (Eq,
+                                                                                   Read,
+                                                                                   Show,
+                                                                                   Data,
+                                                                                   Typeable,
+                                                                                   Generic)
 
 -- | Creates a value of 'DescribeLocalGatewayRouteTableVirtualInterfaceGroupAssociations' with the minimum fields required to make a request.
 --
@@ -79,16 +94,22 @@ data DescribeLocalGatewayRouteTableVirtualInterfaceGroupAssociations =
 -- * 'dlgrtvigaMaxResults' - The maximum number of results to return with a single call. To retrieve the remaining results, make another call with the returned @nextToken@ value.
 describeLocalGatewayRouteTableVirtualInterfaceGroupAssociations
     :: DescribeLocalGatewayRouteTableVirtualInterfaceGroupAssociations
-describeLocalGatewayRouteTableVirtualInterfaceGroupAssociations =
-  DescribeLocalGatewayRouteTableVirtualInterfaceGroupAssociations'
-    { _dlgrtvigaFilters = Nothing
-    , _dlgrtvigaLocalGatewayRouteTableVirtualInterfaceGroupAssociationIds =
-        Nothing
-    , _dlgrtvigaNextToken = Nothing
-    , _dlgrtvigaDryRun = Nothing
-    , _dlgrtvigaMaxResults = Nothing
-    }
-
+describeLocalGatewayRouteTableVirtualInterfaceGroupAssociations
+  = DescribeLocalGatewayRouteTableVirtualInterfaceGroupAssociations'{_dlgrtvigaFilters
+                                                                       =
+                                                                       Nothing,
+                                                                     _dlgrtvigaLocalGatewayRouteTableVirtualInterfaceGroupAssociationIds
+                                                                       =
+                                                                       Nothing,
+                                                                     _dlgrtvigaNextToken
+                                                                       =
+                                                                       Nothing,
+                                                                     _dlgrtvigaDryRun
+                                                                       =
+                                                                       Nothing,
+                                                                     _dlgrtvigaMaxResults
+                                                                       =
+                                                                       Nothing}
 
 -- | One or more filters.
 dlgrtvigaFilters :: Lens' DescribeLocalGatewayRouteTableVirtualInterfaceGroupAssociations [Filter]
@@ -182,14 +203,23 @@ instance ToQuery
                "MaxResults" =: _dlgrtvigaMaxResults]
 
 -- | /See:/ 'describeLocalGatewayRouteTableVirtualInterfaceGroupAssociationsResponse' smart constructor.
-data DescribeLocalGatewayRouteTableVirtualInterfaceGroupAssociationsResponse =
-  DescribeLocalGatewayRouteTableVirtualInterfaceGroupAssociationsResponse'
-    { _dlgrtvigarsNextToken :: !(Maybe Text)
-    , _dlgrtvigarsLocalGatewayRouteTableVirtualInterfaceGroupAssociations :: !(Maybe [LocalGatewayRouteTableVirtualInterfaceGroupAssociation])
-    , _dlgrtvigarsResponseStatus :: !Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data DescribeLocalGatewayRouteTableVirtualInterfaceGroupAssociationsResponse = DescribeLocalGatewayRouteTableVirtualInterfaceGroupAssociationsResponse'{_dlgrtvigarsNextToken
+                                                                                                                                                        ::
+                                                                                                                                                        !(Maybe
+                                                                                                                                                            Text),
+                                                                                                                                                        _dlgrtvigarsLocalGatewayRouteTableVirtualInterfaceGroupAssociations
+                                                                                                                                                        ::
+                                                                                                                                                        !(Maybe
+                                                                                                                                                            [LocalGatewayRouteTableVirtualInterfaceGroupAssociation]),
+                                                                                                                                                        _dlgrtvigarsResponseStatus
+                                                                                                                                                        ::
+                                                                                                                                                        !Int}
+                                                                                 deriving (Eq,
+                                                                                           Read,
+                                                                                           Show,
+                                                                                           Data,
+                                                                                           Typeable,
+                                                                                           Generic)
 
 -- | Creates a value of 'DescribeLocalGatewayRouteTableVirtualInterfaceGroupAssociationsResponse' with the minimum fields required to make a request.
 --
@@ -203,14 +233,17 @@ data DescribeLocalGatewayRouteTableVirtualInterfaceGroupAssociationsResponse =
 describeLocalGatewayRouteTableVirtualInterfaceGroupAssociationsResponse
     :: Int -- ^ 'dlgrtvigarsResponseStatus'
     -> DescribeLocalGatewayRouteTableVirtualInterfaceGroupAssociationsResponse
-describeLocalGatewayRouteTableVirtualInterfaceGroupAssociationsResponse pResponseStatus_ =
-  DescribeLocalGatewayRouteTableVirtualInterfaceGroupAssociationsResponse'
-    { _dlgrtvigarsNextToken = Nothing
-    , _dlgrtvigarsLocalGatewayRouteTableVirtualInterfaceGroupAssociations =
-        Nothing
-    , _dlgrtvigarsResponseStatus = pResponseStatus_
-    }
-
+describeLocalGatewayRouteTableVirtualInterfaceGroupAssociationsResponse
+  pResponseStatus_
+  = DescribeLocalGatewayRouteTableVirtualInterfaceGroupAssociationsResponse'{_dlgrtvigarsNextToken
+                                                                               =
+                                                                               Nothing,
+                                                                             _dlgrtvigarsLocalGatewayRouteTableVirtualInterfaceGroupAssociations
+                                                                               =
+                                                                               Nothing,
+                                                                             _dlgrtvigarsResponseStatus
+                                                                               =
+                                                                               pResponseStatus_}
 
 -- | The token to use to retrieve the next page of results. This value is @null@ when there are no more results to return.
 dlgrtvigarsNextToken :: Lens' DescribeLocalGatewayRouteTableVirtualInterfaceGroupAssociationsResponse (Maybe Text)

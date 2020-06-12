@@ -53,31 +53,32 @@ module Network.AWS.AutoScaling.PutScalingPolicy
     ) where
 
 import Network.AWS.AutoScaling.Types
-import Network.AWS.AutoScaling.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 
 -- | /See:/ 'putScalingPolicy' smart constructor.
-data PutScalingPolicy =
-  PutScalingPolicy'
-    { _pspMinAdjustmentStep           :: !(Maybe Int)
-    , _pspEstimatedInstanceWarmup     :: !(Maybe Int)
-    , _pspEnabled                     :: !(Maybe Bool)
-    , _pspPolicyType                  :: !(Maybe Text)
-    , _pspStepAdjustments             :: !(Maybe [StepAdjustment])
-    , _pspTargetTrackingConfiguration :: !(Maybe TargetTrackingConfiguration)
-    , _pspAdjustmentType              :: !(Maybe Text)
-    , _pspScalingAdjustment           :: !(Maybe Int)
-    , _pspCooldown                    :: !(Maybe Int)
-    , _pspMetricAggregationType       :: !(Maybe Text)
-    , _pspMinAdjustmentMagnitude      :: !(Maybe Int)
-    , _pspAutoScalingGroupName        :: !Text
-    , _pspPolicyName                  :: !Text
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data PutScalingPolicy = PutScalingPolicy'{_pspMinAdjustmentStep
+                                          :: !(Maybe Int),
+                                          _pspEstimatedInstanceWarmup ::
+                                          !(Maybe Int),
+                                          _pspEnabled :: !(Maybe Bool),
+                                          _pspPolicyType :: !(Maybe Text),
+                                          _pspStepAdjustments ::
+                                          !(Maybe [StepAdjustment]),
+                                          _pspTargetTrackingConfiguration ::
+                                          !(Maybe TargetTrackingConfiguration),
+                                          _pspAdjustmentType :: !(Maybe Text),
+                                          _pspScalingAdjustment :: !(Maybe Int),
+                                          _pspCooldown :: !(Maybe Int),
+                                          _pspMetricAggregationType ::
+                                          !(Maybe Text),
+                                          _pspMinAdjustmentMagnitude ::
+                                          !(Maybe Int),
+                                          _pspAutoScalingGroupName :: !Text,
+                                          _pspPolicyName :: !Text}
+                          deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'PutScalingPolicy' with the minimum fields required to make a request.
 --
@@ -91,13 +92,13 @@ data PutScalingPolicy =
 --
 -- * 'pspPolicyType' - The policy type. The valid values are @SimpleScaling@ , @StepScaling@ , and @TargetTrackingScaling@ . If the policy type is null, the value is treated as @SimpleScaling@ .
 --
--- * 'pspStepAdjustments' - A set of adjustments that enable you to scale based on the size of the alarm breach. Conditional: If you specify @StepScaling@ for the policy type, you must specify this parameter. (Not used with any other policy type.)
+-- * 'pspStepAdjustments' - A set of adjustments that enable you to scale based on the size of the alarm breach. Conditional: If you specify @StepScaling@ for the policy type, you must specify this parameter. (Not used with any other policy type.) 
 --
--- * 'pspTargetTrackingConfiguration' - A target tracking scaling policy. Includes support for predefined or customized metrics. For more information, see <https://docs.aws.amazon.com/autoscaling/ec2/APIReference/API_TargetTrackingConfiguration.html TargetTrackingConfiguration> in the /Amazon EC2 Auto Scaling API Reference/ . Conditional: If you specify @TargetTrackingScaling@ for the policy type, you must specify this parameter. (Not used with any other policy type.)
+-- * 'pspTargetTrackingConfiguration' - A target tracking scaling policy. Includes support for predefined or customized metrics. For more information, see <https://docs.aws.amazon.com/autoscaling/ec2/APIReference/API_TargetTrackingConfiguration.html TargetTrackingConfiguration> in the /Amazon EC2 Auto Scaling API Reference/ . Conditional: If you specify @TargetTrackingScaling@ for the policy type, you must specify this parameter. (Not used with any other policy type.) 
 --
 -- * 'pspAdjustmentType' - Specifies whether the @ScalingAdjustment@ parameter is an absolute number or a percentage of the current capacity. The valid values are @ChangeInCapacity@ , @ExactCapacity@ , and @PercentChangeInCapacity@ . Valid only if the policy type is @StepScaling@ or @SimpleScaling@ . For more information, see <https://docs.aws.amazon.com/autoscaling/ec2/userguide/as-scaling-simple-step.html#as-scaling-adjustment Scaling Adjustment Types> in the /Amazon EC2 Auto Scaling User Guide/ .
 --
--- * 'pspScalingAdjustment' - The amount by which a simple scaling policy scales the Auto Scaling group in response to an alarm breach. The adjustment is based on the value that you specified in the @AdjustmentType@ parameter (either an absolute number or a percentage). A positive value adds to the current capacity and a negative value subtracts from the current capacity. For exact capacity, you must specify a positive value. Conditional: If you specify @SimpleScaling@ for the policy type, you must specify this parameter. (Not used with any other policy type.)
+-- * 'pspScalingAdjustment' - The amount by which a simple scaling policy scales the Auto Scaling group in response to an alarm breach. The adjustment is based on the value that you specified in the @AdjustmentType@ parameter (either an absolute number or a percentage). A positive value adds to the current capacity and a negative value subtracts from the current capacity. For exact capacity, you must specify a positive value. Conditional: If you specify @SimpleScaling@ for the policy type, you must specify this parameter. (Not used with any other policy type.) 
 --
 -- * 'pspCooldown' - The amount of time, in seconds, after a scaling activity completes before any further dynamic scaling activities can start. If this parameter is not specified, the default cooldown period for the group applies. Valid only if the policy type is @SimpleScaling@ . For more information, see <https://docs.aws.amazon.com/autoscaling/ec2/userguide/Cooldown.html Scaling Cooldowns> in the /Amazon EC2 Auto Scaling User Guide/ .
 --
@@ -112,23 +113,19 @@ putScalingPolicy
     :: Text -- ^ 'pspAutoScalingGroupName'
     -> Text -- ^ 'pspPolicyName'
     -> PutScalingPolicy
-putScalingPolicy pAutoScalingGroupName_ pPolicyName_ =
-  PutScalingPolicy'
-    { _pspMinAdjustmentStep = Nothing
-    , _pspEstimatedInstanceWarmup = Nothing
-    , _pspEnabled = Nothing
-    , _pspPolicyType = Nothing
-    , _pspStepAdjustments = Nothing
-    , _pspTargetTrackingConfiguration = Nothing
-    , _pspAdjustmentType = Nothing
-    , _pspScalingAdjustment = Nothing
-    , _pspCooldown = Nothing
-    , _pspMetricAggregationType = Nothing
-    , _pspMinAdjustmentMagnitude = Nothing
-    , _pspAutoScalingGroupName = pAutoScalingGroupName_
-    , _pspPolicyName = pPolicyName_
-    }
-
+putScalingPolicy pAutoScalingGroupName_ pPolicyName_
+  = PutScalingPolicy'{_pspMinAdjustmentStep = Nothing,
+                      _pspEstimatedInstanceWarmup = Nothing,
+                      _pspEnabled = Nothing, _pspPolicyType = Nothing,
+                      _pspStepAdjustments = Nothing,
+                      _pspTargetTrackingConfiguration = Nothing,
+                      _pspAdjustmentType = Nothing,
+                      _pspScalingAdjustment = Nothing,
+                      _pspCooldown = Nothing,
+                      _pspMetricAggregationType = Nothing,
+                      _pspMinAdjustmentMagnitude = Nothing,
+                      _pspAutoScalingGroupName = pAutoScalingGroupName_,
+                      _pspPolicyName = pPolicyName_}
 
 -- | Available for backward compatibility. Use @MinAdjustmentMagnitude@ instead.
 pspMinAdjustmentStep :: Lens' PutScalingPolicy (Maybe Int)
@@ -146,11 +143,11 @@ pspEnabled = lens _pspEnabled (\ s a -> s{_pspEnabled = a})
 pspPolicyType :: Lens' PutScalingPolicy (Maybe Text)
 pspPolicyType = lens _pspPolicyType (\ s a -> s{_pspPolicyType = a})
 
--- | A set of adjustments that enable you to scale based on the size of the alarm breach. Conditional: If you specify @StepScaling@ for the policy type, you must specify this parameter. (Not used with any other policy type.)
+-- | A set of adjustments that enable you to scale based on the size of the alarm breach. Conditional: If you specify @StepScaling@ for the policy type, you must specify this parameter. (Not used with any other policy type.) 
 pspStepAdjustments :: Lens' PutScalingPolicy [StepAdjustment]
 pspStepAdjustments = lens _pspStepAdjustments (\ s a -> s{_pspStepAdjustments = a}) . _Default . _Coerce
 
--- | A target tracking scaling policy. Includes support for predefined or customized metrics. For more information, see <https://docs.aws.amazon.com/autoscaling/ec2/APIReference/API_TargetTrackingConfiguration.html TargetTrackingConfiguration> in the /Amazon EC2 Auto Scaling API Reference/ . Conditional: If you specify @TargetTrackingScaling@ for the policy type, you must specify this parameter. (Not used with any other policy type.)
+-- | A target tracking scaling policy. Includes support for predefined or customized metrics. For more information, see <https://docs.aws.amazon.com/autoscaling/ec2/APIReference/API_TargetTrackingConfiguration.html TargetTrackingConfiguration> in the /Amazon EC2 Auto Scaling API Reference/ . Conditional: If you specify @TargetTrackingScaling@ for the policy type, you must specify this parameter. (Not used with any other policy type.) 
 pspTargetTrackingConfiguration :: Lens' PutScalingPolicy (Maybe TargetTrackingConfiguration)
 pspTargetTrackingConfiguration = lens _pspTargetTrackingConfiguration (\ s a -> s{_pspTargetTrackingConfiguration = a})
 
@@ -158,7 +155,7 @@ pspTargetTrackingConfiguration = lens _pspTargetTrackingConfiguration (\ s a -> 
 pspAdjustmentType :: Lens' PutScalingPolicy (Maybe Text)
 pspAdjustmentType = lens _pspAdjustmentType (\ s a -> s{_pspAdjustmentType = a})
 
--- | The amount by which a simple scaling policy scales the Auto Scaling group in response to an alarm breach. The adjustment is based on the value that you specified in the @AdjustmentType@ parameter (either an absolute number or a percentage). A positive value adds to the current capacity and a negative value subtracts from the current capacity. For exact capacity, you must specify a positive value. Conditional: If you specify @SimpleScaling@ for the policy type, you must specify this parameter. (Not used with any other policy type.)
+-- | The amount by which a simple scaling policy scales the Auto Scaling group in response to an alarm breach. The adjustment is based on the value that you specified in the @AdjustmentType@ parameter (either an absolute number or a percentage). A positive value adds to the current capacity and a negative value subtracts from the current capacity. For exact capacity, you must specify a positive value. Conditional: If you specify @SimpleScaling@ for the policy type, you must specify this parameter. (Not used with any other policy type.) 
 pspScalingAdjustment :: Lens' PutScalingPolicy (Maybe Int)
 pspScalingAdjustment = lens _pspScalingAdjustment (\ s a -> s{_pspScalingAdjustment = a})
 
@@ -233,14 +230,14 @@ instance ToQuery PutScalingPolicy where
 --
 --
 -- /See:/ 'putScalingPolicyResponse' smart constructor.
-data PutScalingPolicyResponse =
-  PutScalingPolicyResponse'
-    { _psprsPolicyARN      :: !(Maybe Text)
-    , _psprsAlarms         :: !(Maybe [Alarm])
-    , _psprsResponseStatus :: !Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data PutScalingPolicyResponse = PutScalingPolicyResponse'{_psprsPolicyARN
+                                                          :: !(Maybe Text),
+                                                          _psprsAlarms ::
+                                                          !(Maybe [Alarm]),
+                                                          _psprsResponseStatus
+                                                          :: !Int}
+                                  deriving (Eq, Read, Show, Data, Typeable,
+                                            Generic)
 
 -- | Creates a value of 'PutScalingPolicyResponse' with the minimum fields required to make a request.
 --
@@ -254,13 +251,11 @@ data PutScalingPolicyResponse =
 putScalingPolicyResponse
     :: Int -- ^ 'psprsResponseStatus'
     -> PutScalingPolicyResponse
-putScalingPolicyResponse pResponseStatus_ =
-  PutScalingPolicyResponse'
-    { _psprsPolicyARN = Nothing
-    , _psprsAlarms = Nothing
-    , _psprsResponseStatus = pResponseStatus_
-    }
-
+putScalingPolicyResponse pResponseStatus_
+  = PutScalingPolicyResponse'{_psprsPolicyARN =
+                                Nothing,
+                              _psprsAlarms = Nothing,
+                              _psprsResponseStatus = pResponseStatus_}
 
 -- | The Amazon Resource Name (ARN) of the policy.
 psprsPolicyARN :: Lens' PutScalingPolicyResponse (Maybe Text)

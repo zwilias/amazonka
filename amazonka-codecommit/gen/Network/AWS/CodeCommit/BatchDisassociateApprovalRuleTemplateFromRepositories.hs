@@ -18,7 +18,7 @@
 -- Stability   : auto-generated
 -- Portability : non-portable (GHC extensions)
 --
--- Removes the association between an approval rule template and one or more specified repositories.
+-- Removes the association between an approval rule template and one or more specified repositories. 
 --
 --
 module Network.AWS.CodeCommit.BatchDisassociateApprovalRuleTemplateFromRepositories
@@ -40,20 +40,24 @@ module Network.AWS.CodeCommit.BatchDisassociateApprovalRuleTemplateFromRepositor
     ) where
 
 import Network.AWS.CodeCommit.Types
-import Network.AWS.CodeCommit.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 
 -- | /See:/ 'batchDisassociateApprovalRuleTemplateFromRepositories' smart constructor.
-data BatchDisassociateApprovalRuleTemplateFromRepositories =
-  BatchDisassociateApprovalRuleTemplateFromRepositories'
-    { _bdartfrApprovalRuleTemplateName :: !Text
-    , _bdartfrRepositoryNames          :: ![Text]
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data BatchDisassociateApprovalRuleTemplateFromRepositories = BatchDisassociateApprovalRuleTemplateFromRepositories'{_bdartfrApprovalRuleTemplateName
+                                                                                                                    ::
+                                                                                                                    !Text,
+                                                                                                                    _bdartfrRepositoryNames
+                                                                                                                    ::
+                                                                                                                    ![Text]}
+                                                               deriving (Eq,
+                                                                         Read,
+                                                                         Show,
+                                                                         Data,
+                                                                         Typeable,
+                                                                         Generic)
 
 -- | Creates a value of 'BatchDisassociateApprovalRuleTemplateFromRepositories' with the minimum fields required to make a request.
 --
@@ -65,12 +69,13 @@ data BatchDisassociateApprovalRuleTemplateFromRepositories =
 batchDisassociateApprovalRuleTemplateFromRepositories
     :: Text -- ^ 'bdartfrApprovalRuleTemplateName'
     -> BatchDisassociateApprovalRuleTemplateFromRepositories
-batchDisassociateApprovalRuleTemplateFromRepositories pApprovalRuleTemplateName_ =
-  BatchDisassociateApprovalRuleTemplateFromRepositories'
-    { _bdartfrApprovalRuleTemplateName = pApprovalRuleTemplateName_
-    , _bdartfrRepositoryNames = mempty
-    }
-
+batchDisassociateApprovalRuleTemplateFromRepositories
+  pApprovalRuleTemplateName_
+  = BatchDisassociateApprovalRuleTemplateFromRepositories'{_bdartfrApprovalRuleTemplateName
+                                                             =
+                                                             pApprovalRuleTemplateName_,
+                                                           _bdartfrRepositoryNames
+                                                             = mempty}
 
 -- | The name of the template that you want to disassociate from one or more repositories.
 bdartfrApprovalRuleTemplateName :: Lens' BatchDisassociateApprovalRuleTemplateFromRepositories Text
@@ -140,14 +145,21 @@ instance ToQuery
         toQuery = const mempty
 
 -- | /See:/ 'batchDisassociateApprovalRuleTemplateFromRepositoriesResponse' smart constructor.
-data BatchDisassociateApprovalRuleTemplateFromRepositoriesResponse =
-  BatchDisassociateApprovalRuleTemplateFromRepositoriesResponse'
-    { _bdartfrrsResponseStatus :: !Int
-    , _bdartfrrsDisassociatedRepositoryNames :: ![Text]
-    , _bdartfrrsErrors :: ![BatchDisassociateApprovalRuleTemplateFromRepositoriesError]
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data BatchDisassociateApprovalRuleTemplateFromRepositoriesResponse = BatchDisassociateApprovalRuleTemplateFromRepositoriesResponse'{_bdartfrrsResponseStatus
+                                                                                                                                    ::
+                                                                                                                                    !Int,
+                                                                                                                                    _bdartfrrsDisassociatedRepositoryNames
+                                                                                                                                    ::
+                                                                                                                                    ![Text],
+                                                                                                                                    _bdartfrrsErrors
+                                                                                                                                    ::
+                                                                                                                                    ![BatchDisassociateApprovalRuleTemplateFromRepositoriesError]}
+                                                                       deriving (Eq,
+                                                                                 Read,
+                                                                                 Show,
+                                                                                 Data,
+                                                                                 Typeable,
+                                                                                 Generic)
 
 -- | Creates a value of 'BatchDisassociateApprovalRuleTemplateFromRepositoriesResponse' with the minimum fields required to make a request.
 --
@@ -161,13 +173,15 @@ data BatchDisassociateApprovalRuleTemplateFromRepositoriesResponse =
 batchDisassociateApprovalRuleTemplateFromRepositoriesResponse
     :: Int -- ^ 'bdartfrrsResponseStatus'
     -> BatchDisassociateApprovalRuleTemplateFromRepositoriesResponse
-batchDisassociateApprovalRuleTemplateFromRepositoriesResponse pResponseStatus_ =
-  BatchDisassociateApprovalRuleTemplateFromRepositoriesResponse'
-    { _bdartfrrsResponseStatus = pResponseStatus_
-    , _bdartfrrsDisassociatedRepositoryNames = mempty
-    , _bdartfrrsErrors = mempty
-    }
-
+batchDisassociateApprovalRuleTemplateFromRepositoriesResponse
+  pResponseStatus_
+  = BatchDisassociateApprovalRuleTemplateFromRepositoriesResponse'{_bdartfrrsResponseStatus
+                                                                     =
+                                                                     pResponseStatus_,
+                                                                   _bdartfrrsDisassociatedRepositoryNames
+                                                                     = mempty,
+                                                                   _bdartfrrsErrors
+                                                                     = mempty}
 
 -- | -- | The response status code.
 bdartfrrsResponseStatus :: Lens' BatchDisassociateApprovalRuleTemplateFromRepositoriesResponse Int

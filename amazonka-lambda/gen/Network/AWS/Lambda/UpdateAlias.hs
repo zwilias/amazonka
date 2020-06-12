@@ -49,24 +49,19 @@ module Network.AWS.Lambda.UpdateAlias
     ) where
 
 import Network.AWS.Lambda.Types
-import Network.AWS.Lambda.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 
 -- | /See:/ 'updateAlias' smart constructor.
-data UpdateAlias =
-  UpdateAlias'
-    { _uaRoutingConfig   :: !(Maybe AliasRoutingConfiguration)
-    , _uaFunctionVersion :: !(Maybe Text)
-    , _uaDescription     :: !(Maybe Text)
-    , _uaRevisionId      :: !(Maybe Text)
-    , _uaFunctionName    :: !Text
-    , _uaName            :: !Text
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data UpdateAlias = UpdateAlias'{_uaRoutingConfig ::
+                                !(Maybe AliasRoutingConfiguration),
+                                _uaFunctionVersion :: !(Maybe Text),
+                                _uaDescription :: !(Maybe Text),
+                                _uaRevisionId :: !(Maybe Text),
+                                _uaFunctionName :: !Text, _uaName :: !Text}
+                     deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'UpdateAlias' with the minimum fields required to make a request.
 --
@@ -87,16 +82,11 @@ updateAlias
     :: Text -- ^ 'uaFunctionName'
     -> Text -- ^ 'uaName'
     -> UpdateAlias
-updateAlias pFunctionName_ pName_ =
-  UpdateAlias'
-    { _uaRoutingConfig = Nothing
-    , _uaFunctionVersion = Nothing
-    , _uaDescription = Nothing
-    , _uaRevisionId = Nothing
-    , _uaFunctionName = pFunctionName_
-    , _uaName = pName_
-    }
-
+updateAlias pFunctionName_ pName_
+  = UpdateAlias'{_uaRoutingConfig = Nothing,
+                 _uaFunctionVersion = Nothing,
+                 _uaDescription = Nothing, _uaRevisionId = Nothing,
+                 _uaFunctionName = pFunctionName_, _uaName = pName_}
 
 -- | Specifies an additional version your alias can point to, allowing you to dictate what percentage of traffic will invoke each version. For more information, see 'lambda-traffic-shifting-using-aliases' .
 uaRoutingConfig :: Lens' UpdateAlias (Maybe AliasRoutingConfiguration)

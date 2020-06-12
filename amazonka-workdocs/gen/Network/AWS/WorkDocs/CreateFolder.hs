@@ -44,17 +44,13 @@ import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 import Network.AWS.WorkDocs.Types
-import Network.AWS.WorkDocs.Types.Product
 
 -- | /See:/ 'createFolder' smart constructor.
-data CreateFolder =
-  CreateFolder'
-    { _cfAuthenticationToken :: !(Maybe (Sensitive Text))
-    , _cfName                :: !(Maybe Text)
-    , _cfParentFolderId      :: !Text
-    }
-  deriving (Eq, Show, Data, Typeable, Generic)
-
+data CreateFolder = CreateFolder'{_cfAuthenticationToken
+                                  :: !(Maybe (Sensitive Text)),
+                                  _cfName :: !(Maybe Text),
+                                  _cfParentFolderId :: !Text}
+                      deriving (Eq, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'CreateFolder' with the minimum fields required to make a request.
 --
@@ -68,13 +64,10 @@ data CreateFolder =
 createFolder
     :: Text -- ^ 'cfParentFolderId'
     -> CreateFolder
-createFolder pParentFolderId_ =
-  CreateFolder'
-    { _cfAuthenticationToken = Nothing
-    , _cfName = Nothing
-    , _cfParentFolderId = pParentFolderId_
-    }
-
+createFolder pParentFolderId_
+  = CreateFolder'{_cfAuthenticationToken = Nothing,
+                  _cfName = Nothing,
+                  _cfParentFolderId = pParentFolderId_}
 
 -- | Amazon WorkDocs authentication token. Do not set this field when using administrative API actions, as in accessing the API using AWS credentials.
 cfAuthenticationToken :: Lens' CreateFolder (Maybe Text)
@@ -122,13 +115,10 @@ instance ToQuery CreateFolder where
         toQuery = const mempty
 
 -- | /See:/ 'createFolderResponse' smart constructor.
-data CreateFolderResponse =
-  CreateFolderResponse'
-    { _cfrsMetadata       :: !(Maybe FolderMetadata)
-    , _cfrsResponseStatus :: !Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data CreateFolderResponse = CreateFolderResponse'{_cfrsMetadata
+                                                  :: !(Maybe FolderMetadata),
+                                                  _cfrsResponseStatus :: !Int}
+                              deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'CreateFolderResponse' with the minimum fields required to make a request.
 --
@@ -140,10 +130,9 @@ data CreateFolderResponse =
 createFolderResponse
     :: Int -- ^ 'cfrsResponseStatus'
     -> CreateFolderResponse
-createFolderResponse pResponseStatus_ =
-  CreateFolderResponse'
-    {_cfrsMetadata = Nothing, _cfrsResponseStatus = pResponseStatus_}
-
+createFolderResponse pResponseStatus_
+  = CreateFolderResponse'{_cfrsMetadata = Nothing,
+                          _cfrsResponseStatus = pResponseStatus_}
 
 -- | The metadata of the folder.
 cfrsMetadata :: Lens' CreateFolderResponse (Maybe FolderMetadata)

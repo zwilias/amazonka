@@ -43,19 +43,16 @@ module Network.AWS.CloudWatchEvents.DescribeEventSource
     ) where
 
 import Network.AWS.CloudWatchEvents.Types
-import Network.AWS.CloudWatchEvents.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 
 -- | /See:/ 'describeEventSource' smart constructor.
-newtype DescribeEventSource =
-  DescribeEventSource'
-    { _deseName :: Text
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+newtype DescribeEventSource = DescribeEventSource'{_deseName
+                                                   :: Text}
+                                deriving (Eq, Read, Show, Data, Typeable,
+                                          Generic)
 
 -- | Creates a value of 'DescribeEventSource' with the minimum fields required to make a request.
 --
@@ -65,8 +62,8 @@ newtype DescribeEventSource =
 describeEventSource
     :: Text -- ^ 'deseName'
     -> DescribeEventSource
-describeEventSource pName_ = DescribeEventSource' {_deseName = pName_}
-
+describeEventSource pName_
+  = DescribeEventSource'{_deseName = pName_}
 
 -- | The name of the partner event source to display the details of.
 deseName :: Lens' DescribeEventSource Text
@@ -111,18 +108,26 @@ instance ToQuery DescribeEventSource where
         toQuery = const mempty
 
 -- | /See:/ 'describeEventSourceResponse' smart constructor.
-data DescribeEventSourceResponse =
-  DescribeEventSourceResponse'
-    { _desrsCreationTime   :: !(Maybe POSIX)
-    , _desrsState          :: !(Maybe EventSourceState)
-    , _desrsARN            :: !(Maybe Text)
-    , _desrsCreatedBy      :: !(Maybe Text)
-    , _desrsName           :: !(Maybe Text)
-    , _desrsExpirationTime :: !(Maybe POSIX)
-    , _desrsResponseStatus :: !Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data DescribeEventSourceResponse = DescribeEventSourceResponse'{_desrsCreationTime
+                                                                ::
+                                                                !(Maybe POSIX),
+                                                                _desrsState ::
+                                                                !(Maybe
+                                                                    EventSourceState),
+                                                                _desrsARN ::
+                                                                !(Maybe Text),
+                                                                _desrsCreatedBy
+                                                                ::
+                                                                !(Maybe Text),
+                                                                _desrsName ::
+                                                                !(Maybe Text),
+                                                                _desrsExpirationTime
+                                                                ::
+                                                                !(Maybe POSIX),
+                                                                _desrsResponseStatus
+                                                                :: !Int}
+                                     deriving (Eq, Read, Show, Data, Typeable,
+                                               Generic)
 
 -- | Creates a value of 'DescribeEventSourceResponse' with the minimum fields required to make a request.
 --
@@ -144,17 +149,14 @@ data DescribeEventSourceResponse =
 describeEventSourceResponse
     :: Int -- ^ 'desrsResponseStatus'
     -> DescribeEventSourceResponse
-describeEventSourceResponse pResponseStatus_ =
-  DescribeEventSourceResponse'
-    { _desrsCreationTime = Nothing
-    , _desrsState = Nothing
-    , _desrsARN = Nothing
-    , _desrsCreatedBy = Nothing
-    , _desrsName = Nothing
-    , _desrsExpirationTime = Nothing
-    , _desrsResponseStatus = pResponseStatus_
-    }
-
+describeEventSourceResponse pResponseStatus_
+  = DescribeEventSourceResponse'{_desrsCreationTime =
+                                   Nothing,
+                                 _desrsState = Nothing, _desrsARN = Nothing,
+                                 _desrsCreatedBy = Nothing,
+                                 _desrsName = Nothing,
+                                 _desrsExpirationTime = Nothing,
+                                 _desrsResponseStatus = pResponseStatus_}
 
 -- | The date and time that the event source was created.
 desrsCreationTime :: Lens' DescribeEventSourceResponse (Maybe UTCTime)

@@ -62,23 +62,19 @@ import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 import Network.AWS.S3.Types
-import Network.AWS.S3.Types.Product
 
 -- | /See:/ 'listObjectsV2' smart constructor.
-data ListObjectsV2 =
-  ListObjectsV2'
-    { _lovStartAfter        :: !(Maybe Text)
-    , _lovContinuationToken :: !(Maybe Text)
-    , _lovFetchOwner        :: !(Maybe Bool)
-    , _lovPrefix            :: !(Maybe Text)
-    , _lovEncodingType      :: !(Maybe EncodingType)
-    , _lovRequestPayer      :: !(Maybe RequestPayer)
-    , _lovMaxKeys           :: !(Maybe Int)
-    , _lovDelimiter         :: !(Maybe Delimiter)
-    , _lovBucket            :: !BucketName
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data ListObjectsV2 = ListObjectsV2'{_lovStartAfter ::
+                                    !(Maybe Text),
+                                    _lovContinuationToken :: !(Maybe Text),
+                                    _lovFetchOwner :: !(Maybe Bool),
+                                    _lovPrefix :: !(Maybe Text),
+                                    _lovEncodingType :: !(Maybe EncodingType),
+                                    _lovRequestPayer :: !(Maybe RequestPayer),
+                                    _lovMaxKeys :: !(Maybe Int),
+                                    _lovDelimiter :: !(Maybe Delimiter),
+                                    _lovBucket :: !BucketName}
+                       deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'ListObjectsV2' with the minimum fields required to make a request.
 --
@@ -104,19 +100,13 @@ data ListObjectsV2 =
 listObjectsV2
     :: BucketName -- ^ 'lovBucket'
     -> ListObjectsV2
-listObjectsV2 pBucket_ =
-  ListObjectsV2'
-    { _lovStartAfter = Nothing
-    , _lovContinuationToken = Nothing
-    , _lovFetchOwner = Nothing
-    , _lovPrefix = Nothing
-    , _lovEncodingType = Nothing
-    , _lovRequestPayer = Nothing
-    , _lovMaxKeys = Nothing
-    , _lovDelimiter = Nothing
-    , _lovBucket = pBucket_
-    }
-
+listObjectsV2 pBucket_
+  = ListObjectsV2'{_lovStartAfter = Nothing,
+                   _lovContinuationToken = Nothing,
+                   _lovFetchOwner = Nothing, _lovPrefix = Nothing,
+                   _lovEncodingType = Nothing,
+                   _lovRequestPayer = Nothing, _lovMaxKeys = Nothing,
+                   _lovDelimiter = Nothing, _lovBucket = pBucket_}
 
 -- | StartAfter is where you want Amazon S3 to start listing from. Amazon S3 starts listing after this specified key. StartAfter can be any key in the bucket
 lovStartAfter :: Lens' ListObjectsV2 (Maybe Text)
@@ -208,24 +198,34 @@ instance ToQuery ListObjectsV2 where
                "delimiter" =: _lovDelimiter, "list-type=2"]
 
 -- | /See:/ 'listObjectsV2Response' smart constructor.
-data ListObjectsV2Response =
-  ListObjectsV2Response'
-    { _lovrsStartAfter            :: !(Maybe Text)
-    , _lovrsKeyCount              :: !(Maybe Int)
-    , _lovrsContents              :: !(Maybe [Object])
-    , _lovrsContinuationToken     :: !(Maybe Text)
-    , _lovrsPrefix                :: !(Maybe Text)
-    , _lovrsCommonPrefixes        :: !(Maybe [CommonPrefix])
-    , _lovrsEncodingType          :: !(Maybe EncodingType)
-    , _lovrsName                  :: !(Maybe BucketName)
-    , _lovrsNextContinuationToken :: !(Maybe Text)
-    , _lovrsMaxKeys               :: !(Maybe Int)
-    , _lovrsIsTruncated           :: !(Maybe Bool)
-    , _lovrsDelimiter             :: !(Maybe Delimiter)
-    , _lovrsResponseStatus        :: !Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data ListObjectsV2Response = ListObjectsV2Response'{_lovrsStartAfter
+                                                    :: !(Maybe Text),
+                                                    _lovrsKeyCount ::
+                                                    !(Maybe Int),
+                                                    _lovrsContents ::
+                                                    !(Maybe [Object]),
+                                                    _lovrsContinuationToken ::
+                                                    !(Maybe Text),
+                                                    _lovrsPrefix ::
+                                                    !(Maybe Text),
+                                                    _lovrsCommonPrefixes ::
+                                                    !(Maybe [CommonPrefix]),
+                                                    _lovrsEncodingType ::
+                                                    !(Maybe EncodingType),
+                                                    _lovrsName ::
+                                                    !(Maybe BucketName),
+                                                    _lovrsNextContinuationToken
+                                                    :: !(Maybe Text),
+                                                    _lovrsMaxKeys ::
+                                                    !(Maybe Int),
+                                                    _lovrsIsTruncated ::
+                                                    !(Maybe Bool),
+                                                    _lovrsDelimiter ::
+                                                    !(Maybe Delimiter),
+                                                    _lovrsResponseStatus ::
+                                                    !Int}
+                               deriving (Eq, Read, Show, Data, Typeable,
+                                         Generic)
 
 -- | Creates a value of 'ListObjectsV2Response' with the minimum fields required to make a request.
 --
@@ -259,23 +259,17 @@ data ListObjectsV2Response =
 listObjectsV2Response
     :: Int -- ^ 'lovrsResponseStatus'
     -> ListObjectsV2Response
-listObjectsV2Response pResponseStatus_ =
-  ListObjectsV2Response'
-    { _lovrsStartAfter = Nothing
-    , _lovrsKeyCount = Nothing
-    , _lovrsContents = Nothing
-    , _lovrsContinuationToken = Nothing
-    , _lovrsPrefix = Nothing
-    , _lovrsCommonPrefixes = Nothing
-    , _lovrsEncodingType = Nothing
-    , _lovrsName = Nothing
-    , _lovrsNextContinuationToken = Nothing
-    , _lovrsMaxKeys = Nothing
-    , _lovrsIsTruncated = Nothing
-    , _lovrsDelimiter = Nothing
-    , _lovrsResponseStatus = pResponseStatus_
-    }
-
+listObjectsV2Response pResponseStatus_
+  = ListObjectsV2Response'{_lovrsStartAfter = Nothing,
+                           _lovrsKeyCount = Nothing, _lovrsContents = Nothing,
+                           _lovrsContinuationToken = Nothing,
+                           _lovrsPrefix = Nothing,
+                           _lovrsCommonPrefixes = Nothing,
+                           _lovrsEncodingType = Nothing, _lovrsName = Nothing,
+                           _lovrsNextContinuationToken = Nothing,
+                           _lovrsMaxKeys = Nothing, _lovrsIsTruncated = Nothing,
+                           _lovrsDelimiter = Nothing,
+                           _lovrsResponseStatus = pResponseStatus_}
 
 -- | StartAfter is where you want Amazon S3 to start listing from. Amazon S3 starts listing after this specified key. StartAfter can be any key in the bucket
 lovrsStartAfter :: Lens' ListObjectsV2Response (Maybe Text)

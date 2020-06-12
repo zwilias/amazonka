@@ -41,21 +41,24 @@ module Network.AWS.CloudWatchEvents.ListPartnerEventSourceAccounts
     ) where
 
 import Network.AWS.CloudWatchEvents.Types
-import Network.AWS.CloudWatchEvents.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 
 -- | /See:/ 'listPartnerEventSourceAccounts' smart constructor.
-data ListPartnerEventSourceAccounts =
-  ListPartnerEventSourceAccounts'
-    { _lpesaNextToken       :: !(Maybe Text)
-    , _lpesaLimit           :: !(Maybe Nat)
-    , _lpesaEventSourceName :: !Text
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data ListPartnerEventSourceAccounts = ListPartnerEventSourceAccounts'{_lpesaNextToken
+                                                                      ::
+                                                                      !(Maybe
+                                                                          Text),
+                                                                      _lpesaLimit
+                                                                      ::
+                                                                      !(Maybe
+                                                                          Nat),
+                                                                      _lpesaEventSourceName
+                                                                      :: !Text}
+                                        deriving (Eq, Read, Show, Data,
+                                                  Typeable, Generic)
 
 -- | Creates a value of 'ListPartnerEventSourceAccounts' with the minimum fields required to make a request.
 --
@@ -69,13 +72,11 @@ data ListPartnerEventSourceAccounts =
 listPartnerEventSourceAccounts
     :: Text -- ^ 'lpesaEventSourceName'
     -> ListPartnerEventSourceAccounts
-listPartnerEventSourceAccounts pEventSourceName_ =
-  ListPartnerEventSourceAccounts'
-    { _lpesaNextToken = Nothing
-    , _lpesaLimit = Nothing
-    , _lpesaEventSourceName = pEventSourceName_
-    }
-
+listPartnerEventSourceAccounts pEventSourceName_
+  = ListPartnerEventSourceAccounts'{_lpesaNextToken =
+                                      Nothing,
+                                    _lpesaLimit = Nothing,
+                                    _lpesaEventSourceName = pEventSourceName_}
 
 -- | The token returned by a previous call to this operation. Specifying this retrieves the next set of results.
 lpesaNextToken :: Lens' ListPartnerEventSourceAccounts (Maybe Text)
@@ -133,14 +134,19 @@ instance ToQuery ListPartnerEventSourceAccounts where
         toQuery = const mempty
 
 -- | /See:/ 'listPartnerEventSourceAccountsResponse' smart constructor.
-data ListPartnerEventSourceAccountsResponse =
-  ListPartnerEventSourceAccountsResponse'
-    { _lpesarsPartnerEventSourceAccounts :: !(Maybe [PartnerEventSourceAccount])
-    , _lpesarsNextToken                  :: !(Maybe Text)
-    , _lpesarsResponseStatus             :: !Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data ListPartnerEventSourceAccountsResponse = ListPartnerEventSourceAccountsResponse'{_lpesarsPartnerEventSourceAccounts
+                                                                                      ::
+                                                                                      !(Maybe
+                                                                                          [PartnerEventSourceAccount]),
+                                                                                      _lpesarsNextToken
+                                                                                      ::
+                                                                                      !(Maybe
+                                                                                          Text),
+                                                                                      _lpesarsResponseStatus
+                                                                                      ::
+                                                                                      !Int}
+                                                deriving (Eq, Read, Show, Data,
+                                                          Typeable, Generic)
 
 -- | Creates a value of 'ListPartnerEventSourceAccountsResponse' with the minimum fields required to make a request.
 --
@@ -154,13 +160,13 @@ data ListPartnerEventSourceAccountsResponse =
 listPartnerEventSourceAccountsResponse
     :: Int -- ^ 'lpesarsResponseStatus'
     -> ListPartnerEventSourceAccountsResponse
-listPartnerEventSourceAccountsResponse pResponseStatus_ =
-  ListPartnerEventSourceAccountsResponse'
-    { _lpesarsPartnerEventSourceAccounts = Nothing
-    , _lpesarsNextToken = Nothing
-    , _lpesarsResponseStatus = pResponseStatus_
-    }
-
+listPartnerEventSourceAccountsResponse
+  pResponseStatus_
+  = ListPartnerEventSourceAccountsResponse'{_lpesarsPartnerEventSourceAccounts
+                                              = Nothing,
+                                            _lpesarsNextToken = Nothing,
+                                            _lpesarsResponseStatus =
+                                              pResponseStatus_}
 
 -- | The list of partner event sources returned by the operation.
 lpesarsPartnerEventSourceAccounts :: Lens' ListPartnerEventSourceAccountsResponse [PartnerEventSourceAccount]

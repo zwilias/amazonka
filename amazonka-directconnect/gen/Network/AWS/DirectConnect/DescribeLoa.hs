@@ -43,21 +43,17 @@ module Network.AWS.DirectConnect.DescribeLoa
     ) where
 
 import Network.AWS.DirectConnect.Types
-import Network.AWS.DirectConnect.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 
 -- | /See:/ 'describeLoa' smart constructor.
-data DescribeLoa =
-  DescribeLoa'
-    { _dlLoaContentType :: !(Maybe LoaContentType)
-    , _dlProviderName   :: !(Maybe Text)
-    , _dlConnectionId   :: !Text
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data DescribeLoa = DescribeLoa'{_dlLoaContentType ::
+                                !(Maybe LoaContentType),
+                                _dlProviderName :: !(Maybe Text),
+                                _dlConnectionId :: !Text}
+                     deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'DescribeLoa' with the minimum fields required to make a request.
 --
@@ -71,13 +67,10 @@ data DescribeLoa =
 describeLoa
     :: Text -- ^ 'dlConnectionId'
     -> DescribeLoa
-describeLoa pConnectionId_ =
-  DescribeLoa'
-    { _dlLoaContentType = Nothing
-    , _dlProviderName = Nothing
-    , _dlConnectionId = pConnectionId_
-    }
-
+describeLoa pConnectionId_
+  = DescribeLoa'{_dlLoaContentType = Nothing,
+                 _dlProviderName = Nothing,
+                 _dlConnectionId = pConnectionId_}
 
 -- | The standard media type for the LOA-CFA document. The only supported value is application/pdf.
 dlLoaContentType :: Lens' DescribeLoa (Maybe LoaContentType)
@@ -133,14 +126,12 @@ instance ToQuery DescribeLoa where
 --
 --
 -- /See:/ 'describeLoaResponse' smart constructor.
-data DescribeLoaResponse =
-  DescribeLoaResponse'
-    { _dlrsLoaContent     :: !(Maybe Base64)
-    , _dlrsLoaContentType :: !(Maybe LoaContentType)
-    , _dlrsResponseStatus :: !Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data DescribeLoaResponse = DescribeLoaResponse'{_dlrsLoaContent
+                                                :: !(Maybe Base64),
+                                                _dlrsLoaContentType ::
+                                                !(Maybe LoaContentType),
+                                                _dlrsResponseStatus :: !Int}
+                             deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'DescribeLoaResponse' with the minimum fields required to make a request.
 --
@@ -154,13 +145,10 @@ data DescribeLoaResponse =
 describeLoaResponse
     :: Int -- ^ 'dlrsResponseStatus'
     -> DescribeLoaResponse
-describeLoaResponse pResponseStatus_ =
-  DescribeLoaResponse'
-    { _dlrsLoaContent = Nothing
-    , _dlrsLoaContentType = Nothing
-    , _dlrsResponseStatus = pResponseStatus_
-    }
-
+describeLoaResponse pResponseStatus_
+  = DescribeLoaResponse'{_dlrsLoaContent = Nothing,
+                         _dlrsLoaContentType = Nothing,
+                         _dlrsResponseStatus = pResponseStatus_}
 
 -- | The binary contents of the LOA-CFA document.-- /Note:/ This 'Lens' automatically encodes and decodes Base64 data. The underlying isomorphism will encode to Base64 representation during serialisation, and decode from Base64 representation during deserialisation. This 'Lens' accepts and returns only raw unencoded data.
 dlrsLoaContent :: Lens' DescribeLoaResponse (Maybe ByteString)

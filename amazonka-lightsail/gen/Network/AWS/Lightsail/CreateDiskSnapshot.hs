@@ -42,19 +42,15 @@ module Network.AWS.Lightsail.CreateDiskSnapshot
 
 import Network.AWS.Lens
 import Network.AWS.Lightsail.Types
-import Network.AWS.Lightsail.Types.Product
 import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 
 -- | /See:/ 'createDiskSnapshot' smart constructor.
-data CreateDiskSnapshot =
-  CreateDiskSnapshot'
-    { _cdsDiskName         :: !Text
-    , _cdsDiskSnapshotName :: !Text
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data CreateDiskSnapshot = CreateDiskSnapshot'{_cdsDiskName
+                                              :: !Text,
+                                              _cdsDiskSnapshotName :: !Text}
+                            deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'CreateDiskSnapshot' with the minimum fields required to make a request.
 --
@@ -67,10 +63,9 @@ createDiskSnapshot
     :: Text -- ^ 'cdsDiskName'
     -> Text -- ^ 'cdsDiskSnapshotName'
     -> CreateDiskSnapshot
-createDiskSnapshot pDiskName_ pDiskSnapshotName_ =
-  CreateDiskSnapshot'
-    {_cdsDiskName = pDiskName_, _cdsDiskSnapshotName = pDiskSnapshotName_}
-
+createDiskSnapshot pDiskName_ pDiskSnapshotName_
+  = CreateDiskSnapshot'{_cdsDiskName = pDiskName_,
+                        _cdsDiskSnapshotName = pDiskSnapshotName_}
 
 -- | The unique name of the source disk (e.g., @my-source-disk@ ).
 cdsDiskName :: Lens' CreateDiskSnapshot Text
@@ -119,13 +114,14 @@ instance ToQuery CreateDiskSnapshot where
         toQuery = const mempty
 
 -- | /See:/ 'createDiskSnapshotResponse' smart constructor.
-data CreateDiskSnapshotResponse =
-  CreateDiskSnapshotResponse'
-    { _cdsrsOperations     :: !(Maybe [Operation])
-    , _cdsrsResponseStatus :: !Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data CreateDiskSnapshotResponse = CreateDiskSnapshotResponse'{_cdsrsOperations
+                                                              ::
+                                                              !(Maybe
+                                                                  [Operation]),
+                                                              _cdsrsResponseStatus
+                                                              :: !Int}
+                                    deriving (Eq, Read, Show, Data, Typeable,
+                                              Generic)
 
 -- | Creates a value of 'CreateDiskSnapshotResponse' with the minimum fields required to make a request.
 --
@@ -137,10 +133,10 @@ data CreateDiskSnapshotResponse =
 createDiskSnapshotResponse
     :: Int -- ^ 'cdsrsResponseStatus'
     -> CreateDiskSnapshotResponse
-createDiskSnapshotResponse pResponseStatus_ =
-  CreateDiskSnapshotResponse'
-    {_cdsrsOperations = Nothing, _cdsrsResponseStatus = pResponseStatus_}
-
+createDiskSnapshotResponse pResponseStatus_
+  = CreateDiskSnapshotResponse'{_cdsrsOperations =
+                                  Nothing,
+                                _cdsrsResponseStatus = pResponseStatus_}
 
 -- | An object describing the API operations.
 cdsrsOperations :: Lens' CreateDiskSnapshotResponse [Operation]

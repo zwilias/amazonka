@@ -40,20 +40,18 @@ module Network.AWS.ECS.DescribeContainerInstances
     ) where
 
 import Network.AWS.ECS.Types
-import Network.AWS.ECS.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 
 -- | /See:/ 'describeContainerInstances' smart constructor.
-data DescribeContainerInstances =
-  DescribeContainerInstances'
-    { _dciCluster            :: !(Maybe Text)
-    , _dciContainerInstances :: ![Text]
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data DescribeContainerInstances = DescribeContainerInstances'{_dciCluster
+                                                              :: !(Maybe Text),
+                                                              _dciContainerInstances
+                                                              :: ![Text]}
+                                    deriving (Eq, Read, Show, Data, Typeable,
+                                              Generic)
 
 -- | Creates a value of 'DescribeContainerInstances' with the minimum fields required to make a request.
 --
@@ -64,10 +62,9 @@ data DescribeContainerInstances =
 -- * 'dciContainerInstances' - A list of container instance IDs or full ARN entries.
 describeContainerInstances
     :: DescribeContainerInstances
-describeContainerInstances =
-  DescribeContainerInstances'
-    {_dciCluster = Nothing, _dciContainerInstances = mempty}
-
+describeContainerInstances
+  = DescribeContainerInstances'{_dciCluster = Nothing,
+                                _dciContainerInstances = mempty}
 
 -- | The short name or full Amazon Resource Name (ARN) of the cluster that hosts the container instances to describe. If you do not specify a cluster, the default cluster is assumed.
 dciCluster :: Lens' DescribeContainerInstances (Maybe Text)
@@ -118,14 +115,19 @@ instance ToQuery DescribeContainerInstances where
         toQuery = const mempty
 
 -- | /See:/ 'describeContainerInstancesResponse' smart constructor.
-data DescribeContainerInstancesResponse =
-  DescribeContainerInstancesResponse'
-    { _dcisrsFailures           :: !(Maybe [Failure])
-    , _dcisrsContainerInstances :: !(Maybe [ContainerInstance])
-    , _dcisrsResponseStatus     :: !Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data DescribeContainerInstancesResponse = DescribeContainerInstancesResponse'{_dcisrsFailures
+                                                                              ::
+                                                                              !(Maybe
+                                                                                  [Failure]),
+                                                                              _dcisrsContainerInstances
+                                                                              ::
+                                                                              !(Maybe
+                                                                                  [ContainerInstance]),
+                                                                              _dcisrsResponseStatus
+                                                                              ::
+                                                                              !Int}
+                                            deriving (Eq, Read, Show, Data,
+                                                      Typeable, Generic)
 
 -- | Creates a value of 'DescribeContainerInstancesResponse' with the minimum fields required to make a request.
 --
@@ -139,13 +141,12 @@ data DescribeContainerInstancesResponse =
 describeContainerInstancesResponse
     :: Int -- ^ 'dcisrsResponseStatus'
     -> DescribeContainerInstancesResponse
-describeContainerInstancesResponse pResponseStatus_ =
-  DescribeContainerInstancesResponse'
-    { _dcisrsFailures = Nothing
-    , _dcisrsContainerInstances = Nothing
-    , _dcisrsResponseStatus = pResponseStatus_
-    }
-
+describeContainerInstancesResponse pResponseStatus_
+  = DescribeContainerInstancesResponse'{_dcisrsFailures
+                                          = Nothing,
+                                        _dcisrsContainerInstances = Nothing,
+                                        _dcisrsResponseStatus =
+                                          pResponseStatus_}
 
 -- | Any failures associated with the call.
 dcisrsFailures :: Lens' DescribeContainerInstancesResponse [Failure]

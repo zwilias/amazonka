@@ -39,7 +39,6 @@ module Network.AWS.GuardDuty.InviteMembers
     ) where
 
 import Network.AWS.GuardDuty.Types
-import Network.AWS.GuardDuty.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.Request
@@ -48,15 +47,13 @@ import Network.AWS.Response
 -- | InviteMembers request body.
 --
 -- /See:/ 'inviteMembers' smart constructor.
-data InviteMembers =
-  InviteMembers'
-    { _imAccountIds               :: !(Maybe [Text])
-    , _imDisableEmailNotification :: !(Maybe Bool)
-    , _imMessage                  :: !(Maybe Text)
-    , _imDetectorId               :: !Text
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data InviteMembers = InviteMembers'{_imAccountIds ::
+                                    !(Maybe [Text]),
+                                    _imDisableEmailNotification ::
+                                    !(Maybe Bool),
+                                    _imMessage :: !(Maybe Text),
+                                    _imDetectorId :: !Text}
+                       deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'InviteMembers' with the minimum fields required to make a request.
 --
@@ -72,14 +69,10 @@ data InviteMembers =
 inviteMembers
     :: Text -- ^ 'imDetectorId'
     -> InviteMembers
-inviteMembers pDetectorId_ =
-  InviteMembers'
-    { _imAccountIds = Nothing
-    , _imDisableEmailNotification = Nothing
-    , _imMessage = Nothing
-    , _imDetectorId = pDetectorId_
-    }
-
+inviteMembers pDetectorId_
+  = InviteMembers'{_imAccountIds = Nothing,
+                   _imDisableEmailNotification = Nothing,
+                   _imMessage = Nothing, _imDetectorId = pDetectorId_}
 
 -- | A list of account IDs of the accounts that you want to invite to GuardDuty as members.
 imAccountIds :: Lens' InviteMembers [Text]
@@ -136,13 +129,13 @@ instance ToQuery InviteMembers where
         toQuery = const mempty
 
 -- | /See:/ 'inviteMembersResponse' smart constructor.
-data InviteMembersResponse =
-  InviteMembersResponse'
-    { _imrsUnprocessedAccounts :: !(Maybe [UnprocessedAccount])
-    , _imrsResponseStatus      :: !Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data InviteMembersResponse = InviteMembersResponse'{_imrsUnprocessedAccounts
+                                                    ::
+                                                    !(Maybe
+                                                        [UnprocessedAccount]),
+                                                    _imrsResponseStatus :: !Int}
+                               deriving (Eq, Read, Show, Data, Typeable,
+                                         Generic)
 
 -- | Creates a value of 'InviteMembersResponse' with the minimum fields required to make a request.
 --
@@ -154,10 +147,10 @@ data InviteMembersResponse =
 inviteMembersResponse
     :: Int -- ^ 'imrsResponseStatus'
     -> InviteMembersResponse
-inviteMembersResponse pResponseStatus_ =
-  InviteMembersResponse'
-    {_imrsUnprocessedAccounts = Nothing, _imrsResponseStatus = pResponseStatus_}
-
+inviteMembersResponse pResponseStatus_
+  = InviteMembersResponse'{_imrsUnprocessedAccounts =
+                             Nothing,
+                           _imrsResponseStatus = pResponseStatus_}
 
 -- | A list of objects containing the unprocessed account and a result string explaining why it was unprocessed.
 imrsUnprocessedAccounts :: Lens' InviteMembersResponse [UnprocessedAccount]

@@ -37,19 +37,15 @@ module Network.AWS.AppStream.ExpireSession
     ) where
 
 import Network.AWS.AppStream.Types
-import Network.AWS.AppStream.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 
 -- | /See:/ 'expireSession' smart constructor.
-newtype ExpireSession =
-  ExpireSession'
-    { _esSessionId :: Text
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+newtype ExpireSession = ExpireSession'{_esSessionId
+                                       :: Text}
+                          deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'ExpireSession' with the minimum fields required to make a request.
 --
@@ -59,8 +55,8 @@ newtype ExpireSession =
 expireSession
     :: Text -- ^ 'esSessionId'
     -> ExpireSession
-expireSession pSessionId_ = ExpireSession' {_esSessionId = pSessionId_}
-
+expireSession pSessionId_
+  = ExpireSession'{_esSessionId = pSessionId_}
 
 -- | The identifier of the streaming session.
 esSessionId :: Lens' ExpireSession Text
@@ -100,12 +96,10 @@ instance ToQuery ExpireSession where
         toQuery = const mempty
 
 -- | /See:/ 'expireSessionResponse' smart constructor.
-newtype ExpireSessionResponse =
-  ExpireSessionResponse'
-    { _esrsResponseStatus :: Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+newtype ExpireSessionResponse = ExpireSessionResponse'{_esrsResponseStatus
+                                                       :: Int}
+                                  deriving (Eq, Read, Show, Data, Typeable,
+                                            Generic)
 
 -- | Creates a value of 'ExpireSessionResponse' with the minimum fields required to make a request.
 --
@@ -115,9 +109,9 @@ newtype ExpireSessionResponse =
 expireSessionResponse
     :: Int -- ^ 'esrsResponseStatus'
     -> ExpireSessionResponse
-expireSessionResponse pResponseStatus_ =
-  ExpireSessionResponse' {_esrsResponseStatus = pResponseStatus_}
-
+expireSessionResponse pResponseStatus_
+  = ExpireSessionResponse'{_esrsResponseStatus =
+                             pResponseStatus_}
 
 -- | -- | The response status code.
 esrsResponseStatus :: Lens' ExpireSessionResponse Int

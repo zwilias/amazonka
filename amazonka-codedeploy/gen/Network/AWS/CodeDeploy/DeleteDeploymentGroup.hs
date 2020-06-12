@@ -39,7 +39,6 @@ module Network.AWS.CodeDeploy.DeleteDeploymentGroup
     ) where
 
 import Network.AWS.CodeDeploy.Types
-import Network.AWS.CodeDeploy.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.Request
@@ -50,13 +49,12 @@ import Network.AWS.Response
 --
 --
 -- /See:/ 'deleteDeploymentGroup' smart constructor.
-data DeleteDeploymentGroup =
-  DeleteDeploymentGroup'
-    { _ddgApplicationName     :: !Text
-    , _ddgDeploymentGroupName :: !Text
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data DeleteDeploymentGroup = DeleteDeploymentGroup'{_ddgApplicationName
+                                                    :: !Text,
+                                                    _ddgDeploymentGroupName ::
+                                                    !Text}
+                               deriving (Eq, Read, Show, Data, Typeable,
+                                         Generic)
 
 -- | Creates a value of 'DeleteDeploymentGroup' with the minimum fields required to make a request.
 --
@@ -69,12 +67,11 @@ deleteDeploymentGroup
     :: Text -- ^ 'ddgApplicationName'
     -> Text -- ^ 'ddgDeploymentGroupName'
     -> DeleteDeploymentGroup
-deleteDeploymentGroup pApplicationName_ pDeploymentGroupName_ =
-  DeleteDeploymentGroup'
-    { _ddgApplicationName = pApplicationName_
-    , _ddgDeploymentGroupName = pDeploymentGroupName_
-    }
-
+deleteDeploymentGroup pApplicationName_
+  pDeploymentGroupName_
+  = DeleteDeploymentGroup'{_ddgApplicationName =
+                             pApplicationName_,
+                           _ddgDeploymentGroupName = pDeploymentGroupName_}
 
 -- | The name of an AWS CodeDeploy application associated with the IAM user or AWS account.
 ddgApplicationName :: Lens' DeleteDeploymentGroup Text
@@ -128,13 +125,14 @@ instance ToQuery DeleteDeploymentGroup where
 --
 --
 -- /See:/ 'deleteDeploymentGroupResponse' smart constructor.
-data DeleteDeploymentGroupResponse =
-  DeleteDeploymentGroupResponse'
-    { _ddgrsHooksNotCleanedUp :: !(Maybe [AutoScalingGroup])
-    , _ddgrsResponseStatus    :: !Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data DeleteDeploymentGroupResponse = DeleteDeploymentGroupResponse'{_ddgrsHooksNotCleanedUp
+                                                                    ::
+                                                                    !(Maybe
+                                                                        [AutoScalingGroup]),
+                                                                    _ddgrsResponseStatus
+                                                                    :: !Int}
+                                       deriving (Eq, Read, Show, Data, Typeable,
+                                                 Generic)
 
 -- | Creates a value of 'DeleteDeploymentGroupResponse' with the minimum fields required to make a request.
 --
@@ -146,10 +144,10 @@ data DeleteDeploymentGroupResponse =
 deleteDeploymentGroupResponse
     :: Int -- ^ 'ddgrsResponseStatus'
     -> DeleteDeploymentGroupResponse
-deleteDeploymentGroupResponse pResponseStatus_ =
-  DeleteDeploymentGroupResponse'
-    {_ddgrsHooksNotCleanedUp = Nothing, _ddgrsResponseStatus = pResponseStatus_}
-
+deleteDeploymentGroupResponse pResponseStatus_
+  = DeleteDeploymentGroupResponse'{_ddgrsHooksNotCleanedUp
+                                     = Nothing,
+                                   _ddgrsResponseStatus = pResponseStatus_}
 
 -- | If the output contains no data, and the corresponding deployment group contained at least one Auto Scaling group, AWS CodeDeploy successfully removed all corresponding Auto Scaling lifecycle event hooks from the Amazon EC2 instances in the Auto Scaling group. If the output contains data, AWS CodeDeploy could not remove some Auto Scaling lifecycle event hooks from the Amazon EC2 instances in the Auto Scaling group.
 ddgrsHooksNotCleanedUp :: Lens' DeleteDeploymentGroupResponse [AutoScalingGroup]

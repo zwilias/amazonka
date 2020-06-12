@@ -1,4 +1,4 @@
-{-# LANGUAGE OverloadedStrings #-}
+{-# LANGUAGE OverloadedStrings  #-}
 
 -- Derived from AWS service descriptions, licensed under Apache 2.0.
 
@@ -787,98 +787,207 @@ module Network.AWS.DynamoDB.Types
     , wrPutRequest
     ) where
 
-import Network.AWS.DynamoDB.Types.Product
-import Network.AWS.DynamoDB.Types.Sum
 import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.Sign.V4
+import Network.AWS.DynamoDB.Types.AttributeAction
+import Network.AWS.DynamoDB.Types.BackupStatus
+import Network.AWS.DynamoDB.Types.BackupType
+import Network.AWS.DynamoDB.Types.BackupTypeFilter
+import Network.AWS.DynamoDB.Types.BillingMode
+import Network.AWS.DynamoDB.Types.ComparisonOperator
+import Network.AWS.DynamoDB.Types.ConditionalOperator
+import Network.AWS.DynamoDB.Types.ContinuousBackupsStatus
+import Network.AWS.DynamoDB.Types.ContributorInsightsAction
+import Network.AWS.DynamoDB.Types.ContributorInsightsStatus
+import Network.AWS.DynamoDB.Types.GlobalTableStatus
+import Network.AWS.DynamoDB.Types.IndexStatus
+import Network.AWS.DynamoDB.Types.KeyType
+import Network.AWS.DynamoDB.Types.PointInTimeRecoveryStatus
+import Network.AWS.DynamoDB.Types.ProjectionType
+import Network.AWS.DynamoDB.Types.ReplicaStatus
+import Network.AWS.DynamoDB.Types.ReturnConsumedCapacity
+import Network.AWS.DynamoDB.Types.ReturnItemCollectionMetrics
+import Network.AWS.DynamoDB.Types.ReturnValue
+import Network.AWS.DynamoDB.Types.ReturnValuesOnConditionCheckFailure
+import Network.AWS.DynamoDB.Types.SSEStatus
+import Network.AWS.DynamoDB.Types.SSEType
+import Network.AWS.DynamoDB.Types.ScalarAttributeType
+import Network.AWS.DynamoDB.Types.Select
+import Network.AWS.DynamoDB.Types.StreamViewType
+import Network.AWS.DynamoDB.Types.TableStatus
+import Network.AWS.DynamoDB.Types.TimeToLiveStatus
+import Network.AWS.DynamoDB.Types.ArchivalSummary
+import Network.AWS.DynamoDB.Types.AttributeDefinition
+import Network.AWS.DynamoDB.Types.AttributeValue
+import Network.AWS.DynamoDB.Types.AttributeValueUpdate
+import Network.AWS.DynamoDB.Types.AutoScalingPolicyDescription
+import Network.AWS.DynamoDB.Types.AutoScalingPolicyUpdate
+import Network.AWS.DynamoDB.Types.AutoScalingSettingsDescription
+import Network.AWS.DynamoDB.Types.AutoScalingSettingsUpdate
+import Network.AWS.DynamoDB.Types.AutoScalingTargetTrackingScalingPolicyConfigurationDescription
+import Network.AWS.DynamoDB.Types.AutoScalingTargetTrackingScalingPolicyConfigurationUpdate
+import Network.AWS.DynamoDB.Types.BackupDescription
+import Network.AWS.DynamoDB.Types.BackupDetails
+import Network.AWS.DynamoDB.Types.BackupSummary
+import Network.AWS.DynamoDB.Types.BillingModeSummary
+import Network.AWS.DynamoDB.Types.Capacity
+import Network.AWS.DynamoDB.Types.Condition
+import Network.AWS.DynamoDB.Types.ConditionCheck
+import Network.AWS.DynamoDB.Types.ConsumedCapacity
+import Network.AWS.DynamoDB.Types.ContinuousBackupsDescription
+import Network.AWS.DynamoDB.Types.ContributorInsightsSummary
+import Network.AWS.DynamoDB.Types.CreateGlobalSecondaryIndexAction
+import Network.AWS.DynamoDB.Types.CreateReplicaAction
+import Network.AWS.DynamoDB.Types.CreateReplicationGroupMemberAction
+import Network.AWS.DynamoDB.Types.Delete
+import Network.AWS.DynamoDB.Types.DeleteGlobalSecondaryIndexAction
+import Network.AWS.DynamoDB.Types.DeleteReplicaAction
+import Network.AWS.DynamoDB.Types.DeleteReplicationGroupMemberAction
+import Network.AWS.DynamoDB.Types.DeleteRequest
+import Network.AWS.DynamoDB.Types.Endpoint
+import Network.AWS.DynamoDB.Types.ExpectedAttributeValue
+import Network.AWS.DynamoDB.Types.FailureException
+import Network.AWS.DynamoDB.Types.Get
+import Network.AWS.DynamoDB.Types.GlobalSecondaryIndex
+import Network.AWS.DynamoDB.Types.GlobalSecondaryIndexAutoScalingUpdate
+import Network.AWS.DynamoDB.Types.GlobalSecondaryIndexDescription
+import Network.AWS.DynamoDB.Types.GlobalSecondaryIndexInfo
+import Network.AWS.DynamoDB.Types.GlobalSecondaryIndexUpdate
+import Network.AWS.DynamoDB.Types.GlobalTable
+import Network.AWS.DynamoDB.Types.GlobalTableDescription
+import Network.AWS.DynamoDB.Types.GlobalTableGlobalSecondaryIndexSettingsUpdate
+import Network.AWS.DynamoDB.Types.ItemCollectionMetrics
+import Network.AWS.DynamoDB.Types.ItemResponse
+import Network.AWS.DynamoDB.Types.KeySchemaElement
+import Network.AWS.DynamoDB.Types.KeysAndAttributes
+import Network.AWS.DynamoDB.Types.LocalSecondaryIndex
+import Network.AWS.DynamoDB.Types.LocalSecondaryIndexDescription
+import Network.AWS.DynamoDB.Types.LocalSecondaryIndexInfo
+import Network.AWS.DynamoDB.Types.PointInTimeRecoveryDescription
+import Network.AWS.DynamoDB.Types.PointInTimeRecoverySpecification
+import Network.AWS.DynamoDB.Types.Projection
+import Network.AWS.DynamoDB.Types.ProvisionedThroughput
+import Network.AWS.DynamoDB.Types.ProvisionedThroughputDescription
+import Network.AWS.DynamoDB.Types.ProvisionedThroughputOverride
+import Network.AWS.DynamoDB.Types.Put
+import Network.AWS.DynamoDB.Types.PutRequest
+import Network.AWS.DynamoDB.Types.Replica
+import Network.AWS.DynamoDB.Types.ReplicaAutoScalingDescription
+import Network.AWS.DynamoDB.Types.ReplicaAutoScalingUpdate
+import Network.AWS.DynamoDB.Types.ReplicaDescription
+import Network.AWS.DynamoDB.Types.ReplicaGlobalSecondaryIndex
+import Network.AWS.DynamoDB.Types.ReplicaGlobalSecondaryIndexAutoScalingDescription
+import Network.AWS.DynamoDB.Types.ReplicaGlobalSecondaryIndexAutoScalingUpdate
+import Network.AWS.DynamoDB.Types.ReplicaGlobalSecondaryIndexDescription
+import Network.AWS.DynamoDB.Types.ReplicaGlobalSecondaryIndexSettingsDescription
+import Network.AWS.DynamoDB.Types.ReplicaGlobalSecondaryIndexSettingsUpdate
+import Network.AWS.DynamoDB.Types.ReplicaSettingsDescription
+import Network.AWS.DynamoDB.Types.ReplicaSettingsUpdate
+import Network.AWS.DynamoDB.Types.ReplicaUpdate
+import Network.AWS.DynamoDB.Types.ReplicationGroupUpdate
+import Network.AWS.DynamoDB.Types.RestoreSummary
+import Network.AWS.DynamoDB.Types.SSEDescription
+import Network.AWS.DynamoDB.Types.SSESpecification
+import Network.AWS.DynamoDB.Types.SourceTableDetails
+import Network.AWS.DynamoDB.Types.SourceTableFeatureDetails
+import Network.AWS.DynamoDB.Types.StreamSpecification
+import Network.AWS.DynamoDB.Types.TableAutoScalingDescription
+import Network.AWS.DynamoDB.Types.TableDescription
+import Network.AWS.DynamoDB.Types.Tag
+import Network.AWS.DynamoDB.Types.TimeToLiveDescription
+import Network.AWS.DynamoDB.Types.TimeToLiveSpecification
+import Network.AWS.DynamoDB.Types.TransactGetItem
+import Network.AWS.DynamoDB.Types.TransactWriteItem
+import Network.AWS.DynamoDB.Types.Update
+import Network.AWS.DynamoDB.Types.UpdateGlobalSecondaryIndexAction
+import Network.AWS.DynamoDB.Types.UpdateReplicationGroupMemberAction
+import Network.AWS.DynamoDB.Types.WriteRequest
 
 -- | API version @2012-08-10@ of the Amazon DynamoDB SDK configuration.
 dynamoDB :: Service
-dynamoDB =
-  Service
-    { _svcAbbrev = "DynamoDB"
-    , _svcSigner = v4
-    , _svcPrefix = "dynamodb"
-    , _svcVersion = "2012-08-10"
-    , _svcEndpoint = defaultEndpoint dynamoDB
-    , _svcTimeout = Just 70
-    , _svcCheck = statusSuccess
-    , _svcError = parseJSONError "DynamoDB"
-    , _svcRetry = retry
-    }
-  where
-    retry =
-      Exponential
-        { _retryBase = 5.0e-2
-        , _retryGrowth = 2
-        , _retryAttempts = 5
-        , _retryCheck = check
-        }
-    check e
-      | has (hasCode "ThrottledException" . hasStatus 400) e =
-        Just "throttled_exception"
-      | has (hasStatus 429) e = Just "too_many_requests"
-      | has (hasCode "ThrottlingException" . hasStatus 400) e =
-        Just "throttling_exception"
-      | has (hasCode "Throttling" . hasStatus 400) e = Just "throttling"
-      | has (hasCode "ProvisionedThroughputExceededException" . hasStatus 400) e =
-        Just "throughput_exceeded"
-      | has (hasStatus 504) e = Just "gateway_timeout"
-      | has (hasCode "RequestThrottledException" . hasStatus 400) e =
-        Just "request_throttled_exception"
-      | has (hasStatus 502) e = Just "bad_gateway"
-      | has (hasStatus 503) e = Just "service_unavailable"
-      | has (hasStatus 500) e = Just "general_server_error"
-      | has (hasStatus 509) e = Just "limit_exceeded"
-      | otherwise = Nothing
+dynamoDB
+  = Service{_svcAbbrev = "DynamoDB", _svcSigner = v4,
+            _svcPrefix = "dynamodb", _svcVersion = "2012-08-10",
+            _svcEndpoint = defaultEndpoint dynamoDB,
+            _svcTimeout = Just 70, _svcCheck = statusSuccess,
+            _svcError = parseJSONError "DynamoDB",
+            _svcRetry = retry}
+  where retry
+          = Exponential{_retryBase = 5.0e-2, _retryGrowth = 2,
+                        _retryAttempts = 5, _retryCheck = check}
+        check e
+          | has (hasCode "ThrottledException" . hasStatus 400)
+              e
+            = Just "throttled_exception"
+          | has (hasStatus 429) e = Just "too_many_requests"
+          | has (hasCode "ThrottlingException" . hasStatus 400)
+              e
+            = Just "throttling_exception"
+          | has (hasCode "Throttling" . hasStatus 400) e =
+            Just "throttling"
+          | has
+              (hasCode "ProvisionedThroughputExceededException" .
+                 hasStatus 400)
+              e
+            = Just "throughput_exceeded"
+          | has (hasStatus 504) e = Just "gateway_timeout"
+          | has
+              (hasCode "RequestThrottledException" . hasStatus 400)
+              e
+            = Just "request_throttled_exception"
+          | has (hasStatus 502) e = Just "bad_gateway"
+          | has (hasStatus 503) e = Just "service_unavailable"
+          | has (hasStatus 500) e = Just "general_server_error"
+          | has (hasStatus 509) e = Just "limit_exceeded"
+          | otherwise = Nothing
 
-
--- | Backup not found for the given BackupARN.
+-- | Backup not found for the given BackupARN. 
 --
 --
 _BackupNotFoundException :: AsError a => Getting (First ServiceError) a ServiceError
-_BackupNotFoundException = _MatchServiceError dynamoDB "BackupNotFoundException"
+_BackupNotFoundException
+  = _MatchServiceError dynamoDB
+      "BackupNotFoundException"
 
-
--- | A target table with the specified name is either being created or deleted.
+-- | A target table with the specified name is either being created or deleted. 
 --
 --
 _TableInUseException :: AsError a => Getting (First ServiceError) a ServiceError
-_TableInUseException = _MatchServiceError dynamoDB "TableInUseException"
-
+_TableInUseException
+  = _MatchServiceError dynamoDB "TableInUseException"
 
 -- | Backups have not yet been enabled for this table.
 --
 --
 _ContinuousBackupsUnavailableException :: AsError a => Getting (First ServiceError) a ServiceError
-_ContinuousBackupsUnavailableException =
-  _MatchServiceError dynamoDB "ContinuousBackupsUnavailableException"
-
+_ContinuousBackupsUnavailableException
+  = _MatchServiceError dynamoDB
+      "ContinuousBackupsUnavailableException"
 
 -- | Your request rate is too high. The AWS SDKs for DynamoDB automatically retry requests that receive this exception. Your request is eventually successful, unless your retry queue is too large to finish. Reduce the frequency of requests and use exponential backoff. For more information, go to <https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/Programming.Errors.html#Programming.Errors.RetryAndBackoff Error Retries and Exponential Backoff> in the /Amazon DynamoDB Developer Guide/ .
 --
 --
 _ProvisionedThroughputExceededException :: AsError a => Getting (First ServiceError) a ServiceError
-_ProvisionedThroughputExceededException =
-  _MatchServiceError dynamoDB "ProvisionedThroughputExceededException"
-
+_ProvisionedThroughputExceededException
+  = _MatchServiceError dynamoDB
+      "ProvisionedThroughputExceededException"
 
 -- | The specified global table does not exist.
 --
 --
 _GlobalTableNotFoundException :: AsError a => Getting (First ServiceError) a ServiceError
-_GlobalTableNotFoundException =
-  _MatchServiceError dynamoDB "GlobalTableNotFoundException"
-
+_GlobalTableNotFoundException
+  = _MatchServiceError dynamoDB
+      "GlobalTableNotFoundException"
 
 -- | The transaction with the given request token is already in progress.
 --
 --
 _TransactionInProgressException :: AsError a => Getting (First ServiceError) a ServiceError
-_TransactionInProgressException =
-  _MatchServiceError dynamoDB "TransactionInProgressException"
-
+_TransactionInProgressException
+  = _MatchServiceError dynamoDB
+      "TransactionInProgressException"
 
 -- | The entire transaction request was canceled.
 --
@@ -915,23 +1024,23 @@ _TransactionInProgressException =
 --
 --     * No Errors:
 --
---     * Code: @NONE@
+--     * Code: @NONE@ 
 --
---     * Message: @null@
+--     * Message: @null@ 
 --
 --
 --
 --     * Conditional Check Failed:
 --
---     * Code: @ConditionalCheckFailed@
+--     * Code: @ConditionalCheckFailed@ 
 --
---     * Message: The conditional request failed.
+--     * Message: The conditional request failed. 
 --
 --
 --
 --     * Item Collection Size Limit Exceeded:
 --
---     * Code: @ItemCollectionSizeLimitExceeded@
+--     * Code: @ItemCollectionSizeLimitExceeded@ 
 --
 --     * Message: Collection size exceeded.
 --
@@ -939,7 +1048,7 @@ _TransactionInProgressException =
 --
 --     * Transaction Conflict:
 --
---     * Code: @TransactionConflict@
+--     * Code: @TransactionConflict@ 
 --
 --     * Message: Transaction is ongoing for the item.
 --
@@ -947,9 +1056,9 @@ _TransactionInProgressException =
 --
 --     * Provisioned Throughput Exceeded:
 --
---     * Code: @ProvisionedThroughputExceeded@
+--     * Code: @ProvisionedThroughputExceeded@ 
 --
---     * Messages:
+--     * Messages: 
 --
 --     * The level of configured provisioned throughput for the table was exceeded. Consider increasing your provisioning level with the UpdateTable API.
 --
@@ -961,9 +1070,9 @@ _TransactionInProgressException =
 --
 --     * Throttling Error:
 --
---     * Code: @ThrottlingError@
+--     * Code: @ThrottlingError@ 
 --
---     * Messages:
+--     * Messages: 
 --
 --     * Throughput exceeds the current capacity of your table or index. DynamoDB is automatically scaling your table or index so please try again shortly. If exceptions persist, check if you have a hot key: https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/bp-partition-key-design.html.
 --
@@ -975,9 +1084,9 @@ _TransactionInProgressException =
 --
 --     * Validation Error:
 --
---     * Code: @ValidationError@
+--     * Code: @ValidationError@ 
 --
---     * Messages:
+--     * Messages: 
 --
 --     * One or more parameter values were invalid.
 --
@@ -1006,149 +1115,153 @@ _TransactionInProgressException =
 --
 --
 _TransactionCanceledException :: AsError a => Getting (First ServiceError) a ServiceError
-_TransactionCanceledException =
-  _MatchServiceError dynamoDB "TransactionCanceledException"
-
+_TransactionCanceledException
+  = _MatchServiceError dynamoDB
+      "TransactionCanceledException"
 
 -- | A condition specified in the operation could not be evaluated.
 --
 --
 _ConditionalCheckFailedException :: AsError a => Getting (First ServiceError) a ServiceError
-_ConditionalCheckFailedException =
-  _MatchServiceError dynamoDB "ConditionalCheckFailedException"
-
+_ConditionalCheckFailedException
+  = _MatchServiceError dynamoDB
+      "ConditionalCheckFailedException"
 
 -- | The specified global table already exists.
 --
 --
 _GlobalTableAlreadyExistsException :: AsError a => Getting (First ServiceError) a ServiceError
-_GlobalTableAlreadyExistsException =
-  _MatchServiceError dynamoDB "GlobalTableAlreadyExistsException"
-
+_GlobalTableAlreadyExistsException
+  = _MatchServiceError dynamoDB
+      "GlobalTableAlreadyExistsException"
 
 -- | The specified replica is no longer part of the global table.
 --
 --
 _ReplicaNotFoundException :: AsError a => Getting (First ServiceError) a ServiceError
-_ReplicaNotFoundException =
-  _MatchServiceError dynamoDB "ReplicaNotFoundException"
+_ReplicaNotFoundException
+  = _MatchServiceError dynamoDB
+      "ReplicaNotFoundException"
 
-
--- | A target table with the specified name already exists.
+-- | A target table with the specified name already exists. 
 --
 --
 _TableAlreadyExistsException :: AsError a => Getting (First ServiceError) a ServiceError
-_TableAlreadyExistsException =
-  _MatchServiceError dynamoDB "TableAlreadyExistsException"
-
+_TableAlreadyExistsException
+  = _MatchServiceError dynamoDB
+      "TableAlreadyExistsException"
 
 -- | Throughput exceeds the current throughput limit for your account. Please contact AWS Support at <https://aws.amazon.com/support AWS Support> to request a limit increase.
 --
 --
 _RequestLimitExceeded :: AsError a => Getting (First ServiceError) a ServiceError
-_RequestLimitExceeded = _MatchServiceError dynamoDB "RequestLimitExceeded"
-
+_RequestLimitExceeded
+  = _MatchServiceError dynamoDB "RequestLimitExceeded"
 
 -- | An item collection is too large. This exception is only returned for tables that have one or more local secondary indexes.
 --
 --
 _ItemCollectionSizeLimitExceededException :: AsError a => Getting (First ServiceError) a ServiceError
-_ItemCollectionSizeLimitExceededException =
-  _MatchServiceError dynamoDB "ItemCollectionSizeLimitExceededException"
-
+_ItemCollectionSizeLimitExceededException
+  = _MatchServiceError dynamoDB
+      "ItemCollectionSizeLimitExceededException"
 
 -- | An error occurred on the server side.
 --
 --
 _InternalServerError :: AsError a => Getting (First ServiceError) a ServiceError
-_InternalServerError = _MatchServiceError dynamoDB "InternalServerError"
-
+_InternalServerError
+  = _MatchServiceError dynamoDB "InternalServerError"
 
 -- | A source table with the name @TableName@ does not currently exist within the subscriber's account.
 --
 --
 _TableNotFoundException :: AsError a => Getting (First ServiceError) a ServiceError
-_TableNotFoundException = _MatchServiceError dynamoDB "TableNotFoundException"
-
+_TableNotFoundException
+  = _MatchServiceError dynamoDB
+      "TableNotFoundException"
 
 -- | The operation tried to access a nonexistent index.
 --
 --
 _IndexNotFoundException :: AsError a => Getting (First ServiceError) a ServiceError
-_IndexNotFoundException = _MatchServiceError dynamoDB "IndexNotFoundException"
-
+_IndexNotFoundException
+  = _MatchServiceError dynamoDB
+      "IndexNotFoundException"
 
 -- | Operation was rejected because there is an ongoing transaction for the item.
 --
 --
 _TransactionConflictException :: AsError a => Getting (First ServiceError) a ServiceError
-_TransactionConflictException =
-  _MatchServiceError dynamoDB "TransactionConflictException"
-
+_TransactionConflictException
+  = _MatchServiceError dynamoDB
+      "TransactionConflictException"
 
 -- | There is another ongoing conflicting backup control plane operation on the table. The backup is either being created, deleted or restored to a table.
 --
 --
 _BackupInUseException :: AsError a => Getting (First ServiceError) a ServiceError
-_BackupInUseException = _MatchServiceError dynamoDB "BackupInUseException"
-
+_BackupInUseException
+  = _MatchServiceError dynamoDB "BackupInUseException"
 
 -- | Point in time recovery has not yet been enabled for this source table.
 --
 --
 _PointInTimeRecoveryUnavailableException :: AsError a => Getting (First ServiceError) a ServiceError
-_PointInTimeRecoveryUnavailableException =
-  _MatchServiceError dynamoDB "PointInTimeRecoveryUnavailableException"
-
+_PointInTimeRecoveryUnavailableException
+  = _MatchServiceError dynamoDB
+      "PointInTimeRecoveryUnavailableException"
 
 -- | DynamoDB rejected the request because you retried a request with a different payload but with an idempotent token that was already used.
 --
 --
 _IdempotentParameterMismatchException :: AsError a => Getting (First ServiceError) a ServiceError
-_IdempotentParameterMismatchException =
-  _MatchServiceError dynamoDB "IdempotentParameterMismatchException"
-
+_IdempotentParameterMismatchException
+  = _MatchServiceError dynamoDB
+      "IdempotentParameterMismatchException"
 
 -- | An invalid restore time was specified. RestoreDateTime must be between EarliestRestorableDateTime and LatestRestorableDateTime.
 --
 --
 _InvalidRestoreTimeException :: AsError a => Getting (First ServiceError) a ServiceError
-_InvalidRestoreTimeException =
-  _MatchServiceError dynamoDB "InvalidRestoreTimeException"
-
+_InvalidRestoreTimeException
+  = _MatchServiceError dynamoDB
+      "InvalidRestoreTimeException"
 
 -- | The operation tried to access a nonexistent table or index. The resource might not be specified correctly, or its status might not be @ACTIVE@ .
 --
 --
 _ResourceNotFoundException :: AsError a => Getting (First ServiceError) a ServiceError
-_ResourceNotFoundException =
-  _MatchServiceError dynamoDB "ResourceNotFoundException"
-
+_ResourceNotFoundException
+  = _MatchServiceError dynamoDB
+      "ResourceNotFoundException"
 
 -- | The specified replica is already part of the global table.
 --
 --
 _ReplicaAlreadyExistsException :: AsError a => Getting (First ServiceError) a ServiceError
-_ReplicaAlreadyExistsException =
-  _MatchServiceError dynamoDB "ReplicaAlreadyExistsException"
+_ReplicaAlreadyExistsException
+  = _MatchServiceError dynamoDB
+      "ReplicaAlreadyExistsException"
 
-
--- | There is no limit to the number of daily on-demand backups that can be taken.
+-- | There is no limit to the number of daily on-demand backups that can be taken. 
 --
 --
--- Up to 50 simultaneous table operations are allowed per account. These operations include @CreateTable@ , @UpdateTable@ , @DeleteTable@ ,@UpdateTimeToLive@ , @RestoreTableFromBackup@ , and @RestoreTableToPointInTime@ .
+-- Up to 50 simultaneous table operations are allowed per account. These operations include @CreateTable@ , @UpdateTable@ , @DeleteTable@ ,@UpdateTimeToLive@ , @RestoreTableFromBackup@ , and @RestoreTableToPointInTime@ . 
 --
 -- The only exception is when you are creating a table with one or more secondary indexes. You can have up to 25 such requests running at a time; however, if the table or index specifications are complex, DynamoDB might temporarily reduce the number of concurrent operations.
 --
 -- There is a soft account limit of 256 tables.
 --
 _LimitExceededException :: AsError a => Getting (First ServiceError) a ServiceError
-_LimitExceededException = _MatchServiceError dynamoDB "LimitExceededException"
-
+_LimitExceededException
+  = _MatchServiceError dynamoDB
+      "LimitExceededException"
 
 -- | The operation conflicts with the resource's availability. For example, you attempted to recreate an existing table, or tried to delete a table currently in the @CREATING@ state.
 --
 --
 _ResourceInUseException :: AsError a => Getting (First ServiceError) a ServiceError
-_ResourceInUseException = _MatchServiceError dynamoDB "ResourceInUseException"
-
+_ResourceInUseException
+  = _MatchServiceError dynamoDB
+      "ResourceInUseException"

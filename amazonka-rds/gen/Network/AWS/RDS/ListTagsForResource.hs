@@ -43,22 +43,18 @@ module Network.AWS.RDS.ListTagsForResource
 import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.RDS.Types
-import Network.AWS.RDS.Types.Product
 import Network.AWS.Request
 import Network.AWS.Response
 
--- |
+-- | 
 --
 --
 --
 -- /See:/ 'listTagsForResource' smart constructor.
-data ListTagsForResource =
-  ListTagsForResource'
-    { _ltfrFilters      :: !(Maybe [Filter])
-    , _ltfrResourceName :: !Text
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data ListTagsForResource = ListTagsForResource'{_ltfrFilters
+                                                :: !(Maybe [Filter]),
+                                                _ltfrResourceName :: !Text}
+                             deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'ListTagsForResource' with the minimum fields required to make a request.
 --
@@ -70,10 +66,9 @@ data ListTagsForResource =
 listTagsForResource
     :: Text -- ^ 'ltfrResourceName'
     -> ListTagsForResource
-listTagsForResource pResourceName_ =
-  ListTagsForResource'
-    {_ltfrFilters = Nothing, _ltfrResourceName = pResourceName_}
-
+listTagsForResource pResourceName_
+  = ListTagsForResource'{_ltfrFilters = Nothing,
+                         _ltfrResourceName = pResourceName_}
 
 -- | This parameter is not currently supported.
 ltfrFilters :: Lens' ListTagsForResource [Filter]
@@ -114,18 +109,18 @@ instance ToQuery ListTagsForResource where
                  toQuery (toQueryList "Filter" <$> _ltfrFilters),
                "ResourceName" =: _ltfrResourceName]
 
--- |
+-- | 
 --
 --
 --
 -- /See:/ 'listTagsForResourceResponse' smart constructor.
-data ListTagsForResourceResponse =
-  ListTagsForResourceResponse'
-    { _ltfrrsTagList        :: !(Maybe [Tag])
-    , _ltfrrsResponseStatus :: !Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data ListTagsForResourceResponse = ListTagsForResourceResponse'{_ltfrrsTagList
+                                                                ::
+                                                                !(Maybe [Tag]),
+                                                                _ltfrrsResponseStatus
+                                                                :: !Int}
+                                     deriving (Eq, Read, Show, Data, Typeable,
+                                               Generic)
 
 -- | Creates a value of 'ListTagsForResourceResponse' with the minimum fields required to make a request.
 --
@@ -137,10 +132,10 @@ data ListTagsForResourceResponse =
 listTagsForResourceResponse
     :: Int -- ^ 'ltfrrsResponseStatus'
     -> ListTagsForResourceResponse
-listTagsForResourceResponse pResponseStatus_ =
-  ListTagsForResourceResponse'
-    {_ltfrrsTagList = Nothing, _ltfrrsResponseStatus = pResponseStatus_}
-
+listTagsForResourceResponse pResponseStatus_
+  = ListTagsForResourceResponse'{_ltfrrsTagList =
+                                   Nothing,
+                                 _ltfrrsResponseStatus = pResponseStatus_}
 
 -- | List of tags returned by the ListTagsForResource operation.
 ltfrrsTagList :: Lens' ListTagsForResourceResponse [Tag]

@@ -43,22 +43,29 @@ module Network.AWS.Config.GetConformancePackComplianceDetails
     ) where
 
 import Network.AWS.Config.Types
-import Network.AWS.Config.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 
 -- | /See:/ 'getConformancePackComplianceDetails' smart constructor.
-data GetConformancePackComplianceDetails =
-  GetConformancePackComplianceDetails'
-    { _gcpcdFilters             :: !(Maybe ConformancePackEvaluationFilters)
-    , _gcpcdNextToken           :: !(Maybe Text)
-    , _gcpcdLimit               :: !(Maybe Nat)
-    , _gcpcdConformancePackName :: !Text
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data GetConformancePackComplianceDetails = GetConformancePackComplianceDetails'{_gcpcdFilters
+                                                                                ::
+                                                                                !(Maybe
+                                                                                    ConformancePackEvaluationFilters),
+                                                                                _gcpcdNextToken
+                                                                                ::
+                                                                                !(Maybe
+                                                                                    Text),
+                                                                                _gcpcdLimit
+                                                                                ::
+                                                                                !(Maybe
+                                                                                    Nat),
+                                                                                _gcpcdConformancePackName
+                                                                                ::
+                                                                                !Text}
+                                             deriving (Eq, Read, Show, Data,
+                                                       Typeable, Generic)
 
 -- | Creates a value of 'GetConformancePackComplianceDetails' with the minimum fields required to make a request.
 --
@@ -74,14 +81,14 @@ data GetConformancePackComplianceDetails =
 getConformancePackComplianceDetails
     :: Text -- ^ 'gcpcdConformancePackName'
     -> GetConformancePackComplianceDetails
-getConformancePackComplianceDetails pConformancePackName_ =
-  GetConformancePackComplianceDetails'
-    { _gcpcdFilters = Nothing
-    , _gcpcdNextToken = Nothing
-    , _gcpcdLimit = Nothing
-    , _gcpcdConformancePackName = pConformancePackName_
-    }
-
+getConformancePackComplianceDetails
+  pConformancePackName_
+  = GetConformancePackComplianceDetails'{_gcpcdFilters
+                                           = Nothing,
+                                         _gcpcdNextToken = Nothing,
+                                         _gcpcdLimit = Nothing,
+                                         _gcpcdConformancePackName =
+                                           pConformancePackName_}
 
 -- | A @ConformancePackEvaluationFilters@ object.
 gcpcdFilters :: Lens' GetConformancePackComplianceDetails (Maybe ConformancePackEvaluationFilters)
@@ -154,15 +161,23 @@ instance ToQuery GetConformancePackComplianceDetails
         toQuery = const mempty
 
 -- | /See:/ 'getConformancePackComplianceDetailsResponse' smart constructor.
-data GetConformancePackComplianceDetailsResponse =
-  GetConformancePackComplianceDetailsResponse'
-    { _gcpcdrsNextToken :: !(Maybe Text)
-    , _gcpcdrsConformancePackRuleEvaluationResults :: !(Maybe [ConformancePackEvaluationResult])
-    , _gcpcdrsResponseStatus :: !Int
-    , _gcpcdrsConformancePackName :: !Text
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data GetConformancePackComplianceDetailsResponse = GetConformancePackComplianceDetailsResponse'{_gcpcdrsNextToken
+                                                                                                ::
+                                                                                                !(Maybe
+                                                                                                    Text),
+                                                                                                _gcpcdrsConformancePackRuleEvaluationResults
+                                                                                                ::
+                                                                                                !(Maybe
+                                                                                                    [ConformancePackEvaluationResult]),
+                                                                                                _gcpcdrsResponseStatus
+                                                                                                ::
+                                                                                                !Int,
+                                                                                                _gcpcdrsConformancePackName
+                                                                                                ::
+                                                                                                !Text}
+                                                     deriving (Eq, Read, Show,
+                                                               Data, Typeable,
+                                                               Generic)
 
 -- | Creates a value of 'GetConformancePackComplianceDetailsResponse' with the minimum fields required to make a request.
 --
@@ -179,14 +194,16 @@ getConformancePackComplianceDetailsResponse
     :: Int -- ^ 'gcpcdrsResponseStatus'
     -> Text -- ^ 'gcpcdrsConformancePackName'
     -> GetConformancePackComplianceDetailsResponse
-getConformancePackComplianceDetailsResponse pResponseStatus_ pConformancePackName_ =
-  GetConformancePackComplianceDetailsResponse'
-    { _gcpcdrsNextToken = Nothing
-    , _gcpcdrsConformancePackRuleEvaluationResults = Nothing
-    , _gcpcdrsResponseStatus = pResponseStatus_
-    , _gcpcdrsConformancePackName = pConformancePackName_
-    }
-
+getConformancePackComplianceDetailsResponse
+  pResponseStatus_ pConformancePackName_
+  = GetConformancePackComplianceDetailsResponse'{_gcpcdrsNextToken
+                                                   = Nothing,
+                                                 _gcpcdrsConformancePackRuleEvaluationResults
+                                                   = Nothing,
+                                                 _gcpcdrsResponseStatus =
+                                                   pResponseStatus_,
+                                                 _gcpcdrsConformancePackName =
+                                                   pConformancePackName_}
 
 -- | The @nextToken@ string returned in a previous request that you use to request the next page of results in a paginated response.
 gcpcdrsNextToken :: Lens' GetConformancePackComplianceDetailsResponse (Maybe Text)

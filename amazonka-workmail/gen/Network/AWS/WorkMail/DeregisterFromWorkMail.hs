@@ -42,16 +42,13 @@ import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 import Network.AWS.WorkMail.Types
-import Network.AWS.WorkMail.Types.Product
 
 -- | /See:/ 'deregisterFromWorkMail' smart constructor.
-data DeregisterFromWorkMail =
-  DeregisterFromWorkMail'
-    { _dfwmOrganizationId :: !Text
-    , _dfwmEntityId       :: !Text
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data DeregisterFromWorkMail = DeregisterFromWorkMail'{_dfwmOrganizationId
+                                                      :: !Text,
+                                                      _dfwmEntityId :: !Text}
+                                deriving (Eq, Read, Show, Data, Typeable,
+                                          Generic)
 
 -- | Creates a value of 'DeregisterFromWorkMail' with the minimum fields required to make a request.
 --
@@ -64,10 +61,10 @@ deregisterFromWorkMail
     :: Text -- ^ 'dfwmOrganizationId'
     -> Text -- ^ 'dfwmEntityId'
     -> DeregisterFromWorkMail
-deregisterFromWorkMail pOrganizationId_ pEntityId_ =
-  DeregisterFromWorkMail'
-    {_dfwmOrganizationId = pOrganizationId_, _dfwmEntityId = pEntityId_}
-
+deregisterFromWorkMail pOrganizationId_ pEntityId_
+  = DeregisterFromWorkMail'{_dfwmOrganizationId =
+                              pOrganizationId_,
+                            _dfwmEntityId = pEntityId_}
 
 -- | The identifier for the organization under which the Amazon WorkMail entity exists.
 dfwmOrganizationId :: Lens' DeregisterFromWorkMail Text
@@ -115,12 +112,10 @@ instance ToQuery DeregisterFromWorkMail where
         toQuery = const mempty
 
 -- | /See:/ 'deregisterFromWorkMailResponse' smart constructor.
-newtype DeregisterFromWorkMailResponse =
-  DeregisterFromWorkMailResponse'
-    { _dfwmrsResponseStatus :: Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+newtype DeregisterFromWorkMailResponse = DeregisterFromWorkMailResponse'{_dfwmrsResponseStatus
+                                                                         :: Int}
+                                           deriving (Eq, Read, Show, Data,
+                                                     Typeable, Generic)
 
 -- | Creates a value of 'DeregisterFromWorkMailResponse' with the minimum fields required to make a request.
 --
@@ -130,9 +125,9 @@ newtype DeregisterFromWorkMailResponse =
 deregisterFromWorkMailResponse
     :: Int -- ^ 'dfwmrsResponseStatus'
     -> DeregisterFromWorkMailResponse
-deregisterFromWorkMailResponse pResponseStatus_ =
-  DeregisterFromWorkMailResponse' {_dfwmrsResponseStatus = pResponseStatus_}
-
+deregisterFromWorkMailResponse pResponseStatus_
+  = DeregisterFromWorkMailResponse'{_dfwmrsResponseStatus
+                                      = pResponseStatus_}
 
 -- | -- | The response status code.
 dfwmrsResponseStatus :: Lens' DeregisterFromWorkMailResponse Int

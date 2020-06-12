@@ -47,22 +47,20 @@ module Network.AWS.Organizations.ListPoliciesForTarget
 
 import Network.AWS.Lens
 import Network.AWS.Organizations.Types
-import Network.AWS.Organizations.Types.Product
 import Network.AWS.Pager
 import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 
 -- | /See:/ 'listPoliciesForTarget' smart constructor.
-data ListPoliciesForTarget =
-  ListPoliciesForTarget'
-    { _lpftNextToken  :: !(Maybe Text)
-    , _lpftMaxResults :: !(Maybe Nat)
-    , _lpftTargetId   :: !Text
-    , _lpftFilter     :: !PolicyType
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data ListPoliciesForTarget = ListPoliciesForTarget'{_lpftNextToken
+                                                    :: !(Maybe Text),
+                                                    _lpftMaxResults ::
+                                                    !(Maybe Nat),
+                                                    _lpftTargetId :: !Text,
+                                                    _lpftFilter :: !PolicyType}
+                               deriving (Eq, Read, Show, Data, Typeable,
+                                         Generic)
 
 -- | Creates a value of 'ListPoliciesForTarget' with the minimum fields required to make a request.
 --
@@ -79,14 +77,10 @@ listPoliciesForTarget
     :: Text -- ^ 'lpftTargetId'
     -> PolicyType -- ^ 'lpftFilter'
     -> ListPoliciesForTarget
-listPoliciesForTarget pTargetId_ pFilter_ =
-  ListPoliciesForTarget'
-    { _lpftNextToken = Nothing
-    , _lpftMaxResults = Nothing
-    , _lpftTargetId = pTargetId_
-    , _lpftFilter = pFilter_
-    }
-
+listPoliciesForTarget pTargetId_ pFilter_
+  = ListPoliciesForTarget'{_lpftNextToken = Nothing,
+                           _lpftMaxResults = Nothing,
+                           _lpftTargetId = pTargetId_, _lpftFilter = pFilter_}
 
 -- | Use this parameter if you receive a @NextToken@ response in a previous request that indicates that there is more output available. Set it to the value of the previous call's @NextToken@ response to indicate where the output should continue from.
 lpftNextToken :: Lens' ListPoliciesForTarget (Maybe Text)
@@ -152,14 +146,18 @@ instance ToQuery ListPoliciesForTarget where
         toQuery = const mempty
 
 -- | /See:/ 'listPoliciesForTargetResponse' smart constructor.
-data ListPoliciesForTargetResponse =
-  ListPoliciesForTargetResponse'
-    { _lpftrsNextToken      :: !(Maybe Text)
-    , _lpftrsPolicies       :: !(Maybe [PolicySummary])
-    , _lpftrsResponseStatus :: !Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data ListPoliciesForTargetResponse = ListPoliciesForTargetResponse'{_lpftrsNextToken
+                                                                    ::
+                                                                    !(Maybe
+                                                                        Text),
+                                                                    _lpftrsPolicies
+                                                                    ::
+                                                                    !(Maybe
+                                                                        [PolicySummary]),
+                                                                    _lpftrsResponseStatus
+                                                                    :: !Int}
+                                       deriving (Eq, Read, Show, Data, Typeable,
+                                                 Generic)
 
 -- | Creates a value of 'ListPoliciesForTargetResponse' with the minimum fields required to make a request.
 --
@@ -173,13 +171,11 @@ data ListPoliciesForTargetResponse =
 listPoliciesForTargetResponse
     :: Int -- ^ 'lpftrsResponseStatus'
     -> ListPoliciesForTargetResponse
-listPoliciesForTargetResponse pResponseStatus_ =
-  ListPoliciesForTargetResponse'
-    { _lpftrsNextToken = Nothing
-    , _lpftrsPolicies = Nothing
-    , _lpftrsResponseStatus = pResponseStatus_
-    }
-
+listPoliciesForTargetResponse pResponseStatus_
+  = ListPoliciesForTargetResponse'{_lpftrsNextToken =
+                                     Nothing,
+                                   _lpftrsPolicies = Nothing,
+                                   _lpftrsResponseStatus = pResponseStatus_}
 
 -- | If present, this value indicates that there is more output available than is included in the current response. Use this value in the @NextToken@ request parameter in a subsequent call to the operation to get the next part of the output. You should repeat this until the @NextToken@ response element comes back as @null@ .
 lpftrsNextToken :: Lens' ListPoliciesForTargetResponse (Maybe Text)

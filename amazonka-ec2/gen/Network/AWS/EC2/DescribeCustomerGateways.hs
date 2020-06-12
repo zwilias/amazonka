@@ -42,7 +42,6 @@ module Network.AWS.EC2.DescribeCustomerGateways
     ) where
 
 import Network.AWS.EC2.Types
-import Network.AWS.EC2.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.Request
@@ -53,14 +52,14 @@ import Network.AWS.Response
 --
 --
 -- /See:/ 'describeCustomerGateways' smart constructor.
-data DescribeCustomerGateways =
-  DescribeCustomerGateways'
-    { _dcgCustomerGatewayIds :: !(Maybe [Text])
-    , _dcgFilters            :: !(Maybe [Filter])
-    , _dcgDryRun             :: !(Maybe Bool)
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data DescribeCustomerGateways = DescribeCustomerGateways'{_dcgCustomerGatewayIds
+                                                          :: !(Maybe [Text]),
+                                                          _dcgFilters ::
+                                                          !(Maybe [Filter]),
+                                                          _dcgDryRun ::
+                                                          !(Maybe Bool)}
+                                  deriving (Eq, Read, Show, Data, Typeable,
+                                            Generic)
 
 -- | Creates a value of 'DescribeCustomerGateways' with the minimum fields required to make a request.
 --
@@ -73,13 +72,10 @@ data DescribeCustomerGateways =
 -- * 'dcgDryRun' - Checks whether you have the required permissions for the action, without actually making the request, and provides an error response. If you have the required permissions, the error response is @DryRunOperation@ . Otherwise, it is @UnauthorizedOperation@ .
 describeCustomerGateways
     :: DescribeCustomerGateways
-describeCustomerGateways =
-  DescribeCustomerGateways'
-    { _dcgCustomerGatewayIds = Nothing
-    , _dcgFilters = Nothing
-    , _dcgDryRun = Nothing
-    }
-
+describeCustomerGateways
+  = DescribeCustomerGateways'{_dcgCustomerGatewayIds =
+                                Nothing,
+                              _dcgFilters = Nothing, _dcgDryRun = Nothing}
 
 -- | One or more customer gateway IDs. Default: Describes all your customer gateways.
 dcgCustomerGatewayIds :: Lens' DescribeCustomerGateways [Text]
@@ -132,13 +128,15 @@ instance ToQuery DescribeCustomerGateways where
 --
 --
 -- /See:/ 'describeCustomerGatewaysResponse' smart constructor.
-data DescribeCustomerGatewaysResponse =
-  DescribeCustomerGatewaysResponse'
-    { _dcgrsCustomerGateways :: !(Maybe [CustomerGateway])
-    , _dcgrsResponseStatus   :: !Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data DescribeCustomerGatewaysResponse = DescribeCustomerGatewaysResponse'{_dcgrsCustomerGateways
+                                                                          ::
+                                                                          !(Maybe
+                                                                              [CustomerGateway]),
+                                                                          _dcgrsResponseStatus
+                                                                          ::
+                                                                          !Int}
+                                          deriving (Eq, Read, Show, Data,
+                                                    Typeable, Generic)
 
 -- | Creates a value of 'DescribeCustomerGatewaysResponse' with the minimum fields required to make a request.
 --
@@ -150,10 +148,10 @@ data DescribeCustomerGatewaysResponse =
 describeCustomerGatewaysResponse
     :: Int -- ^ 'dcgrsResponseStatus'
     -> DescribeCustomerGatewaysResponse
-describeCustomerGatewaysResponse pResponseStatus_ =
-  DescribeCustomerGatewaysResponse'
-    {_dcgrsCustomerGateways = Nothing, _dcgrsResponseStatus = pResponseStatus_}
-
+describeCustomerGatewaysResponse pResponseStatus_
+  = DescribeCustomerGatewaysResponse'{_dcgrsCustomerGateways
+                                        = Nothing,
+                                      _dcgrsResponseStatus = pResponseStatus_}
 
 -- | Information about one or more customer gateways.
 dcgrsCustomerGateways :: Lens' DescribeCustomerGatewaysResponse [CustomerGateway]

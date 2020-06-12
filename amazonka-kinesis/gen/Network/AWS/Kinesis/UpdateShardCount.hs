@@ -64,21 +64,17 @@ module Network.AWS.Kinesis.UpdateShardCount
     ) where
 
 import Network.AWS.Kinesis.Types
-import Network.AWS.Kinesis.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 
 -- | /See:/ 'updateShardCount' smart constructor.
-data UpdateShardCount =
-  UpdateShardCount'
-    { _uscStreamName       :: !Text
-    , _uscTargetShardCount :: !Nat
-    , _uscScalingType      :: !ScalingType
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data UpdateShardCount = UpdateShardCount'{_uscStreamName
+                                          :: !Text,
+                                          _uscTargetShardCount :: !Nat,
+                                          _uscScalingType :: !ScalingType}
+                          deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'UpdateShardCount' with the minimum fields required to make a request.
 --
@@ -94,13 +90,11 @@ updateShardCount
     -> Natural -- ^ 'uscTargetShardCount'
     -> ScalingType -- ^ 'uscScalingType'
     -> UpdateShardCount
-updateShardCount pStreamName_ pTargetShardCount_ pScalingType_ =
-  UpdateShardCount'
-    { _uscStreamName = pStreamName_
-    , _uscTargetShardCount = _Nat # pTargetShardCount_
-    , _uscScalingType = pScalingType_
-    }
-
+updateShardCount pStreamName_ pTargetShardCount_
+  pScalingType_
+  = UpdateShardCount'{_uscStreamName = pStreamName_,
+                      _uscTargetShardCount = _Nat # pTargetShardCount_,
+                      _uscScalingType = pScalingType_}
 
 -- | The name of the stream.
 uscStreamName :: Lens' UpdateShardCount Text
@@ -153,15 +147,16 @@ instance ToQuery UpdateShardCount where
         toQuery = const mempty
 
 -- | /See:/ 'updateShardCountResponse' smart constructor.
-data UpdateShardCountResponse =
-  UpdateShardCountResponse'
-    { _uscrsTargetShardCount  :: !(Maybe Nat)
-    , _uscrsStreamName        :: !(Maybe Text)
-    , _uscrsCurrentShardCount :: !(Maybe Nat)
-    , _uscrsResponseStatus    :: !Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data UpdateShardCountResponse = UpdateShardCountResponse'{_uscrsTargetShardCount
+                                                          :: !(Maybe Nat),
+                                                          _uscrsStreamName ::
+                                                          !(Maybe Text),
+                                                          _uscrsCurrentShardCount
+                                                          :: !(Maybe Nat),
+                                                          _uscrsResponseStatus
+                                                          :: !Int}
+                                  deriving (Eq, Read, Show, Data, Typeable,
+                                            Generic)
 
 -- | Creates a value of 'UpdateShardCountResponse' with the minimum fields required to make a request.
 --
@@ -177,14 +172,12 @@ data UpdateShardCountResponse =
 updateShardCountResponse
     :: Int -- ^ 'uscrsResponseStatus'
     -> UpdateShardCountResponse
-updateShardCountResponse pResponseStatus_ =
-  UpdateShardCountResponse'
-    { _uscrsTargetShardCount = Nothing
-    , _uscrsStreamName = Nothing
-    , _uscrsCurrentShardCount = Nothing
-    , _uscrsResponseStatus = pResponseStatus_
-    }
-
+updateShardCountResponse pResponseStatus_
+  = UpdateShardCountResponse'{_uscrsTargetShardCount =
+                                Nothing,
+                              _uscrsStreamName = Nothing,
+                              _uscrsCurrentShardCount = Nothing,
+                              _uscrsResponseStatus = pResponseStatus_}
 
 -- | The updated number of shards.
 uscrsTargetShardCount :: Lens' UpdateShardCountResponse (Maybe Natural)

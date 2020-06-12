@@ -41,7 +41,6 @@ module Network.AWS.IoT.CreateThingType
     ) where
 
 import Network.AWS.IoT.Types
-import Network.AWS.IoT.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.Request
@@ -52,13 +51,10 @@ import Network.AWS.Response
 --
 --
 -- /See:/ 'createThingType' smart constructor.
-data CreateThingType =
-  CreateThingType'
-    { _cttThingTypeProperties :: !(Maybe ThingTypeProperties)
-    , _cttThingTypeName       :: !Text
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data CreateThingType = CreateThingType'{_cttThingTypeProperties
+                                        :: !(Maybe ThingTypeProperties),
+                                        _cttThingTypeName :: !Text}
+                         deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'CreateThingType' with the minimum fields required to make a request.
 --
@@ -70,10 +66,9 @@ data CreateThingType =
 createThingType
     :: Text -- ^ 'cttThingTypeName'
     -> CreateThingType
-createThingType pThingTypeName_ =
-  CreateThingType'
-    {_cttThingTypeProperties = Nothing, _cttThingTypeName = pThingTypeName_}
-
+createThingType pThingTypeName_
+  = CreateThingType'{_cttThingTypeProperties = Nothing,
+                     _cttThingTypeName = pThingTypeName_}
 
 -- | The ThingTypeProperties for the thing type to create. It contains information about the new thing type including a description, and a list of searchable thing attribute names.
 cttThingTypeProperties :: Lens' CreateThingType (Maybe ThingTypeProperties)
@@ -120,15 +115,16 @@ instance ToQuery CreateThingType where
 --
 --
 -- /See:/ 'createThingTypeResponse' smart constructor.
-data CreateThingTypeResponse =
-  CreateThingTypeResponse'
-    { _cttrsThingTypeName  :: !(Maybe Text)
-    , _cttrsThingTypeId    :: !(Maybe Text)
-    , _cttrsThingTypeARN   :: !(Maybe Text)
-    , _cttrsResponseStatus :: !Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data CreateThingTypeResponse = CreateThingTypeResponse'{_cttrsThingTypeName
+                                                        :: !(Maybe Text),
+                                                        _cttrsThingTypeId ::
+                                                        !(Maybe Text),
+                                                        _cttrsThingTypeARN ::
+                                                        !(Maybe Text),
+                                                        _cttrsResponseStatus ::
+                                                        !Int}
+                                 deriving (Eq, Read, Show, Data, Typeable,
+                                           Generic)
 
 -- | Creates a value of 'CreateThingTypeResponse' with the minimum fields required to make a request.
 --
@@ -144,14 +140,12 @@ data CreateThingTypeResponse =
 createThingTypeResponse
     :: Int -- ^ 'cttrsResponseStatus'
     -> CreateThingTypeResponse
-createThingTypeResponse pResponseStatus_ =
-  CreateThingTypeResponse'
-    { _cttrsThingTypeName = Nothing
-    , _cttrsThingTypeId = Nothing
-    , _cttrsThingTypeARN = Nothing
-    , _cttrsResponseStatus = pResponseStatus_
-    }
-
+createThingTypeResponse pResponseStatus_
+  = CreateThingTypeResponse'{_cttrsThingTypeName =
+                               Nothing,
+                             _cttrsThingTypeId = Nothing,
+                             _cttrsThingTypeARN = Nothing,
+                             _cttrsResponseStatus = pResponseStatus_}
 
 -- | The name of the thing type.
 cttrsThingTypeName :: Lens' CreateThingTypeResponse (Maybe Text)

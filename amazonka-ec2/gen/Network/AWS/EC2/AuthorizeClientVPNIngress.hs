@@ -44,25 +44,28 @@ module Network.AWS.EC2.AuthorizeClientVPNIngress
     ) where
 
 import Network.AWS.EC2.Types
-import Network.AWS.EC2.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 
 -- | /See:/ 'authorizeClientVPNIngress' smart constructor.
-data AuthorizeClientVPNIngress =
-  AuthorizeClientVPNIngress'
-    { _acviClientToken         :: !(Maybe Text)
-    , _acviAccessGroupId       :: !(Maybe Text)
-    , _acviAuthorizeAllGroups  :: !(Maybe Bool)
-    , _acviDescription         :: !(Maybe Text)
-    , _acviDryRun              :: !(Maybe Bool)
-    , _acviClientVPNEndpointId :: !Text
-    , _acviTargetNetworkCidr   :: !Text
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data AuthorizeClientVPNIngress = AuthorizeClientVPNIngress'{_acviClientToken
+                                                            :: !(Maybe Text),
+                                                            _acviAccessGroupId
+                                                            :: !(Maybe Text),
+                                                            _acviAuthorizeAllGroups
+                                                            :: !(Maybe Bool),
+                                                            _acviDescription ::
+                                                            !(Maybe Text),
+                                                            _acviDryRun ::
+                                                            !(Maybe Bool),
+                                                            _acviClientVPNEndpointId
+                                                            :: !Text,
+                                                            _acviTargetNetworkCidr
+                                                            :: !Text}
+                                   deriving (Eq, Read, Show, Data, Typeable,
+                                             Generic)
 
 -- | Creates a value of 'AuthorizeClientVPNIngress' with the minimum fields required to make a request.
 --
@@ -85,17 +88,16 @@ authorizeClientVPNIngress
     :: Text -- ^ 'acviClientVPNEndpointId'
     -> Text -- ^ 'acviTargetNetworkCidr'
     -> AuthorizeClientVPNIngress
-authorizeClientVPNIngress pClientVPNEndpointId_ pTargetNetworkCidr_ =
-  AuthorizeClientVPNIngress'
-    { _acviClientToken = Nothing
-    , _acviAccessGroupId = Nothing
-    , _acviAuthorizeAllGroups = Nothing
-    , _acviDescription = Nothing
-    , _acviDryRun = Nothing
-    , _acviClientVPNEndpointId = pClientVPNEndpointId_
-    , _acviTargetNetworkCidr = pTargetNetworkCidr_
-    }
-
+authorizeClientVPNIngress pClientVPNEndpointId_
+  pTargetNetworkCidr_
+  = AuthorizeClientVPNIngress'{_acviClientToken =
+                                 Nothing,
+                               _acviAccessGroupId = Nothing,
+                               _acviAuthorizeAllGroups = Nothing,
+                               _acviDescription = Nothing,
+                               _acviDryRun = Nothing,
+                               _acviClientVPNEndpointId = pClientVPNEndpointId_,
+                               _acviTargetNetworkCidr = pTargetNetworkCidr_}
 
 -- | Unique, case-sensitive identifier that you provide to ensure the idempotency of the request. For more information, see <https://docs.aws.amazon.com/AWSEC2/latest/APIReference/Run_Instance_Idempotency.html How to Ensure Idempotency> .
 acviClientToken :: Lens' AuthorizeClientVPNIngress (Maybe Text)
@@ -160,13 +162,15 @@ instance ToQuery AuthorizeClientVPNIngress where
                "TargetNetworkCidr" =: _acviTargetNetworkCidr]
 
 -- | /See:/ 'authorizeClientVPNIngressResponse' smart constructor.
-data AuthorizeClientVPNIngressResponse =
-  AuthorizeClientVPNIngressResponse'
-    { _acvirsStatus         :: !(Maybe ClientVPNAuthorizationRuleStatus)
-    , _acvirsResponseStatus :: !Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data AuthorizeClientVPNIngressResponse = AuthorizeClientVPNIngressResponse'{_acvirsStatus
+                                                                            ::
+                                                                            !(Maybe
+                                                                                ClientVPNAuthorizationRuleStatus),
+                                                                            _acvirsResponseStatus
+                                                                            ::
+                                                                            !Int}
+                                           deriving (Eq, Read, Show, Data,
+                                                     Typeable, Generic)
 
 -- | Creates a value of 'AuthorizeClientVPNIngressResponse' with the minimum fields required to make a request.
 --
@@ -178,10 +182,10 @@ data AuthorizeClientVPNIngressResponse =
 authorizeClientVPNIngressResponse
     :: Int -- ^ 'acvirsResponseStatus'
     -> AuthorizeClientVPNIngressResponse
-authorizeClientVPNIngressResponse pResponseStatus_ =
-  AuthorizeClientVPNIngressResponse'
-    {_acvirsStatus = Nothing, _acvirsResponseStatus = pResponseStatus_}
-
+authorizeClientVPNIngressResponse pResponseStatus_
+  = AuthorizeClientVPNIngressResponse'{_acvirsStatus =
+                                         Nothing,
+                                       _acvirsResponseStatus = pResponseStatus_}
 
 -- | The current state of the authorization rule.
 acvirsStatus :: Lens' AuthorizeClientVPNIngressResponse (Maybe ClientVPNAuthorizationRuleStatus)

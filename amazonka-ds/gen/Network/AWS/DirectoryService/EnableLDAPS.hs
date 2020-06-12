@@ -38,20 +38,16 @@ module Network.AWS.DirectoryService.EnableLDAPS
     ) where
 
 import Network.AWS.DirectoryService.Types
-import Network.AWS.DirectoryService.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 
 -- | /See:/ 'enableLDAPS' smart constructor.
-data EnableLDAPS =
-  EnableLDAPS'
-    { _eldapsDirectoryId :: !Text
-    , _eldapsType        :: !LDAPSType
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data EnableLDAPS = EnableLDAPS'{_eldapsDirectoryId ::
+                                !Text,
+                                _eldapsType :: !LDAPSType}
+                     deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'EnableLDAPS' with the minimum fields required to make a request.
 --
@@ -64,9 +60,9 @@ enableLDAPS
     :: Text -- ^ 'eldapsDirectoryId'
     -> LDAPSType -- ^ 'eldapsType'
     -> EnableLDAPS
-enableLDAPS pDirectoryId_ pType_ =
-  EnableLDAPS' {_eldapsDirectoryId = pDirectoryId_, _eldapsType = pType_}
-
+enableLDAPS pDirectoryId_ pType_
+  = EnableLDAPS'{_eldapsDirectoryId = pDirectoryId_,
+                 _eldapsType = pType_}
 
 -- | The identifier of the directory.
 eldapsDirectoryId :: Lens' EnableLDAPS Text
@@ -112,12 +108,10 @@ instance ToQuery EnableLDAPS where
         toQuery = const mempty
 
 -- | /See:/ 'enableLDAPSResponse' smart constructor.
-newtype EnableLDAPSResponse =
-  EnableLDAPSResponse'
-    { _eldapsrsResponseStatus :: Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+newtype EnableLDAPSResponse = EnableLDAPSResponse'{_eldapsrsResponseStatus
+                                                   :: Int}
+                                deriving (Eq, Read, Show, Data, Typeable,
+                                          Generic)
 
 -- | Creates a value of 'EnableLDAPSResponse' with the minimum fields required to make a request.
 --
@@ -127,9 +121,9 @@ newtype EnableLDAPSResponse =
 enableLDAPSResponse
     :: Int -- ^ 'eldapsrsResponseStatus'
     -> EnableLDAPSResponse
-enableLDAPSResponse pResponseStatus_ =
-  EnableLDAPSResponse' {_eldapsrsResponseStatus = pResponseStatus_}
-
+enableLDAPSResponse pResponseStatus_
+  = EnableLDAPSResponse'{_eldapsrsResponseStatus =
+                           pResponseStatus_}
 
 -- | -- | The response status code.
 eldapsrsResponseStatus :: Lens' EnableLDAPSResponse Int

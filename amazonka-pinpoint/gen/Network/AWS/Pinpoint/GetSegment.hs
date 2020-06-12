@@ -38,19 +38,14 @@ module Network.AWS.Pinpoint.GetSegment
 
 import Network.AWS.Lens
 import Network.AWS.Pinpoint.Types
-import Network.AWS.Pinpoint.Types.Product
 import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 
 -- | /See:/ 'getSegment' smart constructor.
-data GetSegment =
-  GetSegment'
-    { _gsSegmentId     :: !Text
-    , _gsApplicationId :: !Text
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data GetSegment = GetSegment'{_gsSegmentId :: !Text,
+                              _gsApplicationId :: !Text}
+                    deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'GetSegment' with the minimum fields required to make a request.
 --
@@ -63,9 +58,9 @@ getSegment
     :: Text -- ^ 'gsSegmentId'
     -> Text -- ^ 'gsApplicationId'
     -> GetSegment
-getSegment pSegmentId_ pApplicationId_ =
-  GetSegment' {_gsSegmentId = pSegmentId_, _gsApplicationId = pApplicationId_}
-
+getSegment pSegmentId_ pApplicationId_
+  = GetSegment'{_gsSegmentId = pSegmentId_,
+                _gsApplicationId = pApplicationId_}
 
 -- | Undocumented member.
 gsSegmentId :: Lens' GetSegment Text
@@ -105,13 +100,11 @@ instance ToQuery GetSegment where
         toQuery = const mempty
 
 -- | /See:/ 'getSegmentResponse' smart constructor.
-data GetSegmentResponse =
-  GetSegmentResponse'
-    { _gssrsResponseStatus  :: !Int
-    , _gssrsSegmentResponse :: !SegmentResponse
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data GetSegmentResponse = GetSegmentResponse'{_gssrsResponseStatus
+                                              :: !Int,
+                                              _gssrsSegmentResponse ::
+                                              !SegmentResponse}
+                            deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'GetSegmentResponse' with the minimum fields required to make a request.
 --
@@ -124,12 +117,10 @@ getSegmentResponse
     :: Int -- ^ 'gssrsResponseStatus'
     -> SegmentResponse -- ^ 'gssrsSegmentResponse'
     -> GetSegmentResponse
-getSegmentResponse pResponseStatus_ pSegmentResponse_ =
-  GetSegmentResponse'
-    { _gssrsResponseStatus = pResponseStatus_
-    , _gssrsSegmentResponse = pSegmentResponse_
-    }
-
+getSegmentResponse pResponseStatus_ pSegmentResponse_
+  = GetSegmentResponse'{_gssrsResponseStatus =
+                          pResponseStatus_,
+                        _gssrsSegmentResponse = pSegmentResponse_}
 
 -- | -- | The response status code.
 gssrsResponseStatus :: Lens' GetSegmentResponse Int

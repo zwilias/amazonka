@@ -41,22 +41,31 @@ module Network.AWS.EC2.DeregisterTransitGatewayMulticastGroupSources
     ) where
 
 import Network.AWS.EC2.Types
-import Network.AWS.EC2.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 
 -- | /See:/ 'deregisterTransitGatewayMulticastGroupSources' smart constructor.
-data DeregisterTransitGatewayMulticastGroupSources =
-  DeregisterTransitGatewayMulticastGroupSources'
-    { _dtgmgsNetworkInterfaceIds             :: !(Maybe [Text])
-    , _dtgmgsTransitGatewayMulticastDomainId :: !(Maybe Text)
-    , _dtgmgsGroupIPAddress                  :: !(Maybe Text)
-    , _dtgmgsDryRun                          :: !(Maybe Bool)
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data DeregisterTransitGatewayMulticastGroupSources = DeregisterTransitGatewayMulticastGroupSources'{_dtgmgsNetworkInterfaceIds
+                                                                                                    ::
+                                                                                                    !(Maybe
+                                                                                                        [Text]),
+                                                                                                    _dtgmgsTransitGatewayMulticastDomainId
+                                                                                                    ::
+                                                                                                    !(Maybe
+                                                                                                        Text),
+                                                                                                    _dtgmgsGroupIPAddress
+                                                                                                    ::
+                                                                                                    !(Maybe
+                                                                                                        Text),
+                                                                                                    _dtgmgsDryRun
+                                                                                                    ::
+                                                                                                    !(Maybe
+                                                                                                        Bool)}
+                                                       deriving (Eq, Read, Show,
+                                                                 Data, Typeable,
+                                                                 Generic)
 
 -- | Creates a value of 'DeregisterTransitGatewayMulticastGroupSources' with the minimum fields required to make a request.
 --
@@ -71,14 +80,14 @@ data DeregisterTransitGatewayMulticastGroupSources =
 -- * 'dtgmgsDryRun' - Checks whether you have the required permissions for the action, without actually making the request, and provides an error response. If you have the required permissions, the error response is @DryRunOperation@ . Otherwise, it is @UnauthorizedOperation@ .
 deregisterTransitGatewayMulticastGroupSources
     :: DeregisterTransitGatewayMulticastGroupSources
-deregisterTransitGatewayMulticastGroupSources =
-  DeregisterTransitGatewayMulticastGroupSources'
-    { _dtgmgsNetworkInterfaceIds = Nothing
-    , _dtgmgsTransitGatewayMulticastDomainId = Nothing
-    , _dtgmgsGroupIPAddress = Nothing
-    , _dtgmgsDryRun = Nothing
-    }
-
+deregisterTransitGatewayMulticastGroupSources
+  = DeregisterTransitGatewayMulticastGroupSources'{_dtgmgsNetworkInterfaceIds
+                                                     = Nothing,
+                                                   _dtgmgsTransitGatewayMulticastDomainId
+                                                     = Nothing,
+                                                   _dtgmgsGroupIPAddress =
+                                                     Nothing,
+                                                   _dtgmgsDryRun = Nothing}
 
 -- | The IDs of the group sources' network interfaces.
 dtgmgsNetworkInterfaceIds :: Lens' DeregisterTransitGatewayMulticastGroupSources [Text]
@@ -148,13 +157,19 @@ instance ToQuery
                "DryRun" =: _dtgmgsDryRun]
 
 -- | /See:/ 'deregisterTransitGatewayMulticastGroupSourcesResponse' smart constructor.
-data DeregisterTransitGatewayMulticastGroupSourcesResponse =
-  DeregisterTransitGatewayMulticastGroupSourcesResponse'
-    { _dtgmgsrsDeregisteredMulticastGroupSources :: !(Maybe TransitGatewayMulticastDeregisteredGroupSources)
-    , _dtgmgsrsResponseStatus :: !Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data DeregisterTransitGatewayMulticastGroupSourcesResponse = DeregisterTransitGatewayMulticastGroupSourcesResponse'{_dtgmgsrsDeregisteredMulticastGroupSources
+                                                                                                                    ::
+                                                                                                                    !(Maybe
+                                                                                                                        TransitGatewayMulticastDeregisteredGroupSources),
+                                                                                                                    _dtgmgsrsResponseStatus
+                                                                                                                    ::
+                                                                                                                    !Int}
+                                                               deriving (Eq,
+                                                                         Read,
+                                                                         Show,
+                                                                         Data,
+                                                                         Typeable,
+                                                                         Generic)
 
 -- | Creates a value of 'DeregisterTransitGatewayMulticastGroupSourcesResponse' with the minimum fields required to make a request.
 --
@@ -166,12 +181,12 @@ data DeregisterTransitGatewayMulticastGroupSourcesResponse =
 deregisterTransitGatewayMulticastGroupSourcesResponse
     :: Int -- ^ 'dtgmgsrsResponseStatus'
     -> DeregisterTransitGatewayMulticastGroupSourcesResponse
-deregisterTransitGatewayMulticastGroupSourcesResponse pResponseStatus_ =
-  DeregisterTransitGatewayMulticastGroupSourcesResponse'
-    { _dtgmgsrsDeregisteredMulticastGroupSources = Nothing
-    , _dtgmgsrsResponseStatus = pResponseStatus_
-    }
-
+deregisterTransitGatewayMulticastGroupSourcesResponse
+  pResponseStatus_
+  = DeregisterTransitGatewayMulticastGroupSourcesResponse'{_dtgmgsrsDeregisteredMulticastGroupSources
+                                                             = Nothing,
+                                                           _dtgmgsrsResponseStatus
+                                                             = pResponseStatus_}
 
 -- | Information about the deregistered group sources.
 dtgmgsrsDeregisteredMulticastGroupSources :: Lens' DeregisterTransitGatewayMulticastGroupSourcesResponse (Maybe TransitGatewayMulticastDeregisteredGroupSources)

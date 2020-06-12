@@ -25,11 +25,11 @@
 --
 --     * If a version with a @SecretVersionId@ with the same value as the @ClientRequestToken@ parameter already exists, the operation generates an error. You cannot modify an existing version, you can only create new ones.
 --
---     * If you include @SecretString@ or @SecretBinary@ to create a new secret version, Secrets Manager automatically attaches the staging label @AWSCURRENT@ to the new version.
+--     * If you include @SecretString@ or @SecretBinary@ to create a new secret version, Secrets Manager automatically attaches the staging label @AWSCURRENT@ to the new version. 
 --
 --
 --
--- __Minimum permissions__
+-- __Minimum permissions__ 
 --
 -- To run this command, you must have the following permissions:
 --
@@ -41,7 +41,7 @@
 --
 --
 --
--- __Related operations__
+-- __Related operations__ 
 --
 --     * To create a new secret, use 'CreateSecret' .
 --
@@ -81,20 +81,16 @@ import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 import Network.AWS.SecretsManager.Types
-import Network.AWS.SecretsManager.Types.Product
 
 -- | /See:/ 'updateSecret' smart constructor.
-data UpdateSecret =
-  UpdateSecret'
-    { _usSecretBinary       :: !(Maybe (Sensitive Base64))
-    , _usKMSKeyId           :: !(Maybe Text)
-    , _usSecretString       :: !(Maybe (Sensitive Text))
-    , _usClientRequestToken :: !(Maybe Text)
-    , _usDescription        :: !(Maybe Text)
-    , _usSecretId           :: !Text
-    }
-  deriving (Eq, Show, Data, Typeable, Generic)
-
+data UpdateSecret = UpdateSecret'{_usSecretBinary ::
+                                  !(Maybe (Sensitive Base64)),
+                                  _usKMSKeyId :: !(Maybe Text),
+                                  _usSecretString :: !(Maybe (Sensitive Text)),
+                                  _usClientRequestToken :: !(Maybe Text),
+                                  _usDescription :: !(Maybe Text),
+                                  _usSecretId :: !Text}
+                      deriving (Eq, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'UpdateSecret' with the minimum fields required to make a request.
 --
@@ -102,7 +98,7 @@ data UpdateSecret =
 --
 -- * 'usSecretBinary' - (Optional) Specifies binary data that you want to encrypt and store in the new version of the secret. To use this parameter in the command-line tools, we recommend that you store your binary data in a file and then use the appropriate technique for your tool to pass the contents of the file as a parameter. Either @SecretBinary@ or @SecretString@ must have a value, but not both. They cannot both be empty. This parameter is not accessible using the Secrets Manager console.-- /Note:/ This 'Lens' automatically encodes and decodes Base64 data. The underlying isomorphism will encode to Base64 representation during serialisation, and decode from Base64 representation during deserialisation. This 'Lens' accepts and returns only raw unencoded data.
 --
--- * 'usKMSKeyId' - (Optional) Specifies the ARN or alias of the KMS customer master key (CMK) to be used to encrypt the protected text in the versions of this secret. If you don't specify this value, then Secrets Manager defaults to using the default CMK in the account (the one named @aws/secretsmanager@ ). If a KMS CMK with that name doesn't exist, then Secrets Manager creates it for you automatically the first time it needs to encrypt a version's @Plaintext@ or @PlaintextString@ fields. /Important:/ You can only use the account's default CMK to encrypt and decrypt if you call this operation using credentials from the same account that owns the secret. If the secret is in a different account, then you must create a custom CMK and provide the ARN in this field.
+-- * 'usKMSKeyId' - (Optional) Specifies the ARN or alias of the KMS customer master key (CMK) to be used to encrypt the protected text in the versions of this secret. If you don't specify this value, then Secrets Manager defaults to using the default CMK in the account (the one named @aws/secretsmanager@ ). If a KMS CMK with that name doesn't exist, then Secrets Manager creates it for you automatically the first time it needs to encrypt a version's @Plaintext@ or @PlaintextString@ fields. /Important:/ You can only use the account's default CMK to encrypt and decrypt if you call this operation using credentials from the same account that owns the secret. If the secret is in a different account, then you must create a custom CMK and provide the ARN in this field. 
 --
 -- * 'usSecretString' - (Optional) Specifies text data that you want to encrypt and store in this new version of the secret. Either @SecretBinary@ or @SecretString@ must have a value, but not both. They cannot both be empty. If you create this secret by using the Secrets Manager console then Secrets Manager puts the protected secret text in only the @SecretString@ parameter. The Secrets Manager console stores the information as a JSON structure of key/value pairs that the default Lambda rotation function knows how to parse. For storing multiple values, we recommend that you use a JSON text string argument and specify key/value pairs. For information on how to format a JSON parameter for the various command line tool environments, see <http://docs.aws.amazon.com/cli/latest/userguide/cli-using-param.html#cli-using-param-json Using JSON for Parameters> in the /AWS CLI User Guide/ .
 --
@@ -114,22 +110,17 @@ data UpdateSecret =
 updateSecret
     :: Text -- ^ 'usSecretId'
     -> UpdateSecret
-updateSecret pSecretId_ =
-  UpdateSecret'
-    { _usSecretBinary = Nothing
-    , _usKMSKeyId = Nothing
-    , _usSecretString = Nothing
-    , _usClientRequestToken = Nothing
-    , _usDescription = Nothing
-    , _usSecretId = pSecretId_
-    }
-
+updateSecret pSecretId_
+  = UpdateSecret'{_usSecretBinary = Nothing,
+                  _usKMSKeyId = Nothing, _usSecretString = Nothing,
+                  _usClientRequestToken = Nothing,
+                  _usDescription = Nothing, _usSecretId = pSecretId_}
 
 -- | (Optional) Specifies binary data that you want to encrypt and store in the new version of the secret. To use this parameter in the command-line tools, we recommend that you store your binary data in a file and then use the appropriate technique for your tool to pass the contents of the file as a parameter. Either @SecretBinary@ or @SecretString@ must have a value, but not both. They cannot both be empty. This parameter is not accessible using the Secrets Manager console.-- /Note:/ This 'Lens' automatically encodes and decodes Base64 data. The underlying isomorphism will encode to Base64 representation during serialisation, and decode from Base64 representation during deserialisation. This 'Lens' accepts and returns only raw unencoded data.
 usSecretBinary :: Lens' UpdateSecret (Maybe ByteString)
 usSecretBinary = lens _usSecretBinary (\ s a -> s{_usSecretBinary = a}) . mapping (_Sensitive . _Base64)
 
--- | (Optional) Specifies the ARN or alias of the KMS customer master key (CMK) to be used to encrypt the protected text in the versions of this secret. If you don't specify this value, then Secrets Manager defaults to using the default CMK in the account (the one named @aws/secretsmanager@ ). If a KMS CMK with that name doesn't exist, then Secrets Manager creates it for you automatically the first time it needs to encrypt a version's @Plaintext@ or @PlaintextString@ fields. /Important:/ You can only use the account's default CMK to encrypt and decrypt if you call this operation using credentials from the same account that owns the secret. If the secret is in a different account, then you must create a custom CMK and provide the ARN in this field.
+-- | (Optional) Specifies the ARN or alias of the KMS customer master key (CMK) to be used to encrypt the protected text in the versions of this secret. If you don't specify this value, then Secrets Manager defaults to using the default CMK in the account (the one named @aws/secretsmanager@ ). If a KMS CMK with that name doesn't exist, then Secrets Manager creates it for you automatically the first time it needs to encrypt a version's @Plaintext@ or @PlaintextString@ fields. /Important:/ You can only use the account's default CMK to encrypt and decrypt if you call this operation using credentials from the same account that owns the secret. If the secret is in a different account, then you must create a custom CMK and provide the ARN in this field. 
 usKMSKeyId :: Lens' UpdateSecret (Maybe Text)
 usKMSKeyId = lens _usKMSKeyId (\ s a -> s{_usKMSKeyId = a})
 
@@ -191,15 +182,12 @@ instance ToQuery UpdateSecret where
         toQuery = const mempty
 
 -- | /See:/ 'updateSecretResponse' smart constructor.
-data UpdateSecretResponse =
-  UpdateSecretResponse'
-    { _usrsVersionId      :: !(Maybe Text)
-    , _usrsARN            :: !(Maybe Text)
-    , _usrsName           :: !(Maybe Text)
-    , _usrsResponseStatus :: !Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data UpdateSecretResponse = UpdateSecretResponse'{_usrsVersionId
+                                                  :: !(Maybe Text),
+                                                  _usrsARN :: !(Maybe Text),
+                                                  _usrsName :: !(Maybe Text),
+                                                  _usrsResponseStatus :: !Int}
+                              deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'UpdateSecretResponse' with the minimum fields required to make a request.
 --
@@ -215,14 +203,10 @@ data UpdateSecretResponse =
 updateSecretResponse
     :: Int -- ^ 'usrsResponseStatus'
     -> UpdateSecretResponse
-updateSecretResponse pResponseStatus_ =
-  UpdateSecretResponse'
-    { _usrsVersionId = Nothing
-    , _usrsARN = Nothing
-    , _usrsName = Nothing
-    , _usrsResponseStatus = pResponseStatus_
-    }
-
+updateSecretResponse pResponseStatus_
+  = UpdateSecretResponse'{_usrsVersionId = Nothing,
+                          _usrsARN = Nothing, _usrsName = Nothing,
+                          _usrsResponseStatus = pResponseStatus_}
 
 -- | If a version of the secret was created or updated by this operation, then its unique identifier is returned.
 usrsVersionId :: Lens' UpdateSecretResponse (Maybe Text)

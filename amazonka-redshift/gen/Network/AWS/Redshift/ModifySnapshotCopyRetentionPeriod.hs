@@ -41,22 +41,22 @@ module Network.AWS.Redshift.ModifySnapshotCopyRetentionPeriod
 import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.Redshift.Types
-import Network.AWS.Redshift.Types.Product
 import Network.AWS.Request
 import Network.AWS.Response
 
--- |
+-- | 
 --
 --
 --
 -- /See:/ 'modifySnapshotCopyRetentionPeriod' smart constructor.
-data ModifySnapshotCopyRetentionPeriod =
-  ModifySnapshotCopyRetentionPeriod'
-    { _mscrpClusterIdentifier :: !Text
-    , _mscrpRetentionPeriod   :: !Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data ModifySnapshotCopyRetentionPeriod = ModifySnapshotCopyRetentionPeriod'{_mscrpClusterIdentifier
+                                                                            ::
+                                                                            !Text,
+                                                                            _mscrpRetentionPeriod
+                                                                            ::
+                                                                            !Int}
+                                           deriving (Eq, Read, Show, Data,
+                                                     Typeable, Generic)
 
 -- | Creates a value of 'ModifySnapshotCopyRetentionPeriod' with the minimum fields required to make a request.
 --
@@ -69,12 +69,12 @@ modifySnapshotCopyRetentionPeriod
     :: Text -- ^ 'mscrpClusterIdentifier'
     -> Int -- ^ 'mscrpRetentionPeriod'
     -> ModifySnapshotCopyRetentionPeriod
-modifySnapshotCopyRetentionPeriod pClusterIdentifier_ pRetentionPeriod_ =
-  ModifySnapshotCopyRetentionPeriod'
-    { _mscrpClusterIdentifier = pClusterIdentifier_
-    , _mscrpRetentionPeriod = pRetentionPeriod_
-    }
-
+modifySnapshotCopyRetentionPeriod pClusterIdentifier_
+  pRetentionPeriod_
+  = ModifySnapshotCopyRetentionPeriod'{_mscrpClusterIdentifier
+                                         = pClusterIdentifier_,
+                                       _mscrpRetentionPeriod =
+                                         pRetentionPeriod_}
 
 -- | The unique identifier of the cluster for which you want to change the retention period for automated snapshots that are copied to a destination region. Constraints: Must be the valid name of an existing cluster that has cross-region snapshot copy enabled.
 mscrpClusterIdentifier :: Lens' ModifySnapshotCopyRetentionPeriod Text
@@ -121,13 +121,16 @@ instance ToQuery ModifySnapshotCopyRetentionPeriod
                "RetentionPeriod" =: _mscrpRetentionPeriod]
 
 -- | /See:/ 'modifySnapshotCopyRetentionPeriodResponse' smart constructor.
-data ModifySnapshotCopyRetentionPeriodResponse =
-  ModifySnapshotCopyRetentionPeriodResponse'
-    { _mscrprsCluster        :: !(Maybe Cluster)
-    , _mscrprsResponseStatus :: !Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data ModifySnapshotCopyRetentionPeriodResponse = ModifySnapshotCopyRetentionPeriodResponse'{_mscrprsCluster
+                                                                                            ::
+                                                                                            !(Maybe
+                                                                                                Cluster),
+                                                                                            _mscrprsResponseStatus
+                                                                                            ::
+                                                                                            !Int}
+                                                   deriving (Eq, Read, Show,
+                                                             Data, Typeable,
+                                                             Generic)
 
 -- | Creates a value of 'ModifySnapshotCopyRetentionPeriodResponse' with the minimum fields required to make a request.
 --
@@ -139,10 +142,12 @@ data ModifySnapshotCopyRetentionPeriodResponse =
 modifySnapshotCopyRetentionPeriodResponse
     :: Int -- ^ 'mscrprsResponseStatus'
     -> ModifySnapshotCopyRetentionPeriodResponse
-modifySnapshotCopyRetentionPeriodResponse pResponseStatus_ =
-  ModifySnapshotCopyRetentionPeriodResponse'
-    {_mscrprsCluster = Nothing, _mscrprsResponseStatus = pResponseStatus_}
-
+modifySnapshotCopyRetentionPeriodResponse
+  pResponseStatus_
+  = ModifySnapshotCopyRetentionPeriodResponse'{_mscrprsCluster
+                                                 = Nothing,
+                                               _mscrprsResponseStatus =
+                                                 pResponseStatus_}
 
 -- | Undocumented member.
 mscrprsCluster :: Lens' ModifySnapshotCopyRetentionPeriodResponse (Maybe Cluster)

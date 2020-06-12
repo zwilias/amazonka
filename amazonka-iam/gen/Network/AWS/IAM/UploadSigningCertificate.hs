@@ -41,20 +41,18 @@ module Network.AWS.IAM.UploadSigningCertificate
     ) where
 
 import Network.AWS.IAM.Types
-import Network.AWS.IAM.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 
 -- | /See:/ 'uploadSigningCertificate' smart constructor.
-data UploadSigningCertificate =
-  UploadSigningCertificate'
-    { _uplUserName        :: !(Maybe Text)
-    , _uplCertificateBody :: !Text
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data UploadSigningCertificate = UploadSigningCertificate'{_uplUserName
+                                                          :: !(Maybe Text),
+                                                          _uplCertificateBody ::
+                                                          !Text}
+                                  deriving (Eq, Read, Show, Data, Typeable,
+                                            Generic)
 
 -- | Creates a value of 'UploadSigningCertificate' with the minimum fields required to make a request.
 --
@@ -66,10 +64,9 @@ data UploadSigningCertificate =
 uploadSigningCertificate
     :: Text -- ^ 'uplCertificateBody'
     -> UploadSigningCertificate
-uploadSigningCertificate pCertificateBody_ =
-  UploadSigningCertificate'
-    {_uplUserName = Nothing, _uplCertificateBody = pCertificateBody_}
-
+uploadSigningCertificate pCertificateBody_
+  = UploadSigningCertificate'{_uplUserName = Nothing,
+                              _uplCertificateBody = pCertificateBody_}
 
 -- | The name of the user the signing certificate is for. This parameter allows (per its <http://wikipedia.org/wiki/regex regex pattern> ) a string of characters consisting of upper and lowercase alphanumeric characters with no spaces. You can also include any of the following characters: _+=,.@-
 uplUserName :: Lens' UploadSigningCertificate (Maybe Text)
@@ -108,18 +105,19 @@ instance ToQuery UploadSigningCertificate where
                "UserName" =: _uplUserName,
                "CertificateBody" =: _uplCertificateBody]
 
--- | Contains the response to a successful 'UploadSigningCertificate' request.
+-- | Contains the response to a successful 'UploadSigningCertificate' request. 
 --
 --
 --
 -- /See:/ 'uploadSigningCertificateResponse' smart constructor.
-data UploadSigningCertificateResponse =
-  UploadSigningCertificateResponse'
-    { _uscrsResponseStatus :: !Int
-    , _uscrsCertificate    :: !SigningCertificate
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data UploadSigningCertificateResponse = UploadSigningCertificateResponse'{_uscrsResponseStatus
+                                                                          ::
+                                                                          !Int,
+                                                                          _uscrsCertificate
+                                                                          ::
+                                                                          !SigningCertificate}
+                                          deriving (Eq, Read, Show, Data,
+                                                    Typeable, Generic)
 
 -- | Creates a value of 'UploadSigningCertificateResponse' with the minimum fields required to make a request.
 --
@@ -132,10 +130,11 @@ uploadSigningCertificateResponse
     :: Int -- ^ 'uscrsResponseStatus'
     -> SigningCertificate -- ^ 'uscrsCertificate'
     -> UploadSigningCertificateResponse
-uploadSigningCertificateResponse pResponseStatus_ pCertificate_ =
-  UploadSigningCertificateResponse'
-    {_uscrsResponseStatus = pResponseStatus_, _uscrsCertificate = pCertificate_}
-
+uploadSigningCertificateResponse pResponseStatus_
+  pCertificate_
+  = UploadSigningCertificateResponse'{_uscrsResponseStatus
+                                        = pResponseStatus_,
+                                      _uscrsCertificate = pCertificate_}
 
 -- | -- | The response status code.
 uscrsResponseStatus :: Lens' UploadSigningCertificateResponse Int

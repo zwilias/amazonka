@@ -41,20 +41,16 @@ module Network.AWS.IAM.CreateGroup
     ) where
 
 import Network.AWS.IAM.Types
-import Network.AWS.IAM.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 
 -- | /See:/ 'createGroup' smart constructor.
-data CreateGroup =
-  CreateGroup'
-    { _cgPath      :: !(Maybe Text)
-    , _cgGroupName :: !Text
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data CreateGroup = CreateGroup'{_cgPath ::
+                                !(Maybe Text),
+                                _cgGroupName :: !Text}
+                     deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'CreateGroup' with the minimum fields required to make a request.
 --
@@ -66,9 +62,9 @@ data CreateGroup =
 createGroup
     :: Text -- ^ 'cgGroupName'
     -> CreateGroup
-createGroup pGroupName_ =
-  CreateGroup' {_cgPath = Nothing, _cgGroupName = pGroupName_}
-
+createGroup pGroupName_
+  = CreateGroup'{_cgPath = Nothing,
+                 _cgGroupName = pGroupName_}
 
 -- | The path to the group. For more information about paths, see <http://docs.aws.amazon.com/IAM/latest/UserGuide/Using_Identifiers.html IAM Identifiers> in the /IAM User Guide/ . This parameter is optional. If it is not included, it defaults to a slash (/). This parameter allows (per its <http://wikipedia.org/wiki/regex regex pattern> ) a string of characters consisting of either a forward slash (/) by itself or a string that must begin and end with forward slashes. In addition, it can contain any ASCII character from the ! (\u0021) through the DEL character (\u007F), including most punctuation characters, digits, and upper and lowercased letters.
 cgPath :: Lens' CreateGroup (Maybe Text)
@@ -104,18 +100,15 @@ instance ToQuery CreateGroup where
                "Version" =: ("2010-05-08" :: ByteString),
                "Path" =: _cgPath, "GroupName" =: _cgGroupName]
 
--- | Contains the response to a successful 'CreateGroup' request.
+-- | Contains the response to a successful 'CreateGroup' request. 
 --
 --
 --
 -- /See:/ 'createGroupResponse' smart constructor.
-data CreateGroupResponse =
-  CreateGroupResponse'
-    { _cgrsResponseStatus :: !Int
-    , _cgrsGroup          :: !Group
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data CreateGroupResponse = CreateGroupResponse'{_cgrsResponseStatus
+                                                :: !Int,
+                                                _cgrsGroup :: !Group}
+                             deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'CreateGroupResponse' with the minimum fields required to make a request.
 --
@@ -128,10 +121,10 @@ createGroupResponse
     :: Int -- ^ 'cgrsResponseStatus'
     -> Group -- ^ 'cgrsGroup'
     -> CreateGroupResponse
-createGroupResponse pResponseStatus_ pGroup_ =
-  CreateGroupResponse'
-    {_cgrsResponseStatus = pResponseStatus_, _cgrsGroup = pGroup_}
-
+createGroupResponse pResponseStatus_ pGroup_
+  = CreateGroupResponse'{_cgrsResponseStatus =
+                           pResponseStatus_,
+                         _cgrsGroup = pGroup_}
 
 -- | -- | The response status code.
 cgrsResponseStatus :: Lens' CreateGroupResponse Int

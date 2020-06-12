@@ -43,7 +43,6 @@ module Network.AWS.Connect.ListHoursOfOperations
     ) where
 
 import Network.AWS.Connect.Types
-import Network.AWS.Connect.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Pager
 import Network.AWS.Prelude
@@ -51,14 +50,13 @@ import Network.AWS.Request
 import Network.AWS.Response
 
 -- | /See:/ 'listHoursOfOperations' smart constructor.
-data ListHoursOfOperations =
-  ListHoursOfOperations'
-    { _lhooNextToken  :: !(Maybe Text)
-    , _lhooMaxResults :: !(Maybe Nat)
-    , _lhooInstanceId :: !Text
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data ListHoursOfOperations = ListHoursOfOperations'{_lhooNextToken
+                                                    :: !(Maybe Text),
+                                                    _lhooMaxResults ::
+                                                    !(Maybe Nat),
+                                                    _lhooInstanceId :: !Text}
+                               deriving (Eq, Read, Show, Data, Typeable,
+                                         Generic)
 
 -- | Creates a value of 'ListHoursOfOperations' with the minimum fields required to make a request.
 --
@@ -72,13 +70,10 @@ data ListHoursOfOperations =
 listHoursOfOperations
     :: Text -- ^ 'lhooInstanceId'
     -> ListHoursOfOperations
-listHoursOfOperations pInstanceId_ =
-  ListHoursOfOperations'
-    { _lhooNextToken = Nothing
-    , _lhooMaxResults = Nothing
-    , _lhooInstanceId = pInstanceId_
-    }
-
+listHoursOfOperations pInstanceId_
+  = ListHoursOfOperations'{_lhooNextToken = Nothing,
+                           _lhooMaxResults = Nothing,
+                           _lhooInstanceId = pInstanceId_}
 
 -- | The token for the next set of results. Use the value returned in the previous response in the next request to retrieve the next set of results.
 lhooNextToken :: Lens' ListHoursOfOperations (Maybe Text)
@@ -136,14 +131,18 @@ instance ToQuery ListHoursOfOperations where
                "maxResults" =: _lhooMaxResults]
 
 -- | /See:/ 'listHoursOfOperationsResponse' smart constructor.
-data ListHoursOfOperationsResponse =
-  ListHoursOfOperationsResponse'
-    { _lhoorsNextToken                   :: !(Maybe Text)
-    , _lhoorsHoursOfOperationSummaryList :: !(Maybe [HoursOfOperationSummary])
-    , _lhoorsResponseStatus              :: !Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data ListHoursOfOperationsResponse = ListHoursOfOperationsResponse'{_lhoorsNextToken
+                                                                    ::
+                                                                    !(Maybe
+                                                                        Text),
+                                                                    _lhoorsHoursOfOperationSummaryList
+                                                                    ::
+                                                                    !(Maybe
+                                                                        [HoursOfOperationSummary]),
+                                                                    _lhoorsResponseStatus
+                                                                    :: !Int}
+                                       deriving (Eq, Read, Show, Data, Typeable,
+                                                 Generic)
 
 -- | Creates a value of 'ListHoursOfOperationsResponse' with the minimum fields required to make a request.
 --
@@ -157,13 +156,11 @@ data ListHoursOfOperationsResponse =
 listHoursOfOperationsResponse
     :: Int -- ^ 'lhoorsResponseStatus'
     -> ListHoursOfOperationsResponse
-listHoursOfOperationsResponse pResponseStatus_ =
-  ListHoursOfOperationsResponse'
-    { _lhoorsNextToken = Nothing
-    , _lhoorsHoursOfOperationSummaryList = Nothing
-    , _lhoorsResponseStatus = pResponseStatus_
-    }
-
+listHoursOfOperationsResponse pResponseStatus_
+  = ListHoursOfOperationsResponse'{_lhoorsNextToken =
+                                     Nothing,
+                                   _lhoorsHoursOfOperationSummaryList = Nothing,
+                                   _lhoorsResponseStatus = pResponseStatus_}
 
 -- | If there are additional results, this is the token for the next set of results.
 lhoorsNextToken :: Lens' ListHoursOfOperationsResponse (Maybe Text)

@@ -45,17 +45,13 @@ import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 import Network.AWS.StepFunctions.Types
-import Network.AWS.StepFunctions.Types.Product
 
 -- | /See:/ 'createStateMachine' smart constructor.
-data CreateStateMachine =
-  CreateStateMachine'
-    { _csmName       :: !Text
-    , _csmDefinition :: !Text
-    , _csmRoleARN    :: !Text
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data CreateStateMachine = CreateStateMachine'{_csmName
+                                              :: !Text,
+                                              _csmDefinition :: !Text,
+                                              _csmRoleARN :: !Text}
+                            deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'CreateStateMachine' with the minimum fields required to make a request.
 --
@@ -71,10 +67,10 @@ createStateMachine
     -> Text -- ^ 'csmDefinition'
     -> Text -- ^ 'csmRoleARN'
     -> CreateStateMachine
-createStateMachine pName_ pDefinition_ pRoleARN_ =
-  CreateStateMachine'
-    {_csmName = pName_, _csmDefinition = pDefinition_, _csmRoleARN = pRoleARN_}
-
+createStateMachine pName_ pDefinition_ pRoleARN_
+  = CreateStateMachine'{_csmName = pName_,
+                        _csmDefinition = pDefinition_,
+                        _csmRoleARN = pRoleARN_}
 
 -- | The name of the state machine. This name must be unique for your AWS account and region for 90 days. For more information, see <http://docs.aws.amazon.com/step-functions/latest/dg/limits.html#service-limits-state-machine-executions Limits Related to State Machine Executions> in the /AWS Step Functions Developer Guide/ . A name must /not/ contain:     * whitespace     * brackets @< > { } [ ]@      * wildcard characters @? *@      * special characters @" # % \ ^ | ~ ` $ & , ; : /@      * control characters (@U+0000-001F@ , @U+007F-009F@ )
 csmName :: Lens' CreateStateMachine Text
@@ -128,14 +124,14 @@ instance ToQuery CreateStateMachine where
         toQuery = const mempty
 
 -- | /See:/ 'createStateMachineResponse' smart constructor.
-data CreateStateMachineResponse =
-  CreateStateMachineResponse'
-    { _csmrsResponseStatus  :: !Int
-    , _csmrsStateMachineARN :: !Text
-    , _csmrsCreationDate    :: !POSIX
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data CreateStateMachineResponse = CreateStateMachineResponse'{_csmrsResponseStatus
+                                                              :: !Int,
+                                                              _csmrsStateMachineARN
+                                                              :: !Text,
+                                                              _csmrsCreationDate
+                                                              :: !POSIX}
+                                    deriving (Eq, Read, Show, Data, Typeable,
+                                              Generic)
 
 -- | Creates a value of 'CreateStateMachineResponse' with the minimum fields required to make a request.
 --
@@ -151,13 +147,12 @@ createStateMachineResponse
     -> Text -- ^ 'csmrsStateMachineARN'
     -> UTCTime -- ^ 'csmrsCreationDate'
     -> CreateStateMachineResponse
-createStateMachineResponse pResponseStatus_ pStateMachineARN_ pCreationDate_ =
-  CreateStateMachineResponse'
-    { _csmrsResponseStatus = pResponseStatus_
-    , _csmrsStateMachineARN = pStateMachineARN_
-    , _csmrsCreationDate = _Time # pCreationDate_
-    }
-
+createStateMachineResponse pResponseStatus_
+  pStateMachineARN_ pCreationDate_
+  = CreateStateMachineResponse'{_csmrsResponseStatus =
+                                  pResponseStatus_,
+                                _csmrsStateMachineARN = pStateMachineARN_,
+                                _csmrsCreationDate = _Time # pCreationDate_}
 
 -- | -- | The response status code.
 csmrsResponseStatus :: Lens' CreateStateMachineResponse Int

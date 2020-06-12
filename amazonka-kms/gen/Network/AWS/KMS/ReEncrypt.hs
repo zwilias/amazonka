@@ -18,7 +18,7 @@
 -- Stability   : auto-generated
 -- Portability : non-portable (GHC extensions)
 --
--- Encrypts data on the server side with a new customer master key (CMK) without exposing the plaintext of the data on the client side. The data is first decrypted and then reencrypted. You can also use this operation to change the encryption context of a ciphertext.
+-- Encrypts data on the server side with a new customer master key (CMK) without exposing the plaintext of the data on the client side. The data is first decrypted and then reencrypted. You can also use this operation to change the encryption context of a ciphertext. 
 --
 --
 -- You can reencrypt data using CMKs in different AWS accounts.
@@ -48,23 +48,20 @@ module Network.AWS.KMS.ReEncrypt
     ) where
 
 import Network.AWS.KMS.Types
-import Network.AWS.KMS.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 
 -- | /See:/ 'reEncrypt' smart constructor.
-data ReEncrypt =
-  ReEncrypt'
-    { _reDestinationEncryptionContext :: !(Maybe (Map Text Text))
-    , _reSourceEncryptionContext      :: !(Maybe (Map Text Text))
-    , _reGrantTokens                  :: !(Maybe [Text])
-    , _reCiphertextBlob               :: !Base64
-    , _reDestinationKeyId             :: !Text
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data ReEncrypt = ReEncrypt'{_reDestinationEncryptionContext
+                            :: !(Maybe (Map Text Text)),
+                            _reSourceEncryptionContext ::
+                            !(Maybe (Map Text Text)),
+                            _reGrantTokens :: !(Maybe [Text]),
+                            _reCiphertextBlob :: !Base64,
+                            _reDestinationKeyId :: !Text}
+                   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'ReEncrypt' with the minimum fields required to make a request.
 --
@@ -83,15 +80,13 @@ reEncrypt
     :: ByteString -- ^ 'reCiphertextBlob'
     -> Text -- ^ 'reDestinationKeyId'
     -> ReEncrypt
-reEncrypt pCiphertextBlob_ pDestinationKeyId_ =
-  ReEncrypt'
-    { _reDestinationEncryptionContext = Nothing
-    , _reSourceEncryptionContext = Nothing
-    , _reGrantTokens = Nothing
-    , _reCiphertextBlob = _Base64 # pCiphertextBlob_
-    , _reDestinationKeyId = pDestinationKeyId_
-    }
-
+reEncrypt pCiphertextBlob_ pDestinationKeyId_
+  = ReEncrypt'{_reDestinationEncryptionContext =
+                 Nothing,
+               _reSourceEncryptionContext = Nothing,
+               _reGrantTokens = Nothing,
+               _reCiphertextBlob = _Base64 # pCiphertextBlob_,
+               _reDestinationKeyId = pDestinationKeyId_}
 
 -- | Encryption context to use when the data is reencrypted.
 reDestinationEncryptionContext :: Lens' ReEncrypt (HashMap Text Text)
@@ -156,15 +151,13 @@ instance ToQuery ReEncrypt where
         toQuery = const mempty
 
 -- | /See:/ 'reEncryptResponse' smart constructor.
-data ReEncryptResponse =
-  ReEncryptResponse'
-    { _rersSourceKeyId    :: !(Maybe Text)
-    , _rersKeyId          :: !(Maybe Text)
-    , _rersCiphertextBlob :: !(Maybe Base64)
-    , _rersResponseStatus :: !Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data ReEncryptResponse = ReEncryptResponse'{_rersSourceKeyId
+                                            :: !(Maybe Text),
+                                            _rersKeyId :: !(Maybe Text),
+                                            _rersCiphertextBlob ::
+                                            !(Maybe Base64),
+                                            _rersResponseStatus :: !Int}
+                           deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'ReEncryptResponse' with the minimum fields required to make a request.
 --
@@ -180,14 +173,10 @@ data ReEncryptResponse =
 reEncryptResponse
     :: Int -- ^ 'rersResponseStatus'
     -> ReEncryptResponse
-reEncryptResponse pResponseStatus_ =
-  ReEncryptResponse'
-    { _rersSourceKeyId = Nothing
-    , _rersKeyId = Nothing
-    , _rersCiphertextBlob = Nothing
-    , _rersResponseStatus = pResponseStatus_
-    }
-
+reEncryptResponse pResponseStatus_
+  = ReEncryptResponse'{_rersSourceKeyId = Nothing,
+                       _rersKeyId = Nothing, _rersCiphertextBlob = Nothing,
+                       _rersResponseStatus = pResponseStatus_}
 
 -- | Unique identifier of the CMK used to originally encrypt the data.
 rersSourceKeyId :: Lens' ReEncryptResponse (Maybe Text)

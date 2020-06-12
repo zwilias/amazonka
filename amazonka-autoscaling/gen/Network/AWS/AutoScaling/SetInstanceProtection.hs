@@ -41,21 +41,20 @@ module Network.AWS.AutoScaling.SetInstanceProtection
     ) where
 
 import Network.AWS.AutoScaling.Types
-import Network.AWS.AutoScaling.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 
 -- | /See:/ 'setInstanceProtection' smart constructor.
-data SetInstanceProtection =
-  SetInstanceProtection'
-    { _sipInstanceIds          :: ![Text]
-    , _sipAutoScalingGroupName :: !Text
-    , _sipProtectedFromScaleIn :: !Bool
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data SetInstanceProtection = SetInstanceProtection'{_sipInstanceIds
+                                                    :: ![Text],
+                                                    _sipAutoScalingGroupName ::
+                                                    !Text,
+                                                    _sipProtectedFromScaleIn ::
+                                                    !Bool}
+                               deriving (Eq, Read, Show, Data, Typeable,
+                                         Generic)
 
 -- | Creates a value of 'SetInstanceProtection' with the minimum fields required to make a request.
 --
@@ -70,13 +69,11 @@ setInstanceProtection
     :: Text -- ^ 'sipAutoScalingGroupName'
     -> Bool -- ^ 'sipProtectedFromScaleIn'
     -> SetInstanceProtection
-setInstanceProtection pAutoScalingGroupName_ pProtectedFromScaleIn_ =
-  SetInstanceProtection'
-    { _sipInstanceIds = mempty
-    , _sipAutoScalingGroupName = pAutoScalingGroupName_
-    , _sipProtectedFromScaleIn = pProtectedFromScaleIn_
-    }
-
+setInstanceProtection pAutoScalingGroupName_
+  pProtectedFromScaleIn_
+  = SetInstanceProtection'{_sipInstanceIds = mempty,
+                           _sipAutoScalingGroupName = pAutoScalingGroupName_,
+                           _sipProtectedFromScaleIn = pProtectedFromScaleIn_}
 
 -- | One or more instance IDs.
 sipInstanceIds :: Lens' SetInstanceProtection [Text]
@@ -121,12 +118,10 @@ instance ToQuery SetInstanceProtection where
                "ProtectedFromScaleIn" =: _sipProtectedFromScaleIn]
 
 -- | /See:/ 'setInstanceProtectionResponse' smart constructor.
-newtype SetInstanceProtectionResponse =
-  SetInstanceProtectionResponse'
-    { _siprsResponseStatus :: Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+newtype SetInstanceProtectionResponse = SetInstanceProtectionResponse'{_siprsResponseStatus
+                                                                       :: Int}
+                                          deriving (Eq, Read, Show, Data,
+                                                    Typeable, Generic)
 
 -- | Creates a value of 'SetInstanceProtectionResponse' with the minimum fields required to make a request.
 --
@@ -136,9 +131,9 @@ newtype SetInstanceProtectionResponse =
 setInstanceProtectionResponse
     :: Int -- ^ 'siprsResponseStatus'
     -> SetInstanceProtectionResponse
-setInstanceProtectionResponse pResponseStatus_ =
-  SetInstanceProtectionResponse' {_siprsResponseStatus = pResponseStatus_}
-
+setInstanceProtectionResponse pResponseStatus_
+  = SetInstanceProtectionResponse'{_siprsResponseStatus
+                                     = pResponseStatus_}
 
 -- | -- | The response status code.
 siprsResponseStatus :: Lens' SetInstanceProtectionResponse Int

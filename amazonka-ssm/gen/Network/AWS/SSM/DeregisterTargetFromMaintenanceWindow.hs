@@ -45,17 +45,20 @@ import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 import Network.AWS.SSM.Types
-import Network.AWS.SSM.Types.Product
 
 -- | /See:/ 'deregisterTargetFromMaintenanceWindow' smart constructor.
-data DeregisterTargetFromMaintenanceWindow =
-  DeregisterTargetFromMaintenanceWindow'
-    { _dtfmwSafe           :: !(Maybe Bool)
-    , _dtfmwWindowId       :: !Text
-    , _dtfmwWindowTargetId :: !Text
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data DeregisterTargetFromMaintenanceWindow = DeregisterTargetFromMaintenanceWindow'{_dtfmwSafe
+                                                                                    ::
+                                                                                    !(Maybe
+                                                                                        Bool),
+                                                                                    _dtfmwWindowId
+                                                                                    ::
+                                                                                    !Text,
+                                                                                    _dtfmwWindowTargetId
+                                                                                    ::
+                                                                                    !Text}
+                                               deriving (Eq, Read, Show, Data,
+                                                         Typeable, Generic)
 
 -- | Creates a value of 'DeregisterTargetFromMaintenanceWindow' with the minimum fields required to make a request.
 --
@@ -70,13 +73,13 @@ deregisterTargetFromMaintenanceWindow
     :: Text -- ^ 'dtfmwWindowId'
     -> Text -- ^ 'dtfmwWindowTargetId'
     -> DeregisterTargetFromMaintenanceWindow
-deregisterTargetFromMaintenanceWindow pWindowId_ pWindowTargetId_ =
-  DeregisterTargetFromMaintenanceWindow'
-    { _dtfmwSafe = Nothing
-    , _dtfmwWindowId = pWindowId_
-    , _dtfmwWindowTargetId = pWindowTargetId_
-    }
-
+deregisterTargetFromMaintenanceWindow pWindowId_
+  pWindowTargetId_
+  = DeregisterTargetFromMaintenanceWindow'{_dtfmwSafe =
+                                             Nothing,
+                                           _dtfmwWindowId = pWindowId_,
+                                           _dtfmwWindowTargetId =
+                                             pWindowTargetId_}
 
 -- | The system checks if the target is being referenced by a task. If the target is being referenced, the system returns an error and does not deregister the target from the Maintenance Window.
 dtfmwSafe :: Lens' DeregisterTargetFromMaintenanceWindow (Maybe Bool)
@@ -141,14 +144,20 @@ instance ToQuery
         toQuery = const mempty
 
 -- | /See:/ 'deregisterTargetFromMaintenanceWindowResponse' smart constructor.
-data DeregisterTargetFromMaintenanceWindowResponse =
-  DeregisterTargetFromMaintenanceWindowResponse'
-    { _dtfmwrsWindowTargetId :: !(Maybe Text)
-    , _dtfmwrsWindowId       :: !(Maybe Text)
-    , _dtfmwrsResponseStatus :: !Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data DeregisterTargetFromMaintenanceWindowResponse = DeregisterTargetFromMaintenanceWindowResponse'{_dtfmwrsWindowTargetId
+                                                                                                    ::
+                                                                                                    !(Maybe
+                                                                                                        Text),
+                                                                                                    _dtfmwrsWindowId
+                                                                                                    ::
+                                                                                                    !(Maybe
+                                                                                                        Text),
+                                                                                                    _dtfmwrsResponseStatus
+                                                                                                    ::
+                                                                                                    !Int}
+                                                       deriving (Eq, Read, Show,
+                                                                 Data, Typeable,
+                                                                 Generic)
 
 -- | Creates a value of 'DeregisterTargetFromMaintenanceWindowResponse' with the minimum fields required to make a request.
 --
@@ -162,13 +171,13 @@ data DeregisterTargetFromMaintenanceWindowResponse =
 deregisterTargetFromMaintenanceWindowResponse
     :: Int -- ^ 'dtfmwrsResponseStatus'
     -> DeregisterTargetFromMaintenanceWindowResponse
-deregisterTargetFromMaintenanceWindowResponse pResponseStatus_ =
-  DeregisterTargetFromMaintenanceWindowResponse'
-    { _dtfmwrsWindowTargetId = Nothing
-    , _dtfmwrsWindowId = Nothing
-    , _dtfmwrsResponseStatus = pResponseStatus_
-    }
-
+deregisterTargetFromMaintenanceWindowResponse
+  pResponseStatus_
+  = DeregisterTargetFromMaintenanceWindowResponse'{_dtfmwrsWindowTargetId
+                                                     = Nothing,
+                                                   _dtfmwrsWindowId = Nothing,
+                                                   _dtfmwrsResponseStatus =
+                                                     pResponseStatus_}
 
 -- | The ID of the removed target definition.
 dtfmwrsWindowTargetId :: Lens' DeregisterTargetFromMaintenanceWindowResponse (Maybe Text)

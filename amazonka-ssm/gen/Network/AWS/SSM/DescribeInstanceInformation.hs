@@ -18,7 +18,7 @@
 -- Stability   : auto-generated
 -- Portability : non-portable (GHC extensions)
 --
--- Describes one or more of your instances. You can use this to get information about instances like the operating system platform, the SSM Agent version (Linux), status etc. If you specify one or more instance IDs, it returns information for those instances. If you do not specify instance IDs, it returns information for all your instances. If you specify an instance ID that is not valid or an instance that you do not own, you receive an error.
+-- Describes one or more of your instances. You can use this to get information about instances like the operating system platform, the SSM Agent version (Linux), status etc. If you specify one or more instance IDs, it returns information for those instances. If you do not specify instance IDs, it returns information for all your instances. If you specify an instance ID that is not valid or an instance that you do not own, you receive an error. 
 --
 --
 --
@@ -49,18 +49,21 @@ import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 import Network.AWS.SSM.Types
-import Network.AWS.SSM.Types.Product
 
 -- | /See:/ 'describeInstanceInformation' smart constructor.
-data DescribeInstanceInformation =
-  DescribeInstanceInformation'
-    { _diiInstanceInformationFilterList :: !(Maybe [InstanceInformationFilter])
-    , _diiFilters :: !(Maybe [InstanceInformationStringFilter])
-    , _diiNextToken :: !(Maybe Text)
-    , _diiMaxResults :: !(Maybe Nat)
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data DescribeInstanceInformation = DescribeInstanceInformation'{_diiInstanceInformationFilterList
+                                                                ::
+                                                                !(Maybe
+                                                                    [InstanceInformationFilter]),
+                                                                _diiFilters ::
+                                                                !(Maybe
+                                                                    [InstanceInformationStringFilter]),
+                                                                _diiNextToken ::
+                                                                !(Maybe Text),
+                                                                _diiMaxResults
+                                                                :: !(Maybe Nat)}
+                                     deriving (Eq, Read, Show, Data, Typeable,
+                                               Generic)
 
 -- | Creates a value of 'DescribeInstanceInformation' with the minimum fields required to make a request.
 --
@@ -72,17 +75,14 @@ data DescribeInstanceInformation =
 --
 -- * 'diiNextToken' - The token for the next set of items to return. (You received this token from a previous call.)
 --
--- * 'diiMaxResults' - The maximum number of items to return for this call. The call also returns a token that you can specify in a subsequent call to get the next set of results.
+-- * 'diiMaxResults' - The maximum number of items to return for this call. The call also returns a token that you can specify in a subsequent call to get the next set of results. 
 describeInstanceInformation
     :: DescribeInstanceInformation
-describeInstanceInformation =
-  DescribeInstanceInformation'
-    { _diiInstanceInformationFilterList = Nothing
-    , _diiFilters = Nothing
-    , _diiNextToken = Nothing
-    , _diiMaxResults = Nothing
-    }
-
+describeInstanceInformation
+  = DescribeInstanceInformation'{_diiInstanceInformationFilterList
+                                   = Nothing,
+                                 _diiFilters = Nothing, _diiNextToken = Nothing,
+                                 _diiMaxResults = Nothing}
 
 -- | One or more filters. Use a filter to return a more specific list of instances.
 diiInstanceInformationFilterList :: Lens' DescribeInstanceInformation [InstanceInformationFilter]
@@ -96,7 +96,7 @@ diiFilters = lens _diiFilters (\ s a -> s{_diiFilters = a}) . _Default . _Coerce
 diiNextToken :: Lens' DescribeInstanceInformation (Maybe Text)
 diiNextToken = lens _diiNextToken (\ s a -> s{_diiNextToken = a})
 
--- | The maximum number of items to return for this call. The call also returns a token that you can specify in a subsequent call to get the next set of results.
+-- | The maximum number of items to return for this call. The call also returns a token that you can specify in a subsequent call to get the next set of results. 
 diiMaxResults :: Lens' DescribeInstanceInformation (Maybe Natural)
 diiMaxResults = lens _diiMaxResults (\ s a -> s{_diiMaxResults = a}) . mapping _Nat
 
@@ -150,20 +150,25 @@ instance ToQuery DescribeInstanceInformation where
         toQuery = const mempty
 
 -- | /See:/ 'describeInstanceInformationResponse' smart constructor.
-data DescribeInstanceInformationResponse =
-  DescribeInstanceInformationResponse'
-    { _diirsNextToken               :: !(Maybe Text)
-    , _diirsInstanceInformationList :: !(Maybe [InstanceInformation])
-    , _diirsResponseStatus          :: !Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data DescribeInstanceInformationResponse = DescribeInstanceInformationResponse'{_diirsNextToken
+                                                                                ::
+                                                                                !(Maybe
+                                                                                    Text),
+                                                                                _diirsInstanceInformationList
+                                                                                ::
+                                                                                !(Maybe
+                                                                                    [InstanceInformation]),
+                                                                                _diirsResponseStatus
+                                                                                ::
+                                                                                !Int}
+                                             deriving (Eq, Read, Show, Data,
+                                                       Typeable, Generic)
 
 -- | Creates a value of 'DescribeInstanceInformationResponse' with the minimum fields required to make a request.
 --
 -- Use one of the following lenses to modify other fields as desired:
 --
--- * 'diirsNextToken' - The token to use when requesting the next set of items. If there are no additional items to return, the string is empty.
+-- * 'diirsNextToken' - The token to use when requesting the next set of items. If there are no additional items to return, the string is empty. 
 --
 -- * 'diirsInstanceInformationList' - The instance information list.
 --
@@ -171,15 +176,15 @@ data DescribeInstanceInformationResponse =
 describeInstanceInformationResponse
     :: Int -- ^ 'diirsResponseStatus'
     -> DescribeInstanceInformationResponse
-describeInstanceInformationResponse pResponseStatus_ =
-  DescribeInstanceInformationResponse'
-    { _diirsNextToken = Nothing
-    , _diirsInstanceInformationList = Nothing
-    , _diirsResponseStatus = pResponseStatus_
-    }
+describeInstanceInformationResponse pResponseStatus_
+  = DescribeInstanceInformationResponse'{_diirsNextToken
+                                           = Nothing,
+                                         _diirsInstanceInformationList =
+                                           Nothing,
+                                         _diirsResponseStatus =
+                                           pResponseStatus_}
 
-
--- | The token to use when requesting the next set of items. If there are no additional items to return, the string is empty.
+-- | The token to use when requesting the next set of items. If there are no additional items to return, the string is empty. 
 diirsNextToken :: Lens' DescribeInstanceInformationResponse (Maybe Text)
 diirsNextToken = lens _diirsNextToken (\ s a -> s{_diirsNextToken = a})
 

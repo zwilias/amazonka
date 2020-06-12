@@ -55,8 +55,9 @@ library
         , Network.AWS.ImportExport.Waiters
 
     other-modules:
-          Network.AWS.ImportExport.Types.Product
-        , Network.AWS.ImportExport.Types.Sum
+          Network.AWS.ImportExport.Types.Artifact
+        , Network.AWS.ImportExport.Types.Job
+        , Network.AWS.ImportExport.Types.JobType
 
     build-depends:
           amazonka-core == 1.6.1.*

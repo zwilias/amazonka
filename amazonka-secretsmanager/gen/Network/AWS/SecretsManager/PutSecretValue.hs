@@ -31,7 +31,7 @@
 --
 --
 --
--- __Minimum permissions__
+-- __Minimum permissions__ 
 --
 -- To run this command, you must have the following permissions:
 --
@@ -43,7 +43,7 @@
 --
 --
 --
--- __Related operations__
+-- __Related operations__ 
 --
 --     * To retrieve the encrypted value you store in the version of a secret, use 'GetSecretValue' .
 --
@@ -83,19 +83,17 @@ import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 import Network.AWS.SecretsManager.Types
-import Network.AWS.SecretsManager.Types.Product
 
 -- | /See:/ 'putSecretValue' smart constructor.
-data PutSecretValue =
-  PutSecretValue'
-    { _psvVersionStages      :: !(Maybe (List1 Text))
-    , _psvSecretBinary       :: !(Maybe (Sensitive Base64))
-    , _psvSecretString       :: !(Maybe (Sensitive Text))
-    , _psvClientRequestToken :: !(Maybe Text)
-    , _psvSecretId           :: !Text
-    }
-  deriving (Eq, Show, Data, Typeable, Generic)
-
+data PutSecretValue = PutSecretValue'{_psvVersionStages
+                                      :: !(Maybe (List1 Text)),
+                                      _psvSecretBinary ::
+                                      !(Maybe (Sensitive Base64)),
+                                      _psvSecretString ::
+                                      !(Maybe (Sensitive Text)),
+                                      _psvClientRequestToken :: !(Maybe Text),
+                                      _psvSecretId :: !Text}
+                        deriving (Eq, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'PutSecretValue' with the minimum fields required to make a request.
 --
@@ -113,15 +111,12 @@ data PutSecretValue =
 putSecretValue
     :: Text -- ^ 'psvSecretId'
     -> PutSecretValue
-putSecretValue pSecretId_ =
-  PutSecretValue'
-    { _psvVersionStages = Nothing
-    , _psvSecretBinary = Nothing
-    , _psvSecretString = Nothing
-    , _psvClientRequestToken = Nothing
-    , _psvSecretId = pSecretId_
-    }
-
+putSecretValue pSecretId_
+  = PutSecretValue'{_psvVersionStages = Nothing,
+                    _psvSecretBinary = Nothing,
+                    _psvSecretString = Nothing,
+                    _psvClientRequestToken = Nothing,
+                    _psvSecretId = pSecretId_}
 
 -- | (Optional) Specifies a list of staging labels that are attached to this version of the secret. These staging labels are used to track the versions through the rotation process by the Lambda rotation function. A staging label must be unique to a single version of the secret. If you specify a staging label that's already associated with a different version of the same secret then that staging label is automatically removed from the other version and attached to this version. If you do not specify a value for @VersionStages@ then Secrets Manager automatically moves the staging label @AWSCURRENT@ to this new version.
 psvVersionStages :: Lens' PutSecretValue (Maybe (NonEmpty Text))
@@ -185,16 +180,18 @@ instance ToQuery PutSecretValue where
         toQuery = const mempty
 
 -- | /See:/ 'putSecretValueResponse' smart constructor.
-data PutSecretValueResponse =
-  PutSecretValueResponse'
-    { _psvrsVersionId      :: !(Maybe Text)
-    , _psvrsARN            :: !(Maybe Text)
-    , _psvrsVersionStages  :: !(Maybe (List1 Text))
-    , _psvrsName           :: !(Maybe Text)
-    , _psvrsResponseStatus :: !Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data PutSecretValueResponse = PutSecretValueResponse'{_psvrsVersionId
+                                                      :: !(Maybe Text),
+                                                      _psvrsARN ::
+                                                      !(Maybe Text),
+                                                      _psvrsVersionStages ::
+                                                      !(Maybe (List1 Text)),
+                                                      _psvrsName ::
+                                                      !(Maybe Text),
+                                                      _psvrsResponseStatus ::
+                                                      !Int}
+                                deriving (Eq, Read, Show, Data, Typeable,
+                                          Generic)
 
 -- | Creates a value of 'PutSecretValueResponse' with the minimum fields required to make a request.
 --
@@ -212,15 +209,11 @@ data PutSecretValueResponse =
 putSecretValueResponse
     :: Int -- ^ 'psvrsResponseStatus'
     -> PutSecretValueResponse
-putSecretValueResponse pResponseStatus_ =
-  PutSecretValueResponse'
-    { _psvrsVersionId = Nothing
-    , _psvrsARN = Nothing
-    , _psvrsVersionStages = Nothing
-    , _psvrsName = Nothing
-    , _psvrsResponseStatus = pResponseStatus_
-    }
-
+putSecretValueResponse pResponseStatus_
+  = PutSecretValueResponse'{_psvrsVersionId = Nothing,
+                            _psvrsARN = Nothing, _psvrsVersionStages = Nothing,
+                            _psvrsName = Nothing,
+                            _psvrsResponseStatus = pResponseStatus_}
 
 -- | The unique identifier of the version of the secret you just created or updated.
 psvrsVersionId :: Lens' PutSecretValueResponse (Maybe Text)

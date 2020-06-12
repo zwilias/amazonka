@@ -55,8 +55,16 @@ library
         , Network.AWS.Polly.Waiters
 
     other-modules:
-          Network.AWS.Polly.Types.Product
-        , Network.AWS.Polly.Types.Sum
+          Network.AWS.Polly.Types.Gender
+        , Network.AWS.Polly.Types.LanguageCode
+        , Network.AWS.Polly.Types.Lexicon
+        , Network.AWS.Polly.Types.LexiconAttributes
+        , Network.AWS.Polly.Types.LexiconDescription
+        , Network.AWS.Polly.Types.OutputFormat
+        , Network.AWS.Polly.Types.SpeechMarkType
+        , Network.AWS.Polly.Types.TextType
+        , Network.AWS.Polly.Types.Voice
+        , Network.AWS.Polly.Types.VoiceId
 
     build-depends:
           amazonka-core == 1.6.1.*

@@ -18,7 +18,7 @@
 -- Stability   : auto-generated
 -- Portability : non-portable (GHC extensions)
 --
--- Deletes a set of GitHub, GitHub Enterprise, or Bitbucket source credentials.
+-- Deletes a set of GitHub, GitHub Enterprise, or Bitbucket source credentials. 
 --
 --
 module Network.AWS.CodeBuild.DeleteSourceCredentials
@@ -38,19 +38,16 @@ module Network.AWS.CodeBuild.DeleteSourceCredentials
     ) where
 
 import Network.AWS.CodeBuild.Types
-import Network.AWS.CodeBuild.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 
 -- | /See:/ 'deleteSourceCredentials' smart constructor.
-newtype DeleteSourceCredentials =
-  DeleteSourceCredentials'
-    { _dscArn :: Text
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+newtype DeleteSourceCredentials = DeleteSourceCredentials'{_dscArn
+                                                           :: Text}
+                                    deriving (Eq, Read, Show, Data, Typeable,
+                                              Generic)
 
 -- | Creates a value of 'DeleteSourceCredentials' with the minimum fields required to make a request.
 --
@@ -60,8 +57,8 @@ newtype DeleteSourceCredentials =
 deleteSourceCredentials
     :: Text -- ^ 'dscArn'
     -> DeleteSourceCredentials
-deleteSourceCredentials pArn_ = DeleteSourceCredentials' {_dscArn = pArn_}
-
+deleteSourceCredentials pArn_
+  = DeleteSourceCredentials'{_dscArn = pArn_}
 
 -- | The Amazon Resource Name (ARN) of the token.
 dscArn :: Lens' DeleteSourceCredentials Text
@@ -102,30 +99,31 @@ instance ToQuery DeleteSourceCredentials where
         toQuery = const mempty
 
 -- | /See:/ 'deleteSourceCredentialsResponse' smart constructor.
-data DeleteSourceCredentialsResponse =
-  DeleteSourceCredentialsResponse'
-    { _dscrsArn            :: !(Maybe Text)
-    , _dscrsResponseStatus :: !Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data DeleteSourceCredentialsResponse = DeleteSourceCredentialsResponse'{_dscrsArn
+                                                                        ::
+                                                                        !(Maybe
+                                                                            Text),
+                                                                        _dscrsResponseStatus
+                                                                        :: !Int}
+                                         deriving (Eq, Read, Show, Data,
+                                                   Typeable, Generic)
 
 -- | Creates a value of 'DeleteSourceCredentialsResponse' with the minimum fields required to make a request.
 --
 -- Use one of the following lenses to modify other fields as desired:
 --
--- * 'dscrsArn' - The Amazon Resource Name (ARN) of the token.
+-- * 'dscrsArn' - The Amazon Resource Name (ARN) of the token. 
 --
 -- * 'dscrsResponseStatus' - -- | The response status code.
 deleteSourceCredentialsResponse
     :: Int -- ^ 'dscrsResponseStatus'
     -> DeleteSourceCredentialsResponse
-deleteSourceCredentialsResponse pResponseStatus_ =
-  DeleteSourceCredentialsResponse'
-    {_dscrsArn = Nothing, _dscrsResponseStatus = pResponseStatus_}
+deleteSourceCredentialsResponse pResponseStatus_
+  = DeleteSourceCredentialsResponse'{_dscrsArn =
+                                       Nothing,
+                                     _dscrsResponseStatus = pResponseStatus_}
 
-
--- | The Amazon Resource Name (ARN) of the token.
+-- | The Amazon Resource Name (ARN) of the token. 
 dscrsArn :: Lens' DeleteSourceCredentialsResponse (Maybe Text)
 dscrsArn = lens _dscrsArn (\ s a -> s{_dscrsArn = a})
 

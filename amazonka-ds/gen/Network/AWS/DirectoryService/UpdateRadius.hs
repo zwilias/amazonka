@@ -38,7 +38,6 @@ module Network.AWS.DirectoryService.UpdateRadius
     ) where
 
 import Network.AWS.DirectoryService.Types
-import Network.AWS.DirectoryService.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.Request
@@ -49,13 +48,10 @@ import Network.AWS.Response
 --
 --
 -- /See:/ 'updateRadius' smart constructor.
-data UpdateRadius =
-  UpdateRadius'
-    { _urDirectoryId    :: !Text
-    , _urRadiusSettings :: !RadiusSettings
-    }
-  deriving (Eq, Show, Data, Typeable, Generic)
-
+data UpdateRadius = UpdateRadius'{_urDirectoryId ::
+                                  !Text,
+                                  _urRadiusSettings :: !RadiusSettings}
+                      deriving (Eq, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'UpdateRadius' with the minimum fields required to make a request.
 --
@@ -68,10 +64,9 @@ updateRadius
     :: Text -- ^ 'urDirectoryId'
     -> RadiusSettings -- ^ 'urRadiusSettings'
     -> UpdateRadius
-updateRadius pDirectoryId_ pRadiusSettings_ =
-  UpdateRadius'
-    {_urDirectoryId = pDirectoryId_, _urRadiusSettings = pRadiusSettings_}
-
+updateRadius pDirectoryId_ pRadiusSettings_
+  = UpdateRadius'{_urDirectoryId = pDirectoryId_,
+                  _urRadiusSettings = pRadiusSettings_}
 
 -- | The identifier of the directory for which to update the RADIUS server information.
 urDirectoryId :: Lens' UpdateRadius Text
@@ -121,12 +116,10 @@ instance ToQuery UpdateRadius where
 --
 --
 -- /See:/ 'updateRadiusResponse' smart constructor.
-newtype UpdateRadiusResponse =
-  UpdateRadiusResponse'
-    { _urrsResponseStatus :: Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+newtype UpdateRadiusResponse = UpdateRadiusResponse'{_urrsResponseStatus
+                                                     :: Int}
+                                 deriving (Eq, Read, Show, Data, Typeable,
+                                           Generic)
 
 -- | Creates a value of 'UpdateRadiusResponse' with the minimum fields required to make a request.
 --
@@ -136,9 +129,9 @@ newtype UpdateRadiusResponse =
 updateRadiusResponse
     :: Int -- ^ 'urrsResponseStatus'
     -> UpdateRadiusResponse
-updateRadiusResponse pResponseStatus_ =
-  UpdateRadiusResponse' {_urrsResponseStatus = pResponseStatus_}
-
+updateRadiusResponse pResponseStatus_
+  = UpdateRadiusResponse'{_urrsResponseStatus =
+                            pResponseStatus_}
 
 -- | -- | The response status code.
 urrsResponseStatus :: Lens' UpdateRadiusResponse Int

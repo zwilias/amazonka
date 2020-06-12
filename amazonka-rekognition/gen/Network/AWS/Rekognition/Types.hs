@@ -1,4 +1,4 @@
-{-# LANGUAGE OverloadedStrings #-}
+{-# LANGUAGE OverloadedStrings  #-}
 
 -- Derived from AWS service descriptions, licensed under Apache 2.0.
 
@@ -395,162 +395,219 @@ module Network.AWS.Rekognition.Types
 
 import Network.AWS.Lens
 import Network.AWS.Prelude
-import Network.AWS.Rekognition.Types.Product
-import Network.AWS.Rekognition.Types.Sum
 import Network.AWS.Sign.V4
+import Network.AWS.Rekognition.Types.Attribute
+import Network.AWS.Rekognition.Types.CelebrityRecognitionSortBy
+import Network.AWS.Rekognition.Types.ContentModerationSortBy
+import Network.AWS.Rekognition.Types.EmotionName
+import Network.AWS.Rekognition.Types.FaceAttributes
+import Network.AWS.Rekognition.Types.FaceSearchSortBy
+import Network.AWS.Rekognition.Types.GenderType
+import Network.AWS.Rekognition.Types.LabelDetectionSortBy
+import Network.AWS.Rekognition.Types.LandmarkType
+import Network.AWS.Rekognition.Types.OrientationCorrection
+import Network.AWS.Rekognition.Types.PersonTrackingSortBy
+import Network.AWS.Rekognition.Types.StreamProcessorStatus
+import Network.AWS.Rekognition.Types.TextTypes
+import Network.AWS.Rekognition.Types.VideoJobStatus
+import Network.AWS.Rekognition.Types.AgeRange
+import Network.AWS.Rekognition.Types.Beard
+import Network.AWS.Rekognition.Types.BoundingBox
+import Network.AWS.Rekognition.Types.Celebrity
+import Network.AWS.Rekognition.Types.CelebrityDetail
+import Network.AWS.Rekognition.Types.CelebrityRecognition
+import Network.AWS.Rekognition.Types.CompareFacesMatch
+import Network.AWS.Rekognition.Types.ComparedFace
+import Network.AWS.Rekognition.Types.ComparedSourceImageFace
+import Network.AWS.Rekognition.Types.ContentModerationDetection
+import Network.AWS.Rekognition.Types.Emotion
+import Network.AWS.Rekognition.Types.EyeOpen
+import Network.AWS.Rekognition.Types.Eyeglasses
+import Network.AWS.Rekognition.Types.Face
+import Network.AWS.Rekognition.Types.FaceDetail
+import Network.AWS.Rekognition.Types.FaceDetection
+import Network.AWS.Rekognition.Types.FaceMatch
+import Network.AWS.Rekognition.Types.FaceRecord
+import Network.AWS.Rekognition.Types.FaceSearchSettings
+import Network.AWS.Rekognition.Types.Gender
+import Network.AWS.Rekognition.Types.Geometry
+import Network.AWS.Rekognition.Types.Image
+import Network.AWS.Rekognition.Types.ImageQuality
+import Network.AWS.Rekognition.Types.KinesisDataStream
+import Network.AWS.Rekognition.Types.KinesisVideoStream
+import Network.AWS.Rekognition.Types.Label
+import Network.AWS.Rekognition.Types.LabelDetection
+import Network.AWS.Rekognition.Types.Landmark
+import Network.AWS.Rekognition.Types.ModerationLabel
+import Network.AWS.Rekognition.Types.MouthOpen
+import Network.AWS.Rekognition.Types.Mustache
+import Network.AWS.Rekognition.Types.NotificationChannel
+import Network.AWS.Rekognition.Types.PersonDetail
+import Network.AWS.Rekognition.Types.PersonDetection
+import Network.AWS.Rekognition.Types.PersonMatch
+import Network.AWS.Rekognition.Types.Point
+import Network.AWS.Rekognition.Types.Pose
+import Network.AWS.Rekognition.Types.S3Object
+import Network.AWS.Rekognition.Types.Smile
+import Network.AWS.Rekognition.Types.StreamProcessor
+import Network.AWS.Rekognition.Types.StreamProcessorInput
+import Network.AWS.Rekognition.Types.StreamProcessorOutput
+import Network.AWS.Rekognition.Types.StreamProcessorSettings
+import Network.AWS.Rekognition.Types.Sunglasses
+import Network.AWS.Rekognition.Types.TextDetection
+import Network.AWS.Rekognition.Types.Video
+import Network.AWS.Rekognition.Types.VideoMetadata
 
 -- | API version @2016-06-27@ of the Amazon Rekognition SDK configuration.
 rekognition :: Service
-rekognition =
-  Service
-    { _svcAbbrev = "Rekognition"
-    , _svcSigner = v4
-    , _svcPrefix = "rekognition"
-    , _svcVersion = "2016-06-27"
-    , _svcEndpoint = defaultEndpoint rekognition
-    , _svcTimeout = Just 70
-    , _svcCheck = statusSuccess
-    , _svcError = parseJSONError "Rekognition"
-    , _svcRetry = retry
-    }
-  where
-    retry =
-      Exponential
-        { _retryBase = 5.0e-2
-        , _retryGrowth = 2
-        , _retryAttempts = 5
-        , _retryCheck = check
-        }
-    check e
-      | has (hasCode "ThrottledException" . hasStatus 400) e =
-        Just "throttled_exception"
-      | has (hasStatus 429) e = Just "too_many_requests"
-      | has (hasCode "ThrottlingException" . hasStatus 400) e =
-        Just "throttling_exception"
-      | has (hasCode "Throttling" . hasStatus 400) e = Just "throttling"
-      | has (hasStatus 504) e = Just "gateway_timeout"
-      | has (hasCode "RequestThrottledException" . hasStatus 400) e =
-        Just "request_throttled_exception"
-      | has (hasStatus 502) e = Just "bad_gateway"
-      | has (hasStatus 503) e = Just "service_unavailable"
-      | has (hasStatus 500) e = Just "general_server_error"
-      | has (hasStatus 509) e = Just "limit_exceeded"
-      | otherwise = Nothing
-
+rekognition
+  = Service{_svcAbbrev = "Rekognition",
+            _svcSigner = v4, _svcPrefix = "rekognition",
+            _svcVersion = "2016-06-27",
+            _svcEndpoint = defaultEndpoint rekognition,
+            _svcTimeout = Just 70, _svcCheck = statusSuccess,
+            _svcError = parseJSONError "Rekognition",
+            _svcRetry = retry}
+  where retry
+          = Exponential{_retryBase = 5.0e-2, _retryGrowth = 2,
+                        _retryAttempts = 5, _retryCheck = check}
+        check e
+          | has (hasCode "ThrottledException" . hasStatus 400)
+              e
+            = Just "throttled_exception"
+          | has (hasStatus 429) e = Just "too_many_requests"
+          | has (hasCode "ThrottlingException" . hasStatus 400)
+              e
+            = Just "throttling_exception"
+          | has (hasCode "Throttling" . hasStatus 400) e =
+            Just "throttling"
+          | has (hasStatus 504) e = Just "gateway_timeout"
+          | has
+              (hasCode "RequestThrottledException" . hasStatus 400)
+              e
+            = Just "request_throttled_exception"
+          | has (hasStatus 502) e = Just "bad_gateway"
+          | has (hasStatus 503) e = Just "service_unavailable"
+          | has (hasStatus 500) e = Just "general_server_error"
+          | has (hasStatus 509) e = Just "limit_exceeded"
+          | otherwise = Nothing
 
 -- | You are not authorized to perform the action.
 --
 --
 _AccessDeniedException :: AsError a => Getting (First ServiceError) a ServiceError
-_AccessDeniedException = _MatchServiceError rekognition "AccessDeniedException"
+_AccessDeniedException
+  = _MatchServiceError rekognition
+      "AccessDeniedException"
 
-
--- | The file size or duration of the supplied media is too large. The maximum file size is 8GB. The maximum duration is 2 hours.
+-- | The file size or duration of the supplied media is too large. The maximum file size is 8GB. The maximum duration is 2 hours. 
 --
 --
 _VideoTooLargeException :: AsError a => Getting (First ServiceError) a ServiceError
-_VideoTooLargeException =
-  _MatchServiceError rekognition "VideoTooLargeException"
-
+_VideoTooLargeException
+  = _MatchServiceError rekognition
+      "VideoTooLargeException"
 
 -- | Input parameter violated a constraint. Validate your parameter before calling the API operation again.
 --
 --
 _InvalidParameterException :: AsError a => Getting (First ServiceError) a ServiceError
-_InvalidParameterException =
-  _MatchServiceError rekognition "InvalidParameterException"
+_InvalidParameterException
+  = _MatchServiceError rekognition
+      "InvalidParameterException"
 
-
--- | The provided image format is not supported.
+-- | The provided image format is not supported. 
 --
 --
 _InvalidImageFormatException :: AsError a => Getting (First ServiceError) a ServiceError
-_InvalidImageFormatException =
-  _MatchServiceError rekognition "InvalidImageFormatException"
-
+_InvalidImageFormatException
+  = _MatchServiceError rekognition
+      "InvalidImageFormatException"
 
 -- | A collection with the specified ID already exists.
 --
 --
 _ResourceAlreadyExistsException :: AsError a => Getting (First ServiceError) a ServiceError
-_ResourceAlreadyExistsException =
-  _MatchServiceError rekognition "ResourceAlreadyExistsException"
-
+_ResourceAlreadyExistsException
+  = _MatchServiceError rekognition
+      "ResourceAlreadyExistsException"
 
 -- | Amazon Rekognition is unable to access the S3 object specified in the request.
 --
 --
 _InvalidS3ObjectException :: AsError a => Getting (First ServiceError) a ServiceError
-_InvalidS3ObjectException =
-  _MatchServiceError rekognition "InvalidS3ObjectException"
-
+_InvalidS3ObjectException
+  = _MatchServiceError rekognition
+      "InvalidS3ObjectException"
 
 -- | The number of requests exceeded your throughput limit. If you want to increase this limit, contact Amazon Rekognition.
 --
 --
 _ProvisionedThroughputExceededException :: AsError a => Getting (First ServiceError) a ServiceError
-_ProvisionedThroughputExceededException =
-  _MatchServiceError rekognition "ProvisionedThroughputExceededException"
+_ProvisionedThroughputExceededException
+  = _MatchServiceError rekognition
+      "ProvisionedThroughputExceededException"
 
-
--- | The input image size exceeds the allowed limit. For more information, see 'limits' .
+-- | The input image size exceeds the allowed limit. For more information, see 'limits' . 
 --
 --
 _ImageTooLargeException :: AsError a => Getting (First ServiceError) a ServiceError
-_ImageTooLargeException =
-  _MatchServiceError rekognition "ImageTooLargeException"
-
+_ImageTooLargeException
+  = _MatchServiceError rekognition
+      "ImageTooLargeException"
 
 -- | Amazon Rekognition is temporarily unable to process the request. Try your call again.
 --
 --
 _ThrottlingException :: AsError a => Getting (First ServiceError) a ServiceError
-_ThrottlingException = _MatchServiceError rekognition "ThrottlingException"
-
+_ThrottlingException
+  = _MatchServiceError rekognition
+      "ThrottlingException"
 
 -- | Amazon Rekognition experienced a service issue. Try your call again.
 --
 --
 _InternalServerError :: AsError a => Getting (First ServiceError) a ServiceError
-_InternalServerError = _MatchServiceError rekognition "InternalServerError"
-
+_InternalServerError
+  = _MatchServiceError rekognition
+      "InternalServerError"
 
 -- | A @ClientRequestToken@ input parameter was reused with an operation, but at least one of the other input parameters is different from the previous call to the operation.
 --
 --
 _IdempotentParameterMismatchException :: AsError a => Getting (First ServiceError) a ServiceError
-_IdempotentParameterMismatchException =
-  _MatchServiceError rekognition "IdempotentParameterMismatchException"
-
+_IdempotentParameterMismatchException
+  = _MatchServiceError rekognition
+      "IdempotentParameterMismatchException"
 
 -- | The collection specified in the request cannot be found.
 --
 --
 _ResourceNotFoundException :: AsError a => Getting (First ServiceError) a ServiceError
-_ResourceNotFoundException =
-  _MatchServiceError rekognition "ResourceNotFoundException"
-
+_ResourceNotFoundException
+  = _MatchServiceError rekognition
+      "ResourceNotFoundException"
 
 -- | Pagination token in the request is not valid.
 --
 --
 _InvalidPaginationTokenException :: AsError a => Getting (First ServiceError) a ServiceError
-_InvalidPaginationTokenException =
-  _MatchServiceError rekognition "InvalidPaginationTokenException"
+_InvalidPaginationTokenException
+  = _MatchServiceError rekognition
+      "InvalidPaginationTokenException"
 
-
--- | An Amazon Rekognition service limit was exceeded. For example, if you start too many Rekognition Video jobs concurrently, calls to start operations (@StartLabelDetection@ , for example) will raise a @LimitExceededException@ exception (HTTP status code: 400) until the number of concurrently running jobs is below the Amazon Rekognition service limit.
+-- | An Amazon Rekognition service limit was exceeded. For example, if you start too many Rekognition Video jobs concurrently, calls to start operations (@StartLabelDetection@ , for example) will raise a @LimitExceededException@ exception (HTTP status code: 400) until the number of concurrently running jobs is below the Amazon Rekognition service limit. 
 --
 --
 _LimitExceededException :: AsError a => Getting (First ServiceError) a ServiceError
-_LimitExceededException =
-  _MatchServiceError rekognition "LimitExceededException"
+_LimitExceededException
+  = _MatchServiceError rekognition
+      "LimitExceededException"
 
-
--- |
+-- | 
 --
 --
 _ResourceInUseException :: AsError a => Getting (First ServiceError) a ServiceError
-_ResourceInUseException =
-  _MatchServiceError rekognition "ResourceInUseException"
-
+_ResourceInUseException
+  = _MatchServiceError rekognition
+      "ResourceInUseException"

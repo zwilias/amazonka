@@ -21,9 +21,9 @@
 -- Sends a message to all of a topic's subscribed endpoints. When a @messageId@ is returned, the message has been saved and Amazon SNS will attempt to deliver it to the topic's subscribers shortly. The format of the outgoing message to each subscribed endpoint depends on the notification protocol.
 --
 --
--- To use the @Publish@ action for sending a message to a mobile endpoint, such as an app on a Kindle device or mobile phone, you must specify the EndpointArn for the TargetArn parameter. The EndpointArn is returned when making a call with the @CreatePlatformEndpoint@ action.
+-- To use the @Publish@ action for sending a message to a mobile endpoint, such as an app on a Kindle device or mobile phone, you must specify the EndpointArn for the TargetArn parameter. The EndpointArn is returned when making a call with the @CreatePlatformEndpoint@ action. 
 --
--- For more information about formatting messages, see <http://docs.aws.amazon.com/sns/latest/dg/mobile-push-send-custommessage.html Send Custom Platform-Specific Payloads in Messages to Mobile Devices> .
+-- For more information about formatting messages, see <http://docs.aws.amazon.com/sns/latest/dg/mobile-push-send-custommessage.html Send Custom Platform-Specific Payloads in Messages to Mobile Devices> . 
 --
 module Network.AWS.SNS.Publish
     (
@@ -52,25 +52,21 @@ import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 import Network.AWS.SNS.Types
-import Network.AWS.SNS.Types.Product
 
 -- | Input for Publish action.
 --
 --
 --
 -- /See:/ 'publish' smart constructor.
-data Publish =
-  Publish'
-    { _pSubject           :: !(Maybe Text)
-    , _pTargetARN         :: !(Maybe Text)
-    , _pMessageAttributes :: !(Maybe (Map Text MessageAttributeValue))
-    , _pTopicARN          :: !(Maybe Text)
-    , _pPhoneNumber       :: !(Maybe Text)
-    , _pMessageStructure  :: !(Maybe Text)
-    , _pMessage           :: !Text
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data Publish = Publish'{_pSubject :: !(Maybe Text),
+                        _pTargetARN :: !(Maybe Text),
+                        _pMessageAttributes ::
+                        !(Maybe (Map Text MessageAttributeValue)),
+                        _pTopicARN :: !(Maybe Text),
+                        _pPhoneNumber :: !(Maybe Text),
+                        _pMessageStructure :: !(Maybe Text),
+                        _pMessage :: !Text}
+                 deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'Publish' with the minimum fields required to make a request.
 --
@@ -86,23 +82,17 @@ data Publish =
 --
 -- * 'pPhoneNumber' - The phone number to which you want to deliver an SMS message. Use E.164 format. If you don't specify a value for the @PhoneNumber@ parameter, you must specify a value for the @TargetArn@ or @TopicArn@ parameters.
 --
--- * 'pMessageStructure' - Set @MessageStructure@ to @json@ if you want to send a different message for each protocol. For example, using one publish action, you can send a short message to your SMS subscribers and a longer message to your email subscribers. If you set @MessageStructure@ to @json@ , the value of the @Message@ parameter must:      * be a syntactically valid JSON object; and     * contain at least a top-level JSON key of "default" with a value that is a string. You can define other top-level keys that define the message you want to send to a specific transport protocol (e.g., "http"). For information about sending different messages for each protocol using the AWS Management Console, go to <http://docs.aws.amazon.com/sns/latest/gsg/Publish.html#sns-message-formatting-by-protocol Create Different Messages for Each Protocol> in the /Amazon Simple Notification Service Getting Started Guide/ .  Valid value: @json@
+-- * 'pMessageStructure' - Set @MessageStructure@ to @json@ if you want to send a different message for each protocol. For example, using one publish action, you can send a short message to your SMS subscribers and a longer message to your email subscribers. If you set @MessageStructure@ to @json@ , the value of the @Message@ parameter must:      * be a syntactically valid JSON object; and     * contain at least a top-level JSON key of "default" with a value that is a string. You can define other top-level keys that define the message you want to send to a specific transport protocol (e.g., "http"). For information about sending different messages for each protocol using the AWS Management Console, go to <http://docs.aws.amazon.com/sns/latest/gsg/Publish.html#sns-message-formatting-by-protocol Create Different Messages for Each Protocol> in the /Amazon Simple Notification Service Getting Started Guide/ .  Valid value: @json@ 
 --
 -- * 'pMessage' - The message you want to send to the topic. If you want to send the same message to all transport protocols, include the text of the message as a String value. If you want to send different messages for each transport protocol, set the value of the @MessageStructure@ parameter to @json@ and use a JSON object for the @Message@ parameter.  Constraints: Messages must be UTF-8 encoded strings at most 256 KB in size (262144 bytes, not 262144 characters). JSON-specific constraints:     * Keys in the JSON object that correspond to supported transport protocols must have simple JSON string values.     * The values will be parsed (unescaped) before they are used in outgoing messages.     * Outbound notifications are JSON encoded (meaning that the characters will be reescaped for sending).     * Values have a minimum length of 0 (the empty string, "", is allowed).     * Values have a maximum length bounded by the overall message size (so, including multiple protocols may limit message sizes).     * Non-string values will cause the key to be ignored.     * Keys that do not correspond to supported transport protocols are ignored.     * Duplicate keys are not allowed.     * Failure to parse or validate any key or value in the message will cause the @Publish@ call to return an error (no partial delivery).
 publish
     :: Text -- ^ 'pMessage'
     -> Publish
-publish pMessage_ =
-  Publish'
-    { _pSubject = Nothing
-    , _pTargetARN = Nothing
-    , _pMessageAttributes = Nothing
-    , _pTopicARN = Nothing
-    , _pPhoneNumber = Nothing
-    , _pMessageStructure = Nothing
-    , _pMessage = pMessage_
-    }
-
+publish pMessage_
+  = Publish'{_pSubject = Nothing,
+             _pTargetARN = Nothing, _pMessageAttributes = Nothing,
+             _pTopicARN = Nothing, _pPhoneNumber = Nothing,
+             _pMessageStructure = Nothing, _pMessage = pMessage_}
 
 -- | Optional parameter to be used as the "Subject" line when the message is delivered to email endpoints. This field will also be included, if present, in the standard JSON messages delivered to other endpoints. Constraints: Subjects must be ASCII text that begins with a letter, number, or punctuation mark; must not include line breaks or control characters; and must be less than 100 characters long.
 pSubject :: Lens' Publish (Maybe Text)
@@ -124,7 +114,7 @@ pTopicARN = lens _pTopicARN (\ s a -> s{_pTopicARN = a})
 pPhoneNumber :: Lens' Publish (Maybe Text)
 pPhoneNumber = lens _pPhoneNumber (\ s a -> s{_pPhoneNumber = a})
 
--- | Set @MessageStructure@ to @json@ if you want to send a different message for each protocol. For example, using one publish action, you can send a short message to your SMS subscribers and a longer message to your email subscribers. If you set @MessageStructure@ to @json@ , the value of the @Message@ parameter must:      * be a syntactically valid JSON object; and     * contain at least a top-level JSON key of "default" with a value that is a string. You can define other top-level keys that define the message you want to send to a specific transport protocol (e.g., "http"). For information about sending different messages for each protocol using the AWS Management Console, go to <http://docs.aws.amazon.com/sns/latest/gsg/Publish.html#sns-message-formatting-by-protocol Create Different Messages for Each Protocol> in the /Amazon Simple Notification Service Getting Started Guide/ .  Valid value: @json@
+-- | Set @MessageStructure@ to @json@ if you want to send a different message for each protocol. For example, using one publish action, you can send a short message to your SMS subscribers and a longer message to your email subscribers. If you set @MessageStructure@ to @json@ , the value of the @Message@ parameter must:      * be a syntactically valid JSON object; and     * contain at least a top-level JSON key of "default" with a value that is a string. You can define other top-level keys that define the message you want to send to a specific transport protocol (e.g., "http"). For information about sending different messages for each protocol using the AWS Management Console, go to <http://docs.aws.amazon.com/sns/latest/gsg/Publish.html#sns-message-formatting-by-protocol Create Different Messages for Each Protocol> in the /Amazon Simple Notification Service Getting Started Guide/ .  Valid value: @json@ 
 pMessageStructure :: Lens' Publish (Maybe Text)
 pMessageStructure = lens _pMessageStructure (\ s a -> s{_pMessageStructure = a})
 
@@ -171,13 +161,10 @@ instance ToQuery Publish where
 --
 --
 -- /See:/ 'publishResponse' smart constructor.
-data PublishResponse =
-  PublishResponse'
-    { _prsMessageId      :: !(Maybe Text)
-    , _prsResponseStatus :: !Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data PublishResponse = PublishResponse'{_prsMessageId
+                                        :: !(Maybe Text),
+                                        _prsResponseStatus :: !Int}
+                         deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'PublishResponse' with the minimum fields required to make a request.
 --
@@ -189,10 +176,9 @@ data PublishResponse =
 publishResponse
     :: Int -- ^ 'prsResponseStatus'
     -> PublishResponse
-publishResponse pResponseStatus_ =
-  PublishResponse'
-    {_prsMessageId = Nothing, _prsResponseStatus = pResponseStatus_}
-
+publishResponse pResponseStatus_
+  = PublishResponse'{_prsMessageId = Nothing,
+                     _prsResponseStatus = pResponseStatus_}
 
 -- | Unique identifier assigned to the published message. Length Constraint: Maximum 100 characters
 prsMessageId :: Lens' PublishResponse (Maybe Text)

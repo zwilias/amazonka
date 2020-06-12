@@ -49,27 +49,33 @@ module Network.AWS.Comprehend.StartEntitiesDetectionJob
     ) where
 
 import Network.AWS.Comprehend.Types
-import Network.AWS.Comprehend.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 
 -- | /See:/ 'startEntitiesDetectionJob' smart constructor.
-data StartEntitiesDetectionJob =
-  StartEntitiesDetectionJob'
-    { _sedjEntityRecognizerARN :: !(Maybe Text)
-    , _sedjJobName             :: !(Maybe Text)
-    , _sedjVPCConfig           :: !(Maybe VPCConfig)
-    , _sedjVolumeKMSKeyId      :: !(Maybe Text)
-    , _sedjClientRequestToken  :: !(Maybe Text)
-    , _sedjInputDataConfig     :: !InputDataConfig
-    , _sedjOutputDataConfig    :: !OutputDataConfig
-    , _sedjDataAccessRoleARN   :: !Text
-    , _sedjLanguageCode        :: !LanguageCode
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data StartEntitiesDetectionJob = StartEntitiesDetectionJob'{_sedjEntityRecognizerARN
+                                                            :: !(Maybe Text),
+                                                            _sedjJobName ::
+                                                            !(Maybe Text),
+                                                            _sedjVPCConfig ::
+                                                            !(Maybe VPCConfig),
+                                                            _sedjVolumeKMSKeyId
+                                                            :: !(Maybe Text),
+                                                            _sedjClientRequestToken
+                                                            :: !(Maybe Text),
+                                                            _sedjInputDataConfig
+                                                            :: !InputDataConfig,
+                                                            _sedjOutputDataConfig
+                                                            ::
+                                                            !OutputDataConfig,
+                                                            _sedjDataAccessRoleARN
+                                                            :: !Text,
+                                                            _sedjLanguageCode ::
+                                                            !LanguageCode}
+                                   deriving (Eq, Read, Show, Data, Typeable,
+                                             Generic)
 
 -- | Creates a value of 'StartEntitiesDetectionJob' with the minimum fields required to make a request.
 --
@@ -79,9 +85,9 @@ data StartEntitiesDetectionJob =
 --
 -- * 'sedjJobName' - The identifier of the job.
 --
--- * 'sedjVPCConfig' - Configuration parameters for an optional private Virtual Private Cloud (VPC) containing the resources you are using for your entity detection job. For more information, see <https://docs.aws.amazon.com/vpc/latest/userguide/what-is-amazon-vpc.html Amazon VPC> .
+-- * 'sedjVPCConfig' - Configuration parameters for an optional private Virtual Private Cloud (VPC) containing the resources you are using for your entity detection job. For more information, see <https://docs.aws.amazon.com/vpc/latest/userguide/what-is-amazon-vpc.html Amazon VPC> . 
 --
--- * 'sedjVolumeKMSKeyId' - ID for the AWS Key Management Service (KMS) key that Amazon Comprehend uses to encrypt data on the storage volume attached to the ML compute instance(s) that process the analysis job. The VolumeKmsKeyId can be either of the following formats:     * KMS Key ID: @"1234abcd-12ab-34cd-56ef-1234567890ab"@      * Amazon Resource Name (ARN) of a KMS Key: @"arn:aws:kms:us-west-2:111122223333:key/1234abcd-12ab-34cd-56ef-1234567890ab"@
+-- * 'sedjVolumeKMSKeyId' - ID for the AWS Key Management Service (KMS) key that Amazon Comprehend uses to encrypt data on the storage volume attached to the ML compute instance(s) that process the analysis job. The VolumeKmsKeyId can be either of the following formats:     * KMS Key ID: @"1234abcd-12ab-34cd-56ef-1234567890ab"@      * Amazon Resource Name (ARN) of a KMS Key: @"arn:aws:kms:us-west-2:111122223333:key/1234abcd-12ab-34cd-56ef-1234567890ab"@ 
 --
 -- * 'sedjClientRequestToken' - A unique identifier for the request. If you don't set the client request token, Amazon Comprehend generates one.
 --
@@ -98,19 +104,17 @@ startEntitiesDetectionJob
     -> Text -- ^ 'sedjDataAccessRoleARN'
     -> LanguageCode -- ^ 'sedjLanguageCode'
     -> StartEntitiesDetectionJob
-startEntitiesDetectionJob pInputDataConfig_ pOutputDataConfig_ pDataAccessRoleARN_ pLanguageCode_ =
-  StartEntitiesDetectionJob'
-    { _sedjEntityRecognizerARN = Nothing
-    , _sedjJobName = Nothing
-    , _sedjVPCConfig = Nothing
-    , _sedjVolumeKMSKeyId = Nothing
-    , _sedjClientRequestToken = Nothing
-    , _sedjInputDataConfig = pInputDataConfig_
-    , _sedjOutputDataConfig = pOutputDataConfig_
-    , _sedjDataAccessRoleARN = pDataAccessRoleARN_
-    , _sedjLanguageCode = pLanguageCode_
-    }
-
+startEntitiesDetectionJob pInputDataConfig_
+  pOutputDataConfig_ pDataAccessRoleARN_ pLanguageCode_
+  = StartEntitiesDetectionJob'{_sedjEntityRecognizerARN
+                                 = Nothing,
+                               _sedjJobName = Nothing, _sedjVPCConfig = Nothing,
+                               _sedjVolumeKMSKeyId = Nothing,
+                               _sedjClientRequestToken = Nothing,
+                               _sedjInputDataConfig = pInputDataConfig_,
+                               _sedjOutputDataConfig = pOutputDataConfig_,
+                               _sedjDataAccessRoleARN = pDataAccessRoleARN_,
+                               _sedjLanguageCode = pLanguageCode_}
 
 -- | The Amazon Resource Name (ARN) that identifies the specific entity recognizer to be used by the @StartEntitiesDetectionJob@ . This ARN is optional and is only used for a custom entity recognition job.
 sedjEntityRecognizerARN :: Lens' StartEntitiesDetectionJob (Maybe Text)
@@ -120,11 +124,11 @@ sedjEntityRecognizerARN = lens _sedjEntityRecognizerARN (\ s a -> s{_sedjEntityR
 sedjJobName :: Lens' StartEntitiesDetectionJob (Maybe Text)
 sedjJobName = lens _sedjJobName (\ s a -> s{_sedjJobName = a})
 
--- | Configuration parameters for an optional private Virtual Private Cloud (VPC) containing the resources you are using for your entity detection job. For more information, see <https://docs.aws.amazon.com/vpc/latest/userguide/what-is-amazon-vpc.html Amazon VPC> .
+-- | Configuration parameters for an optional private Virtual Private Cloud (VPC) containing the resources you are using for your entity detection job. For more information, see <https://docs.aws.amazon.com/vpc/latest/userguide/what-is-amazon-vpc.html Amazon VPC> . 
 sedjVPCConfig :: Lens' StartEntitiesDetectionJob (Maybe VPCConfig)
 sedjVPCConfig = lens _sedjVPCConfig (\ s a -> s{_sedjVPCConfig = a})
 
--- | ID for the AWS Key Management Service (KMS) key that Amazon Comprehend uses to encrypt data on the storage volume attached to the ML compute instance(s) that process the analysis job. The VolumeKmsKeyId can be either of the following formats:     * KMS Key ID: @"1234abcd-12ab-34cd-56ef-1234567890ab"@      * Amazon Resource Name (ARN) of a KMS Key: @"arn:aws:kms:us-west-2:111122223333:key/1234abcd-12ab-34cd-56ef-1234567890ab"@
+-- | ID for the AWS Key Management Service (KMS) key that Amazon Comprehend uses to encrypt data on the storage volume attached to the ML compute instance(s) that process the analysis job. The VolumeKmsKeyId can be either of the following formats:     * KMS Key ID: @"1234abcd-12ab-34cd-56ef-1234567890ab"@      * Amazon Resource Name (ARN) of a KMS Key: @"arn:aws:kms:us-west-2:111122223333:key/1234abcd-12ab-34cd-56ef-1234567890ab"@ 
 sedjVolumeKMSKeyId :: Lens' StartEntitiesDetectionJob (Maybe Text)
 sedjVolumeKMSKeyId = lens _sedjVolumeKMSKeyId (\ s a -> s{_sedjVolumeKMSKeyId = a})
 
@@ -196,14 +200,19 @@ instance ToQuery StartEntitiesDetectionJob where
         toQuery = const mempty
 
 -- | /See:/ 'startEntitiesDetectionJobResponse' smart constructor.
-data StartEntitiesDetectionJobResponse =
-  StartEntitiesDetectionJobResponse'
-    { _sedjersJobId          :: !(Maybe Text)
-    , _sedjersJobStatus      :: !(Maybe JobStatus)
-    , _sedjersResponseStatus :: !Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data StartEntitiesDetectionJobResponse = StartEntitiesDetectionJobResponse'{_sedjersJobId
+                                                                            ::
+                                                                            !(Maybe
+                                                                                Text),
+                                                                            _sedjersJobStatus
+                                                                            ::
+                                                                            !(Maybe
+                                                                                JobStatus),
+                                                                            _sedjersResponseStatus
+                                                                            ::
+                                                                            !Int}
+                                           deriving (Eq, Read, Show, Data,
+                                                     Typeable, Generic)
 
 -- | Creates a value of 'StartEntitiesDetectionJobResponse' with the minimum fields required to make a request.
 --
@@ -217,13 +226,12 @@ data StartEntitiesDetectionJobResponse =
 startEntitiesDetectionJobResponse
     :: Int -- ^ 'sedjersResponseStatus'
     -> StartEntitiesDetectionJobResponse
-startEntitiesDetectionJobResponse pResponseStatus_ =
-  StartEntitiesDetectionJobResponse'
-    { _sedjersJobId = Nothing
-    , _sedjersJobStatus = Nothing
-    , _sedjersResponseStatus = pResponseStatus_
-    }
-
+startEntitiesDetectionJobResponse pResponseStatus_
+  = StartEntitiesDetectionJobResponse'{_sedjersJobId =
+                                         Nothing,
+                                       _sedjersJobStatus = Nothing,
+                                       _sedjersResponseStatus =
+                                         pResponseStatus_}
 
 -- | The identifier generated for the job. To get the status of job, use this identifier with the operation.
 sedjersJobId :: Lens' StartEntitiesDetectionJobResponse (Maybe Text)

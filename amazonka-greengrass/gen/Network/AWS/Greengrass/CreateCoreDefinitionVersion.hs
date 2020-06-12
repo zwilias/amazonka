@@ -41,21 +41,21 @@ module Network.AWS.Greengrass.CreateCoreDefinitionVersion
     ) where
 
 import Network.AWS.Greengrass.Types
-import Network.AWS.Greengrass.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 
 -- | /See:/ 'createCoreDefinitionVersion' smart constructor.
-data CreateCoreDefinitionVersion =
-  CreateCoreDefinitionVersion'
-    { _ccdvAmznClientToken  :: !(Maybe Text)
-    , _ccdvCores            :: !(Maybe [Core])
-    , _ccdvCoreDefinitionId :: !Text
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data CreateCoreDefinitionVersion = CreateCoreDefinitionVersion'{_ccdvAmznClientToken
+                                                                ::
+                                                                !(Maybe Text),
+                                                                _ccdvCores ::
+                                                                !(Maybe [Core]),
+                                                                _ccdvCoreDefinitionId
+                                                                :: !Text}
+                                     deriving (Eq, Read, Show, Data, Typeable,
+                                               Generic)
 
 -- | Creates a value of 'CreateCoreDefinitionVersion' with the minimum fields required to make a request.
 --
@@ -69,13 +69,11 @@ data CreateCoreDefinitionVersion =
 createCoreDefinitionVersion
     :: Text -- ^ 'ccdvCoreDefinitionId'
     -> CreateCoreDefinitionVersion
-createCoreDefinitionVersion pCoreDefinitionId_ =
-  CreateCoreDefinitionVersion'
-    { _ccdvAmznClientToken = Nothing
-    , _ccdvCores = Nothing
-    , _ccdvCoreDefinitionId = pCoreDefinitionId_
-    }
-
+createCoreDefinitionVersion pCoreDefinitionId_
+  = CreateCoreDefinitionVersion'{_ccdvAmznClientToken =
+                                   Nothing,
+                                 _ccdvCores = Nothing,
+                                 _ccdvCoreDefinitionId = pCoreDefinitionId_}
 
 -- | A client token used to correlate requests and responses.
 ccdvAmznClientToken :: Lens' CreateCoreDefinitionVersion (Maybe Text)
@@ -127,16 +125,27 @@ instance ToQuery CreateCoreDefinitionVersion where
         toQuery = const mempty
 
 -- | /See:/ 'createCoreDefinitionVersionResponse' smart constructor.
-data CreateCoreDefinitionVersionResponse =
-  CreateCoreDefinitionVersionResponse'
-    { _ccdvrsARN               :: !(Maybe Text)
-    , _ccdvrsCreationTimestamp :: !(Maybe Text)
-    , _ccdvrsVersion           :: !(Maybe Text)
-    , _ccdvrsId                :: !(Maybe Text)
-    , _ccdvrsResponseStatus    :: !Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data CreateCoreDefinitionVersionResponse = CreateCoreDefinitionVersionResponse'{_ccdvrsARN
+                                                                                ::
+                                                                                !(Maybe
+                                                                                    Text),
+                                                                                _ccdvrsCreationTimestamp
+                                                                                ::
+                                                                                !(Maybe
+                                                                                    Text),
+                                                                                _ccdvrsVersion
+                                                                                ::
+                                                                                !(Maybe
+                                                                                    Text),
+                                                                                _ccdvrsId
+                                                                                ::
+                                                                                !(Maybe
+                                                                                    Text),
+                                                                                _ccdvrsResponseStatus
+                                                                                ::
+                                                                                !Int}
+                                             deriving (Eq, Read, Show, Data,
+                                                       Typeable, Generic)
 
 -- | Creates a value of 'CreateCoreDefinitionVersionResponse' with the minimum fields required to make a request.
 --
@@ -154,15 +163,14 @@ data CreateCoreDefinitionVersionResponse =
 createCoreDefinitionVersionResponse
     :: Int -- ^ 'ccdvrsResponseStatus'
     -> CreateCoreDefinitionVersionResponse
-createCoreDefinitionVersionResponse pResponseStatus_ =
-  CreateCoreDefinitionVersionResponse'
-    { _ccdvrsARN = Nothing
-    , _ccdvrsCreationTimestamp = Nothing
-    , _ccdvrsVersion = Nothing
-    , _ccdvrsId = Nothing
-    , _ccdvrsResponseStatus = pResponseStatus_
-    }
-
+createCoreDefinitionVersionResponse pResponseStatus_
+  = CreateCoreDefinitionVersionResponse'{_ccdvrsARN =
+                                           Nothing,
+                                         _ccdvrsCreationTimestamp = Nothing,
+                                         _ccdvrsVersion = Nothing,
+                                         _ccdvrsId = Nothing,
+                                         _ccdvrsResponseStatus =
+                                           pResponseStatus_}
 
 -- | The ARN of the version.
 ccdvrsARN :: Lens' CreateCoreDefinitionVersionResponse (Maybe Text)

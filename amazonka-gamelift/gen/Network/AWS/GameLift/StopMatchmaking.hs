@@ -23,15 +23,15 @@
 --
 -- Matchmaking-related operations include:
 --
---     * 'StartMatchmaking'
+--     * 'StartMatchmaking' 
 --
---     * 'DescribeMatchmaking'
+--     * 'DescribeMatchmaking' 
 --
---     * 'StopMatchmaking'
+--     * 'StopMatchmaking' 
 --
---     * 'AcceptMatch'
+--     * 'AcceptMatch' 
 --
---     * 'StartMatchBackfill'
+--     * 'StartMatchBackfill' 
 --
 --
 --
@@ -51,7 +51,6 @@ module Network.AWS.GameLift.StopMatchmaking
     ) where
 
 import Network.AWS.GameLift.Types
-import Network.AWS.GameLift.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.Request
@@ -62,12 +61,9 @@ import Network.AWS.Response
 --
 --
 -- /See:/ 'stopMatchmaking' smart constructor.
-newtype StopMatchmaking =
-  StopMatchmaking'
-    { _smTicketId :: Text
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+newtype StopMatchmaking = StopMatchmaking'{_smTicketId
+                                           :: Text}
+                            deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'StopMatchmaking' with the minimum fields required to make a request.
 --
@@ -77,8 +73,8 @@ newtype StopMatchmaking =
 stopMatchmaking
     :: Text -- ^ 'smTicketId'
     -> StopMatchmaking
-stopMatchmaking pTicketId_ = StopMatchmaking' {_smTicketId = pTicketId_}
-
+stopMatchmaking pTicketId_
+  = StopMatchmaking'{_smTicketId = pTicketId_}
 
 -- | Unique identifier for a matchmaking ticket.
 smTicketId :: Lens' StopMatchmaking Text
@@ -117,12 +113,10 @@ instance ToQuery StopMatchmaking where
         toQuery = const mempty
 
 -- | /See:/ 'stopMatchmakingResponse' smart constructor.
-newtype StopMatchmakingResponse =
-  StopMatchmakingResponse'
-    { _smrsResponseStatus :: Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+newtype StopMatchmakingResponse = StopMatchmakingResponse'{_smrsResponseStatus
+                                                           :: Int}
+                                    deriving (Eq, Read, Show, Data, Typeable,
+                                              Generic)
 
 -- | Creates a value of 'StopMatchmakingResponse' with the minimum fields required to make a request.
 --
@@ -132,9 +126,9 @@ newtype StopMatchmakingResponse =
 stopMatchmakingResponse
     :: Int -- ^ 'smrsResponseStatus'
     -> StopMatchmakingResponse
-stopMatchmakingResponse pResponseStatus_ =
-  StopMatchmakingResponse' {_smrsResponseStatus = pResponseStatus_}
-
+stopMatchmakingResponse pResponseStatus_
+  = StopMatchmakingResponse'{_smrsResponseStatus =
+                               pResponseStatus_}
 
 -- | -- | The response status code.
 smrsResponseStatus :: Lens' StopMatchmakingResponse Int

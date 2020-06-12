@@ -1,4 +1,4 @@
-{-# LANGUAGE OverloadedStrings #-}
+{-# LANGUAGE OverloadedStrings  #-}
 
 -- Derived from AWS service descriptions, licensed under Apache 2.0.
 
@@ -943,82 +943,175 @@ module Network.AWS.Pinpoint.Types
     ) where
 
 import Network.AWS.Lens
-import Network.AWS.Pinpoint.Types.Product
-import Network.AWS.Pinpoint.Types.Sum
 import Network.AWS.Prelude
 import Network.AWS.Sign.V4
+import Network.AWS.Pinpoint.Types.Action
+import Network.AWS.Pinpoint.Types.AttributeType
+import Network.AWS.Pinpoint.Types.CampaignStatus
+import Network.AWS.Pinpoint.Types.ChannelType
+import Network.AWS.Pinpoint.Types.DefinitionFormat
+import Network.AWS.Pinpoint.Types.DeliveryStatus
+import Network.AWS.Pinpoint.Types.DimensionType
+import Network.AWS.Pinpoint.Types.Duration
+import Network.AWS.Pinpoint.Types.Frequency
+import Network.AWS.Pinpoint.Types.JobStatus
+import Network.AWS.Pinpoint.Types.MessageType
+import Network.AWS.Pinpoint.Types.Mode
+import Network.AWS.Pinpoint.Types.RecencyType
+import Network.AWS.Pinpoint.Types.SegmentType
+import Network.AWS.Pinpoint.Types.ADMChannelRequest
+import Network.AWS.Pinpoint.Types.ADMChannelResponse
+import Network.AWS.Pinpoint.Types.ADMMessage
+import Network.AWS.Pinpoint.Types.APNSChannelRequest
+import Network.AWS.Pinpoint.Types.APNSChannelResponse
+import Network.AWS.Pinpoint.Types.APNSMessage
+import Network.AWS.Pinpoint.Types.APNSSandboxChannelRequest
+import Network.AWS.Pinpoint.Types.APNSSandboxChannelResponse
+import Network.AWS.Pinpoint.Types.APNSVoipChannelRequest
+import Network.AWS.Pinpoint.Types.APNSVoipChannelResponse
+import Network.AWS.Pinpoint.Types.APNSVoipSandboxChannelRequest
+import Network.AWS.Pinpoint.Types.APNSVoipSandboxChannelResponse
+import Network.AWS.Pinpoint.Types.ActivitiesResponse
+import Network.AWS.Pinpoint.Types.ActivityResponse
+import Network.AWS.Pinpoint.Types.AddressConfiguration
+import Network.AWS.Pinpoint.Types.ApplicationResponse
+import Network.AWS.Pinpoint.Types.ApplicationSettingsResource
+import Network.AWS.Pinpoint.Types.ApplicationsResponse
+import Network.AWS.Pinpoint.Types.AttributeDimension
+import Network.AWS.Pinpoint.Types.BaiduChannelRequest
+import Network.AWS.Pinpoint.Types.BaiduChannelResponse
+import Network.AWS.Pinpoint.Types.BaiduMessage
+import Network.AWS.Pinpoint.Types.CampaignEmailMessage
+import Network.AWS.Pinpoint.Types.CampaignHook
+import Network.AWS.Pinpoint.Types.CampaignLimits
+import Network.AWS.Pinpoint.Types.CampaignResponse
+import Network.AWS.Pinpoint.Types.CampaignSmsMessage
+import Network.AWS.Pinpoint.Types.CampaignState
+import Network.AWS.Pinpoint.Types.CampaignsResponse
+import Network.AWS.Pinpoint.Types.CreateApplicationRequest
+import Network.AWS.Pinpoint.Types.DefaultMessage
+import Network.AWS.Pinpoint.Types.DefaultPushNotificationMessage
+import Network.AWS.Pinpoint.Types.DirectMessageConfiguration
+import Network.AWS.Pinpoint.Types.EmailChannelRequest
+import Network.AWS.Pinpoint.Types.EmailChannelResponse
+import Network.AWS.Pinpoint.Types.EndpointBatchItem
+import Network.AWS.Pinpoint.Types.EndpointBatchRequest
+import Network.AWS.Pinpoint.Types.EndpointDemographic
+import Network.AWS.Pinpoint.Types.EndpointLocation
+import Network.AWS.Pinpoint.Types.EndpointMessageResult
+import Network.AWS.Pinpoint.Types.EndpointRequest
+import Network.AWS.Pinpoint.Types.EndpointResponse
+import Network.AWS.Pinpoint.Types.EndpointSendConfiguration
+import Network.AWS.Pinpoint.Types.EndpointUser
+import Network.AWS.Pinpoint.Types.EventStream
+import Network.AWS.Pinpoint.Types.ExportJobRequest
+import Network.AWS.Pinpoint.Types.ExportJobResource
+import Network.AWS.Pinpoint.Types.ExportJobResponse
+import Network.AWS.Pinpoint.Types.ExportJobsResponse
+import Network.AWS.Pinpoint.Types.GCMChannelRequest
+import Network.AWS.Pinpoint.Types.GCMChannelResponse
+import Network.AWS.Pinpoint.Types.GCMMessage
+import Network.AWS.Pinpoint.Types.ImportJobRequest
+import Network.AWS.Pinpoint.Types.ImportJobResource
+import Network.AWS.Pinpoint.Types.ImportJobResponse
+import Network.AWS.Pinpoint.Types.ImportJobsResponse
+import Network.AWS.Pinpoint.Types.Message
+import Network.AWS.Pinpoint.Types.MessageBody
+import Network.AWS.Pinpoint.Types.MessageConfiguration
+import Network.AWS.Pinpoint.Types.MessageRequest
+import Network.AWS.Pinpoint.Types.MessageResponse
+import Network.AWS.Pinpoint.Types.MessageResult
+import Network.AWS.Pinpoint.Types.QuietTime
+import Network.AWS.Pinpoint.Types.RecencyDimension
+import Network.AWS.Pinpoint.Types.SMSChannelRequest
+import Network.AWS.Pinpoint.Types.SMSChannelResponse
+import Network.AWS.Pinpoint.Types.SMSMessage
+import Network.AWS.Pinpoint.Types.Schedule
+import Network.AWS.Pinpoint.Types.SegmentBehaviors
+import Network.AWS.Pinpoint.Types.SegmentDemographics
+import Network.AWS.Pinpoint.Types.SegmentDimensions
+import Network.AWS.Pinpoint.Types.SegmentImportResource
+import Network.AWS.Pinpoint.Types.SegmentLocation
+import Network.AWS.Pinpoint.Types.SegmentResponse
+import Network.AWS.Pinpoint.Types.SegmentsResponse
+import Network.AWS.Pinpoint.Types.SendUsersMessageRequest
+import Network.AWS.Pinpoint.Types.SendUsersMessageResponse
+import Network.AWS.Pinpoint.Types.SetDimension
+import Network.AWS.Pinpoint.Types.TreatmentResource
+import Network.AWS.Pinpoint.Types.WriteApplicationSettingsRequest
+import Network.AWS.Pinpoint.Types.WriteCampaignRequest
+import Network.AWS.Pinpoint.Types.WriteEventStream
+import Network.AWS.Pinpoint.Types.WriteSegmentRequest
+import Network.AWS.Pinpoint.Types.WriteTreatmentResource
 
 -- | API version @2016-12-01@ of the Amazon Pinpoint SDK configuration.
 pinpoint :: Service
-pinpoint =
-  Service
-    { _svcAbbrev = "Pinpoint"
-    , _svcSigner = v4
-    , _svcPrefix = "pinpoint"
-    , _svcVersion = "2016-12-01"
-    , _svcEndpoint = defaultEndpoint pinpoint
-    , _svcTimeout = Just 70
-    , _svcCheck = statusSuccess
-    , _svcError = parseJSONError "Pinpoint"
-    , _svcRetry = retry
-    }
-  where
-    retry =
-      Exponential
-        { _retryBase = 5.0e-2
-        , _retryGrowth = 2
-        , _retryAttempts = 5
-        , _retryCheck = check
-        }
-    check e
-      | has (hasCode "ThrottledException" . hasStatus 400) e =
-        Just "throttled_exception"
-      | has (hasStatus 429) e = Just "too_many_requests"
-      | has (hasCode "ThrottlingException" . hasStatus 400) e =
-        Just "throttling_exception"
-      | has (hasCode "Throttling" . hasStatus 400) e = Just "throttling"
-      | has (hasStatus 504) e = Just "gateway_timeout"
-      | has (hasCode "RequestThrottledException" . hasStatus 400) e =
-        Just "request_throttled_exception"
-      | has (hasStatus 502) e = Just "bad_gateway"
-      | has (hasStatus 503) e = Just "service_unavailable"
-      | has (hasStatus 500) e = Just "general_server_error"
-      | has (hasStatus 509) e = Just "limit_exceeded"
-      | otherwise = Nothing
-
+pinpoint
+  = Service{_svcAbbrev = "Pinpoint", _svcSigner = v4,
+            _svcPrefix = "pinpoint", _svcVersion = "2016-12-01",
+            _svcEndpoint = defaultEndpoint pinpoint,
+            _svcTimeout = Just 70, _svcCheck = statusSuccess,
+            _svcError = parseJSONError "Pinpoint",
+            _svcRetry = retry}
+  where retry
+          = Exponential{_retryBase = 5.0e-2, _retryGrowth = 2,
+                        _retryAttempts = 5, _retryCheck = check}
+        check e
+          | has (hasCode "ThrottledException" . hasStatus 400)
+              e
+            = Just "throttled_exception"
+          | has (hasStatus 429) e = Just "too_many_requests"
+          | has (hasCode "ThrottlingException" . hasStatus 400)
+              e
+            = Just "throttling_exception"
+          | has (hasCode "Throttling" . hasStatus 400) e =
+            Just "throttling"
+          | has (hasStatus 504) e = Just "gateway_timeout"
+          | has
+              (hasCode "RequestThrottledException" . hasStatus 400)
+              e
+            = Just "request_throttled_exception"
+          | has (hasStatus 502) e = Just "bad_gateway"
+          | has (hasStatus 503) e = Just "service_unavailable"
+          | has (hasStatus 500) e = Just "general_server_error"
+          | has (hasStatus 509) e = Just "limit_exceeded"
+          | otherwise = Nothing
 
 -- | Simple message object.
 _ForbiddenException :: AsError a => Getting (First ServiceError) a ServiceError
-_ForbiddenException =
-  _MatchServiceError pinpoint "ForbiddenException" . hasStatus 403
-
+_ForbiddenException
+  = _MatchServiceError pinpoint "ForbiddenException" .
+      hasStatus 403
 
 -- | Simple message object.
 _NotFoundException :: AsError a => Getting (First ServiceError) a ServiceError
-_NotFoundException =
-  _MatchServiceError pinpoint "NotFoundException" . hasStatus 404
-
+_NotFoundException
+  = _MatchServiceError pinpoint "NotFoundException" .
+      hasStatus 404
 
 -- | Simple message object.
 _TooManyRequestsException :: AsError a => Getting (First ServiceError) a ServiceError
-_TooManyRequestsException =
-  _MatchServiceError pinpoint "TooManyRequestsException" . hasStatus 429
-
+_TooManyRequestsException
+  = _MatchServiceError pinpoint
+      "TooManyRequestsException"
+      . hasStatus 429
 
 -- | Simple message object.
 _InternalServerErrorException :: AsError a => Getting (First ServiceError) a ServiceError
-_InternalServerErrorException =
-  _MatchServiceError pinpoint "InternalServerErrorException" . hasStatus 500
-
+_InternalServerErrorException
+  = _MatchServiceError pinpoint
+      "InternalServerErrorException"
+      . hasStatus 500
 
 -- | Simple message object.
 _MethodNotAllowedException :: AsError a => Getting (First ServiceError) a ServiceError
-_MethodNotAllowedException =
-  _MatchServiceError pinpoint "MethodNotAllowedException" . hasStatus 405
-
+_MethodNotAllowedException
+  = _MatchServiceError pinpoint
+      "MethodNotAllowedException"
+      . hasStatus 405
 
 -- | Simple message object.
 _BadRequestException :: AsError a => Getting (First ServiceError) a ServiceError
-_BadRequestException =
-  _MatchServiceError pinpoint "BadRequestException" . hasStatus 400
-
+_BadRequestException
+  = _MatchServiceError pinpoint "BadRequestException" .
+      hasStatus 400

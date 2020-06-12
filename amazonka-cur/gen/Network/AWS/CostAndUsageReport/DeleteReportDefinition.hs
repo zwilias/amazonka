@@ -38,7 +38,6 @@ module Network.AWS.CostAndUsageReport.DeleteReportDefinition
     ) where
 
 import Network.AWS.CostAndUsageReport.Types
-import Network.AWS.CostAndUsageReport.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.Request
@@ -49,12 +48,10 @@ import Network.AWS.Response
 --
 --
 -- /See:/ 'deleteReportDefinition' smart constructor.
-newtype DeleteReportDefinition =
-  DeleteReportDefinition'
-    { _drdReportName :: Maybe Text
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+newtype DeleteReportDefinition = DeleteReportDefinition'{_drdReportName
+                                                         :: Maybe Text}
+                                   deriving (Eq, Read, Show, Data, Typeable,
+                                             Generic)
 
 -- | Creates a value of 'DeleteReportDefinition' with the minimum fields required to make a request.
 --
@@ -63,8 +60,8 @@ newtype DeleteReportDefinition =
 -- * 'drdReportName' - Undocumented member.
 deleteReportDefinition
     :: DeleteReportDefinition
-deleteReportDefinition = DeleteReportDefinition' {_drdReportName = Nothing}
-
+deleteReportDefinition
+  = DeleteReportDefinition'{_drdReportName = Nothing}
 
 -- | Undocumented member.
 drdReportName :: Lens' DeleteReportDefinition (Maybe Text)
@@ -110,13 +107,14 @@ instance ToQuery DeleteReportDefinition where
 --
 --
 -- /See:/ 'deleteReportDefinitionResponse' smart constructor.
-data DeleteReportDefinitionResponse =
-  DeleteReportDefinitionResponse'
-    { _drsResponseMessage :: !(Maybe Text)
-    , _drsResponseStatus  :: !Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data DeleteReportDefinitionResponse = DeleteReportDefinitionResponse'{_drsResponseMessage
+                                                                      ::
+                                                                      !(Maybe
+                                                                          Text),
+                                                                      _drsResponseStatus
+                                                                      :: !Int}
+                                        deriving (Eq, Read, Show, Data,
+                                                  Typeable, Generic)
 
 -- | Creates a value of 'DeleteReportDefinitionResponse' with the minimum fields required to make a request.
 --
@@ -128,10 +126,10 @@ data DeleteReportDefinitionResponse =
 deleteReportDefinitionResponse
     :: Int -- ^ 'drsResponseStatus'
     -> DeleteReportDefinitionResponse
-deleteReportDefinitionResponse pResponseStatus_ =
-  DeleteReportDefinitionResponse'
-    {_drsResponseMessage = Nothing, _drsResponseStatus = pResponseStatus_}
-
+deleteReportDefinitionResponse pResponseStatus_
+  = DeleteReportDefinitionResponse'{_drsResponseMessage
+                                      = Nothing,
+                                    _drsResponseStatus = pResponseStatus_}
 
 -- | Undocumented member.
 drsResponseMessage :: Lens' DeleteReportDefinitionResponse (Maybe Text)

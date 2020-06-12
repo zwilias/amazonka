@@ -40,21 +40,17 @@ module Network.AWS.MediaConvert.CreatePreset
 
 import Network.AWS.Lens
 import Network.AWS.MediaConvert.Types
-import Network.AWS.MediaConvert.Types.Product
 import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 
 -- | /See:/ 'createPreset' smart constructor.
-data CreatePreset =
-  CreatePreset'
-    { _cpSettings    :: !(Maybe PresetSettings)
-    , _cpCategory    :: !(Maybe Text)
-    , _cpName        :: !(Maybe Text)
-    , _cpDescription :: !(Maybe Text)
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data CreatePreset = CreatePreset'{_cpSettings ::
+                                  !(Maybe PresetSettings),
+                                  _cpCategory :: !(Maybe Text),
+                                  _cpName :: !(Maybe Text),
+                                  _cpDescription :: !(Maybe Text)}
+                      deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'CreatePreset' with the minimum fields required to make a request.
 --
@@ -69,14 +65,10 @@ data CreatePreset =
 -- * 'cpDescription' - Optional. A description of the preset you are creating.
 createPreset
     :: CreatePreset
-createPreset =
-  CreatePreset'
-    { _cpSettings = Nothing
-    , _cpCategory = Nothing
-    , _cpName = Nothing
-    , _cpDescription = Nothing
-    }
-
+createPreset
+  = CreatePreset'{_cpSettings = Nothing,
+                  _cpCategory = Nothing, _cpName = Nothing,
+                  _cpDescription = Nothing}
 
 -- | Undocumented member.
 cpSettings :: Lens' CreatePreset (Maybe PresetSettings)
@@ -130,13 +122,10 @@ instance ToQuery CreatePreset where
         toQuery = const mempty
 
 -- | /See:/ 'createPresetResponse' smart constructor.
-data CreatePresetResponse =
-  CreatePresetResponse'
-    { _cprsPreset         :: !(Maybe Preset)
-    , _cprsResponseStatus :: !Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data CreatePresetResponse = CreatePresetResponse'{_cprsPreset
+                                                  :: !(Maybe Preset),
+                                                  _cprsResponseStatus :: !Int}
+                              deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'CreatePresetResponse' with the minimum fields required to make a request.
 --
@@ -148,10 +137,9 @@ data CreatePresetResponse =
 createPresetResponse
     :: Int -- ^ 'cprsResponseStatus'
     -> CreatePresetResponse
-createPresetResponse pResponseStatus_ =
-  CreatePresetResponse'
-    {_cprsPreset = Nothing, _cprsResponseStatus = pResponseStatus_}
-
+createPresetResponse pResponseStatus_
+  = CreatePresetResponse'{_cprsPreset = Nothing,
+                          _cprsResponseStatus = pResponseStatus_}
 
 -- | Undocumented member.
 cprsPreset :: Lens' CreatePresetResponse (Maybe Preset)

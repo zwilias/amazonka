@@ -64,8 +64,16 @@ library
         , Network.AWS.OpsWorksCM.Waiters
 
     other-modules:
-          Network.AWS.OpsWorksCM.Types.Product
-        , Network.AWS.OpsWorksCM.Types.Sum
+          Network.AWS.OpsWorksCM.Types.AccountAttribute
+        , Network.AWS.OpsWorksCM.Types.Backup
+        , Network.AWS.OpsWorksCM.Types.BackupStatus
+        , Network.AWS.OpsWorksCM.Types.BackupType
+        , Network.AWS.OpsWorksCM.Types.EngineAttribute
+        , Network.AWS.OpsWorksCM.Types.MaintenanceStatus
+        , Network.AWS.OpsWorksCM.Types.NodeAssociationStatus
+        , Network.AWS.OpsWorksCM.Types.Server
+        , Network.AWS.OpsWorksCM.Types.ServerEvent
+        , Network.AWS.OpsWorksCM.Types.ServerStatus
 
     build-depends:
           amazonka-core == 1.6.1.*

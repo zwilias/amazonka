@@ -38,19 +38,15 @@ module Network.AWS.CodeStar.DeleteUserProfile
     ) where
 
 import Network.AWS.CodeStar.Types
-import Network.AWS.CodeStar.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 
 -- | /See:/ 'deleteUserProfile' smart constructor.
-newtype DeleteUserProfile =
-  DeleteUserProfile'
-    { _dUserARN :: Text
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+newtype DeleteUserProfile = DeleteUserProfile'{_dUserARN
+                                               :: Text}
+                              deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'DeleteUserProfile' with the minimum fields required to make a request.
 --
@@ -60,8 +56,8 @@ newtype DeleteUserProfile =
 deleteUserProfile
     :: Text -- ^ 'dUserARN'
     -> DeleteUserProfile
-deleteUserProfile pUserARN_ = DeleteUserProfile' {_dUserARN = pUserARN_}
-
+deleteUserProfile pUserARN_
+  = DeleteUserProfile'{_dUserARN = pUserARN_}
 
 -- | The Amazon Resource Name (ARN) of the user to delete from AWS CodeStar.
 dUserARN :: Lens' DeleteUserProfile Text
@@ -101,13 +97,12 @@ instance ToQuery DeleteUserProfile where
         toQuery = const mempty
 
 -- | /See:/ 'deleteUserProfileResponse' smart constructor.
-data DeleteUserProfileResponse =
-  DeleteUserProfileResponse'
-    { _delrsResponseStatus :: !Int
-    , _delrsUserARN        :: !Text
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data DeleteUserProfileResponse = DeleteUserProfileResponse'{_delrsResponseStatus
+                                                            :: !Int,
+                                                            _delrsUserARN ::
+                                                            !Text}
+                                   deriving (Eq, Read, Show, Data, Typeable,
+                                             Generic)
 
 -- | Creates a value of 'DeleteUserProfileResponse' with the minimum fields required to make a request.
 --
@@ -120,10 +115,10 @@ deleteUserProfileResponse
     :: Int -- ^ 'delrsResponseStatus'
     -> Text -- ^ 'delrsUserARN'
     -> DeleteUserProfileResponse
-deleteUserProfileResponse pResponseStatus_ pUserARN_ =
-  DeleteUserProfileResponse'
-    {_delrsResponseStatus = pResponseStatus_, _delrsUserARN = pUserARN_}
-
+deleteUserProfileResponse pResponseStatus_ pUserARN_
+  = DeleteUserProfileResponse'{_delrsResponseStatus =
+                                 pResponseStatus_,
+                               _delrsUserARN = pUserARN_}
 
 -- | -- | The response status code.
 delrsResponseStatus :: Lens' DeleteUserProfileResponse Int

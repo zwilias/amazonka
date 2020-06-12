@@ -60,22 +60,18 @@ module Network.AWS.CloudWatchLogs.PutLogEvents
     ) where
 
 import Network.AWS.CloudWatchLogs.Types
-import Network.AWS.CloudWatchLogs.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 
 -- | /See:/ 'putLogEvents' smart constructor.
-data PutLogEvents =
-  PutLogEvents'
-    { _pleSequenceToken :: !(Maybe Text)
-    , _pleLogGroupName  :: !Text
-    , _pleLogStreamName :: !Text
-    , _pleLogEvents     :: !(List1 InputLogEvent)
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data PutLogEvents = PutLogEvents'{_pleSequenceToken
+                                  :: !(Maybe Text),
+                                  _pleLogGroupName :: !Text,
+                                  _pleLogStreamName :: !Text,
+                                  _pleLogEvents :: !(List1 InputLogEvent)}
+                      deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'PutLogEvents' with the minimum fields required to make a request.
 --
@@ -93,14 +89,12 @@ putLogEvents
     -> Text -- ^ 'pleLogStreamName'
     -> NonEmpty InputLogEvent -- ^ 'pleLogEvents'
     -> PutLogEvents
-putLogEvents pLogGroupName_ pLogStreamName_ pLogEvents_ =
-  PutLogEvents'
-    { _pleSequenceToken = Nothing
-    , _pleLogGroupName = pLogGroupName_
-    , _pleLogStreamName = pLogStreamName_
-    , _pleLogEvents = _List1 # pLogEvents_
-    }
-
+putLogEvents pLogGroupName_ pLogStreamName_
+  pLogEvents_
+  = PutLogEvents'{_pleSequenceToken = Nothing,
+                  _pleLogGroupName = pLogGroupName_,
+                  _pleLogStreamName = pLogStreamName_,
+                  _pleLogEvents = _List1 # pLogEvents_}
 
 -- | The sequence token obtained from the response of the previous @PutLogEvents@ call. An upload in a newly created log stream does not require a sequence token. You can also get the sequence token using 'DescribeLogStreams' . If you call @PutLogEvents@ twice within a narrow time period using the same value for @sequenceToken@ , both calls may be successful, or one may be rejected.
 pleSequenceToken :: Lens' PutLogEvents (Maybe Text)
@@ -158,14 +152,14 @@ instance ToQuery PutLogEvents where
         toQuery = const mempty
 
 -- | /See:/ 'putLogEventsResponse' smart constructor.
-data PutLogEventsResponse =
-  PutLogEventsResponse'
-    { _plersRejectedLogEventsInfo :: !(Maybe RejectedLogEventsInfo)
-    , _plersNextSequenceToken     :: !(Maybe Text)
-    , _plersResponseStatus        :: !Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data PutLogEventsResponse = PutLogEventsResponse'{_plersRejectedLogEventsInfo
+                                                  ::
+                                                  !(Maybe
+                                                      RejectedLogEventsInfo),
+                                                  _plersNextSequenceToken ::
+                                                  !(Maybe Text),
+                                                  _plersResponseStatus :: !Int}
+                              deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'PutLogEventsResponse' with the minimum fields required to make a request.
 --
@@ -179,13 +173,11 @@ data PutLogEventsResponse =
 putLogEventsResponse
     :: Int -- ^ 'plersResponseStatus'
     -> PutLogEventsResponse
-putLogEventsResponse pResponseStatus_ =
-  PutLogEventsResponse'
-    { _plersRejectedLogEventsInfo = Nothing
-    , _plersNextSequenceToken = Nothing
-    , _plersResponseStatus = pResponseStatus_
-    }
-
+putLogEventsResponse pResponseStatus_
+  = PutLogEventsResponse'{_plersRejectedLogEventsInfo =
+                            Nothing,
+                          _plersNextSequenceToken = Nothing,
+                          _plersResponseStatus = pResponseStatus_}
 
 -- | The rejected events.
 plersRejectedLogEventsInfo :: Lens' PutLogEventsResponse (Maybe RejectedLogEventsInfo)

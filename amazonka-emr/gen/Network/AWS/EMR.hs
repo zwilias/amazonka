@@ -46,58 +46,58 @@ module Network.AWS.EMR
     -- * Operations
     -- $operations
 
-    -- ** RunJobFlow
+    -- ** RunJobFlow 
     , module Network.AWS.EMR.RunJobFlow
 
-    -- ** RemoveAutoScalingPolicy
+    -- ** RemoveAutoScalingPolicy 
     , module Network.AWS.EMR.RemoveAutoScalingPolicy
 
-    -- ** SetVisibleToAllUsers
+    -- ** SetVisibleToAllUsers 
     , module Network.AWS.EMR.SetVisibleToAllUsers
 
-    -- ** TerminateJobFlows
+    -- ** TerminateJobFlows 
     , module Network.AWS.EMR.TerminateJobFlows
 
-    -- ** DescribeStep
+    -- ** DescribeStep 
     , module Network.AWS.EMR.DescribeStep
 
-    -- ** RemoveTags
+    -- ** RemoveTags 
     , module Network.AWS.EMR.RemoveTags
 
-    -- ** DescribeCluster
+    -- ** DescribeCluster 
     , module Network.AWS.EMR.DescribeCluster
 
-    -- ** ListSecurityConfigurations
+    -- ** ListSecurityConfigurations 
     , module Network.AWS.EMR.ListSecurityConfigurations
 
-    -- ** CancelSteps
+    -- ** CancelSteps 
     , module Network.AWS.EMR.CancelSteps
 
-    -- ** CreateSecurityConfiguration
+    -- ** CreateSecurityConfiguration 
     , module Network.AWS.EMR.CreateSecurityConfiguration
 
-    -- ** SetTerminationProtection
+    -- ** SetTerminationProtection 
     , module Network.AWS.EMR.SetTerminationProtection
 
-    -- ** AddJobFlowSteps
+    -- ** AddJobFlowSteps 
     , module Network.AWS.EMR.AddJobFlowSteps
 
-    -- ** ModifyInstanceGroups
+    -- ** ModifyInstanceGroups 
     , module Network.AWS.EMR.ModifyInstanceGroups
 
     -- ** ListSteps (Paginated)
     , module Network.AWS.EMR.ListSteps
 
-    -- ** AddInstanceFleet
+    -- ** AddInstanceFleet 
     , module Network.AWS.EMR.AddInstanceFleet
 
-    -- ** AddInstanceGroups
+    -- ** AddInstanceGroups 
     , module Network.AWS.EMR.AddInstanceGroups
 
-    -- ** DeleteSecurityConfiguration
+    -- ** DeleteSecurityConfiguration 
     , module Network.AWS.EMR.DeleteSecurityConfiguration
 
-    -- ** ModifyInstanceFleet
+    -- ** ModifyInstanceFleet 
     , module Network.AWS.EMR.ModifyInstanceFleet
 
     -- ** ListInstanceGroups (Paginated)
@@ -106,19 +106,19 @@ module Network.AWS.EMR
     -- ** ListBootstrapActions (Paginated)
     , module Network.AWS.EMR.ListBootstrapActions
 
-    -- ** AddTags
+    -- ** AddTags 
     , module Network.AWS.EMR.AddTags
 
     -- ** ListInstances (Paginated)
     , module Network.AWS.EMR.ListInstances
 
-    -- ** PutAutoScalingPolicy
+    -- ** PutAutoScalingPolicy 
     , module Network.AWS.EMR.PutAutoScalingPolicy
 
     -- ** ListClusters (Paginated)
     , module Network.AWS.EMR.ListClusters
 
-    -- ** DescribeSecurityConfiguration
+    -- ** DescribeSecurityConfiguration 
     , module Network.AWS.EMR.DescribeSecurityConfiguration
 
     -- ** ListInstanceFleets (Paginated)

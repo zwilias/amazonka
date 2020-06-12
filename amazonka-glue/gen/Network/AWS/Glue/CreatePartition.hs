@@ -40,22 +40,18 @@ module Network.AWS.Glue.CreatePartition
     ) where
 
 import Network.AWS.Glue.Types
-import Network.AWS.Glue.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 
 -- | /See:/ 'createPartition' smart constructor.
-data CreatePartition =
-  CreatePartition'
-    { _cpCatalogId      :: !(Maybe Text)
-    , _cpDatabaseName   :: !Text
-    , _cpTableName      :: !Text
-    , _cpPartitionInput :: !PartitionInput
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data CreatePartition = CreatePartition'{_cpCatalogId
+                                        :: !(Maybe Text),
+                                        _cpDatabaseName :: !Text,
+                                        _cpTableName :: !Text,
+                                        _cpPartitionInput :: !PartitionInput}
+                         deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'CreatePartition' with the minimum fields required to make a request.
 --
@@ -73,14 +69,12 @@ createPartition
     -> Text -- ^ 'cpTableName'
     -> PartitionInput -- ^ 'cpPartitionInput'
     -> CreatePartition
-createPartition pDatabaseName_ pTableName_ pPartitionInput_ =
-  CreatePartition'
-    { _cpCatalogId = Nothing
-    , _cpDatabaseName = pDatabaseName_
-    , _cpTableName = pTableName_
-    , _cpPartitionInput = pPartitionInput_
-    }
-
+createPartition pDatabaseName_ pTableName_
+  pPartitionInput_
+  = CreatePartition'{_cpCatalogId = Nothing,
+                     _cpDatabaseName = pDatabaseName_,
+                     _cpTableName = pTableName_,
+                     _cpPartitionInput = pPartitionInput_}
 
 -- | The ID of the catalog in which the partion is to be created. Currently, this should be the AWS account ID.
 cpCatalogId :: Lens' CreatePartition (Maybe Text)
@@ -135,12 +129,10 @@ instance ToQuery CreatePartition where
         toQuery = const mempty
 
 -- | /See:/ 'createPartitionResponse' smart constructor.
-newtype CreatePartitionResponse =
-  CreatePartitionResponse'
-    { _cprsResponseStatus :: Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+newtype CreatePartitionResponse = CreatePartitionResponse'{_cprsResponseStatus
+                                                           :: Int}
+                                    deriving (Eq, Read, Show, Data, Typeable,
+                                              Generic)
 
 -- | Creates a value of 'CreatePartitionResponse' with the minimum fields required to make a request.
 --
@@ -150,9 +142,9 @@ newtype CreatePartitionResponse =
 createPartitionResponse
     :: Int -- ^ 'cprsResponseStatus'
     -> CreatePartitionResponse
-createPartitionResponse pResponseStatus_ =
-  CreatePartitionResponse' {_cprsResponseStatus = pResponseStatus_}
-
+createPartitionResponse pResponseStatus_
+  = CreatePartitionResponse'{_cprsResponseStatus =
+                               pResponseStatus_}
 
 -- | -- | The response status code.
 cprsResponseStatus :: Lens' CreatePartitionResponse Int

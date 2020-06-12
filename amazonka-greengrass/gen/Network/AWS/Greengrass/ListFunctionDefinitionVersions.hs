@@ -39,21 +39,24 @@ module Network.AWS.Greengrass.ListFunctionDefinitionVersions
     ) where
 
 import Network.AWS.Greengrass.Types
-import Network.AWS.Greengrass.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 
 -- | /See:/ 'listFunctionDefinitionVersions' smart constructor.
-data ListFunctionDefinitionVersions =
-  ListFunctionDefinitionVersions'
-    { _lfdvNextToken            :: !(Maybe Text)
-    , _lfdvMaxResults           :: !(Maybe Text)
-    , _lfdvFunctionDefinitionId :: !Text
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data ListFunctionDefinitionVersions = ListFunctionDefinitionVersions'{_lfdvNextToken
+                                                                      ::
+                                                                      !(Maybe
+                                                                          Text),
+                                                                      _lfdvMaxResults
+                                                                      ::
+                                                                      !(Maybe
+                                                                          Text),
+                                                                      _lfdvFunctionDefinitionId
+                                                                      :: !Text}
+                                        deriving (Eq, Read, Show, Data,
+                                                  Typeable, Generic)
 
 -- | Creates a value of 'ListFunctionDefinitionVersions' with the minimum fields required to make a request.
 --
@@ -67,13 +70,12 @@ data ListFunctionDefinitionVersions =
 listFunctionDefinitionVersions
     :: Text -- ^ 'lfdvFunctionDefinitionId'
     -> ListFunctionDefinitionVersions
-listFunctionDefinitionVersions pFunctionDefinitionId_ =
-  ListFunctionDefinitionVersions'
-    { _lfdvNextToken = Nothing
-    , _lfdvMaxResults = Nothing
-    , _lfdvFunctionDefinitionId = pFunctionDefinitionId_
-    }
-
+listFunctionDefinitionVersions pFunctionDefinitionId_
+  = ListFunctionDefinitionVersions'{_lfdvNextToken =
+                                      Nothing,
+                                    _lfdvMaxResults = Nothing,
+                                    _lfdvFunctionDefinitionId =
+                                      pFunctionDefinitionId_}
 
 -- | The token for the next set of results, or ''null'' if there are no additional results.
 lfdvNextToken :: Lens' ListFunctionDefinitionVersions (Maybe Text)
@@ -125,14 +127,19 @@ instance ToQuery ListFunctionDefinitionVersions where
                "MaxResults" =: _lfdvMaxResults]
 
 -- | /See:/ 'listFunctionDefinitionVersionsResponse' smart constructor.
-data ListFunctionDefinitionVersionsResponse =
-  ListFunctionDefinitionVersionsResponse'
-    { _lfdvrsVersions       :: !(Maybe [VersionInformation])
-    , _lfdvrsNextToken      :: !(Maybe Text)
-    , _lfdvrsResponseStatus :: !Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data ListFunctionDefinitionVersionsResponse = ListFunctionDefinitionVersionsResponse'{_lfdvrsVersions
+                                                                                      ::
+                                                                                      !(Maybe
+                                                                                          [VersionInformation]),
+                                                                                      _lfdvrsNextToken
+                                                                                      ::
+                                                                                      !(Maybe
+                                                                                          Text),
+                                                                                      _lfdvrsResponseStatus
+                                                                                      ::
+                                                                                      !Int}
+                                                deriving (Eq, Read, Show, Data,
+                                                          Typeable, Generic)
 
 -- | Creates a value of 'ListFunctionDefinitionVersionsResponse' with the minimum fields required to make a request.
 --
@@ -146,13 +153,13 @@ data ListFunctionDefinitionVersionsResponse =
 listFunctionDefinitionVersionsResponse
     :: Int -- ^ 'lfdvrsResponseStatus'
     -> ListFunctionDefinitionVersionsResponse
-listFunctionDefinitionVersionsResponse pResponseStatus_ =
-  ListFunctionDefinitionVersionsResponse'
-    { _lfdvrsVersions = Nothing
-    , _lfdvrsNextToken = Nothing
-    , _lfdvrsResponseStatus = pResponseStatus_
-    }
-
+listFunctionDefinitionVersionsResponse
+  pResponseStatus_
+  = ListFunctionDefinitionVersionsResponse'{_lfdvrsVersions
+                                              = Nothing,
+                                            _lfdvrsNextToken = Nothing,
+                                            _lfdvrsResponseStatus =
+                                              pResponseStatus_}
 
 -- | Information about a version.
 lfdvrsVersions :: Lens' ListFunctionDefinitionVersionsResponse [VersionInformation]

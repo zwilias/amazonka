@@ -51,7 +51,6 @@ module Network.AWS.EC2.ModifySpotFleetRequest
     ) where
 
 import Network.AWS.EC2.Types
-import Network.AWS.EC2.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.Request
@@ -62,15 +61,18 @@ import Network.AWS.Response
 --
 --
 -- /See:/ 'modifySpotFleetRequest' smart constructor.
-data ModifySpotFleetRequest =
-  ModifySpotFleetRequest'
-    { _msfrTargetCapacity :: !(Maybe Int)
-    , _msfrExcessCapacityTerminationPolicy :: !(Maybe ExcessCapacityTerminationPolicy)
-    , _msfrOnDemandTargetCapacity :: !(Maybe Int)
-    , _msfrSpotFleetRequestId :: !Text
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data ModifySpotFleetRequest = ModifySpotFleetRequest'{_msfrTargetCapacity
+                                                      :: !(Maybe Int),
+                                                      _msfrExcessCapacityTerminationPolicy
+                                                      ::
+                                                      !(Maybe
+                                                          ExcessCapacityTerminationPolicy),
+                                                      _msfrOnDemandTargetCapacity
+                                                      :: !(Maybe Int),
+                                                      _msfrSpotFleetRequestId ::
+                                                      !Text}
+                                deriving (Eq, Read, Show, Data, Typeable,
+                                          Generic)
 
 -- | Creates a value of 'ModifySpotFleetRequest' with the minimum fields required to make a request.
 --
@@ -86,14 +88,12 @@ data ModifySpotFleetRequest =
 modifySpotFleetRequest
     :: Text -- ^ 'msfrSpotFleetRequestId'
     -> ModifySpotFleetRequest
-modifySpotFleetRequest pSpotFleetRequestId_ =
-  ModifySpotFleetRequest'
-    { _msfrTargetCapacity = Nothing
-    , _msfrExcessCapacityTerminationPolicy = Nothing
-    , _msfrOnDemandTargetCapacity = Nothing
-    , _msfrSpotFleetRequestId = pSpotFleetRequestId_
-    }
-
+modifySpotFleetRequest pSpotFleetRequestId_
+  = ModifySpotFleetRequest'{_msfrTargetCapacity =
+                              Nothing,
+                            _msfrExcessCapacityTerminationPolicy = Nothing,
+                            _msfrOnDemandTargetCapacity = Nothing,
+                            _msfrSpotFleetRequestId = pSpotFleetRequestId_}
 
 -- | The size of the fleet.
 msfrTargetCapacity :: Lens' ModifySpotFleetRequest (Maybe Int)
@@ -149,13 +149,14 @@ instance ToQuery ModifySpotFleetRequest where
 --
 --
 -- /See:/ 'modifySpotFleetRequestResponse' smart constructor.
-data ModifySpotFleetRequestResponse =
-  ModifySpotFleetRequestResponse'
-    { _msfrrsReturn         :: !(Maybe Bool)
-    , _msfrrsResponseStatus :: !Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data ModifySpotFleetRequestResponse = ModifySpotFleetRequestResponse'{_msfrrsReturn
+                                                                      ::
+                                                                      !(Maybe
+                                                                          Bool),
+                                                                      _msfrrsResponseStatus
+                                                                      :: !Int}
+                                        deriving (Eq, Read, Show, Data,
+                                                  Typeable, Generic)
 
 -- | Creates a value of 'ModifySpotFleetRequestResponse' with the minimum fields required to make a request.
 --
@@ -167,10 +168,10 @@ data ModifySpotFleetRequestResponse =
 modifySpotFleetRequestResponse
     :: Int -- ^ 'msfrrsResponseStatus'
     -> ModifySpotFleetRequestResponse
-modifySpotFleetRequestResponse pResponseStatus_ =
-  ModifySpotFleetRequestResponse'
-    {_msfrrsReturn = Nothing, _msfrrsResponseStatus = pResponseStatus_}
-
+modifySpotFleetRequestResponse pResponseStatus_
+  = ModifySpotFleetRequestResponse'{_msfrrsReturn =
+                                      Nothing,
+                                    _msfrrsResponseStatus = pResponseStatus_}
 
 -- | Is @true@ if the request succeeds, and an error otherwise.
 msfrrsReturn :: Lens' ModifySpotFleetRequestResponse (Maybe Bool)

@@ -36,20 +36,17 @@ module Network.AWS.IoTAnalytics.UpdatePipeline
     ) where
 
 import Network.AWS.IoTAnalytics.Types
-import Network.AWS.IoTAnalytics.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 
 -- | /See:/ 'updatePipeline' smart constructor.
-data UpdatePipeline =
-  UpdatePipeline'
-    { _upPipelineName       :: !Text
-    , _upPipelineActivities :: !(List1 PipelineActivity)
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data UpdatePipeline = UpdatePipeline'{_upPipelineName
+                                      :: !Text,
+                                      _upPipelineActivities ::
+                                      !(List1 PipelineActivity)}
+                        deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'UpdatePipeline' with the minimum fields required to make a request.
 --
@@ -62,12 +59,10 @@ updatePipeline
     :: Text -- ^ 'upPipelineName'
     -> NonEmpty PipelineActivity -- ^ 'upPipelineActivities'
     -> UpdatePipeline
-updatePipeline pPipelineName_ pPipelineActivities_ =
-  UpdatePipeline'
-    { _upPipelineName = pPipelineName_
-    , _upPipelineActivities = _List1 # pPipelineActivities_
-    }
-
+updatePipeline pPipelineName_ pPipelineActivities_
+  = UpdatePipeline'{_upPipelineName = pPipelineName_,
+                    _upPipelineActivities =
+                      _List1 # pPipelineActivities_}
 
 -- | The name of the pipeline to update.
 upPipelineName :: Lens' UpdatePipeline Text
@@ -104,16 +99,14 @@ instance ToQuery UpdatePipeline where
         toQuery = const mempty
 
 -- | /See:/ 'updatePipelineResponse' smart constructor.
-data UpdatePipelineResponse =
-  UpdatePipelineResponse'
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data UpdatePipelineResponse = UpdatePipelineResponse'
+                                deriving (Eq, Read, Show, Data, Typeable,
+                                          Generic)
 
 -- | Creates a value of 'UpdatePipelineResponse' with the minimum fields required to make a request.
 --
 updatePipelineResponse
     :: UpdatePipelineResponse
 updatePipelineResponse = UpdatePipelineResponse'
-
 
 instance NFData UpdatePipelineResponse where

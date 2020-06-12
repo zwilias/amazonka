@@ -46,19 +46,15 @@ module Network.AWS.Organizations.EnablePolicyType
 
 import Network.AWS.Lens
 import Network.AWS.Organizations.Types
-import Network.AWS.Organizations.Types.Product
 import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 
 -- | /See:/ 'enablePolicyType' smart constructor.
-data EnablePolicyType =
-  EnablePolicyType'
-    { _eptRootId     :: !Text
-    , _eptPolicyType :: !PolicyType
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data EnablePolicyType = EnablePolicyType'{_eptRootId
+                                          :: !Text,
+                                          _eptPolicyType :: !PolicyType}
+                          deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'EnablePolicyType' with the minimum fields required to make a request.
 --
@@ -71,9 +67,9 @@ enablePolicyType
     :: Text -- ^ 'eptRootId'
     -> PolicyType -- ^ 'eptPolicyType'
     -> EnablePolicyType
-enablePolicyType pRootId_ pPolicyType_ =
-  EnablePolicyType' {_eptRootId = pRootId_, _eptPolicyType = pPolicyType_}
-
+enablePolicyType pRootId_ pPolicyType_
+  = EnablePolicyType'{_eptRootId = pRootId_,
+                      _eptPolicyType = pPolicyType_}
 
 -- | The unique identifier (ID) of the root in which you want to enable a policy type. You can get the ID from the 'ListRoots' operation. The <http://wikipedia.org/wiki/regex regex pattern> for a root ID string requires "r-" followed by from 4 to 32 lower-case letters or digits.
 eptRootId :: Lens' EnablePolicyType Text
@@ -120,13 +116,12 @@ instance ToQuery EnablePolicyType where
         toQuery = const mempty
 
 -- | /See:/ 'enablePolicyTypeResponse' smart constructor.
-data EnablePolicyTypeResponse =
-  EnablePolicyTypeResponse'
-    { _eptrsRoot           :: !(Maybe Root)
-    , _eptrsResponseStatus :: !Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data EnablePolicyTypeResponse = EnablePolicyTypeResponse'{_eptrsRoot
+                                                          :: !(Maybe Root),
+                                                          _eptrsResponseStatus
+                                                          :: !Int}
+                                  deriving (Eq, Read, Show, Data, Typeable,
+                                            Generic)
 
 -- | Creates a value of 'EnablePolicyTypeResponse' with the minimum fields required to make a request.
 --
@@ -138,10 +133,9 @@ data EnablePolicyTypeResponse =
 enablePolicyTypeResponse
     :: Int -- ^ 'eptrsResponseStatus'
     -> EnablePolicyTypeResponse
-enablePolicyTypeResponse pResponseStatus_ =
-  EnablePolicyTypeResponse'
-    {_eptrsRoot = Nothing, _eptrsResponseStatus = pResponseStatus_}
-
+enablePolicyTypeResponse pResponseStatus_
+  = EnablePolicyTypeResponse'{_eptrsRoot = Nothing,
+                              _eptrsResponseStatus = pResponseStatus_}
 
 -- | A structure that shows the root with the updated list of enabled policy types.
 eptrsRoot :: Lens' EnablePolicyTypeResponse (Maybe Root)

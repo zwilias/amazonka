@@ -46,21 +46,17 @@ module Network.AWS.AutoScaling.EnterStandby
     ) where
 
 import Network.AWS.AutoScaling.Types
-import Network.AWS.AutoScaling.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 
 -- | /See:/ 'enterStandby' smart constructor.
-data EnterStandby =
-  EnterStandby'
-    { _esInstanceIds                    :: !(Maybe [Text])
-    , _esAutoScalingGroupName           :: !Text
-    , _esShouldDecrementDesiredCapacity :: !Bool
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data EnterStandby = EnterStandby'{_esInstanceIds ::
+                                  !(Maybe [Text]),
+                                  _esAutoScalingGroupName :: !Text,
+                                  _esShouldDecrementDesiredCapacity :: !Bool}
+                      deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'EnterStandby' with the minimum fields required to make a request.
 --
@@ -75,13 +71,12 @@ enterStandby
     :: Text -- ^ 'esAutoScalingGroupName'
     -> Bool -- ^ 'esShouldDecrementDesiredCapacity'
     -> EnterStandby
-enterStandby pAutoScalingGroupName_ pShouldDecrementDesiredCapacity_ =
-  EnterStandby'
-    { _esInstanceIds = Nothing
-    , _esAutoScalingGroupName = pAutoScalingGroupName_
-    , _esShouldDecrementDesiredCapacity = pShouldDecrementDesiredCapacity_
-    }
-
+enterStandby pAutoScalingGroupName_
+  pShouldDecrementDesiredCapacity_
+  = EnterStandby'{_esInstanceIds = Nothing,
+                  _esAutoScalingGroupName = pAutoScalingGroupName_,
+                  _esShouldDecrementDesiredCapacity =
+                    pShouldDecrementDesiredCapacity_}
 
 -- | The IDs of the instances. You can specify up to 20 instances.
 esInstanceIds :: Lens' EnterStandby [Text]
@@ -128,13 +123,10 @@ instance ToQuery EnterStandby where
                  _esShouldDecrementDesiredCapacity]
 
 -- | /See:/ 'enterStandbyResponse' smart constructor.
-data EnterStandbyResponse =
-  EnterStandbyResponse'
-    { _ersActivities     :: !(Maybe [Activity])
-    , _ersResponseStatus :: !Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data EnterStandbyResponse = EnterStandbyResponse'{_ersActivities
+                                                  :: !(Maybe [Activity]),
+                                                  _ersResponseStatus :: !Int}
+                              deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'EnterStandbyResponse' with the minimum fields required to make a request.
 --
@@ -146,10 +138,9 @@ data EnterStandbyResponse =
 enterStandbyResponse
     :: Int -- ^ 'ersResponseStatus'
     -> EnterStandbyResponse
-enterStandbyResponse pResponseStatus_ =
-  EnterStandbyResponse'
-    {_ersActivities = Nothing, _ersResponseStatus = pResponseStatus_}
-
+enterStandbyResponse pResponseStatus_
+  = EnterStandbyResponse'{_ersActivities = Nothing,
+                          _ersResponseStatus = pResponseStatus_}
 
 -- | The activities related to moving instances into @Standby@ mode.
 ersActivities :: Lens' EnterStandbyResponse [Activity]

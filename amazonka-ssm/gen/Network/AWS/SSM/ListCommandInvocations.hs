@@ -51,20 +51,24 @@ import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 import Network.AWS.SSM.Types
-import Network.AWS.SSM.Types.Product
 
 -- | /See:/ 'listCommandInvocations' smart constructor.
-data ListCommandInvocations =
-  ListCommandInvocations'
-    { _lciInstanceId :: !(Maybe Text)
-    , _lciFilters    :: !(Maybe (List1 CommandFilter))
-    , _lciNextToken  :: !(Maybe Text)
-    , _lciCommandId  :: !(Maybe Text)
-    , _lciDetails    :: !(Maybe Bool)
-    , _lciMaxResults :: !(Maybe Nat)
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data ListCommandInvocations = ListCommandInvocations'{_lciInstanceId
+                                                      :: !(Maybe Text),
+                                                      _lciFilters ::
+                                                      !(Maybe
+                                                          (List1
+                                                             CommandFilter)),
+                                                      _lciNextToken ::
+                                                      !(Maybe Text),
+                                                      _lciCommandId ::
+                                                      !(Maybe Text),
+                                                      _lciDetails ::
+                                                      !(Maybe Bool),
+                                                      _lciMaxResults ::
+                                                      !(Maybe Nat)}
+                                deriving (Eq, Read, Show, Data, Typeable,
+                                          Generic)
 
 -- | Creates a value of 'ListCommandInvocations' with the minimum fields required to make a request.
 --
@@ -78,21 +82,16 @@ data ListCommandInvocations =
 --
 -- * 'lciCommandId' - (Optional) The invocations for a specific command ID.
 --
--- * 'lciDetails' - (Optional) If set this returns the response of the command executions and any command output. By default this is set to False.
+-- * 'lciDetails' - (Optional) If set this returns the response of the command executions and any command output. By default this is set to False. 
 --
 -- * 'lciMaxResults' - (Optional) The maximum number of items to return for this call. The call also returns a token that you can specify in a subsequent call to get the next set of results.
 listCommandInvocations
     :: ListCommandInvocations
-listCommandInvocations =
-  ListCommandInvocations'
-    { _lciInstanceId = Nothing
-    , _lciFilters = Nothing
-    , _lciNextToken = Nothing
-    , _lciCommandId = Nothing
-    , _lciDetails = Nothing
-    , _lciMaxResults = Nothing
-    }
-
+listCommandInvocations
+  = ListCommandInvocations'{_lciInstanceId = Nothing,
+                            _lciFilters = Nothing, _lciNextToken = Nothing,
+                            _lciCommandId = Nothing, _lciDetails = Nothing,
+                            _lciMaxResults = Nothing}
 
 -- | (Optional) The command execution details for a specific instance ID.
 lciInstanceId :: Lens' ListCommandInvocations (Maybe Text)
@@ -110,7 +109,7 @@ lciNextToken = lens _lciNextToken (\ s a -> s{_lciNextToken = a})
 lciCommandId :: Lens' ListCommandInvocations (Maybe Text)
 lciCommandId = lens _lciCommandId (\ s a -> s{_lciCommandId = a})
 
--- | (Optional) If set this returns the response of the command executions and any command output. By default this is set to False.
+-- | (Optional) If set this returns the response of the command executions and any command output. By default this is set to False. 
 lciDetails :: Lens' ListCommandInvocations (Maybe Bool)
 lciDetails = lens _lciDetails (\ s a -> s{_lciDetails = a})
 
@@ -168,14 +167,18 @@ instance ToQuery ListCommandInvocations where
         toQuery = const mempty
 
 -- | /See:/ 'listCommandInvocationsResponse' smart constructor.
-data ListCommandInvocationsResponse =
-  ListCommandInvocationsResponse'
-    { _lrsNextToken          :: !(Maybe Text)
-    , _lrsCommandInvocations :: !(Maybe [CommandInvocation])
-    , _lrsResponseStatus     :: !Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data ListCommandInvocationsResponse = ListCommandInvocationsResponse'{_lrsNextToken
+                                                                      ::
+                                                                      !(Maybe
+                                                                          Text),
+                                                                      _lrsCommandInvocations
+                                                                      ::
+                                                                      !(Maybe
+                                                                          [CommandInvocation]),
+                                                                      _lrsResponseStatus
+                                                                      :: !Int}
+                                        deriving (Eq, Read, Show, Data,
+                                                  Typeable, Generic)
 
 -- | Creates a value of 'ListCommandInvocationsResponse' with the minimum fields required to make a request.
 --
@@ -183,25 +186,23 @@ data ListCommandInvocationsResponse =
 --
 -- * 'lrsNextToken' - (Optional) The token for the next set of items to return. (You received this token from a previous call.)
 --
--- * 'lrsCommandInvocations' - (Optional) A list of all invocations.
+-- * 'lrsCommandInvocations' - (Optional) A list of all invocations. 
 --
 -- * 'lrsResponseStatus' - -- | The response status code.
 listCommandInvocationsResponse
     :: Int -- ^ 'lrsResponseStatus'
     -> ListCommandInvocationsResponse
-listCommandInvocationsResponse pResponseStatus_ =
-  ListCommandInvocationsResponse'
-    { _lrsNextToken = Nothing
-    , _lrsCommandInvocations = Nothing
-    , _lrsResponseStatus = pResponseStatus_
-    }
-
+listCommandInvocationsResponse pResponseStatus_
+  = ListCommandInvocationsResponse'{_lrsNextToken =
+                                      Nothing,
+                                    _lrsCommandInvocations = Nothing,
+                                    _lrsResponseStatus = pResponseStatus_}
 
 -- | (Optional) The token for the next set of items to return. (You received this token from a previous call.)
 lrsNextToken :: Lens' ListCommandInvocationsResponse (Maybe Text)
 lrsNextToken = lens _lrsNextToken (\ s a -> s{_lrsNextToken = a})
 
--- | (Optional) A list of all invocations.
+-- | (Optional) A list of all invocations. 
 lrsCommandInvocations :: Lens' ListCommandInvocationsResponse [CommandInvocation]
 lrsCommandInvocations = lens _lrsCommandInvocations (\ s a -> s{_lrsCommandInvocations = a}) . _Default . _Coerce
 

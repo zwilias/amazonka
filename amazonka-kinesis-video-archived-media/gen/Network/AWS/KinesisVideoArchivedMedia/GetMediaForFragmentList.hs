@@ -23,9 +23,9 @@
 --
 -- The following limits apply when using the @GetMediaForFragmentList@ API:
 --
---     * A client can call @GetMediaForFragmentList@ up to five times per second per stream.
+--     * A client can call @GetMediaForFragmentList@ up to five times per second per stream. 
 --
---     * Kinesis Video Streams sends media data at a rate of up to 25 megabytes per second (or 200 megabits per second) during a @GetMediaForFragmentList@ session.
+--     * Kinesis Video Streams sends media data at a rate of up to 25 megabytes per second (or 200 megabits per second) during a @GetMediaForFragmentList@ session. 
 --
 --
 --
@@ -48,20 +48,18 @@ module Network.AWS.KinesisVideoArchivedMedia.GetMediaForFragmentList
     ) where
 
 import Network.AWS.KinesisVideoArchivedMedia.Types
-import Network.AWS.KinesisVideoArchivedMedia.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 
 -- | /See:/ 'getMediaForFragmentList' smart constructor.
-data GetMediaForFragmentList =
-  GetMediaForFragmentList'
-    { _gmfflStreamName :: !Text
-    , _gmfflFragments  :: ![Text]
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data GetMediaForFragmentList = GetMediaForFragmentList'{_gmfflStreamName
+                                                        :: !Text,
+                                                        _gmfflFragments ::
+                                                        ![Text]}
+                                 deriving (Eq, Read, Show, Data, Typeable,
+                                           Generic)
 
 -- | Creates a value of 'GetMediaForFragmentList' with the minimum fields required to make a request.
 --
@@ -73,10 +71,10 @@ data GetMediaForFragmentList =
 getMediaForFragmentList
     :: Text -- ^ 'gmfflStreamName'
     -> GetMediaForFragmentList
-getMediaForFragmentList pStreamName_ =
-  GetMediaForFragmentList'
-    {_gmfflStreamName = pStreamName_, _gmfflFragments = mempty}
-
+getMediaForFragmentList pStreamName_
+  = GetMediaForFragmentList'{_gmfflStreamName =
+                               pStreamName_,
+                             _gmfflFragments = mempty}
 
 -- | The name of the stream from which to retrieve fragment media.
 gmfflStreamName :: Lens' GetMediaForFragmentList Text
@@ -118,14 +116,16 @@ instance ToQuery GetMediaForFragmentList where
         toQuery = const mempty
 
 -- | /See:/ 'getMediaForFragmentListResponse' smart constructor.
-data GetMediaForFragmentListResponse =
-  GetMediaForFragmentListResponse'
-    { _gmfflrsContentType    :: !(Maybe Text)
-    , _gmfflrsResponseStatus :: !Int
-    , _gmfflrsPayload        :: !RsBody
-    }
-  deriving (Show, Generic)
-
+data GetMediaForFragmentListResponse = GetMediaForFragmentListResponse'{_gmfflrsContentType
+                                                                        ::
+                                                                        !(Maybe
+                                                                            Text),
+                                                                        _gmfflrsResponseStatus
+                                                                        :: !Int,
+                                                                        _gmfflrsPayload
+                                                                        ::
+                                                                        !RsBody}
+                                         deriving (Show, Generic)
 
 -- | Creates a value of 'GetMediaForFragmentListResponse' with the minimum fields required to make a request.
 --
@@ -140,13 +140,12 @@ getMediaForFragmentListResponse
     :: Int -- ^ 'gmfflrsResponseStatus'
     -> RsBody -- ^ 'gmfflrsPayload'
     -> GetMediaForFragmentListResponse
-getMediaForFragmentListResponse pResponseStatus_ pPayload_ =
-  GetMediaForFragmentListResponse'
-    { _gmfflrsContentType = Nothing
-    , _gmfflrsResponseStatus = pResponseStatus_
-    , _gmfflrsPayload = pPayload_
-    }
-
+getMediaForFragmentListResponse pResponseStatus_
+  pPayload_
+  = GetMediaForFragmentListResponse'{_gmfflrsContentType
+                                       = Nothing,
+                                     _gmfflrsResponseStatus = pResponseStatus_,
+                                     _gmfflrsPayload = pPayload_}
 
 -- | The content type of the requested media.
 gmfflrsContentType :: Lens' GetMediaForFragmentListResponse (Maybe Text)

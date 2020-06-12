@@ -42,16 +42,12 @@ import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 import Network.AWS.WorkSpaces.Types
-import Network.AWS.WorkSpaces.Types.Product
 
 -- | /See:/ 'revokeIPRules' smart constructor.
-data RevokeIPRules =
-  RevokeIPRules'
-    { _rirGroupId   :: !Text
-    , _rirUserRules :: ![Text]
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data RevokeIPRules = RevokeIPRules'{_rirGroupId ::
+                                    !Text,
+                                    _rirUserRules :: ![Text]}
+                       deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'RevokeIPRules' with the minimum fields required to make a request.
 --
@@ -63,9 +59,9 @@ data RevokeIPRules =
 revokeIPRules
     :: Text -- ^ 'rirGroupId'
     -> RevokeIPRules
-revokeIPRules pGroupId_ =
-  RevokeIPRules' {_rirGroupId = pGroupId_, _rirUserRules = mempty}
-
+revokeIPRules pGroupId_
+  = RevokeIPRules'{_rirGroupId = pGroupId_,
+                   _rirUserRules = mempty}
 
 -- | The ID of the group.
 rirGroupId :: Lens' RevokeIPRules Text
@@ -110,12 +106,10 @@ instance ToQuery RevokeIPRules where
         toQuery = const mempty
 
 -- | /See:/ 'revokeIPRulesResponse' smart constructor.
-newtype RevokeIPRulesResponse =
-  RevokeIPRulesResponse'
-    { _rirrsResponseStatus :: Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+newtype RevokeIPRulesResponse = RevokeIPRulesResponse'{_rirrsResponseStatus
+                                                       :: Int}
+                                  deriving (Eq, Read, Show, Data, Typeable,
+                                            Generic)
 
 -- | Creates a value of 'RevokeIPRulesResponse' with the minimum fields required to make a request.
 --
@@ -125,9 +119,9 @@ newtype RevokeIPRulesResponse =
 revokeIPRulesResponse
     :: Int -- ^ 'rirrsResponseStatus'
     -> RevokeIPRulesResponse
-revokeIPRulesResponse pResponseStatus_ =
-  RevokeIPRulesResponse' {_rirrsResponseStatus = pResponseStatus_}
-
+revokeIPRulesResponse pResponseStatus_
+  = RevokeIPRulesResponse'{_rirrsResponseStatus =
+                             pResponseStatus_}
 
 -- | -- | The response status code.
 rirrsResponseStatus :: Lens' RevokeIPRulesResponse Int

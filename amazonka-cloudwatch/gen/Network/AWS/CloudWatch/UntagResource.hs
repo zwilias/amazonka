@@ -38,20 +38,16 @@ module Network.AWS.CloudWatch.UntagResource
     ) where
 
 import Network.AWS.CloudWatch.Types
-import Network.AWS.CloudWatch.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 
 -- | /See:/ 'untagResource' smart constructor.
-data UntagResource =
-  UntagResource'
-    { _urResourceARN :: !Text
-    , _urTagKeys     :: ![Text]
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data UntagResource = UntagResource'{_urResourceARN ::
+                                    !Text,
+                                    _urTagKeys :: ![Text]}
+                       deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'UntagResource' with the minimum fields required to make a request.
 --
@@ -63,9 +59,9 @@ data UntagResource =
 untagResource
     :: Text -- ^ 'urResourceARN'
     -> UntagResource
-untagResource pResourceARN_ =
-  UntagResource' {_urResourceARN = pResourceARN_, _urTagKeys = mempty}
-
+untagResource pResourceARN_
+  = UntagResource'{_urResourceARN = pResourceARN_,
+                   _urTagKeys = mempty}
 
 -- | The ARN of the CloudWatch resource that you're removing tags from. The ARN format of an alarm is @arn:aws:cloudwatch:/Region/ :/account-id/ :alarm:/alarm-name/ @  The ARN format of a Contributor Insights rule is @arn:aws:cloudwatch:/Region/ :/account-id/ :insight-rule:/insight-rule-name/ @  For more information on ARN format, see <https://docs.aws.amazon.com/IAM/latest/UserGuide/list_amazoncloudwatch.html#amazoncloudwatch-resources-for-iam-policies Resource Types Defined by Amazon CloudWatch> in the /Amazon Web Services General Reference/ .
 urResourceARN :: Lens' UntagResource Text
@@ -102,12 +98,10 @@ instance ToQuery UntagResource where
                "TagKeys" =: toQueryList "member" _urTagKeys]
 
 -- | /See:/ 'untagResourceResponse' smart constructor.
-newtype UntagResourceResponse =
-  UntagResourceResponse'
-    { _urrsResponseStatus :: Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+newtype UntagResourceResponse = UntagResourceResponse'{_urrsResponseStatus
+                                                       :: Int}
+                                  deriving (Eq, Read, Show, Data, Typeable,
+                                            Generic)
 
 -- | Creates a value of 'UntagResourceResponse' with the minimum fields required to make a request.
 --
@@ -117,9 +111,9 @@ newtype UntagResourceResponse =
 untagResourceResponse
     :: Int -- ^ 'urrsResponseStatus'
     -> UntagResourceResponse
-untagResourceResponse pResponseStatus_ =
-  UntagResourceResponse' {_urrsResponseStatus = pResponseStatus_}
-
+untagResourceResponse pResponseStatus_
+  = UntagResourceResponse'{_urrsResponseStatus =
+                             pResponseStatus_}
 
 -- | -- | The response status code.
 urrsResponseStatus :: Lens' UntagResourceResponse Int

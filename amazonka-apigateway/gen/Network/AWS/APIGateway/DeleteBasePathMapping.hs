@@ -36,7 +36,6 @@ module Network.AWS.APIGateway.DeleteBasePathMapping
     ) where
 
 import Network.AWS.APIGateway.Types
-import Network.AWS.APIGateway.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.Request
@@ -47,13 +46,11 @@ import Network.AWS.Response
 --
 --
 -- /See:/ 'deleteBasePathMapping' smart constructor.
-data DeleteBasePathMapping =
-  DeleteBasePathMapping'
-    { _dbpmDomainName :: !Text
-    , _dbpmBasePath   :: !Text
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data DeleteBasePathMapping = DeleteBasePathMapping'{_dbpmDomainName
+                                                    :: !Text,
+                                                    _dbpmBasePath :: !Text}
+                               deriving (Eq, Read, Show, Data, Typeable,
+                                         Generic)
 
 -- | Creates a value of 'DeleteBasePathMapping' with the minimum fields required to make a request.
 --
@@ -66,10 +63,10 @@ deleteBasePathMapping
     :: Text -- ^ 'dbpmDomainName'
     -> Text -- ^ 'dbpmBasePath'
     -> DeleteBasePathMapping
-deleteBasePathMapping pDomainName_ pBasePath_ =
-  DeleteBasePathMapping'
-    {_dbpmDomainName = pDomainName_, _dbpmBasePath = pBasePath_}
-
+deleteBasePathMapping pDomainName_ pBasePath_
+  = DeleteBasePathMapping'{_dbpmDomainName =
+                             pDomainName_,
+                           _dbpmBasePath = pBasePath_}
 
 -- | [Required] The domain name of the 'BasePathMapping' resource to delete.
 dbpmDomainName :: Lens' DeleteBasePathMapping Text
@@ -105,16 +102,15 @@ instance ToQuery DeleteBasePathMapping where
         toQuery = const mempty
 
 -- | /See:/ 'deleteBasePathMappingResponse' smart constructor.
-data DeleteBasePathMappingResponse =
-  DeleteBasePathMappingResponse'
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data DeleteBasePathMappingResponse = DeleteBasePathMappingResponse'
+                                       deriving (Eq, Read, Show, Data, Typeable,
+                                                 Generic)
 
 -- | Creates a value of 'DeleteBasePathMappingResponse' with the minimum fields required to make a request.
 --
 deleteBasePathMappingResponse
     :: DeleteBasePathMappingResponse
-deleteBasePathMappingResponse = DeleteBasePathMappingResponse'
-
+deleteBasePathMappingResponse
+  = DeleteBasePathMappingResponse'
 
 instance NFData DeleteBasePathMappingResponse where

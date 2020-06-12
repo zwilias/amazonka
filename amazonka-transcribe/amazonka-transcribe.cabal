@@ -57,8 +57,16 @@ library
         , Network.AWS.Transcribe.Waiters
 
     other-modules:
-          Network.AWS.Transcribe.Types.Product
-        , Network.AWS.Transcribe.Types.Sum
+          Network.AWS.Transcribe.Types.LanguageCode
+        , Network.AWS.Transcribe.Types.Media
+        , Network.AWS.Transcribe.Types.MediaFormat
+        , Network.AWS.Transcribe.Types.Settings
+        , Network.AWS.Transcribe.Types.Transcript
+        , Network.AWS.Transcribe.Types.TranscriptionJob
+        , Network.AWS.Transcribe.Types.TranscriptionJobStatus
+        , Network.AWS.Transcribe.Types.TranscriptionJobSummary
+        , Network.AWS.Transcribe.Types.VocabularyInfo
+        , Network.AWS.Transcribe.Types.VocabularyState
 
     build-depends:
           amazonka-core == 1.6.1.*

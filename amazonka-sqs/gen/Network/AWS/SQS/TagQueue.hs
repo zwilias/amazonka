@@ -56,16 +56,11 @@ import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 import Network.AWS.SQS.Types
-import Network.AWS.SQS.Types.Product
 
 -- | /See:/ 'tagQueue' smart constructor.
-data TagQueue =
-  TagQueue'
-    { _tqQueueURL :: !Text
-    , _tqTags     :: !(Map Text Text)
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data TagQueue = TagQueue'{_tqQueueURL :: !Text,
+                          _tqTags :: !(Map Text Text)}
+                  deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'TagQueue' with the minimum fields required to make a request.
 --
@@ -77,8 +72,9 @@ data TagQueue =
 tagQueue
     :: Text -- ^ 'tqQueueURL'
     -> TagQueue
-tagQueue pQueueURL_ = TagQueue' {_tqQueueURL = pQueueURL_, _tqTags = mempty}
-
+tagQueue pQueueURL_
+  = TagQueue'{_tqQueueURL = pQueueURL_,
+              _tqTags = mempty}
 
 -- | The URL of the queue.
 tqQueueURL :: Lens' TagQueue Text
@@ -112,16 +108,13 @@ instance ToQuery TagQueue where
                toQueryMap "Tags" "Key" "Value" _tqTags]
 
 -- | /See:/ 'tagQueueResponse' smart constructor.
-data TagQueueResponse =
-  TagQueueResponse'
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data TagQueueResponse = TagQueueResponse'
+                          deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'TagQueueResponse' with the minimum fields required to make a request.
 --
 tagQueueResponse
     :: TagQueueResponse
 tagQueueResponse = TagQueueResponse'
-
 
 instance NFData TagQueueResponse where

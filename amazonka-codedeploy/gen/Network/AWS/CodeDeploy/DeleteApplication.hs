@@ -35,7 +35,6 @@ module Network.AWS.CodeDeploy.DeleteApplication
     ) where
 
 import Network.AWS.CodeDeploy.Types
-import Network.AWS.CodeDeploy.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.Request
@@ -46,12 +45,9 @@ import Network.AWS.Response
 --
 --
 -- /See:/ 'deleteApplication' smart constructor.
-newtype DeleteApplication =
-  DeleteApplication'
-    { _daApplicationName :: Text
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+newtype DeleteApplication = DeleteApplication'{_daApplicationName
+                                               :: Text}
+                              deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'DeleteApplication' with the minimum fields required to make a request.
 --
@@ -61,9 +57,9 @@ newtype DeleteApplication =
 deleteApplication
     :: Text -- ^ 'daApplicationName'
     -> DeleteApplication
-deleteApplication pApplicationName_ =
-  DeleteApplication' {_daApplicationName = pApplicationName_}
-
+deleteApplication pApplicationName_
+  = DeleteApplication'{_daApplicationName =
+                         pApplicationName_}
 
 -- | The name of an AWS CodeDeploy application associated with the IAM user or AWS account.
 daApplicationName :: Lens' DeleteApplication Text
@@ -101,16 +97,15 @@ instance ToQuery DeleteApplication where
         toQuery = const mempty
 
 -- | /See:/ 'deleteApplicationResponse' smart constructor.
-data DeleteApplicationResponse =
-  DeleteApplicationResponse'
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data DeleteApplicationResponse = DeleteApplicationResponse'
+                                   deriving (Eq, Read, Show, Data, Typeable,
+                                             Generic)
 
 -- | Creates a value of 'DeleteApplicationResponse' with the minimum fields required to make a request.
 --
 deleteApplicationResponse
     :: DeleteApplicationResponse
-deleteApplicationResponse = DeleteApplicationResponse'
-
+deleteApplicationResponse
+  = DeleteApplicationResponse'
 
 instance NFData DeleteApplicationResponse where

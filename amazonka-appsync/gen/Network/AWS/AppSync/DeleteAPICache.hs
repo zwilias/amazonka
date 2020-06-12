@@ -37,7 +37,6 @@ module Network.AWS.AppSync.DeleteAPICache
     ) where
 
 import Network.AWS.AppSync.Types
-import Network.AWS.AppSync.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.Request
@@ -48,12 +47,9 @@ import Network.AWS.Response
 --
 --
 -- /See:/ 'deleteAPICache' smart constructor.
-newtype DeleteAPICache =
-  DeleteAPICache'
-    { _dacApiId :: Text
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+newtype DeleteAPICache = DeleteAPICache'{_dacApiId ::
+                                         Text}
+                           deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'DeleteAPICache' with the minimum fields required to make a request.
 --
@@ -63,8 +59,8 @@ newtype DeleteAPICache =
 deleteAPICache
     :: Text -- ^ 'dacApiId'
     -> DeleteAPICache
-deleteAPICache pApiId_ = DeleteAPICache' {_dacApiId = pApiId_}
-
+deleteAPICache pApiId_
+  = DeleteAPICache'{_dacApiId = pApiId_}
 
 -- | The API ID.
 dacApiId :: Lens' DeleteAPICache Text
@@ -101,12 +97,10 @@ instance ToQuery DeleteAPICache where
 --
 --
 -- /See:/ 'deleteAPICacheResponse' smart constructor.
-newtype DeleteAPICacheResponse =
-  DeleteAPICacheResponse'
-    { _dacrsResponseStatus :: Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+newtype DeleteAPICacheResponse = DeleteAPICacheResponse'{_dacrsResponseStatus
+                                                         :: Int}
+                                   deriving (Eq, Read, Show, Data, Typeable,
+                                             Generic)
 
 -- | Creates a value of 'DeleteAPICacheResponse' with the minimum fields required to make a request.
 --
@@ -116,9 +110,9 @@ newtype DeleteAPICacheResponse =
 deleteAPICacheResponse
     :: Int -- ^ 'dacrsResponseStatus'
     -> DeleteAPICacheResponse
-deleteAPICacheResponse pResponseStatus_ =
-  DeleteAPICacheResponse' {_dacrsResponseStatus = pResponseStatus_}
-
+deleteAPICacheResponse pResponseStatus_
+  = DeleteAPICacheResponse'{_dacrsResponseStatus =
+                              pResponseStatus_}
 
 -- | -- | The response status code.
 dacrsResponseStatus :: Lens' DeleteAPICacheResponse Int

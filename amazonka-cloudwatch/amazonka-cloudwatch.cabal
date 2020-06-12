@@ -79,8 +79,39 @@ library
         , Network.AWS.CloudWatch.Waiters
 
     other-modules:
-          Network.AWS.CloudWatch.Types.Product
-        , Network.AWS.CloudWatch.Types.Sum
+          Network.AWS.CloudWatch.Types.AlarmHistoryItem
+        , Network.AWS.CloudWatch.Types.AlarmType
+        , Network.AWS.CloudWatch.Types.AnomalyDetector
+        , Network.AWS.CloudWatch.Types.AnomalyDetectorConfiguration
+        , Network.AWS.CloudWatch.Types.AnomalyDetectorStateValue
+        , Network.AWS.CloudWatch.Types.ComparisonOperator
+        , Network.AWS.CloudWatch.Types.CompositeAlarm
+        , Network.AWS.CloudWatch.Types.DashboardEntry
+        , Network.AWS.CloudWatch.Types.DashboardValidationMessage
+        , Network.AWS.CloudWatch.Types.Datapoint
+        , Network.AWS.CloudWatch.Types.Dimension
+        , Network.AWS.CloudWatch.Types.DimensionFilter
+        , Network.AWS.CloudWatch.Types.HistoryItemType
+        , Network.AWS.CloudWatch.Types.InsightRule
+        , Network.AWS.CloudWatch.Types.InsightRuleContributor
+        , Network.AWS.CloudWatch.Types.InsightRuleContributorDatapoint
+        , Network.AWS.CloudWatch.Types.InsightRuleMetricDatapoint
+        , Network.AWS.CloudWatch.Types.MessageData
+        , Network.AWS.CloudWatch.Types.Metric
+        , Network.AWS.CloudWatch.Types.MetricAlarm
+        , Network.AWS.CloudWatch.Types.MetricDataQuery
+        , Network.AWS.CloudWatch.Types.MetricDataResult
+        , Network.AWS.CloudWatch.Types.MetricDatum
+        , Network.AWS.CloudWatch.Types.MetricStat
+        , Network.AWS.CloudWatch.Types.PartialFailure
+        , Network.AWS.CloudWatch.Types.Range
+        , Network.AWS.CloudWatch.Types.ScanBy
+        , Network.AWS.CloudWatch.Types.StandardUnit
+        , Network.AWS.CloudWatch.Types.StateValue
+        , Network.AWS.CloudWatch.Types.Statistic
+        , Network.AWS.CloudWatch.Types.StatisticSet
+        , Network.AWS.CloudWatch.Types.StatusCode
+        , Network.AWS.CloudWatch.Types.Tag
 
     build-depends:
           amazonka-core == 1.6.1.*

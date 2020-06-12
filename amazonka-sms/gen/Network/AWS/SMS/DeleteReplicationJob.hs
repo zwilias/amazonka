@@ -39,15 +39,12 @@ import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 import Network.AWS.SMS.Types
-import Network.AWS.SMS.Types.Product
 
 -- | /See:/ 'deleteReplicationJob' smart constructor.
-newtype DeleteReplicationJob =
-  DeleteReplicationJob'
-    { _drjReplicationJobId :: Text
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+newtype DeleteReplicationJob = DeleteReplicationJob'{_drjReplicationJobId
+                                                     :: Text}
+                                 deriving (Eq, Read, Show, Data, Typeable,
+                                           Generic)
 
 -- | Creates a value of 'DeleteReplicationJob' with the minimum fields required to make a request.
 --
@@ -57,9 +54,9 @@ newtype DeleteReplicationJob =
 deleteReplicationJob
     :: Text -- ^ 'drjReplicationJobId'
     -> DeleteReplicationJob
-deleteReplicationJob pReplicationJobId_ =
-  DeleteReplicationJob' {_drjReplicationJobId = pReplicationJobId_}
-
+deleteReplicationJob pReplicationJobId_
+  = DeleteReplicationJob'{_drjReplicationJobId =
+                            pReplicationJobId_}
 
 -- | Undocumented member.
 drjReplicationJobId :: Lens' DeleteReplicationJob Text
@@ -102,12 +99,10 @@ instance ToQuery DeleteReplicationJob where
         toQuery = const mempty
 
 -- | /See:/ 'deleteReplicationJobResponse' smart constructor.
-newtype DeleteReplicationJobResponse =
-  DeleteReplicationJobResponse'
-    { _drjrsResponseStatus :: Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+newtype DeleteReplicationJobResponse = DeleteReplicationJobResponse'{_drjrsResponseStatus
+                                                                     :: Int}
+                                         deriving (Eq, Read, Show, Data,
+                                                   Typeable, Generic)
 
 -- | Creates a value of 'DeleteReplicationJobResponse' with the minimum fields required to make a request.
 --
@@ -117,9 +112,9 @@ newtype DeleteReplicationJobResponse =
 deleteReplicationJobResponse
     :: Int -- ^ 'drjrsResponseStatus'
     -> DeleteReplicationJobResponse
-deleteReplicationJobResponse pResponseStatus_ =
-  DeleteReplicationJobResponse' {_drjrsResponseStatus = pResponseStatus_}
-
+deleteReplicationJobResponse pResponseStatus_
+  = DeleteReplicationJobResponse'{_drjrsResponseStatus
+                                    = pResponseStatus_}
 
 -- | -- | The response status code.
 drjrsResponseStatus :: Lens' DeleteReplicationJobResponse Int

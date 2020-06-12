@@ -45,24 +45,20 @@ import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 import Network.AWS.StorageGateway.Types
-import Network.AWS.StorageGateway.Types.Product
 
 -- | A JSON object containing one or more of the following fields:
 --
 --
---     * 'AddWorkingStorageInput$DiskIds'
+--     * 'AddWorkingStorageInput$DiskIds' 
 --
 --
 --
 --
 -- /See:/ 'addWorkingStorage' smart constructor.
-data AddWorkingStorage =
-  AddWorkingStorage'
-    { _awsGatewayARN :: !Text
-    , _awsDiskIds    :: ![Text]
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data AddWorkingStorage = AddWorkingStorage'{_awsGatewayARN
+                                            :: !Text,
+                                            _awsDiskIds :: ![Text]}
+                           deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'AddWorkingStorage' with the minimum fields required to make a request.
 --
@@ -74,9 +70,9 @@ data AddWorkingStorage =
 addWorkingStorage
     :: Text -- ^ 'awsGatewayARN'
     -> AddWorkingStorage
-addWorkingStorage pGatewayARN_ =
-  AddWorkingStorage' {_awsGatewayARN = pGatewayARN_, _awsDiskIds = mempty}
-
+addWorkingStorage pGatewayARN_
+  = AddWorkingStorage'{_awsGatewayARN = pGatewayARN_,
+                       _awsDiskIds = mempty}
 
 -- | Undocumented member.
 awsGatewayARN :: Lens' AddWorkingStorage Text
@@ -127,13 +123,12 @@ instance ToQuery AddWorkingStorage where
 --
 --
 -- /See:/ 'addWorkingStorageResponse' smart constructor.
-data AddWorkingStorageResponse =
-  AddWorkingStorageResponse'
-    { _awsrsGatewayARN     :: !(Maybe Text)
-    , _awsrsResponseStatus :: !Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data AddWorkingStorageResponse = AddWorkingStorageResponse'{_awsrsGatewayARN
+                                                            :: !(Maybe Text),
+                                                            _awsrsResponseStatus
+                                                            :: !Int}
+                                   deriving (Eq, Read, Show, Data, Typeable,
+                                             Generic)
 
 -- | Creates a value of 'AddWorkingStorageResponse' with the minimum fields required to make a request.
 --
@@ -145,10 +140,10 @@ data AddWorkingStorageResponse =
 addWorkingStorageResponse
     :: Int -- ^ 'awsrsResponseStatus'
     -> AddWorkingStorageResponse
-addWorkingStorageResponse pResponseStatus_ =
-  AddWorkingStorageResponse'
-    {_awsrsGatewayARN = Nothing, _awsrsResponseStatus = pResponseStatus_}
-
+addWorkingStorageResponse pResponseStatus_
+  = AddWorkingStorageResponse'{_awsrsGatewayARN =
+                                 Nothing,
+                               _awsrsResponseStatus = pResponseStatus_}
 
 -- | Undocumented member.
 awsrsGatewayARN :: Lens' AddWorkingStorageResponse (Maybe Text)

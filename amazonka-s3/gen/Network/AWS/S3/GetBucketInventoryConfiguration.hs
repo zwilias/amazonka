@@ -41,16 +41,16 @@ import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 import Network.AWS.S3.Types
-import Network.AWS.S3.Types.Product
 
 -- | /See:/ 'getBucketInventoryConfiguration' smart constructor.
-data GetBucketInventoryConfiguration =
-  GetBucketInventoryConfiguration'
-    { _gbicBucket :: !BucketName
-    , _gbicId     :: !Text
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data GetBucketInventoryConfiguration = GetBucketInventoryConfiguration'{_gbicBucket
+                                                                        ::
+                                                                        !BucketName,
+                                                                        _gbicId
+                                                                        ::
+                                                                        !Text}
+                                         deriving (Eq, Read, Show, Data,
+                                                   Typeable, Generic)
 
 -- | Creates a value of 'GetBucketInventoryConfiguration' with the minimum fields required to make a request.
 --
@@ -63,9 +63,10 @@ getBucketInventoryConfiguration
     :: BucketName -- ^ 'gbicBucket'
     -> Text -- ^ 'gbicId'
     -> GetBucketInventoryConfiguration
-getBucketInventoryConfiguration pBucket_ pId_ =
-  GetBucketInventoryConfiguration' {_gbicBucket = pBucket_, _gbicId = pId_}
-
+getBucketInventoryConfiguration pBucket_ pId_
+  = GetBucketInventoryConfiguration'{_gbicBucket =
+                                       pBucket_,
+                                     _gbicId = pId_}
 
 -- | The name of the bucket containing the inventory configuration to retrieve.
 gbicBucket :: Lens' GetBucketInventoryConfiguration BucketName
@@ -105,13 +106,15 @@ instance ToQuery GetBucketInventoryConfiguration
           = mconcat ["id" =: _gbicId, "inventory"]
 
 -- | /See:/ 'getBucketInventoryConfigurationResponse' smart constructor.
-data GetBucketInventoryConfigurationResponse =
-  GetBucketInventoryConfigurationResponse'
-    { _gbicrsInventoryConfiguration :: !(Maybe InventoryConfiguration)
-    , _gbicrsResponseStatus         :: !Int
-    }
-  deriving (Eq, Show, Data, Typeable, Generic)
-
+data GetBucketInventoryConfigurationResponse = GetBucketInventoryConfigurationResponse'{_gbicrsInventoryConfiguration
+                                                                                        ::
+                                                                                        !(Maybe
+                                                                                            InventoryConfiguration),
+                                                                                        _gbicrsResponseStatus
+                                                                                        ::
+                                                                                        !Int}
+                                                 deriving (Eq, Show, Data,
+                                                           Typeable, Generic)
 
 -- | Creates a value of 'GetBucketInventoryConfigurationResponse' with the minimum fields required to make a request.
 --
@@ -123,12 +126,12 @@ data GetBucketInventoryConfigurationResponse =
 getBucketInventoryConfigurationResponse
     :: Int -- ^ 'gbicrsResponseStatus'
     -> GetBucketInventoryConfigurationResponse
-getBucketInventoryConfigurationResponse pResponseStatus_ =
-  GetBucketInventoryConfigurationResponse'
-    { _gbicrsInventoryConfiguration = Nothing
-    , _gbicrsResponseStatus = pResponseStatus_
-    }
-
+getBucketInventoryConfigurationResponse
+  pResponseStatus_
+  = GetBucketInventoryConfigurationResponse'{_gbicrsInventoryConfiguration
+                                               = Nothing,
+                                             _gbicrsResponseStatus =
+                                               pResponseStatus_}
 
 -- | Specifies the inventory configuration.
 gbicrsInventoryConfiguration :: Lens' GetBucketInventoryConfigurationResponse (Maybe InventoryConfiguration)

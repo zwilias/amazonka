@@ -118,8 +118,71 @@ library
         , Network.AWS.WAF.Waiters
 
     other-modules:
-          Network.AWS.WAF.Types.Product
-        , Network.AWS.WAF.Types.Sum
+          Network.AWS.WAF.Types.ActivatedRule
+        , Network.AWS.WAF.Types.ByteMatchSet
+        , Network.AWS.WAF.Types.ByteMatchSetSummary
+        , Network.AWS.WAF.Types.ByteMatchSetUpdate
+        , Network.AWS.WAF.Types.ByteMatchTuple
+        , Network.AWS.WAF.Types.ChangeAction
+        , Network.AWS.WAF.Types.ChangeTokenStatus
+        , Network.AWS.WAF.Types.ComparisonOperator
+        , Network.AWS.WAF.Types.FieldToMatch
+        , Network.AWS.WAF.Types.GeoMatchConstraint
+        , Network.AWS.WAF.Types.GeoMatchConstraintType
+        , Network.AWS.WAF.Types.GeoMatchConstraintValue
+        , Network.AWS.WAF.Types.GeoMatchSet
+        , Network.AWS.WAF.Types.GeoMatchSetSummary
+        , Network.AWS.WAF.Types.GeoMatchSetUpdate
+        , Network.AWS.WAF.Types.HTTPHeader
+        , Network.AWS.WAF.Types.HTTPRequest
+        , Network.AWS.WAF.Types.IPSet
+        , Network.AWS.WAF.Types.IPSetDescriptor
+        , Network.AWS.WAF.Types.IPSetDescriptorType
+        , Network.AWS.WAF.Types.IPSetSummary
+        , Network.AWS.WAF.Types.IPSetUpdate
+        , Network.AWS.WAF.Types.MatchFieldType
+        , Network.AWS.WAF.Types.PositionalConstraint
+        , Network.AWS.WAF.Types.Predicate
+        , Network.AWS.WAF.Types.PredicateType
+        , Network.AWS.WAF.Types.RateBasedRule
+        , Network.AWS.WAF.Types.RateKey
+        , Network.AWS.WAF.Types.RegexMatchSet
+        , Network.AWS.WAF.Types.RegexMatchSetSummary
+        , Network.AWS.WAF.Types.RegexMatchSetUpdate
+        , Network.AWS.WAF.Types.RegexMatchTuple
+        , Network.AWS.WAF.Types.RegexPatternSet
+        , Network.AWS.WAF.Types.RegexPatternSetSummary
+        , Network.AWS.WAF.Types.RegexPatternSetUpdate
+        , Network.AWS.WAF.Types.Rule
+        , Network.AWS.WAF.Types.RuleGroup
+        , Network.AWS.WAF.Types.RuleGroupSummary
+        , Network.AWS.WAF.Types.RuleGroupUpdate
+        , Network.AWS.WAF.Types.RuleSummary
+        , Network.AWS.WAF.Types.RuleUpdate
+        , Network.AWS.WAF.Types.SampledHTTPRequest
+        , Network.AWS.WAF.Types.SizeConstraint
+        , Network.AWS.WAF.Types.SizeConstraintSet
+        , Network.AWS.WAF.Types.SizeConstraintSetSummary
+        , Network.AWS.WAF.Types.SizeConstraintSetUpdate
+        , Network.AWS.WAF.Types.SqlInjectionMatchSet
+        , Network.AWS.WAF.Types.SqlInjectionMatchSetSummary
+        , Network.AWS.WAF.Types.SqlInjectionMatchSetUpdate
+        , Network.AWS.WAF.Types.SqlInjectionMatchTuple
+        , Network.AWS.WAF.Types.SubscribedRuleGroupSummary
+        , Network.AWS.WAF.Types.TextTransformation
+        , Network.AWS.WAF.Types.TimeWindow
+        , Network.AWS.WAF.Types.WafAction
+        , Network.AWS.WAF.Types.WafActionType
+        , Network.AWS.WAF.Types.WafOverrideAction
+        , Network.AWS.WAF.Types.WafOverrideActionType
+        , Network.AWS.WAF.Types.WafRuleType
+        , Network.AWS.WAF.Types.WebACL
+        , Network.AWS.WAF.Types.WebACLSummary
+        , Network.AWS.WAF.Types.WebACLUpdate
+        , Network.AWS.WAF.Types.XSSMatchSet
+        , Network.AWS.WAF.Types.XSSMatchSetSummary
+        , Network.AWS.WAF.Types.XSSMatchSetUpdate
+        , Network.AWS.WAF.Types.XSSMatchTuple
 
     build-depends:
           amazonka-core == 1.6.1.*

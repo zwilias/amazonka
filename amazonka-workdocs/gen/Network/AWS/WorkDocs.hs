@@ -104,124 +104,124 @@ module Network.AWS.WorkDocs
     -- * Operations
     -- $operations
 
-    -- ** DeleteLabels
+    -- ** DeleteLabels 
     , module Network.AWS.WorkDocs.DeleteLabels
 
-    -- ** AbortDocumentVersionUpload
+    -- ** AbortDocumentVersionUpload 
     , module Network.AWS.WorkDocs.AbortDocumentVersionUpload
 
-    -- ** GetDocumentPath
+    -- ** GetDocumentPath 
     , module Network.AWS.WorkDocs.GetDocumentPath
 
-    -- ** CreateComment
+    -- ** CreateComment 
     , module Network.AWS.WorkDocs.CreateComment
 
     -- ** DescribeUsers (Paginated)
     , module Network.AWS.WorkDocs.DescribeUsers
 
-    -- ** DeleteFolder
+    -- ** DeleteFolder 
     , module Network.AWS.WorkDocs.DeleteFolder
 
-    -- ** UpdateFolder
+    -- ** UpdateFolder 
     , module Network.AWS.WorkDocs.UpdateFolder
 
-    -- ** DeleteCustomMetadata
+    -- ** DeleteCustomMetadata 
     , module Network.AWS.WorkDocs.DeleteCustomMetadata
 
-    -- ** DescribeResourcePermissions
+    -- ** DescribeResourcePermissions 
     , module Network.AWS.WorkDocs.DescribeResourcePermissions
 
-    -- ** DeleteNotificationSubscription
+    -- ** DeleteNotificationSubscription 
     , module Network.AWS.WorkDocs.DeleteNotificationSubscription
 
-    -- ** CreateFolder
+    -- ** CreateFolder 
     , module Network.AWS.WorkDocs.CreateFolder
 
-    -- ** CreateNotificationSubscription
+    -- ** CreateNotificationSubscription 
     , module Network.AWS.WorkDocs.CreateNotificationSubscription
 
-    -- ** CreateCustomMetadata
+    -- ** CreateCustomMetadata 
     , module Network.AWS.WorkDocs.CreateCustomMetadata
 
-    -- ** GetFolderPath
+    -- ** GetFolderPath 
     , module Network.AWS.WorkDocs.GetFolderPath
 
-    -- ** DescribeComments
+    -- ** DescribeComments 
     , module Network.AWS.WorkDocs.DescribeComments
 
-    -- ** DeleteFolderContents
+    -- ** DeleteFolderContents 
     , module Network.AWS.WorkDocs.DeleteFolderContents
 
-    -- ** RemoveAllResourcePermissions
+    -- ** RemoveAllResourcePermissions 
     , module Network.AWS.WorkDocs.RemoveAllResourcePermissions
 
-    -- ** GetFolder
+    -- ** GetFolder 
     , module Network.AWS.WorkDocs.GetFolder
 
-    -- ** DescribeNotificationSubscriptions
+    -- ** DescribeNotificationSubscriptions 
     , module Network.AWS.WorkDocs.DescribeNotificationSubscriptions
 
-    -- ** ActivateUser
+    -- ** ActivateUser 
     , module Network.AWS.WorkDocs.ActivateUser
 
     -- ** DescribeDocumentVersions (Paginated)
     , module Network.AWS.WorkDocs.DescribeDocumentVersions
 
-    -- ** GetDocumentVersion
+    -- ** GetDocumentVersion 
     , module Network.AWS.WorkDocs.GetDocumentVersion
 
-    -- ** DescribeActivities
+    -- ** DescribeActivities 
     , module Network.AWS.WorkDocs.DescribeActivities
 
-    -- ** DescribeRootFolders
+    -- ** DescribeRootFolders 
     , module Network.AWS.WorkDocs.DescribeRootFolders
 
-    -- ** GetCurrentUser
+    -- ** GetCurrentUser 
     , module Network.AWS.WorkDocs.GetCurrentUser
 
-    -- ** DeactivateUser
+    -- ** DeactivateUser 
     , module Network.AWS.WorkDocs.DeactivateUser
 
-    -- ** GetDocument
+    -- ** GetDocument 
     , module Network.AWS.WorkDocs.GetDocument
 
     -- ** DescribeFolderContents (Paginated)
     , module Network.AWS.WorkDocs.DescribeFolderContents
 
-    -- ** CreateLabels
+    -- ** CreateLabels 
     , module Network.AWS.WorkDocs.CreateLabels
 
-    -- ** UpdateDocumentVersion
+    -- ** UpdateDocumentVersion 
     , module Network.AWS.WorkDocs.UpdateDocumentVersion
 
-    -- ** RemoveResourcePermission
+    -- ** RemoveResourcePermission 
     , module Network.AWS.WorkDocs.RemoveResourcePermission
 
-    -- ** DeleteComment
+    -- ** DeleteComment 
     , module Network.AWS.WorkDocs.DeleteComment
 
-    -- ** InitiateDocumentVersionUpload
+    -- ** InitiateDocumentVersionUpload 
     , module Network.AWS.WorkDocs.InitiateDocumentVersionUpload
 
-    -- ** CreateUser
+    -- ** CreateUser 
     , module Network.AWS.WorkDocs.CreateUser
 
-    -- ** UpdateUser
+    -- ** UpdateUser 
     , module Network.AWS.WorkDocs.UpdateUser
 
-    -- ** DeleteUser
+    -- ** DeleteUser 
     , module Network.AWS.WorkDocs.DeleteUser
 
-    -- ** AddResourcePermissions
+    -- ** AddResourcePermissions 
     , module Network.AWS.WorkDocs.AddResourcePermissions
 
-    -- ** UpdateDocument
+    -- ** UpdateDocument 
     , module Network.AWS.WorkDocs.UpdateDocument
 
-    -- ** DeleteDocument
+    -- ** DeleteDocument 
     , module Network.AWS.WorkDocs.DeleteDocument
 
-    -- ** DescribeGroups
+    -- ** DescribeGroups 
     , module Network.AWS.WorkDocs.DescribeGroups
 
     -- * Types

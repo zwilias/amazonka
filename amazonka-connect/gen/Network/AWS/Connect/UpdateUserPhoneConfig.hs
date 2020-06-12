@@ -37,21 +37,18 @@ module Network.AWS.Connect.UpdateUserPhoneConfig
     ) where
 
 import Network.AWS.Connect.Types
-import Network.AWS.Connect.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 
 -- | /See:/ 'updateUserPhoneConfig' smart constructor.
-data UpdateUserPhoneConfig =
-  UpdateUserPhoneConfig'
-    { _uupcPhoneConfig :: !UserPhoneConfig
-    , _uupcUserId      :: !Text
-    , _uupcInstanceId  :: !Text
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data UpdateUserPhoneConfig = UpdateUserPhoneConfig'{_uupcPhoneConfig
+                                                    :: !UserPhoneConfig,
+                                                    _uupcUserId :: !Text,
+                                                    _uupcInstanceId :: !Text}
+                               deriving (Eq, Read, Show, Data, Typeable,
+                                         Generic)
 
 -- | Creates a value of 'UpdateUserPhoneConfig' with the minimum fields required to make a request.
 --
@@ -67,13 +64,12 @@ updateUserPhoneConfig
     -> Text -- ^ 'uupcUserId'
     -> Text -- ^ 'uupcInstanceId'
     -> UpdateUserPhoneConfig
-updateUserPhoneConfig pPhoneConfig_ pUserId_ pInstanceId_ =
-  UpdateUserPhoneConfig'
-    { _uupcPhoneConfig = pPhoneConfig_
-    , _uupcUserId = pUserId_
-    , _uupcInstanceId = pInstanceId_
-    }
-
+updateUserPhoneConfig pPhoneConfig_ pUserId_
+  pInstanceId_
+  = UpdateUserPhoneConfig'{_uupcPhoneConfig =
+                             pPhoneConfig_,
+                           _uupcUserId = pUserId_,
+                           _uupcInstanceId = pInstanceId_}
 
 -- | Information about phone configuration settings for the user.
 uupcPhoneConfig :: Lens' UpdateUserPhoneConfig UserPhoneConfig
@@ -120,16 +116,15 @@ instance ToQuery UpdateUserPhoneConfig where
         toQuery = const mempty
 
 -- | /See:/ 'updateUserPhoneConfigResponse' smart constructor.
-data UpdateUserPhoneConfigResponse =
-  UpdateUserPhoneConfigResponse'
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data UpdateUserPhoneConfigResponse = UpdateUserPhoneConfigResponse'
+                                       deriving (Eq, Read, Show, Data, Typeable,
+                                                 Generic)
 
 -- | Creates a value of 'UpdateUserPhoneConfigResponse' with the minimum fields required to make a request.
 --
 updateUserPhoneConfigResponse
     :: UpdateUserPhoneConfigResponse
-updateUserPhoneConfigResponse = UpdateUserPhoneConfigResponse'
-
+updateUserPhoneConfigResponse
+  = UpdateUserPhoneConfigResponse'
 
 instance NFData UpdateUserPhoneConfigResponse where

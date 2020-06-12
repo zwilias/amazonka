@@ -38,19 +38,16 @@ module Network.AWS.Pinpoint.CreateExportJob
 
 import Network.AWS.Lens
 import Network.AWS.Pinpoint.Types
-import Network.AWS.Pinpoint.Types.Product
 import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 
 -- | /See:/ 'createExportJob' smart constructor.
-data CreateExportJob =
-  CreateExportJob'
-    { _cejApplicationId    :: !Text
-    , _cejExportJobRequest :: !ExportJobRequest
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data CreateExportJob = CreateExportJob'{_cejApplicationId
+                                        :: !Text,
+                                        _cejExportJobRequest ::
+                                        !ExportJobRequest}
+                         deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'CreateExportJob' with the minimum fields required to make a request.
 --
@@ -63,12 +60,10 @@ createExportJob
     :: Text -- ^ 'cejApplicationId'
     -> ExportJobRequest -- ^ 'cejExportJobRequest'
     -> CreateExportJob
-createExportJob pApplicationId_ pExportJobRequest_ =
-  CreateExportJob'
-    { _cejApplicationId = pApplicationId_
-    , _cejExportJobRequest = pExportJobRequest_
-    }
-
+createExportJob pApplicationId_ pExportJobRequest_
+  = CreateExportJob'{_cejApplicationId =
+                       pApplicationId_,
+                     _cejExportJobRequest = pExportJobRequest_}
 
 -- | Undocumented member.
 cejApplicationId :: Lens' CreateExportJob Text
@@ -113,13 +108,12 @@ instance ToQuery CreateExportJob where
         toQuery = const mempty
 
 -- | /See:/ 'createExportJobResponse' smart constructor.
-data CreateExportJobResponse =
-  CreateExportJobResponse'
-    { _cejrsResponseStatus    :: !Int
-    , _cejrsExportJobResponse :: !ExportJobResponse
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data CreateExportJobResponse = CreateExportJobResponse'{_cejrsResponseStatus
+                                                        :: !Int,
+                                                        _cejrsExportJobResponse
+                                                        :: !ExportJobResponse}
+                                 deriving (Eq, Read, Show, Data, Typeable,
+                                           Generic)
 
 -- | Creates a value of 'CreateExportJobResponse' with the minimum fields required to make a request.
 --
@@ -132,12 +126,11 @@ createExportJobResponse
     :: Int -- ^ 'cejrsResponseStatus'
     -> ExportJobResponse -- ^ 'cejrsExportJobResponse'
     -> CreateExportJobResponse
-createExportJobResponse pResponseStatus_ pExportJobResponse_ =
-  CreateExportJobResponse'
-    { _cejrsResponseStatus = pResponseStatus_
-    , _cejrsExportJobResponse = pExportJobResponse_
-    }
-
+createExportJobResponse pResponseStatus_
+  pExportJobResponse_
+  = CreateExportJobResponse'{_cejrsResponseStatus =
+                               pResponseStatus_,
+                             _cejrsExportJobResponse = pExportJobResponse_}
 
 -- | -- | The response status code.
 cejrsResponseStatus :: Lens' CreateExportJobResponse Int

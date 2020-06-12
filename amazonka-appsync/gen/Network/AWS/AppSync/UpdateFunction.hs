@@ -45,32 +45,27 @@ module Network.AWS.AppSync.UpdateFunction
     ) where
 
 import Network.AWS.AppSync.Types
-import Network.AWS.AppSync.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 
 -- | /See:/ 'updateFunction' smart constructor.
-data UpdateFunction =
-  UpdateFunction'
-    { _ufResponseMappingTemplate :: !(Maybe Text)
-    , _ufDescription             :: !(Maybe Text)
-    , _ufApiId                   :: !Text
-    , _ufName                    :: !Text
-    , _ufFunctionId              :: !Text
-    , _ufDataSourceName          :: !Text
-    , _ufRequestMappingTemplate  :: !Text
-    , _ufFunctionVersion         :: !Text
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data UpdateFunction = UpdateFunction'{_ufResponseMappingTemplate
+                                      :: !(Maybe Text),
+                                      _ufDescription :: !(Maybe Text),
+                                      _ufApiId :: !Text, _ufName :: !Text,
+                                      _ufFunctionId :: !Text,
+                                      _ufDataSourceName :: !Text,
+                                      _ufRequestMappingTemplate :: !Text,
+                                      _ufFunctionVersion :: !Text}
+                        deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'UpdateFunction' with the minimum fields required to make a request.
 --
 -- Use one of the following lenses to modify other fields as desired:
 --
--- * 'ufResponseMappingTemplate' - The @Function@ request mapping template.
+-- * 'ufResponseMappingTemplate' - The @Function@ request mapping template. 
 --
 -- * 'ufDescription' - The @Function@ description.
 --
@@ -84,7 +79,7 @@ data UpdateFunction =
 --
 -- * 'ufRequestMappingTemplate' - The @Function@ request mapping template. Functions support only the 2018-05-29 version of the request mapping template.
 --
--- * 'ufFunctionVersion' - The @version@ of the request mapping template. Currently the supported value is 2018-05-29.
+-- * 'ufFunctionVersion' - The @version@ of the request mapping template. Currently the supported value is 2018-05-29. 
 updateFunction
     :: Text -- ^ 'ufApiId'
     -> Text -- ^ 'ufName'
@@ -93,20 +88,18 @@ updateFunction
     -> Text -- ^ 'ufRequestMappingTemplate'
     -> Text -- ^ 'ufFunctionVersion'
     -> UpdateFunction
-updateFunction pApiId_ pName_ pFunctionId_ pDataSourceName_ pRequestMappingTemplate_ pFunctionVersion_ =
-  UpdateFunction'
-    { _ufResponseMappingTemplate = Nothing
-    , _ufDescription = Nothing
-    , _ufApiId = pApiId_
-    , _ufName = pName_
-    , _ufFunctionId = pFunctionId_
-    , _ufDataSourceName = pDataSourceName_
-    , _ufRequestMappingTemplate = pRequestMappingTemplate_
-    , _ufFunctionVersion = pFunctionVersion_
-    }
+updateFunction pApiId_ pName_ pFunctionId_
+  pDataSourceName_ pRequestMappingTemplate_
+  pFunctionVersion_
+  = UpdateFunction'{_ufResponseMappingTemplate =
+                      Nothing,
+                    _ufDescription = Nothing, _ufApiId = pApiId_,
+                    _ufName = pName_, _ufFunctionId = pFunctionId_,
+                    _ufDataSourceName = pDataSourceName_,
+                    _ufRequestMappingTemplate = pRequestMappingTemplate_,
+                    _ufFunctionVersion = pFunctionVersion_}
 
-
--- | The @Function@ request mapping template.
+-- | The @Function@ request mapping template. 
 ufResponseMappingTemplate :: Lens' UpdateFunction (Maybe Text)
 ufResponseMappingTemplate = lens _ufResponseMappingTemplate (\ s a -> s{_ufResponseMappingTemplate = a})
 
@@ -134,7 +127,7 @@ ufDataSourceName = lens _ufDataSourceName (\ s a -> s{_ufDataSourceName = a})
 ufRequestMappingTemplate :: Lens' UpdateFunction Text
 ufRequestMappingTemplate = lens _ufRequestMappingTemplate (\ s a -> s{_ufRequestMappingTemplate = a})
 
--- | The @version@ of the request mapping template. Currently the supported value is 2018-05-29.
+-- | The @version@ of the request mapping template. Currently the supported value is 2018-05-29. 
 ufFunctionVersion :: Lens' UpdateFunction Text
 ufFunctionVersion = lens _ufFunctionVersion (\ s a -> s{_ufFunctionVersion = a})
 
@@ -183,13 +176,14 @@ instance ToQuery UpdateFunction where
         toQuery = const mempty
 
 -- | /See:/ 'updateFunctionResponse' smart constructor.
-data UpdateFunctionResponse =
-  UpdateFunctionResponse'
-    { _ufrsFunctionConfiguration :: !(Maybe FunctionConfiguration)
-    , _ufrsResponseStatus        :: !Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data UpdateFunctionResponse = UpdateFunctionResponse'{_ufrsFunctionConfiguration
+                                                      ::
+                                                      !(Maybe
+                                                          FunctionConfiguration),
+                                                      _ufrsResponseStatus ::
+                                                      !Int}
+                                deriving (Eq, Read, Show, Data, Typeable,
+                                          Generic)
 
 -- | Creates a value of 'UpdateFunctionResponse' with the minimum fields required to make a request.
 --
@@ -201,12 +195,10 @@ data UpdateFunctionResponse =
 updateFunctionResponse
     :: Int -- ^ 'ufrsResponseStatus'
     -> UpdateFunctionResponse
-updateFunctionResponse pResponseStatus_ =
-  UpdateFunctionResponse'
-    { _ufrsFunctionConfiguration = Nothing
-    , _ufrsResponseStatus = pResponseStatus_
-    }
-
+updateFunctionResponse pResponseStatus_
+  = UpdateFunctionResponse'{_ufrsFunctionConfiguration
+                              = Nothing,
+                            _ufrsResponseStatus = pResponseStatus_}
 
 -- | The @Function@ object.
 ufrsFunctionConfiguration :: Lens' UpdateFunctionResponse (Maybe FunctionConfiguration)

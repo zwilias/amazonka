@@ -39,18 +39,14 @@ module Network.AWS.Lightsail.GetInstance
 
 import Network.AWS.Lens
 import Network.AWS.Lightsail.Types
-import Network.AWS.Lightsail.Types.Product
 import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 
 -- | /See:/ 'getInstance' smart constructor.
-newtype GetInstance =
-  GetInstance'
-    { _giInstanceName :: Text
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+newtype GetInstance = GetInstance'{_giInstanceName ::
+                                   Text}
+                        deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'GetInstance' with the minimum fields required to make a request.
 --
@@ -60,8 +56,8 @@ newtype GetInstance =
 getInstance
     :: Text -- ^ 'giInstanceName'
     -> GetInstance
-getInstance pInstanceName_ = GetInstance' {_giInstanceName = pInstanceName_}
-
+getInstance pInstanceName_
+  = GetInstance'{_giInstanceName = pInstanceName_}
 
 -- | The name of the instance.
 giInstanceName :: Lens' GetInstance Text
@@ -102,13 +98,10 @@ instance ToQuery GetInstance where
         toQuery = const mempty
 
 -- | /See:/ 'getInstanceResponse' smart constructor.
-data GetInstanceResponse =
-  GetInstanceResponse'
-    { _girsInstance       :: !(Maybe Instance)
-    , _girsResponseStatus :: !Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data GetInstanceResponse = GetInstanceResponse'{_girsInstance
+                                                :: !(Maybe Instance),
+                                                _girsResponseStatus :: !Int}
+                             deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'GetInstanceResponse' with the minimum fields required to make a request.
 --
@@ -120,10 +113,9 @@ data GetInstanceResponse =
 getInstanceResponse
     :: Int -- ^ 'girsResponseStatus'
     -> GetInstanceResponse
-getInstanceResponse pResponseStatus_ =
-  GetInstanceResponse'
-    {_girsInstance = Nothing, _girsResponseStatus = pResponseStatus_}
-
+getInstanceResponse pResponseStatus_
+  = GetInstanceResponse'{_girsInstance = Nothing,
+                         _girsResponseStatus = pResponseStatus_}
 
 -- | An array of key-value pairs containing information about the specified instance.
 girsInstance :: Lens' GetInstanceResponse (Maybe Instance)

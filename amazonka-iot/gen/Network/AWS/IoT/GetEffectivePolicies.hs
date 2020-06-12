@@ -40,21 +40,19 @@ module Network.AWS.IoT.GetEffectivePolicies
     ) where
 
 import Network.AWS.IoT.Types
-import Network.AWS.IoT.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 
 -- | /See:/ 'getEffectivePolicies' smart constructor.
-data GetEffectivePolicies =
-  GetEffectivePolicies'
-    { _gepPrincipal             :: !(Maybe Text)
-    , _gepCognitoIdentityPoolId :: !(Maybe Text)
-    , _gepThingName             :: !(Maybe Text)
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data GetEffectivePolicies = GetEffectivePolicies'{_gepPrincipal
+                                                  :: !(Maybe Text),
+                                                  _gepCognitoIdentityPoolId ::
+                                                  !(Maybe Text),
+                                                  _gepThingName ::
+                                                  !(Maybe Text)}
+                              deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'GetEffectivePolicies' with the minimum fields required to make a request.
 --
@@ -67,13 +65,10 @@ data GetEffectivePolicies =
 -- * 'gepThingName' - The thing name.
 getEffectivePolicies
     :: GetEffectivePolicies
-getEffectivePolicies =
-  GetEffectivePolicies'
-    { _gepPrincipal = Nothing
-    , _gepCognitoIdentityPoolId = Nothing
-    , _gepThingName = Nothing
-    }
-
+getEffectivePolicies
+  = GetEffectivePolicies'{_gepPrincipal = Nothing,
+                          _gepCognitoIdentityPoolId = Nothing,
+                          _gepThingName = Nothing}
 
 -- | The principal.
 gepPrincipal :: Lens' GetEffectivePolicies (Maybe Text)
@@ -121,13 +116,14 @@ instance ToQuery GetEffectivePolicies where
           = mconcat ["thingName" =: _gepThingName]
 
 -- | /See:/ 'getEffectivePoliciesResponse' smart constructor.
-data GetEffectivePoliciesResponse =
-  GetEffectivePoliciesResponse'
-    { _geprsEffectivePolicies :: !(Maybe [EffectivePolicy])
-    , _geprsResponseStatus    :: !Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data GetEffectivePoliciesResponse = GetEffectivePoliciesResponse'{_geprsEffectivePolicies
+                                                                  ::
+                                                                  !(Maybe
+                                                                      [EffectivePolicy]),
+                                                                  _geprsResponseStatus
+                                                                  :: !Int}
+                                      deriving (Eq, Read, Show, Data, Typeable,
+                                                Generic)
 
 -- | Creates a value of 'GetEffectivePoliciesResponse' with the minimum fields required to make a request.
 --
@@ -139,10 +135,10 @@ data GetEffectivePoliciesResponse =
 getEffectivePoliciesResponse
     :: Int -- ^ 'geprsResponseStatus'
     -> GetEffectivePoliciesResponse
-getEffectivePoliciesResponse pResponseStatus_ =
-  GetEffectivePoliciesResponse'
-    {_geprsEffectivePolicies = Nothing, _geprsResponseStatus = pResponseStatus_}
-
+getEffectivePoliciesResponse pResponseStatus_
+  = GetEffectivePoliciesResponse'{_geprsEffectivePolicies
+                                    = Nothing,
+                                  _geprsResponseStatus = pResponseStatus_}
 
 -- | The effective policies.
 geprsEffectivePolicies :: Lens' GetEffectivePoliciesResponse [EffectivePolicy]

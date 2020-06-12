@@ -53,20 +53,23 @@ import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 import Network.AWS.WorkDocs.Types
-import Network.AWS.WorkDocs.Types.Product
 
 -- | /See:/ 'describeDocumentVersions' smart constructor.
-data DescribeDocumentVersions =
-  DescribeDocumentVersions'
-    { _ddvInclude             :: !(Maybe Text)
-    , _ddvAuthenticationToken :: !(Maybe (Sensitive Text))
-    , _ddvMarker              :: !(Maybe Text)
-    , _ddvLimit               :: !(Maybe Nat)
-    , _ddvFields              :: !(Maybe Text)
-    , _ddvDocumentId          :: !Text
-    }
-  deriving (Eq, Show, Data, Typeable, Generic)
-
+data DescribeDocumentVersions = DescribeDocumentVersions'{_ddvInclude
+                                                          :: !(Maybe Text),
+                                                          _ddvAuthenticationToken
+                                                          ::
+                                                          !(Maybe
+                                                              (Sensitive Text)),
+                                                          _ddvMarker ::
+                                                          !(Maybe Text),
+                                                          _ddvLimit ::
+                                                          !(Maybe Nat),
+                                                          _ddvFields ::
+                                                          !(Maybe Text),
+                                                          _ddvDocumentId ::
+                                                          !Text}
+                                  deriving (Eq, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'DescribeDocumentVersions' with the minimum fields required to make a request.
 --
@@ -86,16 +89,12 @@ data DescribeDocumentVersions =
 describeDocumentVersions
     :: Text -- ^ 'ddvDocumentId'
     -> DescribeDocumentVersions
-describeDocumentVersions pDocumentId_ =
-  DescribeDocumentVersions'
-    { _ddvInclude = Nothing
-    , _ddvAuthenticationToken = Nothing
-    , _ddvMarker = Nothing
-    , _ddvLimit = Nothing
-    , _ddvFields = Nothing
-    , _ddvDocumentId = pDocumentId_
-    }
-
+describeDocumentVersions pDocumentId_
+  = DescribeDocumentVersions'{_ddvInclude = Nothing,
+                              _ddvAuthenticationToken = Nothing,
+                              _ddvMarker = Nothing, _ddvLimit = Nothing,
+                              _ddvFields = Nothing,
+                              _ddvDocumentId = pDocumentId_}
 
 -- | A comma-separated list of values. Specify "INITIALIZED" to include incomplete versions.
 ddvInclude :: Lens' DescribeDocumentVersions (Maybe Text)
@@ -164,14 +163,19 @@ instance ToQuery DescribeDocumentVersions where
                "limit" =: _ddvLimit, "fields" =: _ddvFields]
 
 -- | /See:/ 'describeDocumentVersionsResponse' smart constructor.
-data DescribeDocumentVersionsResponse =
-  DescribeDocumentVersionsResponse'
-    { _ddvrsDocumentVersions :: !(Maybe [DocumentVersionMetadata])
-    , _ddvrsMarker           :: !(Maybe Text)
-    , _ddvrsResponseStatus   :: !Int
-    }
-  deriving (Eq, Show, Data, Typeable, Generic)
-
+data DescribeDocumentVersionsResponse = DescribeDocumentVersionsResponse'{_ddvrsDocumentVersions
+                                                                          ::
+                                                                          !(Maybe
+                                                                              [DocumentVersionMetadata]),
+                                                                          _ddvrsMarker
+                                                                          ::
+                                                                          !(Maybe
+                                                                              Text),
+                                                                          _ddvrsResponseStatus
+                                                                          ::
+                                                                          !Int}
+                                          deriving (Eq, Show, Data, Typeable,
+                                                    Generic)
 
 -- | Creates a value of 'DescribeDocumentVersionsResponse' with the minimum fields required to make a request.
 --
@@ -185,13 +189,11 @@ data DescribeDocumentVersionsResponse =
 describeDocumentVersionsResponse
     :: Int -- ^ 'ddvrsResponseStatus'
     -> DescribeDocumentVersionsResponse
-describeDocumentVersionsResponse pResponseStatus_ =
-  DescribeDocumentVersionsResponse'
-    { _ddvrsDocumentVersions = Nothing
-    , _ddvrsMarker = Nothing
-    , _ddvrsResponseStatus = pResponseStatus_
-    }
-
+describeDocumentVersionsResponse pResponseStatus_
+  = DescribeDocumentVersionsResponse'{_ddvrsDocumentVersions
+                                        = Nothing,
+                                      _ddvrsMarker = Nothing,
+                                      _ddvrsResponseStatus = pResponseStatus_}
 
 -- | The document versions.
 ddvrsDocumentVersions :: Lens' DescribeDocumentVersionsResponse [DocumentVersionMetadata]

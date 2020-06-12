@@ -18,10 +18,10 @@
 -- Stability   : auto-generated
 -- Portability : non-portable (GHC extensions)
 --
--- Adds or overwrites one or more tags for the specified Amazon SageMaker resource. You can add tags to notebook instances, training jobs, models, endpoint configurations, and endpoints.
+-- Adds or overwrites one or more tags for the specified Amazon SageMaker resource. You can add tags to notebook instances, training jobs, models, endpoint configurations, and endpoints. 
 --
 --
--- Each tag consists of a key and an optional value. Tag keys must be unique per resource. For more information about tags, see <http://docs.aws.amazon.com/awsaccountbilling/latest/aboutv2/cost-alloc-tags.html#allocation-what Using Cost Allocation Tags> in the /AWS Billing and Cost Management User Guide/ .
+-- Each tag consists of a key and an optional value. Tag keys must be unique per resource. For more information about tags, see <http://docs.aws.amazon.com/awsaccountbilling/latest/aboutv2/cost-alloc-tags.html#allocation-what Using Cost Allocation Tags> in the /AWS Billing and Cost Management User Guide/ . 
 --
 module Network.AWS.SageMaker.AddTags
     (
@@ -45,16 +45,11 @@ import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 import Network.AWS.SageMaker.Types
-import Network.AWS.SageMaker.Types.Product
 
 -- | /See:/ 'addTags' smart constructor.
-data AddTags =
-  AddTags'
-    { _atResourceARN :: !Text
-    , _atTags        :: ![Tag]
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data AddTags = AddTags'{_atResourceARN :: !Text,
+                        _atTags :: ![Tag]}
+                 deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'AddTags' with the minimum fields required to make a request.
 --
@@ -62,19 +57,19 @@ data AddTags =
 --
 -- * 'atResourceARN' - The Amazon Resource Name (ARN) of the resource that you want to tag.
 --
--- * 'atTags' - An array of @Tag@ objects. Each tag is a key-value pair. Only the @key@ parameter is required. If you don't specify a value, Amazon SageMaker sets the value to an empty string.
+-- * 'atTags' - An array of @Tag@ objects. Each tag is a key-value pair. Only the @key@ parameter is required. If you don't specify a value, Amazon SageMaker sets the value to an empty string. 
 addTags
     :: Text -- ^ 'atResourceARN'
     -> AddTags
-addTags pResourceARN_ =
-  AddTags' {_atResourceARN = pResourceARN_, _atTags = mempty}
-
+addTags pResourceARN_
+  = AddTags'{_atResourceARN = pResourceARN_,
+             _atTags = mempty}
 
 -- | The Amazon Resource Name (ARN) of the resource that you want to tag.
 atResourceARN :: Lens' AddTags Text
 atResourceARN = lens _atResourceARN (\ s a -> s{_atResourceARN = a})
 
--- | An array of @Tag@ objects. Each tag is a key-value pair. Only the @key@ parameter is required. If you don't specify a value, Amazon SageMaker sets the value to an empty string.
+-- | An array of @Tag@ objects. Each tag is a key-value pair. Only the @key@ parameter is required. If you don't specify a value, Amazon SageMaker sets the value to an empty string. 
 atTags :: Lens' AddTags [Tag]
 atTags = lens _atTags (\ s a -> s{_atTags = a}) . _Coerce
 
@@ -114,13 +109,10 @@ instance ToQuery AddTags where
         toQuery = const mempty
 
 -- | /See:/ 'addTagsResponse' smart constructor.
-data AddTagsResponse =
-  AddTagsResponse'
-    { _atrsTags           :: !(Maybe [Tag])
-    , _atrsResponseStatus :: !Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data AddTagsResponse = AddTagsResponse'{_atrsTags ::
+                                        !(Maybe [Tag]),
+                                        _atrsResponseStatus :: !Int}
+                         deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'AddTagsResponse' with the minimum fields required to make a request.
 --
@@ -132,9 +124,9 @@ data AddTagsResponse =
 addTagsResponse
     :: Int -- ^ 'atrsResponseStatus'
     -> AddTagsResponse
-addTagsResponse pResponseStatus_ =
-  AddTagsResponse' {_atrsTags = Nothing, _atrsResponseStatus = pResponseStatus_}
-
+addTagsResponse pResponseStatus_
+  = AddTagsResponse'{_atrsTags = Nothing,
+                     _atrsResponseStatus = pResponseStatus_}
 
 -- | A list of tags associated with the Amazon SageMaker resource.
 atrsTags :: Lens' AddTagsResponse [Tag]

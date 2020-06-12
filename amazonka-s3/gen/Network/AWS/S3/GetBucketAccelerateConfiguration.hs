@@ -40,15 +40,13 @@ import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 import Network.AWS.S3.Types
-import Network.AWS.S3.Types.Product
 
 -- | /See:/ 'getBucketAccelerateConfiguration' smart constructor.
-newtype GetBucketAccelerateConfiguration =
-  GetBucketAccelerateConfiguration'
-    { _gbacBucket :: BucketName
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+newtype GetBucketAccelerateConfiguration = GetBucketAccelerateConfiguration'{_gbacBucket
+                                                                             ::
+                                                                             BucketName}
+                                             deriving (Eq, Read, Show, Data,
+                                                       Typeable, Generic)
 
 -- | Creates a value of 'GetBucketAccelerateConfiguration' with the minimum fields required to make a request.
 --
@@ -58,9 +56,9 @@ newtype GetBucketAccelerateConfiguration =
 getBucketAccelerateConfiguration
     :: BucketName -- ^ 'gbacBucket'
     -> GetBucketAccelerateConfiguration
-getBucketAccelerateConfiguration pBucket_ =
-  GetBucketAccelerateConfiguration' {_gbacBucket = pBucket_}
-
+getBucketAccelerateConfiguration pBucket_
+  = GetBucketAccelerateConfiguration'{_gbacBucket =
+                                        pBucket_}
 
 -- | Name of the bucket for which the accelerate configuration is retrieved.
 gbacBucket :: Lens' GetBucketAccelerateConfiguration BucketName
@@ -97,13 +95,16 @@ instance ToQuery GetBucketAccelerateConfiguration
         toQuery = const (mconcat ["accelerate"])
 
 -- | /See:/ 'getBucketAccelerateConfigurationResponse' smart constructor.
-data GetBucketAccelerateConfigurationResponse =
-  GetBucketAccelerateConfigurationResponse'
-    { _grsStatus         :: !(Maybe BucketAccelerateStatus)
-    , _grsResponseStatus :: !Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data GetBucketAccelerateConfigurationResponse = GetBucketAccelerateConfigurationResponse'{_grsStatus
+                                                                                          ::
+                                                                                          !(Maybe
+                                                                                              BucketAccelerateStatus),
+                                                                                          _grsResponseStatus
+                                                                                          ::
+                                                                                          !Int}
+                                                  deriving (Eq, Read, Show,
+                                                            Data, Typeable,
+                                                            Generic)
 
 -- | Creates a value of 'GetBucketAccelerateConfigurationResponse' with the minimum fields required to make a request.
 --
@@ -115,10 +116,12 @@ data GetBucketAccelerateConfigurationResponse =
 getBucketAccelerateConfigurationResponse
     :: Int -- ^ 'grsResponseStatus'
     -> GetBucketAccelerateConfigurationResponse
-getBucketAccelerateConfigurationResponse pResponseStatus_ =
-  GetBucketAccelerateConfigurationResponse'
-    {_grsStatus = Nothing, _grsResponseStatus = pResponseStatus_}
-
+getBucketAccelerateConfigurationResponse
+  pResponseStatus_
+  = GetBucketAccelerateConfigurationResponse'{_grsStatus
+                                                = Nothing,
+                                              _grsResponseStatus =
+                                                pResponseStatus_}
 
 -- | The accelerate configuration of the bucket.
 grsStatus :: Lens' GetBucketAccelerateConfigurationResponse (Maybe BucketAccelerateStatus)

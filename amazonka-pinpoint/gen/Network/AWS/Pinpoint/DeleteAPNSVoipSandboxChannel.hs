@@ -37,18 +37,15 @@ module Network.AWS.Pinpoint.DeleteAPNSVoipSandboxChannel
 
 import Network.AWS.Lens
 import Network.AWS.Pinpoint.Types
-import Network.AWS.Pinpoint.Types.Product
 import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 
 -- | /See:/ 'deleteAPNSVoipSandboxChannel' smart constructor.
-newtype DeleteAPNSVoipSandboxChannel =
-  DeleteAPNSVoipSandboxChannel'
-    { _davscApplicationId :: Text
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+newtype DeleteAPNSVoipSandboxChannel = DeleteAPNSVoipSandboxChannel'{_davscApplicationId
+                                                                     :: Text}
+                                         deriving (Eq, Read, Show, Data,
+                                                   Typeable, Generic)
 
 -- | Creates a value of 'DeleteAPNSVoipSandboxChannel' with the minimum fields required to make a request.
 --
@@ -58,9 +55,9 @@ newtype DeleteAPNSVoipSandboxChannel =
 deleteAPNSVoipSandboxChannel
     :: Text -- ^ 'davscApplicationId'
     -> DeleteAPNSVoipSandboxChannel
-deleteAPNSVoipSandboxChannel pApplicationId_ =
-  DeleteAPNSVoipSandboxChannel' {_davscApplicationId = pApplicationId_}
-
+deleteAPNSVoipSandboxChannel pApplicationId_
+  = DeleteAPNSVoipSandboxChannel'{_davscApplicationId =
+                                    pApplicationId_}
 
 -- | Undocumented member.
 davscApplicationId :: Lens' DeleteAPNSVoipSandboxChannel Text
@@ -98,13 +95,14 @@ instance ToQuery DeleteAPNSVoipSandboxChannel where
         toQuery = const mempty
 
 -- | /See:/ 'deleteAPNSVoipSandboxChannelResponse' smart constructor.
-data DeleteAPNSVoipSandboxChannelResponse =
-  DeleteAPNSVoipSandboxChannelResponse'
-    { _davscrsResponseStatus                 :: !Int
-    , _davscrsAPNSVoipSandboxChannelResponse :: !APNSVoipSandboxChannelResponse
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data DeleteAPNSVoipSandboxChannelResponse = DeleteAPNSVoipSandboxChannelResponse'{_davscrsResponseStatus
+                                                                                  ::
+                                                                                  !Int,
+                                                                                  _davscrsAPNSVoipSandboxChannelResponse
+                                                                                  ::
+                                                                                  !APNSVoipSandboxChannelResponse}
+                                              deriving (Eq, Read, Show, Data,
+                                                        Typeable, Generic)
 
 -- | Creates a value of 'DeleteAPNSVoipSandboxChannelResponse' with the minimum fields required to make a request.
 --
@@ -117,12 +115,12 @@ deleteAPNSVoipSandboxChannelResponse
     :: Int -- ^ 'davscrsResponseStatus'
     -> APNSVoipSandboxChannelResponse -- ^ 'davscrsAPNSVoipSandboxChannelResponse'
     -> DeleteAPNSVoipSandboxChannelResponse
-deleteAPNSVoipSandboxChannelResponse pResponseStatus_ pAPNSVoipSandboxChannelResponse_ =
-  DeleteAPNSVoipSandboxChannelResponse'
-    { _davscrsResponseStatus = pResponseStatus_
-    , _davscrsAPNSVoipSandboxChannelResponse = pAPNSVoipSandboxChannelResponse_
-    }
-
+deleteAPNSVoipSandboxChannelResponse pResponseStatus_
+  pAPNSVoipSandboxChannelResponse_
+  = DeleteAPNSVoipSandboxChannelResponse'{_davscrsResponseStatus
+                                            = pResponseStatus_,
+                                          _davscrsAPNSVoipSandboxChannelResponse
+                                            = pAPNSVoipSandboxChannelResponse_}
 
 -- | -- | The response status code.
 davscrsResponseStatus :: Lens' DeleteAPNSVoipSandboxChannelResponse Int

@@ -48,17 +48,13 @@ import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 import Network.AWS.Transcribe.Types
-import Network.AWS.Transcribe.Types.Product
 
 -- | /See:/ 'createVocabulary' smart constructor.
-data CreateVocabulary =
-  CreateVocabulary'
-    { _cvVocabularyName :: !Text
-    , _cvLanguageCode   :: !LanguageCode
-    , _cvPhrases        :: ![Text]
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data CreateVocabulary = CreateVocabulary'{_cvVocabularyName
+                                          :: !Text,
+                                          _cvLanguageCode :: !LanguageCode,
+                                          _cvPhrases :: ![Text]}
+                          deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'CreateVocabulary' with the minimum fields required to make a request.
 --
@@ -68,18 +64,16 @@ data CreateVocabulary =
 --
 -- * 'cvLanguageCode' - The language code of the vocabulary entries.
 --
--- * 'cvPhrases' - An array of strings that contains the vocabulary entries.
+-- * 'cvPhrases' - An array of strings that contains the vocabulary entries. 
 createVocabulary
     :: Text -- ^ 'cvVocabularyName'
     -> LanguageCode -- ^ 'cvLanguageCode'
     -> CreateVocabulary
-createVocabulary pVocabularyName_ pLanguageCode_ =
-  CreateVocabulary'
-    { _cvVocabularyName = pVocabularyName_
-    , _cvLanguageCode = pLanguageCode_
-    , _cvPhrases = mempty
-    }
-
+createVocabulary pVocabularyName_ pLanguageCode_
+  = CreateVocabulary'{_cvVocabularyName =
+                        pVocabularyName_,
+                      _cvLanguageCode = pLanguageCode_,
+                      _cvPhrases = mempty}
 
 -- | The name of the vocabulary. The name must be unique within an AWS account. The name is case-sensitive.
 cvVocabularyName :: Lens' CreateVocabulary Text
@@ -89,7 +83,7 @@ cvVocabularyName = lens _cvVocabularyName (\ s a -> s{_cvVocabularyName = a})
 cvLanguageCode :: Lens' CreateVocabulary LanguageCode
 cvLanguageCode = lens _cvLanguageCode (\ s a -> s{_cvLanguageCode = a})
 
--- | An array of strings that contains the vocabulary entries.
+-- | An array of strings that contains the vocabulary entries. 
 cvPhrases :: Lens' CreateVocabulary [Text]
 cvPhrases = lens _cvPhrases (\ s a -> s{_cvPhrases = a}) . _Coerce
 
@@ -134,17 +128,22 @@ instance ToQuery CreateVocabulary where
         toQuery = const mempty
 
 -- | /See:/ 'createVocabularyResponse' smart constructor.
-data CreateVocabularyResponse =
-  CreateVocabularyResponse'
-    { _cvrsFailureReason    :: !(Maybe Text)
-    , _cvrsLanguageCode     :: !(Maybe LanguageCode)
-    , _cvrsVocabularyName   :: !(Maybe Text)
-    , _cvrsLastModifiedTime :: !(Maybe POSIX)
-    , _cvrsVocabularyState  :: !(Maybe VocabularyState)
-    , _cvrsResponseStatus   :: !Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data CreateVocabularyResponse = CreateVocabularyResponse'{_cvrsFailureReason
+                                                          :: !(Maybe Text),
+                                                          _cvrsLanguageCode ::
+                                                          !(Maybe LanguageCode),
+                                                          _cvrsVocabularyName ::
+                                                          !(Maybe Text),
+                                                          _cvrsLastModifiedTime
+                                                          :: !(Maybe POSIX),
+                                                          _cvrsVocabularyState
+                                                          ::
+                                                          !(Maybe
+                                                              VocabularyState),
+                                                          _cvrsResponseStatus ::
+                                                          !Int}
+                                  deriving (Eq, Read, Show, Data, Typeable,
+                                            Generic)
 
 -- | Creates a value of 'CreateVocabularyResponse' with the minimum fields required to make a request.
 --
@@ -164,16 +163,14 @@ data CreateVocabularyResponse =
 createVocabularyResponse
     :: Int -- ^ 'cvrsResponseStatus'
     -> CreateVocabularyResponse
-createVocabularyResponse pResponseStatus_ =
-  CreateVocabularyResponse'
-    { _cvrsFailureReason = Nothing
-    , _cvrsLanguageCode = Nothing
-    , _cvrsVocabularyName = Nothing
-    , _cvrsLastModifiedTime = Nothing
-    , _cvrsVocabularyState = Nothing
-    , _cvrsResponseStatus = pResponseStatus_
-    }
-
+createVocabularyResponse pResponseStatus_
+  = CreateVocabularyResponse'{_cvrsFailureReason =
+                                Nothing,
+                              _cvrsLanguageCode = Nothing,
+                              _cvrsVocabularyName = Nothing,
+                              _cvrsLastModifiedTime = Nothing,
+                              _cvrsVocabularyState = Nothing,
+                              _cvrsResponseStatus = pResponseStatus_}
 
 -- | If the @VocabularyState@ field is @FAILED@ , this field contains information about why the job failed.
 cvrsFailureReason :: Lens' CreateVocabularyResponse (Maybe Text)

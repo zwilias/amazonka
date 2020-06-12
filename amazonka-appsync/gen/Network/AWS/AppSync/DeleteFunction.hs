@@ -38,20 +38,16 @@ module Network.AWS.AppSync.DeleteFunction
     ) where
 
 import Network.AWS.AppSync.Types
-import Network.AWS.AppSync.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 
 -- | /See:/ 'deleteFunction' smart constructor.
-data DeleteFunction =
-  DeleteFunction'
-    { _dfApiId      :: !Text
-    , _dfFunctionId :: !Text
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data DeleteFunction = DeleteFunction'{_dfApiId ::
+                                      !Text,
+                                      _dfFunctionId :: !Text}
+                        deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'DeleteFunction' with the minimum fields required to make a request.
 --
@@ -64,9 +60,9 @@ deleteFunction
     :: Text -- ^ 'dfApiId'
     -> Text -- ^ 'dfFunctionId'
     -> DeleteFunction
-deleteFunction pApiId_ pFunctionId_ =
-  DeleteFunction' {_dfApiId = pApiId_, _dfFunctionId = pFunctionId_}
-
+deleteFunction pApiId_ pFunctionId_
+  = DeleteFunction'{_dfApiId = pApiId_,
+                    _dfFunctionId = pFunctionId_}
 
 -- | The GraphQL API ID.
 dfApiId :: Lens' DeleteFunction Text
@@ -105,12 +101,10 @@ instance ToQuery DeleteFunction where
         toQuery = const mempty
 
 -- | /See:/ 'deleteFunctionResponse' smart constructor.
-newtype DeleteFunctionResponse =
-  DeleteFunctionResponse'
-    { _dfrsResponseStatus :: Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+newtype DeleteFunctionResponse = DeleteFunctionResponse'{_dfrsResponseStatus
+                                                         :: Int}
+                                   deriving (Eq, Read, Show, Data, Typeable,
+                                             Generic)
 
 -- | Creates a value of 'DeleteFunctionResponse' with the minimum fields required to make a request.
 --
@@ -120,9 +114,9 @@ newtype DeleteFunctionResponse =
 deleteFunctionResponse
     :: Int -- ^ 'dfrsResponseStatus'
     -> DeleteFunctionResponse
-deleteFunctionResponse pResponseStatus_ =
-  DeleteFunctionResponse' {_dfrsResponseStatus = pResponseStatus_}
-
+deleteFunctionResponse pResponseStatus_
+  = DeleteFunctionResponse'{_dfrsResponseStatus =
+                              pResponseStatus_}
 
 -- | -- | The response status code.
 dfrsResponseStatus :: Lens' DeleteFunctionResponse Int

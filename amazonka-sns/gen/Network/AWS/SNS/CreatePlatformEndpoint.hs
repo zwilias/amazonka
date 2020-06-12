@@ -18,10 +18,10 @@
 -- Stability   : auto-generated
 -- Portability : non-portable (GHC extensions)
 --
--- Creates an endpoint for a device and mobile app on one of the supported push notification services, such as GCM and APNS. @CreatePlatformEndpoint@ requires the PlatformApplicationArn that is returned from @CreatePlatformApplication@ . The EndpointArn that is returned when using @CreatePlatformEndpoint@ can then be used by the @Publish@ action to send a message to a mobile app or by the @Subscribe@ action for subscription to a topic. The @CreatePlatformEndpoint@ action is idempotent, so if the requester already owns an endpoint with the same device token and attributes, that endpoint's ARN is returned without creating a new endpoint. For more information, see <http://docs.aws.amazon.com/sns/latest/dg/SNSMobilePush.html Using Amazon SNS Mobile Push Notifications> .
+-- Creates an endpoint for a device and mobile app on one of the supported push notification services, such as GCM and APNS. @CreatePlatformEndpoint@ requires the PlatformApplicationArn that is returned from @CreatePlatformApplication@ . The EndpointArn that is returned when using @CreatePlatformEndpoint@ can then be used by the @Publish@ action to send a message to a mobile app or by the @Subscribe@ action for subscription to a topic. The @CreatePlatformEndpoint@ action is idempotent, so if the requester already owns an endpoint with the same device token and attributes, that endpoint's ARN is returned without creating a new endpoint. For more information, see <http://docs.aws.amazon.com/sns/latest/dg/SNSMobilePush.html Using Amazon SNS Mobile Push Notifications> . 
 --
 --
--- When using @CreatePlatformEndpoint@ with Baidu, two attributes must be provided: ChannelId and UserId. The token field must also contain the ChannelId. For more information, see <http://docs.aws.amazon.com/sns/latest/dg/SNSMobilePushBaiduEndpoint.html Creating an Amazon SNS Endpoint for Baidu> .
+-- When using @CreatePlatformEndpoint@ with Baidu, two attributes must be provided: ChannelId and UserId. The token field must also contain the ChannelId. For more information, see <http://docs.aws.amazon.com/sns/latest/dg/SNSMobilePushBaiduEndpoint.html Creating an Amazon SNS Endpoint for Baidu> . 
 --
 module Network.AWS.SNS.CreatePlatformEndpoint
     (
@@ -47,22 +47,21 @@ import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 import Network.AWS.SNS.Types
-import Network.AWS.SNS.Types.Product
 
 -- | Input for CreatePlatformEndpoint action.
 --
 --
 --
 -- /See:/ 'createPlatformEndpoint' smart constructor.
-data CreatePlatformEndpoint =
-  CreatePlatformEndpoint'
-    { _cpeCustomUserData         :: !(Maybe Text)
-    , _cpeAttributes             :: !(Maybe (Map Text Text))
-    , _cpePlatformApplicationARN :: !Text
-    , _cpeToken                  :: !Text
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data CreatePlatformEndpoint = CreatePlatformEndpoint'{_cpeCustomUserData
+                                                      :: !(Maybe Text),
+                                                      _cpeAttributes ::
+                                                      !(Maybe (Map Text Text)),
+                                                      _cpePlatformApplicationARN
+                                                      :: !Text,
+                                                      _cpeToken :: !Text}
+                                deriving (Eq, Read, Show, Data, Typeable,
+                                          Generic)
 
 -- | Creates a value of 'CreatePlatformEndpoint' with the minimum fields required to make a request.
 --
@@ -79,14 +78,14 @@ createPlatformEndpoint
     :: Text -- ^ 'cpePlatformApplicationARN'
     -> Text -- ^ 'cpeToken'
     -> CreatePlatformEndpoint
-createPlatformEndpoint pPlatformApplicationARN_ pToken_ =
-  CreatePlatformEndpoint'
-    { _cpeCustomUserData = Nothing
-    , _cpeAttributes = Nothing
-    , _cpePlatformApplicationARN = pPlatformApplicationARN_
-    , _cpeToken = pToken_
-    }
-
+createPlatformEndpoint pPlatformApplicationARN_
+  pToken_
+  = CreatePlatformEndpoint'{_cpeCustomUserData =
+                              Nothing,
+                            _cpeAttributes = Nothing,
+                            _cpePlatformApplicationARN =
+                              pPlatformApplicationARN_,
+                            _cpeToken = pToken_}
 
 -- | Arbitrary user data to associate with the endpoint. Amazon SNS does not use this data. The data must be in UTF-8 format and less than 2KB.
 cpeCustomUserData :: Lens' CreatePlatformEndpoint (Maybe Text)
@@ -144,13 +143,14 @@ instance ToQuery CreatePlatformEndpoint where
 --
 --
 -- /See:/ 'createPlatformEndpointResponse' smart constructor.
-data CreatePlatformEndpointResponse =
-  CreatePlatformEndpointResponse'
-    { _cpersEndpointARN    :: !(Maybe Text)
-    , _cpersResponseStatus :: !Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data CreatePlatformEndpointResponse = CreatePlatformEndpointResponse'{_cpersEndpointARN
+                                                                      ::
+                                                                      !(Maybe
+                                                                          Text),
+                                                                      _cpersResponseStatus
+                                                                      :: !Int}
+                                        deriving (Eq, Read, Show, Data,
+                                                  Typeable, Generic)
 
 -- | Creates a value of 'CreatePlatformEndpointResponse' with the minimum fields required to make a request.
 --
@@ -162,10 +162,10 @@ data CreatePlatformEndpointResponse =
 createPlatformEndpointResponse
     :: Int -- ^ 'cpersResponseStatus'
     -> CreatePlatformEndpointResponse
-createPlatformEndpointResponse pResponseStatus_ =
-  CreatePlatformEndpointResponse'
-    {_cpersEndpointARN = Nothing, _cpersResponseStatus = pResponseStatus_}
-
+createPlatformEndpointResponse pResponseStatus_
+  = CreatePlatformEndpointResponse'{_cpersEndpointARN =
+                                      Nothing,
+                                    _cpersResponseStatus = pResponseStatus_}
 
 -- | EndpointArn returned from CreateEndpoint action.
 cpersEndpointARN :: Lens' CreatePlatformEndpointResponse (Maybe Text)

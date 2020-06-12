@@ -48,28 +48,24 @@ module Network.AWS.Connect.CreateUser
     ) where
 
 import Network.AWS.Connect.Types
-import Network.AWS.Connect.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 
 -- | /See:/ 'createUser' smart constructor.
-data CreateUser =
-  CreateUser'
-    { _cuDirectoryUserId    :: !(Maybe Text)
-    , _cuIdentityInfo       :: !(Maybe UserIdentityInfo)
-    , _cuPassword           :: !(Maybe Text)
-    , _cuHierarchyGroupId   :: !(Maybe Text)
-    , _cuTags               :: !(Maybe (Map Text Text))
-    , _cuUsername           :: !Text
-    , _cuPhoneConfig        :: !UserPhoneConfig
-    , _cuSecurityProfileIds :: !(List1 Text)
-    , _cuRoutingProfileId   :: !Text
-    , _cuInstanceId         :: !Text
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data CreateUser = CreateUser'{_cuDirectoryUserId ::
+                              !(Maybe Text),
+                              _cuIdentityInfo :: !(Maybe UserIdentityInfo),
+                              _cuPassword :: !(Maybe Text),
+                              _cuHierarchyGroupId :: !(Maybe Text),
+                              _cuTags :: !(Maybe (Map Text Text)),
+                              _cuUsername :: !Text,
+                              _cuPhoneConfig :: !UserPhoneConfig,
+                              _cuSecurityProfileIds :: !(List1 Text),
+                              _cuRoutingProfileId :: !Text,
+                              _cuInstanceId :: !Text}
+                    deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'CreateUser' with the minimum fields required to make a request.
 --
@@ -101,20 +97,17 @@ createUser
     -> Text -- ^ 'cuRoutingProfileId'
     -> Text -- ^ 'cuInstanceId'
     -> CreateUser
-createUser pUsername_ pPhoneConfig_ pSecurityProfileIds_ pRoutingProfileId_ pInstanceId_ =
-  CreateUser'
-    { _cuDirectoryUserId = Nothing
-    , _cuIdentityInfo = Nothing
-    , _cuPassword = Nothing
-    , _cuHierarchyGroupId = Nothing
-    , _cuTags = Nothing
-    , _cuUsername = pUsername_
-    , _cuPhoneConfig = pPhoneConfig_
-    , _cuSecurityProfileIds = _List1 # pSecurityProfileIds_
-    , _cuRoutingProfileId = pRoutingProfileId_
-    , _cuInstanceId = pInstanceId_
-    }
-
+createUser pUsername_ pPhoneConfig_
+  pSecurityProfileIds_ pRoutingProfileId_ pInstanceId_
+  = CreateUser'{_cuDirectoryUserId = Nothing,
+                _cuIdentityInfo = Nothing, _cuPassword = Nothing,
+                _cuHierarchyGroupId = Nothing, _cuTags = Nothing,
+                _cuUsername = pUsername_,
+                _cuPhoneConfig = pPhoneConfig_,
+                _cuSecurityProfileIds =
+                  _List1 # pSecurityProfileIds_,
+                _cuRoutingProfileId = pRoutingProfileId_,
+                _cuInstanceId = pInstanceId_}
 
 -- | The identifier of the user account in the directory used for identity management. If Amazon Connect cannot access the directory, you can specify this identifier to authenticate users. If you include the identifier, we assume that Amazon Connect cannot access the directory. Otherwise, the identity information is used to authenticate users from your directory. This parameter is required if you are using an existing directory for identity management in Amazon Connect when Amazon Connect cannot access your directory to authenticate users. If you are using SAML for identity management and include this parameter, an error is returned.
 cuDirectoryUserId :: Lens' CreateUser (Maybe Text)
@@ -199,14 +192,11 @@ instance ToQuery CreateUser where
         toQuery = const mempty
 
 -- | /See:/ 'createUserResponse' smart constructor.
-data CreateUserResponse =
-  CreateUserResponse'
-    { _cursUserId         :: !(Maybe Text)
-    , _cursUserARN        :: !(Maybe Text)
-    , _cursResponseStatus :: !Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data CreateUserResponse = CreateUserResponse'{_cursUserId
+                                              :: !(Maybe Text),
+                                              _cursUserARN :: !(Maybe Text),
+                                              _cursResponseStatus :: !Int}
+                            deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'CreateUserResponse' with the minimum fields required to make a request.
 --
@@ -220,13 +210,10 @@ data CreateUserResponse =
 createUserResponse
     :: Int -- ^ 'cursResponseStatus'
     -> CreateUserResponse
-createUserResponse pResponseStatus_ =
-  CreateUserResponse'
-    { _cursUserId = Nothing
-    , _cursUserARN = Nothing
-    , _cursResponseStatus = pResponseStatus_
-    }
-
+createUserResponse pResponseStatus_
+  = CreateUserResponse'{_cursUserId = Nothing,
+                        _cursUserARN = Nothing,
+                        _cursResponseStatus = pResponseStatus_}
 
 -- | The identifier of the user account.
 cursUserId :: Lens' CreateUserResponse (Maybe Text)

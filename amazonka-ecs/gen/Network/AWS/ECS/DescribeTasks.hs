@@ -40,20 +40,16 @@ module Network.AWS.ECS.DescribeTasks
     ) where
 
 import Network.AWS.ECS.Types
-import Network.AWS.ECS.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 
 -- | /See:/ 'describeTasks' smart constructor.
-data DescribeTasks =
-  DescribeTasks'
-    { _dtCluster :: !(Maybe Text)
-    , _dtTasks   :: ![Text]
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data DescribeTasks = DescribeTasks'{_dtCluster ::
+                                    !(Maybe Text),
+                                    _dtTasks :: ![Text]}
+                       deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'DescribeTasks' with the minimum fields required to make a request.
 --
@@ -64,8 +60,9 @@ data DescribeTasks =
 -- * 'dtTasks' - A list of up to 100 task IDs or full ARN entries.
 describeTasks
     :: DescribeTasks
-describeTasks = DescribeTasks' {_dtCluster = Nothing, _dtTasks = mempty}
-
+describeTasks
+  = DescribeTasks'{_dtCluster = Nothing,
+                   _dtTasks = mempty}
 
 -- | The short name or full Amazon Resource Name (ARN) of the cluster that hosts the task to describe. If you do not specify a cluster, the default cluster is assumed.
 dtCluster :: Lens' DescribeTasks (Maybe Text)
@@ -114,14 +111,13 @@ instance ToQuery DescribeTasks where
         toQuery = const mempty
 
 -- | /See:/ 'describeTasksResponse' smart constructor.
-data DescribeTasksResponse =
-  DescribeTasksResponse'
-    { _dtrsFailures       :: !(Maybe [Failure])
-    , _dtrsTasks          :: !(Maybe [Task])
-    , _dtrsResponseStatus :: !Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data DescribeTasksResponse = DescribeTasksResponse'{_dtrsFailures
+                                                    :: !(Maybe [Failure]),
+                                                    _dtrsTasks ::
+                                                    !(Maybe [Task]),
+                                                    _dtrsResponseStatus :: !Int}
+                               deriving (Eq, Read, Show, Data, Typeable,
+                                         Generic)
 
 -- | Creates a value of 'DescribeTasksResponse' with the minimum fields required to make a request.
 --
@@ -135,13 +131,10 @@ data DescribeTasksResponse =
 describeTasksResponse
     :: Int -- ^ 'dtrsResponseStatus'
     -> DescribeTasksResponse
-describeTasksResponse pResponseStatus_ =
-  DescribeTasksResponse'
-    { _dtrsFailures = Nothing
-    , _dtrsTasks = Nothing
-    , _dtrsResponseStatus = pResponseStatus_
-    }
-
+describeTasksResponse pResponseStatus_
+  = DescribeTasksResponse'{_dtrsFailures = Nothing,
+                           _dtrsTasks = Nothing,
+                           _dtrsResponseStatus = pResponseStatus_}
 
 -- | Any failures associated with the call.
 dtrsFailures :: Lens' DescribeTasksResponse [Failure]

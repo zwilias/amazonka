@@ -57,36 +57,34 @@ import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 import Network.AWS.SSM.Types
-import Network.AWS.SSM.Types.Product
 
 -- | /See:/ 'sendCommand' smart constructor.
-data SendCommand =
-  SendCommand'
-    { _scServiceRoleARN     :: !(Maybe Text)
-    , _scNotificationConfig :: !(Maybe NotificationConfig)
-    , _scDocumentHashType   :: !(Maybe DocumentHashType)
-    , _scOutputS3KeyPrefix  :: !(Maybe Text)
-    , _scMaxErrors          :: !(Maybe Text)
-    , _scInstanceIds        :: !(Maybe [Text])
-    , _scOutputS3Region     :: !(Maybe Text)
-    , _scTargets            :: !(Maybe [Target])
-    , _scParameters         :: !(Maybe (Map Text [Text]))
-    , _scDocumentHash       :: !(Maybe Text)
-    , _scDocumentVersion    :: !(Maybe Text)
-    , _scTimeoutSeconds     :: !(Maybe Nat)
-    , _scComment            :: !(Maybe Text)
-    , _scOutputS3BucketName :: !(Maybe Text)
-    , _scMaxConcurrency     :: !(Maybe Text)
-    , _scDocumentName       :: !Text
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data SendCommand = SendCommand'{_scServiceRoleARN ::
+                                !(Maybe Text),
+                                _scNotificationConfig ::
+                                !(Maybe NotificationConfig),
+                                _scDocumentHashType ::
+                                !(Maybe DocumentHashType),
+                                _scOutputS3KeyPrefix :: !(Maybe Text),
+                                _scMaxErrors :: !(Maybe Text),
+                                _scInstanceIds :: !(Maybe [Text]),
+                                _scOutputS3Region :: !(Maybe Text),
+                                _scTargets :: !(Maybe [Target]),
+                                _scParameters :: !(Maybe (Map Text [Text])),
+                                _scDocumentHash :: !(Maybe Text),
+                                _scDocumentVersion :: !(Maybe Text),
+                                _scTimeoutSeconds :: !(Maybe Nat),
+                                _scComment :: !(Maybe Text),
+                                _scOutputS3BucketName :: !(Maybe Text),
+                                _scMaxConcurrency :: !(Maybe Text),
+                                _scDocumentName :: !Text}
+                     deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'SendCommand' with the minimum fields required to make a request.
 --
 -- Use one of the following lenses to modify other fields as desired:
 --
--- * 'scServiceRoleARN' - The IAM role that Systems Manager uses to send notifications.
+-- * 'scServiceRoleARN' - The IAM role that Systems Manager uses to send notifications. 
 --
 -- * 'scNotificationConfig' - Configurations for sending notifications.
 --
@@ -104,9 +102,9 @@ data SendCommand =
 --
 -- * 'scParameters' - The required and optional parameters specified in the document being executed.
 --
--- * 'scDocumentHash' - The Sha256 or Sha1 hash created by the system when the document was created.
+-- * 'scDocumentHash' - The Sha256 or Sha1 hash created by the system when the document was created. 
 --
--- * 'scDocumentVersion' - The SSM document version to use in the request. You can specify Default, Latest, or a specific version number.
+-- * 'scDocumentVersion' - The SSM document version to use in the request. You can specify Default, Latest, or a specific version number. 
 --
 -- * 'scTimeoutSeconds' - If this time is reached and the command has not already started executing, it will not run.
 --
@@ -120,28 +118,21 @@ data SendCommand =
 sendCommand
     :: Text -- ^ 'scDocumentName'
     -> SendCommand
-sendCommand pDocumentName_ =
-  SendCommand'
-    { _scServiceRoleARN = Nothing
-    , _scNotificationConfig = Nothing
-    , _scDocumentHashType = Nothing
-    , _scOutputS3KeyPrefix = Nothing
-    , _scMaxErrors = Nothing
-    , _scInstanceIds = Nothing
-    , _scOutputS3Region = Nothing
-    , _scTargets = Nothing
-    , _scParameters = Nothing
-    , _scDocumentHash = Nothing
-    , _scDocumentVersion = Nothing
-    , _scTimeoutSeconds = Nothing
-    , _scComment = Nothing
-    , _scOutputS3BucketName = Nothing
-    , _scMaxConcurrency = Nothing
-    , _scDocumentName = pDocumentName_
-    }
+sendCommand pDocumentName_
+  = SendCommand'{_scServiceRoleARN = Nothing,
+                 _scNotificationConfig = Nothing,
+                 _scDocumentHashType = Nothing,
+                 _scOutputS3KeyPrefix = Nothing,
+                 _scMaxErrors = Nothing, _scInstanceIds = Nothing,
+                 _scOutputS3Region = Nothing, _scTargets = Nothing,
+                 _scParameters = Nothing, _scDocumentHash = Nothing,
+                 _scDocumentVersion = Nothing,
+                 _scTimeoutSeconds = Nothing, _scComment = Nothing,
+                 _scOutputS3BucketName = Nothing,
+                 _scMaxConcurrency = Nothing,
+                 _scDocumentName = pDocumentName_}
 
-
--- | The IAM role that Systems Manager uses to send notifications.
+-- | The IAM role that Systems Manager uses to send notifications. 
 scServiceRoleARN :: Lens' SendCommand (Maybe Text)
 scServiceRoleARN = lens _scServiceRoleARN (\ s a -> s{_scServiceRoleARN = a})
 
@@ -177,11 +168,11 @@ scTargets = lens _scTargets (\ s a -> s{_scTargets = a}) . _Default . _Coerce
 scParameters :: Lens' SendCommand (HashMap Text [Text])
 scParameters = lens _scParameters (\ s a -> s{_scParameters = a}) . _Default . _Map
 
--- | The Sha256 or Sha1 hash created by the system when the document was created.
+-- | The Sha256 or Sha1 hash created by the system when the document was created. 
 scDocumentHash :: Lens' SendCommand (Maybe Text)
 scDocumentHash = lens _scDocumentHash (\ s a -> s{_scDocumentHash = a})
 
--- | The SSM document version to use in the request. You can specify Default, Latest, or a specific version number.
+-- | The SSM document version to use in the request. You can specify Default, Latest, or a specific version number. 
 scDocumentVersion :: Lens' SendCommand (Maybe Text)
 scDocumentVersion = lens _scDocumentVersion (\ s a -> s{_scDocumentVersion = a})
 
@@ -255,13 +246,10 @@ instance ToQuery SendCommand where
         toQuery = const mempty
 
 -- | /See:/ 'sendCommandResponse' smart constructor.
-data SendCommandResponse =
-  SendCommandResponse'
-    { _scrsCommand        :: !(Maybe Command)
-    , _scrsResponseStatus :: !Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data SendCommandResponse = SendCommandResponse'{_scrsCommand
+                                                :: !(Maybe Command),
+                                                _scrsResponseStatus :: !Int}
+                             deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'SendCommandResponse' with the minimum fields required to make a request.
 --
@@ -273,10 +261,9 @@ data SendCommandResponse =
 sendCommandResponse
     :: Int -- ^ 'scrsResponseStatus'
     -> SendCommandResponse
-sendCommandResponse pResponseStatus_ =
-  SendCommandResponse'
-    {_scrsCommand = Nothing, _scrsResponseStatus = pResponseStatus_}
-
+sendCommandResponse pResponseStatus_
+  = SendCommandResponse'{_scrsCommand = Nothing,
+                         _scrsResponseStatus = pResponseStatus_}
 
 -- | The request as it was received by Systems Manager. Also provides the command ID which can be used future references to this request.
 scrsCommand :: Lens' SendCommandResponse (Maybe Command)

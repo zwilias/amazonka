@@ -1,4 +1,4 @@
-{-# LANGUAGE OverloadedStrings #-}
+{-# LANGUAGE OverloadedStrings  #-}
 
 -- Derived from AWS service descriptions, licensed under Apache 2.0.
 
@@ -416,63 +416,118 @@ module Network.AWS.WAF.Types
 import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.Sign.V4
-import Network.AWS.WAF.Types.Product
-import Network.AWS.WAF.Types.Sum
+import Network.AWS.WAF.Types.ChangeAction
+import Network.AWS.WAF.Types.ChangeTokenStatus
+import Network.AWS.WAF.Types.ComparisonOperator
+import Network.AWS.WAF.Types.GeoMatchConstraintType
+import Network.AWS.WAF.Types.GeoMatchConstraintValue
+import Network.AWS.WAF.Types.IPSetDescriptorType
+import Network.AWS.WAF.Types.MatchFieldType
+import Network.AWS.WAF.Types.PositionalConstraint
+import Network.AWS.WAF.Types.PredicateType
+import Network.AWS.WAF.Types.RateKey
+import Network.AWS.WAF.Types.TextTransformation
+import Network.AWS.WAF.Types.WafActionType
+import Network.AWS.WAF.Types.WafOverrideActionType
+import Network.AWS.WAF.Types.WafRuleType
+import Network.AWS.WAF.Types.ActivatedRule
+import Network.AWS.WAF.Types.ByteMatchSet
+import Network.AWS.WAF.Types.ByteMatchSetSummary
+import Network.AWS.WAF.Types.ByteMatchSetUpdate
+import Network.AWS.WAF.Types.ByteMatchTuple
+import Network.AWS.WAF.Types.FieldToMatch
+import Network.AWS.WAF.Types.GeoMatchConstraint
+import Network.AWS.WAF.Types.GeoMatchSet
+import Network.AWS.WAF.Types.GeoMatchSetSummary
+import Network.AWS.WAF.Types.GeoMatchSetUpdate
+import Network.AWS.WAF.Types.HTTPHeader
+import Network.AWS.WAF.Types.HTTPRequest
+import Network.AWS.WAF.Types.IPSet
+import Network.AWS.WAF.Types.IPSetDescriptor
+import Network.AWS.WAF.Types.IPSetSummary
+import Network.AWS.WAF.Types.IPSetUpdate
+import Network.AWS.WAF.Types.Predicate
+import Network.AWS.WAF.Types.RateBasedRule
+import Network.AWS.WAF.Types.RegexMatchSet
+import Network.AWS.WAF.Types.RegexMatchSetSummary
+import Network.AWS.WAF.Types.RegexMatchSetUpdate
+import Network.AWS.WAF.Types.RegexMatchTuple
+import Network.AWS.WAF.Types.RegexPatternSet
+import Network.AWS.WAF.Types.RegexPatternSetSummary
+import Network.AWS.WAF.Types.RegexPatternSetUpdate
+import Network.AWS.WAF.Types.Rule
+import Network.AWS.WAF.Types.RuleGroup
+import Network.AWS.WAF.Types.RuleGroupSummary
+import Network.AWS.WAF.Types.RuleGroupUpdate
+import Network.AWS.WAF.Types.RuleSummary
+import Network.AWS.WAF.Types.RuleUpdate
+import Network.AWS.WAF.Types.SampledHTTPRequest
+import Network.AWS.WAF.Types.SizeConstraint
+import Network.AWS.WAF.Types.SizeConstraintSet
+import Network.AWS.WAF.Types.SizeConstraintSetSummary
+import Network.AWS.WAF.Types.SizeConstraintSetUpdate
+import Network.AWS.WAF.Types.SqlInjectionMatchSet
+import Network.AWS.WAF.Types.SqlInjectionMatchSetSummary
+import Network.AWS.WAF.Types.SqlInjectionMatchSetUpdate
+import Network.AWS.WAF.Types.SqlInjectionMatchTuple
+import Network.AWS.WAF.Types.SubscribedRuleGroupSummary
+import Network.AWS.WAF.Types.TimeWindow
+import Network.AWS.WAF.Types.WafAction
+import Network.AWS.WAF.Types.WafOverrideAction
+import Network.AWS.WAF.Types.WebACL
+import Network.AWS.WAF.Types.WebACLSummary
+import Network.AWS.WAF.Types.WebACLUpdate
+import Network.AWS.WAF.Types.XSSMatchSet
+import Network.AWS.WAF.Types.XSSMatchSetSummary
+import Network.AWS.WAF.Types.XSSMatchSetUpdate
+import Network.AWS.WAF.Types.XSSMatchTuple
 
 -- | API version @2015-08-24@ of the Amazon WAF SDK configuration.
 waf :: Service
-waf =
-  Service
-    { _svcAbbrev = "WAF"
-    , _svcSigner = v4
-    , _svcPrefix = "waf"
-    , _svcVersion = "2015-08-24"
-    , _svcEndpoint = defaultEndpoint waf
-    , _svcTimeout = Just 70
-    , _svcCheck = statusSuccess
-    , _svcError = parseJSONError "WAF"
-    , _svcRetry = retry
-    }
-  where
-    retry =
-      Exponential
-        { _retryBase = 5.0e-2
-        , _retryGrowth = 2
-        , _retryAttempts = 5
-        , _retryCheck = check
-        }
-    check e
-      | has (hasCode "ThrottledException" . hasStatus 400) e =
-        Just "throttled_exception"
-      | has (hasStatus 429) e = Just "too_many_requests"
-      | has (hasCode "ThrottlingException" . hasStatus 400) e =
-        Just "throttling_exception"
-      | has (hasCode "Throttling" . hasStatus 400) e = Just "throttling"
-      | has (hasStatus 504) e = Just "gateway_timeout"
-      | has (hasCode "RequestThrottledException" . hasStatus 400) e =
-        Just "request_throttled_exception"
-      | has (hasStatus 502) e = Just "bad_gateway"
-      | has (hasStatus 503) e = Just "service_unavailable"
-      | has (hasStatus 500) e = Just "general_server_error"
-      | has (hasStatus 509) e = Just "limit_exceeded"
-      | otherwise = Nothing
-
+waf
+  = Service{_svcAbbrev = "WAF", _svcSigner = v4,
+            _svcPrefix = "waf", _svcVersion = "2015-08-24",
+            _svcEndpoint = defaultEndpoint waf,
+            _svcTimeout = Just 70, _svcCheck = statusSuccess,
+            _svcError = parseJSONError "WAF", _svcRetry = retry}
+  where retry
+          = Exponential{_retryBase = 5.0e-2, _retryGrowth = 2,
+                        _retryAttempts = 5, _retryCheck = check}
+        check e
+          | has (hasCode "ThrottledException" . hasStatus 400)
+              e
+            = Just "throttled_exception"
+          | has (hasStatus 429) e = Just "too_many_requests"
+          | has (hasCode "ThrottlingException" . hasStatus 400)
+              e
+            = Just "throttling_exception"
+          | has (hasCode "Throttling" . hasStatus 400) e =
+            Just "throttling"
+          | has (hasStatus 504) e = Just "gateway_timeout"
+          | has
+              (hasCode "RequestThrottledException" . hasStatus 400)
+              e
+            = Just "request_throttled_exception"
+          | has (hasStatus 502) e = Just "bad_gateway"
+          | has (hasStatus 503) e = Just "service_unavailable"
+          | has (hasStatus 500) e = Just "general_server_error"
+          | has (hasStatus 509) e = Just "limit_exceeded"
+          | otherwise = Nothing
 
 -- | The operation failed because you tried to create, update, or delete an object by using an invalid account identifier.
 --
 --
 _WAFInvalidAccountException :: AsError a => Getting (First ServiceError) a ServiceError
-_WAFInvalidAccountException =
-  _MatchServiceError waf "WAFInvalidAccountException"
-
+_WAFInvalidAccountException
+  = _MatchServiceError waf "WAFInvalidAccountException"
 
 -- | The specified subscription does not exist.
 --
 --
 _WAFSubscriptionNotFoundException :: AsError a => Getting (First ServiceError) a ServiceError
-_WAFSubscriptionNotFoundException =
-  _MatchServiceError waf "WAFSubscriptionNotFoundException"
-
+_WAFSubscriptionNotFoundException
+  = _MatchServiceError waf
+      "WAFSubscriptionNotFoundException"
 
 -- | The operation failed because you tried to delete an object that is still in use. For example:
 --
@@ -484,17 +539,16 @@ _WAFSubscriptionNotFoundException =
 --
 --
 _WAFReferencedItemException :: AsError a => Getting (First ServiceError) a ServiceError
-_WAFReferencedItemException =
-  _MatchServiceError waf "WAFReferencedItemException"
-
+_WAFReferencedItemException
+  = _MatchServiceError waf "WAFReferencedItemException"
 
 -- | The regular expression (regex) you specified in @RegexPatternString@ is invalid.
 --
 --
 _WAFInvalidRegexPatternException :: AsError a => Getting (First ServiceError) a ServiceError
-_WAFInvalidRegexPatternException =
-  _MatchServiceError waf "WAFInvalidRegexPatternException"
-
+_WAFInvalidRegexPatternException
+  = _MatchServiceError waf
+      "WAFInvalidRegexPatternException"
 
 -- | The operation failed because there was nothing to do. For example:
 --
@@ -514,17 +568,17 @@ _WAFInvalidRegexPatternException =
 --
 --
 _WAFInvalidOperationException :: AsError a => Getting (First ServiceError) a ServiceError
-_WAFInvalidOperationException =
-  _MatchServiceError waf "WAFInvalidOperationException"
-
+_WAFInvalidOperationException
+  = _MatchServiceError waf
+      "WAFInvalidOperationException"
 
 -- | The operation failed because the referenced object doesn't exist.
 --
 --
 _WAFNonexistentItemException :: AsError a => Getting (First ServiceError) a ServiceError
-_WAFNonexistentItemException =
-  _MatchServiceError waf "WAFNonexistentItemException"
-
+_WAFNonexistentItemException
+  = _MatchServiceError waf
+      "WAFNonexistentItemException"
 
 -- | The operation failed because AWS WAF didn't recognize a parameter in the request. For example:
 --
@@ -550,26 +604,25 @@ _WAFNonexistentItemException =
 --
 --
 _WAFInvalidParameterException :: AsError a => Getting (First ServiceError) a ServiceError
-_WAFInvalidParameterException =
-  _MatchServiceError waf "WAFInvalidParameterException"
-
+_WAFInvalidParameterException
+  = _MatchServiceError waf
+      "WAFInvalidParameterException"
 
 -- | The operation exceeds a resource limit, for example, the maximum number of @WebACL@ objects that you can create for an AWS account. For more information, see <http://docs.aws.amazon.com/waf/latest/developerguide/limits.html Limits> in the /AWS WAF Developer Guide/ .
 --
 --
 _WAFLimitsExceededException :: AsError a => Getting (First ServiceError) a ServiceError
-_WAFLimitsExceededException =
-  _MatchServiceError waf "WAFLimitsExceededException"
+_WAFLimitsExceededException
+  = _MatchServiceError waf "WAFLimitsExceededException"
 
-
--- | The operation failed because the specified policy is not in the proper format.
+-- | The operation failed because the specified policy is not in the proper format. 
 --
 --
 -- The policy is subject to the following restrictions:
 --
 --     * You can attach only one policy with each @PutPermissionPolicy@ request.
 --
---     * The policy must include an @Effect@ , @Action@ and @Principal@ .
+--     * The policy must include an @Effect@ , @Action@ and @Principal@ . 
 --
 --     * @Effect@ must specify @Allow@ .
 --
@@ -586,23 +639,23 @@ _WAFLimitsExceededException =
 --
 --
 _WAFInvalidPermissionPolicyException :: AsError a => Getting (First ServiceError) a ServiceError
-_WAFInvalidPermissionPolicyException =
-  _MatchServiceError waf "WAFInvalidPermissionPolicyException"
-
+_WAFInvalidPermissionPolicyException
+  = _MatchServiceError waf
+      "WAFInvalidPermissionPolicyException"
 
 -- | The operation failed because you tried to create, update, or delete an object by using a change token that has already been used.
 --
 --
 _WAFStaleDataException :: AsError a => Getting (First ServiceError) a ServiceError
-_WAFStaleDataException = _MatchServiceError waf "WAFStaleDataException"
-
+_WAFStaleDataException
+  = _MatchServiceError waf "WAFStaleDataException"
 
 -- | The operation failed because of a system problem, even though the request was valid. Retry your request.
 --
 --
 _WAFInternalErrorException :: AsError a => Getting (First ServiceError) a ServiceError
-_WAFInternalErrorException = _MatchServiceError waf "WAFInternalErrorException"
-
+_WAFInternalErrorException
+  = _MatchServiceError waf "WAFInternalErrorException"
 
 -- | The operation failed because you tried to add an object to or delete an object from another object that doesn't exist. For example:
 --
@@ -618,17 +671,16 @@ _WAFInternalErrorException = _MatchServiceError waf "WAFInternalErrorException"
 --
 --
 _WAFNonexistentContainerException :: AsError a => Getting (First ServiceError) a ServiceError
-_WAFNonexistentContainerException =
-  _MatchServiceError waf "WAFNonexistentContainerException"
-
+_WAFNonexistentContainerException
+  = _MatchServiceError waf
+      "WAFNonexistentContainerException"
 
 -- | The name specified is invalid.
 --
 --
 _WAFDisallowedNameException :: AsError a => Getting (First ServiceError) a ServiceError
-_WAFDisallowedNameException =
-  _MatchServiceError waf "WAFDisallowedNameException"
-
+_WAFDisallowedNameException
+  = _MatchServiceError waf "WAFDisallowedNameException"
 
 -- | The operation failed because you tried to delete an object that isn't empty. For example:
 --
@@ -644,6 +696,5 @@ _WAFDisallowedNameException =
 --
 --
 _WAFNonEmptyEntityException :: AsError a => Getting (First ServiceError) a ServiceError
-_WAFNonEmptyEntityException =
-  _MatchServiceError waf "WAFNonEmptyEntityException"
-
+_WAFNonEmptyEntityException
+  = _MatchServiceError waf "WAFNonEmptyEntityException"

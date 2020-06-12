@@ -40,19 +40,15 @@ module Network.AWS.Lightsail.UpdateDomainEntry
 
 import Network.AWS.Lens
 import Network.AWS.Lightsail.Types
-import Network.AWS.Lightsail.Types.Product
 import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 
 -- | /See:/ 'updateDomainEntry' smart constructor.
-data UpdateDomainEntry =
-  UpdateDomainEntry'
-    { _udeDomainName  :: !Text
-    , _udeDomainEntry :: !DomainEntry
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data UpdateDomainEntry = UpdateDomainEntry'{_udeDomainName
+                                            :: !Text,
+                                            _udeDomainEntry :: !DomainEntry}
+                           deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'UpdateDomainEntry' with the minimum fields required to make a request.
 --
@@ -65,10 +61,9 @@ updateDomainEntry
     :: Text -- ^ 'udeDomainName'
     -> DomainEntry -- ^ 'udeDomainEntry'
     -> UpdateDomainEntry
-updateDomainEntry pDomainName_ pDomainEntry_ =
-  UpdateDomainEntry'
-    {_udeDomainName = pDomainName_, _udeDomainEntry = pDomainEntry_}
-
+updateDomainEntry pDomainName_ pDomainEntry_
+  = UpdateDomainEntry'{_udeDomainName = pDomainName_,
+                       _udeDomainEntry = pDomainEntry_}
 
 -- | The name of the domain recordset to update.
 udeDomainName :: Lens' UpdateDomainEntry Text
@@ -116,13 +111,14 @@ instance ToQuery UpdateDomainEntry where
         toQuery = const mempty
 
 -- | /See:/ 'updateDomainEntryResponse' smart constructor.
-data UpdateDomainEntryResponse =
-  UpdateDomainEntryResponse'
-    { _udersOperations     :: !(Maybe [Operation])
-    , _udersResponseStatus :: !Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data UpdateDomainEntryResponse = UpdateDomainEntryResponse'{_udersOperations
+                                                            ::
+                                                            !(Maybe
+                                                                [Operation]),
+                                                            _udersResponseStatus
+                                                            :: !Int}
+                                   deriving (Eq, Read, Show, Data, Typeable,
+                                             Generic)
 
 -- | Creates a value of 'UpdateDomainEntryResponse' with the minimum fields required to make a request.
 --
@@ -134,10 +130,10 @@ data UpdateDomainEntryResponse =
 updateDomainEntryResponse
     :: Int -- ^ 'udersResponseStatus'
     -> UpdateDomainEntryResponse
-updateDomainEntryResponse pResponseStatus_ =
-  UpdateDomainEntryResponse'
-    {_udersOperations = Nothing, _udersResponseStatus = pResponseStatus_}
-
+updateDomainEntryResponse pResponseStatus_
+  = UpdateDomainEntryResponse'{_udersOperations =
+                                 Nothing,
+                               _udersResponseStatus = pResponseStatus_}
 
 -- | An array of key-value pairs containing information about the request operation.
 udersOperations :: Lens' UpdateDomainEntryResponse [Operation]

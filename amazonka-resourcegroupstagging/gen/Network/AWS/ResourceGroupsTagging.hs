@@ -11,7 +11,7 @@
 -- Stability   : auto-generated
 -- Portability : non-portable (GHC extensions)
 --
--- __Resource Groups Tagging API__
+-- __Resource Groups Tagging API__ 
 --
 -- This guide describes the API operations for the resource groups tagging.
 --
@@ -64,7 +64,7 @@ module Network.AWS.ResourceGroupsTagging
     -- ** GetTagKeys (Paginated)
     , module Network.AWS.ResourceGroupsTagging.GetTagKeys
 
-    -- ** TagResources
+    -- ** TagResources 
     , module Network.AWS.ResourceGroupsTagging.TagResources
 
     -- ** GetTagValues (Paginated)
@@ -73,7 +73,7 @@ module Network.AWS.ResourceGroupsTagging
     -- ** GetResources (Paginated)
     , module Network.AWS.ResourceGroupsTagging.GetResources
 
-    -- ** UntagResources
+    -- ** UntagResources 
     , module Network.AWS.ResourceGroupsTagging.UntagResources
 
     -- * Types

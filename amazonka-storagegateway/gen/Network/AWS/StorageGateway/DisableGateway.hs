@@ -46,19 +46,15 @@ import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 import Network.AWS.StorageGateway.Types
-import Network.AWS.StorageGateway.Types.Product
 
 -- | DisableGatewayInput
 --
 --
 --
 -- /See:/ 'disableGateway' smart constructor.
-newtype DisableGateway =
-  DisableGateway'
-    { _dGatewayARN :: Text
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+newtype DisableGateway = DisableGateway'{_dGatewayARN
+                                         :: Text}
+                           deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'DisableGateway' with the minimum fields required to make a request.
 --
@@ -68,8 +64,8 @@ newtype DisableGateway =
 disableGateway
     :: Text -- ^ 'dGatewayARN'
     -> DisableGateway
-disableGateway pGatewayARN_ = DisableGateway' {_dGatewayARN = pGatewayARN_}
-
+disableGateway pGatewayARN_
+  = DisableGateway'{_dGatewayARN = pGatewayARN_}
 
 -- | Undocumented member.
 dGatewayARN :: Lens' DisableGateway Text
@@ -114,13 +110,12 @@ instance ToQuery DisableGateway where
 --
 --
 -- /See:/ 'disableGatewayResponse' smart constructor.
-data DisableGatewayResponse =
-  DisableGatewayResponse'
-    { _disrsGatewayARN     :: !(Maybe Text)
-    , _disrsResponseStatus :: !Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data DisableGatewayResponse = DisableGatewayResponse'{_disrsGatewayARN
+                                                      :: !(Maybe Text),
+                                                      _disrsResponseStatus ::
+                                                      !Int}
+                                deriving (Eq, Read, Show, Data, Typeable,
+                                          Generic)
 
 -- | Creates a value of 'DisableGatewayResponse' with the minimum fields required to make a request.
 --
@@ -132,10 +127,9 @@ data DisableGatewayResponse =
 disableGatewayResponse
     :: Int -- ^ 'disrsResponseStatus'
     -> DisableGatewayResponse
-disableGatewayResponse pResponseStatus_ =
-  DisableGatewayResponse'
-    {_disrsGatewayARN = Nothing, _disrsResponseStatus = pResponseStatus_}
-
+disableGatewayResponse pResponseStatus_
+  = DisableGatewayResponse'{_disrsGatewayARN = Nothing,
+                            _disrsResponseStatus = pResponseStatus_}
 
 -- | The unique Amazon Resource Name of the disabled gateway.
 disrsGatewayARN :: Lens' DisableGatewayResponse (Maybe Text)

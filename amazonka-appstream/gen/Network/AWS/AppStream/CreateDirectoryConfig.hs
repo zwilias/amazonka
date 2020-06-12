@@ -40,21 +40,20 @@ module Network.AWS.AppStream.CreateDirectoryConfig
     ) where
 
 import Network.AWS.AppStream.Types
-import Network.AWS.AppStream.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 
 -- | /See:/ 'createDirectoryConfig' smart constructor.
-data CreateDirectoryConfig =
-  CreateDirectoryConfig'
-    { _cdcDirectoryName                        :: !Text
-    , _cdcOrganizationalUnitDistinguishedNames :: ![Text]
-    , _cdcServiceAccountCredentials            :: !ServiceAccountCredentials
-    }
-  deriving (Eq, Show, Data, Typeable, Generic)
-
+data CreateDirectoryConfig = CreateDirectoryConfig'{_cdcDirectoryName
+                                                    :: !Text,
+                                                    _cdcOrganizationalUnitDistinguishedNames
+                                                    :: ![Text],
+                                                    _cdcServiceAccountCredentials
+                                                    ::
+                                                    !ServiceAccountCredentials}
+                               deriving (Eq, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'CreateDirectoryConfig' with the minimum fields required to make a request.
 --
@@ -69,13 +68,13 @@ createDirectoryConfig
     :: Text -- ^ 'cdcDirectoryName'
     -> ServiceAccountCredentials -- ^ 'cdcServiceAccountCredentials'
     -> CreateDirectoryConfig
-createDirectoryConfig pDirectoryName_ pServiceAccountCredentials_ =
-  CreateDirectoryConfig'
-    { _cdcDirectoryName = pDirectoryName_
-    , _cdcOrganizationalUnitDistinguishedNames = mempty
-    , _cdcServiceAccountCredentials = pServiceAccountCredentials_
-    }
-
+createDirectoryConfig pDirectoryName_
+  pServiceAccountCredentials_
+  = CreateDirectoryConfig'{_cdcDirectoryName =
+                             pDirectoryName_,
+                           _cdcOrganizationalUnitDistinguishedNames = mempty,
+                           _cdcServiceAccountCredentials =
+                             pServiceAccountCredentials_}
 
 -- | The fully qualified name of the directory (for example, corp.example.com).
 cdcDirectoryName :: Lens' CreateDirectoryConfig Text
@@ -132,13 +131,14 @@ instance ToQuery CreateDirectoryConfig where
         toQuery = const mempty
 
 -- | /See:/ 'createDirectoryConfigResponse' smart constructor.
-data CreateDirectoryConfigResponse =
-  CreateDirectoryConfigResponse'
-    { _cdcrsDirectoryConfig :: !(Maybe DirectoryConfig)
-    , _cdcrsResponseStatus  :: !Int
-    }
-  deriving (Eq, Show, Data, Typeable, Generic)
-
+data CreateDirectoryConfigResponse = CreateDirectoryConfigResponse'{_cdcrsDirectoryConfig
+                                                                    ::
+                                                                    !(Maybe
+                                                                        DirectoryConfig),
+                                                                    _cdcrsResponseStatus
+                                                                    :: !Int}
+                                       deriving (Eq, Show, Data, Typeable,
+                                                 Generic)
 
 -- | Creates a value of 'CreateDirectoryConfigResponse' with the minimum fields required to make a request.
 --
@@ -150,10 +150,10 @@ data CreateDirectoryConfigResponse =
 createDirectoryConfigResponse
     :: Int -- ^ 'cdcrsResponseStatus'
     -> CreateDirectoryConfigResponse
-createDirectoryConfigResponse pResponseStatus_ =
-  CreateDirectoryConfigResponse'
-    {_cdcrsDirectoryConfig = Nothing, _cdcrsResponseStatus = pResponseStatus_}
-
+createDirectoryConfigResponse pResponseStatus_
+  = CreateDirectoryConfigResponse'{_cdcrsDirectoryConfig
+                                     = Nothing,
+                                   _cdcrsResponseStatus = pResponseStatus_}
 
 -- | Information about the directory configuration.
 cdcrsDirectoryConfig :: Lens' CreateDirectoryConfigResponse (Maybe DirectoryConfig)

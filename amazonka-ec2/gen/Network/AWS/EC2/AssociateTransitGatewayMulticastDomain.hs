@@ -43,22 +43,30 @@ module Network.AWS.EC2.AssociateTransitGatewayMulticastDomain
     ) where
 
 import Network.AWS.EC2.Types
-import Network.AWS.EC2.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 
 -- | /See:/ 'associateTransitGatewayMulticastDomain' smart constructor.
-data AssociateTransitGatewayMulticastDomain =
-  AssociateTransitGatewayMulticastDomain'
-    { _atgmdSubnetIds                       :: !(Maybe [Text])
-    , _atgmdTransitGatewayMulticastDomainId :: !(Maybe Text)
-    , _atgmdTransitGatewayAttachmentId      :: !(Maybe Text)
-    , _atgmdDryRun                          :: !(Maybe Bool)
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data AssociateTransitGatewayMulticastDomain = AssociateTransitGatewayMulticastDomain'{_atgmdSubnetIds
+                                                                                      ::
+                                                                                      !(Maybe
+                                                                                          [Text]),
+                                                                                      _atgmdTransitGatewayMulticastDomainId
+                                                                                      ::
+                                                                                      !(Maybe
+                                                                                          Text),
+                                                                                      _atgmdTransitGatewayAttachmentId
+                                                                                      ::
+                                                                                      !(Maybe
+                                                                                          Text),
+                                                                                      _atgmdDryRun
+                                                                                      ::
+                                                                                      !(Maybe
+                                                                                          Bool)}
+                                                deriving (Eq, Read, Show, Data,
+                                                          Typeable, Generic)
 
 -- | Creates a value of 'AssociateTransitGatewayMulticastDomain' with the minimum fields required to make a request.
 --
@@ -73,14 +81,14 @@ data AssociateTransitGatewayMulticastDomain =
 -- * 'atgmdDryRun' - Checks whether you have the required permissions for the action, without actually making the request, and provides an error response. If you have the required permissions, the error response is @DryRunOperation@ . Otherwise, it is @UnauthorizedOperation@ .
 associateTransitGatewayMulticastDomain
     :: AssociateTransitGatewayMulticastDomain
-associateTransitGatewayMulticastDomain =
-  AssociateTransitGatewayMulticastDomain'
-    { _atgmdSubnetIds = Nothing
-    , _atgmdTransitGatewayMulticastDomainId = Nothing
-    , _atgmdTransitGatewayAttachmentId = Nothing
-    , _atgmdDryRun = Nothing
-    }
-
+associateTransitGatewayMulticastDomain
+  = AssociateTransitGatewayMulticastDomain'{_atgmdSubnetIds
+                                              = Nothing,
+                                            _atgmdTransitGatewayMulticastDomainId
+                                              = Nothing,
+                                            _atgmdTransitGatewayAttachmentId =
+                                              Nothing,
+                                            _atgmdDryRun = Nothing}
 
 -- | The IDs of the subnets to associate with the transit gateway multicast domain.
 atgmdSubnetIds :: Lens' AssociateTransitGatewayMulticastDomain [Text]
@@ -146,13 +154,17 @@ instance ToQuery
                "DryRun" =: _atgmdDryRun]
 
 -- | /See:/ 'associateTransitGatewayMulticastDomainResponse' smart constructor.
-data AssociateTransitGatewayMulticastDomainResponse =
-  AssociateTransitGatewayMulticastDomainResponse'
-    { _atgmdrsAssociations :: !(Maybe TransitGatewayMulticastDomainAssociations)
-    , _atgmdrsResponseStatus :: !Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data AssociateTransitGatewayMulticastDomainResponse = AssociateTransitGatewayMulticastDomainResponse'{_atgmdrsAssociations
+                                                                                                      ::
+                                                                                                      !(Maybe
+                                                                                                          TransitGatewayMulticastDomainAssociations),
+                                                                                                      _atgmdrsResponseStatus
+                                                                                                      ::
+                                                                                                      !Int}
+                                                        deriving (Eq, Read,
+                                                                  Show, Data,
+                                                                  Typeable,
+                                                                  Generic)
 
 -- | Creates a value of 'AssociateTransitGatewayMulticastDomainResponse' with the minimum fields required to make a request.
 --
@@ -164,10 +176,12 @@ data AssociateTransitGatewayMulticastDomainResponse =
 associateTransitGatewayMulticastDomainResponse
     :: Int -- ^ 'atgmdrsResponseStatus'
     -> AssociateTransitGatewayMulticastDomainResponse
-associateTransitGatewayMulticastDomainResponse pResponseStatus_ =
-  AssociateTransitGatewayMulticastDomainResponse'
-    {_atgmdrsAssociations = Nothing, _atgmdrsResponseStatus = pResponseStatus_}
-
+associateTransitGatewayMulticastDomainResponse
+  pResponseStatus_
+  = AssociateTransitGatewayMulticastDomainResponse'{_atgmdrsAssociations
+                                                      = Nothing,
+                                                    _atgmdrsResponseStatus =
+                                                      pResponseStatus_}
 
 -- | Information about the transit gateway multicast domain associations.
 atgmdrsAssociations :: Lens' AssociateTransitGatewayMulticastDomainResponse (Maybe TransitGatewayMulticastDomainAssociations)

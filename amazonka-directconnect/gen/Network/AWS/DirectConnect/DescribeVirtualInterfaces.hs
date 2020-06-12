@@ -41,20 +41,18 @@ module Network.AWS.DirectConnect.DescribeVirtualInterfaces
     ) where
 
 import Network.AWS.DirectConnect.Types
-import Network.AWS.DirectConnect.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 
 -- | /See:/ 'describeVirtualInterfaces' smart constructor.
-data DescribeVirtualInterfaces =
-  DescribeVirtualInterfaces'
-    { _dviConnectionId       :: !(Maybe Text)
-    , _dviVirtualInterfaceId :: !(Maybe Text)
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data DescribeVirtualInterfaces = DescribeVirtualInterfaces'{_dviConnectionId
+                                                            :: !(Maybe Text),
+                                                            _dviVirtualInterfaceId
+                                                            :: !(Maybe Text)}
+                                   deriving (Eq, Read, Show, Data, Typeable,
+                                             Generic)
 
 -- | Creates a value of 'DescribeVirtualInterfaces' with the minimum fields required to make a request.
 --
@@ -65,10 +63,10 @@ data DescribeVirtualInterfaces =
 -- * 'dviVirtualInterfaceId' - The ID of the virtual interface.
 describeVirtualInterfaces
     :: DescribeVirtualInterfaces
-describeVirtualInterfaces =
-  DescribeVirtualInterfaces'
-    {_dviConnectionId = Nothing, _dviVirtualInterfaceId = Nothing}
-
+describeVirtualInterfaces
+  = DescribeVirtualInterfaces'{_dviConnectionId =
+                                 Nothing,
+                               _dviVirtualInterfaceId = Nothing}
 
 -- | The ID of the connection.
 dviConnectionId :: Lens' DescribeVirtualInterfaces (Maybe Text)
@@ -118,13 +116,15 @@ instance ToQuery DescribeVirtualInterfaces where
         toQuery = const mempty
 
 -- | /See:/ 'describeVirtualInterfacesResponse' smart constructor.
-data DescribeVirtualInterfacesResponse =
-  DescribeVirtualInterfacesResponse'
-    { _dvisrsVirtualInterfaces :: !(Maybe [VirtualInterface])
-    , _dvisrsResponseStatus    :: !Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data DescribeVirtualInterfacesResponse = DescribeVirtualInterfacesResponse'{_dvisrsVirtualInterfaces
+                                                                            ::
+                                                                            !(Maybe
+                                                                                [VirtualInterface]),
+                                                                            _dvisrsResponseStatus
+                                                                            ::
+                                                                            !Int}
+                                           deriving (Eq, Read, Show, Data,
+                                                     Typeable, Generic)
 
 -- | Creates a value of 'DescribeVirtualInterfacesResponse' with the minimum fields required to make a request.
 --
@@ -136,12 +136,10 @@ data DescribeVirtualInterfacesResponse =
 describeVirtualInterfacesResponse
     :: Int -- ^ 'dvisrsResponseStatus'
     -> DescribeVirtualInterfacesResponse
-describeVirtualInterfacesResponse pResponseStatus_ =
-  DescribeVirtualInterfacesResponse'
-    { _dvisrsVirtualInterfaces = Nothing
-    , _dvisrsResponseStatus = pResponseStatus_
-    }
-
+describeVirtualInterfacesResponse pResponseStatus_
+  = DescribeVirtualInterfacesResponse'{_dvisrsVirtualInterfaces
+                                         = Nothing,
+                                       _dvisrsResponseStatus = pResponseStatus_}
 
 -- | The virtual interfaces
 dvisrsVirtualInterfaces :: Lens' DescribeVirtualInterfacesResponse [VirtualInterface]

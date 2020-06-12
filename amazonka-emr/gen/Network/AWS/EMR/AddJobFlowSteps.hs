@@ -47,44 +47,40 @@ module Network.AWS.EMR.AddJobFlowSteps
     ) where
 
 import Network.AWS.EMR.Types
-import Network.AWS.EMR.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 
--- | The input argument to the 'AddJobFlowSteps' operation.
+-- | The input argument to the 'AddJobFlowSteps' operation. 
 --
 --
 --
 -- /See:/ 'addJobFlowSteps' smart constructor.
-data AddJobFlowSteps =
-  AddJobFlowSteps'
-    { _ajfsJobFlowId :: !Text
-    , _ajfsSteps     :: ![StepConfig]
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data AddJobFlowSteps = AddJobFlowSteps'{_ajfsJobFlowId
+                                        :: !Text,
+                                        _ajfsSteps :: ![StepConfig]}
+                         deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'AddJobFlowSteps' with the minimum fields required to make a request.
 --
 -- Use one of the following lenses to modify other fields as desired:
 --
--- * 'ajfsJobFlowId' - A string that uniquely identifies the job flow. This identifier is returned by 'RunJobFlow' and can also be obtained from 'ListClusters' .
+-- * 'ajfsJobFlowId' - A string that uniquely identifies the job flow. This identifier is returned by 'RunJobFlow' and can also be obtained from 'ListClusters' . 
 --
--- * 'ajfsSteps' - A list of 'StepConfig' to be executed by the job flow.
+-- * 'ajfsSteps' - A list of 'StepConfig' to be executed by the job flow. 
 addJobFlowSteps
     :: Text -- ^ 'ajfsJobFlowId'
     -> AddJobFlowSteps
-addJobFlowSteps pJobFlowId_ =
-  AddJobFlowSteps' {_ajfsJobFlowId = pJobFlowId_, _ajfsSteps = mempty}
+addJobFlowSteps pJobFlowId_
+  = AddJobFlowSteps'{_ajfsJobFlowId = pJobFlowId_,
+                     _ajfsSteps = mempty}
 
-
--- | A string that uniquely identifies the job flow. This identifier is returned by 'RunJobFlow' and can also be obtained from 'ListClusters' .
+-- | A string that uniquely identifies the job flow. This identifier is returned by 'RunJobFlow' and can also be obtained from 'ListClusters' . 
 ajfsJobFlowId :: Lens' AddJobFlowSteps Text
 ajfsJobFlowId = lens _ajfsJobFlowId (\ s a -> s{_ajfsJobFlowId = a})
 
--- | A list of 'StepConfig' to be executed by the job flow.
+-- | A list of 'StepConfig' to be executed by the job flow. 
 ajfsSteps :: Lens' AddJobFlowSteps [StepConfig]
 ajfsSteps = lens _ajfsSteps (\ s a -> s{_ajfsSteps = a}) . _Coerce
 
@@ -123,18 +119,17 @@ instance ToPath AddJobFlowSteps where
 instance ToQuery AddJobFlowSteps where
         toQuery = const mempty
 
--- | The output for the 'AddJobFlowSteps' operation.
+-- | The output for the 'AddJobFlowSteps' operation. 
 --
 --
 --
 -- /See:/ 'addJobFlowStepsResponse' smart constructor.
-data AddJobFlowStepsResponse =
-  AddJobFlowStepsResponse'
-    { _ajfsrsStepIds        :: !(Maybe [Text])
-    , _ajfsrsResponseStatus :: !Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data AddJobFlowStepsResponse = AddJobFlowStepsResponse'{_ajfsrsStepIds
+                                                        :: !(Maybe [Text]),
+                                                        _ajfsrsResponseStatus ::
+                                                        !Int}
+                                 deriving (Eq, Read, Show, Data, Typeable,
+                                           Generic)
 
 -- | Creates a value of 'AddJobFlowStepsResponse' with the minimum fields required to make a request.
 --
@@ -146,10 +141,9 @@ data AddJobFlowStepsResponse =
 addJobFlowStepsResponse
     :: Int -- ^ 'ajfsrsResponseStatus'
     -> AddJobFlowStepsResponse
-addJobFlowStepsResponse pResponseStatus_ =
-  AddJobFlowStepsResponse'
-    {_ajfsrsStepIds = Nothing, _ajfsrsResponseStatus = pResponseStatus_}
-
+addJobFlowStepsResponse pResponseStatus_
+  = AddJobFlowStepsResponse'{_ajfsrsStepIds = Nothing,
+                             _ajfsrsResponseStatus = pResponseStatus_}
 
 -- | The identifiers of the list of steps added to the job flow.
 ajfsrsStepIds :: Lens' AddJobFlowStepsResponse [Text]

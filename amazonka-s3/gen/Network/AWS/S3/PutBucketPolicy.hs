@@ -40,18 +40,14 @@ import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 import Network.AWS.S3.Types
-import Network.AWS.S3.Types.Product
 
 -- | /See:/ 'putBucketPolicy' smart constructor.
-data PutBucketPolicy =
-  PutBucketPolicy'
-    { _pbpConfirmRemoveSelfBucketAccess :: !(Maybe Bool)
-    , _pbpContentMD5                    :: !(Maybe Text)
-    , _pbpBucket                        :: !BucketName
-    , _pbpPolicy                        :: !ByteString
-    }
-  deriving (Eq, Show, Data, Typeable, Generic)
-
+data PutBucketPolicy = PutBucketPolicy'{_pbpConfirmRemoveSelfBucketAccess
+                                        :: !(Maybe Bool),
+                                        _pbpContentMD5 :: !(Maybe Text),
+                                        _pbpBucket :: !BucketName,
+                                        _pbpPolicy :: !ByteString}
+                         deriving (Eq, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'PutBucketPolicy' with the minimum fields required to make a request.
 --
@@ -68,14 +64,11 @@ putBucketPolicy
     :: BucketName -- ^ 'pbpBucket'
     -> ByteString -- ^ 'pbpPolicy'
     -> PutBucketPolicy
-putBucketPolicy pBucket_ pPolicy_ =
-  PutBucketPolicy'
-    { _pbpConfirmRemoveSelfBucketAccess = Nothing
-    , _pbpContentMD5 = Nothing
-    , _pbpBucket = pBucket_
-    , _pbpPolicy = pPolicy_
-    }
-
+putBucketPolicy pBucket_ pPolicy_
+  = PutBucketPolicy'{_pbpConfirmRemoveSelfBucketAccess
+                       = Nothing,
+                     _pbpContentMD5 = Nothing, _pbpBucket = pBucket_,
+                     _pbpPolicy = pPolicy_}
 
 -- | Set this parameter to true to confirm that you want to remove your permissions to change this bucket policy in the future.
 pbpConfirmRemoveSelfBucketAccess :: Lens' PutBucketPolicy (Maybe Bool)
@@ -120,16 +113,14 @@ instance ToQuery PutBucketPolicy where
         toQuery = const (mconcat ["policy"])
 
 -- | /See:/ 'putBucketPolicyResponse' smart constructor.
-data PutBucketPolicyResponse =
-  PutBucketPolicyResponse'
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data PutBucketPolicyResponse = PutBucketPolicyResponse'
+                                 deriving (Eq, Read, Show, Data, Typeable,
+                                           Generic)
 
 -- | Creates a value of 'PutBucketPolicyResponse' with the minimum fields required to make a request.
 --
 putBucketPolicyResponse
     :: PutBucketPolicyResponse
 putBucketPolicyResponse = PutBucketPolicyResponse'
-
 
 instance NFData PutBucketPolicyResponse where

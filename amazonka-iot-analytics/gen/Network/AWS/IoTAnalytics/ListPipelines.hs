@@ -40,20 +40,16 @@ module Network.AWS.IoTAnalytics.ListPipelines
     ) where
 
 import Network.AWS.IoTAnalytics.Types
-import Network.AWS.IoTAnalytics.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 
 -- | /See:/ 'listPipelines' smart constructor.
-data ListPipelines =
-  ListPipelines'
-    { _lpNextToken  :: !(Maybe Text)
-    , _lpMaxResults :: !(Maybe Nat)
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data ListPipelines = ListPipelines'{_lpNextToken ::
+                                    !(Maybe Text),
+                                    _lpMaxResults :: !(Maybe Nat)}
+                       deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'ListPipelines' with the minimum fields required to make a request.
 --
@@ -64,8 +60,9 @@ data ListPipelines =
 -- * 'lpMaxResults' - The maximum number of results to return in this request. The default value is 100.
 listPipelines
     :: ListPipelines
-listPipelines = ListPipelines' {_lpNextToken = Nothing, _lpMaxResults = Nothing}
-
+listPipelines
+  = ListPipelines'{_lpNextToken = Nothing,
+                   _lpMaxResults = Nothing}
 
 -- | The token for the next set of results.
 lpNextToken :: Lens' ListPipelines (Maybe Text)
@@ -103,14 +100,14 @@ instance ToQuery ListPipelines where
                "maxResults" =: _lpMaxResults]
 
 -- | /See:/ 'listPipelinesResponse' smart constructor.
-data ListPipelinesResponse =
-  ListPipelinesResponse'
-    { _lprsPipelineSummaries :: !(Maybe [PipelineSummary])
-    , _lprsNextToken         :: !(Maybe Text)
-    , _lprsResponseStatus    :: !Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data ListPipelinesResponse = ListPipelinesResponse'{_lprsPipelineSummaries
+                                                    ::
+                                                    !(Maybe [PipelineSummary]),
+                                                    _lprsNextToken ::
+                                                    !(Maybe Text),
+                                                    _lprsResponseStatus :: !Int}
+                               deriving (Eq, Read, Show, Data, Typeable,
+                                         Generic)
 
 -- | Creates a value of 'ListPipelinesResponse' with the minimum fields required to make a request.
 --
@@ -124,13 +121,11 @@ data ListPipelinesResponse =
 listPipelinesResponse
     :: Int -- ^ 'lprsResponseStatus'
     -> ListPipelinesResponse
-listPipelinesResponse pResponseStatus_ =
-  ListPipelinesResponse'
-    { _lprsPipelineSummaries = Nothing
-    , _lprsNextToken = Nothing
-    , _lprsResponseStatus = pResponseStatus_
-    }
-
+listPipelinesResponse pResponseStatus_
+  = ListPipelinesResponse'{_lprsPipelineSummaries =
+                             Nothing,
+                           _lprsNextToken = Nothing,
+                           _lprsResponseStatus = pResponseStatus_}
 
 -- | A list of "PipelineSummary" objects.
 lprsPipelineSummaries :: Lens' ListPipelinesResponse [PipelineSummary]

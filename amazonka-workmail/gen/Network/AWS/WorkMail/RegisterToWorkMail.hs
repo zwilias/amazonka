@@ -43,17 +43,13 @@ import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 import Network.AWS.WorkMail.Types
-import Network.AWS.WorkMail.Types.Product
 
 -- | /See:/ 'registerToWorkMail' smart constructor.
-data RegisterToWorkMail =
-  RegisterToWorkMail'
-    { _rtwmOrganizationId :: !Text
-    , _rtwmEntityId       :: !Text
-    , _rtwmEmail          :: !Text
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data RegisterToWorkMail = RegisterToWorkMail'{_rtwmOrganizationId
+                                              :: !Text,
+                                              _rtwmEntityId :: !Text,
+                                              _rtwmEmail :: !Text}
+                            deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'RegisterToWorkMail' with the minimum fields required to make a request.
 --
@@ -69,13 +65,11 @@ registerToWorkMail
     -> Text -- ^ 'rtwmEntityId'
     -> Text -- ^ 'rtwmEmail'
     -> RegisterToWorkMail
-registerToWorkMail pOrganizationId_ pEntityId_ pEmail_ =
-  RegisterToWorkMail'
-    { _rtwmOrganizationId = pOrganizationId_
-    , _rtwmEntityId = pEntityId_
-    , _rtwmEmail = pEmail_
-    }
-
+registerToWorkMail pOrganizationId_ pEntityId_
+  pEmail_
+  = RegisterToWorkMail'{_rtwmOrganizationId =
+                          pOrganizationId_,
+                        _rtwmEntityId = pEntityId_, _rtwmEmail = pEmail_}
 
 -- | The identifier for the organization under which the Amazon WorkMail entity exists.
 rtwmOrganizationId :: Lens' RegisterToWorkMail Text
@@ -126,12 +120,10 @@ instance ToQuery RegisterToWorkMail where
         toQuery = const mempty
 
 -- | /See:/ 'registerToWorkMailResponse' smart constructor.
-newtype RegisterToWorkMailResponse =
-  RegisterToWorkMailResponse'
-    { _rtwmrsResponseStatus :: Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+newtype RegisterToWorkMailResponse = RegisterToWorkMailResponse'{_rtwmrsResponseStatus
+                                                                 :: Int}
+                                       deriving (Eq, Read, Show, Data, Typeable,
+                                                 Generic)
 
 -- | Creates a value of 'RegisterToWorkMailResponse' with the minimum fields required to make a request.
 --
@@ -141,9 +133,9 @@ newtype RegisterToWorkMailResponse =
 registerToWorkMailResponse
     :: Int -- ^ 'rtwmrsResponseStatus'
     -> RegisterToWorkMailResponse
-registerToWorkMailResponse pResponseStatus_ =
-  RegisterToWorkMailResponse' {_rtwmrsResponseStatus = pResponseStatus_}
-
+registerToWorkMailResponse pResponseStatus_
+  = RegisterToWorkMailResponse'{_rtwmrsResponseStatus =
+                                  pResponseStatus_}
 
 -- | -- | The response status code.
 rtwmrsResponseStatus :: Lens' RegisterToWorkMailResponse Int

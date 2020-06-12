@@ -42,7 +42,6 @@ module Network.AWS.CodePipeline.ListActionTypes
     ) where
 
 import Network.AWS.CodePipeline.Types
-import Network.AWS.CodePipeline.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Pager
 import Network.AWS.Prelude
@@ -54,13 +53,10 @@ import Network.AWS.Response
 --
 --
 -- /See:/ 'listActionTypes' smart constructor.
-data ListActionTypes =
-  ListActionTypes'
-    { _latActionOwnerFilter :: !(Maybe ActionOwner)
-    , _latNextToken         :: !(Maybe Text)
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data ListActionTypes = ListActionTypes'{_latActionOwnerFilter
+                                        :: !(Maybe ActionOwner),
+                                        _latNextToken :: !(Maybe Text)}
+                         deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'ListActionTypes' with the minimum fields required to make a request.
 --
@@ -71,9 +67,9 @@ data ListActionTypes =
 -- * 'latNextToken' - An identifier that was returned from the previous list action types call, which can be used to return the next set of action types in the list.
 listActionTypes
     :: ListActionTypes
-listActionTypes =
-  ListActionTypes' {_latActionOwnerFilter = Nothing, _latNextToken = Nothing}
-
+listActionTypes
+  = ListActionTypes'{_latActionOwnerFilter = Nothing,
+                     _latNextToken = Nothing}
 
 -- | Filters the list of action types to those created by a specified entity.
 latActionOwnerFilter :: Lens' ListActionTypes (Maybe ActionOwner)
@@ -132,14 +128,14 @@ instance ToQuery ListActionTypes where
 --
 --
 -- /See:/ 'listActionTypesResponse' smart constructor.
-data ListActionTypesResponse =
-  ListActionTypesResponse'
-    { _latrsNextToken      :: !(Maybe Text)
-    , _latrsResponseStatus :: !Int
-    , _latrsActionTypes    :: ![ActionType]
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data ListActionTypesResponse = ListActionTypesResponse'{_latrsNextToken
+                                                        :: !(Maybe Text),
+                                                        _latrsResponseStatus ::
+                                                        !Int,
+                                                        _latrsActionTypes ::
+                                                        ![ActionType]}
+                                 deriving (Eq, Read, Show, Data, Typeable,
+                                           Generic)
 
 -- | Creates a value of 'ListActionTypesResponse' with the minimum fields required to make a request.
 --
@@ -153,13 +149,10 @@ data ListActionTypesResponse =
 listActionTypesResponse
     :: Int -- ^ 'latrsResponseStatus'
     -> ListActionTypesResponse
-listActionTypesResponse pResponseStatus_ =
-  ListActionTypesResponse'
-    { _latrsNextToken = Nothing
-    , _latrsResponseStatus = pResponseStatus_
-    , _latrsActionTypes = mempty
-    }
-
+listActionTypesResponse pResponseStatus_
+  = ListActionTypesResponse'{_latrsNextToken = Nothing,
+                             _latrsResponseStatus = pResponseStatus_,
+                             _latrsActionTypes = mempty}
 
 -- | If the amount of returned information is significantly large, an identifier is also returned. It can be used in a subsequent list action types call to return the next set of action types in the list.
 latrsNextToken :: Lens' ListActionTypesResponse (Maybe Text)

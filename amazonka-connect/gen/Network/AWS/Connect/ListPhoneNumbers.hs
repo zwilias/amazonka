@@ -45,7 +45,6 @@ module Network.AWS.Connect.ListPhoneNumbers
     ) where
 
 import Network.AWS.Connect.Types
-import Network.AWS.Connect.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Pager
 import Network.AWS.Prelude
@@ -53,16 +52,14 @@ import Network.AWS.Request
 import Network.AWS.Response
 
 -- | /See:/ 'listPhoneNumbers' smart constructor.
-data ListPhoneNumbers =
-  ListPhoneNumbers'
-    { _lpnPhoneNumberTypes        :: !(Maybe [PhoneNumberType])
-    , _lpnPhoneNumberCountryCodes :: !(Maybe [PhoneNumberCountryCode])
-    , _lpnNextToken               :: !(Maybe Text)
-    , _lpnMaxResults              :: !(Maybe Nat)
-    , _lpnInstanceId              :: !Text
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data ListPhoneNumbers = ListPhoneNumbers'{_lpnPhoneNumberTypes
+                                          :: !(Maybe [PhoneNumberType]),
+                                          _lpnPhoneNumberCountryCodes ::
+                                          !(Maybe [PhoneNumberCountryCode]),
+                                          _lpnNextToken :: !(Maybe Text),
+                                          _lpnMaxResults :: !(Maybe Nat),
+                                          _lpnInstanceId :: !Text}
+                          deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'ListPhoneNumbers' with the minimum fields required to make a request.
 --
@@ -80,15 +77,11 @@ data ListPhoneNumbers =
 listPhoneNumbers
     :: Text -- ^ 'lpnInstanceId'
     -> ListPhoneNumbers
-listPhoneNumbers pInstanceId_ =
-  ListPhoneNumbers'
-    { _lpnPhoneNumberTypes = Nothing
-    , _lpnPhoneNumberCountryCodes = Nothing
-    , _lpnNextToken = Nothing
-    , _lpnMaxResults = Nothing
-    , _lpnInstanceId = pInstanceId_
-    }
-
+listPhoneNumbers pInstanceId_
+  = ListPhoneNumbers'{_lpnPhoneNumberTypes = Nothing,
+                      _lpnPhoneNumberCountryCodes = Nothing,
+                      _lpnNextToken = Nothing, _lpnMaxResults = Nothing,
+                      _lpnInstanceId = pInstanceId_}
 
 -- | The type of phone number.
 lpnPhoneNumberTypes :: Lens' ListPhoneNumbers [PhoneNumberType]
@@ -158,14 +151,16 @@ instance ToQuery ListPhoneNumbers where
                "maxResults" =: _lpnMaxResults]
 
 -- | /See:/ 'listPhoneNumbersResponse' smart constructor.
-data ListPhoneNumbersResponse =
-  ListPhoneNumbersResponse'
-    { _lpnrsPhoneNumberSummaryList :: !(Maybe [PhoneNumberSummary])
-    , _lpnrsNextToken              :: !(Maybe Text)
-    , _lpnrsResponseStatus         :: !Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data ListPhoneNumbersResponse = ListPhoneNumbersResponse'{_lpnrsPhoneNumberSummaryList
+                                                          ::
+                                                          !(Maybe
+                                                              [PhoneNumberSummary]),
+                                                          _lpnrsNextToken ::
+                                                          !(Maybe Text),
+                                                          _lpnrsResponseStatus
+                                                          :: !Int}
+                                  deriving (Eq, Read, Show, Data, Typeable,
+                                            Generic)
 
 -- | Creates a value of 'ListPhoneNumbersResponse' with the minimum fields required to make a request.
 --
@@ -179,13 +174,11 @@ data ListPhoneNumbersResponse =
 listPhoneNumbersResponse
     :: Int -- ^ 'lpnrsResponseStatus'
     -> ListPhoneNumbersResponse
-listPhoneNumbersResponse pResponseStatus_ =
-  ListPhoneNumbersResponse'
-    { _lpnrsPhoneNumberSummaryList = Nothing
-    , _lpnrsNextToken = Nothing
-    , _lpnrsResponseStatus = pResponseStatus_
-    }
-
+listPhoneNumbersResponse pResponseStatus_
+  = ListPhoneNumbersResponse'{_lpnrsPhoneNumberSummaryList
+                                = Nothing,
+                              _lpnrsNextToken = Nothing,
+                              _lpnrsResponseStatus = pResponseStatus_}
 
 -- | Information about the phone numbers.
 lpnrsPhoneNumberSummaryList :: Lens' ListPhoneNumbersResponse [PhoneNumberSummary]

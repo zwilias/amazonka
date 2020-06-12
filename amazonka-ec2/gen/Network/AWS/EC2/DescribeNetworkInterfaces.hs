@@ -45,7 +45,6 @@ module Network.AWS.EC2.DescribeNetworkInterfaces
     ) where
 
 import Network.AWS.EC2.Types
-import Network.AWS.EC2.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Pager
 import Network.AWS.Prelude
@@ -57,16 +56,18 @@ import Network.AWS.Response
 --
 --
 -- /See:/ 'describeNetworkInterfaces' smart constructor.
-data DescribeNetworkInterfaces =
-  DescribeNetworkInterfaces'
-    { _dnisNetworkInterfaceIds :: !(Maybe [Text])
-    , _dnisFilters             :: !(Maybe [Filter])
-    , _dnisNextToken           :: !(Maybe Text)
-    , _dnisDryRun              :: !(Maybe Bool)
-    , _dnisMaxResults          :: !(Maybe Nat)
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data DescribeNetworkInterfaces = DescribeNetworkInterfaces'{_dnisNetworkInterfaceIds
+                                                            :: !(Maybe [Text]),
+                                                            _dnisFilters ::
+                                                            !(Maybe [Filter]),
+                                                            _dnisNextToken ::
+                                                            !(Maybe Text),
+                                                            _dnisDryRun ::
+                                                            !(Maybe Bool),
+                                                            _dnisMaxResults ::
+                                                            !(Maybe Nat)}
+                                   deriving (Eq, Read, Show, Data, Typeable,
+                                             Generic)
 
 -- | Creates a value of 'DescribeNetworkInterfaces' with the minimum fields required to make a request.
 --
@@ -83,15 +84,11 @@ data DescribeNetworkInterfaces =
 -- * 'dnisMaxResults' - The maximum number of items to return for this request. The request returns a token that you can specify in a subsequent call to get the next set of results. You cannot specify this parameter and the network interface IDs parameter in the same request.
 describeNetworkInterfaces
     :: DescribeNetworkInterfaces
-describeNetworkInterfaces =
-  DescribeNetworkInterfaces'
-    { _dnisNetworkInterfaceIds = Nothing
-    , _dnisFilters = Nothing
-    , _dnisNextToken = Nothing
-    , _dnisDryRun = Nothing
-    , _dnisMaxResults = Nothing
-    }
-
+describeNetworkInterfaces
+  = DescribeNetworkInterfaces'{_dnisNetworkInterfaceIds
+                                 = Nothing,
+                               _dnisFilters = Nothing, _dnisNextToken = Nothing,
+                               _dnisDryRun = Nothing, _dnisMaxResults = Nothing}
 
 -- | One or more network interface IDs. Default: Describes all your network interfaces.
 dnisNetworkInterfaceIds :: Lens' DescribeNetworkInterfaces [Text]
@@ -162,14 +159,19 @@ instance ToQuery DescribeNetworkInterfaces where
 --
 --
 -- /See:/ 'describeNetworkInterfacesResponse' smart constructor.
-data DescribeNetworkInterfacesResponse =
-  DescribeNetworkInterfacesResponse'
-    { _dnirsNetworkInterfaces :: !(Maybe [NetworkInterface])
-    , _dnirsNextToken         :: !(Maybe Text)
-    , _dnirsResponseStatus    :: !Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data DescribeNetworkInterfacesResponse = DescribeNetworkInterfacesResponse'{_dnirsNetworkInterfaces
+                                                                            ::
+                                                                            !(Maybe
+                                                                                [NetworkInterface]),
+                                                                            _dnirsNextToken
+                                                                            ::
+                                                                            !(Maybe
+                                                                                Text),
+                                                                            _dnirsResponseStatus
+                                                                            ::
+                                                                            !Int}
+                                           deriving (Eq, Read, Show, Data,
+                                                     Typeable, Generic)
 
 -- | Creates a value of 'DescribeNetworkInterfacesResponse' with the minimum fields required to make a request.
 --
@@ -183,13 +185,11 @@ data DescribeNetworkInterfacesResponse =
 describeNetworkInterfacesResponse
     :: Int -- ^ 'dnirsResponseStatus'
     -> DescribeNetworkInterfacesResponse
-describeNetworkInterfacesResponse pResponseStatus_ =
-  DescribeNetworkInterfacesResponse'
-    { _dnirsNetworkInterfaces = Nothing
-    , _dnirsNextToken = Nothing
-    , _dnirsResponseStatus = pResponseStatus_
-    }
-
+describeNetworkInterfacesResponse pResponseStatus_
+  = DescribeNetworkInterfacesResponse'{_dnirsNetworkInterfaces
+                                         = Nothing,
+                                       _dnirsNextToken = Nothing,
+                                       _dnirsResponseStatus = pResponseStatus_}
 
 -- | Information about one or more network interfaces.
 dnirsNetworkInterfaces :: Lens' DescribeNetworkInterfacesResponse [NetworkInterface]

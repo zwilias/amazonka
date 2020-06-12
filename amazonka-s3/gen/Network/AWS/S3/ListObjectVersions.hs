@@ -61,21 +61,19 @@ import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 import Network.AWS.S3.Types
-import Network.AWS.S3.Types.Product
 
 -- | /See:/ 'listObjectVersions' smart constructor.
-data ListObjectVersions =
-  ListObjectVersions'
-    { _lKeyMarker       :: !(Maybe Text)
-    , _lPrefix          :: !(Maybe Text)
-    , _lEncodingType    :: !(Maybe EncodingType)
-    , _lVersionIdMarker :: !(Maybe Text)
-    , _lMaxKeys         :: !(Maybe Int)
-    , _lDelimiter       :: !(Maybe Delimiter)
-    , _lBucket          :: !BucketName
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data ListObjectVersions = ListObjectVersions'{_lKeyMarker
+                                              :: !(Maybe Text),
+                                              _lPrefix :: !(Maybe Text),
+                                              _lEncodingType ::
+                                              !(Maybe EncodingType),
+                                              _lVersionIdMarker ::
+                                              !(Maybe Text),
+                                              _lMaxKeys :: !(Maybe Int),
+                                              _lDelimiter :: !(Maybe Delimiter),
+                                              _lBucket :: !BucketName}
+                            deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'ListObjectVersions' with the minimum fields required to make a request.
 --
@@ -97,17 +95,11 @@ data ListObjectVersions =
 listObjectVersions
     :: BucketName -- ^ 'lBucket'
     -> ListObjectVersions
-listObjectVersions pBucket_ =
-  ListObjectVersions'
-    { _lKeyMarker = Nothing
-    , _lPrefix = Nothing
-    , _lEncodingType = Nothing
-    , _lVersionIdMarker = Nothing
-    , _lMaxKeys = Nothing
-    , _lDelimiter = Nothing
-    , _lBucket = pBucket_
-    }
-
+listObjectVersions pBucket_
+  = ListObjectVersions'{_lKeyMarker = Nothing,
+                        _lPrefix = Nothing, _lEncodingType = Nothing,
+                        _lVersionIdMarker = Nothing, _lMaxKeys = Nothing,
+                        _lDelimiter = Nothing, _lBucket = pBucket_}
 
 -- | Specifies the key to start with when listing objects in a bucket.
 lKeyMarker :: Lens' ListObjectVersions (Maybe Text)
@@ -190,25 +182,45 @@ instance ToQuery ListObjectVersions where
                "versions"]
 
 -- | /See:/ 'listObjectVersionsResponse' smart constructor.
-data ListObjectVersionsResponse =
-  ListObjectVersionsResponse'
-    { _lrsNextVersionIdMarker :: !(Maybe Text)
-    , _lrsKeyMarker           :: !(Maybe Text)
-    , _lrsDeleteMarkers       :: !(Maybe [DeleteMarkerEntry])
-    , _lrsPrefix              :: !(Maybe Text)
-    , _lrsCommonPrefixes      :: !(Maybe [CommonPrefix])
-    , _lrsEncodingType        :: !(Maybe EncodingType)
-    , _lrsVersions            :: !(Maybe [ObjectVersion])
-    , _lrsName                :: !(Maybe BucketName)
-    , _lrsNextKeyMarker       :: !(Maybe Text)
-    , _lrsVersionIdMarker     :: !(Maybe Text)
-    , _lrsMaxKeys             :: !(Maybe Int)
-    , _lrsIsTruncated         :: !(Maybe Bool)
-    , _lrsDelimiter           :: !(Maybe Delimiter)
-    , _lrsResponseStatus      :: !Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data ListObjectVersionsResponse = ListObjectVersionsResponse'{_lrsNextVersionIdMarker
+                                                              :: !(Maybe Text),
+                                                              _lrsKeyMarker ::
+                                                              !(Maybe Text),
+                                                              _lrsDeleteMarkers
+                                                              ::
+                                                              !(Maybe
+                                                                  [DeleteMarkerEntry]),
+                                                              _lrsPrefix ::
+                                                              !(Maybe Text),
+                                                              _lrsCommonPrefixes
+                                                              ::
+                                                              !(Maybe
+                                                                  [CommonPrefix]),
+                                                              _lrsEncodingType
+                                                              ::
+                                                              !(Maybe
+                                                                  EncodingType),
+                                                              _lrsVersions ::
+                                                              !(Maybe
+                                                                  [ObjectVersion]),
+                                                              _lrsName ::
+                                                              !(Maybe
+                                                                  BucketName),
+                                                              _lrsNextKeyMarker
+                                                              :: !(Maybe Text),
+                                                              _lrsVersionIdMarker
+                                                              :: !(Maybe Text),
+                                                              _lrsMaxKeys ::
+                                                              !(Maybe Int),
+                                                              _lrsIsTruncated ::
+                                                              !(Maybe Bool),
+                                                              _lrsDelimiter ::
+                                                              !(Maybe
+                                                                  Delimiter),
+                                                              _lrsResponseStatus
+                                                              :: !Int}
+                                    deriving (Eq, Read, Show, Data, Typeable,
+                                              Generic)
 
 -- | Creates a value of 'ListObjectVersionsResponse' with the minimum fields required to make a request.
 --
@@ -244,24 +256,21 @@ data ListObjectVersionsResponse =
 listObjectVersionsResponse
     :: Int -- ^ 'lrsResponseStatus'
     -> ListObjectVersionsResponse
-listObjectVersionsResponse pResponseStatus_ =
-  ListObjectVersionsResponse'
-    { _lrsNextVersionIdMarker = Nothing
-    , _lrsKeyMarker = Nothing
-    , _lrsDeleteMarkers = Nothing
-    , _lrsPrefix = Nothing
-    , _lrsCommonPrefixes = Nothing
-    , _lrsEncodingType = Nothing
-    , _lrsVersions = Nothing
-    , _lrsName = Nothing
-    , _lrsNextKeyMarker = Nothing
-    , _lrsVersionIdMarker = Nothing
-    , _lrsMaxKeys = Nothing
-    , _lrsIsTruncated = Nothing
-    , _lrsDelimiter = Nothing
-    , _lrsResponseStatus = pResponseStatus_
-    }
-
+listObjectVersionsResponse pResponseStatus_
+  = ListObjectVersionsResponse'{_lrsNextVersionIdMarker
+                                  = Nothing,
+                                _lrsKeyMarker = Nothing,
+                                _lrsDeleteMarkers = Nothing,
+                                _lrsPrefix = Nothing,
+                                _lrsCommonPrefixes = Nothing,
+                                _lrsEncodingType = Nothing,
+                                _lrsVersions = Nothing, _lrsName = Nothing,
+                                _lrsNextKeyMarker = Nothing,
+                                _lrsVersionIdMarker = Nothing,
+                                _lrsMaxKeys = Nothing,
+                                _lrsIsTruncated = Nothing,
+                                _lrsDelimiter = Nothing,
+                                _lrsResponseStatus = pResponseStatus_}
 
 -- | Use this value for the next version id marker parameter in a subsequent request.
 lrsNextVersionIdMarker :: Lens' ListObjectVersionsResponse (Maybe Text)

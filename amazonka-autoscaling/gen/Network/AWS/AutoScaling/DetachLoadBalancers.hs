@@ -42,20 +42,16 @@ module Network.AWS.AutoScaling.DetachLoadBalancers
     ) where
 
 import Network.AWS.AutoScaling.Types
-import Network.AWS.AutoScaling.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 
 -- | /See:/ 'detachLoadBalancers' smart constructor.
-data DetachLoadBalancers =
-  DetachLoadBalancers'
-    { _dAutoScalingGroupName :: !Text
-    , _dLoadBalancerNames    :: ![Text]
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data DetachLoadBalancers = DetachLoadBalancers'{_dAutoScalingGroupName
+                                                :: !Text,
+                                                _dLoadBalancerNames :: ![Text]}
+                             deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'DetachLoadBalancers' with the minimum fields required to make a request.
 --
@@ -67,12 +63,10 @@ data DetachLoadBalancers =
 detachLoadBalancers
     :: Text -- ^ 'dAutoScalingGroupName'
     -> DetachLoadBalancers
-detachLoadBalancers pAutoScalingGroupName_ =
-  DetachLoadBalancers'
-    { _dAutoScalingGroupName = pAutoScalingGroupName_
-    , _dLoadBalancerNames = mempty
-    }
-
+detachLoadBalancers pAutoScalingGroupName_
+  = DetachLoadBalancers'{_dAutoScalingGroupName =
+                           pAutoScalingGroupName_,
+                         _dLoadBalancerNames = mempty}
 
 -- | The name of the Auto Scaling group.
 dAutoScalingGroupName :: Lens' DetachLoadBalancers Text
@@ -111,12 +105,10 @@ instance ToQuery DetachLoadBalancers where
                  toQueryList "member" _dLoadBalancerNames]
 
 -- | /See:/ 'detachLoadBalancersResponse' smart constructor.
-newtype DetachLoadBalancersResponse =
-  DetachLoadBalancersResponse'
-    { _dlbsrsResponseStatus :: Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+newtype DetachLoadBalancersResponse = DetachLoadBalancersResponse'{_dlbsrsResponseStatus
+                                                                   :: Int}
+                                        deriving (Eq, Read, Show, Data,
+                                                  Typeable, Generic)
 
 -- | Creates a value of 'DetachLoadBalancersResponse' with the minimum fields required to make a request.
 --
@@ -126,9 +118,9 @@ newtype DetachLoadBalancersResponse =
 detachLoadBalancersResponse
     :: Int -- ^ 'dlbsrsResponseStatus'
     -> DetachLoadBalancersResponse
-detachLoadBalancersResponse pResponseStatus_ =
-  DetachLoadBalancersResponse' {_dlbsrsResponseStatus = pResponseStatus_}
-
+detachLoadBalancersResponse pResponseStatus_
+  = DetachLoadBalancersResponse'{_dlbsrsResponseStatus
+                                   = pResponseStatus_}
 
 -- | -- | The response status code.
 dlbsrsResponseStatus :: Lens' DetachLoadBalancersResponse Int

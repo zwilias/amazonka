@@ -43,7 +43,6 @@ module Network.AWS.Glue.GetTriggers
     ) where
 
 import Network.AWS.Glue.Types
-import Network.AWS.Glue.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Pager
 import Network.AWS.Prelude
@@ -51,14 +50,11 @@ import Network.AWS.Request
 import Network.AWS.Response
 
 -- | /See:/ 'getTriggers' smart constructor.
-data GetTriggers =
-  GetTriggers'
-    { _gtsNextToken        :: !(Maybe Text)
-    , _gtsMaxResults       :: !(Maybe Nat)
-    , _gtsDependentJobName :: !(Maybe Text)
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data GetTriggers = GetTriggers'{_gtsNextToken ::
+                                !(Maybe Text),
+                                _gtsMaxResults :: !(Maybe Nat),
+                                _gtsDependentJobName :: !(Maybe Text)}
+                     deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'GetTriggers' with the minimum fields required to make a request.
 --
@@ -71,13 +67,10 @@ data GetTriggers =
 -- * 'gtsDependentJobName' - The name of the job for which to retrieve triggers. The trigger that can start this job will be returned, and if there is no such trigger, all triggers will be returned.
 getTriggers
     :: GetTriggers
-getTriggers =
-  GetTriggers'
-    { _gtsNextToken = Nothing
-    , _gtsMaxResults = Nothing
-    , _gtsDependentJobName = Nothing
-    }
-
+getTriggers
+  = GetTriggers'{_gtsNextToken = Nothing,
+                 _gtsMaxResults = Nothing,
+                 _gtsDependentJobName = Nothing}
 
 -- | A continuation token, if this is a continuation call.
 gtsNextToken :: Lens' GetTriggers (Maybe Text)
@@ -136,14 +129,12 @@ instance ToQuery GetTriggers where
         toQuery = const mempty
 
 -- | /See:/ 'getTriggersResponse' smart constructor.
-data GetTriggersResponse =
-  GetTriggersResponse'
-    { _gttrsTriggers       :: !(Maybe [Trigger])
-    , _gttrsNextToken      :: !(Maybe Text)
-    , _gttrsResponseStatus :: !Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data GetTriggersResponse = GetTriggersResponse'{_gttrsTriggers
+                                                :: !(Maybe [Trigger]),
+                                                _gttrsNextToken ::
+                                                !(Maybe Text),
+                                                _gttrsResponseStatus :: !Int}
+                             deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'GetTriggersResponse' with the minimum fields required to make a request.
 --
@@ -157,13 +148,10 @@ data GetTriggersResponse =
 getTriggersResponse
     :: Int -- ^ 'gttrsResponseStatus'
     -> GetTriggersResponse
-getTriggersResponse pResponseStatus_ =
-  GetTriggersResponse'
-    { _gttrsTriggers = Nothing
-    , _gttrsNextToken = Nothing
-    , _gttrsResponseStatus = pResponseStatus_
-    }
-
+getTriggersResponse pResponseStatus_
+  = GetTriggersResponse'{_gttrsTriggers = Nothing,
+                         _gttrsNextToken = Nothing,
+                         _gttrsResponseStatus = pResponseStatus_}
 
 -- | A list of triggers for the specified job.
 gttrsTriggers :: Lens' GetTriggersResponse [Trigger]

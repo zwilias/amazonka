@@ -80,8 +80,35 @@ library
         , Network.AWS.CloudWatchEvents.Waiters
 
     other-modules:
-          Network.AWS.CloudWatchEvents.Types.Product
-        , Network.AWS.CloudWatchEvents.Types.Sum
+          Network.AWS.CloudWatchEvents.Types.AWSVPCConfiguration
+        , Network.AWS.CloudWatchEvents.Types.AssignPublicIP
+        , Network.AWS.CloudWatchEvents.Types.BatchArrayProperties
+        , Network.AWS.CloudWatchEvents.Types.BatchParameters
+        , Network.AWS.CloudWatchEvents.Types.BatchRetryStrategy
+        , Network.AWS.CloudWatchEvents.Types.Condition
+        , Network.AWS.CloudWatchEvents.Types.EcsParameters
+        , Network.AWS.CloudWatchEvents.Types.EventBus
+        , Network.AWS.CloudWatchEvents.Types.EventSource
+        , Network.AWS.CloudWatchEvents.Types.EventSourceState
+        , Network.AWS.CloudWatchEvents.Types.InputTransformer
+        , Network.AWS.CloudWatchEvents.Types.KinesisParameters
+        , Network.AWS.CloudWatchEvents.Types.LaunchType
+        , Network.AWS.CloudWatchEvents.Types.NetworkConfiguration
+        , Network.AWS.CloudWatchEvents.Types.PartnerEventSource
+        , Network.AWS.CloudWatchEvents.Types.PartnerEventSourceAccount
+        , Network.AWS.CloudWatchEvents.Types.PutEventsRequestEntry
+        , Network.AWS.CloudWatchEvents.Types.PutEventsResultEntry
+        , Network.AWS.CloudWatchEvents.Types.PutPartnerEventsRequestEntry
+        , Network.AWS.CloudWatchEvents.Types.PutPartnerEventsResultEntry
+        , Network.AWS.CloudWatchEvents.Types.PutTargetsResultEntry
+        , Network.AWS.CloudWatchEvents.Types.RemoveTargetsResultEntry
+        , Network.AWS.CloudWatchEvents.Types.Rule
+        , Network.AWS.CloudWatchEvents.Types.RuleState
+        , Network.AWS.CloudWatchEvents.Types.RunCommandParameters
+        , Network.AWS.CloudWatchEvents.Types.RunCommandTarget
+        , Network.AWS.CloudWatchEvents.Types.SqsParameters
+        , Network.AWS.CloudWatchEvents.Types.Tag
+        , Network.AWS.CloudWatchEvents.Types.Target
 
     build-depends:
           amazonka-core == 1.6.1.*

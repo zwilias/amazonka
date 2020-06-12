@@ -39,20 +39,20 @@ module Network.AWS.Config.DeleteRemediationExceptions
     ) where
 
 import Network.AWS.Config.Types
-import Network.AWS.Config.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 
 -- | /See:/ 'deleteRemediationExceptions' smart constructor.
-data DeleteRemediationExceptions =
-  DeleteRemediationExceptions'
-    { _dConfigRuleName :: !Text
-    , _dResourceKeys   :: !(List1 RemediationExceptionResourceKey)
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data DeleteRemediationExceptions = DeleteRemediationExceptions'{_dConfigRuleName
+                                                                :: !Text,
+                                                                _dResourceKeys
+                                                                ::
+                                                                !(List1
+                                                                    RemediationExceptionResourceKey)}
+                                     deriving (Eq, Read, Show, Data, Typeable,
+                                               Generic)
 
 -- | Creates a value of 'DeleteRemediationExceptions' with the minimum fields required to make a request.
 --
@@ -60,23 +60,22 @@ data DeleteRemediationExceptions =
 --
 -- * 'dConfigRuleName' - The name of the AWS Config rule for which you want to delete remediation exception configuration.
 --
--- * 'dResourceKeys' - An exception list of resource exception keys to be processed with the current request. AWS Config adds exception for each resource key. For example, AWS Config adds 3 exceptions for 3 resource keys.
+-- * 'dResourceKeys' - An exception list of resource exception keys to be processed with the current request. AWS Config adds exception for each resource key. For example, AWS Config adds 3 exceptions for 3 resource keys. 
 deleteRemediationExceptions
     :: Text -- ^ 'dConfigRuleName'
     -> NonEmpty RemediationExceptionResourceKey -- ^ 'dResourceKeys'
     -> DeleteRemediationExceptions
-deleteRemediationExceptions pConfigRuleName_ pResourceKeys_ =
-  DeleteRemediationExceptions'
-    { _dConfigRuleName = pConfigRuleName_
-    , _dResourceKeys = _List1 # pResourceKeys_
-    }
-
+deleteRemediationExceptions pConfigRuleName_
+  pResourceKeys_
+  = DeleteRemediationExceptions'{_dConfigRuleName =
+                                   pConfigRuleName_,
+                                 _dResourceKeys = _List1 # pResourceKeys_}
 
 -- | The name of the AWS Config rule for which you want to delete remediation exception configuration.
 dConfigRuleName :: Lens' DeleteRemediationExceptions Text
 dConfigRuleName = lens _dConfigRuleName (\ s a -> s{_dConfigRuleName = a})
 
--- | An exception list of resource exception keys to be processed with the current request. AWS Config adds exception for each resource key. For example, AWS Config adds 3 exceptions for 3 resource keys.
+-- | An exception list of resource exception keys to be processed with the current request. AWS Config adds exception for each resource key. For example, AWS Config adds 3 exceptions for 3 resource keys. 
 dResourceKeys :: Lens' DeleteRemediationExceptions (NonEmpty RemediationExceptionResourceKey)
 dResourceKeys = lens _dResourceKeys (\ s a -> s{_dResourceKeys = a}) . _List1
 
@@ -119,13 +118,15 @@ instance ToQuery DeleteRemediationExceptions where
         toQuery = const mempty
 
 -- | /See:/ 'deleteRemediationExceptionsResponse' smart constructor.
-data DeleteRemediationExceptionsResponse =
-  DeleteRemediationExceptionsResponse'
-    { _delrsFailedBatches  :: !(Maybe [FailedDeleteRemediationExceptionsBatch])
-    , _delrsResponseStatus :: !Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data DeleteRemediationExceptionsResponse = DeleteRemediationExceptionsResponse'{_delrsFailedBatches
+                                                                                ::
+                                                                                !(Maybe
+                                                                                    [FailedDeleteRemediationExceptionsBatch]),
+                                                                                _delrsResponseStatus
+                                                                                ::
+                                                                                !Int}
+                                             deriving (Eq, Read, Show, Data,
+                                                       Typeable, Generic)
 
 -- | Creates a value of 'DeleteRemediationExceptionsResponse' with the minimum fields required to make a request.
 --
@@ -137,10 +138,11 @@ data DeleteRemediationExceptionsResponse =
 deleteRemediationExceptionsResponse
     :: Int -- ^ 'delrsResponseStatus'
     -> DeleteRemediationExceptionsResponse
-deleteRemediationExceptionsResponse pResponseStatus_ =
-  DeleteRemediationExceptionsResponse'
-    {_delrsFailedBatches = Nothing, _delrsResponseStatus = pResponseStatus_}
-
+deleteRemediationExceptionsResponse pResponseStatus_
+  = DeleteRemediationExceptionsResponse'{_delrsFailedBatches
+                                           = Nothing,
+                                         _delrsResponseStatus =
+                                           pResponseStatus_}
 
 -- | Returns a list of failed delete remediation exceptions batch objects. Each object in the batch consists of a list of failed items and failure messages.
 delrsFailedBatches :: Lens' DeleteRemediationExceptionsResponse [FailedDeleteRemediationExceptionsBatch]

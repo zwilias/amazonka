@@ -39,18 +39,14 @@ module Network.AWS.Lightsail.CreateDomain
 
 import Network.AWS.Lens
 import Network.AWS.Lightsail.Types
-import Network.AWS.Lightsail.Types.Product
 import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 
 -- | /See:/ 'createDomain' smart constructor.
-newtype CreateDomain =
-  CreateDomain'
-    { _cdDomainName :: Text
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+newtype CreateDomain = CreateDomain'{_cdDomainName ::
+                                     Text}
+                         deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'CreateDomain' with the minimum fields required to make a request.
 --
@@ -60,8 +56,8 @@ newtype CreateDomain =
 createDomain
     :: Text -- ^ 'cdDomainName'
     -> CreateDomain
-createDomain pDomainName_ = CreateDomain' {_cdDomainName = pDomainName_}
-
+createDomain pDomainName_
+  = CreateDomain'{_cdDomainName = pDomainName_}
 
 -- | The domain name to manage (e.g., @example.com@ ).
 cdDomainName :: Lens' CreateDomain Text
@@ -101,13 +97,10 @@ instance ToQuery CreateDomain where
         toQuery = const mempty
 
 -- | /See:/ 'createDomainResponse' smart constructor.
-data CreateDomainResponse =
-  CreateDomainResponse'
-    { _cdrsOperation      :: !(Maybe Operation)
-    , _cdrsResponseStatus :: !Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data CreateDomainResponse = CreateDomainResponse'{_cdrsOperation
+                                                  :: !(Maybe Operation),
+                                                  _cdrsResponseStatus :: !Int}
+                              deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'CreateDomainResponse' with the minimum fields required to make a request.
 --
@@ -119,10 +112,9 @@ data CreateDomainResponse =
 createDomainResponse
     :: Int -- ^ 'cdrsResponseStatus'
     -> CreateDomainResponse
-createDomainResponse pResponseStatus_ =
-  CreateDomainResponse'
-    {_cdrsOperation = Nothing, _cdrsResponseStatus = pResponseStatus_}
-
+createDomainResponse pResponseStatus_
+  = CreateDomainResponse'{_cdrsOperation = Nothing,
+                          _cdrsResponseStatus = pResponseStatus_}
 
 -- | An array of key-value pairs containing information about the domain resource you created.
 cdrsOperation :: Lens' CreateDomainResponse (Maybe Operation)

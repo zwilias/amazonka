@@ -54,34 +54,34 @@ module Network.AWS.OpsWorks.UpdateLayer
 
 import Network.AWS.Lens
 import Network.AWS.OpsWorks.Types
-import Network.AWS.OpsWorks.Types.Product
 import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 
 -- | /See:/ 'updateLayer' smart constructor.
-data UpdateLayer =
-  UpdateLayer'
-    { _ulCustomInstanceProfileARN :: !(Maybe Text)
-    , _ulCustomSecurityGroupIds :: !(Maybe [Text])
-    , _ulInstallUpdatesOnBoot :: !(Maybe Bool)
-    , _ulCloudWatchLogsConfiguration :: !(Maybe CloudWatchLogsConfiguration)
-    , _ulLifecycleEventConfiguration :: !(Maybe LifecycleEventConfiguration)
-    , _ulShortname :: !(Maybe Text)
-    , _ulCustomRecipes :: !(Maybe Recipes)
-    , _ulCustomJSON :: !(Maybe Text)
-    , _ulVolumeConfigurations :: !(Maybe [VolumeConfiguration])
-    , _ulEnableAutoHealing :: !(Maybe Bool)
-    , _ulPackages :: !(Maybe [Text])
-    , _ulAttributes :: !(Maybe (Map LayerAttributesKeys (Maybe Text)))
-    , _ulName :: !(Maybe Text)
-    , _ulAutoAssignPublicIPs :: !(Maybe Bool)
-    , _ulUseEBSOptimizedInstances :: !(Maybe Bool)
-    , _ulAutoAssignElasticIPs :: !(Maybe Bool)
-    , _ulLayerId :: !Text
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data UpdateLayer = UpdateLayer'{_ulCustomInstanceProfileARN
+                                :: !(Maybe Text),
+                                _ulCustomSecurityGroupIds :: !(Maybe [Text]),
+                                _ulInstallUpdatesOnBoot :: !(Maybe Bool),
+                                _ulCloudWatchLogsConfiguration ::
+                                !(Maybe CloudWatchLogsConfiguration),
+                                _ulLifecycleEventConfiguration ::
+                                !(Maybe LifecycleEventConfiguration),
+                                _ulShortname :: !(Maybe Text),
+                                _ulCustomRecipes :: !(Maybe Recipes),
+                                _ulCustomJSON :: !(Maybe Text),
+                                _ulVolumeConfigurations ::
+                                !(Maybe [VolumeConfiguration]),
+                                _ulEnableAutoHealing :: !(Maybe Bool),
+                                _ulPackages :: !(Maybe [Text]),
+                                _ulAttributes ::
+                                !(Maybe (Map LayerAttributesKeys (Maybe Text))),
+                                _ulName :: !(Maybe Text),
+                                _ulAutoAssignPublicIPs :: !(Maybe Bool),
+                                _ulUseEBSOptimizedInstances :: !(Maybe Bool),
+                                _ulAutoAssignElasticIPs :: !(Maybe Bool),
+                                _ulLayerId :: !Text}
+                     deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'UpdateLayer' with the minimum fields required to make a request.
 --
@@ -91,17 +91,17 @@ data UpdateLayer =
 --
 -- * 'ulCustomSecurityGroupIds' - An array containing the layer's custom security group IDs.
 --
--- * 'ulInstallUpdatesOnBoot' - Whether to install operating system and package updates when the instance boots. The default value is @true@ . To control when updates are installed, set this value to @false@ . You must then update your instances manually by using 'CreateDeployment' to run the @update_dependencies@ stack command or manually running @yum@ (Amazon Linux) or @apt-get@ (Ubuntu) on the instances.
+-- * 'ulInstallUpdatesOnBoot' - Whether to install operating system and package updates when the instance boots. The default value is @true@ . To control when updates are installed, set this value to @false@ . You must then update your instances manually by using 'CreateDeployment' to run the @update_dependencies@ stack command or manually running @yum@ (Amazon Linux) or @apt-get@ (Ubuntu) on the instances. 
 --
 -- * 'ulCloudWatchLogsConfiguration' - Specifies CloudWatch Logs configuration options for the layer. For more information, see 'CloudWatchLogsLogStream' .
 --
--- * 'ulLifecycleEventConfiguration' -
+-- * 'ulLifecycleEventConfiguration' - 
 --
--- * 'ulShortname' - For custom layers only, use this parameter to specify the layer's short name, which is used internally by AWS OpsWorks Stacks and by Chef. The short name is also used as the name for the directory where your app files are installed. It can have a maximum of 200 characters and must be in the following format: /\A[a-z0-9\-\_\.]+\Z/. The built-in layers' short names are defined by AWS OpsWorks Stacks. For more information, see the <http://docs.aws.amazon.com/opsworks/latest/userguide/layers.html Layer Reference>
+-- * 'ulShortname' - For custom layers only, use this parameter to specify the layer's short name, which is used internally by AWS OpsWorks Stacks and by Chef. The short name is also used as the name for the directory where your app files are installed. It can have a maximum of 200 characters and must be in the following format: /\A[a-z0-9\-\_\.]+\Z/. The built-in layers' short names are defined by AWS OpsWorks Stacks. For more information, see the <http://docs.aws.amazon.com/opsworks/latest/userguide/layers.html Layer Reference> 
 --
 -- * 'ulCustomRecipes' - A @LayerCustomRecipes@ object that specifies the layer's custom recipes.
 --
--- * 'ulCustomJSON' - A JSON-formatted string containing custom stack configuration and deployment attributes to be installed on the layer's instances. For more information, see <http://docs.aws.amazon.com/opsworks/latest/userguide/workingcookbook-json-override.html Using Custom JSON> .
+-- * 'ulCustomJSON' - A JSON-formatted string containing custom stack configuration and deployment attributes to be installed on the layer's instances. For more information, see <http://docs.aws.amazon.com/opsworks/latest/userguide/workingcookbook-json-override.html Using Custom JSON> . 
 --
 -- * 'ulVolumeConfigurations' - A @VolumeConfigurations@ object that describes the layer's Amazon EBS volumes.
 --
@@ -123,27 +123,21 @@ data UpdateLayer =
 updateLayer
     :: Text -- ^ 'ulLayerId'
     -> UpdateLayer
-updateLayer pLayerId_ =
-  UpdateLayer'
-    { _ulCustomInstanceProfileARN = Nothing
-    , _ulCustomSecurityGroupIds = Nothing
-    , _ulInstallUpdatesOnBoot = Nothing
-    , _ulCloudWatchLogsConfiguration = Nothing
-    , _ulLifecycleEventConfiguration = Nothing
-    , _ulShortname = Nothing
-    , _ulCustomRecipes = Nothing
-    , _ulCustomJSON = Nothing
-    , _ulVolumeConfigurations = Nothing
-    , _ulEnableAutoHealing = Nothing
-    , _ulPackages = Nothing
-    , _ulAttributes = Nothing
-    , _ulName = Nothing
-    , _ulAutoAssignPublicIPs = Nothing
-    , _ulUseEBSOptimizedInstances = Nothing
-    , _ulAutoAssignElasticIPs = Nothing
-    , _ulLayerId = pLayerId_
-    }
-
+updateLayer pLayerId_
+  = UpdateLayer'{_ulCustomInstanceProfileARN = Nothing,
+                 _ulCustomSecurityGroupIds = Nothing,
+                 _ulInstallUpdatesOnBoot = Nothing,
+                 _ulCloudWatchLogsConfiguration = Nothing,
+                 _ulLifecycleEventConfiguration = Nothing,
+                 _ulShortname = Nothing, _ulCustomRecipes = Nothing,
+                 _ulCustomJSON = Nothing,
+                 _ulVolumeConfigurations = Nothing,
+                 _ulEnableAutoHealing = Nothing,
+                 _ulPackages = Nothing, _ulAttributes = Nothing,
+                 _ulName = Nothing, _ulAutoAssignPublicIPs = Nothing,
+                 _ulUseEBSOptimizedInstances = Nothing,
+                 _ulAutoAssignElasticIPs = Nothing,
+                 _ulLayerId = pLayerId_}
 
 -- | The ARN of an IAM profile to be used for all of the layer's EC2 instances. For more information about IAM ARNs, see <http://docs.aws.amazon.com/IAM/latest/UserGuide/Using_Identifiers.html Using Identifiers> .
 ulCustomInstanceProfileARN :: Lens' UpdateLayer (Maybe Text)
@@ -153,7 +147,7 @@ ulCustomInstanceProfileARN = lens _ulCustomInstanceProfileARN (\ s a -> s{_ulCus
 ulCustomSecurityGroupIds :: Lens' UpdateLayer [Text]
 ulCustomSecurityGroupIds = lens _ulCustomSecurityGroupIds (\ s a -> s{_ulCustomSecurityGroupIds = a}) . _Default . _Coerce
 
--- | Whether to install operating system and package updates when the instance boots. The default value is @true@ . To control when updates are installed, set this value to @false@ . You must then update your instances manually by using 'CreateDeployment' to run the @update_dependencies@ stack command or manually running @yum@ (Amazon Linux) or @apt-get@ (Ubuntu) on the instances.
+-- | Whether to install operating system and package updates when the instance boots. The default value is @true@ . To control when updates are installed, set this value to @false@ . You must then update your instances manually by using 'CreateDeployment' to run the @update_dependencies@ stack command or manually running @yum@ (Amazon Linux) or @apt-get@ (Ubuntu) on the instances. 
 ulInstallUpdatesOnBoot :: Lens' UpdateLayer (Maybe Bool)
 ulInstallUpdatesOnBoot = lens _ulInstallUpdatesOnBoot (\ s a -> s{_ulInstallUpdatesOnBoot = a})
 
@@ -161,11 +155,11 @@ ulInstallUpdatesOnBoot = lens _ulInstallUpdatesOnBoot (\ s a -> s{_ulInstallUpda
 ulCloudWatchLogsConfiguration :: Lens' UpdateLayer (Maybe CloudWatchLogsConfiguration)
 ulCloudWatchLogsConfiguration = lens _ulCloudWatchLogsConfiguration (\ s a -> s{_ulCloudWatchLogsConfiguration = a})
 
--- |
+-- | 
 ulLifecycleEventConfiguration :: Lens' UpdateLayer (Maybe LifecycleEventConfiguration)
 ulLifecycleEventConfiguration = lens _ulLifecycleEventConfiguration (\ s a -> s{_ulLifecycleEventConfiguration = a})
 
--- | For custom layers only, use this parameter to specify the layer's short name, which is used internally by AWS OpsWorks Stacks and by Chef. The short name is also used as the name for the directory where your app files are installed. It can have a maximum of 200 characters and must be in the following format: /\A[a-z0-9\-\_\.]+\Z/. The built-in layers' short names are defined by AWS OpsWorks Stacks. For more information, see the <http://docs.aws.amazon.com/opsworks/latest/userguide/layers.html Layer Reference>
+-- | For custom layers only, use this parameter to specify the layer's short name, which is used internally by AWS OpsWorks Stacks and by Chef. The short name is also used as the name for the directory where your app files are installed. It can have a maximum of 200 characters and must be in the following format: /\A[a-z0-9\-\_\.]+\Z/. The built-in layers' short names are defined by AWS OpsWorks Stacks. For more information, see the <http://docs.aws.amazon.com/opsworks/latest/userguide/layers.html Layer Reference> 
 ulShortname :: Lens' UpdateLayer (Maybe Text)
 ulShortname = lens _ulShortname (\ s a -> s{_ulShortname = a})
 
@@ -173,7 +167,7 @@ ulShortname = lens _ulShortname (\ s a -> s{_ulShortname = a})
 ulCustomRecipes :: Lens' UpdateLayer (Maybe Recipes)
 ulCustomRecipes = lens _ulCustomRecipes (\ s a -> s{_ulCustomRecipes = a})
 
--- | A JSON-formatted string containing custom stack configuration and deployment attributes to be installed on the layer's instances. For more information, see <http://docs.aws.amazon.com/opsworks/latest/userguide/workingcookbook-json-override.html Using Custom JSON> .
+-- | A JSON-formatted string containing custom stack configuration and deployment attributes to be installed on the layer's instances. For more information, see <http://docs.aws.amazon.com/opsworks/latest/userguide/workingcookbook-json-override.html Using Custom JSON> . 
 ulCustomJSON :: Lens' UpdateLayer (Maybe Text)
 ulCustomJSON = lens _ulCustomJSON (\ s a -> s{_ulCustomJSON = a})
 
@@ -269,16 +263,13 @@ instance ToQuery UpdateLayer where
         toQuery = const mempty
 
 -- | /See:/ 'updateLayerResponse' smart constructor.
-data UpdateLayerResponse =
-  UpdateLayerResponse'
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data UpdateLayerResponse = UpdateLayerResponse'
+                             deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'UpdateLayerResponse' with the minimum fields required to make a request.
 --
 updateLayerResponse
     :: UpdateLayerResponse
 updateLayerResponse = UpdateLayerResponse'
-
 
 instance NFData UpdateLayerResponse where

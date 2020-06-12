@@ -46,25 +46,29 @@ module Network.AWS.Batch.RegisterJobDefinition
     ) where
 
 import Network.AWS.Batch.Types
-import Network.AWS.Batch.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 
 -- | /See:/ 'registerJobDefinition' smart constructor.
-data RegisterJobDefinition =
-  RegisterJobDefinition'
-    { _rjdRetryStrategy       :: !(Maybe RetryStrategy)
-    , _rjdParameters          :: !(Maybe (Map Text Text))
-    , _rjdTimeout             :: !(Maybe JobTimeout)
-    , _rjdContainerProperties :: !(Maybe ContainerProperties)
-    , _rjdNodeProperties      :: !(Maybe NodeProperties)
-    , _rjdJobDefinitionName   :: !Text
-    , _rjdType                :: !JobDefinitionType
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data RegisterJobDefinition = RegisterJobDefinition'{_rjdRetryStrategy
+                                                    :: !(Maybe RetryStrategy),
+                                                    _rjdParameters ::
+                                                    !(Maybe (Map Text Text)),
+                                                    _rjdTimeout ::
+                                                    !(Maybe JobTimeout),
+                                                    _rjdContainerProperties ::
+                                                    !(Maybe
+                                                        ContainerProperties),
+                                                    _rjdNodeProperties ::
+                                                    !(Maybe NodeProperties),
+                                                    _rjdJobDefinitionName ::
+                                                    !Text,
+                                                    _rjdType ::
+                                                    !JobDefinitionType}
+                               deriving (Eq, Read, Show, Data, Typeable,
+                                         Generic)
 
 -- | Creates a value of 'RegisterJobDefinition' with the minimum fields required to make a request.
 --
@@ -87,17 +91,13 @@ registerJobDefinition
     :: Text -- ^ 'rjdJobDefinitionName'
     -> JobDefinitionType -- ^ 'rjdType'
     -> RegisterJobDefinition
-registerJobDefinition pJobDefinitionName_ pType_ =
-  RegisterJobDefinition'
-    { _rjdRetryStrategy = Nothing
-    , _rjdParameters = Nothing
-    , _rjdTimeout = Nothing
-    , _rjdContainerProperties = Nothing
-    , _rjdNodeProperties = Nothing
-    , _rjdJobDefinitionName = pJobDefinitionName_
-    , _rjdType = pType_
-    }
-
+registerJobDefinition pJobDefinitionName_ pType_
+  = RegisterJobDefinition'{_rjdRetryStrategy = Nothing,
+                           _rjdParameters = Nothing, _rjdTimeout = Nothing,
+                           _rjdContainerProperties = Nothing,
+                           _rjdNodeProperties = Nothing,
+                           _rjdJobDefinitionName = pJobDefinitionName_,
+                           _rjdType = pType_}
 
 -- | The retry strategy to use for failed jobs that are submitted with this job definition. Any retry strategy that is specified during a 'SubmitJob' operation overrides the retry strategy defined here. If a job is terminated due to a timeout, it is not retried.
 rjdRetryStrategy :: Lens' RegisterJobDefinition (Maybe RetryStrategy)
@@ -170,15 +170,16 @@ instance ToQuery RegisterJobDefinition where
         toQuery = const mempty
 
 -- | /See:/ 'registerJobDefinitionResponse' smart constructor.
-data RegisterJobDefinitionResponse =
-  RegisterJobDefinitionResponse'
-    { _rjdrsResponseStatus    :: !Int
-    , _rjdrsJobDefinitionName :: !Text
-    , _rjdrsJobDefinitionARN  :: !Text
-    , _rjdrsRevision          :: !Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data RegisterJobDefinitionResponse = RegisterJobDefinitionResponse'{_rjdrsResponseStatus
+                                                                    :: !Int,
+                                                                    _rjdrsJobDefinitionName
+                                                                    :: !Text,
+                                                                    _rjdrsJobDefinitionARN
+                                                                    :: !Text,
+                                                                    _rjdrsRevision
+                                                                    :: !Int}
+                                       deriving (Eq, Read, Show, Data, Typeable,
+                                                 Generic)
 
 -- | Creates a value of 'RegisterJobDefinitionResponse' with the minimum fields required to make a request.
 --
@@ -197,14 +198,14 @@ registerJobDefinitionResponse
     -> Text -- ^ 'rjdrsJobDefinitionARN'
     -> Int -- ^ 'rjdrsRevision'
     -> RegisterJobDefinitionResponse
-registerJobDefinitionResponse pResponseStatus_ pJobDefinitionName_ pJobDefinitionARN_ pRevision_ =
-  RegisterJobDefinitionResponse'
-    { _rjdrsResponseStatus = pResponseStatus_
-    , _rjdrsJobDefinitionName = pJobDefinitionName_
-    , _rjdrsJobDefinitionARN = pJobDefinitionARN_
-    , _rjdrsRevision = pRevision_
-    }
-
+registerJobDefinitionResponse pResponseStatus_
+  pJobDefinitionName_ pJobDefinitionARN_ pRevision_
+  = RegisterJobDefinitionResponse'{_rjdrsResponseStatus
+                                     = pResponseStatus_,
+                                   _rjdrsJobDefinitionName =
+                                     pJobDefinitionName_,
+                                   _rjdrsJobDefinitionARN = pJobDefinitionARN_,
+                                   _rjdrsRevision = pRevision_}
 
 -- | -- | The response status code.
 rjdrsResponseStatus :: Lens' RegisterJobDefinitionResponse Int

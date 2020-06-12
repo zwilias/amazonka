@@ -18,7 +18,7 @@
 -- Stability   : auto-generated
 -- Portability : non-portable (GHC extensions)
 --
--- Disassociates a CIDR block from a subnet. Currently, you can disassociate an IPv6 CIDR block only. You must detach or delete all gateways and resources that are associated with the CIDR block before you can disassociate it.
+-- Disassociates a CIDR block from a subnet. Currently, you can disassociate an IPv6 CIDR block only. You must detach or delete all gateways and resources that are associated with the CIDR block before you can disassociate it. 
 --
 --
 module Network.AWS.EC2.DisassociateSubnetCidrBlock
@@ -39,19 +39,16 @@ module Network.AWS.EC2.DisassociateSubnetCidrBlock
     ) where
 
 import Network.AWS.EC2.Types
-import Network.AWS.EC2.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 
 -- | /See:/ 'disassociateSubnetCidrBlock' smart constructor.
-newtype DisassociateSubnetCidrBlock =
-  DisassociateSubnetCidrBlock'
-    { _dscbAssociationId :: Text
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+newtype DisassociateSubnetCidrBlock = DisassociateSubnetCidrBlock'{_dscbAssociationId
+                                                                   :: Text}
+                                        deriving (Eq, Read, Show, Data,
+                                                  Typeable, Generic)
 
 -- | Creates a value of 'DisassociateSubnetCidrBlock' with the minimum fields required to make a request.
 --
@@ -61,9 +58,9 @@ newtype DisassociateSubnetCidrBlock =
 disassociateSubnetCidrBlock
     :: Text -- ^ 'dscbAssociationId'
     -> DisassociateSubnetCidrBlock
-disassociateSubnetCidrBlock pAssociationId_ =
-  DisassociateSubnetCidrBlock' {_dscbAssociationId = pAssociationId_}
-
+disassociateSubnetCidrBlock pAssociationId_
+  = DisassociateSubnetCidrBlock'{_dscbAssociationId =
+                                   pAssociationId_}
 
 -- | The association ID for the CIDR block.
 dscbAssociationId :: Lens' DisassociateSubnetCidrBlock Text
@@ -100,14 +97,19 @@ instance ToQuery DisassociateSubnetCidrBlock where
                "AssociationId" =: _dscbAssociationId]
 
 -- | /See:/ 'disassociateSubnetCidrBlockResponse' smart constructor.
-data DisassociateSubnetCidrBlockResponse =
-  DisassociateSubnetCidrBlockResponse'
-    { _dscbrsSubnetId                 :: !(Maybe Text)
-    , _dscbrsIPv6CidrBlockAssociation :: !(Maybe SubnetIPv6CidrBlockAssociation)
-    , _dscbrsResponseStatus           :: !Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data DisassociateSubnetCidrBlockResponse = DisassociateSubnetCidrBlockResponse'{_dscbrsSubnetId
+                                                                                ::
+                                                                                !(Maybe
+                                                                                    Text),
+                                                                                _dscbrsIPv6CidrBlockAssociation
+                                                                                ::
+                                                                                !(Maybe
+                                                                                    SubnetIPv6CidrBlockAssociation),
+                                                                                _dscbrsResponseStatus
+                                                                                ::
+                                                                                !Int}
+                                             deriving (Eq, Read, Show, Data,
+                                                       Typeable, Generic)
 
 -- | Creates a value of 'DisassociateSubnetCidrBlockResponse' with the minimum fields required to make a request.
 --
@@ -121,13 +123,13 @@ data DisassociateSubnetCidrBlockResponse =
 disassociateSubnetCidrBlockResponse
     :: Int -- ^ 'dscbrsResponseStatus'
     -> DisassociateSubnetCidrBlockResponse
-disassociateSubnetCidrBlockResponse pResponseStatus_ =
-  DisassociateSubnetCidrBlockResponse'
-    { _dscbrsSubnetId = Nothing
-    , _dscbrsIPv6CidrBlockAssociation = Nothing
-    , _dscbrsResponseStatus = pResponseStatus_
-    }
-
+disassociateSubnetCidrBlockResponse pResponseStatus_
+  = DisassociateSubnetCidrBlockResponse'{_dscbrsSubnetId
+                                           = Nothing,
+                                         _dscbrsIPv6CidrBlockAssociation =
+                                           Nothing,
+                                         _dscbrsResponseStatus =
+                                           pResponseStatus_}
 
 -- | The ID of the subnet.
 dscbrsSubnetId :: Lens' DisassociateSubnetCidrBlockResponse (Maybe Text)

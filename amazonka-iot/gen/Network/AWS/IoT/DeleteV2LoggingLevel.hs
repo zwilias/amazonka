@@ -36,20 +36,16 @@ module Network.AWS.IoT.DeleteV2LoggingLevel
     ) where
 
 import Network.AWS.IoT.Types
-import Network.AWS.IoT.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 
 -- | /See:/ 'deleteV2LoggingLevel' smart constructor.
-data DeleteV2LoggingLevel =
-  DeleteV2LoggingLevel'
-    { _dvllTargetType :: !LogTargetType
-    , _dvllTargetName :: !Text
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data DeleteV2LoggingLevel = DeleteV2LoggingLevel'{_dvllTargetType
+                                                  :: !LogTargetType,
+                                                  _dvllTargetName :: !Text}
+                              deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'DeleteV2LoggingLevel' with the minimum fields required to make a request.
 --
@@ -62,10 +58,10 @@ deleteV2LoggingLevel
     :: LogTargetType -- ^ 'dvllTargetType'
     -> Text -- ^ 'dvllTargetName'
     -> DeleteV2LoggingLevel
-deleteV2LoggingLevel pTargetType_ pTargetName_ =
-  DeleteV2LoggingLevel'
-    {_dvllTargetType = pTargetType_, _dvllTargetName = pTargetName_}
-
+deleteV2LoggingLevel pTargetType_ pTargetName_
+  = DeleteV2LoggingLevel'{_dvllTargetType =
+                            pTargetType_,
+                          _dvllTargetName = pTargetName_}
 
 -- | The type of resource for which you are configuring logging. Must be @THING_Group@ .
 dvllTargetType :: Lens' DeleteV2LoggingLevel LogTargetType
@@ -98,16 +94,15 @@ instance ToQuery DeleteV2LoggingLevel where
                "targetName" =: _dvllTargetName]
 
 -- | /See:/ 'deleteV2LoggingLevelResponse' smart constructor.
-data DeleteV2LoggingLevelResponse =
-  DeleteV2LoggingLevelResponse'
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data DeleteV2LoggingLevelResponse = DeleteV2LoggingLevelResponse'
+                                      deriving (Eq, Read, Show, Data, Typeable,
+                                                Generic)
 
 -- | Creates a value of 'DeleteV2LoggingLevelResponse' with the minimum fields required to make a request.
 --
 deleteV2LoggingLevelResponse
     :: DeleteV2LoggingLevelResponse
-deleteV2LoggingLevelResponse = DeleteV2LoggingLevelResponse'
-
+deleteV2LoggingLevelResponse
+  = DeleteV2LoggingLevelResponse'
 
 instance NFData DeleteV2LoggingLevelResponse where

@@ -62,39 +62,38 @@ module Network.AWS.OpsWorks.CloneStack
 
 import Network.AWS.Lens
 import Network.AWS.OpsWorks.Types
-import Network.AWS.OpsWorks.Types.Product
 import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 
 -- | /See:/ 'cloneStack' smart constructor.
-data CloneStack =
-  CloneStack'
-    { _cDefaultInstanceProfileARN :: !(Maybe Text)
-    , _cCloneAppIds :: !(Maybe [Text])
-    , _cDefaultRootDeviceType :: !(Maybe RootDeviceType)
-    , _cVPCId :: !(Maybe Text)
-    , _cChefConfiguration :: !(Maybe ChefConfiguration)
-    , _cAgentVersion :: !(Maybe Text)
-    , _cDefaultSSHKeyName :: !(Maybe Text)
-    , _cCustomJSON :: !(Maybe Text)
-    , _cClonePermissions :: !(Maybe Bool)
-    , _cCustomCookbooksSource :: !(Maybe Source)
-    , _cDefaultAvailabilityZone :: !(Maybe Text)
-    , _cAttributes :: !(Maybe (Map StackAttributesKeys (Maybe Text)))
-    , _cName :: !(Maybe Text)
-    , _cDefaultOS :: !(Maybe Text)
-    , _cUseOpsworksSecurityGroups :: !(Maybe Bool)
-    , _cUseCustomCookbooks :: !(Maybe Bool)
-    , _cDefaultSubnetId :: !(Maybe Text)
-    , _cRegion :: !(Maybe Text)
-    , _cConfigurationManager :: !(Maybe StackConfigurationManager)
-    , _cHostnameTheme :: !(Maybe Text)
-    , _cSourceStackId :: !Text
-    , _cServiceRoleARN :: !Text
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data CloneStack = CloneStack'{_cDefaultInstanceProfileARN
+                              :: !(Maybe Text),
+                              _cCloneAppIds :: !(Maybe [Text]),
+                              _cDefaultRootDeviceType ::
+                              !(Maybe RootDeviceType),
+                              _cVPCId :: !(Maybe Text),
+                              _cChefConfiguration :: !(Maybe ChefConfiguration),
+                              _cAgentVersion :: !(Maybe Text),
+                              _cDefaultSSHKeyName :: !(Maybe Text),
+                              _cCustomJSON :: !(Maybe Text),
+                              _cClonePermissions :: !(Maybe Bool),
+                              _cCustomCookbooksSource :: !(Maybe Source),
+                              _cDefaultAvailabilityZone :: !(Maybe Text),
+                              _cAttributes ::
+                              !(Maybe (Map StackAttributesKeys (Maybe Text))),
+                              _cName :: !(Maybe Text),
+                              _cDefaultOS :: !(Maybe Text),
+                              _cUseOpsworksSecurityGroups :: !(Maybe Bool),
+                              _cUseCustomCookbooks :: !(Maybe Bool),
+                              _cDefaultSubnetId :: !(Maybe Text),
+                              _cRegion :: !(Maybe Text),
+                              _cConfigurationManager ::
+                              !(Maybe StackConfigurationManager),
+                              _cHostnameTheme :: !(Maybe Text),
+                              _cSourceStackId :: !Text,
+                              _cServiceRoleARN :: !Text}
+                    deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'CloneStack' with the minimum fields required to make a request.
 --
@@ -106,21 +105,21 @@ data CloneStack =
 --
 -- * 'cDefaultRootDeviceType' - The default root device type. This value is used by default for all instances in the cloned stack, but you can override it when you create an instance. For more information, see <http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ComponentsAMIs.html#storage-for-the-root-device Storage for the Root Device> .
 --
--- * 'cVPCId' - The ID of the VPC that the cloned stack is to be launched into. It must be in the specified region. All instances are launched into this VPC, and you cannot change the ID later.     * If your account supports EC2 Classic, the default value is no VPC.     * If your account does not support EC2 Classic, the default value is the default VPC for the specified region. If the VPC ID corresponds to a default VPC and you have specified either the @DefaultAvailabilityZone@ or the @DefaultSubnetId@ parameter only, AWS OpsWorks Stacks infers the value of the other parameter. If you specify neither parameter, AWS OpsWorks Stacks sets these parameters to the first valid Availability Zone for the specified region and the corresponding default VPC subnet ID, respectively.  If you specify a nondefault VPC ID, note the following:     * It must belong to a VPC in your account that is in the specified region.     * You must specify a value for @DefaultSubnetId@ . For more information on how to use AWS OpsWorks Stacks with a VPC, see <http://docs.aws.amazon.com/opsworks/latest/userguide/workingstacks-vpc.html Running a Stack in a VPC> . For more information on default VPC and EC2 Classic, see <http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ec2-supported-platforms.html Supported Platforms> .
+-- * 'cVPCId' - The ID of the VPC that the cloned stack is to be launched into. It must be in the specified region. All instances are launched into this VPC, and you cannot change the ID later.     * If your account supports EC2 Classic, the default value is no VPC.     * If your account does not support EC2 Classic, the default value is the default VPC for the specified region. If the VPC ID corresponds to a default VPC and you have specified either the @DefaultAvailabilityZone@ or the @DefaultSubnetId@ parameter only, AWS OpsWorks Stacks infers the value of the other parameter. If you specify neither parameter, AWS OpsWorks Stacks sets these parameters to the first valid Availability Zone for the specified region and the corresponding default VPC subnet ID, respectively.  If you specify a nondefault VPC ID, note the following:     * It must belong to a VPC in your account that is in the specified region.     * You must specify a value for @DefaultSubnetId@ . For more information on how to use AWS OpsWorks Stacks with a VPC, see <http://docs.aws.amazon.com/opsworks/latest/userguide/workingstacks-vpc.html Running a Stack in a VPC> . For more information on default VPC and EC2 Classic, see <http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ec2-supported-platforms.html Supported Platforms> . 
 --
 -- * 'cChefConfiguration' - A @ChefConfiguration@ object that specifies whether to enable Berkshelf and the Berkshelf version on Chef 11.10 stacks. For more information, see <http://docs.aws.amazon.com/opsworks/latest/userguide/workingstacks-creating.html Create a New Stack> .
 --
 -- * 'cAgentVersion' - The default AWS OpsWorks Stacks agent version. You have the following options:     * Auto-update - Set this parameter to @LATEST@ . AWS OpsWorks Stacks automatically installs new agent versions on the stack's instances as soon as they are available.     * Fixed version - Set this parameter to your preferred agent version. To update the agent version, you must edit the stack configuration and specify a new version. AWS OpsWorks Stacks then automatically installs that version on the stack's instances. The default setting is @LATEST@ . To specify an agent version, you must use the complete version number, not the abbreviated number shown on the console. For a list of available agent version numbers, call 'DescribeAgentVersions' . AgentVersion cannot be set to Chef 12.2.
 --
--- * 'cDefaultSSHKeyName' - A default Amazon EC2 key pair name. The default value is none. If you specify a key pair name, AWS OpsWorks installs the public key on the instance and you can use the private key with an SSH client to log in to the instance. For more information, see <http://docs.aws.amazon.com/opsworks/latest/userguide/workinginstances-ssh.html Using SSH to Communicate with an Instance> and <http://docs.aws.amazon.com/opsworks/latest/userguide/security-ssh-access.html Managing SSH Access> . You can override this setting by specifying a different key pair, or no key pair, when you <http://docs.aws.amazon.com/opsworks/latest/userguide/workinginstances-add.html create an instance> .
+-- * 'cDefaultSSHKeyName' - A default Amazon EC2 key pair name. The default value is none. If you specify a key pair name, AWS OpsWorks installs the public key on the instance and you can use the private key with an SSH client to log in to the instance. For more information, see <http://docs.aws.amazon.com/opsworks/latest/userguide/workinginstances-ssh.html Using SSH to Communicate with an Instance> and <http://docs.aws.amazon.com/opsworks/latest/userguide/security-ssh-access.html Managing SSH Access> . You can override this setting by specifying a different key pair, or no key pair, when you <http://docs.aws.amazon.com/opsworks/latest/userguide/workinginstances-add.html create an instance> . 
 --
--- * 'cCustomJSON' - A string that contains user-defined, custom JSON. It is used to override the corresponding default stack configuration JSON values. The string should be in the following format: @"{\"key1\": \"value1\", \"key2\": \"value2\",...}"@  For more information on custom JSON, see <http://docs.aws.amazon.com/opsworks/latest/userguide/workingstacks-json.html Use Custom JSON to Modify the Stack Configuration Attributes>
+-- * 'cCustomJSON' - A string that contains user-defined, custom JSON. It is used to override the corresponding default stack configuration JSON values. The string should be in the following format: @"{\"key1\": \"value1\", \"key2\": \"value2\",...}"@  For more information on custom JSON, see <http://docs.aws.amazon.com/opsworks/latest/userguide/workingstacks-json.html Use Custom JSON to Modify the Stack Configuration Attributes> 
 --
 -- * 'cClonePermissions' - Whether to clone the source stack's permissions.
 --
 -- * 'cCustomCookbooksSource' - Undocumented member.
 --
--- * 'cDefaultAvailabilityZone' - The cloned stack's default Availability Zone, which must be in the specified region. For more information, see <http://docs.aws.amazon.com/general/latest/gr/rande.html Regions and Endpoints> . If you also specify a value for @DefaultSubnetId@ , the subnet must be in the same zone. For more information, see the @VpcId@ parameter description.
+-- * 'cDefaultAvailabilityZone' - The cloned stack's default Availability Zone, which must be in the specified region. For more information, see <http://docs.aws.amazon.com/general/latest/gr/rande.html Regions and Endpoints> . If you also specify a value for @DefaultSubnetId@ , the subnet must be in the same zone. For more information, see the @VpcId@ parameter description. 
 --
 -- * 'cAttributes' - A list of stack attributes and values as key/value pairs to be added to the cloned stack.
 --
@@ -132,7 +131,7 @@ data CloneStack =
 --
 -- * 'cUseCustomCookbooks' - Whether to use custom cookbooks.
 --
--- * 'cDefaultSubnetId' - The stack's default VPC subnet ID. This parameter is required if you specify a value for the @VpcId@ parameter. All instances are launched into this subnet unless you specify otherwise when you create the instance. If you also specify a value for @DefaultAvailabilityZone@ , the subnet must be in that zone. For information on default values and when this parameter is required, see the @VpcId@ parameter description.
+-- * 'cDefaultSubnetId' - The stack's default VPC subnet ID. This parameter is required if you specify a value for the @VpcId@ parameter. All instances are launched into this subnet unless you specify otherwise when you create the instance. If you also specify a value for @DefaultAvailabilityZone@ , the subnet must be in that zone. For information on default values and when this parameter is required, see the @VpcId@ parameter description. 
 --
 -- * 'cRegion' - The cloned stack AWS region, such as "ap-northeast-2". For more information about AWS regions, see <http://docs.aws.amazon.com/general/latest/gr/rande.html Regions and Endpoints> .
 --
@@ -147,32 +146,25 @@ cloneStack
     :: Text -- ^ 'cSourceStackId'
     -> Text -- ^ 'cServiceRoleARN'
     -> CloneStack
-cloneStack pSourceStackId_ pServiceRoleARN_ =
-  CloneStack'
-    { _cDefaultInstanceProfileARN = Nothing
-    , _cCloneAppIds = Nothing
-    , _cDefaultRootDeviceType = Nothing
-    , _cVPCId = Nothing
-    , _cChefConfiguration = Nothing
-    , _cAgentVersion = Nothing
-    , _cDefaultSSHKeyName = Nothing
-    , _cCustomJSON = Nothing
-    , _cClonePermissions = Nothing
-    , _cCustomCookbooksSource = Nothing
-    , _cDefaultAvailabilityZone = Nothing
-    , _cAttributes = Nothing
-    , _cName = Nothing
-    , _cDefaultOS = Nothing
-    , _cUseOpsworksSecurityGroups = Nothing
-    , _cUseCustomCookbooks = Nothing
-    , _cDefaultSubnetId = Nothing
-    , _cRegion = Nothing
-    , _cConfigurationManager = Nothing
-    , _cHostnameTheme = Nothing
-    , _cSourceStackId = pSourceStackId_
-    , _cServiceRoleARN = pServiceRoleARN_
-    }
-
+cloneStack pSourceStackId_ pServiceRoleARN_
+  = CloneStack'{_cDefaultInstanceProfileARN = Nothing,
+                _cCloneAppIds = Nothing,
+                _cDefaultRootDeviceType = Nothing, _cVPCId = Nothing,
+                _cChefConfiguration = Nothing,
+                _cAgentVersion = Nothing,
+                _cDefaultSSHKeyName = Nothing,
+                _cCustomJSON = Nothing, _cClonePermissions = Nothing,
+                _cCustomCookbooksSource = Nothing,
+                _cDefaultAvailabilityZone = Nothing,
+                _cAttributes = Nothing, _cName = Nothing,
+                _cDefaultOS = Nothing,
+                _cUseOpsworksSecurityGroups = Nothing,
+                _cUseCustomCookbooks = Nothing,
+                _cDefaultSubnetId = Nothing, _cRegion = Nothing,
+                _cConfigurationManager = Nothing,
+                _cHostnameTheme = Nothing,
+                _cSourceStackId = pSourceStackId_,
+                _cServiceRoleARN = pServiceRoleARN_}
 
 -- | The Amazon Resource Name (ARN) of an IAM profile that is the default profile for all of the stack's EC2 instances. For more information about IAM ARNs, see <http://docs.aws.amazon.com/IAM/latest/UserGuide/Using_Identifiers.html Using Identifiers> .
 cDefaultInstanceProfileARN :: Lens' CloneStack (Maybe Text)
@@ -186,7 +178,7 @@ cCloneAppIds = lens _cCloneAppIds (\ s a -> s{_cCloneAppIds = a}) . _Default . _
 cDefaultRootDeviceType :: Lens' CloneStack (Maybe RootDeviceType)
 cDefaultRootDeviceType = lens _cDefaultRootDeviceType (\ s a -> s{_cDefaultRootDeviceType = a})
 
--- | The ID of the VPC that the cloned stack is to be launched into. It must be in the specified region. All instances are launched into this VPC, and you cannot change the ID later.     * If your account supports EC2 Classic, the default value is no VPC.     * If your account does not support EC2 Classic, the default value is the default VPC for the specified region. If the VPC ID corresponds to a default VPC and you have specified either the @DefaultAvailabilityZone@ or the @DefaultSubnetId@ parameter only, AWS OpsWorks Stacks infers the value of the other parameter. If you specify neither parameter, AWS OpsWorks Stacks sets these parameters to the first valid Availability Zone for the specified region and the corresponding default VPC subnet ID, respectively.  If you specify a nondefault VPC ID, note the following:     * It must belong to a VPC in your account that is in the specified region.     * You must specify a value for @DefaultSubnetId@ . For more information on how to use AWS OpsWorks Stacks with a VPC, see <http://docs.aws.amazon.com/opsworks/latest/userguide/workingstacks-vpc.html Running a Stack in a VPC> . For more information on default VPC and EC2 Classic, see <http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ec2-supported-platforms.html Supported Platforms> .
+-- | The ID of the VPC that the cloned stack is to be launched into. It must be in the specified region. All instances are launched into this VPC, and you cannot change the ID later.     * If your account supports EC2 Classic, the default value is no VPC.     * If your account does not support EC2 Classic, the default value is the default VPC for the specified region. If the VPC ID corresponds to a default VPC and you have specified either the @DefaultAvailabilityZone@ or the @DefaultSubnetId@ parameter only, AWS OpsWorks Stacks infers the value of the other parameter. If you specify neither parameter, AWS OpsWorks Stacks sets these parameters to the first valid Availability Zone for the specified region and the corresponding default VPC subnet ID, respectively.  If you specify a nondefault VPC ID, note the following:     * It must belong to a VPC in your account that is in the specified region.     * You must specify a value for @DefaultSubnetId@ . For more information on how to use AWS OpsWorks Stacks with a VPC, see <http://docs.aws.amazon.com/opsworks/latest/userguide/workingstacks-vpc.html Running a Stack in a VPC> . For more information on default VPC and EC2 Classic, see <http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ec2-supported-platforms.html Supported Platforms> . 
 cVPCId :: Lens' CloneStack (Maybe Text)
 cVPCId = lens _cVPCId (\ s a -> s{_cVPCId = a})
 
@@ -198,11 +190,11 @@ cChefConfiguration = lens _cChefConfiguration (\ s a -> s{_cChefConfiguration = 
 cAgentVersion :: Lens' CloneStack (Maybe Text)
 cAgentVersion = lens _cAgentVersion (\ s a -> s{_cAgentVersion = a})
 
--- | A default Amazon EC2 key pair name. The default value is none. If you specify a key pair name, AWS OpsWorks installs the public key on the instance and you can use the private key with an SSH client to log in to the instance. For more information, see <http://docs.aws.amazon.com/opsworks/latest/userguide/workinginstances-ssh.html Using SSH to Communicate with an Instance> and <http://docs.aws.amazon.com/opsworks/latest/userguide/security-ssh-access.html Managing SSH Access> . You can override this setting by specifying a different key pair, or no key pair, when you <http://docs.aws.amazon.com/opsworks/latest/userguide/workinginstances-add.html create an instance> .
+-- | A default Amazon EC2 key pair name. The default value is none. If you specify a key pair name, AWS OpsWorks installs the public key on the instance and you can use the private key with an SSH client to log in to the instance. For more information, see <http://docs.aws.amazon.com/opsworks/latest/userguide/workinginstances-ssh.html Using SSH to Communicate with an Instance> and <http://docs.aws.amazon.com/opsworks/latest/userguide/security-ssh-access.html Managing SSH Access> . You can override this setting by specifying a different key pair, or no key pair, when you <http://docs.aws.amazon.com/opsworks/latest/userguide/workinginstances-add.html create an instance> . 
 cDefaultSSHKeyName :: Lens' CloneStack (Maybe Text)
 cDefaultSSHKeyName = lens _cDefaultSSHKeyName (\ s a -> s{_cDefaultSSHKeyName = a})
 
--- | A string that contains user-defined, custom JSON. It is used to override the corresponding default stack configuration JSON values. The string should be in the following format: @"{\"key1\": \"value1\", \"key2\": \"value2\",...}"@  For more information on custom JSON, see <http://docs.aws.amazon.com/opsworks/latest/userguide/workingstacks-json.html Use Custom JSON to Modify the Stack Configuration Attributes>
+-- | A string that contains user-defined, custom JSON. It is used to override the corresponding default stack configuration JSON values. The string should be in the following format: @"{\"key1\": \"value1\", \"key2\": \"value2\",...}"@  For more information on custom JSON, see <http://docs.aws.amazon.com/opsworks/latest/userguide/workingstacks-json.html Use Custom JSON to Modify the Stack Configuration Attributes> 
 cCustomJSON :: Lens' CloneStack (Maybe Text)
 cCustomJSON = lens _cCustomJSON (\ s a -> s{_cCustomJSON = a})
 
@@ -214,7 +206,7 @@ cClonePermissions = lens _cClonePermissions (\ s a -> s{_cClonePermissions = a})
 cCustomCookbooksSource :: Lens' CloneStack (Maybe Source)
 cCustomCookbooksSource = lens _cCustomCookbooksSource (\ s a -> s{_cCustomCookbooksSource = a})
 
--- | The cloned stack's default Availability Zone, which must be in the specified region. For more information, see <http://docs.aws.amazon.com/general/latest/gr/rande.html Regions and Endpoints> . If you also specify a value for @DefaultSubnetId@ , the subnet must be in the same zone. For more information, see the @VpcId@ parameter description.
+-- | The cloned stack's default Availability Zone, which must be in the specified region. For more information, see <http://docs.aws.amazon.com/general/latest/gr/rande.html Regions and Endpoints> . If you also specify a value for @DefaultSubnetId@ , the subnet must be in the same zone. For more information, see the @VpcId@ parameter description. 
 cDefaultAvailabilityZone :: Lens' CloneStack (Maybe Text)
 cDefaultAvailabilityZone = lens _cDefaultAvailabilityZone (\ s a -> s{_cDefaultAvailabilityZone = a})
 
@@ -238,7 +230,7 @@ cUseOpsworksSecurityGroups = lens _cUseOpsworksSecurityGroups (\ s a -> s{_cUseO
 cUseCustomCookbooks :: Lens' CloneStack (Maybe Bool)
 cUseCustomCookbooks = lens _cUseCustomCookbooks (\ s a -> s{_cUseCustomCookbooks = a})
 
--- | The stack's default VPC subnet ID. This parameter is required if you specify a value for the @VpcId@ parameter. All instances are launched into this subnet unless you specify otherwise when you create the instance. If you also specify a value for @DefaultAvailabilityZone@ , the subnet must be in that zone. For information on default values and when this parameter is required, see the @VpcId@ parameter description.
+-- | The stack's default VPC subnet ID. This parameter is required if you specify a value for the @VpcId@ parameter. All instances are launched into this subnet unless you specify otherwise when you create the instance. If you also specify a value for @DefaultAvailabilityZone@ , the subnet must be in that zone. For information on default values and when this parameter is required, see the @VpcId@ parameter description. 
 cDefaultSubnetId :: Lens' CloneStack (Maybe Text)
 cDefaultSubnetId = lens _cDefaultSubnetId (\ s a -> s{_cDefaultSubnetId = a})
 
@@ -328,13 +320,10 @@ instance ToQuery CloneStack where
 --
 --
 -- /See:/ 'cloneStackResponse' smart constructor.
-data CloneStackResponse =
-  CloneStackResponse'
-    { _csrsStackId        :: !(Maybe Text)
-    , _csrsResponseStatus :: !Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data CloneStackResponse = CloneStackResponse'{_csrsStackId
+                                              :: !(Maybe Text),
+                                              _csrsResponseStatus :: !Int}
+                            deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'CloneStackResponse' with the minimum fields required to make a request.
 --
@@ -346,10 +335,9 @@ data CloneStackResponse =
 cloneStackResponse
     :: Int -- ^ 'csrsResponseStatus'
     -> CloneStackResponse
-cloneStackResponse pResponseStatus_ =
-  CloneStackResponse'
-    {_csrsStackId = Nothing, _csrsResponseStatus = pResponseStatus_}
-
+cloneStackResponse pResponseStatus_
+  = CloneStackResponse'{_csrsStackId = Nothing,
+                        _csrsResponseStatus = pResponseStatus_}
 
 -- | The cloned stack ID.
 csrsStackId :: Lens' CloneStackResponse (Maybe Text)

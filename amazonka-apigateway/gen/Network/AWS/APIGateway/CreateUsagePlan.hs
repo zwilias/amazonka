@@ -18,7 +18,7 @@
 -- Stability   : auto-generated
 -- Portability : non-portable (GHC extensions)
 --
--- Creates a usage plan with the throttle and quota limits, as well as the associated API stages, specified in the payload.
+-- Creates a usage plan with the throttle and quota limits, as well as the associated API stages, specified in the payload. 
 --
 --
 module Network.AWS.APIGateway.CreateUsagePlan
@@ -49,7 +49,6 @@ module Network.AWS.APIGateway.CreateUsagePlan
     ) where
 
 import Network.AWS.APIGateway.Types
-import Network.AWS.APIGateway.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.Request
@@ -60,17 +59,15 @@ import Network.AWS.Response
 --
 --
 -- /See:/ 'createUsagePlan' smart constructor.
-data CreateUsagePlan =
-  CreateUsagePlan'
-    { _cupApiStages   :: !(Maybe [APIStage])
-    , _cupThrottle    :: !(Maybe ThrottleSettings)
-    , _cupQuota       :: !(Maybe QuotaSettings)
-    , _cupDescription :: !(Maybe Text)
-    , _cupTags        :: !(Maybe (Map Text Text))
-    , _cupName        :: !Text
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data CreateUsagePlan = CreateUsagePlan'{_cupApiStages
+                                        :: !(Maybe [APIStage]),
+                                        _cupThrottle ::
+                                        !(Maybe ThrottleSettings),
+                                        _cupQuota :: !(Maybe QuotaSettings),
+                                        _cupDescription :: !(Maybe Text),
+                                        _cupTags :: !(Maybe (Map Text Text)),
+                                        _cupName :: !Text}
+                         deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'CreateUsagePlan' with the minimum fields required to make a request.
 --
@@ -90,16 +87,11 @@ data CreateUsagePlan =
 createUsagePlan
     :: Text -- ^ 'cupName'
     -> CreateUsagePlan
-createUsagePlan pName_ =
-  CreateUsagePlan'
-    { _cupApiStages = Nothing
-    , _cupThrottle = Nothing
-    , _cupQuota = Nothing
-    , _cupDescription = Nothing
-    , _cupTags = Nothing
-    , _cupName = pName_
-    }
-
+createUsagePlan pName_
+  = CreateUsagePlan'{_cupApiStages = Nothing,
+                     _cupThrottle = Nothing, _cupQuota = Nothing,
+                     _cupDescription = Nothing, _cupTags = Nothing,
+                     _cupName = pName_}
 
 -- | The associated API stages of the usage plan.
 cupApiStages :: Lens' CreateUsagePlan [APIStage]

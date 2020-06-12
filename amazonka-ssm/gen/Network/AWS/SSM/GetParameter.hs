@@ -18,7 +18,7 @@
 -- Stability   : auto-generated
 -- Portability : non-portable (GHC extensions)
 --
--- Get information about a parameter by using the parameter name.
+-- Get information about a parameter by using the parameter name. 
 --
 --
 module Network.AWS.SSM.GetParameter
@@ -43,16 +43,12 @@ import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 import Network.AWS.SSM.Types
-import Network.AWS.SSM.Types.Product
 
 -- | /See:/ 'getParameter' smart constructor.
-data GetParameter =
-  GetParameter'
-    { _gWithDecryption :: !(Maybe Bool)
-    , _gName           :: !Text
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data GetParameter = GetParameter'{_gWithDecryption ::
+                                  !(Maybe Bool),
+                                  _gName :: !Text}
+                      deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'GetParameter' with the minimum fields required to make a request.
 --
@@ -64,9 +60,9 @@ data GetParameter =
 getParameter
     :: Text -- ^ 'gName'
     -> GetParameter
-getParameter pName_ =
-  GetParameter' {_gWithDecryption = Nothing, _gName = pName_}
-
+getParameter pName_
+  = GetParameter'{_gWithDecryption = Nothing,
+                  _gName = pName_}
 
 -- | Return decrypted values for secure string parameters. This flag is ignored for String and StringList parameter types.
 gWithDecryption :: Lens' GetParameter (Maybe Bool)
@@ -112,13 +108,10 @@ instance ToQuery GetParameter where
         toQuery = const mempty
 
 -- | /See:/ 'getParameterResponse' smart constructor.
-data GetParameterResponse =
-  GetParameterResponse'
-    { _gprsParameter      :: !(Maybe Parameter)
-    , _gprsResponseStatus :: !Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data GetParameterResponse = GetParameterResponse'{_gprsParameter
+                                                  :: !(Maybe Parameter),
+                                                  _gprsResponseStatus :: !Int}
+                              deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'GetParameterResponse' with the minimum fields required to make a request.
 --
@@ -130,10 +123,9 @@ data GetParameterResponse =
 getParameterResponse
     :: Int -- ^ 'gprsResponseStatus'
     -> GetParameterResponse
-getParameterResponse pResponseStatus_ =
-  GetParameterResponse'
-    {_gprsParameter = Nothing, _gprsResponseStatus = pResponseStatus_}
-
+getParameterResponse pResponseStatus_
+  = GetParameterResponse'{_gprsParameter = Nothing,
+                          _gprsResponseStatus = pResponseStatus_}
 
 -- | Information about a parameter.
 gprsParameter :: Lens' GetParameterResponse (Maybe Parameter)

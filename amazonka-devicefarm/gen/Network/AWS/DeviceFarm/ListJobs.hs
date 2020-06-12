@@ -42,7 +42,6 @@ module Network.AWS.DeviceFarm.ListJobs
     ) where
 
 import Network.AWS.DeviceFarm.Types
-import Network.AWS.DeviceFarm.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Pager
 import Network.AWS.Prelude
@@ -54,13 +53,10 @@ import Network.AWS.Response
 --
 --
 -- /See:/ 'listJobs' smart constructor.
-data ListJobs =
-  ListJobs'
-    { _ljNextToken :: !(Maybe Text)
-    , _ljArn       :: !Text
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data ListJobs = ListJobs'{_ljNextToken ::
+                          !(Maybe Text),
+                          _ljArn :: !Text}
+                  deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'ListJobs' with the minimum fields required to make a request.
 --
@@ -72,8 +68,8 @@ data ListJobs =
 listJobs
     :: Text -- ^ 'ljArn'
     -> ListJobs
-listJobs pArn_ = ListJobs' {_ljNextToken = Nothing, _ljArn = pArn_}
-
+listJobs pArn_
+  = ListJobs'{_ljNextToken = Nothing, _ljArn = pArn_}
 
 -- | An identifier that was returned from the previous call to this operation, which can be used to return the next set of items in the list.
 ljNextToken :: Lens' ListJobs (Maybe Text)
@@ -131,14 +127,11 @@ instance ToQuery ListJobs where
 --
 --
 -- /See:/ 'listJobsResponse' smart constructor.
-data ListJobsResponse =
-  ListJobsResponse'
-    { _ljrsJobs           :: !(Maybe [Job])
-    , _ljrsNextToken      :: !(Maybe Text)
-    , _ljrsResponseStatus :: !Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data ListJobsResponse = ListJobsResponse'{_ljrsJobs
+                                          :: !(Maybe [Job]),
+                                          _ljrsNextToken :: !(Maybe Text),
+                                          _ljrsResponseStatus :: !Int}
+                          deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'ListJobsResponse' with the minimum fields required to make a request.
 --
@@ -152,13 +145,10 @@ data ListJobsResponse =
 listJobsResponse
     :: Int -- ^ 'ljrsResponseStatus'
     -> ListJobsResponse
-listJobsResponse pResponseStatus_ =
-  ListJobsResponse'
-    { _ljrsJobs = Nothing
-    , _ljrsNextToken = Nothing
-    , _ljrsResponseStatus = pResponseStatus_
-    }
-
+listJobsResponse pResponseStatus_
+  = ListJobsResponse'{_ljrsJobs = Nothing,
+                      _ljrsNextToken = Nothing,
+                      _ljrsResponseStatus = pResponseStatus_}
 
 -- | Information about the jobs.
 ljrsJobs :: Lens' ListJobsResponse [Job]

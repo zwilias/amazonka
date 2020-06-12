@@ -45,17 +45,13 @@ import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 import Network.AWS.WorkDocs.Types
-import Network.AWS.WorkDocs.Types.Product
 
 -- | /See:/ 'getFolder' smart constructor.
-data GetFolder =
-  GetFolder'
-    { _gfAuthenticationToken   :: !(Maybe (Sensitive Text))
-    , _gfIncludeCustomMetadata :: !(Maybe Bool)
-    , _gfFolderId              :: !Text
-    }
-  deriving (Eq, Show, Data, Typeable, Generic)
-
+data GetFolder = GetFolder'{_gfAuthenticationToken ::
+                            !(Maybe (Sensitive Text)),
+                            _gfIncludeCustomMetadata :: !(Maybe Bool),
+                            _gfFolderId :: !Text}
+                   deriving (Eq, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'GetFolder' with the minimum fields required to make a request.
 --
@@ -69,13 +65,10 @@ data GetFolder =
 getFolder
     :: Text -- ^ 'gfFolderId'
     -> GetFolder
-getFolder pFolderId_ =
-  GetFolder'
-    { _gfAuthenticationToken = Nothing
-    , _gfIncludeCustomMetadata = Nothing
-    , _gfFolderId = pFolderId_
-    }
-
+getFolder pFolderId_
+  = GetFolder'{_gfAuthenticationToken = Nothing,
+               _gfIncludeCustomMetadata = Nothing,
+               _gfFolderId = pFolderId_}
 
 -- | Amazon WorkDocs authentication token. Do not set this field when using administrative API actions, as in accessing the API using AWS credentials.
 gfAuthenticationToken :: Lens' GetFolder (Maybe Text)
@@ -121,14 +114,12 @@ instance ToQuery GetFolder where
               ["includeCustomMetadata" =: _gfIncludeCustomMetadata]
 
 -- | /See:/ 'getFolderResponse' smart constructor.
-data GetFolderResponse =
-  GetFolderResponse'
-    { _gfrsCustomMetadata :: !(Maybe (Map Text Text))
-    , _gfrsMetadata       :: !(Maybe FolderMetadata)
-    , _gfrsResponseStatus :: !Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data GetFolderResponse = GetFolderResponse'{_gfrsCustomMetadata
+                                            :: !(Maybe (Map Text Text)),
+                                            _gfrsMetadata ::
+                                            !(Maybe FolderMetadata),
+                                            _gfrsResponseStatus :: !Int}
+                           deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'GetFolderResponse' with the minimum fields required to make a request.
 --
@@ -142,13 +133,10 @@ data GetFolderResponse =
 getFolderResponse
     :: Int -- ^ 'gfrsResponseStatus'
     -> GetFolderResponse
-getFolderResponse pResponseStatus_ =
-  GetFolderResponse'
-    { _gfrsCustomMetadata = Nothing
-    , _gfrsMetadata = Nothing
-    , _gfrsResponseStatus = pResponseStatus_
-    }
-
+getFolderResponse pResponseStatus_
+  = GetFolderResponse'{_gfrsCustomMetadata = Nothing,
+                       _gfrsMetadata = Nothing,
+                       _gfrsResponseStatus = pResponseStatus_}
 
 -- | The custom metadata on the folder.
 gfrsCustomMetadata :: Lens' GetFolderResponse (HashMap Text Text)

@@ -39,7 +39,6 @@ module Network.AWS.DeviceFarm.CreateProject
     ) where
 
 import Network.AWS.DeviceFarm.Types
-import Network.AWS.DeviceFarm.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.Request
@@ -50,13 +49,10 @@ import Network.AWS.Response
 --
 --
 -- /See:/ 'createProject' smart constructor.
-data CreateProject =
-  CreateProject'
-    { _cpDefaultJobTimeoutMinutes :: !(Maybe Int)
-    , _cpName                     :: !Text
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data CreateProject = CreateProject'{_cpDefaultJobTimeoutMinutes
+                                    :: !(Maybe Int),
+                                    _cpName :: !Text}
+                       deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'CreateProject' with the minimum fields required to make a request.
 --
@@ -68,9 +64,10 @@ data CreateProject =
 createProject
     :: Text -- ^ 'cpName'
     -> CreateProject
-createProject pName_ =
-  CreateProject' {_cpDefaultJobTimeoutMinutes = Nothing, _cpName = pName_}
-
+createProject pName_
+  = CreateProject'{_cpDefaultJobTimeoutMinutes =
+                     Nothing,
+                   _cpName = pName_}
 
 -- | Sets the execution timeout value (in minutes) for a project. All test runs in this project use the specified execution timeout value unless overridden when scheduling a run.
 cpDefaultJobTimeoutMinutes :: Lens' CreateProject (Maybe Int)
@@ -121,13 +118,11 @@ instance ToQuery CreateProject where
 --
 --
 -- /See:/ 'createProjectResponse' smart constructor.
-data CreateProjectResponse =
-  CreateProjectResponse'
-    { _cprsProject        :: !(Maybe Project)
-    , _cprsResponseStatus :: !Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data CreateProjectResponse = CreateProjectResponse'{_cprsProject
+                                                    :: !(Maybe Project),
+                                                    _cprsResponseStatus :: !Int}
+                               deriving (Eq, Read, Show, Data, Typeable,
+                                         Generic)
 
 -- | Creates a value of 'CreateProjectResponse' with the minimum fields required to make a request.
 --
@@ -139,10 +134,9 @@ data CreateProjectResponse =
 createProjectResponse
     :: Int -- ^ 'cprsResponseStatus'
     -> CreateProjectResponse
-createProjectResponse pResponseStatus_ =
-  CreateProjectResponse'
-    {_cprsProject = Nothing, _cprsResponseStatus = pResponseStatus_}
-
+createProjectResponse pResponseStatus_
+  = CreateProjectResponse'{_cprsProject = Nothing,
+                           _cprsResponseStatus = pResponseStatus_}
 
 -- | The newly created project.
 cprsProject :: Lens' CreateProjectResponse (Maybe Project)

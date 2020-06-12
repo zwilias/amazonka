@@ -18,7 +18,7 @@
 -- Stability   : auto-generated
 -- Portability : non-portable (GHC extensions)
 --
--- Creates a new 'Stage' resource that references a pre-existing 'Deployment' for the API.
+-- Creates a new 'Stage' resource that references a pre-existing 'Deployment' for the API. 
 --
 --
 module Network.AWS.APIGateway.CreateStage
@@ -63,7 +63,6 @@ module Network.AWS.APIGateway.CreateStage
     ) where
 
 import Network.AWS.APIGateway.Types
-import Network.AWS.APIGateway.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.Request
@@ -74,22 +73,18 @@ import Network.AWS.Response
 --
 --
 -- /See:/ 'createStage' smart constructor.
-data CreateStage =
-  CreateStage'
-    { _cVariables            :: !(Maybe (Map Text Text))
-    , _cDocumentationVersion :: !(Maybe Text)
-    , _cTracingEnabled       :: !(Maybe Bool)
-    , _cCacheClusterSize     :: !(Maybe CacheClusterSize)
-    , _cCanarySettings       :: !(Maybe CanarySettings)
-    , _cCacheClusterEnabled  :: !(Maybe Bool)
-    , _cDescription          :: !(Maybe Text)
-    , _cTags                 :: !(Maybe (Map Text Text))
-    , _cRestAPIId            :: !Text
-    , _cStageName            :: !Text
-    , _cDeploymentId         :: !Text
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data CreateStage = CreateStage'{_cVariables ::
+                                !(Maybe (Map Text Text)),
+                                _cDocumentationVersion :: !(Maybe Text),
+                                _cTracingEnabled :: !(Maybe Bool),
+                                _cCacheClusterSize :: !(Maybe CacheClusterSize),
+                                _cCanarySettings :: !(Maybe CanarySettings),
+                                _cCacheClusterEnabled :: !(Maybe Bool),
+                                _cDescription :: !(Maybe Text),
+                                _cTags :: !(Maybe (Map Text Text)),
+                                _cRestAPIId :: !Text, _cStageName :: !Text,
+                                _cDeploymentId :: !Text}
+                     deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'CreateStage' with the minimum fields required to make a request.
 --
@@ -121,21 +116,16 @@ createStage
     -> Text -- ^ 'cStageName'
     -> Text -- ^ 'cDeploymentId'
     -> CreateStage
-createStage pRestAPIId_ pStageName_ pDeploymentId_ =
-  CreateStage'
-    { _cVariables = Nothing
-    , _cDocumentationVersion = Nothing
-    , _cTracingEnabled = Nothing
-    , _cCacheClusterSize = Nothing
-    , _cCanarySettings = Nothing
-    , _cCacheClusterEnabled = Nothing
-    , _cDescription = Nothing
-    , _cTags = Nothing
-    , _cRestAPIId = pRestAPIId_
-    , _cStageName = pStageName_
-    , _cDeploymentId = pDeploymentId_
-    }
-
+createStage pRestAPIId_ pStageName_ pDeploymentId_
+  = CreateStage'{_cVariables = Nothing,
+                 _cDocumentationVersion = Nothing,
+                 _cTracingEnabled = Nothing,
+                 _cCacheClusterSize = Nothing,
+                 _cCanarySettings = Nothing,
+                 _cCacheClusterEnabled = Nothing,
+                 _cDescription = Nothing, _cTags = Nothing,
+                 _cRestAPIId = pRestAPIId_, _cStageName = pStageName_,
+                 _cDeploymentId = pDeploymentId_}
 
 -- | A map that defines the stage variables for the new 'Stage' resource. Variable names can have alphanumeric and underscore characters, and the values must match @[A-Za-z0-9-._~:/?#&=,]+@ .
 cVariables :: Lens' CreateStage (HashMap Text Text)

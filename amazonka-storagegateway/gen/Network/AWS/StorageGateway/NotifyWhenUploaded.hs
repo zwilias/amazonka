@@ -23,7 +23,7 @@
 --
 -- AWS Storage Gateway can send a notification through Amazon CloudWatch Events when all files written to your file share up to that point in time have been uploaded to Amazon S3. These files include files written to the NFS file share up to the time that you make a request for notification. When the upload is done, Storage Gateway sends you notification through an Amazon CloudWatch Event. You can configure CloudWatch Events to send the notification through event targets such as Amazon SNS or AWS Lambda function. This operation is only supported in the file gateway type.
 --
--- For more information, see Getting File Upload Notification in the Storage Gateway User Guide (https://docs.aws.amazon.com/storagegateway/latest/userguide/monitoring-file-gateway.html#get-upload-notification).
+-- For more information, see Getting File Upload Notification in the Storage Gateway User Guide (https://docs.aws.amazon.com/storagegateway/latest/userguide/monitoring-file-gateway.html#get-upload-notification). 
 --
 module Network.AWS.StorageGateway.NotifyWhenUploaded
     (
@@ -47,15 +47,12 @@ import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 import Network.AWS.StorageGateway.Types
-import Network.AWS.StorageGateway.Types.Product
 
 -- | /See:/ 'notifyWhenUploaded' smart constructor.
-newtype NotifyWhenUploaded =
-  NotifyWhenUploaded'
-    { _nwuFileShareARN :: Text
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+newtype NotifyWhenUploaded = NotifyWhenUploaded'{_nwuFileShareARN
+                                                 :: Text}
+                               deriving (Eq, Read, Show, Data, Typeable,
+                                         Generic)
 
 -- | Creates a value of 'NotifyWhenUploaded' with the minimum fields required to make a request.
 --
@@ -65,9 +62,9 @@ newtype NotifyWhenUploaded =
 notifyWhenUploaded
     :: Text -- ^ 'nwuFileShareARN'
     -> NotifyWhenUploaded
-notifyWhenUploaded pFileShareARN_ =
-  NotifyWhenUploaded' {_nwuFileShareARN = pFileShareARN_}
-
+notifyWhenUploaded pFileShareARN_
+  = NotifyWhenUploaded'{_nwuFileShareARN =
+                          pFileShareARN_}
 
 -- | Undocumented member.
 nwuFileShareARN :: Lens' NotifyWhenUploaded Text
@@ -111,14 +108,14 @@ instance ToQuery NotifyWhenUploaded where
         toQuery = const mempty
 
 -- | /See:/ 'notifyWhenUploadedResponse' smart constructor.
-data NotifyWhenUploadedResponse =
-  NotifyWhenUploadedResponse'
-    { _nwursFileShareARN   :: !(Maybe Text)
-    , _nwursNotificationId :: !(Maybe Text)
-    , _nwursResponseStatus :: !Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data NotifyWhenUploadedResponse = NotifyWhenUploadedResponse'{_nwursFileShareARN
+                                                              :: !(Maybe Text),
+                                                              _nwursNotificationId
+                                                              :: !(Maybe Text),
+                                                              _nwursResponseStatus
+                                                              :: !Int}
+                                    deriving (Eq, Read, Show, Data, Typeable,
+                                              Generic)
 
 -- | Creates a value of 'NotifyWhenUploadedResponse' with the minimum fields required to make a request.
 --
@@ -132,13 +129,11 @@ data NotifyWhenUploadedResponse =
 notifyWhenUploadedResponse
     :: Int -- ^ 'nwursResponseStatus'
     -> NotifyWhenUploadedResponse
-notifyWhenUploadedResponse pResponseStatus_ =
-  NotifyWhenUploadedResponse'
-    { _nwursFileShareARN = Nothing
-    , _nwursNotificationId = Nothing
-    , _nwursResponseStatus = pResponseStatus_
-    }
-
+notifyWhenUploadedResponse pResponseStatus_
+  = NotifyWhenUploadedResponse'{_nwursFileShareARN =
+                                  Nothing,
+                                _nwursNotificationId = Nothing,
+                                _nwursResponseStatus = pResponseStatus_}
 
 -- | Undocumented member.
 nwursFileShareARN :: Lens' NotifyWhenUploadedResponse (Maybe Text)

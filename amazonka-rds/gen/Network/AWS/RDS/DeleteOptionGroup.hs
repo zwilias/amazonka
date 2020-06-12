@@ -37,21 +37,17 @@ module Network.AWS.RDS.DeleteOptionGroup
 import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.RDS.Types
-import Network.AWS.RDS.Types.Product
 import Network.AWS.Request
 import Network.AWS.Response
 
--- |
+-- | 
 --
 --
 --
 -- /See:/ 'deleteOptionGroup' smart constructor.
-newtype DeleteOptionGroup =
-  DeleteOptionGroup'
-    { _dOptionGroupName :: Text
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+newtype DeleteOptionGroup = DeleteOptionGroup'{_dOptionGroupName
+                                               :: Text}
+                              deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'DeleteOptionGroup' with the minimum fields required to make a request.
 --
@@ -61,9 +57,9 @@ newtype DeleteOptionGroup =
 deleteOptionGroup
     :: Text -- ^ 'dOptionGroupName'
     -> DeleteOptionGroup
-deleteOptionGroup pOptionGroupName_ =
-  DeleteOptionGroup' {_dOptionGroupName = pOptionGroupName_}
-
+deleteOptionGroup pOptionGroupName_
+  = DeleteOptionGroup'{_dOptionGroupName =
+                         pOptionGroupName_}
 
 -- | The name of the option group to be deleted.
 dOptionGroupName :: Lens' DeleteOptionGroup Text
@@ -92,16 +88,15 @@ instance ToQuery DeleteOptionGroup where
                "OptionGroupName" =: _dOptionGroupName]
 
 -- | /See:/ 'deleteOptionGroupResponse' smart constructor.
-data DeleteOptionGroupResponse =
-  DeleteOptionGroupResponse'
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data DeleteOptionGroupResponse = DeleteOptionGroupResponse'
+                                   deriving (Eq, Read, Show, Data, Typeable,
+                                             Generic)
 
 -- | Creates a value of 'DeleteOptionGroupResponse' with the minimum fields required to make a request.
 --
 deleteOptionGroupResponse
     :: DeleteOptionGroupResponse
-deleteOptionGroupResponse = DeleteOptionGroupResponse'
-
+deleteOptionGroupResponse
+  = DeleteOptionGroupResponse'
 
 instance NFData DeleteOptionGroupResponse where

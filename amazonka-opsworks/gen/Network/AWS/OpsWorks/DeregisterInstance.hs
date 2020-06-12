@@ -38,18 +38,15 @@ module Network.AWS.OpsWorks.DeregisterInstance
 
 import Network.AWS.Lens
 import Network.AWS.OpsWorks.Types
-import Network.AWS.OpsWorks.Types.Product
 import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 
 -- | /See:/ 'deregisterInstance' smart constructor.
-newtype DeregisterInstance =
-  DeregisterInstance'
-    { _dInstanceId :: Text
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+newtype DeregisterInstance = DeregisterInstance'{_dInstanceId
+                                                 :: Text}
+                               deriving (Eq, Read, Show, Data, Typeable,
+                                         Generic)
 
 -- | Creates a value of 'DeregisterInstance' with the minimum fields required to make a request.
 --
@@ -59,9 +56,8 @@ newtype DeregisterInstance =
 deregisterInstance
     :: Text -- ^ 'dInstanceId'
     -> DeregisterInstance
-deregisterInstance pInstanceId_ =
-  DeregisterInstance' {_dInstanceId = pInstanceId_}
-
+deregisterInstance pInstanceId_
+  = DeregisterInstance'{_dInstanceId = pInstanceId_}
 
 -- | The instance ID.
 dInstanceId :: Lens' DeregisterInstance Text
@@ -99,16 +95,15 @@ instance ToQuery DeregisterInstance where
         toQuery = const mempty
 
 -- | /See:/ 'deregisterInstanceResponse' smart constructor.
-data DeregisterInstanceResponse =
-  DeregisterInstanceResponse'
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data DeregisterInstanceResponse = DeregisterInstanceResponse'
+                                    deriving (Eq, Read, Show, Data, Typeable,
+                                              Generic)
 
 -- | Creates a value of 'DeregisterInstanceResponse' with the minimum fields required to make a request.
 --
 deregisterInstanceResponse
     :: DeregisterInstanceResponse
-deregisterInstanceResponse = DeregisterInstanceResponse'
-
+deregisterInstanceResponse
+  = DeregisterInstanceResponse'
 
 instance NFData DeregisterInstanceResponse where

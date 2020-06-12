@@ -70,8 +70,19 @@ library
         , Network.AWS.CognitoIdentity.Waiters
 
     other-modules:
-          Network.AWS.CognitoIdentity.Types.Product
-        , Network.AWS.CognitoIdentity.Types.Sum
+          Network.AWS.CognitoIdentity.Types.AmbiguousRoleResolutionType
+        , Network.AWS.CognitoIdentity.Types.CognitoErrorCode
+        , Network.AWS.CognitoIdentity.Types.CognitoIdentityProvider
+        , Network.AWS.CognitoIdentity.Types.Credentials
+        , Network.AWS.CognitoIdentity.Types.IdentityDescription
+        , Network.AWS.CognitoIdentity.Types.IdentityPool
+        , Network.AWS.CognitoIdentity.Types.IdentityPoolShortDescription
+        , Network.AWS.CognitoIdentity.Types.MappingRule
+        , Network.AWS.CognitoIdentity.Types.MappingRuleMatchType
+        , Network.AWS.CognitoIdentity.Types.RoleMapping
+        , Network.AWS.CognitoIdentity.Types.RoleMappingType
+        , Network.AWS.CognitoIdentity.Types.RulesConfigurationType
+        , Network.AWS.CognitoIdentity.Types.UnprocessedIdentityId
 
     build-depends:
           amazonka-core == 1.6.1.*

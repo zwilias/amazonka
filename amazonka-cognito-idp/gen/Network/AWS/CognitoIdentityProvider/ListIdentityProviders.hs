@@ -43,7 +43,6 @@ module Network.AWS.CognitoIdentityProvider.ListIdentityProviders
     ) where
 
 import Network.AWS.CognitoIdentityProvider.Types
-import Network.AWS.CognitoIdentityProvider.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Pager
 import Network.AWS.Prelude
@@ -51,14 +50,13 @@ import Network.AWS.Request
 import Network.AWS.Response
 
 -- | /See:/ 'listIdentityProviders' smart constructor.
-data ListIdentityProviders =
-  ListIdentityProviders'
-    { _lipNextToken  :: !(Maybe Text)
-    , _lipMaxResults :: !(Maybe Nat)
-    , _lipUserPoolId :: !Text
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data ListIdentityProviders = ListIdentityProviders'{_lipNextToken
+                                                    :: !(Maybe Text),
+                                                    _lipMaxResults ::
+                                                    !(Maybe Nat),
+                                                    _lipUserPoolId :: !Text}
+                               deriving (Eq, Read, Show, Data, Typeable,
+                                         Generic)
 
 -- | Creates a value of 'ListIdentityProviders' with the minimum fields required to make a request.
 --
@@ -72,13 +70,10 @@ data ListIdentityProviders =
 listIdentityProviders
     :: Text -- ^ 'lipUserPoolId'
     -> ListIdentityProviders
-listIdentityProviders pUserPoolId_ =
-  ListIdentityProviders'
-    { _lipNextToken = Nothing
-    , _lipMaxResults = Nothing
-    , _lipUserPoolId = pUserPoolId_
-    }
-
+listIdentityProviders pUserPoolId_
+  = ListIdentityProviders'{_lipNextToken = Nothing,
+                           _lipMaxResults = Nothing,
+                           _lipUserPoolId = pUserPoolId_}
 
 -- | A pagination token.
 lipNextToken :: Lens' ListIdentityProviders (Maybe Text)
@@ -139,14 +134,17 @@ instance ToQuery ListIdentityProviders where
         toQuery = const mempty
 
 -- | /See:/ 'listIdentityProvidersResponse' smart constructor.
-data ListIdentityProvidersResponse =
-  ListIdentityProvidersResponse'
-    { _liprsNextToken      :: !(Maybe Text)
-    , _liprsResponseStatus :: !Int
-    , _liprsProviders      :: ![ProviderDescription]
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data ListIdentityProvidersResponse = ListIdentityProvidersResponse'{_liprsNextToken
+                                                                    ::
+                                                                    !(Maybe
+                                                                        Text),
+                                                                    _liprsResponseStatus
+                                                                    :: !Int,
+                                                                    _liprsProviders
+                                                                    ::
+                                                                    ![ProviderDescription]}
+                                       deriving (Eq, Read, Show, Data, Typeable,
+                                                 Generic)
 
 -- | Creates a value of 'ListIdentityProvidersResponse' with the minimum fields required to make a request.
 --
@@ -160,13 +158,11 @@ data ListIdentityProvidersResponse =
 listIdentityProvidersResponse
     :: Int -- ^ 'liprsResponseStatus'
     -> ListIdentityProvidersResponse
-listIdentityProvidersResponse pResponseStatus_ =
-  ListIdentityProvidersResponse'
-    { _liprsNextToken = Nothing
-    , _liprsResponseStatus = pResponseStatus_
-    , _liprsProviders = mempty
-    }
-
+listIdentityProvidersResponse pResponseStatus_
+  = ListIdentityProvidersResponse'{_liprsNextToken =
+                                     Nothing,
+                                   _liprsResponseStatus = pResponseStatus_,
+                                   _liprsProviders = mempty}
 
 -- | A pagination token.
 liprsNextToken :: Lens' ListIdentityProvidersResponse (Maybe Text)

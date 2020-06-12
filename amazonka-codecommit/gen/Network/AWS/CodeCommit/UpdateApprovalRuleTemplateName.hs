@@ -39,20 +39,18 @@ module Network.AWS.CodeCommit.UpdateApprovalRuleTemplateName
     ) where
 
 import Network.AWS.CodeCommit.Types
-import Network.AWS.CodeCommit.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 
 -- | /See:/ 'updateApprovalRuleTemplateName' smart constructor.
-data UpdateApprovalRuleTemplateName =
-  UpdateApprovalRuleTemplateName'
-    { _uartnOldApprovalRuleTemplateName :: !Text
-    , _uartnNewApprovalRuleTemplateName :: !Text
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data UpdateApprovalRuleTemplateName = UpdateApprovalRuleTemplateName'{_uartnOldApprovalRuleTemplateName
+                                                                      :: !Text,
+                                                                      _uartnNewApprovalRuleTemplateName
+                                                                      :: !Text}
+                                        deriving (Eq, Read, Show, Data,
+                                                  Typeable, Generic)
 
 -- | Creates a value of 'UpdateApprovalRuleTemplateName' with the minimum fields required to make a request.
 --
@@ -65,12 +63,13 @@ updateApprovalRuleTemplateName
     :: Text -- ^ 'uartnOldApprovalRuleTemplateName'
     -> Text -- ^ 'uartnNewApprovalRuleTemplateName'
     -> UpdateApprovalRuleTemplateName
-updateApprovalRuleTemplateName pOldApprovalRuleTemplateName_ pNewApprovalRuleTemplateName_ =
-  UpdateApprovalRuleTemplateName'
-    { _uartnOldApprovalRuleTemplateName = pOldApprovalRuleTemplateName_
-    , _uartnNewApprovalRuleTemplateName = pNewApprovalRuleTemplateName_
-    }
-
+updateApprovalRuleTemplateName
+  pOldApprovalRuleTemplateName_
+  pNewApprovalRuleTemplateName_
+  = UpdateApprovalRuleTemplateName'{_uartnOldApprovalRuleTemplateName
+                                      = pOldApprovalRuleTemplateName_,
+                                    _uartnNewApprovalRuleTemplateName =
+                                      pNewApprovalRuleTemplateName_}
 
 -- | The current name of the approval rule template.
 uartnOldApprovalRuleTemplateName :: Lens' UpdateApprovalRuleTemplateName Text
@@ -126,13 +125,14 @@ instance ToQuery UpdateApprovalRuleTemplateName where
         toQuery = const mempty
 
 -- | /See:/ 'updateApprovalRuleTemplateNameResponse' smart constructor.
-data UpdateApprovalRuleTemplateNameResponse =
-  UpdateApprovalRuleTemplateNameResponse'
-    { _uartnrsResponseStatus       :: !Int
-    , _uartnrsApprovalRuleTemplate :: !ApprovalRuleTemplate
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data UpdateApprovalRuleTemplateNameResponse = UpdateApprovalRuleTemplateNameResponse'{_uartnrsResponseStatus
+                                                                                      ::
+                                                                                      !Int,
+                                                                                      _uartnrsApprovalRuleTemplate
+                                                                                      ::
+                                                                                      !ApprovalRuleTemplate}
+                                                deriving (Eq, Read, Show, Data,
+                                                          Typeable, Generic)
 
 -- | Creates a value of 'UpdateApprovalRuleTemplateNameResponse' with the minimum fields required to make a request.
 --
@@ -145,12 +145,12 @@ updateApprovalRuleTemplateNameResponse
     :: Int -- ^ 'uartnrsResponseStatus'
     -> ApprovalRuleTemplate -- ^ 'uartnrsApprovalRuleTemplate'
     -> UpdateApprovalRuleTemplateNameResponse
-updateApprovalRuleTemplateNameResponse pResponseStatus_ pApprovalRuleTemplate_ =
-  UpdateApprovalRuleTemplateNameResponse'
-    { _uartnrsResponseStatus = pResponseStatus_
-    , _uartnrsApprovalRuleTemplate = pApprovalRuleTemplate_
-    }
-
+updateApprovalRuleTemplateNameResponse
+  pResponseStatus_ pApprovalRuleTemplate_
+  = UpdateApprovalRuleTemplateNameResponse'{_uartnrsResponseStatus
+                                              = pResponseStatus_,
+                                            _uartnrsApprovalRuleTemplate =
+                                              pApprovalRuleTemplate_}
 
 -- | -- | The response status code.
 uartnrsResponseStatus :: Lens' UpdateApprovalRuleTemplateNameResponse Int

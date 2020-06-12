@@ -41,7 +41,6 @@ module Network.AWS.DeviceFarm.ListOfferings
     ) where
 
 import Network.AWS.DeviceFarm.Types
-import Network.AWS.DeviceFarm.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Pager
 import Network.AWS.Prelude
@@ -53,12 +52,9 @@ import Network.AWS.Response
 --
 --
 -- /See:/ 'listOfferings' smart constructor.
-newtype ListOfferings =
-  ListOfferings'
-    { _loNextToken :: Maybe Text
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+newtype ListOfferings = ListOfferings'{_loNextToken
+                                       :: Maybe Text}
+                          deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'ListOfferings' with the minimum fields required to make a request.
 --
@@ -67,8 +63,8 @@ newtype ListOfferings =
 -- * 'loNextToken' - An identifier that was returned from the previous call to this operation, which can be used to return the next set of items in the list.
 listOfferings
     :: ListOfferings
-listOfferings = ListOfferings' {_loNextToken = Nothing}
-
+listOfferings
+  = ListOfferings'{_loNextToken = Nothing}
 
 -- | An identifier that was returned from the previous call to this operation, which can be used to return the next set of items in the list.
 loNextToken :: Lens' ListOfferings (Maybe Text)
@@ -121,14 +117,13 @@ instance ToQuery ListOfferings where
 --
 --
 -- /See:/ 'listOfferingsResponse' smart constructor.
-data ListOfferingsResponse =
-  ListOfferingsResponse'
-    { _lorsNextToken      :: !(Maybe Text)
-    , _lorsOfferings      :: !(Maybe [Offering])
-    , _lorsResponseStatus :: !Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data ListOfferingsResponse = ListOfferingsResponse'{_lorsNextToken
+                                                    :: !(Maybe Text),
+                                                    _lorsOfferings ::
+                                                    !(Maybe [Offering]),
+                                                    _lorsResponseStatus :: !Int}
+                               deriving (Eq, Read, Show, Data, Typeable,
+                                         Generic)
 
 -- | Creates a value of 'ListOfferingsResponse' with the minimum fields required to make a request.
 --
@@ -142,13 +137,10 @@ data ListOfferingsResponse =
 listOfferingsResponse
     :: Int -- ^ 'lorsResponseStatus'
     -> ListOfferingsResponse
-listOfferingsResponse pResponseStatus_ =
-  ListOfferingsResponse'
-    { _lorsNextToken = Nothing
-    , _lorsOfferings = Nothing
-    , _lorsResponseStatus = pResponseStatus_
-    }
-
+listOfferingsResponse pResponseStatus_
+  = ListOfferingsResponse'{_lorsNextToken = Nothing,
+                           _lorsOfferings = Nothing,
+                           _lorsResponseStatus = pResponseStatus_}
 
 -- | An identifier that was returned from the previous call to this operation, which can be used to return the next set of items in the list.
 lorsNextToken :: Lens' ListOfferingsResponse (Maybe Text)

@@ -68,35 +68,35 @@ module Network.AWS.ElasticBeanstalk.CreateEnvironment
     ) where
 
 import Network.AWS.ElasticBeanstalk.Types
-import Network.AWS.ElasticBeanstalk.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 
--- |
+-- | 
 --
 --
 --
 -- /See:/ 'createEnvironment' smart constructor.
-data CreateEnvironment =
-  CreateEnvironment'
-    { _cCNAMEPrefix       :: !(Maybe Text)
-    , _cTemplateName      :: !(Maybe Text)
-    , _cOptionsToRemove   :: !(Maybe [OptionSpecification])
-    , _cOptionSettings    :: !(Maybe [ConfigurationOptionSetting])
-    , _cVersionLabel      :: !(Maybe Text)
-    , _cPlatformARN       :: !(Maybe Text)
-    , _cTier              :: !(Maybe EnvironmentTier)
-    , _cEnvironmentName   :: !(Maybe Text)
-    , _cSolutionStackName :: !(Maybe Text)
-    , _cGroupName         :: !(Maybe Text)
-    , _cDescription       :: !(Maybe Text)
-    , _cTags              :: !(Maybe [Tag])
-    , _cApplicationName   :: !Text
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data CreateEnvironment = CreateEnvironment'{_cCNAMEPrefix
+                                            :: !(Maybe Text),
+                                            _cTemplateName :: !(Maybe Text),
+                                            _cOptionsToRemove ::
+                                            !(Maybe [OptionSpecification]),
+                                            _cOptionSettings ::
+                                            !(Maybe
+                                                [ConfigurationOptionSetting]),
+                                            _cVersionLabel :: !(Maybe Text),
+                                            _cPlatformARN :: !(Maybe Text),
+                                            _cTier :: !(Maybe EnvironmentTier),
+                                            _cEnvironmentName :: !(Maybe Text),
+                                            _cSolutionStackName ::
+                                            !(Maybe Text),
+                                            _cGroupName :: !(Maybe Text),
+                                            _cDescription :: !(Maybe Text),
+                                            _cTags :: !(Maybe [Tag]),
+                                            _cApplicationName :: !Text}
+                           deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'CreateEnvironment' with the minimum fields required to make a request.
 --
@@ -104,7 +104,7 @@ data CreateEnvironment =
 --
 -- * 'cCNAMEPrefix' - If specified, the environment attempts to use this value as the prefix for the CNAME. If not specified, the CNAME is generated automatically by appending a random alphanumeric string to the environment name.
 --
--- * 'cTemplateName' - The name of the configuration template to use in deployment. If no configuration template is found with this name, AWS Elastic Beanstalk returns an @InvalidParameterValue@ error.
+-- * 'cTemplateName' - The name of the configuration template to use in deployment. If no configuration template is found with this name, AWS Elastic Beanstalk returns an @InvalidParameterValue@ error. 
 --
 -- * 'cOptionsToRemove' - A list of custom user-defined configuration options to remove from the configuration set for this new environment.
 --
@@ -126,33 +126,26 @@ data CreateEnvironment =
 --
 -- * 'cTags' - This specifies the tags applied to resources in the environment.
 --
--- * 'cApplicationName' - The name of the application that contains the version to be deployed. If no application is found with this name, @CreateEnvironment@ returns an @InvalidParameterValue@ error.
+-- * 'cApplicationName' - The name of the application that contains the version to be deployed. If no application is found with this name, @CreateEnvironment@ returns an @InvalidParameterValue@ error. 
 createEnvironment
     :: Text -- ^ 'cApplicationName'
     -> CreateEnvironment
-createEnvironment pApplicationName_ =
-  CreateEnvironment'
-    { _cCNAMEPrefix = Nothing
-    , _cTemplateName = Nothing
-    , _cOptionsToRemove = Nothing
-    , _cOptionSettings = Nothing
-    , _cVersionLabel = Nothing
-    , _cPlatformARN = Nothing
-    , _cTier = Nothing
-    , _cEnvironmentName = Nothing
-    , _cSolutionStackName = Nothing
-    , _cGroupName = Nothing
-    , _cDescription = Nothing
-    , _cTags = Nothing
-    , _cApplicationName = pApplicationName_
-    }
-
+createEnvironment pApplicationName_
+  = CreateEnvironment'{_cCNAMEPrefix = Nothing,
+                       _cTemplateName = Nothing,
+                       _cOptionsToRemove = Nothing,
+                       _cOptionSettings = Nothing, _cVersionLabel = Nothing,
+                       _cPlatformARN = Nothing, _cTier = Nothing,
+                       _cEnvironmentName = Nothing,
+                       _cSolutionStackName = Nothing, _cGroupName = Nothing,
+                       _cDescription = Nothing, _cTags = Nothing,
+                       _cApplicationName = pApplicationName_}
 
 -- | If specified, the environment attempts to use this value as the prefix for the CNAME. If not specified, the CNAME is generated automatically by appending a random alphanumeric string to the environment name.
 cCNAMEPrefix :: Lens' CreateEnvironment (Maybe Text)
 cCNAMEPrefix = lens _cCNAMEPrefix (\ s a -> s{_cCNAMEPrefix = a})
 
--- | The name of the configuration template to use in deployment. If no configuration template is found with this name, AWS Elastic Beanstalk returns an @InvalidParameterValue@ error.
+-- | The name of the configuration template to use in deployment. If no configuration template is found with this name, AWS Elastic Beanstalk returns an @InvalidParameterValue@ error. 
 cTemplateName :: Lens' CreateEnvironment (Maybe Text)
 cTemplateName = lens _cTemplateName (\ s a -> s{_cTemplateName = a})
 
@@ -196,7 +189,7 @@ cDescription = lens _cDescription (\ s a -> s{_cDescription = a})
 cTags :: Lens' CreateEnvironment [Tag]
 cTags = lens _cTags (\ s a -> s{_cTags = a}) . _Default . _Coerce
 
--- | The name of the application that contains the version to be deployed. If no application is found with this name, @CreateEnvironment@ returns an @InvalidParameterValue@ error.
+-- | The name of the application that contains the version to be deployed. If no application is found with this name, @CreateEnvironment@ returns an @InvalidParameterValue@ error. 
 cApplicationName :: Lens' CreateEnvironment Text
 cApplicationName = lens _cApplicationName (\ s a -> s{_cApplicationName = a})
 

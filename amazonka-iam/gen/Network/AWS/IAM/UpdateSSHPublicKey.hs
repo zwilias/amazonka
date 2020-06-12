@@ -39,21 +39,17 @@ module Network.AWS.IAM.UpdateSSHPublicKey
     ) where
 
 import Network.AWS.IAM.Types
-import Network.AWS.IAM.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 
 -- | /See:/ 'updateSSHPublicKey' smart constructor.
-data UpdateSSHPublicKey =
-  UpdateSSHPublicKey'
-    { _uspkUserName       :: !Text
-    , _uspkSSHPublicKeyId :: !Text
-    , _uspkStatus         :: !StatusType
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data UpdateSSHPublicKey = UpdateSSHPublicKey'{_uspkUserName
+                                              :: !Text,
+                                              _uspkSSHPublicKeyId :: !Text,
+                                              _uspkStatus :: !StatusType}
+                            deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'UpdateSSHPublicKey' with the minimum fields required to make a request.
 --
@@ -69,13 +65,11 @@ updateSSHPublicKey
     -> Text -- ^ 'uspkSSHPublicKeyId'
     -> StatusType -- ^ 'uspkStatus'
     -> UpdateSSHPublicKey
-updateSSHPublicKey pUserName_ pSSHPublicKeyId_ pStatus_ =
-  UpdateSSHPublicKey'
-    { _uspkUserName = pUserName_
-    , _uspkSSHPublicKeyId = pSSHPublicKeyId_
-    , _uspkStatus = pStatus_
-    }
-
+updateSSHPublicKey pUserName_ pSSHPublicKeyId_
+  pStatus_
+  = UpdateSSHPublicKey'{_uspkUserName = pUserName_,
+                        _uspkSSHPublicKeyId = pSSHPublicKeyId_,
+                        _uspkStatus = pStatus_}
 
 -- | The name of the IAM user associated with the SSH public key. This parameter allows (per its <http://wikipedia.org/wiki/regex regex pattern> ) a string of characters consisting of upper and lowercase alphanumeric characters with no spaces. You can also include any of the following characters: _+=,.@-
 uspkUserName :: Lens' UpdateSSHPublicKey Text
@@ -115,16 +109,15 @@ instance ToQuery UpdateSSHPublicKey where
                "Status" =: _uspkStatus]
 
 -- | /See:/ 'updateSSHPublicKeyResponse' smart constructor.
-data UpdateSSHPublicKeyResponse =
-  UpdateSSHPublicKeyResponse'
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data UpdateSSHPublicKeyResponse = UpdateSSHPublicKeyResponse'
+                                    deriving (Eq, Read, Show, Data, Typeable,
+                                              Generic)
 
 -- | Creates a value of 'UpdateSSHPublicKeyResponse' with the minimum fields required to make a request.
 --
 updateSSHPublicKeyResponse
     :: UpdateSSHPublicKeyResponse
-updateSSHPublicKeyResponse = UpdateSSHPublicKeyResponse'
-
+updateSSHPublicKeyResponse
+  = UpdateSSHPublicKeyResponse'
 
 instance NFData UpdateSSHPublicKeyResponse where

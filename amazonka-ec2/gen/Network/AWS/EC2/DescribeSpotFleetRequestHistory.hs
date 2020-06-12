@@ -49,7 +49,6 @@ module Network.AWS.EC2.DescribeSpotFleetRequestHistory
     ) where
 
 import Network.AWS.EC2.Types
-import Network.AWS.EC2.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.Request
@@ -60,17 +59,30 @@ import Network.AWS.Response
 --
 --
 -- /See:/ 'describeSpotFleetRequestHistory' smart constructor.
-data DescribeSpotFleetRequestHistory =
-  DescribeSpotFleetRequestHistory'
-    { _dsfrhNextToken          :: !(Maybe Text)
-    , _dsfrhEventType          :: !(Maybe EventType)
-    , _dsfrhDryRun             :: !(Maybe Bool)
-    , _dsfrhMaxResults         :: !(Maybe Nat)
-    , _dsfrhSpotFleetRequestId :: !Text
-    , _dsfrhStartTime          :: !ISO8601
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data DescribeSpotFleetRequestHistory = DescribeSpotFleetRequestHistory'{_dsfrhNextToken
+                                                                        ::
+                                                                        !(Maybe
+                                                                            Text),
+                                                                        _dsfrhEventType
+                                                                        ::
+                                                                        !(Maybe
+                                                                            EventType),
+                                                                        _dsfrhDryRun
+                                                                        ::
+                                                                        !(Maybe
+                                                                            Bool),
+                                                                        _dsfrhMaxResults
+                                                                        ::
+                                                                        !(Maybe
+                                                                            Nat),
+                                                                        _dsfrhSpotFleetRequestId
+                                                                        ::
+                                                                        !Text,
+                                                                        _dsfrhStartTime
+                                                                        ::
+                                                                        !ISO8601}
+                                         deriving (Eq, Read, Show, Data,
+                                                   Typeable, Generic)
 
 -- | Creates a value of 'DescribeSpotFleetRequestHistory' with the minimum fields required to make a request.
 --
@@ -91,16 +103,16 @@ describeSpotFleetRequestHistory
     :: Text -- ^ 'dsfrhSpotFleetRequestId'
     -> UTCTime -- ^ 'dsfrhStartTime'
     -> DescribeSpotFleetRequestHistory
-describeSpotFleetRequestHistory pSpotFleetRequestId_ pStartTime_ =
-  DescribeSpotFleetRequestHistory'
-    { _dsfrhNextToken = Nothing
-    , _dsfrhEventType = Nothing
-    , _dsfrhDryRun = Nothing
-    , _dsfrhMaxResults = Nothing
-    , _dsfrhSpotFleetRequestId = pSpotFleetRequestId_
-    , _dsfrhStartTime = _Time # pStartTime_
-    }
-
+describeSpotFleetRequestHistory pSpotFleetRequestId_
+  pStartTime_
+  = DescribeSpotFleetRequestHistory'{_dsfrhNextToken =
+                                       Nothing,
+                                     _dsfrhEventType = Nothing,
+                                     _dsfrhDryRun = Nothing,
+                                     _dsfrhMaxResults = Nothing,
+                                     _dsfrhSpotFleetRequestId =
+                                       pSpotFleetRequestId_,
+                                     _dsfrhStartTime = _Time # pStartTime_}
 
 -- | The token for the next set of results.
 dsfrhNextToken :: Lens' DescribeSpotFleetRequestHistory (Maybe Text)
@@ -174,17 +186,31 @@ instance ToQuery DescribeSpotFleetRequestHistory
 --
 --
 -- /See:/ 'describeSpotFleetRequestHistoryResponse' smart constructor.
-data DescribeSpotFleetRequestHistoryResponse =
-  DescribeSpotFleetRequestHistoryResponse'
-    { _dsfrhrsStartTime          :: !(Maybe ISO8601)
-    , _dsfrhrsLastEvaluatedTime  :: !(Maybe ISO8601)
-    , _dsfrhrsNextToken          :: !(Maybe Text)
-    , _dsfrhrsHistoryRecords     :: !(Maybe [HistoryRecord])
-    , _dsfrhrsSpotFleetRequestId :: !(Maybe Text)
-    , _dsfrhrsResponseStatus     :: !Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data DescribeSpotFleetRequestHistoryResponse = DescribeSpotFleetRequestHistoryResponse'{_dsfrhrsStartTime
+                                                                                        ::
+                                                                                        !(Maybe
+                                                                                            ISO8601),
+                                                                                        _dsfrhrsLastEvaluatedTime
+                                                                                        ::
+                                                                                        !(Maybe
+                                                                                            ISO8601),
+                                                                                        _dsfrhrsNextToken
+                                                                                        ::
+                                                                                        !(Maybe
+                                                                                            Text),
+                                                                                        _dsfrhrsHistoryRecords
+                                                                                        ::
+                                                                                        !(Maybe
+                                                                                            [HistoryRecord]),
+                                                                                        _dsfrhrsSpotFleetRequestId
+                                                                                        ::
+                                                                                        !(Maybe
+                                                                                            Text),
+                                                                                        _dsfrhrsResponseStatus
+                                                                                        ::
+                                                                                        !Int}
+                                                 deriving (Eq, Read, Show, Data,
+                                                           Typeable, Generic)
 
 -- | Creates a value of 'DescribeSpotFleetRequestHistoryResponse' with the minimum fields required to make a request.
 --
@@ -204,16 +230,18 @@ data DescribeSpotFleetRequestHistoryResponse =
 describeSpotFleetRequestHistoryResponse
     :: Int -- ^ 'dsfrhrsResponseStatus'
     -> DescribeSpotFleetRequestHistoryResponse
-describeSpotFleetRequestHistoryResponse pResponseStatus_ =
-  DescribeSpotFleetRequestHistoryResponse'
-    { _dsfrhrsStartTime = Nothing
-    , _dsfrhrsLastEvaluatedTime = Nothing
-    , _dsfrhrsNextToken = Nothing
-    , _dsfrhrsHistoryRecords = Nothing
-    , _dsfrhrsSpotFleetRequestId = Nothing
-    , _dsfrhrsResponseStatus = pResponseStatus_
-    }
-
+describeSpotFleetRequestHistoryResponse
+  pResponseStatus_
+  = DescribeSpotFleetRequestHistoryResponse'{_dsfrhrsStartTime
+                                               = Nothing,
+                                             _dsfrhrsLastEvaluatedTime =
+                                               Nothing,
+                                             _dsfrhrsNextToken = Nothing,
+                                             _dsfrhrsHistoryRecords = Nothing,
+                                             _dsfrhrsSpotFleetRequestId =
+                                               Nothing,
+                                             _dsfrhrsResponseStatus =
+                                               pResponseStatus_}
 
 -- | The starting date and time for the events, in UTC format (for example, /YYYY/ -/MM/ -/DD/ T/HH/ :/MM/ :/SS/ Z).
 dsfrhrsStartTime :: Lens' DescribeSpotFleetRequestHistoryResponse (Maybe UTCTime)

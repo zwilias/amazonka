@@ -48,29 +48,23 @@ module Network.AWS.Glue.CreateJob
     ) where
 
 import Network.AWS.Glue.Types
-import Network.AWS.Glue.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 
 -- | /See:/ 'createJob' smart constructor.
-data CreateJob =
-  CreateJob'
-    { _cjConnections       :: !(Maybe ConnectionsList)
-    , _cjLogURI            :: !(Maybe Text)
-    , _cjMaxRetries        :: !(Maybe Int)
-    , _cjExecutionProperty :: !(Maybe ExecutionProperty)
-    , _cjAllocatedCapacity :: !(Maybe Int)
-    , _cjTimeout           :: !(Maybe Nat)
-    , _cjDefaultArguments  :: !(Maybe (Map Text Text))
-    , _cjDescription       :: !(Maybe Text)
-    , _cjName              :: !Text
-    , _cjRole              :: !Text
-    , _cjCommand           :: !JobCommand
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data CreateJob = CreateJob'{_cjConnections ::
+                            !(Maybe ConnectionsList),
+                            _cjLogURI :: !(Maybe Text),
+                            _cjMaxRetries :: !(Maybe Int),
+                            _cjExecutionProperty :: !(Maybe ExecutionProperty),
+                            _cjAllocatedCapacity :: !(Maybe Int),
+                            _cjTimeout :: !(Maybe Nat),
+                            _cjDefaultArguments :: !(Maybe (Map Text Text)),
+                            _cjDescription :: !(Maybe Text), _cjName :: !Text,
+                            _cjRole :: !Text, _cjCommand :: !JobCommand}
+                   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'CreateJob' with the minimum fields required to make a request.
 --
@@ -102,21 +96,14 @@ createJob
     -> Text -- ^ 'cjRole'
     -> JobCommand -- ^ 'cjCommand'
     -> CreateJob
-createJob pName_ pRole_ pCommand_ =
-  CreateJob'
-    { _cjConnections = Nothing
-    , _cjLogURI = Nothing
-    , _cjMaxRetries = Nothing
-    , _cjExecutionProperty = Nothing
-    , _cjAllocatedCapacity = Nothing
-    , _cjTimeout = Nothing
-    , _cjDefaultArguments = Nothing
-    , _cjDescription = Nothing
-    , _cjName = pName_
-    , _cjRole = pRole_
-    , _cjCommand = pCommand_
-    }
-
+createJob pName_ pRole_ pCommand_
+  = CreateJob'{_cjConnections = Nothing,
+               _cjLogURI = Nothing, _cjMaxRetries = Nothing,
+               _cjExecutionProperty = Nothing,
+               _cjAllocatedCapacity = Nothing, _cjTimeout = Nothing,
+               _cjDefaultArguments = Nothing,
+               _cjDescription = Nothing, _cjName = pName_,
+               _cjRole = pRole_, _cjCommand = pCommand_}
 
 -- | The connections used for this job.
 cjConnections :: Lens' CreateJob (Maybe ConnectionsList)
@@ -206,13 +193,10 @@ instance ToQuery CreateJob where
         toQuery = const mempty
 
 -- | /See:/ 'createJobResponse' smart constructor.
-data CreateJobResponse =
-  CreateJobResponse'
-    { _cjrsName           :: !(Maybe Text)
-    , _cjrsResponseStatus :: !Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data CreateJobResponse = CreateJobResponse'{_cjrsName
+                                            :: !(Maybe Text),
+                                            _cjrsResponseStatus :: !Int}
+                           deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'CreateJobResponse' with the minimum fields required to make a request.
 --
@@ -224,10 +208,9 @@ data CreateJobResponse =
 createJobResponse
     :: Int -- ^ 'cjrsResponseStatus'
     -> CreateJobResponse
-createJobResponse pResponseStatus_ =
-  CreateJobResponse'
-    {_cjrsName = Nothing, _cjrsResponseStatus = pResponseStatus_}
-
+createJobResponse pResponseStatus_
+  = CreateJobResponse'{_cjrsName = Nothing,
+                       _cjrsResponseStatus = pResponseStatus_}
 
 -- | The unique name that was provided for this job definition.
 cjrsName :: Lens' CreateJobResponse (Maybe Text)

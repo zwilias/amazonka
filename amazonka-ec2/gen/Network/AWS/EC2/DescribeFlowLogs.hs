@@ -45,7 +45,6 @@ module Network.AWS.EC2.DescribeFlowLogs
     ) where
 
 import Network.AWS.EC2.Types
-import Network.AWS.EC2.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Pager
 import Network.AWS.Prelude
@@ -53,16 +52,13 @@ import Network.AWS.Request
 import Network.AWS.Response
 
 -- | /See:/ 'describeFlowLogs' smart constructor.
-data DescribeFlowLogs =
-  DescribeFlowLogs'
-    { _dflsNextToken  :: !(Maybe Text)
-    , _dflsFlowLogIds :: !(Maybe [Text])
-    , _dflsFilter     :: !(Maybe [Filter])
-    , _dflsDryRun     :: !(Maybe Bool)
-    , _dflsMaxResults :: !(Maybe Int)
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data DescribeFlowLogs = DescribeFlowLogs'{_dflsNextToken
+                                          :: !(Maybe Text),
+                                          _dflsFlowLogIds :: !(Maybe [Text]),
+                                          _dflsFilter :: !(Maybe [Filter]),
+                                          _dflsDryRun :: !(Maybe Bool),
+                                          _dflsMaxResults :: !(Maybe Int)}
+                          deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'DescribeFlowLogs' with the minimum fields required to make a request.
 --
@@ -79,15 +75,10 @@ data DescribeFlowLogs =
 -- * 'dflsMaxResults' - The maximum number of results to return with a single call. To retrieve the remaining results, make another call with the returned @nextToken@ value.
 describeFlowLogs
     :: DescribeFlowLogs
-describeFlowLogs =
-  DescribeFlowLogs'
-    { _dflsNextToken = Nothing
-    , _dflsFlowLogIds = Nothing
-    , _dflsFilter = Nothing
-    , _dflsDryRun = Nothing
-    , _dflsMaxResults = Nothing
-    }
-
+describeFlowLogs
+  = DescribeFlowLogs'{_dflsNextToken = Nothing,
+                      _dflsFlowLogIds = Nothing, _dflsFilter = Nothing,
+                      _dflsDryRun = Nothing, _dflsMaxResults = Nothing}
 
 -- | The token for the next page of results.
 dflsNextToken :: Lens' DescribeFlowLogs (Maybe Text)
@@ -151,14 +142,14 @@ instance ToQuery DescribeFlowLogs where
                "MaxResults" =: _dflsMaxResults]
 
 -- | /See:/ 'describeFlowLogsResponse' smart constructor.
-data DescribeFlowLogsResponse =
-  DescribeFlowLogsResponse'
-    { _dflsrsNextToken      :: !(Maybe Text)
-    , _dflsrsFlowLogs       :: !(Maybe [FlowLog])
-    , _dflsrsResponseStatus :: !Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data DescribeFlowLogsResponse = DescribeFlowLogsResponse'{_dflsrsNextToken
+                                                          :: !(Maybe Text),
+                                                          _dflsrsFlowLogs ::
+                                                          !(Maybe [FlowLog]),
+                                                          _dflsrsResponseStatus
+                                                          :: !Int}
+                                  deriving (Eq, Read, Show, Data, Typeable,
+                                            Generic)
 
 -- | Creates a value of 'DescribeFlowLogsResponse' with the minimum fields required to make a request.
 --
@@ -172,13 +163,11 @@ data DescribeFlowLogsResponse =
 describeFlowLogsResponse
     :: Int -- ^ 'dflsrsResponseStatus'
     -> DescribeFlowLogsResponse
-describeFlowLogsResponse pResponseStatus_ =
-  DescribeFlowLogsResponse'
-    { _dflsrsNextToken = Nothing
-    , _dflsrsFlowLogs = Nothing
-    , _dflsrsResponseStatus = pResponseStatus_
-    }
-
+describeFlowLogsResponse pResponseStatus_
+  = DescribeFlowLogsResponse'{_dflsrsNextToken =
+                                Nothing,
+                              _dflsrsFlowLogs = Nothing,
+                              _dflsrsResponseStatus = pResponseStatus_}
 
 -- | The token to use to retrieve the next page of results. This value is @null@ when there are no more results to return.
 dflsrsNextToken :: Lens' DescribeFlowLogsResponse (Maybe Text)

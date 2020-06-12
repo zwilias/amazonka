@@ -38,19 +38,14 @@ module Network.AWS.DeviceFarm.StopJob
     ) where
 
 import Network.AWS.DeviceFarm.Types
-import Network.AWS.DeviceFarm.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 
 -- | /See:/ 'stopJob' smart constructor.
-newtype StopJob =
-  StopJob'
-    { _sjArn :: Text
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+newtype StopJob = StopJob'{_sjArn :: Text}
+                    deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'StopJob' with the minimum fields required to make a request.
 --
@@ -60,8 +55,7 @@ newtype StopJob =
 stopJob
     :: Text -- ^ 'sjArn'
     -> StopJob
-stopJob pArn_ = StopJob' {_sjArn = pArn_}
-
+stopJob pArn_ = StopJob'{_sjArn = pArn_}
 
 -- | Represents the Amazon Resource Name (ARN) of the Device Farm job to stop.
 sjArn :: Lens' StopJob Text
@@ -100,13 +94,10 @@ instance ToQuery StopJob where
         toQuery = const mempty
 
 -- | /See:/ 'stopJobResponse' smart constructor.
-data StopJobResponse =
-  StopJobResponse'
-    { _sjrsJob            :: !(Maybe Job)
-    , _sjrsResponseStatus :: !Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data StopJobResponse = StopJobResponse'{_sjrsJob ::
+                                        !(Maybe Job),
+                                        _sjrsResponseStatus :: !Int}
+                         deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'StopJobResponse' with the minimum fields required to make a request.
 --
@@ -118,9 +109,9 @@ data StopJobResponse =
 stopJobResponse
     :: Int -- ^ 'sjrsResponseStatus'
     -> StopJobResponse
-stopJobResponse pResponseStatus_ =
-  StopJobResponse' {_sjrsJob = Nothing, _sjrsResponseStatus = pResponseStatus_}
-
+stopJobResponse pResponseStatus_
+  = StopJobResponse'{_sjrsJob = Nothing,
+                     _sjrsResponseStatus = pResponseStatus_}
 
 -- | The job that was stopped.
 sjrsJob :: Lens' StopJobResponse (Maybe Job)

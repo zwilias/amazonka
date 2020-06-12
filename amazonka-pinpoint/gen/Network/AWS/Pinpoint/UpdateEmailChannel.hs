@@ -38,19 +38,16 @@ module Network.AWS.Pinpoint.UpdateEmailChannel
 
 import Network.AWS.Lens
 import Network.AWS.Pinpoint.Types
-import Network.AWS.Pinpoint.Types.Product
 import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 
 -- | /See:/ 'updateEmailChannel' smart constructor.
-data UpdateEmailChannel =
-  UpdateEmailChannel'
-    { _uecApplicationId       :: !Text
-    , _uecEmailChannelRequest :: !EmailChannelRequest
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data UpdateEmailChannel = UpdateEmailChannel'{_uecApplicationId
+                                              :: !Text,
+                                              _uecEmailChannelRequest ::
+                                              !EmailChannelRequest}
+                            deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'UpdateEmailChannel' with the minimum fields required to make a request.
 --
@@ -63,12 +60,11 @@ updateEmailChannel
     :: Text -- ^ 'uecApplicationId'
     -> EmailChannelRequest -- ^ 'uecEmailChannelRequest'
     -> UpdateEmailChannel
-updateEmailChannel pApplicationId_ pEmailChannelRequest_ =
-  UpdateEmailChannel'
-    { _uecApplicationId = pApplicationId_
-    , _uecEmailChannelRequest = pEmailChannelRequest_
-    }
-
+updateEmailChannel pApplicationId_
+  pEmailChannelRequest_
+  = UpdateEmailChannel'{_uecApplicationId =
+                          pApplicationId_,
+                        _uecEmailChannelRequest = pEmailChannelRequest_}
 
 -- | Undocumented member.
 uecApplicationId :: Lens' UpdateEmailChannel Text
@@ -116,13 +112,13 @@ instance ToQuery UpdateEmailChannel where
         toQuery = const mempty
 
 -- | /See:/ 'updateEmailChannelResponse' smart constructor.
-data UpdateEmailChannelResponse =
-  UpdateEmailChannelResponse'
-    { _uecrsResponseStatus       :: !Int
-    , _uecrsEmailChannelResponse :: !EmailChannelResponse
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data UpdateEmailChannelResponse = UpdateEmailChannelResponse'{_uecrsResponseStatus
+                                                              :: !Int,
+                                                              _uecrsEmailChannelResponse
+                                                              ::
+                                                              !EmailChannelResponse}
+                                    deriving (Eq, Read, Show, Data, Typeable,
+                                              Generic)
 
 -- | Creates a value of 'UpdateEmailChannelResponse' with the minimum fields required to make a request.
 --
@@ -135,12 +131,12 @@ updateEmailChannelResponse
     :: Int -- ^ 'uecrsResponseStatus'
     -> EmailChannelResponse -- ^ 'uecrsEmailChannelResponse'
     -> UpdateEmailChannelResponse
-updateEmailChannelResponse pResponseStatus_ pEmailChannelResponse_ =
-  UpdateEmailChannelResponse'
-    { _uecrsResponseStatus = pResponseStatus_
-    , _uecrsEmailChannelResponse = pEmailChannelResponse_
-    }
-
+updateEmailChannelResponse pResponseStatus_
+  pEmailChannelResponse_
+  = UpdateEmailChannelResponse'{_uecrsResponseStatus =
+                                  pResponseStatus_,
+                                _uecrsEmailChannelResponse =
+                                  pEmailChannelResponse_}
 
 -- | -- | The response status code.
 uecrsResponseStatus :: Lens' UpdateEmailChannelResponse Int

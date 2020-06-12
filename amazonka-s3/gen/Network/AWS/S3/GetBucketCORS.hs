@@ -40,15 +40,11 @@ import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 import Network.AWS.S3.Types
-import Network.AWS.S3.Types.Product
 
 -- | /See:/ 'getBucketCORS' smart constructor.
-newtype GetBucketCORS =
-  GetBucketCORS'
-    { _gbcBucket :: BucketName
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+newtype GetBucketCORS = GetBucketCORS'{_gbcBucket ::
+                                       BucketName}
+                          deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'GetBucketCORS' with the minimum fields required to make a request.
 --
@@ -58,8 +54,8 @@ newtype GetBucketCORS =
 getBucketCORS
     :: BucketName -- ^ 'gbcBucket'
     -> GetBucketCORS
-getBucketCORS pBucket_ = GetBucketCORS' {_gbcBucket = pBucket_}
-
+getBucketCORS pBucket_
+  = GetBucketCORS'{_gbcBucket = pBucket_}
 
 -- | Undocumented member.
 gbcBucket :: Lens' GetBucketCORS BucketName
@@ -90,13 +86,12 @@ instance ToQuery GetBucketCORS where
         toQuery = const (mconcat ["cors"])
 
 -- | /See:/ 'getBucketCORSResponse' smart constructor.
-data GetBucketCORSResponse =
-  GetBucketCORSResponse'
-    { _gbcrsCORSRules      :: !(Maybe [CORSRule])
-    , _gbcrsResponseStatus :: !Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data GetBucketCORSResponse = GetBucketCORSResponse'{_gbcrsCORSRules
+                                                    :: !(Maybe [CORSRule]),
+                                                    _gbcrsResponseStatus ::
+                                                    !Int}
+                               deriving (Eq, Read, Show, Data, Typeable,
+                                         Generic)
 
 -- | Creates a value of 'GetBucketCORSResponse' with the minimum fields required to make a request.
 --
@@ -108,10 +103,9 @@ data GetBucketCORSResponse =
 getBucketCORSResponse
     :: Int -- ^ 'gbcrsResponseStatus'
     -> GetBucketCORSResponse
-getBucketCORSResponse pResponseStatus_ =
-  GetBucketCORSResponse'
-    {_gbcrsCORSRules = Nothing, _gbcrsResponseStatus = pResponseStatus_}
-
+getBucketCORSResponse pResponseStatus_
+  = GetBucketCORSResponse'{_gbcrsCORSRules = Nothing,
+                           _gbcrsResponseStatus = pResponseStatus_}
 
 -- | Undocumented member.
 gbcrsCORSRules :: Lens' GetBucketCORSResponse [CORSRule]

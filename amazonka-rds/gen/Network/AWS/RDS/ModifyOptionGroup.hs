@@ -43,24 +43,22 @@ module Network.AWS.RDS.ModifyOptionGroup
 import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.RDS.Types
-import Network.AWS.RDS.Types.Product
 import Network.AWS.Request
 import Network.AWS.Response
 
--- |
+-- | 
 --
 --
 --
 -- /See:/ 'modifyOptionGroup' smart constructor.
-data ModifyOptionGroup =
-  ModifyOptionGroup'
-    { _mogOptionsToInclude :: !(Maybe [OptionConfiguration])
-    , _mogOptionsToRemove  :: !(Maybe [Text])
-    , _mogApplyImmediately :: !(Maybe Bool)
-    , _mogOptionGroupName  :: !Text
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data ModifyOptionGroup = ModifyOptionGroup'{_mogOptionsToInclude
+                                            :: !(Maybe [OptionConfiguration]),
+                                            _mogOptionsToRemove ::
+                                            !(Maybe [Text]),
+                                            _mogApplyImmediately ::
+                                            !(Maybe Bool),
+                                            _mogOptionGroupName :: !Text}
+                           deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'ModifyOptionGroup' with the minimum fields required to make a request.
 --
@@ -76,14 +74,11 @@ data ModifyOptionGroup =
 modifyOptionGroup
     :: Text -- ^ 'mogOptionGroupName'
     -> ModifyOptionGroup
-modifyOptionGroup pOptionGroupName_ =
-  ModifyOptionGroup'
-    { _mogOptionsToInclude = Nothing
-    , _mogOptionsToRemove = Nothing
-    , _mogApplyImmediately = Nothing
-    , _mogOptionGroupName = pOptionGroupName_
-    }
-
+modifyOptionGroup pOptionGroupName_
+  = ModifyOptionGroup'{_mogOptionsToInclude = Nothing,
+                       _mogOptionsToRemove = Nothing,
+                       _mogApplyImmediately = Nothing,
+                       _mogOptionGroupName = pOptionGroupName_}
 
 -- | Options in this list are added to the option group or, if already present, the specified configuration is used to update the existing configuration.
 mogOptionsToInclude :: Lens' ModifyOptionGroup [OptionConfiguration]
@@ -136,13 +131,14 @@ instance ToQuery ModifyOptionGroup where
                "OptionGroupName" =: _mogOptionGroupName]
 
 -- | /See:/ 'modifyOptionGroupResponse' smart constructor.
-data ModifyOptionGroupResponse =
-  ModifyOptionGroupResponse'
-    { _mogrsOptionGroup    :: !(Maybe OptionGroup)
-    , _mogrsResponseStatus :: !Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data ModifyOptionGroupResponse = ModifyOptionGroupResponse'{_mogrsOptionGroup
+                                                            ::
+                                                            !(Maybe
+                                                                OptionGroup),
+                                                            _mogrsResponseStatus
+                                                            :: !Int}
+                                   deriving (Eq, Read, Show, Data, Typeable,
+                                             Generic)
 
 -- | Creates a value of 'ModifyOptionGroupResponse' with the minimum fields required to make a request.
 --
@@ -154,10 +150,10 @@ data ModifyOptionGroupResponse =
 modifyOptionGroupResponse
     :: Int -- ^ 'mogrsResponseStatus'
     -> ModifyOptionGroupResponse
-modifyOptionGroupResponse pResponseStatus_ =
-  ModifyOptionGroupResponse'
-    {_mogrsOptionGroup = Nothing, _mogrsResponseStatus = pResponseStatus_}
-
+modifyOptionGroupResponse pResponseStatus_
+  = ModifyOptionGroupResponse'{_mogrsOptionGroup =
+                                 Nothing,
+                               _mogrsResponseStatus = pResponseStatus_}
 
 -- | Undocumented member.
 mogrsOptionGroup :: Lens' ModifyOptionGroupResponse (Maybe OptionGroup)

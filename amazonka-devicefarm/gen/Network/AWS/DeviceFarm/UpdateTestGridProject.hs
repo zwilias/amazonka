@@ -40,21 +40,19 @@ module Network.AWS.DeviceFarm.UpdateTestGridProject
     ) where
 
 import Network.AWS.DeviceFarm.Types
-import Network.AWS.DeviceFarm.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 
 -- | /See:/ 'updateTestGridProject' smart constructor.
-data UpdateTestGridProject =
-  UpdateTestGridProject'
-    { _utgpName        :: !(Maybe Text)
-    , _utgpDescription :: !(Maybe Text)
-    , _utgpProjectARN  :: !Text
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data UpdateTestGridProject = UpdateTestGridProject'{_utgpName
+                                                    :: !(Maybe Text),
+                                                    _utgpDescription ::
+                                                    !(Maybe Text),
+                                                    _utgpProjectARN :: !Text}
+                               deriving (Eq, Read, Show, Data, Typeable,
+                                         Generic)
 
 -- | Creates a value of 'UpdateTestGridProject' with the minimum fields required to make a request.
 --
@@ -68,13 +66,10 @@ data UpdateTestGridProject =
 updateTestGridProject
     :: Text -- ^ 'utgpProjectARN'
     -> UpdateTestGridProject
-updateTestGridProject pProjectARN_ =
-  UpdateTestGridProject'
-    { _utgpName = Nothing
-    , _utgpDescription = Nothing
-    , _utgpProjectARN = pProjectARN_
-    }
-
+updateTestGridProject pProjectARN_
+  = UpdateTestGridProject'{_utgpName = Nothing,
+                           _utgpDescription = Nothing,
+                           _utgpProjectARN = pProjectARN_}
 
 -- | Human-readable name for the project.
 utgpName :: Lens' UpdateTestGridProject (Maybe Text)
@@ -127,13 +122,14 @@ instance ToQuery UpdateTestGridProject where
         toQuery = const mempty
 
 -- | /See:/ 'updateTestGridProjectResponse' smart constructor.
-data UpdateTestGridProjectResponse =
-  UpdateTestGridProjectResponse'
-    { _utgprsTestGridProject :: !(Maybe TestGridProject)
-    , _utgprsResponseStatus  :: !Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data UpdateTestGridProjectResponse = UpdateTestGridProjectResponse'{_utgprsTestGridProject
+                                                                    ::
+                                                                    !(Maybe
+                                                                        TestGridProject),
+                                                                    _utgprsResponseStatus
+                                                                    :: !Int}
+                                       deriving (Eq, Read, Show, Data, Typeable,
+                                                 Generic)
 
 -- | Creates a value of 'UpdateTestGridProjectResponse' with the minimum fields required to make a request.
 --
@@ -145,10 +141,10 @@ data UpdateTestGridProjectResponse =
 updateTestGridProjectResponse
     :: Int -- ^ 'utgprsResponseStatus'
     -> UpdateTestGridProjectResponse
-updateTestGridProjectResponse pResponseStatus_ =
-  UpdateTestGridProjectResponse'
-    {_utgprsTestGridProject = Nothing, _utgprsResponseStatus = pResponseStatus_}
-
+updateTestGridProjectResponse pResponseStatus_
+  = UpdateTestGridProjectResponse'{_utgprsTestGridProject
+                                     = Nothing,
+                                   _utgprsResponseStatus = pResponseStatus_}
 
 -- | The project, including updated information.
 utgprsTestGridProject :: Lens' UpdateTestGridProjectResponse (Maybe TestGridProject)

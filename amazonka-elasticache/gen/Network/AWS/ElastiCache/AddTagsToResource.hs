@@ -40,7 +40,6 @@ module Network.AWS.ElastiCache.AddTagsToResource
     ) where
 
 import Network.AWS.ElastiCache.Types
-import Network.AWS.ElastiCache.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.Request
@@ -51,13 +50,10 @@ import Network.AWS.Response
 --
 --
 -- /See:/ 'addTagsToResource' smart constructor.
-data AddTagsToResource =
-  AddTagsToResource'
-    { _attrResourceName :: !Text
-    , _attrTags         :: ![Tag]
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data AddTagsToResource = AddTagsToResource'{_attrResourceName
+                                            :: !Text,
+                                            _attrTags :: ![Tag]}
+                           deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'AddTagsToResource' with the minimum fields required to make a request.
 --
@@ -69,9 +65,10 @@ data AddTagsToResource =
 addTagsToResource
     :: Text -- ^ 'attrResourceName'
     -> AddTagsToResource
-addTagsToResource pResourceName_ =
-  AddTagsToResource' {_attrResourceName = pResourceName_, _attrTags = mempty}
-
+addTagsToResource pResourceName_
+  = AddTagsToResource'{_attrResourceName =
+                         pResourceName_,
+                       _attrTags = mempty}
 
 -- | The Amazon Resource Name (ARN) of the resource to which the tags are to be added, for example @arn:aws:elasticache:us-west-2:0123456789:cluster:myCluster@ or @arn:aws:elasticache:us-west-2:0123456789:snapshot:mySnapshot@ . ElastiCache resources are /cluster/ and /snapshot/ . For more information about ARNs, see <http://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html Amazon Resource Names (ARNs) and AWS Service Namespaces> .
 attrResourceName :: Lens' AddTagsToResource Text

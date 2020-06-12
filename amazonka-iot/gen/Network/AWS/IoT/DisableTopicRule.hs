@@ -35,7 +35,6 @@ module Network.AWS.IoT.DisableTopicRule
     ) where
 
 import Network.AWS.IoT.Types
-import Network.AWS.IoT.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.Request
@@ -46,12 +45,9 @@ import Network.AWS.Response
 --
 --
 -- /See:/ 'disableTopicRule' smart constructor.
-newtype DisableTopicRule =
-  DisableTopicRule'
-    { _dtrRuleName :: Text
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+newtype DisableTopicRule = DisableTopicRule'{_dtrRuleName
+                                             :: Text}
+                             deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'DisableTopicRule' with the minimum fields required to make a request.
 --
@@ -61,8 +57,8 @@ newtype DisableTopicRule =
 disableTopicRule
     :: Text -- ^ 'dtrRuleName'
     -> DisableTopicRule
-disableTopicRule pRuleName_ = DisableTopicRule' {_dtrRuleName = pRuleName_}
-
+disableTopicRule pRuleName_
+  = DisableTopicRule'{_dtrRuleName = pRuleName_}
 
 -- | The name of the rule to disable.
 dtrRuleName :: Lens' DisableTopicRule Text
@@ -91,16 +87,14 @@ instance ToQuery DisableTopicRule where
         toQuery = const mempty
 
 -- | /See:/ 'disableTopicRuleResponse' smart constructor.
-data DisableTopicRuleResponse =
-  DisableTopicRuleResponse'
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data DisableTopicRuleResponse = DisableTopicRuleResponse'
+                                  deriving (Eq, Read, Show, Data, Typeable,
+                                            Generic)
 
 -- | Creates a value of 'DisableTopicRuleResponse' with the minimum fields required to make a request.
 --
 disableTopicRuleResponse
     :: DisableTopicRuleResponse
 disableTopicRuleResponse = DisableTopicRuleResponse'
-
 
 instance NFData DisableTopicRuleResponse where

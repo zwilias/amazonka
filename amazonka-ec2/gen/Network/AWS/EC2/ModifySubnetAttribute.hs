@@ -37,21 +37,22 @@ module Network.AWS.EC2.ModifySubnetAttribute
     ) where
 
 import Network.AWS.EC2.Types
-import Network.AWS.EC2.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 
 -- | /See:/ 'modifySubnetAttribute' smart constructor.
-data ModifySubnetAttribute =
-  ModifySubnetAttribute'
-    { _msaAssignIPv6AddressOnCreation :: !(Maybe AttributeBooleanValue)
-    , _msaMapPublicIPOnLaunch         :: !(Maybe AttributeBooleanValue)
-    , _msaSubnetId                    :: !Text
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data ModifySubnetAttribute = ModifySubnetAttribute'{_msaAssignIPv6AddressOnCreation
+                                                    ::
+                                                    !(Maybe
+                                                        AttributeBooleanValue),
+                                                    _msaMapPublicIPOnLaunch ::
+                                                    !(Maybe
+                                                        AttributeBooleanValue),
+                                                    _msaSubnetId :: !Text}
+                               deriving (Eq, Read, Show, Data, Typeable,
+                                         Generic)
 
 -- | Creates a value of 'ModifySubnetAttribute' with the minimum fields required to make a request.
 --
@@ -65,13 +66,11 @@ data ModifySubnetAttribute =
 modifySubnetAttribute
     :: Text -- ^ 'msaSubnetId'
     -> ModifySubnetAttribute
-modifySubnetAttribute pSubnetId_ =
-  ModifySubnetAttribute'
-    { _msaAssignIPv6AddressOnCreation = Nothing
-    , _msaMapPublicIPOnLaunch = Nothing
-    , _msaSubnetId = pSubnetId_
-    }
-
+modifySubnetAttribute pSubnetId_
+  = ModifySubnetAttribute'{_msaAssignIPv6AddressOnCreation
+                             = Nothing,
+                           _msaMapPublicIPOnLaunch = Nothing,
+                           _msaSubnetId = pSubnetId_}
 
 -- | Specify @true@ to indicate that network interfaces created in the specified subnet should be assigned an IPv6 address. This includes a network interface that's created when launching an instance into the subnet (the instance therefore receives an IPv6 address).  If you enable the IPv6 addressing feature for your subnet, your network interface or instance only receives an IPv6 address if it's created using version @2016-11-15@ or later of the Amazon EC2 API.
 msaAssignIPv6AddressOnCreation :: Lens' ModifySubnetAttribute (Maybe AttributeBooleanValue)
@@ -112,16 +111,15 @@ instance ToQuery ModifySubnetAttribute where
                "SubnetId" =: _msaSubnetId]
 
 -- | /See:/ 'modifySubnetAttributeResponse' smart constructor.
-data ModifySubnetAttributeResponse =
-  ModifySubnetAttributeResponse'
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data ModifySubnetAttributeResponse = ModifySubnetAttributeResponse'
+                                       deriving (Eq, Read, Show, Data, Typeable,
+                                                 Generic)
 
 -- | Creates a value of 'ModifySubnetAttributeResponse' with the minimum fields required to make a request.
 --
 modifySubnetAttributeResponse
     :: ModifySubnetAttributeResponse
-modifySubnetAttributeResponse = ModifySubnetAttributeResponse'
-
+modifySubnetAttributeResponse
+  = ModifySubnetAttributeResponse'
 
 instance NFData ModifySubnetAttributeResponse where

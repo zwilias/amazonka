@@ -46,16 +46,13 @@ import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 import Network.AWS.ServiceCatalog.Types
-import Network.AWS.ServiceCatalog.Types.Product
 
 -- | /See:/ 'describeProductAsAdmin' smart constructor.
-data DescribeProductAsAdmin =
-  DescribeProductAsAdmin'
-    { _dpaaAcceptLanguage :: !(Maybe Text)
-    , _dpaaId             :: !Text
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data DescribeProductAsAdmin = DescribeProductAsAdmin'{_dpaaAcceptLanguage
+                                                      :: !(Maybe Text),
+                                                      _dpaaId :: !Text}
+                                deriving (Eq, Read, Show, Data, Typeable,
+                                          Generic)
 
 -- | Creates a value of 'DescribeProductAsAdmin' with the minimum fields required to make a request.
 --
@@ -67,9 +64,10 @@ data DescribeProductAsAdmin =
 describeProductAsAdmin
     :: Text -- ^ 'dpaaId'
     -> DescribeProductAsAdmin
-describeProductAsAdmin pId_ =
-  DescribeProductAsAdmin' {_dpaaAcceptLanguage = Nothing, _dpaaId = pId_}
-
+describeProductAsAdmin pId_
+  = DescribeProductAsAdmin'{_dpaaAcceptLanguage =
+                              Nothing,
+                            _dpaaId = pId_}
 
 -- | The language code.     * @en@ - English (default)     * @jp@ - Japanese     * @zh@ - Chinese
 dpaaAcceptLanguage :: Lens' DescribeProductAsAdmin (Maybe Text)
@@ -122,16 +120,26 @@ instance ToQuery DescribeProductAsAdmin where
         toQuery = const mempty
 
 -- | /See:/ 'describeProductAsAdminResponse' smart constructor.
-data DescribeProductAsAdminResponse =
-  DescribeProductAsAdminResponse'
-    { _dpaarsProductViewDetail :: !(Maybe ProductViewDetail)
-    , _dpaarsTagOptions :: !(Maybe [TagOptionDetail])
-    , _dpaarsProvisioningArtifactSummaries :: !(Maybe [ProvisioningArtifactSummary])
-    , _dpaarsTags :: !(Maybe [Tag])
-    , _dpaarsResponseStatus :: !Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data DescribeProductAsAdminResponse = DescribeProductAsAdminResponse'{_dpaarsProductViewDetail
+                                                                      ::
+                                                                      !(Maybe
+                                                                          ProductViewDetail),
+                                                                      _dpaarsTagOptions
+                                                                      ::
+                                                                      !(Maybe
+                                                                          [TagOptionDetail]),
+                                                                      _dpaarsProvisioningArtifactSummaries
+                                                                      ::
+                                                                      !(Maybe
+                                                                          [ProvisioningArtifactSummary]),
+                                                                      _dpaarsTags
+                                                                      ::
+                                                                      !(Maybe
+                                                                          [Tag]),
+                                                                      _dpaarsResponseStatus
+                                                                      :: !Int}
+                                        deriving (Eq, Read, Show, Data,
+                                                  Typeable, Generic)
 
 -- | Creates a value of 'DescribeProductAsAdminResponse' with the minimum fields required to make a request.
 --
@@ -149,15 +157,14 @@ data DescribeProductAsAdminResponse =
 describeProductAsAdminResponse
     :: Int -- ^ 'dpaarsResponseStatus'
     -> DescribeProductAsAdminResponse
-describeProductAsAdminResponse pResponseStatus_ =
-  DescribeProductAsAdminResponse'
-    { _dpaarsProductViewDetail = Nothing
-    , _dpaarsTagOptions = Nothing
-    , _dpaarsProvisioningArtifactSummaries = Nothing
-    , _dpaarsTags = Nothing
-    , _dpaarsResponseStatus = pResponseStatus_
-    }
-
+describeProductAsAdminResponse pResponseStatus_
+  = DescribeProductAsAdminResponse'{_dpaarsProductViewDetail
+                                      = Nothing,
+                                    _dpaarsTagOptions = Nothing,
+                                    _dpaarsProvisioningArtifactSummaries =
+                                      Nothing,
+                                    _dpaarsTags = Nothing,
+                                    _dpaarsResponseStatus = pResponseStatus_}
 
 -- | Information about the product view.
 dpaarsProductViewDetail :: Lens' DescribeProductAsAdminResponse (Maybe ProductViewDetail)

@@ -47,7 +47,6 @@ module Network.AWS.ElastiCache.RebootCacheCluster
     ) where
 
 import Network.AWS.ElastiCache.Types
-import Network.AWS.ElastiCache.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.Request
@@ -58,13 +57,11 @@ import Network.AWS.Response
 --
 --
 -- /See:/ 'rebootCacheCluster' smart constructor.
-data RebootCacheCluster =
-  RebootCacheCluster'
-    { _rccCacheClusterId       :: !Text
-    , _rccCacheNodeIdsToReboot :: ![Text]
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data RebootCacheCluster = RebootCacheCluster'{_rccCacheClusterId
+                                              :: !Text,
+                                              _rccCacheNodeIdsToReboot ::
+                                              ![Text]}
+                            deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'RebootCacheCluster' with the minimum fields required to make a request.
 --
@@ -76,10 +73,10 @@ data RebootCacheCluster =
 rebootCacheCluster
     :: Text -- ^ 'rccCacheClusterId'
     -> RebootCacheCluster
-rebootCacheCluster pCacheClusterId_ =
-  RebootCacheCluster'
-    {_rccCacheClusterId = pCacheClusterId_, _rccCacheNodeIdsToReboot = mempty}
-
+rebootCacheCluster pCacheClusterId_
+  = RebootCacheCluster'{_rccCacheClusterId =
+                          pCacheClusterId_,
+                        _rccCacheNodeIdsToReboot = mempty}
 
 -- | The cluster identifier. This parameter is stored as a lowercase string.
 rccCacheClusterId :: Lens' RebootCacheCluster Text
@@ -119,13 +116,14 @@ instance ToQuery RebootCacheCluster where
                  toQueryList "CacheNodeId" _rccCacheNodeIdsToReboot]
 
 -- | /See:/ 'rebootCacheClusterResponse' smart constructor.
-data RebootCacheClusterResponse =
-  RebootCacheClusterResponse'
-    { _rccrsCacheCluster   :: !(Maybe CacheCluster)
-    , _rccrsResponseStatus :: !Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data RebootCacheClusterResponse = RebootCacheClusterResponse'{_rccrsCacheCluster
+                                                              ::
+                                                              !(Maybe
+                                                                  CacheCluster),
+                                                              _rccrsResponseStatus
+                                                              :: !Int}
+                                    deriving (Eq, Read, Show, Data, Typeable,
+                                              Generic)
 
 -- | Creates a value of 'RebootCacheClusterResponse' with the minimum fields required to make a request.
 --
@@ -137,10 +135,10 @@ data RebootCacheClusterResponse =
 rebootCacheClusterResponse
     :: Int -- ^ 'rccrsResponseStatus'
     -> RebootCacheClusterResponse
-rebootCacheClusterResponse pResponseStatus_ =
-  RebootCacheClusterResponse'
-    {_rccrsCacheCluster = Nothing, _rccrsResponseStatus = pResponseStatus_}
-
+rebootCacheClusterResponse pResponseStatus_
+  = RebootCacheClusterResponse'{_rccrsCacheCluster =
+                                  Nothing,
+                                _rccrsResponseStatus = pResponseStatus_}
 
 -- | Undocumented member.
 rccrsCacheCluster :: Lens' RebootCacheClusterResponse (Maybe CacheCluster)

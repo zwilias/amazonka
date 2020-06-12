@@ -42,7 +42,6 @@ module Network.AWS.CloudTrail.ListTags
     ) where
 
 import Network.AWS.CloudTrail.Types
-import Network.AWS.CloudTrail.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Pager
 import Network.AWS.Prelude
@@ -54,13 +53,10 @@ import Network.AWS.Response
 --
 --
 -- /See:/ 'listTags' smart constructor.
-data ListTags =
-  ListTags'
-    { _ltNextToken      :: !(Maybe Text)
-    , _ltResourceIdList :: ![Text]
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data ListTags = ListTags'{_ltNextToken ::
+                          !(Maybe Text),
+                          _ltResourceIdList :: ![Text]}
+                  deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'ListTags' with the minimum fields required to make a request.
 --
@@ -68,17 +64,18 @@ data ListTags =
 --
 -- * 'ltNextToken' - Reserved for future use.
 --
--- * 'ltResourceIdList' - Specifies a list of trail ARNs whose tags will be listed. The list has a limit of 20 ARNs. The format of a trail ARN is: @arn:aws:cloudtrail:us-east-2:123456789012:trail/MyTrail@
+-- * 'ltResourceIdList' - Specifies a list of trail ARNs whose tags will be listed. The list has a limit of 20 ARNs. The format of a trail ARN is: @arn:aws:cloudtrail:us-east-2:123456789012:trail/MyTrail@ 
 listTags
     :: ListTags
-listTags = ListTags' {_ltNextToken = Nothing, _ltResourceIdList = mempty}
-
+listTags
+  = ListTags'{_ltNextToken = Nothing,
+              _ltResourceIdList = mempty}
 
 -- | Reserved for future use.
 ltNextToken :: Lens' ListTags (Maybe Text)
 ltNextToken = lens _ltNextToken (\ s a -> s{_ltNextToken = a})
 
--- | Specifies a list of trail ARNs whose tags will be listed. The list has a limit of 20 ARNs. The format of a trail ARN is: @arn:aws:cloudtrail:us-east-2:123456789012:trail/MyTrail@
+-- | Specifies a list of trail ARNs whose tags will be listed. The list has a limit of 20 ARNs. The format of a trail ARN is: @arn:aws:cloudtrail:us-east-2:123456789012:trail/MyTrail@ 
 ltResourceIdList :: Lens' ListTags [Text]
 ltResourceIdList = lens _ltResourceIdList (\ s a -> s{_ltResourceIdList = a}) . _Coerce
 
@@ -132,14 +129,12 @@ instance ToQuery ListTags where
 --
 --
 -- /See:/ 'listTagsResponse' smart constructor.
-data ListTagsResponse =
-  ListTagsResponse'
-    { _ltrsNextToken       :: !(Maybe Text)
-    , _ltrsResourceTagList :: !(Maybe [ResourceTag])
-    , _ltrsResponseStatus  :: !Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data ListTagsResponse = ListTagsResponse'{_ltrsNextToken
+                                          :: !(Maybe Text),
+                                          _ltrsResourceTagList ::
+                                          !(Maybe [ResourceTag]),
+                                          _ltrsResponseStatus :: !Int}
+                          deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'ListTagsResponse' with the minimum fields required to make a request.
 --
@@ -153,13 +148,10 @@ data ListTagsResponse =
 listTagsResponse
     :: Int -- ^ 'ltrsResponseStatus'
     -> ListTagsResponse
-listTagsResponse pResponseStatus_ =
-  ListTagsResponse'
-    { _ltrsNextToken = Nothing
-    , _ltrsResourceTagList = Nothing
-    , _ltrsResponseStatus = pResponseStatus_
-    }
-
+listTagsResponse pResponseStatus_
+  = ListTagsResponse'{_ltrsNextToken = Nothing,
+                      _ltrsResourceTagList = Nothing,
+                      _ltrsResponseStatus = pResponseStatus_}
 
 -- | Reserved for future use.
 ltrsNextToken :: Lens' ListTagsResponse (Maybe Text)

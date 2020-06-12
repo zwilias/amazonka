@@ -40,20 +40,22 @@ module Network.AWS.AppStream.DescribeUsageReportSubscriptions
     ) where
 
 import Network.AWS.AppStream.Types
-import Network.AWS.AppStream.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 
 -- | /See:/ 'describeUsageReportSubscriptions' smart constructor.
-data DescribeUsageReportSubscriptions =
-  DescribeUsageReportSubscriptions'
-    { _durssNextToken  :: !(Maybe Text)
-    , _durssMaxResults :: !(Maybe Int)
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data DescribeUsageReportSubscriptions = DescribeUsageReportSubscriptions'{_durssNextToken
+                                                                          ::
+                                                                          !(Maybe
+                                                                              Text),
+                                                                          _durssMaxResults
+                                                                          ::
+                                                                          !(Maybe
+                                                                              Int)}
+                                          deriving (Eq, Read, Show, Data,
+                                                    Typeable, Generic)
 
 -- | Creates a value of 'DescribeUsageReportSubscriptions' with the minimum fields required to make a request.
 --
@@ -64,10 +66,10 @@ data DescribeUsageReportSubscriptions =
 -- * 'durssMaxResults' - The maximum size of each page of results.
 describeUsageReportSubscriptions
     :: DescribeUsageReportSubscriptions
-describeUsageReportSubscriptions =
-  DescribeUsageReportSubscriptions'
-    {_durssNextToken = Nothing, _durssMaxResults = Nothing}
-
+describeUsageReportSubscriptions
+  = DescribeUsageReportSubscriptions'{_durssNextToken =
+                                        Nothing,
+                                      _durssMaxResults = Nothing}
 
 -- | The pagination token to use to retrieve the next page of results for this operation. If this value is null, it retrieves the first page.
 durssNextToken :: Lens' DescribeUsageReportSubscriptions (Maybe Text)
@@ -124,14 +126,20 @@ instance ToQuery DescribeUsageReportSubscriptions
         toQuery = const mempty
 
 -- | /See:/ 'describeUsageReportSubscriptionsResponse' smart constructor.
-data DescribeUsageReportSubscriptionsResponse =
-  DescribeUsageReportSubscriptionsResponse'
-    { _durssrsUsageReportSubscriptions :: !(Maybe [UsageReportSubscription])
-    , _durssrsNextToken                :: !(Maybe Text)
-    , _durssrsResponseStatus           :: !Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data DescribeUsageReportSubscriptionsResponse = DescribeUsageReportSubscriptionsResponse'{_durssrsUsageReportSubscriptions
+                                                                                          ::
+                                                                                          !(Maybe
+                                                                                              [UsageReportSubscription]),
+                                                                                          _durssrsNextToken
+                                                                                          ::
+                                                                                          !(Maybe
+                                                                                              Text),
+                                                                                          _durssrsResponseStatus
+                                                                                          ::
+                                                                                          !Int}
+                                                  deriving (Eq, Read, Show,
+                                                            Data, Typeable,
+                                                            Generic)
 
 -- | Creates a value of 'DescribeUsageReportSubscriptionsResponse' with the minimum fields required to make a request.
 --
@@ -145,13 +153,13 @@ data DescribeUsageReportSubscriptionsResponse =
 describeUsageReportSubscriptionsResponse
     :: Int -- ^ 'durssrsResponseStatus'
     -> DescribeUsageReportSubscriptionsResponse
-describeUsageReportSubscriptionsResponse pResponseStatus_ =
-  DescribeUsageReportSubscriptionsResponse'
-    { _durssrsUsageReportSubscriptions = Nothing
-    , _durssrsNextToken = Nothing
-    , _durssrsResponseStatus = pResponseStatus_
-    }
-
+describeUsageReportSubscriptionsResponse
+  pResponseStatus_
+  = DescribeUsageReportSubscriptionsResponse'{_durssrsUsageReportSubscriptions
+                                                = Nothing,
+                                              _durssrsNextToken = Nothing,
+                                              _durssrsResponseStatus =
+                                                pResponseStatus_}
 
 -- | Information about the usage report subscription.
 durssrsUsageReportSubscriptions :: Lens' DescribeUsageReportSubscriptionsResponse [UsageReportSubscription]

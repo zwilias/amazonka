@@ -78,8 +78,29 @@ library
         , Network.AWS.Lambda.Waiters
 
     other-modules:
-          Network.AWS.Lambda.Types.Product
-        , Network.AWS.Lambda.Types.Sum
+          Network.AWS.Lambda.Types.AccountLimit
+        , Network.AWS.Lambda.Types.AccountUsage
+        , Network.AWS.Lambda.Types.AliasConfiguration
+        , Network.AWS.Lambda.Types.AliasRoutingConfiguration
+        , Network.AWS.Lambda.Types.Concurrency
+        , Network.AWS.Lambda.Types.DeadLetterConfig
+        , Network.AWS.Lambda.Types.Environment
+        , Network.AWS.Lambda.Types.EnvironmentError
+        , Network.AWS.Lambda.Types.EnvironmentResponse
+        , Network.AWS.Lambda.Types.EventSourceMappingConfiguration
+        , Network.AWS.Lambda.Types.EventSourcePosition
+        , Network.AWS.Lambda.Types.FunctionCode
+        , Network.AWS.Lambda.Types.FunctionCodeLocation
+        , Network.AWS.Lambda.Types.FunctionConfiguration
+        , Network.AWS.Lambda.Types.FunctionVersion
+        , Network.AWS.Lambda.Types.InvocationType
+        , Network.AWS.Lambda.Types.LogType
+        , Network.AWS.Lambda.Types.Runtime
+        , Network.AWS.Lambda.Types.TracingConfig
+        , Network.AWS.Lambda.Types.TracingConfigResponse
+        , Network.AWS.Lambda.Types.TracingMode
+        , Network.AWS.Lambda.Types.VPCConfig
+        , Network.AWS.Lambda.Types.VPCConfigResponse
 
     build-depends:
           amazonka-core == 1.6.1.*

@@ -44,15 +44,11 @@ import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 import Network.AWS.StorageGateway.Types
-import Network.AWS.StorageGateway.Types.Product
 
 -- | /See:/ 'resetCache' smart constructor.
-newtype ResetCache =
-  ResetCache'
-    { _rcGatewayARN :: Text
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+newtype ResetCache = ResetCache'{_rcGatewayARN ::
+                                 Text}
+                       deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'ResetCache' with the minimum fields required to make a request.
 --
@@ -62,8 +58,8 @@ newtype ResetCache =
 resetCache
     :: Text -- ^ 'rcGatewayARN'
     -> ResetCache
-resetCache pGatewayARN_ = ResetCache' {_rcGatewayARN = pGatewayARN_}
-
+resetCache pGatewayARN_
+  = ResetCache'{_rcGatewayARN = pGatewayARN_}
 
 -- | Undocumented member.
 rcGatewayARN :: Lens' ResetCache Text
@@ -103,13 +99,10 @@ instance ToQuery ResetCache where
         toQuery = const mempty
 
 -- | /See:/ 'resetCacheResponse' smart constructor.
-data ResetCacheResponse =
-  ResetCacheResponse'
-    { _rrsGatewayARN     :: !(Maybe Text)
-    , _rrsResponseStatus :: !Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data ResetCacheResponse = ResetCacheResponse'{_rrsGatewayARN
+                                              :: !(Maybe Text),
+                                              _rrsResponseStatus :: !Int}
+                            deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'ResetCacheResponse' with the minimum fields required to make a request.
 --
@@ -121,10 +114,9 @@ data ResetCacheResponse =
 resetCacheResponse
     :: Int -- ^ 'rrsResponseStatus'
     -> ResetCacheResponse
-resetCacheResponse pResponseStatus_ =
-  ResetCacheResponse'
-    {_rrsGatewayARN = Nothing, _rrsResponseStatus = pResponseStatus_}
-
+resetCacheResponse pResponseStatus_
+  = ResetCacheResponse'{_rrsGatewayARN = Nothing,
+                        _rrsResponseStatus = pResponseStatus_}
 
 -- | Undocumented member.
 rrsGatewayARN :: Lens' ResetCacheResponse (Maybe Text)

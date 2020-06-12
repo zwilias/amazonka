@@ -48,17 +48,13 @@ import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 import Network.AWS.SSM.Types
-import Network.AWS.SSM.Types.Product
 
 -- | /See:/ 'getDocument' smart constructor.
-data GetDocument =
-  GetDocument'
-    { _gdDocumentFormat  :: !(Maybe DocumentFormat)
-    , _gdDocumentVersion :: !(Maybe Text)
-    , _gdName            :: !Text
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data GetDocument = GetDocument'{_gdDocumentFormat ::
+                                !(Maybe DocumentFormat),
+                                _gdDocumentVersion :: !(Maybe Text),
+                                _gdName :: !Text}
+                     deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'GetDocument' with the minimum fields required to make a request.
 --
@@ -72,13 +68,9 @@ data GetDocument =
 getDocument
     :: Text -- ^ 'gdName'
     -> GetDocument
-getDocument pName_ =
-  GetDocument'
-    { _gdDocumentFormat = Nothing
-    , _gdDocumentVersion = Nothing
-    , _gdName = pName_
-    }
-
+getDocument pName_
+  = GetDocument'{_gdDocumentFormat = Nothing,
+                 _gdDocumentVersion = Nothing, _gdName = pName_}
 
 -- | Returns the document in the specified format. The document format can be either JSON or YAML. JSON is the default format.
 gdDocumentFormat :: Lens' GetDocument (Maybe DocumentFormat)
@@ -133,17 +125,16 @@ instance ToQuery GetDocument where
         toQuery = const mempty
 
 -- | /See:/ 'getDocumentResponse' smart constructor.
-data GetDocumentResponse =
-  GetDocumentResponse'
-    { _gdrsDocumentType    :: !(Maybe DocumentType)
-    , _gdrsContent         :: !(Maybe Text)
-    , _gdrsDocumentFormat  :: !(Maybe DocumentFormat)
-    , _gdrsName            :: !(Maybe Text)
-    , _gdrsDocumentVersion :: !(Maybe Text)
-    , _gdrsResponseStatus  :: !Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data GetDocumentResponse = GetDocumentResponse'{_gdrsDocumentType
+                                                :: !(Maybe DocumentType),
+                                                _gdrsContent :: !(Maybe Text),
+                                                _gdrsDocumentFormat ::
+                                                !(Maybe DocumentFormat),
+                                                _gdrsName :: !(Maybe Text),
+                                                _gdrsDocumentVersion ::
+                                                !(Maybe Text),
+                                                _gdrsResponseStatus :: !Int}
+                             deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'GetDocumentResponse' with the minimum fields required to make a request.
 --
@@ -163,16 +154,12 @@ data GetDocumentResponse =
 getDocumentResponse
     :: Int -- ^ 'gdrsResponseStatus'
     -> GetDocumentResponse
-getDocumentResponse pResponseStatus_ =
-  GetDocumentResponse'
-    { _gdrsDocumentType = Nothing
-    , _gdrsContent = Nothing
-    , _gdrsDocumentFormat = Nothing
-    , _gdrsName = Nothing
-    , _gdrsDocumentVersion = Nothing
-    , _gdrsResponseStatus = pResponseStatus_
-    }
-
+getDocumentResponse pResponseStatus_
+  = GetDocumentResponse'{_gdrsDocumentType = Nothing,
+                         _gdrsContent = Nothing,
+                         _gdrsDocumentFormat = Nothing, _gdrsName = Nothing,
+                         _gdrsDocumentVersion = Nothing,
+                         _gdrsResponseStatus = pResponseStatus_}
 
 -- | The document type.
 gdrsDocumentType :: Lens' GetDocumentResponse (Maybe DocumentType)

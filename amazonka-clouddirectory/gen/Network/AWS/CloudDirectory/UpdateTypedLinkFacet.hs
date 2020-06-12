@@ -40,22 +40,20 @@ module Network.AWS.CloudDirectory.UpdateTypedLinkFacet
     ) where
 
 import Network.AWS.CloudDirectory.Types
-import Network.AWS.CloudDirectory.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 
 -- | /See:/ 'updateTypedLinkFacet' smart constructor.
-data UpdateTypedLinkFacet =
-  UpdateTypedLinkFacet'
-    { _utlfSchemaARN              :: !Text
-    , _utlfName                   :: !Text
-    , _utlfAttributeUpdates       :: ![TypedLinkFacetAttributeUpdate]
-    , _utlfIdentityAttributeOrder :: ![Text]
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data UpdateTypedLinkFacet = UpdateTypedLinkFacet'{_utlfSchemaARN
+                                                  :: !Text,
+                                                  _utlfName :: !Text,
+                                                  _utlfAttributeUpdates ::
+                                                  ![TypedLinkFacetAttributeUpdate],
+                                                  _utlfIdentityAttributeOrder ::
+                                                  ![Text]}
+                              deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'UpdateTypedLinkFacet' with the minimum fields required to make a request.
 --
@@ -72,14 +70,10 @@ updateTypedLinkFacet
     :: Text -- ^ 'utlfSchemaARN'
     -> Text -- ^ 'utlfName'
     -> UpdateTypedLinkFacet
-updateTypedLinkFacet pSchemaARN_ pName_ =
-  UpdateTypedLinkFacet'
-    { _utlfSchemaARN = pSchemaARN_
-    , _utlfName = pName_
-    , _utlfAttributeUpdates = mempty
-    , _utlfIdentityAttributeOrder = mempty
-    }
-
+updateTypedLinkFacet pSchemaARN_ pName_
+  = UpdateTypedLinkFacet'{_utlfSchemaARN = pSchemaARN_,
+                          _utlfName = pName_, _utlfAttributeUpdates = mempty,
+                          _utlfIdentityAttributeOrder = mempty}
 
 -- | The Amazon Resource Name (ARN) that is associated with the schema. For more information, see 'arns' .
 utlfSchemaARN :: Lens' UpdateTypedLinkFacet Text
@@ -134,12 +128,10 @@ instance ToQuery UpdateTypedLinkFacet where
         toQuery = const mempty
 
 -- | /See:/ 'updateTypedLinkFacetResponse' smart constructor.
-newtype UpdateTypedLinkFacetResponse =
-  UpdateTypedLinkFacetResponse'
-    { _utlfrsResponseStatus :: Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+newtype UpdateTypedLinkFacetResponse = UpdateTypedLinkFacetResponse'{_utlfrsResponseStatus
+                                                                     :: Int}
+                                         deriving (Eq, Read, Show, Data,
+                                                   Typeable, Generic)
 
 -- | Creates a value of 'UpdateTypedLinkFacetResponse' with the minimum fields required to make a request.
 --
@@ -149,9 +141,9 @@ newtype UpdateTypedLinkFacetResponse =
 updateTypedLinkFacetResponse
     :: Int -- ^ 'utlfrsResponseStatus'
     -> UpdateTypedLinkFacetResponse
-updateTypedLinkFacetResponse pResponseStatus_ =
-  UpdateTypedLinkFacetResponse' {_utlfrsResponseStatus = pResponseStatus_}
-
+updateTypedLinkFacetResponse pResponseStatus_
+  = UpdateTypedLinkFacetResponse'{_utlfrsResponseStatus
+                                    = pResponseStatus_}
 
 -- | -- | The response status code.
 utlfrsResponseStatus :: Lens' UpdateTypedLinkFacetResponse Int

@@ -38,18 +38,14 @@ module Network.AWS.OpsWorks.DeleteLayer
 
 import Network.AWS.Lens
 import Network.AWS.OpsWorks.Types
-import Network.AWS.OpsWorks.Types.Product
 import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 
 -- | /See:/ 'deleteLayer' smart constructor.
-newtype DeleteLayer =
-  DeleteLayer'
-    { _dlLayerId :: Text
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+newtype DeleteLayer = DeleteLayer'{_dlLayerId ::
+                                   Text}
+                        deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'DeleteLayer' with the minimum fields required to make a request.
 --
@@ -59,8 +55,8 @@ newtype DeleteLayer =
 deleteLayer
     :: Text -- ^ 'dlLayerId'
     -> DeleteLayer
-deleteLayer pLayerId_ = DeleteLayer' {_dlLayerId = pLayerId_}
-
+deleteLayer pLayerId_
+  = DeleteLayer'{_dlLayerId = pLayerId_}
 
 -- | The layer ID.
 dlLayerId :: Lens' DeleteLayer Text
@@ -95,16 +91,13 @@ instance ToQuery DeleteLayer where
         toQuery = const mempty
 
 -- | /See:/ 'deleteLayerResponse' smart constructor.
-data DeleteLayerResponse =
-  DeleteLayerResponse'
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data DeleteLayerResponse = DeleteLayerResponse'
+                             deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'DeleteLayerResponse' with the minimum fields required to make a request.
 --
 deleteLayerResponse
     :: DeleteLayerResponse
 deleteLayerResponse = DeleteLayerResponse'
-
 
 instance NFData DeleteLayerResponse where

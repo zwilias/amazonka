@@ -40,21 +40,25 @@ module Network.AWS.EC2.CreateLocalGatewayRouteTableVPCAssociation
     ) where
 
 import Network.AWS.EC2.Types
-import Network.AWS.EC2.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 
 -- | /See:/ 'createLocalGatewayRouteTableVPCAssociation' smart constructor.
-data CreateLocalGatewayRouteTableVPCAssociation =
-  CreateLocalGatewayRouteTableVPCAssociation'
-    { _clgrtvaDryRun                   :: !(Maybe Bool)
-    , _clgrtvaLocalGatewayRouteTableId :: !Text
-    , _clgrtvaVPCId                    :: !Text
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data CreateLocalGatewayRouteTableVPCAssociation = CreateLocalGatewayRouteTableVPCAssociation'{_clgrtvaDryRun
+                                                                                              ::
+                                                                                              !(Maybe
+                                                                                                  Bool),
+                                                                                              _clgrtvaLocalGatewayRouteTableId
+                                                                                              ::
+                                                                                              !Text,
+                                                                                              _clgrtvaVPCId
+                                                                                              ::
+                                                                                              !Text}
+                                                    deriving (Eq, Read, Show,
+                                                              Data, Typeable,
+                                                              Generic)
 
 -- | Creates a value of 'CreateLocalGatewayRouteTableVPCAssociation' with the minimum fields required to make a request.
 --
@@ -69,13 +73,13 @@ createLocalGatewayRouteTableVPCAssociation
     :: Text -- ^ 'clgrtvaLocalGatewayRouteTableId'
     -> Text -- ^ 'clgrtvaVPCId'
     -> CreateLocalGatewayRouteTableVPCAssociation
-createLocalGatewayRouteTableVPCAssociation pLocalGatewayRouteTableId_ pVPCId_ =
-  CreateLocalGatewayRouteTableVPCAssociation'
-    { _clgrtvaDryRun = Nothing
-    , _clgrtvaLocalGatewayRouteTableId = pLocalGatewayRouteTableId_
-    , _clgrtvaVPCId = pVPCId_
-    }
-
+createLocalGatewayRouteTableVPCAssociation
+  pLocalGatewayRouteTableId_ pVPCId_
+  = CreateLocalGatewayRouteTableVPCAssociation'{_clgrtvaDryRun
+                                                  = Nothing,
+                                                _clgrtvaLocalGatewayRouteTableId
+                                                  = pLocalGatewayRouteTableId_,
+                                                _clgrtvaVPCId = pVPCId_}
 
 -- | Checks whether you have the required permissions for the action, without actually making the request, and provides an error response. If you have the required permissions, the error response is @DryRunOperation@ . Otherwise, it is @UnauthorizedOperation@ .
 clgrtvaDryRun :: Lens' CreateLocalGatewayRouteTableVPCAssociation (Maybe Bool)
@@ -137,13 +141,18 @@ instance ToQuery
                "VpcId" =: _clgrtvaVPCId]
 
 -- | /See:/ 'createLocalGatewayRouteTableVPCAssociationResponse' smart constructor.
-data CreateLocalGatewayRouteTableVPCAssociationResponse =
-  CreateLocalGatewayRouteTableVPCAssociationResponse'
-    { _clgrtvarsLocalGatewayRouteTableVPCAssociation :: !(Maybe LocalGatewayRouteTableVPCAssociation)
-    , _clgrtvarsResponseStatus :: !Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data CreateLocalGatewayRouteTableVPCAssociationResponse = CreateLocalGatewayRouteTableVPCAssociationResponse'{_clgrtvarsLocalGatewayRouteTableVPCAssociation
+                                                                                                              ::
+                                                                                                              !(Maybe
+                                                                                                                  LocalGatewayRouteTableVPCAssociation),
+                                                                                                              _clgrtvarsResponseStatus
+                                                                                                              ::
+                                                                                                              !Int}
+                                                            deriving (Eq, Read,
+                                                                      Show,
+                                                                      Data,
+                                                                      Typeable,
+                                                                      Generic)
 
 -- | Creates a value of 'CreateLocalGatewayRouteTableVPCAssociationResponse' with the minimum fields required to make a request.
 --
@@ -155,12 +164,12 @@ data CreateLocalGatewayRouteTableVPCAssociationResponse =
 createLocalGatewayRouteTableVPCAssociationResponse
     :: Int -- ^ 'clgrtvarsResponseStatus'
     -> CreateLocalGatewayRouteTableVPCAssociationResponse
-createLocalGatewayRouteTableVPCAssociationResponse pResponseStatus_ =
-  CreateLocalGatewayRouteTableVPCAssociationResponse'
-    { _clgrtvarsLocalGatewayRouteTableVPCAssociation = Nothing
-    , _clgrtvarsResponseStatus = pResponseStatus_
-    }
-
+createLocalGatewayRouteTableVPCAssociationResponse
+  pResponseStatus_
+  = CreateLocalGatewayRouteTableVPCAssociationResponse'{_clgrtvarsLocalGatewayRouteTableVPCAssociation
+                                                          = Nothing,
+                                                        _clgrtvarsResponseStatus
+                                                          = pResponseStatus_}
 
 -- | Information about the association.
 clgrtvarsLocalGatewayRouteTableVPCAssociation :: Lens' CreateLocalGatewayRouteTableVPCAssociationResponse (Maybe LocalGatewayRouteTableVPCAssociation)

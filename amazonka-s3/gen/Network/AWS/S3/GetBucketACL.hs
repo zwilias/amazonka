@@ -41,15 +41,11 @@ import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 import Network.AWS.S3.Types
-import Network.AWS.S3.Types.Product
 
 -- | /See:/ 'getBucketACL' smart constructor.
-newtype GetBucketACL =
-  GetBucketACL'
-    { _gbaBucket :: BucketName
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+newtype GetBucketACL = GetBucketACL'{_gbaBucket ::
+                                     BucketName}
+                         deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'GetBucketACL' with the minimum fields required to make a request.
 --
@@ -59,8 +55,8 @@ newtype GetBucketACL =
 getBucketACL
     :: BucketName -- ^ 'gbaBucket'
     -> GetBucketACL
-getBucketACL pBucket_ = GetBucketACL' {_gbaBucket = pBucket_}
-
+getBucketACL pBucket_
+  = GetBucketACL'{_gbaBucket = pBucket_}
 
 -- | Undocumented member.
 gbaBucket :: Lens' GetBucketACL BucketName
@@ -93,14 +89,11 @@ instance ToQuery GetBucketACL where
         toQuery = const (mconcat ["acl"])
 
 -- | /See:/ 'getBucketACLResponse' smart constructor.
-data GetBucketACLResponse =
-  GetBucketACLResponse'
-    { _gbarsGrants         :: !(Maybe [Grant])
-    , _gbarsOwner          :: !(Maybe Owner)
-    , _gbarsResponseStatus :: !Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data GetBucketACLResponse = GetBucketACLResponse'{_gbarsGrants
+                                                  :: !(Maybe [Grant]),
+                                                  _gbarsOwner :: !(Maybe Owner),
+                                                  _gbarsResponseStatus :: !Int}
+                              deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'GetBucketACLResponse' with the minimum fields required to make a request.
 --
@@ -114,13 +107,10 @@ data GetBucketACLResponse =
 getBucketACLResponse
     :: Int -- ^ 'gbarsResponseStatus'
     -> GetBucketACLResponse
-getBucketACLResponse pResponseStatus_ =
-  GetBucketACLResponse'
-    { _gbarsGrants = Nothing
-    , _gbarsOwner = Nothing
-    , _gbarsResponseStatus = pResponseStatus_
-    }
-
+getBucketACLResponse pResponseStatus_
+  = GetBucketACLResponse'{_gbarsGrants = Nothing,
+                          _gbarsOwner = Nothing,
+                          _gbarsResponseStatus = pResponseStatus_}
 
 -- | A list of grants.
 gbarsGrants :: Lens' GetBucketACLResponse [Grant]

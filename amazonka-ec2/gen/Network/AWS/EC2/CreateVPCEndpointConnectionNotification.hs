@@ -46,24 +46,36 @@ module Network.AWS.EC2.CreateVPCEndpointConnectionNotification
     ) where
 
 import Network.AWS.EC2.Types
-import Network.AWS.EC2.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 
 -- | /See:/ 'createVPCEndpointConnectionNotification' smart constructor.
-data CreateVPCEndpointConnectionNotification =
-  CreateVPCEndpointConnectionNotification'
-    { _cvecnClientToken               :: !(Maybe Text)
-    , _cvecnServiceId                 :: !(Maybe Text)
-    , _cvecnVPCEndpointId             :: !(Maybe Text)
-    , _cvecnDryRun                    :: !(Maybe Bool)
-    , _cvecnConnectionNotificationARN :: !Text
-    , _cvecnConnectionEvents          :: ![Text]
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data CreateVPCEndpointConnectionNotification = CreateVPCEndpointConnectionNotification'{_cvecnClientToken
+                                                                                        ::
+                                                                                        !(Maybe
+                                                                                            Text),
+                                                                                        _cvecnServiceId
+                                                                                        ::
+                                                                                        !(Maybe
+                                                                                            Text),
+                                                                                        _cvecnVPCEndpointId
+                                                                                        ::
+                                                                                        !(Maybe
+                                                                                            Text),
+                                                                                        _cvecnDryRun
+                                                                                        ::
+                                                                                        !(Maybe
+                                                                                            Bool),
+                                                                                        _cvecnConnectionNotificationARN
+                                                                                        ::
+                                                                                        !Text,
+                                                                                        _cvecnConnectionEvents
+                                                                                        ::
+                                                                                        ![Text]}
+                                                 deriving (Eq, Read, Show, Data,
+                                                           Typeable, Generic)
 
 -- | Creates a value of 'CreateVPCEndpointConnectionNotification' with the minimum fields required to make a request.
 --
@@ -83,16 +95,16 @@ data CreateVPCEndpointConnectionNotification =
 createVPCEndpointConnectionNotification
     :: Text -- ^ 'cvecnConnectionNotificationARN'
     -> CreateVPCEndpointConnectionNotification
-createVPCEndpointConnectionNotification pConnectionNotificationARN_ =
-  CreateVPCEndpointConnectionNotification'
-    { _cvecnClientToken = Nothing
-    , _cvecnServiceId = Nothing
-    , _cvecnVPCEndpointId = Nothing
-    , _cvecnDryRun = Nothing
-    , _cvecnConnectionNotificationARN = pConnectionNotificationARN_
-    , _cvecnConnectionEvents = mempty
-    }
-
+createVPCEndpointConnectionNotification
+  pConnectionNotificationARN_
+  = CreateVPCEndpointConnectionNotification'{_cvecnClientToken
+                                               = Nothing,
+                                             _cvecnServiceId = Nothing,
+                                             _cvecnVPCEndpointId = Nothing,
+                                             _cvecnDryRun = Nothing,
+                                             _cvecnConnectionNotificationARN =
+                                               pConnectionNotificationARN_,
+                                             _cvecnConnectionEvents = mempty}
 
 -- | Unique, case-sensitive identifier that you provide to ensure the idempotency of the request. For more information, see <https://docs.aws.amazon.com/AWSEC2/latest/APIReference/Run_Instance_Idempotency.html How to Ensure Idempotency> .
 cvecnClientToken :: Lens' CreateVPCEndpointConnectionNotification (Maybe Text)
@@ -169,14 +181,21 @@ instance ToQuery
                  _cvecnConnectionEvents]
 
 -- | /See:/ 'createVPCEndpointConnectionNotificationResponse' smart constructor.
-data CreateVPCEndpointConnectionNotificationResponse =
-  CreateVPCEndpointConnectionNotificationResponse'
-    { _cvecnrsClientToken            :: !(Maybe Text)
-    , _cvecnrsConnectionNotification :: !(Maybe ConnectionNotification)
-    , _cvecnrsResponseStatus         :: !Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data CreateVPCEndpointConnectionNotificationResponse = CreateVPCEndpointConnectionNotificationResponse'{_cvecnrsClientToken
+                                                                                                        ::
+                                                                                                        !(Maybe
+                                                                                                            Text),
+                                                                                                        _cvecnrsConnectionNotification
+                                                                                                        ::
+                                                                                                        !(Maybe
+                                                                                                            ConnectionNotification),
+                                                                                                        _cvecnrsResponseStatus
+                                                                                                        ::
+                                                                                                        !Int}
+                                                         deriving (Eq, Read,
+                                                                   Show, Data,
+                                                                   Typeable,
+                                                                   Generic)
 
 -- | Creates a value of 'CreateVPCEndpointConnectionNotificationResponse' with the minimum fields required to make a request.
 --
@@ -190,13 +209,14 @@ data CreateVPCEndpointConnectionNotificationResponse =
 createVPCEndpointConnectionNotificationResponse
     :: Int -- ^ 'cvecnrsResponseStatus'
     -> CreateVPCEndpointConnectionNotificationResponse
-createVPCEndpointConnectionNotificationResponse pResponseStatus_ =
-  CreateVPCEndpointConnectionNotificationResponse'
-    { _cvecnrsClientToken = Nothing
-    , _cvecnrsConnectionNotification = Nothing
-    , _cvecnrsResponseStatus = pResponseStatus_
-    }
-
+createVPCEndpointConnectionNotificationResponse
+  pResponseStatus_
+  = CreateVPCEndpointConnectionNotificationResponse'{_cvecnrsClientToken
+                                                       = Nothing,
+                                                     _cvecnrsConnectionNotification
+                                                       = Nothing,
+                                                     _cvecnrsResponseStatus =
+                                                       pResponseStatus_}
 
 -- | Unique, case-sensitive identifier that you provide to ensure the idempotency of the request.
 cvecnrsClientToken :: Lens' CreateVPCEndpointConnectionNotificationResponse (Maybe Text)

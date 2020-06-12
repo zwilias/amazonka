@@ -41,20 +41,18 @@ module Network.AWS.Greengrass.GetFunctionDefinitionVersion
     ) where
 
 import Network.AWS.Greengrass.Types
-import Network.AWS.Greengrass.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 
 -- | /See:/ 'getFunctionDefinitionVersion' smart constructor.
-data GetFunctionDefinitionVersion =
-  GetFunctionDefinitionVersion'
-    { _gfdvFunctionDefinitionId        :: !Text
-    , _gfdvFunctionDefinitionVersionId :: !Text
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data GetFunctionDefinitionVersion = GetFunctionDefinitionVersion'{_gfdvFunctionDefinitionId
+                                                                  :: !Text,
+                                                                  _gfdvFunctionDefinitionVersionId
+                                                                  :: !Text}
+                                      deriving (Eq, Read, Show, Data, Typeable,
+                                                Generic)
 
 -- | Creates a value of 'GetFunctionDefinitionVersion' with the minimum fields required to make a request.
 --
@@ -67,12 +65,12 @@ getFunctionDefinitionVersion
     :: Text -- ^ 'gfdvFunctionDefinitionId'
     -> Text -- ^ 'gfdvFunctionDefinitionVersionId'
     -> GetFunctionDefinitionVersion
-getFunctionDefinitionVersion pFunctionDefinitionId_ pFunctionDefinitionVersionId_ =
-  GetFunctionDefinitionVersion'
-    { _gfdvFunctionDefinitionId = pFunctionDefinitionId_
-    , _gfdvFunctionDefinitionVersionId = pFunctionDefinitionVersionId_
-    }
-
+getFunctionDefinitionVersion pFunctionDefinitionId_
+  pFunctionDefinitionVersionId_
+  = GetFunctionDefinitionVersion'{_gfdvFunctionDefinitionId
+                                    = pFunctionDefinitionId_,
+                                  _gfdvFunctionDefinitionVersionId =
+                                    pFunctionDefinitionVersionId_}
 
 -- | The ID of the Lambda function definition.
 gfdvFunctionDefinitionId :: Lens' GetFunctionDefinitionVersion Text
@@ -119,17 +117,31 @@ instance ToQuery GetFunctionDefinitionVersion where
         toQuery = const mempty
 
 -- | /See:/ 'getFunctionDefinitionVersionResponse' smart constructor.
-data GetFunctionDefinitionVersionResponse =
-  GetFunctionDefinitionVersionResponse'
-    { _gfdvrsDefinition        :: !(Maybe FunctionDefinitionVersion)
-    , _gfdvrsARN               :: !(Maybe Text)
-    , _gfdvrsCreationTimestamp :: !(Maybe Text)
-    , _gfdvrsVersion           :: !(Maybe Text)
-    , _gfdvrsId                :: !(Maybe Text)
-    , _gfdvrsResponseStatus    :: !Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data GetFunctionDefinitionVersionResponse = GetFunctionDefinitionVersionResponse'{_gfdvrsDefinition
+                                                                                  ::
+                                                                                  !(Maybe
+                                                                                      FunctionDefinitionVersion),
+                                                                                  _gfdvrsARN
+                                                                                  ::
+                                                                                  !(Maybe
+                                                                                      Text),
+                                                                                  _gfdvrsCreationTimestamp
+                                                                                  ::
+                                                                                  !(Maybe
+                                                                                      Text),
+                                                                                  _gfdvrsVersion
+                                                                                  ::
+                                                                                  !(Maybe
+                                                                                      Text),
+                                                                                  _gfdvrsId
+                                                                                  ::
+                                                                                  !(Maybe
+                                                                                      Text),
+                                                                                  _gfdvrsResponseStatus
+                                                                                  ::
+                                                                                  !Int}
+                                              deriving (Eq, Read, Show, Data,
+                                                        Typeable, Generic)
 
 -- | Creates a value of 'GetFunctionDefinitionVersionResponse' with the minimum fields required to make a request.
 --
@@ -149,16 +161,15 @@ data GetFunctionDefinitionVersionResponse =
 getFunctionDefinitionVersionResponse
     :: Int -- ^ 'gfdvrsResponseStatus'
     -> GetFunctionDefinitionVersionResponse
-getFunctionDefinitionVersionResponse pResponseStatus_ =
-  GetFunctionDefinitionVersionResponse'
-    { _gfdvrsDefinition = Nothing
-    , _gfdvrsARN = Nothing
-    , _gfdvrsCreationTimestamp = Nothing
-    , _gfdvrsVersion = Nothing
-    , _gfdvrsId = Nothing
-    , _gfdvrsResponseStatus = pResponseStatus_
-    }
-
+getFunctionDefinitionVersionResponse pResponseStatus_
+  = GetFunctionDefinitionVersionResponse'{_gfdvrsDefinition
+                                            = Nothing,
+                                          _gfdvrsARN = Nothing,
+                                          _gfdvrsCreationTimestamp = Nothing,
+                                          _gfdvrsVersion = Nothing,
+                                          _gfdvrsId = Nothing,
+                                          _gfdvrsResponseStatus =
+                                            pResponseStatus_}
 
 -- | Information on the definition.
 gfdvrsDefinition :: Lens' GetFunctionDefinitionVersionResponse (Maybe FunctionDefinitionVersion)

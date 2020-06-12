@@ -43,21 +43,18 @@ module Network.AWS.EC2.AssignIPv6Addresses
     ) where
 
 import Network.AWS.EC2.Types
-import Network.AWS.EC2.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 
 -- | /See:/ 'assignIPv6Addresses' smart constructor.
-data AssignIPv6Addresses =
-  AssignIPv6Addresses'
-    { _aiaIPv6AddressCount   :: !(Maybe Int)
-    , _aiaIPv6Addresses      :: !(Maybe [Text])
-    , _aiaNetworkInterfaceId :: !Text
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data AssignIPv6Addresses = AssignIPv6Addresses'{_aiaIPv6AddressCount
+                                                :: !(Maybe Int),
+                                                _aiaIPv6Addresses ::
+                                                !(Maybe [Text]),
+                                                _aiaNetworkInterfaceId :: !Text}
+                             deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'AssignIPv6Addresses' with the minimum fields required to make a request.
 --
@@ -71,13 +68,11 @@ data AssignIPv6Addresses =
 assignIPv6Addresses
     :: Text -- ^ 'aiaNetworkInterfaceId'
     -> AssignIPv6Addresses
-assignIPv6Addresses pNetworkInterfaceId_ =
-  AssignIPv6Addresses'
-    { _aiaIPv6AddressCount = Nothing
-    , _aiaIPv6Addresses = Nothing
-    , _aiaNetworkInterfaceId = pNetworkInterfaceId_
-    }
-
+assignIPv6Addresses pNetworkInterfaceId_
+  = AssignIPv6Addresses'{_aiaIPv6AddressCount =
+                           Nothing,
+                         _aiaIPv6Addresses = Nothing,
+                         _aiaNetworkInterfaceId = pNetworkInterfaceId_}
 
 -- | The number of IPv6 addresses to assign to the network interface. Amazon EC2 automatically selects the IPv6 addresses from the subnet range. You can't use this option if specifying specific IPv6 addresses.
 aiaIPv6AddressCount :: Lens' AssignIPv6Addresses (Maybe Int)
@@ -125,14 +120,16 @@ instance ToQuery AssignIPv6Addresses where
                "NetworkInterfaceId" =: _aiaNetworkInterfaceId]
 
 -- | /See:/ 'assignIPv6AddressesResponse' smart constructor.
-data AssignIPv6AddressesResponse =
-  AssignIPv6AddressesResponse'
-    { _aiarsNetworkInterfaceId    :: !(Maybe Text)
-    , _aiarsAssignedIPv6Addresses :: !(Maybe [Text])
-    , _aiarsResponseStatus        :: !Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data AssignIPv6AddressesResponse = AssignIPv6AddressesResponse'{_aiarsNetworkInterfaceId
+                                                                ::
+                                                                !(Maybe Text),
+                                                                _aiarsAssignedIPv6Addresses
+                                                                ::
+                                                                !(Maybe [Text]),
+                                                                _aiarsResponseStatus
+                                                                :: !Int}
+                                     deriving (Eq, Read, Show, Data, Typeable,
+                                               Generic)
 
 -- | Creates a value of 'AssignIPv6AddressesResponse' with the minimum fields required to make a request.
 --
@@ -146,13 +143,11 @@ data AssignIPv6AddressesResponse =
 assignIPv6AddressesResponse
     :: Int -- ^ 'aiarsResponseStatus'
     -> AssignIPv6AddressesResponse
-assignIPv6AddressesResponse pResponseStatus_ =
-  AssignIPv6AddressesResponse'
-    { _aiarsNetworkInterfaceId = Nothing
-    , _aiarsAssignedIPv6Addresses = Nothing
-    , _aiarsResponseStatus = pResponseStatus_
-    }
-
+assignIPv6AddressesResponse pResponseStatus_
+  = AssignIPv6AddressesResponse'{_aiarsNetworkInterfaceId
+                                   = Nothing,
+                                 _aiarsAssignedIPv6Addresses = Nothing,
+                                 _aiarsResponseStatus = pResponseStatus_}
 
 -- | The ID of the network interface.
 aiarsNetworkInterfaceId :: Lens' AssignIPv6AddressesResponse (Maybe Text)

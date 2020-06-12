@@ -42,15 +42,11 @@ import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 import Network.AWS.Route53AutoNaming.Types
-import Network.AWS.Route53AutoNaming.Types.Product
 
 -- | /See:/ 'deleteNamespace' smart constructor.
-newtype DeleteNamespace =
-  DeleteNamespace'
-    { _dnId :: Text
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+newtype DeleteNamespace = DeleteNamespace'{_dnId ::
+                                           Text}
+                            deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'DeleteNamespace' with the minimum fields required to make a request.
 --
@@ -60,8 +56,7 @@ newtype DeleteNamespace =
 deleteNamespace
     :: Text -- ^ 'dnId'
     -> DeleteNamespace
-deleteNamespace pId_ = DeleteNamespace' {_dnId = pId_}
-
+deleteNamespace pId_ = DeleteNamespace'{_dnId = pId_}
 
 -- | The ID of the namespace that you want to delete.
 dnId :: Lens' DeleteNamespace Text
@@ -101,13 +96,12 @@ instance ToQuery DeleteNamespace where
         toQuery = const mempty
 
 -- | /See:/ 'deleteNamespaceResponse' smart constructor.
-data DeleteNamespaceResponse =
-  DeleteNamespaceResponse'
-    { _dnrsOperationId    :: !(Maybe Text)
-    , _dnrsResponseStatus :: !Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data DeleteNamespaceResponse = DeleteNamespaceResponse'{_dnrsOperationId
+                                                        :: !(Maybe Text),
+                                                        _dnrsResponseStatus ::
+                                                        !Int}
+                                 deriving (Eq, Read, Show, Data, Typeable,
+                                           Generic)
 
 -- | Creates a value of 'DeleteNamespaceResponse' with the minimum fields required to make a request.
 --
@@ -119,10 +113,10 @@ data DeleteNamespaceResponse =
 deleteNamespaceResponse
     :: Int -- ^ 'dnrsResponseStatus'
     -> DeleteNamespaceResponse
-deleteNamespaceResponse pResponseStatus_ =
-  DeleteNamespaceResponse'
-    {_dnrsOperationId = Nothing, _dnrsResponseStatus = pResponseStatus_}
-
+deleteNamespaceResponse pResponseStatus_
+  = DeleteNamespaceResponse'{_dnrsOperationId =
+                               Nothing,
+                             _dnrsResponseStatus = pResponseStatus_}
 
 -- | A value that you can use to determine whether the request completed successfully. To get the status of the operation, see 'GetOperation' .
 dnrsOperationId :: Lens' DeleteNamespaceResponse (Maybe Text)

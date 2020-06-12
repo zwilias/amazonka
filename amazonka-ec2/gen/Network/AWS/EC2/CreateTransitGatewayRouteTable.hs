@@ -40,21 +40,24 @@ module Network.AWS.EC2.CreateTransitGatewayRouteTable
     ) where
 
 import Network.AWS.EC2.Types
-import Network.AWS.EC2.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 
 -- | /See:/ 'createTransitGatewayRouteTable' smart constructor.
-data CreateTransitGatewayRouteTable =
-  CreateTransitGatewayRouteTable'
-    { _ctgrtTagSpecifications :: !(Maybe [TagSpecification])
-    , _ctgrtDryRun            :: !(Maybe Bool)
-    , _ctgrtTransitGatewayId  :: !Text
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data CreateTransitGatewayRouteTable = CreateTransitGatewayRouteTable'{_ctgrtTagSpecifications
+                                                                      ::
+                                                                      !(Maybe
+                                                                          [TagSpecification]),
+                                                                      _ctgrtDryRun
+                                                                      ::
+                                                                      !(Maybe
+                                                                          Bool),
+                                                                      _ctgrtTransitGatewayId
+                                                                      :: !Text}
+                                        deriving (Eq, Read, Show, Data,
+                                                  Typeable, Generic)
 
 -- | Creates a value of 'CreateTransitGatewayRouteTable' with the minimum fields required to make a request.
 --
@@ -68,13 +71,11 @@ data CreateTransitGatewayRouteTable =
 createTransitGatewayRouteTable
     :: Text -- ^ 'ctgrtTransitGatewayId'
     -> CreateTransitGatewayRouteTable
-createTransitGatewayRouteTable pTransitGatewayId_ =
-  CreateTransitGatewayRouteTable'
-    { _ctgrtTagSpecifications = Nothing
-    , _ctgrtDryRun = Nothing
-    , _ctgrtTransitGatewayId = pTransitGatewayId_
-    }
-
+createTransitGatewayRouteTable pTransitGatewayId_
+  = CreateTransitGatewayRouteTable'{_ctgrtTagSpecifications
+                                      = Nothing,
+                                    _ctgrtDryRun = Nothing,
+                                    _ctgrtTransitGatewayId = pTransitGatewayId_}
 
 -- | The tags to apply to the transit gateway route table.
 ctgrtTagSpecifications :: Lens' CreateTransitGatewayRouteTable [TagSpecification]
@@ -125,13 +126,15 @@ instance ToQuery CreateTransitGatewayRouteTable where
                "TransitGatewayId" =: _ctgrtTransitGatewayId]
 
 -- | /See:/ 'createTransitGatewayRouteTableResponse' smart constructor.
-data CreateTransitGatewayRouteTableResponse =
-  CreateTransitGatewayRouteTableResponse'
-    { _ctgrtrsTransitGatewayRouteTable :: !(Maybe TransitGatewayRouteTable)
-    , _ctgrtrsResponseStatus           :: !Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data CreateTransitGatewayRouteTableResponse = CreateTransitGatewayRouteTableResponse'{_ctgrtrsTransitGatewayRouteTable
+                                                                                      ::
+                                                                                      !(Maybe
+                                                                                          TransitGatewayRouteTable),
+                                                                                      _ctgrtrsResponseStatus
+                                                                                      ::
+                                                                                      !Int}
+                                                deriving (Eq, Read, Show, Data,
+                                                          Typeable, Generic)
 
 -- | Creates a value of 'CreateTransitGatewayRouteTableResponse' with the minimum fields required to make a request.
 --
@@ -143,12 +146,12 @@ data CreateTransitGatewayRouteTableResponse =
 createTransitGatewayRouteTableResponse
     :: Int -- ^ 'ctgrtrsResponseStatus'
     -> CreateTransitGatewayRouteTableResponse
-createTransitGatewayRouteTableResponse pResponseStatus_ =
-  CreateTransitGatewayRouteTableResponse'
-    { _ctgrtrsTransitGatewayRouteTable = Nothing
-    , _ctgrtrsResponseStatus = pResponseStatus_
-    }
-
+createTransitGatewayRouteTableResponse
+  pResponseStatus_
+  = CreateTransitGatewayRouteTableResponse'{_ctgrtrsTransitGatewayRouteTable
+                                              = Nothing,
+                                            _ctgrtrsResponseStatus =
+                                              pResponseStatus_}
 
 -- | Information about the transit gateway route table.
 ctgrtrsTransitGatewayRouteTable :: Lens' CreateTransitGatewayRouteTableResponse (Maybe TransitGatewayRouteTable)

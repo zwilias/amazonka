@@ -38,20 +38,16 @@ module Network.AWS.CloudWatchEvents.DisableRule
     ) where
 
 import Network.AWS.CloudWatchEvents.Types
-import Network.AWS.CloudWatchEvents.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 
 -- | /See:/ 'disableRule' smart constructor.
-data DisableRule =
-  DisableRule'
-    { _dEventBusName :: !(Maybe Text)
-    , _dName         :: !Text
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data DisableRule = DisableRule'{_dEventBusName ::
+                                !(Maybe Text),
+                                _dName :: !Text}
+                     deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'DisableRule' with the minimum fields required to make a request.
 --
@@ -63,8 +59,9 @@ data DisableRule =
 disableRule
     :: Text -- ^ 'dName'
     -> DisableRule
-disableRule pName_ = DisableRule' {_dEventBusName = Nothing, _dName = pName_}
-
+disableRule pName_
+  = DisableRule'{_dEventBusName = Nothing,
+                 _dName = pName_}
 
 -- | The event bus associated with the rule. If you omit this, the default event bus is used.
 dEventBusName :: Lens' DisableRule (Maybe Text)
@@ -106,16 +103,13 @@ instance ToQuery DisableRule where
         toQuery = const mempty
 
 -- | /See:/ 'disableRuleResponse' smart constructor.
-data DisableRuleResponse =
-  DisableRuleResponse'
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data DisableRuleResponse = DisableRuleResponse'
+                             deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'DisableRuleResponse' with the minimum fields required to make a request.
 --
 disableRuleResponse
     :: DisableRuleResponse
 disableRuleResponse = DisableRuleResponse'
-
 
 instance NFData DisableRuleResponse where

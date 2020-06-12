@@ -43,22 +43,29 @@ module Network.AWS.Config.DescribeConformancePackCompliance
     ) where
 
 import Network.AWS.Config.Types
-import Network.AWS.Config.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 
 -- | /See:/ 'describeConformancePackCompliance' smart constructor.
-data DescribeConformancePackCompliance =
-  DescribeConformancePackCompliance'
-    { _dcpcFilters             :: !(Maybe ConformancePackComplianceFilters)
-    , _dcpcNextToken           :: !(Maybe Text)
-    , _dcpcLimit               :: !(Maybe Nat)
-    , _dcpcConformancePackName :: !Text
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data DescribeConformancePackCompliance = DescribeConformancePackCompliance'{_dcpcFilters
+                                                                            ::
+                                                                            !(Maybe
+                                                                                ConformancePackComplianceFilters),
+                                                                            _dcpcNextToken
+                                                                            ::
+                                                                            !(Maybe
+                                                                                Text),
+                                                                            _dcpcLimit
+                                                                            ::
+                                                                            !(Maybe
+                                                                                Nat),
+                                                                            _dcpcConformancePackName
+                                                                            ::
+                                                                            !Text}
+                                           deriving (Eq, Read, Show, Data,
+                                                     Typeable, Generic)
 
 -- | Creates a value of 'DescribeConformancePackCompliance' with the minimum fields required to make a request.
 --
@@ -74,14 +81,14 @@ data DescribeConformancePackCompliance =
 describeConformancePackCompliance
     :: Text -- ^ 'dcpcConformancePackName'
     -> DescribeConformancePackCompliance
-describeConformancePackCompliance pConformancePackName_ =
-  DescribeConformancePackCompliance'
-    { _dcpcFilters = Nothing
-    , _dcpcNextToken = Nothing
-    , _dcpcLimit = Nothing
-    , _dcpcConformancePackName = pConformancePackName_
-    }
-
+describeConformancePackCompliance
+  pConformancePackName_
+  = DescribeConformancePackCompliance'{_dcpcFilters =
+                                         Nothing,
+                                       _dcpcNextToken = Nothing,
+                                       _dcpcLimit = Nothing,
+                                       _dcpcConformancePackName =
+                                         pConformancePackName_}
 
 -- | A @ConformancePackComplianceFilters@ object.
 dcpcFilters :: Lens' DescribeConformancePackCompliance (Maybe ConformancePackComplianceFilters)
@@ -151,15 +158,22 @@ instance ToQuery DescribeConformancePackCompliance
         toQuery = const mempty
 
 -- | /See:/ 'describeConformancePackComplianceResponse' smart constructor.
-data DescribeConformancePackComplianceResponse =
-  DescribeConformancePackComplianceResponse'
-    { _dcpcrsNextToken :: !(Maybe Text)
-    , _dcpcrsResponseStatus :: !Int
-    , _dcpcrsConformancePackName :: !Text
-    , _dcpcrsConformancePackRuleComplianceList :: ![ConformancePackRuleCompliance]
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data DescribeConformancePackComplianceResponse = DescribeConformancePackComplianceResponse'{_dcpcrsNextToken
+                                                                                            ::
+                                                                                            !(Maybe
+                                                                                                Text),
+                                                                                            _dcpcrsResponseStatus
+                                                                                            ::
+                                                                                            !Int,
+                                                                                            _dcpcrsConformancePackName
+                                                                                            ::
+                                                                                            !Text,
+                                                                                            _dcpcrsConformancePackRuleComplianceList
+                                                                                            ::
+                                                                                            ![ConformancePackRuleCompliance]}
+                                                   deriving (Eq, Read, Show,
+                                                             Data, Typeable,
+                                                             Generic)
 
 -- | Creates a value of 'DescribeConformancePackComplianceResponse' with the minimum fields required to make a request.
 --
@@ -176,14 +190,16 @@ describeConformancePackComplianceResponse
     :: Int -- ^ 'dcpcrsResponseStatus'
     -> Text -- ^ 'dcpcrsConformancePackName'
     -> DescribeConformancePackComplianceResponse
-describeConformancePackComplianceResponse pResponseStatus_ pConformancePackName_ =
-  DescribeConformancePackComplianceResponse'
-    { _dcpcrsNextToken = Nothing
-    , _dcpcrsResponseStatus = pResponseStatus_
-    , _dcpcrsConformancePackName = pConformancePackName_
-    , _dcpcrsConformancePackRuleComplianceList = mempty
-    }
-
+describeConformancePackComplianceResponse
+  pResponseStatus_ pConformancePackName_
+  = DescribeConformancePackComplianceResponse'{_dcpcrsNextToken
+                                                 = Nothing,
+                                               _dcpcrsResponseStatus =
+                                                 pResponseStatus_,
+                                               _dcpcrsConformancePackName =
+                                                 pConformancePackName_,
+                                               _dcpcrsConformancePackRuleComplianceList
+                                                 = mempty}
 
 -- | The @nextToken@ string returned in a previous request that you use to request the next page of results in a paginated response.
 dcpcrsNextToken :: Lens' DescribeConformancePackComplianceResponse (Maybe Text)

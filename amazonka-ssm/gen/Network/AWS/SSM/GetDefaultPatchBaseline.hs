@@ -45,15 +45,14 @@ import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 import Network.AWS.SSM.Types
-import Network.AWS.SSM.Types.Product
 
 -- | /See:/ 'getDefaultPatchBaseline' smart constructor.
-newtype GetDefaultPatchBaseline =
-  GetDefaultPatchBaseline'
-    { _gdpbOperatingSystem :: Maybe OperatingSystem
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+newtype GetDefaultPatchBaseline = GetDefaultPatchBaseline'{_gdpbOperatingSystem
+                                                           ::
+                                                           Maybe
+                                                             OperatingSystem}
+                                    deriving (Eq, Read, Show, Data, Typeable,
+                                              Generic)
 
 -- | Creates a value of 'GetDefaultPatchBaseline' with the minimum fields required to make a request.
 --
@@ -62,9 +61,9 @@ newtype GetDefaultPatchBaseline =
 -- * 'gdpbOperatingSystem' - Returns the default patch baseline for the specified operating system.
 getDefaultPatchBaseline
     :: GetDefaultPatchBaseline
-getDefaultPatchBaseline =
-  GetDefaultPatchBaseline' {_gdpbOperatingSystem = Nothing}
-
+getDefaultPatchBaseline
+  = GetDefaultPatchBaseline'{_gdpbOperatingSystem =
+                               Nothing}
 
 -- | Returns the default patch baseline for the specified operating system.
 gdpbOperatingSystem :: Lens' GetDefaultPatchBaseline (Maybe OperatingSystem)
@@ -107,20 +106,24 @@ instance ToQuery GetDefaultPatchBaseline where
         toQuery = const mempty
 
 -- | /See:/ 'getDefaultPatchBaselineResponse' smart constructor.
-data GetDefaultPatchBaselineResponse =
-  GetDefaultPatchBaselineResponse'
-    { _gdpbrsOperatingSystem :: !(Maybe OperatingSystem)
-    , _gdpbrsBaselineId      :: !(Maybe Text)
-    , _gdpbrsResponseStatus  :: !Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data GetDefaultPatchBaselineResponse = GetDefaultPatchBaselineResponse'{_gdpbrsOperatingSystem
+                                                                        ::
+                                                                        !(Maybe
+                                                                            OperatingSystem),
+                                                                        _gdpbrsBaselineId
+                                                                        ::
+                                                                        !(Maybe
+                                                                            Text),
+                                                                        _gdpbrsResponseStatus
+                                                                        :: !Int}
+                                         deriving (Eq, Read, Show, Data,
+                                                   Typeable, Generic)
 
 -- | Creates a value of 'GetDefaultPatchBaselineResponse' with the minimum fields required to make a request.
 --
 -- Use one of the following lenses to modify other fields as desired:
 --
--- * 'gdpbrsOperatingSystem' - The operating system for the returned patch baseline.
+-- * 'gdpbrsOperatingSystem' - The operating system for the returned patch baseline. 
 --
 -- * 'gdpbrsBaselineId' - The ID of the default patch baseline.
 --
@@ -128,15 +131,13 @@ data GetDefaultPatchBaselineResponse =
 getDefaultPatchBaselineResponse
     :: Int -- ^ 'gdpbrsResponseStatus'
     -> GetDefaultPatchBaselineResponse
-getDefaultPatchBaselineResponse pResponseStatus_ =
-  GetDefaultPatchBaselineResponse'
-    { _gdpbrsOperatingSystem = Nothing
-    , _gdpbrsBaselineId = Nothing
-    , _gdpbrsResponseStatus = pResponseStatus_
-    }
+getDefaultPatchBaselineResponse pResponseStatus_
+  = GetDefaultPatchBaselineResponse'{_gdpbrsOperatingSystem
+                                       = Nothing,
+                                     _gdpbrsBaselineId = Nothing,
+                                     _gdpbrsResponseStatus = pResponseStatus_}
 
-
--- | The operating system for the returned patch baseline.
+-- | The operating system for the returned patch baseline. 
 gdpbrsOperatingSystem :: Lens' GetDefaultPatchBaselineResponse (Maybe OperatingSystem)
 gdpbrsOperatingSystem = lens _gdpbrsOperatingSystem (\ s a -> s{_gdpbrsOperatingSystem = a})
 

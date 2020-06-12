@@ -39,20 +39,17 @@ module Network.AWS.EC2.GetLaunchTemplateData
     ) where
 
 import Network.AWS.EC2.Types
-import Network.AWS.EC2.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 
 -- | /See:/ 'getLaunchTemplateData' smart constructor.
-data GetLaunchTemplateData =
-  GetLaunchTemplateData'
-    { _gltdDryRun     :: !(Maybe Bool)
-    , _gltdInstanceId :: !Text
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data GetLaunchTemplateData = GetLaunchTemplateData'{_gltdDryRun
+                                                    :: !(Maybe Bool),
+                                                    _gltdInstanceId :: !Text}
+                               deriving (Eq, Read, Show, Data, Typeable,
+                                         Generic)
 
 -- | Creates a value of 'GetLaunchTemplateData' with the minimum fields required to make a request.
 --
@@ -64,9 +61,9 @@ data GetLaunchTemplateData =
 getLaunchTemplateData
     :: Text -- ^ 'gltdInstanceId'
     -> GetLaunchTemplateData
-getLaunchTemplateData pInstanceId_ =
-  GetLaunchTemplateData' {_gltdDryRun = Nothing, _gltdInstanceId = pInstanceId_}
-
+getLaunchTemplateData pInstanceId_
+  = GetLaunchTemplateData'{_gltdDryRun = Nothing,
+                           _gltdInstanceId = pInstanceId_}
 
 -- | Checks whether you have the required permissions for the action, without actually making the request, and provides an error response. If you have the required permissions, the error response is @DryRunOperation@ . Otherwise, it is @UnauthorizedOperation@ .
 gltdDryRun :: Lens' GetLaunchTemplateData (Maybe Bool)
@@ -105,13 +102,14 @@ instance ToQuery GetLaunchTemplateData where
                "InstanceId" =: _gltdInstanceId]
 
 -- | /See:/ 'getLaunchTemplateDataResponse' smart constructor.
-data GetLaunchTemplateDataResponse =
-  GetLaunchTemplateDataResponse'
-    { _gltdrsLaunchTemplateData :: !(Maybe ResponseLaunchTemplateData)
-    , _gltdrsResponseStatus     :: !Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data GetLaunchTemplateDataResponse = GetLaunchTemplateDataResponse'{_gltdrsLaunchTemplateData
+                                                                    ::
+                                                                    !(Maybe
+                                                                        ResponseLaunchTemplateData),
+                                                                    _gltdrsResponseStatus
+                                                                    :: !Int}
+                                       deriving (Eq, Read, Show, Data, Typeable,
+                                                 Generic)
 
 -- | Creates a value of 'GetLaunchTemplateDataResponse' with the minimum fields required to make a request.
 --
@@ -123,12 +121,10 @@ data GetLaunchTemplateDataResponse =
 getLaunchTemplateDataResponse
     :: Int -- ^ 'gltdrsResponseStatus'
     -> GetLaunchTemplateDataResponse
-getLaunchTemplateDataResponse pResponseStatus_ =
-  GetLaunchTemplateDataResponse'
-    { _gltdrsLaunchTemplateData = Nothing
-    , _gltdrsResponseStatus = pResponseStatus_
-    }
-
+getLaunchTemplateDataResponse pResponseStatus_
+  = GetLaunchTemplateDataResponse'{_gltdrsLaunchTemplateData
+                                     = Nothing,
+                                   _gltdrsResponseStatus = pResponseStatus_}
 
 -- | The instance data.
 gltdrsLaunchTemplateData :: Lens' GetLaunchTemplateDataResponse (Maybe ResponseLaunchTemplateData)

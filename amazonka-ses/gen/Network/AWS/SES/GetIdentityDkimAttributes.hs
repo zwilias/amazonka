@@ -56,19 +56,16 @@ import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 import Network.AWS.SES.Types
-import Network.AWS.SES.Types.Product
 
 -- | Represents a request for the status of Amazon SES Easy DKIM signing for an identity. For domain identities, this request also returns the DKIM tokens that are required for Easy DKIM signing, and whether Amazon SES successfully verified that these tokens were published. For more information about Easy DKIM, see the <http://docs.aws.amazon.com/ses/latest/DeveloperGuide/easy-dkim.html Amazon SES Developer Guide> .
 --
 --
 --
 -- /See:/ 'getIdentityDkimAttributes' smart constructor.
-newtype GetIdentityDkimAttributes =
-  GetIdentityDkimAttributes'
-    { _gidaIdentities :: [Text]
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+newtype GetIdentityDkimAttributes = GetIdentityDkimAttributes'{_gidaIdentities
+                                                               :: [Text]}
+                                      deriving (Eq, Read, Show, Data, Typeable,
+                                                Generic)
 
 -- | Creates a value of 'GetIdentityDkimAttributes' with the minimum fields required to make a request.
 --
@@ -77,9 +74,9 @@ newtype GetIdentityDkimAttributes =
 -- * 'gidaIdentities' - A list of one or more verified identities - email addresses, domains, or both.
 getIdentityDkimAttributes
     :: GetIdentityDkimAttributes
-getIdentityDkimAttributes =
-  GetIdentityDkimAttributes' {_gidaIdentities = mempty}
-
+getIdentityDkimAttributes
+  = GetIdentityDkimAttributes'{_gidaIdentities =
+                                 mempty}
 
 -- | A list of one or more verified identities - email addresses, domains, or both.
 gidaIdentities :: Lens' GetIdentityDkimAttributes [Text]
@@ -120,13 +117,16 @@ instance ToQuery GetIdentityDkimAttributes where
 --
 --
 -- /See:/ 'getIdentityDkimAttributesResponse' smart constructor.
-data GetIdentityDkimAttributesResponse =
-  GetIdentityDkimAttributesResponse'
-    { _gidarsResponseStatus :: !Int
-    , _gidarsDkimAttributes :: !(Map Text IdentityDkimAttributes)
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data GetIdentityDkimAttributesResponse = GetIdentityDkimAttributesResponse'{_gidarsResponseStatus
+                                                                            ::
+                                                                            !Int,
+                                                                            _gidarsDkimAttributes
+                                                                            ::
+                                                                            !(Map
+                                                                                Text
+                                                                                IdentityDkimAttributes)}
+                                           deriving (Eq, Read, Show, Data,
+                                                     Typeable, Generic)
 
 -- | Creates a value of 'GetIdentityDkimAttributesResponse' with the minimum fields required to make a request.
 --
@@ -138,10 +138,10 @@ data GetIdentityDkimAttributesResponse =
 getIdentityDkimAttributesResponse
     :: Int -- ^ 'gidarsResponseStatus'
     -> GetIdentityDkimAttributesResponse
-getIdentityDkimAttributesResponse pResponseStatus_ =
-  GetIdentityDkimAttributesResponse'
-    {_gidarsResponseStatus = pResponseStatus_, _gidarsDkimAttributes = mempty}
-
+getIdentityDkimAttributesResponse pResponseStatus_
+  = GetIdentityDkimAttributesResponse'{_gidarsResponseStatus
+                                         = pResponseStatus_,
+                                       _gidarsDkimAttributes = mempty}
 
 -- | -- | The response status code.
 gidarsResponseStatus :: Lens' GetIdentityDkimAttributesResponse Int

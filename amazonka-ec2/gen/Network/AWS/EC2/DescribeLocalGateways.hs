@@ -45,7 +45,6 @@ module Network.AWS.EC2.DescribeLocalGateways
     ) where
 
 import Network.AWS.EC2.Types
-import Network.AWS.EC2.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Pager
 import Network.AWS.Prelude
@@ -53,16 +52,17 @@ import Network.AWS.Request
 import Network.AWS.Response
 
 -- | /See:/ 'describeLocalGateways' smart constructor.
-data DescribeLocalGateways =
-  DescribeLocalGateways'
-    { _dlgFilters         :: !(Maybe [Filter])
-    , _dlgNextToken       :: !(Maybe Text)
-    , _dlgLocalGatewayIds :: !(Maybe [Text])
-    , _dlgDryRun          :: !(Maybe Bool)
-    , _dlgMaxResults      :: !(Maybe Nat)
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data DescribeLocalGateways = DescribeLocalGateways'{_dlgFilters
+                                                    :: !(Maybe [Filter]),
+                                                    _dlgNextToken ::
+                                                    !(Maybe Text),
+                                                    _dlgLocalGatewayIds ::
+                                                    !(Maybe [Text]),
+                                                    _dlgDryRun :: !(Maybe Bool),
+                                                    _dlgMaxResults ::
+                                                    !(Maybe Nat)}
+                               deriving (Eq, Read, Show, Data, Typeable,
+                                         Generic)
 
 -- | Creates a value of 'DescribeLocalGateways' with the minimum fields required to make a request.
 --
@@ -79,15 +79,11 @@ data DescribeLocalGateways =
 -- * 'dlgMaxResults' - The maximum number of results to return with a single call. To retrieve the remaining results, make another call with the returned @nextToken@ value.
 describeLocalGateways
     :: DescribeLocalGateways
-describeLocalGateways =
-  DescribeLocalGateways'
-    { _dlgFilters = Nothing
-    , _dlgNextToken = Nothing
-    , _dlgLocalGatewayIds = Nothing
-    , _dlgDryRun = Nothing
-    , _dlgMaxResults = Nothing
-    }
-
+describeLocalGateways
+  = DescribeLocalGateways'{_dlgFilters = Nothing,
+                           _dlgNextToken = Nothing,
+                           _dlgLocalGatewayIds = Nothing, _dlgDryRun = Nothing,
+                           _dlgMaxResults = Nothing}
 
 -- | One or more filters.
 dlgFilters :: Lens' DescribeLocalGateways [Filter]
@@ -153,14 +149,18 @@ instance ToQuery DescribeLocalGateways where
                "MaxResults" =: _dlgMaxResults]
 
 -- | /See:/ 'describeLocalGatewaysResponse' smart constructor.
-data DescribeLocalGatewaysResponse =
-  DescribeLocalGatewaysResponse'
-    { _dlgrsLocalGateways  :: !(Maybe [LocalGateway])
-    , _dlgrsNextToken      :: !(Maybe Text)
-    , _dlgrsResponseStatus :: !Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data DescribeLocalGatewaysResponse = DescribeLocalGatewaysResponse'{_dlgrsLocalGateways
+                                                                    ::
+                                                                    !(Maybe
+                                                                        [LocalGateway]),
+                                                                    _dlgrsNextToken
+                                                                    ::
+                                                                    !(Maybe
+                                                                        Text),
+                                                                    _dlgrsResponseStatus
+                                                                    :: !Int}
+                                       deriving (Eq, Read, Show, Data, Typeable,
+                                                 Generic)
 
 -- | Creates a value of 'DescribeLocalGatewaysResponse' with the minimum fields required to make a request.
 --
@@ -174,13 +174,11 @@ data DescribeLocalGatewaysResponse =
 describeLocalGatewaysResponse
     :: Int -- ^ 'dlgrsResponseStatus'
     -> DescribeLocalGatewaysResponse
-describeLocalGatewaysResponse pResponseStatus_ =
-  DescribeLocalGatewaysResponse'
-    { _dlgrsLocalGateways = Nothing
-    , _dlgrsNextToken = Nothing
-    , _dlgrsResponseStatus = pResponseStatus_
-    }
-
+describeLocalGatewaysResponse pResponseStatus_
+  = DescribeLocalGatewaysResponse'{_dlgrsLocalGateways
+                                     = Nothing,
+                                   _dlgrsNextToken = Nothing,
+                                   _dlgrsResponseStatus = pResponseStatus_}
 
 -- | Information about the local gateways.
 dlgrsLocalGateways :: Lens' DescribeLocalGatewaysResponse [LocalGateway]

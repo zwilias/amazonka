@@ -45,23 +45,19 @@ module Network.AWS.EC2.ModifyHosts
     ) where
 
 import Network.AWS.EC2.Types
-import Network.AWS.EC2.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 
 -- | /See:/ 'modifyHosts' smart constructor.
-data ModifyHosts =
-  ModifyHosts'
-    { _mhInstanceFamily :: !(Maybe Text)
-    , _mhInstanceType   :: !(Maybe Text)
-    , _mhHostRecovery   :: !(Maybe HostRecovery)
-    , _mhAutoPlacement  :: !(Maybe AutoPlacement)
-    , _mhHostIds        :: ![Text]
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data ModifyHosts = ModifyHosts'{_mhInstanceFamily ::
+                                !(Maybe Text),
+                                _mhInstanceType :: !(Maybe Text),
+                                _mhHostRecovery :: !(Maybe HostRecovery),
+                                _mhAutoPlacement :: !(Maybe AutoPlacement),
+                                _mhHostIds :: ![Text]}
+                     deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'ModifyHosts' with the minimum fields required to make a request.
 --
@@ -78,15 +74,10 @@ data ModifyHosts =
 -- * 'mhHostIds' - The IDs of the Dedicated Hosts to modify.
 modifyHosts
     :: ModifyHosts
-modifyHosts =
-  ModifyHosts'
-    { _mhInstanceFamily = Nothing
-    , _mhInstanceType = Nothing
-    , _mhHostRecovery = Nothing
-    , _mhAutoPlacement = Nothing
-    , _mhHostIds = mempty
-    }
-
+modifyHosts
+  = ModifyHosts'{_mhInstanceFamily = Nothing,
+                 _mhInstanceType = Nothing, _mhHostRecovery = Nothing,
+                 _mhAutoPlacement = Nothing, _mhHostIds = mempty}
 
 -- | Specifies the instance family to be supported by the Dedicated Host. Specify this parameter to modify a Dedicated Host to support multiple instance types within its current instance family. If you want to modify a Dedicated Host to support a specific instance type only, omit this parameter and specify __InstanceType__ instead. You cannot specify __InstanceFamily__ and __InstanceType__ in the same request.
 mhInstanceFamily :: Lens' ModifyHosts (Maybe Text)
@@ -144,14 +135,12 @@ instance ToQuery ModifyHosts where
                toQueryList "HostId" _mhHostIds]
 
 -- | /See:/ 'modifyHostsResponse' smart constructor.
-data ModifyHostsResponse =
-  ModifyHostsResponse'
-    { _mhrsUnsuccessful   :: !(Maybe [UnsuccessfulItem])
-    , _mhrsSuccessful     :: !(Maybe [Text])
-    , _mhrsResponseStatus :: !Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data ModifyHostsResponse = ModifyHostsResponse'{_mhrsUnsuccessful
+                                                :: !(Maybe [UnsuccessfulItem]),
+                                                _mhrsSuccessful ::
+                                                !(Maybe [Text]),
+                                                _mhrsResponseStatus :: !Int}
+                             deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'ModifyHostsResponse' with the minimum fields required to make a request.
 --
@@ -165,13 +154,10 @@ data ModifyHostsResponse =
 modifyHostsResponse
     :: Int -- ^ 'mhrsResponseStatus'
     -> ModifyHostsResponse
-modifyHostsResponse pResponseStatus_ =
-  ModifyHostsResponse'
-    { _mhrsUnsuccessful = Nothing
-    , _mhrsSuccessful = Nothing
-    , _mhrsResponseStatus = pResponseStatus_
-    }
-
+modifyHostsResponse pResponseStatus_
+  = ModifyHostsResponse'{_mhrsUnsuccessful = Nothing,
+                         _mhrsSuccessful = Nothing,
+                         _mhrsResponseStatus = pResponseStatus_}
 
 -- | The IDs of the Dedicated Hosts that could not be modified. Check whether the setting you requested can be used.
 mhrsUnsuccessful :: Lens' ModifyHostsResponse [UnsuccessfulItem]

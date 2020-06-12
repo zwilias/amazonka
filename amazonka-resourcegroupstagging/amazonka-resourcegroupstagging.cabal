@@ -54,8 +54,11 @@ library
         , Network.AWS.ResourceGroupsTagging.Waiters
 
     other-modules:
-          Network.AWS.ResourceGroupsTagging.Types.Product
-        , Network.AWS.ResourceGroupsTagging.Types.Sum
+          Network.AWS.ResourceGroupsTagging.Types.FailureInfo
+        , Network.AWS.ResourceGroupsTagging.Types.ResourceErrorCode
+        , Network.AWS.ResourceGroupsTagging.Types.ResourceTagMapping
+        , Network.AWS.ResourceGroupsTagging.Types.Tag
+        , Network.AWS.ResourceGroupsTagging.Types.TagFilter
 
     build-depends:
           amazonka-core == 1.6.1.*

@@ -49,35 +49,32 @@ module Network.AWS.OpsWorks.UpdateInstance
 
 import Network.AWS.Lens
 import Network.AWS.OpsWorks.Types
-import Network.AWS.OpsWorks.Types.Product
 import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 
 -- | /See:/ 'updateInstance' smart constructor.
-data UpdateInstance =
-  UpdateInstance'
-    { _uiInstallUpdatesOnBoot :: !(Maybe Bool)
-    , _uiHostname             :: !(Maybe Text)
-    , _uiSSHKeyName           :: !(Maybe Text)
-    , _uiAgentVersion         :: !(Maybe Text)
-    , _uiInstanceType         :: !(Maybe Text)
-    , _uiEBSOptimized         :: !(Maybe Bool)
-    , _uiOS                   :: !(Maybe Text)
-    , _uiAutoScalingType      :: !(Maybe AutoScalingType)
-    , _uiLayerIds             :: !(Maybe [Text])
-    , _uiArchitecture         :: !(Maybe Architecture)
-    , _uiAMIId                :: !(Maybe Text)
-    , _uiInstanceId           :: !Text
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data UpdateInstance = UpdateInstance'{_uiInstallUpdatesOnBoot
+                                      :: !(Maybe Bool),
+                                      _uiHostname :: !(Maybe Text),
+                                      _uiSSHKeyName :: !(Maybe Text),
+                                      _uiAgentVersion :: !(Maybe Text),
+                                      _uiInstanceType :: !(Maybe Text),
+                                      _uiEBSOptimized :: !(Maybe Bool),
+                                      _uiOS :: !(Maybe Text),
+                                      _uiAutoScalingType ::
+                                      !(Maybe AutoScalingType),
+                                      _uiLayerIds :: !(Maybe [Text]),
+                                      _uiArchitecture :: !(Maybe Architecture),
+                                      _uiAMIId :: !(Maybe Text),
+                                      _uiInstanceId :: !Text}
+                        deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'UpdateInstance' with the minimum fields required to make a request.
 --
 -- Use one of the following lenses to modify other fields as desired:
 --
--- * 'uiInstallUpdatesOnBoot' - Whether to install operating system and package updates when the instance boots. The default value is @true@ . To control when updates are installed, set this value to @false@ . You must then update your instances manually by using 'CreateDeployment' to run the @update_dependencies@ stack command or by manually running @yum@ (Amazon Linux) or @apt-get@ (Ubuntu) on the instances.
+-- * 'uiInstallUpdatesOnBoot' - Whether to install operating system and package updates when the instance boots. The default value is @true@ . To control when updates are installed, set this value to @false@ . You must then update your instances manually by using 'CreateDeployment' to run the @update_dependencies@ stack command or by manually running @yum@ (Amazon Linux) or @apt-get@ (Ubuntu) on the instances. 
 --
 -- * 'uiHostname' - The instance host name.
 --
@@ -97,30 +94,22 @@ data UpdateInstance =
 --
 -- * 'uiArchitecture' - The instance architecture. Instance types do not necessarily support both architectures. For a list of the architectures that are supported by the different instance types, see <http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/instance-types.html Instance Families and Types> .
 --
--- * 'uiAMIId' - The ID of the AMI that was used to create the instance. The value of this parameter must be the same AMI ID that the instance is already using. You cannot apply a new AMI to an instance by running UpdateInstance. UpdateInstance does not work on instances that are using custom AMIs.
+-- * 'uiAMIId' - The ID of the AMI that was used to create the instance. The value of this parameter must be the same AMI ID that the instance is already using. You cannot apply a new AMI to an instance by running UpdateInstance. UpdateInstance does not work on instances that are using custom AMIs. 
 --
 -- * 'uiInstanceId' - The instance ID.
 updateInstance
     :: Text -- ^ 'uiInstanceId'
     -> UpdateInstance
-updateInstance pInstanceId_ =
-  UpdateInstance'
-    { _uiInstallUpdatesOnBoot = Nothing
-    , _uiHostname = Nothing
-    , _uiSSHKeyName = Nothing
-    , _uiAgentVersion = Nothing
-    , _uiInstanceType = Nothing
-    , _uiEBSOptimized = Nothing
-    , _uiOS = Nothing
-    , _uiAutoScalingType = Nothing
-    , _uiLayerIds = Nothing
-    , _uiArchitecture = Nothing
-    , _uiAMIId = Nothing
-    , _uiInstanceId = pInstanceId_
-    }
+updateInstance pInstanceId_
+  = UpdateInstance'{_uiInstallUpdatesOnBoot = Nothing,
+                    _uiHostname = Nothing, _uiSSHKeyName = Nothing,
+                    _uiAgentVersion = Nothing, _uiInstanceType = Nothing,
+                    _uiEBSOptimized = Nothing, _uiOS = Nothing,
+                    _uiAutoScalingType = Nothing, _uiLayerIds = Nothing,
+                    _uiArchitecture = Nothing, _uiAMIId = Nothing,
+                    _uiInstanceId = pInstanceId_}
 
-
--- | Whether to install operating system and package updates when the instance boots. The default value is @true@ . To control when updates are installed, set this value to @false@ . You must then update your instances manually by using 'CreateDeployment' to run the @update_dependencies@ stack command or by manually running @yum@ (Amazon Linux) or @apt-get@ (Ubuntu) on the instances.
+-- | Whether to install operating system and package updates when the instance boots. The default value is @true@ . To control when updates are installed, set this value to @false@ . You must then update your instances manually by using 'CreateDeployment' to run the @update_dependencies@ stack command or by manually running @yum@ (Amazon Linux) or @apt-get@ (Ubuntu) on the instances. 
 uiInstallUpdatesOnBoot :: Lens' UpdateInstance (Maybe Bool)
 uiInstallUpdatesOnBoot = lens _uiInstallUpdatesOnBoot (\ s a -> s{_uiInstallUpdatesOnBoot = a})
 
@@ -160,7 +149,7 @@ uiLayerIds = lens _uiLayerIds (\ s a -> s{_uiLayerIds = a}) . _Default . _Coerce
 uiArchitecture :: Lens' UpdateInstance (Maybe Architecture)
 uiArchitecture = lens _uiArchitecture (\ s a -> s{_uiArchitecture = a})
 
--- | The ID of the AMI that was used to create the instance. The value of this parameter must be the same AMI ID that the instance is already using. You cannot apply a new AMI to an instance by running UpdateInstance. UpdateInstance does not work on instances that are using custom AMIs.
+-- | The ID of the AMI that was used to create the instance. The value of this parameter must be the same AMI ID that the instance is already using. You cannot apply a new AMI to an instance by running UpdateInstance. UpdateInstance does not work on instances that are using custom AMIs. 
 uiAMIId :: Lens' UpdateInstance (Maybe Text)
 uiAMIId = lens _uiAMIId (\ s a -> s{_uiAMIId = a})
 
@@ -211,16 +200,14 @@ instance ToQuery UpdateInstance where
         toQuery = const mempty
 
 -- | /See:/ 'updateInstanceResponse' smart constructor.
-data UpdateInstanceResponse =
-  UpdateInstanceResponse'
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data UpdateInstanceResponse = UpdateInstanceResponse'
+                                deriving (Eq, Read, Show, Data, Typeable,
+                                          Generic)
 
 -- | Creates a value of 'UpdateInstanceResponse' with the minimum fields required to make a request.
 --
 updateInstanceResponse
     :: UpdateInstanceResponse
 updateInstanceResponse = UpdateInstanceResponse'
-
 
 instance NFData UpdateInstanceResponse where

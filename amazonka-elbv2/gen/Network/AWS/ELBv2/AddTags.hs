@@ -42,20 +42,15 @@ module Network.AWS.ELBv2.AddTags
     ) where
 
 import Network.AWS.ELBv2.Types
-import Network.AWS.ELBv2.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 
 -- | /See:/ 'addTags' smart constructor.
-data AddTags =
-  AddTags'
-    { _atResourceARNs :: ![Text]
-    , _atTags         :: !(List1 Tag)
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data AddTags = AddTags'{_atResourceARNs :: ![Text],
+                        _atTags :: !(List1 Tag)}
+                 deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'AddTags' with the minimum fields required to make a request.
 --
@@ -67,8 +62,9 @@ data AddTags =
 addTags
     :: NonEmpty Tag -- ^ 'atTags'
     -> AddTags
-addTags pTags_ = AddTags' {_atResourceARNs = mempty, _atTags = _List1 # pTags_}
-
+addTags pTags_
+  = AddTags'{_atResourceARNs = mempty,
+             _atTags = _List1 # pTags_}
 
 -- | The Amazon Resource Name (ARN) of the resource.
 atResourceARNs :: Lens' AddTags [Text]
@@ -105,12 +101,9 @@ instance ToQuery AddTags where
                "Tags" =: toQueryList "member" _atTags]
 
 -- | /See:/ 'addTagsResponse' smart constructor.
-newtype AddTagsResponse =
-  AddTagsResponse'
-    { _atrsResponseStatus :: Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+newtype AddTagsResponse = AddTagsResponse'{_atrsResponseStatus
+                                           :: Int}
+                            deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'AddTagsResponse' with the minimum fields required to make a request.
 --
@@ -120,9 +113,9 @@ newtype AddTagsResponse =
 addTagsResponse
     :: Int -- ^ 'atrsResponseStatus'
     -> AddTagsResponse
-addTagsResponse pResponseStatus_ =
-  AddTagsResponse' {_atrsResponseStatus = pResponseStatus_}
-
+addTagsResponse pResponseStatus_
+  = AddTagsResponse'{_atrsResponseStatus =
+                       pResponseStatus_}
 
 -- | -- | The response status code.
 atrsResponseStatus :: Lens' AddTagsResponse Int

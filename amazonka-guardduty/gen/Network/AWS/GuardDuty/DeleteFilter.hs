@@ -36,20 +36,16 @@ module Network.AWS.GuardDuty.DeleteFilter
     ) where
 
 import Network.AWS.GuardDuty.Types
-import Network.AWS.GuardDuty.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 
 -- | /See:/ 'deleteFilter' smart constructor.
-data DeleteFilter =
-  DeleteFilter'
-    { _dfDetectorId :: !Text
-    , _dfFilterName :: !Text
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data DeleteFilter = DeleteFilter'{_dfDetectorId ::
+                                  !Text,
+                                  _dfFilterName :: !Text}
+                      deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'DeleteFilter' with the minimum fields required to make a request.
 --
@@ -62,9 +58,9 @@ deleteFilter
     :: Text -- ^ 'dfDetectorId'
     -> Text -- ^ 'dfFilterName'
     -> DeleteFilter
-deleteFilter pDetectorId_ pFilterName_ =
-  DeleteFilter' {_dfDetectorId = pDetectorId_, _dfFilterName = pFilterName_}
-
+deleteFilter pDetectorId_ pFilterName_
+  = DeleteFilter'{_dfDetectorId = pDetectorId_,
+                  _dfFilterName = pFilterName_}
 
 -- | The unique ID that specifies the detector where you want to delete a filter.
 dfDetectorId :: Lens' DeleteFilter Text
@@ -103,12 +99,10 @@ instance ToQuery DeleteFilter where
         toQuery = const mempty
 
 -- | /See:/ 'deleteFilterResponse' smart constructor.
-newtype DeleteFilterResponse =
-  DeleteFilterResponse'
-    { _dfrsResponseStatus :: Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+newtype DeleteFilterResponse = DeleteFilterResponse'{_dfrsResponseStatus
+                                                     :: Int}
+                                 deriving (Eq, Read, Show, Data, Typeable,
+                                           Generic)
 
 -- | Creates a value of 'DeleteFilterResponse' with the minimum fields required to make a request.
 --
@@ -118,9 +112,9 @@ newtype DeleteFilterResponse =
 deleteFilterResponse
     :: Int -- ^ 'dfrsResponseStatus'
     -> DeleteFilterResponse
-deleteFilterResponse pResponseStatus_ =
-  DeleteFilterResponse' {_dfrsResponseStatus = pResponseStatus_}
-
+deleteFilterResponse pResponseStatus_
+  = DeleteFilterResponse'{_dfrsResponseStatus =
+                            pResponseStatus_}
 
 -- | -- | The response status code.
 dfrsResponseStatus :: Lens' DeleteFilterResponse Int

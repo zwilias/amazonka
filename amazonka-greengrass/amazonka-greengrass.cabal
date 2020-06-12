@@ -123,8 +123,45 @@ library
         , Network.AWS.Greengrass.Waiters
 
     other-modules:
-          Network.AWS.Greengrass.Types.Product
-        , Network.AWS.Greengrass.Types.Sum
+          Network.AWS.Greengrass.Types.ConnectivityInfo
+        , Network.AWS.Greengrass.Types.Core
+        , Network.AWS.Greengrass.Types.CoreDefinitionVersion
+        , Network.AWS.Greengrass.Types.DefinitionInformation
+        , Network.AWS.Greengrass.Types.Deployment
+        , Network.AWS.Greengrass.Types.DeploymentType
+        , Network.AWS.Greengrass.Types.Device
+        , Network.AWS.Greengrass.Types.DeviceDefinitionVersion
+        , Network.AWS.Greengrass.Types.EncodingType
+        , Network.AWS.Greengrass.Types.ErrorDetail
+        , Network.AWS.Greengrass.Types.Function
+        , Network.AWS.Greengrass.Types.FunctionConfiguration
+        , Network.AWS.Greengrass.Types.FunctionConfigurationEnvironment
+        , Network.AWS.Greengrass.Types.FunctionDefinitionVersion
+        , Network.AWS.Greengrass.Types.GreengrassLogger
+        , Network.AWS.Greengrass.Types.GroupCertificateAuthorityProperties
+        , Network.AWS.Greengrass.Types.GroupInformation
+        , Network.AWS.Greengrass.Types.GroupOwnerSetting
+        , Network.AWS.Greengrass.Types.GroupVersion
+        , Network.AWS.Greengrass.Types.LocalDeviceResourceData
+        , Network.AWS.Greengrass.Types.LocalVolumeResourceData
+        , Network.AWS.Greengrass.Types.LoggerComponent
+        , Network.AWS.Greengrass.Types.LoggerDefinitionVersion
+        , Network.AWS.Greengrass.Types.LoggerLevel
+        , Network.AWS.Greengrass.Types.LoggerType
+        , Network.AWS.Greengrass.Types.Permission
+        , Network.AWS.Greengrass.Types.Resource
+        , Network.AWS.Greengrass.Types.ResourceAccessPolicy
+        , Network.AWS.Greengrass.Types.ResourceDataContainer
+        , Network.AWS.Greengrass.Types.ResourceDefinitionVersion
+        , Network.AWS.Greengrass.Types.S3MachineLearningModelResourceData
+        , Network.AWS.Greengrass.Types.SageMakerMachineLearningModelResourceData
+        , Network.AWS.Greengrass.Types.SoftwareToUpdate
+        , Network.AWS.Greengrass.Types.Subscription
+        , Network.AWS.Greengrass.Types.SubscriptionDefinitionVersion
+        , Network.AWS.Greengrass.Types.UpdateAgentLogLevel
+        , Network.AWS.Greengrass.Types.UpdateTargetsArchitecture
+        , Network.AWS.Greengrass.Types.UpdateTargetsOperatingSystem
+        , Network.AWS.Greengrass.Types.VersionInformation
 
     build-depends:
           amazonka-core == 1.6.1.*

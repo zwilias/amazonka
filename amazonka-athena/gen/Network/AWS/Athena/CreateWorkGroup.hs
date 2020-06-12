@@ -40,22 +40,18 @@ module Network.AWS.Athena.CreateWorkGroup
     ) where
 
 import Network.AWS.Athena.Types
-import Network.AWS.Athena.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 
 -- | /See:/ 'createWorkGroup' smart constructor.
-data CreateWorkGroup =
-  CreateWorkGroup'
-    { _cwgConfiguration :: !(Maybe WorkGroupConfiguration)
-    , _cwgDescription   :: !(Maybe Text)
-    , _cwgTags          :: !(Maybe [Tag])
-    , _cwgName          :: !Text
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data CreateWorkGroup = CreateWorkGroup'{_cwgConfiguration
+                                        :: !(Maybe WorkGroupConfiguration),
+                                        _cwgDescription :: !(Maybe Text),
+                                        _cwgTags :: !(Maybe [Tag]),
+                                        _cwgName :: !Text}
+                         deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'CreateWorkGroup' with the minimum fields required to make a request.
 --
@@ -71,14 +67,10 @@ data CreateWorkGroup =
 createWorkGroup
     :: Text -- ^ 'cwgName'
     -> CreateWorkGroup
-createWorkGroup pName_ =
-  CreateWorkGroup'
-    { _cwgConfiguration = Nothing
-    , _cwgDescription = Nothing
-    , _cwgTags = Nothing
-    , _cwgName = pName_
-    }
-
+createWorkGroup pName_
+  = CreateWorkGroup'{_cwgConfiguration = Nothing,
+                     _cwgDescription = Nothing, _cwgTags = Nothing,
+                     _cwgName = pName_}
 
 -- | The configuration for the workgroup, which includes the location in Amazon S3 where query results are stored, the encryption configuration, if any, used for encrypting query results, whether the Amazon CloudWatch Metrics are enabled for the workgroup, the limit for the amount of bytes scanned (cutoff) per query, if it is specified, and whether workgroup's settings (specified with EnforceWorkGroupConfiguration) in the WorkGroupConfiguration override client-side settings. See 'WorkGroupConfiguration$EnforceWorkGroupConfiguration' .
 cwgConfiguration :: Lens' CreateWorkGroup (Maybe WorkGroupConfiguration)
@@ -132,12 +124,10 @@ instance ToQuery CreateWorkGroup where
         toQuery = const mempty
 
 -- | /See:/ 'createWorkGroupResponse' smart constructor.
-newtype CreateWorkGroupResponse =
-  CreateWorkGroupResponse'
-    { _cwgrsResponseStatus :: Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+newtype CreateWorkGroupResponse = CreateWorkGroupResponse'{_cwgrsResponseStatus
+                                                           :: Int}
+                                    deriving (Eq, Read, Show, Data, Typeable,
+                                              Generic)
 
 -- | Creates a value of 'CreateWorkGroupResponse' with the minimum fields required to make a request.
 --
@@ -147,9 +137,9 @@ newtype CreateWorkGroupResponse =
 createWorkGroupResponse
     :: Int -- ^ 'cwgrsResponseStatus'
     -> CreateWorkGroupResponse
-createWorkGroupResponse pResponseStatus_ =
-  CreateWorkGroupResponse' {_cwgrsResponseStatus = pResponseStatus_}
-
+createWorkGroupResponse pResponseStatus_
+  = CreateWorkGroupResponse'{_cwgrsResponseStatus =
+                               pResponseStatus_}
 
 -- | -- | The response status code.
 cwgrsResponseStatus :: Lens' CreateWorkGroupResponse Int

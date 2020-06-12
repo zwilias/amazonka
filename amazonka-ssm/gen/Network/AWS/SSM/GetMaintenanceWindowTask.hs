@@ -56,16 +56,14 @@ import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 import Network.AWS.SSM.Types
-import Network.AWS.SSM.Types.Product
 
 -- | /See:/ 'getMaintenanceWindowTask' smart constructor.
-data GetMaintenanceWindowTask =
-  GetMaintenanceWindowTask'
-    { _gmwtWindowId     :: !Text
-    , _gmwtWindowTaskId :: !Text
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data GetMaintenanceWindowTask = GetMaintenanceWindowTask'{_gmwtWindowId
+                                                          :: !Text,
+                                                          _gmwtWindowTaskId ::
+                                                          !Text}
+                                  deriving (Eq, Read, Show, Data, Typeable,
+                                            Generic)
 
 -- | Creates a value of 'GetMaintenanceWindowTask' with the minimum fields required to make a request.
 --
@@ -78,10 +76,10 @@ getMaintenanceWindowTask
     :: Text -- ^ 'gmwtWindowId'
     -> Text -- ^ 'gmwtWindowTaskId'
     -> GetMaintenanceWindowTask
-getMaintenanceWindowTask pWindowId_ pWindowTaskId_ =
-  GetMaintenanceWindowTask'
-    {_gmwtWindowId = pWindowId_, _gmwtWindowTaskId = pWindowTaskId_}
-
+getMaintenanceWindowTask pWindowId_ pWindowTaskId_
+  = GetMaintenanceWindowTask'{_gmwtWindowId =
+                                pWindowId_,
+                              _gmwtWindowTaskId = pWindowTaskId_}
 
 -- | The Maintenance Window ID that includes the task to retrieve.
 gmwtWindowId :: Lens' GetMaintenanceWindowTask Text
@@ -141,26 +139,72 @@ instance ToQuery GetMaintenanceWindowTask where
         toQuery = const mempty
 
 -- | /See:/ 'getMaintenanceWindowTaskResponse' smart constructor.
-data GetMaintenanceWindowTaskResponse =
-  GetMaintenanceWindowTaskResponse'
-    { _gmwtrsServiceRoleARN :: !(Maybe Text)
-    , _gmwtrsWindowTaskId :: !(Maybe Text)
-    , _gmwtrsTaskParameters :: !(Maybe (Sensitive (Map Text (Sensitive MaintenanceWindowTaskParameterValueExpression))))
-    , _gmwtrsPriority :: !(Maybe Nat)
-    , _gmwtrsTaskType :: !(Maybe MaintenanceWindowTaskType)
-    , _gmwtrsTaskARN :: !(Maybe Text)
-    , _gmwtrsMaxErrors :: !(Maybe Text)
-    , _gmwtrsTaskInvocationParameters :: !(Maybe MaintenanceWindowTaskInvocationParameters)
-    , _gmwtrsName :: !(Maybe Text)
-    , _gmwtrsTargets :: !(Maybe [Target])
-    , _gmwtrsLoggingInfo :: !(Maybe LoggingInfo)
-    , _gmwtrsDescription :: !(Maybe (Sensitive Text))
-    , _gmwtrsMaxConcurrency :: !(Maybe Text)
-    , _gmwtrsWindowId :: !(Maybe Text)
-    , _gmwtrsResponseStatus :: !Int
-    }
-  deriving (Eq, Show, Data, Typeable, Generic)
-
+data GetMaintenanceWindowTaskResponse = GetMaintenanceWindowTaskResponse'{_gmwtrsServiceRoleARN
+                                                                          ::
+                                                                          !(Maybe
+                                                                              Text),
+                                                                          _gmwtrsWindowTaskId
+                                                                          ::
+                                                                          !(Maybe
+                                                                              Text),
+                                                                          _gmwtrsTaskParameters
+                                                                          ::
+                                                                          !(Maybe
+                                                                              (Sensitive
+                                                                                 (Map
+                                                                                    Text
+                                                                                    (Sensitive
+                                                                                       MaintenanceWindowTaskParameterValueExpression)))),
+                                                                          _gmwtrsPriority
+                                                                          ::
+                                                                          !(Maybe
+                                                                              Nat),
+                                                                          _gmwtrsTaskType
+                                                                          ::
+                                                                          !(Maybe
+                                                                              MaintenanceWindowTaskType),
+                                                                          _gmwtrsTaskARN
+                                                                          ::
+                                                                          !(Maybe
+                                                                              Text),
+                                                                          _gmwtrsMaxErrors
+                                                                          ::
+                                                                          !(Maybe
+                                                                              Text),
+                                                                          _gmwtrsTaskInvocationParameters
+                                                                          ::
+                                                                          !(Maybe
+                                                                              MaintenanceWindowTaskInvocationParameters),
+                                                                          _gmwtrsName
+                                                                          ::
+                                                                          !(Maybe
+                                                                              Text),
+                                                                          _gmwtrsTargets
+                                                                          ::
+                                                                          !(Maybe
+                                                                              [Target]),
+                                                                          _gmwtrsLoggingInfo
+                                                                          ::
+                                                                          !(Maybe
+                                                                              LoggingInfo),
+                                                                          _gmwtrsDescription
+                                                                          ::
+                                                                          !(Maybe
+                                                                              (Sensitive
+                                                                                 Text)),
+                                                                          _gmwtrsMaxConcurrency
+                                                                          ::
+                                                                          !(Maybe
+                                                                              Text),
+                                                                          _gmwtrsWindowId
+                                                                          ::
+                                                                          !(Maybe
+                                                                              Text),
+                                                                          _gmwtrsResponseStatus
+                                                                          ::
+                                                                          !Int}
+                                          deriving (Eq, Show, Data, Typeable,
+                                                    Generic)
 
 -- | Creates a value of 'GetMaintenanceWindowTaskResponse' with the minimum fields required to make a request.
 --
@@ -198,25 +242,23 @@ data GetMaintenanceWindowTaskResponse =
 getMaintenanceWindowTaskResponse
     :: Int -- ^ 'gmwtrsResponseStatus'
     -> GetMaintenanceWindowTaskResponse
-getMaintenanceWindowTaskResponse pResponseStatus_ =
-  GetMaintenanceWindowTaskResponse'
-    { _gmwtrsServiceRoleARN = Nothing
-    , _gmwtrsWindowTaskId = Nothing
-    , _gmwtrsTaskParameters = Nothing
-    , _gmwtrsPriority = Nothing
-    , _gmwtrsTaskType = Nothing
-    , _gmwtrsTaskARN = Nothing
-    , _gmwtrsMaxErrors = Nothing
-    , _gmwtrsTaskInvocationParameters = Nothing
-    , _gmwtrsName = Nothing
-    , _gmwtrsTargets = Nothing
-    , _gmwtrsLoggingInfo = Nothing
-    , _gmwtrsDescription = Nothing
-    , _gmwtrsMaxConcurrency = Nothing
-    , _gmwtrsWindowId = Nothing
-    , _gmwtrsResponseStatus = pResponseStatus_
-    }
-
+getMaintenanceWindowTaskResponse pResponseStatus_
+  = GetMaintenanceWindowTaskResponse'{_gmwtrsServiceRoleARN
+                                        = Nothing,
+                                      _gmwtrsWindowTaskId = Nothing,
+                                      _gmwtrsTaskParameters = Nothing,
+                                      _gmwtrsPriority = Nothing,
+                                      _gmwtrsTaskType = Nothing,
+                                      _gmwtrsTaskARN = Nothing,
+                                      _gmwtrsMaxErrors = Nothing,
+                                      _gmwtrsTaskInvocationParameters = Nothing,
+                                      _gmwtrsName = Nothing,
+                                      _gmwtrsTargets = Nothing,
+                                      _gmwtrsLoggingInfo = Nothing,
+                                      _gmwtrsDescription = Nothing,
+                                      _gmwtrsMaxConcurrency = Nothing,
+                                      _gmwtrsWindowId = Nothing,
+                                      _gmwtrsResponseStatus = pResponseStatus_}
 
 -- | The IAM service role to assume during task execution.
 gmwtrsServiceRoleARN :: Lens' GetMaintenanceWindowTaskResponse (Maybe Text)

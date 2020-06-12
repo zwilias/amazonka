@@ -63,30 +63,26 @@ module Network.AWS.EC2.CreateRoute
     ) where
 
 import Network.AWS.EC2.Types
-import Network.AWS.EC2.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 
 -- | /See:/ 'createRoute' smart constructor.
-data CreateRoute =
-  CreateRoute'
-    { _crVPCPeeringConnectionId      :: !(Maybe Text)
-    , _crInstanceId                  :: !(Maybe Text)
-    , _crEgressOnlyInternetGatewayId :: !(Maybe Text)
-    , _crDestinationIPv6CidrBlock    :: !(Maybe Text)
-    , _crLocalGatewayId              :: !(Maybe Text)
-    , _crNatGatewayId                :: !(Maybe Text)
-    , _crNetworkInterfaceId          :: !(Maybe Text)
-    , _crTransitGatewayId            :: !(Maybe Text)
-    , _crGatewayId                   :: !(Maybe Text)
-    , _crDryRun                      :: !(Maybe Bool)
-    , _crDestinationCidrBlock        :: !(Maybe Text)
-    , _crRouteTableId                :: !Text
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data CreateRoute = CreateRoute'{_crVPCPeeringConnectionId
+                                :: !(Maybe Text),
+                                _crInstanceId :: !(Maybe Text),
+                                _crEgressOnlyInternetGatewayId :: !(Maybe Text),
+                                _crDestinationIPv6CidrBlock :: !(Maybe Text),
+                                _crLocalGatewayId :: !(Maybe Text),
+                                _crNatGatewayId :: !(Maybe Text),
+                                _crNetworkInterfaceId :: !(Maybe Text),
+                                _crTransitGatewayId :: !(Maybe Text),
+                                _crGatewayId :: !(Maybe Text),
+                                _crDryRun :: !(Maybe Bool),
+                                _crDestinationCidrBlock :: !(Maybe Text),
+                                _crRouteTableId :: !Text}
+                     deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'CreateRoute' with the minimum fields required to make a request.
 --
@@ -118,22 +114,18 @@ data CreateRoute =
 createRoute
     :: Text -- ^ 'crRouteTableId'
     -> CreateRoute
-createRoute pRouteTableId_ =
-  CreateRoute'
-    { _crVPCPeeringConnectionId = Nothing
-    , _crInstanceId = Nothing
-    , _crEgressOnlyInternetGatewayId = Nothing
-    , _crDestinationIPv6CidrBlock = Nothing
-    , _crLocalGatewayId = Nothing
-    , _crNatGatewayId = Nothing
-    , _crNetworkInterfaceId = Nothing
-    , _crTransitGatewayId = Nothing
-    , _crGatewayId = Nothing
-    , _crDryRun = Nothing
-    , _crDestinationCidrBlock = Nothing
-    , _crRouteTableId = pRouteTableId_
-    }
-
+createRoute pRouteTableId_
+  = CreateRoute'{_crVPCPeeringConnectionId = Nothing,
+                 _crInstanceId = Nothing,
+                 _crEgressOnlyInternetGatewayId = Nothing,
+                 _crDestinationIPv6CidrBlock = Nothing,
+                 _crLocalGatewayId = Nothing,
+                 _crNatGatewayId = Nothing,
+                 _crNetworkInterfaceId = Nothing,
+                 _crTransitGatewayId = Nothing,
+                 _crGatewayId = Nothing, _crDryRun = Nothing,
+                 _crDestinationCidrBlock = Nothing,
+                 _crRouteTableId = pRouteTableId_}
 
 -- | The ID of a VPC peering connection.
 crVPCPeeringConnectionId :: Lens' CreateRoute (Maybe Text)
@@ -223,13 +215,10 @@ instance ToQuery CreateRoute where
                "RouteTableId" =: _crRouteTableId]
 
 -- | /See:/ 'createRouteResponse' smart constructor.
-data CreateRouteResponse =
-  CreateRouteResponse'
-    { _crrsReturn         :: !(Maybe Bool)
-    , _crrsResponseStatus :: !Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data CreateRouteResponse = CreateRouteResponse'{_crrsReturn
+                                                :: !(Maybe Bool),
+                                                _crrsResponseStatus :: !Int}
+                             deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'CreateRouteResponse' with the minimum fields required to make a request.
 --
@@ -241,10 +230,9 @@ data CreateRouteResponse =
 createRouteResponse
     :: Int -- ^ 'crrsResponseStatus'
     -> CreateRouteResponse
-createRouteResponse pResponseStatus_ =
-  CreateRouteResponse'
-    {_crrsReturn = Nothing, _crrsResponseStatus = pResponseStatus_}
-
+createRouteResponse pResponseStatus_
+  = CreateRouteResponse'{_crrsReturn = Nothing,
+                         _crrsResponseStatus = pResponseStatus_}
 
 -- | Returns @true@ if the request succeeds; otherwise, it returns an error.
 crrsReturn :: Lens' CreateRouteResponse (Maybe Bool)

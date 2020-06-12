@@ -36,20 +36,16 @@ module Network.AWS.IoTAnalytics.UpdateChannel
     ) where
 
 import Network.AWS.IoTAnalytics.Types
-import Network.AWS.IoTAnalytics.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 
 -- | /See:/ 'updateChannel' smart constructor.
-data UpdateChannel =
-  UpdateChannel'
-    { _ucRetentionPeriod :: !(Maybe RetentionPeriod)
-    , _ucChannelName     :: !Text
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data UpdateChannel = UpdateChannel'{_ucRetentionPeriod
+                                    :: !(Maybe RetentionPeriod),
+                                    _ucChannelName :: !Text}
+                       deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'UpdateChannel' with the minimum fields required to make a request.
 --
@@ -61,9 +57,9 @@ data UpdateChannel =
 updateChannel
     :: Text -- ^ 'ucChannelName'
     -> UpdateChannel
-updateChannel pChannelName_ =
-  UpdateChannel' {_ucRetentionPeriod = Nothing, _ucChannelName = pChannelName_}
-
+updateChannel pChannelName_
+  = UpdateChannel'{_ucRetentionPeriod = Nothing,
+                   _ucChannelName = pChannelName_}
 
 -- | How long, in days, message data is kept for the channel.
 ucRetentionPeriod :: Lens' UpdateChannel (Maybe RetentionPeriod)
@@ -99,16 +95,14 @@ instance ToQuery UpdateChannel where
         toQuery = const mempty
 
 -- | /See:/ 'updateChannelResponse' smart constructor.
-data UpdateChannelResponse =
-  UpdateChannelResponse'
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data UpdateChannelResponse = UpdateChannelResponse'
+                               deriving (Eq, Read, Show, Data, Typeable,
+                                         Generic)
 
 -- | Creates a value of 'UpdateChannelResponse' with the minimum fields required to make a request.
 --
 updateChannelResponse
     :: UpdateChannelResponse
 updateChannelResponse = UpdateChannelResponse'
-
 
 instance NFData UpdateChannelResponse where

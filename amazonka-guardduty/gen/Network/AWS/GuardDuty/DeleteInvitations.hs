@@ -36,7 +36,6 @@ module Network.AWS.GuardDuty.DeleteInvitations
     ) where
 
 import Network.AWS.GuardDuty.Types
-import Network.AWS.GuardDuty.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.Request
@@ -45,12 +44,9 @@ import Network.AWS.Response
 -- | DeleteInvitations request body.
 --
 -- /See:/ 'deleteInvitations' smart constructor.
-newtype DeleteInvitations =
-  DeleteInvitations'
-    { _diAccountIds :: Maybe [Text]
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+newtype DeleteInvitations = DeleteInvitations'{_diAccountIds
+                                               :: Maybe [Text]}
+                              deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'DeleteInvitations' with the minimum fields required to make a request.
 --
@@ -59,8 +55,8 @@ newtype DeleteInvitations =
 -- * 'diAccountIds' - A list of account IDs of the AWS accounts that sent invitations to the current member account that you want to delete invitations from.
 deleteInvitations
     :: DeleteInvitations
-deleteInvitations = DeleteInvitations' {_diAccountIds = Nothing}
-
+deleteInvitations
+  = DeleteInvitations'{_diAccountIds = Nothing}
 
 -- | A list of account IDs of the AWS accounts that sent invitations to the current member account that you want to delete invitations from.
 diAccountIds :: Lens' DeleteInvitations [Text]
@@ -99,13 +95,14 @@ instance ToQuery DeleteInvitations where
         toQuery = const mempty
 
 -- | /See:/ 'deleteInvitationsResponse' smart constructor.
-data DeleteInvitationsResponse =
-  DeleteInvitationsResponse'
-    { _dirsUnprocessedAccounts :: !(Maybe [UnprocessedAccount])
-    , _dirsResponseStatus      :: !Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data DeleteInvitationsResponse = DeleteInvitationsResponse'{_dirsUnprocessedAccounts
+                                                            ::
+                                                            !(Maybe
+                                                                [UnprocessedAccount]),
+                                                            _dirsResponseStatus
+                                                            :: !Int}
+                                   deriving (Eq, Read, Show, Data, Typeable,
+                                             Generic)
 
 -- | Creates a value of 'DeleteInvitationsResponse' with the minimum fields required to make a request.
 --
@@ -117,10 +114,10 @@ data DeleteInvitationsResponse =
 deleteInvitationsResponse
     :: Int -- ^ 'dirsResponseStatus'
     -> DeleteInvitationsResponse
-deleteInvitationsResponse pResponseStatus_ =
-  DeleteInvitationsResponse'
-    {_dirsUnprocessedAccounts = Nothing, _dirsResponseStatus = pResponseStatus_}
-
+deleteInvitationsResponse pResponseStatus_
+  = DeleteInvitationsResponse'{_dirsUnprocessedAccounts
+                                 = Nothing,
+                               _dirsResponseStatus = pResponseStatus_}
 
 -- | A list of objects containing the unprocessed account and a result string explaining why it was unprocessed.
 dirsUnprocessedAccounts :: Lens' DeleteInvitationsResponse [UnprocessedAccount]

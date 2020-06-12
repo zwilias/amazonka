@@ -18,7 +18,7 @@
 -- Stability   : auto-generated
 -- Portability : non-portable (GHC extensions)
 --
--- Disassociates a resource from a list of tags. The resource is identified by the @ResourceArn@ input parameter. The tags are identfied by the list of keys in the @TagKeys@ input parameter.
+-- Disassociates a resource from a list of tags. The resource is identified by the @ResourceArn@ input parameter. The tags are identfied by the list of keys in the @TagKeys@ input parameter. 
 --
 --
 module Network.AWS.CodeDeploy.UntagResource
@@ -38,40 +38,36 @@ module Network.AWS.CodeDeploy.UntagResource
     ) where
 
 import Network.AWS.CodeDeploy.Types
-import Network.AWS.CodeDeploy.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 
 -- | /See:/ 'untagResource' smart constructor.
-data UntagResource =
-  UntagResource'
-    { _urResourceARN :: !Text
-    , _urTagKeys     :: ![Text]
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data UntagResource = UntagResource'{_urResourceARN ::
+                                    !Text,
+                                    _urTagKeys :: ![Text]}
+                       deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'UntagResource' with the minimum fields required to make a request.
 --
 -- Use one of the following lenses to modify other fields as desired:
 --
--- * 'urResourceARN' - The ARN that specifies from which resource to disassociate the tags with the keys in the @TagKeys@ input paramter.
+-- * 'urResourceARN' - The ARN that specifies from which resource to disassociate the tags with the keys in the @TagKeys@ input paramter. 
 --
--- * 'urTagKeys' - A list of keys of @Tag@ objects. The @Tag@ objects identified by the keys are disassociated from the resource specified by the @ResourceArn@ input parameter.
+-- * 'urTagKeys' - A list of keys of @Tag@ objects. The @Tag@ objects identified by the keys are disassociated from the resource specified by the @ResourceArn@ input parameter. 
 untagResource
     :: Text -- ^ 'urResourceARN'
     -> UntagResource
-untagResource pResourceARN_ =
-  UntagResource' {_urResourceARN = pResourceARN_, _urTagKeys = mempty}
+untagResource pResourceARN_
+  = UntagResource'{_urResourceARN = pResourceARN_,
+                   _urTagKeys = mempty}
 
-
--- | The ARN that specifies from which resource to disassociate the tags with the keys in the @TagKeys@ input paramter.
+-- | The ARN that specifies from which resource to disassociate the tags with the keys in the @TagKeys@ input paramter. 
 urResourceARN :: Lens' UntagResource Text
 urResourceARN = lens _urResourceARN (\ s a -> s{_urResourceARN = a})
 
--- | A list of keys of @Tag@ objects. The @Tag@ objects identified by the keys are disassociated from the resource specified by the @ResourceArn@ input parameter.
+-- | A list of keys of @Tag@ objects. The @Tag@ objects identified by the keys are disassociated from the resource specified by the @ResourceArn@ input parameter. 
 urTagKeys :: Lens' UntagResource [Text]
 urTagKeys = lens _urTagKeys (\ s a -> s{_urTagKeys = a}) . _Coerce
 
@@ -110,12 +106,10 @@ instance ToQuery UntagResource where
         toQuery = const mempty
 
 -- | /See:/ 'untagResourceResponse' smart constructor.
-newtype UntagResourceResponse =
-  UntagResourceResponse'
-    { _urrsResponseStatus :: Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+newtype UntagResourceResponse = UntagResourceResponse'{_urrsResponseStatus
+                                                       :: Int}
+                                  deriving (Eq, Read, Show, Data, Typeable,
+                                            Generic)
 
 -- | Creates a value of 'UntagResourceResponse' with the minimum fields required to make a request.
 --
@@ -125,9 +119,9 @@ newtype UntagResourceResponse =
 untagResourceResponse
     :: Int -- ^ 'urrsResponseStatus'
     -> UntagResourceResponse
-untagResourceResponse pResponseStatus_ =
-  UntagResourceResponse' {_urrsResponseStatus = pResponseStatus_}
-
+untagResourceResponse pResponseStatus_
+  = UntagResourceResponse'{_urrsResponseStatus =
+                             pResponseStatus_}
 
 -- | -- | The response status code.
 urrsResponseStatus :: Lens' UntagResourceResponse Int

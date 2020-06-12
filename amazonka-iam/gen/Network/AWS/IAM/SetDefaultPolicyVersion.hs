@@ -40,20 +40,17 @@ module Network.AWS.IAM.SetDefaultPolicyVersion
     ) where
 
 import Network.AWS.IAM.Types
-import Network.AWS.IAM.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 
 -- | /See:/ 'setDefaultPolicyVersion' smart constructor.
-data SetDefaultPolicyVersion =
-  SetDefaultPolicyVersion'
-    { _sdpvPolicyARN :: !Text
-    , _sdpvVersionId :: !Text
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data SetDefaultPolicyVersion = SetDefaultPolicyVersion'{_sdpvPolicyARN
+                                                        :: !Text,
+                                                        _sdpvVersionId :: !Text}
+                                 deriving (Eq, Read, Show, Data, Typeable,
+                                           Generic)
 
 -- | Creates a value of 'SetDefaultPolicyVersion' with the minimum fields required to make a request.
 --
@@ -66,10 +63,10 @@ setDefaultPolicyVersion
     :: Text -- ^ 'sdpvPolicyARN'
     -> Text -- ^ 'sdpvVersionId'
     -> SetDefaultPolicyVersion
-setDefaultPolicyVersion pPolicyARN_ pVersionId_ =
-  SetDefaultPolicyVersion'
-    {_sdpvPolicyARN = pPolicyARN_, _sdpvVersionId = pVersionId_}
-
+setDefaultPolicyVersion pPolicyARN_ pVersionId_
+  = SetDefaultPolicyVersion'{_sdpvPolicyARN =
+                               pPolicyARN_,
+                             _sdpvVersionId = pVersionId_}
 
 -- | The Amazon Resource Name (ARN) of the IAM policy whose default version you want to set. For more information about ARNs, see <http://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html Amazon Resource Names (ARNs) and AWS Service Namespaces> in the /AWS General Reference/ .
 sdpvPolicyARN :: Lens' SetDefaultPolicyVersion Text
@@ -106,16 +103,15 @@ instance ToQuery SetDefaultPolicyVersion where
                "VersionId" =: _sdpvVersionId]
 
 -- | /See:/ 'setDefaultPolicyVersionResponse' smart constructor.
-data SetDefaultPolicyVersionResponse =
-  SetDefaultPolicyVersionResponse'
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data SetDefaultPolicyVersionResponse = SetDefaultPolicyVersionResponse'
+                                         deriving (Eq, Read, Show, Data,
+                                                   Typeable, Generic)
 
 -- | Creates a value of 'SetDefaultPolicyVersionResponse' with the minimum fields required to make a request.
 --
 setDefaultPolicyVersionResponse
     :: SetDefaultPolicyVersionResponse
-setDefaultPolicyVersionResponse = SetDefaultPolicyVersionResponse'
-
+setDefaultPolicyVersionResponse
+  = SetDefaultPolicyVersionResponse'
 
 instance NFData SetDefaultPolicyVersionResponse where

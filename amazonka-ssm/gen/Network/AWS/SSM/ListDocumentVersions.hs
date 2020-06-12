@@ -45,17 +45,14 @@ import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 import Network.AWS.SSM.Types
-import Network.AWS.SSM.Types.Product
 
 -- | /See:/ 'listDocumentVersions' smart constructor.
-data ListDocumentVersions =
-  ListDocumentVersions'
-    { _ldvNextToken  :: !(Maybe Text)
-    , _ldvMaxResults :: !(Maybe Nat)
-    , _ldvName       :: !Text
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data ListDocumentVersions = ListDocumentVersions'{_ldvNextToken
+                                                  :: !(Maybe Text),
+                                                  _ldvMaxResults ::
+                                                  !(Maybe Nat),
+                                                  _ldvName :: !Text}
+                              deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'ListDocumentVersions' with the minimum fields required to make a request.
 --
@@ -69,10 +66,9 @@ data ListDocumentVersions =
 listDocumentVersions
     :: Text -- ^ 'ldvName'
     -> ListDocumentVersions
-listDocumentVersions pName_ =
-  ListDocumentVersions'
-    {_ldvNextToken = Nothing, _ldvMaxResults = Nothing, _ldvName = pName_}
-
+listDocumentVersions pName_
+  = ListDocumentVersions'{_ldvNextToken = Nothing,
+                          _ldvMaxResults = Nothing, _ldvName = pName_}
 
 -- | The token for the next set of items to return. (You received this token from a previous call.)
 ldvNextToken :: Lens' ListDocumentVersions (Maybe Text)
@@ -125,14 +121,18 @@ instance ToQuery ListDocumentVersions where
         toQuery = const mempty
 
 -- | /See:/ 'listDocumentVersionsResponse' smart constructor.
-data ListDocumentVersionsResponse =
-  ListDocumentVersionsResponse'
-    { _ldvrsDocumentVersions :: !(Maybe (List1 DocumentVersionInfo))
-    , _ldvrsNextToken        :: !(Maybe Text)
-    , _ldvrsResponseStatus   :: !Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data ListDocumentVersionsResponse = ListDocumentVersionsResponse'{_ldvrsDocumentVersions
+                                                                  ::
+                                                                  !(Maybe
+                                                                      (List1
+                                                                         DocumentVersionInfo)),
+                                                                  _ldvrsNextToken
+                                                                  ::
+                                                                  !(Maybe Text),
+                                                                  _ldvrsResponseStatus
+                                                                  :: !Int}
+                                      deriving (Eq, Read, Show, Data, Typeable,
+                                                Generic)
 
 -- | Creates a value of 'ListDocumentVersionsResponse' with the minimum fields required to make a request.
 --
@@ -146,13 +146,11 @@ data ListDocumentVersionsResponse =
 listDocumentVersionsResponse
     :: Int -- ^ 'ldvrsResponseStatus'
     -> ListDocumentVersionsResponse
-listDocumentVersionsResponse pResponseStatus_ =
-  ListDocumentVersionsResponse'
-    { _ldvrsDocumentVersions = Nothing
-    , _ldvrsNextToken = Nothing
-    , _ldvrsResponseStatus = pResponseStatus_
-    }
-
+listDocumentVersionsResponse pResponseStatus_
+  = ListDocumentVersionsResponse'{_ldvrsDocumentVersions
+                                    = Nothing,
+                                  _ldvrsNextToken = Nothing,
+                                  _ldvrsResponseStatus = pResponseStatus_}
 
 -- | The document versions.
 ldvrsDocumentVersions :: Lens' ListDocumentVersionsResponse (Maybe (NonEmpty DocumentVersionInfo))

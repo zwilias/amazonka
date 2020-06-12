@@ -45,7 +45,6 @@ module Network.AWS.KMS.ListGrants
     ) where
 
 import Network.AWS.KMS.Types
-import Network.AWS.KMS.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Pager
 import Network.AWS.Prelude
@@ -53,14 +52,10 @@ import Network.AWS.Request
 import Network.AWS.Response
 
 -- | /See:/ 'listGrants' smart constructor.
-data ListGrants =
-  ListGrants'
-    { _lgMarker :: !(Maybe Text)
-    , _lgLimit  :: !(Maybe Nat)
-    , _lgKeyId  :: !Text
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data ListGrants = ListGrants'{_lgMarker ::
+                              !(Maybe Text),
+                              _lgLimit :: !(Maybe Nat), _lgKeyId :: !Text}
+                    deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'ListGrants' with the minimum fields required to make a request.
 --
@@ -74,9 +69,9 @@ data ListGrants =
 listGrants
     :: Text -- ^ 'lgKeyId'
     -> ListGrants
-listGrants pKeyId_ =
-  ListGrants' {_lgMarker = Nothing, _lgLimit = Nothing, _lgKeyId = pKeyId_}
-
+listGrants pKeyId_
+  = ListGrants'{_lgMarker = Nothing,
+                _lgLimit = Nothing, _lgKeyId = pKeyId_}
 
 -- | Use this parameter in a subsequent request after you receive a response with truncated results. Set it to the value of @NextMarker@ from the truncated response you just received.
 lgMarker :: Lens' ListGrants (Maybe Text)

@@ -42,20 +42,18 @@ module Network.AWS.ELBv2.RemoveListenerCertificates
     ) where
 
 import Network.AWS.ELBv2.Types
-import Network.AWS.ELBv2.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 
 -- | /See:/ 'removeListenerCertificates' smart constructor.
-data RemoveListenerCertificates =
-  RemoveListenerCertificates'
-    { _rlcListenerARN  :: !Text
-    , _rlcCertificates :: ![Certificate]
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data RemoveListenerCertificates = RemoveListenerCertificates'{_rlcListenerARN
+                                                              :: !Text,
+                                                              _rlcCertificates
+                                                              :: ![Certificate]}
+                                    deriving (Eq, Read, Show, Data, Typeable,
+                                              Generic)
 
 -- | Creates a value of 'RemoveListenerCertificates' with the minimum fields required to make a request.
 --
@@ -67,10 +65,10 @@ data RemoveListenerCertificates =
 removeListenerCertificates
     :: Text -- ^ 'rlcListenerARN'
     -> RemoveListenerCertificates
-removeListenerCertificates pListenerARN_ =
-  RemoveListenerCertificates'
-    {_rlcListenerARN = pListenerARN_, _rlcCertificates = mempty}
-
+removeListenerCertificates pListenerARN_
+  = RemoveListenerCertificates'{_rlcListenerARN =
+                                  pListenerARN_,
+                                _rlcCertificates = mempty}
 
 -- | The Amazon Resource Name (ARN) of the listener.
 rlcListenerARN :: Lens' RemoveListenerCertificates Text
@@ -112,12 +110,11 @@ instance ToQuery RemoveListenerCertificates where
                  toQueryList "member" _rlcCertificates]
 
 -- | /See:/ 'removeListenerCertificatesResponse' smart constructor.
-newtype RemoveListenerCertificatesResponse =
-  RemoveListenerCertificatesResponse'
-    { _rlcrsResponseStatus :: Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+newtype RemoveListenerCertificatesResponse = RemoveListenerCertificatesResponse'{_rlcrsResponseStatus
+                                                                                 ::
+                                                                                 Int}
+                                               deriving (Eq, Read, Show, Data,
+                                                         Typeable, Generic)
 
 -- | Creates a value of 'RemoveListenerCertificatesResponse' with the minimum fields required to make a request.
 --
@@ -127,9 +124,9 @@ newtype RemoveListenerCertificatesResponse =
 removeListenerCertificatesResponse
     :: Int -- ^ 'rlcrsResponseStatus'
     -> RemoveListenerCertificatesResponse
-removeListenerCertificatesResponse pResponseStatus_ =
-  RemoveListenerCertificatesResponse' {_rlcrsResponseStatus = pResponseStatus_}
-
+removeListenerCertificatesResponse pResponseStatus_
+  = RemoveListenerCertificatesResponse'{_rlcrsResponseStatus
+                                          = pResponseStatus_}
 
 -- | -- | The response status code.
 rlcrsResponseStatus :: Lens' RemoveListenerCertificatesResponse Int

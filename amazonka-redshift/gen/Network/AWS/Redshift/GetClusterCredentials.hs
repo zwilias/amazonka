@@ -23,11 +23,11 @@
 --
 -- The AWS Identity and Access Management (IAM)user or role that executes GetClusterCredentials must have an IAM policy attached that allows access to all necessary actions and resources. For more information about permissions, see <http://docs.aws.amazon.com/redshift/latest/mgmt/redshift-iam-access-control-identity-based.html#redshift-policy-resources.getclustercredentials-resources Resource Policies for GetClusterCredentials> in the Amazon Redshift Cluster Management Guide.
 --
--- If the @DbGroups@ parameter is specified, the IAM policy must allow the @redshift:JoinGroup@ action with access to the listed @dbgroups@ .
+-- If the @DbGroups@ parameter is specified, the IAM policy must allow the @redshift:JoinGroup@ action with access to the listed @dbgroups@ . 
 --
 -- In addition, if the @AutoCreate@ parameter is set to @True@ , then the policy must include the @redshift:CreateClusterUser@ privilege.
 --
--- If the @DbName@ parameter is specified, the IAM policy must allow access to the resource @dbname@ for the specified database name.
+-- If the @DbName@ parameter is specified, the IAM policy must allow access to the resource @dbname@ for the specified database name. 
 --
 module Network.AWS.Redshift.GetClusterCredentials
     (
@@ -55,7 +55,6 @@ module Network.AWS.Redshift.GetClusterCredentials
 import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.Redshift.Types
-import Network.AWS.Redshift.Types.Product
 import Network.AWS.Request
 import Network.AWS.Response
 
@@ -64,17 +63,18 @@ import Network.AWS.Response
 --
 --
 -- /See:/ 'getClusterCredentials' smart constructor.
-data GetClusterCredentials =
-  GetClusterCredentials'
-    { _gccDBGroups          :: !(Maybe [Text])
-    , _gccDurationSeconds   :: !(Maybe Int)
-    , _gccAutoCreate        :: !(Maybe Bool)
-    , _gccDBName            :: !(Maybe Text)
-    , _gccDBUser            :: !Text
-    , _gccClusterIdentifier :: !Text
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data GetClusterCredentials = GetClusterCredentials'{_gccDBGroups
+                                                    :: !(Maybe [Text]),
+                                                    _gccDurationSeconds ::
+                                                    !(Maybe Int),
+                                                    _gccAutoCreate ::
+                                                    !(Maybe Bool),
+                                                    _gccDBName :: !(Maybe Text),
+                                                    _gccDBUser :: !Text,
+                                                    _gccClusterIdentifier ::
+                                                    !Text}
+                               deriving (Eq, Read, Show, Data, Typeable,
+                                         Generic)
 
 -- | Creates a value of 'GetClusterCredentials' with the minimum fields required to make a request.
 --
@@ -95,16 +95,12 @@ getClusterCredentials
     :: Text -- ^ 'gccDBUser'
     -> Text -- ^ 'gccClusterIdentifier'
     -> GetClusterCredentials
-getClusterCredentials pDBUser_ pClusterIdentifier_ =
-  GetClusterCredentials'
-    { _gccDBGroups = Nothing
-    , _gccDurationSeconds = Nothing
-    , _gccAutoCreate = Nothing
-    , _gccDBName = Nothing
-    , _gccDBUser = pDBUser_
-    , _gccClusterIdentifier = pClusterIdentifier_
-    }
-
+getClusterCredentials pDBUser_ pClusterIdentifier_
+  = GetClusterCredentials'{_gccDBGroups = Nothing,
+                           _gccDurationSeconds = Nothing,
+                           _gccAutoCreate = Nothing, _gccDBName = Nothing,
+                           _gccDBUser = pDBUser_,
+                           _gccClusterIdentifier = pClusterIdentifier_}
 
 -- | A list of the names of existing database groups that the user named in @DbUser@ will join for the current session, in addition to any group memberships for an existing user. If not specified, a new user is added only to PUBLIC. Database group name constraints     * Must be 1 to 64 alphanumeric characters or hyphens     * Must contain only lowercase letters, numbers, underscore, plus sign, period (dot), at symbol (@), or hyphen.     * First character must be a letter.     * Must not contain a colon ( : ) or slash ( / ).      * Cannot be a reserved word. A list of reserved words can be found in <http://docs.aws.amazon.com/redshift/latest/dg/r_pg_keywords.html Reserved Words> in the Amazon Redshift Database Developer Guide.
 gccDBGroups :: Lens' GetClusterCredentials [Text]
@@ -164,20 +160,28 @@ instance ToQuery GetClusterCredentials where
                "DbName" =: _gccDBName, "DbUser" =: _gccDBUser,
                "ClusterIdentifier" =: _gccClusterIdentifier]
 
--- | Temporary credentials with authorization to log on to an Amazon Redshift database.
+-- | Temporary credentials with authorization to log on to an Amazon Redshift database. 
 --
 --
 --
 -- /See:/ 'getClusterCredentialsResponse' smart constructor.
-data GetClusterCredentialsResponse =
-  GetClusterCredentialsResponse'
-    { _gccrsDBUser         :: !(Maybe Text)
-    , _gccrsExpiration     :: !(Maybe ISO8601)
-    , _gccrsDBPassword     :: !(Maybe (Sensitive Text))
-    , _gccrsResponseStatus :: !Int
-    }
-  deriving (Eq, Show, Data, Typeable, Generic)
-
+data GetClusterCredentialsResponse = GetClusterCredentialsResponse'{_gccrsDBUser
+                                                                    ::
+                                                                    !(Maybe
+                                                                        Text),
+                                                                    _gccrsExpiration
+                                                                    ::
+                                                                    !(Maybe
+                                                                        ISO8601),
+                                                                    _gccrsDBPassword
+                                                                    ::
+                                                                    !(Maybe
+                                                                        (Sensitive
+                                                                           Text)),
+                                                                    _gccrsResponseStatus
+                                                                    :: !Int}
+                                       deriving (Eq, Show, Data, Typeable,
+                                                 Generic)
 
 -- | Creates a value of 'GetClusterCredentialsResponse' with the minimum fields required to make a request.
 --
@@ -187,20 +191,18 @@ data GetClusterCredentialsResponse =
 --
 -- * 'gccrsExpiration' - The date and time the password in @DbPassword@ expires.
 --
--- * 'gccrsDBPassword' - A temporary password that authorizes the user name returned by @DbUser@ to log on to the database @DbName@ .
+-- * 'gccrsDBPassword' - A temporary password that authorizes the user name returned by @DbUser@ to log on to the database @DbName@ . 
 --
 -- * 'gccrsResponseStatus' - -- | The response status code.
 getClusterCredentialsResponse
     :: Int -- ^ 'gccrsResponseStatus'
     -> GetClusterCredentialsResponse
-getClusterCredentialsResponse pResponseStatus_ =
-  GetClusterCredentialsResponse'
-    { _gccrsDBUser = Nothing
-    , _gccrsExpiration = Nothing
-    , _gccrsDBPassword = Nothing
-    , _gccrsResponseStatus = pResponseStatus_
-    }
-
+getClusterCredentialsResponse pResponseStatus_
+  = GetClusterCredentialsResponse'{_gccrsDBUser =
+                                     Nothing,
+                                   _gccrsExpiration = Nothing,
+                                   _gccrsDBPassword = Nothing,
+                                   _gccrsResponseStatus = pResponseStatus_}
 
 -- | A database user name that is authorized to log on to the database @DbName@ using the password @DbPassword@ . If the specified DbUser exists in the database, the new user name has the same database privileges as the the user named in DbUser. By default, the user is added to PUBLIC. If the @DbGroups@ parameter is specifed, @DbUser@ is added to the listed groups for any sessions created using these credentials.
 gccrsDBUser :: Lens' GetClusterCredentialsResponse (Maybe Text)
@@ -210,7 +212,7 @@ gccrsDBUser = lens _gccrsDBUser (\ s a -> s{_gccrsDBUser = a})
 gccrsExpiration :: Lens' GetClusterCredentialsResponse (Maybe UTCTime)
 gccrsExpiration = lens _gccrsExpiration (\ s a -> s{_gccrsExpiration = a}) . mapping _Time
 
--- | A temporary password that authorizes the user name returned by @DbUser@ to log on to the database @DbName@ .
+-- | A temporary password that authorizes the user name returned by @DbUser@ to log on to the database @DbName@ . 
 gccrsDBPassword :: Lens' GetClusterCredentialsResponse (Maybe Text)
 gccrsDBPassword = lens _gccrsDBPassword (\ s a -> s{_gccrsDBPassword = a}) . mapping _Sensitive
 

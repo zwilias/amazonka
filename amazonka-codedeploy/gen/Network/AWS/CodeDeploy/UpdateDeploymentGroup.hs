@@ -54,7 +54,6 @@ module Network.AWS.CodeDeploy.UpdateDeploymentGroup
     ) where
 
 import Network.AWS.CodeDeploy.Types
-import Network.AWS.CodeDeploy.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.Request
@@ -65,28 +64,46 @@ import Network.AWS.Response
 --
 --
 -- /See:/ 'updateDeploymentGroup' smart constructor.
-data UpdateDeploymentGroup =
-  UpdateDeploymentGroup'
-    { _udgServiceRoleARN :: !(Maybe Text)
-    , _udgEc2TagSet :: !(Maybe EC2TagSet)
-    , _udgDeploymentConfigName :: !(Maybe Text)
-    , _udgOnPremisesTagSet :: !(Maybe OnPremisesTagSet)
-    , _udgNewDeploymentGroupName :: !(Maybe Text)
-    , _udgEc2TagFilters :: !(Maybe [EC2TagFilter])
-    , _udgEcsServices :: !(Maybe [ECSService])
-    , _udgBlueGreenDeploymentConfiguration :: !(Maybe BlueGreenDeploymentConfiguration)
-    , _udgLoadBalancerInfo :: !(Maybe LoadBalancerInfo)
-    , _udgOnPremisesInstanceTagFilters :: !(Maybe [TagFilter])
-    , _udgAlarmConfiguration :: !(Maybe AlarmConfiguration)
-    , _udgTriggerConfigurations :: !(Maybe [TriggerConfig])
-    , _udgAutoScalingGroups :: !(Maybe [Text])
-    , _udgDeploymentStyle :: !(Maybe DeploymentStyle)
-    , _udgAutoRollbackConfiguration :: !(Maybe AutoRollbackConfiguration)
-    , _udgApplicationName :: !Text
-    , _udgCurrentDeploymentGroupName :: !Text
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data UpdateDeploymentGroup = UpdateDeploymentGroup'{_udgServiceRoleARN
+                                                    :: !(Maybe Text),
+                                                    _udgEc2TagSet ::
+                                                    !(Maybe EC2TagSet),
+                                                    _udgDeploymentConfigName ::
+                                                    !(Maybe Text),
+                                                    _udgOnPremisesTagSet ::
+                                                    !(Maybe OnPremisesTagSet),
+                                                    _udgNewDeploymentGroupName
+                                                    :: !(Maybe Text),
+                                                    _udgEc2TagFilters ::
+                                                    !(Maybe [EC2TagFilter]),
+                                                    _udgEcsServices ::
+                                                    !(Maybe [ECSService]),
+                                                    _udgBlueGreenDeploymentConfiguration
+                                                    ::
+                                                    !(Maybe
+                                                        BlueGreenDeploymentConfiguration),
+                                                    _udgLoadBalancerInfo ::
+                                                    !(Maybe LoadBalancerInfo),
+                                                    _udgOnPremisesInstanceTagFilters
+                                                    :: !(Maybe [TagFilter]),
+                                                    _udgAlarmConfiguration ::
+                                                    !(Maybe AlarmConfiguration),
+                                                    _udgTriggerConfigurations ::
+                                                    !(Maybe [TriggerConfig]),
+                                                    _udgAutoScalingGroups ::
+                                                    !(Maybe [Text]),
+                                                    _udgDeploymentStyle ::
+                                                    !(Maybe DeploymentStyle),
+                                                    _udgAutoRollbackConfiguration
+                                                    ::
+                                                    !(Maybe
+                                                        AutoRollbackConfiguration),
+                                                    _udgApplicationName ::
+                                                    !Text,
+                                                    _udgCurrentDeploymentGroupName
+                                                    :: !Text}
+                               deriving (Eq, Read, Show, Data, Typeable,
+                                         Generic)
 
 -- | Creates a value of 'UpdateDeploymentGroup' with the minimum fields required to make a request.
 --
@@ -104,7 +121,7 @@ data UpdateDeploymentGroup =
 --
 -- * 'udgEc2TagFilters' - The replacement set of Amazon EC2 tags on which to filter, if you want to change them. To keep the existing tags, enter their names. To remove tags, do not enter any tag names.
 --
--- * 'udgEcsServices' - The target Amazon ECS services in the deployment group. This applies only to deployment groups that use the Amazon ECS compute platform. A target Amazon ECS service is specified as an Amazon ECS cluster and service name pair using the format @<clustername>:<servicename>@ .
+-- * 'udgEcsServices' - The target Amazon ECS services in the deployment group. This applies only to deployment groups that use the Amazon ECS compute platform. A target Amazon ECS service is specified as an Amazon ECS cluster and service name pair using the format @<clustername>:<servicename>@ . 
 --
 -- * 'udgBlueGreenDeploymentConfiguration' - Information about blue/green deployment options for a deployment group.
 --
@@ -129,27 +146,27 @@ updateDeploymentGroup
     :: Text -- ^ 'udgApplicationName'
     -> Text -- ^ 'udgCurrentDeploymentGroupName'
     -> UpdateDeploymentGroup
-updateDeploymentGroup pApplicationName_ pCurrentDeploymentGroupName_ =
-  UpdateDeploymentGroup'
-    { _udgServiceRoleARN = Nothing
-    , _udgEc2TagSet = Nothing
-    , _udgDeploymentConfigName = Nothing
-    , _udgOnPremisesTagSet = Nothing
-    , _udgNewDeploymentGroupName = Nothing
-    , _udgEc2TagFilters = Nothing
-    , _udgEcsServices = Nothing
-    , _udgBlueGreenDeploymentConfiguration = Nothing
-    , _udgLoadBalancerInfo = Nothing
-    , _udgOnPremisesInstanceTagFilters = Nothing
-    , _udgAlarmConfiguration = Nothing
-    , _udgTriggerConfigurations = Nothing
-    , _udgAutoScalingGroups = Nothing
-    , _udgDeploymentStyle = Nothing
-    , _udgAutoRollbackConfiguration = Nothing
-    , _udgApplicationName = pApplicationName_
-    , _udgCurrentDeploymentGroupName = pCurrentDeploymentGroupName_
-    }
-
+updateDeploymentGroup pApplicationName_
+  pCurrentDeploymentGroupName_
+  = UpdateDeploymentGroup'{_udgServiceRoleARN =
+                             Nothing,
+                           _udgEc2TagSet = Nothing,
+                           _udgDeploymentConfigName = Nothing,
+                           _udgOnPremisesTagSet = Nothing,
+                           _udgNewDeploymentGroupName = Nothing,
+                           _udgEc2TagFilters = Nothing,
+                           _udgEcsServices = Nothing,
+                           _udgBlueGreenDeploymentConfiguration = Nothing,
+                           _udgLoadBalancerInfo = Nothing,
+                           _udgOnPremisesInstanceTagFilters = Nothing,
+                           _udgAlarmConfiguration = Nothing,
+                           _udgTriggerConfigurations = Nothing,
+                           _udgAutoScalingGroups = Nothing,
+                           _udgDeploymentStyle = Nothing,
+                           _udgAutoRollbackConfiguration = Nothing,
+                           _udgApplicationName = pApplicationName_,
+                           _udgCurrentDeploymentGroupName =
+                             pCurrentDeploymentGroupName_}
 
 -- | A replacement ARN for the service role, if you want to change it.
 udgServiceRoleARN :: Lens' UpdateDeploymentGroup (Maybe Text)
@@ -175,7 +192,7 @@ udgNewDeploymentGroupName = lens _udgNewDeploymentGroupName (\ s a -> s{_udgNewD
 udgEc2TagFilters :: Lens' UpdateDeploymentGroup [EC2TagFilter]
 udgEc2TagFilters = lens _udgEc2TagFilters (\ s a -> s{_udgEc2TagFilters = a}) . _Default . _Coerce
 
--- | The target Amazon ECS services in the deployment group. This applies only to deployment groups that use the Amazon ECS compute platform. A target Amazon ECS service is specified as an Amazon ECS cluster and service name pair using the format @<clustername>:<servicename>@ .
+-- | The target Amazon ECS services in the deployment group. This applies only to deployment groups that use the Amazon ECS compute platform. A target Amazon ECS service is specified as an Amazon ECS cluster and service name pair using the format @<clustername>:<servicename>@ . 
 udgEcsServices :: Lens' UpdateDeploymentGroup [ECSService]
 udgEcsServices = lens _udgEcsServices (\ s a -> s{_udgEcsServices = a}) . _Default . _Coerce
 
@@ -285,13 +302,14 @@ instance ToQuery UpdateDeploymentGroup where
 --
 --
 -- /See:/ 'updateDeploymentGroupResponse' smart constructor.
-data UpdateDeploymentGroupResponse =
-  UpdateDeploymentGroupResponse'
-    { _udgrsHooksNotCleanedUp :: !(Maybe [AutoScalingGroup])
-    , _udgrsResponseStatus    :: !Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data UpdateDeploymentGroupResponse = UpdateDeploymentGroupResponse'{_udgrsHooksNotCleanedUp
+                                                                    ::
+                                                                    !(Maybe
+                                                                        [AutoScalingGroup]),
+                                                                    _udgrsResponseStatus
+                                                                    :: !Int}
+                                       deriving (Eq, Read, Show, Data, Typeable,
+                                                 Generic)
 
 -- | Creates a value of 'UpdateDeploymentGroupResponse' with the minimum fields required to make a request.
 --
@@ -303,10 +321,10 @@ data UpdateDeploymentGroupResponse =
 updateDeploymentGroupResponse
     :: Int -- ^ 'udgrsResponseStatus'
     -> UpdateDeploymentGroupResponse
-updateDeploymentGroupResponse pResponseStatus_ =
-  UpdateDeploymentGroupResponse'
-    {_udgrsHooksNotCleanedUp = Nothing, _udgrsResponseStatus = pResponseStatus_}
-
+updateDeploymentGroupResponse pResponseStatus_
+  = UpdateDeploymentGroupResponse'{_udgrsHooksNotCleanedUp
+                                     = Nothing,
+                                   _udgrsResponseStatus = pResponseStatus_}
 
 -- | If the output contains no data, and the corresponding deployment group contained at least one Auto Scaling group, AWS CodeDeploy successfully removed all corresponding Auto Scaling lifecycle event hooks from the AWS account. If the output contains data, AWS CodeDeploy could not remove some Auto Scaling lifecycle event hooks from the AWS account.
 udgrsHooksNotCleanedUp :: Lens' UpdateDeploymentGroupResponse [AutoScalingGroup]

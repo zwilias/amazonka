@@ -18,16 +18,16 @@
 -- Stability   : auto-generated
 -- Portability : non-portable (GHC extensions)
 --
--- Registers or updates a scalable target.
+-- Registers or updates a scalable target. 
 --
 --
--- A scalable target is a resource that Application Auto Scaling can scale out and scale in. Scalable targets are uniquely identified by the combination of resource ID, scalable dimension, and namespace.
+-- A scalable target is a resource that Application Auto Scaling can scale out and scale in. Scalable targets are uniquely identified by the combination of resource ID, scalable dimension, and namespace. 
 --
 -- When you register a new scalable target, you must specify values for minimum and maximum capacity. Application Auto Scaling scaling policies will not scale capacity to values that are outside of this range.
 --
 -- After you register a scalable target, you do not need to register it again to use other Application Auto Scaling operations. To see which resources have been registered, use <https://docs.aws.amazon.com/autoscaling/application/APIReference/API_DescribeScalableTargets.html DescribeScalableTargets> . You can also view the scaling policies for a service namespace by using <https://docs.aws.amazon.com/autoscaling/application/APIReference/API_DescribeScalableTargets.html DescribeScalableTargets> . If you no longer need a scalable target, you can deregister it by using <https://docs.aws.amazon.com/autoscaling/application/APIReference/API_DeregisterScalableTarget.html DeregisterScalableTarget> .
 --
--- To update a scalable target, specify the parameters that you want to change. Include the parameters that identify the scalable target: resource ID, scalable dimension, and namespace. Any parameters that you don't specify are not changed by this update request.
+-- To update a scalable target, specify the parameters that you want to change. Include the parameters that identify the scalable target: resource ID, scalable dimension, and namespace. Any parameters that you don't specify are not changed by this update request. 
 --
 module Network.AWS.ApplicationAutoScaling.RegisterScalableTarget
     (
@@ -51,25 +51,28 @@ module Network.AWS.ApplicationAutoScaling.RegisterScalableTarget
     ) where
 
 import Network.AWS.ApplicationAutoScaling.Types
-import Network.AWS.ApplicationAutoScaling.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 
 -- | /See:/ 'registerScalableTarget' smart constructor.
-data RegisterScalableTarget =
-  RegisterScalableTarget'
-    { _rstSuspendedState    :: !(Maybe SuspendedState)
-    , _rstMaxCapacity       :: !(Maybe Int)
-    , _rstMinCapacity       :: !(Maybe Int)
-    , _rstRoleARN           :: !(Maybe Text)
-    , _rstServiceNamespace  :: !ServiceNamespace
-    , _rstResourceId        :: !Text
-    , _rstScalableDimension :: !ScalableDimension
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data RegisterScalableTarget = RegisterScalableTarget'{_rstSuspendedState
+                                                      ::
+                                                      !(Maybe SuspendedState),
+                                                      _rstMaxCapacity ::
+                                                      !(Maybe Int),
+                                                      _rstMinCapacity ::
+                                                      !(Maybe Int),
+                                                      _rstRoleARN ::
+                                                      !(Maybe Text),
+                                                      _rstServiceNamespace ::
+                                                      !ServiceNamespace,
+                                                      _rstResourceId :: !Text,
+                                                      _rstScalableDimension ::
+                                                      !ScalableDimension}
+                                deriving (Eq, Read, Show, Data, Typeable,
+                                          Generic)
 
 -- | Creates a value of 'RegisterScalableTarget' with the minimum fields required to make a request.
 --
@@ -93,17 +96,15 @@ registerScalableTarget
     -> Text -- ^ 'rstResourceId'
     -> ScalableDimension -- ^ 'rstScalableDimension'
     -> RegisterScalableTarget
-registerScalableTarget pServiceNamespace_ pResourceId_ pScalableDimension_ =
-  RegisterScalableTarget'
-    { _rstSuspendedState = Nothing
-    , _rstMaxCapacity = Nothing
-    , _rstMinCapacity = Nothing
-    , _rstRoleARN = Nothing
-    , _rstServiceNamespace = pServiceNamespace_
-    , _rstResourceId = pResourceId_
-    , _rstScalableDimension = pScalableDimension_
-    }
-
+registerScalableTarget pServiceNamespace_
+  pResourceId_ pScalableDimension_
+  = RegisterScalableTarget'{_rstSuspendedState =
+                              Nothing,
+                            _rstMaxCapacity = Nothing,
+                            _rstMinCapacity = Nothing, _rstRoleARN = Nothing,
+                            _rstServiceNamespace = pServiceNamespace_,
+                            _rstResourceId = pResourceId_,
+                            _rstScalableDimension = pScalableDimension_}
 
 -- | An embedded object that contains attributes and attribute values that are used to suspend and resume automatic scaling. Setting the value of an attribute to @true@ suspends the specified scaling activities. Setting it to @false@ (default) resumes the specified scaling activities.  __Suspension Outcomes__      * For @DynamicScalingInSuspended@ , while a suspension is in effect, all scale-in activities that are triggered by a scaling policy are suspended.     * For @DynamicScalingOutSuspended@ , while a suspension is in effect, all scale-out activities that are triggered by a scaling policy are suspended.     * For @ScheduledScalingSuspended@ , while a suspension is in effect, all scaling activities that involve scheduled actions are suspended.  For more information, see <https://docs.aws.amazon.com/autoscaling/application/userguide/application-auto-scaling-suspend-resume-scaling.html Suspending and Resuming Scaling> in the /Application Auto Scaling User Guide/ .
 rstSuspendedState :: Lens' RegisterScalableTarget (Maybe SuspendedState)
@@ -176,12 +177,10 @@ instance ToQuery RegisterScalableTarget where
         toQuery = const mempty
 
 -- | /See:/ 'registerScalableTargetResponse' smart constructor.
-newtype RegisterScalableTargetResponse =
-  RegisterScalableTargetResponse'
-    { _rstrsResponseStatus :: Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+newtype RegisterScalableTargetResponse = RegisterScalableTargetResponse'{_rstrsResponseStatus
+                                                                         :: Int}
+                                           deriving (Eq, Read, Show, Data,
+                                                     Typeable, Generic)
 
 -- | Creates a value of 'RegisterScalableTargetResponse' with the minimum fields required to make a request.
 --
@@ -191,9 +190,9 @@ newtype RegisterScalableTargetResponse =
 registerScalableTargetResponse
     :: Int -- ^ 'rstrsResponseStatus'
     -> RegisterScalableTargetResponse
-registerScalableTargetResponse pResponseStatus_ =
-  RegisterScalableTargetResponse' {_rstrsResponseStatus = pResponseStatus_}
-
+registerScalableTargetResponse pResponseStatus_
+  = RegisterScalableTargetResponse'{_rstrsResponseStatus
+                                      = pResponseStatus_}
 
 -- | -- | The response status code.
 rstrsResponseStatus :: Lens' RegisterScalableTargetResponse Int

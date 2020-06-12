@@ -18,7 +18,7 @@
 -- Stability   : auto-generated
 -- Portability : non-portable (GHC extensions)
 --
--- Returns an array of report groups.
+-- Returns an array of report groups. 
 --
 --
 module Network.AWS.CodeBuild.BatchGetReportGroups
@@ -39,33 +39,30 @@ module Network.AWS.CodeBuild.BatchGetReportGroups
     ) where
 
 import Network.AWS.CodeBuild.Types
-import Network.AWS.CodeBuild.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 
 -- | /See:/ 'batchGetReportGroups' smart constructor.
-newtype BatchGetReportGroups =
-  BatchGetReportGroups'
-    { _bgrgReportGroupARNs :: List1 Text
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+newtype BatchGetReportGroups = BatchGetReportGroups'{_bgrgReportGroupARNs
+                                                     :: List1 Text}
+                                 deriving (Eq, Read, Show, Data, Typeable,
+                                           Generic)
 
 -- | Creates a value of 'BatchGetReportGroups' with the minimum fields required to make a request.
 --
 -- Use one of the following lenses to modify other fields as desired:
 --
--- * 'bgrgReportGroupARNs' - An array of report group ARNs that identify the report groups to return.
+-- * 'bgrgReportGroupARNs' - An array of report group ARNs that identify the report groups to return. 
 batchGetReportGroups
     :: NonEmpty Text -- ^ 'bgrgReportGroupARNs'
     -> BatchGetReportGroups
-batchGetReportGroups pReportGroupARNs_ =
-  BatchGetReportGroups' {_bgrgReportGroupARNs = _List1 # pReportGroupARNs_}
+batchGetReportGroups pReportGroupARNs_
+  = BatchGetReportGroups'{_bgrgReportGroupARNs =
+                            _List1 # pReportGroupARNs_}
 
-
--- | An array of report group ARNs that identify the report groups to return.
+-- | An array of report group ARNs that identify the report groups to return. 
 bgrgReportGroupARNs :: Lens' BatchGetReportGroups (NonEmpty Text)
 bgrgReportGroupARNs = lens _bgrgReportGroupARNs (\ s a -> s{_bgrgReportGroupARNs = a}) . _List1
 
@@ -108,40 +105,44 @@ instance ToQuery BatchGetReportGroups where
         toQuery = const mempty
 
 -- | /See:/ 'batchGetReportGroupsResponse' smart constructor.
-data BatchGetReportGroupsResponse =
-  BatchGetReportGroupsResponse'
-    { _bgrgrsReportGroups         :: !(Maybe (List1 ReportGroup))
-    , _bgrgrsReportGroupsNotFound :: !(Maybe (List1 Text))
-    , _bgrgrsResponseStatus       :: !Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data BatchGetReportGroupsResponse = BatchGetReportGroupsResponse'{_bgrgrsReportGroups
+                                                                  ::
+                                                                  !(Maybe
+                                                                      (List1
+                                                                         ReportGroup)),
+                                                                  _bgrgrsReportGroupsNotFound
+                                                                  ::
+                                                                  !(Maybe
+                                                                      (List1
+                                                                         Text)),
+                                                                  _bgrgrsResponseStatus
+                                                                  :: !Int}
+                                      deriving (Eq, Read, Show, Data, Typeable,
+                                                Generic)
 
 -- | Creates a value of 'BatchGetReportGroupsResponse' with the minimum fields required to make a request.
 --
 -- Use one of the following lenses to modify other fields as desired:
 --
--- * 'bgrgrsReportGroups' - The array of report groups returned by @BatchGetReportGroups@ .
+-- * 'bgrgrsReportGroups' - The array of report groups returned by @BatchGetReportGroups@ . 
 --
--- * 'bgrgrsReportGroupsNotFound' - An array of ARNs passed to @BatchGetReportGroups@ that are not associated with a @ReportGroup@ .
+-- * 'bgrgrsReportGroupsNotFound' - An array of ARNs passed to @BatchGetReportGroups@ that are not associated with a @ReportGroup@ . 
 --
 -- * 'bgrgrsResponseStatus' - -- | The response status code.
 batchGetReportGroupsResponse
     :: Int -- ^ 'bgrgrsResponseStatus'
     -> BatchGetReportGroupsResponse
-batchGetReportGroupsResponse pResponseStatus_ =
-  BatchGetReportGroupsResponse'
-    { _bgrgrsReportGroups = Nothing
-    , _bgrgrsReportGroupsNotFound = Nothing
-    , _bgrgrsResponseStatus = pResponseStatus_
-    }
+batchGetReportGroupsResponse pResponseStatus_
+  = BatchGetReportGroupsResponse'{_bgrgrsReportGroups =
+                                    Nothing,
+                                  _bgrgrsReportGroupsNotFound = Nothing,
+                                  _bgrgrsResponseStatus = pResponseStatus_}
 
-
--- | The array of report groups returned by @BatchGetReportGroups@ .
+-- | The array of report groups returned by @BatchGetReportGroups@ . 
 bgrgrsReportGroups :: Lens' BatchGetReportGroupsResponse (Maybe (NonEmpty ReportGroup))
 bgrgrsReportGroups = lens _bgrgrsReportGroups (\ s a -> s{_bgrgrsReportGroups = a}) . mapping _List1
 
--- | An array of ARNs passed to @BatchGetReportGroups@ that are not associated with a @ReportGroup@ .
+-- | An array of ARNs passed to @BatchGetReportGroups@ that are not associated with a @ReportGroup@ . 
 bgrgrsReportGroupsNotFound :: Lens' BatchGetReportGroupsResponse (Maybe (NonEmpty Text))
 bgrgrsReportGroupsNotFound = lens _bgrgrsReportGroupsNotFound (\ s a -> s{_bgrgrsReportGroupsNotFound = a}) . mapping _List1
 

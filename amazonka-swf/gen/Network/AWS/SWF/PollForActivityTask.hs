@@ -23,7 +23,7 @@
 --
 -- /Important:/ Workers should set their client side socket timeout to at least 70 seconds (10 seconds higher than the maximum time service may hold the poll request).
 --
--- __Access Control__
+-- __Access Control__ 
 --
 -- You can use IAM policies to control this action's access to Amazon SWF resources as follows:
 --
@@ -65,17 +65,13 @@ import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 import Network.AWS.SWF.Types
-import Network.AWS.SWF.Types.Product
 
 -- | /See:/ 'pollForActivityTask' smart constructor.
-data PollForActivityTask =
-  PollForActivityTask'
-    { _pfatIdentity :: !(Maybe Text)
-    , _pfatDomain   :: !Text
-    , _pfatTaskList :: !TaskList
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data PollForActivityTask = PollForActivityTask'{_pfatIdentity
+                                                :: !(Maybe Text),
+                                                _pfatDomain :: !Text,
+                                                _pfatTaskList :: !TaskList}
+                             deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'PollForActivityTask' with the minimum fields required to make a request.
 --
@@ -90,13 +86,9 @@ pollForActivityTask
     :: Text -- ^ 'pfatDomain'
     -> TaskList -- ^ 'pfatTaskList'
     -> PollForActivityTask
-pollForActivityTask pDomain_ pTaskList_ =
-  PollForActivityTask'
-    { _pfatIdentity = Nothing
-    , _pfatDomain = pDomain_
-    , _pfatTaskList = pTaskList_
-    }
-
+pollForActivityTask pDomain_ pTaskList_
+  = PollForActivityTask'{_pfatIdentity = Nothing,
+                         _pfatDomain = pDomain_, _pfatTaskList = pTaskList_}
 
 -- | Identity of the worker making the request, recorded in the @ActivityTaskStarted@ event in the workflow history. This enables diagnostic tracing when problems arise. The form of this identity is user defined.
 pfatIdentity :: Lens' PollForActivityTask (Maybe Text)
@@ -158,18 +150,28 @@ instance ToQuery PollForActivityTask where
 --
 --
 -- /See:/ 'pollForActivityTaskResponse' smart constructor.
-data PollForActivityTaskResponse =
-  PollForActivityTaskResponse'
-    { _pfatrsActivityType      :: !(Maybe ActivityType)
-    , _pfatrsActivityId        :: !(Maybe Text)
-    , _pfatrsInput             :: !(Maybe Text)
-    , _pfatrsTaskToken         :: !(Maybe Text)
-    , _pfatrsWorkflowExecution :: !(Maybe WorkflowExecution)
-    , _pfatrsResponseStatus    :: !Int
-    , _pfatrsStartedEventId    :: !Integer
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data PollForActivityTaskResponse = PollForActivityTaskResponse'{_pfatrsActivityType
+                                                                ::
+                                                                !(Maybe
+                                                                    ActivityType),
+                                                                _pfatrsActivityId
+                                                                ::
+                                                                !(Maybe Text),
+                                                                _pfatrsInput ::
+                                                                !(Maybe Text),
+                                                                _pfatrsTaskToken
+                                                                ::
+                                                                !(Maybe Text),
+                                                                _pfatrsWorkflowExecution
+                                                                ::
+                                                                !(Maybe
+                                                                    WorkflowExecution),
+                                                                _pfatrsResponseStatus
+                                                                :: !Int,
+                                                                _pfatrsStartedEventId
+                                                                :: !Integer}
+                                     deriving (Eq, Read, Show, Data, Typeable,
+                                               Generic)
 
 -- | Creates a value of 'PollForActivityTaskResponse' with the minimum fields required to make a request.
 --
@@ -192,17 +194,16 @@ pollForActivityTaskResponse
     :: Int -- ^ 'pfatrsResponseStatus'
     -> Integer -- ^ 'pfatrsStartedEventId'
     -> PollForActivityTaskResponse
-pollForActivityTaskResponse pResponseStatus_ pStartedEventId_ =
-  PollForActivityTaskResponse'
-    { _pfatrsActivityType = Nothing
-    , _pfatrsActivityId = Nothing
-    , _pfatrsInput = Nothing
-    , _pfatrsTaskToken = Nothing
-    , _pfatrsWorkflowExecution = Nothing
-    , _pfatrsResponseStatus = pResponseStatus_
-    , _pfatrsStartedEventId = pStartedEventId_
-    }
-
+pollForActivityTaskResponse pResponseStatus_
+  pStartedEventId_
+  = PollForActivityTaskResponse'{_pfatrsActivityType =
+                                   Nothing,
+                                 _pfatrsActivityId = Nothing,
+                                 _pfatrsInput = Nothing,
+                                 _pfatrsTaskToken = Nothing,
+                                 _pfatrsWorkflowExecution = Nothing,
+                                 _pfatrsResponseStatus = pResponseStatus_,
+                                 _pfatrsStartedEventId = pStartedEventId_}
 
 -- | The type of this activity task.
 pfatrsActivityType :: Lens' PollForActivityTaskResponse (Maybe ActivityType)

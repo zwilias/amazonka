@@ -1,4 +1,4 @@
-{-# LANGUAGE OverloadedStrings #-}
+{-# LANGUAGE OverloadedStrings  #-}
 
 -- Derived from AWS service descriptions, licensed under Apache 2.0.
 
@@ -198,59 +198,72 @@ module Network.AWS.XRay.Types
 import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.Sign.V4
-import Network.AWS.XRay.Types.Product
-import Network.AWS.XRay.Types.Sum
+import Network.AWS.XRay.Types.EncryptionStatus
+import Network.AWS.XRay.Types.EncryptionType
+import Network.AWS.XRay.Types.Alias
+import Network.AWS.XRay.Types.AnnotationValue
+import Network.AWS.XRay.Types.BackendConnectionErrors
+import Network.AWS.XRay.Types.Edge
+import Network.AWS.XRay.Types.EdgeStatistics
+import Network.AWS.XRay.Types.EncryptionConfig
+import Network.AWS.XRay.Types.ErrorStatistics
+import Network.AWS.XRay.Types.FaultStatistics
+import Network.AWS.XRay.Types.HTTP
+import Network.AWS.XRay.Types.HistogramEntry
+import Network.AWS.XRay.Types.Segment
+import Network.AWS.XRay.Types.ServiceId
+import Network.AWS.XRay.Types.ServiceInfo
+import Network.AWS.XRay.Types.ServiceStatistics
+import Network.AWS.XRay.Types.TelemetryRecord
+import Network.AWS.XRay.Types.Trace
+import Network.AWS.XRay.Types.TraceSummary
+import Network.AWS.XRay.Types.TraceUser
+import Network.AWS.XRay.Types.UnprocessedTraceSegment
+import Network.AWS.XRay.Types.ValueWithServiceIds
 
 -- | API version @2016-04-12@ of the Amazon X-Ray SDK configuration.
 xRay :: Service
-xRay =
-  Service
-    { _svcAbbrev = "XRay"
-    , _svcSigner = v4
-    , _svcPrefix = "xray"
-    , _svcVersion = "2016-04-12"
-    , _svcEndpoint = defaultEndpoint xRay
-    , _svcTimeout = Just 70
-    , _svcCheck = statusSuccess
-    , _svcError = parseJSONError "XRay"
-    , _svcRetry = retry
-    }
-  where
-    retry =
-      Exponential
-        { _retryBase = 5.0e-2
-        , _retryGrowth = 2
-        , _retryAttempts = 5
-        , _retryCheck = check
-        }
-    check e
-      | has (hasCode "ThrottledException" . hasStatus 400) e =
-        Just "throttled_exception"
-      | has (hasStatus 429) e = Just "too_many_requests"
-      | has (hasCode "ThrottlingException" . hasStatus 400) e =
-        Just "throttling_exception"
-      | has (hasCode "Throttling" . hasStatus 400) e = Just "throttling"
-      | has (hasStatus 504) e = Just "gateway_timeout"
-      | has (hasCode "RequestThrottledException" . hasStatus 400) e =
-        Just "request_throttled_exception"
-      | has (hasStatus 502) e = Just "bad_gateway"
-      | has (hasStatus 503) e = Just "service_unavailable"
-      | has (hasStatus 500) e = Just "general_server_error"
-      | has (hasStatus 509) e = Just "limit_exceeded"
-      | otherwise = Nothing
-
+xRay
+  = Service{_svcAbbrev = "XRay", _svcSigner = v4,
+            _svcPrefix = "xray", _svcVersion = "2016-04-12",
+            _svcEndpoint = defaultEndpoint xRay,
+            _svcTimeout = Just 70, _svcCheck = statusSuccess,
+            _svcError = parseJSONError "XRay", _svcRetry = retry}
+  where retry
+          = Exponential{_retryBase = 5.0e-2, _retryGrowth = 2,
+                        _retryAttempts = 5, _retryCheck = check}
+        check e
+          | has (hasCode "ThrottledException" . hasStatus 400)
+              e
+            = Just "throttled_exception"
+          | has (hasStatus 429) e = Just "too_many_requests"
+          | has (hasCode "ThrottlingException" . hasStatus 400)
+              e
+            = Just "throttling_exception"
+          | has (hasCode "Throttling" . hasStatus 400) e =
+            Just "throttling"
+          | has (hasStatus 504) e = Just "gateway_timeout"
+          | has
+              (hasCode "RequestThrottledException" . hasStatus 400)
+              e
+            = Just "request_throttled_exception"
+          | has (hasStatus 502) e = Just "bad_gateway"
+          | has (hasStatus 503) e = Just "service_unavailable"
+          | has (hasStatus 500) e = Just "general_server_error"
+          | has (hasStatus 509) e = Just "limit_exceeded"
+          | otherwise = Nothing
 
 -- | The request is missing required parameters or has invalid parameters.
 --
 --
 _InvalidRequestException :: AsError a => Getting (First ServiceError) a ServiceError
-_InvalidRequestException = _MatchServiceError xRay "InvalidRequestException"
-
+_InvalidRequestException
+  = _MatchServiceError xRay "InvalidRequestException"
 
 -- | The request exceeds the maximum number of requests per second.
 --
 --
 _ThrottledException :: AsError a => Getting (First ServiceError) a ServiceError
-_ThrottledException =
-  _MatchServiceError xRay "ThrottledException" . hasStatus 429
-
+_ThrottledException
+  = _MatchServiceError xRay "ThrottledException" .
+      hasStatus 429

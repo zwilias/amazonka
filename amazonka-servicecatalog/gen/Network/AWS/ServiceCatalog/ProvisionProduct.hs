@@ -54,23 +54,20 @@ import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 import Network.AWS.ServiceCatalog.Types
-import Network.AWS.ServiceCatalog.Types.Product
 
 -- | /See:/ 'provisionProduct' smart constructor.
-data ProvisionProduct =
-  ProvisionProduct'
-    { _ppNotificationARNs       :: !(Maybe [Text])
-    , _ppAcceptLanguage         :: !(Maybe Text)
-    , _ppPathId                 :: !(Maybe Text)
-    , _ppProvisioningParameters :: !(Maybe [ProvisioningParameter])
-    , _ppTags                   :: !(Maybe [Tag])
-    , _ppProductId              :: !Text
-    , _ppProvisioningArtifactId :: !Text
-    , _ppProvisionedProductName :: !Text
-    , _ppProvisionToken         :: !Text
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data ProvisionProduct = ProvisionProduct'{_ppNotificationARNs
+                                          :: !(Maybe [Text]),
+                                          _ppAcceptLanguage :: !(Maybe Text),
+                                          _ppPathId :: !(Maybe Text),
+                                          _ppProvisioningParameters ::
+                                          !(Maybe [ProvisioningParameter]),
+                                          _ppTags :: !(Maybe [Tag]),
+                                          _ppProductId :: !Text,
+                                          _ppProvisioningArtifactId :: !Text,
+                                          _ppProvisionedProductName :: !Text,
+                                          _ppProvisionToken :: !Text}
+                          deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'ProvisionProduct' with the minimum fields required to make a request.
 --
@@ -99,19 +96,15 @@ provisionProduct
     -> Text -- ^ 'ppProvisionedProductName'
     -> Text -- ^ 'ppProvisionToken'
     -> ProvisionProduct
-provisionProduct pProductId_ pProvisioningArtifactId_ pProvisionedProductName_ pProvisionToken_ =
-  ProvisionProduct'
-    { _ppNotificationARNs = Nothing
-    , _ppAcceptLanguage = Nothing
-    , _ppPathId = Nothing
-    , _ppProvisioningParameters = Nothing
-    , _ppTags = Nothing
-    , _ppProductId = pProductId_
-    , _ppProvisioningArtifactId = pProvisioningArtifactId_
-    , _ppProvisionedProductName = pProvisionedProductName_
-    , _ppProvisionToken = pProvisionToken_
-    }
-
+provisionProduct pProductId_ pProvisioningArtifactId_
+  pProvisionedProductName_ pProvisionToken_
+  = ProvisionProduct'{_ppNotificationARNs = Nothing,
+                      _ppAcceptLanguage = Nothing, _ppPathId = Nothing,
+                      _ppProvisioningParameters = Nothing,
+                      _ppTags = Nothing, _ppProductId = pProductId_,
+                      _ppProvisioningArtifactId = pProvisioningArtifactId_,
+                      _ppProvisionedProductName = pProvisionedProductName_,
+                      _ppProvisionToken = pProvisionToken_}
 
 -- | Passed to CloudFormation. The SNS topic ARNs to which to publish stack-related events.
 ppNotificationARNs :: Lens' ProvisionProduct [Text]
@@ -198,13 +191,13 @@ instance ToQuery ProvisionProduct where
         toQuery = const mempty
 
 -- | /See:/ 'provisionProductResponse' smart constructor.
-data ProvisionProductResponse =
-  ProvisionProductResponse'
-    { _pprsRecordDetail   :: !(Maybe RecordDetail)
-    , _pprsResponseStatus :: !Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data ProvisionProductResponse = ProvisionProductResponse'{_pprsRecordDetail
+                                                          ::
+                                                          !(Maybe RecordDetail),
+                                                          _pprsResponseStatus ::
+                                                          !Int}
+                                  deriving (Eq, Read, Show, Data, Typeable,
+                                            Generic)
 
 -- | Creates a value of 'ProvisionProductResponse' with the minimum fields required to make a request.
 --
@@ -216,10 +209,10 @@ data ProvisionProductResponse =
 provisionProductResponse
     :: Int -- ^ 'pprsResponseStatus'
     -> ProvisionProductResponse
-provisionProductResponse pResponseStatus_ =
-  ProvisionProductResponse'
-    {_pprsRecordDetail = Nothing, _pprsResponseStatus = pResponseStatus_}
-
+provisionProductResponse pResponseStatus_
+  = ProvisionProductResponse'{_pprsRecordDetail =
+                                Nothing,
+                              _pprsResponseStatus = pResponseStatus_}
 
 -- | Information about the result of provisioning the product.
 pprsRecordDetail :: Lens' ProvisionProductResponse (Maybe RecordDetail)

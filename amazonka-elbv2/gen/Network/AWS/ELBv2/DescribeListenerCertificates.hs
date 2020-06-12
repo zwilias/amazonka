@@ -41,21 +41,22 @@ module Network.AWS.ELBv2.DescribeListenerCertificates
     ) where
 
 import Network.AWS.ELBv2.Types
-import Network.AWS.ELBv2.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 
 -- | /See:/ 'describeListenerCertificates' smart constructor.
-data DescribeListenerCertificates =
-  DescribeListenerCertificates'
-    { _dlcMarker      :: !(Maybe Text)
-    , _dlcPageSize    :: !(Maybe Nat)
-    , _dlcListenerARN :: !Text
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data DescribeListenerCertificates = DescribeListenerCertificates'{_dlcMarker
+                                                                  ::
+                                                                  !(Maybe Text),
+                                                                  _dlcPageSize
+                                                                  ::
+                                                                  !(Maybe Nat),
+                                                                  _dlcListenerARN
+                                                                  :: !Text}
+                                      deriving (Eq, Read, Show, Data, Typeable,
+                                                Generic)
 
 -- | Creates a value of 'DescribeListenerCertificates' with the minimum fields required to make a request.
 --
@@ -69,13 +70,10 @@ data DescribeListenerCertificates =
 describeListenerCertificates
     :: Text -- ^ 'dlcListenerARN'
     -> DescribeListenerCertificates
-describeListenerCertificates pListenerARN_ =
-  DescribeListenerCertificates'
-    { _dlcMarker = Nothing
-    , _dlcPageSize = Nothing
-    , _dlcListenerARN = pListenerARN_
-    }
-
+describeListenerCertificates pListenerARN_
+  = DescribeListenerCertificates'{_dlcMarker = Nothing,
+                                  _dlcPageSize = Nothing,
+                                  _dlcListenerARN = pListenerARN_}
 
 -- | The marker for the next set of results. (You received this marker from a previous call.)
 dlcMarker :: Lens' DescribeListenerCertificates (Maybe Text)
@@ -124,14 +122,19 @@ instance ToQuery DescribeListenerCertificates where
                "ListenerArn" =: _dlcListenerARN]
 
 -- | /See:/ 'describeListenerCertificatesResponse' smart constructor.
-data DescribeListenerCertificatesResponse =
-  DescribeListenerCertificatesResponse'
-    { _dlcrsCertificates   :: !(Maybe [Certificate])
-    , _dlcrsNextMarker     :: !(Maybe Text)
-    , _dlcrsResponseStatus :: !Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data DescribeListenerCertificatesResponse = DescribeListenerCertificatesResponse'{_dlcrsCertificates
+                                                                                  ::
+                                                                                  !(Maybe
+                                                                                      [Certificate]),
+                                                                                  _dlcrsNextMarker
+                                                                                  ::
+                                                                                  !(Maybe
+                                                                                      Text),
+                                                                                  _dlcrsResponseStatus
+                                                                                  ::
+                                                                                  !Int}
+                                              deriving (Eq, Read, Show, Data,
+                                                        Typeable, Generic)
 
 -- | Creates a value of 'DescribeListenerCertificatesResponse' with the minimum fields required to make a request.
 --
@@ -145,13 +148,12 @@ data DescribeListenerCertificatesResponse =
 describeListenerCertificatesResponse
     :: Int -- ^ 'dlcrsResponseStatus'
     -> DescribeListenerCertificatesResponse
-describeListenerCertificatesResponse pResponseStatus_ =
-  DescribeListenerCertificatesResponse'
-    { _dlcrsCertificates = Nothing
-    , _dlcrsNextMarker = Nothing
-    , _dlcrsResponseStatus = pResponseStatus_
-    }
-
+describeListenerCertificatesResponse pResponseStatus_
+  = DescribeListenerCertificatesResponse'{_dlcrsCertificates
+                                            = Nothing,
+                                          _dlcrsNextMarker = Nothing,
+                                          _dlcrsResponseStatus =
+                                            pResponseStatus_}
 
 -- | Information about the certificates.
 dlcrsCertificates :: Lens' DescribeListenerCertificatesResponse [Certificate]

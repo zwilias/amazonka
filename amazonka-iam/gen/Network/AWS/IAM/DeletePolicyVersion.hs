@@ -40,20 +40,16 @@ module Network.AWS.IAM.DeletePolicyVersion
     ) where
 
 import Network.AWS.IAM.Types
-import Network.AWS.IAM.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 
 -- | /See:/ 'deletePolicyVersion' smart constructor.
-data DeletePolicyVersion =
-  DeletePolicyVersion'
-    { _dpvPolicyARN :: !Text
-    , _dpvVersionId :: !Text
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data DeletePolicyVersion = DeletePolicyVersion'{_dpvPolicyARN
+                                                :: !Text,
+                                                _dpvVersionId :: !Text}
+                             deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'DeletePolicyVersion' with the minimum fields required to make a request.
 --
@@ -66,10 +62,9 @@ deletePolicyVersion
     :: Text -- ^ 'dpvPolicyARN'
     -> Text -- ^ 'dpvVersionId'
     -> DeletePolicyVersion
-deletePolicyVersion pPolicyARN_ pVersionId_ =
-  DeletePolicyVersion'
-    {_dpvPolicyARN = pPolicyARN_, _dpvVersionId = pVersionId_}
-
+deletePolicyVersion pPolicyARN_ pVersionId_
+  = DeletePolicyVersion'{_dpvPolicyARN = pPolicyARN_,
+                         _dpvVersionId = pVersionId_}
 
 -- | The Amazon Resource Name (ARN) of the IAM policy from which you want to delete a version. For more information about ARNs, see <http://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html Amazon Resource Names (ARNs) and AWS Service Namespaces> in the /AWS General Reference/ .
 dpvPolicyARN :: Lens' DeletePolicyVersion Text
@@ -104,16 +99,15 @@ instance ToQuery DeletePolicyVersion where
                "VersionId" =: _dpvVersionId]
 
 -- | /See:/ 'deletePolicyVersionResponse' smart constructor.
-data DeletePolicyVersionResponse =
-  DeletePolicyVersionResponse'
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data DeletePolicyVersionResponse = DeletePolicyVersionResponse'
+                                     deriving (Eq, Read, Show, Data, Typeable,
+                                               Generic)
 
 -- | Creates a value of 'DeletePolicyVersionResponse' with the minimum fields required to make a request.
 --
 deletePolicyVersionResponse
     :: DeletePolicyVersionResponse
-deletePolicyVersionResponse = DeletePolicyVersionResponse'
-
+deletePolicyVersionResponse
+  = DeletePolicyVersionResponse'
 
 instance NFData DeletePolicyVersionResponse where

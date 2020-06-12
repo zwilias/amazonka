@@ -11,11 +11,11 @@
 -- Stability   : auto-generated
 -- Portability : non-portable (GHC extensions)
 --
--- __AWS Database Migration Service__
+-- __AWS Database Migration Service__ 
 --
 -- AWS Database Migration Service (AWS DMS) can migrate your data to and from the most widely used commercial and open-source databases such as Oracle, PostgreSQL, Microsoft SQL Server, Amazon Redshift, MariaDB, Amazon Aurora, MySQL, and SAP Adaptive Server Enterprise (ASE). The service supports homogeneous migrations such as Oracle to Oracle, as well as heterogeneous migrations between different database platforms, such as Oracle to MySQL or SQL Server to PostgreSQL.
 --
--- For more information about AWS DMS, see <https://docs.aws.amazon.com/dms/latest/userguide/Welcome.html What Is AWS Database Migration Service?> in the /AWS Database Migration User Guide./
+-- For more information about AWS DMS, see <https://docs.aws.amazon.com/dms/latest/userguide/Welcome.html What Is AWS Database Migration Service?> in the /AWS Database Migration User Guide./ 
 --
 module Network.AWS.DMS
     (
@@ -115,70 +115,70 @@ module Network.AWS.DMS
     -- * Operations
     -- $operations
 
-    -- ** DeleteReplicationInstance
+    -- ** DeleteReplicationInstance 
     , module Network.AWS.DMS.DeleteReplicationInstance
 
-    -- ** RebootReplicationInstance
+    -- ** RebootReplicationInstance 
     , module Network.AWS.DMS.RebootReplicationInstance
 
-    -- ** ReloadTables
+    -- ** ReloadTables 
     , module Network.AWS.DMS.ReloadTables
 
-    -- ** StartReplicationTaskAssessment
+    -- ** StartReplicationTaskAssessment 
     , module Network.AWS.DMS.StartReplicationTaskAssessment
 
-    -- ** CreateEndpoint
+    -- ** CreateEndpoint 
     , module Network.AWS.DMS.CreateEndpoint
 
     -- ** DescribeSchemas (Paginated)
     , module Network.AWS.DMS.DescribeSchemas
 
-    -- ** DeleteConnection
+    -- ** DeleteConnection 
     , module Network.AWS.DMS.DeleteConnection
 
-    -- ** ModifyEventSubscription
+    -- ** ModifyEventSubscription 
     , module Network.AWS.DMS.ModifyEventSubscription
 
-    -- ** DescribeReplicationInstanceTaskLogs
+    -- ** DescribeReplicationInstanceTaskLogs 
     , module Network.AWS.DMS.DescribeReplicationInstanceTaskLogs
 
     -- ** DescribeEvents (Paginated)
     , module Network.AWS.DMS.DescribeEvents
 
-    -- ** DeleteEndpoint
+    -- ** DeleteEndpoint 
     , module Network.AWS.DMS.DeleteEndpoint
 
-    -- ** ListTagsForResource
+    -- ** ListTagsForResource 
     , module Network.AWS.DMS.ListTagsForResource
 
     -- ** DescribeEndpointTypes (Paginated)
     , module Network.AWS.DMS.DescribeEndpointTypes
 
-    -- ** DeleteReplicationTask
+    -- ** DeleteReplicationTask 
     , module Network.AWS.DMS.DeleteReplicationTask
 
     -- ** DescribeReplicationTaskAssessmentResults (Paginated)
     , module Network.AWS.DMS.DescribeReplicationTaskAssessmentResults
 
-    -- ** TestConnection
+    -- ** TestConnection 
     , module Network.AWS.DMS.TestConnection
 
     -- ** DescribeConnections (Paginated)
     , module Network.AWS.DMS.DescribeConnections
 
-    -- ** RemoveTagsFromResource
+    -- ** RemoveTagsFromResource 
     , module Network.AWS.DMS.RemoveTagsFromResource
 
-    -- ** ModifyEndpoint
+    -- ** ModifyEndpoint 
     , module Network.AWS.DMS.ModifyEndpoint
 
-    -- ** CreateEventSubscription
+    -- ** CreateEventSubscription 
     , module Network.AWS.DMS.CreateEventSubscription
 
     -- ** DescribeCertificates (Paginated)
     , module Network.AWS.DMS.DescribeCertificates
 
-    -- ** DeleteEventSubscription
+    -- ** DeleteEventSubscription 
     , module Network.AWS.DMS.DeleteEventSubscription
 
     -- ** DescribeTableStatistics (Paginated)
@@ -187,73 +187,73 @@ module Network.AWS.DMS
     -- ** DescribeReplicationSubnetGroups (Paginated)
     , module Network.AWS.DMS.DescribeReplicationSubnetGroups
 
-    -- ** StartReplicationTask
+    -- ** StartReplicationTask 
     , module Network.AWS.DMS.StartReplicationTask
 
     -- ** DescribeEventSubscriptions (Paginated)
     , module Network.AWS.DMS.DescribeEventSubscriptions
 
-    -- ** AddTagsToResource
+    -- ** AddTagsToResource 
     , module Network.AWS.DMS.AddTagsToResource
 
-    -- ** CreateReplicationSubnetGroup
+    -- ** CreateReplicationSubnetGroup 
     , module Network.AWS.DMS.CreateReplicationSubnetGroup
 
-    -- ** DeleteCertificate
+    -- ** DeleteCertificate 
     , module Network.AWS.DMS.DeleteCertificate
 
-    -- ** RefreshSchemas
+    -- ** RefreshSchemas 
     , module Network.AWS.DMS.RefreshSchemas
 
     -- ** DescribeReplicationTasks (Paginated)
     , module Network.AWS.DMS.DescribeReplicationTasks
 
-    -- ** DescribeEventCategories
+    -- ** DescribeEventCategories 
     , module Network.AWS.DMS.DescribeEventCategories
 
     -- ** DescribeOrderableReplicationInstances (Paginated)
     , module Network.AWS.DMS.DescribeOrderableReplicationInstances
 
-    -- ** DescribePendingMaintenanceActions
+    -- ** DescribePendingMaintenanceActions 
     , module Network.AWS.DMS.DescribePendingMaintenanceActions
 
-    -- ** CreateReplicationTask
+    -- ** CreateReplicationTask 
     , module Network.AWS.DMS.CreateReplicationTask
 
     -- ** DescribeEndpoints (Paginated)
     , module Network.AWS.DMS.DescribeEndpoints
 
-    -- ** ModifyReplicationInstance
+    -- ** ModifyReplicationInstance 
     , module Network.AWS.DMS.ModifyReplicationInstance
 
-    -- ** ImportCertificate
+    -- ** ImportCertificate 
     , module Network.AWS.DMS.ImportCertificate
 
-    -- ** ModifyReplicationSubnetGroup
+    -- ** ModifyReplicationSubnetGroup 
     , module Network.AWS.DMS.ModifyReplicationSubnetGroup
 
-    -- ** ApplyPendingMaintenanceAction
+    -- ** ApplyPendingMaintenanceAction 
     , module Network.AWS.DMS.ApplyPendingMaintenanceAction
 
-    -- ** DescribeAccountAttributes
+    -- ** DescribeAccountAttributes 
     , module Network.AWS.DMS.DescribeAccountAttributes
 
     -- ** DescribeReplicationInstances (Paginated)
     , module Network.AWS.DMS.DescribeReplicationInstances
 
-    -- ** DescribeRefreshSchemasStatus
+    -- ** DescribeRefreshSchemasStatus 
     , module Network.AWS.DMS.DescribeRefreshSchemasStatus
 
-    -- ** StopReplicationTask
+    -- ** StopReplicationTask 
     , module Network.AWS.DMS.StopReplicationTask
 
-    -- ** ModifyReplicationTask
+    -- ** ModifyReplicationTask 
     , module Network.AWS.DMS.ModifyReplicationTask
 
-    -- ** CreateReplicationInstance
+    -- ** CreateReplicationInstance 
     , module Network.AWS.DMS.CreateReplicationInstance
 
-    -- ** DeleteReplicationSubnetGroup
+    -- ** DeleteReplicationSubnetGroup 
     , module Network.AWS.DMS.DeleteReplicationSubnetGroup
 
     -- * Types
@@ -739,16 +739,16 @@ import Network.AWS.DMS.DeleteReplicationTask
 import Network.AWS.DMS.DescribeAccountAttributes
 import Network.AWS.DMS.DescribeCertificates
 import Network.AWS.DMS.DescribeConnections
-import Network.AWS.DMS.DescribeEndpoints
 import Network.AWS.DMS.DescribeEndpointTypes
+import Network.AWS.DMS.DescribeEndpoints
 import Network.AWS.DMS.DescribeEventCategories
-import Network.AWS.DMS.DescribeEvents
 import Network.AWS.DMS.DescribeEventSubscriptions
+import Network.AWS.DMS.DescribeEvents
 import Network.AWS.DMS.DescribeOrderableReplicationInstances
 import Network.AWS.DMS.DescribePendingMaintenanceActions
 import Network.AWS.DMS.DescribeRefreshSchemasStatus
-import Network.AWS.DMS.DescribeReplicationInstances
 import Network.AWS.DMS.DescribeReplicationInstanceTaskLogs
+import Network.AWS.DMS.DescribeReplicationInstances
 import Network.AWS.DMS.DescribeReplicationSubnetGroups
 import Network.AWS.DMS.DescribeReplicationTaskAssessmentResults
 import Network.AWS.DMS.DescribeReplicationTasks

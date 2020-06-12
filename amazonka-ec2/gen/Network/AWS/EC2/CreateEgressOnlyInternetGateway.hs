@@ -41,21 +41,25 @@ module Network.AWS.EC2.CreateEgressOnlyInternetGateway
     ) where
 
 import Network.AWS.EC2.Types
-import Network.AWS.EC2.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 
 -- | /See:/ 'createEgressOnlyInternetGateway' smart constructor.
-data CreateEgressOnlyInternetGateway =
-  CreateEgressOnlyInternetGateway'
-    { _ceoigClientToken :: !(Maybe Text)
-    , _ceoigDryRun      :: !(Maybe Bool)
-    , _ceoigVPCId       :: !Text
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data CreateEgressOnlyInternetGateway = CreateEgressOnlyInternetGateway'{_ceoigClientToken
+                                                                        ::
+                                                                        !(Maybe
+                                                                            Text),
+                                                                        _ceoigDryRun
+                                                                        ::
+                                                                        !(Maybe
+                                                                            Bool),
+                                                                        _ceoigVPCId
+                                                                        ::
+                                                                        !Text}
+                                         deriving (Eq, Read, Show, Data,
+                                                   Typeable, Generic)
 
 -- | Creates a value of 'CreateEgressOnlyInternetGateway' with the minimum fields required to make a request.
 --
@@ -69,10 +73,11 @@ data CreateEgressOnlyInternetGateway =
 createEgressOnlyInternetGateway
     :: Text -- ^ 'ceoigVPCId'
     -> CreateEgressOnlyInternetGateway
-createEgressOnlyInternetGateway pVPCId_ =
-  CreateEgressOnlyInternetGateway'
-    {_ceoigClientToken = Nothing, _ceoigDryRun = Nothing, _ceoigVPCId = pVPCId_}
-
+createEgressOnlyInternetGateway pVPCId_
+  = CreateEgressOnlyInternetGateway'{_ceoigClientToken
+                                       = Nothing,
+                                     _ceoigDryRun = Nothing,
+                                     _ceoigVPCId = pVPCId_}
 
 -- | Unique, case-sensitive identifier that you provide to ensure the idempotency of the request. For more information, see <https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/Run_Instance_Idempotency.html How to Ensure Idempotency> .
 ceoigClientToken :: Lens' CreateEgressOnlyInternetGateway (Maybe Text)
@@ -122,14 +127,19 @@ instance ToQuery CreateEgressOnlyInternetGateway
                "DryRun" =: _ceoigDryRun, "VpcId" =: _ceoigVPCId]
 
 -- | /See:/ 'createEgressOnlyInternetGatewayResponse' smart constructor.
-data CreateEgressOnlyInternetGatewayResponse =
-  CreateEgressOnlyInternetGatewayResponse'
-    { _ceoigrsClientToken               :: !(Maybe Text)
-    , _ceoigrsEgressOnlyInternetGateway :: !(Maybe EgressOnlyInternetGateway)
-    , _ceoigrsResponseStatus            :: !Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data CreateEgressOnlyInternetGatewayResponse = CreateEgressOnlyInternetGatewayResponse'{_ceoigrsClientToken
+                                                                                        ::
+                                                                                        !(Maybe
+                                                                                            Text),
+                                                                                        _ceoigrsEgressOnlyInternetGateway
+                                                                                        ::
+                                                                                        !(Maybe
+                                                                                            EgressOnlyInternetGateway),
+                                                                                        _ceoigrsResponseStatus
+                                                                                        ::
+                                                                                        !Int}
+                                                 deriving (Eq, Read, Show, Data,
+                                                           Typeable, Generic)
 
 -- | Creates a value of 'CreateEgressOnlyInternetGatewayResponse' with the minimum fields required to make a request.
 --
@@ -143,13 +153,14 @@ data CreateEgressOnlyInternetGatewayResponse =
 createEgressOnlyInternetGatewayResponse
     :: Int -- ^ 'ceoigrsResponseStatus'
     -> CreateEgressOnlyInternetGatewayResponse
-createEgressOnlyInternetGatewayResponse pResponseStatus_ =
-  CreateEgressOnlyInternetGatewayResponse'
-    { _ceoigrsClientToken = Nothing
-    , _ceoigrsEgressOnlyInternetGateway = Nothing
-    , _ceoigrsResponseStatus = pResponseStatus_
-    }
-
+createEgressOnlyInternetGatewayResponse
+  pResponseStatus_
+  = CreateEgressOnlyInternetGatewayResponse'{_ceoigrsClientToken
+                                               = Nothing,
+                                             _ceoigrsEgressOnlyInternetGateway =
+                                               Nothing,
+                                             _ceoigrsResponseStatus =
+                                               pResponseStatus_}
 
 -- | Unique, case-sensitive identifier that you provide to ensure the idempotency of the request.
 ceoigrsClientToken :: Lens' CreateEgressOnlyInternetGatewayResponse (Maybe Text)

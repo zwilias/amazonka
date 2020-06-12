@@ -36,7 +36,6 @@ module Network.AWS.GuardDuty.CreateSampleFindings
     ) where
 
 import Network.AWS.GuardDuty.Types
-import Network.AWS.GuardDuty.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.Request
@@ -45,13 +44,10 @@ import Network.AWS.Response
 -- | CreateSampleFindings request body.
 --
 -- /See:/ 'createSampleFindings' smart constructor.
-data CreateSampleFindings =
-  CreateSampleFindings'
-    { _csfFindingTypes :: !(Maybe [Text])
-    , _csfDetectorId   :: !Text
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data CreateSampleFindings = CreateSampleFindings'{_csfFindingTypes
+                                                  :: !(Maybe [Text]),
+                                                  _csfDetectorId :: !Text}
+                              deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'CreateSampleFindings' with the minimum fields required to make a request.
 --
@@ -63,10 +59,9 @@ data CreateSampleFindings =
 createSampleFindings
     :: Text -- ^ 'csfDetectorId'
     -> CreateSampleFindings
-createSampleFindings pDetectorId_ =
-  CreateSampleFindings'
-    {_csfFindingTypes = Nothing, _csfDetectorId = pDetectorId_}
-
+createSampleFindings pDetectorId_
+  = CreateSampleFindings'{_csfFindingTypes = Nothing,
+                          _csfDetectorId = pDetectorId_}
 
 -- | Types of sample findings that you want to generate.
 csfFindingTypes :: Lens' CreateSampleFindings [Text]
@@ -113,12 +108,10 @@ instance ToQuery CreateSampleFindings where
         toQuery = const mempty
 
 -- | /See:/ 'createSampleFindingsResponse' smart constructor.
-newtype CreateSampleFindingsResponse =
-  CreateSampleFindingsResponse'
-    { _csfrsResponseStatus :: Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+newtype CreateSampleFindingsResponse = CreateSampleFindingsResponse'{_csfrsResponseStatus
+                                                                     :: Int}
+                                         deriving (Eq, Read, Show, Data,
+                                                   Typeable, Generic)
 
 -- | Creates a value of 'CreateSampleFindingsResponse' with the minimum fields required to make a request.
 --
@@ -128,9 +121,9 @@ newtype CreateSampleFindingsResponse =
 createSampleFindingsResponse
     :: Int -- ^ 'csfrsResponseStatus'
     -> CreateSampleFindingsResponse
-createSampleFindingsResponse pResponseStatus_ =
-  CreateSampleFindingsResponse' {_csfrsResponseStatus = pResponseStatus_}
-
+createSampleFindingsResponse pResponseStatus_
+  = CreateSampleFindingsResponse'{_csfrsResponseStatus
+                                    = pResponseStatus_}
 
 -- | -- | The response status code.
 csfrsResponseStatus :: Lens' CreateSampleFindingsResponse Int

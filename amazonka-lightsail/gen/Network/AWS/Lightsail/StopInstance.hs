@@ -40,19 +40,15 @@ module Network.AWS.Lightsail.StopInstance
 
 import Network.AWS.Lens
 import Network.AWS.Lightsail.Types
-import Network.AWS.Lightsail.Types.Product
 import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 
 -- | /See:/ 'stopInstance' smart constructor.
-data StopInstance =
-  StopInstance'
-    { _siForce        :: !(Maybe Bool)
-    , _siInstanceName :: !Text
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data StopInstance = StopInstance'{_siForce ::
+                                  !(Maybe Bool),
+                                  _siInstanceName :: !Text}
+                      deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'StopInstance' with the minimum fields required to make a request.
 --
@@ -64,9 +60,9 @@ data StopInstance =
 stopInstance
     :: Text -- ^ 'siInstanceName'
     -> StopInstance
-stopInstance pInstanceName_ =
-  StopInstance' {_siForce = Nothing, _siInstanceName = pInstanceName_}
-
+stopInstance pInstanceName_
+  = StopInstance'{_siForce = Nothing,
+                  _siInstanceName = pInstanceName_}
 
 -- | When set to @True@ , forces a Lightsail instance that is stuck in a @stopping@ state to stop. /Important:/ Only use the @force@ parameter if your instance is stuck in the @stopping@ state. In any other state, your instance should stop normally without adding this parameter to your API request.
 siForce :: Lens' StopInstance (Maybe Bool)
@@ -113,13 +109,10 @@ instance ToQuery StopInstance where
         toQuery = const mempty
 
 -- | /See:/ 'stopInstanceResponse' smart constructor.
-data StopInstanceResponse =
-  StopInstanceResponse'
-    { _sirsOperations     :: !(Maybe [Operation])
-    , _sirsResponseStatus :: !Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data StopInstanceResponse = StopInstanceResponse'{_sirsOperations
+                                                  :: !(Maybe [Operation]),
+                                                  _sirsResponseStatus :: !Int}
+                              deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'StopInstanceResponse' with the minimum fields required to make a request.
 --
@@ -131,10 +124,9 @@ data StopInstanceResponse =
 stopInstanceResponse
     :: Int -- ^ 'sirsResponseStatus'
     -> StopInstanceResponse
-stopInstanceResponse pResponseStatus_ =
-  StopInstanceResponse'
-    {_sirsOperations = Nothing, _sirsResponseStatus = pResponseStatus_}
-
+stopInstanceResponse pResponseStatus_
+  = StopInstanceResponse'{_sirsOperations = Nothing,
+                          _sirsResponseStatus = pResponseStatus_}
 
 -- | An array of key-value pairs containing information about the request operation.
 sirsOperations :: Lens' StopInstanceResponse [Operation]

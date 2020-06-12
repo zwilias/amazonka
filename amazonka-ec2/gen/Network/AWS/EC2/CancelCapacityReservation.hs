@@ -41,20 +41,18 @@ module Network.AWS.EC2.CancelCapacityReservation
     ) where
 
 import Network.AWS.EC2.Types
-import Network.AWS.EC2.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 
 -- | /See:/ 'cancelCapacityReservation' smart constructor.
-data CancelCapacityReservation =
-  CancelCapacityReservation'
-    { _canDryRun                :: !(Maybe Bool)
-    , _canCapacityReservationId :: !Text
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data CancelCapacityReservation = CancelCapacityReservation'{_canDryRun
+                                                            :: !(Maybe Bool),
+                                                            _canCapacityReservationId
+                                                            :: !Text}
+                                   deriving (Eq, Read, Show, Data, Typeable,
+                                             Generic)
 
 -- | Creates a value of 'CancelCapacityReservation' with the minimum fields required to make a request.
 --
@@ -66,10 +64,10 @@ data CancelCapacityReservation =
 cancelCapacityReservation
     :: Text -- ^ 'canCapacityReservationId'
     -> CancelCapacityReservation
-cancelCapacityReservation pCapacityReservationId_ =
-  CancelCapacityReservation'
-    {_canDryRun = Nothing, _canCapacityReservationId = pCapacityReservationId_}
-
+cancelCapacityReservation pCapacityReservationId_
+  = CancelCapacityReservation'{_canDryRun = Nothing,
+                               _canCapacityReservationId =
+                                 pCapacityReservationId_}
 
 -- | Checks whether you have the required permissions for the action, without actually making the request, and provides an error response. If you have the required permissions, the error response is @DryRunOperation@ . Otherwise, it is @UnauthorizedOperation@ .
 canDryRun :: Lens' CancelCapacityReservation (Maybe Bool)
@@ -109,13 +107,15 @@ instance ToQuery CancelCapacityReservation where
                "CapacityReservationId" =: _canCapacityReservationId]
 
 -- | /See:/ 'cancelCapacityReservationResponse' smart constructor.
-data CancelCapacityReservationResponse =
-  CancelCapacityReservationResponse'
-    { _canrsReturn         :: !(Maybe Bool)
-    , _canrsResponseStatus :: !Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data CancelCapacityReservationResponse = CancelCapacityReservationResponse'{_canrsReturn
+                                                                            ::
+                                                                            !(Maybe
+                                                                                Bool),
+                                                                            _canrsResponseStatus
+                                                                            ::
+                                                                            !Int}
+                                           deriving (Eq, Read, Show, Data,
+                                                     Typeable, Generic)
 
 -- | Creates a value of 'CancelCapacityReservationResponse' with the minimum fields required to make a request.
 --
@@ -127,10 +127,10 @@ data CancelCapacityReservationResponse =
 cancelCapacityReservationResponse
     :: Int -- ^ 'canrsResponseStatus'
     -> CancelCapacityReservationResponse
-cancelCapacityReservationResponse pResponseStatus_ =
-  CancelCapacityReservationResponse'
-    {_canrsReturn = Nothing, _canrsResponseStatus = pResponseStatus_}
-
+cancelCapacityReservationResponse pResponseStatus_
+  = CancelCapacityReservationResponse'{_canrsReturn =
+                                         Nothing,
+                                       _canrsResponseStatus = pResponseStatus_}
 
 -- | Returns @true@ if the request succeeds; otherwise, it returns an error.
 canrsReturn :: Lens' CancelCapacityReservationResponse (Maybe Bool)

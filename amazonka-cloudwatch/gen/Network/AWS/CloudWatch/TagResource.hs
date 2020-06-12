@@ -46,20 +46,16 @@ module Network.AWS.CloudWatch.TagResource
     ) where
 
 import Network.AWS.CloudWatch.Types
-import Network.AWS.CloudWatch.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 
 -- | /See:/ 'tagResource' smart constructor.
-data TagResource =
-  TagResource'
-    { _trResourceARN :: !Text
-    , _trTags        :: ![Tag]
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data TagResource = TagResource'{_trResourceARN ::
+                                !Text,
+                                _trTags :: ![Tag]}
+                     deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'TagResource' with the minimum fields required to make a request.
 --
@@ -71,9 +67,9 @@ data TagResource =
 tagResource
     :: Text -- ^ 'trResourceARN'
     -> TagResource
-tagResource pResourceARN_ =
-  TagResource' {_trResourceARN = pResourceARN_, _trTags = mempty}
-
+tagResource pResourceARN_
+  = TagResource'{_trResourceARN = pResourceARN_,
+                 _trTags = mempty}
 
 -- | The ARN of the CloudWatch resource that you're adding tags to. The ARN format of an alarm is @arn:aws:cloudwatch:/Region/ :/account-id/ :alarm:/alarm-name/ @  The ARN format of a Contributor Insights rule is @arn:aws:cloudwatch:/Region/ :/account-id/ :insight-rule:/insight-rule-name/ @  For more information on ARN format, see <https://docs.aws.amazon.com/IAM/latest/UserGuide/list_amazoncloudwatch.html#amazoncloudwatch-resources-for-iam-policies Resource Types Defined by Amazon CloudWatch> in the /Amazon Web Services General Reference/ .
 trResourceARN :: Lens' TagResource Text
@@ -110,12 +106,10 @@ instance ToQuery TagResource where
                "Tags" =: toQueryList "member" _trTags]
 
 -- | /See:/ 'tagResourceResponse' smart constructor.
-newtype TagResourceResponse =
-  TagResourceResponse'
-    { _trrsResponseStatus :: Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+newtype TagResourceResponse = TagResourceResponse'{_trrsResponseStatus
+                                                   :: Int}
+                                deriving (Eq, Read, Show, Data, Typeable,
+                                          Generic)
 
 -- | Creates a value of 'TagResourceResponse' with the minimum fields required to make a request.
 --
@@ -125,9 +119,9 @@ newtype TagResourceResponse =
 tagResourceResponse
     :: Int -- ^ 'trrsResponseStatus'
     -> TagResourceResponse
-tagResourceResponse pResponseStatus_ =
-  TagResourceResponse' {_trrsResponseStatus = pResponseStatus_}
-
+tagResourceResponse pResponseStatus_
+  = TagResourceResponse'{_trrsResponseStatus =
+                           pResponseStatus_}
 
 -- | -- | The response status code.
 trrsResponseStatus :: Lens' TagResourceResponse Int

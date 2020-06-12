@@ -29,7 +29,7 @@
 --
 --     * Create the lifecycle hook. Specify whether the hook is used when the instances launch or terminate.
 --
---     * __If you need more time, record the lifecycle action heartbeat to keep the instance in a pending state.__
+--     * __If you need more time, record the lifecycle action heartbeat to keep the instance in a pending state.__ 
 --
 --     * If you finish before the timeout period ends, complete the lifecycle action.
 --
@@ -56,22 +56,26 @@ module Network.AWS.AutoScaling.RecordLifecycleActionHeartbeat
     ) where
 
 import Network.AWS.AutoScaling.Types
-import Network.AWS.AutoScaling.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 
 -- | /See:/ 'recordLifecycleActionHeartbeat' smart constructor.
-data RecordLifecycleActionHeartbeat =
-  RecordLifecycleActionHeartbeat'
-    { _rlahInstanceId           :: !(Maybe Text)
-    , _rlahLifecycleActionToken :: !(Maybe Text)
-    , _rlahLifecycleHookName    :: !Text
-    , _rlahAutoScalingGroupName :: !Text
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data RecordLifecycleActionHeartbeat = RecordLifecycleActionHeartbeat'{_rlahInstanceId
+                                                                      ::
+                                                                      !(Maybe
+                                                                          Text),
+                                                                      _rlahLifecycleActionToken
+                                                                      ::
+                                                                      !(Maybe
+                                                                          Text),
+                                                                      _rlahLifecycleHookName
+                                                                      :: !Text,
+                                                                      _rlahAutoScalingGroupName
+                                                                      :: !Text}
+                                        deriving (Eq, Read, Show, Data,
+                                                  Typeable, Generic)
 
 -- | Creates a value of 'RecordLifecycleActionHeartbeat' with the minimum fields required to make a request.
 --
@@ -88,14 +92,15 @@ recordLifecycleActionHeartbeat
     :: Text -- ^ 'rlahLifecycleHookName'
     -> Text -- ^ 'rlahAutoScalingGroupName'
     -> RecordLifecycleActionHeartbeat
-recordLifecycleActionHeartbeat pLifecycleHookName_ pAutoScalingGroupName_ =
-  RecordLifecycleActionHeartbeat'
-    { _rlahInstanceId = Nothing
-    , _rlahLifecycleActionToken = Nothing
-    , _rlahLifecycleHookName = pLifecycleHookName_
-    , _rlahAutoScalingGroupName = pAutoScalingGroupName_
-    }
-
+recordLifecycleActionHeartbeat pLifecycleHookName_
+  pAutoScalingGroupName_
+  = RecordLifecycleActionHeartbeat'{_rlahInstanceId =
+                                      Nothing,
+                                    _rlahLifecycleActionToken = Nothing,
+                                    _rlahLifecycleHookName =
+                                      pLifecycleHookName_,
+                                    _rlahAutoScalingGroupName =
+                                      pAutoScalingGroupName_}
 
 -- | The ID of the instance.
 rlahInstanceId :: Lens' RecordLifecycleActionHeartbeat (Maybe Text)
@@ -149,12 +154,12 @@ instance ToQuery RecordLifecycleActionHeartbeat where
                "AutoScalingGroupName" =: _rlahAutoScalingGroupName]
 
 -- | /See:/ 'recordLifecycleActionHeartbeatResponse' smart constructor.
-newtype RecordLifecycleActionHeartbeatResponse =
-  RecordLifecycleActionHeartbeatResponse'
-    { _rlahrsResponseStatus :: Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+newtype RecordLifecycleActionHeartbeatResponse = RecordLifecycleActionHeartbeatResponse'{_rlahrsResponseStatus
+                                                                                         ::
+                                                                                         Int}
+                                                   deriving (Eq, Read, Show,
+                                                             Data, Typeable,
+                                                             Generic)
 
 -- | Creates a value of 'RecordLifecycleActionHeartbeatResponse' with the minimum fields required to make a request.
 --
@@ -164,10 +169,10 @@ newtype RecordLifecycleActionHeartbeatResponse =
 recordLifecycleActionHeartbeatResponse
     :: Int -- ^ 'rlahrsResponseStatus'
     -> RecordLifecycleActionHeartbeatResponse
-recordLifecycleActionHeartbeatResponse pResponseStatus_ =
-  RecordLifecycleActionHeartbeatResponse'
-    {_rlahrsResponseStatus = pResponseStatus_}
-
+recordLifecycleActionHeartbeatResponse
+  pResponseStatus_
+  = RecordLifecycleActionHeartbeatResponse'{_rlahrsResponseStatus
+                                              = pResponseStatus_}
 
 -- | -- | The response status code.
 rlahrsResponseStatus :: Lens' RecordLifecycleActionHeartbeatResponse Int

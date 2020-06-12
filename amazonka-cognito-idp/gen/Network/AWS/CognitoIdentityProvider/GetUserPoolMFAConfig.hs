@@ -40,19 +40,16 @@ module Network.AWS.CognitoIdentityProvider.GetUserPoolMFAConfig
     ) where
 
 import Network.AWS.CognitoIdentityProvider.Types
-import Network.AWS.CognitoIdentityProvider.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 
 -- | /See:/ 'getUserPoolMFAConfig' smart constructor.
-newtype GetUserPoolMFAConfig =
-  GetUserPoolMFAConfig'
-    { _gupmcUserPoolId :: Text
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+newtype GetUserPoolMFAConfig = GetUserPoolMFAConfig'{_gupmcUserPoolId
+                                                     :: Text}
+                                 deriving (Eq, Read, Show, Data, Typeable,
+                                           Generic)
 
 -- | Creates a value of 'GetUserPoolMFAConfig' with the minimum fields required to make a request.
 --
@@ -62,9 +59,9 @@ newtype GetUserPoolMFAConfig =
 getUserPoolMFAConfig
     :: Text -- ^ 'gupmcUserPoolId'
     -> GetUserPoolMFAConfig
-getUserPoolMFAConfig pUserPoolId_ =
-  GetUserPoolMFAConfig' {_gupmcUserPoolId = pUserPoolId_}
-
+getUserPoolMFAConfig pUserPoolId_
+  = GetUserPoolMFAConfig'{_gupmcUserPoolId =
+                            pUserPoolId_}
 
 -- | The user pool ID.
 gupmcUserPoolId :: Lens' GetUserPoolMFAConfig Text
@@ -109,15 +106,22 @@ instance ToQuery GetUserPoolMFAConfig where
         toQuery = const mempty
 
 -- | /See:/ 'getUserPoolMFAConfigResponse' smart constructor.
-data GetUserPoolMFAConfigResponse =
-  GetUserPoolMFAConfigResponse'
-    { _gupmcrsSmsMFAConfiguration :: !(Maybe SmsMFAConfigType)
-    , _gupmcrsSoftwareTokenMFAConfiguration :: !(Maybe SoftwareTokenMFAConfigType)
-    , _gupmcrsMFAConfiguration :: !(Maybe UserPoolMFAType)
-    , _gupmcrsResponseStatus :: !Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data GetUserPoolMFAConfigResponse = GetUserPoolMFAConfigResponse'{_gupmcrsSmsMFAConfiguration
+                                                                  ::
+                                                                  !(Maybe
+                                                                      SmsMFAConfigType),
+                                                                  _gupmcrsSoftwareTokenMFAConfiguration
+                                                                  ::
+                                                                  !(Maybe
+                                                                      SoftwareTokenMFAConfigType),
+                                                                  _gupmcrsMFAConfiguration
+                                                                  ::
+                                                                  !(Maybe
+                                                                      UserPoolMFAType),
+                                                                  _gupmcrsResponseStatus
+                                                                  :: !Int}
+                                      deriving (Eq, Read, Show, Data, Typeable,
+                                                Generic)
 
 -- | Creates a value of 'GetUserPoolMFAConfigResponse' with the minimum fields required to make a request.
 --
@@ -133,14 +137,13 @@ data GetUserPoolMFAConfigResponse =
 getUserPoolMFAConfigResponse
     :: Int -- ^ 'gupmcrsResponseStatus'
     -> GetUserPoolMFAConfigResponse
-getUserPoolMFAConfigResponse pResponseStatus_ =
-  GetUserPoolMFAConfigResponse'
-    { _gupmcrsSmsMFAConfiguration = Nothing
-    , _gupmcrsSoftwareTokenMFAConfiguration = Nothing
-    , _gupmcrsMFAConfiguration = Nothing
-    , _gupmcrsResponseStatus = pResponseStatus_
-    }
-
+getUserPoolMFAConfigResponse pResponseStatus_
+  = GetUserPoolMFAConfigResponse'{_gupmcrsSmsMFAConfiguration
+                                    = Nothing,
+                                  _gupmcrsSoftwareTokenMFAConfiguration =
+                                    Nothing,
+                                  _gupmcrsMFAConfiguration = Nothing,
+                                  _gupmcrsResponseStatus = pResponseStatus_}
 
 -- | The SMS text message multi-factor (MFA) configuration.
 gupmcrsSmsMFAConfiguration :: Lens' GetUserPoolMFAConfigResponse (Maybe SmsMFAConfigType)

@@ -44,16 +44,16 @@ import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 import Network.AWS.SSM.Types
-import Network.AWS.SSM.Types.Product
 
 -- | /See:/ 'deregisterTaskFromMaintenanceWindow' smart constructor.
-data DeregisterTaskFromMaintenanceWindow =
-  DeregisterTaskFromMaintenanceWindow'
-    { _derWindowId     :: !Text
-    , _derWindowTaskId :: !Text
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data DeregisterTaskFromMaintenanceWindow = DeregisterTaskFromMaintenanceWindow'{_derWindowId
+                                                                                ::
+                                                                                !Text,
+                                                                                _derWindowTaskId
+                                                                                ::
+                                                                                !Text}
+                                             deriving (Eq, Read, Show, Data,
+                                                       Typeable, Generic)
 
 -- | Creates a value of 'DeregisterTaskFromMaintenanceWindow' with the minimum fields required to make a request.
 --
@@ -66,10 +66,11 @@ deregisterTaskFromMaintenanceWindow
     :: Text -- ^ 'derWindowId'
     -> Text -- ^ 'derWindowTaskId'
     -> DeregisterTaskFromMaintenanceWindow
-deregisterTaskFromMaintenanceWindow pWindowId_ pWindowTaskId_ =
-  DeregisterTaskFromMaintenanceWindow'
-    {_derWindowId = pWindowId_, _derWindowTaskId = pWindowTaskId_}
-
+deregisterTaskFromMaintenanceWindow pWindowId_
+  pWindowTaskId_
+  = DeregisterTaskFromMaintenanceWindow'{_derWindowId =
+                                           pWindowId_,
+                                         _derWindowTaskId = pWindowTaskId_}
 
 -- | The ID of the Maintenance Window the task should be removed from.
 derWindowId :: Lens' DeregisterTaskFromMaintenanceWindow Text
@@ -127,14 +128,20 @@ instance ToQuery DeregisterTaskFromMaintenanceWindow
         toQuery = const mempty
 
 -- | /See:/ 'deregisterTaskFromMaintenanceWindowResponse' smart constructor.
-data DeregisterTaskFromMaintenanceWindowResponse =
-  DeregisterTaskFromMaintenanceWindowResponse'
-    { _derrsWindowTaskId   :: !(Maybe Text)
-    , _derrsWindowId       :: !(Maybe Text)
-    , _derrsResponseStatus :: !Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data DeregisterTaskFromMaintenanceWindowResponse = DeregisterTaskFromMaintenanceWindowResponse'{_derrsWindowTaskId
+                                                                                                ::
+                                                                                                !(Maybe
+                                                                                                    Text),
+                                                                                                _derrsWindowId
+                                                                                                ::
+                                                                                                !(Maybe
+                                                                                                    Text),
+                                                                                                _derrsResponseStatus
+                                                                                                ::
+                                                                                                !Int}
+                                                     deriving (Eq, Read, Show,
+                                                               Data, Typeable,
+                                                               Generic)
 
 -- | Creates a value of 'DeregisterTaskFromMaintenanceWindowResponse' with the minimum fields required to make a request.
 --
@@ -148,13 +155,13 @@ data DeregisterTaskFromMaintenanceWindowResponse =
 deregisterTaskFromMaintenanceWindowResponse
     :: Int -- ^ 'derrsResponseStatus'
     -> DeregisterTaskFromMaintenanceWindowResponse
-deregisterTaskFromMaintenanceWindowResponse pResponseStatus_ =
-  DeregisterTaskFromMaintenanceWindowResponse'
-    { _derrsWindowTaskId = Nothing
-    , _derrsWindowId = Nothing
-    , _derrsResponseStatus = pResponseStatus_
-    }
-
+deregisterTaskFromMaintenanceWindowResponse
+  pResponseStatus_
+  = DeregisterTaskFromMaintenanceWindowResponse'{_derrsWindowTaskId
+                                                   = Nothing,
+                                                 _derrsWindowId = Nothing,
+                                                 _derrsResponseStatus =
+                                                   pResponseStatus_}
 
 -- | The ID of the task removed from the Maintenance Window.
 derrsWindowTaskId :: Lens' DeregisterTaskFromMaintenanceWindowResponse (Maybe Text)

@@ -18,7 +18,7 @@
 -- Stability   : auto-generated
 -- Portability : non-portable (GHC extensions)
 --
--- Returns the current configuration items for resources that are present in your AWS Config aggregator. The operation also returns a list of resources that are not processed in the current request. If there are no unprocessed resources, the operation returns an empty @unprocessedResourceIdentifiers@ list.
+-- Returns the current configuration items for resources that are present in your AWS Config aggregator. The operation also returns a list of resources that are not processed in the current request. If there are no unprocessed resources, the operation returns an empty @unprocessedResourceIdentifiers@ list. 
 --
 --
 module Network.AWS.Config.BatchGetAggregateResourceConfig
@@ -40,20 +40,21 @@ module Network.AWS.Config.BatchGetAggregateResourceConfig
     ) where
 
 import Network.AWS.Config.Types
-import Network.AWS.Config.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 
 -- | /See:/ 'batchGetAggregateResourceConfig' smart constructor.
-data BatchGetAggregateResourceConfig =
-  BatchGetAggregateResourceConfig'
-    { _bgarcConfigurationAggregatorName :: !Text
-    , _bgarcResourceIdentifiers         :: !(List1 AggregateResourceIdentifier)
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data BatchGetAggregateResourceConfig = BatchGetAggregateResourceConfig'{_bgarcConfigurationAggregatorName
+                                                                        ::
+                                                                        !Text,
+                                                                        _bgarcResourceIdentifiers
+                                                                        ::
+                                                                        !(List1
+                                                                            AggregateResourceIdentifier)}
+                                         deriving (Eq, Read, Show, Data,
+                                                   Typeable, Generic)
 
 -- | Creates a value of 'BatchGetAggregateResourceConfig' with the minimum fields required to make a request.
 --
@@ -61,23 +62,23 @@ data BatchGetAggregateResourceConfig =
 --
 -- * 'bgarcConfigurationAggregatorName' - The name of the configuration aggregator.
 --
--- * 'bgarcResourceIdentifiers' - A list of aggregate ResourceIdentifiers objects.
+-- * 'bgarcResourceIdentifiers' - A list of aggregate ResourceIdentifiers objects. 
 batchGetAggregateResourceConfig
     :: Text -- ^ 'bgarcConfigurationAggregatorName'
     -> NonEmpty AggregateResourceIdentifier -- ^ 'bgarcResourceIdentifiers'
     -> BatchGetAggregateResourceConfig
-batchGetAggregateResourceConfig pConfigurationAggregatorName_ pResourceIdentifiers_ =
-  BatchGetAggregateResourceConfig'
-    { _bgarcConfigurationAggregatorName = pConfigurationAggregatorName_
-    , _bgarcResourceIdentifiers = _List1 # pResourceIdentifiers_
-    }
-
+batchGetAggregateResourceConfig
+  pConfigurationAggregatorName_ pResourceIdentifiers_
+  = BatchGetAggregateResourceConfig'{_bgarcConfigurationAggregatorName
+                                       = pConfigurationAggregatorName_,
+                                     _bgarcResourceIdentifiers =
+                                       _List1 # pResourceIdentifiers_}
 
 -- | The name of the configuration aggregator.
 bgarcConfigurationAggregatorName :: Lens' BatchGetAggregateResourceConfig Text
 bgarcConfigurationAggregatorName = lens _bgarcConfigurationAggregatorName (\ s a -> s{_bgarcConfigurationAggregatorName = a})
 
--- | A list of aggregate ResourceIdentifiers objects.
+-- | A list of aggregate ResourceIdentifiers objects. 
 bgarcResourceIdentifiers :: Lens' BatchGetAggregateResourceConfig (NonEmpty AggregateResourceIdentifier)
 bgarcResourceIdentifiers = lens _bgarcResourceIdentifiers (\ s a -> s{_bgarcResourceIdentifiers = a}) . _List1
 
@@ -129,14 +130,19 @@ instance ToQuery BatchGetAggregateResourceConfig
         toQuery = const mempty
 
 -- | /See:/ 'batchGetAggregateResourceConfigResponse' smart constructor.
-data BatchGetAggregateResourceConfigResponse =
-  BatchGetAggregateResourceConfigResponse'
-    { _bgarcrsBaseConfigurationItems :: !(Maybe [BaseConfigurationItem])
-    , _bgarcrsUnprocessedResourceIdentifiers :: !(Maybe [AggregateResourceIdentifier])
-    , _bgarcrsResponseStatus :: !Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data BatchGetAggregateResourceConfigResponse = BatchGetAggregateResourceConfigResponse'{_bgarcrsBaseConfigurationItems
+                                                                                        ::
+                                                                                        !(Maybe
+                                                                                            [BaseConfigurationItem]),
+                                                                                        _bgarcrsUnprocessedResourceIdentifiers
+                                                                                        ::
+                                                                                        !(Maybe
+                                                                                            [AggregateResourceIdentifier]),
+                                                                                        _bgarcrsResponseStatus
+                                                                                        ::
+                                                                                        !Int}
+                                                 deriving (Eq, Read, Show, Data,
+                                                           Typeable, Generic)
 
 -- | Creates a value of 'BatchGetAggregateResourceConfigResponse' with the minimum fields required to make a request.
 --
@@ -150,13 +156,14 @@ data BatchGetAggregateResourceConfigResponse =
 batchGetAggregateResourceConfigResponse
     :: Int -- ^ 'bgarcrsResponseStatus'
     -> BatchGetAggregateResourceConfigResponse
-batchGetAggregateResourceConfigResponse pResponseStatus_ =
-  BatchGetAggregateResourceConfigResponse'
-    { _bgarcrsBaseConfigurationItems = Nothing
-    , _bgarcrsUnprocessedResourceIdentifiers = Nothing
-    , _bgarcrsResponseStatus = pResponseStatus_
-    }
-
+batchGetAggregateResourceConfigResponse
+  pResponseStatus_
+  = BatchGetAggregateResourceConfigResponse'{_bgarcrsBaseConfigurationItems
+                                               = Nothing,
+                                             _bgarcrsUnprocessedResourceIdentifiers
+                                               = Nothing,
+                                             _bgarcrsResponseStatus =
+                                               pResponseStatus_}
 
 -- | A list that contains the current configuration of one or more resources.
 bgarcrsBaseConfigurationItems :: Lens' BatchGetAggregateResourceConfigResponse [BaseConfigurationItem]

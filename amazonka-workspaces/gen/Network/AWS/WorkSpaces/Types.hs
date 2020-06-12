@@ -1,4 +1,4 @@
-{-# LANGUAGE OverloadedStrings #-}
+{-# LANGUAGE OverloadedStrings  #-}
 
 -- Derived from AWS service descriptions, licensed under Apache 2.0.
 
@@ -225,139 +225,163 @@ module Network.AWS.WorkSpaces.Types
 import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.Sign.V4
-import Network.AWS.WorkSpaces.Types.Product
-import Network.AWS.WorkSpaces.Types.Sum
+import Network.AWS.WorkSpaces.Types.Compute
+import Network.AWS.WorkSpaces.Types.ConnectionState
+import Network.AWS.WorkSpaces.Types.ModificationResourceEnum
+import Network.AWS.WorkSpaces.Types.ModificationStateEnum
+import Network.AWS.WorkSpaces.Types.RunningMode
+import Network.AWS.WorkSpaces.Types.TargetWorkspaceState
+import Network.AWS.WorkSpaces.Types.WorkspaceDirectoryState
+import Network.AWS.WorkSpaces.Types.WorkspaceDirectoryType
+import Network.AWS.WorkSpaces.Types.WorkspaceState
+import Network.AWS.WorkSpaces.Types.ComputeType
+import Network.AWS.WorkSpaces.Types.DefaultWorkspaceCreationProperties
+import Network.AWS.WorkSpaces.Types.FailedCreateWorkspaceRequest
+import Network.AWS.WorkSpaces.Types.FailedWorkspaceChangeRequest
+import Network.AWS.WorkSpaces.Types.IPRuleItem
+import Network.AWS.WorkSpaces.Types.ModificationState
+import Network.AWS.WorkSpaces.Types.RebootRequest
+import Network.AWS.WorkSpaces.Types.RebuildRequest
+import Network.AWS.WorkSpaces.Types.RootStorage
+import Network.AWS.WorkSpaces.Types.StartRequest
+import Network.AWS.WorkSpaces.Types.StopRequest
+import Network.AWS.WorkSpaces.Types.Tag
+import Network.AWS.WorkSpaces.Types.TerminateRequest
+import Network.AWS.WorkSpaces.Types.UserStorage
+import Network.AWS.WorkSpaces.Types.Workspace
+import Network.AWS.WorkSpaces.Types.WorkspaceBundle
+import Network.AWS.WorkSpaces.Types.WorkspaceConnectionStatus
+import Network.AWS.WorkSpaces.Types.WorkspaceDirectory
+import Network.AWS.WorkSpaces.Types.WorkspaceProperties
+import Network.AWS.WorkSpaces.Types.WorkspaceRequest
+import Network.AWS.WorkSpaces.Types.WorkspacesIPGroup
 
 -- | API version @2015-04-08@ of the Amazon WorkSpaces SDK configuration.
 workSpaces :: Service
-workSpaces =
-  Service
-    { _svcAbbrev = "WorkSpaces"
-    , _svcSigner = v4
-    , _svcPrefix = "workspaces"
-    , _svcVersion = "2015-04-08"
-    , _svcEndpoint = defaultEndpoint workSpaces
-    , _svcTimeout = Just 70
-    , _svcCheck = statusSuccess
-    , _svcError = parseJSONError "WorkSpaces"
-    , _svcRetry = retry
-    }
-  where
-    retry =
-      Exponential
-        { _retryBase = 5.0e-2
-        , _retryGrowth = 2
-        , _retryAttempts = 5
-        , _retryCheck = check
-        }
-    check e
-      | has (hasCode "ThrottledException" . hasStatus 400) e =
-        Just "throttled_exception"
-      | has (hasStatus 429) e = Just "too_many_requests"
-      | has (hasCode "ThrottlingException" . hasStatus 400) e =
-        Just "throttling_exception"
-      | has (hasCode "Throttling" . hasStatus 400) e = Just "throttling"
-      | has (hasStatus 504) e = Just "gateway_timeout"
-      | has (hasCode "RequestThrottledException" . hasStatus 400) e =
-        Just "request_throttled_exception"
-      | has (hasStatus 502) e = Just "bad_gateway"
-      | has (hasStatus 503) e = Just "service_unavailable"
-      | has (hasStatus 500) e = Just "general_server_error"
-      | has (hasStatus 509) e = Just "limit_exceeded"
-      | otherwise = Nothing
-
+workSpaces
+  = Service{_svcAbbrev = "WorkSpaces", _svcSigner = v4,
+            _svcPrefix = "workspaces",
+            _svcVersion = "2015-04-08",
+            _svcEndpoint = defaultEndpoint workSpaces,
+            _svcTimeout = Just 70, _svcCheck = statusSuccess,
+            _svcError = parseJSONError "WorkSpaces",
+            _svcRetry = retry}
+  where retry
+          = Exponential{_retryBase = 5.0e-2, _retryGrowth = 2,
+                        _retryAttempts = 5, _retryCheck = check}
+        check e
+          | has (hasCode "ThrottledException" . hasStatus 400)
+              e
+            = Just "throttled_exception"
+          | has (hasStatus 429) e = Just "too_many_requests"
+          | has (hasCode "ThrottlingException" . hasStatus 400)
+              e
+            = Just "throttling_exception"
+          | has (hasCode "Throttling" . hasStatus 400) e =
+            Just "throttling"
+          | has (hasStatus 504) e = Just "gateway_timeout"
+          | has
+              (hasCode "RequestThrottledException" . hasStatus 400)
+              e
+            = Just "request_throttled_exception"
+          | has (hasStatus 502) e = Just "bad_gateway"
+          | has (hasStatus 503) e = Just "service_unavailable"
+          | has (hasStatus 500) e = Just "general_server_error"
+          | has (hasStatus 509) e = Just "limit_exceeded"
+          | otherwise = Nothing
 
 -- | The user is not authorized to access a resource.
 --
 --
 _AccessDeniedException :: AsError a => Getting (First ServiceError) a ServiceError
-_AccessDeniedException = _MatchServiceError workSpaces "AccessDeniedException"
-
+_AccessDeniedException
+  = _MatchServiceError workSpaces
+      "AccessDeniedException"
 
 -- | The resource could not be created.
 --
 --
 _ResourceCreationFailedException :: AsError a => Getting (First ServiceError) a ServiceError
-_ResourceCreationFailedException =
-  _MatchServiceError workSpaces "ResourceCreationFailedException"
-
+_ResourceCreationFailedException
+  = _MatchServiceError workSpaces
+      "ResourceCreationFailedException"
 
 -- | The specified resource is not available.
 --
 --
 _ResourceUnavailableException :: AsError a => Getting (First ServiceError) a ServiceError
-_ResourceUnavailableException =
-  _MatchServiceError workSpaces "ResourceUnavailableException"
-
+_ResourceUnavailableException
+  = _MatchServiceError workSpaces
+      "ResourceUnavailableException"
 
 -- | One or more parameter values are not valid.
 --
 --
 _InvalidParameterValuesException :: AsError a => Getting (First ServiceError) a ServiceError
-_InvalidParameterValuesException =
-  _MatchServiceError workSpaces "InvalidParameterValuesException"
-
+_InvalidParameterValuesException
+  = _MatchServiceError workSpaces
+      "InvalidParameterValuesException"
 
 -- | The resource is associated with a directory.
 --
 --
 _ResourceAssociatedException :: AsError a => Getting (First ServiceError) a ServiceError
-_ResourceAssociatedException =
-  _MatchServiceError workSpaces "ResourceAssociatedException"
-
+_ResourceAssociatedException
+  = _MatchServiceError workSpaces
+      "ResourceAssociatedException"
 
 -- | The properties of this WorkSpace are currently being modified. Try again in a moment.
 --
 --
 _OperationInProgressException :: AsError a => Getting (First ServiceError) a ServiceError
-_OperationInProgressException =
-  _MatchServiceError workSpaces "OperationInProgressException"
-
+_OperationInProgressException
+  = _MatchServiceError workSpaces
+      "OperationInProgressException"
 
 -- | The specified resource already exists.
 --
 --
 _ResourceAlreadyExistsException :: AsError a => Getting (First ServiceError) a ServiceError
-_ResourceAlreadyExistsException =
-  _MatchServiceError workSpaces "ResourceAlreadyExistsException"
-
+_ResourceAlreadyExistsException
+  = _MatchServiceError workSpaces
+      "ResourceAlreadyExistsException"
 
 -- | Your resource limits have been exceeded.
 --
 --
 _ResourceLimitExceededException :: AsError a => Getting (First ServiceError) a ServiceError
-_ResourceLimitExceededException =
-  _MatchServiceError workSpaces "ResourceLimitExceededException"
-
+_ResourceLimitExceededException
+  = _MatchServiceError workSpaces
+      "ResourceLimitExceededException"
 
 -- | The state of the resource is not valid for this operation.
 --
 --
 _InvalidResourceStateException :: AsError a => Getting (First ServiceError) a ServiceError
-_InvalidResourceStateException =
-  _MatchServiceError workSpaces "InvalidResourceStateException"
-
+_InvalidResourceStateException
+  = _MatchServiceError workSpaces
+      "InvalidResourceStateException"
 
 -- | This operation is not supported.
 --
 --
 _OperationNotSupportedException :: AsError a => Getting (First ServiceError) a ServiceError
-_OperationNotSupportedException =
-  _MatchServiceError workSpaces "OperationNotSupportedException"
+_OperationNotSupportedException
+  = _MatchServiceError workSpaces
+      "OperationNotSupportedException"
 
-
--- | The configuration of this WorkSpace is not supported for this operation. For more information, see the <http://docs.aws.amazon.com/workspaces/latest/adminguide/ Amazon WorkSpaces Administration Guide> .
+-- | The configuration of this WorkSpace is not supported for this operation. For more information, see the <http://docs.aws.amazon.com/workspaces/latest/adminguide/ Amazon WorkSpaces Administration Guide> . 
 --
 --
 _UnsupportedWorkspaceConfigurationException :: AsError a => Getting (First ServiceError) a ServiceError
-_UnsupportedWorkspaceConfigurationException =
-  _MatchServiceError workSpaces "UnsupportedWorkspaceConfigurationException"
-
+_UnsupportedWorkspaceConfigurationException
+  = _MatchServiceError workSpaces
+      "UnsupportedWorkspaceConfigurationException"
 
 -- | The resource could not be found.
 --
 --
 _ResourceNotFoundException :: AsError a => Getting (First ServiceError) a ServiceError
-_ResourceNotFoundException =
-  _MatchServiceError workSpaces "ResourceNotFoundException"
-
+_ResourceNotFoundException
+  = _MatchServiceError workSpaces
+      "ResourceNotFoundException"

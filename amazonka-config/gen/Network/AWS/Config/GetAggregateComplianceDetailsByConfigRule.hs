@@ -18,7 +18,7 @@
 -- Stability   : auto-generated
 -- Portability : non-portable (GHC extensions)
 --
--- Returns the evaluation results for the specified AWS Config rule for a specific resource in a rule. The results indicate which AWS resources were evaluated by the rule, when each resource was last evaluated, and whether each resource complies with the rule.
+-- Returns the evaluation results for the specified AWS Config rule for a specific resource in a rule. The results indicate which AWS resources were evaluated by the rule, when each resource was last evaluated, and whether each resource complies with the rule. 
 --
 --
 --
@@ -47,7 +47,6 @@ module Network.AWS.Config.GetAggregateComplianceDetailsByConfigRule
     ) where
 
 import Network.AWS.Config.Types
-import Network.AWS.Config.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Pager
 import Network.AWS.Prelude
@@ -55,18 +54,33 @@ import Network.AWS.Request
 import Network.AWS.Response
 
 -- | /See:/ 'getAggregateComplianceDetailsByConfigRule' smart constructor.
-data GetAggregateComplianceDetailsByConfigRule =
-  GetAggregateComplianceDetailsByConfigRule'
-    { _gacdbcrNextToken                   :: !(Maybe Text)
-    , _gacdbcrLimit                       :: !(Maybe Nat)
-    , _gacdbcrComplianceType              :: !(Maybe ComplianceType)
-    , _gacdbcrConfigurationAggregatorName :: !Text
-    , _gacdbcrConfigRuleName              :: !Text
-    , _gacdbcrAccountId                   :: !Text
-    , _gacdbcrAWSRegion                   :: !Text
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data GetAggregateComplianceDetailsByConfigRule = GetAggregateComplianceDetailsByConfigRule'{_gacdbcrNextToken
+                                                                                            ::
+                                                                                            !(Maybe
+                                                                                                Text),
+                                                                                            _gacdbcrLimit
+                                                                                            ::
+                                                                                            !(Maybe
+                                                                                                Nat),
+                                                                                            _gacdbcrComplianceType
+                                                                                            ::
+                                                                                            !(Maybe
+                                                                                                ComplianceType),
+                                                                                            _gacdbcrConfigurationAggregatorName
+                                                                                            ::
+                                                                                            !Text,
+                                                                                            _gacdbcrConfigRuleName
+                                                                                            ::
+                                                                                            !Text,
+                                                                                            _gacdbcrAccountId
+                                                                                            ::
+                                                                                            !Text,
+                                                                                            _gacdbcrAWSRegion
+                                                                                            ::
+                                                                                            !Text}
+                                                   deriving (Eq, Read, Show,
+                                                             Data, Typeable,
+                                                             Generic)
 
 -- | Creates a value of 'GetAggregateComplianceDetailsByConfigRule' with the minimum fields required to make a request.
 --
@@ -91,17 +105,20 @@ getAggregateComplianceDetailsByConfigRule
     -> Text -- ^ 'gacdbcrAccountId'
     -> Text -- ^ 'gacdbcrAWSRegion'
     -> GetAggregateComplianceDetailsByConfigRule
-getAggregateComplianceDetailsByConfigRule pConfigurationAggregatorName_ pConfigRuleName_ pAccountId_ pAWSRegion_ =
-  GetAggregateComplianceDetailsByConfigRule'
-    { _gacdbcrNextToken = Nothing
-    , _gacdbcrLimit = Nothing
-    , _gacdbcrComplianceType = Nothing
-    , _gacdbcrConfigurationAggregatorName = pConfigurationAggregatorName_
-    , _gacdbcrConfigRuleName = pConfigRuleName_
-    , _gacdbcrAccountId = pAccountId_
-    , _gacdbcrAWSRegion = pAWSRegion_
-    }
-
+getAggregateComplianceDetailsByConfigRule
+  pConfigurationAggregatorName_ pConfigRuleName_
+  pAccountId_ pAWSRegion_
+  = GetAggregateComplianceDetailsByConfigRule'{_gacdbcrNextToken
+                                                 = Nothing,
+                                               _gacdbcrLimit = Nothing,
+                                               _gacdbcrComplianceType = Nothing,
+                                               _gacdbcrConfigurationAggregatorName
+                                                 =
+                                                 pConfigurationAggregatorName_,
+                                               _gacdbcrConfigRuleName =
+                                                 pConfigRuleName_,
+                                               _gacdbcrAccountId = pAccountId_,
+                                               _gacdbcrAWSRegion = pAWSRegion_}
 
 -- | The @nextToken@ string returned on a previous page that you use to get the next page of results in a paginated response.
 gacdbcrNextToken :: Lens' GetAggregateComplianceDetailsByConfigRule (Maybe Text)
@@ -204,14 +221,21 @@ instance ToQuery
         toQuery = const mempty
 
 -- | /See:/ 'getAggregateComplianceDetailsByConfigRuleResponse' smart constructor.
-data GetAggregateComplianceDetailsByConfigRuleResponse =
-  GetAggregateComplianceDetailsByConfigRuleResponse'
-    { _gacdbcrrsNextToken :: !(Maybe Text)
-    , _gacdbcrrsAggregateEvaluationResults :: !(Maybe [AggregateEvaluationResult])
-    , _gacdbcrrsResponseStatus :: !Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data GetAggregateComplianceDetailsByConfigRuleResponse = GetAggregateComplianceDetailsByConfigRuleResponse'{_gacdbcrrsNextToken
+                                                                                                            ::
+                                                                                                            !(Maybe
+                                                                                                                Text),
+                                                                                                            _gacdbcrrsAggregateEvaluationResults
+                                                                                                            ::
+                                                                                                            !(Maybe
+                                                                                                                [AggregateEvaluationResult]),
+                                                                                                            _gacdbcrrsResponseStatus
+                                                                                                            ::
+                                                                                                            !Int}
+                                                           deriving (Eq, Read,
+                                                                     Show, Data,
+                                                                     Typeable,
+                                                                     Generic)
 
 -- | Creates a value of 'GetAggregateComplianceDetailsByConfigRuleResponse' with the minimum fields required to make a request.
 --
@@ -225,13 +249,14 @@ data GetAggregateComplianceDetailsByConfigRuleResponse =
 getAggregateComplianceDetailsByConfigRuleResponse
     :: Int -- ^ 'gacdbcrrsResponseStatus'
     -> GetAggregateComplianceDetailsByConfigRuleResponse
-getAggregateComplianceDetailsByConfigRuleResponse pResponseStatus_ =
-  GetAggregateComplianceDetailsByConfigRuleResponse'
-    { _gacdbcrrsNextToken = Nothing
-    , _gacdbcrrsAggregateEvaluationResults = Nothing
-    , _gacdbcrrsResponseStatus = pResponseStatus_
-    }
-
+getAggregateComplianceDetailsByConfigRuleResponse
+  pResponseStatus_
+  = GetAggregateComplianceDetailsByConfigRuleResponse'{_gacdbcrrsNextToken
+                                                         = Nothing,
+                                                       _gacdbcrrsAggregateEvaluationResults
+                                                         = Nothing,
+                                                       _gacdbcrrsResponseStatus
+                                                         = pResponseStatus_}
 
 -- | The @nextToken@ string returned on a previous page that you use to get the next page of results in a paginated response.
 gacdbcrrsNextToken :: Lens' GetAggregateComplianceDetailsByConfigRuleResponse (Maybe Text)

@@ -43,7 +43,6 @@ module Network.AWS.CloudFormation.ValidateTemplate
     ) where
 
 import Network.AWS.CloudFormation.Types
-import Network.AWS.CloudFormation.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.Request
@@ -54,13 +53,10 @@ import Network.AWS.Response
 --
 --
 -- /See:/ 'validateTemplate' smart constructor.
-data ValidateTemplate =
-  ValidateTemplate'
-    { _vtTemplateBody :: !(Maybe Text)
-    , _vtTemplateURL  :: !(Maybe Text)
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data ValidateTemplate = ValidateTemplate'{_vtTemplateBody
+                                          :: !(Maybe Text),
+                                          _vtTemplateURL :: !(Maybe Text)}
+                          deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'ValidateTemplate' with the minimum fields required to make a request.
 --
@@ -71,9 +67,9 @@ data ValidateTemplate =
 -- * 'vtTemplateURL' - Location of file containing the template body. The URL must point to a template (max size: 460,800 bytes) that is located in an Amazon S3 bucket. For more information, go to <http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/template-anatomy.html Template Anatomy> in the AWS CloudFormation User Guide. Conditional: You must pass @TemplateURL@ or @TemplateBody@ . If both are passed, only @TemplateBody@ is used.
 validateTemplate
     :: ValidateTemplate
-validateTemplate =
-  ValidateTemplate' {_vtTemplateBody = Nothing, _vtTemplateURL = Nothing}
-
+validateTemplate
+  = ValidateTemplate'{_vtTemplateBody = Nothing,
+                      _vtTemplateURL = Nothing}
 
 -- | Structure containing the template body with a minimum length of 1 byte and a maximum length of 51,200 bytes. For more information, go to <http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/template-anatomy.html Template Anatomy> in the AWS CloudFormation User Guide. Conditional: You must pass @TemplateURL@ or @TemplateBody@ . If both are passed, only @TemplateBody@ is used.
 vtTemplateBody :: Lens' ValidateTemplate (Maybe Text)
@@ -125,17 +121,21 @@ instance ToQuery ValidateTemplate where
 --
 --
 -- /See:/ 'validateTemplateResponse' smart constructor.
-data ValidateTemplateResponse =
-  ValidateTemplateResponse'
-    { _vtrsDeclaredTransforms :: !(Maybe [Text])
-    , _vtrsCapabilitiesReason :: !(Maybe Text)
-    , _vtrsParameters         :: !(Maybe [TemplateParameter])
-    , _vtrsDescription        :: !(Maybe Text)
-    , _vtrsCapabilities       :: !(Maybe [Capability])
-    , _vtrsResponseStatus     :: !Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data ValidateTemplateResponse = ValidateTemplateResponse'{_vtrsDeclaredTransforms
+                                                          :: !(Maybe [Text]),
+                                                          _vtrsCapabilitiesReason
+                                                          :: !(Maybe Text),
+                                                          _vtrsParameters ::
+                                                          !(Maybe
+                                                              [TemplateParameter]),
+                                                          _vtrsDescription ::
+                                                          !(Maybe Text),
+                                                          _vtrsCapabilities ::
+                                                          !(Maybe [Capability]),
+                                                          _vtrsResponseStatus ::
+                                                          !Int}
+                                  deriving (Eq, Read, Show, Data, Typeable,
+                                            Generic)
 
 -- | Creates a value of 'ValidateTemplateResponse' with the minimum fields required to make a request.
 --
@@ -155,16 +155,14 @@ data ValidateTemplateResponse =
 validateTemplateResponse
     :: Int -- ^ 'vtrsResponseStatus'
     -> ValidateTemplateResponse
-validateTemplateResponse pResponseStatus_ =
-  ValidateTemplateResponse'
-    { _vtrsDeclaredTransforms = Nothing
-    , _vtrsCapabilitiesReason = Nothing
-    , _vtrsParameters = Nothing
-    , _vtrsDescription = Nothing
-    , _vtrsCapabilities = Nothing
-    , _vtrsResponseStatus = pResponseStatus_
-    }
-
+validateTemplateResponse pResponseStatus_
+  = ValidateTemplateResponse'{_vtrsDeclaredTransforms =
+                                Nothing,
+                              _vtrsCapabilitiesReason = Nothing,
+                              _vtrsParameters = Nothing,
+                              _vtrsDescription = Nothing,
+                              _vtrsCapabilities = Nothing,
+                              _vtrsResponseStatus = pResponseStatus_}
 
 -- | A list of the transforms that are declared in the template.
 vtrsDeclaredTransforms :: Lens' ValidateTemplateResponse [Text]

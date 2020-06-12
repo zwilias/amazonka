@@ -11,7 +11,7 @@
 -- Stability   : auto-generated
 -- Portability : non-portable (GHC extensions)
 --
--- __AWS CloudTrail__
+-- __AWS CloudTrail__ 
 --
 -- This is the CloudTrail API Reference. It provides descriptions of actions, data types, common parameters, and common errors for CloudTrail.
 --
@@ -159,58 +159,58 @@ module Network.AWS.CloudTrail
     -- * Operations
     -- $operations
 
-    -- ** DescribeTrails
+    -- ** DescribeTrails 
     , module Network.AWS.CloudTrail.DescribeTrails
 
     -- ** ListPublicKeys (Paginated)
     , module Network.AWS.CloudTrail.ListPublicKeys
 
-    -- ** RemoveTags
+    -- ** RemoveTags 
     , module Network.AWS.CloudTrail.RemoveTags
 
     -- ** LookupEvents (Paginated)
     , module Network.AWS.CloudTrail.LookupEvents
 
-    -- ** StopLogging
+    -- ** StopLogging 
     , module Network.AWS.CloudTrail.StopLogging
 
-    -- ** DeleteTrail
+    -- ** DeleteTrail 
     , module Network.AWS.CloudTrail.DeleteTrail
 
-    -- ** UpdateTrail
+    -- ** UpdateTrail 
     , module Network.AWS.CloudTrail.UpdateTrail
 
-    -- ** CreateTrail
+    -- ** CreateTrail 
     , module Network.AWS.CloudTrail.CreateTrail
 
-    -- ** PutInsightSelectors
+    -- ** PutInsightSelectors 
     , module Network.AWS.CloudTrail.PutInsightSelectors
 
-    -- ** GetEventSelectors
+    -- ** GetEventSelectors 
     , module Network.AWS.CloudTrail.GetEventSelectors
 
-    -- ** GetTrail
+    -- ** GetTrail 
     , module Network.AWS.CloudTrail.GetTrail
 
-    -- ** GetTrailStatus
+    -- ** GetTrailStatus 
     , module Network.AWS.CloudTrail.GetTrailStatus
 
-    -- ** AddTags
+    -- ** AddTags 
     , module Network.AWS.CloudTrail.AddTags
 
     -- ** ListTags (Paginated)
     , module Network.AWS.CloudTrail.ListTags
 
-    -- ** PutEventSelectors
+    -- ** PutEventSelectors 
     , module Network.AWS.CloudTrail.PutEventSelectors
 
-    -- ** StartLogging
+    -- ** StartLogging 
     , module Network.AWS.CloudTrail.StartLogging
 
     -- ** ListTrails (Paginated)
     , module Network.AWS.CloudTrail.ListTrails
 
-    -- ** GetInsightSelectors
+    -- ** GetInsightSelectors 
     , module Network.AWS.CloudTrail.GetInsightSelectors
 
     -- * Types

@@ -44,7 +44,6 @@ module Network.AWS.EC2.DescribeStaleSecurityGroups
     ) where
 
 import Network.AWS.EC2.Types
-import Network.AWS.EC2.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Pager
 import Network.AWS.Prelude
@@ -52,15 +51,17 @@ import Network.AWS.Request
 import Network.AWS.Response
 
 -- | /See:/ 'describeStaleSecurityGroups' smart constructor.
-data DescribeStaleSecurityGroups =
-  DescribeStaleSecurityGroups'
-    { _dssgNextToken  :: !(Maybe Text)
-    , _dssgDryRun     :: !(Maybe Bool)
-    , _dssgMaxResults :: !(Maybe Nat)
-    , _dssgVPCId      :: !Text
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data DescribeStaleSecurityGroups = DescribeStaleSecurityGroups'{_dssgNextToken
+                                                                ::
+                                                                !(Maybe Text),
+                                                                _dssgDryRun ::
+                                                                !(Maybe Bool),
+                                                                _dssgMaxResults
+                                                                :: !(Maybe Nat),
+                                                                _dssgVPCId ::
+                                                                !Text}
+                                     deriving (Eq, Read, Show, Data, Typeable,
+                                               Generic)
 
 -- | Creates a value of 'DescribeStaleSecurityGroups' with the minimum fields required to make a request.
 --
@@ -76,14 +77,12 @@ data DescribeStaleSecurityGroups =
 describeStaleSecurityGroups
     :: Text -- ^ 'dssgVPCId'
     -> DescribeStaleSecurityGroups
-describeStaleSecurityGroups pVPCId_ =
-  DescribeStaleSecurityGroups'
-    { _dssgNextToken = Nothing
-    , _dssgDryRun = Nothing
-    , _dssgMaxResults = Nothing
-    , _dssgVPCId = pVPCId_
-    }
-
+describeStaleSecurityGroups pVPCId_
+  = DescribeStaleSecurityGroups'{_dssgNextToken =
+                                   Nothing,
+                                 _dssgDryRun = Nothing,
+                                 _dssgMaxResults = Nothing,
+                                 _dssgVPCId = pVPCId_}
 
 -- | The token for the next set of items to return. (You received this token from a prior call.)
 dssgNextToken :: Lens' DescribeStaleSecurityGroups (Maybe Text)
@@ -143,14 +142,19 @@ instance ToQuery DescribeStaleSecurityGroups where
                "VpcId" =: _dssgVPCId]
 
 -- | /See:/ 'describeStaleSecurityGroupsResponse' smart constructor.
-data DescribeStaleSecurityGroupsResponse =
-  DescribeStaleSecurityGroupsResponse'
-    { _dssgrsStaleSecurityGroupSet :: !(Maybe [StaleSecurityGroup])
-    , _dssgrsNextToken             :: !(Maybe Text)
-    , _dssgrsResponseStatus        :: !Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data DescribeStaleSecurityGroupsResponse = DescribeStaleSecurityGroupsResponse'{_dssgrsStaleSecurityGroupSet
+                                                                                ::
+                                                                                !(Maybe
+                                                                                    [StaleSecurityGroup]),
+                                                                                _dssgrsNextToken
+                                                                                ::
+                                                                                !(Maybe
+                                                                                    Text),
+                                                                                _dssgrsResponseStatus
+                                                                                ::
+                                                                                !Int}
+                                             deriving (Eq, Read, Show, Data,
+                                                       Typeable, Generic)
 
 -- | Creates a value of 'DescribeStaleSecurityGroupsResponse' with the minimum fields required to make a request.
 --
@@ -164,13 +168,12 @@ data DescribeStaleSecurityGroupsResponse =
 describeStaleSecurityGroupsResponse
     :: Int -- ^ 'dssgrsResponseStatus'
     -> DescribeStaleSecurityGroupsResponse
-describeStaleSecurityGroupsResponse pResponseStatus_ =
-  DescribeStaleSecurityGroupsResponse'
-    { _dssgrsStaleSecurityGroupSet = Nothing
-    , _dssgrsNextToken = Nothing
-    , _dssgrsResponseStatus = pResponseStatus_
-    }
-
+describeStaleSecurityGroupsResponse pResponseStatus_
+  = DescribeStaleSecurityGroupsResponse'{_dssgrsStaleSecurityGroupSet
+                                           = Nothing,
+                                         _dssgrsNextToken = Nothing,
+                                         _dssgrsResponseStatus =
+                                           pResponseStatus_}
 
 -- | Information about the stale security groups.
 dssgrsStaleSecurityGroupSet :: Lens' DescribeStaleSecurityGroupsResponse [StaleSecurityGroup]

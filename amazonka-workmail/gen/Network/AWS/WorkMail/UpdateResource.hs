@@ -44,18 +44,15 @@ import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 import Network.AWS.WorkMail.Types
-import Network.AWS.WorkMail.Types.Product
 
 -- | /See:/ 'updateResource' smart constructor.
-data UpdateResource =
-  UpdateResource'
-    { _urName           :: !(Maybe Text)
-    , _urBookingOptions :: !(Maybe BookingOptions)
-    , _urOrganizationId :: !Text
-    , _urResourceId     :: !Text
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data UpdateResource = UpdateResource'{_urName ::
+                                      !(Maybe Text),
+                                      _urBookingOptions ::
+                                      !(Maybe BookingOptions),
+                                      _urOrganizationId :: !Text,
+                                      _urResourceId :: !Text}
+                        deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'UpdateResource' with the minimum fields required to make a request.
 --
@@ -72,14 +69,11 @@ updateResource
     :: Text -- ^ 'urOrganizationId'
     -> Text -- ^ 'urResourceId'
     -> UpdateResource
-updateResource pOrganizationId_ pResourceId_ =
-  UpdateResource'
-    { _urName = Nothing
-    , _urBookingOptions = Nothing
-    , _urOrganizationId = pOrganizationId_
-    , _urResourceId = pResourceId_
-    }
-
+updateResource pOrganizationId_ pResourceId_
+  = UpdateResource'{_urName = Nothing,
+                    _urBookingOptions = Nothing,
+                    _urOrganizationId = pOrganizationId_,
+                    _urResourceId = pResourceId_}
 
 -- | The name of the resource to be updated.
 urName :: Lens' UpdateResource (Maybe Text)
@@ -134,12 +128,10 @@ instance ToQuery UpdateResource where
         toQuery = const mempty
 
 -- | /See:/ 'updateResourceResponse' smart constructor.
-newtype UpdateResourceResponse =
-  UpdateResourceResponse'
-    { _urrsResponseStatus :: Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+newtype UpdateResourceResponse = UpdateResourceResponse'{_urrsResponseStatus
+                                                         :: Int}
+                                   deriving (Eq, Read, Show, Data, Typeable,
+                                             Generic)
 
 -- | Creates a value of 'UpdateResourceResponse' with the minimum fields required to make a request.
 --
@@ -149,9 +141,9 @@ newtype UpdateResourceResponse =
 updateResourceResponse
     :: Int -- ^ 'urrsResponseStatus'
     -> UpdateResourceResponse
-updateResourceResponse pResponseStatus_ =
-  UpdateResourceResponse' {_urrsResponseStatus = pResponseStatus_}
-
+updateResourceResponse pResponseStatus_
+  = UpdateResourceResponse'{_urrsResponseStatus =
+                              pResponseStatus_}
 
 -- | -- | The response status code.
 urrsResponseStatus :: Lens' UpdateResourceResponse Int

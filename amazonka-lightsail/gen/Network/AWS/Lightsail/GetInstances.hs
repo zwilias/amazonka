@@ -42,19 +42,15 @@ module Network.AWS.Lightsail.GetInstances
 
 import Network.AWS.Lens
 import Network.AWS.Lightsail.Types
-import Network.AWS.Lightsail.Types.Product
 import Network.AWS.Pager
 import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 
 -- | /See:/ 'getInstances' smart constructor.
-newtype GetInstances =
-  GetInstances'
-    { _giPageToken :: Maybe Text
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+newtype GetInstances = GetInstances'{_giPageToken ::
+                                     Maybe Text}
+                         deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'GetInstances' with the minimum fields required to make a request.
 --
@@ -63,8 +59,7 @@ newtype GetInstances =
 -- * 'giPageToken' - A token used for advancing to the next page of results from your get instances request.
 getInstances
     :: GetInstances
-getInstances = GetInstances' {_giPageToken = Nothing}
-
+getInstances = GetInstances'{_giPageToken = Nothing}
 
 -- | A token used for advancing to the next page of results from your get instances request.
 giPageToken :: Lens' GetInstances (Maybe Text)
@@ -113,14 +108,12 @@ instance ToQuery GetInstances where
         toQuery = const mempty
 
 -- | /See:/ 'getInstancesResponse' smart constructor.
-data GetInstancesResponse =
-  GetInstancesResponse'
-    { _grsNextPageToken  :: !(Maybe Text)
-    , _grsInstances      :: !(Maybe [Instance])
-    , _grsResponseStatus :: !Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data GetInstancesResponse = GetInstancesResponse'{_grsNextPageToken
+                                                  :: !(Maybe Text),
+                                                  _grsInstances ::
+                                                  !(Maybe [Instance]),
+                                                  _grsResponseStatus :: !Int}
+                              deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'GetInstancesResponse' with the minimum fields required to make a request.
 --
@@ -134,13 +127,10 @@ data GetInstancesResponse =
 getInstancesResponse
     :: Int -- ^ 'grsResponseStatus'
     -> GetInstancesResponse
-getInstancesResponse pResponseStatus_ =
-  GetInstancesResponse'
-    { _grsNextPageToken = Nothing
-    , _grsInstances = Nothing
-    , _grsResponseStatus = pResponseStatus_
-    }
-
+getInstancesResponse pResponseStatus_
+  = GetInstancesResponse'{_grsNextPageToken = Nothing,
+                          _grsInstances = Nothing,
+                          _grsResponseStatus = pResponseStatus_}
 
 -- | A token used for advancing to the next page of results from your get instances request.
 grsNextPageToken :: Lens' GetInstancesResponse (Maybe Text)

@@ -36,24 +36,21 @@ module Network.AWS.IoT.GetIndexingConfiguration
     ) where
 
 import Network.AWS.IoT.Types
-import Network.AWS.IoT.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 
 -- | /See:/ 'getIndexingConfiguration' smart constructor.
-data GetIndexingConfiguration =
-  GetIndexingConfiguration'
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data GetIndexingConfiguration = GetIndexingConfiguration'
+                                  deriving (Eq, Read, Show, Data, Typeable,
+                                            Generic)
 
 -- | Creates a value of 'GetIndexingConfiguration' with the minimum fields required to make a request.
 --
 getIndexingConfiguration
     :: GetIndexingConfiguration
 getIndexingConfiguration = GetIndexingConfiguration'
-
 
 instance AWSRequest GetIndexingConfiguration where
         type Rs GetIndexingConfiguration =
@@ -80,13 +77,15 @@ instance ToQuery GetIndexingConfiguration where
         toQuery = const mempty
 
 -- | /See:/ 'getIndexingConfigurationResponse' smart constructor.
-data GetIndexingConfigurationResponse =
-  GetIndexingConfigurationResponse'
-    { _gicrsThingIndexingConfiguration :: !(Maybe ThingIndexingConfiguration)
-    , _gicrsResponseStatus             :: !Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data GetIndexingConfigurationResponse = GetIndexingConfigurationResponse'{_gicrsThingIndexingConfiguration
+                                                                          ::
+                                                                          !(Maybe
+                                                                              ThingIndexingConfiguration),
+                                                                          _gicrsResponseStatus
+                                                                          ::
+                                                                          !Int}
+                                          deriving (Eq, Read, Show, Data,
+                                                    Typeable, Generic)
 
 -- | Creates a value of 'GetIndexingConfigurationResponse' with the minimum fields required to make a request.
 --
@@ -98,12 +97,10 @@ data GetIndexingConfigurationResponse =
 getIndexingConfigurationResponse
     :: Int -- ^ 'gicrsResponseStatus'
     -> GetIndexingConfigurationResponse
-getIndexingConfigurationResponse pResponseStatus_ =
-  GetIndexingConfigurationResponse'
-    { _gicrsThingIndexingConfiguration = Nothing
-    , _gicrsResponseStatus = pResponseStatus_
-    }
-
+getIndexingConfigurationResponse pResponseStatus_
+  = GetIndexingConfigurationResponse'{_gicrsThingIndexingConfiguration
+                                        = Nothing,
+                                      _gicrsResponseStatus = pResponseStatus_}
 
 -- | Thing indexing configuration.
 gicrsThingIndexingConfiguration :: Lens' GetIndexingConfigurationResponse (Maybe ThingIndexingConfiguration)

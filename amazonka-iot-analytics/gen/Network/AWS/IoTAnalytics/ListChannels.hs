@@ -40,20 +40,16 @@ module Network.AWS.IoTAnalytics.ListChannels
     ) where
 
 import Network.AWS.IoTAnalytics.Types
-import Network.AWS.IoTAnalytics.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 
 -- | /See:/ 'listChannels' smart constructor.
-data ListChannels =
-  ListChannels'
-    { _lcNextToken  :: !(Maybe Text)
-    , _lcMaxResults :: !(Maybe Nat)
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data ListChannels = ListChannels'{_lcNextToken ::
+                                  !(Maybe Text),
+                                  _lcMaxResults :: !(Maybe Nat)}
+                      deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'ListChannels' with the minimum fields required to make a request.
 --
@@ -64,8 +60,9 @@ data ListChannels =
 -- * 'lcMaxResults' - The maximum number of results to return in this request. The default value is 100.
 listChannels
     :: ListChannels
-listChannels = ListChannels' {_lcNextToken = Nothing, _lcMaxResults = Nothing}
-
+listChannels
+  = ListChannels'{_lcNextToken = Nothing,
+                  _lcMaxResults = Nothing}
 
 -- | The token for the next set of results.
 lcNextToken :: Lens' ListChannels (Maybe Text)
@@ -103,14 +100,12 @@ instance ToQuery ListChannels where
                "maxResults" =: _lcMaxResults]
 
 -- | /See:/ 'listChannelsResponse' smart constructor.
-data ListChannelsResponse =
-  ListChannelsResponse'
-    { _lcrsChannelSummaries :: !(Maybe [ChannelSummary])
-    , _lcrsNextToken        :: !(Maybe Text)
-    , _lcrsResponseStatus   :: !Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data ListChannelsResponse = ListChannelsResponse'{_lcrsChannelSummaries
+                                                  :: !(Maybe [ChannelSummary]),
+                                                  _lcrsNextToken ::
+                                                  !(Maybe Text),
+                                                  _lcrsResponseStatus :: !Int}
+                              deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'ListChannelsResponse' with the minimum fields required to make a request.
 --
@@ -124,13 +119,11 @@ data ListChannelsResponse =
 listChannelsResponse
     :: Int -- ^ 'lcrsResponseStatus'
     -> ListChannelsResponse
-listChannelsResponse pResponseStatus_ =
-  ListChannelsResponse'
-    { _lcrsChannelSummaries = Nothing
-    , _lcrsNextToken = Nothing
-    , _lcrsResponseStatus = pResponseStatus_
-    }
-
+listChannelsResponse pResponseStatus_
+  = ListChannelsResponse'{_lcrsChannelSummaries =
+                            Nothing,
+                          _lcrsNextToken = Nothing,
+                          _lcrsResponseStatus = pResponseStatus_}
 
 -- | A list of "ChannelSummary" objects.
 lcrsChannelSummaries :: Lens' ListChannelsResponse [ChannelSummary]

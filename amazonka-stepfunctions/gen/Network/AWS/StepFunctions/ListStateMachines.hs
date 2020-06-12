@@ -49,16 +49,12 @@ import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 import Network.AWS.StepFunctions.Types
-import Network.AWS.StepFunctions.Types.Product
 
 -- | /See:/ 'listStateMachines' smart constructor.
-data ListStateMachines =
-  ListStateMachines'
-    { _lsmNextToken  :: !(Maybe Text)
-    , _lsmMaxResults :: !(Maybe Nat)
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data ListStateMachines = ListStateMachines'{_lsmNextToken
+                                            :: !(Maybe Text),
+                                            _lsmMaxResults :: !(Maybe Nat)}
+                           deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'ListStateMachines' with the minimum fields required to make a request.
 --
@@ -69,9 +65,9 @@ data ListStateMachines =
 -- * 'lsmMaxResults' - The maximum number of results that are returned per call. You can use @nextToken@ to obtain further pages of results. The default is 100 and the maximum allowed page size is 100. A value of 0 uses the default. This is only an upper limit. The actual number of results returned per call might be fewer than the specified maximum.
 listStateMachines
     :: ListStateMachines
-listStateMachines =
-  ListStateMachines' {_lsmNextToken = Nothing, _lsmMaxResults = Nothing}
-
+listStateMachines
+  = ListStateMachines'{_lsmNextToken = Nothing,
+                       _lsmMaxResults = Nothing}
 
 -- | If a @nextToken@ is returned by a previous call, there are more results available. To retrieve the next page of results, make the call again using the returned token in @nextToken@ . Keep all other arguments unchanged. The configured @maxResults@ determines how many results can be returned in a single call.
 lsmNextToken :: Lens' ListStateMachines (Maybe Text)
@@ -125,14 +121,15 @@ instance ToQuery ListStateMachines where
         toQuery = const mempty
 
 -- | /See:/ 'listStateMachinesResponse' smart constructor.
-data ListStateMachinesResponse =
-  ListStateMachinesResponse'
-    { _lsmrsNextToken      :: !(Maybe Text)
-    , _lsmrsResponseStatus :: !Int
-    , _lsmrsStateMachines  :: ![StateMachineListItem]
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data ListStateMachinesResponse = ListStateMachinesResponse'{_lsmrsNextToken
+                                                            :: !(Maybe Text),
+                                                            _lsmrsResponseStatus
+                                                            :: !Int,
+                                                            _lsmrsStateMachines
+                                                            ::
+                                                            ![StateMachineListItem]}
+                                   deriving (Eq, Read, Show, Data, Typeable,
+                                             Generic)
 
 -- | Creates a value of 'ListStateMachinesResponse' with the minimum fields required to make a request.
 --
@@ -146,13 +143,11 @@ data ListStateMachinesResponse =
 listStateMachinesResponse
     :: Int -- ^ 'lsmrsResponseStatus'
     -> ListStateMachinesResponse
-listStateMachinesResponse pResponseStatus_ =
-  ListStateMachinesResponse'
-    { _lsmrsNextToken = Nothing
-    , _lsmrsResponseStatus = pResponseStatus_
-    , _lsmrsStateMachines = mempty
-    }
-
+listStateMachinesResponse pResponseStatus_
+  = ListStateMachinesResponse'{_lsmrsNextToken =
+                                 Nothing,
+                               _lsmrsResponseStatus = pResponseStatus_,
+                               _lsmrsStateMachines = mempty}
 
 -- | If a @nextToken@ is returned by a previous call, there are more results available. To retrieve the next page of results, make the call again using the returned token in @nextToken@ . Keep all other arguments unchanged. The configured @maxResults@ determines how many results can be returned in a single call.
 lsmrsNextToken :: Lens' ListStateMachinesResponse (Maybe Text)

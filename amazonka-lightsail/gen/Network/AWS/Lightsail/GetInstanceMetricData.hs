@@ -46,24 +46,23 @@ module Network.AWS.Lightsail.GetInstanceMetricData
 
 import Network.AWS.Lens
 import Network.AWS.Lightsail.Types
-import Network.AWS.Lightsail.Types.Product
 import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 
 -- | /See:/ 'getInstanceMetricData' smart constructor.
-data GetInstanceMetricData =
-  GetInstanceMetricData'
-    { _gimdInstanceName :: !Text
-    , _gimdMetricName   :: !InstanceMetricName
-    , _gimdPeriod       :: !Nat
-    , _gimdStartTime    :: !POSIX
-    , _gimdEndTime      :: !POSIX
-    , _gimdUnit         :: !MetricUnit
-    , _gimdStatistics   :: ![MetricStatistic]
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data GetInstanceMetricData = GetInstanceMetricData'{_gimdInstanceName
+                                                    :: !Text,
+                                                    _gimdMetricName ::
+                                                    !InstanceMetricName,
+                                                    _gimdPeriod :: !Nat,
+                                                    _gimdStartTime :: !POSIX,
+                                                    _gimdEndTime :: !POSIX,
+                                                    _gimdUnit :: !MetricUnit,
+                                                    _gimdStatistics ::
+                                                    ![MetricStatistic]}
+                               deriving (Eq, Read, Show, Data, Typeable,
+                                         Generic)
 
 -- | Creates a value of 'GetInstanceMetricData' with the minimum fields required to make a request.
 --
@@ -71,7 +70,7 @@ data GetInstanceMetricData =
 --
 -- * 'gimdInstanceName' - The name of the instance for which you want to get metrics data.
 --
--- * 'gimdMetricName' - The metric name to get data about.
+-- * 'gimdMetricName' - The metric name to get data about. 
 --
 -- * 'gimdPeriod' - The time period for which you are requesting data.
 --
@@ -81,7 +80,7 @@ data GetInstanceMetricData =
 --
 -- * 'gimdUnit' - The unit. The list of valid values is below.
 --
--- * 'gimdStatistics' - The instance statistics.
+-- * 'gimdStatistics' - The instance statistics. 
 getInstanceMetricData
     :: Text -- ^ 'gimdInstanceName'
     -> InstanceMetricName -- ^ 'gimdMetricName'
@@ -90,23 +89,21 @@ getInstanceMetricData
     -> UTCTime -- ^ 'gimdEndTime'
     -> MetricUnit -- ^ 'gimdUnit'
     -> GetInstanceMetricData
-getInstanceMetricData pInstanceName_ pMetricName_ pPeriod_ pStartTime_ pEndTime_ pUnit_ =
-  GetInstanceMetricData'
-    { _gimdInstanceName = pInstanceName_
-    , _gimdMetricName = pMetricName_
-    , _gimdPeriod = _Nat # pPeriod_
-    , _gimdStartTime = _Time # pStartTime_
-    , _gimdEndTime = _Time # pEndTime_
-    , _gimdUnit = pUnit_
-    , _gimdStatistics = mempty
-    }
-
+getInstanceMetricData pInstanceName_ pMetricName_
+  pPeriod_ pStartTime_ pEndTime_ pUnit_
+  = GetInstanceMetricData'{_gimdInstanceName =
+                             pInstanceName_,
+                           _gimdMetricName = pMetricName_,
+                           _gimdPeriod = _Nat # pPeriod_,
+                           _gimdStartTime = _Time # pStartTime_,
+                           _gimdEndTime = _Time # pEndTime_, _gimdUnit = pUnit_,
+                           _gimdStatistics = mempty}
 
 -- | The name of the instance for which you want to get metrics data.
 gimdInstanceName :: Lens' GetInstanceMetricData Text
 gimdInstanceName = lens _gimdInstanceName (\ s a -> s{_gimdInstanceName = a})
 
--- | The metric name to get data about.
+-- | The metric name to get data about. 
 gimdMetricName :: Lens' GetInstanceMetricData InstanceMetricName
 gimdMetricName = lens _gimdMetricName (\ s a -> s{_gimdMetricName = a})
 
@@ -126,7 +123,7 @@ gimdEndTime = lens _gimdEndTime (\ s a -> s{_gimdEndTime = a}) . _Time
 gimdUnit :: Lens' GetInstanceMetricData MetricUnit
 gimdUnit = lens _gimdUnit (\ s a -> s{_gimdUnit = a})
 
--- | The instance statistics.
+-- | The instance statistics. 
 gimdStatistics :: Lens' GetInstanceMetricData [MetricStatistic]
 gimdStatistics = lens _gimdStatistics (\ s a -> s{_gimdStatistics = a}) . _Coerce
 
@@ -175,14 +172,18 @@ instance ToQuery GetInstanceMetricData where
         toQuery = const mempty
 
 -- | /See:/ 'getInstanceMetricDataResponse' smart constructor.
-data GetInstanceMetricDataResponse =
-  GetInstanceMetricDataResponse'
-    { _gimdrsMetricName     :: !(Maybe InstanceMetricName)
-    , _gimdrsMetricData     :: !(Maybe [MetricDatapoint])
-    , _gimdrsResponseStatus :: !Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data GetInstanceMetricDataResponse = GetInstanceMetricDataResponse'{_gimdrsMetricName
+                                                                    ::
+                                                                    !(Maybe
+                                                                        InstanceMetricName),
+                                                                    _gimdrsMetricData
+                                                                    ::
+                                                                    !(Maybe
+                                                                        [MetricDatapoint]),
+                                                                    _gimdrsResponseStatus
+                                                                    :: !Int}
+                                       deriving (Eq, Read, Show, Data, Typeable,
+                                                 Generic)
 
 -- | Creates a value of 'GetInstanceMetricDataResponse' with the minimum fields required to make a request.
 --
@@ -196,13 +197,11 @@ data GetInstanceMetricDataResponse =
 getInstanceMetricDataResponse
     :: Int -- ^ 'gimdrsResponseStatus'
     -> GetInstanceMetricDataResponse
-getInstanceMetricDataResponse pResponseStatus_ =
-  GetInstanceMetricDataResponse'
-    { _gimdrsMetricName = Nothing
-    , _gimdrsMetricData = Nothing
-    , _gimdrsResponseStatus = pResponseStatus_
-    }
-
+getInstanceMetricDataResponse pResponseStatus_
+  = GetInstanceMetricDataResponse'{_gimdrsMetricName =
+                                     Nothing,
+                                   _gimdrsMetricData = Nothing,
+                                   _gimdrsResponseStatus = pResponseStatus_}
 
 -- | The metric name to return data for.
 gimdrsMetricName :: Lens' GetInstanceMetricDataResponse (Maybe InstanceMetricName)

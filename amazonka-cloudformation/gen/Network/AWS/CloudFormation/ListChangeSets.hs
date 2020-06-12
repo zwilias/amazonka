@@ -40,7 +40,6 @@ module Network.AWS.CloudFormation.ListChangeSets
     ) where
 
 import Network.AWS.CloudFormation.Types
-import Network.AWS.CloudFormation.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.Request
@@ -51,13 +50,10 @@ import Network.AWS.Response
 --
 --
 -- /See:/ 'listChangeSets' smart constructor.
-data ListChangeSets =
-  ListChangeSets'
-    { _lcsNextToken :: !(Maybe Text)
-    , _lcsStackName :: !Text
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data ListChangeSets = ListChangeSets'{_lcsNextToken
+                                      :: !(Maybe Text),
+                                      _lcsStackName :: !Text}
+                        deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'ListChangeSets' with the minimum fields required to make a request.
 --
@@ -69,9 +65,9 @@ data ListChangeSets =
 listChangeSets
     :: Text -- ^ 'lcsStackName'
     -> ListChangeSets
-listChangeSets pStackName_ =
-  ListChangeSets' {_lcsNextToken = Nothing, _lcsStackName = pStackName_}
-
+listChangeSets pStackName_
+  = ListChangeSets'{_lcsNextToken = Nothing,
+                    _lcsStackName = pStackName_}
 
 -- | A string (provided by the 'ListChangeSets' response output) that identifies the next page of change sets that you want to retrieve.
 lcsNextToken :: Lens' ListChangeSets (Maybe Text)
@@ -116,14 +112,15 @@ instance ToQuery ListChangeSets where
 --
 --
 -- /See:/ 'listChangeSetsResponse' smart constructor.
-data ListChangeSetsResponse =
-  ListChangeSetsResponse'
-    { _lcsrsNextToken      :: !(Maybe Text)
-    , _lcsrsSummaries      :: !(Maybe [ChangeSetSummary])
-    , _lcsrsResponseStatus :: !Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data ListChangeSetsResponse = ListChangeSetsResponse'{_lcsrsNextToken
+                                                      :: !(Maybe Text),
+                                                      _lcsrsSummaries ::
+                                                      !(Maybe
+                                                          [ChangeSetSummary]),
+                                                      _lcsrsResponseStatus ::
+                                                      !Int}
+                                deriving (Eq, Read, Show, Data, Typeable,
+                                          Generic)
 
 -- | Creates a value of 'ListChangeSetsResponse' with the minimum fields required to make a request.
 --
@@ -137,13 +134,10 @@ data ListChangeSetsResponse =
 listChangeSetsResponse
     :: Int -- ^ 'lcsrsResponseStatus'
     -> ListChangeSetsResponse
-listChangeSetsResponse pResponseStatus_ =
-  ListChangeSetsResponse'
-    { _lcsrsNextToken = Nothing
-    , _lcsrsSummaries = Nothing
-    , _lcsrsResponseStatus = pResponseStatus_
-    }
-
+listChangeSetsResponse pResponseStatus_
+  = ListChangeSetsResponse'{_lcsrsNextToken = Nothing,
+                            _lcsrsSummaries = Nothing,
+                            _lcsrsResponseStatus = pResponseStatus_}
 
 -- | If the output exceeds 1 MB, a string that identifies the next page of change sets. If there is no additional page, this value is null.
 lcsrsNextToken :: Lens' ListChangeSetsResponse (Maybe Text)

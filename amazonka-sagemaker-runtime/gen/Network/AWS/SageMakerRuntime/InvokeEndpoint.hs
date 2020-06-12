@@ -18,12 +18,12 @@
 -- Stability   : auto-generated
 -- Portability : non-portable (GHC extensions)
 --
--- After you deploy a model into production using Amazon SageMaker hosting services, your client applications use this API to get inferences from the model hosted at the specified endpoint.
+-- After you deploy a model into production using Amazon SageMaker hosting services, your client applications use this API to get inferences from the model hosted at the specified endpoint. 
 --
 --
--- For an overview of Amazon SageMaker, see <http://docs.aws.amazon.com/sagemaker/latest/dg/how-it-works.html How It Works>
+-- For an overview of Amazon SageMaker, see <http://docs.aws.amazon.com/sagemaker/latest/dg/how-it-works.html How It Works> 
 --
--- Amazon SageMaker strips all POST headers except those supported by the API. Amazon SageMaker might add additional headers. You should not rely on the behavior of headers outside those enumerated in the request syntax.
+-- Amazon SageMaker strips all POST headers except those supported by the API. Amazon SageMaker might add additional headers. You should not rely on the behavior of headers outside those enumerated in the request syntax. 
 --
 module Network.AWS.SageMakerRuntime.InvokeEndpoint
     (
@@ -51,18 +51,14 @@ import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 import Network.AWS.SageMakerRuntime.Types
-import Network.AWS.SageMakerRuntime.Types.Product
 
 -- | /See:/ 'invokeEndpoint' smart constructor.
-data InvokeEndpoint =
-  InvokeEndpoint'
-    { _ieAccept       :: !(Maybe Text)
-    , _ieContentType  :: !(Maybe Text)
-    , _ieEndpointName :: !Text
-    , _ieBody         :: !ByteString
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data InvokeEndpoint = InvokeEndpoint'{_ieAccept ::
+                                      !(Maybe Text),
+                                      _ieContentType :: !(Maybe Text),
+                                      _ieEndpointName :: !Text,
+                                      _ieBody :: !ByteString}
+                        deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'InvokeEndpoint' with the minimum fields required to make a request.
 --
@@ -72,21 +68,17 @@ data InvokeEndpoint =
 --
 -- * 'ieContentType' - The MIME type of the input data in the request body.
 --
--- * 'ieEndpointName' - The name of the endpoint that you specified when you created the endpoint using the <http://docs.aws.amazon.com/sagemaker/latest/dg/API_CreateEndpoint.html CreateEndpoint> API.
+-- * 'ieEndpointName' - The name of the endpoint that you specified when you created the endpoint using the <http://docs.aws.amazon.com/sagemaker/latest/dg/API_CreateEndpoint.html CreateEndpoint> API. 
 --
--- * 'ieBody' - Provides input data, in the format specified in the @ContentType@ request header. Amazon SageMaker passes all of the data in the body to the model.
+-- * 'ieBody' - Provides input data, in the format specified in the @ContentType@ request header. Amazon SageMaker passes all of the data in the body to the model. 
 invokeEndpoint
     :: Text -- ^ 'ieEndpointName'
     -> ByteString -- ^ 'ieBody'
     -> InvokeEndpoint
-invokeEndpoint pEndpointName_ pBody_ =
-  InvokeEndpoint'
-    { _ieAccept = Nothing
-    , _ieContentType = Nothing
-    , _ieEndpointName = pEndpointName_
-    , _ieBody = pBody_
-    }
-
+invokeEndpoint pEndpointName_ pBody_
+  = InvokeEndpoint'{_ieAccept = Nothing,
+                    _ieContentType = Nothing,
+                    _ieEndpointName = pEndpointName_, _ieBody = pBody_}
 
 -- | The desired MIME type of the inference in the response.
 ieAccept :: Lens' InvokeEndpoint (Maybe Text)
@@ -96,11 +88,11 @@ ieAccept = lens _ieAccept (\ s a -> s{_ieAccept = a})
 ieContentType :: Lens' InvokeEndpoint (Maybe Text)
 ieContentType = lens _ieContentType (\ s a -> s{_ieContentType = a})
 
--- | The name of the endpoint that you specified when you created the endpoint using the <http://docs.aws.amazon.com/sagemaker/latest/dg/API_CreateEndpoint.html CreateEndpoint> API.
+-- | The name of the endpoint that you specified when you created the endpoint using the <http://docs.aws.amazon.com/sagemaker/latest/dg/API_CreateEndpoint.html CreateEndpoint> API. 
 ieEndpointName :: Lens' InvokeEndpoint Text
 ieEndpointName = lens _ieEndpointName (\ s a -> s{_ieEndpointName = a})
 
--- | Provides input data, in the format specified in the @ContentType@ request header. Amazon SageMaker passes all of the data in the body to the model.
+-- | Provides input data, in the format specified in the @ContentType@ request header. Amazon SageMaker passes all of the data in the body to the model. 
 ieBody :: Lens' InvokeEndpoint ByteString
 ieBody = lens _ieBody (\ s a -> s{_ieBody = a})
 
@@ -138,15 +130,15 @@ instance ToQuery InvokeEndpoint where
         toQuery = const mempty
 
 -- | /See:/ 'invokeEndpointResponse' smart constructor.
-data InvokeEndpointResponse =
-  InvokeEndpointResponse'
-    { _iersInvokedProductionVariant :: !(Maybe Text)
-    , _iersContentType              :: !(Maybe Text)
-    , _iersResponseStatus           :: !Int
-    , _iersBody                     :: !ByteString
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data InvokeEndpointResponse = InvokeEndpointResponse'{_iersInvokedProductionVariant
+                                                      :: !(Maybe Text),
+                                                      _iersContentType ::
+                                                      !(Maybe Text),
+                                                      _iersResponseStatus ::
+                                                      !Int,
+                                                      _iersBody :: !ByteString}
+                                deriving (Eq, Read, Show, Data, Typeable,
+                                          Generic)
 
 -- | Creates a value of 'InvokeEndpointResponse' with the minimum fields required to make a request.
 --
@@ -163,14 +155,12 @@ invokeEndpointResponse
     :: Int -- ^ 'iersResponseStatus'
     -> ByteString -- ^ 'iersBody'
     -> InvokeEndpointResponse
-invokeEndpointResponse pResponseStatus_ pBody_ =
-  InvokeEndpointResponse'
-    { _iersInvokedProductionVariant = Nothing
-    , _iersContentType = Nothing
-    , _iersResponseStatus = pResponseStatus_
-    , _iersBody = pBody_
-    }
-
+invokeEndpointResponse pResponseStatus_ pBody_
+  = InvokeEndpointResponse'{_iersInvokedProductionVariant
+                              = Nothing,
+                            _iersContentType = Nothing,
+                            _iersResponseStatus = pResponseStatus_,
+                            _iersBody = pBody_}
 
 -- | Identifies the production variant that was invoked.
 iersInvokedProductionVariant :: Lens' InvokeEndpointResponse (Maybe Text)

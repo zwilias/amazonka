@@ -46,20 +46,16 @@ import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 import Network.AWS.SES.Types
-import Network.AWS.SES.Types.Product
 
 -- | Represents a request to delete a sending authorization policy for an identity. Sending authorization is an Amazon SES feature that enables you to authorize other senders to use your identities. For information, see the <http://docs.aws.amazon.com/ses/latest/DeveloperGuide/sending-authorization.html Amazon SES Developer Guide> .
 --
 --
 --
 -- /See:/ 'deleteIdentityPolicy' smart constructor.
-data DeleteIdentityPolicy =
-  DeleteIdentityPolicy'
-    { _dipIdentity   :: !Text
-    , _dipPolicyName :: !Text
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data DeleteIdentityPolicy = DeleteIdentityPolicy'{_dipIdentity
+                                                  :: !Text,
+                                                  _dipPolicyName :: !Text}
+                              deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'DeleteIdentityPolicy' with the minimum fields required to make a request.
 --
@@ -72,10 +68,9 @@ deleteIdentityPolicy
     :: Text -- ^ 'dipIdentity'
     -> Text -- ^ 'dipPolicyName'
     -> DeleteIdentityPolicy
-deleteIdentityPolicy pIdentity_ pPolicyName_ =
-  DeleteIdentityPolicy'
-    {_dipIdentity = pIdentity_, _dipPolicyName = pPolicyName_}
-
+deleteIdentityPolicy pIdentity_ pPolicyName_
+  = DeleteIdentityPolicy'{_dipIdentity = pIdentity_,
+                          _dipPolicyName = pPolicyName_}
 
 -- | The identity that is associated with the policy that you want to delete. You can specify the identity by using its name or by using its Amazon Resource Name (ARN). Examples: @user@example.com@ , @example.com@ , @arn:aws:ses:us-east-1:123456789012:identity/example.com@ . To successfully call this API, you must own the identity.
 dipIdentity :: Lens' DeleteIdentityPolicy Text
@@ -118,12 +113,10 @@ instance ToQuery DeleteIdentityPolicy where
 --
 --
 -- /See:/ 'deleteIdentityPolicyResponse' smart constructor.
-newtype DeleteIdentityPolicyResponse =
-  DeleteIdentityPolicyResponse'
-    { _diprsResponseStatus :: Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+newtype DeleteIdentityPolicyResponse = DeleteIdentityPolicyResponse'{_diprsResponseStatus
+                                                                     :: Int}
+                                         deriving (Eq, Read, Show, Data,
+                                                   Typeable, Generic)
 
 -- | Creates a value of 'DeleteIdentityPolicyResponse' with the minimum fields required to make a request.
 --
@@ -133,9 +126,9 @@ newtype DeleteIdentityPolicyResponse =
 deleteIdentityPolicyResponse
     :: Int -- ^ 'diprsResponseStatus'
     -> DeleteIdentityPolicyResponse
-deleteIdentityPolicyResponse pResponseStatus_ =
-  DeleteIdentityPolicyResponse' {_diprsResponseStatus = pResponseStatus_}
-
+deleteIdentityPolicyResponse pResponseStatus_
+  = DeleteIdentityPolicyResponse'{_diprsResponseStatus
+                                    = pResponseStatus_}
 
 -- | -- | The response status code.
 diprsResponseStatus :: Lens' DeleteIdentityPolicyResponse Int

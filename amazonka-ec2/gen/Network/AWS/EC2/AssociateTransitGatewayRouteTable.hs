@@ -40,21 +40,24 @@ module Network.AWS.EC2.AssociateTransitGatewayRouteTable
     ) where
 
 import Network.AWS.EC2.Types
-import Network.AWS.EC2.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 
 -- | /See:/ 'associateTransitGatewayRouteTable' smart constructor.
-data AssociateTransitGatewayRouteTable =
-  AssociateTransitGatewayRouteTable'
-    { _atgrtDryRun                     :: !(Maybe Bool)
-    , _atgrtTransitGatewayRouteTableId :: !Text
-    , _atgrtTransitGatewayAttachmentId :: !Text
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data AssociateTransitGatewayRouteTable = AssociateTransitGatewayRouteTable'{_atgrtDryRun
+                                                                            ::
+                                                                            !(Maybe
+                                                                                Bool),
+                                                                            _atgrtTransitGatewayRouteTableId
+                                                                            ::
+                                                                            !Text,
+                                                                            _atgrtTransitGatewayAttachmentId
+                                                                            ::
+                                                                            !Text}
+                                           deriving (Eq, Read, Show, Data,
+                                                     Typeable, Generic)
 
 -- | Creates a value of 'AssociateTransitGatewayRouteTable' with the minimum fields required to make a request.
 --
@@ -69,13 +72,15 @@ associateTransitGatewayRouteTable
     :: Text -- ^ 'atgrtTransitGatewayRouteTableId'
     -> Text -- ^ 'atgrtTransitGatewayAttachmentId'
     -> AssociateTransitGatewayRouteTable
-associateTransitGatewayRouteTable pTransitGatewayRouteTableId_ pTransitGatewayAttachmentId_ =
-  AssociateTransitGatewayRouteTable'
-    { _atgrtDryRun = Nothing
-    , _atgrtTransitGatewayRouteTableId = pTransitGatewayRouteTableId_
-    , _atgrtTransitGatewayAttachmentId = pTransitGatewayAttachmentId_
-    }
-
+associateTransitGatewayRouteTable
+  pTransitGatewayRouteTableId_
+  pTransitGatewayAttachmentId_
+  = AssociateTransitGatewayRouteTable'{_atgrtDryRun =
+                                         Nothing,
+                                       _atgrtTransitGatewayRouteTableId =
+                                         pTransitGatewayRouteTableId_,
+                                       _atgrtTransitGatewayAttachmentId =
+                                         pTransitGatewayAttachmentId_}
 
 -- | Checks whether you have the required permissions for the action, without actually making the request, and provides an error response. If you have the required permissions, the error response is @DryRunOperation@ . Otherwise, it is @UnauthorizedOperation@ .
 atgrtDryRun :: Lens' AssociateTransitGatewayRouteTable (Maybe Bool)
@@ -128,13 +133,16 @@ instance ToQuery AssociateTransitGatewayRouteTable
                  _atgrtTransitGatewayAttachmentId]
 
 -- | /See:/ 'associateTransitGatewayRouteTableResponse' smart constructor.
-data AssociateTransitGatewayRouteTableResponse =
-  AssociateTransitGatewayRouteTableResponse'
-    { _atgrtrsAssociation    :: !(Maybe TransitGatewayAssociation)
-    , _atgrtrsResponseStatus :: !Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data AssociateTransitGatewayRouteTableResponse = AssociateTransitGatewayRouteTableResponse'{_atgrtrsAssociation
+                                                                                            ::
+                                                                                            !(Maybe
+                                                                                                TransitGatewayAssociation),
+                                                                                            _atgrtrsResponseStatus
+                                                                                            ::
+                                                                                            !Int}
+                                                   deriving (Eq, Read, Show,
+                                                             Data, Typeable,
+                                                             Generic)
 
 -- | Creates a value of 'AssociateTransitGatewayRouteTableResponse' with the minimum fields required to make a request.
 --
@@ -146,10 +154,12 @@ data AssociateTransitGatewayRouteTableResponse =
 associateTransitGatewayRouteTableResponse
     :: Int -- ^ 'atgrtrsResponseStatus'
     -> AssociateTransitGatewayRouteTableResponse
-associateTransitGatewayRouteTableResponse pResponseStatus_ =
-  AssociateTransitGatewayRouteTableResponse'
-    {_atgrtrsAssociation = Nothing, _atgrtrsResponseStatus = pResponseStatus_}
-
+associateTransitGatewayRouteTableResponse
+  pResponseStatus_
+  = AssociateTransitGatewayRouteTableResponse'{_atgrtrsAssociation
+                                                 = Nothing,
+                                               _atgrtrsResponseStatus =
+                                                 pResponseStatus_}
 
 -- | The ID of the association.
 atgrtrsAssociation :: Lens' AssociateTransitGatewayRouteTableResponse (Maybe TransitGatewayAssociation)

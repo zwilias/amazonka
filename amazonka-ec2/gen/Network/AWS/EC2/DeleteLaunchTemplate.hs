@@ -40,21 +40,18 @@ module Network.AWS.EC2.DeleteLaunchTemplate
     ) where
 
 import Network.AWS.EC2.Types
-import Network.AWS.EC2.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 
 -- | /See:/ 'deleteLaunchTemplate' smart constructor.
-data DeleteLaunchTemplate =
-  DeleteLaunchTemplate'
-    { _dltLaunchTemplateName :: !(Maybe Text)
-    , _dltLaunchTemplateId   :: !(Maybe Text)
-    , _dltDryRun             :: !(Maybe Bool)
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data DeleteLaunchTemplate = DeleteLaunchTemplate'{_dltLaunchTemplateName
+                                                  :: !(Maybe Text),
+                                                  _dltLaunchTemplateId ::
+                                                  !(Maybe Text),
+                                                  _dltDryRun :: !(Maybe Bool)}
+                              deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'DeleteLaunchTemplate' with the minimum fields required to make a request.
 --
@@ -67,13 +64,10 @@ data DeleteLaunchTemplate =
 -- * 'dltDryRun' - Checks whether you have the required permissions for the action, without actually making the request, and provides an error response. If you have the required permissions, the error response is @DryRunOperation@ . Otherwise, it is @UnauthorizedOperation@ .
 deleteLaunchTemplate
     :: DeleteLaunchTemplate
-deleteLaunchTemplate =
-  DeleteLaunchTemplate'
-    { _dltLaunchTemplateName = Nothing
-    , _dltLaunchTemplateId = Nothing
-    , _dltDryRun = Nothing
-    }
-
+deleteLaunchTemplate
+  = DeleteLaunchTemplate'{_dltLaunchTemplateName =
+                            Nothing,
+                          _dltLaunchTemplateId = Nothing, _dltDryRun = Nothing}
 
 -- | The name of the launch template. You must specify either the launch template ID or launch template name in the request.
 dltLaunchTemplateName :: Lens' DeleteLaunchTemplate (Maybe Text)
@@ -117,13 +111,14 @@ instance ToQuery DeleteLaunchTemplate where
                "DryRun" =: _dltDryRun]
 
 -- | /See:/ 'deleteLaunchTemplateResponse' smart constructor.
-data DeleteLaunchTemplateResponse =
-  DeleteLaunchTemplateResponse'
-    { _dltrsLaunchTemplate :: !(Maybe LaunchTemplate)
-    , _dltrsResponseStatus :: !Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data DeleteLaunchTemplateResponse = DeleteLaunchTemplateResponse'{_dltrsLaunchTemplate
+                                                                  ::
+                                                                  !(Maybe
+                                                                      LaunchTemplate),
+                                                                  _dltrsResponseStatus
+                                                                  :: !Int}
+                                      deriving (Eq, Read, Show, Data, Typeable,
+                                                Generic)
 
 -- | Creates a value of 'DeleteLaunchTemplateResponse' with the minimum fields required to make a request.
 --
@@ -135,10 +130,10 @@ data DeleteLaunchTemplateResponse =
 deleteLaunchTemplateResponse
     :: Int -- ^ 'dltrsResponseStatus'
     -> DeleteLaunchTemplateResponse
-deleteLaunchTemplateResponse pResponseStatus_ =
-  DeleteLaunchTemplateResponse'
-    {_dltrsLaunchTemplate = Nothing, _dltrsResponseStatus = pResponseStatus_}
-
+deleteLaunchTemplateResponse pResponseStatus_
+  = DeleteLaunchTemplateResponse'{_dltrsLaunchTemplate
+                                    = Nothing,
+                                  _dltrsResponseStatus = pResponseStatus_}
 
 -- | Information about the launch template.
 dltrsLaunchTemplate :: Lens' DeleteLaunchTemplateResponse (Maybe LaunchTemplate)

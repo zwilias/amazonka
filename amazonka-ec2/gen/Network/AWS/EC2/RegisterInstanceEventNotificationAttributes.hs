@@ -18,7 +18,7 @@
 -- Stability   : auto-generated
 -- Portability : non-portable (GHC extensions)
 --
--- Registers a set of tag keys to include in scheduled event notifications for your resources.
+-- Registers a set of tag keys to include in scheduled event notifications for your resources. 
 --
 --
 -- To remove tags, use .
@@ -41,20 +41,23 @@ module Network.AWS.EC2.RegisterInstanceEventNotificationAttributes
     ) where
 
 import Network.AWS.EC2.Types
-import Network.AWS.EC2.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 
 -- | /See:/ 'registerInstanceEventNotificationAttributes' smart constructor.
-data RegisterInstanceEventNotificationAttributes =
-  RegisterInstanceEventNotificationAttributes'
-    { _rienaInstanceTagAttribute :: !(Maybe RegisterInstanceTagAttributeRequest)
-    , _rienaDryRun               :: !(Maybe Bool)
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data RegisterInstanceEventNotificationAttributes = RegisterInstanceEventNotificationAttributes'{_rienaInstanceTagAttribute
+                                                                                                ::
+                                                                                                !(Maybe
+                                                                                                    RegisterInstanceTagAttributeRequest),
+                                                                                                _rienaDryRun
+                                                                                                ::
+                                                                                                !(Maybe
+                                                                                                    Bool)}
+                                                     deriving (Eq, Read, Show,
+                                                               Data, Typeable,
+                                                               Generic)
 
 -- | Creates a value of 'RegisterInstanceEventNotificationAttributes' with the minimum fields required to make a request.
 --
@@ -65,10 +68,10 @@ data RegisterInstanceEventNotificationAttributes =
 -- * 'rienaDryRun' - Checks whether you have the required permissions for the action, without actually making the request, and provides an error response. If you have the required permissions, the error response is @DryRunOperation@ . Otherwise, it is @UnauthorizedOperation@ .
 registerInstanceEventNotificationAttributes
     :: RegisterInstanceEventNotificationAttributes
-registerInstanceEventNotificationAttributes =
-  RegisterInstanceEventNotificationAttributes'
-    {_rienaInstanceTagAttribute = Nothing, _rienaDryRun = Nothing}
-
+registerInstanceEventNotificationAttributes
+  = RegisterInstanceEventNotificationAttributes'{_rienaInstanceTagAttribute
+                                                   = Nothing,
+                                                 _rienaDryRun = Nothing}
 
 -- | Information about the tag keys to register.
 rienaInstanceTagAttribute :: Lens' RegisterInstanceEventNotificationAttributes (Maybe RegisterInstanceTagAttributeRequest)
@@ -124,13 +127,18 @@ instance ToQuery
                "DryRun" =: _rienaDryRun]
 
 -- | /See:/ 'registerInstanceEventNotificationAttributesResponse' smart constructor.
-data RegisterInstanceEventNotificationAttributesResponse =
-  RegisterInstanceEventNotificationAttributesResponse'
-    { _rienarsInstanceTagAttribute :: !(Maybe InstanceTagNotificationAttribute)
-    , _rienarsResponseStatus       :: !Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data RegisterInstanceEventNotificationAttributesResponse = RegisterInstanceEventNotificationAttributesResponse'{_rienarsInstanceTagAttribute
+                                                                                                                ::
+                                                                                                                !(Maybe
+                                                                                                                    InstanceTagNotificationAttribute),
+                                                                                                                _rienarsResponseStatus
+                                                                                                                ::
+                                                                                                                !Int}
+                                                             deriving (Eq, Read,
+                                                                       Show,
+                                                                       Data,
+                                                                       Typeable,
+                                                                       Generic)
 
 -- | Creates a value of 'RegisterInstanceEventNotificationAttributesResponse' with the minimum fields required to make a request.
 --
@@ -142,12 +150,12 @@ data RegisterInstanceEventNotificationAttributesResponse =
 registerInstanceEventNotificationAttributesResponse
     :: Int -- ^ 'rienarsResponseStatus'
     -> RegisterInstanceEventNotificationAttributesResponse
-registerInstanceEventNotificationAttributesResponse pResponseStatus_ =
-  RegisterInstanceEventNotificationAttributesResponse'
-    { _rienarsInstanceTagAttribute = Nothing
-    , _rienarsResponseStatus = pResponseStatus_
-    }
-
+registerInstanceEventNotificationAttributesResponse
+  pResponseStatus_
+  = RegisterInstanceEventNotificationAttributesResponse'{_rienarsInstanceTagAttribute
+                                                           = Nothing,
+                                                         _rienarsResponseStatus
+                                                           = pResponseStatus_}
 
 -- | The resulting set of tag keys.
 rienarsInstanceTagAttribute :: Lens' RegisterInstanceEventNotificationAttributesResponse (Maybe InstanceTagNotificationAttribute)

@@ -82,8 +82,25 @@ library
         , Network.AWS.CloudWatchLogs.Waiters
 
     other-modules:
-          Network.AWS.CloudWatchLogs.Types.Product
-        , Network.AWS.CloudWatchLogs.Types.Sum
+          Network.AWS.CloudWatchLogs.Types.Destination
+        , Network.AWS.CloudWatchLogs.Types.Distribution
+        , Network.AWS.CloudWatchLogs.Types.ExportTask
+        , Network.AWS.CloudWatchLogs.Types.ExportTaskExecutionInfo
+        , Network.AWS.CloudWatchLogs.Types.ExportTaskStatus
+        , Network.AWS.CloudWatchLogs.Types.ExportTaskStatusCode
+        , Network.AWS.CloudWatchLogs.Types.FilteredLogEvent
+        , Network.AWS.CloudWatchLogs.Types.InputLogEvent
+        , Network.AWS.CloudWatchLogs.Types.LogGroup
+        , Network.AWS.CloudWatchLogs.Types.LogStream
+        , Network.AWS.CloudWatchLogs.Types.MetricFilter
+        , Network.AWS.CloudWatchLogs.Types.MetricFilterMatchRecord
+        , Network.AWS.CloudWatchLogs.Types.MetricTransformation
+        , Network.AWS.CloudWatchLogs.Types.OrderBy
+        , Network.AWS.CloudWatchLogs.Types.OutputLogEvent
+        , Network.AWS.CloudWatchLogs.Types.RejectedLogEventsInfo
+        , Network.AWS.CloudWatchLogs.Types.ResourcePolicy
+        , Network.AWS.CloudWatchLogs.Types.SearchedLogStream
+        , Network.AWS.CloudWatchLogs.Types.SubscriptionFilter
 
     build-depends:
           amazonka-core == 1.6.1.*

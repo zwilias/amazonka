@@ -47,17 +47,13 @@ import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 import Network.AWS.Transcribe.Types
-import Network.AWS.Transcribe.Types.Product
 
 -- | /See:/ 'updateVocabulary' smart constructor.
-data UpdateVocabulary =
-  UpdateVocabulary'
-    { _uvVocabularyName :: !Text
-    , _uvLanguageCode   :: !LanguageCode
-    , _uvPhrases        :: ![Text]
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data UpdateVocabulary = UpdateVocabulary'{_uvVocabularyName
+                                          :: !Text,
+                                          _uvLanguageCode :: !LanguageCode,
+                                          _uvPhrases :: ![Text]}
+                          deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'UpdateVocabulary' with the minimum fields required to make a request.
 --
@@ -72,13 +68,11 @@ updateVocabulary
     :: Text -- ^ 'uvVocabularyName'
     -> LanguageCode -- ^ 'uvLanguageCode'
     -> UpdateVocabulary
-updateVocabulary pVocabularyName_ pLanguageCode_ =
-  UpdateVocabulary'
-    { _uvVocabularyName = pVocabularyName_
-    , _uvLanguageCode = pLanguageCode_
-    , _uvPhrases = mempty
-    }
-
+updateVocabulary pVocabularyName_ pLanguageCode_
+  = UpdateVocabulary'{_uvVocabularyName =
+                        pVocabularyName_,
+                      _uvLanguageCode = pLanguageCode_,
+                      _uvPhrases = mempty}
 
 -- | The name of the vocabulary to update. The name is case-sensitive.
 uvVocabularyName :: Lens' UpdateVocabulary Text
@@ -132,16 +126,21 @@ instance ToQuery UpdateVocabulary where
         toQuery = const mempty
 
 -- | /See:/ 'updateVocabularyResponse' smart constructor.
-data UpdateVocabularyResponse =
-  UpdateVocabularyResponse'
-    { _uvrsLanguageCode     :: !(Maybe LanguageCode)
-    , _uvrsVocabularyName   :: !(Maybe Text)
-    , _uvrsLastModifiedTime :: !(Maybe POSIX)
-    , _uvrsVocabularyState  :: !(Maybe VocabularyState)
-    , _uvrsResponseStatus   :: !Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data UpdateVocabularyResponse = UpdateVocabularyResponse'{_uvrsLanguageCode
+                                                          ::
+                                                          !(Maybe LanguageCode),
+                                                          _uvrsVocabularyName ::
+                                                          !(Maybe Text),
+                                                          _uvrsLastModifiedTime
+                                                          :: !(Maybe POSIX),
+                                                          _uvrsVocabularyState
+                                                          ::
+                                                          !(Maybe
+                                                              VocabularyState),
+                                                          _uvrsResponseStatus ::
+                                                          !Int}
+                                  deriving (Eq, Read, Show, Data, Typeable,
+                                            Generic)
 
 -- | Creates a value of 'UpdateVocabularyResponse' with the minimum fields required to make a request.
 --
@@ -159,15 +158,13 @@ data UpdateVocabularyResponse =
 updateVocabularyResponse
     :: Int -- ^ 'uvrsResponseStatus'
     -> UpdateVocabularyResponse
-updateVocabularyResponse pResponseStatus_ =
-  UpdateVocabularyResponse'
-    { _uvrsLanguageCode = Nothing
-    , _uvrsVocabularyName = Nothing
-    , _uvrsLastModifiedTime = Nothing
-    , _uvrsVocabularyState = Nothing
-    , _uvrsResponseStatus = pResponseStatus_
-    }
-
+updateVocabularyResponse pResponseStatus_
+  = UpdateVocabularyResponse'{_uvrsLanguageCode =
+                                Nothing,
+                              _uvrsVocabularyName = Nothing,
+                              _uvrsLastModifiedTime = Nothing,
+                              _uvrsVocabularyState = Nothing,
+                              _uvrsResponseStatus = pResponseStatus_}
 
 -- | The language code of the vocabulary entries.
 uvrsLanguageCode :: Lens' UpdateVocabularyResponse (Maybe LanguageCode)

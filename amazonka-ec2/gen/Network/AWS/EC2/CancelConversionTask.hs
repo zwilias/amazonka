@@ -39,21 +39,17 @@ module Network.AWS.EC2.CancelConversionTask
     ) where
 
 import Network.AWS.EC2.Types
-import Network.AWS.EC2.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 
 -- | /See:/ 'cancelConversionTask' smart constructor.
-data CancelConversionTask =
-  CancelConversionTask'
-    { _cctReasonMessage    :: !(Maybe Text)
-    , _cctDryRun           :: !(Maybe Bool)
-    , _cctConversionTaskId :: !Text
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data CancelConversionTask = CancelConversionTask'{_cctReasonMessage
+                                                  :: !(Maybe Text),
+                                                  _cctDryRun :: !(Maybe Bool),
+                                                  _cctConversionTaskId :: !Text}
+                              deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'CancelConversionTask' with the minimum fields required to make a request.
 --
@@ -67,13 +63,10 @@ data CancelConversionTask =
 cancelConversionTask
     :: Text -- ^ 'cctConversionTaskId'
     -> CancelConversionTask
-cancelConversionTask pConversionTaskId_ =
-  CancelConversionTask'
-    { _cctReasonMessage = Nothing
-    , _cctDryRun = Nothing
-    , _cctConversionTaskId = pConversionTaskId_
-    }
-
+cancelConversionTask pConversionTaskId_
+  = CancelConversionTask'{_cctReasonMessage = Nothing,
+                          _cctDryRun = Nothing,
+                          _cctConversionTaskId = pConversionTaskId_}
 
 -- | The reason for canceling the conversion task.
 cctReasonMessage :: Lens' CancelConversionTask (Maybe Text)
@@ -113,16 +106,15 @@ instance ToQuery CancelConversionTask where
                "ConversionTaskId" =: _cctConversionTaskId]
 
 -- | /See:/ 'cancelConversionTaskResponse' smart constructor.
-data CancelConversionTaskResponse =
-  CancelConversionTaskResponse'
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data CancelConversionTaskResponse = CancelConversionTaskResponse'
+                                      deriving (Eq, Read, Show, Data, Typeable,
+                                                Generic)
 
 -- | Creates a value of 'CancelConversionTaskResponse' with the minimum fields required to make a request.
 --
 cancelConversionTaskResponse
     :: CancelConversionTaskResponse
-cancelConversionTaskResponse = CancelConversionTaskResponse'
-
+cancelConversionTaskResponse
+  = CancelConversionTaskResponse'
 
 instance NFData CancelConversionTaskResponse where

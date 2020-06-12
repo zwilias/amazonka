@@ -41,47 +41,40 @@ module Network.AWS.Config.ListTagsForResource
     ) where
 
 import Network.AWS.Config.Types
-import Network.AWS.Config.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 
 -- | /See:/ 'listTagsForResource' smart constructor.
-data ListTagsForResource =
-  ListTagsForResource'
-    { _ltfrNextToken   :: !(Maybe Text)
-    , _ltfrLimit       :: !(Maybe Nat)
-    , _ltfrResourceARN :: !Text
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data ListTagsForResource = ListTagsForResource'{_ltfrNextToken
+                                                :: !(Maybe Text),
+                                                _ltfrLimit :: !(Maybe Nat),
+                                                _ltfrResourceARN :: !Text}
+                             deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'ListTagsForResource' with the minimum fields required to make a request.
 --
 -- Use one of the following lenses to modify other fields as desired:
 --
--- * 'ltfrNextToken' - The @nextToken@ string returned on a previous page that you use to get the next page of results in a paginated response.
+-- * 'ltfrNextToken' - The @nextToken@ string returned on a previous page that you use to get the next page of results in a paginated response. 
 --
--- * 'ltfrLimit' - The maximum number of tags returned on each page. The limit maximum is 50. You cannot specify a number greater than 50. If you specify 0, AWS Config uses the default.
+-- * 'ltfrLimit' - The maximum number of tags returned on each page. The limit maximum is 50. You cannot specify a number greater than 50. If you specify 0, AWS Config uses the default. 
 --
 -- * 'ltfrResourceARN' - The Amazon Resource Name (ARN) that identifies the resource for which to list the tags. Currently, the supported resources are @ConfigRule@ , @ConfigurationAggregator@ and @AggregatorAuthorization@ .
 listTagsForResource
     :: Text -- ^ 'ltfrResourceARN'
     -> ListTagsForResource
-listTagsForResource pResourceARN_ =
-  ListTagsForResource'
-    { _ltfrNextToken = Nothing
-    , _ltfrLimit = Nothing
-    , _ltfrResourceARN = pResourceARN_
-    }
+listTagsForResource pResourceARN_
+  = ListTagsForResource'{_ltfrNextToken = Nothing,
+                         _ltfrLimit = Nothing,
+                         _ltfrResourceARN = pResourceARN_}
 
-
--- | The @nextToken@ string returned on a previous page that you use to get the next page of results in a paginated response.
+-- | The @nextToken@ string returned on a previous page that you use to get the next page of results in a paginated response. 
 ltfrNextToken :: Lens' ListTagsForResource (Maybe Text)
 ltfrNextToken = lens _ltfrNextToken (\ s a -> s{_ltfrNextToken = a})
 
--- | The maximum number of tags returned on each page. The limit maximum is 50. You cannot specify a number greater than 50. If you specify 0, AWS Config uses the default.
+-- | The maximum number of tags returned on each page. The limit maximum is 50. You cannot specify a number greater than 50. If you specify 0, AWS Config uses the default. 
 ltfrLimit :: Lens' ListTagsForResource (Maybe Natural)
 ltfrLimit = lens _ltfrLimit (\ s a -> s{_ltfrLimit = a}) . mapping _Nat
 
@@ -129,20 +122,23 @@ instance ToQuery ListTagsForResource where
         toQuery = const mempty
 
 -- | /See:/ 'listTagsForResourceResponse' smart constructor.
-data ListTagsForResourceResponse =
-  ListTagsForResourceResponse'
-    { _ltfrrsNextToken      :: !(Maybe Text)
-    , _ltfrrsTags           :: !(Maybe (List1 Tag))
-    , _ltfrrsResponseStatus :: !Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data ListTagsForResourceResponse = ListTagsForResourceResponse'{_ltfrrsNextToken
+                                                                ::
+                                                                !(Maybe Text),
+                                                                _ltfrrsTags ::
+                                                                !(Maybe
+                                                                    (List1
+                                                                       Tag)),
+                                                                _ltfrrsResponseStatus
+                                                                :: !Int}
+                                     deriving (Eq, Read, Show, Data, Typeable,
+                                               Generic)
 
 -- | Creates a value of 'ListTagsForResourceResponse' with the minimum fields required to make a request.
 --
 -- Use one of the following lenses to modify other fields as desired:
 --
--- * 'ltfrrsNextToken' - The @nextToken@ string returned on a previous page that you use to get the next page of results in a paginated response.
+-- * 'ltfrrsNextToken' - The @nextToken@ string returned on a previous page that you use to get the next page of results in a paginated response. 
 --
 -- * 'ltfrrsTags' - The tags for the resource.
 --
@@ -150,15 +146,13 @@ data ListTagsForResourceResponse =
 listTagsForResourceResponse
     :: Int -- ^ 'ltfrrsResponseStatus'
     -> ListTagsForResourceResponse
-listTagsForResourceResponse pResponseStatus_ =
-  ListTagsForResourceResponse'
-    { _ltfrrsNextToken = Nothing
-    , _ltfrrsTags = Nothing
-    , _ltfrrsResponseStatus = pResponseStatus_
-    }
+listTagsForResourceResponse pResponseStatus_
+  = ListTagsForResourceResponse'{_ltfrrsNextToken =
+                                   Nothing,
+                                 _ltfrrsTags = Nothing,
+                                 _ltfrrsResponseStatus = pResponseStatus_}
 
-
--- | The @nextToken@ string returned on a previous page that you use to get the next page of results in a paginated response.
+-- | The @nextToken@ string returned on a previous page that you use to get the next page of results in a paginated response. 
 ltfrrsNextToken :: Lens' ListTagsForResourceResponse (Maybe Text)
 ltfrrsNextToken = lens _ltfrrsNextToken (\ s a -> s{_ltfrrsNextToken = a})
 

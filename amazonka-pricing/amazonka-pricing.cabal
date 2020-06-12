@@ -52,8 +52,10 @@ library
         , Network.AWS.Pricing.Waiters
 
     other-modules:
-          Network.AWS.Pricing.Types.Product
-        , Network.AWS.Pricing.Types.Sum
+          Network.AWS.Pricing.Types.AttributeValue
+        , Network.AWS.Pricing.Types.Filter
+        , Network.AWS.Pricing.Types.FilterType
+        , Network.AWS.Pricing.Types.PricingService
 
     build-depends:
           amazonka-core == 1.6.1.*

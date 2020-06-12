@@ -39,20 +39,16 @@ module Network.AWS.Pinpoint.GetSegments
 
 import Network.AWS.Lens
 import Network.AWS.Pinpoint.Types
-import Network.AWS.Pinpoint.Types.Product
 import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 
 -- | /See:/ 'getSegments' smart constructor.
-data GetSegments =
-  GetSegments'
-    { _gssToken         :: !(Maybe Text)
-    , _gssPageSize      :: !(Maybe Text)
-    , _gssApplicationId :: !Text
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data GetSegments = GetSegments'{_gssToken ::
+                                !(Maybe Text),
+                                _gssPageSize :: !(Maybe Text),
+                                _gssApplicationId :: !Text}
+                     deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'GetSegments' with the minimum fields required to make a request.
 --
@@ -66,13 +62,10 @@ data GetSegments =
 getSegments
     :: Text -- ^ 'gssApplicationId'
     -> GetSegments
-getSegments pApplicationId_ =
-  GetSegments'
-    { _gssToken = Nothing
-    , _gssPageSize = Nothing
-    , _gssApplicationId = pApplicationId_
-    }
-
+getSegments pApplicationId_
+  = GetSegments'{_gssToken = Nothing,
+                 _gssPageSize = Nothing,
+                 _gssApplicationId = pApplicationId_}
 
 -- | The NextToken string returned on a previous page that you use to get the next page of results in a paginated response.
 gssToken :: Lens' GetSegments (Maybe Text)
@@ -117,13 +110,11 @@ instance ToQuery GetSegments where
               ["token" =: _gssToken, "page-size" =: _gssPageSize]
 
 -- | /See:/ 'getSegmentsResponse' smart constructor.
-data GetSegmentsResponse =
-  GetSegmentsResponse'
-    { _gsrsResponseStatus   :: !Int
-    , _gsrsSegmentsResponse :: !SegmentsResponse
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data GetSegmentsResponse = GetSegmentsResponse'{_gsrsResponseStatus
+                                                :: !Int,
+                                                _gsrsSegmentsResponse ::
+                                                !SegmentsResponse}
+                             deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'GetSegmentsResponse' with the minimum fields required to make a request.
 --
@@ -136,12 +127,11 @@ getSegmentsResponse
     :: Int -- ^ 'gsrsResponseStatus'
     -> SegmentsResponse -- ^ 'gsrsSegmentsResponse'
     -> GetSegmentsResponse
-getSegmentsResponse pResponseStatus_ pSegmentsResponse_ =
-  GetSegmentsResponse'
-    { _gsrsResponseStatus = pResponseStatus_
-    , _gsrsSegmentsResponse = pSegmentsResponse_
-    }
-
+getSegmentsResponse pResponseStatus_
+  pSegmentsResponse_
+  = GetSegmentsResponse'{_gsrsResponseStatus =
+                           pResponseStatus_,
+                         _gsrsSegmentsResponse = pSegmentsResponse_}
 
 -- | -- | The response status code.
 gsrsResponseStatus :: Lens' GetSegmentsResponse Int

@@ -49,15 +49,11 @@ import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 import Network.AWS.StepFunctions.Types
-import Network.AWS.StepFunctions.Types.Product
 
 -- | /See:/ 'describeExecution' smart constructor.
-newtype DescribeExecution =
-  DescribeExecution'
-    { _deExecutionARN :: Text
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+newtype DescribeExecution = DescribeExecution'{_deExecutionARN
+                                               :: Text}
+                              deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'DescribeExecution' with the minimum fields required to make a request.
 --
@@ -67,9 +63,9 @@ newtype DescribeExecution =
 describeExecution
     :: Text -- ^ 'deExecutionARN'
     -> DescribeExecution
-describeExecution pExecutionARN_ =
-  DescribeExecution' {_deExecutionARN = pExecutionARN_}
-
+describeExecution pExecutionARN_
+  = DescribeExecution'{_deExecutionARN =
+                         pExecutionARN_}
 
 -- | The Amazon Resource Name (ARN) of the execution to describe.
 deExecutionARN :: Lens' DescribeExecution Text
@@ -117,20 +113,25 @@ instance ToQuery DescribeExecution where
         toQuery = const mempty
 
 -- | /See:/ 'describeExecutionResponse' smart constructor.
-data DescribeExecutionResponse =
-  DescribeExecutionResponse'
-    { _dersStopDate        :: !(Maybe POSIX)
-    , _dersName            :: !(Maybe Text)
-    , _dersOutput          :: !(Maybe Text)
-    , _dersResponseStatus  :: !Int
-    , _dersExecutionARN    :: !Text
-    , _dersStateMachineARN :: !Text
-    , _dersStatus          :: !ExecutionStatus
-    , _dersStartDate       :: !POSIX
-    , _dersInput           :: !Text
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data DescribeExecutionResponse = DescribeExecutionResponse'{_dersStopDate
+                                                            :: !(Maybe POSIX),
+                                                            _dersName ::
+                                                            !(Maybe Text),
+                                                            _dersOutput ::
+                                                            !(Maybe Text),
+                                                            _dersResponseStatus
+                                                            :: !Int,
+                                                            _dersExecutionARN ::
+                                                            !Text,
+                                                            _dersStateMachineARN
+                                                            :: !Text,
+                                                            _dersStatus ::
+                                                            !ExecutionStatus,
+                                                            _dersStartDate ::
+                                                            !POSIX,
+                                                            _dersInput :: !Text}
+                                   deriving (Eq, Read, Show, Data, Typeable,
+                                             Generic)
 
 -- | Creates a value of 'DescribeExecutionResponse' with the minimum fields required to make a request.
 --
@@ -161,19 +162,17 @@ describeExecutionResponse
     -> UTCTime -- ^ 'dersStartDate'
     -> Text -- ^ 'dersInput'
     -> DescribeExecutionResponse
-describeExecutionResponse pResponseStatus_ pExecutionARN_ pStateMachineARN_ pStatus_ pStartDate_ pInput_ =
-  DescribeExecutionResponse'
-    { _dersStopDate = Nothing
-    , _dersName = Nothing
-    , _dersOutput = Nothing
-    , _dersResponseStatus = pResponseStatus_
-    , _dersExecutionARN = pExecutionARN_
-    , _dersStateMachineARN = pStateMachineARN_
-    , _dersStatus = pStatus_
-    , _dersStartDate = _Time # pStartDate_
-    , _dersInput = pInput_
-    }
-
+describeExecutionResponse pResponseStatus_
+  pExecutionARN_ pStateMachineARN_ pStatus_ pStartDate_
+  pInput_
+  = DescribeExecutionResponse'{_dersStopDate = Nothing,
+                               _dersName = Nothing, _dersOutput = Nothing,
+                               _dersResponseStatus = pResponseStatus_,
+                               _dersExecutionARN = pExecutionARN_,
+                               _dersStateMachineARN = pStateMachineARN_,
+                               _dersStatus = pStatus_,
+                               _dersStartDate = _Time # pStartDate_,
+                               _dersInput = pInput_}
 
 -- | If the execution has already ended, the date the execution stopped.
 dersStopDate :: Lens' DescribeExecutionResponse (Maybe UTCTime)

@@ -42,18 +42,14 @@ module Network.AWS.Lightsail.CreateKeyPair
 
 import Network.AWS.Lens
 import Network.AWS.Lightsail.Types
-import Network.AWS.Lightsail.Types.Product
 import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 
 -- | /See:/ 'createKeyPair' smart constructor.
-newtype CreateKeyPair =
-  CreateKeyPair'
-    { _ckpKeyPairName :: Text
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+newtype CreateKeyPair = CreateKeyPair'{_ckpKeyPairName
+                                       :: Text}
+                          deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'CreateKeyPair' with the minimum fields required to make a request.
 --
@@ -63,8 +59,8 @@ newtype CreateKeyPair =
 createKeyPair
     :: Text -- ^ 'ckpKeyPairName'
     -> CreateKeyPair
-createKeyPair pKeyPairName_ = CreateKeyPair' {_ckpKeyPairName = pKeyPairName_}
-
+createKeyPair pKeyPairName_
+  = CreateKeyPair'{_ckpKeyPairName = pKeyPairName_}
 
 -- | The name for your new key pair.
 ckpKeyPairName :: Lens' CreateKeyPair Text
@@ -107,16 +103,18 @@ instance ToQuery CreateKeyPair where
         toQuery = const mempty
 
 -- | /See:/ 'createKeyPairResponse' smart constructor.
-data CreateKeyPairResponse =
-  CreateKeyPairResponse'
-    { _ckprsKeyPair          :: !(Maybe KeyPair)
-    , _ckprsOperation        :: !(Maybe Operation)
-    , _ckprsPublicKeyBase64  :: !(Maybe Text)
-    , _ckprsPrivateKeyBase64 :: !(Maybe Text)
-    , _ckprsResponseStatus   :: !Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data CreateKeyPairResponse = CreateKeyPairResponse'{_ckprsKeyPair
+                                                    :: !(Maybe KeyPair),
+                                                    _ckprsOperation ::
+                                                    !(Maybe Operation),
+                                                    _ckprsPublicKeyBase64 ::
+                                                    !(Maybe Text),
+                                                    _ckprsPrivateKeyBase64 ::
+                                                    !(Maybe Text),
+                                                    _ckprsResponseStatus ::
+                                                    !Int}
+                               deriving (Eq, Read, Show, Data, Typeable,
+                                         Generic)
 
 -- | Creates a value of 'CreateKeyPairResponse' with the minimum fields required to make a request.
 --
@@ -134,15 +132,12 @@ data CreateKeyPairResponse =
 createKeyPairResponse
     :: Int -- ^ 'ckprsResponseStatus'
     -> CreateKeyPairResponse
-createKeyPairResponse pResponseStatus_ =
-  CreateKeyPairResponse'
-    { _ckprsKeyPair = Nothing
-    , _ckprsOperation = Nothing
-    , _ckprsPublicKeyBase64 = Nothing
-    , _ckprsPrivateKeyBase64 = Nothing
-    , _ckprsResponseStatus = pResponseStatus_
-    }
-
+createKeyPairResponse pResponseStatus_
+  = CreateKeyPairResponse'{_ckprsKeyPair = Nothing,
+                           _ckprsOperation = Nothing,
+                           _ckprsPublicKeyBase64 = Nothing,
+                           _ckprsPrivateKeyBase64 = Nothing,
+                           _ckprsResponseStatus = pResponseStatus_}
 
 -- | An array of key-value pairs containing information about the new key pair you just created.
 ckprsKeyPair :: Lens' CreateKeyPairResponse (Maybe KeyPair)

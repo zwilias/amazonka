@@ -41,21 +41,26 @@ module Network.AWS.Config.DescribeConformancePackStatus
     ) where
 
 import Network.AWS.Config.Types
-import Network.AWS.Config.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 
 -- | /See:/ 'describeConformancePackStatus' smart constructor.
-data DescribeConformancePackStatus =
-  DescribeConformancePackStatus'
-    { _dcpsConformancePackNames :: !(Maybe [Text])
-    , _dcpsNextToken            :: !(Maybe Text)
-    , _dcpsLimit                :: !(Maybe Nat)
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data DescribeConformancePackStatus = DescribeConformancePackStatus'{_dcpsConformancePackNames
+                                                                    ::
+                                                                    !(Maybe
+                                                                        [Text]),
+                                                                    _dcpsNextToken
+                                                                    ::
+                                                                    !(Maybe
+                                                                        Text),
+                                                                    _dcpsLimit
+                                                                    ::
+                                                                    !(Maybe
+                                                                        Nat)}
+                                       deriving (Eq, Read, Show, Data, Typeable,
+                                                 Generic)
 
 -- | Creates a value of 'DescribeConformancePackStatus' with the minimum fields required to make a request.
 --
@@ -68,13 +73,11 @@ data DescribeConformancePackStatus =
 -- * 'dcpsLimit' - The maximum number of conformance packs status returned on each page.
 describeConformancePackStatus
     :: DescribeConformancePackStatus
-describeConformancePackStatus =
-  DescribeConformancePackStatus'
-    { _dcpsConformancePackNames = Nothing
-    , _dcpsNextToken = Nothing
-    , _dcpsLimit = Nothing
-    }
-
+describeConformancePackStatus
+  = DescribeConformancePackStatus'{_dcpsConformancePackNames
+                                     = Nothing,
+                                   _dcpsNextToken = Nothing,
+                                   _dcpsLimit = Nothing}
 
 -- | Comma-separated list of conformance pack names.
 dcpsConformancePackNames :: Lens' DescribeConformancePackStatus [Text]
@@ -132,14 +135,19 @@ instance ToQuery DescribeConformancePackStatus where
         toQuery = const mempty
 
 -- | /See:/ 'describeConformancePackStatusResponse' smart constructor.
-data DescribeConformancePackStatusResponse =
-  DescribeConformancePackStatusResponse'
-    { _dcpsrsConformancePackStatusDetails :: !(Maybe [ConformancePackStatusDetail])
-    , _dcpsrsNextToken :: !(Maybe Text)
-    , _dcpsrsResponseStatus :: !Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data DescribeConformancePackStatusResponse = DescribeConformancePackStatusResponse'{_dcpsrsConformancePackStatusDetails
+                                                                                    ::
+                                                                                    !(Maybe
+                                                                                        [ConformancePackStatusDetail]),
+                                                                                    _dcpsrsNextToken
+                                                                                    ::
+                                                                                    !(Maybe
+                                                                                        Text),
+                                                                                    _dcpsrsResponseStatus
+                                                                                    ::
+                                                                                    !Int}
+                                               deriving (Eq, Read, Show, Data,
+                                                         Typeable, Generic)
 
 -- | Creates a value of 'DescribeConformancePackStatusResponse' with the minimum fields required to make a request.
 --
@@ -153,13 +161,13 @@ data DescribeConformancePackStatusResponse =
 describeConformancePackStatusResponse
     :: Int -- ^ 'dcpsrsResponseStatus'
     -> DescribeConformancePackStatusResponse
-describeConformancePackStatusResponse pResponseStatus_ =
-  DescribeConformancePackStatusResponse'
-    { _dcpsrsConformancePackStatusDetails = Nothing
-    , _dcpsrsNextToken = Nothing
-    , _dcpsrsResponseStatus = pResponseStatus_
-    }
-
+describeConformancePackStatusResponse
+  pResponseStatus_
+  = DescribeConformancePackStatusResponse'{_dcpsrsConformancePackStatusDetails
+                                             = Nothing,
+                                           _dcpsrsNextToken = Nothing,
+                                           _dcpsrsResponseStatus =
+                                             pResponseStatus_}
 
 -- | A list of @ConformancePackStatusDetail@ objects.
 dcpsrsConformancePackStatusDetails :: Lens' DescribeConformancePackStatusResponse [ConformancePackStatusDetail]

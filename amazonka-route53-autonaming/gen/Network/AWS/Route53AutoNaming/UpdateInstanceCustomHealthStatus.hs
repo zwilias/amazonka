@@ -39,17 +39,19 @@ import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 import Network.AWS.Route53AutoNaming.Types
-import Network.AWS.Route53AutoNaming.Types.Product
 
 -- | /See:/ 'updateInstanceCustomHealthStatus' smart constructor.
-data UpdateInstanceCustomHealthStatus =
-  UpdateInstanceCustomHealthStatus'
-    { _uichsServiceId  :: !Text
-    , _uichsInstanceId :: !Text
-    , _uichsStatus     :: !CustomHealthStatus
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data UpdateInstanceCustomHealthStatus = UpdateInstanceCustomHealthStatus'{_uichsServiceId
+                                                                          ::
+                                                                          !Text,
+                                                                          _uichsInstanceId
+                                                                          ::
+                                                                          !Text,
+                                                                          _uichsStatus
+                                                                          ::
+                                                                          !CustomHealthStatus}
+                                          deriving (Eq, Read, Show, Data,
+                                                    Typeable, Generic)
 
 -- | Creates a value of 'UpdateInstanceCustomHealthStatus' with the minimum fields required to make a request.
 --
@@ -65,13 +67,12 @@ updateInstanceCustomHealthStatus
     -> Text -- ^ 'uichsInstanceId'
     -> CustomHealthStatus -- ^ 'uichsStatus'
     -> UpdateInstanceCustomHealthStatus
-updateInstanceCustomHealthStatus pServiceId_ pInstanceId_ pStatus_ =
-  UpdateInstanceCustomHealthStatus'
-    { _uichsServiceId = pServiceId_
-    , _uichsInstanceId = pInstanceId_
-    , _uichsStatus = pStatus_
-    }
-
+updateInstanceCustomHealthStatus pServiceId_
+  pInstanceId_ pStatus_
+  = UpdateInstanceCustomHealthStatus'{_uichsServiceId =
+                                        pServiceId_,
+                                      _uichsInstanceId = pInstanceId_,
+                                      _uichsStatus = pStatus_}
 
 -- | Undocumented member.
 uichsServiceId :: Lens' UpdateInstanceCustomHealthStatus Text
@@ -129,18 +130,17 @@ instance ToQuery UpdateInstanceCustomHealthStatus
         toQuery = const mempty
 
 -- | /See:/ 'updateInstanceCustomHealthStatusResponse' smart constructor.
-data UpdateInstanceCustomHealthStatusResponse =
-  UpdateInstanceCustomHealthStatusResponse'
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data UpdateInstanceCustomHealthStatusResponse = UpdateInstanceCustomHealthStatusResponse'
+                                                  deriving (Eq, Read, Show,
+                                                            Data, Typeable,
+                                                            Generic)
 
 -- | Creates a value of 'UpdateInstanceCustomHealthStatusResponse' with the minimum fields required to make a request.
 --
 updateInstanceCustomHealthStatusResponse
     :: UpdateInstanceCustomHealthStatusResponse
-updateInstanceCustomHealthStatusResponse =
-  UpdateInstanceCustomHealthStatusResponse'
-
+updateInstanceCustomHealthStatusResponse
+  = UpdateInstanceCustomHealthStatusResponse'
 
 instance NFData
            UpdateInstanceCustomHealthStatusResponse

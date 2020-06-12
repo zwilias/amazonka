@@ -46,18 +46,15 @@ module Network.AWS.Organizations.RemoveAccountFromOrganization
 
 import Network.AWS.Lens
 import Network.AWS.Organizations.Types
-import Network.AWS.Organizations.Types.Product
 import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 
 -- | /See:/ 'removeAccountFromOrganization' smart constructor.
-newtype RemoveAccountFromOrganization =
-  RemoveAccountFromOrganization'
-    { _rafoAccountId :: Text
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+newtype RemoveAccountFromOrganization = RemoveAccountFromOrganization'{_rafoAccountId
+                                                                       :: Text}
+                                          deriving (Eq, Read, Show, Data,
+                                                    Typeable, Generic)
 
 -- | Creates a value of 'RemoveAccountFromOrganization' with the minimum fields required to make a request.
 --
@@ -67,9 +64,9 @@ newtype RemoveAccountFromOrganization =
 removeAccountFromOrganization
     :: Text -- ^ 'rafoAccountId'
     -> RemoveAccountFromOrganization
-removeAccountFromOrganization pAccountId_ =
-  RemoveAccountFromOrganization' {_rafoAccountId = pAccountId_}
-
+removeAccountFromOrganization pAccountId_
+  = RemoveAccountFromOrganization'{_rafoAccountId =
+                                     pAccountId_}
 
 -- | The unique identifier (ID) of the member account that you want to remove from the organization. The <http://wikipedia.org/wiki/regex regex pattern> for an account ID string requires exactly 12 digits.
 rafoAccountId :: Lens' RemoveAccountFromOrganization Text
@@ -110,17 +107,16 @@ instance ToQuery RemoveAccountFromOrganization where
         toQuery = const mempty
 
 -- | /See:/ 'removeAccountFromOrganizationResponse' smart constructor.
-data RemoveAccountFromOrganizationResponse =
-  RemoveAccountFromOrganizationResponse'
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data RemoveAccountFromOrganizationResponse = RemoveAccountFromOrganizationResponse'
+                                               deriving (Eq, Read, Show, Data,
+                                                         Typeable, Generic)
 
 -- | Creates a value of 'RemoveAccountFromOrganizationResponse' with the minimum fields required to make a request.
 --
 removeAccountFromOrganizationResponse
     :: RemoveAccountFromOrganizationResponse
-removeAccountFromOrganizationResponse = RemoveAccountFromOrganizationResponse'
-
+removeAccountFromOrganizationResponse
+  = RemoveAccountFromOrganizationResponse'
 
 instance NFData RemoveAccountFromOrganizationResponse
          where

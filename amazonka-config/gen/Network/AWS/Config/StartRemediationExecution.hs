@@ -42,20 +42,19 @@ module Network.AWS.Config.StartRemediationExecution
     ) where
 
 import Network.AWS.Config.Types
-import Network.AWS.Config.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 
 -- | /See:/ 'startRemediationExecution' smart constructor.
-data StartRemediationExecution =
-  StartRemediationExecution'
-    { _sreConfigRuleName :: !Text
-    , _sreResourceKeys   :: !(List1 ResourceKey)
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data StartRemediationExecution = StartRemediationExecution'{_sreConfigRuleName
+                                                            :: !Text,
+                                                            _sreResourceKeys ::
+                                                            !(List1
+                                                                ResourceKey)}
+                                   deriving (Eq, Read, Show, Data, Typeable,
+                                             Generic)
 
 -- | Creates a value of 'StartRemediationExecution' with the minimum fields required to make a request.
 --
@@ -63,23 +62,22 @@ data StartRemediationExecution =
 --
 -- * 'sreConfigRuleName' - The list of names of AWS Config rules that you want to run remediation execution for.
 --
--- * 'sreResourceKeys' - A list of resource keys to be processed with the current request. Each element in the list consists of the resource type and resource ID.
+-- * 'sreResourceKeys' - A list of resource keys to be processed with the current request. Each element in the list consists of the resource type and resource ID. 
 startRemediationExecution
     :: Text -- ^ 'sreConfigRuleName'
     -> NonEmpty ResourceKey -- ^ 'sreResourceKeys'
     -> StartRemediationExecution
-startRemediationExecution pConfigRuleName_ pResourceKeys_ =
-  StartRemediationExecution'
-    { _sreConfigRuleName = pConfigRuleName_
-    , _sreResourceKeys = _List1 # pResourceKeys_
-    }
-
+startRemediationExecution pConfigRuleName_
+  pResourceKeys_
+  = StartRemediationExecution'{_sreConfigRuleName =
+                                 pConfigRuleName_,
+                               _sreResourceKeys = _List1 # pResourceKeys_}
 
 -- | The list of names of AWS Config rules that you want to run remediation execution for.
 sreConfigRuleName :: Lens' StartRemediationExecution Text
 sreConfigRuleName = lens _sreConfigRuleName (\ s a -> s{_sreConfigRuleName = a})
 
--- | A list of resource keys to be processed with the current request. Each element in the list consists of the resource type and resource ID.
+-- | A list of resource keys to be processed with the current request. Each element in the list consists of the resource type and resource ID. 
 sreResourceKeys :: Lens' StartRemediationExecution (NonEmpty ResourceKey)
 sreResourceKeys = lens _sreResourceKeys (\ s a -> s{_sreResourceKeys = a}) . _List1
 
@@ -122,14 +120,20 @@ instance ToQuery StartRemediationExecution where
         toQuery = const mempty
 
 -- | /See:/ 'startRemediationExecutionResponse' smart constructor.
-data StartRemediationExecutionResponse =
-  StartRemediationExecutionResponse'
-    { _srersFailureMessage :: !(Maybe Text)
-    , _srersFailedItems    :: !(Maybe (List1 ResourceKey))
-    , _srersResponseStatus :: !Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data StartRemediationExecutionResponse = StartRemediationExecutionResponse'{_srersFailureMessage
+                                                                            ::
+                                                                            !(Maybe
+                                                                                Text),
+                                                                            _srersFailedItems
+                                                                            ::
+                                                                            !(Maybe
+                                                                                (List1
+                                                                                   ResourceKey)),
+                                                                            _srersResponseStatus
+                                                                            ::
+                                                                            !Int}
+                                           deriving (Eq, Read, Show, Data,
+                                                     Typeable, Generic)
 
 -- | Creates a value of 'StartRemediationExecutionResponse' with the minimum fields required to make a request.
 --
@@ -143,13 +147,11 @@ data StartRemediationExecutionResponse =
 startRemediationExecutionResponse
     :: Int -- ^ 'srersResponseStatus'
     -> StartRemediationExecutionResponse
-startRemediationExecutionResponse pResponseStatus_ =
-  StartRemediationExecutionResponse'
-    { _srersFailureMessage = Nothing
-    , _srersFailedItems = Nothing
-    , _srersResponseStatus = pResponseStatus_
-    }
-
+startRemediationExecutionResponse pResponseStatus_
+  = StartRemediationExecutionResponse'{_srersFailureMessage
+                                         = Nothing,
+                                       _srersFailedItems = Nothing,
+                                       _srersResponseStatus = pResponseStatus_}
 
 -- | Returns a failure message. For example, the resource is already compliant.
 srersFailureMessage :: Lens' StartRemediationExecutionResponse (Maybe Text)

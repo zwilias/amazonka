@@ -37,15 +37,12 @@ import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 import Network.AWS.S3.Types
-import Network.AWS.S3.Types.Product
 
 -- | /See:/ 'deleteBucketTagging' smart constructor.
-newtype DeleteBucketTagging =
-  DeleteBucketTagging'
-    { _dbtBucket :: BucketName
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+newtype DeleteBucketTagging = DeleteBucketTagging'{_dbtBucket
+                                                   :: BucketName}
+                                deriving (Eq, Read, Show, Data, Typeable,
+                                          Generic)
 
 -- | Creates a value of 'DeleteBucketTagging' with the minimum fields required to make a request.
 --
@@ -55,8 +52,8 @@ newtype DeleteBucketTagging =
 deleteBucketTagging
     :: BucketName -- ^ 'dbtBucket'
     -> DeleteBucketTagging
-deleteBucketTagging pBucket_ = DeleteBucketTagging' {_dbtBucket = pBucket_}
-
+deleteBucketTagging pBucket_
+  = DeleteBucketTagging'{_dbtBucket = pBucket_}
 
 -- | Undocumented member.
 dbtBucket :: Lens' DeleteBucketTagging BucketName
@@ -83,16 +80,15 @@ instance ToQuery DeleteBucketTagging where
         toQuery = const (mconcat ["tagging"])
 
 -- | /See:/ 'deleteBucketTaggingResponse' smart constructor.
-data DeleteBucketTaggingResponse =
-  DeleteBucketTaggingResponse'
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data DeleteBucketTaggingResponse = DeleteBucketTaggingResponse'
+                                     deriving (Eq, Read, Show, Data, Typeable,
+                                               Generic)
 
 -- | Creates a value of 'DeleteBucketTaggingResponse' with the minimum fields required to make a request.
 --
 deleteBucketTaggingResponse
     :: DeleteBucketTaggingResponse
-deleteBucketTaggingResponse = DeleteBucketTaggingResponse'
-
+deleteBucketTaggingResponse
+  = DeleteBucketTaggingResponse'
 
 instance NFData DeleteBucketTaggingResponse where

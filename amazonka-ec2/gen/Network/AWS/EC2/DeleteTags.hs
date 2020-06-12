@@ -39,21 +39,17 @@ module Network.AWS.EC2.DeleteTags
     ) where
 
 import Network.AWS.EC2.Types
-import Network.AWS.EC2.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 
 -- | /See:/ 'deleteTags' smart constructor.
-data DeleteTags =
-  DeleteTags'
-    { _dtsDryRun    :: !(Maybe Bool)
-    , _dtsTags      :: !(Maybe [Tag])
-    , _dtsResources :: ![Text]
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data DeleteTags = DeleteTags'{_dtsDryRun ::
+                              !(Maybe Bool),
+                              _dtsTags :: !(Maybe [Tag]),
+                              _dtsResources :: ![Text]}
+                    deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'DeleteTags' with the minimum fields required to make a request.
 --
@@ -66,9 +62,9 @@ data DeleteTags =
 -- * 'dtsResources' - The IDs of the resources, separated by spaces. Constraints: Up to 1000 resource IDs. We recommend breaking up this request into smaller batches.
 deleteTags
     :: DeleteTags
-deleteTags =
-  DeleteTags' {_dtsDryRun = Nothing, _dtsTags = Nothing, _dtsResources = mempty}
-
+deleteTags
+  = DeleteTags'{_dtsDryRun = Nothing,
+                _dtsTags = Nothing, _dtsResources = mempty}
 
 -- | Checks whether you have the required permissions for the action, without actually making the request, and provides an error response. If you have the required permissions, the error response is @DryRunOperation@ . Otherwise, it is @UnauthorizedOperation@ .
 dtsDryRun :: Lens' DeleteTags (Maybe Bool)
@@ -107,16 +103,13 @@ instance ToQuery DeleteTags where
                toQueryList "ResourceId" _dtsResources]
 
 -- | /See:/ 'deleteTagsResponse' smart constructor.
-data DeleteTagsResponse =
-  DeleteTagsResponse'
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data DeleteTagsResponse = DeleteTagsResponse'
+                            deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'DeleteTagsResponse' with the minimum fields required to make a request.
 --
 deleteTagsResponse
     :: DeleteTagsResponse
 deleteTagsResponse = DeleteTagsResponse'
-
 
 instance NFData DeleteTagsResponse where

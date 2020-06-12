@@ -46,18 +46,24 @@ import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 import Network.AWS.SSM.Types
-import Network.AWS.SSM.Types.Product
 
 -- | /See:/ 'describeMaintenanceWindowTasks' smart constructor.
-data DescribeMaintenanceWindowTasks =
-  DescribeMaintenanceWindowTasks'
-    { _dFilters    :: !(Maybe [MaintenanceWindowFilter])
-    , _dNextToken  :: !(Maybe Text)
-    , _dMaxResults :: !(Maybe Nat)
-    , _dWindowId   :: !Text
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data DescribeMaintenanceWindowTasks = DescribeMaintenanceWindowTasks'{_dFilters
+                                                                      ::
+                                                                      !(Maybe
+                                                                          [MaintenanceWindowFilter]),
+                                                                      _dNextToken
+                                                                      ::
+                                                                      !(Maybe
+                                                                          Text),
+                                                                      _dMaxResults
+                                                                      ::
+                                                                      !(Maybe
+                                                                          Nat),
+                                                                      _dWindowId
+                                                                      :: !Text}
+                                        deriving (Eq, Read, Show, Data,
+                                                  Typeable, Generic)
 
 -- | Creates a value of 'DescribeMaintenanceWindowTasks' with the minimum fields required to make a request.
 --
@@ -73,14 +79,12 @@ data DescribeMaintenanceWindowTasks =
 describeMaintenanceWindowTasks
     :: Text -- ^ 'dWindowId'
     -> DescribeMaintenanceWindowTasks
-describeMaintenanceWindowTasks pWindowId_ =
-  DescribeMaintenanceWindowTasks'
-    { _dFilters = Nothing
-    , _dNextToken = Nothing
-    , _dMaxResults = Nothing
-    , _dWindowId = pWindowId_
-    }
-
+describeMaintenanceWindowTasks pWindowId_
+  = DescribeMaintenanceWindowTasks'{_dFilters =
+                                      Nothing,
+                                    _dNextToken = Nothing,
+                                    _dMaxResults = Nothing,
+                                    _dWindowId = pWindowId_}
 
 -- | Optional filters used to narrow down the scope of the returned tasks. The supported filter keys are WindowTaskId, TaskArn, Priority, and TaskType.
 dFilters :: Lens' DescribeMaintenanceWindowTasks [MaintenanceWindowFilter]
@@ -142,14 +146,19 @@ instance ToQuery DescribeMaintenanceWindowTasks where
         toQuery = const mempty
 
 -- | /See:/ 'describeMaintenanceWindowTasksResponse' smart constructor.
-data DescribeMaintenanceWindowTasksResponse =
-  DescribeMaintenanceWindowTasksResponse'
-    { _dmwtsrsTasks          :: !(Maybe [MaintenanceWindowTask])
-    , _dmwtsrsNextToken      :: !(Maybe Text)
-    , _dmwtsrsResponseStatus :: !Int
-    }
-  deriving (Eq, Show, Data, Typeable, Generic)
-
+data DescribeMaintenanceWindowTasksResponse = DescribeMaintenanceWindowTasksResponse'{_dmwtsrsTasks
+                                                                                      ::
+                                                                                      !(Maybe
+                                                                                          [MaintenanceWindowTask]),
+                                                                                      _dmwtsrsNextToken
+                                                                                      ::
+                                                                                      !(Maybe
+                                                                                          Text),
+                                                                                      _dmwtsrsResponseStatus
+                                                                                      ::
+                                                                                      !Int}
+                                                deriving (Eq, Show, Data,
+                                                          Typeable, Generic)
 
 -- | Creates a value of 'DescribeMaintenanceWindowTasksResponse' with the minimum fields required to make a request.
 --
@@ -163,13 +172,13 @@ data DescribeMaintenanceWindowTasksResponse =
 describeMaintenanceWindowTasksResponse
     :: Int -- ^ 'dmwtsrsResponseStatus'
     -> DescribeMaintenanceWindowTasksResponse
-describeMaintenanceWindowTasksResponse pResponseStatus_ =
-  DescribeMaintenanceWindowTasksResponse'
-    { _dmwtsrsTasks = Nothing
-    , _dmwtsrsNextToken = Nothing
-    , _dmwtsrsResponseStatus = pResponseStatus_
-    }
-
+describeMaintenanceWindowTasksResponse
+  pResponseStatus_
+  = DescribeMaintenanceWindowTasksResponse'{_dmwtsrsTasks
+                                              = Nothing,
+                                            _dmwtsrsNextToken = Nothing,
+                                            _dmwtsrsResponseStatus =
+                                              pResponseStatus_}
 
 -- | Information about the tasks in the Maintenance Window.
 dmwtsrsTasks :: Lens' DescribeMaintenanceWindowTasksResponse [MaintenanceWindowTask]

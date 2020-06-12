@@ -37,19 +37,16 @@ module Network.AWS.Glue.StartCrawlerSchedule
     ) where
 
 import Network.AWS.Glue.Types
-import Network.AWS.Glue.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 
 -- | /See:/ 'startCrawlerSchedule' smart constructor.
-newtype StartCrawlerSchedule =
-  StartCrawlerSchedule'
-    { _scsCrawlerName :: Text
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+newtype StartCrawlerSchedule = StartCrawlerSchedule'{_scsCrawlerName
+                                                     :: Text}
+                                 deriving (Eq, Read, Show, Data, Typeable,
+                                           Generic)
 
 -- | Creates a value of 'StartCrawlerSchedule' with the minimum fields required to make a request.
 --
@@ -59,9 +56,9 @@ newtype StartCrawlerSchedule =
 startCrawlerSchedule
     :: Text -- ^ 'scsCrawlerName'
     -> StartCrawlerSchedule
-startCrawlerSchedule pCrawlerName_ =
-  StartCrawlerSchedule' {_scsCrawlerName = pCrawlerName_}
-
+startCrawlerSchedule pCrawlerName_
+  = StartCrawlerSchedule'{_scsCrawlerName =
+                            pCrawlerName_}
 
 -- | Name of the crawler to schedule.
 scsCrawlerName :: Lens' StartCrawlerSchedule Text
@@ -102,12 +99,10 @@ instance ToQuery StartCrawlerSchedule where
         toQuery = const mempty
 
 -- | /See:/ 'startCrawlerScheduleResponse' smart constructor.
-newtype StartCrawlerScheduleResponse =
-  StartCrawlerScheduleResponse'
-    { _scsrsResponseStatus :: Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+newtype StartCrawlerScheduleResponse = StartCrawlerScheduleResponse'{_scsrsResponseStatus
+                                                                     :: Int}
+                                         deriving (Eq, Read, Show, Data,
+                                                   Typeable, Generic)
 
 -- | Creates a value of 'StartCrawlerScheduleResponse' with the minimum fields required to make a request.
 --
@@ -117,9 +112,9 @@ newtype StartCrawlerScheduleResponse =
 startCrawlerScheduleResponse
     :: Int -- ^ 'scsrsResponseStatus'
     -> StartCrawlerScheduleResponse
-startCrawlerScheduleResponse pResponseStatus_ =
-  StartCrawlerScheduleResponse' {_scsrsResponseStatus = pResponseStatus_}
-
+startCrawlerScheduleResponse pResponseStatus_
+  = StartCrawlerScheduleResponse'{_scsrsResponseStatus
+                                    = pResponseStatus_}
 
 -- | -- | The response status code.
 scsrsResponseStatus :: Lens' StartCrawlerScheduleResponse Int

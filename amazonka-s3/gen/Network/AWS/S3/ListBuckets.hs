@@ -39,20 +39,16 @@ import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 import Network.AWS.S3.Types
-import Network.AWS.S3.Types.Product
 
 -- | /See:/ 'listBuckets' smart constructor.
-data ListBuckets =
-  ListBuckets'
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data ListBuckets = ListBuckets'
+                     deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'ListBuckets' with the minimum fields required to make a request.
 --
 listBuckets
     :: ListBuckets
 listBuckets = ListBuckets'
-
 
 instance AWSRequest ListBuckets where
         type Rs ListBuckets = ListBucketsResponse
@@ -80,14 +76,11 @@ instance ToQuery ListBuckets where
         toQuery = const mempty
 
 -- | /See:/ 'listBucketsResponse' smart constructor.
-data ListBucketsResponse =
-  ListBucketsResponse'
-    { _lbrsBuckets        :: !(Maybe [Bucket])
-    , _lbrsOwner          :: !(Maybe Owner)
-    , _lbrsResponseStatus :: !Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data ListBucketsResponse = ListBucketsResponse'{_lbrsBuckets
+                                                :: !(Maybe [Bucket]),
+                                                _lbrsOwner :: !(Maybe Owner),
+                                                _lbrsResponseStatus :: !Int}
+                             deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'ListBucketsResponse' with the minimum fields required to make a request.
 --
@@ -101,13 +94,10 @@ data ListBucketsResponse =
 listBucketsResponse
     :: Int -- ^ 'lbrsResponseStatus'
     -> ListBucketsResponse
-listBucketsResponse pResponseStatus_ =
-  ListBucketsResponse'
-    { _lbrsBuckets = Nothing
-    , _lbrsOwner = Nothing
-    , _lbrsResponseStatus = pResponseStatus_
-    }
-
+listBucketsResponse pResponseStatus_
+  = ListBucketsResponse'{_lbrsBuckets = Nothing,
+                         _lbrsOwner = Nothing,
+                         _lbrsResponseStatus = pResponseStatus_}
 
 -- | Undocumented member.
 lbrsBuckets :: Lens' ListBucketsResponse [Bucket]

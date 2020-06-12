@@ -1,4 +1,4 @@
-{-# LANGUAGE OverloadedStrings #-}
+{-# LANGUAGE OverloadedStrings  #-}
 
 -- Derived from AWS service descriptions, licensed under Apache 2.0.
 
@@ -432,244 +432,293 @@ module Network.AWS.IAM.Types
     , vmdSerialNumber
     ) where
 
-import Network.AWS.IAM.Types.Product
-import Network.AWS.IAM.Types.Sum
 import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.Sign.V4
+import Network.AWS.IAM.Types.AssignmentStatusType
+import Network.AWS.IAM.Types.ContextKeyTypeEnum
+import Network.AWS.IAM.Types.DeletionTaskStatusType
+import Network.AWS.IAM.Types.EncodingType
+import Network.AWS.IAM.Types.EntityType
+import Network.AWS.IAM.Types.PolicyEvaluationDecisionType
+import Network.AWS.IAM.Types.PolicyScopeType
+import Network.AWS.IAM.Types.PolicySourceType
+import Network.AWS.IAM.Types.ReportFormatType
+import Network.AWS.IAM.Types.ReportStateType
+import Network.AWS.IAM.Types.StatusType
+import Network.AWS.IAM.Types.SummaryKeyType
+import Network.AWS.IAM.Types.AccessKeyInfo
+import Network.AWS.IAM.Types.AccessKeyLastUsed
+import Network.AWS.IAM.Types.AccessKeyMetadata
+import Network.AWS.IAM.Types.AttachedPolicy
+import Network.AWS.IAM.Types.ContextEntry
+import Network.AWS.IAM.Types.DeletionTaskFailureReasonType
+import Network.AWS.IAM.Types.EvaluationResult
+import Network.AWS.IAM.Types.GetContextKeysForPolicyResponse
+import Network.AWS.IAM.Types.Group
+import Network.AWS.IAM.Types.GroupDetail
+import Network.AWS.IAM.Types.InstanceProfile
+import Network.AWS.IAM.Types.LoginProfile
+import Network.AWS.IAM.Types.MFADevice
+import Network.AWS.IAM.Types.ManagedPolicyDetail
+import Network.AWS.IAM.Types.OpenIdConnectProviderListEntry
+import Network.AWS.IAM.Types.OrganizationsDecisionDetail
+import Network.AWS.IAM.Types.PasswordPolicy
+import Network.AWS.IAM.Types.Policy
+import Network.AWS.IAM.Types.PolicyDetail
+import Network.AWS.IAM.Types.PolicyGroup
+import Network.AWS.IAM.Types.PolicyRole
+import Network.AWS.IAM.Types.PolicyUser
+import Network.AWS.IAM.Types.PolicyVersion
+import Network.AWS.IAM.Types.Position
+import Network.AWS.IAM.Types.ResourceSpecificResult
+import Network.AWS.IAM.Types.Role
+import Network.AWS.IAM.Types.RoleDetail
+import Network.AWS.IAM.Types.RoleUsageType
+import Network.AWS.IAM.Types.SAMLProviderListEntry
+import Network.AWS.IAM.Types.SSHPublicKey
+import Network.AWS.IAM.Types.SSHPublicKeyMetadata
+import Network.AWS.IAM.Types.ServerCertificate
+import Network.AWS.IAM.Types.ServerCertificateMetadata
+import Network.AWS.IAM.Types.ServiceSpecificCredential
+import Network.AWS.IAM.Types.ServiceSpecificCredentialMetadata
+import Network.AWS.IAM.Types.SigningCertificate
+import Network.AWS.IAM.Types.SimulatePolicyResponse
+import Network.AWS.IAM.Types.Statement
+import Network.AWS.IAM.Types.User
+import Network.AWS.IAM.Types.UserDetail
+import Network.AWS.IAM.Types.VirtualMFADevice
 
 -- | API version @2010-05-08@ of the Amazon Identity and Access Management SDK configuration.
 iam :: Service
-iam =
-  Service
-    { _svcAbbrev = "IAM"
-    , _svcSigner = v4
-    , _svcPrefix = "iam"
-    , _svcVersion = "2010-05-08"
-    , _svcEndpoint = defaultEndpoint iam
-    , _svcTimeout = Just 70
-    , _svcCheck = statusSuccess
-    , _svcError = parseXMLError "IAM"
-    , _svcRetry = retry
-    }
-  where
-    retry =
-      Exponential
-        { _retryBase = 5.0e-2
-        , _retryGrowth = 2
-        , _retryAttempts = 5
-        , _retryCheck = check
-        }
-    check e
-      | has (hasCode "ThrottledException" . hasStatus 400) e =
-        Just "throttled_exception"
-      | has (hasStatus 429) e = Just "too_many_requests"
-      | has (hasCode "ThrottlingException" . hasStatus 400) e =
-        Just "throttling_exception"
-      | has (hasCode "Throttling" . hasStatus 400) e = Just "throttling"
-      | has (hasStatus 504) e = Just "gateway_timeout"
-      | has (hasCode "RequestThrottledException" . hasStatus 400) e =
-        Just "request_throttled_exception"
-      | has (hasStatus 502) e = Just "bad_gateway"
-      | has (hasStatus 503) e = Just "service_unavailable"
-      | has (hasStatus 500) e = Just "general_server_error"
-      | has (hasStatus 509) e = Just "limit_exceeded"
-      | otherwise = Nothing
-
+iam
+  = Service{_svcAbbrev = "IAM", _svcSigner = v4,
+            _svcPrefix = "iam", _svcVersion = "2010-05-08",
+            _svcEndpoint = defaultEndpoint iam,
+            _svcTimeout = Just 70, _svcCheck = statusSuccess,
+            _svcError = parseXMLError "IAM", _svcRetry = retry}
+  where retry
+          = Exponential{_retryBase = 5.0e-2, _retryGrowth = 2,
+                        _retryAttempts = 5, _retryCheck = check}
+        check e
+          | has (hasCode "ThrottledException" . hasStatus 400)
+              e
+            = Just "throttled_exception"
+          | has (hasStatus 429) e = Just "too_many_requests"
+          | has (hasCode "ThrottlingException" . hasStatus 400)
+              e
+            = Just "throttling_exception"
+          | has (hasCode "Throttling" . hasStatus 400) e =
+            Just "throttling"
+          | has (hasStatus 504) e = Just "gateway_timeout"
+          | has
+              (hasCode "RequestThrottledException" . hasStatus 400)
+              e
+            = Just "request_throttled_exception"
+          | has (hasStatus 502) e = Just "bad_gateway"
+          | has (hasStatus 503) e = Just "service_unavailable"
+          | has (hasStatus 500) e = Just "general_server_error"
+          | has (hasStatus 509) e = Just "limit_exceeded"
+          | otherwise = Nothing
 
 -- | The request was rejected because the credential report does not exist. To generate a credential report, use 'GenerateCredentialReport' .
 --
 --
 _CredentialReportNotPresentException :: AsError a => Getting (First ServiceError) a ServiceError
-_CredentialReportNotPresentException =
-  _MatchServiceError iam "ReportNotPresent" . hasStatus 410
-
+_CredentialReportNotPresentException
+  = _MatchServiceError iam "ReportNotPresent" .
+      hasStatus 410
 
 -- | The request was rejected because the credential report is still being generated.
 --
 --
 _CredentialReportNotReadyException :: AsError a => Getting (First ServiceError) a ServiceError
-_CredentialReportNotReadyException =
-  _MatchServiceError iam "ReportInProgress" . hasStatus 404
-
+_CredentialReportNotReadyException
+  = _MatchServiceError iam "ReportInProgress" .
+      hasStatus 404
 
 -- | The request was rejected because the policy document was malformed. The error message describes the specific error.
 --
 --
 _MalformedPolicyDocumentException :: AsError a => Getting (First ServiceError) a ServiceError
-_MalformedPolicyDocumentException =
-  _MatchServiceError iam "MalformedPolicyDocument" . hasStatus 400
-
+_MalformedPolicyDocumentException
+  = _MatchServiceError iam "MalformedPolicyDocument" .
+      hasStatus 400
 
 -- | The request was rejected because it attempted to create a resource that already exists.
 --
 --
 _EntityAlreadyExistsException :: AsError a => Getting (First ServiceError) a ServiceError
-_EntityAlreadyExistsException =
-  _MatchServiceError iam "EntityAlreadyExists" . hasStatus 409
-
+_EntityAlreadyExistsException
+  = _MatchServiceError iam "EntityAlreadyExists" .
+      hasStatus 409
 
 -- | The request was rejected because the certificate was malformed or expired. The error message describes the specific error.
 --
 --
 _MalformedCertificateException :: AsError a => Getting (First ServiceError) a ServiceError
-_MalformedCertificateException =
-  _MatchServiceError iam "MalformedCertificate" . hasStatus 400
-
+_MalformedCertificateException
+  = _MatchServiceError iam "MalformedCertificate" .
+      hasStatus 400
 
 -- | The request was rejected because the most recent credential report has expired. To generate a new credential report, use 'GenerateCredentialReport' . For more information about credential report expiration, see <http://docs.aws.amazon.com/IAM/latest/UserGuide/credential-reports.html Getting Credential Reports> in the /IAM User Guide/ .
 --
 --
 _CredentialReportExpiredException :: AsError a => Getting (First ServiceError) a ServiceError
-_CredentialReportExpiredException =
-  _MatchServiceError iam "ReportExpired" . hasStatus 410
-
+_CredentialReportExpiredException
+  = _MatchServiceError iam "ReportExpired" .
+      hasStatus 410
 
 -- | The request was rejected because only the service that depends on the service-linked role can modify or delete the role on your behalf. The error message includes the name of the service that depends on this service-linked role. You must request the change through that service.
 --
 --
 _UnmodifiableEntityException :: AsError a => Getting (First ServiceError) a ServiceError
-_UnmodifiableEntityException =
-  _MatchServiceError iam "UnmodifiableEntity" . hasStatus 400
-
+_UnmodifiableEntityException
+  = _MatchServiceError iam "UnmodifiableEntity" .
+      hasStatus 400
 
 -- | The request was rejected because the same certificate is associated with an IAM user in the account.
 --
 --
 _DuplicateCertificateException :: AsError a => Getting (First ServiceError) a ServiceError
-_DuplicateCertificateException =
-  _MatchServiceError iam "DuplicateCertificate" . hasStatus 409
-
+_DuplicateCertificateException
+  = _MatchServiceError iam "DuplicateCertificate" .
+      hasStatus 409
 
 -- | The request was rejected because it attempted to delete a resource that has attached subordinate entities. The error message describes these entities.
 --
 --
 _DeleteConflictException :: AsError a => Getting (First ServiceError) a ServiceError
-_DeleteConflictException =
-  _MatchServiceError iam "DeleteConflict" . hasStatus 409
-
+_DeleteConflictException
+  = _MatchServiceError iam "DeleteConflict" .
+      hasStatus 409
 
 -- | The request was rejected because it referenced an entity that does not exist. The error message describes the entity.
 --
 --
 _NoSuchEntityException :: AsError a => Getting (First ServiceError) a ServiceError
-_NoSuchEntityException = _MatchServiceError iam "NoSuchEntity" . hasStatus 404
-
+_NoSuchEntityException
+  = _MatchServiceError iam "NoSuchEntity" .
+      hasStatus 404
 
 -- | The request was rejected because the certificate is invalid.
 --
 --
 _InvalidCertificateException :: AsError a => Getting (First ServiceError) a ServiceError
-_InvalidCertificateException =
-  _MatchServiceError iam "InvalidCertificate" . hasStatus 400
-
+_InvalidCertificateException
+  = _MatchServiceError iam "InvalidCertificate" .
+      hasStatus 400
 
 -- | The request failed because AWS service role policies can only be attached to the service-linked role for that service.
 --
 --
 _PolicyNotAttachableException :: AsError a => Getting (First ServiceError) a ServiceError
-_PolicyNotAttachableException =
-  _MatchServiceError iam "PolicyNotAttachable" . hasStatus 400
-
+_PolicyNotAttachableException
+  = _MatchServiceError iam "PolicyNotAttachable" .
+      hasStatus 400
 
 -- | The specified service does not support service-specific credentials.
 --
 --
 _ServiceNotSupportedException :: AsError a => Getting (First ServiceError) a ServiceError
-_ServiceNotSupportedException =
-  _MatchServiceError iam "NotSupportedService" . hasStatus 404
-
+_ServiceNotSupportedException
+  = _MatchServiceError iam "NotSupportedService" .
+      hasStatus 404
 
 -- | The request was rejected because the public key encoding format is unsupported or unrecognized.
 --
 --
 _UnrecognizedPublicKeyEncodingException :: AsError a => Getting (First ServiceError) a ServiceError
-_UnrecognizedPublicKeyEncodingException =
-  _MatchServiceError iam "UnrecognizedPublicKeyEncoding" . hasStatus 400
-
+_UnrecognizedPublicKeyEncodingException
+  = _MatchServiceError iam
+      "UnrecognizedPublicKeyEncoding"
+      . hasStatus 400
 
 -- | The request was rejected because the type of user for the transaction was incorrect.
 --
 --
 _InvalidUserTypeException :: AsError a => Getting (First ServiceError) a ServiceError
-_InvalidUserTypeException =
-  _MatchServiceError iam "InvalidUserType" . hasStatus 400
-
+_InvalidUserTypeException
+  = _MatchServiceError iam "InvalidUserType" .
+      hasStatus 400
 
 -- | The request processing has failed because of an unknown error, exception or failure.
 --
 --
 _ServiceFailureException :: AsError a => Getting (First ServiceError) a ServiceError
-_ServiceFailureException =
-  _MatchServiceError iam "ServiceFailure" . hasStatus 500
-
+_ServiceFailureException
+  = _MatchServiceError iam "ServiceFailure" .
+      hasStatus 500
 
 -- | The request was rejected because an invalid or out-of-range value was supplied for an input parameter.
 --
 --
 _InvalidInputException :: AsError a => Getting (First ServiceError) a ServiceError
-_InvalidInputException = _MatchServiceError iam "InvalidInput" . hasStatus 400
-
+_InvalidInputException
+  = _MatchServiceError iam "InvalidInput" .
+      hasStatus 400
 
 -- | The request was rejected because the public key is malformed or otherwise invalid.
 --
 --
 _InvalidPublicKeyException :: AsError a => Getting (First ServiceError) a ServiceError
-_InvalidPublicKeyException =
-  _MatchServiceError iam "InvalidPublicKey" . hasStatus 400
-
+_InvalidPublicKeyException
+  = _MatchServiceError iam "InvalidPublicKey" .
+      hasStatus 400
 
 -- | The request was rejected because the authentication code was not recognized. The error message describes the specific error.
 --
 --
 _InvalidAuthenticationCodeException :: AsError a => Getting (First ServiceError) a ServiceError
-_InvalidAuthenticationCodeException =
-  _MatchServiceError iam "InvalidAuthenticationCode" . hasStatus 403
-
+_InvalidAuthenticationCodeException
+  = _MatchServiceError iam "InvalidAuthenticationCode"
+      . hasStatus 403
 
 -- | The request was rejected because it referenced an entity that is temporarily unmodifiable, such as a user name that was deleted and then recreated. The error indicates that the request is likely to succeed if you try again after waiting several minutes. The error message describes the entity.
 --
 --
 _EntityTemporarilyUnmodifiableException :: AsError a => Getting (First ServiceError) a ServiceError
-_EntityTemporarilyUnmodifiableException =
-  _MatchServiceError iam "EntityTemporarilyUnmodifiable" . hasStatus 409
-
+_EntityTemporarilyUnmodifiableException
+  = _MatchServiceError iam
+      "EntityTemporarilyUnmodifiable"
+      . hasStatus 409
 
 -- | The request was rejected because the SSH public key is already associated with the specified IAM user.
 --
 --
 _DuplicateSSHPublicKeyException :: AsError a => Getting (First ServiceError) a ServiceError
-_DuplicateSSHPublicKeyException =
-  _MatchServiceError iam "DuplicateSSHPublicKey" . hasStatus 400
-
+_DuplicateSSHPublicKeyException
+  = _MatchServiceError iam "DuplicateSSHPublicKey" .
+      hasStatus 400
 
 -- | The request was rejected because the public key certificate and the private key do not match.
 --
 --
 _KeyPairMismatchException :: AsError a => Getting (First ServiceError) a ServiceError
-_KeyPairMismatchException =
-  _MatchServiceError iam "KeyPairMismatch" . hasStatus 400
-
+_KeyPairMismatchException
+  = _MatchServiceError iam "KeyPairMismatch" .
+      hasStatus 400
 
 -- | The request failed because a provided policy could not be successfully evaluated. An additional detailed message indicates the source of the failure.
 --
 --
 _PolicyEvaluationException :: AsError a => Getting (First ServiceError) a ServiceError
-_PolicyEvaluationException =
-  _MatchServiceError iam "PolicyEvaluation" . hasStatus 500
-
+_PolicyEvaluationException
+  = _MatchServiceError iam "PolicyEvaluation" .
+      hasStatus 500
 
 -- | The request was rejected because the provided password did not meet the requirements imposed by the account password policy.
 --
 --
 _PasswordPolicyViolationException :: AsError a => Getting (First ServiceError) a ServiceError
-_PasswordPolicyViolationException =
-  _MatchServiceError iam "PasswordPolicyViolation" . hasStatus 400
-
+_PasswordPolicyViolationException
+  = _MatchServiceError iam "PasswordPolicyViolation" .
+      hasStatus 400
 
 -- | The request was rejected because it attempted to create resources beyond the current AWS account limits. The error message describes the limit exceeded.
 --
 --
 _LimitExceededException :: AsError a => Getting (First ServiceError) a ServiceError
-_LimitExceededException = _MatchServiceError iam "LimitExceeded" . hasStatus 409
-
+_LimitExceededException
+  = _MatchServiceError iam "LimitExceeded" .
+      hasStatus 409

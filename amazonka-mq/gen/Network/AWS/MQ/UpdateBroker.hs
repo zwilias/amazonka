@@ -39,7 +39,6 @@ module Network.AWS.MQ.UpdateBroker
 
 import Network.AWS.Lens
 import Network.AWS.MQ.Types
-import Network.AWS.MQ.Types.Product
 import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
@@ -47,13 +46,10 @@ import Network.AWS.Response
 -- | Updates the broker using the specified properties.
 --
 -- /See:/ 'updateBroker' smart constructor.
-data UpdateBroker =
-  UpdateBroker'
-    { _ubConfiguration :: !(Maybe ConfigurationId)
-    , _ubBrokerId      :: !Text
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data UpdateBroker = UpdateBroker'{_ubConfiguration ::
+                                  !(Maybe ConfigurationId),
+                                  _ubBrokerId :: !Text}
+                      deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'UpdateBroker' with the minimum fields required to make a request.
 --
@@ -65,9 +61,9 @@ data UpdateBroker =
 updateBroker
     :: Text -- ^ 'ubBrokerId'
     -> UpdateBroker
-updateBroker pBrokerId_ =
-  UpdateBroker' {_ubConfiguration = Nothing, _ubBrokerId = pBrokerId_}
-
+updateBroker pBrokerId_
+  = UpdateBroker'{_ubConfiguration = Nothing,
+                  _ubBrokerId = pBrokerId_}
 
 -- | A list of information about the configuration.
 ubConfiguration :: Lens' UpdateBroker (Maybe ConfigurationId)
@@ -112,14 +108,12 @@ instance ToQuery UpdateBroker where
         toQuery = const mempty
 
 -- | /See:/ 'updateBrokerResponse' smart constructor.
-data UpdateBrokerResponse =
-  UpdateBrokerResponse'
-    { _ubrsConfiguration  :: !(Maybe ConfigurationId)
-    , _ubrsBrokerId       :: !(Maybe Text)
-    , _ubrsResponseStatus :: !Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data UpdateBrokerResponse = UpdateBrokerResponse'{_ubrsConfiguration
+                                                  :: !(Maybe ConfigurationId),
+                                                  _ubrsBrokerId ::
+                                                  !(Maybe Text),
+                                                  _ubrsResponseStatus :: !Int}
+                              deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'UpdateBrokerResponse' with the minimum fields required to make a request.
 --
@@ -133,13 +127,10 @@ data UpdateBrokerResponse =
 updateBrokerResponse
     :: Int -- ^ 'ubrsResponseStatus'
     -> UpdateBrokerResponse
-updateBrokerResponse pResponseStatus_ =
-  UpdateBrokerResponse'
-    { _ubrsConfiguration = Nothing
-    , _ubrsBrokerId = Nothing
-    , _ubrsResponseStatus = pResponseStatus_
-    }
-
+updateBrokerResponse pResponseStatus_
+  = UpdateBrokerResponse'{_ubrsConfiguration = Nothing,
+                          _ubrsBrokerId = Nothing,
+                          _ubrsResponseStatus = pResponseStatus_}
 
 -- | The ID of the updated configuration.
 ubrsConfiguration :: Lens' UpdateBrokerResponse (Maybe ConfigurationId)

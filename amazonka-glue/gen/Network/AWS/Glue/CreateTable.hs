@@ -39,21 +39,17 @@ module Network.AWS.Glue.CreateTable
     ) where
 
 import Network.AWS.Glue.Types
-import Network.AWS.Glue.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 
 -- | /See:/ 'createTable' smart constructor.
-data CreateTable =
-  CreateTable'
-    { _ctCatalogId    :: !(Maybe Text)
-    , _ctDatabaseName :: !Text
-    , _ctTableInput   :: !TableInput
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data CreateTable = CreateTable'{_ctCatalogId ::
+                                !(Maybe Text),
+                                _ctDatabaseName :: !Text,
+                                _ctTableInput :: !TableInput}
+                     deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'CreateTable' with the minimum fields required to make a request.
 --
@@ -68,13 +64,10 @@ createTable
     :: Text -- ^ 'ctDatabaseName'
     -> TableInput -- ^ 'ctTableInput'
     -> CreateTable
-createTable pDatabaseName_ pTableInput_ =
-  CreateTable'
-    { _ctCatalogId = Nothing
-    , _ctDatabaseName = pDatabaseName_
-    , _ctTableInput = pTableInput_
-    }
-
+createTable pDatabaseName_ pTableInput_
+  = CreateTable'{_ctCatalogId = Nothing,
+                 _ctDatabaseName = pDatabaseName_,
+                 _ctTableInput = pTableInput_}
 
 -- | The ID of the Data Catalog in which to create the @Table@ . If none is supplied, the AWS account ID is used by default.
 ctCatalogId :: Lens' CreateTable (Maybe Text)
@@ -124,12 +117,10 @@ instance ToQuery CreateTable where
         toQuery = const mempty
 
 -- | /See:/ 'createTableResponse' smart constructor.
-newtype CreateTableResponse =
-  CreateTableResponse'
-    { _cttrsResponseStatus :: Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+newtype CreateTableResponse = CreateTableResponse'{_cttrsResponseStatus
+                                                   :: Int}
+                                deriving (Eq, Read, Show, Data, Typeable,
+                                          Generic)
 
 -- | Creates a value of 'CreateTableResponse' with the minimum fields required to make a request.
 --
@@ -139,9 +130,9 @@ newtype CreateTableResponse =
 createTableResponse
     :: Int -- ^ 'cttrsResponseStatus'
     -> CreateTableResponse
-createTableResponse pResponseStatus_ =
-  CreateTableResponse' {_cttrsResponseStatus = pResponseStatus_}
-
+createTableResponse pResponseStatus_
+  = CreateTableResponse'{_cttrsResponseStatus =
+                           pResponseStatus_}
 
 -- | -- | The response status code.
 cttrsResponseStatus :: Lens' CreateTableResponse Int

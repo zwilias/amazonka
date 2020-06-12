@@ -66,47 +66,51 @@ module Network.AWS.CodeBuild.StartBuild
     ) where
 
 import Network.AWS.CodeBuild.Types
-import Network.AWS.CodeBuild.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 
 -- | /See:/ 'startBuild' smart constructor.
-data StartBuild =
-  StartBuild'
-    { _sbEncryptionKeyOverride            :: !(Maybe Text)
-    , _sbSourceLocationOverride           :: !(Maybe Text)
-    , _sbEnvironmentVariablesOverride     :: !(Maybe [EnvironmentVariable])
-    , _sbIdempotencyToken                 :: !(Maybe Text)
-    , _sbRegistryCredentialOverride       :: !(Maybe RegistryCredential)
-    , _sbTimeoutInMinutesOverride         :: !(Maybe Nat)
-    , _sbServiceRoleOverride              :: !(Maybe Text)
-    , _sbCacheOverride                    :: !(Maybe ProjectCache)
-    , _sbQueuedTimeoutInMinutesOverride   :: !(Maybe Nat)
-    , _sbSecondarySourcesOverride         :: !(Maybe [ProjectSource])
-    , _sbGitCloneDepthOverride            :: !(Maybe Nat)
-    , _sbImagePullCredentialsTypeOverride :: !(Maybe ImagePullCredentialsType)
-    , _sbLogsConfigOverride               :: !(Maybe LogsConfig)
-    , _sbSourceAuthOverride               :: !(Maybe SourceAuth)
-    , _sbGitSubmodulesConfigOverride      :: !(Maybe GitSubmodulesConfig)
-    , _sbEnvironmentTypeOverride          :: !(Maybe EnvironmentType)
-    , _sbCertificateOverride              :: !(Maybe Text)
-    , _sbComputeTypeOverride              :: !(Maybe ComputeType)
-    , _sbPrivilegedModeOverride           :: !(Maybe Bool)
-    , _sbSourceVersion                    :: !(Maybe Text)
-    , _sbBuildspecOverride                :: !(Maybe Text)
-    , _sbSecondarySourcesVersionOverride  :: !(Maybe [ProjectSourceVersion])
-    , _sbReportBuildStatusOverride        :: !(Maybe Bool)
-    , _sbInsecureSSLOverride              :: !(Maybe Bool)
-    , _sbImageOverride                    :: !(Maybe Text)
-    , _sbSecondaryArtifactsOverride       :: !(Maybe [ProjectArtifacts])
-    , _sbArtifactsOverride                :: !(Maybe ProjectArtifacts)
-    , _sbSourceTypeOverride               :: !(Maybe SourceType)
-    , _sbProjectName                      :: !Text
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data StartBuild = StartBuild'{_sbEncryptionKeyOverride
+                              :: !(Maybe Text),
+                              _sbSourceLocationOverride :: !(Maybe Text),
+                              _sbEnvironmentVariablesOverride ::
+                              !(Maybe [EnvironmentVariable]),
+                              _sbIdempotencyToken :: !(Maybe Text),
+                              _sbRegistryCredentialOverride ::
+                              !(Maybe RegistryCredential),
+                              _sbTimeoutInMinutesOverride :: !(Maybe Nat),
+                              _sbServiceRoleOverride :: !(Maybe Text),
+                              _sbCacheOverride :: !(Maybe ProjectCache),
+                              _sbQueuedTimeoutInMinutesOverride :: !(Maybe Nat),
+                              _sbSecondarySourcesOverride ::
+                              !(Maybe [ProjectSource]),
+                              _sbGitCloneDepthOverride :: !(Maybe Nat),
+                              _sbImagePullCredentialsTypeOverride ::
+                              !(Maybe ImagePullCredentialsType),
+                              _sbLogsConfigOverride :: !(Maybe LogsConfig),
+                              _sbSourceAuthOverride :: !(Maybe SourceAuth),
+                              _sbGitSubmodulesConfigOverride ::
+                              !(Maybe GitSubmodulesConfig),
+                              _sbEnvironmentTypeOverride ::
+                              !(Maybe EnvironmentType),
+                              _sbCertificateOverride :: !(Maybe Text),
+                              _sbComputeTypeOverride :: !(Maybe ComputeType),
+                              _sbPrivilegedModeOverride :: !(Maybe Bool),
+                              _sbSourceVersion :: !(Maybe Text),
+                              _sbBuildspecOverride :: !(Maybe Text),
+                              _sbSecondarySourcesVersionOverride ::
+                              !(Maybe [ProjectSourceVersion]),
+                              _sbReportBuildStatusOverride :: !(Maybe Bool),
+                              _sbInsecureSSLOverride :: !(Maybe Bool),
+                              _sbImageOverride :: !(Maybe Text),
+                              _sbSecondaryArtifactsOverride ::
+                              !(Maybe [ProjectArtifacts]),
+                              _sbArtifactsOverride :: !(Maybe ProjectArtifacts),
+                              _sbSourceTypeOverride :: !(Maybe SourceType),
+                              _sbProjectName :: !Text}
+                    deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'StartBuild' with the minimum fields required to make a request.
 --
@@ -118,9 +122,9 @@ data StartBuild =
 --
 -- * 'sbEnvironmentVariablesOverride' - A set of environment variables that overrides, for this build only, the latest ones already defined in the build project.
 --
--- * 'sbIdempotencyToken' - A unique, case sensitive identifier you provide to ensure the idempotency of the StartBuild request. The token is included in the StartBuild request and is valid for 12 hours. If you repeat the StartBuild request with the same token, but change a parameter, AWS CodeBuild returns a parameter mismatch error.
+-- * 'sbIdempotencyToken' - A unique, case sensitive identifier you provide to ensure the idempotency of the StartBuild request. The token is included in the StartBuild request and is valid for 12 hours. If you repeat the StartBuild request with the same token, but change a parameter, AWS CodeBuild returns a parameter mismatch error. 
 --
--- * 'sbRegistryCredentialOverride' - The credentials for access to a private registry.
+-- * 'sbRegistryCredentialOverride' - The credentials for access to a private registry. 
 --
 -- * 'sbTimeoutInMinutesOverride' - The number of build timeout minutes, from 5 to 480 (8 hours), that overrides, for this build only, the latest setting already defined in the build project.
 --
@@ -128,19 +132,19 @@ data StartBuild =
 --
 -- * 'sbCacheOverride' - A ProjectCache object specified for this build that overrides the one defined in the build project.
 --
--- * 'sbQueuedTimeoutInMinutesOverride' - The number of minutes a build is allowed to be queued before it times out.
+-- * 'sbQueuedTimeoutInMinutesOverride' - The number of minutes a build is allowed to be queued before it times out. 
 --
--- * 'sbSecondarySourcesOverride' - An array of @ProjectSource@ objects.
+-- * 'sbSecondarySourcesOverride' - An array of @ProjectSource@ objects. 
 --
 -- * 'sbGitCloneDepthOverride' - The user-defined depth of history, with a minimum value of 0, that overrides, for this build only, any previous depth of history defined in the build project.
 --
--- * 'sbImagePullCredentialsTypeOverride' - The type of credentials AWS CodeBuild uses to pull images in your build. There are two valid values:      * @CODEBUILD@ specifies that AWS CodeBuild uses its own credentials. This requires that you modify your ECR repository policy to trust AWS CodeBuild's service principal.     * @SERVICE_ROLE@ specifies that AWS CodeBuild uses your build project's service role.  When using a cross-account or private registry image, you must use SERVICE_ROLE credentials. When using an AWS CodeBuild curated image, you must use CODEBUILD credentials.
+-- * 'sbImagePullCredentialsTypeOverride' - The type of credentials AWS CodeBuild uses to pull images in your build. There are two valid values:      * @CODEBUILD@ specifies that AWS CodeBuild uses its own credentials. This requires that you modify your ECR repository policy to trust AWS CodeBuild's service principal.     * @SERVICE_ROLE@ specifies that AWS CodeBuild uses your build project's service role.  When using a cross-account or private registry image, you must use SERVICE_ROLE credentials. When using an AWS CodeBuild curated image, you must use CODEBUILD credentials. 
 --
--- * 'sbLogsConfigOverride' - Log settings for this build that override the log settings defined in the build project.
+-- * 'sbLogsConfigOverride' - Log settings for this build that override the log settings defined in the build project. 
 --
 -- * 'sbSourceAuthOverride' - An authorization type for this build that overrides the one defined in the build project. This override applies only if the build project's source is BitBucket or GitHub.
 --
--- * 'sbGitSubmodulesConfigOverride' - Information about the Git submodules configuration for this build of an AWS CodeBuild build project.
+-- * 'sbGitSubmodulesConfigOverride' - Information about the Git submodules configuration for this build of an AWS CodeBuild build project. 
 --
 -- * 'sbEnvironmentTypeOverride' - A container type for this build that overrides the one specified in the build project.
 --
@@ -150,19 +154,19 @@ data StartBuild =
 --
 -- * 'sbPrivilegedModeOverride' - Enable this flag to override privileged mode in the build project.
 --
--- * 'sbSourceVersion' - A version of the build input to be built, for this build only. If not specified, the latest version is used. If specified, must be one of:     * For AWS CodeCommit: the commit ID, branch, or Git tag to use.     * For GitHub: the commit ID, pull request ID, branch name, or tag name that corresponds to the version of the source code you want to build. If a pull request ID is specified, it must use the format @pr/pull-request-ID@ (for example @pr/25@ ). If a branch name is specified, the branch's HEAD commit ID is used. If not specified, the default branch's HEAD commit ID is used.     * For Bitbucket: the commit ID, branch name, or tag name that corresponds to the version of the source code you want to build. If a branch name is specified, the branch's HEAD commit ID is used. If not specified, the default branch's HEAD commit ID is used.     * For Amazon Simple Storage Service (Amazon S3): the version ID of the object that represents the build input ZIP file to use. If @sourceVersion@ is specified at the project level, then this @sourceVersion@ (at the build level) takes precedence.  For more information, see <https://docs.aws.amazon.com/codebuild/latest/userguide/sample-source-version.html Source Version Sample with CodeBuild> in the /AWS CodeBuild User Guide/ .
+-- * 'sbSourceVersion' - A version of the build input to be built, for this build only. If not specified, the latest version is used. If specified, must be one of:     * For AWS CodeCommit: the commit ID, branch, or Git tag to use.     * For GitHub: the commit ID, pull request ID, branch name, or tag name that corresponds to the version of the source code you want to build. If a pull request ID is specified, it must use the format @pr/pull-request-ID@ (for example @pr/25@ ). If a branch name is specified, the branch's HEAD commit ID is used. If not specified, the default branch's HEAD commit ID is used.     * For Bitbucket: the commit ID, branch name, or tag name that corresponds to the version of the source code you want to build. If a branch name is specified, the branch's HEAD commit ID is used. If not specified, the default branch's HEAD commit ID is used.     * For Amazon Simple Storage Service (Amazon S3): the version ID of the object that represents the build input ZIP file to use. If @sourceVersion@ is specified at the project level, then this @sourceVersion@ (at the build level) takes precedence.  For more information, see <https://docs.aws.amazon.com/codebuild/latest/userguide/sample-source-version.html Source Version Sample with CodeBuild> in the /AWS CodeBuild User Guide/ . 
 --
--- * 'sbBuildspecOverride' - A buildspec file declaration that overrides, for this build only, the latest one already defined in the build project. If this value is set, it can be either an inline buildspec definition, the path to an alternate buildspec file relative to the value of the built-in @CODEBUILD_SRC_DIR@ environment variable, or the path to an S3 bucket. The bucket must be in the same AWS Region as the build project. Specify the buildspec file using its ARN (for example, @arn:aws:s3:::my-codebuild-sample2/buildspec.yml@ ). If this value is not provided or is set to an empty string, the source code must contain a buildspec file in its root directory. For more information, see <https://docs.aws.amazon.com/codebuild/latest/userguide/build-spec-ref.html#build-spec-ref-name-storage Buildspec File Name and Storage Location> .
+-- * 'sbBuildspecOverride' - A buildspec file declaration that overrides, for this build only, the latest one already defined in the build project. If this value is set, it can be either an inline buildspec definition, the path to an alternate buildspec file relative to the value of the built-in @CODEBUILD_SRC_DIR@ environment variable, or the path to an S3 bucket. The bucket must be in the same AWS Region as the build project. Specify the buildspec file using its ARN (for example, @arn:aws:s3:::my-codebuild-sample2/buildspec.yml@ ). If this value is not provided or is set to an empty string, the source code must contain a buildspec file in its root directory. For more information, see <https://docs.aws.amazon.com/codebuild/latest/userguide/build-spec-ref.html#build-spec-ref-name-storage Buildspec File Name and Storage Location> . 
 --
--- * 'sbSecondarySourcesVersionOverride' - An array of @ProjectSourceVersion@ objects that specify one or more versions of the project's secondary sources to be used for this build only.
+-- * 'sbSecondarySourcesVersionOverride' - An array of @ProjectSourceVersion@ objects that specify one or more versions of the project's secondary sources to be used for this build only. 
 --
--- * 'sbReportBuildStatusOverride' - Set to true to report to your source provider the status of a build's start and completion. If you use this option with a source provider other than GitHub, GitHub Enterprise, or Bitbucket, an invalidInputException is thrown.
+-- * 'sbReportBuildStatusOverride' - Set to true to report to your source provider the status of a build's start and completion. If you use this option with a source provider other than GitHub, GitHub Enterprise, or Bitbucket, an invalidInputException is thrown. 
 --
 -- * 'sbInsecureSSLOverride' - Enable this flag to override the insecure SSL setting that is specified in the build project. The insecure SSL setting determines whether to ignore SSL warnings while connecting to the project source code. This override applies only if the build's source is GitHub Enterprise.
 --
 -- * 'sbImageOverride' - The name of an image for this build that overrides the one specified in the build project.
 --
--- * 'sbSecondaryArtifactsOverride' - An array of @ProjectArtifacts@ objects.
+-- * 'sbSecondaryArtifactsOverride' - An array of @ProjectArtifacts@ objects. 
 --
 -- * 'sbArtifactsOverride' - Build output artifact settings that override, for this build only, the latest ones already defined in the build project.
 --
@@ -172,39 +176,36 @@ data StartBuild =
 startBuild
     :: Text -- ^ 'sbProjectName'
     -> StartBuild
-startBuild pProjectName_ =
-  StartBuild'
-    { _sbEncryptionKeyOverride = Nothing
-    , _sbSourceLocationOverride = Nothing
-    , _sbEnvironmentVariablesOverride = Nothing
-    , _sbIdempotencyToken = Nothing
-    , _sbRegistryCredentialOverride = Nothing
-    , _sbTimeoutInMinutesOverride = Nothing
-    , _sbServiceRoleOverride = Nothing
-    , _sbCacheOverride = Nothing
-    , _sbQueuedTimeoutInMinutesOverride = Nothing
-    , _sbSecondarySourcesOverride = Nothing
-    , _sbGitCloneDepthOverride = Nothing
-    , _sbImagePullCredentialsTypeOverride = Nothing
-    , _sbLogsConfigOverride = Nothing
-    , _sbSourceAuthOverride = Nothing
-    , _sbGitSubmodulesConfigOverride = Nothing
-    , _sbEnvironmentTypeOverride = Nothing
-    , _sbCertificateOverride = Nothing
-    , _sbComputeTypeOverride = Nothing
-    , _sbPrivilegedModeOverride = Nothing
-    , _sbSourceVersion = Nothing
-    , _sbBuildspecOverride = Nothing
-    , _sbSecondarySourcesVersionOverride = Nothing
-    , _sbReportBuildStatusOverride = Nothing
-    , _sbInsecureSSLOverride = Nothing
-    , _sbImageOverride = Nothing
-    , _sbSecondaryArtifactsOverride = Nothing
-    , _sbArtifactsOverride = Nothing
-    , _sbSourceTypeOverride = Nothing
-    , _sbProjectName = pProjectName_
-    }
-
+startBuild pProjectName_
+  = StartBuild'{_sbEncryptionKeyOverride = Nothing,
+                _sbSourceLocationOverride = Nothing,
+                _sbEnvironmentVariablesOverride = Nothing,
+                _sbIdempotencyToken = Nothing,
+                _sbRegistryCredentialOverride = Nothing,
+                _sbTimeoutInMinutesOverride = Nothing,
+                _sbServiceRoleOverride = Nothing,
+                _sbCacheOverride = Nothing,
+                _sbQueuedTimeoutInMinutesOverride = Nothing,
+                _sbSecondarySourcesOverride = Nothing,
+                _sbGitCloneDepthOverride = Nothing,
+                _sbImagePullCredentialsTypeOverride = Nothing,
+                _sbLogsConfigOverride = Nothing,
+                _sbSourceAuthOverride = Nothing,
+                _sbGitSubmodulesConfigOverride = Nothing,
+                _sbEnvironmentTypeOverride = Nothing,
+                _sbCertificateOverride = Nothing,
+                _sbComputeTypeOverride = Nothing,
+                _sbPrivilegedModeOverride = Nothing,
+                _sbSourceVersion = Nothing,
+                _sbBuildspecOverride = Nothing,
+                _sbSecondarySourcesVersionOverride = Nothing,
+                _sbReportBuildStatusOverride = Nothing,
+                _sbInsecureSSLOverride = Nothing,
+                _sbImageOverride = Nothing,
+                _sbSecondaryArtifactsOverride = Nothing,
+                _sbArtifactsOverride = Nothing,
+                _sbSourceTypeOverride = Nothing,
+                _sbProjectName = pProjectName_}
 
 -- | The AWS Key Management Service (AWS KMS) customer master key (CMK) that overrides the one specified in the build project. The CMK key encrypts the build output artifacts. You can specify either the Amazon Resource Name (ARN) of the CMK or, if available, the CMK's alias (using the format @alias//alias-name/ @ ).
 sbEncryptionKeyOverride :: Lens' StartBuild (Maybe Text)
@@ -218,11 +219,11 @@ sbSourceLocationOverride = lens _sbSourceLocationOverride (\ s a -> s{_sbSourceL
 sbEnvironmentVariablesOverride :: Lens' StartBuild [EnvironmentVariable]
 sbEnvironmentVariablesOverride = lens _sbEnvironmentVariablesOverride (\ s a -> s{_sbEnvironmentVariablesOverride = a}) . _Default . _Coerce
 
--- | A unique, case sensitive identifier you provide to ensure the idempotency of the StartBuild request. The token is included in the StartBuild request and is valid for 12 hours. If you repeat the StartBuild request with the same token, but change a parameter, AWS CodeBuild returns a parameter mismatch error.
+-- | A unique, case sensitive identifier you provide to ensure the idempotency of the StartBuild request. The token is included in the StartBuild request and is valid for 12 hours. If you repeat the StartBuild request with the same token, but change a parameter, AWS CodeBuild returns a parameter mismatch error. 
 sbIdempotencyToken :: Lens' StartBuild (Maybe Text)
 sbIdempotencyToken = lens _sbIdempotencyToken (\ s a -> s{_sbIdempotencyToken = a})
 
--- | The credentials for access to a private registry.
+-- | The credentials for access to a private registry. 
 sbRegistryCredentialOverride :: Lens' StartBuild (Maybe RegistryCredential)
 sbRegistryCredentialOverride = lens _sbRegistryCredentialOverride (\ s a -> s{_sbRegistryCredentialOverride = a})
 
@@ -238,11 +239,11 @@ sbServiceRoleOverride = lens _sbServiceRoleOverride (\ s a -> s{_sbServiceRoleOv
 sbCacheOverride :: Lens' StartBuild (Maybe ProjectCache)
 sbCacheOverride = lens _sbCacheOverride (\ s a -> s{_sbCacheOverride = a})
 
--- | The number of minutes a build is allowed to be queued before it times out.
+-- | The number of minutes a build is allowed to be queued before it times out. 
 sbQueuedTimeoutInMinutesOverride :: Lens' StartBuild (Maybe Natural)
 sbQueuedTimeoutInMinutesOverride = lens _sbQueuedTimeoutInMinutesOverride (\ s a -> s{_sbQueuedTimeoutInMinutesOverride = a}) . mapping _Nat
 
--- | An array of @ProjectSource@ objects.
+-- | An array of @ProjectSource@ objects. 
 sbSecondarySourcesOverride :: Lens' StartBuild [ProjectSource]
 sbSecondarySourcesOverride = lens _sbSecondarySourcesOverride (\ s a -> s{_sbSecondarySourcesOverride = a}) . _Default . _Coerce
 
@@ -250,11 +251,11 @@ sbSecondarySourcesOverride = lens _sbSecondarySourcesOverride (\ s a -> s{_sbSec
 sbGitCloneDepthOverride :: Lens' StartBuild (Maybe Natural)
 sbGitCloneDepthOverride = lens _sbGitCloneDepthOverride (\ s a -> s{_sbGitCloneDepthOverride = a}) . mapping _Nat
 
--- | The type of credentials AWS CodeBuild uses to pull images in your build. There are two valid values:      * @CODEBUILD@ specifies that AWS CodeBuild uses its own credentials. This requires that you modify your ECR repository policy to trust AWS CodeBuild's service principal.     * @SERVICE_ROLE@ specifies that AWS CodeBuild uses your build project's service role.  When using a cross-account or private registry image, you must use SERVICE_ROLE credentials. When using an AWS CodeBuild curated image, you must use CODEBUILD credentials.
+-- | The type of credentials AWS CodeBuild uses to pull images in your build. There are two valid values:      * @CODEBUILD@ specifies that AWS CodeBuild uses its own credentials. This requires that you modify your ECR repository policy to trust AWS CodeBuild's service principal.     * @SERVICE_ROLE@ specifies that AWS CodeBuild uses your build project's service role.  When using a cross-account or private registry image, you must use SERVICE_ROLE credentials. When using an AWS CodeBuild curated image, you must use CODEBUILD credentials. 
 sbImagePullCredentialsTypeOverride :: Lens' StartBuild (Maybe ImagePullCredentialsType)
 sbImagePullCredentialsTypeOverride = lens _sbImagePullCredentialsTypeOverride (\ s a -> s{_sbImagePullCredentialsTypeOverride = a})
 
--- | Log settings for this build that override the log settings defined in the build project.
+-- | Log settings for this build that override the log settings defined in the build project. 
 sbLogsConfigOverride :: Lens' StartBuild (Maybe LogsConfig)
 sbLogsConfigOverride = lens _sbLogsConfigOverride (\ s a -> s{_sbLogsConfigOverride = a})
 
@@ -262,7 +263,7 @@ sbLogsConfigOverride = lens _sbLogsConfigOverride (\ s a -> s{_sbLogsConfigOverr
 sbSourceAuthOverride :: Lens' StartBuild (Maybe SourceAuth)
 sbSourceAuthOverride = lens _sbSourceAuthOverride (\ s a -> s{_sbSourceAuthOverride = a})
 
--- | Information about the Git submodules configuration for this build of an AWS CodeBuild build project.
+-- | Information about the Git submodules configuration for this build of an AWS CodeBuild build project. 
 sbGitSubmodulesConfigOverride :: Lens' StartBuild (Maybe GitSubmodulesConfig)
 sbGitSubmodulesConfigOverride = lens _sbGitSubmodulesConfigOverride (\ s a -> s{_sbGitSubmodulesConfigOverride = a})
 
@@ -282,19 +283,19 @@ sbComputeTypeOverride = lens _sbComputeTypeOverride (\ s a -> s{_sbComputeTypeOv
 sbPrivilegedModeOverride :: Lens' StartBuild (Maybe Bool)
 sbPrivilegedModeOverride = lens _sbPrivilegedModeOverride (\ s a -> s{_sbPrivilegedModeOverride = a})
 
--- | A version of the build input to be built, for this build only. If not specified, the latest version is used. If specified, must be one of:     * For AWS CodeCommit: the commit ID, branch, or Git tag to use.     * For GitHub: the commit ID, pull request ID, branch name, or tag name that corresponds to the version of the source code you want to build. If a pull request ID is specified, it must use the format @pr/pull-request-ID@ (for example @pr/25@ ). If a branch name is specified, the branch's HEAD commit ID is used. If not specified, the default branch's HEAD commit ID is used.     * For Bitbucket: the commit ID, branch name, or tag name that corresponds to the version of the source code you want to build. If a branch name is specified, the branch's HEAD commit ID is used. If not specified, the default branch's HEAD commit ID is used.     * For Amazon Simple Storage Service (Amazon S3): the version ID of the object that represents the build input ZIP file to use. If @sourceVersion@ is specified at the project level, then this @sourceVersion@ (at the build level) takes precedence.  For more information, see <https://docs.aws.amazon.com/codebuild/latest/userguide/sample-source-version.html Source Version Sample with CodeBuild> in the /AWS CodeBuild User Guide/ .
+-- | A version of the build input to be built, for this build only. If not specified, the latest version is used. If specified, must be one of:     * For AWS CodeCommit: the commit ID, branch, or Git tag to use.     * For GitHub: the commit ID, pull request ID, branch name, or tag name that corresponds to the version of the source code you want to build. If a pull request ID is specified, it must use the format @pr/pull-request-ID@ (for example @pr/25@ ). If a branch name is specified, the branch's HEAD commit ID is used. If not specified, the default branch's HEAD commit ID is used.     * For Bitbucket: the commit ID, branch name, or tag name that corresponds to the version of the source code you want to build. If a branch name is specified, the branch's HEAD commit ID is used. If not specified, the default branch's HEAD commit ID is used.     * For Amazon Simple Storage Service (Amazon S3): the version ID of the object that represents the build input ZIP file to use. If @sourceVersion@ is specified at the project level, then this @sourceVersion@ (at the build level) takes precedence.  For more information, see <https://docs.aws.amazon.com/codebuild/latest/userguide/sample-source-version.html Source Version Sample with CodeBuild> in the /AWS CodeBuild User Guide/ . 
 sbSourceVersion :: Lens' StartBuild (Maybe Text)
 sbSourceVersion = lens _sbSourceVersion (\ s a -> s{_sbSourceVersion = a})
 
--- | A buildspec file declaration that overrides, for this build only, the latest one already defined in the build project. If this value is set, it can be either an inline buildspec definition, the path to an alternate buildspec file relative to the value of the built-in @CODEBUILD_SRC_DIR@ environment variable, or the path to an S3 bucket. The bucket must be in the same AWS Region as the build project. Specify the buildspec file using its ARN (for example, @arn:aws:s3:::my-codebuild-sample2/buildspec.yml@ ). If this value is not provided or is set to an empty string, the source code must contain a buildspec file in its root directory. For more information, see <https://docs.aws.amazon.com/codebuild/latest/userguide/build-spec-ref.html#build-spec-ref-name-storage Buildspec File Name and Storage Location> .
+-- | A buildspec file declaration that overrides, for this build only, the latest one already defined in the build project. If this value is set, it can be either an inline buildspec definition, the path to an alternate buildspec file relative to the value of the built-in @CODEBUILD_SRC_DIR@ environment variable, or the path to an S3 bucket. The bucket must be in the same AWS Region as the build project. Specify the buildspec file using its ARN (for example, @arn:aws:s3:::my-codebuild-sample2/buildspec.yml@ ). If this value is not provided or is set to an empty string, the source code must contain a buildspec file in its root directory. For more information, see <https://docs.aws.amazon.com/codebuild/latest/userguide/build-spec-ref.html#build-spec-ref-name-storage Buildspec File Name and Storage Location> . 
 sbBuildspecOverride :: Lens' StartBuild (Maybe Text)
 sbBuildspecOverride = lens _sbBuildspecOverride (\ s a -> s{_sbBuildspecOverride = a})
 
--- | An array of @ProjectSourceVersion@ objects that specify one or more versions of the project's secondary sources to be used for this build only.
+-- | An array of @ProjectSourceVersion@ objects that specify one or more versions of the project's secondary sources to be used for this build only. 
 sbSecondarySourcesVersionOverride :: Lens' StartBuild [ProjectSourceVersion]
 sbSecondarySourcesVersionOverride = lens _sbSecondarySourcesVersionOverride (\ s a -> s{_sbSecondarySourcesVersionOverride = a}) . _Default . _Coerce
 
--- | Set to true to report to your source provider the status of a build's start and completion. If you use this option with a source provider other than GitHub, GitHub Enterprise, or Bitbucket, an invalidInputException is thrown.
+-- | Set to true to report to your source provider the status of a build's start and completion. If you use this option with a source provider other than GitHub, GitHub Enterprise, or Bitbucket, an invalidInputException is thrown. 
 sbReportBuildStatusOverride :: Lens' StartBuild (Maybe Bool)
 sbReportBuildStatusOverride = lens _sbReportBuildStatusOverride (\ s a -> s{_sbReportBuildStatusOverride = a})
 
@@ -306,7 +307,7 @@ sbInsecureSSLOverride = lens _sbInsecureSSLOverride (\ s a -> s{_sbInsecureSSLOv
 sbImageOverride :: Lens' StartBuild (Maybe Text)
 sbImageOverride = lens _sbImageOverride (\ s a -> s{_sbImageOverride = a})
 
--- | An array of @ProjectArtifacts@ objects.
+-- | An array of @ProjectArtifacts@ objects. 
 sbSecondaryArtifactsOverride :: Lens' StartBuild [ProjectArtifacts]
 sbSecondaryArtifactsOverride = lens _sbSecondaryArtifactsOverride (\ s a -> s{_sbSecondaryArtifactsOverride = a}) . _Default . _Coerce
 
@@ -404,13 +405,10 @@ instance ToQuery StartBuild where
         toQuery = const mempty
 
 -- | /See:/ 'startBuildResponse' smart constructor.
-data StartBuildResponse =
-  StartBuildResponse'
-    { _srsBuild          :: !(Maybe Build)
-    , _srsResponseStatus :: !Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data StartBuildResponse = StartBuildResponse'{_srsBuild
+                                              :: !(Maybe Build),
+                                              _srsResponseStatus :: !Int}
+                            deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'StartBuildResponse' with the minimum fields required to make a request.
 --
@@ -422,10 +420,9 @@ data StartBuildResponse =
 startBuildResponse
     :: Int -- ^ 'srsResponseStatus'
     -> StartBuildResponse
-startBuildResponse pResponseStatus_ =
-  StartBuildResponse'
-    {_srsBuild = Nothing, _srsResponseStatus = pResponseStatus_}
-
+startBuildResponse pResponseStatus_
+  = StartBuildResponse'{_srsBuild = Nothing,
+                        _srsResponseStatus = pResponseStatus_}
 
 -- | Information about the build to be run.
 srsBuild :: Lens' StartBuildResponse (Maybe Build)

@@ -43,22 +43,20 @@ module Network.AWS.Redshift.ModifyClusterParameterGroup
 import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.Redshift.Types
-import Network.AWS.Redshift.Types.Product
 import Network.AWS.Request
 import Network.AWS.Response
 
--- |
+-- | 
 --
 --
 --
 -- /See:/ 'modifyClusterParameterGroup' smart constructor.
-data ModifyClusterParameterGroup =
-  ModifyClusterParameterGroup'
-    { _mcpgParameterGroupName :: !Text
-    , _mcpgParameters         :: ![Parameter]
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data ModifyClusterParameterGroup = ModifyClusterParameterGroup'{_mcpgParameterGroupName
+                                                                :: !Text,
+                                                                _mcpgParameters
+                                                                :: ![Parameter]}
+                                     deriving (Eq, Read, Show, Data, Typeable,
+                                               Generic)
 
 -- | Creates a value of 'ModifyClusterParameterGroup' with the minimum fields required to make a request.
 --
@@ -70,10 +68,10 @@ data ModifyClusterParameterGroup =
 modifyClusterParameterGroup
     :: Text -- ^ 'mcpgParameterGroupName'
     -> ModifyClusterParameterGroup
-modifyClusterParameterGroup pParameterGroupName_ =
-  ModifyClusterParameterGroup'
-    {_mcpgParameterGroupName = pParameterGroupName_, _mcpgParameters = mempty}
-
+modifyClusterParameterGroup pParameterGroupName_
+  = ModifyClusterParameterGroup'{_mcpgParameterGroupName
+                                   = pParameterGroupName_,
+                                 _mcpgParameters = mempty}
 
 -- | The name of the parameter group to be modified.
 mcpgParameterGroupName :: Lens' ModifyClusterParameterGroup Text

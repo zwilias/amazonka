@@ -39,19 +39,16 @@ module Network.AWS.EMR.ListSecurityConfigurations
     ) where
 
 import Network.AWS.EMR.Types
-import Network.AWS.EMR.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 
 -- | /See:/ 'listSecurityConfigurations' smart constructor.
-newtype ListSecurityConfigurations =
-  ListSecurityConfigurations'
-    { _lscMarker :: Maybe Text
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+newtype ListSecurityConfigurations = ListSecurityConfigurations'{_lscMarker
+                                                                 :: Maybe Text}
+                                       deriving (Eq, Read, Show, Data, Typeable,
+                                                 Generic)
 
 -- | Creates a value of 'ListSecurityConfigurations' with the minimum fields required to make a request.
 --
@@ -60,8 +57,8 @@ newtype ListSecurityConfigurations =
 -- * 'lscMarker' - The pagination token that indicates the set of results to retrieve.
 listSecurityConfigurations
     :: ListSecurityConfigurations
-listSecurityConfigurations = ListSecurityConfigurations' {_lscMarker = Nothing}
-
+listSecurityConfigurations
+  = ListSecurityConfigurations'{_lscMarker = Nothing}
 
 -- | The pagination token that indicates the set of results to retrieve.
 lscMarker :: Lens' ListSecurityConfigurations (Maybe Text)
@@ -104,14 +101,19 @@ instance ToQuery ListSecurityConfigurations where
         toQuery = const mempty
 
 -- | /See:/ 'listSecurityConfigurationsResponse' smart constructor.
-data ListSecurityConfigurationsResponse =
-  ListSecurityConfigurationsResponse'
-    { _lscrsSecurityConfigurations :: !(Maybe [SecurityConfigurationSummary])
-    , _lscrsMarker                 :: !(Maybe Text)
-    , _lscrsResponseStatus         :: !Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data ListSecurityConfigurationsResponse = ListSecurityConfigurationsResponse'{_lscrsSecurityConfigurations
+                                                                              ::
+                                                                              !(Maybe
+                                                                                  [SecurityConfigurationSummary]),
+                                                                              _lscrsMarker
+                                                                              ::
+                                                                              !(Maybe
+                                                                                  Text),
+                                                                              _lscrsResponseStatus
+                                                                              ::
+                                                                              !Int}
+                                            deriving (Eq, Read, Show, Data,
+                                                      Typeable, Generic)
 
 -- | Creates a value of 'ListSecurityConfigurationsResponse' with the minimum fields required to make a request.
 --
@@ -125,13 +127,11 @@ data ListSecurityConfigurationsResponse =
 listSecurityConfigurationsResponse
     :: Int -- ^ 'lscrsResponseStatus'
     -> ListSecurityConfigurationsResponse
-listSecurityConfigurationsResponse pResponseStatus_ =
-  ListSecurityConfigurationsResponse'
-    { _lscrsSecurityConfigurations = Nothing
-    , _lscrsMarker = Nothing
-    , _lscrsResponseStatus = pResponseStatus_
-    }
-
+listSecurityConfigurationsResponse pResponseStatus_
+  = ListSecurityConfigurationsResponse'{_lscrsSecurityConfigurations
+                                          = Nothing,
+                                        _lscrsMarker = Nothing,
+                                        _lscrsResponseStatus = pResponseStatus_}
 
 -- | The creation date and time, and name, of each security configuration.
 lscrsSecurityConfigurations :: Lens' ListSecurityConfigurationsResponse [SecurityConfigurationSummary]

@@ -38,20 +38,18 @@ module Network.AWS.EC2.DisassociateRouteTable
     ) where
 
 import Network.AWS.EC2.Types
-import Network.AWS.EC2.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 
 -- | /See:/ 'disassociateRouteTable' smart constructor.
-data DisassociateRouteTable =
-  DisassociateRouteTable'
-    { _drtDryRun        :: !(Maybe Bool)
-    , _drtAssociationId :: !Text
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data DisassociateRouteTable = DisassociateRouteTable'{_drtDryRun
+                                                      :: !(Maybe Bool),
+                                                      _drtAssociationId ::
+                                                      !Text}
+                                deriving (Eq, Read, Show, Data, Typeable,
+                                          Generic)
 
 -- | Creates a value of 'DisassociateRouteTable' with the minimum fields required to make a request.
 --
@@ -63,10 +61,9 @@ data DisassociateRouteTable =
 disassociateRouteTable
     :: Text -- ^ 'drtAssociationId'
     -> DisassociateRouteTable
-disassociateRouteTable pAssociationId_ =
-  DisassociateRouteTable'
-    {_drtDryRun = Nothing, _drtAssociationId = pAssociationId_}
-
+disassociateRouteTable pAssociationId_
+  = DisassociateRouteTable'{_drtDryRun = Nothing,
+                            _drtAssociationId = pAssociationId_}
 
 -- | Checks whether you have the required permissions for the action, without actually making the request, and provides an error response. If you have the required permissions, the error response is @DryRunOperation@ . Otherwise, it is @UnauthorizedOperation@ .
 drtDryRun :: Lens' DisassociateRouteTable (Maybe Bool)
@@ -103,16 +100,15 @@ instance ToQuery DisassociateRouteTable where
                "AssociationId" =: _drtAssociationId]
 
 -- | /See:/ 'disassociateRouteTableResponse' smart constructor.
-data DisassociateRouteTableResponse =
-  DisassociateRouteTableResponse'
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data DisassociateRouteTableResponse = DisassociateRouteTableResponse'
+                                        deriving (Eq, Read, Show, Data,
+                                                  Typeable, Generic)
 
 -- | Creates a value of 'DisassociateRouteTableResponse' with the minimum fields required to make a request.
 --
 disassociateRouteTableResponse
     :: DisassociateRouteTableResponse
-disassociateRouteTableResponse = DisassociateRouteTableResponse'
-
+disassociateRouteTableResponse
+  = DisassociateRouteTableResponse'
 
 instance NFData DisassociateRouteTableResponse where

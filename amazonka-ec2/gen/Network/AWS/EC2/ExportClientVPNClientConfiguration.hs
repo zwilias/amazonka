@@ -39,20 +39,21 @@ module Network.AWS.EC2.ExportClientVPNClientConfiguration
     ) where
 
 import Network.AWS.EC2.Types
-import Network.AWS.EC2.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 
 -- | /See:/ 'exportClientVPNClientConfiguration' smart constructor.
-data ExportClientVPNClientConfiguration =
-  ExportClientVPNClientConfiguration'
-    { _ecvccDryRun              :: !(Maybe Bool)
-    , _ecvccClientVPNEndpointId :: !Text
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data ExportClientVPNClientConfiguration = ExportClientVPNClientConfiguration'{_ecvccDryRun
+                                                                              ::
+                                                                              !(Maybe
+                                                                                  Bool),
+                                                                              _ecvccClientVPNEndpointId
+                                                                              ::
+                                                                              !Text}
+                                            deriving (Eq, Read, Show, Data,
+                                                      Typeable, Generic)
 
 -- | Creates a value of 'ExportClientVPNClientConfiguration' with the minimum fields required to make a request.
 --
@@ -64,10 +65,12 @@ data ExportClientVPNClientConfiguration =
 exportClientVPNClientConfiguration
     :: Text -- ^ 'ecvccClientVPNEndpointId'
     -> ExportClientVPNClientConfiguration
-exportClientVPNClientConfiguration pClientVPNEndpointId_ =
-  ExportClientVPNClientConfiguration'
-    {_ecvccDryRun = Nothing, _ecvccClientVPNEndpointId = pClientVPNEndpointId_}
-
+exportClientVPNClientConfiguration
+  pClientVPNEndpointId_
+  = ExportClientVPNClientConfiguration'{_ecvccDryRun =
+                                          Nothing,
+                                        _ecvccClientVPNEndpointId =
+                                          pClientVPNEndpointId_}
 
 -- | Checks whether you have the required permissions for the action, without actually making the request, and provides an error response. If you have the required permissions, the error response is @DryRunOperation@ . Otherwise, it is @UnauthorizedOperation@ .
 ecvccDryRun :: Lens' ExportClientVPNClientConfiguration (Maybe Bool)
@@ -115,13 +118,16 @@ instance ToQuery ExportClientVPNClientConfiguration
                "ClientVpnEndpointId" =: _ecvccClientVPNEndpointId]
 
 -- | /See:/ 'exportClientVPNClientConfigurationResponse' smart constructor.
-data ExportClientVPNClientConfigurationResponse =
-  ExportClientVPNClientConfigurationResponse'
-    { _ecvccrsClientConfiguration :: !(Maybe Text)
-    , _ecvccrsResponseStatus      :: !Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data ExportClientVPNClientConfigurationResponse = ExportClientVPNClientConfigurationResponse'{_ecvccrsClientConfiguration
+                                                                                              ::
+                                                                                              !(Maybe
+                                                                                                  Text),
+                                                                                              _ecvccrsResponseStatus
+                                                                                              ::
+                                                                                              !Int}
+                                                    deriving (Eq, Read, Show,
+                                                              Data, Typeable,
+                                                              Generic)
 
 -- | Creates a value of 'ExportClientVPNClientConfigurationResponse' with the minimum fields required to make a request.
 --
@@ -133,12 +139,12 @@ data ExportClientVPNClientConfigurationResponse =
 exportClientVPNClientConfigurationResponse
     :: Int -- ^ 'ecvccrsResponseStatus'
     -> ExportClientVPNClientConfigurationResponse
-exportClientVPNClientConfigurationResponse pResponseStatus_ =
-  ExportClientVPNClientConfigurationResponse'
-    { _ecvccrsClientConfiguration = Nothing
-    , _ecvccrsResponseStatus = pResponseStatus_
-    }
-
+exportClientVPNClientConfigurationResponse
+  pResponseStatus_
+  = ExportClientVPNClientConfigurationResponse'{_ecvccrsClientConfiguration
+                                                  = Nothing,
+                                                _ecvccrsResponseStatus =
+                                                  pResponseStatus_}
 
 -- | The contents of the Client VPN endpoint configuration file.
 ecvccrsClientConfiguration :: Lens' ExportClientVPNClientConfigurationResponse (Maybe Text)

@@ -41,22 +41,29 @@ module Network.AWS.DirectConnect.CreateDirectConnectGatewayAssociation
     ) where
 
 import Network.AWS.DirectConnect.Types
-import Network.AWS.DirectConnect.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 
 -- | /See:/ 'createDirectConnectGatewayAssociation' smart constructor.
-data CreateDirectConnectGatewayAssociation =
-  CreateDirectConnectGatewayAssociation'
-    { _cdcgaVirtualGatewayId :: !(Maybe Text)
-    , _cdcgaAddAllowedPrefixesToDirectConnectGateway :: !(Maybe [RouteFilterPrefix])
-    , _cdcgaGatewayId :: !(Maybe Text)
-    , _cdcgaDirectConnectGatewayId :: !Text
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data CreateDirectConnectGatewayAssociation = CreateDirectConnectGatewayAssociation'{_cdcgaVirtualGatewayId
+                                                                                    ::
+                                                                                    !(Maybe
+                                                                                        Text),
+                                                                                    _cdcgaAddAllowedPrefixesToDirectConnectGateway
+                                                                                    ::
+                                                                                    !(Maybe
+                                                                                        [RouteFilterPrefix]),
+                                                                                    _cdcgaGatewayId
+                                                                                    ::
+                                                                                    !(Maybe
+                                                                                        Text),
+                                                                                    _cdcgaDirectConnectGatewayId
+                                                                                    ::
+                                                                                    !Text}
+                                               deriving (Eq, Read, Show, Data,
+                                                         Typeable, Generic)
 
 -- | Creates a value of 'CreateDirectConnectGatewayAssociation' with the minimum fields required to make a request.
 --
@@ -72,14 +79,15 @@ data CreateDirectConnectGatewayAssociation =
 createDirectConnectGatewayAssociation
     :: Text -- ^ 'cdcgaDirectConnectGatewayId'
     -> CreateDirectConnectGatewayAssociation
-createDirectConnectGatewayAssociation pDirectConnectGatewayId_ =
-  CreateDirectConnectGatewayAssociation'
-    { _cdcgaVirtualGatewayId = Nothing
-    , _cdcgaAddAllowedPrefixesToDirectConnectGateway = Nothing
-    , _cdcgaGatewayId = Nothing
-    , _cdcgaDirectConnectGatewayId = pDirectConnectGatewayId_
-    }
-
+createDirectConnectGatewayAssociation
+  pDirectConnectGatewayId_
+  = CreateDirectConnectGatewayAssociation'{_cdcgaVirtualGatewayId
+                                             = Nothing,
+                                           _cdcgaAddAllowedPrefixesToDirectConnectGateway
+                                             = Nothing,
+                                           _cdcgaGatewayId = Nothing,
+                                           _cdcgaDirectConnectGatewayId =
+                                             pDirectConnectGatewayId_}
 
 -- | The ID of the virtual private gateway.
 cdcgaVirtualGatewayId :: Lens' CreateDirectConnectGatewayAssociation (Maybe Text)
@@ -152,13 +160,16 @@ instance ToQuery
         toQuery = const mempty
 
 -- | /See:/ 'createDirectConnectGatewayAssociationResponse' smart constructor.
-data CreateDirectConnectGatewayAssociationResponse =
-  CreateDirectConnectGatewayAssociationResponse'
-    { _cdcgarsDirectConnectGatewayAssociation :: !(Maybe DirectConnectGatewayAssociation)
-    , _cdcgarsResponseStatus :: !Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data CreateDirectConnectGatewayAssociationResponse = CreateDirectConnectGatewayAssociationResponse'{_cdcgarsDirectConnectGatewayAssociation
+                                                                                                    ::
+                                                                                                    !(Maybe
+                                                                                                        DirectConnectGatewayAssociation),
+                                                                                                    _cdcgarsResponseStatus
+                                                                                                    ::
+                                                                                                    !Int}
+                                                       deriving (Eq, Read, Show,
+                                                                 Data, Typeable,
+                                                                 Generic)
 
 -- | Creates a value of 'CreateDirectConnectGatewayAssociationResponse' with the minimum fields required to make a request.
 --
@@ -170,12 +181,12 @@ data CreateDirectConnectGatewayAssociationResponse =
 createDirectConnectGatewayAssociationResponse
     :: Int -- ^ 'cdcgarsResponseStatus'
     -> CreateDirectConnectGatewayAssociationResponse
-createDirectConnectGatewayAssociationResponse pResponseStatus_ =
-  CreateDirectConnectGatewayAssociationResponse'
-    { _cdcgarsDirectConnectGatewayAssociation = Nothing
-    , _cdcgarsResponseStatus = pResponseStatus_
-    }
-
+createDirectConnectGatewayAssociationResponse
+  pResponseStatus_
+  = CreateDirectConnectGatewayAssociationResponse'{_cdcgarsDirectConnectGatewayAssociation
+                                                     = Nothing,
+                                                   _cdcgarsResponseStatus =
+                                                     pResponseStatus_}
 
 -- | The association to be created.
 cdcgarsDirectConnectGatewayAssociation :: Lens' CreateDirectConnectGatewayAssociationResponse (Maybe DirectConnectGatewayAssociation)

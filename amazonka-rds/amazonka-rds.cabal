@@ -142,8 +142,72 @@ library
         , Network.AWS.RDS.Waiters
 
     other-modules:
-          Network.AWS.RDS.Types.Product
-        , Network.AWS.RDS.Types.Sum
+          Network.AWS.RDS.Types.AccountQuota
+        , Network.AWS.RDS.Types.ApplyMethod
+        , Network.AWS.RDS.Types.AvailabilityZone
+        , Network.AWS.RDS.Types.Certificate
+        , Network.AWS.RDS.Types.CharacterSet
+        , Network.AWS.RDS.Types.CloudwatchLogsExportConfiguration
+        , Network.AWS.RDS.Types.DBCluster
+        , Network.AWS.RDS.Types.DBClusterBacktrack
+        , Network.AWS.RDS.Types.DBClusterMember
+        , Network.AWS.RDS.Types.DBClusterOptionGroupStatus
+        , Network.AWS.RDS.Types.DBClusterParameterGroup
+        , Network.AWS.RDS.Types.DBClusterParameterGroupNameMessage
+        , Network.AWS.RDS.Types.DBClusterRole
+        , Network.AWS.RDS.Types.DBClusterSnapshot
+        , Network.AWS.RDS.Types.DBClusterSnapshotAttribute
+        , Network.AWS.RDS.Types.DBClusterSnapshotAttributesResult
+        , Network.AWS.RDS.Types.DBEngineVersion
+        , Network.AWS.RDS.Types.DBInstance
+        , Network.AWS.RDS.Types.DBInstanceStatusInfo
+        , Network.AWS.RDS.Types.DBParameterGroup
+        , Network.AWS.RDS.Types.DBParameterGroupNameMessage
+        , Network.AWS.RDS.Types.DBParameterGroupStatus
+        , Network.AWS.RDS.Types.DBSecurityGroup
+        , Network.AWS.RDS.Types.DBSecurityGroupMembership
+        , Network.AWS.RDS.Types.DBSnapshot
+        , Network.AWS.RDS.Types.DBSnapshotAttribute
+        , Network.AWS.RDS.Types.DBSnapshotAttributesResult
+        , Network.AWS.RDS.Types.DBSubnetGroup
+        , Network.AWS.RDS.Types.DescribeDBLogFilesDetails
+        , Network.AWS.RDS.Types.DomainMembership
+        , Network.AWS.RDS.Types.DoubleRange
+        , Network.AWS.RDS.Types.EC2SecurityGroup
+        , Network.AWS.RDS.Types.Endpoint
+        , Network.AWS.RDS.Types.EngineDefaults
+        , Network.AWS.RDS.Types.Event
+        , Network.AWS.RDS.Types.EventCategoriesMap
+        , Network.AWS.RDS.Types.EventSubscription
+        , Network.AWS.RDS.Types.Filter
+        , Network.AWS.RDS.Types.IPRange
+        , Network.AWS.RDS.Types.Option
+        , Network.AWS.RDS.Types.OptionConfiguration
+        , Network.AWS.RDS.Types.OptionGroup
+        , Network.AWS.RDS.Types.OptionGroupMembership
+        , Network.AWS.RDS.Types.OptionGroupOption
+        , Network.AWS.RDS.Types.OptionGroupOptionSetting
+        , Network.AWS.RDS.Types.OptionSetting
+        , Network.AWS.RDS.Types.OptionVersion
+        , Network.AWS.RDS.Types.OrderableDBInstanceOption
+        , Network.AWS.RDS.Types.Parameter
+        , Network.AWS.RDS.Types.PendingCloudwatchLogsExports
+        , Network.AWS.RDS.Types.PendingMaintenanceAction
+        , Network.AWS.RDS.Types.PendingModifiedValues
+        , Network.AWS.RDS.Types.Range
+        , Network.AWS.RDS.Types.RecurringCharge
+        , Network.AWS.RDS.Types.ReservedDBInstance
+        , Network.AWS.RDS.Types.ReservedDBInstancesOffering
+        , Network.AWS.RDS.Types.ResourcePendingMaintenanceActions
+        , Network.AWS.RDS.Types.SourceRegion
+        , Network.AWS.RDS.Types.SourceType
+        , Network.AWS.RDS.Types.Subnet
+        , Network.AWS.RDS.Types.Tag
+        , Network.AWS.RDS.Types.Timezone
+        , Network.AWS.RDS.Types.UpgradeTarget
+        , Network.AWS.RDS.Types.VPCSecurityGroupMembership
+        , Network.AWS.RDS.Types.ValidDBInstanceModificationsMessage
+        , Network.AWS.RDS.Types.ValidStorageOptions
 
     build-depends:
           amazonka-core == 1.6.1.*

@@ -43,22 +43,18 @@ module Network.AWS.EC2.DescribeKeyPairs
     ) where
 
 import Network.AWS.EC2.Types
-import Network.AWS.EC2.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 
 -- | /See:/ 'describeKeyPairs' smart constructor.
-data DescribeKeyPairs =
-  DescribeKeyPairs'
-    { _dkpsFilters    :: !(Maybe [Filter])
-    , _dkpsKeyPairIds :: !(Maybe [Text])
-    , _dkpsKeyNames   :: !(Maybe [Text])
-    , _dkpsDryRun     :: !(Maybe Bool)
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data DescribeKeyPairs = DescribeKeyPairs'{_dkpsFilters
+                                          :: !(Maybe [Filter]),
+                                          _dkpsKeyPairIds :: !(Maybe [Text]),
+                                          _dkpsKeyNames :: !(Maybe [Text]),
+                                          _dkpsDryRun :: !(Maybe Bool)}
+                          deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'DescribeKeyPairs' with the minimum fields required to make a request.
 --
@@ -73,14 +69,10 @@ data DescribeKeyPairs =
 -- * 'dkpsDryRun' - Checks whether you have the required permissions for the action, without actually making the request, and provides an error response. If you have the required permissions, the error response is @DryRunOperation@ . Otherwise, it is @UnauthorizedOperation@ .
 describeKeyPairs
     :: DescribeKeyPairs
-describeKeyPairs =
-  DescribeKeyPairs'
-    { _dkpsFilters = Nothing
-    , _dkpsKeyPairIds = Nothing
-    , _dkpsKeyNames = Nothing
-    , _dkpsDryRun = Nothing
-    }
-
+describeKeyPairs
+  = DescribeKeyPairs'{_dkpsFilters = Nothing,
+                      _dkpsKeyPairIds = Nothing, _dkpsKeyNames = Nothing,
+                      _dkpsDryRun = Nothing}
 
 -- | The filters.     * @key-pair-id@ - The ID of the key pair.     * @fingerprint@ - The fingerprint of the key pair.     * @key-name@ - The name of the key pair.     * @tag-key@ - The key of a tag assigned to the resource. Use this filter to find all resources assigned a tag with a specific key, regardless of the tag value.     * @tag@ :<key> - The key/value combination of a tag assigned to the resource. Use the tag key in the filter name and the tag value as the filter value. For example, to find all resources that have a tag with the key @Owner@ and the value @TeamA@ , specify @tag:Owner@ for the filter name and @TeamA@ for the filter value.
 dkpsFilters :: Lens' DescribeKeyPairs [Filter]
@@ -131,13 +123,14 @@ instance ToQuery DescribeKeyPairs where
                "DryRun" =: _dkpsDryRun]
 
 -- | /See:/ 'describeKeyPairsResponse' smart constructor.
-data DescribeKeyPairsResponse =
-  DescribeKeyPairsResponse'
-    { _dkprsKeyPairs       :: !(Maybe [KeyPairInfo])
-    , _dkprsResponseStatus :: !Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data DescribeKeyPairsResponse = DescribeKeyPairsResponse'{_dkprsKeyPairs
+                                                          ::
+                                                          !(Maybe
+                                                              [KeyPairInfo]),
+                                                          _dkprsResponseStatus
+                                                          :: !Int}
+                                  deriving (Eq, Read, Show, Data, Typeable,
+                                            Generic)
 
 -- | Creates a value of 'DescribeKeyPairsResponse' with the minimum fields required to make a request.
 --
@@ -149,10 +142,9 @@ data DescribeKeyPairsResponse =
 describeKeyPairsResponse
     :: Int -- ^ 'dkprsResponseStatus'
     -> DescribeKeyPairsResponse
-describeKeyPairsResponse pResponseStatus_ =
-  DescribeKeyPairsResponse'
-    {_dkprsKeyPairs = Nothing, _dkprsResponseStatus = pResponseStatus_}
-
+describeKeyPairsResponse pResponseStatus_
+  = DescribeKeyPairsResponse'{_dkprsKeyPairs = Nothing,
+                              _dkprsResponseStatus = pResponseStatus_}
 
 -- | Information about the key pairs.
 dkprsKeyPairs :: Lens' DescribeKeyPairsResponse [KeyPairInfo]

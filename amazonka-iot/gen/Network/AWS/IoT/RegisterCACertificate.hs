@@ -43,7 +43,6 @@ module Network.AWS.IoT.RegisterCACertificate
     ) where
 
 import Network.AWS.IoT.Types
-import Network.AWS.IoT.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.Request
@@ -54,16 +53,17 @@ import Network.AWS.Response
 --
 --
 -- /See:/ 'registerCACertificate' smart constructor.
-data RegisterCACertificate =
-  RegisterCACertificate'
-    { _rcacSetAsActive             :: !(Maybe Bool)
-    , _rcacAllowAutoRegistration   :: !(Maybe Bool)
-    , _rcacRegistrationConfig      :: !(Maybe RegistrationConfig)
-    , _rcacCaCertificate           :: !Text
-    , _rcacVerificationCertificate :: !Text
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data RegisterCACertificate = RegisterCACertificate'{_rcacSetAsActive
+                                                    :: !(Maybe Bool),
+                                                    _rcacAllowAutoRegistration
+                                                    :: !(Maybe Bool),
+                                                    _rcacRegistrationConfig ::
+                                                    !(Maybe RegistrationConfig),
+                                                    _rcacCaCertificate :: !Text,
+                                                    _rcacVerificationCertificate
+                                                    :: !Text}
+                               deriving (Eq, Read, Show, Data, Typeable,
+                                         Generic)
 
 -- | Creates a value of 'RegisterCACertificate' with the minimum fields required to make a request.
 --
@@ -82,15 +82,14 @@ registerCACertificate
     :: Text -- ^ 'rcacCaCertificate'
     -> Text -- ^ 'rcacVerificationCertificate'
     -> RegisterCACertificate
-registerCACertificate pCaCertificate_ pVerificationCertificate_ =
-  RegisterCACertificate'
-    { _rcacSetAsActive = Nothing
-    , _rcacAllowAutoRegistration = Nothing
-    , _rcacRegistrationConfig = Nothing
-    , _rcacCaCertificate = pCaCertificate_
-    , _rcacVerificationCertificate = pVerificationCertificate_
-    }
-
+registerCACertificate pCaCertificate_
+  pVerificationCertificate_
+  = RegisterCACertificate'{_rcacSetAsActive = Nothing,
+                           _rcacAllowAutoRegistration = Nothing,
+                           _rcacRegistrationConfig = Nothing,
+                           _rcacCaCertificate = pCaCertificate_,
+                           _rcacVerificationCertificate =
+                             pVerificationCertificate_}
 
 -- | A boolean value that specifies if the CA certificate is set to active.
 rcacSetAsActive :: Lens' RegisterCACertificate (Maybe Bool)
@@ -156,14 +155,18 @@ instance ToQuery RegisterCACertificate where
 --
 --
 -- /See:/ 'registerCACertificateResponse' smart constructor.
-data RegisterCACertificateResponse =
-  RegisterCACertificateResponse'
-    { _rcacrsCertificateARN :: !(Maybe Text)
-    , _rcacrsCertificateId  :: !(Maybe Text)
-    , _rcacrsResponseStatus :: !Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data RegisterCACertificateResponse = RegisterCACertificateResponse'{_rcacrsCertificateARN
+                                                                    ::
+                                                                    !(Maybe
+                                                                        Text),
+                                                                    _rcacrsCertificateId
+                                                                    ::
+                                                                    !(Maybe
+                                                                        Text),
+                                                                    _rcacrsResponseStatus
+                                                                    :: !Int}
+                                       deriving (Eq, Read, Show, Data, Typeable,
+                                                 Generic)
 
 -- | Creates a value of 'RegisterCACertificateResponse' with the minimum fields required to make a request.
 --
@@ -177,13 +180,11 @@ data RegisterCACertificateResponse =
 registerCACertificateResponse
     :: Int -- ^ 'rcacrsResponseStatus'
     -> RegisterCACertificateResponse
-registerCACertificateResponse pResponseStatus_ =
-  RegisterCACertificateResponse'
-    { _rcacrsCertificateARN = Nothing
-    , _rcacrsCertificateId = Nothing
-    , _rcacrsResponseStatus = pResponseStatus_
-    }
-
+registerCACertificateResponse pResponseStatus_
+  = RegisterCACertificateResponse'{_rcacrsCertificateARN
+                                     = Nothing,
+                                   _rcacrsCertificateId = Nothing,
+                                   _rcacrsResponseStatus = pResponseStatus_}
 
 -- | The CA certificate ARN.
 rcacrsCertificateARN :: Lens' RegisterCACertificateResponse (Maybe Text)

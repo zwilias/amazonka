@@ -49,7 +49,6 @@ module Network.AWS.IAM.GetAccountAuthorizationDetails
     ) where
 
 import Network.AWS.IAM.Types
-import Network.AWS.IAM.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Pager
 import Network.AWS.Prelude
@@ -57,14 +56,20 @@ import Network.AWS.Request
 import Network.AWS.Response
 
 -- | /See:/ 'getAccountAuthorizationDetails' smart constructor.
-data GetAccountAuthorizationDetails =
-  GetAccountAuthorizationDetails'
-    { _gaadMarker   :: !(Maybe Text)
-    , _gaadMaxItems :: !(Maybe Nat)
-    , _gaadFilter   :: !(Maybe [EntityType])
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data GetAccountAuthorizationDetails = GetAccountAuthorizationDetails'{_gaadMarker
+                                                                      ::
+                                                                      !(Maybe
+                                                                          Text),
+                                                                      _gaadMaxItems
+                                                                      ::
+                                                                      !(Maybe
+                                                                          Nat),
+                                                                      _gaadFilter
+                                                                      ::
+                                                                      !(Maybe
+                                                                          [EntityType])}
+                                        deriving (Eq, Read, Show, Data,
+                                                  Typeable, Generic)
 
 -- | Creates a value of 'GetAccountAuthorizationDetails' with the minimum fields required to make a request.
 --
@@ -77,10 +82,11 @@ data GetAccountAuthorizationDetails =
 -- * 'gaadFilter' - A list of entity types used to filter the results. Only the entities that match the types you specify are included in the output. Use the value @LocalManagedPolicy@ to include customer managed policies. The format for this parameter is a comma-separated (if more than one) list of strings. Each string value in the list must be one of the valid values listed below.
 getAccountAuthorizationDetails
     :: GetAccountAuthorizationDetails
-getAccountAuthorizationDetails =
-  GetAccountAuthorizationDetails'
-    {_gaadMarker = Nothing, _gaadMaxItems = Nothing, _gaadFilter = Nothing}
-
+getAccountAuthorizationDetails
+  = GetAccountAuthorizationDetails'{_gaadMarker =
+                                      Nothing,
+                                    _gaadMaxItems = Nothing,
+                                    _gaadFilter = Nothing}
 
 -- | Use this parameter only when paginating results and only after you receive a response indicating that the results are truncated. Set it to the value of the @Marker@ element in the response that you received to indicate where the next call should start.
 gaadMarker :: Lens' GetAccountAuthorizationDetails (Maybe Text)
@@ -149,23 +155,40 @@ instance ToQuery GetAccountAuthorizationDetails where
                "Filter" =:
                  toQuery (toQueryList "member" <$> _gaadFilter)]
 
--- | Contains the response to a successful 'GetAccountAuthorizationDetails' request.
+-- | Contains the response to a successful 'GetAccountAuthorizationDetails' request. 
 --
 --
 --
 -- /See:/ 'getAccountAuthorizationDetailsResponse' smart constructor.
-data GetAccountAuthorizationDetailsResponse =
-  GetAccountAuthorizationDetailsResponse'
-    { _gaadrsRoleDetailList  :: !(Maybe [RoleDetail])
-    , _gaadrsGroupDetailList :: !(Maybe [GroupDetail])
-    , _gaadrsUserDetailList  :: !(Maybe [UserDetail])
-    , _gaadrsMarker          :: !(Maybe Text)
-    , _gaadrsIsTruncated     :: !(Maybe Bool)
-    , _gaadrsPolicies        :: !(Maybe [ManagedPolicyDetail])
-    , _gaadrsResponseStatus  :: !Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data GetAccountAuthorizationDetailsResponse = GetAccountAuthorizationDetailsResponse'{_gaadrsRoleDetailList
+                                                                                      ::
+                                                                                      !(Maybe
+                                                                                          [RoleDetail]),
+                                                                                      _gaadrsGroupDetailList
+                                                                                      ::
+                                                                                      !(Maybe
+                                                                                          [GroupDetail]),
+                                                                                      _gaadrsUserDetailList
+                                                                                      ::
+                                                                                      !(Maybe
+                                                                                          [UserDetail]),
+                                                                                      _gaadrsMarker
+                                                                                      ::
+                                                                                      !(Maybe
+                                                                                          Text),
+                                                                                      _gaadrsIsTruncated
+                                                                                      ::
+                                                                                      !(Maybe
+                                                                                          Bool),
+                                                                                      _gaadrsPolicies
+                                                                                      ::
+                                                                                      !(Maybe
+                                                                                          [ManagedPolicyDetail]),
+                                                                                      _gaadrsResponseStatus
+                                                                                      ::
+                                                                                      !Int}
+                                                deriving (Eq, Read, Show, Data,
+                                                          Typeable, Generic)
 
 -- | Creates a value of 'GetAccountAuthorizationDetailsResponse' with the minimum fields required to make a request.
 --
@@ -187,17 +210,17 @@ data GetAccountAuthorizationDetailsResponse =
 getAccountAuthorizationDetailsResponse
     :: Int -- ^ 'gaadrsResponseStatus'
     -> GetAccountAuthorizationDetailsResponse
-getAccountAuthorizationDetailsResponse pResponseStatus_ =
-  GetAccountAuthorizationDetailsResponse'
-    { _gaadrsRoleDetailList = Nothing
-    , _gaadrsGroupDetailList = Nothing
-    , _gaadrsUserDetailList = Nothing
-    , _gaadrsMarker = Nothing
-    , _gaadrsIsTruncated = Nothing
-    , _gaadrsPolicies = Nothing
-    , _gaadrsResponseStatus = pResponseStatus_
-    }
-
+getAccountAuthorizationDetailsResponse
+  pResponseStatus_
+  = GetAccountAuthorizationDetailsResponse'{_gaadrsRoleDetailList
+                                              = Nothing,
+                                            _gaadrsGroupDetailList = Nothing,
+                                            _gaadrsUserDetailList = Nothing,
+                                            _gaadrsMarker = Nothing,
+                                            _gaadrsIsTruncated = Nothing,
+                                            _gaadrsPolicies = Nothing,
+                                            _gaadrsResponseStatus =
+                                              pResponseStatus_}
 
 -- | A list containing information about IAM roles.
 gaadrsRoleDetailList :: Lens' GetAccountAuthorizationDetailsResponse [RoleDetail]

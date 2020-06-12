@@ -46,7 +46,6 @@ module Network.AWS.CloudWatchLogs.DescribeMetricFilters
     ) where
 
 import Network.AWS.CloudWatchLogs.Types
-import Network.AWS.CloudWatchLogs.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Pager
 import Network.AWS.Prelude
@@ -54,17 +53,19 @@ import Network.AWS.Request
 import Network.AWS.Response
 
 -- | /See:/ 'describeMetricFilters' smart constructor.
-data DescribeMetricFilters =
-  DescribeMetricFilters'
-    { _dmfFilterNamePrefix :: !(Maybe Text)
-    , _dmfMetricName       :: !(Maybe Text)
-    , _dmfLogGroupName     :: !(Maybe Text)
-    , _dmfNextToken        :: !(Maybe Text)
-    , _dmfMetricNamespace  :: !(Maybe Text)
-    , _dmfLimit            :: !(Maybe Nat)
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data DescribeMetricFilters = DescribeMetricFilters'{_dmfFilterNamePrefix
+                                                    :: !(Maybe Text),
+                                                    _dmfMetricName ::
+                                                    !(Maybe Text),
+                                                    _dmfLogGroupName ::
+                                                    !(Maybe Text),
+                                                    _dmfNextToken ::
+                                                    !(Maybe Text),
+                                                    _dmfMetricNamespace ::
+                                                    !(Maybe Text),
+                                                    _dmfLimit :: !(Maybe Nat)}
+                               deriving (Eq, Read, Show, Data, Typeable,
+                                         Generic)
 
 -- | Creates a value of 'DescribeMetricFilters' with the minimum fields required to make a request.
 --
@@ -83,16 +84,12 @@ data DescribeMetricFilters =
 -- * 'dmfLimit' - The maximum number of items returned. If you don't specify a value, the default is up to 50 items.
 describeMetricFilters
     :: DescribeMetricFilters
-describeMetricFilters =
-  DescribeMetricFilters'
-    { _dmfFilterNamePrefix = Nothing
-    , _dmfMetricName = Nothing
-    , _dmfLogGroupName = Nothing
-    , _dmfNextToken = Nothing
-    , _dmfMetricNamespace = Nothing
-    , _dmfLimit = Nothing
-    }
-
+describeMetricFilters
+  = DescribeMetricFilters'{_dmfFilterNamePrefix =
+                             Nothing,
+                           _dmfMetricName = Nothing, _dmfLogGroupName = Nothing,
+                           _dmfNextToken = Nothing,
+                           _dmfMetricNamespace = Nothing, _dmfLimit = Nothing}
 
 -- | The prefix to match.
 dmfFilterNamePrefix :: Lens' DescribeMetricFilters (Maybe Text)
@@ -169,14 +166,18 @@ instance ToQuery DescribeMetricFilters where
         toQuery = const mempty
 
 -- | /See:/ 'describeMetricFiltersResponse' smart constructor.
-data DescribeMetricFiltersResponse =
-  DescribeMetricFiltersResponse'
-    { _dmfrsNextToken      :: !(Maybe Text)
-    , _dmfrsMetricFilters  :: !(Maybe [MetricFilter])
-    , _dmfrsResponseStatus :: !Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data DescribeMetricFiltersResponse = DescribeMetricFiltersResponse'{_dmfrsNextToken
+                                                                    ::
+                                                                    !(Maybe
+                                                                        Text),
+                                                                    _dmfrsMetricFilters
+                                                                    ::
+                                                                    !(Maybe
+                                                                        [MetricFilter]),
+                                                                    _dmfrsResponseStatus
+                                                                    :: !Int}
+                                       deriving (Eq, Read, Show, Data, Typeable,
+                                                 Generic)
 
 -- | Creates a value of 'DescribeMetricFiltersResponse' with the minimum fields required to make a request.
 --
@@ -190,13 +191,11 @@ data DescribeMetricFiltersResponse =
 describeMetricFiltersResponse
     :: Int -- ^ 'dmfrsResponseStatus'
     -> DescribeMetricFiltersResponse
-describeMetricFiltersResponse pResponseStatus_ =
-  DescribeMetricFiltersResponse'
-    { _dmfrsNextToken = Nothing
-    , _dmfrsMetricFilters = Nothing
-    , _dmfrsResponseStatus = pResponseStatus_
-    }
-
+describeMetricFiltersResponse pResponseStatus_
+  = DescribeMetricFiltersResponse'{_dmfrsNextToken =
+                                     Nothing,
+                                   _dmfrsMetricFilters = Nothing,
+                                   _dmfrsResponseStatus = pResponseStatus_}
 
 -- | Undocumented member.
 dmfrsNextToken :: Lens' DescribeMetricFiltersResponse (Maybe Text)

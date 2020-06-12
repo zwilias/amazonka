@@ -37,7 +37,6 @@ module Network.AWS.GuardDuty.DisassociateMembers
     ) where
 
 import Network.AWS.GuardDuty.Types
-import Network.AWS.GuardDuty.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.Request
@@ -46,13 +45,10 @@ import Network.AWS.Response
 -- | DisassociateMembers request body.
 --
 -- /See:/ 'disassociateMembers' smart constructor.
-data DisassociateMembers =
-  DisassociateMembers'
-    { _dmsAccountIds :: !(Maybe [Text])
-    , _dmsDetectorId :: !Text
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data DisassociateMembers = DisassociateMembers'{_dmsAccountIds
+                                                :: !(Maybe [Text]),
+                                                _dmsDetectorId :: !Text}
+                             deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'DisassociateMembers' with the minimum fields required to make a request.
 --
@@ -64,9 +60,9 @@ data DisassociateMembers =
 disassociateMembers
     :: Text -- ^ 'dmsDetectorId'
     -> DisassociateMembers
-disassociateMembers pDetectorId_ =
-  DisassociateMembers' {_dmsAccountIds = Nothing, _dmsDetectorId = pDetectorId_}
-
+disassociateMembers pDetectorId_
+  = DisassociateMembers'{_dmsAccountIds = Nothing,
+                         _dmsDetectorId = pDetectorId_}
 
 -- | A list of account IDs of the GuardDuty member accounts that you want to disassociate from master.
 dmsAccountIds :: Lens' DisassociateMembers [Text]
@@ -113,13 +109,14 @@ instance ToQuery DisassociateMembers where
         toQuery = const mempty
 
 -- | /See:/ 'disassociateMembersResponse' smart constructor.
-data DisassociateMembersResponse =
-  DisassociateMembersResponse'
-    { _dmrsUnprocessedAccounts :: !(Maybe [UnprocessedAccount])
-    , _dmrsResponseStatus      :: !Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data DisassociateMembersResponse = DisassociateMembersResponse'{_dmrsUnprocessedAccounts
+                                                                ::
+                                                                !(Maybe
+                                                                    [UnprocessedAccount]),
+                                                                _dmrsResponseStatus
+                                                                :: !Int}
+                                     deriving (Eq, Read, Show, Data, Typeable,
+                                               Generic)
 
 -- | Creates a value of 'DisassociateMembersResponse' with the minimum fields required to make a request.
 --
@@ -131,10 +128,10 @@ data DisassociateMembersResponse =
 disassociateMembersResponse
     :: Int -- ^ 'dmrsResponseStatus'
     -> DisassociateMembersResponse
-disassociateMembersResponse pResponseStatus_ =
-  DisassociateMembersResponse'
-    {_dmrsUnprocessedAccounts = Nothing, _dmrsResponseStatus = pResponseStatus_}
-
+disassociateMembersResponse pResponseStatus_
+  = DisassociateMembersResponse'{_dmrsUnprocessedAccounts
+                                   = Nothing,
+                                 _dmrsResponseStatus = pResponseStatus_}
 
 -- | A list of objects containing the unprocessed account and a result string explaining why it was unprocessed.
 dmrsUnprocessedAccounts :: Lens' DisassociateMembersResponse [UnprocessedAccount]

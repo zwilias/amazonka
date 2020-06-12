@@ -35,7 +35,6 @@ module Network.AWS.CodeDeploy.DeregisterOnPremisesInstance
     ) where
 
 import Network.AWS.CodeDeploy.Types
-import Network.AWS.CodeDeploy.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.Request
@@ -46,12 +45,10 @@ import Network.AWS.Response
 --
 --
 -- /See:/ 'deregisterOnPremisesInstance' smart constructor.
-newtype DeregisterOnPremisesInstance =
-  DeregisterOnPremisesInstance'
-    { _dopiInstanceName :: Text
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+newtype DeregisterOnPremisesInstance = DeregisterOnPremisesInstance'{_dopiInstanceName
+                                                                     :: Text}
+                                         deriving (Eq, Read, Show, Data,
+                                                   Typeable, Generic)
 
 -- | Creates a value of 'DeregisterOnPremisesInstance' with the minimum fields required to make a request.
 --
@@ -61,9 +58,9 @@ newtype DeregisterOnPremisesInstance =
 deregisterOnPremisesInstance
     :: Text -- ^ 'dopiInstanceName'
     -> DeregisterOnPremisesInstance
-deregisterOnPremisesInstance pInstanceName_ =
-  DeregisterOnPremisesInstance' {_dopiInstanceName = pInstanceName_}
-
+deregisterOnPremisesInstance pInstanceName_
+  = DeregisterOnPremisesInstance'{_dopiInstanceName =
+                                    pInstanceName_}
 
 -- | The name of the on-premises instance to deregister.
 dopiInstanceName :: Lens' DeregisterOnPremisesInstance Text
@@ -104,17 +101,16 @@ instance ToQuery DeregisterOnPremisesInstance where
         toQuery = const mempty
 
 -- | /See:/ 'deregisterOnPremisesInstanceResponse' smart constructor.
-data DeregisterOnPremisesInstanceResponse =
-  DeregisterOnPremisesInstanceResponse'
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data DeregisterOnPremisesInstanceResponse = DeregisterOnPremisesInstanceResponse'
+                                              deriving (Eq, Read, Show, Data,
+                                                        Typeable, Generic)
 
 -- | Creates a value of 'DeregisterOnPremisesInstanceResponse' with the minimum fields required to make a request.
 --
 deregisterOnPremisesInstanceResponse
     :: DeregisterOnPremisesInstanceResponse
-deregisterOnPremisesInstanceResponse = DeregisterOnPremisesInstanceResponse'
-
+deregisterOnPremisesInstanceResponse
+  = DeregisterOnPremisesInstanceResponse'
 
 instance NFData DeregisterOnPremisesInstanceResponse
          where

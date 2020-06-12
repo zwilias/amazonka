@@ -42,15 +42,12 @@ import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 import Network.AWS.ServerlessApplicationRepository.Types
-import Network.AWS.ServerlessApplicationRepository.Types.Product
 
 -- | /See:/ 'getApplicationPolicy' smart constructor.
-newtype GetApplicationPolicy =
-  GetApplicationPolicy'
-    { _gapApplicationId :: Text
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+newtype GetApplicationPolicy = GetApplicationPolicy'{_gapApplicationId
+                                                     :: Text}
+                                 deriving (Eq, Read, Show, Data, Typeable,
+                                           Generic)
 
 -- | Creates a value of 'GetApplicationPolicy' with the minimum fields required to make a request.
 --
@@ -60,9 +57,9 @@ newtype GetApplicationPolicy =
 getApplicationPolicy
     :: Text -- ^ 'gapApplicationId'
     -> GetApplicationPolicy
-getApplicationPolicy pApplicationId_ =
-  GetApplicationPolicy' {_gapApplicationId = pApplicationId_}
-
+getApplicationPolicy pApplicationId_
+  = GetApplicationPolicy'{_gapApplicationId =
+                            pApplicationId_}
 
 -- | The ID of the application to get.
 gapApplicationId :: Lens' GetApplicationPolicy Text
@@ -99,13 +96,14 @@ instance ToQuery GetApplicationPolicy where
         toQuery = const mempty
 
 -- | /See:/ 'getApplicationPolicyResponse' smart constructor.
-data GetApplicationPolicyResponse =
-  GetApplicationPolicyResponse'
-    { _gaprsStatements     :: !(Maybe [ApplicationPolicyStatement])
-    , _gaprsResponseStatus :: !Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data GetApplicationPolicyResponse = GetApplicationPolicyResponse'{_gaprsStatements
+                                                                  ::
+                                                                  !(Maybe
+                                                                      [ApplicationPolicyStatement]),
+                                                                  _gaprsResponseStatus
+                                                                  :: !Int}
+                                      deriving (Eq, Read, Show, Data, Typeable,
+                                                Generic)
 
 -- | Creates a value of 'GetApplicationPolicyResponse' with the minimum fields required to make a request.
 --
@@ -117,10 +115,10 @@ data GetApplicationPolicyResponse =
 getApplicationPolicyResponse
     :: Int -- ^ 'gaprsResponseStatus'
     -> GetApplicationPolicyResponse
-getApplicationPolicyResponse pResponseStatus_ =
-  GetApplicationPolicyResponse'
-    {_gaprsStatements = Nothing, _gaprsResponseStatus = pResponseStatus_}
-
+getApplicationPolicyResponse pResponseStatus_
+  = GetApplicationPolicyResponse'{_gaprsStatements =
+                                    Nothing,
+                                  _gaprsResponseStatus = pResponseStatus_}
 
 -- | Array of policy statements applied to the application.
 gaprsStatements :: Lens' GetApplicationPolicyResponse [ApplicationPolicyStatement]

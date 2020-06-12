@@ -52,26 +52,25 @@ module Network.AWS.ApplicationAutoScaling.PutScheduledAction
     ) where
 
 import Network.AWS.ApplicationAutoScaling.Types
-import Network.AWS.ApplicationAutoScaling.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 
 -- | /See:/ 'putScheduledAction' smart constructor.
-data PutScheduledAction =
-  PutScheduledAction'
-    { _psaStartTime            :: !(Maybe POSIX)
-    , _psaSchedule             :: !(Maybe Text)
-    , _psaEndTime              :: !(Maybe POSIX)
-    , _psaScalableTargetAction :: !(Maybe ScalableTargetAction)
-    , _psaServiceNamespace     :: !ServiceNamespace
-    , _psaScheduledActionName  :: !Text
-    , _psaResourceId           :: !Text
-    , _psaScalableDimension    :: !ScalableDimension
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data PutScheduledAction = PutScheduledAction'{_psaStartTime
+                                              :: !(Maybe POSIX),
+                                              _psaSchedule :: !(Maybe Text),
+                                              _psaEndTime :: !(Maybe POSIX),
+                                              _psaScalableTargetAction ::
+                                              !(Maybe ScalableTargetAction),
+                                              _psaServiceNamespace ::
+                                              !ServiceNamespace,
+                                              _psaScheduledActionName :: !Text,
+                                              _psaResourceId :: !Text,
+                                              _psaScalableDimension ::
+                                              !ScalableDimension}
+                            deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'PutScheduledAction' with the minimum fields required to make a request.
 --
@@ -87,7 +86,7 @@ data PutScheduledAction =
 --
 -- * 'psaServiceNamespace' - The namespace of the AWS service that provides the resource. For a resource provided by your own application or service, use @custom-resource@ instead.
 --
--- * 'psaScheduledActionName' - The name of the scheduled action. This name must be unique among all other scheduled actions on the specified scalable target.
+-- * 'psaScheduledActionName' - The name of the scheduled action. This name must be unique among all other scheduled actions on the specified scalable target. 
 --
 -- * 'psaResourceId' - The identifier of the resource associated with the scheduled action. This string consists of the resource type and unique identifier.     * ECS service - The resource type is @service@ and the unique identifier is the cluster name and service name. Example: @service/default/sample-webapp@ .     * Spot Fleet request - The resource type is @spot-fleet-request@ and the unique identifier is the Spot Fleet request ID. Example: @spot-fleet-request/sfr-73fbd2ce-aa30-494c-8788-1cee4EXAMPLE@ .     * EMR cluster - The resource type is @instancegroup@ and the unique identifier is the cluster ID and instance group ID. Example: @instancegroup/j-2EEZNYKUA1NTV/ig-1791Y4E1L8YI0@ .     * AppStream 2.0 fleet - The resource type is @fleet@ and the unique identifier is the fleet name. Example: @fleet/sample-fleet@ .     * DynamoDB table - The resource type is @table@ and the unique identifier is the table name. Example: @table/my-table@ .     * DynamoDB global secondary index - The resource type is @index@ and the unique identifier is the index name. Example: @table/my-table/index/my-table-index@ .     * Aurora DB cluster - The resource type is @cluster@ and the unique identifier is the cluster name. Example: @cluster:my-db-cluster@ .     * Amazon SageMaker endpoint variant - The resource type is @variant@ and the unique identifier is the resource ID. Example: @endpoint/my-end-point/variant/KMeansClustering@ .     * Custom resources are not supported with a resource type. This parameter must specify the @OutputValue@ from the CloudFormation template stack used to access the resources. The unique identifier is defined by the service provider. More information is available in our <https://github.com/aws/aws-auto-scaling-custom-resource GitHub repository> .     * Amazon Comprehend document classification endpoint - The resource type and unique identifier are specified using the endpoint ARN. Example: @arn:aws:comprehend:us-west-2:123456789012:document-classifier-endpoint/EXAMPLE@ .     * Lambda provisioned concurrency - The resource type is @function@ and the unique identifier is the function name with a function version or alias name suffix that is not @> LATEST@ . Example: @function:my-function:prod@ or @function:my-function:1@ .     * Amazon Keyspaces table - The resource type is @table@ and the unique identifier is the table name. Example: @keyspace/mykeyspace/table/mytable@ .
 --
@@ -98,18 +97,16 @@ putScheduledAction
     -> Text -- ^ 'psaResourceId'
     -> ScalableDimension -- ^ 'psaScalableDimension'
     -> PutScheduledAction
-putScheduledAction pServiceNamespace_ pScheduledActionName_ pResourceId_ pScalableDimension_ =
-  PutScheduledAction'
-    { _psaStartTime = Nothing
-    , _psaSchedule = Nothing
-    , _psaEndTime = Nothing
-    , _psaScalableTargetAction = Nothing
-    , _psaServiceNamespace = pServiceNamespace_
-    , _psaScheduledActionName = pScheduledActionName_
-    , _psaResourceId = pResourceId_
-    , _psaScalableDimension = pScalableDimension_
-    }
-
+putScheduledAction pServiceNamespace_
+  pScheduledActionName_ pResourceId_
+  pScalableDimension_
+  = PutScheduledAction'{_psaStartTime = Nothing,
+                        _psaSchedule = Nothing, _psaEndTime = Nothing,
+                        _psaScalableTargetAction = Nothing,
+                        _psaServiceNamespace = pServiceNamespace_,
+                        _psaScheduledActionName = pScheduledActionName_,
+                        _psaResourceId = pResourceId_,
+                        _psaScalableDimension = pScalableDimension_}
 
 -- | The date and time for this scheduled action to start.
 psaStartTime :: Lens' PutScheduledAction (Maybe UTCTime)
@@ -131,7 +128,7 @@ psaScalableTargetAction = lens _psaScalableTargetAction (\ s a -> s{_psaScalable
 psaServiceNamespace :: Lens' PutScheduledAction ServiceNamespace
 psaServiceNamespace = lens _psaServiceNamespace (\ s a -> s{_psaServiceNamespace = a})
 
--- | The name of the scheduled action. This name must be unique among all other scheduled actions on the specified scalable target.
+-- | The name of the scheduled action. This name must be unique among all other scheduled actions on the specified scalable target. 
 psaScheduledActionName :: Lens' PutScheduledAction Text
 psaScheduledActionName = lens _psaScheduledActionName (\ s a -> s{_psaScheduledActionName = a})
 
@@ -188,12 +185,10 @@ instance ToQuery PutScheduledAction where
         toQuery = const mempty
 
 -- | /See:/ 'putScheduledActionResponse' smart constructor.
-newtype PutScheduledActionResponse =
-  PutScheduledActionResponse'
-    { _psarsResponseStatus :: Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+newtype PutScheduledActionResponse = PutScheduledActionResponse'{_psarsResponseStatus
+                                                                 :: Int}
+                                       deriving (Eq, Read, Show, Data, Typeable,
+                                                 Generic)
 
 -- | Creates a value of 'PutScheduledActionResponse' with the minimum fields required to make a request.
 --
@@ -203,9 +198,9 @@ newtype PutScheduledActionResponse =
 putScheduledActionResponse
     :: Int -- ^ 'psarsResponseStatus'
     -> PutScheduledActionResponse
-putScheduledActionResponse pResponseStatus_ =
-  PutScheduledActionResponse' {_psarsResponseStatus = pResponseStatus_}
-
+putScheduledActionResponse pResponseStatus_
+  = PutScheduledActionResponse'{_psarsResponseStatus =
+                                  pResponseStatus_}
 
 -- | -- | The response status code.
 psarsResponseStatus :: Lens' PutScheduledActionResponse Int

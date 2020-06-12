@@ -47,20 +47,16 @@ module Network.AWS.DirectConnect.CreateBGPPeer
     ) where
 
 import Network.AWS.DirectConnect.Types
-import Network.AWS.DirectConnect.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 
 -- | /See:/ 'createBGPPeer' smart constructor.
-data CreateBGPPeer =
-  CreateBGPPeer'
-    { _cbpNewBGPPeer         :: !(Maybe NewBGPPeer)
-    , _cbpVirtualInterfaceId :: !(Maybe Text)
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data CreateBGPPeer = CreateBGPPeer'{_cbpNewBGPPeer ::
+                                    !(Maybe NewBGPPeer),
+                                    _cbpVirtualInterfaceId :: !(Maybe Text)}
+                       deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'CreateBGPPeer' with the minimum fields required to make a request.
 --
@@ -71,9 +67,9 @@ data CreateBGPPeer =
 -- * 'cbpVirtualInterfaceId' - The ID of the virtual interface.
 createBGPPeer
     :: CreateBGPPeer
-createBGPPeer =
-  CreateBGPPeer' {_cbpNewBGPPeer = Nothing, _cbpVirtualInterfaceId = Nothing}
-
+createBGPPeer
+  = CreateBGPPeer'{_cbpNewBGPPeer = Nothing,
+                   _cbpVirtualInterfaceId = Nothing}
 
 -- | Information about the BGP peer.
 cbpNewBGPPeer :: Lens' CreateBGPPeer (Maybe NewBGPPeer)
@@ -120,13 +116,13 @@ instance ToQuery CreateBGPPeer where
         toQuery = const mempty
 
 -- | /See:/ 'createBGPPeerResponse' smart constructor.
-data CreateBGPPeerResponse =
-  CreateBGPPeerResponse'
-    { _cbprsVirtualInterface :: !(Maybe VirtualInterface)
-    , _cbprsResponseStatus   :: !Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data CreateBGPPeerResponse = CreateBGPPeerResponse'{_cbprsVirtualInterface
+                                                    ::
+                                                    !(Maybe VirtualInterface),
+                                                    _cbprsResponseStatus ::
+                                                    !Int}
+                               deriving (Eq, Read, Show, Data, Typeable,
+                                         Generic)
 
 -- | Creates a value of 'CreateBGPPeerResponse' with the minimum fields required to make a request.
 --
@@ -138,10 +134,10 @@ data CreateBGPPeerResponse =
 createBGPPeerResponse
     :: Int -- ^ 'cbprsResponseStatus'
     -> CreateBGPPeerResponse
-createBGPPeerResponse pResponseStatus_ =
-  CreateBGPPeerResponse'
-    {_cbprsVirtualInterface = Nothing, _cbprsResponseStatus = pResponseStatus_}
-
+createBGPPeerResponse pResponseStatus_
+  = CreateBGPPeerResponse'{_cbprsVirtualInterface =
+                             Nothing,
+                           _cbprsResponseStatus = pResponseStatus_}
 
 -- | The virtual interface.
 cbprsVirtualInterface :: Lens' CreateBGPPeerResponse (Maybe VirtualInterface)

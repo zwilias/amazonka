@@ -47,7 +47,6 @@ module Network.AWS.MediaLive.DeleteChannel
 
 import Network.AWS.Lens
 import Network.AWS.MediaLive.Types
-import Network.AWS.MediaLive.Types.Product
 import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
@@ -55,12 +54,9 @@ import Network.AWS.Response
 -- | Placeholder documentation for DeleteChannelRequest
 --
 -- /See:/ 'deleteChannel' smart constructor.
-newtype DeleteChannel =
-  DeleteChannel'
-    { _dcChannelId :: Text
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+newtype DeleteChannel = DeleteChannel'{_dcChannelId
+                                       :: Text}
+                          deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'DeleteChannel' with the minimum fields required to make a request.
 --
@@ -70,8 +66,8 @@ newtype DeleteChannel =
 deleteChannel
     :: Text -- ^ 'dcChannelId'
     -> DeleteChannel
-deleteChannel pChannelId_ = DeleteChannel' {_dcChannelId = pChannelId_}
-
+deleteChannel pChannelId_
+  = DeleteChannel'{_dcChannelId = pChannelId_}
 
 -- | Unique ID of the channel.
 dcChannelId :: Lens' DeleteChannel Text
@@ -117,23 +113,30 @@ instance ToQuery DeleteChannel where
 -- | Placeholder documentation for DeleteChannelResponse
 --
 -- /See:/ 'deleteChannelResponse' smart constructor.
-data DeleteChannelResponse =
-  DeleteChannelResponse'
-    { _drsState                 :: !(Maybe ChannelState)
-    , _drsARN                   :: !(Maybe Text)
-    , _drsPipelinesRunningCount :: !(Maybe Int)
-    , _drsInputSpecification    :: !(Maybe InputSpecification)
-    , _drsInputAttachments      :: !(Maybe [InputAttachment])
-    , _drsDestinations          :: !(Maybe [OutputDestination])
-    , _drsName                  :: !(Maybe Text)
-    , _drsId                    :: !(Maybe Text)
-    , _drsEgressEndpoints       :: !(Maybe [ChannelEgressEndpoint])
-    , _drsEncoderSettings       :: !(Maybe EncoderSettings)
-    , _drsRoleARN               :: !(Maybe Text)
-    , _drsResponseStatus        :: !Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data DeleteChannelResponse = DeleteChannelResponse'{_drsState
+                                                    :: !(Maybe ChannelState),
+                                                    _drsARN :: !(Maybe Text),
+                                                    _drsPipelinesRunningCount ::
+                                                    !(Maybe Int),
+                                                    _drsInputSpecification ::
+                                                    !(Maybe InputSpecification),
+                                                    _drsInputAttachments ::
+                                                    !(Maybe [InputAttachment]),
+                                                    _drsDestinations ::
+                                                    !(Maybe
+                                                        [OutputDestination]),
+                                                    _drsName :: !(Maybe Text),
+                                                    _drsId :: !(Maybe Text),
+                                                    _drsEgressEndpoints ::
+                                                    !(Maybe
+                                                        [ChannelEgressEndpoint]),
+                                                    _drsEncoderSettings ::
+                                                    !(Maybe EncoderSettings),
+                                                    _drsRoleARN ::
+                                                    !(Maybe Text),
+                                                    _drsResponseStatus :: !Int}
+                               deriving (Eq, Read, Show, Data, Typeable,
+                                         Generic)
 
 -- | Creates a value of 'DeleteChannelResponse' with the minimum fields required to make a request.
 --
@@ -165,22 +168,16 @@ data DeleteChannelResponse =
 deleteChannelResponse
     :: Int -- ^ 'drsResponseStatus'
     -> DeleteChannelResponse
-deleteChannelResponse pResponseStatus_ =
-  DeleteChannelResponse'
-    { _drsState = Nothing
-    , _drsARN = Nothing
-    , _drsPipelinesRunningCount = Nothing
-    , _drsInputSpecification = Nothing
-    , _drsInputAttachments = Nothing
-    , _drsDestinations = Nothing
-    , _drsName = Nothing
-    , _drsId = Nothing
-    , _drsEgressEndpoints = Nothing
-    , _drsEncoderSettings = Nothing
-    , _drsRoleARN = Nothing
-    , _drsResponseStatus = pResponseStatus_
-    }
-
+deleteChannelResponse pResponseStatus_
+  = DeleteChannelResponse'{_drsState = Nothing,
+                           _drsARN = Nothing,
+                           _drsPipelinesRunningCount = Nothing,
+                           _drsInputSpecification = Nothing,
+                           _drsInputAttachments = Nothing,
+                           _drsDestinations = Nothing, _drsName = Nothing,
+                           _drsId = Nothing, _drsEgressEndpoints = Nothing,
+                           _drsEncoderSettings = Nothing, _drsRoleARN = Nothing,
+                           _drsResponseStatus = pResponseStatus_}
 
 -- | Undocumented member.
 drsState :: Lens' DeleteChannelResponse (Maybe ChannelState)

@@ -36,20 +36,16 @@ module Network.AWS.IoT.DetachPolicy
     ) where
 
 import Network.AWS.IoT.Types
-import Network.AWS.IoT.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 
 -- | /See:/ 'detachPolicy' smart constructor.
-data DetachPolicy =
-  DetachPolicy'
-    { _dPolicyName :: !Text
-    , _dTarget     :: !Text
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data DetachPolicy = DetachPolicy'{_dPolicyName ::
+                                  !Text,
+                                  _dTarget :: !Text}
+                      deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'DetachPolicy' with the minimum fields required to make a request.
 --
@@ -62,9 +58,9 @@ detachPolicy
     :: Text -- ^ 'dPolicyName'
     -> Text -- ^ 'dTarget'
     -> DetachPolicy
-detachPolicy pPolicyName_ pTarget_ =
-  DetachPolicy' {_dPolicyName = pPolicyName_, _dTarget = pTarget_}
-
+detachPolicy pPolicyName_ pTarget_
+  = DetachPolicy'{_dPolicyName = pPolicyName_,
+                  _dTarget = pTarget_}
 
 -- | The policy to detach.
 dPolicyName :: Lens' DetachPolicy Text
@@ -98,16 +94,13 @@ instance ToQuery DetachPolicy where
         toQuery = const mempty
 
 -- | /See:/ 'detachPolicyResponse' smart constructor.
-data DetachPolicyResponse =
-  DetachPolicyResponse'
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data DetachPolicyResponse = DetachPolicyResponse'
+                              deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'DetachPolicyResponse' with the minimum fields required to make a request.
 --
 detachPolicyResponse
     :: DetachPolicyResponse
 detachPolicyResponse = DetachPolicyResponse'
-
 
 instance NFData DetachPolicyResponse where

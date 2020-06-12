@@ -40,7 +40,6 @@ module Network.AWS.Kinesis.DisableEnhancedMonitoring
     ) where
 
 import Network.AWS.Kinesis.Types
-import Network.AWS.Kinesis.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.Request
@@ -51,13 +50,12 @@ import Network.AWS.Response
 --
 --
 -- /See:/ 'disableEnhancedMonitoring' smart constructor.
-data DisableEnhancedMonitoring =
-  DisableEnhancedMonitoring'
-    { _demStreamName        :: !Text
-    , _demShardLevelMetrics :: ![MetricsName]
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data DisableEnhancedMonitoring = DisableEnhancedMonitoring'{_demStreamName
+                                                            :: !Text,
+                                                            _demShardLevelMetrics
+                                                            :: ![MetricsName]}
+                                   deriving (Eq, Read, Show, Data, Typeable,
+                                             Generic)
 
 -- | Creates a value of 'DisableEnhancedMonitoring' with the minimum fields required to make a request.
 --
@@ -69,10 +67,10 @@ data DisableEnhancedMonitoring =
 disableEnhancedMonitoring
     :: Text -- ^ 'demStreamName'
     -> DisableEnhancedMonitoring
-disableEnhancedMonitoring pStreamName_ =
-  DisableEnhancedMonitoring'
-    {_demStreamName = pStreamName_, _demShardLevelMetrics = mempty}
-
+disableEnhancedMonitoring pStreamName_
+  = DisableEnhancedMonitoring'{_demStreamName =
+                                 pStreamName_,
+                               _demShardLevelMetrics = mempty}
 
 -- | The name of the Kinesis data stream for which to disable enhanced monitoring.
 demStreamName :: Lens' DisableEnhancedMonitoring Text

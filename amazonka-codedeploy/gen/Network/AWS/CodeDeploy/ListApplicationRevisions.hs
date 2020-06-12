@@ -47,36 +47,41 @@ module Network.AWS.CodeDeploy.ListApplicationRevisions
     ) where
 
 import Network.AWS.CodeDeploy.Types
-import Network.AWS.CodeDeploy.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Pager
 import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 
--- | Represents the input of a ListApplicationRevisions operation.
+-- | Represents the input of a ListApplicationRevisions operation. 
 --
 --
 --
 -- /See:/ 'listApplicationRevisions' smart constructor.
-data ListApplicationRevisions =
-  ListApplicationRevisions'
-    { _larS3KeyPrefix     :: !(Maybe Text)
-    , _larDeployed        :: !(Maybe ListStateFilterAction)
-    , _larSortOrder       :: !(Maybe SortOrder)
-    , _larNextToken       :: !(Maybe Text)
-    , _larS3Bucket        :: !(Maybe Text)
-    , _larSortBy          :: !(Maybe ApplicationRevisionSortBy)
-    , _larApplicationName :: !Text
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data ListApplicationRevisions = ListApplicationRevisions'{_larS3KeyPrefix
+                                                          :: !(Maybe Text),
+                                                          _larDeployed ::
+                                                          !(Maybe
+                                                              ListStateFilterAction),
+                                                          _larSortOrder ::
+                                                          !(Maybe SortOrder),
+                                                          _larNextToken ::
+                                                          !(Maybe Text),
+                                                          _larS3Bucket ::
+                                                          !(Maybe Text),
+                                                          _larSortBy ::
+                                                          !(Maybe
+                                                              ApplicationRevisionSortBy),
+                                                          _larApplicationName ::
+                                                          !Text}
+                                  deriving (Eq, Read, Show, Data, Typeable,
+                                            Generic)
 
 -- | Creates a value of 'ListApplicationRevisions' with the minimum fields required to make a request.
 --
 -- Use one of the following lenses to modify other fields as desired:
 --
--- * 'larS3KeyPrefix' - A key prefix for the set of Amazon S3 objects to limit the search for revisions.
+-- * 'larS3KeyPrefix' - A key prefix for the set of Amazon S3 objects to limit the search for revisions. 
 --
 -- * 'larDeployed' - Whether to list revisions based on whether the revision is the target revision of an deployment group:      * include: List revisions that are target revisions of a deployment group.     * exclude: Do not list revisions that are target revisions of a deployment group.     * ignore: List all revisions.
 --
@@ -84,27 +89,23 @@ data ListApplicationRevisions =
 --
 -- * 'larNextToken' - An identifier returned from the previous @ListApplicationRevisions@ call. It can be used to return the next set of applications in the list.
 --
--- * 'larS3Bucket' - An Amazon S3 bucket name to limit the search for revisions.  If set to null, all of the user's buckets are searched.
+-- * 'larS3Bucket' - An Amazon S3 bucket name to limit the search for revisions.  If set to null, all of the user's buckets are searched. 
 --
--- * 'larSortBy' - The column name to use to sort the list results:     * registerTime: Sort by the time the revisions were registered with AWS CodeDeploy.     * firstUsedTime: Sort by the time the revisions were first used in a deployment.     * lastUsedTime: Sort by the time the revisions were last used in a deployment. If not specified or set to null, the results are returned in an arbitrary order.
+-- * 'larSortBy' - The column name to use to sort the list results:     * registerTime: Sort by the time the revisions were registered with AWS CodeDeploy.     * firstUsedTime: Sort by the time the revisions were first used in a deployment.     * lastUsedTime: Sort by the time the revisions were last used in a deployment. If not specified or set to null, the results are returned in an arbitrary order. 
 --
--- * 'larApplicationName' - The name of an AWS CodeDeploy application associated with the IAM user or AWS account.
+-- * 'larApplicationName' - The name of an AWS CodeDeploy application associated with the IAM user or AWS account. 
 listApplicationRevisions
     :: Text -- ^ 'larApplicationName'
     -> ListApplicationRevisions
-listApplicationRevisions pApplicationName_ =
-  ListApplicationRevisions'
-    { _larS3KeyPrefix = Nothing
-    , _larDeployed = Nothing
-    , _larSortOrder = Nothing
-    , _larNextToken = Nothing
-    , _larS3Bucket = Nothing
-    , _larSortBy = Nothing
-    , _larApplicationName = pApplicationName_
-    }
+listApplicationRevisions pApplicationName_
+  = ListApplicationRevisions'{_larS3KeyPrefix =
+                                Nothing,
+                              _larDeployed = Nothing, _larSortOrder = Nothing,
+                              _larNextToken = Nothing, _larS3Bucket = Nothing,
+                              _larSortBy = Nothing,
+                              _larApplicationName = pApplicationName_}
 
-
--- | A key prefix for the set of Amazon S3 objects to limit the search for revisions.
+-- | A key prefix for the set of Amazon S3 objects to limit the search for revisions. 
 larS3KeyPrefix :: Lens' ListApplicationRevisions (Maybe Text)
 larS3KeyPrefix = lens _larS3KeyPrefix (\ s a -> s{_larS3KeyPrefix = a})
 
@@ -120,15 +121,15 @@ larSortOrder = lens _larSortOrder (\ s a -> s{_larSortOrder = a})
 larNextToken :: Lens' ListApplicationRevisions (Maybe Text)
 larNextToken = lens _larNextToken (\ s a -> s{_larNextToken = a})
 
--- | An Amazon S3 bucket name to limit the search for revisions.  If set to null, all of the user's buckets are searched.
+-- | An Amazon S3 bucket name to limit the search for revisions.  If set to null, all of the user's buckets are searched. 
 larS3Bucket :: Lens' ListApplicationRevisions (Maybe Text)
 larS3Bucket = lens _larS3Bucket (\ s a -> s{_larS3Bucket = a})
 
--- | The column name to use to sort the list results:     * registerTime: Sort by the time the revisions were registered with AWS CodeDeploy.     * firstUsedTime: Sort by the time the revisions were first used in a deployment.     * lastUsedTime: Sort by the time the revisions were last used in a deployment. If not specified or set to null, the results are returned in an arbitrary order.
+-- | The column name to use to sort the list results:     * registerTime: Sort by the time the revisions were registered with AWS CodeDeploy.     * firstUsedTime: Sort by the time the revisions were first used in a deployment.     * lastUsedTime: Sort by the time the revisions were last used in a deployment. If not specified or set to null, the results are returned in an arbitrary order. 
 larSortBy :: Lens' ListApplicationRevisions (Maybe ApplicationRevisionSortBy)
 larSortBy = lens _larSortBy (\ s a -> s{_larSortBy = a})
 
--- | The name of an AWS CodeDeploy application associated with the IAM user or AWS account.
+-- | The name of an AWS CodeDeploy application associated with the IAM user or AWS account. 
 larApplicationName :: Lens' ListApplicationRevisions Text
 larApplicationName = lens _larApplicationName (\ s a -> s{_larApplicationName = a})
 
@@ -188,14 +189,19 @@ instance ToQuery ListApplicationRevisions where
 --
 --
 -- /See:/ 'listApplicationRevisionsResponse' smart constructor.
-data ListApplicationRevisionsResponse =
-  ListApplicationRevisionsResponse'
-    { _larrsNextToken      :: !(Maybe Text)
-    , _larrsRevisions      :: !(Maybe [RevisionLocation])
-    , _larrsResponseStatus :: !Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data ListApplicationRevisionsResponse = ListApplicationRevisionsResponse'{_larrsNextToken
+                                                                          ::
+                                                                          !(Maybe
+                                                                              Text),
+                                                                          _larrsRevisions
+                                                                          ::
+                                                                          !(Maybe
+                                                                              [RevisionLocation]),
+                                                                          _larrsResponseStatus
+                                                                          ::
+                                                                          !Int}
+                                          deriving (Eq, Read, Show, Data,
+                                                    Typeable, Generic)
 
 -- | Creates a value of 'ListApplicationRevisionsResponse' with the minimum fields required to make a request.
 --
@@ -209,13 +215,11 @@ data ListApplicationRevisionsResponse =
 listApplicationRevisionsResponse
     :: Int -- ^ 'larrsResponseStatus'
     -> ListApplicationRevisionsResponse
-listApplicationRevisionsResponse pResponseStatus_ =
-  ListApplicationRevisionsResponse'
-    { _larrsNextToken = Nothing
-    , _larrsRevisions = Nothing
-    , _larrsResponseStatus = pResponseStatus_
-    }
-
+listApplicationRevisionsResponse pResponseStatus_
+  = ListApplicationRevisionsResponse'{_larrsNextToken =
+                                        Nothing,
+                                      _larrsRevisions = Nothing,
+                                      _larrsResponseStatus = pResponseStatus_}
 
 -- | If a large amount of information is returned, an identifier is also returned. It can be used in a subsequent list application revisions call to return the next set of application revisions in the list.
 larrsNextToken :: Lens' ListApplicationRevisionsResponse (Maybe Text)

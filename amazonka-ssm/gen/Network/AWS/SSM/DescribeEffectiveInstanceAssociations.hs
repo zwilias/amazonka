@@ -45,17 +45,21 @@ import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 import Network.AWS.SSM.Types
-import Network.AWS.SSM.Types.Product
 
 -- | /See:/ 'describeEffectiveInstanceAssociations' smart constructor.
-data DescribeEffectiveInstanceAssociations =
-  DescribeEffectiveInstanceAssociations'
-    { _deiaNextToken  :: !(Maybe Text)
-    , _deiaMaxResults :: !(Maybe Nat)
-    , _deiaInstanceId :: !Text
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data DescribeEffectiveInstanceAssociations = DescribeEffectiveInstanceAssociations'{_deiaNextToken
+                                                                                    ::
+                                                                                    !(Maybe
+                                                                                        Text),
+                                                                                    _deiaMaxResults
+                                                                                    ::
+                                                                                    !(Maybe
+                                                                                        Nat),
+                                                                                    _deiaInstanceId
+                                                                                    ::
+                                                                                    !Text}
+                                               deriving (Eq, Read, Show, Data,
+                                                         Typeable, Generic)
 
 -- | Creates a value of 'DescribeEffectiveInstanceAssociations' with the minimum fields required to make a request.
 --
@@ -69,13 +73,11 @@ data DescribeEffectiveInstanceAssociations =
 describeEffectiveInstanceAssociations
     :: Text -- ^ 'deiaInstanceId'
     -> DescribeEffectiveInstanceAssociations
-describeEffectiveInstanceAssociations pInstanceId_ =
-  DescribeEffectiveInstanceAssociations'
-    { _deiaNextToken = Nothing
-    , _deiaMaxResults = Nothing
-    , _deiaInstanceId = pInstanceId_
-    }
-
+describeEffectiveInstanceAssociations pInstanceId_
+  = DescribeEffectiveInstanceAssociations'{_deiaNextToken
+                                             = Nothing,
+                                           _deiaMaxResults = Nothing,
+                                           _deiaInstanceId = pInstanceId_}
 
 -- | The token for the next set of items to return. (You received this token from a previous call.)
 deiaNextToken :: Lens' DescribeEffectiveInstanceAssociations (Maybe Text)
@@ -141,14 +143,20 @@ instance ToQuery
         toQuery = const mempty
 
 -- | /See:/ 'describeEffectiveInstanceAssociationsResponse' smart constructor.
-data DescribeEffectiveInstanceAssociationsResponse =
-  DescribeEffectiveInstanceAssociationsResponse'
-    { _deiarsNextToken      :: !(Maybe Text)
-    , _deiarsAssociations   :: !(Maybe [InstanceAssociation])
-    , _deiarsResponseStatus :: !Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data DescribeEffectiveInstanceAssociationsResponse = DescribeEffectiveInstanceAssociationsResponse'{_deiarsNextToken
+                                                                                                    ::
+                                                                                                    !(Maybe
+                                                                                                        Text),
+                                                                                                    _deiarsAssociations
+                                                                                                    ::
+                                                                                                    !(Maybe
+                                                                                                        [InstanceAssociation]),
+                                                                                                    _deiarsResponseStatus
+                                                                                                    ::
+                                                                                                    !Int}
+                                                       deriving (Eq, Read, Show,
+                                                                 Data, Typeable,
+                                                                 Generic)
 
 -- | Creates a value of 'DescribeEffectiveInstanceAssociationsResponse' with the minimum fields required to make a request.
 --
@@ -162,13 +170,14 @@ data DescribeEffectiveInstanceAssociationsResponse =
 describeEffectiveInstanceAssociationsResponse
     :: Int -- ^ 'deiarsResponseStatus'
     -> DescribeEffectiveInstanceAssociationsResponse
-describeEffectiveInstanceAssociationsResponse pResponseStatus_ =
-  DescribeEffectiveInstanceAssociationsResponse'
-    { _deiarsNextToken = Nothing
-    , _deiarsAssociations = Nothing
-    , _deiarsResponseStatus = pResponseStatus_
-    }
-
+describeEffectiveInstanceAssociationsResponse
+  pResponseStatus_
+  = DescribeEffectiveInstanceAssociationsResponse'{_deiarsNextToken
+                                                     = Nothing,
+                                                   _deiarsAssociations =
+                                                     Nothing,
+                                                   _deiarsResponseStatus =
+                                                     pResponseStatus_}
 
 -- | The token to use when requesting the next set of items. If there are no additional items to return, the string is empty.
 deiarsNextToken :: Lens' DescribeEffectiveInstanceAssociationsResponse (Maybe Text)

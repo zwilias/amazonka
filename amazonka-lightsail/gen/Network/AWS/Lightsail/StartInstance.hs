@@ -39,18 +39,14 @@ module Network.AWS.Lightsail.StartInstance
 
 import Network.AWS.Lens
 import Network.AWS.Lightsail.Types
-import Network.AWS.Lightsail.Types.Product
 import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 
 -- | /See:/ 'startInstance' smart constructor.
-newtype StartInstance =
-  StartInstance'
-    { _sInstanceName :: Text
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+newtype StartInstance = StartInstance'{_sInstanceName
+                                       :: Text}
+                          deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'StartInstance' with the minimum fields required to make a request.
 --
@@ -60,8 +56,8 @@ newtype StartInstance =
 startInstance
     :: Text -- ^ 'sInstanceName'
     -> StartInstance
-startInstance pInstanceName_ = StartInstance' {_sInstanceName = pInstanceName_}
-
+startInstance pInstanceName_
+  = StartInstance'{_sInstanceName = pInstanceName_}
 
 -- | The name of the instance (a virtual private server) to start.
 sInstanceName :: Lens' StartInstance Text
@@ -102,13 +98,11 @@ instance ToQuery StartInstance where
         toQuery = const mempty
 
 -- | /See:/ 'startInstanceResponse' smart constructor.
-data StartInstanceResponse =
-  StartInstanceResponse'
-    { _srsOperations     :: !(Maybe [Operation])
-    , _srsResponseStatus :: !Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data StartInstanceResponse = StartInstanceResponse'{_srsOperations
+                                                    :: !(Maybe [Operation]),
+                                                    _srsResponseStatus :: !Int}
+                               deriving (Eq, Read, Show, Data, Typeable,
+                                         Generic)
 
 -- | Creates a value of 'StartInstanceResponse' with the minimum fields required to make a request.
 --
@@ -120,10 +114,9 @@ data StartInstanceResponse =
 startInstanceResponse
     :: Int -- ^ 'srsResponseStatus'
     -> StartInstanceResponse
-startInstanceResponse pResponseStatus_ =
-  StartInstanceResponse'
-    {_srsOperations = Nothing, _srsResponseStatus = pResponseStatus_}
-
+startInstanceResponse pResponseStatus_
+  = StartInstanceResponse'{_srsOperations = Nothing,
+                           _srsResponseStatus = pResponseStatus_}
 
 -- | An array of key-value pairs containing information about the request operation.
 srsOperations :: Lens' StartInstanceResponse [Operation]

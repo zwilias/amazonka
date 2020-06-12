@@ -54,7 +54,6 @@ module Network.AWS.CodeDeploy.CreateDeploymentGroup
     ) where
 
 import Network.AWS.CodeDeploy.Types
-import Network.AWS.CodeDeploy.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.Request
@@ -65,28 +64,44 @@ import Network.AWS.Response
 --
 --
 -- /See:/ 'createDeploymentGroup' smart constructor.
-data CreateDeploymentGroup =
-  CreateDeploymentGroup'
-    { _cdgEc2TagSet :: !(Maybe EC2TagSet)
-    , _cdgDeploymentConfigName :: !(Maybe Text)
-    , _cdgOnPremisesTagSet :: !(Maybe OnPremisesTagSet)
-    , _cdgEc2TagFilters :: !(Maybe [EC2TagFilter])
-    , _cdgEcsServices :: !(Maybe [ECSService])
-    , _cdgBlueGreenDeploymentConfiguration :: !(Maybe BlueGreenDeploymentConfiguration)
-    , _cdgLoadBalancerInfo :: !(Maybe LoadBalancerInfo)
-    , _cdgOnPremisesInstanceTagFilters :: !(Maybe [TagFilter])
-    , _cdgAlarmConfiguration :: !(Maybe AlarmConfiguration)
-    , _cdgTriggerConfigurations :: !(Maybe [TriggerConfig])
-    , _cdgAutoScalingGroups :: !(Maybe [Text])
-    , _cdgDeploymentStyle :: !(Maybe DeploymentStyle)
-    , _cdgAutoRollbackConfiguration :: !(Maybe AutoRollbackConfiguration)
-    , _cdgTags :: !(Maybe [Tag])
-    , _cdgApplicationName :: !Text
-    , _cdgDeploymentGroupName :: !Text
-    , _cdgServiceRoleARN :: !Text
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data CreateDeploymentGroup = CreateDeploymentGroup'{_cdgEc2TagSet
+                                                    :: !(Maybe EC2TagSet),
+                                                    _cdgDeploymentConfigName ::
+                                                    !(Maybe Text),
+                                                    _cdgOnPremisesTagSet ::
+                                                    !(Maybe OnPremisesTagSet),
+                                                    _cdgEc2TagFilters ::
+                                                    !(Maybe [EC2TagFilter]),
+                                                    _cdgEcsServices ::
+                                                    !(Maybe [ECSService]),
+                                                    _cdgBlueGreenDeploymentConfiguration
+                                                    ::
+                                                    !(Maybe
+                                                        BlueGreenDeploymentConfiguration),
+                                                    _cdgLoadBalancerInfo ::
+                                                    !(Maybe LoadBalancerInfo),
+                                                    _cdgOnPremisesInstanceTagFilters
+                                                    :: !(Maybe [TagFilter]),
+                                                    _cdgAlarmConfiguration ::
+                                                    !(Maybe AlarmConfiguration),
+                                                    _cdgTriggerConfigurations ::
+                                                    !(Maybe [TriggerConfig]),
+                                                    _cdgAutoScalingGroups ::
+                                                    !(Maybe [Text]),
+                                                    _cdgDeploymentStyle ::
+                                                    !(Maybe DeploymentStyle),
+                                                    _cdgAutoRollbackConfiguration
+                                                    ::
+                                                    !(Maybe
+                                                        AutoRollbackConfiguration),
+                                                    _cdgTags :: !(Maybe [Tag]),
+                                                    _cdgApplicationName ::
+                                                    !Text,
+                                                    _cdgDeploymentGroupName ::
+                                                    !Text,
+                                                    _cdgServiceRoleARN :: !Text}
+                               deriving (Eq, Read, Show, Data, Typeable,
+                                         Generic)
 
 -- | Creates a value of 'CreateDeploymentGroup' with the minimum fields required to make a request.
 --
@@ -100,7 +115,7 @@ data CreateDeploymentGroup =
 --
 -- * 'cdgEc2TagFilters' - The Amazon EC2 tags on which to filter. The deployment group includes EC2 instances with any of the specified tags. Cannot be used in the same call as ec2TagSet.
 --
--- * 'cdgEcsServices' - The target Amazon ECS services in the deployment group. This applies only to deployment groups that use the Amazon ECS compute platform. A target Amazon ECS service is specified as an Amazon ECS cluster and service name pair using the format @<clustername>:<servicename>@ .
+-- * 'cdgEcsServices' - The target Amazon ECS services in the deployment group. This applies only to deployment groups that use the Amazon ECS compute platform. A target Amazon ECS service is specified as an Amazon ECS cluster and service name pair using the format @<clustername>:<servicename>@ . 
 --
 -- * 'cdgBlueGreenDeploymentConfiguration' - Information about blue/green deployment options for a deployment group.
 --
@@ -118,7 +133,7 @@ data CreateDeploymentGroup =
 --
 -- * 'cdgAutoRollbackConfiguration' - Configuration information for an automatic rollback that is added when a deployment group is created.
 --
--- * 'cdgTags' - The metadata that you apply to CodeDeploy deployment groups to help you organize and categorize them. Each tag consists of a key and an optional value, both of which you define.
+-- * 'cdgTags' - The metadata that you apply to CodeDeploy deployment groups to help you organize and categorize them. Each tag consists of a key and an optional value, both of which you define. 
 --
 -- * 'cdgApplicationName' - The name of an AWS CodeDeploy application associated with the IAM user or AWS account.
 --
@@ -130,27 +145,25 @@ createDeploymentGroup
     -> Text -- ^ 'cdgDeploymentGroupName'
     -> Text -- ^ 'cdgServiceRoleARN'
     -> CreateDeploymentGroup
-createDeploymentGroup pApplicationName_ pDeploymentGroupName_ pServiceRoleARN_ =
-  CreateDeploymentGroup'
-    { _cdgEc2TagSet = Nothing
-    , _cdgDeploymentConfigName = Nothing
-    , _cdgOnPremisesTagSet = Nothing
-    , _cdgEc2TagFilters = Nothing
-    , _cdgEcsServices = Nothing
-    , _cdgBlueGreenDeploymentConfiguration = Nothing
-    , _cdgLoadBalancerInfo = Nothing
-    , _cdgOnPremisesInstanceTagFilters = Nothing
-    , _cdgAlarmConfiguration = Nothing
-    , _cdgTriggerConfigurations = Nothing
-    , _cdgAutoScalingGroups = Nothing
-    , _cdgDeploymentStyle = Nothing
-    , _cdgAutoRollbackConfiguration = Nothing
-    , _cdgTags = Nothing
-    , _cdgApplicationName = pApplicationName_
-    , _cdgDeploymentGroupName = pDeploymentGroupName_
-    , _cdgServiceRoleARN = pServiceRoleARN_
-    }
-
+createDeploymentGroup pApplicationName_
+  pDeploymentGroupName_ pServiceRoleARN_
+  = CreateDeploymentGroup'{_cdgEc2TagSet = Nothing,
+                           _cdgDeploymentConfigName = Nothing,
+                           _cdgOnPremisesTagSet = Nothing,
+                           _cdgEc2TagFilters = Nothing,
+                           _cdgEcsServices = Nothing,
+                           _cdgBlueGreenDeploymentConfiguration = Nothing,
+                           _cdgLoadBalancerInfo = Nothing,
+                           _cdgOnPremisesInstanceTagFilters = Nothing,
+                           _cdgAlarmConfiguration = Nothing,
+                           _cdgTriggerConfigurations = Nothing,
+                           _cdgAutoScalingGroups = Nothing,
+                           _cdgDeploymentStyle = Nothing,
+                           _cdgAutoRollbackConfiguration = Nothing,
+                           _cdgTags = Nothing,
+                           _cdgApplicationName = pApplicationName_,
+                           _cdgDeploymentGroupName = pDeploymentGroupName_,
+                           _cdgServiceRoleARN = pServiceRoleARN_}
 
 -- | Information about groups of tags applied to EC2 instances. The deployment group includes only EC2 instances identified by all the tag groups. Cannot be used in the same call as ec2TagFilters.
 cdgEc2TagSet :: Lens' CreateDeploymentGroup (Maybe EC2TagSet)
@@ -168,7 +181,7 @@ cdgOnPremisesTagSet = lens _cdgOnPremisesTagSet (\ s a -> s{_cdgOnPremisesTagSet
 cdgEc2TagFilters :: Lens' CreateDeploymentGroup [EC2TagFilter]
 cdgEc2TagFilters = lens _cdgEc2TagFilters (\ s a -> s{_cdgEc2TagFilters = a}) . _Default . _Coerce
 
--- | The target Amazon ECS services in the deployment group. This applies only to deployment groups that use the Amazon ECS compute platform. A target Amazon ECS service is specified as an Amazon ECS cluster and service name pair using the format @<clustername>:<servicename>@ .
+-- | The target Amazon ECS services in the deployment group. This applies only to deployment groups that use the Amazon ECS compute platform. A target Amazon ECS service is specified as an Amazon ECS cluster and service name pair using the format @<clustername>:<servicename>@ . 
 cdgEcsServices :: Lens' CreateDeploymentGroup [ECSService]
 cdgEcsServices = lens _cdgEcsServices (\ s a -> s{_cdgEcsServices = a}) . _Default . _Coerce
 
@@ -204,7 +217,7 @@ cdgDeploymentStyle = lens _cdgDeploymentStyle (\ s a -> s{_cdgDeploymentStyle = 
 cdgAutoRollbackConfiguration :: Lens' CreateDeploymentGroup (Maybe AutoRollbackConfiguration)
 cdgAutoRollbackConfiguration = lens _cdgAutoRollbackConfiguration (\ s a -> s{_cdgAutoRollbackConfiguration = a})
 
--- | The metadata that you apply to CodeDeploy deployment groups to help you organize and categorize them. Each tag consists of a key and an optional value, both of which you define.
+-- | The metadata that you apply to CodeDeploy deployment groups to help you organize and categorize them. Each tag consists of a key and an optional value, both of which you define. 
 cdgTags :: Lens' CreateDeploymentGroup [Tag]
 cdgTags = lens _cdgTags (\ s a -> s{_cdgTags = a}) . _Default . _Coerce
 
@@ -283,13 +296,14 @@ instance ToQuery CreateDeploymentGroup where
 --
 --
 -- /See:/ 'createDeploymentGroupResponse' smart constructor.
-data CreateDeploymentGroupResponse =
-  CreateDeploymentGroupResponse'
-    { _cdgrsDeploymentGroupId :: !(Maybe Text)
-    , _cdgrsResponseStatus    :: !Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data CreateDeploymentGroupResponse = CreateDeploymentGroupResponse'{_cdgrsDeploymentGroupId
+                                                                    ::
+                                                                    !(Maybe
+                                                                        Text),
+                                                                    _cdgrsResponseStatus
+                                                                    :: !Int}
+                                       deriving (Eq, Read, Show, Data, Typeable,
+                                                 Generic)
 
 -- | Creates a value of 'CreateDeploymentGroupResponse' with the minimum fields required to make a request.
 --
@@ -301,10 +315,10 @@ data CreateDeploymentGroupResponse =
 createDeploymentGroupResponse
     :: Int -- ^ 'cdgrsResponseStatus'
     -> CreateDeploymentGroupResponse
-createDeploymentGroupResponse pResponseStatus_ =
-  CreateDeploymentGroupResponse'
-    {_cdgrsDeploymentGroupId = Nothing, _cdgrsResponseStatus = pResponseStatus_}
-
+createDeploymentGroupResponse pResponseStatus_
+  = CreateDeploymentGroupResponse'{_cdgrsDeploymentGroupId
+                                     = Nothing,
+                                   _cdgrsResponseStatus = pResponseStatus_}
 
 -- | A unique deployment group ID.
 cdgrsDeploymentGroupId :: Lens' CreateDeploymentGroupResponse (Maybe Text)

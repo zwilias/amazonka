@@ -46,23 +46,20 @@ module Network.AWS.Lambda.GetEventSourceMapping
     ) where
 
 import Network.AWS.Lambda.Types
-import Network.AWS.Lambda.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 
--- |
+-- | 
 --
 --
 --
 -- /See:/ 'getEventSourceMapping' smart constructor.
-newtype GetEventSourceMapping =
-  GetEventSourceMapping'
-    { _gesmUUId :: Text
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+newtype GetEventSourceMapping = GetEventSourceMapping'{_gesmUUId
+                                                       :: Text}
+                                  deriving (Eq, Read, Show, Data, Typeable,
+                                            Generic)
 
 -- | Creates a value of 'GetEventSourceMapping' with the minimum fields required to make a request.
 --
@@ -72,8 +69,8 @@ newtype GetEventSourceMapping =
 getEventSourceMapping
     :: Text -- ^ 'gesmUUId'
     -> GetEventSourceMapping
-getEventSourceMapping pUUId_ = GetEventSourceMapping' {_gesmUUId = pUUId_}
-
+getEventSourceMapping pUUId_
+  = GetEventSourceMapping'{_gesmUUId = pUUId_}
 
 -- | The AWS Lambda assigned ID of the event source mapping.
 gesmUUId :: Lens' GetEventSourceMapping Text

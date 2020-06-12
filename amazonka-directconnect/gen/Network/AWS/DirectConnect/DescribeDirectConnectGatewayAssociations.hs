@@ -46,7 +46,6 @@ module Network.AWS.DirectConnect.DescribeDirectConnectGatewayAssociations
     ) where
 
 import Network.AWS.DirectConnect.Types
-import Network.AWS.DirectConnect.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Pager
 import Network.AWS.Prelude
@@ -54,17 +53,33 @@ import Network.AWS.Request
 import Network.AWS.Response
 
 -- | /See:/ 'describeDirectConnectGatewayAssociations' smart constructor.
-data DescribeDirectConnectGatewayAssociations =
-  DescribeDirectConnectGatewayAssociations'
-    { _ddcgaVirtualGatewayId       :: !(Maybe Text)
-    , _ddcgaAssociationId          :: !(Maybe Text)
-    , _ddcgaAssociatedGatewayId    :: !(Maybe Text)
-    , _ddcgaDirectConnectGatewayId :: !(Maybe Text)
-    , _ddcgaNextToken              :: !(Maybe Text)
-    , _ddcgaMaxResults             :: !(Maybe Int)
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data DescribeDirectConnectGatewayAssociations = DescribeDirectConnectGatewayAssociations'{_ddcgaVirtualGatewayId
+                                                                                          ::
+                                                                                          !(Maybe
+                                                                                              Text),
+                                                                                          _ddcgaAssociationId
+                                                                                          ::
+                                                                                          !(Maybe
+                                                                                              Text),
+                                                                                          _ddcgaAssociatedGatewayId
+                                                                                          ::
+                                                                                          !(Maybe
+                                                                                              Text),
+                                                                                          _ddcgaDirectConnectGatewayId
+                                                                                          ::
+                                                                                          !(Maybe
+                                                                                              Text),
+                                                                                          _ddcgaNextToken
+                                                                                          ::
+                                                                                          !(Maybe
+                                                                                              Text),
+                                                                                          _ddcgaMaxResults
+                                                                                          ::
+                                                                                          !(Maybe
+                                                                                              Int)}
+                                                  deriving (Eq, Read, Show,
+                                                            Data, Typeable,
+                                                            Generic)
 
 -- | Creates a value of 'DescribeDirectConnectGatewayAssociations' with the minimum fields required to make a request.
 --
@@ -83,16 +98,16 @@ data DescribeDirectConnectGatewayAssociations =
 -- * 'ddcgaMaxResults' - The maximum number of results to return with a single call. To retrieve the remaining results, make another call with the returned @nextToken@ value. If @MaxResults@ is given a value larger than 100, only 100 results are returned.
 describeDirectConnectGatewayAssociations
     :: DescribeDirectConnectGatewayAssociations
-describeDirectConnectGatewayAssociations =
-  DescribeDirectConnectGatewayAssociations'
-    { _ddcgaVirtualGatewayId = Nothing
-    , _ddcgaAssociationId = Nothing
-    , _ddcgaAssociatedGatewayId = Nothing
-    , _ddcgaDirectConnectGatewayId = Nothing
-    , _ddcgaNextToken = Nothing
-    , _ddcgaMaxResults = Nothing
-    }
-
+describeDirectConnectGatewayAssociations
+  = DescribeDirectConnectGatewayAssociations'{_ddcgaVirtualGatewayId
+                                                = Nothing,
+                                              _ddcgaAssociationId = Nothing,
+                                              _ddcgaAssociatedGatewayId =
+                                                Nothing,
+                                              _ddcgaDirectConnectGatewayId =
+                                                Nothing,
+                                              _ddcgaNextToken = Nothing,
+                                              _ddcgaMaxResults = Nothing}
 
 -- | The ID of the virtual private gateway.
 ddcgaVirtualGatewayId :: Lens' DescribeDirectConnectGatewayAssociations (Maybe Text)
@@ -189,14 +204,21 @@ instance ToQuery
         toQuery = const mempty
 
 -- | /See:/ 'describeDirectConnectGatewayAssociationsResponse' smart constructor.
-data DescribeDirectConnectGatewayAssociationsResponse =
-  DescribeDirectConnectGatewayAssociationsResponse'
-    { _ddcgarsNextToken :: !(Maybe Text)
-    , _ddcgarsDirectConnectGatewayAssociations :: !(Maybe [DirectConnectGatewayAssociation])
-    , _ddcgarsResponseStatus :: !Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data DescribeDirectConnectGatewayAssociationsResponse = DescribeDirectConnectGatewayAssociationsResponse'{_ddcgarsNextToken
+                                                                                                          ::
+                                                                                                          !(Maybe
+                                                                                                              Text),
+                                                                                                          _ddcgarsDirectConnectGatewayAssociations
+                                                                                                          ::
+                                                                                                          !(Maybe
+                                                                                                              [DirectConnectGatewayAssociation]),
+                                                                                                          _ddcgarsResponseStatus
+                                                                                                          ::
+                                                                                                          !Int}
+                                                          deriving (Eq, Read,
+                                                                    Show, Data,
+                                                                    Typeable,
+                                                                    Generic)
 
 -- | Creates a value of 'DescribeDirectConnectGatewayAssociationsResponse' with the minimum fields required to make a request.
 --
@@ -210,13 +232,14 @@ data DescribeDirectConnectGatewayAssociationsResponse =
 describeDirectConnectGatewayAssociationsResponse
     :: Int -- ^ 'ddcgarsResponseStatus'
     -> DescribeDirectConnectGatewayAssociationsResponse
-describeDirectConnectGatewayAssociationsResponse pResponseStatus_ =
-  DescribeDirectConnectGatewayAssociationsResponse'
-    { _ddcgarsNextToken = Nothing
-    , _ddcgarsDirectConnectGatewayAssociations = Nothing
-    , _ddcgarsResponseStatus = pResponseStatus_
-    }
-
+describeDirectConnectGatewayAssociationsResponse
+  pResponseStatus_
+  = DescribeDirectConnectGatewayAssociationsResponse'{_ddcgarsNextToken
+                                                        = Nothing,
+                                                      _ddcgarsDirectConnectGatewayAssociations
+                                                        = Nothing,
+                                                      _ddcgarsResponseStatus =
+                                                        pResponseStatus_}
 
 -- | The token to retrieve the next page.
 ddcgarsNextToken :: Lens' DescribeDirectConnectGatewayAssociationsResponse (Maybe Text)

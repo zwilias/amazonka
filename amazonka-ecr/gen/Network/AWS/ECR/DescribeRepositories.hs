@@ -44,7 +44,6 @@ module Network.AWS.ECR.DescribeRepositories
     ) where
 
 import Network.AWS.ECR.Types
-import Network.AWS.ECR.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Pager
 import Network.AWS.Prelude
@@ -52,15 +51,13 @@ import Network.AWS.Request
 import Network.AWS.Response
 
 -- | /See:/ 'describeRepositories' smart constructor.
-data DescribeRepositories =
-  DescribeRepositories'
-    { _drRegistryId      :: !(Maybe Text)
-    , _drRepositoryNames :: !(Maybe (List1 Text))
-    , _drNextToken       :: !(Maybe Text)
-    , _drMaxResults      :: !(Maybe Nat)
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data DescribeRepositories = DescribeRepositories'{_drRegistryId
+                                                  :: !(Maybe Text),
+                                                  _drRepositoryNames ::
+                                                  !(Maybe (List1 Text)),
+                                                  _drNextToken :: !(Maybe Text),
+                                                  _drMaxResults :: !(Maybe Nat)}
+                              deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'DescribeRepositories' with the minimum fields required to make a request.
 --
@@ -75,14 +72,10 @@ data DescribeRepositories =
 -- * 'drMaxResults' - The maximum number of repository results returned by @DescribeRepositories@ in paginated output. When this parameter is used, @DescribeRepositories@ only returns @maxResults@ results in a single page along with a @nextToken@ response element. The remaining results of the initial request can be seen by sending another @DescribeRepositories@ request with the returned @nextToken@ value. This value can be between 1 and 100. If this parameter is not used, then @DescribeRepositories@ returns up to 100 results and a @nextToken@ value, if applicable. This option cannot be used when you specify repositories with @repositoryNames@ .
 describeRepositories
     :: DescribeRepositories
-describeRepositories =
-  DescribeRepositories'
-    { _drRegistryId = Nothing
-    , _drRepositoryNames = Nothing
-    , _drNextToken = Nothing
-    , _drMaxResults = Nothing
-    }
-
+describeRepositories
+  = DescribeRepositories'{_drRegistryId = Nothing,
+                          _drRepositoryNames = Nothing, _drNextToken = Nothing,
+                          _drMaxResults = Nothing}
 
 -- | The AWS account ID associated with the registry that contains the repositories to be described. If you do not specify a registry, the default registry is assumed.
 drRegistryId :: Lens' DescribeRepositories (Maybe Text)
@@ -149,14 +142,17 @@ instance ToQuery DescribeRepositories where
         toQuery = const mempty
 
 -- | /See:/ 'describeRepositoriesResponse' smart constructor.
-data DescribeRepositoriesResponse =
-  DescribeRepositoriesResponse'
-    { _drrsRepositories   :: !(Maybe [Repository])
-    , _drrsNextToken      :: !(Maybe Text)
-    , _drrsResponseStatus :: !Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data DescribeRepositoriesResponse = DescribeRepositoriesResponse'{_drrsRepositories
+                                                                  ::
+                                                                  !(Maybe
+                                                                      [Repository]),
+                                                                  _drrsNextToken
+                                                                  ::
+                                                                  !(Maybe Text),
+                                                                  _drrsResponseStatus
+                                                                  :: !Int}
+                                      deriving (Eq, Read, Show, Data, Typeable,
+                                                Generic)
 
 -- | Creates a value of 'DescribeRepositoriesResponse' with the minimum fields required to make a request.
 --
@@ -170,13 +166,11 @@ data DescribeRepositoriesResponse =
 describeRepositoriesResponse
     :: Int -- ^ 'drrsResponseStatus'
     -> DescribeRepositoriesResponse
-describeRepositoriesResponse pResponseStatus_ =
-  DescribeRepositoriesResponse'
-    { _drrsRepositories = Nothing
-    , _drrsNextToken = Nothing
-    , _drrsResponseStatus = pResponseStatus_
-    }
-
+describeRepositoriesResponse pResponseStatus_
+  = DescribeRepositoriesResponse'{_drrsRepositories =
+                                    Nothing,
+                                  _drrsNextToken = Nothing,
+                                  _drrsResponseStatus = pResponseStatus_}
 
 -- | A list of repository objects corresponding to valid repositories.
 drrsRepositories :: Lens' DescribeRepositoriesResponse [Repository]

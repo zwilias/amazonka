@@ -40,7 +40,6 @@ module Network.AWS.ElastiCache.CreateSnapshot
     ) where
 
 import Network.AWS.ElastiCache.Types
-import Network.AWS.ElastiCache.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.Request
@@ -51,14 +50,11 @@ import Network.AWS.Response
 --
 --
 -- /See:/ 'createSnapshot' smart constructor.
-data CreateSnapshot =
-  CreateSnapshot'
-    { _csCacheClusterId     :: !(Maybe Text)
-    , _csReplicationGroupId :: !(Maybe Text)
-    , _csSnapshotName       :: !Text
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data CreateSnapshot = CreateSnapshot'{_csCacheClusterId
+                                      :: !(Maybe Text),
+                                      _csReplicationGroupId :: !(Maybe Text),
+                                      _csSnapshotName :: !Text}
+                        deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'CreateSnapshot' with the minimum fields required to make a request.
 --
@@ -72,13 +68,10 @@ data CreateSnapshot =
 createSnapshot
     :: Text -- ^ 'csSnapshotName'
     -> CreateSnapshot
-createSnapshot pSnapshotName_ =
-  CreateSnapshot'
-    { _csCacheClusterId = Nothing
-    , _csReplicationGroupId = Nothing
-    , _csSnapshotName = pSnapshotName_
-    }
-
+createSnapshot pSnapshotName_
+  = CreateSnapshot'{_csCacheClusterId = Nothing,
+                    _csReplicationGroupId = Nothing,
+                    _csSnapshotName = pSnapshotName_}
 
 -- | The identifier of an existing cluster. The snapshot is created from this cluster.
 csCacheClusterId :: Lens' CreateSnapshot (Maybe Text)
@@ -121,13 +114,12 @@ instance ToQuery CreateSnapshot where
                "SnapshotName" =: _csSnapshotName]
 
 -- | /See:/ 'createSnapshotResponse' smart constructor.
-data CreateSnapshotResponse =
-  CreateSnapshotResponse'
-    { _crersSnapshot       :: !(Maybe Snapshot)
-    , _crersResponseStatus :: !Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data CreateSnapshotResponse = CreateSnapshotResponse'{_crersSnapshot
+                                                      :: !(Maybe Snapshot),
+                                                      _crersResponseStatus ::
+                                                      !Int}
+                                deriving (Eq, Read, Show, Data, Typeable,
+                                          Generic)
 
 -- | Creates a value of 'CreateSnapshotResponse' with the minimum fields required to make a request.
 --
@@ -139,10 +131,9 @@ data CreateSnapshotResponse =
 createSnapshotResponse
     :: Int -- ^ 'crersResponseStatus'
     -> CreateSnapshotResponse
-createSnapshotResponse pResponseStatus_ =
-  CreateSnapshotResponse'
-    {_crersSnapshot = Nothing, _crersResponseStatus = pResponseStatus_}
-
+createSnapshotResponse pResponseStatus_
+  = CreateSnapshotResponse'{_crersSnapshot = Nothing,
+                            _crersResponseStatus = pResponseStatus_}
 
 -- | Undocumented member.
 crersSnapshot :: Lens' CreateSnapshotResponse (Maybe Snapshot)

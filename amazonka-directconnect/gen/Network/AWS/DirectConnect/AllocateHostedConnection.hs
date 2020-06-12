@@ -60,24 +60,26 @@ module Network.AWS.DirectConnect.AllocateHostedConnection
     ) where
 
 import Network.AWS.DirectConnect.Types
-import Network.AWS.DirectConnect.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 
 -- | /See:/ 'allocateHostedConnection' smart constructor.
-data AllocateHostedConnection =
-  AllocateHostedConnection'
-    { _ahcTags           :: !(Maybe (List1 Tag))
-    , _ahcConnectionId   :: !Text
-    , _ahcOwnerAccount   :: !Text
-    , _ahcBandwidth      :: !Text
-    , _ahcConnectionName :: !Text
-    , _ahcVlan           :: !Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data AllocateHostedConnection = AllocateHostedConnection'{_ahcTags
+                                                          ::
+                                                          !(Maybe (List1 Tag)),
+                                                          _ahcConnectionId ::
+                                                          !Text,
+                                                          _ahcOwnerAccount ::
+                                                          !Text,
+                                                          _ahcBandwidth ::
+                                                          !Text,
+                                                          _ahcConnectionName ::
+                                                          !Text,
+                                                          _ahcVlan :: !Int}
+                                  deriving (Eq, Read, Show, Data, Typeable,
+                                            Generic)
 
 -- | Creates a value of 'AllocateHostedConnection' with the minimum fields required to make a request.
 --
@@ -89,7 +91,7 @@ data AllocateHostedConnection =
 --
 -- * 'ahcOwnerAccount' - The ID of the AWS account ID of the customer for the connection.
 --
--- * 'ahcBandwidth' - The bandwidth of the connection. The possible values are 50Mbps, 100Mbps, 200Mbps, 300Mbps, 400Mbps, 500Mbps, 1Gbps, 2Gbps, 5Gbps, and 10Gbps. Note that only those AWS Direct Connect Partners who have met specific requirements are allowed to create a 1Gbps, 2Gbps, 5Gbps or 10Gbps hosted connection.
+-- * 'ahcBandwidth' - The bandwidth of the connection. The possible values are 50Mbps, 100Mbps, 200Mbps, 300Mbps, 400Mbps, 500Mbps, 1Gbps, 2Gbps, 5Gbps, and 10Gbps. Note that only those AWS Direct Connect Partners who have met specific requirements are allowed to create a 1Gbps, 2Gbps, 5Gbps or 10Gbps hosted connection. 
 --
 -- * 'ahcConnectionName' - The name of the hosted connection.
 --
@@ -101,16 +103,14 @@ allocateHostedConnection
     -> Text -- ^ 'ahcConnectionName'
     -> Int -- ^ 'ahcVlan'
     -> AllocateHostedConnection
-allocateHostedConnection pConnectionId_ pOwnerAccount_ pBandwidth_ pConnectionName_ pVlan_ =
-  AllocateHostedConnection'
-    { _ahcTags = Nothing
-    , _ahcConnectionId = pConnectionId_
-    , _ahcOwnerAccount = pOwnerAccount_
-    , _ahcBandwidth = pBandwidth_
-    , _ahcConnectionName = pConnectionName_
-    , _ahcVlan = pVlan_
-    }
-
+allocateHostedConnection pConnectionId_
+  pOwnerAccount_ pBandwidth_ pConnectionName_ pVlan_
+  = AllocateHostedConnection'{_ahcTags = Nothing,
+                              _ahcConnectionId = pConnectionId_,
+                              _ahcOwnerAccount = pOwnerAccount_,
+                              _ahcBandwidth = pBandwidth_,
+                              _ahcConnectionName = pConnectionName_,
+                              _ahcVlan = pVlan_}
 
 -- | The tags associated with the connection.
 ahcTags :: Lens' AllocateHostedConnection (Maybe (NonEmpty Tag))
@@ -124,7 +124,7 @@ ahcConnectionId = lens _ahcConnectionId (\ s a -> s{_ahcConnectionId = a})
 ahcOwnerAccount :: Lens' AllocateHostedConnection Text
 ahcOwnerAccount = lens _ahcOwnerAccount (\ s a -> s{_ahcOwnerAccount = a})
 
--- | The bandwidth of the connection. The possible values are 50Mbps, 100Mbps, 200Mbps, 300Mbps, 400Mbps, 500Mbps, 1Gbps, 2Gbps, 5Gbps, and 10Gbps. Note that only those AWS Direct Connect Partners who have met specific requirements are allowed to create a 1Gbps, 2Gbps, 5Gbps or 10Gbps hosted connection.
+-- | The bandwidth of the connection. The possible values are 50Mbps, 100Mbps, 200Mbps, 300Mbps, 400Mbps, 500Mbps, 1Gbps, 2Gbps, 5Gbps, and 10Gbps. Note that only those AWS Direct Connect Partners who have met specific requirements are allowed to create a 1Gbps, 2Gbps, 5Gbps or 10Gbps hosted connection. 
 ahcBandwidth :: Lens' AllocateHostedConnection Text
 ahcBandwidth = lens _ahcBandwidth (\ s a -> s{_ahcBandwidth = a})
 

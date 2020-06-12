@@ -37,7 +37,6 @@ module Network.AWS.MediaLive.CreateInputSecurityGroup
 
 import Network.AWS.Lens
 import Network.AWS.MediaLive.Types
-import Network.AWS.MediaLive.Types.Product
 import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
@@ -45,12 +44,12 @@ import Network.AWS.Response
 -- | The IPv4 CIDRs to whitelist for this Input Security Group
 --
 -- /See:/ 'createInputSecurityGroup' smart constructor.
-newtype CreateInputSecurityGroup =
-  CreateInputSecurityGroup'
-    { _cisgWhitelistRules :: Maybe [InputWhitelistRuleCidr]
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+newtype CreateInputSecurityGroup = CreateInputSecurityGroup'{_cisgWhitelistRules
+                                                             ::
+                                                             Maybe
+                                                               [InputWhitelistRuleCidr]}
+                                     deriving (Eq, Read, Show, Data, Typeable,
+                                               Generic)
 
 -- | Creates a value of 'CreateInputSecurityGroup' with the minimum fields required to make a request.
 --
@@ -59,9 +58,9 @@ newtype CreateInputSecurityGroup =
 -- * 'cisgWhitelistRules' - List of IPv4 CIDR addresses to whitelist
 createInputSecurityGroup
     :: CreateInputSecurityGroup
-createInputSecurityGroup =
-  CreateInputSecurityGroup' {_cisgWhitelistRules = Nothing}
-
+createInputSecurityGroup
+  = CreateInputSecurityGroup'{_cisgWhitelistRules =
+                                Nothing}
 
 -- | List of IPv4 CIDR addresses to whitelist
 cisgWhitelistRules :: Lens' CreateInputSecurityGroup [InputWhitelistRuleCidr]
@@ -103,13 +102,15 @@ instance ToQuery CreateInputSecurityGroup where
 -- | Placeholder documentation for CreateInputSecurityGroupResponse
 --
 -- /See:/ 'createInputSecurityGroupResponse' smart constructor.
-data CreateInputSecurityGroupResponse =
-  CreateInputSecurityGroupResponse'
-    { _cisgrsSecurityGroup  :: !(Maybe InputSecurityGroup)
-    , _cisgrsResponseStatus :: !Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data CreateInputSecurityGroupResponse = CreateInputSecurityGroupResponse'{_cisgrsSecurityGroup
+                                                                          ::
+                                                                          !(Maybe
+                                                                              InputSecurityGroup),
+                                                                          _cisgrsResponseStatus
+                                                                          ::
+                                                                          !Int}
+                                          deriving (Eq, Read, Show, Data,
+                                                    Typeable, Generic)
 
 -- | Creates a value of 'CreateInputSecurityGroupResponse' with the minimum fields required to make a request.
 --
@@ -121,10 +122,10 @@ data CreateInputSecurityGroupResponse =
 createInputSecurityGroupResponse
     :: Int -- ^ 'cisgrsResponseStatus'
     -> CreateInputSecurityGroupResponse
-createInputSecurityGroupResponse pResponseStatus_ =
-  CreateInputSecurityGroupResponse'
-    {_cisgrsSecurityGroup = Nothing, _cisgrsResponseStatus = pResponseStatus_}
-
+createInputSecurityGroupResponse pResponseStatus_
+  = CreateInputSecurityGroupResponse'{_cisgrsSecurityGroup
+                                        = Nothing,
+                                      _cisgrsResponseStatus = pResponseStatus_}
 
 -- | Undocumented member.
 cisgrsSecurityGroup :: Lens' CreateInputSecurityGroupResponse (Maybe InputSecurityGroup)

@@ -60,25 +60,39 @@ import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 import Network.AWS.ServiceCatalog.Types
-import Network.AWS.ServiceCatalog.Types.Product
 
 -- | /See:/ 'createProvisionedProductPlan' smart constructor.
-data CreateProvisionedProductPlan =
-  CreateProvisionedProductPlan'
-    { _cpppNotificationARNs       :: !(Maybe [Text])
-    , _cpppAcceptLanguage         :: !(Maybe Text)
-    , _cpppPathId                 :: !(Maybe Text)
-    , _cpppProvisioningParameters :: !(Maybe [UpdateProvisioningParameter])
-    , _cpppTags                   :: !(Maybe [Tag])
-    , _cpppPlanName               :: !Text
-    , _cpppPlanType               :: !ProvisionedProductPlanType
-    , _cpppProductId              :: !Text
-    , _cpppProvisionedProductName :: !Text
-    , _cpppProvisioningArtifactId :: !Text
-    , _cpppIdempotencyToken       :: !Text
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data CreateProvisionedProductPlan = CreateProvisionedProductPlan'{_cpppNotificationARNs
+                                                                  ::
+                                                                  !(Maybe
+                                                                      [Text]),
+                                                                  _cpppAcceptLanguage
+                                                                  ::
+                                                                  !(Maybe Text),
+                                                                  _cpppPathId ::
+                                                                  !(Maybe Text),
+                                                                  _cpppProvisioningParameters
+                                                                  ::
+                                                                  !(Maybe
+                                                                      [UpdateProvisioningParameter]),
+                                                                  _cpppTags ::
+                                                                  !(Maybe
+                                                                      [Tag]),
+                                                                  _cpppPlanName
+                                                                  :: !Text,
+                                                                  _cpppPlanType
+                                                                  ::
+                                                                  !ProvisionedProductPlanType,
+                                                                  _cpppProductId
+                                                                  :: !Text,
+                                                                  _cpppProvisionedProductName
+                                                                  :: !Text,
+                                                                  _cpppProvisioningArtifactId
+                                                                  :: !Text,
+                                                                  _cpppIdempotencyToken
+                                                                  :: !Text}
+                                      deriving (Eq, Read, Show, Data, Typeable,
+                                                Generic)
 
 -- | Creates a value of 'CreateProvisionedProductPlan' with the minimum fields required to make a request.
 --
@@ -113,21 +127,23 @@ createProvisionedProductPlan
     -> Text -- ^ 'cpppProvisioningArtifactId'
     -> Text -- ^ 'cpppIdempotencyToken'
     -> CreateProvisionedProductPlan
-createProvisionedProductPlan pPlanName_ pPlanType_ pProductId_ pProvisionedProductName_ pProvisioningArtifactId_ pIdempotencyToken_ =
-  CreateProvisionedProductPlan'
-    { _cpppNotificationARNs = Nothing
-    , _cpppAcceptLanguage = Nothing
-    , _cpppPathId = Nothing
-    , _cpppProvisioningParameters = Nothing
-    , _cpppTags = Nothing
-    , _cpppPlanName = pPlanName_
-    , _cpppPlanType = pPlanType_
-    , _cpppProductId = pProductId_
-    , _cpppProvisionedProductName = pProvisionedProductName_
-    , _cpppProvisioningArtifactId = pProvisioningArtifactId_
-    , _cpppIdempotencyToken = pIdempotencyToken_
-    }
-
+createProvisionedProductPlan pPlanName_ pPlanType_
+  pProductId_ pProvisionedProductName_
+  pProvisioningArtifactId_ pIdempotencyToken_
+  = CreateProvisionedProductPlan'{_cpppNotificationARNs
+                                    = Nothing,
+                                  _cpppAcceptLanguage = Nothing,
+                                  _cpppPathId = Nothing,
+                                  _cpppProvisioningParameters = Nothing,
+                                  _cpppTags = Nothing,
+                                  _cpppPlanName = pPlanName_,
+                                  _cpppPlanType = pPlanType_,
+                                  _cpppProductId = pProductId_,
+                                  _cpppProvisionedProductName =
+                                    pProvisionedProductName_,
+                                  _cpppProvisioningArtifactId =
+                                    pProvisioningArtifactId_,
+                                  _cpppIdempotencyToken = pIdempotencyToken_}
 
 -- | Passed to CloudFormation. The SNS topic ARNs to which to publish stack-related events.
 cpppNotificationARNs :: Lens' CreateProvisionedProductPlan [Text]
@@ -231,17 +247,31 @@ instance ToQuery CreateProvisionedProductPlan where
         toQuery = const mempty
 
 -- | /See:/ 'createProvisionedProductPlanResponse' smart constructor.
-data CreateProvisionedProductPlanResponse =
-  CreateProvisionedProductPlanResponse'
-    { _cppprsProvisionedProductName :: !(Maybe Text)
-    , _cppprsProvisionProductId     :: !(Maybe Text)
-    , _cppprsProvisioningArtifactId :: !(Maybe Text)
-    , _cppprsPlanId                 :: !(Maybe Text)
-    , _cppprsPlanName               :: !(Maybe Text)
-    , _cppprsResponseStatus         :: !Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data CreateProvisionedProductPlanResponse = CreateProvisionedProductPlanResponse'{_cppprsProvisionedProductName
+                                                                                  ::
+                                                                                  !(Maybe
+                                                                                      Text),
+                                                                                  _cppprsProvisionProductId
+                                                                                  ::
+                                                                                  !(Maybe
+                                                                                      Text),
+                                                                                  _cppprsProvisioningArtifactId
+                                                                                  ::
+                                                                                  !(Maybe
+                                                                                      Text),
+                                                                                  _cppprsPlanId
+                                                                                  ::
+                                                                                  !(Maybe
+                                                                                      Text),
+                                                                                  _cppprsPlanName
+                                                                                  ::
+                                                                                  !(Maybe
+                                                                                      Text),
+                                                                                  _cppprsResponseStatus
+                                                                                  ::
+                                                                                  !Int}
+                                              deriving (Eq, Read, Show, Data,
+                                                        Typeable, Generic)
 
 -- | Creates a value of 'CreateProvisionedProductPlanResponse' with the minimum fields required to make a request.
 --
@@ -261,16 +291,16 @@ data CreateProvisionedProductPlanResponse =
 createProvisionedProductPlanResponse
     :: Int -- ^ 'cppprsResponseStatus'
     -> CreateProvisionedProductPlanResponse
-createProvisionedProductPlanResponse pResponseStatus_ =
-  CreateProvisionedProductPlanResponse'
-    { _cppprsProvisionedProductName = Nothing
-    , _cppprsProvisionProductId = Nothing
-    , _cppprsProvisioningArtifactId = Nothing
-    , _cppprsPlanId = Nothing
-    , _cppprsPlanName = Nothing
-    , _cppprsResponseStatus = pResponseStatus_
-    }
-
+createProvisionedProductPlanResponse pResponseStatus_
+  = CreateProvisionedProductPlanResponse'{_cppprsProvisionedProductName
+                                            = Nothing,
+                                          _cppprsProvisionProductId = Nothing,
+                                          _cppprsProvisioningArtifactId =
+                                            Nothing,
+                                          _cppprsPlanId = Nothing,
+                                          _cppprsPlanName = Nothing,
+                                          _cppprsResponseStatus =
+                                            pResponseStatus_}
 
 -- | The user-friendly name of the provisioned product.
 cppprsProvisionedProductName :: Lens' CreateProvisionedProductPlanResponse (Maybe Text)

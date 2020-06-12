@@ -39,21 +39,20 @@ module Network.AWS.Glue.CreateClassifier
     ) where
 
 import Network.AWS.Glue.Types
-import Network.AWS.Glue.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 
 -- | /See:/ 'createClassifier' smart constructor.
-data CreateClassifier =
-  CreateClassifier'
-    { _ccGrokClassifier :: !(Maybe CreateGrokClassifierRequest)
-    , _ccXMLClassifier  :: !(Maybe CreateXMLClassifierRequest)
-    , _ccJSONClassifier :: !(Maybe CreateJSONClassifierRequest)
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data CreateClassifier = CreateClassifier'{_ccGrokClassifier
+                                          ::
+                                          !(Maybe CreateGrokClassifierRequest),
+                                          _ccXMLClassifier ::
+                                          !(Maybe CreateXMLClassifierRequest),
+                                          _ccJSONClassifier ::
+                                          !(Maybe CreateJSONClassifierRequest)}
+                          deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'CreateClassifier' with the minimum fields required to make a request.
 --
@@ -66,13 +65,10 @@ data CreateClassifier =
 -- * 'ccJSONClassifier' - A @JsonClassifier@ object specifying the classifier to create.
 createClassifier
     :: CreateClassifier
-createClassifier =
-  CreateClassifier'
-    { _ccGrokClassifier = Nothing
-    , _ccXMLClassifier = Nothing
-    , _ccJSONClassifier = Nothing
-    }
-
+createClassifier
+  = CreateClassifier'{_ccGrokClassifier = Nothing,
+                      _ccXMLClassifier = Nothing,
+                      _ccJSONClassifier = Nothing}
 
 -- | A @GrokClassifier@ object specifying the classifier to create.
 ccGrokClassifier :: Lens' CreateClassifier (Maybe CreateGrokClassifierRequest)
@@ -122,12 +118,10 @@ instance ToQuery CreateClassifier where
         toQuery = const mempty
 
 -- | /See:/ 'createClassifierResponse' smart constructor.
-newtype CreateClassifierResponse =
-  CreateClassifierResponse'
-    { _ccrsResponseStatus :: Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+newtype CreateClassifierResponse = CreateClassifierResponse'{_ccrsResponseStatus
+                                                             :: Int}
+                                     deriving (Eq, Read, Show, Data, Typeable,
+                                               Generic)
 
 -- | Creates a value of 'CreateClassifierResponse' with the minimum fields required to make a request.
 --
@@ -137,9 +131,9 @@ newtype CreateClassifierResponse =
 createClassifierResponse
     :: Int -- ^ 'ccrsResponseStatus'
     -> CreateClassifierResponse
-createClassifierResponse pResponseStatus_ =
-  CreateClassifierResponse' {_ccrsResponseStatus = pResponseStatus_}
-
+createClassifierResponse pResponseStatus_
+  = CreateClassifierResponse'{_ccrsResponseStatus =
+                                pResponseStatus_}
 
 -- | -- | The response status code.
 ccrsResponseStatus :: Lens' CreateClassifierResponse Int

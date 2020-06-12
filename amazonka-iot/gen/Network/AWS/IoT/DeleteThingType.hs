@@ -37,7 +37,6 @@ module Network.AWS.IoT.DeleteThingType
     ) where
 
 import Network.AWS.IoT.Types
-import Network.AWS.IoT.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.Request
@@ -48,12 +47,9 @@ import Network.AWS.Response
 --
 --
 -- /See:/ 'deleteThingType' smart constructor.
-newtype DeleteThingType =
-  DeleteThingType'
-    { _dttThingTypeName :: Text
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+newtype DeleteThingType = DeleteThingType'{_dttThingTypeName
+                                           :: Text}
+                            deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'DeleteThingType' with the minimum fields required to make a request.
 --
@@ -63,9 +59,9 @@ newtype DeleteThingType =
 deleteThingType
     :: Text -- ^ 'dttThingTypeName'
     -> DeleteThingType
-deleteThingType pThingTypeName_ =
-  DeleteThingType' {_dttThingTypeName = pThingTypeName_}
-
+deleteThingType pThingTypeName_
+  = DeleteThingType'{_dttThingTypeName =
+                       pThingTypeName_}
 
 -- | The name of the thing type.
 dttThingTypeName :: Lens' DeleteThingType Text
@@ -98,12 +94,10 @@ instance ToQuery DeleteThingType where
 --
 --
 -- /See:/ 'deleteThingTypeResponse' smart constructor.
-newtype DeleteThingTypeResponse =
-  DeleteThingTypeResponse'
-    { _dttrsResponseStatus :: Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+newtype DeleteThingTypeResponse = DeleteThingTypeResponse'{_dttrsResponseStatus
+                                                           :: Int}
+                                    deriving (Eq, Read, Show, Data, Typeable,
+                                              Generic)
 
 -- | Creates a value of 'DeleteThingTypeResponse' with the minimum fields required to make a request.
 --
@@ -113,9 +107,9 @@ newtype DeleteThingTypeResponse =
 deleteThingTypeResponse
     :: Int -- ^ 'dttrsResponseStatus'
     -> DeleteThingTypeResponse
-deleteThingTypeResponse pResponseStatus_ =
-  DeleteThingTypeResponse' {_dttrsResponseStatus = pResponseStatus_}
-
+deleteThingTypeResponse pResponseStatus_
+  = DeleteThingTypeResponse'{_dttrsResponseStatus =
+                               pResponseStatus_}
 
 -- | -- | The response status code.
 dttrsResponseStatus :: Lens' DeleteThingTypeResponse Int

@@ -39,19 +39,16 @@ module Network.AWS.IoT.SetDefaultAuthorizer
     ) where
 
 import Network.AWS.IoT.Types
-import Network.AWS.IoT.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 
 -- | /See:/ 'setDefaultAuthorizer' smart constructor.
-newtype SetDefaultAuthorizer =
-  SetDefaultAuthorizer'
-    { _sdaAuthorizerName :: Text
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+newtype SetDefaultAuthorizer = SetDefaultAuthorizer'{_sdaAuthorizerName
+                                                     :: Text}
+                                 deriving (Eq, Read, Show, Data, Typeable,
+                                           Generic)
 
 -- | Creates a value of 'SetDefaultAuthorizer' with the minimum fields required to make a request.
 --
@@ -61,9 +58,9 @@ newtype SetDefaultAuthorizer =
 setDefaultAuthorizer
     :: Text -- ^ 'sdaAuthorizerName'
     -> SetDefaultAuthorizer
-setDefaultAuthorizer pAuthorizerName_ =
-  SetDefaultAuthorizer' {_sdaAuthorizerName = pAuthorizerName_}
-
+setDefaultAuthorizer pAuthorizerName_
+  = SetDefaultAuthorizer'{_sdaAuthorizerName =
+                            pAuthorizerName_}
 
 -- | The authorizer name.
 sdaAuthorizerName :: Lens' SetDefaultAuthorizer Text
@@ -100,14 +97,16 @@ instance ToQuery SetDefaultAuthorizer where
         toQuery = const mempty
 
 -- | /See:/ 'setDefaultAuthorizerResponse' smart constructor.
-data SetDefaultAuthorizerResponse =
-  SetDefaultAuthorizerResponse'
-    { _sdarsAuthorizerName :: !(Maybe Text)
-    , _sdarsAuthorizerARN  :: !(Maybe Text)
-    , _sdarsResponseStatus :: !Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data SetDefaultAuthorizerResponse = SetDefaultAuthorizerResponse'{_sdarsAuthorizerName
+                                                                  ::
+                                                                  !(Maybe Text),
+                                                                  _sdarsAuthorizerARN
+                                                                  ::
+                                                                  !(Maybe Text),
+                                                                  _sdarsResponseStatus
+                                                                  :: !Int}
+                                      deriving (Eq, Read, Show, Data, Typeable,
+                                                Generic)
 
 -- | Creates a value of 'SetDefaultAuthorizerResponse' with the minimum fields required to make a request.
 --
@@ -121,13 +120,11 @@ data SetDefaultAuthorizerResponse =
 setDefaultAuthorizerResponse
     :: Int -- ^ 'sdarsResponseStatus'
     -> SetDefaultAuthorizerResponse
-setDefaultAuthorizerResponse pResponseStatus_ =
-  SetDefaultAuthorizerResponse'
-    { _sdarsAuthorizerName = Nothing
-    , _sdarsAuthorizerARN = Nothing
-    , _sdarsResponseStatus = pResponseStatus_
-    }
-
+setDefaultAuthorizerResponse pResponseStatus_
+  = SetDefaultAuthorizerResponse'{_sdarsAuthorizerName
+                                    = Nothing,
+                                  _sdarsAuthorizerARN = Nothing,
+                                  _sdarsResponseStatus = pResponseStatus_}
 
 -- | The authorizer name.
 sdarsAuthorizerName :: Lens' SetDefaultAuthorizerResponse (Maybe Text)

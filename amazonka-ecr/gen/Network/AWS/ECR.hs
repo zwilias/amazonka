@@ -88,67 +88,67 @@ module Network.AWS.ECR
     -- * Operations
     -- $operations
 
-    -- ** GetRepositoryPolicy
+    -- ** GetRepositoryPolicy 
     , module Network.AWS.ECR.GetRepositoryPolicy
 
-    -- ** PutLifecyclePolicy
+    -- ** PutLifecyclePolicy 
     , module Network.AWS.ECR.PutLifecyclePolicy
 
-    -- ** DeleteLifecyclePolicy
+    -- ** DeleteLifecyclePolicy 
     , module Network.AWS.ECR.DeleteLifecyclePolicy
 
-    -- ** BatchDeleteImage
+    -- ** BatchDeleteImage 
     , module Network.AWS.ECR.BatchDeleteImage
 
-    -- ** GetLifecyclePolicyPreview
+    -- ** GetLifecyclePolicyPreview 
     , module Network.AWS.ECR.GetLifecyclePolicyPreview
 
-    -- ** BatchCheckLayerAvailability
+    -- ** BatchCheckLayerAvailability 
     , module Network.AWS.ECR.BatchCheckLayerAvailability
 
-    -- ** DeleteRepositoryPolicy
+    -- ** DeleteRepositoryPolicy 
     , module Network.AWS.ECR.DeleteRepositoryPolicy
 
-    -- ** CreateRepository
+    -- ** CreateRepository 
     , module Network.AWS.ECR.CreateRepository
 
-    -- ** CompleteLayerUpload
+    -- ** CompleteLayerUpload 
     , module Network.AWS.ECR.CompleteLayerUpload
 
     -- ** DescribeRepositories (Paginated)
     , module Network.AWS.ECR.DescribeRepositories
 
-    -- ** StartLifecyclePolicyPreview
+    -- ** StartLifecyclePolicyPreview 
     , module Network.AWS.ECR.StartLifecyclePolicyPreview
 
-    -- ** UploadLayerPart
+    -- ** UploadLayerPart 
     , module Network.AWS.ECR.UploadLayerPart
 
-    -- ** BatchGetImage
+    -- ** BatchGetImage 
     , module Network.AWS.ECR.BatchGetImage
 
-    -- ** GetLifecyclePolicy
+    -- ** GetLifecyclePolicy 
     , module Network.AWS.ECR.GetLifecyclePolicy
 
-    -- ** SetRepositoryPolicy
+    -- ** SetRepositoryPolicy 
     , module Network.AWS.ECR.SetRepositoryPolicy
 
-    -- ** InitiateLayerUpload
+    -- ** InitiateLayerUpload 
     , module Network.AWS.ECR.InitiateLayerUpload
 
-    -- ** DeleteRepository
+    -- ** DeleteRepository 
     , module Network.AWS.ECR.DeleteRepository
 
-    -- ** PutImage
+    -- ** PutImage 
     , module Network.AWS.ECR.PutImage
 
     -- ** ListImages (Paginated)
     , module Network.AWS.ECR.ListImages
 
-    -- ** GetAuthorizationToken
+    -- ** GetAuthorizationToken 
     , module Network.AWS.ECR.GetAuthorizationToken
 
-    -- ** GetDownloadURLForLayer
+    -- ** GetDownloadURLForLayer 
     , module Network.AWS.ECR.GetDownloadURLForLayer
 
     -- ** DescribeImages (Paginated)

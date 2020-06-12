@@ -48,41 +48,37 @@ import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 import Network.AWS.StorageGateway.Types
-import Network.AWS.StorageGateway.Types.Product
 
 -- | A JSON object containing one or more of the following fields:
 --
 --
---     * 'ActivateGatewayInput$ActivationKey'
+--     * 'ActivateGatewayInput$ActivationKey' 
 --
---     * 'ActivateGatewayInput$GatewayName'
+--     * 'ActivateGatewayInput$GatewayName' 
 --
---     * 'ActivateGatewayInput$GatewayRegion'
+--     * 'ActivateGatewayInput$GatewayRegion' 
 --
---     * 'ActivateGatewayInput$GatewayTimezone'
+--     * 'ActivateGatewayInput$GatewayTimezone' 
 --
---     * 'ActivateGatewayInput$GatewayType'
+--     * 'ActivateGatewayInput$GatewayType' 
 --
---     * 'ActivateGatewayInput$TapeDriveType'
+--     * 'ActivateGatewayInput$TapeDriveType' 
 --
---     * 'ActivateGatewayInput$MediumChangerType'
+--     * 'ActivateGatewayInput$MediumChangerType' 
 --
 --
 --
 --
 -- /See:/ 'activateGateway' smart constructor.
-data ActivateGateway =
-  ActivateGateway'
-    { _agMediumChangerType :: !(Maybe Text)
-    , _agTapeDriveType     :: !(Maybe Text)
-    , _agGatewayType       :: !(Maybe Text)
-    , _agActivationKey     :: !Text
-    , _agGatewayName       :: !Text
-    , _agGatewayTimezone   :: !Text
-    , _agGatewayRegion     :: !Text
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data ActivateGateway = ActivateGateway'{_agMediumChangerType
+                                        :: !(Maybe Text),
+                                        _agTapeDriveType :: !(Maybe Text),
+                                        _agGatewayType :: !(Maybe Text),
+                                        _agActivationKey :: !Text,
+                                        _agGatewayName :: !Text,
+                                        _agGatewayTimezone :: !Text,
+                                        _agGatewayRegion :: !Text}
+                         deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'ActivateGateway' with the minimum fields required to make a request.
 --
@@ -90,7 +86,7 @@ data ActivateGateway =
 --
 -- * 'agMediumChangerType' - The value that indicates the type of medium changer to use for tape gateway. This field is optional. Valid Values: "STK-L700", "AWS-Gateway-VTL"
 --
--- * 'agTapeDriveType' - The value that indicates the type of tape drive to use for tape gateway. This field is optional. Valid Values: "IBM-ULT3580-TD5"
+-- * 'agTapeDriveType' - The value that indicates the type of tape drive to use for tape gateway. This field is optional. Valid Values: "IBM-ULT3580-TD5" 
 --
 -- * 'agGatewayType' - A value that defines the type of gateway to activate. The type specified is critical to all later functions of the gateway and cannot be changed after activation. The default value is @STORED@ .  Valid Values: "STORED", "CACHED", "VTL", "FILE_S3"
 --
@@ -107,23 +103,20 @@ activateGateway
     -> Text -- ^ 'agGatewayTimezone'
     -> Text -- ^ 'agGatewayRegion'
     -> ActivateGateway
-activateGateway pActivationKey_ pGatewayName_ pGatewayTimezone_ pGatewayRegion_ =
-  ActivateGateway'
-    { _agMediumChangerType = Nothing
-    , _agTapeDriveType = Nothing
-    , _agGatewayType = Nothing
-    , _agActivationKey = pActivationKey_
-    , _agGatewayName = pGatewayName_
-    , _agGatewayTimezone = pGatewayTimezone_
-    , _agGatewayRegion = pGatewayRegion_
-    }
-
+activateGateway pActivationKey_ pGatewayName_
+  pGatewayTimezone_ pGatewayRegion_
+  = ActivateGateway'{_agMediumChangerType = Nothing,
+                     _agTapeDriveType = Nothing, _agGatewayType = Nothing,
+                     _agActivationKey = pActivationKey_,
+                     _agGatewayName = pGatewayName_,
+                     _agGatewayTimezone = pGatewayTimezone_,
+                     _agGatewayRegion = pGatewayRegion_}
 
 -- | The value that indicates the type of medium changer to use for tape gateway. This field is optional. Valid Values: "STK-L700", "AWS-Gateway-VTL"
 agMediumChangerType :: Lens' ActivateGateway (Maybe Text)
 agMediumChangerType = lens _agMediumChangerType (\ s a -> s{_agMediumChangerType = a})
 
--- | The value that indicates the type of tape drive to use for tape gateway. This field is optional. Valid Values: "IBM-ULT3580-TD5"
+-- | The value that indicates the type of tape drive to use for tape gateway. This field is optional. Valid Values: "IBM-ULT3580-TD5" 
 agTapeDriveType :: Lens' ActivateGateway (Maybe Text)
 agTapeDriveType = lens _agTapeDriveType (\ s a -> s{_agTapeDriveType = a})
 
@@ -193,13 +186,12 @@ instance ToQuery ActivateGateway where
 --
 --
 -- /See:/ 'activateGatewayResponse' smart constructor.
-data ActivateGatewayResponse =
-  ActivateGatewayResponse'
-    { _agrsGatewayARN     :: !(Maybe Text)
-    , _agrsResponseStatus :: !Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data ActivateGatewayResponse = ActivateGatewayResponse'{_agrsGatewayARN
+                                                        :: !(Maybe Text),
+                                                        _agrsResponseStatus ::
+                                                        !Int}
+                                 deriving (Eq, Read, Show, Data, Typeable,
+                                           Generic)
 
 -- | Creates a value of 'ActivateGatewayResponse' with the minimum fields required to make a request.
 --
@@ -211,10 +203,9 @@ data ActivateGatewayResponse =
 activateGatewayResponse
     :: Int -- ^ 'agrsResponseStatus'
     -> ActivateGatewayResponse
-activateGatewayResponse pResponseStatus_ =
-  ActivateGatewayResponse'
-    {_agrsGatewayARN = Nothing, _agrsResponseStatus = pResponseStatus_}
-
+activateGatewayResponse pResponseStatus_
+  = ActivateGatewayResponse'{_agrsGatewayARN = Nothing,
+                             _agrsResponseStatus = pResponseStatus_}
 
 -- | Undocumented member.
 agrsGatewayARN :: Lens' ActivateGatewayResponse (Maybe Text)

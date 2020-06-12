@@ -43,7 +43,6 @@ module Network.AWS.CodeStar.ListTeamMembers
     ) where
 
 import Network.AWS.CodeStar.Types
-import Network.AWS.CodeStar.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Pager
 import Network.AWS.Prelude
@@ -51,14 +50,11 @@ import Network.AWS.Request
 import Network.AWS.Response
 
 -- | /See:/ 'listTeamMembers' smart constructor.
-data ListTeamMembers =
-  ListTeamMembers'
-    { _ltmNextToken  :: !(Maybe Text)
-    , _ltmMaxResults :: !(Maybe Nat)
-    , _ltmProjectId  :: !Text
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data ListTeamMembers = ListTeamMembers'{_ltmNextToken
+                                        :: !(Maybe Text),
+                                        _ltmMaxResults :: !(Maybe Nat),
+                                        _ltmProjectId :: !Text}
+                         deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'ListTeamMembers' with the minimum fields required to make a request.
 --
@@ -72,13 +68,10 @@ data ListTeamMembers =
 listTeamMembers
     :: Text -- ^ 'ltmProjectId'
     -> ListTeamMembers
-listTeamMembers pProjectId_ =
-  ListTeamMembers'
-    { _ltmNextToken = Nothing
-    , _ltmMaxResults = Nothing
-    , _ltmProjectId = pProjectId_
-    }
-
+listTeamMembers pProjectId_
+  = ListTeamMembers'{_ltmNextToken = Nothing,
+                     _ltmMaxResults = Nothing,
+                     _ltmProjectId = pProjectId_}
 
 -- | The continuation token for the next set of results, if the results cannot be returned in one response.
 ltmNextToken :: Lens' ListTeamMembers (Maybe Text)
@@ -137,14 +130,14 @@ instance ToQuery ListTeamMembers where
         toQuery = const mempty
 
 -- | /See:/ 'listTeamMembersResponse' smart constructor.
-data ListTeamMembersResponse =
-  ListTeamMembersResponse'
-    { _ltmrsNextToken      :: !(Maybe Text)
-    , _ltmrsResponseStatus :: !Int
-    , _ltmrsTeamMembers    :: ![TeamMember]
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data ListTeamMembersResponse = ListTeamMembersResponse'{_ltmrsNextToken
+                                                        :: !(Maybe Text),
+                                                        _ltmrsResponseStatus ::
+                                                        !Int,
+                                                        _ltmrsTeamMembers ::
+                                                        ![TeamMember]}
+                                 deriving (Eq, Read, Show, Data, Typeable,
+                                           Generic)
 
 -- | Creates a value of 'ListTeamMembersResponse' with the minimum fields required to make a request.
 --
@@ -158,13 +151,10 @@ data ListTeamMembersResponse =
 listTeamMembersResponse
     :: Int -- ^ 'ltmrsResponseStatus'
     -> ListTeamMembersResponse
-listTeamMembersResponse pResponseStatus_ =
-  ListTeamMembersResponse'
-    { _ltmrsNextToken = Nothing
-    , _ltmrsResponseStatus = pResponseStatus_
-    , _ltmrsTeamMembers = mempty
-    }
-
+listTeamMembersResponse pResponseStatus_
+  = ListTeamMembersResponse'{_ltmrsNextToken = Nothing,
+                             _ltmrsResponseStatus = pResponseStatus_,
+                             _ltmrsTeamMembers = mempty}
 
 -- | The continuation token to use when requesting the next set of results, if there are more results to be returned.
 ltmrsNextToken :: Lens' ListTeamMembersResponse (Maybe Text)

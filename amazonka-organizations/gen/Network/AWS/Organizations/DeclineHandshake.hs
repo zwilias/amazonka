@@ -43,18 +43,14 @@ module Network.AWS.Organizations.DeclineHandshake
 
 import Network.AWS.Lens
 import Network.AWS.Organizations.Types
-import Network.AWS.Organizations.Types.Product
 import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 
 -- | /See:/ 'declineHandshake' smart constructor.
-newtype DeclineHandshake =
-  DeclineHandshake'
-    { _dHandshakeId :: Text
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+newtype DeclineHandshake = DeclineHandshake'{_dHandshakeId
+                                             :: Text}
+                             deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'DeclineHandshake' with the minimum fields required to make a request.
 --
@@ -64,9 +60,8 @@ newtype DeclineHandshake =
 declineHandshake
     :: Text -- ^ 'dHandshakeId'
     -> DeclineHandshake
-declineHandshake pHandshakeId_ =
-  DeclineHandshake' {_dHandshakeId = pHandshakeId_}
-
+declineHandshake pHandshakeId_
+  = DeclineHandshake'{_dHandshakeId = pHandshakeId_}
 
 -- | The unique identifier (ID) of the handshake that you want to decline. You can get the ID from the 'ListHandshakesForAccount' operation. The <http://wikipedia.org/wiki/regex regex pattern> for handshake ID string requires "h-" followed by from 8 to 32 lower-case letters or digits.
 dHandshakeId :: Lens' DeclineHandshake Text
@@ -107,13 +102,11 @@ instance ToQuery DeclineHandshake where
         toQuery = const mempty
 
 -- | /See:/ 'declineHandshakeResponse' smart constructor.
-data DeclineHandshakeResponse =
-  DeclineHandshakeResponse'
-    { _drsHandshake      :: !(Maybe Handshake)
-    , _drsResponseStatus :: !Int
-    }
-  deriving (Eq, Show, Data, Typeable, Generic)
-
+data DeclineHandshakeResponse = DeclineHandshakeResponse'{_drsHandshake
+                                                          :: !(Maybe Handshake),
+                                                          _drsResponseStatus ::
+                                                          !Int}
+                                  deriving (Eq, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'DeclineHandshakeResponse' with the minimum fields required to make a request.
 --
@@ -125,10 +118,9 @@ data DeclineHandshakeResponse =
 declineHandshakeResponse
     :: Int -- ^ 'drsResponseStatus'
     -> DeclineHandshakeResponse
-declineHandshakeResponse pResponseStatus_ =
-  DeclineHandshakeResponse'
-    {_drsHandshake = Nothing, _drsResponseStatus = pResponseStatus_}
-
+declineHandshakeResponse pResponseStatus_
+  = DeclineHandshakeResponse'{_drsHandshake = Nothing,
+                              _drsResponseStatus = pResponseStatus_}
 
 -- | A structure that contains details about the declined handshake. The state is updated to show the value @DECLINED@ .
 drsHandshake :: Lens' DeclineHandshakeResponse (Maybe Handshake)

@@ -37,7 +37,6 @@ module Network.AWS.GuardDuty.AcceptInvitation
     ) where
 
 import Network.AWS.GuardDuty.Types
-import Network.AWS.GuardDuty.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.Request
@@ -46,14 +45,11 @@ import Network.AWS.Response
 -- | AcceptInvitation request body.
 --
 -- /See:/ 'acceptInvitation' smart constructor.
-data AcceptInvitation =
-  AcceptInvitation'
-    { _aiMasterId     :: !(Maybe Text)
-    , _aiInvitationId :: !(Maybe Text)
-    , _aiDetectorId   :: !Text
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data AcceptInvitation = AcceptInvitation'{_aiMasterId
+                                          :: !(Maybe Text),
+                                          _aiInvitationId :: !(Maybe Text),
+                                          _aiDetectorId :: !Text}
+                          deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'AcceptInvitation' with the minimum fields required to make a request.
 --
@@ -67,13 +63,10 @@ data AcceptInvitation =
 acceptInvitation
     :: Text -- ^ 'aiDetectorId'
     -> AcceptInvitation
-acceptInvitation pDetectorId_ =
-  AcceptInvitation'
-    { _aiMasterId = Nothing
-    , _aiInvitationId = Nothing
-    , _aiDetectorId = pDetectorId_
-    }
-
+acceptInvitation pDetectorId_
+  = AcceptInvitation'{_aiMasterId = Nothing,
+                      _aiInvitationId = Nothing,
+                      _aiDetectorId = pDetectorId_}
 
 -- | The account ID of the master GuardDuty account whose invitation you're accepting.
 aiMasterId :: Lens' AcceptInvitation (Maybe Text)
@@ -122,12 +115,10 @@ instance ToQuery AcceptInvitation where
         toQuery = const mempty
 
 -- | /See:/ 'acceptInvitationResponse' smart constructor.
-newtype AcceptInvitationResponse =
-  AcceptInvitationResponse'
-    { _airsResponseStatus :: Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+newtype AcceptInvitationResponse = AcceptInvitationResponse'{_airsResponseStatus
+                                                             :: Int}
+                                     deriving (Eq, Read, Show, Data, Typeable,
+                                               Generic)
 
 -- | Creates a value of 'AcceptInvitationResponse' with the minimum fields required to make a request.
 --
@@ -137,9 +128,9 @@ newtype AcceptInvitationResponse =
 acceptInvitationResponse
     :: Int -- ^ 'airsResponseStatus'
     -> AcceptInvitationResponse
-acceptInvitationResponse pResponseStatus_ =
-  AcceptInvitationResponse' {_airsResponseStatus = pResponseStatus_}
-
+acceptInvitationResponse pResponseStatus_
+  = AcceptInvitationResponse'{_airsResponseStatus =
+                                pResponseStatus_}
 
 -- | -- | The response status code.
 airsResponseStatus :: Lens' AcceptInvitationResponse Int

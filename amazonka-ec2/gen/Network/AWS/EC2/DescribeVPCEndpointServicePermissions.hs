@@ -45,7 +45,6 @@ module Network.AWS.EC2.DescribeVPCEndpointServicePermissions
     ) where
 
 import Network.AWS.EC2.Types
-import Network.AWS.EC2.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Pager
 import Network.AWS.Prelude
@@ -53,16 +52,27 @@ import Network.AWS.Request
 import Network.AWS.Response
 
 -- | /See:/ 'describeVPCEndpointServicePermissions' smart constructor.
-data DescribeVPCEndpointServicePermissions =
-  DescribeVPCEndpointServicePermissions'
-    { _dvespFilters    :: !(Maybe [Filter])
-    , _dvespNextToken  :: !(Maybe Text)
-    , _dvespDryRun     :: !(Maybe Bool)
-    , _dvespMaxResults :: !(Maybe Int)
-    , _dvespServiceId  :: !Text
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data DescribeVPCEndpointServicePermissions = DescribeVPCEndpointServicePermissions'{_dvespFilters
+                                                                                    ::
+                                                                                    !(Maybe
+                                                                                        [Filter]),
+                                                                                    _dvespNextToken
+                                                                                    ::
+                                                                                    !(Maybe
+                                                                                        Text),
+                                                                                    _dvespDryRun
+                                                                                    ::
+                                                                                    !(Maybe
+                                                                                        Bool),
+                                                                                    _dvespMaxResults
+                                                                                    ::
+                                                                                    !(Maybe
+                                                                                        Int),
+                                                                                    _dvespServiceId
+                                                                                    ::
+                                                                                    !Text}
+                                               deriving (Eq, Read, Show, Data,
+                                                         Typeable, Generic)
 
 -- | Creates a value of 'DescribeVPCEndpointServicePermissions' with the minimum fields required to make a request.
 --
@@ -80,15 +90,13 @@ data DescribeVPCEndpointServicePermissions =
 describeVPCEndpointServicePermissions
     :: Text -- ^ 'dvespServiceId'
     -> DescribeVPCEndpointServicePermissions
-describeVPCEndpointServicePermissions pServiceId_ =
-  DescribeVPCEndpointServicePermissions'
-    { _dvespFilters = Nothing
-    , _dvespNextToken = Nothing
-    , _dvespDryRun = Nothing
-    , _dvespMaxResults = Nothing
-    , _dvespServiceId = pServiceId_
-    }
-
+describeVPCEndpointServicePermissions pServiceId_
+  = DescribeVPCEndpointServicePermissions'{_dvespFilters
+                                             = Nothing,
+                                           _dvespNextToken = Nothing,
+                                           _dvespDryRun = Nothing,
+                                           _dvespMaxResults = Nothing,
+                                           _dvespServiceId = pServiceId_}
 
 -- | One or more filters.     * @principal@ - The ARN of the principal.     * @principal-type@ - The principal type (@All@ | @Service@ | @OrganizationUnit@ | @Account@ | @User@ | @Role@ ).
 dvespFilters :: Lens' DescribeVPCEndpointServicePermissions [Filter]
@@ -166,14 +174,20 @@ instance ToQuery
                "ServiceId" =: _dvespServiceId]
 
 -- | /See:/ 'describeVPCEndpointServicePermissionsResponse' smart constructor.
-data DescribeVPCEndpointServicePermissionsResponse =
-  DescribeVPCEndpointServicePermissionsResponse'
-    { _dvesprsNextToken         :: !(Maybe Text)
-    , _dvesprsAllowedPrincipals :: !(Maybe [AllowedPrincipal])
-    , _dvesprsResponseStatus    :: !Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data DescribeVPCEndpointServicePermissionsResponse = DescribeVPCEndpointServicePermissionsResponse'{_dvesprsNextToken
+                                                                                                    ::
+                                                                                                    !(Maybe
+                                                                                                        Text),
+                                                                                                    _dvesprsAllowedPrincipals
+                                                                                                    ::
+                                                                                                    !(Maybe
+                                                                                                        [AllowedPrincipal]),
+                                                                                                    _dvesprsResponseStatus
+                                                                                                    ::
+                                                                                                    !Int}
+                                                       deriving (Eq, Read, Show,
+                                                                 Data, Typeable,
+                                                                 Generic)
 
 -- | Creates a value of 'DescribeVPCEndpointServicePermissionsResponse' with the minimum fields required to make a request.
 --
@@ -187,13 +201,14 @@ data DescribeVPCEndpointServicePermissionsResponse =
 describeVPCEndpointServicePermissionsResponse
     :: Int -- ^ 'dvesprsResponseStatus'
     -> DescribeVPCEndpointServicePermissionsResponse
-describeVPCEndpointServicePermissionsResponse pResponseStatus_ =
-  DescribeVPCEndpointServicePermissionsResponse'
-    { _dvesprsNextToken = Nothing
-    , _dvesprsAllowedPrincipals = Nothing
-    , _dvesprsResponseStatus = pResponseStatus_
-    }
-
+describeVPCEndpointServicePermissionsResponse
+  pResponseStatus_
+  = DescribeVPCEndpointServicePermissionsResponse'{_dvesprsNextToken
+                                                     = Nothing,
+                                                   _dvesprsAllowedPrincipals =
+                                                     Nothing,
+                                                   _dvesprsResponseStatus =
+                                                     pResponseStatus_}
 
 -- | The token to use to retrieve the next page of results. This value is @null@ when there are no more results to return.
 dvesprsNextToken :: Lens' DescribeVPCEndpointServicePermissionsResponse (Maybe Text)

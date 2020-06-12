@@ -57,20 +57,17 @@ import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 import Network.AWS.Route53AutoNaming.Types
-import Network.AWS.Route53AutoNaming.Types.Product
 
 -- | /See:/ 'createService' smart constructor.
-data CreateService =
-  CreateService'
-    { _csHealthCheckConfig       :: !(Maybe HealthCheckConfig)
-    , _csCreatorRequestId        :: !(Maybe Text)
-    , _csHealthCheckCustomConfig :: !(Maybe HealthCheckCustomConfig)
-    , _csDescription             :: !(Maybe Text)
-    , _csName                    :: !Text
-    , _csDNSConfig               :: !DNSConfig
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data CreateService = CreateService'{_csHealthCheckConfig
+                                    :: !(Maybe HealthCheckConfig),
+                                    _csCreatorRequestId :: !(Maybe Text),
+                                    _csHealthCheckCustomConfig ::
+                                    !(Maybe HealthCheckCustomConfig),
+                                    _csDescription :: !(Maybe Text),
+                                    _csName :: !Text,
+                                    _csDNSConfig :: !DNSConfig}
+                       deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'CreateService' with the minimum fields required to make a request.
 --
@@ -86,21 +83,17 @@ data CreateService =
 --
 -- * 'csName' - The name that you want to assign to the service.
 --
--- * 'csDNSConfig' - A complex type that contains information about the records that you want Route 53 to create when you register an instance.
+-- * 'csDNSConfig' - A complex type that contains information about the records that you want Route 53 to create when you register an instance. 
 createService
     :: Text -- ^ 'csName'
     -> DNSConfig -- ^ 'csDNSConfig'
     -> CreateService
-createService pName_ pDNSConfig_ =
-  CreateService'
-    { _csHealthCheckConfig = Nothing
-    , _csCreatorRequestId = Nothing
-    , _csHealthCheckCustomConfig = Nothing
-    , _csDescription = Nothing
-    , _csName = pName_
-    , _csDNSConfig = pDNSConfig_
-    }
-
+createService pName_ pDNSConfig_
+  = CreateService'{_csHealthCheckConfig = Nothing,
+                   _csCreatorRequestId = Nothing,
+                   _csHealthCheckCustomConfig = Nothing,
+                   _csDescription = Nothing, _csName = pName_,
+                   _csDNSConfig = pDNSConfig_}
 
 -- | /Public DNS namespaces only./ A complex type that contains settings for an optional health check. If you specify settings for a health check, Route 53 associates the health check with all the records that you specify in @DnsConfig@ . For information about the charges for health checks, see <http://aws.amazon.com/route53/pricing Route 53 Pricing> .
 csHealthCheckConfig :: Lens' CreateService (Maybe HealthCheckConfig)
@@ -122,7 +115,7 @@ csDescription = lens _csDescription (\ s a -> s{_csDescription = a})
 csName :: Lens' CreateService Text
 csName = lens _csName (\ s a -> s{_csName = a})
 
--- | A complex type that contains information about the records that you want Route 53 to create when you register an instance.
+-- | A complex type that contains information about the records that you want Route 53 to create when you register an instance. 
 csDNSConfig :: Lens' CreateService DNSConfig
 csDNSConfig = lens _csDNSConfig (\ s a -> s{_csDNSConfig = a})
 
@@ -168,13 +161,11 @@ instance ToQuery CreateService where
         toQuery = const mempty
 
 -- | /See:/ 'createServiceResponse' smart constructor.
-data CreateServiceResponse =
-  CreateServiceResponse'
-    { _csrsService        :: !(Maybe ServiceInfo)
-    , _csrsResponseStatus :: !Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data CreateServiceResponse = CreateServiceResponse'{_csrsService
+                                                    :: !(Maybe ServiceInfo),
+                                                    _csrsResponseStatus :: !Int}
+                               deriving (Eq, Read, Show, Data, Typeable,
+                                         Generic)
 
 -- | Creates a value of 'CreateServiceResponse' with the minimum fields required to make a request.
 --
@@ -186,10 +177,9 @@ data CreateServiceResponse =
 createServiceResponse
     :: Int -- ^ 'csrsResponseStatus'
     -> CreateServiceResponse
-createServiceResponse pResponseStatus_ =
-  CreateServiceResponse'
-    {_csrsService = Nothing, _csrsResponseStatus = pResponseStatus_}
-
+createServiceResponse pResponseStatus_
+  = CreateServiceResponse'{_csrsService = Nothing,
+                           _csrsResponseStatus = pResponseStatus_}
 
 -- | A complex type that contains information about the new service.
 csrsService :: Lens' CreateServiceResponse (Maybe ServiceInfo)

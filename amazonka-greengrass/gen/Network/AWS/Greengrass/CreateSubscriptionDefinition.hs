@@ -44,21 +44,23 @@ module Network.AWS.Greengrass.CreateSubscriptionDefinition
     ) where
 
 import Network.AWS.Greengrass.Types
-import Network.AWS.Greengrass.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 
 -- | /See:/ 'createSubscriptionDefinition' smart constructor.
-data CreateSubscriptionDefinition =
-  CreateSubscriptionDefinition'
-    { _csdAmznClientToken :: !(Maybe Text)
-    , _csdInitialVersion  :: !(Maybe SubscriptionDefinitionVersion)
-    , _csdName            :: !(Maybe Text)
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data CreateSubscriptionDefinition = CreateSubscriptionDefinition'{_csdAmznClientToken
+                                                                  ::
+                                                                  !(Maybe Text),
+                                                                  _csdInitialVersion
+                                                                  ::
+                                                                  !(Maybe
+                                                                      SubscriptionDefinitionVersion),
+                                                                  _csdName ::
+                                                                  !(Maybe Text)}
+                                      deriving (Eq, Read, Show, Data, Typeable,
+                                                Generic)
 
 -- | Creates a value of 'CreateSubscriptionDefinition' with the minimum fields required to make a request.
 --
@@ -71,13 +73,11 @@ data CreateSubscriptionDefinition =
 -- * 'csdName' - The name of the subscription definition.
 createSubscriptionDefinition
     :: CreateSubscriptionDefinition
-createSubscriptionDefinition =
-  CreateSubscriptionDefinition'
-    { _csdAmznClientToken = Nothing
-    , _csdInitialVersion = Nothing
-    , _csdName = Nothing
-    }
-
+createSubscriptionDefinition
+  = CreateSubscriptionDefinition'{_csdAmznClientToken =
+                                    Nothing,
+                                  _csdInitialVersion = Nothing,
+                                  _csdName = Nothing}
 
 -- | A client token used to correlate requests and responses.
 csdAmznClientToken :: Lens' CreateSubscriptionDefinition (Maybe Text)
@@ -133,19 +133,39 @@ instance ToQuery CreateSubscriptionDefinition where
         toQuery = const mempty
 
 -- | /See:/ 'createSubscriptionDefinitionResponse' smart constructor.
-data CreateSubscriptionDefinitionResponse =
-  CreateSubscriptionDefinitionResponse'
-    { _csdrsLatestVersionARN     :: !(Maybe Text)
-    , _csdrsARN                  :: !(Maybe Text)
-    , _csdrsName                 :: !(Maybe Text)
-    , _csdrsCreationTimestamp    :: !(Maybe Text)
-    , _csdrsId                   :: !(Maybe Text)
-    , _csdrsLatestVersion        :: !(Maybe Text)
-    , _csdrsLastUpdatedTimestamp :: !(Maybe Text)
-    , _csdrsResponseStatus       :: !Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data CreateSubscriptionDefinitionResponse = CreateSubscriptionDefinitionResponse'{_csdrsLatestVersionARN
+                                                                                  ::
+                                                                                  !(Maybe
+                                                                                      Text),
+                                                                                  _csdrsARN
+                                                                                  ::
+                                                                                  !(Maybe
+                                                                                      Text),
+                                                                                  _csdrsName
+                                                                                  ::
+                                                                                  !(Maybe
+                                                                                      Text),
+                                                                                  _csdrsCreationTimestamp
+                                                                                  ::
+                                                                                  !(Maybe
+                                                                                      Text),
+                                                                                  _csdrsId
+                                                                                  ::
+                                                                                  !(Maybe
+                                                                                      Text),
+                                                                                  _csdrsLatestVersion
+                                                                                  ::
+                                                                                  !(Maybe
+                                                                                      Text),
+                                                                                  _csdrsLastUpdatedTimestamp
+                                                                                  ::
+                                                                                  !(Maybe
+                                                                                      Text),
+                                                                                  _csdrsResponseStatus
+                                                                                  ::
+                                                                                  !Int}
+                                              deriving (Eq, Read, Show, Data,
+                                                        Typeable, Generic)
 
 -- | Creates a value of 'CreateSubscriptionDefinitionResponse' with the minimum fields required to make a request.
 --
@@ -169,18 +189,17 @@ data CreateSubscriptionDefinitionResponse =
 createSubscriptionDefinitionResponse
     :: Int -- ^ 'csdrsResponseStatus'
     -> CreateSubscriptionDefinitionResponse
-createSubscriptionDefinitionResponse pResponseStatus_ =
-  CreateSubscriptionDefinitionResponse'
-    { _csdrsLatestVersionARN = Nothing
-    , _csdrsARN = Nothing
-    , _csdrsName = Nothing
-    , _csdrsCreationTimestamp = Nothing
-    , _csdrsId = Nothing
-    , _csdrsLatestVersion = Nothing
-    , _csdrsLastUpdatedTimestamp = Nothing
-    , _csdrsResponseStatus = pResponseStatus_
-    }
-
+createSubscriptionDefinitionResponse pResponseStatus_
+  = CreateSubscriptionDefinitionResponse'{_csdrsLatestVersionARN
+                                            = Nothing,
+                                          _csdrsARN = Nothing,
+                                          _csdrsName = Nothing,
+                                          _csdrsCreationTimestamp = Nothing,
+                                          _csdrsId = Nothing,
+                                          _csdrsLatestVersion = Nothing,
+                                          _csdrsLastUpdatedTimestamp = Nothing,
+                                          _csdrsResponseStatus =
+                                            pResponseStatus_}
 
 -- | The ARN of the latest version of the definition.
 csdrsLatestVersionARN :: Lens' CreateSubscriptionDefinitionResponse (Maybe Text)

@@ -43,19 +43,16 @@ module Network.AWS.IoT.DescribeThingGroup
     ) where
 
 import Network.AWS.IoT.Types
-import Network.AWS.IoT.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 
 -- | /See:/ 'describeThingGroup' smart constructor.
-newtype DescribeThingGroup =
-  DescribeThingGroup'
-    { _dtgThingGroupName :: Text
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+newtype DescribeThingGroup = DescribeThingGroup'{_dtgThingGroupName
+                                                 :: Text}
+                               deriving (Eq, Read, Show, Data, Typeable,
+                                         Generic)
 
 -- | Creates a value of 'DescribeThingGroup' with the minimum fields required to make a request.
 --
@@ -65,9 +62,9 @@ newtype DescribeThingGroup =
 describeThingGroup
     :: Text -- ^ 'dtgThingGroupName'
     -> DescribeThingGroup
-describeThingGroup pThingGroupName_ =
-  DescribeThingGroup' {_dtgThingGroupName = pThingGroupName_}
-
+describeThingGroup pThingGroupName_
+  = DescribeThingGroup'{_dtgThingGroupName =
+                          pThingGroupName_}
 
 -- | The name of the thing group.
 dtgThingGroupName :: Lens' DescribeThingGroup Text
@@ -103,18 +100,26 @@ instance ToQuery DescribeThingGroup where
         toQuery = const mempty
 
 -- | /See:/ 'describeThingGroupResponse' smart constructor.
-data DescribeThingGroupResponse =
-  DescribeThingGroupResponse'
-    { _dtgrsThingGroupARN        :: !(Maybe Text)
-    , _dtgrsThingGroupId         :: !(Maybe Text)
-    , _dtgrsThingGroupMetadata   :: !(Maybe ThingGroupMetadata)
-    , _dtgrsThingGroupName       :: !(Maybe Text)
-    , _dtgrsVersion              :: !(Maybe Integer)
-    , _dtgrsThingGroupProperties :: !(Maybe ThingGroupProperties)
-    , _dtgrsResponseStatus       :: !Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data DescribeThingGroupResponse = DescribeThingGroupResponse'{_dtgrsThingGroupARN
+                                                              :: !(Maybe Text),
+                                                              _dtgrsThingGroupId
+                                                              :: !(Maybe Text),
+                                                              _dtgrsThingGroupMetadata
+                                                              ::
+                                                              !(Maybe
+                                                                  ThingGroupMetadata),
+                                                              _dtgrsThingGroupName
+                                                              :: !(Maybe Text),
+                                                              _dtgrsVersion ::
+                                                              !(Maybe Integer),
+                                                              _dtgrsThingGroupProperties
+                                                              ::
+                                                              !(Maybe
+                                                                  ThingGroupProperties),
+                                                              _dtgrsResponseStatus
+                                                              :: !Int}
+                                    deriving (Eq, Read, Show, Data, Typeable,
+                                              Generic)
 
 -- | Creates a value of 'DescribeThingGroupResponse' with the minimum fields required to make a request.
 --
@@ -136,17 +141,15 @@ data DescribeThingGroupResponse =
 describeThingGroupResponse
     :: Int -- ^ 'dtgrsResponseStatus'
     -> DescribeThingGroupResponse
-describeThingGroupResponse pResponseStatus_ =
-  DescribeThingGroupResponse'
-    { _dtgrsThingGroupARN = Nothing
-    , _dtgrsThingGroupId = Nothing
-    , _dtgrsThingGroupMetadata = Nothing
-    , _dtgrsThingGroupName = Nothing
-    , _dtgrsVersion = Nothing
-    , _dtgrsThingGroupProperties = Nothing
-    , _dtgrsResponseStatus = pResponseStatus_
-    }
-
+describeThingGroupResponse pResponseStatus_
+  = DescribeThingGroupResponse'{_dtgrsThingGroupARN =
+                                  Nothing,
+                                _dtgrsThingGroupId = Nothing,
+                                _dtgrsThingGroupMetadata = Nothing,
+                                _dtgrsThingGroupName = Nothing,
+                                _dtgrsVersion = Nothing,
+                                _dtgrsThingGroupProperties = Nothing,
+                                _dtgrsResponseStatus = pResponseStatus_}
 
 -- | The thing group ARN.
 dtgrsThingGroupARN :: Lens' DescribeThingGroupResponse (Maybe Text)

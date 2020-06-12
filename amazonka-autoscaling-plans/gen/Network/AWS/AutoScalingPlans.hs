@@ -11,9 +11,9 @@
 -- Stability   : auto-generated
 -- Portability : non-portable (GHC extensions)
 --
--- __AWS Auto Scaling__
+-- __AWS Auto Scaling__ 
 --
--- Use AWS Auto Scaling to quickly discover all the scalable AWS resources for your application and configure dynamic scaling and predictive scaling for your resources using scaling plans. Use this service in conjunction with the Amazon EC2 Auto Scaling, Application Auto Scaling, Amazon CloudWatch, and AWS CloudFormation services.
+-- Use AWS Auto Scaling to quickly discover all the scalable AWS resources for your application and configure dynamic scaling and predictive scaling for your resources using scaling plans. Use this service in conjunction with the Amazon EC2 Auto Scaling, Application Auto Scaling, Amazon CloudWatch, and AWS CloudFormation services. 
 --
 -- Currently, predictive scaling is only available for Amazon EC2 Auto Scaling groups.
 --
@@ -54,19 +54,19 @@ module Network.AWS.AutoScalingPlans
     -- ** DescribeScalingPlanResources (Paginated)
     , module Network.AWS.AutoScalingPlans.DescribeScalingPlanResources
 
-    -- ** CreateScalingPlan
+    -- ** CreateScalingPlan 
     , module Network.AWS.AutoScalingPlans.CreateScalingPlan
 
-    -- ** DeleteScalingPlan
+    -- ** DeleteScalingPlan 
     , module Network.AWS.AutoScalingPlans.DeleteScalingPlan
 
-    -- ** UpdateScalingPlan
+    -- ** UpdateScalingPlan 
     , module Network.AWS.AutoScalingPlans.UpdateScalingPlan
 
     -- ** DescribeScalingPlans (Paginated)
     , module Network.AWS.AutoScalingPlans.DescribeScalingPlans
 
-    -- ** GetScalingPlanResourceForecastData
+    -- ** GetScalingPlanResourceForecastData 
     , module Network.AWS.AutoScalingPlans.GetScalingPlanResourceForecastData
 
     -- * Types

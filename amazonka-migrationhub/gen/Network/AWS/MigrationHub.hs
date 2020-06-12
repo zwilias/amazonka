@@ -11,7 +11,7 @@
 -- Stability   : auto-generated
 -- Portability : non-portable (GHC extensions)
 --
--- The AWS Migration Hub API methods help to obtain server and application migration status and integrate your resource-specific migration tool by providing a programmatic interface to Migration Hub.
+-- The AWS Migration Hub API methods help to obtain server and application migration status and integrate your resource-specific migration tool by providing a programmatic interface to Migration Hub. 
 --
 --
 module Network.AWS.MigrationHub
@@ -52,52 +52,52 @@ module Network.AWS.MigrationHub
     -- * Operations
     -- $operations
 
-    -- ** AssociateDiscoveredResource
+    -- ** AssociateDiscoveredResource 
     , module Network.AWS.MigrationHub.AssociateDiscoveredResource
 
-    -- ** CreateProgressUpdateStream
+    -- ** CreateProgressUpdateStream 
     , module Network.AWS.MigrationHub.CreateProgressUpdateStream
 
-    -- ** ListCreatedArtifacts
+    -- ** ListCreatedArtifacts 
     , module Network.AWS.MigrationHub.ListCreatedArtifacts
 
-    -- ** DisassociateDiscoveredResource
+    -- ** DisassociateDiscoveredResource 
     , module Network.AWS.MigrationHub.DisassociateDiscoveredResource
 
-    -- ** NotifyApplicationState
+    -- ** NotifyApplicationState 
     , module Network.AWS.MigrationHub.NotifyApplicationState
 
-    -- ** DeleteProgressUpdateStream
+    -- ** DeleteProgressUpdateStream 
     , module Network.AWS.MigrationHub.DeleteProgressUpdateStream
 
-    -- ** ListProgressUpdateStreams
+    -- ** ListProgressUpdateStreams 
     , module Network.AWS.MigrationHub.ListProgressUpdateStreams
 
-    -- ** DisassociateCreatedArtifact
+    -- ** DisassociateCreatedArtifact 
     , module Network.AWS.MigrationHub.DisassociateCreatedArtifact
 
-    -- ** ImportMigrationTask
+    -- ** ImportMigrationTask 
     , module Network.AWS.MigrationHub.ImportMigrationTask
 
-    -- ** DescribeMigrationTask
+    -- ** DescribeMigrationTask 
     , module Network.AWS.MigrationHub.DescribeMigrationTask
 
-    -- ** PutResourceAttributes
+    -- ** PutResourceAttributes 
     , module Network.AWS.MigrationHub.PutResourceAttributes
 
-    -- ** AssociateCreatedArtifact
+    -- ** AssociateCreatedArtifact 
     , module Network.AWS.MigrationHub.AssociateCreatedArtifact
 
-    -- ** NotifyMigrationTaskState
+    -- ** NotifyMigrationTaskState 
     , module Network.AWS.MigrationHub.NotifyMigrationTaskState
 
-    -- ** DescribeApplicationState
+    -- ** DescribeApplicationState 
     , module Network.AWS.MigrationHub.DescribeApplicationState
 
-    -- ** ListMigrationTasks
+    -- ** ListMigrationTasks 
     , module Network.AWS.MigrationHub.ListMigrationTasks
 
-    -- ** ListDiscoveredResources
+    -- ** ListDiscoveredResources 
     , module Network.AWS.MigrationHub.ListDiscoveredResources
 
     -- * Types

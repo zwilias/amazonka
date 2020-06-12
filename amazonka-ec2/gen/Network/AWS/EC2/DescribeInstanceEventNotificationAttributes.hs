@@ -38,19 +38,20 @@ module Network.AWS.EC2.DescribeInstanceEventNotificationAttributes
     ) where
 
 import Network.AWS.EC2.Types
-import Network.AWS.EC2.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 
 -- | /See:/ 'describeInstanceEventNotificationAttributes' smart constructor.
-newtype DescribeInstanceEventNotificationAttributes =
-  DescribeInstanceEventNotificationAttributes'
-    { _dienasDryRun :: Maybe Bool
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+newtype DescribeInstanceEventNotificationAttributes = DescribeInstanceEventNotificationAttributes'{_dienasDryRun
+                                                                                                   ::
+                                                                                                   Maybe
+                                                                                                     Bool}
+                                                        deriving (Eq, Read,
+                                                                  Show, Data,
+                                                                  Typeable,
+                                                                  Generic)
 
 -- | Creates a value of 'DescribeInstanceEventNotificationAttributes' with the minimum fields required to make a request.
 --
@@ -59,9 +60,9 @@ newtype DescribeInstanceEventNotificationAttributes =
 -- * 'dienasDryRun' - Checks whether you have the required permissions for the action, without actually making the request, and provides an error response. If you have the required permissions, the error response is @DryRunOperation@ . Otherwise, it is @UnauthorizedOperation@ .
 describeInstanceEventNotificationAttributes
     :: DescribeInstanceEventNotificationAttributes
-describeInstanceEventNotificationAttributes =
-  DescribeInstanceEventNotificationAttributes' {_dienasDryRun = Nothing}
-
+describeInstanceEventNotificationAttributes
+  = DescribeInstanceEventNotificationAttributes'{_dienasDryRun
+                                                   = Nothing}
 
 -- | Checks whether you have the required permissions for the action, without actually making the request, and provides an error response. If you have the required permissions, the error response is @DryRunOperation@ . Otherwise, it is @UnauthorizedOperation@ .
 dienasDryRun :: Lens' DescribeInstanceEventNotificationAttributes (Maybe Bool)
@@ -112,13 +113,18 @@ instance ToQuery
                "DryRun" =: _dienasDryRun]
 
 -- | /See:/ 'describeInstanceEventNotificationAttributesResponse' smart constructor.
-data DescribeInstanceEventNotificationAttributesResponse =
-  DescribeInstanceEventNotificationAttributesResponse'
-    { _dienasrsInstanceTagAttribute :: !(Maybe InstanceTagNotificationAttribute)
-    , _dienasrsResponseStatus       :: !Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data DescribeInstanceEventNotificationAttributesResponse = DescribeInstanceEventNotificationAttributesResponse'{_dienasrsInstanceTagAttribute
+                                                                                                                ::
+                                                                                                                !(Maybe
+                                                                                                                    InstanceTagNotificationAttribute),
+                                                                                                                _dienasrsResponseStatus
+                                                                                                                ::
+                                                                                                                !Int}
+                                                             deriving (Eq, Read,
+                                                                       Show,
+                                                                       Data,
+                                                                       Typeable,
+                                                                       Generic)
 
 -- | Creates a value of 'DescribeInstanceEventNotificationAttributesResponse' with the minimum fields required to make a request.
 --
@@ -130,12 +136,12 @@ data DescribeInstanceEventNotificationAttributesResponse =
 describeInstanceEventNotificationAttributesResponse
     :: Int -- ^ 'dienasrsResponseStatus'
     -> DescribeInstanceEventNotificationAttributesResponse
-describeInstanceEventNotificationAttributesResponse pResponseStatus_ =
-  DescribeInstanceEventNotificationAttributesResponse'
-    { _dienasrsInstanceTagAttribute = Nothing
-    , _dienasrsResponseStatus = pResponseStatus_
-    }
-
+describeInstanceEventNotificationAttributesResponse
+  pResponseStatus_
+  = DescribeInstanceEventNotificationAttributesResponse'{_dienasrsInstanceTagAttribute
+                                                           = Nothing,
+                                                         _dienasrsResponseStatus
+                                                           = pResponseStatus_}
 
 -- | Information about the registered tag keys.
 dienasrsInstanceTagAttribute :: Lens' DescribeInstanceEventNotificationAttributesResponse (Maybe InstanceTagNotificationAttribute)

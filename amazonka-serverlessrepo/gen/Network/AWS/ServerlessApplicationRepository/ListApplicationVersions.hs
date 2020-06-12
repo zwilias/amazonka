@@ -45,17 +45,16 @@ import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 import Network.AWS.ServerlessApplicationRepository.Types
-import Network.AWS.ServerlessApplicationRepository.Types.Product
 
 -- | /See:/ 'listApplicationVersions' smart constructor.
-data ListApplicationVersions =
-  ListApplicationVersions'
-    { _lavNextToken     :: !(Maybe Text)
-    , _lavMaxItems      :: !(Maybe Nat)
-    , _lavApplicationId :: !Text
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data ListApplicationVersions = ListApplicationVersions'{_lavNextToken
+                                                        :: !(Maybe Text),
+                                                        _lavMaxItems ::
+                                                        !(Maybe Nat),
+                                                        _lavApplicationId ::
+                                                        !Text}
+                                 deriving (Eq, Read, Show, Data, Typeable,
+                                           Generic)
 
 -- | Creates a value of 'ListApplicationVersions' with the minimum fields required to make a request.
 --
@@ -69,13 +68,10 @@ data ListApplicationVersions =
 listApplicationVersions
     :: Text -- ^ 'lavApplicationId'
     -> ListApplicationVersions
-listApplicationVersions pApplicationId_ =
-  ListApplicationVersions'
-    { _lavNextToken = Nothing
-    , _lavMaxItems = Nothing
-    , _lavApplicationId = pApplicationId_
-    }
-
+listApplicationVersions pApplicationId_
+  = ListApplicationVersions'{_lavNextToken = Nothing,
+                             _lavMaxItems = Nothing,
+                             _lavApplicationId = pApplicationId_}
 
 -- | A token to specify where to start paginating.
 lavNextToken :: Lens' ListApplicationVersions (Maybe Text)
@@ -124,14 +120,18 @@ instance ToQuery ListApplicationVersions where
                "maxItems" =: _lavMaxItems]
 
 -- | /See:/ 'listApplicationVersionsResponse' smart constructor.
-data ListApplicationVersionsResponse =
-  ListApplicationVersionsResponse'
-    { _lavrsVersions       :: !(Maybe [VersionSummary])
-    , _lavrsNextToken      :: !(Maybe Text)
-    , _lavrsResponseStatus :: !Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data ListApplicationVersionsResponse = ListApplicationVersionsResponse'{_lavrsVersions
+                                                                        ::
+                                                                        !(Maybe
+                                                                            [VersionSummary]),
+                                                                        _lavrsNextToken
+                                                                        ::
+                                                                        !(Maybe
+                                                                            Text),
+                                                                        _lavrsResponseStatus
+                                                                        :: !Int}
+                                         deriving (Eq, Read, Show, Data,
+                                                   Typeable, Generic)
 
 -- | Creates a value of 'ListApplicationVersionsResponse' with the minimum fields required to make a request.
 --
@@ -145,13 +145,11 @@ data ListApplicationVersionsResponse =
 listApplicationVersionsResponse
     :: Int -- ^ 'lavrsResponseStatus'
     -> ListApplicationVersionsResponse
-listApplicationVersionsResponse pResponseStatus_ =
-  ListApplicationVersionsResponse'
-    { _lavrsVersions = Nothing
-    , _lavrsNextToken = Nothing
-    , _lavrsResponseStatus = pResponseStatus_
-    }
-
+listApplicationVersionsResponse pResponseStatus_
+  = ListApplicationVersionsResponse'{_lavrsVersions =
+                                       Nothing,
+                                     _lavrsNextToken = Nothing,
+                                     _lavrsResponseStatus = pResponseStatus_}
 
 -- | Array of version summaries for the application.
 lavrsVersions :: Lens' ListApplicationVersionsResponse [VersionSummary]

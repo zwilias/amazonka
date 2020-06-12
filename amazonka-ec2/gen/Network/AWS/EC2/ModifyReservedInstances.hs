@@ -42,7 +42,6 @@ module Network.AWS.EC2.ModifyReservedInstances
     ) where
 
 import Network.AWS.EC2.Types
-import Network.AWS.EC2.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.Request
@@ -53,14 +52,15 @@ import Network.AWS.Response
 --
 --
 -- /See:/ 'modifyReservedInstances' smart constructor.
-data ModifyReservedInstances =
-  ModifyReservedInstances'
-    { _mriClientToken          :: !(Maybe Text)
-    , _mriReservedInstancesIds :: ![Text]
-    , _mriTargetConfigurations :: ![ReservedInstancesConfiguration]
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data ModifyReservedInstances = ModifyReservedInstances'{_mriClientToken
+                                                        :: !(Maybe Text),
+                                                        _mriReservedInstancesIds
+                                                        :: ![Text],
+                                                        _mriTargetConfigurations
+                                                        ::
+                                                        ![ReservedInstancesConfiguration]}
+                                 deriving (Eq, Read, Show, Data, Typeable,
+                                           Generic)
 
 -- | Creates a value of 'ModifyReservedInstances' with the minimum fields required to make a request.
 --
@@ -73,13 +73,10 @@ data ModifyReservedInstances =
 -- * 'mriTargetConfigurations' - The configuration settings for the Reserved Instances to modify.
 modifyReservedInstances
     :: ModifyReservedInstances
-modifyReservedInstances =
-  ModifyReservedInstances'
-    { _mriClientToken = Nothing
-    , _mriReservedInstancesIds = mempty
-    , _mriTargetConfigurations = mempty
-    }
-
+modifyReservedInstances
+  = ModifyReservedInstances'{_mriClientToken = Nothing,
+                             _mriReservedInstancesIds = mempty,
+                             _mriTargetConfigurations = mempty}
 
 -- | A unique, case-sensitive token you provide to ensure idempotency of your modification request. For more information, see <https://docs.aws.amazon.com/AWSEC2/latest/APIReference/Run_Instance_Idempotency.html Ensuring Idempotency> .
 mriClientToken :: Lens' ModifyReservedInstances (Maybe Text)
@@ -132,13 +129,14 @@ instance ToQuery ModifyReservedInstances where
 --
 --
 -- /See:/ 'modifyReservedInstancesResponse' smart constructor.
-data ModifyReservedInstancesResponse =
-  ModifyReservedInstancesResponse'
-    { _mrirsReservedInstancesModificationId :: !(Maybe Text)
-    , _mrirsResponseStatus                  :: !Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data ModifyReservedInstancesResponse = ModifyReservedInstancesResponse'{_mrirsReservedInstancesModificationId
+                                                                        ::
+                                                                        !(Maybe
+                                                                            Text),
+                                                                        _mrirsResponseStatus
+                                                                        :: !Int}
+                                         deriving (Eq, Read, Show, Data,
+                                                   Typeable, Generic)
 
 -- | Creates a value of 'ModifyReservedInstancesResponse' with the minimum fields required to make a request.
 --
@@ -150,12 +148,10 @@ data ModifyReservedInstancesResponse =
 modifyReservedInstancesResponse
     :: Int -- ^ 'mrirsResponseStatus'
     -> ModifyReservedInstancesResponse
-modifyReservedInstancesResponse pResponseStatus_ =
-  ModifyReservedInstancesResponse'
-    { _mrirsReservedInstancesModificationId = Nothing
-    , _mrirsResponseStatus = pResponseStatus_
-    }
-
+modifyReservedInstancesResponse pResponseStatus_
+  = ModifyReservedInstancesResponse'{_mrirsReservedInstancesModificationId
+                                       = Nothing,
+                                     _mrirsResponseStatus = pResponseStatus_}
 
 -- | The ID for the modification.
 mrirsReservedInstancesModificationId :: Lens' ModifyReservedInstancesResponse (Maybe Text)

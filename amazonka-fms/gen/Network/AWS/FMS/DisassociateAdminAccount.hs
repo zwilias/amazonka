@@ -33,24 +33,21 @@ module Network.AWS.FMS.DisassociateAdminAccount
     ) where
 
 import Network.AWS.FMS.Types
-import Network.AWS.FMS.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 
 -- | /See:/ 'disassociateAdminAccount' smart constructor.
-data DisassociateAdminAccount =
-  DisassociateAdminAccount'
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data DisassociateAdminAccount = DisassociateAdminAccount'
+                                  deriving (Eq, Read, Show, Data, Typeable,
+                                            Generic)
 
 -- | Creates a value of 'DisassociateAdminAccount' with the minimum fields required to make a request.
 --
 disassociateAdminAccount
     :: DisassociateAdminAccount
 disassociateAdminAccount = DisassociateAdminAccount'
-
 
 instance AWSRequest DisassociateAdminAccount where
         type Rs DisassociateAdminAccount =
@@ -83,17 +80,16 @@ instance ToQuery DisassociateAdminAccount where
         toQuery = const mempty
 
 -- | /See:/ 'disassociateAdminAccountResponse' smart constructor.
-data DisassociateAdminAccountResponse =
-  DisassociateAdminAccountResponse'
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data DisassociateAdminAccountResponse = DisassociateAdminAccountResponse'
+                                          deriving (Eq, Read, Show, Data,
+                                                    Typeable, Generic)
 
 -- | Creates a value of 'DisassociateAdminAccountResponse' with the minimum fields required to make a request.
 --
 disassociateAdminAccountResponse
     :: DisassociateAdminAccountResponse
-disassociateAdminAccountResponse = DisassociateAdminAccountResponse'
-
+disassociateAdminAccountResponse
+  = DisassociateAdminAccountResponse'
 
 instance NFData DisassociateAdminAccountResponse
          where

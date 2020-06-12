@@ -18,24 +18,24 @@
 -- Stability   : auto-generated
 -- Portability : non-portable (GHC extensions)
 --
--- Retrieves one or more matchmaking tickets. Use this operation to retrieve ticket information, including status and--once a successful match is made--acquire connection information for the resulting new game session.
+-- Retrieves one or more matchmaking tickets. Use this operation to retrieve ticket information, including status and--once a successful match is made--acquire connection information for the resulting new game session. 
 --
 --
--- You can use this operation to track the progress of matchmaking requests (through polling) as an alternative to using event notifications. See more details on tracking matchmaking requests through polling or notifications in 'StartMatchmaking' .
+-- You can use this operation to track the progress of matchmaking requests (through polling) as an alternative to using event notifications. See more details on tracking matchmaking requests through polling or notifications in 'StartMatchmaking' . 
 --
 -- To request matchmaking tickets, provide a list of up to 10 ticket IDs. If the request is successful, a ticket object is returned for each requested ID that currently exists.
 --
 -- Matchmaking-related operations include:
 --
---     * 'StartMatchmaking'
+--     * 'StartMatchmaking' 
 --
---     * 'DescribeMatchmaking'
+--     * 'DescribeMatchmaking' 
 --
---     * 'StopMatchmaking'
+--     * 'StopMatchmaking' 
 --
---     * 'AcceptMatch'
+--     * 'AcceptMatch' 
 --
---     * 'StartMatchBackfill'
+--     * 'StartMatchBackfill' 
 --
 --
 --
@@ -56,7 +56,6 @@ module Network.AWS.GameLift.DescribeMatchmaking
     ) where
 
 import Network.AWS.GameLift.Types
-import Network.AWS.GameLift.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.Request
@@ -67,24 +66,22 @@ import Network.AWS.Response
 --
 --
 -- /See:/ 'describeMatchmaking' smart constructor.
-newtype DescribeMatchmaking =
-  DescribeMatchmaking'
-    { _dmTicketIds :: [Text]
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+newtype DescribeMatchmaking = DescribeMatchmaking'{_dmTicketIds
+                                                   :: [Text]}
+                                deriving (Eq, Read, Show, Data, Typeable,
+                                          Generic)
 
 -- | Creates a value of 'DescribeMatchmaking' with the minimum fields required to make a request.
 --
 -- Use one of the following lenses to modify other fields as desired:
 --
--- * 'dmTicketIds' - Unique identifier for a matchmaking ticket. You can include up to 10 ID values.
+-- * 'dmTicketIds' - Unique identifier for a matchmaking ticket. You can include up to 10 ID values. 
 describeMatchmaking
     :: DescribeMatchmaking
-describeMatchmaking = DescribeMatchmaking' {_dmTicketIds = mempty}
+describeMatchmaking
+  = DescribeMatchmaking'{_dmTicketIds = mempty}
 
-
--- | Unique identifier for a matchmaking ticket. You can include up to 10 ID values.
+-- | Unique identifier for a matchmaking ticket. You can include up to 10 ID values. 
 dmTicketIds :: Lens' DescribeMatchmaking [Text]
 dmTicketIds = lens _dmTicketIds (\ s a -> s{_dmTicketIds = a}) . _Coerce
 
@@ -128,13 +125,14 @@ instance ToQuery DescribeMatchmaking where
 --
 --
 -- /See:/ 'describeMatchmakingResponse' smart constructor.
-data DescribeMatchmakingResponse =
-  DescribeMatchmakingResponse'
-    { _dmrsTicketList     :: !(Maybe [MatchmakingTicket])
-    , _dmrsResponseStatus :: !Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data DescribeMatchmakingResponse = DescribeMatchmakingResponse'{_dmrsTicketList
+                                                                ::
+                                                                !(Maybe
+                                                                    [MatchmakingTicket]),
+                                                                _dmrsResponseStatus
+                                                                :: !Int}
+                                     deriving (Eq, Read, Show, Data, Typeable,
+                                               Generic)
 
 -- | Creates a value of 'DescribeMatchmakingResponse' with the minimum fields required to make a request.
 --
@@ -146,10 +144,10 @@ data DescribeMatchmakingResponse =
 describeMatchmakingResponse
     :: Int -- ^ 'dmrsResponseStatus'
     -> DescribeMatchmakingResponse
-describeMatchmakingResponse pResponseStatus_ =
-  DescribeMatchmakingResponse'
-    {_dmrsTicketList = Nothing, _dmrsResponseStatus = pResponseStatus_}
-
+describeMatchmakingResponse pResponseStatus_
+  = DescribeMatchmakingResponse'{_dmrsTicketList =
+                                   Nothing,
+                                 _dmrsResponseStatus = pResponseStatus_}
 
 -- | Collection of existing matchmaking ticket objects matching the request.
 dmrsTicketList :: Lens' DescribeMatchmakingResponse [MatchmakingTicket]

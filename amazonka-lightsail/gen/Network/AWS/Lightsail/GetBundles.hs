@@ -43,20 +43,16 @@ module Network.AWS.Lightsail.GetBundles
 
 import Network.AWS.Lens
 import Network.AWS.Lightsail.Types
-import Network.AWS.Lightsail.Types.Product
 import Network.AWS.Pager
 import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 
 -- | /See:/ 'getBundles' smart constructor.
-data GetBundles =
-  GetBundles'
-    { _gbsIncludeInactive :: !(Maybe Bool)
-    , _gbsPageToken       :: !(Maybe Text)
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data GetBundles = GetBundles'{_gbsIncludeInactive ::
+                              !(Maybe Bool),
+                              _gbsPageToken :: !(Maybe Text)}
+                    deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'GetBundles' with the minimum fields required to make a request.
 --
@@ -67,9 +63,9 @@ data GetBundles =
 -- * 'gbsPageToken' - A token used for advancing to the next page of results from your get bundles request.
 getBundles
     :: GetBundles
-getBundles =
-  GetBundles' {_gbsIncludeInactive = Nothing, _gbsPageToken = Nothing}
-
+getBundles
+  = GetBundles'{_gbsIncludeInactive = Nothing,
+                _gbsPageToken = Nothing}
 
 -- | A Boolean value that indicates whether to include inactive bundle results in your request.
 gbsIncludeInactive :: Lens' GetBundles (Maybe Bool)
@@ -124,14 +120,11 @@ instance ToQuery GetBundles where
         toQuery = const mempty
 
 -- | /See:/ 'getBundlesResponse' smart constructor.
-data GetBundlesResponse =
-  GetBundlesResponse'
-    { _gbrsNextPageToken  :: !(Maybe Text)
-    , _gbrsBundles        :: !(Maybe [Bundle])
-    , _gbrsResponseStatus :: !Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data GetBundlesResponse = GetBundlesResponse'{_gbrsNextPageToken
+                                              :: !(Maybe Text),
+                                              _gbrsBundles :: !(Maybe [Bundle]),
+                                              _gbrsResponseStatus :: !Int}
+                            deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'GetBundlesResponse' with the minimum fields required to make a request.
 --
@@ -145,13 +138,10 @@ data GetBundlesResponse =
 getBundlesResponse
     :: Int -- ^ 'gbrsResponseStatus'
     -> GetBundlesResponse
-getBundlesResponse pResponseStatus_ =
-  GetBundlesResponse'
-    { _gbrsNextPageToken = Nothing
-    , _gbrsBundles = Nothing
-    , _gbrsResponseStatus = pResponseStatus_
-    }
-
+getBundlesResponse pResponseStatus_
+  = GetBundlesResponse'{_gbrsNextPageToken = Nothing,
+                        _gbrsBundles = Nothing,
+                        _gbrsResponseStatus = pResponseStatus_}
 
 -- | A token used for advancing to the next page of results from your get active names request.
 gbrsNextPageToken :: Lens' GetBundlesResponse (Maybe Text)

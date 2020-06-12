@@ -11,9 +11,9 @@
 -- Stability   : auto-generated
 -- Portability : non-portable (GHC extensions)
 --
--- __Amazon Redshift__
+-- __Amazon Redshift__ 
 --
--- __Overview__
+-- __Overview__ 
 --
 -- This is an interface reference for Amazon Redshift. It contains documentation for one of the programming or command line interfaces you can use to manage Amazon Redshift clusters. Note that Amazon Redshift is asynchronous, which means that some interfaces may require techniques, such as polling or asynchronous callback handlers, to determine when a command has been applied. In this reference, the parameter descriptions indicate whether a change is applied immediately, on the next instance reboot, or during the next maintenance window. For a summary of the Amazon Redshift cluster management interfaces, go to <http://docs.aws.amazon.com/redshift/latest/mgmt/using-aws-sdk.html Using the Amazon Redshift Management Interfaces> .
 --
@@ -21,7 +21,7 @@
 --
 -- If you are a first-time user of Amazon Redshift, we recommend that you begin by reading the <http://docs.aws.amazon.com/redshift/latest/gsg/getting-started.html Amazon Redshift Getting Started Guide> .
 --
--- If you are a database developer, the <http://docs.aws.amazon.com/redshift/latest/dg/welcome.html Amazon Redshift Database Developer Guide> explains how to design, build, query, and maintain the databases that make up your data warehouse.
+-- If you are a database developer, the <http://docs.aws.amazon.com/redshift/latest/dg/welcome.html Amazon Redshift Database Developer Guide> explains how to design, build, query, and maintain the databases that make up your data warehouse. 
 --
 module Network.AWS.Redshift
     (
@@ -304,22 +304,22 @@ module Network.AWS.Redshift
     -- ** DescribeClusters (Paginated)
     , module Network.AWS.Redshift.DescribeClusters
 
-    -- ** DescribeTags
+    -- ** DescribeTags 
     , module Network.AWS.Redshift.DescribeTags
 
-    -- ** DeleteClusterSubnetGroup
+    -- ** DeleteClusterSubnetGroup 
     , module Network.AWS.Redshift.DeleteClusterSubnetGroup
 
-    -- ** DisableLogging
+    -- ** DisableLogging 
     , module Network.AWS.Redshift.DisableLogging
 
-    -- ** ModifyEventSubscription
+    -- ** ModifyEventSubscription 
     , module Network.AWS.Redshift.ModifyEventSubscription
 
-    -- ** DeleteClusterSnapshot
+    -- ** DeleteClusterSnapshot 
     , module Network.AWS.Redshift.DeleteClusterSnapshot
 
-    -- ** PurchaseReservedNodeOffering
+    -- ** PurchaseReservedNodeOffering 
     , module Network.AWS.Redshift.PurchaseReservedNodeOffering
 
     -- ** DescribeReservedNodeOfferings (Paginated)
@@ -334,160 +334,160 @@ module Network.AWS.Redshift
     -- ** DescribeClusterParameterGroups (Paginated)
     , module Network.AWS.Redshift.DescribeClusterParameterGroups
 
-    -- ** EnableLogging
+    -- ** EnableLogging 
     , module Network.AWS.Redshift.EnableLogging
 
-    -- ** CreateClusterSubnetGroup
+    -- ** CreateClusterSubnetGroup 
     , module Network.AWS.Redshift.CreateClusterSubnetGroup
 
-    -- ** DeleteClusterParameterGroup
+    -- ** DeleteClusterParameterGroup 
     , module Network.AWS.Redshift.DeleteClusterParameterGroup
 
     -- ** DescribeClusterSecurityGroups (Paginated)
     , module Network.AWS.Redshift.DescribeClusterSecurityGroups
 
-    -- ** CreateTags
+    -- ** CreateTags 
     , module Network.AWS.Redshift.CreateTags
 
-    -- ** EnableSnapshotCopy
+    -- ** EnableSnapshotCopy 
     , module Network.AWS.Redshift.EnableSnapshotCopy
 
     -- ** DescribeClusterSnapshots (Paginated)
     , module Network.AWS.Redshift.DescribeClusterSnapshots
 
-    -- ** DeleteTags
+    -- ** DeleteTags 
     , module Network.AWS.Redshift.DeleteTags
 
     -- ** DescribeClusterSubnetGroups (Paginated)
     , module Network.AWS.Redshift.DescribeClusterSubnetGroups
 
-    -- ** ModifySnapshotCopyRetentionPeriod
+    -- ** ModifySnapshotCopyRetentionPeriod 
     , module Network.AWS.Redshift.ModifySnapshotCopyRetentionPeriod
 
-    -- ** ModifyClusterIAMRoles
+    -- ** ModifyClusterIAMRoles 
     , module Network.AWS.Redshift.ModifyClusterIAMRoles
 
-    -- ** AuthorizeSnapshotAccess
+    -- ** AuthorizeSnapshotAccess 
     , module Network.AWS.Redshift.AuthorizeSnapshotAccess
 
-    -- ** RebootCluster
+    -- ** RebootCluster 
     , module Network.AWS.Redshift.RebootCluster
 
-    -- ** DeleteCluster
+    -- ** DeleteCluster 
     , module Network.AWS.Redshift.DeleteCluster
 
-    -- ** CreateEventSubscription
+    -- ** CreateEventSubscription 
     , module Network.AWS.Redshift.CreateEventSubscription
 
     -- ** DescribeOrderableClusterOptions (Paginated)
     , module Network.AWS.Redshift.DescribeOrderableClusterOptions
 
-    -- ** CreateCluster
+    -- ** CreateCluster 
     , module Network.AWS.Redshift.CreateCluster
 
-    -- ** CreateHSMClientCertificate
+    -- ** CreateHSMClientCertificate 
     , module Network.AWS.Redshift.CreateHSMClientCertificate
 
-    -- ** RestoreTableFromClusterSnapshot
+    -- ** RestoreTableFromClusterSnapshot 
     , module Network.AWS.Redshift.RestoreTableFromClusterSnapshot
 
     -- ** DescribeDefaultClusterParameters (Paginated)
     , module Network.AWS.Redshift.DescribeDefaultClusterParameters
 
-    -- ** DeleteEventSubscription
+    -- ** DeleteEventSubscription 
     , module Network.AWS.Redshift.DeleteEventSubscription
 
-    -- ** ResetClusterParameterGroup
+    -- ** ResetClusterParameterGroup 
     , module Network.AWS.Redshift.ResetClusterParameterGroup
 
     -- ** DescribeEventSubscriptions (Paginated)
     , module Network.AWS.Redshift.DescribeEventSubscriptions
 
-    -- ** RevokeClusterSecurityGroupIngress
+    -- ** RevokeClusterSecurityGroupIngress 
     , module Network.AWS.Redshift.RevokeClusterSecurityGroupIngress
 
     -- ** DescribeHSMClientCertificates (Paginated)
     , module Network.AWS.Redshift.DescribeHSMClientCertificates
 
-    -- ** ModifyClusterParameterGroup
+    -- ** ModifyClusterParameterGroup 
     , module Network.AWS.Redshift.ModifyClusterParameterGroup
 
-    -- ** GetClusterCredentials
+    -- ** GetClusterCredentials 
     , module Network.AWS.Redshift.GetClusterCredentials
 
-    -- ** CreateClusterSecurityGroup
+    -- ** CreateClusterSecurityGroup 
     , module Network.AWS.Redshift.CreateClusterSecurityGroup
 
-    -- ** DescribeEventCategories
+    -- ** DescribeEventCategories 
     , module Network.AWS.Redshift.DescribeEventCategories
 
-    -- ** DescribeResize
+    -- ** DescribeResize 
     , module Network.AWS.Redshift.DescribeResize
 
-    -- ** DeleteHSMConfiguration
+    -- ** DeleteHSMConfiguration 
     , module Network.AWS.Redshift.DeleteHSMConfiguration
 
-    -- ** AuthorizeClusterSecurityGroupIngress
+    -- ** AuthorizeClusterSecurityGroupIngress 
     , module Network.AWS.Redshift.AuthorizeClusterSecurityGroupIngress
 
-    -- ** DescribeTableRestoreStatus
+    -- ** DescribeTableRestoreStatus 
     , module Network.AWS.Redshift.DescribeTableRestoreStatus
 
-    -- ** CreateClusterSnapshot
+    -- ** CreateClusterSnapshot 
     , module Network.AWS.Redshift.CreateClusterSnapshot
 
-    -- ** CreateHSMConfiguration
+    -- ** CreateHSMConfiguration 
     , module Network.AWS.Redshift.CreateHSMConfiguration
 
-    -- ** DescribeLoggingStatus
+    -- ** DescribeLoggingStatus 
     , module Network.AWS.Redshift.DescribeLoggingStatus
 
-    -- ** ModifyCluster
+    -- ** ModifyCluster 
     , module Network.AWS.Redshift.ModifyCluster
 
-    -- ** DeleteClusterSecurityGroup
+    -- ** DeleteClusterSecurityGroup 
     , module Network.AWS.Redshift.DeleteClusterSecurityGroup
 
-    -- ** DisableSnapshotCopy
+    -- ** DisableSnapshotCopy 
     , module Network.AWS.Redshift.DisableSnapshotCopy
 
     -- ** DescribeClusterParameters (Paginated)
     , module Network.AWS.Redshift.DescribeClusterParameters
 
-    -- ** RestoreFromClusterSnapshot
+    -- ** RestoreFromClusterSnapshot 
     , module Network.AWS.Redshift.RestoreFromClusterSnapshot
 
-    -- ** CreateClusterParameterGroup
+    -- ** CreateClusterParameterGroup 
     , module Network.AWS.Redshift.CreateClusterParameterGroup
 
-    -- ** RevokeSnapshotAccess
+    -- ** RevokeSnapshotAccess 
     , module Network.AWS.Redshift.RevokeSnapshotAccess
 
     -- ** DescribeHSMConfigurations (Paginated)
     , module Network.AWS.Redshift.DescribeHSMConfigurations
 
-    -- ** CreateSnapshotCopyGrant
+    -- ** CreateSnapshotCopyGrant 
     , module Network.AWS.Redshift.CreateSnapshotCopyGrant
 
-    -- ** CopyClusterSnapshot
+    -- ** CopyClusterSnapshot 
     , module Network.AWS.Redshift.CopyClusterSnapshot
 
-    -- ** DeleteHSMClientCertificate
+    -- ** DeleteHSMClientCertificate 
     , module Network.AWS.Redshift.DeleteHSMClientCertificate
 
-    -- ** DeleteSnapshotCopyGrant
+    -- ** DeleteSnapshotCopyGrant 
     , module Network.AWS.Redshift.DeleteSnapshotCopyGrant
 
     -- ** DescribeClusterVersions (Paginated)
     , module Network.AWS.Redshift.DescribeClusterVersions
 
-    -- ** ModifyClusterSubnetGroup
+    -- ** ModifyClusterSubnetGroup 
     , module Network.AWS.Redshift.ModifyClusterSubnetGroup
 
-    -- ** RotateEncryptionKey
+    -- ** RotateEncryptionKey 
     , module Network.AWS.Redshift.RotateEncryptionKey
 
-    -- ** DescribeSnapshotCopyGrants
+    -- ** DescribeSnapshotCopyGrants 
     , module Network.AWS.Redshift.DescribeSnapshotCopyGrants
 
     -- * Types
@@ -938,15 +938,15 @@ import Network.AWS.Redshift.DeleteSnapshotCopyGrant
 import Network.AWS.Redshift.DeleteTags
 import Network.AWS.Redshift.DescribeClusterParameterGroups
 import Network.AWS.Redshift.DescribeClusterParameters
-import Network.AWS.Redshift.DescribeClusters
 import Network.AWS.Redshift.DescribeClusterSecurityGroups
 import Network.AWS.Redshift.DescribeClusterSnapshots
 import Network.AWS.Redshift.DescribeClusterSubnetGroups
 import Network.AWS.Redshift.DescribeClusterVersions
+import Network.AWS.Redshift.DescribeClusters
 import Network.AWS.Redshift.DescribeDefaultClusterParameters
 import Network.AWS.Redshift.DescribeEventCategories
-import Network.AWS.Redshift.DescribeEvents
 import Network.AWS.Redshift.DescribeEventSubscriptions
+import Network.AWS.Redshift.DescribeEvents
 import Network.AWS.Redshift.DescribeHSMClientCertificates
 import Network.AWS.Redshift.DescribeHSMConfigurations
 import Network.AWS.Redshift.DescribeLoggingStatus
@@ -962,7 +962,6 @@ import Network.AWS.Redshift.DisableSnapshotCopy
 import Network.AWS.Redshift.EnableLogging
 import Network.AWS.Redshift.EnableSnapshotCopy
 import Network.AWS.Redshift.GetClusterCredentials
-import Network.AWS.Redshift.Internal
 import Network.AWS.Redshift.ModifyCluster
 import Network.AWS.Redshift.ModifyClusterIAMRoles
 import Network.AWS.Redshift.ModifyClusterParameterGroup
@@ -979,6 +978,7 @@ import Network.AWS.Redshift.RevokeSnapshotAccess
 import Network.AWS.Redshift.RotateEncryptionKey
 import Network.AWS.Redshift.Types
 import Network.AWS.Redshift.Waiters
+import Network.AWS.Redshift.Internal
 
 {- $errors
 Error matchers are designed for use with the functions provided by

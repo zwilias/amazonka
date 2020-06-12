@@ -50,7 +50,6 @@ module Network.AWS.Connect.GetMetricData
     ) where
 
 import Network.AWS.Connect.Types
-import Network.AWS.Connect.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Pager
 import Network.AWS.Prelude
@@ -58,19 +57,17 @@ import Network.AWS.Request
 import Network.AWS.Response
 
 -- | /See:/ 'getMetricData' smart constructor.
-data GetMetricData =
-  GetMetricData'
-    { _gmdNextToken         :: !(Maybe Text)
-    , _gmdGroupings         :: !(Maybe [Grouping])
-    , _gmdMaxResults        :: !(Maybe Nat)
-    , _gmdInstanceId        :: !Text
-    , _gmdStartTime         :: !POSIX
-    , _gmdEndTime           :: !POSIX
-    , _gmdFilters           :: !Filters
-    , _gmdHistoricalMetrics :: ![HistoricalMetric]
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data GetMetricData = GetMetricData'{_gmdNextToken ::
+                                    !(Maybe Text),
+                                    _gmdGroupings :: !(Maybe [Grouping]),
+                                    _gmdMaxResults :: !(Maybe Nat),
+                                    _gmdInstanceId :: !Text,
+                                    _gmdStartTime :: !POSIX,
+                                    _gmdEndTime :: !POSIX,
+                                    _gmdFilters :: !Filters,
+                                    _gmdHistoricalMetrics ::
+                                    ![HistoricalMetric]}
+                       deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'GetMetricData' with the minimum fields required to make a request.
 --
@@ -97,18 +94,15 @@ getMetricData
     -> UTCTime -- ^ 'gmdEndTime'
     -> Filters -- ^ 'gmdFilters'
     -> GetMetricData
-getMetricData pInstanceId_ pStartTime_ pEndTime_ pFilters_ =
-  GetMetricData'
-    { _gmdNextToken = Nothing
-    , _gmdGroupings = Nothing
-    , _gmdMaxResults = Nothing
-    , _gmdInstanceId = pInstanceId_
-    , _gmdStartTime = _Time # pStartTime_
-    , _gmdEndTime = _Time # pEndTime_
-    , _gmdFilters = pFilters_
-    , _gmdHistoricalMetrics = mempty
-    }
-
+getMetricData pInstanceId_ pStartTime_ pEndTime_
+  pFilters_
+  = GetMetricData'{_gmdNextToken = Nothing,
+                   _gmdGroupings = Nothing, _gmdMaxResults = Nothing,
+                   _gmdInstanceId = pInstanceId_,
+                   _gmdStartTime = _Time # pStartTime_,
+                   _gmdEndTime = _Time # pEndTime_,
+                   _gmdFilters = pFilters_,
+                   _gmdHistoricalMetrics = mempty}
 
 -- | The token for the next set of results. Use the value returned in the previous response in the next request to retrieve the next set of results.
 gmdNextToken :: Lens' GetMetricData (Maybe Text)
@@ -192,14 +186,16 @@ instance ToQuery GetMetricData where
         toQuery = const mempty
 
 -- | /See:/ 'getMetricDataResponse' smart constructor.
-data GetMetricDataResponse =
-  GetMetricDataResponse'
-    { _gmdrsMetricResults  :: !(Maybe [HistoricalMetricResult])
-    , _gmdrsNextToken      :: !(Maybe Text)
-    , _gmdrsResponseStatus :: !Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data GetMetricDataResponse = GetMetricDataResponse'{_gmdrsMetricResults
+                                                    ::
+                                                    !(Maybe
+                                                        [HistoricalMetricResult]),
+                                                    _gmdrsNextToken ::
+                                                    !(Maybe Text),
+                                                    _gmdrsResponseStatus ::
+                                                    !Int}
+                               deriving (Eq, Read, Show, Data, Typeable,
+                                         Generic)
 
 -- | Creates a value of 'GetMetricDataResponse' with the minimum fields required to make a request.
 --
@@ -213,13 +209,11 @@ data GetMetricDataResponse =
 getMetricDataResponse
     :: Int -- ^ 'gmdrsResponseStatus'
     -> GetMetricDataResponse
-getMetricDataResponse pResponseStatus_ =
-  GetMetricDataResponse'
-    { _gmdrsMetricResults = Nothing
-    , _gmdrsNextToken = Nothing
-    , _gmdrsResponseStatus = pResponseStatus_
-    }
-
+getMetricDataResponse pResponseStatus_
+  = GetMetricDataResponse'{_gmdrsMetricResults =
+                             Nothing,
+                           _gmdrsNextToken = Nothing,
+                           _gmdrsResponseStatus = pResponseStatus_}
 
 -- | Information about the historical metrics. If no grouping is specified, a summary of metric data is returned.
 gmdrsMetricResults :: Lens' GetMetricDataResponse [HistoricalMetricResult]

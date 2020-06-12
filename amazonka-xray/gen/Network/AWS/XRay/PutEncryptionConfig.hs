@@ -43,16 +43,12 @@ import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 import Network.AWS.XRay.Types
-import Network.AWS.XRay.Types.Product
 
 -- | /See:/ 'putEncryptionConfig' smart constructor.
-data PutEncryptionConfig =
-  PutEncryptionConfig'
-    { _pecKeyId :: !(Maybe Text)
-    , _pecType  :: !EncryptionType
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data PutEncryptionConfig = PutEncryptionConfig'{_pecKeyId
+                                                :: !(Maybe Text),
+                                                _pecType :: !EncryptionType}
+                             deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'PutEncryptionConfig' with the minimum fields required to make a request.
 --
@@ -64,9 +60,9 @@ data PutEncryptionConfig =
 putEncryptionConfig
     :: EncryptionType -- ^ 'pecType'
     -> PutEncryptionConfig
-putEncryptionConfig pType_ =
-  PutEncryptionConfig' {_pecKeyId = Nothing, _pecType = pType_}
-
+putEncryptionConfig pType_
+  = PutEncryptionConfig'{_pecKeyId = Nothing,
+                         _pecType = pType_}
 
 -- | An AWS KMS customer master key (CMK) in one of the following formats:     * __Alias__ - The name of the key. For example, @alias/MyKey@ .     * __Key ID__ - The KMS key ID of the key. For example, @ae4aa6d49-a4d8-9df9-a475-4ff6d7898456@ .     * __ARN__ - The full Amazon Resource Name of the key ID or alias. For example, @arn:aws:kms:us-east-2:123456789012:key/ae4aa6d49-a4d8-9df9-a475-4ff6d7898456@ . Use this format to specify a key in a different account. Omit this key if you set @Type@ to @NONE@ .
 pecKeyId :: Lens' PutEncryptionConfig (Maybe Text)
@@ -107,13 +103,14 @@ instance ToQuery PutEncryptionConfig where
         toQuery = const mempty
 
 -- | /See:/ 'putEncryptionConfigResponse' smart constructor.
-data PutEncryptionConfigResponse =
-  PutEncryptionConfigResponse'
-    { _pecrsEncryptionConfig :: !(Maybe EncryptionConfig)
-    , _pecrsResponseStatus   :: !Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data PutEncryptionConfigResponse = PutEncryptionConfigResponse'{_pecrsEncryptionConfig
+                                                                ::
+                                                                !(Maybe
+                                                                    EncryptionConfig),
+                                                                _pecrsResponseStatus
+                                                                :: !Int}
+                                     deriving (Eq, Read, Show, Data, Typeable,
+                                               Generic)
 
 -- | Creates a value of 'PutEncryptionConfigResponse' with the minimum fields required to make a request.
 --
@@ -125,10 +122,10 @@ data PutEncryptionConfigResponse =
 putEncryptionConfigResponse
     :: Int -- ^ 'pecrsResponseStatus'
     -> PutEncryptionConfigResponse
-putEncryptionConfigResponse pResponseStatus_ =
-  PutEncryptionConfigResponse'
-    {_pecrsEncryptionConfig = Nothing, _pecrsResponseStatus = pResponseStatus_}
-
+putEncryptionConfigResponse pResponseStatus_
+  = PutEncryptionConfigResponse'{_pecrsEncryptionConfig
+                                   = Nothing,
+                                 _pecrsResponseStatus = pResponseStatus_}
 
 -- | The new encryption configuration.
 pecrsEncryptionConfig :: Lens' PutEncryptionConfigResponse (Maybe EncryptionConfig)

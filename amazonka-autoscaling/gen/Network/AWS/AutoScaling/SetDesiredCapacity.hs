@@ -39,21 +39,17 @@ module Network.AWS.AutoScaling.SetDesiredCapacity
     ) where
 
 import Network.AWS.AutoScaling.Types
-import Network.AWS.AutoScaling.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 
 -- | /See:/ 'setDesiredCapacity' smart constructor.
-data SetDesiredCapacity =
-  SetDesiredCapacity'
-    { _sdcHonorCooldown        :: !(Maybe Bool)
-    , _sdcAutoScalingGroupName :: !Text
-    , _sdcDesiredCapacity      :: !Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data SetDesiredCapacity = SetDesiredCapacity'{_sdcHonorCooldown
+                                              :: !(Maybe Bool),
+                                              _sdcAutoScalingGroupName :: !Text,
+                                              _sdcDesiredCapacity :: !Int}
+                            deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'SetDesiredCapacity' with the minimum fields required to make a request.
 --
@@ -68,13 +64,11 @@ setDesiredCapacity
     :: Text -- ^ 'sdcAutoScalingGroupName'
     -> Int -- ^ 'sdcDesiredCapacity'
     -> SetDesiredCapacity
-setDesiredCapacity pAutoScalingGroupName_ pDesiredCapacity_ =
-  SetDesiredCapacity'
-    { _sdcHonorCooldown = Nothing
-    , _sdcAutoScalingGroupName = pAutoScalingGroupName_
-    , _sdcDesiredCapacity = pDesiredCapacity_
-    }
-
+setDesiredCapacity pAutoScalingGroupName_
+  pDesiredCapacity_
+  = SetDesiredCapacity'{_sdcHonorCooldown = Nothing,
+                        _sdcAutoScalingGroupName = pAutoScalingGroupName_,
+                        _sdcDesiredCapacity = pDesiredCapacity_}
 
 -- | Indicates whether Amazon EC2 Auto Scaling waits for the cooldown period to complete before initiating a scaling activity to set your Auto Scaling group to its new capacity. By default, Amazon EC2 Auto Scaling does not honor the cooldown period during manual scaling activities.
 sdcHonorCooldown :: Lens' SetDesiredCapacity (Maybe Bool)
@@ -114,16 +108,15 @@ instance ToQuery SetDesiredCapacity where
                "DesiredCapacity" =: _sdcDesiredCapacity]
 
 -- | /See:/ 'setDesiredCapacityResponse' smart constructor.
-data SetDesiredCapacityResponse =
-  SetDesiredCapacityResponse'
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data SetDesiredCapacityResponse = SetDesiredCapacityResponse'
+                                    deriving (Eq, Read, Show, Data, Typeable,
+                                              Generic)
 
 -- | Creates a value of 'SetDesiredCapacityResponse' with the minimum fields required to make a request.
 --
 setDesiredCapacityResponse
     :: SetDesiredCapacityResponse
-setDesiredCapacityResponse = SetDesiredCapacityResponse'
-
+setDesiredCapacityResponse
+  = SetDesiredCapacityResponse'
 
 instance NFData SetDesiredCapacityResponse where

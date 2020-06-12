@@ -47,15 +47,12 @@ import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 import Network.AWS.SSM.Types
-import Network.AWS.SSM.Types.Product
 
 -- | /See:/ 'getMaintenanceWindowExecution' smart constructor.
-newtype GetMaintenanceWindowExecution =
-  GetMaintenanceWindowExecution'
-    { _gmweWindowExecutionId :: Text
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+newtype GetMaintenanceWindowExecution = GetMaintenanceWindowExecution'{_gmweWindowExecutionId
+                                                                       :: Text}
+                                          deriving (Eq, Read, Show, Data,
+                                                    Typeable, Generic)
 
 -- | Creates a value of 'GetMaintenanceWindowExecution' with the minimum fields required to make a request.
 --
@@ -65,9 +62,9 @@ newtype GetMaintenanceWindowExecution =
 getMaintenanceWindowExecution
     :: Text -- ^ 'gmweWindowExecutionId'
     -> GetMaintenanceWindowExecution
-getMaintenanceWindowExecution pWindowExecutionId_ =
-  GetMaintenanceWindowExecution' {_gmweWindowExecutionId = pWindowExecutionId_}
-
+getMaintenanceWindowExecution pWindowExecutionId_
+  = GetMaintenanceWindowExecution'{_gmweWindowExecutionId
+                                     = pWindowExecutionId_}
 
 -- | The ID of the Maintenance Window execution that includes the task.
 gmweWindowExecutionId :: Lens' GetMaintenanceWindowExecution Text
@@ -118,18 +115,35 @@ instance ToQuery GetMaintenanceWindowExecution where
         toQuery = const mempty
 
 -- | /See:/ 'getMaintenanceWindowExecutionResponse' smart constructor.
-data GetMaintenanceWindowExecutionResponse =
-  GetMaintenanceWindowExecutionResponse'
-    { _gmwersStatus            :: !(Maybe MaintenanceWindowExecutionStatus)
-    , _gmwersStartTime         :: !(Maybe POSIX)
-    , _gmwersWindowExecutionId :: !(Maybe Text)
-    , _gmwersStatusDetails     :: !(Maybe Text)
-    , _gmwersEndTime           :: !(Maybe POSIX)
-    , _gmwersTaskIds           :: !(Maybe [Text])
-    , _gmwersResponseStatus    :: !Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data GetMaintenanceWindowExecutionResponse = GetMaintenanceWindowExecutionResponse'{_gmwersStatus
+                                                                                    ::
+                                                                                    !(Maybe
+                                                                                        MaintenanceWindowExecutionStatus),
+                                                                                    _gmwersStartTime
+                                                                                    ::
+                                                                                    !(Maybe
+                                                                                        POSIX),
+                                                                                    _gmwersWindowExecutionId
+                                                                                    ::
+                                                                                    !(Maybe
+                                                                                        Text),
+                                                                                    _gmwersStatusDetails
+                                                                                    ::
+                                                                                    !(Maybe
+                                                                                        Text),
+                                                                                    _gmwersEndTime
+                                                                                    ::
+                                                                                    !(Maybe
+                                                                                        POSIX),
+                                                                                    _gmwersTaskIds
+                                                                                    ::
+                                                                                    !(Maybe
+                                                                                        [Text]),
+                                                                                    _gmwersResponseStatus
+                                                                                    ::
+                                                                                    !Int}
+                                               deriving (Eq, Read, Show, Data,
+                                                         Typeable, Generic)
 
 -- | Creates a value of 'GetMaintenanceWindowExecutionResponse' with the minimum fields required to make a request.
 --
@@ -151,17 +165,17 @@ data GetMaintenanceWindowExecutionResponse =
 getMaintenanceWindowExecutionResponse
     :: Int -- ^ 'gmwersResponseStatus'
     -> GetMaintenanceWindowExecutionResponse
-getMaintenanceWindowExecutionResponse pResponseStatus_ =
-  GetMaintenanceWindowExecutionResponse'
-    { _gmwersStatus = Nothing
-    , _gmwersStartTime = Nothing
-    , _gmwersWindowExecutionId = Nothing
-    , _gmwersStatusDetails = Nothing
-    , _gmwersEndTime = Nothing
-    , _gmwersTaskIds = Nothing
-    , _gmwersResponseStatus = pResponseStatus_
-    }
-
+getMaintenanceWindowExecutionResponse
+  pResponseStatus_
+  = GetMaintenanceWindowExecutionResponse'{_gmwersStatus
+                                             = Nothing,
+                                           _gmwersStartTime = Nothing,
+                                           _gmwersWindowExecutionId = Nothing,
+                                           _gmwersStatusDetails = Nothing,
+                                           _gmwersEndTime = Nothing,
+                                           _gmwersTaskIds = Nothing,
+                                           _gmwersResponseStatus =
+                                             pResponseStatus_}
 
 -- | The status of the Maintenance Window execution.
 gmwersStatus :: Lens' GetMaintenanceWindowExecutionResponse (Maybe MaintenanceWindowExecutionStatus)

@@ -41,23 +41,19 @@ module Network.AWS.Glue.UpdatePartition
     ) where
 
 import Network.AWS.Glue.Types
-import Network.AWS.Glue.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 
 -- | /See:/ 'updatePartition' smart constructor.
-data UpdatePartition =
-  UpdatePartition'
-    { _upCatalogId          :: !(Maybe Text)
-    , _upDatabaseName       :: !Text
-    , _upTableName          :: !Text
-    , _upPartitionValueList :: ![Text]
-    , _upPartitionInput     :: !PartitionInput
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data UpdatePartition = UpdatePartition'{_upCatalogId
+                                        :: !(Maybe Text),
+                                        _upDatabaseName :: !Text,
+                                        _upTableName :: !Text,
+                                        _upPartitionValueList :: ![Text],
+                                        _upPartitionInput :: !PartitionInput}
+                         deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'UpdatePartition' with the minimum fields required to make a request.
 --
@@ -77,15 +73,13 @@ updatePartition
     -> Text -- ^ 'upTableName'
     -> PartitionInput -- ^ 'upPartitionInput'
     -> UpdatePartition
-updatePartition pDatabaseName_ pTableName_ pPartitionInput_ =
-  UpdatePartition'
-    { _upCatalogId = Nothing
-    , _upDatabaseName = pDatabaseName_
-    , _upTableName = pTableName_
-    , _upPartitionValueList = mempty
-    , _upPartitionInput = pPartitionInput_
-    }
-
+updatePartition pDatabaseName_ pTableName_
+  pPartitionInput_
+  = UpdatePartition'{_upCatalogId = Nothing,
+                     _upDatabaseName = pDatabaseName_,
+                     _upTableName = pTableName_,
+                     _upPartitionValueList = mempty,
+                     _upPartitionInput = pPartitionInput_}
 
 -- | The ID of the Data Catalog where the partition to be updated resides. If none is supplied, the AWS account ID is used by default.
 upCatalogId :: Lens' UpdatePartition (Maybe Text)
@@ -145,12 +139,10 @@ instance ToQuery UpdatePartition where
         toQuery = const mempty
 
 -- | /See:/ 'updatePartitionResponse' smart constructor.
-newtype UpdatePartitionResponse =
-  UpdatePartitionResponse'
-    { _uprsResponseStatus :: Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+newtype UpdatePartitionResponse = UpdatePartitionResponse'{_uprsResponseStatus
+                                                           :: Int}
+                                    deriving (Eq, Read, Show, Data, Typeable,
+                                              Generic)
 
 -- | Creates a value of 'UpdatePartitionResponse' with the minimum fields required to make a request.
 --
@@ -160,9 +152,9 @@ newtype UpdatePartitionResponse =
 updatePartitionResponse
     :: Int -- ^ 'uprsResponseStatus'
     -> UpdatePartitionResponse
-updatePartitionResponse pResponseStatus_ =
-  UpdatePartitionResponse' {_uprsResponseStatus = pResponseStatus_}
-
+updatePartitionResponse pResponseStatus_
+  = UpdatePartitionResponse'{_uprsResponseStatus =
+                               pResponseStatus_}
 
 -- | -- | The response status code.
 uprsResponseStatus :: Lens' UpdatePartitionResponse Int

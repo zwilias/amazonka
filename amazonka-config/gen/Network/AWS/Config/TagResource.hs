@@ -36,20 +36,16 @@ module Network.AWS.Config.TagResource
     ) where
 
 import Network.AWS.Config.Types
-import Network.AWS.Config.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 
 -- | /See:/ 'tagResource' smart constructor.
-data TagResource =
-  TagResource'
-    { _trResourceARN :: !Text
-    , _trTags        :: !(List1 Tag)
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data TagResource = TagResource'{_trResourceARN ::
+                                !Text,
+                                _trTags :: !(List1 Tag)}
+                     deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'TagResource' with the minimum fields required to make a request.
 --
@@ -62,9 +58,9 @@ tagResource
     :: Text -- ^ 'trResourceARN'
     -> NonEmpty Tag -- ^ 'trTags'
     -> TagResource
-tagResource pResourceARN_ pTags_ =
-  TagResource' {_trResourceARN = pResourceARN_, _trTags = _List1 # pTags_}
-
+tagResource pResourceARN_ pTags_
+  = TagResource'{_trResourceARN = pResourceARN_,
+                 _trTags = _List1 # pTags_}
 
 -- | The Amazon Resource Name (ARN) that identifies the resource for which to list the tags. Currently, the supported resources are @ConfigRule@ , @ConfigurationAggregator@ and @AggregatorAuthorization@ .
 trResourceARN :: Lens' TagResource Text
@@ -106,16 +102,13 @@ instance ToQuery TagResource where
         toQuery = const mempty
 
 -- | /See:/ 'tagResourceResponse' smart constructor.
-data TagResourceResponse =
-  TagResourceResponse'
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data TagResourceResponse = TagResourceResponse'
+                             deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'TagResourceResponse' with the minimum fields required to make a request.
 --
 tagResourceResponse
     :: TagResourceResponse
 tagResourceResponse = TagResourceResponse'
-
 
 instance NFData TagResourceResponse where

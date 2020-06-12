@@ -35,19 +35,15 @@ module Network.AWS.CloudWatchEvents.DeleteEventBus
     ) where
 
 import Network.AWS.CloudWatchEvents.Types
-import Network.AWS.CloudWatchEvents.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 
 -- | /See:/ 'deleteEventBus' smart constructor.
-newtype DeleteEventBus =
-  DeleteEventBus'
-    { _debsName :: Text
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+newtype DeleteEventBus = DeleteEventBus'{_debsName ::
+                                         Text}
+                           deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'DeleteEventBus' with the minimum fields required to make a request.
 --
@@ -57,8 +53,8 @@ newtype DeleteEventBus =
 deleteEventBus
     :: Text -- ^ 'debsName'
     -> DeleteEventBus
-deleteEventBus pName_ = DeleteEventBus' {_debsName = pName_}
-
+deleteEventBus pName_
+  = DeleteEventBus'{_debsName = pName_}
 
 -- | The name of the event bus to delete.
 debsName :: Lens' DeleteEventBus Text
@@ -93,16 +89,14 @@ instance ToQuery DeleteEventBus where
         toQuery = const mempty
 
 -- | /See:/ 'deleteEventBusResponse' smart constructor.
-data DeleteEventBusResponse =
-  DeleteEventBusResponse'
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data DeleteEventBusResponse = DeleteEventBusResponse'
+                                deriving (Eq, Read, Show, Data, Typeable,
+                                          Generic)
 
 -- | Creates a value of 'DeleteEventBusResponse' with the minimum fields required to make a request.
 --
 deleteEventBusResponse
     :: DeleteEventBusResponse
 deleteEventBusResponse = DeleteEventBusResponse'
-
 
 instance NFData DeleteEventBusResponse where

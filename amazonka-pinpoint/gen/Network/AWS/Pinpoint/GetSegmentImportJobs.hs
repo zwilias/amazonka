@@ -40,21 +40,18 @@ module Network.AWS.Pinpoint.GetSegmentImportJobs
 
 import Network.AWS.Lens
 import Network.AWS.Pinpoint.Types
-import Network.AWS.Pinpoint.Types.Product
 import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 
 -- | /See:/ 'getSegmentImportJobs' smart constructor.
-data GetSegmentImportJobs =
-  GetSegmentImportJobs'
-    { _gsijToken         :: !(Maybe Text)
-    , _gsijPageSize      :: !(Maybe Text)
-    , _gsijSegmentId     :: !Text
-    , _gsijApplicationId :: !Text
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data GetSegmentImportJobs = GetSegmentImportJobs'{_gsijToken
+                                                  :: !(Maybe Text),
+                                                  _gsijPageSize ::
+                                                  !(Maybe Text),
+                                                  _gsijSegmentId :: !Text,
+                                                  _gsijApplicationId :: !Text}
+                              deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'GetSegmentImportJobs' with the minimum fields required to make a request.
 --
@@ -71,14 +68,11 @@ getSegmentImportJobs
     :: Text -- ^ 'gsijSegmentId'
     -> Text -- ^ 'gsijApplicationId'
     -> GetSegmentImportJobs
-getSegmentImportJobs pSegmentId_ pApplicationId_ =
-  GetSegmentImportJobs'
-    { _gsijToken = Nothing
-    , _gsijPageSize = Nothing
-    , _gsijSegmentId = pSegmentId_
-    , _gsijApplicationId = pApplicationId_
-    }
-
+getSegmentImportJobs pSegmentId_ pApplicationId_
+  = GetSegmentImportJobs'{_gsijToken = Nothing,
+                          _gsijPageSize = Nothing,
+                          _gsijSegmentId = pSegmentId_,
+                          _gsijApplicationId = pApplicationId_}
 
 -- | The NextToken string returned on a previous page that you use to get the next page of results in a paginated response.
 gsijToken :: Lens' GetSegmentImportJobs (Maybe Text)
@@ -129,13 +123,13 @@ instance ToQuery GetSegmentImportJobs where
               ["token" =: _gsijToken, "page-size" =: _gsijPageSize]
 
 -- | /See:/ 'getSegmentImportJobsResponse' smart constructor.
-data GetSegmentImportJobsResponse =
-  GetSegmentImportJobsResponse'
-    { _gsijrsResponseStatus     :: !Int
-    , _gsijrsImportJobsResponse :: !ImportJobsResponse
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data GetSegmentImportJobsResponse = GetSegmentImportJobsResponse'{_gsijrsResponseStatus
+                                                                  :: !Int,
+                                                                  _gsijrsImportJobsResponse
+                                                                  ::
+                                                                  !ImportJobsResponse}
+                                      deriving (Eq, Read, Show, Data, Typeable,
+                                                Generic)
 
 -- | Creates a value of 'GetSegmentImportJobsResponse' with the minimum fields required to make a request.
 --
@@ -148,12 +142,12 @@ getSegmentImportJobsResponse
     :: Int -- ^ 'gsijrsResponseStatus'
     -> ImportJobsResponse -- ^ 'gsijrsImportJobsResponse'
     -> GetSegmentImportJobsResponse
-getSegmentImportJobsResponse pResponseStatus_ pImportJobsResponse_ =
-  GetSegmentImportJobsResponse'
-    { _gsijrsResponseStatus = pResponseStatus_
-    , _gsijrsImportJobsResponse = pImportJobsResponse_
-    }
-
+getSegmentImportJobsResponse pResponseStatus_
+  pImportJobsResponse_
+  = GetSegmentImportJobsResponse'{_gsijrsResponseStatus
+                                    = pResponseStatus_,
+                                  _gsijrsImportJobsResponse =
+                                    pImportJobsResponse_}
 
 -- | -- | The response status code.
 gsijrsResponseStatus :: Lens' GetSegmentImportJobsResponse Int

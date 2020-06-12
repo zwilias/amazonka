@@ -23,7 +23,7 @@
 --
 -- If you add more than one predicate to a @RateBasedRule@ , a request not only must exceed the @RateLimit@ , but it also must match all the specifications to be counted or blocked. For example, suppose you add the following to a @RateBasedRule@ :
 --
---     * An @IPSet@ that matches the IP address @192.0.2.44/32@
+--     * An @IPSet@ that matches the IP address @192.0.2.44/32@ 
 --
 --     * A @ByteMatchSet@ that matches @BadBot@ in the @User-Agent@ header
 --
@@ -35,11 +35,11 @@
 --
 -- As a second example, suppose you want to limit requests to a particular page on your site. To do this, you could add the following to a @RateBasedRule@ :
 --
---     * A @ByteMatchSet@ with @FieldToMatch@ of @URI@
+--     * A @ByteMatchSet@ with @FieldToMatch@ of @URI@ 
 --
---     * A @PositionalConstraint@ of @STARTS_WITH@
+--     * A @PositionalConstraint@ of @STARTS_WITH@ 
 --
---     * A @TargetString@ of @login@
+--     * A @TargetString@ of @login@ 
 --
 --
 --
@@ -91,19 +91,15 @@ import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 import Network.AWS.WAFRegional.Types
-import Network.AWS.WAFRegional.Types.Product
 
 -- | /See:/ 'createRateBasedRule' smart constructor.
-data CreateRateBasedRule =
-  CreateRateBasedRule'
-    { _crbrName        :: !Text
-    , _crbrMetricName  :: !Text
-    , _crbrRateKey     :: !RateKey
-    , _crbrRateLimit   :: !Nat
-    , _crbrChangeToken :: !Text
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data CreateRateBasedRule = CreateRateBasedRule'{_crbrName
+                                                :: !Text,
+                                                _crbrMetricName :: !Text,
+                                                _crbrRateKey :: !RateKey,
+                                                _crbrRateLimit :: !Nat,
+                                                _crbrChangeToken :: !Text}
+                             deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'CreateRateBasedRule' with the minimum fields required to make a request.
 --
@@ -125,15 +121,13 @@ createRateBasedRule
     -> Natural -- ^ 'crbrRateLimit'
     -> Text -- ^ 'crbrChangeToken'
     -> CreateRateBasedRule
-createRateBasedRule pName_ pMetricName_ pRateKey_ pRateLimit_ pChangeToken_ =
-  CreateRateBasedRule'
-    { _crbrName = pName_
-    , _crbrMetricName = pMetricName_
-    , _crbrRateKey = pRateKey_
-    , _crbrRateLimit = _Nat # pRateLimit_
-    , _crbrChangeToken = pChangeToken_
-    }
-
+createRateBasedRule pName_ pMetricName_ pRateKey_
+  pRateLimit_ pChangeToken_
+  = CreateRateBasedRule'{_crbrName = pName_,
+                         _crbrMetricName = pMetricName_,
+                         _crbrRateKey = pRateKey_,
+                         _crbrRateLimit = _Nat # pRateLimit_,
+                         _crbrChangeToken = pChangeToken_}
 
 -- | A friendly name or description of the 'RateBasedRule' . You can't change the name of a @RateBasedRule@ after you create it.
 crbrName :: Lens' CreateRateBasedRule Text
@@ -197,14 +191,17 @@ instance ToQuery CreateRateBasedRule where
         toQuery = const mempty
 
 -- | /See:/ 'createRateBasedRuleResponse' smart constructor.
-data CreateRateBasedRuleResponse =
-  CreateRateBasedRuleResponse'
-    { _crbrrsRule           :: !(Maybe RateBasedRule)
-    , _crbrrsChangeToken    :: !(Maybe Text)
-    , _crbrrsResponseStatus :: !Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data CreateRateBasedRuleResponse = CreateRateBasedRuleResponse'{_crbrrsRule
+                                                                ::
+                                                                !(Maybe
+                                                                    RateBasedRule),
+                                                                _crbrrsChangeToken
+                                                                ::
+                                                                !(Maybe Text),
+                                                                _crbrrsResponseStatus
+                                                                :: !Int}
+                                     deriving (Eq, Read, Show, Data, Typeable,
+                                               Generic)
 
 -- | Creates a value of 'CreateRateBasedRuleResponse' with the minimum fields required to make a request.
 --
@@ -218,13 +215,10 @@ data CreateRateBasedRuleResponse =
 createRateBasedRuleResponse
     :: Int -- ^ 'crbrrsResponseStatus'
     -> CreateRateBasedRuleResponse
-createRateBasedRuleResponse pResponseStatus_ =
-  CreateRateBasedRuleResponse'
-    { _crbrrsRule = Nothing
-    , _crbrrsChangeToken = Nothing
-    , _crbrrsResponseStatus = pResponseStatus_
-    }
-
+createRateBasedRuleResponse pResponseStatus_
+  = CreateRateBasedRuleResponse'{_crbrrsRule = Nothing,
+                                 _crbrrsChangeToken = Nothing,
+                                 _crbrrsResponseStatus = pResponseStatus_}
 
 -- | The 'RateBasedRule' that is returned in the @CreateRateBasedRule@ response.
 crbrrsRule :: Lens' CreateRateBasedRuleResponse (Maybe RateBasedRule)

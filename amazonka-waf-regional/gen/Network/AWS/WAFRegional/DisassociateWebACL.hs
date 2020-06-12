@@ -41,15 +41,12 @@ import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 import Network.AWS.WAFRegional.Types
-import Network.AWS.WAFRegional.Types.Product
 
 -- | /See:/ 'disassociateWebACL' smart constructor.
-newtype DisassociateWebACL =
-  DisassociateWebACL'
-    { _dwaResourceARN :: Text
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+newtype DisassociateWebACL = DisassociateWebACL'{_dwaResourceARN
+                                                 :: Text}
+                               deriving (Eq, Read, Show, Data, Typeable,
+                                         Generic)
 
 -- | Creates a value of 'DisassociateWebACL' with the minimum fields required to make a request.
 --
@@ -59,9 +56,9 @@ newtype DisassociateWebACL =
 disassociateWebACL
     :: Text -- ^ 'dwaResourceARN'
     -> DisassociateWebACL
-disassociateWebACL pResourceARN_ =
-  DisassociateWebACL' {_dwaResourceARN = pResourceARN_}
-
+disassociateWebACL pResourceARN_
+  = DisassociateWebACL'{_dwaResourceARN =
+                          pResourceARN_}
 
 -- | The ARN (Amazon Resource Name) of the resource from which the web ACL is being removed.
 dwaResourceARN :: Lens' DisassociateWebACL Text
@@ -102,12 +99,10 @@ instance ToQuery DisassociateWebACL where
         toQuery = const mempty
 
 -- | /See:/ 'disassociateWebACLResponse' smart constructor.
-newtype DisassociateWebACLResponse =
-  DisassociateWebACLResponse'
-    { _dwaclrsResponseStatus :: Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+newtype DisassociateWebACLResponse = DisassociateWebACLResponse'{_dwaclrsResponseStatus
+                                                                 :: Int}
+                                       deriving (Eq, Read, Show, Data, Typeable,
+                                                 Generic)
 
 -- | Creates a value of 'DisassociateWebACLResponse' with the minimum fields required to make a request.
 --
@@ -117,9 +112,9 @@ newtype DisassociateWebACLResponse =
 disassociateWebACLResponse
     :: Int -- ^ 'dwaclrsResponseStatus'
     -> DisassociateWebACLResponse
-disassociateWebACLResponse pResponseStatus_ =
-  DisassociateWebACLResponse' {_dwaclrsResponseStatus = pResponseStatus_}
-
+disassociateWebACLResponse pResponseStatus_
+  = DisassociateWebACLResponse'{_dwaclrsResponseStatus
+                                  = pResponseStatus_}
 
 -- | -- | The response status code.
 dwaclrsResponseStatus :: Lens' DisassociateWebACLResponse Int

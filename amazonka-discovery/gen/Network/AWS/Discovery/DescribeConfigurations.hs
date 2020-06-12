@@ -40,19 +40,16 @@ module Network.AWS.Discovery.DescribeConfigurations
     ) where
 
 import Network.AWS.Discovery.Types
-import Network.AWS.Discovery.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 
 -- | /See:/ 'describeConfigurations' smart constructor.
-newtype DescribeConfigurations =
-  DescribeConfigurations'
-    { _dcConfigurationIds :: [Text]
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+newtype DescribeConfigurations = DescribeConfigurations'{_dcConfigurationIds
+                                                         :: [Text]}
+                                   deriving (Eq, Read, Show, Data, Typeable,
+                                             Generic)
 
 -- | Creates a value of 'DescribeConfigurations' with the minimum fields required to make a request.
 --
@@ -61,8 +58,9 @@ newtype DescribeConfigurations =
 -- * 'dcConfigurationIds' - One or more configuration IDs.
 describeConfigurations
     :: DescribeConfigurations
-describeConfigurations = DescribeConfigurations' {_dcConfigurationIds = mempty}
-
+describeConfigurations
+  = DescribeConfigurations'{_dcConfigurationIds =
+                              mempty}
 
 -- | One or more configuration IDs.
 dcConfigurationIds :: Lens' DescribeConfigurations [Text]
@@ -106,13 +104,16 @@ instance ToQuery DescribeConfigurations where
         toQuery = const mempty
 
 -- | /See:/ 'describeConfigurationsResponse' smart constructor.
-data DescribeConfigurationsResponse =
-  DescribeConfigurationsResponse'
-    { _dcrsConfigurations :: !(Maybe [Map Text Text])
-    , _dcrsResponseStatus :: !Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data DescribeConfigurationsResponse = DescribeConfigurationsResponse'{_dcrsConfigurations
+                                                                      ::
+                                                                      !(Maybe
+                                                                          [Map
+                                                                             Text
+                                                                             Text]),
+                                                                      _dcrsResponseStatus
+                                                                      :: !Int}
+                                        deriving (Eq, Read, Show, Data,
+                                                  Typeable, Generic)
 
 -- | Creates a value of 'DescribeConfigurationsResponse' with the minimum fields required to make a request.
 --
@@ -124,10 +125,10 @@ data DescribeConfigurationsResponse =
 describeConfigurationsResponse
     :: Int -- ^ 'dcrsResponseStatus'
     -> DescribeConfigurationsResponse
-describeConfigurationsResponse pResponseStatus_ =
-  DescribeConfigurationsResponse'
-    {_dcrsConfigurations = Nothing, _dcrsResponseStatus = pResponseStatus_}
-
+describeConfigurationsResponse pResponseStatus_
+  = DescribeConfigurationsResponse'{_dcrsConfigurations
+                                      = Nothing,
+                                    _dcrsResponseStatus = pResponseStatus_}
 
 -- | A key in the response map. The value is an array of data.
 dcrsConfigurations :: Lens' DescribeConfigurationsResponse [HashMap Text Text]

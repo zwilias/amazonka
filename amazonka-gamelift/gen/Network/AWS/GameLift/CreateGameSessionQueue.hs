@@ -23,19 +23,19 @@
 --
 -- __Destination order.__ When processing a request for a game session, Amazon GameLift tries each destination in order until it finds one with available resources to host the new game session. A queue's default order is determined by how destinations are listed. The default order is overridden when a game session placement request provides player latency information. Player latency information enables Amazon GameLift to prioritize destinations where players report the lowest average latency, as a result placing the new game session where the majority of players will have the best possible gameplay experience.
 --
--- __Player latency policies.__ For placement requests containing player latency information, use player latency policies to protect individual players from very high latencies. With a latency cap, even when a destination can deliver a low latency for most players, the game is not placed where any individual player is reporting latency higher than a policy's maximum. A queue can have multiple latency policies, which are enforced consecutively starting with the policy with the lowest latency cap. Use multiple policies to gradually relax latency controls; for example, you might set a policy with a low latency cap for the first 60 seconds, a second policy with a higher cap for the next 60 seconds, etc.
+-- __Player latency policies.__ For placement requests containing player latency information, use player latency policies to protect individual players from very high latencies. With a latency cap, even when a destination can deliver a low latency for most players, the game is not placed where any individual player is reporting latency higher than a policy's maximum. A queue can have multiple latency policies, which are enforced consecutively starting with the policy with the lowest latency cap. Use multiple policies to gradually relax latency controls; for example, you might set a policy with a low latency cap for the first 60 seconds, a second policy with a higher cap for the next 60 seconds, etc. 
 --
 -- To create a new queue, provide a name, timeout value, a list of destinations and, if desired, a set of latency policies. If successful, a new queue object is returned.
 --
 -- Queue-related operations include:
 --
---     * 'CreateGameSessionQueue'
+--     * 'CreateGameSessionQueue' 
 --
---     * 'DescribeGameSessionQueues'
+--     * 'DescribeGameSessionQueues' 
 --
---     * 'UpdateGameSessionQueue'
+--     * 'UpdateGameSessionQueue' 
 --
---     * 'DeleteGameSessionQueue'
+--     * 'DeleteGameSessionQueue' 
 --
 --
 --
@@ -59,7 +59,6 @@ module Network.AWS.GameLift.CreateGameSessionQueue
     ) where
 
 import Network.AWS.GameLift.Types
-import Network.AWS.GameLift.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.Request
@@ -70,15 +69,18 @@ import Network.AWS.Response
 --
 --
 -- /See:/ 'createGameSessionQueue' smart constructor.
-data CreateGameSessionQueue =
-  CreateGameSessionQueue'
-    { _cgsqPlayerLatencyPolicies :: !(Maybe [PlayerLatencyPolicy])
-    , _cgsqTimeoutInSeconds      :: !(Maybe Nat)
-    , _cgsqDestinations          :: !(Maybe [GameSessionQueueDestination])
-    , _cgsqName                  :: !Text
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data CreateGameSessionQueue = CreateGameSessionQueue'{_cgsqPlayerLatencyPolicies
+                                                      ::
+                                                      !(Maybe
+                                                          [PlayerLatencyPolicy]),
+                                                      _cgsqTimeoutInSeconds ::
+                                                      !(Maybe Nat),
+                                                      _cgsqDestinations ::
+                                                      !(Maybe
+                                                          [GameSessionQueueDestination]),
+                                                      _cgsqName :: !Text}
+                                deriving (Eq, Read, Show, Data, Typeable,
+                                          Generic)
 
 -- | Creates a value of 'CreateGameSessionQueue' with the minimum fields required to make a request.
 --
@@ -94,14 +96,11 @@ data CreateGameSessionQueue =
 createGameSessionQueue
     :: Text -- ^ 'cgsqName'
     -> CreateGameSessionQueue
-createGameSessionQueue pName_ =
-  CreateGameSessionQueue'
-    { _cgsqPlayerLatencyPolicies = Nothing
-    , _cgsqTimeoutInSeconds = Nothing
-    , _cgsqDestinations = Nothing
-    , _cgsqName = pName_
-    }
-
+createGameSessionQueue pName_
+  = CreateGameSessionQueue'{_cgsqPlayerLatencyPolicies
+                              = Nothing,
+                            _cgsqTimeoutInSeconds = Nothing,
+                            _cgsqDestinations = Nothing, _cgsqName = pName_}
 
 -- | Collection of latency policies to apply when processing game sessions placement requests with player latency information. Multiple policies are evaluated in order of the maximum latency value, starting with the lowest latency values. With just one policy, it is enforced at the start of the game session placement for the duration period. With multiple policies, each policy is enforced consecutively for its duration period. For example, a queue might enforce a 60-second policy followed by a 120-second policy, and then no policy for the remainder of the placement. A player latency policy must set a value for MaximumIndividualPlayerLatencyMilliseconds; if none is set, this API requests will fail.
 cgsqPlayerLatencyPolicies :: Lens' CreateGameSessionQueue [PlayerLatencyPolicy]
@@ -163,13 +162,14 @@ instance ToQuery CreateGameSessionQueue where
 --
 --
 -- /See:/ 'createGameSessionQueueResponse' smart constructor.
-data CreateGameSessionQueueResponse =
-  CreateGameSessionQueueResponse'
-    { _cgsqrsGameSessionQueue :: !(Maybe GameSessionQueue)
-    , _cgsqrsResponseStatus   :: !Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data CreateGameSessionQueueResponse = CreateGameSessionQueueResponse'{_cgsqrsGameSessionQueue
+                                                                      ::
+                                                                      !(Maybe
+                                                                          GameSessionQueue),
+                                                                      _cgsqrsResponseStatus
+                                                                      :: !Int}
+                                        deriving (Eq, Read, Show, Data,
+                                                  Typeable, Generic)
 
 -- | Creates a value of 'CreateGameSessionQueueResponse' with the minimum fields required to make a request.
 --
@@ -181,12 +181,10 @@ data CreateGameSessionQueueResponse =
 createGameSessionQueueResponse
     :: Int -- ^ 'cgsqrsResponseStatus'
     -> CreateGameSessionQueueResponse
-createGameSessionQueueResponse pResponseStatus_ =
-  CreateGameSessionQueueResponse'
-    { _cgsqrsGameSessionQueue = Nothing
-    , _cgsqrsResponseStatus = pResponseStatus_
-    }
-
+createGameSessionQueueResponse pResponseStatus_
+  = CreateGameSessionQueueResponse'{_cgsqrsGameSessionQueue
+                                      = Nothing,
+                                    _cgsqrsResponseStatus = pResponseStatus_}
 
 -- | Object that describes the newly created game session queue.
 cgsqrsGameSessionQueue :: Lens' CreateGameSessionQueueResponse (Maybe GameSessionQueue)

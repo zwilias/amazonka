@@ -18,7 +18,7 @@
 -- Stability   : auto-generated
 -- Portability : non-portable (GHC extensions)
 --
--- Creates a global table from an existing table. A global table creates a replication relationship between two or more DynamoDB tables with the same table name in the provided Regions.
+-- Creates a global table from an existing table. A global table creates a replication relationship between two or more DynamoDB tables with the same table name in the provided Regions. 
 --
 --
 -- If you want to add a new replica table to a global table, each of the following conditions must be true:
@@ -33,17 +33,17 @@
 --
 --
 --
--- If global secondary indexes are specified, then the following conditions must also be met:
+-- If global secondary indexes are specified, then the following conditions must also be met: 
 --
---     * The global secondary indexes must have the same name.
+--     * The global secondary indexes must have the same name. 
 --
---     * The global secondary indexes must have the same hash key and sort key (if present).
+--     * The global secondary indexes must have the same hash key and sort key (if present). 
 --
 --
 --
--- /Important:/ Write capacity settings should be set consistently across your replica tables and secondary indexes. DynamoDB strongly recommends enabling auto scaling to manage the write capacity settings for all of your global tables replicas and indexes.
+-- /Important:/ Write capacity settings should be set consistently across your replica tables and secondary indexes. DynamoDB strongly recommends enabling auto scaling to manage the write capacity settings for all of your global tables replicas and indexes. 
 --
--- If you prefer to manage write capacity settings manually, you should provision equal replicated write capacity units to your replica tables. You should also provision equal replicated write capacity units to matching secondary indexes across your global table.
+-- If you prefer to manage write capacity settings manually, you should provision equal replicated write capacity units to your replica tables. You should also provision equal replicated write capacity units to matching secondary indexes across your global table. 
 --
 module Network.AWS.DynamoDB.CreateGlobalTable
     (
@@ -63,20 +63,16 @@ module Network.AWS.DynamoDB.CreateGlobalTable
     ) where
 
 import Network.AWS.DynamoDB.Types
-import Network.AWS.DynamoDB.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 
 -- | /See:/ 'createGlobalTable' smart constructor.
-data CreateGlobalTable =
-  CreateGlobalTable'
-    { _cgtGlobalTableName  :: !Text
-    , _cgtReplicationGroup :: ![Replica]
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data CreateGlobalTable = CreateGlobalTable'{_cgtGlobalTableName
+                                            :: !Text,
+                                            _cgtReplicationGroup :: ![Replica]}
+                           deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'CreateGlobalTable' with the minimum fields required to make a request.
 --
@@ -88,10 +84,10 @@ data CreateGlobalTable =
 createGlobalTable
     :: Text -- ^ 'cgtGlobalTableName'
     -> CreateGlobalTable
-createGlobalTable pGlobalTableName_ =
-  CreateGlobalTable'
-    {_cgtGlobalTableName = pGlobalTableName_, _cgtReplicationGroup = mempty}
-
+createGlobalTable pGlobalTableName_
+  = CreateGlobalTable'{_cgtGlobalTableName =
+                         pGlobalTableName_,
+                       _cgtReplicationGroup = mempty}
 
 -- | The global table name.
 cgtGlobalTableName :: Lens' CreateGlobalTable Text
@@ -139,13 +135,14 @@ instance ToQuery CreateGlobalTable where
         toQuery = const mempty
 
 -- | /See:/ 'createGlobalTableResponse' smart constructor.
-data CreateGlobalTableResponse =
-  CreateGlobalTableResponse'
-    { _cgtrsGlobalTableDescription :: !(Maybe GlobalTableDescription)
-    , _cgtrsResponseStatus         :: !Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data CreateGlobalTableResponse = CreateGlobalTableResponse'{_cgtrsGlobalTableDescription
+                                                            ::
+                                                            !(Maybe
+                                                                GlobalTableDescription),
+                                                            _cgtrsResponseStatus
+                                                            :: !Int}
+                                   deriving (Eq, Read, Show, Data, Typeable,
+                                             Generic)
 
 -- | Creates a value of 'CreateGlobalTableResponse' with the minimum fields required to make a request.
 --
@@ -157,12 +154,10 @@ data CreateGlobalTableResponse =
 createGlobalTableResponse
     :: Int -- ^ 'cgtrsResponseStatus'
     -> CreateGlobalTableResponse
-createGlobalTableResponse pResponseStatus_ =
-  CreateGlobalTableResponse'
-    { _cgtrsGlobalTableDescription = Nothing
-    , _cgtrsResponseStatus = pResponseStatus_
-    }
-
+createGlobalTableResponse pResponseStatus_
+  = CreateGlobalTableResponse'{_cgtrsGlobalTableDescription
+                                 = Nothing,
+                               _cgtrsResponseStatus = pResponseStatus_}
 
 -- | Contains the details of the global table.
 cgtrsGlobalTableDescription :: Lens' CreateGlobalTableResponse (Maybe GlobalTableDescription)

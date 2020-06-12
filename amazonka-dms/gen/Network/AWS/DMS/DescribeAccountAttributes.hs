@@ -39,28 +39,26 @@ module Network.AWS.DMS.DescribeAccountAttributes
     ) where
 
 import Network.AWS.DMS.Types
-import Network.AWS.DMS.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 
--- |
+-- | 
 --
 --
 --
 -- /See:/ 'describeAccountAttributes' smart constructor.
-data DescribeAccountAttributes =
-  DescribeAccountAttributes'
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data DescribeAccountAttributes = DescribeAccountAttributes'
+                                   deriving (Eq, Read, Show, Data, Typeable,
+                                             Generic)
 
 -- | Creates a value of 'DescribeAccountAttributes' with the minimum fields required to make a request.
 --
 describeAccountAttributes
     :: DescribeAccountAttributes
-describeAccountAttributes = DescribeAccountAttributes'
-
+describeAccountAttributes
+  = DescribeAccountAttributes'
 
 instance AWSRequest DescribeAccountAttributes where
         type Rs DescribeAccountAttributes =
@@ -97,19 +95,24 @@ instance ToPath DescribeAccountAttributes where
 instance ToQuery DescribeAccountAttributes where
         toQuery = const mempty
 
--- |
+-- | 
 --
 --
 --
 -- /See:/ 'describeAccountAttributesResponse' smart constructor.
-data DescribeAccountAttributesResponse =
-  DescribeAccountAttributesResponse'
-    { _daarsAccountQuotas           :: !(Maybe [AccountQuota])
-    , _daarsUniqueAccountIdentifier :: !(Maybe Text)
-    , _daarsResponseStatus          :: !Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data DescribeAccountAttributesResponse = DescribeAccountAttributesResponse'{_daarsAccountQuotas
+                                                                            ::
+                                                                            !(Maybe
+                                                                                [AccountQuota]),
+                                                                            _daarsUniqueAccountIdentifier
+                                                                            ::
+                                                                            !(Maybe
+                                                                                Text),
+                                                                            _daarsResponseStatus
+                                                                            ::
+                                                                            !Int}
+                                           deriving (Eq, Read, Show, Data,
+                                                     Typeable, Generic)
 
 -- | Creates a value of 'DescribeAccountAttributesResponse' with the minimum fields required to make a request.
 --
@@ -123,13 +126,11 @@ data DescribeAccountAttributesResponse =
 describeAccountAttributesResponse
     :: Int -- ^ 'daarsResponseStatus'
     -> DescribeAccountAttributesResponse
-describeAccountAttributesResponse pResponseStatus_ =
-  DescribeAccountAttributesResponse'
-    { _daarsAccountQuotas = Nothing
-    , _daarsUniqueAccountIdentifier = Nothing
-    , _daarsResponseStatus = pResponseStatus_
-    }
-
+describeAccountAttributesResponse pResponseStatus_
+  = DescribeAccountAttributesResponse'{_daarsAccountQuotas
+                                         = Nothing,
+                                       _daarsUniqueAccountIdentifier = Nothing,
+                                       _daarsResponseStatus = pResponseStatus_}
 
 -- | Account quota information.
 daarsAccountQuotas :: Lens' DescribeAccountAttributesResponse [AccountQuota]

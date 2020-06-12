@@ -42,23 +42,22 @@ module Network.AWS.Redshift.ModifyClusterSubnetGroup
 import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.Redshift.Types
-import Network.AWS.Redshift.Types.Product
 import Network.AWS.Request
 import Network.AWS.Response
 
--- |
+-- | 
 --
 --
 --
 -- /See:/ 'modifyClusterSubnetGroup' smart constructor.
-data ModifyClusterSubnetGroup =
-  ModifyClusterSubnetGroup'
-    { _mcsgDescription            :: !(Maybe Text)
-    , _mcsgClusterSubnetGroupName :: !Text
-    , _mcsgSubnetIds              :: ![Text]
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data ModifyClusterSubnetGroup = ModifyClusterSubnetGroup'{_mcsgDescription
+                                                          :: !(Maybe Text),
+                                                          _mcsgClusterSubnetGroupName
+                                                          :: !Text,
+                                                          _mcsgSubnetIds ::
+                                                          ![Text]}
+                                  deriving (Eq, Read, Show, Data, Typeable,
+                                            Generic)
 
 -- | Creates a value of 'ModifyClusterSubnetGroup' with the minimum fields required to make a request.
 --
@@ -72,13 +71,12 @@ data ModifyClusterSubnetGroup =
 modifyClusterSubnetGroup
     :: Text -- ^ 'mcsgClusterSubnetGroupName'
     -> ModifyClusterSubnetGroup
-modifyClusterSubnetGroup pClusterSubnetGroupName_ =
-  ModifyClusterSubnetGroup'
-    { _mcsgDescription = Nothing
-    , _mcsgClusterSubnetGroupName = pClusterSubnetGroupName_
-    , _mcsgSubnetIds = mempty
-    }
-
+modifyClusterSubnetGroup pClusterSubnetGroupName_
+  = ModifyClusterSubnetGroup'{_mcsgDescription =
+                                Nothing,
+                              _mcsgClusterSubnetGroupName =
+                                pClusterSubnetGroupName_,
+                              _mcsgSubnetIds = mempty}
 
 -- | A text description of the subnet group to be modified.
 mcsgDescription :: Lens' ModifyClusterSubnetGroup (Maybe Text)
@@ -125,13 +123,15 @@ instance ToQuery ModifyClusterSubnetGroup where
                  toQueryList "SubnetIdentifier" _mcsgSubnetIds]
 
 -- | /See:/ 'modifyClusterSubnetGroupResponse' smart constructor.
-data ModifyClusterSubnetGroupResponse =
-  ModifyClusterSubnetGroupResponse'
-    { _mcsgrsClusterSubnetGroup :: !(Maybe ClusterSubnetGroup)
-    , _mcsgrsResponseStatus     :: !Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data ModifyClusterSubnetGroupResponse = ModifyClusterSubnetGroupResponse'{_mcsgrsClusterSubnetGroup
+                                                                          ::
+                                                                          !(Maybe
+                                                                              ClusterSubnetGroup),
+                                                                          _mcsgrsResponseStatus
+                                                                          ::
+                                                                          !Int}
+                                          deriving (Eq, Read, Show, Data,
+                                                    Typeable, Generic)
 
 -- | Creates a value of 'ModifyClusterSubnetGroupResponse' with the minimum fields required to make a request.
 --
@@ -143,12 +143,10 @@ data ModifyClusterSubnetGroupResponse =
 modifyClusterSubnetGroupResponse
     :: Int -- ^ 'mcsgrsResponseStatus'
     -> ModifyClusterSubnetGroupResponse
-modifyClusterSubnetGroupResponse pResponseStatus_ =
-  ModifyClusterSubnetGroupResponse'
-    { _mcsgrsClusterSubnetGroup = Nothing
-    , _mcsgrsResponseStatus = pResponseStatus_
-    }
-
+modifyClusterSubnetGroupResponse pResponseStatus_
+  = ModifyClusterSubnetGroupResponse'{_mcsgrsClusterSubnetGroup
+                                        = Nothing,
+                                      _mcsgrsResponseStatus = pResponseStatus_}
 
 -- | Undocumented member.
 mcsgrsClusterSubnetGroup :: Lens' ModifyClusterSubnetGroupResponse (Maybe ClusterSubnetGroup)

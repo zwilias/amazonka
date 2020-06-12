@@ -59,36 +59,34 @@ module Network.AWS.OpsWorks.CreateStack
 
 import Network.AWS.Lens
 import Network.AWS.OpsWorks.Types
-import Network.AWS.OpsWorks.Types.Product
 import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 
 -- | /See:/ 'createStack' smart constructor.
-data CreateStack =
-  CreateStack'
-    { _csDefaultRootDeviceType :: !(Maybe RootDeviceType)
-    , _csVPCId :: !(Maybe Text)
-    , _csChefConfiguration :: !(Maybe ChefConfiguration)
-    , _csAgentVersion :: !(Maybe Text)
-    , _csDefaultSSHKeyName :: !(Maybe Text)
-    , _csCustomJSON :: !(Maybe Text)
-    , _csCustomCookbooksSource :: !(Maybe Source)
-    , _csDefaultAvailabilityZone :: !(Maybe Text)
-    , _csAttributes :: !(Maybe (Map StackAttributesKeys (Maybe Text)))
-    , _csDefaultOS :: !(Maybe Text)
-    , _csUseOpsworksSecurityGroups :: !(Maybe Bool)
-    , _csUseCustomCookbooks :: !(Maybe Bool)
-    , _csDefaultSubnetId :: !(Maybe Text)
-    , _csConfigurationManager :: !(Maybe StackConfigurationManager)
-    , _csHostnameTheme :: !(Maybe Text)
-    , _csName :: !Text
-    , _csRegion :: !Text
-    , _csServiceRoleARN :: !Text
-    , _csDefaultInstanceProfileARN :: !Text
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data CreateStack = CreateStack'{_csDefaultRootDeviceType
+                                :: !(Maybe RootDeviceType),
+                                _csVPCId :: !(Maybe Text),
+                                _csChefConfiguration ::
+                                !(Maybe ChefConfiguration),
+                                _csAgentVersion :: !(Maybe Text),
+                                _csDefaultSSHKeyName :: !(Maybe Text),
+                                _csCustomJSON :: !(Maybe Text),
+                                _csCustomCookbooksSource :: !(Maybe Source),
+                                _csDefaultAvailabilityZone :: !(Maybe Text),
+                                _csAttributes ::
+                                !(Maybe (Map StackAttributesKeys (Maybe Text))),
+                                _csDefaultOS :: !(Maybe Text),
+                                _csUseOpsworksSecurityGroups :: !(Maybe Bool),
+                                _csUseCustomCookbooks :: !(Maybe Bool),
+                                _csDefaultSubnetId :: !(Maybe Text),
+                                _csConfigurationManager ::
+                                !(Maybe StackConfigurationManager),
+                                _csHostnameTheme :: !(Maybe Text),
+                                _csName :: !Text, _csRegion :: !Text,
+                                _csServiceRoleARN :: !Text,
+                                _csDefaultInstanceProfileARN :: !Text}
+                     deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'CreateStack' with the minimum fields required to make a request.
 --
@@ -96,19 +94,19 @@ data CreateStack =
 --
 -- * 'csDefaultRootDeviceType' - The default root device type. This value is the default for all instances in the stack, but you can override it when you create an instance. The default option is @instance-store@ . For more information, see <http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ComponentsAMIs.html#storage-for-the-root-device Storage for the Root Device> .
 --
--- * 'csVPCId' - The ID of the VPC that the stack is to be launched into. The VPC must be in the stack's region. All instances are launched into this VPC. You cannot change the ID later.     * If your account supports EC2-Classic, the default value is @no VPC@ .     * If your account does not support EC2-Classic, the default value is the default VPC for the specified region. If the VPC ID corresponds to a default VPC and you have specified either the @DefaultAvailabilityZone@ or the @DefaultSubnetId@ parameter only, AWS OpsWorks Stacks infers the value of the other parameter. If you specify neither parameter, AWS OpsWorks Stacks sets these parameters to the first valid Availability Zone for the specified region and the corresponding default VPC subnet ID, respectively. If you specify a nondefault VPC ID, note the following:     * It must belong to a VPC in your account that is in the specified region.     * You must specify a value for @DefaultSubnetId@ . For more information on how to use AWS OpsWorks Stacks with a VPC, see <http://docs.aws.amazon.com/opsworks/latest/userguide/workingstacks-vpc.html Running a Stack in a VPC> . For more information on default VPC and EC2-Classic, see <http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ec2-supported-platforms.html Supported Platforms> .
+-- * 'csVPCId' - The ID of the VPC that the stack is to be launched into. The VPC must be in the stack's region. All instances are launched into this VPC. You cannot change the ID later.     * If your account supports EC2-Classic, the default value is @no VPC@ .     * If your account does not support EC2-Classic, the default value is the default VPC for the specified region. If the VPC ID corresponds to a default VPC and you have specified either the @DefaultAvailabilityZone@ or the @DefaultSubnetId@ parameter only, AWS OpsWorks Stacks infers the value of the other parameter. If you specify neither parameter, AWS OpsWorks Stacks sets these parameters to the first valid Availability Zone for the specified region and the corresponding default VPC subnet ID, respectively. If you specify a nondefault VPC ID, note the following:     * It must belong to a VPC in your account that is in the specified region.     * You must specify a value for @DefaultSubnetId@ . For more information on how to use AWS OpsWorks Stacks with a VPC, see <http://docs.aws.amazon.com/opsworks/latest/userguide/workingstacks-vpc.html Running a Stack in a VPC> . For more information on default VPC and EC2-Classic, see <http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ec2-supported-platforms.html Supported Platforms> . 
 --
 -- * 'csChefConfiguration' - A @ChefConfiguration@ object that specifies whether to enable Berkshelf and the Berkshelf version on Chef 11.10 stacks. For more information, see <http://docs.aws.amazon.com/opsworks/latest/userguide/workingstacks-creating.html Create a New Stack> .
 --
 -- * 'csAgentVersion' - The default AWS OpsWorks Stacks agent version. You have the following options:     * Auto-update - Set this parameter to @LATEST@ . AWS OpsWorks Stacks automatically installs new agent versions on the stack's instances as soon as they are available.     * Fixed version - Set this parameter to your preferred agent version. To update the agent version, you must edit the stack configuration and specify a new version. AWS OpsWorks Stacks then automatically installs that version on the stack's instances. The default setting is the most recent release of the agent. To specify an agent version, you must use the complete version number, not the abbreviated number shown on the console. For a list of available agent version numbers, call 'DescribeAgentVersions' . AgentVersion cannot be set to Chef 12.2.
 --
--- * 'csDefaultSSHKeyName' - A default Amazon EC2 key pair name. The default value is none. If you specify a key pair name, AWS OpsWorks installs the public key on the instance and you can use the private key with an SSH client to log in to the instance. For more information, see <http://docs.aws.amazon.com/opsworks/latest/userguide/workinginstances-ssh.html Using SSH to Communicate with an Instance> and <http://docs.aws.amazon.com/opsworks/latest/userguide/security-ssh-access.html Managing SSH Access> . You can override this setting by specifying a different key pair, or no key pair, when you <http://docs.aws.amazon.com/opsworks/latest/userguide/workinginstances-add.html create an instance> .
+-- * 'csDefaultSSHKeyName' - A default Amazon EC2 key pair name. The default value is none. If you specify a key pair name, AWS OpsWorks installs the public key on the instance and you can use the private key with an SSH client to log in to the instance. For more information, see <http://docs.aws.amazon.com/opsworks/latest/userguide/workinginstances-ssh.html Using SSH to Communicate with an Instance> and <http://docs.aws.amazon.com/opsworks/latest/userguide/security-ssh-access.html Managing SSH Access> . You can override this setting by specifying a different key pair, or no key pair, when you <http://docs.aws.amazon.com/opsworks/latest/userguide/workinginstances-add.html create an instance> . 
 --
 -- * 'csCustomJSON' - A string that contains user-defined, custom JSON. It can be used to override the corresponding default stack configuration attribute values or to pass data to recipes. The string should be in the following format: @"{\"key1\": \"value1\", \"key2\": \"value2\",...}"@  For more information on custom JSON, see <http://docs.aws.amazon.com/opsworks/latest/userguide/workingstacks-json.html Use Custom JSON to Modify the Stack Configuration Attributes> .
 --
 -- * 'csCustomCookbooksSource' - Undocumented member.
 --
--- * 'csDefaultAvailabilityZone' - The stack's default Availability Zone, which must be in the specified region. For more information, see <http://docs.aws.amazon.com/general/latest/gr/rande.html Regions and Endpoints> . If you also specify a value for @DefaultSubnetId@ , the subnet must be in the same zone. For more information, see the @VpcId@ parameter description.
+-- * 'csDefaultAvailabilityZone' - The stack's default Availability Zone, which must be in the specified region. For more information, see <http://docs.aws.amazon.com/general/latest/gr/rande.html Regions and Endpoints> . If you also specify a value for @DefaultSubnetId@ , the subnet must be in the same zone. For more information, see the @VpcId@ parameter description. 
 --
 -- * 'csAttributes' - One or more user-defined key-value pairs to be added to the stack attributes.
 --
@@ -118,7 +116,7 @@ data CreateStack =
 --
 -- * 'csUseCustomCookbooks' - Whether the stack uses custom cookbooks.
 --
--- * 'csDefaultSubnetId' - The stack's default VPC subnet ID. This parameter is required if you specify a value for the @VpcId@ parameter. All instances are launched into this subnet unless you specify otherwise when you create the instance. If you also specify a value for @DefaultAvailabilityZone@ , the subnet must be in that zone. For information on default values and when this parameter is required, see the @VpcId@ parameter description.
+-- * 'csDefaultSubnetId' - The stack's default VPC subnet ID. This parameter is required if you specify a value for the @VpcId@ parameter. All instances are launched into this subnet unless you specify otherwise when you create the instance. If you also specify a value for @DefaultAvailabilityZone@ , the subnet must be in that zone. For information on default values and when this parameter is required, see the @VpcId@ parameter description. 
 --
 -- * 'csConfigurationManager' - The configuration manager. When you create a stack we recommend that you use the configuration manager to specify the Chef version: 12, 11.10, or 11.4 for Linux stacks, or 12.2 for Windows stacks. The default value for Linux stacks is currently 11.4.
 --
@@ -137,35 +135,31 @@ createStack
     -> Text -- ^ 'csServiceRoleARN'
     -> Text -- ^ 'csDefaultInstanceProfileARN'
     -> CreateStack
-createStack pName_ pRegion_ pServiceRoleARN_ pDefaultInstanceProfileARN_ =
-  CreateStack'
-    { _csDefaultRootDeviceType = Nothing
-    , _csVPCId = Nothing
-    , _csChefConfiguration = Nothing
-    , _csAgentVersion = Nothing
-    , _csDefaultSSHKeyName = Nothing
-    , _csCustomJSON = Nothing
-    , _csCustomCookbooksSource = Nothing
-    , _csDefaultAvailabilityZone = Nothing
-    , _csAttributes = Nothing
-    , _csDefaultOS = Nothing
-    , _csUseOpsworksSecurityGroups = Nothing
-    , _csUseCustomCookbooks = Nothing
-    , _csDefaultSubnetId = Nothing
-    , _csConfigurationManager = Nothing
-    , _csHostnameTheme = Nothing
-    , _csName = pName_
-    , _csRegion = pRegion_
-    , _csServiceRoleARN = pServiceRoleARN_
-    , _csDefaultInstanceProfileARN = pDefaultInstanceProfileARN_
-    }
-
+createStack pName_ pRegion_ pServiceRoleARN_
+  pDefaultInstanceProfileARN_
+  = CreateStack'{_csDefaultRootDeviceType = Nothing,
+                 _csVPCId = Nothing, _csChefConfiguration = Nothing,
+                 _csAgentVersion = Nothing,
+                 _csDefaultSSHKeyName = Nothing,
+                 _csCustomJSON = Nothing,
+                 _csCustomCookbooksSource = Nothing,
+                 _csDefaultAvailabilityZone = Nothing,
+                 _csAttributes = Nothing, _csDefaultOS = Nothing,
+                 _csUseOpsworksSecurityGroups = Nothing,
+                 _csUseCustomCookbooks = Nothing,
+                 _csDefaultSubnetId = Nothing,
+                 _csConfigurationManager = Nothing,
+                 _csHostnameTheme = Nothing, _csName = pName_,
+                 _csRegion = pRegion_,
+                 _csServiceRoleARN = pServiceRoleARN_,
+                 _csDefaultInstanceProfileARN =
+                   pDefaultInstanceProfileARN_}
 
 -- | The default root device type. This value is the default for all instances in the stack, but you can override it when you create an instance. The default option is @instance-store@ . For more information, see <http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ComponentsAMIs.html#storage-for-the-root-device Storage for the Root Device> .
 csDefaultRootDeviceType :: Lens' CreateStack (Maybe RootDeviceType)
 csDefaultRootDeviceType = lens _csDefaultRootDeviceType (\ s a -> s{_csDefaultRootDeviceType = a})
 
--- | The ID of the VPC that the stack is to be launched into. The VPC must be in the stack's region. All instances are launched into this VPC. You cannot change the ID later.     * If your account supports EC2-Classic, the default value is @no VPC@ .     * If your account does not support EC2-Classic, the default value is the default VPC for the specified region. If the VPC ID corresponds to a default VPC and you have specified either the @DefaultAvailabilityZone@ or the @DefaultSubnetId@ parameter only, AWS OpsWorks Stacks infers the value of the other parameter. If you specify neither parameter, AWS OpsWorks Stacks sets these parameters to the first valid Availability Zone for the specified region and the corresponding default VPC subnet ID, respectively. If you specify a nondefault VPC ID, note the following:     * It must belong to a VPC in your account that is in the specified region.     * You must specify a value for @DefaultSubnetId@ . For more information on how to use AWS OpsWorks Stacks with a VPC, see <http://docs.aws.amazon.com/opsworks/latest/userguide/workingstacks-vpc.html Running a Stack in a VPC> . For more information on default VPC and EC2-Classic, see <http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ec2-supported-platforms.html Supported Platforms> .
+-- | The ID of the VPC that the stack is to be launched into. The VPC must be in the stack's region. All instances are launched into this VPC. You cannot change the ID later.     * If your account supports EC2-Classic, the default value is @no VPC@ .     * If your account does not support EC2-Classic, the default value is the default VPC for the specified region. If the VPC ID corresponds to a default VPC and you have specified either the @DefaultAvailabilityZone@ or the @DefaultSubnetId@ parameter only, AWS OpsWorks Stacks infers the value of the other parameter. If you specify neither parameter, AWS OpsWorks Stacks sets these parameters to the first valid Availability Zone for the specified region and the corresponding default VPC subnet ID, respectively. If you specify a nondefault VPC ID, note the following:     * It must belong to a VPC in your account that is in the specified region.     * You must specify a value for @DefaultSubnetId@ . For more information on how to use AWS OpsWorks Stacks with a VPC, see <http://docs.aws.amazon.com/opsworks/latest/userguide/workingstacks-vpc.html Running a Stack in a VPC> . For more information on default VPC and EC2-Classic, see <http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ec2-supported-platforms.html Supported Platforms> . 
 csVPCId :: Lens' CreateStack (Maybe Text)
 csVPCId = lens _csVPCId (\ s a -> s{_csVPCId = a})
 
@@ -177,7 +171,7 @@ csChefConfiguration = lens _csChefConfiguration (\ s a -> s{_csChefConfiguration
 csAgentVersion :: Lens' CreateStack (Maybe Text)
 csAgentVersion = lens _csAgentVersion (\ s a -> s{_csAgentVersion = a})
 
--- | A default Amazon EC2 key pair name. The default value is none. If you specify a key pair name, AWS OpsWorks installs the public key on the instance and you can use the private key with an SSH client to log in to the instance. For more information, see <http://docs.aws.amazon.com/opsworks/latest/userguide/workinginstances-ssh.html Using SSH to Communicate with an Instance> and <http://docs.aws.amazon.com/opsworks/latest/userguide/security-ssh-access.html Managing SSH Access> . You can override this setting by specifying a different key pair, or no key pair, when you <http://docs.aws.amazon.com/opsworks/latest/userguide/workinginstances-add.html create an instance> .
+-- | A default Amazon EC2 key pair name. The default value is none. If you specify a key pair name, AWS OpsWorks installs the public key on the instance and you can use the private key with an SSH client to log in to the instance. For more information, see <http://docs.aws.amazon.com/opsworks/latest/userguide/workinginstances-ssh.html Using SSH to Communicate with an Instance> and <http://docs.aws.amazon.com/opsworks/latest/userguide/security-ssh-access.html Managing SSH Access> . You can override this setting by specifying a different key pair, or no key pair, when you <http://docs.aws.amazon.com/opsworks/latest/userguide/workinginstances-add.html create an instance> . 
 csDefaultSSHKeyName :: Lens' CreateStack (Maybe Text)
 csDefaultSSHKeyName = lens _csDefaultSSHKeyName (\ s a -> s{_csDefaultSSHKeyName = a})
 
@@ -189,7 +183,7 @@ csCustomJSON = lens _csCustomJSON (\ s a -> s{_csCustomJSON = a})
 csCustomCookbooksSource :: Lens' CreateStack (Maybe Source)
 csCustomCookbooksSource = lens _csCustomCookbooksSource (\ s a -> s{_csCustomCookbooksSource = a})
 
--- | The stack's default Availability Zone, which must be in the specified region. For more information, see <http://docs.aws.amazon.com/general/latest/gr/rande.html Regions and Endpoints> . If you also specify a value for @DefaultSubnetId@ , the subnet must be in the same zone. For more information, see the @VpcId@ parameter description.
+-- | The stack's default Availability Zone, which must be in the specified region. For more information, see <http://docs.aws.amazon.com/general/latest/gr/rande.html Regions and Endpoints> . If you also specify a value for @DefaultSubnetId@ , the subnet must be in the same zone. For more information, see the @VpcId@ parameter description. 
 csDefaultAvailabilityZone :: Lens' CreateStack (Maybe Text)
 csDefaultAvailabilityZone = lens _csDefaultAvailabilityZone (\ s a -> s{_csDefaultAvailabilityZone = a})
 
@@ -209,7 +203,7 @@ csUseOpsworksSecurityGroups = lens _csUseOpsworksSecurityGroups (\ s a -> s{_csU
 csUseCustomCookbooks :: Lens' CreateStack (Maybe Bool)
 csUseCustomCookbooks = lens _csUseCustomCookbooks (\ s a -> s{_csUseCustomCookbooks = a})
 
--- | The stack's default VPC subnet ID. This parameter is required if you specify a value for the @VpcId@ parameter. All instances are launched into this subnet unless you specify otherwise when you create the instance. If you also specify a value for @DefaultAvailabilityZone@ , the subnet must be in that zone. For information on default values and when this parameter is required, see the @VpcId@ parameter description.
+-- | The stack's default VPC subnet ID. This parameter is required if you specify a value for the @VpcId@ parameter. All instances are launched into this subnet unless you specify otherwise when you create the instance. If you also specify a value for @DefaultAvailabilityZone@ , the subnet must be in that zone. For information on default values and when this parameter is required, see the @VpcId@ parameter description. 
 csDefaultSubnetId :: Lens' CreateStack (Maybe Text)
 csDefaultSubnetId = lens _csDefaultSubnetId (\ s a -> s{_csDefaultSubnetId = a})
 
@@ -301,13 +295,10 @@ instance ToQuery CreateStack where
 --
 --
 -- /See:/ 'createStackResponse' smart constructor.
-data CreateStackResponse =
-  CreateStackResponse'
-    { _crsStackId        :: !(Maybe Text)
-    , _crsResponseStatus :: !Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data CreateStackResponse = CreateStackResponse'{_crsStackId
+                                                :: !(Maybe Text),
+                                                _crsResponseStatus :: !Int}
+                             deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'CreateStackResponse' with the minimum fields required to make a request.
 --
@@ -319,10 +310,9 @@ data CreateStackResponse =
 createStackResponse
     :: Int -- ^ 'crsResponseStatus'
     -> CreateStackResponse
-createStackResponse pResponseStatus_ =
-  CreateStackResponse'
-    {_crsStackId = Nothing, _crsResponseStatus = pResponseStatus_}
-
+createStackResponse pResponseStatus_
+  = CreateStackResponse'{_crsStackId = Nothing,
+                         _crsResponseStatus = pResponseStatus_}
 
 -- | The stack ID, which is an opaque string that you use to identify the stack when performing actions such as @DescribeStacks@ .
 crsStackId :: Lens' CreateStackResponse (Maybe Text)

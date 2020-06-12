@@ -39,20 +39,18 @@ module Network.AWS.Inspector.CreateAssessmentTarget
     ) where
 
 import Network.AWS.Inspector.Types
-import Network.AWS.Inspector.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 
 -- | /See:/ 'createAssessmentTarget' smart constructor.
-data CreateAssessmentTarget =
-  CreateAssessmentTarget'
-    { _catAssessmentTargetName :: !Text
-    , _catResourceGroupARN     :: !Text
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data CreateAssessmentTarget = CreateAssessmentTarget'{_catAssessmentTargetName
+                                                      :: !Text,
+                                                      _catResourceGroupARN ::
+                                                      !Text}
+                                deriving (Eq, Read, Show, Data, Typeable,
+                                          Generic)
 
 -- | Creates a value of 'CreateAssessmentTarget' with the minimum fields required to make a request.
 --
@@ -65,12 +63,11 @@ createAssessmentTarget
     :: Text -- ^ 'catAssessmentTargetName'
     -> Text -- ^ 'catResourceGroupARN'
     -> CreateAssessmentTarget
-createAssessmentTarget pAssessmentTargetName_ pResourceGroupARN_ =
-  CreateAssessmentTarget'
-    { _catAssessmentTargetName = pAssessmentTargetName_
-    , _catResourceGroupARN = pResourceGroupARN_
-    }
-
+createAssessmentTarget pAssessmentTargetName_
+  pResourceGroupARN_
+  = CreateAssessmentTarget'{_catAssessmentTargetName =
+                              pAssessmentTargetName_,
+                            _catResourceGroupARN = pResourceGroupARN_}
 
 -- | The user-defined name that identifies the assessment target that you want to create. The name must be unique within the AWS account.
 catAssessmentTargetName :: Lens' CreateAssessmentTarget Text
@@ -120,13 +117,12 @@ instance ToQuery CreateAssessmentTarget where
         toQuery = const mempty
 
 -- | /See:/ 'createAssessmentTargetResponse' smart constructor.
-data CreateAssessmentTargetResponse =
-  CreateAssessmentTargetResponse'
-    { _catrsResponseStatus      :: !Int
-    , _catrsAssessmentTargetARN :: !Text
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data CreateAssessmentTargetResponse = CreateAssessmentTargetResponse'{_catrsResponseStatus
+                                                                      :: !Int,
+                                                                      _catrsAssessmentTargetARN
+                                                                      :: !Text}
+                                        deriving (Eq, Read, Show, Data,
+                                                  Typeable, Generic)
 
 -- | Creates a value of 'CreateAssessmentTargetResponse' with the minimum fields required to make a request.
 --
@@ -139,12 +135,12 @@ createAssessmentTargetResponse
     :: Int -- ^ 'catrsResponseStatus'
     -> Text -- ^ 'catrsAssessmentTargetARN'
     -> CreateAssessmentTargetResponse
-createAssessmentTargetResponse pResponseStatus_ pAssessmentTargetARN_ =
-  CreateAssessmentTargetResponse'
-    { _catrsResponseStatus = pResponseStatus_
-    , _catrsAssessmentTargetARN = pAssessmentTargetARN_
-    }
-
+createAssessmentTargetResponse pResponseStatus_
+  pAssessmentTargetARN_
+  = CreateAssessmentTargetResponse'{_catrsResponseStatus
+                                      = pResponseStatus_,
+                                    _catrsAssessmentTargetARN =
+                                      pAssessmentTargetARN_}
 
 -- | -- | The response status code.
 catrsResponseStatus :: Lens' CreateAssessmentTargetResponse Int

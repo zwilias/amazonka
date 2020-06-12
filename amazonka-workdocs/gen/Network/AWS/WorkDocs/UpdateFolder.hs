@@ -43,19 +43,17 @@ import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 import Network.AWS.WorkDocs.Types
-import Network.AWS.WorkDocs.Types.Product
 
 -- | /See:/ 'updateFolder' smart constructor.
-data UpdateFolder =
-  UpdateFolder'
-    { _ufParentFolderId      :: !(Maybe Text)
-    , _ufAuthenticationToken :: !(Maybe (Sensitive Text))
-    , _ufName                :: !(Maybe Text)
-    , _ufResourceState       :: !(Maybe ResourceStateType)
-    , _ufFolderId            :: !Text
-    }
-  deriving (Eq, Show, Data, Typeable, Generic)
-
+data UpdateFolder = UpdateFolder'{_ufParentFolderId
+                                  :: !(Maybe Text),
+                                  _ufAuthenticationToken ::
+                                  !(Maybe (Sensitive Text)),
+                                  _ufName :: !(Maybe Text),
+                                  _ufResourceState ::
+                                  !(Maybe ResourceStateType),
+                                  _ufFolderId :: !Text}
+                      deriving (Eq, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'UpdateFolder' with the minimum fields required to make a request.
 --
@@ -73,15 +71,10 @@ data UpdateFolder =
 updateFolder
     :: Text -- ^ 'ufFolderId'
     -> UpdateFolder
-updateFolder pFolderId_ =
-  UpdateFolder'
-    { _ufParentFolderId = Nothing
-    , _ufAuthenticationToken = Nothing
-    , _ufName = Nothing
-    , _ufResourceState = Nothing
-    , _ufFolderId = pFolderId_
-    }
-
+updateFolder pFolderId_
+  = UpdateFolder'{_ufParentFolderId = Nothing,
+                  _ufAuthenticationToken = Nothing, _ufName = Nothing,
+                  _ufResourceState = Nothing, _ufFolderId = pFolderId_}
 
 -- | The ID of the parent folder.
 ufParentFolderId :: Lens' UpdateFolder (Maybe Text)
@@ -135,16 +128,13 @@ instance ToQuery UpdateFolder where
         toQuery = const mempty
 
 -- | /See:/ 'updateFolderResponse' smart constructor.
-data UpdateFolderResponse =
-  UpdateFolderResponse'
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data UpdateFolderResponse = UpdateFolderResponse'
+                              deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'UpdateFolderResponse' with the minimum fields required to make a request.
 --
 updateFolderResponse
     :: UpdateFolderResponse
 updateFolderResponse = UpdateFolderResponse'
-
 
 instance NFData UpdateFolderResponse where

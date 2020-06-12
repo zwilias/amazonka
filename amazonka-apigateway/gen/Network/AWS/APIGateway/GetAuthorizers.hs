@@ -21,7 +21,7 @@
 -- Describe an existing 'Authorizers' resource.
 --
 --
--- <https://docs.aws.amazon.com/cli/latest/reference/apigateway/get-authorizers.html AWS CLI>
+-- <https://docs.aws.amazon.com/cli/latest/reference/apigateway/get-authorizers.html AWS CLI> 
 --
 -- This operation returns paginated results.
 module Network.AWS.APIGateway.GetAuthorizers
@@ -44,7 +44,6 @@ module Network.AWS.APIGateway.GetAuthorizers
     ) where
 
 import Network.AWS.APIGateway.Types
-import Network.AWS.APIGateway.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Pager
 import Network.AWS.Prelude
@@ -56,14 +55,11 @@ import Network.AWS.Response
 --
 --
 -- /See:/ 'getAuthorizers' smart constructor.
-data GetAuthorizers =
-  GetAuthorizers'
-    { _gaLimit     :: !(Maybe Int)
-    , _gaPosition  :: !(Maybe Text)
-    , _gaRestAPIId :: !Text
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data GetAuthorizers = GetAuthorizers'{_gaLimit ::
+                                      !(Maybe Int),
+                                      _gaPosition :: !(Maybe Text),
+                                      _gaRestAPIId :: !Text}
+                        deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'GetAuthorizers' with the minimum fields required to make a request.
 --
@@ -77,10 +73,9 @@ data GetAuthorizers =
 getAuthorizers
     :: Text -- ^ 'gaRestAPIId'
     -> GetAuthorizers
-getAuthorizers pRestAPIId_ =
-  GetAuthorizers'
-    {_gaLimit = Nothing, _gaPosition = Nothing, _gaRestAPIId = pRestAPIId_}
-
+getAuthorizers pRestAPIId_
+  = GetAuthorizers'{_gaLimit = Nothing,
+                    _gaPosition = Nothing, _gaRestAPIId = pRestAPIId_}
 
 -- | The maximum number of returned results per page. The default value is 25 and the maximum value is 500.
 gaLimit :: Lens' GetAuthorizers (Maybe Int)
@@ -134,17 +129,17 @@ instance ToQuery GetAuthorizers where
 -- | Represents a collection of 'Authorizer' resources.
 --
 --
--- <https://docs.aws.amazon.com/apigateway/latest/developerguide/apigateway-use-lambda-authorizer.html Use Lambda Function as Authorizer> <https://docs.aws.amazon.com/apigateway/latest/developerguide/apigateway-integrate-with-cognito.html Use Cognito User Pool as Authorizer>
+-- <https://docs.aws.amazon.com/apigateway/latest/developerguide/apigateway-use-lambda-authorizer.html Use Lambda Function as Authorizer> <https://docs.aws.amazon.com/apigateway/latest/developerguide/apigateway-integrate-with-cognito.html Use Cognito User Pool as Authorizer> 
 --
 -- /See:/ 'getAuthorizersResponse' smart constructor.
-data GetAuthorizersResponse =
-  GetAuthorizersResponse'
-    { _garsItems          :: !(Maybe [Authorizer])
-    , _garsPosition       :: !(Maybe Text)
-    , _garsResponseStatus :: !Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data GetAuthorizersResponse = GetAuthorizersResponse'{_garsItems
+                                                      :: !(Maybe [Authorizer]),
+                                                      _garsPosition ::
+                                                      !(Maybe Text),
+                                                      _garsResponseStatus ::
+                                                      !Int}
+                                deriving (Eq, Read, Show, Data, Typeable,
+                                          Generic)
 
 -- | Creates a value of 'GetAuthorizersResponse' with the minimum fields required to make a request.
 --
@@ -158,13 +153,10 @@ data GetAuthorizersResponse =
 getAuthorizersResponse
     :: Int -- ^ 'garsResponseStatus'
     -> GetAuthorizersResponse
-getAuthorizersResponse pResponseStatus_ =
-  GetAuthorizersResponse'
-    { _garsItems = Nothing
-    , _garsPosition = Nothing
-    , _garsResponseStatus = pResponseStatus_
-    }
-
+getAuthorizersResponse pResponseStatus_
+  = GetAuthorizersResponse'{_garsItems = Nothing,
+                            _garsPosition = Nothing,
+                            _garsResponseStatus = pResponseStatus_}
 
 -- | The current page of elements from this collection.
 garsItems :: Lens' GetAuthorizersResponse [Authorizer]

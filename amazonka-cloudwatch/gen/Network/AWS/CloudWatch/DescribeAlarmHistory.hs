@@ -50,7 +50,6 @@ module Network.AWS.CloudWatch.DescribeAlarmHistory
     ) where
 
 import Network.AWS.CloudWatch.Types
-import Network.AWS.CloudWatch.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Pager
 import Network.AWS.Prelude
@@ -58,19 +57,22 @@ import Network.AWS.Request
 import Network.AWS.Response
 
 -- | /See:/ 'describeAlarmHistory' smart constructor.
-data DescribeAlarmHistory =
-  DescribeAlarmHistory'
-    { _dahAlarmName       :: !(Maybe Text)
-    , _dahHistoryItemType :: !(Maybe HistoryItemType)
-    , _dahAlarmTypes      :: !(Maybe [AlarmType])
-    , _dahEndDate         :: !(Maybe ISO8601)
-    , _dahStartDate       :: !(Maybe ISO8601)
-    , _dahNextToken       :: !(Maybe Text)
-    , _dahScanBy          :: !(Maybe ScanBy)
-    , _dahMaxRecords      :: !(Maybe Nat)
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data DescribeAlarmHistory = DescribeAlarmHistory'{_dahAlarmName
+                                                  :: !(Maybe Text),
+                                                  _dahHistoryItemType ::
+                                                  !(Maybe HistoryItemType),
+                                                  _dahAlarmTypes ::
+                                                  !(Maybe [AlarmType]),
+                                                  _dahEndDate ::
+                                                  !(Maybe ISO8601),
+                                                  _dahStartDate ::
+                                                  !(Maybe ISO8601),
+                                                  _dahNextToken ::
+                                                  !(Maybe Text),
+                                                  _dahScanBy :: !(Maybe ScanBy),
+                                                  _dahMaxRecords ::
+                                                  !(Maybe Nat)}
+                              deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'DescribeAlarmHistory' with the minimum fields required to make a request.
 --
@@ -93,18 +95,12 @@ data DescribeAlarmHistory =
 -- * 'dahMaxRecords' - The maximum number of alarm history records to retrieve.
 describeAlarmHistory
     :: DescribeAlarmHistory
-describeAlarmHistory =
-  DescribeAlarmHistory'
-    { _dahAlarmName = Nothing
-    , _dahHistoryItemType = Nothing
-    , _dahAlarmTypes = Nothing
-    , _dahEndDate = Nothing
-    , _dahStartDate = Nothing
-    , _dahNextToken = Nothing
-    , _dahScanBy = Nothing
-    , _dahMaxRecords = Nothing
-    }
-
+describeAlarmHistory
+  = DescribeAlarmHistory'{_dahAlarmName = Nothing,
+                          _dahHistoryItemType = Nothing,
+                          _dahAlarmTypes = Nothing, _dahEndDate = Nothing,
+                          _dahStartDate = Nothing, _dahNextToken = Nothing,
+                          _dahScanBy = Nothing, _dahMaxRecords = Nothing}
 
 -- | The name of the alarm.
 dahAlarmName :: Lens' DescribeAlarmHistory (Maybe Text)
@@ -183,14 +179,17 @@ instance ToQuery DescribeAlarmHistory where
                "MaxRecords" =: _dahMaxRecords]
 
 -- | /See:/ 'describeAlarmHistoryResponse' smart constructor.
-data DescribeAlarmHistoryResponse =
-  DescribeAlarmHistoryResponse'
-    { _dahrsAlarmHistoryItems :: !(Maybe [AlarmHistoryItem])
-    , _dahrsNextToken         :: !(Maybe Text)
-    , _dahrsResponseStatus    :: !Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data DescribeAlarmHistoryResponse = DescribeAlarmHistoryResponse'{_dahrsAlarmHistoryItems
+                                                                  ::
+                                                                  !(Maybe
+                                                                      [AlarmHistoryItem]),
+                                                                  _dahrsNextToken
+                                                                  ::
+                                                                  !(Maybe Text),
+                                                                  _dahrsResponseStatus
+                                                                  :: !Int}
+                                      deriving (Eq, Read, Show, Data, Typeable,
+                                                Generic)
 
 -- | Creates a value of 'DescribeAlarmHistoryResponse' with the minimum fields required to make a request.
 --
@@ -204,13 +203,11 @@ data DescribeAlarmHistoryResponse =
 describeAlarmHistoryResponse
     :: Int -- ^ 'dahrsResponseStatus'
     -> DescribeAlarmHistoryResponse
-describeAlarmHistoryResponse pResponseStatus_ =
-  DescribeAlarmHistoryResponse'
-    { _dahrsAlarmHistoryItems = Nothing
-    , _dahrsNextToken = Nothing
-    , _dahrsResponseStatus = pResponseStatus_
-    }
-
+describeAlarmHistoryResponse pResponseStatus_
+  = DescribeAlarmHistoryResponse'{_dahrsAlarmHistoryItems
+                                    = Nothing,
+                                  _dahrsNextToken = Nothing,
+                                  _dahrsResponseStatus = pResponseStatus_}
 
 -- | The alarm histories, in JSON format.
 dahrsAlarmHistoryItems :: Lens' DescribeAlarmHistoryResponse [AlarmHistoryItem]

@@ -11,7 +11,7 @@
 -- Stability   : auto-generated
 -- Portability : non-portable (GHC extensions)
 --
--- __Amazon Kinesis Data Firehose API Reference__
+-- __Amazon Kinesis Data Firehose API Reference__ 
 --
 -- Amazon Kinesis Data Firehose is a fully managed service that delivers real-time streaming data to destinations such as Amazon Simple Storage Service (Amazon S3), Amazon Elasticsearch Service (Amazon ES), Amazon Redshift, and Splunk.
 --
@@ -47,34 +47,34 @@ module Network.AWS.Firehose
     -- * Operations
     -- $operations
 
-    -- ** PutRecord
+    -- ** PutRecord 
     , module Network.AWS.Firehose.PutRecord
 
-    -- ** TagDeliveryStream
+    -- ** TagDeliveryStream 
     , module Network.AWS.Firehose.TagDeliveryStream
 
-    -- ** UpdateDestination
+    -- ** UpdateDestination 
     , module Network.AWS.Firehose.UpdateDestination
 
-    -- ** PutRecordBatch
+    -- ** PutRecordBatch 
     , module Network.AWS.Firehose.PutRecordBatch
 
-    -- ** UntagDeliveryStream
+    -- ** UntagDeliveryStream 
     , module Network.AWS.Firehose.UntagDeliveryStream
 
-    -- ** CreateDeliveryStream
+    -- ** CreateDeliveryStream 
     , module Network.AWS.Firehose.CreateDeliveryStream
 
-    -- ** DescribeDeliveryStream
+    -- ** DescribeDeliveryStream 
     , module Network.AWS.Firehose.DescribeDeliveryStream
 
-    -- ** ListTagsForDeliveryStream
+    -- ** ListTagsForDeliveryStream 
     , module Network.AWS.Firehose.ListTagsForDeliveryStream
 
-    -- ** ListDeliveryStreams
+    -- ** ListDeliveryStreams 
     , module Network.AWS.Firehose.ListDeliveryStreams
 
-    -- ** DeleteDeliveryStream
+    -- ** DeleteDeliveryStream 
     , module Network.AWS.Firehose.DeleteDeliveryStream
 
     -- * Types

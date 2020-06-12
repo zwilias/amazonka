@@ -38,7 +38,6 @@ module Network.AWS.CloudSearch.DescribeDomains
     ) where
 
 import Network.AWS.CloudSearch.Types
-import Network.AWS.CloudSearch.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.Request
@@ -49,12 +48,9 @@ import Network.AWS.Response
 --
 --
 -- /See:/ 'describeDomains' smart constructor.
-newtype DescribeDomains =
-  DescribeDomains'
-    { _ddDomainNames :: Maybe [Text]
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+newtype DescribeDomains = DescribeDomains'{_ddDomainNames
+                                           :: Maybe [Text]}
+                            deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'DescribeDomains' with the minimum fields required to make a request.
 --
@@ -63,8 +59,8 @@ newtype DescribeDomains =
 -- * 'ddDomainNames' - The names of the domains you want to include in the response.
 describeDomains
     :: DescribeDomains
-describeDomains = DescribeDomains' {_ddDomainNames = Nothing}
-
+describeDomains
+  = DescribeDomains'{_ddDomainNames = Nothing}
 
 -- | The names of the domains you want to include in the response.
 ddDomainNames :: Lens' DescribeDomains [Text]
@@ -104,13 +100,12 @@ instance ToQuery DescribeDomains where
 --
 --
 -- /See:/ 'describeDomainsResponse' smart constructor.
-data DescribeDomainsResponse =
-  DescribeDomainsResponse'
-    { _ddsrsResponseStatus   :: !Int
-    , _ddsrsDomainStatusList :: ![DomainStatus]
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data DescribeDomainsResponse = DescribeDomainsResponse'{_ddsrsResponseStatus
+                                                        :: !Int,
+                                                        _ddsrsDomainStatusList
+                                                        :: ![DomainStatus]}
+                                 deriving (Eq, Read, Show, Data, Typeable,
+                                           Generic)
 
 -- | Creates a value of 'DescribeDomainsResponse' with the minimum fields required to make a request.
 --
@@ -122,10 +117,10 @@ data DescribeDomainsResponse =
 describeDomainsResponse
     :: Int -- ^ 'ddsrsResponseStatus'
     -> DescribeDomainsResponse
-describeDomainsResponse pResponseStatus_ =
-  DescribeDomainsResponse'
-    {_ddsrsResponseStatus = pResponseStatus_, _ddsrsDomainStatusList = mempty}
-
+describeDomainsResponse pResponseStatus_
+  = DescribeDomainsResponse'{_ddsrsResponseStatus =
+                               pResponseStatus_,
+                             _ddsrsDomainStatusList = mempty}
 
 -- | -- | The response status code.
 ddsrsResponseStatus :: Lens' DescribeDomainsResponse Int

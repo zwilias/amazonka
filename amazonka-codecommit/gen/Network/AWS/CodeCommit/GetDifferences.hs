@@ -47,7 +47,6 @@ module Network.AWS.CodeCommit.GetDifferences
     ) where
 
 import Network.AWS.CodeCommit.Types
-import Network.AWS.CodeCommit.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Pager
 import Network.AWS.Prelude
@@ -55,18 +54,15 @@ import Network.AWS.Request
 import Network.AWS.Response
 
 -- | /See:/ 'getDifferences' smart constructor.
-data GetDifferences =
-  GetDifferences'
-    { _gdAfterPath             :: !(Maybe Text)
-    , _gdNextToken             :: !(Maybe Text)
-    , _gdBeforeCommitSpecifier :: !(Maybe Text)
-    , _gdBeforePath            :: !(Maybe Text)
-    , _gdMaxResults            :: !(Maybe Int)
-    , _gdRepositoryName        :: !Text
-    , _gdAfterCommitSpecifier  :: !Text
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data GetDifferences = GetDifferences'{_gdAfterPath ::
+                                      !(Maybe Text),
+                                      _gdNextToken :: !(Maybe Text),
+                                      _gdBeforeCommitSpecifier :: !(Maybe Text),
+                                      _gdBeforePath :: !(Maybe Text),
+                                      _gdMaxResults :: !(Maybe Int),
+                                      _gdRepositoryName :: !Text,
+                                      _gdAfterCommitSpecifier :: !Text}
+                        deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'GetDifferences' with the minimum fields required to make a request.
 --
@@ -89,17 +85,14 @@ getDifferences
     :: Text -- ^ 'gdRepositoryName'
     -> Text -- ^ 'gdAfterCommitSpecifier'
     -> GetDifferences
-getDifferences pRepositoryName_ pAfterCommitSpecifier_ =
-  GetDifferences'
-    { _gdAfterPath = Nothing
-    , _gdNextToken = Nothing
-    , _gdBeforeCommitSpecifier = Nothing
-    , _gdBeforePath = Nothing
-    , _gdMaxResults = Nothing
-    , _gdRepositoryName = pRepositoryName_
-    , _gdAfterCommitSpecifier = pAfterCommitSpecifier_
-    }
-
+getDifferences pRepositoryName_
+  pAfterCommitSpecifier_
+  = GetDifferences'{_gdAfterPath = Nothing,
+                    _gdNextToken = Nothing,
+                    _gdBeforeCommitSpecifier = Nothing,
+                    _gdBeforePath = Nothing, _gdMaxResults = Nothing,
+                    _gdRepositoryName = pRepositoryName_,
+                    _gdAfterCommitSpecifier = pAfterCommitSpecifier_}
 
 -- | The file path in which to check differences. Limits the results to this path. Can also be used to specify the changed name of a directory or folder, if it has changed. If not specified, differences are shown for all paths.
 gdAfterPath :: Lens' GetDifferences (Maybe Text)
@@ -181,14 +174,14 @@ instance ToQuery GetDifferences where
         toQuery = const mempty
 
 -- | /See:/ 'getDifferencesResponse' smart constructor.
-data GetDifferencesResponse =
-  GetDifferencesResponse'
-    { _gdrsNextToken      :: !(Maybe Text)
-    , _gdrsDifferences    :: !(Maybe [Difference])
-    , _gdrsResponseStatus :: !Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data GetDifferencesResponse = GetDifferencesResponse'{_gdrsNextToken
+                                                      :: !(Maybe Text),
+                                                      _gdrsDifferences ::
+                                                      !(Maybe [Difference]),
+                                                      _gdrsResponseStatus ::
+                                                      !Int}
+                                deriving (Eq, Read, Show, Data, Typeable,
+                                          Generic)
 
 -- | Creates a value of 'GetDifferencesResponse' with the minimum fields required to make a request.
 --
@@ -202,13 +195,10 @@ data GetDifferencesResponse =
 getDifferencesResponse
     :: Int -- ^ 'gdrsResponseStatus'
     -> GetDifferencesResponse
-getDifferencesResponse pResponseStatus_ =
-  GetDifferencesResponse'
-    { _gdrsNextToken = Nothing
-    , _gdrsDifferences = Nothing
-    , _gdrsResponseStatus = pResponseStatus_
-    }
-
+getDifferencesResponse pResponseStatus_
+  = GetDifferencesResponse'{_gdrsNextToken = Nothing,
+                            _gdrsDifferences = Nothing,
+                            _gdrsResponseStatus = pResponseStatus_}
 
 -- | An enumeration token that can be used in a request to return the next batch of the results.
 gdrsNextToken :: Lens' GetDifferencesResponse (Maybe Text)

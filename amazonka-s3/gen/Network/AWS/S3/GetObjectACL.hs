@@ -45,18 +45,14 @@ import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 import Network.AWS.S3.Types
-import Network.AWS.S3.Types.Product
 
 -- | /See:/ 'getObjectACL' smart constructor.
-data GetObjectACL =
-  GetObjectACL'
-    { _goaVersionId    :: !(Maybe ObjectVersionId)
-    , _goaRequestPayer :: !(Maybe RequestPayer)
-    , _goaBucket       :: !BucketName
-    , _goaKey          :: !ObjectKey
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data GetObjectACL = GetObjectACL'{_goaVersionId ::
+                                  !(Maybe ObjectVersionId),
+                                  _goaRequestPayer :: !(Maybe RequestPayer),
+                                  _goaBucket :: !BucketName,
+                                  _goaKey :: !ObjectKey}
+                      deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'GetObjectACL' with the minimum fields required to make a request.
 --
@@ -73,14 +69,10 @@ getObjectACL
     :: BucketName -- ^ 'goaBucket'
     -> ObjectKey -- ^ 'goaKey'
     -> GetObjectACL
-getObjectACL pBucket_ pKey_ =
-  GetObjectACL'
-    { _goaVersionId = Nothing
-    , _goaRequestPayer = Nothing
-    , _goaBucket = pBucket_
-    , _goaKey = pKey_
-    }
-
+getObjectACL pBucket_ pKey_
+  = GetObjectACL'{_goaVersionId = Nothing,
+                  _goaRequestPayer = Nothing, _goaBucket = pBucket_,
+                  _goaKey = pKey_}
 
 -- | VersionId used to reference a specific version of the object.
 goaVersionId :: Lens' GetObjectACL (Maybe ObjectVersionId)
@@ -128,15 +120,13 @@ instance ToQuery GetObjectACL where
           = mconcat ["versionId" =: _goaVersionId, "acl"]
 
 -- | /See:/ 'getObjectACLResponse' smart constructor.
-data GetObjectACLResponse =
-  GetObjectACLResponse'
-    { _goarsRequestCharged :: !(Maybe RequestCharged)
-    , _goarsGrants         :: !(Maybe [Grant])
-    , _goarsOwner          :: !(Maybe Owner)
-    , _goarsResponseStatus :: !Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data GetObjectACLResponse = GetObjectACLResponse'{_goarsRequestCharged
+                                                  :: !(Maybe RequestCharged),
+                                                  _goarsGrants ::
+                                                  !(Maybe [Grant]),
+                                                  _goarsOwner :: !(Maybe Owner),
+                                                  _goarsResponseStatus :: !Int}
+                              deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'GetObjectACLResponse' with the minimum fields required to make a request.
 --
@@ -152,14 +142,11 @@ data GetObjectACLResponse =
 getObjectACLResponse
     :: Int -- ^ 'goarsResponseStatus'
     -> GetObjectACLResponse
-getObjectACLResponse pResponseStatus_ =
-  GetObjectACLResponse'
-    { _goarsRequestCharged = Nothing
-    , _goarsGrants = Nothing
-    , _goarsOwner = Nothing
-    , _goarsResponseStatus = pResponseStatus_
-    }
-
+getObjectACLResponse pResponseStatus_
+  = GetObjectACLResponse'{_goarsRequestCharged =
+                            Nothing,
+                          _goarsGrants = Nothing, _goarsOwner = Nothing,
+                          _goarsResponseStatus = pResponseStatus_}
 
 -- | Undocumented member.
 goarsRequestCharged :: Lens' GetObjectACLResponse (Maybe RequestCharged)

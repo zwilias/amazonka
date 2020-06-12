@@ -39,20 +39,22 @@ module Network.AWS.EC2.DeleteVPCEndpointConnectionNotifications
     ) where
 
 import Network.AWS.EC2.Types
-import Network.AWS.EC2.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 
 -- | /See:/ 'deleteVPCEndpointConnectionNotifications' smart constructor.
-data DeleteVPCEndpointConnectionNotifications =
-  DeleteVPCEndpointConnectionNotifications'
-    { _dvecnDryRun                    :: !(Maybe Bool)
-    , _dvecnConnectionNotificationIds :: ![Text]
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data DeleteVPCEndpointConnectionNotifications = DeleteVPCEndpointConnectionNotifications'{_dvecnDryRun
+                                                                                          ::
+                                                                                          !(Maybe
+                                                                                              Bool),
+                                                                                          _dvecnConnectionNotificationIds
+                                                                                          ::
+                                                                                          ![Text]}
+                                                  deriving (Eq, Read, Show,
+                                                            Data, Typeable,
+                                                            Generic)
 
 -- | Creates a value of 'DeleteVPCEndpointConnectionNotifications' with the minimum fields required to make a request.
 --
@@ -63,10 +65,11 @@ data DeleteVPCEndpointConnectionNotifications =
 -- * 'dvecnConnectionNotificationIds' - One or more notification IDs.
 deleteVPCEndpointConnectionNotifications
     :: DeleteVPCEndpointConnectionNotifications
-deleteVPCEndpointConnectionNotifications =
-  DeleteVPCEndpointConnectionNotifications'
-    {_dvecnDryRun = Nothing, _dvecnConnectionNotificationIds = mempty}
-
+deleteVPCEndpointConnectionNotifications
+  = DeleteVPCEndpointConnectionNotifications'{_dvecnDryRun
+                                                = Nothing,
+                                              _dvecnConnectionNotificationIds =
+                                                mempty}
 
 -- | Checks whether you have the required permissions for the action, without actually making the request, and provides an error response. If you have the required permissions, the error response is @DryRunOperation@ . Otherwise, it is @UnauthorizedOperation@ .
 dvecnDryRun :: Lens' DeleteVPCEndpointConnectionNotifications (Maybe Bool)
@@ -122,13 +125,17 @@ instance ToQuery
                  _dvecnConnectionNotificationIds]
 
 -- | /See:/ 'deleteVPCEndpointConnectionNotificationsResponse' smart constructor.
-data DeleteVPCEndpointConnectionNotificationsResponse =
-  DeleteVPCEndpointConnectionNotificationsResponse'
-    { _dvecnrsUnsuccessful   :: !(Maybe [UnsuccessfulItem])
-    , _dvecnrsResponseStatus :: !Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data DeleteVPCEndpointConnectionNotificationsResponse = DeleteVPCEndpointConnectionNotificationsResponse'{_dvecnrsUnsuccessful
+                                                                                                          ::
+                                                                                                          !(Maybe
+                                                                                                              [UnsuccessfulItem]),
+                                                                                                          _dvecnrsResponseStatus
+                                                                                                          ::
+                                                                                                          !Int}
+                                                          deriving (Eq, Read,
+                                                                    Show, Data,
+                                                                    Typeable,
+                                                                    Generic)
 
 -- | Creates a value of 'DeleteVPCEndpointConnectionNotificationsResponse' with the minimum fields required to make a request.
 --
@@ -140,10 +147,12 @@ data DeleteVPCEndpointConnectionNotificationsResponse =
 deleteVPCEndpointConnectionNotificationsResponse
     :: Int -- ^ 'dvecnrsResponseStatus'
     -> DeleteVPCEndpointConnectionNotificationsResponse
-deleteVPCEndpointConnectionNotificationsResponse pResponseStatus_ =
-  DeleteVPCEndpointConnectionNotificationsResponse'
-    {_dvecnrsUnsuccessful = Nothing, _dvecnrsResponseStatus = pResponseStatus_}
-
+deleteVPCEndpointConnectionNotificationsResponse
+  pResponseStatus_
+  = DeleteVPCEndpointConnectionNotificationsResponse'{_dvecnrsUnsuccessful
+                                                        = Nothing,
+                                                      _dvecnrsResponseStatus =
+                                                        pResponseStatus_}
 
 -- | Information about the notifications that could not be deleted successfully.
 dvecnrsUnsuccessful :: Lens' DeleteVPCEndpointConnectionNotificationsResponse [UnsuccessfulItem]

@@ -39,20 +39,17 @@ module Network.AWS.DeviceFarm.CreateTestGridProject
     ) where
 
 import Network.AWS.DeviceFarm.Types
-import Network.AWS.DeviceFarm.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 
 -- | /See:/ 'createTestGridProject' smart constructor.
-data CreateTestGridProject =
-  CreateTestGridProject'
-    { _ctgpDescription :: !(Maybe Text)
-    , _ctgpName        :: !Text
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data CreateTestGridProject = CreateTestGridProject'{_ctgpDescription
+                                                    :: !(Maybe Text),
+                                                    _ctgpName :: !Text}
+                               deriving (Eq, Read, Show, Data, Typeable,
+                                         Generic)
 
 -- | Creates a value of 'CreateTestGridProject' with the minimum fields required to make a request.
 --
@@ -64,9 +61,9 @@ data CreateTestGridProject =
 createTestGridProject
     :: Text -- ^ 'ctgpName'
     -> CreateTestGridProject
-createTestGridProject pName_ =
-  CreateTestGridProject' {_ctgpDescription = Nothing, _ctgpName = pName_}
-
+createTestGridProject pName_
+  = CreateTestGridProject'{_ctgpDescription = Nothing,
+                           _ctgpName = pName_}
 
 -- | Human-readable description of the project.
 ctgpDescription :: Lens' CreateTestGridProject (Maybe Text)
@@ -114,13 +111,14 @@ instance ToQuery CreateTestGridProject where
         toQuery = const mempty
 
 -- | /See:/ 'createTestGridProjectResponse' smart constructor.
-data CreateTestGridProjectResponse =
-  CreateTestGridProjectResponse'
-    { _ctgprsTestGridProject :: !(Maybe TestGridProject)
-    , _ctgprsResponseStatus  :: !Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data CreateTestGridProjectResponse = CreateTestGridProjectResponse'{_ctgprsTestGridProject
+                                                                    ::
+                                                                    !(Maybe
+                                                                        TestGridProject),
+                                                                    _ctgprsResponseStatus
+                                                                    :: !Int}
+                                       deriving (Eq, Read, Show, Data, Typeable,
+                                                 Generic)
 
 -- | Creates a value of 'CreateTestGridProjectResponse' with the minimum fields required to make a request.
 --
@@ -132,10 +130,10 @@ data CreateTestGridProjectResponse =
 createTestGridProjectResponse
     :: Int -- ^ 'ctgprsResponseStatus'
     -> CreateTestGridProjectResponse
-createTestGridProjectResponse pResponseStatus_ =
-  CreateTestGridProjectResponse'
-    {_ctgprsTestGridProject = Nothing, _ctgprsResponseStatus = pResponseStatus_}
-
+createTestGridProjectResponse pResponseStatus_
+  = CreateTestGridProjectResponse'{_ctgprsTestGridProject
+                                     = Nothing,
+                                   _ctgprsResponseStatus = pResponseStatus_}
 
 -- | ARN of the Selenium testing project that was created.
 ctgprsTestGridProject :: Lens' CreateTestGridProjectResponse (Maybe TestGridProject)

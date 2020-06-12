@@ -41,20 +41,14 @@ module Network.AWS.Lightsail.CreateDisk
 
 import Network.AWS.Lens
 import Network.AWS.Lightsail.Types
-import Network.AWS.Lightsail.Types.Product
 import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 
 -- | /See:/ 'createDisk' smart constructor.
-data CreateDisk =
-  CreateDisk'
-    { _cdDiskName         :: !Text
-    , _cdAvailabilityZone :: !Text
-    , _cdSizeInGb         :: !Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data CreateDisk = CreateDisk'{_cdDiskName :: !Text,
+                              _cdAvailabilityZone :: !Text, _cdSizeInGb :: !Int}
+                    deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'CreateDisk' with the minimum fields required to make a request.
 --
@@ -70,13 +64,10 @@ createDisk
     -> Text -- ^ 'cdAvailabilityZone'
     -> Int -- ^ 'cdSizeInGb'
     -> CreateDisk
-createDisk pDiskName_ pAvailabilityZone_ pSizeInGb_ =
-  CreateDisk'
-    { _cdDiskName = pDiskName_
-    , _cdAvailabilityZone = pAvailabilityZone_
-    , _cdSizeInGb = pSizeInGb_
-    }
-
+createDisk pDiskName_ pAvailabilityZone_ pSizeInGb_
+  = CreateDisk'{_cdDiskName = pDiskName_,
+                _cdAvailabilityZone = pAvailabilityZone_,
+                _cdSizeInGb = pSizeInGb_}
 
 -- | The unique Lightsail disk name (e.g., @my-disk@ ).
 cdDiskName :: Lens' CreateDisk Text
@@ -128,13 +119,10 @@ instance ToQuery CreateDisk where
         toQuery = const mempty
 
 -- | /See:/ 'createDiskResponse' smart constructor.
-data CreateDiskResponse =
-  CreateDiskResponse'
-    { _crsOperations     :: !(Maybe [Operation])
-    , _crsResponseStatus :: !Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data CreateDiskResponse = CreateDiskResponse'{_crsOperations
+                                              :: !(Maybe [Operation]),
+                                              _crsResponseStatus :: !Int}
+                            deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'CreateDiskResponse' with the minimum fields required to make a request.
 --
@@ -146,10 +134,9 @@ data CreateDiskResponse =
 createDiskResponse
     :: Int -- ^ 'crsResponseStatus'
     -> CreateDiskResponse
-createDiskResponse pResponseStatus_ =
-  CreateDiskResponse'
-    {_crsOperations = Nothing, _crsResponseStatus = pResponseStatus_}
-
+createDiskResponse pResponseStatus_
+  = CreateDiskResponse'{_crsOperations = Nothing,
+                        _crsResponseStatus = pResponseStatus_}
 
 -- | An object describing the API operations.
 crsOperations :: Lens' CreateDiskResponse [Operation]

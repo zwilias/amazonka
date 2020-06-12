@@ -53,91 +53,91 @@ module Network.AWS.SageMaker
     -- * Operations
     -- $operations
 
-    -- ** CreateNotebookInstance
+    -- ** CreateNotebookInstance 
     , module Network.AWS.SageMaker.CreateNotebookInstance
 
-    -- ** DescribeEndpointConfig
+    -- ** DescribeEndpointConfig 
     , module Network.AWS.SageMaker.DescribeEndpointConfig
 
-    -- ** CreateEndpoint
+    -- ** CreateEndpoint 
     , module Network.AWS.SageMaker.CreateEndpoint
 
-    -- ** DescribeTrainingJob
+    -- ** DescribeTrainingJob 
     , module Network.AWS.SageMaker.DescribeTrainingJob
 
-    -- ** DeleteEndpoint
+    -- ** DeleteEndpoint 
     , module Network.AWS.SageMaker.DeleteEndpoint
 
-    -- ** UpdateEndpoint
+    -- ** UpdateEndpoint 
     , module Network.AWS.SageMaker.UpdateEndpoint
 
-    -- ** DeleteNotebookInstanceLifecycleConfig
+    -- ** DeleteNotebookInstanceLifecycleConfig 
     , module Network.AWS.SageMaker.DeleteNotebookInstanceLifecycleConfig
 
-    -- ** UpdateNotebookInstanceLifecycleConfig
+    -- ** UpdateNotebookInstanceLifecycleConfig 
     , module Network.AWS.SageMaker.UpdateNotebookInstanceLifecycleConfig
 
-    -- ** DescribeNotebookInstance
+    -- ** DescribeNotebookInstance 
     , module Network.AWS.SageMaker.DescribeNotebookInstance
 
-    -- ** CreateEndpointConfig
+    -- ** CreateEndpointConfig 
     , module Network.AWS.SageMaker.CreateEndpointConfig
 
-    -- ** StopNotebookInstance
+    -- ** StopNotebookInstance 
     , module Network.AWS.SageMaker.StopNotebookInstance
 
-    -- ** UpdateEndpointWeightsAndCapacities
+    -- ** UpdateEndpointWeightsAndCapacities 
     , module Network.AWS.SageMaker.UpdateEndpointWeightsAndCapacities
 
-    -- ** DeleteTags
+    -- ** DeleteTags 
     , module Network.AWS.SageMaker.DeleteTags
 
-    -- ** DeleteEndpointConfig
+    -- ** DeleteEndpointConfig 
     , module Network.AWS.SageMaker.DeleteEndpointConfig
 
-    -- ** CreateModel
+    -- ** CreateModel 
     , module Network.AWS.SageMaker.CreateModel
 
-    -- ** DeleteModel
+    -- ** DeleteModel 
     , module Network.AWS.SageMaker.DeleteModel
 
     -- ** ListModels (Paginated)
     , module Network.AWS.SageMaker.ListModels
 
-    -- ** DescribeNotebookInstanceLifecycleConfig
+    -- ** DescribeNotebookInstanceLifecycleConfig 
     , module Network.AWS.SageMaker.DescribeNotebookInstanceLifecycleConfig
 
     -- ** ListNotebookInstances (Paginated)
     , module Network.AWS.SageMaker.ListNotebookInstances
 
-    -- ** DeleteNotebookInstance
+    -- ** DeleteNotebookInstance 
     , module Network.AWS.SageMaker.DeleteNotebookInstance
 
-    -- ** UpdateNotebookInstance
+    -- ** UpdateNotebookInstance 
     , module Network.AWS.SageMaker.UpdateNotebookInstance
 
-    -- ** StopTrainingJob
+    -- ** StopTrainingJob 
     , module Network.AWS.SageMaker.StopTrainingJob
 
-    -- ** DescribeModel
+    -- ** DescribeModel 
     , module Network.AWS.SageMaker.DescribeModel
 
     -- ** ListEndpoints (Paginated)
     , module Network.AWS.SageMaker.ListEndpoints
 
-    -- ** CreatePresignedNotebookInstanceURL
+    -- ** CreatePresignedNotebookInstanceURL 
     , module Network.AWS.SageMaker.CreatePresignedNotebookInstanceURL
 
-    -- ** ListNotebookInstanceLifecycleConfigs
+    -- ** ListNotebookInstanceLifecycleConfigs 
     , module Network.AWS.SageMaker.ListNotebookInstanceLifecycleConfigs
 
-    -- ** CreateNotebookInstanceLifecycleConfig
+    -- ** CreateNotebookInstanceLifecycleConfig 
     , module Network.AWS.SageMaker.CreateNotebookInstanceLifecycleConfig
 
-    -- ** StartNotebookInstance
+    -- ** StartNotebookInstance 
     , module Network.AWS.SageMaker.StartNotebookInstance
 
-    -- ** AddTags
+    -- ** AddTags 
     , module Network.AWS.SageMaker.AddTags
 
     -- ** ListEndpointConfigs (Paginated)
@@ -146,10 +146,10 @@ module Network.AWS.SageMaker
     -- ** ListTags (Paginated)
     , module Network.AWS.SageMaker.ListTags
 
-    -- ** CreateTrainingJob
+    -- ** CreateTrainingJob 
     , module Network.AWS.SageMaker.CreateTrainingJob
 
-    -- ** DescribeEndpoint
+    -- ** DescribeEndpoint 
     , module Network.AWS.SageMaker.DescribeEndpoint
 
     -- ** ListTrainingJobs (Paginated)

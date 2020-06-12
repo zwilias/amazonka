@@ -11,7 +11,7 @@
 -- Stability   : auto-generated
 -- Portability : non-portable (GHC extensions)
 --
--- __Amazon Cognito Federated Identities__
+-- __Amazon Cognito Federated Identities__ 
 --
 -- Amazon Cognito Federated Identities is a web service that delivers scoped temporary credentials to mobile devices and other untrusted environments. It uniquely identifies a device and supplies the user with a consistent identity over the lifetime of an application.
 --
@@ -68,67 +68,67 @@ module Network.AWS.CognitoIdentity
     -- * Operations
     -- $operations
 
-    -- ** GetOpenIdToken
+    -- ** GetOpenIdToken 
     , module Network.AWS.CognitoIdentity.GetOpenIdToken
 
-    -- ** GetOpenIdTokenForDeveloperIdentity
+    -- ** GetOpenIdTokenForDeveloperIdentity 
     , module Network.AWS.CognitoIdentity.GetOpenIdTokenForDeveloperIdentity
 
-    -- ** DescribeIdentityPool
+    -- ** DescribeIdentityPool 
     , module Network.AWS.CognitoIdentity.DescribeIdentityPool
 
-    -- ** ListTagsForResource
+    -- ** ListTagsForResource 
     , module Network.AWS.CognitoIdentity.ListTagsForResource
 
-    -- ** GetId
+    -- ** GetId 
     , module Network.AWS.CognitoIdentity.GetId
 
-    -- ** DeleteIdentityPool
+    -- ** DeleteIdentityPool 
     , module Network.AWS.CognitoIdentity.DeleteIdentityPool
 
-    -- ** UpdateIdentityPool
+    -- ** UpdateIdentityPool 
     , module Network.AWS.CognitoIdentity.UpdateIdentityPool
 
-    -- ** UnlinkDeveloperIdentity
+    -- ** UnlinkDeveloperIdentity 
     , module Network.AWS.CognitoIdentity.UnlinkDeveloperIdentity
 
-    -- ** GetIdentityPoolRoles
+    -- ** GetIdentityPoolRoles 
     , module Network.AWS.CognitoIdentity.GetIdentityPoolRoles
 
     -- ** ListIdentityPools (Paginated)
     , module Network.AWS.CognitoIdentity.ListIdentityPools
 
-    -- ** GetCredentialsForIdentity
+    -- ** GetCredentialsForIdentity 
     , module Network.AWS.CognitoIdentity.GetCredentialsForIdentity
 
-    -- ** DeleteIdentities
+    -- ** DeleteIdentities 
     , module Network.AWS.CognitoIdentity.DeleteIdentities
 
-    -- ** SetIdentityPoolRoles
+    -- ** SetIdentityPoolRoles 
     , module Network.AWS.CognitoIdentity.SetIdentityPoolRoles
 
-    -- ** ListIdentities
+    -- ** ListIdentities 
     , module Network.AWS.CognitoIdentity.ListIdentities
 
-    -- ** LookupDeveloperIdentity
+    -- ** LookupDeveloperIdentity 
     , module Network.AWS.CognitoIdentity.LookupDeveloperIdentity
 
-    -- ** UnlinkIdentity
+    -- ** UnlinkIdentity 
     , module Network.AWS.CognitoIdentity.UnlinkIdentity
 
-    -- ** TagResource
+    -- ** TagResource 
     , module Network.AWS.CognitoIdentity.TagResource
 
-    -- ** DescribeIdentity
+    -- ** DescribeIdentity 
     , module Network.AWS.CognitoIdentity.DescribeIdentity
 
-    -- ** UntagResource
+    -- ** UntagResource 
     , module Network.AWS.CognitoIdentity.UntagResource
 
-    -- ** CreateIdentityPool
+    -- ** CreateIdentityPool 
     , module Network.AWS.CognitoIdentity.CreateIdentityPool
 
-    -- ** MergeDeveloperIdentities
+    -- ** MergeDeveloperIdentities 
     , module Network.AWS.CognitoIdentity.MergeDeveloperIdentities
 
     -- * Types

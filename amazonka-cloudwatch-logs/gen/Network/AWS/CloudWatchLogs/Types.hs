@@ -1,4 +1,4 @@
-{-# LANGUAGE OverloadedStrings #-}
+{-# LANGUAGE OverloadedStrings  #-}
 
 -- Derived from AWS service descriptions, licensed under Apache 2.0.
 
@@ -171,119 +171,131 @@ module Network.AWS.CloudWatchLogs.Types
     , sfRoleARN
     ) where
 
-import Network.AWS.CloudWatchLogs.Types.Product
-import Network.AWS.CloudWatchLogs.Types.Sum
 import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.Sign.V4
+import Network.AWS.CloudWatchLogs.Types.Distribution
+import Network.AWS.CloudWatchLogs.Types.ExportTaskStatusCode
+import Network.AWS.CloudWatchLogs.Types.OrderBy
+import Network.AWS.CloudWatchLogs.Types.Destination
+import Network.AWS.CloudWatchLogs.Types.ExportTask
+import Network.AWS.CloudWatchLogs.Types.ExportTaskExecutionInfo
+import Network.AWS.CloudWatchLogs.Types.ExportTaskStatus
+import Network.AWS.CloudWatchLogs.Types.FilteredLogEvent
+import Network.AWS.CloudWatchLogs.Types.InputLogEvent
+import Network.AWS.CloudWatchLogs.Types.LogGroup
+import Network.AWS.CloudWatchLogs.Types.LogStream
+import Network.AWS.CloudWatchLogs.Types.MetricFilter
+import Network.AWS.CloudWatchLogs.Types.MetricFilterMatchRecord
+import Network.AWS.CloudWatchLogs.Types.MetricTransformation
+import Network.AWS.CloudWatchLogs.Types.OutputLogEvent
+import Network.AWS.CloudWatchLogs.Types.RejectedLogEventsInfo
+import Network.AWS.CloudWatchLogs.Types.ResourcePolicy
+import Network.AWS.CloudWatchLogs.Types.SearchedLogStream
+import Network.AWS.CloudWatchLogs.Types.SubscriptionFilter
 
 -- | API version @2014-03-28@ of the Amazon CloudWatch Logs SDK configuration.
 cloudWatchLogs :: Service
-cloudWatchLogs =
-  Service
-    { _svcAbbrev = "CloudWatchLogs"
-    , _svcSigner = v4
-    , _svcPrefix = "logs"
-    , _svcVersion = "2014-03-28"
-    , _svcEndpoint = defaultEndpoint cloudWatchLogs
-    , _svcTimeout = Just 70
-    , _svcCheck = statusSuccess
-    , _svcError = parseJSONError "CloudWatchLogs"
-    , _svcRetry = retry
-    }
-  where
-    retry =
-      Exponential
-        { _retryBase = 5.0e-2
-        , _retryGrowth = 2
-        , _retryAttempts = 5
-        , _retryCheck = check
-        }
-    check e
-      | has (hasCode "ThrottledException" . hasStatus 400) e =
-        Just "throttled_exception"
-      | has (hasStatus 429) e = Just "too_many_requests"
-      | has (hasCode "ThrottlingException" . hasStatus 400) e =
-        Just "throttling_exception"
-      | has (hasCode "Throttling" . hasStatus 400) e = Just "throttling"
-      | has (hasStatus 504) e = Just "gateway_timeout"
-      | has (hasCode "RequestThrottledException" . hasStatus 400) e =
-        Just "request_throttled_exception"
-      | has (hasStatus 502) e = Just "bad_gateway"
-      | has (hasStatus 503) e = Just "service_unavailable"
-      | has (hasStatus 500) e = Just "general_server_error"
-      | has (hasStatus 509) e = Just "limit_exceeded"
-      | otherwise = Nothing
-
+cloudWatchLogs
+  = Service{_svcAbbrev = "CloudWatchLogs",
+            _svcSigner = v4, _svcPrefix = "logs",
+            _svcVersion = "2014-03-28",
+            _svcEndpoint = defaultEndpoint cloudWatchLogs,
+            _svcTimeout = Just 70, _svcCheck = statusSuccess,
+            _svcError = parseJSONError "CloudWatchLogs",
+            _svcRetry = retry}
+  where retry
+          = Exponential{_retryBase = 5.0e-2, _retryGrowth = 2,
+                        _retryAttempts = 5, _retryCheck = check}
+        check e
+          | has (hasCode "ThrottledException" . hasStatus 400)
+              e
+            = Just "throttled_exception"
+          | has (hasStatus 429) e = Just "too_many_requests"
+          | has (hasCode "ThrottlingException" . hasStatus 400)
+              e
+            = Just "throttling_exception"
+          | has (hasCode "Throttling" . hasStatus 400) e =
+            Just "throttling"
+          | has (hasStatus 504) e = Just "gateway_timeout"
+          | has
+              (hasCode "RequestThrottledException" . hasStatus 400)
+              e
+            = Just "request_throttled_exception"
+          | has (hasStatus 502) e = Just "bad_gateway"
+          | has (hasStatus 503) e = Just "service_unavailable"
+          | has (hasStatus 500) e = Just "general_server_error"
+          | has (hasStatus 509) e = Just "limit_exceeded"
+          | otherwise = Nothing
 
 -- | A parameter is specified incorrectly.
 --
 --
 _InvalidParameterException :: AsError a => Getting (First ServiceError) a ServiceError
-_InvalidParameterException =
-  _MatchServiceError cloudWatchLogs "InvalidParameterException"
-
+_InvalidParameterException
+  = _MatchServiceError cloudWatchLogs
+      "InvalidParameterException"
 
 -- | The sequence token is not valid.
 --
 --
 _InvalidSequenceTokenException :: AsError a => Getting (First ServiceError) a ServiceError
-_InvalidSequenceTokenException =
-  _MatchServiceError cloudWatchLogs "InvalidSequenceTokenException"
-
+_InvalidSequenceTokenException
+  = _MatchServiceError cloudWatchLogs
+      "InvalidSequenceTokenException"
 
 -- | The specified resource already exists.
 --
 --
 _ResourceAlreadyExistsException :: AsError a => Getting (First ServiceError) a ServiceError
-_ResourceAlreadyExistsException =
-  _MatchServiceError cloudWatchLogs "ResourceAlreadyExistsException"
-
+_ResourceAlreadyExistsException
+  = _MatchServiceError cloudWatchLogs
+      "ResourceAlreadyExistsException"
 
 -- | Multiple requests to update the same resource were in conflict.
 --
 --
 _OperationAbortedException :: AsError a => Getting (First ServiceError) a ServiceError
-_OperationAbortedException =
-  _MatchServiceError cloudWatchLogs "OperationAbortedException"
-
+_OperationAbortedException
+  = _MatchServiceError cloudWatchLogs
+      "OperationAbortedException"
 
 -- | The service cannot complete the request.
 --
 --
 _ServiceUnavailableException :: AsError a => Getting (First ServiceError) a ServiceError
-_ServiceUnavailableException =
-  _MatchServiceError cloudWatchLogs "ServiceUnavailableException"
-
+_ServiceUnavailableException
+  = _MatchServiceError cloudWatchLogs
+      "ServiceUnavailableException"
 
 -- | The event was already logged.
 --
 --
 _DataAlreadyAcceptedException :: AsError a => Getting (First ServiceError) a ServiceError
-_DataAlreadyAcceptedException =
-  _MatchServiceError cloudWatchLogs "DataAlreadyAcceptedException"
-
+_DataAlreadyAcceptedException
+  = _MatchServiceError cloudWatchLogs
+      "DataAlreadyAcceptedException"
 
 -- | The operation is not valid on the specified resource.
 --
 --
 _InvalidOperationException :: AsError a => Getting (First ServiceError) a ServiceError
-_InvalidOperationException =
-  _MatchServiceError cloudWatchLogs "InvalidOperationException"
-
+_InvalidOperationException
+  = _MatchServiceError cloudWatchLogs
+      "InvalidOperationException"
 
 -- | The specified resource does not exist.
 --
 --
 _ResourceNotFoundException :: AsError a => Getting (First ServiceError) a ServiceError
-_ResourceNotFoundException =
-  _MatchServiceError cloudWatchLogs "ResourceNotFoundException"
-
+_ResourceNotFoundException
+  = _MatchServiceError cloudWatchLogs
+      "ResourceNotFoundException"
 
 -- | You have reached the maximum number of resources that can be created.
 --
 --
 _LimitExceededException :: AsError a => Getting (First ServiceError) a ServiceError
-_LimitExceededException =
-  _MatchServiceError cloudWatchLogs "LimitExceededException"
-
+_LimitExceededException
+  = _MatchServiceError cloudWatchLogs
+      "LimitExceededException"

@@ -43,7 +43,6 @@ module Network.AWS.AppSync.ListFunctions
     ) where
 
 import Network.AWS.AppSync.Types
-import Network.AWS.AppSync.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Pager
 import Network.AWS.Prelude
@@ -51,14 +50,11 @@ import Network.AWS.Request
 import Network.AWS.Response
 
 -- | /See:/ 'listFunctions' smart constructor.
-data ListFunctions =
-  ListFunctions'
-    { _lfNextToken  :: !(Maybe Text)
-    , _lfMaxResults :: !(Maybe Nat)
-    , _lfApiId      :: !Text
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data ListFunctions = ListFunctions'{_lfNextToken ::
+                                    !(Maybe Text),
+                                    _lfMaxResults :: !(Maybe Nat),
+                                    _lfApiId :: !Text}
+                       deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'ListFunctions' with the minimum fields required to make a request.
 --
@@ -72,10 +68,9 @@ data ListFunctions =
 listFunctions
     :: Text -- ^ 'lfApiId'
     -> ListFunctions
-listFunctions pApiId_ =
-  ListFunctions'
-    {_lfNextToken = Nothing, _lfMaxResults = Nothing, _lfApiId = pApiId_}
-
+listFunctions pApiId_
+  = ListFunctions'{_lfNextToken = Nothing,
+                   _lfMaxResults = Nothing, _lfApiId = pApiId_}
 
 -- | An identifier that was returned from the previous call to this operation, which can be used to return the next set of items in the list.
 lfNextToken :: Lens' ListFunctions (Maybe Text)
@@ -129,14 +124,14 @@ instance ToQuery ListFunctions where
                "maxResults" =: _lfMaxResults]
 
 -- | /See:/ 'listFunctionsResponse' smart constructor.
-data ListFunctionsResponse =
-  ListFunctionsResponse'
-    { _lfrsNextToken      :: !(Maybe Text)
-    , _lfrsFunctions      :: !(Maybe [FunctionConfiguration])
-    , _lfrsResponseStatus :: !Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data ListFunctionsResponse = ListFunctionsResponse'{_lfrsNextToken
+                                                    :: !(Maybe Text),
+                                                    _lfrsFunctions ::
+                                                    !(Maybe
+                                                        [FunctionConfiguration]),
+                                                    _lfrsResponseStatus :: !Int}
+                               deriving (Eq, Read, Show, Data, Typeable,
+                                         Generic)
 
 -- | Creates a value of 'ListFunctionsResponse' with the minimum fields required to make a request.
 --
@@ -150,13 +145,10 @@ data ListFunctionsResponse =
 listFunctionsResponse
     :: Int -- ^ 'lfrsResponseStatus'
     -> ListFunctionsResponse
-listFunctionsResponse pResponseStatus_ =
-  ListFunctionsResponse'
-    { _lfrsNextToken = Nothing
-    , _lfrsFunctions = Nothing
-    , _lfrsResponseStatus = pResponseStatus_
-    }
-
+listFunctionsResponse pResponseStatus_
+  = ListFunctionsResponse'{_lfrsNextToken = Nothing,
+                           _lfrsFunctions = Nothing,
+                           _lfrsResponseStatus = pResponseStatus_}
 
 -- | An identifier that was returned from the previous call to this operation, which can be used to return the next set of items in the list.
 lfrsNextToken :: Lens' ListFunctionsResponse (Maybe Text)

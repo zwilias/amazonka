@@ -36,40 +36,41 @@ module Network.AWS.CodeCommit.AssociateApprovalRuleTemplateWithRepository
     ) where
 
 import Network.AWS.CodeCommit.Types
-import Network.AWS.CodeCommit.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 
 -- | /See:/ 'associateApprovalRuleTemplateWithRepository' smart constructor.
-data AssociateApprovalRuleTemplateWithRepository =
-  AssociateApprovalRuleTemplateWithRepository'
-    { _aartwrApprovalRuleTemplateName :: !Text
-    , _aartwrRepositoryName           :: !Text
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data AssociateApprovalRuleTemplateWithRepository = AssociateApprovalRuleTemplateWithRepository'{_aartwrApprovalRuleTemplateName
+                                                                                                ::
+                                                                                                !Text,
+                                                                                                _aartwrRepositoryName
+                                                                                                ::
+                                                                                                !Text}
+                                                     deriving (Eq, Read, Show,
+                                                               Data, Typeable,
+                                                               Generic)
 
 -- | Creates a value of 'AssociateApprovalRuleTemplateWithRepository' with the minimum fields required to make a request.
 --
 -- Use one of the following lenses to modify other fields as desired:
 --
--- * 'aartwrApprovalRuleTemplateName' - The name for the approval rule template.
+-- * 'aartwrApprovalRuleTemplateName' - The name for the approval rule template. 
 --
 -- * 'aartwrRepositoryName' - The name of the repository that you want to associate with the template.
 associateApprovalRuleTemplateWithRepository
     :: Text -- ^ 'aartwrApprovalRuleTemplateName'
     -> Text -- ^ 'aartwrRepositoryName'
     -> AssociateApprovalRuleTemplateWithRepository
-associateApprovalRuleTemplateWithRepository pApprovalRuleTemplateName_ pRepositoryName_ =
-  AssociateApprovalRuleTemplateWithRepository'
-    { _aartwrApprovalRuleTemplateName = pApprovalRuleTemplateName_
-    , _aartwrRepositoryName = pRepositoryName_
-    }
+associateApprovalRuleTemplateWithRepository
+  pApprovalRuleTemplateName_ pRepositoryName_
+  = AssociateApprovalRuleTemplateWithRepository'{_aartwrApprovalRuleTemplateName
+                                                   = pApprovalRuleTemplateName_,
+                                                 _aartwrRepositoryName =
+                                                   pRepositoryName_}
 
-
--- | The name for the approval rule template.
+-- | The name for the approval rule template. 
 aartwrApprovalRuleTemplateName :: Lens' AssociateApprovalRuleTemplateWithRepository Text
 aartwrApprovalRuleTemplateName = lens _aartwrApprovalRuleTemplateName (\ s a -> s{_aartwrApprovalRuleTemplateName = a})
 
@@ -130,18 +131,19 @@ instance ToQuery
         toQuery = const mempty
 
 -- | /See:/ 'associateApprovalRuleTemplateWithRepositoryResponse' smart constructor.
-data AssociateApprovalRuleTemplateWithRepositoryResponse =
-  AssociateApprovalRuleTemplateWithRepositoryResponse'
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data AssociateApprovalRuleTemplateWithRepositoryResponse = AssociateApprovalRuleTemplateWithRepositoryResponse'
+                                                             deriving (Eq, Read,
+                                                                       Show,
+                                                                       Data,
+                                                                       Typeable,
+                                                                       Generic)
 
 -- | Creates a value of 'AssociateApprovalRuleTemplateWithRepositoryResponse' with the minimum fields required to make a request.
 --
 associateApprovalRuleTemplateWithRepositoryResponse
     :: AssociateApprovalRuleTemplateWithRepositoryResponse
-associateApprovalRuleTemplateWithRepositoryResponse =
-  AssociateApprovalRuleTemplateWithRepositoryResponse'
-
+associateApprovalRuleTemplateWithRepositoryResponse
+  = AssociateApprovalRuleTemplateWithRepositoryResponse'
 
 instance NFData
            AssociateApprovalRuleTemplateWithRepositoryResponse

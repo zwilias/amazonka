@@ -18,10 +18,10 @@
 -- Stability   : auto-generated
 -- Portability : non-portable (GHC extensions)
 --
--- Returns the tags associated with a file system. The order of tags returned in the response of one @DescribeTags@ call and the order of tags returned across the responses of a multi-call iteration (when using pagination) is unspecified.
+-- Returns the tags associated with a file system. The order of tags returned in the response of one @DescribeTags@ call and the order of tags returned across the responses of a multi-call iteration (when using pagination) is unspecified. 
 --
 --
--- This operation requires permissions for the @elasticfilesystem:DescribeTags@ action.
+-- This operation requires permissions for the @elasticfilesystem:DescribeTags@ action. 
 --
 --
 -- This operation returns paginated results.
@@ -46,26 +46,22 @@ module Network.AWS.EFS.DescribeTags
     ) where
 
 import Network.AWS.EFS.Types
-import Network.AWS.EFS.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Pager
 import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 
--- |
+-- | 
 --
 --
 --
 -- /See:/ 'describeTags' smart constructor.
-data DescribeTags =
-  DescribeTags'
-    { _dtMarker       :: !(Maybe Text)
-    , _dtMaxItems     :: !(Maybe Nat)
-    , _dtFileSystemId :: !Text
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data DescribeTags = DescribeTags'{_dtMarker ::
+                                  !(Maybe Text),
+                                  _dtMaxItems :: !(Maybe Nat),
+                                  _dtFileSystemId :: !Text}
+                      deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'DescribeTags' with the minimum fields required to make a request.
 --
@@ -79,13 +75,10 @@ data DescribeTags =
 describeTags
     :: Text -- ^ 'dtFileSystemId'
     -> DescribeTags
-describeTags pFileSystemId_ =
-  DescribeTags'
-    { _dtMarker = Nothing
-    , _dtMaxItems = Nothing
-    , _dtFileSystemId = pFileSystemId_
-    }
-
+describeTags pFileSystemId_
+  = DescribeTags'{_dtMarker = Nothing,
+                  _dtMaxItems = Nothing,
+                  _dtFileSystemId = pFileSystemId_}
 
 -- | (Optional) Opaque pagination token returned from a previous @DescribeTags@ operation (String). If present, it specifies to continue the list from where the previous call left off.
 dtMarker :: Lens' DescribeTags (Maybe Text)
@@ -134,20 +127,18 @@ instance ToQuery DescribeTags where
           = mconcat
               ["Marker" =: _dtMarker, "MaxItems" =: _dtMaxItems]
 
--- |
+-- | 
 --
 --
 --
 -- /See:/ 'describeTagsResponse' smart constructor.
-data DescribeTagsResponse =
-  DescribeTagsResponse'
-    { _dtrsMarker         :: !(Maybe Text)
-    , _dtrsNextMarker     :: !(Maybe Text)
-    , _dtrsResponseStatus :: !Int
-    , _dtrsTags           :: ![Tag]
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data DescribeTagsResponse = DescribeTagsResponse'{_dtrsMarker
+                                                  :: !(Maybe Text),
+                                                  _dtrsNextMarker ::
+                                                  !(Maybe Text),
+                                                  _dtrsResponseStatus :: !Int,
+                                                  _dtrsTags :: ![Tag]}
+                              deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'DescribeTagsResponse' with the minimum fields required to make a request.
 --
@@ -159,18 +150,15 @@ data DescribeTagsResponse =
 --
 -- * 'dtrsResponseStatus' - -- | The response status code.
 --
--- * 'dtrsTags' - Returns tags associated with the file system as an array of @Tag@ objects.
+-- * 'dtrsTags' - Returns tags associated with the file system as an array of @Tag@ objects. 
 describeTagsResponse
     :: Int -- ^ 'dtrsResponseStatus'
     -> DescribeTagsResponse
-describeTagsResponse pResponseStatus_ =
-  DescribeTagsResponse'
-    { _dtrsMarker = Nothing
-    , _dtrsNextMarker = Nothing
-    , _dtrsResponseStatus = pResponseStatus_
-    , _dtrsTags = mempty
-    }
-
+describeTagsResponse pResponseStatus_
+  = DescribeTagsResponse'{_dtrsMarker = Nothing,
+                          _dtrsNextMarker = Nothing,
+                          _dtrsResponseStatus = pResponseStatus_,
+                          _dtrsTags = mempty}
 
 -- | If the request included a @Marker@ , the response returns that value in this field.
 dtrsMarker :: Lens' DescribeTagsResponse (Maybe Text)
@@ -184,7 +172,7 @@ dtrsNextMarker = lens _dtrsNextMarker (\ s a -> s{_dtrsNextMarker = a})
 dtrsResponseStatus :: Lens' DescribeTagsResponse Int
 dtrsResponseStatus = lens _dtrsResponseStatus (\ s a -> s{_dtrsResponseStatus = a})
 
--- | Returns tags associated with the file system as an array of @Tag@ objects.
+-- | Returns tags associated with the file system as an array of @Tag@ objects. 
 dtrsTags :: Lens' DescribeTagsResponse [Tag]
 dtrsTags = lens _dtrsTags (\ s a -> s{_dtrsTags = a}) . _Coerce
 

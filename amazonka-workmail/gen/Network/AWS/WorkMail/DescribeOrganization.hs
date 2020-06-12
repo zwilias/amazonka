@@ -49,15 +49,12 @@ import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 import Network.AWS.WorkMail.Types
-import Network.AWS.WorkMail.Types.Product
 
 -- | /See:/ 'describeOrganization' smart constructor.
-newtype DescribeOrganization =
-  DescribeOrganization'
-    { _doOrganizationId :: Text
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+newtype DescribeOrganization = DescribeOrganization'{_doOrganizationId
+                                                     :: Text}
+                                 deriving (Eq, Read, Show, Data, Typeable,
+                                           Generic)
 
 -- | Creates a value of 'DescribeOrganization' with the minimum fields required to make a request.
 --
@@ -67,9 +64,9 @@ newtype DescribeOrganization =
 describeOrganization
     :: Text -- ^ 'doOrganizationId'
     -> DescribeOrganization
-describeOrganization pOrganizationId_ =
-  DescribeOrganization' {_doOrganizationId = pOrganizationId_}
-
+describeOrganization pOrganizationId_
+  = DescribeOrganization'{_doOrganizationId =
+                            pOrganizationId_}
 
 -- | The identifier for the organization to be described.
 doOrganizationId :: Lens' DescribeOrganization Text
@@ -119,20 +116,33 @@ instance ToQuery DescribeOrganization where
         toQuery = const mempty
 
 -- | /See:/ 'describeOrganizationResponse' smart constructor.
-data DescribeOrganizationResponse =
-  DescribeOrganizationResponse'
-    { _dorsDirectoryId       :: !(Maybe Text)
-    , _dorsState             :: !(Maybe Text)
-    , _dorsAlias             :: !(Maybe Text)
-    , _dorsCompletedDate     :: !(Maybe POSIX)
-    , _dorsDirectoryType     :: !(Maybe Text)
-    , _dorsDefaultMailDomain :: !(Maybe Text)
-    , _dorsErrorMessage      :: !(Maybe Text)
-    , _dorsOrganizationId    :: !(Maybe Text)
-    , _dorsResponseStatus    :: !Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data DescribeOrganizationResponse = DescribeOrganizationResponse'{_dorsDirectoryId
+                                                                  ::
+                                                                  !(Maybe Text),
+                                                                  _dorsState ::
+                                                                  !(Maybe Text),
+                                                                  _dorsAlias ::
+                                                                  !(Maybe Text),
+                                                                  _dorsCompletedDate
+                                                                  ::
+                                                                  !(Maybe
+                                                                      POSIX),
+                                                                  _dorsDirectoryType
+                                                                  ::
+                                                                  !(Maybe Text),
+                                                                  _dorsDefaultMailDomain
+                                                                  ::
+                                                                  !(Maybe Text),
+                                                                  _dorsErrorMessage
+                                                                  ::
+                                                                  !(Maybe Text),
+                                                                  _dorsOrganizationId
+                                                                  ::
+                                                                  !(Maybe Text),
+                                                                  _dorsResponseStatus
+                                                                  :: !Int}
+                                      deriving (Eq, Read, Show, Data, Typeable,
+                                                Generic)
 
 -- | Creates a value of 'DescribeOrganizationResponse' with the minimum fields required to make a request.
 --
@@ -158,19 +168,16 @@ data DescribeOrganizationResponse =
 describeOrganizationResponse
     :: Int -- ^ 'dorsResponseStatus'
     -> DescribeOrganizationResponse
-describeOrganizationResponse pResponseStatus_ =
-  DescribeOrganizationResponse'
-    { _dorsDirectoryId = Nothing
-    , _dorsState = Nothing
-    , _dorsAlias = Nothing
-    , _dorsCompletedDate = Nothing
-    , _dorsDirectoryType = Nothing
-    , _dorsDefaultMailDomain = Nothing
-    , _dorsErrorMessage = Nothing
-    , _dorsOrganizationId = Nothing
-    , _dorsResponseStatus = pResponseStatus_
-    }
-
+describeOrganizationResponse pResponseStatus_
+  = DescribeOrganizationResponse'{_dorsDirectoryId =
+                                    Nothing,
+                                  _dorsState = Nothing, _dorsAlias = Nothing,
+                                  _dorsCompletedDate = Nothing,
+                                  _dorsDirectoryType = Nothing,
+                                  _dorsDefaultMailDomain = Nothing,
+                                  _dorsErrorMessage = Nothing,
+                                  _dorsOrganizationId = Nothing,
+                                  _dorsResponseStatus = pResponseStatus_}
 
 -- | The identifier for the directory associated with an Amazon WorkMail organization.
 dorsDirectoryId :: Lens' DescribeOrganizationResponse (Maybe Text)

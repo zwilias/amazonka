@@ -40,20 +40,16 @@ module Network.AWS.IoT.RegisterThing
     ) where
 
 import Network.AWS.IoT.Types
-import Network.AWS.IoT.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 
 -- | /See:/ 'registerThing' smart constructor.
-data RegisterThing =
-  RegisterThing'
-    { _rtParameters   :: !(Maybe (Map Text Text))
-    , _rtTemplateBody :: !Text
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data RegisterThing = RegisterThing'{_rtParameters ::
+                                    !(Maybe (Map Text Text)),
+                                    _rtTemplateBody :: !Text}
+                       deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'RegisterThing' with the minimum fields required to make a request.
 --
@@ -65,9 +61,9 @@ data RegisterThing =
 registerThing
     :: Text -- ^ 'rtTemplateBody'
     -> RegisterThing
-registerThing pTemplateBody_ =
-  RegisterThing' {_rtParameters = Nothing, _rtTemplateBody = pTemplateBody_}
-
+registerThing pTemplateBody_
+  = RegisterThing'{_rtParameters = Nothing,
+                   _rtTemplateBody = pTemplateBody_}
 
 -- | The parameters for provisioning a thing. See <http://docs.aws.amazon.com/iot/latest/developerguide/programmatic-provisioning.html Programmatic Provisioning> for more information.
 rtParameters :: Lens' RegisterThing (HashMap Text Text)
@@ -109,14 +105,13 @@ instance ToQuery RegisterThing where
         toQuery = const mempty
 
 -- | /See:/ 'registerThingResponse' smart constructor.
-data RegisterThingResponse =
-  RegisterThingResponse'
-    { _rtrsCertificatePem :: !(Maybe Text)
-    , _rtrsResourceARNs   :: !(Maybe (Map Text Text))
-    , _rtrsResponseStatus :: !Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data RegisterThingResponse = RegisterThingResponse'{_rtrsCertificatePem
+                                                    :: !(Maybe Text),
+                                                    _rtrsResourceARNs ::
+                                                    !(Maybe (Map Text Text)),
+                                                    _rtrsResponseStatus :: !Int}
+                               deriving (Eq, Read, Show, Data, Typeable,
+                                         Generic)
 
 -- | Creates a value of 'RegisterThingResponse' with the minimum fields required to make a request.
 --
@@ -130,13 +125,11 @@ data RegisterThingResponse =
 registerThingResponse
     :: Int -- ^ 'rtrsResponseStatus'
     -> RegisterThingResponse
-registerThingResponse pResponseStatus_ =
-  RegisterThingResponse'
-    { _rtrsCertificatePem = Nothing
-    , _rtrsResourceARNs = Nothing
-    , _rtrsResponseStatus = pResponseStatus_
-    }
-
+registerThingResponse pResponseStatus_
+  = RegisterThingResponse'{_rtrsCertificatePem =
+                             Nothing,
+                           _rtrsResourceARNs = Nothing,
+                           _rtrsResponseStatus = pResponseStatus_}
 
 -- | Undocumented member.
 rtrsCertificatePem :: Lens' RegisterThingResponse (Maybe Text)

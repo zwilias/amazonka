@@ -43,7 +43,6 @@ module Network.AWS.AutoScaling.DescribeNotificationConfigurations
     ) where
 
 import Network.AWS.AutoScaling.Types
-import Network.AWS.AutoScaling.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Pager
 import Network.AWS.Prelude
@@ -51,14 +50,20 @@ import Network.AWS.Request
 import Network.AWS.Response
 
 -- | /See:/ 'describeNotificationConfigurations' smart constructor.
-data DescribeNotificationConfigurations =
-  DescribeNotificationConfigurations'
-    { _dncAutoScalingGroupNames :: !(Maybe [Text])
-    , _dncNextToken             :: !(Maybe Text)
-    , _dncMaxRecords            :: !(Maybe Int)
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data DescribeNotificationConfigurations = DescribeNotificationConfigurations'{_dncAutoScalingGroupNames
+                                                                              ::
+                                                                              !(Maybe
+                                                                                  [Text]),
+                                                                              _dncNextToken
+                                                                              ::
+                                                                              !(Maybe
+                                                                                  Text),
+                                                                              _dncMaxRecords
+                                                                              ::
+                                                                              !(Maybe
+                                                                                  Int)}
+                                            deriving (Eq, Read, Show, Data,
+                                                      Typeable, Generic)
 
 -- | Creates a value of 'DescribeNotificationConfigurations' with the minimum fields required to make a request.
 --
@@ -71,13 +76,11 @@ data DescribeNotificationConfigurations =
 -- * 'dncMaxRecords' - The maximum number of items to return with this call. The default value is @50@ and the maximum value is @100@ .
 describeNotificationConfigurations
     :: DescribeNotificationConfigurations
-describeNotificationConfigurations =
-  DescribeNotificationConfigurations'
-    { _dncAutoScalingGroupNames = Nothing
-    , _dncNextToken = Nothing
-    , _dncMaxRecords = Nothing
-    }
-
+describeNotificationConfigurations
+  = DescribeNotificationConfigurations'{_dncAutoScalingGroupNames
+                                          = Nothing,
+                                        _dncNextToken = Nothing,
+                                        _dncMaxRecords = Nothing}
 
 -- | The name of the Auto Scaling group.
 dncAutoScalingGroupNames :: Lens' DescribeNotificationConfigurations [Text]
@@ -143,14 +146,19 @@ instance ToQuery DescribeNotificationConfigurations
                "MaxRecords" =: _dncMaxRecords]
 
 -- | /See:/ 'describeNotificationConfigurationsResponse' smart constructor.
-data DescribeNotificationConfigurationsResponse =
-  DescribeNotificationConfigurationsResponse'
-    { _dncrsNextToken                  :: !(Maybe Text)
-    , _dncrsResponseStatus             :: !Int
-    , _dncrsNotificationConfigurations :: ![NotificationConfiguration]
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data DescribeNotificationConfigurationsResponse = DescribeNotificationConfigurationsResponse'{_dncrsNextToken
+                                                                                              ::
+                                                                                              !(Maybe
+                                                                                                  Text),
+                                                                                              _dncrsResponseStatus
+                                                                                              ::
+                                                                                              !Int,
+                                                                                              _dncrsNotificationConfigurations
+                                                                                              ::
+                                                                                              ![NotificationConfiguration]}
+                                                    deriving (Eq, Read, Show,
+                                                              Data, Typeable,
+                                                              Generic)
 
 -- | Creates a value of 'DescribeNotificationConfigurationsResponse' with the minimum fields required to make a request.
 --
@@ -164,13 +172,14 @@ data DescribeNotificationConfigurationsResponse =
 describeNotificationConfigurationsResponse
     :: Int -- ^ 'dncrsResponseStatus'
     -> DescribeNotificationConfigurationsResponse
-describeNotificationConfigurationsResponse pResponseStatus_ =
-  DescribeNotificationConfigurationsResponse'
-    { _dncrsNextToken = Nothing
-    , _dncrsResponseStatus = pResponseStatus_
-    , _dncrsNotificationConfigurations = mempty
-    }
-
+describeNotificationConfigurationsResponse
+  pResponseStatus_
+  = DescribeNotificationConfigurationsResponse'{_dncrsNextToken
+                                                  = Nothing,
+                                                _dncrsResponseStatus =
+                                                  pResponseStatus_,
+                                                _dncrsNotificationConfigurations
+                                                  = mempty}
 
 -- | A string that indicates that the response contains more items than can be returned in a single response. To receive additional items, specify this string for the @NextToken@ value when requesting the next set of items. This value is null when there are no more items to return.
 dncrsNextToken :: Lens' DescribeNotificationConfigurationsResponse (Maybe Text)

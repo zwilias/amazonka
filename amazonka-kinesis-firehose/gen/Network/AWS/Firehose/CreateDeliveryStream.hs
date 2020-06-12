@@ -67,26 +67,41 @@ module Network.AWS.Firehose.CreateDeliveryStream
     ) where
 
 import Network.AWS.Firehose.Types
-import Network.AWS.Firehose.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 
 -- | /See:/ 'createDeliveryStream' smart constructor.
-data CreateDeliveryStream =
-  CreateDeliveryStream'
-    { _cdsS3DestinationConfiguration :: !(Maybe S3DestinationConfiguration)
-    , _cdsRedshiftDestinationConfiguration :: !(Maybe RedshiftDestinationConfiguration)
-    , _cdsElasticsearchDestinationConfiguration :: !(Maybe ElasticsearchDestinationConfiguration)
-    , _cdsExtendedS3DestinationConfiguration :: !(Maybe ExtendedS3DestinationConfiguration)
-    , _cdsKinesisStreamSourceConfiguration :: !(Maybe KinesisStreamSourceConfiguration)
-    , _cdsDeliveryStreamType :: !(Maybe DeliveryStreamType)
-    , _cdsSplunkDestinationConfiguration :: !(Maybe SplunkDestinationConfiguration)
-    , _cdsDeliveryStreamName :: !Text
-    }
-  deriving (Eq, Show, Data, Typeable, Generic)
-
+data CreateDeliveryStream = CreateDeliveryStream'{_cdsS3DestinationConfiguration
+                                                  ::
+                                                  !(Maybe
+                                                      S3DestinationConfiguration),
+                                                  _cdsRedshiftDestinationConfiguration
+                                                  ::
+                                                  !(Maybe
+                                                      RedshiftDestinationConfiguration),
+                                                  _cdsElasticsearchDestinationConfiguration
+                                                  ::
+                                                  !(Maybe
+                                                      ElasticsearchDestinationConfiguration),
+                                                  _cdsExtendedS3DestinationConfiguration
+                                                  ::
+                                                  !(Maybe
+                                                      ExtendedS3DestinationConfiguration),
+                                                  _cdsKinesisStreamSourceConfiguration
+                                                  ::
+                                                  !(Maybe
+                                                      KinesisStreamSourceConfiguration),
+                                                  _cdsDeliveryStreamType ::
+                                                  !(Maybe DeliveryStreamType),
+                                                  _cdsSplunkDestinationConfiguration
+                                                  ::
+                                                  !(Maybe
+                                                      SplunkDestinationConfiguration),
+                                                  _cdsDeliveryStreamName ::
+                                                  !Text}
+                              deriving (Eq, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'CreateDeliveryStream' with the minimum fields required to make a request.
 --
@@ -110,18 +125,16 @@ data CreateDeliveryStream =
 createDeliveryStream
     :: Text -- ^ 'cdsDeliveryStreamName'
     -> CreateDeliveryStream
-createDeliveryStream pDeliveryStreamName_ =
-  CreateDeliveryStream'
-    { _cdsS3DestinationConfiguration = Nothing
-    , _cdsRedshiftDestinationConfiguration = Nothing
-    , _cdsElasticsearchDestinationConfiguration = Nothing
-    , _cdsExtendedS3DestinationConfiguration = Nothing
-    , _cdsKinesisStreamSourceConfiguration = Nothing
-    , _cdsDeliveryStreamType = Nothing
-    , _cdsSplunkDestinationConfiguration = Nothing
-    , _cdsDeliveryStreamName = pDeliveryStreamName_
-    }
-
+createDeliveryStream pDeliveryStreamName_
+  = CreateDeliveryStream'{_cdsS3DestinationConfiguration
+                            = Nothing,
+                          _cdsRedshiftDestinationConfiguration = Nothing,
+                          _cdsElasticsearchDestinationConfiguration = Nothing,
+                          _cdsExtendedS3DestinationConfiguration = Nothing,
+                          _cdsKinesisStreamSourceConfiguration = Nothing,
+                          _cdsDeliveryStreamType = Nothing,
+                          _cdsSplunkDestinationConfiguration = Nothing,
+                          _cdsDeliveryStreamName = pDeliveryStreamName_}
 
 -- | [Deprecated] The destination in Amazon S3. You can specify only one destination.
 cdsS3DestinationConfiguration :: Lens' CreateDeliveryStream (Maybe S3DestinationConfiguration)
@@ -206,13 +219,13 @@ instance ToQuery CreateDeliveryStream where
         toQuery = const mempty
 
 -- | /See:/ 'createDeliveryStreamResponse' smart constructor.
-data CreateDeliveryStreamResponse =
-  CreateDeliveryStreamResponse'
-    { _cdsrsDeliveryStreamARN :: !(Maybe Text)
-    , _cdsrsResponseStatus    :: !Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data CreateDeliveryStreamResponse = CreateDeliveryStreamResponse'{_cdsrsDeliveryStreamARN
+                                                                  ::
+                                                                  !(Maybe Text),
+                                                                  _cdsrsResponseStatus
+                                                                  :: !Int}
+                                      deriving (Eq, Read, Show, Data, Typeable,
+                                                Generic)
 
 -- | Creates a value of 'CreateDeliveryStreamResponse' with the minimum fields required to make a request.
 --
@@ -224,10 +237,10 @@ data CreateDeliveryStreamResponse =
 createDeliveryStreamResponse
     :: Int -- ^ 'cdsrsResponseStatus'
     -> CreateDeliveryStreamResponse
-createDeliveryStreamResponse pResponseStatus_ =
-  CreateDeliveryStreamResponse'
-    {_cdsrsDeliveryStreamARN = Nothing, _cdsrsResponseStatus = pResponseStatus_}
-
+createDeliveryStreamResponse pResponseStatus_
+  = CreateDeliveryStreamResponse'{_cdsrsDeliveryStreamARN
+                                    = Nothing,
+                                  _cdsrsResponseStatus = pResponseStatus_}
 
 -- | The ARN of the delivery stream.
 cdsrsDeliveryStreamARN :: Lens' CreateDeliveryStreamResponse (Maybe Text)

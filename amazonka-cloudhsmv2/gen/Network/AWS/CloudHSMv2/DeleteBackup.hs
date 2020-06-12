@@ -38,19 +38,15 @@ module Network.AWS.CloudHSMv2.DeleteBackup
     ) where
 
 import Network.AWS.CloudHSMv2.Types
-import Network.AWS.CloudHSMv2.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 
 -- | /See:/ 'deleteBackup' smart constructor.
-newtype DeleteBackup =
-  DeleteBackup'
-    { _dbBackupId :: Text
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+newtype DeleteBackup = DeleteBackup'{_dbBackupId ::
+                                     Text}
+                         deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'DeleteBackup' with the minimum fields required to make a request.
 --
@@ -60,8 +56,8 @@ newtype DeleteBackup =
 deleteBackup
     :: Text -- ^ 'dbBackupId'
     -> DeleteBackup
-deleteBackup pBackupId_ = DeleteBackup' {_dbBackupId = pBackupId_}
-
+deleteBackup pBackupId_
+  = DeleteBackup'{_dbBackupId = pBackupId_}
 
 -- | The ID of the backup to be deleted. To find the ID of a backup, use the 'DescribeBackups' operation.
 dbBackupId :: Lens' DeleteBackup Text
@@ -101,13 +97,10 @@ instance ToQuery DeleteBackup where
         toQuery = const mempty
 
 -- | /See:/ 'deleteBackupResponse' smart constructor.
-data DeleteBackupResponse =
-  DeleteBackupResponse'
-    { _dbrsBackup         :: !(Maybe Backup)
-    , _dbrsResponseStatus :: !Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data DeleteBackupResponse = DeleteBackupResponse'{_dbrsBackup
+                                                  :: !(Maybe Backup),
+                                                  _dbrsResponseStatus :: !Int}
+                              deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'DeleteBackupResponse' with the minimum fields required to make a request.
 --
@@ -119,10 +112,9 @@ data DeleteBackupResponse =
 deleteBackupResponse
     :: Int -- ^ 'dbrsResponseStatus'
     -> DeleteBackupResponse
-deleteBackupResponse pResponseStatus_ =
-  DeleteBackupResponse'
-    {_dbrsBackup = Nothing, _dbrsResponseStatus = pResponseStatus_}
-
+deleteBackupResponse pResponseStatus_
+  = DeleteBackupResponse'{_dbrsBackup = Nothing,
+                          _dbrsResponseStatus = pResponseStatus_}
 
 -- | Information on the @Backup@ object deleted.
 dbrsBackup :: Lens' DeleteBackupResponse (Maybe Backup)

@@ -41,27 +41,23 @@ module Network.AWS.Budgets.UpdateSubscriber
     ) where
 
 import Network.AWS.Budgets.Types
-import Network.AWS.Budgets.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 
--- | Request of UpdateSubscriber
+-- | Request of UpdateSubscriber 
 --
 --
 --
 -- /See:/ 'updateSubscriber' smart constructor.
-data UpdateSubscriber =
-  UpdateSubscriber'
-    { _usAccountId     :: !Text
-    , _usBudgetName    :: !Text
-    , _usNotification  :: !Notification
-    , _usOldSubscriber :: !Subscriber
-    , _usNewSubscriber :: !Subscriber
-    }
-  deriving (Eq, Show, Data, Typeable, Generic)
-
+data UpdateSubscriber = UpdateSubscriber'{_usAccountId
+                                          :: !Text,
+                                          _usBudgetName :: !Text,
+                                          _usNotification :: !Notification,
+                                          _usOldSubscriber :: !Subscriber,
+                                          _usNewSubscriber :: !Subscriber}
+                          deriving (Eq, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'UpdateSubscriber' with the minimum fields required to make a request.
 --
@@ -83,15 +79,13 @@ updateSubscriber
     -> Subscriber -- ^ 'usOldSubscriber'
     -> Subscriber -- ^ 'usNewSubscriber'
     -> UpdateSubscriber
-updateSubscriber pAccountId_ pBudgetName_ pNotification_ pOldSubscriber_ pNewSubscriber_ =
-  UpdateSubscriber'
-    { _usAccountId = pAccountId_
-    , _usBudgetName = pBudgetName_
-    , _usNotification = pNotification_
-    , _usOldSubscriber = pOldSubscriber_
-    , _usNewSubscriber = pNewSubscriber_
-    }
-
+updateSubscriber pAccountId_ pBudgetName_
+  pNotification_ pOldSubscriber_ pNewSubscriber_
+  = UpdateSubscriber'{_usAccountId = pAccountId_,
+                      _usBudgetName = pBudgetName_,
+                      _usNotification = pNotification_,
+                      _usOldSubscriber = pOldSubscriber_,
+                      _usNewSubscriber = pNewSubscriber_}
 
 -- | The @accountId@ that is associated with the budget whose subscriber you want to update.
 usAccountId :: Lens' UpdateSubscriber Text
@@ -151,17 +145,15 @@ instance ToPath UpdateSubscriber where
 instance ToQuery UpdateSubscriber where
         toQuery = const mempty
 
--- | Response of UpdateSubscriber
+-- | Response of UpdateSubscriber 
 --
 --
 --
 -- /See:/ 'updateSubscriberResponse' smart constructor.
-newtype UpdateSubscriberResponse =
-  UpdateSubscriberResponse'
-    { _usrsResponseStatus :: Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+newtype UpdateSubscriberResponse = UpdateSubscriberResponse'{_usrsResponseStatus
+                                                             :: Int}
+                                     deriving (Eq, Read, Show, Data, Typeable,
+                                               Generic)
 
 -- | Creates a value of 'UpdateSubscriberResponse' with the minimum fields required to make a request.
 --
@@ -171,9 +163,9 @@ newtype UpdateSubscriberResponse =
 updateSubscriberResponse
     :: Int -- ^ 'usrsResponseStatus'
     -> UpdateSubscriberResponse
-updateSubscriberResponse pResponseStatus_ =
-  UpdateSubscriberResponse' {_usrsResponseStatus = pResponseStatus_}
-
+updateSubscriberResponse pResponseStatus_
+  = UpdateSubscriberResponse'{_usrsResponseStatus =
+                                pResponseStatus_}
 
 -- | -- | The response status code.
 usrsResponseStatus :: Lens' UpdateSubscriberResponse Int

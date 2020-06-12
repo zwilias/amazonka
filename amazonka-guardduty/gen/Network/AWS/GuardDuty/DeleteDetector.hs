@@ -35,19 +35,15 @@ module Network.AWS.GuardDuty.DeleteDetector
     ) where
 
 import Network.AWS.GuardDuty.Types
-import Network.AWS.GuardDuty.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 
 -- | /See:/ 'deleteDetector' smart constructor.
-newtype DeleteDetector =
-  DeleteDetector'
-    { _ddDetectorId :: Text
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+newtype DeleteDetector = DeleteDetector'{_ddDetectorId
+                                         :: Text}
+                           deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'DeleteDetector' with the minimum fields required to make a request.
 --
@@ -57,8 +53,8 @@ newtype DeleteDetector =
 deleteDetector
     :: Text -- ^ 'ddDetectorId'
     -> DeleteDetector
-deleteDetector pDetectorId_ = DeleteDetector' {_ddDetectorId = pDetectorId_}
-
+deleteDetector pDetectorId_
+  = DeleteDetector'{_ddDetectorId = pDetectorId_}
 
 -- | The unique ID that specifies the detector that you want to delete.
 ddDetectorId :: Lens' DeleteDetector Text
@@ -91,12 +87,10 @@ instance ToQuery DeleteDetector where
         toQuery = const mempty
 
 -- | /See:/ 'deleteDetectorResponse' smart constructor.
-newtype DeleteDetectorResponse =
-  DeleteDetectorResponse'
-    { _ddrsResponseStatus :: Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+newtype DeleteDetectorResponse = DeleteDetectorResponse'{_ddrsResponseStatus
+                                                         :: Int}
+                                   deriving (Eq, Read, Show, Data, Typeable,
+                                             Generic)
 
 -- | Creates a value of 'DeleteDetectorResponse' with the minimum fields required to make a request.
 --
@@ -106,9 +100,9 @@ newtype DeleteDetectorResponse =
 deleteDetectorResponse
     :: Int -- ^ 'ddrsResponseStatus'
     -> DeleteDetectorResponse
-deleteDetectorResponse pResponseStatus_ =
-  DeleteDetectorResponse' {_ddrsResponseStatus = pResponseStatus_}
-
+deleteDetectorResponse pResponseStatus_
+  = DeleteDetectorResponse'{_ddrsResponseStatus =
+                              pResponseStatus_}
 
 -- | -- | The response status code.
 ddrsResponseStatus :: Lens' DeleteDetectorResponse Int

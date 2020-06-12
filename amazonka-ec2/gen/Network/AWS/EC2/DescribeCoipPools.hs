@@ -45,7 +45,6 @@ module Network.AWS.EC2.DescribeCoipPools
     ) where
 
 import Network.AWS.EC2.Types
-import Network.AWS.EC2.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Pager
 import Network.AWS.Prelude
@@ -53,16 +52,13 @@ import Network.AWS.Request
 import Network.AWS.Response
 
 -- | /See:/ 'describeCoipPools' smart constructor.
-data DescribeCoipPools =
-  DescribeCoipPools'
-    { _dcpPoolIds    :: !(Maybe [Text])
-    , _dcpFilters    :: !(Maybe [Filter])
-    , _dcpNextToken  :: !(Maybe Text)
-    , _dcpDryRun     :: !(Maybe Bool)
-    , _dcpMaxResults :: !(Maybe Nat)
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data DescribeCoipPools = DescribeCoipPools'{_dcpPoolIds
+                                            :: !(Maybe [Text]),
+                                            _dcpFilters :: !(Maybe [Filter]),
+                                            _dcpNextToken :: !(Maybe Text),
+                                            _dcpDryRun :: !(Maybe Bool),
+                                            _dcpMaxResults :: !(Maybe Nat)}
+                           deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'DescribeCoipPools' with the minimum fields required to make a request.
 --
@@ -70,7 +66,7 @@ data DescribeCoipPools =
 --
 -- * 'dcpPoolIds' - The IDs of the address pools.
 --
--- * 'dcpFilters' - The filters. The following are the possible values:     * @coip-pool.pool-id@      * @coip-pool.local-gateway-route-table-id@
+-- * 'dcpFilters' - The filters. The following are the possible values:     * @coip-pool.pool-id@      * @coip-pool.local-gateway-route-table-id@ 
 --
 -- * 'dcpNextToken' - The token for the next page of results.
 --
@@ -79,21 +75,16 @@ data DescribeCoipPools =
 -- * 'dcpMaxResults' - The maximum number of results to return with a single call. To retrieve the remaining results, make another call with the returned @nextToken@ value.
 describeCoipPools
     :: DescribeCoipPools
-describeCoipPools =
-  DescribeCoipPools'
-    { _dcpPoolIds = Nothing
-    , _dcpFilters = Nothing
-    , _dcpNextToken = Nothing
-    , _dcpDryRun = Nothing
-    , _dcpMaxResults = Nothing
-    }
-
+describeCoipPools
+  = DescribeCoipPools'{_dcpPoolIds = Nothing,
+                       _dcpFilters = Nothing, _dcpNextToken = Nothing,
+                       _dcpDryRun = Nothing, _dcpMaxResults = Nothing}
 
 -- | The IDs of the address pools.
 dcpPoolIds :: Lens' DescribeCoipPools [Text]
 dcpPoolIds = lens _dcpPoolIds (\ s a -> s{_dcpPoolIds = a}) . _Default . _Coerce
 
--- | The filters. The following are the possible values:     * @coip-pool.pool-id@      * @coip-pool.local-gateway-route-table-id@
+-- | The filters. The following are the possible values:     * @coip-pool.pool-id@      * @coip-pool.local-gateway-route-table-id@ 
 dcpFilters :: Lens' DescribeCoipPools [Filter]
 dcpFilters = lens _dcpFilters (\ s a -> s{_dcpFilters = a}) . _Default . _Coerce
 
@@ -149,14 +140,15 @@ instance ToQuery DescribeCoipPools where
                "MaxResults" =: _dcpMaxResults]
 
 -- | /See:/ 'describeCoipPoolsResponse' smart constructor.
-data DescribeCoipPoolsResponse =
-  DescribeCoipPoolsResponse'
-    { _dcprsCoipPools      :: !(Maybe [CoipPool])
-    , _dcprsNextToken      :: !(Maybe Text)
-    , _dcprsResponseStatus :: !Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data DescribeCoipPoolsResponse = DescribeCoipPoolsResponse'{_dcprsCoipPools
+                                                            ::
+                                                            !(Maybe [CoipPool]),
+                                                            _dcprsNextToken ::
+                                                            !(Maybe Text),
+                                                            _dcprsResponseStatus
+                                                            :: !Int}
+                                   deriving (Eq, Read, Show, Data, Typeable,
+                                             Generic)
 
 -- | Creates a value of 'DescribeCoipPoolsResponse' with the minimum fields required to make a request.
 --
@@ -170,13 +162,11 @@ data DescribeCoipPoolsResponse =
 describeCoipPoolsResponse
     :: Int -- ^ 'dcprsResponseStatus'
     -> DescribeCoipPoolsResponse
-describeCoipPoolsResponse pResponseStatus_ =
-  DescribeCoipPoolsResponse'
-    { _dcprsCoipPools = Nothing
-    , _dcprsNextToken = Nothing
-    , _dcprsResponseStatus = pResponseStatus_
-    }
-
+describeCoipPoolsResponse pResponseStatus_
+  = DescribeCoipPoolsResponse'{_dcprsCoipPools =
+                                 Nothing,
+                               _dcprsNextToken = Nothing,
+                               _dcprsResponseStatus = pResponseStatus_}
 
 -- | Information about the address pools.
 dcprsCoipPools :: Lens' DescribeCoipPoolsResponse [CoipPool]

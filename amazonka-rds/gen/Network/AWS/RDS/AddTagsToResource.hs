@@ -40,22 +40,18 @@ module Network.AWS.RDS.AddTagsToResource
 import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.RDS.Types
-import Network.AWS.RDS.Types.Product
 import Network.AWS.Request
 import Network.AWS.Response
 
--- |
+-- | 
 --
 --
 --
 -- /See:/ 'addTagsToResource' smart constructor.
-data AddTagsToResource =
-  AddTagsToResource'
-    { _attrResourceName :: !Text
-    , _attrTags         :: ![Tag]
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data AddTagsToResource = AddTagsToResource'{_attrResourceName
+                                            :: !Text,
+                                            _attrTags :: ![Tag]}
+                           deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'AddTagsToResource' with the minimum fields required to make a request.
 --
@@ -67,9 +63,10 @@ data AddTagsToResource =
 addTagsToResource
     :: Text -- ^ 'attrResourceName'
     -> AddTagsToResource
-addTagsToResource pResourceName_ =
-  AddTagsToResource' {_attrResourceName = pResourceName_, _attrTags = mempty}
-
+addTagsToResource pResourceName_
+  = AddTagsToResource'{_attrResourceName =
+                         pResourceName_,
+                       _attrTags = mempty}
 
 -- | The Amazon RDS resource that the tags are added to. This value is an Amazon Resource Name (ARN). For information about creating an ARN, see <http://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/USER_Tagging.ARN.html#USER_Tagging.ARN.Constructing Constructing an RDS Amazon Resource Name (ARN)> .
 attrResourceName :: Lens' AddTagsToResource Text
@@ -103,16 +100,15 @@ instance ToQuery AddTagsToResource where
                "Tags" =: toQueryList "Tag" _attrTags]
 
 -- | /See:/ 'addTagsToResourceResponse' smart constructor.
-data AddTagsToResourceResponse =
-  AddTagsToResourceResponse'
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data AddTagsToResourceResponse = AddTagsToResourceResponse'
+                                   deriving (Eq, Read, Show, Data, Typeable,
+                                             Generic)
 
 -- | Creates a value of 'AddTagsToResourceResponse' with the minimum fields required to make a request.
 --
 addTagsToResourceResponse
     :: AddTagsToResourceResponse
-addTagsToResourceResponse = AddTagsToResourceResponse'
-
+addTagsToResourceResponse
+  = AddTagsToResourceResponse'
 
 instance NFData AddTagsToResourceResponse where

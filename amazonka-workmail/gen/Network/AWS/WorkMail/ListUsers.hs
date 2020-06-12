@@ -48,17 +48,13 @@ import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 import Network.AWS.WorkMail.Types
-import Network.AWS.WorkMail.Types.Product
 
 -- | /See:/ 'listUsers' smart constructor.
-data ListUsers =
-  ListUsers'
-    { _luNextToken      :: !(Maybe Text)
-    , _luMaxResults     :: !(Maybe Nat)
-    , _luOrganizationId :: !Text
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data ListUsers = ListUsers'{_luNextToken ::
+                            !(Maybe Text),
+                            _luMaxResults :: !(Maybe Nat),
+                            _luOrganizationId :: !Text}
+                   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'ListUsers' with the minimum fields required to make a request.
 --
@@ -72,13 +68,10 @@ data ListUsers =
 listUsers
     :: Text -- ^ 'luOrganizationId'
     -> ListUsers
-listUsers pOrganizationId_ =
-  ListUsers'
-    { _luNextToken = Nothing
-    , _luMaxResults = Nothing
-    , _luOrganizationId = pOrganizationId_
-    }
-
+listUsers pOrganizationId_
+  = ListUsers'{_luNextToken = Nothing,
+               _luMaxResults = Nothing,
+               _luOrganizationId = pOrganizationId_}
 
 -- | TBD
 luNextToken :: Lens' ListUsers (Maybe Text)
@@ -137,14 +130,11 @@ instance ToQuery ListUsers where
         toQuery = const mempty
 
 -- | /See:/ 'listUsersResponse' smart constructor.
-data ListUsersResponse =
-  ListUsersResponse'
-    { _lursUsers          :: !(Maybe [User])
-    , _lursNextToken      :: !(Maybe Text)
-    , _lursResponseStatus :: !Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data ListUsersResponse = ListUsersResponse'{_lursUsers
+                                            :: !(Maybe [User]),
+                                            _lursNextToken :: !(Maybe Text),
+                                            _lursResponseStatus :: !Int}
+                           deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'ListUsersResponse' with the minimum fields required to make a request.
 --
@@ -158,13 +148,10 @@ data ListUsersResponse =
 listUsersResponse
     :: Int -- ^ 'lursResponseStatus'
     -> ListUsersResponse
-listUsersResponse pResponseStatus_ =
-  ListUsersResponse'
-    { _lursUsers = Nothing
-    , _lursNextToken = Nothing
-    , _lursResponseStatus = pResponseStatus_
-    }
-
+listUsersResponse pResponseStatus_
+  = ListUsersResponse'{_lursUsers = Nothing,
+                       _lursNextToken = Nothing,
+                       _lursResponseStatus = pResponseStatus_}
 
 -- | The overview of users for an organization.
 lursUsers :: Lens' ListUsersResponse [User]

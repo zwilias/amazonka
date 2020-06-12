@@ -46,20 +46,16 @@ module Network.AWS.KMS.ScheduleKeyDeletion
     ) where
 
 import Network.AWS.KMS.Types
-import Network.AWS.KMS.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 
 -- | /See:/ 'scheduleKeyDeletion' smart constructor.
-data ScheduleKeyDeletion =
-  ScheduleKeyDeletion'
-    { _skdPendingWindowInDays :: !(Maybe Nat)
-    , _skdKeyId               :: !Text
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data ScheduleKeyDeletion = ScheduleKeyDeletion'{_skdPendingWindowInDays
+                                                :: !(Maybe Nat),
+                                                _skdKeyId :: !Text}
+                             deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'ScheduleKeyDeletion' with the minimum fields required to make a request.
 --
@@ -71,9 +67,10 @@ data ScheduleKeyDeletion =
 scheduleKeyDeletion
     :: Text -- ^ 'skdKeyId'
     -> ScheduleKeyDeletion
-scheduleKeyDeletion pKeyId_ =
-  ScheduleKeyDeletion' {_skdPendingWindowInDays = Nothing, _skdKeyId = pKeyId_}
-
+scheduleKeyDeletion pKeyId_
+  = ScheduleKeyDeletion'{_skdPendingWindowInDays =
+                           Nothing,
+                         _skdKeyId = pKeyId_}
 
 -- | The waiting period, specified in number of days. After the waiting period ends, AWS KMS deletes the customer master key (CMK). This value is optional. If you include a value, it must be between 7 and 30, inclusive. If you do not include a value, it defaults to 30.
 skdPendingWindowInDays :: Lens' ScheduleKeyDeletion (Maybe Natural)
@@ -122,14 +119,16 @@ instance ToQuery ScheduleKeyDeletion where
         toQuery = const mempty
 
 -- | /See:/ 'scheduleKeyDeletionResponse' smart constructor.
-data ScheduleKeyDeletionResponse =
-  ScheduleKeyDeletionResponse'
-    { _skdrsKeyId          :: !(Maybe Text)
-    , _skdrsDeletionDate   :: !(Maybe POSIX)
-    , _skdrsResponseStatus :: !Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data ScheduleKeyDeletionResponse = ScheduleKeyDeletionResponse'{_skdrsKeyId
+                                                                ::
+                                                                !(Maybe Text),
+                                                                _skdrsDeletionDate
+                                                                ::
+                                                                !(Maybe POSIX),
+                                                                _skdrsResponseStatus
+                                                                :: !Int}
+                                     deriving (Eq, Read, Show, Data, Typeable,
+                                               Generic)
 
 -- | Creates a value of 'ScheduleKeyDeletionResponse' with the minimum fields required to make a request.
 --
@@ -143,13 +142,10 @@ data ScheduleKeyDeletionResponse =
 scheduleKeyDeletionResponse
     :: Int -- ^ 'skdrsResponseStatus'
     -> ScheduleKeyDeletionResponse
-scheduleKeyDeletionResponse pResponseStatus_ =
-  ScheduleKeyDeletionResponse'
-    { _skdrsKeyId = Nothing
-    , _skdrsDeletionDate = Nothing
-    , _skdrsResponseStatus = pResponseStatus_
-    }
-
+scheduleKeyDeletionResponse pResponseStatus_
+  = ScheduleKeyDeletionResponse'{_skdrsKeyId = Nothing,
+                                 _skdrsDeletionDate = Nothing,
+                                 _skdrsResponseStatus = pResponseStatus_}
 
 -- | The unique identifier of the customer master key (CMK) for which deletion is scheduled.
 skdrsKeyId :: Lens' ScheduleKeyDeletionResponse (Maybe Text)

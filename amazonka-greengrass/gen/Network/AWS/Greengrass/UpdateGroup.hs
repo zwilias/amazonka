@@ -36,20 +36,16 @@ module Network.AWS.Greengrass.UpdateGroup
     ) where
 
 import Network.AWS.Greengrass.Types
-import Network.AWS.Greengrass.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 
 -- | /See:/ 'updateGroup' smart constructor.
-data UpdateGroup =
-  UpdateGroup'
-    { _ugName    :: !(Maybe Text)
-    , _ugGroupId :: !Text
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data UpdateGroup = UpdateGroup'{_ugName ::
+                                !(Maybe Text),
+                                _ugGroupId :: !Text}
+                     deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'UpdateGroup' with the minimum fields required to make a request.
 --
@@ -61,8 +57,9 @@ data UpdateGroup =
 updateGroup
     :: Text -- ^ 'ugGroupId'
     -> UpdateGroup
-updateGroup pGroupId_ = UpdateGroup' {_ugName = Nothing, _ugGroupId = pGroupId_}
-
+updateGroup pGroupId_
+  = UpdateGroup'{_ugName = Nothing,
+                 _ugGroupId = pGroupId_}
 
 -- | The name of the definition.
 ugName :: Lens' UpdateGroup (Maybe Text)
@@ -103,12 +100,10 @@ instance ToQuery UpdateGroup where
         toQuery = const mempty
 
 -- | /See:/ 'updateGroupResponse' smart constructor.
-newtype UpdateGroupResponse =
-  UpdateGroupResponse'
-    { _ugrsResponseStatus :: Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+newtype UpdateGroupResponse = UpdateGroupResponse'{_ugrsResponseStatus
+                                                   :: Int}
+                                deriving (Eq, Read, Show, Data, Typeable,
+                                          Generic)
 
 -- | Creates a value of 'UpdateGroupResponse' with the minimum fields required to make a request.
 --
@@ -118,9 +113,9 @@ newtype UpdateGroupResponse =
 updateGroupResponse
     :: Int -- ^ 'ugrsResponseStatus'
     -> UpdateGroupResponse
-updateGroupResponse pResponseStatus_ =
-  UpdateGroupResponse' {_ugrsResponseStatus = pResponseStatus_}
-
+updateGroupResponse pResponseStatus_
+  = UpdateGroupResponse'{_ugrsResponseStatus =
+                           pResponseStatus_}
 
 -- | -- | The response status code.
 ugrsResponseStatus :: Lens' UpdateGroupResponse Int

@@ -43,21 +43,25 @@ module Network.AWS.EC2.ModifyInstanceCreditSpecification
     ) where
 
 import Network.AWS.EC2.Types
-import Network.AWS.EC2.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 
 -- | /See:/ 'modifyInstanceCreditSpecification' smart constructor.
-data ModifyInstanceCreditSpecification =
-  ModifyInstanceCreditSpecification'
-    { _micsClientToken                  :: !(Maybe Text)
-    , _micsDryRun                       :: !(Maybe Bool)
-    , _micsInstanceCreditSpecifications :: ![InstanceCreditSpecificationRequest]
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data ModifyInstanceCreditSpecification = ModifyInstanceCreditSpecification'{_micsClientToken
+                                                                            ::
+                                                                            !(Maybe
+                                                                                Text),
+                                                                            _micsDryRun
+                                                                            ::
+                                                                            !(Maybe
+                                                                                Bool),
+                                                                            _micsInstanceCreditSpecifications
+                                                                            ::
+                                                                            ![InstanceCreditSpecificationRequest]}
+                                           deriving (Eq, Read, Show, Data,
+                                                     Typeable, Generic)
 
 -- | Creates a value of 'ModifyInstanceCreditSpecification' with the minimum fields required to make a request.
 --
@@ -70,13 +74,12 @@ data ModifyInstanceCreditSpecification =
 -- * 'micsInstanceCreditSpecifications' - Information about the credit option for CPU usage.
 modifyInstanceCreditSpecification
     :: ModifyInstanceCreditSpecification
-modifyInstanceCreditSpecification =
-  ModifyInstanceCreditSpecification'
-    { _micsClientToken = Nothing
-    , _micsDryRun = Nothing
-    , _micsInstanceCreditSpecifications = mempty
-    }
-
+modifyInstanceCreditSpecification
+  = ModifyInstanceCreditSpecification'{_micsClientToken
+                                         = Nothing,
+                                       _micsDryRun = Nothing,
+                                       _micsInstanceCreditSpecifications =
+                                         mempty}
 
 -- | A unique, case-sensitive token that you provide to ensure idempotency of your modification request. For more information, see <https://docs.aws.amazon.com/AWSEC2/latest/APIReference/Run_Instance_Idempotency.html Ensuring Idempotency> .
 micsClientToken :: Lens' ModifyInstanceCreditSpecification (Maybe Text)
@@ -135,14 +138,20 @@ instance ToQuery ModifyInstanceCreditSpecification
                  _micsInstanceCreditSpecifications]
 
 -- | /See:/ 'modifyInstanceCreditSpecificationResponse' smart constructor.
-data ModifyInstanceCreditSpecificationResponse =
-  ModifyInstanceCreditSpecificationResponse'
-    { _micsrsUnsuccessfulInstanceCreditSpecifications :: !(Maybe [UnsuccessfulInstanceCreditSpecificationItem])
-    , _micsrsSuccessfulInstanceCreditSpecifications :: !(Maybe [SuccessfulInstanceCreditSpecificationItem])
-    , _micsrsResponseStatus :: !Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data ModifyInstanceCreditSpecificationResponse = ModifyInstanceCreditSpecificationResponse'{_micsrsUnsuccessfulInstanceCreditSpecifications
+                                                                                            ::
+                                                                                            !(Maybe
+                                                                                                [UnsuccessfulInstanceCreditSpecificationItem]),
+                                                                                            _micsrsSuccessfulInstanceCreditSpecifications
+                                                                                            ::
+                                                                                            !(Maybe
+                                                                                                [SuccessfulInstanceCreditSpecificationItem]),
+                                                                                            _micsrsResponseStatus
+                                                                                            ::
+                                                                                            !Int}
+                                                   deriving (Eq, Read, Show,
+                                                             Data, Typeable,
+                                                             Generic)
 
 -- | Creates a value of 'ModifyInstanceCreditSpecificationResponse' with the minimum fields required to make a request.
 --
@@ -156,13 +165,14 @@ data ModifyInstanceCreditSpecificationResponse =
 modifyInstanceCreditSpecificationResponse
     :: Int -- ^ 'micsrsResponseStatus'
     -> ModifyInstanceCreditSpecificationResponse
-modifyInstanceCreditSpecificationResponse pResponseStatus_ =
-  ModifyInstanceCreditSpecificationResponse'
-    { _micsrsUnsuccessfulInstanceCreditSpecifications = Nothing
-    , _micsrsSuccessfulInstanceCreditSpecifications = Nothing
-    , _micsrsResponseStatus = pResponseStatus_
-    }
-
+modifyInstanceCreditSpecificationResponse
+  pResponseStatus_
+  = ModifyInstanceCreditSpecificationResponse'{_micsrsUnsuccessfulInstanceCreditSpecifications
+                                                 = Nothing,
+                                               _micsrsSuccessfulInstanceCreditSpecifications
+                                                 = Nothing,
+                                               _micsrsResponseStatus =
+                                                 pResponseStatus_}
 
 -- | Information about the instances whose credit option for CPU usage was not modified.
 micsrsUnsuccessfulInstanceCreditSpecifications :: Lens' ModifyInstanceCreditSpecificationResponse [UnsuccessfulInstanceCreditSpecificationItem]

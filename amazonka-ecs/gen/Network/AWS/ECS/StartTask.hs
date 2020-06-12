@@ -47,25 +47,22 @@ module Network.AWS.ECS.StartTask
     ) where
 
 import Network.AWS.ECS.Types
-import Network.AWS.ECS.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 
 -- | /See:/ 'startTask' smart constructor.
-data StartTask =
-  StartTask'
-    { _sOverrides            :: !(Maybe TaskOverride)
-    , _sGroup                :: !(Maybe Text)
-    , _sCluster              :: !(Maybe Text)
-    , _sStartedBy            :: !(Maybe Text)
-    , _sNetworkConfiguration :: !(Maybe NetworkConfiguration)
-    , _sTaskDefinition       :: !Text
-    , _sContainerInstances   :: ![Text]
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data StartTask = StartTask'{_sOverrides ::
+                            !(Maybe TaskOverride),
+                            _sGroup :: !(Maybe Text),
+                            _sCluster :: !(Maybe Text),
+                            _sStartedBy :: !(Maybe Text),
+                            _sNetworkConfiguration ::
+                            !(Maybe NetworkConfiguration),
+                            _sTaskDefinition :: !Text,
+                            _sContainerInstances :: ![Text]}
+                   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'StartTask' with the minimum fields required to make a request.
 --
@@ -87,17 +84,13 @@ data StartTask =
 startTask
     :: Text -- ^ 'sTaskDefinition'
     -> StartTask
-startTask pTaskDefinition_ =
-  StartTask'
-    { _sOverrides = Nothing
-    , _sGroup = Nothing
-    , _sCluster = Nothing
-    , _sStartedBy = Nothing
-    , _sNetworkConfiguration = Nothing
-    , _sTaskDefinition = pTaskDefinition_
-    , _sContainerInstances = mempty
-    }
-
+startTask pTaskDefinition_
+  = StartTask'{_sOverrides = Nothing,
+               _sGroup = Nothing, _sCluster = Nothing,
+               _sStartedBy = Nothing,
+               _sNetworkConfiguration = Nothing,
+               _sTaskDefinition = pTaskDefinition_,
+               _sContainerInstances = mempty}
 
 -- | A list of container overrides in JSON format that specify the name of a container in the specified task definition and the overrides it should receive. You can override the default command for a container (that is specified in the task definition or Docker image) with a @command@ override. You can also override existing environment variables (that are specified in the task definition or Docker image) on a container or add new environment variables to it with an @environment@ override.
 sOverrides :: Lens' StartTask (Maybe TaskOverride)
@@ -172,14 +165,11 @@ instance ToQuery StartTask where
         toQuery = const mempty
 
 -- | /See:/ 'startTaskResponse' smart constructor.
-data StartTaskResponse =
-  StartTaskResponse'
-    { _strsFailures       :: !(Maybe [Failure])
-    , _strsTasks          :: !(Maybe [Task])
-    , _strsResponseStatus :: !Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data StartTaskResponse = StartTaskResponse'{_strsFailures
+                                            :: !(Maybe [Failure]),
+                                            _strsTasks :: !(Maybe [Task]),
+                                            _strsResponseStatus :: !Int}
+                           deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'StartTaskResponse' with the minimum fields required to make a request.
 --
@@ -193,13 +183,10 @@ data StartTaskResponse =
 startTaskResponse
     :: Int -- ^ 'strsResponseStatus'
     -> StartTaskResponse
-startTaskResponse pResponseStatus_ =
-  StartTaskResponse'
-    { _strsFailures = Nothing
-    , _strsTasks = Nothing
-    , _strsResponseStatus = pResponseStatus_
-    }
-
+startTaskResponse pResponseStatus_
+  = StartTaskResponse'{_strsFailures = Nothing,
+                       _strsTasks = Nothing,
+                       _strsResponseStatus = pResponseStatus_}
 
 -- | Any failures associated with the call.
 strsFailures :: Lens' StartTaskResponse [Failure]

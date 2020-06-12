@@ -43,23 +43,19 @@ module Network.AWS.IoT.SearchIndex
     ) where
 
 import Network.AWS.IoT.Types
-import Network.AWS.IoT.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 
 -- | /See:/ 'searchIndex' smart constructor.
-data SearchIndex =
-  SearchIndex'
-    { _siQueryVersion :: !(Maybe Text)
-    , _siNextToken    :: !(Maybe Text)
-    , _siMaxResults   :: !(Maybe Nat)
-    , _siIndexName    :: !(Maybe Text)
-    , _siQueryString  :: !Text
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data SearchIndex = SearchIndex'{_siQueryVersion ::
+                                !(Maybe Text),
+                                _siNextToken :: !(Maybe Text),
+                                _siMaxResults :: !(Maybe Nat),
+                                _siIndexName :: !(Maybe Text),
+                                _siQueryString :: !Text}
+                     deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'SearchIndex' with the minimum fields required to make a request.
 --
@@ -77,15 +73,11 @@ data SearchIndex =
 searchIndex
     :: Text -- ^ 'siQueryString'
     -> SearchIndex
-searchIndex pQueryString_ =
-  SearchIndex'
-    { _siQueryVersion = Nothing
-    , _siNextToken = Nothing
-    , _siMaxResults = Nothing
-    , _siIndexName = Nothing
-    , _siQueryString = pQueryString_
-    }
-
+searchIndex pQueryString_
+  = SearchIndex'{_siQueryVersion = Nothing,
+                 _siNextToken = Nothing, _siMaxResults = Nothing,
+                 _siIndexName = Nothing,
+                 _siQueryString = pQueryString_}
 
 -- | The query version.
 siQueryVersion :: Lens' SearchIndex (Maybe Text)
@@ -141,14 +133,12 @@ instance ToQuery SearchIndex where
         toQuery = const mempty
 
 -- | /See:/ 'searchIndexResponse' smart constructor.
-data SearchIndexResponse =
-  SearchIndexResponse'
-    { _sirsNextToken      :: !(Maybe Text)
-    , _sirsThings         :: !(Maybe [ThingDocument])
-    , _sirsResponseStatus :: !Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data SearchIndexResponse = SearchIndexResponse'{_sirsNextToken
+                                                :: !(Maybe Text),
+                                                _sirsThings ::
+                                                !(Maybe [ThingDocument]),
+                                                _sirsResponseStatus :: !Int}
+                             deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'SearchIndexResponse' with the minimum fields required to make a request.
 --
@@ -162,13 +152,10 @@ data SearchIndexResponse =
 searchIndexResponse
     :: Int -- ^ 'sirsResponseStatus'
     -> SearchIndexResponse
-searchIndexResponse pResponseStatus_ =
-  SearchIndexResponse'
-    { _sirsNextToken = Nothing
-    , _sirsThings = Nothing
-    , _sirsResponseStatus = pResponseStatus_
-    }
-
+searchIndexResponse pResponseStatus_
+  = SearchIndexResponse'{_sirsNextToken = Nothing,
+                         _sirsThings = Nothing,
+                         _sirsResponseStatus = pResponseStatus_}
 
 -- | The token used to get the next set of results, or __null__ if there are no additional results.
 sirsNextToken :: Lens' SearchIndexResponse (Maybe Text)

@@ -38,7 +38,6 @@ module Network.AWS.CodePipeline.UpdatePipeline
     ) where
 
 import Network.AWS.CodePipeline.Types
-import Network.AWS.CodePipeline.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.Request
@@ -49,12 +48,9 @@ import Network.AWS.Response
 --
 --
 -- /See:/ 'updatePipeline' smart constructor.
-newtype UpdatePipeline =
-  UpdatePipeline'
-    { _upPipeline :: PipelineDeclaration
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+newtype UpdatePipeline = UpdatePipeline'{_upPipeline
+                                         :: PipelineDeclaration}
+                           deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'UpdatePipeline' with the minimum fields required to make a request.
 --
@@ -64,8 +60,8 @@ newtype UpdatePipeline =
 updatePipeline
     :: PipelineDeclaration -- ^ 'upPipeline'
     -> UpdatePipeline
-updatePipeline pPipeline_ = UpdatePipeline' {_upPipeline = pPipeline_}
-
+updatePipeline pPipeline_
+  = UpdatePipeline'{_upPipeline = pPipeline_}
 
 -- | The name of the pipeline to be updated.
 upPipeline :: Lens' UpdatePipeline PipelineDeclaration
@@ -110,13 +106,14 @@ instance ToQuery UpdatePipeline where
 --
 --
 -- /See:/ 'updatePipelineResponse' smart constructor.
-data UpdatePipelineResponse =
-  UpdatePipelineResponse'
-    { _uprsPipeline       :: !(Maybe PipelineDeclaration)
-    , _uprsResponseStatus :: !Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data UpdatePipelineResponse = UpdatePipelineResponse'{_uprsPipeline
+                                                      ::
+                                                      !(Maybe
+                                                          PipelineDeclaration),
+                                                      _uprsResponseStatus ::
+                                                      !Int}
+                                deriving (Eq, Read, Show, Data, Typeable,
+                                          Generic)
 
 -- | Creates a value of 'UpdatePipelineResponse' with the minimum fields required to make a request.
 --
@@ -128,10 +125,9 @@ data UpdatePipelineResponse =
 updatePipelineResponse
     :: Int -- ^ 'uprsResponseStatus'
     -> UpdatePipelineResponse
-updatePipelineResponse pResponseStatus_ =
-  UpdatePipelineResponse'
-    {_uprsPipeline = Nothing, _uprsResponseStatus = pResponseStatus_}
-
+updatePipelineResponse pResponseStatus_
+  = UpdatePipelineResponse'{_uprsPipeline = Nothing,
+                            _uprsResponseStatus = pResponseStatus_}
 
 -- | The structure of the updated pipeline.
 uprsPipeline :: Lens' UpdatePipelineResponse (Maybe PipelineDeclaration)

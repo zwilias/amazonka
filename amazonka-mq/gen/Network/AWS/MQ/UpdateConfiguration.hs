@@ -43,7 +43,6 @@ module Network.AWS.MQ.UpdateConfiguration
 
 import Network.AWS.Lens
 import Network.AWS.MQ.Types
-import Network.AWS.MQ.Types.Product
 import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
@@ -51,14 +50,11 @@ import Network.AWS.Response
 -- | Updates the specified configuration.
 --
 -- /See:/ 'updateConfiguration' smart constructor.
-data UpdateConfiguration =
-  UpdateConfiguration'
-    { _ucData            :: !(Maybe Text)
-    , _ucDescription     :: !(Maybe Text)
-    , _ucConfigurationId :: !Text
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data UpdateConfiguration = UpdateConfiguration'{_ucData
+                                                :: !(Maybe Text),
+                                                _ucDescription :: !(Maybe Text),
+                                                _ucConfigurationId :: !Text}
+                             deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'UpdateConfiguration' with the minimum fields required to make a request.
 --
@@ -72,13 +68,10 @@ data UpdateConfiguration =
 updateConfiguration
     :: Text -- ^ 'ucConfigurationId'
     -> UpdateConfiguration
-updateConfiguration pConfigurationId_ =
-  UpdateConfiguration'
-    { _ucData = Nothing
-    , _ucDescription = Nothing
-    , _ucConfigurationId = pConfigurationId_
-    }
-
+updateConfiguration pConfigurationId_
+  = UpdateConfiguration'{_ucData = Nothing,
+                         _ucDescription = Nothing,
+                         _ucConfigurationId = pConfigurationId_}
 
 -- | Required. The base64-encoded XML configuration.
 ucData :: Lens' UpdateConfiguration (Maybe Text)
@@ -133,17 +126,24 @@ instance ToQuery UpdateConfiguration where
         toQuery = const mempty
 
 -- | /See:/ 'updateConfigurationResponse' smart constructor.
-data UpdateConfigurationResponse =
-  UpdateConfigurationResponse'
-    { _ucrsARN            :: !(Maybe Text)
-    , _ucrsLatestRevision :: !(Maybe ConfigurationRevision)
-    , _ucrsWarnings       :: !(Maybe [SanitizationWarning])
-    , _ucrsName           :: !(Maybe Text)
-    , _ucrsId             :: !(Maybe Text)
-    , _ucrsResponseStatus :: !Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data UpdateConfigurationResponse = UpdateConfigurationResponse'{_ucrsARN
+                                                                ::
+                                                                !(Maybe Text),
+                                                                _ucrsLatestRevision
+                                                                ::
+                                                                !(Maybe
+                                                                    ConfigurationRevision),
+                                                                _ucrsWarnings ::
+                                                                !(Maybe
+                                                                    [SanitizationWarning]),
+                                                                _ucrsName ::
+                                                                !(Maybe Text),
+                                                                _ucrsId ::
+                                                                !(Maybe Text),
+                                                                _ucrsResponseStatus
+                                                                :: !Int}
+                                     deriving (Eq, Read, Show, Data, Typeable,
+                                               Generic)
 
 -- | Creates a value of 'UpdateConfigurationResponse' with the minimum fields required to make a request.
 --
@@ -163,16 +163,12 @@ data UpdateConfigurationResponse =
 updateConfigurationResponse
     :: Int -- ^ 'ucrsResponseStatus'
     -> UpdateConfigurationResponse
-updateConfigurationResponse pResponseStatus_ =
-  UpdateConfigurationResponse'
-    { _ucrsARN = Nothing
-    , _ucrsLatestRevision = Nothing
-    , _ucrsWarnings = Nothing
-    , _ucrsName = Nothing
-    , _ucrsId = Nothing
-    , _ucrsResponseStatus = pResponseStatus_
-    }
-
+updateConfigurationResponse pResponseStatus_
+  = UpdateConfigurationResponse'{_ucrsARN = Nothing,
+                                 _ucrsLatestRevision = Nothing,
+                                 _ucrsWarnings = Nothing, _ucrsName = Nothing,
+                                 _ucrsId = Nothing,
+                                 _ucrsResponseStatus = pResponseStatus_}
 
 -- | Required. The Amazon Resource Name (ARN) of the configuration.
 ucrsARN :: Lens' UpdateConfigurationResponse (Maybe Text)

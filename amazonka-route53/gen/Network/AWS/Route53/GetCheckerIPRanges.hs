@@ -40,20 +40,16 @@ import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 import Network.AWS.Route53.Types
-import Network.AWS.Route53.Types.Product
 
 -- | /See:/ 'getCheckerIPRanges' smart constructor.
-data GetCheckerIPRanges =
-  GetCheckerIPRanges'
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data GetCheckerIPRanges = GetCheckerIPRanges'
+                            deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'GetCheckerIPRanges' with the minimum fields required to make a request.
 --
 getCheckerIPRanges
     :: GetCheckerIPRanges
 getCheckerIPRanges = GetCheckerIPRanges'
-
 
 instance AWSRequest GetCheckerIPRanges where
         type Rs GetCheckerIPRanges =
@@ -81,13 +77,12 @@ instance ToQuery GetCheckerIPRanges where
         toQuery = const mempty
 
 -- | /See:/ 'getCheckerIPRangesResponse' smart constructor.
-data GetCheckerIPRangesResponse =
-  GetCheckerIPRangesResponse'
-    { _gcirrsResponseStatus  :: !Int
-    , _gcirrsCheckerIPRanges :: ![Text]
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data GetCheckerIPRangesResponse = GetCheckerIPRangesResponse'{_gcirrsResponseStatus
+                                                              :: !Int,
+                                                              _gcirrsCheckerIPRanges
+                                                              :: ![Text]}
+                                    deriving (Eq, Read, Show, Data, Typeable,
+                                              Generic)
 
 -- | Creates a value of 'GetCheckerIPRangesResponse' with the minimum fields required to make a request.
 --
@@ -99,10 +94,10 @@ data GetCheckerIPRangesResponse =
 getCheckerIPRangesResponse
     :: Int -- ^ 'gcirrsResponseStatus'
     -> GetCheckerIPRangesResponse
-getCheckerIPRangesResponse pResponseStatus_ =
-  GetCheckerIPRangesResponse'
-    {_gcirrsResponseStatus = pResponseStatus_, _gcirrsCheckerIPRanges = mempty}
-
+getCheckerIPRangesResponse pResponseStatus_
+  = GetCheckerIPRangesResponse'{_gcirrsResponseStatus =
+                                  pResponseStatus_,
+                                _gcirrsCheckerIPRanges = mempty}
 
 -- | -- | The response status code.
 gcirrsResponseStatus :: Lens' GetCheckerIPRangesResponse Int

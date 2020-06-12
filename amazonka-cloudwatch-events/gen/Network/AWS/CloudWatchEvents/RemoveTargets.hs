@@ -46,22 +46,17 @@ module Network.AWS.CloudWatchEvents.RemoveTargets
     ) where
 
 import Network.AWS.CloudWatchEvents.Types
-import Network.AWS.CloudWatchEvents.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 
 -- | /See:/ 'removeTargets' smart constructor.
-data RemoveTargets =
-  RemoveTargets'
-    { _rtForce        :: !(Maybe Bool)
-    , _rtEventBusName :: !(Maybe Text)
-    , _rtRule         :: !Text
-    , _rtIds          :: !(List1 Text)
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data RemoveTargets = RemoveTargets'{_rtForce ::
+                                    !(Maybe Bool),
+                                    _rtEventBusName :: !(Maybe Text),
+                                    _rtRule :: !Text, _rtIds :: !(List1 Text)}
+                       deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'RemoveTargets' with the minimum fields required to make a request.
 --
@@ -78,14 +73,10 @@ removeTargets
     :: Text -- ^ 'rtRule'
     -> NonEmpty Text -- ^ 'rtIds'
     -> RemoveTargets
-removeTargets pRule_ pIds_ =
-  RemoveTargets'
-    { _rtForce = Nothing
-    , _rtEventBusName = Nothing
-    , _rtRule = pRule_
-    , _rtIds = _List1 # pIds_
-    }
-
+removeTargets pRule_ pIds_
+  = RemoveTargets'{_rtForce = Nothing,
+                   _rtEventBusName = Nothing, _rtRule = pRule_,
+                   _rtIds = _List1 # pIds_}
 
 -- | If this is a managed rule created by an AWS service on your behalf, you must specify @Force@ as @True@ to remove targets. This parameter is ignored for rules that aren't managed rules. You can check whether a rule is a managed rule by using @DescribeRule@ or @ListRules@ and checking the @ManagedBy@ field of the response.
 rtForce :: Lens' RemoveTargets (Maybe Bool)
@@ -142,14 +133,14 @@ instance ToQuery RemoveTargets where
         toQuery = const mempty
 
 -- | /See:/ 'removeTargetsResponse' smart constructor.
-data RemoveTargetsResponse =
-  RemoveTargetsResponse'
-    { _rtrsFailedEntryCount :: !(Maybe Int)
-    , _rtrsFailedEntries    :: !(Maybe [RemoveTargetsResultEntry])
-    , _rtrsResponseStatus   :: !Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data RemoveTargetsResponse = RemoveTargetsResponse'{_rtrsFailedEntryCount
+                                                    :: !(Maybe Int),
+                                                    _rtrsFailedEntries ::
+                                                    !(Maybe
+                                                        [RemoveTargetsResultEntry]),
+                                                    _rtrsResponseStatus :: !Int}
+                               deriving (Eq, Read, Show, Data, Typeable,
+                                         Generic)
 
 -- | Creates a value of 'RemoveTargetsResponse' with the minimum fields required to make a request.
 --
@@ -163,13 +154,11 @@ data RemoveTargetsResponse =
 removeTargetsResponse
     :: Int -- ^ 'rtrsResponseStatus'
     -> RemoveTargetsResponse
-removeTargetsResponse pResponseStatus_ =
-  RemoveTargetsResponse'
-    { _rtrsFailedEntryCount = Nothing
-    , _rtrsFailedEntries = Nothing
-    , _rtrsResponseStatus = pResponseStatus_
-    }
-
+removeTargetsResponse pResponseStatus_
+  = RemoveTargetsResponse'{_rtrsFailedEntryCount =
+                             Nothing,
+                           _rtrsFailedEntries = Nothing,
+                           _rtrsResponseStatus = pResponseStatus_}
 
 -- | The number of failed entries.
 rtrsFailedEntryCount :: Lens' RemoveTargetsResponse (Maybe Int)

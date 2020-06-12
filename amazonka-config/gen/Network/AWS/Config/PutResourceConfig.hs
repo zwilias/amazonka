@@ -18,7 +18,7 @@
 -- Stability   : auto-generated
 -- Portability : non-portable (GHC extensions)
 --
--- Records the configuration state for the resource provided in the request. The configuration state of a resource is represented in AWS Config as Configuration Items. Once this API records the configuration item, you can retrieve the list of configuration items for the custom resource type using existing AWS Config APIs.
+-- Records the configuration state for the resource provided in the request. The configuration state of a resource is represented in AWS Config as Configuration Items. Once this API records the configuration item, you can retrieve the list of configuration items for the custom resource type using existing AWS Config APIs. 
 --
 --
 module Network.AWS.Config.PutResourceConfig
@@ -40,24 +40,21 @@ module Network.AWS.Config.PutResourceConfig
     ) where
 
 import Network.AWS.Config.Types
-import Network.AWS.Config.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 
 -- | /See:/ 'putResourceConfig' smart constructor.
-data PutResourceConfig =
-  PutResourceConfig'
-    { _prcResourceName    :: !(Maybe Text)
-    , _prcTags            :: !(Maybe (Map Text Text))
-    , _prcResourceType    :: !Text
-    , _prcSchemaVersionId :: !Text
-    , _prcResourceId      :: !Text
-    , _prcConfiguration   :: !Text
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data PutResourceConfig = PutResourceConfig'{_prcResourceName
+                                            :: !(Maybe Text),
+                                            _prcTags ::
+                                            !(Maybe (Map Text Text)),
+                                            _prcResourceType :: !Text,
+                                            _prcSchemaVersionId :: !Text,
+                                            _prcResourceId :: !Text,
+                                            _prcConfiguration :: !Text}
+                           deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'PutResourceConfig' with the minimum fields required to make a request.
 --
@@ -67,7 +64,7 @@ data PutResourceConfig =
 --
 -- * 'prcTags' - Tags associated with the resource.
 --
--- * 'prcResourceType' - The type of the resource. The custom resource type must be registered with AWS CloudFormation.
+-- * 'prcResourceType' - The type of the resource. The custom resource type must be registered with AWS CloudFormation. 
 --
 -- * 'prcSchemaVersionId' - Version of the schema registered for the ResourceType in AWS CloudFormation.
 --
@@ -80,16 +77,14 @@ putResourceConfig
     -> Text -- ^ 'prcResourceId'
     -> Text -- ^ 'prcConfiguration'
     -> PutResourceConfig
-putResourceConfig pResourceType_ pSchemaVersionId_ pResourceId_ pConfiguration_ =
-  PutResourceConfig'
-    { _prcResourceName = Nothing
-    , _prcTags = Nothing
-    , _prcResourceType = pResourceType_
-    , _prcSchemaVersionId = pSchemaVersionId_
-    , _prcResourceId = pResourceId_
-    , _prcConfiguration = pConfiguration_
-    }
-
+putResourceConfig pResourceType_ pSchemaVersionId_
+  pResourceId_ pConfiguration_
+  = PutResourceConfig'{_prcResourceName = Nothing,
+                       _prcTags = Nothing,
+                       _prcResourceType = pResourceType_,
+                       _prcSchemaVersionId = pSchemaVersionId_,
+                       _prcResourceId = pResourceId_,
+                       _prcConfiguration = pConfiguration_}
 
 -- | Name of the resource.
 prcResourceName :: Lens' PutResourceConfig (Maybe Text)
@@ -99,7 +94,7 @@ prcResourceName = lens _prcResourceName (\ s a -> s{_prcResourceName = a})
 prcTags :: Lens' PutResourceConfig (HashMap Text Text)
 prcTags = lens _prcTags (\ s a -> s{_prcTags = a}) . _Default . _Map
 
--- | The type of the resource. The custom resource type must be registered with AWS CloudFormation.
+-- | The type of the resource. The custom resource type must be registered with AWS CloudFormation. 
 prcResourceType :: Lens' PutResourceConfig Text
 prcResourceType = lens _prcResourceType (\ s a -> s{_prcResourceType = a})
 
@@ -152,16 +147,15 @@ instance ToQuery PutResourceConfig where
         toQuery = const mempty
 
 -- | /See:/ 'putResourceConfigResponse' smart constructor.
-data PutResourceConfigResponse =
-  PutResourceConfigResponse'
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data PutResourceConfigResponse = PutResourceConfigResponse'
+                                   deriving (Eq, Read, Show, Data, Typeable,
+                                             Generic)
 
 -- | Creates a value of 'PutResourceConfigResponse' with the minimum fields required to make a request.
 --
 putResourceConfigResponse
     :: PutResourceConfigResponse
-putResourceConfigResponse = PutResourceConfigResponse'
-
+putResourceConfigResponse
+  = PutResourceConfigResponse'
 
 instance NFData PutResourceConfigResponse where

@@ -47,24 +47,30 @@ module Network.AWS.RDS.ModifyDBClusterSnapshotAttribute
 import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.RDS.Types
-import Network.AWS.RDS.Types.Product
 import Network.AWS.Request
 import Network.AWS.Response
 
--- |
+-- | 
 --
 --
 --
 -- /See:/ 'modifyDBClusterSnapshotAttribute' smart constructor.
-data ModifyDBClusterSnapshotAttribute =
-  ModifyDBClusterSnapshotAttribute'
-    { _mdcsaValuesToAdd                 :: !(Maybe [Text])
-    , _mdcsaValuesToRemove              :: !(Maybe [Text])
-    , _mdcsaDBClusterSnapshotIdentifier :: !Text
-    , _mdcsaAttributeName               :: !Text
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data ModifyDBClusterSnapshotAttribute = ModifyDBClusterSnapshotAttribute'{_mdcsaValuesToAdd
+                                                                          ::
+                                                                          !(Maybe
+                                                                              [Text]),
+                                                                          _mdcsaValuesToRemove
+                                                                          ::
+                                                                          !(Maybe
+                                                                              [Text]),
+                                                                          _mdcsaDBClusterSnapshotIdentifier
+                                                                          ::
+                                                                          !Text,
+                                                                          _mdcsaAttributeName
+                                                                          ::
+                                                                          !Text}
+                                          deriving (Eq, Read, Show, Data,
+                                                    Typeable, Generic)
 
 -- | Creates a value of 'ModifyDBClusterSnapshotAttribute' with the minimum fields required to make a request.
 --
@@ -81,14 +87,14 @@ modifyDBClusterSnapshotAttribute
     :: Text -- ^ 'mdcsaDBClusterSnapshotIdentifier'
     -> Text -- ^ 'mdcsaAttributeName'
     -> ModifyDBClusterSnapshotAttribute
-modifyDBClusterSnapshotAttribute pDBClusterSnapshotIdentifier_ pAttributeName_ =
-  ModifyDBClusterSnapshotAttribute'
-    { _mdcsaValuesToAdd = Nothing
-    , _mdcsaValuesToRemove = Nothing
-    , _mdcsaDBClusterSnapshotIdentifier = pDBClusterSnapshotIdentifier_
-    , _mdcsaAttributeName = pAttributeName_
-    }
-
+modifyDBClusterSnapshotAttribute
+  pDBClusterSnapshotIdentifier_ pAttributeName_
+  = ModifyDBClusterSnapshotAttribute'{_mdcsaValuesToAdd
+                                        = Nothing,
+                                      _mdcsaValuesToRemove = Nothing,
+                                      _mdcsaDBClusterSnapshotIdentifier =
+                                        pDBClusterSnapshotIdentifier_,
+                                      _mdcsaAttributeName = pAttributeName_}
 
 -- | A list of DB cluster snapshot attributes to add to the attribute specified by @AttributeName@ . To authorize other AWS accounts to copy or restore a manual DB cluster snapshot, set this list to include one or more AWS account IDs, or @all@ to make the manual DB cluster snapshot restorable by any AWS account. Do not add the @all@ value for any manual DB cluster snapshots that contain private information that you don't want available to all AWS accounts.
 mdcsaValuesToAdd :: Lens' ModifyDBClusterSnapshotAttribute [Text]
@@ -152,13 +158,16 @@ instance ToQuery ModifyDBClusterSnapshotAttribute
                "AttributeName" =: _mdcsaAttributeName]
 
 -- | /See:/ 'modifyDBClusterSnapshotAttributeResponse' smart constructor.
-data ModifyDBClusterSnapshotAttributeResponse =
-  ModifyDBClusterSnapshotAttributeResponse'
-    { _mdcsarsDBClusterSnapshotAttributesResult :: !(Maybe DBClusterSnapshotAttributesResult)
-    , _mdcsarsResponseStatus :: !Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data ModifyDBClusterSnapshotAttributeResponse = ModifyDBClusterSnapshotAttributeResponse'{_mdcsarsDBClusterSnapshotAttributesResult
+                                                                                          ::
+                                                                                          !(Maybe
+                                                                                              DBClusterSnapshotAttributesResult),
+                                                                                          _mdcsarsResponseStatus
+                                                                                          ::
+                                                                                          !Int}
+                                                  deriving (Eq, Read, Show,
+                                                            Data, Typeable,
+                                                            Generic)
 
 -- | Creates a value of 'ModifyDBClusterSnapshotAttributeResponse' with the minimum fields required to make a request.
 --
@@ -170,12 +179,12 @@ data ModifyDBClusterSnapshotAttributeResponse =
 modifyDBClusterSnapshotAttributeResponse
     :: Int -- ^ 'mdcsarsResponseStatus'
     -> ModifyDBClusterSnapshotAttributeResponse
-modifyDBClusterSnapshotAttributeResponse pResponseStatus_ =
-  ModifyDBClusterSnapshotAttributeResponse'
-    { _mdcsarsDBClusterSnapshotAttributesResult = Nothing
-    , _mdcsarsResponseStatus = pResponseStatus_
-    }
-
+modifyDBClusterSnapshotAttributeResponse
+  pResponseStatus_
+  = ModifyDBClusterSnapshotAttributeResponse'{_mdcsarsDBClusterSnapshotAttributesResult
+                                                = Nothing,
+                                              _mdcsarsResponseStatus =
+                                                pResponseStatus_}
 
 -- | Undocumented member.
 mdcsarsDBClusterSnapshotAttributesResult :: Lens' ModifyDBClusterSnapshotAttributeResponse (Maybe DBClusterSnapshotAttributesResult)

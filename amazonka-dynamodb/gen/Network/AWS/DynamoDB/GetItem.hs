@@ -47,7 +47,6 @@ module Network.AWS.DynamoDB.GetItem
     ) where
 
 import Network.AWS.DynamoDB.Types
-import Network.AWS.DynamoDB.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.Request
@@ -58,18 +57,17 @@ import Network.AWS.Response
 --
 --
 -- /See:/ 'getItem' smart constructor.
-data GetItem =
-  GetItem'
-    { _giProjectionExpression     :: !(Maybe Text)
-    , _giAttributesToGet          :: !(Maybe (List1 Text))
-    , _giExpressionAttributeNames :: !(Maybe (Map Text Text))
-    , _giConsistentRead           :: !(Maybe Bool)
-    , _giReturnConsumedCapacity   :: !(Maybe ReturnConsumedCapacity)
-    , _giTableName                :: !Text
-    , _giKey                      :: !(Map Text AttributeValue)
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data GetItem = GetItem'{_giProjectionExpression ::
+                        !(Maybe Text),
+                        _giAttributesToGet :: !(Maybe (List1 Text)),
+                        _giExpressionAttributeNames ::
+                        !(Maybe (Map Text Text)),
+                        _giConsistentRead :: !(Maybe Bool),
+                        _giReturnConsumedCapacity ::
+                        !(Maybe ReturnConsumedCapacity),
+                        _giTableName :: !Text,
+                        _giKey :: !(Map Text AttributeValue)}
+                 deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'GetItem' with the minimum fields required to make a request.
 --
@@ -91,17 +89,13 @@ data GetItem =
 getItem
     :: Text -- ^ 'giTableName'
     -> GetItem
-getItem pTableName_ =
-  GetItem'
-    { _giProjectionExpression = Nothing
-    , _giAttributesToGet = Nothing
-    , _giExpressionAttributeNames = Nothing
-    , _giConsistentRead = Nothing
-    , _giReturnConsumedCapacity = Nothing
-    , _giTableName = pTableName_
-    , _giKey = mempty
-    }
-
+getItem pTableName_
+  = GetItem'{_giProjectionExpression = Nothing,
+             _giAttributesToGet = Nothing,
+             _giExpressionAttributeNames = Nothing,
+             _giConsistentRead = Nothing,
+             _giReturnConsumedCapacity = Nothing,
+             _giTableName = pTableName_, _giKey = mempty}
 
 -- | A string that identifies one or more attributes to retrieve from the table. These attributes can include scalars, sets, or elements of a JSON document. The attributes in the expression must be separated by commas. If no attribute names are specified, then all attributes are returned. If any of the requested attributes are not found, they do not appear in the result. For more information, see <https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/Expressions.AccessingItemAttributes.html Specifying Item Attributes> in the /Amazon DynamoDB Developer Guide/ .
 giProjectionExpression :: Lens' GetItem (Maybe Text)
@@ -181,14 +175,12 @@ instance ToQuery GetItem where
 --
 --
 -- /See:/ 'getItemResponse' smart constructor.
-data GetItemResponse =
-  GetItemResponse'
-    { _girsConsumedCapacity :: !(Maybe ConsumedCapacity)
-    , _girsItem             :: !(Maybe (Map Text AttributeValue))
-    , _girsResponseStatus   :: !Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data GetItemResponse = GetItemResponse'{_girsConsumedCapacity
+                                        :: !(Maybe ConsumedCapacity),
+                                        _girsItem ::
+                                        !(Maybe (Map Text AttributeValue)),
+                                        _girsResponseStatus :: !Int}
+                         deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'GetItemResponse' with the minimum fields required to make a request.
 --
@@ -202,13 +194,10 @@ data GetItemResponse =
 getItemResponse
     :: Int -- ^ 'girsResponseStatus'
     -> GetItemResponse
-getItemResponse pResponseStatus_ =
-  GetItemResponse'
-    { _girsConsumedCapacity = Nothing
-    , _girsItem = Nothing
-    , _girsResponseStatus = pResponseStatus_
-    }
-
+getItemResponse pResponseStatus_
+  = GetItemResponse'{_girsConsumedCapacity = Nothing,
+                     _girsItem = Nothing,
+                     _girsResponseStatus = pResponseStatus_}
 
 -- | The capacity units consumed by the @GetItem@ operation. The data returned includes the total provisioned throughput consumed, along with statistics for the table and any indexes involved in the operation. @ConsumedCapacity@ is only returned if the @ReturnConsumedCapacity@ parameter was specified. For more information, see <https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/ProvisionedThroughputIntro.html Read/Write Capacity Mode> in the /Amazon DynamoDB Developer Guide/ .
 girsConsumedCapacity :: Lens' GetItemResponse (Maybe ConsumedCapacity)

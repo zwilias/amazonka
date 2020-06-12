@@ -40,21 +40,25 @@ module Network.AWS.EC2.DisableTransitGatewayRouteTablePropagation
     ) where
 
 import Network.AWS.EC2.Types
-import Network.AWS.EC2.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 
 -- | /See:/ 'disableTransitGatewayRouteTablePropagation' smart constructor.
-data DisableTransitGatewayRouteTablePropagation =
-  DisableTransitGatewayRouteTablePropagation'
-    { _dtgrtpDryRun                     :: !(Maybe Bool)
-    , _dtgrtpTransitGatewayRouteTableId :: !Text
-    , _dtgrtpTransitGatewayAttachmentId :: !Text
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data DisableTransitGatewayRouteTablePropagation = DisableTransitGatewayRouteTablePropagation'{_dtgrtpDryRun
+                                                                                              ::
+                                                                                              !(Maybe
+                                                                                                  Bool),
+                                                                                              _dtgrtpTransitGatewayRouteTableId
+                                                                                              ::
+                                                                                              !Text,
+                                                                                              _dtgrtpTransitGatewayAttachmentId
+                                                                                              ::
+                                                                                              !Text}
+                                                    deriving (Eq, Read, Show,
+                                                              Data, Typeable,
+                                                              Generic)
 
 -- | Creates a value of 'DisableTransitGatewayRouteTablePropagation' with the minimum fields required to make a request.
 --
@@ -69,13 +73,17 @@ disableTransitGatewayRouteTablePropagation
     :: Text -- ^ 'dtgrtpTransitGatewayRouteTableId'
     -> Text -- ^ 'dtgrtpTransitGatewayAttachmentId'
     -> DisableTransitGatewayRouteTablePropagation
-disableTransitGatewayRouteTablePropagation pTransitGatewayRouteTableId_ pTransitGatewayAttachmentId_ =
-  DisableTransitGatewayRouteTablePropagation'
-    { _dtgrtpDryRun = Nothing
-    , _dtgrtpTransitGatewayRouteTableId = pTransitGatewayRouteTableId_
-    , _dtgrtpTransitGatewayAttachmentId = pTransitGatewayAttachmentId_
-    }
-
+disableTransitGatewayRouteTablePropagation
+  pTransitGatewayRouteTableId_
+  pTransitGatewayAttachmentId_
+  = DisableTransitGatewayRouteTablePropagation'{_dtgrtpDryRun
+                                                  = Nothing,
+                                                _dtgrtpTransitGatewayRouteTableId
+                                                  =
+                                                  pTransitGatewayRouteTableId_,
+                                                _dtgrtpTransitGatewayAttachmentId
+                                                  =
+                                                  pTransitGatewayAttachmentId_}
 
 -- | Checks whether you have the required permissions for the action, without actually making the request, and provides an error response. If you have the required permissions, the error response is @DryRunOperation@ . Otherwise, it is @UnauthorizedOperation@ .
 dtgrtpDryRun :: Lens' DisableTransitGatewayRouteTablePropagation (Maybe Bool)
@@ -136,13 +144,18 @@ instance ToQuery
                  _dtgrtpTransitGatewayAttachmentId]
 
 -- | /See:/ 'disableTransitGatewayRouteTablePropagationResponse' smart constructor.
-data DisableTransitGatewayRouteTablePropagationResponse =
-  DisableTransitGatewayRouteTablePropagationResponse'
-    { _dtgrtprsPropagation    :: !(Maybe TransitGatewayPropagation)
-    , _dtgrtprsResponseStatus :: !Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data DisableTransitGatewayRouteTablePropagationResponse = DisableTransitGatewayRouteTablePropagationResponse'{_dtgrtprsPropagation
+                                                                                                              ::
+                                                                                                              !(Maybe
+                                                                                                                  TransitGatewayPropagation),
+                                                                                                              _dtgrtprsResponseStatus
+                                                                                                              ::
+                                                                                                              !Int}
+                                                            deriving (Eq, Read,
+                                                                      Show,
+                                                                      Data,
+                                                                      Typeable,
+                                                                      Generic)
 
 -- | Creates a value of 'DisableTransitGatewayRouteTablePropagationResponse' with the minimum fields required to make a request.
 --
@@ -154,10 +167,12 @@ data DisableTransitGatewayRouteTablePropagationResponse =
 disableTransitGatewayRouteTablePropagationResponse
     :: Int -- ^ 'dtgrtprsResponseStatus'
     -> DisableTransitGatewayRouteTablePropagationResponse
-disableTransitGatewayRouteTablePropagationResponse pResponseStatus_ =
-  DisableTransitGatewayRouteTablePropagationResponse'
-    {_dtgrtprsPropagation = Nothing, _dtgrtprsResponseStatus = pResponseStatus_}
-
+disableTransitGatewayRouteTablePropagationResponse
+  pResponseStatus_
+  = DisableTransitGatewayRouteTablePropagationResponse'{_dtgrtprsPropagation
+                                                          = Nothing,
+                                                        _dtgrtprsResponseStatus
+                                                          = pResponseStatus_}
 
 -- | Information about route propagation.
 dtgrtprsPropagation :: Lens' DisableTransitGatewayRouteTablePropagationResponse (Maybe TransitGatewayPropagation)

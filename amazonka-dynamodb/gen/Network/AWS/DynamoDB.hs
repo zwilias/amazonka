@@ -11,13 +11,13 @@
 -- Stability   : auto-generated
 -- Portability : non-portable (GHC extensions)
 --
--- __Amazon DynamoDB__
+-- __Amazon DynamoDB__ 
 --
 -- Amazon DynamoDB is a fully managed NoSQL database service that provides fast and predictable performance with seamless scalability. DynamoDB lets you offload the administrative burdens of operating and scaling a distributed database, so that you don't have to worry about hardware provisioning, setup and configuration, replication, software patching, or cluster scaling.
 --
 -- With DynamoDB, you can create database tables that can store and retrieve any amount of data, and serve any level of request traffic. You can scale up or scale down your tables' throughput capacity without downtime or performance degradation, and use the AWS Management Console to monitor resource utilization and performance metrics.
 --
--- DynamoDB automatically spreads the data and traffic for your tables over a sufficient number of servers to handle your throughput and storage requirements, while maintaining consistent and fast performance. All of your data is stored on solid state disks (SSDs) and automatically replicated across multiple Availability Zones in an AWS region, providing built-in high availability and data durability.
+-- DynamoDB automatically spreads the data and traffic for your tables over a sufficient number of servers to handle your throughput and storage requirements, while maintaining consistent and fast performance. All of your data is stored on solid state disks (SSDs) and automatically replicated across multiple Availability Zones in an AWS region, providing built-in high availability and data durability. 
 --
 module Network.AWS.DynamoDB
     (
@@ -114,79 +114,79 @@ module Network.AWS.DynamoDB
     -- * Operations
     -- $operations
 
-    -- ** PutItem
+    -- ** PutItem 
     , module Network.AWS.DynamoDB.PutItem
 
-    -- ** DeleteItem
+    -- ** DeleteItem 
     , module Network.AWS.DynamoDB.DeleteItem
 
-    -- ** UpdateItem
+    -- ** UpdateItem 
     , module Network.AWS.DynamoDB.UpdateItem
 
-    -- ** ListGlobalTables
+    -- ** ListGlobalTables 
     , module Network.AWS.DynamoDB.ListGlobalTables
 
-    -- ** UpdateGlobalTable
+    -- ** UpdateGlobalTable 
     , module Network.AWS.DynamoDB.UpdateGlobalTable
 
-    -- ** DeleteTable
+    -- ** DeleteTable 
     , module Network.AWS.DynamoDB.DeleteTable
 
-    -- ** UpdateTable
+    -- ** UpdateTable 
     , module Network.AWS.DynamoDB.UpdateTable
 
-    -- ** BatchGetItem
+    -- ** BatchGetItem 
     , module Network.AWS.DynamoDB.BatchGetItem
 
     -- ** ListBackups (Paginated)
     , module Network.AWS.DynamoDB.ListBackups
 
-    -- ** DeleteBackup
+    -- ** DeleteBackup 
     , module Network.AWS.DynamoDB.DeleteBackup
 
-    -- ** CreateBackup
+    -- ** CreateBackup 
     , module Network.AWS.DynamoDB.CreateBackup
 
-    -- ** UpdateTableReplicaAutoScaling
+    -- ** UpdateTableReplicaAutoScaling 
     , module Network.AWS.DynamoDB.UpdateTableReplicaAutoScaling
 
-    -- ** DescribeGlobalTableSettings
+    -- ** DescribeGlobalTableSettings 
     , module Network.AWS.DynamoDB.DescribeGlobalTableSettings
 
     -- ** ListTagsOfResource (Paginated)
     , module Network.AWS.DynamoDB.ListTagsOfResource
 
-    -- ** DescribeGlobalTable
+    -- ** DescribeGlobalTable 
     , module Network.AWS.DynamoDB.DescribeGlobalTable
 
-    -- ** DescribeTable
+    -- ** DescribeTable 
     , module Network.AWS.DynamoDB.DescribeTable
 
-    -- ** DescribeLimits
+    -- ** DescribeLimits 
     , module Network.AWS.DynamoDB.DescribeLimits
 
-    -- ** GetItem
+    -- ** GetItem 
     , module Network.AWS.DynamoDB.GetItem
 
-    -- ** DescribeBackup
+    -- ** DescribeBackup 
     , module Network.AWS.DynamoDB.DescribeBackup
 
-    -- ** DescribeTableReplicaAutoScaling
+    -- ** DescribeTableReplicaAutoScaling 
     , module Network.AWS.DynamoDB.DescribeTableReplicaAutoScaling
 
-    -- ** UpdateGlobalTableSettings
+    -- ** UpdateGlobalTableSettings 
     , module Network.AWS.DynamoDB.UpdateGlobalTableSettings
 
-    -- ** TransactGetItems
+    -- ** TransactGetItems 
     , module Network.AWS.DynamoDB.TransactGetItems
 
-    -- ** ListContributorInsights
+    -- ** ListContributorInsights 
     , module Network.AWS.DynamoDB.ListContributorInsights
 
-    -- ** BatchWriteItem
+    -- ** BatchWriteItem 
     , module Network.AWS.DynamoDB.BatchWriteItem
 
-    -- ** TransactWriteItems
+    -- ** TransactWriteItems 
     , module Network.AWS.DynamoDB.TransactWriteItems
 
     -- ** ListTables (Paginated)
@@ -195,46 +195,46 @@ module Network.AWS.DynamoDB
     -- ** Scan (Paginated)
     , module Network.AWS.DynamoDB.Scan
 
-    -- ** UpdateContributorInsights
+    -- ** UpdateContributorInsights 
     , module Network.AWS.DynamoDB.UpdateContributorInsights
 
     -- ** Query (Paginated)
     , module Network.AWS.DynamoDB.Query
 
-    -- ** CreateTable
+    -- ** CreateTable 
     , module Network.AWS.DynamoDB.CreateTable
 
-    -- ** DescribeEndpoints
+    -- ** DescribeEndpoints 
     , module Network.AWS.DynamoDB.DescribeEndpoints
 
-    -- ** DescribeTimeToLive
+    -- ** DescribeTimeToLive 
     , module Network.AWS.DynamoDB.DescribeTimeToLive
 
-    -- ** DescribeContinuousBackups
+    -- ** DescribeContinuousBackups 
     , module Network.AWS.DynamoDB.DescribeContinuousBackups
 
-    -- ** TagResource
+    -- ** TagResource 
     , module Network.AWS.DynamoDB.TagResource
 
-    -- ** DescribeContributorInsights
+    -- ** DescribeContributorInsights 
     , module Network.AWS.DynamoDB.DescribeContributorInsights
 
-    -- ** UntagResource
+    -- ** UntagResource 
     , module Network.AWS.DynamoDB.UntagResource
 
-    -- ** RestoreTableToPointInTime
+    -- ** RestoreTableToPointInTime 
     , module Network.AWS.DynamoDB.RestoreTableToPointInTime
 
-    -- ** RestoreTableFromBackup
+    -- ** RestoreTableFromBackup 
     , module Network.AWS.DynamoDB.RestoreTableFromBackup
 
-    -- ** UpdateTimeToLive
+    -- ** UpdateTimeToLive 
     , module Network.AWS.DynamoDB.UpdateTimeToLive
 
-    -- ** CreateGlobalTable
+    -- ** CreateGlobalTable 
     , module Network.AWS.DynamoDB.CreateGlobalTable
 
-    -- ** UpdateContinuousBackups
+    -- ** UpdateContinuousBackups 
     , module Network.AWS.DynamoDB.UpdateContinuousBackups
 
     -- * Types

@@ -39,19 +39,15 @@ module Network.AWS.OpsWorks.UpdateElasticIP
 
 import Network.AWS.Lens
 import Network.AWS.OpsWorks.Types
-import Network.AWS.OpsWorks.Types.Product
 import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 
 -- | /See:/ 'updateElasticIP' smart constructor.
-data UpdateElasticIP =
-  UpdateElasticIP'
-    { _ueiName      :: !(Maybe Text)
-    , _ueiElasticIP :: !Text
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data UpdateElasticIP = UpdateElasticIP'{_ueiName ::
+                                        !(Maybe Text),
+                                        _ueiElasticIP :: !Text}
+                         deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'UpdateElasticIP' with the minimum fields required to make a request.
 --
@@ -63,9 +59,9 @@ data UpdateElasticIP =
 updateElasticIP
     :: Text -- ^ 'ueiElasticIP'
     -> UpdateElasticIP
-updateElasticIP pElasticIP_ =
-  UpdateElasticIP' {_ueiName = Nothing, _ueiElasticIP = pElasticIP_}
-
+updateElasticIP pElasticIP_
+  = UpdateElasticIP'{_ueiName = Nothing,
+                     _ueiElasticIP = pElasticIP_}
 
 -- | The new name.
 ueiName :: Lens' UpdateElasticIP (Maybe Text)
@@ -107,16 +103,14 @@ instance ToQuery UpdateElasticIP where
         toQuery = const mempty
 
 -- | /See:/ 'updateElasticIPResponse' smart constructor.
-data UpdateElasticIPResponse =
-  UpdateElasticIPResponse'
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data UpdateElasticIPResponse = UpdateElasticIPResponse'
+                                 deriving (Eq, Read, Show, Data, Typeable,
+                                           Generic)
 
 -- | Creates a value of 'UpdateElasticIPResponse' with the minimum fields required to make a request.
 --
 updateElasticIPResponse
     :: UpdateElasticIPResponse
 updateElasticIPResponse = UpdateElasticIPResponse'
-
 
 instance NFData UpdateElasticIPResponse where

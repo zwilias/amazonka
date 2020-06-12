@@ -46,19 +46,17 @@ import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 import Network.AWS.SES.Types
-import Network.AWS.SES.Types.Product
 
 -- | Represents a request to return the notification attributes for a list of identities you verified with Amazon SES. For information about Amazon SES notifications, see the <http://docs.aws.amazon.com/ses/latest/DeveloperGuide/notifications.html Amazon SES Developer Guide> .
 --
 --
 --
 -- /See:/ 'getIdentityNotificationAttributes' smart constructor.
-newtype GetIdentityNotificationAttributes =
-  GetIdentityNotificationAttributes'
-    { _ginaIdentities :: [Text]
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+newtype GetIdentityNotificationAttributes = GetIdentityNotificationAttributes'{_ginaIdentities
+                                                                               ::
+                                                                               [Text]}
+                                              deriving (Eq, Read, Show, Data,
+                                                        Typeable, Generic)
 
 -- | Creates a value of 'GetIdentityNotificationAttributes' with the minimum fields required to make a request.
 --
@@ -67,9 +65,9 @@ newtype GetIdentityNotificationAttributes =
 -- * 'ginaIdentities' - A list of one or more identities. You can specify an identity by using its name or by using its Amazon Resource Name (ARN). Examples: @user@example.com@ , @example.com@ , @arn:aws:ses:us-east-1:123456789012:identity/example.com@ .
 getIdentityNotificationAttributes
     :: GetIdentityNotificationAttributes
-getIdentityNotificationAttributes =
-  GetIdentityNotificationAttributes' {_ginaIdentities = mempty}
-
+getIdentityNotificationAttributes
+  = GetIdentityNotificationAttributes'{_ginaIdentities
+                                         = mempty}
 
 -- | A list of one or more identities. You can specify an identity by using its name or by using its Amazon Resource Name (ARN). Examples: @user@example.com@ , @example.com@ , @arn:aws:ses:us-east-1:123456789012:identity/example.com@ .
 ginaIdentities :: Lens' GetIdentityNotificationAttributes [Text]
@@ -117,13 +115,17 @@ instance ToQuery GetIdentityNotificationAttributes
 --
 --
 -- /See:/ 'getIdentityNotificationAttributesResponse' smart constructor.
-data GetIdentityNotificationAttributesResponse =
-  GetIdentityNotificationAttributesResponse'
-    { _ginarsResponseStatus :: !Int
-    , _ginarsNotificationAttributes :: !(Map Text IdentityNotificationAttributes)
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data GetIdentityNotificationAttributesResponse = GetIdentityNotificationAttributesResponse'{_ginarsResponseStatus
+                                                                                            ::
+                                                                                            !Int,
+                                                                                            _ginarsNotificationAttributes
+                                                                                            ::
+                                                                                            !(Map
+                                                                                                Text
+                                                                                                IdentityNotificationAttributes)}
+                                                   deriving (Eq, Read, Show,
+                                                             Data, Typeable,
+                                                             Generic)
 
 -- | Creates a value of 'GetIdentityNotificationAttributesResponse' with the minimum fields required to make a request.
 --
@@ -135,12 +137,12 @@ data GetIdentityNotificationAttributesResponse =
 getIdentityNotificationAttributesResponse
     :: Int -- ^ 'ginarsResponseStatus'
     -> GetIdentityNotificationAttributesResponse
-getIdentityNotificationAttributesResponse pResponseStatus_ =
-  GetIdentityNotificationAttributesResponse'
-    { _ginarsResponseStatus = pResponseStatus_
-    , _ginarsNotificationAttributes = mempty
-    }
-
+getIdentityNotificationAttributesResponse
+  pResponseStatus_
+  = GetIdentityNotificationAttributesResponse'{_ginarsResponseStatus
+                                                 = pResponseStatus_,
+                                               _ginarsNotificationAttributes =
+                                                 mempty}
 
 -- | -- | The response status code.
 ginarsResponseStatus :: Lens' GetIdentityNotificationAttributesResponse Int

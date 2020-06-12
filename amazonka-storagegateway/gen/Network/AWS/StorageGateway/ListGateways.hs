@@ -51,26 +51,22 @@ import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 import Network.AWS.StorageGateway.Types
-import Network.AWS.StorageGateway.Types.Product
 
 -- | A JSON object containing zero or more of the following fields:
 --
 --
---     * 'ListGatewaysInput$Limit'
+--     * 'ListGatewaysInput$Limit' 
 --
---     * 'ListGatewaysInput$Marker'
+--     * 'ListGatewaysInput$Marker' 
 --
 --
 --
 --
 -- /See:/ 'listGateways' smart constructor.
-data ListGateways =
-  ListGateways'
-    { _lgMarker :: !(Maybe Text)
-    , _lgLimit  :: !(Maybe Nat)
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data ListGateways = ListGateways'{_lgMarker ::
+                                  !(Maybe Text),
+                                  _lgLimit :: !(Maybe Nat)}
+                      deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'ListGateways' with the minimum fields required to make a request.
 --
@@ -81,8 +77,9 @@ data ListGateways =
 -- * 'lgLimit' - Specifies that the list of gateways returned be limited to the specified number of items.
 listGateways
     :: ListGateways
-listGateways = ListGateways' {_lgMarker = Nothing, _lgLimit = Nothing}
-
+listGateways
+  = ListGateways'{_lgMarker = Nothing,
+                  _lgLimit = Nothing}
 
 -- | An opaque string that indicates the position at which to begin the returned list of gateways.
 lgMarker :: Lens' ListGateways (Maybe Text)
@@ -137,14 +134,12 @@ instance ToQuery ListGateways where
         toQuery = const mempty
 
 -- | /See:/ 'listGatewaysResponse' smart constructor.
-data ListGatewaysResponse =
-  ListGatewaysResponse'
-    { _lgrsMarker         :: !(Maybe Text)
-    , _lgrsGateways       :: !(Maybe [GatewayInfo])
-    , _lgrsResponseStatus :: !Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data ListGatewaysResponse = ListGatewaysResponse'{_lgrsMarker
+                                                  :: !(Maybe Text),
+                                                  _lgrsGateways ::
+                                                  !(Maybe [GatewayInfo]),
+                                                  _lgrsResponseStatus :: !Int}
+                              deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'ListGatewaysResponse' with the minimum fields required to make a request.
 --
@@ -158,13 +153,10 @@ data ListGatewaysResponse =
 listGatewaysResponse
     :: Int -- ^ 'lgrsResponseStatus'
     -> ListGatewaysResponse
-listGatewaysResponse pResponseStatus_ =
-  ListGatewaysResponse'
-    { _lgrsMarker = Nothing
-    , _lgrsGateways = Nothing
-    , _lgrsResponseStatus = pResponseStatus_
-    }
-
+listGatewaysResponse pResponseStatus_
+  = ListGatewaysResponse'{_lgrsMarker = Nothing,
+                          _lgrsGateways = Nothing,
+                          _lgrsResponseStatus = pResponseStatus_}
 
 -- | Undocumented member.
 lgrsMarker :: Lens' ListGatewaysResponse (Maybe Text)

@@ -11,7 +11,7 @@
 -- Stability   : auto-generated
 -- Portability : non-portable (GHC extensions)
 --
--- __AWS CodeCommit__
+-- __AWS CodeCommit__ 
 --
 -- This is the /AWS CodeCommit API Reference/ . This reference provides descriptions of the operations and data types for AWS CodeCommit API along with usage examples.
 --
@@ -83,7 +83,7 @@
 --
 --     * 'DescribeMergeConflicts' , which returns information about merge conflicts between the base, source, and destination versions of a file in a potential merge.
 --
---     * 'GetMergeCommit' , which returns information about the merge between a source and destination commit.
+--     * 'GetMergeCommit' , which returns information about the merge between a source and destination commit. 
 --
 --     * 'GetMergeConflicts' , which returns information about merge conflicts between the source and destination branch in a pull request.
 --
@@ -766,229 +766,229 @@ module Network.AWS.CodeCommit
     -- * Operations
     -- $operations
 
-    -- ** MergePullRequestByFastForward
+    -- ** MergePullRequestByFastForward 
     , module Network.AWS.CodeCommit.MergePullRequestByFastForward
 
-    -- ** UpdateRepositoryName
+    -- ** UpdateRepositoryName 
     , module Network.AWS.CodeCommit.UpdateRepositoryName
 
-    -- ** PostCommentForPullRequest
+    -- ** PostCommentForPullRequest 
     , module Network.AWS.CodeCommit.PostCommentForPullRequest
 
-    -- ** MergeBranchesBySquash
+    -- ** MergeBranchesBySquash 
     , module Network.AWS.CodeCommit.MergeBranchesBySquash
 
-    -- ** GetCommit
+    -- ** GetCommit 
     , module Network.AWS.CodeCommit.GetCommit
 
-    -- ** BatchAssociateApprovalRuleTemplateWithRepositories
+    -- ** BatchAssociateApprovalRuleTemplateWithRepositories 
     , module Network.AWS.CodeCommit.BatchAssociateApprovalRuleTemplateWithRepositories
 
-    -- ** GetApprovalRuleTemplate
+    -- ** GetApprovalRuleTemplate 
     , module Network.AWS.CodeCommit.GetApprovalRuleTemplate
 
-    -- ** DisassociateApprovalRuleTemplateFromRepository
+    -- ** DisassociateApprovalRuleTemplateFromRepository 
     , module Network.AWS.CodeCommit.DisassociateApprovalRuleTemplateFromRepository
 
-    -- ** GetBranch
+    -- ** GetBranch 
     , module Network.AWS.CodeCommit.GetBranch
 
     -- ** GetDifferences (Paginated)
     , module Network.AWS.CodeCommit.GetDifferences
 
-    -- ** ListTagsForResource
+    -- ** ListTagsForResource 
     , module Network.AWS.CodeCommit.ListTagsForResource
 
-    -- ** GetPullRequest
+    -- ** GetPullRequest 
     , module Network.AWS.CodeCommit.GetPullRequest
 
-    -- ** OverridePullRequestApprovalRules
+    -- ** OverridePullRequestApprovalRules 
     , module Network.AWS.CodeCommit.OverridePullRequestApprovalRules
 
     -- ** ListPullRequests (Paginated)
     , module Network.AWS.CodeCommit.ListPullRequests
 
-    -- ** CreateCommit
+    -- ** CreateCommit 
     , module Network.AWS.CodeCommit.CreateCommit
 
-    -- ** UpdatePullRequestApprovalState
+    -- ** UpdatePullRequestApprovalState 
     , module Network.AWS.CodeCommit.UpdatePullRequestApprovalState
 
-    -- ** EvaluatePullRequestApprovalRules
+    -- ** EvaluatePullRequestApprovalRules 
     , module Network.AWS.CodeCommit.EvaluatePullRequestApprovalRules
 
-    -- ** GetComment
+    -- ** GetComment 
     , module Network.AWS.CodeCommit.GetComment
 
-    -- ** CreateApprovalRuleTemplate
+    -- ** CreateApprovalRuleTemplate 
     , module Network.AWS.CodeCommit.CreateApprovalRuleTemplate
 
-    -- ** DeleteBranch
+    -- ** DeleteBranch 
     , module Network.AWS.CodeCommit.DeleteBranch
 
-    -- ** UpdateRepositoryDescription
+    -- ** UpdateRepositoryDescription 
     , module Network.AWS.CodeCommit.UpdateRepositoryDescription
 
-    -- ** CreateBranch
+    -- ** CreateBranch 
     , module Network.AWS.CodeCommit.CreateBranch
 
-    -- ** GetFolder
+    -- ** GetFolder 
     , module Network.AWS.CodeCommit.GetFolder
 
-    -- ** CreatePullRequest
+    -- ** CreatePullRequest 
     , module Network.AWS.CodeCommit.CreatePullRequest
 
-    -- ** DeleteApprovalRuleTemplate
+    -- ** DeleteApprovalRuleTemplate 
     , module Network.AWS.CodeCommit.DeleteApprovalRuleTemplate
 
     -- ** ListBranches (Paginated)
     , module Network.AWS.CodeCommit.ListBranches
 
-    -- ** BatchGetCommits
+    -- ** BatchGetCommits 
     , module Network.AWS.CodeCommit.BatchGetCommits
 
-    -- ** UpdatePullRequestDescription
+    -- ** UpdatePullRequestDescription 
     , module Network.AWS.CodeCommit.UpdatePullRequestDescription
 
     -- ** ListRepositories (Paginated)
     , module Network.AWS.CodeCommit.ListRepositories
 
-    -- ** CreateRepository
+    -- ** CreateRepository 
     , module Network.AWS.CodeCommit.CreateRepository
 
-    -- ** UpdateDefaultBranch
+    -- ** UpdateDefaultBranch 
     , module Network.AWS.CodeCommit.UpdateDefaultBranch
 
-    -- ** GetMergeOptions
+    -- ** GetMergeOptions 
     , module Network.AWS.CodeCommit.GetMergeOptions
 
-    -- ** CreatePullRequestApprovalRule
+    -- ** CreatePullRequestApprovalRule 
     , module Network.AWS.CodeCommit.CreatePullRequestApprovalRule
 
-    -- ** PostCommentReply
+    -- ** PostCommentReply 
     , module Network.AWS.CodeCommit.PostCommentReply
 
-    -- ** UpdateApprovalRuleTemplateContent
+    -- ** UpdateApprovalRuleTemplateContent 
     , module Network.AWS.CodeCommit.UpdateApprovalRuleTemplateContent
 
-    -- ** CreateUnreferencedMergeCommit
+    -- ** CreateUnreferencedMergeCommit 
     , module Network.AWS.CodeCommit.CreateUnreferencedMergeCommit
 
-    -- ** ListRepositoriesForApprovalRuleTemplate
+    -- ** ListRepositoriesForApprovalRuleTemplate 
     , module Network.AWS.CodeCommit.ListRepositoriesForApprovalRuleTemplate
 
-    -- ** GetRepository
+    -- ** GetRepository 
     , module Network.AWS.CodeCommit.GetRepository
 
-    -- ** BatchDescribeMergeConflicts
+    -- ** BatchDescribeMergeConflicts 
     , module Network.AWS.CodeCommit.BatchDescribeMergeConflicts
 
-    -- ** DeletePullRequestApprovalRule
+    -- ** DeletePullRequestApprovalRule 
     , module Network.AWS.CodeCommit.DeletePullRequestApprovalRule
 
-    -- ** GetRepositoryTriggers
+    -- ** GetRepositoryTriggers 
     , module Network.AWS.CodeCommit.GetRepositoryTriggers
 
-    -- ** UpdateApprovalRuleTemplateName
+    -- ** UpdateApprovalRuleTemplateName 
     , module Network.AWS.CodeCommit.UpdateApprovalRuleTemplateName
 
-    -- ** PutFile
+    -- ** PutFile 
     , module Network.AWS.CodeCommit.PutFile
 
-    -- ** DeleteFile
+    -- ** DeleteFile 
     , module Network.AWS.CodeCommit.DeleteFile
 
     -- ** GetCommentsForComparedCommit (Paginated)
     , module Network.AWS.CodeCommit.GetCommentsForComparedCommit
 
-    -- ** GetMergeCommit
+    -- ** GetMergeCommit 
     , module Network.AWS.CodeCommit.GetMergeCommit
 
-    -- ** TestRepositoryTriggers
+    -- ** TestRepositoryTriggers 
     , module Network.AWS.CodeCommit.TestRepositoryTriggers
 
-    -- ** MergePullRequestBySquash
+    -- ** MergePullRequestBySquash 
     , module Network.AWS.CodeCommit.MergePullRequestBySquash
 
-    -- ** UpdateComment
+    -- ** UpdateComment 
     , module Network.AWS.CodeCommit.UpdateComment
 
-    -- ** PostCommentForComparedCommit
+    -- ** PostCommentForComparedCommit 
     , module Network.AWS.CodeCommit.PostCommentForComparedCommit
 
-    -- ** MergeBranchesByFastForward
+    -- ** MergeBranchesByFastForward 
     , module Network.AWS.CodeCommit.MergeBranchesByFastForward
 
-    -- ** UpdatePullRequestTitle
+    -- ** UpdatePullRequestTitle 
     , module Network.AWS.CodeCommit.UpdatePullRequestTitle
 
-    -- ** BatchDisassociateApprovalRuleTemplateFromRepositories
+    -- ** BatchDisassociateApprovalRuleTemplateFromRepositories 
     , module Network.AWS.CodeCommit.BatchDisassociateApprovalRuleTemplateFromRepositories
 
-    -- ** UpdatePullRequestApprovalRuleContent
+    -- ** UpdatePullRequestApprovalRuleContent 
     , module Network.AWS.CodeCommit.UpdatePullRequestApprovalRuleContent
 
-    -- ** GetBlob
+    -- ** GetBlob 
     , module Network.AWS.CodeCommit.GetBlob
 
-    -- ** AssociateApprovalRuleTemplateWithRepository
+    -- ** AssociateApprovalRuleTemplateWithRepository 
     , module Network.AWS.CodeCommit.AssociateApprovalRuleTemplateWithRepository
 
-    -- ** PutRepositoryTriggers
+    -- ** PutRepositoryTriggers 
     , module Network.AWS.CodeCommit.PutRepositoryTriggers
 
-    -- ** ListApprovalRuleTemplates
+    -- ** ListApprovalRuleTemplates 
     , module Network.AWS.CodeCommit.ListApprovalRuleTemplates
 
-    -- ** DescribeMergeConflicts
+    -- ** DescribeMergeConflicts 
     , module Network.AWS.CodeCommit.DescribeMergeConflicts
 
-    -- ** TagResource
+    -- ** TagResource 
     , module Network.AWS.CodeCommit.TagResource
 
-    -- ** MergeBranchesByThreeWay
+    -- ** MergeBranchesByThreeWay 
     , module Network.AWS.CodeCommit.MergeBranchesByThreeWay
 
-    -- ** GetFile
+    -- ** GetFile 
     , module Network.AWS.CodeCommit.GetFile
 
-    -- ** UntagResource
+    -- ** UntagResource 
     , module Network.AWS.CodeCommit.UntagResource
 
-    -- ** GetMergeConflicts
+    -- ** GetMergeConflicts 
     , module Network.AWS.CodeCommit.GetMergeConflicts
 
-    -- ** DeleteRepository
+    -- ** DeleteRepository 
     , module Network.AWS.CodeCommit.DeleteRepository
 
-    -- ** DeleteCommentContent
+    -- ** DeleteCommentContent 
     , module Network.AWS.CodeCommit.DeleteCommentContent
 
-    -- ** MergePullRequestByThreeWay
+    -- ** MergePullRequestByThreeWay 
     , module Network.AWS.CodeCommit.MergePullRequestByThreeWay
 
     -- ** DescribePullRequestEvents (Paginated)
     , module Network.AWS.CodeCommit.DescribePullRequestEvents
 
-    -- ** BatchGetRepositories
+    -- ** BatchGetRepositories 
     , module Network.AWS.CodeCommit.BatchGetRepositories
 
-    -- ** UpdateApprovalRuleTemplateDescription
+    -- ** UpdateApprovalRuleTemplateDescription 
     , module Network.AWS.CodeCommit.UpdateApprovalRuleTemplateDescription
 
-    -- ** GetPullRequestOverrideState
+    -- ** GetPullRequestOverrideState 
     , module Network.AWS.CodeCommit.GetPullRequestOverrideState
 
-    -- ** GetPullRequestApprovalStates
+    -- ** GetPullRequestApprovalStates 
     , module Network.AWS.CodeCommit.GetPullRequestApprovalStates
 
     -- ** GetCommentsForPullRequest (Paginated)
     , module Network.AWS.CodeCommit.GetCommentsForPullRequest
 
-    -- ** UpdatePullRequestStatus
+    -- ** UpdatePullRequestStatus 
     , module Network.AWS.CodeCommit.UpdatePullRequestStatus
 
-    -- ** ListAssociatedApprovalRuleTemplatesForRepository
+    -- ** ListAssociatedApprovalRuleTemplatesForRepository 
     , module Network.AWS.CodeCommit.ListAssociatedApprovalRuleTemplatesForRepository
 
     -- * Types

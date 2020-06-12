@@ -39,21 +39,22 @@ module Network.AWS.Greengrass.ListLoggerDefinitionVersions
     ) where
 
 import Network.AWS.Greengrass.Types
-import Network.AWS.Greengrass.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 
 -- | /See:/ 'listLoggerDefinitionVersions' smart constructor.
-data ListLoggerDefinitionVersions =
-  ListLoggerDefinitionVersions'
-    { _lldvNextToken          :: !(Maybe Text)
-    , _lldvMaxResults         :: !(Maybe Text)
-    , _lldvLoggerDefinitionId :: !Text
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data ListLoggerDefinitionVersions = ListLoggerDefinitionVersions'{_lldvNextToken
+                                                                  ::
+                                                                  !(Maybe Text),
+                                                                  _lldvMaxResults
+                                                                  ::
+                                                                  !(Maybe Text),
+                                                                  _lldvLoggerDefinitionId
+                                                                  :: !Text}
+                                      deriving (Eq, Read, Show, Data, Typeable,
+                                                Generic)
 
 -- | Creates a value of 'ListLoggerDefinitionVersions' with the minimum fields required to make a request.
 --
@@ -67,13 +68,12 @@ data ListLoggerDefinitionVersions =
 listLoggerDefinitionVersions
     :: Text -- ^ 'lldvLoggerDefinitionId'
     -> ListLoggerDefinitionVersions
-listLoggerDefinitionVersions pLoggerDefinitionId_ =
-  ListLoggerDefinitionVersions'
-    { _lldvNextToken = Nothing
-    , _lldvMaxResults = Nothing
-    , _lldvLoggerDefinitionId = pLoggerDefinitionId_
-    }
-
+listLoggerDefinitionVersions pLoggerDefinitionId_
+  = ListLoggerDefinitionVersions'{_lldvNextToken =
+                                    Nothing,
+                                  _lldvMaxResults = Nothing,
+                                  _lldvLoggerDefinitionId =
+                                    pLoggerDefinitionId_}
 
 -- | The token for the next set of results, or ''null'' if there are no additional results.
 lldvNextToken :: Lens' ListLoggerDefinitionVersions (Maybe Text)
@@ -123,14 +123,19 @@ instance ToQuery ListLoggerDefinitionVersions where
                "MaxResults" =: _lldvMaxResults]
 
 -- | /See:/ 'listLoggerDefinitionVersionsResponse' smart constructor.
-data ListLoggerDefinitionVersionsResponse =
-  ListLoggerDefinitionVersionsResponse'
-    { _lldvrsVersions       :: !(Maybe [VersionInformation])
-    , _lldvrsNextToken      :: !(Maybe Text)
-    , _lldvrsResponseStatus :: !Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data ListLoggerDefinitionVersionsResponse = ListLoggerDefinitionVersionsResponse'{_lldvrsVersions
+                                                                                  ::
+                                                                                  !(Maybe
+                                                                                      [VersionInformation]),
+                                                                                  _lldvrsNextToken
+                                                                                  ::
+                                                                                  !(Maybe
+                                                                                      Text),
+                                                                                  _lldvrsResponseStatus
+                                                                                  ::
+                                                                                  !Int}
+                                              deriving (Eq, Read, Show, Data,
+                                                        Typeable, Generic)
 
 -- | Creates a value of 'ListLoggerDefinitionVersionsResponse' with the minimum fields required to make a request.
 --
@@ -144,13 +149,12 @@ data ListLoggerDefinitionVersionsResponse =
 listLoggerDefinitionVersionsResponse
     :: Int -- ^ 'lldvrsResponseStatus'
     -> ListLoggerDefinitionVersionsResponse
-listLoggerDefinitionVersionsResponse pResponseStatus_ =
-  ListLoggerDefinitionVersionsResponse'
-    { _lldvrsVersions = Nothing
-    , _lldvrsNextToken = Nothing
-    , _lldvrsResponseStatus = pResponseStatus_
-    }
-
+listLoggerDefinitionVersionsResponse pResponseStatus_
+  = ListLoggerDefinitionVersionsResponse'{_lldvrsVersions
+                                            = Nothing,
+                                          _lldvrsNextToken = Nothing,
+                                          _lldvrsResponseStatus =
+                                            pResponseStatus_}
 
 -- | Information about a version.
 lldvrsVersions :: Lens' ListLoggerDefinitionVersionsResponse [VersionInformation]

@@ -42,7 +42,6 @@ module Network.AWS.DAX.ListTags
     ) where
 
 import Network.AWS.DAX.Types
-import Network.AWS.DAX.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Pager
 import Network.AWS.Prelude
@@ -50,13 +49,10 @@ import Network.AWS.Request
 import Network.AWS.Response
 
 -- | /See:/ 'listTags' smart constructor.
-data ListTags =
-  ListTags'
-    { _ltNextToken    :: !(Maybe Text)
-    , _ltResourceName :: !Text
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data ListTags = ListTags'{_ltNextToken ::
+                          !(Maybe Text),
+                          _ltResourceName :: !Text}
+                  deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'ListTags' with the minimum fields required to make a request.
 --
@@ -68,9 +64,9 @@ data ListTags =
 listTags
     :: Text -- ^ 'ltResourceName'
     -> ListTags
-listTags pResourceName_ =
-  ListTags' {_ltNextToken = Nothing, _ltResourceName = pResourceName_}
-
+listTags pResourceName_
+  = ListTags'{_ltNextToken = Nothing,
+              _ltResourceName = pResourceName_}
 
 -- | An optional token returned from a prior request. Use this token for pagination of results from this action. If this parameter is specified, the response includes only results beyond the token.
 ltNextToken :: Lens' ListTags (Maybe Text)
@@ -124,14 +120,11 @@ instance ToQuery ListTags where
         toQuery = const mempty
 
 -- | /See:/ 'listTagsResponse' smart constructor.
-data ListTagsResponse =
-  ListTagsResponse'
-    { _ltrsNextToken      :: !(Maybe Text)
-    , _ltrsTags           :: !(Maybe [Tag])
-    , _ltrsResponseStatus :: !Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data ListTagsResponse = ListTagsResponse'{_ltrsNextToken
+                                          :: !(Maybe Text),
+                                          _ltrsTags :: !(Maybe [Tag]),
+                                          _ltrsResponseStatus :: !Int}
+                          deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'ListTagsResponse' with the minimum fields required to make a request.
 --
@@ -145,13 +138,10 @@ data ListTagsResponse =
 listTagsResponse
     :: Int -- ^ 'ltrsResponseStatus'
     -> ListTagsResponse
-listTagsResponse pResponseStatus_ =
-  ListTagsResponse'
-    { _ltrsNextToken = Nothing
-    , _ltrsTags = Nothing
-    , _ltrsResponseStatus = pResponseStatus_
-    }
-
+listTagsResponse pResponseStatus_
+  = ListTagsResponse'{_ltrsNextToken = Nothing,
+                      _ltrsTags = Nothing,
+                      _ltrsResponseStatus = pResponseStatus_}
 
 -- | If this value is present, there are additional results to be displayed. To retrieve them, call @ListTags@ again, with @NextToken@ set to this value.
 ltrsNextToken :: Lens' ListTagsResponse (Maybe Text)

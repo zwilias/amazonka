@@ -55,7 +55,6 @@ module Network.AWS.CognitoIdentityProvider.UpdateUserPoolClient
     ) where
 
 import Network.AWS.CognitoIdentityProvider.Types
-import Network.AWS.CognitoIdentityProvider.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.Request
@@ -66,27 +65,42 @@ import Network.AWS.Response
 --
 --
 -- /See:/ 'updateUserPoolClient' smart constructor.
-data UpdateUserPoolClient =
-  UpdateUserPoolClient'
-    { _uupcRefreshTokenValidity :: !(Maybe Nat)
-    , _uupcExplicitAuthFlows :: !(Maybe [ExplicitAuthFlowsType])
-    , _uupcSupportedIdentityProviders :: !(Maybe [Text])
-    , _uupcLogoutURLs :: !(Maybe [Text])
-    , _uupcAllowedOAuthFlowsUserPoolClient :: !(Maybe Bool)
-    , _uupcDefaultRedirectURI :: !(Maybe Text)
-    , _uupcWriteAttributes :: !(Maybe [Text])
-    , _uupcPreventUserExistenceErrors :: !(Maybe PreventUserExistenceErrorTypes)
-    , _uupcReadAttributes :: !(Maybe [Text])
-    , _uupcAllowedOAuthScopes :: !(Maybe [Text])
-    , _uupcAllowedOAuthFlows :: !(Maybe [OAuthFlowType])
-    , _uupcAnalyticsConfiguration :: !(Maybe AnalyticsConfigurationType)
-    , _uupcClientName :: !(Maybe Text)
-    , _uupcCallbackURLs :: !(Maybe [Text])
-    , _uupcUserPoolId :: !Text
-    , _uupcClientId :: !(Sensitive Text)
-    }
-  deriving (Eq, Show, Data, Typeable, Generic)
-
+data UpdateUserPoolClient = UpdateUserPoolClient'{_uupcRefreshTokenValidity
+                                                  :: !(Maybe Nat),
+                                                  _uupcExplicitAuthFlows ::
+                                                  !(Maybe
+                                                      [ExplicitAuthFlowsType]),
+                                                  _uupcSupportedIdentityProviders
+                                                  :: !(Maybe [Text]),
+                                                  _uupcLogoutURLs ::
+                                                  !(Maybe [Text]),
+                                                  _uupcAllowedOAuthFlowsUserPoolClient
+                                                  :: !(Maybe Bool),
+                                                  _uupcDefaultRedirectURI ::
+                                                  !(Maybe Text),
+                                                  _uupcWriteAttributes ::
+                                                  !(Maybe [Text]),
+                                                  _uupcPreventUserExistenceErrors
+                                                  ::
+                                                  !(Maybe
+                                                      PreventUserExistenceErrorTypes),
+                                                  _uupcReadAttributes ::
+                                                  !(Maybe [Text]),
+                                                  _uupcAllowedOAuthScopes ::
+                                                  !(Maybe [Text]),
+                                                  _uupcAllowedOAuthFlows ::
+                                                  !(Maybe [OAuthFlowType]),
+                                                  _uupcAnalyticsConfiguration ::
+                                                  !(Maybe
+                                                      AnalyticsConfigurationType),
+                                                  _uupcClientName ::
+                                                  !(Maybe Text),
+                                                  _uupcCallbackURLs ::
+                                                  !(Maybe [Text]),
+                                                  _uupcUserPoolId :: !Text,
+                                                  _uupcClientId ::
+                                                  !(Sensitive Text)}
+                              deriving (Eq, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'UpdateUserPoolClient' with the minimum fields required to make a request.
 --
@@ -106,7 +120,7 @@ data UpdateUserPoolClient =
 --
 -- * 'uupcWriteAttributes' - The writeable attributes of the user pool.
 --
--- * 'uupcPreventUserExistenceErrors' - Use this setting to choose which errors and responses are returned by Cognito APIs during authentication, account confirmation, and password recovery when the user does not exist in the user pool. When set to @ENABLED@ and the user does not exist, authentication returns an error indicating either the username or password was incorrect, and account confirmation and password recovery return a response indicating a code was sent to a simulated destination. When set to @LEGACY@ , those APIs will return a @UserNotFoundException@ exception if the user does not exist in the user pool. Valid values include:     * @ENABLED@ - This prevents user existence-related errors.     * @LEGACY@ - This represents the old behavior of Cognito where user existence related errors are not prevented. This setting affects the behavior of following APIs:     * 'AdminInitiateAuth'      * 'AdminRespondToAuthChallenge'      * 'InitiateAuth'      * 'RespondToAuthChallenge'      * 'ForgotPassword'      * 'ConfirmForgotPassword'      * 'ConfirmSignUp'      * 'ResendConfirmationCode'
+-- * 'uupcPreventUserExistenceErrors' - Use this setting to choose which errors and responses are returned by Cognito APIs during authentication, account confirmation, and password recovery when the user does not exist in the user pool. When set to @ENABLED@ and the user does not exist, authentication returns an error indicating either the username or password was incorrect, and account confirmation and password recovery return a response indicating a code was sent to a simulated destination. When set to @LEGACY@ , those APIs will return a @UserNotFoundException@ exception if the user does not exist in the user pool. Valid values include:     * @ENABLED@ - This prevents user existence-related errors.     * @LEGACY@ - This represents the old behavior of Cognito where user existence related errors are not prevented. This setting affects the behavior of following APIs:     * 'AdminInitiateAuth'      * 'AdminRespondToAuthChallenge'      * 'InitiateAuth'      * 'RespondToAuthChallenge'      * 'ForgotPassword'      * 'ConfirmForgotPassword'      * 'ConfirmSignUp'      * 'ResendConfirmationCode' 
 --
 -- * 'uupcReadAttributes' - The read-only attributes of the user pool.
 --
@@ -127,26 +141,24 @@ updateUserPoolClient
     :: Text -- ^ 'uupcUserPoolId'
     -> Text -- ^ 'uupcClientId'
     -> UpdateUserPoolClient
-updateUserPoolClient pUserPoolId_ pClientId_ =
-  UpdateUserPoolClient'
-    { _uupcRefreshTokenValidity = Nothing
-    , _uupcExplicitAuthFlows = Nothing
-    , _uupcSupportedIdentityProviders = Nothing
-    , _uupcLogoutURLs = Nothing
-    , _uupcAllowedOAuthFlowsUserPoolClient = Nothing
-    , _uupcDefaultRedirectURI = Nothing
-    , _uupcWriteAttributes = Nothing
-    , _uupcPreventUserExistenceErrors = Nothing
-    , _uupcReadAttributes = Nothing
-    , _uupcAllowedOAuthScopes = Nothing
-    , _uupcAllowedOAuthFlows = Nothing
-    , _uupcAnalyticsConfiguration = Nothing
-    , _uupcClientName = Nothing
-    , _uupcCallbackURLs = Nothing
-    , _uupcUserPoolId = pUserPoolId_
-    , _uupcClientId = _Sensitive # pClientId_
-    }
-
+updateUserPoolClient pUserPoolId_ pClientId_
+  = UpdateUserPoolClient'{_uupcRefreshTokenValidity =
+                            Nothing,
+                          _uupcExplicitAuthFlows = Nothing,
+                          _uupcSupportedIdentityProviders = Nothing,
+                          _uupcLogoutURLs = Nothing,
+                          _uupcAllowedOAuthFlowsUserPoolClient = Nothing,
+                          _uupcDefaultRedirectURI = Nothing,
+                          _uupcWriteAttributes = Nothing,
+                          _uupcPreventUserExistenceErrors = Nothing,
+                          _uupcReadAttributes = Nothing,
+                          _uupcAllowedOAuthScopes = Nothing,
+                          _uupcAllowedOAuthFlows = Nothing,
+                          _uupcAnalyticsConfiguration = Nothing,
+                          _uupcClientName = Nothing,
+                          _uupcCallbackURLs = Nothing,
+                          _uupcUserPoolId = pUserPoolId_,
+                          _uupcClientId = _Sensitive # pClientId_}
 
 -- | The time limit, in days, after which the refresh token is no longer valid and cannot be used.
 uupcRefreshTokenValidity :: Lens' UpdateUserPoolClient (Maybe Natural)
@@ -176,7 +188,7 @@ uupcDefaultRedirectURI = lens _uupcDefaultRedirectURI (\ s a -> s{_uupcDefaultRe
 uupcWriteAttributes :: Lens' UpdateUserPoolClient [Text]
 uupcWriteAttributes = lens _uupcWriteAttributes (\ s a -> s{_uupcWriteAttributes = a}) . _Default . _Coerce
 
--- | Use this setting to choose which errors and responses are returned by Cognito APIs during authentication, account confirmation, and password recovery when the user does not exist in the user pool. When set to @ENABLED@ and the user does not exist, authentication returns an error indicating either the username or password was incorrect, and account confirmation and password recovery return a response indicating a code was sent to a simulated destination. When set to @LEGACY@ , those APIs will return a @UserNotFoundException@ exception if the user does not exist in the user pool. Valid values include:     * @ENABLED@ - This prevents user existence-related errors.     * @LEGACY@ - This represents the old behavior of Cognito where user existence related errors are not prevented. This setting affects the behavior of following APIs:     * 'AdminInitiateAuth'      * 'AdminRespondToAuthChallenge'      * 'InitiateAuth'      * 'RespondToAuthChallenge'      * 'ForgotPassword'      * 'ConfirmForgotPassword'      * 'ConfirmSignUp'      * 'ResendConfirmationCode'
+-- | Use this setting to choose which errors and responses are returned by Cognito APIs during authentication, account confirmation, and password recovery when the user does not exist in the user pool. When set to @ENABLED@ and the user does not exist, authentication returns an error indicating either the username or password was incorrect, and account confirmation and password recovery return a response indicating a code was sent to a simulated destination. When set to @LEGACY@ , those APIs will return a @UserNotFoundException@ exception if the user does not exist in the user pool. Valid values include:     * @ENABLED@ - This prevents user existence-related errors.     * @LEGACY@ - This represents the old behavior of Cognito where user existence related errors are not prevented. This setting affects the behavior of following APIs:     * 'AdminInitiateAuth'      * 'AdminRespondToAuthChallenge'      * 'InitiateAuth'      * 'RespondToAuthChallenge'      * 'ForgotPassword'      * 'ConfirmForgotPassword'      * 'ConfirmSignUp'      * 'ResendConfirmationCode' 
 uupcPreventUserExistenceErrors :: Lens' UpdateUserPoolClient (Maybe PreventUserExistenceErrorTypes)
 uupcPreventUserExistenceErrors = lens _uupcPreventUserExistenceErrors (\ s a -> s{_uupcPreventUserExistenceErrors = a})
 
@@ -275,13 +287,14 @@ instance ToQuery UpdateUserPoolClient where
 --
 --
 -- /See:/ 'updateUserPoolClientResponse' smart constructor.
-data UpdateUserPoolClientResponse =
-  UpdateUserPoolClientResponse'
-    { _uupcrsUserPoolClient :: !(Maybe UserPoolClientType)
-    , _uupcrsResponseStatus :: !Int
-    }
-  deriving (Eq, Show, Data, Typeable, Generic)
-
+data UpdateUserPoolClientResponse = UpdateUserPoolClientResponse'{_uupcrsUserPoolClient
+                                                                  ::
+                                                                  !(Maybe
+                                                                      UserPoolClientType),
+                                                                  _uupcrsResponseStatus
+                                                                  :: !Int}
+                                      deriving (Eq, Show, Data, Typeable,
+                                                Generic)
 
 -- | Creates a value of 'UpdateUserPoolClientResponse' with the minimum fields required to make a request.
 --
@@ -293,10 +306,10 @@ data UpdateUserPoolClientResponse =
 updateUserPoolClientResponse
     :: Int -- ^ 'uupcrsResponseStatus'
     -> UpdateUserPoolClientResponse
-updateUserPoolClientResponse pResponseStatus_ =
-  UpdateUserPoolClientResponse'
-    {_uupcrsUserPoolClient = Nothing, _uupcrsResponseStatus = pResponseStatus_}
-
+updateUserPoolClientResponse pResponseStatus_
+  = UpdateUserPoolClientResponse'{_uupcrsUserPoolClient
+                                    = Nothing,
+                                  _uupcrsResponseStatus = pResponseStatus_}
 
 -- | The user pool client value from the response from the server when an update user pool client request is made.
 uupcrsUserPoolClient :: Lens' UpdateUserPoolClientResponse (Maybe UserPoolClientType)

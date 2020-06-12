@@ -37,7 +37,6 @@ module Network.AWS.Pinpoint.GetEventStream
 
 import Network.AWS.Lens
 import Network.AWS.Pinpoint.Types
-import Network.AWS.Pinpoint.Types.Product
 import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
@@ -45,12 +44,9 @@ import Network.AWS.Response
 -- | GetEventStreamRequest
 --
 -- /See:/ 'getEventStream' smart constructor.
-newtype GetEventStream =
-  GetEventStream'
-    { _gesApplicationId :: Text
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+newtype GetEventStream = GetEventStream'{_gesApplicationId
+                                         :: Text}
+                           deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'GetEventStream' with the minimum fields required to make a request.
 --
@@ -60,9 +56,9 @@ newtype GetEventStream =
 getEventStream
     :: Text -- ^ 'gesApplicationId'
     -> GetEventStream
-getEventStream pApplicationId_ =
-  GetEventStream' {_gesApplicationId = pApplicationId_}
-
+getEventStream pApplicationId_
+  = GetEventStream'{_gesApplicationId =
+                      pApplicationId_}
 
 -- | ApplicationId
 gesApplicationId :: Lens' GetEventStream Text
@@ -97,13 +93,12 @@ instance ToQuery GetEventStream where
         toQuery = const mempty
 
 -- | /See:/ 'getEventStreamResponse' smart constructor.
-data GetEventStreamResponse =
-  GetEventStreamResponse'
-    { _gesrsResponseStatus :: !Int
-    , _gesrsEventStream    :: !EventStream
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data GetEventStreamResponse = GetEventStreamResponse'{_gesrsResponseStatus
+                                                      :: !Int,
+                                                      _gesrsEventStream ::
+                                                      !EventStream}
+                                deriving (Eq, Read, Show, Data, Typeable,
+                                          Generic)
 
 -- | Creates a value of 'GetEventStreamResponse' with the minimum fields required to make a request.
 --
@@ -116,10 +111,10 @@ getEventStreamResponse
     :: Int -- ^ 'gesrsResponseStatus'
     -> EventStream -- ^ 'gesrsEventStream'
     -> GetEventStreamResponse
-getEventStreamResponse pResponseStatus_ pEventStream_ =
-  GetEventStreamResponse'
-    {_gesrsResponseStatus = pResponseStatus_, _gesrsEventStream = pEventStream_}
-
+getEventStreamResponse pResponseStatus_ pEventStream_
+  = GetEventStreamResponse'{_gesrsResponseStatus =
+                              pResponseStatus_,
+                            _gesrsEventStream = pEventStream_}
 
 -- | -- | The response status code.
 gesrsResponseStatus :: Lens' GetEventStreamResponse Int

@@ -40,40 +40,33 @@ module Network.AWS.DeviceFarm.CreateTestGridURL
     ) where
 
 import Network.AWS.DeviceFarm.Types
-import Network.AWS.DeviceFarm.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 
 -- | /See:/ 'createTestGridURL' smart constructor.
-data CreateTestGridURL =
-  CreateTestGridURL'
-    { _ctguProjectARN       :: !Text
-    , _ctguExpiresInSeconds :: !Nat
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data CreateTestGridURL = CreateTestGridURL'{_ctguProjectARN
+                                            :: !Text,
+                                            _ctguExpiresInSeconds :: !Nat}
+                           deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'CreateTestGridURL' with the minimum fields required to make a request.
 --
 -- Use one of the following lenses to modify other fields as desired:
 --
--- * 'ctguProjectARN' - ARN (from 'CreateTestGridProject' or 'ListTestGridProjects' ) to associate with the short-term URL.
+-- * 'ctguProjectARN' - ARN (from 'CreateTestGridProject' or 'ListTestGridProjects' ) to associate with the short-term URL. 
 --
 -- * 'ctguExpiresInSeconds' - Lifetime, in seconds, of the URL.
 createTestGridURL
     :: Text -- ^ 'ctguProjectARN'
     -> Natural -- ^ 'ctguExpiresInSeconds'
     -> CreateTestGridURL
-createTestGridURL pProjectARN_ pExpiresInSeconds_ =
-  CreateTestGridURL'
-    { _ctguProjectARN = pProjectARN_
-    , _ctguExpiresInSeconds = _Nat # pExpiresInSeconds_
-    }
+createTestGridURL pProjectARN_ pExpiresInSeconds_
+  = CreateTestGridURL'{_ctguProjectARN = pProjectARN_,
+                       _ctguExpiresInSeconds = _Nat # pExpiresInSeconds_}
 
-
--- | ARN (from 'CreateTestGridProject' or 'ListTestGridProjects' ) to associate with the short-term URL.
+-- | ARN (from 'CreateTestGridProject' or 'ListTestGridProjects' ) to associate with the short-term URL. 
 ctguProjectARN :: Lens' CreateTestGridURL Text
 ctguProjectARN = lens _ctguProjectARN (\ s a -> s{_ctguProjectARN = a})
 
@@ -119,14 +112,14 @@ instance ToQuery CreateTestGridURL where
         toQuery = const mempty
 
 -- | /See:/ 'createTestGridURLResponse' smart constructor.
-data CreateTestGridURLResponse =
-  CreateTestGridURLResponse'
-    { _ctgursExpires        :: !(Maybe POSIX)
-    , _ctgursUrl            :: !(Maybe Text)
-    , _ctgursResponseStatus :: !Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data CreateTestGridURLResponse = CreateTestGridURLResponse'{_ctgursExpires
+                                                            :: !(Maybe POSIX),
+                                                            _ctgursUrl ::
+                                                            !(Maybe Text),
+                                                            _ctgursResponseStatus
+                                                            :: !Int}
+                                   deriving (Eq, Read, Show, Data, Typeable,
+                                             Generic)
 
 -- | Creates a value of 'CreateTestGridURLResponse' with the minimum fields required to make a request.
 --
@@ -134,25 +127,23 @@ data CreateTestGridURLResponse =
 --
 -- * 'ctgursExpires' - The number of seconds the URL from 'CreateTestGridUrlResult$url' stays active.
 --
--- * 'ctgursUrl' - A signed URL, expiring in 'CreateTestGridUrlRequest$expiresInSeconds' seconds, to be passed to a @RemoteWebDriver@ .
+-- * 'ctgursUrl' - A signed URL, expiring in 'CreateTestGridUrlRequest$expiresInSeconds' seconds, to be passed to a @RemoteWebDriver@ . 
 --
 -- * 'ctgursResponseStatus' - -- | The response status code.
 createTestGridURLResponse
     :: Int -- ^ 'ctgursResponseStatus'
     -> CreateTestGridURLResponse
-createTestGridURLResponse pResponseStatus_ =
-  CreateTestGridURLResponse'
-    { _ctgursExpires = Nothing
-    , _ctgursUrl = Nothing
-    , _ctgursResponseStatus = pResponseStatus_
-    }
-
+createTestGridURLResponse pResponseStatus_
+  = CreateTestGridURLResponse'{_ctgursExpires =
+                                 Nothing,
+                               _ctgursUrl = Nothing,
+                               _ctgursResponseStatus = pResponseStatus_}
 
 -- | The number of seconds the URL from 'CreateTestGridUrlResult$url' stays active.
 ctgursExpires :: Lens' CreateTestGridURLResponse (Maybe UTCTime)
 ctgursExpires = lens _ctgursExpires (\ s a -> s{_ctgursExpires = a}) . mapping _Time
 
--- | A signed URL, expiring in 'CreateTestGridUrlRequest$expiresInSeconds' seconds, to be passed to a @RemoteWebDriver@ .
+-- | A signed URL, expiring in 'CreateTestGridUrlRequest$expiresInSeconds' seconds, to be passed to a @RemoteWebDriver@ . 
 ctgursUrl :: Lens' CreateTestGridURLResponse (Maybe Text)
 ctgursUrl = lens _ctgursUrl (\ s a -> s{_ctgursUrl = a})
 

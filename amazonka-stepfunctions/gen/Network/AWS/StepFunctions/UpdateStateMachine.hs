@@ -44,17 +44,13 @@ import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 import Network.AWS.StepFunctions.Types
-import Network.AWS.StepFunctions.Types.Product
 
 -- | /See:/ 'updateStateMachine' smart constructor.
-data UpdateStateMachine =
-  UpdateStateMachine'
-    { _usmDefinition      :: !(Maybe Text)
-    , _usmRoleARN         :: !(Maybe Text)
-    , _usmStateMachineARN :: !Text
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data UpdateStateMachine = UpdateStateMachine'{_usmDefinition
+                                              :: !(Maybe Text),
+                                              _usmRoleARN :: !(Maybe Text),
+                                              _usmStateMachineARN :: !Text}
+                            deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'UpdateStateMachine' with the minimum fields required to make a request.
 --
@@ -68,13 +64,10 @@ data UpdateStateMachine =
 updateStateMachine
     :: Text -- ^ 'usmStateMachineARN'
     -> UpdateStateMachine
-updateStateMachine pStateMachineARN_ =
-  UpdateStateMachine'
-    { _usmDefinition = Nothing
-    , _usmRoleARN = Nothing
-    , _usmStateMachineARN = pStateMachineARN_
-    }
-
+updateStateMachine pStateMachineARN_
+  = UpdateStateMachine'{_usmDefinition = Nothing,
+                        _usmRoleARN = Nothing,
+                        _usmStateMachineARN = pStateMachineARN_}
 
 -- | The Amazon States Language definition of the state machine.
 usmDefinition :: Lens' UpdateStateMachine (Maybe Text)
@@ -127,13 +120,12 @@ instance ToQuery UpdateStateMachine where
         toQuery = const mempty
 
 -- | /See:/ 'updateStateMachineResponse' smart constructor.
-data UpdateStateMachineResponse =
-  UpdateStateMachineResponse'
-    { _usmrsResponseStatus :: !Int
-    , _usmrsUpdateDate     :: !POSIX
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data UpdateStateMachineResponse = UpdateStateMachineResponse'{_usmrsResponseStatus
+                                                              :: !Int,
+                                                              _usmrsUpdateDate
+                                                              :: !POSIX}
+                                    deriving (Eq, Read, Show, Data, Typeable,
+                                              Generic)
 
 -- | Creates a value of 'UpdateStateMachineResponse' with the minimum fields required to make a request.
 --
@@ -146,12 +138,11 @@ updateStateMachineResponse
     :: Int -- ^ 'usmrsResponseStatus'
     -> UTCTime -- ^ 'usmrsUpdateDate'
     -> UpdateStateMachineResponse
-updateStateMachineResponse pResponseStatus_ pUpdateDate_ =
-  UpdateStateMachineResponse'
-    { _usmrsResponseStatus = pResponseStatus_
-    , _usmrsUpdateDate = _Time # pUpdateDate_
-    }
-
+updateStateMachineResponse pResponseStatus_
+  pUpdateDate_
+  = UpdateStateMachineResponse'{_usmrsResponseStatus =
+                                  pResponseStatus_,
+                                _usmrsUpdateDate = _Time # pUpdateDate_}
 
 -- | -- | The response status code.
 usmrsResponseStatus :: Lens' UpdateStateMachineResponse Int

@@ -18,7 +18,7 @@
 -- Stability   : auto-generated
 -- Portability : non-portable (GHC extensions)
 --
--- Describes the settings for the Insights event selectors that you configured for your trail. @GetInsightSelectors@ shows if CloudTrail Insights event logging is enabled on the trail, and if it is, which insight types are enabled. If you run @GetInsightSelectors@ on a trail that does not have Insights events enabled, the operation throws the exception @InsightNotEnabledException@
+-- Describes the settings for the Insights event selectors that you configured for your trail. @GetInsightSelectors@ shows if CloudTrail Insights event logging is enabled on the trail, and if it is, which insight types are enabled. If you run @GetInsightSelectors@ on a trail that does not have Insights events enabled, the operation throws the exception @InsightNotEnabledException@ 
 --
 --
 -- For more information, see <https://docs.aws.amazon.com/awscloudtrail/latest/userguide/logging-insights-events-with-cloudtrail.html Logging CloudTrail Insights Events for Trails > in the /AWS CloudTrail User Guide/ .
@@ -41,33 +41,29 @@ module Network.AWS.CloudTrail.GetInsightSelectors
     ) where
 
 import Network.AWS.CloudTrail.Types
-import Network.AWS.CloudTrail.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 
 -- | /See:/ 'getInsightSelectors' smart constructor.
-newtype GetInsightSelectors =
-  GetInsightSelectors'
-    { _gisTrailName :: Text
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+newtype GetInsightSelectors = GetInsightSelectors'{_gisTrailName
+                                                   :: Text}
+                                deriving (Eq, Read, Show, Data, Typeable,
+                                          Generic)
 
 -- | Creates a value of 'GetInsightSelectors' with the minimum fields required to make a request.
 --
 -- Use one of the following lenses to modify other fields as desired:
 --
--- * 'gisTrailName' - Specifies the name of the trail or trail ARN. If you specify a trail name, the string must meet the following requirements:     * Contain only ASCII letters (a-z, A-Z), numbers (0-9), periods (.), underscores (_), or dashes (-)     * Start with a letter or number, and end with a letter or number     * Be between 3 and 128 characters     * Have no adjacent periods, underscores or dashes. Names like @my-_namespace@ and @my--namespace@ are not valid.     * Not be in IP address format (for example, 192.168.5.4) If you specify a trail ARN, it must be in the format: @arn:aws:cloudtrail:us-east-2:123456789012:trail/MyTrail@
+-- * 'gisTrailName' - Specifies the name of the trail or trail ARN. If you specify a trail name, the string must meet the following requirements:     * Contain only ASCII letters (a-z, A-Z), numbers (0-9), periods (.), underscores (_), or dashes (-)     * Start with a letter or number, and end with a letter or number     * Be between 3 and 128 characters     * Have no adjacent periods, underscores or dashes. Names like @my-_namespace@ and @my--namespace@ are not valid.     * Not be in IP address format (for example, 192.168.5.4) If you specify a trail ARN, it must be in the format: @arn:aws:cloudtrail:us-east-2:123456789012:trail/MyTrail@ 
 getInsightSelectors
     :: Text -- ^ 'gisTrailName'
     -> GetInsightSelectors
-getInsightSelectors pTrailName_ =
-  GetInsightSelectors' {_gisTrailName = pTrailName_}
+getInsightSelectors pTrailName_
+  = GetInsightSelectors'{_gisTrailName = pTrailName_}
 
-
--- | Specifies the name of the trail or trail ARN. If you specify a trail name, the string must meet the following requirements:     * Contain only ASCII letters (a-z, A-Z), numbers (0-9), periods (.), underscores (_), or dashes (-)     * Start with a letter or number, and end with a letter or number     * Be between 3 and 128 characters     * Have no adjacent periods, underscores or dashes. Names like @my-_namespace@ and @my--namespace@ are not valid.     * Not be in IP address format (for example, 192.168.5.4) If you specify a trail ARN, it must be in the format: @arn:aws:cloudtrail:us-east-2:123456789012:trail/MyTrail@
+-- | Specifies the name of the trail or trail ARN. If you specify a trail name, the string must meet the following requirements:     * Contain only ASCII letters (a-z, A-Z), numbers (0-9), periods (.), underscores (_), or dashes (-)     * Start with a letter or number, and end with a letter or number     * Be between 3 and 128 characters     * Have no adjacent periods, underscores or dashes. Names like @my-_namespace@ and @my--namespace@ are not valid.     * Not be in IP address format (for example, 192.168.5.4) If you specify a trail ARN, it must be in the format: @arn:aws:cloudtrail:us-east-2:123456789012:trail/MyTrail@ 
 gisTrailName :: Lens' GetInsightSelectors Text
 gisTrailName = lens _gisTrailName (\ s a -> s{_gisTrailName = a})
 
@@ -109,14 +105,17 @@ instance ToQuery GetInsightSelectors where
         toQuery = const mempty
 
 -- | /See:/ 'getInsightSelectorsResponse' smart constructor.
-data GetInsightSelectorsResponse =
-  GetInsightSelectorsResponse'
-    { _gisrsTrailARN         :: !(Maybe Text)
-    , _gisrsInsightSelectors :: !(Maybe [InsightSelector])
-    , _gisrsResponseStatus   :: !Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data GetInsightSelectorsResponse = GetInsightSelectorsResponse'{_gisrsTrailARN
+                                                                ::
+                                                                !(Maybe Text),
+                                                                _gisrsInsightSelectors
+                                                                ::
+                                                                !(Maybe
+                                                                    [InsightSelector]),
+                                                                _gisrsResponseStatus
+                                                                :: !Int}
+                                     deriving (Eq, Read, Show, Data, Typeable,
+                                               Generic)
 
 -- | Creates a value of 'GetInsightSelectorsResponse' with the minimum fields required to make a request.
 --
@@ -130,13 +129,11 @@ data GetInsightSelectorsResponse =
 getInsightSelectorsResponse
     :: Int -- ^ 'gisrsResponseStatus'
     -> GetInsightSelectorsResponse
-getInsightSelectorsResponse pResponseStatus_ =
-  GetInsightSelectorsResponse'
-    { _gisrsTrailARN = Nothing
-    , _gisrsInsightSelectors = Nothing
-    , _gisrsResponseStatus = pResponseStatus_
-    }
-
+getInsightSelectorsResponse pResponseStatus_
+  = GetInsightSelectorsResponse'{_gisrsTrailARN =
+                                   Nothing,
+                                 _gisrsInsightSelectors = Nothing,
+                                 _gisrsResponseStatus = pResponseStatus_}
 
 -- | The Amazon Resource Name (ARN) of a trail for which you want to get Insights selectors.
 gisrsTrailARN :: Lens' GetInsightSelectorsResponse (Maybe Text)

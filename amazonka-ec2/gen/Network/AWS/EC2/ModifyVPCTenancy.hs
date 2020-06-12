@@ -44,21 +44,17 @@ module Network.AWS.EC2.ModifyVPCTenancy
     ) where
 
 import Network.AWS.EC2.Types
-import Network.AWS.EC2.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 
 -- | /See:/ 'modifyVPCTenancy' smart constructor.
-data ModifyVPCTenancy =
-  ModifyVPCTenancy'
-    { _mvtDryRun          :: !(Maybe Bool)
-    , _mvtVPCId           :: !Text
-    , _mvtInstanceTenancy :: !VPCTenancy
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data ModifyVPCTenancy = ModifyVPCTenancy'{_mvtDryRun
+                                          :: !(Maybe Bool),
+                                          _mvtVPCId :: !Text,
+                                          _mvtInstanceTenancy :: !VPCTenancy}
+                          deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'ModifyVPCTenancy' with the minimum fields required to make a request.
 --
@@ -68,18 +64,15 @@ data ModifyVPCTenancy =
 --
 -- * 'mvtVPCId' - The ID of the VPC.
 --
--- * 'mvtInstanceTenancy' - The instance tenancy attribute for the VPC.
+-- * 'mvtInstanceTenancy' - The instance tenancy attribute for the VPC. 
 modifyVPCTenancy
     :: Text -- ^ 'mvtVPCId'
     -> VPCTenancy -- ^ 'mvtInstanceTenancy'
     -> ModifyVPCTenancy
-modifyVPCTenancy pVPCId_ pInstanceTenancy_ =
-  ModifyVPCTenancy'
-    { _mvtDryRun = Nothing
-    , _mvtVPCId = pVPCId_
-    , _mvtInstanceTenancy = pInstanceTenancy_
-    }
-
+modifyVPCTenancy pVPCId_ pInstanceTenancy_
+  = ModifyVPCTenancy'{_mvtDryRun = Nothing,
+                      _mvtVPCId = pVPCId_,
+                      _mvtInstanceTenancy = pInstanceTenancy_}
 
 -- | Checks whether you have the required permissions for the action, without actually making the request, and provides an error response. If you have the required permissions, the error response is @DryRunOperation@ . Otherwise, it is @UnauthorizedOperation@ .
 mvtDryRun :: Lens' ModifyVPCTenancy (Maybe Bool)
@@ -89,7 +82,7 @@ mvtDryRun = lens _mvtDryRun (\ s a -> s{_mvtDryRun = a})
 mvtVPCId :: Lens' ModifyVPCTenancy Text
 mvtVPCId = lens _mvtVPCId (\ s a -> s{_mvtVPCId = a})
 
--- | The instance tenancy attribute for the VPC.
+-- | The instance tenancy attribute for the VPC. 
 mvtInstanceTenancy :: Lens' ModifyVPCTenancy VPCTenancy
 mvtInstanceTenancy = lens _mvtInstanceTenancy (\ s a -> s{_mvtInstanceTenancy = a})
 
@@ -121,13 +114,12 @@ instance ToQuery ModifyVPCTenancy where
                "InstanceTenancy" =: _mvtInstanceTenancy]
 
 -- | /See:/ 'modifyVPCTenancyResponse' smart constructor.
-data ModifyVPCTenancyResponse =
-  ModifyVPCTenancyResponse'
-    { _mvtrsReturnValue    :: !(Maybe Bool)
-    , _mvtrsResponseStatus :: !Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data ModifyVPCTenancyResponse = ModifyVPCTenancyResponse'{_mvtrsReturnValue
+                                                          :: !(Maybe Bool),
+                                                          _mvtrsResponseStatus
+                                                          :: !Int}
+                                  deriving (Eq, Read, Show, Data, Typeable,
+                                            Generic)
 
 -- | Creates a value of 'ModifyVPCTenancyResponse' with the minimum fields required to make a request.
 --
@@ -139,10 +131,10 @@ data ModifyVPCTenancyResponse =
 modifyVPCTenancyResponse
     :: Int -- ^ 'mvtrsResponseStatus'
     -> ModifyVPCTenancyResponse
-modifyVPCTenancyResponse pResponseStatus_ =
-  ModifyVPCTenancyResponse'
-    {_mvtrsReturnValue = Nothing, _mvtrsResponseStatus = pResponseStatus_}
-
+modifyVPCTenancyResponse pResponseStatus_
+  = ModifyVPCTenancyResponse'{_mvtrsReturnValue =
+                                Nothing,
+                              _mvtrsResponseStatus = pResponseStatus_}
 
 -- | Returns @true@ if the request succeeds; otherwise, returns an error.
 mvtrsReturnValue :: Lens' ModifyVPCTenancyResponse (Maybe Bool)

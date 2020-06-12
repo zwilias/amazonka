@@ -40,21 +40,18 @@ module Network.AWS.EC2.DescribeBundleTasks
     ) where
 
 import Network.AWS.EC2.Types
-import Network.AWS.EC2.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 
 -- | /See:/ 'describeBundleTasks' smart constructor.
-data DescribeBundleTasks =
-  DescribeBundleTasks'
-    { _dbtBundleIds :: !(Maybe [Text])
-    , _dbtFilters   :: !(Maybe [Filter])
-    , _dbtDryRun    :: !(Maybe Bool)
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data DescribeBundleTasks = DescribeBundleTasks'{_dbtBundleIds
+                                                :: !(Maybe [Text]),
+                                                _dbtFilters ::
+                                                !(Maybe [Filter]),
+                                                _dbtDryRun :: !(Maybe Bool)}
+                             deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'DescribeBundleTasks' with the minimum fields required to make a request.
 --
@@ -67,10 +64,9 @@ data DescribeBundleTasks =
 -- * 'dbtDryRun' - Checks whether you have the required permissions for the action, without actually making the request, and provides an error response. If you have the required permissions, the error response is @DryRunOperation@ . Otherwise, it is @UnauthorizedOperation@ .
 describeBundleTasks
     :: DescribeBundleTasks
-describeBundleTasks =
-  DescribeBundleTasks'
-    {_dbtBundleIds = Nothing, _dbtFilters = Nothing, _dbtDryRun = Nothing}
-
+describeBundleTasks
+  = DescribeBundleTasks'{_dbtBundleIds = Nothing,
+                         _dbtFilters = Nothing, _dbtDryRun = Nothing}
 
 -- | The bundle task IDs. Default: Describes all your bundle tasks.
 dbtBundleIds :: Lens' DescribeBundleTasks [Text]
@@ -116,13 +112,14 @@ instance ToQuery DescribeBundleTasks where
                "DryRun" =: _dbtDryRun]
 
 -- | /See:/ 'describeBundleTasksResponse' smart constructor.
-data DescribeBundleTasksResponse =
-  DescribeBundleTasksResponse'
-    { _dbtrsBundleTasks    :: !(Maybe [BundleTask])
-    , _dbtrsResponseStatus :: !Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data DescribeBundleTasksResponse = DescribeBundleTasksResponse'{_dbtrsBundleTasks
+                                                                ::
+                                                                !(Maybe
+                                                                    [BundleTask]),
+                                                                _dbtrsResponseStatus
+                                                                :: !Int}
+                                     deriving (Eq, Read, Show, Data, Typeable,
+                                               Generic)
 
 -- | Creates a value of 'DescribeBundleTasksResponse' with the minimum fields required to make a request.
 --
@@ -134,10 +131,10 @@ data DescribeBundleTasksResponse =
 describeBundleTasksResponse
     :: Int -- ^ 'dbtrsResponseStatus'
     -> DescribeBundleTasksResponse
-describeBundleTasksResponse pResponseStatus_ =
-  DescribeBundleTasksResponse'
-    {_dbtrsBundleTasks = Nothing, _dbtrsResponseStatus = pResponseStatus_}
-
+describeBundleTasksResponse pResponseStatus_
+  = DescribeBundleTasksResponse'{_dbtrsBundleTasks =
+                                   Nothing,
+                                 _dbtrsResponseStatus = pResponseStatus_}
 
 -- | Information about the bundle tasks.
 dbtrsBundleTasks :: Lens' DescribeBundleTasksResponse [BundleTask]

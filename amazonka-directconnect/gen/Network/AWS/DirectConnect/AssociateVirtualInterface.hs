@@ -65,20 +65,18 @@ module Network.AWS.DirectConnect.AssociateVirtualInterface
     ) where
 
 import Network.AWS.DirectConnect.Types
-import Network.AWS.DirectConnect.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 
 -- | /See:/ 'associateVirtualInterface' smart constructor.
-data AssociateVirtualInterface =
-  AssociateVirtualInterface'
-    { _aviVirtualInterfaceId :: !Text
-    , _aviConnectionId       :: !Text
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data AssociateVirtualInterface = AssociateVirtualInterface'{_aviVirtualInterfaceId
+                                                            :: !Text,
+                                                            _aviConnectionId ::
+                                                            !Text}
+                                   deriving (Eq, Read, Show, Data, Typeable,
+                                             Generic)
 
 -- | Creates a value of 'AssociateVirtualInterface' with the minimum fields required to make a request.
 --
@@ -91,12 +89,11 @@ associateVirtualInterface
     :: Text -- ^ 'aviVirtualInterfaceId'
     -> Text -- ^ 'aviConnectionId'
     -> AssociateVirtualInterface
-associateVirtualInterface pVirtualInterfaceId_ pConnectionId_ =
-  AssociateVirtualInterface'
-    { _aviVirtualInterfaceId = pVirtualInterfaceId_
-    , _aviConnectionId = pConnectionId_
-    }
-
+associateVirtualInterface pVirtualInterfaceId_
+  pConnectionId_
+  = AssociateVirtualInterface'{_aviVirtualInterfaceId =
+                                 pVirtualInterfaceId_,
+                               _aviConnectionId = pConnectionId_}
 
 -- | The ID of the virtual interface.
 aviVirtualInterfaceId :: Lens' AssociateVirtualInterface Text

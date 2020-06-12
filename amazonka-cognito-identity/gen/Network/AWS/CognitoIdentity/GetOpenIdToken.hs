@@ -44,7 +44,6 @@ module Network.AWS.CognitoIdentity.GetOpenIdToken
     ) where
 
 import Network.AWS.CognitoIdentity.Types
-import Network.AWS.CognitoIdentity.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.Request
@@ -55,13 +54,10 @@ import Network.AWS.Response
 --
 --
 -- /See:/ 'getOpenIdToken' smart constructor.
-data GetOpenIdToken =
-  GetOpenIdToken'
-    { _goitLogins     :: !(Maybe (Map Text Text))
-    , _goitIdentityId :: !Text
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data GetOpenIdToken = GetOpenIdToken'{_goitLogins ::
+                                      !(Maybe (Map Text Text)),
+                                      _goitIdentityId :: !Text}
+                        deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'GetOpenIdToken' with the minimum fields required to make a request.
 --
@@ -73,9 +69,9 @@ data GetOpenIdToken =
 getOpenIdToken
     :: Text -- ^ 'goitIdentityId'
     -> GetOpenIdToken
-getOpenIdToken pIdentityId_ =
-  GetOpenIdToken' {_goitLogins = Nothing, _goitIdentityId = pIdentityId_}
-
+getOpenIdToken pIdentityId_
+  = GetOpenIdToken'{_goitLogins = Nothing,
+                    _goitIdentityId = pIdentityId_}
 
 -- | A set of optional name-value pairs that map provider names to provider tokens. When using graph.facebook.com and www.amazon.com, supply the access_token returned from the provider's authflow. For accounts.google.com, an Amazon Cognito user pool provider, or any other OpenId Connect provider, always include the @id_token@ .
 goitLogins :: Lens' GetOpenIdToken (HashMap Text Text)
@@ -127,14 +123,14 @@ instance ToQuery GetOpenIdToken where
 --
 --
 -- /See:/ 'getOpenIdTokenResponse' smart constructor.
-data GetOpenIdTokenResponse =
-  GetOpenIdTokenResponse'
-    { _goitrsToken          :: !(Maybe Text)
-    , _goitrsIdentityId     :: !(Maybe Text)
-    , _goitrsResponseStatus :: !Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data GetOpenIdTokenResponse = GetOpenIdTokenResponse'{_goitrsToken
+                                                      :: !(Maybe Text),
+                                                      _goitrsIdentityId ::
+                                                      !(Maybe Text),
+                                                      _goitrsResponseStatus ::
+                                                      !Int}
+                                deriving (Eq, Read, Show, Data, Typeable,
+                                          Generic)
 
 -- | Creates a value of 'GetOpenIdTokenResponse' with the minimum fields required to make a request.
 --
@@ -148,13 +144,10 @@ data GetOpenIdTokenResponse =
 getOpenIdTokenResponse
     :: Int -- ^ 'goitrsResponseStatus'
     -> GetOpenIdTokenResponse
-getOpenIdTokenResponse pResponseStatus_ =
-  GetOpenIdTokenResponse'
-    { _goitrsToken = Nothing
-    , _goitrsIdentityId = Nothing
-    , _goitrsResponseStatus = pResponseStatus_
-    }
-
+getOpenIdTokenResponse pResponseStatus_
+  = GetOpenIdTokenResponse'{_goitrsToken = Nothing,
+                            _goitrsIdentityId = Nothing,
+                            _goitrsResponseStatus = pResponseStatus_}
 
 -- | An OpenID token, valid for 10 minutes.
 goitrsToken :: Lens' GetOpenIdTokenResponse (Maybe Text)

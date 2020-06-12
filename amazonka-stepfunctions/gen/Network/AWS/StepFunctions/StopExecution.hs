@@ -44,17 +44,13 @@ import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 import Network.AWS.StepFunctions.Types
-import Network.AWS.StepFunctions.Types.Product
 
 -- | /See:/ 'stopExecution' smart constructor.
-data StopExecution =
-  StopExecution'
-    { _seError        :: !(Maybe Text)
-    , _seCause        :: !(Maybe Text)
-    , _seExecutionARN :: !Text
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data StopExecution = StopExecution'{_seError ::
+                                    !(Maybe Text),
+                                    _seCause :: !(Maybe Text),
+                                    _seExecutionARN :: !Text}
+                       deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'StopExecution' with the minimum fields required to make a request.
 --
@@ -68,10 +64,9 @@ data StopExecution =
 stopExecution
     :: Text -- ^ 'seExecutionARN'
     -> StopExecution
-stopExecution pExecutionARN_ =
-  StopExecution'
-    {_seError = Nothing, _seCause = Nothing, _seExecutionARN = pExecutionARN_}
-
+stopExecution pExecutionARN_
+  = StopExecution'{_seError = Nothing,
+                   _seCause = Nothing, _seExecutionARN = pExecutionARN_}
 
 -- | An arbitrary error code that identifies the cause of the termination.
 seError :: Lens' StopExecution (Maybe Text)
@@ -122,13 +117,11 @@ instance ToQuery StopExecution where
         toQuery = const mempty
 
 -- | /See:/ 'stopExecutionResponse' smart constructor.
-data StopExecutionResponse =
-  StopExecutionResponse'
-    { _sersResponseStatus :: !Int
-    , _sersStopDate       :: !POSIX
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data StopExecutionResponse = StopExecutionResponse'{_sersResponseStatus
+                                                    :: !Int,
+                                                    _sersStopDate :: !POSIX}
+                               deriving (Eq, Read, Show, Data, Typeable,
+                                         Generic)
 
 -- | Creates a value of 'StopExecutionResponse' with the minimum fields required to make a request.
 --
@@ -141,10 +134,10 @@ stopExecutionResponse
     :: Int -- ^ 'sersResponseStatus'
     -> UTCTime -- ^ 'sersStopDate'
     -> StopExecutionResponse
-stopExecutionResponse pResponseStatus_ pStopDate_ =
-  StopExecutionResponse'
-    {_sersResponseStatus = pResponseStatus_, _sersStopDate = _Time # pStopDate_}
-
+stopExecutionResponse pResponseStatus_ pStopDate_
+  = StopExecutionResponse'{_sersResponseStatus =
+                             pResponseStatus_,
+                           _sersStopDate = _Time # pStopDate_}
 
 -- | -- | The response status code.
 sersResponseStatus :: Lens' StopExecutionResponse Int

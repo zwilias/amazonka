@@ -18,7 +18,7 @@
 -- Stability   : auto-generated
 -- Portability : non-portable (GHC extensions)
 --
--- Returns summary information about the results of a stack set operation.
+-- Returns summary information about the results of a stack set operation. 
 --
 --
 module Network.AWS.CloudFormation.ListStackSetOperationResults
@@ -42,22 +42,24 @@ module Network.AWS.CloudFormation.ListStackSetOperationResults
     ) where
 
 import Network.AWS.CloudFormation.Types
-import Network.AWS.CloudFormation.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 
 -- | /See:/ 'listStackSetOperationResults' smart constructor.
-data ListStackSetOperationResults =
-  ListStackSetOperationResults'
-    { _lssorNextToken    :: !(Maybe Text)
-    , _lssorMaxResults   :: !(Maybe Nat)
-    , _lssorStackSetName :: !Text
-    , _lssorOperationId  :: !Text
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data ListStackSetOperationResults = ListStackSetOperationResults'{_lssorNextToken
+                                                                  ::
+                                                                  !(Maybe Text),
+                                                                  _lssorMaxResults
+                                                                  ::
+                                                                  !(Maybe Nat),
+                                                                  _lssorStackSetName
+                                                                  :: !Text,
+                                                                  _lssorOperationId
+                                                                  :: !Text}
+                                      deriving (Eq, Read, Show, Data, Typeable,
+                                                Generic)
 
 -- | Creates a value of 'ListStackSetOperationResults' with the minimum fields required to make a request.
 --
@@ -74,14 +76,13 @@ listStackSetOperationResults
     :: Text -- ^ 'lssorStackSetName'
     -> Text -- ^ 'lssorOperationId'
     -> ListStackSetOperationResults
-listStackSetOperationResults pStackSetName_ pOperationId_ =
-  ListStackSetOperationResults'
-    { _lssorNextToken = Nothing
-    , _lssorMaxResults = Nothing
-    , _lssorStackSetName = pStackSetName_
-    , _lssorOperationId = pOperationId_
-    }
-
+listStackSetOperationResults pStackSetName_
+  pOperationId_
+  = ListStackSetOperationResults'{_lssorNextToken =
+                                    Nothing,
+                                  _lssorMaxResults = Nothing,
+                                  _lssorStackSetName = pStackSetName_,
+                                  _lssorOperationId = pOperationId_}
 
 -- | If the previous request didn't return all of the remaining results, the response object's @NextToken@ parameter value is set to a token. To retrieve the next set of results, call @ListStackSetOperationResults@ again and assign that token to the request object's @NextToken@ parameter. If there are no remaining results, the previous response object's @NextToken@ parameter is set to @null@ .
 lssorNextToken :: Lens' ListStackSetOperationResults (Maybe Text)
@@ -136,14 +137,19 @@ instance ToQuery ListStackSetOperationResults where
                "OperationId" =: _lssorOperationId]
 
 -- | /See:/ 'listStackSetOperationResultsResponse' smart constructor.
-data ListStackSetOperationResultsResponse =
-  ListStackSetOperationResultsResponse'
-    { _lssorrsNextToken      :: !(Maybe Text)
-    , _lssorrsSummaries      :: !(Maybe [StackSetOperationResultSummary])
-    , _lssorrsResponseStatus :: !Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data ListStackSetOperationResultsResponse = ListStackSetOperationResultsResponse'{_lssorrsNextToken
+                                                                                  ::
+                                                                                  !(Maybe
+                                                                                      Text),
+                                                                                  _lssorrsSummaries
+                                                                                  ::
+                                                                                  !(Maybe
+                                                                                      [StackSetOperationResultSummary]),
+                                                                                  _lssorrsResponseStatus
+                                                                                  ::
+                                                                                  !Int}
+                                              deriving (Eq, Read, Show, Data,
+                                                        Typeable, Generic)
 
 -- | Creates a value of 'ListStackSetOperationResultsResponse' with the minimum fields required to make a request.
 --
@@ -157,13 +163,12 @@ data ListStackSetOperationResultsResponse =
 listStackSetOperationResultsResponse
     :: Int -- ^ 'lssorrsResponseStatus'
     -> ListStackSetOperationResultsResponse
-listStackSetOperationResultsResponse pResponseStatus_ =
-  ListStackSetOperationResultsResponse'
-    { _lssorrsNextToken = Nothing
-    , _lssorrsSummaries = Nothing
-    , _lssorrsResponseStatus = pResponseStatus_
-    }
-
+listStackSetOperationResultsResponse pResponseStatus_
+  = ListStackSetOperationResultsResponse'{_lssorrsNextToken
+                                            = Nothing,
+                                          _lssorrsSummaries = Nothing,
+                                          _lssorrsResponseStatus =
+                                            pResponseStatus_}
 
 -- | If the request doesn't return all results, @NextToken@ is set to a token. To retrieve the next set of results, call @ListOperationResults@ again and assign that token to the request object's @NextToken@ parameter. If there are no remaining results, @NextToken@ is set to @null@ .
 lssorrsNextToken :: Lens' ListStackSetOperationResultsResponse (Maybe Text)

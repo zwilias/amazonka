@@ -42,19 +42,15 @@ import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 import Network.AWS.SQS.Types
-import Network.AWS.SQS.Types.Product
 
--- |
+-- | 
 --
 --
 --
 -- /See:/ 'listQueues' smart constructor.
-newtype ListQueues =
-  ListQueues'
-    { _lqQueueNamePrefix :: Maybe Text
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+newtype ListQueues = ListQueues'{_lqQueueNamePrefix
+                                 :: Maybe Text}
+                       deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'ListQueues' with the minimum fields required to make a request.
 --
@@ -63,8 +59,8 @@ newtype ListQueues =
 -- * 'lqQueueNamePrefix' - A string to use for filtering the list results. Only those queues whose name begins with the specified string are returned. Queue names are case-sensitive.
 listQueues
     :: ListQueues
-listQueues = ListQueues' {_lqQueueNamePrefix = Nothing}
-
+listQueues
+  = ListQueues'{_lqQueueNamePrefix = Nothing}
 
 -- | A string to use for filtering the list results. Only those queues whose name begins with the specified string are returned. Queue names are case-sensitive.
 lqQueueNamePrefix :: Lens' ListQueues (Maybe Text)
@@ -102,13 +98,10 @@ instance ToQuery ListQueues where
 --
 --
 -- /See:/ 'listQueuesResponse' smart constructor.
-data ListQueuesResponse =
-  ListQueuesResponse'
-    { _lqrsQueueURLs      :: !(Maybe [Text])
-    , _lqrsResponseStatus :: !Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data ListQueuesResponse = ListQueuesResponse'{_lqrsQueueURLs
+                                              :: !(Maybe [Text]),
+                                              _lqrsResponseStatus :: !Int}
+                            deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'ListQueuesResponse' with the minimum fields required to make a request.
 --
@@ -120,10 +113,9 @@ data ListQueuesResponse =
 listQueuesResponse
     :: Int -- ^ 'lqrsResponseStatus'
     -> ListQueuesResponse
-listQueuesResponse pResponseStatus_ =
-  ListQueuesResponse'
-    {_lqrsQueueURLs = Nothing, _lqrsResponseStatus = pResponseStatus_}
-
+listQueuesResponse pResponseStatus_
+  = ListQueuesResponse'{_lqrsQueueURLs = Nothing,
+                        _lqrsResponseStatus = pResponseStatus_}
 
 -- | A list of queue URLs, up to 1,000 entries.
 lqrsQueueURLs :: Lens' ListQueuesResponse [Text]

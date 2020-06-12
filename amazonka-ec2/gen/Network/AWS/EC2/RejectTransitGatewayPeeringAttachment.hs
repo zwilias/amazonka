@@ -39,20 +39,21 @@ module Network.AWS.EC2.RejectTransitGatewayPeeringAttachment
     ) where
 
 import Network.AWS.EC2.Types
-import Network.AWS.EC2.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 
 -- | /See:/ 'rejectTransitGatewayPeeringAttachment' smart constructor.
-data RejectTransitGatewayPeeringAttachment =
-  RejectTransitGatewayPeeringAttachment'
-    { _rtgpaDryRun                     :: !(Maybe Bool)
-    , _rtgpaTransitGatewayAttachmentId :: !Text
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data RejectTransitGatewayPeeringAttachment = RejectTransitGatewayPeeringAttachment'{_rtgpaDryRun
+                                                                                    ::
+                                                                                    !(Maybe
+                                                                                        Bool),
+                                                                                    _rtgpaTransitGatewayAttachmentId
+                                                                                    ::
+                                                                                    !Text}
+                                               deriving (Eq, Read, Show, Data,
+                                                         Typeable, Generic)
 
 -- | Creates a value of 'RejectTransitGatewayPeeringAttachment' with the minimum fields required to make a request.
 --
@@ -64,12 +65,12 @@ data RejectTransitGatewayPeeringAttachment =
 rejectTransitGatewayPeeringAttachment
     :: Text -- ^ 'rtgpaTransitGatewayAttachmentId'
     -> RejectTransitGatewayPeeringAttachment
-rejectTransitGatewayPeeringAttachment pTransitGatewayAttachmentId_ =
-  RejectTransitGatewayPeeringAttachment'
-    { _rtgpaDryRun = Nothing
-    , _rtgpaTransitGatewayAttachmentId = pTransitGatewayAttachmentId_
-    }
-
+rejectTransitGatewayPeeringAttachment
+  pTransitGatewayAttachmentId_
+  = RejectTransitGatewayPeeringAttachment'{_rtgpaDryRun
+                                             = Nothing,
+                                           _rtgpaTransitGatewayAttachmentId =
+                                             pTransitGatewayAttachmentId_}
 
 -- | Checks whether you have the required permissions for the action, without actually making the request, and provides an error response. If you have the required permissions, the error response is @DryRunOperation@ . Otherwise, it is @UnauthorizedOperation@ .
 rtgpaDryRun :: Lens' RejectTransitGatewayPeeringAttachment (Maybe Bool)
@@ -122,13 +123,16 @@ instance ToQuery
                  _rtgpaTransitGatewayAttachmentId]
 
 -- | /See:/ 'rejectTransitGatewayPeeringAttachmentResponse' smart constructor.
-data RejectTransitGatewayPeeringAttachmentResponse =
-  RejectTransitGatewayPeeringAttachmentResponse'
-    { _rtgparsTransitGatewayPeeringAttachment :: !(Maybe TransitGatewayPeeringAttachment)
-    , _rtgparsResponseStatus :: !Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data RejectTransitGatewayPeeringAttachmentResponse = RejectTransitGatewayPeeringAttachmentResponse'{_rtgparsTransitGatewayPeeringAttachment
+                                                                                                    ::
+                                                                                                    !(Maybe
+                                                                                                        TransitGatewayPeeringAttachment),
+                                                                                                    _rtgparsResponseStatus
+                                                                                                    ::
+                                                                                                    !Int}
+                                                       deriving (Eq, Read, Show,
+                                                                 Data, Typeable,
+                                                                 Generic)
 
 -- | Creates a value of 'RejectTransitGatewayPeeringAttachmentResponse' with the minimum fields required to make a request.
 --
@@ -140,12 +144,12 @@ data RejectTransitGatewayPeeringAttachmentResponse =
 rejectTransitGatewayPeeringAttachmentResponse
     :: Int -- ^ 'rtgparsResponseStatus'
     -> RejectTransitGatewayPeeringAttachmentResponse
-rejectTransitGatewayPeeringAttachmentResponse pResponseStatus_ =
-  RejectTransitGatewayPeeringAttachmentResponse'
-    { _rtgparsTransitGatewayPeeringAttachment = Nothing
-    , _rtgparsResponseStatus = pResponseStatus_
-    }
-
+rejectTransitGatewayPeeringAttachmentResponse
+  pResponseStatus_
+  = RejectTransitGatewayPeeringAttachmentResponse'{_rtgparsTransitGatewayPeeringAttachment
+                                                     = Nothing,
+                                                   _rtgparsResponseStatus =
+                                                     pResponseStatus_}
 
 -- | The transit gateway peering attachment.
 rtgparsTransitGatewayPeeringAttachment :: Lens' RejectTransitGatewayPeeringAttachmentResponse (Maybe TransitGatewayPeeringAttachment)

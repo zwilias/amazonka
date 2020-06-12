@@ -35,7 +35,6 @@ module Network.AWS.APIGateway.DeleteVPCLink
     ) where
 
 import Network.AWS.APIGateway.Types
-import Network.AWS.APIGateway.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.Request
@@ -46,12 +45,9 @@ import Network.AWS.Response
 --
 --
 -- /See:/ 'deleteVPCLink' smart constructor.
-newtype DeleteVPCLink =
-  DeleteVPCLink'
-    { _dvlVpcLinkId :: Text
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+newtype DeleteVPCLink = DeleteVPCLink'{_dvlVpcLinkId
+                                       :: Text}
+                          deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'DeleteVPCLink' with the minimum fields required to make a request.
 --
@@ -61,8 +57,8 @@ newtype DeleteVPCLink =
 deleteVPCLink
     :: Text -- ^ 'dvlVpcLinkId'
     -> DeleteVPCLink
-deleteVPCLink pVpcLinkId_ = DeleteVPCLink' {_dvlVpcLinkId = pVpcLinkId_}
-
+deleteVPCLink pVpcLinkId_
+  = DeleteVPCLink'{_dvlVpcLinkId = pVpcLinkId_}
 
 -- | [Required] The identifier of the 'VpcLink' . It is used in an 'Integration' to reference this 'VpcLink' .
 dvlVpcLinkId :: Lens' DeleteVPCLink Text
@@ -91,16 +87,14 @@ instance ToQuery DeleteVPCLink where
         toQuery = const mempty
 
 -- | /See:/ 'deleteVPCLinkResponse' smart constructor.
-data DeleteVPCLinkResponse =
-  DeleteVPCLinkResponse'
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data DeleteVPCLinkResponse = DeleteVPCLinkResponse'
+                               deriving (Eq, Read, Show, Data, Typeable,
+                                         Generic)
 
 -- | Creates a value of 'DeleteVPCLinkResponse' with the minimum fields required to make a request.
 --
 deleteVPCLinkResponse
     :: DeleteVPCLinkResponse
 deleteVPCLinkResponse = DeleteVPCLinkResponse'
-
 
 instance NFData DeleteVPCLinkResponse where

@@ -38,7 +38,6 @@ module Network.AWS.GuardDuty.GetMembers
     ) where
 
 import Network.AWS.GuardDuty.Types
-import Network.AWS.GuardDuty.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.Request
@@ -47,13 +46,10 @@ import Network.AWS.Response
 -- | GetMembers request body.
 --
 -- /See:/ 'getMembers' smart constructor.
-data GetMembers =
-  GetMembers'
-    { _gmAccountIds :: !(Maybe [Text])
-    , _gmDetectorId :: !Text
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data GetMembers = GetMembers'{_gmAccountIds ::
+                              !(Maybe [Text]),
+                              _gmDetectorId :: !Text}
+                    deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'GetMembers' with the minimum fields required to make a request.
 --
@@ -65,9 +61,9 @@ data GetMembers =
 getMembers
     :: Text -- ^ 'gmDetectorId'
     -> GetMembers
-getMembers pDetectorId_ =
-  GetMembers' {_gmAccountIds = Nothing, _gmDetectorId = pDetectorId_}
-
+getMembers pDetectorId_
+  = GetMembers'{_gmAccountIds = Nothing,
+                _gmDetectorId = pDetectorId_}
 
 -- | A list of account IDs of the GuardDuty member accounts that you want to describe.
 gmAccountIds :: Lens' GetMembers [Text]
@@ -113,14 +109,12 @@ instance ToQuery GetMembers where
         toQuery = const mempty
 
 -- | /See:/ 'getMembersResponse' smart constructor.
-data GetMembersResponse =
-  GetMembersResponse'
-    { _gmrsMembers             :: !(Maybe [Member])
-    , _gmrsUnprocessedAccounts :: !(Maybe [UnprocessedAccount])
-    , _gmrsResponseStatus      :: !Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data GetMembersResponse = GetMembersResponse'{_gmrsMembers
+                                              :: !(Maybe [Member]),
+                                              _gmrsUnprocessedAccounts ::
+                                              !(Maybe [UnprocessedAccount]),
+                                              _gmrsResponseStatus :: !Int}
+                            deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'GetMembersResponse' with the minimum fields required to make a request.
 --
@@ -134,13 +128,10 @@ data GetMembersResponse =
 getMembersResponse
     :: Int -- ^ 'gmrsResponseStatus'
     -> GetMembersResponse
-getMembersResponse pResponseStatus_ =
-  GetMembersResponse'
-    { _gmrsMembers = Nothing
-    , _gmrsUnprocessedAccounts = Nothing
-    , _gmrsResponseStatus = pResponseStatus_
-    }
-
+getMembersResponse pResponseStatus_
+  = GetMembersResponse'{_gmrsMembers = Nothing,
+                        _gmrsUnprocessedAccounts = Nothing,
+                        _gmrsResponseStatus = pResponseStatus_}
 
 -- | Undocumented member.
 gmrsMembers :: Lens' GetMembersResponse [Member]

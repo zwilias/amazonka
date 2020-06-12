@@ -49,22 +49,18 @@ import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 import Network.AWS.StorageGateway.Types
-import Network.AWS.StorageGateway.Types.Product
 
 -- | DescribeTapesInput
 --
 --
 --
 -- /See:/ 'describeTapes' smart constructor.
-data DescribeTapes =
-  DescribeTapes'
-    { _dtMarker     :: !(Maybe Text)
-    , _dtLimit      :: !(Maybe Nat)
-    , _dtTapeARNs   :: !(Maybe [Text])
-    , _dtGatewayARN :: !Text
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data DescribeTapes = DescribeTapes'{_dtMarker ::
+                                    !(Maybe Text),
+                                    _dtLimit :: !(Maybe Nat),
+                                    _dtTapeARNs :: !(Maybe [Text]),
+                                    _dtGatewayARN :: !Text}
+                       deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'DescribeTapes' with the minimum fields required to make a request.
 --
@@ -80,14 +76,10 @@ data DescribeTapes =
 describeTapes
     :: Text -- ^ 'dtGatewayARN'
     -> DescribeTapes
-describeTapes pGatewayARN_ =
-  DescribeTapes'
-    { _dtMarker = Nothing
-    , _dtLimit = Nothing
-    , _dtTapeARNs = Nothing
-    , _dtGatewayARN = pGatewayARN_
-    }
-
+describeTapes pGatewayARN_
+  = DescribeTapes'{_dtMarker = Nothing,
+                   _dtLimit = Nothing, _dtTapeARNs = Nothing,
+                   _dtGatewayARN = pGatewayARN_}
 
 -- | A marker value, obtained in a previous call to @DescribeTapes@ . This marker indicates which page of results to retrieve.  If not specified, the first page of results is retrieved.
 dtMarker :: Lens' DescribeTapes (Maybe Text)
@@ -156,14 +148,14 @@ instance ToQuery DescribeTapes where
 --
 --
 -- /See:/ 'describeTapesResponse' smart constructor.
-data DescribeTapesResponse =
-  DescribeTapesResponse'
-    { _dtsrsMarker         :: !(Maybe Text)
-    , _dtsrsTapes          :: !(Maybe [Tape])
-    , _dtsrsResponseStatus :: !Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data DescribeTapesResponse = DescribeTapesResponse'{_dtsrsMarker
+                                                    :: !(Maybe Text),
+                                                    _dtsrsTapes ::
+                                                    !(Maybe [Tape]),
+                                                    _dtsrsResponseStatus ::
+                                                    !Int}
+                               deriving (Eq, Read, Show, Data, Typeable,
+                                         Generic)
 
 -- | Creates a value of 'DescribeTapesResponse' with the minimum fields required to make a request.
 --
@@ -177,13 +169,10 @@ data DescribeTapesResponse =
 describeTapesResponse
     :: Int -- ^ 'dtsrsResponseStatus'
     -> DescribeTapesResponse
-describeTapesResponse pResponseStatus_ =
-  DescribeTapesResponse'
-    { _dtsrsMarker = Nothing
-    , _dtsrsTapes = Nothing
-    , _dtsrsResponseStatus = pResponseStatus_
-    }
-
+describeTapesResponse pResponseStatus_
+  = DescribeTapesResponse'{_dtsrsMarker = Nothing,
+                           _dtsrsTapes = Nothing,
+                           _dtsrsResponseStatus = pResponseStatus_}
 
 -- | An opaque string which can be used as part of a subsequent DescribeTapes call to retrieve the next page of results. If a response does not contain a marker, then there are no more results to be retrieved.
 dtsrsMarker :: Lens' DescribeTapesResponse (Maybe Text)

@@ -18,7 +18,7 @@
 -- Stability   : auto-generated
 -- Portability : non-portable (GHC extensions)
 --
--- Reloads the target database table with the source data.
+-- Reloads the target database table with the source data. 
 --
 --
 module Network.AWS.DMS.ReloadTables
@@ -40,21 +40,17 @@ module Network.AWS.DMS.ReloadTables
     ) where
 
 import Network.AWS.DMS.Types
-import Network.AWS.DMS.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 
 -- | /See:/ 'reloadTables' smart constructor.
-data ReloadTables =
-  ReloadTables'
-    { _rtReloadOption       :: !(Maybe ReloadOptionValue)
-    , _rtReplicationTaskARN :: !Text
-    , _rtTablesToReload     :: ![TableToReload]
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data ReloadTables = ReloadTables'{_rtReloadOption ::
+                                  !(Maybe ReloadOptionValue),
+                                  _rtReplicationTaskARN :: !Text,
+                                  _rtTablesToReload :: ![TableToReload]}
+                      deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'ReloadTables' with the minimum fields required to make a request.
 --
@@ -62,29 +58,26 @@ data ReloadTables =
 --
 -- * 'rtReloadOption' - Options for reload. Specify @data-reload@ to reload the data and re-validate it if validation is enabled. Specify @validate-only@ to re-validate the table. This option applies only when validation is enabled for the task.  Valid values: data-reload, validate-only Default value is data-reload.
 --
--- * 'rtReplicationTaskARN' - The Amazon Resource Name (ARN) of the replication task.
+-- * 'rtReplicationTaskARN' - The Amazon Resource Name (ARN) of the replication task. 
 --
--- * 'rtTablesToReload' - The name and schema of the table to be reloaded.
+-- * 'rtTablesToReload' - The name and schema of the table to be reloaded. 
 reloadTables
     :: Text -- ^ 'rtReplicationTaskARN'
     -> ReloadTables
-reloadTables pReplicationTaskARN_ =
-  ReloadTables'
-    { _rtReloadOption = Nothing
-    , _rtReplicationTaskARN = pReplicationTaskARN_
-    , _rtTablesToReload = mempty
-    }
-
+reloadTables pReplicationTaskARN_
+  = ReloadTables'{_rtReloadOption = Nothing,
+                  _rtReplicationTaskARN = pReplicationTaskARN_,
+                  _rtTablesToReload = mempty}
 
 -- | Options for reload. Specify @data-reload@ to reload the data and re-validate it if validation is enabled. Specify @validate-only@ to re-validate the table. This option applies only when validation is enabled for the task.  Valid values: data-reload, validate-only Default value is data-reload.
 rtReloadOption :: Lens' ReloadTables (Maybe ReloadOptionValue)
 rtReloadOption = lens _rtReloadOption (\ s a -> s{_rtReloadOption = a})
 
--- | The Amazon Resource Name (ARN) of the replication task.
+-- | The Amazon Resource Name (ARN) of the replication task. 
 rtReplicationTaskARN :: Lens' ReloadTables Text
 rtReplicationTaskARN = lens _rtReplicationTaskARN (\ s a -> s{_rtReplicationTaskARN = a})
 
--- | The name and schema of the table to be reloaded.
+-- | The name and schema of the table to be reloaded. 
 rtTablesToReload :: Lens' ReloadTables [TableToReload]
 rtTablesToReload = lens _rtTablesToReload (\ s a -> s{_rtTablesToReload = a}) . _Coerce
 
@@ -125,30 +118,27 @@ instance ToQuery ReloadTables where
         toQuery = const mempty
 
 -- | /See:/ 'reloadTablesResponse' smart constructor.
-data ReloadTablesResponse =
-  ReloadTablesResponse'
-    { _rtrsReplicationTaskARN :: !(Maybe Text)
-    , _rtrsResponseStatus     :: !Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data ReloadTablesResponse = ReloadTablesResponse'{_rtrsReplicationTaskARN
+                                                  :: !(Maybe Text),
+                                                  _rtrsResponseStatus :: !Int}
+                              deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'ReloadTablesResponse' with the minimum fields required to make a request.
 --
 -- Use one of the following lenses to modify other fields as desired:
 --
--- * 'rtrsReplicationTaskARN' - The Amazon Resource Name (ARN) of the replication task.
+-- * 'rtrsReplicationTaskARN' - The Amazon Resource Name (ARN) of the replication task. 
 --
 -- * 'rtrsResponseStatus' - -- | The response status code.
 reloadTablesResponse
     :: Int -- ^ 'rtrsResponseStatus'
     -> ReloadTablesResponse
-reloadTablesResponse pResponseStatus_ =
-  ReloadTablesResponse'
-    {_rtrsReplicationTaskARN = Nothing, _rtrsResponseStatus = pResponseStatus_}
+reloadTablesResponse pResponseStatus_
+  = ReloadTablesResponse'{_rtrsReplicationTaskARN =
+                            Nothing,
+                          _rtrsResponseStatus = pResponseStatus_}
 
-
--- | The Amazon Resource Name (ARN) of the replication task.
+-- | The Amazon Resource Name (ARN) of the replication task. 
 rtrsReplicationTaskARN :: Lens' ReloadTablesResponse (Maybe Text)
 rtrsReplicationTaskARN = lens _rtrsReplicationTaskARN (\ s a -> s{_rtrsReplicationTaskARN = a})
 

@@ -44,22 +44,19 @@ module Network.AWS.Batch.CreateJobQueue
     ) where
 
 import Network.AWS.Batch.Types
-import Network.AWS.Batch.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 
 -- | /See:/ 'createJobQueue' smart constructor.
-data CreateJobQueue =
-  CreateJobQueue'
-    { _cjqState                   :: !(Maybe JQState)
-    , _cjqJobQueueName            :: !Text
-    , _cjqPriority                :: !Int
-    , _cjqComputeEnvironmentOrder :: ![ComputeEnvironmentOrder]
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data CreateJobQueue = CreateJobQueue'{_cjqState ::
+                                      !(Maybe JQState),
+                                      _cjqJobQueueName :: !Text,
+                                      _cjqPriority :: !Int,
+                                      _cjqComputeEnvironmentOrder ::
+                                      ![ComputeEnvironmentOrder]}
+                        deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'CreateJobQueue' with the minimum fields required to make a request.
 --
@@ -76,14 +73,11 @@ createJobQueue
     :: Text -- ^ 'cjqJobQueueName'
     -> Int -- ^ 'cjqPriority'
     -> CreateJobQueue
-createJobQueue pJobQueueName_ pPriority_ =
-  CreateJobQueue'
-    { _cjqState = Nothing
-    , _cjqJobQueueName = pJobQueueName_
-    , _cjqPriority = pPriority_
-    , _cjqComputeEnvironmentOrder = mempty
-    }
-
+createJobQueue pJobQueueName_ pPriority_
+  = CreateJobQueue'{_cjqState = Nothing,
+                    _cjqJobQueueName = pJobQueueName_,
+                    _cjqPriority = pPriority_,
+                    _cjqComputeEnvironmentOrder = mempty}
 
 -- | The state of the job queue. If the job queue state is @ENABLED@ , it is able to accept jobs.
 cjqState :: Lens' CreateJobQueue (Maybe JQState)
@@ -140,14 +134,14 @@ instance ToQuery CreateJobQueue where
         toQuery = const mempty
 
 -- | /See:/ 'createJobQueueResponse' smart constructor.
-data CreateJobQueueResponse =
-  CreateJobQueueResponse'
-    { _cjqrsResponseStatus :: !Int
-    , _cjqrsJobQueueName   :: !Text
-    , _cjqrsJobQueueARN    :: !Text
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data CreateJobQueueResponse = CreateJobQueueResponse'{_cjqrsResponseStatus
+                                                      :: !Int,
+                                                      _cjqrsJobQueueName ::
+                                                      !Text,
+                                                      _cjqrsJobQueueARN ::
+                                                      !Text}
+                                deriving (Eq, Read, Show, Data, Typeable,
+                                          Generic)
 
 -- | Creates a value of 'CreateJobQueueResponse' with the minimum fields required to make a request.
 --
@@ -163,13 +157,12 @@ createJobQueueResponse
     -> Text -- ^ 'cjqrsJobQueueName'
     -> Text -- ^ 'cjqrsJobQueueARN'
     -> CreateJobQueueResponse
-createJobQueueResponse pResponseStatus_ pJobQueueName_ pJobQueueARN_ =
-  CreateJobQueueResponse'
-    { _cjqrsResponseStatus = pResponseStatus_
-    , _cjqrsJobQueueName = pJobQueueName_
-    , _cjqrsJobQueueARN = pJobQueueARN_
-    }
-
+createJobQueueResponse pResponseStatus_
+  pJobQueueName_ pJobQueueARN_
+  = CreateJobQueueResponse'{_cjqrsResponseStatus =
+                              pResponseStatus_,
+                            _cjqrsJobQueueName = pJobQueueName_,
+                            _cjqrsJobQueueARN = pJobQueueARN_}
 
 -- | -- | The response status code.
 cjqrsResponseStatus :: Lens' CreateJobQueueResponse Int

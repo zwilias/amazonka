@@ -51,24 +51,21 @@ import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 import Network.AWS.SES.Types
-import Network.AWS.SES.Types.Product
 
 -- | Represents a request to send a bounce message to the sender of an email you received through Amazon SES.
 --
 --
 --
 -- /See:/ 'sendBounce' smart constructor.
-data SendBounce =
-  SendBounce'
-    { _sbMessageDsn               :: !(Maybe MessageDsn)
-    , _sbExplanation              :: !(Maybe Text)
-    , _sbBounceSenderARN          :: !(Maybe Text)
-    , _sbOriginalMessageId        :: !Text
-    , _sbBounceSender             :: !Text
-    , _sbBouncedRecipientInfoList :: ![BouncedRecipientInfo]
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data SendBounce = SendBounce'{_sbMessageDsn ::
+                              !(Maybe MessageDsn),
+                              _sbExplanation :: !(Maybe Text),
+                              _sbBounceSenderARN :: !(Maybe Text),
+                              _sbOriginalMessageId :: !Text,
+                              _sbBounceSender :: !Text,
+                              _sbBouncedRecipientInfoList ::
+                              ![BouncedRecipientInfo]}
+                    deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'SendBounce' with the minimum fields required to make a request.
 --
@@ -89,16 +86,13 @@ sendBounce
     :: Text -- ^ 'sbOriginalMessageId'
     -> Text -- ^ 'sbBounceSender'
     -> SendBounce
-sendBounce pOriginalMessageId_ pBounceSender_ =
-  SendBounce'
-    { _sbMessageDsn = Nothing
-    , _sbExplanation = Nothing
-    , _sbBounceSenderARN = Nothing
-    , _sbOriginalMessageId = pOriginalMessageId_
-    , _sbBounceSender = pBounceSender_
-    , _sbBouncedRecipientInfoList = mempty
-    }
-
+sendBounce pOriginalMessageId_ pBounceSender_
+  = SendBounce'{_sbMessageDsn = Nothing,
+                _sbExplanation = Nothing,
+                _sbBounceSenderARN = Nothing,
+                _sbOriginalMessageId = pOriginalMessageId_,
+                _sbBounceSender = pBounceSender_,
+                _sbBouncedRecipientInfoList = mempty}
 
 -- | Message-related DSN fields. If not specified, Amazon SES will choose the values.
 sbMessageDsn :: Lens' SendBounce (Maybe MessageDsn)
@@ -161,13 +155,10 @@ instance ToQuery SendBounce where
 --
 --
 -- /See:/ 'sendBounceResponse' smart constructor.
-data SendBounceResponse =
-  SendBounceResponse'
-    { _sbrsMessageId      :: !(Maybe Text)
-    , _sbrsResponseStatus :: !Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data SendBounceResponse = SendBounceResponse'{_sbrsMessageId
+                                              :: !(Maybe Text),
+                                              _sbrsResponseStatus :: !Int}
+                            deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'SendBounceResponse' with the minimum fields required to make a request.
 --
@@ -179,10 +170,9 @@ data SendBounceResponse =
 sendBounceResponse
     :: Int -- ^ 'sbrsResponseStatus'
     -> SendBounceResponse
-sendBounceResponse pResponseStatus_ =
-  SendBounceResponse'
-    {_sbrsMessageId = Nothing, _sbrsResponseStatus = pResponseStatus_}
-
+sendBounceResponse pResponseStatus_
+  = SendBounceResponse'{_sbrsMessageId = Nothing,
+                        _sbrsResponseStatus = pResponseStatus_}
 
 -- | The message ID of the bounce message.
 sbrsMessageId :: Lens' SendBounceResponse (Maybe Text)

@@ -40,20 +40,22 @@ module Network.AWS.EC2.DeleteQueuedReservedInstances
     ) where
 
 import Network.AWS.EC2.Types
-import Network.AWS.EC2.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 
 -- | /See:/ 'deleteQueuedReservedInstances' smart constructor.
-data DeleteQueuedReservedInstances =
-  DeleteQueuedReservedInstances'
-    { _dqriDryRun               :: !(Maybe Bool)
-    , _dqriReservedInstancesIds :: !(List1 Text)
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data DeleteQueuedReservedInstances = DeleteQueuedReservedInstances'{_dqriDryRun
+                                                                    ::
+                                                                    !(Maybe
+                                                                        Bool),
+                                                                    _dqriReservedInstancesIds
+                                                                    ::
+                                                                    !(List1
+                                                                        Text)}
+                                       deriving (Eq, Read, Show, Data, Typeable,
+                                                 Generic)
 
 -- | Creates a value of 'DeleteQueuedReservedInstances' with the minimum fields required to make a request.
 --
@@ -65,12 +67,11 @@ data DeleteQueuedReservedInstances =
 deleteQueuedReservedInstances
     :: NonEmpty Text -- ^ 'dqriReservedInstancesIds'
     -> DeleteQueuedReservedInstances
-deleteQueuedReservedInstances pReservedInstancesIds_ =
-  DeleteQueuedReservedInstances'
-    { _dqriDryRun = Nothing
-    , _dqriReservedInstancesIds = _List1 # pReservedInstancesIds_
-    }
-
+deleteQueuedReservedInstances pReservedInstancesIds_
+  = DeleteQueuedReservedInstances'{_dqriDryRun =
+                                     Nothing,
+                                   _dqriReservedInstancesIds =
+                                     _List1 # pReservedInstancesIds_}
 
 -- | Checks whether you have the required permissions for the action, without actually making the request, and provides an error response. If you have the required permissions, the error response is @DryRunOperation@ . Otherwise, it is @UnauthorizedOperation@ .
 dqriDryRun :: Lens' DeleteQueuedReservedInstances (Maybe Bool)
@@ -119,14 +120,19 @@ instance ToQuery DeleteQueuedReservedInstances where
                  _dqriReservedInstancesIds]
 
 -- | /See:/ 'deleteQueuedReservedInstancesResponse' smart constructor.
-data DeleteQueuedReservedInstancesResponse =
-  DeleteQueuedReservedInstancesResponse'
-    { _dqrirsFailedQueuedPurchaseDeletions :: !(Maybe [FailedQueuedPurchaseDeletion])
-    , _dqrirsSuccessfulQueuedPurchaseDeletions :: !(Maybe [SuccessfulQueuedPurchaseDeletion])
-    , _dqrirsResponseStatus :: !Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data DeleteQueuedReservedInstancesResponse = DeleteQueuedReservedInstancesResponse'{_dqrirsFailedQueuedPurchaseDeletions
+                                                                                    ::
+                                                                                    !(Maybe
+                                                                                        [FailedQueuedPurchaseDeletion]),
+                                                                                    _dqrirsSuccessfulQueuedPurchaseDeletions
+                                                                                    ::
+                                                                                    !(Maybe
+                                                                                        [SuccessfulQueuedPurchaseDeletion]),
+                                                                                    _dqrirsResponseStatus
+                                                                                    ::
+                                                                                    !Int}
+                                               deriving (Eq, Read, Show, Data,
+                                                         Typeable, Generic)
 
 -- | Creates a value of 'DeleteQueuedReservedInstancesResponse' with the minimum fields required to make a request.
 --
@@ -140,13 +146,14 @@ data DeleteQueuedReservedInstancesResponse =
 deleteQueuedReservedInstancesResponse
     :: Int -- ^ 'dqrirsResponseStatus'
     -> DeleteQueuedReservedInstancesResponse
-deleteQueuedReservedInstancesResponse pResponseStatus_ =
-  DeleteQueuedReservedInstancesResponse'
-    { _dqrirsFailedQueuedPurchaseDeletions = Nothing
-    , _dqrirsSuccessfulQueuedPurchaseDeletions = Nothing
-    , _dqrirsResponseStatus = pResponseStatus_
-    }
-
+deleteQueuedReservedInstancesResponse
+  pResponseStatus_
+  = DeleteQueuedReservedInstancesResponse'{_dqrirsFailedQueuedPurchaseDeletions
+                                             = Nothing,
+                                           _dqrirsSuccessfulQueuedPurchaseDeletions
+                                             = Nothing,
+                                           _dqrirsResponseStatus =
+                                             pResponseStatus_}
 
 -- | Information about the queued purchases that could not be deleted.
 dqrirsFailedQueuedPurchaseDeletions :: Lens' DeleteQueuedReservedInstancesResponse [FailedQueuedPurchaseDeletion]

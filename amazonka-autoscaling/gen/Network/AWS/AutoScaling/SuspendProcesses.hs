@@ -42,39 +42,32 @@ module Network.AWS.AutoScaling.SuspendProcesses
     ) where
 
 import Network.AWS.AutoScaling.Types
-import Network.AWS.AutoScaling.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 
 -- | /See:/ 'suspendProcesses' smart constructor.
-data SuspendProcesses =
-  SuspendProcesses'
-    { _spScalingProcesses     :: !(Maybe [Text])
-    , _spAutoScalingGroupName :: !Text
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data SuspendProcesses = SuspendProcesses'{_spScalingProcesses
+                                          :: !(Maybe [Text]),
+                                          _spAutoScalingGroupName :: !Text}
+                          deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'SuspendProcesses' with the minimum fields required to make a request.
 --
 -- Use one of the following lenses to modify other fields as desired:
 --
--- * 'spScalingProcesses' - One or more of the following processes. If you omit this parameter, all processes are specified.     * @Launch@      * @Terminate@      * @HealthCheck@      * @ReplaceUnhealthy@      * @AZRebalance@      * @AlarmNotification@      * @ScheduledActions@      * @AddToLoadBalancer@
+-- * 'spScalingProcesses' - One or more of the following processes. If you omit this parameter, all processes are specified.     * @Launch@      * @Terminate@      * @HealthCheck@      * @ReplaceUnhealthy@      * @AZRebalance@      * @AlarmNotification@      * @ScheduledActions@      * @AddToLoadBalancer@ 
 --
 -- * 'spAutoScalingGroupName' - The name of the Auto Scaling group.
 suspendProcesses
     :: Text -- ^ 'spAutoScalingGroupName'
     -> SuspendProcesses
-suspendProcesses pAutoScalingGroupName_ =
-  SuspendProcesses'
-    { _spScalingProcesses = Nothing
-    , _spAutoScalingGroupName = pAutoScalingGroupName_
-    }
+suspendProcesses pAutoScalingGroupName_
+  = SuspendProcesses'{_spScalingProcesses = Nothing,
+                      _spAutoScalingGroupName = pAutoScalingGroupName_}
 
-
--- | One or more of the following processes. If you omit this parameter, all processes are specified.     * @Launch@      * @Terminate@      * @HealthCheck@      * @ReplaceUnhealthy@      * @AZRebalance@      * @AlarmNotification@      * @ScheduledActions@      * @AddToLoadBalancer@
+-- | One or more of the following processes. If you omit this parameter, all processes are specified.     * @Launch@      * @Terminate@      * @HealthCheck@      * @ReplaceUnhealthy@      * @AZRebalance@      * @AlarmNotification@      * @ScheduledActions@      * @AddToLoadBalancer@ 
 spScalingProcesses :: Lens' SuspendProcesses [Text]
 spScalingProcesses = lens _spScalingProcesses (\ s a -> s{_spScalingProcesses = a}) . _Default . _Coerce
 
@@ -108,16 +101,14 @@ instance ToQuery SuspendProcesses where
                "AutoScalingGroupName" =: _spAutoScalingGroupName]
 
 -- | /See:/ 'suspendProcessesResponse' smart constructor.
-data SuspendProcessesResponse =
-  SuspendProcessesResponse'
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data SuspendProcessesResponse = SuspendProcessesResponse'
+                                  deriving (Eq, Read, Show, Data, Typeable,
+                                            Generic)
 
 -- | Creates a value of 'SuspendProcessesResponse' with the minimum fields required to make a request.
 --
 suspendProcessesResponse
     :: SuspendProcessesResponse
 suspendProcessesResponse = SuspendProcessesResponse'
-
 
 instance NFData SuspendProcessesResponse where

@@ -39,7 +39,6 @@ module Network.AWS.CodePipeline.PutJobSuccessResult
     ) where
 
 import Network.AWS.CodePipeline.Types
-import Network.AWS.CodePipeline.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.Request
@@ -50,16 +49,16 @@ import Network.AWS.Response
 --
 --
 -- /See:/ 'putJobSuccessResult' smart constructor.
-data PutJobSuccessResult =
-  PutJobSuccessResult'
-    { _pjsrOutputVariables   :: !(Maybe (Map Text Text))
-    , _pjsrContinuationToken :: !(Maybe Text)
-    , _pjsrExecutionDetails  :: !(Maybe ExecutionDetails)
-    , _pjsrCurrentRevision   :: !(Maybe CurrentRevision)
-    , _pjsrJobId             :: !Text
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data PutJobSuccessResult = PutJobSuccessResult'{_pjsrOutputVariables
+                                                :: !(Maybe (Map Text Text)),
+                                                _pjsrContinuationToken ::
+                                                !(Maybe Text),
+                                                _pjsrExecutionDetails ::
+                                                !(Maybe ExecutionDetails),
+                                                _pjsrCurrentRevision ::
+                                                !(Maybe CurrentRevision),
+                                                _pjsrJobId :: !Text}
+                             deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'PutJobSuccessResult' with the minimum fields required to make a request.
 --
@@ -77,15 +76,12 @@ data PutJobSuccessResult =
 putJobSuccessResult
     :: Text -- ^ 'pjsrJobId'
     -> PutJobSuccessResult
-putJobSuccessResult pJobId_ =
-  PutJobSuccessResult'
-    { _pjsrOutputVariables = Nothing
-    , _pjsrContinuationToken = Nothing
-    , _pjsrExecutionDetails = Nothing
-    , _pjsrCurrentRevision = Nothing
-    , _pjsrJobId = pJobId_
-    }
-
+putJobSuccessResult pJobId_
+  = PutJobSuccessResult'{_pjsrOutputVariables =
+                           Nothing,
+                         _pjsrContinuationToken = Nothing,
+                         _pjsrExecutionDetails = Nothing,
+                         _pjsrCurrentRevision = Nothing, _pjsrJobId = pJobId_}
 
 -- | Key-value pairs produced as output by a job worker that can be made available to a downstream action configuration. @outputVariables@ can be included only when there is no continuation token on the request.
 pjsrOutputVariables :: Lens' PutJobSuccessResult (HashMap Text Text)
@@ -144,16 +140,15 @@ instance ToQuery PutJobSuccessResult where
         toQuery = const mempty
 
 -- | /See:/ 'putJobSuccessResultResponse' smart constructor.
-data PutJobSuccessResultResponse =
-  PutJobSuccessResultResponse'
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data PutJobSuccessResultResponse = PutJobSuccessResultResponse'
+                                     deriving (Eq, Read, Show, Data, Typeable,
+                                               Generic)
 
 -- | Creates a value of 'PutJobSuccessResultResponse' with the minimum fields required to make a request.
 --
 putJobSuccessResultResponse
     :: PutJobSuccessResultResponse
-putJobSuccessResultResponse = PutJobSuccessResultResponse'
-
+putJobSuccessResultResponse
+  = PutJobSuccessResultResponse'
 
 instance NFData PutJobSuccessResultResponse where

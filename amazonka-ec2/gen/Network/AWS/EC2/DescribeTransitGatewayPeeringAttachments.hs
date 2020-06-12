@@ -45,7 +45,6 @@ module Network.AWS.EC2.DescribeTransitGatewayPeeringAttachments
     ) where
 
 import Network.AWS.EC2.Types
-import Network.AWS.EC2.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Pager
 import Network.AWS.Prelude
@@ -53,16 +52,29 @@ import Network.AWS.Request
 import Network.AWS.Response
 
 -- | /See:/ 'describeTransitGatewayPeeringAttachments' smart constructor.
-data DescribeTransitGatewayPeeringAttachments =
-  DescribeTransitGatewayPeeringAttachments'
-    { _dtgpaFilters                     :: !(Maybe [Filter])
-    , _dtgpaNextToken                   :: !(Maybe Text)
-    , _dtgpaTransitGatewayAttachmentIds :: !(Maybe [Text])
-    , _dtgpaDryRun                      :: !(Maybe Bool)
-    , _dtgpaMaxResults                  :: !(Maybe Nat)
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data DescribeTransitGatewayPeeringAttachments = DescribeTransitGatewayPeeringAttachments'{_dtgpaFilters
+                                                                                          ::
+                                                                                          !(Maybe
+                                                                                              [Filter]),
+                                                                                          _dtgpaNextToken
+                                                                                          ::
+                                                                                          !(Maybe
+                                                                                              Text),
+                                                                                          _dtgpaTransitGatewayAttachmentIds
+                                                                                          ::
+                                                                                          !(Maybe
+                                                                                              [Text]),
+                                                                                          _dtgpaDryRun
+                                                                                          ::
+                                                                                          !(Maybe
+                                                                                              Bool),
+                                                                                          _dtgpaMaxResults
+                                                                                          ::
+                                                                                          !(Maybe
+                                                                                              Nat)}
+                                                  deriving (Eq, Read, Show,
+                                                            Data, Typeable,
+                                                            Generic)
 
 -- | Creates a value of 'DescribeTransitGatewayPeeringAttachments' with the minimum fields required to make a request.
 --
@@ -79,15 +91,14 @@ data DescribeTransitGatewayPeeringAttachments =
 -- * 'dtgpaMaxResults' - The maximum number of results to return with a single call. To retrieve the remaining results, make another call with the returned @nextToken@ value.
 describeTransitGatewayPeeringAttachments
     :: DescribeTransitGatewayPeeringAttachments
-describeTransitGatewayPeeringAttachments =
-  DescribeTransitGatewayPeeringAttachments'
-    { _dtgpaFilters = Nothing
-    , _dtgpaNextToken = Nothing
-    , _dtgpaTransitGatewayAttachmentIds = Nothing
-    , _dtgpaDryRun = Nothing
-    , _dtgpaMaxResults = Nothing
-    }
-
+describeTransitGatewayPeeringAttachments
+  = DescribeTransitGatewayPeeringAttachments'{_dtgpaFilters
+                                                = Nothing,
+                                              _dtgpaNextToken = Nothing,
+                                              _dtgpaTransitGatewayAttachmentIds
+                                                = Nothing,
+                                              _dtgpaDryRun = Nothing,
+                                              _dtgpaMaxResults = Nothing}
 
 -- | One or more filters. The possible values are:     * @transit-gateway-attachment-id@ - The ID of the transit gateway attachment.     * @local-owner-id@ - The ID of your AWS account.     * @remote-owner-id@ - The ID of the AWS account in the remote Region that owns the transit gateway.     * @state@ - The state of the peering attachment (@available@ | @deleted@ | @deleting@ | @failed@ | @modifying@ | @pendingAcceptance@ | @pending@ | @rollingBack@ | @rejected@ | @rejecting@ ).     * @transit-gateway-id@ - The ID of the transit gateway.
 dtgpaFilters :: Lens' DescribeTransitGatewayPeeringAttachments [Filter]
@@ -171,14 +182,21 @@ instance ToQuery
                "MaxResults" =: _dtgpaMaxResults]
 
 -- | /See:/ 'describeTransitGatewayPeeringAttachmentsResponse' smart constructor.
-data DescribeTransitGatewayPeeringAttachmentsResponse =
-  DescribeTransitGatewayPeeringAttachmentsResponse'
-    { _dtgpasrsTransitGatewayPeeringAttachments :: !(Maybe [TransitGatewayPeeringAttachment])
-    , _dtgpasrsNextToken :: !(Maybe Text)
-    , _dtgpasrsResponseStatus :: !Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data DescribeTransitGatewayPeeringAttachmentsResponse = DescribeTransitGatewayPeeringAttachmentsResponse'{_dtgpasrsTransitGatewayPeeringAttachments
+                                                                                                          ::
+                                                                                                          !(Maybe
+                                                                                                              [TransitGatewayPeeringAttachment]),
+                                                                                                          _dtgpasrsNextToken
+                                                                                                          ::
+                                                                                                          !(Maybe
+                                                                                                              Text),
+                                                                                                          _dtgpasrsResponseStatus
+                                                                                                          ::
+                                                                                                          !Int}
+                                                          deriving (Eq, Read,
+                                                                    Show, Data,
+                                                                    Typeable,
+                                                                    Generic)
 
 -- | Creates a value of 'DescribeTransitGatewayPeeringAttachmentsResponse' with the minimum fields required to make a request.
 --
@@ -192,13 +210,14 @@ data DescribeTransitGatewayPeeringAttachmentsResponse =
 describeTransitGatewayPeeringAttachmentsResponse
     :: Int -- ^ 'dtgpasrsResponseStatus'
     -> DescribeTransitGatewayPeeringAttachmentsResponse
-describeTransitGatewayPeeringAttachmentsResponse pResponseStatus_ =
-  DescribeTransitGatewayPeeringAttachmentsResponse'
-    { _dtgpasrsTransitGatewayPeeringAttachments = Nothing
-    , _dtgpasrsNextToken = Nothing
-    , _dtgpasrsResponseStatus = pResponseStatus_
-    }
-
+describeTransitGatewayPeeringAttachmentsResponse
+  pResponseStatus_
+  = DescribeTransitGatewayPeeringAttachmentsResponse'{_dtgpasrsTransitGatewayPeeringAttachments
+                                                        = Nothing,
+                                                      _dtgpasrsNextToken =
+                                                        Nothing,
+                                                      _dtgpasrsResponseStatus =
+                                                        pResponseStatus_}
 
 -- | The transit gateway peering attachments.
 dtgpasrsTransitGatewayPeeringAttachments :: Lens' DescribeTransitGatewayPeeringAttachmentsResponse [TransitGatewayPeeringAttachment]

@@ -36,7 +36,6 @@ module Network.AWS.CodePipeline.PutJobFailureResult
     ) where
 
 import Network.AWS.CodePipeline.Types
-import Network.AWS.CodePipeline.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.Request
@@ -47,13 +46,11 @@ import Network.AWS.Response
 --
 --
 -- /See:/ 'putJobFailureResult' smart constructor.
-data PutJobFailureResult =
-  PutJobFailureResult'
-    { _pjfrJobId          :: !Text
-    , _pjfrFailureDetails :: !FailureDetails
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data PutJobFailureResult = PutJobFailureResult'{_pjfrJobId
+                                                :: !Text,
+                                                _pjfrFailureDetails ::
+                                                !FailureDetails}
+                             deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'PutJobFailureResult' with the minimum fields required to make a request.
 --
@@ -66,10 +63,9 @@ putJobFailureResult
     :: Text -- ^ 'pjfrJobId'
     -> FailureDetails -- ^ 'pjfrFailureDetails'
     -> PutJobFailureResult
-putJobFailureResult pJobId_ pFailureDetails_ =
-  PutJobFailureResult'
-    {_pjfrJobId = pJobId_, _pjfrFailureDetails = pFailureDetails_}
-
+putJobFailureResult pJobId_ pFailureDetails_
+  = PutJobFailureResult'{_pjfrJobId = pJobId_,
+                         _pjfrFailureDetails = pFailureDetails_}
 
 -- | The unique system-generated ID of the job that failed. This is the same ID returned from @PollForJobs@ .
 pjfrJobId :: Lens' PutJobFailureResult Text
@@ -113,16 +109,15 @@ instance ToQuery PutJobFailureResult where
         toQuery = const mempty
 
 -- | /See:/ 'putJobFailureResultResponse' smart constructor.
-data PutJobFailureResultResponse =
-  PutJobFailureResultResponse'
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data PutJobFailureResultResponse = PutJobFailureResultResponse'
+                                     deriving (Eq, Read, Show, Data, Typeable,
+                                               Generic)
 
 -- | Creates a value of 'PutJobFailureResultResponse' with the minimum fields required to make a request.
 --
 putJobFailureResultResponse
     :: PutJobFailureResultResponse
-putJobFailureResultResponse = PutJobFailureResultResponse'
-
+putJobFailureResultResponse
+  = PutJobFailureResultResponse'
 
 instance NFData PutJobFailureResultResponse where

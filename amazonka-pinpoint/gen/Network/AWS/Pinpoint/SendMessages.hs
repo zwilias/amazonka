@@ -38,19 +38,15 @@ module Network.AWS.Pinpoint.SendMessages
 
 import Network.AWS.Lens
 import Network.AWS.Pinpoint.Types
-import Network.AWS.Pinpoint.Types.Product
 import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 
 -- | /See:/ 'sendMessages' smart constructor.
-data SendMessages =
-  SendMessages'
-    { _smApplicationId  :: !Text
-    , _smMessageRequest :: !MessageRequest
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data SendMessages = SendMessages'{_smApplicationId ::
+                                  !Text,
+                                  _smMessageRequest :: !MessageRequest}
+                      deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'SendMessages' with the minimum fields required to make a request.
 --
@@ -63,10 +59,9 @@ sendMessages
     :: Text -- ^ 'smApplicationId'
     -> MessageRequest -- ^ 'smMessageRequest'
     -> SendMessages
-sendMessages pApplicationId_ pMessageRequest_ =
-  SendMessages'
-    {_smApplicationId = pApplicationId_, _smMessageRequest = pMessageRequest_}
-
+sendMessages pApplicationId_ pMessageRequest_
+  = SendMessages'{_smApplicationId = pApplicationId_,
+                  _smMessageRequest = pMessageRequest_}
 
 -- | Undocumented member.
 smApplicationId :: Lens' SendMessages Text
@@ -111,13 +106,11 @@ instance ToQuery SendMessages where
         toQuery = const mempty
 
 -- | /See:/ 'sendMessagesResponse' smart constructor.
-data SendMessagesResponse =
-  SendMessagesResponse'
-    { _smrsResponseStatus  :: !Int
-    , _smrsMessageResponse :: !MessageResponse
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data SendMessagesResponse = SendMessagesResponse'{_smrsResponseStatus
+                                                  :: !Int,
+                                                  _smrsMessageResponse ::
+                                                  !MessageResponse}
+                              deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'SendMessagesResponse' with the minimum fields required to make a request.
 --
@@ -130,12 +123,11 @@ sendMessagesResponse
     :: Int -- ^ 'smrsResponseStatus'
     -> MessageResponse -- ^ 'smrsMessageResponse'
     -> SendMessagesResponse
-sendMessagesResponse pResponseStatus_ pMessageResponse_ =
-  SendMessagesResponse'
-    { _smrsResponseStatus = pResponseStatus_
-    , _smrsMessageResponse = pMessageResponse_
-    }
-
+sendMessagesResponse pResponseStatus_
+  pMessageResponse_
+  = SendMessagesResponse'{_smrsResponseStatus =
+                            pResponseStatus_,
+                          _smrsMessageResponse = pMessageResponse_}
 
 -- | -- | The response status code.
 smrsResponseStatus :: Lens' SendMessagesResponse Int

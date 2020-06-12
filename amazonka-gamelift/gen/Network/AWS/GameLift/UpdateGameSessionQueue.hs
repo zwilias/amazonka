@@ -18,18 +18,18 @@
 -- Stability   : auto-generated
 -- Portability : non-portable (GHC extensions)
 --
--- Updates settings for a game session queue, which determines how new game session requests in the queue are processed. To update settings, specify the queue name to be updated and provide the new settings. When updating destinations, provide a complete list of destinations.
+-- Updates settings for a game session queue, which determines how new game session requests in the queue are processed. To update settings, specify the queue name to be updated and provide the new settings. When updating destinations, provide a complete list of destinations. 
 --
 --
 -- Queue-related operations include:
 --
---     * 'CreateGameSessionQueue'
+--     * 'CreateGameSessionQueue' 
 --
---     * 'DescribeGameSessionQueues'
+--     * 'DescribeGameSessionQueues' 
 --
---     * 'UpdateGameSessionQueue'
+--     * 'UpdateGameSessionQueue' 
 --
---     * 'DeleteGameSessionQueue'
+--     * 'DeleteGameSessionQueue' 
 --
 --
 --
@@ -53,7 +53,6 @@ module Network.AWS.GameLift.UpdateGameSessionQueue
     ) where
 
 import Network.AWS.GameLift.Types
-import Network.AWS.GameLift.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.Request
@@ -64,15 +63,18 @@ import Network.AWS.Response
 --
 --
 -- /See:/ 'updateGameSessionQueue' smart constructor.
-data UpdateGameSessionQueue =
-  UpdateGameSessionQueue'
-    { _ugsqPlayerLatencyPolicies :: !(Maybe [PlayerLatencyPolicy])
-    , _ugsqTimeoutInSeconds      :: !(Maybe Nat)
-    , _ugsqDestinations          :: !(Maybe [GameSessionQueueDestination])
-    , _ugsqName                  :: !Text
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data UpdateGameSessionQueue = UpdateGameSessionQueue'{_ugsqPlayerLatencyPolicies
+                                                      ::
+                                                      !(Maybe
+                                                          [PlayerLatencyPolicy]),
+                                                      _ugsqTimeoutInSeconds ::
+                                                      !(Maybe Nat),
+                                                      _ugsqDestinations ::
+                                                      !(Maybe
+                                                          [GameSessionQueueDestination]),
+                                                      _ugsqName :: !Text}
+                                deriving (Eq, Read, Show, Data, Typeable,
+                                          Generic)
 
 -- | Creates a value of 'UpdateGameSessionQueue' with the minimum fields required to make a request.
 --
@@ -88,14 +90,11 @@ data UpdateGameSessionQueue =
 updateGameSessionQueue
     :: Text -- ^ 'ugsqName'
     -> UpdateGameSessionQueue
-updateGameSessionQueue pName_ =
-  UpdateGameSessionQueue'
-    { _ugsqPlayerLatencyPolicies = Nothing
-    , _ugsqTimeoutInSeconds = Nothing
-    , _ugsqDestinations = Nothing
-    , _ugsqName = pName_
-    }
-
+updateGameSessionQueue pName_
+  = UpdateGameSessionQueue'{_ugsqPlayerLatencyPolicies
+                              = Nothing,
+                            _ugsqTimeoutInSeconds = Nothing,
+                            _ugsqDestinations = Nothing, _ugsqName = pName_}
 
 -- | Collection of latency policies to apply when processing game sessions placement requests with player latency information. Multiple policies are evaluated in order of the maximum latency value, starting with the lowest latency values. With just one policy, it is enforced at the start of the game session placement for the duration period. With multiple policies, each policy is enforced consecutively for its duration period. For example, a queue might enforce a 60-second policy followed by a 120-second policy, and then no policy for the remainder of the placement. When updating policies, provide a complete collection of policies.
 ugsqPlayerLatencyPolicies :: Lens' UpdateGameSessionQueue [PlayerLatencyPolicy]
@@ -157,13 +156,14 @@ instance ToQuery UpdateGameSessionQueue where
 --
 --
 -- /See:/ 'updateGameSessionQueueResponse' smart constructor.
-data UpdateGameSessionQueueResponse =
-  UpdateGameSessionQueueResponse'
-    { _ugsqrsGameSessionQueue :: !(Maybe GameSessionQueue)
-    , _ugsqrsResponseStatus   :: !Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data UpdateGameSessionQueueResponse = UpdateGameSessionQueueResponse'{_ugsqrsGameSessionQueue
+                                                                      ::
+                                                                      !(Maybe
+                                                                          GameSessionQueue),
+                                                                      _ugsqrsResponseStatus
+                                                                      :: !Int}
+                                        deriving (Eq, Read, Show, Data,
+                                                  Typeable, Generic)
 
 -- | Creates a value of 'UpdateGameSessionQueueResponse' with the minimum fields required to make a request.
 --
@@ -175,12 +175,10 @@ data UpdateGameSessionQueueResponse =
 updateGameSessionQueueResponse
     :: Int -- ^ 'ugsqrsResponseStatus'
     -> UpdateGameSessionQueueResponse
-updateGameSessionQueueResponse pResponseStatus_ =
-  UpdateGameSessionQueueResponse'
-    { _ugsqrsGameSessionQueue = Nothing
-    , _ugsqrsResponseStatus = pResponseStatus_
-    }
-
+updateGameSessionQueueResponse pResponseStatus_
+  = UpdateGameSessionQueueResponse'{_ugsqrsGameSessionQueue
+                                      = Nothing,
+                                    _ugsqrsResponseStatus = pResponseStatus_}
 
 -- | Object that describes the newly updated game session queue.
 ugsqrsGameSessionQueue :: Lens' UpdateGameSessionQueueResponse (Maybe GameSessionQueue)

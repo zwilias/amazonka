@@ -37,23 +37,20 @@ module Network.AWS.OpsWorks.DescribeOperatingSystems
 
 import Network.AWS.Lens
 import Network.AWS.OpsWorks.Types
-import Network.AWS.OpsWorks.Types.Product
 import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 
 -- | /See:/ 'describeOperatingSystems' smart constructor.
-data DescribeOperatingSystems =
-  DescribeOperatingSystems'
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data DescribeOperatingSystems = DescribeOperatingSystems'
+                                  deriving (Eq, Read, Show, Data, Typeable,
+                                            Generic)
 
 -- | Creates a value of 'DescribeOperatingSystems' with the minimum fields required to make a request.
 --
 describeOperatingSystems
     :: DescribeOperatingSystems
 describeOperatingSystems = DescribeOperatingSystems'
-
 
 instance AWSRequest DescribeOperatingSystems where
         type Rs DescribeOperatingSystems =
@@ -94,13 +91,15 @@ instance ToQuery DescribeOperatingSystems where
 --
 --
 -- /See:/ 'describeOperatingSystemsResponse' smart constructor.
-data DescribeOperatingSystemsResponse =
-  DescribeOperatingSystemsResponse'
-    { _dosrsOperatingSystems :: !(Maybe [OperatingSystem])
-    , _dosrsResponseStatus   :: !Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data DescribeOperatingSystemsResponse = DescribeOperatingSystemsResponse'{_dosrsOperatingSystems
+                                                                          ::
+                                                                          !(Maybe
+                                                                              [OperatingSystem]),
+                                                                          _dosrsResponseStatus
+                                                                          ::
+                                                                          !Int}
+                                          deriving (Eq, Read, Show, Data,
+                                                    Typeable, Generic)
 
 -- | Creates a value of 'DescribeOperatingSystemsResponse' with the minimum fields required to make a request.
 --
@@ -112,10 +111,10 @@ data DescribeOperatingSystemsResponse =
 describeOperatingSystemsResponse
     :: Int -- ^ 'dosrsResponseStatus'
     -> DescribeOperatingSystemsResponse
-describeOperatingSystemsResponse pResponseStatus_ =
-  DescribeOperatingSystemsResponse'
-    {_dosrsOperatingSystems = Nothing, _dosrsResponseStatus = pResponseStatus_}
-
+describeOperatingSystemsResponse pResponseStatus_
+  = DescribeOperatingSystemsResponse'{_dosrsOperatingSystems
+                                        = Nothing,
+                                      _dosrsResponseStatus = pResponseStatus_}
 
 -- | Undocumented member.
 dosrsOperatingSystems :: Lens' DescribeOperatingSystemsResponse [OperatingSystem]

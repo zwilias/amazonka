@@ -38,19 +38,17 @@ module Network.AWS.DynamoDB.DescribeTableReplicaAutoScaling
     ) where
 
 import Network.AWS.DynamoDB.Types
-import Network.AWS.DynamoDB.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 
 -- | /See:/ 'describeTableReplicaAutoScaling' smart constructor.
-newtype DescribeTableReplicaAutoScaling =
-  DescribeTableReplicaAutoScaling'
-    { _dtrasTableName :: Text
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+newtype DescribeTableReplicaAutoScaling = DescribeTableReplicaAutoScaling'{_dtrasTableName
+                                                                           ::
+                                                                           Text}
+                                            deriving (Eq, Read, Show, Data,
+                                                      Typeable, Generic)
 
 -- | Creates a value of 'DescribeTableReplicaAutoScaling' with the minimum fields required to make a request.
 --
@@ -60,9 +58,9 @@ newtype DescribeTableReplicaAutoScaling =
 describeTableReplicaAutoScaling
     :: Text -- ^ 'dtrasTableName'
     -> DescribeTableReplicaAutoScaling
-describeTableReplicaAutoScaling pTableName_ =
-  DescribeTableReplicaAutoScaling' {_dtrasTableName = pTableName_}
-
+describeTableReplicaAutoScaling pTableName_
+  = DescribeTableReplicaAutoScaling'{_dtrasTableName =
+                                       pTableName_}
 
 -- | The name of the table.
 dtrasTableName :: Lens' DescribeTableReplicaAutoScaling Text
@@ -109,13 +107,15 @@ instance ToQuery DescribeTableReplicaAutoScaling
         toQuery = const mempty
 
 -- | /See:/ 'describeTableReplicaAutoScalingResponse' smart constructor.
-data DescribeTableReplicaAutoScalingResponse =
-  DescribeTableReplicaAutoScalingResponse'
-    { _dtrasrsTableAutoScalingDescription :: !(Maybe TableAutoScalingDescription)
-    , _dtrasrsResponseStatus :: !Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data DescribeTableReplicaAutoScalingResponse = DescribeTableReplicaAutoScalingResponse'{_dtrasrsTableAutoScalingDescription
+                                                                                        ::
+                                                                                        !(Maybe
+                                                                                            TableAutoScalingDescription),
+                                                                                        _dtrasrsResponseStatus
+                                                                                        ::
+                                                                                        !Int}
+                                                 deriving (Eq, Read, Show, Data,
+                                                           Typeable, Generic)
 
 -- | Creates a value of 'DescribeTableReplicaAutoScalingResponse' with the minimum fields required to make a request.
 --
@@ -127,12 +127,12 @@ data DescribeTableReplicaAutoScalingResponse =
 describeTableReplicaAutoScalingResponse
     :: Int -- ^ 'dtrasrsResponseStatus'
     -> DescribeTableReplicaAutoScalingResponse
-describeTableReplicaAutoScalingResponse pResponseStatus_ =
-  DescribeTableReplicaAutoScalingResponse'
-    { _dtrasrsTableAutoScalingDescription = Nothing
-    , _dtrasrsResponseStatus = pResponseStatus_
-    }
-
+describeTableReplicaAutoScalingResponse
+  pResponseStatus_
+  = DescribeTableReplicaAutoScalingResponse'{_dtrasrsTableAutoScalingDescription
+                                               = Nothing,
+                                             _dtrasrsResponseStatus =
+                                               pResponseStatus_}
 
 -- | Represents the auto scaling properties of the table.
 dtrasrsTableAutoScalingDescription :: Lens' DescribeTableReplicaAutoScalingResponse (Maybe TableAutoScalingDescription)

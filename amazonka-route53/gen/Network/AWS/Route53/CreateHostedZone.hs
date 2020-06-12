@@ -18,7 +18,7 @@
 -- Stability   : auto-generated
 -- Portability : non-portable (GHC extensions)
 --
--- Creates a new public hosted zone, which you use to specify how the Domain Name System (DNS) routes traffic on the Internet for a domain, such as example.com, and its subdomains.
+-- Creates a new public hosted zone, which you use to specify how the Domain Name System (DNS) routes traffic on the Internet for a domain, such as example.com, and its subdomains. 
 --
 --
 -- /Important:/ You can't convert a public hosted zones to a private hosted zone or vice versa. Instead, you must create a new hosted zone with the same name and create new resource record sets.
@@ -33,7 +33,7 @@
 --
 -- If you want to use the same name servers for multiple hosted zones, you can optionally associate a reusable delegation set with the hosted zone. See the @DelegationSetId@ element.
 --
---     * If your domain is registered with a registrar other than Amazon Route 53, you must update the name servers with your registrar to make Amazon Route 53 your DNS service. For more information, see <http://docs.aws.amazon.com/Route53/latest/DeveloperGuide/creating-migrating.html Configuring Amazon Route 53 as your DNS Service> in the /Amazon Route 53 Developer Guide/ .
+--     * If your domain is registered with a registrar other than Amazon Route 53, you must update the name servers with your registrar to make Amazon Route 53 your DNS service. For more information, see <http://docs.aws.amazon.com/Route53/latest/DeveloperGuide/creating-migrating.html Configuring Amazon Route 53 as your DNS Service> in the /Amazon Route 53 Developer Guide/ . 
 --
 --
 --
@@ -68,23 +68,20 @@ import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 import Network.AWS.Route53.Types
-import Network.AWS.Route53.Types.Product
 
 -- | A complex type that contains information about the request to create a hosted zone.
 --
 --
 --
 -- /See:/ 'createHostedZone' smart constructor.
-data CreateHostedZone =
-  CreateHostedZone'
-    { _chzDelegationSetId  :: !(Maybe ResourceId)
-    , _chzVPC              :: !(Maybe VPC)
-    , _chzHostedZoneConfig :: !(Maybe HostedZoneConfig)
-    , _chzName             :: !Text
-    , _chzCallerReference  :: !Text
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data CreateHostedZone = CreateHostedZone'{_chzDelegationSetId
+                                          :: !(Maybe ResourceId),
+                                          _chzVPC :: !(Maybe VPC),
+                                          _chzHostedZoneConfig ::
+                                          !(Maybe HostedZoneConfig),
+                                          _chzName :: !Text,
+                                          _chzCallerReference :: !Text}
+                          deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'CreateHostedZone' with the minimum fields required to make a request.
 --
@@ -103,15 +100,11 @@ createHostedZone
     :: Text -- ^ 'chzName'
     -> Text -- ^ 'chzCallerReference'
     -> CreateHostedZone
-createHostedZone pName_ pCallerReference_ =
-  CreateHostedZone'
-    { _chzDelegationSetId = Nothing
-    , _chzVPC = Nothing
-    , _chzHostedZoneConfig = Nothing
-    , _chzName = pName_
-    , _chzCallerReference = pCallerReference_
-    }
-
+createHostedZone pName_ pCallerReference_
+  = CreateHostedZone'{_chzDelegationSetId = Nothing,
+                      _chzVPC = Nothing, _chzHostedZoneConfig = Nothing,
+                      _chzName = pName_,
+                      _chzCallerReference = pCallerReference_}
 
 -- | If you want to associate a reusable delegation set with this hosted zone, the ID that Amazon Route 53 assigned to the reusable delegation set when you created it. For more information about reusable delegation sets, see 'CreateReusableDelegationSet' .
 chzDelegationSetId :: Lens' CreateHostedZone (Maybe ResourceId)
@@ -178,17 +171,20 @@ instance ToXML CreateHostedZone where
 --
 --
 -- /See:/ 'createHostedZoneResponse' smart constructor.
-data CreateHostedZoneResponse =
-  CreateHostedZoneResponse'
-    { _chzrsVPC            :: !(Maybe VPC)
-    , _chzrsResponseStatus :: !Int
-    , _chzrsHostedZone     :: !HostedZone
-    , _chzrsChangeInfo     :: !ChangeInfo
-    , _chzrsDelegationSet  :: !DelegationSet
-    , _chzrsLocation       :: !Text
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data CreateHostedZoneResponse = CreateHostedZoneResponse'{_chzrsVPC
+                                                          :: !(Maybe VPC),
+                                                          _chzrsResponseStatus
+                                                          :: !Int,
+                                                          _chzrsHostedZone ::
+                                                          !HostedZone,
+                                                          _chzrsChangeInfo ::
+                                                          !ChangeInfo,
+                                                          _chzrsDelegationSet ::
+                                                          !DelegationSet,
+                                                          _chzrsLocation ::
+                                                          !Text}
+                                  deriving (Eq, Read, Show, Data, Typeable,
+                                            Generic)
 
 -- | Creates a value of 'CreateHostedZoneResponse' with the minimum fields required to make a request.
 --
@@ -212,16 +208,14 @@ createHostedZoneResponse
     -> DelegationSet -- ^ 'chzrsDelegationSet'
     -> Text -- ^ 'chzrsLocation'
     -> CreateHostedZoneResponse
-createHostedZoneResponse pResponseStatus_ pHostedZone_ pChangeInfo_ pDelegationSet_ pLocation_ =
-  CreateHostedZoneResponse'
-    { _chzrsVPC = Nothing
-    , _chzrsResponseStatus = pResponseStatus_
-    , _chzrsHostedZone = pHostedZone_
-    , _chzrsChangeInfo = pChangeInfo_
-    , _chzrsDelegationSet = pDelegationSet_
-    , _chzrsLocation = pLocation_
-    }
-
+createHostedZoneResponse pResponseStatus_
+  pHostedZone_ pChangeInfo_ pDelegationSet_ pLocation_
+  = CreateHostedZoneResponse'{_chzrsVPC = Nothing,
+                              _chzrsResponseStatus = pResponseStatus_,
+                              _chzrsHostedZone = pHostedZone_,
+                              _chzrsChangeInfo = pChangeInfo_,
+                              _chzrsDelegationSet = pDelegationSet_,
+                              _chzrsLocation = pLocation_}
 
 -- | A complex type that contains information about an Amazon VPC that you associated with this hosted zone.
 chzrsVPC :: Lens' CreateHostedZoneResponse (Maybe VPC)

@@ -45,17 +45,13 @@ import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 import Network.AWS.WorkSpaces.Types
-import Network.AWS.WorkSpaces.Types.Product
 
 -- | /See:/ 'describeIPGroups' smart constructor.
-data DescribeIPGroups =
-  DescribeIPGroups'
-    { _dipgGroupIds   :: !(Maybe [Text])
-    , _dipgNextToken  :: !(Maybe Text)
-    , _dipgMaxResults :: !(Maybe Nat)
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data DescribeIPGroups = DescribeIPGroups'{_dipgGroupIds
+                                          :: !(Maybe [Text]),
+                                          _dipgNextToken :: !(Maybe Text),
+                                          _dipgMaxResults :: !(Maybe Nat)}
+                          deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'DescribeIPGroups' with the minimum fields required to make a request.
 --
@@ -68,13 +64,9 @@ data DescribeIPGroups =
 -- * 'dipgMaxResults' - The maximum number of items to return.
 describeIPGroups
     :: DescribeIPGroups
-describeIPGroups =
-  DescribeIPGroups'
-    { _dipgGroupIds = Nothing
-    , _dipgNextToken = Nothing
-    , _dipgMaxResults = Nothing
-    }
-
+describeIPGroups
+  = DescribeIPGroups'{_dipgGroupIds = Nothing,
+                      _dipgNextToken = Nothing, _dipgMaxResults = Nothing}
 
 -- | The IDs of one or more IP access control groups.
 dipgGroupIds :: Lens' DescribeIPGroups [Text]
@@ -126,14 +118,16 @@ instance ToQuery DescribeIPGroups where
         toQuery = const mempty
 
 -- | /See:/ 'describeIPGroupsResponse' smart constructor.
-data DescribeIPGroupsResponse =
-  DescribeIPGroupsResponse'
-    { _digsrsResult         :: !(Maybe [WorkspacesIPGroup])
-    , _digsrsNextToken      :: !(Maybe Text)
-    , _digsrsResponseStatus :: !Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data DescribeIPGroupsResponse = DescribeIPGroupsResponse'{_digsrsResult
+                                                          ::
+                                                          !(Maybe
+                                                              [WorkspacesIPGroup]),
+                                                          _digsrsNextToken ::
+                                                          !(Maybe Text),
+                                                          _digsrsResponseStatus
+                                                          :: !Int}
+                                  deriving (Eq, Read, Show, Data, Typeable,
+                                            Generic)
 
 -- | Creates a value of 'DescribeIPGroupsResponse' with the minimum fields required to make a request.
 --
@@ -147,13 +141,10 @@ data DescribeIPGroupsResponse =
 describeIPGroupsResponse
     :: Int -- ^ 'digsrsResponseStatus'
     -> DescribeIPGroupsResponse
-describeIPGroupsResponse pResponseStatus_ =
-  DescribeIPGroupsResponse'
-    { _digsrsResult = Nothing
-    , _digsrsNextToken = Nothing
-    , _digsrsResponseStatus = pResponseStatus_
-    }
-
+describeIPGroupsResponse pResponseStatus_
+  = DescribeIPGroupsResponse'{_digsrsResult = Nothing,
+                              _digsrsNextToken = Nothing,
+                              _digsrsResponseStatus = pResponseStatus_}
 
 -- | Information about the IP access control groups.
 digsrsResult :: Lens' DescribeIPGroupsResponse [WorkspacesIPGroup]

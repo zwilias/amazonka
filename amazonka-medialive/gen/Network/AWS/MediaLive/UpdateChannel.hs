@@ -43,7 +43,6 @@ module Network.AWS.MediaLive.UpdateChannel
 
 import Network.AWS.Lens
 import Network.AWS.MediaLive.Types
-import Network.AWS.MediaLive.Types.Product
 import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
@@ -51,18 +50,18 @@ import Network.AWS.Response
 -- | A request to update a channel.
 --
 -- /See:/ 'updateChannel' smart constructor.
-data UpdateChannel =
-  UpdateChannel'
-    { _ucInputSpecification :: !(Maybe InputSpecification)
-    , _ucInputAttachments   :: !(Maybe [InputAttachment])
-    , _ucDestinations       :: !(Maybe [OutputDestination])
-    , _ucName               :: !(Maybe Text)
-    , _ucEncoderSettings    :: !(Maybe EncoderSettings)
-    , _ucRoleARN            :: !(Maybe Text)
-    , _ucChannelId          :: !Text
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data UpdateChannel = UpdateChannel'{_ucInputSpecification
+                                    :: !(Maybe InputSpecification),
+                                    _ucInputAttachments ::
+                                    !(Maybe [InputAttachment]),
+                                    _ucDestinations ::
+                                    !(Maybe [OutputDestination]),
+                                    _ucName :: !(Maybe Text),
+                                    _ucEncoderSettings ::
+                                    !(Maybe EncoderSettings),
+                                    _ucRoleARN :: !(Maybe Text),
+                                    _ucChannelId :: !Text}
+                       deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'UpdateChannel' with the minimum fields required to make a request.
 --
@@ -84,17 +83,12 @@ data UpdateChannel =
 updateChannel
     :: Text -- ^ 'ucChannelId'
     -> UpdateChannel
-updateChannel pChannelId_ =
-  UpdateChannel'
-    { _ucInputSpecification = Nothing
-    , _ucInputAttachments = Nothing
-    , _ucDestinations = Nothing
-    , _ucName = Nothing
-    , _ucEncoderSettings = Nothing
-    , _ucRoleARN = Nothing
-    , _ucChannelId = pChannelId_
-    }
-
+updateChannel pChannelId_
+  = UpdateChannel'{_ucInputSpecification = Nothing,
+                   _ucInputAttachments = Nothing,
+                   _ucDestinations = Nothing, _ucName = Nothing,
+                   _ucEncoderSettings = Nothing, _ucRoleARN = Nothing,
+                   _ucChannelId = pChannelId_}
 
 -- | Specification of input for this channel (max. bitrate, resolution, codec, etc.)
 ucInputSpecification :: Lens' UpdateChannel (Maybe InputSpecification)
@@ -165,13 +159,11 @@ instance ToQuery UpdateChannel where
 -- | Placeholder documentation for UpdateChannelResponse
 --
 -- /See:/ 'updateChannelResponse' smart constructor.
-data UpdateChannelResponse =
-  UpdateChannelResponse'
-    { _ucrsChannel        :: !(Maybe Channel)
-    , _ucrsResponseStatus :: !Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data UpdateChannelResponse = UpdateChannelResponse'{_ucrsChannel
+                                                    :: !(Maybe Channel),
+                                                    _ucrsResponseStatus :: !Int}
+                               deriving (Eq, Read, Show, Data, Typeable,
+                                         Generic)
 
 -- | Creates a value of 'UpdateChannelResponse' with the minimum fields required to make a request.
 --
@@ -183,10 +175,9 @@ data UpdateChannelResponse =
 updateChannelResponse
     :: Int -- ^ 'ucrsResponseStatus'
     -> UpdateChannelResponse
-updateChannelResponse pResponseStatus_ =
-  UpdateChannelResponse'
-    {_ucrsChannel = Nothing, _ucrsResponseStatus = pResponseStatus_}
-
+updateChannelResponse pResponseStatus_
+  = UpdateChannelResponse'{_ucrsChannel = Nothing,
+                           _ucrsResponseStatus = pResponseStatus_}
 
 -- | Undocumented member.
 ucrsChannel :: Lens' UpdateChannelResponse (Maybe Channel)

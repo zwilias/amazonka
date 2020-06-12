@@ -43,7 +43,6 @@ module Network.AWS.CloudDirectory.ListTypedLinkFacetNames
     ) where
 
 import Network.AWS.CloudDirectory.Types
-import Network.AWS.CloudDirectory.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Pager
 import Network.AWS.Prelude
@@ -51,14 +50,14 @@ import Network.AWS.Request
 import Network.AWS.Response
 
 -- | /See:/ 'listTypedLinkFacetNames' smart constructor.
-data ListTypedLinkFacetNames =
-  ListTypedLinkFacetNames'
-    { _ltlfnNextToken  :: !(Maybe Text)
-    , _ltlfnMaxResults :: !(Maybe Nat)
-    , _ltlfnSchemaARN  :: !Text
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data ListTypedLinkFacetNames = ListTypedLinkFacetNames'{_ltlfnNextToken
+                                                        :: !(Maybe Text),
+                                                        _ltlfnMaxResults ::
+                                                        !(Maybe Nat),
+                                                        _ltlfnSchemaARN ::
+                                                        !Text}
+                                 deriving (Eq, Read, Show, Data, Typeable,
+                                           Generic)
 
 -- | Creates a value of 'ListTypedLinkFacetNames' with the minimum fields required to make a request.
 --
@@ -72,13 +71,10 @@ data ListTypedLinkFacetNames =
 listTypedLinkFacetNames
     :: Text -- ^ 'ltlfnSchemaARN'
     -> ListTypedLinkFacetNames
-listTypedLinkFacetNames pSchemaARN_ =
-  ListTypedLinkFacetNames'
-    { _ltlfnNextToken = Nothing
-    , _ltlfnMaxResults = Nothing
-    , _ltlfnSchemaARN = pSchemaARN_
-    }
-
+listTypedLinkFacetNames pSchemaARN_
+  = ListTypedLinkFacetNames'{_ltlfnNextToken = Nothing,
+                             _ltlfnMaxResults = Nothing,
+                             _ltlfnSchemaARN = pSchemaARN_}
 
 -- | The pagination token.
 ltlfnNextToken :: Lens' ListTypedLinkFacetNames (Maybe Text)
@@ -135,14 +131,18 @@ instance ToQuery ListTypedLinkFacetNames where
         toQuery = const mempty
 
 -- | /See:/ 'listTypedLinkFacetNamesResponse' smart constructor.
-data ListTypedLinkFacetNamesResponse =
-  ListTypedLinkFacetNamesResponse'
-    { _ltlfnrsNextToken      :: !(Maybe Text)
-    , _ltlfnrsFacetNames     :: !(Maybe [Text])
-    , _ltlfnrsResponseStatus :: !Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data ListTypedLinkFacetNamesResponse = ListTypedLinkFacetNamesResponse'{_ltlfnrsNextToken
+                                                                        ::
+                                                                        !(Maybe
+                                                                            Text),
+                                                                        _ltlfnrsFacetNames
+                                                                        ::
+                                                                        !(Maybe
+                                                                            [Text]),
+                                                                        _ltlfnrsResponseStatus
+                                                                        :: !Int}
+                                         deriving (Eq, Read, Show, Data,
+                                                   Typeable, Generic)
 
 -- | Creates a value of 'ListTypedLinkFacetNamesResponse' with the minimum fields required to make a request.
 --
@@ -156,13 +156,11 @@ data ListTypedLinkFacetNamesResponse =
 listTypedLinkFacetNamesResponse
     :: Int -- ^ 'ltlfnrsResponseStatus'
     -> ListTypedLinkFacetNamesResponse
-listTypedLinkFacetNamesResponse pResponseStatus_ =
-  ListTypedLinkFacetNamesResponse'
-    { _ltlfnrsNextToken = Nothing
-    , _ltlfnrsFacetNames = Nothing
-    , _ltlfnrsResponseStatus = pResponseStatus_
-    }
-
+listTypedLinkFacetNamesResponse pResponseStatus_
+  = ListTypedLinkFacetNamesResponse'{_ltlfnrsNextToken
+                                       = Nothing,
+                                     _ltlfnrsFacetNames = Nothing,
+                                     _ltlfnrsResponseStatus = pResponseStatus_}
 
 -- | The pagination token.
 ltlfnrsNextToken :: Lens' ListTypedLinkFacetNamesResponse (Maybe Text)

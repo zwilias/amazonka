@@ -38,7 +38,6 @@ module Network.AWS.Kinesis.IncreaseStreamRetentionPeriod
     ) where
 
 import Network.AWS.Kinesis.Types
-import Network.AWS.Kinesis.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.Request
@@ -49,13 +48,12 @@ import Network.AWS.Response
 --
 --
 -- /See:/ 'increaseStreamRetentionPeriod' smart constructor.
-data IncreaseStreamRetentionPeriod =
-  IncreaseStreamRetentionPeriod'
-    { _isrpStreamName           :: !Text
-    , _isrpRetentionPeriodHours :: !Nat
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data IncreaseStreamRetentionPeriod = IncreaseStreamRetentionPeriod'{_isrpStreamName
+                                                                    :: !Text,
+                                                                    _isrpRetentionPeriodHours
+                                                                    :: !Nat}
+                                       deriving (Eq, Read, Show, Data, Typeable,
+                                                 Generic)
 
 -- | Creates a value of 'IncreaseStreamRetentionPeriod' with the minimum fields required to make a request.
 --
@@ -68,12 +66,12 @@ increaseStreamRetentionPeriod
     :: Text -- ^ 'isrpStreamName'
     -> Natural -- ^ 'isrpRetentionPeriodHours'
     -> IncreaseStreamRetentionPeriod
-increaseStreamRetentionPeriod pStreamName_ pRetentionPeriodHours_ =
-  IncreaseStreamRetentionPeriod'
-    { _isrpStreamName = pStreamName_
-    , _isrpRetentionPeriodHours = _Nat # pRetentionPeriodHours_
-    }
-
+increaseStreamRetentionPeriod pStreamName_
+  pRetentionPeriodHours_
+  = IncreaseStreamRetentionPeriod'{_isrpStreamName =
+                                     pStreamName_,
+                                   _isrpRetentionPeriodHours =
+                                     _Nat # pRetentionPeriodHours_}
 
 -- | The name of the stream to modify.
 isrpStreamName :: Lens' IncreaseStreamRetentionPeriod Text
@@ -122,17 +120,16 @@ instance ToQuery IncreaseStreamRetentionPeriod where
         toQuery = const mempty
 
 -- | /See:/ 'increaseStreamRetentionPeriodResponse' smart constructor.
-data IncreaseStreamRetentionPeriodResponse =
-  IncreaseStreamRetentionPeriodResponse'
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data IncreaseStreamRetentionPeriodResponse = IncreaseStreamRetentionPeriodResponse'
+                                               deriving (Eq, Read, Show, Data,
+                                                         Typeable, Generic)
 
 -- | Creates a value of 'IncreaseStreamRetentionPeriodResponse' with the minimum fields required to make a request.
 --
 increaseStreamRetentionPeriodResponse
     :: IncreaseStreamRetentionPeriodResponse
-increaseStreamRetentionPeriodResponse = IncreaseStreamRetentionPeriodResponse'
-
+increaseStreamRetentionPeriodResponse
+  = IncreaseStreamRetentionPeriodResponse'
 
 instance NFData IncreaseStreamRetentionPeriodResponse
          where

@@ -18,24 +18,24 @@
 -- Stability   : auto-generated
 -- Portability : non-portable (GHC extensions)
 --
--- Retrieves information on VPC peering connections. Use this operation to get peering information for all fleets or for one specific fleet ID.
+-- Retrieves information on VPC peering connections. Use this operation to get peering information for all fleets or for one specific fleet ID. 
 --
 --
--- To retrieve connection information, call this operation from the AWS account that is used to manage the Amazon GameLift fleets. Specify a fleet ID or leave the parameter empty to retrieve all connection records. If successful, the retrieved information includes both active and pending connections. Active connections identify the IpV4 CIDR block that the VPC uses to connect.
+-- To retrieve connection information, call this operation from the AWS account that is used to manage the Amazon GameLift fleets. Specify a fleet ID or leave the parameter empty to retrieve all connection records. If successful, the retrieved information includes both active and pending connections. Active connections identify the IpV4 CIDR block that the VPC uses to connect. 
 --
 -- VPC peering connection operations include:
 --
---     * 'CreateVpcPeeringAuthorization'
+--     * 'CreateVpcPeeringAuthorization' 
 --
---     * 'DescribeVpcPeeringAuthorizations'
+--     * 'DescribeVpcPeeringAuthorizations' 
 --
---     * 'DeleteVpcPeeringAuthorization'
+--     * 'DeleteVpcPeeringAuthorization' 
 --
---     * 'CreateVpcPeeringConnection'
+--     * 'CreateVpcPeeringConnection' 
 --
---     * 'DescribeVpcPeeringConnections'
+--     * 'DescribeVpcPeeringConnections' 
 --
---     * 'DeleteVpcPeeringConnection'
+--     * 'DeleteVpcPeeringConnection' 
 --
 --
 --
@@ -56,7 +56,6 @@ module Network.AWS.GameLift.DescribeVPCPeeringConnections
     ) where
 
 import Network.AWS.GameLift.Types
-import Network.AWS.GameLift.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.Request
@@ -67,12 +66,12 @@ import Network.AWS.Response
 --
 --
 -- /See:/ 'describeVPCPeeringConnections' smart constructor.
-newtype DescribeVPCPeeringConnections =
-  DescribeVPCPeeringConnections'
-    { _dvpcpcFleetId :: Maybe Text
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+newtype DescribeVPCPeeringConnections = DescribeVPCPeeringConnections'{_dvpcpcFleetId
+                                                                       ::
+                                                                       Maybe
+                                                                         Text}
+                                          deriving (Eq, Read, Show, Data,
+                                                    Typeable, Generic)
 
 -- | Creates a value of 'DescribeVPCPeeringConnections' with the minimum fields required to make a request.
 --
@@ -81,9 +80,9 @@ newtype DescribeVPCPeeringConnections =
 -- * 'dvpcpcFleetId' - Unique identifier for a fleet.
 describeVPCPeeringConnections
     :: DescribeVPCPeeringConnections
-describeVPCPeeringConnections =
-  DescribeVPCPeeringConnections' {_dvpcpcFleetId = Nothing}
-
+describeVPCPeeringConnections
+  = DescribeVPCPeeringConnections'{_dvpcpcFleetId =
+                                     Nothing}
 
 -- | Unique identifier for a fleet.
 dvpcpcFleetId :: Lens' DescribeVPCPeeringConnections (Maybe Text)
@@ -132,13 +131,15 @@ instance ToQuery DescribeVPCPeeringConnections where
 --
 --
 -- /See:/ 'describeVPCPeeringConnectionsResponse' smart constructor.
-data DescribeVPCPeeringConnectionsResponse =
-  DescribeVPCPeeringConnectionsResponse'
-    { _dvpcpcrsVPCPeeringConnections :: !(Maybe [VPCPeeringConnection])
-    , _dvpcpcrsResponseStatus        :: !Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data DescribeVPCPeeringConnectionsResponse = DescribeVPCPeeringConnectionsResponse'{_dvpcpcrsVPCPeeringConnections
+                                                                                    ::
+                                                                                    !(Maybe
+                                                                                        [VPCPeeringConnection]),
+                                                                                    _dvpcpcrsResponseStatus
+                                                                                    ::
+                                                                                    !Int}
+                                               deriving (Eq, Read, Show, Data,
+                                                         Typeable, Generic)
 
 -- | Creates a value of 'DescribeVPCPeeringConnectionsResponse' with the minimum fields required to make a request.
 --
@@ -150,12 +151,12 @@ data DescribeVPCPeeringConnectionsResponse =
 describeVPCPeeringConnectionsResponse
     :: Int -- ^ 'dvpcpcrsResponseStatus'
     -> DescribeVPCPeeringConnectionsResponse
-describeVPCPeeringConnectionsResponse pResponseStatus_ =
-  DescribeVPCPeeringConnectionsResponse'
-    { _dvpcpcrsVPCPeeringConnections = Nothing
-    , _dvpcpcrsResponseStatus = pResponseStatus_
-    }
-
+describeVPCPeeringConnectionsResponse
+  pResponseStatus_
+  = DescribeVPCPeeringConnectionsResponse'{_dvpcpcrsVPCPeeringConnections
+                                             = Nothing,
+                                           _dvpcpcrsResponseStatus =
+                                             pResponseStatus_}
 
 -- | Collection of VPC peering connection records that match the request.
 dvpcpcrsVPCPeeringConnections :: Lens' DescribeVPCPeeringConnectionsResponse [VPCPeeringConnection]

@@ -37,18 +37,14 @@ module Network.AWS.Pinpoint.DeleteApp
 
 import Network.AWS.Lens
 import Network.AWS.Pinpoint.Types
-import Network.AWS.Pinpoint.Types.Product
 import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 
 -- | /See:/ 'deleteApp' smart constructor.
-newtype DeleteApp =
-  DeleteApp'
-    { _daApplicationId :: Text
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+newtype DeleteApp = DeleteApp'{_daApplicationId ::
+                               Text}
+                      deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'DeleteApp' with the minimum fields required to make a request.
 --
@@ -58,8 +54,8 @@ newtype DeleteApp =
 deleteApp
     :: Text -- ^ 'daApplicationId'
     -> DeleteApp
-deleteApp pApplicationId_ = DeleteApp' {_daApplicationId = pApplicationId_}
-
+deleteApp pApplicationId_
+  = DeleteApp'{_daApplicationId = pApplicationId_}
 
 -- | Undocumented member.
 daApplicationId :: Lens' DeleteApp Text
@@ -93,13 +89,11 @@ instance ToQuery DeleteApp where
         toQuery = const mempty
 
 -- | /See:/ 'deleteAppResponse' smart constructor.
-data DeleteAppResponse =
-  DeleteAppResponse'
-    { _darsResponseStatus      :: !Int
-    , _darsApplicationResponse :: !ApplicationResponse
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data DeleteAppResponse = DeleteAppResponse'{_darsResponseStatus
+                                            :: !Int,
+                                            _darsApplicationResponse ::
+                                            !ApplicationResponse}
+                           deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'DeleteAppResponse' with the minimum fields required to make a request.
 --
@@ -112,12 +106,11 @@ deleteAppResponse
     :: Int -- ^ 'darsResponseStatus'
     -> ApplicationResponse -- ^ 'darsApplicationResponse'
     -> DeleteAppResponse
-deleteAppResponse pResponseStatus_ pApplicationResponse_ =
-  DeleteAppResponse'
-    { _darsResponseStatus = pResponseStatus_
-    , _darsApplicationResponse = pApplicationResponse_
-    }
-
+deleteAppResponse pResponseStatus_
+  pApplicationResponse_
+  = DeleteAppResponse'{_darsResponseStatus =
+                         pResponseStatus_,
+                       _darsApplicationResponse = pApplicationResponse_}
 
 -- | -- | The response status code.
 darsResponseStatus :: Lens' DeleteAppResponse Int

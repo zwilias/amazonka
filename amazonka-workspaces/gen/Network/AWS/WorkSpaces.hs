@@ -11,7 +11,7 @@
 -- Stability   : auto-generated
 -- Portability : non-portable (GHC extensions)
 --
--- __Amazon WorkSpaces Service__
+-- __Amazon WorkSpaces Service__ 
 --
 -- Amazon WorkSpaces enables you to provision virtual, cloud-based Microsoft Windows desktops for your users.
 --
@@ -65,73 +65,73 @@ module Network.AWS.WorkSpaces
     -- * Operations
     -- $operations
 
-    -- ** RevokeIPRules
+    -- ** RevokeIPRules 
     , module Network.AWS.WorkSpaces.RevokeIPRules
 
-    -- ** ModifyWorkspaceProperties
+    -- ** ModifyWorkspaceProperties 
     , module Network.AWS.WorkSpaces.ModifyWorkspaceProperties
 
-    -- ** DescribeTags
+    -- ** DescribeTags 
     , module Network.AWS.WorkSpaces.DescribeTags
 
     -- ** DescribeWorkspaceDirectories (Paginated)
     , module Network.AWS.WorkSpaces.DescribeWorkspaceDirectories
 
-    -- ** DisassociateIPGroups
+    -- ** DisassociateIPGroups 
     , module Network.AWS.WorkSpaces.DisassociateIPGroups
 
     -- ** DescribeWorkspaceBundles (Paginated)
     , module Network.AWS.WorkSpaces.DescribeWorkspaceBundles
 
-    -- ** AuthorizeIPRules
+    -- ** AuthorizeIPRules 
     , module Network.AWS.WorkSpaces.AuthorizeIPRules
 
-    -- ** RebuildWorkspaces
+    -- ** RebuildWorkspaces 
     , module Network.AWS.WorkSpaces.RebuildWorkspaces
 
-    -- ** ModifyWorkspaceState
+    -- ** ModifyWorkspaceState 
     , module Network.AWS.WorkSpaces.ModifyWorkspaceState
 
-    -- ** CreateIPGroup
+    -- ** CreateIPGroup 
     , module Network.AWS.WorkSpaces.CreateIPGroup
 
-    -- ** CreateTags
+    -- ** CreateTags 
     , module Network.AWS.WorkSpaces.CreateTags
 
-    -- ** DeleteTags
+    -- ** DeleteTags 
     , module Network.AWS.WorkSpaces.DeleteTags
 
-    -- ** UpdateRulesOfIPGroup
+    -- ** UpdateRulesOfIPGroup 
     , module Network.AWS.WorkSpaces.UpdateRulesOfIPGroup
 
-    -- ** StopWorkspaces
+    -- ** StopWorkspaces 
     , module Network.AWS.WorkSpaces.StopWorkspaces
 
-    -- ** AssociateIPGroups
+    -- ** AssociateIPGroups 
     , module Network.AWS.WorkSpaces.AssociateIPGroups
 
-    -- ** DescribeWorkspacesConnectionStatus
+    -- ** DescribeWorkspacesConnectionStatus 
     , module Network.AWS.WorkSpaces.DescribeWorkspacesConnectionStatus
 
-    -- ** RebootWorkspaces
+    -- ** RebootWorkspaces 
     , module Network.AWS.WorkSpaces.RebootWorkspaces
 
-    -- ** DeleteIPGroup
+    -- ** DeleteIPGroup 
     , module Network.AWS.WorkSpaces.DeleteIPGroup
 
-    -- ** TerminateWorkspaces
+    -- ** TerminateWorkspaces 
     , module Network.AWS.WorkSpaces.TerminateWorkspaces
 
-    -- ** CreateWorkspaces
+    -- ** CreateWorkspaces 
     , module Network.AWS.WorkSpaces.CreateWorkspaces
 
-    -- ** DescribeIPGroups
+    -- ** DescribeIPGroups 
     , module Network.AWS.WorkSpaces.DescribeIPGroups
 
     -- ** DescribeWorkspaces (Paginated)
     , module Network.AWS.WorkSpaces.DescribeWorkspaces
 
-    -- ** StartWorkspaces
+    -- ** StartWorkspaces 
     , module Network.AWS.WorkSpaces.StartWorkspaces
 
     -- * Types

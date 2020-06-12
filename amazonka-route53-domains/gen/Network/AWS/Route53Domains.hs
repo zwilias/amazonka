@@ -47,70 +47,70 @@ module Network.AWS.Route53Domains
     -- ** ListOperations (Paginated)
     , module Network.AWS.Route53Domains.ListOperations
 
-    -- ** GetDomainDetail
+    -- ** GetDomainDetail 
     , module Network.AWS.Route53Domains.GetDomainDetail
 
-    -- ** CheckDomainTransferability
+    -- ** CheckDomainTransferability 
     , module Network.AWS.Route53Domains.CheckDomainTransferability
 
-    -- ** UpdateDomainContactPrivacy
+    -- ** UpdateDomainContactPrivacy 
     , module Network.AWS.Route53Domains.UpdateDomainContactPrivacy
 
-    -- ** GetOperationDetail
+    -- ** GetOperationDetail 
     , module Network.AWS.Route53Domains.GetOperationDetail
 
-    -- ** EnableDomainAutoRenew
+    -- ** EnableDomainAutoRenew 
     , module Network.AWS.Route53Domains.EnableDomainAutoRenew
 
-    -- ** ResendContactReachabilityEmail
+    -- ** ResendContactReachabilityEmail 
     , module Network.AWS.Route53Domains.ResendContactReachabilityEmail
 
-    -- ** DisableDomainAutoRenew
+    -- ** DisableDomainAutoRenew 
     , module Network.AWS.Route53Domains.DisableDomainAutoRenew
 
-    -- ** RenewDomain
+    -- ** RenewDomain 
     , module Network.AWS.Route53Domains.RenewDomain
 
-    -- ** ViewBilling
+    -- ** ViewBilling 
     , module Network.AWS.Route53Domains.ViewBilling
 
-    -- ** UpdateDomainContact
+    -- ** UpdateDomainContact 
     , module Network.AWS.Route53Domains.UpdateDomainContact
 
-    -- ** EnableDomainTransferLock
+    -- ** EnableDomainTransferLock 
     , module Network.AWS.Route53Domains.EnableDomainTransferLock
 
-    -- ** RegisterDomain
+    -- ** RegisterDomain 
     , module Network.AWS.Route53Domains.RegisterDomain
 
-    -- ** GetDomainSuggestions
+    -- ** GetDomainSuggestions 
     , module Network.AWS.Route53Domains.GetDomainSuggestions
 
-    -- ** DisableDomainTransferLock
+    -- ** DisableDomainTransferLock 
     , module Network.AWS.Route53Domains.DisableDomainTransferLock
 
-    -- ** CheckDomainAvailability
+    -- ** CheckDomainAvailability 
     , module Network.AWS.Route53Domains.CheckDomainAvailability
 
-    -- ** GetContactReachabilityStatus
+    -- ** GetContactReachabilityStatus 
     , module Network.AWS.Route53Domains.GetContactReachabilityStatus
 
-    -- ** ListTagsForDomain
+    -- ** ListTagsForDomain 
     , module Network.AWS.Route53Domains.ListTagsForDomain
 
-    -- ** UpdateDomainNameservers
+    -- ** UpdateDomainNameservers 
     , module Network.AWS.Route53Domains.UpdateDomainNameservers
 
-    -- ** DeleteTagsForDomain
+    -- ** DeleteTagsForDomain 
     , module Network.AWS.Route53Domains.DeleteTagsForDomain
 
-    -- ** UpdateTagsForDomain
+    -- ** UpdateTagsForDomain 
     , module Network.AWS.Route53Domains.UpdateTagsForDomain
 
-    -- ** RetrieveDomainAuthCode
+    -- ** RetrieveDomainAuthCode 
     , module Network.AWS.Route53Domains.RetrieveDomainAuthCode
 
-    -- ** TransferDomain
+    -- ** TransferDomain 
     , module Network.AWS.Route53Domains.TransferDomain
 
     -- ** ListDomains (Paginated)

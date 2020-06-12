@@ -43,20 +43,17 @@ import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 import Network.AWS.Route53Domains.Types
-import Network.AWS.Route53Domains.Types.Product
 
 -- | The CheckDomainAvailability request contains the following elements.
 --
 --
 --
 -- /See:/ 'checkDomainAvailability' smart constructor.
-data CheckDomainAvailability =
-  CheckDomainAvailability'
-    { _cdaIdNLangCode :: !(Maybe Text)
-    , _cdaDomainName  :: !Text
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data CheckDomainAvailability = CheckDomainAvailability'{_cdaIdNLangCode
+                                                        :: !(Maybe Text),
+                                                        _cdaDomainName :: !Text}
+                                 deriving (Eq, Read, Show, Data, Typeable,
+                                           Generic)
 
 -- | Creates a value of 'CheckDomainAvailability' with the minimum fields required to make a request.
 --
@@ -68,10 +65,9 @@ data CheckDomainAvailability =
 checkDomainAvailability
     :: Text -- ^ 'cdaDomainName'
     -> CheckDomainAvailability
-checkDomainAvailability pDomainName_ =
-  CheckDomainAvailability'
-    {_cdaIdNLangCode = Nothing, _cdaDomainName = pDomainName_}
-
+checkDomainAvailability pDomainName_
+  = CheckDomainAvailability'{_cdaIdNLangCode = Nothing,
+                             _cdaDomainName = pDomainName_}
 
 -- | Reserved for future use.
 cdaIdNLangCode :: Lens' CheckDomainAvailability (Maybe Text)
@@ -123,13 +119,13 @@ instance ToQuery CheckDomainAvailability where
 --
 --
 -- /See:/ 'checkDomainAvailabilityResponse' smart constructor.
-data CheckDomainAvailabilityResponse =
-  CheckDomainAvailabilityResponse'
-    { _cdarsResponseStatus :: !Int
-    , _cdarsAvailability   :: !DomainAvailability
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data CheckDomainAvailabilityResponse = CheckDomainAvailabilityResponse'{_cdarsResponseStatus
+                                                                        :: !Int,
+                                                                        _cdarsAvailability
+                                                                        ::
+                                                                        !DomainAvailability}
+                                         deriving (Eq, Read, Show, Data,
+                                                   Typeable, Generic)
 
 -- | Creates a value of 'CheckDomainAvailabilityResponse' with the minimum fields required to make a request.
 --
@@ -142,12 +138,11 @@ checkDomainAvailabilityResponse
     :: Int -- ^ 'cdarsResponseStatus'
     -> DomainAvailability -- ^ 'cdarsAvailability'
     -> CheckDomainAvailabilityResponse
-checkDomainAvailabilityResponse pResponseStatus_ pAvailability_ =
-  CheckDomainAvailabilityResponse'
-    { _cdarsResponseStatus = pResponseStatus_
-    , _cdarsAvailability = pAvailability_
-    }
-
+checkDomainAvailabilityResponse pResponseStatus_
+  pAvailability_
+  = CheckDomainAvailabilityResponse'{_cdarsResponseStatus
+                                       = pResponseStatus_,
+                                     _cdarsAvailability = pAvailability_}
 
 -- | -- | The response status code.
 cdarsResponseStatus :: Lens' CheckDomainAvailabilityResponse Int

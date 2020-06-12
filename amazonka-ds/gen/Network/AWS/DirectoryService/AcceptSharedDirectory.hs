@@ -38,33 +38,30 @@ module Network.AWS.DirectoryService.AcceptSharedDirectory
     ) where
 
 import Network.AWS.DirectoryService.Types
-import Network.AWS.DirectoryService.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 
 -- | /See:/ 'acceptSharedDirectory' smart constructor.
-newtype AcceptSharedDirectory =
-  AcceptSharedDirectory'
-    { _asdSharedDirectoryId :: Text
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+newtype AcceptSharedDirectory = AcceptSharedDirectory'{_asdSharedDirectoryId
+                                                       :: Text}
+                                  deriving (Eq, Read, Show, Data, Typeable,
+                                            Generic)
 
 -- | Creates a value of 'AcceptSharedDirectory' with the minimum fields required to make a request.
 --
 -- Use one of the following lenses to modify other fields as desired:
 --
--- * 'asdSharedDirectoryId' - Identifier of the shared directory in the directory consumer account. This identifier is different for each directory owner account.
+-- * 'asdSharedDirectoryId' - Identifier of the shared directory in the directory consumer account. This identifier is different for each directory owner account. 
 acceptSharedDirectory
     :: Text -- ^ 'asdSharedDirectoryId'
     -> AcceptSharedDirectory
-acceptSharedDirectory pSharedDirectoryId_ =
-  AcceptSharedDirectory' {_asdSharedDirectoryId = pSharedDirectoryId_}
+acceptSharedDirectory pSharedDirectoryId_
+  = AcceptSharedDirectory'{_asdSharedDirectoryId =
+                             pSharedDirectoryId_}
 
-
--- | Identifier of the shared directory in the directory consumer account. This identifier is different for each directory owner account.
+-- | Identifier of the shared directory in the directory consumer account. This identifier is different for each directory owner account. 
 asdSharedDirectoryId :: Lens' AcceptSharedDirectory Text
 asdSharedDirectoryId = lens _asdSharedDirectoryId (\ s a -> s{_asdSharedDirectoryId = a})
 
@@ -106,13 +103,14 @@ instance ToQuery AcceptSharedDirectory where
         toQuery = const mempty
 
 -- | /See:/ 'acceptSharedDirectoryResponse' smart constructor.
-data AcceptSharedDirectoryResponse =
-  AcceptSharedDirectoryResponse'
-    { _asdrsSharedDirectory :: !(Maybe SharedDirectory)
-    , _asdrsResponseStatus  :: !Int
-    }
-  deriving (Eq, Show, Data, Typeable, Generic)
-
+data AcceptSharedDirectoryResponse = AcceptSharedDirectoryResponse'{_asdrsSharedDirectory
+                                                                    ::
+                                                                    !(Maybe
+                                                                        SharedDirectory),
+                                                                    _asdrsResponseStatus
+                                                                    :: !Int}
+                                       deriving (Eq, Show, Data, Typeable,
+                                                 Generic)
 
 -- | Creates a value of 'AcceptSharedDirectoryResponse' with the minimum fields required to make a request.
 --
@@ -124,10 +122,10 @@ data AcceptSharedDirectoryResponse =
 acceptSharedDirectoryResponse
     :: Int -- ^ 'asdrsResponseStatus'
     -> AcceptSharedDirectoryResponse
-acceptSharedDirectoryResponse pResponseStatus_ =
-  AcceptSharedDirectoryResponse'
-    {_asdrsSharedDirectory = Nothing, _asdrsResponseStatus = pResponseStatus_}
-
+acceptSharedDirectoryResponse pResponseStatus_
+  = AcceptSharedDirectoryResponse'{_asdrsSharedDirectory
+                                     = Nothing,
+                                   _asdrsResponseStatus = pResponseStatus_}
 
 -- | The shared directory in the directory consumer account.
 asdrsSharedDirectory :: Lens' AcceptSharedDirectoryResponse (Maybe SharedDirectory)

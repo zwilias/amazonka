@@ -43,17 +43,14 @@ import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 import Network.AWS.WorkMail.Types
-import Network.AWS.WorkMail.Types.Product
 
 -- | /See:/ 'associateMemberToGroup' smart constructor.
-data AssociateMemberToGroup =
-  AssociateMemberToGroup'
-    { _amtgOrganizationId :: !Text
-    , _amtgGroupId        :: !Text
-    , _amtgMemberId       :: !Text
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data AssociateMemberToGroup = AssociateMemberToGroup'{_amtgOrganizationId
+                                                      :: !Text,
+                                                      _amtgGroupId :: !Text,
+                                                      _amtgMemberId :: !Text}
+                                deriving (Eq, Read, Show, Data, Typeable,
+                                          Generic)
 
 -- | Creates a value of 'AssociateMemberToGroup' with the minimum fields required to make a request.
 --
@@ -69,13 +66,12 @@ associateMemberToGroup
     -> Text -- ^ 'amtgGroupId'
     -> Text -- ^ 'amtgMemberId'
     -> AssociateMemberToGroup
-associateMemberToGroup pOrganizationId_ pGroupId_ pMemberId_ =
-  AssociateMemberToGroup'
-    { _amtgOrganizationId = pOrganizationId_
-    , _amtgGroupId = pGroupId_
-    , _amtgMemberId = pMemberId_
-    }
-
+associateMemberToGroup pOrganizationId_ pGroupId_
+  pMemberId_
+  = AssociateMemberToGroup'{_amtgOrganizationId =
+                              pOrganizationId_,
+                            _amtgGroupId = pGroupId_,
+                            _amtgMemberId = pMemberId_}
 
 -- | The organization under which the group exists.
 amtgOrganizationId :: Lens' AssociateMemberToGroup Text
@@ -128,12 +124,10 @@ instance ToQuery AssociateMemberToGroup where
         toQuery = const mempty
 
 -- | /See:/ 'associateMemberToGroupResponse' smart constructor.
-newtype AssociateMemberToGroupResponse =
-  AssociateMemberToGroupResponse'
-    { _amtgrsResponseStatus :: Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+newtype AssociateMemberToGroupResponse = AssociateMemberToGroupResponse'{_amtgrsResponseStatus
+                                                                         :: Int}
+                                           deriving (Eq, Read, Show, Data,
+                                                     Typeable, Generic)
 
 -- | Creates a value of 'AssociateMemberToGroupResponse' with the minimum fields required to make a request.
 --
@@ -143,9 +137,9 @@ newtype AssociateMemberToGroupResponse =
 associateMemberToGroupResponse
     :: Int -- ^ 'amtgrsResponseStatus'
     -> AssociateMemberToGroupResponse
-associateMemberToGroupResponse pResponseStatus_ =
-  AssociateMemberToGroupResponse' {_amtgrsResponseStatus = pResponseStatus_}
-
+associateMemberToGroupResponse pResponseStatus_
+  = AssociateMemberToGroupResponse'{_amtgrsResponseStatus
+                                      = pResponseStatus_}
 
 -- | -- | The response status code.
 amtgrsResponseStatus :: Lens' AssociateMemberToGroupResponse Int

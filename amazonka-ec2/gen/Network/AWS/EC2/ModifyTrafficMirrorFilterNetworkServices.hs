@@ -21,7 +21,7 @@
 -- Allows or restricts mirroring network services.
 --
 --
--- By default, Amazon DNS network services are not eligible for Traffic Mirror. Use @AddNetworkServices@ to add network services to a Traffic Mirror filter. When a network service is added to the Traffic Mirror filter, all traffic related to that network service will be mirrored. When you no longer want to mirror network services, use @RemoveNetworkServices@ to remove the network services from the Traffic Mirror filter.
+-- By default, Amazon DNS network services are not eligible for Traffic Mirror. Use @AddNetworkServices@ to add network services to a Traffic Mirror filter. When a network service is added to the Traffic Mirror filter, all traffic related to that network service will be mirrored. When you no longer want to mirror network services, use @RemoveNetworkServices@ to remove the network services from the Traffic Mirror filter. 
 --
 -- For information about filter rule properties, see <https://docs.aws.amazon.com/vpc/latest/mirroring/traffic-mirroring-considerations.html Network Services> in the /Traffic Mirroring User Guide / .
 --
@@ -45,22 +45,30 @@ module Network.AWS.EC2.ModifyTrafficMirrorFilterNetworkServices
     ) where
 
 import Network.AWS.EC2.Types
-import Network.AWS.EC2.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 
 -- | /See:/ 'modifyTrafficMirrorFilterNetworkServices' smart constructor.
-data ModifyTrafficMirrorFilterNetworkServices =
-  ModifyTrafficMirrorFilterNetworkServices'
-    { _mtmfnsAddNetworkServices    :: !(Maybe [TrafficMirrorNetworkService])
-    , _mtmfnsRemoveNetworkServices :: !(Maybe [TrafficMirrorNetworkService])
-    , _mtmfnsDryRun                :: !(Maybe Bool)
-    , _mtmfnsTrafficMirrorFilterId :: !Text
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data ModifyTrafficMirrorFilterNetworkServices = ModifyTrafficMirrorFilterNetworkServices'{_mtmfnsAddNetworkServices
+                                                                                          ::
+                                                                                          !(Maybe
+                                                                                              [TrafficMirrorNetworkService]),
+                                                                                          _mtmfnsRemoveNetworkServices
+                                                                                          ::
+                                                                                          !(Maybe
+                                                                                              [TrafficMirrorNetworkService]),
+                                                                                          _mtmfnsDryRun
+                                                                                          ::
+                                                                                          !(Maybe
+                                                                                              Bool),
+                                                                                          _mtmfnsTrafficMirrorFilterId
+                                                                                          ::
+                                                                                          !Text}
+                                                  deriving (Eq, Read, Show,
+                                                            Data, Typeable,
+                                                            Generic)
 
 -- | Creates a value of 'ModifyTrafficMirrorFilterNetworkServices' with the minimum fields required to make a request.
 --
@@ -76,14 +84,15 @@ data ModifyTrafficMirrorFilterNetworkServices =
 modifyTrafficMirrorFilterNetworkServices
     :: Text -- ^ 'mtmfnsTrafficMirrorFilterId'
     -> ModifyTrafficMirrorFilterNetworkServices
-modifyTrafficMirrorFilterNetworkServices pTrafficMirrorFilterId_ =
-  ModifyTrafficMirrorFilterNetworkServices'
-    { _mtmfnsAddNetworkServices = Nothing
-    , _mtmfnsRemoveNetworkServices = Nothing
-    , _mtmfnsDryRun = Nothing
-    , _mtmfnsTrafficMirrorFilterId = pTrafficMirrorFilterId_
-    }
-
+modifyTrafficMirrorFilterNetworkServices
+  pTrafficMirrorFilterId_
+  = ModifyTrafficMirrorFilterNetworkServices'{_mtmfnsAddNetworkServices
+                                                = Nothing,
+                                              _mtmfnsRemoveNetworkServices =
+                                                Nothing,
+                                              _mtmfnsDryRun = Nothing,
+                                              _mtmfnsTrafficMirrorFilterId =
+                                                pTrafficMirrorFilterId_}
 
 -- | The network service, for example Amazon DNS, that you want to mirror.
 mtmfnsAddNetworkServices :: Lens' ModifyTrafficMirrorFilterNetworkServices [TrafficMirrorNetworkService]
@@ -152,13 +161,17 @@ instance ToQuery
                  _mtmfnsTrafficMirrorFilterId]
 
 -- | /See:/ 'modifyTrafficMirrorFilterNetworkServicesResponse' smart constructor.
-data ModifyTrafficMirrorFilterNetworkServicesResponse =
-  ModifyTrafficMirrorFilterNetworkServicesResponse'
-    { _mtmfnsrsTrafficMirrorFilter :: !(Maybe TrafficMirrorFilter)
-    , _mtmfnsrsResponseStatus      :: !Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data ModifyTrafficMirrorFilterNetworkServicesResponse = ModifyTrafficMirrorFilterNetworkServicesResponse'{_mtmfnsrsTrafficMirrorFilter
+                                                                                                          ::
+                                                                                                          !(Maybe
+                                                                                                              TrafficMirrorFilter),
+                                                                                                          _mtmfnsrsResponseStatus
+                                                                                                          ::
+                                                                                                          !Int}
+                                                          deriving (Eq, Read,
+                                                                    Show, Data,
+                                                                    Typeable,
+                                                                    Generic)
 
 -- | Creates a value of 'ModifyTrafficMirrorFilterNetworkServicesResponse' with the minimum fields required to make a request.
 --
@@ -170,12 +183,12 @@ data ModifyTrafficMirrorFilterNetworkServicesResponse =
 modifyTrafficMirrorFilterNetworkServicesResponse
     :: Int -- ^ 'mtmfnsrsResponseStatus'
     -> ModifyTrafficMirrorFilterNetworkServicesResponse
-modifyTrafficMirrorFilterNetworkServicesResponse pResponseStatus_ =
-  ModifyTrafficMirrorFilterNetworkServicesResponse'
-    { _mtmfnsrsTrafficMirrorFilter = Nothing
-    , _mtmfnsrsResponseStatus = pResponseStatus_
-    }
-
+modifyTrafficMirrorFilterNetworkServicesResponse
+  pResponseStatus_
+  = ModifyTrafficMirrorFilterNetworkServicesResponse'{_mtmfnsrsTrafficMirrorFilter
+                                                        = Nothing,
+                                                      _mtmfnsrsResponseStatus =
+                                                        pResponseStatus_}
 
 -- | The Traffic Mirror filter that the network service is associated with.
 mtmfnsrsTrafficMirrorFilter :: Lens' ModifyTrafficMirrorFilterNetworkServicesResponse (Maybe TrafficMirrorFilter)

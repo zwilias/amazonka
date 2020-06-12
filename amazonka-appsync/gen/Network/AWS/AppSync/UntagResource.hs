@@ -38,20 +38,16 @@ module Network.AWS.AppSync.UntagResource
     ) where
 
 import Network.AWS.AppSync.Types
-import Network.AWS.AppSync.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 
 -- | /See:/ 'untagResource' smart constructor.
-data UntagResource =
-  UntagResource'
-    { _urResourceARN :: !Text
-    , _urTagKeys     :: !(List1 Text)
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data UntagResource = UntagResource'{_urResourceARN ::
+                                    !Text,
+                                    _urTagKeys :: !(List1 Text)}
+                       deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'UntagResource' with the minimum fields required to make a request.
 --
@@ -64,10 +60,9 @@ untagResource
     :: Text -- ^ 'urResourceARN'
     -> NonEmpty Text -- ^ 'urTagKeys'
     -> UntagResource
-untagResource pResourceARN_ pTagKeys_ =
-  UntagResource'
-    {_urResourceARN = pResourceARN_, _urTagKeys = _List1 # pTagKeys_}
-
+untagResource pResourceARN_ pTagKeys_
+  = UntagResource'{_urResourceARN = pResourceARN_,
+                   _urTagKeys = _List1 # pTagKeys_}
 
 -- | The @GraphqlApi@ ARN.
 urResourceARN :: Lens' UntagResource Text
@@ -106,12 +101,10 @@ instance ToQuery UntagResource where
               ["tagKeys" =: toQueryList "member" _urTagKeys]
 
 -- | /See:/ 'untagResourceResponse' smart constructor.
-newtype UntagResourceResponse =
-  UntagResourceResponse'
-    { _ursResponseStatus :: Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+newtype UntagResourceResponse = UntagResourceResponse'{_ursResponseStatus
+                                                       :: Int}
+                                  deriving (Eq, Read, Show, Data, Typeable,
+                                            Generic)
 
 -- | Creates a value of 'UntagResourceResponse' with the minimum fields required to make a request.
 --
@@ -121,9 +114,9 @@ newtype UntagResourceResponse =
 untagResourceResponse
     :: Int -- ^ 'ursResponseStatus'
     -> UntagResourceResponse
-untagResourceResponse pResponseStatus_ =
-  UntagResourceResponse' {_ursResponseStatus = pResponseStatus_}
-
+untagResourceResponse pResponseStatus_
+  = UntagResourceResponse'{_ursResponseStatus =
+                             pResponseStatus_}
 
 -- | -- | The response status code.
 ursResponseStatus :: Lens' UntagResourceResponse Int

@@ -11,7 +11,7 @@
 -- Stability   : auto-generated
 -- Portability : non-portable (GHC extensions)
 --
--- __Amazon Elastic File System__
+-- __Amazon Elastic File System__ 
 --
 -- Amazon Elastic File System (Amazon EFS) provides simple, scalable file storage for use with Amazon EC2 instances in the AWS Cloud. With Amazon EFS, storage capacity is elastic, growing and shrinking automatically as you add and remove files, so your applications have the storage they need, when they need it. For more information, see the <http://docs.aws.amazon.com/efs/latest/ug/api-reference.html User Guide> .
 --
@@ -92,28 +92,28 @@ module Network.AWS.EFS
     -- ** DescribeFileSystems (Paginated)
     , module Network.AWS.EFS.DescribeFileSystems
 
-    -- ** DeleteMountTarget
+    -- ** DeleteMountTarget 
     , module Network.AWS.EFS.DeleteMountTarget
 
-    -- ** CreateTags
+    -- ** CreateTags 
     , module Network.AWS.EFS.CreateTags
 
-    -- ** DeleteTags
+    -- ** DeleteTags 
     , module Network.AWS.EFS.DeleteTags
 
-    -- ** DescribeMountTargetSecurityGroups
+    -- ** DescribeMountTargetSecurityGroups 
     , module Network.AWS.EFS.DescribeMountTargetSecurityGroups
 
-    -- ** ModifyMountTargetSecurityGroups
+    -- ** ModifyMountTargetSecurityGroups 
     , module Network.AWS.EFS.ModifyMountTargetSecurityGroups
 
-    -- ** CreateFileSystem
+    -- ** CreateFileSystem 
     , module Network.AWS.EFS.CreateFileSystem
 
-    -- ** DeleteFileSystem
+    -- ** DeleteFileSystem 
     , module Network.AWS.EFS.DeleteFileSystem
 
-    -- ** CreateMountTarget
+    -- ** CreateMountTarget 
     , module Network.AWS.EFS.CreateMountTarget
 
     -- * Types
@@ -170,8 +170,8 @@ import Network.AWS.EFS.DeleteFileSystem
 import Network.AWS.EFS.DeleteMountTarget
 import Network.AWS.EFS.DeleteTags
 import Network.AWS.EFS.DescribeFileSystems
-import Network.AWS.EFS.DescribeMountTargets
 import Network.AWS.EFS.DescribeMountTargetSecurityGroups
+import Network.AWS.EFS.DescribeMountTargets
 import Network.AWS.EFS.DescribeTags
 import Network.AWS.EFS.ModifyMountTargetSecurityGroups
 import Network.AWS.EFS.Types

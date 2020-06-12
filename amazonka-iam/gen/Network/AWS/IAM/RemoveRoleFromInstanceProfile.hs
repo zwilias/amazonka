@@ -40,20 +40,18 @@ module Network.AWS.IAM.RemoveRoleFromInstanceProfile
     ) where
 
 import Network.AWS.IAM.Types
-import Network.AWS.IAM.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 
 -- | /See:/ 'removeRoleFromInstanceProfile' smart constructor.
-data RemoveRoleFromInstanceProfile =
-  RemoveRoleFromInstanceProfile'
-    { _rrfipInstanceProfileName :: !Text
-    , _rrfipRoleName            :: !Text
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data RemoveRoleFromInstanceProfile = RemoveRoleFromInstanceProfile'{_rrfipInstanceProfileName
+                                                                    :: !Text,
+                                                                    _rrfipRoleName
+                                                                    :: !Text}
+                                       deriving (Eq, Read, Show, Data, Typeable,
+                                                 Generic)
 
 -- | Creates a value of 'RemoveRoleFromInstanceProfile' with the minimum fields required to make a request.
 --
@@ -66,12 +64,11 @@ removeRoleFromInstanceProfile
     :: Text -- ^ 'rrfipInstanceProfileName'
     -> Text -- ^ 'rrfipRoleName'
     -> RemoveRoleFromInstanceProfile
-removeRoleFromInstanceProfile pInstanceProfileName_ pRoleName_ =
-  RemoveRoleFromInstanceProfile'
-    { _rrfipInstanceProfileName = pInstanceProfileName_
-    , _rrfipRoleName = pRoleName_
-    }
-
+removeRoleFromInstanceProfile pInstanceProfileName_
+  pRoleName_
+  = RemoveRoleFromInstanceProfile'{_rrfipInstanceProfileName
+                                     = pInstanceProfileName_,
+                                   _rrfipRoleName = pRoleName_}
 
 -- | The name of the instance profile to update. This parameter allows (per its <http://wikipedia.org/wiki/regex regex pattern> ) a string of characters consisting of upper and lowercase alphanumeric characters with no spaces. You can also include any of the following characters: _+=,.@-
 rrfipInstanceProfileName :: Lens' RemoveRoleFromInstanceProfile Text
@@ -110,17 +107,16 @@ instance ToQuery RemoveRoleFromInstanceProfile where
                "RoleName" =: _rrfipRoleName]
 
 -- | /See:/ 'removeRoleFromInstanceProfileResponse' smart constructor.
-data RemoveRoleFromInstanceProfileResponse =
-  RemoveRoleFromInstanceProfileResponse'
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data RemoveRoleFromInstanceProfileResponse = RemoveRoleFromInstanceProfileResponse'
+                                               deriving (Eq, Read, Show, Data,
+                                                         Typeable, Generic)
 
 -- | Creates a value of 'RemoveRoleFromInstanceProfileResponse' with the minimum fields required to make a request.
 --
 removeRoleFromInstanceProfileResponse
     :: RemoveRoleFromInstanceProfileResponse
-removeRoleFromInstanceProfileResponse = RemoveRoleFromInstanceProfileResponse'
-
+removeRoleFromInstanceProfileResponse
+  = RemoveRoleFromInstanceProfileResponse'
 
 instance NFData RemoveRoleFromInstanceProfileResponse
          where

@@ -58,21 +58,17 @@ import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 import Network.AWS.S3.Types
-import Network.AWS.S3.Types.Product
 
 -- | /See:/ 'listObjects' smart constructor.
-data ListObjects =
-  ListObjects'
-    { _loPrefix       :: !(Maybe Text)
-    , _loEncodingType :: !(Maybe EncodingType)
-    , _loRequestPayer :: !(Maybe RequestPayer)
-    , _loMarker       :: !(Maybe Text)
-    , _loMaxKeys      :: !(Maybe Int)
-    , _loDelimiter    :: !(Maybe Delimiter)
-    , _loBucket       :: !BucketName
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data ListObjects = ListObjects'{_loPrefix ::
+                                !(Maybe Text),
+                                _loEncodingType :: !(Maybe EncodingType),
+                                _loRequestPayer :: !(Maybe RequestPayer),
+                                _loMarker :: !(Maybe Text),
+                                _loMaxKeys :: !(Maybe Int),
+                                _loDelimiter :: !(Maybe Delimiter),
+                                _loBucket :: !BucketName}
+                     deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'ListObjects' with the minimum fields required to make a request.
 --
@@ -94,17 +90,11 @@ data ListObjects =
 listObjects
     :: BucketName -- ^ 'loBucket'
     -> ListObjects
-listObjects pBucket_ =
-  ListObjects'
-    { _loPrefix = Nothing
-    , _loEncodingType = Nothing
-    , _loRequestPayer = Nothing
-    , _loMarker = Nothing
-    , _loMaxKeys = Nothing
-    , _loDelimiter = Nothing
-    , _loBucket = pBucket_
-    }
-
+listObjects pBucket_
+  = ListObjects'{_loPrefix = Nothing,
+                 _loEncodingType = Nothing, _loRequestPayer = Nothing,
+                 _loMarker = Nothing, _loMaxKeys = Nothing,
+                 _loDelimiter = Nothing, _loBucket = pBucket_}
 
 -- | Limits the response to keys that begin with the specified prefix.
 loPrefix :: Lens' ListObjects (Maybe Text)
@@ -189,22 +179,25 @@ instance ToQuery ListObjects where
                "delimiter" =: _loDelimiter]
 
 -- | /See:/ 'listObjectsResponse' smart constructor.
-data ListObjectsResponse =
-  ListObjectsResponse'
-    { _lorsContents       :: !(Maybe [Object])
-    , _lorsPrefix         :: !(Maybe Text)
-    , _lorsCommonPrefixes :: !(Maybe [CommonPrefix])
-    , _lorsEncodingType   :: !(Maybe EncodingType)
-    , _lorsName           :: !(Maybe BucketName)
-    , _lorsMarker         :: !(Maybe Text)
-    , _lorsNextMarker     :: !(Maybe Text)
-    , _lorsMaxKeys        :: !(Maybe Int)
-    , _lorsIsTruncated    :: !(Maybe Bool)
-    , _lorsDelimiter      :: !(Maybe Delimiter)
-    , _lorsResponseStatus :: !Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data ListObjectsResponse = ListObjectsResponse'{_lorsContents
+                                                :: !(Maybe [Object]),
+                                                _lorsPrefix :: !(Maybe Text),
+                                                _lorsCommonPrefixes ::
+                                                !(Maybe [CommonPrefix]),
+                                                _lorsEncodingType ::
+                                                !(Maybe EncodingType),
+                                                _lorsName ::
+                                                !(Maybe BucketName),
+                                                _lorsMarker :: !(Maybe Text),
+                                                _lorsNextMarker ::
+                                                !(Maybe Text),
+                                                _lorsMaxKeys :: !(Maybe Int),
+                                                _lorsIsTruncated ::
+                                                !(Maybe Bool),
+                                                _lorsDelimiter ::
+                                                !(Maybe Delimiter),
+                                                _lorsResponseStatus :: !Int}
+                             deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'ListObjectsResponse' with the minimum fields required to make a request.
 --
@@ -234,21 +227,14 @@ data ListObjectsResponse =
 listObjectsResponse
     :: Int -- ^ 'lorsResponseStatus'
     -> ListObjectsResponse
-listObjectsResponse pResponseStatus_ =
-  ListObjectsResponse'
-    { _lorsContents = Nothing
-    , _lorsPrefix = Nothing
-    , _lorsCommonPrefixes = Nothing
-    , _lorsEncodingType = Nothing
-    , _lorsName = Nothing
-    , _lorsMarker = Nothing
-    , _lorsNextMarker = Nothing
-    , _lorsMaxKeys = Nothing
-    , _lorsIsTruncated = Nothing
-    , _lorsDelimiter = Nothing
-    , _lorsResponseStatus = pResponseStatus_
-    }
-
+listObjectsResponse pResponseStatus_
+  = ListObjectsResponse'{_lorsContents = Nothing,
+                         _lorsPrefix = Nothing, _lorsCommonPrefixes = Nothing,
+                         _lorsEncodingType = Nothing, _lorsName = Nothing,
+                         _lorsMarker = Nothing, _lorsNextMarker = Nothing,
+                         _lorsMaxKeys = Nothing, _lorsIsTruncated = Nothing,
+                         _lorsDelimiter = Nothing,
+                         _lorsResponseStatus = pResponseStatus_}
 
 -- | Undocumented member.
 lorsContents :: Lens' ListObjectsResponse [Object]

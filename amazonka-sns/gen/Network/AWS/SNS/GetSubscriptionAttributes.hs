@@ -42,19 +42,16 @@ import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 import Network.AWS.SNS.Types
-import Network.AWS.SNS.Types.Product
 
 -- | Input for GetSubscriptionAttributes.
 --
 --
 --
 -- /See:/ 'getSubscriptionAttributes' smart constructor.
-newtype GetSubscriptionAttributes =
-  GetSubscriptionAttributes'
-    { _gsaSubscriptionARN :: Text
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+newtype GetSubscriptionAttributes = GetSubscriptionAttributes'{_gsaSubscriptionARN
+                                                               :: Text}
+                                      deriving (Eq, Read, Show, Data, Typeable,
+                                                Generic)
 
 -- | Creates a value of 'GetSubscriptionAttributes' with the minimum fields required to make a request.
 --
@@ -64,9 +61,9 @@ newtype GetSubscriptionAttributes =
 getSubscriptionAttributes
     :: Text -- ^ 'gsaSubscriptionARN'
     -> GetSubscriptionAttributes
-getSubscriptionAttributes pSubscriptionARN_ =
-  GetSubscriptionAttributes' {_gsaSubscriptionARN = pSubscriptionARN_}
-
+getSubscriptionAttributes pSubscriptionARN_
+  = GetSubscriptionAttributes'{_gsaSubscriptionARN =
+                                 pSubscriptionARN_}
 
 -- | The ARN of the subscription whose properties you want to get.
 gsaSubscriptionARN :: Lens' GetSubscriptionAttributes Text
@@ -107,13 +104,17 @@ instance ToQuery GetSubscriptionAttributes where
 --
 --
 -- /See:/ 'getSubscriptionAttributesResponse' smart constructor.
-data GetSubscriptionAttributesResponse =
-  GetSubscriptionAttributesResponse'
-    { _gsarsAttributes     :: !(Maybe (Map Text Text))
-    , _gsarsResponseStatus :: !Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data GetSubscriptionAttributesResponse = GetSubscriptionAttributesResponse'{_gsarsAttributes
+                                                                            ::
+                                                                            !(Maybe
+                                                                                (Map
+                                                                                   Text
+                                                                                   Text)),
+                                                                            _gsarsResponseStatus
+                                                                            ::
+                                                                            !Int}
+                                           deriving (Eq, Read, Show, Data,
+                                                     Typeable, Generic)
 
 -- | Creates a value of 'GetSubscriptionAttributesResponse' with the minimum fields required to make a request.
 --
@@ -125,10 +126,10 @@ data GetSubscriptionAttributesResponse =
 getSubscriptionAttributesResponse
     :: Int -- ^ 'gsarsResponseStatus'
     -> GetSubscriptionAttributesResponse
-getSubscriptionAttributesResponse pResponseStatus_ =
-  GetSubscriptionAttributesResponse'
-    {_gsarsAttributes = Nothing, _gsarsResponseStatus = pResponseStatus_}
-
+getSubscriptionAttributesResponse pResponseStatus_
+  = GetSubscriptionAttributesResponse'{_gsarsAttributes
+                                         = Nothing,
+                                       _gsarsResponseStatus = pResponseStatus_}
 
 -- | A map of the subscription's attributes. Attributes in this map include the following:     * @SubscriptionArn@ -- the subscription's ARN     * @TopicArn@ -- the topic ARN that the subscription is associated with     * @Owner@ -- the AWS account ID of the subscription's owner     * @ConfirmationWasAuthenticated@ -- true if the subscription confirmation request was authenticated     * @DeliveryPolicy@ -- the JSON serialization of the subscription's delivery policy     * @EffectiveDeliveryPolicy@ -- the JSON serialization of the effective delivery policy that takes into account the topic delivery policy and account system defaults
 gsarsAttributes :: Lens' GetSubscriptionAttributesResponse (HashMap Text Text)

@@ -18,7 +18,7 @@
 -- Stability   : auto-generated
 -- Portability : non-portable (GHC extensions)
 --
--- Creates crash-consistent snapshots of multiple EBS volumes and stores the data in S3. Volumes are chosen by specifying an instance. Any attached volumes will produce one snapshot each that is crash-consistent across the instance. Boot volumes can be excluded by changing the parameters.
+-- Creates crash-consistent snapshots of multiple EBS volumes and stores the data in S3. Volumes are chosen by specifying an instance. Any attached volumes will produce one snapshot each that is crash-consistent across the instance. Boot volumes can be excluded by changing the parameters. 
 --
 --
 module Network.AWS.EC2.CreateSnapshots
@@ -42,23 +42,21 @@ module Network.AWS.EC2.CreateSnapshots
     ) where
 
 import Network.AWS.EC2.Types
-import Network.AWS.EC2.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 
 -- | /See:/ 'createSnapshots' smart constructor.
-data CreateSnapshots =
-  CreateSnapshots'
-    { _csTagSpecifications     :: !(Maybe [TagSpecification])
-    , _csCopyTagsFromSource    :: !(Maybe CopyTagsFromSource)
-    , _csDescription           :: !(Maybe Text)
-    , _csDryRun                :: !(Maybe Bool)
-    , _csInstanceSpecification :: !InstanceSpecification
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data CreateSnapshots = CreateSnapshots'{_csTagSpecifications
+                                        :: !(Maybe [TagSpecification]),
+                                        _csCopyTagsFromSource ::
+                                        !(Maybe CopyTagsFromSource),
+                                        _csDescription :: !(Maybe Text),
+                                        _csDryRun :: !(Maybe Bool),
+                                        _csInstanceSpecification ::
+                                        !InstanceSpecification}
+                         deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'CreateSnapshots' with the minimum fields required to make a request.
 --
@@ -76,15 +74,11 @@ data CreateSnapshots =
 createSnapshots
     :: InstanceSpecification -- ^ 'csInstanceSpecification'
     -> CreateSnapshots
-createSnapshots pInstanceSpecification_ =
-  CreateSnapshots'
-    { _csTagSpecifications = Nothing
-    , _csCopyTagsFromSource = Nothing
-    , _csDescription = Nothing
-    , _csDryRun = Nothing
-    , _csInstanceSpecification = pInstanceSpecification_
-    }
-
+createSnapshots pInstanceSpecification_
+  = CreateSnapshots'{_csTagSpecifications = Nothing,
+                     _csCopyTagsFromSource = Nothing,
+                     _csDescription = Nothing, _csDryRun = Nothing,
+                     _csInstanceSpecification = pInstanceSpecification_}
 
 -- | Tags to apply to every snapshot specified by the instance.
 csTagSpecifications :: Lens' CreateSnapshots [TagSpecification]
@@ -141,13 +135,13 @@ instance ToQuery CreateSnapshots where
                "InstanceSpecification" =: _csInstanceSpecification]
 
 -- | /See:/ 'createSnapshotsResponse' smart constructor.
-data CreateSnapshotsResponse =
-  CreateSnapshotsResponse'
-    { _crsSnapshots      :: !(Maybe [SnapshotInfo])
-    , _crsResponseStatus :: !Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data CreateSnapshotsResponse = CreateSnapshotsResponse'{_crsSnapshots
+                                                        ::
+                                                        !(Maybe [SnapshotInfo]),
+                                                        _crsResponseStatus ::
+                                                        !Int}
+                                 deriving (Eq, Read, Show, Data, Typeable,
+                                           Generic)
 
 -- | Creates a value of 'CreateSnapshotsResponse' with the minimum fields required to make a request.
 --
@@ -159,10 +153,9 @@ data CreateSnapshotsResponse =
 createSnapshotsResponse
     :: Int -- ^ 'crsResponseStatus'
     -> CreateSnapshotsResponse
-createSnapshotsResponse pResponseStatus_ =
-  CreateSnapshotsResponse'
-    {_crsSnapshots = Nothing, _crsResponseStatus = pResponseStatus_}
-
+createSnapshotsResponse pResponseStatus_
+  = CreateSnapshotsResponse'{_crsSnapshots = Nothing,
+                             _crsResponseStatus = pResponseStatus_}
 
 -- | List of snapshots.
 crsSnapshots :: Lens' CreateSnapshotsResponse [SnapshotInfo]

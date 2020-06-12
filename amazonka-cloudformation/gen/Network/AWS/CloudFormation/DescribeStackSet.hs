@@ -18,7 +18,7 @@
 -- Stability   : auto-generated
 -- Portability : non-portable (GHC extensions)
 --
--- Returns the description of the specified stack set.
+-- Returns the description of the specified stack set. 
 --
 --
 module Network.AWS.CloudFormation.DescribeStackSet
@@ -38,19 +38,15 @@ module Network.AWS.CloudFormation.DescribeStackSet
     ) where
 
 import Network.AWS.CloudFormation.Types
-import Network.AWS.CloudFormation.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 
 -- | /See:/ 'describeStackSet' smart constructor.
-newtype DescribeStackSet =
-  DescribeStackSet'
-    { _desStackSetName :: Text
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+newtype DescribeStackSet = DescribeStackSet'{_desStackSetName
+                                             :: Text}
+                             deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'DescribeStackSet' with the minimum fields required to make a request.
 --
@@ -60,9 +56,9 @@ newtype DescribeStackSet =
 describeStackSet
     :: Text -- ^ 'desStackSetName'
     -> DescribeStackSet
-describeStackSet pStackSetName_ =
-  DescribeStackSet' {_desStackSetName = pStackSetName_}
-
+describeStackSet pStackSetName_
+  = DescribeStackSet'{_desStackSetName =
+                        pStackSetName_}
 
 -- | The name or unique ID of the stack set whose description you want.
 desStackSetName :: Lens' DescribeStackSet Text
@@ -95,13 +91,12 @@ instance ToQuery DescribeStackSet where
                "StackSetName" =: _desStackSetName]
 
 -- | /See:/ 'describeStackSetResponse' smart constructor.
-data DescribeStackSetResponse =
-  DescribeStackSetResponse'
-    { _drsStackSet       :: !(Maybe StackSet)
-    , _drsResponseStatus :: !Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data DescribeStackSetResponse = DescribeStackSetResponse'{_drsStackSet
+                                                          :: !(Maybe StackSet),
+                                                          _drsResponseStatus ::
+                                                          !Int}
+                                  deriving (Eq, Read, Show, Data, Typeable,
+                                            Generic)
 
 -- | Creates a value of 'DescribeStackSetResponse' with the minimum fields required to make a request.
 --
@@ -113,10 +108,9 @@ data DescribeStackSetResponse =
 describeStackSetResponse
     :: Int -- ^ 'drsResponseStatus'
     -> DescribeStackSetResponse
-describeStackSetResponse pResponseStatus_ =
-  DescribeStackSetResponse'
-    {_drsStackSet = Nothing, _drsResponseStatus = pResponseStatus_}
-
+describeStackSetResponse pResponseStatus_
+  = DescribeStackSetResponse'{_drsStackSet = Nothing,
+                              _drsResponseStatus = pResponseStatus_}
 
 -- | The specified stack set.
 drsStackSet :: Lens' DescribeStackSetResponse (Maybe StackSet)

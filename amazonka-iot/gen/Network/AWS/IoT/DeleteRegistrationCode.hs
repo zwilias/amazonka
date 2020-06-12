@@ -35,7 +35,6 @@ module Network.AWS.IoT.DeleteRegistrationCode
     ) where
 
 import Network.AWS.IoT.Types
-import Network.AWS.IoT.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.Request
@@ -46,17 +45,15 @@ import Network.AWS.Response
 --
 --
 -- /See:/ 'deleteRegistrationCode' smart constructor.
-data DeleteRegistrationCode =
-  DeleteRegistrationCode'
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data DeleteRegistrationCode = DeleteRegistrationCode'
+                                deriving (Eq, Read, Show, Data, Typeable,
+                                          Generic)
 
 -- | Creates a value of 'DeleteRegistrationCode' with the minimum fields required to make a request.
 --
 deleteRegistrationCode
     :: DeleteRegistrationCode
 deleteRegistrationCode = DeleteRegistrationCode'
-
 
 instance AWSRequest DeleteRegistrationCode where
         type Rs DeleteRegistrationCode =
@@ -86,12 +83,10 @@ instance ToQuery DeleteRegistrationCode where
 --
 --
 -- /See:/ 'deleteRegistrationCodeResponse' smart constructor.
-newtype DeleteRegistrationCodeResponse =
-  DeleteRegistrationCodeResponse'
-    { _drcrsResponseStatus :: Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+newtype DeleteRegistrationCodeResponse = DeleteRegistrationCodeResponse'{_drcrsResponseStatus
+                                                                         :: Int}
+                                           deriving (Eq, Read, Show, Data,
+                                                     Typeable, Generic)
 
 -- | Creates a value of 'DeleteRegistrationCodeResponse' with the minimum fields required to make a request.
 --
@@ -101,9 +96,9 @@ newtype DeleteRegistrationCodeResponse =
 deleteRegistrationCodeResponse
     :: Int -- ^ 'drcrsResponseStatus'
     -> DeleteRegistrationCodeResponse
-deleteRegistrationCodeResponse pResponseStatus_ =
-  DeleteRegistrationCodeResponse' {_drcrsResponseStatus = pResponseStatus_}
-
+deleteRegistrationCodeResponse pResponseStatus_
+  = DeleteRegistrationCodeResponse'{_drcrsResponseStatus
+                                      = pResponseStatus_}
 
 -- | -- | The response status code.
 drcrsResponseStatus :: Lens' DeleteRegistrationCodeResponse Int

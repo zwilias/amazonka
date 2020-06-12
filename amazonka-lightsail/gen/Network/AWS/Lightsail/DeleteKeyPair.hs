@@ -39,18 +39,14 @@ module Network.AWS.Lightsail.DeleteKeyPair
 
 import Network.AWS.Lens
 import Network.AWS.Lightsail.Types
-import Network.AWS.Lightsail.Types.Product
 import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 
 -- | /See:/ 'deleteKeyPair' smart constructor.
-newtype DeleteKeyPair =
-  DeleteKeyPair'
-    { _dkpKeyPairName :: Text
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+newtype DeleteKeyPair = DeleteKeyPair'{_dkpKeyPairName
+                                       :: Text}
+                          deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'DeleteKeyPair' with the minimum fields required to make a request.
 --
@@ -60,8 +56,8 @@ newtype DeleteKeyPair =
 deleteKeyPair
     :: Text -- ^ 'dkpKeyPairName'
     -> DeleteKeyPair
-deleteKeyPair pKeyPairName_ = DeleteKeyPair' {_dkpKeyPairName = pKeyPairName_}
-
+deleteKeyPair pKeyPairName_
+  = DeleteKeyPair'{_dkpKeyPairName = pKeyPairName_}
 
 -- | The name of the key pair to delete.
 dkpKeyPairName :: Lens' DeleteKeyPair Text
@@ -101,13 +97,12 @@ instance ToQuery DeleteKeyPair where
         toQuery = const mempty
 
 -- | /See:/ 'deleteKeyPairResponse' smart constructor.
-data DeleteKeyPairResponse =
-  DeleteKeyPairResponse'
-    { _dkprsOperation      :: !(Maybe Operation)
-    , _dkprsResponseStatus :: !Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data DeleteKeyPairResponse = DeleteKeyPairResponse'{_dkprsOperation
+                                                    :: !(Maybe Operation),
+                                                    _dkprsResponseStatus ::
+                                                    !Int}
+                               deriving (Eq, Read, Show, Data, Typeable,
+                                         Generic)
 
 -- | Creates a value of 'DeleteKeyPairResponse' with the minimum fields required to make a request.
 --
@@ -119,10 +114,9 @@ data DeleteKeyPairResponse =
 deleteKeyPairResponse
     :: Int -- ^ 'dkprsResponseStatus'
     -> DeleteKeyPairResponse
-deleteKeyPairResponse pResponseStatus_ =
-  DeleteKeyPairResponse'
-    {_dkprsOperation = Nothing, _dkprsResponseStatus = pResponseStatus_}
-
+deleteKeyPairResponse pResponseStatus_
+  = DeleteKeyPairResponse'{_dkprsOperation = Nothing,
+                           _dkprsResponseStatus = pResponseStatus_}
 
 -- | An array of key-value pairs containing information about the results of your delete key pair request.
 dkprsOperation :: Lens' DeleteKeyPairResponse (Maybe Operation)

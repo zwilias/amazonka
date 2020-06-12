@@ -45,7 +45,6 @@ module Network.AWS.EC2.DescribeClassicLinkInstances
     ) where
 
 import Network.AWS.EC2.Types
-import Network.AWS.EC2.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Pager
 import Network.AWS.Prelude
@@ -53,16 +52,24 @@ import Network.AWS.Request
 import Network.AWS.Response
 
 -- | /See:/ 'describeClassicLinkInstances' smart constructor.
-data DescribeClassicLinkInstances =
-  DescribeClassicLinkInstances'
-    { _dcliFilters     :: !(Maybe [Filter])
-    , _dcliNextToken   :: !(Maybe Text)
-    , _dcliInstanceIds :: !(Maybe [Text])
-    , _dcliDryRun      :: !(Maybe Bool)
-    , _dcliMaxResults  :: !(Maybe Nat)
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data DescribeClassicLinkInstances = DescribeClassicLinkInstances'{_dcliFilters
+                                                                  ::
+                                                                  !(Maybe
+                                                                      [Filter]),
+                                                                  _dcliNextToken
+                                                                  ::
+                                                                  !(Maybe Text),
+                                                                  _dcliInstanceIds
+                                                                  ::
+                                                                  !(Maybe
+                                                                      [Text]),
+                                                                  _dcliDryRun ::
+                                                                  !(Maybe Bool),
+                                                                  _dcliMaxResults
+                                                                  ::
+                                                                  !(Maybe Nat)}
+                                      deriving (Eq, Read, Show, Data, Typeable,
+                                                Generic)
 
 -- | Creates a value of 'DescribeClassicLinkInstances' with the minimum fields required to make a request.
 --
@@ -79,15 +86,13 @@ data DescribeClassicLinkInstances =
 -- * 'dcliMaxResults' - The maximum number of results to return with a single call. To retrieve the remaining results, make another call with the returned @nextToken@ value. Constraint: If the value is greater than 1000, we return only 1000 items.
 describeClassicLinkInstances
     :: DescribeClassicLinkInstances
-describeClassicLinkInstances =
-  DescribeClassicLinkInstances'
-    { _dcliFilters = Nothing
-    , _dcliNextToken = Nothing
-    , _dcliInstanceIds = Nothing
-    , _dcliDryRun = Nothing
-    , _dcliMaxResults = Nothing
-    }
-
+describeClassicLinkInstances
+  = DescribeClassicLinkInstances'{_dcliFilters =
+                                    Nothing,
+                                  _dcliNextToken = Nothing,
+                                  _dcliInstanceIds = Nothing,
+                                  _dcliDryRun = Nothing,
+                                  _dcliMaxResults = Nothing}
 
 -- | One or more filters.     * @group-id@ - The ID of a VPC security group that's associated with the instance.     * @instance-id@ - The ID of the instance.     * @tag@ :<key> - The key/value combination of a tag assigned to the resource. Use the tag key in the filter name and the tag value as the filter value. For example, to find all resources that have a tag with the key @Owner@ and the value @TeamA@ , specify @tag:Owner@ for the filter name and @TeamA@ for the filter value.     * @tag-key@ - The key of a tag assigned to the resource. Use this filter to find all resources assigned a tag with a specific key, regardless of the tag value.     * @vpc-id@ - The ID of the VPC to which the instance is linked. @vpc-id@ - The ID of the VPC that the instance is linked to.
 dcliFilters :: Lens' DescribeClassicLinkInstances [Filter]
@@ -154,14 +159,19 @@ instance ToQuery DescribeClassicLinkInstances where
                "MaxResults" =: _dcliMaxResults]
 
 -- | /See:/ 'describeClassicLinkInstancesResponse' smart constructor.
-data DescribeClassicLinkInstancesResponse =
-  DescribeClassicLinkInstancesResponse'
-    { _dclirsNextToken      :: !(Maybe Text)
-    , _dclirsInstances      :: !(Maybe [ClassicLinkInstance])
-    , _dclirsResponseStatus :: !Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data DescribeClassicLinkInstancesResponse = DescribeClassicLinkInstancesResponse'{_dclirsNextToken
+                                                                                  ::
+                                                                                  !(Maybe
+                                                                                      Text),
+                                                                                  _dclirsInstances
+                                                                                  ::
+                                                                                  !(Maybe
+                                                                                      [ClassicLinkInstance]),
+                                                                                  _dclirsResponseStatus
+                                                                                  ::
+                                                                                  !Int}
+                                              deriving (Eq, Read, Show, Data,
+                                                        Typeable, Generic)
 
 -- | Creates a value of 'DescribeClassicLinkInstancesResponse' with the minimum fields required to make a request.
 --
@@ -175,13 +185,12 @@ data DescribeClassicLinkInstancesResponse =
 describeClassicLinkInstancesResponse
     :: Int -- ^ 'dclirsResponseStatus'
     -> DescribeClassicLinkInstancesResponse
-describeClassicLinkInstancesResponse pResponseStatus_ =
-  DescribeClassicLinkInstancesResponse'
-    { _dclirsNextToken = Nothing
-    , _dclirsInstances = Nothing
-    , _dclirsResponseStatus = pResponseStatus_
-    }
-
+describeClassicLinkInstancesResponse pResponseStatus_
+  = DescribeClassicLinkInstancesResponse'{_dclirsNextToken
+                                            = Nothing,
+                                          _dclirsInstances = Nothing,
+                                          _dclirsResponseStatus =
+                                            pResponseStatus_}
 
 -- | The token to use to retrieve the next page of results. This value is @null@ when there are no more results to return.
 dclirsNextToken :: Lens' DescribeClassicLinkInstancesResponse (Maybe Text)

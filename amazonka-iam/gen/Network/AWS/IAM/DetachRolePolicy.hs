@@ -38,20 +38,16 @@ module Network.AWS.IAM.DetachRolePolicy
     ) where
 
 import Network.AWS.IAM.Types
-import Network.AWS.IAM.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 
 -- | /See:/ 'detachRolePolicy' smart constructor.
-data DetachRolePolicy =
-  DetachRolePolicy'
-    { _drpRoleName  :: !Text
-    , _drpPolicyARN :: !Text
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data DetachRolePolicy = DetachRolePolicy'{_drpRoleName
+                                          :: !Text,
+                                          _drpPolicyARN :: !Text}
+                          deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'DetachRolePolicy' with the minimum fields required to make a request.
 --
@@ -64,9 +60,9 @@ detachRolePolicy
     :: Text -- ^ 'drpRoleName'
     -> Text -- ^ 'drpPolicyARN'
     -> DetachRolePolicy
-detachRolePolicy pRoleName_ pPolicyARN_ =
-  DetachRolePolicy' {_drpRoleName = pRoleName_, _drpPolicyARN = pPolicyARN_}
-
+detachRolePolicy pRoleName_ pPolicyARN_
+  = DetachRolePolicy'{_drpRoleName = pRoleName_,
+                      _drpPolicyARN = pPolicyARN_}
 
 -- | The name (friendly name, not ARN) of the IAM role to detach the policy from. This parameter allows (per its <http://wikipedia.org/wiki/regex regex pattern> ) a string of characters consisting of upper and lowercase alphanumeric characters with no spaces. You can also include any of the following characters: _+=,.@-
 drpRoleName :: Lens' DetachRolePolicy Text
@@ -100,16 +96,14 @@ instance ToQuery DetachRolePolicy where
                "PolicyArn" =: _drpPolicyARN]
 
 -- | /See:/ 'detachRolePolicyResponse' smart constructor.
-data DetachRolePolicyResponse =
-  DetachRolePolicyResponse'
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data DetachRolePolicyResponse = DetachRolePolicyResponse'
+                                  deriving (Eq, Read, Show, Data, Typeable,
+                                            Generic)
 
 -- | Creates a value of 'DetachRolePolicyResponse' with the minimum fields required to make a request.
 --
 detachRolePolicyResponse
     :: DetachRolePolicyResponse
 detachRolePolicyResponse = DetachRolePolicyResponse'
-
 
 instance NFData DetachRolePolicyResponse where

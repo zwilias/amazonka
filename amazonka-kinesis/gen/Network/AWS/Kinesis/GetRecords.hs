@@ -53,7 +53,6 @@ module Network.AWS.Kinesis.GetRecords
     ) where
 
 import Network.AWS.Kinesis.Types
-import Network.AWS.Kinesis.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.Request
@@ -64,13 +63,10 @@ import Network.AWS.Response
 --
 --
 -- /See:/ 'getRecords' smart constructor.
-data GetRecords =
-  GetRecords'
-    { _grLimit         :: !(Maybe Nat)
-    , _grShardIterator :: !Text
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data GetRecords = GetRecords'{_grLimit ::
+                              !(Maybe Nat),
+                              _grShardIterator :: !Text}
+                    deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'GetRecords' with the minimum fields required to make a request.
 --
@@ -82,9 +78,9 @@ data GetRecords =
 getRecords
     :: Text -- ^ 'grShardIterator'
     -> GetRecords
-getRecords pShardIterator_ =
-  GetRecords' {_grLimit = Nothing, _grShardIterator = pShardIterator_}
-
+getRecords pShardIterator_
+  = GetRecords'{_grLimit = Nothing,
+                _grShardIterator = pShardIterator_}
 
 -- | The maximum number of records to return. Specify a value of up to 10,000. If you specify a value that is greater than 10,000, 'GetRecords' throws @InvalidArgumentException@ .
 grLimit :: Lens' GetRecords (Maybe Natural)
@@ -137,21 +133,19 @@ instance ToQuery GetRecords where
 --
 --
 -- /See:/ 'getRecordsResponse' smart constructor.
-data GetRecordsResponse =
-  GetRecordsResponse'
-    { _grrsNextShardIterator  :: !(Maybe Text)
-    , _grrsMillisBehindLatest :: !(Maybe Nat)
-    , _grrsResponseStatus     :: !Int
-    , _grrsRecords            :: ![Record]
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data GetRecordsResponse = GetRecordsResponse'{_grrsNextShardIterator
+                                              :: !(Maybe Text),
+                                              _grrsMillisBehindLatest ::
+                                              !(Maybe Nat),
+                                              _grrsResponseStatus :: !Int,
+                                              _grrsRecords :: ![Record]}
+                            deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'GetRecordsResponse' with the minimum fields required to make a request.
 --
 -- Use one of the following lenses to modify other fields as desired:
 --
--- * 'grrsNextShardIterator' - The next position in the shard from which to start sequentially reading data records. If set to @null@ , the shard has been closed and the requested iterator does not return any more data.
+-- * 'grrsNextShardIterator' - The next position in the shard from which to start sequentially reading data records. If set to @null@ , the shard has been closed and the requested iterator does not return any more data. 
 --
 -- * 'grrsMillisBehindLatest' - The number of milliseconds the 'GetRecords' response is from the tip of the stream, indicating how far behind current time the consumer is. A value of zero indicates that record processing is caught up, and there are no new records to process at this moment.
 --
@@ -161,16 +155,14 @@ data GetRecordsResponse =
 getRecordsResponse
     :: Int -- ^ 'grrsResponseStatus'
     -> GetRecordsResponse
-getRecordsResponse pResponseStatus_ =
-  GetRecordsResponse'
-    { _grrsNextShardIterator = Nothing
-    , _grrsMillisBehindLatest = Nothing
-    , _grrsResponseStatus = pResponseStatus_
-    , _grrsRecords = mempty
-    }
+getRecordsResponse pResponseStatus_
+  = GetRecordsResponse'{_grrsNextShardIterator =
+                          Nothing,
+                        _grrsMillisBehindLatest = Nothing,
+                        _grrsResponseStatus = pResponseStatus_,
+                        _grrsRecords = mempty}
 
-
--- | The next position in the shard from which to start sequentially reading data records. If set to @null@ , the shard has been closed and the requested iterator does not return any more data.
+-- | The next position in the shard from which to start sequentially reading data records. If set to @null@ , the shard has been closed and the requested iterator does not return any more data. 
 grrsNextShardIterator :: Lens' GetRecordsResponse (Maybe Text)
 grrsNextShardIterator = lens _grrsNextShardIterator (\ s a -> s{_grrsNextShardIterator = a})
 

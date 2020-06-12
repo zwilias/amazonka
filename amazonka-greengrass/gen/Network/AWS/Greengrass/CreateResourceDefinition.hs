@@ -44,21 +44,21 @@ module Network.AWS.Greengrass.CreateResourceDefinition
     ) where
 
 import Network.AWS.Greengrass.Types
-import Network.AWS.Greengrass.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 
 -- | /See:/ 'createResourceDefinition' smart constructor.
-data CreateResourceDefinition =
-  CreateResourceDefinition'
-    { _crdAmznClientToken :: !(Maybe Text)
-    , _crdInitialVersion  :: !(Maybe ResourceDefinitionVersion)
-    , _crdName            :: !(Maybe Text)
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data CreateResourceDefinition = CreateResourceDefinition'{_crdAmznClientToken
+                                                          :: !(Maybe Text),
+                                                          _crdInitialVersion ::
+                                                          !(Maybe
+                                                              ResourceDefinitionVersion),
+                                                          _crdName ::
+                                                          !(Maybe Text)}
+                                  deriving (Eq, Read, Show, Data, Typeable,
+                                            Generic)
 
 -- | Creates a value of 'CreateResourceDefinition' with the minimum fields required to make a request.
 --
@@ -71,13 +71,10 @@ data CreateResourceDefinition =
 -- * 'crdName' - The name of the resource definition.
 createResourceDefinition
     :: CreateResourceDefinition
-createResourceDefinition =
-  CreateResourceDefinition'
-    { _crdAmznClientToken = Nothing
-    , _crdInitialVersion = Nothing
-    , _crdName = Nothing
-    }
-
+createResourceDefinition
+  = CreateResourceDefinition'{_crdAmznClientToken =
+                                Nothing,
+                              _crdInitialVersion = Nothing, _crdName = Nothing}
 
 -- | A client token used to correlate requests and responses.
 crdAmznClientToken :: Lens' CreateResourceDefinition (Maybe Text)
@@ -132,19 +129,39 @@ instance ToQuery CreateResourceDefinition where
         toQuery = const mempty
 
 -- | /See:/ 'createResourceDefinitionResponse' smart constructor.
-data CreateResourceDefinitionResponse =
-  CreateResourceDefinitionResponse'
-    { _crdrsLatestVersionARN     :: !(Maybe Text)
-    , _crdrsARN                  :: !(Maybe Text)
-    , _crdrsName                 :: !(Maybe Text)
-    , _crdrsCreationTimestamp    :: !(Maybe Text)
-    , _crdrsId                   :: !(Maybe Text)
-    , _crdrsLatestVersion        :: !(Maybe Text)
-    , _crdrsLastUpdatedTimestamp :: !(Maybe Text)
-    , _crdrsResponseStatus       :: !Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data CreateResourceDefinitionResponse = CreateResourceDefinitionResponse'{_crdrsLatestVersionARN
+                                                                          ::
+                                                                          !(Maybe
+                                                                              Text),
+                                                                          _crdrsARN
+                                                                          ::
+                                                                          !(Maybe
+                                                                              Text),
+                                                                          _crdrsName
+                                                                          ::
+                                                                          !(Maybe
+                                                                              Text),
+                                                                          _crdrsCreationTimestamp
+                                                                          ::
+                                                                          !(Maybe
+                                                                              Text),
+                                                                          _crdrsId
+                                                                          ::
+                                                                          !(Maybe
+                                                                              Text),
+                                                                          _crdrsLatestVersion
+                                                                          ::
+                                                                          !(Maybe
+                                                                              Text),
+                                                                          _crdrsLastUpdatedTimestamp
+                                                                          ::
+                                                                          !(Maybe
+                                                                              Text),
+                                                                          _crdrsResponseStatus
+                                                                          ::
+                                                                          !Int}
+                                          deriving (Eq, Read, Show, Data,
+                                                    Typeable, Generic)
 
 -- | Creates a value of 'CreateResourceDefinitionResponse' with the minimum fields required to make a request.
 --
@@ -168,18 +185,15 @@ data CreateResourceDefinitionResponse =
 createResourceDefinitionResponse
     :: Int -- ^ 'crdrsResponseStatus'
     -> CreateResourceDefinitionResponse
-createResourceDefinitionResponse pResponseStatus_ =
-  CreateResourceDefinitionResponse'
-    { _crdrsLatestVersionARN = Nothing
-    , _crdrsARN = Nothing
-    , _crdrsName = Nothing
-    , _crdrsCreationTimestamp = Nothing
-    , _crdrsId = Nothing
-    , _crdrsLatestVersion = Nothing
-    , _crdrsLastUpdatedTimestamp = Nothing
-    , _crdrsResponseStatus = pResponseStatus_
-    }
-
+createResourceDefinitionResponse pResponseStatus_
+  = CreateResourceDefinitionResponse'{_crdrsLatestVersionARN
+                                        = Nothing,
+                                      _crdrsARN = Nothing, _crdrsName = Nothing,
+                                      _crdrsCreationTimestamp = Nothing,
+                                      _crdrsId = Nothing,
+                                      _crdrsLatestVersion = Nothing,
+                                      _crdrsLastUpdatedTimestamp = Nothing,
+                                      _crdrsResponseStatus = pResponseStatus_}
 
 -- | The ARN of the latest version of the definition.
 crdrsLatestVersionARN :: Lens' CreateResourceDefinitionResponse (Maybe Text)

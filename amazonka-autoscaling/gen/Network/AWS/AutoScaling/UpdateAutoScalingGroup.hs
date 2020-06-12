@@ -21,7 +21,7 @@
 -- Updates the configuration for the specified Auto Scaling group.
 --
 --
--- To update an Auto Scaling group, specify the name of the group and the parameter that you want to change. Any parameters that you don't specify are not changed by this update request. The new settings take effect on any scaling activities after this call returns.
+-- To update an Auto Scaling group, specify the name of the group and the parameter that you want to change. Any parameters that you don't specify are not changed by this update request. The new settings take effect on any scaling activities after this call returns. 
 --
 -- If you associate a new launch configuration or template with an Auto Scaling group, all new instances will get the updated configuration. Existing instances continue to run with the configuration that they were originally launched with. When you update a group to specify a mixed instances policy instead of a launch configuration or template, existing instances may be replaced to match the new purchasing options that you specified in the policy. For example, if the group currently has 100% On-Demand capacity and the policy specifies 50% Spot capacity, this means that half of your instances will be gradually terminated and relaunched as Spot Instances. When replacing instances, Amazon EC2 Auto Scaling launches new instances before terminating the old ones, so that updating your group does not compromise the performance or availability of your application.
 --
@@ -67,35 +67,51 @@ module Network.AWS.AutoScaling.UpdateAutoScalingGroup
     ) where
 
 import Network.AWS.AutoScaling.Types
-import Network.AWS.AutoScaling.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 
 -- | /See:/ 'updateAutoScalingGroup' smart constructor.
-data UpdateAutoScalingGroup =
-  UpdateAutoScalingGroup'
-    { _uasgTerminationPolicies :: !(Maybe [Text])
-    , _uasgHealthCheckGracePeriod :: !(Maybe Int)
-    , _uasgServiceLinkedRoleARN :: !(Maybe Text)
-    , _uasgNewInstancesProtectedFromScaleIn :: !(Maybe Bool)
-    , _uasgVPCZoneIdentifier :: !(Maybe Text)
-    , _uasgMaxInstanceLifetime :: !(Maybe Int)
-    , _uasgDefaultCooldown :: !(Maybe Int)
-    , _uasgMaxSize :: !(Maybe Int)
-    , _uasgAvailabilityZones :: !(Maybe (List1 Text))
-    , _uasgDesiredCapacity :: !(Maybe Int)
-    , _uasgMixedInstancesPolicy :: !(Maybe MixedInstancesPolicy)
-    , _uasgMinSize :: !(Maybe Int)
-    , _uasgLaunchConfigurationName :: !(Maybe Text)
-    , _uasgHealthCheckType :: !(Maybe Text)
-    , _uasgLaunchTemplate :: !(Maybe LaunchTemplateSpecification)
-    , _uasgPlacementGroup :: !(Maybe Text)
-    , _uasgAutoScalingGroupName :: !Text
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data UpdateAutoScalingGroup = UpdateAutoScalingGroup'{_uasgTerminationPolicies
+                                                      :: !(Maybe [Text]),
+                                                      _uasgHealthCheckGracePeriod
+                                                      :: !(Maybe Int),
+                                                      _uasgServiceLinkedRoleARN
+                                                      :: !(Maybe Text),
+                                                      _uasgNewInstancesProtectedFromScaleIn
+                                                      :: !(Maybe Bool),
+                                                      _uasgVPCZoneIdentifier ::
+                                                      !(Maybe Text),
+                                                      _uasgMaxInstanceLifetime
+                                                      :: !(Maybe Int),
+                                                      _uasgDefaultCooldown ::
+                                                      !(Maybe Int),
+                                                      _uasgMaxSize ::
+                                                      !(Maybe Int),
+                                                      _uasgAvailabilityZones ::
+                                                      !(Maybe (List1 Text)),
+                                                      _uasgDesiredCapacity ::
+                                                      !(Maybe Int),
+                                                      _uasgMixedInstancesPolicy
+                                                      ::
+                                                      !(Maybe
+                                                          MixedInstancesPolicy),
+                                                      _uasgMinSize ::
+                                                      !(Maybe Int),
+                                                      _uasgLaunchConfigurationName
+                                                      :: !(Maybe Text),
+                                                      _uasgHealthCheckType ::
+                                                      !(Maybe Text),
+                                                      _uasgLaunchTemplate ::
+                                                      !(Maybe
+                                                          LaunchTemplateSpecification),
+                                                      _uasgPlacementGroup ::
+                                                      !(Maybe Text),
+                                                      _uasgAutoScalingGroupName
+                                                      :: !Text}
+                                deriving (Eq, Read, Show, Data, Typeable,
+                                          Generic)
 
 -- | Creates a value of 'UpdateAutoScalingGroup' with the minimum fields required to make a request.
 --
@@ -137,27 +153,25 @@ data UpdateAutoScalingGroup =
 updateAutoScalingGroup
     :: Text -- ^ 'uasgAutoScalingGroupName'
     -> UpdateAutoScalingGroup
-updateAutoScalingGroup pAutoScalingGroupName_ =
-  UpdateAutoScalingGroup'
-    { _uasgTerminationPolicies = Nothing
-    , _uasgHealthCheckGracePeriod = Nothing
-    , _uasgServiceLinkedRoleARN = Nothing
-    , _uasgNewInstancesProtectedFromScaleIn = Nothing
-    , _uasgVPCZoneIdentifier = Nothing
-    , _uasgMaxInstanceLifetime = Nothing
-    , _uasgDefaultCooldown = Nothing
-    , _uasgMaxSize = Nothing
-    , _uasgAvailabilityZones = Nothing
-    , _uasgDesiredCapacity = Nothing
-    , _uasgMixedInstancesPolicy = Nothing
-    , _uasgMinSize = Nothing
-    , _uasgLaunchConfigurationName = Nothing
-    , _uasgHealthCheckType = Nothing
-    , _uasgLaunchTemplate = Nothing
-    , _uasgPlacementGroup = Nothing
-    , _uasgAutoScalingGroupName = pAutoScalingGroupName_
-    }
-
+updateAutoScalingGroup pAutoScalingGroupName_
+  = UpdateAutoScalingGroup'{_uasgTerminationPolicies =
+                              Nothing,
+                            _uasgHealthCheckGracePeriod = Nothing,
+                            _uasgServiceLinkedRoleARN = Nothing,
+                            _uasgNewInstancesProtectedFromScaleIn = Nothing,
+                            _uasgVPCZoneIdentifier = Nothing,
+                            _uasgMaxInstanceLifetime = Nothing,
+                            _uasgDefaultCooldown = Nothing,
+                            _uasgMaxSize = Nothing,
+                            _uasgAvailabilityZones = Nothing,
+                            _uasgDesiredCapacity = Nothing,
+                            _uasgMixedInstancesPolicy = Nothing,
+                            _uasgMinSize = Nothing,
+                            _uasgLaunchConfigurationName = Nothing,
+                            _uasgHealthCheckType = Nothing,
+                            _uasgLaunchTemplate = Nothing,
+                            _uasgPlacementGroup = Nothing,
+                            _uasgAutoScalingGroupName = pAutoScalingGroupName_}
 
 -- | A standalone termination policy or a list of termination policies used to select the instance to terminate. The policies are executed in the order that they are listed. For more information, see <https://docs.aws.amazon.com/autoscaling/ec2/userguide/as-instance-termination.html Controlling Which Instances Auto Scaling Terminates During Scale In> in the /Amazon EC2 Auto Scaling User Guide/ .
 uasgTerminationPolicies :: Lens' UpdateAutoScalingGroup [Text]
@@ -276,16 +290,15 @@ instance ToQuery UpdateAutoScalingGroup where
                "AutoScalingGroupName" =: _uasgAutoScalingGroupName]
 
 -- | /See:/ 'updateAutoScalingGroupResponse' smart constructor.
-data UpdateAutoScalingGroupResponse =
-  UpdateAutoScalingGroupResponse'
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data UpdateAutoScalingGroupResponse = UpdateAutoScalingGroupResponse'
+                                        deriving (Eq, Read, Show, Data,
+                                                  Typeable, Generic)
 
 -- | Creates a value of 'UpdateAutoScalingGroupResponse' with the minimum fields required to make a request.
 --
 updateAutoScalingGroupResponse
     :: UpdateAutoScalingGroupResponse
-updateAutoScalingGroupResponse = UpdateAutoScalingGroupResponse'
-
+updateAutoScalingGroupResponse
+  = UpdateAutoScalingGroupResponse'
 
 instance NFData UpdateAutoScalingGroupResponse where

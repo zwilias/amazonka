@@ -42,19 +42,15 @@ module Network.AWS.OpsWorks.RegisterElasticIP
 
 import Network.AWS.Lens
 import Network.AWS.OpsWorks.Types
-import Network.AWS.OpsWorks.Types.Product
 import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 
 -- | /See:/ 'registerElasticIP' smart constructor.
-data RegisterElasticIP =
-  RegisterElasticIP'
-    { _reiElasticIP :: !Text
-    , _reiStackId   :: !Text
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data RegisterElasticIP = RegisterElasticIP'{_reiElasticIP
+                                            :: !Text,
+                                            _reiStackId :: !Text}
+                           deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'RegisterElasticIP' with the minimum fields required to make a request.
 --
@@ -67,9 +63,9 @@ registerElasticIP
     :: Text -- ^ 'reiElasticIP'
     -> Text -- ^ 'reiStackId'
     -> RegisterElasticIP
-registerElasticIP pElasticIP_ pStackId_ =
-  RegisterElasticIP' {_reiElasticIP = pElasticIP_, _reiStackId = pStackId_}
-
+registerElasticIP pElasticIP_ pStackId_
+  = RegisterElasticIP'{_reiElasticIP = pElasticIP_,
+                       _reiStackId = pStackId_}
 
 -- | The Elastic IP address.
 reiElasticIP :: Lens' RegisterElasticIP Text
@@ -120,13 +116,12 @@ instance ToQuery RegisterElasticIP where
 --
 --
 -- /See:/ 'registerElasticIPResponse' smart constructor.
-data RegisterElasticIPResponse =
-  RegisterElasticIPResponse'
-    { _reirsElasticIP      :: !(Maybe Text)
-    , _reirsResponseStatus :: !Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data RegisterElasticIPResponse = RegisterElasticIPResponse'{_reirsElasticIP
+                                                            :: !(Maybe Text),
+                                                            _reirsResponseStatus
+                                                            :: !Int}
+                                   deriving (Eq, Read, Show, Data, Typeable,
+                                             Generic)
 
 -- | Creates a value of 'RegisterElasticIPResponse' with the minimum fields required to make a request.
 --
@@ -138,10 +133,10 @@ data RegisterElasticIPResponse =
 registerElasticIPResponse
     :: Int -- ^ 'reirsResponseStatus'
     -> RegisterElasticIPResponse
-registerElasticIPResponse pResponseStatus_ =
-  RegisterElasticIPResponse'
-    {_reirsElasticIP = Nothing, _reirsResponseStatus = pResponseStatus_}
-
+registerElasticIPResponse pResponseStatus_
+  = RegisterElasticIPResponse'{_reirsElasticIP =
+                                 Nothing,
+                               _reirsResponseStatus = pResponseStatus_}
 
 -- | The Elastic IP address.
 reirsElasticIP :: Lens' RegisterElasticIPResponse (Maybe Text)

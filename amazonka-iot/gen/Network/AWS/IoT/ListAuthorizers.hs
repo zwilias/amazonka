@@ -42,22 +42,18 @@ module Network.AWS.IoT.ListAuthorizers
     ) where
 
 import Network.AWS.IoT.Types
-import Network.AWS.IoT.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 
 -- | /See:/ 'listAuthorizers' smart constructor.
-data ListAuthorizers =
-  ListAuthorizers'
-    { _laStatus         :: !(Maybe AuthorizerStatus)
-    , _laMarker         :: !(Maybe Text)
-    , _laAscendingOrder :: !(Maybe Bool)
-    , _laPageSize       :: !(Maybe Nat)
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data ListAuthorizers = ListAuthorizers'{_laStatus ::
+                                        !(Maybe AuthorizerStatus),
+                                        _laMarker :: !(Maybe Text),
+                                        _laAscendingOrder :: !(Maybe Bool),
+                                        _laPageSize :: !(Maybe Nat)}
+                         deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'ListAuthorizers' with the minimum fields required to make a request.
 --
@@ -72,14 +68,10 @@ data ListAuthorizers =
 -- * 'laPageSize' - The maximum number of results to return at one time.
 listAuthorizers
     :: ListAuthorizers
-listAuthorizers =
-  ListAuthorizers'
-    { _laStatus = Nothing
-    , _laMarker = Nothing
-    , _laAscendingOrder = Nothing
-    , _laPageSize = Nothing
-    }
-
+listAuthorizers
+  = ListAuthorizers'{_laStatus = Nothing,
+                     _laMarker = Nothing, _laAscendingOrder = Nothing,
+                     _laPageSize = Nothing}
 
 -- | The status of the list authorizers request.
 laStatus :: Lens' ListAuthorizers (Maybe AuthorizerStatus)
@@ -126,14 +118,16 @@ instance ToQuery ListAuthorizers where
                "pageSize" =: _laPageSize]
 
 -- | /See:/ 'listAuthorizersResponse' smart constructor.
-data ListAuthorizersResponse =
-  ListAuthorizersResponse'
-    { _larsAuthorizers    :: !(Maybe [AuthorizerSummary])
-    , _larsNextMarker     :: !(Maybe Text)
-    , _larsResponseStatus :: !Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data ListAuthorizersResponse = ListAuthorizersResponse'{_larsAuthorizers
+                                                        ::
+                                                        !(Maybe
+                                                            [AuthorizerSummary]),
+                                                        _larsNextMarker ::
+                                                        !(Maybe Text),
+                                                        _larsResponseStatus ::
+                                                        !Int}
+                                 deriving (Eq, Read, Show, Data, Typeable,
+                                           Generic)
 
 -- | Creates a value of 'ListAuthorizersResponse' with the minimum fields required to make a request.
 --
@@ -147,13 +141,11 @@ data ListAuthorizersResponse =
 listAuthorizersResponse
     :: Int -- ^ 'larsResponseStatus'
     -> ListAuthorizersResponse
-listAuthorizersResponse pResponseStatus_ =
-  ListAuthorizersResponse'
-    { _larsAuthorizers = Nothing
-    , _larsNextMarker = Nothing
-    , _larsResponseStatus = pResponseStatus_
-    }
-
+listAuthorizersResponse pResponseStatus_
+  = ListAuthorizersResponse'{_larsAuthorizers =
+                               Nothing,
+                             _larsNextMarker = Nothing,
+                             _larsResponseStatus = pResponseStatus_}
 
 -- | The authorizers.
 larsAuthorizers :: Lens' ListAuthorizersResponse [AuthorizerSummary]

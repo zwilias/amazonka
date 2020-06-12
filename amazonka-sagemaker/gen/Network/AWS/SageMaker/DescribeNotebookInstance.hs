@@ -56,15 +56,12 @@ import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 import Network.AWS.SageMaker.Types
-import Network.AWS.SageMaker.Types.Product
 
 -- | /See:/ 'describeNotebookInstance' smart constructor.
-newtype DescribeNotebookInstance =
-  DescribeNotebookInstance'
-    { _dniNotebookInstanceName :: Text
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+newtype DescribeNotebookInstance = DescribeNotebookInstance'{_dniNotebookInstanceName
+                                                             :: Text}
+                                     deriving (Eq, Read, Show, Data, Typeable,
+                                               Generic)
 
 -- | Creates a value of 'DescribeNotebookInstance' with the minimum fields required to make a request.
 --
@@ -74,9 +71,9 @@ newtype DescribeNotebookInstance =
 describeNotebookInstance
     :: Text -- ^ 'dniNotebookInstanceName'
     -> DescribeNotebookInstance
-describeNotebookInstance pNotebookInstanceName_ =
-  DescribeNotebookInstance' {_dniNotebookInstanceName = pNotebookInstanceName_}
-
+describeNotebookInstance pNotebookInstanceName_
+  = DescribeNotebookInstance'{_dniNotebookInstanceName
+                                = pNotebookInstanceName_}
 
 -- | The name of the notebook instance that you want information about.
 dniNotebookInstanceName :: Lens' DescribeNotebookInstance Text
@@ -134,27 +131,70 @@ instance ToQuery DescribeNotebookInstance where
         toQuery = const mempty
 
 -- | /See:/ 'describeNotebookInstanceResponse' smart constructor.
-data DescribeNotebookInstanceResponse =
-  DescribeNotebookInstanceResponse'
-    { _dnirsCreationTime                        :: !(Maybe POSIX)
-    , _dnirsFailureReason                       :: !(Maybe Text)
-    , _dnirsNotebookInstanceName                :: !(Maybe Text)
-    , _dnirsSecurityGroups                      :: !(Maybe [Text])
-    , _dnirsURL                                 :: !(Maybe Text)
-    , _dnirsLastModifiedTime                    :: !(Maybe POSIX)
-    , _dnirsNetworkInterfaceId                  :: !(Maybe Text)
-    , _dnirsSubnetId                            :: !(Maybe Text)
-    , _dnirsInstanceType                        :: !(Maybe InstanceType)
-    , _dnirsKMSKeyId                            :: !(Maybe Text)
-    , _dnirsDirectInternetAccess                :: !(Maybe DirectInternetAccess)
-    , _dnirsNotebookInstanceARN                 :: !(Maybe Text)
-    , _dnirsNotebookInstanceLifecycleConfigName :: !(Maybe Text)
-    , _dnirsRoleARN                             :: !(Maybe Text)
-    , _dnirsResponseStatus                      :: !Int
-    , _dnirsNotebookInstanceStatus              :: !NotebookInstanceStatus
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data DescribeNotebookInstanceResponse = DescribeNotebookInstanceResponse'{_dnirsCreationTime
+                                                                          ::
+                                                                          !(Maybe
+                                                                              POSIX),
+                                                                          _dnirsFailureReason
+                                                                          ::
+                                                                          !(Maybe
+                                                                              Text),
+                                                                          _dnirsNotebookInstanceName
+                                                                          ::
+                                                                          !(Maybe
+                                                                              Text),
+                                                                          _dnirsSecurityGroups
+                                                                          ::
+                                                                          !(Maybe
+                                                                              [Text]),
+                                                                          _dnirsURL
+                                                                          ::
+                                                                          !(Maybe
+                                                                              Text),
+                                                                          _dnirsLastModifiedTime
+                                                                          ::
+                                                                          !(Maybe
+                                                                              POSIX),
+                                                                          _dnirsNetworkInterfaceId
+                                                                          ::
+                                                                          !(Maybe
+                                                                              Text),
+                                                                          _dnirsSubnetId
+                                                                          ::
+                                                                          !(Maybe
+                                                                              Text),
+                                                                          _dnirsInstanceType
+                                                                          ::
+                                                                          !(Maybe
+                                                                              InstanceType),
+                                                                          _dnirsKMSKeyId
+                                                                          ::
+                                                                          !(Maybe
+                                                                              Text),
+                                                                          _dnirsDirectInternetAccess
+                                                                          ::
+                                                                          !(Maybe
+                                                                              DirectInternetAccess),
+                                                                          _dnirsNotebookInstanceARN
+                                                                          ::
+                                                                          !(Maybe
+                                                                              Text),
+                                                                          _dnirsNotebookInstanceLifecycleConfigName
+                                                                          ::
+                                                                          !(Maybe
+                                                                              Text),
+                                                                          _dnirsRoleARN
+                                                                          ::
+                                                                          !(Maybe
+                                                                              Text),
+                                                                          _dnirsResponseStatus
+                                                                          ::
+                                                                          !Int,
+                                                                          _dnirsNotebookInstanceStatus
+                                                                          ::
+                                                                          !NotebookInstanceStatus}
+                                          deriving (Eq, Read, Show, Data,
+                                                    Typeable, Generic)
 
 -- | Creates a value of 'DescribeNotebookInstanceResponse' with the minimum fields required to make a request.
 --
@@ -164,21 +204,21 @@ data DescribeNotebookInstanceResponse =
 --
 -- * 'dnirsFailureReason' - If status is failed, the reason it failed.
 --
--- * 'dnirsNotebookInstanceName' - Name of the Amazon SageMaker notebook instance.
+-- * 'dnirsNotebookInstanceName' - Name of the Amazon SageMaker notebook instance. 
 --
 -- * 'dnirsSecurityGroups' - The IDs of the VPC security groups.
 --
--- * 'dnirsURL' - The URL that you use to connect to the Jupyter notebook that is running in your notebook instance.
+-- * 'dnirsURL' - The URL that you use to connect to the Jupyter notebook that is running in your notebook instance. 
 --
--- * 'dnirsLastModifiedTime' - A timestamp. Use this parameter to retrieve the time when the notebook instance was last modified.
+-- * 'dnirsLastModifiedTime' - A timestamp. Use this parameter to retrieve the time when the notebook instance was last modified. 
 --
--- * 'dnirsNetworkInterfaceId' - Network interface IDs that Amazon SageMaker created at the time of creating the instance.
+-- * 'dnirsNetworkInterfaceId' - Network interface IDs that Amazon SageMaker created at the time of creating the instance. 
 --
 -- * 'dnirsSubnetId' - The ID of the VPC subnet.
 --
 -- * 'dnirsInstanceType' - The type of ML compute instance running on the notebook instance.
 --
--- * 'dnirsKMSKeyId' - AWS KMS key ID Amazon SageMaker uses to encrypt data when storing it on the ML storage volume attached to the instance.
+-- * 'dnirsKMSKeyId' - AWS KMS key ID Amazon SageMaker uses to encrypt data when storing it on the ML storage volume attached to the instance. 
 --
 -- * 'dnirsDirectInternetAccess' - Describes whether Amazon SageMaker provides internet access to the notebook instance. If this value is set to /Disabled, he notebook instance does not have internet access, and cannot connect to Amazon SageMaker training and endpoint services/ . For more information, see 'appendix-notebook-and-internet-access' .
 --
@@ -186,7 +226,7 @@ data DescribeNotebookInstanceResponse =
 --
 -- * 'dnirsNotebookInstanceLifecycleConfigName' - Returns the name of a notebook instance lifecycle configuration. For information about notebook instance lifestyle configurations, see 'notebook-lifecycle-config' .
 --
--- * 'dnirsRoleARN' - Amazon Resource Name (ARN) of the IAM role associated with the instance.
+-- * 'dnirsRoleARN' - Amazon Resource Name (ARN) of the IAM role associated with the instance. 
 --
 -- * 'dnirsResponseStatus' - -- | The response status code.
 --
@@ -195,26 +235,27 @@ describeNotebookInstanceResponse
     :: Int -- ^ 'dnirsResponseStatus'
     -> NotebookInstanceStatus -- ^ 'dnirsNotebookInstanceStatus'
     -> DescribeNotebookInstanceResponse
-describeNotebookInstanceResponse pResponseStatus_ pNotebookInstanceStatus_ =
-  DescribeNotebookInstanceResponse'
-    { _dnirsCreationTime = Nothing
-    , _dnirsFailureReason = Nothing
-    , _dnirsNotebookInstanceName = Nothing
-    , _dnirsSecurityGroups = Nothing
-    , _dnirsURL = Nothing
-    , _dnirsLastModifiedTime = Nothing
-    , _dnirsNetworkInterfaceId = Nothing
-    , _dnirsSubnetId = Nothing
-    , _dnirsInstanceType = Nothing
-    , _dnirsKMSKeyId = Nothing
-    , _dnirsDirectInternetAccess = Nothing
-    , _dnirsNotebookInstanceARN = Nothing
-    , _dnirsNotebookInstanceLifecycleConfigName = Nothing
-    , _dnirsRoleARN = Nothing
-    , _dnirsResponseStatus = pResponseStatus_
-    , _dnirsNotebookInstanceStatus = pNotebookInstanceStatus_
-    }
-
+describeNotebookInstanceResponse pResponseStatus_
+  pNotebookInstanceStatus_
+  = DescribeNotebookInstanceResponse'{_dnirsCreationTime
+                                        = Nothing,
+                                      _dnirsFailureReason = Nothing,
+                                      _dnirsNotebookInstanceName = Nothing,
+                                      _dnirsSecurityGroups = Nothing,
+                                      _dnirsURL = Nothing,
+                                      _dnirsLastModifiedTime = Nothing,
+                                      _dnirsNetworkInterfaceId = Nothing,
+                                      _dnirsSubnetId = Nothing,
+                                      _dnirsInstanceType = Nothing,
+                                      _dnirsKMSKeyId = Nothing,
+                                      _dnirsDirectInternetAccess = Nothing,
+                                      _dnirsNotebookInstanceARN = Nothing,
+                                      _dnirsNotebookInstanceLifecycleConfigName
+                                        = Nothing,
+                                      _dnirsRoleARN = Nothing,
+                                      _dnirsResponseStatus = pResponseStatus_,
+                                      _dnirsNotebookInstanceStatus =
+                                        pNotebookInstanceStatus_}
 
 -- | A timestamp. Use this parameter to return the time when the notebook instance was created
 dnirsCreationTime :: Lens' DescribeNotebookInstanceResponse (Maybe UTCTime)
@@ -224,7 +265,7 @@ dnirsCreationTime = lens _dnirsCreationTime (\ s a -> s{_dnirsCreationTime = a})
 dnirsFailureReason :: Lens' DescribeNotebookInstanceResponse (Maybe Text)
 dnirsFailureReason = lens _dnirsFailureReason (\ s a -> s{_dnirsFailureReason = a})
 
--- | Name of the Amazon SageMaker notebook instance.
+-- | Name of the Amazon SageMaker notebook instance. 
 dnirsNotebookInstanceName :: Lens' DescribeNotebookInstanceResponse (Maybe Text)
 dnirsNotebookInstanceName = lens _dnirsNotebookInstanceName (\ s a -> s{_dnirsNotebookInstanceName = a})
 
@@ -232,15 +273,15 @@ dnirsNotebookInstanceName = lens _dnirsNotebookInstanceName (\ s a -> s{_dnirsNo
 dnirsSecurityGroups :: Lens' DescribeNotebookInstanceResponse [Text]
 dnirsSecurityGroups = lens _dnirsSecurityGroups (\ s a -> s{_dnirsSecurityGroups = a}) . _Default . _Coerce
 
--- | The URL that you use to connect to the Jupyter notebook that is running in your notebook instance.
+-- | The URL that you use to connect to the Jupyter notebook that is running in your notebook instance. 
 dnirsURL :: Lens' DescribeNotebookInstanceResponse (Maybe Text)
 dnirsURL = lens _dnirsURL (\ s a -> s{_dnirsURL = a})
 
--- | A timestamp. Use this parameter to retrieve the time when the notebook instance was last modified.
+-- | A timestamp. Use this parameter to retrieve the time when the notebook instance was last modified. 
 dnirsLastModifiedTime :: Lens' DescribeNotebookInstanceResponse (Maybe UTCTime)
 dnirsLastModifiedTime = lens _dnirsLastModifiedTime (\ s a -> s{_dnirsLastModifiedTime = a}) . mapping _Time
 
--- | Network interface IDs that Amazon SageMaker created at the time of creating the instance.
+-- | Network interface IDs that Amazon SageMaker created at the time of creating the instance. 
 dnirsNetworkInterfaceId :: Lens' DescribeNotebookInstanceResponse (Maybe Text)
 dnirsNetworkInterfaceId = lens _dnirsNetworkInterfaceId (\ s a -> s{_dnirsNetworkInterfaceId = a})
 
@@ -252,7 +293,7 @@ dnirsSubnetId = lens _dnirsSubnetId (\ s a -> s{_dnirsSubnetId = a})
 dnirsInstanceType :: Lens' DescribeNotebookInstanceResponse (Maybe InstanceType)
 dnirsInstanceType = lens _dnirsInstanceType (\ s a -> s{_dnirsInstanceType = a})
 
--- | AWS KMS key ID Amazon SageMaker uses to encrypt data when storing it on the ML storage volume attached to the instance.
+-- | AWS KMS key ID Amazon SageMaker uses to encrypt data when storing it on the ML storage volume attached to the instance. 
 dnirsKMSKeyId :: Lens' DescribeNotebookInstanceResponse (Maybe Text)
 dnirsKMSKeyId = lens _dnirsKMSKeyId (\ s a -> s{_dnirsKMSKeyId = a})
 
@@ -268,7 +309,7 @@ dnirsNotebookInstanceARN = lens _dnirsNotebookInstanceARN (\ s a -> s{_dnirsNote
 dnirsNotebookInstanceLifecycleConfigName :: Lens' DescribeNotebookInstanceResponse (Maybe Text)
 dnirsNotebookInstanceLifecycleConfigName = lens _dnirsNotebookInstanceLifecycleConfigName (\ s a -> s{_dnirsNotebookInstanceLifecycleConfigName = a})
 
--- | Amazon Resource Name (ARN) of the IAM role associated with the instance.
+-- | Amazon Resource Name (ARN) of the IAM role associated with the instance. 
 dnirsRoleARN :: Lens' DescribeNotebookInstanceResponse (Maybe Text)
 dnirsRoleARN = lens _dnirsRoleARN (\ s a -> s{_dnirsRoleARN = a})
 

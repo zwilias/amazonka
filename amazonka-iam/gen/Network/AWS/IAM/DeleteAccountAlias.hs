@@ -35,19 +35,16 @@ module Network.AWS.IAM.DeleteAccountAlias
     ) where
 
 import Network.AWS.IAM.Types
-import Network.AWS.IAM.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 
 -- | /See:/ 'deleteAccountAlias' smart constructor.
-newtype DeleteAccountAlias =
-  DeleteAccountAlias'
-    { _daaAccountAlias :: Text
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+newtype DeleteAccountAlias = DeleteAccountAlias'{_daaAccountAlias
+                                                 :: Text}
+                               deriving (Eq, Read, Show, Data, Typeable,
+                                         Generic)
 
 -- | Creates a value of 'DeleteAccountAlias' with the minimum fields required to make a request.
 --
@@ -57,9 +54,9 @@ newtype DeleteAccountAlias =
 deleteAccountAlias
     :: Text -- ^ 'daaAccountAlias'
     -> DeleteAccountAlias
-deleteAccountAlias pAccountAlias_ =
-  DeleteAccountAlias' {_daaAccountAlias = pAccountAlias_}
-
+deleteAccountAlias pAccountAlias_
+  = DeleteAccountAlias'{_daaAccountAlias =
+                          pAccountAlias_}
 
 -- | The name of the account alias to delete. This parameter allows (per its <http://wikipedia.org/wiki/regex regex pattern> ) a string of characters consisting of lowercase letters, digits, and dashes. You cannot start or finish with a dash, nor can you have two dashes in a row.
 daaAccountAlias :: Lens' DeleteAccountAlias Text
@@ -89,16 +86,15 @@ instance ToQuery DeleteAccountAlias where
                "AccountAlias" =: _daaAccountAlias]
 
 -- | /See:/ 'deleteAccountAliasResponse' smart constructor.
-data DeleteAccountAliasResponse =
-  DeleteAccountAliasResponse'
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data DeleteAccountAliasResponse = DeleteAccountAliasResponse'
+                                    deriving (Eq, Read, Show, Data, Typeable,
+                                              Generic)
 
 -- | Creates a value of 'DeleteAccountAliasResponse' with the minimum fields required to make a request.
 --
 deleteAccountAliasResponse
     :: DeleteAccountAliasResponse
-deleteAccountAliasResponse = DeleteAccountAliasResponse'
-
+deleteAccountAliasResponse
+  = DeleteAccountAliasResponse'
 
 instance NFData DeleteAccountAliasResponse where

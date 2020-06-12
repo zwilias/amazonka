@@ -36,20 +36,16 @@ module Network.AWS.EC2.DeleteNetworkACL
     ) where
 
 import Network.AWS.EC2.Types
-import Network.AWS.EC2.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 
 -- | /See:/ 'deleteNetworkACL' smart constructor.
-data DeleteNetworkACL =
-  DeleteNetworkACL'
-    { _dnaDryRun       :: !(Maybe Bool)
-    , _dnaNetworkACLId :: !Text
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data DeleteNetworkACL = DeleteNetworkACL'{_dnaDryRun
+                                          :: !(Maybe Bool),
+                                          _dnaNetworkACLId :: !Text}
+                          deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'DeleteNetworkACL' with the minimum fields required to make a request.
 --
@@ -61,9 +57,9 @@ data DeleteNetworkACL =
 deleteNetworkACL
     :: Text -- ^ 'dnaNetworkACLId'
     -> DeleteNetworkACL
-deleteNetworkACL pNetworkACLId_ =
-  DeleteNetworkACL' {_dnaDryRun = Nothing, _dnaNetworkACLId = pNetworkACLId_}
-
+deleteNetworkACL pNetworkACLId_
+  = DeleteNetworkACL'{_dnaDryRun = Nothing,
+                      _dnaNetworkACLId = pNetworkACLId_}
 
 -- | Checks whether you have the required permissions for the action, without actually making the request, and provides an error response. If you have the required permissions, the error response is @DryRunOperation@ . Otherwise, it is @UnauthorizedOperation@ .
 dnaDryRun :: Lens' DeleteNetworkACL (Maybe Bool)
@@ -97,16 +93,14 @@ instance ToQuery DeleteNetworkACL where
                "NetworkAclId" =: _dnaNetworkACLId]
 
 -- | /See:/ 'deleteNetworkACLResponse' smart constructor.
-data DeleteNetworkACLResponse =
-  DeleteNetworkACLResponse'
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data DeleteNetworkACLResponse = DeleteNetworkACLResponse'
+                                  deriving (Eq, Read, Show, Data, Typeable,
+                                            Generic)
 
 -- | Creates a value of 'DeleteNetworkACLResponse' with the minimum fields required to make a request.
 --
 deleteNetworkACLResponse
     :: DeleteNetworkACLResponse
 deleteNetworkACLResponse = DeleteNetworkACLResponse'
-
 
 instance NFData DeleteNetworkACLResponse where

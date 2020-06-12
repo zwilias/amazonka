@@ -40,19 +40,15 @@ module Network.AWS.KMS.CancelKeyDeletion
     ) where
 
 import Network.AWS.KMS.Types
-import Network.AWS.KMS.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 
 -- | /See:/ 'cancelKeyDeletion' smart constructor.
-newtype CancelKeyDeletion =
-  CancelKeyDeletion'
-    { _ckdKeyId :: Text
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+newtype CancelKeyDeletion = CancelKeyDeletion'{_ckdKeyId
+                                               :: Text}
+                              deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'CancelKeyDeletion' with the minimum fields required to make a request.
 --
@@ -62,8 +58,8 @@ newtype CancelKeyDeletion =
 cancelKeyDeletion
     :: Text -- ^ 'ckdKeyId'
     -> CancelKeyDeletion
-cancelKeyDeletion pKeyId_ = CancelKeyDeletion' {_ckdKeyId = pKeyId_}
-
+cancelKeyDeletion pKeyId_
+  = CancelKeyDeletion'{_ckdKeyId = pKeyId_}
 
 -- | The unique identifier for the customer master key (CMK) for which to cancel deletion. Specify the key ID or the Amazon Resource Name (ARN) of the CMK. For example:     * Key ID: @1234abcd-12ab-34cd-56ef-1234567890ab@      * Key ARN: @arn:aws:kms:us-east-2:111122223333:key/1234abcd-12ab-34cd-56ef-1234567890ab@  To get the key ID and key ARN for a CMK, use 'ListKeys' or 'DescribeKey' .
 ckdKeyId :: Lens' CancelKeyDeletion Text
@@ -102,13 +98,12 @@ instance ToQuery CancelKeyDeletion where
         toQuery = const mempty
 
 -- | /See:/ 'cancelKeyDeletionResponse' smart constructor.
-data CancelKeyDeletionResponse =
-  CancelKeyDeletionResponse'
-    { _ckdrsKeyId          :: !(Maybe Text)
-    , _ckdrsResponseStatus :: !Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data CancelKeyDeletionResponse = CancelKeyDeletionResponse'{_ckdrsKeyId
+                                                            :: !(Maybe Text),
+                                                            _ckdrsResponseStatus
+                                                            :: !Int}
+                                   deriving (Eq, Read, Show, Data, Typeable,
+                                             Generic)
 
 -- | Creates a value of 'CancelKeyDeletionResponse' with the minimum fields required to make a request.
 --
@@ -120,10 +115,9 @@ data CancelKeyDeletionResponse =
 cancelKeyDeletionResponse
     :: Int -- ^ 'ckdrsResponseStatus'
     -> CancelKeyDeletionResponse
-cancelKeyDeletionResponse pResponseStatus_ =
-  CancelKeyDeletionResponse'
-    {_ckdrsKeyId = Nothing, _ckdrsResponseStatus = pResponseStatus_}
-
+cancelKeyDeletionResponse pResponseStatus_
+  = CancelKeyDeletionResponse'{_ckdrsKeyId = Nothing,
+                               _ckdrsResponseStatus = pResponseStatus_}
 
 -- | The unique identifier of the master key for which deletion is canceled.
 ckdrsKeyId :: Lens' CancelKeyDeletionResponse (Maybe Text)

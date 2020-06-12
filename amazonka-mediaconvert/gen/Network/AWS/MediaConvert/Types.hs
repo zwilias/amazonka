@@ -1,4 +1,4 @@
-{-# LANGUAGE OverloadedStrings #-}
+{-# LANGUAGE OverloadedStrings  #-}
 
 -- Derived from AWS service descriptions, licensed under Apache 2.0.
 
@@ -1587,82 +1587,370 @@ module Network.AWS.MediaConvert.Types
     ) where
 
 import Network.AWS.Lens
-import Network.AWS.MediaConvert.Types.Product
-import Network.AWS.MediaConvert.Types.Sum
 import Network.AWS.Prelude
 import Network.AWS.Sign.V4
+import Network.AWS.MediaConvert.Types.AacAudioDescriptionBroadcasterMix
+import Network.AWS.MediaConvert.Types.AacCodecProfile
+import Network.AWS.MediaConvert.Types.AacCodingMode
+import Network.AWS.MediaConvert.Types.AacRateControlMode
+import Network.AWS.MediaConvert.Types.AacRawFormat
+import Network.AWS.MediaConvert.Types.AacSpecification
+import Network.AWS.MediaConvert.Types.AacVbrQuality
+import Network.AWS.MediaConvert.Types.Ac3BitstreamMode
+import Network.AWS.MediaConvert.Types.Ac3CodingMode
+import Network.AWS.MediaConvert.Types.Ac3DynamicRangeCompressionProfile
+import Network.AWS.MediaConvert.Types.Ac3LfeFilter
+import Network.AWS.MediaConvert.Types.Ac3MetadataControl
+import Network.AWS.MediaConvert.Types.AfdSignaling
+import Network.AWS.MediaConvert.Types.AntiAlias
+import Network.AWS.MediaConvert.Types.AudioCodec
+import Network.AWS.MediaConvert.Types.AudioDefaultSelection
+import Network.AWS.MediaConvert.Types.AudioLanguageCodeControl
+import Network.AWS.MediaConvert.Types.AudioNormalizationAlgorithm
+import Network.AWS.MediaConvert.Types.AudioNormalizationAlgorithmControl
+import Network.AWS.MediaConvert.Types.AudioNormalizationLoudnessLogging
+import Network.AWS.MediaConvert.Types.AudioNormalizationPeakCalculation
+import Network.AWS.MediaConvert.Types.AudioSelectorType
+import Network.AWS.MediaConvert.Types.AudioTypeControl
+import Network.AWS.MediaConvert.Types.BurninSubtitleAlignment
+import Network.AWS.MediaConvert.Types.BurninSubtitleBackgroundColor
+import Network.AWS.MediaConvert.Types.BurninSubtitleFontColor
+import Network.AWS.MediaConvert.Types.BurninSubtitleOutlineColor
+import Network.AWS.MediaConvert.Types.BurninSubtitleShadowColor
+import Network.AWS.MediaConvert.Types.BurninSubtitleTeletextSpacing
+import Network.AWS.MediaConvert.Types.CaptionDestinationType
+import Network.AWS.MediaConvert.Types.CaptionSourceType
+import Network.AWS.MediaConvert.Types.ColorMetadata
+import Network.AWS.MediaConvert.Types.ColorSpace
+import Network.AWS.MediaConvert.Types.ColorSpaceConversion
+import Network.AWS.MediaConvert.Types.ColorSpaceUsage
+import Network.AWS.MediaConvert.Types.ContainerType
+import Network.AWS.MediaConvert.Types.DashIsoHbbtvCompliance
+import Network.AWS.MediaConvert.Types.DashIsoSegmentControl
+import Network.AWS.MediaConvert.Types.DeinterlaceAlgorithm
+import Network.AWS.MediaConvert.Types.DeinterlacerControl
+import Network.AWS.MediaConvert.Types.DeinterlacerMode
+import Network.AWS.MediaConvert.Types.DropFrameTimecode
+import Network.AWS.MediaConvert.Types.DvbSubtitleAlignment
+import Network.AWS.MediaConvert.Types.DvbSubtitleBackgroundColor
+import Network.AWS.MediaConvert.Types.DvbSubtitleFontColor
+import Network.AWS.MediaConvert.Types.DvbSubtitleOutlineColor
+import Network.AWS.MediaConvert.Types.DvbSubtitleShadowColor
+import Network.AWS.MediaConvert.Types.DvbSubtitleTeletextSpacing
+import Network.AWS.MediaConvert.Types.Eac3AttenuationControl
+import Network.AWS.MediaConvert.Types.Eac3BitstreamMode
+import Network.AWS.MediaConvert.Types.Eac3CodingMode
+import Network.AWS.MediaConvert.Types.Eac3DcFilter
+import Network.AWS.MediaConvert.Types.Eac3DynamicRangeCompressionLine
+import Network.AWS.MediaConvert.Types.Eac3DynamicRangeCompressionRf
+import Network.AWS.MediaConvert.Types.Eac3LfeControl
+import Network.AWS.MediaConvert.Types.Eac3LfeFilter
+import Network.AWS.MediaConvert.Types.Eac3MetadataControl
+import Network.AWS.MediaConvert.Types.Eac3PassthroughControl
+import Network.AWS.MediaConvert.Types.Eac3PhaseControl
+import Network.AWS.MediaConvert.Types.Eac3StereoDownmix
+import Network.AWS.MediaConvert.Types.Eac3SurroundExMode
+import Network.AWS.MediaConvert.Types.Eac3SurroundMode
+import Network.AWS.MediaConvert.Types.EmbeddedConvert608To708
+import Network.AWS.MediaConvert.Types.F4vMoovPlacement
+import Network.AWS.MediaConvert.Types.FileSourceConvert608To708
+import Network.AWS.MediaConvert.Types.H264AdaptiveQuantization
+import Network.AWS.MediaConvert.Types.H264CodecLevel
+import Network.AWS.MediaConvert.Types.H264CodecProfile
+import Network.AWS.MediaConvert.Types.H264EntropyEncoding
+import Network.AWS.MediaConvert.Types.H264FieldEncoding
+import Network.AWS.MediaConvert.Types.H264FlickerAdaptiveQuantization
+import Network.AWS.MediaConvert.Types.H264FramerateControl
+import Network.AWS.MediaConvert.Types.H264FramerateConversionAlgorithm
+import Network.AWS.MediaConvert.Types.H264GopBReference
+import Network.AWS.MediaConvert.Types.H264GopSizeUnits
+import Network.AWS.MediaConvert.Types.H264InterlaceMode
+import Network.AWS.MediaConvert.Types.H264ParControl
+import Network.AWS.MediaConvert.Types.H264QualityTuningLevel
+import Network.AWS.MediaConvert.Types.H264RateControlMode
+import Network.AWS.MediaConvert.Types.H264RepeatPps
+import Network.AWS.MediaConvert.Types.H264SceneChangeDetect
+import Network.AWS.MediaConvert.Types.H264SlowPal
+import Network.AWS.MediaConvert.Types.H264SpatialAdaptiveQuantization
+import Network.AWS.MediaConvert.Types.H264Syntax
+import Network.AWS.MediaConvert.Types.H264Telecine
+import Network.AWS.MediaConvert.Types.H264TemporalAdaptiveQuantization
+import Network.AWS.MediaConvert.Types.H264UnregisteredSeiTimecode
+import Network.AWS.MediaConvert.Types.H265AdaptiveQuantization
+import Network.AWS.MediaConvert.Types.H265AlternateTransferFunctionSei
+import Network.AWS.MediaConvert.Types.H265CodecLevel
+import Network.AWS.MediaConvert.Types.H265CodecProfile
+import Network.AWS.MediaConvert.Types.H265FlickerAdaptiveQuantization
+import Network.AWS.MediaConvert.Types.H265FramerateControl
+import Network.AWS.MediaConvert.Types.H265FramerateConversionAlgorithm
+import Network.AWS.MediaConvert.Types.H265GopBReference
+import Network.AWS.MediaConvert.Types.H265GopSizeUnits
+import Network.AWS.MediaConvert.Types.H265InterlaceMode
+import Network.AWS.MediaConvert.Types.H265ParControl
+import Network.AWS.MediaConvert.Types.H265QualityTuningLevel
+import Network.AWS.MediaConvert.Types.H265RateControlMode
+import Network.AWS.MediaConvert.Types.H265SampleAdaptiveOffsetFilterMode
+import Network.AWS.MediaConvert.Types.H265SceneChangeDetect
+import Network.AWS.MediaConvert.Types.H265SlowPal
+import Network.AWS.MediaConvert.Types.H265SpatialAdaptiveQuantization
+import Network.AWS.MediaConvert.Types.H265Telecine
+import Network.AWS.MediaConvert.Types.H265TemporalAdaptiveQuantization
+import Network.AWS.MediaConvert.Types.H265TemporalIds
+import Network.AWS.MediaConvert.Types.H265Tiles
+import Network.AWS.MediaConvert.Types.H265UnregisteredSeiTimecode
+import Network.AWS.MediaConvert.Types.HlsAdMarkers
+import Network.AWS.MediaConvert.Types.HlsAudioTrackType
+import Network.AWS.MediaConvert.Types.HlsCaptionLanguageSetting
+import Network.AWS.MediaConvert.Types.HlsClientCache
+import Network.AWS.MediaConvert.Types.HlsCodecSpecification
+import Network.AWS.MediaConvert.Types.HlsDirectoryStructure
+import Network.AWS.MediaConvert.Types.HlsEncryptionType
+import Network.AWS.MediaConvert.Types.HlsIFrameOnlyManifest
+import Network.AWS.MediaConvert.Types.HlsInitializationVectorInManifest
+import Network.AWS.MediaConvert.Types.HlsKeyProviderType
+import Network.AWS.MediaConvert.Types.HlsManifestCompression
+import Network.AWS.MediaConvert.Types.HlsManifestDurationFormat
+import Network.AWS.MediaConvert.Types.HlsOutputSelection
+import Network.AWS.MediaConvert.Types.HlsProgramDateTime
+import Network.AWS.MediaConvert.Types.HlsSegmentControl
+import Network.AWS.MediaConvert.Types.HlsStreamInfResolution
+import Network.AWS.MediaConvert.Types.HlsTimedMetadataId3Frame
+import Network.AWS.MediaConvert.Types.InputDeblockFilter
+import Network.AWS.MediaConvert.Types.InputDenoiseFilter
+import Network.AWS.MediaConvert.Types.InputFilterEnable
+import Network.AWS.MediaConvert.Types.InputPsiControl
+import Network.AWS.MediaConvert.Types.InputTimecodeSource
+import Network.AWS.MediaConvert.Types.JobStatus
+import Network.AWS.MediaConvert.Types.JobTemplateListBy
+import Network.AWS.MediaConvert.Types.LanguageCode
+import Network.AWS.MediaConvert.Types.M2tsAudioBufferModel
+import Network.AWS.MediaConvert.Types.M2tsBufferModel
+import Network.AWS.MediaConvert.Types.M2tsEbpAudioInterval
+import Network.AWS.MediaConvert.Types.M2tsEbpPlacement
+import Network.AWS.MediaConvert.Types.M2tsEsRateInPes
+import Network.AWS.MediaConvert.Types.M2tsNielsenId3
+import Network.AWS.MediaConvert.Types.M2tsPcrControl
+import Network.AWS.MediaConvert.Types.M2tsRateMode
+import Network.AWS.MediaConvert.Types.M2tsScte35Source
+import Network.AWS.MediaConvert.Types.M2tsSegmentationMarkers
+import Network.AWS.MediaConvert.Types.M2tsSegmentationStyle
+import Network.AWS.MediaConvert.Types.M3u8NielsenId3
+import Network.AWS.MediaConvert.Types.M3u8PcrControl
+import Network.AWS.MediaConvert.Types.M3u8Scte35Source
+import Network.AWS.MediaConvert.Types.MovClapAtom
+import Network.AWS.MediaConvert.Types.MovCslgAtom
+import Network.AWS.MediaConvert.Types.MovMpeg2FourCCControl
+import Network.AWS.MediaConvert.Types.MovPaddingControl
+import Network.AWS.MediaConvert.Types.MovReference
+import Network.AWS.MediaConvert.Types.Mp4CslgAtom
+import Network.AWS.MediaConvert.Types.Mp4FreeSpaceBox
+import Network.AWS.MediaConvert.Types.Mp4MoovPlacement
+import Network.AWS.MediaConvert.Types.Mpeg2AdaptiveQuantization
+import Network.AWS.MediaConvert.Types.Mpeg2CodecLevel
+import Network.AWS.MediaConvert.Types.Mpeg2CodecProfile
+import Network.AWS.MediaConvert.Types.Mpeg2FramerateControl
+import Network.AWS.MediaConvert.Types.Mpeg2FramerateConversionAlgorithm
+import Network.AWS.MediaConvert.Types.Mpeg2GopSizeUnits
+import Network.AWS.MediaConvert.Types.Mpeg2InterlaceMode
+import Network.AWS.MediaConvert.Types.Mpeg2IntraDcPrecision
+import Network.AWS.MediaConvert.Types.Mpeg2ParControl
+import Network.AWS.MediaConvert.Types.Mpeg2QualityTuningLevel
+import Network.AWS.MediaConvert.Types.Mpeg2RateControlMode
+import Network.AWS.MediaConvert.Types.Mpeg2SceneChangeDetect
+import Network.AWS.MediaConvert.Types.Mpeg2SlowPal
+import Network.AWS.MediaConvert.Types.Mpeg2SpatialAdaptiveQuantization
+import Network.AWS.MediaConvert.Types.Mpeg2Syntax
+import Network.AWS.MediaConvert.Types.Mpeg2Telecine
+import Network.AWS.MediaConvert.Types.Mpeg2TemporalAdaptiveQuantization
+import Network.AWS.MediaConvert.Types.MsSmoothAudioDeduplication
+import Network.AWS.MediaConvert.Types.MsSmoothManifestEncoding
+import Network.AWS.MediaConvert.Types.NoiseReducerFilter
+import Network.AWS.MediaConvert.Types.Order
+import Network.AWS.MediaConvert.Types.OutputGroupType
+import Network.AWS.MediaConvert.Types.OutputSdt
+import Network.AWS.MediaConvert.Types.PresetListBy
+import Network.AWS.MediaConvert.Types.ProresCodecProfile
+import Network.AWS.MediaConvert.Types.ProresFramerateControl
+import Network.AWS.MediaConvert.Types.ProresFramerateConversionAlgorithm
+import Network.AWS.MediaConvert.Types.ProresInterlaceMode
+import Network.AWS.MediaConvert.Types.ProresParControl
+import Network.AWS.MediaConvert.Types.ProresSlowPal
+import Network.AWS.MediaConvert.Types.ProresTelecine
+import Network.AWS.MediaConvert.Types.QueueListBy
+import Network.AWS.MediaConvert.Types.QueueStatus
+import Network.AWS.MediaConvert.Types.RespondToAfd
+import Network.AWS.MediaConvert.Types.ScalingBehavior
+import Network.AWS.MediaConvert.Types.SccDestinationFramerate
+import Network.AWS.MediaConvert.Types.TimecodeBurninPosition
+import Network.AWS.MediaConvert.Types.TimecodeSource
+import Network.AWS.MediaConvert.Types.TimedMetadata
+import Network.AWS.MediaConvert.Types.TtmlStylePassthrough
+import Network.AWS.MediaConvert.Types.Type
+import Network.AWS.MediaConvert.Types.VideoCodec
+import Network.AWS.MediaConvert.Types.VideoTimecodeInsertion
+import Network.AWS.MediaConvert.Types.AacSettings
+import Network.AWS.MediaConvert.Types.Ac3Settings
+import Network.AWS.MediaConvert.Types.AiffSettings
+import Network.AWS.MediaConvert.Types.AncillarySourceSettings
+import Network.AWS.MediaConvert.Types.AudioCodecSettings
+import Network.AWS.MediaConvert.Types.AudioDescription
+import Network.AWS.MediaConvert.Types.AudioNormalizationSettings
+import Network.AWS.MediaConvert.Types.AudioSelector
+import Network.AWS.MediaConvert.Types.AudioSelectorGroup
+import Network.AWS.MediaConvert.Types.AvailBlanking
+import Network.AWS.MediaConvert.Types.BurninDestinationSettings
+import Network.AWS.MediaConvert.Types.CaptionDescription
+import Network.AWS.MediaConvert.Types.CaptionDescriptionPreset
+import Network.AWS.MediaConvert.Types.CaptionDestinationSettings
+import Network.AWS.MediaConvert.Types.CaptionSelector
+import Network.AWS.MediaConvert.Types.CaptionSourceSettings
+import Network.AWS.MediaConvert.Types.ChannelMapping
+import Network.AWS.MediaConvert.Types.ColorCorrector
+import Network.AWS.MediaConvert.Types.ContainerSettings
+import Network.AWS.MediaConvert.Types.DashIsoEncryptionSettings
+import Network.AWS.MediaConvert.Types.DashIsoGroupSettings
+import Network.AWS.MediaConvert.Types.Deinterlacer
+import Network.AWS.MediaConvert.Types.DvbNitSettings
+import Network.AWS.MediaConvert.Types.DvbSdtSettings
+import Network.AWS.MediaConvert.Types.DvbSubDestinationSettings
+import Network.AWS.MediaConvert.Types.DvbSubSourceSettings
+import Network.AWS.MediaConvert.Types.DvbTdtSettings
+import Network.AWS.MediaConvert.Types.Eac3Settings
+import Network.AWS.MediaConvert.Types.EmbeddedSourceSettings
+import Network.AWS.MediaConvert.Types.Endpoint
+import Network.AWS.MediaConvert.Types.F4vSettings
+import Network.AWS.MediaConvert.Types.FileGroupSettings
+import Network.AWS.MediaConvert.Types.FileSourceSettings
+import Network.AWS.MediaConvert.Types.FrameCaptureSettings
+import Network.AWS.MediaConvert.Types.H264Settings
+import Network.AWS.MediaConvert.Types.H265Settings
+import Network.AWS.MediaConvert.Types.Hdr10Metadata
+import Network.AWS.MediaConvert.Types.HlsCaptionLanguageMapping
+import Network.AWS.MediaConvert.Types.HlsEncryptionSettings
+import Network.AWS.MediaConvert.Types.HlsGroupSettings
+import Network.AWS.MediaConvert.Types.HlsSettings
+import Network.AWS.MediaConvert.Types.Id3Insertion
+import Network.AWS.MediaConvert.Types.ImageInserter
+import Network.AWS.MediaConvert.Types.Input
+import Network.AWS.MediaConvert.Types.InputClipping
+import Network.AWS.MediaConvert.Types.InputTemplate
+import Network.AWS.MediaConvert.Types.InsertableImage
+import Network.AWS.MediaConvert.Types.Job
+import Network.AWS.MediaConvert.Types.JobSettings
+import Network.AWS.MediaConvert.Types.JobTemplate
+import Network.AWS.MediaConvert.Types.JobTemplateSettings
+import Network.AWS.MediaConvert.Types.M2tsSettings
+import Network.AWS.MediaConvert.Types.M3u8Settings
+import Network.AWS.MediaConvert.Types.MovSettings
+import Network.AWS.MediaConvert.Types.Mp2Settings
+import Network.AWS.MediaConvert.Types.Mp4Settings
+import Network.AWS.MediaConvert.Types.Mpeg2Settings
+import Network.AWS.MediaConvert.Types.MsSmoothEncryptionSettings
+import Network.AWS.MediaConvert.Types.MsSmoothGroupSettings
+import Network.AWS.MediaConvert.Types.NielsenConfiguration
+import Network.AWS.MediaConvert.Types.NoiseReducer
+import Network.AWS.MediaConvert.Types.NoiseReducerFilterSettings
+import Network.AWS.MediaConvert.Types.NoiseReducerSpatialFilterSettings
+import Network.AWS.MediaConvert.Types.Output
+import Network.AWS.MediaConvert.Types.OutputChannelMapping
+import Network.AWS.MediaConvert.Types.OutputDetail
+import Network.AWS.MediaConvert.Types.OutputGroup
+import Network.AWS.MediaConvert.Types.OutputGroupDetail
+import Network.AWS.MediaConvert.Types.OutputGroupSettings
+import Network.AWS.MediaConvert.Types.OutputSettings
+import Network.AWS.MediaConvert.Types.Preset
+import Network.AWS.MediaConvert.Types.PresetSettings
+import Network.AWS.MediaConvert.Types.ProresSettings
+import Network.AWS.MediaConvert.Types.Queue
+import Network.AWS.MediaConvert.Types.Rectangle
+import Network.AWS.MediaConvert.Types.RemixSettings
+import Network.AWS.MediaConvert.Types.SccDestinationSettings
+import Network.AWS.MediaConvert.Types.SpekeKeyProvider
+import Network.AWS.MediaConvert.Types.StaticKeyProvider
+import Network.AWS.MediaConvert.Types.TeletextDestinationSettings
+import Network.AWS.MediaConvert.Types.TeletextSourceSettings
+import Network.AWS.MediaConvert.Types.TimecodeBurnin
+import Network.AWS.MediaConvert.Types.TimecodeConfig
+import Network.AWS.MediaConvert.Types.TimedMetadataInsertion
+import Network.AWS.MediaConvert.Types.Timing
+import Network.AWS.MediaConvert.Types.TtmlDestinationSettings
+import Network.AWS.MediaConvert.Types.VideoCodecSettings
+import Network.AWS.MediaConvert.Types.VideoDescription
+import Network.AWS.MediaConvert.Types.VideoDetail
+import Network.AWS.MediaConvert.Types.VideoPreprocessor
+import Network.AWS.MediaConvert.Types.VideoSelector
+import Network.AWS.MediaConvert.Types.WavSettings
 
 -- | API version @2017-08-29@ of the Amazon Elemental MediaConvert SDK configuration.
 mediaConvert :: Service
-mediaConvert =
-  Service
-    { _svcAbbrev = "MediaConvert"
-    , _svcSigner = v4
-    , _svcPrefix = "mediaconvert"
-    , _svcVersion = "2017-08-29"
-    , _svcEndpoint = defaultEndpoint mediaConvert
-    , _svcTimeout = Just 70
-    , _svcCheck = statusSuccess
-    , _svcError = parseJSONError "MediaConvert"
-    , _svcRetry = retry
-    }
-  where
-    retry =
-      Exponential
-        { _retryBase = 5.0e-2
-        , _retryGrowth = 2
-        , _retryAttempts = 5
-        , _retryCheck = check
-        }
-    check e
-      | has (hasCode "ThrottledException" . hasStatus 400) e =
-        Just "throttled_exception"
-      | has (hasStatus 429) e = Just "too_many_requests"
-      | has (hasCode "ThrottlingException" . hasStatus 400) e =
-        Just "throttling_exception"
-      | has (hasCode "Throttling" . hasStatus 400) e = Just "throttling"
-      | has (hasStatus 504) e = Just "gateway_timeout"
-      | has (hasCode "RequestThrottledException" . hasStatus 400) e =
-        Just "request_throttled_exception"
-      | has (hasStatus 502) e = Just "bad_gateway"
-      | has (hasStatus 503) e = Just "service_unavailable"
-      | has (hasStatus 500) e = Just "general_server_error"
-      | has (hasStatus 509) e = Just "limit_exceeded"
-      | otherwise = Nothing
-
+mediaConvert
+  = Service{_svcAbbrev = "MediaConvert",
+            _svcSigner = v4, _svcPrefix = "mediaconvert",
+            _svcVersion = "2017-08-29",
+            _svcEndpoint = defaultEndpoint mediaConvert,
+            _svcTimeout = Just 70, _svcCheck = statusSuccess,
+            _svcError = parseJSONError "MediaConvert",
+            _svcRetry = retry}
+  where retry
+          = Exponential{_retryBase = 5.0e-2, _retryGrowth = 2,
+                        _retryAttempts = 5, _retryCheck = check}
+        check e
+          | has (hasCode "ThrottledException" . hasStatus 400)
+              e
+            = Just "throttled_exception"
+          | has (hasStatus 429) e = Just "too_many_requests"
+          | has (hasCode "ThrottlingException" . hasStatus 400)
+              e
+            = Just "throttling_exception"
+          | has (hasCode "Throttling" . hasStatus 400) e =
+            Just "throttling"
+          | has (hasStatus 504) e = Just "gateway_timeout"
+          | has
+              (hasCode "RequestThrottledException" . hasStatus 400)
+              e
+            = Just "request_throttled_exception"
+          | has (hasStatus 502) e = Just "bad_gateway"
+          | has (hasStatus 503) e = Just "service_unavailable"
+          | has (hasStatus 500) e = Just "general_server_error"
+          | has (hasStatus 509) e = Just "limit_exceeded"
+          | otherwise = Nothing
 
 -- | The service could not complete your request because there is a conflict with the current state of the resource.
 _ConflictException :: AsError a => Getting (First ServiceError) a ServiceError
-_ConflictException =
-  _MatchServiceError mediaConvert "ConflictException" . hasStatus 409
-
+_ConflictException
+  = _MatchServiceError mediaConvert "ConflictException"
+      . hasStatus 409
 
 -- | You don't have permissions for this action with the credentials you sent.
 _ForbiddenException :: AsError a => Getting (First ServiceError) a ServiceError
-_ForbiddenException =
-  _MatchServiceError mediaConvert "ForbiddenException" . hasStatus 403
-
+_ForbiddenException
+  = _MatchServiceError mediaConvert
+      "ForbiddenException"
+      . hasStatus 403
 
 -- | The resource you requested does not exist.
 _NotFoundException :: AsError a => Getting (First ServiceError) a ServiceError
-_NotFoundException =
-  _MatchServiceError mediaConvert "NotFoundException" . hasStatus 404
-
+_NotFoundException
+  = _MatchServiceError mediaConvert "NotFoundException"
+      . hasStatus 404
 
 -- | Too many requests have been sent in too short of a time. The service limits the rate at which it will accept requests.
 _TooManyRequestsException :: AsError a => Getting (First ServiceError) a ServiceError
-_TooManyRequestsException =
-  _MatchServiceError mediaConvert "TooManyRequestsException" . hasStatus 429
-
+_TooManyRequestsException
+  = _MatchServiceError mediaConvert
+      "TooManyRequestsException"
+      . hasStatus 429
 
 -- | The service encountered an unexpected condition and cannot fulfill your request.
 _InternalServerErrorException :: AsError a => Getting (First ServiceError) a ServiceError
-_InternalServerErrorException =
-  _MatchServiceError mediaConvert "InternalServerErrorException" . hasStatus 500
-
+_InternalServerErrorException
+  = _MatchServiceError mediaConvert
+      "InternalServerErrorException"
+      . hasStatus 500
 
 -- | The service can't process your request because of a problem in the request. Please check your request form and syntax.
 _BadRequestException :: AsError a => Getting (First ServiceError) a ServiceError
-_BadRequestException =
-  _MatchServiceError mediaConvert "BadRequestException" . hasStatus 400
-
+_BadRequestException
+  = _MatchServiceError mediaConvert
+      "BadRequestException"
+      . hasStatus 400

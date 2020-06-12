@@ -39,20 +39,20 @@ module Network.AWS.CodeCommit.EvaluatePullRequestApprovalRules
     ) where
 
 import Network.AWS.CodeCommit.Types
-import Network.AWS.CodeCommit.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 
 -- | /See:/ 'evaluatePullRequestApprovalRules' smart constructor.
-data EvaluatePullRequestApprovalRules =
-  EvaluatePullRequestApprovalRules'
-    { _eprarPullRequestId :: !Text
-    , _eprarRevisionId    :: !Text
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data EvaluatePullRequestApprovalRules = EvaluatePullRequestApprovalRules'{_eprarPullRequestId
+                                                                          ::
+                                                                          !Text,
+                                                                          _eprarRevisionId
+                                                                          ::
+                                                                          !Text}
+                                          deriving (Eq, Read, Show, Data,
+                                                    Typeable, Generic)
 
 -- | Creates a value of 'EvaluatePullRequestApprovalRules' with the minimum fields required to make a request.
 --
@@ -65,10 +65,11 @@ evaluatePullRequestApprovalRules
     :: Text -- ^ 'eprarPullRequestId'
     -> Text -- ^ 'eprarRevisionId'
     -> EvaluatePullRequestApprovalRules
-evaluatePullRequestApprovalRules pPullRequestId_ pRevisionId_ =
-  EvaluatePullRequestApprovalRules'
-    {_eprarPullRequestId = pPullRequestId_, _eprarRevisionId = pRevisionId_}
-
+evaluatePullRequestApprovalRules pPullRequestId_
+  pRevisionId_
+  = EvaluatePullRequestApprovalRules'{_eprarPullRequestId
+                                        = pPullRequestId_,
+                                      _eprarRevisionId = pRevisionId_}
 
 -- | The system-generated ID of the pull request you want to evaluate.
 eprarPullRequestId :: Lens' EvaluatePullRequestApprovalRules Text
@@ -123,13 +124,15 @@ instance ToQuery EvaluatePullRequestApprovalRules
         toQuery = const mempty
 
 -- | /See:/ 'evaluatePullRequestApprovalRulesResponse' smart constructor.
-data EvaluatePullRequestApprovalRulesResponse =
-  EvaluatePullRequestApprovalRulesResponse'
-    { _eprarrsResponseStatus :: !Int
-    , _eprarrsEvaluation     :: !Evaluation
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data EvaluatePullRequestApprovalRulesResponse = EvaluatePullRequestApprovalRulesResponse'{_eprarrsResponseStatus
+                                                                                          ::
+                                                                                          !Int,
+                                                                                          _eprarrsEvaluation
+                                                                                          ::
+                                                                                          !Evaluation}
+                                                  deriving (Eq, Read, Show,
+                                                            Data, Typeable,
+                                                            Generic)
 
 -- | Creates a value of 'EvaluatePullRequestApprovalRulesResponse' with the minimum fields required to make a request.
 --
@@ -137,23 +140,22 @@ data EvaluatePullRequestApprovalRulesResponse =
 --
 -- * 'eprarrsResponseStatus' - -- | The response status code.
 --
--- * 'eprarrsEvaluation' - The result of the evaluation, including the names of the rules whose conditions have been met (if any), the names of the rules whose conditions have not been met (if any), whether the pull request is in the approved state, and whether the pull request approval rule has been set aside by an override.
+-- * 'eprarrsEvaluation' - The result of the evaluation, including the names of the rules whose conditions have been met (if any), the names of the rules whose conditions have not been met (if any), whether the pull request is in the approved state, and whether the pull request approval rule has been set aside by an override. 
 evaluatePullRequestApprovalRulesResponse
     :: Int -- ^ 'eprarrsResponseStatus'
     -> Evaluation -- ^ 'eprarrsEvaluation'
     -> EvaluatePullRequestApprovalRulesResponse
-evaluatePullRequestApprovalRulesResponse pResponseStatus_ pEvaluation_ =
-  EvaluatePullRequestApprovalRulesResponse'
-    { _eprarrsResponseStatus = pResponseStatus_
-    , _eprarrsEvaluation = pEvaluation_
-    }
-
+evaluatePullRequestApprovalRulesResponse
+  pResponseStatus_ pEvaluation_
+  = EvaluatePullRequestApprovalRulesResponse'{_eprarrsResponseStatus
+                                                = pResponseStatus_,
+                                              _eprarrsEvaluation = pEvaluation_}
 
 -- | -- | The response status code.
 eprarrsResponseStatus :: Lens' EvaluatePullRequestApprovalRulesResponse Int
 eprarrsResponseStatus = lens _eprarrsResponseStatus (\ s a -> s{_eprarrsResponseStatus = a})
 
--- | The result of the evaluation, including the names of the rules whose conditions have been met (if any), the names of the rules whose conditions have not been met (if any), whether the pull request is in the approved state, and whether the pull request approval rule has been set aside by an override.
+-- | The result of the evaluation, including the names of the rules whose conditions have been met (if any), the names of the rules whose conditions have not been met (if any), whether the pull request is in the approved state, and whether the pull request approval rule has been set aside by an override. 
 eprarrsEvaluation :: Lens' EvaluatePullRequestApprovalRulesResponse Evaluation
 eprarrsEvaluation = lens _eprarrsEvaluation (\ s a -> s{_eprarrsEvaluation = a})
 

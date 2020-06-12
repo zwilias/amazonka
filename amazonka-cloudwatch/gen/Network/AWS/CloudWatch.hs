@@ -77,34 +77,34 @@ module Network.AWS.CloudWatch
     -- * Operations
     -- $operations
 
-    -- ** EnableAlarmActions
+    -- ** EnableAlarmActions 
     , module Network.AWS.CloudWatch.EnableAlarmActions
 
-    -- ** DisableInsightRules
+    -- ** DisableInsightRules 
     , module Network.AWS.CloudWatch.DisableInsightRules
 
-    -- ** PutCompositeAlarm
+    -- ** PutCompositeAlarm 
     , module Network.AWS.CloudWatch.PutCompositeAlarm
 
-    -- ** DeleteAnomalyDetector
+    -- ** DeleteAnomalyDetector 
     , module Network.AWS.CloudWatch.DeleteAnomalyDetector
 
-    -- ** DeleteInsightRules
+    -- ** DeleteInsightRules 
     , module Network.AWS.CloudWatch.DeleteInsightRules
 
-    -- ** GetDashboard
+    -- ** GetDashboard 
     , module Network.AWS.CloudWatch.GetDashboard
 
-    -- ** PutAnomalyDetector
+    -- ** PutAnomalyDetector 
     , module Network.AWS.CloudWatch.PutAnomalyDetector
 
-    -- ** ListTagsForResource
+    -- ** ListTagsForResource 
     , module Network.AWS.CloudWatch.ListTagsForResource
 
     -- ** GetMetricData (Paginated)
     , module Network.AWS.CloudWatch.GetMetricData
 
-    -- ** PutMetricData
+    -- ** PutMetricData 
     , module Network.AWS.CloudWatch.PutMetricData
 
     -- ** ListDashboards (Paginated)
@@ -116,55 +116,55 @@ module Network.AWS.CloudWatch
     -- ** ListMetrics (Paginated)
     , module Network.AWS.CloudWatch.ListMetrics
 
-    -- ** GetInsightRuleReport
+    -- ** GetInsightRuleReport 
     , module Network.AWS.CloudWatch.GetInsightRuleReport
 
-    -- ** DeleteDashboards
+    -- ** DeleteDashboards 
     , module Network.AWS.CloudWatch.DeleteDashboards
 
-    -- ** PutInsightRule
+    -- ** PutInsightRule 
     , module Network.AWS.CloudWatch.PutInsightRule
 
-    -- ** GetMetricWidgetImage
+    -- ** GetMetricWidgetImage 
     , module Network.AWS.CloudWatch.GetMetricWidgetImage
 
-    -- ** DeleteAlarms
+    -- ** DeleteAlarms 
     , module Network.AWS.CloudWatch.DeleteAlarms
 
     -- ** DescribeAlarmHistory (Paginated)
     , module Network.AWS.CloudWatch.DescribeAlarmHistory
 
-    -- ** GetMetricStatistics
+    -- ** GetMetricStatistics 
     , module Network.AWS.CloudWatch.GetMetricStatistics
 
-    -- ** DescribeAlarmsForMetric
+    -- ** DescribeAlarmsForMetric 
     , module Network.AWS.CloudWatch.DescribeAlarmsForMetric
 
-    -- ** EnableInsightRules
+    -- ** EnableInsightRules 
     , module Network.AWS.CloudWatch.EnableInsightRules
 
-    -- ** DisableAlarmActions
+    -- ** DisableAlarmActions 
     , module Network.AWS.CloudWatch.DisableAlarmActions
 
-    -- ** DescribeAnomalyDetectors
+    -- ** DescribeAnomalyDetectors 
     , module Network.AWS.CloudWatch.DescribeAnomalyDetectors
 
-    -- ** PutDashboard
+    -- ** PutDashboard 
     , module Network.AWS.CloudWatch.PutDashboard
 
-    -- ** TagResource
+    -- ** TagResource 
     , module Network.AWS.CloudWatch.TagResource
 
-    -- ** UntagResource
+    -- ** UntagResource 
     , module Network.AWS.CloudWatch.UntagResource
 
-    -- ** PutMetricAlarm
+    -- ** PutMetricAlarm 
     , module Network.AWS.CloudWatch.PutMetricAlarm
 
-    -- ** SetAlarmState
+    -- ** SetAlarmState 
     , module Network.AWS.CloudWatch.SetAlarmState
 
-    -- ** DescribeInsightRules
+    -- ** DescribeInsightRules 
     , module Network.AWS.CloudWatch.DescribeInsightRules
 
     -- * Types

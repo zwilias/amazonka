@@ -14,11 +14,11 @@
 module Test.AWS.Gen.LexModels where
 
 import Data.Proxy
-import Network.AWS.LexModels
 import Test.AWS.Fixture
-import Test.AWS.LexModels.Internal
 import Test.AWS.Prelude
 import Test.Tasty
+import Network.AWS.LexModels
+import Test.AWS.LexModels.Internal
 
 -- Auto-generated: the actual test selection needs to be manually placed into
 -- the top-level so that real test data can be incrementally added.

@@ -26,23 +26,23 @@
 --
 --
 --
--- __Additional Information__
+-- __Additional Information__ 
 --
---     * <http://aws.amazon.com/sqs/ Amazon SQS Product Page>
+--     * <http://aws.amazon.com/sqs/ Amazon SQS Product Page> 
 --
---     * /Amazon Simple Queue Service Developer Guide/
+--     * /Amazon Simple Queue Service Developer Guide/ 
 --
---     * <http://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/MakingRequestsArticle.html Making API Requests>
+--     * <http://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/MakingRequestsArticle.html Making API Requests> 
 --
---     * <http://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/sqs-message-attributes.html Using Amazon SQS Message Attributes>
+--     * <http://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/sqs-message-attributes.html Using Amazon SQS Message Attributes> 
 --
---     * <http://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/sqs-dead-letter-queues.html Using Amazon SQS Dead-Letter Queues>
+--     * <http://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/sqs-dead-letter-queues.html Using Amazon SQS Dead-Letter Queues> 
 --
 --
 --
---     * /Amazon Web Services General Reference/
+--     * /Amazon Web Services General Reference/ 
 --
---     * <http://docs.aws.amazon.com/general/latest/gr/rande.html#sqs_region Regions and Endpoints>
+--     * <http://docs.aws.amazon.com/general/latest/gr/rande.html#sqs_region Regions and Endpoints> 
 --
 --
 --
@@ -110,64 +110,64 @@ module Network.AWS.SQS
     -- * Operations
     -- $operations
 
-    -- ** GetQueueURL
+    -- ** GetQueueURL 
     , module Network.AWS.SQS.GetQueueURL
 
-    -- ** PurgeQueue
+    -- ** PurgeQueue 
     , module Network.AWS.SQS.PurgeQueue
 
-    -- ** ChangeMessageVisibilityBatch
+    -- ** ChangeMessageVisibilityBatch 
     , module Network.AWS.SQS.ChangeMessageVisibilityBatch
 
-    -- ** SendMessage
+    -- ** SendMessage 
     , module Network.AWS.SQS.SendMessage
 
-    -- ** RemovePermission
+    -- ** RemovePermission 
     , module Network.AWS.SQS.RemovePermission
 
-    -- ** GetQueueAttributes
+    -- ** GetQueueAttributes 
     , module Network.AWS.SQS.GetQueueAttributes
 
-    -- ** ListQueues
+    -- ** ListQueues 
     , module Network.AWS.SQS.ListQueues
 
-    -- ** ReceiveMessage
+    -- ** ReceiveMessage 
     , module Network.AWS.SQS.ReceiveMessage
 
-    -- ** DeleteQueue
+    -- ** DeleteQueue 
     , module Network.AWS.SQS.DeleteQueue
 
-    -- ** TagQueue
+    -- ** TagQueue 
     , module Network.AWS.SQS.TagQueue
 
-    -- ** DeleteMessageBatch
+    -- ** DeleteMessageBatch 
     , module Network.AWS.SQS.DeleteMessageBatch
 
-    -- ** SetQueueAttributes
+    -- ** SetQueueAttributes 
     , module Network.AWS.SQS.SetQueueAttributes
 
-    -- ** ListDeadLetterSourceQueues
+    -- ** ListDeadLetterSourceQueues 
     , module Network.AWS.SQS.ListDeadLetterSourceQueues
 
-    -- ** AddPermission
+    -- ** AddPermission 
     , module Network.AWS.SQS.AddPermission
 
-    -- ** DeleteMessage
+    -- ** DeleteMessage 
     , module Network.AWS.SQS.DeleteMessage
 
-    -- ** ListQueueTags
+    -- ** ListQueueTags 
     , module Network.AWS.SQS.ListQueueTags
 
-    -- ** CreateQueue
+    -- ** CreateQueue 
     , module Network.AWS.SQS.CreateQueue
 
-    -- ** UntagQueue
+    -- ** UntagQueue 
     , module Network.AWS.SQS.UntagQueue
 
-    -- ** SendMessageBatch
+    -- ** SendMessageBatch 
     , module Network.AWS.SQS.SendMessageBatch
 
-    -- ** ChangeMessageVisibility
+    -- ** ChangeMessageVisibility 
     , module Network.AWS.SQS.ChangeMessageVisibility
 
     -- * Types
@@ -259,8 +259,8 @@ import Network.AWS.SQS.DeleteQueue
 import Network.AWS.SQS.GetQueueAttributes
 import Network.AWS.SQS.GetQueueURL
 import Network.AWS.SQS.ListDeadLetterSourceQueues
-import Network.AWS.SQS.ListQueues
 import Network.AWS.SQS.ListQueueTags
+import Network.AWS.SQS.ListQueues
 import Network.AWS.SQS.PurgeQueue
 import Network.AWS.SQS.ReceiveMessage
 import Network.AWS.SQS.RemovePermission

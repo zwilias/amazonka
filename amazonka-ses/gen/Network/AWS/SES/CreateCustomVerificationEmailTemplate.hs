@@ -48,24 +48,32 @@ import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 import Network.AWS.SES.Types
-import Network.AWS.SES.Types.Product
 
 -- | Represents a request to create a custom verification email template.
 --
 --
 --
 -- /See:/ 'createCustomVerificationEmailTemplate' smart constructor.
-data CreateCustomVerificationEmailTemplate =
-  CreateCustomVerificationEmailTemplate'
-    { _ccvetTemplateName          :: !Text
-    , _ccvetFromEmailAddress      :: !Text
-    , _ccvetTemplateSubject       :: !Text
-    , _ccvetTemplateContent       :: !Text
-    , _ccvetSuccessRedirectionURL :: !Text
-    , _ccvetFailureRedirectionURL :: !Text
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data CreateCustomVerificationEmailTemplate = CreateCustomVerificationEmailTemplate'{_ccvetTemplateName
+                                                                                    ::
+                                                                                    !Text,
+                                                                                    _ccvetFromEmailAddress
+                                                                                    ::
+                                                                                    !Text,
+                                                                                    _ccvetTemplateSubject
+                                                                                    ::
+                                                                                    !Text,
+                                                                                    _ccvetTemplateContent
+                                                                                    ::
+                                                                                    !Text,
+                                                                                    _ccvetSuccessRedirectionURL
+                                                                                    ::
+                                                                                    !Text,
+                                                                                    _ccvetFailureRedirectionURL
+                                                                                    ::
+                                                                                    !Text}
+                                               deriving (Eq, Read, Show, Data,
+                                                         Typeable, Generic)
 
 -- | Creates a value of 'CreateCustomVerificationEmailTemplate' with the minimum fields required to make a request.
 --
@@ -90,16 +98,22 @@ createCustomVerificationEmailTemplate
     -> Text -- ^ 'ccvetSuccessRedirectionURL'
     -> Text -- ^ 'ccvetFailureRedirectionURL'
     -> CreateCustomVerificationEmailTemplate
-createCustomVerificationEmailTemplate pTemplateName_ pFromEmailAddress_ pTemplateSubject_ pTemplateContent_ pSuccessRedirectionURL_ pFailureRedirectionURL_ =
-  CreateCustomVerificationEmailTemplate'
-    { _ccvetTemplateName = pTemplateName_
-    , _ccvetFromEmailAddress = pFromEmailAddress_
-    , _ccvetTemplateSubject = pTemplateSubject_
-    , _ccvetTemplateContent = pTemplateContent_
-    , _ccvetSuccessRedirectionURL = pSuccessRedirectionURL_
-    , _ccvetFailureRedirectionURL = pFailureRedirectionURL_
-    }
-
+createCustomVerificationEmailTemplate pTemplateName_
+  pFromEmailAddress_ pTemplateSubject_
+  pTemplateContent_ pSuccessRedirectionURL_
+  pFailureRedirectionURL_
+  = CreateCustomVerificationEmailTemplate'{_ccvetTemplateName
+                                             = pTemplateName_,
+                                           _ccvetFromEmailAddress =
+                                             pFromEmailAddress_,
+                                           _ccvetTemplateSubject =
+                                             pTemplateSubject_,
+                                           _ccvetTemplateContent =
+                                             pTemplateContent_,
+                                           _ccvetSuccessRedirectionURL =
+                                             pSuccessRedirectionURL_,
+                                           _ccvetFailureRedirectionURL =
+                                             pFailureRedirectionURL_}
 
 -- | The name of the custom verification email template.
 ccvetTemplateName :: Lens' CreateCustomVerificationEmailTemplate Text
@@ -170,18 +184,17 @@ instance ToQuery
                  _ccvetFailureRedirectionURL]
 
 -- | /See:/ 'createCustomVerificationEmailTemplateResponse' smart constructor.
-data CreateCustomVerificationEmailTemplateResponse =
-  CreateCustomVerificationEmailTemplateResponse'
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data CreateCustomVerificationEmailTemplateResponse = CreateCustomVerificationEmailTemplateResponse'
+                                                       deriving (Eq, Read, Show,
+                                                                 Data, Typeable,
+                                                                 Generic)
 
 -- | Creates a value of 'CreateCustomVerificationEmailTemplateResponse' with the minimum fields required to make a request.
 --
 createCustomVerificationEmailTemplateResponse
     :: CreateCustomVerificationEmailTemplateResponse
-createCustomVerificationEmailTemplateResponse =
-  CreateCustomVerificationEmailTemplateResponse'
-
+createCustomVerificationEmailTemplateResponse
+  = CreateCustomVerificationEmailTemplateResponse'
 
 instance NFData
            CreateCustomVerificationEmailTemplateResponse

@@ -18,7 +18,7 @@
 -- Stability   : auto-generated
 -- Portability : non-portable (GHC extensions)
 --
--- This operation removes one or more tags from the set of tags attached to a vault. For more information about tags, see <http://docs.aws.amazon.com/amazonglacier/latest/dev/tagging.html Tagging Amazon Glacier Resources> . This operation is idempotent. The operation will be successful, even if there are no tags attached to the vault.
+-- This operation removes one or more tags from the set of tags attached to a vault. For more information about tags, see <http://docs.aws.amazon.com/amazonglacier/latest/dev/tagging.html Tagging Amazon Glacier Resources> . This operation is idempotent. The operation will be successful, even if there are no tags attached to the vault. 
 --
 --
 module Network.AWS.Glacier.RemoveTagsFromVault
@@ -37,7 +37,6 @@ module Network.AWS.Glacier.RemoveTagsFromVault
     ) where
 
 import Network.AWS.Glacier.Types
-import Network.AWS.Glacier.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.Request
@@ -48,14 +47,11 @@ import Network.AWS.Response
 --
 --
 -- /See:/ 'removeTagsFromVault' smart constructor.
-data RemoveTagsFromVault =
-  RemoveTagsFromVault'
-    { _rtfvTagKeys   :: !(Maybe [Text])
-    , _rtfvAccountId :: !Text
-    , _rtfvVaultName :: !Text
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data RemoveTagsFromVault = RemoveTagsFromVault'{_rtfvTagKeys
+                                                :: !(Maybe [Text]),
+                                                _rtfvAccountId :: !Text,
+                                                _rtfvVaultName :: !Text}
+                             deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'RemoveTagsFromVault' with the minimum fields required to make a request.
 --
@@ -70,13 +66,10 @@ removeTagsFromVault
     :: Text -- ^ 'rtfvAccountId'
     -> Text -- ^ 'rtfvVaultName'
     -> RemoveTagsFromVault
-removeTagsFromVault pAccountId_ pVaultName_ =
-  RemoveTagsFromVault'
-    { _rtfvTagKeys = Nothing
-    , _rtfvAccountId = pAccountId_
-    , _rtfvVaultName = pVaultName_
-    }
-
+removeTagsFromVault pAccountId_ pVaultName_
+  = RemoveTagsFromVault'{_rtfvTagKeys = Nothing,
+                         _rtfvAccountId = pAccountId_,
+                         _rtfvVaultName = pVaultName_}
 
 -- | A list of tag keys. Each corresponding tag is removed from the vault.
 rtfvTagKeys :: Lens' RemoveTagsFromVault [Text]
@@ -118,16 +111,15 @@ instance ToQuery RemoveTagsFromVault where
         toQuery = const (mconcat ["operation=remove"])
 
 -- | /See:/ 'removeTagsFromVaultResponse' smart constructor.
-data RemoveTagsFromVaultResponse =
-  RemoveTagsFromVaultResponse'
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data RemoveTagsFromVaultResponse = RemoveTagsFromVaultResponse'
+                                     deriving (Eq, Read, Show, Data, Typeable,
+                                               Generic)
 
 -- | Creates a value of 'RemoveTagsFromVaultResponse' with the minimum fields required to make a request.
 --
 removeTagsFromVaultResponse
     :: RemoveTagsFromVaultResponse
-removeTagsFromVaultResponse = RemoveTagsFromVaultResponse'
-
+removeTagsFromVaultResponse
+  = RemoveTagsFromVaultResponse'
 
 instance NFData RemoveTagsFromVaultResponse where

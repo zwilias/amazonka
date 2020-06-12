@@ -42,20 +42,16 @@ module Network.AWS.AutoScaling.AttachInstances
     ) where
 
 import Network.AWS.AutoScaling.Types
-import Network.AWS.AutoScaling.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 
 -- | /See:/ 'attachInstances' smart constructor.
-data AttachInstances =
-  AttachInstances'
-    { _aiInstanceIds          :: !(Maybe [Text])
-    , _aiAutoScalingGroupName :: !Text
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data AttachInstances = AttachInstances'{_aiInstanceIds
+                                        :: !(Maybe [Text]),
+                                        _aiAutoScalingGroupName :: !Text}
+                         deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'AttachInstances' with the minimum fields required to make a request.
 --
@@ -67,10 +63,9 @@ data AttachInstances =
 attachInstances
     :: Text -- ^ 'aiAutoScalingGroupName'
     -> AttachInstances
-attachInstances pAutoScalingGroupName_ =
-  AttachInstances'
-    {_aiInstanceIds = Nothing, _aiAutoScalingGroupName = pAutoScalingGroupName_}
-
+attachInstances pAutoScalingGroupName_
+  = AttachInstances'{_aiInstanceIds = Nothing,
+                     _aiAutoScalingGroupName = pAutoScalingGroupName_}
 
 -- | The IDs of the instances. You can specify up to 20 instances.
 aiInstanceIds :: Lens' AttachInstances [Text]
@@ -105,16 +100,14 @@ instance ToQuery AttachInstances where
                "AutoScalingGroupName" =: _aiAutoScalingGroupName]
 
 -- | /See:/ 'attachInstancesResponse' smart constructor.
-data AttachInstancesResponse =
-  AttachInstancesResponse'
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data AttachInstancesResponse = AttachInstancesResponse'
+                                 deriving (Eq, Read, Show, Data, Typeable,
+                                           Generic)
 
 -- | Creates a value of 'AttachInstancesResponse' with the minimum fields required to make a request.
 --
 attachInstancesResponse
     :: AttachInstancesResponse
 attachInstancesResponse = AttachInstancesResponse'
-
 
 instance NFData AttachInstancesResponse where

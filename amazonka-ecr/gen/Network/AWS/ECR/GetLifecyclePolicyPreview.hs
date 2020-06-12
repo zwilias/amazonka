@@ -49,24 +49,28 @@ module Network.AWS.ECR.GetLifecyclePolicyPreview
     ) where
 
 import Network.AWS.ECR.Types
-import Network.AWS.ECR.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 
 -- | /See:/ 'getLifecyclePolicyPreview' smart constructor.
-data GetLifecyclePolicyPreview =
-  GetLifecyclePolicyPreview'
-    { _glppRegistryId     :: !(Maybe Text)
-    , _glppImageIds       :: !(Maybe [ImageIdentifier])
-    , _glppNextToken      :: !(Maybe Text)
-    , _glppFilter         :: !(Maybe LifecyclePolicyPreviewFilter)
-    , _glppMaxResults     :: !(Maybe Nat)
-    , _glppRepositoryName :: !Text
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data GetLifecyclePolicyPreview = GetLifecyclePolicyPreview'{_glppRegistryId
+                                                            :: !(Maybe Text),
+                                                            _glppImageIds ::
+                                                            !(Maybe
+                                                                [ImageIdentifier]),
+                                                            _glppNextToken ::
+                                                            !(Maybe Text),
+                                                            _glppFilter ::
+                                                            !(Maybe
+                                                                LifecyclePolicyPreviewFilter),
+                                                            _glppMaxResults ::
+                                                            !(Maybe Nat),
+                                                            _glppRepositoryName
+                                                            :: !Text}
+                                   deriving (Eq, Read, Show, Data, Typeable,
+                                             Generic)
 
 -- | Creates a value of 'GetLifecyclePolicyPreview' with the minimum fields required to make a request.
 --
@@ -86,16 +90,13 @@ data GetLifecyclePolicyPreview =
 getLifecyclePolicyPreview
     :: Text -- ^ 'glppRepositoryName'
     -> GetLifecyclePolicyPreview
-getLifecyclePolicyPreview pRepositoryName_ =
-  GetLifecyclePolicyPreview'
-    { _glppRegistryId = Nothing
-    , _glppImageIds = Nothing
-    , _glppNextToken = Nothing
-    , _glppFilter = Nothing
-    , _glppMaxResults = Nothing
-    , _glppRepositoryName = pRepositoryName_
-    }
-
+getLifecyclePolicyPreview pRepositoryName_
+  = GetLifecyclePolicyPreview'{_glppRegistryId =
+                                 Nothing,
+                               _glppImageIds = Nothing,
+                               _glppNextToken = Nothing, _glppFilter = Nothing,
+                               _glppMaxResults = Nothing,
+                               _glppRepositoryName = pRepositoryName_}
 
 -- | The AWS account ID associated with the registry that contains the repository. If you do not specify a registry, the default registry is assumed.
 glppRegistryId :: Lens' GetLifecyclePolicyPreview (Maybe Text)
@@ -169,19 +170,39 @@ instance ToQuery GetLifecyclePolicyPreview where
         toQuery = const mempty
 
 -- | /See:/ 'getLifecyclePolicyPreviewResponse' smart constructor.
-data GetLifecyclePolicyPreviewResponse =
-  GetLifecyclePolicyPreviewResponse'
-    { _glpprsSummary             :: !(Maybe LifecyclePolicyPreviewSummary)
-    , _glpprsStatus              :: !(Maybe LifecyclePolicyPreviewStatus)
-    , _glpprsRegistryId          :: !(Maybe Text)
-    , _glpprsLifecyclePolicyText :: !(Maybe Text)
-    , _glpprsNextToken           :: !(Maybe Text)
-    , _glpprsRepositoryName      :: !(Maybe Text)
-    , _glpprsPreviewResults      :: !(Maybe [LifecyclePolicyPreviewResult])
-    , _glpprsResponseStatus      :: !Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data GetLifecyclePolicyPreviewResponse = GetLifecyclePolicyPreviewResponse'{_glpprsSummary
+                                                                            ::
+                                                                            !(Maybe
+                                                                                LifecyclePolicyPreviewSummary),
+                                                                            _glpprsStatus
+                                                                            ::
+                                                                            !(Maybe
+                                                                                LifecyclePolicyPreviewStatus),
+                                                                            _glpprsRegistryId
+                                                                            ::
+                                                                            !(Maybe
+                                                                                Text),
+                                                                            _glpprsLifecyclePolicyText
+                                                                            ::
+                                                                            !(Maybe
+                                                                                Text),
+                                                                            _glpprsNextToken
+                                                                            ::
+                                                                            !(Maybe
+                                                                                Text),
+                                                                            _glpprsRepositoryName
+                                                                            ::
+                                                                            !(Maybe
+                                                                                Text),
+                                                                            _glpprsPreviewResults
+                                                                            ::
+                                                                            !(Maybe
+                                                                                [LifecyclePolicyPreviewResult]),
+                                                                            _glpprsResponseStatus
+                                                                            ::
+                                                                            !Int}
+                                           deriving (Eq, Read, Show, Data,
+                                                     Typeable, Generic)
 
 -- | Creates a value of 'GetLifecyclePolicyPreviewResponse' with the minimum fields required to make a request.
 --
@@ -205,18 +226,16 @@ data GetLifecyclePolicyPreviewResponse =
 getLifecyclePolicyPreviewResponse
     :: Int -- ^ 'glpprsResponseStatus'
     -> GetLifecyclePolicyPreviewResponse
-getLifecyclePolicyPreviewResponse pResponseStatus_ =
-  GetLifecyclePolicyPreviewResponse'
-    { _glpprsSummary = Nothing
-    , _glpprsStatus = Nothing
-    , _glpprsRegistryId = Nothing
-    , _glpprsLifecyclePolicyText = Nothing
-    , _glpprsNextToken = Nothing
-    , _glpprsRepositoryName = Nothing
-    , _glpprsPreviewResults = Nothing
-    , _glpprsResponseStatus = pResponseStatus_
-    }
-
+getLifecyclePolicyPreviewResponse pResponseStatus_
+  = GetLifecyclePolicyPreviewResponse'{_glpprsSummary =
+                                         Nothing,
+                                       _glpprsStatus = Nothing,
+                                       _glpprsRegistryId = Nothing,
+                                       _glpprsLifecyclePolicyText = Nothing,
+                                       _glpprsNextToken = Nothing,
+                                       _glpprsRepositoryName = Nothing,
+                                       _glpprsPreviewResults = Nothing,
+                                       _glpprsResponseStatus = pResponseStatus_}
 
 -- | The list of images that is returned as a result of the action.
 glpprsSummary :: Lens' GetLifecyclePolicyPreviewResponse (Maybe LifecyclePolicyPreviewSummary)

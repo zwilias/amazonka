@@ -45,23 +45,21 @@ module Network.AWS.CodeCommit.GetMergeOptions
     ) where
 
 import Network.AWS.CodeCommit.Types
-import Network.AWS.CodeCommit.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 
 -- | /See:/ 'getMergeOptions' smart constructor.
-data GetMergeOptions =
-  GetMergeOptions'
-    { _gmoConflictDetailLevel :: !(Maybe ConflictDetailLevelTypeEnum)
-    , _gmoConflictResolutionStrategy :: !(Maybe ConflictResolutionStrategyTypeEnum)
-    , _gmoRepositoryName :: !Text
-    , _gmoSourceCommitSpecifier :: !Text
-    , _gmoDestinationCommitSpecifier :: !Text
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data GetMergeOptions = GetMergeOptions'{_gmoConflictDetailLevel
+                                        :: !(Maybe ConflictDetailLevelTypeEnum),
+                                        _gmoConflictResolutionStrategy ::
+                                        !(Maybe
+                                            ConflictResolutionStrategyTypeEnum),
+                                        _gmoRepositoryName :: !Text,
+                                        _gmoSourceCommitSpecifier :: !Text,
+                                        _gmoDestinationCommitSpecifier :: !Text}
+                         deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'GetMergeOptions' with the minimum fields required to make a request.
 --
@@ -81,15 +79,14 @@ getMergeOptions
     -> Text -- ^ 'gmoSourceCommitSpecifier'
     -> Text -- ^ 'gmoDestinationCommitSpecifier'
     -> GetMergeOptions
-getMergeOptions pRepositoryName_ pSourceCommitSpecifier_ pDestinationCommitSpecifier_ =
-  GetMergeOptions'
-    { _gmoConflictDetailLevel = Nothing
-    , _gmoConflictResolutionStrategy = Nothing
-    , _gmoRepositoryName = pRepositoryName_
-    , _gmoSourceCommitSpecifier = pSourceCommitSpecifier_
-    , _gmoDestinationCommitSpecifier = pDestinationCommitSpecifier_
-    }
-
+getMergeOptions pRepositoryName_
+  pSourceCommitSpecifier_ pDestinationCommitSpecifier_
+  = GetMergeOptions'{_gmoConflictDetailLevel = Nothing,
+                     _gmoConflictResolutionStrategy = Nothing,
+                     _gmoRepositoryName = pRepositoryName_,
+                     _gmoSourceCommitSpecifier = pSourceCommitSpecifier_,
+                     _gmoDestinationCommitSpecifier =
+                       pDestinationCommitSpecifier_}
 
 -- | The level of conflict detail to use. If unspecified, the default FILE_LEVEL is used, which returns a not-mergeable result if the same file has differences in both branches. If LINE_LEVEL is specified, a conflict is considered not mergeable if the same file in both branches has differences on the same line.
 gmoConflictDetailLevel :: Lens' GetMergeOptions (Maybe ConflictDetailLevelTypeEnum)
@@ -161,16 +158,18 @@ instance ToQuery GetMergeOptions where
         toQuery = const mempty
 
 -- | /See:/ 'getMergeOptionsResponse' smart constructor.
-data GetMergeOptionsResponse =
-  GetMergeOptionsResponse'
-    { _gmorsResponseStatus      :: !Int
-    , _gmorsMergeOptions        :: ![MergeOptionTypeEnum]
-    , _gmorsSourceCommitId      :: !Text
-    , _gmorsDestinationCommitId :: !Text
-    , _gmorsBaseCommitId        :: !Text
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data GetMergeOptionsResponse = GetMergeOptionsResponse'{_gmorsResponseStatus
+                                                        :: !Int,
+                                                        _gmorsMergeOptions ::
+                                                        ![MergeOptionTypeEnum],
+                                                        _gmorsSourceCommitId ::
+                                                        !Text,
+                                                        _gmorsDestinationCommitId
+                                                        :: !Text,
+                                                        _gmorsBaseCommitId ::
+                                                        !Text}
+                                 deriving (Eq, Read, Show, Data, Typeable,
+                                           Generic)
 
 -- | Creates a value of 'GetMergeOptionsResponse' with the minimum fields required to make a request.
 --
@@ -191,15 +190,14 @@ getMergeOptionsResponse
     -> Text -- ^ 'gmorsDestinationCommitId'
     -> Text -- ^ 'gmorsBaseCommitId'
     -> GetMergeOptionsResponse
-getMergeOptionsResponse pResponseStatus_ pSourceCommitId_ pDestinationCommitId_ pBaseCommitId_ =
-  GetMergeOptionsResponse'
-    { _gmorsResponseStatus = pResponseStatus_
-    , _gmorsMergeOptions = mempty
-    , _gmorsSourceCommitId = pSourceCommitId_
-    , _gmorsDestinationCommitId = pDestinationCommitId_
-    , _gmorsBaseCommitId = pBaseCommitId_
-    }
-
+getMergeOptionsResponse pResponseStatus_
+  pSourceCommitId_ pDestinationCommitId_ pBaseCommitId_
+  = GetMergeOptionsResponse'{_gmorsResponseStatus =
+                               pResponseStatus_,
+                             _gmorsMergeOptions = mempty,
+                             _gmorsSourceCommitId = pSourceCommitId_,
+                             _gmorsDestinationCommitId = pDestinationCommitId_,
+                             _gmorsBaseCommitId = pBaseCommitId_}
 
 -- | -- | The response status code.
 gmorsResponseStatus :: Lens' GetMergeOptionsResponse Int

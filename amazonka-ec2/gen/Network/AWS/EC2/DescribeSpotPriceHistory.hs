@@ -51,7 +51,6 @@ module Network.AWS.EC2.DescribeSpotPriceHistory
     ) where
 
 import Network.AWS.EC2.Types
-import Network.AWS.EC2.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Pager
 import Network.AWS.Prelude
@@ -63,20 +62,28 @@ import Network.AWS.Response
 --
 --
 -- /See:/ 'describeSpotPriceHistory' smart constructor.
-data DescribeSpotPriceHistory =
-  DescribeSpotPriceHistory'
-    { _dsphInstanceTypes       :: !(Maybe [InstanceType])
-    , _dsphStartTime           :: !(Maybe ISO8601)
-    , _dsphFilters             :: !(Maybe [Filter])
-    , _dsphNextToken           :: !(Maybe Text)
-    , _dsphAvailabilityZone    :: !(Maybe Text)
-    , _dsphEndTime             :: !(Maybe ISO8601)
-    , _dsphProductDescriptions :: !(Maybe [Text])
-    , _dsphDryRun              :: !(Maybe Bool)
-    , _dsphMaxResults          :: !(Maybe Int)
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data DescribeSpotPriceHistory = DescribeSpotPriceHistory'{_dsphInstanceTypes
+                                                          ::
+                                                          !(Maybe
+                                                              [InstanceType]),
+                                                          _dsphStartTime ::
+                                                          !(Maybe ISO8601),
+                                                          _dsphFilters ::
+                                                          !(Maybe [Filter]),
+                                                          _dsphNextToken ::
+                                                          !(Maybe Text),
+                                                          _dsphAvailabilityZone
+                                                          :: !(Maybe Text),
+                                                          _dsphEndTime ::
+                                                          !(Maybe ISO8601),
+                                                          _dsphProductDescriptions
+                                                          :: !(Maybe [Text]),
+                                                          _dsphDryRun ::
+                                                          !(Maybe Bool),
+                                                          _dsphMaxResults ::
+                                                          !(Maybe Int)}
+                                  deriving (Eq, Read, Show, Data, Typeable,
+                                            Generic)
 
 -- | Creates a value of 'DescribeSpotPriceHistory' with the minimum fields required to make a request.
 --
@@ -101,19 +108,15 @@ data DescribeSpotPriceHistory =
 -- * 'dsphMaxResults' - The maximum number of results to return in a single call. Specify a value between 1 and 1000. The default value is 1000. To retrieve the remaining results, make another call with the returned @NextToken@ value.
 describeSpotPriceHistory
     :: DescribeSpotPriceHistory
-describeSpotPriceHistory =
-  DescribeSpotPriceHistory'
-    { _dsphInstanceTypes = Nothing
-    , _dsphStartTime = Nothing
-    , _dsphFilters = Nothing
-    , _dsphNextToken = Nothing
-    , _dsphAvailabilityZone = Nothing
-    , _dsphEndTime = Nothing
-    , _dsphProductDescriptions = Nothing
-    , _dsphDryRun = Nothing
-    , _dsphMaxResults = Nothing
-    }
-
+describeSpotPriceHistory
+  = DescribeSpotPriceHistory'{_dsphInstanceTypes =
+                                Nothing,
+                              _dsphStartTime = Nothing, _dsphFilters = Nothing,
+                              _dsphNextToken = Nothing,
+                              _dsphAvailabilityZone = Nothing,
+                              _dsphEndTime = Nothing,
+                              _dsphProductDescriptions = Nothing,
+                              _dsphDryRun = Nothing, _dsphMaxResults = Nothing}
 
 -- | Filters the results by the specified instance types.
 dsphInstanceTypes :: Lens' DescribeSpotPriceHistory [InstanceType]
@@ -205,14 +208,19 @@ instance ToQuery DescribeSpotPriceHistory where
 --
 --
 -- /See:/ 'describeSpotPriceHistoryResponse' smart constructor.
-data DescribeSpotPriceHistoryResponse =
-  DescribeSpotPriceHistoryResponse'
-    { _dsphrsNextToken        :: !(Maybe Text)
-    , _dsphrsSpotPriceHistory :: !(Maybe [SpotPrice])
-    , _dsphrsResponseStatus   :: !Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data DescribeSpotPriceHistoryResponse = DescribeSpotPriceHistoryResponse'{_dsphrsNextToken
+                                                                          ::
+                                                                          !(Maybe
+                                                                              Text),
+                                                                          _dsphrsSpotPriceHistory
+                                                                          ::
+                                                                          !(Maybe
+                                                                              [SpotPrice]),
+                                                                          _dsphrsResponseStatus
+                                                                          ::
+                                                                          !Int}
+                                          deriving (Eq, Read, Show, Data,
+                                                    Typeable, Generic)
 
 -- | Creates a value of 'DescribeSpotPriceHistoryResponse' with the minimum fields required to make a request.
 --
@@ -226,13 +234,11 @@ data DescribeSpotPriceHistoryResponse =
 describeSpotPriceHistoryResponse
     :: Int -- ^ 'dsphrsResponseStatus'
     -> DescribeSpotPriceHistoryResponse
-describeSpotPriceHistoryResponse pResponseStatus_ =
-  DescribeSpotPriceHistoryResponse'
-    { _dsphrsNextToken = Nothing
-    , _dsphrsSpotPriceHistory = Nothing
-    , _dsphrsResponseStatus = pResponseStatus_
-    }
-
+describeSpotPriceHistoryResponse pResponseStatus_
+  = DescribeSpotPriceHistoryResponse'{_dsphrsNextToken
+                                        = Nothing,
+                                      _dsphrsSpotPriceHistory = Nothing,
+                                      _dsphrsResponseStatus = pResponseStatus_}
 
 -- | The token required to retrieve the next set of results. This value is null or an empty string when there are no more results to return.
 dsphrsNextToken :: Lens' DescribeSpotPriceHistoryResponse (Maybe Text)

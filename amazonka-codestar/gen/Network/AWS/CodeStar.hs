@@ -11,7 +11,7 @@
 -- Stability   : auto-generated
 -- Portability : non-portable (GHC extensions)
 --
--- __AWS CodeStar__
+-- __AWS CodeStar__ 
 --
 -- This is the API reference for AWS CodeStar. This reference provides descriptions of the operations and data types for the AWS CodeStar API along with usage examples.
 --
@@ -122,19 +122,19 @@ module Network.AWS.CodeStar
     -- ** ListTeamMembers (Paginated)
     , module Network.AWS.CodeStar.ListTeamMembers
 
-    -- ** DeleteProject
+    -- ** DeleteProject 
     , module Network.AWS.CodeStar.DeleteProject
 
-    -- ** UpdateProject
+    -- ** UpdateProject 
     , module Network.AWS.CodeStar.UpdateProject
 
-    -- ** DisassociateTeamMember
+    -- ** DisassociateTeamMember 
     , module Network.AWS.CodeStar.DisassociateTeamMember
 
-    -- ** TagProject
+    -- ** TagProject 
     , module Network.AWS.CodeStar.TagProject
 
-    -- ** DescribeProject
+    -- ** DescribeProject 
     , module Network.AWS.CodeStar.DescribeProject
 
     -- ** ListUserProfiles (Paginated)
@@ -143,31 +143,31 @@ module Network.AWS.CodeStar
     -- ** ListResources (Paginated)
     , module Network.AWS.CodeStar.ListResources
 
-    -- ** AssociateTeamMember
+    -- ** AssociateTeamMember 
     , module Network.AWS.CodeStar.AssociateTeamMember
 
-    -- ** UntagProject
+    -- ** UntagProject 
     , module Network.AWS.CodeStar.UntagProject
 
-    -- ** UpdateTeamMember
+    -- ** UpdateTeamMember 
     , module Network.AWS.CodeStar.UpdateTeamMember
 
-    -- ** DescribeUserProfile
+    -- ** DescribeUserProfile 
     , module Network.AWS.CodeStar.DescribeUserProfile
 
-    -- ** ListTagsForProject
+    -- ** ListTagsForProject 
     , module Network.AWS.CodeStar.ListTagsForProject
 
-    -- ** DeleteUserProfile
+    -- ** DeleteUserProfile 
     , module Network.AWS.CodeStar.DeleteUserProfile
 
-    -- ** UpdateUserProfile
+    -- ** UpdateUserProfile 
     , module Network.AWS.CodeStar.UpdateUserProfile
 
-    -- ** CreateUserProfile
+    -- ** CreateUserProfile 
     , module Network.AWS.CodeStar.CreateUserProfile
 
-    -- ** CreateProject
+    -- ** CreateProject 
     , module Network.AWS.CodeStar.CreateProject
 
     -- * Types

@@ -43,16 +43,12 @@ import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 import Network.AWS.Route53AutoNaming.Types
-import Network.AWS.Route53AutoNaming.Types.Product
 
 -- | /See:/ 'deregisterInstance' smart constructor.
-data DeregisterInstance =
-  DeregisterInstance'
-    { _diServiceId  :: !Text
-    , _diInstanceId :: !Text
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data DeregisterInstance = DeregisterInstance'{_diServiceId
+                                              :: !Text,
+                                              _diInstanceId :: !Text}
+                            deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'DeregisterInstance' with the minimum fields required to make a request.
 --
@@ -65,9 +61,9 @@ deregisterInstance
     :: Text -- ^ 'diServiceId'
     -> Text -- ^ 'diInstanceId'
     -> DeregisterInstance
-deregisterInstance pServiceId_ pInstanceId_ =
-  DeregisterInstance' {_diServiceId = pServiceId_, _diInstanceId = pInstanceId_}
-
+deregisterInstance pServiceId_ pInstanceId_
+  = DeregisterInstance'{_diServiceId = pServiceId_,
+                        _diInstanceId = pInstanceId_}
 
 -- | The ID of the service that the instance is associated with.
 diServiceId :: Lens' DeregisterInstance Text
@@ -115,13 +111,12 @@ instance ToQuery DeregisterInstance where
         toQuery = const mempty
 
 -- | /See:/ 'deregisterInstanceResponse' smart constructor.
-data DeregisterInstanceResponse =
-  DeregisterInstanceResponse'
-    { _dirsOperationId    :: !(Maybe Text)
-    , _dirsResponseStatus :: !Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data DeregisterInstanceResponse = DeregisterInstanceResponse'{_dirsOperationId
+                                                              :: !(Maybe Text),
+                                                              _dirsResponseStatus
+                                                              :: !Int}
+                                    deriving (Eq, Read, Show, Data, Typeable,
+                                              Generic)
 
 -- | Creates a value of 'DeregisterInstanceResponse' with the minimum fields required to make a request.
 --
@@ -133,10 +128,10 @@ data DeregisterInstanceResponse =
 deregisterInstanceResponse
     :: Int -- ^ 'dirsResponseStatus'
     -> DeregisterInstanceResponse
-deregisterInstanceResponse pResponseStatus_ =
-  DeregisterInstanceResponse'
-    {_dirsOperationId = Nothing, _dirsResponseStatus = pResponseStatus_}
-
+deregisterInstanceResponse pResponseStatus_
+  = DeregisterInstanceResponse'{_dirsOperationId =
+                                  Nothing,
+                                _dirsResponseStatus = pResponseStatus_}
 
 -- | A value that you can use to determine whether the request completed successfully. For more information, see 'GetOperation' .
 dirsOperationId :: Lens' DeregisterInstanceResponse (Maybe Text)

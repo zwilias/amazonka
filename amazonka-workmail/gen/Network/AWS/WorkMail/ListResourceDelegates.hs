@@ -46,18 +46,16 @@ import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 import Network.AWS.WorkMail.Types
-import Network.AWS.WorkMail.Types.Product
 
 -- | /See:/ 'listResourceDelegates' smart constructor.
-data ListResourceDelegates =
-  ListResourceDelegates'
-    { _lrdNextToken      :: !(Maybe Text)
-    , _lrdMaxResults     :: !(Maybe Nat)
-    , _lrdOrganizationId :: !Text
-    , _lrdResourceId     :: !Text
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data ListResourceDelegates = ListResourceDelegates'{_lrdNextToken
+                                                    :: !(Maybe Text),
+                                                    _lrdMaxResults ::
+                                                    !(Maybe Nat),
+                                                    _lrdOrganizationId :: !Text,
+                                                    _lrdResourceId :: !Text}
+                               deriving (Eq, Read, Show, Data, Typeable,
+                                         Generic)
 
 -- | Creates a value of 'ListResourceDelegates' with the minimum fields required to make a request.
 --
@@ -74,14 +72,11 @@ listResourceDelegates
     :: Text -- ^ 'lrdOrganizationId'
     -> Text -- ^ 'lrdResourceId'
     -> ListResourceDelegates
-listResourceDelegates pOrganizationId_ pResourceId_ =
-  ListResourceDelegates'
-    { _lrdNextToken = Nothing
-    , _lrdMaxResults = Nothing
-    , _lrdOrganizationId = pOrganizationId_
-    , _lrdResourceId = pResourceId_
-    }
-
+listResourceDelegates pOrganizationId_ pResourceId_
+  = ListResourceDelegates'{_lrdNextToken = Nothing,
+                           _lrdMaxResults = Nothing,
+                           _lrdOrganizationId = pOrganizationId_,
+                           _lrdResourceId = pResourceId_}
 
 -- | The token used to paginate through the delegates associated with a resource.
 lrdNextToken :: Lens' ListResourceDelegates (Maybe Text)
@@ -141,14 +136,18 @@ instance ToQuery ListResourceDelegates where
         toQuery = const mempty
 
 -- | /See:/ 'listResourceDelegatesResponse' smart constructor.
-data ListResourceDelegatesResponse =
-  ListResourceDelegatesResponse'
-    { _lrdrsDelegates      :: !(Maybe [Delegate])
-    , _lrdrsNextToken      :: !(Maybe Text)
-    , _lrdrsResponseStatus :: !Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data ListResourceDelegatesResponse = ListResourceDelegatesResponse'{_lrdrsDelegates
+                                                                    ::
+                                                                    !(Maybe
+                                                                        [Delegate]),
+                                                                    _lrdrsNextToken
+                                                                    ::
+                                                                    !(Maybe
+                                                                        Text),
+                                                                    _lrdrsResponseStatus
+                                                                    :: !Int}
+                                       deriving (Eq, Read, Show, Data, Typeable,
+                                                 Generic)
 
 -- | Creates a value of 'ListResourceDelegatesResponse' with the minimum fields required to make a request.
 --
@@ -156,25 +155,23 @@ data ListResourceDelegatesResponse =
 --
 -- * 'lrdrsDelegates' - One page of the resource's delegates.
 --
--- * 'lrdrsNextToken' - The token used to paginate through the delegates associated with a resource. While results are still available, it has an associated value. When the last page is reached, the token is empty.
+-- * 'lrdrsNextToken' - The token used to paginate through the delegates associated with a resource. While results are still available, it has an associated value. When the last page is reached, the token is empty. 
 --
 -- * 'lrdrsResponseStatus' - -- | The response status code.
 listResourceDelegatesResponse
     :: Int -- ^ 'lrdrsResponseStatus'
     -> ListResourceDelegatesResponse
-listResourceDelegatesResponse pResponseStatus_ =
-  ListResourceDelegatesResponse'
-    { _lrdrsDelegates = Nothing
-    , _lrdrsNextToken = Nothing
-    , _lrdrsResponseStatus = pResponseStatus_
-    }
-
+listResourceDelegatesResponse pResponseStatus_
+  = ListResourceDelegatesResponse'{_lrdrsDelegates =
+                                     Nothing,
+                                   _lrdrsNextToken = Nothing,
+                                   _lrdrsResponseStatus = pResponseStatus_}
 
 -- | One page of the resource's delegates.
 lrdrsDelegates :: Lens' ListResourceDelegatesResponse [Delegate]
 lrdrsDelegates = lens _lrdrsDelegates (\ s a -> s{_lrdrsDelegates = a}) . _Default . _Coerce
 
--- | The token used to paginate through the delegates associated with a resource. While results are still available, it has an associated value. When the last page is reached, the token is empty.
+-- | The token used to paginate through the delegates associated with a resource. While results are still available, it has an associated value. When the last page is reached, the token is empty. 
 lrdrsNextToken :: Lens' ListResourceDelegatesResponse (Maybe Text)
 lrdrsNextToken = lens _lrdrsNextToken (\ s a -> s{_lrdrsNextToken = a})
 

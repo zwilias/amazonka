@@ -47,7 +47,6 @@ module Network.AWS.MediaLive.StartChannel
 
 import Network.AWS.Lens
 import Network.AWS.MediaLive.Types
-import Network.AWS.MediaLive.Types.Product
 import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
@@ -55,12 +54,9 @@ import Network.AWS.Response
 -- | Placeholder documentation for StartChannelRequest
 --
 -- /See:/ 'startChannel' smart constructor.
-newtype StartChannel =
-  StartChannel'
-    { _scChannelId :: Text
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+newtype StartChannel = StartChannel'{_scChannelId ::
+                                     Text}
+                         deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'StartChannel' with the minimum fields required to make a request.
 --
@@ -70,8 +66,8 @@ newtype StartChannel =
 startChannel
     :: Text -- ^ 'scChannelId'
     -> StartChannel
-startChannel pChannelId_ = StartChannel' {_scChannelId = pChannelId_}
-
+startChannel pChannelId_
+  = StartChannel'{_scChannelId = pChannelId_}
 
 -- | A request to start a channel
 scChannelId :: Lens' StartChannel Text
@@ -121,23 +117,27 @@ instance ToQuery StartChannel where
 -- | Placeholder documentation for StartChannelResponse
 --
 -- /See:/ 'startChannelResponse' smart constructor.
-data StartChannelResponse =
-  StartChannelResponse'
-    { _scrsState                 :: !(Maybe ChannelState)
-    , _scrsARN                   :: !(Maybe Text)
-    , _scrsPipelinesRunningCount :: !(Maybe Int)
-    , _scrsInputSpecification    :: !(Maybe InputSpecification)
-    , _scrsInputAttachments      :: !(Maybe [InputAttachment])
-    , _scrsDestinations          :: !(Maybe [OutputDestination])
-    , _scrsName                  :: !(Maybe Text)
-    , _scrsId                    :: !(Maybe Text)
-    , _scrsEgressEndpoints       :: !(Maybe [ChannelEgressEndpoint])
-    , _scrsEncoderSettings       :: !(Maybe EncoderSettings)
-    , _scrsRoleARN               :: !(Maybe Text)
-    , _scrsResponseStatus        :: !Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data StartChannelResponse = StartChannelResponse'{_scrsState
+                                                  :: !(Maybe ChannelState),
+                                                  _scrsARN :: !(Maybe Text),
+                                                  _scrsPipelinesRunningCount ::
+                                                  !(Maybe Int),
+                                                  _scrsInputSpecification ::
+                                                  !(Maybe InputSpecification),
+                                                  _scrsInputAttachments ::
+                                                  !(Maybe [InputAttachment]),
+                                                  _scrsDestinations ::
+                                                  !(Maybe [OutputDestination]),
+                                                  _scrsName :: !(Maybe Text),
+                                                  _scrsId :: !(Maybe Text),
+                                                  _scrsEgressEndpoints ::
+                                                  !(Maybe
+                                                      [ChannelEgressEndpoint]),
+                                                  _scrsEncoderSettings ::
+                                                  !(Maybe EncoderSettings),
+                                                  _scrsRoleARN :: !(Maybe Text),
+                                                  _scrsResponseStatus :: !Int}
+                              deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'StartChannelResponse' with the minimum fields required to make a request.
 --
@@ -169,22 +169,17 @@ data StartChannelResponse =
 startChannelResponse
     :: Int -- ^ 'scrsResponseStatus'
     -> StartChannelResponse
-startChannelResponse pResponseStatus_ =
-  StartChannelResponse'
-    { _scrsState = Nothing
-    , _scrsARN = Nothing
-    , _scrsPipelinesRunningCount = Nothing
-    , _scrsInputSpecification = Nothing
-    , _scrsInputAttachments = Nothing
-    , _scrsDestinations = Nothing
-    , _scrsName = Nothing
-    , _scrsId = Nothing
-    , _scrsEgressEndpoints = Nothing
-    , _scrsEncoderSettings = Nothing
-    , _scrsRoleARN = Nothing
-    , _scrsResponseStatus = pResponseStatus_
-    }
-
+startChannelResponse pResponseStatus_
+  = StartChannelResponse'{_scrsState = Nothing,
+                          _scrsARN = Nothing,
+                          _scrsPipelinesRunningCount = Nothing,
+                          _scrsInputSpecification = Nothing,
+                          _scrsInputAttachments = Nothing,
+                          _scrsDestinations = Nothing, _scrsName = Nothing,
+                          _scrsId = Nothing, _scrsEgressEndpoints = Nothing,
+                          _scrsEncoderSettings = Nothing,
+                          _scrsRoleARN = Nothing,
+                          _scrsResponseStatus = pResponseStatus_}
 
 -- | Undocumented member.
 scrsState :: Lens' StartChannelResponse (Maybe ChannelState)

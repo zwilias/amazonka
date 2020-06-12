@@ -39,17 +39,15 @@ import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 import Network.AWS.S3.Types
-import Network.AWS.S3.Types.Product
 
 -- | /See:/ 'putBucketEncryption' smart constructor.
-data PutBucketEncryption =
-  PutBucketEncryption'
-    { _pbeContentMD5 :: !(Maybe Text)
-    , _pbeBucket :: !BucketName
-    , _pbeServerSideEncryptionConfiguration :: !ServerSideEncryptionConfiguration
-    }
-  deriving (Eq, Show, Data, Typeable, Generic)
-
+data PutBucketEncryption = PutBucketEncryption'{_pbeContentMD5
+                                                :: !(Maybe Text),
+                                                _pbeBucket :: !BucketName,
+                                                _pbeServerSideEncryptionConfiguration
+                                                ::
+                                                !ServerSideEncryptionConfiguration}
+                             deriving (Eq, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'PutBucketEncryption' with the minimum fields required to make a request.
 --
@@ -64,14 +62,12 @@ putBucketEncryption
     :: BucketName -- ^ 'pbeBucket'
     -> ServerSideEncryptionConfiguration -- ^ 'pbeServerSideEncryptionConfiguration'
     -> PutBucketEncryption
-putBucketEncryption pBucket_ pServerSideEncryptionConfiguration_ =
-  PutBucketEncryption'
-    { _pbeContentMD5 = Nothing
-    , _pbeBucket = pBucket_
-    , _pbeServerSideEncryptionConfiguration =
-        pServerSideEncryptionConfiguration_
-    }
-
+putBucketEncryption pBucket_
+  pServerSideEncryptionConfiguration_
+  = PutBucketEncryption'{_pbeContentMD5 = Nothing,
+                         _pbeBucket = pBucket_,
+                         _pbeServerSideEncryptionConfiguration =
+                           pServerSideEncryptionConfiguration_}
 
 -- | The base64-encoded 128-bit MD5 digest of the server-side encryption configuration.
 pbeContentMD5 :: Lens' PutBucketEncryption (Maybe Text)
@@ -114,16 +110,15 @@ instance ToQuery PutBucketEncryption where
         toQuery = const (mconcat ["encryption"])
 
 -- | /See:/ 'putBucketEncryptionResponse' smart constructor.
-data PutBucketEncryptionResponse =
-  PutBucketEncryptionResponse'
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data PutBucketEncryptionResponse = PutBucketEncryptionResponse'
+                                     deriving (Eq, Read, Show, Data, Typeable,
+                                               Generic)
 
 -- | Creates a value of 'PutBucketEncryptionResponse' with the minimum fields required to make a request.
 --
 putBucketEncryptionResponse
     :: PutBucketEncryptionResponse
-putBucketEncryptionResponse = PutBucketEncryptionResponse'
-
+putBucketEncryptionResponse
+  = PutBucketEncryptionResponse'
 
 instance NFData PutBucketEncryptionResponse where

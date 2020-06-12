@@ -39,19 +39,16 @@ module Network.AWS.Comprehend.StopTrainingEntityRecognizer
     ) where
 
 import Network.AWS.Comprehend.Types
-import Network.AWS.Comprehend.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 
 -- | /See:/ 'stopTrainingEntityRecognizer' smart constructor.
-newtype StopTrainingEntityRecognizer =
-  StopTrainingEntityRecognizer'
-    { _sterEntityRecognizerARN :: Text
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+newtype StopTrainingEntityRecognizer = StopTrainingEntityRecognizer'{_sterEntityRecognizerARN
+                                                                     :: Text}
+                                         deriving (Eq, Read, Show, Data,
+                                                   Typeable, Generic)
 
 -- | Creates a value of 'StopTrainingEntityRecognizer' with the minimum fields required to make a request.
 --
@@ -61,10 +58,9 @@ newtype StopTrainingEntityRecognizer =
 stopTrainingEntityRecognizer
     :: Text -- ^ 'sterEntityRecognizerARN'
     -> StopTrainingEntityRecognizer
-stopTrainingEntityRecognizer pEntityRecognizerARN_ =
-  StopTrainingEntityRecognizer'
-    {_sterEntityRecognizerARN = pEntityRecognizerARN_}
-
+stopTrainingEntityRecognizer pEntityRecognizerARN_
+  = StopTrainingEntityRecognizer'{_sterEntityRecognizerARN
+                                    = pEntityRecognizerARN_}
 
 -- | The Amazon Resource Name (ARN) that identifies the entity recognizer currently being trained.
 sterEntityRecognizerARN :: Lens' StopTrainingEntityRecognizer Text
@@ -109,12 +105,11 @@ instance ToQuery StopTrainingEntityRecognizer where
         toQuery = const mempty
 
 -- | /See:/ 'stopTrainingEntityRecognizerResponse' smart constructor.
-newtype StopTrainingEntityRecognizerResponse =
-  StopTrainingEntityRecognizerResponse'
-    { _sterrsResponseStatus :: Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+newtype StopTrainingEntityRecognizerResponse = StopTrainingEntityRecognizerResponse'{_sterrsResponseStatus
+                                                                                     ::
+                                                                                     Int}
+                                                 deriving (Eq, Read, Show, Data,
+                                                           Typeable, Generic)
 
 -- | Creates a value of 'StopTrainingEntityRecognizerResponse' with the minimum fields required to make a request.
 --
@@ -124,10 +119,9 @@ newtype StopTrainingEntityRecognizerResponse =
 stopTrainingEntityRecognizerResponse
     :: Int -- ^ 'sterrsResponseStatus'
     -> StopTrainingEntityRecognizerResponse
-stopTrainingEntityRecognizerResponse pResponseStatus_ =
-  StopTrainingEntityRecognizerResponse'
-    {_sterrsResponseStatus = pResponseStatus_}
-
+stopTrainingEntityRecognizerResponse pResponseStatus_
+  = StopTrainingEntityRecognizerResponse'{_sterrsResponseStatus
+                                            = pResponseStatus_}
 
 -- | -- | The response status code.
 sterrsResponseStatus :: Lens' StopTrainingEntityRecognizerResponse Int

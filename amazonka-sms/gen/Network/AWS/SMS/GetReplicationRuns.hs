@@ -47,17 +47,13 @@ import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 import Network.AWS.SMS.Types
-import Network.AWS.SMS.Types.Product
 
 -- | /See:/ 'getReplicationRuns' smart constructor.
-data GetReplicationRuns =
-  GetReplicationRuns'
-    { _grrNextToken        :: !(Maybe Text)
-    , _grrMaxResults       :: !(Maybe Int)
-    , _grrReplicationJobId :: !Text
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data GetReplicationRuns = GetReplicationRuns'{_grrNextToken
+                                              :: !(Maybe Text),
+                                              _grrMaxResults :: !(Maybe Int),
+                                              _grrReplicationJobId :: !Text}
+                            deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'GetReplicationRuns' with the minimum fields required to make a request.
 --
@@ -71,13 +67,10 @@ data GetReplicationRuns =
 getReplicationRuns
     :: Text -- ^ 'grrReplicationJobId'
     -> GetReplicationRuns
-getReplicationRuns pReplicationJobId_ =
-  GetReplicationRuns'
-    { _grrNextToken = Nothing
-    , _grrMaxResults = Nothing
-    , _grrReplicationJobId = pReplicationJobId_
-    }
-
+getReplicationRuns pReplicationJobId_
+  = GetReplicationRuns'{_grrNextToken = Nothing,
+                        _grrMaxResults = Nothing,
+                        _grrReplicationJobId = pReplicationJobId_}
 
 -- | Undocumented member.
 grrNextToken :: Lens' GetReplicationRuns (Maybe Text)
@@ -139,15 +132,20 @@ instance ToQuery GetReplicationRuns where
         toQuery = const mempty
 
 -- | /See:/ 'getReplicationRunsResponse' smart constructor.
-data GetReplicationRunsResponse =
-  GetReplicationRunsResponse'
-    { _grrrsReplicationJob     :: !(Maybe ReplicationJob)
-    , _grrrsNextToken          :: !(Maybe Text)
-    , _grrrsReplicationRunList :: !(Maybe [ReplicationRun])
-    , _grrrsResponseStatus     :: !Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data GetReplicationRunsResponse = GetReplicationRunsResponse'{_grrrsReplicationJob
+                                                              ::
+                                                              !(Maybe
+                                                                  ReplicationJob),
+                                                              _grrrsNextToken ::
+                                                              !(Maybe Text),
+                                                              _grrrsReplicationRunList
+                                                              ::
+                                                              !(Maybe
+                                                                  [ReplicationRun]),
+                                                              _grrrsResponseStatus
+                                                              :: !Int}
+                                    deriving (Eq, Read, Show, Data, Typeable,
+                                              Generic)
 
 -- | Creates a value of 'GetReplicationRunsResponse' with the minimum fields required to make a request.
 --
@@ -163,14 +161,12 @@ data GetReplicationRunsResponse =
 getReplicationRunsResponse
     :: Int -- ^ 'grrrsResponseStatus'
     -> GetReplicationRunsResponse
-getReplicationRunsResponse pResponseStatus_ =
-  GetReplicationRunsResponse'
-    { _grrrsReplicationJob = Nothing
-    , _grrrsNextToken = Nothing
-    , _grrrsReplicationRunList = Nothing
-    , _grrrsResponseStatus = pResponseStatus_
-    }
-
+getReplicationRunsResponse pResponseStatus_
+  = GetReplicationRunsResponse'{_grrrsReplicationJob =
+                                  Nothing,
+                                _grrrsNextToken = Nothing,
+                                _grrrsReplicationRunList = Nothing,
+                                _grrrsResponseStatus = pResponseStatus_}
 
 -- | Undocumented member.
 grrrsReplicationJob :: Lens' GetReplicationRunsResponse (Maybe ReplicationJob)

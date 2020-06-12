@@ -18,7 +18,7 @@
 -- Stability   : auto-generated
 -- Portability : non-portable (GHC extensions)
 --
--- Running @PutPermission@ permits the specified AWS account or AWS organization to put events to the specified /event bus/ . Rules in your account are triggered by these events arriving to an event bus in your account.
+-- Running @PutPermission@ permits the specified AWS account or AWS organization to put events to the specified /event bus/ . Rules in your account are triggered by these events arriving to an event bus in your account. 
 --
 --
 -- For another account to send events to your account, that external account must have a rule with your account's event bus as a target.
@@ -47,23 +47,18 @@ module Network.AWS.CloudWatchEvents.PutPermission
     ) where
 
 import Network.AWS.CloudWatchEvents.Types
-import Network.AWS.CloudWatchEvents.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 
 -- | /See:/ 'putPermission' smart constructor.
-data PutPermission =
-  PutPermission'
-    { _ppEventBusName :: !(Maybe Text)
-    , _ppCondition    :: !(Maybe Condition)
-    , _ppAction       :: !Text
-    , _ppPrincipal    :: !Text
-    , _ppStatementId  :: !Text
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data PutPermission = PutPermission'{_ppEventBusName
+                                    :: !(Maybe Text),
+                                    _ppCondition :: !(Maybe Condition),
+                                    _ppAction :: !Text, _ppPrincipal :: !Text,
+                                    _ppStatementId :: !Text}
+                       deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'PutPermission' with the minimum fields required to make a request.
 --
@@ -83,15 +78,11 @@ putPermission
     -> Text -- ^ 'ppPrincipal'
     -> Text -- ^ 'ppStatementId'
     -> PutPermission
-putPermission pAction_ pPrincipal_ pStatementId_ =
-  PutPermission'
-    { _ppEventBusName = Nothing
-    , _ppCondition = Nothing
-    , _ppAction = pAction_
-    , _ppPrincipal = pPrincipal_
-    , _ppStatementId = pStatementId_
-    }
-
+putPermission pAction_ pPrincipal_ pStatementId_
+  = PutPermission'{_ppEventBusName = Nothing,
+                   _ppCondition = Nothing, _ppAction = pAction_,
+                   _ppPrincipal = pPrincipal_,
+                   _ppStatementId = pStatementId_}
 
 -- | The event bus associated with the rule. If you omit this, the default event bus is used.
 ppEventBusName :: Lens' PutPermission (Maybe Text)
@@ -148,16 +139,14 @@ instance ToQuery PutPermission where
         toQuery = const mempty
 
 -- | /See:/ 'putPermissionResponse' smart constructor.
-data PutPermissionResponse =
-  PutPermissionResponse'
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data PutPermissionResponse = PutPermissionResponse'
+                               deriving (Eq, Read, Show, Data, Typeable,
+                                         Generic)
 
 -- | Creates a value of 'PutPermissionResponse' with the minimum fields required to make a request.
 --
 putPermissionResponse
     :: PutPermissionResponse
 putPermissionResponse = PutPermissionResponse'
-
 
 instance NFData PutPermissionResponse where

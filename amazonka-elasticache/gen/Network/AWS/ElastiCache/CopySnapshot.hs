@@ -25,7 +25,7 @@
 --
 -- You could receive the following error messages.
 --
--- __Error Messages__
+-- __Error Messages__ 
 --
 --     * __Error Message:__ The S3 bucket %s is outside of the region.
 --
@@ -80,7 +80,6 @@ module Network.AWS.ElastiCache.CopySnapshot
     ) where
 
 import Network.AWS.ElastiCache.Types
-import Network.AWS.ElastiCache.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.Request
@@ -91,14 +90,11 @@ import Network.AWS.Response
 --
 --
 -- /See:/ 'copySnapshot' smart constructor.
-data CopySnapshot =
-  CopySnapshot'
-    { _csTargetBucket       :: !(Maybe Text)
-    , _csSourceSnapshotName :: !Text
-    , _csTargetSnapshotName :: !Text
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data CopySnapshot = CopySnapshot'{_csTargetBucket ::
+                                  !(Maybe Text),
+                                  _csSourceSnapshotName :: !Text,
+                                  _csTargetSnapshotName :: !Text}
+                      deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'CopySnapshot' with the minimum fields required to make a request.
 --
@@ -113,13 +109,11 @@ copySnapshot
     :: Text -- ^ 'csSourceSnapshotName'
     -> Text -- ^ 'csTargetSnapshotName'
     -> CopySnapshot
-copySnapshot pSourceSnapshotName_ pTargetSnapshotName_ =
-  CopySnapshot'
-    { _csTargetBucket = Nothing
-    , _csSourceSnapshotName = pSourceSnapshotName_
-    , _csTargetSnapshotName = pTargetSnapshotName_
-    }
-
+copySnapshot pSourceSnapshotName_
+  pTargetSnapshotName_
+  = CopySnapshot'{_csTargetBucket = Nothing,
+                  _csSourceSnapshotName = pSourceSnapshotName_,
+                  _csTargetSnapshotName = pTargetSnapshotName_}
 
 -- | The Amazon S3 bucket to which the snapshot is exported. This parameter is used only when exporting a snapshot for external access. When using this parameter to export a snapshot, be sure Amazon ElastiCache has the needed permissions to this S3 bucket. For more information, see <http://docs.aws.amazon.com/AmazonElastiCache/latest/UserGuide/Snapshots.Exporting.html#Snapshots.Exporting.GrantAccess Step 2: Grant ElastiCache Access to Your Amazon S3 Bucket> in the /Amazon ElastiCache User Guide/ . For more information, see <http://docs.aws.amazon.com/AmazonElastiCache/latest/UserGuide/Snapshots.Exporting.html Exporting a Snapshot> in the /Amazon ElastiCache User Guide/ .
 csTargetBucket :: Lens' CopySnapshot (Maybe Text)
@@ -162,13 +156,10 @@ instance ToQuery CopySnapshot where
                "TargetSnapshotName" =: _csTargetSnapshotName]
 
 -- | /See:/ 'copySnapshotResponse' smart constructor.
-data CopySnapshotResponse =
-  CopySnapshotResponse'
-    { _csrsSnapshot       :: !(Maybe Snapshot)
-    , _csrsResponseStatus :: !Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data CopySnapshotResponse = CopySnapshotResponse'{_csrsSnapshot
+                                                  :: !(Maybe Snapshot),
+                                                  _csrsResponseStatus :: !Int}
+                              deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'CopySnapshotResponse' with the minimum fields required to make a request.
 --
@@ -180,10 +171,9 @@ data CopySnapshotResponse =
 copySnapshotResponse
     :: Int -- ^ 'csrsResponseStatus'
     -> CopySnapshotResponse
-copySnapshotResponse pResponseStatus_ =
-  CopySnapshotResponse'
-    {_csrsSnapshot = Nothing, _csrsResponseStatus = pResponseStatus_}
-
+copySnapshotResponse pResponseStatus_
+  = CopySnapshotResponse'{_csrsSnapshot = Nothing,
+                          _csrsResponseStatus = pResponseStatus_}
 
 -- | Undocumented member.
 csrsSnapshot :: Lens' CopySnapshotResponse (Maybe Snapshot)

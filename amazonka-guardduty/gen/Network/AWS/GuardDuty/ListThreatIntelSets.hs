@@ -41,7 +41,6 @@ module Network.AWS.GuardDuty.ListThreatIntelSets
     ) where
 
 import Network.AWS.GuardDuty.Types
-import Network.AWS.GuardDuty.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Pager
 import Network.AWS.Prelude
@@ -49,14 +48,11 @@ import Network.AWS.Request
 import Network.AWS.Response
 
 -- | /See:/ 'listThreatIntelSets' smart constructor.
-data ListThreatIntelSets =
-  ListThreatIntelSets'
-    { _ltisNextToken  :: !(Maybe Text)
-    , _ltisMaxResults :: !(Maybe Nat)
-    , _ltisDetectorId :: !Text
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data ListThreatIntelSets = ListThreatIntelSets'{_ltisNextToken
+                                                :: !(Maybe Text),
+                                                _ltisMaxResults :: !(Maybe Nat),
+                                                _ltisDetectorId :: !Text}
+                             deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'ListThreatIntelSets' with the minimum fields required to make a request.
 --
@@ -70,13 +66,10 @@ data ListThreatIntelSets =
 listThreatIntelSets
     :: Text -- ^ 'ltisDetectorId'
     -> ListThreatIntelSets
-listThreatIntelSets pDetectorId_ =
-  ListThreatIntelSets'
-    { _ltisNextToken = Nothing
-    , _ltisMaxResults = Nothing
-    , _ltisDetectorId = pDetectorId_
-    }
-
+listThreatIntelSets pDetectorId_
+  = ListThreatIntelSets'{_ltisNextToken = Nothing,
+                         _ltisMaxResults = Nothing,
+                         _ltisDetectorId = pDetectorId_}
 
 -- | Pagination token to start retrieving threat intel sets from.
 ltisNextToken :: Lens' ListThreatIntelSets (Maybe Text)
@@ -133,14 +126,16 @@ instance ToQuery ListThreatIntelSets where
                "maxResults" =: _ltisMaxResults]
 
 -- | /See:/ 'listThreatIntelSetsResponse' smart constructor.
-data ListThreatIntelSetsResponse =
-  ListThreatIntelSetsResponse'
-    { _ltisrsThreatIntelSetIds :: !(Maybe [Text])
-    , _ltisrsNextToken         :: !(Maybe Text)
-    , _ltisrsResponseStatus    :: !Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data ListThreatIntelSetsResponse = ListThreatIntelSetsResponse'{_ltisrsThreatIntelSetIds
+                                                                ::
+                                                                !(Maybe [Text]),
+                                                                _ltisrsNextToken
+                                                                ::
+                                                                !(Maybe Text),
+                                                                _ltisrsResponseStatus
+                                                                :: !Int}
+                                     deriving (Eq, Read, Show, Data, Typeable,
+                                               Generic)
 
 -- | Creates a value of 'ListThreatIntelSetsResponse' with the minimum fields required to make a request.
 --
@@ -154,13 +149,11 @@ data ListThreatIntelSetsResponse =
 listThreatIntelSetsResponse
     :: Int -- ^ 'ltisrsResponseStatus'
     -> ListThreatIntelSetsResponse
-listThreatIntelSetsResponse pResponseStatus_ =
-  ListThreatIntelSetsResponse'
-    { _ltisrsThreatIntelSetIds = Nothing
-    , _ltisrsNextToken = Nothing
-    , _ltisrsResponseStatus = pResponseStatus_
-    }
-
+listThreatIntelSetsResponse pResponseStatus_
+  = ListThreatIntelSetsResponse'{_ltisrsThreatIntelSetIds
+                                   = Nothing,
+                                 _ltisrsNextToken = Nothing,
+                                 _ltisrsResponseStatus = pResponseStatus_}
 
 -- | Undocumented member.
 ltisrsThreatIntelSetIds :: Lens' ListThreatIntelSetsResponse [Text]

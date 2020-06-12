@@ -40,7 +40,6 @@ module Network.AWS.GuardDuty.CreateIPSet
     ) where
 
 import Network.AWS.GuardDuty.Types
-import Network.AWS.GuardDuty.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.Request
@@ -49,16 +48,13 @@ import Network.AWS.Response
 -- | CreateIPSet request body.
 --
 -- /See:/ 'createIPSet' smart constructor.
-data CreateIPSet =
-  CreateIPSet'
-    { _cisLocation   :: !(Maybe Text)
-    , _cisFormat     :: !(Maybe IPSetFormat)
-    , _cisActivate   :: !(Maybe Bool)
-    , _cisName       :: !(Maybe Text)
-    , _cisDetectorId :: !Text
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data CreateIPSet = CreateIPSet'{_cisLocation ::
+                                !(Maybe Text),
+                                _cisFormat :: !(Maybe IPSetFormat),
+                                _cisActivate :: !(Maybe Bool),
+                                _cisName :: !(Maybe Text),
+                                _cisDetectorId :: !Text}
+                     deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'CreateIPSet' with the minimum fields required to make a request.
 --
@@ -76,15 +72,10 @@ data CreateIPSet =
 createIPSet
     :: Text -- ^ 'cisDetectorId'
     -> CreateIPSet
-createIPSet pDetectorId_ =
-  CreateIPSet'
-    { _cisLocation = Nothing
-    , _cisFormat = Nothing
-    , _cisActivate = Nothing
-    , _cisName = Nothing
-    , _cisDetectorId = pDetectorId_
-    }
-
+createIPSet pDetectorId_
+  = CreateIPSet'{_cisLocation = Nothing,
+                 _cisFormat = Nothing, _cisActivate = Nothing,
+                 _cisName = Nothing, _cisDetectorId = pDetectorId_}
 
 -- | The URI of the file that contains the IPSet. For example (https://s3.us-west-2.amazonaws.com/my-bucket/my-object-key)
 cisLocation :: Lens' CreateIPSet (Maybe Text)
@@ -144,13 +135,10 @@ instance ToQuery CreateIPSet where
         toQuery = const mempty
 
 -- | /See:/ 'createIPSetResponse' smart constructor.
-data CreateIPSetResponse =
-  CreateIPSetResponse'
-    { _cisrsIPSetId        :: !(Maybe Text)
-    , _cisrsResponseStatus :: !Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data CreateIPSetResponse = CreateIPSetResponse'{_cisrsIPSetId
+                                                :: !(Maybe Text),
+                                                _cisrsResponseStatus :: !Int}
+                             deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'CreateIPSetResponse' with the minimum fields required to make a request.
 --
@@ -162,10 +150,9 @@ data CreateIPSetResponse =
 createIPSetResponse
     :: Int -- ^ 'cisrsResponseStatus'
     -> CreateIPSetResponse
-createIPSetResponse pResponseStatus_ =
-  CreateIPSetResponse'
-    {_cisrsIPSetId = Nothing, _cisrsResponseStatus = pResponseStatus_}
-
+createIPSetResponse pResponseStatus_
+  = CreateIPSetResponse'{_cisrsIPSetId = Nothing,
+                         _cisrsResponseStatus = pResponseStatus_}
 
 -- | Undocumented member.
 cisrsIPSetId :: Lens' CreateIPSetResponse (Maybe Text)

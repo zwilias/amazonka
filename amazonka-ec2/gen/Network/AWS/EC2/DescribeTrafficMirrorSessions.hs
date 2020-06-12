@@ -45,7 +45,6 @@ module Network.AWS.EC2.DescribeTrafficMirrorSessions
     ) where
 
 import Network.AWS.EC2.Types
-import Network.AWS.EC2.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Pager
 import Network.AWS.Prelude
@@ -53,16 +52,28 @@ import Network.AWS.Request
 import Network.AWS.Response
 
 -- | /See:/ 'describeTrafficMirrorSessions' smart constructor.
-data DescribeTrafficMirrorSessions =
-  DescribeTrafficMirrorSessions'
-    { _dtmsFilters                 :: !(Maybe [Filter])
-    , _dtmsNextToken               :: !(Maybe Text)
-    , _dtmsTrafficMirrorSessionIds :: !(Maybe [Text])
-    , _dtmsDryRun                  :: !(Maybe Bool)
-    , _dtmsMaxResults              :: !(Maybe Nat)
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data DescribeTrafficMirrorSessions = DescribeTrafficMirrorSessions'{_dtmsFilters
+                                                                    ::
+                                                                    !(Maybe
+                                                                        [Filter]),
+                                                                    _dtmsNextToken
+                                                                    ::
+                                                                    !(Maybe
+                                                                        Text),
+                                                                    _dtmsTrafficMirrorSessionIds
+                                                                    ::
+                                                                    !(Maybe
+                                                                        [Text]),
+                                                                    _dtmsDryRun
+                                                                    ::
+                                                                    !(Maybe
+                                                                        Bool),
+                                                                    _dtmsMaxResults
+                                                                    ::
+                                                                    !(Maybe
+                                                                        Nat)}
+                                       deriving (Eq, Read, Show, Data, Typeable,
+                                                 Generic)
 
 -- | Creates a value of 'DescribeTrafficMirrorSessions' with the minimum fields required to make a request.
 --
@@ -79,15 +90,13 @@ data DescribeTrafficMirrorSessions =
 -- * 'dtmsMaxResults' - The maximum number of results to return with a single call. To retrieve the remaining results, make another call with the returned @nextToken@ value.
 describeTrafficMirrorSessions
     :: DescribeTrafficMirrorSessions
-describeTrafficMirrorSessions =
-  DescribeTrafficMirrorSessions'
-    { _dtmsFilters = Nothing
-    , _dtmsNextToken = Nothing
-    , _dtmsTrafficMirrorSessionIds = Nothing
-    , _dtmsDryRun = Nothing
-    , _dtmsMaxResults = Nothing
-    }
-
+describeTrafficMirrorSessions
+  = DescribeTrafficMirrorSessions'{_dtmsFilters =
+                                     Nothing,
+                                   _dtmsNextToken = Nothing,
+                                   _dtmsTrafficMirrorSessionIds = Nothing,
+                                   _dtmsDryRun = Nothing,
+                                   _dtmsMaxResults = Nothing}
 
 -- | One or more filters. The possible values are:     * @description@ : The Traffic Mirror session description.     * @network-interface-id@ : The ID of the Traffic Mirror session network interface.     * @owner-id@ : The ID of the account that owns the Traffic Mirror session.     * @packet-length@ : The assigned number of packets to mirror.      * @session-number@ : The assigned session number.      * @traffic-mirror-filter-id@ : The ID of the Traffic Mirror filter.     * @traffic-mirror-session-id@ : The ID of the Traffic Mirror session.     * @traffic-mirror-target-id@ : The ID of the Traffic Mirror target.     * @virtual-network-id@ : The virtual network ID of the Traffic Mirror session.
 dtmsFilters :: Lens' DescribeTrafficMirrorSessions [Filter]
@@ -156,14 +165,19 @@ instance ToQuery DescribeTrafficMirrorSessions where
                "MaxResults" =: _dtmsMaxResults]
 
 -- | /See:/ 'describeTrafficMirrorSessionsResponse' smart constructor.
-data DescribeTrafficMirrorSessionsResponse =
-  DescribeTrafficMirrorSessionsResponse'
-    { _dtmsrsNextToken             :: !(Maybe Text)
-    , _dtmsrsTrafficMirrorSessions :: !(Maybe [TrafficMirrorSession])
-    , _dtmsrsResponseStatus        :: !Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data DescribeTrafficMirrorSessionsResponse = DescribeTrafficMirrorSessionsResponse'{_dtmsrsNextToken
+                                                                                    ::
+                                                                                    !(Maybe
+                                                                                        Text),
+                                                                                    _dtmsrsTrafficMirrorSessions
+                                                                                    ::
+                                                                                    !(Maybe
+                                                                                        [TrafficMirrorSession]),
+                                                                                    _dtmsrsResponseStatus
+                                                                                    ::
+                                                                                    !Int}
+                                               deriving (Eq, Read, Show, Data,
+                                                         Typeable, Generic)
 
 -- | Creates a value of 'DescribeTrafficMirrorSessionsResponse' with the minimum fields required to make a request.
 --
@@ -177,13 +191,14 @@ data DescribeTrafficMirrorSessionsResponse =
 describeTrafficMirrorSessionsResponse
     :: Int -- ^ 'dtmsrsResponseStatus'
     -> DescribeTrafficMirrorSessionsResponse
-describeTrafficMirrorSessionsResponse pResponseStatus_ =
-  DescribeTrafficMirrorSessionsResponse'
-    { _dtmsrsNextToken = Nothing
-    , _dtmsrsTrafficMirrorSessions = Nothing
-    , _dtmsrsResponseStatus = pResponseStatus_
-    }
-
+describeTrafficMirrorSessionsResponse
+  pResponseStatus_
+  = DescribeTrafficMirrorSessionsResponse'{_dtmsrsNextToken
+                                             = Nothing,
+                                           _dtmsrsTrafficMirrorSessions =
+                                             Nothing,
+                                           _dtmsrsResponseStatus =
+                                             pResponseStatus_}
 
 -- | The token to use to retrieve the next page of results. The value is @null@ when there are no more results to return.
 dtmsrsNextToken :: Lens' DescribeTrafficMirrorSessionsResponse (Maybe Text)

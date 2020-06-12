@@ -53,50 +53,42 @@ module Network.AWS.EC2.StopInstances
     ) where
 
 import Network.AWS.EC2.Types
-import Network.AWS.EC2.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 
 -- | /See:/ 'stopInstances' smart constructor.
-data StopInstances =
-  StopInstances'
-    { _siHibernate   :: !(Maybe Bool)
-    , _siForce       :: !(Maybe Bool)
-    , _siDryRun      :: !(Maybe Bool)
-    , _siInstanceIds :: ![Text]
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data StopInstances = StopInstances'{_siHibernate ::
+                                    !(Maybe Bool),
+                                    _siForce :: !(Maybe Bool),
+                                    _siDryRun :: !(Maybe Bool),
+                                    _siInstanceIds :: ![Text]}
+                       deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'StopInstances' with the minimum fields required to make a request.
 --
 -- Use one of the following lenses to modify other fields as desired:
 --
--- * 'siHibernate' - Hibernates the instance if the instance was enabled for hibernation at launch. If the instance cannot hibernate successfully, a normal shutdown occurs. For more information, see <https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/Hibernate.html Hibernate Your Instance> in the /Amazon Elastic Compute Cloud User Guide/ . Default: @false@
+-- * 'siHibernate' - Hibernates the instance if the instance was enabled for hibernation at launch. If the instance cannot hibernate successfully, a normal shutdown occurs. For more information, see <https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/Hibernate.html Hibernate Your Instance> in the /Amazon Elastic Compute Cloud User Guide/ . Default: @false@ 
 --
--- * 'siForce' - Forces the instances to stop. The instances do not have an opportunity to flush file system caches or file system metadata. If you use this option, you must perform file system check and repair procedures. This option is not recommended for Windows instances. Default: @false@
+-- * 'siForce' - Forces the instances to stop. The instances do not have an opportunity to flush file system caches or file system metadata. If you use this option, you must perform file system check and repair procedures. This option is not recommended for Windows instances. Default: @false@ 
 --
 -- * 'siDryRun' - Checks whether you have the required permissions for the action, without actually making the request, and provides an error response. If you have the required permissions, the error response is @DryRunOperation@ . Otherwise, it is @UnauthorizedOperation@ .
 --
 -- * 'siInstanceIds' - The IDs of the instances.
 stopInstances
     :: StopInstances
-stopInstances =
-  StopInstances'
-    { _siHibernate = Nothing
-    , _siForce = Nothing
-    , _siDryRun = Nothing
-    , _siInstanceIds = mempty
-    }
+stopInstances
+  = StopInstances'{_siHibernate = Nothing,
+                   _siForce = Nothing, _siDryRun = Nothing,
+                   _siInstanceIds = mempty}
 
-
--- | Hibernates the instance if the instance was enabled for hibernation at launch. If the instance cannot hibernate successfully, a normal shutdown occurs. For more information, see <https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/Hibernate.html Hibernate Your Instance> in the /Amazon Elastic Compute Cloud User Guide/ . Default: @false@
+-- | Hibernates the instance if the instance was enabled for hibernation at launch. If the instance cannot hibernate successfully, a normal shutdown occurs. For more information, see <https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/Hibernate.html Hibernate Your Instance> in the /Amazon Elastic Compute Cloud User Guide/ . Default: @false@ 
 siHibernate :: Lens' StopInstances (Maybe Bool)
 siHibernate = lens _siHibernate (\ s a -> s{_siHibernate = a})
 
--- | Forces the instances to stop. The instances do not have an opportunity to flush file system caches or file system metadata. If you use this option, you must perform file system check and repair procedures. This option is not recommended for Windows instances. Default: @false@
+-- | Forces the instances to stop. The instances do not have an opportunity to flush file system caches or file system metadata. If you use this option, you must perform file system check and repair procedures. This option is not recommended for Windows instances. Default: @false@ 
 siForce :: Lens' StopInstances (Maybe Bool)
 siForce = lens _siForce (\ s a -> s{_siForce = a})
 
@@ -139,13 +131,13 @@ instance ToQuery StopInstances where
                toQueryList "InstanceId" _siInstanceIds]
 
 -- | /See:/ 'stopInstancesResponse' smart constructor.
-data StopInstancesResponse =
-  StopInstancesResponse'
-    { _sirsStoppingInstances :: !(Maybe [InstanceStateChange])
-    , _sirsResponseStatus    :: !Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data StopInstancesResponse = StopInstancesResponse'{_sirsStoppingInstances
+                                                    ::
+                                                    !(Maybe
+                                                        [InstanceStateChange]),
+                                                    _sirsResponseStatus :: !Int}
+                               deriving (Eq, Read, Show, Data, Typeable,
+                                         Generic)
 
 -- | Creates a value of 'StopInstancesResponse' with the minimum fields required to make a request.
 --
@@ -157,10 +149,10 @@ data StopInstancesResponse =
 stopInstancesResponse
     :: Int -- ^ 'sirsResponseStatus'
     -> StopInstancesResponse
-stopInstancesResponse pResponseStatus_ =
-  StopInstancesResponse'
-    {_sirsStoppingInstances = Nothing, _sirsResponseStatus = pResponseStatus_}
-
+stopInstancesResponse pResponseStatus_
+  = StopInstancesResponse'{_sirsStoppingInstances =
+                             Nothing,
+                           _sirsResponseStatus = pResponseStatus_}
 
 -- | Information about the stopped instances.
 sirsStoppingInstances :: Lens' StopInstancesResponse [InstanceStateChange]

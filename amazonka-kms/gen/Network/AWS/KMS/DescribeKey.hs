@@ -41,20 +41,16 @@ module Network.AWS.KMS.DescribeKey
     ) where
 
 import Network.AWS.KMS.Types
-import Network.AWS.KMS.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 
 -- | /See:/ 'describeKey' smart constructor.
-data DescribeKey =
-  DescribeKey'
-    { _dGrantTokens :: !(Maybe [Text])
-    , _dKeyId       :: !Text
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data DescribeKey = DescribeKey'{_dGrantTokens ::
+                                !(Maybe [Text]),
+                                _dKeyId :: !Text}
+                     deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'DescribeKey' with the minimum fields required to make a request.
 --
@@ -66,8 +62,9 @@ data DescribeKey =
 describeKey
     :: Text -- ^ 'dKeyId'
     -> DescribeKey
-describeKey pKeyId_ = DescribeKey' {_dGrantTokens = Nothing, _dKeyId = pKeyId_}
-
+describeKey pKeyId_
+  = DescribeKey'{_dGrantTokens = Nothing,
+                 _dKeyId = pKeyId_}
 
 -- | A list of grant tokens. For more information, see <http://docs.aws.amazon.com/kms/latest/developerguide/concepts.html#grant_token Grant Tokens> in the /AWS Key Management Service Developer Guide/ .
 dGrantTokens :: Lens' DescribeKey [Text]
@@ -113,13 +110,10 @@ instance ToQuery DescribeKey where
         toQuery = const mempty
 
 -- | /See:/ 'describeKeyResponse' smart constructor.
-data DescribeKeyResponse =
-  DescribeKeyResponse'
-    { _dkrsKeyMetadata    :: !(Maybe KeyMetadata)
-    , _dkrsResponseStatus :: !Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data DescribeKeyResponse = DescribeKeyResponse'{_dkrsKeyMetadata
+                                                :: !(Maybe KeyMetadata),
+                                                _dkrsResponseStatus :: !Int}
+                             deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'DescribeKeyResponse' with the minimum fields required to make a request.
 --
@@ -131,10 +125,9 @@ data DescribeKeyResponse =
 describeKeyResponse
     :: Int -- ^ 'dkrsResponseStatus'
     -> DescribeKeyResponse
-describeKeyResponse pResponseStatus_ =
-  DescribeKeyResponse'
-    {_dkrsKeyMetadata = Nothing, _dkrsResponseStatus = pResponseStatus_}
-
+describeKeyResponse pResponseStatus_
+  = DescribeKeyResponse'{_dkrsKeyMetadata = Nothing,
+                         _dkrsResponseStatus = pResponseStatus_}
 
 -- | Metadata associated with the key.
 dkrsKeyMetadata :: Lens' DescribeKeyResponse (Maybe KeyMetadata)

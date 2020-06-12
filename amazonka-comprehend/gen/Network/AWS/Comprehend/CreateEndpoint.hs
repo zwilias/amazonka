@@ -18,7 +18,7 @@
 -- Stability   : auto-generated
 -- Portability : non-portable (GHC extensions)
 --
--- Creates a model-specific endpoint for synchronous inference for a previously trained custom model
+-- Creates a model-specific endpoint for synchronous inference for a previously trained custom model 
 --
 --
 module Network.AWS.Comprehend.CreateEndpoint
@@ -42,33 +42,29 @@ module Network.AWS.Comprehend.CreateEndpoint
     ) where
 
 import Network.AWS.Comprehend.Types
-import Network.AWS.Comprehend.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 
 -- | /See:/ 'createEndpoint' smart constructor.
-data CreateEndpoint =
-  CreateEndpoint'
-    { _ceClientRequestToken    :: !(Maybe Text)
-    , _ceTags                  :: !(Maybe [Tag])
-    , _ceEndpointName          :: !Text
-    , _ceModelARN              :: !Text
-    , _ceDesiredInferenceUnits :: !Nat
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data CreateEndpoint = CreateEndpoint'{_ceClientRequestToken
+                                      :: !(Maybe Text),
+                                      _ceTags :: !(Maybe [Tag]),
+                                      _ceEndpointName :: !Text,
+                                      _ceModelARN :: !Text,
+                                      _ceDesiredInferenceUnits :: !Nat}
+                        deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'CreateEndpoint' with the minimum fields required to make a request.
 --
 -- Use one of the following lenses to modify other fields as desired:
 --
--- * 'ceClientRequestToken' - An idempotency token provided by the customer. If this token matches a previous endpoint creation request, Amazon Comprehend will not return a @ResourceInUseException@ .
+-- * 'ceClientRequestToken' - An idempotency token provided by the customer. If this token matches a previous endpoint creation request, Amazon Comprehend will not return a @ResourceInUseException@ . 
 --
--- * 'ceTags' - Tags associated with the endpoint being created. A tag is a key-value pair that adds metadata to the endpoint. For example, a tag with "Sales" as the key might be added to an endpoint to indicate its use by the sales department.
+-- * 'ceTags' - Tags associated with the endpoint being created. A tag is a key-value pair that adds metadata to the endpoint. For example, a tag with "Sales" as the key might be added to an endpoint to indicate its use by the sales department. 
 --
--- * 'ceEndpointName' - This is the descriptive suffix that becomes part of the @EndpointArn@ used for all subsequent requests to this resource.
+-- * 'ceEndpointName' - This is the descriptive suffix that becomes part of the @EndpointArn@ used for all subsequent requests to this resource. 
 --
 -- * 'ceModelARN' - The Amazon Resource Number (ARN) of the model to which the endpoint will be attached.
 --
@@ -78,25 +74,23 @@ createEndpoint
     -> Text -- ^ 'ceModelARN'
     -> Natural -- ^ 'ceDesiredInferenceUnits'
     -> CreateEndpoint
-createEndpoint pEndpointName_ pModelARN_ pDesiredInferenceUnits_ =
-  CreateEndpoint'
-    { _ceClientRequestToken = Nothing
-    , _ceTags = Nothing
-    , _ceEndpointName = pEndpointName_
-    , _ceModelARN = pModelARN_
-    , _ceDesiredInferenceUnits = _Nat # pDesiredInferenceUnits_
-    }
+createEndpoint pEndpointName_ pModelARN_
+  pDesiredInferenceUnits_
+  = CreateEndpoint'{_ceClientRequestToken = Nothing,
+                    _ceTags = Nothing, _ceEndpointName = pEndpointName_,
+                    _ceModelARN = pModelARN_,
+                    _ceDesiredInferenceUnits =
+                      _Nat # pDesiredInferenceUnits_}
 
-
--- | An idempotency token provided by the customer. If this token matches a previous endpoint creation request, Amazon Comprehend will not return a @ResourceInUseException@ .
+-- | An idempotency token provided by the customer. If this token matches a previous endpoint creation request, Amazon Comprehend will not return a @ResourceInUseException@ . 
 ceClientRequestToken :: Lens' CreateEndpoint (Maybe Text)
 ceClientRequestToken = lens _ceClientRequestToken (\ s a -> s{_ceClientRequestToken = a})
 
--- | Tags associated with the endpoint being created. A tag is a key-value pair that adds metadata to the endpoint. For example, a tag with "Sales" as the key might be added to an endpoint to indicate its use by the sales department.
+-- | Tags associated with the endpoint being created. A tag is a key-value pair that adds metadata to the endpoint. For example, a tag with "Sales" as the key might be added to an endpoint to indicate its use by the sales department. 
 ceTags :: Lens' CreateEndpoint [Tag]
 ceTags = lens _ceTags (\ s a -> s{_ceTags = a}) . _Default . _Coerce
 
--- | This is the descriptive suffix that becomes part of the @EndpointArn@ used for all subsequent requests to this resource.
+-- | This is the descriptive suffix that becomes part of the @EndpointArn@ used for all subsequent requests to this resource. 
 ceEndpointName :: Lens' CreateEndpoint Text
 ceEndpointName = lens _ceEndpointName (\ s a -> s{_ceEndpointName = a})
 
@@ -149,13 +143,12 @@ instance ToQuery CreateEndpoint where
         toQuery = const mempty
 
 -- | /See:/ 'createEndpointResponse' smart constructor.
-data CreateEndpointResponse =
-  CreateEndpointResponse'
-    { _cersEndpointARN    :: !(Maybe Text)
-    , _cersResponseStatus :: !Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data CreateEndpointResponse = CreateEndpointResponse'{_cersEndpointARN
+                                                      :: !(Maybe Text),
+                                                      _cersResponseStatus ::
+                                                      !Int}
+                                deriving (Eq, Read, Show, Data, Typeable,
+                                          Generic)
 
 -- | Creates a value of 'CreateEndpointResponse' with the minimum fields required to make a request.
 --
@@ -167,10 +160,9 @@ data CreateEndpointResponse =
 createEndpointResponse
     :: Int -- ^ 'cersResponseStatus'
     -> CreateEndpointResponse
-createEndpointResponse pResponseStatus_ =
-  CreateEndpointResponse'
-    {_cersEndpointARN = Nothing, _cersResponseStatus = pResponseStatus_}
-
+createEndpointResponse pResponseStatus_
+  = CreateEndpointResponse'{_cersEndpointARN = Nothing,
+                            _cersResponseStatus = pResponseStatus_}
 
 -- | The Amazon Resource Number (ARN) of the endpoint being created.
 cersEndpointARN :: Lens' CreateEndpointResponse (Maybe Text)

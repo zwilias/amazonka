@@ -41,20 +41,18 @@ module Network.AWS.EC2.DescribeConversionTasks
     ) where
 
 import Network.AWS.EC2.Types
-import Network.AWS.EC2.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 
 -- | /See:/ 'describeConversionTasks' smart constructor.
-data DescribeConversionTasks =
-  DescribeConversionTasks'
-    { _dctConversionTaskIds :: !(Maybe [Text])
-    , _dctDryRun            :: !(Maybe Bool)
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data DescribeConversionTasks = DescribeConversionTasks'{_dctConversionTaskIds
+                                                        :: !(Maybe [Text]),
+                                                        _dctDryRun ::
+                                                        !(Maybe Bool)}
+                                 deriving (Eq, Read, Show, Data, Typeable,
+                                           Generic)
 
 -- | Creates a value of 'DescribeConversionTasks' with the minimum fields required to make a request.
 --
@@ -65,10 +63,10 @@ data DescribeConversionTasks =
 -- * 'dctDryRun' - Checks whether you have the required permissions for the action, without actually making the request, and provides an error response. If you have the required permissions, the error response is @DryRunOperation@ . Otherwise, it is @UnauthorizedOperation@ .
 describeConversionTasks
     :: DescribeConversionTasks
-describeConversionTasks =
-  DescribeConversionTasks'
-    {_dctConversionTaskIds = Nothing, _dctDryRun = Nothing}
-
+describeConversionTasks
+  = DescribeConversionTasks'{_dctConversionTaskIds =
+                               Nothing,
+                             _dctDryRun = Nothing}
 
 -- | The conversion task IDs.
 dctConversionTaskIds :: Lens' DescribeConversionTasks [Text]
@@ -112,13 +110,14 @@ instance ToQuery DescribeConversionTasks where
                "DryRun" =: _dctDryRun]
 
 -- | /See:/ 'describeConversionTasksResponse' smart constructor.
-data DescribeConversionTasksResponse =
-  DescribeConversionTasksResponse'
-    { _dctrsConversionTasks :: !(Maybe [ConversionTask])
-    , _dctrsResponseStatus  :: !Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data DescribeConversionTasksResponse = DescribeConversionTasksResponse'{_dctrsConversionTasks
+                                                                        ::
+                                                                        !(Maybe
+                                                                            [ConversionTask]),
+                                                                        _dctrsResponseStatus
+                                                                        :: !Int}
+                                         deriving (Eq, Read, Show, Data,
+                                                   Typeable, Generic)
 
 -- | Creates a value of 'DescribeConversionTasksResponse' with the minimum fields required to make a request.
 --
@@ -130,10 +129,10 @@ data DescribeConversionTasksResponse =
 describeConversionTasksResponse
     :: Int -- ^ 'dctrsResponseStatus'
     -> DescribeConversionTasksResponse
-describeConversionTasksResponse pResponseStatus_ =
-  DescribeConversionTasksResponse'
-    {_dctrsConversionTasks = Nothing, _dctrsResponseStatus = pResponseStatus_}
-
+describeConversionTasksResponse pResponseStatus_
+  = DescribeConversionTasksResponse'{_dctrsConversionTasks
+                                       = Nothing,
+                                     _dctrsResponseStatus = pResponseStatus_}
 
 -- | Information about the conversion tasks.
 dctrsConversionTasks :: Lens' DescribeConversionTasksResponse [ConversionTask]

@@ -44,16 +44,17 @@ import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 import Network.AWS.S3.Types
-import Network.AWS.S3.Types.Product
 
 -- | /See:/ 'listBucketMetricsConfigurations' smart constructor.
-data ListBucketMetricsConfigurations =
-  ListBucketMetricsConfigurations'
-    { _lbmcContinuationToken :: !(Maybe Text)
-    , _lbmcBucket            :: !BucketName
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data ListBucketMetricsConfigurations = ListBucketMetricsConfigurations'{_lbmcContinuationToken
+                                                                        ::
+                                                                        !(Maybe
+                                                                            Text),
+                                                                        _lbmcBucket
+                                                                        ::
+                                                                        !BucketName}
+                                         deriving (Eq, Read, Show, Data,
+                                                   Typeable, Generic)
 
 -- | Creates a value of 'ListBucketMetricsConfigurations' with the minimum fields required to make a request.
 --
@@ -65,10 +66,10 @@ data ListBucketMetricsConfigurations =
 listBucketMetricsConfigurations
     :: BucketName -- ^ 'lbmcBucket'
     -> ListBucketMetricsConfigurations
-listBucketMetricsConfigurations pBucket_ =
-  ListBucketMetricsConfigurations'
-    {_lbmcContinuationToken = Nothing, _lbmcBucket = pBucket_}
-
+listBucketMetricsConfigurations pBucket_
+  = ListBucketMetricsConfigurations'{_lbmcContinuationToken
+                                       = Nothing,
+                                     _lbmcBucket = pBucket_}
 
 -- | The marker that is used to continue a metrics configuration listing that has been truncated. Use the NextContinuationToken from a previously truncated list response to continue the listing. The continuation token is an opaque value that Amazon S3 understands.
 lbmcContinuationToken :: Lens' ListBucketMetricsConfigurations (Maybe Text)
@@ -114,16 +115,27 @@ instance ToQuery ListBucketMetricsConfigurations
                "metrics"]
 
 -- | /See:/ 'listBucketMetricsConfigurationsResponse' smart constructor.
-data ListBucketMetricsConfigurationsResponse =
-  ListBucketMetricsConfigurationsResponse'
-    { _lbmcrsContinuationToken        :: !(Maybe Text)
-    , _lbmcrsMetricsConfigurationList :: !(Maybe [MetricsConfiguration])
-    , _lbmcrsNextContinuationToken    :: !(Maybe Text)
-    , _lbmcrsIsTruncated              :: !(Maybe Bool)
-    , _lbmcrsResponseStatus           :: !Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data ListBucketMetricsConfigurationsResponse = ListBucketMetricsConfigurationsResponse'{_lbmcrsContinuationToken
+                                                                                        ::
+                                                                                        !(Maybe
+                                                                                            Text),
+                                                                                        _lbmcrsMetricsConfigurationList
+                                                                                        ::
+                                                                                        !(Maybe
+                                                                                            [MetricsConfiguration]),
+                                                                                        _lbmcrsNextContinuationToken
+                                                                                        ::
+                                                                                        !(Maybe
+                                                                                            Text),
+                                                                                        _lbmcrsIsTruncated
+                                                                                        ::
+                                                                                        !(Maybe
+                                                                                            Bool),
+                                                                                        _lbmcrsResponseStatus
+                                                                                        ::
+                                                                                        !Int}
+                                                 deriving (Eq, Read, Show, Data,
+                                                           Typeable, Generic)
 
 -- | Creates a value of 'ListBucketMetricsConfigurationsResponse' with the minimum fields required to make a request.
 --
@@ -141,15 +153,17 @@ data ListBucketMetricsConfigurationsResponse =
 listBucketMetricsConfigurationsResponse
     :: Int -- ^ 'lbmcrsResponseStatus'
     -> ListBucketMetricsConfigurationsResponse
-listBucketMetricsConfigurationsResponse pResponseStatus_ =
-  ListBucketMetricsConfigurationsResponse'
-    { _lbmcrsContinuationToken = Nothing
-    , _lbmcrsMetricsConfigurationList = Nothing
-    , _lbmcrsNextContinuationToken = Nothing
-    , _lbmcrsIsTruncated = Nothing
-    , _lbmcrsResponseStatus = pResponseStatus_
-    }
-
+listBucketMetricsConfigurationsResponse
+  pResponseStatus_
+  = ListBucketMetricsConfigurationsResponse'{_lbmcrsContinuationToken
+                                               = Nothing,
+                                             _lbmcrsMetricsConfigurationList =
+                                               Nothing,
+                                             _lbmcrsNextContinuationToken =
+                                               Nothing,
+                                             _lbmcrsIsTruncated = Nothing,
+                                             _lbmcrsResponseStatus =
+                                               pResponseStatus_}
 
 -- | The marker that is used as a starting point for this metrics configuration list response. This value is present if it was sent in the request.
 lbmcrsContinuationToken :: Lens' ListBucketMetricsConfigurationsResponse (Maybe Text)

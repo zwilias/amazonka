@@ -40,20 +40,17 @@ module Network.AWS.Comprehend.BatchDetectSentiment
     ) where
 
 import Network.AWS.Comprehend.Types
-import Network.AWS.Comprehend.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 
 -- | /See:/ 'batchDetectSentiment' smart constructor.
-data BatchDetectSentiment =
-  BatchDetectSentiment'
-    { _bdsTextList     :: ![Text]
-    , _bdsLanguageCode :: !LanguageCode
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data BatchDetectSentiment = BatchDetectSentiment'{_bdsTextList
+                                                  :: ![Text],
+                                                  _bdsLanguageCode ::
+                                                  !LanguageCode}
+                              deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'BatchDetectSentiment' with the minimum fields required to make a request.
 --
@@ -65,10 +62,9 @@ data BatchDetectSentiment =
 batchDetectSentiment
     :: LanguageCode -- ^ 'bdsLanguageCode'
     -> BatchDetectSentiment
-batchDetectSentiment pLanguageCode_ =
-  BatchDetectSentiment'
-    {_bdsTextList = mempty, _bdsLanguageCode = pLanguageCode_}
-
+batchDetectSentiment pLanguageCode_
+  = BatchDetectSentiment'{_bdsTextList = mempty,
+                          _bdsLanguageCode = pLanguageCode_}
 
 -- | A list containing the text of the input documents. The list can contain a maximum of 25 documents. Each document must contain fewer that 5,000 bytes of UTF-8 encoded characters.
 bdsTextList :: Lens' BatchDetectSentiment [Text]
@@ -118,14 +114,16 @@ instance ToQuery BatchDetectSentiment where
         toQuery = const mempty
 
 -- | /See:/ 'batchDetectSentimentResponse' smart constructor.
-data BatchDetectSentimentResponse =
-  BatchDetectSentimentResponse'
-    { _bdsrsResponseStatus :: !Int
-    , _bdsrsResultList     :: ![BatchDetectSentimentItemResult]
-    , _bdsrsErrorList      :: ![BatchItemError]
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data BatchDetectSentimentResponse = BatchDetectSentimentResponse'{_bdsrsResponseStatus
+                                                                  :: !Int,
+                                                                  _bdsrsResultList
+                                                                  ::
+                                                                  ![BatchDetectSentimentItemResult],
+                                                                  _bdsrsErrorList
+                                                                  ::
+                                                                  ![BatchItemError]}
+                                      deriving (Eq, Read, Show, Data, Typeable,
+                                                Generic)
 
 -- | Creates a value of 'BatchDetectSentimentResponse' with the minimum fields required to make a request.
 --
@@ -139,13 +137,11 @@ data BatchDetectSentimentResponse =
 batchDetectSentimentResponse
     :: Int -- ^ 'bdsrsResponseStatus'
     -> BatchDetectSentimentResponse
-batchDetectSentimentResponse pResponseStatus_ =
-  BatchDetectSentimentResponse'
-    { _bdsrsResponseStatus = pResponseStatus_
-    , _bdsrsResultList = mempty
-    , _bdsrsErrorList = mempty
-    }
-
+batchDetectSentimentResponse pResponseStatus_
+  = BatchDetectSentimentResponse'{_bdsrsResponseStatus
+                                    = pResponseStatus_,
+                                  _bdsrsResultList = mempty,
+                                  _bdsrsErrorList = mempty}
 
 -- | -- | The response status code.
 bdsrsResponseStatus :: Lens' BatchDetectSentimentResponse Int

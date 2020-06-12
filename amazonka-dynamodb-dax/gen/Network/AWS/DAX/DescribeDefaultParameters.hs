@@ -42,7 +42,6 @@ module Network.AWS.DAX.DescribeDefaultParameters
     ) where
 
 import Network.AWS.DAX.Types
-import Network.AWS.DAX.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Pager
 import Network.AWS.Prelude
@@ -50,13 +49,12 @@ import Network.AWS.Request
 import Network.AWS.Response
 
 -- | /See:/ 'describeDefaultParameters' smart constructor.
-data DescribeDefaultParameters =
-  DescribeDefaultParameters'
-    { _ddpNextToken  :: !(Maybe Text)
-    , _ddpMaxResults :: !(Maybe Int)
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data DescribeDefaultParameters = DescribeDefaultParameters'{_ddpNextToken
+                                                            :: !(Maybe Text),
+                                                            _ddpMaxResults ::
+                                                            !(Maybe Int)}
+                                   deriving (Eq, Read, Show, Data, Typeable,
+                                             Generic)
 
 -- | Creates a value of 'DescribeDefaultParameters' with the minimum fields required to make a request.
 --
@@ -67,9 +65,9 @@ data DescribeDefaultParameters =
 -- * 'ddpMaxResults' - The maximum number of results to include in the response. If more results exist than the specified @MaxResults@ value, a token is included in the response so that the remaining results can be retrieved. The value for @MaxResults@ must be between 20 and 100.
 describeDefaultParameters
     :: DescribeDefaultParameters
-describeDefaultParameters =
-  DescribeDefaultParameters' {_ddpNextToken = Nothing, _ddpMaxResults = Nothing}
-
+describeDefaultParameters
+  = DescribeDefaultParameters'{_ddpNextToken = Nothing,
+                               _ddpMaxResults = Nothing}
 
 -- | An optional token returned from a prior request. Use this token for pagination of results from this action. If this parameter is specified, the response includes only results beyond the token, up to the value specified by @MaxResults@ .
 ddpNextToken :: Lens' DescribeDefaultParameters (Maybe Text)
@@ -126,14 +124,19 @@ instance ToQuery DescribeDefaultParameters where
         toQuery = const mempty
 
 -- | /See:/ 'describeDefaultParametersResponse' smart constructor.
-data DescribeDefaultParametersResponse =
-  DescribeDefaultParametersResponse'
-    { _ddprsNextToken      :: !(Maybe Text)
-    , _ddprsParameters     :: !(Maybe [Parameter])
-    , _ddprsResponseStatus :: !Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data DescribeDefaultParametersResponse = DescribeDefaultParametersResponse'{_ddprsNextToken
+                                                                            ::
+                                                                            !(Maybe
+                                                                                Text),
+                                                                            _ddprsParameters
+                                                                            ::
+                                                                            !(Maybe
+                                                                                [Parameter]),
+                                                                            _ddprsResponseStatus
+                                                                            ::
+                                                                            !Int}
+                                           deriving (Eq, Read, Show, Data,
+                                                     Typeable, Generic)
 
 -- | Creates a value of 'DescribeDefaultParametersResponse' with the minimum fields required to make a request.
 --
@@ -147,13 +150,11 @@ data DescribeDefaultParametersResponse =
 describeDefaultParametersResponse
     :: Int -- ^ 'ddprsResponseStatus'
     -> DescribeDefaultParametersResponse
-describeDefaultParametersResponse pResponseStatus_ =
-  DescribeDefaultParametersResponse'
-    { _ddprsNextToken = Nothing
-    , _ddprsParameters = Nothing
-    , _ddprsResponseStatus = pResponseStatus_
-    }
-
+describeDefaultParametersResponse pResponseStatus_
+  = DescribeDefaultParametersResponse'{_ddprsNextToken
+                                         = Nothing,
+                                       _ddprsParameters = Nothing,
+                                       _ddprsResponseStatus = pResponseStatus_}
 
 -- | Provides an identifier to allow retrieval of paginated results.
 ddprsNextToken :: Lens' DescribeDefaultParametersResponse (Maybe Text)

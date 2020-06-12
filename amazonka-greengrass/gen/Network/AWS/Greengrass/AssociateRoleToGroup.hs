@@ -37,20 +37,16 @@ module Network.AWS.Greengrass.AssociateRoleToGroup
     ) where
 
 import Network.AWS.Greengrass.Types
-import Network.AWS.Greengrass.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 
 -- | /See:/ 'associateRoleToGroup' smart constructor.
-data AssociateRoleToGroup =
-  AssociateRoleToGroup'
-    { _artgRoleARN :: !(Maybe Text)
-    , _artgGroupId :: !Text
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data AssociateRoleToGroup = AssociateRoleToGroup'{_artgRoleARN
+                                                  :: !(Maybe Text),
+                                                  _artgGroupId :: !Text}
+                              deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'AssociateRoleToGroup' with the minimum fields required to make a request.
 --
@@ -62,9 +58,9 @@ data AssociateRoleToGroup =
 associateRoleToGroup
     :: Text -- ^ 'artgGroupId'
     -> AssociateRoleToGroup
-associateRoleToGroup pGroupId_ =
-  AssociateRoleToGroup' {_artgRoleARN = Nothing, _artgGroupId = pGroupId_}
-
+associateRoleToGroup pGroupId_
+  = AssociateRoleToGroup'{_artgRoleARN = Nothing,
+                          _artgGroupId = pGroupId_}
 
 -- | The ARN of the role you wish to associate with this group.
 artgRoleARN :: Lens' AssociateRoleToGroup (Maybe Text)
@@ -109,13 +105,13 @@ instance ToQuery AssociateRoleToGroup where
         toQuery = const mempty
 
 -- | /See:/ 'associateRoleToGroupResponse' smart constructor.
-data AssociateRoleToGroupResponse =
-  AssociateRoleToGroupResponse'
-    { _artgrsAssociatedAt   :: !(Maybe Text)
-    , _artgrsResponseStatus :: !Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data AssociateRoleToGroupResponse = AssociateRoleToGroupResponse'{_artgrsAssociatedAt
+                                                                  ::
+                                                                  !(Maybe Text),
+                                                                  _artgrsResponseStatus
+                                                                  :: !Int}
+                                      deriving (Eq, Read, Show, Data, Typeable,
+                                                Generic)
 
 -- | Creates a value of 'AssociateRoleToGroupResponse' with the minimum fields required to make a request.
 --
@@ -127,10 +123,10 @@ data AssociateRoleToGroupResponse =
 associateRoleToGroupResponse
     :: Int -- ^ 'artgrsResponseStatus'
     -> AssociateRoleToGroupResponse
-associateRoleToGroupResponse pResponseStatus_ =
-  AssociateRoleToGroupResponse'
-    {_artgrsAssociatedAt = Nothing, _artgrsResponseStatus = pResponseStatus_}
-
+associateRoleToGroupResponse pResponseStatus_
+  = AssociateRoleToGroupResponse'{_artgrsAssociatedAt =
+                                    Nothing,
+                                  _artgrsResponseStatus = pResponseStatus_}
 
 -- | The time, in milliseconds since the epoch, when the role ARN was associated with the group.
 artgrsAssociatedAt :: Lens' AssociateRoleToGroupResponse (Maybe Text)

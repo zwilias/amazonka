@@ -46,7 +46,6 @@ module Network.AWS.AutoScaling.DescribeScheduledActions
     ) where
 
 import Network.AWS.AutoScaling.Types
-import Network.AWS.AutoScaling.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Pager
 import Network.AWS.Prelude
@@ -54,17 +53,20 @@ import Network.AWS.Request
 import Network.AWS.Response
 
 -- | /See:/ 'describeScheduledActions' smart constructor.
-data DescribeScheduledActions =
-  DescribeScheduledActions'
-    { _dsasStartTime            :: !(Maybe ISO8601)
-    , _dsasNextToken            :: !(Maybe Text)
-    , _dsasAutoScalingGroupName :: !(Maybe Text)
-    , _dsasMaxRecords           :: !(Maybe Int)
-    , _dsasEndTime              :: !(Maybe ISO8601)
-    , _dsasScheduledActionNames :: !(Maybe [Text])
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data DescribeScheduledActions = DescribeScheduledActions'{_dsasStartTime
+                                                          :: !(Maybe ISO8601),
+                                                          _dsasNextToken ::
+                                                          !(Maybe Text),
+                                                          _dsasAutoScalingGroupName
+                                                          :: !(Maybe Text),
+                                                          _dsasMaxRecords ::
+                                                          !(Maybe Int),
+                                                          _dsasEndTime ::
+                                                          !(Maybe ISO8601),
+                                                          _dsasScheduledActionNames
+                                                          :: !(Maybe [Text])}
+                                  deriving (Eq, Read, Show, Data, Typeable,
+                                            Generic)
 
 -- | Creates a value of 'DescribeScheduledActions' with the minimum fields required to make a request.
 --
@@ -83,16 +85,12 @@ data DescribeScheduledActions =
 -- * 'dsasScheduledActionNames' - The names of one or more scheduled actions. You can specify up to 50 actions. If you omit this parameter, all scheduled actions are described. If you specify an unknown scheduled action, it is ignored with no error.
 describeScheduledActions
     :: DescribeScheduledActions
-describeScheduledActions =
-  DescribeScheduledActions'
-    { _dsasStartTime = Nothing
-    , _dsasNextToken = Nothing
-    , _dsasAutoScalingGroupName = Nothing
-    , _dsasMaxRecords = Nothing
-    , _dsasEndTime = Nothing
-    , _dsasScheduledActionNames = Nothing
-    }
-
+describeScheduledActions
+  = DescribeScheduledActions'{_dsasStartTime = Nothing,
+                              _dsasNextToken = Nothing,
+                              _dsasAutoScalingGroupName = Nothing,
+                              _dsasMaxRecords = Nothing, _dsasEndTime = Nothing,
+                              _dsasScheduledActionNames = Nothing}
 
 -- | The earliest scheduled start time to return. If scheduled action names are provided, this parameter is ignored.
 dsasStartTime :: Lens' DescribeScheduledActions (Maybe UTCTime)
@@ -165,14 +163,19 @@ instance ToQuery DescribeScheduledActions where
                    (toQueryList "member" <$> _dsasScheduledActionNames)]
 
 -- | /See:/ 'describeScheduledActionsResponse' smart constructor.
-data DescribeScheduledActionsResponse =
-  DescribeScheduledActionsResponse'
-    { _dsarsScheduledUpdateGroupActions :: !(Maybe [ScheduledUpdateGroupAction])
-    , _dsarsNextToken                   :: !(Maybe Text)
-    , _dsarsResponseStatus              :: !Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data DescribeScheduledActionsResponse = DescribeScheduledActionsResponse'{_dsarsScheduledUpdateGroupActions
+                                                                          ::
+                                                                          !(Maybe
+                                                                              [ScheduledUpdateGroupAction]),
+                                                                          _dsarsNextToken
+                                                                          ::
+                                                                          !(Maybe
+                                                                              Text),
+                                                                          _dsarsResponseStatus
+                                                                          ::
+                                                                          !Int}
+                                          deriving (Eq, Read, Show, Data,
+                                                    Typeable, Generic)
 
 -- | Creates a value of 'DescribeScheduledActionsResponse' with the minimum fields required to make a request.
 --
@@ -186,13 +189,11 @@ data DescribeScheduledActionsResponse =
 describeScheduledActionsResponse
     :: Int -- ^ 'dsarsResponseStatus'
     -> DescribeScheduledActionsResponse
-describeScheduledActionsResponse pResponseStatus_ =
-  DescribeScheduledActionsResponse'
-    { _dsarsScheduledUpdateGroupActions = Nothing
-    , _dsarsNextToken = Nothing
-    , _dsarsResponseStatus = pResponseStatus_
-    }
-
+describeScheduledActionsResponse pResponseStatus_
+  = DescribeScheduledActionsResponse'{_dsarsScheduledUpdateGroupActions
+                                        = Nothing,
+                                      _dsarsNextToken = Nothing,
+                                      _dsarsResponseStatus = pResponseStatus_}
 
 -- | The scheduled actions.
 dsarsScheduledUpdateGroupActions :: Lens' DescribeScheduledActionsResponse [ScheduledUpdateGroupAction]

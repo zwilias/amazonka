@@ -39,20 +39,16 @@ module Network.AWS.ECS.DeleteService
     ) where
 
 import Network.AWS.ECS.Types
-import Network.AWS.ECS.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 
 -- | /See:/ 'deleteService' smart constructor.
-data DeleteService =
-  DeleteService'
-    { _dsCluster :: !(Maybe Text)
-    , _dsService :: !Text
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data DeleteService = DeleteService'{_dsCluster ::
+                                    !(Maybe Text),
+                                    _dsService :: !Text}
+                       deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'DeleteService' with the minimum fields required to make a request.
 --
@@ -64,9 +60,9 @@ data DeleteService =
 deleteService
     :: Text -- ^ 'dsService'
     -> DeleteService
-deleteService pService_ =
-  DeleteService' {_dsCluster = Nothing, _dsService = pService_}
-
+deleteService pService_
+  = DeleteService'{_dsCluster = Nothing,
+                   _dsService = pService_}
 
 -- | The short name or full Amazon Resource Name (ARN) of the cluster that hosts the service to delete. If you do not specify a cluster, the default cluster is assumed.
 dsCluster :: Lens' DeleteService (Maybe Text)
@@ -113,13 +109,12 @@ instance ToQuery DeleteService where
         toQuery = const mempty
 
 -- | /See:/ 'deleteServiceResponse' smart constructor.
-data DeleteServiceResponse =
-  DeleteServiceResponse'
-    { _dsrsService        :: !(Maybe ContainerService)
-    , _dsrsResponseStatus :: !Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data DeleteServiceResponse = DeleteServiceResponse'{_dsrsService
+                                                    ::
+                                                    !(Maybe ContainerService),
+                                                    _dsrsResponseStatus :: !Int}
+                               deriving (Eq, Read, Show, Data, Typeable,
+                                         Generic)
 
 -- | Creates a value of 'DeleteServiceResponse' with the minimum fields required to make a request.
 --
@@ -131,10 +126,9 @@ data DeleteServiceResponse =
 deleteServiceResponse
     :: Int -- ^ 'dsrsResponseStatus'
     -> DeleteServiceResponse
-deleteServiceResponse pResponseStatus_ =
-  DeleteServiceResponse'
-    {_dsrsService = Nothing, _dsrsResponseStatus = pResponseStatus_}
-
+deleteServiceResponse pResponseStatus_
+  = DeleteServiceResponse'{_dsrsService = Nothing,
+                           _dsrsResponseStatus = pResponseStatus_}
 
 -- | The full description of the deleted service.
 dsrsService :: Lens' DeleteServiceResponse (Maybe ContainerService)

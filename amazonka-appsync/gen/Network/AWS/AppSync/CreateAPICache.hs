@@ -43,7 +43,6 @@ module Network.AWS.AppSync.CreateAPICache
     ) where
 
 import Network.AWS.AppSync.Types
-import Network.AWS.AppSync.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.Request
@@ -54,17 +53,15 @@ import Network.AWS.Response
 --
 --
 -- /See:/ 'createAPICache' smart constructor.
-data CreateAPICache =
-  CreateAPICache'
-    { _cacAtRestEncryptionEnabled  :: !(Maybe Bool)
-    , _cacTransitEncryptionEnabled :: !(Maybe Bool)
-    , _cacApiId                    :: !Text
-    , _cacTtl                      :: !Integer
-    , _cacApiCachingBehavior       :: !APICachingBehavior
-    , _cacType                     :: !APICacheType
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data CreateAPICache = CreateAPICache'{_cacAtRestEncryptionEnabled
+                                      :: !(Maybe Bool),
+                                      _cacTransitEncryptionEnabled ::
+                                      !(Maybe Bool),
+                                      _cacApiId :: !Text, _cacTtl :: !Integer,
+                                      _cacApiCachingBehavior ::
+                                      !APICachingBehavior,
+                                      _cacType :: !APICacheType}
+                        deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'CreateAPICache' with the minimum fields required to make a request.
 --
@@ -87,16 +84,14 @@ createAPICache
     -> APICachingBehavior -- ^ 'cacApiCachingBehavior'
     -> APICacheType -- ^ 'cacType'
     -> CreateAPICache
-createAPICache pApiId_ pTtl_ pApiCachingBehavior_ pType_ =
-  CreateAPICache'
-    { _cacAtRestEncryptionEnabled = Nothing
-    , _cacTransitEncryptionEnabled = Nothing
-    , _cacApiId = pApiId_
-    , _cacTtl = pTtl_
-    , _cacApiCachingBehavior = pApiCachingBehavior_
-    , _cacType = pType_
-    }
-
+createAPICache pApiId_ pTtl_ pApiCachingBehavior_
+  pType_
+  = CreateAPICache'{_cacAtRestEncryptionEnabled =
+                      Nothing,
+                    _cacTransitEncryptionEnabled = Nothing,
+                    _cacApiId = pApiId_, _cacTtl = pTtl_,
+                    _cacApiCachingBehavior = pApiCachingBehavior_,
+                    _cacType = pType_}
 
 -- | At rest encryption flag for cache. This setting cannot be updated after creation.
 cacAtRestEncryptionEnabled :: Lens' CreateAPICache (Maybe Bool)
@@ -167,13 +162,12 @@ instance ToQuery CreateAPICache where
 --
 --
 -- /See:/ 'createAPICacheResponse' smart constructor.
-data CreateAPICacheResponse =
-  CreateAPICacheResponse'
-    { _cacrsApiCache       :: !(Maybe APICache)
-    , _cacrsResponseStatus :: !Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data CreateAPICacheResponse = CreateAPICacheResponse'{_cacrsApiCache
+                                                      :: !(Maybe APICache),
+                                                      _cacrsResponseStatus ::
+                                                      !Int}
+                                deriving (Eq, Read, Show, Data, Typeable,
+                                          Generic)
 
 -- | Creates a value of 'CreateAPICacheResponse' with the minimum fields required to make a request.
 --
@@ -185,10 +179,9 @@ data CreateAPICacheResponse =
 createAPICacheResponse
     :: Int -- ^ 'cacrsResponseStatus'
     -> CreateAPICacheResponse
-createAPICacheResponse pResponseStatus_ =
-  CreateAPICacheResponse'
-    {_cacrsApiCache = Nothing, _cacrsResponseStatus = pResponseStatus_}
-
+createAPICacheResponse pResponseStatus_
+  = CreateAPICacheResponse'{_cacrsApiCache = Nothing,
+                            _cacrsResponseStatus = pResponseStatus_}
 
 -- | The @ApiCache@ object.
 cacrsApiCache :: Lens' CreateAPICacheResponse (Maybe APICache)

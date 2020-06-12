@@ -40,7 +40,6 @@ module Network.AWS.APIGateway.GetTags
     ) where
 
 import Network.AWS.APIGateway.Types
-import Network.AWS.APIGateway.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.Request
@@ -51,14 +50,10 @@ import Network.AWS.Response
 --
 --
 -- /See:/ 'getTags' smart constructor.
-data GetTags =
-  GetTags'
-    { _gtLimit       :: !(Maybe Int)
-    , _gtPosition    :: !(Maybe Text)
-    , _gtResourceARN :: !Text
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data GetTags = GetTags'{_gtLimit :: !(Maybe Int),
+                        _gtPosition :: !(Maybe Text),
+                        _gtResourceARN :: !Text}
+                 deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'GetTags' with the minimum fields required to make a request.
 --
@@ -72,10 +67,9 @@ data GetTags =
 getTags
     :: Text -- ^ 'gtResourceARN'
     -> GetTags
-getTags pResourceARN_ =
-  GetTags'
-    {_gtLimit = Nothing, _gtPosition = Nothing, _gtResourceARN = pResourceARN_}
-
+getTags pResourceARN_
+  = GetTags'{_gtLimit = Nothing, _gtPosition = Nothing,
+             _gtResourceARN = pResourceARN_}
 
 -- | (Not currently supported) The maximum number of returned results per page. The default value is 25 and the maximum value is 500.
 gtLimit :: Lens' GetTags (Maybe Int)
@@ -122,13 +116,10 @@ instance ToQuery GetTags where
 --
 --
 -- /See:/ 'getTagsResponse' smart constructor.
-data GetTagsResponse =
-  GetTagsResponse'
-    { _gtrsTags           :: !(Maybe (Map Text Text))
-    , _gtrsResponseStatus :: !Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data GetTagsResponse = GetTagsResponse'{_gtrsTags ::
+                                        !(Maybe (Map Text Text)),
+                                        _gtrsResponseStatus :: !Int}
+                         deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'GetTagsResponse' with the minimum fields required to make a request.
 --
@@ -140,9 +131,9 @@ data GetTagsResponse =
 getTagsResponse
     :: Int -- ^ 'gtrsResponseStatus'
     -> GetTagsResponse
-getTagsResponse pResponseStatus_ =
-  GetTagsResponse' {_gtrsTags = Nothing, _gtrsResponseStatus = pResponseStatus_}
-
+getTagsResponse pResponseStatus_
+  = GetTagsResponse'{_gtrsTags = Nothing,
+                     _gtrsResponseStatus = pResponseStatus_}
 
 -- | The collection of tags. Each tag element is associated with a given resource.
 gtrsTags :: Lens' GetTagsResponse (HashMap Text Text)

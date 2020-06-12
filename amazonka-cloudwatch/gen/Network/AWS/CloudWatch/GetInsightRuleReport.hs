@@ -69,25 +69,22 @@ module Network.AWS.CloudWatch.GetInsightRuleReport
     ) where
 
 import Network.AWS.CloudWatch.Types
-import Network.AWS.CloudWatch.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 
 -- | /See:/ 'getInsightRuleReport' smart constructor.
-data GetInsightRuleReport =
-  GetInsightRuleReport'
-    { _girrMaxContributorCount :: !(Maybe Int)
-    , _girrMetrics             :: !(Maybe [Text])
-    , _girrOrderBy             :: !(Maybe Text)
-    , _girrRuleName            :: !Text
-    , _girrStartTime           :: !ISO8601
-    , _girrEndTime             :: !ISO8601
-    , _girrPeriod              :: !Nat
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data GetInsightRuleReport = GetInsightRuleReport'{_girrMaxContributorCount
+                                                  :: !(Maybe Int),
+                                                  _girrMetrics ::
+                                                  !(Maybe [Text]),
+                                                  _girrOrderBy :: !(Maybe Text),
+                                                  _girrRuleName :: !Text,
+                                                  _girrStartTime :: !ISO8601,
+                                                  _girrEndTime :: !ISO8601,
+                                                  _girrPeriod :: !Nat}
+                              deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'GetInsightRuleReport' with the minimum fields required to make a request.
 --
@@ -112,17 +109,15 @@ getInsightRuleReport
     -> UTCTime -- ^ 'girrEndTime'
     -> Natural -- ^ 'girrPeriod'
     -> GetInsightRuleReport
-getInsightRuleReport pRuleName_ pStartTime_ pEndTime_ pPeriod_ =
-  GetInsightRuleReport'
-    { _girrMaxContributorCount = Nothing
-    , _girrMetrics = Nothing
-    , _girrOrderBy = Nothing
-    , _girrRuleName = pRuleName_
-    , _girrStartTime = _Time # pStartTime_
-    , _girrEndTime = _Time # pEndTime_
-    , _girrPeriod = _Nat # pPeriod_
-    }
-
+getInsightRuleReport pRuleName_ pStartTime_ pEndTime_
+  pPeriod_
+  = GetInsightRuleReport'{_girrMaxContributorCount =
+                            Nothing,
+                          _girrMetrics = Nothing, _girrOrderBy = Nothing,
+                          _girrRuleName = pRuleName_,
+                          _girrStartTime = _Time # pStartTime_,
+                          _girrEndTime = _Time # pEndTime_,
+                          _girrPeriod = _Nat # pPeriod_}
 
 -- | The maximum number of contributors to include in the report. The range is 1 to 100. If you omit this, the default of 10 is used.
 girrMaxContributorCount :: Lens' GetInsightRuleReport (Maybe Int)
@@ -197,18 +192,33 @@ instance ToQuery GetInsightRuleReport where
                "EndTime" =: _girrEndTime, "Period" =: _girrPeriod]
 
 -- | /See:/ 'getInsightRuleReportResponse' smart constructor.
-data GetInsightRuleReportResponse =
-  GetInsightRuleReportResponse'
-    { _girrrsKeyLabels              :: !(Maybe [Text])
-    , _girrrsApproximateUniqueCount :: !(Maybe Integer)
-    , _girrrsAggregationStatistic   :: !(Maybe Text)
-    , _girrrsAggregateValue         :: !(Maybe Double)
-    , _girrrsContributors           :: !(Maybe [InsightRuleContributor])
-    , _girrrsMetricDatapoints       :: !(Maybe [InsightRuleMetricDatapoint])
-    , _girrrsResponseStatus         :: !Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data GetInsightRuleReportResponse = GetInsightRuleReportResponse'{_girrrsKeyLabels
+                                                                  ::
+                                                                  !(Maybe
+                                                                      [Text]),
+                                                                  _girrrsApproximateUniqueCount
+                                                                  ::
+                                                                  !(Maybe
+                                                                      Integer),
+                                                                  _girrrsAggregationStatistic
+                                                                  ::
+                                                                  !(Maybe Text),
+                                                                  _girrrsAggregateValue
+                                                                  ::
+                                                                  !(Maybe
+                                                                      Double),
+                                                                  _girrrsContributors
+                                                                  ::
+                                                                  !(Maybe
+                                                                      [InsightRuleContributor]),
+                                                                  _girrrsMetricDatapoints
+                                                                  ::
+                                                                  !(Maybe
+                                                                      [InsightRuleMetricDatapoint]),
+                                                                  _girrrsResponseStatus
+                                                                  :: !Int}
+                                      deriving (Eq, Read, Show, Data, Typeable,
+                                                Generic)
 
 -- | Creates a value of 'GetInsightRuleReportResponse' with the minimum fields required to make a request.
 --
@@ -230,17 +240,15 @@ data GetInsightRuleReportResponse =
 getInsightRuleReportResponse
     :: Int -- ^ 'girrrsResponseStatus'
     -> GetInsightRuleReportResponse
-getInsightRuleReportResponse pResponseStatus_ =
-  GetInsightRuleReportResponse'
-    { _girrrsKeyLabels = Nothing
-    , _girrrsApproximateUniqueCount = Nothing
-    , _girrrsAggregationStatistic = Nothing
-    , _girrrsAggregateValue = Nothing
-    , _girrrsContributors = Nothing
-    , _girrrsMetricDatapoints = Nothing
-    , _girrrsResponseStatus = pResponseStatus_
-    }
-
+getInsightRuleReportResponse pResponseStatus_
+  = GetInsightRuleReportResponse'{_girrrsKeyLabels =
+                                    Nothing,
+                                  _girrrsApproximateUniqueCount = Nothing,
+                                  _girrrsAggregationStatistic = Nothing,
+                                  _girrrsAggregateValue = Nothing,
+                                  _girrrsContributors = Nothing,
+                                  _girrrsMetricDatapoints = Nothing,
+                                  _girrrsResponseStatus = pResponseStatus_}
 
 -- | An array of the strings used as the keys for this rule. The keys are the dimensions used to classify contributors. If the rule contains more than one key, then each unique combination of values for the keys is counted as a unique contributor.
 girrrsKeyLabels :: Lens' GetInsightRuleReportResponse [Text]

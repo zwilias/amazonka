@@ -43,7 +43,6 @@ module Network.AWS.CognitoIdentityProvider.ListResourceServers
     ) where
 
 import Network.AWS.CognitoIdentityProvider.Types
-import Network.AWS.CognitoIdentityProvider.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Pager
 import Network.AWS.Prelude
@@ -51,14 +50,11 @@ import Network.AWS.Request
 import Network.AWS.Response
 
 -- | /See:/ 'listResourceServers' smart constructor.
-data ListResourceServers =
-  ListResourceServers'
-    { _lrsNextToken  :: !(Maybe Text)
-    , _lrsMaxResults :: !(Maybe Nat)
-    , _lrsUserPoolId :: !Text
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data ListResourceServers = ListResourceServers'{_lrsNextToken
+                                                :: !(Maybe Text),
+                                                _lrsMaxResults :: !(Maybe Nat),
+                                                _lrsUserPoolId :: !Text}
+                             deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'ListResourceServers' with the minimum fields required to make a request.
 --
@@ -72,13 +68,10 @@ data ListResourceServers =
 listResourceServers
     :: Text -- ^ 'lrsUserPoolId'
     -> ListResourceServers
-listResourceServers pUserPoolId_ =
-  ListResourceServers'
-    { _lrsNextToken = Nothing
-    , _lrsMaxResults = Nothing
-    , _lrsUserPoolId = pUserPoolId_
-    }
-
+listResourceServers pUserPoolId_
+  = ListResourceServers'{_lrsNextToken = Nothing,
+                         _lrsMaxResults = Nothing,
+                         _lrsUserPoolId = pUserPoolId_}
 
 -- | A pagination token.
 lrsNextToken :: Lens' ListResourceServers (Maybe Text)
@@ -139,14 +132,16 @@ instance ToQuery ListResourceServers where
         toQuery = const mempty
 
 -- | /See:/ 'listResourceServersResponse' smart constructor.
-data ListResourceServersResponse =
-  ListResourceServersResponse'
-    { _lrsrsNextToken       :: !(Maybe Text)
-    , _lrsrsResponseStatus  :: !Int
-    , _lrsrsResourceServers :: ![ResourceServerType]
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data ListResourceServersResponse = ListResourceServersResponse'{_lrsrsNextToken
+                                                                ::
+                                                                !(Maybe Text),
+                                                                _lrsrsResponseStatus
+                                                                :: !Int,
+                                                                _lrsrsResourceServers
+                                                                ::
+                                                                ![ResourceServerType]}
+                                     deriving (Eq, Read, Show, Data, Typeable,
+                                               Generic)
 
 -- | Creates a value of 'ListResourceServersResponse' with the minimum fields required to make a request.
 --
@@ -160,13 +155,11 @@ data ListResourceServersResponse =
 listResourceServersResponse
     :: Int -- ^ 'lrsrsResponseStatus'
     -> ListResourceServersResponse
-listResourceServersResponse pResponseStatus_ =
-  ListResourceServersResponse'
-    { _lrsrsNextToken = Nothing
-    , _lrsrsResponseStatus = pResponseStatus_
-    , _lrsrsResourceServers = mempty
-    }
-
+listResourceServersResponse pResponseStatus_
+  = ListResourceServersResponse'{_lrsrsNextToken =
+                                   Nothing,
+                                 _lrsrsResponseStatus = pResponseStatus_,
+                                 _lrsrsResourceServers = mempty}
 
 -- | A pagination token.
 lrsrsNextToken :: Lens' ListResourceServersResponse (Maybe Text)

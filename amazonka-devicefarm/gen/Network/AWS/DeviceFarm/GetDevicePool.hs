@@ -38,7 +38,6 @@ module Network.AWS.DeviceFarm.GetDevicePool
     ) where
 
 import Network.AWS.DeviceFarm.Types
-import Network.AWS.DeviceFarm.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.Request
@@ -49,12 +48,9 @@ import Network.AWS.Response
 --
 --
 -- /See:/ 'getDevicePool' smart constructor.
-newtype GetDevicePool =
-  GetDevicePool'
-    { _gdpArn :: Text
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+newtype GetDevicePool = GetDevicePool'{_gdpArn ::
+                                       Text}
+                          deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'GetDevicePool' with the minimum fields required to make a request.
 --
@@ -64,8 +60,7 @@ newtype GetDevicePool =
 getDevicePool
     :: Text -- ^ 'gdpArn'
     -> GetDevicePool
-getDevicePool pArn_ = GetDevicePool' {_gdpArn = pArn_}
-
+getDevicePool pArn_ = GetDevicePool'{_gdpArn = pArn_}
 
 -- | The device pool's ARN.
 gdpArn :: Lens' GetDevicePool Text
@@ -108,13 +103,12 @@ instance ToQuery GetDevicePool where
 --
 --
 -- /See:/ 'getDevicePoolResponse' smart constructor.
-data GetDevicePoolResponse =
-  GetDevicePoolResponse'
-    { _gdprsDevicePool     :: !(Maybe DevicePool)
-    , _gdprsResponseStatus :: !Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data GetDevicePoolResponse = GetDevicePoolResponse'{_gdprsDevicePool
+                                                    :: !(Maybe DevicePool),
+                                                    _gdprsResponseStatus ::
+                                                    !Int}
+                               deriving (Eq, Read, Show, Data, Typeable,
+                                         Generic)
 
 -- | Creates a value of 'GetDevicePoolResponse' with the minimum fields required to make a request.
 --
@@ -126,10 +120,9 @@ data GetDevicePoolResponse =
 getDevicePoolResponse
     :: Int -- ^ 'gdprsResponseStatus'
     -> GetDevicePoolResponse
-getDevicePoolResponse pResponseStatus_ =
-  GetDevicePoolResponse'
-    {_gdprsDevicePool = Nothing, _gdprsResponseStatus = pResponseStatus_}
-
+getDevicePoolResponse pResponseStatus_
+  = GetDevicePoolResponse'{_gdprsDevicePool = Nothing,
+                           _gdprsResponseStatus = pResponseStatus_}
 
 -- | An object that contains information about the requested device pool.
 gdprsDevicePool :: Lens' GetDevicePoolResponse (Maybe DevicePool)

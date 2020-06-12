@@ -14,11 +14,11 @@
 module Test.AWS.Gen.Greengrass where
 
 import Data.Proxy
-import Network.AWS.Greengrass
 import Test.AWS.Fixture
-import Test.AWS.Greengrass.Internal
 import Test.AWS.Prelude
 import Test.Tasty
+import Network.AWS.Greengrass
+import Test.AWS.Greengrass.Internal
 
 -- Auto-generated: the actual test selection needs to be manually placed into
 -- the top-level so that real test data can be incrementally added.

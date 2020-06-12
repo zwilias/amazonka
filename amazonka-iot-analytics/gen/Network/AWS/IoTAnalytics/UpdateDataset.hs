@@ -37,21 +37,17 @@ module Network.AWS.IoTAnalytics.UpdateDataset
     ) where
 
 import Network.AWS.IoTAnalytics.Types
-import Network.AWS.IoTAnalytics.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 
 -- | /See:/ 'updateDataset' smart constructor.
-data UpdateDataset =
-  UpdateDataset'
-    { _udTriggers    :: !(Maybe [DatasetTrigger])
-    , _udDatasetName :: !Text
-    , _udActions     :: !(List1 DatasetAction)
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data UpdateDataset = UpdateDataset'{_udTriggers ::
+                                    !(Maybe [DatasetTrigger]),
+                                    _udDatasetName :: !Text,
+                                    _udActions :: !(List1 DatasetAction)}
+                       deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'UpdateDataset' with the minimum fields required to make a request.
 --
@@ -66,13 +62,10 @@ updateDataset
     :: Text -- ^ 'udDatasetName'
     -> NonEmpty DatasetAction -- ^ 'udActions'
     -> UpdateDataset
-updateDataset pDatasetName_ pActions_ =
-  UpdateDataset'
-    { _udTriggers = Nothing
-    , _udDatasetName = pDatasetName_
-    , _udActions = _List1 # pActions_
-    }
-
+updateDataset pDatasetName_ pActions_
+  = UpdateDataset'{_udTriggers = Nothing,
+                   _udDatasetName = pDatasetName_,
+                   _udActions = _List1 # pActions_}
 
 -- | A list of "DatasetTrigger" objects. The list can be empty or can contain up to five __DataSetTrigger__ objects.
 udTriggers :: Lens' UpdateDataset [DatasetTrigger]
@@ -113,16 +106,14 @@ instance ToQuery UpdateDataset where
         toQuery = const mempty
 
 -- | /See:/ 'updateDatasetResponse' smart constructor.
-data UpdateDatasetResponse =
-  UpdateDatasetResponse'
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data UpdateDatasetResponse = UpdateDatasetResponse'
+                               deriving (Eq, Read, Show, Data, Typeable,
+                                         Generic)
 
 -- | Creates a value of 'UpdateDatasetResponse' with the minimum fields required to make a request.
 --
 updateDatasetResponse
     :: UpdateDatasetResponse
 updateDatasetResponse = UpdateDatasetResponse'
-
 
 instance NFData UpdateDatasetResponse where

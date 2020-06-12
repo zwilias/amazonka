@@ -39,21 +39,16 @@ module Network.AWS.EC2.CreateTags
     ) where
 
 import Network.AWS.EC2.Types
-import Network.AWS.EC2.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 
 -- | /See:/ 'createTags' smart constructor.
-data CreateTags =
-  CreateTags'
-    { _cDryRun    :: !(Maybe Bool)
-    , _cResources :: ![Text]
-    , _cTags      :: ![Tag]
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data CreateTags = CreateTags'{_cDryRun ::
+                              !(Maybe Bool),
+                              _cResources :: ![Text], _cTags :: ![Tag]}
+                    deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'CreateTags' with the minimum fields required to make a request.
 --
@@ -66,9 +61,9 @@ data CreateTags =
 -- * 'cTags' - The tags. The @value@ parameter is required, but if you don't want the tag to have a value, specify the parameter with no value, and we set the value to an empty string.
 createTags
     :: CreateTags
-createTags =
-  CreateTags' {_cDryRun = Nothing, _cResources = mempty, _cTags = mempty}
-
+createTags
+  = CreateTags'{_cDryRun = Nothing,
+                _cResources = mempty, _cTags = mempty}
 
 -- | Checks whether you have the required permissions for the action, without actually making the request, and provides an error response. If you have the required permissions, the error response is @DryRunOperation@ . Otherwise, it is @UnauthorizedOperation@ .
 cDryRun :: Lens' CreateTags (Maybe Bool)
@@ -107,16 +102,13 @@ instance ToQuery CreateTags where
                toQueryList "Tag" _cTags]
 
 -- | /See:/ 'createTagsResponse' smart constructor.
-data CreateTagsResponse =
-  CreateTagsResponse'
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data CreateTagsResponse = CreateTagsResponse'
+                            deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'CreateTagsResponse' with the minimum fields required to make a request.
 --
 createTagsResponse
     :: CreateTagsResponse
 createTagsResponse = CreateTagsResponse'
-
 
 instance NFData CreateTagsResponse where

@@ -46,17 +46,13 @@ import Network.AWS.Pager
 import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.ResourceGroups.Types
-import Network.AWS.ResourceGroups.Types.Product
 import Network.AWS.Response
 
 -- | /See:/ 'listGroups' smart constructor.
-data ListGroups =
-  ListGroups'
-    { _lgNextToken  :: !(Maybe Text)
-    , _lgMaxResults :: !(Maybe Nat)
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data ListGroups = ListGroups'{_lgNextToken ::
+                              !(Maybe Text),
+                              _lgMaxResults :: !(Maybe Nat)}
+                    deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'ListGroups' with the minimum fields required to make a request.
 --
@@ -67,8 +63,9 @@ data ListGroups =
 -- * 'lgMaxResults' - The maximum number of resource group results that are returned by ListGroups in paginated output. By default, this number is 50.
 listGroups
     :: ListGroups
-listGroups = ListGroups' {_lgNextToken = Nothing, _lgMaxResults = Nothing}
-
+listGroups
+  = ListGroups'{_lgNextToken = Nothing,
+                _lgMaxResults = Nothing}
 
 -- | The NextToken value that is returned in a paginated @ListGroups@ request. To get the next page of results, run the call again, add the NextToken parameter, and specify the NextToken value.
 lgNextToken :: Lens' ListGroups (Maybe Text)
@@ -112,14 +109,11 @@ instance ToQuery ListGroups where
                "maxResults" =: _lgMaxResults]
 
 -- | /See:/ 'listGroupsResponse' smart constructor.
-data ListGroupsResponse =
-  ListGroupsResponse'
-    { _lgrsGroups         :: !(Maybe [Group])
-    , _lgrsNextToken      :: !(Maybe Text)
-    , _lgrsResponseStatus :: !Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data ListGroupsResponse = ListGroupsResponse'{_lgrsGroups
+                                              :: !(Maybe [Group]),
+                                              _lgrsNextToken :: !(Maybe Text),
+                                              _lgrsResponseStatus :: !Int}
+                            deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'ListGroupsResponse' with the minimum fields required to make a request.
 --
@@ -133,13 +127,10 @@ data ListGroupsResponse =
 listGroupsResponse
     :: Int -- ^ 'lgrsResponseStatus'
     -> ListGroupsResponse
-listGroupsResponse pResponseStatus_ =
-  ListGroupsResponse'
-    { _lgrsGroups = Nothing
-    , _lgrsNextToken = Nothing
-    , _lgrsResponseStatus = pResponseStatus_
-    }
-
+listGroupsResponse pResponseStatus_
+  = ListGroupsResponse'{_lgrsGroups = Nothing,
+                        _lgrsNextToken = Nothing,
+                        _lgrsResponseStatus = pResponseStatus_}
 
 -- | A list of resource groups.
 lgrsGroups :: Lens' ListGroupsResponse [Group]

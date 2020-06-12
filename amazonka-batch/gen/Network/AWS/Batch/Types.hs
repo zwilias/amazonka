@@ -1,4 +1,4 @@
-{-# LANGUAGE OverloadedStrings #-}
+{-# LANGUAGE OverloadedStrings  #-}
 
 -- Derived from AWS service descriptions, licensed under Apache 2.0.
 
@@ -376,61 +376,103 @@ module Network.AWS.Batch.Types
     , vHost
     ) where
 
-import Network.AWS.Batch.Types.Product
-import Network.AWS.Batch.Types.Sum
 import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.Sign.V4
+import Network.AWS.Batch.Types.ArrayJobDependency
+import Network.AWS.Batch.Types.CEState
+import Network.AWS.Batch.Types.CEStatus
+import Network.AWS.Batch.Types.CEType
+import Network.AWS.Batch.Types.CRAllocationStrategy
+import Network.AWS.Batch.Types.CRType
+import Network.AWS.Batch.Types.DeviceCgroupPermission
+import Network.AWS.Batch.Types.JQState
+import Network.AWS.Batch.Types.JQStatus
+import Network.AWS.Batch.Types.JobDefinitionType
+import Network.AWS.Batch.Types.JobStatus
+import Network.AWS.Batch.Types.ResourceType
+import Network.AWS.Batch.Types.ArrayProperties
+import Network.AWS.Batch.Types.ArrayPropertiesDetail
+import Network.AWS.Batch.Types.ArrayPropertiesSummary
+import Network.AWS.Batch.Types.AttemptContainerDetail
+import Network.AWS.Batch.Types.AttemptDetail
+import Network.AWS.Batch.Types.ComputeEnvironmentDetail
+import Network.AWS.Batch.Types.ComputeEnvironmentOrder
+import Network.AWS.Batch.Types.ComputeResource
+import Network.AWS.Batch.Types.ComputeResourceUpdate
+import Network.AWS.Batch.Types.ContainerDetail
+import Network.AWS.Batch.Types.ContainerOverrides
+import Network.AWS.Batch.Types.ContainerProperties
+import Network.AWS.Batch.Types.ContainerSummary
+import Network.AWS.Batch.Types.Device
+import Network.AWS.Batch.Types.Host
+import Network.AWS.Batch.Types.JobDefinition
+import Network.AWS.Batch.Types.JobDependency
+import Network.AWS.Batch.Types.JobDetail
+import Network.AWS.Batch.Types.JobQueueDetail
+import Network.AWS.Batch.Types.JobSummary
+import Network.AWS.Batch.Types.JobTimeout
+import Network.AWS.Batch.Types.KeyValuePair
+import Network.AWS.Batch.Types.LaunchTemplateSpecification
+import Network.AWS.Batch.Types.LinuxParameters
+import Network.AWS.Batch.Types.MountPoint
+import Network.AWS.Batch.Types.NetworkInterface
+import Network.AWS.Batch.Types.NodeDetails
+import Network.AWS.Batch.Types.NodeOverrides
+import Network.AWS.Batch.Types.NodeProperties
+import Network.AWS.Batch.Types.NodePropertiesSummary
+import Network.AWS.Batch.Types.NodePropertyOverride
+import Network.AWS.Batch.Types.NodeRangeProperty
+import Network.AWS.Batch.Types.ResourceRequirement
+import Network.AWS.Batch.Types.RetryStrategy
+import Network.AWS.Batch.Types.Ulimit
+import Network.AWS.Batch.Types.Volume
 
 -- | API version @2016-08-10@ of the Amazon Batch SDK configuration.
 batch :: Service
-batch =
-  Service
-    { _svcAbbrev = "Batch"
-    , _svcSigner = v4
-    , _svcPrefix = "batch"
-    , _svcVersion = "2016-08-10"
-    , _svcEndpoint = defaultEndpoint batch
-    , _svcTimeout = Just 70
-    , _svcCheck = statusSuccess
-    , _svcError = parseJSONError "Batch"
-    , _svcRetry = retry
-    }
-  where
-    retry =
-      Exponential
-        { _retryBase = 5.0e-2
-        , _retryGrowth = 2
-        , _retryAttempts = 5
-        , _retryCheck = check
-        }
-    check e
-      | has (hasCode "ThrottledException" . hasStatus 400) e =
-        Just "throttled_exception"
-      | has (hasStatus 429) e = Just "too_many_requests"
-      | has (hasCode "ThrottlingException" . hasStatus 400) e =
-        Just "throttling_exception"
-      | has (hasCode "Throttling" . hasStatus 400) e = Just "throttling"
-      | has (hasStatus 504) e = Just "gateway_timeout"
-      | has (hasCode "RequestThrottledException" . hasStatus 400) e =
-        Just "request_throttled_exception"
-      | has (hasStatus 502) e = Just "bad_gateway"
-      | has (hasStatus 503) e = Just "service_unavailable"
-      | has (hasStatus 500) e = Just "general_server_error"
-      | has (hasStatus 509) e = Just "limit_exceeded"
-      | otherwise = Nothing
-
+batch
+  = Service{_svcAbbrev = "Batch", _svcSigner = v4,
+            _svcPrefix = "batch", _svcVersion = "2016-08-10",
+            _svcEndpoint = defaultEndpoint batch,
+            _svcTimeout = Just 70, _svcCheck = statusSuccess,
+            _svcError = parseJSONError "Batch",
+            _svcRetry = retry}
+  where retry
+          = Exponential{_retryBase = 5.0e-2, _retryGrowth = 2,
+                        _retryAttempts = 5, _retryCheck = check}
+        check e
+          | has (hasCode "ThrottledException" . hasStatus 400)
+              e
+            = Just "throttled_exception"
+          | has (hasStatus 429) e = Just "too_many_requests"
+          | has (hasCode "ThrottlingException" . hasStatus 400)
+              e
+            = Just "throttling_exception"
+          | has (hasCode "Throttling" . hasStatus 400) e =
+            Just "throttling"
+          | has (hasStatus 504) e = Just "gateway_timeout"
+          | has
+              (hasCode "RequestThrottledException" . hasStatus 400)
+              e
+            = Just "request_throttled_exception"
+          | has (hasStatus 502) e = Just "bad_gateway"
+          | has (hasStatus 503) e = Just "service_unavailable"
+          | has (hasStatus 500) e = Just "general_server_error"
+          | has (hasStatus 509) e = Just "limit_exceeded"
+          | otherwise = Nothing
 
 -- | These errors are usually caused by a server issue.
 --
 --
 _ServerException :: AsError a => Getting (First ServiceError) a ServiceError
-_ServerException = _MatchServiceError batch "ServerException" . hasStatus 500
-
+_ServerException
+  = _MatchServiceError batch "ServerException" .
+      hasStatus 500
 
 -- | These errors are usually caused by a client action, such as using an action or resource on behalf of a user that doesn't have permissions to use the action or resource, or specifying an identifier that is not valid.
 --
 --
 _ClientException :: AsError a => Getting (First ServiceError) a ServiceError
-_ClientException = _MatchServiceError batch "ClientException" . hasStatus 400
-
+_ClientException
+  = _MatchServiceError batch "ClientException" .
+      hasStatus 400

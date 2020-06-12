@@ -43,24 +43,24 @@ module Network.AWS.DeviceFarm.UpdateInstanceProfile
     ) where
 
 import Network.AWS.DeviceFarm.Types
-import Network.AWS.DeviceFarm.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 
 -- | /See:/ 'updateInstanceProfile' smart constructor.
-data UpdateInstanceProfile =
-  UpdateInstanceProfile'
-    { _uipRebootAfterUse                :: !(Maybe Bool)
-    , _uipName                          :: !(Maybe Text)
-    , _uipPackageCleanup                :: !(Maybe Bool)
-    , _uipExcludeAppPackagesFromCleanup :: !(Maybe [Text])
-    , _uipDescription                   :: !(Maybe Text)
-    , _uipArn                           :: !Text
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data UpdateInstanceProfile = UpdateInstanceProfile'{_uipRebootAfterUse
+                                                    :: !(Maybe Bool),
+                                                    _uipName :: !(Maybe Text),
+                                                    _uipPackageCleanup ::
+                                                    !(Maybe Bool),
+                                                    _uipExcludeAppPackagesFromCleanup
+                                                    :: !(Maybe [Text]),
+                                                    _uipDescription ::
+                                                    !(Maybe Text),
+                                                    _uipArn :: !Text}
+                               deriving (Eq, Read, Show, Data, Typeable,
+                                         Generic)
 
 -- | Creates a value of 'UpdateInstanceProfile' with the minimum fields required to make a request.
 --
@@ -80,16 +80,12 @@ data UpdateInstanceProfile =
 updateInstanceProfile
     :: Text -- ^ 'uipArn'
     -> UpdateInstanceProfile
-updateInstanceProfile pArn_ =
-  UpdateInstanceProfile'
-    { _uipRebootAfterUse = Nothing
-    , _uipName = Nothing
-    , _uipPackageCleanup = Nothing
-    , _uipExcludeAppPackagesFromCleanup = Nothing
-    , _uipDescription = Nothing
-    , _uipArn = pArn_
-    }
-
+updateInstanceProfile pArn_
+  = UpdateInstanceProfile'{_uipRebootAfterUse =
+                             Nothing,
+                           _uipName = Nothing, _uipPackageCleanup = Nothing,
+                           _uipExcludeAppPackagesFromCleanup = Nothing,
+                           _uipDescription = Nothing, _uipArn = pArn_}
 
 -- | The updated choice for whether you want to reboot the device after use. The default value is @true@ .
 uipRebootAfterUse :: Lens' UpdateInstanceProfile (Maybe Bool)
@@ -158,13 +154,14 @@ instance ToQuery UpdateInstanceProfile where
         toQuery = const mempty
 
 -- | /See:/ 'updateInstanceProfileResponse' smart constructor.
-data UpdateInstanceProfileResponse =
-  UpdateInstanceProfileResponse'
-    { _uiprsInstanceProfile :: !(Maybe InstanceProfile)
-    , _uiprsResponseStatus  :: !Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data UpdateInstanceProfileResponse = UpdateInstanceProfileResponse'{_uiprsInstanceProfile
+                                                                    ::
+                                                                    !(Maybe
+                                                                        InstanceProfile),
+                                                                    _uiprsResponseStatus
+                                                                    :: !Int}
+                                       deriving (Eq, Read, Show, Data, Typeable,
+                                                 Generic)
 
 -- | Creates a value of 'UpdateInstanceProfileResponse' with the minimum fields required to make a request.
 --
@@ -176,10 +173,10 @@ data UpdateInstanceProfileResponse =
 updateInstanceProfileResponse
     :: Int -- ^ 'uiprsResponseStatus'
     -> UpdateInstanceProfileResponse
-updateInstanceProfileResponse pResponseStatus_ =
-  UpdateInstanceProfileResponse'
-    {_uiprsInstanceProfile = Nothing, _uiprsResponseStatus = pResponseStatus_}
-
+updateInstanceProfileResponse pResponseStatus_
+  = UpdateInstanceProfileResponse'{_uiprsInstanceProfile
+                                     = Nothing,
+                                   _uiprsResponseStatus = pResponseStatus_}
 
 -- | An object that contains information about your instance profile.
 uiprsInstanceProfile :: Lens' UpdateInstanceProfileResponse (Maybe InstanceProfile)

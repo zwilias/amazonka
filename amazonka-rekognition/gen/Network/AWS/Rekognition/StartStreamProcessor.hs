@@ -39,17 +39,14 @@ module Network.AWS.Rekognition.StartStreamProcessor
 import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.Rekognition.Types
-import Network.AWS.Rekognition.Types.Product
 import Network.AWS.Request
 import Network.AWS.Response
 
 -- | /See:/ 'startStreamProcessor' smart constructor.
-newtype StartStreamProcessor =
-  StartStreamProcessor'
-    { _sName :: Text
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+newtype StartStreamProcessor = StartStreamProcessor'{_sName
+                                                     :: Text}
+                                 deriving (Eq, Read, Show, Data, Typeable,
+                                           Generic)
 
 -- | Creates a value of 'StartStreamProcessor' with the minimum fields required to make a request.
 --
@@ -59,8 +56,8 @@ newtype StartStreamProcessor =
 startStreamProcessor
     :: Text -- ^ 'sName'
     -> StartStreamProcessor
-startStreamProcessor pName_ = StartStreamProcessor' {_sName = pName_}
-
+startStreamProcessor pName_
+  = StartStreamProcessor'{_sName = pName_}
 
 -- | The name of the stream processor to start processing.
 sName :: Lens' StartStreamProcessor Text
@@ -101,12 +98,10 @@ instance ToQuery StartStreamProcessor where
         toQuery = const mempty
 
 -- | /See:/ 'startStreamProcessorResponse' smart constructor.
-newtype StartStreamProcessorResponse =
-  StartStreamProcessorResponse'
-    { _srsResponseStatus :: Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+newtype StartStreamProcessorResponse = StartStreamProcessorResponse'{_srsResponseStatus
+                                                                     :: Int}
+                                         deriving (Eq, Read, Show, Data,
+                                                   Typeable, Generic)
 
 -- | Creates a value of 'StartStreamProcessorResponse' with the minimum fields required to make a request.
 --
@@ -116,9 +111,9 @@ newtype StartStreamProcessorResponse =
 startStreamProcessorResponse
     :: Int -- ^ 'srsResponseStatus'
     -> StartStreamProcessorResponse
-startStreamProcessorResponse pResponseStatus_ =
-  StartStreamProcessorResponse' {_srsResponseStatus = pResponseStatus_}
-
+startStreamProcessorResponse pResponseStatus_
+  = StartStreamProcessorResponse'{_srsResponseStatus =
+                                    pResponseStatus_}
 
 -- | -- | The response status code.
 srsResponseStatus :: Lens' StartStreamProcessorResponse Int

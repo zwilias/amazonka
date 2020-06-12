@@ -38,7 +38,6 @@ module Network.AWS.EC2.DescribeSpotDatafeedSubscription
     ) where
 
 import Network.AWS.EC2.Types
-import Network.AWS.EC2.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.Request
@@ -49,12 +48,12 @@ import Network.AWS.Response
 --
 --
 -- /See:/ 'describeSpotDatafeedSubscription' smart constructor.
-newtype DescribeSpotDatafeedSubscription =
-  DescribeSpotDatafeedSubscription'
-    { _dsdsDryRun :: Maybe Bool
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+newtype DescribeSpotDatafeedSubscription = DescribeSpotDatafeedSubscription'{_dsdsDryRun
+                                                                             ::
+                                                                             Maybe
+                                                                               Bool}
+                                             deriving (Eq, Read, Show, Data,
+                                                       Typeable, Generic)
 
 -- | Creates a value of 'DescribeSpotDatafeedSubscription' with the minimum fields required to make a request.
 --
@@ -63,9 +62,9 @@ newtype DescribeSpotDatafeedSubscription =
 -- * 'dsdsDryRun' - Checks whether you have the required permissions for the action, without actually making the request, and provides an error response. If you have the required permissions, the error response is @DryRunOperation@ . Otherwise, it is @UnauthorizedOperation@ .
 describeSpotDatafeedSubscription
     :: DescribeSpotDatafeedSubscription
-describeSpotDatafeedSubscription =
-  DescribeSpotDatafeedSubscription' {_dsdsDryRun = Nothing}
-
+describeSpotDatafeedSubscription
+  = DescribeSpotDatafeedSubscription'{_dsdsDryRun =
+                                        Nothing}
 
 -- | Checks whether you have the required permissions for the action, without actually making the request, and provides an error response. If you have the required permissions, the error response is @DryRunOperation@ . Otherwise, it is @UnauthorizedOperation@ .
 dsdsDryRun :: Lens' DescribeSpotDatafeedSubscription (Maybe Bool)
@@ -111,13 +110,16 @@ instance ToQuery DescribeSpotDatafeedSubscription
 --
 --
 -- /See:/ 'describeSpotDatafeedSubscriptionResponse' smart constructor.
-data DescribeSpotDatafeedSubscriptionResponse =
-  DescribeSpotDatafeedSubscriptionResponse'
-    { _dsdsrsSpotDatafeedSubscription :: !(Maybe SpotDatafeedSubscription)
-    , _dsdsrsResponseStatus           :: !Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data DescribeSpotDatafeedSubscriptionResponse = DescribeSpotDatafeedSubscriptionResponse'{_dsdsrsSpotDatafeedSubscription
+                                                                                          ::
+                                                                                          !(Maybe
+                                                                                              SpotDatafeedSubscription),
+                                                                                          _dsdsrsResponseStatus
+                                                                                          ::
+                                                                                          !Int}
+                                                  deriving (Eq, Read, Show,
+                                                            Data, Typeable,
+                                                            Generic)
 
 -- | Creates a value of 'DescribeSpotDatafeedSubscriptionResponse' with the minimum fields required to make a request.
 --
@@ -129,12 +131,12 @@ data DescribeSpotDatafeedSubscriptionResponse =
 describeSpotDatafeedSubscriptionResponse
     :: Int -- ^ 'dsdsrsResponseStatus'
     -> DescribeSpotDatafeedSubscriptionResponse
-describeSpotDatafeedSubscriptionResponse pResponseStatus_ =
-  DescribeSpotDatafeedSubscriptionResponse'
-    { _dsdsrsSpotDatafeedSubscription = Nothing
-    , _dsdsrsResponseStatus = pResponseStatus_
-    }
-
+describeSpotDatafeedSubscriptionResponse
+  pResponseStatus_
+  = DescribeSpotDatafeedSubscriptionResponse'{_dsdsrsSpotDatafeedSubscription
+                                                = Nothing,
+                                              _dsdsrsResponseStatus =
+                                                pResponseStatus_}
 
 -- | The Spot Instance data feed subscription.
 dsdsrsSpotDatafeedSubscription :: Lens' DescribeSpotDatafeedSubscriptionResponse (Maybe SpotDatafeedSubscription)

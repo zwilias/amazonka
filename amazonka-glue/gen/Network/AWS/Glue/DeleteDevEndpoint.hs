@@ -37,19 +37,15 @@ module Network.AWS.Glue.DeleteDevEndpoint
     ) where
 
 import Network.AWS.Glue.Types
-import Network.AWS.Glue.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 
 -- | /See:/ 'deleteDevEndpoint' smart constructor.
-newtype DeleteDevEndpoint =
-  DeleteDevEndpoint'
-    { _ddeEndpointName :: Text
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+newtype DeleteDevEndpoint = DeleteDevEndpoint'{_ddeEndpointName
+                                               :: Text}
+                              deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'DeleteDevEndpoint' with the minimum fields required to make a request.
 --
@@ -59,9 +55,9 @@ newtype DeleteDevEndpoint =
 deleteDevEndpoint
     :: Text -- ^ 'ddeEndpointName'
     -> DeleteDevEndpoint
-deleteDevEndpoint pEndpointName_ =
-  DeleteDevEndpoint' {_ddeEndpointName = pEndpointName_}
-
+deleteDevEndpoint pEndpointName_
+  = DeleteDevEndpoint'{_ddeEndpointName =
+                         pEndpointName_}
 
 -- | The name of the DevEndpoint.
 ddeEndpointName :: Lens' DeleteDevEndpoint Text
@@ -101,12 +97,10 @@ instance ToQuery DeleteDevEndpoint where
         toQuery = const mempty
 
 -- | /See:/ 'deleteDevEndpointResponse' smart constructor.
-newtype DeleteDevEndpointResponse =
-  DeleteDevEndpointResponse'
-    { _ddersResponseStatus :: Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+newtype DeleteDevEndpointResponse = DeleteDevEndpointResponse'{_ddersResponseStatus
+                                                               :: Int}
+                                      deriving (Eq, Read, Show, Data, Typeable,
+                                                Generic)
 
 -- | Creates a value of 'DeleteDevEndpointResponse' with the minimum fields required to make a request.
 --
@@ -116,9 +110,9 @@ newtype DeleteDevEndpointResponse =
 deleteDevEndpointResponse
     :: Int -- ^ 'ddersResponseStatus'
     -> DeleteDevEndpointResponse
-deleteDevEndpointResponse pResponseStatus_ =
-  DeleteDevEndpointResponse' {_ddersResponseStatus = pResponseStatus_}
-
+deleteDevEndpointResponse pResponseStatus_
+  = DeleteDevEndpointResponse'{_ddersResponseStatus =
+                                 pResponseStatus_}
 
 -- | -- | The response status code.
 ddersResponseStatus :: Lens' DeleteDevEndpointResponse Int

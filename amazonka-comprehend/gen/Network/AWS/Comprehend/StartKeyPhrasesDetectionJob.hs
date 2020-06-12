@@ -46,26 +46,38 @@ module Network.AWS.Comprehend.StartKeyPhrasesDetectionJob
     ) where
 
 import Network.AWS.Comprehend.Types
-import Network.AWS.Comprehend.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 
 -- | /See:/ 'startKeyPhrasesDetectionJob' smart constructor.
-data StartKeyPhrasesDetectionJob =
-  StartKeyPhrasesDetectionJob'
-    { _skpdjJobName            :: !(Maybe Text)
-    , _skpdjVPCConfig          :: !(Maybe VPCConfig)
-    , _skpdjVolumeKMSKeyId     :: !(Maybe Text)
-    , _skpdjClientRequestToken :: !(Maybe Text)
-    , _skpdjInputDataConfig    :: !InputDataConfig
-    , _skpdjOutputDataConfig   :: !OutputDataConfig
-    , _skpdjDataAccessRoleARN  :: !Text
-    , _skpdjLanguageCode       :: !LanguageCode
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data StartKeyPhrasesDetectionJob = StartKeyPhrasesDetectionJob'{_skpdjJobName
+                                                                ::
+                                                                !(Maybe Text),
+                                                                _skpdjVPCConfig
+                                                                ::
+                                                                !(Maybe
+                                                                    VPCConfig),
+                                                                _skpdjVolumeKMSKeyId
+                                                                ::
+                                                                !(Maybe Text),
+                                                                _skpdjClientRequestToken
+                                                                ::
+                                                                !(Maybe Text),
+                                                                _skpdjInputDataConfig
+                                                                ::
+                                                                !InputDataConfig,
+                                                                _skpdjOutputDataConfig
+                                                                ::
+                                                                !OutputDataConfig,
+                                                                _skpdjDataAccessRoleARN
+                                                                :: !Text,
+                                                                _skpdjLanguageCode
+                                                                ::
+                                                                !LanguageCode}
+                                     deriving (Eq, Read, Show, Data, Typeable,
+                                               Generic)
 
 -- | Creates a value of 'StartKeyPhrasesDetectionJob' with the minimum fields required to make a request.
 --
@@ -73,9 +85,9 @@ data StartKeyPhrasesDetectionJob =
 --
 -- * 'skpdjJobName' - The identifier of the job.
 --
--- * 'skpdjVPCConfig' - Configuration parameters for an optional private Virtual Private Cloud (VPC) containing the resources you are using for your key phrases detection job. For more information, see <https://docs.aws.amazon.com/vpc/latest/userguide/what-is-amazon-vpc.html Amazon VPC> .
+-- * 'skpdjVPCConfig' - Configuration parameters for an optional private Virtual Private Cloud (VPC) containing the resources you are using for your key phrases detection job. For more information, see <https://docs.aws.amazon.com/vpc/latest/userguide/what-is-amazon-vpc.html Amazon VPC> . 
 --
--- * 'skpdjVolumeKMSKeyId' - ID for the AWS Key Management Service (KMS) key that Amazon Comprehend uses to encrypt data on the storage volume attached to the ML compute instance(s) that process the analysis job. The VolumeKmsKeyId can be either of the following formats:     * KMS Key ID: @"1234abcd-12ab-34cd-56ef-1234567890ab"@      * Amazon Resource Name (ARN) of a KMS Key: @"arn:aws:kms:us-west-2:111122223333:key/1234abcd-12ab-34cd-56ef-1234567890ab"@
+-- * 'skpdjVolumeKMSKeyId' - ID for the AWS Key Management Service (KMS) key that Amazon Comprehend uses to encrypt data on the storage volume attached to the ML compute instance(s) that process the analysis job. The VolumeKmsKeyId can be either of the following formats:     * KMS Key ID: @"1234abcd-12ab-34cd-56ef-1234567890ab"@      * Amazon Resource Name (ARN) of a KMS Key: @"arn:aws:kms:us-west-2:111122223333:key/1234abcd-12ab-34cd-56ef-1234567890ab"@ 
 --
 -- * 'skpdjClientRequestToken' - A unique identifier for the request. If you don't set the client request token, Amazon Comprehend generates one.
 --
@@ -92,28 +104,27 @@ startKeyPhrasesDetectionJob
     -> Text -- ^ 'skpdjDataAccessRoleARN'
     -> LanguageCode -- ^ 'skpdjLanguageCode'
     -> StartKeyPhrasesDetectionJob
-startKeyPhrasesDetectionJob pInputDataConfig_ pOutputDataConfig_ pDataAccessRoleARN_ pLanguageCode_ =
-  StartKeyPhrasesDetectionJob'
-    { _skpdjJobName = Nothing
-    , _skpdjVPCConfig = Nothing
-    , _skpdjVolumeKMSKeyId = Nothing
-    , _skpdjClientRequestToken = Nothing
-    , _skpdjInputDataConfig = pInputDataConfig_
-    , _skpdjOutputDataConfig = pOutputDataConfig_
-    , _skpdjDataAccessRoleARN = pDataAccessRoleARN_
-    , _skpdjLanguageCode = pLanguageCode_
-    }
-
+startKeyPhrasesDetectionJob pInputDataConfig_
+  pOutputDataConfig_ pDataAccessRoleARN_ pLanguageCode_
+  = StartKeyPhrasesDetectionJob'{_skpdjJobName =
+                                   Nothing,
+                                 _skpdjVPCConfig = Nothing,
+                                 _skpdjVolumeKMSKeyId = Nothing,
+                                 _skpdjClientRequestToken = Nothing,
+                                 _skpdjInputDataConfig = pInputDataConfig_,
+                                 _skpdjOutputDataConfig = pOutputDataConfig_,
+                                 _skpdjDataAccessRoleARN = pDataAccessRoleARN_,
+                                 _skpdjLanguageCode = pLanguageCode_}
 
 -- | The identifier of the job.
 skpdjJobName :: Lens' StartKeyPhrasesDetectionJob (Maybe Text)
 skpdjJobName = lens _skpdjJobName (\ s a -> s{_skpdjJobName = a})
 
--- | Configuration parameters for an optional private Virtual Private Cloud (VPC) containing the resources you are using for your key phrases detection job. For more information, see <https://docs.aws.amazon.com/vpc/latest/userguide/what-is-amazon-vpc.html Amazon VPC> .
+-- | Configuration parameters for an optional private Virtual Private Cloud (VPC) containing the resources you are using for your key phrases detection job. For more information, see <https://docs.aws.amazon.com/vpc/latest/userguide/what-is-amazon-vpc.html Amazon VPC> . 
 skpdjVPCConfig :: Lens' StartKeyPhrasesDetectionJob (Maybe VPCConfig)
 skpdjVPCConfig = lens _skpdjVPCConfig (\ s a -> s{_skpdjVPCConfig = a})
 
--- | ID for the AWS Key Management Service (KMS) key that Amazon Comprehend uses to encrypt data on the storage volume attached to the ML compute instance(s) that process the analysis job. The VolumeKmsKeyId can be either of the following formats:     * KMS Key ID: @"1234abcd-12ab-34cd-56ef-1234567890ab"@      * Amazon Resource Name (ARN) of a KMS Key: @"arn:aws:kms:us-west-2:111122223333:key/1234abcd-12ab-34cd-56ef-1234567890ab"@
+-- | ID for the AWS Key Management Service (KMS) key that Amazon Comprehend uses to encrypt data on the storage volume attached to the ML compute instance(s) that process the analysis job. The VolumeKmsKeyId can be either of the following formats:     * KMS Key ID: @"1234abcd-12ab-34cd-56ef-1234567890ab"@      * Amazon Resource Name (ARN) of a KMS Key: @"arn:aws:kms:us-west-2:111122223333:key/1234abcd-12ab-34cd-56ef-1234567890ab"@ 
 skpdjVolumeKMSKeyId :: Lens' StartKeyPhrasesDetectionJob (Maybe Text)
 skpdjVolumeKMSKeyId = lens _skpdjVolumeKMSKeyId (\ s a -> s{_skpdjVolumeKMSKeyId = a})
 
@@ -184,14 +195,19 @@ instance ToQuery StartKeyPhrasesDetectionJob where
         toQuery = const mempty
 
 -- | /See:/ 'startKeyPhrasesDetectionJobResponse' smart constructor.
-data StartKeyPhrasesDetectionJobResponse =
-  StartKeyPhrasesDetectionJobResponse'
-    { _starsJobId          :: !(Maybe Text)
-    , _starsJobStatus      :: !(Maybe JobStatus)
-    , _starsResponseStatus :: !Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data StartKeyPhrasesDetectionJobResponse = StartKeyPhrasesDetectionJobResponse'{_starsJobId
+                                                                                ::
+                                                                                !(Maybe
+                                                                                    Text),
+                                                                                _starsJobStatus
+                                                                                ::
+                                                                                !(Maybe
+                                                                                    JobStatus),
+                                                                                _starsResponseStatus
+                                                                                ::
+                                                                                !Int}
+                                             deriving (Eq, Read, Show, Data,
+                                                       Typeable, Generic)
 
 -- | Creates a value of 'StartKeyPhrasesDetectionJobResponse' with the minimum fields required to make a request.
 --
@@ -205,13 +221,12 @@ data StartKeyPhrasesDetectionJobResponse =
 startKeyPhrasesDetectionJobResponse
     :: Int -- ^ 'starsResponseStatus'
     -> StartKeyPhrasesDetectionJobResponse
-startKeyPhrasesDetectionJobResponse pResponseStatus_ =
-  StartKeyPhrasesDetectionJobResponse'
-    { _starsJobId = Nothing
-    , _starsJobStatus = Nothing
-    , _starsResponseStatus = pResponseStatus_
-    }
-
+startKeyPhrasesDetectionJobResponse pResponseStatus_
+  = StartKeyPhrasesDetectionJobResponse'{_starsJobId =
+                                           Nothing,
+                                         _starsJobStatus = Nothing,
+                                         _starsResponseStatus =
+                                           pResponseStatus_}
 
 -- | The identifier generated for the job. To get the status of a job, use this identifier with the operation.
 starsJobId :: Lens' StartKeyPhrasesDetectionJobResponse (Maybe Text)

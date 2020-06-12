@@ -42,19 +42,14 @@ module Network.AWS.IAM.GetPolicy
     ) where
 
 import Network.AWS.IAM.Types
-import Network.AWS.IAM.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 
 -- | /See:/ 'getPolicy' smart constructor.
-newtype GetPolicy =
-  GetPolicy'
-    { _gpPolicyARN :: Text
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+newtype GetPolicy = GetPolicy'{_gpPolicyARN :: Text}
+                      deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'GetPolicy' with the minimum fields required to make a request.
 --
@@ -64,8 +59,8 @@ newtype GetPolicy =
 getPolicy
     :: Text -- ^ 'gpPolicyARN'
     -> GetPolicy
-getPolicy pPolicyARN_ = GetPolicy' {_gpPolicyARN = pPolicyARN_}
-
+getPolicy pPolicyARN_
+  = GetPolicy'{_gpPolicyARN = pPolicyARN_}
 
 -- | The Amazon Resource Name (ARN) of the managed policy that you want information about. For more information about ARNs, see <http://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html Amazon Resource Names (ARNs) and AWS Service Namespaces> in the /AWS General Reference/ .
 gpPolicyARN :: Lens' GetPolicy Text
@@ -97,18 +92,15 @@ instance ToQuery GetPolicy where
                "Version" =: ("2010-05-08" :: ByteString),
                "PolicyArn" =: _gpPolicyARN]
 
--- | Contains the response to a successful 'GetPolicy' request.
+-- | Contains the response to a successful 'GetPolicy' request. 
 --
 --
 --
 -- /See:/ 'getPolicyResponse' smart constructor.
-data GetPolicyResponse =
-  GetPolicyResponse'
-    { _gprsPolicy         :: !(Maybe Policy)
-    , _gprsResponseStatus :: !Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data GetPolicyResponse = GetPolicyResponse'{_gprsPolicy
+                                            :: !(Maybe Policy),
+                                            _gprsResponseStatus :: !Int}
+                           deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'GetPolicyResponse' with the minimum fields required to make a request.
 --
@@ -120,10 +112,9 @@ data GetPolicyResponse =
 getPolicyResponse
     :: Int -- ^ 'gprsResponseStatus'
     -> GetPolicyResponse
-getPolicyResponse pResponseStatus_ =
-  GetPolicyResponse'
-    {_gprsPolicy = Nothing, _gprsResponseStatus = pResponseStatus_}
-
+getPolicyResponse pResponseStatus_
+  = GetPolicyResponse'{_gprsPolicy = Nothing,
+                       _gprsResponseStatus = pResponseStatus_}
 
 -- | A structure containing details about the policy.
 gprsPolicy :: Lens' GetPolicyResponse (Maybe Policy)

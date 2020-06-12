@@ -45,7 +45,6 @@ module Network.AWS.EC2.DescribeByoipCidrs
     ) where
 
 import Network.AWS.EC2.Types
-import Network.AWS.EC2.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Pager
 import Network.AWS.Prelude
@@ -53,14 +52,11 @@ import Network.AWS.Request
 import Network.AWS.Response
 
 -- | /See:/ 'describeByoipCidrs' smart constructor.
-data DescribeByoipCidrs =
-  DescribeByoipCidrs'
-    { _dbcNextToken  :: !(Maybe Text)
-    , _dbcDryRun     :: !(Maybe Bool)
-    , _dbcMaxResults :: !Nat
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data DescribeByoipCidrs = DescribeByoipCidrs'{_dbcNextToken
+                                              :: !(Maybe Text),
+                                              _dbcDryRun :: !(Maybe Bool),
+                                              _dbcMaxResults :: !Nat}
+                            deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'DescribeByoipCidrs' with the minimum fields required to make a request.
 --
@@ -74,13 +70,10 @@ data DescribeByoipCidrs =
 describeByoipCidrs
     :: Natural -- ^ 'dbcMaxResults'
     -> DescribeByoipCidrs
-describeByoipCidrs pMaxResults_ =
-  DescribeByoipCidrs'
-    { _dbcNextToken = Nothing
-    , _dbcDryRun = Nothing
-    , _dbcMaxResults = _Nat # pMaxResults_
-    }
-
+describeByoipCidrs pMaxResults_
+  = DescribeByoipCidrs'{_dbcNextToken = Nothing,
+                        _dbcDryRun = Nothing,
+                        _dbcMaxResults = _Nat # pMaxResults_}
 
 -- | The token for the next page of results.
 dbcNextToken :: Lens' DescribeByoipCidrs (Maybe Text)
@@ -133,14 +126,16 @@ instance ToQuery DescribeByoipCidrs where
                "MaxResults" =: _dbcMaxResults]
 
 -- | /See:/ 'describeByoipCidrsResponse' smart constructor.
-data DescribeByoipCidrsResponse =
-  DescribeByoipCidrsResponse'
-    { _dbcrsNextToken      :: !(Maybe Text)
-    , _dbcrsByoipCidrs     :: !(Maybe [ByoipCidr])
-    , _dbcrsResponseStatus :: !Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data DescribeByoipCidrsResponse = DescribeByoipCidrsResponse'{_dbcrsNextToken
+                                                              :: !(Maybe Text),
+                                                              _dbcrsByoipCidrs
+                                                              ::
+                                                              !(Maybe
+                                                                  [ByoipCidr]),
+                                                              _dbcrsResponseStatus
+                                                              :: !Int}
+                                    deriving (Eq, Read, Show, Data, Typeable,
+                                              Generic)
 
 -- | Creates a value of 'DescribeByoipCidrsResponse' with the minimum fields required to make a request.
 --
@@ -154,13 +149,11 @@ data DescribeByoipCidrsResponse =
 describeByoipCidrsResponse
     :: Int -- ^ 'dbcrsResponseStatus'
     -> DescribeByoipCidrsResponse
-describeByoipCidrsResponse pResponseStatus_ =
-  DescribeByoipCidrsResponse'
-    { _dbcrsNextToken = Nothing
-    , _dbcrsByoipCidrs = Nothing
-    , _dbcrsResponseStatus = pResponseStatus_
-    }
-
+describeByoipCidrsResponse pResponseStatus_
+  = DescribeByoipCidrsResponse'{_dbcrsNextToken =
+                                  Nothing,
+                                _dbcrsByoipCidrs = Nothing,
+                                _dbcrsResponseStatus = pResponseStatus_}
 
 -- | The token to use to retrieve the next page of results. This value is @null@ when there are no more results to return.
 dbcrsNextToken :: Lens' DescribeByoipCidrsResponse (Maybe Text)

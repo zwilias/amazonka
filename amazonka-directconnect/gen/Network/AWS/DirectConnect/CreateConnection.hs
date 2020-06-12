@@ -64,24 +64,20 @@ module Network.AWS.DirectConnect.CreateConnection
     ) where
 
 import Network.AWS.DirectConnect.Types
-import Network.AWS.DirectConnect.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 
 -- | /See:/ 'createConnection' smart constructor.
-data CreateConnection =
-  CreateConnection'
-    { _ccLagId          :: !(Maybe Text)
-    , _ccProviderName   :: !(Maybe Text)
-    , _ccTags           :: !(Maybe (List1 Tag))
-    , _ccLocation       :: !Text
-    , _ccBandwidth      :: !Text
-    , _ccConnectionName :: !Text
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data CreateConnection = CreateConnection'{_ccLagId ::
+                                          !(Maybe Text),
+                                          _ccProviderName :: !(Maybe Text),
+                                          _ccTags :: !(Maybe (List1 Tag)),
+                                          _ccLocation :: !Text,
+                                          _ccBandwidth :: !Text,
+                                          _ccConnectionName :: !Text}
+                          deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'CreateConnection' with the minimum fields required to make a request.
 --
@@ -103,16 +99,12 @@ createConnection
     -> Text -- ^ 'ccBandwidth'
     -> Text -- ^ 'ccConnectionName'
     -> CreateConnection
-createConnection pLocation_ pBandwidth_ pConnectionName_ =
-  CreateConnection'
-    { _ccLagId = Nothing
-    , _ccProviderName = Nothing
-    , _ccTags = Nothing
-    , _ccLocation = pLocation_
-    , _ccBandwidth = pBandwidth_
-    , _ccConnectionName = pConnectionName_
-    }
-
+createConnection pLocation_ pBandwidth_
+  pConnectionName_
+  = CreateConnection'{_ccLagId = Nothing,
+                      _ccProviderName = Nothing, _ccTags = Nothing,
+                      _ccLocation = pLocation_, _ccBandwidth = pBandwidth_,
+                      _ccConnectionName = pConnectionName_}
 
 -- | The ID of the LAG.
 ccLagId :: Lens' CreateConnection (Maybe Text)

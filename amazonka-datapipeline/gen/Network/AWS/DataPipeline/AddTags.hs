@@ -38,7 +38,6 @@ module Network.AWS.DataPipeline.AddTags
     ) where
 
 import Network.AWS.DataPipeline.Types
-import Network.AWS.DataPipeline.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.Request
@@ -49,13 +48,9 @@ import Network.AWS.Response
 --
 --
 -- /See:/ 'addTags' smart constructor.
-data AddTags =
-  AddTags'
-    { _atPipelineId :: !Text
-    , _atTags       :: ![Tag]
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data AddTags = AddTags'{_atPipelineId :: !Text,
+                        _atTags :: ![Tag]}
+                 deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'AddTags' with the minimum fields required to make a request.
 --
@@ -67,8 +62,9 @@ data AddTags =
 addTags
     :: Text -- ^ 'atPipelineId'
     -> AddTags
-addTags pPipelineId_ = AddTags' {_atPipelineId = pPipelineId_, _atTags = mempty}
-
+addTags pPipelineId_
+  = AddTags'{_atPipelineId = pPipelineId_,
+             _atTags = mempty}
 
 -- | The ID of the pipeline.
 atPipelineId :: Lens' AddTags Text
@@ -116,12 +112,9 @@ instance ToQuery AddTags where
 --
 --
 -- /See:/ 'addTagsResponse' smart constructor.
-newtype AddTagsResponse =
-  AddTagsResponse'
-    { _atrsResponseStatus :: Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+newtype AddTagsResponse = AddTagsResponse'{_atrsResponseStatus
+                                           :: Int}
+                            deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'AddTagsResponse' with the minimum fields required to make a request.
 --
@@ -131,9 +124,9 @@ newtype AddTagsResponse =
 addTagsResponse
     :: Int -- ^ 'atrsResponseStatus'
     -> AddTagsResponse
-addTagsResponse pResponseStatus_ =
-  AddTagsResponse' {_atrsResponseStatus = pResponseStatus_}
-
+addTagsResponse pResponseStatus_
+  = AddTagsResponse'{_atrsResponseStatus =
+                       pResponseStatus_}
 
 -- | -- | The response status code.
 atrsResponseStatus :: Lens' AddTagsResponse Int

@@ -49,21 +49,19 @@ module Network.AWS.ElasticBeanstalk.UpdateTagsForResource
     ) where
 
 import Network.AWS.ElasticBeanstalk.Types
-import Network.AWS.ElasticBeanstalk.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 
 -- | /See:/ 'updateTagsForResource' smart constructor.
-data UpdateTagsForResource =
-  UpdateTagsForResource'
-    { _utfrTagsToRemove :: !(Maybe [Text])
-    , _utfrTagsToAdd    :: !(Maybe [Tag])
-    , _utfrResourceARN  :: !Text
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data UpdateTagsForResource = UpdateTagsForResource'{_utfrTagsToRemove
+                                                    :: !(Maybe [Text]),
+                                                    _utfrTagsToAdd ::
+                                                    !(Maybe [Tag]),
+                                                    _utfrResourceARN :: !Text}
+                               deriving (Eq, Read, Show, Data, Typeable,
+                                         Generic)
 
 -- | Creates a value of 'UpdateTagsForResource' with the minimum fields required to make a request.
 --
@@ -77,13 +75,10 @@ data UpdateTagsForResource =
 updateTagsForResource
     :: Text -- ^ 'utfrResourceARN'
     -> UpdateTagsForResource
-updateTagsForResource pResourceARN_ =
-  UpdateTagsForResource'
-    { _utfrTagsToRemove = Nothing
-    , _utfrTagsToAdd = Nothing
-    , _utfrResourceARN = pResourceARN_
-    }
-
+updateTagsForResource pResourceARN_
+  = UpdateTagsForResource'{_utfrTagsToRemove = Nothing,
+                           _utfrTagsToAdd = Nothing,
+                           _utfrResourceARN = pResourceARN_}
 
 -- | A list of tag keys to remove. If a tag key doesn't exist, it is silently ignored.
 utfrTagsToRemove :: Lens' UpdateTagsForResource [Text]
@@ -125,16 +120,15 @@ instance ToQuery UpdateTagsForResource where
                "ResourceArn" =: _utfrResourceARN]
 
 -- | /See:/ 'updateTagsForResourceResponse' smart constructor.
-data UpdateTagsForResourceResponse =
-  UpdateTagsForResourceResponse'
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data UpdateTagsForResourceResponse = UpdateTagsForResourceResponse'
+                                       deriving (Eq, Read, Show, Data, Typeable,
+                                                 Generic)
 
 -- | Creates a value of 'UpdateTagsForResourceResponse' with the minimum fields required to make a request.
 --
 updateTagsForResourceResponse
     :: UpdateTagsForResourceResponse
-updateTagsForResourceResponse = UpdateTagsForResourceResponse'
-
+updateTagsForResourceResponse
+  = UpdateTagsForResourceResponse'
 
 instance NFData UpdateTagsForResourceResponse where

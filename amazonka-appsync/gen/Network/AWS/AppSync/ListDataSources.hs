@@ -43,7 +43,6 @@ module Network.AWS.AppSync.ListDataSources
     ) where
 
 import Network.AWS.AppSync.Types
-import Network.AWS.AppSync.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Pager
 import Network.AWS.Prelude
@@ -51,20 +50,17 @@ import Network.AWS.Request
 import Network.AWS.Response
 
 -- | /See:/ 'listDataSources' smart constructor.
-data ListDataSources =
-  ListDataSources'
-    { _ldsNextToken  :: !(Maybe Text)
-    , _ldsMaxResults :: !(Maybe Nat)
-    , _ldsApiId      :: !Text
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data ListDataSources = ListDataSources'{_ldsNextToken
+                                        :: !(Maybe Text),
+                                        _ldsMaxResults :: !(Maybe Nat),
+                                        _ldsApiId :: !Text}
+                         deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'ListDataSources' with the minimum fields required to make a request.
 --
 -- Use one of the following lenses to modify other fields as desired:
 --
--- * 'ldsNextToken' - An identifier that was returned from the previous call to this operation, which can be used to return the next set of items in the list.
+-- * 'ldsNextToken' - An identifier that was returned from the previous call to this operation, which can be used to return the next set of items in the list. 
 --
 -- * 'ldsMaxResults' - The maximum number of results you want the request to return.
 --
@@ -72,12 +68,11 @@ data ListDataSources =
 listDataSources
     :: Text -- ^ 'ldsApiId'
     -> ListDataSources
-listDataSources pApiId_ =
-  ListDataSources'
-    {_ldsNextToken = Nothing, _ldsMaxResults = Nothing, _ldsApiId = pApiId_}
+listDataSources pApiId_
+  = ListDataSources'{_ldsNextToken = Nothing,
+                     _ldsMaxResults = Nothing, _ldsApiId = pApiId_}
 
-
--- | An identifier that was returned from the previous call to this operation, which can be used to return the next set of items in the list.
+-- | An identifier that was returned from the previous call to this operation, which can be used to return the next set of items in the list. 
 ldsNextToken :: Lens' ListDataSources (Maybe Text)
 ldsNextToken = lens _ldsNextToken (\ s a -> s{_ldsNextToken = a})
 
@@ -130,14 +125,15 @@ instance ToQuery ListDataSources where
                "maxResults" =: _ldsMaxResults]
 
 -- | /See:/ 'listDataSourcesResponse' smart constructor.
-data ListDataSourcesResponse =
-  ListDataSourcesResponse'
-    { _ldsrsDataSources    :: !(Maybe [DataSource])
-    , _ldsrsNextToken      :: !(Maybe Text)
-    , _ldsrsResponseStatus :: !Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data ListDataSourcesResponse = ListDataSourcesResponse'{_ldsrsDataSources
+                                                        ::
+                                                        !(Maybe [DataSource]),
+                                                        _ldsrsNextToken ::
+                                                        !(Maybe Text),
+                                                        _ldsrsResponseStatus ::
+                                                        !Int}
+                                 deriving (Eq, Read, Show, Data, Typeable,
+                                           Generic)
 
 -- | Creates a value of 'ListDataSourcesResponse' with the minimum fields required to make a request.
 --
@@ -151,13 +147,11 @@ data ListDataSourcesResponse =
 listDataSourcesResponse
     :: Int -- ^ 'ldsrsResponseStatus'
     -> ListDataSourcesResponse
-listDataSourcesResponse pResponseStatus_ =
-  ListDataSourcesResponse'
-    { _ldsrsDataSources = Nothing
-    , _ldsrsNextToken = Nothing
-    , _ldsrsResponseStatus = pResponseStatus_
-    }
-
+listDataSourcesResponse pResponseStatus_
+  = ListDataSourcesResponse'{_ldsrsDataSources =
+                               Nothing,
+                             _ldsrsNextToken = Nothing,
+                             _ldsrsResponseStatus = pResponseStatus_}
 
 -- | The @DataSource@ objects.
 ldsrsDataSources :: Lens' ListDataSourcesResponse [DataSource]

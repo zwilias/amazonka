@@ -42,19 +42,16 @@ module Network.AWS.Greengrass.GetResourceDefinition
     ) where
 
 import Network.AWS.Greengrass.Types
-import Network.AWS.Greengrass.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 
 -- | /See:/ 'getResourceDefinition' smart constructor.
-newtype GetResourceDefinition =
-  GetResourceDefinition'
-    { _grdResourceDefinitionId :: Text
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+newtype GetResourceDefinition = GetResourceDefinition'{_grdResourceDefinitionId
+                                                       :: Text}
+                                  deriving (Eq, Read, Show, Data, Typeable,
+                                            Generic)
 
 -- | Creates a value of 'GetResourceDefinition' with the minimum fields required to make a request.
 --
@@ -64,9 +61,9 @@ newtype GetResourceDefinition =
 getResourceDefinition
     :: Text -- ^ 'grdResourceDefinitionId'
     -> GetResourceDefinition
-getResourceDefinition pResourceDefinitionId_ =
-  GetResourceDefinition' {_grdResourceDefinitionId = pResourceDefinitionId_}
-
+getResourceDefinition pResourceDefinitionId_
+  = GetResourceDefinition'{_grdResourceDefinitionId =
+                             pResourceDefinitionId_}
 
 -- | The ID of the resource definition.
 grdResourceDefinitionId :: Lens' GetResourceDefinition Text
@@ -109,19 +106,36 @@ instance ToQuery GetResourceDefinition where
         toQuery = const mempty
 
 -- | /See:/ 'getResourceDefinitionResponse' smart constructor.
-data GetResourceDefinitionResponse =
-  GetResourceDefinitionResponse'
-    { _grdrsLatestVersionARN     :: !(Maybe Text)
-    , _grdrsARN                  :: !(Maybe Text)
-    , _grdrsName                 :: !(Maybe Text)
-    , _grdrsCreationTimestamp    :: !(Maybe Text)
-    , _grdrsId                   :: !(Maybe Text)
-    , _grdrsLatestVersion        :: !(Maybe Text)
-    , _grdrsLastUpdatedTimestamp :: !(Maybe Text)
-    , _grdrsResponseStatus       :: !Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data GetResourceDefinitionResponse = GetResourceDefinitionResponse'{_grdrsLatestVersionARN
+                                                                    ::
+                                                                    !(Maybe
+                                                                        Text),
+                                                                    _grdrsARN ::
+                                                                    !(Maybe
+                                                                        Text),
+                                                                    _grdrsName
+                                                                    ::
+                                                                    !(Maybe
+                                                                        Text),
+                                                                    _grdrsCreationTimestamp
+                                                                    ::
+                                                                    !(Maybe
+                                                                        Text),
+                                                                    _grdrsId ::
+                                                                    !(Maybe
+                                                                        Text),
+                                                                    _grdrsLatestVersion
+                                                                    ::
+                                                                    !(Maybe
+                                                                        Text),
+                                                                    _grdrsLastUpdatedTimestamp
+                                                                    ::
+                                                                    !(Maybe
+                                                                        Text),
+                                                                    _grdrsResponseStatus
+                                                                    :: !Int}
+                                       deriving (Eq, Read, Show, Data, Typeable,
+                                                 Generic)
 
 -- | Creates a value of 'GetResourceDefinitionResponse' with the minimum fields required to make a request.
 --
@@ -145,18 +159,15 @@ data GetResourceDefinitionResponse =
 getResourceDefinitionResponse
     :: Int -- ^ 'grdrsResponseStatus'
     -> GetResourceDefinitionResponse
-getResourceDefinitionResponse pResponseStatus_ =
-  GetResourceDefinitionResponse'
-    { _grdrsLatestVersionARN = Nothing
-    , _grdrsARN = Nothing
-    , _grdrsName = Nothing
-    , _grdrsCreationTimestamp = Nothing
-    , _grdrsId = Nothing
-    , _grdrsLatestVersion = Nothing
-    , _grdrsLastUpdatedTimestamp = Nothing
-    , _grdrsResponseStatus = pResponseStatus_
-    }
-
+getResourceDefinitionResponse pResponseStatus_
+  = GetResourceDefinitionResponse'{_grdrsLatestVersionARN
+                                     = Nothing,
+                                   _grdrsARN = Nothing, _grdrsName = Nothing,
+                                   _grdrsCreationTimestamp = Nothing,
+                                   _grdrsId = Nothing,
+                                   _grdrsLatestVersion = Nothing,
+                                   _grdrsLastUpdatedTimestamp = Nothing,
+                                   _grdrsResponseStatus = pResponseStatus_}
 
 -- | The ARN of the latest version of the definition.
 grdrsLatestVersionARN :: Lens' GetResourceDefinitionResponse (Maybe Text)

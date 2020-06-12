@@ -48,7 +48,6 @@ module Network.AWS.EC2.ModifyVPCEndpoint
     ) where
 
 import Network.AWS.EC2.Types
-import Network.AWS.EC2.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.Request
@@ -59,22 +58,25 @@ import Network.AWS.Response
 --
 --
 -- /See:/ 'modifyVPCEndpoint' smart constructor.
-data ModifyVPCEndpoint =
-  ModifyVPCEndpoint'
-    { _mvePolicyDocument         :: !(Maybe Text)
-    , _mveRemoveRouteTableIds    :: !(Maybe [Text])
-    , _mveResetPolicy            :: !(Maybe Bool)
-    , _mveAddRouteTableIds       :: !(Maybe [Text])
-    , _mvePrivateDNSEnabled      :: !(Maybe Bool)
-    , _mveAddSubnetIds           :: !(Maybe [Text])
-    , _mveRemoveSubnetIds        :: !(Maybe [Text])
-    , _mveAddSecurityGroupIds    :: !(Maybe [Text])
-    , _mveDryRun                 :: !(Maybe Bool)
-    , _mveRemoveSecurityGroupIds :: !(Maybe [Text])
-    , _mveVPCEndpointId          :: !Text
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data ModifyVPCEndpoint = ModifyVPCEndpoint'{_mvePolicyDocument
+                                            :: !(Maybe Text),
+                                            _mveRemoveRouteTableIds ::
+                                            !(Maybe [Text]),
+                                            _mveResetPolicy :: !(Maybe Bool),
+                                            _mveAddRouteTableIds ::
+                                            !(Maybe [Text]),
+                                            _mvePrivateDNSEnabled ::
+                                            !(Maybe Bool),
+                                            _mveAddSubnetIds :: !(Maybe [Text]),
+                                            _mveRemoveSubnetIds ::
+                                            !(Maybe [Text]),
+                                            _mveAddSecurityGroupIds ::
+                                            !(Maybe [Text]),
+                                            _mveDryRun :: !(Maybe Bool),
+                                            _mveRemoveSecurityGroupIds ::
+                                            !(Maybe [Text]),
+                                            _mveVPCEndpointId :: !Text}
+                           deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'ModifyVPCEndpoint' with the minimum fields required to make a request.
 --
@@ -104,21 +106,18 @@ data ModifyVPCEndpoint =
 modifyVPCEndpoint
     :: Text -- ^ 'mveVPCEndpointId'
     -> ModifyVPCEndpoint
-modifyVPCEndpoint pVPCEndpointId_ =
-  ModifyVPCEndpoint'
-    { _mvePolicyDocument = Nothing
-    , _mveRemoveRouteTableIds = Nothing
-    , _mveResetPolicy = Nothing
-    , _mveAddRouteTableIds = Nothing
-    , _mvePrivateDNSEnabled = Nothing
-    , _mveAddSubnetIds = Nothing
-    , _mveRemoveSubnetIds = Nothing
-    , _mveAddSecurityGroupIds = Nothing
-    , _mveDryRun = Nothing
-    , _mveRemoveSecurityGroupIds = Nothing
-    , _mveVPCEndpointId = pVPCEndpointId_
-    }
-
+modifyVPCEndpoint pVPCEndpointId_
+  = ModifyVPCEndpoint'{_mvePolicyDocument = Nothing,
+                       _mveRemoveRouteTableIds = Nothing,
+                       _mveResetPolicy = Nothing,
+                       _mveAddRouteTableIds = Nothing,
+                       _mvePrivateDNSEnabled = Nothing,
+                       _mveAddSubnetIds = Nothing,
+                       _mveRemoveSubnetIds = Nothing,
+                       _mveAddSecurityGroupIds = Nothing,
+                       _mveDryRun = Nothing,
+                       _mveRemoveSecurityGroupIds = Nothing,
+                       _mveVPCEndpointId = pVPCEndpointId_}
 
 -- | A policy to attach to the endpoint that controls access to the service. The policy must be in valid JSON format.
 mvePolicyDocument :: Lens' ModifyVPCEndpoint (Maybe Text)
@@ -212,13 +211,12 @@ instance ToQuery ModifyVPCEndpoint where
                "VpcEndpointId" =: _mveVPCEndpointId]
 
 -- | /See:/ 'modifyVPCEndpointResponse' smart constructor.
-data ModifyVPCEndpointResponse =
-  ModifyVPCEndpointResponse'
-    { _mversReturn         :: !(Maybe Bool)
-    , _mversResponseStatus :: !Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data ModifyVPCEndpointResponse = ModifyVPCEndpointResponse'{_mversReturn
+                                                            :: !(Maybe Bool),
+                                                            _mversResponseStatus
+                                                            :: !Int}
+                                   deriving (Eq, Read, Show, Data, Typeable,
+                                             Generic)
 
 -- | Creates a value of 'ModifyVPCEndpointResponse' with the minimum fields required to make a request.
 --
@@ -230,10 +228,9 @@ data ModifyVPCEndpointResponse =
 modifyVPCEndpointResponse
     :: Int -- ^ 'mversResponseStatus'
     -> ModifyVPCEndpointResponse
-modifyVPCEndpointResponse pResponseStatus_ =
-  ModifyVPCEndpointResponse'
-    {_mversReturn = Nothing, _mversResponseStatus = pResponseStatus_}
-
+modifyVPCEndpointResponse pResponseStatus_
+  = ModifyVPCEndpointResponse'{_mversReturn = Nothing,
+                               _mversResponseStatus = pResponseStatus_}
 
 -- | Returns @true@ if the request succeeds; otherwise, it returns an error.
 mversReturn :: Lens' ModifyVPCEndpointResponse (Maybe Bool)

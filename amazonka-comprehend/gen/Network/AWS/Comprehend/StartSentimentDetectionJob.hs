@@ -46,26 +46,33 @@ module Network.AWS.Comprehend.StartSentimentDetectionJob
     ) where
 
 import Network.AWS.Comprehend.Types
-import Network.AWS.Comprehend.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 
 -- | /See:/ 'startSentimentDetectionJob' smart constructor.
-data StartSentimentDetectionJob =
-  StartSentimentDetectionJob'
-    { _ssdjJobName            :: !(Maybe Text)
-    , _ssdjVPCConfig          :: !(Maybe VPCConfig)
-    , _ssdjVolumeKMSKeyId     :: !(Maybe Text)
-    , _ssdjClientRequestToken :: !(Maybe Text)
-    , _ssdjInputDataConfig    :: !InputDataConfig
-    , _ssdjOutputDataConfig   :: !OutputDataConfig
-    , _ssdjDataAccessRoleARN  :: !Text
-    , _ssdjLanguageCode       :: !LanguageCode
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data StartSentimentDetectionJob = StartSentimentDetectionJob'{_ssdjJobName
+                                                              :: !(Maybe Text),
+                                                              _ssdjVPCConfig ::
+                                                              !(Maybe
+                                                                  VPCConfig),
+                                                              _ssdjVolumeKMSKeyId
+                                                              :: !(Maybe Text),
+                                                              _ssdjClientRequestToken
+                                                              :: !(Maybe Text),
+                                                              _ssdjInputDataConfig
+                                                              ::
+                                                              !InputDataConfig,
+                                                              _ssdjOutputDataConfig
+                                                              ::
+                                                              !OutputDataConfig,
+                                                              _ssdjDataAccessRoleARN
+                                                              :: !Text,
+                                                              _ssdjLanguageCode
+                                                              :: !LanguageCode}
+                                    deriving (Eq, Read, Show, Data, Typeable,
+                                              Generic)
 
 -- | Creates a value of 'StartSentimentDetectionJob' with the minimum fields required to make a request.
 --
@@ -73,15 +80,15 @@ data StartSentimentDetectionJob =
 --
 -- * 'ssdjJobName' - The identifier of the job.
 --
--- * 'ssdjVPCConfig' - Configuration parameters for an optional private Virtual Private Cloud (VPC) containing the resources you are using for your sentiment detection job. For more information, see <https://docs.aws.amazon.com/vpc/latest/userguide/what-is-amazon-vpc.html Amazon VPC> .
+-- * 'ssdjVPCConfig' - Configuration parameters for an optional private Virtual Private Cloud (VPC) containing the resources you are using for your sentiment detection job. For more information, see <https://docs.aws.amazon.com/vpc/latest/userguide/what-is-amazon-vpc.html Amazon VPC> . 
 --
--- * 'ssdjVolumeKMSKeyId' - ID for the AWS Key Management Service (KMS) key that Amazon Comprehend uses to encrypt data on the storage volume attached to the ML compute instance(s) that process the analysis job. The VolumeKmsKeyId can be either of the following formats:     * KMS Key ID: @"1234abcd-12ab-34cd-56ef-1234567890ab"@      * Amazon Resource Name (ARN) of a KMS Key: @"arn:aws:kms:us-west-2:111122223333:key/1234abcd-12ab-34cd-56ef-1234567890ab"@
+-- * 'ssdjVolumeKMSKeyId' - ID for the AWS Key Management Service (KMS) key that Amazon Comprehend uses to encrypt data on the storage volume attached to the ML compute instance(s) that process the analysis job. The VolumeKmsKeyId can be either of the following formats:     * KMS Key ID: @"1234abcd-12ab-34cd-56ef-1234567890ab"@      * Amazon Resource Name (ARN) of a KMS Key: @"arn:aws:kms:us-west-2:111122223333:key/1234abcd-12ab-34cd-56ef-1234567890ab"@ 
 --
 -- * 'ssdjClientRequestToken' - A unique identifier for the request. If you don't set the client request token, Amazon Comprehend generates one.
 --
 -- * 'ssdjInputDataConfig' - Specifies the format and location of the input data for the job.
 --
--- * 'ssdjOutputDataConfig' - Specifies where to send the output files.
+-- * 'ssdjOutputDataConfig' - Specifies where to send the output files. 
 --
 -- * 'ssdjDataAccessRoleARN' - The Amazon Resource Name (ARN) of the AWS Identity and Access Management (IAM) role that grants Amazon Comprehend read access to your input data. For more information, see <https://docs.aws.amazon.com/comprehend/latest/dg/access-control-managing-permissions.html#auth-role-permissions https://docs.aws.amazon.com/comprehend/latest/dg/access-control-managing-permissions.html#auth-role-permissions> .
 --
@@ -92,28 +99,26 @@ startSentimentDetectionJob
     -> Text -- ^ 'ssdjDataAccessRoleARN'
     -> LanguageCode -- ^ 'ssdjLanguageCode'
     -> StartSentimentDetectionJob
-startSentimentDetectionJob pInputDataConfig_ pOutputDataConfig_ pDataAccessRoleARN_ pLanguageCode_ =
-  StartSentimentDetectionJob'
-    { _ssdjJobName = Nothing
-    , _ssdjVPCConfig = Nothing
-    , _ssdjVolumeKMSKeyId = Nothing
-    , _ssdjClientRequestToken = Nothing
-    , _ssdjInputDataConfig = pInputDataConfig_
-    , _ssdjOutputDataConfig = pOutputDataConfig_
-    , _ssdjDataAccessRoleARN = pDataAccessRoleARN_
-    , _ssdjLanguageCode = pLanguageCode_
-    }
-
+startSentimentDetectionJob pInputDataConfig_
+  pOutputDataConfig_ pDataAccessRoleARN_ pLanguageCode_
+  = StartSentimentDetectionJob'{_ssdjJobName = Nothing,
+                                _ssdjVPCConfig = Nothing,
+                                _ssdjVolumeKMSKeyId = Nothing,
+                                _ssdjClientRequestToken = Nothing,
+                                _ssdjInputDataConfig = pInputDataConfig_,
+                                _ssdjOutputDataConfig = pOutputDataConfig_,
+                                _ssdjDataAccessRoleARN = pDataAccessRoleARN_,
+                                _ssdjLanguageCode = pLanguageCode_}
 
 -- | The identifier of the job.
 ssdjJobName :: Lens' StartSentimentDetectionJob (Maybe Text)
 ssdjJobName = lens _ssdjJobName (\ s a -> s{_ssdjJobName = a})
 
--- | Configuration parameters for an optional private Virtual Private Cloud (VPC) containing the resources you are using for your sentiment detection job. For more information, see <https://docs.aws.amazon.com/vpc/latest/userguide/what-is-amazon-vpc.html Amazon VPC> .
+-- | Configuration parameters for an optional private Virtual Private Cloud (VPC) containing the resources you are using for your sentiment detection job. For more information, see <https://docs.aws.amazon.com/vpc/latest/userguide/what-is-amazon-vpc.html Amazon VPC> . 
 ssdjVPCConfig :: Lens' StartSentimentDetectionJob (Maybe VPCConfig)
 ssdjVPCConfig = lens _ssdjVPCConfig (\ s a -> s{_ssdjVPCConfig = a})
 
--- | ID for the AWS Key Management Service (KMS) key that Amazon Comprehend uses to encrypt data on the storage volume attached to the ML compute instance(s) that process the analysis job. The VolumeKmsKeyId can be either of the following formats:     * KMS Key ID: @"1234abcd-12ab-34cd-56ef-1234567890ab"@      * Amazon Resource Name (ARN) of a KMS Key: @"arn:aws:kms:us-west-2:111122223333:key/1234abcd-12ab-34cd-56ef-1234567890ab"@
+-- | ID for the AWS Key Management Service (KMS) key that Amazon Comprehend uses to encrypt data on the storage volume attached to the ML compute instance(s) that process the analysis job. The VolumeKmsKeyId can be either of the following formats:     * KMS Key ID: @"1234abcd-12ab-34cd-56ef-1234567890ab"@      * Amazon Resource Name (ARN) of a KMS Key: @"arn:aws:kms:us-west-2:111122223333:key/1234abcd-12ab-34cd-56ef-1234567890ab"@ 
 ssdjVolumeKMSKeyId :: Lens' StartSentimentDetectionJob (Maybe Text)
 ssdjVolumeKMSKeyId = lens _ssdjVolumeKMSKeyId (\ s a -> s{_ssdjVolumeKMSKeyId = a})
 
@@ -125,7 +130,7 @@ ssdjClientRequestToken = lens _ssdjClientRequestToken (\ s a -> s{_ssdjClientReq
 ssdjInputDataConfig :: Lens' StartSentimentDetectionJob InputDataConfig
 ssdjInputDataConfig = lens _ssdjInputDataConfig (\ s a -> s{_ssdjInputDataConfig = a})
 
--- | Specifies where to send the output files.
+-- | Specifies where to send the output files. 
 ssdjOutputDataConfig :: Lens' StartSentimentDetectionJob OutputDataConfig
 ssdjOutputDataConfig = lens _ssdjOutputDataConfig (\ s a -> s{_ssdjOutputDataConfig = a})
 
@@ -183,14 +188,19 @@ instance ToQuery StartSentimentDetectionJob where
         toQuery = const mempty
 
 -- | /See:/ 'startSentimentDetectionJobResponse' smart constructor.
-data StartSentimentDetectionJobResponse =
-  StartSentimentDetectionJobResponse'
-    { _ssdjrsJobId          :: !(Maybe Text)
-    , _ssdjrsJobStatus      :: !(Maybe JobStatus)
-    , _ssdjrsResponseStatus :: !Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data StartSentimentDetectionJobResponse = StartSentimentDetectionJobResponse'{_ssdjrsJobId
+                                                                              ::
+                                                                              !(Maybe
+                                                                                  Text),
+                                                                              _ssdjrsJobStatus
+                                                                              ::
+                                                                              !(Maybe
+                                                                                  JobStatus),
+                                                                              _ssdjrsResponseStatus
+                                                                              ::
+                                                                              !Int}
+                                            deriving (Eq, Read, Show, Data,
+                                                      Typeable, Generic)
 
 -- | Creates a value of 'StartSentimentDetectionJobResponse' with the minimum fields required to make a request.
 --
@@ -204,13 +214,12 @@ data StartSentimentDetectionJobResponse =
 startSentimentDetectionJobResponse
     :: Int -- ^ 'ssdjrsResponseStatus'
     -> StartSentimentDetectionJobResponse
-startSentimentDetectionJobResponse pResponseStatus_ =
-  StartSentimentDetectionJobResponse'
-    { _ssdjrsJobId = Nothing
-    , _ssdjrsJobStatus = Nothing
-    , _ssdjrsResponseStatus = pResponseStatus_
-    }
-
+startSentimentDetectionJobResponse pResponseStatus_
+  = StartSentimentDetectionJobResponse'{_ssdjrsJobId =
+                                          Nothing,
+                                        _ssdjrsJobStatus = Nothing,
+                                        _ssdjrsResponseStatus =
+                                          pResponseStatus_}
 
 -- | The identifier generated for the job. To get the status of a job, use this identifier with the operation.
 ssdjrsJobId :: Lens' StartSentimentDetectionJobResponse (Maybe Text)

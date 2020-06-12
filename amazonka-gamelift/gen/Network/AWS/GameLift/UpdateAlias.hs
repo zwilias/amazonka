@@ -23,17 +23,17 @@
 --
 -- Alias-related operations include:
 --
---     * 'CreateAlias'
+--     * 'CreateAlias' 
 --
---     * 'ListAliases'
+--     * 'ListAliases' 
 --
---     * 'DescribeAlias'
+--     * 'DescribeAlias' 
 --
---     * 'UpdateAlias'
+--     * 'UpdateAlias' 
 --
---     * 'DeleteAlias'
+--     * 'DeleteAlias' 
 --
---     * 'ResolveAlias'
+--     * 'ResolveAlias' 
 --
 --
 --
@@ -57,7 +57,6 @@ module Network.AWS.GameLift.UpdateAlias
     ) where
 
 import Network.AWS.GameLift.Types
-import Network.AWS.GameLift.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.Request
@@ -68,15 +67,12 @@ import Network.AWS.Response
 --
 --
 -- /See:/ 'updateAlias' smart constructor.
-data UpdateAlias =
-  UpdateAlias'
-    { _uaRoutingStrategy :: !(Maybe RoutingStrategy)
-    , _uaName            :: !(Maybe Text)
-    , _uaDescription     :: !(Maybe Text)
-    , _uaAliasId         :: !Text
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data UpdateAlias = UpdateAlias'{_uaRoutingStrategy ::
+                                !(Maybe RoutingStrategy),
+                                _uaName :: !(Maybe Text),
+                                _uaDescription :: !(Maybe Text),
+                                _uaAliasId :: !Text}
+                     deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'UpdateAlias' with the minimum fields required to make a request.
 --
@@ -92,14 +88,10 @@ data UpdateAlias =
 updateAlias
     :: Text -- ^ 'uaAliasId'
     -> UpdateAlias
-updateAlias pAliasId_ =
-  UpdateAlias'
-    { _uaRoutingStrategy = Nothing
-    , _uaName = Nothing
-    , _uaDescription = Nothing
-    , _uaAliasId = pAliasId_
-    }
-
+updateAlias pAliasId_
+  = UpdateAlias'{_uaRoutingStrategy = Nothing,
+                 _uaName = Nothing, _uaDescription = Nothing,
+                 _uaAliasId = pAliasId_}
 
 -- | Object that specifies the fleet and routing type to use for the alias.
 uaRoutingStrategy :: Lens' UpdateAlias (Maybe RoutingStrategy)
@@ -159,13 +151,10 @@ instance ToQuery UpdateAlias where
 --
 --
 -- /See:/ 'updateAliasResponse' smart constructor.
-data UpdateAliasResponse =
-  UpdateAliasResponse'
-    { _uarsAlias          :: !(Maybe Alias)
-    , _uarsResponseStatus :: !Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data UpdateAliasResponse = UpdateAliasResponse'{_uarsAlias
+                                                :: !(Maybe Alias),
+                                                _uarsResponseStatus :: !Int}
+                             deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'UpdateAliasResponse' with the minimum fields required to make a request.
 --
@@ -177,10 +166,9 @@ data UpdateAliasResponse =
 updateAliasResponse
     :: Int -- ^ 'uarsResponseStatus'
     -> UpdateAliasResponse
-updateAliasResponse pResponseStatus_ =
-  UpdateAliasResponse'
-    {_uarsAlias = Nothing, _uarsResponseStatus = pResponseStatus_}
-
+updateAliasResponse pResponseStatus_
+  = UpdateAliasResponse'{_uarsAlias = Nothing,
+                         _uarsResponseStatus = pResponseStatus_}
 
 -- | Object that contains the updated alias configuration.
 uarsAlias :: Lens' UpdateAliasResponse (Maybe Alias)

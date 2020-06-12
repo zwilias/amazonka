@@ -38,19 +38,16 @@ module Network.AWS.Comprehend.DescribeSentimentDetectionJob
     ) where
 
 import Network.AWS.Comprehend.Types
-import Network.AWS.Comprehend.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 
 -- | /See:/ 'describeSentimentDetectionJob' smart constructor.
-newtype DescribeSentimentDetectionJob =
-  DescribeSentimentDetectionJob'
-    { _dsdjJobId :: Text
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+newtype DescribeSentimentDetectionJob = DescribeSentimentDetectionJob'{_dsdjJobId
+                                                                       :: Text}
+                                          deriving (Eq, Read, Show, Data,
+                                                    Typeable, Generic)
 
 -- | Creates a value of 'DescribeSentimentDetectionJob' with the minimum fields required to make a request.
 --
@@ -60,9 +57,9 @@ newtype DescribeSentimentDetectionJob =
 describeSentimentDetectionJob
     :: Text -- ^ 'dsdjJobId'
     -> DescribeSentimentDetectionJob
-describeSentimentDetectionJob pJobId_ =
-  DescribeSentimentDetectionJob' {_dsdjJobId = pJobId_}
-
+describeSentimentDetectionJob pJobId_
+  = DescribeSentimentDetectionJob'{_dsdjJobId =
+                                     pJobId_}
 
 -- | The identifier that Amazon Comprehend generated for the job. The operation returns this identifier in its response.
 dsdjJobId :: Lens' DescribeSentimentDetectionJob Text
@@ -106,13 +103,15 @@ instance ToQuery DescribeSentimentDetectionJob where
         toQuery = const mempty
 
 -- | /See:/ 'describeSentimentDetectionJobResponse' smart constructor.
-data DescribeSentimentDetectionJobResponse =
-  DescribeSentimentDetectionJobResponse'
-    { _dsdjrsSentimentDetectionJobProperties :: !(Maybe SentimentDetectionJobProperties)
-    , _dsdjrsResponseStatus :: !Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data DescribeSentimentDetectionJobResponse = DescribeSentimentDetectionJobResponse'{_dsdjrsSentimentDetectionJobProperties
+                                                                                    ::
+                                                                                    !(Maybe
+                                                                                        SentimentDetectionJobProperties),
+                                                                                    _dsdjrsResponseStatus
+                                                                                    ::
+                                                                                    !Int}
+                                               deriving (Eq, Read, Show, Data,
+                                                         Typeable, Generic)
 
 -- | Creates a value of 'DescribeSentimentDetectionJobResponse' with the minimum fields required to make a request.
 --
@@ -124,12 +123,12 @@ data DescribeSentimentDetectionJobResponse =
 describeSentimentDetectionJobResponse
     :: Int -- ^ 'dsdjrsResponseStatus'
     -> DescribeSentimentDetectionJobResponse
-describeSentimentDetectionJobResponse pResponseStatus_ =
-  DescribeSentimentDetectionJobResponse'
-    { _dsdjrsSentimentDetectionJobProperties = Nothing
-    , _dsdjrsResponseStatus = pResponseStatus_
-    }
-
+describeSentimentDetectionJobResponse
+  pResponseStatus_
+  = DescribeSentimentDetectionJobResponse'{_dsdjrsSentimentDetectionJobProperties
+                                             = Nothing,
+                                           _dsdjrsResponseStatus =
+                                             pResponseStatus_}
 
 -- | An object that contains the properties associated with a sentiment detection job.
 dsdjrsSentimentDetectionJobProperties :: Lens' DescribeSentimentDetectionJobResponse (Maybe SentimentDetectionJobProperties)

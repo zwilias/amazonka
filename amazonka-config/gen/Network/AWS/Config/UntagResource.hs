@@ -36,20 +36,16 @@ module Network.AWS.Config.UntagResource
     ) where
 
 import Network.AWS.Config.Types
-import Network.AWS.Config.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 
 -- | /See:/ 'untagResource' smart constructor.
-data UntagResource =
-  UntagResource'
-    { _urResourceARN :: !Text
-    , _urTagKeys     :: !(List1 Text)
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data UntagResource = UntagResource'{_urResourceARN ::
+                                    !Text,
+                                    _urTagKeys :: !(List1 Text)}
+                       deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'UntagResource' with the minimum fields required to make a request.
 --
@@ -62,10 +58,9 @@ untagResource
     :: Text -- ^ 'urResourceARN'
     -> NonEmpty Text -- ^ 'urTagKeys'
     -> UntagResource
-untagResource pResourceARN_ pTagKeys_ =
-  UntagResource'
-    {_urResourceARN = pResourceARN_, _urTagKeys = _List1 # pTagKeys_}
-
+untagResource pResourceARN_ pTagKeys_
+  = UntagResource'{_urResourceARN = pResourceARN_,
+                   _urTagKeys = _List1 # pTagKeys_}
 
 -- | The Amazon Resource Name (ARN) that identifies the resource for which to list the tags. Currently, the supported resources are @ConfigRule@ , @ConfigurationAggregator@ and @AggregatorAuthorization@ .
 urResourceARN :: Lens' UntagResource Text
@@ -107,16 +102,14 @@ instance ToQuery UntagResource where
         toQuery = const mempty
 
 -- | /See:/ 'untagResourceResponse' smart constructor.
-data UntagResourceResponse =
-  UntagResourceResponse'
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data UntagResourceResponse = UntagResourceResponse'
+                               deriving (Eq, Read, Show, Data, Typeable,
+                                         Generic)
 
 -- | Creates a value of 'UntagResourceResponse' with the minimum fields required to make a request.
 --
 untagResourceResponse
     :: UntagResourceResponse
 untagResourceResponse = UntagResourceResponse'
-
 
 instance NFData UntagResourceResponse where

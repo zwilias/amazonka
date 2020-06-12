@@ -21,7 +21,7 @@
 -- Modifies the status of an Amazon ECS container instance.
 --
 --
--- You can change the status of a container instance to @DRAINING@ to manually remove an instance from a cluster, for example to perform system updates, update the Docker daemon, or scale down the cluster size.
+-- You can change the status of a container instance to @DRAINING@ to manually remove an instance from a cluster, for example to perform system updates, update the Docker daemon, or scale down the cluster size. 
 --
 -- When you set a container instance to @DRAINING@ , Amazon ECS prevents new tasks from being scheduled for placement on the container instance and replacement service tasks are started on other container instances in the cluster if the resources are available. Service tasks on the container instance that are in the @PENDING@ state are stopped immediately.
 --
@@ -59,21 +59,23 @@ module Network.AWS.ECS.UpdateContainerInstancesState
     ) where
 
 import Network.AWS.ECS.Types
-import Network.AWS.ECS.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 
 -- | /See:/ 'updateContainerInstancesState' smart constructor.
-data UpdateContainerInstancesState =
-  UpdateContainerInstancesState'
-    { _ucisCluster            :: !(Maybe Text)
-    , _ucisContainerInstances :: ![Text]
-    , _ucisStatus             :: !ContainerInstanceStatus
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data UpdateContainerInstancesState = UpdateContainerInstancesState'{_ucisCluster
+                                                                    ::
+                                                                    !(Maybe
+                                                                        Text),
+                                                                    _ucisContainerInstances
+                                                                    :: ![Text],
+                                                                    _ucisStatus
+                                                                    ::
+                                                                    !ContainerInstanceStatus}
+                                       deriving (Eq, Read, Show, Data, Typeable,
+                                                 Generic)
 
 -- | Creates a value of 'UpdateContainerInstancesState' with the minimum fields required to make a request.
 --
@@ -87,13 +89,11 @@ data UpdateContainerInstancesState =
 updateContainerInstancesState
     :: ContainerInstanceStatus -- ^ 'ucisStatus'
     -> UpdateContainerInstancesState
-updateContainerInstancesState pStatus_ =
-  UpdateContainerInstancesState'
-    { _ucisCluster = Nothing
-    , _ucisContainerInstances = mempty
-    , _ucisStatus = pStatus_
-    }
-
+updateContainerInstancesState pStatus_
+  = UpdateContainerInstancesState'{_ucisCluster =
+                                     Nothing,
+                                   _ucisContainerInstances = mempty,
+                                   _ucisStatus = pStatus_}
 
 -- | The short name or full Amazon Resource Name (ARN) of the cluster that hosts the container instance to update. If you do not specify a cluster, the default cluster is assumed.
 ucisCluster :: Lens' UpdateContainerInstancesState (Maybe Text)
@@ -151,14 +151,19 @@ instance ToQuery UpdateContainerInstancesState where
         toQuery = const mempty
 
 -- | /See:/ 'updateContainerInstancesStateResponse' smart constructor.
-data UpdateContainerInstancesStateResponse =
-  UpdateContainerInstancesStateResponse'
-    { _ucisrsFailures           :: !(Maybe [Failure])
-    , _ucisrsContainerInstances :: !(Maybe [ContainerInstance])
-    , _ucisrsResponseStatus     :: !Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data UpdateContainerInstancesStateResponse = UpdateContainerInstancesStateResponse'{_ucisrsFailures
+                                                                                    ::
+                                                                                    !(Maybe
+                                                                                        [Failure]),
+                                                                                    _ucisrsContainerInstances
+                                                                                    ::
+                                                                                    !(Maybe
+                                                                                        [ContainerInstance]),
+                                                                                    _ucisrsResponseStatus
+                                                                                    ::
+                                                                                    !Int}
+                                               deriving (Eq, Read, Show, Data,
+                                                         Typeable, Generic)
 
 -- | Creates a value of 'UpdateContainerInstancesStateResponse' with the minimum fields required to make a request.
 --
@@ -172,13 +177,13 @@ data UpdateContainerInstancesStateResponse =
 updateContainerInstancesStateResponse
     :: Int -- ^ 'ucisrsResponseStatus'
     -> UpdateContainerInstancesStateResponse
-updateContainerInstancesStateResponse pResponseStatus_ =
-  UpdateContainerInstancesStateResponse'
-    { _ucisrsFailures = Nothing
-    , _ucisrsContainerInstances = Nothing
-    , _ucisrsResponseStatus = pResponseStatus_
-    }
-
+updateContainerInstancesStateResponse
+  pResponseStatus_
+  = UpdateContainerInstancesStateResponse'{_ucisrsFailures
+                                             = Nothing,
+                                           _ucisrsContainerInstances = Nothing,
+                                           _ucisrsResponseStatus =
+                                             pResponseStatus_}
 
 -- | Any failures associated with the call.
 ucisrsFailures :: Lens' UpdateContainerInstancesStateResponse [Failure]

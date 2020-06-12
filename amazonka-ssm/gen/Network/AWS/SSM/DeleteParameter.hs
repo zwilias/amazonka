@@ -41,15 +41,11 @@ import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 import Network.AWS.SSM.Types
-import Network.AWS.SSM.Types.Product
 
 -- | /See:/ 'deleteParameter' smart constructor.
-newtype DeleteParameter =
-  DeleteParameter'
-    { _delName :: Text
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+newtype DeleteParameter = DeleteParameter'{_delName
+                                           :: Text}
+                            deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'DeleteParameter' with the minimum fields required to make a request.
 --
@@ -59,8 +55,8 @@ newtype DeleteParameter =
 deleteParameter
     :: Text -- ^ 'delName'
     -> DeleteParameter
-deleteParameter pName_ = DeleteParameter' {_delName = pName_}
-
+deleteParameter pName_
+  = DeleteParameter'{_delName = pName_}
 
 -- | The name of the parameter to delete.
 delName :: Lens' DeleteParameter Text
@@ -98,12 +94,10 @@ instance ToQuery DeleteParameter where
         toQuery = const mempty
 
 -- | /See:/ 'deleteParameterResponse' smart constructor.
-newtype DeleteParameterResponse =
-  DeleteParameterResponse'
-    { _dpprsResponseStatus :: Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+newtype DeleteParameterResponse = DeleteParameterResponse'{_dpprsResponseStatus
+                                                           :: Int}
+                                    deriving (Eq, Read, Show, Data, Typeable,
+                                              Generic)
 
 -- | Creates a value of 'DeleteParameterResponse' with the minimum fields required to make a request.
 --
@@ -113,9 +107,9 @@ newtype DeleteParameterResponse =
 deleteParameterResponse
     :: Int -- ^ 'dpprsResponseStatus'
     -> DeleteParameterResponse
-deleteParameterResponse pResponseStatus_ =
-  DeleteParameterResponse' {_dpprsResponseStatus = pResponseStatus_}
-
+deleteParameterResponse pResponseStatus_
+  = DeleteParameterResponse'{_dpprsResponseStatus =
+                               pResponseStatus_}
 
 -- | -- | The response status code.
 dpprsResponseStatus :: Lens' DeleteParameterResponse Int

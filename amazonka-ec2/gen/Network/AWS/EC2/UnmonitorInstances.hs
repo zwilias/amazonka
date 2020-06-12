@@ -39,20 +39,16 @@ module Network.AWS.EC2.UnmonitorInstances
     ) where
 
 import Network.AWS.EC2.Types
-import Network.AWS.EC2.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 
 -- | /See:/ 'unmonitorInstances' smart constructor.
-data UnmonitorInstances =
-  UnmonitorInstances'
-    { _uiDryRun      :: !(Maybe Bool)
-    , _uiInstanceIds :: ![Text]
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data UnmonitorInstances = UnmonitorInstances'{_uiDryRun
+                                              :: !(Maybe Bool),
+                                              _uiInstanceIds :: ![Text]}
+                            deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'UnmonitorInstances' with the minimum fields required to make a request.
 --
@@ -63,9 +59,9 @@ data UnmonitorInstances =
 -- * 'uiInstanceIds' - The IDs of the instances.
 unmonitorInstances
     :: UnmonitorInstances
-unmonitorInstances =
-  UnmonitorInstances' {_uiDryRun = Nothing, _uiInstanceIds = mempty}
-
+unmonitorInstances
+  = UnmonitorInstances'{_uiDryRun = Nothing,
+                        _uiInstanceIds = mempty}
 
 -- | Checks whether you have the required permissions for the action, without actually making the request, and provides an error response. If you have the required permissions, the error response is @DryRunOperation@ . Otherwise, it is @UnauthorizedOperation@ .
 uiDryRun :: Lens' UnmonitorInstances (Maybe Bool)
@@ -106,13 +102,14 @@ instance ToQuery UnmonitorInstances where
                toQueryList "InstanceId" _uiInstanceIds]
 
 -- | /See:/ 'unmonitorInstancesResponse' smart constructor.
-data UnmonitorInstancesResponse =
-  UnmonitorInstancesResponse'
-    { _uirsInstanceMonitorings :: !(Maybe [InstanceMonitoring])
-    , _uirsResponseStatus      :: !Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data UnmonitorInstancesResponse = UnmonitorInstancesResponse'{_uirsInstanceMonitorings
+                                                              ::
+                                                              !(Maybe
+                                                                  [InstanceMonitoring]),
+                                                              _uirsResponseStatus
+                                                              :: !Int}
+                                    deriving (Eq, Read, Show, Data, Typeable,
+                                              Generic)
 
 -- | Creates a value of 'UnmonitorInstancesResponse' with the minimum fields required to make a request.
 --
@@ -124,10 +121,10 @@ data UnmonitorInstancesResponse =
 unmonitorInstancesResponse
     :: Int -- ^ 'uirsResponseStatus'
     -> UnmonitorInstancesResponse
-unmonitorInstancesResponse pResponseStatus_ =
-  UnmonitorInstancesResponse'
-    {_uirsInstanceMonitorings = Nothing, _uirsResponseStatus = pResponseStatus_}
-
+unmonitorInstancesResponse pResponseStatus_
+  = UnmonitorInstancesResponse'{_uirsInstanceMonitorings
+                                  = Nothing,
+                                _uirsResponseStatus = pResponseStatus_}
 
 -- | The monitoring information.
 uirsInstanceMonitorings :: Lens' UnmonitorInstancesResponse [InstanceMonitoring]

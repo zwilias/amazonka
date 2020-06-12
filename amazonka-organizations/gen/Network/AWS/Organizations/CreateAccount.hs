@@ -56,21 +56,17 @@ module Network.AWS.Organizations.CreateAccount
 
 import Network.AWS.Lens
 import Network.AWS.Organizations.Types
-import Network.AWS.Organizations.Types.Product
 import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 
 -- | /See:/ 'createAccount' smart constructor.
-data CreateAccount =
-  CreateAccount'
-    { _caIAMUserAccessToBilling :: !(Maybe IAMUserAccessToBilling)
-    , _caRoleName               :: !(Maybe Text)
-    , _caEmail                  :: !(Sensitive Text)
-    , _caAccountName            :: !(Sensitive Text)
-    }
-  deriving (Eq, Show, Data, Typeable, Generic)
-
+data CreateAccount = CreateAccount'{_caIAMUserAccessToBilling
+                                    :: !(Maybe IAMUserAccessToBilling),
+                                    _caRoleName :: !(Maybe Text),
+                                    _caEmail :: !(Sensitive Text),
+                                    _caAccountName :: !(Sensitive Text)}
+                       deriving (Eq, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'CreateAccount' with the minimum fields required to make a request.
 --
@@ -87,14 +83,11 @@ createAccount
     :: Text -- ^ 'caEmail'
     -> Text -- ^ 'caAccountName'
     -> CreateAccount
-createAccount pEmail_ pAccountName_ =
-  CreateAccount'
-    { _caIAMUserAccessToBilling = Nothing
-    , _caRoleName = Nothing
-    , _caEmail = _Sensitive # pEmail_
-    , _caAccountName = _Sensitive # pAccountName_
-    }
-
+createAccount pEmail_ pAccountName_
+  = CreateAccount'{_caIAMUserAccessToBilling = Nothing,
+                   _caRoleName = Nothing,
+                   _caEmail = _Sensitive # pEmail_,
+                   _caAccountName = _Sensitive # pAccountName_}
 
 -- | If set to @ALLOW@ , the new account enables IAM users to access account billing information /if/ they have the required permissions. If set to @DENY@ , then only the root user of the new account can access account billing information. For more information, see <http://docs.aws.amazon.com/awsaccountbilling/latest/aboutv2/grantaccess.html#ControllingAccessWebsite-Activate Activating Access to the Billing and Cost Management Console> in the /AWS Billing and Cost Management User Guide/ . If you do not specify this parameter, the value defaults to ALLOW, and IAM users and roles with the required permissions can access billing information for the new account.
 caIAMUserAccessToBilling :: Lens' CreateAccount (Maybe IAMUserAccessToBilling)
@@ -153,30 +146,29 @@ instance ToQuery CreateAccount where
         toQuery = const mempty
 
 -- | /See:/ 'createAccountResponse' smart constructor.
-data CreateAccountResponse =
-  CreateAccountResponse'
-    { _carsCreateAccountStatus :: !(Maybe CreateAccountStatus)
-    , _carsResponseStatus      :: !Int
-    }
-  deriving (Eq, Show, Data, Typeable, Generic)
-
+data CreateAccountResponse = CreateAccountResponse'{_carsCreateAccountStatus
+                                                    ::
+                                                    !(Maybe
+                                                        CreateAccountStatus),
+                                                    _carsResponseStatus :: !Int}
+                               deriving (Eq, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'CreateAccountResponse' with the minimum fields required to make a request.
 --
 -- Use one of the following lenses to modify other fields as desired:
 --
--- * 'carsCreateAccountStatus' - A structure that contains details about the request to create an account. This response structure might not be fully populated when you first receive it because account creation is an asynchronous process. You can pass the returned CreateAccountStatus ID as a parameter to @'DescribeCreateAccountStatus' @ to get status about the progress of the request at later times.
+-- * 'carsCreateAccountStatus' - A structure that contains details about the request to create an account. This response structure might not be fully populated when you first receive it because account creation is an asynchronous process. You can pass the returned CreateAccountStatus ID as a parameter to @'DescribeCreateAccountStatus' @ to get status about the progress of the request at later times. 
 --
 -- * 'carsResponseStatus' - -- | The response status code.
 createAccountResponse
     :: Int -- ^ 'carsResponseStatus'
     -> CreateAccountResponse
-createAccountResponse pResponseStatus_ =
-  CreateAccountResponse'
-    {_carsCreateAccountStatus = Nothing, _carsResponseStatus = pResponseStatus_}
+createAccountResponse pResponseStatus_
+  = CreateAccountResponse'{_carsCreateAccountStatus =
+                             Nothing,
+                           _carsResponseStatus = pResponseStatus_}
 
-
--- | A structure that contains details about the request to create an account. This response structure might not be fully populated when you first receive it because account creation is an asynchronous process. You can pass the returned CreateAccountStatus ID as a parameter to @'DescribeCreateAccountStatus' @ to get status about the progress of the request at later times.
+-- | A structure that contains details about the request to create an account. This response structure might not be fully populated when you first receive it because account creation is an asynchronous process. You can pass the returned CreateAccountStatus ID as a parameter to @'DescribeCreateAccountStatus' @ to get status about the progress of the request at later times. 
 carsCreateAccountStatus :: Lens' CreateAccountResponse (Maybe CreateAccountStatus)
 carsCreateAccountStatus = lens _carsCreateAccountStatus (\ s a -> s{_carsCreateAccountStatus = a})
 

@@ -52,7 +52,6 @@ module Network.AWS.CloudFormation.GetTemplateSummary
     ) where
 
 import Network.AWS.CloudFormation.Types
-import Network.AWS.CloudFormation.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.Request
@@ -63,15 +62,12 @@ import Network.AWS.Response
 --
 --
 -- /See:/ 'getTemplateSummary' smart constructor.
-data GetTemplateSummary =
-  GetTemplateSummary'
-    { _gtsTemplateBody :: !(Maybe Text)
-    , _gtsTemplateURL  :: !(Maybe Text)
-    , _gtsStackSetName :: !(Maybe Text)
-    , _gtsStackName    :: !(Maybe Text)
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data GetTemplateSummary = GetTemplateSummary'{_gtsTemplateBody
+                                              :: !(Maybe Text),
+                                              _gtsTemplateURL :: !(Maybe Text),
+                                              _gtsStackSetName :: !(Maybe Text),
+                                              _gtsStackName :: !(Maybe Text)}
+                            deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'GetTemplateSummary' with the minimum fields required to make a request.
 --
@@ -86,14 +82,10 @@ data GetTemplateSummary =
 -- * 'gtsStackName' - The name or the stack ID that is associated with the stack, which are not always interchangeable. For running stacks, you can specify either the stack's name or its unique stack ID. For deleted stack, you must specify the unique stack ID. Conditional: You must specify only one of the following parameters: @StackName@ , @StackSetName@ , @TemplateBody@ , or @TemplateURL@ .
 getTemplateSummary
     :: GetTemplateSummary
-getTemplateSummary =
-  GetTemplateSummary'
-    { _gtsTemplateBody = Nothing
-    , _gtsTemplateURL = Nothing
-    , _gtsStackSetName = Nothing
-    , _gtsStackName = Nothing
-    }
-
+getTemplateSummary
+  = GetTemplateSummary'{_gtsTemplateBody = Nothing,
+                        _gtsTemplateURL = Nothing,
+                        _gtsStackSetName = Nothing, _gtsStackName = Nothing}
 
 -- | Structure containing the template body with a minimum length of 1 byte and a maximum length of 51,200 bytes. For more information about templates, see <http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/template-anatomy.html Template Anatomy> in the AWS CloudFormation User Guide. Conditional: You must specify only one of the following parameters: @StackName@ , @StackSetName@ , @TemplateBody@ , or @TemplateURL@ .
 gtsTemplateBody :: Lens' GetTemplateSummary (Maybe Text)
@@ -161,20 +153,32 @@ instance ToQuery GetTemplateSummary where
 --
 --
 -- /See:/ 'getTemplateSummaryResponse' smart constructor.
-data GetTemplateSummaryResponse =
-  GetTemplateSummaryResponse'
-    { _gtsrsDeclaredTransforms :: !(Maybe [Text])
-    , _gtsrsVersion            :: !(Maybe Text)
-    , _gtsrsCapabilitiesReason :: !(Maybe Text)
-    , _gtsrsParameters         :: !(Maybe [ParameterDeclaration])
-    , _gtsrsMetadata           :: !(Maybe Text)
-    , _gtsrsDescription        :: !(Maybe Text)
-    , _gtsrsCapabilities       :: !(Maybe [Capability])
-    , _gtsrsResourceTypes      :: !(Maybe [Text])
-    , _gtsrsResponseStatus     :: !Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data GetTemplateSummaryResponse = GetTemplateSummaryResponse'{_gtsrsDeclaredTransforms
+                                                              ::
+                                                              !(Maybe [Text]),
+                                                              _gtsrsVersion ::
+                                                              !(Maybe Text),
+                                                              _gtsrsCapabilitiesReason
+                                                              :: !(Maybe Text),
+                                                              _gtsrsParameters
+                                                              ::
+                                                              !(Maybe
+                                                                  [ParameterDeclaration]),
+                                                              _gtsrsMetadata ::
+                                                              !(Maybe Text),
+                                                              _gtsrsDescription
+                                                              :: !(Maybe Text),
+                                                              _gtsrsCapabilities
+                                                              ::
+                                                              !(Maybe
+                                                                  [Capability]),
+                                                              _gtsrsResourceTypes
+                                                              ::
+                                                              !(Maybe [Text]),
+                                                              _gtsrsResponseStatus
+                                                              :: !Int}
+                                    deriving (Eq, Read, Show, Data, Typeable,
+                                              Generic)
 
 -- | Creates a value of 'GetTemplateSummaryResponse' with the minimum fields required to make a request.
 --
@@ -200,19 +204,17 @@ data GetTemplateSummaryResponse =
 getTemplateSummaryResponse
     :: Int -- ^ 'gtsrsResponseStatus'
     -> GetTemplateSummaryResponse
-getTemplateSummaryResponse pResponseStatus_ =
-  GetTemplateSummaryResponse'
-    { _gtsrsDeclaredTransforms = Nothing
-    , _gtsrsVersion = Nothing
-    , _gtsrsCapabilitiesReason = Nothing
-    , _gtsrsParameters = Nothing
-    , _gtsrsMetadata = Nothing
-    , _gtsrsDescription = Nothing
-    , _gtsrsCapabilities = Nothing
-    , _gtsrsResourceTypes = Nothing
-    , _gtsrsResponseStatus = pResponseStatus_
-    }
-
+getTemplateSummaryResponse pResponseStatus_
+  = GetTemplateSummaryResponse'{_gtsrsDeclaredTransforms
+                                  = Nothing,
+                                _gtsrsVersion = Nothing,
+                                _gtsrsCapabilitiesReason = Nothing,
+                                _gtsrsParameters = Nothing,
+                                _gtsrsMetadata = Nothing,
+                                _gtsrsDescription = Nothing,
+                                _gtsrsCapabilities = Nothing,
+                                _gtsrsResourceTypes = Nothing,
+                                _gtsrsResponseStatus = pResponseStatus_}
 
 -- | A list of the transforms that are declared in the template.
 gtsrsDeclaredTransforms :: Lens' GetTemplateSummaryResponse [Text]

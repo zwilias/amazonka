@@ -48,17 +48,13 @@ import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 import Network.AWS.Route53AutoNaming.Types
-import Network.AWS.Route53AutoNaming.Types.Product
 
 -- | /See:/ 'listServices' smart constructor.
-data ListServices =
-  ListServices'
-    { _lsFilters    :: !(Maybe [ServiceFilter])
-    , _lsNextToken  :: !(Maybe Text)
-    , _lsMaxResults :: !(Maybe Nat)
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data ListServices = ListServices'{_lsFilters ::
+                                  !(Maybe [ServiceFilter]),
+                                  _lsNextToken :: !(Maybe Text),
+                                  _lsMaxResults :: !(Maybe Nat)}
+                      deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'ListServices' with the minimum fields required to make a request.
 --
@@ -71,10 +67,9 @@ data ListServices =
 -- * 'lsMaxResults' - The maximum number of services that you want Amazon Route 53 to return in the response to a @ListServices@ request. If you don't specify a value for @MaxResults@ , Route 53 returns up to 100 services.
 listServices
     :: ListServices
-listServices =
-  ListServices'
-    {_lsFilters = Nothing, _lsNextToken = Nothing, _lsMaxResults = Nothing}
-
+listServices
+  = ListServices'{_lsFilters = Nothing,
+                  _lsNextToken = Nothing, _lsMaxResults = Nothing}
 
 -- | A complex type that contains specifications for the namespaces that you want to list services for.  If you specify more than one filter, an operation must match all filters to be returned by @ListServices@ .
 lsFilters :: Lens' ListServices [ServiceFilter]
@@ -134,14 +129,12 @@ instance ToQuery ListServices where
         toQuery = const mempty
 
 -- | /See:/ 'listServicesResponse' smart constructor.
-data ListServicesResponse =
-  ListServicesResponse'
-    { _lsrsNextToken      :: !(Maybe Text)
-    , _lsrsServices       :: !(Maybe [ServiceSummary])
-    , _lsrsResponseStatus :: !Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data ListServicesResponse = ListServicesResponse'{_lsrsNextToken
+                                                  :: !(Maybe Text),
+                                                  _lsrsServices ::
+                                                  !(Maybe [ServiceSummary]),
+                                                  _lsrsResponseStatus :: !Int}
+                              deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'ListServicesResponse' with the minimum fields required to make a request.
 --
@@ -155,13 +148,10 @@ data ListServicesResponse =
 listServicesResponse
     :: Int -- ^ 'lsrsResponseStatus'
     -> ListServicesResponse
-listServicesResponse pResponseStatus_ =
-  ListServicesResponse'
-    { _lsrsNextToken = Nothing
-    , _lsrsServices = Nothing
-    , _lsrsResponseStatus = pResponseStatus_
-    }
-
+listServicesResponse pResponseStatus_
+  = ListServicesResponse'{_lsrsNextToken = Nothing,
+                          _lsrsServices = Nothing,
+                          _lsrsResponseStatus = pResponseStatus_}
 
 -- | If the response contains @NextToken@ , submit another @ListServices@ request to get the next group of results. Specify the value of @NextToken@ from the previous response in the next request.
 lsrsNextToken :: Lens' ListServicesResponse (Maybe Text)

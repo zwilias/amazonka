@@ -43,15 +43,11 @@ import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 import Network.AWS.SES.Types
-import Network.AWS.SES.Types.Product
 
 -- | /See:/ 'updateTemplate' smart constructor.
-newtype UpdateTemplate =
-  UpdateTemplate'
-    { _utTemplate :: Template
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+newtype UpdateTemplate = UpdateTemplate'{_utTemplate
+                                         :: Template}
+                           deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'UpdateTemplate' with the minimum fields required to make a request.
 --
@@ -61,8 +57,8 @@ newtype UpdateTemplate =
 updateTemplate
     :: Template -- ^ 'utTemplate'
     -> UpdateTemplate
-updateTemplate pTemplate_ = UpdateTemplate' {_utTemplate = pTemplate_}
-
+updateTemplate pTemplate_
+  = UpdateTemplate'{_utTemplate = pTemplate_}
 
 -- | Undocumented member.
 utTemplate :: Lens' UpdateTemplate Template
@@ -94,12 +90,10 @@ instance ToQuery UpdateTemplate where
                "Template" =: _utTemplate]
 
 -- | /See:/ 'updateTemplateResponse' smart constructor.
-newtype UpdateTemplateResponse =
-  UpdateTemplateResponse'
-    { _utrsResponseStatus :: Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+newtype UpdateTemplateResponse = UpdateTemplateResponse'{_utrsResponseStatus
+                                                         :: Int}
+                                   deriving (Eq, Read, Show, Data, Typeable,
+                                             Generic)
 
 -- | Creates a value of 'UpdateTemplateResponse' with the minimum fields required to make a request.
 --
@@ -109,9 +103,9 @@ newtype UpdateTemplateResponse =
 updateTemplateResponse
     :: Int -- ^ 'utrsResponseStatus'
     -> UpdateTemplateResponse
-updateTemplateResponse pResponseStatus_ =
-  UpdateTemplateResponse' {_utrsResponseStatus = pResponseStatus_}
-
+updateTemplateResponse pResponseStatus_
+  = UpdateTemplateResponse'{_utrsResponseStatus =
+                              pResponseStatus_}
 
 -- | -- | The response status code.
 utrsResponseStatus :: Lens' UpdateTemplateResponse Int

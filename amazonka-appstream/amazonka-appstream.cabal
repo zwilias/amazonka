@@ -96,8 +96,59 @@ library
         , Network.AWS.AppStream.Waiters
 
     other-modules:
-          Network.AWS.AppStream.Types.Product
-        , Network.AWS.AppStream.Types.Sum
+          Network.AWS.AppStream.Types.AccessEndpoint
+        , Network.AWS.AppStream.Types.AccessEndpointType
+        , Network.AWS.AppStream.Types.Action
+        , Network.AWS.AppStream.Types.Application
+        , Network.AWS.AppStream.Types.ApplicationSettings
+        , Network.AWS.AppStream.Types.ApplicationSettingsResponse
+        , Network.AWS.AppStream.Types.AuthenticationType
+        , Network.AWS.AppStream.Types.ComputeCapacity
+        , Network.AWS.AppStream.Types.ComputeCapacityStatus
+        , Network.AWS.AppStream.Types.DirectoryConfig
+        , Network.AWS.AppStream.Types.DomainJoinInfo
+        , Network.AWS.AppStream.Types.Fleet
+        , Network.AWS.AppStream.Types.FleetAttribute
+        , Network.AWS.AppStream.Types.FleetError
+        , Network.AWS.AppStream.Types.FleetErrorCode
+        , Network.AWS.AppStream.Types.FleetState
+        , Network.AWS.AppStream.Types.FleetType
+        , Network.AWS.AppStream.Types.Image
+        , Network.AWS.AppStream.Types.ImageBuilder
+        , Network.AWS.AppStream.Types.ImageBuilderState
+        , Network.AWS.AppStream.Types.ImageBuilderStateChangeReason
+        , Network.AWS.AppStream.Types.ImageBuilderStateChangeReasonCode
+        , Network.AWS.AppStream.Types.ImagePermissions
+        , Network.AWS.AppStream.Types.ImageState
+        , Network.AWS.AppStream.Types.ImageStateChangeReason
+        , Network.AWS.AppStream.Types.ImageStateChangeReasonCode
+        , Network.AWS.AppStream.Types.LastReportGenerationExecutionError
+        , Network.AWS.AppStream.Types.MessageAction
+        , Network.AWS.AppStream.Types.NetworkAccessConfiguration
+        , Network.AWS.AppStream.Types.Permission
+        , Network.AWS.AppStream.Types.PlatformType
+        , Network.AWS.AppStream.Types.ResourceError
+        , Network.AWS.AppStream.Types.ServiceAccountCredentials
+        , Network.AWS.AppStream.Types.Session
+        , Network.AWS.AppStream.Types.SessionConnectionState
+        , Network.AWS.AppStream.Types.SessionState
+        , Network.AWS.AppStream.Types.SharedImagePermissions
+        , Network.AWS.AppStream.Types.Stack
+        , Network.AWS.AppStream.Types.StackAttribute
+        , Network.AWS.AppStream.Types.StackError
+        , Network.AWS.AppStream.Types.StackErrorCode
+        , Network.AWS.AppStream.Types.StorageConnector
+        , Network.AWS.AppStream.Types.StorageConnectorType
+        , Network.AWS.AppStream.Types.UsageReportExecutionErrorCode
+        , Network.AWS.AppStream.Types.UsageReportSchedule
+        , Network.AWS.AppStream.Types.UsageReportSubscription
+        , Network.AWS.AppStream.Types.User
+        , Network.AWS.AppStream.Types.UserSetting
+        , Network.AWS.AppStream.Types.UserStackAssociation
+        , Network.AWS.AppStream.Types.UserStackAssociationError
+        , Network.AWS.AppStream.Types.UserStackAssociationErrorCode
+        , Network.AWS.AppStream.Types.VPCConfig
+        , Network.AWS.AppStream.Types.VisibilityType
 
     build-depends:
           amazonka-core == 1.6.1.*

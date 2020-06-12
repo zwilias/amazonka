@@ -42,22 +42,19 @@ module Network.AWS.CloudWatchLogs.DescribeExportTasks
     ) where
 
 import Network.AWS.CloudWatchLogs.Types
-import Network.AWS.CloudWatchLogs.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 
 -- | /See:/ 'describeExportTasks' smart constructor.
-data DescribeExportTasks =
-  DescribeExportTasks'
-    { _detTaskId     :: !(Maybe Text)
-    , _detNextToken  :: !(Maybe Text)
-    , _detLimit      :: !(Maybe Nat)
-    , _detStatusCode :: !(Maybe ExportTaskStatusCode)
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data DescribeExportTasks = DescribeExportTasks'{_detTaskId
+                                                :: !(Maybe Text),
+                                                _detNextToken :: !(Maybe Text),
+                                                _detLimit :: !(Maybe Nat),
+                                                _detStatusCode ::
+                                                !(Maybe ExportTaskStatusCode)}
+                             deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'DescribeExportTasks' with the minimum fields required to make a request.
 --
@@ -72,14 +69,10 @@ data DescribeExportTasks =
 -- * 'detStatusCode' - The status code of the export task. Specifying a status code filters the results to zero or more export tasks.
 describeExportTasks
     :: DescribeExportTasks
-describeExportTasks =
-  DescribeExportTasks'
-    { _detTaskId = Nothing
-    , _detNextToken = Nothing
-    , _detLimit = Nothing
-    , _detStatusCode = Nothing
-    }
-
+describeExportTasks
+  = DescribeExportTasks'{_detTaskId = Nothing,
+                         _detNextToken = Nothing, _detLimit = Nothing,
+                         _detStatusCode = Nothing}
 
 -- | The ID of the export task. Specifying a task ID filters the results to zero or one export tasks.
 detTaskId :: Lens' DescribeExportTasks (Maybe Text)
@@ -138,14 +131,17 @@ instance ToQuery DescribeExportTasks where
         toQuery = const mempty
 
 -- | /See:/ 'describeExportTasksResponse' smart constructor.
-data DescribeExportTasksResponse =
-  DescribeExportTasksResponse'
-    { _detrsNextToken      :: !(Maybe Text)
-    , _detrsExportTasks    :: !(Maybe [ExportTask])
-    , _detrsResponseStatus :: !Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data DescribeExportTasksResponse = DescribeExportTasksResponse'{_detrsNextToken
+                                                                ::
+                                                                !(Maybe Text),
+                                                                _detrsExportTasks
+                                                                ::
+                                                                !(Maybe
+                                                                    [ExportTask]),
+                                                                _detrsResponseStatus
+                                                                :: !Int}
+                                     deriving (Eq, Read, Show, Data, Typeable,
+                                               Generic)
 
 -- | Creates a value of 'DescribeExportTasksResponse' with the minimum fields required to make a request.
 --
@@ -159,13 +155,11 @@ data DescribeExportTasksResponse =
 describeExportTasksResponse
     :: Int -- ^ 'detrsResponseStatus'
     -> DescribeExportTasksResponse
-describeExportTasksResponse pResponseStatus_ =
-  DescribeExportTasksResponse'
-    { _detrsNextToken = Nothing
-    , _detrsExportTasks = Nothing
-    , _detrsResponseStatus = pResponseStatus_
-    }
-
+describeExportTasksResponse pResponseStatus_
+  = DescribeExportTasksResponse'{_detrsNextToken =
+                                   Nothing,
+                                 _detrsExportTasks = Nothing,
+                                 _detrsResponseStatus = pResponseStatus_}
 
 -- | Undocumented member.
 detrsNextToken :: Lens' DescribeExportTasksResponse (Maybe Text)

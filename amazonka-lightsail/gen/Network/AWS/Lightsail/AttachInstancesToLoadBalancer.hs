@@ -42,19 +42,17 @@ module Network.AWS.Lightsail.AttachInstancesToLoadBalancer
 
 import Network.AWS.Lens
 import Network.AWS.Lightsail.Types
-import Network.AWS.Lightsail.Types.Product
 import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 
 -- | /See:/ 'attachInstancesToLoadBalancer' smart constructor.
-data AttachInstancesToLoadBalancer =
-  AttachInstancesToLoadBalancer'
-    { _aitlbLoadBalancerName :: !Text
-    , _aitlbInstanceNames    :: ![Text]
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data AttachInstancesToLoadBalancer = AttachInstancesToLoadBalancer'{_aitlbLoadBalancerName
+                                                                    :: !Text,
+                                                                    _aitlbInstanceNames
+                                                                    :: ![Text]}
+                                       deriving (Eq, Read, Show, Data, Typeable,
+                                                 Generic)
 
 -- | Creates a value of 'AttachInstancesToLoadBalancer' with the minimum fields required to make a request.
 --
@@ -66,10 +64,10 @@ data AttachInstancesToLoadBalancer =
 attachInstancesToLoadBalancer
     :: Text -- ^ 'aitlbLoadBalancerName'
     -> AttachInstancesToLoadBalancer
-attachInstancesToLoadBalancer pLoadBalancerName_ =
-  AttachInstancesToLoadBalancer'
-    {_aitlbLoadBalancerName = pLoadBalancerName_, _aitlbInstanceNames = mempty}
-
+attachInstancesToLoadBalancer pLoadBalancerName_
+  = AttachInstancesToLoadBalancer'{_aitlbLoadBalancerName
+                                     = pLoadBalancerName_,
+                                   _aitlbInstanceNames = mempty}
 
 -- | The name of the load balancer.
 aitlbLoadBalancerName :: Lens' AttachInstancesToLoadBalancer Text
@@ -120,13 +118,15 @@ instance ToQuery AttachInstancesToLoadBalancer where
         toQuery = const mempty
 
 -- | /See:/ 'attachInstancesToLoadBalancerResponse' smart constructor.
-data AttachInstancesToLoadBalancerResponse =
-  AttachInstancesToLoadBalancerResponse'
-    { _aitlbrsOperations     :: !(Maybe [Operation])
-    , _aitlbrsResponseStatus :: !Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data AttachInstancesToLoadBalancerResponse = AttachInstancesToLoadBalancerResponse'{_aitlbrsOperations
+                                                                                    ::
+                                                                                    !(Maybe
+                                                                                        [Operation]),
+                                                                                    _aitlbrsResponseStatus
+                                                                                    ::
+                                                                                    !Int}
+                                               deriving (Eq, Read, Show, Data,
+                                                         Typeable, Generic)
 
 -- | Creates a value of 'AttachInstancesToLoadBalancerResponse' with the minimum fields required to make a request.
 --
@@ -138,10 +138,12 @@ data AttachInstancesToLoadBalancerResponse =
 attachInstancesToLoadBalancerResponse
     :: Int -- ^ 'aitlbrsResponseStatus'
     -> AttachInstancesToLoadBalancerResponse
-attachInstancesToLoadBalancerResponse pResponseStatus_ =
-  AttachInstancesToLoadBalancerResponse'
-    {_aitlbrsOperations = Nothing, _aitlbrsResponseStatus = pResponseStatus_}
-
+attachInstancesToLoadBalancerResponse
+  pResponseStatus_
+  = AttachInstancesToLoadBalancerResponse'{_aitlbrsOperations
+                                             = Nothing,
+                                           _aitlbrsResponseStatus =
+                                             pResponseStatus_}
 
 -- | An object representing the API operations.
 aitlbrsOperations :: Lens' AttachInstancesToLoadBalancerResponse [Operation]

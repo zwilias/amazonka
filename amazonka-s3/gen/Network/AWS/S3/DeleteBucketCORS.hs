@@ -37,15 +37,11 @@ import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 import Network.AWS.S3.Types
-import Network.AWS.S3.Types.Product
 
 -- | /See:/ 'deleteBucketCORS' smart constructor.
-newtype DeleteBucketCORS =
-  DeleteBucketCORS'
-    { _dbcBucket :: BucketName
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+newtype DeleteBucketCORS = DeleteBucketCORS'{_dbcBucket
+                                             :: BucketName}
+                             deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'DeleteBucketCORS' with the minimum fields required to make a request.
 --
@@ -55,8 +51,8 @@ newtype DeleteBucketCORS =
 deleteBucketCORS
     :: BucketName -- ^ 'dbcBucket'
     -> DeleteBucketCORS
-deleteBucketCORS pBucket_ = DeleteBucketCORS' {_dbcBucket = pBucket_}
-
+deleteBucketCORS pBucket_
+  = DeleteBucketCORS'{_dbcBucket = pBucket_}
 
 -- | Undocumented member.
 dbcBucket :: Lens' DeleteBucketCORS BucketName
@@ -82,16 +78,14 @@ instance ToQuery DeleteBucketCORS where
         toQuery = const (mconcat ["cors"])
 
 -- | /See:/ 'deleteBucketCORSResponse' smart constructor.
-data DeleteBucketCORSResponse =
-  DeleteBucketCORSResponse'
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data DeleteBucketCORSResponse = DeleteBucketCORSResponse'
+                                  deriving (Eq, Read, Show, Data, Typeable,
+                                            Generic)
 
 -- | Creates a value of 'DeleteBucketCORSResponse' with the minimum fields required to make a request.
 --
 deleteBucketCORSResponse
     :: DeleteBucketCORSResponse
 deleteBucketCORSResponse = DeleteBucketCORSResponse'
-
 
 instance NFData DeleteBucketCORSResponse where

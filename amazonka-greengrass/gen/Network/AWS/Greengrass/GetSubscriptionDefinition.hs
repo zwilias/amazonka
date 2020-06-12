@@ -42,19 +42,16 @@ module Network.AWS.Greengrass.GetSubscriptionDefinition
     ) where
 
 import Network.AWS.Greengrass.Types
-import Network.AWS.Greengrass.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 
 -- | /See:/ 'getSubscriptionDefinition' smart constructor.
-newtype GetSubscriptionDefinition =
-  GetSubscriptionDefinition'
-    { _gsdSubscriptionDefinitionId :: Text
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+newtype GetSubscriptionDefinition = GetSubscriptionDefinition'{_gsdSubscriptionDefinitionId
+                                                               :: Text}
+                                      deriving (Eq, Read, Show, Data, Typeable,
+                                                Generic)
 
 -- | Creates a value of 'GetSubscriptionDefinition' with the minimum fields required to make a request.
 --
@@ -64,10 +61,9 @@ newtype GetSubscriptionDefinition =
 getSubscriptionDefinition
     :: Text -- ^ 'gsdSubscriptionDefinitionId'
     -> GetSubscriptionDefinition
-getSubscriptionDefinition pSubscriptionDefinitionId_ =
-  GetSubscriptionDefinition'
-    {_gsdSubscriptionDefinitionId = pSubscriptionDefinitionId_}
-
+getSubscriptionDefinition pSubscriptionDefinitionId_
+  = GetSubscriptionDefinition'{_gsdSubscriptionDefinitionId
+                                 = pSubscriptionDefinitionId_}
 
 -- | The ID of the subscription definition.
 gsdSubscriptionDefinitionId :: Lens' GetSubscriptionDefinition Text
@@ -110,19 +106,39 @@ instance ToQuery GetSubscriptionDefinition where
         toQuery = const mempty
 
 -- | /See:/ 'getSubscriptionDefinitionResponse' smart constructor.
-data GetSubscriptionDefinitionResponse =
-  GetSubscriptionDefinitionResponse'
-    { _gsdrsLatestVersionARN     :: !(Maybe Text)
-    , _gsdrsARN                  :: !(Maybe Text)
-    , _gsdrsName                 :: !(Maybe Text)
-    , _gsdrsCreationTimestamp    :: !(Maybe Text)
-    , _gsdrsId                   :: !(Maybe Text)
-    , _gsdrsLatestVersion        :: !(Maybe Text)
-    , _gsdrsLastUpdatedTimestamp :: !(Maybe Text)
-    , _gsdrsResponseStatus       :: !Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data GetSubscriptionDefinitionResponse = GetSubscriptionDefinitionResponse'{_gsdrsLatestVersionARN
+                                                                            ::
+                                                                            !(Maybe
+                                                                                Text),
+                                                                            _gsdrsARN
+                                                                            ::
+                                                                            !(Maybe
+                                                                                Text),
+                                                                            _gsdrsName
+                                                                            ::
+                                                                            !(Maybe
+                                                                                Text),
+                                                                            _gsdrsCreationTimestamp
+                                                                            ::
+                                                                            !(Maybe
+                                                                                Text),
+                                                                            _gsdrsId
+                                                                            ::
+                                                                            !(Maybe
+                                                                                Text),
+                                                                            _gsdrsLatestVersion
+                                                                            ::
+                                                                            !(Maybe
+                                                                                Text),
+                                                                            _gsdrsLastUpdatedTimestamp
+                                                                            ::
+                                                                            !(Maybe
+                                                                                Text),
+                                                                            _gsdrsResponseStatus
+                                                                            ::
+                                                                            !Int}
+                                           deriving (Eq, Read, Show, Data,
+                                                     Typeable, Generic)
 
 -- | Creates a value of 'GetSubscriptionDefinitionResponse' with the minimum fields required to make a request.
 --
@@ -146,18 +162,16 @@ data GetSubscriptionDefinitionResponse =
 getSubscriptionDefinitionResponse
     :: Int -- ^ 'gsdrsResponseStatus'
     -> GetSubscriptionDefinitionResponse
-getSubscriptionDefinitionResponse pResponseStatus_ =
-  GetSubscriptionDefinitionResponse'
-    { _gsdrsLatestVersionARN = Nothing
-    , _gsdrsARN = Nothing
-    , _gsdrsName = Nothing
-    , _gsdrsCreationTimestamp = Nothing
-    , _gsdrsId = Nothing
-    , _gsdrsLatestVersion = Nothing
-    , _gsdrsLastUpdatedTimestamp = Nothing
-    , _gsdrsResponseStatus = pResponseStatus_
-    }
-
+getSubscriptionDefinitionResponse pResponseStatus_
+  = GetSubscriptionDefinitionResponse'{_gsdrsLatestVersionARN
+                                         = Nothing,
+                                       _gsdrsARN = Nothing,
+                                       _gsdrsName = Nothing,
+                                       _gsdrsCreationTimestamp = Nothing,
+                                       _gsdrsId = Nothing,
+                                       _gsdrsLatestVersion = Nothing,
+                                       _gsdrsLastUpdatedTimestamp = Nothing,
+                                       _gsdrsResponseStatus = pResponseStatus_}
 
 -- | The ARN of the latest version of the definition.
 gsdrsLatestVersionARN :: Lens' GetSubscriptionDefinitionResponse (Maybe Text)

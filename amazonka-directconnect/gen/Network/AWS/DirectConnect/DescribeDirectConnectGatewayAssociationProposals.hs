@@ -18,7 +18,7 @@
 -- Stability   : auto-generated
 -- Portability : non-portable (GHC extensions)
 --
--- Describes one or more association proposals for connection between a virtual private gateway or transit gateway and a Direct Connect gateway.
+-- Describes one or more association proposals for connection between a virtual private gateway or transit gateway and a Direct Connect gateway. 
 --
 --
 module Network.AWS.DirectConnect.DescribeDirectConnectGatewayAssociationProposals
@@ -43,23 +43,36 @@ module Network.AWS.DirectConnect.DescribeDirectConnectGatewayAssociationProposal
     ) where
 
 import Network.AWS.DirectConnect.Types
-import Network.AWS.DirectConnect.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 
 -- | /See:/ 'describeDirectConnectGatewayAssociationProposals' smart constructor.
-data DescribeDirectConnectGatewayAssociationProposals =
-  DescribeDirectConnectGatewayAssociationProposals'
-    { _ddcgapsAssociatedGatewayId    :: !(Maybe Text)
-    , _ddcgapsDirectConnectGatewayId :: !(Maybe Text)
-    , _ddcgapsProposalId             :: !(Maybe Text)
-    , _ddcgapsNextToken              :: !(Maybe Text)
-    , _ddcgapsMaxResults             :: !(Maybe Int)
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data DescribeDirectConnectGatewayAssociationProposals = DescribeDirectConnectGatewayAssociationProposals'{_ddcgapsAssociatedGatewayId
+                                                                                                          ::
+                                                                                                          !(Maybe
+                                                                                                              Text),
+                                                                                                          _ddcgapsDirectConnectGatewayId
+                                                                                                          ::
+                                                                                                          !(Maybe
+                                                                                                              Text),
+                                                                                                          _ddcgapsProposalId
+                                                                                                          ::
+                                                                                                          !(Maybe
+                                                                                                              Text),
+                                                                                                          _ddcgapsNextToken
+                                                                                                          ::
+                                                                                                          !(Maybe
+                                                                                                              Text),
+                                                                                                          _ddcgapsMaxResults
+                                                                                                          ::
+                                                                                                          !(Maybe
+                                                                                                              Int)}
+                                                          deriving (Eq, Read,
+                                                                    Show, Data,
+                                                                    Typeable,
+                                                                    Generic)
 
 -- | Creates a value of 'DescribeDirectConnectGatewayAssociationProposals' with the minimum fields required to make a request.
 --
@@ -76,15 +89,17 @@ data DescribeDirectConnectGatewayAssociationProposals =
 -- * 'ddcgapsMaxResults' - The maximum number of results to return with a single call. To retrieve the remaining results, make another call with the returned @nextToken@ value. If @MaxResults@ is given a value larger than 100, only 100 results are returned.
 describeDirectConnectGatewayAssociationProposals
     :: DescribeDirectConnectGatewayAssociationProposals
-describeDirectConnectGatewayAssociationProposals =
-  DescribeDirectConnectGatewayAssociationProposals'
-    { _ddcgapsAssociatedGatewayId = Nothing
-    , _ddcgapsDirectConnectGatewayId = Nothing
-    , _ddcgapsProposalId = Nothing
-    , _ddcgapsNextToken = Nothing
-    , _ddcgapsMaxResults = Nothing
-    }
-
+describeDirectConnectGatewayAssociationProposals
+  = DescribeDirectConnectGatewayAssociationProposals'{_ddcgapsAssociatedGatewayId
+                                                        = Nothing,
+                                                      _ddcgapsDirectConnectGatewayId
+                                                        = Nothing,
+                                                      _ddcgapsProposalId =
+                                                        Nothing,
+                                                      _ddcgapsNextToken =
+                                                        Nothing,
+                                                      _ddcgapsMaxResults =
+                                                        Nothing}
 
 -- | The ID of the associated gateway.
 ddcgapsAssociatedGatewayId :: Lens' DescribeDirectConnectGatewayAssociationProposals (Maybe Text)
@@ -170,14 +185,23 @@ instance ToQuery
         toQuery = const mempty
 
 -- | /See:/ 'describeDirectConnectGatewayAssociationProposalsResponse' smart constructor.
-data DescribeDirectConnectGatewayAssociationProposalsResponse =
-  DescribeDirectConnectGatewayAssociationProposalsResponse'
-    { _ddcgapsrsDirectConnectGatewayAssociationProposals :: !(Maybe [DirectConnectGatewayAssociationProposal])
-    , _ddcgapsrsNextToken :: !(Maybe Text)
-    , _ddcgapsrsResponseStatus :: !Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data DescribeDirectConnectGatewayAssociationProposalsResponse = DescribeDirectConnectGatewayAssociationProposalsResponse'{_ddcgapsrsDirectConnectGatewayAssociationProposals
+                                                                                                                          ::
+                                                                                                                          !(Maybe
+                                                                                                                              [DirectConnectGatewayAssociationProposal]),
+                                                                                                                          _ddcgapsrsNextToken
+                                                                                                                          ::
+                                                                                                                          !(Maybe
+                                                                                                                              Text),
+                                                                                                                          _ddcgapsrsResponseStatus
+                                                                                                                          ::
+                                                                                                                          !Int}
+                                                                  deriving (Eq,
+                                                                            Read,
+                                                                            Show,
+                                                                            Data,
+                                                                            Typeable,
+                                                                            Generic)
 
 -- | Creates a value of 'DescribeDirectConnectGatewayAssociationProposalsResponse' with the minimum fields required to make a request.
 --
@@ -191,13 +215,15 @@ data DescribeDirectConnectGatewayAssociationProposalsResponse =
 describeDirectConnectGatewayAssociationProposalsResponse
     :: Int -- ^ 'ddcgapsrsResponseStatus'
     -> DescribeDirectConnectGatewayAssociationProposalsResponse
-describeDirectConnectGatewayAssociationProposalsResponse pResponseStatus_ =
-  DescribeDirectConnectGatewayAssociationProposalsResponse'
-    { _ddcgapsrsDirectConnectGatewayAssociationProposals = Nothing
-    , _ddcgapsrsNextToken = Nothing
-    , _ddcgapsrsResponseStatus = pResponseStatus_
-    }
-
+describeDirectConnectGatewayAssociationProposalsResponse
+  pResponseStatus_
+  = DescribeDirectConnectGatewayAssociationProposalsResponse'{_ddcgapsrsDirectConnectGatewayAssociationProposals
+                                                                = Nothing,
+                                                              _ddcgapsrsNextToken
+                                                                = Nothing,
+                                                              _ddcgapsrsResponseStatus
+                                                                =
+                                                                pResponseStatus_}
 
 -- | Describes the Direct Connect gateway association proposals.
 ddcgapsrsDirectConnectGatewayAssociationProposals :: Lens' DescribeDirectConnectGatewayAssociationProposalsResponse [DirectConnectGatewayAssociationProposal]

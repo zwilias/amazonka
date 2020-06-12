@@ -37,19 +37,14 @@ module Network.AWS.Glue.StartCrawler
     ) where
 
 import Network.AWS.Glue.Types
-import Network.AWS.Glue.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 
 -- | /See:/ 'startCrawler' smart constructor.
-newtype StartCrawler =
-  StartCrawler'
-    { _scName :: Text
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+newtype StartCrawler = StartCrawler'{_scName :: Text}
+                         deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'StartCrawler' with the minimum fields required to make a request.
 --
@@ -59,8 +54,7 @@ newtype StartCrawler =
 startCrawler
     :: Text -- ^ 'scName'
     -> StartCrawler
-startCrawler pName_ = StartCrawler' {_scName = pName_}
-
+startCrawler pName_ = StartCrawler'{_scName = pName_}
 
 -- | Name of the crawler to start.
 scName :: Lens' StartCrawler Text
@@ -98,12 +92,10 @@ instance ToQuery StartCrawler where
         toQuery = const mempty
 
 -- | /See:/ 'startCrawlerResponse' smart constructor.
-newtype StartCrawlerResponse =
-  StartCrawlerResponse'
-    { _scrsResponseStatus :: Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+newtype StartCrawlerResponse = StartCrawlerResponse'{_scrsResponseStatus
+                                                     :: Int}
+                                 deriving (Eq, Read, Show, Data, Typeable,
+                                           Generic)
 
 -- | Creates a value of 'StartCrawlerResponse' with the minimum fields required to make a request.
 --
@@ -113,9 +105,9 @@ newtype StartCrawlerResponse =
 startCrawlerResponse
     :: Int -- ^ 'scrsResponseStatus'
     -> StartCrawlerResponse
-startCrawlerResponse pResponseStatus_ =
-  StartCrawlerResponse' {_scrsResponseStatus = pResponseStatus_}
-
+startCrawlerResponse pResponseStatus_
+  = StartCrawlerResponse'{_scrsResponseStatus =
+                            pResponseStatus_}
 
 -- | -- | The response status code.
 scrsResponseStatus :: Lens' StartCrawlerResponse Int

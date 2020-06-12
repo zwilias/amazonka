@@ -47,7 +47,6 @@ module Network.AWS.ApplicationAutoScaling.DescribeScalableTargets
     ) where
 
 import Network.AWS.ApplicationAutoScaling.Types
-import Network.AWS.ApplicationAutoScaling.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Pager
 import Network.AWS.Prelude
@@ -55,16 +54,19 @@ import Network.AWS.Request
 import Network.AWS.Response
 
 -- | /See:/ 'describeScalableTargets' smart constructor.
-data DescribeScalableTargets =
-  DescribeScalableTargets'
-    { _dstResourceIds       :: !(Maybe [Text])
-    , _dstScalableDimension :: !(Maybe ScalableDimension)
-    , _dstNextToken         :: !(Maybe Text)
-    , _dstMaxResults        :: !(Maybe Int)
-    , _dstServiceNamespace  :: !ServiceNamespace
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data DescribeScalableTargets = DescribeScalableTargets'{_dstResourceIds
+                                                        :: !(Maybe [Text]),
+                                                        _dstScalableDimension ::
+                                                        !(Maybe
+                                                            ScalableDimension),
+                                                        _dstNextToken ::
+                                                        !(Maybe Text),
+                                                        _dstMaxResults ::
+                                                        !(Maybe Int),
+                                                        _dstServiceNamespace ::
+                                                        !ServiceNamespace}
+                                 deriving (Eq, Read, Show, Data, Typeable,
+                                           Generic)
 
 -- | Creates a value of 'DescribeScalableTargets' with the minimum fields required to make a request.
 --
@@ -82,15 +84,11 @@ data DescribeScalableTargets =
 describeScalableTargets
     :: ServiceNamespace -- ^ 'dstServiceNamespace'
     -> DescribeScalableTargets
-describeScalableTargets pServiceNamespace_ =
-  DescribeScalableTargets'
-    { _dstResourceIds = Nothing
-    , _dstScalableDimension = Nothing
-    , _dstNextToken = Nothing
-    , _dstMaxResults = Nothing
-    , _dstServiceNamespace = pServiceNamespace_
-    }
-
+describeScalableTargets pServiceNamespace_
+  = DescribeScalableTargets'{_dstResourceIds = Nothing,
+                             _dstScalableDimension = Nothing,
+                             _dstNextToken = Nothing, _dstMaxResults = Nothing,
+                             _dstServiceNamespace = pServiceNamespace_}
 
 -- | The identifier of the resource associated with the scalable target. This string consists of the resource type and unique identifier. If you specify a scalable dimension, you must also specify a resource ID.     * ECS service - The resource type is @service@ and the unique identifier is the cluster name and service name. Example: @service/default/sample-webapp@ .     * Spot Fleet request - The resource type is @spot-fleet-request@ and the unique identifier is the Spot Fleet request ID. Example: @spot-fleet-request/sfr-73fbd2ce-aa30-494c-8788-1cee4EXAMPLE@ .     * EMR cluster - The resource type is @instancegroup@ and the unique identifier is the cluster ID and instance group ID. Example: @instancegroup/j-2EEZNYKUA1NTV/ig-1791Y4E1L8YI0@ .     * AppStream 2.0 fleet - The resource type is @fleet@ and the unique identifier is the fleet name. Example: @fleet/sample-fleet@ .     * DynamoDB table - The resource type is @table@ and the unique identifier is the table name. Example: @table/my-table@ .     * DynamoDB global secondary index - The resource type is @index@ and the unique identifier is the index name. Example: @table/my-table/index/my-table-index@ .     * Aurora DB cluster - The resource type is @cluster@ and the unique identifier is the cluster name. Example: @cluster:my-db-cluster@ .     * Amazon SageMaker endpoint variant - The resource type is @variant@ and the unique identifier is the resource ID. Example: @endpoint/my-end-point/variant/KMeansClustering@ .     * Custom resources are not supported with a resource type. This parameter must specify the @OutputValue@ from the CloudFormation template stack used to access the resources. The unique identifier is defined by the service provider. More information is available in our <https://github.com/aws/aws-auto-scaling-custom-resource GitHub repository> .     * Amazon Comprehend document classification endpoint - The resource type and unique identifier are specified using the endpoint ARN. Example: @arn:aws:comprehend:us-west-2:123456789012:document-classifier-endpoint/EXAMPLE@ .     * Lambda provisioned concurrency - The resource type is @function@ and the unique identifier is the function name with a function version or alias name suffix that is not @> LATEST@ . Example: @function:my-function:prod@ or @function:my-function:1@ .     * Amazon Keyspaces table - The resource type is @table@ and the unique identifier is the table name. Example: @keyspace/mykeyspace/table/mytable@ .
 dstResourceIds :: Lens' DescribeScalableTargets [Text]
@@ -162,14 +160,18 @@ instance ToQuery DescribeScalableTargets where
         toQuery = const mempty
 
 -- | /See:/ 'describeScalableTargetsResponse' smart constructor.
-data DescribeScalableTargetsResponse =
-  DescribeScalableTargetsResponse'
-    { _dstsrsNextToken       :: !(Maybe Text)
-    , _dstsrsScalableTargets :: !(Maybe [ScalableTarget])
-    , _dstsrsResponseStatus  :: !Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data DescribeScalableTargetsResponse = DescribeScalableTargetsResponse'{_dstsrsNextToken
+                                                                        ::
+                                                                        !(Maybe
+                                                                            Text),
+                                                                        _dstsrsScalableTargets
+                                                                        ::
+                                                                        !(Maybe
+                                                                            [ScalableTarget]),
+                                                                        _dstsrsResponseStatus
+                                                                        :: !Int}
+                                         deriving (Eq, Read, Show, Data,
+                                                   Typeable, Generic)
 
 -- | Creates a value of 'DescribeScalableTargetsResponse' with the minimum fields required to make a request.
 --
@@ -183,13 +185,11 @@ data DescribeScalableTargetsResponse =
 describeScalableTargetsResponse
     :: Int -- ^ 'dstsrsResponseStatus'
     -> DescribeScalableTargetsResponse
-describeScalableTargetsResponse pResponseStatus_ =
-  DescribeScalableTargetsResponse'
-    { _dstsrsNextToken = Nothing
-    , _dstsrsScalableTargets = Nothing
-    , _dstsrsResponseStatus = pResponseStatus_
-    }
-
+describeScalableTargetsResponse pResponseStatus_
+  = DescribeScalableTargetsResponse'{_dstsrsNextToken =
+                                       Nothing,
+                                     _dstsrsScalableTargets = Nothing,
+                                     _dstsrsResponseStatus = pResponseStatus_}
 
 -- | The token required to get the next set of results. This value is @null@ if there are no more results to return.
 dstsrsNextToken :: Lens' DescribeScalableTargetsResponse (Maybe Text)

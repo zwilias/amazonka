@@ -46,20 +46,16 @@ module Network.AWS.LexModels.StartImport
 
 import Network.AWS.Lens
 import Network.AWS.LexModels.Types
-import Network.AWS.LexModels.Types.Product
 import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 
 -- | /See:/ 'startImport' smart constructor.
-data StartImport =
-  StartImport'
-    { _siPayload       :: !Base64
-    , _siResourceType  :: !ResourceType
-    , _siMergeStrategy :: !MergeStrategy
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data StartImport = StartImport'{_siPayload ::
+                                !Base64,
+                                _siResourceType :: !ResourceType,
+                                _siMergeStrategy :: !MergeStrategy}
+                     deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'StartImport' with the minimum fields required to make a request.
 --
@@ -75,13 +71,10 @@ startImport
     -> ResourceType -- ^ 'siResourceType'
     -> MergeStrategy -- ^ 'siMergeStrategy'
     -> StartImport
-startImport pPayload_ pResourceType_ pMergeStrategy_ =
-  StartImport'
-    { _siPayload = _Base64 # pPayload_
-    , _siResourceType = pResourceType_
-    , _siMergeStrategy = pMergeStrategy_
-    }
-
+startImport pPayload_ pResourceType_ pMergeStrategy_
+  = StartImport'{_siPayload = _Base64 # pPayload_,
+                 _siResourceType = pResourceType_,
+                 _siMergeStrategy = pMergeStrategy_}
 
 -- | A zip archive in binary format. The archive should contain one file, a JSON file containing the resource to import. The resource should match the type specified in the @resourceType@ field.-- /Note:/ This 'Lens' automatically encodes and decodes Base64 data. The underlying isomorphism will encode to Base64 representation during serialisation, and decode from Base64 representation during deserialisation. This 'Lens' accepts and returns only raw unencoded data.
 siPayload :: Lens' StartImport ByteString
@@ -135,18 +128,18 @@ instance ToQuery StartImport where
         toQuery = const mempty
 
 -- | /See:/ 'startImportResponse' smart constructor.
-data StartImportResponse =
-  StartImportResponse'
-    { _sirsResourceType   :: !(Maybe ResourceType)
-    , _sirsImportId       :: !(Maybe Text)
-    , _sirsCreatedDate    :: !(Maybe POSIX)
-    , _sirsName           :: !(Maybe Text)
-    , _sirsMergeStrategy  :: !(Maybe MergeStrategy)
-    , _sirsImportStatus   :: !(Maybe ImportStatus)
-    , _sirsResponseStatus :: !Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data StartImportResponse = StartImportResponse'{_sirsResourceType
+                                                :: !(Maybe ResourceType),
+                                                _sirsImportId :: !(Maybe Text),
+                                                _sirsCreatedDate ::
+                                                !(Maybe POSIX),
+                                                _sirsName :: !(Maybe Text),
+                                                _sirsMergeStrategy ::
+                                                !(Maybe MergeStrategy),
+                                                _sirsImportStatus ::
+                                                !(Maybe ImportStatus),
+                                                _sirsResponseStatus :: !Int}
+                             deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'StartImportResponse' with the minimum fields required to make a request.
 --
@@ -168,17 +161,12 @@ data StartImportResponse =
 startImportResponse
     :: Int -- ^ 'sirsResponseStatus'
     -> StartImportResponse
-startImportResponse pResponseStatus_ =
-  StartImportResponse'
-    { _sirsResourceType = Nothing
-    , _sirsImportId = Nothing
-    , _sirsCreatedDate = Nothing
-    , _sirsName = Nothing
-    , _sirsMergeStrategy = Nothing
-    , _sirsImportStatus = Nothing
-    , _sirsResponseStatus = pResponseStatus_
-    }
-
+startImportResponse pResponseStatus_
+  = StartImportResponse'{_sirsResourceType = Nothing,
+                         _sirsImportId = Nothing, _sirsCreatedDate = Nothing,
+                         _sirsName = Nothing, _sirsMergeStrategy = Nothing,
+                         _sirsImportStatus = Nothing,
+                         _sirsResponseStatus = pResponseStatus_}
 
 -- | The type of resource to import.
 sirsResourceType :: Lens' StartImportResponse (Maybe ResourceType)

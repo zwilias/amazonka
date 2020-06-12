@@ -44,22 +44,18 @@ module Network.AWS.CloudWatch.SetAlarmState
     ) where
 
 import Network.AWS.CloudWatch.Types
-import Network.AWS.CloudWatch.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 
 -- | /See:/ 'setAlarmState' smart constructor.
-data SetAlarmState =
-  SetAlarmState'
-    { _sasStateReasonData :: !(Maybe Text)
-    , _sasAlarmName       :: !Text
-    , _sasStateValue      :: !StateValue
-    , _sasStateReason     :: !Text
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data SetAlarmState = SetAlarmState'{_sasStateReasonData
+                                    :: !(Maybe Text),
+                                    _sasAlarmName :: !Text,
+                                    _sasStateValue :: !StateValue,
+                                    _sasStateReason :: !Text}
+                       deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'SetAlarmState' with the minimum fields required to make a request.
 --
@@ -77,14 +73,11 @@ setAlarmState
     -> StateValue -- ^ 'sasStateValue'
     -> Text -- ^ 'sasStateReason'
     -> SetAlarmState
-setAlarmState pAlarmName_ pStateValue_ pStateReason_ =
-  SetAlarmState'
-    { _sasStateReasonData = Nothing
-    , _sasAlarmName = pAlarmName_
-    , _sasStateValue = pStateValue_
-    , _sasStateReason = pStateReason_
-    }
-
+setAlarmState pAlarmName_ pStateValue_ pStateReason_
+  = SetAlarmState'{_sasStateReasonData = Nothing,
+                   _sasAlarmName = pAlarmName_,
+                   _sasStateValue = pStateValue_,
+                   _sasStateReason = pStateReason_}
 
 -- | The reason that this alarm is set to this specific state, in JSON format. For SNS or EC2 alarm actions, this is just informational. But for EC2 Auto Scaling or application Auto Scaling alarm actions, the Auto Scaling policy uses the information in this field to take the correct action.
 sasStateReasonData :: Lens' SetAlarmState (Maybe Text)
@@ -128,16 +121,14 @@ instance ToQuery SetAlarmState where
                "StateReason" =: _sasStateReason]
 
 -- | /See:/ 'setAlarmStateResponse' smart constructor.
-data SetAlarmStateResponse =
-  SetAlarmStateResponse'
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data SetAlarmStateResponse = SetAlarmStateResponse'
+                               deriving (Eq, Read, Show, Data, Typeable,
+                                         Generic)
 
 -- | Creates a value of 'SetAlarmStateResponse' with the minimum fields required to make a request.
 --
 setAlarmStateResponse
     :: SetAlarmStateResponse
 setAlarmStateResponse = SetAlarmStateResponse'
-
 
 instance NFData SetAlarmStateResponse where

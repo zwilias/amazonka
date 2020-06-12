@@ -45,7 +45,6 @@ module Network.AWS.EC2.DescribeClientVPNRoutes
     ) where
 
 import Network.AWS.EC2.Types
-import Network.AWS.EC2.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Pager
 import Network.AWS.Prelude
@@ -53,16 +52,18 @@ import Network.AWS.Request
 import Network.AWS.Response
 
 -- | /See:/ 'describeClientVPNRoutes' smart constructor.
-data DescribeClientVPNRoutes =
-  DescribeClientVPNRoutes'
-    { _dcvrFilters             :: !(Maybe [Filter])
-    , _dcvrNextToken           :: !(Maybe Text)
-    , _dcvrDryRun              :: !(Maybe Bool)
-    , _dcvrMaxResults          :: !(Maybe Nat)
-    , _dcvrClientVPNEndpointId :: !Text
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data DescribeClientVPNRoutes = DescribeClientVPNRoutes'{_dcvrFilters
+                                                        :: !(Maybe [Filter]),
+                                                        _dcvrNextToken ::
+                                                        !(Maybe Text),
+                                                        _dcvrDryRun ::
+                                                        !(Maybe Bool),
+                                                        _dcvrMaxResults ::
+                                                        !(Maybe Nat),
+                                                        _dcvrClientVPNEndpointId
+                                                        :: !Text}
+                                 deriving (Eq, Read, Show, Data, Typeable,
+                                           Generic)
 
 -- | Creates a value of 'DescribeClientVPNRoutes' with the minimum fields required to make a request.
 --
@@ -80,15 +81,11 @@ data DescribeClientVPNRoutes =
 describeClientVPNRoutes
     :: Text -- ^ 'dcvrClientVPNEndpointId'
     -> DescribeClientVPNRoutes
-describeClientVPNRoutes pClientVPNEndpointId_ =
-  DescribeClientVPNRoutes'
-    { _dcvrFilters = Nothing
-    , _dcvrNextToken = Nothing
-    , _dcvrDryRun = Nothing
-    , _dcvrMaxResults = Nothing
-    , _dcvrClientVPNEndpointId = pClientVPNEndpointId_
-    }
-
+describeClientVPNRoutes pClientVPNEndpointId_
+  = DescribeClientVPNRoutes'{_dcvrFilters = Nothing,
+                             _dcvrNextToken = Nothing, _dcvrDryRun = Nothing,
+                             _dcvrMaxResults = Nothing,
+                             _dcvrClientVPNEndpointId = pClientVPNEndpointId_}
 
 -- | One or more filters. Filter names and values are case-sensitive.     * @destination-cidr@ - The CIDR of the route destination.     * @origin@ - How the route was associated with the Client VPN endpoint (@associate@ | @add-route@ ).     * @target-subnet@ - The ID of the subnet through which traffic is routed.
 dcvrFilters :: Lens' DescribeClientVPNRoutes [Filter]
@@ -153,14 +150,18 @@ instance ToQuery DescribeClientVPNRoutes where
                "ClientVpnEndpointId" =: _dcvrClientVPNEndpointId]
 
 -- | /See:/ 'describeClientVPNRoutesResponse' smart constructor.
-data DescribeClientVPNRoutesResponse =
-  DescribeClientVPNRoutesResponse'
-    { _dcvpnrrsRoutes         :: !(Maybe [ClientVPNRoute])
-    , _dcvpnrrsNextToken      :: !(Maybe Text)
-    , _dcvpnrrsResponseStatus :: !Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data DescribeClientVPNRoutesResponse = DescribeClientVPNRoutesResponse'{_dcvpnrrsRoutes
+                                                                        ::
+                                                                        !(Maybe
+                                                                            [ClientVPNRoute]),
+                                                                        _dcvpnrrsNextToken
+                                                                        ::
+                                                                        !(Maybe
+                                                                            Text),
+                                                                        _dcvpnrrsResponseStatus
+                                                                        :: !Int}
+                                         deriving (Eq, Read, Show, Data,
+                                                   Typeable, Generic)
 
 -- | Creates a value of 'DescribeClientVPNRoutesResponse' with the minimum fields required to make a request.
 --
@@ -174,13 +175,11 @@ data DescribeClientVPNRoutesResponse =
 describeClientVPNRoutesResponse
     :: Int -- ^ 'dcvpnrrsResponseStatus'
     -> DescribeClientVPNRoutesResponse
-describeClientVPNRoutesResponse pResponseStatus_ =
-  DescribeClientVPNRoutesResponse'
-    { _dcvpnrrsRoutes = Nothing
-    , _dcvpnrrsNextToken = Nothing
-    , _dcvpnrrsResponseStatus = pResponseStatus_
-    }
-
+describeClientVPNRoutesResponse pResponseStatus_
+  = DescribeClientVPNRoutesResponse'{_dcvpnrrsRoutes =
+                                       Nothing,
+                                     _dcvpnrrsNextToken = Nothing,
+                                     _dcvpnrrsResponseStatus = pResponseStatus_}
 
 -- | Information about the Client VPN endpoint routes.
 dcvpnrrsRoutes :: Lens' DescribeClientVPNRoutesResponse [ClientVPNRoute]

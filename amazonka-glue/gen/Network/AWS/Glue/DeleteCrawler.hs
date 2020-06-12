@@ -37,19 +37,15 @@ module Network.AWS.Glue.DeleteCrawler
     ) where
 
 import Network.AWS.Glue.Types
-import Network.AWS.Glue.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 
 -- | /See:/ 'deleteCrawler' smart constructor.
-newtype DeleteCrawler =
-  DeleteCrawler'
-    { _dcName :: Text
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+newtype DeleteCrawler = DeleteCrawler'{_dcName ::
+                                       Text}
+                          deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'DeleteCrawler' with the minimum fields required to make a request.
 --
@@ -59,8 +55,8 @@ newtype DeleteCrawler =
 deleteCrawler
     :: Text -- ^ 'dcName'
     -> DeleteCrawler
-deleteCrawler pName_ = DeleteCrawler' {_dcName = pName_}
-
+deleteCrawler pName_
+  = DeleteCrawler'{_dcName = pName_}
 
 -- | Name of the crawler to remove.
 dcName :: Lens' DeleteCrawler Text
@@ -98,12 +94,10 @@ instance ToQuery DeleteCrawler where
         toQuery = const mempty
 
 -- | /See:/ 'deleteCrawlerResponse' smart constructor.
-newtype DeleteCrawlerResponse =
-  DeleteCrawlerResponse'
-    { _dccrsResponseStatus :: Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+newtype DeleteCrawlerResponse = DeleteCrawlerResponse'{_dccrsResponseStatus
+                                                       :: Int}
+                                  deriving (Eq, Read, Show, Data, Typeable,
+                                            Generic)
 
 -- | Creates a value of 'DeleteCrawlerResponse' with the minimum fields required to make a request.
 --
@@ -113,9 +107,9 @@ newtype DeleteCrawlerResponse =
 deleteCrawlerResponse
     :: Int -- ^ 'dccrsResponseStatus'
     -> DeleteCrawlerResponse
-deleteCrawlerResponse pResponseStatus_ =
-  DeleteCrawlerResponse' {_dccrsResponseStatus = pResponseStatus_}
-
+deleteCrawlerResponse pResponseStatus_
+  = DeleteCrawlerResponse'{_dccrsResponseStatus =
+                             pResponseStatus_}
 
 -- | -- | The response status code.
 dccrsResponseStatus :: Lens' DeleteCrawlerResponse Int

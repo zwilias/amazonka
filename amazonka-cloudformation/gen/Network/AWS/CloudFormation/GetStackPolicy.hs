@@ -38,7 +38,6 @@ module Network.AWS.CloudFormation.GetStackPolicy
     ) where
 
 import Network.AWS.CloudFormation.Types
-import Network.AWS.CloudFormation.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.Request
@@ -49,12 +48,9 @@ import Network.AWS.Response
 --
 --
 -- /See:/ 'getStackPolicy' smart constructor.
-newtype GetStackPolicy =
-  GetStackPolicy'
-    { _gspStackName :: Text
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+newtype GetStackPolicy = GetStackPolicy'{_gspStackName
+                                         :: Text}
+                           deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'GetStackPolicy' with the minimum fields required to make a request.
 --
@@ -64,8 +60,8 @@ newtype GetStackPolicy =
 getStackPolicy
     :: Text -- ^ 'gspStackName'
     -> GetStackPolicy
-getStackPolicy pStackName_ = GetStackPolicy' {_gspStackName = pStackName_}
-
+getStackPolicy pStackName_
+  = GetStackPolicy'{_gspStackName = pStackName_}
 
 -- | The name or unique stack ID that is associated with the stack whose policy you want to get.
 gspStackName :: Lens' GetStackPolicy Text
@@ -102,13 +98,12 @@ instance ToQuery GetStackPolicy where
 --
 --
 -- /See:/ 'getStackPolicyResponse' smart constructor.
-data GetStackPolicyResponse =
-  GetStackPolicyResponse'
-    { _gsprsStackPolicyBody :: !(Maybe Text)
-    , _gsprsResponseStatus  :: !Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data GetStackPolicyResponse = GetStackPolicyResponse'{_gsprsStackPolicyBody
+                                                      :: !(Maybe Text),
+                                                      _gsprsResponseStatus ::
+                                                      !Int}
+                                deriving (Eq, Read, Show, Data, Typeable,
+                                          Generic)
 
 -- | Creates a value of 'GetStackPolicyResponse' with the minimum fields required to make a request.
 --
@@ -120,10 +115,10 @@ data GetStackPolicyResponse =
 getStackPolicyResponse
     :: Int -- ^ 'gsprsResponseStatus'
     -> GetStackPolicyResponse
-getStackPolicyResponse pResponseStatus_ =
-  GetStackPolicyResponse'
-    {_gsprsStackPolicyBody = Nothing, _gsprsResponseStatus = pResponseStatus_}
-
+getStackPolicyResponse pResponseStatus_
+  = GetStackPolicyResponse'{_gsprsStackPolicyBody =
+                              Nothing,
+                            _gsprsResponseStatus = pResponseStatus_}
 
 -- | Structure containing the stack policy body. (For more information, go to <http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/protect-stack-resources.html Prevent Updates to Stack Resources> in the AWS CloudFormation User Guide.)
 gsprsStackPolicyBody :: Lens' GetStackPolicyResponse (Maybe Text)

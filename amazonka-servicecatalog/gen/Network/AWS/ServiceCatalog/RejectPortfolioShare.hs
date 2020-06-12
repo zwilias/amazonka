@@ -42,16 +42,12 @@ import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 import Network.AWS.ServiceCatalog.Types
-import Network.AWS.ServiceCatalog.Types.Product
 
 -- | /See:/ 'rejectPortfolioShare' smart constructor.
-data RejectPortfolioShare =
-  RejectPortfolioShare'
-    { _rpsAcceptLanguage :: !(Maybe Text)
-    , _rpsPortfolioId    :: !Text
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data RejectPortfolioShare = RejectPortfolioShare'{_rpsAcceptLanguage
+                                                  :: !(Maybe Text),
+                                                  _rpsPortfolioId :: !Text}
+                              deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'RejectPortfolioShare' with the minimum fields required to make a request.
 --
@@ -63,10 +59,9 @@ data RejectPortfolioShare =
 rejectPortfolioShare
     :: Text -- ^ 'rpsPortfolioId'
     -> RejectPortfolioShare
-rejectPortfolioShare pPortfolioId_ =
-  RejectPortfolioShare'
-    {_rpsAcceptLanguage = Nothing, _rpsPortfolioId = pPortfolioId_}
-
+rejectPortfolioShare pPortfolioId_
+  = RejectPortfolioShare'{_rpsAcceptLanguage = Nothing,
+                          _rpsPortfolioId = pPortfolioId_}
 
 -- | The language code.     * @en@ - English (default)     * @jp@ - Japanese     * @zh@ - Chinese
 rpsAcceptLanguage :: Lens' RejectPortfolioShare (Maybe Text)
@@ -114,12 +109,10 @@ instance ToQuery RejectPortfolioShare where
         toQuery = const mempty
 
 -- | /See:/ 'rejectPortfolioShareResponse' smart constructor.
-newtype RejectPortfolioShareResponse =
-  RejectPortfolioShareResponse'
-    { _rpsrsResponseStatus :: Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+newtype RejectPortfolioShareResponse = RejectPortfolioShareResponse'{_rpsrsResponseStatus
+                                                                     :: Int}
+                                         deriving (Eq, Read, Show, Data,
+                                                   Typeable, Generic)
 
 -- | Creates a value of 'RejectPortfolioShareResponse' with the minimum fields required to make a request.
 --
@@ -129,9 +122,9 @@ newtype RejectPortfolioShareResponse =
 rejectPortfolioShareResponse
     :: Int -- ^ 'rpsrsResponseStatus'
     -> RejectPortfolioShareResponse
-rejectPortfolioShareResponse pResponseStatus_ =
-  RejectPortfolioShareResponse' {_rpsrsResponseStatus = pResponseStatus_}
-
+rejectPortfolioShareResponse pResponseStatus_
+  = RejectPortfolioShareResponse'{_rpsrsResponseStatus
+                                    = pResponseStatus_}
 
 -- | -- | The response status code.
 rpsrsResponseStatus :: Lens' RejectPortfolioShareResponse Int

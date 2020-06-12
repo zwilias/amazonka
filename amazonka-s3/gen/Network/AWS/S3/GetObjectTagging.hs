@@ -43,17 +43,13 @@ import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 import Network.AWS.S3.Types
-import Network.AWS.S3.Types.Product
 
 -- | /See:/ 'getObjectTagging' smart constructor.
-data GetObjectTagging =
-  GetObjectTagging'
-    { _gotoVersionId :: !(Maybe ObjectVersionId)
-    , _gotoBucket    :: !BucketName
-    , _gotoKey       :: !ObjectKey
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data GetObjectTagging = GetObjectTagging'{_gotoVersionId
+                                          :: !(Maybe ObjectVersionId),
+                                          _gotoBucket :: !BucketName,
+                                          _gotoKey :: !ObjectKey}
+                          deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'GetObjectTagging' with the minimum fields required to make a request.
 --
@@ -68,10 +64,9 @@ getObjectTagging
     :: BucketName -- ^ 'gotoBucket'
     -> ObjectKey -- ^ 'gotoKey'
     -> GetObjectTagging
-getObjectTagging pBucket_ pKey_ =
-  GetObjectTagging'
-    {_gotoVersionId = Nothing, _gotoBucket = pBucket_, _gotoKey = pKey_}
-
+getObjectTagging pBucket_ pKey_
+  = GetObjectTagging'{_gotoVersionId = Nothing,
+                      _gotoBucket = pBucket_, _gotoKey = pKey_}
 
 -- | Undocumented member.
 gotoVersionId :: Lens' GetObjectTagging (Maybe ObjectVersionId)
@@ -112,14 +107,16 @@ instance ToQuery GetObjectTagging where
           = mconcat ["versionId" =: _gotoVersionId, "tagging"]
 
 -- | /See:/ 'getObjectTaggingResponse' smart constructor.
-data GetObjectTaggingResponse =
-  GetObjectTaggingResponse'
-    { _gotrsVersionId      :: !(Maybe ObjectVersionId)
-    , _gotrsResponseStatus :: !Int
-    , _gotrsTagSet         :: ![Tag]
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data GetObjectTaggingResponse = GetObjectTaggingResponse'{_gotrsVersionId
+                                                          ::
+                                                          !(Maybe
+                                                              ObjectVersionId),
+                                                          _gotrsResponseStatus
+                                                          :: !Int,
+                                                          _gotrsTagSet ::
+                                                          ![Tag]}
+                                  deriving (Eq, Read, Show, Data, Typeable,
+                                            Generic)
 
 -- | Creates a value of 'GetObjectTaggingResponse' with the minimum fields required to make a request.
 --
@@ -133,13 +130,11 @@ data GetObjectTaggingResponse =
 getObjectTaggingResponse
     :: Int -- ^ 'gotrsResponseStatus'
     -> GetObjectTaggingResponse
-getObjectTaggingResponse pResponseStatus_ =
-  GetObjectTaggingResponse'
-    { _gotrsVersionId = Nothing
-    , _gotrsResponseStatus = pResponseStatus_
-    , _gotrsTagSet = mempty
-    }
-
+getObjectTaggingResponse pResponseStatus_
+  = GetObjectTaggingResponse'{_gotrsVersionId =
+                                Nothing,
+                              _gotrsResponseStatus = pResponseStatus_,
+                              _gotrsTagSet = mempty}
 
 -- | Undocumented member.
 gotrsVersionId :: Lens' GetObjectTaggingResponse (Maybe ObjectVersionId)

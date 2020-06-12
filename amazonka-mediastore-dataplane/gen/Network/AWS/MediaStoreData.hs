@@ -40,19 +40,19 @@ module Network.AWS.MediaStoreData
     -- * Operations
     -- $operations
 
-    -- ** PutObject
+    -- ** PutObject 
     , module Network.AWS.MediaStoreData.PutObject
 
-    -- ** DeleteObject
+    -- ** DeleteObject 
     , module Network.AWS.MediaStoreData.DeleteObject
 
-    -- ** DescribeObject
+    -- ** DescribeObject 
     , module Network.AWS.MediaStoreData.DescribeObject
 
-    -- ** GetObject
+    -- ** GetObject 
     , module Network.AWS.MediaStoreData.GetObject
 
-    -- ** ListItems
+    -- ** ListItems 
     , module Network.AWS.MediaStoreData.ListItems
 
     -- * Types

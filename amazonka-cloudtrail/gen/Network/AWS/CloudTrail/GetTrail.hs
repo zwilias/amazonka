@@ -38,19 +38,14 @@ module Network.AWS.CloudTrail.GetTrail
     ) where
 
 import Network.AWS.CloudTrail.Types
-import Network.AWS.CloudTrail.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 
 -- | /See:/ 'getTrail' smart constructor.
-newtype GetTrail =
-  GetTrail'
-    { _gtName :: Text
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+newtype GetTrail = GetTrail'{_gtName :: Text}
+                     deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'GetTrail' with the minimum fields required to make a request.
 --
@@ -60,8 +55,7 @@ newtype GetTrail =
 getTrail
     :: Text -- ^ 'gtName'
     -> GetTrail
-getTrail pName_ = GetTrail' {_gtName = pName_}
-
+getTrail pName_ = GetTrail'{_gtName = pName_}
 
 -- | The name or the Amazon Resource Name (ARN) of the trail for which you want to retrieve settings information.
 gtName :: Lens' GetTrail Text
@@ -101,13 +95,10 @@ instance ToQuery GetTrail where
         toQuery = const mempty
 
 -- | /See:/ 'getTrailResponse' smart constructor.
-data GetTrailResponse =
-  GetTrailResponse'
-    { _gtrsTrail          :: !(Maybe Trail)
-    , _gtrsResponseStatus :: !Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data GetTrailResponse = GetTrailResponse'{_gtrsTrail
+                                          :: !(Maybe Trail),
+                                          _gtrsResponseStatus :: !Int}
+                          deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'GetTrailResponse' with the minimum fields required to make a request.
 --
@@ -119,10 +110,9 @@ data GetTrailResponse =
 getTrailResponse
     :: Int -- ^ 'gtrsResponseStatus'
     -> GetTrailResponse
-getTrailResponse pResponseStatus_ =
-  GetTrailResponse'
-    {_gtrsTrail = Nothing, _gtrsResponseStatus = pResponseStatus_}
-
+getTrailResponse pResponseStatus_
+  = GetTrailResponse'{_gtrsTrail = Nothing,
+                      _gtrsResponseStatus = pResponseStatus_}
 
 -- | Undocumented member.
 gtrsTrail :: Lens' GetTrailResponse (Maybe Trail)

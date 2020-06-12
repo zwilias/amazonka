@@ -41,22 +41,18 @@ module Network.AWS.ECR.PutImage
     ) where
 
 import Network.AWS.ECR.Types
-import Network.AWS.ECR.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 
 -- | /See:/ 'putImage' smart constructor.
-data PutImage =
-  PutImage'
-    { _piRegistryId     :: !(Maybe Text)
-    , _piImageTag       :: !(Maybe Text)
-    , _piRepositoryName :: !Text
-    , _piImageManifest  :: !Text
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data PutImage = PutImage'{_piRegistryId ::
+                          !(Maybe Text),
+                          _piImageTag :: !(Maybe Text),
+                          _piRepositoryName :: !Text,
+                          _piImageManifest :: !Text}
+                  deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'PutImage' with the minimum fields required to make a request.
 --
@@ -73,14 +69,11 @@ putImage
     :: Text -- ^ 'piRepositoryName'
     -> Text -- ^ 'piImageManifest'
     -> PutImage
-putImage pRepositoryName_ pImageManifest_ =
-  PutImage'
-    { _piRegistryId = Nothing
-    , _piImageTag = Nothing
-    , _piRepositoryName = pRepositoryName_
-    , _piImageManifest = pImageManifest_
-    }
-
+putImage pRepositoryName_ pImageManifest_
+  = PutImage'{_piRegistryId = Nothing,
+              _piImageTag = Nothing,
+              _piRepositoryName = pRepositoryName_,
+              _piImageManifest = pImageManifest_}
 
 -- | The AWS account ID associated with the registry that contains the repository in which to put the image. If you do not specify a registry, the default registry is assumed.
 piRegistryId :: Lens' PutImage (Maybe Text)
@@ -137,13 +130,10 @@ instance ToQuery PutImage where
         toQuery = const mempty
 
 -- | /See:/ 'putImageResponse' smart constructor.
-data PutImageResponse =
-  PutImageResponse'
-    { _pirsImage          :: !(Maybe Image)
-    , _pirsResponseStatus :: !Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data PutImageResponse = PutImageResponse'{_pirsImage
+                                          :: !(Maybe Image),
+                                          _pirsResponseStatus :: !Int}
+                          deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'PutImageResponse' with the minimum fields required to make a request.
 --
@@ -155,10 +145,9 @@ data PutImageResponse =
 putImageResponse
     :: Int -- ^ 'pirsResponseStatus'
     -> PutImageResponse
-putImageResponse pResponseStatus_ =
-  PutImageResponse'
-    {_pirsImage = Nothing, _pirsResponseStatus = pResponseStatus_}
-
+putImageResponse pResponseStatus_
+  = PutImageResponse'{_pirsImage = Nothing,
+                      _pirsResponseStatus = pResponseStatus_}
 
 -- | Details of the image uploaded.
 pirsImage :: Lens' PutImageResponse (Maybe Image)

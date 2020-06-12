@@ -42,22 +42,19 @@ module Network.AWS.Batch.UpdateJobQueue
     ) where
 
 import Network.AWS.Batch.Types
-import Network.AWS.Batch.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 
 -- | /See:/ 'updateJobQueue' smart constructor.
-data UpdateJobQueue =
-  UpdateJobQueue'
-    { _ujqState                   :: !(Maybe JQState)
-    , _ujqPriority                :: !(Maybe Int)
-    , _ujqComputeEnvironmentOrder :: !(Maybe [ComputeEnvironmentOrder])
-    , _ujqJobQueue                :: !Text
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data UpdateJobQueue = UpdateJobQueue'{_ujqState ::
+                                      !(Maybe JQState),
+                                      _ujqPriority :: !(Maybe Int),
+                                      _ujqComputeEnvironmentOrder ::
+                                      !(Maybe [ComputeEnvironmentOrder]),
+                                      _ujqJobQueue :: !Text}
+                        deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'UpdateJobQueue' with the minimum fields required to make a request.
 --
@@ -73,14 +70,11 @@ data UpdateJobQueue =
 updateJobQueue
     :: Text -- ^ 'ujqJobQueue'
     -> UpdateJobQueue
-updateJobQueue pJobQueue_ =
-  UpdateJobQueue'
-    { _ujqState = Nothing
-    , _ujqPriority = Nothing
-    , _ujqComputeEnvironmentOrder = Nothing
-    , _ujqJobQueue = pJobQueue_
-    }
-
+updateJobQueue pJobQueue_
+  = UpdateJobQueue'{_ujqState = Nothing,
+                    _ujqPriority = Nothing,
+                    _ujqComputeEnvironmentOrder = Nothing,
+                    _ujqJobQueue = pJobQueue_}
 
 -- | Describes the queue's ability to accept new jobs.
 ujqState :: Lens' UpdateJobQueue (Maybe JQState)
@@ -136,14 +130,14 @@ instance ToQuery UpdateJobQueue where
         toQuery = const mempty
 
 -- | /See:/ 'updateJobQueueResponse' smart constructor.
-data UpdateJobQueueResponse =
-  UpdateJobQueueResponse'
-    { _ujqrsJobQueueARN    :: !(Maybe Text)
-    , _ujqrsJobQueueName   :: !(Maybe Text)
-    , _ujqrsResponseStatus :: !Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data UpdateJobQueueResponse = UpdateJobQueueResponse'{_ujqrsJobQueueARN
+                                                      :: !(Maybe Text),
+                                                      _ujqrsJobQueueName ::
+                                                      !(Maybe Text),
+                                                      _ujqrsResponseStatus ::
+                                                      !Int}
+                                deriving (Eq, Read, Show, Data, Typeable,
+                                          Generic)
 
 -- | Creates a value of 'UpdateJobQueueResponse' with the minimum fields required to make a request.
 --
@@ -157,13 +151,11 @@ data UpdateJobQueueResponse =
 updateJobQueueResponse
     :: Int -- ^ 'ujqrsResponseStatus'
     -> UpdateJobQueueResponse
-updateJobQueueResponse pResponseStatus_ =
-  UpdateJobQueueResponse'
-    { _ujqrsJobQueueARN = Nothing
-    , _ujqrsJobQueueName = Nothing
-    , _ujqrsResponseStatus = pResponseStatus_
-    }
-
+updateJobQueueResponse pResponseStatus_
+  = UpdateJobQueueResponse'{_ujqrsJobQueueARN =
+                              Nothing,
+                            _ujqrsJobQueueName = Nothing,
+                            _ujqrsResponseStatus = pResponseStatus_}
 
 -- | The Amazon Resource Name (ARN) of the job queue.
 ujqrsJobQueueARN :: Lens' UpdateJobQueueResponse (Maybe Text)

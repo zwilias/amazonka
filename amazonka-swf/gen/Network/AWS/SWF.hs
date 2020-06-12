@@ -11,7 +11,7 @@
 -- Stability   : auto-generated
 -- Portability : non-portable (GHC extensions)
 --
--- __Amazon Simple Workflow Service__
+-- __Amazon Simple Workflow Service__ 
 --
 -- The Amazon Simple Workflow Service (Amazon SWF) makes it easy to build applications that use Amazon's cloud to coordinate work across distributed components. In Amazon SWF, a /task/ represents a logical unit of work that is performed by a component of your workflow. Coordinating tasks in a workflow involves managing intertask dependencies, scheduling, and concurrency in accordance with the logical flow of the application.
 --
@@ -63,88 +63,88 @@ module Network.AWS.SWF
     -- ** ListOpenWorkflowExecutions (Paginated)
     , module Network.AWS.SWF.ListOpenWorkflowExecutions
 
-    -- ** RegisterActivityType
+    -- ** RegisterActivityType 
     , module Network.AWS.SWF.RegisterActivityType
 
     -- ** ListActivityTypes (Paginated)
     , module Network.AWS.SWF.ListActivityTypes
 
-    -- ** CountPendingActivityTasks
+    -- ** CountPendingActivityTasks 
     , module Network.AWS.SWF.CountPendingActivityTasks
 
-    -- ** RegisterWorkflowType
+    -- ** RegisterWorkflowType 
     , module Network.AWS.SWF.RegisterWorkflowType
 
     -- ** ListWorkflowTypes (Paginated)
     , module Network.AWS.SWF.ListWorkflowTypes
 
-    -- ** RespondActivityTaskFailed
+    -- ** RespondActivityTaskFailed 
     , module Network.AWS.SWF.RespondActivityTaskFailed
 
-    -- ** CountOpenWorkflowExecutions
+    -- ** CountOpenWorkflowExecutions 
     , module Network.AWS.SWF.CountOpenWorkflowExecutions
 
-    -- ** DescribeWorkflowType
+    -- ** DescribeWorkflowType 
     , module Network.AWS.SWF.DescribeWorkflowType
 
-    -- ** DeprecateWorkflowType
+    -- ** DeprecateWorkflowType 
     , module Network.AWS.SWF.DeprecateWorkflowType
 
-    -- ** RequestCancelWorkflowExecution
+    -- ** RequestCancelWorkflowExecution 
     , module Network.AWS.SWF.RequestCancelWorkflowExecution
 
-    -- ** RegisterDomain
+    -- ** RegisterDomain 
     , module Network.AWS.SWF.RegisterDomain
 
-    -- ** RespondDecisionTaskCompleted
+    -- ** RespondDecisionTaskCompleted 
     , module Network.AWS.SWF.RespondDecisionTaskCompleted
 
-    -- ** PollForActivityTask
+    -- ** PollForActivityTask 
     , module Network.AWS.SWF.PollForActivityTask
 
-    -- ** RespondActivityTaskCompleted
+    -- ** RespondActivityTaskCompleted 
     , module Network.AWS.SWF.RespondActivityTaskCompleted
 
-    -- ** DescribeWorkflowExecution
+    -- ** DescribeWorkflowExecution 
     , module Network.AWS.SWF.DescribeWorkflowExecution
 
-    -- ** SignalWorkflowExecution
+    -- ** SignalWorkflowExecution 
     , module Network.AWS.SWF.SignalWorkflowExecution
 
-    -- ** CountPendingDecisionTasks
+    -- ** CountPendingDecisionTasks 
     , module Network.AWS.SWF.CountPendingDecisionTasks
 
     -- ** ListClosedWorkflowExecutions (Paginated)
     , module Network.AWS.SWF.ListClosedWorkflowExecutions
 
-    -- ** RecordActivityTaskHeartbeat
+    -- ** RecordActivityTaskHeartbeat 
     , module Network.AWS.SWF.RecordActivityTaskHeartbeat
 
-    -- ** DescribeDomain
+    -- ** DescribeDomain 
     , module Network.AWS.SWF.DescribeDomain
 
     -- ** GetWorkflowExecutionHistory (Paginated)
     , module Network.AWS.SWF.GetWorkflowExecutionHistory
 
-    -- ** DeprecateDomain
+    -- ** DeprecateDomain 
     , module Network.AWS.SWF.DeprecateDomain
 
-    -- ** TerminateWorkflowExecution
+    -- ** TerminateWorkflowExecution 
     , module Network.AWS.SWF.TerminateWorkflowExecution
 
-    -- ** DescribeActivityType
+    -- ** DescribeActivityType 
     , module Network.AWS.SWF.DescribeActivityType
 
-    -- ** DeprecateActivityType
+    -- ** DeprecateActivityType 
     , module Network.AWS.SWF.DeprecateActivityType
 
-    -- ** CountClosedWorkflowExecutions
+    -- ** CountClosedWorkflowExecutions 
     , module Network.AWS.SWF.CountClosedWorkflowExecutions
 
-    -- ** RespondActivityTaskCanceled
+    -- ** RespondActivityTaskCanceled 
     , module Network.AWS.SWF.RespondActivityTaskCanceled
 
-    -- ** StartWorkflowExecution
+    -- ** StartWorkflowExecution 
     , module Network.AWS.SWF.StartWorkflowExecution
 
     -- ** PollForDecisionTask (Paginated)

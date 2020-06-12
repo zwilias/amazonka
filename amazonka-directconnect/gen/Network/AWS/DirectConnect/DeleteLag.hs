@@ -53,19 +53,14 @@ module Network.AWS.DirectConnect.DeleteLag
     ) where
 
 import Network.AWS.DirectConnect.Types
-import Network.AWS.DirectConnect.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 
 -- | /See:/ 'deleteLag' smart constructor.
-newtype DeleteLag =
-  DeleteLag'
-    { _dLagId :: Text
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+newtype DeleteLag = DeleteLag'{_dLagId :: Text}
+                      deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'DeleteLag' with the minimum fields required to make a request.
 --
@@ -75,8 +70,7 @@ newtype DeleteLag =
 deleteLag
     :: Text -- ^ 'dLagId'
     -> DeleteLag
-deleteLag pLagId_ = DeleteLag' {_dLagId = pLagId_}
-
+deleteLag pLagId_ = DeleteLag'{_dLagId = pLagId_}
 
 -- | The ID of the LAG.
 dLagId :: Lens' DeleteLag Text

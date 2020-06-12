@@ -46,22 +46,18 @@ module Network.AWS.EC2.ImportKeyPair
     ) where
 
 import Network.AWS.EC2.Types
-import Network.AWS.EC2.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 
 -- | /See:/ 'importKeyPair' smart constructor.
-data ImportKeyPair =
-  ImportKeyPair'
-    { _ikpTagSpecifications :: !(Maybe [TagSpecification])
-    , _ikpDryRun            :: !(Maybe Bool)
-    , _ikpKeyName           :: !Text
-    , _ikpPublicKeyMaterial :: !Base64
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data ImportKeyPair = ImportKeyPair'{_ikpTagSpecifications
+                                    :: !(Maybe [TagSpecification]),
+                                    _ikpDryRun :: !(Maybe Bool),
+                                    _ikpKeyName :: !Text,
+                                    _ikpPublicKeyMaterial :: !Base64}
+                       deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'ImportKeyPair' with the minimum fields required to make a request.
 --
@@ -78,14 +74,11 @@ importKeyPair
     :: Text -- ^ 'ikpKeyName'
     -> ByteString -- ^ 'ikpPublicKeyMaterial'
     -> ImportKeyPair
-importKeyPair pKeyName_ pPublicKeyMaterial_ =
-  ImportKeyPair'
-    { _ikpTagSpecifications = Nothing
-    , _ikpDryRun = Nothing
-    , _ikpKeyName = pKeyName_
-    , _ikpPublicKeyMaterial = _Base64 # pPublicKeyMaterial_
-    }
-
+importKeyPair pKeyName_ pPublicKeyMaterial_
+  = ImportKeyPair'{_ikpTagSpecifications = Nothing,
+                   _ikpDryRun = Nothing, _ikpKeyName = pKeyName_,
+                   _ikpPublicKeyMaterial =
+                     _Base64 # pPublicKeyMaterial_}
 
 -- | The tags to apply to the imported key pair.
 ikpTagSpecifications :: Lens' ImportKeyPair [TagSpecification]
@@ -139,16 +132,18 @@ instance ToQuery ImportKeyPair where
                "PublicKeyMaterial" =: _ikpPublicKeyMaterial]
 
 -- | /See:/ 'importKeyPairResponse' smart constructor.
-data ImportKeyPairResponse =
-  ImportKeyPairResponse'
-    { _ikprsKeyFingerprint :: !(Maybe Text)
-    , _ikprsKeyName        :: !(Maybe Text)
-    , _ikprsKeyPairId      :: !(Maybe Text)
-    , _ikprsTags           :: !(Maybe [Tag])
-    , _ikprsResponseStatus :: !Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data ImportKeyPairResponse = ImportKeyPairResponse'{_ikprsKeyFingerprint
+                                                    :: !(Maybe Text),
+                                                    _ikprsKeyName ::
+                                                    !(Maybe Text),
+                                                    _ikprsKeyPairId ::
+                                                    !(Maybe Text),
+                                                    _ikprsTags ::
+                                                    !(Maybe [Tag]),
+                                                    _ikprsResponseStatus ::
+                                                    !Int}
+                               deriving (Eq, Read, Show, Data, Typeable,
+                                         Generic)
 
 -- | Creates a value of 'ImportKeyPairResponse' with the minimum fields required to make a request.
 --
@@ -166,15 +161,12 @@ data ImportKeyPairResponse =
 importKeyPairResponse
     :: Int -- ^ 'ikprsResponseStatus'
     -> ImportKeyPairResponse
-importKeyPairResponse pResponseStatus_ =
-  ImportKeyPairResponse'
-    { _ikprsKeyFingerprint = Nothing
-    , _ikprsKeyName = Nothing
-    , _ikprsKeyPairId = Nothing
-    , _ikprsTags = Nothing
-    , _ikprsResponseStatus = pResponseStatus_
-    }
-
+importKeyPairResponse pResponseStatus_
+  = ImportKeyPairResponse'{_ikprsKeyFingerprint =
+                             Nothing,
+                           _ikprsKeyName = Nothing, _ikprsKeyPairId = Nothing,
+                           _ikprsTags = Nothing,
+                           _ikprsResponseStatus = pResponseStatus_}
 
 -- | The MD5 public key fingerprint as specified in section 4 of RFC 4716.
 ikprsKeyFingerprint :: Lens' ImportKeyPairResponse (Maybe Text)

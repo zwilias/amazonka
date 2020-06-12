@@ -52,199 +52,199 @@ module Network.AWS.Pinpoint
     -- * Operations
     -- $operations
 
-    -- ** GetGCMChannel
+    -- ** GetGCMChannel 
     , module Network.AWS.Pinpoint.GetGCMChannel
 
-    -- ** GetSegmentImportJobs
+    -- ** GetSegmentImportJobs 
     , module Network.AWS.Pinpoint.GetSegmentImportJobs
 
-    -- ** SendMessages
+    -- ** SendMessages 
     , module Network.AWS.Pinpoint.SendMessages
 
-    -- ** GetImportJob
+    -- ** GetImportJob 
     , module Network.AWS.Pinpoint.GetImportJob
 
-    -- ** GetAPNSVoipSandboxChannel
+    -- ** GetAPNSVoipSandboxChannel 
     , module Network.AWS.Pinpoint.GetAPNSVoipSandboxChannel
 
-    -- ** GetSegmentVersions
+    -- ** GetSegmentVersions 
     , module Network.AWS.Pinpoint.GetSegmentVersions
 
-    -- ** DeleteCampaign
+    -- ** DeleteCampaign 
     , module Network.AWS.Pinpoint.DeleteCampaign
 
-    -- ** UpdateCampaign
+    -- ** UpdateCampaign 
     , module Network.AWS.Pinpoint.UpdateCampaign
 
-    -- ** GetSegmentVersion
+    -- ** GetSegmentVersion 
     , module Network.AWS.Pinpoint.GetSegmentVersion
 
-    -- ** CreateExportJob
+    -- ** CreateExportJob 
     , module Network.AWS.Pinpoint.CreateExportJob
 
-    -- ** CreateSegment
+    -- ** CreateSegment 
     , module Network.AWS.Pinpoint.CreateSegment
 
-    -- ** UpdateADMChannel
+    -- ** UpdateADMChannel 
     , module Network.AWS.Pinpoint.UpdateADMChannel
 
-    -- ** DeleteADMChannel
+    -- ** DeleteADMChannel 
     , module Network.AWS.Pinpoint.DeleteADMChannel
 
-    -- ** DeleteEndpoint
+    -- ** DeleteEndpoint 
     , module Network.AWS.Pinpoint.DeleteEndpoint
 
-    -- ** UpdateEndpoint
+    -- ** UpdateEndpoint 
     , module Network.AWS.Pinpoint.UpdateEndpoint
 
-    -- ** CreateCampaign
+    -- ** CreateCampaign 
     , module Network.AWS.Pinpoint.CreateCampaign
 
-    -- ** GetExportJob
+    -- ** GetExportJob 
     , module Network.AWS.Pinpoint.GetExportJob
 
-    -- ** GetEndpoint
+    -- ** GetEndpoint 
     , module Network.AWS.Pinpoint.GetEndpoint
 
-    -- ** GetSegment
+    -- ** GetSegment 
     , module Network.AWS.Pinpoint.GetSegment
 
-    -- ** UpdateEndpointsBatch
+    -- ** UpdateEndpointsBatch 
     , module Network.AWS.Pinpoint.UpdateEndpointsBatch
 
-    -- ** GetADMChannel
+    -- ** GetADMChannel 
     , module Network.AWS.Pinpoint.GetADMChannel
 
-    -- ** GetCampaign
+    -- ** GetCampaign 
     , module Network.AWS.Pinpoint.GetCampaign
 
-    -- ** DeleteApp
+    -- ** DeleteApp 
     , module Network.AWS.Pinpoint.DeleteApp
 
-    -- ** UpdateAPNSVoipSandboxChannel
+    -- ** UpdateAPNSVoipSandboxChannel 
     , module Network.AWS.Pinpoint.UpdateAPNSVoipSandboxChannel
 
-    -- ** DeleteAPNSVoipSandboxChannel
+    -- ** DeleteAPNSVoipSandboxChannel 
     , module Network.AWS.Pinpoint.DeleteAPNSVoipSandboxChannel
 
-    -- ** UpdateGCMChannel
+    -- ** UpdateGCMChannel 
     , module Network.AWS.Pinpoint.UpdateGCMChannel
 
-    -- ** DeleteGCMChannel
+    -- ** DeleteGCMChannel 
     , module Network.AWS.Pinpoint.DeleteGCMChannel
 
-    -- ** GetCampaignActivities
+    -- ** GetCampaignActivities 
     , module Network.AWS.Pinpoint.GetCampaignActivities
 
-    -- ** GetEventStream
+    -- ** GetEventStream 
     , module Network.AWS.Pinpoint.GetEventStream
 
-    -- ** DeleteEmailChannel
+    -- ** DeleteEmailChannel 
     , module Network.AWS.Pinpoint.DeleteEmailChannel
 
-    -- ** UpdateEmailChannel
+    -- ** UpdateEmailChannel 
     , module Network.AWS.Pinpoint.UpdateEmailChannel
 
-    -- ** GetBaiduChannel
+    -- ** GetBaiduChannel 
     , module Network.AWS.Pinpoint.GetBaiduChannel
 
-    -- ** DeleteAPNSChannel
+    -- ** DeleteAPNSChannel 
     , module Network.AWS.Pinpoint.DeleteAPNSChannel
 
-    -- ** UpdateAPNSChannel
+    -- ** UpdateAPNSChannel 
     , module Network.AWS.Pinpoint.UpdateAPNSChannel
 
-    -- ** PutEventStream
+    -- ** PutEventStream 
     , module Network.AWS.Pinpoint.PutEventStream
 
-    -- ** DeleteEventStream
+    -- ** DeleteEventStream 
     , module Network.AWS.Pinpoint.DeleteEventStream
 
-    -- ** GetCampaignVersions
+    -- ** GetCampaignVersions 
     , module Network.AWS.Pinpoint.GetCampaignVersions
 
-    -- ** GetAPNSChannel
+    -- ** GetAPNSChannel 
     , module Network.AWS.Pinpoint.GetAPNSChannel
 
-    -- ** GetApps
+    -- ** GetApps 
     , module Network.AWS.Pinpoint.GetApps
 
-    -- ** GetAPNSSandboxChannel
+    -- ** GetAPNSSandboxChannel 
     , module Network.AWS.Pinpoint.GetAPNSSandboxChannel
 
-    -- ** GetImportJobs
+    -- ** GetImportJobs 
     , module Network.AWS.Pinpoint.GetImportJobs
 
-    -- ** DeleteSmsChannel
+    -- ** DeleteSmsChannel 
     , module Network.AWS.Pinpoint.DeleteSmsChannel
 
-    -- ** UpdateSmsChannel
+    -- ** UpdateSmsChannel 
     , module Network.AWS.Pinpoint.UpdateSmsChannel
 
-    -- ** GetApp
+    -- ** GetApp 
     , module Network.AWS.Pinpoint.GetApp
 
-    -- ** GetCampaignVersion
+    -- ** GetCampaignVersion 
     , module Network.AWS.Pinpoint.GetCampaignVersion
 
-    -- ** DeleteSegment
+    -- ** DeleteSegment 
     , module Network.AWS.Pinpoint.DeleteSegment
 
-    -- ** UpdateSegment
+    -- ** UpdateSegment 
     , module Network.AWS.Pinpoint.UpdateSegment
 
-    -- ** CreateApp
+    -- ** CreateApp 
     , module Network.AWS.Pinpoint.CreateApp
 
-    -- ** GetSegmentExportJobs
+    -- ** GetSegmentExportJobs 
     , module Network.AWS.Pinpoint.GetSegmentExportJobs
 
-    -- ** GetSmsChannel
+    -- ** GetSmsChannel 
     , module Network.AWS.Pinpoint.GetSmsChannel
 
-    -- ** DeleteAPNSSandboxChannel
+    -- ** DeleteAPNSSandboxChannel 
     , module Network.AWS.Pinpoint.DeleteAPNSSandboxChannel
 
-    -- ** UpdateAPNSSandboxChannel
+    -- ** UpdateAPNSSandboxChannel 
     , module Network.AWS.Pinpoint.UpdateAPNSSandboxChannel
 
-    -- ** GetCampaigns
+    -- ** GetCampaigns 
     , module Network.AWS.Pinpoint.GetCampaigns
 
-    -- ** UpdateApplicationSettings
+    -- ** UpdateApplicationSettings 
     , module Network.AWS.Pinpoint.UpdateApplicationSettings
 
-    -- ** GetSegments
+    -- ** GetSegments 
     , module Network.AWS.Pinpoint.GetSegments
 
-    -- ** GetExportJobs
+    -- ** GetExportJobs 
     , module Network.AWS.Pinpoint.GetExportJobs
 
-    -- ** CreateImportJob
+    -- ** CreateImportJob 
     , module Network.AWS.Pinpoint.CreateImportJob
 
-    -- ** DeleteAPNSVoipChannel
+    -- ** DeleteAPNSVoipChannel 
     , module Network.AWS.Pinpoint.DeleteAPNSVoipChannel
 
-    -- ** UpdateAPNSVoipChannel
+    -- ** UpdateAPNSVoipChannel 
     , module Network.AWS.Pinpoint.UpdateAPNSVoipChannel
 
-    -- ** SendUsersMessages
+    -- ** SendUsersMessages 
     , module Network.AWS.Pinpoint.SendUsersMessages
 
-    -- ** GetApplicationSettings
+    -- ** GetApplicationSettings 
     , module Network.AWS.Pinpoint.GetApplicationSettings
 
-    -- ** DeleteBaiduChannel
+    -- ** DeleteBaiduChannel 
     , module Network.AWS.Pinpoint.DeleteBaiduChannel
 
-    -- ** UpdateBaiduChannel
+    -- ** UpdateBaiduChannel 
     , module Network.AWS.Pinpoint.UpdateBaiduChannel
 
-    -- ** GetAPNSVoipChannel
+    -- ** GetAPNSVoipChannel 
     , module Network.AWS.Pinpoint.GetAPNSVoipChannel
 
-    -- ** GetEmailChannel
+    -- ** GetEmailChannel 
     , module Network.AWS.Pinpoint.GetEmailChannel
 
     -- * Types
@@ -1198,9 +1198,9 @@ import Network.AWS.Pinpoint.GetApps
 import Network.AWS.Pinpoint.GetBaiduChannel
 import Network.AWS.Pinpoint.GetCampaign
 import Network.AWS.Pinpoint.GetCampaignActivities
-import Network.AWS.Pinpoint.GetCampaigns
 import Network.AWS.Pinpoint.GetCampaignVersion
 import Network.AWS.Pinpoint.GetCampaignVersions
+import Network.AWS.Pinpoint.GetCampaigns
 import Network.AWS.Pinpoint.GetEmailChannel
 import Network.AWS.Pinpoint.GetEndpoint
 import Network.AWS.Pinpoint.GetEventStream
@@ -1212,9 +1212,9 @@ import Network.AWS.Pinpoint.GetImportJobs
 import Network.AWS.Pinpoint.GetSegment
 import Network.AWS.Pinpoint.GetSegmentExportJobs
 import Network.AWS.Pinpoint.GetSegmentImportJobs
-import Network.AWS.Pinpoint.GetSegments
 import Network.AWS.Pinpoint.GetSegmentVersion
 import Network.AWS.Pinpoint.GetSegmentVersions
+import Network.AWS.Pinpoint.GetSegments
 import Network.AWS.Pinpoint.GetSmsChannel
 import Network.AWS.Pinpoint.PutEventStream
 import Network.AWS.Pinpoint.SendMessages

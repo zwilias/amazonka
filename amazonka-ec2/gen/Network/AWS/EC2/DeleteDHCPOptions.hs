@@ -36,20 +36,16 @@ module Network.AWS.EC2.DeleteDHCPOptions
     ) where
 
 import Network.AWS.EC2.Types
-import Network.AWS.EC2.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 
 -- | /See:/ 'deleteDHCPOptions' smart constructor.
-data DeleteDHCPOptions =
-  DeleteDHCPOptions'
-    { _ddhcpoDryRun        :: !(Maybe Bool)
-    , _ddhcpoDHCPOptionsId :: !Text
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data DeleteDHCPOptions = DeleteDHCPOptions'{_ddhcpoDryRun
+                                            :: !(Maybe Bool),
+                                            _ddhcpoDHCPOptionsId :: !Text}
+                           deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'DeleteDHCPOptions' with the minimum fields required to make a request.
 --
@@ -61,10 +57,9 @@ data DeleteDHCPOptions =
 deleteDHCPOptions
     :: Text -- ^ 'ddhcpoDHCPOptionsId'
     -> DeleteDHCPOptions
-deleteDHCPOptions pDHCPOptionsId_ =
-  DeleteDHCPOptions'
-    {_ddhcpoDryRun = Nothing, _ddhcpoDHCPOptionsId = pDHCPOptionsId_}
-
+deleteDHCPOptions pDHCPOptionsId_
+  = DeleteDHCPOptions'{_ddhcpoDryRun = Nothing,
+                       _ddhcpoDHCPOptionsId = pDHCPOptionsId_}
 
 -- | Checks whether you have the required permissions for the action, without actually making the request, and provides an error response. If you have the required permissions, the error response is @DryRunOperation@ . Otherwise, it is @UnauthorizedOperation@ .
 ddhcpoDryRun :: Lens' DeleteDHCPOptions (Maybe Bool)
@@ -98,16 +93,15 @@ instance ToQuery DeleteDHCPOptions where
                "DhcpOptionsId" =: _ddhcpoDHCPOptionsId]
 
 -- | /See:/ 'deleteDHCPOptionsResponse' smart constructor.
-data DeleteDHCPOptionsResponse =
-  DeleteDHCPOptionsResponse'
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data DeleteDHCPOptionsResponse = DeleteDHCPOptionsResponse'
+                                   deriving (Eq, Read, Show, Data, Typeable,
+                                             Generic)
 
 -- | Creates a value of 'DeleteDHCPOptionsResponse' with the minimum fields required to make a request.
 --
 deleteDHCPOptionsResponse
     :: DeleteDHCPOptionsResponse
-deleteDHCPOptionsResponse = DeleteDHCPOptionsResponse'
-
+deleteDHCPOptionsResponse
+  = DeleteDHCPOptionsResponse'
 
 instance NFData DeleteDHCPOptionsResponse where

@@ -46,20 +46,16 @@ import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 import Network.AWS.SES.Types
-import Network.AWS.SES.Types.Product
 
 -- | Represents a request to delete a receipt rule. You use receipt rules to receive email with Amazon SES. For more information, see the <http://docs.aws.amazon.com/ses/latest/DeveloperGuide/receiving-email-concepts.html Amazon SES Developer Guide> .
 --
 --
 --
 -- /See:/ 'deleteReceiptRule' smart constructor.
-data DeleteReceiptRule =
-  DeleteReceiptRule'
-    { _delRuleSetName :: !Text
-    , _delRuleName    :: !Text
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data DeleteReceiptRule = DeleteReceiptRule'{_delRuleSetName
+                                            :: !Text,
+                                            _delRuleName :: !Text}
+                           deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'DeleteReceiptRule' with the minimum fields required to make a request.
 --
@@ -72,10 +68,9 @@ deleteReceiptRule
     :: Text -- ^ 'delRuleSetName'
     -> Text -- ^ 'delRuleName'
     -> DeleteReceiptRule
-deleteReceiptRule pRuleSetName_ pRuleName_ =
-  DeleteReceiptRule'
-    {_delRuleSetName = pRuleSetName_, _delRuleName = pRuleName_}
-
+deleteReceiptRule pRuleSetName_ pRuleName_
+  = DeleteReceiptRule'{_delRuleSetName = pRuleSetName_,
+                       _delRuleName = pRuleName_}
 
 -- | The name of the receipt rule set that contains the receipt rule to delete.
 delRuleSetName :: Lens' DeleteReceiptRule Text
@@ -116,12 +111,10 @@ instance ToQuery DeleteReceiptRule where
 --
 --
 -- /See:/ 'deleteReceiptRuleResponse' smart constructor.
-newtype DeleteReceiptRuleResponse =
-  DeleteReceiptRuleResponse'
-    { _delrsResponseStatus :: Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+newtype DeleteReceiptRuleResponse = DeleteReceiptRuleResponse'{_delrsResponseStatus
+                                                               :: Int}
+                                      deriving (Eq, Read, Show, Data, Typeable,
+                                                Generic)
 
 -- | Creates a value of 'DeleteReceiptRuleResponse' with the minimum fields required to make a request.
 --
@@ -131,9 +124,9 @@ newtype DeleteReceiptRuleResponse =
 deleteReceiptRuleResponse
     :: Int -- ^ 'delrsResponseStatus'
     -> DeleteReceiptRuleResponse
-deleteReceiptRuleResponse pResponseStatus_ =
-  DeleteReceiptRuleResponse' {_delrsResponseStatus = pResponseStatus_}
-
+deleteReceiptRuleResponse pResponseStatus_
+  = DeleteReceiptRuleResponse'{_delrsResponseStatus =
+                                 pResponseStatus_}
 
 -- | -- | The response status code.
 delrsResponseStatus :: Lens' DeleteReceiptRuleResponse Int

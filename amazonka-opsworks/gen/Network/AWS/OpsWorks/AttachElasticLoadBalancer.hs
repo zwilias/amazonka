@@ -39,19 +39,17 @@ module Network.AWS.OpsWorks.AttachElasticLoadBalancer
 
 import Network.AWS.Lens
 import Network.AWS.OpsWorks.Types
-import Network.AWS.OpsWorks.Types.Product
 import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 
 -- | /See:/ 'attachElasticLoadBalancer' smart constructor.
-data AttachElasticLoadBalancer =
-  AttachElasticLoadBalancer'
-    { _aelbElasticLoadBalancerName :: !Text
-    , _aelbLayerId                 :: !Text
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data AttachElasticLoadBalancer = AttachElasticLoadBalancer'{_aelbElasticLoadBalancerName
+                                                            :: !Text,
+                                                            _aelbLayerId ::
+                                                            !Text}
+                                   deriving (Eq, Read, Show, Data, Typeable,
+                                             Generic)
 
 -- | Creates a value of 'AttachElasticLoadBalancer' with the minimum fields required to make a request.
 --
@@ -64,12 +62,11 @@ attachElasticLoadBalancer
     :: Text -- ^ 'aelbElasticLoadBalancerName'
     -> Text -- ^ 'aelbLayerId'
     -> AttachElasticLoadBalancer
-attachElasticLoadBalancer pElasticLoadBalancerName_ pLayerId_ =
-  AttachElasticLoadBalancer'
-    { _aelbElasticLoadBalancerName = pElasticLoadBalancerName_
-    , _aelbLayerId = pLayerId_
-    }
-
+attachElasticLoadBalancer pElasticLoadBalancerName_
+  pLayerId_
+  = AttachElasticLoadBalancer'{_aelbElasticLoadBalancerName
+                                 = pElasticLoadBalancerName_,
+                               _aelbLayerId = pLayerId_}
 
 -- | The Elastic Load Balancing instance's name.
 aelbElasticLoadBalancerName :: Lens' AttachElasticLoadBalancer Text
@@ -116,17 +113,16 @@ instance ToQuery AttachElasticLoadBalancer where
         toQuery = const mempty
 
 -- | /See:/ 'attachElasticLoadBalancerResponse' smart constructor.
-data AttachElasticLoadBalancerResponse =
-  AttachElasticLoadBalancerResponse'
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data AttachElasticLoadBalancerResponse = AttachElasticLoadBalancerResponse'
+                                           deriving (Eq, Read, Show, Data,
+                                                     Typeable, Generic)
 
 -- | Creates a value of 'AttachElasticLoadBalancerResponse' with the minimum fields required to make a request.
 --
 attachElasticLoadBalancerResponse
     :: AttachElasticLoadBalancerResponse
-attachElasticLoadBalancerResponse = AttachElasticLoadBalancerResponse'
-
+attachElasticLoadBalancerResponse
+  = AttachElasticLoadBalancerResponse'
 
 instance NFData AttachElasticLoadBalancerResponse
          where

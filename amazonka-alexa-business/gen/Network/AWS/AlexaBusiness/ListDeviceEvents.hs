@@ -18,7 +18,7 @@
 -- Stability   : auto-generated
 -- Portability : non-portable (GHC extensions)
 --
--- Lists the Device Event history for up to 30 days. If EventType isn't specified in the request, this returns a list of all device events in reverse chronological order. If EventType is specified, this returns a list of device events for that EventType in reverse chronological order.
+-- Lists the Device Event history for up to 30 days. If EventType isn't specified in the request, this returns a list of all device events in reverse chronological order. If EventType is specified, this returns a list of device events for that EventType in reverse chronological order. 
 --
 --
 module Network.AWS.AlexaBusiness.ListDeviceEvents
@@ -42,22 +42,19 @@ module Network.AWS.AlexaBusiness.ListDeviceEvents
     ) where
 
 import Network.AWS.AlexaBusiness.Types
-import Network.AWS.AlexaBusiness.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 
 -- | /See:/ 'listDeviceEvents' smart constructor.
-data ListDeviceEvents =
-  ListDeviceEvents'
-    { _ldeNextToken  :: !(Maybe Text)
-    , _ldeEventType  :: !(Maybe DeviceEventType)
-    , _ldeMaxResults :: !(Maybe Nat)
-    , _ldeDeviceARN  :: !Text
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data ListDeviceEvents = ListDeviceEvents'{_ldeNextToken
+                                          :: !(Maybe Text),
+                                          _ldeEventType ::
+                                          !(Maybe DeviceEventType),
+                                          _ldeMaxResults :: !(Maybe Nat),
+                                          _ldeDeviceARN :: !Text}
+                          deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'ListDeviceEvents' with the minimum fields required to make a request.
 --
@@ -67,20 +64,16 @@ data ListDeviceEvents =
 --
 -- * 'ldeEventType' - The event type to filter device events.
 --
--- * 'ldeMaxResults' - The maximum number of results to include in the response. If more results exist than the specified MaxResults value, a token is included in the response so that the remaining results can be retrieved. Required.
+-- * 'ldeMaxResults' - The maximum number of results to include in the response. If more results exist than the specified MaxResults value, a token is included in the response so that the remaining results can be retrieved. Required. 
 --
 -- * 'ldeDeviceARN' - The ARN of a device.
 listDeviceEvents
     :: Text -- ^ 'ldeDeviceARN'
     -> ListDeviceEvents
-listDeviceEvents pDeviceARN_ =
-  ListDeviceEvents'
-    { _ldeNextToken = Nothing
-    , _ldeEventType = Nothing
-    , _ldeMaxResults = Nothing
-    , _ldeDeviceARN = pDeviceARN_
-    }
-
+listDeviceEvents pDeviceARN_
+  = ListDeviceEvents'{_ldeNextToken = Nothing,
+                      _ldeEventType = Nothing, _ldeMaxResults = Nothing,
+                      _ldeDeviceARN = pDeviceARN_}
 
 -- | An optional token returned from a prior request. Use this token for pagination of results from this action. If this parameter is specified, the response only includes results beyond the token, up to the value specified by MaxResults.
 ldeNextToken :: Lens' ListDeviceEvents (Maybe Text)
@@ -90,7 +83,7 @@ ldeNextToken = lens _ldeNextToken (\ s a -> s{_ldeNextToken = a})
 ldeEventType :: Lens' ListDeviceEvents (Maybe DeviceEventType)
 ldeEventType = lens _ldeEventType (\ s a -> s{_ldeEventType = a})
 
--- | The maximum number of results to include in the response. If more results exist than the specified MaxResults value, a token is included in the response so that the remaining results can be retrieved. Required.
+-- | The maximum number of results to include in the response. If more results exist than the specified MaxResults value, a token is included in the response so that the remaining results can be retrieved. Required. 
 ldeMaxResults :: Lens' ListDeviceEvents (Maybe Natural)
 ldeMaxResults = lens _ldeMaxResults (\ s a -> s{_ldeMaxResults = a}) . mapping _Nat
 
@@ -138,40 +131,39 @@ instance ToQuery ListDeviceEvents where
         toQuery = const mempty
 
 -- | /See:/ 'listDeviceEventsResponse' smart constructor.
-data ListDeviceEventsResponse =
-  ListDeviceEventsResponse'
-    { _ldersNextToken      :: !(Maybe Text)
-    , _ldersDeviceEvents   :: !(Maybe [DeviceEvent])
-    , _ldersResponseStatus :: !Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data ListDeviceEventsResponse = ListDeviceEventsResponse'{_ldersNextToken
+                                                          :: !(Maybe Text),
+                                                          _ldersDeviceEvents ::
+                                                          !(Maybe
+                                                              [DeviceEvent]),
+                                                          _ldersResponseStatus
+                                                          :: !Int}
+                                  deriving (Eq, Read, Show, Data, Typeable,
+                                            Generic)
 
 -- | Creates a value of 'ListDeviceEventsResponse' with the minimum fields required to make a request.
 --
 -- Use one of the following lenses to modify other fields as desired:
 --
--- * 'ldersNextToken' -
+-- * 'ldersNextToken' - 
 --
--- * 'ldersDeviceEvents' -
+-- * 'ldersDeviceEvents' - 
 --
 -- * 'ldersResponseStatus' - -- | The response status code.
 listDeviceEventsResponse
     :: Int -- ^ 'ldersResponseStatus'
     -> ListDeviceEventsResponse
-listDeviceEventsResponse pResponseStatus_ =
-  ListDeviceEventsResponse'
-    { _ldersNextToken = Nothing
-    , _ldersDeviceEvents = Nothing
-    , _ldersResponseStatus = pResponseStatus_
-    }
+listDeviceEventsResponse pResponseStatus_
+  = ListDeviceEventsResponse'{_ldersNextToken =
+                                Nothing,
+                              _ldersDeviceEvents = Nothing,
+                              _ldersResponseStatus = pResponseStatus_}
 
-
--- |
+-- | 
 ldersNextToken :: Lens' ListDeviceEventsResponse (Maybe Text)
 ldersNextToken = lens _ldersNextToken (\ s a -> s{_ldersNextToken = a})
 
--- |
+-- | 
 ldersDeviceEvents :: Lens' ListDeviceEventsResponse [DeviceEvent]
 ldersDeviceEvents = lens _ldersDeviceEvents (\ s a -> s{_ldersDeviceEvents = a}) . _Default . _Coerce
 

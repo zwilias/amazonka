@@ -38,18 +38,13 @@ module Network.AWS.OpsWorks.StopStack
 
 import Network.AWS.Lens
 import Network.AWS.OpsWorks.Types
-import Network.AWS.OpsWorks.Types.Product
 import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 
 -- | /See:/ 'stopStack' smart constructor.
-newtype StopStack =
-  StopStack'
-    { _stoStackId :: Text
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+newtype StopStack = StopStack'{_stoStackId :: Text}
+                      deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'StopStack' with the minimum fields required to make a request.
 --
@@ -59,8 +54,8 @@ newtype StopStack =
 stopStack
     :: Text -- ^ 'stoStackId'
     -> StopStack
-stopStack pStackId_ = StopStack' {_stoStackId = pStackId_}
-
+stopStack pStackId_
+  = StopStack'{_stoStackId = pStackId_}
 
 -- | The stack ID.
 stoStackId :: Lens' StopStack Text
@@ -96,16 +91,13 @@ instance ToQuery StopStack where
         toQuery = const mempty
 
 -- | /See:/ 'stopStackResponse' smart constructor.
-data StopStackResponse =
-  StopStackResponse'
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data StopStackResponse = StopStackResponse'
+                           deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'StopStackResponse' with the minimum fields required to make a request.
 --
 stopStackResponse
     :: StopStackResponse
 stopStackResponse = StopStackResponse'
-
 
 instance NFData StopStackResponse where

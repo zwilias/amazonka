@@ -44,22 +44,28 @@ module Network.AWS.EC2.AssociateClientVPNTargetNetwork
     ) where
 
 import Network.AWS.EC2.Types
-import Network.AWS.EC2.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 
 -- | /See:/ 'associateClientVPNTargetNetwork' smart constructor.
-data AssociateClientVPNTargetNetwork =
-  AssociateClientVPNTargetNetwork'
-    { _acvtnClientToken         :: !(Maybe Text)
-    , _acvtnDryRun              :: !(Maybe Bool)
-    , _acvtnClientVPNEndpointId :: !Text
-    , _acvtnSubnetId            :: !Text
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data AssociateClientVPNTargetNetwork = AssociateClientVPNTargetNetwork'{_acvtnClientToken
+                                                                        ::
+                                                                        !(Maybe
+                                                                            Text),
+                                                                        _acvtnDryRun
+                                                                        ::
+                                                                        !(Maybe
+                                                                            Bool),
+                                                                        _acvtnClientVPNEndpointId
+                                                                        ::
+                                                                        !Text,
+                                                                        _acvtnSubnetId
+                                                                        ::
+                                                                        !Text}
+                                         deriving (Eq, Read, Show, Data,
+                                                   Typeable, Generic)
 
 -- | Creates a value of 'AssociateClientVPNTargetNetwork' with the minimum fields required to make a request.
 --
@@ -76,14 +82,14 @@ associateClientVPNTargetNetwork
     :: Text -- ^ 'acvtnClientVPNEndpointId'
     -> Text -- ^ 'acvtnSubnetId'
     -> AssociateClientVPNTargetNetwork
-associateClientVPNTargetNetwork pClientVPNEndpointId_ pSubnetId_ =
-  AssociateClientVPNTargetNetwork'
-    { _acvtnClientToken = Nothing
-    , _acvtnDryRun = Nothing
-    , _acvtnClientVPNEndpointId = pClientVPNEndpointId_
-    , _acvtnSubnetId = pSubnetId_
-    }
-
+associateClientVPNTargetNetwork pClientVPNEndpointId_
+  pSubnetId_
+  = AssociateClientVPNTargetNetwork'{_acvtnClientToken
+                                       = Nothing,
+                                     _acvtnDryRun = Nothing,
+                                     _acvtnClientVPNEndpointId =
+                                       pClientVPNEndpointId_,
+                                     _acvtnSubnetId = pSubnetId_}
 
 -- | Unique, case-sensitive identifier that you provide to ensure the idempotency of the request. For more information, see <https://docs.aws.amazon.com/AWSEC2/latest/APIReference/Run_Instance_Idempotency.html How to Ensure Idempotency> .
 acvtnClientToken :: Lens' AssociateClientVPNTargetNetwork (Maybe Text)
@@ -138,14 +144,19 @@ instance ToQuery AssociateClientVPNTargetNetwork
                "SubnetId" =: _acvtnSubnetId]
 
 -- | /See:/ 'associateClientVPNTargetNetworkResponse' smart constructor.
-data AssociateClientVPNTargetNetworkResponse =
-  AssociateClientVPNTargetNetworkResponse'
-    { _acvtnrsAssociationId  :: !(Maybe Text)
-    , _acvtnrsStatus         :: !(Maybe AssociationStatus)
-    , _acvtnrsResponseStatus :: !Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data AssociateClientVPNTargetNetworkResponse = AssociateClientVPNTargetNetworkResponse'{_acvtnrsAssociationId
+                                                                                        ::
+                                                                                        !(Maybe
+                                                                                            Text),
+                                                                                        _acvtnrsStatus
+                                                                                        ::
+                                                                                        !(Maybe
+                                                                                            AssociationStatus),
+                                                                                        _acvtnrsResponseStatus
+                                                                                        ::
+                                                                                        !Int}
+                                                 deriving (Eq, Read, Show, Data,
+                                                           Typeable, Generic)
 
 -- | Creates a value of 'AssociateClientVPNTargetNetworkResponse' with the minimum fields required to make a request.
 --
@@ -159,13 +170,13 @@ data AssociateClientVPNTargetNetworkResponse =
 associateClientVPNTargetNetworkResponse
     :: Int -- ^ 'acvtnrsResponseStatus'
     -> AssociateClientVPNTargetNetworkResponse
-associateClientVPNTargetNetworkResponse pResponseStatus_ =
-  AssociateClientVPNTargetNetworkResponse'
-    { _acvtnrsAssociationId = Nothing
-    , _acvtnrsStatus = Nothing
-    , _acvtnrsResponseStatus = pResponseStatus_
-    }
-
+associateClientVPNTargetNetworkResponse
+  pResponseStatus_
+  = AssociateClientVPNTargetNetworkResponse'{_acvtnrsAssociationId
+                                               = Nothing,
+                                             _acvtnrsStatus = Nothing,
+                                             _acvtnrsResponseStatus =
+                                               pResponseStatus_}
 
 -- | The unique ID of the target network association.
 acvtnrsAssociationId :: Lens' AssociateClientVPNTargetNetworkResponse (Maybe Text)

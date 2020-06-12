@@ -47,18 +47,14 @@ import Network.AWS.Pager
 import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.ResourceGroups.Types
-import Network.AWS.ResourceGroups.Types.Product
 import Network.AWS.Response
 
 -- | /See:/ 'searchResources' smart constructor.
-data SearchResources =
-  SearchResources'
-    { _srNextToken     :: !(Maybe Text)
-    , _srMaxResults    :: !(Maybe Nat)
-    , _srResourceQuery :: !ResourceQuery
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data SearchResources = SearchResources'{_srNextToken
+                                        :: !(Maybe Text),
+                                        _srMaxResults :: !(Maybe Nat),
+                                        _srResourceQuery :: !ResourceQuery}
+                         deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'SearchResources' with the minimum fields required to make a request.
 --
@@ -72,13 +68,10 @@ data SearchResources =
 searchResources
     :: ResourceQuery -- ^ 'srResourceQuery'
     -> SearchResources
-searchResources pResourceQuery_ =
-  SearchResources'
-    { _srNextToken = Nothing
-    , _srMaxResults = Nothing
-    , _srResourceQuery = pResourceQuery_
-    }
-
+searchResources pResourceQuery_
+  = SearchResources'{_srNextToken = Nothing,
+                     _srMaxResults = Nothing,
+                     _srResourceQuery = pResourceQuery_}
 
 -- | The NextToken value that is returned in a paginated @SearchResources@ request. To get the next page of results, run the call again, add the NextToken parameter, and specify the NextToken value.
 srNextToken :: Lens' SearchResources (Maybe Text)
@@ -132,14 +125,16 @@ instance ToQuery SearchResources where
         toQuery = const mempty
 
 -- | /See:/ 'searchResourcesResponse' smart constructor.
-data SearchResourcesResponse =
-  SearchResourcesResponse'
-    { _srrsNextToken           :: !(Maybe Text)
-    , _srrsResourceIdentifiers :: !(Maybe [ResourceIdentifier])
-    , _srrsResponseStatus      :: !Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data SearchResourcesResponse = SearchResourcesResponse'{_srrsNextToken
+                                                        :: !(Maybe Text),
+                                                        _srrsResourceIdentifiers
+                                                        ::
+                                                        !(Maybe
+                                                            [ResourceIdentifier]),
+                                                        _srrsResponseStatus ::
+                                                        !Int}
+                                 deriving (Eq, Read, Show, Data, Typeable,
+                                           Generic)
 
 -- | Creates a value of 'SearchResourcesResponse' with the minimum fields required to make a request.
 --
@@ -153,13 +148,10 @@ data SearchResourcesResponse =
 searchResourcesResponse
     :: Int -- ^ 'srrsResponseStatus'
     -> SearchResourcesResponse
-searchResourcesResponse pResponseStatus_ =
-  SearchResourcesResponse'
-    { _srrsNextToken = Nothing
-    , _srrsResourceIdentifiers = Nothing
-    , _srrsResponseStatus = pResponseStatus_
-    }
-
+searchResourcesResponse pResponseStatus_
+  = SearchResourcesResponse'{_srrsNextToken = Nothing,
+                             _srrsResourceIdentifiers = Nothing,
+                             _srrsResponseStatus = pResponseStatus_}
 
 -- | The NextToken value to include in a subsequent @SearchResources@ request, to get more results.
 srrsNextToken :: Lens' SearchResourcesResponse (Maybe Text)

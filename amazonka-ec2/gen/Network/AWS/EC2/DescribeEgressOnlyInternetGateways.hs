@@ -45,7 +45,6 @@ module Network.AWS.EC2.DescribeEgressOnlyInternetGateways
     ) where
 
 import Network.AWS.EC2.Types
-import Network.AWS.EC2.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Pager
 import Network.AWS.Prelude
@@ -53,16 +52,28 @@ import Network.AWS.Request
 import Network.AWS.Response
 
 -- | /See:/ 'describeEgressOnlyInternetGateways' smart constructor.
-data DescribeEgressOnlyInternetGateways =
-  DescribeEgressOnlyInternetGateways'
-    { _deoigEgressOnlyInternetGatewayIds :: !(Maybe [Text])
-    , _deoigFilters                      :: !(Maybe [Filter])
-    , _deoigNextToken                    :: !(Maybe Text)
-    , _deoigDryRun                       :: !(Maybe Bool)
-    , _deoigMaxResults                   :: !(Maybe Nat)
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data DescribeEgressOnlyInternetGateways = DescribeEgressOnlyInternetGateways'{_deoigEgressOnlyInternetGatewayIds
+                                                                              ::
+                                                                              !(Maybe
+                                                                                  [Text]),
+                                                                              _deoigFilters
+                                                                              ::
+                                                                              !(Maybe
+                                                                                  [Filter]),
+                                                                              _deoigNextToken
+                                                                              ::
+                                                                              !(Maybe
+                                                                                  Text),
+                                                                              _deoigDryRun
+                                                                              ::
+                                                                              !(Maybe
+                                                                                  Bool),
+                                                                              _deoigMaxResults
+                                                                              ::
+                                                                              !(Maybe
+                                                                                  Nat)}
+                                            deriving (Eq, Read, Show, Data,
+                                                      Typeable, Generic)
 
 -- | Creates a value of 'DescribeEgressOnlyInternetGateways' with the minimum fields required to make a request.
 --
@@ -79,15 +90,13 @@ data DescribeEgressOnlyInternetGateways =
 -- * 'deoigMaxResults' - The maximum number of results to return with a single call. To retrieve the remaining results, make another call with the returned @nextToken@ value.
 describeEgressOnlyInternetGateways
     :: DescribeEgressOnlyInternetGateways
-describeEgressOnlyInternetGateways =
-  DescribeEgressOnlyInternetGateways'
-    { _deoigEgressOnlyInternetGatewayIds = Nothing
-    , _deoigFilters = Nothing
-    , _deoigNextToken = Nothing
-    , _deoigDryRun = Nothing
-    , _deoigMaxResults = Nothing
-    }
-
+describeEgressOnlyInternetGateways
+  = DescribeEgressOnlyInternetGateways'{_deoigEgressOnlyInternetGatewayIds
+                                          = Nothing,
+                                        _deoigFilters = Nothing,
+                                        _deoigNextToken = Nothing,
+                                        _deoigDryRun = Nothing,
+                                        _deoigMaxResults = Nothing}
 
 -- | One or more egress-only internet gateway IDs.
 deoigEgressOnlyInternetGatewayIds :: Lens' DescribeEgressOnlyInternetGateways [Text]
@@ -163,14 +172,20 @@ instance ToQuery DescribeEgressOnlyInternetGateways
                "MaxResults" =: _deoigMaxResults]
 
 -- | /See:/ 'describeEgressOnlyInternetGatewaysResponse' smart constructor.
-data DescribeEgressOnlyInternetGatewaysResponse =
-  DescribeEgressOnlyInternetGatewaysResponse'
-    { _deoigrsEgressOnlyInternetGateways :: !(Maybe [EgressOnlyInternetGateway])
-    , _deoigrsNextToken                  :: !(Maybe Text)
-    , _deoigrsResponseStatus             :: !Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data DescribeEgressOnlyInternetGatewaysResponse = DescribeEgressOnlyInternetGatewaysResponse'{_deoigrsEgressOnlyInternetGateways
+                                                                                              ::
+                                                                                              !(Maybe
+                                                                                                  [EgressOnlyInternetGateway]),
+                                                                                              _deoigrsNextToken
+                                                                                              ::
+                                                                                              !(Maybe
+                                                                                                  Text),
+                                                                                              _deoigrsResponseStatus
+                                                                                              ::
+                                                                                              !Int}
+                                                    deriving (Eq, Read, Show,
+                                                              Data, Typeable,
+                                                              Generic)
 
 -- | Creates a value of 'DescribeEgressOnlyInternetGatewaysResponse' with the minimum fields required to make a request.
 --
@@ -184,13 +199,13 @@ data DescribeEgressOnlyInternetGatewaysResponse =
 describeEgressOnlyInternetGatewaysResponse
     :: Int -- ^ 'deoigrsResponseStatus'
     -> DescribeEgressOnlyInternetGatewaysResponse
-describeEgressOnlyInternetGatewaysResponse pResponseStatus_ =
-  DescribeEgressOnlyInternetGatewaysResponse'
-    { _deoigrsEgressOnlyInternetGateways = Nothing
-    , _deoigrsNextToken = Nothing
-    , _deoigrsResponseStatus = pResponseStatus_
-    }
-
+describeEgressOnlyInternetGatewaysResponse
+  pResponseStatus_
+  = DescribeEgressOnlyInternetGatewaysResponse'{_deoigrsEgressOnlyInternetGateways
+                                                  = Nothing,
+                                                _deoigrsNextToken = Nothing,
+                                                _deoigrsResponseStatus =
+                                                  pResponseStatus_}
 
 -- | Information about the egress-only internet gateways.
 deoigrsEgressOnlyInternetGateways :: Lens' DescribeEgressOnlyInternetGatewaysResponse [EgressOnlyInternetGateway]

@@ -42,21 +42,26 @@ module Network.AWS.DirectConnect.DeleteDirectConnectGatewayAssociation
     ) where
 
 import Network.AWS.DirectConnect.Types
-import Network.AWS.DirectConnect.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 
 -- | /See:/ 'deleteDirectConnectGatewayAssociation' smart constructor.
-data DeleteDirectConnectGatewayAssociation =
-  DeleteDirectConnectGatewayAssociation'
-    { _delVirtualGatewayId       :: !(Maybe Text)
-    , _delAssociationId          :: !(Maybe Text)
-    , _delDirectConnectGatewayId :: !(Maybe Text)
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data DeleteDirectConnectGatewayAssociation = DeleteDirectConnectGatewayAssociation'{_delVirtualGatewayId
+                                                                                    ::
+                                                                                    !(Maybe
+                                                                                        Text),
+                                                                                    _delAssociationId
+                                                                                    ::
+                                                                                    !(Maybe
+                                                                                        Text),
+                                                                                    _delDirectConnectGatewayId
+                                                                                    ::
+                                                                                    !(Maybe
+                                                                                        Text)}
+                                               deriving (Eq, Read, Show, Data,
+                                                         Typeable, Generic)
 
 -- | Creates a value of 'DeleteDirectConnectGatewayAssociation' with the minimum fields required to make a request.
 --
@@ -69,13 +74,11 @@ data DeleteDirectConnectGatewayAssociation =
 -- * 'delDirectConnectGatewayId' - The ID of the Direct Connect gateway.
 deleteDirectConnectGatewayAssociation
     :: DeleteDirectConnectGatewayAssociation
-deleteDirectConnectGatewayAssociation =
-  DeleteDirectConnectGatewayAssociation'
-    { _delVirtualGatewayId = Nothing
-    , _delAssociationId = Nothing
-    , _delDirectConnectGatewayId = Nothing
-    }
-
+deleteDirectConnectGatewayAssociation
+  = DeleteDirectConnectGatewayAssociation'{_delVirtualGatewayId
+                                             = Nothing,
+                                           _delAssociationId = Nothing,
+                                           _delDirectConnectGatewayId = Nothing}
 
 -- | The ID of the virtual private gateway.
 delVirtualGatewayId :: Lens' DeleteDirectConnectGatewayAssociation (Maybe Text)
@@ -141,13 +144,16 @@ instance ToQuery
         toQuery = const mempty
 
 -- | /See:/ 'deleteDirectConnectGatewayAssociationResponse' smart constructor.
-data DeleteDirectConnectGatewayAssociationResponse =
-  DeleteDirectConnectGatewayAssociationResponse'
-    { _delrsDirectConnectGatewayAssociation :: !(Maybe DirectConnectGatewayAssociation)
-    , _delrsResponseStatus :: !Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data DeleteDirectConnectGatewayAssociationResponse = DeleteDirectConnectGatewayAssociationResponse'{_delrsDirectConnectGatewayAssociation
+                                                                                                    ::
+                                                                                                    !(Maybe
+                                                                                                        DirectConnectGatewayAssociation),
+                                                                                                    _delrsResponseStatus
+                                                                                                    ::
+                                                                                                    !Int}
+                                                       deriving (Eq, Read, Show,
+                                                                 Data, Typeable,
+                                                                 Generic)
 
 -- | Creates a value of 'DeleteDirectConnectGatewayAssociationResponse' with the minimum fields required to make a request.
 --
@@ -159,12 +165,12 @@ data DeleteDirectConnectGatewayAssociationResponse =
 deleteDirectConnectGatewayAssociationResponse
     :: Int -- ^ 'delrsResponseStatus'
     -> DeleteDirectConnectGatewayAssociationResponse
-deleteDirectConnectGatewayAssociationResponse pResponseStatus_ =
-  DeleteDirectConnectGatewayAssociationResponse'
-    { _delrsDirectConnectGatewayAssociation = Nothing
-    , _delrsResponseStatus = pResponseStatus_
-    }
-
+deleteDirectConnectGatewayAssociationResponse
+  pResponseStatus_
+  = DeleteDirectConnectGatewayAssociationResponse'{_delrsDirectConnectGatewayAssociation
+                                                     = Nothing,
+                                                   _delrsResponseStatus =
+                                                     pResponseStatus_}
 
 -- | Information about the deleted association.
 delrsDirectConnectGatewayAssociation :: Lens' DeleteDirectConnectGatewayAssociationResponse (Maybe DirectConnectGatewayAssociation)

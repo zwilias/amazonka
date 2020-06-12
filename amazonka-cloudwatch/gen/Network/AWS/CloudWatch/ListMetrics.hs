@@ -48,7 +48,6 @@ module Network.AWS.CloudWatch.ListMetrics
     ) where
 
 import Network.AWS.CloudWatch.Types
-import Network.AWS.CloudWatch.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Pager
 import Network.AWS.Prelude
@@ -56,15 +55,12 @@ import Network.AWS.Request
 import Network.AWS.Response
 
 -- | /See:/ 'listMetrics' smart constructor.
-data ListMetrics =
-  ListMetrics'
-    { _lmMetricName :: !(Maybe Text)
-    , _lmNamespace  :: !(Maybe Text)
-    , _lmNextToken  :: !(Maybe Text)
-    , _lmDimensions :: !(Maybe [DimensionFilter])
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data ListMetrics = ListMetrics'{_lmMetricName ::
+                                !(Maybe Text),
+                                _lmNamespace :: !(Maybe Text),
+                                _lmNextToken :: !(Maybe Text),
+                                _lmDimensions :: !(Maybe [DimensionFilter])}
+                     deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'ListMetrics' with the minimum fields required to make a request.
 --
@@ -79,14 +75,10 @@ data ListMetrics =
 -- * 'lmDimensions' - The dimensions to filter against.
 listMetrics
     :: ListMetrics
-listMetrics =
-  ListMetrics'
-    { _lmMetricName = Nothing
-    , _lmNamespace = Nothing
-    , _lmNextToken = Nothing
-    , _lmDimensions = Nothing
-    }
-
+listMetrics
+  = ListMetrics'{_lmMetricName = Nothing,
+                 _lmNamespace = Nothing, _lmNextToken = Nothing,
+                 _lmDimensions = Nothing}
 
 -- | The name of the metric to filter against.
 lmMetricName :: Lens' ListMetrics (Maybe Text)
@@ -145,14 +137,11 @@ instance ToQuery ListMetrics where
                  toQuery (toQueryList "member" <$> _lmDimensions)]
 
 -- | /See:/ 'listMetricsResponse' smart constructor.
-data ListMetricsResponse =
-  ListMetricsResponse'
-    { _lmrsMetrics        :: !(Maybe [Metric])
-    , _lmrsNextToken      :: !(Maybe Text)
-    , _lmrsResponseStatus :: !Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data ListMetricsResponse = ListMetricsResponse'{_lmrsMetrics
+                                                :: !(Maybe [Metric]),
+                                                _lmrsNextToken :: !(Maybe Text),
+                                                _lmrsResponseStatus :: !Int}
+                             deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'ListMetricsResponse' with the minimum fields required to make a request.
 --
@@ -166,13 +155,10 @@ data ListMetricsResponse =
 listMetricsResponse
     :: Int -- ^ 'lmrsResponseStatus'
     -> ListMetricsResponse
-listMetricsResponse pResponseStatus_ =
-  ListMetricsResponse'
-    { _lmrsMetrics = Nothing
-    , _lmrsNextToken = Nothing
-    , _lmrsResponseStatus = pResponseStatus_
-    }
-
+listMetricsResponse pResponseStatus_
+  = ListMetricsResponse'{_lmrsMetrics = Nothing,
+                         _lmrsNextToken = Nothing,
+                         _lmrsResponseStatus = pResponseStatus_}
 
 -- | The metrics.
 lmrsMetrics :: Lens' ListMetricsResponse [Metric]

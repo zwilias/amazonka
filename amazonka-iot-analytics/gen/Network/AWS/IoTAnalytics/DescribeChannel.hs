@@ -38,19 +38,15 @@ module Network.AWS.IoTAnalytics.DescribeChannel
     ) where
 
 import Network.AWS.IoTAnalytics.Types
-import Network.AWS.IoTAnalytics.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 
 -- | /See:/ 'describeChannel' smart constructor.
-newtype DescribeChannel =
-  DescribeChannel'
-    { _dChannelName :: Text
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+newtype DescribeChannel = DescribeChannel'{_dChannelName
+                                           :: Text}
+                            deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'DescribeChannel' with the minimum fields required to make a request.
 --
@@ -60,8 +56,8 @@ newtype DescribeChannel =
 describeChannel
     :: Text -- ^ 'dChannelName'
     -> DescribeChannel
-describeChannel pChannelName_ = DescribeChannel' {_dChannelName = pChannelName_}
-
+describeChannel pChannelName_
+  = DescribeChannel'{_dChannelName = pChannelName_}
 
 -- | The name of the channel whose information is retrieved.
 dChannelName :: Lens' DescribeChannel Text
@@ -91,13 +87,12 @@ instance ToQuery DescribeChannel where
         toQuery = const mempty
 
 -- | /See:/ 'describeChannelResponse' smart constructor.
-data DescribeChannelResponse =
-  DescribeChannelResponse'
-    { _dcrsChannel        :: !(Maybe Channel)
-    , _dcrsResponseStatus :: !Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data DescribeChannelResponse = DescribeChannelResponse'{_dcrsChannel
+                                                        :: !(Maybe Channel),
+                                                        _dcrsResponseStatus ::
+                                                        !Int}
+                                 deriving (Eq, Read, Show, Data, Typeable,
+                                           Generic)
 
 -- | Creates a value of 'DescribeChannelResponse' with the minimum fields required to make a request.
 --
@@ -109,10 +104,9 @@ data DescribeChannelResponse =
 describeChannelResponse
     :: Int -- ^ 'dcrsResponseStatus'
     -> DescribeChannelResponse
-describeChannelResponse pResponseStatus_ =
-  DescribeChannelResponse'
-    {_dcrsChannel = Nothing, _dcrsResponseStatus = pResponseStatus_}
-
+describeChannelResponse pResponseStatus_
+  = DescribeChannelResponse'{_dcrsChannel = Nothing,
+                             _dcrsResponseStatus = pResponseStatus_}
 
 -- | An object that contains information about the channel.
 dcrsChannel :: Lens' DescribeChannelResponse (Maybe Channel)

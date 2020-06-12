@@ -42,23 +42,19 @@ module Network.AWS.Glue.StartJobRun
     ) where
 
 import Network.AWS.Glue.Types
-import Network.AWS.Glue.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 
 -- | /See:/ 'startJobRun' smart constructor.
-data StartJobRun =
-  StartJobRun'
-    { _sjrArguments         :: !(Maybe (Map Text Text))
-    , _sjrAllocatedCapacity :: !(Maybe Int)
-    , _sjrTimeout           :: !(Maybe Nat)
-    , _sjrJobRunId          :: !(Maybe Text)
-    , _sjrJobName           :: !Text
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data StartJobRun = StartJobRun'{_sjrArguments ::
+                                !(Maybe (Map Text Text)),
+                                _sjrAllocatedCapacity :: !(Maybe Int),
+                                _sjrTimeout :: !(Maybe Nat),
+                                _sjrJobRunId :: !(Maybe Text),
+                                _sjrJobName :: !Text}
+                     deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'StartJobRun' with the minimum fields required to make a request.
 --
@@ -76,15 +72,11 @@ data StartJobRun =
 startJobRun
     :: Text -- ^ 'sjrJobName'
     -> StartJobRun
-startJobRun pJobName_ =
-  StartJobRun'
-    { _sjrArguments = Nothing
-    , _sjrAllocatedCapacity = Nothing
-    , _sjrTimeout = Nothing
-    , _sjrJobRunId = Nothing
-    , _sjrJobName = pJobName_
-    }
-
+startJobRun pJobName_
+  = StartJobRun'{_sjrArguments = Nothing,
+                 _sjrAllocatedCapacity = Nothing,
+                 _sjrTimeout = Nothing, _sjrJobRunId = Nothing,
+                 _sjrJobName = pJobName_}
 
 -- | The job arguments specifically for this run. They override the equivalent default arguments set for in the job definition itself. You can specify arguments here that your own job-execution script consumes, as well as arguments that AWS Glue itself consumes. For information about how to specify and consume your own Job arguments, see the <http://docs.aws.amazon.com/glue/latest/dg/aws-glue-programming-python-calling.html Calling AWS Glue APIs in Python> topic in the developer guide. For information about the key-value pairs that AWS Glue consumes to set up your job, see the <http://docs.aws.amazon.com/glue/latest/dg/aws-glue-programming-etl-glue-arguments.html Special Parameters Used by AWS Glue> topic in the developer guide.
 sjrArguments :: Lens' StartJobRun (HashMap Text Text)
@@ -145,13 +137,10 @@ instance ToQuery StartJobRun where
         toQuery = const mempty
 
 -- | /See:/ 'startJobRunResponse' smart constructor.
-data StartJobRunResponse =
-  StartJobRunResponse'
-    { _sjrrsJobRunId       :: !(Maybe Text)
-    , _sjrrsResponseStatus :: !Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data StartJobRunResponse = StartJobRunResponse'{_sjrrsJobRunId
+                                                :: !(Maybe Text),
+                                                _sjrrsResponseStatus :: !Int}
+                             deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'StartJobRunResponse' with the minimum fields required to make a request.
 --
@@ -163,10 +152,9 @@ data StartJobRunResponse =
 startJobRunResponse
     :: Int -- ^ 'sjrrsResponseStatus'
     -> StartJobRunResponse
-startJobRunResponse pResponseStatus_ =
-  StartJobRunResponse'
-    {_sjrrsJobRunId = Nothing, _sjrrsResponseStatus = pResponseStatus_}
-
+startJobRunResponse pResponseStatus_
+  = StartJobRunResponse'{_sjrrsJobRunId = Nothing,
+                         _sjrrsResponseStatus = pResponseStatus_}
 
 -- | The ID assigned to this job run.
 sjrrsJobRunId :: Lens' StartJobRunResponse (Maybe Text)

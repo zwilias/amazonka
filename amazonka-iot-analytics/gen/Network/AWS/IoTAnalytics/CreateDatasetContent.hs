@@ -35,19 +35,16 @@ module Network.AWS.IoTAnalytics.CreateDatasetContent
     ) where
 
 import Network.AWS.IoTAnalytics.Types
-import Network.AWS.IoTAnalytics.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 
 -- | /See:/ 'createDatasetContent' smart constructor.
-newtype CreateDatasetContent =
-  CreateDatasetContent'
-    { _cdcDatasetName :: Text
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+newtype CreateDatasetContent = CreateDatasetContent'{_cdcDatasetName
+                                                     :: Text}
+                                 deriving (Eq, Read, Show, Data, Typeable,
+                                           Generic)
 
 -- | Creates a value of 'CreateDatasetContent' with the minimum fields required to make a request.
 --
@@ -57,9 +54,9 @@ newtype CreateDatasetContent =
 createDatasetContent
     :: Text -- ^ 'cdcDatasetName'
     -> CreateDatasetContent
-createDatasetContent pDatasetName_ =
-  CreateDatasetContent' {_cdcDatasetName = pDatasetName_}
-
+createDatasetContent pDatasetName_
+  = CreateDatasetContent'{_cdcDatasetName =
+                            pDatasetName_}
 
 -- | The name of the data set.
 cdcDatasetName :: Lens' CreateDatasetContent Text
@@ -90,16 +87,15 @@ instance ToQuery CreateDatasetContent where
         toQuery = const mempty
 
 -- | /See:/ 'createDatasetContentResponse' smart constructor.
-data CreateDatasetContentResponse =
-  CreateDatasetContentResponse'
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data CreateDatasetContentResponse = CreateDatasetContentResponse'
+                                      deriving (Eq, Read, Show, Data, Typeable,
+                                                Generic)
 
 -- | Creates a value of 'CreateDatasetContentResponse' with the minimum fields required to make a request.
 --
 createDatasetContentResponse
     :: CreateDatasetContentResponse
-createDatasetContentResponse = CreateDatasetContentResponse'
-
+createDatasetContentResponse
+  = CreateDatasetContentResponse'
 
 instance NFData CreateDatasetContentResponse where

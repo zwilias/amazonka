@@ -39,20 +39,21 @@ module Network.AWS.Greengrass.UpdateGroupCertificateConfiguration
     ) where
 
 import Network.AWS.Greengrass.Types
-import Network.AWS.Greengrass.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 
 -- | /See:/ 'updateGroupCertificateConfiguration' smart constructor.
-data UpdateGroupCertificateConfiguration =
-  UpdateGroupCertificateConfiguration'
-    { _ugccCertificateExpiryInMilliseconds :: !(Maybe Text)
-    , _ugccGroupId                         :: !Text
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data UpdateGroupCertificateConfiguration = UpdateGroupCertificateConfiguration'{_ugccCertificateExpiryInMilliseconds
+                                                                                ::
+                                                                                !(Maybe
+                                                                                    Text),
+                                                                                _ugccGroupId
+                                                                                ::
+                                                                                !Text}
+                                             deriving (Eq, Read, Show, Data,
+                                                       Typeable, Generic)
 
 -- | Creates a value of 'UpdateGroupCertificateConfiguration' with the minimum fields required to make a request.
 --
@@ -64,10 +65,10 @@ data UpdateGroupCertificateConfiguration =
 updateGroupCertificateConfiguration
     :: Text -- ^ 'ugccGroupId'
     -> UpdateGroupCertificateConfiguration
-updateGroupCertificateConfiguration pGroupId_ =
-  UpdateGroupCertificateConfiguration'
-    {_ugccCertificateExpiryInMilliseconds = Nothing, _ugccGroupId = pGroupId_}
-
+updateGroupCertificateConfiguration pGroupId_
+  = UpdateGroupCertificateConfiguration'{_ugccCertificateExpiryInMilliseconds
+                                           = Nothing,
+                                         _ugccGroupId = pGroupId_}
 
 -- | The amount of time remaining before the certificate expires, in milliseconds.
 ugccCertificateExpiryInMilliseconds :: Lens' UpdateGroupCertificateConfiguration (Maybe Text)
@@ -127,15 +128,24 @@ instance ToQuery UpdateGroupCertificateConfiguration
         toQuery = const mempty
 
 -- | /See:/ 'updateGroupCertificateConfigurationResponse' smart constructor.
-data UpdateGroupCertificateConfigurationResponse =
-  UpdateGroupCertificateConfigurationResponse'
-    { _ugccrsCertificateAuthorityExpiryInMilliseconds :: !(Maybe Text)
-    , _ugccrsGroupId                                  :: !(Maybe Text)
-    , _ugccrsCertificateExpiryInMilliseconds          :: !(Maybe Text)
-    , _ugccrsResponseStatus                           :: !Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data UpdateGroupCertificateConfigurationResponse = UpdateGroupCertificateConfigurationResponse'{_ugccrsCertificateAuthorityExpiryInMilliseconds
+                                                                                                ::
+                                                                                                !(Maybe
+                                                                                                    Text),
+                                                                                                _ugccrsGroupId
+                                                                                                ::
+                                                                                                !(Maybe
+                                                                                                    Text),
+                                                                                                _ugccrsCertificateExpiryInMilliseconds
+                                                                                                ::
+                                                                                                !(Maybe
+                                                                                                    Text),
+                                                                                                _ugccrsResponseStatus
+                                                                                                ::
+                                                                                                !Int}
+                                                     deriving (Eq, Read, Show,
+                                                               Data, Typeable,
+                                                               Generic)
 
 -- | Creates a value of 'UpdateGroupCertificateConfigurationResponse' with the minimum fields required to make a request.
 --
@@ -151,14 +161,15 @@ data UpdateGroupCertificateConfigurationResponse =
 updateGroupCertificateConfigurationResponse
     :: Int -- ^ 'ugccrsResponseStatus'
     -> UpdateGroupCertificateConfigurationResponse
-updateGroupCertificateConfigurationResponse pResponseStatus_ =
-  UpdateGroupCertificateConfigurationResponse'
-    { _ugccrsCertificateAuthorityExpiryInMilliseconds = Nothing
-    , _ugccrsGroupId = Nothing
-    , _ugccrsCertificateExpiryInMilliseconds = Nothing
-    , _ugccrsResponseStatus = pResponseStatus_
-    }
-
+updateGroupCertificateConfigurationResponse
+  pResponseStatus_
+  = UpdateGroupCertificateConfigurationResponse'{_ugccrsCertificateAuthorityExpiryInMilliseconds
+                                                   = Nothing,
+                                                 _ugccrsGroupId = Nothing,
+                                                 _ugccrsCertificateExpiryInMilliseconds
+                                                   = Nothing,
+                                                 _ugccrsResponseStatus =
+                                                   pResponseStatus_}
 
 -- | The amount of time remaining before the certificate authority expires, in milliseconds.
 ugccrsCertificateAuthorityExpiryInMilliseconds :: Lens' UpdateGroupCertificateConfigurationResponse (Maybe Text)

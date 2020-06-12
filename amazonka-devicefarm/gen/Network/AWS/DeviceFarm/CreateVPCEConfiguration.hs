@@ -41,22 +41,22 @@ module Network.AWS.DeviceFarm.CreateVPCEConfiguration
     ) where
 
 import Network.AWS.DeviceFarm.Types
-import Network.AWS.DeviceFarm.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 
 -- | /See:/ 'createVPCEConfiguration' smart constructor.
-data CreateVPCEConfiguration =
-  CreateVPCEConfiguration'
-    { _cvecVpceConfigurationDescription :: !(Maybe Text)
-    , _cvecVpceConfigurationName        :: !Text
-    , _cvecVpceServiceName              :: !Text
-    , _cvecServiceDNSName               :: !Text
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data CreateVPCEConfiguration = CreateVPCEConfiguration'{_cvecVpceConfigurationDescription
+                                                        :: !(Maybe Text),
+                                                        _cvecVpceConfigurationName
+                                                        :: !Text,
+                                                        _cvecVpceServiceName ::
+                                                        !Text,
+                                                        _cvecServiceDNSName ::
+                                                        !Text}
+                                 deriving (Eq, Read, Show, Data, Typeable,
+                                           Generic)
 
 -- | Creates a value of 'CreateVPCEConfiguration' with the minimum fields required to make a request.
 --
@@ -74,14 +74,14 @@ createVPCEConfiguration
     -> Text -- ^ 'cvecVpceServiceName'
     -> Text -- ^ 'cvecServiceDNSName'
     -> CreateVPCEConfiguration
-createVPCEConfiguration pVpceConfigurationName_ pVpceServiceName_ pServiceDNSName_ =
-  CreateVPCEConfiguration'
-    { _cvecVpceConfigurationDescription = Nothing
-    , _cvecVpceConfigurationName = pVpceConfigurationName_
-    , _cvecVpceServiceName = pVpceServiceName_
-    , _cvecServiceDNSName = pServiceDNSName_
-    }
-
+createVPCEConfiguration pVpceConfigurationName_
+  pVpceServiceName_ pServiceDNSName_
+  = CreateVPCEConfiguration'{_cvecVpceConfigurationDescription
+                               = Nothing,
+                             _cvecVpceConfigurationName =
+                               pVpceConfigurationName_,
+                             _cvecVpceServiceName = pVpceServiceName_,
+                             _cvecServiceDNSName = pServiceDNSName_}
 
 -- | An optional description that provides details about your VPC endpoint configuration.
 cvecVpceConfigurationDescription :: Lens' CreateVPCEConfiguration (Maybe Text)
@@ -142,13 +142,14 @@ instance ToQuery CreateVPCEConfiguration where
         toQuery = const mempty
 
 -- | /See:/ 'createVPCEConfigurationResponse' smart constructor.
-data CreateVPCEConfigurationResponse =
-  CreateVPCEConfigurationResponse'
-    { _cvecrsVpceConfiguration :: !(Maybe VPCEConfiguration)
-    , _cvecrsResponseStatus    :: !Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data CreateVPCEConfigurationResponse = CreateVPCEConfigurationResponse'{_cvecrsVpceConfiguration
+                                                                        ::
+                                                                        !(Maybe
+                                                                            VPCEConfiguration),
+                                                                        _cvecrsResponseStatus
+                                                                        :: !Int}
+                                         deriving (Eq, Read, Show, Data,
+                                                   Typeable, Generic)
 
 -- | Creates a value of 'CreateVPCEConfigurationResponse' with the minimum fields required to make a request.
 --
@@ -160,12 +161,10 @@ data CreateVPCEConfigurationResponse =
 createVPCEConfigurationResponse
     :: Int -- ^ 'cvecrsResponseStatus'
     -> CreateVPCEConfigurationResponse
-createVPCEConfigurationResponse pResponseStatus_ =
-  CreateVPCEConfigurationResponse'
-    { _cvecrsVpceConfiguration = Nothing
-    , _cvecrsResponseStatus = pResponseStatus_
-    }
-
+createVPCEConfigurationResponse pResponseStatus_
+  = CreateVPCEConfigurationResponse'{_cvecrsVpceConfiguration
+                                       = Nothing,
+                                     _cvecrsResponseStatus = pResponseStatus_}
 
 -- | An object that contains information about your VPC endpoint configuration.
 cvecrsVpceConfiguration :: Lens' CreateVPCEConfigurationResponse (Maybe VPCEConfiguration)

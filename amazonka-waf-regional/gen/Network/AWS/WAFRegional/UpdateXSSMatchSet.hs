@@ -29,7 +29,7 @@
 --
 --
 --
--- You use @XssMatchSet@ objects to specify which CloudFront requests you want to allow, block, or count. For example, if you're receiving requests that contain cross-site scripting attacks in the request body and you want to block the requests, you can create an @XssMatchSet@ with the applicable settings, and then configure AWS WAF to block the requests.
+-- You use @XssMatchSet@ objects to specify which CloudFront requests you want to allow, block, or count. For example, if you're receiving requests that contain cross-site scripting attacks in the request body and you want to block the requests, you can create an @XssMatchSet@ with the applicable settings, and then configure AWS WAF to block the requests. 
 --
 -- To create and configure an @XssMatchSet@ , perform the following steps:
 --
@@ -66,21 +66,18 @@ import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 import Network.AWS.WAFRegional.Types
-import Network.AWS.WAFRegional.Types.Product
 
 -- | A request to update an 'XssMatchSet' .
 --
 --
 --
 -- /See:/ 'updateXSSMatchSet' smart constructor.
-data UpdateXSSMatchSet =
-  UpdateXSSMatchSet'
-    { _uxmsXSSMatchSetId :: !Text
-    , _uxmsChangeToken   :: !Text
-    , _uxmsUpdates       :: !(List1 XSSMatchSetUpdate)
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data UpdateXSSMatchSet = UpdateXSSMatchSet'{_uxmsXSSMatchSetId
+                                            :: !Text,
+                                            _uxmsChangeToken :: !Text,
+                                            _uxmsUpdates ::
+                                            !(List1 XSSMatchSetUpdate)}
+                           deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'UpdateXSSMatchSet' with the minimum fields required to make a request.
 --
@@ -90,19 +87,18 @@ data UpdateXSSMatchSet =
 --
 -- * 'uxmsChangeToken' - The value returned by the most recent call to 'GetChangeToken' .
 --
--- * 'uxmsUpdates' - An array of @XssMatchSetUpdate@ objects that you want to insert into or delete from a 'XssMatchSet' . For more information, see the applicable data types:     * 'XssMatchSetUpdate' : Contains @Action@ and @XssMatchTuple@      * 'XssMatchTuple' : Contains @FieldToMatch@ and @TextTransformation@      * 'FieldToMatch' : Contains @Data@ and @Type@
+-- * 'uxmsUpdates' - An array of @XssMatchSetUpdate@ objects that you want to insert into or delete from a 'XssMatchSet' . For more information, see the applicable data types:     * 'XssMatchSetUpdate' : Contains @Action@ and @XssMatchTuple@      * 'XssMatchTuple' : Contains @FieldToMatch@ and @TextTransformation@      * 'FieldToMatch' : Contains @Data@ and @Type@ 
 updateXSSMatchSet
     :: Text -- ^ 'uxmsXSSMatchSetId'
     -> Text -- ^ 'uxmsChangeToken'
     -> NonEmpty XSSMatchSetUpdate -- ^ 'uxmsUpdates'
     -> UpdateXSSMatchSet
-updateXSSMatchSet pXSSMatchSetId_ pChangeToken_ pUpdates_ =
-  UpdateXSSMatchSet'
-    { _uxmsXSSMatchSetId = pXSSMatchSetId_
-    , _uxmsChangeToken = pChangeToken_
-    , _uxmsUpdates = _List1 # pUpdates_
-    }
-
+updateXSSMatchSet pXSSMatchSetId_ pChangeToken_
+  pUpdates_
+  = UpdateXSSMatchSet'{_uxmsXSSMatchSetId =
+                         pXSSMatchSetId_,
+                       _uxmsChangeToken = pChangeToken_,
+                       _uxmsUpdates = _List1 # pUpdates_}
 
 -- | The @XssMatchSetId@ of the @XssMatchSet@ that you want to update. @XssMatchSetId@ is returned by 'CreateXssMatchSet' and by 'ListXssMatchSets' .
 uxmsXSSMatchSetId :: Lens' UpdateXSSMatchSet Text
@@ -112,7 +108,7 @@ uxmsXSSMatchSetId = lens _uxmsXSSMatchSetId (\ s a -> s{_uxmsXSSMatchSetId = a})
 uxmsChangeToken :: Lens' UpdateXSSMatchSet Text
 uxmsChangeToken = lens _uxmsChangeToken (\ s a -> s{_uxmsChangeToken = a})
 
--- | An array of @XssMatchSetUpdate@ objects that you want to insert into or delete from a 'XssMatchSet' . For more information, see the applicable data types:     * 'XssMatchSetUpdate' : Contains @Action@ and @XssMatchTuple@      * 'XssMatchTuple' : Contains @FieldToMatch@ and @TextTransformation@      * 'FieldToMatch' : Contains @Data@ and @Type@
+-- | An array of @XssMatchSetUpdate@ objects that you want to insert into or delete from a 'XssMatchSet' . For more information, see the applicable data types:     * 'XssMatchSetUpdate' : Contains @Action@ and @XssMatchTuple@      * 'XssMatchTuple' : Contains @FieldToMatch@ and @TextTransformation@      * 'FieldToMatch' : Contains @Data@ and @Type@ 
 uxmsUpdates :: Lens' UpdateXSSMatchSet (NonEmpty XSSMatchSetUpdate)
 uxmsUpdates = lens _uxmsUpdates (\ s a -> s{_uxmsUpdates = a}) . _List1
 
@@ -158,13 +154,12 @@ instance ToQuery UpdateXSSMatchSet where
 --
 --
 -- /See:/ 'updateXSSMatchSetResponse' smart constructor.
-data UpdateXSSMatchSetResponse =
-  UpdateXSSMatchSetResponse'
-    { _uxmsrsChangeToken    :: !(Maybe Text)
-    , _uxmsrsResponseStatus :: !Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data UpdateXSSMatchSetResponse = UpdateXSSMatchSetResponse'{_uxmsrsChangeToken
+                                                            :: !(Maybe Text),
+                                                            _uxmsrsResponseStatus
+                                                            :: !Int}
+                                   deriving (Eq, Read, Show, Data, Typeable,
+                                             Generic)
 
 -- | Creates a value of 'UpdateXSSMatchSetResponse' with the minimum fields required to make a request.
 --
@@ -176,10 +171,10 @@ data UpdateXSSMatchSetResponse =
 updateXSSMatchSetResponse
     :: Int -- ^ 'uxmsrsResponseStatus'
     -> UpdateXSSMatchSetResponse
-updateXSSMatchSetResponse pResponseStatus_ =
-  UpdateXSSMatchSetResponse'
-    {_uxmsrsChangeToken = Nothing, _uxmsrsResponseStatus = pResponseStatus_}
-
+updateXSSMatchSetResponse pResponseStatus_
+  = UpdateXSSMatchSetResponse'{_uxmsrsChangeToken =
+                                 Nothing,
+                               _uxmsrsResponseStatus = pResponseStatus_}
 
 -- | The @ChangeToken@ that you used to submit the @UpdateXssMatchSet@ request. You can also use this value to query the status of the request. For more information, see 'GetChangeTokenStatus' .
 uxmsrsChangeToken :: Lens' UpdateXSSMatchSetResponse (Maybe Text)

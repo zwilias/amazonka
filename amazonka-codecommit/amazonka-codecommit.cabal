@@ -124,8 +124,75 @@ library
         , Network.AWS.CodeCommit.Waiters
 
     other-modules:
-          Network.AWS.CodeCommit.Types.Product
-        , Network.AWS.CodeCommit.Types.Sum
+          Network.AWS.CodeCommit.Types.Approval
+        , Network.AWS.CodeCommit.Types.ApprovalRule
+        , Network.AWS.CodeCommit.Types.ApprovalRuleEventMetadata
+        , Network.AWS.CodeCommit.Types.ApprovalRuleOverriddenEventMetadata
+        , Network.AWS.CodeCommit.Types.ApprovalRuleTemplate
+        , Network.AWS.CodeCommit.Types.ApprovalState
+        , Network.AWS.CodeCommit.Types.ApprovalStateChangedEventMetadata
+        , Network.AWS.CodeCommit.Types.BatchAssociateApprovalRuleTemplateWithRepositoriesError
+        , Network.AWS.CodeCommit.Types.BatchDescribeMergeConflictsError
+        , Network.AWS.CodeCommit.Types.BatchDisassociateApprovalRuleTemplateFromRepositoriesError
+        , Network.AWS.CodeCommit.Types.BatchGetCommitsError
+        , Network.AWS.CodeCommit.Types.BlobMetadata
+        , Network.AWS.CodeCommit.Types.BranchInfo
+        , Network.AWS.CodeCommit.Types.ChangeTypeEnum
+        , Network.AWS.CodeCommit.Types.Comment
+        , Network.AWS.CodeCommit.Types.CommentsForComparedCommit
+        , Network.AWS.CodeCommit.Types.CommentsForPullRequest
+        , Network.AWS.CodeCommit.Types.Commit
+        , Network.AWS.CodeCommit.Types.Conflict
+        , Network.AWS.CodeCommit.Types.ConflictDetailLevelTypeEnum
+        , Network.AWS.CodeCommit.Types.ConflictMetadata
+        , Network.AWS.CodeCommit.Types.ConflictResolution
+        , Network.AWS.CodeCommit.Types.ConflictResolutionStrategyTypeEnum
+        , Network.AWS.CodeCommit.Types.DeleteFileEntry
+        , Network.AWS.CodeCommit.Types.Difference
+        , Network.AWS.CodeCommit.Types.Evaluation
+        , Network.AWS.CodeCommit.Types.File
+        , Network.AWS.CodeCommit.Types.FileMetadata
+        , Network.AWS.CodeCommit.Types.FileModeTypeEnum
+        , Network.AWS.CodeCommit.Types.FileModes
+        , Network.AWS.CodeCommit.Types.FileSizes
+        , Network.AWS.CodeCommit.Types.Folder
+        , Network.AWS.CodeCommit.Types.IsBinaryFile
+        , Network.AWS.CodeCommit.Types.Location
+        , Network.AWS.CodeCommit.Types.MergeHunk
+        , Network.AWS.CodeCommit.Types.MergeHunkDetail
+        , Network.AWS.CodeCommit.Types.MergeMetadata
+        , Network.AWS.CodeCommit.Types.MergeOperations
+        , Network.AWS.CodeCommit.Types.MergeOptionTypeEnum
+        , Network.AWS.CodeCommit.Types.ObjectTypeEnum
+        , Network.AWS.CodeCommit.Types.ObjectTypes
+        , Network.AWS.CodeCommit.Types.OrderEnum
+        , Network.AWS.CodeCommit.Types.OriginApprovalRuleTemplate
+        , Network.AWS.CodeCommit.Types.OverrideStatus
+        , Network.AWS.CodeCommit.Types.PullRequest
+        , Network.AWS.CodeCommit.Types.PullRequestCreatedEventMetadata
+        , Network.AWS.CodeCommit.Types.PullRequestEvent
+        , Network.AWS.CodeCommit.Types.PullRequestEventType
+        , Network.AWS.CodeCommit.Types.PullRequestMergedStateChangedEventMetadata
+        , Network.AWS.CodeCommit.Types.PullRequestSourceReferenceUpdatedEventMetadata
+        , Network.AWS.CodeCommit.Types.PullRequestStatusChangedEventMetadata
+        , Network.AWS.CodeCommit.Types.PullRequestStatusEnum
+        , Network.AWS.CodeCommit.Types.PullRequestTarget
+        , Network.AWS.CodeCommit.Types.PutFileEntry
+        , Network.AWS.CodeCommit.Types.RelativeFileVersionEnum
+        , Network.AWS.CodeCommit.Types.ReplaceContentEntry
+        , Network.AWS.CodeCommit.Types.ReplacementTypeEnum
+        , Network.AWS.CodeCommit.Types.RepositoryMetadata
+        , Network.AWS.CodeCommit.Types.RepositoryNameIdPair
+        , Network.AWS.CodeCommit.Types.RepositoryTrigger
+        , Network.AWS.CodeCommit.Types.RepositoryTriggerEventEnum
+        , Network.AWS.CodeCommit.Types.RepositoryTriggerExecutionFailure
+        , Network.AWS.CodeCommit.Types.SetFileModeEntry
+        , Network.AWS.CodeCommit.Types.SortByEnum
+        , Network.AWS.CodeCommit.Types.SourceFileSpecifier
+        , Network.AWS.CodeCommit.Types.SubModule
+        , Network.AWS.CodeCommit.Types.SymbolicLink
+        , Network.AWS.CodeCommit.Types.Target
+        , Network.AWS.CodeCommit.Types.UserInfo
 
     build-depends:
           amazonka-core == 1.6.1.*

@@ -21,9 +21,9 @@
 -- Infers a schema by evaluating sample records on the specified streaming source (Amazon Kinesis stream or Amazon Kinesis Firehose delivery stream) or S3 object. In the response, the operation returns the inferred schema and also the sample records that the operation used to infer the schema.
 --
 --
--- You can use the inferred schema when configuring a streaming source for your application. For conceptual information, see <http://docs.aws.amazon.com/kinesisanalytics/latest/dev/how-it-works-input.html Configuring Application Input> . Note that when you create an application using the Amazon Kinesis Analytics console, the console uses this operation to infer a schema and show it in the console user interface.
+-- You can use the inferred schema when configuring a streaming source for your application. For conceptual information, see <http://docs.aws.amazon.com/kinesisanalytics/latest/dev/how-it-works-input.html Configuring Application Input> . Note that when you create an application using the Amazon Kinesis Analytics console, the console uses this operation to infer a schema and show it in the console user interface. 
 --
--- This operation requires permissions to perform the @kinesisanalytics:DiscoverInputSchema@ action.
+-- This operation requires permissions to perform the @kinesisanalytics:DiscoverInputSchema@ action. 
 --
 module Network.AWS.KinesisAnalytics.DiscoverInputSchema
     (
@@ -49,23 +49,26 @@ module Network.AWS.KinesisAnalytics.DiscoverInputSchema
     ) where
 
 import Network.AWS.KinesisAnalytics.Types
-import Network.AWS.KinesisAnalytics.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 
 -- | /See:/ 'discoverInputSchema' smart constructor.
-data DiscoverInputSchema =
-  DiscoverInputSchema'
-    { _disInputStartingPositionConfiguration :: !(Maybe InputStartingPositionConfiguration)
-    , _disInputProcessingConfiguration :: !(Maybe InputProcessingConfiguration)
-    , _disS3Configuration :: !(Maybe S3Configuration)
-    , _disResourceARN :: !(Maybe Text)
-    , _disRoleARN :: !(Maybe Text)
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data DiscoverInputSchema = DiscoverInputSchema'{_disInputStartingPositionConfiguration
+                                                ::
+                                                !(Maybe
+                                                    InputStartingPositionConfiguration),
+                                                _disInputProcessingConfiguration
+                                                ::
+                                                !(Maybe
+                                                    InputProcessingConfiguration),
+                                                _disS3Configuration ::
+                                                !(Maybe S3Configuration),
+                                                _disResourceARN ::
+                                                !(Maybe Text),
+                                                _disRoleARN :: !(Maybe Text)}
+                             deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'DiscoverInputSchema' with the minimum fields required to make a request.
 --
@@ -82,15 +85,12 @@ data DiscoverInputSchema =
 -- * 'disRoleARN' - ARN of the IAM role that Amazon Kinesis Analytics can assume to access the stream on your behalf.
 discoverInputSchema
     :: DiscoverInputSchema
-discoverInputSchema =
-  DiscoverInputSchema'
-    { _disInputStartingPositionConfiguration = Nothing
-    , _disInputProcessingConfiguration = Nothing
-    , _disS3Configuration = Nothing
-    , _disResourceARN = Nothing
-    , _disRoleARN = Nothing
-    }
-
+discoverInputSchema
+  = DiscoverInputSchema'{_disInputStartingPositionConfiguration
+                           = Nothing,
+                         _disInputProcessingConfiguration = Nothing,
+                         _disS3Configuration = Nothing,
+                         _disResourceARN = Nothing, _disRoleARN = Nothing}
 
 -- | Point at which you want Amazon Kinesis Analytics to start reading records from the specified streaming source discovery purposes.
 disInputStartingPositionConfiguration :: Lens' DiscoverInputSchema (Maybe InputStartingPositionConfiguration)
@@ -158,21 +158,29 @@ instance ToPath DiscoverInputSchema where
 instance ToQuery DiscoverInputSchema where
         toQuery = const mempty
 
--- |
+-- | 
 --
 --
 --
 -- /See:/ 'discoverInputSchemaResponse' smart constructor.
-data DiscoverInputSchemaResponse =
-  DiscoverInputSchemaResponse'
-    { _disrsRawInputRecords       :: !(Maybe [Text])
-    , _disrsInputSchema           :: !(Maybe SourceSchema)
-    , _disrsProcessedInputRecords :: !(Maybe [Text])
-    , _disrsParsedInputRecords    :: !(Maybe [[Text]])
-    , _disrsResponseStatus        :: !Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data DiscoverInputSchemaResponse = DiscoverInputSchemaResponse'{_disrsRawInputRecords
+                                                                ::
+                                                                !(Maybe [Text]),
+                                                                _disrsInputSchema
+                                                                ::
+                                                                !(Maybe
+                                                                    SourceSchema),
+                                                                _disrsProcessedInputRecords
+                                                                ::
+                                                                !(Maybe [Text]),
+                                                                _disrsParsedInputRecords
+                                                                ::
+                                                                !(Maybe
+                                                                    [[Text]]),
+                                                                _disrsResponseStatus
+                                                                :: !Int}
+                                     deriving (Eq, Read, Show, Data, Typeable,
+                                               Generic)
 
 -- | Creates a value of 'DiscoverInputSchemaResponse' with the minimum fields required to make a request.
 --
@@ -190,15 +198,13 @@ data DiscoverInputSchemaResponse =
 discoverInputSchemaResponse
     :: Int -- ^ 'disrsResponseStatus'
     -> DiscoverInputSchemaResponse
-discoverInputSchemaResponse pResponseStatus_ =
-  DiscoverInputSchemaResponse'
-    { _disrsRawInputRecords = Nothing
-    , _disrsInputSchema = Nothing
-    , _disrsProcessedInputRecords = Nothing
-    , _disrsParsedInputRecords = Nothing
-    , _disrsResponseStatus = pResponseStatus_
-    }
-
+discoverInputSchemaResponse pResponseStatus_
+  = DiscoverInputSchemaResponse'{_disrsRawInputRecords
+                                   = Nothing,
+                                 _disrsInputSchema = Nothing,
+                                 _disrsProcessedInputRecords = Nothing,
+                                 _disrsParsedInputRecords = Nothing,
+                                 _disrsResponseStatus = pResponseStatus_}
 
 -- | Raw stream data that was sampled to infer the schema.
 disrsRawInputRecords :: Lens' DiscoverInputSchemaResponse [Text]

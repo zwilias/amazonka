@@ -51,28 +51,29 @@ import Network.AWS.Lens
 import Network.AWS.Pager
 import Network.AWS.Prelude
 import Network.AWS.RDS.Types
-import Network.AWS.RDS.Types.Product
 import Network.AWS.Request
 import Network.AWS.Response
 
--- |
+-- | 
 --
 --
 --
 -- /See:/ 'describeDBSnapshots' smart constructor.
-data DescribeDBSnapshots =
-  DescribeDBSnapshots'
-    { _ddsIncludeShared        :: !(Maybe Bool)
-    , _ddsFilters              :: !(Maybe [Filter])
-    , _ddsDBSnapshotIdentifier :: !(Maybe Text)
-    , _ddsSnapshotType         :: !(Maybe Text)
-    , _ddsDBInstanceIdentifier :: !(Maybe Text)
-    , _ddsMarker               :: !(Maybe Text)
-    , _ddsMaxRecords           :: !(Maybe Int)
-    , _ddsIncludePublic        :: !(Maybe Bool)
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data DescribeDBSnapshots = DescribeDBSnapshots'{_ddsIncludeShared
+                                                :: !(Maybe Bool),
+                                                _ddsFilters ::
+                                                !(Maybe [Filter]),
+                                                _ddsDBSnapshotIdentifier ::
+                                                !(Maybe Text),
+                                                _ddsSnapshotType ::
+                                                !(Maybe Text),
+                                                _ddsDBInstanceIdentifier ::
+                                                !(Maybe Text),
+                                                _ddsMarker :: !(Maybe Text),
+                                                _ddsMaxRecords :: !(Maybe Int),
+                                                _ddsIncludePublic ::
+                                                !(Maybe Bool)}
+                             deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'DescribeDBSnapshots' with the minimum fields required to make a request.
 --
@@ -88,25 +89,21 @@ data DescribeDBSnapshots =
 --
 -- * 'ddsDBInstanceIdentifier' - The ID of the DB instance to retrieve the list of DB snapshots for. This parameter can't be used in conjunction with @DBSnapshotIdentifier@ . This parameter is not case-sensitive.  Constraints:     * If supplied, must match the identifier of an existing DBInstance.
 --
--- * 'ddsMarker' - An optional pagination token provided by a previous @DescribeDBSnapshots@ request. If this parameter is specified, the response includes only records beyond the marker, up to the value specified by @MaxRecords@ .
+-- * 'ddsMarker' - An optional pagination token provided by a previous @DescribeDBSnapshots@ request. If this parameter is specified, the response includes only records beyond the marker, up to the value specified by @MaxRecords@ . 
 --
 -- * 'ddsMaxRecords' - The maximum number of records to include in the response. If more records exist than the specified @MaxRecords@ value, a pagination token called a marker is included in the response so that the remaining results can be retrieved.  Default: 100 Constraints: Minimum 20, maximum 100.
 --
 -- * 'ddsIncludePublic' - True to include manual DB snapshots that are public and can be copied or restored by any AWS account, and otherwise false. The default is false. You can share a manual DB snapshot as public by using the 'ModifyDBSnapshotAttribute' API.
 describeDBSnapshots
     :: DescribeDBSnapshots
-describeDBSnapshots =
-  DescribeDBSnapshots'
-    { _ddsIncludeShared = Nothing
-    , _ddsFilters = Nothing
-    , _ddsDBSnapshotIdentifier = Nothing
-    , _ddsSnapshotType = Nothing
-    , _ddsDBInstanceIdentifier = Nothing
-    , _ddsMarker = Nothing
-    , _ddsMaxRecords = Nothing
-    , _ddsIncludePublic = Nothing
-    }
-
+describeDBSnapshots
+  = DescribeDBSnapshots'{_ddsIncludeShared = Nothing,
+                         _ddsFilters = Nothing,
+                         _ddsDBSnapshotIdentifier = Nothing,
+                         _ddsSnapshotType = Nothing,
+                         _ddsDBInstanceIdentifier = Nothing,
+                         _ddsMarker = Nothing, _ddsMaxRecords = Nothing,
+                         _ddsIncludePublic = Nothing}
 
 -- | True to include shared manual DB snapshots from other AWS accounts that this AWS account has been given permission to copy or restore, and otherwise false. The default is @false@ . You can give an AWS account permission to restore a manual DB snapshot from another AWS account by using the 'ModifyDBSnapshotAttribute' API action.
 ddsIncludeShared :: Lens' DescribeDBSnapshots (Maybe Bool)
@@ -128,7 +125,7 @@ ddsSnapshotType = lens _ddsSnapshotType (\ s a -> s{_ddsSnapshotType = a})
 ddsDBInstanceIdentifier :: Lens' DescribeDBSnapshots (Maybe Text)
 ddsDBInstanceIdentifier = lens _ddsDBInstanceIdentifier (\ s a -> s{_ddsDBInstanceIdentifier = a})
 
--- | An optional pagination token provided by a previous @DescribeDBSnapshots@ request. If this parameter is specified, the response includes only records beyond the marker, up to the value specified by @MaxRecords@ .
+-- | An optional pagination token provided by a previous @DescribeDBSnapshots@ request. If this parameter is specified, the response includes only records beyond the marker, up to the value specified by @MaxRecords@ . 
 ddsMarker :: Lens' DescribeDBSnapshots (Maybe Text)
 ddsMarker = lens _ddsMarker (\ s a -> s{_ddsMarker = a})
 
@@ -185,45 +182,46 @@ instance ToQuery DescribeDBSnapshots where
                "MaxRecords" =: _ddsMaxRecords,
                "IncludePublic" =: _ddsIncludePublic]
 
--- | Contains the result of a successful invocation of the 'DescribeDBSnapshots' action.
+-- | Contains the result of a successful invocation of the 'DescribeDBSnapshots' action. 
 --
 --
 --
 -- /See:/ 'describeDBSnapshotsResponse' smart constructor.
-data DescribeDBSnapshotsResponse =
-  DescribeDBSnapshotsResponse'
-    { _ddsrsMarker         :: !(Maybe Text)
-    , _ddsrsDBSnapshots    :: !(Maybe [DBSnapshot])
-    , _ddsrsResponseStatus :: !Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data DescribeDBSnapshotsResponse = DescribeDBSnapshotsResponse'{_ddsrsMarker
+                                                                ::
+                                                                !(Maybe Text),
+                                                                _ddsrsDBSnapshots
+                                                                ::
+                                                                !(Maybe
+                                                                    [DBSnapshot]),
+                                                                _ddsrsResponseStatus
+                                                                :: !Int}
+                                     deriving (Eq, Read, Show, Data, Typeable,
+                                               Generic)
 
 -- | Creates a value of 'DescribeDBSnapshotsResponse' with the minimum fields required to make a request.
 --
 -- Use one of the following lenses to modify other fields as desired:
 --
--- * 'ddsrsMarker' - An optional pagination token provided by a previous request. If this parameter is specified, the response includes only records beyond the marker, up to the value specified by @MaxRecords@ .
+-- * 'ddsrsMarker' - An optional pagination token provided by a previous request. If this parameter is specified, the response includes only records beyond the marker, up to the value specified by @MaxRecords@ . 
 --
--- * 'ddsrsDBSnapshots' - A list of 'DBSnapshot' instances.
+-- * 'ddsrsDBSnapshots' - A list of 'DBSnapshot' instances. 
 --
 -- * 'ddsrsResponseStatus' - -- | The response status code.
 describeDBSnapshotsResponse
     :: Int -- ^ 'ddsrsResponseStatus'
     -> DescribeDBSnapshotsResponse
-describeDBSnapshotsResponse pResponseStatus_ =
-  DescribeDBSnapshotsResponse'
-    { _ddsrsMarker = Nothing
-    , _ddsrsDBSnapshots = Nothing
-    , _ddsrsResponseStatus = pResponseStatus_
-    }
+describeDBSnapshotsResponse pResponseStatus_
+  = DescribeDBSnapshotsResponse'{_ddsrsMarker =
+                                   Nothing,
+                                 _ddsrsDBSnapshots = Nothing,
+                                 _ddsrsResponseStatus = pResponseStatus_}
 
-
--- | An optional pagination token provided by a previous request. If this parameter is specified, the response includes only records beyond the marker, up to the value specified by @MaxRecords@ .
+-- | An optional pagination token provided by a previous request. If this parameter is specified, the response includes only records beyond the marker, up to the value specified by @MaxRecords@ . 
 ddsrsMarker :: Lens' DescribeDBSnapshotsResponse (Maybe Text)
 ddsrsMarker = lens _ddsrsMarker (\ s a -> s{_ddsrsMarker = a})
 
--- | A list of 'DBSnapshot' instances.
+-- | A list of 'DBSnapshot' instances. 
 ddsrsDBSnapshots :: Lens' DescribeDBSnapshotsResponse [DBSnapshot]
 ddsrsDBSnapshots = lens _ddsrsDBSnapshots (\ s a -> s{_ddsrsDBSnapshots = a}) . _Default . _Coerce
 

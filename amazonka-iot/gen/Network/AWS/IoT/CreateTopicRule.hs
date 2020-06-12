@@ -36,7 +36,6 @@ module Network.AWS.IoT.CreateTopicRule
     ) where
 
 import Network.AWS.IoT.Types
-import Network.AWS.IoT.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.Request
@@ -47,13 +46,11 @@ import Network.AWS.Response
 --
 --
 -- /See:/ 'createTopicRule' smart constructor.
-data CreateTopicRule =
-  CreateTopicRule'
-    { _ctrRuleName         :: !Text
-    , _ctrTopicRulePayload :: !TopicRulePayload
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data CreateTopicRule = CreateTopicRule'{_ctrRuleName
+                                        :: !Text,
+                                        _ctrTopicRulePayload ::
+                                        !TopicRulePayload}
+                         deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'CreateTopicRule' with the minimum fields required to make a request.
 --
@@ -66,10 +63,9 @@ createTopicRule
     :: Text -- ^ 'ctrRuleName'
     -> TopicRulePayload -- ^ 'ctrTopicRulePayload'
     -> CreateTopicRule
-createTopicRule pRuleName_ pTopicRulePayload_ =
-  CreateTopicRule'
-    {_ctrRuleName = pRuleName_, _ctrTopicRulePayload = pTopicRulePayload_}
-
+createTopicRule pRuleName_ pTopicRulePayload_
+  = CreateTopicRule'{_ctrRuleName = pRuleName_,
+                     _ctrTopicRulePayload = pTopicRulePayload_}
 
 -- | The name of the rule.
 ctrRuleName :: Lens' CreateTopicRule Text
@@ -105,16 +101,14 @@ instance ToQuery CreateTopicRule where
         toQuery = const mempty
 
 -- | /See:/ 'createTopicRuleResponse' smart constructor.
-data CreateTopicRuleResponse =
-  CreateTopicRuleResponse'
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data CreateTopicRuleResponse = CreateTopicRuleResponse'
+                                 deriving (Eq, Read, Show, Data, Typeable,
+                                           Generic)
 
 -- | Creates a value of 'CreateTopicRuleResponse' with the minimum fields required to make a request.
 --
 createTopicRuleResponse
     :: CreateTopicRuleResponse
 createTopicRuleResponse = CreateTopicRuleResponse'
-
 
 instance NFData CreateTopicRuleResponse where

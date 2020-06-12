@@ -23,47 +23,47 @@
 --
 -- Fleet-related operations include:
 --
---     * 'CreateFleet'
+--     * 'CreateFleet' 
 --
---     * 'ListFleets'
+--     * 'ListFleets' 
 --
---     * 'DeleteFleet'
+--     * 'DeleteFleet' 
 --
 --     * Describe fleets:
 --
---     * 'DescribeFleetAttributes'
+--     * 'DescribeFleetAttributes' 
 --
---     * 'DescribeFleetCapacity'
+--     * 'DescribeFleetCapacity' 
 --
---     * 'DescribeFleetPortSettings'
+--     * 'DescribeFleetPortSettings' 
 --
---     * 'DescribeFleetUtilization'
+--     * 'DescribeFleetUtilization' 
 --
---     * 'DescribeRuntimeConfiguration'
+--     * 'DescribeRuntimeConfiguration' 
 --
---     * 'DescribeEC2InstanceLimits'
+--     * 'DescribeEC2InstanceLimits' 
 --
---     * 'DescribeFleetEvents'
+--     * 'DescribeFleetEvents' 
 --
 --
 --
 --     * Update fleets:
 --
---     * 'UpdateFleetAttributes'
+--     * 'UpdateFleetAttributes' 
 --
---     * 'UpdateFleetCapacity'
+--     * 'UpdateFleetCapacity' 
 --
---     * 'UpdateFleetPortSettings'
+--     * 'UpdateFleetPortSettings' 
 --
---     * 'UpdateRuntimeConfiguration'
+--     * 'UpdateRuntimeConfiguration' 
 --
 --
 --
 --     * Manage fleet actions:
 --
---     * 'StartFleetActions'
+--     * 'StartFleetActions' 
 --
---     * 'StopFleetActions'
+--     * 'StopFleetActions' 
 --
 --
 --
@@ -86,7 +86,6 @@ module Network.AWS.GameLift.DescribeRuntimeConfiguration
     ) where
 
 import Network.AWS.GameLift.Types
-import Network.AWS.GameLift.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.Request
@@ -97,12 +96,10 @@ import Network.AWS.Response
 --
 --
 -- /See:/ 'describeRuntimeConfiguration' smart constructor.
-newtype DescribeRuntimeConfiguration =
-  DescribeRuntimeConfiguration'
-    { _drcFleetId :: Text
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+newtype DescribeRuntimeConfiguration = DescribeRuntimeConfiguration'{_drcFleetId
+                                                                     :: Text}
+                                         deriving (Eq, Read, Show, Data,
+                                                   Typeable, Generic)
 
 -- | Creates a value of 'DescribeRuntimeConfiguration' with the minimum fields required to make a request.
 --
@@ -112,9 +109,9 @@ newtype DescribeRuntimeConfiguration =
 describeRuntimeConfiguration
     :: Text -- ^ 'drcFleetId'
     -> DescribeRuntimeConfiguration
-describeRuntimeConfiguration pFleetId_ =
-  DescribeRuntimeConfiguration' {_drcFleetId = pFleetId_}
-
+describeRuntimeConfiguration pFleetId_
+  = DescribeRuntimeConfiguration'{_drcFleetId =
+                                    pFleetId_}
 
 -- | Unique identifier for a fleet to get the run-time configuration for.
 drcFleetId :: Lens' DescribeRuntimeConfiguration Text
@@ -162,13 +159,15 @@ instance ToQuery DescribeRuntimeConfiguration where
 --
 --
 -- /See:/ 'describeRuntimeConfigurationResponse' smart constructor.
-data DescribeRuntimeConfigurationResponse =
-  DescribeRuntimeConfigurationResponse'
-    { _drcrsRuntimeConfiguration :: !(Maybe RuntimeConfiguration)
-    , _drcrsResponseStatus       :: !Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data DescribeRuntimeConfigurationResponse = DescribeRuntimeConfigurationResponse'{_drcrsRuntimeConfiguration
+                                                                                  ::
+                                                                                  !(Maybe
+                                                                                      RuntimeConfiguration),
+                                                                                  _drcrsResponseStatus
+                                                                                  ::
+                                                                                  !Int}
+                                              deriving (Eq, Read, Show, Data,
+                                                        Typeable, Generic)
 
 -- | Creates a value of 'DescribeRuntimeConfigurationResponse' with the minimum fields required to make a request.
 --
@@ -180,12 +179,11 @@ data DescribeRuntimeConfigurationResponse =
 describeRuntimeConfigurationResponse
     :: Int -- ^ 'drcrsResponseStatus'
     -> DescribeRuntimeConfigurationResponse
-describeRuntimeConfigurationResponse pResponseStatus_ =
-  DescribeRuntimeConfigurationResponse'
-    { _drcrsRuntimeConfiguration = Nothing
-    , _drcrsResponseStatus = pResponseStatus_
-    }
-
+describeRuntimeConfigurationResponse pResponseStatus_
+  = DescribeRuntimeConfigurationResponse'{_drcrsRuntimeConfiguration
+                                            = Nothing,
+                                          _drcrsResponseStatus =
+                                            pResponseStatus_}
 
 -- | Instructions describing how server processes should be launched and maintained on each instance in the fleet.
 drcrsRuntimeConfiguration :: Lens' DescribeRuntimeConfigurationResponse (Maybe RuntimeConfiguration)

@@ -38,20 +38,16 @@ module Network.AWS.Connect.StopContact
     ) where
 
 import Network.AWS.Connect.Types
-import Network.AWS.Connect.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 
 -- | /See:/ 'stopContact' smart constructor.
-data StopContact =
-  StopContact'
-    { _scContactId  :: !Text
-    , _scInstanceId :: !Text
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data StopContact = StopContact'{_scContactId ::
+                                !Text,
+                                _scInstanceId :: !Text}
+                     deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'StopContact' with the minimum fields required to make a request.
 --
@@ -64,9 +60,9 @@ stopContact
     :: Text -- ^ 'scContactId'
     -> Text -- ^ 'scInstanceId'
     -> StopContact
-stopContact pContactId_ pInstanceId_ =
-  StopContact' {_scContactId = pContactId_, _scInstanceId = pInstanceId_}
-
+stopContact pContactId_ pInstanceId_
+  = StopContact'{_scContactId = pContactId_,
+                 _scInstanceId = pInstanceId_}
 
 -- | The ID of the contact.
 scContactId :: Lens' StopContact Text
@@ -109,12 +105,10 @@ instance ToQuery StopContact where
         toQuery = const mempty
 
 -- | /See:/ 'stopContactResponse' smart constructor.
-newtype StopContactResponse =
-  StopContactResponse'
-    { _scrsResponseStatus :: Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+newtype StopContactResponse = StopContactResponse'{_scrsResponseStatus
+                                                   :: Int}
+                                deriving (Eq, Read, Show, Data, Typeable,
+                                          Generic)
 
 -- | Creates a value of 'StopContactResponse' with the minimum fields required to make a request.
 --
@@ -124,9 +118,9 @@ newtype StopContactResponse =
 stopContactResponse
     :: Int -- ^ 'scrsResponseStatus'
     -> StopContactResponse
-stopContactResponse pResponseStatus_ =
-  StopContactResponse' {_scrsResponseStatus = pResponseStatus_}
-
+stopContactResponse pResponseStatus_
+  = StopContactResponse'{_scrsResponseStatus =
+                           pResponseStatus_}
 
 -- | -- | The response status code.
 scrsResponseStatus :: Lens' StopContactResponse Int

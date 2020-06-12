@@ -53,20 +53,17 @@ import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 import Network.AWS.WorkSpaces.Types
-import Network.AWS.WorkSpaces.Types.Product
 
 -- | /See:/ 'describeWorkspaces' smart constructor.
-data DescribeWorkspaces =
-  DescribeWorkspaces'
-    { _dwDirectoryId  :: !(Maybe Text)
-    , _dwWorkspaceIds :: !(Maybe (List1 Text))
-    , _dwUserName     :: !(Maybe Text)
-    , _dwBundleId     :: !(Maybe Text)
-    , _dwNextToken    :: !(Maybe Text)
-    , _dwLimit        :: !(Maybe Nat)
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data DescribeWorkspaces = DescribeWorkspaces'{_dwDirectoryId
+                                              :: !(Maybe Text),
+                                              _dwWorkspaceIds ::
+                                              !(Maybe (List1 Text)),
+                                              _dwUserName :: !(Maybe Text),
+                                              _dwBundleId :: !(Maybe Text),
+                                              _dwNextToken :: !(Maybe Text),
+                                              _dwLimit :: !(Maybe Nat)}
+                            deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'DescribeWorkspaces' with the minimum fields required to make a request.
 --
@@ -85,16 +82,11 @@ data DescribeWorkspaces =
 -- * 'dwLimit' - The maximum number of items to return.
 describeWorkspaces
     :: DescribeWorkspaces
-describeWorkspaces =
-  DescribeWorkspaces'
-    { _dwDirectoryId = Nothing
-    , _dwWorkspaceIds = Nothing
-    , _dwUserName = Nothing
-    , _dwBundleId = Nothing
-    , _dwNextToken = Nothing
-    , _dwLimit = Nothing
-    }
-
+describeWorkspaces
+  = DescribeWorkspaces'{_dwDirectoryId = Nothing,
+                        _dwWorkspaceIds = Nothing, _dwUserName = Nothing,
+                        _dwBundleId = Nothing, _dwNextToken = Nothing,
+                        _dwLimit = Nothing}
 
 -- | The ID of the directory. In addition, you can optionally specify a specific directory user (see @UserName@ ). This parameter cannot be combined with any other filter.
 dwDirectoryId :: Lens' DescribeWorkspaces (Maybe Text)
@@ -171,14 +163,15 @@ instance ToQuery DescribeWorkspaces where
         toQuery = const mempty
 
 -- | /See:/ 'describeWorkspacesResponse' smart constructor.
-data DescribeWorkspacesResponse =
-  DescribeWorkspacesResponse'
-    { _dwrsNextToken      :: !(Maybe Text)
-    , _dwrsWorkspaces     :: !(Maybe [Workspace])
-    , _dwrsResponseStatus :: !Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data DescribeWorkspacesResponse = DescribeWorkspacesResponse'{_dwrsNextToken
+                                                              :: !(Maybe Text),
+                                                              _dwrsWorkspaces ::
+                                                              !(Maybe
+                                                                  [Workspace]),
+                                                              _dwrsResponseStatus
+                                                              :: !Int}
+                                    deriving (Eq, Read, Show, Data, Typeable,
+                                              Generic)
 
 -- | Creates a value of 'DescribeWorkspacesResponse' with the minimum fields required to make a request.
 --
@@ -192,13 +185,11 @@ data DescribeWorkspacesResponse =
 describeWorkspacesResponse
     :: Int -- ^ 'dwrsResponseStatus'
     -> DescribeWorkspacesResponse
-describeWorkspacesResponse pResponseStatus_ =
-  DescribeWorkspacesResponse'
-    { _dwrsNextToken = Nothing
-    , _dwrsWorkspaces = Nothing
-    , _dwrsResponseStatus = pResponseStatus_
-    }
-
+describeWorkspacesResponse pResponseStatus_
+  = DescribeWorkspacesResponse'{_dwrsNextToken =
+                                  Nothing,
+                                _dwrsWorkspaces = Nothing,
+                                _dwrsResponseStatus = pResponseStatus_}
 
 -- | The token to use to retrieve the next set of results, or null if there are no more results available. This token is valid for one day and must be used within that time frame.
 dwrsNextToken :: Lens' DescribeWorkspacesResponse (Maybe Text)

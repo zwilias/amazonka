@@ -49,30 +49,30 @@ module Network.AWS.AppStream.UpdateStack
     ) where
 
 import Network.AWS.AppStream.Types
-import Network.AWS.AppStream.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 
 -- | /See:/ 'updateStack' smart constructor.
-data UpdateStack =
-  UpdateStack'
-    { _usUserSettings            :: !(Maybe (List1 UserSetting))
-    , _usApplicationSettings     :: !(Maybe ApplicationSettings)
-    , _usFeedbackURL             :: !(Maybe Text)
-    , _usAttributesToDelete      :: !(Maybe [StackAttribute])
-    , _usDeleteStorageConnectors :: !(Maybe Bool)
-    , _usStorageConnectors       :: !(Maybe [StorageConnector])
-    , _usAccessEndpoints         :: !(Maybe (List1 AccessEndpoint))
-    , _usDisplayName             :: !(Maybe Text)
-    , _usEmbedHostDomains        :: !(Maybe (List1 Text))
-    , _usDescription             :: !(Maybe Text)
-    , _usRedirectURL             :: !(Maybe Text)
-    , _usName                    :: !Text
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data UpdateStack = UpdateStack'{_usUserSettings ::
+                                !(Maybe (List1 UserSetting)),
+                                _usApplicationSettings ::
+                                !(Maybe ApplicationSettings),
+                                _usFeedbackURL :: !(Maybe Text),
+                                _usAttributesToDelete ::
+                                !(Maybe [StackAttribute]),
+                                _usDeleteStorageConnectors :: !(Maybe Bool),
+                                _usStorageConnectors ::
+                                !(Maybe [StorageConnector]),
+                                _usAccessEndpoints ::
+                                !(Maybe (List1 AccessEndpoint)),
+                                _usDisplayName :: !(Maybe Text),
+                                _usEmbedHostDomains :: !(Maybe (List1 Text)),
+                                _usDescription :: !(Maybe Text),
+                                _usRedirectURL :: !(Maybe Text),
+                                _usName :: !Text}
+                     deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'UpdateStack' with the minimum fields required to make a request.
 --
@@ -104,22 +104,18 @@ data UpdateStack =
 updateStack
     :: Text -- ^ 'usName'
     -> UpdateStack
-updateStack pName_ =
-  UpdateStack'
-    { _usUserSettings = Nothing
-    , _usApplicationSettings = Nothing
-    , _usFeedbackURL = Nothing
-    , _usAttributesToDelete = Nothing
-    , _usDeleteStorageConnectors = Nothing
-    , _usStorageConnectors = Nothing
-    , _usAccessEndpoints = Nothing
-    , _usDisplayName = Nothing
-    , _usEmbedHostDomains = Nothing
-    , _usDescription = Nothing
-    , _usRedirectURL = Nothing
-    , _usName = pName_
-    }
-
+updateStack pName_
+  = UpdateStack'{_usUserSettings = Nothing,
+                 _usApplicationSettings = Nothing,
+                 _usFeedbackURL = Nothing,
+                 _usAttributesToDelete = Nothing,
+                 _usDeleteStorageConnectors = Nothing,
+                 _usStorageConnectors = Nothing,
+                 _usAccessEndpoints = Nothing,
+                 _usDisplayName = Nothing,
+                 _usEmbedHostDomains = Nothing,
+                 _usDescription = Nothing, _usRedirectURL = Nothing,
+                 _usName = pName_}
 
 -- | The actions that are enabled or disabled for users during their streaming sessions. By default, these actions are enabled.
 usUserSettings :: Lens' UpdateStack (Maybe (NonEmpty UserSetting))
@@ -218,13 +214,10 @@ instance ToQuery UpdateStack where
         toQuery = const mempty
 
 -- | /See:/ 'updateStackResponse' smart constructor.
-data UpdateStackResponse =
-  UpdateStackResponse'
-    { _usrsStack          :: !(Maybe Stack)
-    , _usrsResponseStatus :: !Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data UpdateStackResponse = UpdateStackResponse'{_usrsStack
+                                                :: !(Maybe Stack),
+                                                _usrsResponseStatus :: !Int}
+                             deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'UpdateStackResponse' with the minimum fields required to make a request.
 --
@@ -236,10 +229,9 @@ data UpdateStackResponse =
 updateStackResponse
     :: Int -- ^ 'usrsResponseStatus'
     -> UpdateStackResponse
-updateStackResponse pResponseStatus_ =
-  UpdateStackResponse'
-    {_usrsStack = Nothing, _usrsResponseStatus = pResponseStatus_}
-
+updateStackResponse pResponseStatus_
+  = UpdateStackResponse'{_usrsStack = Nothing,
+                         _usrsResponseStatus = pResponseStatus_}
 
 -- | Information about the stack.
 usrsStack :: Lens' UpdateStackResponse (Maybe Stack)

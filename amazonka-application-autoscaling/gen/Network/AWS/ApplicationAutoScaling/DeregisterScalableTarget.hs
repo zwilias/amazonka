@@ -18,7 +18,7 @@
 -- Stability   : auto-generated
 -- Portability : non-portable (GHC extensions)
 --
--- Deregisters an Application Auto Scaling scalable target when you have finished using it. To see which resources have been registered, use <https://docs.aws.amazon.com/autoscaling/application/APIReference/API_DescribeScalableTargets.html DescribeScalableTargets> .
+-- Deregisters an Application Auto Scaling scalable target when you have finished using it. To see which resources have been registered, use <https://docs.aws.amazon.com/autoscaling/application/APIReference/API_DescribeScalableTargets.html DescribeScalableTargets> . 
 --
 --
 module Network.AWS.ApplicationAutoScaling.DeregisterScalableTarget
@@ -39,21 +39,20 @@ module Network.AWS.ApplicationAutoScaling.DeregisterScalableTarget
     ) where
 
 import Network.AWS.ApplicationAutoScaling.Types
-import Network.AWS.ApplicationAutoScaling.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 
 -- | /See:/ 'deregisterScalableTarget' smart constructor.
-data DeregisterScalableTarget =
-  DeregisterScalableTarget'
-    { _derServiceNamespace  :: !ServiceNamespace
-    , _derResourceId        :: !Text
-    , _derScalableDimension :: !ScalableDimension
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data DeregisterScalableTarget = DeregisterScalableTarget'{_derServiceNamespace
+                                                          :: !ServiceNamespace,
+                                                          _derResourceId ::
+                                                          !Text,
+                                                          _derScalableDimension
+                                                          :: !ScalableDimension}
+                                  deriving (Eq, Read, Show, Data, Typeable,
+                                            Generic)
 
 -- | Creates a value of 'DeregisterScalableTarget' with the minimum fields required to make a request.
 --
@@ -69,13 +68,12 @@ deregisterScalableTarget
     -> Text -- ^ 'derResourceId'
     -> ScalableDimension -- ^ 'derScalableDimension'
     -> DeregisterScalableTarget
-deregisterScalableTarget pServiceNamespace_ pResourceId_ pScalableDimension_ =
-  DeregisterScalableTarget'
-    { _derServiceNamespace = pServiceNamespace_
-    , _derResourceId = pResourceId_
-    , _derScalableDimension = pScalableDimension_
-    }
-
+deregisterScalableTarget pServiceNamespace_
+  pResourceId_ pScalableDimension_
+  = DeregisterScalableTarget'{_derServiceNamespace =
+                                pServiceNamespace_,
+                              _derResourceId = pResourceId_,
+                              _derScalableDimension = pScalableDimension_}
 
 -- | The namespace of the AWS service that provides the resource. For a resource provided by your own application or service, use @custom-resource@ instead.
 derServiceNamespace :: Lens' DeregisterScalableTarget ServiceNamespace
@@ -128,12 +126,11 @@ instance ToQuery DeregisterScalableTarget where
         toQuery = const mempty
 
 -- | /See:/ 'deregisterScalableTargetResponse' smart constructor.
-newtype DeregisterScalableTargetResponse =
-  DeregisterScalableTargetResponse'
-    { _dstrsResponseStatus :: Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+newtype DeregisterScalableTargetResponse = DeregisterScalableTargetResponse'{_dstrsResponseStatus
+                                                                             ::
+                                                                             Int}
+                                             deriving (Eq, Read, Show, Data,
+                                                       Typeable, Generic)
 
 -- | Creates a value of 'DeregisterScalableTargetResponse' with the minimum fields required to make a request.
 --
@@ -143,9 +140,9 @@ newtype DeregisterScalableTargetResponse =
 deregisterScalableTargetResponse
     :: Int -- ^ 'dstrsResponseStatus'
     -> DeregisterScalableTargetResponse
-deregisterScalableTargetResponse pResponseStatus_ =
-  DeregisterScalableTargetResponse' {_dstrsResponseStatus = pResponseStatus_}
-
+deregisterScalableTargetResponse pResponseStatus_
+  = DeregisterScalableTargetResponse'{_dstrsResponseStatus
+                                        = pResponseStatus_}
 
 -- | -- | The response status code.
 dstrsResponseStatus :: Lens' DeregisterScalableTargetResponse Int

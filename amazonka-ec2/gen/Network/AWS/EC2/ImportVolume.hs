@@ -44,23 +44,19 @@ module Network.AWS.EC2.ImportVolume
     ) where
 
 import Network.AWS.EC2.Types
-import Network.AWS.EC2.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 
 -- | /See:/ 'importVolume' smart constructor.
-data ImportVolume =
-  ImportVolume'
-    { _ivDescription      :: !(Maybe Text)
-    , _ivDryRun           :: !(Maybe Bool)
-    , _ivAvailabilityZone :: !Text
-    , _ivImage            :: !DiskImageDetail
-    , _ivVolume           :: !VolumeDetail
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data ImportVolume = ImportVolume'{_ivDescription ::
+                                  !(Maybe Text),
+                                  _ivDryRun :: !(Maybe Bool),
+                                  _ivAvailabilityZone :: !Text,
+                                  _ivImage :: !DiskImageDetail,
+                                  _ivVolume :: !VolumeDetail}
+                      deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'ImportVolume' with the minimum fields required to make a request.
 --
@@ -80,15 +76,11 @@ importVolume
     -> DiskImageDetail -- ^ 'ivImage'
     -> VolumeDetail -- ^ 'ivVolume'
     -> ImportVolume
-importVolume pAvailabilityZone_ pImage_ pVolume_ =
-  ImportVolume'
-    { _ivDescription = Nothing
-    , _ivDryRun = Nothing
-    , _ivAvailabilityZone = pAvailabilityZone_
-    , _ivImage = pImage_
-    , _ivVolume = pVolume_
-    }
-
+importVolume pAvailabilityZone_ pImage_ pVolume_
+  = ImportVolume'{_ivDescription = Nothing,
+                  _ivDryRun = Nothing,
+                  _ivAvailabilityZone = pAvailabilityZone_,
+                  _ivImage = pImage_, _ivVolume = pVolume_}
 
 -- | A description of the volume.
 ivDescription :: Lens' ImportVolume (Maybe Text)
@@ -140,13 +132,10 @@ instance ToQuery ImportVolume where
                "Image" =: _ivImage, "Volume" =: _ivVolume]
 
 -- | /See:/ 'importVolumeResponse' smart constructor.
-data ImportVolumeResponse =
-  ImportVolumeResponse'
-    { _ivrsConversionTask :: !(Maybe ConversionTask)
-    , _ivrsResponseStatus :: !Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data ImportVolumeResponse = ImportVolumeResponse'{_ivrsConversionTask
+                                                  :: !(Maybe ConversionTask),
+                                                  _ivrsResponseStatus :: !Int}
+                              deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'ImportVolumeResponse' with the minimum fields required to make a request.
 --
@@ -158,10 +147,10 @@ data ImportVolumeResponse =
 importVolumeResponse
     :: Int -- ^ 'ivrsResponseStatus'
     -> ImportVolumeResponse
-importVolumeResponse pResponseStatus_ =
-  ImportVolumeResponse'
-    {_ivrsConversionTask = Nothing, _ivrsResponseStatus = pResponseStatus_}
-
+importVolumeResponse pResponseStatus_
+  = ImportVolumeResponse'{_ivrsConversionTask =
+                            Nothing,
+                          _ivrsResponseStatus = pResponseStatus_}
 
 -- | Information about the conversion task.
 ivrsConversionTask :: Lens' ImportVolumeResponse (Maybe ConversionTask)

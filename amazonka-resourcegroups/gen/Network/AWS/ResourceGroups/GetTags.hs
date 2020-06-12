@@ -42,16 +42,11 @@ import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.ResourceGroups.Types
-import Network.AWS.ResourceGroups.Types.Product
 import Network.AWS.Response
 
 -- | /See:/ 'getTags' smart constructor.
-newtype GetTags =
-  GetTags'
-    { _gtARN :: Text
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+newtype GetTags = GetTags'{_gtARN :: Text}
+                    deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'GetTags' with the minimum fields required to make a request.
 --
@@ -61,8 +56,7 @@ newtype GetTags =
 getTags
     :: Text -- ^ 'gtARN'
     -> GetTags
-getTags pARN_ = GetTags' {_gtARN = pARN_}
-
+getTags pARN_ = GetTags'{_gtARN = pARN_}
 
 -- | The ARN of the resource for which you want a list of tags. The resource must exist within the account you are using.
 gtARN :: Lens' GetTags Text
@@ -93,14 +87,11 @@ instance ToQuery GetTags where
         toQuery = const mempty
 
 -- | /See:/ 'getTagsResponse' smart constructor.
-data GetTagsResponse =
-  GetTagsResponse'
-    { _gtrsARN            :: !(Maybe Text)
-    , _gtrsTags           :: !(Maybe (Map Text Text))
-    , _gtrsResponseStatus :: !Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data GetTagsResponse = GetTagsResponse'{_gtrsARN ::
+                                        !(Maybe Text),
+                                        _gtrsTags :: !(Maybe (Map Text Text)),
+                                        _gtrsResponseStatus :: !Int}
+                         deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'GetTagsResponse' with the minimum fields required to make a request.
 --
@@ -114,13 +105,10 @@ data GetTagsResponse =
 getTagsResponse
     :: Int -- ^ 'gtrsResponseStatus'
     -> GetTagsResponse
-getTagsResponse pResponseStatus_ =
-  GetTagsResponse'
-    { _gtrsARN = Nothing
-    , _gtrsTags = Nothing
-    , _gtrsResponseStatus = pResponseStatus_
-    }
-
+getTagsResponse pResponseStatus_
+  = GetTagsResponse'{_gtrsARN = Nothing,
+                     _gtrsTags = Nothing,
+                     _gtrsResponseStatus = pResponseStatus_}
 
 -- | The ARN of the tagged resource.
 gtrsARN :: Lens' GetTagsResponse (Maybe Text)

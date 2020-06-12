@@ -44,7 +44,6 @@ module Network.AWS.Connect.ListContactFlows
     ) where
 
 import Network.AWS.Connect.Types
-import Network.AWS.Connect.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Pager
 import Network.AWS.Prelude
@@ -52,15 +51,12 @@ import Network.AWS.Request
 import Network.AWS.Response
 
 -- | /See:/ 'listContactFlows' smart constructor.
-data ListContactFlows =
-  ListContactFlows'
-    { _lcfContactFlowTypes :: !(Maybe [ContactFlowType])
-    , _lcfNextToken        :: !(Maybe Text)
-    , _lcfMaxResults       :: !(Maybe Nat)
-    , _lcfInstanceId       :: !Text
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data ListContactFlows = ListContactFlows'{_lcfContactFlowTypes
+                                          :: !(Maybe [ContactFlowType]),
+                                          _lcfNextToken :: !(Maybe Text),
+                                          _lcfMaxResults :: !(Maybe Nat),
+                                          _lcfInstanceId :: !Text}
+                          deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'ListContactFlows' with the minimum fields required to make a request.
 --
@@ -76,14 +72,10 @@ data ListContactFlows =
 listContactFlows
     :: Text -- ^ 'lcfInstanceId'
     -> ListContactFlows
-listContactFlows pInstanceId_ =
-  ListContactFlows'
-    { _lcfContactFlowTypes = Nothing
-    , _lcfNextToken = Nothing
-    , _lcfMaxResults = Nothing
-    , _lcfInstanceId = pInstanceId_
-    }
-
+listContactFlows pInstanceId_
+  = ListContactFlows'{_lcfContactFlowTypes = Nothing,
+                      _lcfNextToken = Nothing, _lcfMaxResults = Nothing,
+                      _lcfInstanceId = pInstanceId_}
 
 -- | The type of contact flow.
 lcfContactFlowTypes :: Lens' ListContactFlows [ContactFlowType]
@@ -145,14 +137,16 @@ instance ToQuery ListContactFlows where
                "maxResults" =: _lcfMaxResults]
 
 -- | /See:/ 'listContactFlowsResponse' smart constructor.
-data ListContactFlowsResponse =
-  ListContactFlowsResponse'
-    { _lcfrsContactFlowSummaryList :: !(Maybe [ContactFlowSummary])
-    , _lcfrsNextToken              :: !(Maybe Text)
-    , _lcfrsResponseStatus         :: !Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data ListContactFlowsResponse = ListContactFlowsResponse'{_lcfrsContactFlowSummaryList
+                                                          ::
+                                                          !(Maybe
+                                                              [ContactFlowSummary]),
+                                                          _lcfrsNextToken ::
+                                                          !(Maybe Text),
+                                                          _lcfrsResponseStatus
+                                                          :: !Int}
+                                  deriving (Eq, Read, Show, Data, Typeable,
+                                            Generic)
 
 -- | Creates a value of 'ListContactFlowsResponse' with the minimum fields required to make a request.
 --
@@ -166,13 +160,11 @@ data ListContactFlowsResponse =
 listContactFlowsResponse
     :: Int -- ^ 'lcfrsResponseStatus'
     -> ListContactFlowsResponse
-listContactFlowsResponse pResponseStatus_ =
-  ListContactFlowsResponse'
-    { _lcfrsContactFlowSummaryList = Nothing
-    , _lcfrsNextToken = Nothing
-    , _lcfrsResponseStatus = pResponseStatus_
-    }
-
+listContactFlowsResponse pResponseStatus_
+  = ListContactFlowsResponse'{_lcfrsContactFlowSummaryList
+                                = Nothing,
+                              _lcfrsNextToken = Nothing,
+                              _lcfrsResponseStatus = pResponseStatus_}
 
 -- | Information about the contact flows.
 lcfrsContactFlowSummaryList :: Lens' ListContactFlowsResponse [ContactFlowSummary]

@@ -45,7 +45,6 @@ module Network.AWS.Glue.GetTableVersions
     ) where
 
 import Network.AWS.Glue.Types
-import Network.AWS.Glue.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Pager
 import Network.AWS.Prelude
@@ -53,16 +52,13 @@ import Network.AWS.Request
 import Network.AWS.Response
 
 -- | /See:/ 'getTableVersions' smart constructor.
-data GetTableVersions =
-  GetTableVersions'
-    { _gtvsCatalogId    :: !(Maybe Text)
-    , _gtvsNextToken    :: !(Maybe Text)
-    , _gtvsMaxResults   :: !(Maybe Nat)
-    , _gtvsDatabaseName :: !Text
-    , _gtvsTableName    :: !Text
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data GetTableVersions = GetTableVersions'{_gtvsCatalogId
+                                          :: !(Maybe Text),
+                                          _gtvsNextToken :: !(Maybe Text),
+                                          _gtvsMaxResults :: !(Maybe Nat),
+                                          _gtvsDatabaseName :: !Text,
+                                          _gtvsTableName :: !Text}
+                          deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'GetTableVersions' with the minimum fields required to make a request.
 --
@@ -81,15 +77,11 @@ getTableVersions
     :: Text -- ^ 'gtvsDatabaseName'
     -> Text -- ^ 'gtvsTableName'
     -> GetTableVersions
-getTableVersions pDatabaseName_ pTableName_ =
-  GetTableVersions'
-    { _gtvsCatalogId = Nothing
-    , _gtvsNextToken = Nothing
-    , _gtvsMaxResults = Nothing
-    , _gtvsDatabaseName = pDatabaseName_
-    , _gtvsTableName = pTableName_
-    }
-
+getTableVersions pDatabaseName_ pTableName_
+  = GetTableVersions'{_gtvsCatalogId = Nothing,
+                      _gtvsNextToken = Nothing, _gtvsMaxResults = Nothing,
+                      _gtvsDatabaseName = pDatabaseName_,
+                      _gtvsTableName = pTableName_}
 
 -- | The ID of the Data Catalog where the tables reside. If none is supplied, the AWS account ID is used by default.
 gtvsCatalogId :: Lens' GetTableVersions (Maybe Text)
@@ -159,14 +151,16 @@ instance ToQuery GetTableVersions where
         toQuery = const mempty
 
 -- | /See:/ 'getTableVersionsResponse' smart constructor.
-data GetTableVersionsResponse =
-  GetTableVersionsResponse'
-    { _gtvsrsTableVersions  :: !(Maybe [TableVersion])
-    , _gtvsrsNextToken      :: !(Maybe Text)
-    , _gtvsrsResponseStatus :: !Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data GetTableVersionsResponse = GetTableVersionsResponse'{_gtvsrsTableVersions
+                                                          ::
+                                                          !(Maybe
+                                                              [TableVersion]),
+                                                          _gtvsrsNextToken ::
+                                                          !(Maybe Text),
+                                                          _gtvsrsResponseStatus
+                                                          :: !Int}
+                                  deriving (Eq, Read, Show, Data, Typeable,
+                                            Generic)
 
 -- | Creates a value of 'GetTableVersionsResponse' with the minimum fields required to make a request.
 --
@@ -180,13 +174,11 @@ data GetTableVersionsResponse =
 getTableVersionsResponse
     :: Int -- ^ 'gtvsrsResponseStatus'
     -> GetTableVersionsResponse
-getTableVersionsResponse pResponseStatus_ =
-  GetTableVersionsResponse'
-    { _gtvsrsTableVersions = Nothing
-    , _gtvsrsNextToken = Nothing
-    , _gtvsrsResponseStatus = pResponseStatus_
-    }
-
+getTableVersionsResponse pResponseStatus_
+  = GetTableVersionsResponse'{_gtvsrsTableVersions =
+                                Nothing,
+                              _gtvsrsNextToken = Nothing,
+                              _gtvsrsResponseStatus = pResponseStatus_}
 
 -- | A list of strings identifying available versions of the specified table.
 gtvsrsTableVersions :: Lens' GetTableVersionsResponse [TableVersion]

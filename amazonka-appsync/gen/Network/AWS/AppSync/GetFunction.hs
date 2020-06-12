@@ -39,20 +39,15 @@ module Network.AWS.AppSync.GetFunction
     ) where
 
 import Network.AWS.AppSync.Types
-import Network.AWS.AppSync.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 
 -- | /See:/ 'getFunction' smart constructor.
-data GetFunction =
-  GetFunction'
-    { _gfApiId      :: !Text
-    , _gfFunctionId :: !Text
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data GetFunction = GetFunction'{_gfApiId :: !Text,
+                                _gfFunctionId :: !Text}
+                     deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'GetFunction' with the minimum fields required to make a request.
 --
@@ -65,9 +60,9 @@ getFunction
     :: Text -- ^ 'gfApiId'
     -> Text -- ^ 'gfFunctionId'
     -> GetFunction
-getFunction pApiId_ pFunctionId_ =
-  GetFunction' {_gfApiId = pApiId_, _gfFunctionId = pFunctionId_}
-
+getFunction pApiId_ pFunctionId_
+  = GetFunction'{_gfApiId = pApiId_,
+                 _gfFunctionId = pFunctionId_}
 
 -- | The GraphQL API ID.
 gfApiId :: Lens' GetFunction Text
@@ -108,13 +103,11 @@ instance ToQuery GetFunction where
         toQuery = const mempty
 
 -- | /See:/ 'getFunctionResponse' smart constructor.
-data GetFunctionResponse =
-  GetFunctionResponse'
-    { _gfrsFunctionConfiguration :: !(Maybe FunctionConfiguration)
-    , _gfrsResponseStatus        :: !Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data GetFunctionResponse = GetFunctionResponse'{_gfrsFunctionConfiguration
+                                                ::
+                                                !(Maybe FunctionConfiguration),
+                                                _gfrsResponseStatus :: !Int}
+                             deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'GetFunctionResponse' with the minimum fields required to make a request.
 --
@@ -126,12 +119,10 @@ data GetFunctionResponse =
 getFunctionResponse
     :: Int -- ^ 'gfrsResponseStatus'
     -> GetFunctionResponse
-getFunctionResponse pResponseStatus_ =
-  GetFunctionResponse'
-    { _gfrsFunctionConfiguration = Nothing
-    , _gfrsResponseStatus = pResponseStatus_
-    }
-
+getFunctionResponse pResponseStatus_
+  = GetFunctionResponse'{_gfrsFunctionConfiguration =
+                           Nothing,
+                         _gfrsResponseStatus = pResponseStatus_}
 
 -- | The @Function@ object.
 gfrsFunctionConfiguration :: Lens' GetFunctionResponse (Maybe FunctionConfiguration)

@@ -18,7 +18,7 @@
 -- Stability   : auto-generated
 -- Portability : non-portable (GHC extensions)
 --
--- Renames the specified organizational unit (OU). The ID and ARN do not change. The child OUs and accounts remain in place, and any attached policies of the OU remain attached.
+-- Renames the specified organizational unit (OU). The ID and ARN do not change. The child OUs and accounts remain in place, and any attached policies of the OU remain attached. 
 --
 --
 -- This operation can be called only from the organization's master account.
@@ -42,19 +42,17 @@ module Network.AWS.Organizations.UpdateOrganizationalUnit
 
 import Network.AWS.Lens
 import Network.AWS.Organizations.Types
-import Network.AWS.Organizations.Types.Product
 import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 
 -- | /See:/ 'updateOrganizationalUnit' smart constructor.
-data UpdateOrganizationalUnit =
-  UpdateOrganizationalUnit'
-    { _uouName                 :: !(Maybe Text)
-    , _uouOrganizationalUnitId :: !Text
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data UpdateOrganizationalUnit = UpdateOrganizationalUnit'{_uouName
+                                                          :: !(Maybe Text),
+                                                          _uouOrganizationalUnitId
+                                                          :: !Text}
+                                  deriving (Eq, Read, Show, Data, Typeable,
+                                            Generic)
 
 -- | Creates a value of 'UpdateOrganizationalUnit' with the minimum fields required to make a request.
 --
@@ -66,10 +64,9 @@ data UpdateOrganizationalUnit =
 updateOrganizationalUnit
     :: Text -- ^ 'uouOrganizationalUnitId'
     -> UpdateOrganizationalUnit
-updateOrganizationalUnit pOrganizationalUnitId_ =
-  UpdateOrganizationalUnit'
-    {_uouName = Nothing, _uouOrganizationalUnitId = pOrganizationalUnitId_}
-
+updateOrganizationalUnit pOrganizationalUnitId_
+  = UpdateOrganizationalUnit'{_uouName = Nothing,
+                              _uouOrganizationalUnitId = pOrganizationalUnitId_}
 
 -- | The new name that you want to assign to the OU. The <http://wikipedia.org/wiki/regex regex pattern> that is used to validate this parameter is a string of any of the characters in the ASCII character range.
 uouName :: Lens' UpdateOrganizationalUnit (Maybe Text)
@@ -119,13 +116,15 @@ instance ToQuery UpdateOrganizationalUnit where
         toQuery = const mempty
 
 -- | /See:/ 'updateOrganizationalUnitResponse' smart constructor.
-data UpdateOrganizationalUnitResponse =
-  UpdateOrganizationalUnitResponse'
-    { _uoursOrganizationalUnit :: !(Maybe OrganizationalUnit)
-    , _uoursResponseStatus     :: !Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data UpdateOrganizationalUnitResponse = UpdateOrganizationalUnitResponse'{_uoursOrganizationalUnit
+                                                                          ::
+                                                                          !(Maybe
+                                                                              OrganizationalUnit),
+                                                                          _uoursResponseStatus
+                                                                          ::
+                                                                          !Int}
+                                          deriving (Eq, Read, Show, Data,
+                                                    Typeable, Generic)
 
 -- | Creates a value of 'UpdateOrganizationalUnitResponse' with the minimum fields required to make a request.
 --
@@ -137,12 +136,10 @@ data UpdateOrganizationalUnitResponse =
 updateOrganizationalUnitResponse
     :: Int -- ^ 'uoursResponseStatus'
     -> UpdateOrganizationalUnitResponse
-updateOrganizationalUnitResponse pResponseStatus_ =
-  UpdateOrganizationalUnitResponse'
-    { _uoursOrganizationalUnit = Nothing
-    , _uoursResponseStatus = pResponseStatus_
-    }
-
+updateOrganizationalUnitResponse pResponseStatus_
+  = UpdateOrganizationalUnitResponse'{_uoursOrganizationalUnit
+                                        = Nothing,
+                                      _uoursResponseStatus = pResponseStatus_}
 
 -- | A structure that contains the details about the specified OU, including its new name.
 uoursOrganizationalUnit :: Lens' UpdateOrganizationalUnitResponse (Maybe OrganizationalUnit)

@@ -40,20 +40,17 @@ module Network.AWS.CloudTrail.PutInsightSelectors
     ) where
 
 import Network.AWS.CloudTrail.Types
-import Network.AWS.CloudTrail.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 
 -- | /See:/ 'putInsightSelectors' smart constructor.
-data PutInsightSelectors =
-  PutInsightSelectors'
-    { _pisTrailName        :: !Text
-    , _pisInsightSelectors :: ![InsightSelector]
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data PutInsightSelectors = PutInsightSelectors'{_pisTrailName
+                                                :: !Text,
+                                                _pisInsightSelectors ::
+                                                ![InsightSelector]}
+                             deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'PutInsightSelectors' with the minimum fields required to make a request.
 --
@@ -65,10 +62,9 @@ data PutInsightSelectors =
 putInsightSelectors
     :: Text -- ^ 'pisTrailName'
     -> PutInsightSelectors
-putInsightSelectors pTrailName_ =
-  PutInsightSelectors'
-    {_pisTrailName = pTrailName_, _pisInsightSelectors = mempty}
-
+putInsightSelectors pTrailName_
+  = PutInsightSelectors'{_pisTrailName = pTrailName_,
+                         _pisInsightSelectors = mempty}
 
 -- | The name of the CloudTrail trail for which you want to change or add Insights selectors.
 pisTrailName :: Lens' PutInsightSelectors Text
@@ -118,14 +114,17 @@ instance ToQuery PutInsightSelectors where
         toQuery = const mempty
 
 -- | /See:/ 'putInsightSelectorsResponse' smart constructor.
-data PutInsightSelectorsResponse =
-  PutInsightSelectorsResponse'
-    { _pisrsTrailARN         :: !(Maybe Text)
-    , _pisrsInsightSelectors :: !(Maybe [InsightSelector])
-    , _pisrsResponseStatus   :: !Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data PutInsightSelectorsResponse = PutInsightSelectorsResponse'{_pisrsTrailARN
+                                                                ::
+                                                                !(Maybe Text),
+                                                                _pisrsInsightSelectors
+                                                                ::
+                                                                !(Maybe
+                                                                    [InsightSelector]),
+                                                                _pisrsResponseStatus
+                                                                :: !Int}
+                                     deriving (Eq, Read, Show, Data, Typeable,
+                                               Generic)
 
 -- | Creates a value of 'PutInsightSelectorsResponse' with the minimum fields required to make a request.
 --
@@ -139,13 +138,11 @@ data PutInsightSelectorsResponse =
 putInsightSelectorsResponse
     :: Int -- ^ 'pisrsResponseStatus'
     -> PutInsightSelectorsResponse
-putInsightSelectorsResponse pResponseStatus_ =
-  PutInsightSelectorsResponse'
-    { _pisrsTrailARN = Nothing
-    , _pisrsInsightSelectors = Nothing
-    , _pisrsResponseStatus = pResponseStatus_
-    }
-
+putInsightSelectorsResponse pResponseStatus_
+  = PutInsightSelectorsResponse'{_pisrsTrailARN =
+                                   Nothing,
+                                 _pisrsInsightSelectors = Nothing,
+                                 _pisrsResponseStatus = pResponseStatus_}
 
 -- | The Amazon Resource Name (ARN) of a trail for which you want to change or add Insights selectors.
 pisrsTrailARN :: Lens' PutInsightSelectorsResponse (Maybe Text)

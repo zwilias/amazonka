@@ -44,7 +44,6 @@ module Network.AWS.Greengrass.CreateCoreDefinition
     ) where
 
 import Network.AWS.Greengrass.Types
-import Network.AWS.Greengrass.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.Request
@@ -53,14 +52,13 @@ import Network.AWS.Response
 -- | Information needed to create a core definition.
 --
 -- /See:/ 'createCoreDefinition' smart constructor.
-data CreateCoreDefinition =
-  CreateCoreDefinition'
-    { _ccdAmznClientToken :: !(Maybe Text)
-    , _ccdInitialVersion  :: !(Maybe CoreDefinitionVersion)
-    , _ccdName            :: !(Maybe Text)
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data CreateCoreDefinition = CreateCoreDefinition'{_ccdAmznClientToken
+                                                  :: !(Maybe Text),
+                                                  _ccdInitialVersion ::
+                                                  !(Maybe
+                                                      CoreDefinitionVersion),
+                                                  _ccdName :: !(Maybe Text)}
+                              deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'CreateCoreDefinition' with the minimum fields required to make a request.
 --
@@ -73,13 +71,10 @@ data CreateCoreDefinition =
 -- * 'ccdName' - The name of the core definition.
 createCoreDefinition
     :: CreateCoreDefinition
-createCoreDefinition =
-  CreateCoreDefinition'
-    { _ccdAmznClientToken = Nothing
-    , _ccdInitialVersion = Nothing
-    , _ccdName = Nothing
-    }
-
+createCoreDefinition
+  = CreateCoreDefinition'{_ccdAmznClientToken =
+                            Nothing,
+                          _ccdInitialVersion = Nothing, _ccdName = Nothing}
 
 -- | A client token used to correlate requests and responses.
 ccdAmznClientToken :: Lens' CreateCoreDefinition (Maybe Text)
@@ -134,19 +129,28 @@ instance ToQuery CreateCoreDefinition where
         toQuery = const mempty
 
 -- | /See:/ 'createCoreDefinitionResponse' smart constructor.
-data CreateCoreDefinitionResponse =
-  CreateCoreDefinitionResponse'
-    { _ccdrsLatestVersionARN     :: !(Maybe Text)
-    , _ccdrsARN                  :: !(Maybe Text)
-    , _ccdrsName                 :: !(Maybe Text)
-    , _ccdrsCreationTimestamp    :: !(Maybe Text)
-    , _ccdrsId                   :: !(Maybe Text)
-    , _ccdrsLatestVersion        :: !(Maybe Text)
-    , _ccdrsLastUpdatedTimestamp :: !(Maybe Text)
-    , _ccdrsResponseStatus       :: !Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data CreateCoreDefinitionResponse = CreateCoreDefinitionResponse'{_ccdrsLatestVersionARN
+                                                                  ::
+                                                                  !(Maybe Text),
+                                                                  _ccdrsARN ::
+                                                                  !(Maybe Text),
+                                                                  _ccdrsName ::
+                                                                  !(Maybe Text),
+                                                                  _ccdrsCreationTimestamp
+                                                                  ::
+                                                                  !(Maybe Text),
+                                                                  _ccdrsId ::
+                                                                  !(Maybe Text),
+                                                                  _ccdrsLatestVersion
+                                                                  ::
+                                                                  !(Maybe Text),
+                                                                  _ccdrsLastUpdatedTimestamp
+                                                                  ::
+                                                                  !(Maybe Text),
+                                                                  _ccdrsResponseStatus
+                                                                  :: !Int}
+                                      deriving (Eq, Read, Show, Data, Typeable,
+                                                Generic)
 
 -- | Creates a value of 'CreateCoreDefinitionResponse' with the minimum fields required to make a request.
 --
@@ -170,18 +174,15 @@ data CreateCoreDefinitionResponse =
 createCoreDefinitionResponse
     :: Int -- ^ 'ccdrsResponseStatus'
     -> CreateCoreDefinitionResponse
-createCoreDefinitionResponse pResponseStatus_ =
-  CreateCoreDefinitionResponse'
-    { _ccdrsLatestVersionARN = Nothing
-    , _ccdrsARN = Nothing
-    , _ccdrsName = Nothing
-    , _ccdrsCreationTimestamp = Nothing
-    , _ccdrsId = Nothing
-    , _ccdrsLatestVersion = Nothing
-    , _ccdrsLastUpdatedTimestamp = Nothing
-    , _ccdrsResponseStatus = pResponseStatus_
-    }
-
+createCoreDefinitionResponse pResponseStatus_
+  = CreateCoreDefinitionResponse'{_ccdrsLatestVersionARN
+                                    = Nothing,
+                                  _ccdrsARN = Nothing, _ccdrsName = Nothing,
+                                  _ccdrsCreationTimestamp = Nothing,
+                                  _ccdrsId = Nothing,
+                                  _ccdrsLatestVersion = Nothing,
+                                  _ccdrsLastUpdatedTimestamp = Nothing,
+                                  _ccdrsResponseStatus = pResponseStatus_}
 
 -- | The ARN of the latest version of the definition.
 ccdrsLatestVersionARN :: Lens' CreateCoreDefinitionResponse (Maybe Text)

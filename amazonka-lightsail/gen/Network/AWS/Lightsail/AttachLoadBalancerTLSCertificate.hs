@@ -42,19 +42,19 @@ module Network.AWS.Lightsail.AttachLoadBalancerTLSCertificate
 
 import Network.AWS.Lens
 import Network.AWS.Lightsail.Types
-import Network.AWS.Lightsail.Types.Product
 import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 
 -- | /See:/ 'attachLoadBalancerTLSCertificate' smart constructor.
-data AttachLoadBalancerTLSCertificate =
-  AttachLoadBalancerTLSCertificate'
-    { _albtcLoadBalancerName :: !Text
-    , _albtcCertificateName  :: !Text
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data AttachLoadBalancerTLSCertificate = AttachLoadBalancerTLSCertificate'{_albtcLoadBalancerName
+                                                                          ::
+                                                                          !Text,
+                                                                          _albtcCertificateName
+                                                                          ::
+                                                                          !Text}
+                                          deriving (Eq, Read, Show, Data,
+                                                    Typeable, Generic)
 
 -- | Creates a value of 'AttachLoadBalancerTLSCertificate' with the minimum fields required to make a request.
 --
@@ -67,12 +67,11 @@ attachLoadBalancerTLSCertificate
     :: Text -- ^ 'albtcLoadBalancerName'
     -> Text -- ^ 'albtcCertificateName'
     -> AttachLoadBalancerTLSCertificate
-attachLoadBalancerTLSCertificate pLoadBalancerName_ pCertificateName_ =
-  AttachLoadBalancerTLSCertificate'
-    { _albtcLoadBalancerName = pLoadBalancerName_
-    , _albtcCertificateName = pCertificateName_
-    }
-
+attachLoadBalancerTLSCertificate pLoadBalancerName_
+  pCertificateName_
+  = AttachLoadBalancerTLSCertificate'{_albtcLoadBalancerName
+                                        = pLoadBalancerName_,
+                                      _albtcCertificateName = pCertificateName_}
 
 -- | The name of the load balancer to which you want to associate the SSL/TLS certificate.
 albtcLoadBalancerName :: Lens' AttachLoadBalancerTLSCertificate Text
@@ -128,13 +127,16 @@ instance ToQuery AttachLoadBalancerTLSCertificate
         toQuery = const mempty
 
 -- | /See:/ 'attachLoadBalancerTLSCertificateResponse' smart constructor.
-data AttachLoadBalancerTLSCertificateResponse =
-  AttachLoadBalancerTLSCertificateResponse'
-    { _albtcrsOperations     :: !(Maybe [Operation])
-    , _albtcrsResponseStatus :: !Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data AttachLoadBalancerTLSCertificateResponse = AttachLoadBalancerTLSCertificateResponse'{_albtcrsOperations
+                                                                                          ::
+                                                                                          !(Maybe
+                                                                                              [Operation]),
+                                                                                          _albtcrsResponseStatus
+                                                                                          ::
+                                                                                          !Int}
+                                                  deriving (Eq, Read, Show,
+                                                            Data, Typeable,
+                                                            Generic)
 
 -- | Creates a value of 'AttachLoadBalancerTLSCertificateResponse' with the minimum fields required to make a request.
 --
@@ -146,10 +148,12 @@ data AttachLoadBalancerTLSCertificateResponse =
 attachLoadBalancerTLSCertificateResponse
     :: Int -- ^ 'albtcrsResponseStatus'
     -> AttachLoadBalancerTLSCertificateResponse
-attachLoadBalancerTLSCertificateResponse pResponseStatus_ =
-  AttachLoadBalancerTLSCertificateResponse'
-    {_albtcrsOperations = Nothing, _albtcrsResponseStatus = pResponseStatus_}
-
+attachLoadBalancerTLSCertificateResponse
+  pResponseStatus_
+  = AttachLoadBalancerTLSCertificateResponse'{_albtcrsOperations
+                                                = Nothing,
+                                              _albtcrsResponseStatus =
+                                                pResponseStatus_}
 
 -- | An object representing the API operations. These SSL/TLS certificates are only usable by Lightsail load balancers. You can't get the certificate and use it for another purpose.
 albtcrsOperations :: Lens' AttachLoadBalancerTLSCertificateResponse [Operation]

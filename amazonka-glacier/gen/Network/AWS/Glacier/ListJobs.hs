@@ -27,7 +27,7 @@
 --
 -- Additionally, you can filter the jobs list returned by specifying the optional @statuscode@ parameter or @completed@ parameter, or both. Using the @statuscode@ parameter, you can specify to return only jobs that match either the @InProgress@ , @Succeeded@ , or @Failed@ status. Using the @completed@ parameter, you can specify to return only jobs that were completed (@true@ ) or jobs that were not completed (@false@ ).
 --
--- For more information about using this operation, see the documentation for the underlying REST API <http://docs.aws.amazon.com/amazonglacier/latest/dev/api-jobs-get.html List Jobs> .
+-- For more information about using this operation, see the documentation for the underlying REST API <http://docs.aws.amazon.com/amazonglacier/latest/dev/api-jobs-get.html List Jobs> . 
 --
 --
 -- This operation returns paginated results.
@@ -54,7 +54,6 @@ module Network.AWS.Glacier.ListJobs
     ) where
 
 import Network.AWS.Glacier.Types
-import Network.AWS.Glacier.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Pager
 import Network.AWS.Prelude
@@ -66,17 +65,12 @@ import Network.AWS.Response
 --
 --
 -- /See:/ 'listJobs' smart constructor.
-data ListJobs =
-  ListJobs'
-    { _ljMarker     :: !(Maybe Text)
-    , _ljCompleted  :: !(Maybe Text)
-    , _ljLimit      :: !(Maybe Text)
-    , _ljStatuscode :: !(Maybe Text)
-    , _ljAccountId  :: !Text
-    , _ljVaultName  :: !Text
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data ListJobs = ListJobs'{_ljMarker :: !(Maybe Text),
+                          _ljCompleted :: !(Maybe Text),
+                          _ljLimit :: !(Maybe Text),
+                          _ljStatuscode :: !(Maybe Text),
+                          _ljAccountId :: !Text, _ljVaultName :: !Text}
+                  deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'ListJobs' with the minimum fields required to make a request.
 --
@@ -90,23 +84,18 @@ data ListJobs =
 --
 -- * 'ljStatuscode' - The type of job status to return. You can specify the following values: @InProgress@ , @Succeeded@ , or @Failed@ .
 --
--- * 'ljAccountId' - The @AccountId@ value is the AWS account ID of the account that owns the vault. You can either specify an AWS account ID or optionally a single '@-@ ' (hyphen), in which case Amazon Glacier uses the AWS account ID associated with the credentials used to sign the request. If you use an account ID, do not include any hyphens ('-') in the ID.
+-- * 'ljAccountId' - The @AccountId@ value is the AWS account ID of the account that owns the vault. You can either specify an AWS account ID or optionally a single '@-@ ' (hyphen), in which case Amazon Glacier uses the AWS account ID associated with the credentials used to sign the request. If you use an account ID, do not include any hyphens ('-') in the ID. 
 --
 -- * 'ljVaultName' - The name of the vault.
 listJobs
     :: Text -- ^ 'ljAccountId'
     -> Text -- ^ 'ljVaultName'
     -> ListJobs
-listJobs pAccountId_ pVaultName_ =
-  ListJobs'
-    { _ljMarker = Nothing
-    , _ljCompleted = Nothing
-    , _ljLimit = Nothing
-    , _ljStatuscode = Nothing
-    , _ljAccountId = pAccountId_
-    , _ljVaultName = pVaultName_
-    }
-
+listJobs pAccountId_ pVaultName_
+  = ListJobs'{_ljMarker = Nothing,
+              _ljCompleted = Nothing, _ljLimit = Nothing,
+              _ljStatuscode = Nothing, _ljAccountId = pAccountId_,
+              _ljVaultName = pVaultName_}
 
 -- | An opaque string used for pagination. This value specifies the job at which the listing of jobs should begin. Get the marker value from a previous List Jobs response. You only need to include the marker if you are continuing the pagination of results started in a previous List Jobs request.
 ljMarker :: Lens' ListJobs (Maybe Text)
@@ -124,7 +113,7 @@ ljLimit = lens _ljLimit (\ s a -> s{_ljLimit = a})
 ljStatuscode :: Lens' ListJobs (Maybe Text)
 ljStatuscode = lens _ljStatuscode (\ s a -> s{_ljStatuscode = a})
 
--- | The @AccountId@ value is the AWS account ID of the account that owns the vault. You can either specify an AWS account ID or optionally a single '@-@ ' (hyphen), in which case Amazon Glacier uses the AWS account ID associated with the credentials used to sign the request. If you use an account ID, do not include any hyphens ('-') in the ID.
+-- | The @AccountId@ value is the AWS account ID of the account that owns the vault. You can either specify an AWS account ID or optionally a single '@-@ ' (hyphen), in which case Amazon Glacier uses the AWS account ID associated with the credentials used to sign the request. If you use an account ID, do not include any hyphens ('-') in the ID. 
 ljAccountId :: Lens' ListJobs Text
 ljAccountId = lens _ljAccountId (\ s a -> s{_ljAccountId = a})
 
@@ -173,20 +162,18 @@ instance ToQuery ListJobs where
 --
 --
 -- /See:/ 'listJobsResponse' smart constructor.
-data ListJobsResponse =
-  ListJobsResponse'
-    { _ljrsMarker         :: !(Maybe Text)
-    , _ljrsJobList        :: !(Maybe [GlacierJobDescription])
-    , _ljrsResponseStatus :: !Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data ListJobsResponse = ListJobsResponse'{_ljrsMarker
+                                          :: !(Maybe Text),
+                                          _ljrsJobList ::
+                                          !(Maybe [GlacierJobDescription]),
+                                          _ljrsResponseStatus :: !Int}
+                          deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'ListJobsResponse' with the minimum fields required to make a request.
 --
 -- Use one of the following lenses to modify other fields as desired:
 --
--- * 'ljrsMarker' - An opaque string used for pagination that specifies the job at which the listing of jobs should begin. You get the @marker@ value from a previous List Jobs response. You only need to include the marker if you are continuing the pagination of the results started in a previous List Jobs request.
+-- * 'ljrsMarker' - An opaque string used for pagination that specifies the job at which the listing of jobs should begin. You get the @marker@ value from a previous List Jobs response. You only need to include the marker if you are continuing the pagination of the results started in a previous List Jobs request. 
 --
 -- * 'ljrsJobList' - A list of job objects. Each job object contains metadata describing the job.
 --
@@ -194,15 +181,12 @@ data ListJobsResponse =
 listJobsResponse
     :: Int -- ^ 'ljrsResponseStatus'
     -> ListJobsResponse
-listJobsResponse pResponseStatus_ =
-  ListJobsResponse'
-    { _ljrsMarker = Nothing
-    , _ljrsJobList = Nothing
-    , _ljrsResponseStatus = pResponseStatus_
-    }
+listJobsResponse pResponseStatus_
+  = ListJobsResponse'{_ljrsMarker = Nothing,
+                      _ljrsJobList = Nothing,
+                      _ljrsResponseStatus = pResponseStatus_}
 
-
--- | An opaque string used for pagination that specifies the job at which the listing of jobs should begin. You get the @marker@ value from a previous List Jobs response. You only need to include the marker if you are continuing the pagination of the results started in a previous List Jobs request.
+-- | An opaque string used for pagination that specifies the job at which the listing of jobs should begin. You get the @marker@ value from a previous List Jobs response. You only need to include the marker if you are continuing the pagination of the results started in a previous List Jobs request. 
 ljrsMarker :: Lens' ListJobsResponse (Maybe Text)
 ljrsMarker = lens _ljrsMarker (\ s a -> s{_ljrsMarker = a})
 

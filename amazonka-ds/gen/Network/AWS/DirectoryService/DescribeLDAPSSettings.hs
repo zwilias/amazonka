@@ -42,22 +42,22 @@ module Network.AWS.DirectoryService.DescribeLDAPSSettings
     ) where
 
 import Network.AWS.DirectoryService.Types
-import Network.AWS.DirectoryService.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 
 -- | /See:/ 'describeLDAPSSettings' smart constructor.
-data DescribeLDAPSSettings =
-  DescribeLDAPSSettings'
-    { _dldapssNextToken   :: !(Maybe Text)
-    , _dldapssLimit       :: !(Maybe Nat)
-    , _dldapssType        :: !(Maybe LDAPSType)
-    , _dldapssDirectoryId :: !Text
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data DescribeLDAPSSettings = DescribeLDAPSSettings'{_dldapssNextToken
+                                                    :: !(Maybe Text),
+                                                    _dldapssLimit ::
+                                                    !(Maybe Nat),
+                                                    _dldapssType ::
+                                                    !(Maybe LDAPSType),
+                                                    _dldapssDirectoryId ::
+                                                    !Text}
+                               deriving (Eq, Read, Show, Data, Typeable,
+                                         Generic)
 
 -- | Creates a value of 'DescribeLDAPSSettings' with the minimum fields required to make a request.
 --
@@ -73,14 +73,10 @@ data DescribeLDAPSSettings =
 describeLDAPSSettings
     :: Text -- ^ 'dldapssDirectoryId'
     -> DescribeLDAPSSettings
-describeLDAPSSettings pDirectoryId_ =
-  DescribeLDAPSSettings'
-    { _dldapssNextToken = Nothing
-    , _dldapssLimit = Nothing
-    , _dldapssType = Nothing
-    , _dldapssDirectoryId = pDirectoryId_
-    }
-
+describeLDAPSSettings pDirectoryId_
+  = DescribeLDAPSSettings'{_dldapssNextToken = Nothing,
+                           _dldapssLimit = Nothing, _dldapssType = Nothing,
+                           _dldapssDirectoryId = pDirectoryId_}
 
 -- | The type of next token used for pagination.
 dldapssNextToken :: Lens' DescribeLDAPSSettings (Maybe Text)
@@ -140,14 +136,18 @@ instance ToQuery DescribeLDAPSSettings where
         toQuery = const mempty
 
 -- | /See:/ 'describeLDAPSSettingsResponse' smart constructor.
-data DescribeLDAPSSettingsResponse =
-  DescribeLDAPSSettingsResponse'
-    { _dldapssrsLDAPSSettingsInfo :: !(Maybe [LDAPSSettingInfo])
-    , _dldapssrsNextToken         :: !(Maybe Text)
-    , _dldapssrsResponseStatus    :: !Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data DescribeLDAPSSettingsResponse = DescribeLDAPSSettingsResponse'{_dldapssrsLDAPSSettingsInfo
+                                                                    ::
+                                                                    !(Maybe
+                                                                        [LDAPSSettingInfo]),
+                                                                    _dldapssrsNextToken
+                                                                    ::
+                                                                    !(Maybe
+                                                                        Text),
+                                                                    _dldapssrsResponseStatus
+                                                                    :: !Int}
+                                       deriving (Eq, Read, Show, Data, Typeable,
+                                                 Generic)
 
 -- | Creates a value of 'DescribeLDAPSSettingsResponse' with the minimum fields required to make a request.
 --
@@ -161,13 +161,11 @@ data DescribeLDAPSSettingsResponse =
 describeLDAPSSettingsResponse
     :: Int -- ^ 'dldapssrsResponseStatus'
     -> DescribeLDAPSSettingsResponse
-describeLDAPSSettingsResponse pResponseStatus_ =
-  DescribeLDAPSSettingsResponse'
-    { _dldapssrsLDAPSSettingsInfo = Nothing
-    , _dldapssrsNextToken = Nothing
-    , _dldapssrsResponseStatus = pResponseStatus_
-    }
-
+describeLDAPSSettingsResponse pResponseStatus_
+  = DescribeLDAPSSettingsResponse'{_dldapssrsLDAPSSettingsInfo
+                                     = Nothing,
+                                   _dldapssrsNextToken = Nothing,
+                                   _dldapssrsResponseStatus = pResponseStatus_}
 
 -- | Information about LDAP security for the specified directory, including status of enablement, state last updated date time, and the reason for the state.
 dldapssrsLDAPSSettingsInfo :: Lens' DescribeLDAPSSettingsResponse [LDAPSSettingInfo]

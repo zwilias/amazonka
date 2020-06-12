@@ -37,24 +37,22 @@ module Network.AWS.AppStream.CreateUsageReportSubscription
     ) where
 
 import Network.AWS.AppStream.Types
-import Network.AWS.AppStream.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 
 -- | /See:/ 'createUsageReportSubscription' smart constructor.
-data CreateUsageReportSubscription =
-  CreateUsageReportSubscription'
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data CreateUsageReportSubscription = CreateUsageReportSubscription'
+                                       deriving (Eq, Read, Show, Data, Typeable,
+                                                 Generic)
 
 -- | Creates a value of 'CreateUsageReportSubscription' with the minimum fields required to make a request.
 --
 createUsageReportSubscription
     :: CreateUsageReportSubscription
-createUsageReportSubscription = CreateUsageReportSubscription'
-
+createUsageReportSubscription
+  = CreateUsageReportSubscription'
 
 instance AWSRequest CreateUsageReportSubscription
          where
@@ -93,14 +91,19 @@ instance ToQuery CreateUsageReportSubscription where
         toQuery = const mempty
 
 -- | /See:/ 'createUsageReportSubscriptionResponse' smart constructor.
-data CreateUsageReportSubscriptionResponse =
-  CreateUsageReportSubscriptionResponse'
-    { _cursrsSchedule       :: !(Maybe UsageReportSchedule)
-    , _cursrsS3BucketName   :: !(Maybe Text)
-    , _cursrsResponseStatus :: !Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data CreateUsageReportSubscriptionResponse = CreateUsageReportSubscriptionResponse'{_cursrsSchedule
+                                                                                    ::
+                                                                                    !(Maybe
+                                                                                        UsageReportSchedule),
+                                                                                    _cursrsS3BucketName
+                                                                                    ::
+                                                                                    !(Maybe
+                                                                                        Text),
+                                                                                    _cursrsResponseStatus
+                                                                                    ::
+                                                                                    !Int}
+                                               deriving (Eq, Read, Show, Data,
+                                                         Typeable, Generic)
 
 -- | Creates a value of 'CreateUsageReportSubscriptionResponse' with the minimum fields required to make a request.
 --
@@ -114,13 +117,13 @@ data CreateUsageReportSubscriptionResponse =
 createUsageReportSubscriptionResponse
     :: Int -- ^ 'cursrsResponseStatus'
     -> CreateUsageReportSubscriptionResponse
-createUsageReportSubscriptionResponse pResponseStatus_ =
-  CreateUsageReportSubscriptionResponse'
-    { _cursrsSchedule = Nothing
-    , _cursrsS3BucketName = Nothing
-    , _cursrsResponseStatus = pResponseStatus_
-    }
-
+createUsageReportSubscriptionResponse
+  pResponseStatus_
+  = CreateUsageReportSubscriptionResponse'{_cursrsSchedule
+                                             = Nothing,
+                                           _cursrsS3BucketName = Nothing,
+                                           _cursrsResponseStatus =
+                                             pResponseStatus_}
 
 -- | The schedule for generating usage reports.
 cursrsSchedule :: Lens' CreateUsageReportSubscriptionResponse (Maybe UsageReportSchedule)

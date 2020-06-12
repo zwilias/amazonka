@@ -40,7 +40,6 @@ module Network.AWS.EMR.AddInstanceGroups
     ) where
 
 import Network.AWS.EMR.Types
-import Network.AWS.EMR.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.Request
@@ -51,13 +50,10 @@ import Network.AWS.Response
 --
 --
 -- /See:/ 'addInstanceGroups' smart constructor.
-data AddInstanceGroups =
-  AddInstanceGroups'
-    { _aigInstanceGroups :: ![InstanceGroupConfig]
-    , _aigJobFlowId      :: !Text
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data AddInstanceGroups = AddInstanceGroups'{_aigInstanceGroups
+                                            :: ![InstanceGroupConfig],
+                                            _aigJobFlowId :: !Text}
+                           deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'AddInstanceGroups' with the minimum fields required to make a request.
 --
@@ -69,9 +65,9 @@ data AddInstanceGroups =
 addInstanceGroups
     :: Text -- ^ 'aigJobFlowId'
     -> AddInstanceGroups
-addInstanceGroups pJobFlowId_ =
-  AddInstanceGroups' {_aigInstanceGroups = mempty, _aigJobFlowId = pJobFlowId_}
-
+addInstanceGroups pJobFlowId_
+  = AddInstanceGroups'{_aigInstanceGroups = mempty,
+                       _aigJobFlowId = pJobFlowId_}
 
 -- | Instance groups to add.
 aigInstanceGroups :: Lens' AddInstanceGroups [InstanceGroupConfig]
@@ -123,14 +119,14 @@ instance ToQuery AddInstanceGroups where
 --
 --
 -- /See:/ 'addInstanceGroupsResponse' smart constructor.
-data AddInstanceGroupsResponse =
-  AddInstanceGroupsResponse'
-    { _aigrsJobFlowId        :: !(Maybe Text)
-    , _aigrsInstanceGroupIds :: !(Maybe [Text])
-    , _aigrsResponseStatus   :: !Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data AddInstanceGroupsResponse = AddInstanceGroupsResponse'{_aigrsJobFlowId
+                                                            :: !(Maybe Text),
+                                                            _aigrsInstanceGroupIds
+                                                            :: !(Maybe [Text]),
+                                                            _aigrsResponseStatus
+                                                            :: !Int}
+                                   deriving (Eq, Read, Show, Data, Typeable,
+                                             Generic)
 
 -- | Creates a value of 'AddInstanceGroupsResponse' with the minimum fields required to make a request.
 --
@@ -144,13 +140,11 @@ data AddInstanceGroupsResponse =
 addInstanceGroupsResponse
     :: Int -- ^ 'aigrsResponseStatus'
     -> AddInstanceGroupsResponse
-addInstanceGroupsResponse pResponseStatus_ =
-  AddInstanceGroupsResponse'
-    { _aigrsJobFlowId = Nothing
-    , _aigrsInstanceGroupIds = Nothing
-    , _aigrsResponseStatus = pResponseStatus_
-    }
-
+addInstanceGroupsResponse pResponseStatus_
+  = AddInstanceGroupsResponse'{_aigrsJobFlowId =
+                                 Nothing,
+                               _aigrsInstanceGroupIds = Nothing,
+                               _aigrsResponseStatus = pResponseStatus_}
 
 -- | The job flow ID in which the instance groups are added.
 aigrsJobFlowId :: Lens' AddInstanceGroupsResponse (Maybe Text)

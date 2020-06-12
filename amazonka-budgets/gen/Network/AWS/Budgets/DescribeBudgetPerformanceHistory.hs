@@ -43,23 +43,32 @@ module Network.AWS.Budgets.DescribeBudgetPerformanceHistory
     ) where
 
 import Network.AWS.Budgets.Types
-import Network.AWS.Budgets.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 
 -- | /See:/ 'describeBudgetPerformanceHistory' smart constructor.
-data DescribeBudgetPerformanceHistory =
-  DescribeBudgetPerformanceHistory'
-    { _dbphTimePeriod :: !(Maybe TimePeriod)
-    , _dbphNextToken  :: !(Maybe Text)
-    , _dbphMaxResults :: !(Maybe Nat)
-    , _dbphAccountId  :: !Text
-    , _dbphBudgetName :: !Text
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data DescribeBudgetPerformanceHistory = DescribeBudgetPerformanceHistory'{_dbphTimePeriod
+                                                                          ::
+                                                                          !(Maybe
+                                                                              TimePeriod),
+                                                                          _dbphNextToken
+                                                                          ::
+                                                                          !(Maybe
+                                                                              Text),
+                                                                          _dbphMaxResults
+                                                                          ::
+                                                                          !(Maybe
+                                                                              Nat),
+                                                                          _dbphAccountId
+                                                                          ::
+                                                                          !Text,
+                                                                          _dbphBudgetName
+                                                                          ::
+                                                                          !Text}
+                                          deriving (Eq, Read, Show, Data,
+                                                    Typeable, Generic)
 
 -- | Creates a value of 'DescribeBudgetPerformanceHistory' with the minimum fields required to make a request.
 --
@@ -78,15 +87,14 @@ describeBudgetPerformanceHistory
     :: Text -- ^ 'dbphAccountId'
     -> Text -- ^ 'dbphBudgetName'
     -> DescribeBudgetPerformanceHistory
-describeBudgetPerformanceHistory pAccountId_ pBudgetName_ =
-  DescribeBudgetPerformanceHistory'
-    { _dbphTimePeriod = Nothing
-    , _dbphNextToken = Nothing
-    , _dbphMaxResults = Nothing
-    , _dbphAccountId = pAccountId_
-    , _dbphBudgetName = pBudgetName_
-    }
-
+describeBudgetPerformanceHistory pAccountId_
+  pBudgetName_
+  = DescribeBudgetPerformanceHistory'{_dbphTimePeriod =
+                                        Nothing,
+                                      _dbphNextToken = Nothing,
+                                      _dbphMaxResults = Nothing,
+                                      _dbphAccountId = pAccountId_,
+                                      _dbphBudgetName = pBudgetName_}
 
 -- | Retrieves how often the budget went into an @ALARM@ state for the specified time period.
 dbphTimePeriod :: Lens' DescribeBudgetPerformanceHistory (Maybe TimePeriod)
@@ -158,14 +166,20 @@ instance ToQuery DescribeBudgetPerformanceHistory
         toQuery = const mempty
 
 -- | /See:/ 'describeBudgetPerformanceHistoryResponse' smart constructor.
-data DescribeBudgetPerformanceHistoryResponse =
-  DescribeBudgetPerformanceHistoryResponse'
-    { _dbphrsBudgetPerformanceHistory :: !(Maybe BudgetPerformanceHistory)
-    , _dbphrsNextToken                :: !(Maybe Text)
-    , _dbphrsResponseStatus           :: !Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data DescribeBudgetPerformanceHistoryResponse = DescribeBudgetPerformanceHistoryResponse'{_dbphrsBudgetPerformanceHistory
+                                                                                          ::
+                                                                                          !(Maybe
+                                                                                              BudgetPerformanceHistory),
+                                                                                          _dbphrsNextToken
+                                                                                          ::
+                                                                                          !(Maybe
+                                                                                              Text),
+                                                                                          _dbphrsResponseStatus
+                                                                                          ::
+                                                                                          !Int}
+                                                  deriving (Eq, Read, Show,
+                                                            Data, Typeable,
+                                                            Generic)
 
 -- | Creates a value of 'DescribeBudgetPerformanceHistoryResponse' with the minimum fields required to make a request.
 --
@@ -179,13 +193,13 @@ data DescribeBudgetPerformanceHistoryResponse =
 describeBudgetPerformanceHistoryResponse
     :: Int -- ^ 'dbphrsResponseStatus'
     -> DescribeBudgetPerformanceHistoryResponse
-describeBudgetPerformanceHistoryResponse pResponseStatus_ =
-  DescribeBudgetPerformanceHistoryResponse'
-    { _dbphrsBudgetPerformanceHistory = Nothing
-    , _dbphrsNextToken = Nothing
-    , _dbphrsResponseStatus = pResponseStatus_
-    }
-
+describeBudgetPerformanceHistoryResponse
+  pResponseStatus_
+  = DescribeBudgetPerformanceHistoryResponse'{_dbphrsBudgetPerformanceHistory
+                                                = Nothing,
+                                              _dbphrsNextToken = Nothing,
+                                              _dbphrsResponseStatus =
+                                                pResponseStatus_}
 
 -- | The history of how often the budget has gone into an @ALARM@ state. For @DAILY@ budgets, the history saves the state of the budget for the last 60 days. For @MONTHLY@ budgets, the history saves the state of the budget for the current month plus the last 12 months. For @QUARTERLY@ budgets, the history saves the state of the budget for the last four quarters.
 dbphrsBudgetPerformanceHistory :: Lens' DescribeBudgetPerformanceHistoryResponse (Maybe BudgetPerformanceHistory)

@@ -68,26 +68,22 @@ module Network.AWS.DirectConnect.CreateLag
     ) where
 
 import Network.AWS.DirectConnect.Types
-import Network.AWS.DirectConnect.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 
 -- | /See:/ 'createLag' smart constructor.
-data CreateLag =
-  CreateLag'
-    { _clChildConnectionTags  :: !(Maybe (List1 Tag))
-    , _clConnectionId         :: !(Maybe Text)
-    , _clProviderName         :: !(Maybe Text)
-    , _clTags                 :: !(Maybe (List1 Tag))
-    , _clNumberOfConnections  :: !Int
-    , _clLocation             :: !Text
-    , _clConnectionsBandwidth :: !Text
-    , _clLagName              :: !Text
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data CreateLag = CreateLag'{_clChildConnectionTags ::
+                            !(Maybe (List1 Tag)),
+                            _clConnectionId :: !(Maybe Text),
+                            _clProviderName :: !(Maybe Text),
+                            _clTags :: !(Maybe (List1 Tag)),
+                            _clNumberOfConnections :: !Int,
+                            _clLocation :: !Text,
+                            _clConnectionsBandwidth :: !Text,
+                            _clLagName :: !Text}
+                   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'CreateLag' with the minimum fields required to make a request.
 --
@@ -105,7 +101,7 @@ data CreateLag =
 --
 -- * 'clLocation' - The location for the LAG.
 --
--- * 'clConnectionsBandwidth' - The bandwidth of the individual physical connections bundled by the LAG. The possible values are 50Mbps, 100Mbps, 200Mbps, 300Mbps, 400Mbps, 500Mbps, 1Gbps, 2Gbps, 5Gbps, and 10Gbps.
+-- * 'clConnectionsBandwidth' - The bandwidth of the individual physical connections bundled by the LAG. The possible values are 50Mbps, 100Mbps, 200Mbps, 300Mbps, 400Mbps, 500Mbps, 1Gbps, 2Gbps, 5Gbps, and 10Gbps. 
 --
 -- * 'clLagName' - The name of the LAG.
 createLag
@@ -114,18 +110,15 @@ createLag
     -> Text -- ^ 'clConnectionsBandwidth'
     -> Text -- ^ 'clLagName'
     -> CreateLag
-createLag pNumberOfConnections_ pLocation_ pConnectionsBandwidth_ pLagName_ =
-  CreateLag'
-    { _clChildConnectionTags = Nothing
-    , _clConnectionId = Nothing
-    , _clProviderName = Nothing
-    , _clTags = Nothing
-    , _clNumberOfConnections = pNumberOfConnections_
-    , _clLocation = pLocation_
-    , _clConnectionsBandwidth = pConnectionsBandwidth_
-    , _clLagName = pLagName_
-    }
-
+createLag pNumberOfConnections_ pLocation_
+  pConnectionsBandwidth_ pLagName_
+  = CreateLag'{_clChildConnectionTags = Nothing,
+               _clConnectionId = Nothing, _clProviderName = Nothing,
+               _clTags = Nothing,
+               _clNumberOfConnections = pNumberOfConnections_,
+               _clLocation = pLocation_,
+               _clConnectionsBandwidth = pConnectionsBandwidth_,
+               _clLagName = pLagName_}
 
 -- | The tags to associate with the automtically created LAGs.
 clChildConnectionTags :: Lens' CreateLag (Maybe (NonEmpty Tag))
@@ -151,7 +144,7 @@ clNumberOfConnections = lens _clNumberOfConnections (\ s a -> s{_clNumberOfConne
 clLocation :: Lens' CreateLag Text
 clLocation = lens _clLocation (\ s a -> s{_clLocation = a})
 
--- | The bandwidth of the individual physical connections bundled by the LAG. The possible values are 50Mbps, 100Mbps, 200Mbps, 300Mbps, 400Mbps, 500Mbps, 1Gbps, 2Gbps, 5Gbps, and 10Gbps.
+-- | The bandwidth of the individual physical connections bundled by the LAG. The possible values are 50Mbps, 100Mbps, 200Mbps, 300Mbps, 400Mbps, 500Mbps, 1Gbps, 2Gbps, 5Gbps, and 10Gbps. 
 clConnectionsBandwidth :: Lens' CreateLag Text
 clConnectionsBandwidth = lens _clConnectionsBandwidth (\ s a -> s{_clConnectionsBandwidth = a})
 

@@ -68,16 +68,16 @@ module Network.AWS.Connect
     -- ** ListSecurityProfiles (Paginated)
     , module Network.AWS.Connect.ListSecurityProfiles
 
-    -- ** UpdateUserHierarchy
+    -- ** UpdateUserHierarchy 
     , module Network.AWS.Connect.UpdateUserHierarchy
 
-    -- ** UpdateUserRoutingProfile
+    -- ** UpdateUserRoutingProfile 
     , module Network.AWS.Connect.UpdateUserRoutingProfile
 
-    -- ** StartOutboundVoiceContact
+    -- ** StartOutboundVoiceContact 
     , module Network.AWS.Connect.StartOutboundVoiceContact
 
-    -- ** ListTagsForResource
+    -- ** ListTagsForResource 
     , module Network.AWS.Connect.ListTagsForResource
 
     -- ** GetMetricData (Paginated)
@@ -92,61 +92,61 @@ module Network.AWS.Connect
     -- ** ListQueues (Paginated)
     , module Network.AWS.Connect.ListQueues
 
-    -- ** GetCurrentMetricData
+    -- ** GetCurrentMetricData 
     , module Network.AWS.Connect.GetCurrentMetricData
 
     -- ** ListRoutingProfiles (Paginated)
     , module Network.AWS.Connect.ListRoutingProfiles
 
-    -- ** UpdateUserPhoneConfig
+    -- ** UpdateUserPhoneConfig 
     , module Network.AWS.Connect.UpdateUserPhoneConfig
 
-    -- ** DescribeUserHierarchyStructure
+    -- ** DescribeUserHierarchyStructure 
     , module Network.AWS.Connect.DescribeUserHierarchyStructure
 
     -- ** ListPhoneNumbers (Paginated)
     , module Network.AWS.Connect.ListPhoneNumbers
 
-    -- ** UpdateContactAttributes
+    -- ** UpdateContactAttributes 
     , module Network.AWS.Connect.UpdateContactAttributes
 
-    -- ** StartChatContact
+    -- ** StartChatContact 
     , module Network.AWS.Connect.StartChatContact
 
-    -- ** UpdateUserSecurityProfiles
+    -- ** UpdateUserSecurityProfiles 
     , module Network.AWS.Connect.UpdateUserSecurityProfiles
 
-    -- ** GetContactAttributes
+    -- ** GetContactAttributes 
     , module Network.AWS.Connect.GetContactAttributes
 
-    -- ** DescribeUserHierarchyGroup
+    -- ** DescribeUserHierarchyGroup 
     , module Network.AWS.Connect.DescribeUserHierarchyGroup
 
-    -- ** DescribeUser
+    -- ** DescribeUser 
     , module Network.AWS.Connect.DescribeUser
 
-    -- ** CreateUser
+    -- ** CreateUser 
     , module Network.AWS.Connect.CreateUser
 
-    -- ** GetFederationToken
+    -- ** GetFederationToken 
     , module Network.AWS.Connect.GetFederationToken
 
-    -- ** StopContact
+    -- ** StopContact 
     , module Network.AWS.Connect.StopContact
 
-    -- ** DeleteUser
+    -- ** DeleteUser 
     , module Network.AWS.Connect.DeleteUser
 
-    -- ** TagResource
+    -- ** TagResource 
     , module Network.AWS.Connect.TagResource
 
-    -- ** UpdateUserIdentityInfo
+    -- ** UpdateUserIdentityInfo 
     , module Network.AWS.Connect.UpdateUserIdentityInfo
 
     -- ** ListContactFlows (Paginated)
     , module Network.AWS.Connect.ListContactFlows
 
-    -- ** UntagResource
+    -- ** UntagResource 
     , module Network.AWS.Connect.UntagResource
 
     -- ** ListHoursOfOperations (Paginated)

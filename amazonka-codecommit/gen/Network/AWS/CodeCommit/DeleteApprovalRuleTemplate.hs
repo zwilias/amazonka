@@ -38,19 +38,16 @@ module Network.AWS.CodeCommit.DeleteApprovalRuleTemplate
     ) where
 
 import Network.AWS.CodeCommit.Types
-import Network.AWS.CodeCommit.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 
 -- | /See:/ 'deleteApprovalRuleTemplate' smart constructor.
-newtype DeleteApprovalRuleTemplate =
-  DeleteApprovalRuleTemplate'
-    { _dartApprovalRuleTemplateName :: Text
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+newtype DeleteApprovalRuleTemplate = DeleteApprovalRuleTemplate'{_dartApprovalRuleTemplateName
+                                                                 :: Text}
+                                       deriving (Eq, Read, Show, Data, Typeable,
+                                                 Generic)
 
 -- | Creates a value of 'DeleteApprovalRuleTemplate' with the minimum fields required to make a request.
 --
@@ -60,10 +57,9 @@ newtype DeleteApprovalRuleTemplate =
 deleteApprovalRuleTemplate
     :: Text -- ^ 'dartApprovalRuleTemplateName'
     -> DeleteApprovalRuleTemplate
-deleteApprovalRuleTemplate pApprovalRuleTemplateName_ =
-  DeleteApprovalRuleTemplate'
-    {_dartApprovalRuleTemplateName = pApprovalRuleTemplateName_}
-
+deleteApprovalRuleTemplate pApprovalRuleTemplateName_
+  = DeleteApprovalRuleTemplate'{_dartApprovalRuleTemplateName
+                                  = pApprovalRuleTemplateName_}
 
 -- | The name of the approval rule template to delete.
 dartApprovalRuleTemplateName :: Lens' DeleteApprovalRuleTemplate Text
@@ -109,13 +105,14 @@ instance ToQuery DeleteApprovalRuleTemplate where
         toQuery = const mempty
 
 -- | /See:/ 'deleteApprovalRuleTemplateResponse' smart constructor.
-data DeleteApprovalRuleTemplateResponse =
-  DeleteApprovalRuleTemplateResponse'
-    { _dartrsResponseStatus         :: !Int
-    , _dartrsApprovalRuleTemplateId :: !Text
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data DeleteApprovalRuleTemplateResponse = DeleteApprovalRuleTemplateResponse'{_dartrsResponseStatus
+                                                                              ::
+                                                                              !Int,
+                                                                              _dartrsApprovalRuleTemplateId
+                                                                              ::
+                                                                              !Text}
+                                            deriving (Eq, Read, Show, Data,
+                                                      Typeable, Generic)
 
 -- | Creates a value of 'DeleteApprovalRuleTemplateResponse' with the minimum fields required to make a request.
 --
@@ -128,12 +125,12 @@ deleteApprovalRuleTemplateResponse
     :: Int -- ^ 'dartrsResponseStatus'
     -> Text -- ^ 'dartrsApprovalRuleTemplateId'
     -> DeleteApprovalRuleTemplateResponse
-deleteApprovalRuleTemplateResponse pResponseStatus_ pApprovalRuleTemplateId_ =
-  DeleteApprovalRuleTemplateResponse'
-    { _dartrsResponseStatus = pResponseStatus_
-    , _dartrsApprovalRuleTemplateId = pApprovalRuleTemplateId_
-    }
-
+deleteApprovalRuleTemplateResponse pResponseStatus_
+  pApprovalRuleTemplateId_
+  = DeleteApprovalRuleTemplateResponse'{_dartrsResponseStatus
+                                          = pResponseStatus_,
+                                        _dartrsApprovalRuleTemplateId =
+                                          pApprovalRuleTemplateId_}
 
 -- | -- | The response status code.
 dartrsResponseStatus :: Lens' DeleteApprovalRuleTemplateResponse Int

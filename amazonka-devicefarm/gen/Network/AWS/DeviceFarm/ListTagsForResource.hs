@@ -38,19 +38,16 @@ module Network.AWS.DeviceFarm.ListTagsForResource
     ) where
 
 import Network.AWS.DeviceFarm.Types
-import Network.AWS.DeviceFarm.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 
 -- | /See:/ 'listTagsForResource' smart constructor.
-newtype ListTagsForResource =
-  ListTagsForResource'
-    { _ltfrResourceARN :: Text
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+newtype ListTagsForResource = ListTagsForResource'{_ltfrResourceARN
+                                                   :: Text}
+                                deriving (Eq, Read, Show, Data, Typeable,
+                                          Generic)
 
 -- | Creates a value of 'ListTagsForResource' with the minimum fields required to make a request.
 --
@@ -60,9 +57,9 @@ newtype ListTagsForResource =
 listTagsForResource
     :: Text -- ^ 'ltfrResourceARN'
     -> ListTagsForResource
-listTagsForResource pResourceARN_ =
-  ListTagsForResource' {_ltfrResourceARN = pResourceARN_}
-
+listTagsForResource pResourceARN_
+  = ListTagsForResource'{_ltfrResourceARN =
+                           pResourceARN_}
 
 -- | The Amazon Resource Name (ARN) of the resource or resources for which to list tags. You can associate tags with the following Device Farm resources: @PROJECT@ , @RUN@ , @NETWORK_PROFILE@ , @INSTANCE_PROFILE@ , @DEVICE_INSTANCE@ , @SESSION@ , @DEVICE_POOL@ , @DEVICE@ , and @VPCE_CONFIGURATION@ .
 ltfrResourceARN :: Lens' ListTagsForResource Text
@@ -105,13 +102,13 @@ instance ToQuery ListTagsForResource where
         toQuery = const mempty
 
 -- | /See:/ 'listTagsForResourceResponse' smart constructor.
-data ListTagsForResourceResponse =
-  ListTagsForResourceResponse'
-    { _ltfrrsTags           :: !(Maybe [Tag])
-    , _ltfrrsResponseStatus :: !Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data ListTagsForResourceResponse = ListTagsForResourceResponse'{_ltfrrsTags
+                                                                ::
+                                                                !(Maybe [Tag]),
+                                                                _ltfrrsResponseStatus
+                                                                :: !Int}
+                                     deriving (Eq, Read, Show, Data, Typeable,
+                                               Generic)
 
 -- | Creates a value of 'ListTagsForResourceResponse' with the minimum fields required to make a request.
 --
@@ -123,10 +120,9 @@ data ListTagsForResourceResponse =
 listTagsForResourceResponse
     :: Int -- ^ 'ltfrrsResponseStatus'
     -> ListTagsForResourceResponse
-listTagsForResourceResponse pResponseStatus_ =
-  ListTagsForResourceResponse'
-    {_ltfrrsTags = Nothing, _ltfrrsResponseStatus = pResponseStatus_}
-
+listTagsForResourceResponse pResponseStatus_
+  = ListTagsForResourceResponse'{_ltfrrsTags = Nothing,
+                                 _ltfrrsResponseStatus = pResponseStatus_}
 
 -- | The tags to add to the resource. A tag is an array of key-value pairs. Tag keys can have a maximum character length of 128 characters. Tag values can have a maximum length of 256 characters.
 ltfrrsTags :: Lens' ListTagsForResourceResponse [Tag]

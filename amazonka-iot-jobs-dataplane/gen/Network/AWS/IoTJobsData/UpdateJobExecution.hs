@@ -46,26 +46,26 @@ module Network.AWS.IoTJobsData.UpdateJobExecution
     ) where
 
 import Network.AWS.IoTJobsData.Types
-import Network.AWS.IoTJobsData.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 
 -- | /See:/ 'updateJobExecution' smart constructor.
-data UpdateJobExecution =
-  UpdateJobExecution'
-    { _ujeIncludeJobDocument       :: !(Maybe Bool)
-    , _ujeStatusDetails            :: !(Maybe (Map Text Text))
-    , _ujeExecutionNumber          :: !(Maybe Integer)
-    , _ujeExpectedVersion          :: !(Maybe Integer)
-    , _ujeIncludeJobExecutionState :: !(Maybe Bool)
-    , _ujeJobId                    :: !Text
-    , _ujeThingName                :: !Text
-    , _ujeStatus                   :: !JobExecutionStatus
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data UpdateJobExecution = UpdateJobExecution'{_ujeIncludeJobDocument
+                                              :: !(Maybe Bool),
+                                              _ujeStatusDetails ::
+                                              !(Maybe (Map Text Text)),
+                                              _ujeExecutionNumber ::
+                                              !(Maybe Integer),
+                                              _ujeExpectedVersion ::
+                                              !(Maybe Integer),
+                                              _ujeIncludeJobExecutionState ::
+                                              !(Maybe Bool),
+                                              _ujeJobId :: !Text,
+                                              _ujeThingName :: !Text,
+                                              _ujeStatus :: !JobExecutionStatus}
+                            deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'UpdateJobExecution' with the minimum fields required to make a request.
 --
@@ -91,18 +91,15 @@ updateJobExecution
     -> Text -- ^ 'ujeThingName'
     -> JobExecutionStatus -- ^ 'ujeStatus'
     -> UpdateJobExecution
-updateJobExecution pJobId_ pThingName_ pStatus_ =
-  UpdateJobExecution'
-    { _ujeIncludeJobDocument = Nothing
-    , _ujeStatusDetails = Nothing
-    , _ujeExecutionNumber = Nothing
-    , _ujeExpectedVersion = Nothing
-    , _ujeIncludeJobExecutionState = Nothing
-    , _ujeJobId = pJobId_
-    , _ujeThingName = pThingName_
-    , _ujeStatus = pStatus_
-    }
-
+updateJobExecution pJobId_ pThingName_ pStatus_
+  = UpdateJobExecution'{_ujeIncludeJobDocument =
+                          Nothing,
+                        _ujeStatusDetails = Nothing,
+                        _ujeExecutionNumber = Nothing,
+                        _ujeExpectedVersion = Nothing,
+                        _ujeIncludeJobExecutionState = Nothing,
+                        _ujeJobId = pJobId_, _ujeThingName = pThingName_,
+                        _ujeStatus = pStatus_}
 
 -- | Optional. When set to true, the response contains the job document. The default is false.
 ujeIncludeJobDocument :: Lens' UpdateJobExecution (Maybe Bool)
@@ -177,14 +174,16 @@ instance ToQuery UpdateJobExecution where
         toQuery = const mempty
 
 -- | /See:/ 'updateJobExecutionResponse' smart constructor.
-data UpdateJobExecutionResponse =
-  UpdateJobExecutionResponse'
-    { _ujersJobDocument    :: !(Maybe Text)
-    , _ujersExecutionState :: !(Maybe JobExecutionState)
-    , _ujersResponseStatus :: !Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data UpdateJobExecutionResponse = UpdateJobExecutionResponse'{_ujersJobDocument
+                                                              :: !(Maybe Text),
+                                                              _ujersExecutionState
+                                                              ::
+                                                              !(Maybe
+                                                                  JobExecutionState),
+                                                              _ujersResponseStatus
+                                                              :: !Int}
+                                    deriving (Eq, Read, Show, Data, Typeable,
+                                              Generic)
 
 -- | Creates a value of 'UpdateJobExecutionResponse' with the minimum fields required to make a request.
 --
@@ -198,13 +197,11 @@ data UpdateJobExecutionResponse =
 updateJobExecutionResponse
     :: Int -- ^ 'ujersResponseStatus'
     -> UpdateJobExecutionResponse
-updateJobExecutionResponse pResponseStatus_ =
-  UpdateJobExecutionResponse'
-    { _ujersJobDocument = Nothing
-    , _ujersExecutionState = Nothing
-    , _ujersResponseStatus = pResponseStatus_
-    }
-
+updateJobExecutionResponse pResponseStatus_
+  = UpdateJobExecutionResponse'{_ujersJobDocument =
+                                  Nothing,
+                                _ujersExecutionState = Nothing,
+                                _ujersResponseStatus = pResponseStatus_}
 
 -- | The contents of the Job Documents.
 ujersJobDocument :: Lens' UpdateJobExecutionResponse (Maybe Text)

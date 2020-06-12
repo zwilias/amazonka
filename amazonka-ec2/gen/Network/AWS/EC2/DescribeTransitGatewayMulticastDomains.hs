@@ -45,7 +45,6 @@ module Network.AWS.EC2.DescribeTransitGatewayMulticastDomains
     ) where
 
 import Network.AWS.EC2.Types
-import Network.AWS.EC2.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Pager
 import Network.AWS.Prelude
@@ -53,16 +52,28 @@ import Network.AWS.Request
 import Network.AWS.Response
 
 -- | /See:/ 'describeTransitGatewayMulticastDomains' smart constructor.
-data DescribeTransitGatewayMulticastDomains =
-  DescribeTransitGatewayMulticastDomains'
-    { _dtgmdsTransitGatewayMulticastDomainIds :: !(Maybe [Text])
-    , _dtgmdsFilters                          :: !(Maybe [Filter])
-    , _dtgmdsNextToken                        :: !(Maybe Text)
-    , _dtgmdsDryRun                           :: !(Maybe Bool)
-    , _dtgmdsMaxResults                       :: !(Maybe Nat)
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data DescribeTransitGatewayMulticastDomains = DescribeTransitGatewayMulticastDomains'{_dtgmdsTransitGatewayMulticastDomainIds
+                                                                                      ::
+                                                                                      !(Maybe
+                                                                                          [Text]),
+                                                                                      _dtgmdsFilters
+                                                                                      ::
+                                                                                      !(Maybe
+                                                                                          [Filter]),
+                                                                                      _dtgmdsNextToken
+                                                                                      ::
+                                                                                      !(Maybe
+                                                                                          Text),
+                                                                                      _dtgmdsDryRun
+                                                                                      ::
+                                                                                      !(Maybe
+                                                                                          Bool),
+                                                                                      _dtgmdsMaxResults
+                                                                                      ::
+                                                                                      !(Maybe
+                                                                                          Nat)}
+                                                deriving (Eq, Read, Show, Data,
+                                                          Typeable, Generic)
 
 -- | Creates a value of 'DescribeTransitGatewayMulticastDomains' with the minimum fields required to make a request.
 --
@@ -79,15 +90,13 @@ data DescribeTransitGatewayMulticastDomains =
 -- * 'dtgmdsMaxResults' - The maximum number of results to return with a single call. To retrieve the remaining results, make another call with the returned @nextToken@ value.
 describeTransitGatewayMulticastDomains
     :: DescribeTransitGatewayMulticastDomains
-describeTransitGatewayMulticastDomains =
-  DescribeTransitGatewayMulticastDomains'
-    { _dtgmdsTransitGatewayMulticastDomainIds = Nothing
-    , _dtgmdsFilters = Nothing
-    , _dtgmdsNextToken = Nothing
-    , _dtgmdsDryRun = Nothing
-    , _dtgmdsMaxResults = Nothing
-    }
-
+describeTransitGatewayMulticastDomains
+  = DescribeTransitGatewayMulticastDomains'{_dtgmdsTransitGatewayMulticastDomainIds
+                                              = Nothing,
+                                            _dtgmdsFilters = Nothing,
+                                            _dtgmdsNextToken = Nothing,
+                                            _dtgmdsDryRun = Nothing,
+                                            _dtgmdsMaxResults = Nothing}
 
 -- | The ID of the transit gateway multicast domain.
 dtgmdsTransitGatewayMulticastDomainIds :: Lens' DescribeTransitGatewayMulticastDomains [Text]
@@ -171,14 +180,21 @@ instance ToQuery
                "MaxResults" =: _dtgmdsMaxResults]
 
 -- | /See:/ 'describeTransitGatewayMulticastDomainsResponse' smart constructor.
-data DescribeTransitGatewayMulticastDomainsResponse =
-  DescribeTransitGatewayMulticastDomainsResponse'
-    { _dtgmdsrsTransitGatewayMulticastDomains :: !(Maybe [TransitGatewayMulticastDomain])
-    , _dtgmdsrsNextToken :: !(Maybe Text)
-    , _dtgmdsrsResponseStatus :: !Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data DescribeTransitGatewayMulticastDomainsResponse = DescribeTransitGatewayMulticastDomainsResponse'{_dtgmdsrsTransitGatewayMulticastDomains
+                                                                                                      ::
+                                                                                                      !(Maybe
+                                                                                                          [TransitGatewayMulticastDomain]),
+                                                                                                      _dtgmdsrsNextToken
+                                                                                                      ::
+                                                                                                      !(Maybe
+                                                                                                          Text),
+                                                                                                      _dtgmdsrsResponseStatus
+                                                                                                      ::
+                                                                                                      !Int}
+                                                        deriving (Eq, Read,
+                                                                  Show, Data,
+                                                                  Typeable,
+                                                                  Generic)
 
 -- | Creates a value of 'DescribeTransitGatewayMulticastDomainsResponse' with the minimum fields required to make a request.
 --
@@ -192,13 +208,14 @@ data DescribeTransitGatewayMulticastDomainsResponse =
 describeTransitGatewayMulticastDomainsResponse
     :: Int -- ^ 'dtgmdsrsResponseStatus'
     -> DescribeTransitGatewayMulticastDomainsResponse
-describeTransitGatewayMulticastDomainsResponse pResponseStatus_ =
-  DescribeTransitGatewayMulticastDomainsResponse'
-    { _dtgmdsrsTransitGatewayMulticastDomains = Nothing
-    , _dtgmdsrsNextToken = Nothing
-    , _dtgmdsrsResponseStatus = pResponseStatus_
-    }
-
+describeTransitGatewayMulticastDomainsResponse
+  pResponseStatus_
+  = DescribeTransitGatewayMulticastDomainsResponse'{_dtgmdsrsTransitGatewayMulticastDomains
+                                                      = Nothing,
+                                                    _dtgmdsrsNextToken =
+                                                      Nothing,
+                                                    _dtgmdsrsResponseStatus =
+                                                      pResponseStatus_}
 
 -- | Information about the transit gateway multicast domains.
 dtgmdsrsTransitGatewayMulticastDomains :: Lens' DescribeTransitGatewayMulticastDomainsResponse [TransitGatewayMulticastDomain]

@@ -44,7 +44,6 @@ module Network.AWS.MediaLive.CreateChannel
 
 import Network.AWS.Lens
 import Network.AWS.MediaLive.Types
-import Network.AWS.MediaLive.Types.Product
 import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
@@ -52,19 +51,20 @@ import Network.AWS.Response
 -- | Placeholder documentation for CreateChannel
 --
 -- /See:/ 'createChannel' smart constructor.
-data CreateChannel =
-  CreateChannel'
-    { _ccRequestId          :: !(Maybe Text)
-    , _ccInputSpecification :: !(Maybe InputSpecification)
-    , _ccInputAttachments   :: !(Maybe [InputAttachment])
-    , _ccReserved           :: !(Maybe Text)
-    , _ccDestinations       :: !(Maybe [OutputDestination])
-    , _ccName               :: !(Maybe Text)
-    , _ccEncoderSettings    :: !(Maybe EncoderSettings)
-    , _ccRoleARN            :: !(Maybe Text)
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data CreateChannel = CreateChannel'{_ccRequestId ::
+                                    !(Maybe Text),
+                                    _ccInputSpecification ::
+                                    !(Maybe InputSpecification),
+                                    _ccInputAttachments ::
+                                    !(Maybe [InputAttachment]),
+                                    _ccReserved :: !(Maybe Text),
+                                    _ccDestinations ::
+                                    !(Maybe [OutputDestination]),
+                                    _ccName :: !(Maybe Text),
+                                    _ccEncoderSettings ::
+                                    !(Maybe EncoderSettings),
+                                    _ccRoleARN :: !(Maybe Text)}
+                       deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'CreateChannel' with the minimum fields required to make a request.
 --
@@ -87,18 +87,12 @@ data CreateChannel =
 -- * 'ccRoleARN' - An optional Amazon Resource Name (ARN) of the role to assume when running the Channel.
 createChannel
     :: CreateChannel
-createChannel =
-  CreateChannel'
-    { _ccRequestId = Nothing
-    , _ccInputSpecification = Nothing
-    , _ccInputAttachments = Nothing
-    , _ccReserved = Nothing
-    , _ccDestinations = Nothing
-    , _ccName = Nothing
-    , _ccEncoderSettings = Nothing
-    , _ccRoleARN = Nothing
-    }
-
+createChannel
+  = CreateChannel'{_ccRequestId = Nothing,
+                   _ccInputSpecification = Nothing,
+                   _ccInputAttachments = Nothing, _ccReserved = Nothing,
+                   _ccDestinations = Nothing, _ccName = Nothing,
+                   _ccEncoderSettings = Nothing, _ccRoleARN = Nothing}
 
 -- | Unique request ID to be specified. This is needed to prevent retries from creating multiple resources.
 ccRequestId :: Lens' CreateChannel (Maybe Text)
@@ -174,13 +168,11 @@ instance ToQuery CreateChannel where
 -- | Placeholder documentation for CreateChannelResponse
 --
 -- /See:/ 'createChannelResponse' smart constructor.
-data CreateChannelResponse =
-  CreateChannelResponse'
-    { _ccrsChannel        :: !(Maybe Channel)
-    , _ccrsResponseStatus :: !Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data CreateChannelResponse = CreateChannelResponse'{_ccrsChannel
+                                                    :: !(Maybe Channel),
+                                                    _ccrsResponseStatus :: !Int}
+                               deriving (Eq, Read, Show, Data, Typeable,
+                                         Generic)
 
 -- | Creates a value of 'CreateChannelResponse' with the minimum fields required to make a request.
 --
@@ -192,10 +184,9 @@ data CreateChannelResponse =
 createChannelResponse
     :: Int -- ^ 'ccrsResponseStatus'
     -> CreateChannelResponse
-createChannelResponse pResponseStatus_ =
-  CreateChannelResponse'
-    {_ccrsChannel = Nothing, _ccrsResponseStatus = pResponseStatus_}
-
+createChannelResponse pResponseStatus_
+  = CreateChannelResponse'{_ccrsChannel = Nothing,
+                           _ccrsResponseStatus = pResponseStatus_}
 
 -- | Undocumented member.
 ccrsChannel :: Lens' CreateChannelResponse (Maybe Channel)

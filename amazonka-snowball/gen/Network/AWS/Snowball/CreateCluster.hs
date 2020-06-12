@@ -51,30 +51,25 @@ import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 import Network.AWS.Snowball.Types
-import Network.AWS.Snowball.Types.Product
 
 -- | /See:/ 'createCluster' smart constructor.
-data CreateCluster =
-  CreateCluster'
-    { _ccKMSKeyARN           :: !(Maybe Text)
-    , _ccNotification        :: !(Maybe Notification)
-    , _ccForwardingAddressId :: !(Maybe Text)
-    , _ccSnowballType        :: !(Maybe SnowballType)
-    , _ccDescription         :: !(Maybe Text)
-    , _ccJobType             :: !JobType
-    , _ccResources           :: !JobResource
-    , _ccAddressId           :: !Text
-    , _ccRoleARN             :: !Text
-    , _ccShippingOption      :: !ShippingOption
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data CreateCluster = CreateCluster'{_ccKMSKeyARN ::
+                                    !(Maybe Text),
+                                    _ccNotification :: !(Maybe Notification),
+                                    _ccForwardingAddressId :: !(Maybe Text),
+                                    _ccSnowballType :: !(Maybe SnowballType),
+                                    _ccDescription :: !(Maybe Text),
+                                    _ccJobType :: !JobType,
+                                    _ccResources :: !JobResource,
+                                    _ccAddressId :: !Text, _ccRoleARN :: !Text,
+                                    _ccShippingOption :: !ShippingOption}
+                       deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'CreateCluster' with the minimum fields required to make a request.
 --
 -- Use one of the following lenses to modify other fields as desired:
 --
--- * 'ccKMSKeyARN' - The @KmsKeyARN@ value that you want to associate with this cluster. @KmsKeyARN@ values are created by using the <http://docs.aws.amazon.com/kms/latest/APIReference/API_CreateKey.html CreateKey> API action in AWS Key Management Service (AWS KMS).
+-- * 'ccKMSKeyARN' - The @KmsKeyARN@ value that you want to associate with this cluster. @KmsKeyARN@ values are created by using the <http://docs.aws.amazon.com/kms/latest/APIReference/API_CreateKey.html CreateKey> API action in AWS Key Management Service (AWS KMS). 
 --
 -- * 'ccNotification' - The Amazon Simple Notification Service (Amazon SNS) notification settings for this cluster.
 --
@@ -86,7 +81,7 @@ data CreateCluster =
 --
 -- * 'ccJobType' - The type of job for this cluster. Currently, the only job type supported for clusters is @LOCAL_USE@ .
 --
--- * 'ccResources' - The resources associated with the cluster job. These resources include Amazon S3 buckets and optional AWS Lambda functions written in the Python language.
+-- * 'ccResources' - The resources associated with the cluster job. These resources include Amazon S3 buckets and optional AWS Lambda functions written in the Python language. 
 --
 -- * 'ccAddressId' - The ID for the address that you want the cluster shipped to.
 --
@@ -100,22 +95,17 @@ createCluster
     -> Text -- ^ 'ccRoleARN'
     -> ShippingOption -- ^ 'ccShippingOption'
     -> CreateCluster
-createCluster pJobType_ pResources_ pAddressId_ pRoleARN_ pShippingOption_ =
-  CreateCluster'
-    { _ccKMSKeyARN = Nothing
-    , _ccNotification = Nothing
-    , _ccForwardingAddressId = Nothing
-    , _ccSnowballType = Nothing
-    , _ccDescription = Nothing
-    , _ccJobType = pJobType_
-    , _ccResources = pResources_
-    , _ccAddressId = pAddressId_
-    , _ccRoleARN = pRoleARN_
-    , _ccShippingOption = pShippingOption_
-    }
+createCluster pJobType_ pResources_ pAddressId_
+  pRoleARN_ pShippingOption_
+  = CreateCluster'{_ccKMSKeyARN = Nothing,
+                   _ccNotification = Nothing,
+                   _ccForwardingAddressId = Nothing,
+                   _ccSnowballType = Nothing, _ccDescription = Nothing,
+                   _ccJobType = pJobType_, _ccResources = pResources_,
+                   _ccAddressId = pAddressId_, _ccRoleARN = pRoleARN_,
+                   _ccShippingOption = pShippingOption_}
 
-
--- | The @KmsKeyARN@ value that you want to associate with this cluster. @KmsKeyARN@ values are created by using the <http://docs.aws.amazon.com/kms/latest/APIReference/API_CreateKey.html CreateKey> API action in AWS Key Management Service (AWS KMS).
+-- | The @KmsKeyARN@ value that you want to associate with this cluster. @KmsKeyARN@ values are created by using the <http://docs.aws.amazon.com/kms/latest/APIReference/API_CreateKey.html CreateKey> API action in AWS Key Management Service (AWS KMS). 
 ccKMSKeyARN :: Lens' CreateCluster (Maybe Text)
 ccKMSKeyARN = lens _ccKMSKeyARN (\ s a -> s{_ccKMSKeyARN = a})
 
@@ -139,7 +129,7 @@ ccDescription = lens _ccDescription (\ s a -> s{_ccDescription = a})
 ccJobType :: Lens' CreateCluster JobType
 ccJobType = lens _ccJobType (\ s a -> s{_ccJobType = a})
 
--- | The resources associated with the cluster job. These resources include Amazon S3 buckets and optional AWS Lambda functions written in the Python language.
+-- | The resources associated with the cluster job. These resources include Amazon S3 buckets and optional AWS Lambda functions written in the Python language. 
 ccResources :: Lens' CreateCluster JobResource
 ccResources = lens _ccResources (\ s a -> s{_ccResources = a})
 
@@ -201,13 +191,12 @@ instance ToQuery CreateCluster where
         toQuery = const mempty
 
 -- | /See:/ 'createClusterResponse' smart constructor.
-data CreateClusterResponse =
-  CreateClusterResponse'
-    { _crersClusterId      :: !(Maybe Text)
-    , _crersResponseStatus :: !Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data CreateClusterResponse = CreateClusterResponse'{_crersClusterId
+                                                    :: !(Maybe Text),
+                                                    _crersResponseStatus ::
+                                                    !Int}
+                               deriving (Eq, Read, Show, Data, Typeable,
+                                         Generic)
 
 -- | Creates a value of 'CreateClusterResponse' with the minimum fields required to make a request.
 --
@@ -219,10 +208,9 @@ data CreateClusterResponse =
 createClusterResponse
     :: Int -- ^ 'crersResponseStatus'
     -> CreateClusterResponse
-createClusterResponse pResponseStatus_ =
-  CreateClusterResponse'
-    {_crersClusterId = Nothing, _crersResponseStatus = pResponseStatus_}
-
+createClusterResponse pResponseStatus_
+  = CreateClusterResponse'{_crersClusterId = Nothing,
+                           _crersResponseStatus = pResponseStatus_}
 
 -- | The automatically generated ID for a cluster.
 crersClusterId :: Lens' CreateClusterResponse (Maybe Text)

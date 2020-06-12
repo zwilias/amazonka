@@ -40,21 +40,20 @@ module Network.AWS.EC2.DeleteLocalGatewayRoute
     ) where
 
 import Network.AWS.EC2.Types
-import Network.AWS.EC2.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 
 -- | /See:/ 'deleteLocalGatewayRoute' smart constructor.
-data DeleteLocalGatewayRoute =
-  DeleteLocalGatewayRoute'
-    { _dlgrDryRun                   :: !(Maybe Bool)
-    , _dlgrDestinationCidrBlock     :: !Text
-    , _dlgrLocalGatewayRouteTableId :: !Text
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data DeleteLocalGatewayRoute = DeleteLocalGatewayRoute'{_dlgrDryRun
+                                                        :: !(Maybe Bool),
+                                                        _dlgrDestinationCidrBlock
+                                                        :: !Text,
+                                                        _dlgrLocalGatewayRouteTableId
+                                                        :: !Text}
+                                 deriving (Eq, Read, Show, Data, Typeable,
+                                           Generic)
 
 -- | Creates a value of 'DeleteLocalGatewayRoute' with the minimum fields required to make a request.
 --
@@ -69,13 +68,12 @@ deleteLocalGatewayRoute
     :: Text -- ^ 'dlgrDestinationCidrBlock'
     -> Text -- ^ 'dlgrLocalGatewayRouteTableId'
     -> DeleteLocalGatewayRoute
-deleteLocalGatewayRoute pDestinationCidrBlock_ pLocalGatewayRouteTableId_ =
-  DeleteLocalGatewayRoute'
-    { _dlgrDryRun = Nothing
-    , _dlgrDestinationCidrBlock = pDestinationCidrBlock_
-    , _dlgrLocalGatewayRouteTableId = pLocalGatewayRouteTableId_
-    }
-
+deleteLocalGatewayRoute pDestinationCidrBlock_
+  pLocalGatewayRouteTableId_
+  = DeleteLocalGatewayRoute'{_dlgrDryRun = Nothing,
+                             _dlgrDestinationCidrBlock = pDestinationCidrBlock_,
+                             _dlgrLocalGatewayRouteTableId =
+                               pLocalGatewayRouteTableId_}
 
 -- | Checks whether you have the required permissions for the action, without actually making the request, and provides an error response. If you have the required permissions, the error response is @DryRunOperation@ . Otherwise, it is @UnauthorizedOperation@ .
 dlgrDryRun :: Lens' DeleteLocalGatewayRoute (Maybe Bool)
@@ -121,13 +119,14 @@ instance ToQuery DeleteLocalGatewayRoute where
                  _dlgrLocalGatewayRouteTableId]
 
 -- | /See:/ 'deleteLocalGatewayRouteResponse' smart constructor.
-data DeleteLocalGatewayRouteResponse =
-  DeleteLocalGatewayRouteResponse'
-    { _dlgrrsRoute          :: !(Maybe LocalGatewayRoute)
-    , _dlgrrsResponseStatus :: !Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data DeleteLocalGatewayRouteResponse = DeleteLocalGatewayRouteResponse'{_dlgrrsRoute
+                                                                        ::
+                                                                        !(Maybe
+                                                                            LocalGatewayRoute),
+                                                                        _dlgrrsResponseStatus
+                                                                        :: !Int}
+                                         deriving (Eq, Read, Show, Data,
+                                                   Typeable, Generic)
 
 -- | Creates a value of 'DeleteLocalGatewayRouteResponse' with the minimum fields required to make a request.
 --
@@ -139,10 +138,10 @@ data DeleteLocalGatewayRouteResponse =
 deleteLocalGatewayRouteResponse
     :: Int -- ^ 'dlgrrsResponseStatus'
     -> DeleteLocalGatewayRouteResponse
-deleteLocalGatewayRouteResponse pResponseStatus_ =
-  DeleteLocalGatewayRouteResponse'
-    {_dlgrrsRoute = Nothing, _dlgrrsResponseStatus = pResponseStatus_}
-
+deleteLocalGatewayRouteResponse pResponseStatus_
+  = DeleteLocalGatewayRouteResponse'{_dlgrrsRoute =
+                                       Nothing,
+                                     _dlgrrsResponseStatus = pResponseStatus_}
 
 -- | Information about the route.
 dlgrrsRoute :: Lens' DeleteLocalGatewayRouteResponse (Maybe LocalGatewayRoute)

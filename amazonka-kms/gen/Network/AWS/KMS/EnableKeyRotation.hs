@@ -35,19 +35,15 @@ module Network.AWS.KMS.EnableKeyRotation
     ) where
 
 import Network.AWS.KMS.Types
-import Network.AWS.KMS.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 
 -- | /See:/ 'enableKeyRotation' smart constructor.
-newtype EnableKeyRotation =
-  EnableKeyRotation'
-    { _ekrKeyId :: Text
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+newtype EnableKeyRotation = EnableKeyRotation'{_ekrKeyId
+                                               :: Text}
+                              deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'EnableKeyRotation' with the minimum fields required to make a request.
 --
@@ -57,8 +53,8 @@ newtype EnableKeyRotation =
 enableKeyRotation
     :: Text -- ^ 'ekrKeyId'
     -> EnableKeyRotation
-enableKeyRotation pKeyId_ = EnableKeyRotation' {_ekrKeyId = pKeyId_}
-
+enableKeyRotation pKeyId_
+  = EnableKeyRotation'{_ekrKeyId = pKeyId_}
 
 -- | A unique identifier for the customer master key (CMK). Specify the key ID or the Amazon Resource Name (ARN) of the CMK. For example:     * Key ID: @1234abcd-12ab-34cd-56ef-1234567890ab@      * Key ARN: @arn:aws:kms:us-east-2:111122223333:key/1234abcd-12ab-34cd-56ef-1234567890ab@  To get the key ID and key ARN for a CMK, use 'ListKeys' or 'DescribeKey' .
 ekrKeyId :: Lens' EnableKeyRotation Text
@@ -93,16 +89,15 @@ instance ToQuery EnableKeyRotation where
         toQuery = const mempty
 
 -- | /See:/ 'enableKeyRotationResponse' smart constructor.
-data EnableKeyRotationResponse =
-  EnableKeyRotationResponse'
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data EnableKeyRotationResponse = EnableKeyRotationResponse'
+                                   deriving (Eq, Read, Show, Data, Typeable,
+                                             Generic)
 
 -- | Creates a value of 'EnableKeyRotationResponse' with the minimum fields required to make a request.
 --
 enableKeyRotationResponse
     :: EnableKeyRotationResponse
-enableKeyRotationResponse = EnableKeyRotationResponse'
-
+enableKeyRotationResponse
+  = EnableKeyRotationResponse'
 
 instance NFData EnableKeyRotationResponse where

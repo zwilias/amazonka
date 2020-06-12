@@ -46,19 +46,16 @@ import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 import Network.AWS.StorageGateway.Types
-import Network.AWS.StorageGateway.Types.Product
 
 -- | A JSON object containing the of the gateway.
 --
 --
 --
 -- /See:/ 'describeBandwidthRateLimit' smart constructor.
-newtype DescribeBandwidthRateLimit =
-  DescribeBandwidthRateLimit'
-    { _dbrlGatewayARN :: Text
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+newtype DescribeBandwidthRateLimit = DescribeBandwidthRateLimit'{_dbrlGatewayARN
+                                                                 :: Text}
+                                       deriving (Eq, Read, Show, Data, Typeable,
+                                                 Generic)
 
 -- | Creates a value of 'DescribeBandwidthRateLimit' with the minimum fields required to make a request.
 --
@@ -68,9 +65,9 @@ newtype DescribeBandwidthRateLimit =
 describeBandwidthRateLimit
     :: Text -- ^ 'dbrlGatewayARN'
     -> DescribeBandwidthRateLimit
-describeBandwidthRateLimit pGatewayARN_ =
-  DescribeBandwidthRateLimit' {_dbrlGatewayARN = pGatewayARN_}
-
+describeBandwidthRateLimit pGatewayARN_
+  = DescribeBandwidthRateLimit'{_dbrlGatewayARN =
+                                  pGatewayARN_}
 
 -- | Undocumented member.
 dbrlGatewayARN :: Lens' DescribeBandwidthRateLimit Text
@@ -119,15 +116,23 @@ instance ToQuery DescribeBandwidthRateLimit where
 --
 --
 -- /See:/ 'describeBandwidthRateLimitResponse' smart constructor.
-data DescribeBandwidthRateLimitResponse =
-  DescribeBandwidthRateLimitResponse'
-    { _dbrlrsGatewayARN                           :: !(Maybe Text)
-    , _dbrlrsAverageUploadRateLimitInBitsPerSec   :: !(Maybe Nat)
-    , _dbrlrsAverageDownloadRateLimitInBitsPerSec :: !(Maybe Nat)
-    , _dbrlrsResponseStatus                       :: !Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data DescribeBandwidthRateLimitResponse = DescribeBandwidthRateLimitResponse'{_dbrlrsGatewayARN
+                                                                              ::
+                                                                              !(Maybe
+                                                                                  Text),
+                                                                              _dbrlrsAverageUploadRateLimitInBitsPerSec
+                                                                              ::
+                                                                              !(Maybe
+                                                                                  Nat),
+                                                                              _dbrlrsAverageDownloadRateLimitInBitsPerSec
+                                                                              ::
+                                                                              !(Maybe
+                                                                                  Nat),
+                                                                              _dbrlrsResponseStatus
+                                                                              ::
+                                                                              !Int}
+                                            deriving (Eq, Read, Show, Data,
+                                                      Typeable, Generic)
 
 -- | Creates a value of 'DescribeBandwidthRateLimitResponse' with the minimum fields required to make a request.
 --
@@ -143,14 +148,15 @@ data DescribeBandwidthRateLimitResponse =
 describeBandwidthRateLimitResponse
     :: Int -- ^ 'dbrlrsResponseStatus'
     -> DescribeBandwidthRateLimitResponse
-describeBandwidthRateLimitResponse pResponseStatus_ =
-  DescribeBandwidthRateLimitResponse'
-    { _dbrlrsGatewayARN = Nothing
-    , _dbrlrsAverageUploadRateLimitInBitsPerSec = Nothing
-    , _dbrlrsAverageDownloadRateLimitInBitsPerSec = Nothing
-    , _dbrlrsResponseStatus = pResponseStatus_
-    }
-
+describeBandwidthRateLimitResponse pResponseStatus_
+  = DescribeBandwidthRateLimitResponse'{_dbrlrsGatewayARN
+                                          = Nothing,
+                                        _dbrlrsAverageUploadRateLimitInBitsPerSec
+                                          = Nothing,
+                                        _dbrlrsAverageDownloadRateLimitInBitsPerSec
+                                          = Nothing,
+                                        _dbrlrsResponseStatus =
+                                          pResponseStatus_}
 
 -- | Undocumented member.
 dbrlrsGatewayARN :: Lens' DescribeBandwidthRateLimitResponse (Maybe Text)

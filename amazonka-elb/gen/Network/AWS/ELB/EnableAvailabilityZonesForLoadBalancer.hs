@@ -43,7 +43,6 @@ module Network.AWS.ELB.EnableAvailabilityZonesForLoadBalancer
     ) where
 
 import Network.AWS.ELB.Types
-import Network.AWS.ELB.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.Request
@@ -54,13 +53,14 @@ import Network.AWS.Response
 --
 --
 -- /See:/ 'enableAvailabilityZonesForLoadBalancer' smart constructor.
-data EnableAvailabilityZonesForLoadBalancer =
-  EnableAvailabilityZonesForLoadBalancer'
-    { _eazflbLoadBalancerName  :: !Text
-    , _eazflbAvailabilityZones :: ![Text]
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data EnableAvailabilityZonesForLoadBalancer = EnableAvailabilityZonesForLoadBalancer'{_eazflbLoadBalancerName
+                                                                                      ::
+                                                                                      !Text,
+                                                                                      _eazflbAvailabilityZones
+                                                                                      ::
+                                                                                      ![Text]}
+                                                deriving (Eq, Read, Show, Data,
+                                                          Typeable, Generic)
 
 -- | Creates a value of 'EnableAvailabilityZonesForLoadBalancer' with the minimum fields required to make a request.
 --
@@ -72,12 +72,11 @@ data EnableAvailabilityZonesForLoadBalancer =
 enableAvailabilityZonesForLoadBalancer
     :: Text -- ^ 'eazflbLoadBalancerName'
     -> EnableAvailabilityZonesForLoadBalancer
-enableAvailabilityZonesForLoadBalancer pLoadBalancerName_ =
-  EnableAvailabilityZonesForLoadBalancer'
-    { _eazflbLoadBalancerName = pLoadBalancerName_
-    , _eazflbAvailabilityZones = mempty
-    }
-
+enableAvailabilityZonesForLoadBalancer
+  pLoadBalancerName_
+  = EnableAvailabilityZonesForLoadBalancer'{_eazflbLoadBalancerName
+                                              = pLoadBalancerName_,
+                                            _eazflbAvailabilityZones = mempty}
 
 -- | The name of the load balancer.
 eazflbLoadBalancerName :: Lens' EnableAvailabilityZonesForLoadBalancer Text
@@ -138,13 +137,17 @@ instance ToQuery
 --
 --
 -- /See:/ 'enableAvailabilityZonesForLoadBalancerResponse' smart constructor.
-data EnableAvailabilityZonesForLoadBalancerResponse =
-  EnableAvailabilityZonesForLoadBalancerResponse'
-    { _eazflbrsAvailabilityZones :: !(Maybe [Text])
-    , _eazflbrsResponseStatus    :: !Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data EnableAvailabilityZonesForLoadBalancerResponse = EnableAvailabilityZonesForLoadBalancerResponse'{_eazflbrsAvailabilityZones
+                                                                                                      ::
+                                                                                                      !(Maybe
+                                                                                                          [Text]),
+                                                                                                      _eazflbrsResponseStatus
+                                                                                                      ::
+                                                                                                      !Int}
+                                                        deriving (Eq, Read,
+                                                                  Show, Data,
+                                                                  Typeable,
+                                                                  Generic)
 
 -- | Creates a value of 'EnableAvailabilityZonesForLoadBalancerResponse' with the minimum fields required to make a request.
 --
@@ -156,12 +159,12 @@ data EnableAvailabilityZonesForLoadBalancerResponse =
 enableAvailabilityZonesForLoadBalancerResponse
     :: Int -- ^ 'eazflbrsResponseStatus'
     -> EnableAvailabilityZonesForLoadBalancerResponse
-enableAvailabilityZonesForLoadBalancerResponse pResponseStatus_ =
-  EnableAvailabilityZonesForLoadBalancerResponse'
-    { _eazflbrsAvailabilityZones = Nothing
-    , _eazflbrsResponseStatus = pResponseStatus_
-    }
-
+enableAvailabilityZonesForLoadBalancerResponse
+  pResponseStatus_
+  = EnableAvailabilityZonesForLoadBalancerResponse'{_eazflbrsAvailabilityZones
+                                                      = Nothing,
+                                                    _eazflbrsResponseStatus =
+                                                      pResponseStatus_}
 
 -- | The updated list of Availability Zones for the load balancer.
 eazflbrsAvailabilityZones :: Lens' EnableAvailabilityZonesForLoadBalancerResponse [Text]

@@ -41,21 +41,20 @@ import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 import Network.AWS.SNS.Types
-import Network.AWS.SNS.Types.Product
 
 -- | Input for SetSubscriptionAttributes action.
 --
 --
 --
 -- /See:/ 'setSubscriptionAttributes' smart constructor.
-data SetSubscriptionAttributes =
-  SetSubscriptionAttributes'
-    { _ssaAttributeValue  :: !(Maybe Text)
-    , _ssaSubscriptionARN :: !Text
-    , _ssaAttributeName   :: !Text
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data SetSubscriptionAttributes = SetSubscriptionAttributes'{_ssaAttributeValue
+                                                            :: !(Maybe Text),
+                                                            _ssaSubscriptionARN
+                                                            :: !Text,
+                                                            _ssaAttributeName ::
+                                                            !Text}
+                                   deriving (Eq, Read, Show, Data, Typeable,
+                                             Generic)
 
 -- | Creates a value of 'SetSubscriptionAttributes' with the minimum fields required to make a request.
 --
@@ -65,18 +64,17 @@ data SetSubscriptionAttributes =
 --
 -- * 'ssaSubscriptionARN' - The ARN of the subscription to modify.
 --
--- * 'ssaAttributeName' - The name of the attribute you want to set. Only a subset of the subscriptions attributes are mutable. Valid values: @DeliveryPolicy@ | @RawMessageDelivery@
+-- * 'ssaAttributeName' - The name of the attribute you want to set. Only a subset of the subscriptions attributes are mutable. Valid values: @DeliveryPolicy@ | @RawMessageDelivery@ 
 setSubscriptionAttributes
     :: Text -- ^ 'ssaSubscriptionARN'
     -> Text -- ^ 'ssaAttributeName'
     -> SetSubscriptionAttributes
-setSubscriptionAttributes pSubscriptionARN_ pAttributeName_ =
-  SetSubscriptionAttributes'
-    { _ssaAttributeValue = Nothing
-    , _ssaSubscriptionARN = pSubscriptionARN_
-    , _ssaAttributeName = pAttributeName_
-    }
-
+setSubscriptionAttributes pSubscriptionARN_
+  pAttributeName_
+  = SetSubscriptionAttributes'{_ssaAttributeValue =
+                                 Nothing,
+                               _ssaSubscriptionARN = pSubscriptionARN_,
+                               _ssaAttributeName = pAttributeName_}
 
 -- | The new value for the attribute in JSON format.
 ssaAttributeValue :: Lens' SetSubscriptionAttributes (Maybe Text)
@@ -86,7 +84,7 @@ ssaAttributeValue = lens _ssaAttributeValue (\ s a -> s{_ssaAttributeValue = a})
 ssaSubscriptionARN :: Lens' SetSubscriptionAttributes Text
 ssaSubscriptionARN = lens _ssaSubscriptionARN (\ s a -> s{_ssaSubscriptionARN = a})
 
--- | The name of the attribute you want to set. Only a subset of the subscriptions attributes are mutable. Valid values: @DeliveryPolicy@ | @RawMessageDelivery@
+-- | The name of the attribute you want to set. Only a subset of the subscriptions attributes are mutable. Valid values: @DeliveryPolicy@ | @RawMessageDelivery@ 
 ssaAttributeName :: Lens' SetSubscriptionAttributes Text
 ssaAttributeName = lens _ssaAttributeName (\ s a -> s{_ssaAttributeName = a})
 
@@ -118,17 +116,16 @@ instance ToQuery SetSubscriptionAttributes where
                "AttributeName" =: _ssaAttributeName]
 
 -- | /See:/ 'setSubscriptionAttributesResponse' smart constructor.
-data SetSubscriptionAttributesResponse =
-  SetSubscriptionAttributesResponse'
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data SetSubscriptionAttributesResponse = SetSubscriptionAttributesResponse'
+                                           deriving (Eq, Read, Show, Data,
+                                                     Typeable, Generic)
 
 -- | Creates a value of 'SetSubscriptionAttributesResponse' with the minimum fields required to make a request.
 --
 setSubscriptionAttributesResponse
     :: SetSubscriptionAttributesResponse
-setSubscriptionAttributesResponse = SetSubscriptionAttributesResponse'
-
+setSubscriptionAttributesResponse
+  = SetSubscriptionAttributesResponse'
 
 instance NFData SetSubscriptionAttributesResponse
          where

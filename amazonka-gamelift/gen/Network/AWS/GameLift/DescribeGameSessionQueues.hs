@@ -23,13 +23,13 @@
 --
 -- Queue-related operations include:
 --
---     * 'CreateGameSessionQueue'
+--     * 'CreateGameSessionQueue' 
 --
---     * 'DescribeGameSessionQueues'
+--     * 'DescribeGameSessionQueues' 
 --
---     * 'UpdateGameSessionQueue'
+--     * 'UpdateGameSessionQueue' 
 --
---     * 'DeleteGameSessionQueue'
+--     * 'DeleteGameSessionQueue' 
 --
 --
 --
@@ -53,7 +53,6 @@ module Network.AWS.GameLift.DescribeGameSessionQueues
     ) where
 
 import Network.AWS.GameLift.Types
-import Network.AWS.GameLift.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.Request
@@ -64,14 +63,14 @@ import Network.AWS.Response
 --
 --
 -- /See:/ 'describeGameSessionQueues' smart constructor.
-data DescribeGameSessionQueues =
-  DescribeGameSessionQueues'
-    { _dgsqNextToken :: !(Maybe Text)
-    , _dgsqNames     :: !(Maybe [Text])
-    , _dgsqLimit     :: !(Maybe Nat)
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data DescribeGameSessionQueues = DescribeGameSessionQueues'{_dgsqNextToken
+                                                            :: !(Maybe Text),
+                                                            _dgsqNames ::
+                                                            !(Maybe [Text]),
+                                                            _dgsqLimit ::
+                                                            !(Maybe Nat)}
+                                   deriving (Eq, Read, Show, Data, Typeable,
+                                             Generic)
 
 -- | Creates a value of 'DescribeGameSessionQueues' with the minimum fields required to make a request.
 --
@@ -84,10 +83,10 @@ data DescribeGameSessionQueues =
 -- * 'dgsqLimit' - Maximum number of results to return. Use this parameter with @NextToken@ to get results as a set of sequential pages.
 describeGameSessionQueues
     :: DescribeGameSessionQueues
-describeGameSessionQueues =
-  DescribeGameSessionQueues'
-    {_dgsqNextToken = Nothing, _dgsqNames = Nothing, _dgsqLimit = Nothing}
-
+describeGameSessionQueues
+  = DescribeGameSessionQueues'{_dgsqNextToken =
+                                 Nothing,
+                               _dgsqNames = Nothing, _dgsqLimit = Nothing}
 
 -- | Token that indicates the start of the next sequential page of results. Use the token that is returned with a previous call to this action. To start at the beginning of the result set, do not specify a value.
 dgsqNextToken :: Lens' DescribeGameSessionQueues (Maybe Text)
@@ -145,14 +144,19 @@ instance ToQuery DescribeGameSessionQueues where
 --
 --
 -- /See:/ 'describeGameSessionQueuesResponse' smart constructor.
-data DescribeGameSessionQueuesResponse =
-  DescribeGameSessionQueuesResponse'
-    { _drsNextToken         :: !(Maybe Text)
-    , _drsGameSessionQueues :: !(Maybe [GameSessionQueue])
-    , _drsResponseStatus    :: !Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data DescribeGameSessionQueuesResponse = DescribeGameSessionQueuesResponse'{_drsNextToken
+                                                                            ::
+                                                                            !(Maybe
+                                                                                Text),
+                                                                            _drsGameSessionQueues
+                                                                            ::
+                                                                            !(Maybe
+                                                                                [GameSessionQueue]),
+                                                                            _drsResponseStatus
+                                                                            ::
+                                                                            !Int}
+                                           deriving (Eq, Read, Show, Data,
+                                                     Typeable, Generic)
 
 -- | Creates a value of 'DescribeGameSessionQueuesResponse' with the minimum fields required to make a request.
 --
@@ -166,13 +170,11 @@ data DescribeGameSessionQueuesResponse =
 describeGameSessionQueuesResponse
     :: Int -- ^ 'drsResponseStatus'
     -> DescribeGameSessionQueuesResponse
-describeGameSessionQueuesResponse pResponseStatus_ =
-  DescribeGameSessionQueuesResponse'
-    { _drsNextToken = Nothing
-    , _drsGameSessionQueues = Nothing
-    , _drsResponseStatus = pResponseStatus_
-    }
-
+describeGameSessionQueuesResponse pResponseStatus_
+  = DescribeGameSessionQueuesResponse'{_drsNextToken =
+                                         Nothing,
+                                       _drsGameSessionQueues = Nothing,
+                                       _drsResponseStatus = pResponseStatus_}
 
 -- | Token that indicates where to resume retrieving results on the next call to this action. If no token is returned, these results represent the end of the list.
 drsNextToken :: Lens' DescribeGameSessionQueuesResponse (Maybe Text)

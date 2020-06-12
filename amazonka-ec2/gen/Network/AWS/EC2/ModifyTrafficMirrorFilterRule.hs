@@ -51,30 +51,60 @@ module Network.AWS.EC2.ModifyTrafficMirrorFilterRule
     ) where
 
 import Network.AWS.EC2.Types
-import Network.AWS.EC2.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 
 -- | /See:/ 'modifyTrafficMirrorFilterRule' smart constructor.
-data ModifyTrafficMirrorFilterRule =
-  ModifyTrafficMirrorFilterRule'
-    { _mtmfrRemoveFields              :: !(Maybe [TrafficMirrorFilterRuleField])
-    , _mtmfrRuleNumber                :: !(Maybe Int)
-    , _mtmfrTrafficDirection          :: !(Maybe TrafficDirection)
-    , _mtmfrRuleAction                :: !(Maybe TrafficMirrorRuleAction)
-    , _mtmfrProtocol                  :: !(Maybe Int)
-    , _mtmfrDestinationPortRange      :: !(Maybe TrafficMirrorPortRangeRequest)
-    , _mtmfrSourceCidrBlock           :: !(Maybe Text)
-    , _mtmfrSourcePortRange           :: !(Maybe TrafficMirrorPortRangeRequest)
-    , _mtmfrDescription               :: !(Maybe Text)
-    , _mtmfrDryRun                    :: !(Maybe Bool)
-    , _mtmfrDestinationCidrBlock      :: !(Maybe Text)
-    , _mtmfrTrafficMirrorFilterRuleId :: !Text
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data ModifyTrafficMirrorFilterRule = ModifyTrafficMirrorFilterRule'{_mtmfrRemoveFields
+                                                                    ::
+                                                                    !(Maybe
+                                                                        [TrafficMirrorFilterRuleField]),
+                                                                    _mtmfrRuleNumber
+                                                                    ::
+                                                                    !(Maybe
+                                                                        Int),
+                                                                    _mtmfrTrafficDirection
+                                                                    ::
+                                                                    !(Maybe
+                                                                        TrafficDirection),
+                                                                    _mtmfrRuleAction
+                                                                    ::
+                                                                    !(Maybe
+                                                                        TrafficMirrorRuleAction),
+                                                                    _mtmfrProtocol
+                                                                    ::
+                                                                    !(Maybe
+                                                                        Int),
+                                                                    _mtmfrDestinationPortRange
+                                                                    ::
+                                                                    !(Maybe
+                                                                        TrafficMirrorPortRangeRequest),
+                                                                    _mtmfrSourceCidrBlock
+                                                                    ::
+                                                                    !(Maybe
+                                                                        Text),
+                                                                    _mtmfrSourcePortRange
+                                                                    ::
+                                                                    !(Maybe
+                                                                        TrafficMirrorPortRangeRequest),
+                                                                    _mtmfrDescription
+                                                                    ::
+                                                                    !(Maybe
+                                                                        Text),
+                                                                    _mtmfrDryRun
+                                                                    ::
+                                                                    !(Maybe
+                                                                        Bool),
+                                                                    _mtmfrDestinationCidrBlock
+                                                                    ::
+                                                                    !(Maybe
+                                                                        Text),
+                                                                    _mtmfrTrafficMirrorFilterRuleId
+                                                                    :: !Text}
+                                       deriving (Eq, Read, Show, Data, Typeable,
+                                                 Generic)
 
 -- | Creates a value of 'ModifyTrafficMirrorFilterRule' with the minimum fields required to make a request.
 --
@@ -106,22 +136,22 @@ data ModifyTrafficMirrorFilterRule =
 modifyTrafficMirrorFilterRule
     :: Text -- ^ 'mtmfrTrafficMirrorFilterRuleId'
     -> ModifyTrafficMirrorFilterRule
-modifyTrafficMirrorFilterRule pTrafficMirrorFilterRuleId_ =
-  ModifyTrafficMirrorFilterRule'
-    { _mtmfrRemoveFields = Nothing
-    , _mtmfrRuleNumber = Nothing
-    , _mtmfrTrafficDirection = Nothing
-    , _mtmfrRuleAction = Nothing
-    , _mtmfrProtocol = Nothing
-    , _mtmfrDestinationPortRange = Nothing
-    , _mtmfrSourceCidrBlock = Nothing
-    , _mtmfrSourcePortRange = Nothing
-    , _mtmfrDescription = Nothing
-    , _mtmfrDryRun = Nothing
-    , _mtmfrDestinationCidrBlock = Nothing
-    , _mtmfrTrafficMirrorFilterRuleId = pTrafficMirrorFilterRuleId_
-    }
-
+modifyTrafficMirrorFilterRule
+  pTrafficMirrorFilterRuleId_
+  = ModifyTrafficMirrorFilterRule'{_mtmfrRemoveFields =
+                                     Nothing,
+                                   _mtmfrRuleNumber = Nothing,
+                                   _mtmfrTrafficDirection = Nothing,
+                                   _mtmfrRuleAction = Nothing,
+                                   _mtmfrProtocol = Nothing,
+                                   _mtmfrDestinationPortRange = Nothing,
+                                   _mtmfrSourceCidrBlock = Nothing,
+                                   _mtmfrSourcePortRange = Nothing,
+                                   _mtmfrDescription = Nothing,
+                                   _mtmfrDryRun = Nothing,
+                                   _mtmfrDestinationCidrBlock = Nothing,
+                                   _mtmfrTrafficMirrorFilterRuleId =
+                                     pTrafficMirrorFilterRuleId_}
 
 -- | The properties that you want to remove from the Traffic Mirror filter rule. When you remove a property from a Traffic Mirror filter rule, the property is set to the default.
 mtmfrRemoveFields :: Lens' ModifyTrafficMirrorFilterRule [TrafficMirrorFilterRuleField]
@@ -216,13 +246,15 @@ instance ToQuery ModifyTrafficMirrorFilterRule where
                  _mtmfrTrafficMirrorFilterRuleId]
 
 -- | /See:/ 'modifyTrafficMirrorFilterRuleResponse' smart constructor.
-data ModifyTrafficMirrorFilterRuleResponse =
-  ModifyTrafficMirrorFilterRuleResponse'
-    { _mtmfrrsTrafficMirrorFilterRule :: !(Maybe TrafficMirrorFilterRule)
-    , _mtmfrrsResponseStatus          :: !Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data ModifyTrafficMirrorFilterRuleResponse = ModifyTrafficMirrorFilterRuleResponse'{_mtmfrrsTrafficMirrorFilterRule
+                                                                                    ::
+                                                                                    !(Maybe
+                                                                                        TrafficMirrorFilterRule),
+                                                                                    _mtmfrrsResponseStatus
+                                                                                    ::
+                                                                                    !Int}
+                                               deriving (Eq, Read, Show, Data,
+                                                         Typeable, Generic)
 
 -- | Creates a value of 'ModifyTrafficMirrorFilterRuleResponse' with the minimum fields required to make a request.
 --
@@ -234,12 +266,12 @@ data ModifyTrafficMirrorFilterRuleResponse =
 modifyTrafficMirrorFilterRuleResponse
     :: Int -- ^ 'mtmfrrsResponseStatus'
     -> ModifyTrafficMirrorFilterRuleResponse
-modifyTrafficMirrorFilterRuleResponse pResponseStatus_ =
-  ModifyTrafficMirrorFilterRuleResponse'
-    { _mtmfrrsTrafficMirrorFilterRule = Nothing
-    , _mtmfrrsResponseStatus = pResponseStatus_
-    }
-
+modifyTrafficMirrorFilterRuleResponse
+  pResponseStatus_
+  = ModifyTrafficMirrorFilterRuleResponse'{_mtmfrrsTrafficMirrorFilterRule
+                                             = Nothing,
+                                           _mtmfrrsResponseStatus =
+                                             pResponseStatus_}
 
 -- | Modifies a Traffic Mirror rule.
 mtmfrrsTrafficMirrorFilterRule :: Lens' ModifyTrafficMirrorFilterRuleResponse (Maybe TrafficMirrorFilterRule)

@@ -37,19 +37,16 @@ module Network.AWS.Config.DeleteConformancePack
     ) where
 
 import Network.AWS.Config.Types
-import Network.AWS.Config.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 
 -- | /See:/ 'deleteConformancePack' smart constructor.
-newtype DeleteConformancePack =
-  DeleteConformancePack'
-    { _dcpConformancePackName :: Text
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+newtype DeleteConformancePack = DeleteConformancePack'{_dcpConformancePackName
+                                                       :: Text}
+                                  deriving (Eq, Read, Show, Data, Typeable,
+                                            Generic)
 
 -- | Creates a value of 'DeleteConformancePack' with the minimum fields required to make a request.
 --
@@ -59,9 +56,9 @@ newtype DeleteConformancePack =
 deleteConformancePack
     :: Text -- ^ 'dcpConformancePackName'
     -> DeleteConformancePack
-deleteConformancePack pConformancePackName_ =
-  DeleteConformancePack' {_dcpConformancePackName = pConformancePackName_}
-
+deleteConformancePack pConformancePackName_
+  = DeleteConformancePack'{_dcpConformancePackName =
+                             pConformancePackName_}
 
 -- | Name of the conformance pack you want to delete.
 dcpConformancePackName :: Lens' DeleteConformancePack Text
@@ -101,16 +98,15 @@ instance ToQuery DeleteConformancePack where
         toQuery = const mempty
 
 -- | /See:/ 'deleteConformancePackResponse' smart constructor.
-data DeleteConformancePackResponse =
-  DeleteConformancePackResponse'
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data DeleteConformancePackResponse = DeleteConformancePackResponse'
+                                       deriving (Eq, Read, Show, Data, Typeable,
+                                                 Generic)
 
 -- | Creates a value of 'DeleteConformancePackResponse' with the minimum fields required to make a request.
 --
 deleteConformancePackResponse
     :: DeleteConformancePackResponse
-deleteConformancePackResponse = DeleteConformancePackResponse'
-
+deleteConformancePackResponse
+  = DeleteConformancePackResponse'
 
 instance NFData DeleteConformancePackResponse where

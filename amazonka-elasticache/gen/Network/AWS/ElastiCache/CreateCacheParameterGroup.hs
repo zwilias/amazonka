@@ -48,7 +48,6 @@ module Network.AWS.ElastiCache.CreateCacheParameterGroup
     ) where
 
 import Network.AWS.ElastiCache.Types
-import Network.AWS.ElastiCache.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.Request
@@ -59,14 +58,14 @@ import Network.AWS.Response
 --
 --
 -- /See:/ 'createCacheParameterGroup' smart constructor.
-data CreateCacheParameterGroup =
-  CreateCacheParameterGroup'
-    { _ccpgCacheParameterGroupName   :: !Text
-    , _ccpgCacheParameterGroupFamily :: !Text
-    , _ccpgDescription               :: !Text
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data CreateCacheParameterGroup = CreateCacheParameterGroup'{_ccpgCacheParameterGroupName
+                                                            :: !Text,
+                                                            _ccpgCacheParameterGroupFamily
+                                                            :: !Text,
+                                                            _ccpgDescription ::
+                                                            !Text}
+                                   deriving (Eq, Read, Show, Data, Typeable,
+                                             Generic)
 
 -- | Creates a value of 'CreateCacheParameterGroup' with the minimum fields required to make a request.
 --
@@ -74,7 +73,7 @@ data CreateCacheParameterGroup =
 --
 -- * 'ccpgCacheParameterGroupName' - A user-specified name for the cache parameter group.
 --
--- * 'ccpgCacheParameterGroupFamily' - The name of the cache parameter group family that the cache parameter group can be used with. Valid values are: @memcached1.4@ | @redis2.6@ | @redis2.8@ | @redis3.2@
+-- * 'ccpgCacheParameterGroupFamily' - The name of the cache parameter group family that the cache parameter group can be used with. Valid values are: @memcached1.4@ | @redis2.6@ | @redis2.8@ | @redis3.2@ 
 --
 -- * 'ccpgDescription' - A user-specified description for the cache parameter group.
 createCacheParameterGroup
@@ -82,19 +81,19 @@ createCacheParameterGroup
     -> Text -- ^ 'ccpgCacheParameterGroupFamily'
     -> Text -- ^ 'ccpgDescription'
     -> CreateCacheParameterGroup
-createCacheParameterGroup pCacheParameterGroupName_ pCacheParameterGroupFamily_ pDescription_ =
-  CreateCacheParameterGroup'
-    { _ccpgCacheParameterGroupName = pCacheParameterGroupName_
-    , _ccpgCacheParameterGroupFamily = pCacheParameterGroupFamily_
-    , _ccpgDescription = pDescription_
-    }
-
+createCacheParameterGroup pCacheParameterGroupName_
+  pCacheParameterGroupFamily_ pDescription_
+  = CreateCacheParameterGroup'{_ccpgCacheParameterGroupName
+                                 = pCacheParameterGroupName_,
+                               _ccpgCacheParameterGroupFamily =
+                                 pCacheParameterGroupFamily_,
+                               _ccpgDescription = pDescription_}
 
 -- | A user-specified name for the cache parameter group.
 ccpgCacheParameterGroupName :: Lens' CreateCacheParameterGroup Text
 ccpgCacheParameterGroupName = lens _ccpgCacheParameterGroupName (\ s a -> s{_ccpgCacheParameterGroupName = a})
 
--- | The name of the cache parameter group family that the cache parameter group can be used with. Valid values are: @memcached1.4@ | @redis2.6@ | @redis2.8@ | @redis3.2@
+-- | The name of the cache parameter group family that the cache parameter group can be used with. Valid values are: @memcached1.4@ | @redis2.6@ | @redis2.8@ | @redis3.2@ 
 ccpgCacheParameterGroupFamily :: Lens' CreateCacheParameterGroup Text
 ccpgCacheParameterGroupFamily = lens _ccpgCacheParameterGroupFamily (\ s a -> s{_ccpgCacheParameterGroupFamily = a})
 
@@ -136,13 +135,15 @@ instance ToQuery CreateCacheParameterGroup where
                "Description" =: _ccpgDescription]
 
 -- | /See:/ 'createCacheParameterGroupResponse' smart constructor.
-data CreateCacheParameterGroupResponse =
-  CreateCacheParameterGroupResponse'
-    { _ccpgrsCacheParameterGroup :: !(Maybe CacheParameterGroup)
-    , _ccpgrsResponseStatus      :: !Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data CreateCacheParameterGroupResponse = CreateCacheParameterGroupResponse'{_ccpgrsCacheParameterGroup
+                                                                            ::
+                                                                            !(Maybe
+                                                                                CacheParameterGroup),
+                                                                            _ccpgrsResponseStatus
+                                                                            ::
+                                                                            !Int}
+                                           deriving (Eq, Read, Show, Data,
+                                                     Typeable, Generic)
 
 -- | Creates a value of 'CreateCacheParameterGroupResponse' with the minimum fields required to make a request.
 --
@@ -154,12 +155,10 @@ data CreateCacheParameterGroupResponse =
 createCacheParameterGroupResponse
     :: Int -- ^ 'ccpgrsResponseStatus'
     -> CreateCacheParameterGroupResponse
-createCacheParameterGroupResponse pResponseStatus_ =
-  CreateCacheParameterGroupResponse'
-    { _ccpgrsCacheParameterGroup = Nothing
-    , _ccpgrsResponseStatus = pResponseStatus_
-    }
-
+createCacheParameterGroupResponse pResponseStatus_
+  = CreateCacheParameterGroupResponse'{_ccpgrsCacheParameterGroup
+                                         = Nothing,
+                                       _ccpgrsResponseStatus = pResponseStatus_}
 
 -- | Undocumented member.
 ccpgrsCacheParameterGroup :: Lens' CreateCacheParameterGroupResponse (Maybe CacheParameterGroup)

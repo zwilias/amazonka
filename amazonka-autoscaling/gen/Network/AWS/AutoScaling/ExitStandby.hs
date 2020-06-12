@@ -43,20 +43,16 @@ module Network.AWS.AutoScaling.ExitStandby
     ) where
 
 import Network.AWS.AutoScaling.Types
-import Network.AWS.AutoScaling.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 
 -- | /See:/ 'exitStandby' smart constructor.
-data ExitStandby =
-  ExitStandby'
-    { _eInstanceIds          :: !(Maybe [Text])
-    , _eAutoScalingGroupName :: !Text
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data ExitStandby = ExitStandby'{_eInstanceIds ::
+                                !(Maybe [Text]),
+                                _eAutoScalingGroupName :: !Text}
+                     deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'ExitStandby' with the minimum fields required to make a request.
 --
@@ -68,10 +64,9 @@ data ExitStandby =
 exitStandby
     :: Text -- ^ 'eAutoScalingGroupName'
     -> ExitStandby
-exitStandby pAutoScalingGroupName_ =
-  ExitStandby'
-    {_eInstanceIds = Nothing, _eAutoScalingGroupName = pAutoScalingGroupName_}
-
+exitStandby pAutoScalingGroupName_
+  = ExitStandby'{_eInstanceIds = Nothing,
+                 _eAutoScalingGroupName = pAutoScalingGroupName_}
 
 -- | The IDs of the instances. You can specify up to 20 instances.
 eInstanceIds :: Lens' ExitStandby [Text]
@@ -112,13 +107,10 @@ instance ToQuery ExitStandby where
                "AutoScalingGroupName" =: _eAutoScalingGroupName]
 
 -- | /See:/ 'exitStandbyResponse' smart constructor.
-data ExitStandbyResponse =
-  ExitStandbyResponse'
-    { _esrsActivities     :: !(Maybe [Activity])
-    , _esrsResponseStatus :: !Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data ExitStandbyResponse = ExitStandbyResponse'{_esrsActivities
+                                                :: !(Maybe [Activity]),
+                                                _esrsResponseStatus :: !Int}
+                             deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'ExitStandbyResponse' with the minimum fields required to make a request.
 --
@@ -130,10 +122,9 @@ data ExitStandbyResponse =
 exitStandbyResponse
     :: Int -- ^ 'esrsResponseStatus'
     -> ExitStandbyResponse
-exitStandbyResponse pResponseStatus_ =
-  ExitStandbyResponse'
-    {_esrsActivities = Nothing, _esrsResponseStatus = pResponseStatus_}
-
+exitStandbyResponse pResponseStatus_
+  = ExitStandbyResponse'{_esrsActivities = Nothing,
+                         _esrsResponseStatus = pResponseStatus_}
 
 -- | The activities related to moving instances out of @Standby@ mode.
 esrsActivities :: Lens' ExitStandbyResponse [Activity]

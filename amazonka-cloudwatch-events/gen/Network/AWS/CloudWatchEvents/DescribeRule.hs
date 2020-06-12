@@ -49,20 +49,16 @@ module Network.AWS.CloudWatchEvents.DescribeRule
     ) where
 
 import Network.AWS.CloudWatchEvents.Types
-import Network.AWS.CloudWatchEvents.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 
 -- | /See:/ 'describeRule' smart constructor.
-data DescribeRule =
-  DescribeRule'
-    { _desEventBusName :: !(Maybe Text)
-    , _desName         :: !Text
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data DescribeRule = DescribeRule'{_desEventBusName ::
+                                  !(Maybe Text),
+                                  _desName :: !Text}
+                      deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'DescribeRule' with the minimum fields required to make a request.
 --
@@ -74,9 +70,9 @@ data DescribeRule =
 describeRule
     :: Text -- ^ 'desName'
     -> DescribeRule
-describeRule pName_ =
-  DescribeRule' {_desEventBusName = Nothing, _desName = pName_}
-
+describeRule pName_
+  = DescribeRule'{_desEventBusName = Nothing,
+                  _desName = pName_}
 
 -- | The event bus associated with the rule. If you omit this, the default event bus is used.
 desEventBusName :: Lens' DescribeRule (Maybe Text)
@@ -130,21 +126,23 @@ instance ToQuery DescribeRule where
         toQuery = const mempty
 
 -- | /See:/ 'describeRuleResponse' smart constructor.
-data DescribeRuleResponse =
-  DescribeRuleResponse'
-    { _drrsEventPattern       :: !(Maybe Text)
-    , _drrsState              :: !(Maybe RuleState)
-    , _drrsARN                :: !(Maybe Text)
-    , _drrsEventBusName       :: !(Maybe Text)
-    , _drrsScheduleExpression :: !(Maybe Text)
-    , _drrsName               :: !(Maybe Text)
-    , _drrsDescription        :: !(Maybe Text)
-    , _drrsManagedBy          :: !(Maybe Text)
-    , _drrsRoleARN            :: !(Maybe Text)
-    , _drrsResponseStatus     :: !Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data DescribeRuleResponse = DescribeRuleResponse'{_drrsEventPattern
+                                                  :: !(Maybe Text),
+                                                  _drrsState ::
+                                                  !(Maybe RuleState),
+                                                  _drrsARN :: !(Maybe Text),
+                                                  _drrsEventBusName ::
+                                                  !(Maybe Text),
+                                                  _drrsScheduleExpression ::
+                                                  !(Maybe Text),
+                                                  _drrsName :: !(Maybe Text),
+                                                  _drrsDescription ::
+                                                  !(Maybe Text),
+                                                  _drrsManagedBy ::
+                                                  !(Maybe Text),
+                                                  _drrsRoleARN :: !(Maybe Text),
+                                                  _drrsResponseStatus :: !Int}
+                              deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'DescribeRuleResponse' with the minimum fields required to make a request.
 --
@@ -172,20 +170,14 @@ data DescribeRuleResponse =
 describeRuleResponse
     :: Int -- ^ 'drrsResponseStatus'
     -> DescribeRuleResponse
-describeRuleResponse pResponseStatus_ =
-  DescribeRuleResponse'
-    { _drrsEventPattern = Nothing
-    , _drrsState = Nothing
-    , _drrsARN = Nothing
-    , _drrsEventBusName = Nothing
-    , _drrsScheduleExpression = Nothing
-    , _drrsName = Nothing
-    , _drrsDescription = Nothing
-    , _drrsManagedBy = Nothing
-    , _drrsRoleARN = Nothing
-    , _drrsResponseStatus = pResponseStatus_
-    }
-
+describeRuleResponse pResponseStatus_
+  = DescribeRuleResponse'{_drrsEventPattern = Nothing,
+                          _drrsState = Nothing, _drrsARN = Nothing,
+                          _drrsEventBusName = Nothing,
+                          _drrsScheduleExpression = Nothing,
+                          _drrsName = Nothing, _drrsDescription = Nothing,
+                          _drrsManagedBy = Nothing, _drrsRoleARN = Nothing,
+                          _drrsResponseStatus = pResponseStatus_}
 
 -- | The event pattern. For more information, see <https://docs.aws.amazon.com/eventbridge/latest/userguide/eventbridge-and-event-patterns.html Event Patterns> in the /Amazon EventBridge User Guide/ .
 drrsEventPattern :: Lens' DescribeRuleResponse (Maybe Text)

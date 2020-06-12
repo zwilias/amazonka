@@ -36,7 +36,6 @@ module Network.AWS.APIGateway.TagResource
     ) where
 
 import Network.AWS.APIGateway.Types
-import Network.AWS.APIGateway.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.Request
@@ -47,13 +46,10 @@ import Network.AWS.Response
 --
 --
 -- /See:/ 'tagResource' smart constructor.
-data TagResource =
-  TagResource'
-    { _trResourceARN :: !Text
-    , _trTags        :: !(Map Text Text)
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data TagResource = TagResource'{_trResourceARN ::
+                                !Text,
+                                _trTags :: !(Map Text Text)}
+                     deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'TagResource' with the minimum fields required to make a request.
 --
@@ -65,9 +61,9 @@ data TagResource =
 tagResource
     :: Text -- ^ 'trResourceARN'
     -> TagResource
-tagResource pResourceARN_ =
-  TagResource' {_trResourceARN = pResourceARN_, _trTags = mempty}
-
+tagResource pResourceARN_
+  = TagResource'{_trResourceARN = pResourceARN_,
+                 _trTags = mempty}
 
 -- | [Required] The ARN of a resource that can be tagged.
 trResourceARN :: Lens' TagResource Text
@@ -104,16 +100,13 @@ instance ToQuery TagResource where
         toQuery = const mempty
 
 -- | /See:/ 'tagResourceResponse' smart constructor.
-data TagResourceResponse =
-  TagResourceResponse'
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data TagResourceResponse = TagResourceResponse'
+                             deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'TagResourceResponse' with the minimum fields required to make a request.
 --
 tagResourceResponse
     :: TagResourceResponse
 tagResourceResponse = TagResourceResponse'
-
 
 instance NFData TagResourceResponse where

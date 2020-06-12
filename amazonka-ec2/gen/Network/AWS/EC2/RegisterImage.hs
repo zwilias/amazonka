@@ -68,7 +68,6 @@ module Network.AWS.EC2.RegisterImage
     ) where
 
 import Network.AWS.EC2.Types
-import Network.AWS.EC2.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.Request
@@ -79,30 +78,29 @@ import Network.AWS.Response
 --
 --
 -- /See:/ 'registerImage' smart constructor.
-data RegisterImage =
-  RegisterImage'
-    { _riVirtualizationType  :: !(Maybe Text)
-    , _riImageLocation       :: !(Maybe Text)
-    , _riEnaSupport          :: !(Maybe Bool)
-    , _riBillingProducts     :: !(Maybe [Text])
-    , _riRAMDiskId           :: !(Maybe Text)
-    , _riKernelId            :: !(Maybe Text)
-    , _riRootDeviceName      :: !(Maybe Text)
-    , _riSRIOVNetSupport     :: !(Maybe Text)
-    , _riArchitecture        :: !(Maybe ArchitectureValues)
-    , _riDescription         :: !(Maybe Text)
-    , _riBlockDeviceMappings :: !(Maybe [BlockDeviceMapping])
-    , _riDryRun              :: !(Maybe Bool)
-    , _riName                :: !Text
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data RegisterImage = RegisterImage'{_riVirtualizationType
+                                    :: !(Maybe Text),
+                                    _riImageLocation :: !(Maybe Text),
+                                    _riEnaSupport :: !(Maybe Bool),
+                                    _riBillingProducts :: !(Maybe [Text]),
+                                    _riRAMDiskId :: !(Maybe Text),
+                                    _riKernelId :: !(Maybe Text),
+                                    _riRootDeviceName :: !(Maybe Text),
+                                    _riSRIOVNetSupport :: !(Maybe Text),
+                                    _riArchitecture ::
+                                    !(Maybe ArchitectureValues),
+                                    _riDescription :: !(Maybe Text),
+                                    _riBlockDeviceMappings ::
+                                    !(Maybe [BlockDeviceMapping]),
+                                    _riDryRun :: !(Maybe Bool),
+                                    _riName :: !Text}
+                       deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'RegisterImage' with the minimum fields required to make a request.
 --
 -- Use one of the following lenses to modify other fields as desired:
 --
--- * 'riVirtualizationType' - The type of virtualization (@hvm@ | @paravirtual@ ). Default: @paravirtual@
+-- * 'riVirtualizationType' - The type of virtualization (@hvm@ | @paravirtual@ ). Default: @paravirtual@ 
 --
 -- * 'riImageLocation' - The full path to your AMI manifest in Amazon S3 storage. The specified bucket must have the @aws-exec-read@ canned access control list (ACL) to ensure that it can be accessed by Amazon EC2. For more information, see <https://docs.aws.amazon.com/AmazonS3/latest/dev/acl-overview.html#canned-acl Canned ACLs> in the /Amazon S3 Service Developer Guide/ .
 --
@@ -130,25 +128,17 @@ data RegisterImage =
 registerImage
     :: Text -- ^ 'riName'
     -> RegisterImage
-registerImage pName_ =
-  RegisterImage'
-    { _riVirtualizationType = Nothing
-    , _riImageLocation = Nothing
-    , _riEnaSupport = Nothing
-    , _riBillingProducts = Nothing
-    , _riRAMDiskId = Nothing
-    , _riKernelId = Nothing
-    , _riRootDeviceName = Nothing
-    , _riSRIOVNetSupport = Nothing
-    , _riArchitecture = Nothing
-    , _riDescription = Nothing
-    , _riBlockDeviceMappings = Nothing
-    , _riDryRun = Nothing
-    , _riName = pName_
-    }
+registerImage pName_
+  = RegisterImage'{_riVirtualizationType = Nothing,
+                   _riImageLocation = Nothing, _riEnaSupport = Nothing,
+                   _riBillingProducts = Nothing, _riRAMDiskId = Nothing,
+                   _riKernelId = Nothing, _riRootDeviceName = Nothing,
+                   _riSRIOVNetSupport = Nothing,
+                   _riArchitecture = Nothing, _riDescription = Nothing,
+                   _riBlockDeviceMappings = Nothing,
+                   _riDryRun = Nothing, _riName = pName_}
 
-
--- | The type of virtualization (@hvm@ | @paravirtual@ ). Default: @paravirtual@
+-- | The type of virtualization (@hvm@ | @paravirtual@ ). Default: @paravirtual@ 
 riVirtualizationType :: Lens' RegisterImage (Maybe Text)
 riVirtualizationType = lens _riVirtualizationType (\ s a -> s{_riVirtualizationType = a})
 
@@ -246,13 +236,11 @@ instance ToQuery RegisterImage where
 --
 --
 -- /See:/ 'registerImageResponse' smart constructor.
-data RegisterImageResponse =
-  RegisterImageResponse'
-    { _rirsImageId        :: !(Maybe Text)
-    , _rirsResponseStatus :: !Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data RegisterImageResponse = RegisterImageResponse'{_rirsImageId
+                                                    :: !(Maybe Text),
+                                                    _rirsResponseStatus :: !Int}
+                               deriving (Eq, Read, Show, Data, Typeable,
+                                         Generic)
 
 -- | Creates a value of 'RegisterImageResponse' with the minimum fields required to make a request.
 --
@@ -264,10 +252,9 @@ data RegisterImageResponse =
 registerImageResponse
     :: Int -- ^ 'rirsResponseStatus'
     -> RegisterImageResponse
-registerImageResponse pResponseStatus_ =
-  RegisterImageResponse'
-    {_rirsImageId = Nothing, _rirsResponseStatus = pResponseStatus_}
-
+registerImageResponse pResponseStatus_
+  = RegisterImageResponse'{_rirsImageId = Nothing,
+                           _rirsResponseStatus = pResponseStatus_}
 
 -- | The ID of the newly registered AMI.
 rirsImageId :: Lens' RegisterImageResponse (Maybe Text)

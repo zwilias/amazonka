@@ -51,22 +51,18 @@ module Network.AWS.EC2.CreateSecurityGroup
     ) where
 
 import Network.AWS.EC2.Types
-import Network.AWS.EC2.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 
 -- | /See:/ 'createSecurityGroup' smart constructor.
-data CreateSecurityGroup =
-  CreateSecurityGroup'
-    { _csgVPCId       :: !(Maybe Text)
-    , _csgDryRun      :: !(Maybe Bool)
-    , _csgDescription :: !Text
-    , _csgGroupName   :: !Text
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data CreateSecurityGroup = CreateSecurityGroup'{_csgVPCId
+                                                :: !(Maybe Text),
+                                                _csgDryRun :: !(Maybe Bool),
+                                                _csgDescription :: !Text,
+                                                _csgGroupName :: !Text}
+                             deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'CreateSecurityGroup' with the minimum fields required to make a request.
 --
@@ -83,14 +79,11 @@ createSecurityGroup
     :: Text -- ^ 'csgDescription'
     -> Text -- ^ 'csgGroupName'
     -> CreateSecurityGroup
-createSecurityGroup pDescription_ pGroupName_ =
-  CreateSecurityGroup'
-    { _csgVPCId = Nothing
-    , _csgDryRun = Nothing
-    , _csgDescription = pDescription_
-    , _csgGroupName = pGroupName_
-    }
-
+createSecurityGroup pDescription_ pGroupName_
+  = CreateSecurityGroup'{_csgVPCId = Nothing,
+                         _csgDryRun = Nothing,
+                         _csgDescription = pDescription_,
+                         _csgGroupName = pGroupName_}
 
 -- | [EC2-VPC] The ID of the VPC. Required for EC2-VPC.
 csgVPCId :: Lens' CreateSecurityGroup (Maybe Text)
@@ -138,13 +131,12 @@ instance ToQuery CreateSecurityGroup where
                "GroupName" =: _csgGroupName]
 
 -- | /See:/ 'createSecurityGroupResponse' smart constructor.
-data CreateSecurityGroupResponse =
-  CreateSecurityGroupResponse'
-    { _csgrsResponseStatus :: !Int
-    , _csgrsGroupId        :: !Text
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data CreateSecurityGroupResponse = CreateSecurityGroupResponse'{_csgrsResponseStatus
+                                                                :: !Int,
+                                                                _csgrsGroupId ::
+                                                                !Text}
+                                     deriving (Eq, Read, Show, Data, Typeable,
+                                               Generic)
 
 -- | Creates a value of 'CreateSecurityGroupResponse' with the minimum fields required to make a request.
 --
@@ -157,10 +149,11 @@ createSecurityGroupResponse
     :: Int -- ^ 'csgrsResponseStatus'
     -> Text -- ^ 'csgrsGroupId'
     -> CreateSecurityGroupResponse
-createSecurityGroupResponse pResponseStatus_ pGroupId_ =
-  CreateSecurityGroupResponse'
-    {_csgrsResponseStatus = pResponseStatus_, _csgrsGroupId = pGroupId_}
-
+createSecurityGroupResponse pResponseStatus_
+  pGroupId_
+  = CreateSecurityGroupResponse'{_csgrsResponseStatus =
+                                   pResponseStatus_,
+                                 _csgrsGroupId = pGroupId_}
 
 -- | -- | The response status code.
 csgrsResponseStatus :: Lens' CreateSecurityGroupResponse Int

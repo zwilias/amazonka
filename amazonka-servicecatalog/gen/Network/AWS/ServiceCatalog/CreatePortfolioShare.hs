@@ -43,17 +43,13 @@ import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 import Network.AWS.ServiceCatalog.Types
-import Network.AWS.ServiceCatalog.Types.Product
 
 -- | /See:/ 'createPortfolioShare' smart constructor.
-data CreatePortfolioShare =
-  CreatePortfolioShare'
-    { _cpsAcceptLanguage :: !(Maybe Text)
-    , _cpsPortfolioId    :: !Text
-    , _cpsAccountId      :: !Text
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data CreatePortfolioShare = CreatePortfolioShare'{_cpsAcceptLanguage
+                                                  :: !(Maybe Text),
+                                                  _cpsPortfolioId :: !Text,
+                                                  _cpsAccountId :: !Text}
+                              deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'CreatePortfolioShare' with the minimum fields required to make a request.
 --
@@ -68,13 +64,10 @@ createPortfolioShare
     :: Text -- ^ 'cpsPortfolioId'
     -> Text -- ^ 'cpsAccountId'
     -> CreatePortfolioShare
-createPortfolioShare pPortfolioId_ pAccountId_ =
-  CreatePortfolioShare'
-    { _cpsAcceptLanguage = Nothing
-    , _cpsPortfolioId = pPortfolioId_
-    , _cpsAccountId = pAccountId_
-    }
-
+createPortfolioShare pPortfolioId_ pAccountId_
+  = CreatePortfolioShare'{_cpsAcceptLanguage = Nothing,
+                          _cpsPortfolioId = pPortfolioId_,
+                          _cpsAccountId = pAccountId_}
 
 -- | The language code.     * @en@ - English (default)     * @jp@ - Japanese     * @zh@ - Chinese
 cpsAcceptLanguage :: Lens' CreatePortfolioShare (Maybe Text)
@@ -127,12 +120,10 @@ instance ToQuery CreatePortfolioShare where
         toQuery = const mempty
 
 -- | /See:/ 'createPortfolioShareResponse' smart constructor.
-newtype CreatePortfolioShareResponse =
-  CreatePortfolioShareResponse'
-    { _cpsrsResponseStatus :: Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+newtype CreatePortfolioShareResponse = CreatePortfolioShareResponse'{_cpsrsResponseStatus
+                                                                     :: Int}
+                                         deriving (Eq, Read, Show, Data,
+                                                   Typeable, Generic)
 
 -- | Creates a value of 'CreatePortfolioShareResponse' with the minimum fields required to make a request.
 --
@@ -142,9 +133,9 @@ newtype CreatePortfolioShareResponse =
 createPortfolioShareResponse
     :: Int -- ^ 'cpsrsResponseStatus'
     -> CreatePortfolioShareResponse
-createPortfolioShareResponse pResponseStatus_ =
-  CreatePortfolioShareResponse' {_cpsrsResponseStatus = pResponseStatus_}
-
+createPortfolioShareResponse pResponseStatus_
+  = CreatePortfolioShareResponse'{_cpsrsResponseStatus
+                                    = pResponseStatus_}
 
 -- | -- | The response status code.
 cpsrsResponseStatus :: Lens' CreatePortfolioShareResponse Int

@@ -18,7 +18,7 @@
 -- Stability   : auto-generated
 -- Portability : non-portable (GHC extensions)
 --
--- Moves an Elastic IP address from the EC2-Classic platform to the EC2-VPC platform. The Elastic IP address must be allocated to your account for more than 24 hours, and it must not be associated with an instance. After the Elastic IP address is moved, it is no longer available for use in the EC2-Classic platform, unless you move it back using the 'RestoreAddressToClassic' request. You cannot move an Elastic IP address that was originally allocated for use in the EC2-VPC platform to the EC2-Classic platform.
+-- Moves an Elastic IP address from the EC2-Classic platform to the EC2-VPC platform. The Elastic IP address must be allocated to your account for more than 24 hours, and it must not be associated with an instance. After the Elastic IP address is moved, it is no longer available for use in the EC2-Classic platform, unless you move it back using the 'RestoreAddressToClassic' request. You cannot move an Elastic IP address that was originally allocated for use in the EC2-VPC platform to the EC2-Classic platform. 
 --
 --
 module Network.AWS.EC2.MoveAddressToVPC
@@ -40,20 +40,16 @@ module Network.AWS.EC2.MoveAddressToVPC
     ) where
 
 import Network.AWS.EC2.Types
-import Network.AWS.EC2.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 
 -- | /See:/ 'moveAddressToVPC' smart constructor.
-data MoveAddressToVPC =
-  MoveAddressToVPC'
-    { _matvDryRun   :: !(Maybe Bool)
-    , _matvPublicIP :: !Text
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data MoveAddressToVPC = MoveAddressToVPC'{_matvDryRun
+                                          :: !(Maybe Bool),
+                                          _matvPublicIP :: !Text}
+                          deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'MoveAddressToVPC' with the minimum fields required to make a request.
 --
@@ -65,9 +61,9 @@ data MoveAddressToVPC =
 moveAddressToVPC
     :: Text -- ^ 'matvPublicIP'
     -> MoveAddressToVPC
-moveAddressToVPC pPublicIP_ =
-  MoveAddressToVPC' {_matvDryRun = Nothing, _matvPublicIP = pPublicIP_}
-
+moveAddressToVPC pPublicIP_
+  = MoveAddressToVPC'{_matvDryRun = Nothing,
+                      _matvPublicIP = pPublicIP_}
 
 -- | Checks whether you have the required permissions for the action, without actually making the request, and provides an error response. If you have the required permissions, the error response is @DryRunOperation@ . Otherwise, it is @UnauthorizedOperation@ .
 matvDryRun :: Lens' MoveAddressToVPC (Maybe Bool)
@@ -105,14 +101,16 @@ instance ToQuery MoveAddressToVPC where
                "DryRun" =: _matvDryRun, "PublicIp" =: _matvPublicIP]
 
 -- | /See:/ 'moveAddressToVPCResponse' smart constructor.
-data MoveAddressToVPCResponse =
-  MoveAddressToVPCResponse'
-    { _matvrsStatus         :: !(Maybe AddressStatus)
-    , _matvrsAllocationId   :: !(Maybe Text)
-    , _matvrsResponseStatus :: !Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data MoveAddressToVPCResponse = MoveAddressToVPCResponse'{_matvrsStatus
+                                                          ::
+                                                          !(Maybe
+                                                              AddressStatus),
+                                                          _matvrsAllocationId ::
+                                                          !(Maybe Text),
+                                                          _matvrsResponseStatus
+                                                          :: !Int}
+                                  deriving (Eq, Read, Show, Data, Typeable,
+                                            Generic)
 
 -- | Creates a value of 'MoveAddressToVPCResponse' with the minimum fields required to make a request.
 --
@@ -126,13 +124,10 @@ data MoveAddressToVPCResponse =
 moveAddressToVPCResponse
     :: Int -- ^ 'matvrsResponseStatus'
     -> MoveAddressToVPCResponse
-moveAddressToVPCResponse pResponseStatus_ =
-  MoveAddressToVPCResponse'
-    { _matvrsStatus = Nothing
-    , _matvrsAllocationId = Nothing
-    , _matvrsResponseStatus = pResponseStatus_
-    }
-
+moveAddressToVPCResponse pResponseStatus_
+  = MoveAddressToVPCResponse'{_matvrsStatus = Nothing,
+                              _matvrsAllocationId = Nothing,
+                              _matvrsResponseStatus = pResponseStatus_}
 
 -- | The status of the move of the IP address.
 matvrsStatus :: Lens' MoveAddressToVPCResponse (Maybe AddressStatus)

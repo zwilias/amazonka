@@ -44,15 +44,12 @@ import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 import Network.AWS.Route53.Types
-import Network.AWS.Route53.Types.Product
 
 -- | /See:/ 'getQueryLoggingConfig' smart constructor.
-newtype GetQueryLoggingConfig =
-  GetQueryLoggingConfig'
-    { _gqlcId :: Text
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+newtype GetQueryLoggingConfig = GetQueryLoggingConfig'{_gqlcId
+                                                       :: Text}
+                                  deriving (Eq, Read, Show, Data, Typeable,
+                                            Generic)
 
 -- | Creates a value of 'GetQueryLoggingConfig' with the minimum fields required to make a request.
 --
@@ -62,8 +59,8 @@ newtype GetQueryLoggingConfig =
 getQueryLoggingConfig
     :: Text -- ^ 'gqlcId'
     -> GetQueryLoggingConfig
-getQueryLoggingConfig pId_ = GetQueryLoggingConfig' {_gqlcId = pId_}
-
+getQueryLoggingConfig pId_
+  = GetQueryLoggingConfig'{_gqlcId = pId_}
 
 -- | The ID of the configuration for DNS query logging that you want to get information about.
 gqlcId :: Lens' GetQueryLoggingConfig Text
@@ -95,13 +92,13 @@ instance ToQuery GetQueryLoggingConfig where
         toQuery = const mempty
 
 -- | /See:/ 'getQueryLoggingConfigResponse' smart constructor.
-data GetQueryLoggingConfigResponse =
-  GetQueryLoggingConfigResponse'
-    { _gqlcrsResponseStatus     :: !Int
-    , _gqlcrsQueryLoggingConfig :: !QueryLoggingConfig
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data GetQueryLoggingConfigResponse = GetQueryLoggingConfigResponse'{_gqlcrsResponseStatus
+                                                                    :: !Int,
+                                                                    _gqlcrsQueryLoggingConfig
+                                                                    ::
+                                                                    !QueryLoggingConfig}
+                                       deriving (Eq, Read, Show, Data, Typeable,
+                                                 Generic)
 
 -- | Creates a value of 'GetQueryLoggingConfigResponse' with the minimum fields required to make a request.
 --
@@ -114,12 +111,12 @@ getQueryLoggingConfigResponse
     :: Int -- ^ 'gqlcrsResponseStatus'
     -> QueryLoggingConfig -- ^ 'gqlcrsQueryLoggingConfig'
     -> GetQueryLoggingConfigResponse
-getQueryLoggingConfigResponse pResponseStatus_ pQueryLoggingConfig_ =
-  GetQueryLoggingConfigResponse'
-    { _gqlcrsResponseStatus = pResponseStatus_
-    , _gqlcrsQueryLoggingConfig = pQueryLoggingConfig_
-    }
-
+getQueryLoggingConfigResponse pResponseStatus_
+  pQueryLoggingConfig_
+  = GetQueryLoggingConfigResponse'{_gqlcrsResponseStatus
+                                     = pResponseStatus_,
+                                   _gqlcrsQueryLoggingConfig =
+                                     pQueryLoggingConfig_}
 
 -- | -- | The response status code.
 gqlcrsResponseStatus :: Lens' GetQueryLoggingConfigResponse Int

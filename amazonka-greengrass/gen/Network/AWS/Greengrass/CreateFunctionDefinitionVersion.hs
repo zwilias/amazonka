@@ -41,7 +41,6 @@ module Network.AWS.Greengrass.CreateFunctionDefinitionVersion
     ) where
 
 import Network.AWS.Greengrass.Types
-import Network.AWS.Greengrass.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.Request
@@ -50,14 +49,19 @@ import Network.AWS.Response
 -- | Information needed to create a function definition version.
 --
 -- /See:/ 'createFunctionDefinitionVersion' smart constructor.
-data CreateFunctionDefinitionVersion =
-  CreateFunctionDefinitionVersion'
-    { _cfdvAmznClientToken      :: !(Maybe Text)
-    , _cfdvFunctions            :: !(Maybe [Function])
-    , _cfdvFunctionDefinitionId :: !Text
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data CreateFunctionDefinitionVersion = CreateFunctionDefinitionVersion'{_cfdvAmznClientToken
+                                                                        ::
+                                                                        !(Maybe
+                                                                            Text),
+                                                                        _cfdvFunctions
+                                                                        ::
+                                                                        !(Maybe
+                                                                            [Function]),
+                                                                        _cfdvFunctionDefinitionId
+                                                                        ::
+                                                                        !Text}
+                                         deriving (Eq, Read, Show, Data,
+                                                   Typeable, Generic)
 
 -- | Creates a value of 'CreateFunctionDefinitionVersion' with the minimum fields required to make a request.
 --
@@ -71,13 +75,13 @@ data CreateFunctionDefinitionVersion =
 createFunctionDefinitionVersion
     :: Text -- ^ 'cfdvFunctionDefinitionId'
     -> CreateFunctionDefinitionVersion
-createFunctionDefinitionVersion pFunctionDefinitionId_ =
-  CreateFunctionDefinitionVersion'
-    { _cfdvAmznClientToken = Nothing
-    , _cfdvFunctions = Nothing
-    , _cfdvFunctionDefinitionId = pFunctionDefinitionId_
-    }
-
+createFunctionDefinitionVersion
+  pFunctionDefinitionId_
+  = CreateFunctionDefinitionVersion'{_cfdvAmznClientToken
+                                       = Nothing,
+                                     _cfdvFunctions = Nothing,
+                                     _cfdvFunctionDefinitionId =
+                                       pFunctionDefinitionId_}
 
 -- | A client token used to correlate requests and responses.
 cfdvAmznClientToken :: Lens' CreateFunctionDefinitionVersion (Maybe Text)
@@ -134,16 +138,27 @@ instance ToQuery CreateFunctionDefinitionVersion
         toQuery = const mempty
 
 -- | /See:/ 'createFunctionDefinitionVersionResponse' smart constructor.
-data CreateFunctionDefinitionVersionResponse =
-  CreateFunctionDefinitionVersionResponse'
-    { _cfdvrsARN               :: !(Maybe Text)
-    , _cfdvrsCreationTimestamp :: !(Maybe Text)
-    , _cfdvrsVersion           :: !(Maybe Text)
-    , _cfdvrsId                :: !(Maybe Text)
-    , _cfdvrsResponseStatus    :: !Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data CreateFunctionDefinitionVersionResponse = CreateFunctionDefinitionVersionResponse'{_cfdvrsARN
+                                                                                        ::
+                                                                                        !(Maybe
+                                                                                            Text),
+                                                                                        _cfdvrsCreationTimestamp
+                                                                                        ::
+                                                                                        !(Maybe
+                                                                                            Text),
+                                                                                        _cfdvrsVersion
+                                                                                        ::
+                                                                                        !(Maybe
+                                                                                            Text),
+                                                                                        _cfdvrsId
+                                                                                        ::
+                                                                                        !(Maybe
+                                                                                            Text),
+                                                                                        _cfdvrsResponseStatus
+                                                                                        ::
+                                                                                        !Int}
+                                                 deriving (Eq, Read, Show, Data,
+                                                           Typeable, Generic)
 
 -- | Creates a value of 'CreateFunctionDefinitionVersionResponse' with the minimum fields required to make a request.
 --
@@ -161,15 +176,15 @@ data CreateFunctionDefinitionVersionResponse =
 createFunctionDefinitionVersionResponse
     :: Int -- ^ 'cfdvrsResponseStatus'
     -> CreateFunctionDefinitionVersionResponse
-createFunctionDefinitionVersionResponse pResponseStatus_ =
-  CreateFunctionDefinitionVersionResponse'
-    { _cfdvrsARN = Nothing
-    , _cfdvrsCreationTimestamp = Nothing
-    , _cfdvrsVersion = Nothing
-    , _cfdvrsId = Nothing
-    , _cfdvrsResponseStatus = pResponseStatus_
-    }
-
+createFunctionDefinitionVersionResponse
+  pResponseStatus_
+  = CreateFunctionDefinitionVersionResponse'{_cfdvrsARN
+                                               = Nothing,
+                                             _cfdvrsCreationTimestamp = Nothing,
+                                             _cfdvrsVersion = Nothing,
+                                             _cfdvrsId = Nothing,
+                                             _cfdvrsResponseStatus =
+                                               pResponseStatus_}
 
 -- | The ARN of the version.
 cfdvrsARN :: Lens' CreateFunctionDefinitionVersionResponse (Maybe Text)

@@ -37,7 +37,6 @@ module Network.AWS.CodePipeline.EnableStageTransition
     ) where
 
 import Network.AWS.CodePipeline.Types
-import Network.AWS.CodePipeline.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.Request
@@ -48,14 +47,13 @@ import Network.AWS.Response
 --
 --
 -- /See:/ 'enableStageTransition' smart constructor.
-data EnableStageTransition =
-  EnableStageTransition'
-    { _estPipelineName   :: !Text
-    , _estStageName      :: !Text
-    , _estTransitionType :: !StageTransitionType
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data EnableStageTransition = EnableStageTransition'{_estPipelineName
+                                                    :: !Text,
+                                                    _estStageName :: !Text,
+                                                    _estTransitionType ::
+                                                    !StageTransitionType}
+                               deriving (Eq, Read, Show, Data, Typeable,
+                                         Generic)
 
 -- | Creates a value of 'EnableStageTransition' with the minimum fields required to make a request.
 --
@@ -71,13 +69,12 @@ enableStageTransition
     -> Text -- ^ 'estStageName'
     -> StageTransitionType -- ^ 'estTransitionType'
     -> EnableStageTransition
-enableStageTransition pPipelineName_ pStageName_ pTransitionType_ =
-  EnableStageTransition'
-    { _estPipelineName = pPipelineName_
-    , _estStageName = pStageName_
-    , _estTransitionType = pTransitionType_
-    }
-
+enableStageTransition pPipelineName_ pStageName_
+  pTransitionType_
+  = EnableStageTransition'{_estPipelineName =
+                             pPipelineName_,
+                           _estStageName = pStageName_,
+                           _estTransitionType = pTransitionType_}
 
 -- | The name of the pipeline in which you want to enable the flow of artifacts from one stage to another.
 estPipelineName :: Lens' EnableStageTransition Text
@@ -126,16 +123,15 @@ instance ToQuery EnableStageTransition where
         toQuery = const mempty
 
 -- | /See:/ 'enableStageTransitionResponse' smart constructor.
-data EnableStageTransitionResponse =
-  EnableStageTransitionResponse'
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data EnableStageTransitionResponse = EnableStageTransitionResponse'
+                                       deriving (Eq, Read, Show, Data, Typeable,
+                                                 Generic)
 
 -- | Creates a value of 'EnableStageTransitionResponse' with the minimum fields required to make a request.
 --
 enableStageTransitionResponse
     :: EnableStageTransitionResponse
-enableStageTransitionResponse = EnableStageTransitionResponse'
-
+enableStageTransitionResponse
+  = EnableStageTransitionResponse'
 
 instance NFData EnableStageTransitionResponse where

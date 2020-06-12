@@ -65,7 +65,6 @@ module Network.AWS.CloudWatch.GetMetricData
     ) where
 
 import Network.AWS.CloudWatch.Types
-import Network.AWS.CloudWatch.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Pager
 import Network.AWS.Prelude
@@ -73,17 +72,14 @@ import Network.AWS.Request
 import Network.AWS.Response
 
 -- | /See:/ 'getMetricData' smart constructor.
-data GetMetricData =
-  GetMetricData'
-    { _gmdMaxDatapoints     :: !(Maybe Int)
-    , _gmdNextToken         :: !(Maybe Text)
-    , _gmdScanBy            :: !(Maybe ScanBy)
-    , _gmdMetricDataQueries :: ![MetricDataQuery]
-    , _gmdStartTime         :: !ISO8601
-    , _gmdEndTime           :: !ISO8601
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data GetMetricData = GetMetricData'{_gmdMaxDatapoints
+                                    :: !(Maybe Int),
+                                    _gmdNextToken :: !(Maybe Text),
+                                    _gmdScanBy :: !(Maybe ScanBy),
+                                    _gmdMetricDataQueries :: ![MetricDataQuery],
+                                    _gmdStartTime :: !ISO8601,
+                                    _gmdEndTime :: !ISO8601}
+                       deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'GetMetricData' with the minimum fields required to make a request.
 --
@@ -95,7 +91,7 @@ data GetMetricData =
 --
 -- * 'gmdScanBy' - The order in which data points should be returned. @TimestampDescending@ returns the newest data first and paginates when the @MaxDatapoints@ limit is reached. @TimestampAscending@ returns the oldest data first and paginates when the @MaxDatapoints@ limit is reached.
 --
--- * 'gmdMetricDataQueries' - The metric queries to be returned. A single @GetMetricData@ call can include as many as 500 @MetricDataQuery@ structures. Each of these structures can specify either a metric to retrieve, or a math expression to perform on retrieved data.
+-- * 'gmdMetricDataQueries' - The metric queries to be returned. A single @GetMetricData@ call can include as many as 500 @MetricDataQuery@ structures. Each of these structures can specify either a metric to retrieve, or a math expression to perform on retrieved data. 
 --
 -- * 'gmdStartTime' - The time stamp indicating the earliest data to be returned. The value specified is inclusive; results include data points with the specified time stamp.  CloudWatch rounds the specified time stamp as follows:     * Start time less than 15 days ago - Round down to the nearest whole minute. For example, 12:32:34 is rounded down to 12:32:00.     * Start time between 15 and 63 days ago - Round down to the nearest 5-minute clock interval. For example, 12:32:34 is rounded down to 12:30:00.     * Start time greater than 63 days ago - Round down to the nearest 1-hour clock interval. For example, 12:32:34 is rounded down to 12:00:00. If you set @Period@ to 5, 10, or 30, the start time of your request is rounded down to the nearest time that corresponds to even 5-, 10-, or 30-second divisions of a minute. For example, if you make a query at (HH:mm:ss) 01:05:23 for the previous 10-second period, the start time of your request is rounded down and you receive data from 01:05:10 to 01:05:20. If you make a query at 15:07:17 for the previous 5 minutes of data, using a period of 5 seconds, you receive data timestamped between 15:02:15 and 15:07:15.  For better performance, specify @StartTime@ and @EndTime@ values that align with the value of the metric's @Period@ and sync up with the beginning and end of an hour. For example, if the @Period@ of a metric is 5 minutes, specifying 12:05 or 12:30 as @StartTime@ can get a faster response from CloudWatch than setting 12:07 or 12:29 as the @StartTime@ .
 --
@@ -104,16 +100,12 @@ getMetricData
     :: UTCTime -- ^ 'gmdStartTime'
     -> UTCTime -- ^ 'gmdEndTime'
     -> GetMetricData
-getMetricData pStartTime_ pEndTime_ =
-  GetMetricData'
-    { _gmdMaxDatapoints = Nothing
-    , _gmdNextToken = Nothing
-    , _gmdScanBy = Nothing
-    , _gmdMetricDataQueries = mempty
-    , _gmdStartTime = _Time # pStartTime_
-    , _gmdEndTime = _Time # pEndTime_
-    }
-
+getMetricData pStartTime_ pEndTime_
+  = GetMetricData'{_gmdMaxDatapoints = Nothing,
+                   _gmdNextToken = Nothing, _gmdScanBy = Nothing,
+                   _gmdMetricDataQueries = mempty,
+                   _gmdStartTime = _Time # pStartTime_,
+                   _gmdEndTime = _Time # pEndTime_}
 
 -- | The maximum number of data points the request should return before paginating. If you omit this, the default of 100,800 is used.
 gmdMaxDatapoints :: Lens' GetMetricData (Maybe Int)
@@ -127,7 +119,7 @@ gmdNextToken = lens _gmdNextToken (\ s a -> s{_gmdNextToken = a})
 gmdScanBy :: Lens' GetMetricData (Maybe ScanBy)
 gmdScanBy = lens _gmdScanBy (\ s a -> s{_gmdScanBy = a})
 
--- | The metric queries to be returned. A single @GetMetricData@ call can include as many as 500 @MetricDataQuery@ structures. Each of these structures can specify either a metric to retrieve, or a math expression to perform on retrieved data.
+-- | The metric queries to be returned. A single @GetMetricData@ call can include as many as 500 @MetricDataQuery@ structures. Each of these structures can specify either a metric to retrieve, or a math expression to perform on retrieved data. 
 gmdMetricDataQueries :: Lens' GetMetricData [MetricDataQuery]
 gmdMetricDataQueries = lens _gmdMetricDataQueries (\ s a -> s{_gmdMetricDataQueries = a}) . _Coerce
 
@@ -185,15 +177,17 @@ instance ToQuery GetMetricData where
                "EndTime" =: _gmdEndTime]
 
 -- | /See:/ 'getMetricDataResponse' smart constructor.
-data GetMetricDataResponse =
-  GetMetricDataResponse'
-    { _gmdrsMetricDataResults :: !(Maybe [MetricDataResult])
-    , _gmdrsNextToken         :: !(Maybe Text)
-    , _gmdrsMessages          :: !(Maybe [MessageData])
-    , _gmdrsResponseStatus    :: !Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data GetMetricDataResponse = GetMetricDataResponse'{_gmdrsMetricDataResults
+                                                    ::
+                                                    !(Maybe [MetricDataResult]),
+                                                    _gmdrsNextToken ::
+                                                    !(Maybe Text),
+                                                    _gmdrsMessages ::
+                                                    !(Maybe [MessageData]),
+                                                    _gmdrsResponseStatus ::
+                                                    !Int}
+                               deriving (Eq, Read, Show, Data, Typeable,
+                                         Generic)
 
 -- | Creates a value of 'GetMetricDataResponse' with the minimum fields required to make a request.
 --
@@ -209,14 +203,11 @@ data GetMetricDataResponse =
 getMetricDataResponse
     :: Int -- ^ 'gmdrsResponseStatus'
     -> GetMetricDataResponse
-getMetricDataResponse pResponseStatus_ =
-  GetMetricDataResponse'
-    { _gmdrsMetricDataResults = Nothing
-    , _gmdrsNextToken = Nothing
-    , _gmdrsMessages = Nothing
-    , _gmdrsResponseStatus = pResponseStatus_
-    }
-
+getMetricDataResponse pResponseStatus_
+  = GetMetricDataResponse'{_gmdrsMetricDataResults =
+                             Nothing,
+                           _gmdrsNextToken = Nothing, _gmdrsMessages = Nothing,
+                           _gmdrsResponseStatus = pResponseStatus_}
 
 -- | The metrics that are returned, including the metric name, namespace, and dimensions.
 gmdrsMetricDataResults :: Lens' GetMetricDataResponse [MetricDataResult]

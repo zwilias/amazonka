@@ -55,24 +55,25 @@ import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 import Network.AWS.SageMaker.Types
-import Network.AWS.SageMaker.Types.Product
 
 -- | /See:/ 'listTrainingJobs' smart constructor.
-data ListTrainingJobs =
-  ListTrainingJobs'
-    { _ltjNameContains           :: !(Maybe Text)
-    , _ltjLastModifiedTimeBefore :: !(Maybe POSIX)
-    , _ltjCreationTimeAfter      :: !(Maybe POSIX)
-    , _ltjNextToken              :: !(Maybe Text)
-    , _ltjSortOrder              :: !(Maybe SortOrder)
-    , _ltjLastModifiedTimeAfter  :: !(Maybe POSIX)
-    , _ltjCreationTimeBefore     :: !(Maybe POSIX)
-    , _ltjStatusEquals           :: !(Maybe TrainingJobStatus)
-    , _ltjMaxResults             :: !(Maybe Nat)
-    , _ltjSortBy                 :: !(Maybe SortBy)
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data ListTrainingJobs = ListTrainingJobs'{_ltjNameContains
+                                          :: !(Maybe Text),
+                                          _ltjLastModifiedTimeBefore ::
+                                          !(Maybe POSIX),
+                                          _ltjCreationTimeAfter ::
+                                          !(Maybe POSIX),
+                                          _ltjNextToken :: !(Maybe Text),
+                                          _ltjSortOrder :: !(Maybe SortOrder),
+                                          _ltjLastModifiedTimeAfter ::
+                                          !(Maybe POSIX),
+                                          _ltjCreationTimeBefore ::
+                                          !(Maybe POSIX),
+                                          _ltjStatusEquals ::
+                                          !(Maybe TrainingJobStatus),
+                                          _ltjMaxResults :: !(Maybe Nat),
+                                          _ltjSortBy :: !(Maybe SortBy)}
+                          deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'ListTrainingJobs' with the minimum fields required to make a request.
 --
@@ -84,7 +85,7 @@ data ListTrainingJobs =
 --
 -- * 'ltjCreationTimeAfter' - A filter that only training jobs created after the specified time (timestamp).
 --
--- * 'ltjNextToken' - If the result of the previous @ListTrainingJobs@ request was truncated, the response includes a @NextToken@ . To retrieve the next set of training jobs, use the token in the next request.
+-- * 'ltjNextToken' - If the result of the previous @ListTrainingJobs@ request was truncated, the response includes a @NextToken@ . To retrieve the next set of training jobs, use the token in the next request. 
 --
 -- * 'ltjSortOrder' - The sort order for results. The default is @Ascending@ .
 --
@@ -99,20 +100,15 @@ data ListTrainingJobs =
 -- * 'ltjSortBy' - The field to sort results by. The default is @CreationTime@ .
 listTrainingJobs
     :: ListTrainingJobs
-listTrainingJobs =
-  ListTrainingJobs'
-    { _ltjNameContains = Nothing
-    , _ltjLastModifiedTimeBefore = Nothing
-    , _ltjCreationTimeAfter = Nothing
-    , _ltjNextToken = Nothing
-    , _ltjSortOrder = Nothing
-    , _ltjLastModifiedTimeAfter = Nothing
-    , _ltjCreationTimeBefore = Nothing
-    , _ltjStatusEquals = Nothing
-    , _ltjMaxResults = Nothing
-    , _ltjSortBy = Nothing
-    }
-
+listTrainingJobs
+  = ListTrainingJobs'{_ltjNameContains = Nothing,
+                      _ltjLastModifiedTimeBefore = Nothing,
+                      _ltjCreationTimeAfter = Nothing,
+                      _ltjNextToken = Nothing, _ltjSortOrder = Nothing,
+                      _ltjLastModifiedTimeAfter = Nothing,
+                      _ltjCreationTimeBefore = Nothing,
+                      _ltjStatusEquals = Nothing, _ltjMaxResults = Nothing,
+                      _ltjSortBy = Nothing}
 
 -- | A string in the training job name. This filter returns only models whose name contains the specified string.
 ltjNameContains :: Lens' ListTrainingJobs (Maybe Text)
@@ -126,7 +122,7 @@ ltjLastModifiedTimeBefore = lens _ltjLastModifiedTimeBefore (\ s a -> s{_ltjLast
 ltjCreationTimeAfter :: Lens' ListTrainingJobs (Maybe UTCTime)
 ltjCreationTimeAfter = lens _ltjCreationTimeAfter (\ s a -> s{_ltjCreationTimeAfter = a}) . mapping _Time
 
--- | If the result of the previous @ListTrainingJobs@ request was truncated, the response includes a @NextToken@ . To retrieve the next set of training jobs, use the token in the next request.
+-- | If the result of the previous @ListTrainingJobs@ request was truncated, the response includes a @NextToken@ . To retrieve the next set of training jobs, use the token in the next request. 
 ltjNextToken :: Lens' ListTrainingJobs (Maybe Text)
 ltjNextToken = lens _ltjNextToken (\ s a -> s{_ltjNextToken = a})
 
@@ -208,14 +204,15 @@ instance ToQuery ListTrainingJobs where
         toQuery = const mempty
 
 -- | /See:/ 'listTrainingJobsResponse' smart constructor.
-data ListTrainingJobsResponse =
-  ListTrainingJobsResponse'
-    { _ltjrsNextToken            :: !(Maybe Text)
-    , _ltjrsResponseStatus       :: !Int
-    , _ltjrsTrainingJobSummaries :: ![TrainingJobSummary]
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data ListTrainingJobsResponse = ListTrainingJobsResponse'{_ltjrsNextToken
+                                                          :: !(Maybe Text),
+                                                          _ltjrsResponseStatus
+                                                          :: !Int,
+                                                          _ltjrsTrainingJobSummaries
+                                                          ::
+                                                          ![TrainingJobSummary]}
+                                  deriving (Eq, Read, Show, Data, Typeable,
+                                            Generic)
 
 -- | Creates a value of 'ListTrainingJobsResponse' with the minimum fields required to make a request.
 --
@@ -229,13 +226,11 @@ data ListTrainingJobsResponse =
 listTrainingJobsResponse
     :: Int -- ^ 'ltjrsResponseStatus'
     -> ListTrainingJobsResponse
-listTrainingJobsResponse pResponseStatus_ =
-  ListTrainingJobsResponse'
-    { _ltjrsNextToken = Nothing
-    , _ltjrsResponseStatus = pResponseStatus_
-    , _ltjrsTrainingJobSummaries = mempty
-    }
-
+listTrainingJobsResponse pResponseStatus_
+  = ListTrainingJobsResponse'{_ltjrsNextToken =
+                                Nothing,
+                              _ltjrsResponseStatus = pResponseStatus_,
+                              _ltjrsTrainingJobSummaries = mempty}
 
 -- | If the response is truncated, Amazon SageMaker returns this token. To retrieve the next set of training jobs, use it in the subsequent request.
 ltjrsNextToken :: Lens' ListTrainingJobsResponse (Maybe Text)

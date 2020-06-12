@@ -23,25 +23,25 @@
 --
 -- Game-session-related operations include:
 --
---     * 'CreateGameSession'
+--     * 'CreateGameSession' 
 --
---     * 'DescribeGameSessions'
+--     * 'DescribeGameSessions' 
 --
---     * 'DescribeGameSessionDetails'
+--     * 'DescribeGameSessionDetails' 
 --
---     * 'SearchGameSessions'
+--     * 'SearchGameSessions' 
 --
---     * 'UpdateGameSession'
+--     * 'UpdateGameSession' 
 --
---     * 'GetGameSessionLogUrl'
+--     * 'GetGameSessionLogUrl' 
 --
 --     * Game session placements
 --
---     * 'StartGameSessionPlacement'
+--     * 'StartGameSessionPlacement' 
 --
---     * 'DescribeGameSessionPlacement'
+--     * 'DescribeGameSessionPlacement' 
 --
---     * 'StopGameSessionPlacement'
+--     * 'StopGameSessionPlacement' 
 --
 --
 --
@@ -64,7 +64,6 @@ module Network.AWS.GameLift.GetGameSessionLogURL
     ) where
 
 import Network.AWS.GameLift.Types
-import Network.AWS.GameLift.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.Request
@@ -75,12 +74,10 @@ import Network.AWS.Response
 --
 --
 -- /See:/ 'getGameSessionLogURL' smart constructor.
-newtype GetGameSessionLogURL =
-  GetGameSessionLogURL'
-    { _ggsluGameSessionId :: Text
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+newtype GetGameSessionLogURL = GetGameSessionLogURL'{_ggsluGameSessionId
+                                                     :: Text}
+                                 deriving (Eq, Read, Show, Data, Typeable,
+                                           Generic)
 
 -- | Creates a value of 'GetGameSessionLogURL' with the minimum fields required to make a request.
 --
@@ -90,9 +87,9 @@ newtype GetGameSessionLogURL =
 getGameSessionLogURL
     :: Text -- ^ 'ggsluGameSessionId'
     -> GetGameSessionLogURL
-getGameSessionLogURL pGameSessionId_ =
-  GetGameSessionLogURL' {_ggsluGameSessionId = pGameSessionId_}
-
+getGameSessionLogURL pGameSessionId_
+  = GetGameSessionLogURL'{_ggsluGameSessionId =
+                            pGameSessionId_}
 
 -- | Unique identifier for the game session to get logs for.
 ggsluGameSessionId :: Lens' GetGameSessionLogURL Text
@@ -138,13 +135,13 @@ instance ToQuery GetGameSessionLogURL where
 --
 --
 -- /See:/ 'getGameSessionLogURLResponse' smart constructor.
-data GetGameSessionLogURLResponse =
-  GetGameSessionLogURLResponse'
-    { _ggslursPreSignedURL   :: !(Maybe Text)
-    , _ggslursResponseStatus :: !Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data GetGameSessionLogURLResponse = GetGameSessionLogURLResponse'{_ggslursPreSignedURL
+                                                                  ::
+                                                                  !(Maybe Text),
+                                                                  _ggslursResponseStatus
+                                                                  :: !Int}
+                                      deriving (Eq, Read, Show, Data, Typeable,
+                                                Generic)
 
 -- | Creates a value of 'GetGameSessionLogURLResponse' with the minimum fields required to make a request.
 --
@@ -156,10 +153,10 @@ data GetGameSessionLogURLResponse =
 getGameSessionLogURLResponse
     :: Int -- ^ 'ggslursResponseStatus'
     -> GetGameSessionLogURLResponse
-getGameSessionLogURLResponse pResponseStatus_ =
-  GetGameSessionLogURLResponse'
-    {_ggslursPreSignedURL = Nothing, _ggslursResponseStatus = pResponseStatus_}
-
+getGameSessionLogURLResponse pResponseStatus_
+  = GetGameSessionLogURLResponse'{_ggslursPreSignedURL
+                                    = Nothing,
+                                  _ggslursResponseStatus = pResponseStatus_}
 
 -- | Location of the requested game session logs, available for download.
 ggslursPreSignedURL :: Lens' GetGameSessionLogURLResponse (Maybe Text)

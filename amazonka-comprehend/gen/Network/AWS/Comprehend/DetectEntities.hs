@@ -18,7 +18,7 @@
 -- Stability   : auto-generated
 -- Portability : non-portable (GHC extensions)
 --
--- Inspects text for named entities, and returns information about them. For more information, about named entities, see 'how-entities' .
+-- Inspects text for named entities, and returns information about them. For more information, about named entities, see 'how-entities' . 
 --
 --
 module Network.AWS.Comprehend.DetectEntities
@@ -39,20 +39,16 @@ module Network.AWS.Comprehend.DetectEntities
     ) where
 
 import Network.AWS.Comprehend.Types
-import Network.AWS.Comprehend.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 
 -- | /See:/ 'detectEntities' smart constructor.
-data DetectEntities =
-  DetectEntities'
-    { _deText         :: !Text
-    , _deLanguageCode :: !LanguageCode
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data DetectEntities = DetectEntities'{_deText ::
+                                      !Text,
+                                      _deLanguageCode :: !LanguageCode}
+                        deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'DetectEntities' with the minimum fields required to make a request.
 --
@@ -65,9 +61,9 @@ detectEntities
     :: Text -- ^ 'deText'
     -> LanguageCode -- ^ 'deLanguageCode'
     -> DetectEntities
-detectEntities pText_ pLanguageCode_ =
-  DetectEntities' {_deText = pText_, _deLanguageCode = pLanguageCode_}
-
+detectEntities pText_ pLanguageCode_
+  = DetectEntities'{_deText = pText_,
+                    _deLanguageCode = pLanguageCode_}
 
 -- | A UTF-8 text string. Each string must contain fewer that 5,000 bytes of UTF-8 encoded characters.
 deText :: Lens' DetectEntities Text
@@ -114,30 +110,28 @@ instance ToQuery DetectEntities where
         toQuery = const mempty
 
 -- | /See:/ 'detectEntitiesResponse' smart constructor.
-data DetectEntitiesResponse =
-  DetectEntitiesResponse'
-    { _desrsEntities       :: !(Maybe [Entity])
-    , _desrsResponseStatus :: !Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data DetectEntitiesResponse = DetectEntitiesResponse'{_desrsEntities
+                                                      :: !(Maybe [Entity]),
+                                                      _desrsResponseStatus ::
+                                                      !Int}
+                                deriving (Eq, Read, Show, Data, Typeable,
+                                          Generic)
 
 -- | Creates a value of 'DetectEntitiesResponse' with the minimum fields required to make a request.
 --
 -- Use one of the following lenses to modify other fields as desired:
 --
--- * 'desrsEntities' - A collection of entities identified in the input text. For each entity, the response provides the entity text, entity type, where the entity text begins and ends, and the level of confidence that Amazon Comprehend has in the detection. For a list of entity types, see 'how-entities' .
+-- * 'desrsEntities' - A collection of entities identified in the input text. For each entity, the response provides the entity text, entity type, where the entity text begins and ends, and the level of confidence that Amazon Comprehend has in the detection. For a list of entity types, see 'how-entities' . 
 --
 -- * 'desrsResponseStatus' - -- | The response status code.
 detectEntitiesResponse
     :: Int -- ^ 'desrsResponseStatus'
     -> DetectEntitiesResponse
-detectEntitiesResponse pResponseStatus_ =
-  DetectEntitiesResponse'
-    {_desrsEntities = Nothing, _desrsResponseStatus = pResponseStatus_}
+detectEntitiesResponse pResponseStatus_
+  = DetectEntitiesResponse'{_desrsEntities = Nothing,
+                            _desrsResponseStatus = pResponseStatus_}
 
-
--- | A collection of entities identified in the input text. For each entity, the response provides the entity text, entity type, where the entity text begins and ends, and the level of confidence that Amazon Comprehend has in the detection. For a list of entity types, see 'how-entities' .
+-- | A collection of entities identified in the input text. For each entity, the response provides the entity text, entity type, where the entity text begins and ends, and the level of confidence that Amazon Comprehend has in the detection. For a list of entity types, see 'how-entities' . 
 desrsEntities :: Lens' DetectEntitiesResponse [Entity]
 desrsEntities = lens _desrsEntities (\ s a -> s{_desrsEntities = a}) . _Default . _Coerce
 

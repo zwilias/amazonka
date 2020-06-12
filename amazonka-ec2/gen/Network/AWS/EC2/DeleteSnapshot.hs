@@ -42,20 +42,16 @@ module Network.AWS.EC2.DeleteSnapshot
     ) where
 
 import Network.AWS.EC2.Types
-import Network.AWS.EC2.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 
 -- | /See:/ 'deleteSnapshot' smart constructor.
-data DeleteSnapshot =
-  DeleteSnapshot'
-    { _deleDryRun     :: !(Maybe Bool)
-    , _deleSnapshotId :: !Text
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data DeleteSnapshot = DeleteSnapshot'{_deleDryRun ::
+                                      !(Maybe Bool),
+                                      _deleSnapshotId :: !Text}
+                        deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'DeleteSnapshot' with the minimum fields required to make a request.
 --
@@ -67,9 +63,9 @@ data DeleteSnapshot =
 deleteSnapshot
     :: Text -- ^ 'deleSnapshotId'
     -> DeleteSnapshot
-deleteSnapshot pSnapshotId_ =
-  DeleteSnapshot' {_deleDryRun = Nothing, _deleSnapshotId = pSnapshotId_}
-
+deleteSnapshot pSnapshotId_
+  = DeleteSnapshot'{_deleDryRun = Nothing,
+                    _deleSnapshotId = pSnapshotId_}
 
 -- | Checks whether you have the required permissions for the action, without actually making the request, and provides an error response. If you have the required permissions, the error response is @DryRunOperation@ . Otherwise, it is @UnauthorizedOperation@ .
 deleDryRun :: Lens' DeleteSnapshot (Maybe Bool)
@@ -103,16 +99,14 @@ instance ToQuery DeleteSnapshot where
                "SnapshotId" =: _deleSnapshotId]
 
 -- | /See:/ 'deleteSnapshotResponse' smart constructor.
-data DeleteSnapshotResponse =
-  DeleteSnapshotResponse'
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data DeleteSnapshotResponse = DeleteSnapshotResponse'
+                                deriving (Eq, Read, Show, Data, Typeable,
+                                          Generic)
 
 -- | Creates a value of 'DeleteSnapshotResponse' with the minimum fields required to make a request.
 --
 deleteSnapshotResponse
     :: DeleteSnapshotResponse
 deleteSnapshotResponse = DeleteSnapshotResponse'
-
 
 instance NFData DeleteSnapshotResponse where

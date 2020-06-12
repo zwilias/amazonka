@@ -45,7 +45,6 @@ module Network.AWS.EC2.DescribeClientVPNConnections
     ) where
 
 import Network.AWS.EC2.Types
-import Network.AWS.EC2.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Pager
 import Network.AWS.Prelude
@@ -53,16 +52,22 @@ import Network.AWS.Request
 import Network.AWS.Response
 
 -- | /See:/ 'describeClientVPNConnections' smart constructor.
-data DescribeClientVPNConnections =
-  DescribeClientVPNConnections'
-    { _dcvcFilters             :: !(Maybe [Filter])
-    , _dcvcNextToken           :: !(Maybe Text)
-    , _dcvcDryRun              :: !(Maybe Bool)
-    , _dcvcMaxResults          :: !(Maybe Nat)
-    , _dcvcClientVPNEndpointId :: !Text
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data DescribeClientVPNConnections = DescribeClientVPNConnections'{_dcvcFilters
+                                                                  ::
+                                                                  !(Maybe
+                                                                      [Filter]),
+                                                                  _dcvcNextToken
+                                                                  ::
+                                                                  !(Maybe Text),
+                                                                  _dcvcDryRun ::
+                                                                  !(Maybe Bool),
+                                                                  _dcvcMaxResults
+                                                                  ::
+                                                                  !(Maybe Nat),
+                                                                  _dcvcClientVPNEndpointId
+                                                                  :: !Text}
+                                      deriving (Eq, Read, Show, Data, Typeable,
+                                                Generic)
 
 -- | Creates a value of 'DescribeClientVPNConnections' with the minimum fields required to make a request.
 --
@@ -80,15 +85,14 @@ data DescribeClientVPNConnections =
 describeClientVPNConnections
     :: Text -- ^ 'dcvcClientVPNEndpointId'
     -> DescribeClientVPNConnections
-describeClientVPNConnections pClientVPNEndpointId_ =
-  DescribeClientVPNConnections'
-    { _dcvcFilters = Nothing
-    , _dcvcNextToken = Nothing
-    , _dcvcDryRun = Nothing
-    , _dcvcMaxResults = Nothing
-    , _dcvcClientVPNEndpointId = pClientVPNEndpointId_
-    }
-
+describeClientVPNConnections pClientVPNEndpointId_
+  = DescribeClientVPNConnections'{_dcvcFilters =
+                                    Nothing,
+                                  _dcvcNextToken = Nothing,
+                                  _dcvcDryRun = Nothing,
+                                  _dcvcMaxResults = Nothing,
+                                  _dcvcClientVPNEndpointId =
+                                    pClientVPNEndpointId_}
 
 -- | One or more filters. Filter names and values are case-sensitive.     * @connection-id@ - The ID of the connection.     * @username@ - For Active Directory client authentication, the user name of the client who established the client connection.
 dcvcFilters :: Lens' DescribeClientVPNConnections [Filter]
@@ -154,14 +158,19 @@ instance ToQuery DescribeClientVPNConnections where
                "ClientVpnEndpointId" =: _dcvcClientVPNEndpointId]
 
 -- | /See:/ 'describeClientVPNConnectionsResponse' smart constructor.
-data DescribeClientVPNConnectionsResponse =
-  DescribeClientVPNConnectionsResponse'
-    { _dcvcrsConnections    :: !(Maybe [ClientVPNConnection])
-    , _dcvcrsNextToken      :: !(Maybe Text)
-    , _dcvcrsResponseStatus :: !Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data DescribeClientVPNConnectionsResponse = DescribeClientVPNConnectionsResponse'{_dcvcrsConnections
+                                                                                  ::
+                                                                                  !(Maybe
+                                                                                      [ClientVPNConnection]),
+                                                                                  _dcvcrsNextToken
+                                                                                  ::
+                                                                                  !(Maybe
+                                                                                      Text),
+                                                                                  _dcvcrsResponseStatus
+                                                                                  ::
+                                                                                  !Int}
+                                              deriving (Eq, Read, Show, Data,
+                                                        Typeable, Generic)
 
 -- | Creates a value of 'DescribeClientVPNConnectionsResponse' with the minimum fields required to make a request.
 --
@@ -175,13 +184,12 @@ data DescribeClientVPNConnectionsResponse =
 describeClientVPNConnectionsResponse
     :: Int -- ^ 'dcvcrsResponseStatus'
     -> DescribeClientVPNConnectionsResponse
-describeClientVPNConnectionsResponse pResponseStatus_ =
-  DescribeClientVPNConnectionsResponse'
-    { _dcvcrsConnections = Nothing
-    , _dcvcrsNextToken = Nothing
-    , _dcvcrsResponseStatus = pResponseStatus_
-    }
-
+describeClientVPNConnectionsResponse pResponseStatus_
+  = DescribeClientVPNConnectionsResponse'{_dcvcrsConnections
+                                            = Nothing,
+                                          _dcvcrsNextToken = Nothing,
+                                          _dcvcrsResponseStatus =
+                                            pResponseStatus_}
 
 -- | Information about the active and terminated client connections.
 dcvcrsConnections :: Lens' DescribeClientVPNConnectionsResponse [ClientVPNConnection]

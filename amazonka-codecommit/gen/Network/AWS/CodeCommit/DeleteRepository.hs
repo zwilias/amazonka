@@ -40,7 +40,6 @@ module Network.AWS.CodeCommit.DeleteRepository
     ) where
 
 import Network.AWS.CodeCommit.Types
-import Network.AWS.CodeCommit.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.Request
@@ -51,12 +50,9 @@ import Network.AWS.Response
 --
 --
 -- /See:/ 'deleteRepository' smart constructor.
-newtype DeleteRepository =
-  DeleteRepository'
-    { _drRepositoryName :: Text
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+newtype DeleteRepository = DeleteRepository'{_drRepositoryName
+                                             :: Text}
+                             deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'DeleteRepository' with the minimum fields required to make a request.
 --
@@ -66,9 +62,9 @@ newtype DeleteRepository =
 deleteRepository
     :: Text -- ^ 'drRepositoryName'
     -> DeleteRepository
-deleteRepository pRepositoryName_ =
-  DeleteRepository' {_drRepositoryName = pRepositoryName_}
-
+deleteRepository pRepositoryName_
+  = DeleteRepository'{_drRepositoryName =
+                        pRepositoryName_}
 
 -- | The name of the repository to delete.
 drRepositoryName :: Lens' DeleteRepository Text
@@ -114,13 +110,12 @@ instance ToQuery DeleteRepository where
 --
 --
 -- /See:/ 'deleteRepositoryResponse' smart constructor.
-data DeleteRepositoryResponse =
-  DeleteRepositoryResponse'
-    { _drrsRepositoryId   :: !(Maybe Text)
-    , _drrsResponseStatus :: !Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data DeleteRepositoryResponse = DeleteRepositoryResponse'{_drrsRepositoryId
+                                                          :: !(Maybe Text),
+                                                          _drrsResponseStatus ::
+                                                          !Int}
+                                  deriving (Eq, Read, Show, Data, Typeable,
+                                            Generic)
 
 -- | Creates a value of 'DeleteRepositoryResponse' with the minimum fields required to make a request.
 --
@@ -132,10 +127,10 @@ data DeleteRepositoryResponse =
 deleteRepositoryResponse
     :: Int -- ^ 'drrsResponseStatus'
     -> DeleteRepositoryResponse
-deleteRepositoryResponse pResponseStatus_ =
-  DeleteRepositoryResponse'
-    {_drrsRepositoryId = Nothing, _drrsResponseStatus = pResponseStatus_}
-
+deleteRepositoryResponse pResponseStatus_
+  = DeleteRepositoryResponse'{_drrsRepositoryId =
+                                Nothing,
+                              _drrsResponseStatus = pResponseStatus_}
 
 -- | The ID of the repository that was deleted.
 drrsRepositoryId :: Lens' DeleteRepositoryResponse (Maybe Text)

@@ -45,7 +45,6 @@ module Network.AWS.EC2.DescribeVPCPeeringConnections
     ) where
 
 import Network.AWS.EC2.Types
-import Network.AWS.EC2.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Pager
 import Network.AWS.Prelude
@@ -53,16 +52,28 @@ import Network.AWS.Request
 import Network.AWS.Response
 
 -- | /See:/ 'describeVPCPeeringConnections' smart constructor.
-data DescribeVPCPeeringConnections =
-  DescribeVPCPeeringConnections'
-    { _dvpcpcFilters                 :: !(Maybe [Filter])
-    , _dvpcpcNextToken               :: !(Maybe Text)
-    , _dvpcpcVPCPeeringConnectionIds :: !(Maybe [Text])
-    , _dvpcpcDryRun                  :: !(Maybe Bool)
-    , _dvpcpcMaxResults              :: !(Maybe Nat)
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data DescribeVPCPeeringConnections = DescribeVPCPeeringConnections'{_dvpcpcFilters
+                                                                    ::
+                                                                    !(Maybe
+                                                                        [Filter]),
+                                                                    _dvpcpcNextToken
+                                                                    ::
+                                                                    !(Maybe
+                                                                        Text),
+                                                                    _dvpcpcVPCPeeringConnectionIds
+                                                                    ::
+                                                                    !(Maybe
+                                                                        [Text]),
+                                                                    _dvpcpcDryRun
+                                                                    ::
+                                                                    !(Maybe
+                                                                        Bool),
+                                                                    _dvpcpcMaxResults
+                                                                    ::
+                                                                    !(Maybe
+                                                                        Nat)}
+                                       deriving (Eq, Read, Show, Data, Typeable,
+                                                 Generic)
 
 -- | Creates a value of 'DescribeVPCPeeringConnections' with the minimum fields required to make a request.
 --
@@ -79,15 +90,13 @@ data DescribeVPCPeeringConnections =
 -- * 'dvpcpcMaxResults' - The maximum number of results to return with a single call. To retrieve the remaining results, make another call with the returned @nextToken@ value.
 describeVPCPeeringConnections
     :: DescribeVPCPeeringConnections
-describeVPCPeeringConnections =
-  DescribeVPCPeeringConnections'
-    { _dvpcpcFilters = Nothing
-    , _dvpcpcNextToken = Nothing
-    , _dvpcpcVPCPeeringConnectionIds = Nothing
-    , _dvpcpcDryRun = Nothing
-    , _dvpcpcMaxResults = Nothing
-    }
-
+describeVPCPeeringConnections
+  = DescribeVPCPeeringConnections'{_dvpcpcFilters =
+                                     Nothing,
+                                   _dvpcpcNextToken = Nothing,
+                                   _dvpcpcVPCPeeringConnectionIds = Nothing,
+                                   _dvpcpcDryRun = Nothing,
+                                   _dvpcpcMaxResults = Nothing}
 
 -- | One or more filters.     * @accepter-vpc-info.cidr-block@ - The IPv4 CIDR block of the accepter VPC.     * @accepter-vpc-info.owner-id@ - The AWS account ID of the owner of the accepter VPC.     * @accepter-vpc-info.vpc-id@ - The ID of the accepter VPC.     * @expiration-time@ - The expiration date and time for the VPC peering connection.     * @requester-vpc-info.cidr-block@ - The IPv4 CIDR block of the requester's VPC.     * @requester-vpc-info.owner-id@ - The AWS account ID of the owner of the requester VPC.     * @requester-vpc-info.vpc-id@ - The ID of the requester VPC.     * @status-code@ - The status of the VPC peering connection (@pending-acceptance@ | @failed@ | @expired@ | @provisioning@ | @active@ | @deleting@ | @deleted@ | @rejected@ ).     * @status-message@ - A message that provides more information about the status of the VPC peering connection, if applicable.     * @tag@ :<key> - The key/value combination of a tag assigned to the resource. Use the tag key in the filter name and the tag value as the filter value. For example, to find all resources that have a tag with the key @Owner@ and the value @TeamA@ , specify @tag:Owner@ for the filter name and @TeamA@ for the filter value.     * @tag-key@ - The key of a tag assigned to the resource. Use this filter to find all resources assigned a tag with a specific key, regardless of the tag value.     * @vpc-peering-connection-id@ - The ID of the VPC peering connection.
 dvpcpcFilters :: Lens' DescribeVPCPeeringConnections [Filter]
@@ -158,14 +167,19 @@ instance ToQuery DescribeVPCPeeringConnections where
                "MaxResults" =: _dvpcpcMaxResults]
 
 -- | /See:/ 'describeVPCPeeringConnectionsResponse' smart constructor.
-data DescribeVPCPeeringConnectionsResponse =
-  DescribeVPCPeeringConnectionsResponse'
-    { _dvpcpcrsNextToken             :: !(Maybe Text)
-    , _dvpcpcrsVPCPeeringConnections :: !(Maybe [VPCPeeringConnection])
-    , _dvpcpcrsResponseStatus        :: !Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data DescribeVPCPeeringConnectionsResponse = DescribeVPCPeeringConnectionsResponse'{_dvpcpcrsNextToken
+                                                                                    ::
+                                                                                    !(Maybe
+                                                                                        Text),
+                                                                                    _dvpcpcrsVPCPeeringConnections
+                                                                                    ::
+                                                                                    !(Maybe
+                                                                                        [VPCPeeringConnection]),
+                                                                                    _dvpcpcrsResponseStatus
+                                                                                    ::
+                                                                                    !Int}
+                                               deriving (Eq, Read, Show, Data,
+                                                         Typeable, Generic)
 
 -- | Creates a value of 'DescribeVPCPeeringConnectionsResponse' with the minimum fields required to make a request.
 --
@@ -179,13 +193,14 @@ data DescribeVPCPeeringConnectionsResponse =
 describeVPCPeeringConnectionsResponse
     :: Int -- ^ 'dvpcpcrsResponseStatus'
     -> DescribeVPCPeeringConnectionsResponse
-describeVPCPeeringConnectionsResponse pResponseStatus_ =
-  DescribeVPCPeeringConnectionsResponse'
-    { _dvpcpcrsNextToken = Nothing
-    , _dvpcpcrsVPCPeeringConnections = Nothing
-    , _dvpcpcrsResponseStatus = pResponseStatus_
-    }
-
+describeVPCPeeringConnectionsResponse
+  pResponseStatus_
+  = DescribeVPCPeeringConnectionsResponse'{_dvpcpcrsNextToken
+                                             = Nothing,
+                                           _dvpcpcrsVPCPeeringConnections =
+                                             Nothing,
+                                           _dvpcpcrsResponseStatus =
+                                             pResponseStatus_}
 
 -- | The token to use to retrieve the next page of results. This value is @null@ when there are no more results to return.
 dvpcpcrsNextToken :: Lens' DescribeVPCPeeringConnectionsResponse (Maybe Text)

@@ -55,27 +55,24 @@ module Network.AWS.EC2.CopySnapshot
     ) where
 
 import Network.AWS.EC2.Types
-import Network.AWS.EC2.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 
 -- | /See:/ 'copySnapshot' smart constructor.
-data CopySnapshot =
-  CopySnapshot'
-    { _copPresignedURL      :: !(Maybe Text)
-    , _copEncrypted         :: !(Maybe Bool)
-    , _copTagSpecifications :: !(Maybe [TagSpecification])
-    , _copDestinationRegion :: !(Maybe Text)
-    , _copKMSKeyId          :: !(Maybe Text)
-    , _copDescription       :: !(Maybe Text)
-    , _copDryRun            :: !(Maybe Bool)
-    , _copSourceRegion      :: !Text
-    , _copSourceSnapshotId  :: !Text
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data CopySnapshot = CopySnapshot'{_copPresignedURL ::
+                                  !(Maybe Text),
+                                  _copEncrypted :: !(Maybe Bool),
+                                  _copTagSpecifications ::
+                                  !(Maybe [TagSpecification]),
+                                  _copDestinationRegion :: !(Maybe Text),
+                                  _copKMSKeyId :: !(Maybe Text),
+                                  _copDescription :: !(Maybe Text),
+                                  _copDryRun :: !(Maybe Bool),
+                                  _copSourceRegion :: !Text,
+                                  _copSourceSnapshotId :: !Text}
+                      deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'CopySnapshot' with the minimum fields required to make a request.
 --
@@ -102,19 +99,15 @@ copySnapshot
     :: Text -- ^ 'copSourceRegion'
     -> Text -- ^ 'copSourceSnapshotId'
     -> CopySnapshot
-copySnapshot pSourceRegion_ pSourceSnapshotId_ =
-  CopySnapshot'
-    { _copPresignedURL = Nothing
-    , _copEncrypted = Nothing
-    , _copTagSpecifications = Nothing
-    , _copDestinationRegion = Nothing
-    , _copKMSKeyId = Nothing
-    , _copDescription = Nothing
-    , _copDryRun = Nothing
-    , _copSourceRegion = pSourceRegion_
-    , _copSourceSnapshotId = pSourceSnapshotId_
-    }
-
+copySnapshot pSourceRegion_ pSourceSnapshotId_
+  = CopySnapshot'{_copPresignedURL = Nothing,
+                  _copEncrypted = Nothing,
+                  _copTagSpecifications = Nothing,
+                  _copDestinationRegion = Nothing,
+                  _copKMSKeyId = Nothing, _copDescription = Nothing,
+                  _copDryRun = Nothing,
+                  _copSourceRegion = pSourceRegion_,
+                  _copSourceSnapshotId = pSourceSnapshotId_}
 
 -- | When you copy an encrypted source snapshot using the Amazon EC2 Query API, you must supply a pre-signed URL. This parameter is optional for unencrypted snapshots. For more information, see <https://docs.aws.amazon.com/AWSEC2/latest/APIReference/Query-Requests.html Query Requests> . The @PresignedUrl@ should use the snapshot source endpoint, the @CopySnapshot@ action, and include the @SourceRegion@ , @SourceSnapshotId@ , and @DestinationRegion@ parameters. The @PresignedUrl@ must be signed using AWS Signature Version 4. Because EBS snapshots are stored in Amazon S3, the signing algorithm for this parameter uses the same logic that is described in <https://docs.aws.amazon.com/AmazonS3/latest/API/sigv4-query-string-auth.html Authenticating Requests by Using Query Parameters (AWS Signature Version 4)> in the /Amazon Simple Storage Service API Reference/ . An invalid or improperly signed @PresignedUrl@ will cause the copy operation to fail asynchronously, and the snapshot will move to an @error@ state.
 copPresignedURL :: Lens' CopySnapshot (Maybe Text)
@@ -192,14 +185,12 @@ instance ToQuery CopySnapshot where
                "SourceSnapshotId" =: _copSourceSnapshotId]
 
 -- | /See:/ 'copySnapshotResponse' smart constructor.
-data CopySnapshotResponse =
-  CopySnapshotResponse'
-    { _csrsTags           :: !(Maybe [Tag])
-    , _csrsSnapshotId     :: !(Maybe Text)
-    , _csrsResponseStatus :: !Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data CopySnapshotResponse = CopySnapshotResponse'{_csrsTags
+                                                  :: !(Maybe [Tag]),
+                                                  _csrsSnapshotId ::
+                                                  !(Maybe Text),
+                                                  _csrsResponseStatus :: !Int}
+                              deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'CopySnapshotResponse' with the minimum fields required to make a request.
 --
@@ -213,13 +204,10 @@ data CopySnapshotResponse =
 copySnapshotResponse
     :: Int -- ^ 'csrsResponseStatus'
     -> CopySnapshotResponse
-copySnapshotResponse pResponseStatus_ =
-  CopySnapshotResponse'
-    { _csrsTags = Nothing
-    , _csrsSnapshotId = Nothing
-    , _csrsResponseStatus = pResponseStatus_
-    }
-
+copySnapshotResponse pResponseStatus_
+  = CopySnapshotResponse'{_csrsTags = Nothing,
+                          _csrsSnapshotId = Nothing,
+                          _csrsResponseStatus = pResponseStatus_}
 
 -- | Any tags applied to the new snapshot.
 csrsTags :: Lens' CopySnapshotResponse [Tag]

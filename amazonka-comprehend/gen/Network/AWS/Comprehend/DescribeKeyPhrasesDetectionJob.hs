@@ -38,19 +38,17 @@ module Network.AWS.Comprehend.DescribeKeyPhrasesDetectionJob
     ) where
 
 import Network.AWS.Comprehend.Types
-import Network.AWS.Comprehend.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 
 -- | /See:/ 'describeKeyPhrasesDetectionJob' smart constructor.
-newtype DescribeKeyPhrasesDetectionJob =
-  DescribeKeyPhrasesDetectionJob'
-    { _dkpdjJobId :: Text
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+newtype DescribeKeyPhrasesDetectionJob = DescribeKeyPhrasesDetectionJob'{_dkpdjJobId
+                                                                         ::
+                                                                         Text}
+                                           deriving (Eq, Read, Show, Data,
+                                                     Typeable, Generic)
 
 -- | Creates a value of 'DescribeKeyPhrasesDetectionJob' with the minimum fields required to make a request.
 --
@@ -60,9 +58,9 @@ newtype DescribeKeyPhrasesDetectionJob =
 describeKeyPhrasesDetectionJob
     :: Text -- ^ 'dkpdjJobId'
     -> DescribeKeyPhrasesDetectionJob
-describeKeyPhrasesDetectionJob pJobId_ =
-  DescribeKeyPhrasesDetectionJob' {_dkpdjJobId = pJobId_}
-
+describeKeyPhrasesDetectionJob pJobId_
+  = DescribeKeyPhrasesDetectionJob'{_dkpdjJobId =
+                                      pJobId_}
 
 -- | The identifier that Amazon Comprehend generated for the job. The operation returns this identifier in its response.
 dkpdjJobId :: Lens' DescribeKeyPhrasesDetectionJob Text
@@ -107,32 +105,34 @@ instance ToQuery DescribeKeyPhrasesDetectionJob where
         toQuery = const mempty
 
 -- | /See:/ 'describeKeyPhrasesDetectionJobResponse' smart constructor.
-data DescribeKeyPhrasesDetectionJobResponse =
-  DescribeKeyPhrasesDetectionJobResponse'
-    { _dkpdjrsKeyPhrasesDetectionJobProperties :: !(Maybe KeyPhrasesDetectionJobProperties)
-    , _dkpdjrsResponseStatus :: !Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data DescribeKeyPhrasesDetectionJobResponse = DescribeKeyPhrasesDetectionJobResponse'{_dkpdjrsKeyPhrasesDetectionJobProperties
+                                                                                      ::
+                                                                                      !(Maybe
+                                                                                          KeyPhrasesDetectionJobProperties),
+                                                                                      _dkpdjrsResponseStatus
+                                                                                      ::
+                                                                                      !Int}
+                                                deriving (Eq, Read, Show, Data,
+                                                          Typeable, Generic)
 
 -- | Creates a value of 'DescribeKeyPhrasesDetectionJobResponse' with the minimum fields required to make a request.
 --
 -- Use one of the following lenses to modify other fields as desired:
 --
--- * 'dkpdjrsKeyPhrasesDetectionJobProperties' - An object that contains the properties associated with a key phrases detection job.
+-- * 'dkpdjrsKeyPhrasesDetectionJobProperties' - An object that contains the properties associated with a key phrases detection job. 
 --
 -- * 'dkpdjrsResponseStatus' - -- | The response status code.
 describeKeyPhrasesDetectionJobResponse
     :: Int -- ^ 'dkpdjrsResponseStatus'
     -> DescribeKeyPhrasesDetectionJobResponse
-describeKeyPhrasesDetectionJobResponse pResponseStatus_ =
-  DescribeKeyPhrasesDetectionJobResponse'
-    { _dkpdjrsKeyPhrasesDetectionJobProperties = Nothing
-    , _dkpdjrsResponseStatus = pResponseStatus_
-    }
+describeKeyPhrasesDetectionJobResponse
+  pResponseStatus_
+  = DescribeKeyPhrasesDetectionJobResponse'{_dkpdjrsKeyPhrasesDetectionJobProperties
+                                              = Nothing,
+                                            _dkpdjrsResponseStatus =
+                                              pResponseStatus_}
 
-
--- | An object that contains the properties associated with a key phrases detection job.
+-- | An object that contains the properties associated with a key phrases detection job. 
 dkpdjrsKeyPhrasesDetectionJobProperties :: Lens' DescribeKeyPhrasesDetectionJobResponse (Maybe KeyPhrasesDetectionJobProperties)
 dkpdjrsKeyPhrasesDetectionJobProperties = lens _dkpdjrsKeyPhrasesDetectionJobProperties (\ s a -> s{_dkpdjrsKeyPhrasesDetectionJobProperties = a})
 

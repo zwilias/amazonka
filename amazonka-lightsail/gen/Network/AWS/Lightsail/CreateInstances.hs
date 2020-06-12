@@ -45,24 +45,20 @@ module Network.AWS.Lightsail.CreateInstances
 
 import Network.AWS.Lens
 import Network.AWS.Lightsail.Types
-import Network.AWS.Lightsail.Types.Product
 import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 
 -- | /See:/ 'createInstances' smart constructor.
-data CreateInstances =
-  CreateInstances'
-    { _ciCustomImageName  :: !(Maybe Text)
-    , _ciUserData         :: !(Maybe Text)
-    , _ciKeyPairName      :: !(Maybe Text)
-    , _ciInstanceNames    :: ![Text]
-    , _ciAvailabilityZone :: !Text
-    , _ciBlueprintId      :: !Text
-    , _ciBundleId         :: !Text
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data CreateInstances = CreateInstances'{_ciCustomImageName
+                                        :: !(Maybe Text),
+                                        _ciUserData :: !(Maybe Text),
+                                        _ciKeyPairName :: !(Maybe Text),
+                                        _ciInstanceNames :: ![Text],
+                                        _ciAvailabilityZone :: !Text,
+                                        _ciBlueprintId :: !Text,
+                                        _ciBundleId :: !Text}
+                         deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'CreateInstances' with the minimum fields required to make a request.
 --
@@ -74,7 +70,7 @@ data CreateInstances =
 --
 -- * 'ciKeyPairName' - The name of your key pair.
 --
--- * 'ciInstanceNames' - The names to use for your new Lightsail instances. Separate multiple values using quotation marks and commas, for example: @["MyFirstInstance","MySecondInstance"]@
+-- * 'ciInstanceNames' - The names to use for your new Lightsail instances. Separate multiple values using quotation marks and commas, for example: @["MyFirstInstance","MySecondInstance"]@ 
 --
 -- * 'ciAvailabilityZone' - The Availability Zone in which to create your instance. Use the following format: @us-east-2a@ (case sensitive). You can get a list of availability zones by using the <http://docs.aws.amazon.com/lightsail/2016-11-28/api-reference/API_GetRegions.html get regions> operation. Be sure to add the @include availability zones@ parameter to your request.
 --
@@ -86,17 +82,14 @@ createInstances
     -> Text -- ^ 'ciBlueprintId'
     -> Text -- ^ 'ciBundleId'
     -> CreateInstances
-createInstances pAvailabilityZone_ pBlueprintId_ pBundleId_ =
-  CreateInstances'
-    { _ciCustomImageName = Nothing
-    , _ciUserData = Nothing
-    , _ciKeyPairName = Nothing
-    , _ciInstanceNames = mempty
-    , _ciAvailabilityZone = pAvailabilityZone_
-    , _ciBlueprintId = pBlueprintId_
-    , _ciBundleId = pBundleId_
-    }
-
+createInstances pAvailabilityZone_ pBlueprintId_
+  pBundleId_
+  = CreateInstances'{_ciCustomImageName = Nothing,
+                     _ciUserData = Nothing, _ciKeyPairName = Nothing,
+                     _ciInstanceNames = mempty,
+                     _ciAvailabilityZone = pAvailabilityZone_,
+                     _ciBlueprintId = pBlueprintId_,
+                     _ciBundleId = pBundleId_}
 
 -- | (Deprecated) The name for your custom image.
 ciCustomImageName :: Lens' CreateInstances (Maybe Text)
@@ -110,7 +103,7 @@ ciUserData = lens _ciUserData (\ s a -> s{_ciUserData = a})
 ciKeyPairName :: Lens' CreateInstances (Maybe Text)
 ciKeyPairName = lens _ciKeyPairName (\ s a -> s{_ciKeyPairName = a})
 
--- | The names to use for your new Lightsail instances. Separate multiple values using quotation marks and commas, for example: @["MyFirstInstance","MySecondInstance"]@
+-- | The names to use for your new Lightsail instances. Separate multiple values using quotation marks and commas, for example: @["MyFirstInstance","MySecondInstance"]@ 
 ciInstanceNames :: Lens' CreateInstances [Text]
 ciInstanceNames = lens _ciInstanceNames (\ s a -> s{_ciInstanceNames = a}) . _Coerce
 
@@ -168,13 +161,12 @@ instance ToQuery CreateInstances where
         toQuery = const mempty
 
 -- | /See:/ 'createInstancesResponse' smart constructor.
-data CreateInstancesResponse =
-  CreateInstancesResponse'
-    { _cirsOperations     :: !(Maybe [Operation])
-    , _cirsResponseStatus :: !Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data CreateInstancesResponse = CreateInstancesResponse'{_cirsOperations
+                                                        :: !(Maybe [Operation]),
+                                                        _cirsResponseStatus ::
+                                                        !Int}
+                                 deriving (Eq, Read, Show, Data, Typeable,
+                                           Generic)
 
 -- | Creates a value of 'CreateInstancesResponse' with the minimum fields required to make a request.
 --
@@ -186,10 +178,9 @@ data CreateInstancesResponse =
 createInstancesResponse
     :: Int -- ^ 'cirsResponseStatus'
     -> CreateInstancesResponse
-createInstancesResponse pResponseStatus_ =
-  CreateInstancesResponse'
-    {_cirsOperations = Nothing, _cirsResponseStatus = pResponseStatus_}
-
+createInstancesResponse pResponseStatus_
+  = CreateInstancesResponse'{_cirsOperations = Nothing,
+                             _cirsResponseStatus = pResponseStatus_}
 
 -- | An array of key-value pairs containing information about the results of your create instances request.
 cirsOperations :: Lens' CreateInstancesResponse [Operation]

@@ -39,7 +39,6 @@ module Network.AWS.GuardDuty.UpdateThreatIntelSet
     ) where
 
 import Network.AWS.GuardDuty.Types
-import Network.AWS.GuardDuty.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.Request
@@ -48,16 +47,15 @@ import Network.AWS.Response
 -- | UpdateThreatIntelSet request body.
 --
 -- /See:/ 'updateThreatIntelSet' smart constructor.
-data UpdateThreatIntelSet =
-  UpdateThreatIntelSet'
-    { _utisLocation         :: !(Maybe Text)
-    , _utisActivate         :: !(Maybe Bool)
-    , _utisName             :: !(Maybe Text)
-    , _utisThreatIntelSetId :: !Text
-    , _utisDetectorId       :: !Text
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data UpdateThreatIntelSet = UpdateThreatIntelSet'{_utisLocation
+                                                  :: !(Maybe Text),
+                                                  _utisActivate ::
+                                                  !(Maybe Bool),
+                                                  _utisName :: !(Maybe Text),
+                                                  _utisThreatIntelSetId ::
+                                                  !Text,
+                                                  _utisDetectorId :: !Text}
+                              deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'UpdateThreatIntelSet' with the minimum fields required to make a request.
 --
@@ -76,15 +74,11 @@ updateThreatIntelSet
     :: Text -- ^ 'utisThreatIntelSetId'
     -> Text -- ^ 'utisDetectorId'
     -> UpdateThreatIntelSet
-updateThreatIntelSet pThreatIntelSetId_ pDetectorId_ =
-  UpdateThreatIntelSet'
-    { _utisLocation = Nothing
-    , _utisActivate = Nothing
-    , _utisName = Nothing
-    , _utisThreatIntelSetId = pThreatIntelSetId_
-    , _utisDetectorId = pDetectorId_
-    }
-
+updateThreatIntelSet pThreatIntelSetId_ pDetectorId_
+  = UpdateThreatIntelSet'{_utisLocation = Nothing,
+                          _utisActivate = Nothing, _utisName = Nothing,
+                          _utisThreatIntelSetId = pThreatIntelSetId_,
+                          _utisDetectorId = pDetectorId_}
 
 -- | The updated URI of the file that contains the ThreateIntelSet. For example (https://s3.us-west-2.amazonaws.com/my-bucket/my-object-key)
 utisLocation :: Lens' UpdateThreatIntelSet (Maybe Text)
@@ -145,12 +139,10 @@ instance ToQuery UpdateThreatIntelSet where
         toQuery = const mempty
 
 -- | /See:/ 'updateThreatIntelSetResponse' smart constructor.
-newtype UpdateThreatIntelSetResponse =
-  UpdateThreatIntelSetResponse'
-    { _utisrsResponseStatus :: Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+newtype UpdateThreatIntelSetResponse = UpdateThreatIntelSetResponse'{_utisrsResponseStatus
+                                                                     :: Int}
+                                         deriving (Eq, Read, Show, Data,
+                                                   Typeable, Generic)
 
 -- | Creates a value of 'UpdateThreatIntelSetResponse' with the minimum fields required to make a request.
 --
@@ -160,9 +152,9 @@ newtype UpdateThreatIntelSetResponse =
 updateThreatIntelSetResponse
     :: Int -- ^ 'utisrsResponseStatus'
     -> UpdateThreatIntelSetResponse
-updateThreatIntelSetResponse pResponseStatus_ =
-  UpdateThreatIntelSetResponse' {_utisrsResponseStatus = pResponseStatus_}
-
+updateThreatIntelSetResponse pResponseStatus_
+  = UpdateThreatIntelSetResponse'{_utisrsResponseStatus
+                                    = pResponseStatus_}
 
 -- | -- | The response status code.
 utisrsResponseStatus :: Lens' UpdateThreatIntelSetResponse Int

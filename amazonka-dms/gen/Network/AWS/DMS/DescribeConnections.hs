@@ -43,26 +43,22 @@ module Network.AWS.DMS.DescribeConnections
     ) where
 
 import Network.AWS.DMS.Types
-import Network.AWS.DMS.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Pager
 import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 
--- |
+-- | 
 --
 --
 --
 -- /See:/ 'describeConnections' smart constructor.
-data DescribeConnections =
-  DescribeConnections'
-    { _dcFilters    :: !(Maybe [Filter])
-    , _dcMarker     :: !(Maybe Text)
-    , _dcMaxRecords :: !(Maybe Int)
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data DescribeConnections = DescribeConnections'{_dcFilters
+                                                :: !(Maybe [Filter]),
+                                                _dcMarker :: !(Maybe Text),
+                                                _dcMaxRecords :: !(Maybe Int)}
+                             deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'DescribeConnections' with the minimum fields required to make a request.
 --
@@ -70,21 +66,20 @@ data DescribeConnections =
 --
 -- * 'dcFilters' - The filters applied to the connection. Valid filter names: endpoint-arn | replication-instance-arn
 --
--- * 'dcMarker' - An optional pagination token provided by a previous request. If this parameter is specified, the response includes only records beyond the marker, up to the value specified by @MaxRecords@ .
+-- * 'dcMarker' - An optional pagination token provided by a previous request. If this parameter is specified, the response includes only records beyond the marker, up to the value specified by @MaxRecords@ . 
 --
 -- * 'dcMaxRecords' - The maximum number of records to include in the response. If more records exist than the specified @MaxRecords@ value, a pagination token called a marker is included in the response so that the remaining results can be retrieved.  Default: 100 Constraints: Minimum 20, maximum 100.
 describeConnections
     :: DescribeConnections
-describeConnections =
-  DescribeConnections'
-    {_dcFilters = Nothing, _dcMarker = Nothing, _dcMaxRecords = Nothing}
-
+describeConnections
+  = DescribeConnections'{_dcFilters = Nothing,
+                         _dcMarker = Nothing, _dcMaxRecords = Nothing}
 
 -- | The filters applied to the connection. Valid filter names: endpoint-arn | replication-instance-arn
 dcFilters :: Lens' DescribeConnections [Filter]
 dcFilters = lens _dcFilters (\ s a -> s{_dcFilters = a}) . _Default . _Coerce
 
--- | An optional pagination token provided by a previous request. If this parameter is specified, the response includes only records beyond the marker, up to the value specified by @MaxRecords@ .
+-- | An optional pagination token provided by a previous request. If this parameter is specified, the response includes only records beyond the marker, up to the value specified by @MaxRecords@ . 
 dcMarker :: Lens' DescribeConnections (Maybe Text)
 dcMarker = lens _dcMarker (\ s a -> s{_dcMarker = a})
 
@@ -138,19 +133,21 @@ instance ToPath DescribeConnections where
 instance ToQuery DescribeConnections where
         toQuery = const mempty
 
--- |
+-- | 
 --
 --
 --
 -- /See:/ 'describeConnectionsResponse' smart constructor.
-data DescribeConnectionsResponse =
-  DescribeConnectionsResponse'
-    { _dcsrsConnections    :: !(Maybe [Connection])
-    , _dcsrsMarker         :: !(Maybe Text)
-    , _dcsrsResponseStatus :: !Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data DescribeConnectionsResponse = DescribeConnectionsResponse'{_dcsrsConnections
+                                                                ::
+                                                                !(Maybe
+                                                                    [Connection]),
+                                                                _dcsrsMarker ::
+                                                                !(Maybe Text),
+                                                                _dcsrsResponseStatus
+                                                                :: !Int}
+                                     deriving (Eq, Read, Show, Data, Typeable,
+                                               Generic)
 
 -- | Creates a value of 'DescribeConnectionsResponse' with the minimum fields required to make a request.
 --
@@ -158,25 +155,23 @@ data DescribeConnectionsResponse =
 --
 -- * 'dcsrsConnections' - A description of the connections.
 --
--- * 'dcsrsMarker' - An optional pagination token provided by a previous request. If this parameter is specified, the response includes only records beyond the marker, up to the value specified by @MaxRecords@ .
+-- * 'dcsrsMarker' - An optional pagination token provided by a previous request. If this parameter is specified, the response includes only records beyond the marker, up to the value specified by @MaxRecords@ . 
 --
 -- * 'dcsrsResponseStatus' - -- | The response status code.
 describeConnectionsResponse
     :: Int -- ^ 'dcsrsResponseStatus'
     -> DescribeConnectionsResponse
-describeConnectionsResponse pResponseStatus_ =
-  DescribeConnectionsResponse'
-    { _dcsrsConnections = Nothing
-    , _dcsrsMarker = Nothing
-    , _dcsrsResponseStatus = pResponseStatus_
-    }
-
+describeConnectionsResponse pResponseStatus_
+  = DescribeConnectionsResponse'{_dcsrsConnections =
+                                   Nothing,
+                                 _dcsrsMarker = Nothing,
+                                 _dcsrsResponseStatus = pResponseStatus_}
 
 -- | A description of the connections.
 dcsrsConnections :: Lens' DescribeConnectionsResponse [Connection]
 dcsrsConnections = lens _dcsrsConnections (\ s a -> s{_dcsrsConnections = a}) . _Default . _Coerce
 
--- | An optional pagination token provided by a previous request. If this parameter is specified, the response includes only records beyond the marker, up to the value specified by @MaxRecords@ .
+-- | An optional pagination token provided by a previous request. If this parameter is specified, the response includes only records beyond the marker, up to the value specified by @MaxRecords@ . 
 dcsrsMarker :: Lens' DescribeConnectionsResponse (Maybe Text)
 dcsrsMarker = lens _dcsrsMarker (\ s a -> s{_dcsrsMarker = a})
 

@@ -18,7 +18,7 @@
 -- Stability   : auto-generated
 -- Portability : non-portable (GHC extensions)
 --
--- Permanently deletes an AWS Firewall Manager policy.
+-- Permanently deletes an AWS Firewall Manager policy. 
 --
 --
 module Network.AWS.FMS.DeletePolicy
@@ -35,19 +35,15 @@ module Network.AWS.FMS.DeletePolicy
     ) where
 
 import Network.AWS.FMS.Types
-import Network.AWS.FMS.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 
 -- | /See:/ 'deletePolicy' smart constructor.
-newtype DeletePolicy =
-  DeletePolicy'
-    { _dpPolicyId :: Text
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+newtype DeletePolicy = DeletePolicy'{_dpPolicyId ::
+                                     Text}
+                         deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'DeletePolicy' with the minimum fields required to make a request.
 --
@@ -57,8 +53,8 @@ newtype DeletePolicy =
 deletePolicy
     :: Text -- ^ 'dpPolicyId'
     -> DeletePolicy
-deletePolicy pPolicyId_ = DeletePolicy' {_dpPolicyId = pPolicyId_}
-
+deletePolicy pPolicyId_
+  = DeletePolicy'{_dpPolicyId = pPolicyId_}
 
 -- | The ID of the policy that you want to delete. @PolicyId@ is returned by @PutPolicy@ and by @ListPolicies@ .
 dpPolicyId :: Lens' DeletePolicy Text
@@ -94,16 +90,13 @@ instance ToQuery DeletePolicy where
         toQuery = const mempty
 
 -- | /See:/ 'deletePolicyResponse' smart constructor.
-data DeletePolicyResponse =
-  DeletePolicyResponse'
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data DeletePolicyResponse = DeletePolicyResponse'
+                              deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'DeletePolicyResponse' with the minimum fields required to make a request.
 --
 deletePolicyResponse
     :: DeletePolicyResponse
 deletePolicyResponse = DeletePolicyResponse'
-
 
 instance NFData DeletePolicyResponse where

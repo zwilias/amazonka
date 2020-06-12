@@ -82,8 +82,67 @@ library
         , Network.AWS.Rekognition.Waiters
 
     other-modules:
-          Network.AWS.Rekognition.Types.Product
-        , Network.AWS.Rekognition.Types.Sum
+          Network.AWS.Rekognition.Types.AgeRange
+        , Network.AWS.Rekognition.Types.Attribute
+        , Network.AWS.Rekognition.Types.Beard
+        , Network.AWS.Rekognition.Types.BoundingBox
+        , Network.AWS.Rekognition.Types.Celebrity
+        , Network.AWS.Rekognition.Types.CelebrityDetail
+        , Network.AWS.Rekognition.Types.CelebrityRecognition
+        , Network.AWS.Rekognition.Types.CelebrityRecognitionSortBy
+        , Network.AWS.Rekognition.Types.CompareFacesMatch
+        , Network.AWS.Rekognition.Types.ComparedFace
+        , Network.AWS.Rekognition.Types.ComparedSourceImageFace
+        , Network.AWS.Rekognition.Types.ContentModerationDetection
+        , Network.AWS.Rekognition.Types.ContentModerationSortBy
+        , Network.AWS.Rekognition.Types.Emotion
+        , Network.AWS.Rekognition.Types.EmotionName
+        , Network.AWS.Rekognition.Types.EyeOpen
+        , Network.AWS.Rekognition.Types.Eyeglasses
+        , Network.AWS.Rekognition.Types.Face
+        , Network.AWS.Rekognition.Types.FaceAttributes
+        , Network.AWS.Rekognition.Types.FaceDetail
+        , Network.AWS.Rekognition.Types.FaceDetection
+        , Network.AWS.Rekognition.Types.FaceMatch
+        , Network.AWS.Rekognition.Types.FaceRecord
+        , Network.AWS.Rekognition.Types.FaceSearchSettings
+        , Network.AWS.Rekognition.Types.FaceSearchSortBy
+        , Network.AWS.Rekognition.Types.Gender
+        , Network.AWS.Rekognition.Types.GenderType
+        , Network.AWS.Rekognition.Types.Geometry
+        , Network.AWS.Rekognition.Types.Image
+        , Network.AWS.Rekognition.Types.ImageQuality
+        , Network.AWS.Rekognition.Types.KinesisDataStream
+        , Network.AWS.Rekognition.Types.KinesisVideoStream
+        , Network.AWS.Rekognition.Types.Label
+        , Network.AWS.Rekognition.Types.LabelDetection
+        , Network.AWS.Rekognition.Types.LabelDetectionSortBy
+        , Network.AWS.Rekognition.Types.Landmark
+        , Network.AWS.Rekognition.Types.LandmarkType
+        , Network.AWS.Rekognition.Types.ModerationLabel
+        , Network.AWS.Rekognition.Types.MouthOpen
+        , Network.AWS.Rekognition.Types.Mustache
+        , Network.AWS.Rekognition.Types.NotificationChannel
+        , Network.AWS.Rekognition.Types.OrientationCorrection
+        , Network.AWS.Rekognition.Types.PersonDetail
+        , Network.AWS.Rekognition.Types.PersonDetection
+        , Network.AWS.Rekognition.Types.PersonMatch
+        , Network.AWS.Rekognition.Types.PersonTrackingSortBy
+        , Network.AWS.Rekognition.Types.Point
+        , Network.AWS.Rekognition.Types.Pose
+        , Network.AWS.Rekognition.Types.S3Object
+        , Network.AWS.Rekognition.Types.Smile
+        , Network.AWS.Rekognition.Types.StreamProcessor
+        , Network.AWS.Rekognition.Types.StreamProcessorInput
+        , Network.AWS.Rekognition.Types.StreamProcessorOutput
+        , Network.AWS.Rekognition.Types.StreamProcessorSettings
+        , Network.AWS.Rekognition.Types.StreamProcessorStatus
+        , Network.AWS.Rekognition.Types.Sunglasses
+        , Network.AWS.Rekognition.Types.TextDetection
+        , Network.AWS.Rekognition.Types.TextTypes
+        , Network.AWS.Rekognition.Types.Video
+        , Network.AWS.Rekognition.Types.VideoJobStatus
+        , Network.AWS.Rekognition.Types.VideoMetadata
 
     build-depends:
           amazonka-core == 1.6.1.*

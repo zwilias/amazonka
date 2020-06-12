@@ -38,19 +38,16 @@ module Network.AWS.DirectConnect.DescribeInterconnects
     ) where
 
 import Network.AWS.DirectConnect.Types
-import Network.AWS.DirectConnect.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 
 -- | /See:/ 'describeInterconnects' smart constructor.
-newtype DescribeInterconnects =
-  DescribeInterconnects'
-    { _diInterconnectId :: Maybe Text
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+newtype DescribeInterconnects = DescribeInterconnects'{_diInterconnectId
+                                                       :: Maybe Text}
+                                  deriving (Eq, Read, Show, Data, Typeable,
+                                            Generic)
 
 -- | Creates a value of 'DescribeInterconnects' with the minimum fields required to make a request.
 --
@@ -59,8 +56,8 @@ newtype DescribeInterconnects =
 -- * 'diInterconnectId' - The ID of the interconnect.
 describeInterconnects
     :: DescribeInterconnects
-describeInterconnects = DescribeInterconnects' {_diInterconnectId = Nothing}
-
+describeInterconnects
+  = DescribeInterconnects'{_diInterconnectId = Nothing}
 
 -- | The ID of the interconnect.
 diInterconnectId :: Lens' DescribeInterconnects (Maybe Text)
@@ -104,13 +101,14 @@ instance ToQuery DescribeInterconnects where
         toQuery = const mempty
 
 -- | /See:/ 'describeInterconnectsResponse' smart constructor.
-data DescribeInterconnectsResponse =
-  DescribeInterconnectsResponse'
-    { _dirsInterconnects  :: !(Maybe [Interconnect])
-    , _dirsResponseStatus :: !Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data DescribeInterconnectsResponse = DescribeInterconnectsResponse'{_dirsInterconnects
+                                                                    ::
+                                                                    !(Maybe
+                                                                        [Interconnect]),
+                                                                    _dirsResponseStatus
+                                                                    :: !Int}
+                                       deriving (Eq, Read, Show, Data, Typeable,
+                                                 Generic)
 
 -- | Creates a value of 'DescribeInterconnectsResponse' with the minimum fields required to make a request.
 --
@@ -122,10 +120,10 @@ data DescribeInterconnectsResponse =
 describeInterconnectsResponse
     :: Int -- ^ 'dirsResponseStatus'
     -> DescribeInterconnectsResponse
-describeInterconnectsResponse pResponseStatus_ =
-  DescribeInterconnectsResponse'
-    {_dirsInterconnects = Nothing, _dirsResponseStatus = pResponseStatus_}
-
+describeInterconnectsResponse pResponseStatus_
+  = DescribeInterconnectsResponse'{_dirsInterconnects =
+                                     Nothing,
+                                   _dirsResponseStatus = pResponseStatus_}
 
 -- | The interconnects.
 dirsInterconnects :: Lens' DescribeInterconnectsResponse [Interconnect]

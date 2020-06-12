@@ -38,7 +38,6 @@ module Network.AWS.IoT.DeleteThing
     ) where
 
 import Network.AWS.IoT.Types
-import Network.AWS.IoT.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.Request
@@ -49,13 +48,10 @@ import Network.AWS.Response
 --
 --
 -- /See:/ 'deleteThing' smart constructor.
-data DeleteThing =
-  DeleteThing'
-    { _dtExpectedVersion :: !(Maybe Integer)
-    , _dtThingName       :: !Text
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data DeleteThing = DeleteThing'{_dtExpectedVersion ::
+                                !(Maybe Integer),
+                                _dtThingName :: !Text}
+                     deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'DeleteThing' with the minimum fields required to make a request.
 --
@@ -67,9 +63,9 @@ data DeleteThing =
 deleteThing
     :: Text -- ^ 'dtThingName'
     -> DeleteThing
-deleteThing pThingName_ =
-  DeleteThing' {_dtExpectedVersion = Nothing, _dtThingName = pThingName_}
-
+deleteThing pThingName_
+  = DeleteThing'{_dtExpectedVersion = Nothing,
+                 _dtThingName = pThingName_}
 
 -- | The expected version of the thing record in the registry. If the version of the record in the registry does not match the expected version specified in the request, the @DeleteThing@ request is rejected with a @VersionConflictException@ .
 dtExpectedVersion :: Lens' DeleteThing (Maybe Integer)
@@ -107,12 +103,10 @@ instance ToQuery DeleteThing where
 --
 --
 -- /See:/ 'deleteThingResponse' smart constructor.
-newtype DeleteThingResponse =
-  DeleteThingResponse'
-    { _ddrsResponseStatus :: Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+newtype DeleteThingResponse = DeleteThingResponse'{_ddrsResponseStatus
+                                                   :: Int}
+                                deriving (Eq, Read, Show, Data, Typeable,
+                                          Generic)
 
 -- | Creates a value of 'DeleteThingResponse' with the minimum fields required to make a request.
 --
@@ -122,9 +116,9 @@ newtype DeleteThingResponse =
 deleteThingResponse
     :: Int -- ^ 'ddrsResponseStatus'
     -> DeleteThingResponse
-deleteThingResponse pResponseStatus_ =
-  DeleteThingResponse' {_ddrsResponseStatus = pResponseStatus_}
-
+deleteThingResponse pResponseStatus_
+  = DeleteThingResponse'{_ddrsResponseStatus =
+                           pResponseStatus_}
 
 -- | -- | The response status code.
 ddrsResponseStatus :: Lens' DeleteThingResponse Int

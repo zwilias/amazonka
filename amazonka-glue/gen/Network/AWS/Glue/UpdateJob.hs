@@ -39,20 +39,15 @@ module Network.AWS.Glue.UpdateJob
     ) where
 
 import Network.AWS.Glue.Types
-import Network.AWS.Glue.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 
 -- | /See:/ 'updateJob' smart constructor.
-data UpdateJob =
-  UpdateJob'
-    { _ujJobName   :: !Text
-    , _ujJobUpdate :: !JobUpdate
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data UpdateJob = UpdateJob'{_ujJobName :: !Text,
+                            _ujJobUpdate :: !JobUpdate}
+                   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'UpdateJob' with the minimum fields required to make a request.
 --
@@ -65,9 +60,9 @@ updateJob
     :: Text -- ^ 'ujJobName'
     -> JobUpdate -- ^ 'ujJobUpdate'
     -> UpdateJob
-updateJob pJobName_ pJobUpdate_ =
-  UpdateJob' {_ujJobName = pJobName_, _ujJobUpdate = pJobUpdate_}
-
+updateJob pJobName_ pJobUpdate_
+  = UpdateJob'{_ujJobName = pJobName_,
+               _ujJobUpdate = pJobUpdate_}
 
 -- | Name of the job definition to update.
 ujJobName :: Lens' UpdateJob Text
@@ -113,13 +108,10 @@ instance ToQuery UpdateJob where
         toQuery = const mempty
 
 -- | /See:/ 'updateJobResponse' smart constructor.
-data UpdateJobResponse =
-  UpdateJobResponse'
-    { _ujrsJobName        :: !(Maybe Text)
-    , _ujrsResponseStatus :: !Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data UpdateJobResponse = UpdateJobResponse'{_ujrsJobName
+                                            :: !(Maybe Text),
+                                            _ujrsResponseStatus :: !Int}
+                           deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'UpdateJobResponse' with the minimum fields required to make a request.
 --
@@ -131,10 +123,9 @@ data UpdateJobResponse =
 updateJobResponse
     :: Int -- ^ 'ujrsResponseStatus'
     -> UpdateJobResponse
-updateJobResponse pResponseStatus_ =
-  UpdateJobResponse'
-    {_ujrsJobName = Nothing, _ujrsResponseStatus = pResponseStatus_}
-
+updateJobResponse pResponseStatus_
+  = UpdateJobResponse'{_ujrsJobName = Nothing,
+                       _ujrsResponseStatus = pResponseStatus_}
 
 -- | Returns the name of the updated job definition.
 ujrsJobName :: Lens' UpdateJobResponse (Maybe Text)

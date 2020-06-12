@@ -40,7 +40,6 @@ module Network.AWS.Kinesis.AddTagsToStream
     ) where
 
 import Network.AWS.Kinesis.Types
-import Network.AWS.Kinesis.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.Request
@@ -51,13 +50,10 @@ import Network.AWS.Response
 --
 --
 -- /See:/ 'addTagsToStream' smart constructor.
-data AddTagsToStream =
-  AddTagsToStream'
-    { _attsStreamName :: !Text
-    , _attsTags       :: !(Map Text Text)
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data AddTagsToStream = AddTagsToStream'{_attsStreamName
+                                        :: !Text,
+                                        _attsTags :: !(Map Text Text)}
+                         deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'AddTagsToStream' with the minimum fields required to make a request.
 --
@@ -69,9 +65,9 @@ data AddTagsToStream =
 addTagsToStream
     :: Text -- ^ 'attsStreamName'
     -> AddTagsToStream
-addTagsToStream pStreamName_ =
-  AddTagsToStream' {_attsStreamName = pStreamName_, _attsTags = mempty}
-
+addTagsToStream pStreamName_
+  = AddTagsToStream'{_attsStreamName = pStreamName_,
+                     _attsTags = mempty}
 
 -- | The name of the stream.
 attsStreamName :: Lens' AddTagsToStream Text
@@ -113,16 +109,14 @@ instance ToQuery AddTagsToStream where
         toQuery = const mempty
 
 -- | /See:/ 'addTagsToStreamResponse' smart constructor.
-data AddTagsToStreamResponse =
-  AddTagsToStreamResponse'
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data AddTagsToStreamResponse = AddTagsToStreamResponse'
+                                 deriving (Eq, Read, Show, Data, Typeable,
+                                           Generic)
 
 -- | Creates a value of 'AddTagsToStreamResponse' with the minimum fields required to make a request.
 --
 addTagsToStreamResponse
     :: AddTagsToStreamResponse
 addTagsToStreamResponse = AddTagsToStreamResponse'
-
 
 instance NFData AddTagsToStreamResponse where

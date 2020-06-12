@@ -48,15 +48,12 @@ import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 import Network.AWS.WorkSpaces.Types
-import Network.AWS.WorkSpaces.Types.Product
 
 -- | /See:/ 'terminateWorkspaces' smart constructor.
-newtype TerminateWorkspaces =
-  TerminateWorkspaces'
-    { _twTerminateWorkspaceRequests :: List1 TerminateRequest
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+newtype TerminateWorkspaces = TerminateWorkspaces'{_twTerminateWorkspaceRequests
+                                                   :: List1 TerminateRequest}
+                                deriving (Eq, Read, Show, Data, Typeable,
+                                          Generic)
 
 -- | Creates a value of 'TerminateWorkspaces' with the minimum fields required to make a request.
 --
@@ -66,10 +63,9 @@ newtype TerminateWorkspaces =
 terminateWorkspaces
     :: NonEmpty TerminateRequest -- ^ 'twTerminateWorkspaceRequests'
     -> TerminateWorkspaces
-terminateWorkspaces pTerminateWorkspaceRequests_ =
-  TerminateWorkspaces'
-    {_twTerminateWorkspaceRequests = _List1 # pTerminateWorkspaceRequests_}
-
+terminateWorkspaces pTerminateWorkspaceRequests_
+  = TerminateWorkspaces'{_twTerminateWorkspaceRequests
+                           = _List1 # pTerminateWorkspaceRequests_}
 
 -- | The WorkSpaces to terminate. You can specify up to 25 WorkSpaces.
 twTerminateWorkspaceRequests :: Lens' TerminateWorkspaces (NonEmpty TerminateRequest)
@@ -115,13 +111,14 @@ instance ToQuery TerminateWorkspaces where
         toQuery = const mempty
 
 -- | /See:/ 'terminateWorkspacesResponse' smart constructor.
-data TerminateWorkspacesResponse =
-  TerminateWorkspacesResponse'
-    { _twrsFailedRequests :: !(Maybe [FailedWorkspaceChangeRequest])
-    , _twrsResponseStatus :: !Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data TerminateWorkspacesResponse = TerminateWorkspacesResponse'{_twrsFailedRequests
+                                                                ::
+                                                                !(Maybe
+                                                                    [FailedWorkspaceChangeRequest]),
+                                                                _twrsResponseStatus
+                                                                :: !Int}
+                                     deriving (Eq, Read, Show, Data, Typeable,
+                                               Generic)
 
 -- | Creates a value of 'TerminateWorkspacesResponse' with the minimum fields required to make a request.
 --
@@ -133,10 +130,10 @@ data TerminateWorkspacesResponse =
 terminateWorkspacesResponse
     :: Int -- ^ 'twrsResponseStatus'
     -> TerminateWorkspacesResponse
-terminateWorkspacesResponse pResponseStatus_ =
-  TerminateWorkspacesResponse'
-    {_twrsFailedRequests = Nothing, _twrsResponseStatus = pResponseStatus_}
-
+terminateWorkspacesResponse pResponseStatus_
+  = TerminateWorkspacesResponse'{_twrsFailedRequests =
+                                   Nothing,
+                                 _twrsResponseStatus = pResponseStatus_}
 
 -- | Information about the WorkSpaces that could not be terminated.
 twrsFailedRequests :: Lens' TerminateWorkspacesResponse [FailedWorkspaceChangeRequest]

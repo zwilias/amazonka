@@ -63,39 +63,38 @@ module Network.AWS.EC2.ImportImage
     ) where
 
 import Network.AWS.EC2.Types
-import Network.AWS.EC2.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 
 -- | /See:/ 'importImage' smart constructor.
-data ImportImage =
-  ImportImage'
-    { _impHypervisor :: !(Maybe Text)
-    , _impPlatform :: !(Maybe Text)
-    , _impClientToken :: !(Maybe Text)
-    , _impLicenseSpecifications :: !(Maybe [ImportImageLicenseConfigurationRequest])
-    , _impLicenseType :: !(Maybe Text)
-    , _impRoleName :: !(Maybe Text)
-    , _impEncrypted :: !(Maybe Bool)
-    , _impKMSKeyId :: !(Maybe Text)
-    , _impArchitecture :: !(Maybe Text)
-    , _impDescription :: !(Maybe Text)
-    , _impDryRun :: !(Maybe Bool)
-    , _impClientData :: !(Maybe ClientData)
-    , _impDiskContainers :: !(Maybe [ImageDiskContainer])
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data ImportImage = ImportImage'{_impHypervisor ::
+                                !(Maybe Text),
+                                _impPlatform :: !(Maybe Text),
+                                _impClientToken :: !(Maybe Text),
+                                _impLicenseSpecifications ::
+                                !(Maybe
+                                    [ImportImageLicenseConfigurationRequest]),
+                                _impLicenseType :: !(Maybe Text),
+                                _impRoleName :: !(Maybe Text),
+                                _impEncrypted :: !(Maybe Bool),
+                                _impKMSKeyId :: !(Maybe Text),
+                                _impArchitecture :: !(Maybe Text),
+                                _impDescription :: !(Maybe Text),
+                                _impDryRun :: !(Maybe Bool),
+                                _impClientData :: !(Maybe ClientData),
+                                _impDiskContainers ::
+                                !(Maybe [ImageDiskContainer])}
+                     deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'ImportImage' with the minimum fields required to make a request.
 --
 -- Use one of the following lenses to modify other fields as desired:
 --
--- * 'impHypervisor' - The target hypervisor platform. Valid values: @xen@
+-- * 'impHypervisor' - The target hypervisor platform. Valid values: @xen@ 
 --
--- * 'impPlatform' - The operating system of the virtual machine. Valid values: @Windows@ | @Linux@
+-- * 'impPlatform' - The operating system of the virtual machine. Valid values: @Windows@ | @Linux@ 
 --
 -- * 'impClientToken' - The token to enable idempotency for VM import requests.
 --
@@ -109,7 +108,7 @@ data ImportImage =
 --
 -- * 'impKMSKeyId' - An identifier for the symmetric AWS Key Management Service (AWS KMS) customer master key (CMK) to use when creating the encrypted AMI. This parameter is only required if you want to use a non-default CMK; if this parameter is not specified, the default CMK for EBS is used. If a @KmsKeyId@ is specified, the @Encrypted@ flag must also be set.  The CMK identifier may be provided in any of the following formats:      * Key ID     * Key alias. The alias ARN contains the @arn:aws:kms@ namespace, followed by the Region of the CMK, the AWS account ID of the CMK owner, the @alias@ namespace, and then the CMK alias. For example, arn:aws:kms:/us-east-1/ :/012345678910/ :alias//ExampleAlias/ .     * ARN using key ID. The ID ARN contains the @arn:aws:kms@ namespace, followed by the Region of the CMK, the AWS account ID of the CMK owner, the @key@ namespace, and then the CMK ID. For example, arn:aws:kms:/us-east-1/ :/012345678910/ :key//abcd1234-a123-456a-a12b-a123b4cd56ef/ .     * ARN using key alias. The alias ARN contains the @arn:aws:kms@ namespace, followed by the Region of the CMK, the AWS account ID of the CMK owner, the @alias@ namespace, and then the CMK alias. For example, arn:aws:kms:/us-east-1/ :/012345678910/ :alias//ExampleAlias/ .  AWS parses @KmsKeyId@ asynchronously, meaning that the action you call may appear to complete even though you provided an invalid identifier. This action will eventually report failure.  The specified CMK must exist in the Region that the AMI is being copied to. Amazon EBS does not support asymmetric CMKs.
 --
--- * 'impArchitecture' - The architecture of the virtual machine. Valid values: @i386@ | @x86_64@ | @arm64@
+-- * 'impArchitecture' - The architecture of the virtual machine. Valid values: @i386@ | @x86_64@ | @arm64@ 
 --
 -- * 'impDescription' - A description string for the import image task.
 --
@@ -120,29 +119,22 @@ data ImportImage =
 -- * 'impDiskContainers' - Information about the disk containers.
 importImage
     :: ImportImage
-importImage =
-  ImportImage'
-    { _impHypervisor = Nothing
-    , _impPlatform = Nothing
-    , _impClientToken = Nothing
-    , _impLicenseSpecifications = Nothing
-    , _impLicenseType = Nothing
-    , _impRoleName = Nothing
-    , _impEncrypted = Nothing
-    , _impKMSKeyId = Nothing
-    , _impArchitecture = Nothing
-    , _impDescription = Nothing
-    , _impDryRun = Nothing
-    , _impClientData = Nothing
-    , _impDiskContainers = Nothing
-    }
+importImage
+  = ImportImage'{_impHypervisor = Nothing,
+                 _impPlatform = Nothing, _impClientToken = Nothing,
+                 _impLicenseSpecifications = Nothing,
+                 _impLicenseType = Nothing, _impRoleName = Nothing,
+                 _impEncrypted = Nothing, _impKMSKeyId = Nothing,
+                 _impArchitecture = Nothing,
+                 _impDescription = Nothing, _impDryRun = Nothing,
+                 _impClientData = Nothing,
+                 _impDiskContainers = Nothing}
 
-
--- | The target hypervisor platform. Valid values: @xen@
+-- | The target hypervisor platform. Valid values: @xen@ 
 impHypervisor :: Lens' ImportImage (Maybe Text)
 impHypervisor = lens _impHypervisor (\ s a -> s{_impHypervisor = a})
 
--- | The operating system of the virtual machine. Valid values: @Windows@ | @Linux@
+-- | The operating system of the virtual machine. Valid values: @Windows@ | @Linux@ 
 impPlatform :: Lens' ImportImage (Maybe Text)
 impPlatform = lens _impPlatform (\ s a -> s{_impPlatform = a})
 
@@ -170,7 +162,7 @@ impEncrypted = lens _impEncrypted (\ s a -> s{_impEncrypted = a})
 impKMSKeyId :: Lens' ImportImage (Maybe Text)
 impKMSKeyId = lens _impKMSKeyId (\ s a -> s{_impKMSKeyId = a})
 
--- | The architecture of the virtual machine. Valid values: @i386@ | @x86_64@ | @arm64@
+-- | The architecture of the virtual machine. Valid values: @i386@ | @x86_64@ | @arm64@ 
 impArchitecture :: Lens' ImportImage (Maybe Text)
 impArchitecture = lens _impArchitecture (\ s a -> s{_impArchitecture = a})
 
@@ -249,26 +241,31 @@ instance ToQuery ImportImage where
                  (toQueryList "DiskContainer" <$> _impDiskContainers)]
 
 -- | /See:/ 'importImageResponse' smart constructor.
-data ImportImageResponse =
-  ImportImageResponse'
-    { _irsStatus :: !(Maybe Text)
-    , _irsHypervisor :: !(Maybe Text)
-    , _irsPlatform :: !(Maybe Text)
-    , _irsProgress :: !(Maybe Text)
-    , _irsLicenseSpecifications :: !(Maybe [ImportImageLicenseConfigurationResponse])
-    , _irsLicenseType :: !(Maybe Text)
-    , _irsSnapshotDetails :: !(Maybe [SnapshotDetail])
-    , _irsEncrypted :: !(Maybe Bool)
-    , _irsKMSKeyId :: !(Maybe Text)
-    , _irsStatusMessage :: !(Maybe Text)
-    , _irsImageId :: !(Maybe Text)
-    , _irsImportTaskId :: !(Maybe Text)
-    , _irsArchitecture :: !(Maybe Text)
-    , _irsDescription :: !(Maybe Text)
-    , _irsResponseStatus :: !Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data ImportImageResponse = ImportImageResponse'{_irsStatus
+                                                :: !(Maybe Text),
+                                                _irsHypervisor :: !(Maybe Text),
+                                                _irsPlatform :: !(Maybe Text),
+                                                _irsProgress :: !(Maybe Text),
+                                                _irsLicenseSpecifications ::
+                                                !(Maybe
+                                                    [ImportImageLicenseConfigurationResponse]),
+                                                _irsLicenseType ::
+                                                !(Maybe Text),
+                                                _irsSnapshotDetails ::
+                                                !(Maybe [SnapshotDetail]),
+                                                _irsEncrypted :: !(Maybe Bool),
+                                                _irsKMSKeyId :: !(Maybe Text),
+                                                _irsStatusMessage ::
+                                                !(Maybe Text),
+                                                _irsImageId :: !(Maybe Text),
+                                                _irsImportTaskId ::
+                                                !(Maybe Text),
+                                                _irsArchitecture ::
+                                                !(Maybe Text),
+                                                _irsDescription ::
+                                                !(Maybe Text),
+                                                _irsResponseStatus :: !Int}
+                             deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'ImportImageResponse' with the minimum fields required to make a request.
 --
@@ -306,25 +303,19 @@ data ImportImageResponse =
 importImageResponse
     :: Int -- ^ 'irsResponseStatus'
     -> ImportImageResponse
-importImageResponse pResponseStatus_ =
-  ImportImageResponse'
-    { _irsStatus = Nothing
-    , _irsHypervisor = Nothing
-    , _irsPlatform = Nothing
-    , _irsProgress = Nothing
-    , _irsLicenseSpecifications = Nothing
-    , _irsLicenseType = Nothing
-    , _irsSnapshotDetails = Nothing
-    , _irsEncrypted = Nothing
-    , _irsKMSKeyId = Nothing
-    , _irsStatusMessage = Nothing
-    , _irsImageId = Nothing
-    , _irsImportTaskId = Nothing
-    , _irsArchitecture = Nothing
-    , _irsDescription = Nothing
-    , _irsResponseStatus = pResponseStatus_
-    }
-
+importImageResponse pResponseStatus_
+  = ImportImageResponse'{_irsStatus = Nothing,
+                         _irsHypervisor = Nothing, _irsPlatform = Nothing,
+                         _irsProgress = Nothing,
+                         _irsLicenseSpecifications = Nothing,
+                         _irsLicenseType = Nothing,
+                         _irsSnapshotDetails = Nothing,
+                         _irsEncrypted = Nothing, _irsKMSKeyId = Nothing,
+                         _irsStatusMessage = Nothing, _irsImageId = Nothing,
+                         _irsImportTaskId = Nothing,
+                         _irsArchitecture = Nothing,
+                         _irsDescription = Nothing,
+                         _irsResponseStatus = pResponseStatus_}
 
 -- | A brief status of the task.
 irsStatus :: Lens' ImportImageResponse (Maybe Text)

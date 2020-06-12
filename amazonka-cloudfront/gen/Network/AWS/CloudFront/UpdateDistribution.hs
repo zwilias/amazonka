@@ -18,7 +18,7 @@
 -- Stability   : auto-generated
 -- Portability : non-portable (GHC extensions)
 --
--- Updates the configuration for a web distribution.
+-- Updates the configuration for a web distribution. 
 --
 --
 -- /Important:/ When you update a distribution, there are more required fields than when you create a distribution. When you update your distribution by using this API action, follow the steps here to get the current configuration and then make your updates, to make sure that you include all of the required fields. To view a summary, see <https://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/distribution-overview-required-fields.html Required Fields for Create Distribution and Update Distribution> in the /Amazon CloudFront Developer Guide/ .
@@ -27,11 +27,11 @@
 --
 -- For information about updating a distribution using the CloudFront console instead, see <https://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/distribution-web-creating-console.html Creating a Distribution> in the /Amazon CloudFront Developer Guide/ .
 --
--- __To update a web distribution using the CloudFront API__
+-- __To update a web distribution using the CloudFront API__ 
 --
 --     * Submit a <https://docs.aws.amazon.com/cloudfront/latest/APIReference/API_GetDistributionConfig.html GetDistributionConfig> request to get the current configuration and an @Etag@ header for the distribution.
 --
---     * Update the XML document that was returned in the response to your @GetDistributionConfig@ request to include your changes.
+--     * Update the XML document that was returned in the response to your @GetDistributionConfig@ request to include your changes. 
 --
 -- /Important:/ When you edit the XML file, be aware of the following:
 --
@@ -39,7 +39,7 @@
 --
 --     * Additional fields are required when you update a distribution. There may be fields included in the XML file for features that you haven't configured for your distribution. This is expected and required to successfully update the distribution.
 --
---     * You can't change the value of @CallerReference@ . If you try to change this value, CloudFront returns an @IllegalUpdate@ error.
+--     * You can't change the value of @CallerReference@ . If you try to change this value, CloudFront returns an @IllegalUpdate@ error. 
 --
 --     * The new configuration replaces the existing configuration; the values that you specify in an @UpdateDistribution@ request are not merged into your existing configuration. When you add, delete, or replace values in an element that allows multiple values (for example, @CNAME@ ), you must specify all of the values that you want to appear in the updated distribution. In addition, you must update the corresponding @Quantity@ element.
 --
@@ -79,7 +79,6 @@ module Network.AWS.CloudFront.UpdateDistribution
     ) where
 
 import Network.AWS.CloudFront.Types
-import Network.AWS.CloudFront.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.Request
@@ -90,14 +89,12 @@ import Network.AWS.Response
 --
 --
 -- /See:/ 'updateDistribution' smart constructor.
-data UpdateDistribution =
-  UpdateDistribution'
-    { _udIfMatch            :: !(Maybe Text)
-    , _udDistributionConfig :: !DistributionConfig
-    , _udId                 :: !Text
-    }
-  deriving (Eq, Show, Data, Typeable, Generic)
-
+data UpdateDistribution = UpdateDistribution'{_udIfMatch
+                                              :: !(Maybe Text),
+                                              _udDistributionConfig ::
+                                              !DistributionConfig,
+                                              _udId :: !Text}
+                            deriving (Eq, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'UpdateDistribution' with the minimum fields required to make a request.
 --
@@ -112,13 +109,10 @@ updateDistribution
     :: DistributionConfig -- ^ 'udDistributionConfig'
     -> Text -- ^ 'udId'
     -> UpdateDistribution
-updateDistribution pDistributionConfig_ pId_ =
-  UpdateDistribution'
-    { _udIfMatch = Nothing
-    , _udDistributionConfig = pDistributionConfig_
-    , _udId = pId_
-    }
-
+updateDistribution pDistributionConfig_ pId_
+  = UpdateDistribution'{_udIfMatch = Nothing,
+                        _udDistributionConfig = pDistributionConfig_,
+                        _udId = pId_}
 
 -- | The value of the @ETag@ header that you received when retrieving the distribution's configuration. For example: @E2QWRUHAPOMQZL@ .
 udIfMatch :: Lens' UpdateDistribution (Maybe Text)
@@ -171,14 +165,15 @@ instance ToQuery UpdateDistribution where
 --
 --
 -- /See:/ 'updateDistributionResponse' smart constructor.
-data UpdateDistributionResponse =
-  UpdateDistributionResponse'
-    { _udrsETag           :: !(Maybe Text)
-    , _udrsDistribution   :: !(Maybe Distribution)
-    , _udrsResponseStatus :: !Int
-    }
-  deriving (Eq, Show, Data, Typeable, Generic)
-
+data UpdateDistributionResponse = UpdateDistributionResponse'{_udrsETag
+                                                              :: !(Maybe Text),
+                                                              _udrsDistribution
+                                                              ::
+                                                              !(Maybe
+                                                                  Distribution),
+                                                              _udrsResponseStatus
+                                                              :: !Int}
+                                    deriving (Eq, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'UpdateDistributionResponse' with the minimum fields required to make a request.
 --
@@ -192,13 +187,10 @@ data UpdateDistributionResponse =
 updateDistributionResponse
     :: Int -- ^ 'udrsResponseStatus'
     -> UpdateDistributionResponse
-updateDistributionResponse pResponseStatus_ =
-  UpdateDistributionResponse'
-    { _udrsETag = Nothing
-    , _udrsDistribution = Nothing
-    , _udrsResponseStatus = pResponseStatus_
-    }
-
+updateDistributionResponse pResponseStatus_
+  = UpdateDistributionResponse'{_udrsETag = Nothing,
+                                _udrsDistribution = Nothing,
+                                _udrsResponseStatus = pResponseStatus_}
 
 -- | The current version of the configuration. For example: @E2QWRUHAPOMQZL@ .
 udrsETag :: Lens' UpdateDistributionResponse (Maybe Text)

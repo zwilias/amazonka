@@ -37,7 +37,6 @@ module Network.AWS.CodePipeline.PutThirdPartyJobFailureResult
     ) where
 
 import Network.AWS.CodePipeline.Types
-import Network.AWS.CodePipeline.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.Request
@@ -48,14 +47,15 @@ import Network.AWS.Response
 --
 --
 -- /See:/ 'putThirdPartyJobFailureResult' smart constructor.
-data PutThirdPartyJobFailureResult =
-  PutThirdPartyJobFailureResult'
-    { _ptpjfrJobId          :: !Text
-    , _ptpjfrClientToken    :: !Text
-    , _ptpjfrFailureDetails :: !FailureDetails
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data PutThirdPartyJobFailureResult = PutThirdPartyJobFailureResult'{_ptpjfrJobId
+                                                                    :: !Text,
+                                                                    _ptpjfrClientToken
+                                                                    :: !Text,
+                                                                    _ptpjfrFailureDetails
+                                                                    ::
+                                                                    !FailureDetails}
+                                       deriving (Eq, Read, Show, Data, Typeable,
+                                                 Generic)
 
 -- | Creates a value of 'PutThirdPartyJobFailureResult' with the minimum fields required to make a request.
 --
@@ -71,13 +71,12 @@ putThirdPartyJobFailureResult
     -> Text -- ^ 'ptpjfrClientToken'
     -> FailureDetails -- ^ 'ptpjfrFailureDetails'
     -> PutThirdPartyJobFailureResult
-putThirdPartyJobFailureResult pJobId_ pClientToken_ pFailureDetails_ =
-  PutThirdPartyJobFailureResult'
-    { _ptpjfrJobId = pJobId_
-    , _ptpjfrClientToken = pClientToken_
-    , _ptpjfrFailureDetails = pFailureDetails_
-    }
-
+putThirdPartyJobFailureResult pJobId_ pClientToken_
+  pFailureDetails_
+  = PutThirdPartyJobFailureResult'{_ptpjfrJobId =
+                                     pJobId_,
+                                   _ptpjfrClientToken = pClientToken_,
+                                   _ptpjfrFailureDetails = pFailureDetails_}
 
 -- | The ID of the job that failed. This is the same ID returned from @PollForThirdPartyJobs@ .
 ptpjfrJobId :: Lens' PutThirdPartyJobFailureResult Text
@@ -129,17 +128,16 @@ instance ToQuery PutThirdPartyJobFailureResult where
         toQuery = const mempty
 
 -- | /See:/ 'putThirdPartyJobFailureResultResponse' smart constructor.
-data PutThirdPartyJobFailureResultResponse =
-  PutThirdPartyJobFailureResultResponse'
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data PutThirdPartyJobFailureResultResponse = PutThirdPartyJobFailureResultResponse'
+                                               deriving (Eq, Read, Show, Data,
+                                                         Typeable, Generic)
 
 -- | Creates a value of 'PutThirdPartyJobFailureResultResponse' with the minimum fields required to make a request.
 --
 putThirdPartyJobFailureResultResponse
     :: PutThirdPartyJobFailureResultResponse
-putThirdPartyJobFailureResultResponse = PutThirdPartyJobFailureResultResponse'
-
+putThirdPartyJobFailureResultResponse
+  = PutThirdPartyJobFailureResultResponse'
 
 instance NFData PutThirdPartyJobFailureResultResponse
          where

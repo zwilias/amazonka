@@ -43,7 +43,6 @@ module Network.AWS.Connect.ListUserHierarchyGroups
     ) where
 
 import Network.AWS.Connect.Types
-import Network.AWS.Connect.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Pager
 import Network.AWS.Prelude
@@ -51,14 +50,14 @@ import Network.AWS.Request
 import Network.AWS.Response
 
 -- | /See:/ 'listUserHierarchyGroups' smart constructor.
-data ListUserHierarchyGroups =
-  ListUserHierarchyGroups'
-    { _luhgNextToken  :: !(Maybe Text)
-    , _luhgMaxResults :: !(Maybe Nat)
-    , _luhgInstanceId :: !Text
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data ListUserHierarchyGroups = ListUserHierarchyGroups'{_luhgNextToken
+                                                        :: !(Maybe Text),
+                                                        _luhgMaxResults ::
+                                                        !(Maybe Nat),
+                                                        _luhgInstanceId ::
+                                                        !Text}
+                                 deriving (Eq, Read, Show, Data, Typeable,
+                                           Generic)
 
 -- | Creates a value of 'ListUserHierarchyGroups' with the minimum fields required to make a request.
 --
@@ -72,13 +71,10 @@ data ListUserHierarchyGroups =
 listUserHierarchyGroups
     :: Text -- ^ 'luhgInstanceId'
     -> ListUserHierarchyGroups
-listUserHierarchyGroups pInstanceId_ =
-  ListUserHierarchyGroups'
-    { _luhgNextToken = Nothing
-    , _luhgMaxResults = Nothing
-    , _luhgInstanceId = pInstanceId_
-    }
-
+listUserHierarchyGroups pInstanceId_
+  = ListUserHierarchyGroups'{_luhgNextToken = Nothing,
+                             _luhgMaxResults = Nothing,
+                             _luhgInstanceId = pInstanceId_}
 
 -- | The token for the next set of results. Use the value returned in the previous response in the next request to retrieve the next set of results.
 luhgNextToken :: Lens' ListUserHierarchyGroups (Maybe Text)
@@ -136,14 +132,18 @@ instance ToQuery ListUserHierarchyGroups where
                "maxResults" =: _luhgMaxResults]
 
 -- | /See:/ 'listUserHierarchyGroupsResponse' smart constructor.
-data ListUserHierarchyGroupsResponse =
-  ListUserHierarchyGroupsResponse'
-    { _luhgrsNextToken                     :: !(Maybe Text)
-    , _luhgrsUserHierarchyGroupSummaryList :: !(Maybe [HierarchyGroupSummary])
-    , _luhgrsResponseStatus                :: !Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data ListUserHierarchyGroupsResponse = ListUserHierarchyGroupsResponse'{_luhgrsNextToken
+                                                                        ::
+                                                                        !(Maybe
+                                                                            Text),
+                                                                        _luhgrsUserHierarchyGroupSummaryList
+                                                                        ::
+                                                                        !(Maybe
+                                                                            [HierarchyGroupSummary]),
+                                                                        _luhgrsResponseStatus
+                                                                        :: !Int}
+                                         deriving (Eq, Read, Show, Data,
+                                                   Typeable, Generic)
 
 -- | Creates a value of 'ListUserHierarchyGroupsResponse' with the minimum fields required to make a request.
 --
@@ -157,13 +157,12 @@ data ListUserHierarchyGroupsResponse =
 listUserHierarchyGroupsResponse
     :: Int -- ^ 'luhgrsResponseStatus'
     -> ListUserHierarchyGroupsResponse
-listUserHierarchyGroupsResponse pResponseStatus_ =
-  ListUserHierarchyGroupsResponse'
-    { _luhgrsNextToken = Nothing
-    , _luhgrsUserHierarchyGroupSummaryList = Nothing
-    , _luhgrsResponseStatus = pResponseStatus_
-    }
-
+listUserHierarchyGroupsResponse pResponseStatus_
+  = ListUserHierarchyGroupsResponse'{_luhgrsNextToken =
+                                       Nothing,
+                                     _luhgrsUserHierarchyGroupSummaryList =
+                                       Nothing,
+                                     _luhgrsResponseStatus = pResponseStatus_}
 
 -- | If there are additional results, this is the token for the next set of results.
 luhgrsNextToken :: Lens' ListUserHierarchyGroupsResponse (Maybe Text)

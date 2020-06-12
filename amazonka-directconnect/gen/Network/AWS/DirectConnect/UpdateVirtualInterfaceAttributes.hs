@@ -63,20 +63,21 @@ module Network.AWS.DirectConnect.UpdateVirtualInterfaceAttributes
     ) where
 
 import Network.AWS.DirectConnect.Types
-import Network.AWS.DirectConnect.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 
 -- | /See:/ 'updateVirtualInterfaceAttributes' smart constructor.
-data UpdateVirtualInterfaceAttributes =
-  UpdateVirtualInterfaceAttributes'
-    { _uviaMtu                :: !(Maybe Int)
-    , _uviaVirtualInterfaceId :: !Text
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data UpdateVirtualInterfaceAttributes = UpdateVirtualInterfaceAttributes'{_uviaMtu
+                                                                          ::
+                                                                          !(Maybe
+                                                                              Int),
+                                                                          _uviaVirtualInterfaceId
+                                                                          ::
+                                                                          !Text}
+                                          deriving (Eq, Read, Show, Data,
+                                                    Typeable, Generic)
 
 -- | Creates a value of 'UpdateVirtualInterfaceAttributes' with the minimum fields required to make a request.
 --
@@ -88,10 +89,11 @@ data UpdateVirtualInterfaceAttributes =
 updateVirtualInterfaceAttributes
     :: Text -- ^ 'uviaVirtualInterfaceId'
     -> UpdateVirtualInterfaceAttributes
-updateVirtualInterfaceAttributes pVirtualInterfaceId_ =
-  UpdateVirtualInterfaceAttributes'
-    {_uviaMtu = Nothing, _uviaVirtualInterfaceId = pVirtualInterfaceId_}
-
+updateVirtualInterfaceAttributes pVirtualInterfaceId_
+  = UpdateVirtualInterfaceAttributes'{_uviaMtu =
+                                        Nothing,
+                                      _uviaVirtualInterfaceId =
+                                        pVirtualInterfaceId_}
 
 -- | The maximum transmission unit (MTU), in bytes. The supported values are 1500 and 9001. The default value is 1500.
 uviaMtu :: Lens' UpdateVirtualInterfaceAttributes (Maybe Int)

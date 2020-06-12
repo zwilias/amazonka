@@ -40,7 +40,6 @@ module Network.AWS.EC2.ModifyNetworkInterfaceAttribute
     ) where
 
 import Network.AWS.EC2.Types
-import Network.AWS.EC2.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.Request
@@ -51,17 +50,31 @@ import Network.AWS.Response
 --
 --
 -- /See:/ 'modifyNetworkInterfaceAttribute' smart constructor.
-data ModifyNetworkInterfaceAttribute =
-  ModifyNetworkInterfaceAttribute'
-    { _mniaGroups             :: !(Maybe [Text])
-    , _mniaSourceDestCheck    :: !(Maybe AttributeBooleanValue)
-    , _mniaAttachment         :: !(Maybe NetworkInterfaceAttachmentChanges)
-    , _mniaDescription        :: !(Maybe AttributeValue)
-    , _mniaDryRun             :: !(Maybe Bool)
-    , _mniaNetworkInterfaceId :: !Text
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data ModifyNetworkInterfaceAttribute = ModifyNetworkInterfaceAttribute'{_mniaGroups
+                                                                        ::
+                                                                        !(Maybe
+                                                                            [Text]),
+                                                                        _mniaSourceDestCheck
+                                                                        ::
+                                                                        !(Maybe
+                                                                            AttributeBooleanValue),
+                                                                        _mniaAttachment
+                                                                        ::
+                                                                        !(Maybe
+                                                                            NetworkInterfaceAttachmentChanges),
+                                                                        _mniaDescription
+                                                                        ::
+                                                                        !(Maybe
+                                                                            AttributeValue),
+                                                                        _mniaDryRun
+                                                                        ::
+                                                                        !(Maybe
+                                                                            Bool),
+                                                                        _mniaNetworkInterfaceId
+                                                                        ::
+                                                                        !Text}
+                                         deriving (Eq, Read, Show, Data,
+                                                   Typeable, Generic)
 
 -- | Creates a value of 'ModifyNetworkInterfaceAttribute' with the minimum fields required to make a request.
 --
@@ -81,16 +94,15 @@ data ModifyNetworkInterfaceAttribute =
 modifyNetworkInterfaceAttribute
     :: Text -- ^ 'mniaNetworkInterfaceId'
     -> ModifyNetworkInterfaceAttribute
-modifyNetworkInterfaceAttribute pNetworkInterfaceId_ =
-  ModifyNetworkInterfaceAttribute'
-    { _mniaGroups = Nothing
-    , _mniaSourceDestCheck = Nothing
-    , _mniaAttachment = Nothing
-    , _mniaDescription = Nothing
-    , _mniaDryRun = Nothing
-    , _mniaNetworkInterfaceId = pNetworkInterfaceId_
-    }
-
+modifyNetworkInterfaceAttribute pNetworkInterfaceId_
+  = ModifyNetworkInterfaceAttribute'{_mniaGroups =
+                                       Nothing,
+                                     _mniaSourceDestCheck = Nothing,
+                                     _mniaAttachment = Nothing,
+                                     _mniaDescription = Nothing,
+                                     _mniaDryRun = Nothing,
+                                     _mniaNetworkInterfaceId =
+                                       pNetworkInterfaceId_}
 
 -- | Changes the security groups for the network interface. The new set of groups you specify replaces the current set. You must specify at least one group, even if it's just the default security group in the VPC. You must specify the ID of the security group, not the name.
 mniaGroups :: Lens' ModifyNetworkInterfaceAttribute [Text]
@@ -153,18 +165,16 @@ instance ToQuery ModifyNetworkInterfaceAttribute
                "NetworkInterfaceId" =: _mniaNetworkInterfaceId]
 
 -- | /See:/ 'modifyNetworkInterfaceAttributeResponse' smart constructor.
-data ModifyNetworkInterfaceAttributeResponse =
-  ModifyNetworkInterfaceAttributeResponse'
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data ModifyNetworkInterfaceAttributeResponse = ModifyNetworkInterfaceAttributeResponse'
+                                                 deriving (Eq, Read, Show, Data,
+                                                           Typeable, Generic)
 
 -- | Creates a value of 'ModifyNetworkInterfaceAttributeResponse' with the minimum fields required to make a request.
 --
 modifyNetworkInterfaceAttributeResponse
     :: ModifyNetworkInterfaceAttributeResponse
-modifyNetworkInterfaceAttributeResponse =
-  ModifyNetworkInterfaceAttributeResponse'
-
+modifyNetworkInterfaceAttributeResponse
+  = ModifyNetworkInterfaceAttributeResponse'
 
 instance NFData
            ModifyNetworkInterfaceAttributeResponse

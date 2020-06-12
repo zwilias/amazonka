@@ -45,7 +45,6 @@ module Network.AWS.ELB.CreateLBCookieStickinessPolicy
     ) where
 
 import Network.AWS.ELB.Types
-import Network.AWS.ELB.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.Request
@@ -56,14 +55,16 @@ import Network.AWS.Response
 --
 --
 -- /See:/ 'createLBCookieStickinessPolicy' smart constructor.
-data CreateLBCookieStickinessPolicy =
-  CreateLBCookieStickinessPolicy'
-    { _clbcspCookieExpirationPeriod :: !(Maybe Integer)
-    , _clbcspLoadBalancerName       :: !Text
-    , _clbcspPolicyName             :: !Text
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data CreateLBCookieStickinessPolicy = CreateLBCookieStickinessPolicy'{_clbcspCookieExpirationPeriod
+                                                                      ::
+                                                                      !(Maybe
+                                                                          Integer),
+                                                                      _clbcspLoadBalancerName
+                                                                      :: !Text,
+                                                                      _clbcspPolicyName
+                                                                      :: !Text}
+                                        deriving (Eq, Read, Show, Data,
+                                                  Typeable, Generic)
 
 -- | Creates a value of 'CreateLBCookieStickinessPolicy' with the minimum fields required to make a request.
 --
@@ -78,13 +79,13 @@ createLBCookieStickinessPolicy
     :: Text -- ^ 'clbcspLoadBalancerName'
     -> Text -- ^ 'clbcspPolicyName'
     -> CreateLBCookieStickinessPolicy
-createLBCookieStickinessPolicy pLoadBalancerName_ pPolicyName_ =
-  CreateLBCookieStickinessPolicy'
-    { _clbcspCookieExpirationPeriod = Nothing
-    , _clbcspLoadBalancerName = pLoadBalancerName_
-    , _clbcspPolicyName = pPolicyName_
-    }
-
+createLBCookieStickinessPolicy pLoadBalancerName_
+  pPolicyName_
+  = CreateLBCookieStickinessPolicy'{_clbcspCookieExpirationPeriod
+                                      = Nothing,
+                                    _clbcspLoadBalancerName =
+                                      pLoadBalancerName_,
+                                    _clbcspPolicyName = pPolicyName_}
 
 -- | The time period, in seconds, after which the cookie should be considered stale. If you do not specify this parameter, the default value is 0, which indicates that the sticky session should last for the duration of the browser session.
 clbcspCookieExpirationPeriod :: Lens' CreateLBCookieStickinessPolicy (Maybe Integer)
@@ -138,12 +139,12 @@ instance ToQuery CreateLBCookieStickinessPolicy where
 --
 --
 -- /See:/ 'createLBCookieStickinessPolicyResponse' smart constructor.
-newtype CreateLBCookieStickinessPolicyResponse =
-  CreateLBCookieStickinessPolicyResponse'
-    { _clbcsprsResponseStatus :: Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+newtype CreateLBCookieStickinessPolicyResponse = CreateLBCookieStickinessPolicyResponse'{_clbcsprsResponseStatus
+                                                                                         ::
+                                                                                         Int}
+                                                   deriving (Eq, Read, Show,
+                                                             Data, Typeable,
+                                                             Generic)
 
 -- | Creates a value of 'CreateLBCookieStickinessPolicyResponse' with the minimum fields required to make a request.
 --
@@ -153,10 +154,10 @@ newtype CreateLBCookieStickinessPolicyResponse =
 createLBCookieStickinessPolicyResponse
     :: Int -- ^ 'clbcsprsResponseStatus'
     -> CreateLBCookieStickinessPolicyResponse
-createLBCookieStickinessPolicyResponse pResponseStatus_ =
-  CreateLBCookieStickinessPolicyResponse'
-    {_clbcsprsResponseStatus = pResponseStatus_}
-
+createLBCookieStickinessPolicyResponse
+  pResponseStatus_
+  = CreateLBCookieStickinessPolicyResponse'{_clbcsprsResponseStatus
+                                              = pResponseStatus_}
 
 -- | -- | The response status code.
 clbcsprsResponseStatus :: Lens' CreateLBCookieStickinessPolicyResponse Int

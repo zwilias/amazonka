@@ -38,16 +38,16 @@ import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 import Network.AWS.S3.Types
-import Network.AWS.S3.Types.Product
 
 -- | /See:/ 'putBucketAccelerateConfiguration' smart constructor.
-data PutBucketAccelerateConfiguration =
-  PutBucketAccelerateConfiguration'
-    { _pbacBucket                  :: !BucketName
-    , _pbacAccelerateConfiguration :: !AccelerateConfiguration
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data PutBucketAccelerateConfiguration = PutBucketAccelerateConfiguration'{_pbacBucket
+                                                                          ::
+                                                                          !BucketName,
+                                                                          _pbacAccelerateConfiguration
+                                                                          ::
+                                                                          !AccelerateConfiguration}
+                                          deriving (Eq, Read, Show, Data,
+                                                    Typeable, Generic)
 
 -- | Creates a value of 'PutBucketAccelerateConfiguration' with the minimum fields required to make a request.
 --
@@ -60,12 +60,12 @@ putBucketAccelerateConfiguration
     :: BucketName -- ^ 'pbacBucket'
     -> AccelerateConfiguration -- ^ 'pbacAccelerateConfiguration'
     -> PutBucketAccelerateConfiguration
-putBucketAccelerateConfiguration pBucket_ pAccelerateConfiguration_ =
-  PutBucketAccelerateConfiguration'
-    { _pbacBucket = pBucket_
-    , _pbacAccelerateConfiguration = pAccelerateConfiguration_
-    }
-
+putBucketAccelerateConfiguration pBucket_
+  pAccelerateConfiguration_
+  = PutBucketAccelerateConfiguration'{_pbacBucket =
+                                        pBucket_,
+                                      _pbacAccelerateConfiguration =
+                                        pAccelerateConfiguration_}
 
 -- | Name of the bucket for which the accelerate configuration is set.
 pbacBucket :: Lens' PutBucketAccelerateConfiguration BucketName
@@ -112,18 +112,17 @@ instance ToQuery PutBucketAccelerateConfiguration
         toQuery = const (mconcat ["accelerate"])
 
 -- | /See:/ 'putBucketAccelerateConfigurationResponse' smart constructor.
-data PutBucketAccelerateConfigurationResponse =
-  PutBucketAccelerateConfigurationResponse'
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data PutBucketAccelerateConfigurationResponse = PutBucketAccelerateConfigurationResponse'
+                                                  deriving (Eq, Read, Show,
+                                                            Data, Typeable,
+                                                            Generic)
 
 -- | Creates a value of 'PutBucketAccelerateConfigurationResponse' with the minimum fields required to make a request.
 --
 putBucketAccelerateConfigurationResponse
     :: PutBucketAccelerateConfigurationResponse
-putBucketAccelerateConfigurationResponse =
-  PutBucketAccelerateConfigurationResponse'
-
+putBucketAccelerateConfigurationResponse
+  = PutBucketAccelerateConfigurationResponse'
 
 instance NFData
            PutBucketAccelerateConfigurationResponse

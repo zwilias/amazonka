@@ -38,19 +38,16 @@ module Network.AWS.DirectoryService.RejectSharedDirectory
     ) where
 
 import Network.AWS.DirectoryService.Types
-import Network.AWS.DirectoryService.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 
 -- | /See:/ 'rejectSharedDirectory' smart constructor.
-newtype RejectSharedDirectory =
-  RejectSharedDirectory'
-    { _rsdSharedDirectoryId :: Text
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+newtype RejectSharedDirectory = RejectSharedDirectory'{_rsdSharedDirectoryId
+                                                       :: Text}
+                                  deriving (Eq, Read, Show, Data, Typeable,
+                                            Generic)
 
 -- | Creates a value of 'RejectSharedDirectory' with the minimum fields required to make a request.
 --
@@ -60,9 +57,9 @@ newtype RejectSharedDirectory =
 rejectSharedDirectory
     :: Text -- ^ 'rsdSharedDirectoryId'
     -> RejectSharedDirectory
-rejectSharedDirectory pSharedDirectoryId_ =
-  RejectSharedDirectory' {_rsdSharedDirectoryId = pSharedDirectoryId_}
-
+rejectSharedDirectory pSharedDirectoryId_
+  = RejectSharedDirectory'{_rsdSharedDirectoryId =
+                             pSharedDirectoryId_}
 
 -- | Identifier of the shared directory in the directory consumer account. This identifier is different for each directory owner account.
 rsdSharedDirectoryId :: Lens' RejectSharedDirectory Text
@@ -106,13 +103,14 @@ instance ToQuery RejectSharedDirectory where
         toQuery = const mempty
 
 -- | /See:/ 'rejectSharedDirectoryResponse' smart constructor.
-data RejectSharedDirectoryResponse =
-  RejectSharedDirectoryResponse'
-    { _rsdrsSharedDirectoryId :: !(Maybe Text)
-    , _rsdrsResponseStatus    :: !Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data RejectSharedDirectoryResponse = RejectSharedDirectoryResponse'{_rsdrsSharedDirectoryId
+                                                                    ::
+                                                                    !(Maybe
+                                                                        Text),
+                                                                    _rsdrsResponseStatus
+                                                                    :: !Int}
+                                       deriving (Eq, Read, Show, Data, Typeable,
+                                                 Generic)
 
 -- | Creates a value of 'RejectSharedDirectoryResponse' with the minimum fields required to make a request.
 --
@@ -124,10 +122,10 @@ data RejectSharedDirectoryResponse =
 rejectSharedDirectoryResponse
     :: Int -- ^ 'rsdrsResponseStatus'
     -> RejectSharedDirectoryResponse
-rejectSharedDirectoryResponse pResponseStatus_ =
-  RejectSharedDirectoryResponse'
-    {_rsdrsSharedDirectoryId = Nothing, _rsdrsResponseStatus = pResponseStatus_}
-
+rejectSharedDirectoryResponse pResponseStatus_
+  = RejectSharedDirectoryResponse'{_rsdrsSharedDirectoryId
+                                     = Nothing,
+                                   _rsdrsResponseStatus = pResponseStatus_}
 
 -- | Identifier of the shared directory in the directory consumer account.
 rsdrsSharedDirectoryId :: Lens' RejectSharedDirectoryResponse (Maybe Text)

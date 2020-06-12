@@ -45,7 +45,6 @@ module Network.AWS.CognitoIdentityProvider.ListUsers
     ) where
 
 import Network.AWS.CognitoIdentityProvider.Types
-import Network.AWS.CognitoIdentityProvider.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Pager
 import Network.AWS.Prelude
@@ -57,16 +56,12 @@ import Network.AWS.Response
 --
 --
 -- /See:/ 'listUsers' smart constructor.
-data ListUsers =
-  ListUsers'
-    { _luPaginationToken :: !(Maybe Text)
-    , _luAttributesToGet :: !(Maybe [Text])
-    , _luLimit           :: !(Maybe Nat)
-    , _luFilter          :: !(Maybe Text)
-    , _luUserPoolId      :: !Text
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data ListUsers = ListUsers'{_luPaginationToken ::
+                            !(Maybe Text),
+                            _luAttributesToGet :: !(Maybe [Text]),
+                            _luLimit :: !(Maybe Nat),
+                            _luFilter :: !(Maybe Text), _luUserPoolId :: !Text}
+                   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'ListUsers' with the minimum fields required to make a request.
 --
@@ -84,15 +79,10 @@ data ListUsers =
 listUsers
     :: Text -- ^ 'luUserPoolId'
     -> ListUsers
-listUsers pUserPoolId_ =
-  ListUsers'
-    { _luPaginationToken = Nothing
-    , _luAttributesToGet = Nothing
-    , _luLimit = Nothing
-    , _luFilter = Nothing
-    , _luUserPoolId = pUserPoolId_
-    }
-
+listUsers pUserPoolId_
+  = ListUsers'{_luPaginationToken = Nothing,
+               _luAttributesToGet = Nothing, _luLimit = Nothing,
+               _luFilter = Nothing, _luUserPoolId = pUserPoolId_}
 
 -- | An identifier that was returned from the previous call to this operation, which can be used to return the next set of items in the list.
 luPaginationToken :: Lens' ListUsers (Maybe Text)
@@ -168,14 +158,11 @@ instance ToQuery ListUsers where
 --
 --
 -- /See:/ 'listUsersResponse' smart constructor.
-data ListUsersResponse =
-  ListUsersResponse'
-    { _lursPaginationToken :: !(Maybe Text)
-    , _lursUsers           :: !(Maybe [UserType])
-    , _lursResponseStatus  :: !Int
-    }
-  deriving (Eq, Show, Data, Typeable, Generic)
-
+data ListUsersResponse = ListUsersResponse'{_lursPaginationToken
+                                            :: !(Maybe Text),
+                                            _lursUsers :: !(Maybe [UserType]),
+                                            _lursResponseStatus :: !Int}
+                           deriving (Eq, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'ListUsersResponse' with the minimum fields required to make a request.
 --
@@ -189,13 +176,10 @@ data ListUsersResponse =
 listUsersResponse
     :: Int -- ^ 'lursResponseStatus'
     -> ListUsersResponse
-listUsersResponse pResponseStatus_ =
-  ListUsersResponse'
-    { _lursPaginationToken = Nothing
-    , _lursUsers = Nothing
-    , _lursResponseStatus = pResponseStatus_
-    }
-
+listUsersResponse pResponseStatus_
+  = ListUsersResponse'{_lursPaginationToken = Nothing,
+                       _lursUsers = Nothing,
+                       _lursResponseStatus = pResponseStatus_}
 
 -- | An identifier that was returned from the previous call to this operation, which can be used to return the next set of items in the list.
 lursPaginationToken :: Lens' ListUsersResponse (Maybe Text)

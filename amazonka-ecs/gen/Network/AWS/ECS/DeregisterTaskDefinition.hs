@@ -40,19 +40,16 @@ module Network.AWS.ECS.DeregisterTaskDefinition
     ) where
 
 import Network.AWS.ECS.Types
-import Network.AWS.ECS.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 
 -- | /See:/ 'deregisterTaskDefinition' smart constructor.
-newtype DeregisterTaskDefinition =
-  DeregisterTaskDefinition'
-    { _derTaskDefinition :: Text
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+newtype DeregisterTaskDefinition = DeregisterTaskDefinition'{_derTaskDefinition
+                                                             :: Text}
+                                     deriving (Eq, Read, Show, Data, Typeable,
+                                               Generic)
 
 -- | Creates a value of 'DeregisterTaskDefinition' with the minimum fields required to make a request.
 --
@@ -62,9 +59,9 @@ newtype DeregisterTaskDefinition =
 deregisterTaskDefinition
     :: Text -- ^ 'derTaskDefinition'
     -> DeregisterTaskDefinition
-deregisterTaskDefinition pTaskDefinition_ =
-  DeregisterTaskDefinition' {_derTaskDefinition = pTaskDefinition_}
-
+deregisterTaskDefinition pTaskDefinition_
+  = DeregisterTaskDefinition'{_derTaskDefinition =
+                                pTaskDefinition_}
 
 -- | The @family@ and @revision@ (@family:revision@ ) or full Amazon Resource Name (ARN) of the task definition to deregister. You must specify a @revision@ .
 derTaskDefinition :: Lens' DeregisterTaskDefinition Text
@@ -107,13 +104,15 @@ instance ToQuery DeregisterTaskDefinition where
         toQuery = const mempty
 
 -- | /See:/ 'deregisterTaskDefinitionResponse' smart constructor.
-data DeregisterTaskDefinitionResponse =
-  DeregisterTaskDefinitionResponse'
-    { _dtdrsTaskDefinition :: !(Maybe TaskDefinition)
-    , _dtdrsResponseStatus :: !Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data DeregisterTaskDefinitionResponse = DeregisterTaskDefinitionResponse'{_dtdrsTaskDefinition
+                                                                          ::
+                                                                          !(Maybe
+                                                                              TaskDefinition),
+                                                                          _dtdrsResponseStatus
+                                                                          ::
+                                                                          !Int}
+                                          deriving (Eq, Read, Show, Data,
+                                                    Typeable, Generic)
 
 -- | Creates a value of 'DeregisterTaskDefinitionResponse' with the minimum fields required to make a request.
 --
@@ -125,10 +124,10 @@ data DeregisterTaskDefinitionResponse =
 deregisterTaskDefinitionResponse
     :: Int -- ^ 'dtdrsResponseStatus'
     -> DeregisterTaskDefinitionResponse
-deregisterTaskDefinitionResponse pResponseStatus_ =
-  DeregisterTaskDefinitionResponse'
-    {_dtdrsTaskDefinition = Nothing, _dtdrsResponseStatus = pResponseStatus_}
-
+deregisterTaskDefinitionResponse pResponseStatus_
+  = DeregisterTaskDefinitionResponse'{_dtdrsTaskDefinition
+                                        = Nothing,
+                                      _dtdrsResponseStatus = pResponseStatus_}
 
 -- | The full description of the deregistered task.
 dtdrsTaskDefinition :: Lens' DeregisterTaskDefinitionResponse (Maybe TaskDefinition)

@@ -38,7 +38,6 @@ module Network.AWS.IoT.DeleteCertificate
     ) where
 
 import Network.AWS.IoT.Types
-import Network.AWS.IoT.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.Request
@@ -49,13 +48,10 @@ import Network.AWS.Response
 --
 --
 -- /See:/ 'deleteCertificate' smart constructor.
-data DeleteCertificate =
-  DeleteCertificate'
-    { _dcForceDelete   :: !(Maybe Bool)
-    , _dcCertificateId :: !Text
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data DeleteCertificate = DeleteCertificate'{_dcForceDelete
+                                            :: !(Maybe Bool),
+                                            _dcCertificateId :: !Text}
+                           deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'DeleteCertificate' with the minimum fields required to make a request.
 --
@@ -67,10 +63,9 @@ data DeleteCertificate =
 deleteCertificate
     :: Text -- ^ 'dcCertificateId'
     -> DeleteCertificate
-deleteCertificate pCertificateId_ =
-  DeleteCertificate'
-    {_dcForceDelete = Nothing, _dcCertificateId = pCertificateId_}
-
+deleteCertificate pCertificateId_
+  = DeleteCertificate'{_dcForceDelete = Nothing,
+                       _dcCertificateId = pCertificateId_}
 
 -- | Forces a certificate request to be deleted.
 dcForceDelete :: Lens' DeleteCertificate (Maybe Bool)
@@ -101,16 +96,15 @@ instance ToQuery DeleteCertificate where
           = mconcat ["forceDelete" =: _dcForceDelete]
 
 -- | /See:/ 'deleteCertificateResponse' smart constructor.
-data DeleteCertificateResponse =
-  DeleteCertificateResponse'
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data DeleteCertificateResponse = DeleteCertificateResponse'
+                                   deriving (Eq, Read, Show, Data, Typeable,
+                                             Generic)
 
 -- | Creates a value of 'DeleteCertificateResponse' with the minimum fields required to make a request.
 --
 deleteCertificateResponse
     :: DeleteCertificateResponse
-deleteCertificateResponse = DeleteCertificateResponse'
-
+deleteCertificateResponse
+  = DeleteCertificateResponse'
 
 instance NFData DeleteCertificateResponse where

@@ -44,22 +44,18 @@ module Network.AWS.EC2.AssociateRouteTable
     ) where
 
 import Network.AWS.EC2.Types
-import Network.AWS.EC2.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 
 -- | /See:/ 'associateRouteTable' smart constructor.
-data AssociateRouteTable =
-  AssociateRouteTable'
-    { _artSubnetId     :: !(Maybe Text)
-    , _artGatewayId    :: !(Maybe Text)
-    , _artDryRun       :: !(Maybe Bool)
-    , _artRouteTableId :: !Text
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data AssociateRouteTable = AssociateRouteTable'{_artSubnetId
+                                                :: !(Maybe Text),
+                                                _artGatewayId :: !(Maybe Text),
+                                                _artDryRun :: !(Maybe Bool),
+                                                _artRouteTableId :: !Text}
+                             deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'AssociateRouteTable' with the minimum fields required to make a request.
 --
@@ -75,14 +71,10 @@ data AssociateRouteTable =
 associateRouteTable
     :: Text -- ^ 'artRouteTableId'
     -> AssociateRouteTable
-associateRouteTable pRouteTableId_ =
-  AssociateRouteTable'
-    { _artSubnetId = Nothing
-    , _artGatewayId = Nothing
-    , _artDryRun = Nothing
-    , _artRouteTableId = pRouteTableId_
-    }
-
+associateRouteTable pRouteTableId_
+  = AssociateRouteTable'{_artSubnetId = Nothing,
+                         _artGatewayId = Nothing, _artDryRun = Nothing,
+                         _artRouteTableId = pRouteTableId_}
 
 -- | The ID of the subnet.
 artSubnetId :: Lens' AssociateRouteTable (Maybe Text)
@@ -132,14 +124,17 @@ instance ToQuery AssociateRouteTable where
                "RouteTableId" =: _artRouteTableId]
 
 -- | /See:/ 'associateRouteTableResponse' smart constructor.
-data AssociateRouteTableResponse =
-  AssociateRouteTableResponse'
-    { _artrsAssociationId    :: !(Maybe Text)
-    , _artrsAssociationState :: !(Maybe RouteTableAssociationState)
-    , _artrsResponseStatus   :: !Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data AssociateRouteTableResponse = AssociateRouteTableResponse'{_artrsAssociationId
+                                                                ::
+                                                                !(Maybe Text),
+                                                                _artrsAssociationState
+                                                                ::
+                                                                !(Maybe
+                                                                    RouteTableAssociationState),
+                                                                _artrsResponseStatus
+                                                                :: !Int}
+                                     deriving (Eq, Read, Show, Data, Typeable,
+                                               Generic)
 
 -- | Creates a value of 'AssociateRouteTableResponse' with the minimum fields required to make a request.
 --
@@ -153,13 +148,11 @@ data AssociateRouteTableResponse =
 associateRouteTableResponse
     :: Int -- ^ 'artrsResponseStatus'
     -> AssociateRouteTableResponse
-associateRouteTableResponse pResponseStatus_ =
-  AssociateRouteTableResponse'
-    { _artrsAssociationId = Nothing
-    , _artrsAssociationState = Nothing
-    , _artrsResponseStatus = pResponseStatus_
-    }
-
+associateRouteTableResponse pResponseStatus_
+  = AssociateRouteTableResponse'{_artrsAssociationId =
+                                   Nothing,
+                                 _artrsAssociationState = Nothing,
+                                 _artrsResponseStatus = pResponseStatus_}
 
 -- | The route table association ID. This ID is required for disassociating the route table.
 artrsAssociationId :: Lens' AssociateRouteTableResponse (Maybe Text)

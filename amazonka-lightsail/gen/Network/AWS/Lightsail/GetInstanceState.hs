@@ -39,18 +39,14 @@ module Network.AWS.Lightsail.GetInstanceState
 
 import Network.AWS.Lens
 import Network.AWS.Lightsail.Types
-import Network.AWS.Lightsail.Types.Product
 import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 
 -- | /See:/ 'getInstanceState' smart constructor.
-newtype GetInstanceState =
-  GetInstanceState'
-    { _gisInstanceName :: Text
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+newtype GetInstanceState = GetInstanceState'{_gisInstanceName
+                                             :: Text}
+                             deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'GetInstanceState' with the minimum fields required to make a request.
 --
@@ -60,9 +56,9 @@ newtype GetInstanceState =
 getInstanceState
     :: Text -- ^ 'gisInstanceName'
     -> GetInstanceState
-getInstanceState pInstanceName_ =
-  GetInstanceState' {_gisInstanceName = pInstanceName_}
-
+getInstanceState pInstanceName_
+  = GetInstanceState'{_gisInstanceName =
+                        pInstanceName_}
 
 -- | The name of the instance to get state information about.
 gisInstanceName :: Lens' GetInstanceState Text
@@ -104,13 +100,14 @@ instance ToQuery GetInstanceState where
         toQuery = const mempty
 
 -- | /See:/ 'getInstanceStateResponse' smart constructor.
-data GetInstanceStateResponse =
-  GetInstanceStateResponse'
-    { _gisirsState          :: !(Maybe InstanceState)
-    , _gisirsResponseStatus :: !Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data GetInstanceStateResponse = GetInstanceStateResponse'{_gisirsState
+                                                          ::
+                                                          !(Maybe
+                                                              InstanceState),
+                                                          _gisirsResponseStatus
+                                                          :: !Int}
+                                  deriving (Eq, Read, Show, Data, Typeable,
+                                            Generic)
 
 -- | Creates a value of 'GetInstanceStateResponse' with the minimum fields required to make a request.
 --
@@ -122,10 +119,9 @@ data GetInstanceStateResponse =
 getInstanceStateResponse
     :: Int -- ^ 'gisirsResponseStatus'
     -> GetInstanceStateResponse
-getInstanceStateResponse pResponseStatus_ =
-  GetInstanceStateResponse'
-    {_gisirsState = Nothing, _gisirsResponseStatus = pResponseStatus_}
-
+getInstanceStateResponse pResponseStatus_
+  = GetInstanceStateResponse'{_gisirsState = Nothing,
+                              _gisirsResponseStatus = pResponseStatus_}
 
 -- | The state of the instance.
 gisirsState :: Lens' GetInstanceStateResponse (Maybe InstanceState)

@@ -45,26 +45,24 @@ module Network.AWS.Cloud9.CreateEnvironmentEC
     ) where
 
 import Network.AWS.Cloud9.Types
-import Network.AWS.Cloud9.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 
 -- | /See:/ 'createEnvironmentEC' smart constructor.
-data CreateEnvironmentEC =
-  CreateEnvironmentEC'
-    { _ceecAutomaticStopTimeMinutes :: !(Maybe Int)
-    , _ceecSubnetId                 :: !(Maybe Text)
-    , _ceecOwnerARN                 :: !(Maybe Text)
-    , _ceecClientRequestToken       :: !(Maybe Text)
-    , _ceecDescription              :: !(Maybe (Sensitive Text))
-    , _ceecTags                     :: !(Maybe [Tag])
-    , _ceecName                     :: !Text
-    , _ceecInstanceType             :: !Text
-    }
-  deriving (Eq, Show, Data, Typeable, Generic)
-
+data CreateEnvironmentEC = CreateEnvironmentEC'{_ceecAutomaticStopTimeMinutes
+                                                :: !(Maybe Int),
+                                                _ceecSubnetId :: !(Maybe Text),
+                                                _ceecOwnerARN :: !(Maybe Text),
+                                                _ceecClientRequestToken ::
+                                                !(Maybe Text),
+                                                _ceecDescription ::
+                                                !(Maybe (Sensitive Text)),
+                                                _ceecTags :: !(Maybe [Tag]),
+                                                _ceecName :: !Text,
+                                                _ceecInstanceType :: !Text}
+                             deriving (Eq, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'CreateEnvironmentEC' with the minimum fields required to make a request.
 --
@@ -89,18 +87,14 @@ createEnvironmentEC
     :: Text -- ^ 'ceecName'
     -> Text -- ^ 'ceecInstanceType'
     -> CreateEnvironmentEC
-createEnvironmentEC pName_ pInstanceType_ =
-  CreateEnvironmentEC'
-    { _ceecAutomaticStopTimeMinutes = Nothing
-    , _ceecSubnetId = Nothing
-    , _ceecOwnerARN = Nothing
-    , _ceecClientRequestToken = Nothing
-    , _ceecDescription = Nothing
-    , _ceecTags = Nothing
-    , _ceecName = pName_
-    , _ceecInstanceType = pInstanceType_
-    }
-
+createEnvironmentEC pName_ pInstanceType_
+  = CreateEnvironmentEC'{_ceecAutomaticStopTimeMinutes
+                           = Nothing,
+                         _ceecSubnetId = Nothing, _ceecOwnerARN = Nothing,
+                         _ceecClientRequestToken = Nothing,
+                         _ceecDescription = Nothing, _ceecTags = Nothing,
+                         _ceecName = pName_,
+                         _ceecInstanceType = pInstanceType_}
 
 -- | The number of minutes until the running instance is shut down after the environment has last been used.
 ceecAutomaticStopTimeMinutes :: Lens' CreateEnvironmentEC (Maybe Int)
@@ -180,13 +174,13 @@ instance ToQuery CreateEnvironmentEC where
         toQuery = const mempty
 
 -- | /See:/ 'createEnvironmentECResponse' smart constructor.
-data CreateEnvironmentECResponse =
-  CreateEnvironmentECResponse'
-    { _ceecrsEnvironmentId  :: !(Maybe Text)
-    , _ceecrsResponseStatus :: !Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data CreateEnvironmentECResponse = CreateEnvironmentECResponse'{_ceecrsEnvironmentId
+                                                                ::
+                                                                !(Maybe Text),
+                                                                _ceecrsResponseStatus
+                                                                :: !Int}
+                                     deriving (Eq, Read, Show, Data, Typeable,
+                                               Generic)
 
 -- | Creates a value of 'CreateEnvironmentECResponse' with the minimum fields required to make a request.
 --
@@ -198,10 +192,10 @@ data CreateEnvironmentECResponse =
 createEnvironmentECResponse
     :: Int -- ^ 'ceecrsResponseStatus'
     -> CreateEnvironmentECResponse
-createEnvironmentECResponse pResponseStatus_ =
-  CreateEnvironmentECResponse'
-    {_ceecrsEnvironmentId = Nothing, _ceecrsResponseStatus = pResponseStatus_}
-
+createEnvironmentECResponse pResponseStatus_
+  = CreateEnvironmentECResponse'{_ceecrsEnvironmentId =
+                                   Nothing,
+                                 _ceecrsResponseStatus = pResponseStatus_}
 
 -- | The ID of the environment that was created.
 ceecrsEnvironmentId :: Lens' CreateEnvironmentECResponse (Maybe Text)

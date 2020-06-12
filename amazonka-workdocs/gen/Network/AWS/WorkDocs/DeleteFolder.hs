@@ -40,16 +40,12 @@ import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 import Network.AWS.WorkDocs.Types
-import Network.AWS.WorkDocs.Types.Product
 
 -- | /See:/ 'deleteFolder' smart constructor.
-data DeleteFolder =
-  DeleteFolder'
-    { _dfAuthenticationToken :: !(Maybe (Sensitive Text))
-    , _dfFolderId            :: !Text
-    }
-  deriving (Eq, Show, Data, Typeable, Generic)
-
+data DeleteFolder = DeleteFolder'{_dfAuthenticationToken
+                                  :: !(Maybe (Sensitive Text)),
+                                  _dfFolderId :: !Text}
+                      deriving (Eq, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'DeleteFolder' with the minimum fields required to make a request.
 --
@@ -61,9 +57,9 @@ data DeleteFolder =
 deleteFolder
     :: Text -- ^ 'dfFolderId'
     -> DeleteFolder
-deleteFolder pFolderId_ =
-  DeleteFolder' {_dfAuthenticationToken = Nothing, _dfFolderId = pFolderId_}
-
+deleteFolder pFolderId_
+  = DeleteFolder'{_dfAuthenticationToken = Nothing,
+                  _dfFolderId = pFolderId_}
 
 -- | Amazon WorkDocs authentication token. Do not set this field when using administrative API actions, as in accessing the API using AWS credentials.
 dfAuthenticationToken :: Lens' DeleteFolder (Maybe Text)
@@ -97,16 +93,13 @@ instance ToQuery DeleteFolder where
         toQuery = const mempty
 
 -- | /See:/ 'deleteFolderResponse' smart constructor.
-data DeleteFolderResponse =
-  DeleteFolderResponse'
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data DeleteFolderResponse = DeleteFolderResponse'
+                              deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'DeleteFolderResponse' with the minimum fields required to make a request.
 --
 deleteFolderResponse
     :: DeleteFolderResponse
 deleteFolderResponse = DeleteFolderResponse'
-
 
 instance NFData DeleteFolderResponse where

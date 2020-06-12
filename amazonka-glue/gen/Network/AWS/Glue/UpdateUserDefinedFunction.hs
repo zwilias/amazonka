@@ -40,22 +40,23 @@ module Network.AWS.Glue.UpdateUserDefinedFunction
     ) where
 
 import Network.AWS.Glue.Types
-import Network.AWS.Glue.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 
 -- | /See:/ 'updateUserDefinedFunction' smart constructor.
-data UpdateUserDefinedFunction =
-  UpdateUserDefinedFunction'
-    { _uudfCatalogId     :: !(Maybe Text)
-    , _uudfDatabaseName  :: !Text
-    , _uudfFunctionName  :: !Text
-    , _uudfFunctionInput :: !UserDefinedFunctionInput
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data UpdateUserDefinedFunction = UpdateUserDefinedFunction'{_uudfCatalogId
+                                                            :: !(Maybe Text),
+                                                            _uudfDatabaseName ::
+                                                            !Text,
+                                                            _uudfFunctionName ::
+                                                            !Text,
+                                                            _uudfFunctionInput
+                                                            ::
+                                                            !UserDefinedFunctionInput}
+                                   deriving (Eq, Read, Show, Data, Typeable,
+                                             Generic)
 
 -- | Creates a value of 'UpdateUserDefinedFunction' with the minimum fields required to make a request.
 --
@@ -73,14 +74,13 @@ updateUserDefinedFunction
     -> Text -- ^ 'uudfFunctionName'
     -> UserDefinedFunctionInput -- ^ 'uudfFunctionInput'
     -> UpdateUserDefinedFunction
-updateUserDefinedFunction pDatabaseName_ pFunctionName_ pFunctionInput_ =
-  UpdateUserDefinedFunction'
-    { _uudfCatalogId = Nothing
-    , _uudfDatabaseName = pDatabaseName_
-    , _uudfFunctionName = pFunctionName_
-    , _uudfFunctionInput = pFunctionInput_
-    }
-
+updateUserDefinedFunction pDatabaseName_
+  pFunctionName_ pFunctionInput_
+  = UpdateUserDefinedFunction'{_uudfCatalogId =
+                                 Nothing,
+                               _uudfDatabaseName = pDatabaseName_,
+                               _uudfFunctionName = pFunctionName_,
+                               _uudfFunctionInput = pFunctionInput_}
 
 -- | The ID of the Data Catalog where the function to be updated is located. If none is supplied, the AWS account ID is used by default.
 uudfCatalogId :: Lens' UpdateUserDefinedFunction (Maybe Text)
@@ -137,12 +137,11 @@ instance ToQuery UpdateUserDefinedFunction where
         toQuery = const mempty
 
 -- | /See:/ 'updateUserDefinedFunctionResponse' smart constructor.
-newtype UpdateUserDefinedFunctionResponse =
-  UpdateUserDefinedFunctionResponse'
-    { _uudfrsResponseStatus :: Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+newtype UpdateUserDefinedFunctionResponse = UpdateUserDefinedFunctionResponse'{_uudfrsResponseStatus
+                                                                               ::
+                                                                               Int}
+                                              deriving (Eq, Read, Show, Data,
+                                                        Typeable, Generic)
 
 -- | Creates a value of 'UpdateUserDefinedFunctionResponse' with the minimum fields required to make a request.
 --
@@ -152,9 +151,9 @@ newtype UpdateUserDefinedFunctionResponse =
 updateUserDefinedFunctionResponse
     :: Int -- ^ 'uudfrsResponseStatus'
     -> UpdateUserDefinedFunctionResponse
-updateUserDefinedFunctionResponse pResponseStatus_ =
-  UpdateUserDefinedFunctionResponse' {_uudfrsResponseStatus = pResponseStatus_}
-
+updateUserDefinedFunctionResponse pResponseStatus_
+  = UpdateUserDefinedFunctionResponse'{_uudfrsResponseStatus
+                                         = pResponseStatus_}
 
 -- | -- | The response status code.
 uudfrsResponseStatus :: Lens' UpdateUserDefinedFunctionResponse Int

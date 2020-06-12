@@ -25,7 +25,7 @@
 --
 -- The @ShareMethod@ parameter determines whether the specified directory can be shared between AWS accounts inside the same AWS organization (@ORGANIZATIONS@ ). It also determines whether you can share the directory with any other AWS account either inside or outside of the organization (@HANDSHAKE@ ).
 --
--- The @ShareNotes@ parameter is only used when @HANDSHAKE@ is called, which sends a directory sharing request to the directory consumer.
+-- The @ShareNotes@ parameter is only used when @HANDSHAKE@ is called, which sends a directory sharing request to the directory consumer. 
 --
 module Network.AWS.DirectoryService.ShareDirectory
     (
@@ -47,22 +47,18 @@ module Network.AWS.DirectoryService.ShareDirectory
     ) where
 
 import Network.AWS.DirectoryService.Types
-import Network.AWS.DirectoryService.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 
 -- | /See:/ 'shareDirectory' smart constructor.
-data ShareDirectory =
-  ShareDirectory'
-    { _sdShareNotes  :: !(Maybe (Sensitive Text))
-    , _sdDirectoryId :: !Text
-    , _sdShareTarget :: !ShareTarget
-    , _sdShareMethod :: !ShareMethod
-    }
-  deriving (Eq, Show, Data, Typeable, Generic)
-
+data ShareDirectory = ShareDirectory'{_sdShareNotes
+                                      :: !(Maybe (Sensitive Text)),
+                                      _sdDirectoryId :: !Text,
+                                      _sdShareTarget :: !ShareTarget,
+                                      _sdShareMethod :: !ShareMethod}
+                        deriving (Eq, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'ShareDirectory' with the minimum fields required to make a request.
 --
@@ -80,14 +76,12 @@ shareDirectory
     -> ShareTarget -- ^ 'sdShareTarget'
     -> ShareMethod -- ^ 'sdShareMethod'
     -> ShareDirectory
-shareDirectory pDirectoryId_ pShareTarget_ pShareMethod_ =
-  ShareDirectory'
-    { _sdShareNotes = Nothing
-    , _sdDirectoryId = pDirectoryId_
-    , _sdShareTarget = pShareTarget_
-    , _sdShareMethod = pShareMethod_
-    }
-
+shareDirectory pDirectoryId_ pShareTarget_
+  pShareMethod_
+  = ShareDirectory'{_sdShareNotes = Nothing,
+                    _sdDirectoryId = pDirectoryId_,
+                    _sdShareTarget = pShareTarget_,
+                    _sdShareMethod = pShareMethod_}
 
 -- | A directory share request that is sent by the directory owner to the directory consumer. The request includes a typed message to help the directory consumer administrator determine whether to approve or reject the share invitation.
 sdShareNotes :: Lens' ShareDirectory (Maybe Text)
@@ -144,13 +138,12 @@ instance ToQuery ShareDirectory where
         toQuery = const mempty
 
 -- | /See:/ 'shareDirectoryResponse' smart constructor.
-data ShareDirectoryResponse =
-  ShareDirectoryResponse'
-    { _sdrsSharedDirectoryId :: !(Maybe Text)
-    , _sdrsResponseStatus    :: !Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data ShareDirectoryResponse = ShareDirectoryResponse'{_sdrsSharedDirectoryId
+                                                      :: !(Maybe Text),
+                                                      _sdrsResponseStatus ::
+                                                      !Int}
+                                deriving (Eq, Read, Show, Data, Typeable,
+                                          Generic)
 
 -- | Creates a value of 'ShareDirectoryResponse' with the minimum fields required to make a request.
 --
@@ -162,10 +155,10 @@ data ShareDirectoryResponse =
 shareDirectoryResponse
     :: Int -- ^ 'sdrsResponseStatus'
     -> ShareDirectoryResponse
-shareDirectoryResponse pResponseStatus_ =
-  ShareDirectoryResponse'
-    {_sdrsSharedDirectoryId = Nothing, _sdrsResponseStatus = pResponseStatus_}
-
+shareDirectoryResponse pResponseStatus_
+  = ShareDirectoryResponse'{_sdrsSharedDirectoryId =
+                              Nothing,
+                            _sdrsResponseStatus = pResponseStatus_}
 
 -- | Identifier of the directory that is stored in the directory consumer account that is shared from the specified directory (@DirectoryId@ ).
 sdrsSharedDirectoryId :: Lens' ShareDirectoryResponse (Maybe Text)

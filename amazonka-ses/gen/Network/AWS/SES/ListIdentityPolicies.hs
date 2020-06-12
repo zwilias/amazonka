@@ -46,19 +46,16 @@ import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 import Network.AWS.SES.Types
-import Network.AWS.SES.Types.Product
 
 -- | Represents a request to return a list of sending authorization policies that are attached to an identity. Sending authorization is an Amazon SES feature that enables you to authorize other senders to use your identities. For information, see the <http://docs.aws.amazon.com/ses/latest/DeveloperGuide/sending-authorization.html Amazon SES Developer Guide> .
 --
 --
 --
 -- /See:/ 'listIdentityPolicies' smart constructor.
-newtype ListIdentityPolicies =
-  ListIdentityPolicies'
-    { _lipIdentity :: Text
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+newtype ListIdentityPolicies = ListIdentityPolicies'{_lipIdentity
+                                                     :: Text}
+                                 deriving (Eq, Read, Show, Data, Typeable,
+                                           Generic)
 
 -- | Creates a value of 'ListIdentityPolicies' with the minimum fields required to make a request.
 --
@@ -68,9 +65,8 @@ newtype ListIdentityPolicies =
 listIdentityPolicies
     :: Text -- ^ 'lipIdentity'
     -> ListIdentityPolicies
-listIdentityPolicies pIdentity_ =
-  ListIdentityPolicies' {_lipIdentity = pIdentity_}
-
+listIdentityPolicies pIdentity_
+  = ListIdentityPolicies'{_lipIdentity = pIdentity_}
 
 -- | The identity that is associated with the policy for which the policies will be listed. You can specify an identity by using its name or by using its Amazon Resource Name (ARN). Examples: @user@example.com@ , @example.com@ , @arn:aws:ses:us-east-1:123456789012:identity/example.com@ . To successfully call this API, you must own the identity.
 lipIdentity :: Lens' ListIdentityPolicies Text
@@ -110,13 +106,12 @@ instance ToQuery ListIdentityPolicies where
 --
 --
 -- /See:/ 'listIdentityPoliciesResponse' smart constructor.
-data ListIdentityPoliciesResponse =
-  ListIdentityPoliciesResponse'
-    { _liprsResponseStatus :: !Int
-    , _liprsPolicyNames    :: ![Text]
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data ListIdentityPoliciesResponse = ListIdentityPoliciesResponse'{_liprsResponseStatus
+                                                                  :: !Int,
+                                                                  _liprsPolicyNames
+                                                                  :: ![Text]}
+                                      deriving (Eq, Read, Show, Data, Typeable,
+                                                Generic)
 
 -- | Creates a value of 'ListIdentityPoliciesResponse' with the minimum fields required to make a request.
 --
@@ -128,10 +123,10 @@ data ListIdentityPoliciesResponse =
 listIdentityPoliciesResponse
     :: Int -- ^ 'liprsResponseStatus'
     -> ListIdentityPoliciesResponse
-listIdentityPoliciesResponse pResponseStatus_ =
-  ListIdentityPoliciesResponse'
-    {_liprsResponseStatus = pResponseStatus_, _liprsPolicyNames = mempty}
-
+listIdentityPoliciesResponse pResponseStatus_
+  = ListIdentityPoliciesResponse'{_liprsResponseStatus
+                                    = pResponseStatus_,
+                                  _liprsPolicyNames = mempty}
 
 -- | -- | The response status code.
 liprsResponseStatus :: Lens' ListIdentityPoliciesResponse Int

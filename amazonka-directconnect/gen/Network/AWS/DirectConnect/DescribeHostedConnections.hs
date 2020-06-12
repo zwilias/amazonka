@@ -37,19 +37,16 @@ module Network.AWS.DirectConnect.DescribeHostedConnections
     ) where
 
 import Network.AWS.DirectConnect.Types
-import Network.AWS.DirectConnect.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 
 -- | /See:/ 'describeHostedConnections' smart constructor.
-newtype DescribeHostedConnections =
-  DescribeHostedConnections'
-    { _dhcConnectionId :: Text
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+newtype DescribeHostedConnections = DescribeHostedConnections'{_dhcConnectionId
+                                                               :: Text}
+                                      deriving (Eq, Read, Show, Data, Typeable,
+                                                Generic)
 
 -- | Creates a value of 'DescribeHostedConnections' with the minimum fields required to make a request.
 --
@@ -59,9 +56,9 @@ newtype DescribeHostedConnections =
 describeHostedConnections
     :: Text -- ^ 'dhcConnectionId'
     -> DescribeHostedConnections
-describeHostedConnections pConnectionId_ =
-  DescribeHostedConnections' {_dhcConnectionId = pConnectionId_}
-
+describeHostedConnections pConnectionId_
+  = DescribeHostedConnections'{_dhcConnectionId =
+                                 pConnectionId_}
 
 -- | The ID of the interconnect or LAG.
 dhcConnectionId :: Lens' DescribeHostedConnections Text

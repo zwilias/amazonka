@@ -44,21 +44,20 @@ module Network.AWS.Greengrass.CreateLoggerDefinition
     ) where
 
 import Network.AWS.Greengrass.Types
-import Network.AWS.Greengrass.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 
 -- | /See:/ 'createLoggerDefinition' smart constructor.
-data CreateLoggerDefinition =
-  CreateLoggerDefinition'
-    { _cldAmznClientToken :: !(Maybe Text)
-    , _cldInitialVersion  :: !(Maybe LoggerDefinitionVersion)
-    , _cldName            :: !(Maybe Text)
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data CreateLoggerDefinition = CreateLoggerDefinition'{_cldAmznClientToken
+                                                      :: !(Maybe Text),
+                                                      _cldInitialVersion ::
+                                                      !(Maybe
+                                                          LoggerDefinitionVersion),
+                                                      _cldName :: !(Maybe Text)}
+                                deriving (Eq, Read, Show, Data, Typeable,
+                                          Generic)
 
 -- | Creates a value of 'CreateLoggerDefinition' with the minimum fields required to make a request.
 --
@@ -71,13 +70,10 @@ data CreateLoggerDefinition =
 -- * 'cldName' - The name of the logger definition.
 createLoggerDefinition
     :: CreateLoggerDefinition
-createLoggerDefinition =
-  CreateLoggerDefinition'
-    { _cldAmznClientToken = Nothing
-    , _cldInitialVersion = Nothing
-    , _cldName = Nothing
-    }
-
+createLoggerDefinition
+  = CreateLoggerDefinition'{_cldAmznClientToken =
+                              Nothing,
+                            _cldInitialVersion = Nothing, _cldName = Nothing}
 
 -- | A client token used to correlate requests and responses.
 cldAmznClientToken :: Lens' CreateLoggerDefinition (Maybe Text)
@@ -132,19 +128,38 @@ instance ToQuery CreateLoggerDefinition where
         toQuery = const mempty
 
 -- | /See:/ 'createLoggerDefinitionResponse' smart constructor.
-data CreateLoggerDefinitionResponse =
-  CreateLoggerDefinitionResponse'
-    { _cldrsLatestVersionARN     :: !(Maybe Text)
-    , _cldrsARN                  :: !(Maybe Text)
-    , _cldrsName                 :: !(Maybe Text)
-    , _cldrsCreationTimestamp    :: !(Maybe Text)
-    , _cldrsId                   :: !(Maybe Text)
-    , _cldrsLatestVersion        :: !(Maybe Text)
-    , _cldrsLastUpdatedTimestamp :: !(Maybe Text)
-    , _cldrsResponseStatus       :: !Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data CreateLoggerDefinitionResponse = CreateLoggerDefinitionResponse'{_cldrsLatestVersionARN
+                                                                      ::
+                                                                      !(Maybe
+                                                                          Text),
+                                                                      _cldrsARN
+                                                                      ::
+                                                                      !(Maybe
+                                                                          Text),
+                                                                      _cldrsName
+                                                                      ::
+                                                                      !(Maybe
+                                                                          Text),
+                                                                      _cldrsCreationTimestamp
+                                                                      ::
+                                                                      !(Maybe
+                                                                          Text),
+                                                                      _cldrsId
+                                                                      ::
+                                                                      !(Maybe
+                                                                          Text),
+                                                                      _cldrsLatestVersion
+                                                                      ::
+                                                                      !(Maybe
+                                                                          Text),
+                                                                      _cldrsLastUpdatedTimestamp
+                                                                      ::
+                                                                      !(Maybe
+                                                                          Text),
+                                                                      _cldrsResponseStatus
+                                                                      :: !Int}
+                                        deriving (Eq, Read, Show, Data,
+                                                  Typeable, Generic)
 
 -- | Creates a value of 'CreateLoggerDefinitionResponse' with the minimum fields required to make a request.
 --
@@ -168,18 +183,15 @@ data CreateLoggerDefinitionResponse =
 createLoggerDefinitionResponse
     :: Int -- ^ 'cldrsResponseStatus'
     -> CreateLoggerDefinitionResponse
-createLoggerDefinitionResponse pResponseStatus_ =
-  CreateLoggerDefinitionResponse'
-    { _cldrsLatestVersionARN = Nothing
-    , _cldrsARN = Nothing
-    , _cldrsName = Nothing
-    , _cldrsCreationTimestamp = Nothing
-    , _cldrsId = Nothing
-    , _cldrsLatestVersion = Nothing
-    , _cldrsLastUpdatedTimestamp = Nothing
-    , _cldrsResponseStatus = pResponseStatus_
-    }
-
+createLoggerDefinitionResponse pResponseStatus_
+  = CreateLoggerDefinitionResponse'{_cldrsLatestVersionARN
+                                      = Nothing,
+                                    _cldrsARN = Nothing, _cldrsName = Nothing,
+                                    _cldrsCreationTimestamp = Nothing,
+                                    _cldrsId = Nothing,
+                                    _cldrsLatestVersion = Nothing,
+                                    _cldrsLastUpdatedTimestamp = Nothing,
+                                    _cldrsResponseStatus = pResponseStatus_}
 
 -- | The ARN of the latest version of the definition.
 cldrsLatestVersionARN :: Lens' CreateLoggerDefinitionResponse (Maybe Text)

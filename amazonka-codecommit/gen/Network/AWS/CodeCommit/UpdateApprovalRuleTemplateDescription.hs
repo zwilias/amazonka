@@ -39,20 +39,20 @@ module Network.AWS.CodeCommit.UpdateApprovalRuleTemplateDescription
     ) where
 
 import Network.AWS.CodeCommit.Types
-import Network.AWS.CodeCommit.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 
 -- | /See:/ 'updateApprovalRuleTemplateDescription' smart constructor.
-data UpdateApprovalRuleTemplateDescription =
-  UpdateApprovalRuleTemplateDescription'
-    { _uartdApprovalRuleTemplateName        :: !Text
-    , _uartdApprovalRuleTemplateDescription :: !Text
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data UpdateApprovalRuleTemplateDescription = UpdateApprovalRuleTemplateDescription'{_uartdApprovalRuleTemplateName
+                                                                                    ::
+                                                                                    !Text,
+                                                                                    _uartdApprovalRuleTemplateDescription
+                                                                                    ::
+                                                                                    !Text}
+                                               deriving (Eq, Read, Show, Data,
+                                                         Typeable, Generic)
 
 -- | Creates a value of 'UpdateApprovalRuleTemplateDescription' with the minimum fields required to make a request.
 --
@@ -65,12 +65,14 @@ updateApprovalRuleTemplateDescription
     :: Text -- ^ 'uartdApprovalRuleTemplateName'
     -> Text -- ^ 'uartdApprovalRuleTemplateDescription'
     -> UpdateApprovalRuleTemplateDescription
-updateApprovalRuleTemplateDescription pApprovalRuleTemplateName_ pApprovalRuleTemplateDescription_ =
-  UpdateApprovalRuleTemplateDescription'
-    { _uartdApprovalRuleTemplateName = pApprovalRuleTemplateName_
-    , _uartdApprovalRuleTemplateDescription = pApprovalRuleTemplateDescription_
-    }
-
+updateApprovalRuleTemplateDescription
+  pApprovalRuleTemplateName_
+  pApprovalRuleTemplateDescription_
+  = UpdateApprovalRuleTemplateDescription'{_uartdApprovalRuleTemplateName
+                                             = pApprovalRuleTemplateName_,
+                                           _uartdApprovalRuleTemplateDescription
+                                             =
+                                             pApprovalRuleTemplateDescription_}
 
 -- | The name of the template for which you want to update the description.
 uartdApprovalRuleTemplateName :: Lens' UpdateApprovalRuleTemplateDescription Text
@@ -134,13 +136,15 @@ instance ToQuery
         toQuery = const mempty
 
 -- | /See:/ 'updateApprovalRuleTemplateDescriptionResponse' smart constructor.
-data UpdateApprovalRuleTemplateDescriptionResponse =
-  UpdateApprovalRuleTemplateDescriptionResponse'
-    { _uartdrsResponseStatus       :: !Int
-    , _uartdrsApprovalRuleTemplate :: !ApprovalRuleTemplate
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data UpdateApprovalRuleTemplateDescriptionResponse = UpdateApprovalRuleTemplateDescriptionResponse'{_uartdrsResponseStatus
+                                                                                                    ::
+                                                                                                    !Int,
+                                                                                                    _uartdrsApprovalRuleTemplate
+                                                                                                    ::
+                                                                                                    !ApprovalRuleTemplate}
+                                                       deriving (Eq, Read, Show,
+                                                                 Data, Typeable,
+                                                                 Generic)
 
 -- | Creates a value of 'UpdateApprovalRuleTemplateDescriptionResponse' with the minimum fields required to make a request.
 --
@@ -153,12 +157,12 @@ updateApprovalRuleTemplateDescriptionResponse
     :: Int -- ^ 'uartdrsResponseStatus'
     -> ApprovalRuleTemplate -- ^ 'uartdrsApprovalRuleTemplate'
     -> UpdateApprovalRuleTemplateDescriptionResponse
-updateApprovalRuleTemplateDescriptionResponse pResponseStatus_ pApprovalRuleTemplate_ =
-  UpdateApprovalRuleTemplateDescriptionResponse'
-    { _uartdrsResponseStatus = pResponseStatus_
-    , _uartdrsApprovalRuleTemplate = pApprovalRuleTemplate_
-    }
-
+updateApprovalRuleTemplateDescriptionResponse
+  pResponseStatus_ pApprovalRuleTemplate_
+  = UpdateApprovalRuleTemplateDescriptionResponse'{_uartdrsResponseStatus
+                                                     = pResponseStatus_,
+                                                   _uartdrsApprovalRuleTemplate
+                                                     = pApprovalRuleTemplate_}
 
 -- | -- | The response status code.
 uartdrsResponseStatus :: Lens' UpdateApprovalRuleTemplateDescriptionResponse Int

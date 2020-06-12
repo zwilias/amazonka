@@ -41,22 +41,30 @@ module Network.AWS.DynamoDB.UpdateTableReplicaAutoScaling
     ) where
 
 import Network.AWS.DynamoDB.Types
-import Network.AWS.DynamoDB.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 
 -- | /See:/ 'updateTableReplicaAutoScaling' smart constructor.
-data UpdateTableReplicaAutoScaling =
-  UpdateTableReplicaAutoScaling'
-    { _utrasReplicaUpdates :: !(Maybe (List1 ReplicaAutoScalingUpdate))
-    , _utrasProvisionedWriteCapacityAutoScalingUpdate :: !(Maybe AutoScalingSettingsUpdate)
-    , _utrasGlobalSecondaryIndexUpdates :: !(Maybe (List1 GlobalSecondaryIndexAutoScalingUpdate))
-    , _utrasTableName :: !Text
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data UpdateTableReplicaAutoScaling = UpdateTableReplicaAutoScaling'{_utrasReplicaUpdates
+                                                                    ::
+                                                                    !(Maybe
+                                                                        (List1
+                                                                           ReplicaAutoScalingUpdate)),
+                                                                    _utrasProvisionedWriteCapacityAutoScalingUpdate
+                                                                    ::
+                                                                    !(Maybe
+                                                                        AutoScalingSettingsUpdate),
+                                                                    _utrasGlobalSecondaryIndexUpdates
+                                                                    ::
+                                                                    !(Maybe
+                                                                        (List1
+                                                                           GlobalSecondaryIndexAutoScalingUpdate)),
+                                                                    _utrasTableName
+                                                                    :: !Text}
+                                       deriving (Eq, Read, Show, Data, Typeable,
+                                                 Generic)
 
 -- | Creates a value of 'UpdateTableReplicaAutoScaling' with the minimum fields required to make a request.
 --
@@ -72,14 +80,13 @@ data UpdateTableReplicaAutoScaling =
 updateTableReplicaAutoScaling
     :: Text -- ^ 'utrasTableName'
     -> UpdateTableReplicaAutoScaling
-updateTableReplicaAutoScaling pTableName_ =
-  UpdateTableReplicaAutoScaling'
-    { _utrasReplicaUpdates = Nothing
-    , _utrasProvisionedWriteCapacityAutoScalingUpdate = Nothing
-    , _utrasGlobalSecondaryIndexUpdates = Nothing
-    , _utrasTableName = pTableName_
-    }
-
+updateTableReplicaAutoScaling pTableName_
+  = UpdateTableReplicaAutoScaling'{_utrasReplicaUpdates
+                                     = Nothing,
+                                   _utrasProvisionedWriteCapacityAutoScalingUpdate
+                                     = Nothing,
+                                   _utrasGlobalSecondaryIndexUpdates = Nothing,
+                                   _utrasTableName = pTableName_}
 
 -- | Represents the auto scaling settings of replicas of the table that will be modified.
 utrasReplicaUpdates :: Lens' UpdateTableReplicaAutoScaling (Maybe (NonEmpty ReplicaAutoScalingUpdate))
@@ -142,13 +149,15 @@ instance ToQuery UpdateTableReplicaAutoScaling where
         toQuery = const mempty
 
 -- | /See:/ 'updateTableReplicaAutoScalingResponse' smart constructor.
-data UpdateTableReplicaAutoScalingResponse =
-  UpdateTableReplicaAutoScalingResponse'
-    { _utrasrsTableAutoScalingDescription :: !(Maybe TableAutoScalingDescription)
-    , _utrasrsResponseStatus :: !Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data UpdateTableReplicaAutoScalingResponse = UpdateTableReplicaAutoScalingResponse'{_utrasrsTableAutoScalingDescription
+                                                                                    ::
+                                                                                    !(Maybe
+                                                                                        TableAutoScalingDescription),
+                                                                                    _utrasrsResponseStatus
+                                                                                    ::
+                                                                                    !Int}
+                                               deriving (Eq, Read, Show, Data,
+                                                         Typeable, Generic)
 
 -- | Creates a value of 'UpdateTableReplicaAutoScalingResponse' with the minimum fields required to make a request.
 --
@@ -160,12 +169,12 @@ data UpdateTableReplicaAutoScalingResponse =
 updateTableReplicaAutoScalingResponse
     :: Int -- ^ 'utrasrsResponseStatus'
     -> UpdateTableReplicaAutoScalingResponse
-updateTableReplicaAutoScalingResponse pResponseStatus_ =
-  UpdateTableReplicaAutoScalingResponse'
-    { _utrasrsTableAutoScalingDescription = Nothing
-    , _utrasrsResponseStatus = pResponseStatus_
-    }
-
+updateTableReplicaAutoScalingResponse
+  pResponseStatus_
+  = UpdateTableReplicaAutoScalingResponse'{_utrasrsTableAutoScalingDescription
+                                             = Nothing,
+                                           _utrasrsResponseStatus =
+                                             pResponseStatus_}
 
 -- | Returns information about the auto scaling settings of a table with replicas.
 utrasrsTableAutoScalingDescription :: Lens' UpdateTableReplicaAutoScalingResponse (Maybe TableAutoScalingDescription)

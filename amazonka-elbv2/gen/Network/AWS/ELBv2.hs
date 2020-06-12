@@ -11,7 +11,7 @@
 -- Stability   : auto-generated
 -- Portability : non-portable (GHC extensions)
 --
--- __Elastic Load Balancing__
+-- __Elastic Load Balancing__ 
 --
 -- A load balancer distributes incoming traffic across targets, such as your EC2 instances. This enables you to increase the availability of your application. The load balancer also monitors the health of its registered targets and ensures that it routes traffic only to healthy targets. You configure your load balancer to accept incoming traffic by specifying one or more listeners, which are configured with a protocol and port number for connections from clients to the load balancer. You configure a target group with a protocol and port number for connections from the load balancer to the targets, and with health check settings to be used when checking the health status of the targets.
 --
@@ -176,103 +176,103 @@ module Network.AWS.ELBv2
     -- ** DescribeLoadBalancers (Paginated)
     , module Network.AWS.ELBv2.DescribeLoadBalancers
 
-    -- ** DescribeTags
+    -- ** DescribeTags 
     , module Network.AWS.ELBv2.DescribeTags
 
-    -- ** DeleteRule
+    -- ** DeleteRule 
     , module Network.AWS.ELBv2.DeleteRule
 
-    -- ** RemoveTags
+    -- ** RemoveTags 
     , module Network.AWS.ELBv2.RemoveTags
 
-    -- ** DeleteTargetGroup
+    -- ** DeleteTargetGroup 
     , module Network.AWS.ELBv2.DeleteTargetGroup
 
-    -- ** SetSubnets
+    -- ** SetSubnets 
     , module Network.AWS.ELBv2.SetSubnets
 
-    -- ** CreateRule
+    -- ** CreateRule 
     , module Network.AWS.ELBv2.CreateRule
 
-    -- ** DescribeListenerCertificates
+    -- ** DescribeListenerCertificates 
     , module Network.AWS.ELBv2.DescribeListenerCertificates
 
-    -- ** SetSecurityGroups
+    -- ** SetSecurityGroups 
     , module Network.AWS.ELBv2.SetSecurityGroups
 
-    -- ** SetRulePriorities
+    -- ** SetRulePriorities 
     , module Network.AWS.ELBv2.SetRulePriorities
 
     -- ** DescribeTargetGroups (Paginated)
     , module Network.AWS.ELBv2.DescribeTargetGroups
 
-    -- ** DescribeRules
+    -- ** DescribeRules 
     , module Network.AWS.ELBv2.DescribeRules
 
-    -- ** DeleteLoadBalancer
+    -- ** DeleteLoadBalancer 
     , module Network.AWS.ELBv2.DeleteLoadBalancer
 
-    -- ** RegisterTargets
+    -- ** RegisterTargets 
     , module Network.AWS.ELBv2.RegisterTargets
 
-    -- ** ModifyListener
+    -- ** ModifyListener 
     , module Network.AWS.ELBv2.ModifyListener
 
-    -- ** ModifyTargetGroup
+    -- ** ModifyTargetGroup 
     , module Network.AWS.ELBv2.ModifyTargetGroup
 
-    -- ** ModifyTargetGroupAttributes
+    -- ** ModifyTargetGroupAttributes 
     , module Network.AWS.ELBv2.ModifyTargetGroupAttributes
 
-    -- ** DescribeTargetGroupAttributes
+    -- ** DescribeTargetGroupAttributes 
     , module Network.AWS.ELBv2.DescribeTargetGroupAttributes
 
-    -- ** DeleteListener
+    -- ** DeleteListener 
     , module Network.AWS.ELBv2.DeleteListener
 
-    -- ** DescribeSSLPolicies
+    -- ** DescribeSSLPolicies 
     , module Network.AWS.ELBv2.DescribeSSLPolicies
 
-    -- ** DescribeAccountLimits
+    -- ** DescribeAccountLimits 
     , module Network.AWS.ELBv2.DescribeAccountLimits
 
-    -- ** DeregisterTargets
+    -- ** DeregisterTargets 
     , module Network.AWS.ELBv2.DeregisterTargets
 
-    -- ** CreateListener
+    -- ** CreateListener 
     , module Network.AWS.ELBv2.CreateListener
 
-    -- ** CreateTargetGroup
+    -- ** CreateTargetGroup 
     , module Network.AWS.ELBv2.CreateTargetGroup
 
-    -- ** ModifyLoadBalancerAttributes
+    -- ** ModifyLoadBalancerAttributes 
     , module Network.AWS.ELBv2.ModifyLoadBalancerAttributes
 
-    -- ** SetIPAddressType
+    -- ** SetIPAddressType 
     , module Network.AWS.ELBv2.SetIPAddressType
 
-    -- ** AddTags
+    -- ** AddTags 
     , module Network.AWS.ELBv2.AddTags
 
-    -- ** DescribeLoadBalancerAttributes
+    -- ** DescribeLoadBalancerAttributes 
     , module Network.AWS.ELBv2.DescribeLoadBalancerAttributes
 
     -- ** DescribeListeners (Paginated)
     , module Network.AWS.ELBv2.DescribeListeners
 
-    -- ** DescribeTargetHealth
+    -- ** DescribeTargetHealth 
     , module Network.AWS.ELBv2.DescribeTargetHealth
 
-    -- ** CreateLoadBalancer
+    -- ** CreateLoadBalancer 
     , module Network.AWS.ELBv2.CreateLoadBalancer
 
-    -- ** RemoveListenerCertificates
+    -- ** RemoveListenerCertificates 
     , module Network.AWS.ELBv2.RemoveListenerCertificates
 
-    -- ** ModifyRule
+    -- ** ModifyRule 
     , module Network.AWS.ELBv2.ModifyRule
 
-    -- ** AddListenerCertificates
+    -- ** AddListenerCertificates 
     , module Network.AWS.ELBv2.AddListenerCertificates
 
     -- * Types

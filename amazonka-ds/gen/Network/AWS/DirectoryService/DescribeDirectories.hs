@@ -49,7 +49,6 @@ module Network.AWS.DirectoryService.DescribeDirectories
     ) where
 
 import Network.AWS.DirectoryService.Types
-import Network.AWS.DirectoryService.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Pager
 import Network.AWS.Prelude
@@ -61,14 +60,12 @@ import Network.AWS.Response
 --
 --
 -- /See:/ 'describeDirectories' smart constructor.
-data DescribeDirectories =
-  DescribeDirectories'
-    { _ddNextToken    :: !(Maybe Text)
-    , _ddDirectoryIds :: !(Maybe [Text])
-    , _ddLimit        :: !(Maybe Nat)
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data DescribeDirectories = DescribeDirectories'{_ddNextToken
+                                                :: !(Maybe Text),
+                                                _ddDirectoryIds ::
+                                                !(Maybe [Text]),
+                                                _ddLimit :: !(Maybe Nat)}
+                             deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'DescribeDirectories' with the minimum fields required to make a request.
 --
@@ -81,10 +78,9 @@ data DescribeDirectories =
 -- * 'ddLimit' - The maximum number of items to return. If this value is zero, the maximum number of items is specified by the limitations of the operation.
 describeDirectories
     :: DescribeDirectories
-describeDirectories =
-  DescribeDirectories'
-    {_ddNextToken = Nothing, _ddDirectoryIds = Nothing, _ddLimit = Nothing}
-
+describeDirectories
+  = DescribeDirectories'{_ddNextToken = Nothing,
+                         _ddDirectoryIds = Nothing, _ddLimit = Nothing}
 
 -- | The @DescribeDirectoriesResult.NextToken@ value from a previous call to 'DescribeDirectories' . Pass null if this is the first call.
 ddNextToken :: Lens' DescribeDirectories (Maybe Text)
@@ -150,14 +146,17 @@ instance ToQuery DescribeDirectories where
 --
 --
 -- /See:/ 'describeDirectoriesResponse' smart constructor.
-data DescribeDirectoriesResponse =
-  DescribeDirectoriesResponse'
-    { _ddrsDirectoryDescriptions :: !(Maybe [DirectoryDescription])
-    , _ddrsNextToken             :: !(Maybe Text)
-    , _ddrsResponseStatus        :: !Int
-    }
-  deriving (Eq, Show, Data, Typeable, Generic)
-
+data DescribeDirectoriesResponse = DescribeDirectoriesResponse'{_ddrsDirectoryDescriptions
+                                                                ::
+                                                                !(Maybe
+                                                                    [DirectoryDescription]),
+                                                                _ddrsNextToken
+                                                                ::
+                                                                !(Maybe Text),
+                                                                _ddrsResponseStatus
+                                                                :: !Int}
+                                     deriving (Eq, Show, Data, Typeable,
+                                               Generic)
 
 -- | Creates a value of 'DescribeDirectoriesResponse' with the minimum fields required to make a request.
 --
@@ -171,13 +170,11 @@ data DescribeDirectoriesResponse =
 describeDirectoriesResponse
     :: Int -- ^ 'ddrsResponseStatus'
     -> DescribeDirectoriesResponse
-describeDirectoriesResponse pResponseStatus_ =
-  DescribeDirectoriesResponse'
-    { _ddrsDirectoryDescriptions = Nothing
-    , _ddrsNextToken = Nothing
-    , _ddrsResponseStatus = pResponseStatus_
-    }
-
+describeDirectoriesResponse pResponseStatus_
+  = DescribeDirectoriesResponse'{_ddrsDirectoryDescriptions
+                                   = Nothing,
+                                 _ddrsNextToken = Nothing,
+                                 _ddrsResponseStatus = pResponseStatus_}
 
 -- | The list of 'DirectoryDescription' objects that were retrieved. It is possible that this list contains less than the number of items specified in the @Limit@ member of the request. This occurs if there are less than the requested number of items left to retrieve, or if the limitations of the operation have been exceeded.
 ddrsDirectoryDescriptions :: Lens' DescribeDirectoriesResponse [DirectoryDescription]

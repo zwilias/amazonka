@@ -37,7 +37,6 @@ module Network.AWS.Pinpoint.DeleteEventStream
 
 import Network.AWS.Lens
 import Network.AWS.Pinpoint.Types
-import Network.AWS.Pinpoint.Types.Product
 import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
@@ -45,12 +44,9 @@ import Network.AWS.Response
 -- | DeleteEventStream Request
 --
 -- /See:/ 'deleteEventStream' smart constructor.
-newtype DeleteEventStream =
-  DeleteEventStream'
-    { _desApplicationId :: Text
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+newtype DeleteEventStream = DeleteEventStream'{_desApplicationId
+                                               :: Text}
+                              deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'DeleteEventStream' with the minimum fields required to make a request.
 --
@@ -60,9 +56,9 @@ newtype DeleteEventStream =
 deleteEventStream
     :: Text -- ^ 'desApplicationId'
     -> DeleteEventStream
-deleteEventStream pApplicationId_ =
-  DeleteEventStream' {_desApplicationId = pApplicationId_}
-
+deleteEventStream pApplicationId_
+  = DeleteEventStream'{_desApplicationId =
+                         pApplicationId_}
 
 -- | ApplicationId
 desApplicationId :: Lens' DeleteEventStream Text
@@ -97,13 +93,12 @@ instance ToQuery DeleteEventStream where
         toQuery = const mempty
 
 -- | /See:/ 'deleteEventStreamResponse' smart constructor.
-data DeleteEventStreamResponse =
-  DeleteEventStreamResponse'
-    { _desrsResponseStatus :: !Int
-    , _desrsEventStream    :: !EventStream
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data DeleteEventStreamResponse = DeleteEventStreamResponse'{_desrsResponseStatus
+                                                            :: !Int,
+                                                            _desrsEventStream ::
+                                                            !EventStream}
+                                   deriving (Eq, Read, Show, Data, Typeable,
+                                             Generic)
 
 -- | Creates a value of 'DeleteEventStreamResponse' with the minimum fields required to make a request.
 --
@@ -116,10 +111,11 @@ deleteEventStreamResponse
     :: Int -- ^ 'desrsResponseStatus'
     -> EventStream -- ^ 'desrsEventStream'
     -> DeleteEventStreamResponse
-deleteEventStreamResponse pResponseStatus_ pEventStream_ =
-  DeleteEventStreamResponse'
-    {_desrsResponseStatus = pResponseStatus_, _desrsEventStream = pEventStream_}
-
+deleteEventStreamResponse pResponseStatus_
+  pEventStream_
+  = DeleteEventStreamResponse'{_desrsResponseStatus =
+                                 pResponseStatus_,
+                               _desrsEventStream = pEventStream_}
 
 -- | -- | The response status code.
 desrsResponseStatus :: Lens' DeleteEventStreamResponse Int

@@ -41,23 +41,20 @@ module Network.AWS.Greengrass.CreateDeployment
     ) where
 
 import Network.AWS.Greengrass.Types
-import Network.AWS.Greengrass.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 
 -- | /See:/ 'createDeployment' smart constructor.
-data CreateDeployment =
-  CreateDeployment'
-    { _cdDeploymentId    :: !(Maybe Text)
-    , _cdAmznClientToken :: !(Maybe Text)
-    , _cdDeploymentType  :: !(Maybe DeploymentType)
-    , _cdGroupVersionId  :: !(Maybe Text)
-    , _cdGroupId         :: !Text
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data CreateDeployment = CreateDeployment'{_cdDeploymentId
+                                          :: !(Maybe Text),
+                                          _cdAmznClientToken :: !(Maybe Text),
+                                          _cdDeploymentType ::
+                                          !(Maybe DeploymentType),
+                                          _cdGroupVersionId :: !(Maybe Text),
+                                          _cdGroupId :: !Text}
+                          deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'CreateDeployment' with the minimum fields required to make a request.
 --
@@ -75,15 +72,11 @@ data CreateDeployment =
 createDeployment
     :: Text -- ^ 'cdGroupId'
     -> CreateDeployment
-createDeployment pGroupId_ =
-  CreateDeployment'
-    { _cdDeploymentId = Nothing
-    , _cdAmznClientToken = Nothing
-    , _cdDeploymentType = Nothing
-    , _cdGroupVersionId = Nothing
-    , _cdGroupId = pGroupId_
-    }
-
+createDeployment pGroupId_
+  = CreateDeployment'{_cdDeploymentId = Nothing,
+                      _cdAmznClientToken = Nothing,
+                      _cdDeploymentType = Nothing,
+                      _cdGroupVersionId = Nothing, _cdGroupId = pGroupId_}
 
 -- | The ID of the deployment if you wish to redeploy a previous deployment.
 cdDeploymentId :: Lens' CreateDeployment (Maybe Text)
@@ -144,14 +137,14 @@ instance ToQuery CreateDeployment where
         toQuery = const mempty
 
 -- | /See:/ 'createDeploymentResponse' smart constructor.
-data CreateDeploymentResponse =
-  CreateDeploymentResponse'
-    { _cdrsDeploymentId   :: !(Maybe Text)
-    , _cdrsDeploymentARN  :: !(Maybe Text)
-    , _cdrsResponseStatus :: !Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data CreateDeploymentResponse = CreateDeploymentResponse'{_cdrsDeploymentId
+                                                          :: !(Maybe Text),
+                                                          _cdrsDeploymentARN ::
+                                                          !(Maybe Text),
+                                                          _cdrsResponseStatus ::
+                                                          !Int}
+                                  deriving (Eq, Read, Show, Data, Typeable,
+                                            Generic)
 
 -- | Creates a value of 'CreateDeploymentResponse' with the minimum fields required to make a request.
 --
@@ -165,13 +158,11 @@ data CreateDeploymentResponse =
 createDeploymentResponse
     :: Int -- ^ 'cdrsResponseStatus'
     -> CreateDeploymentResponse
-createDeploymentResponse pResponseStatus_ =
-  CreateDeploymentResponse'
-    { _cdrsDeploymentId = Nothing
-    , _cdrsDeploymentARN = Nothing
-    , _cdrsResponseStatus = pResponseStatus_
-    }
-
+createDeploymentResponse pResponseStatus_
+  = CreateDeploymentResponse'{_cdrsDeploymentId =
+                                Nothing,
+                              _cdrsDeploymentARN = Nothing,
+                              _cdrsResponseStatus = pResponseStatus_}
 
 -- | The ID of the deployment.
 cdrsDeploymentId :: Lens' CreateDeploymentResponse (Maybe Text)

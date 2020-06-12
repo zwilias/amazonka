@@ -50,23 +50,21 @@ import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 import Network.AWS.WorkDocs.Types
-import Network.AWS.WorkDocs.Types.Product
 
 -- | /See:/ 'updateUser' smart constructor.
-data UpdateUser =
-  UpdateUser'
-    { _uuGivenName                :: !(Maybe Text)
-    , _uuGrantPoweruserPrivileges :: !(Maybe BooleanEnumType)
-    , _uuLocale                   :: !(Maybe LocaleType)
-    , _uuAuthenticationToken      :: !(Maybe (Sensitive Text))
-    , _uuStorageRule              :: !(Maybe StorageRuleType)
-    , _uuType                     :: !(Maybe UserType)
-    , _uuSurname                  :: !(Maybe Text)
-    , _uuTimeZoneId               :: !(Maybe Text)
-    , _uuUserId                   :: !Text
-    }
-  deriving (Eq, Show, Data, Typeable, Generic)
-
+data UpdateUser = UpdateUser'{_uuGivenName ::
+                              !(Maybe Text),
+                              _uuGrantPoweruserPrivileges ::
+                              !(Maybe BooleanEnumType),
+                              _uuLocale :: !(Maybe LocaleType),
+                              _uuAuthenticationToken ::
+                              !(Maybe (Sensitive Text)),
+                              _uuStorageRule :: !(Maybe StorageRuleType),
+                              _uuType :: !(Maybe UserType),
+                              _uuSurname :: !(Maybe Text),
+                              _uuTimeZoneId :: !(Maybe Text),
+                              _uuUserId :: !Text}
+                    deriving (Eq, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'UpdateUser' with the minimum fields required to make a request.
 --
@@ -92,19 +90,14 @@ data UpdateUser =
 updateUser
     :: Text -- ^ 'uuUserId'
     -> UpdateUser
-updateUser pUserId_ =
-  UpdateUser'
-    { _uuGivenName = Nothing
-    , _uuGrantPoweruserPrivileges = Nothing
-    , _uuLocale = Nothing
-    , _uuAuthenticationToken = Nothing
-    , _uuStorageRule = Nothing
-    , _uuType = Nothing
-    , _uuSurname = Nothing
-    , _uuTimeZoneId = Nothing
-    , _uuUserId = pUserId_
-    }
-
+updateUser pUserId_
+  = UpdateUser'{_uuGivenName = Nothing,
+                _uuGrantPoweruserPrivileges = Nothing,
+                _uuLocale = Nothing,
+                _uuAuthenticationToken = Nothing,
+                _uuStorageRule = Nothing, _uuType = Nothing,
+                _uuSurname = Nothing, _uuTimeZoneId = Nothing,
+                _uuUserId = pUserId_}
 
 -- | The given name of the user.
 uuGivenName :: Lens' UpdateUser (Maybe Text)
@@ -183,13 +176,10 @@ instance ToQuery UpdateUser where
         toQuery = const mempty
 
 -- | /See:/ 'updateUserResponse' smart constructor.
-data UpdateUserResponse =
-  UpdateUserResponse'
-    { _uursUser           :: !(Maybe User)
-    , _uursResponseStatus :: !Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data UpdateUserResponse = UpdateUserResponse'{_uursUser
+                                              :: !(Maybe User),
+                                              _uursResponseStatus :: !Int}
+                            deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'UpdateUserResponse' with the minimum fields required to make a request.
 --
@@ -201,10 +191,9 @@ data UpdateUserResponse =
 updateUserResponse
     :: Int -- ^ 'uursResponseStatus'
     -> UpdateUserResponse
-updateUserResponse pResponseStatus_ =
-  UpdateUserResponse'
-    {_uursUser = Nothing, _uursResponseStatus = pResponseStatus_}
-
+updateUserResponse pResponseStatus_
+  = UpdateUserResponse'{_uursUser = Nothing,
+                        _uursResponseStatus = pResponseStatus_}
 
 -- | The user information.
 uursUser :: Lens' UpdateUserResponse (Maybe User)

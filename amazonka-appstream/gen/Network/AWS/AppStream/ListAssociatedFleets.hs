@@ -42,7 +42,6 @@ module Network.AWS.AppStream.ListAssociatedFleets
     ) where
 
 import Network.AWS.AppStream.Types
-import Network.AWS.AppStream.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Pager
 import Network.AWS.Prelude
@@ -50,13 +49,10 @@ import Network.AWS.Request
 import Network.AWS.Response
 
 -- | /See:/ 'listAssociatedFleets' smart constructor.
-data ListAssociatedFleets =
-  ListAssociatedFleets'
-    { _lafNextToken :: !(Maybe Text)
-    , _lafStackName :: !Text
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data ListAssociatedFleets = ListAssociatedFleets'{_lafNextToken
+                                                  :: !(Maybe Text),
+                                                  _lafStackName :: !Text}
+                              deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'ListAssociatedFleets' with the minimum fields required to make a request.
 --
@@ -68,9 +64,9 @@ data ListAssociatedFleets =
 listAssociatedFleets
     :: Text -- ^ 'lafStackName'
     -> ListAssociatedFleets
-listAssociatedFleets pStackName_ =
-  ListAssociatedFleets' {_lafNextToken = Nothing, _lafStackName = pStackName_}
-
+listAssociatedFleets pStackName_
+  = ListAssociatedFleets'{_lafNextToken = Nothing,
+                          _lafStackName = pStackName_}
 
 -- | The pagination token to use to retrieve the next page of results for this operation. If this value is null, it retrieves the first page.
 lafNextToken :: Lens' ListAssociatedFleets (Maybe Text)
@@ -126,14 +122,16 @@ instance ToQuery ListAssociatedFleets where
         toQuery = const mempty
 
 -- | /See:/ 'listAssociatedFleetsResponse' smart constructor.
-data ListAssociatedFleetsResponse =
-  ListAssociatedFleetsResponse'
-    { _lafrsNextToken      :: !(Maybe Text)
-    , _lafrsNames          :: !(Maybe [Text])
-    , _lafrsResponseStatus :: !Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data ListAssociatedFleetsResponse = ListAssociatedFleetsResponse'{_lafrsNextToken
+                                                                  ::
+                                                                  !(Maybe Text),
+                                                                  _lafrsNames ::
+                                                                  !(Maybe
+                                                                      [Text]),
+                                                                  _lafrsResponseStatus
+                                                                  :: !Int}
+                                      deriving (Eq, Read, Show, Data, Typeable,
+                                                Generic)
 
 -- | Creates a value of 'ListAssociatedFleetsResponse' with the minimum fields required to make a request.
 --
@@ -147,13 +145,11 @@ data ListAssociatedFleetsResponse =
 listAssociatedFleetsResponse
     :: Int -- ^ 'lafrsResponseStatus'
     -> ListAssociatedFleetsResponse
-listAssociatedFleetsResponse pResponseStatus_ =
-  ListAssociatedFleetsResponse'
-    { _lafrsNextToken = Nothing
-    , _lafrsNames = Nothing
-    , _lafrsResponseStatus = pResponseStatus_
-    }
-
+listAssociatedFleetsResponse pResponseStatus_
+  = ListAssociatedFleetsResponse'{_lafrsNextToken =
+                                    Nothing,
+                                  _lafrsNames = Nothing,
+                                  _lafrsResponseStatus = pResponseStatus_}
 
 -- | The pagination token to use to retrieve the next page of results for this operation. If there are no more pages, this value is null.
 lafrsNextToken :: Lens' ListAssociatedFleetsResponse (Maybe Text)

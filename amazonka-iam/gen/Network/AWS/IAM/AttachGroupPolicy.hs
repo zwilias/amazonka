@@ -40,20 +40,16 @@ module Network.AWS.IAM.AttachGroupPolicy
     ) where
 
 import Network.AWS.IAM.Types
-import Network.AWS.IAM.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 
 -- | /See:/ 'attachGroupPolicy' smart constructor.
-data AttachGroupPolicy =
-  AttachGroupPolicy'
-    { _agpGroupName :: !Text
-    , _agpPolicyARN :: !Text
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data AttachGroupPolicy = AttachGroupPolicy'{_agpGroupName
+                                            :: !Text,
+                                            _agpPolicyARN :: !Text}
+                           deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'AttachGroupPolicy' with the minimum fields required to make a request.
 --
@@ -66,9 +62,9 @@ attachGroupPolicy
     :: Text -- ^ 'agpGroupName'
     -> Text -- ^ 'agpPolicyARN'
     -> AttachGroupPolicy
-attachGroupPolicy pGroupName_ pPolicyARN_ =
-  AttachGroupPolicy' {_agpGroupName = pGroupName_, _agpPolicyARN = pPolicyARN_}
-
+attachGroupPolicy pGroupName_ pPolicyARN_
+  = AttachGroupPolicy'{_agpGroupName = pGroupName_,
+                       _agpPolicyARN = pPolicyARN_}
 
 -- | The name (friendly name, not ARN) of the group to attach the policy to. This parameter allows (per its <http://wikipedia.org/wiki/regex regex pattern> ) a string of characters consisting of upper and lowercase alphanumeric characters with no spaces. You can also include any of the following characters: _+=,.@-
 agpGroupName :: Lens' AttachGroupPolicy Text
@@ -102,16 +98,15 @@ instance ToQuery AttachGroupPolicy where
                "PolicyArn" =: _agpPolicyARN]
 
 -- | /See:/ 'attachGroupPolicyResponse' smart constructor.
-data AttachGroupPolicyResponse =
-  AttachGroupPolicyResponse'
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data AttachGroupPolicyResponse = AttachGroupPolicyResponse'
+                                   deriving (Eq, Read, Show, Data, Typeable,
+                                             Generic)
 
 -- | Creates a value of 'AttachGroupPolicyResponse' with the minimum fields required to make a request.
 --
 attachGroupPolicyResponse
     :: AttachGroupPolicyResponse
-attachGroupPolicyResponse = AttachGroupPolicyResponse'
-
+attachGroupPolicyResponse
+  = AttachGroupPolicyResponse'
 
 instance NFData AttachGroupPolicyResponse where

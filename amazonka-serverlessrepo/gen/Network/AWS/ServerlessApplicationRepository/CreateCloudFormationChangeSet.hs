@@ -48,24 +48,30 @@ import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 import Network.AWS.ServerlessApplicationRepository.Types
-import Network.AWS.ServerlessApplicationRepository.Types.Product
 
 -- | /See:/ 'createCloudFormationChangeSet' smart constructor.
-data CreateCloudFormationChangeSet =
-  CreateCloudFormationChangeSet'
-    { _ccfcsSemanticVersion    :: !(Maybe Text)
-    , _ccfcsParameterOverrides :: !(Maybe [ParameterValue])
-    , _ccfcsStackName          :: !(Maybe Text)
-    , _ccfcsApplicationId      :: !Text
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data CreateCloudFormationChangeSet = CreateCloudFormationChangeSet'{_ccfcsSemanticVersion
+                                                                    ::
+                                                                    !(Maybe
+                                                                        Text),
+                                                                    _ccfcsParameterOverrides
+                                                                    ::
+                                                                    !(Maybe
+                                                                        [ParameterValue]),
+                                                                    _ccfcsStackName
+                                                                    ::
+                                                                    !(Maybe
+                                                                        Text),
+                                                                    _ccfcsApplicationId
+                                                                    :: !Text}
+                                       deriving (Eq, Read, Show, Data, Typeable,
+                                                 Generic)
 
 -- | Creates a value of 'CreateCloudFormationChangeSet' with the minimum fields required to make a request.
 --
 -- Use one of the following lenses to modify other fields as desired:
 --
--- * 'ccfcsSemanticVersion' - The semantic version of the application: <https://semver.org/ https://semver.org/>
+-- * 'ccfcsSemanticVersion' - The semantic version of the application: <https://semver.org/ https://semver.org/> 
 --
 -- * 'ccfcsParameterOverrides' - A list of parameter values for the parameters of the application.
 --
@@ -75,16 +81,14 @@ data CreateCloudFormationChangeSet =
 createCloudFormationChangeSet
     :: Text -- ^ 'ccfcsApplicationId'
     -> CreateCloudFormationChangeSet
-createCloudFormationChangeSet pApplicationId_ =
-  CreateCloudFormationChangeSet'
-    { _ccfcsSemanticVersion = Nothing
-    , _ccfcsParameterOverrides = Nothing
-    , _ccfcsStackName = Nothing
-    , _ccfcsApplicationId = pApplicationId_
-    }
+createCloudFormationChangeSet pApplicationId_
+  = CreateCloudFormationChangeSet'{_ccfcsSemanticVersion
+                                     = Nothing,
+                                   _ccfcsParameterOverrides = Nothing,
+                                   _ccfcsStackName = Nothing,
+                                   _ccfcsApplicationId = pApplicationId_}
 
-
--- | The semantic version of the application: <https://semver.org/ https://semver.org/>
+-- | The semantic version of the application: <https://semver.org/ https://semver.org/> 
 ccfcsSemanticVersion :: Lens' CreateCloudFormationChangeSet (Maybe Text)
 ccfcsSemanticVersion = lens _ccfcsSemanticVersion (\ s a -> s{_ccfcsSemanticVersion = a})
 
@@ -145,22 +149,33 @@ instance ToQuery CreateCloudFormationChangeSet where
         toQuery = const mempty
 
 -- | /See:/ 'createCloudFormationChangeSetResponse' smart constructor.
-data CreateCloudFormationChangeSetResponse =
-  CreateCloudFormationChangeSetResponse'
-    { _ccfcsrsSemanticVersion :: !(Maybe Text)
-    , _ccfcsrsChangeSetId     :: !(Maybe Text)
-    , _ccfcsrsApplicationId   :: !(Maybe Text)
-    , _ccfcsrsStackId         :: !(Maybe Text)
-    , _ccfcsrsResponseStatus  :: !Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data CreateCloudFormationChangeSetResponse = CreateCloudFormationChangeSetResponse'{_ccfcsrsSemanticVersion
+                                                                                    ::
+                                                                                    !(Maybe
+                                                                                        Text),
+                                                                                    _ccfcsrsChangeSetId
+                                                                                    ::
+                                                                                    !(Maybe
+                                                                                        Text),
+                                                                                    _ccfcsrsApplicationId
+                                                                                    ::
+                                                                                    !(Maybe
+                                                                                        Text),
+                                                                                    _ccfcsrsStackId
+                                                                                    ::
+                                                                                    !(Maybe
+                                                                                        Text),
+                                                                                    _ccfcsrsResponseStatus
+                                                                                    ::
+                                                                                    !Int}
+                                               deriving (Eq, Read, Show, Data,
+                                                         Typeable, Generic)
 
 -- | Creates a value of 'CreateCloudFormationChangeSetResponse' with the minimum fields required to make a request.
 --
 -- Use one of the following lenses to modify other fields as desired:
 --
--- * 'ccfcsrsSemanticVersion' - The semantic version of the application: <https://semver.org/ https://semver.org/>
+-- * 'ccfcsrsSemanticVersion' - The semantic version of the application: <https://semver.org/ https://semver.org/> 
 --
 -- * 'ccfcsrsChangeSetId' - The ARN of the change set. Length Constraints: Minimum length of 1. Pattern: Amazon Resource Name (ARN):[-a-zA-Z0-9:/]*
 --
@@ -172,17 +187,17 @@ data CreateCloudFormationChangeSetResponse =
 createCloudFormationChangeSetResponse
     :: Int -- ^ 'ccfcsrsResponseStatus'
     -> CreateCloudFormationChangeSetResponse
-createCloudFormationChangeSetResponse pResponseStatus_ =
-  CreateCloudFormationChangeSetResponse'
-    { _ccfcsrsSemanticVersion = Nothing
-    , _ccfcsrsChangeSetId = Nothing
-    , _ccfcsrsApplicationId = Nothing
-    , _ccfcsrsStackId = Nothing
-    , _ccfcsrsResponseStatus = pResponseStatus_
-    }
+createCloudFormationChangeSetResponse
+  pResponseStatus_
+  = CreateCloudFormationChangeSetResponse'{_ccfcsrsSemanticVersion
+                                             = Nothing,
+                                           _ccfcsrsChangeSetId = Nothing,
+                                           _ccfcsrsApplicationId = Nothing,
+                                           _ccfcsrsStackId = Nothing,
+                                           _ccfcsrsResponseStatus =
+                                             pResponseStatus_}
 
-
--- | The semantic version of the application: <https://semver.org/ https://semver.org/>
+-- | The semantic version of the application: <https://semver.org/ https://semver.org/> 
 ccfcsrsSemanticVersion :: Lens' CreateCloudFormationChangeSetResponse (Maybe Text)
 ccfcsrsSemanticVersion = lens _ccfcsrsSemanticVersion (\ s a -> s{_ccfcsrsSemanticVersion = a})
 

@@ -49,22 +49,19 @@ module Network.AWS.OpsWorks.DescribeEcsClusters
 
 import Network.AWS.Lens
 import Network.AWS.OpsWorks.Types
-import Network.AWS.OpsWorks.Types.Product
 import Network.AWS.Pager
 import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 
 -- | /See:/ 'describeEcsClusters' smart constructor.
-data DescribeEcsClusters =
-  DescribeEcsClusters'
-    { _decNextToken      :: !(Maybe Text)
-    , _decStackId        :: !(Maybe Text)
-    , _decMaxResults     :: !(Maybe Int)
-    , _decEcsClusterARNs :: !(Maybe [Text])
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data DescribeEcsClusters = DescribeEcsClusters'{_decNextToken
+                                                :: !(Maybe Text),
+                                                _decStackId :: !(Maybe Text),
+                                                _decMaxResults :: !(Maybe Int),
+                                                _decEcsClusterARNs ::
+                                                !(Maybe [Text])}
+                             deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'DescribeEcsClusters' with the minimum fields required to make a request.
 --
@@ -79,14 +76,10 @@ data DescribeEcsClusters =
 -- * 'decEcsClusterARNs' - A list of ARNs, one for each cluster to be described.
 describeEcsClusters
     :: DescribeEcsClusters
-describeEcsClusters =
-  DescribeEcsClusters'
-    { _decNextToken = Nothing
-    , _decStackId = Nothing
-    , _decMaxResults = Nothing
-    , _decEcsClusterARNs = Nothing
-    }
-
+describeEcsClusters
+  = DescribeEcsClusters'{_decNextToken = Nothing,
+                         _decStackId = Nothing, _decMaxResults = Nothing,
+                         _decEcsClusterARNs = Nothing}
 
 -- | If the previous paginated request did not return all of the remaining results, the response object's@NextToken@ parameter value is set to a token. To retrieve the next set of results, call @DescribeEcsClusters@ again and assign that token to the request object's @NextToken@ parameter. If there are no remaining results, the previous response object's @NextToken@ parameter is set to @null@ .
 decNextToken :: Lens' DescribeEcsClusters (Maybe Text)
@@ -157,14 +150,17 @@ instance ToQuery DescribeEcsClusters where
 --
 --
 -- /See:/ 'describeEcsClustersResponse' smart constructor.
-data DescribeEcsClustersResponse =
-  DescribeEcsClustersResponse'
-    { _decrsNextToken      :: !(Maybe Text)
-    , _decrsEcsClusters    :: !(Maybe [EcsCluster])
-    , _decrsResponseStatus :: !Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data DescribeEcsClustersResponse = DescribeEcsClustersResponse'{_decrsNextToken
+                                                                ::
+                                                                !(Maybe Text),
+                                                                _decrsEcsClusters
+                                                                ::
+                                                                !(Maybe
+                                                                    [EcsCluster]),
+                                                                _decrsResponseStatus
+                                                                :: !Int}
+                                     deriving (Eq, Read, Show, Data, Typeable,
+                                               Generic)
 
 -- | Creates a value of 'DescribeEcsClustersResponse' with the minimum fields required to make a request.
 --
@@ -178,13 +174,11 @@ data DescribeEcsClustersResponse =
 describeEcsClustersResponse
     :: Int -- ^ 'decrsResponseStatus'
     -> DescribeEcsClustersResponse
-describeEcsClustersResponse pResponseStatus_ =
-  DescribeEcsClustersResponse'
-    { _decrsNextToken = Nothing
-    , _decrsEcsClusters = Nothing
-    , _decrsResponseStatus = pResponseStatus_
-    }
-
+describeEcsClustersResponse pResponseStatus_
+  = DescribeEcsClustersResponse'{_decrsNextToken =
+                                   Nothing,
+                                 _decrsEcsClusters = Nothing,
+                                 _decrsResponseStatus = pResponseStatus_}
 
 -- | If a paginated request does not return all of the remaining results, this parameter is set to a token that you can assign to the request object's @NextToken@ parameter to retrieve the next set of results. If the previous paginated request returned all of the remaining results, this parameter is set to @null@ .
 decrsNextToken :: Lens' DescribeEcsClustersResponse (Maybe Text)

@@ -47,22 +47,24 @@ import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 import Network.AWS.Route53Domains.Types
-import Network.AWS.Route53Domains.Types.Product
 
 -- | The UpdateDomainContact request includes the following elements.
 --
 --
 --
 -- /See:/ 'updateDomainContact' smart constructor.
-data UpdateDomainContact =
-  UpdateDomainContact'
-    { _udcRegistrantContact :: !(Maybe (Sensitive ContactDetail))
-    , _udcAdminContact      :: !(Maybe (Sensitive ContactDetail))
-    , _udcTechContact       :: !(Maybe (Sensitive ContactDetail))
-    , _udcDomainName        :: !Text
-    }
-  deriving (Eq, Show, Data, Typeable, Generic)
-
+data UpdateDomainContact = UpdateDomainContact'{_udcRegistrantContact
+                                                ::
+                                                !(Maybe
+                                                    (Sensitive ContactDetail)),
+                                                _udcAdminContact ::
+                                                !(Maybe
+                                                    (Sensitive ContactDetail)),
+                                                _udcTechContact ::
+                                                !(Maybe
+                                                    (Sensitive ContactDetail)),
+                                                _udcDomainName :: !Text}
+                             deriving (Eq, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'UpdateDomainContact' with the minimum fields required to make a request.
 --
@@ -78,14 +80,12 @@ data UpdateDomainContact =
 updateDomainContact
     :: Text -- ^ 'udcDomainName'
     -> UpdateDomainContact
-updateDomainContact pDomainName_ =
-  UpdateDomainContact'
-    { _udcRegistrantContact = Nothing
-    , _udcAdminContact = Nothing
-    , _udcTechContact = Nothing
-    , _udcDomainName = pDomainName_
-    }
-
+updateDomainContact pDomainName_
+  = UpdateDomainContact'{_udcRegistrantContact =
+                           Nothing,
+                         _udcAdminContact = Nothing,
+                         _udcTechContact = Nothing,
+                         _udcDomainName = pDomainName_}
 
 -- | Provides detailed contact information.
 udcRegistrantContact :: Lens' UpdateDomainContact (Maybe ContactDetail)
@@ -147,13 +147,12 @@ instance ToQuery UpdateDomainContact where
 --
 --
 -- /See:/ 'updateDomainContactResponse' smart constructor.
-data UpdateDomainContactResponse =
-  UpdateDomainContactResponse'
-    { _udcrsResponseStatus :: !Int
-    , _udcrsOperationId    :: !Text
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data UpdateDomainContactResponse = UpdateDomainContactResponse'{_udcrsResponseStatus
+                                                                :: !Int,
+                                                                _udcrsOperationId
+                                                                :: !Text}
+                                     deriving (Eq, Read, Show, Data, Typeable,
+                                               Generic)
 
 -- | Creates a value of 'UpdateDomainContactResponse' with the minimum fields required to make a request.
 --
@@ -166,10 +165,11 @@ updateDomainContactResponse
     :: Int -- ^ 'udcrsResponseStatus'
     -> Text -- ^ 'udcrsOperationId'
     -> UpdateDomainContactResponse
-updateDomainContactResponse pResponseStatus_ pOperationId_ =
-  UpdateDomainContactResponse'
-    {_udcrsResponseStatus = pResponseStatus_, _udcrsOperationId = pOperationId_}
-
+updateDomainContactResponse pResponseStatus_
+  pOperationId_
+  = UpdateDomainContactResponse'{_udcrsResponseStatus =
+                                   pResponseStatus_,
+                                 _udcrsOperationId = pOperationId_}
 
 -- | -- | The response status code.
 udcrsResponseStatus :: Lens' UpdateDomainContactResponse Int

@@ -39,20 +39,16 @@ module Network.AWS.Pinpoint.GetExportJobs
 
 import Network.AWS.Lens
 import Network.AWS.Pinpoint.Types
-import Network.AWS.Pinpoint.Types.Product
 import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 
 -- | /See:/ 'getExportJobs' smart constructor.
-data GetExportJobs =
-  GetExportJobs'
-    { _gejsToken         :: !(Maybe Text)
-    , _gejsPageSize      :: !(Maybe Text)
-    , _gejsApplicationId :: !Text
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data GetExportJobs = GetExportJobs'{_gejsToken ::
+                                    !(Maybe Text),
+                                    _gejsPageSize :: !(Maybe Text),
+                                    _gejsApplicationId :: !Text}
+                       deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'GetExportJobs' with the minimum fields required to make a request.
 --
@@ -66,13 +62,10 @@ data GetExportJobs =
 getExportJobs
     :: Text -- ^ 'gejsApplicationId'
     -> GetExportJobs
-getExportJobs pApplicationId_ =
-  GetExportJobs'
-    { _gejsToken = Nothing
-    , _gejsPageSize = Nothing
-    , _gejsApplicationId = pApplicationId_
-    }
-
+getExportJobs pApplicationId_
+  = GetExportJobs'{_gejsToken = Nothing,
+                   _gejsPageSize = Nothing,
+                   _gejsApplicationId = pApplicationId_}
 
 -- | The NextToken string returned on a previous page that you use to get the next page of results in a paginated response.
 gejsToken :: Lens' GetExportJobs (Maybe Text)
@@ -118,13 +111,12 @@ instance ToQuery GetExportJobs where
               ["token" =: _gejsToken, "page-size" =: _gejsPageSize]
 
 -- | /See:/ 'getExportJobsResponse' smart constructor.
-data GetExportJobsResponse =
-  GetExportJobsResponse'
-    { _gejrsResponseStatus     :: !Int
-    , _gejrsExportJobsResponse :: !ExportJobsResponse
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data GetExportJobsResponse = GetExportJobsResponse'{_gejrsResponseStatus
+                                                    :: !Int,
+                                                    _gejrsExportJobsResponse ::
+                                                    !ExportJobsResponse}
+                               deriving (Eq, Read, Show, Data, Typeable,
+                                         Generic)
 
 -- | Creates a value of 'GetExportJobsResponse' with the minimum fields required to make a request.
 --
@@ -137,12 +129,11 @@ getExportJobsResponse
     :: Int -- ^ 'gejrsResponseStatus'
     -> ExportJobsResponse -- ^ 'gejrsExportJobsResponse'
     -> GetExportJobsResponse
-getExportJobsResponse pResponseStatus_ pExportJobsResponse_ =
-  GetExportJobsResponse'
-    { _gejrsResponseStatus = pResponseStatus_
-    , _gejrsExportJobsResponse = pExportJobsResponse_
-    }
-
+getExportJobsResponse pResponseStatus_
+  pExportJobsResponse_
+  = GetExportJobsResponse'{_gejrsResponseStatus =
+                             pResponseStatus_,
+                           _gejrsExportJobsResponse = pExportJobsResponse_}
 
 -- | -- | The response status code.
 gejrsResponseStatus :: Lens' GetExportJobsResponse Int

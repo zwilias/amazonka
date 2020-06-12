@@ -40,20 +40,17 @@ module Network.AWS.DeviceFarm.ListTestGridProjects
     ) where
 
 import Network.AWS.DeviceFarm.Types
-import Network.AWS.DeviceFarm.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 
 -- | /See:/ 'listTestGridProjects' smart constructor.
-data ListTestGridProjects =
-  ListTestGridProjects'
-    { _ltgpMaxResult :: !(Maybe Nat)
-    , _ltgpNextToken :: !(Maybe Text)
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data ListTestGridProjects = ListTestGridProjects'{_ltgpMaxResult
+                                                  :: !(Maybe Nat),
+                                                  _ltgpNextToken ::
+                                                  !(Maybe Text)}
+                              deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'ListTestGridProjects' with the minimum fields required to make a request.
 --
@@ -61,18 +58,18 @@ data ListTestGridProjects =
 --
 -- * 'ltgpMaxResult' - Return no more than this number of results.
 --
--- * 'ltgpNextToken' - From a response, used to continue a paginated listing.
+-- * 'ltgpNextToken' - From a response, used to continue a paginated listing. 
 listTestGridProjects
     :: ListTestGridProjects
-listTestGridProjects =
-  ListTestGridProjects' {_ltgpMaxResult = Nothing, _ltgpNextToken = Nothing}
-
+listTestGridProjects
+  = ListTestGridProjects'{_ltgpMaxResult = Nothing,
+                          _ltgpNextToken = Nothing}
 
 -- | Return no more than this number of results.
 ltgpMaxResult :: Lens' ListTestGridProjects (Maybe Natural)
 ltgpMaxResult = lens _ltgpMaxResult (\ s a -> s{_ltgpMaxResult = a}) . mapping _Nat
 
--- | From a response, used to continue a paginated listing.
+-- | From a response, used to continue a paginated listing. 
 ltgpNextToken :: Lens' ListTestGridProjects (Maybe Text)
 ltgpNextToken = lens _ltgpNextToken (\ s a -> s{_ltgpNextToken = a})
 
@@ -116,14 +113,17 @@ instance ToQuery ListTestGridProjects where
         toQuery = const mempty
 
 -- | /See:/ 'listTestGridProjectsResponse' smart constructor.
-data ListTestGridProjectsResponse =
-  ListTestGridProjectsResponse'
-    { _ltgprsTestGridProjects :: !(Maybe [TestGridProject])
-    , _ltgprsNextToken        :: !(Maybe Text)
-    , _ltgprsResponseStatus   :: !Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data ListTestGridProjectsResponse = ListTestGridProjectsResponse'{_ltgprsTestGridProjects
+                                                                  ::
+                                                                  !(Maybe
+                                                                      [TestGridProject]),
+                                                                  _ltgprsNextToken
+                                                                  ::
+                                                                  !(Maybe Text),
+                                                                  _ltgprsResponseStatus
+                                                                  :: !Int}
+                                      deriving (Eq, Read, Show, Data, Typeable,
+                                                Generic)
 
 -- | Creates a value of 'ListTestGridProjectsResponse' with the minimum fields required to make a request.
 --
@@ -137,13 +137,11 @@ data ListTestGridProjectsResponse =
 listTestGridProjectsResponse
     :: Int -- ^ 'ltgprsResponseStatus'
     -> ListTestGridProjectsResponse
-listTestGridProjectsResponse pResponseStatus_ =
-  ListTestGridProjectsResponse'
-    { _ltgprsTestGridProjects = Nothing
-    , _ltgprsNextToken = Nothing
-    , _ltgprsResponseStatus = pResponseStatus_
-    }
-
+listTestGridProjectsResponse pResponseStatus_
+  = ListTestGridProjectsResponse'{_ltgprsTestGridProjects
+                                    = Nothing,
+                                  _ltgprsNextToken = Nothing,
+                                  _ltgprsResponseStatus = pResponseStatus_}
 
 -- | The list of TestGridProjects, based on a 'ListTestGridProjectsRequest' .
 ltgprsTestGridProjects :: Lens' ListTestGridProjectsResponse [TestGridProject]

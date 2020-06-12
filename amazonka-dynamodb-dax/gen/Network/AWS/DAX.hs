@@ -115,58 +115,58 @@ module Network.AWS.DAX
     -- ** DescribeEvents (Paginated)
     , module Network.AWS.DAX.DescribeEvents
 
-    -- ** IncreaseReplicationFactor
+    -- ** IncreaseReplicationFactor 
     , module Network.AWS.DAX.IncreaseReplicationFactor
 
-    -- ** CreateSubnetGroup
+    -- ** CreateSubnetGroup 
     , module Network.AWS.DAX.CreateSubnetGroup
 
-    -- ** DeleteCluster
+    -- ** DeleteCluster 
     , module Network.AWS.DAX.DeleteCluster
 
-    -- ** UpdateCluster
+    -- ** UpdateCluster 
     , module Network.AWS.DAX.UpdateCluster
 
-    -- ** CreateCluster
+    -- ** CreateCluster 
     , module Network.AWS.DAX.CreateCluster
 
     -- ** DescribeDefaultParameters (Paginated)
     , module Network.AWS.DAX.DescribeDefaultParameters
 
-    -- ** DeleteParameterGroup
+    -- ** DeleteParameterGroup 
     , module Network.AWS.DAX.DeleteParameterGroup
 
-    -- ** UpdateParameterGroup
+    -- ** UpdateParameterGroup 
     , module Network.AWS.DAX.UpdateParameterGroup
 
     -- ** DescribeSubnetGroups (Paginated)
     , module Network.AWS.DAX.DescribeSubnetGroups
 
-    -- ** CreateParameterGroup
+    -- ** CreateParameterGroup 
     , module Network.AWS.DAX.CreateParameterGroup
 
-    -- ** UpdateSubnetGroup
+    -- ** UpdateSubnetGroup 
     , module Network.AWS.DAX.UpdateSubnetGroup
 
-    -- ** DeleteSubnetGroup
+    -- ** DeleteSubnetGroup 
     , module Network.AWS.DAX.DeleteSubnetGroup
 
     -- ** DescribeParameterGroups (Paginated)
     , module Network.AWS.DAX.DescribeParameterGroups
 
-    -- ** TagResource
+    -- ** TagResource 
     , module Network.AWS.DAX.TagResource
 
     -- ** ListTags (Paginated)
     , module Network.AWS.DAX.ListTags
 
-    -- ** DecreaseReplicationFactor
+    -- ** DecreaseReplicationFactor 
     , module Network.AWS.DAX.DecreaseReplicationFactor
 
-    -- ** UntagResource
+    -- ** UntagResource 
     , module Network.AWS.DAX.UntagResource
 
-    -- ** RebootNode
+    -- ** RebootNode 
     , module Network.AWS.DAX.RebootNode
 
     -- * Types

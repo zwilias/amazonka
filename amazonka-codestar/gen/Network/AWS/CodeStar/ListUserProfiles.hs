@@ -42,7 +42,6 @@ module Network.AWS.CodeStar.ListUserProfiles
     ) where
 
 import Network.AWS.CodeStar.Types
-import Network.AWS.CodeStar.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Pager
 import Network.AWS.Prelude
@@ -50,13 +49,10 @@ import Network.AWS.Request
 import Network.AWS.Response
 
 -- | /See:/ 'listUserProfiles' smart constructor.
-data ListUserProfiles =
-  ListUserProfiles'
-    { _lupNextToken  :: !(Maybe Text)
-    , _lupMaxResults :: !(Maybe Nat)
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data ListUserProfiles = ListUserProfiles'{_lupNextToken
+                                          :: !(Maybe Text),
+                                          _lupMaxResults :: !(Maybe Nat)}
+                          deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'ListUserProfiles' with the minimum fields required to make a request.
 --
@@ -67,9 +63,9 @@ data ListUserProfiles =
 -- * 'lupMaxResults' - The maximum number of results to return in a response.
 listUserProfiles
     :: ListUserProfiles
-listUserProfiles =
-  ListUserProfiles' {_lupNextToken = Nothing, _lupMaxResults = Nothing}
-
+listUserProfiles
+  = ListUserProfiles'{_lupNextToken = Nothing,
+                      _lupMaxResults = Nothing}
 
 -- | The continuation token for the next set of results, if the results cannot be returned in one response.
 lupNextToken :: Lens' ListUserProfiles (Maybe Text)
@@ -123,14 +119,13 @@ instance ToQuery ListUserProfiles where
         toQuery = const mempty
 
 -- | /See:/ 'listUserProfilesResponse' smart constructor.
-data ListUserProfilesResponse =
-  ListUserProfilesResponse'
-    { _luprsNextToken      :: !(Maybe Text)
-    , _luprsResponseStatus :: !Int
-    , _luprsUserProfiles   :: ![UserProfileSummary]
-    }
-  deriving (Eq, Show, Data, Typeable, Generic)
-
+data ListUserProfilesResponse = ListUserProfilesResponse'{_luprsNextToken
+                                                          :: !(Maybe Text),
+                                                          _luprsResponseStatus
+                                                          :: !Int,
+                                                          _luprsUserProfiles ::
+                                                          ![UserProfileSummary]}
+                                  deriving (Eq, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'ListUserProfilesResponse' with the minimum fields required to make a request.
 --
@@ -144,13 +139,11 @@ data ListUserProfilesResponse =
 listUserProfilesResponse
     :: Int -- ^ 'luprsResponseStatus'
     -> ListUserProfilesResponse
-listUserProfilesResponse pResponseStatus_ =
-  ListUserProfilesResponse'
-    { _luprsNextToken = Nothing
-    , _luprsResponseStatus = pResponseStatus_
-    , _luprsUserProfiles = mempty
-    }
-
+listUserProfilesResponse pResponseStatus_
+  = ListUserProfilesResponse'{_luprsNextToken =
+                                Nothing,
+                              _luprsResponseStatus = pResponseStatus_,
+                              _luprsUserProfiles = mempty}
 
 -- | The continuation token to use when requesting the next set of results, if there are more results to be returned.
 luprsNextToken :: Lens' ListUserProfilesResponse (Maybe Text)

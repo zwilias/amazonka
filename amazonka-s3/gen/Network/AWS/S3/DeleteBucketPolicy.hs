@@ -37,15 +37,12 @@ import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 import Network.AWS.S3.Types
-import Network.AWS.S3.Types.Product
 
 -- | /See:/ 'deleteBucketPolicy' smart constructor.
-newtype DeleteBucketPolicy =
-  DeleteBucketPolicy'
-    { _dbpBucket :: BucketName
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+newtype DeleteBucketPolicy = DeleteBucketPolicy'{_dbpBucket
+                                                 :: BucketName}
+                               deriving (Eq, Read, Show, Data, Typeable,
+                                         Generic)
 
 -- | Creates a value of 'DeleteBucketPolicy' with the minimum fields required to make a request.
 --
@@ -55,8 +52,8 @@ newtype DeleteBucketPolicy =
 deleteBucketPolicy
     :: BucketName -- ^ 'dbpBucket'
     -> DeleteBucketPolicy
-deleteBucketPolicy pBucket_ = DeleteBucketPolicy' {_dbpBucket = pBucket_}
-
+deleteBucketPolicy pBucket_
+  = DeleteBucketPolicy'{_dbpBucket = pBucket_}
 
 -- | Undocumented member.
 dbpBucket :: Lens' DeleteBucketPolicy BucketName
@@ -83,16 +80,15 @@ instance ToQuery DeleteBucketPolicy where
         toQuery = const (mconcat ["policy"])
 
 -- | /See:/ 'deleteBucketPolicyResponse' smart constructor.
-data DeleteBucketPolicyResponse =
-  DeleteBucketPolicyResponse'
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data DeleteBucketPolicyResponse = DeleteBucketPolicyResponse'
+                                    deriving (Eq, Read, Show, Data, Typeable,
+                                              Generic)
 
 -- | Creates a value of 'DeleteBucketPolicyResponse' with the minimum fields required to make a request.
 --
 deleteBucketPolicyResponse
     :: DeleteBucketPolicyResponse
-deleteBucketPolicyResponse = DeleteBucketPolicyResponse'
-
+deleteBucketPolicyResponse
+  = DeleteBucketPolicyResponse'
 
 instance NFData DeleteBucketPolicyResponse where

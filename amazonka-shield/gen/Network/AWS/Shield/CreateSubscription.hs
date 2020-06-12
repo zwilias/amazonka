@@ -39,20 +39,16 @@ import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 import Network.AWS.Shield.Types
-import Network.AWS.Shield.Types.Product
 
 -- | /See:/ 'createSubscription' smart constructor.
-data CreateSubscription =
-  CreateSubscription'
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data CreateSubscription = CreateSubscription'
+                            deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'CreateSubscription' with the minimum fields required to make a request.
 --
 createSubscription
     :: CreateSubscription
 createSubscription = CreateSubscription'
-
 
 instance AWSRequest CreateSubscription where
         type Rs CreateSubscription =
@@ -87,12 +83,10 @@ instance ToQuery CreateSubscription where
         toQuery = const mempty
 
 -- | /See:/ 'createSubscriptionResponse' smart constructor.
-newtype CreateSubscriptionResponse =
-  CreateSubscriptionResponse'
-    { _csrsResponseStatus :: Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+newtype CreateSubscriptionResponse = CreateSubscriptionResponse'{_csrsResponseStatus
+                                                                 :: Int}
+                                       deriving (Eq, Read, Show, Data, Typeable,
+                                                 Generic)
 
 -- | Creates a value of 'CreateSubscriptionResponse' with the minimum fields required to make a request.
 --
@@ -102,9 +96,9 @@ newtype CreateSubscriptionResponse =
 createSubscriptionResponse
     :: Int -- ^ 'csrsResponseStatus'
     -> CreateSubscriptionResponse
-createSubscriptionResponse pResponseStatus_ =
-  CreateSubscriptionResponse' {_csrsResponseStatus = pResponseStatus_}
-
+createSubscriptionResponse pResponseStatus_
+  = CreateSubscriptionResponse'{_csrsResponseStatus =
+                                  pResponseStatus_}
 
 -- | -- | The response status code.
 csrsResponseStatus :: Lens' CreateSubscriptionResponse Int

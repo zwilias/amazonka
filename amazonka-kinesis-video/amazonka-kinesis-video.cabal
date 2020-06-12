@@ -59,8 +59,12 @@ library
         , Network.AWS.KinesisVideo.Waiters
 
     other-modules:
-          Network.AWS.KinesisVideo.Types.Product
-        , Network.AWS.KinesisVideo.Types.Sum
+          Network.AWS.KinesisVideo.Types.APIName
+        , Network.AWS.KinesisVideo.Types.ComparisonOperator
+        , Network.AWS.KinesisVideo.Types.StreamInfo
+        , Network.AWS.KinesisVideo.Types.StreamNameCondition
+        , Network.AWS.KinesisVideo.Types.StreamStatus
+        , Network.AWS.KinesisVideo.Types.UpdateDataRetentionOperation
 
     build-depends:
           amazonka-core == 1.6.1.*

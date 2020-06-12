@@ -18,7 +18,7 @@
 -- Stability   : auto-generated
 -- Portability : non-portable (GHC extensions)
 --
--- Requests remote access to a fleet instance. Remote access is useful for debugging, gathering benchmarking data, or watching activity in real time.
+-- Requests remote access to a fleet instance. Remote access is useful for debugging, gathering benchmarking data, or watching activity in real time. 
 --
 --
 -- Access requires credentials that match the operating system of the instance. For a Windows instance, Amazon GameLift returns a user name and password as strings for use with a Windows Remote Desktop client. For a Linux instance, Amazon GameLift returns a user name and RSA private key, also as strings, for use with an SSH client. The private key must be saved in the proper format to a @.pem@ file before using. If you're making this request using the AWS CLI, saving the secret can be handled as part of the GetInstanceAccess request. (See the example later in this topic). For more information on remote access, see <http://docs.aws.amazon.com/gamelift/latest/developerguide/fleets-remote-access.html Remotely Accessing an Instance> .
@@ -43,7 +43,6 @@ module Network.AWS.GameLift.GetInstanceAccess
     ) where
 
 import Network.AWS.GameLift.Types
-import Network.AWS.GameLift.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.Request
@@ -54,13 +53,10 @@ import Network.AWS.Response
 --
 --
 -- /See:/ 'getInstanceAccess' smart constructor.
-data GetInstanceAccess =
-  GetInstanceAccess'
-    { _giaFleetId    :: !Text
-    , _giaInstanceId :: !Text
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data GetInstanceAccess = GetInstanceAccess'{_giaFleetId
+                                            :: !Text,
+                                            _giaInstanceId :: !Text}
+                           deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'GetInstanceAccess' with the minimum fields required to make a request.
 --
@@ -73,9 +69,9 @@ getInstanceAccess
     :: Text -- ^ 'giaFleetId'
     -> Text -- ^ 'giaInstanceId'
     -> GetInstanceAccess
-getInstanceAccess pFleetId_ pInstanceId_ =
-  GetInstanceAccess' {_giaFleetId = pFleetId_, _giaInstanceId = pInstanceId_}
-
+getInstanceAccess pFleetId_ pInstanceId_
+  = GetInstanceAccess'{_giaFleetId = pFleetId_,
+                       _giaInstanceId = pInstanceId_}
 
 -- | Unique identifier for a fleet that contains the instance you want access to. The fleet can be in any of the following statuses: @ACTIVATING@ , @ACTIVE@ , or @ERROR@ . Fleets with an @ERROR@ status may be accessible for a short time before they are deleted.
 giaFleetId :: Lens' GetInstanceAccess Text
@@ -125,13 +121,13 @@ instance ToQuery GetInstanceAccess where
 --
 --
 -- /See:/ 'getInstanceAccessResponse' smart constructor.
-data GetInstanceAccessResponse =
-  GetInstanceAccessResponse'
-    { _giarsInstanceAccess :: !(Maybe InstanceAccess)
-    , _giarsResponseStatus :: !Int
-    }
-  deriving (Eq, Show, Data, Typeable, Generic)
-
+data GetInstanceAccessResponse = GetInstanceAccessResponse'{_giarsInstanceAccess
+                                                            ::
+                                                            !(Maybe
+                                                                InstanceAccess),
+                                                            _giarsResponseStatus
+                                                            :: !Int}
+                                   deriving (Eq, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'GetInstanceAccessResponse' with the minimum fields required to make a request.
 --
@@ -143,10 +139,10 @@ data GetInstanceAccessResponse =
 getInstanceAccessResponse
     :: Int -- ^ 'giarsResponseStatus'
     -> GetInstanceAccessResponse
-getInstanceAccessResponse pResponseStatus_ =
-  GetInstanceAccessResponse'
-    {_giarsInstanceAccess = Nothing, _giarsResponseStatus = pResponseStatus_}
-
+getInstanceAccessResponse pResponseStatus_
+  = GetInstanceAccessResponse'{_giarsInstanceAccess =
+                                 Nothing,
+                               _giarsResponseStatus = pResponseStatus_}
 
 -- | Object that contains connection information for a fleet instance, including IP address and access credentials.
 giarsInstanceAccess :: Lens' GetInstanceAccessResponse (Maybe InstanceAccess)

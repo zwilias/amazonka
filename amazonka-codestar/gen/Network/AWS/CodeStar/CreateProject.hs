@@ -47,25 +47,21 @@ module Network.AWS.CodeStar.CreateProject
     ) where
 
 import Network.AWS.CodeStar.Types
-import Network.AWS.CodeStar.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 
 -- | /See:/ 'createProject' smart constructor.
-data CreateProject =
-  CreateProject'
-    { _cpSourceCode         :: !(Maybe [Code])
-    , _cpToolchain          :: !(Maybe Toolchain)
-    , _cpClientRequestToken :: !(Maybe Text)
-    , _cpDescription        :: !(Maybe (Sensitive Text))
-    , _cpTags               :: !(Maybe (Map Text Text))
-    , _cpName               :: !(Sensitive Text)
-    , _cpId                 :: !Text
-    }
-  deriving (Eq, Show, Data, Typeable, Generic)
-
+data CreateProject = CreateProject'{_cpSourceCode ::
+                                    !(Maybe [Code]),
+                                    _cpToolchain :: !(Maybe Toolchain),
+                                    _cpClientRequestToken :: !(Maybe Text),
+                                    _cpDescription :: !(Maybe (Sensitive Text)),
+                                    _cpTags :: !(Maybe (Map Text Text)),
+                                    _cpName :: !(Sensitive Text),
+                                    _cpId :: !Text}
+                       deriving (Eq, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'CreateProject' with the minimum fields required to make a request.
 --
@@ -88,17 +84,12 @@ createProject
     :: Text -- ^ 'cpName'
     -> Text -- ^ 'cpId'
     -> CreateProject
-createProject pName_ pId_ =
-  CreateProject'
-    { _cpSourceCode = Nothing
-    , _cpToolchain = Nothing
-    , _cpClientRequestToken = Nothing
-    , _cpDescription = Nothing
-    , _cpTags = Nothing
-    , _cpName = _Sensitive # pName_
-    , _cpId = pId_
-    }
-
+createProject pName_ pId_
+  = CreateProject'{_cpSourceCode = Nothing,
+                   _cpToolchain = Nothing,
+                   _cpClientRequestToken = Nothing,
+                   _cpDescription = Nothing, _cpTags = Nothing,
+                   _cpName = _Sensitive # pName_, _cpId = pId_}
 
 -- | A list of the Code objects submitted with the project request. If this parameter is specified, the request must also include the toolchain parameter.
 cpSourceCode :: Lens' CreateProject [Code]
@@ -172,16 +163,15 @@ instance ToQuery CreateProject where
         toQuery = const mempty
 
 -- | /See:/ 'createProjectResponse' smart constructor.
-data CreateProjectResponse =
-  CreateProjectResponse'
-    { _cprsProjectTemplateId  :: !(Maybe Text)
-    , _cprsClientRequestToken :: !(Maybe Text)
-    , _cprsResponseStatus     :: !Int
-    , _cprsId                 :: !Text
-    , _cprsArn                :: !Text
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data CreateProjectResponse = CreateProjectResponse'{_cprsProjectTemplateId
+                                                    :: !(Maybe Text),
+                                                    _cprsClientRequestToken ::
+                                                    !(Maybe Text),
+                                                    _cprsResponseStatus :: !Int,
+                                                    _cprsId :: !Text,
+                                                    _cprsArn :: !Text}
+                               deriving (Eq, Read, Show, Data, Typeable,
+                                         Generic)
 
 -- | Creates a value of 'CreateProjectResponse' with the minimum fields required to make a request.
 --
@@ -201,15 +191,12 @@ createProjectResponse
     -> Text -- ^ 'cprsId'
     -> Text -- ^ 'cprsArn'
     -> CreateProjectResponse
-createProjectResponse pResponseStatus_ pId_ pArn_ =
-  CreateProjectResponse'
-    { _cprsProjectTemplateId = Nothing
-    , _cprsClientRequestToken = Nothing
-    , _cprsResponseStatus = pResponseStatus_
-    , _cprsId = pId_
-    , _cprsArn = pArn_
-    }
-
+createProjectResponse pResponseStatus_ pId_ pArn_
+  = CreateProjectResponse'{_cprsProjectTemplateId =
+                             Nothing,
+                           _cprsClientRequestToken = Nothing,
+                           _cprsResponseStatus = pResponseStatus_,
+                           _cprsId = pId_, _cprsArn = pArn_}
 
 -- | Reserved for future use.
 cprsProjectTemplateId :: Lens' CreateProjectResponse (Maybe Text)

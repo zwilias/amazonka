@@ -14,11 +14,11 @@
 module Test.AWS.Gen.Pinpoint where
 
 import Data.Proxy
-import Network.AWS.Pinpoint
 import Test.AWS.Fixture
-import Test.AWS.Pinpoint.Internal
 import Test.AWS.Prelude
 import Test.Tasty
+import Network.AWS.Pinpoint
+import Test.AWS.Pinpoint.Internal
 
 -- Auto-generated: the actual test selection needs to be manually placed into
 -- the top-level so that real test data can be incrementally added.

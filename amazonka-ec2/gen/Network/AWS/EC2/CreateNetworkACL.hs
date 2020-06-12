@@ -41,20 +41,16 @@ module Network.AWS.EC2.CreateNetworkACL
     ) where
 
 import Network.AWS.EC2.Types
-import Network.AWS.EC2.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 
 -- | /See:/ 'createNetworkACL' smart constructor.
-data CreateNetworkACL =
-  CreateNetworkACL'
-    { _cnaDryRun :: !(Maybe Bool)
-    , _cnaVPCId  :: !Text
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data CreateNetworkACL = CreateNetworkACL'{_cnaDryRun
+                                          :: !(Maybe Bool),
+                                          _cnaVPCId :: !Text}
+                          deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'CreateNetworkACL' with the minimum fields required to make a request.
 --
@@ -66,9 +62,9 @@ data CreateNetworkACL =
 createNetworkACL
     :: Text -- ^ 'cnaVPCId'
     -> CreateNetworkACL
-createNetworkACL pVPCId_ =
-  CreateNetworkACL' {_cnaDryRun = Nothing, _cnaVPCId = pVPCId_}
-
+createNetworkACL pVPCId_
+  = CreateNetworkACL'{_cnaDryRun = Nothing,
+                      _cnaVPCId = pVPCId_}
 
 -- | Checks whether you have the required permissions for the action, without actually making the request, and provides an error response. If you have the required permissions, the error response is @DryRunOperation@ . Otherwise, it is @UnauthorizedOperation@ .
 cnaDryRun :: Lens' CreateNetworkACL (Maybe Bool)
@@ -105,13 +101,13 @@ instance ToQuery CreateNetworkACL where
                "DryRun" =: _cnaDryRun, "VpcId" =: _cnaVPCId]
 
 -- | /See:/ 'createNetworkACLResponse' smart constructor.
-data CreateNetworkACLResponse =
-  CreateNetworkACLResponse'
-    { _cnarsNetworkACL     :: !(Maybe NetworkACL)
-    , _cnarsResponseStatus :: !Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data CreateNetworkACLResponse = CreateNetworkACLResponse'{_cnarsNetworkACL
+                                                          ::
+                                                          !(Maybe NetworkACL),
+                                                          _cnarsResponseStatus
+                                                          :: !Int}
+                                  deriving (Eq, Read, Show, Data, Typeable,
+                                            Generic)
 
 -- | Creates a value of 'CreateNetworkACLResponse' with the minimum fields required to make a request.
 --
@@ -123,10 +119,10 @@ data CreateNetworkACLResponse =
 createNetworkACLResponse
     :: Int -- ^ 'cnarsResponseStatus'
     -> CreateNetworkACLResponse
-createNetworkACLResponse pResponseStatus_ =
-  CreateNetworkACLResponse'
-    {_cnarsNetworkACL = Nothing, _cnarsResponseStatus = pResponseStatus_}
-
+createNetworkACLResponse pResponseStatus_
+  = CreateNetworkACLResponse'{_cnarsNetworkACL =
+                                Nothing,
+                              _cnarsResponseStatus = pResponseStatus_}
 
 -- | Information about the network ACL.
 cnarsNetworkACL :: Lens' CreateNetworkACLResponse (Maybe NetworkACL)

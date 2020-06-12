@@ -44,55 +44,55 @@ module Network.AWS.MQ
     -- * Operations
     -- $operations
 
-    -- ** CreateConfiguration
+    -- ** CreateConfiguration 
     , module Network.AWS.MQ.CreateConfiguration
 
-    -- ** CreateBroker
+    -- ** CreateBroker 
     , module Network.AWS.MQ.CreateBroker
 
-    -- ** DeleteBroker
+    -- ** DeleteBroker 
     , module Network.AWS.MQ.DeleteBroker
 
-    -- ** UpdateBroker
+    -- ** UpdateBroker 
     , module Network.AWS.MQ.UpdateBroker
 
-    -- ** RebootBroker
+    -- ** RebootBroker 
     , module Network.AWS.MQ.RebootBroker
 
-    -- ** ListConfigurationRevisions
+    -- ** ListConfigurationRevisions 
     , module Network.AWS.MQ.ListConfigurationRevisions
 
-    -- ** ListUsers
+    -- ** ListUsers 
     , module Network.AWS.MQ.ListUsers
 
-    -- ** ListConfigurations
+    -- ** ListConfigurations 
     , module Network.AWS.MQ.ListConfigurations
 
-    -- ** DescribeUser
+    -- ** DescribeUser 
     , module Network.AWS.MQ.DescribeUser
 
-    -- ** ListBrokers
+    -- ** ListBrokers 
     , module Network.AWS.MQ.ListBrokers
 
-    -- ** CreateUser
+    -- ** CreateUser 
     , module Network.AWS.MQ.CreateUser
 
-    -- ** DescribeConfiguration
+    -- ** DescribeConfiguration 
     , module Network.AWS.MQ.DescribeConfiguration
 
-    -- ** UpdateUser
+    -- ** UpdateUser 
     , module Network.AWS.MQ.UpdateUser
 
-    -- ** DeleteUser
+    -- ** DeleteUser 
     , module Network.AWS.MQ.DeleteUser
 
-    -- ** DescribeConfigurationRevision
+    -- ** DescribeConfigurationRevision 
     , module Network.AWS.MQ.DescribeConfigurationRevision
 
-    -- ** DescribeBroker
+    -- ** DescribeBroker 
     , module Network.AWS.MQ.DescribeBroker
 
-    -- ** UpdateConfiguration
+    -- ** UpdateConfiguration 
     , module Network.AWS.MQ.UpdateConfiguration
 
     -- * Types

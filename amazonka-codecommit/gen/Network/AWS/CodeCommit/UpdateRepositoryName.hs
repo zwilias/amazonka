@@ -36,7 +36,6 @@ module Network.AWS.CodeCommit.UpdateRepositoryName
     ) where
 
 import Network.AWS.CodeCommit.Types
-import Network.AWS.CodeCommit.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.Request
@@ -47,13 +46,10 @@ import Network.AWS.Response
 --
 --
 -- /See:/ 'updateRepositoryName' smart constructor.
-data UpdateRepositoryName =
-  UpdateRepositoryName'
-    { _urnOldName :: !Text
-    , _urnNewName :: !Text
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data UpdateRepositoryName = UpdateRepositoryName'{_urnOldName
+                                                  :: !Text,
+                                                  _urnNewName :: !Text}
+                              deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'UpdateRepositoryName' with the minimum fields required to make a request.
 --
@@ -66,9 +62,9 @@ updateRepositoryName
     :: Text -- ^ 'urnOldName'
     -> Text -- ^ 'urnNewName'
     -> UpdateRepositoryName
-updateRepositoryName pOldName_ pNewName_ =
-  UpdateRepositoryName' {_urnOldName = pOldName_, _urnNewName = pNewName_}
-
+updateRepositoryName pOldName_ pNewName_
+  = UpdateRepositoryName'{_urnOldName = pOldName_,
+                          _urnNewName = pNewName_}
 
 -- | The current name of the repository.
 urnOldName :: Lens' UpdateRepositoryName Text
@@ -112,16 +108,15 @@ instance ToQuery UpdateRepositoryName where
         toQuery = const mempty
 
 -- | /See:/ 'updateRepositoryNameResponse' smart constructor.
-data UpdateRepositoryNameResponse =
-  UpdateRepositoryNameResponse'
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data UpdateRepositoryNameResponse = UpdateRepositoryNameResponse'
+                                      deriving (Eq, Read, Show, Data, Typeable,
+                                                Generic)
 
 -- | Creates a value of 'UpdateRepositoryNameResponse' with the minimum fields required to make a request.
 --
 updateRepositoryNameResponse
     :: UpdateRepositoryNameResponse
-updateRepositoryNameResponse = UpdateRepositoryNameResponse'
-
+updateRepositoryNameResponse
+  = UpdateRepositoryNameResponse'
 
 instance NFData UpdateRepositoryNameResponse where

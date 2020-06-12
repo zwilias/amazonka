@@ -43,22 +43,31 @@ module Network.AWS.EC2.RegisterTransitGatewayMulticastGroupMembers
     ) where
 
 import Network.AWS.EC2.Types
-import Network.AWS.EC2.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 
 -- | /See:/ 'registerTransitGatewayMulticastGroupMembers' smart constructor.
-data RegisterTransitGatewayMulticastGroupMembers =
-  RegisterTransitGatewayMulticastGroupMembers'
-    { _rtgmgmNetworkInterfaceIds             :: !(Maybe [Text])
-    , _rtgmgmTransitGatewayMulticastDomainId :: !(Maybe Text)
-    , _rtgmgmGroupIPAddress                  :: !(Maybe Text)
-    , _rtgmgmDryRun                          :: !(Maybe Bool)
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data RegisterTransitGatewayMulticastGroupMembers = RegisterTransitGatewayMulticastGroupMembers'{_rtgmgmNetworkInterfaceIds
+                                                                                                ::
+                                                                                                !(Maybe
+                                                                                                    [Text]),
+                                                                                                _rtgmgmTransitGatewayMulticastDomainId
+                                                                                                ::
+                                                                                                !(Maybe
+                                                                                                    Text),
+                                                                                                _rtgmgmGroupIPAddress
+                                                                                                ::
+                                                                                                !(Maybe
+                                                                                                    Text),
+                                                                                                _rtgmgmDryRun
+                                                                                                ::
+                                                                                                !(Maybe
+                                                                                                    Bool)}
+                                                     deriving (Eq, Read, Show,
+                                                               Data, Typeable,
+                                                               Generic)
 
 -- | Creates a value of 'RegisterTransitGatewayMulticastGroupMembers' with the minimum fields required to make a request.
 --
@@ -73,14 +82,14 @@ data RegisterTransitGatewayMulticastGroupMembers =
 -- * 'rtgmgmDryRun' - Checks whether you have the required permissions for the action, without actually making the request, and provides an error response. If you have the required permissions, the error response is @DryRunOperation@ . Otherwise, it is @UnauthorizedOperation@ .
 registerTransitGatewayMulticastGroupMembers
     :: RegisterTransitGatewayMulticastGroupMembers
-registerTransitGatewayMulticastGroupMembers =
-  RegisterTransitGatewayMulticastGroupMembers'
-    { _rtgmgmNetworkInterfaceIds = Nothing
-    , _rtgmgmTransitGatewayMulticastDomainId = Nothing
-    , _rtgmgmGroupIPAddress = Nothing
-    , _rtgmgmDryRun = Nothing
-    }
-
+registerTransitGatewayMulticastGroupMembers
+  = RegisterTransitGatewayMulticastGroupMembers'{_rtgmgmNetworkInterfaceIds
+                                                   = Nothing,
+                                                 _rtgmgmTransitGatewayMulticastDomainId
+                                                   = Nothing,
+                                                 _rtgmgmGroupIPAddress =
+                                                   Nothing,
+                                                 _rtgmgmDryRun = Nothing}
 
 -- | The group members' network interface IDs to register with the transit gateway multicast group.
 rtgmgmNetworkInterfaceIds :: Lens' RegisterTransitGatewayMulticastGroupMembers [Text]
@@ -149,13 +158,18 @@ instance ToQuery
                "DryRun" =: _rtgmgmDryRun]
 
 -- | /See:/ 'registerTransitGatewayMulticastGroupMembersResponse' smart constructor.
-data RegisterTransitGatewayMulticastGroupMembersResponse =
-  RegisterTransitGatewayMulticastGroupMembersResponse'
-    { _rtgmgmrsRegisteredMulticastGroupMembers :: !(Maybe TransitGatewayMulticastRegisteredGroupMembers)
-    , _rtgmgmrsResponseStatus :: !Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data RegisterTransitGatewayMulticastGroupMembersResponse = RegisterTransitGatewayMulticastGroupMembersResponse'{_rtgmgmrsRegisteredMulticastGroupMembers
+                                                                                                                ::
+                                                                                                                !(Maybe
+                                                                                                                    TransitGatewayMulticastRegisteredGroupMembers),
+                                                                                                                _rtgmgmrsResponseStatus
+                                                                                                                ::
+                                                                                                                !Int}
+                                                             deriving (Eq, Read,
+                                                                       Show,
+                                                                       Data,
+                                                                       Typeable,
+                                                                       Generic)
 
 -- | Creates a value of 'RegisterTransitGatewayMulticastGroupMembersResponse' with the minimum fields required to make a request.
 --
@@ -167,12 +181,12 @@ data RegisterTransitGatewayMulticastGroupMembersResponse =
 registerTransitGatewayMulticastGroupMembersResponse
     :: Int -- ^ 'rtgmgmrsResponseStatus'
     -> RegisterTransitGatewayMulticastGroupMembersResponse
-registerTransitGatewayMulticastGroupMembersResponse pResponseStatus_ =
-  RegisterTransitGatewayMulticastGroupMembersResponse'
-    { _rtgmgmrsRegisteredMulticastGroupMembers = Nothing
-    , _rtgmgmrsResponseStatus = pResponseStatus_
-    }
-
+registerTransitGatewayMulticastGroupMembersResponse
+  pResponseStatus_
+  = RegisterTransitGatewayMulticastGroupMembersResponse'{_rtgmgmrsRegisteredMulticastGroupMembers
+                                                           = Nothing,
+                                                         _rtgmgmrsResponseStatus
+                                                           = pResponseStatus_}
 
 -- | Information about the registered transit gateway multicast group members.
 rtgmgmrsRegisteredMulticastGroupMembers :: Lens' RegisterTransitGatewayMulticastGroupMembersResponse (Maybe TransitGatewayMulticastRegisteredGroupMembers)

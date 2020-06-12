@@ -29,7 +29,7 @@
 --
 -- After you enable all features in your organization, the master account in the organization can apply policies on all member accounts. These policies can restrict what users and even administrators in those accounts can do. The master account can apply policies that prevent accounts from leaving the organization. Ensure that your account administrators are aware of this.
 --
--- This operation can be called only from the organization's master account.
+-- This operation can be called only from the organization's master account. 
 --
 module Network.AWS.Organizations.EnableAllFeatures
     (
@@ -47,23 +47,19 @@ module Network.AWS.Organizations.EnableAllFeatures
 
 import Network.AWS.Lens
 import Network.AWS.Organizations.Types
-import Network.AWS.Organizations.Types.Product
 import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 
 -- | /See:/ 'enableAllFeatures' smart constructor.
-data EnableAllFeatures =
-  EnableAllFeatures'
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data EnableAllFeatures = EnableAllFeatures'
+                           deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'EnableAllFeatures' with the minimum fields required to make a request.
 --
 enableAllFeatures
     :: EnableAllFeatures
 enableAllFeatures = EnableAllFeatures'
-
 
 instance AWSRequest EnableAllFeatures where
         type Rs EnableAllFeatures = EnableAllFeaturesResponse
@@ -98,13 +94,12 @@ instance ToQuery EnableAllFeatures where
         toQuery = const mempty
 
 -- | /See:/ 'enableAllFeaturesResponse' smart constructor.
-data EnableAllFeaturesResponse =
-  EnableAllFeaturesResponse'
-    { _eafrsHandshake      :: !(Maybe Handshake)
-    , _eafrsResponseStatus :: !Int
-    }
-  deriving (Eq, Show, Data, Typeable, Generic)
-
+data EnableAllFeaturesResponse = EnableAllFeaturesResponse'{_eafrsHandshake
+                                                            ::
+                                                            !(Maybe Handshake),
+                                                            _eafrsResponseStatus
+                                                            :: !Int}
+                                   deriving (Eq, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'EnableAllFeaturesResponse' with the minimum fields required to make a request.
 --
@@ -116,10 +111,10 @@ data EnableAllFeaturesResponse =
 enableAllFeaturesResponse
     :: Int -- ^ 'eafrsResponseStatus'
     -> EnableAllFeaturesResponse
-enableAllFeaturesResponse pResponseStatus_ =
-  EnableAllFeaturesResponse'
-    {_eafrsHandshake = Nothing, _eafrsResponseStatus = pResponseStatus_}
-
+enableAllFeaturesResponse pResponseStatus_
+  = EnableAllFeaturesResponse'{_eafrsHandshake =
+                                 Nothing,
+                               _eafrsResponseStatus = pResponseStatus_}
 
 -- | A structure that contains details about the handshake created to support this request to enable all features in the organization.
 eafrsHandshake :: Lens' EnableAllFeaturesResponse (Maybe Handshake)

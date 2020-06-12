@@ -47,19 +47,16 @@ import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 import Network.AWS.SES.Types
-import Network.AWS.SES.Types.Product
 
 -- | Represents a request to return the details of a receipt rule set. You use receipt rule sets to receive email with Amazon SES. For more information, see the <http://docs.aws.amazon.com/ses/latest/DeveloperGuide/receiving-email-concepts.html Amazon SES Developer Guide> .
 --
 --
 --
 -- /See:/ 'describeReceiptRuleSet' smart constructor.
-newtype DescribeReceiptRuleSet =
-  DescribeReceiptRuleSet'
-    { _drrsRuleSetName :: Text
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+newtype DescribeReceiptRuleSet = DescribeReceiptRuleSet'{_drrsRuleSetName
+                                                         :: Text}
+                                   deriving (Eq, Read, Show, Data, Typeable,
+                                             Generic)
 
 -- | Creates a value of 'DescribeReceiptRuleSet' with the minimum fields required to make a request.
 --
@@ -69,9 +66,9 @@ newtype DescribeReceiptRuleSet =
 describeReceiptRuleSet
     :: Text -- ^ 'drrsRuleSetName'
     -> DescribeReceiptRuleSet
-describeReceiptRuleSet pRuleSetName_ =
-  DescribeReceiptRuleSet' {_drrsRuleSetName = pRuleSetName_}
-
+describeReceiptRuleSet pRuleSetName_
+  = DescribeReceiptRuleSet'{_drrsRuleSetName =
+                              pRuleSetName_}
 
 -- | The name of the receipt rule set to describe.
 drrsRuleSetName :: Lens' DescribeReceiptRuleSet Text
@@ -113,14 +110,18 @@ instance ToQuery DescribeReceiptRuleSet where
 --
 --
 -- /See:/ 'describeReceiptRuleSetResponse' smart constructor.
-data DescribeReceiptRuleSetResponse =
-  DescribeReceiptRuleSetResponse'
-    { _desrsRules          :: !(Maybe [ReceiptRule])
-    , _desrsMetadata       :: !(Maybe ReceiptRuleSetMetadata)
-    , _desrsResponseStatus :: !Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data DescribeReceiptRuleSetResponse = DescribeReceiptRuleSetResponse'{_desrsRules
+                                                                      ::
+                                                                      !(Maybe
+                                                                          [ReceiptRule]),
+                                                                      _desrsMetadata
+                                                                      ::
+                                                                      !(Maybe
+                                                                          ReceiptRuleSetMetadata),
+                                                                      _desrsResponseStatus
+                                                                      :: !Int}
+                                        deriving (Eq, Read, Show, Data,
+                                                  Typeable, Generic)
 
 -- | Creates a value of 'DescribeReceiptRuleSetResponse' with the minimum fields required to make a request.
 --
@@ -134,13 +135,11 @@ data DescribeReceiptRuleSetResponse =
 describeReceiptRuleSetResponse
     :: Int -- ^ 'desrsResponseStatus'
     -> DescribeReceiptRuleSetResponse
-describeReceiptRuleSetResponse pResponseStatus_ =
-  DescribeReceiptRuleSetResponse'
-    { _desrsRules = Nothing
-    , _desrsMetadata = Nothing
-    , _desrsResponseStatus = pResponseStatus_
-    }
-
+describeReceiptRuleSetResponse pResponseStatus_
+  = DescribeReceiptRuleSetResponse'{_desrsRules =
+                                      Nothing,
+                                    _desrsMetadata = Nothing,
+                                    _desrsResponseStatus = pResponseStatus_}
 
 -- | A list of the receipt rules that belong to the specified receipt rule set.
 desrsRules :: Lens' DescribeReceiptRuleSetResponse [ReceiptRule]

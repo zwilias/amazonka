@@ -48,21 +48,21 @@ module Network.AWS.Organizations.ListHandshakesForAccount
 
 import Network.AWS.Lens
 import Network.AWS.Organizations.Types
-import Network.AWS.Organizations.Types.Product
 import Network.AWS.Pager
 import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 
 -- | /See:/ 'listHandshakesForAccount' smart constructor.
-data ListHandshakesForAccount =
-  ListHandshakesForAccount'
-    { _lhfaNextToken  :: !(Maybe Text)
-    , _lhfaFilter     :: !(Maybe HandshakeFilter)
-    , _lhfaMaxResults :: !(Maybe Nat)
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data ListHandshakesForAccount = ListHandshakesForAccount'{_lhfaNextToken
+                                                          :: !(Maybe Text),
+                                                          _lhfaFilter ::
+                                                          !(Maybe
+                                                              HandshakeFilter),
+                                                          _lhfaMaxResults ::
+                                                          !(Maybe Nat)}
+                                  deriving (Eq, Read, Show, Data, Typeable,
+                                            Generic)
 
 -- | Creates a value of 'ListHandshakesForAccount' with the minimum fields required to make a request.
 --
@@ -75,10 +75,9 @@ data ListHandshakesForAccount =
 -- * 'lhfaMaxResults' - (Optional) Use this to limit the number of results you want included in the response. If you do not include this parameter, it defaults to a value that is specific to the operation. If additional items exist beyond the maximum you specify, the @NextToken@ response element is present and has a value (is not null). Include that value as the @NextToken@ request parameter in the next call to the operation to get the next part of the results. Note that Organizations might return fewer results than the maximum even when there are more results available. You should check @NextToken@ after every operation to ensure that you receive all of the results.
 listHandshakesForAccount
     :: ListHandshakesForAccount
-listHandshakesForAccount =
-  ListHandshakesForAccount'
-    {_lhfaNextToken = Nothing, _lhfaFilter = Nothing, _lhfaMaxResults = Nothing}
-
+listHandshakesForAccount
+  = ListHandshakesForAccount'{_lhfaNextToken = Nothing,
+                              _lhfaFilter = Nothing, _lhfaMaxResults = Nothing}
 
 -- | Use this parameter if you receive a @NextToken@ response in a previous request that indicates that there is more output available. Set it to the value of the previous call's @NextToken@ response to indicate where the output should continue from.
 lhfaNextToken :: Lens' ListHandshakesForAccount (Maybe Text)
@@ -140,14 +139,19 @@ instance ToQuery ListHandshakesForAccount where
         toQuery = const mempty
 
 -- | /See:/ 'listHandshakesForAccountResponse' smart constructor.
-data ListHandshakesForAccountResponse =
-  ListHandshakesForAccountResponse'
-    { _lhfarsHandshakes     :: !(Maybe [Handshake])
-    , _lhfarsNextToken      :: !(Maybe Text)
-    , _lhfarsResponseStatus :: !Int
-    }
-  deriving (Eq, Show, Data, Typeable, Generic)
-
+data ListHandshakesForAccountResponse = ListHandshakesForAccountResponse'{_lhfarsHandshakes
+                                                                          ::
+                                                                          !(Maybe
+                                                                              [Handshake]),
+                                                                          _lhfarsNextToken
+                                                                          ::
+                                                                          !(Maybe
+                                                                              Text),
+                                                                          _lhfarsResponseStatus
+                                                                          ::
+                                                                          !Int}
+                                          deriving (Eq, Show, Data, Typeable,
+                                                    Generic)
 
 -- | Creates a value of 'ListHandshakesForAccountResponse' with the minimum fields required to make a request.
 --
@@ -161,13 +165,11 @@ data ListHandshakesForAccountResponse =
 listHandshakesForAccountResponse
     :: Int -- ^ 'lhfarsResponseStatus'
     -> ListHandshakesForAccountResponse
-listHandshakesForAccountResponse pResponseStatus_ =
-  ListHandshakesForAccountResponse'
-    { _lhfarsHandshakes = Nothing
-    , _lhfarsNextToken = Nothing
-    , _lhfarsResponseStatus = pResponseStatus_
-    }
-
+listHandshakesForAccountResponse pResponseStatus_
+  = ListHandshakesForAccountResponse'{_lhfarsHandshakes
+                                        = Nothing,
+                                      _lhfarsNextToken = Nothing,
+                                      _lhfarsResponseStatus = pResponseStatus_}
 
 -- | A list of 'Handshake' objects with details about each of the handshakes that is associated with the specified account.
 lhfarsHandshakes :: Lens' ListHandshakesForAccountResponse [Handshake]

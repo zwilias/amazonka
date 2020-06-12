@@ -53,8 +53,14 @@ library
         , Network.AWS.CostAndUsageReport.Waiters
 
     other-modules:
-          Network.AWS.CostAndUsageReport.Types.Product
-        , Network.AWS.CostAndUsageReport.Types.Sum
+          Network.AWS.CostAndUsageReport.Types.AWSRegion
+        , Network.AWS.CostAndUsageReport.Types.AdditionalArtifact
+        , Network.AWS.CostAndUsageReport.Types.CompressionFormat
+        , Network.AWS.CostAndUsageReport.Types.ReportDefinition
+        , Network.AWS.CostAndUsageReport.Types.ReportFormat
+        , Network.AWS.CostAndUsageReport.Types.ReportVersioning
+        , Network.AWS.CostAndUsageReport.Types.SchemaElement
+        , Network.AWS.CostAndUsageReport.Types.TimeUnit
 
     build-depends:
           amazonka-core == 1.6.1.*

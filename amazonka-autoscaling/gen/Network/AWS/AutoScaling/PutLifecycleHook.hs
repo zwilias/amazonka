@@ -29,7 +29,7 @@
 --
 --     * (Optional) Create a notification target and an IAM role. The target can be either an Amazon SQS queue or an Amazon SNS topic. The role allows Amazon EC2 Auto Scaling to publish lifecycle notifications to the target.
 --
---     * __Create the lifecycle hook. Specify whether the hook is used when the instances launch or terminate.__
+--     * __Create the lifecycle hook. Specify whether the hook is used when the instances launch or terminate.__ 
 --
 --     * If you need more time, record the lifecycle action heartbeat to keep the instance in a pending state using 'RecordLifecycleActionHeartbeat' .
 --
@@ -66,26 +66,25 @@ module Network.AWS.AutoScaling.PutLifecycleHook
     ) where
 
 import Network.AWS.AutoScaling.Types
-import Network.AWS.AutoScaling.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 
 -- | /See:/ 'putLifecycleHook' smart constructor.
-data PutLifecycleHook =
-  PutLifecycleHook'
-    { _plhDefaultResult         :: !(Maybe Text)
-    , _plhHeartbeatTimeout      :: !(Maybe Int)
-    , _plhNotificationMetadata  :: !(Maybe Text)
-    , _plhNotificationTargetARN :: !(Maybe Text)
-    , _plhLifecycleTransition   :: !(Maybe Text)
-    , _plhRoleARN               :: !(Maybe Text)
-    , _plhLifecycleHookName     :: !Text
-    , _plhAutoScalingGroupName  :: !Text
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data PutLifecycleHook = PutLifecycleHook'{_plhDefaultResult
+                                          :: !(Maybe Text),
+                                          _plhHeartbeatTimeout :: !(Maybe Int),
+                                          _plhNotificationMetadata ::
+                                          !(Maybe Text),
+                                          _plhNotificationTargetARN ::
+                                          !(Maybe Text),
+                                          _plhLifecycleTransition ::
+                                          !(Maybe Text),
+                                          _plhRoleARN :: !(Maybe Text),
+                                          _plhLifecycleHookName :: !Text,
+                                          _plhAutoScalingGroupName :: !Text}
+                          deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'PutLifecycleHook' with the minimum fields required to make a request.
 --
@@ -110,18 +109,16 @@ putLifecycleHook
     :: Text -- ^ 'plhLifecycleHookName'
     -> Text -- ^ 'plhAutoScalingGroupName'
     -> PutLifecycleHook
-putLifecycleHook pLifecycleHookName_ pAutoScalingGroupName_ =
-  PutLifecycleHook'
-    { _plhDefaultResult = Nothing
-    , _plhHeartbeatTimeout = Nothing
-    , _plhNotificationMetadata = Nothing
-    , _plhNotificationTargetARN = Nothing
-    , _plhLifecycleTransition = Nothing
-    , _plhRoleARN = Nothing
-    , _plhLifecycleHookName = pLifecycleHookName_
-    , _plhAutoScalingGroupName = pAutoScalingGroupName_
-    }
-
+putLifecycleHook pLifecycleHookName_
+  pAutoScalingGroupName_
+  = PutLifecycleHook'{_plhDefaultResult = Nothing,
+                      _plhHeartbeatTimeout = Nothing,
+                      _plhNotificationMetadata = Nothing,
+                      _plhNotificationTargetARN = Nothing,
+                      _plhLifecycleTransition = Nothing,
+                      _plhRoleARN = Nothing,
+                      _plhLifecycleHookName = pLifecycleHookName_,
+                      _plhAutoScalingGroupName = pAutoScalingGroupName_}
 
 -- | Defines the action the Auto Scaling group should take when the lifecycle hook timeout elapses or if an unexpected failure occurs. This parameter can be either @CONTINUE@ or @ABANDON@ . The default value is @ABANDON@ .
 plhDefaultResult :: Lens' PutLifecycleHook (Maybe Text)
@@ -188,12 +185,10 @@ instance ToQuery PutLifecycleHook where
                "AutoScalingGroupName" =: _plhAutoScalingGroupName]
 
 -- | /See:/ 'putLifecycleHookResponse' smart constructor.
-newtype PutLifecycleHookResponse =
-  PutLifecycleHookResponse'
-    { _plhrsResponseStatus :: Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+newtype PutLifecycleHookResponse = PutLifecycleHookResponse'{_plhrsResponseStatus
+                                                             :: Int}
+                                     deriving (Eq, Read, Show, Data, Typeable,
+                                               Generic)
 
 -- | Creates a value of 'PutLifecycleHookResponse' with the minimum fields required to make a request.
 --
@@ -203,9 +198,9 @@ newtype PutLifecycleHookResponse =
 putLifecycleHookResponse
     :: Int -- ^ 'plhrsResponseStatus'
     -> PutLifecycleHookResponse
-putLifecycleHookResponse pResponseStatus_ =
-  PutLifecycleHookResponse' {_plhrsResponseStatus = pResponseStatus_}
-
+putLifecycleHookResponse pResponseStatus_
+  = PutLifecycleHookResponse'{_plhrsResponseStatus =
+                                pResponseStatus_}
 
 -- | -- | The response status code.
 plhrsResponseStatus :: Lens' PutLifecycleHookResponse Int

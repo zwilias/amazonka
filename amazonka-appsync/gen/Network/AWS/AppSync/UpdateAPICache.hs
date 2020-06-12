@@ -41,7 +41,6 @@ module Network.AWS.AppSync.UpdateAPICache
     ) where
 
 import Network.AWS.AppSync.Types
-import Network.AWS.AppSync.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.Request
@@ -52,15 +51,13 @@ import Network.AWS.Response
 --
 --
 -- /See:/ 'updateAPICache' smart constructor.
-data UpdateAPICache =
-  UpdateAPICache'
-    { _uacApiId              :: !Text
-    , _uacTtl                :: !Integer
-    , _uacApiCachingBehavior :: !APICachingBehavior
-    , _uacType               :: !APICacheType
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data UpdateAPICache = UpdateAPICache'{_uacApiId ::
+                                      !Text,
+                                      _uacTtl :: !Integer,
+                                      _uacApiCachingBehavior ::
+                                      !APICachingBehavior,
+                                      _uacType :: !APICacheType}
+                        deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'UpdateAPICache' with the minimum fields required to make a request.
 --
@@ -79,14 +76,12 @@ updateAPICache
     -> APICachingBehavior -- ^ 'uacApiCachingBehavior'
     -> APICacheType -- ^ 'uacType'
     -> UpdateAPICache
-updateAPICache pApiId_ pTtl_ pApiCachingBehavior_ pType_ =
-  UpdateAPICache'
-    { _uacApiId = pApiId_
-    , _uacTtl = pTtl_
-    , _uacApiCachingBehavior = pApiCachingBehavior_
-    , _uacType = pType_
-    }
-
+updateAPICache pApiId_ pTtl_ pApiCachingBehavior_
+  pType_
+  = UpdateAPICache'{_uacApiId = pApiId_,
+                    _uacTtl = pTtl_,
+                    _uacApiCachingBehavior = pApiCachingBehavior_,
+                    _uacType = pType_}
 
 -- | The GraphQL API Id.
 uacApiId :: Lens' UpdateAPICache Text
@@ -146,13 +141,12 @@ instance ToQuery UpdateAPICache where
 --
 --
 -- /See:/ 'updateAPICacheResponse' smart constructor.
-data UpdateAPICacheResponse =
-  UpdateAPICacheResponse'
-    { _uacrsApiCache       :: !(Maybe APICache)
-    , _uacrsResponseStatus :: !Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data UpdateAPICacheResponse = UpdateAPICacheResponse'{_uacrsApiCache
+                                                      :: !(Maybe APICache),
+                                                      _uacrsResponseStatus ::
+                                                      !Int}
+                                deriving (Eq, Read, Show, Data, Typeable,
+                                          Generic)
 
 -- | Creates a value of 'UpdateAPICacheResponse' with the minimum fields required to make a request.
 --
@@ -164,10 +158,9 @@ data UpdateAPICacheResponse =
 updateAPICacheResponse
     :: Int -- ^ 'uacrsResponseStatus'
     -> UpdateAPICacheResponse
-updateAPICacheResponse pResponseStatus_ =
-  UpdateAPICacheResponse'
-    {_uacrsApiCache = Nothing, _uacrsResponseStatus = pResponseStatus_}
-
+updateAPICacheResponse pResponseStatus_
+  = UpdateAPICacheResponse'{_uacrsApiCache = Nothing,
+                            _uacrsResponseStatus = pResponseStatus_}
 
 -- | The @ApiCache@ object.
 uacrsApiCache :: Lens' UpdateAPICacheResponse (Maybe APICache)

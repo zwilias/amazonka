@@ -43,7 +43,6 @@ module Network.AWS.Comprehend.ListDocumentClassifiers
     ) where
 
 import Network.AWS.Comprehend.Types
-import Network.AWS.Comprehend.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Pager
 import Network.AWS.Prelude
@@ -51,14 +50,15 @@ import Network.AWS.Request
 import Network.AWS.Response
 
 -- | /See:/ 'listDocumentClassifiers' smart constructor.
-data ListDocumentClassifiers =
-  ListDocumentClassifiers'
-    { _ldcNextToken  :: !(Maybe Text)
-    , _ldcFilter     :: !(Maybe DocumentClassifierFilter)
-    , _ldcMaxResults :: !(Maybe Nat)
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data ListDocumentClassifiers = ListDocumentClassifiers'{_ldcNextToken
+                                                        :: !(Maybe Text),
+                                                        _ldcFilter ::
+                                                        !(Maybe
+                                                            DocumentClassifierFilter),
+                                                        _ldcMaxResults ::
+                                                        !(Maybe Nat)}
+                                 deriving (Eq, Read, Show, Data, Typeable,
+                                           Generic)
 
 -- | Creates a value of 'ListDocumentClassifiers' with the minimum fields required to make a request.
 --
@@ -71,10 +71,9 @@ data ListDocumentClassifiers =
 -- * 'ldcMaxResults' - The maximum number of results to return in each page. The default is 100.
 listDocumentClassifiers
     :: ListDocumentClassifiers
-listDocumentClassifiers =
-  ListDocumentClassifiers'
-    {_ldcNextToken = Nothing, _ldcFilter = Nothing, _ldcMaxResults = Nothing}
-
+listDocumentClassifiers
+  = ListDocumentClassifiers'{_ldcNextToken = Nothing,
+                             _ldcFilter = Nothing, _ldcMaxResults = Nothing}
 
 -- | Identifies the next page of results to return.
 ldcNextToken :: Lens' ListDocumentClassifiers (Maybe Text)
@@ -137,14 +136,18 @@ instance ToQuery ListDocumentClassifiers where
         toQuery = const mempty
 
 -- | /See:/ 'listDocumentClassifiersResponse' smart constructor.
-data ListDocumentClassifiersResponse =
-  ListDocumentClassifiersResponse'
-    { _ldcrsNextToken :: !(Maybe Text)
-    , _ldcrsDocumentClassifierPropertiesList :: !(Maybe [DocumentClassifierProperties])
-    , _ldcrsResponseStatus :: !Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data ListDocumentClassifiersResponse = ListDocumentClassifiersResponse'{_ldcrsNextToken
+                                                                        ::
+                                                                        !(Maybe
+                                                                            Text),
+                                                                        _ldcrsDocumentClassifierPropertiesList
+                                                                        ::
+                                                                        !(Maybe
+                                                                            [DocumentClassifierProperties]),
+                                                                        _ldcrsResponseStatus
+                                                                        :: !Int}
+                                         deriving (Eq, Read, Show, Data,
+                                                   Typeable, Generic)
 
 -- | Creates a value of 'ListDocumentClassifiersResponse' with the minimum fields required to make a request.
 --
@@ -158,13 +161,12 @@ data ListDocumentClassifiersResponse =
 listDocumentClassifiersResponse
     :: Int -- ^ 'ldcrsResponseStatus'
     -> ListDocumentClassifiersResponse
-listDocumentClassifiersResponse pResponseStatus_ =
-  ListDocumentClassifiersResponse'
-    { _ldcrsNextToken = Nothing
-    , _ldcrsDocumentClassifierPropertiesList = Nothing
-    , _ldcrsResponseStatus = pResponseStatus_
-    }
-
+listDocumentClassifiersResponse pResponseStatus_
+  = ListDocumentClassifiersResponse'{_ldcrsNextToken =
+                                       Nothing,
+                                     _ldcrsDocumentClassifierPropertiesList =
+                                       Nothing,
+                                     _ldcrsResponseStatus = pResponseStatus_}
 
 -- | Identifies the next page of results to return.
 ldcrsNextToken :: Lens' ListDocumentClassifiersResponse (Maybe Text)

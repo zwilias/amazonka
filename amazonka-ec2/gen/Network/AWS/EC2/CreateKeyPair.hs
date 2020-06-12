@@ -50,21 +50,17 @@ module Network.AWS.EC2.CreateKeyPair
     ) where
 
 import Network.AWS.EC2.Types
-import Network.AWS.EC2.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 
 -- | /See:/ 'createKeyPair' smart constructor.
-data CreateKeyPair =
-  CreateKeyPair'
-    { _ckpTagSpecifications :: !(Maybe [TagSpecification])
-    , _ckpDryRun            :: !(Maybe Bool)
-    , _ckpKeyName           :: !Text
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data CreateKeyPair = CreateKeyPair'{_ckpTagSpecifications
+                                    :: !(Maybe [TagSpecification]),
+                                    _ckpDryRun :: !(Maybe Bool),
+                                    _ckpKeyName :: !Text}
+                       deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'CreateKeyPair' with the minimum fields required to make a request.
 --
@@ -78,13 +74,9 @@ data CreateKeyPair =
 createKeyPair
     :: Text -- ^ 'ckpKeyName'
     -> CreateKeyPair
-createKeyPair pKeyName_ =
-  CreateKeyPair'
-    { _ckpTagSpecifications = Nothing
-    , _ckpDryRun = Nothing
-    , _ckpKeyName = pKeyName_
-    }
-
+createKeyPair pKeyName_
+  = CreateKeyPair'{_ckpTagSpecifications = Nothing,
+                   _ckpDryRun = Nothing, _ckpKeyName = pKeyName_}
 
 -- | The tags to apply to the new key pair.
 ckpTagSpecifications :: Lens' CreateKeyPair [TagSpecification]
@@ -138,17 +130,18 @@ instance ToQuery CreateKeyPair where
 --
 --
 -- /See:/ 'createKeyPairResponse' smart constructor.
-data CreateKeyPairResponse =
-  CreateKeyPairResponse'
-    { _ckprsKeyPairId      :: !(Maybe Text)
-    , _ckprsTags           :: !(Maybe [Tag])
-    , _ckprsResponseStatus :: !Int
-    , _ckprsKeyName        :: !Text
-    , _ckprsKeyFingerprint :: !Text
-    , _ckprsKeyMaterial    :: !(Sensitive Text)
-    }
-  deriving (Eq, Show, Data, Typeable, Generic)
-
+data CreateKeyPairResponse = CreateKeyPairResponse'{_ckprsKeyPairId
+                                                    :: !(Maybe Text),
+                                                    _ckprsTags ::
+                                                    !(Maybe [Tag]),
+                                                    _ckprsResponseStatus ::
+                                                    !Int,
+                                                    _ckprsKeyName :: !Text,
+                                                    _ckprsKeyFingerprint ::
+                                                    !Text,
+                                                    _ckprsKeyMaterial ::
+                                                    !(Sensitive Text)}
+                               deriving (Eq, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'CreateKeyPairResponse' with the minimum fields required to make a request.
 --
@@ -171,16 +164,14 @@ createKeyPairResponse
     -> Text -- ^ 'ckprsKeyFingerprint'
     -> Text -- ^ 'ckprsKeyMaterial'
     -> CreateKeyPairResponse
-createKeyPairResponse pResponseStatus_ pKeyName_ pKeyFingerprint_ pKeyMaterial_ =
-  CreateKeyPairResponse'
-    { _ckprsKeyPairId = Nothing
-    , _ckprsTags = Nothing
-    , _ckprsResponseStatus = pResponseStatus_
-    , _ckprsKeyName = pKeyName_
-    , _ckprsKeyFingerprint = pKeyFingerprint_
-    , _ckprsKeyMaterial = _Sensitive # pKeyMaterial_
-    }
-
+createKeyPairResponse pResponseStatus_ pKeyName_
+  pKeyFingerprint_ pKeyMaterial_
+  = CreateKeyPairResponse'{_ckprsKeyPairId = Nothing,
+                           _ckprsTags = Nothing,
+                           _ckprsResponseStatus = pResponseStatus_,
+                           _ckprsKeyName = pKeyName_,
+                           _ckprsKeyFingerprint = pKeyFingerprint_,
+                           _ckprsKeyMaterial = _Sensitive # pKeyMaterial_}
 
 -- | The ID of the key pair.
 ckprsKeyPairId :: Lens' CreateKeyPairResponse (Maybe Text)

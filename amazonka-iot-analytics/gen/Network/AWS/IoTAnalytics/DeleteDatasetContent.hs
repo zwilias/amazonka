@@ -36,20 +36,16 @@ module Network.AWS.IoTAnalytics.DeleteDatasetContent
     ) where
 
 import Network.AWS.IoTAnalytics.Types
-import Network.AWS.IoTAnalytics.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 
 -- | /See:/ 'deleteDatasetContent' smart constructor.
-data DeleteDatasetContent =
-  DeleteDatasetContent'
-    { _ddcVersionId   :: !(Maybe Text)
-    , _ddcDatasetName :: !Text
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data DeleteDatasetContent = DeleteDatasetContent'{_ddcVersionId
+                                                  :: !(Maybe Text),
+                                                  _ddcDatasetName :: !Text}
+                              deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'DeleteDatasetContent' with the minimum fields required to make a request.
 --
@@ -61,10 +57,9 @@ data DeleteDatasetContent =
 deleteDatasetContent
     :: Text -- ^ 'ddcDatasetName'
     -> DeleteDatasetContent
-deleteDatasetContent pDatasetName_ =
-  DeleteDatasetContent'
-    {_ddcVersionId = Nothing, _ddcDatasetName = pDatasetName_}
-
+deleteDatasetContent pDatasetName_
+  = DeleteDatasetContent'{_ddcVersionId = Nothing,
+                          _ddcDatasetName = pDatasetName_}
 
 -- | The version of the data set whose content is deleted. You can also use the strings "$LATEST" or "$LATEST_SUCCEEDED" to delete the latest or latest successfully completed data set. If not specified, "$LATEST_SUCCEEDED" is the default.
 ddcVersionId :: Lens' DeleteDatasetContent (Maybe Text)
@@ -97,16 +92,15 @@ instance ToQuery DeleteDatasetContent where
           = mconcat ["versionId" =: _ddcVersionId]
 
 -- | /See:/ 'deleteDatasetContentResponse' smart constructor.
-data DeleteDatasetContentResponse =
-  DeleteDatasetContentResponse'
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data DeleteDatasetContentResponse = DeleteDatasetContentResponse'
+                                      deriving (Eq, Read, Show, Data, Typeable,
+                                                Generic)
 
 -- | Creates a value of 'DeleteDatasetContentResponse' with the minimum fields required to make a request.
 --
 deleteDatasetContentResponse
     :: DeleteDatasetContentResponse
-deleteDatasetContentResponse = DeleteDatasetContentResponse'
-
+deleteDatasetContentResponse
+  = DeleteDatasetContentResponse'
 
 instance NFData DeleteDatasetContentResponse where

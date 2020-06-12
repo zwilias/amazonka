@@ -40,15 +40,12 @@ import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 import Network.AWS.S3.Types
-import Network.AWS.S3.Types.Product
 
 -- | /See:/ 'getBucketEncryption' smart constructor.
-newtype GetBucketEncryption =
-  GetBucketEncryption'
-    { _gbeBucket :: BucketName
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+newtype GetBucketEncryption = GetBucketEncryption'{_gbeBucket
+                                                   :: BucketName}
+                                deriving (Eq, Read, Show, Data, Typeable,
+                                          Generic)
 
 -- | Creates a value of 'GetBucketEncryption' with the minimum fields required to make a request.
 --
@@ -58,8 +55,8 @@ newtype GetBucketEncryption =
 getBucketEncryption
     :: BucketName -- ^ 'gbeBucket'
     -> GetBucketEncryption
-getBucketEncryption pBucket_ = GetBucketEncryption' {_gbeBucket = pBucket_}
-
+getBucketEncryption pBucket_
+  = GetBucketEncryption'{_gbeBucket = pBucket_}
 
 -- | The name of the bucket from which the server-side encryption configuration is retrieved.
 gbeBucket :: Lens' GetBucketEncryption BucketName
@@ -90,13 +87,14 @@ instance ToQuery GetBucketEncryption where
         toQuery = const (mconcat ["encryption"])
 
 -- | /See:/ 'getBucketEncryptionResponse' smart constructor.
-data GetBucketEncryptionResponse =
-  GetBucketEncryptionResponse'
-    { _gbersServerSideEncryptionConfiguration :: !(Maybe ServerSideEncryptionConfiguration)
-    , _gbersResponseStatus :: !Int
-    }
-  deriving (Eq, Show, Data, Typeable, Generic)
-
+data GetBucketEncryptionResponse = GetBucketEncryptionResponse'{_gbersServerSideEncryptionConfiguration
+                                                                ::
+                                                                !(Maybe
+                                                                    ServerSideEncryptionConfiguration),
+                                                                _gbersResponseStatus
+                                                                :: !Int}
+                                     deriving (Eq, Show, Data, Typeable,
+                                               Generic)
 
 -- | Creates a value of 'GetBucketEncryptionResponse' with the minimum fields required to make a request.
 --
@@ -108,12 +106,10 @@ data GetBucketEncryptionResponse =
 getBucketEncryptionResponse
     :: Int -- ^ 'gbersResponseStatus'
     -> GetBucketEncryptionResponse
-getBucketEncryptionResponse pResponseStatus_ =
-  GetBucketEncryptionResponse'
-    { _gbersServerSideEncryptionConfiguration = Nothing
-    , _gbersResponseStatus = pResponseStatus_
-    }
-
+getBucketEncryptionResponse pResponseStatus_
+  = GetBucketEncryptionResponse'{_gbersServerSideEncryptionConfiguration
+                                   = Nothing,
+                                 _gbersResponseStatus = pResponseStatus_}
 
 -- | Undocumented member.
 gbersServerSideEncryptionConfiguration :: Lens' GetBucketEncryptionResponse (Maybe ServerSideEncryptionConfiguration)

@@ -38,18 +38,15 @@ module Network.AWS.RDS.RemoveRoleFromDBCluster
 import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.RDS.Types
-import Network.AWS.RDS.Types.Product
 import Network.AWS.Request
 import Network.AWS.Response
 
 -- | /See:/ 'removeRoleFromDBCluster' smart constructor.
-data RemoveRoleFromDBCluster =
-  RemoveRoleFromDBCluster'
-    { _rrfdcDBClusterIdentifier :: !Text
-    , _rrfdcRoleARN             :: !Text
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data RemoveRoleFromDBCluster = RemoveRoleFromDBCluster'{_rrfdcDBClusterIdentifier
+                                                        :: !Text,
+                                                        _rrfdcRoleARN :: !Text}
+                                 deriving (Eq, Read, Show, Data, Typeable,
+                                           Generic)
 
 -- | Creates a value of 'RemoveRoleFromDBCluster' with the minimum fields required to make a request.
 --
@@ -62,12 +59,11 @@ removeRoleFromDBCluster
     :: Text -- ^ 'rrfdcDBClusterIdentifier'
     -> Text -- ^ 'rrfdcRoleARN'
     -> RemoveRoleFromDBCluster
-removeRoleFromDBCluster pDBClusterIdentifier_ pRoleARN_ =
-  RemoveRoleFromDBCluster'
-    { _rrfdcDBClusterIdentifier = pDBClusterIdentifier_
-    , _rrfdcRoleARN = pRoleARN_
-    }
-
+removeRoleFromDBCluster pDBClusterIdentifier_
+  pRoleARN_
+  = RemoveRoleFromDBCluster'{_rrfdcDBClusterIdentifier
+                               = pDBClusterIdentifier_,
+                             _rrfdcRoleARN = pRoleARN_}
 
 -- | The name of the DB cluster to disassociate the IAM role from.
 rrfdcDBClusterIdentifier :: Lens' RemoveRoleFromDBCluster Text
@@ -104,16 +100,15 @@ instance ToQuery RemoveRoleFromDBCluster where
                "RoleArn" =: _rrfdcRoleARN]
 
 -- | /See:/ 'removeRoleFromDBClusterResponse' smart constructor.
-data RemoveRoleFromDBClusterResponse =
-  RemoveRoleFromDBClusterResponse'
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data RemoveRoleFromDBClusterResponse = RemoveRoleFromDBClusterResponse'
+                                         deriving (Eq, Read, Show, Data,
+                                                   Typeable, Generic)
 
 -- | Creates a value of 'RemoveRoleFromDBClusterResponse' with the minimum fields required to make a request.
 --
 removeRoleFromDBClusterResponse
     :: RemoveRoleFromDBClusterResponse
-removeRoleFromDBClusterResponse = RemoveRoleFromDBClusterResponse'
-
+removeRoleFromDBClusterResponse
+  = RemoveRoleFromDBClusterResponse'
 
 instance NFData RemoveRoleFromDBClusterResponse where

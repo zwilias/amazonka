@@ -48,28 +48,36 @@ module Network.AWS.EC2.RevokeSecurityGroupIngress
     ) where
 
 import Network.AWS.EC2.Types
-import Network.AWS.EC2.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 
 -- | /See:/ 'revokeSecurityGroupIngress' smart constructor.
-data RevokeSecurityGroupIngress =
-  RevokeSecurityGroupIngress'
-    { _rsgiFromPort                   :: !(Maybe Int)
-    , _rsgiIPPermissions              :: !(Maybe [IPPermission])
-    , _rsgiIPProtocol                 :: !(Maybe Text)
-    , _rsgiGroupId                    :: !(Maybe Text)
-    , _rsgiToPort                     :: !(Maybe Int)
-    , _rsgiCidrIP                     :: !(Maybe Text)
-    , _rsgiSourceSecurityGroupOwnerId :: !(Maybe Text)
-    , _rsgiGroupName                  :: !(Maybe Text)
-    , _rsgiSourceSecurityGroupName    :: !(Maybe Text)
-    , _rsgiDryRun                     :: !(Maybe Bool)
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data RevokeSecurityGroupIngress = RevokeSecurityGroupIngress'{_rsgiFromPort
+                                                              :: !(Maybe Int),
+                                                              _rsgiIPPermissions
+                                                              ::
+                                                              !(Maybe
+                                                                  [IPPermission]),
+                                                              _rsgiIPProtocol ::
+                                                              !(Maybe Text),
+                                                              _rsgiGroupId ::
+                                                              !(Maybe Text),
+                                                              _rsgiToPort ::
+                                                              !(Maybe Int),
+                                                              _rsgiCidrIP ::
+                                                              !(Maybe Text),
+                                                              _rsgiSourceSecurityGroupOwnerId
+                                                              :: !(Maybe Text),
+                                                              _rsgiGroupName ::
+                                                              !(Maybe Text),
+                                                              _rsgiSourceSecurityGroupName
+                                                              :: !(Maybe Text),
+                                                              _rsgiDryRun ::
+                                                              !(Maybe Bool)}
+                                    deriving (Eq, Read, Show, Data, Typeable,
+                                              Generic)
 
 -- | Creates a value of 'RevokeSecurityGroupIngress' with the minimum fields required to make a request.
 --
@@ -96,20 +104,17 @@ data RevokeSecurityGroupIngress =
 -- * 'rsgiDryRun' - Checks whether you have the required permissions for the action, without actually making the request, and provides an error response. If you have the required permissions, the error response is @DryRunOperation@ . Otherwise, it is @UnauthorizedOperation@ .
 revokeSecurityGroupIngress
     :: RevokeSecurityGroupIngress
-revokeSecurityGroupIngress =
-  RevokeSecurityGroupIngress'
-    { _rsgiFromPort = Nothing
-    , _rsgiIPPermissions = Nothing
-    , _rsgiIPProtocol = Nothing
-    , _rsgiGroupId = Nothing
-    , _rsgiToPort = Nothing
-    , _rsgiCidrIP = Nothing
-    , _rsgiSourceSecurityGroupOwnerId = Nothing
-    , _rsgiGroupName = Nothing
-    , _rsgiSourceSecurityGroupName = Nothing
-    , _rsgiDryRun = Nothing
-    }
-
+revokeSecurityGroupIngress
+  = RevokeSecurityGroupIngress'{_rsgiFromPort =
+                                  Nothing,
+                                _rsgiIPPermissions = Nothing,
+                                _rsgiIPProtocol = Nothing,
+                                _rsgiGroupId = Nothing, _rsgiToPort = Nothing,
+                                _rsgiCidrIP = Nothing,
+                                _rsgiSourceSecurityGroupOwnerId = Nothing,
+                                _rsgiGroupName = Nothing,
+                                _rsgiSourceSecurityGroupName = Nothing,
+                                _rsgiDryRun = Nothing}
 
 -- | The start of port range for the TCP and UDP protocols, or an ICMP type number. For the ICMP type number, use @-1@ to specify all ICMP types.
 rsgiFromPort :: Lens' RevokeSecurityGroupIngress (Maybe Int)
@@ -188,17 +193,16 @@ instance ToQuery RevokeSecurityGroupIngress where
                "DryRun" =: _rsgiDryRun]
 
 -- | /See:/ 'revokeSecurityGroupIngressResponse' smart constructor.
-data RevokeSecurityGroupIngressResponse =
-  RevokeSecurityGroupIngressResponse'
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data RevokeSecurityGroupIngressResponse = RevokeSecurityGroupIngressResponse'
+                                            deriving (Eq, Read, Show, Data,
+                                                      Typeable, Generic)
 
 -- | Creates a value of 'RevokeSecurityGroupIngressResponse' with the minimum fields required to make a request.
 --
 revokeSecurityGroupIngressResponse
     :: RevokeSecurityGroupIngressResponse
-revokeSecurityGroupIngressResponse = RevokeSecurityGroupIngressResponse'
-
+revokeSecurityGroupIngressResponse
+  = RevokeSecurityGroupIngressResponse'
 
 instance NFData RevokeSecurityGroupIngressResponse
          where

@@ -49,7 +49,6 @@ module Network.AWS.EC2.CreateNetworkInterface
     ) where
 
 import Network.AWS.EC2.Types
-import Network.AWS.EC2.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.Request
@@ -60,21 +59,30 @@ import Network.AWS.Response
 --
 --
 -- /See:/ 'createNetworkInterface' smart constructor.
-data CreateNetworkInterface =
-  CreateNetworkInterface'
-    { _cniGroups :: !(Maybe [Text])
-    , _cniPrivateIPAddresses :: !(Maybe [PrivateIPAddressSpecification])
-    , _cniInterfaceType :: !(Maybe NetworkInterfaceCreationType)
-    , _cniIPv6AddressCount :: !(Maybe Int)
-    , _cniPrivateIPAddress :: !(Maybe Text)
-    , _cniSecondaryPrivateIPAddressCount :: !(Maybe Int)
-    , _cniDescription :: !(Maybe Text)
-    , _cniDryRun :: !(Maybe Bool)
-    , _cniIPv6Addresses :: !(Maybe [InstanceIPv6Address])
-    , _cniSubnetId :: !Text
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data CreateNetworkInterface = CreateNetworkInterface'{_cniGroups
+                                                      :: !(Maybe [Text]),
+                                                      _cniPrivateIPAddresses ::
+                                                      !(Maybe
+                                                          [PrivateIPAddressSpecification]),
+                                                      _cniInterfaceType ::
+                                                      !(Maybe
+                                                          NetworkInterfaceCreationType),
+                                                      _cniIPv6AddressCount ::
+                                                      !(Maybe Int),
+                                                      _cniPrivateIPAddress ::
+                                                      !(Maybe Text),
+                                                      _cniSecondaryPrivateIPAddressCount
+                                                      :: !(Maybe Int),
+                                                      _cniDescription ::
+                                                      !(Maybe Text),
+                                                      _cniDryRun ::
+                                                      !(Maybe Bool),
+                                                      _cniIPv6Addresses ::
+                                                      !(Maybe
+                                                          [InstanceIPv6Address]),
+                                                      _cniSubnetId :: !Text}
+                                deriving (Eq, Read, Show, Data, Typeable,
+                                          Generic)
 
 -- | Creates a value of 'CreateNetworkInterface' with the minimum fields required to make a request.
 --
@@ -102,20 +110,16 @@ data CreateNetworkInterface =
 createNetworkInterface
     :: Text -- ^ 'cniSubnetId'
     -> CreateNetworkInterface
-createNetworkInterface pSubnetId_ =
-  CreateNetworkInterface'
-    { _cniGroups = Nothing
-    , _cniPrivateIPAddresses = Nothing
-    , _cniInterfaceType = Nothing
-    , _cniIPv6AddressCount = Nothing
-    , _cniPrivateIPAddress = Nothing
-    , _cniSecondaryPrivateIPAddressCount = Nothing
-    , _cniDescription = Nothing
-    , _cniDryRun = Nothing
-    , _cniIPv6Addresses = Nothing
-    , _cniSubnetId = pSubnetId_
-    }
-
+createNetworkInterface pSubnetId_
+  = CreateNetworkInterface'{_cniGroups = Nothing,
+                            _cniPrivateIPAddresses = Nothing,
+                            _cniInterfaceType = Nothing,
+                            _cniIPv6AddressCount = Nothing,
+                            _cniPrivateIPAddress = Nothing,
+                            _cniSecondaryPrivateIPAddressCount = Nothing,
+                            _cniDescription = Nothing, _cniDryRun = Nothing,
+                            _cniIPv6Addresses = Nothing,
+                            _cniSubnetId = pSubnetId_}
 
 -- | The IDs of one or more security groups.
 cniGroups :: Lens' CreateNetworkInterface [Text]
@@ -204,13 +208,14 @@ instance ToQuery CreateNetworkInterface where
 --
 --
 -- /See:/ 'createNetworkInterfaceResponse' smart constructor.
-data CreateNetworkInterfaceResponse =
-  CreateNetworkInterfaceResponse'
-    { _cnirsNetworkInterface :: !(Maybe NetworkInterface)
-    , _cnirsResponseStatus   :: !Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data CreateNetworkInterfaceResponse = CreateNetworkInterfaceResponse'{_cnirsNetworkInterface
+                                                                      ::
+                                                                      !(Maybe
+                                                                          NetworkInterface),
+                                                                      _cnirsResponseStatus
+                                                                      :: !Int}
+                                        deriving (Eq, Read, Show, Data,
+                                                  Typeable, Generic)
 
 -- | Creates a value of 'CreateNetworkInterfaceResponse' with the minimum fields required to make a request.
 --
@@ -222,10 +227,10 @@ data CreateNetworkInterfaceResponse =
 createNetworkInterfaceResponse
     :: Int -- ^ 'cnirsResponseStatus'
     -> CreateNetworkInterfaceResponse
-createNetworkInterfaceResponse pResponseStatus_ =
-  CreateNetworkInterfaceResponse'
-    {_cnirsNetworkInterface = Nothing, _cnirsResponseStatus = pResponseStatus_}
-
+createNetworkInterfaceResponse pResponseStatus_
+  = CreateNetworkInterfaceResponse'{_cnirsNetworkInterface
+                                      = Nothing,
+                                    _cnirsResponseStatus = pResponseStatus_}
 
 -- | Information about the network interface.
 cnirsNetworkInterface :: Lens' CreateNetworkInterfaceResponse (Maybe NetworkInterface)

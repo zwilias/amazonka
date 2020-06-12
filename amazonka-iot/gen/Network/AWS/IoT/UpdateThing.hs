@@ -41,7 +41,6 @@ module Network.AWS.IoT.UpdateThing
     ) where
 
 import Network.AWS.IoT.Types
-import Network.AWS.IoT.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.Request
@@ -52,16 +51,14 @@ import Network.AWS.Response
 --
 --
 -- /See:/ 'updateThing' smart constructor.
-data UpdateThing =
-  UpdateThing'
-    { _utRemoveThingType  :: !(Maybe Bool)
-    , _utThingTypeName    :: !(Maybe Text)
-    , _utExpectedVersion  :: !(Maybe Integer)
-    , _utAttributePayload :: !(Maybe AttributePayload)
-    , _utThingName        :: !Text
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data UpdateThing = UpdateThing'{_utRemoveThingType ::
+                                !(Maybe Bool),
+                                _utThingTypeName :: !(Maybe Text),
+                                _utExpectedVersion :: !(Maybe Integer),
+                                _utAttributePayload ::
+                                !(Maybe AttributePayload),
+                                _utThingName :: !Text}
+                     deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'UpdateThing' with the minimum fields required to make a request.
 --
@@ -79,15 +76,12 @@ data UpdateThing =
 updateThing
     :: Text -- ^ 'utThingName'
     -> UpdateThing
-updateThing pThingName_ =
-  UpdateThing'
-    { _utRemoveThingType = Nothing
-    , _utThingTypeName = Nothing
-    , _utExpectedVersion = Nothing
-    , _utAttributePayload = Nothing
-    , _utThingName = pThingName_
-    }
-
+updateThing pThingName_
+  = UpdateThing'{_utRemoveThingType = Nothing,
+                 _utThingTypeName = Nothing,
+                 _utExpectedVersion = Nothing,
+                 _utAttributePayload = Nothing,
+                 _utThingName = pThingName_}
 
 -- | Remove a thing type association. If __true__ , the association is removed.
 utRemoveThingType :: Lens' UpdateThing (Maybe Bool)
@@ -145,12 +139,10 @@ instance ToQuery UpdateThing where
 --
 --
 -- /See:/ 'updateThingResponse' smart constructor.
-newtype UpdateThingResponse =
-  UpdateThingResponse'
-    { _utrsResponseStatus :: Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+newtype UpdateThingResponse = UpdateThingResponse'{_utrsResponseStatus
+                                                   :: Int}
+                                deriving (Eq, Read, Show, Data, Typeable,
+                                          Generic)
 
 -- | Creates a value of 'UpdateThingResponse' with the minimum fields required to make a request.
 --
@@ -160,9 +152,9 @@ newtype UpdateThingResponse =
 updateThingResponse
     :: Int -- ^ 'utrsResponseStatus'
     -> UpdateThingResponse
-updateThingResponse pResponseStatus_ =
-  UpdateThingResponse' {_utrsResponseStatus = pResponseStatus_}
-
+updateThingResponse pResponseStatus_
+  = UpdateThingResponse'{_utrsResponseStatus =
+                           pResponseStatus_}
 
 -- | -- | The response status code.
 utrsResponseStatus :: Lens' UpdateThingResponse Int

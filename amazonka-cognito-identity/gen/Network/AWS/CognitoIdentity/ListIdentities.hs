@@ -45,7 +45,6 @@ module Network.AWS.CognitoIdentity.ListIdentities
     ) where
 
 import Network.AWS.CognitoIdentity.Types
-import Network.AWS.CognitoIdentity.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.Request
@@ -56,15 +55,12 @@ import Network.AWS.Response
 --
 --
 -- /See:/ 'listIdentities' smart constructor.
-data ListIdentities =
-  ListIdentities'
-    { _liHideDisabled   :: !(Maybe Bool)
-    , _liNextToken      :: !(Maybe Text)
-    , _liIdentityPoolId :: !Text
-    , _liMaxResults     :: !Nat
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data ListIdentities = ListIdentities'{_liHideDisabled
+                                      :: !(Maybe Bool),
+                                      _liNextToken :: !(Maybe Text),
+                                      _liIdentityPoolId :: !Text,
+                                      _liMaxResults :: !Nat}
+                        deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'ListIdentities' with the minimum fields required to make a request.
 --
@@ -81,14 +77,11 @@ listIdentities
     :: Text -- ^ 'liIdentityPoolId'
     -> Natural -- ^ 'liMaxResults'
     -> ListIdentities
-listIdentities pIdentityPoolId_ pMaxResults_ =
-  ListIdentities'
-    { _liHideDisabled = Nothing
-    , _liNextToken = Nothing
-    , _liIdentityPoolId = pIdentityPoolId_
-    , _liMaxResults = _Nat # pMaxResults_
-    }
-
+listIdentities pIdentityPoolId_ pMaxResults_
+  = ListIdentities'{_liHideDisabled = Nothing,
+                    _liNextToken = Nothing,
+                    _liIdentityPoolId = pIdentityPoolId_,
+                    _liMaxResults = _Nat # pMaxResults_}
 
 -- | An optional boolean parameter that allows you to hide disabled identities. If omitted, the ListIdentities API will include disabled identities in the response.
 liHideDisabled :: Lens' ListIdentities (Maybe Bool)
@@ -151,15 +144,17 @@ instance ToQuery ListIdentities where
 --
 --
 -- /See:/ 'listIdentitiesResponse' smart constructor.
-data ListIdentitiesResponse =
-  ListIdentitiesResponse'
-    { _lirsIdentityPoolId :: !(Maybe Text)
-    , _lirsNextToken      :: !(Maybe Text)
-    , _lirsIdentities     :: !(Maybe [IdentityDescription])
-    , _lirsResponseStatus :: !Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data ListIdentitiesResponse = ListIdentitiesResponse'{_lirsIdentityPoolId
+                                                      :: !(Maybe Text),
+                                                      _lirsNextToken ::
+                                                      !(Maybe Text),
+                                                      _lirsIdentities ::
+                                                      !(Maybe
+                                                          [IdentityDescription]),
+                                                      _lirsResponseStatus ::
+                                                      !Int}
+                                deriving (Eq, Read, Show, Data, Typeable,
+                                          Generic)
 
 -- | Creates a value of 'ListIdentitiesResponse' with the minimum fields required to make a request.
 --
@@ -175,14 +170,11 @@ data ListIdentitiesResponse =
 listIdentitiesResponse
     :: Int -- ^ 'lirsResponseStatus'
     -> ListIdentitiesResponse
-listIdentitiesResponse pResponseStatus_ =
-  ListIdentitiesResponse'
-    { _lirsIdentityPoolId = Nothing
-    , _lirsNextToken = Nothing
-    , _lirsIdentities = Nothing
-    , _lirsResponseStatus = pResponseStatus_
-    }
-
+listIdentitiesResponse pResponseStatus_
+  = ListIdentitiesResponse'{_lirsIdentityPoolId =
+                              Nothing,
+                            _lirsNextToken = Nothing, _lirsIdentities = Nothing,
+                            _lirsResponseStatus = pResponseStatus_}
 
 -- | An identity pool ID in the format REGION:GUID.
 lirsIdentityPoolId :: Lens' ListIdentitiesResponse (Maybe Text)

@@ -38,7 +38,6 @@ module Network.AWS.DMS.AddTagsToResource
     ) where
 
 import Network.AWS.DMS.Types
-import Network.AWS.DMS.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.Request
@@ -49,13 +48,10 @@ import Network.AWS.Response
 --
 --
 -- /See:/ 'addTagsToResource' smart constructor.
-data AddTagsToResource =
-  AddTagsToResource'
-    { _attrResourceARN :: !Text
-    , _attrTags        :: ![Tag]
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data AddTagsToResource = AddTagsToResource'{_attrResourceARN
+                                            :: !Text,
+                                            _attrTags :: ![Tag]}
+                           deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'AddTagsToResource' with the minimum fields required to make a request.
 --
@@ -67,9 +63,10 @@ data AddTagsToResource =
 addTagsToResource
     :: Text -- ^ 'attrResourceARN'
     -> AddTagsToResource
-addTagsToResource pResourceARN_ =
-  AddTagsToResource' {_attrResourceARN = pResourceARN_, _attrTags = mempty}
-
+addTagsToResource pResourceARN_
+  = AddTagsToResource'{_attrResourceARN =
+                         pResourceARN_,
+                       _attrTags = mempty}
 
 -- | Identifies the AWS DMS resource to which tags should be added. The value for this parameter is an Amazon Resource Name (ARN). For AWS DMS, you can tag a replication instance, an endpoint, or a replication task.
 attrResourceARN :: Lens' AddTagsToResource Text
@@ -114,17 +111,15 @@ instance ToPath AddTagsToResource where
 instance ToQuery AddTagsToResource where
         toQuery = const mempty
 
--- |
+-- | 
 --
 --
 --
 -- /See:/ 'addTagsToResourceResponse' smart constructor.
-newtype AddTagsToResourceResponse =
-  AddTagsToResourceResponse'
-    { _attrrsResponseStatus :: Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+newtype AddTagsToResourceResponse = AddTagsToResourceResponse'{_attrrsResponseStatus
+                                                               :: Int}
+                                      deriving (Eq, Read, Show, Data, Typeable,
+                                                Generic)
 
 -- | Creates a value of 'AddTagsToResourceResponse' with the minimum fields required to make a request.
 --
@@ -134,9 +129,9 @@ newtype AddTagsToResourceResponse =
 addTagsToResourceResponse
     :: Int -- ^ 'attrrsResponseStatus'
     -> AddTagsToResourceResponse
-addTagsToResourceResponse pResponseStatus_ =
-  AddTagsToResourceResponse' {_attrrsResponseStatus = pResponseStatus_}
-
+addTagsToResourceResponse pResponseStatus_
+  = AddTagsToResourceResponse'{_attrrsResponseStatus =
+                                 pResponseStatus_}
 
 -- | -- | The response status code.
 attrrsResponseStatus :: Lens' AddTagsToResourceResponse Int

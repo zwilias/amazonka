@@ -11,7 +11,7 @@
 -- Stability   : auto-generated
 -- Portability : non-portable (GHC extensions)
 --
--- __AWS Shield Advanced__
+-- __AWS Shield Advanced__ 
 --
 -- This is the /AWS Shield Advanced API Reference/ . This guide is for developers who need detailed information about the AWS Shield Advanced API actions, data types, and errors. For detailed information about AWS WAF and AWS Shield Advanced features and an overview of how to use the AWS WAF and AWS Shield Advanced APIs, see the <http://docs.aws.amazon.com/waf/latest/developerguide/ AWS WAF and AWS Shield Developer Guide> .
 --
@@ -56,34 +56,34 @@ module Network.AWS.Shield
     -- * Operations
     -- $operations
 
-    -- ** CreateSubscription
+    -- ** CreateSubscription 
     , module Network.AWS.Shield.CreateSubscription
 
     -- ** ListProtections (Paginated)
     , module Network.AWS.Shield.ListProtections
 
-    -- ** DeleteSubscription
+    -- ** DeleteSubscription 
     , module Network.AWS.Shield.DeleteSubscription
 
-    -- ** DescribeAttack
+    -- ** DescribeAttack 
     , module Network.AWS.Shield.DescribeAttack
 
-    -- ** DescribeProtection
+    -- ** DescribeProtection 
     , module Network.AWS.Shield.DescribeProtection
 
-    -- ** ListAttacks
+    -- ** ListAttacks 
     , module Network.AWS.Shield.ListAttacks
 
-    -- ** CreateProtection
+    -- ** CreateProtection 
     , module Network.AWS.Shield.CreateProtection
 
-    -- ** DeleteProtection
+    -- ** DeleteProtection 
     , module Network.AWS.Shield.DeleteProtection
 
-    -- ** GetSubscriptionState
+    -- ** GetSubscriptionState 
     , module Network.AWS.Shield.GetSubscriptionState
 
-    -- ** DescribeSubscription
+    -- ** DescribeSubscription 
     , module Network.AWS.Shield.DescribeSubscription
 
     -- * Types

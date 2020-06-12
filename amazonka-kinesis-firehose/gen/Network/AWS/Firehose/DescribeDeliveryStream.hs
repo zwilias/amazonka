@@ -40,21 +40,19 @@ module Network.AWS.Firehose.DescribeDeliveryStream
     ) where
 
 import Network.AWS.Firehose.Types
-import Network.AWS.Firehose.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 
 -- | /See:/ 'describeDeliveryStream' smart constructor.
-data DescribeDeliveryStream =
-  DescribeDeliveryStream'
-    { _ddsExclusiveStartDestinationId :: !(Maybe Text)
-    , _ddsLimit                       :: !(Maybe Nat)
-    , _ddsDeliveryStreamName          :: !Text
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data DescribeDeliveryStream = DescribeDeliveryStream'{_ddsExclusiveStartDestinationId
+                                                      :: !(Maybe Text),
+                                                      _ddsLimit :: !(Maybe Nat),
+                                                      _ddsDeliveryStreamName ::
+                                                      !Text}
+                                deriving (Eq, Read, Show, Data, Typeable,
+                                          Generic)
 
 -- | Creates a value of 'DescribeDeliveryStream' with the minimum fields required to make a request.
 --
@@ -68,13 +66,11 @@ data DescribeDeliveryStream =
 describeDeliveryStream
     :: Text -- ^ 'ddsDeliveryStreamName'
     -> DescribeDeliveryStream
-describeDeliveryStream pDeliveryStreamName_ =
-  DescribeDeliveryStream'
-    { _ddsExclusiveStartDestinationId = Nothing
-    , _ddsLimit = Nothing
-    , _ddsDeliveryStreamName = pDeliveryStreamName_
-    }
-
+describeDeliveryStream pDeliveryStreamName_
+  = DescribeDeliveryStream'{_ddsExclusiveStartDestinationId
+                              = Nothing,
+                            _ddsLimit = Nothing,
+                            _ddsDeliveryStreamName = pDeliveryStreamName_}
 
 -- | The ID of the destination to start returning the destination information. Kinesis Data Firehose supports one destination per delivery stream.
 ddsExclusiveStartDestinationId :: Lens' DescribeDeliveryStream (Maybe Text)
@@ -130,13 +126,13 @@ instance ToQuery DescribeDeliveryStream where
         toQuery = const mempty
 
 -- | /See:/ 'describeDeliveryStreamResponse' smart constructor.
-data DescribeDeliveryStreamResponse =
-  DescribeDeliveryStreamResponse'
-    { _ddsrsResponseStatus            :: !Int
-    , _ddsrsDeliveryStreamDescription :: !DeliveryStreamDescription
-    }
-  deriving (Eq, Show, Data, Typeable, Generic)
-
+data DescribeDeliveryStreamResponse = DescribeDeliveryStreamResponse'{_ddsrsResponseStatus
+                                                                      :: !Int,
+                                                                      _ddsrsDeliveryStreamDescription
+                                                                      ::
+                                                                      !DeliveryStreamDescription}
+                                        deriving (Eq, Show, Data, Typeable,
+                                                  Generic)
 
 -- | Creates a value of 'DescribeDeliveryStreamResponse' with the minimum fields required to make a request.
 --
@@ -149,12 +145,12 @@ describeDeliveryStreamResponse
     :: Int -- ^ 'ddsrsResponseStatus'
     -> DeliveryStreamDescription -- ^ 'ddsrsDeliveryStreamDescription'
     -> DescribeDeliveryStreamResponse
-describeDeliveryStreamResponse pResponseStatus_ pDeliveryStreamDescription_ =
-  DescribeDeliveryStreamResponse'
-    { _ddsrsResponseStatus = pResponseStatus_
-    , _ddsrsDeliveryStreamDescription = pDeliveryStreamDescription_
-    }
-
+describeDeliveryStreamResponse pResponseStatus_
+  pDeliveryStreamDescription_
+  = DescribeDeliveryStreamResponse'{_ddsrsResponseStatus
+                                      = pResponseStatus_,
+                                    _ddsrsDeliveryStreamDescription =
+                                      pDeliveryStreamDescription_}
 
 -- | -- | The response status code.
 ddsrsResponseStatus :: Lens' DescribeDeliveryStreamResponse Int

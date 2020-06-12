@@ -36,20 +36,21 @@ module Network.AWS.IAM.DeleteServiceSpecificCredential
     ) where
 
 import Network.AWS.IAM.Types
-import Network.AWS.IAM.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 
 -- | /See:/ 'deleteServiceSpecificCredential' smart constructor.
-data DeleteServiceSpecificCredential =
-  DeleteServiceSpecificCredential'
-    { _dsscUserName                    :: !(Maybe Text)
-    , _dsscServiceSpecificCredentialId :: !Text
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data DeleteServiceSpecificCredential = DeleteServiceSpecificCredential'{_dsscUserName
+                                                                        ::
+                                                                        !(Maybe
+                                                                            Text),
+                                                                        _dsscServiceSpecificCredentialId
+                                                                        ::
+                                                                        !Text}
+                                         deriving (Eq, Read, Show, Data,
+                                                   Typeable, Generic)
 
 -- | Creates a value of 'DeleteServiceSpecificCredential' with the minimum fields required to make a request.
 --
@@ -61,12 +62,12 @@ data DeleteServiceSpecificCredential =
 deleteServiceSpecificCredential
     :: Text -- ^ 'dsscServiceSpecificCredentialId'
     -> DeleteServiceSpecificCredential
-deleteServiceSpecificCredential pServiceSpecificCredentialId_ =
-  DeleteServiceSpecificCredential'
-    { _dsscUserName = Nothing
-    , _dsscServiceSpecificCredentialId = pServiceSpecificCredentialId_
-    }
-
+deleteServiceSpecificCredential
+  pServiceSpecificCredentialId_
+  = DeleteServiceSpecificCredential'{_dsscUserName =
+                                       Nothing,
+                                     _dsscServiceSpecificCredentialId =
+                                       pServiceSpecificCredentialId_}
 
 -- | The name of the IAM user associated with the service-specific credential. If this value is not specified, then the operation assumes the user whose credentials are used to call the operation. This parameter allows (per its <http://wikipedia.org/wiki/regex regex pattern> ) a string of characters consisting of upper and lowercase alphanumeric characters with no spaces. You can also include any of the following characters: _+=,.@-
 dsscUserName :: Lens' DeleteServiceSpecificCredential (Maybe Text)
@@ -109,18 +110,16 @@ instance ToQuery DeleteServiceSpecificCredential
                  _dsscServiceSpecificCredentialId]
 
 -- | /See:/ 'deleteServiceSpecificCredentialResponse' smart constructor.
-data DeleteServiceSpecificCredentialResponse =
-  DeleteServiceSpecificCredentialResponse'
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data DeleteServiceSpecificCredentialResponse = DeleteServiceSpecificCredentialResponse'
+                                                 deriving (Eq, Read, Show, Data,
+                                                           Typeable, Generic)
 
 -- | Creates a value of 'DeleteServiceSpecificCredentialResponse' with the minimum fields required to make a request.
 --
 deleteServiceSpecificCredentialResponse
     :: DeleteServiceSpecificCredentialResponse
-deleteServiceSpecificCredentialResponse =
-  DeleteServiceSpecificCredentialResponse'
-
+deleteServiceSpecificCredentialResponse
+  = DeleteServiceSpecificCredentialResponse'
 
 instance NFData
            DeleteServiceSpecificCredentialResponse

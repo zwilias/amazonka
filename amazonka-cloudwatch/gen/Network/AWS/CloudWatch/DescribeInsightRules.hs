@@ -42,20 +42,17 @@ module Network.AWS.CloudWatch.DescribeInsightRules
     ) where
 
 import Network.AWS.CloudWatch.Types
-import Network.AWS.CloudWatch.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 
 -- | /See:/ 'describeInsightRules' smart constructor.
-data DescribeInsightRules =
-  DescribeInsightRules'
-    { _dirNextToken  :: !(Maybe Text)
-    , _dirMaxResults :: !(Maybe Nat)
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data DescribeInsightRules = DescribeInsightRules'{_dirNextToken
+                                                  :: !(Maybe Text),
+                                                  _dirMaxResults ::
+                                                  !(Maybe Nat)}
+                              deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'DescribeInsightRules' with the minimum fields required to make a request.
 --
@@ -66,9 +63,9 @@ data DescribeInsightRules =
 -- * 'dirMaxResults' - This parameter is not currently used. Reserved for future use. If it is used in the future, the maximum value may be different.
 describeInsightRules
     :: DescribeInsightRules
-describeInsightRules =
-  DescribeInsightRules' {_dirNextToken = Nothing, _dirMaxResults = Nothing}
-
+describeInsightRules
+  = DescribeInsightRules'{_dirNextToken = Nothing,
+                          _dirMaxResults = Nothing}
 
 -- | Reserved for future use.
 dirNextToken :: Lens' DescribeInsightRules (Maybe Text)
@@ -110,14 +107,17 @@ instance ToQuery DescribeInsightRules where
                "MaxResults" =: _dirMaxResults]
 
 -- | /See:/ 'describeInsightRulesResponse' smart constructor.
-data DescribeInsightRulesResponse =
-  DescribeInsightRulesResponse'
-    { _drsNextToken      :: !(Maybe Text)
-    , _drsInsightRules   :: !(Maybe [InsightRule])
-    , _drsResponseStatus :: !Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data DescribeInsightRulesResponse = DescribeInsightRulesResponse'{_drsNextToken
+                                                                  ::
+                                                                  !(Maybe Text),
+                                                                  _drsInsightRules
+                                                                  ::
+                                                                  !(Maybe
+                                                                      [InsightRule]),
+                                                                  _drsResponseStatus
+                                                                  :: !Int}
+                                      deriving (Eq, Read, Show, Data, Typeable,
+                                                Generic)
 
 -- | Creates a value of 'DescribeInsightRulesResponse' with the minimum fields required to make a request.
 --
@@ -131,13 +131,11 @@ data DescribeInsightRulesResponse =
 describeInsightRulesResponse
     :: Int -- ^ 'drsResponseStatus'
     -> DescribeInsightRulesResponse
-describeInsightRulesResponse pResponseStatus_ =
-  DescribeInsightRulesResponse'
-    { _drsNextToken = Nothing
-    , _drsInsightRules = Nothing
-    , _drsResponseStatus = pResponseStatus_
-    }
-
+describeInsightRulesResponse pResponseStatus_
+  = DescribeInsightRulesResponse'{_drsNextToken =
+                                    Nothing,
+                                  _drsInsightRules = Nothing,
+                                  _drsResponseStatus = pResponseStatus_}
 
 -- | Reserved for future use.
 drsNextToken :: Lens' DescribeInsightRulesResponse (Maybe Text)

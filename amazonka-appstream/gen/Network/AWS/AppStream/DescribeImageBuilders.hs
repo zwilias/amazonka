@@ -43,7 +43,6 @@ module Network.AWS.AppStream.DescribeImageBuilders
     ) where
 
 import Network.AWS.AppStream.Types
-import Network.AWS.AppStream.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Pager
 import Network.AWS.Prelude
@@ -51,14 +50,14 @@ import Network.AWS.Request
 import Network.AWS.Response
 
 -- | /See:/ 'describeImageBuilders' smart constructor.
-data DescribeImageBuilders =
-  DescribeImageBuilders'
-    { _dibNextToken  :: !(Maybe Text)
-    , _dibNames      :: !(Maybe [Text])
-    , _dibMaxResults :: !(Maybe Int)
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data DescribeImageBuilders = DescribeImageBuilders'{_dibNextToken
+                                                    :: !(Maybe Text),
+                                                    _dibNames ::
+                                                    !(Maybe [Text]),
+                                                    _dibMaxResults ::
+                                                    !(Maybe Int)}
+                               deriving (Eq, Read, Show, Data, Typeable,
+                                         Generic)
 
 -- | Creates a value of 'DescribeImageBuilders' with the minimum fields required to make a request.
 --
@@ -71,10 +70,9 @@ data DescribeImageBuilders =
 -- * 'dibMaxResults' - The maximum size of each page of results.
 describeImageBuilders
     :: DescribeImageBuilders
-describeImageBuilders =
-  DescribeImageBuilders'
-    {_dibNextToken = Nothing, _dibNames = Nothing, _dibMaxResults = Nothing}
-
+describeImageBuilders
+  = DescribeImageBuilders'{_dibNextToken = Nothing,
+                           _dibNames = Nothing, _dibMaxResults = Nothing}
 
 -- | The pagination token to use to retrieve the next page of results for this operation. If this value is null, it retrieves the first page.
 dibNextToken :: Lens' DescribeImageBuilders (Maybe Text)
@@ -136,14 +134,18 @@ instance ToQuery DescribeImageBuilders where
         toQuery = const mempty
 
 -- | /See:/ 'describeImageBuildersResponse' smart constructor.
-data DescribeImageBuildersResponse =
-  DescribeImageBuildersResponse'
-    { _dibsrsImageBuilders  :: !(Maybe [ImageBuilder])
-    , _dibsrsNextToken      :: !(Maybe Text)
-    , _dibsrsResponseStatus :: !Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data DescribeImageBuildersResponse = DescribeImageBuildersResponse'{_dibsrsImageBuilders
+                                                                    ::
+                                                                    !(Maybe
+                                                                        [ImageBuilder]),
+                                                                    _dibsrsNextToken
+                                                                    ::
+                                                                    !(Maybe
+                                                                        Text),
+                                                                    _dibsrsResponseStatus
+                                                                    :: !Int}
+                                       deriving (Eq, Read, Show, Data, Typeable,
+                                                 Generic)
 
 -- | Creates a value of 'DescribeImageBuildersResponse' with the minimum fields required to make a request.
 --
@@ -157,13 +159,11 @@ data DescribeImageBuildersResponse =
 describeImageBuildersResponse
     :: Int -- ^ 'dibsrsResponseStatus'
     -> DescribeImageBuildersResponse
-describeImageBuildersResponse pResponseStatus_ =
-  DescribeImageBuildersResponse'
-    { _dibsrsImageBuilders = Nothing
-    , _dibsrsNextToken = Nothing
-    , _dibsrsResponseStatus = pResponseStatus_
-    }
-
+describeImageBuildersResponse pResponseStatus_
+  = DescribeImageBuildersResponse'{_dibsrsImageBuilders
+                                     = Nothing,
+                                   _dibsrsNextToken = Nothing,
+                                   _dibsrsResponseStatus = pResponseStatus_}
 
 -- | Information about the image builders.
 dibsrsImageBuilders :: Lens' DescribeImageBuildersResponse [ImageBuilder]

@@ -43,7 +43,6 @@ module Network.AWS.CodePipeline.ListPipelineExecutions
     ) where
 
 import Network.AWS.CodePipeline.Types
-import Network.AWS.CodePipeline.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Pager
 import Network.AWS.Prelude
@@ -55,14 +54,13 @@ import Network.AWS.Response
 --
 --
 -- /See:/ 'listPipelineExecutions' smart constructor.
-data ListPipelineExecutions =
-  ListPipelineExecutions'
-    { _lpeNextToken    :: !(Maybe Text)
-    , _lpeMaxResults   :: !(Maybe Nat)
-    , _lpePipelineName :: !Text
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data ListPipelineExecutions = ListPipelineExecutions'{_lpeNextToken
+                                                      :: !(Maybe Text),
+                                                      _lpeMaxResults ::
+                                                      !(Maybe Nat),
+                                                      _lpePipelineName :: !Text}
+                                deriving (Eq, Read, Show, Data, Typeable,
+                                          Generic)
 
 -- | Creates a value of 'ListPipelineExecutions' with the minimum fields required to make a request.
 --
@@ -76,13 +74,10 @@ data ListPipelineExecutions =
 listPipelineExecutions
     :: Text -- ^ 'lpePipelineName'
     -> ListPipelineExecutions
-listPipelineExecutions pPipelineName_ =
-  ListPipelineExecutions'
-    { _lpeNextToken = Nothing
-    , _lpeMaxResults = Nothing
-    , _lpePipelineName = pPipelineName_
-    }
-
+listPipelineExecutions pPipelineName_
+  = ListPipelineExecutions'{_lpeNextToken = Nothing,
+                            _lpeMaxResults = Nothing,
+                            _lpePipelineName = pPipelineName_}
 
 -- | The token that was returned from the previous @ListPipelineExecutions@ call, which can be used to return the next set of pipeline executions in the list.
 lpeNextToken :: Lens' ListPipelineExecutions (Maybe Text)
@@ -149,14 +144,18 @@ instance ToQuery ListPipelineExecutions where
 --
 --
 -- /See:/ 'listPipelineExecutionsResponse' smart constructor.
-data ListPipelineExecutionsResponse =
-  ListPipelineExecutionsResponse'
-    { _lpersNextToken                  :: !(Maybe Text)
-    , _lpersPipelineExecutionSummaries :: !(Maybe [PipelineExecutionSummary])
-    , _lpersResponseStatus             :: !Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data ListPipelineExecutionsResponse = ListPipelineExecutionsResponse'{_lpersNextToken
+                                                                      ::
+                                                                      !(Maybe
+                                                                          Text),
+                                                                      _lpersPipelineExecutionSummaries
+                                                                      ::
+                                                                      !(Maybe
+                                                                          [PipelineExecutionSummary]),
+                                                                      _lpersResponseStatus
+                                                                      :: !Int}
+                                        deriving (Eq, Read, Show, Data,
+                                                  Typeable, Generic)
 
 -- | Creates a value of 'ListPipelineExecutionsResponse' with the minimum fields required to make a request.
 --
@@ -170,13 +169,11 @@ data ListPipelineExecutionsResponse =
 listPipelineExecutionsResponse
     :: Int -- ^ 'lpersResponseStatus'
     -> ListPipelineExecutionsResponse
-listPipelineExecutionsResponse pResponseStatus_ =
-  ListPipelineExecutionsResponse'
-    { _lpersNextToken = Nothing
-    , _lpersPipelineExecutionSummaries = Nothing
-    , _lpersResponseStatus = pResponseStatus_
-    }
-
+listPipelineExecutionsResponse pResponseStatus_
+  = ListPipelineExecutionsResponse'{_lpersNextToken =
+                                      Nothing,
+                                    _lpersPipelineExecutionSummaries = Nothing,
+                                    _lpersResponseStatus = pResponseStatus_}
 
 -- | A token that can be used in the next @ListPipelineExecutions@ call. To view all items in the list, continue to call this operation with each subsequent token until no more nextToken values are returned.
 lpersNextToken :: Lens' ListPipelineExecutionsResponse (Maybe Text)

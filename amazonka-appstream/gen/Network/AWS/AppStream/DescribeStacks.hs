@@ -42,7 +42,6 @@ module Network.AWS.AppStream.DescribeStacks
     ) where
 
 import Network.AWS.AppStream.Types
-import Network.AWS.AppStream.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Pager
 import Network.AWS.Prelude
@@ -50,13 +49,10 @@ import Network.AWS.Request
 import Network.AWS.Response
 
 -- | /See:/ 'describeStacks' smart constructor.
-data DescribeStacks =
-  DescribeStacks'
-    { _dNextToken :: !(Maybe Text)
-    , _dNames     :: !(Maybe [Text])
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data DescribeStacks = DescribeStacks'{_dNextToken ::
+                                      !(Maybe Text),
+                                      _dNames :: !(Maybe [Text])}
+                        deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'DescribeStacks' with the minimum fields required to make a request.
 --
@@ -67,8 +63,9 @@ data DescribeStacks =
 -- * 'dNames' - The names of the stacks to describe.
 describeStacks
     :: DescribeStacks
-describeStacks = DescribeStacks' {_dNextToken = Nothing, _dNames = Nothing}
-
+describeStacks
+  = DescribeStacks'{_dNextToken = Nothing,
+                    _dNames = Nothing}
 
 -- | The pagination token to use to retrieve the next page of results for this operation. If this value is null, it retrieves the first page.
 dNextToken :: Lens' DescribeStacks (Maybe Text)
@@ -123,14 +120,14 @@ instance ToQuery DescribeStacks where
         toQuery = const mempty
 
 -- | /See:/ 'describeStacksResponse' smart constructor.
-data DescribeStacksResponse =
-  DescribeStacksResponse'
-    { _desrsNextToken      :: !(Maybe Text)
-    , _desrsStacks         :: !(Maybe [Stack])
-    , _desrsResponseStatus :: !Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data DescribeStacksResponse = DescribeStacksResponse'{_desrsNextToken
+                                                      :: !(Maybe Text),
+                                                      _desrsStacks ::
+                                                      !(Maybe [Stack]),
+                                                      _desrsResponseStatus ::
+                                                      !Int}
+                                deriving (Eq, Read, Show, Data, Typeable,
+                                          Generic)
 
 -- | Creates a value of 'DescribeStacksResponse' with the minimum fields required to make a request.
 --
@@ -144,13 +141,10 @@ data DescribeStacksResponse =
 describeStacksResponse
     :: Int -- ^ 'desrsResponseStatus'
     -> DescribeStacksResponse
-describeStacksResponse pResponseStatus_ =
-  DescribeStacksResponse'
-    { _desrsNextToken = Nothing
-    , _desrsStacks = Nothing
-    , _desrsResponseStatus = pResponseStatus_
-    }
-
+describeStacksResponse pResponseStatus_
+  = DescribeStacksResponse'{_desrsNextToken = Nothing,
+                            _desrsStacks = Nothing,
+                            _desrsResponseStatus = pResponseStatus_}
 
 -- | The pagination token to use to retrieve the next page of results for this operation. If there are no more pages, this value is null.
 desrsNextToken :: Lens' DescribeStacksResponse (Maybe Text)

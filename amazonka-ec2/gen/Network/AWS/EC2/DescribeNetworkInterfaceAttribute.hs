@@ -44,7 +44,6 @@ module Network.AWS.EC2.DescribeNetworkInterfaceAttribute
     ) where
 
 import Network.AWS.EC2.Types
-import Network.AWS.EC2.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.Request
@@ -55,14 +54,19 @@ import Network.AWS.Response
 --
 --
 -- /See:/ 'describeNetworkInterfaceAttribute' smart constructor.
-data DescribeNetworkInterfaceAttribute =
-  DescribeNetworkInterfaceAttribute'
-    { _dniaAttribute          :: !(Maybe NetworkInterfaceAttribute)
-    , _dniaDryRun             :: !(Maybe Bool)
-    , _dniaNetworkInterfaceId :: !Text
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data DescribeNetworkInterfaceAttribute = DescribeNetworkInterfaceAttribute'{_dniaAttribute
+                                                                            ::
+                                                                            !(Maybe
+                                                                                NetworkInterfaceAttribute),
+                                                                            _dniaDryRun
+                                                                            ::
+                                                                            !(Maybe
+                                                                                Bool),
+                                                                            _dniaNetworkInterfaceId
+                                                                            ::
+                                                                            !Text}
+                                           deriving (Eq, Read, Show, Data,
+                                                     Typeable, Generic)
 
 -- | Creates a value of 'DescribeNetworkInterfaceAttribute' with the minimum fields required to make a request.
 --
@@ -76,13 +80,13 @@ data DescribeNetworkInterfaceAttribute =
 describeNetworkInterfaceAttribute
     :: Text -- ^ 'dniaNetworkInterfaceId'
     -> DescribeNetworkInterfaceAttribute
-describeNetworkInterfaceAttribute pNetworkInterfaceId_ =
-  DescribeNetworkInterfaceAttribute'
-    { _dniaAttribute = Nothing
-    , _dniaDryRun = Nothing
-    , _dniaNetworkInterfaceId = pNetworkInterfaceId_
-    }
-
+describeNetworkInterfaceAttribute
+  pNetworkInterfaceId_
+  = DescribeNetworkInterfaceAttribute'{_dniaAttribute =
+                                         Nothing,
+                                       _dniaDryRun = Nothing,
+                                       _dniaNetworkInterfaceId =
+                                         pNetworkInterfaceId_}
 
 -- | The attribute of the network interface. This parameter is required.
 dniaAttribute :: Lens' DescribeNetworkInterfaceAttribute (Maybe NetworkInterfaceAttribute)
@@ -143,17 +147,32 @@ instance ToQuery DescribeNetworkInterfaceAttribute
 --
 --
 -- /See:/ 'describeNetworkInterfaceAttributeResponse' smart constructor.
-data DescribeNetworkInterfaceAttributeResponse =
-  DescribeNetworkInterfaceAttributeResponse'
-    { _dniarsGroups             :: !(Maybe [GroupIdentifier])
-    , _dniarsSourceDestCheck    :: !(Maybe AttributeBooleanValue)
-    , _dniarsNetworkInterfaceId :: !(Maybe Text)
-    , _dniarsAttachment         :: !(Maybe NetworkInterfaceAttachment)
-    , _dniarsDescription        :: !(Maybe AttributeValue)
-    , _dniarsResponseStatus     :: !Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data DescribeNetworkInterfaceAttributeResponse = DescribeNetworkInterfaceAttributeResponse'{_dniarsGroups
+                                                                                            ::
+                                                                                            !(Maybe
+                                                                                                [GroupIdentifier]),
+                                                                                            _dniarsSourceDestCheck
+                                                                                            ::
+                                                                                            !(Maybe
+                                                                                                AttributeBooleanValue),
+                                                                                            _dniarsNetworkInterfaceId
+                                                                                            ::
+                                                                                            !(Maybe
+                                                                                                Text),
+                                                                                            _dniarsAttachment
+                                                                                            ::
+                                                                                            !(Maybe
+                                                                                                NetworkInterfaceAttachment),
+                                                                                            _dniarsDescription
+                                                                                            ::
+                                                                                            !(Maybe
+                                                                                                AttributeValue),
+                                                                                            _dniarsResponseStatus
+                                                                                            ::
+                                                                                            !Int}
+                                                   deriving (Eq, Read, Show,
+                                                             Data, Typeable,
+                                                             Generic)
 
 -- | Creates a value of 'DescribeNetworkInterfaceAttributeResponse' with the minimum fields required to make a request.
 --
@@ -173,16 +192,17 @@ data DescribeNetworkInterfaceAttributeResponse =
 describeNetworkInterfaceAttributeResponse
     :: Int -- ^ 'dniarsResponseStatus'
     -> DescribeNetworkInterfaceAttributeResponse
-describeNetworkInterfaceAttributeResponse pResponseStatus_ =
-  DescribeNetworkInterfaceAttributeResponse'
-    { _dniarsGroups = Nothing
-    , _dniarsSourceDestCheck = Nothing
-    , _dniarsNetworkInterfaceId = Nothing
-    , _dniarsAttachment = Nothing
-    , _dniarsDescription = Nothing
-    , _dniarsResponseStatus = pResponseStatus_
-    }
-
+describeNetworkInterfaceAttributeResponse
+  pResponseStatus_
+  = DescribeNetworkInterfaceAttributeResponse'{_dniarsGroups
+                                                 = Nothing,
+                                               _dniarsSourceDestCheck = Nothing,
+                                               _dniarsNetworkInterfaceId =
+                                                 Nothing,
+                                               _dniarsAttachment = Nothing,
+                                               _dniarsDescription = Nothing,
+                                               _dniarsResponseStatus =
+                                                 pResponseStatus_}
 
 -- | The security groups associated with the network interface.
 dniarsGroups :: Lens' DescribeNetworkInterfaceAttributeResponse [GroupIdentifier]

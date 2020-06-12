@@ -39,20 +39,16 @@ module Network.AWS.IoTAnalytics.BatchPutMessage
     ) where
 
 import Network.AWS.IoTAnalytics.Types
-import Network.AWS.IoTAnalytics.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 
 -- | /See:/ 'batchPutMessage' smart constructor.
-data BatchPutMessage =
-  BatchPutMessage'
-    { _bpmChannelName :: !Text
-    , _bpmMessages    :: ![Message]
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data BatchPutMessage = BatchPutMessage'{_bpmChannelName
+                                        :: !Text,
+                                        _bpmMessages :: ![Message]}
+                         deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'BatchPutMessage' with the minimum fields required to make a request.
 --
@@ -64,9 +60,9 @@ data BatchPutMessage =
 batchPutMessage
     :: Text -- ^ 'bpmChannelName'
     -> BatchPutMessage
-batchPutMessage pChannelName_ =
-  BatchPutMessage' {_bpmChannelName = pChannelName_, _bpmMessages = mempty}
-
+batchPutMessage pChannelName_
+  = BatchPutMessage'{_bpmChannelName = pChannelName_,
+                     _bpmMessages = mempty}
 
 -- | The name of the channel where the messages are sent.
 bpmChannelName :: Lens' BatchPutMessage Text
@@ -107,13 +103,14 @@ instance ToQuery BatchPutMessage where
         toQuery = const mempty
 
 -- | /See:/ 'batchPutMessageResponse' smart constructor.
-data BatchPutMessageResponse =
-  BatchPutMessageResponse'
-    { _bpmrsBatchPutMessageErrorEntries :: !(Maybe [BatchPutMessageErrorEntry])
-    , _bpmrsResponseStatus              :: !Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data BatchPutMessageResponse = BatchPutMessageResponse'{_bpmrsBatchPutMessageErrorEntries
+                                                        ::
+                                                        !(Maybe
+                                                            [BatchPutMessageErrorEntry]),
+                                                        _bpmrsResponseStatus ::
+                                                        !Int}
+                                 deriving (Eq, Read, Show, Data, Typeable,
+                                           Generic)
 
 -- | Creates a value of 'BatchPutMessageResponse' with the minimum fields required to make a request.
 --
@@ -125,12 +122,10 @@ data BatchPutMessageResponse =
 batchPutMessageResponse
     :: Int -- ^ 'bpmrsResponseStatus'
     -> BatchPutMessageResponse
-batchPutMessageResponse pResponseStatus_ =
-  BatchPutMessageResponse'
-    { _bpmrsBatchPutMessageErrorEntries = Nothing
-    , _bpmrsResponseStatus = pResponseStatus_
-    }
-
+batchPutMessageResponse pResponseStatus_
+  = BatchPutMessageResponse'{_bpmrsBatchPutMessageErrorEntries
+                               = Nothing,
+                             _bpmrsResponseStatus = pResponseStatus_}
 
 -- | A list of any errors encountered when sending the messages to the channel.
 bpmrsBatchPutMessageErrorEntries :: Lens' BatchPutMessageResponse [BatchPutMessageErrorEntry]

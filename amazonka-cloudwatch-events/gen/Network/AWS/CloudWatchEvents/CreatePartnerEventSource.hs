@@ -21,7 +21,7 @@
 -- Called by an SaaS partner to create a partner event source.
 --
 --
--- Each partner event source can be used by one AWS account to create a matching partner event bus in that AWS account. A SaaS partner must create one partner event source for each AWS account that wants to receive those event types.
+-- Each partner event source can be used by one AWS account to create a matching partner event bus in that AWS account. A SaaS partner must create one partner event source for each AWS account that wants to receive those event types. 
 --
 -- A partner event source creates events based on resources in the SaaS partner's service or application.
 --
@@ -29,7 +29,7 @@
 --
 -- Partner event source names follow this format:
 --
--- @aws.partner//partner_name/ //event_namespace/ //event_name/ @
+-- @aws.partner//partner_name/ //event_namespace/ //event_name/ @ 
 --
 --     * /partner_name/ is determined during partner registration and identifies the partner to AWS customers.
 --
@@ -57,20 +57,17 @@ module Network.AWS.CloudWatchEvents.CreatePartnerEventSource
     ) where
 
 import Network.AWS.CloudWatchEvents.Types
-import Network.AWS.CloudWatchEvents.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 
 -- | /See:/ 'createPartnerEventSource' smart constructor.
-data CreatePartnerEventSource =
-  CreatePartnerEventSource'
-    { _cpesName    :: !Text
-    , _cpesAccount :: !Text
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data CreatePartnerEventSource = CreatePartnerEventSource'{_cpesName
+                                                          :: !Text,
+                                                          _cpesAccount :: !Text}
+                                  deriving (Eq, Read, Show, Data, Typeable,
+                                            Generic)
 
 -- | Creates a value of 'CreatePartnerEventSource' with the minimum fields required to make a request.
 --
@@ -83,9 +80,9 @@ createPartnerEventSource
     :: Text -- ^ 'cpesName'
     -> Text -- ^ 'cpesAccount'
     -> CreatePartnerEventSource
-createPartnerEventSource pName_ pAccount_ =
-  CreatePartnerEventSource' {_cpesName = pName_, _cpesAccount = pAccount_}
-
+createPartnerEventSource pName_ pAccount_
+  = CreatePartnerEventSource'{_cpesName = pName_,
+                              _cpesAccount = pAccount_}
 
 -- | The name of the partner event source. This name must be unique and must be in the format @/partner_name/ //event_namespace/ //event_name/ @ . The AWS account that wants to use this partner event source must create a partner event bus with a name that matches the name of the partner event source.
 cpesName :: Lens' CreatePartnerEventSource Text
@@ -132,13 +129,15 @@ instance ToQuery CreatePartnerEventSource where
         toQuery = const mempty
 
 -- | /See:/ 'createPartnerEventSourceResponse' smart constructor.
-data CreatePartnerEventSourceResponse =
-  CreatePartnerEventSourceResponse'
-    { _cpesrsEventSourceARN :: !(Maybe Text)
-    , _cpesrsResponseStatus :: !Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data CreatePartnerEventSourceResponse = CreatePartnerEventSourceResponse'{_cpesrsEventSourceARN
+                                                                          ::
+                                                                          !(Maybe
+                                                                              Text),
+                                                                          _cpesrsResponseStatus
+                                                                          ::
+                                                                          !Int}
+                                          deriving (Eq, Read, Show, Data,
+                                                    Typeable, Generic)
 
 -- | Creates a value of 'CreatePartnerEventSourceResponse' with the minimum fields required to make a request.
 --
@@ -150,10 +149,10 @@ data CreatePartnerEventSourceResponse =
 createPartnerEventSourceResponse
     :: Int -- ^ 'cpesrsResponseStatus'
     -> CreatePartnerEventSourceResponse
-createPartnerEventSourceResponse pResponseStatus_ =
-  CreatePartnerEventSourceResponse'
-    {_cpesrsEventSourceARN = Nothing, _cpesrsResponseStatus = pResponseStatus_}
-
+createPartnerEventSourceResponse pResponseStatus_
+  = CreatePartnerEventSourceResponse'{_cpesrsEventSourceARN
+                                        = Nothing,
+                                      _cpesrsResponseStatus = pResponseStatus_}
 
 -- | The ARN of the partner event source.
 cpesrsEventSourceARN :: Lens' CreatePartnerEventSourceResponse (Maybe Text)

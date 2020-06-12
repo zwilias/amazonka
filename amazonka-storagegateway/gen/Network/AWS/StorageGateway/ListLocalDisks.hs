@@ -45,19 +45,15 @@ import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 import Network.AWS.StorageGateway.Types
-import Network.AWS.StorageGateway.Types.Product
 
 -- | A JSON object containing the of the gateway.
 --
 --
 --
 -- /See:/ 'listLocalDisks' smart constructor.
-newtype ListLocalDisks =
-  ListLocalDisks'
-    { _lldGatewayARN :: Text
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+newtype ListLocalDisks = ListLocalDisks'{_lldGatewayARN
+                                         :: Text}
+                           deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'ListLocalDisks' with the minimum fields required to make a request.
 --
@@ -67,8 +63,8 @@ newtype ListLocalDisks =
 listLocalDisks
     :: Text -- ^ 'lldGatewayARN'
     -> ListLocalDisks
-listLocalDisks pGatewayARN_ = ListLocalDisks' {_lldGatewayARN = pGatewayARN_}
-
+listLocalDisks pGatewayARN_
+  = ListLocalDisks'{_lldGatewayARN = pGatewayARN_}
 
 -- | Undocumented member.
 lldGatewayARN :: Lens' ListLocalDisks Text
@@ -110,14 +106,14 @@ instance ToQuery ListLocalDisks where
         toQuery = const mempty
 
 -- | /See:/ 'listLocalDisksResponse' smart constructor.
-data ListLocalDisksResponse =
-  ListLocalDisksResponse'
-    { _lldrsGatewayARN     :: !(Maybe Text)
-    , _lldrsDisks          :: !(Maybe [Disk])
-    , _lldrsResponseStatus :: !Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data ListLocalDisksResponse = ListLocalDisksResponse'{_lldrsGatewayARN
+                                                      :: !(Maybe Text),
+                                                      _lldrsDisks ::
+                                                      !(Maybe [Disk]),
+                                                      _lldrsResponseStatus ::
+                                                      !Int}
+                                deriving (Eq, Read, Show, Data, Typeable,
+                                          Generic)
 
 -- | Creates a value of 'ListLocalDisksResponse' with the minimum fields required to make a request.
 --
@@ -131,13 +127,10 @@ data ListLocalDisksResponse =
 listLocalDisksResponse
     :: Int -- ^ 'lldrsResponseStatus'
     -> ListLocalDisksResponse
-listLocalDisksResponse pResponseStatus_ =
-  ListLocalDisksResponse'
-    { _lldrsGatewayARN = Nothing
-    , _lldrsDisks = Nothing
-    , _lldrsResponseStatus = pResponseStatus_
-    }
-
+listLocalDisksResponse pResponseStatus_
+  = ListLocalDisksResponse'{_lldrsGatewayARN = Nothing,
+                            _lldrsDisks = Nothing,
+                            _lldrsResponseStatus = pResponseStatus_}
 
 -- | Undocumented member.
 lldrsGatewayARN :: Lens' ListLocalDisksResponse (Maybe Text)

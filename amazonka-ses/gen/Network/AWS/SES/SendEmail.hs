@@ -21,9 +21,9 @@
 -- Composes an email message and immediately queues it for sending. In order to send email using the @SendEmail@ operation, your message must meet the following requirements:
 --
 --
---     * The message must be sent from a verified email address or domain. If you attempt to send email using a non-verified address or domain, the operation will result in an "Email address not verified" error.
+--     * The message must be sent from a verified email address or domain. If you attempt to send email using a non-verified address or domain, the operation will result in an "Email address not verified" error. 
 --
---     * If your account is still in the Amazon SES sandbox, you may only send to verified addresses or domains, or to email addresses associated with the Amazon SES Mailbox Simulator. For more information, see <http://docs.aws.amazon.com/ses/latest/DeveloperGuide/verify-addresses-and-domains.html Verifying Email Addresses and Domains> in the /Amazon SES Developer Guide./
+--     * If your account is still in the Amazon SES sandbox, you may only send to verified addresses or domains, or to email addresses associated with the Amazon SES Mailbox Simulator. For more information, see <http://docs.aws.amazon.com/ses/latest/DeveloperGuide/verify-addresses-and-domains.html Verifying Email Addresses and Domains> in the /Amazon SES Developer Guide./ 
 --
 --     * The total size of the message, including attachments, must be smaller than 10 MB.
 --
@@ -33,7 +33,7 @@
 --
 --
 --
--- /Important:/ For every message that you send, the total number of recipients (including each recipient in the To:, CC: and BCC: fields) is counted against the maximum number of emails you can send in a 24-hour period (your /sending quota/ ). For more information about sending quotas in Amazon SES, see <http://docs.aws.amazon.com/ses/latest/DeveloperGuide/manage-sending-limits.html Managing Your Amazon SES Sending Limits> in the /Amazon SES Developer Guide./
+-- /Important:/ For every message that you send, the total number of recipients (including each recipient in the To:, CC: and BCC: fields) is counted against the maximum number of emails you can send in a 24-hour period (your /sending quota/ ). For more information about sending quotas in Amazon SES, see <http://docs.aws.amazon.com/ses/latest/DeveloperGuide/manage-sending-limits.html Managing Your Amazon SES Sending Limits> in the /Amazon SES Developer Guide./ 
 --
 module Network.AWS.SES.SendEmail
     (
@@ -64,33 +64,28 @@ import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 import Network.AWS.SES.Types
-import Network.AWS.SES.Types.Product
 
 -- | Represents a request to send a single formatted email using Amazon SES. For more information, see the <http://docs.aws.amazon.com/ses/latest/DeveloperGuide/send-email-formatted.html Amazon SES Developer Guide> .
 --
 --
 --
 -- /See:/ 'sendEmail' smart constructor.
-data SendEmail =
-  SendEmail'
-    { _seReturnPath           :: !(Maybe Text)
-    , _seConfigurationSetName :: !(Maybe Text)
-    , _seSourceARN            :: !(Maybe Text)
-    , _seReturnPathARN        :: !(Maybe Text)
-    , _seTags                 :: !(Maybe [MessageTag])
-    , _seReplyToAddresses     :: !(Maybe [Text])
-    , _seSource               :: !Text
-    , _seDestination          :: !Destination
-    , _seMessage              :: !Message
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data SendEmail = SendEmail'{_seReturnPath ::
+                            !(Maybe Text),
+                            _seConfigurationSetName :: !(Maybe Text),
+                            _seSourceARN :: !(Maybe Text),
+                            _seReturnPathARN :: !(Maybe Text),
+                            _seTags :: !(Maybe [MessageTag]),
+                            _seReplyToAddresses :: !(Maybe [Text]),
+                            _seSource :: !Text, _seDestination :: !Destination,
+                            _seMessage :: !Message}
+                   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'SendEmail' with the minimum fields required to make a request.
 --
 -- Use one of the following lenses to modify other fields as desired:
 --
--- * 'seReturnPath' - The email address that bounces and complaints will be forwarded to when feedback forwarding is enabled. If the message cannot be delivered to the recipient, then an error message will be returned from the recipient's ISP; this message will then be forwarded to the email address specified by the @ReturnPath@ parameter. The @ReturnPath@ parameter is never overwritten. This email address must be either individually verified with Amazon SES, or from a domain that has been verified with Amazon SES.
+-- * 'seReturnPath' - The email address that bounces and complaints will be forwarded to when feedback forwarding is enabled. If the message cannot be delivered to the recipient, then an error message will be returned from the recipient's ISP; this message will then be forwarded to the email address specified by the @ReturnPath@ parameter. The @ReturnPath@ parameter is never overwritten. This email address must be either individually verified with Amazon SES, or from a domain that has been verified with Amazon SES. 
 --
 -- * 'seConfigurationSetName' - The name of the configuration set to use when you send an email using @SendEmail@ .
 --
@@ -112,21 +107,15 @@ sendEmail
     -> Destination -- ^ 'seDestination'
     -> Message -- ^ 'seMessage'
     -> SendEmail
-sendEmail pSource_ pDestination_ pMessage_ =
-  SendEmail'
-    { _seReturnPath = Nothing
-    , _seConfigurationSetName = Nothing
-    , _seSourceARN = Nothing
-    , _seReturnPathARN = Nothing
-    , _seTags = Nothing
-    , _seReplyToAddresses = Nothing
-    , _seSource = pSource_
-    , _seDestination = pDestination_
-    , _seMessage = pMessage_
-    }
+sendEmail pSource_ pDestination_ pMessage_
+  = SendEmail'{_seReturnPath = Nothing,
+               _seConfigurationSetName = Nothing,
+               _seSourceARN = Nothing, _seReturnPathARN = Nothing,
+               _seTags = Nothing, _seReplyToAddresses = Nothing,
+               _seSource = pSource_, _seDestination = pDestination_,
+               _seMessage = pMessage_}
 
-
--- | The email address that bounces and complaints will be forwarded to when feedback forwarding is enabled. If the message cannot be delivered to the recipient, then an error message will be returned from the recipient's ISP; this message will then be forwarded to the email address specified by the @ReturnPath@ parameter. The @ReturnPath@ parameter is never overwritten. This email address must be either individually verified with Amazon SES, or from a domain that has been verified with Amazon SES.
+-- | The email address that bounces and complaints will be forwarded to when feedback forwarding is enabled. If the message cannot be delivered to the recipient, then an error message will be returned from the recipient's ISP; this message will then be forwarded to the email address specified by the @ReturnPath@ parameter. The @ReturnPath@ parameter is never overwritten. This email address must be either individually verified with Amazon SES, or from a domain that has been verified with Amazon SES. 
 seReturnPath :: Lens' SendEmail (Maybe Text)
 seReturnPath = lens _seReturnPath (\ s a -> s{_seReturnPath = a})
 
@@ -203,13 +192,10 @@ instance ToQuery SendEmail where
 --
 --
 -- /See:/ 'sendEmailResponse' smart constructor.
-data SendEmailResponse =
-  SendEmailResponse'
-    { _sersResponseStatus :: !Int
-    , _sersMessageId      :: !Text
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data SendEmailResponse = SendEmailResponse'{_sersResponseStatus
+                                            :: !Int,
+                                            _sersMessageId :: !Text}
+                           deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'SendEmailResponse' with the minimum fields required to make a request.
 --
@@ -217,21 +203,21 @@ data SendEmailResponse =
 --
 -- * 'sersResponseStatus' - -- | The response status code.
 --
--- * 'sersMessageId' - The unique message identifier returned from the @SendEmail@ action.
+-- * 'sersMessageId' - The unique message identifier returned from the @SendEmail@ action. 
 sendEmailResponse
     :: Int -- ^ 'sersResponseStatus'
     -> Text -- ^ 'sersMessageId'
     -> SendEmailResponse
-sendEmailResponse pResponseStatus_ pMessageId_ =
-  SendEmailResponse'
-    {_sersResponseStatus = pResponseStatus_, _sersMessageId = pMessageId_}
-
+sendEmailResponse pResponseStatus_ pMessageId_
+  = SendEmailResponse'{_sersResponseStatus =
+                         pResponseStatus_,
+                       _sersMessageId = pMessageId_}
 
 -- | -- | The response status code.
 sersResponseStatus :: Lens' SendEmailResponse Int
 sersResponseStatus = lens _sersResponseStatus (\ s a -> s{_sersResponseStatus = a})
 
--- | The unique message identifier returned from the @SendEmail@ action.
+-- | The unique message identifier returned from the @SendEmail@ action. 
 sersMessageId :: Lens' SendEmailResponse Text
 sersMessageId = lens _sersMessageId (\ s a -> s{_sersMessageId = a})
 

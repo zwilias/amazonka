@@ -40,21 +40,20 @@ module Network.AWS.EC2.DeleteTransitGatewayRoute
     ) where
 
 import Network.AWS.EC2.Types
-import Network.AWS.EC2.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 
 -- | /See:/ 'deleteTransitGatewayRoute' smart constructor.
-data DeleteTransitGatewayRoute =
-  DeleteTransitGatewayRoute'
-    { _dtgrDryRun                     :: !(Maybe Bool)
-    , _dtgrTransitGatewayRouteTableId :: !Text
-    , _dtgrDestinationCidrBlock       :: !Text
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data DeleteTransitGatewayRoute = DeleteTransitGatewayRoute'{_dtgrDryRun
+                                                            :: !(Maybe Bool),
+                                                            _dtgrTransitGatewayRouteTableId
+                                                            :: !Text,
+                                                            _dtgrDestinationCidrBlock
+                                                            :: !Text}
+                                   deriving (Eq, Read, Show, Data, Typeable,
+                                             Generic)
 
 -- | Creates a value of 'DeleteTransitGatewayRoute' with the minimum fields required to make a request.
 --
@@ -69,13 +68,13 @@ deleteTransitGatewayRoute
     :: Text -- ^ 'dtgrTransitGatewayRouteTableId'
     -> Text -- ^ 'dtgrDestinationCidrBlock'
     -> DeleteTransitGatewayRoute
-deleteTransitGatewayRoute pTransitGatewayRouteTableId_ pDestinationCidrBlock_ =
-  DeleteTransitGatewayRoute'
-    { _dtgrDryRun = Nothing
-    , _dtgrTransitGatewayRouteTableId = pTransitGatewayRouteTableId_
-    , _dtgrDestinationCidrBlock = pDestinationCidrBlock_
-    }
-
+deleteTransitGatewayRoute
+  pTransitGatewayRouteTableId_ pDestinationCidrBlock_
+  = DeleteTransitGatewayRoute'{_dtgrDryRun = Nothing,
+                               _dtgrTransitGatewayRouteTableId =
+                                 pTransitGatewayRouteTableId_,
+                               _dtgrDestinationCidrBlock =
+                                 pDestinationCidrBlock_}
 
 -- | Checks whether you have the required permissions for the action, without actually making the request, and provides an error response. If you have the required permissions, the error response is @DryRunOperation@ . Otherwise, it is @UnauthorizedOperation@ .
 dtgrDryRun :: Lens' DeleteTransitGatewayRoute (Maybe Bool)
@@ -121,13 +120,15 @@ instance ToQuery DeleteTransitGatewayRoute where
                "DestinationCidrBlock" =: _dtgrDestinationCidrBlock]
 
 -- | /See:/ 'deleteTransitGatewayRouteResponse' smart constructor.
-data DeleteTransitGatewayRouteResponse =
-  DeleteTransitGatewayRouteResponse'
-    { _dtgrrsRoute          :: !(Maybe TransitGatewayRoute)
-    , _dtgrrsResponseStatus :: !Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data DeleteTransitGatewayRouteResponse = DeleteTransitGatewayRouteResponse'{_dtgrrsRoute
+                                                                            ::
+                                                                            !(Maybe
+                                                                                TransitGatewayRoute),
+                                                                            _dtgrrsResponseStatus
+                                                                            ::
+                                                                            !Int}
+                                           deriving (Eq, Read, Show, Data,
+                                                     Typeable, Generic)
 
 -- | Creates a value of 'DeleteTransitGatewayRouteResponse' with the minimum fields required to make a request.
 --
@@ -139,10 +140,10 @@ data DeleteTransitGatewayRouteResponse =
 deleteTransitGatewayRouteResponse
     :: Int -- ^ 'dtgrrsResponseStatus'
     -> DeleteTransitGatewayRouteResponse
-deleteTransitGatewayRouteResponse pResponseStatus_ =
-  DeleteTransitGatewayRouteResponse'
-    {_dtgrrsRoute = Nothing, _dtgrrsResponseStatus = pResponseStatus_}
-
+deleteTransitGatewayRouteResponse pResponseStatus_
+  = DeleteTransitGatewayRouteResponse'{_dtgrrsRoute =
+                                         Nothing,
+                                       _dtgrrsResponseStatus = pResponseStatus_}
 
 -- | Information about the route.
 dtgrrsRoute :: Lens' DeleteTransitGatewayRouteResponse (Maybe TransitGatewayRoute)

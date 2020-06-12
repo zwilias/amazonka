@@ -42,22 +42,18 @@ module Network.AWS.MediaConvert.ListJobs
 
 import Network.AWS.Lens
 import Network.AWS.MediaConvert.Types
-import Network.AWS.MediaConvert.Types.Product
 import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 
 -- | /See:/ 'listJobs' smart constructor.
-data ListJobs =
-  ListJobs'
-    { _ljStatus     :: !(Maybe JobStatus)
-    , _ljQueue      :: !(Maybe Text)
-    , _ljNextToken  :: !(Maybe Text)
-    , _ljOrder      :: !(Maybe Order)
-    , _ljMaxResults :: !(Maybe Int)
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data ListJobs = ListJobs'{_ljStatus ::
+                          !(Maybe JobStatus),
+                          _ljQueue :: !(Maybe Text),
+                          _ljNextToken :: !(Maybe Text),
+                          _ljOrder :: !(Maybe Order),
+                          _ljMaxResults :: !(Maybe Int)}
+                  deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'ListJobs' with the minimum fields required to make a request.
 --
@@ -74,15 +70,10 @@ data ListJobs =
 -- * 'ljMaxResults' - Optional. Number of jobs, up to twenty, that will be returned at one time.
 listJobs
     :: ListJobs
-listJobs =
-  ListJobs'
-    { _ljStatus = Nothing
-    , _ljQueue = Nothing
-    , _ljNextToken = Nothing
-    , _ljOrder = Nothing
-    , _ljMaxResults = Nothing
-    }
-
+listJobs
+  = ListJobs'{_ljStatus = Nothing, _ljQueue = Nothing,
+              _ljNextToken = Nothing, _ljOrder = Nothing,
+              _ljMaxResults = Nothing}
 
 -- | Undocumented member.
 ljStatus :: Lens' ListJobs (Maybe JobStatus)
@@ -136,14 +127,11 @@ instance ToQuery ListJobs where
                "maxResults" =: _ljMaxResults]
 
 -- | /See:/ 'listJobsResponse' smart constructor.
-data ListJobsResponse =
-  ListJobsResponse'
-    { _ljrsNextToken      :: !(Maybe Text)
-    , _ljrsJobs           :: !(Maybe [Job])
-    , _ljrsResponseStatus :: !Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data ListJobsResponse = ListJobsResponse'{_ljrsNextToken
+                                          :: !(Maybe Text),
+                                          _ljrsJobs :: !(Maybe [Job]),
+                                          _ljrsResponseStatus :: !Int}
+                          deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'ListJobsResponse' with the minimum fields required to make a request.
 --
@@ -157,13 +145,10 @@ data ListJobsResponse =
 listJobsResponse
     :: Int -- ^ 'ljrsResponseStatus'
     -> ListJobsResponse
-listJobsResponse pResponseStatus_ =
-  ListJobsResponse'
-    { _ljrsNextToken = Nothing
-    , _ljrsJobs = Nothing
-    , _ljrsResponseStatus = pResponseStatus_
-    }
-
+listJobsResponse pResponseStatus_
+  = ListJobsResponse'{_ljrsNextToken = Nothing,
+                      _ljrsJobs = Nothing,
+                      _ljrsResponseStatus = pResponseStatus_}
 
 -- | Use this string to request the next batch of jobs.
 ljrsNextToken :: Lens' ListJobsResponse (Maybe Text)

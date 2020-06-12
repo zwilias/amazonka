@@ -39,7 +39,6 @@ module Network.AWS.CognitoIdentityProvider.AdminSetUserSettings
     ) where
 
 import Network.AWS.CognitoIdentityProvider.Types
-import Network.AWS.CognitoIdentityProvider.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.Request
@@ -50,14 +49,13 @@ import Network.AWS.Response
 --
 --
 -- /See:/ 'adminSetUserSettings' smart constructor.
-data AdminSetUserSettings =
-  AdminSetUserSettings'
-    { _asusUserPoolId :: !Text
-    , _asusUsername   :: !(Sensitive Text)
-    , _asusMFAOptions :: ![MFAOptionType]
-    }
-  deriving (Eq, Show, Data, Typeable, Generic)
-
+data AdminSetUserSettings = AdminSetUserSettings'{_asusUserPoolId
+                                                  :: !Text,
+                                                  _asusUsername ::
+                                                  !(Sensitive Text),
+                                                  _asusMFAOptions ::
+                                                  ![MFAOptionType]}
+                              deriving (Eq, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'AdminSetUserSettings' with the minimum fields required to make a request.
 --
@@ -72,13 +70,11 @@ adminSetUserSettings
     :: Text -- ^ 'asusUserPoolId'
     -> Text -- ^ 'asusUsername'
     -> AdminSetUserSettings
-adminSetUserSettings pUserPoolId_ pUsername_ =
-  AdminSetUserSettings'
-    { _asusUserPoolId = pUserPoolId_
-    , _asusUsername = _Sensitive # pUsername_
-    , _asusMFAOptions = mempty
-    }
-
+adminSetUserSettings pUserPoolId_ pUsername_
+  = AdminSetUserSettings'{_asusUserPoolId =
+                            pUserPoolId_,
+                          _asusUsername = _Sensitive # pUsername_,
+                          _asusMFAOptions = mempty}
 
 -- | The ID of the user pool that contains the user that you are setting options for.
 asusUserPoolId :: Lens' AdminSetUserSettings Text
@@ -135,12 +131,10 @@ instance ToQuery AdminSetUserSettings where
 --
 --
 -- /See:/ 'adminSetUserSettingsResponse' smart constructor.
-newtype AdminSetUserSettingsResponse =
-  AdminSetUserSettingsResponse'
-    { _asusrsResponseStatus :: Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+newtype AdminSetUserSettingsResponse = AdminSetUserSettingsResponse'{_asusrsResponseStatus
+                                                                     :: Int}
+                                         deriving (Eq, Read, Show, Data,
+                                                   Typeable, Generic)
 
 -- | Creates a value of 'AdminSetUserSettingsResponse' with the minimum fields required to make a request.
 --
@@ -150,9 +144,9 @@ newtype AdminSetUserSettingsResponse =
 adminSetUserSettingsResponse
     :: Int -- ^ 'asusrsResponseStatus'
     -> AdminSetUserSettingsResponse
-adminSetUserSettingsResponse pResponseStatus_ =
-  AdminSetUserSettingsResponse' {_asusrsResponseStatus = pResponseStatus_}
-
+adminSetUserSettingsResponse pResponseStatus_
+  = AdminSetUserSettingsResponse'{_asusrsResponseStatus
+                                    = pResponseStatus_}
 
 -- | -- | The response status code.
 asusrsResponseStatus :: Lens' AdminSetUserSettingsResponse Int

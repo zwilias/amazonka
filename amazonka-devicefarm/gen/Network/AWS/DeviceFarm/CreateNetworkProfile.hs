@@ -49,30 +49,35 @@ module Network.AWS.DeviceFarm.CreateNetworkProfile
     ) where
 
 import Network.AWS.DeviceFarm.Types
-import Network.AWS.DeviceFarm.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 
 -- | /See:/ 'createNetworkProfile' smart constructor.
-data CreateNetworkProfile =
-  CreateNetworkProfile'
-    { _cnpUplinkJitterMs        :: !(Maybe Integer)
-    , _cnpUplinkLossPercent     :: !(Maybe Nat)
-    , _cnpDownlinkJitterMs      :: !(Maybe Integer)
-    , _cnpDownlinkLossPercent   :: !(Maybe Nat)
-    , _cnpType                  :: !(Maybe NetworkProfileType)
-    , _cnpUplinkDelayMs         :: !(Maybe Integer)
-    , _cnpUplinkBandwidthBits   :: !(Maybe Integer)
-    , _cnpDescription           :: !(Maybe Text)
-    , _cnpDownlinkDelayMs       :: !(Maybe Integer)
-    , _cnpDownlinkBandwidthBits :: !(Maybe Integer)
-    , _cnpProjectARN            :: !Text
-    , _cnpName                  :: !Text
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data CreateNetworkProfile = CreateNetworkProfile'{_cnpUplinkJitterMs
+                                                  :: !(Maybe Integer),
+                                                  _cnpUplinkLossPercent ::
+                                                  !(Maybe Nat),
+                                                  _cnpDownlinkJitterMs ::
+                                                  !(Maybe Integer),
+                                                  _cnpDownlinkLossPercent ::
+                                                  !(Maybe Nat),
+                                                  _cnpType ::
+                                                  !(Maybe NetworkProfileType),
+                                                  _cnpUplinkDelayMs ::
+                                                  !(Maybe Integer),
+                                                  _cnpUplinkBandwidthBits ::
+                                                  !(Maybe Integer),
+                                                  _cnpDescription ::
+                                                  !(Maybe Text),
+                                                  _cnpDownlinkDelayMs ::
+                                                  !(Maybe Integer),
+                                                  _cnpDownlinkBandwidthBits ::
+                                                  !(Maybe Integer),
+                                                  _cnpProjectARN :: !Text,
+                                                  _cnpName :: !Text}
+                              deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'CreateNetworkProfile' with the minimum fields required to make a request.
 --
@@ -105,22 +110,17 @@ createNetworkProfile
     :: Text -- ^ 'cnpProjectARN'
     -> Text -- ^ 'cnpName'
     -> CreateNetworkProfile
-createNetworkProfile pProjectARN_ pName_ =
-  CreateNetworkProfile'
-    { _cnpUplinkJitterMs = Nothing
-    , _cnpUplinkLossPercent = Nothing
-    , _cnpDownlinkJitterMs = Nothing
-    , _cnpDownlinkLossPercent = Nothing
-    , _cnpType = Nothing
-    , _cnpUplinkDelayMs = Nothing
-    , _cnpUplinkBandwidthBits = Nothing
-    , _cnpDescription = Nothing
-    , _cnpDownlinkDelayMs = Nothing
-    , _cnpDownlinkBandwidthBits = Nothing
-    , _cnpProjectARN = pProjectARN_
-    , _cnpName = pName_
-    }
-
+createNetworkProfile pProjectARN_ pName_
+  = CreateNetworkProfile'{_cnpUplinkJitterMs = Nothing,
+                          _cnpUplinkLossPercent = Nothing,
+                          _cnpDownlinkJitterMs = Nothing,
+                          _cnpDownlinkLossPercent = Nothing,
+                          _cnpType = Nothing, _cnpUplinkDelayMs = Nothing,
+                          _cnpUplinkBandwidthBits = Nothing,
+                          _cnpDescription = Nothing,
+                          _cnpDownlinkDelayMs = Nothing,
+                          _cnpDownlinkBandwidthBits = Nothing,
+                          _cnpProjectARN = pProjectARN_, _cnpName = pName_}
 
 -- | Time variation in the delay of received packets in milliseconds as an integer from 0 to 2000.
 cnpUplinkJitterMs :: Lens' CreateNetworkProfile (Maybe Integer)
@@ -221,13 +221,14 @@ instance ToQuery CreateNetworkProfile where
         toQuery = const mempty
 
 -- | /See:/ 'createNetworkProfileResponse' smart constructor.
-data CreateNetworkProfileResponse =
-  CreateNetworkProfileResponse'
-    { _cnprsNetworkProfile :: !(Maybe NetworkProfile)
-    , _cnprsResponseStatus :: !Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data CreateNetworkProfileResponse = CreateNetworkProfileResponse'{_cnprsNetworkProfile
+                                                                  ::
+                                                                  !(Maybe
+                                                                      NetworkProfile),
+                                                                  _cnprsResponseStatus
+                                                                  :: !Int}
+                                      deriving (Eq, Read, Show, Data, Typeable,
+                                                Generic)
 
 -- | Creates a value of 'CreateNetworkProfileResponse' with the minimum fields required to make a request.
 --
@@ -239,10 +240,10 @@ data CreateNetworkProfileResponse =
 createNetworkProfileResponse
     :: Int -- ^ 'cnprsResponseStatus'
     -> CreateNetworkProfileResponse
-createNetworkProfileResponse pResponseStatus_ =
-  CreateNetworkProfileResponse'
-    {_cnprsNetworkProfile = Nothing, _cnprsResponseStatus = pResponseStatus_}
-
+createNetworkProfileResponse pResponseStatus_
+  = CreateNetworkProfileResponse'{_cnprsNetworkProfile
+                                    = Nothing,
+                                  _cnprsResponseStatus = pResponseStatus_}
 
 -- | The network profile that is returned by the create network profile request.
 cnprsNetworkProfile :: Lens' CreateNetworkProfileResponse (Maybe NetworkProfile)

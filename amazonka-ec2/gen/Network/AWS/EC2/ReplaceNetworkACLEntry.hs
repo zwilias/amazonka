@@ -44,28 +44,31 @@ module Network.AWS.EC2.ReplaceNetworkACLEntry
     ) where
 
 import Network.AWS.EC2.Types
-import Network.AWS.EC2.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 
 -- | /See:/ 'replaceNetworkACLEntry' smart constructor.
-data ReplaceNetworkACLEntry =
-  ReplaceNetworkACLEntry'
-    { _rnaeIPv6CidrBlock :: !(Maybe Text)
-    , _rnaeICMPTypeCode  :: !(Maybe ICMPTypeCode)
-    , _rnaePortRange     :: !(Maybe PortRange)
-    , _rnaeCidrBlock     :: !(Maybe Text)
-    , _rnaeDryRun        :: !(Maybe Bool)
-    , _rnaeEgress        :: !Bool
-    , _rnaeNetworkACLId  :: !Text
-    , _rnaeProtocol      :: !Text
-    , _rnaeRuleAction    :: !RuleAction
-    , _rnaeRuleNumber    :: !Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data ReplaceNetworkACLEntry = ReplaceNetworkACLEntry'{_rnaeIPv6CidrBlock
+                                                      :: !(Maybe Text),
+                                                      _rnaeICMPTypeCode ::
+                                                      !(Maybe ICMPTypeCode),
+                                                      _rnaePortRange ::
+                                                      !(Maybe PortRange),
+                                                      _rnaeCidrBlock ::
+                                                      !(Maybe Text),
+                                                      _rnaeDryRun ::
+                                                      !(Maybe Bool),
+                                                      _rnaeEgress :: !Bool,
+                                                      _rnaeNetworkACLId ::
+                                                      !Text,
+                                                      _rnaeProtocol :: !Text,
+                                                      _rnaeRuleAction ::
+                                                      !RuleAction,
+                                                      _rnaeRuleNumber :: !Int}
+                                deriving (Eq, Read, Show, Data, Typeable,
+                                          Generic)
 
 -- | Creates a value of 'ReplaceNetworkACLEntry' with the minimum fields required to make a request.
 --
@@ -97,20 +100,17 @@ replaceNetworkACLEntry
     -> RuleAction -- ^ 'rnaeRuleAction'
     -> Int -- ^ 'rnaeRuleNumber'
     -> ReplaceNetworkACLEntry
-replaceNetworkACLEntry pEgress_ pNetworkACLId_ pProtocol_ pRuleAction_ pRuleNumber_ =
-  ReplaceNetworkACLEntry'
-    { _rnaeIPv6CidrBlock = Nothing
-    , _rnaeICMPTypeCode = Nothing
-    , _rnaePortRange = Nothing
-    , _rnaeCidrBlock = Nothing
-    , _rnaeDryRun = Nothing
-    , _rnaeEgress = pEgress_
-    , _rnaeNetworkACLId = pNetworkACLId_
-    , _rnaeProtocol = pProtocol_
-    , _rnaeRuleAction = pRuleAction_
-    , _rnaeRuleNumber = pRuleNumber_
-    }
-
+replaceNetworkACLEntry pEgress_ pNetworkACLId_
+  pProtocol_ pRuleAction_ pRuleNumber_
+  = ReplaceNetworkACLEntry'{_rnaeIPv6CidrBlock =
+                              Nothing,
+                            _rnaeICMPTypeCode = Nothing,
+                            _rnaePortRange = Nothing, _rnaeCidrBlock = Nothing,
+                            _rnaeDryRun = Nothing, _rnaeEgress = pEgress_,
+                            _rnaeNetworkACLId = pNetworkACLId_,
+                            _rnaeProtocol = pProtocol_,
+                            _rnaeRuleAction = pRuleAction_,
+                            _rnaeRuleNumber = pRuleNumber_}
 
 -- | The IPv6 network range to allow or deny, in CIDR notation (for example @2001:bd8:1234:1a00::/64@ ).
 rnaeIPv6CidrBlock :: Lens' ReplaceNetworkACLEntry (Maybe Text)
@@ -186,16 +186,15 @@ instance ToQuery ReplaceNetworkACLEntry where
                "RuleNumber" =: _rnaeRuleNumber]
 
 -- | /See:/ 'replaceNetworkACLEntryResponse' smart constructor.
-data ReplaceNetworkACLEntryResponse =
-  ReplaceNetworkACLEntryResponse'
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data ReplaceNetworkACLEntryResponse = ReplaceNetworkACLEntryResponse'
+                                        deriving (Eq, Read, Show, Data,
+                                                  Typeable, Generic)
 
 -- | Creates a value of 'ReplaceNetworkACLEntryResponse' with the minimum fields required to make a request.
 --
 replaceNetworkACLEntryResponse
     :: ReplaceNetworkACLEntryResponse
-replaceNetworkACLEntryResponse = ReplaceNetworkACLEntryResponse'
-
+replaceNetworkACLEntryResponse
+  = ReplaceNetworkACLEntryResponse'
 
 instance NFData ReplaceNetworkACLEntryResponse where

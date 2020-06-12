@@ -18,10 +18,10 @@
 -- Stability   : auto-generated
 -- Portability : non-portable (GHC extensions)
 --
--- Deletes an Amazon SageMaker notebook instance. Before you can delete a notebook instance, you must call the @StopNotebookInstance@ API.
+-- Deletes an Amazon SageMaker notebook instance. Before you can delete a notebook instance, you must call the @StopNotebookInstance@ API. 
 --
 --
--- /Important:/ When you delete a notebook instance, you lose all of your data. Amazon SageMaker removes the ML compute instance, and deletes the ML storage volume and the network interface associated with the notebook instance.
+-- /Important:/ When you delete a notebook instance, you lose all of your data. Amazon SageMaker removes the ML compute instance, and deletes the ML storage volume and the network interface associated with the notebook instance. 
 --
 module Network.AWS.SageMaker.DeleteNotebookInstance
     (
@@ -41,15 +41,12 @@ import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 import Network.AWS.SageMaker.Types
-import Network.AWS.SageMaker.Types.Product
 
 -- | /See:/ 'deleteNotebookInstance' smart constructor.
-newtype DeleteNotebookInstance =
-  DeleteNotebookInstance'
-    { _dNotebookInstanceName :: Text
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+newtype DeleteNotebookInstance = DeleteNotebookInstance'{_dNotebookInstanceName
+                                                         :: Text}
+                                   deriving (Eq, Read, Show, Data, Typeable,
+                                             Generic)
 
 -- | Creates a value of 'DeleteNotebookInstance' with the minimum fields required to make a request.
 --
@@ -59,9 +56,9 @@ newtype DeleteNotebookInstance =
 deleteNotebookInstance
     :: Text -- ^ 'dNotebookInstanceName'
     -> DeleteNotebookInstance
-deleteNotebookInstance pNotebookInstanceName_ =
-  DeleteNotebookInstance' {_dNotebookInstanceName = pNotebookInstanceName_}
-
+deleteNotebookInstance pNotebookInstanceName_
+  = DeleteNotebookInstance'{_dNotebookInstanceName =
+                              pNotebookInstanceName_}
 
 -- | The name of the Amazon SageMaker notebook instance to delete.
 dNotebookInstanceName :: Lens' DeleteNotebookInstance Text
@@ -101,16 +98,15 @@ instance ToQuery DeleteNotebookInstance where
         toQuery = const mempty
 
 -- | /See:/ 'deleteNotebookInstanceResponse' smart constructor.
-data DeleteNotebookInstanceResponse =
-  DeleteNotebookInstanceResponse'
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data DeleteNotebookInstanceResponse = DeleteNotebookInstanceResponse'
+                                        deriving (Eq, Read, Show, Data,
+                                                  Typeable, Generic)
 
 -- | Creates a value of 'DeleteNotebookInstanceResponse' with the minimum fields required to make a request.
 --
 deleteNotebookInstanceResponse
     :: DeleteNotebookInstanceResponse
-deleteNotebookInstanceResponse = DeleteNotebookInstanceResponse'
-
+deleteNotebookInstanceResponse
+  = DeleteNotebookInstanceResponse'
 
 instance NFData DeleteNotebookInstanceResponse where

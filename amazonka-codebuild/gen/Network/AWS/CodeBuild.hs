@@ -11,9 +11,9 @@
 -- Stability   : auto-generated
 -- Portability : non-portable (GHC extensions)
 --
--- __AWS CodeBuild__
+-- __AWS CodeBuild__ 
 --
--- AWS CodeBuild is a fully managed build service in the cloud. AWS CodeBuild compiles your source code, runs unit tests, and produces artifacts that are ready to deploy. AWS CodeBuild eliminates the need to provision, manage, and scale your own build servers. It provides prepackaged build environments for the most popular programming languages and build tools, such as Apache Maven, Gradle, and more. You can also fully customize build environments in AWS CodeBuild to use your own build tools. AWS CodeBuild scales automatically to meet peak build requests. You pay only for the build time you consume. For more information about AWS CodeBuild, see the /<https:\/\/docs.aws.amazon.com\/codebuild\/latest\/userguide\/welcome.html AWS CodeBuild User Guide> ./
+-- AWS CodeBuild is a fully managed build service in the cloud. AWS CodeBuild compiles your source code, runs unit tests, and produces artifacts that are ready to deploy. AWS CodeBuild eliminates the need to provision, manage, and scale your own build servers. It provides prepackaged build environments for the most popular programming languages and build tools, such as Apache Maven, Gradle, and more. You can also fully customize build environments in AWS CodeBuild to use your own build tools. AWS CodeBuild scales automatically to meet peak build requests. You pay only for the build time you consume. For more information about AWS CodeBuild, see the /<https:\/\/docs.aws.amazon.com\/codebuild\/latest\/userguide\/welcome.html AWS CodeBuild User Guide> ./ 
 --
 -- AWS CodeBuild supports these operations:
 --
@@ -23,31 +23,31 @@
 --
 --     * @BatchGetProjects@ : Gets information about one or more build projects. A /build project/ defines how AWS CodeBuild runs a build. This includes information such as where to get the source code to build, the build environment to use, the build commands to run, and where to store the build output. A /build environment/ is a representation of operating system, programming language runtime, and tools that AWS CodeBuild uses to run a build. You can add tags to build projects to help manage your resources and costs.
 --
---     * @BatchGetReportGroups@ : Returns an array of report groups.
+--     * @BatchGetReportGroups@ : Returns an array of report groups. 
 --
---     * @BatchGetReports@ : Returns an array of reports.
+--     * @BatchGetReports@ : Returns an array of reports. 
 --
 --     * @CreateProject@ : Creates a build project.
 --
---     * @CreateReportGroup@ : Creates a report group. A report group contains a collection of reports.
+--     * @CreateReportGroup@ : Creates a report group. A report group contains a collection of reports. 
 --
 --     * @CreateWebhook@ : For an existing AWS CodeBuild build project that has its source code stored in a GitHub or Bitbucket repository, enables AWS CodeBuild to start rebuilding the source code every time a code change is pushed to the repository.
 --
 --     * @DeleteProject@ : Deletes a build project.
 --
---     * @DeleteReport@ : Deletes a report.
+--     * @DeleteReport@ : Deletes a report. 
 --
---     * @DeleteReportGroup@ : Deletes a report group.
+--     * @DeleteReportGroup@ : Deletes a report group. 
 --
---     * @DeleteResourcePolicy@ : Deletes a resource policy that is identified by its resource ARN.
+--     * @DeleteResourcePolicy@ : Deletes a resource policy that is identified by its resource ARN. 
 --
 --     * @DeleteSourceCredentials@ : Deletes a set of GitHub, GitHub Enterprise, or Bitbucket source credentials.
 --
 --     * @DeleteWebhook@ : For an existing AWS CodeBuild build project that has its source code stored in a GitHub or Bitbucket repository, stops AWS CodeBuild from rebuilding the source code every time a code change is pushed to the repository.
 --
---     * @DescribeTestCases@ : Returns a list of details about test cases for a report.
+--     * @DescribeTestCases@ : Returns a list of details about test cases for a report. 
 --
---     * @GetResourcePolicy@ : Gets a resource policy that is identified by its resource ARN.
+--     * @GetResourcePolicy@ : Gets a resource policy that is identified by its resource ARN. 
 --
 --     * @ImportSourceCredentials@ : Imports the source repository credentials for an AWS CodeBuild project that has its source code stored in a GitHub, GitHub Enterprise, or Bitbucket repository.
 --
@@ -61,11 +61,11 @@
 --
 --     * @ListProjects@ : Gets a list of build project names, with each build project name representing a single build project.
 --
---     * @ListReportGroups@ : Gets a list ARNs for the report groups in the current AWS account.
+--     * @ListReportGroups@ : Gets a list ARNs for the report groups in the current AWS account. 
 --
---     * @ListReports@ : Gets a list ARNs for the reports in the current AWS account.
+--     * @ListReports@ : Gets a list ARNs for the reports in the current AWS account. 
 --
---     * @ListReportsForReportGroup@ : Returns a list of ARNs for the reports that belong to a @ReportGroup@ .
+--     * @ListReportsForReportGroup@ : Returns a list of ARNs for the reports that belong to a @ReportGroup@ . 
 --
 --     * @ListSharedProjects@ : Gets a list of ARNs associated with projects shared with the current AWS account or user.
 --
@@ -73,7 +73,7 @@
 --
 --     * @ListSourceCredentials@ : Returns a list of @SourceCredentialsInfo@ objects. Each @SourceCredentialsInfo@ object includes the authentication type, token ARN, and type of source provider for one set of credentials.
 --
---     * @PutResourcePolicy@ : Stores a resource policy for the ARN of a @Project@ or @ReportGroup@ object.
+--     * @PutResourcePolicy@ : Stores a resource policy for the ARN of a @Project@ or @ReportGroup@ object. 
 --
 --     * @StartBuild@ : Starts running a build.
 --
@@ -119,103 +119,103 @@ module Network.AWS.CodeBuild
     -- ** ListProjects (Paginated)
     , module Network.AWS.CodeBuild.ListProjects
 
-    -- ** DeleteProject
+    -- ** DeleteProject 
     , module Network.AWS.CodeBuild.DeleteProject
 
-    -- ** UpdateProject
+    -- ** UpdateProject 
     , module Network.AWS.CodeBuild.UpdateProject
 
-    -- ** DeleteSourceCredentials
+    -- ** DeleteSourceCredentials 
     , module Network.AWS.CodeBuild.DeleteSourceCredentials
 
     -- ** ListBuilds (Paginated)
     , module Network.AWS.CodeBuild.ListBuilds
 
-    -- ** ListSourceCredentials
+    -- ** ListSourceCredentials 
     , module Network.AWS.CodeBuild.ListSourceCredentials
 
-    -- ** ListReports
+    -- ** ListReports 
     , module Network.AWS.CodeBuild.ListReports
 
-    -- ** DeleteReport
+    -- ** DeleteReport 
     , module Network.AWS.CodeBuild.DeleteReport
 
-    -- ** CreateWebhook
+    -- ** CreateWebhook 
     , module Network.AWS.CodeBuild.CreateWebhook
 
-    -- ** ListSharedProjects
+    -- ** ListSharedProjects 
     , module Network.AWS.CodeBuild.ListSharedProjects
 
-    -- ** CreateReportGroup
+    -- ** CreateReportGroup 
     , module Network.AWS.CodeBuild.CreateReportGroup
 
-    -- ** ImportSourceCredentials
+    -- ** ImportSourceCredentials 
     , module Network.AWS.CodeBuild.ImportSourceCredentials
 
-    -- ** BatchGetReportGroups
+    -- ** BatchGetReportGroups 
     , module Network.AWS.CodeBuild.BatchGetReportGroups
 
-    -- ** StartBuild
+    -- ** StartBuild 
     , module Network.AWS.CodeBuild.StartBuild
 
     -- ** ListBuildsForProject (Paginated)
     , module Network.AWS.CodeBuild.ListBuildsForProject
 
-    -- ** DescribeTestCases
+    -- ** DescribeTestCases 
     , module Network.AWS.CodeBuild.DescribeTestCases
 
-    -- ** GetResourcePolicy
+    -- ** GetResourcePolicy 
     , module Network.AWS.CodeBuild.GetResourcePolicy
 
-    -- ** BatchGetProjects
+    -- ** BatchGetProjects 
     , module Network.AWS.CodeBuild.BatchGetProjects
 
-    -- ** BatchGetBuilds
+    -- ** BatchGetBuilds 
     , module Network.AWS.CodeBuild.BatchGetBuilds
 
-    -- ** BatchGetReports
+    -- ** BatchGetReports 
     , module Network.AWS.CodeBuild.BatchGetReports
 
-    -- ** UpdateWebhook
+    -- ** UpdateWebhook 
     , module Network.AWS.CodeBuild.UpdateWebhook
 
-    -- ** DeleteWebhook
+    -- ** DeleteWebhook 
     , module Network.AWS.CodeBuild.DeleteWebhook
 
-    -- ** ListReportsForReportGroup
+    -- ** ListReportsForReportGroup 
     , module Network.AWS.CodeBuild.ListReportsForReportGroup
 
-    -- ** InvalidateProjectCache
+    -- ** InvalidateProjectCache 
     , module Network.AWS.CodeBuild.InvalidateProjectCache
 
-    -- ** UpdateReportGroup
+    -- ** UpdateReportGroup 
     , module Network.AWS.CodeBuild.UpdateReportGroup
 
-    -- ** DeleteReportGroup
+    -- ** DeleteReportGroup 
     , module Network.AWS.CodeBuild.DeleteReportGroup
 
-    -- ** BatchDeleteBuilds
+    -- ** BatchDeleteBuilds 
     , module Network.AWS.CodeBuild.BatchDeleteBuilds
 
-    -- ** ListReportGroups
+    -- ** ListReportGroups 
     , module Network.AWS.CodeBuild.ListReportGroups
 
-    -- ** PutResourcePolicy
+    -- ** PutResourcePolicy 
     , module Network.AWS.CodeBuild.PutResourcePolicy
 
-    -- ** DeleteResourcePolicy
+    -- ** DeleteResourcePolicy 
     , module Network.AWS.CodeBuild.DeleteResourcePolicy
 
-    -- ** ListCuratedEnvironmentImages
+    -- ** ListCuratedEnvironmentImages 
     , module Network.AWS.CodeBuild.ListCuratedEnvironmentImages
 
-    -- ** StopBuild
+    -- ** StopBuild 
     , module Network.AWS.CodeBuild.StopBuild
 
-    -- ** CreateProject
+    -- ** CreateProject 
     , module Network.AWS.CodeBuild.CreateProject
 
-    -- ** ListSharedReportGroups
+    -- ** ListSharedReportGroups 
     , module Network.AWS.CodeBuild.ListSharedReportGroups
 
     -- * Types

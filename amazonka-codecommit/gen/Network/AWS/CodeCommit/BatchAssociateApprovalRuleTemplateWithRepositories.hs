@@ -18,7 +18,7 @@
 -- Stability   : auto-generated
 -- Portability : non-portable (GHC extensions)
 --
--- Creates an association between an approval rule template and one or more specified repositories.
+-- Creates an association between an approval rule template and one or more specified repositories. 
 --
 --
 module Network.AWS.CodeCommit.BatchAssociateApprovalRuleTemplateWithRepositories
@@ -40,20 +40,23 @@ module Network.AWS.CodeCommit.BatchAssociateApprovalRuleTemplateWithRepositories
     ) where
 
 import Network.AWS.CodeCommit.Types
-import Network.AWS.CodeCommit.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 
 -- | /See:/ 'batchAssociateApprovalRuleTemplateWithRepositories' smart constructor.
-data BatchAssociateApprovalRuleTemplateWithRepositories =
-  BatchAssociateApprovalRuleTemplateWithRepositories'
-    { _baartwrApprovalRuleTemplateName :: !Text
-    , _baartwrRepositoryNames          :: ![Text]
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data BatchAssociateApprovalRuleTemplateWithRepositories = BatchAssociateApprovalRuleTemplateWithRepositories'{_baartwrApprovalRuleTemplateName
+                                                                                                              ::
+                                                                                                              !Text,
+                                                                                                              _baartwrRepositoryNames
+                                                                                                              ::
+                                                                                                              ![Text]}
+                                                            deriving (Eq, Read,
+                                                                      Show,
+                                                                      Data,
+                                                                      Typeable,
+                                                                      Generic)
 
 -- | Creates a value of 'BatchAssociateApprovalRuleTemplateWithRepositories' with the minimum fields required to make a request.
 --
@@ -65,12 +68,13 @@ data BatchAssociateApprovalRuleTemplateWithRepositories =
 batchAssociateApprovalRuleTemplateWithRepositories
     :: Text -- ^ 'baartwrApprovalRuleTemplateName'
     -> BatchAssociateApprovalRuleTemplateWithRepositories
-batchAssociateApprovalRuleTemplateWithRepositories pApprovalRuleTemplateName_ =
-  BatchAssociateApprovalRuleTemplateWithRepositories'
-    { _baartwrApprovalRuleTemplateName = pApprovalRuleTemplateName_
-    , _baartwrRepositoryNames = mempty
-    }
-
+batchAssociateApprovalRuleTemplateWithRepositories
+  pApprovalRuleTemplateName_
+  = BatchAssociateApprovalRuleTemplateWithRepositories'{_baartwrApprovalRuleTemplateName
+                                                          =
+                                                          pApprovalRuleTemplateName_,
+                                                        _baartwrRepositoryNames
+                                                          = mempty}
 
 -- | The name of the template you want to associate with one or more repositories.
 baartwrApprovalRuleTemplateName :: Lens' BatchAssociateApprovalRuleTemplateWithRepositories Text
@@ -140,14 +144,21 @@ instance ToQuery
         toQuery = const mempty
 
 -- | /See:/ 'batchAssociateApprovalRuleTemplateWithRepositoriesResponse' smart constructor.
-data BatchAssociateApprovalRuleTemplateWithRepositoriesResponse =
-  BatchAssociateApprovalRuleTemplateWithRepositoriesResponse'
-    { _baartwrrsResponseStatus :: !Int
-    , _baartwrrsAssociatedRepositoryNames :: ![Text]
-    , _baartwrrsErrors :: ![BatchAssociateApprovalRuleTemplateWithRepositoriesError]
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data BatchAssociateApprovalRuleTemplateWithRepositoriesResponse = BatchAssociateApprovalRuleTemplateWithRepositoriesResponse'{_baartwrrsResponseStatus
+                                                                                                                              ::
+                                                                                                                              !Int,
+                                                                                                                              _baartwrrsAssociatedRepositoryNames
+                                                                                                                              ::
+                                                                                                                              ![Text],
+                                                                                                                              _baartwrrsErrors
+                                                                                                                              ::
+                                                                                                                              ![BatchAssociateApprovalRuleTemplateWithRepositoriesError]}
+                                                                    deriving (Eq,
+                                                                              Read,
+                                                                              Show,
+                                                                              Data,
+                                                                              Typeable,
+                                                                              Generic)
 
 -- | Creates a value of 'BatchAssociateApprovalRuleTemplateWithRepositoriesResponse' with the minimum fields required to make a request.
 --
@@ -161,13 +172,15 @@ data BatchAssociateApprovalRuleTemplateWithRepositoriesResponse =
 batchAssociateApprovalRuleTemplateWithRepositoriesResponse
     :: Int -- ^ 'baartwrrsResponseStatus'
     -> BatchAssociateApprovalRuleTemplateWithRepositoriesResponse
-batchAssociateApprovalRuleTemplateWithRepositoriesResponse pResponseStatus_ =
-  BatchAssociateApprovalRuleTemplateWithRepositoriesResponse'
-    { _baartwrrsResponseStatus = pResponseStatus_
-    , _baartwrrsAssociatedRepositoryNames = mempty
-    , _baartwrrsErrors = mempty
-    }
-
+batchAssociateApprovalRuleTemplateWithRepositoriesResponse
+  pResponseStatus_
+  = BatchAssociateApprovalRuleTemplateWithRepositoriesResponse'{_baartwrrsResponseStatus
+                                                                  =
+                                                                  pResponseStatus_,
+                                                                _baartwrrsAssociatedRepositoryNames
+                                                                  = mempty,
+                                                                _baartwrrsErrors
+                                                                  = mempty}
 
 -- | -- | The response status code.
 baartwrrsResponseStatus :: Lens' BatchAssociateApprovalRuleTemplateWithRepositoriesResponse Int

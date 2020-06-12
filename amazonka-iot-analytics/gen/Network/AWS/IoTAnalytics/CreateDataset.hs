@@ -41,21 +41,17 @@ module Network.AWS.IoTAnalytics.CreateDataset
     ) where
 
 import Network.AWS.IoTAnalytics.Types
-import Network.AWS.IoTAnalytics.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 
 -- | /See:/ 'createDataset' smart constructor.
-data CreateDataset =
-  CreateDataset'
-    { _cdTriggers    :: !(Maybe [DatasetTrigger])
-    , _cdDatasetName :: !Text
-    , _cdActions     :: !(List1 DatasetAction)
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data CreateDataset = CreateDataset'{_cdTriggers ::
+                                    !(Maybe [DatasetTrigger]),
+                                    _cdDatasetName :: !Text,
+                                    _cdActions :: !(List1 DatasetAction)}
+                       deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'CreateDataset' with the minimum fields required to make a request.
 --
@@ -70,13 +66,10 @@ createDataset
     :: Text -- ^ 'cdDatasetName'
     -> NonEmpty DatasetAction -- ^ 'cdActions'
     -> CreateDataset
-createDataset pDatasetName_ pActions_ =
-  CreateDataset'
-    { _cdTriggers = Nothing
-    , _cdDatasetName = pDatasetName_
-    , _cdActions = _List1 # pActions_
-    }
-
+createDataset pDatasetName_ pActions_
+  = CreateDataset'{_cdTriggers = Nothing,
+                   _cdDatasetName = pDatasetName_,
+                   _cdActions = _List1 # pActions_}
 
 -- | A list of triggers. A trigger causes data set content to be populated at a specified time or time interval. The list of triggers can be empty or contain up to five __DataSetTrigger__ objects.
 cdTriggers :: Lens' CreateDataset [DatasetTrigger]
@@ -122,14 +115,13 @@ instance ToQuery CreateDataset where
         toQuery = const mempty
 
 -- | /See:/ 'createDatasetResponse' smart constructor.
-data CreateDatasetResponse =
-  CreateDatasetResponse'
-    { _crsDatasetARN     :: !(Maybe Text)
-    , _crsDatasetName    :: !(Maybe Text)
-    , _crsResponseStatus :: !Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data CreateDatasetResponse = CreateDatasetResponse'{_crsDatasetARN
+                                                    :: !(Maybe Text),
+                                                    _crsDatasetName ::
+                                                    !(Maybe Text),
+                                                    _crsResponseStatus :: !Int}
+                               deriving (Eq, Read, Show, Data, Typeable,
+                                         Generic)
 
 -- | Creates a value of 'CreateDatasetResponse' with the minimum fields required to make a request.
 --
@@ -143,13 +135,10 @@ data CreateDatasetResponse =
 createDatasetResponse
     :: Int -- ^ 'crsResponseStatus'
     -> CreateDatasetResponse
-createDatasetResponse pResponseStatus_ =
-  CreateDatasetResponse'
-    { _crsDatasetARN = Nothing
-    , _crsDatasetName = Nothing
-    , _crsResponseStatus = pResponseStatus_
-    }
-
+createDatasetResponse pResponseStatus_
+  = CreateDatasetResponse'{_crsDatasetARN = Nothing,
+                           _crsDatasetName = Nothing,
+                           _crsResponseStatus = pResponseStatus_}
 
 -- | The ARN of the data set.
 crsDatasetARN :: Lens' CreateDatasetResponse (Maybe Text)

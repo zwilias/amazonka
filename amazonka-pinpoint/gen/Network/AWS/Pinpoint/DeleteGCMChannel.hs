@@ -37,18 +37,14 @@ module Network.AWS.Pinpoint.DeleteGCMChannel
 
 import Network.AWS.Lens
 import Network.AWS.Pinpoint.Types
-import Network.AWS.Pinpoint.Types.Product
 import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 
 -- | /See:/ 'deleteGCMChannel' smart constructor.
-newtype DeleteGCMChannel =
-  DeleteGCMChannel'
-    { _dgcApplicationId :: Text
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+newtype DeleteGCMChannel = DeleteGCMChannel'{_dgcApplicationId
+                                             :: Text}
+                             deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'DeleteGCMChannel' with the minimum fields required to make a request.
 --
@@ -58,9 +54,9 @@ newtype DeleteGCMChannel =
 deleteGCMChannel
     :: Text -- ^ 'dgcApplicationId'
     -> DeleteGCMChannel
-deleteGCMChannel pApplicationId_ =
-  DeleteGCMChannel' {_dgcApplicationId = pApplicationId_}
-
+deleteGCMChannel pApplicationId_
+  = DeleteGCMChannel'{_dgcApplicationId =
+                        pApplicationId_}
 
 -- | Undocumented member.
 dgcApplicationId :: Lens' DeleteGCMChannel Text
@@ -96,13 +92,13 @@ instance ToQuery DeleteGCMChannel where
         toQuery = const mempty
 
 -- | /See:/ 'deleteGCMChannelResponse' smart constructor.
-data DeleteGCMChannelResponse =
-  DeleteGCMChannelResponse'
-    { _dgcrsResponseStatus     :: !Int
-    , _dgcrsGCMChannelResponse :: !GCMChannelResponse
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data DeleteGCMChannelResponse = DeleteGCMChannelResponse'{_dgcrsResponseStatus
+                                                          :: !Int,
+                                                          _dgcrsGCMChannelResponse
+                                                          ::
+                                                          !GCMChannelResponse}
+                                  deriving (Eq, Read, Show, Data, Typeable,
+                                            Generic)
 
 -- | Creates a value of 'DeleteGCMChannelResponse' with the minimum fields required to make a request.
 --
@@ -115,12 +111,11 @@ deleteGCMChannelResponse
     :: Int -- ^ 'dgcrsResponseStatus'
     -> GCMChannelResponse -- ^ 'dgcrsGCMChannelResponse'
     -> DeleteGCMChannelResponse
-deleteGCMChannelResponse pResponseStatus_ pGCMChannelResponse_ =
-  DeleteGCMChannelResponse'
-    { _dgcrsResponseStatus = pResponseStatus_
-    , _dgcrsGCMChannelResponse = pGCMChannelResponse_
-    }
-
+deleteGCMChannelResponse pResponseStatus_
+  pGCMChannelResponse_
+  = DeleteGCMChannelResponse'{_dgcrsResponseStatus =
+                                pResponseStatus_,
+                              _dgcrsGCMChannelResponse = pGCMChannelResponse_}
 
 -- | -- | The response status code.
 dgcrsResponseStatus :: Lens' DeleteGCMChannelResponse Int

@@ -52,26 +52,23 @@ module Network.AWS.CloudWatch.PutCompositeAlarm
     ) where
 
 import Network.AWS.CloudWatch.Types
-import Network.AWS.CloudWatch.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 
 -- | /See:/ 'putCompositeAlarm' smart constructor.
-data PutCompositeAlarm =
-  PutCompositeAlarm'
-    { _pcaAlarmDescription        :: !(Maybe Text)
-    , _pcaOKActions               :: !(Maybe [Text])
-    , _pcaActionsEnabled          :: !(Maybe Bool)
-    , _pcaInsufficientDataActions :: !(Maybe [Text])
-    , _pcaAlarmActions            :: !(Maybe [Text])
-    , _pcaTags                    :: !(Maybe [Tag])
-    , _pcaAlarmName               :: !Text
-    , _pcaAlarmRule               :: !Text
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data PutCompositeAlarm = PutCompositeAlarm'{_pcaAlarmDescription
+                                            :: !(Maybe Text),
+                                            _pcaOKActions :: !(Maybe [Text]),
+                                            _pcaActionsEnabled :: !(Maybe Bool),
+                                            _pcaInsufficientDataActions ::
+                                            !(Maybe [Text]),
+                                            _pcaAlarmActions :: !(Maybe [Text]),
+                                            _pcaTags :: !(Maybe [Tag]),
+                                            _pcaAlarmName :: !Text,
+                                            _pcaAlarmRule :: !Text}
+                           deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'PutCompositeAlarm' with the minimum fields required to make a request.
 --
@@ -79,13 +76,13 @@ data PutCompositeAlarm =
 --
 -- * 'pcaAlarmDescription' - The description for the composite alarm.
 --
--- * 'pcaOKActions' - The actions to execute when this alarm transitions to an @OK@ state from any other state. Each action is specified as an Amazon Resource Name (ARN). Valid Values: @arn:aws:sns:/region/ :/account-id/ :/sns-topic-name/ @
+-- * 'pcaOKActions' - The actions to execute when this alarm transitions to an @OK@ state from any other state. Each action is specified as an Amazon Resource Name (ARN). Valid Values: @arn:aws:sns:/region/ :/account-id/ :/sns-topic-name/ @ 
 --
 -- * 'pcaActionsEnabled' - Indicates whether actions should be executed during any changes to the alarm state of the composite alarm. The default is @TRUE@ .
 --
--- * 'pcaInsufficientDataActions' - The actions to execute when this alarm transitions to the @INSUFFICIENT_DATA@ state from any other state. Each action is specified as an Amazon Resource Name (ARN). Valid Values: @arn:aws:sns:/region/ :/account-id/ :/sns-topic-name/ @
+-- * 'pcaInsufficientDataActions' - The actions to execute when this alarm transitions to the @INSUFFICIENT_DATA@ state from any other state. Each action is specified as an Amazon Resource Name (ARN). Valid Values: @arn:aws:sns:/region/ :/account-id/ :/sns-topic-name/ @ 
 --
--- * 'pcaAlarmActions' - The actions to execute when this alarm transitions to the @ALARM@ state from any other state. Each action is specified as an Amazon Resource Name (ARN). Valid Values: @arn:aws:sns:/region/ :/account-id/ :/sns-topic-name/ @
+-- * 'pcaAlarmActions' - The actions to execute when this alarm transitions to the @ALARM@ state from any other state. Each action is specified as an Amazon Resource Name (ARN). Valid Values: @arn:aws:sns:/region/ :/account-id/ :/sns-topic-name/ @ 
 --
 -- * 'pcaTags' - A list of key-value pairs to associate with the composite alarm. You can associate as many as 50 tags with an alarm. Tags can help you organize and categorize your resources. You can also use them to scope user permissions, by granting a user permission to access or change only resources with certain tag values.
 --
@@ -96,24 +93,20 @@ putCompositeAlarm
     :: Text -- ^ 'pcaAlarmName'
     -> Text -- ^ 'pcaAlarmRule'
     -> PutCompositeAlarm
-putCompositeAlarm pAlarmName_ pAlarmRule_ =
-  PutCompositeAlarm'
-    { _pcaAlarmDescription = Nothing
-    , _pcaOKActions = Nothing
-    , _pcaActionsEnabled = Nothing
-    , _pcaInsufficientDataActions = Nothing
-    , _pcaAlarmActions = Nothing
-    , _pcaTags = Nothing
-    , _pcaAlarmName = pAlarmName_
-    , _pcaAlarmRule = pAlarmRule_
-    }
-
+putCompositeAlarm pAlarmName_ pAlarmRule_
+  = PutCompositeAlarm'{_pcaAlarmDescription = Nothing,
+                       _pcaOKActions = Nothing,
+                       _pcaActionsEnabled = Nothing,
+                       _pcaInsufficientDataActions = Nothing,
+                       _pcaAlarmActions = Nothing, _pcaTags = Nothing,
+                       _pcaAlarmName = pAlarmName_,
+                       _pcaAlarmRule = pAlarmRule_}
 
 -- | The description for the composite alarm.
 pcaAlarmDescription :: Lens' PutCompositeAlarm (Maybe Text)
 pcaAlarmDescription = lens _pcaAlarmDescription (\ s a -> s{_pcaAlarmDescription = a})
 
--- | The actions to execute when this alarm transitions to an @OK@ state from any other state. Each action is specified as an Amazon Resource Name (ARN). Valid Values: @arn:aws:sns:/region/ :/account-id/ :/sns-topic-name/ @
+-- | The actions to execute when this alarm transitions to an @OK@ state from any other state. Each action is specified as an Amazon Resource Name (ARN). Valid Values: @arn:aws:sns:/region/ :/account-id/ :/sns-topic-name/ @ 
 pcaOKActions :: Lens' PutCompositeAlarm [Text]
 pcaOKActions = lens _pcaOKActions (\ s a -> s{_pcaOKActions = a}) . _Default . _Coerce
 
@@ -121,11 +114,11 @@ pcaOKActions = lens _pcaOKActions (\ s a -> s{_pcaOKActions = a}) . _Default . _
 pcaActionsEnabled :: Lens' PutCompositeAlarm (Maybe Bool)
 pcaActionsEnabled = lens _pcaActionsEnabled (\ s a -> s{_pcaActionsEnabled = a})
 
--- | The actions to execute when this alarm transitions to the @INSUFFICIENT_DATA@ state from any other state. Each action is specified as an Amazon Resource Name (ARN). Valid Values: @arn:aws:sns:/region/ :/account-id/ :/sns-topic-name/ @
+-- | The actions to execute when this alarm transitions to the @INSUFFICIENT_DATA@ state from any other state. Each action is specified as an Amazon Resource Name (ARN). Valid Values: @arn:aws:sns:/region/ :/account-id/ :/sns-topic-name/ @ 
 pcaInsufficientDataActions :: Lens' PutCompositeAlarm [Text]
 pcaInsufficientDataActions = lens _pcaInsufficientDataActions (\ s a -> s{_pcaInsufficientDataActions = a}) . _Default . _Coerce
 
--- | The actions to execute when this alarm transitions to the @ALARM@ state from any other state. Each action is specified as an Amazon Resource Name (ARN). Valid Values: @arn:aws:sns:/region/ :/account-id/ :/sns-topic-name/ @
+-- | The actions to execute when this alarm transitions to the @ALARM@ state from any other state. Each action is specified as an Amazon Resource Name (ARN). Valid Values: @arn:aws:sns:/region/ :/account-id/ :/sns-topic-name/ @ 
 pcaAlarmActions :: Lens' PutCompositeAlarm [Text]
 pcaAlarmActions = lens _pcaAlarmActions (\ s a -> s{_pcaAlarmActions = a}) . _Default . _Coerce
 
@@ -177,16 +170,15 @@ instance ToQuery PutCompositeAlarm where
                "AlarmRule" =: _pcaAlarmRule]
 
 -- | /See:/ 'putCompositeAlarmResponse' smart constructor.
-data PutCompositeAlarmResponse =
-  PutCompositeAlarmResponse'
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data PutCompositeAlarmResponse = PutCompositeAlarmResponse'
+                                   deriving (Eq, Read, Show, Data, Typeable,
+                                             Generic)
 
 -- | Creates a value of 'PutCompositeAlarmResponse' with the minimum fields required to make a request.
 --
 putCompositeAlarmResponse
     :: PutCompositeAlarmResponse
-putCompositeAlarmResponse = PutCompositeAlarmResponse'
-
+putCompositeAlarmResponse
+  = PutCompositeAlarmResponse'
 
 instance NFData PutCompositeAlarmResponse where

@@ -44,7 +44,6 @@ module Network.AWS.KMS.ListKeyPolicies
     ) where
 
 import Network.AWS.KMS.Types
-import Network.AWS.KMS.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Pager
 import Network.AWS.Prelude
@@ -52,14 +51,11 @@ import Network.AWS.Request
 import Network.AWS.Response
 
 -- | /See:/ 'listKeyPolicies' smart constructor.
-data ListKeyPolicies =
-  ListKeyPolicies'
-    { _lkpMarker :: !(Maybe Text)
-    , _lkpLimit  :: !(Maybe Nat)
-    , _lkpKeyId  :: !Text
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data ListKeyPolicies = ListKeyPolicies'{_lkpMarker ::
+                                        !(Maybe Text),
+                                        _lkpLimit :: !(Maybe Nat),
+                                        _lkpKeyId :: !Text}
+                         deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'ListKeyPolicies' with the minimum fields required to make a request.
 --
@@ -73,10 +69,9 @@ data ListKeyPolicies =
 listKeyPolicies
     :: Text -- ^ 'lkpKeyId'
     -> ListKeyPolicies
-listKeyPolicies pKeyId_ =
-  ListKeyPolicies'
-    {_lkpMarker = Nothing, _lkpLimit = Nothing, _lkpKeyId = pKeyId_}
-
+listKeyPolicies pKeyId_
+  = ListKeyPolicies'{_lkpMarker = Nothing,
+                     _lkpLimit = Nothing, _lkpKeyId = pKeyId_}
 
 -- | Use this parameter in a subsequent request after you receive a response with truncated results. Set it to the value of @NextMarker@ from the truncated response you just received.
 lkpMarker :: Lens' ListKeyPolicies (Maybe Text)
@@ -137,15 +132,16 @@ instance ToQuery ListKeyPolicies where
         toQuery = const mempty
 
 -- | /See:/ 'listKeyPoliciesResponse' smart constructor.
-data ListKeyPoliciesResponse =
-  ListKeyPoliciesResponse'
-    { _lkprsPolicyNames    :: !(Maybe [Text])
-    , _lkprsTruncated      :: !(Maybe Bool)
-    , _lkprsNextMarker     :: !(Maybe Text)
-    , _lkprsResponseStatus :: !Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data ListKeyPoliciesResponse = ListKeyPoliciesResponse'{_lkprsPolicyNames
+                                                        :: !(Maybe [Text]),
+                                                        _lkprsTruncated ::
+                                                        !(Maybe Bool),
+                                                        _lkprsNextMarker ::
+                                                        !(Maybe Text),
+                                                        _lkprsResponseStatus ::
+                                                        !Int}
+                                 deriving (Eq, Read, Show, Data, Typeable,
+                                           Generic)
 
 -- | Creates a value of 'ListKeyPoliciesResponse' with the minimum fields required to make a request.
 --
@@ -161,14 +157,12 @@ data ListKeyPoliciesResponse =
 listKeyPoliciesResponse
     :: Int -- ^ 'lkprsResponseStatus'
     -> ListKeyPoliciesResponse
-listKeyPoliciesResponse pResponseStatus_ =
-  ListKeyPoliciesResponse'
-    { _lkprsPolicyNames = Nothing
-    , _lkprsTruncated = Nothing
-    , _lkprsNextMarker = Nothing
-    , _lkprsResponseStatus = pResponseStatus_
-    }
-
+listKeyPoliciesResponse pResponseStatus_
+  = ListKeyPoliciesResponse'{_lkprsPolicyNames =
+                               Nothing,
+                             _lkprsTruncated = Nothing,
+                             _lkprsNextMarker = Nothing,
+                             _lkprsResponseStatus = pResponseStatus_}
 
 -- | A list of key policy names. Currently, there is only one key policy per CMK and it is always named @default@ .
 lkprsPolicyNames :: Lens' ListKeyPoliciesResponse [Text]

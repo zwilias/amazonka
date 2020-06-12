@@ -73,103 +73,103 @@ module Network.AWS.Rekognition
     -- * Operations
     -- $operations
 
-    -- ** StartCelebrityRecognition
+    -- ** StartCelebrityRecognition 
     , module Network.AWS.Rekognition.StartCelebrityRecognition
 
-    -- ** GetPersonTracking
+    -- ** GetPersonTracking 
     , module Network.AWS.Rekognition.GetPersonTracking
 
     -- ** ListCollections (Paginated)
     , module Network.AWS.Rekognition.ListCollections
 
-    -- ** DeleteCollection
+    -- ** DeleteCollection 
     , module Network.AWS.Rekognition.DeleteCollection
 
-    -- ** CreateCollection
+    -- ** CreateCollection 
     , module Network.AWS.Rekognition.CreateCollection
 
-    -- ** StopStreamProcessor
+    -- ** StopStreamProcessor 
     , module Network.AWS.Rekognition.StopStreamProcessor
 
-    -- ** DetectLabels
+    -- ** DetectLabels 
     , module Network.AWS.Rekognition.DetectLabels
 
-    -- ** StartContentModeration
+    -- ** StartContentModeration 
     , module Network.AWS.Rekognition.StartContentModeration
 
-    -- ** SearchFacesByImage
+    -- ** SearchFacesByImage 
     , module Network.AWS.Rekognition.SearchFacesByImage
 
     -- ** ListStreamProcessors (Paginated)
     , module Network.AWS.Rekognition.ListStreamProcessors
 
-    -- ** RecognizeCelebrities
+    -- ** RecognizeCelebrities 
     , module Network.AWS.Rekognition.RecognizeCelebrities
 
-    -- ** GetFaceSearch
+    -- ** GetFaceSearch 
     , module Network.AWS.Rekognition.GetFaceSearch
 
-    -- ** StartLabelDetection
+    -- ** StartLabelDetection 
     , module Network.AWS.Rekognition.StartLabelDetection
 
-    -- ** SearchFaces
+    -- ** SearchFaces 
     , module Network.AWS.Rekognition.SearchFaces
 
-    -- ** IndexFaces
+    -- ** IndexFaces 
     , module Network.AWS.Rekognition.IndexFaces
 
-    -- ** GetLabelDetection
+    -- ** GetLabelDetection 
     , module Network.AWS.Rekognition.GetLabelDetection
 
-    -- ** DescribeStreamProcessor
+    -- ** DescribeStreamProcessor 
     , module Network.AWS.Rekognition.DescribeStreamProcessor
 
-    -- ** StartFaceSearch
+    -- ** StartFaceSearch 
     , module Network.AWS.Rekognition.StartFaceSearch
 
-    -- ** StartPersonTracking
+    -- ** StartPersonTracking 
     , module Network.AWS.Rekognition.StartPersonTracking
 
-    -- ** GetCelebrityRecognition
+    -- ** GetCelebrityRecognition 
     , module Network.AWS.Rekognition.GetCelebrityRecognition
 
-    -- ** StartStreamProcessor
+    -- ** StartStreamProcessor 
     , module Network.AWS.Rekognition.StartStreamProcessor
 
-    -- ** DetectText
+    -- ** DetectText 
     , module Network.AWS.Rekognition.DetectText
 
-    -- ** CompareFaces
+    -- ** CompareFaces 
     , module Network.AWS.Rekognition.CompareFaces
 
-    -- ** DetectFaces
+    -- ** DetectFaces 
     , module Network.AWS.Rekognition.DetectFaces
 
-    -- ** GetFaceDetection
+    -- ** GetFaceDetection 
     , module Network.AWS.Rekognition.GetFaceDetection
 
     -- ** ListFaces (Paginated)
     , module Network.AWS.Rekognition.ListFaces
 
-    -- ** GetContentModeration
+    -- ** GetContentModeration 
     , module Network.AWS.Rekognition.GetContentModeration
 
-    -- ** DeleteFaces
+    -- ** DeleteFaces 
     , module Network.AWS.Rekognition.DeleteFaces
 
-    -- ** GetCelebrityInfo
+    -- ** GetCelebrityInfo 
     , module Network.AWS.Rekognition.GetCelebrityInfo
 
-    -- ** DeleteStreamProcessor
+    -- ** DeleteStreamProcessor 
     , module Network.AWS.Rekognition.DeleteStreamProcessor
 
-    -- ** DetectModerationLabels
+    -- ** DetectModerationLabels 
     , module Network.AWS.Rekognition.DetectModerationLabels
 
-    -- ** CreateStreamProcessor
+    -- ** CreateStreamProcessor 
     , module Network.AWS.Rekognition.CreateStreamProcessor
 
-    -- ** StartFaceDetection
+    -- ** StartFaceDetection 
     , module Network.AWS.Rekognition.StartFaceDetection
 
     -- * Types

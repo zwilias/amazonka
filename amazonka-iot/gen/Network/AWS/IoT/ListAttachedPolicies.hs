@@ -42,22 +42,19 @@ module Network.AWS.IoT.ListAttachedPolicies
     ) where
 
 import Network.AWS.IoT.Types
-import Network.AWS.IoT.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 
 -- | /See:/ 'listAttachedPolicies' smart constructor.
-data ListAttachedPolicies =
-  ListAttachedPolicies'
-    { _lapMarker    :: !(Maybe Text)
-    , _lapRecursive :: !(Maybe Bool)
-    , _lapPageSize  :: !(Maybe Nat)
-    , _lapTarget    :: !Text
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data ListAttachedPolicies = ListAttachedPolicies'{_lapMarker
+                                                  :: !(Maybe Text),
+                                                  _lapRecursive ::
+                                                  !(Maybe Bool),
+                                                  _lapPageSize :: !(Maybe Nat),
+                                                  _lapTarget :: !Text}
+                              deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'ListAttachedPolicies' with the minimum fields required to make a request.
 --
@@ -73,14 +70,10 @@ data ListAttachedPolicies =
 listAttachedPolicies
     :: Text -- ^ 'lapTarget'
     -> ListAttachedPolicies
-listAttachedPolicies pTarget_ =
-  ListAttachedPolicies'
-    { _lapMarker = Nothing
-    , _lapRecursive = Nothing
-    , _lapPageSize = Nothing
-    , _lapTarget = pTarget_
-    }
-
+listAttachedPolicies pTarget_
+  = ListAttachedPolicies'{_lapMarker = Nothing,
+                          _lapRecursive = Nothing, _lapPageSize = Nothing,
+                          _lapTarget = pTarget_}
 
 -- | The token to retrieve the next set of results.
 lapMarker :: Lens' ListAttachedPolicies (Maybe Text)
@@ -132,14 +125,17 @@ instance ToQuery ListAttachedPolicies where
                "pageSize" =: _lapPageSize]
 
 -- | /See:/ 'listAttachedPoliciesResponse' smart constructor.
-data ListAttachedPoliciesResponse =
-  ListAttachedPoliciesResponse'
-    { _laprsNextMarker     :: !(Maybe Text)
-    , _laprsPolicies       :: !(Maybe [Policy])
-    , _laprsResponseStatus :: !Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data ListAttachedPoliciesResponse = ListAttachedPoliciesResponse'{_laprsNextMarker
+                                                                  ::
+                                                                  !(Maybe Text),
+                                                                  _laprsPolicies
+                                                                  ::
+                                                                  !(Maybe
+                                                                      [Policy]),
+                                                                  _laprsResponseStatus
+                                                                  :: !Int}
+                                      deriving (Eq, Read, Show, Data, Typeable,
+                                                Generic)
 
 -- | Creates a value of 'ListAttachedPoliciesResponse' with the minimum fields required to make a request.
 --
@@ -153,13 +149,11 @@ data ListAttachedPoliciesResponse =
 listAttachedPoliciesResponse
     :: Int -- ^ 'laprsResponseStatus'
     -> ListAttachedPoliciesResponse
-listAttachedPoliciesResponse pResponseStatus_ =
-  ListAttachedPoliciesResponse'
-    { _laprsNextMarker = Nothing
-    , _laprsPolicies = Nothing
-    , _laprsResponseStatus = pResponseStatus_
-    }
-
+listAttachedPoliciesResponse pResponseStatus_
+  = ListAttachedPoliciesResponse'{_laprsNextMarker =
+                                    Nothing,
+                                  _laprsPolicies = Nothing,
+                                  _laprsResponseStatus = pResponseStatus_}
 
 -- | The token to retrieve the next set of results, or ``null`` if there are no more results.
 laprsNextMarker :: Lens' ListAttachedPoliciesResponse (Maybe Text)

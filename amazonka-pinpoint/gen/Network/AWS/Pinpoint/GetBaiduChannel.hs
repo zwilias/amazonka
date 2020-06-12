@@ -37,18 +37,14 @@ module Network.AWS.Pinpoint.GetBaiduChannel
 
 import Network.AWS.Lens
 import Network.AWS.Pinpoint.Types
-import Network.AWS.Pinpoint.Types.Product
 import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 
 -- | /See:/ 'getBaiduChannel' smart constructor.
-newtype GetBaiduChannel =
-  GetBaiduChannel'
-    { _gbcApplicationId :: Text
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+newtype GetBaiduChannel = GetBaiduChannel'{_gbcApplicationId
+                                           :: Text}
+                            deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'GetBaiduChannel' with the minimum fields required to make a request.
 --
@@ -58,9 +54,9 @@ newtype GetBaiduChannel =
 getBaiduChannel
     :: Text -- ^ 'gbcApplicationId'
     -> GetBaiduChannel
-getBaiduChannel pApplicationId_ =
-  GetBaiduChannel' {_gbcApplicationId = pApplicationId_}
-
+getBaiduChannel pApplicationId_
+  = GetBaiduChannel'{_gbcApplicationId =
+                       pApplicationId_}
 
 -- | Undocumented member.
 gbcApplicationId :: Lens' GetBaiduChannel Text
@@ -96,13 +92,13 @@ instance ToQuery GetBaiduChannel where
         toQuery = const mempty
 
 -- | /See:/ 'getBaiduChannelResponse' smart constructor.
-data GetBaiduChannelResponse =
-  GetBaiduChannelResponse'
-    { _gbcrsResponseStatus       :: !Int
-    , _gbcrsBaiduChannelResponse :: !BaiduChannelResponse
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data GetBaiduChannelResponse = GetBaiduChannelResponse'{_gbcrsResponseStatus
+                                                        :: !Int,
+                                                        _gbcrsBaiduChannelResponse
+                                                        ::
+                                                        !BaiduChannelResponse}
+                                 deriving (Eq, Read, Show, Data, Typeable,
+                                           Generic)
 
 -- | Creates a value of 'GetBaiduChannelResponse' with the minimum fields required to make a request.
 --
@@ -115,12 +111,12 @@ getBaiduChannelResponse
     :: Int -- ^ 'gbcrsResponseStatus'
     -> BaiduChannelResponse -- ^ 'gbcrsBaiduChannelResponse'
     -> GetBaiduChannelResponse
-getBaiduChannelResponse pResponseStatus_ pBaiduChannelResponse_ =
-  GetBaiduChannelResponse'
-    { _gbcrsResponseStatus = pResponseStatus_
-    , _gbcrsBaiduChannelResponse = pBaiduChannelResponse_
-    }
-
+getBaiduChannelResponse pResponseStatus_
+  pBaiduChannelResponse_
+  = GetBaiduChannelResponse'{_gbcrsResponseStatus =
+                               pResponseStatus_,
+                             _gbcrsBaiduChannelResponse =
+                               pBaiduChannelResponse_}
 
 -- | -- | The response status code.
 gbcrsResponseStatus :: Lens' GetBaiduChannelResponse Int

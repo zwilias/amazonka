@@ -41,21 +41,17 @@ module Network.AWS.EC2.AssociateDHCPOptions
     ) where
 
 import Network.AWS.EC2.Types
-import Network.AWS.EC2.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 
 -- | /See:/ 'associateDHCPOptions' smart constructor.
-data AssociateDHCPOptions =
-  AssociateDHCPOptions'
-    { _adoDryRun        :: !(Maybe Bool)
-    , _adoDHCPOptionsId :: !Text
-    , _adoVPCId         :: !Text
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data AssociateDHCPOptions = AssociateDHCPOptions'{_adoDryRun
+                                                  :: !(Maybe Bool),
+                                                  _adoDHCPOptionsId :: !Text,
+                                                  _adoVPCId :: !Text}
+                              deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'AssociateDHCPOptions' with the minimum fields required to make a request.
 --
@@ -70,13 +66,10 @@ associateDHCPOptions
     :: Text -- ^ 'adoDHCPOptionsId'
     -> Text -- ^ 'adoVPCId'
     -> AssociateDHCPOptions
-associateDHCPOptions pDHCPOptionsId_ pVPCId_ =
-  AssociateDHCPOptions'
-    { _adoDryRun = Nothing
-    , _adoDHCPOptionsId = pDHCPOptionsId_
-    , _adoVPCId = pVPCId_
-    }
-
+associateDHCPOptions pDHCPOptionsId_ pVPCId_
+  = AssociateDHCPOptions'{_adoDryRun = Nothing,
+                          _adoDHCPOptionsId = pDHCPOptionsId_,
+                          _adoVPCId = pVPCId_}
 
 -- | Checks whether you have the required permissions for the action, without actually making the request, and provides an error response. If you have the required permissions, the error response is @DryRunOperation@ . Otherwise, it is @UnauthorizedOperation@ .
 adoDryRun :: Lens' AssociateDHCPOptions (Maybe Bool)
@@ -116,16 +109,15 @@ instance ToQuery AssociateDHCPOptions where
                "VpcId" =: _adoVPCId]
 
 -- | /See:/ 'associateDHCPOptionsResponse' smart constructor.
-data AssociateDHCPOptionsResponse =
-  AssociateDHCPOptionsResponse'
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data AssociateDHCPOptionsResponse = AssociateDHCPOptionsResponse'
+                                      deriving (Eq, Read, Show, Data, Typeable,
+                                                Generic)
 
 -- | Creates a value of 'AssociateDHCPOptionsResponse' with the minimum fields required to make a request.
 --
 associateDHCPOptionsResponse
     :: AssociateDHCPOptionsResponse
-associateDHCPOptionsResponse = AssociateDHCPOptionsResponse'
-
+associateDHCPOptionsResponse
+  = AssociateDHCPOptionsResponse'
 
 instance NFData AssociateDHCPOptionsResponse where

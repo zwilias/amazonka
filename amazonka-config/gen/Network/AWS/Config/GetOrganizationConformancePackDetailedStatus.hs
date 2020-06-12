@@ -44,22 +44,30 @@ module Network.AWS.Config.GetOrganizationConformancePackDetailedStatus
     ) where
 
 import Network.AWS.Config.Types
-import Network.AWS.Config.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 
 -- | /See:/ 'getOrganizationConformancePackDetailedStatus' smart constructor.
-data GetOrganizationConformancePackDetailedStatus =
-  GetOrganizationConformancePackDetailedStatus'
-    { _gocpdsFilters :: !(Maybe OrganizationResourceDetailedStatusFilters)
-    , _gocpdsNextToken :: !(Maybe Text)
-    , _gocpdsLimit :: !(Maybe Nat)
-    , _gocpdsOrganizationConformancePackName :: !Text
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data GetOrganizationConformancePackDetailedStatus = GetOrganizationConformancePackDetailedStatus'{_gocpdsFilters
+                                                                                                  ::
+                                                                                                  !(Maybe
+                                                                                                      OrganizationResourceDetailedStatusFilters),
+                                                                                                  _gocpdsNextToken
+                                                                                                  ::
+                                                                                                  !(Maybe
+                                                                                                      Text),
+                                                                                                  _gocpdsLimit
+                                                                                                  ::
+                                                                                                  !(Maybe
+                                                                                                      Nat),
+                                                                                                  _gocpdsOrganizationConformancePackName
+                                                                                                  ::
+                                                                                                  !Text}
+                                                      deriving (Eq, Read, Show,
+                                                                Data, Typeable,
+                                                                Generic)
 
 -- | Creates a value of 'GetOrganizationConformancePackDetailedStatus' with the minimum fields required to make a request.
 --
@@ -67,32 +75,33 @@ data GetOrganizationConformancePackDetailedStatus =
 --
 -- * 'gocpdsFilters' - An @OrganizationResourceDetailedStatusFilters@ object.
 --
--- * 'gocpdsNextToken' - The nextToken string returned on a previous page that you use to get the next page of results in a paginated response.
+-- * 'gocpdsNextToken' - The nextToken string returned on a previous page that you use to get the next page of results in a paginated response. 
 --
--- * 'gocpdsLimit' - The maximum number of @OrganizationConformancePackDetailedStatuses@ returned on each page. If you do not specify a number, AWS Config uses the default. The default is 100.
+-- * 'gocpdsLimit' - The maximum number of @OrganizationConformancePackDetailedStatuses@ returned on each page. If you do not specify a number, AWS Config uses the default. The default is 100. 
 --
 -- * 'gocpdsOrganizationConformancePackName' - The name of organization conformance pack for which you want status details for member accounts.
 getOrganizationConformancePackDetailedStatus
     :: Text -- ^ 'gocpdsOrganizationConformancePackName'
     -> GetOrganizationConformancePackDetailedStatus
-getOrganizationConformancePackDetailedStatus pOrganizationConformancePackName_ =
-  GetOrganizationConformancePackDetailedStatus'
-    { _gocpdsFilters = Nothing
-    , _gocpdsNextToken = Nothing
-    , _gocpdsLimit = Nothing
-    , _gocpdsOrganizationConformancePackName = pOrganizationConformancePackName_
-    }
-
+getOrganizationConformancePackDetailedStatus
+  pOrganizationConformancePackName_
+  = GetOrganizationConformancePackDetailedStatus'{_gocpdsFilters
+                                                    = Nothing,
+                                                  _gocpdsNextToken = Nothing,
+                                                  _gocpdsLimit = Nothing,
+                                                  _gocpdsOrganizationConformancePackName
+                                                    =
+                                                    pOrganizationConformancePackName_}
 
 -- | An @OrganizationResourceDetailedStatusFilters@ object.
 gocpdsFilters :: Lens' GetOrganizationConformancePackDetailedStatus (Maybe OrganizationResourceDetailedStatusFilters)
 gocpdsFilters = lens _gocpdsFilters (\ s a -> s{_gocpdsFilters = a})
 
--- | The nextToken string returned on a previous page that you use to get the next page of results in a paginated response.
+-- | The nextToken string returned on a previous page that you use to get the next page of results in a paginated response. 
 gocpdsNextToken :: Lens' GetOrganizationConformancePackDetailedStatus (Maybe Text)
 gocpdsNextToken = lens _gocpdsNextToken (\ s a -> s{_gocpdsNextToken = a})
 
--- | The maximum number of @OrganizationConformancePackDetailedStatuses@ returned on each page. If you do not specify a number, AWS Config uses the default. The default is 100.
+-- | The maximum number of @OrganizationConformancePackDetailedStatuses@ returned on each page. If you do not specify a number, AWS Config uses the default. The default is 100. 
 gocpdsLimit :: Lens' GetOrganizationConformancePackDetailedStatus (Maybe Natural)
 gocpdsLimit = lens _gocpdsLimit (\ s a -> s{_gocpdsLimit = a}) . mapping _Nat
 
@@ -162,40 +171,50 @@ instance ToQuery
         toQuery = const mempty
 
 -- | /See:/ 'getOrganizationConformancePackDetailedStatusResponse' smart constructor.
-data GetOrganizationConformancePackDetailedStatusResponse =
-  GetOrganizationConformancePackDetailedStatusResponse'
-    { _gocpdsrsOrganizationConformancePackDetailedStatuses :: !(Maybe [OrganizationConformancePackDetailedStatus])
-    , _gocpdsrsNextToken :: !(Maybe Text)
-    , _gocpdsrsResponseStatus :: !Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data GetOrganizationConformancePackDetailedStatusResponse = GetOrganizationConformancePackDetailedStatusResponse'{_gocpdsrsOrganizationConformancePackDetailedStatuses
+                                                                                                                  ::
+                                                                                                                  !(Maybe
+                                                                                                                      [OrganizationConformancePackDetailedStatus]),
+                                                                                                                  _gocpdsrsNextToken
+                                                                                                                  ::
+                                                                                                                  !(Maybe
+                                                                                                                      Text),
+                                                                                                                  _gocpdsrsResponseStatus
+                                                                                                                  ::
+                                                                                                                  !Int}
+                                                              deriving (Eq,
+                                                                        Read,
+                                                                        Show,
+                                                                        Data,
+                                                                        Typeable,
+                                                                        Generic)
 
 -- | Creates a value of 'GetOrganizationConformancePackDetailedStatusResponse' with the minimum fields required to make a request.
 --
 -- Use one of the following lenses to modify other fields as desired:
 --
--- * 'gocpdsrsOrganizationConformancePackDetailedStatuses' - A list of @OrganizationConformancePackDetailedStatus@ objects.
+-- * 'gocpdsrsOrganizationConformancePackDetailedStatuses' - A list of @OrganizationConformancePackDetailedStatus@ objects. 
 --
--- * 'gocpdsrsNextToken' - The nextToken string returned on a previous page that you use to get the next page of results in a paginated response.
+-- * 'gocpdsrsNextToken' - The nextToken string returned on a previous page that you use to get the next page of results in a paginated response. 
 --
 -- * 'gocpdsrsResponseStatus' - -- | The response status code.
 getOrganizationConformancePackDetailedStatusResponse
     :: Int -- ^ 'gocpdsrsResponseStatus'
     -> GetOrganizationConformancePackDetailedStatusResponse
-getOrganizationConformancePackDetailedStatusResponse pResponseStatus_ =
-  GetOrganizationConformancePackDetailedStatusResponse'
-    { _gocpdsrsOrganizationConformancePackDetailedStatuses = Nothing
-    , _gocpdsrsNextToken = Nothing
-    , _gocpdsrsResponseStatus = pResponseStatus_
-    }
+getOrganizationConformancePackDetailedStatusResponse
+  pResponseStatus_
+  = GetOrganizationConformancePackDetailedStatusResponse'{_gocpdsrsOrganizationConformancePackDetailedStatuses
+                                                            = Nothing,
+                                                          _gocpdsrsNextToken =
+                                                            Nothing,
+                                                          _gocpdsrsResponseStatus
+                                                            = pResponseStatus_}
 
-
--- | A list of @OrganizationConformancePackDetailedStatus@ objects.
+-- | A list of @OrganizationConformancePackDetailedStatus@ objects. 
 gocpdsrsOrganizationConformancePackDetailedStatuses :: Lens' GetOrganizationConformancePackDetailedStatusResponse [OrganizationConformancePackDetailedStatus]
 gocpdsrsOrganizationConformancePackDetailedStatuses = lens _gocpdsrsOrganizationConformancePackDetailedStatuses (\ s a -> s{_gocpdsrsOrganizationConformancePackDetailedStatuses = a}) . _Default . _Coerce
 
--- | The nextToken string returned on a previous page that you use to get the next page of results in a paginated response.
+-- | The nextToken string returned on a previous page that you use to get the next page of results in a paginated response. 
 gocpdsrsNextToken :: Lens' GetOrganizationConformancePackDetailedStatusResponse (Maybe Text)
 gocpdsrsNextToken = lens _gocpdsrsNextToken (\ s a -> s{_gocpdsrsNextToken = a})
 

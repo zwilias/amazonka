@@ -45,19 +45,17 @@ import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 import Network.AWS.WorkDocs.Types
-import Network.AWS.WorkDocs.Types.Product
 
 -- | /See:/ 'deleteCustomMetadata' smart constructor.
-data DeleteCustomMetadata =
-  DeleteCustomMetadata'
-    { _dcmVersionId           :: !(Maybe Text)
-    , _dcmDeleteAll           :: !(Maybe Bool)
-    , _dcmAuthenticationToken :: !(Maybe (Sensitive Text))
-    , _dcmKeys                :: !(Maybe [Text])
-    , _dcmResourceId          :: !Text
-    }
-  deriving (Eq, Show, Data, Typeable, Generic)
-
+data DeleteCustomMetadata = DeleteCustomMetadata'{_dcmVersionId
+                                                  :: !(Maybe Text),
+                                                  _dcmDeleteAll ::
+                                                  !(Maybe Bool),
+                                                  _dcmAuthenticationToken ::
+                                                  !(Maybe (Sensitive Text)),
+                                                  _dcmKeys :: !(Maybe [Text]),
+                                                  _dcmResourceId :: !Text}
+                              deriving (Eq, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'DeleteCustomMetadata' with the minimum fields required to make a request.
 --
@@ -75,15 +73,11 @@ data DeleteCustomMetadata =
 deleteCustomMetadata
     :: Text -- ^ 'dcmResourceId'
     -> DeleteCustomMetadata
-deleteCustomMetadata pResourceId_ =
-  DeleteCustomMetadata'
-    { _dcmVersionId = Nothing
-    , _dcmDeleteAll = Nothing
-    , _dcmAuthenticationToken = Nothing
-    , _dcmKeys = Nothing
-    , _dcmResourceId = pResourceId_
-    }
-
+deleteCustomMetadata pResourceId_
+  = DeleteCustomMetadata'{_dcmVersionId = Nothing,
+                          _dcmDeleteAll = Nothing,
+                          _dcmAuthenticationToken = Nothing,
+                          _dcmKeys = Nothing, _dcmResourceId = pResourceId_}
 
 -- | The ID of the version, if the custom metadata is being deleted from a document version.
 dcmVersionId :: Lens' DeleteCustomMetadata (Maybe Text)
@@ -141,12 +135,10 @@ instance ToQuery DeleteCustomMetadata where
                  toQuery (toQueryList "member" <$> _dcmKeys)]
 
 -- | /See:/ 'deleteCustomMetadataResponse' smart constructor.
-newtype DeleteCustomMetadataResponse =
-  DeleteCustomMetadataResponse'
-    { _dcmrsResponseStatus :: Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+newtype DeleteCustomMetadataResponse = DeleteCustomMetadataResponse'{_dcmrsResponseStatus
+                                                                     :: Int}
+                                         deriving (Eq, Read, Show, Data,
+                                                   Typeable, Generic)
 
 -- | Creates a value of 'DeleteCustomMetadataResponse' with the minimum fields required to make a request.
 --
@@ -156,9 +148,9 @@ newtype DeleteCustomMetadataResponse =
 deleteCustomMetadataResponse
     :: Int -- ^ 'dcmrsResponseStatus'
     -> DeleteCustomMetadataResponse
-deleteCustomMetadataResponse pResponseStatus_ =
-  DeleteCustomMetadataResponse' {_dcmrsResponseStatus = pResponseStatus_}
-
+deleteCustomMetadataResponse pResponseStatus_
+  = DeleteCustomMetadataResponse'{_dcmrsResponseStatus
+                                    = pResponseStatus_}
 
 -- | -- | The response status code.
 dcmrsResponseStatus :: Lens' DeleteCustomMetadataResponse Int

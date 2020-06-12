@@ -42,19 +42,14 @@ module Network.AWS.Greengrass.GetGroup
     ) where
 
 import Network.AWS.Greengrass.Types
-import Network.AWS.Greengrass.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 
 -- | /See:/ 'getGroup' smart constructor.
-newtype GetGroup =
-  GetGroup'
-    { _ggGroupId :: Text
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+newtype GetGroup = GetGroup'{_ggGroupId :: Text}
+                     deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'GetGroup' with the minimum fields required to make a request.
 --
@@ -64,8 +59,8 @@ newtype GetGroup =
 getGroup
     :: Text -- ^ 'ggGroupId'
     -> GetGroup
-getGroup pGroupId_ = GetGroup' {_ggGroupId = pGroupId_}
-
+getGroup pGroupId_
+  = GetGroup'{_ggGroupId = pGroupId_}
 
 -- | The ID of the AWS Greengrass group.
 ggGroupId :: Lens' GetGroup Text
@@ -105,19 +100,18 @@ instance ToQuery GetGroup where
         toQuery = const mempty
 
 -- | /See:/ 'getGroupResponse' smart constructor.
-data GetGroupResponse =
-  GetGroupResponse'
-    { _ggrsLatestVersionARN     :: !(Maybe Text)
-    , _ggrsARN                  :: !(Maybe Text)
-    , _ggrsName                 :: !(Maybe Text)
-    , _ggrsCreationTimestamp    :: !(Maybe Text)
-    , _ggrsId                   :: !(Maybe Text)
-    , _ggrsLatestVersion        :: !(Maybe Text)
-    , _ggrsLastUpdatedTimestamp :: !(Maybe Text)
-    , _ggrsResponseStatus       :: !Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data GetGroupResponse = GetGroupResponse'{_ggrsLatestVersionARN
+                                          :: !(Maybe Text),
+                                          _ggrsARN :: !(Maybe Text),
+                                          _ggrsName :: !(Maybe Text),
+                                          _ggrsCreationTimestamp ::
+                                          !(Maybe Text),
+                                          _ggrsId :: !(Maybe Text),
+                                          _ggrsLatestVersion :: !(Maybe Text),
+                                          _ggrsLastUpdatedTimestamp ::
+                                          !(Maybe Text),
+                                          _ggrsResponseStatus :: !Int}
+                          deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'GetGroupResponse' with the minimum fields required to make a request.
 --
@@ -141,18 +135,13 @@ data GetGroupResponse =
 getGroupResponse
     :: Int -- ^ 'ggrsResponseStatus'
     -> GetGroupResponse
-getGroupResponse pResponseStatus_ =
-  GetGroupResponse'
-    { _ggrsLatestVersionARN = Nothing
-    , _ggrsARN = Nothing
-    , _ggrsName = Nothing
-    , _ggrsCreationTimestamp = Nothing
-    , _ggrsId = Nothing
-    , _ggrsLatestVersion = Nothing
-    , _ggrsLastUpdatedTimestamp = Nothing
-    , _ggrsResponseStatus = pResponseStatus_
-    }
-
+getGroupResponse pResponseStatus_
+  = GetGroupResponse'{_ggrsLatestVersionARN = Nothing,
+                      _ggrsARN = Nothing, _ggrsName = Nothing,
+                      _ggrsCreationTimestamp = Nothing, _ggrsId = Nothing,
+                      _ggrsLatestVersion = Nothing,
+                      _ggrsLastUpdatedTimestamp = Nothing,
+                      _ggrsResponseStatus = pResponseStatus_}
 
 -- | The ARN of the latest version of the definition.
 ggrsLatestVersionARN :: Lens' GetGroupResponse (Maybe Text)

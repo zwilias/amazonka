@@ -25,7 +25,7 @@
 --
 --     * The 'GenerateDataKey' operation
 --
---     * <http://docs.aws.amazon.com/kms/latest/developerguide/concepts.html AWS Key Management Service Concepts> in the /AWS Key Management Service Developer Guide/
+--     * <http://docs.aws.amazon.com/kms/latest/developerguide/concepts.html AWS Key Management Service Concepts> in the /AWS Key Management Service Developer Guide/ 
 --
 --
 --
@@ -53,24 +53,20 @@ module Network.AWS.KMS.CreateKey
     ) where
 
 import Network.AWS.KMS.Types
-import Network.AWS.KMS.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 
 -- | /See:/ 'createKey' smart constructor.
-data CreateKey =
-  CreateKey'
-    { _ckOrigin                         :: !(Maybe OriginType)
-    , _ckKeyUsage                       :: !(Maybe KeyUsageType)
-    , _ckBypassPolicyLockoutSafetyCheck :: !(Maybe Bool)
-    , _ckPolicy                         :: !(Maybe Text)
-    , _ckDescription                    :: !(Maybe Text)
-    , _ckTags                           :: !(Maybe [Tag])
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data CreateKey = CreateKey'{_ckOrigin ::
+                            !(Maybe OriginType),
+                            _ckKeyUsage :: !(Maybe KeyUsageType),
+                            _ckBypassPolicyLockoutSafetyCheck :: !(Maybe Bool),
+                            _ckPolicy :: !(Maybe Text),
+                            _ckDescription :: !(Maybe Text),
+                            _ckTags :: !(Maybe [Tag])}
+                   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'CreateKey' with the minimum fields required to make a request.
 --
@@ -89,16 +85,12 @@ data CreateKey =
 -- * 'ckTags' - One or more tags. Each tag consists of a tag key and a tag value. Tag keys and tag values are both required, but tag values can be empty (null) strings. Use this parameter to tag the CMK when it is created. Alternately, you can omit this parameter and instead tag the CMK after it is created using 'TagResource' .
 createKey
     :: CreateKey
-createKey =
-  CreateKey'
-    { _ckOrigin = Nothing
-    , _ckKeyUsage = Nothing
-    , _ckBypassPolicyLockoutSafetyCheck = Nothing
-    , _ckPolicy = Nothing
-    , _ckDescription = Nothing
-    , _ckTags = Nothing
-    }
-
+createKey
+  = CreateKey'{_ckOrigin = Nothing,
+               _ckKeyUsage = Nothing,
+               _ckBypassPolicyLockoutSafetyCheck = Nothing,
+               _ckPolicy = Nothing, _ckDescription = Nothing,
+               _ckTags = Nothing}
 
 -- | The source of the CMK's key material. The default is @AWS_KMS@ , which means AWS KMS creates the key material. When this parameter is set to @EXTERNAL@ , the request creates a CMK without key material so that you can import key material from your existing key management infrastructure. For more information about importing key material into AWS KMS, see <http://docs.aws.amazon.com/kms/latest/developerguide/importing-keys.html Importing Key Material> in the /AWS Key Management Service Developer Guide/ . The CMK's @Origin@ is immutable and is set when the CMK is created.
 ckOrigin :: Lens' CreateKey (Maybe OriginType)
@@ -165,13 +157,10 @@ instance ToQuery CreateKey where
         toQuery = const mempty
 
 -- | /See:/ 'createKeyResponse' smart constructor.
-data CreateKeyResponse =
-  CreateKeyResponse'
-    { _ckrsKeyMetadata    :: !(Maybe KeyMetadata)
-    , _ckrsResponseStatus :: !Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data CreateKeyResponse = CreateKeyResponse'{_ckrsKeyMetadata
+                                            :: !(Maybe KeyMetadata),
+                                            _ckrsResponseStatus :: !Int}
+                           deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'CreateKeyResponse' with the minimum fields required to make a request.
 --
@@ -183,10 +172,9 @@ data CreateKeyResponse =
 createKeyResponse
     :: Int -- ^ 'ckrsResponseStatus'
     -> CreateKeyResponse
-createKeyResponse pResponseStatus_ =
-  CreateKeyResponse'
-    {_ckrsKeyMetadata = Nothing, _ckrsResponseStatus = pResponseStatus_}
-
+createKeyResponse pResponseStatus_
+  = CreateKeyResponse'{_ckrsKeyMetadata = Nothing,
+                       _ckrsResponseStatus = pResponseStatus_}
 
 -- | Metadata associated with the CMK.
 ckrsKeyMetadata :: Lens' CreateKeyResponse (Maybe KeyMetadata)

@@ -44,19 +44,15 @@ module Network.AWS.IAM.CreateAccessKey
     ) where
 
 import Network.AWS.IAM.Types
-import Network.AWS.IAM.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 
 -- | /See:/ 'createAccessKey' smart constructor.
-newtype CreateAccessKey =
-  CreateAccessKey'
-    { _cakUserName :: Maybe Text
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+newtype CreateAccessKey = CreateAccessKey'{_cakUserName
+                                           :: Maybe Text}
+                            deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'CreateAccessKey' with the minimum fields required to make a request.
 --
@@ -65,8 +61,8 @@ newtype CreateAccessKey =
 -- * 'cakUserName' - The name of the IAM user that the new key will belong to. This parameter allows (per its <http://wikipedia.org/wiki/regex regex pattern> ) a string of characters consisting of upper and lowercase alphanumeric characters with no spaces. You can also include any of the following characters: _+=,.@-
 createAccessKey
     :: CreateAccessKey
-createAccessKey = CreateAccessKey' {_cakUserName = Nothing}
-
+createAccessKey
+  = CreateAccessKey'{_cakUserName = Nothing}
 
 -- | The name of the IAM user that the new key will belong to. This parameter allows (per its <http://wikipedia.org/wiki/regex regex pattern> ) a string of characters consisting of upper and lowercase alphanumeric characters with no spaces. You can also include any of the following characters: _+=,.@-
 cakUserName :: Lens' CreateAccessKey (Maybe Text)
@@ -98,18 +94,16 @@ instance ToQuery CreateAccessKey where
                "Version" =: ("2010-05-08" :: ByteString),
                "UserName" =: _cakUserName]
 
--- | Contains the response to a successful 'CreateAccessKey' request.
+-- | Contains the response to a successful 'CreateAccessKey' request. 
 --
 --
 --
 -- /See:/ 'createAccessKeyResponse' smart constructor.
-data CreateAccessKeyResponse =
-  CreateAccessKeyResponse'
-    { _cakrsResponseStatus :: !Int
-    , _cakrsAccessKey      :: !AccessKeyInfo
-    }
-  deriving (Eq, Show, Data, Typeable, Generic)
-
+data CreateAccessKeyResponse = CreateAccessKeyResponse'{_cakrsResponseStatus
+                                                        :: !Int,
+                                                        _cakrsAccessKey ::
+                                                        !AccessKeyInfo}
+                                 deriving (Eq, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'CreateAccessKeyResponse' with the minimum fields required to make a request.
 --
@@ -122,10 +116,10 @@ createAccessKeyResponse
     :: Int -- ^ 'cakrsResponseStatus'
     -> AccessKeyInfo -- ^ 'cakrsAccessKey'
     -> CreateAccessKeyResponse
-createAccessKeyResponse pResponseStatus_ pAccessKey_ =
-  CreateAccessKeyResponse'
-    {_cakrsResponseStatus = pResponseStatus_, _cakrsAccessKey = pAccessKey_}
-
+createAccessKeyResponse pResponseStatus_ pAccessKey_
+  = CreateAccessKeyResponse'{_cakrsResponseStatus =
+                               pResponseStatus_,
+                             _cakrsAccessKey = pAccessKey_}
 
 -- | -- | The response status code.
 cakrsResponseStatus :: Lens' CreateAccessKeyResponse Int

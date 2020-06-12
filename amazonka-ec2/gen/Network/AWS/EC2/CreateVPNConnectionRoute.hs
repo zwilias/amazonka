@@ -38,7 +38,6 @@ module Network.AWS.EC2.CreateVPNConnectionRoute
     ) where
 
 import Network.AWS.EC2.Types
-import Network.AWS.EC2.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.Request
@@ -49,13 +48,12 @@ import Network.AWS.Response
 --
 --
 -- /See:/ 'createVPNConnectionRoute' smart constructor.
-data CreateVPNConnectionRoute =
-  CreateVPNConnectionRoute'
-    { _cvcrDestinationCidrBlock :: !Text
-    , _cvcrVPNConnectionId      :: !Text
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data CreateVPNConnectionRoute = CreateVPNConnectionRoute'{_cvcrDestinationCidrBlock
+                                                          :: !Text,
+                                                          _cvcrVPNConnectionId
+                                                          :: !Text}
+                                  deriving (Eq, Read, Show, Data, Typeable,
+                                            Generic)
 
 -- | Creates a value of 'CreateVPNConnectionRoute' with the minimum fields required to make a request.
 --
@@ -68,12 +66,11 @@ createVPNConnectionRoute
     :: Text -- ^ 'cvcrDestinationCidrBlock'
     -> Text -- ^ 'cvcrVPNConnectionId'
     -> CreateVPNConnectionRoute
-createVPNConnectionRoute pDestinationCidrBlock_ pVPNConnectionId_ =
-  CreateVPNConnectionRoute'
-    { _cvcrDestinationCidrBlock = pDestinationCidrBlock_
-    , _cvcrVPNConnectionId = pVPNConnectionId_
-    }
-
+createVPNConnectionRoute pDestinationCidrBlock_
+  pVPNConnectionId_
+  = CreateVPNConnectionRoute'{_cvcrDestinationCidrBlock
+                                = pDestinationCidrBlock_,
+                              _cvcrVPNConnectionId = pVPNConnectionId_}
 
 -- | The CIDR block associated with the local subnet of the customer network.
 cvcrDestinationCidrBlock :: Lens' CreateVPNConnectionRoute Text
@@ -110,17 +107,16 @@ instance ToQuery CreateVPNConnectionRoute where
                "VpnConnectionId" =: _cvcrVPNConnectionId]
 
 -- | /See:/ 'createVPNConnectionRouteResponse' smart constructor.
-data CreateVPNConnectionRouteResponse =
-  CreateVPNConnectionRouteResponse'
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data CreateVPNConnectionRouteResponse = CreateVPNConnectionRouteResponse'
+                                          deriving (Eq, Read, Show, Data,
+                                                    Typeable, Generic)
 
 -- | Creates a value of 'CreateVPNConnectionRouteResponse' with the minimum fields required to make a request.
 --
 createVPNConnectionRouteResponse
     :: CreateVPNConnectionRouteResponse
-createVPNConnectionRouteResponse = CreateVPNConnectionRouteResponse'
-
+createVPNConnectionRouteResponse
+  = CreateVPNConnectionRouteResponse'
 
 instance NFData CreateVPNConnectionRouteResponse
          where

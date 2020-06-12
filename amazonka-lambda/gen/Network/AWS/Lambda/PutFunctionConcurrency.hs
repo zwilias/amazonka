@@ -38,20 +38,18 @@ module Network.AWS.Lambda.PutFunctionConcurrency
     ) where
 
 import Network.AWS.Lambda.Types
-import Network.AWS.Lambda.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 
 -- | /See:/ 'putFunctionConcurrency' smart constructor.
-data PutFunctionConcurrency =
-  PutFunctionConcurrency'
-    { _pfcFunctionName                 :: !Text
-    , _pfcReservedConcurrentExecutions :: !Nat
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data PutFunctionConcurrency = PutFunctionConcurrency'{_pfcFunctionName
+                                                      :: !Text,
+                                                      _pfcReservedConcurrentExecutions
+                                                      :: !Nat}
+                                deriving (Eq, Read, Show, Data, Typeable,
+                                          Generic)
 
 -- | Creates a value of 'PutFunctionConcurrency' with the minimum fields required to make a request.
 --
@@ -64,12 +62,12 @@ putFunctionConcurrency
     :: Text -- ^ 'pfcFunctionName'
     -> Natural -- ^ 'pfcReservedConcurrentExecutions'
     -> PutFunctionConcurrency
-putFunctionConcurrency pFunctionName_ pReservedConcurrentExecutions_ =
-  PutFunctionConcurrency'
-    { _pfcFunctionName = pFunctionName_
-    , _pfcReservedConcurrentExecutions = _Nat # pReservedConcurrentExecutions_
-    }
-
+putFunctionConcurrency pFunctionName_
+  pReservedConcurrentExecutions_
+  = PutFunctionConcurrency'{_pfcFunctionName =
+                              pFunctionName_,
+                            _pfcReservedConcurrentExecutions =
+                              _Nat # pReservedConcurrentExecutions_}
 
 -- | The name of the function you are setting concurrent execution limits on. For more information, see 'concurrent-executions' .
 pfcFunctionName :: Lens' PutFunctionConcurrency Text

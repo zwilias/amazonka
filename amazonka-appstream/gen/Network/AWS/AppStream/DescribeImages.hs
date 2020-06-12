@@ -45,7 +45,6 @@ module Network.AWS.AppStream.DescribeImages
     ) where
 
 import Network.AWS.AppStream.Types
-import Network.AWS.AppStream.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Pager
 import Network.AWS.Prelude
@@ -53,16 +52,13 @@ import Network.AWS.Request
 import Network.AWS.Response
 
 -- | /See:/ 'describeImages' smart constructor.
-data DescribeImages =
-  DescribeImages'
-    { _diNextToken  :: !(Maybe Text)
-    , _diNames      :: !(Maybe [Text])
-    , _diType       :: !(Maybe VisibilityType)
-    , _diARNs       :: !(Maybe [Text])
-    , _diMaxResults :: !(Maybe Nat)
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data DescribeImages = DescribeImages'{_diNextToken ::
+                                      !(Maybe Text),
+                                      _diNames :: !(Maybe [Text]),
+                                      _diType :: !(Maybe VisibilityType),
+                                      _diARNs :: !(Maybe [Text]),
+                                      _diMaxResults :: !(Maybe Nat)}
+                        deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'DescribeImages' with the minimum fields required to make a request.
 --
@@ -72,22 +68,17 @@ data DescribeImages =
 --
 -- * 'diNames' - The names of the public or private images to describe.
 --
--- * 'diType' - The type of image (public, private, or shared) to describe.
+-- * 'diType' - The type of image (public, private, or shared) to describe. 
 --
 -- * 'diARNs' - The ARNs of the public, private, and shared images to describe.
 --
 -- * 'diMaxResults' - The maximum size of each page of results.
 describeImages
     :: DescribeImages
-describeImages =
-  DescribeImages'
-    { _diNextToken = Nothing
-    , _diNames = Nothing
-    , _diType = Nothing
-    , _diARNs = Nothing
-    , _diMaxResults = Nothing
-    }
-
+describeImages
+  = DescribeImages'{_diNextToken = Nothing,
+                    _diNames = Nothing, _diType = Nothing,
+                    _diARNs = Nothing, _diMaxResults = Nothing}
 
 -- | The pagination token to use to retrieve the next page of results for this operation. If this value is null, it retrieves the first page.
 diNextToken :: Lens' DescribeImages (Maybe Text)
@@ -97,7 +88,7 @@ diNextToken = lens _diNextToken (\ s a -> s{_diNextToken = a})
 diNames :: Lens' DescribeImages [Text]
 diNames = lens _diNames (\ s a -> s{_diNames = a}) . _Default . _Coerce
 
--- | The type of image (public, private, or shared) to describe.
+-- | The type of image (public, private, or shared) to describe. 
 diType :: Lens' DescribeImages (Maybe VisibilityType)
 diType = lens _diType (\ s a -> s{_diType = a})
 
@@ -156,14 +147,14 @@ instance ToQuery DescribeImages where
         toQuery = const mempty
 
 -- | /See:/ 'describeImagesResponse' smart constructor.
-data DescribeImagesResponse =
-  DescribeImagesResponse'
-    { _diirsImages         :: !(Maybe [Image])
-    , _diirsNextToken      :: !(Maybe Text)
-    , _diirsResponseStatus :: !Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data DescribeImagesResponse = DescribeImagesResponse'{_diirsImages
+                                                      :: !(Maybe [Image]),
+                                                      _diirsNextToken ::
+                                                      !(Maybe Text),
+                                                      _diirsResponseStatus ::
+                                                      !Int}
+                                deriving (Eq, Read, Show, Data, Typeable,
+                                          Generic)
 
 -- | Creates a value of 'DescribeImagesResponse' with the minimum fields required to make a request.
 --
@@ -177,13 +168,10 @@ data DescribeImagesResponse =
 describeImagesResponse
     :: Int -- ^ 'diirsResponseStatus'
     -> DescribeImagesResponse
-describeImagesResponse pResponseStatus_ =
-  DescribeImagesResponse'
-    { _diirsImages = Nothing
-    , _diirsNextToken = Nothing
-    , _diirsResponseStatus = pResponseStatus_
-    }
-
+describeImagesResponse pResponseStatus_
+  = DescribeImagesResponse'{_diirsImages = Nothing,
+                            _diirsNextToken = Nothing,
+                            _diirsResponseStatus = pResponseStatus_}
 
 -- | Information about the images.
 diirsImages :: Lens' DescribeImagesResponse [Image]

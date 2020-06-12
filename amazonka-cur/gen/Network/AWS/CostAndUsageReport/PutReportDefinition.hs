@@ -37,7 +37,6 @@ module Network.AWS.CostAndUsageReport.PutReportDefinition
     ) where
 
 import Network.AWS.CostAndUsageReport.Types
-import Network.AWS.CostAndUsageReport.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.Request
@@ -48,26 +47,24 @@ import Network.AWS.Response
 --
 --
 -- /See:/ 'putReportDefinition' smart constructor.
-newtype PutReportDefinition =
-  PutReportDefinition'
-    { _prdReportDefinition :: ReportDefinition
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+newtype PutReportDefinition = PutReportDefinition'{_prdReportDefinition
+                                                   :: ReportDefinition}
+                                deriving (Eq, Read, Show, Data, Typeable,
+                                          Generic)
 
 -- | Creates a value of 'PutReportDefinition' with the minimum fields required to make a request.
 --
 -- Use one of the following lenses to modify other fields as desired:
 --
--- * 'prdReportDefinition' - Represents the output of the PutReportDefinition operation. The content consists of the detailed metadata and data file information.
+-- * 'prdReportDefinition' - Represents the output of the PutReportDefinition operation. The content consists of the detailed metadata and data file information. 
 putReportDefinition
     :: ReportDefinition -- ^ 'prdReportDefinition'
     -> PutReportDefinition
-putReportDefinition pReportDefinition_ =
-  PutReportDefinition' {_prdReportDefinition = pReportDefinition_}
+putReportDefinition pReportDefinition_
+  = PutReportDefinition'{_prdReportDefinition =
+                           pReportDefinition_}
 
-
--- | Represents the output of the PutReportDefinition operation. The content consists of the detailed metadata and data file information.
+-- | Represents the output of the PutReportDefinition operation. The content consists of the detailed metadata and data file information. 
 prdReportDefinition :: Lens' PutReportDefinition ReportDefinition
 prdReportDefinition = lens _prdReportDefinition (\ s a -> s{_prdReportDefinition = a})
 
@@ -111,12 +108,10 @@ instance ToQuery PutReportDefinition where
 --
 --
 -- /See:/ 'putReportDefinitionResponse' smart constructor.
-newtype PutReportDefinitionResponse =
-  PutReportDefinitionResponse'
-    { _prdrsResponseStatus :: Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+newtype PutReportDefinitionResponse = PutReportDefinitionResponse'{_prdrsResponseStatus
+                                                                   :: Int}
+                                        deriving (Eq, Read, Show, Data,
+                                                  Typeable, Generic)
 
 -- | Creates a value of 'PutReportDefinitionResponse' with the minimum fields required to make a request.
 --
@@ -126,9 +121,9 @@ newtype PutReportDefinitionResponse =
 putReportDefinitionResponse
     :: Int -- ^ 'prdrsResponseStatus'
     -> PutReportDefinitionResponse
-putReportDefinitionResponse pResponseStatus_ =
-  PutReportDefinitionResponse' {_prdrsResponseStatus = pResponseStatus_}
-
+putReportDefinitionResponse pResponseStatus_
+  = PutReportDefinitionResponse'{_prdrsResponseStatus =
+                                   pResponseStatus_}
 
 -- | -- | The response status code.
 prdrsResponseStatus :: Lens' PutReportDefinitionResponse Int

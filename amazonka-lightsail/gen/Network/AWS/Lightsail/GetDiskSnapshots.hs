@@ -42,18 +42,14 @@ module Network.AWS.Lightsail.GetDiskSnapshots
 
 import Network.AWS.Lens
 import Network.AWS.Lightsail.Types
-import Network.AWS.Lightsail.Types.Product
 import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 
 -- | /See:/ 'getDiskSnapshots' smart constructor.
-newtype GetDiskSnapshots =
-  GetDiskSnapshots'
-    { _gdsPageToken :: Maybe Text
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+newtype GetDiskSnapshots = GetDiskSnapshots'{_gdsPageToken
+                                             :: Maybe Text}
+                             deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'GetDiskSnapshots' with the minimum fields required to make a request.
 --
@@ -62,8 +58,8 @@ newtype GetDiskSnapshots =
 -- * 'gdsPageToken' - A token used for advancing to the next page of results from your GetDiskSnapshots request.
 getDiskSnapshots
     :: GetDiskSnapshots
-getDiskSnapshots = GetDiskSnapshots' {_gdsPageToken = Nothing}
-
+getDiskSnapshots
+  = GetDiskSnapshots'{_gdsPageToken = Nothing}
 
 -- | A token used for advancing to the next page of results from your GetDiskSnapshots request.
 gdsPageToken :: Lens' GetDiskSnapshots (Maybe Text)
@@ -106,14 +102,16 @@ instance ToQuery GetDiskSnapshots where
         toQuery = const mempty
 
 -- | /See:/ 'getDiskSnapshotsResponse' smart constructor.
-data GetDiskSnapshotsResponse =
-  GetDiskSnapshotsResponse'
-    { _gdssrsNextPageToken  :: !(Maybe Text)
-    , _gdssrsDiskSnapshots  :: !(Maybe [DiskSnapshot])
-    , _gdssrsResponseStatus :: !Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data GetDiskSnapshotsResponse = GetDiskSnapshotsResponse'{_gdssrsNextPageToken
+                                                          :: !(Maybe Text),
+                                                          _gdssrsDiskSnapshots
+                                                          ::
+                                                          !(Maybe
+                                                              [DiskSnapshot]),
+                                                          _gdssrsResponseStatus
+                                                          :: !Int}
+                                  deriving (Eq, Read, Show, Data, Typeable,
+                                            Generic)
 
 -- | Creates a value of 'GetDiskSnapshotsResponse' with the minimum fields required to make a request.
 --
@@ -127,13 +125,11 @@ data GetDiskSnapshotsResponse =
 getDiskSnapshotsResponse
     :: Int -- ^ 'gdssrsResponseStatus'
     -> GetDiskSnapshotsResponse
-getDiskSnapshotsResponse pResponseStatus_ =
-  GetDiskSnapshotsResponse'
-    { _gdssrsNextPageToken = Nothing
-    , _gdssrsDiskSnapshots = Nothing
-    , _gdssrsResponseStatus = pResponseStatus_
-    }
-
+getDiskSnapshotsResponse pResponseStatus_
+  = GetDiskSnapshotsResponse'{_gdssrsNextPageToken =
+                                Nothing,
+                              _gdssrsDiskSnapshots = Nothing,
+                              _gdssrsResponseStatus = pResponseStatus_}
 
 -- | A token used for advancing to the next page of results from your GetDiskSnapshots request.
 gdssrsNextPageToken :: Lens' GetDiskSnapshotsResponse (Maybe Text)

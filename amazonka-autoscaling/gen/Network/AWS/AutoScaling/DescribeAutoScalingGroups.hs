@@ -43,7 +43,6 @@ module Network.AWS.AutoScaling.DescribeAutoScalingGroups
     ) where
 
 import Network.AWS.AutoScaling.Types
-import Network.AWS.AutoScaling.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Pager
 import Network.AWS.Prelude
@@ -51,14 +50,14 @@ import Network.AWS.Request
 import Network.AWS.Response
 
 -- | /See:/ 'describeAutoScalingGroups' smart constructor.
-data DescribeAutoScalingGroups =
-  DescribeAutoScalingGroups'
-    { _dasgAutoScalingGroupNames :: !(Maybe [Text])
-    , _dasgNextToken             :: !(Maybe Text)
-    , _dasgMaxRecords            :: !(Maybe Int)
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data DescribeAutoScalingGroups = DescribeAutoScalingGroups'{_dasgAutoScalingGroupNames
+                                                            :: !(Maybe [Text]),
+                                                            _dasgNextToken ::
+                                                            !(Maybe Text),
+                                                            _dasgMaxRecords ::
+                                                            !(Maybe Int)}
+                                   deriving (Eq, Read, Show, Data, Typeable,
+                                             Generic)
 
 -- | Creates a value of 'DescribeAutoScalingGroups' with the minimum fields required to make a request.
 --
@@ -71,13 +70,11 @@ data DescribeAutoScalingGroups =
 -- * 'dasgMaxRecords' - The maximum number of items to return with this call. The default value is @50@ and the maximum value is @100@ .
 describeAutoScalingGroups
     :: DescribeAutoScalingGroups
-describeAutoScalingGroups =
-  DescribeAutoScalingGroups'
-    { _dasgAutoScalingGroupNames = Nothing
-    , _dasgNextToken = Nothing
-    , _dasgMaxRecords = Nothing
-    }
-
+describeAutoScalingGroups
+  = DescribeAutoScalingGroups'{_dasgAutoScalingGroupNames
+                                 = Nothing,
+                               _dasgNextToken = Nothing,
+                               _dasgMaxRecords = Nothing}
 
 -- | The names of the Auto Scaling groups. Each name can be a maximum of 1600 characters. By default, you can only specify up to 50 names. You can optionally increase this limit using the @MaxRecords@ parameter. If you omit this parameter, all Auto Scaling groups are described.
 dasgAutoScalingGroupNames :: Lens' DescribeAutoScalingGroups [Text]
@@ -134,14 +131,18 @@ instance ToQuery DescribeAutoScalingGroups where
                "MaxRecords" =: _dasgMaxRecords]
 
 -- | /See:/ 'describeAutoScalingGroupsResponse' smart constructor.
-data DescribeAutoScalingGroupsResponse =
-  DescribeAutoScalingGroupsResponse'
-    { _dasgrsNextToken         :: !(Maybe Text)
-    , _dasgrsResponseStatus    :: !Int
-    , _dasgrsAutoScalingGroups :: ![AutoScalingGroup]
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data DescribeAutoScalingGroupsResponse = DescribeAutoScalingGroupsResponse'{_dasgrsNextToken
+                                                                            ::
+                                                                            !(Maybe
+                                                                                Text),
+                                                                            _dasgrsResponseStatus
+                                                                            ::
+                                                                            !Int,
+                                                                            _dasgrsAutoScalingGroups
+                                                                            ::
+                                                                            ![AutoScalingGroup]}
+                                           deriving (Eq, Read, Show, Data,
+                                                     Typeable, Generic)
 
 -- | Creates a value of 'DescribeAutoScalingGroupsResponse' with the minimum fields required to make a request.
 --
@@ -155,13 +156,11 @@ data DescribeAutoScalingGroupsResponse =
 describeAutoScalingGroupsResponse
     :: Int -- ^ 'dasgrsResponseStatus'
     -> DescribeAutoScalingGroupsResponse
-describeAutoScalingGroupsResponse pResponseStatus_ =
-  DescribeAutoScalingGroupsResponse'
-    { _dasgrsNextToken = Nothing
-    , _dasgrsResponseStatus = pResponseStatus_
-    , _dasgrsAutoScalingGroups = mempty
-    }
-
+describeAutoScalingGroupsResponse pResponseStatus_
+  = DescribeAutoScalingGroupsResponse'{_dasgrsNextToken
+                                         = Nothing,
+                                       _dasgrsResponseStatus = pResponseStatus_,
+                                       _dasgrsAutoScalingGroups = mempty}
 
 -- | A string that indicates that the response contains more items than can be returned in a single response. To receive additional items, specify this string for the @NextToken@ value when requesting the next set of items. This value is null when there are no more items to return.
 dasgrsNextToken :: Lens' DescribeAutoScalingGroupsResponse (Maybe Text)

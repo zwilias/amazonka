@@ -43,20 +43,22 @@ module Network.AWS.EC2.StartVPCEndpointServicePrivateDNSVerification
     ) where
 
 import Network.AWS.EC2.Types
-import Network.AWS.EC2.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 
 -- | /See:/ 'startVPCEndpointServicePrivateDNSVerification' smart constructor.
-data StartVPCEndpointServicePrivateDNSVerification =
-  StartVPCEndpointServicePrivateDNSVerification'
-    { _svespdvDryRun    :: !(Maybe Bool)
-    , _svespdvServiceId :: !Text
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data StartVPCEndpointServicePrivateDNSVerification = StartVPCEndpointServicePrivateDNSVerification'{_svespdvDryRun
+                                                                                                    ::
+                                                                                                    !(Maybe
+                                                                                                        Bool),
+                                                                                                    _svespdvServiceId
+                                                                                                    ::
+                                                                                                    !Text}
+                                                       deriving (Eq, Read, Show,
+                                                                 Data, Typeable,
+                                                                 Generic)
 
 -- | Creates a value of 'StartVPCEndpointServicePrivateDNSVerification' with the minimum fields required to make a request.
 --
@@ -68,10 +70,12 @@ data StartVPCEndpointServicePrivateDNSVerification =
 startVPCEndpointServicePrivateDNSVerification
     :: Text -- ^ 'svespdvServiceId'
     -> StartVPCEndpointServicePrivateDNSVerification
-startVPCEndpointServicePrivateDNSVerification pServiceId_ =
-  StartVPCEndpointServicePrivateDNSVerification'
-    {_svespdvDryRun = Nothing, _svespdvServiceId = pServiceId_}
-
+startVPCEndpointServicePrivateDNSVerification
+  pServiceId_
+  = StartVPCEndpointServicePrivateDNSVerification'{_svespdvDryRun
+                                                     = Nothing,
+                                                   _svespdvServiceId =
+                                                     pServiceId_}
 
 -- | Checks whether you have the required permissions for the action, without actually making the request, and provides an error response. If you have the required permissions, the error response is @DryRunOperation@ . Otherwise, it is @UnauthorizedOperation@ .
 svespdvDryRun :: Lens' StartVPCEndpointServicePrivateDNSVerification (Maybe Bool)
@@ -126,13 +130,19 @@ instance ToQuery
                "ServiceId" =: _svespdvServiceId]
 
 -- | /See:/ 'startVPCEndpointServicePrivateDNSVerificationResponse' smart constructor.
-data StartVPCEndpointServicePrivateDNSVerificationResponse =
-  StartVPCEndpointServicePrivateDNSVerificationResponse'
-    { _svespdvrsReturnValue    :: !(Maybe Bool)
-    , _svespdvrsResponseStatus :: !Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data StartVPCEndpointServicePrivateDNSVerificationResponse = StartVPCEndpointServicePrivateDNSVerificationResponse'{_svespdvrsReturnValue
+                                                                                                                    ::
+                                                                                                                    !(Maybe
+                                                                                                                        Bool),
+                                                                                                                    _svespdvrsResponseStatus
+                                                                                                                    ::
+                                                                                                                    !Int}
+                                                               deriving (Eq,
+                                                                         Read,
+                                                                         Show,
+                                                                         Data,
+                                                                         Typeable,
+                                                                         Generic)
 
 -- | Creates a value of 'StartVPCEndpointServicePrivateDNSVerificationResponse' with the minimum fields required to make a request.
 --
@@ -144,12 +154,12 @@ data StartVPCEndpointServicePrivateDNSVerificationResponse =
 startVPCEndpointServicePrivateDNSVerificationResponse
     :: Int -- ^ 'svespdvrsResponseStatus'
     -> StartVPCEndpointServicePrivateDNSVerificationResponse
-startVPCEndpointServicePrivateDNSVerificationResponse pResponseStatus_ =
-  StartVPCEndpointServicePrivateDNSVerificationResponse'
-    { _svespdvrsReturnValue = Nothing
-    , _svespdvrsResponseStatus = pResponseStatus_
-    }
-
+startVPCEndpointServicePrivateDNSVerificationResponse
+  pResponseStatus_
+  = StartVPCEndpointServicePrivateDNSVerificationResponse'{_svespdvrsReturnValue
+                                                             = Nothing,
+                                                           _svespdvrsResponseStatus
+                                                             = pResponseStatus_}
 
 -- | Returns @true@ if the request succeeds; otherwise, it returns an error.
 svespdvrsReturnValue :: Lens' StartVPCEndpointServicePrivateDNSVerificationResponse (Maybe Bool)

@@ -39,7 +39,6 @@ module Network.AWS.CloudSearch.DeleteIndexField
     ) where
 
 import Network.AWS.CloudSearch.Types
-import Network.AWS.CloudSearch.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.Request
@@ -50,13 +49,10 @@ import Network.AWS.Response
 --
 --
 -- /See:/ 'deleteIndexField' smart constructor.
-data DeleteIndexField =
-  DeleteIndexField'
-    { _difiDomainName     :: !Text
-    , _difiIndexFieldName :: !Text
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data DeleteIndexField = DeleteIndexField'{_difiDomainName
+                                          :: !Text,
+                                          _difiIndexFieldName :: !Text}
+                          deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'DeleteIndexField' with the minimum fields required to make a request.
 --
@@ -69,10 +65,9 @@ deleteIndexField
     :: Text -- ^ 'difiDomainName'
     -> Text -- ^ 'difiIndexFieldName'
     -> DeleteIndexField
-deleteIndexField pDomainName_ pIndexFieldName_ =
-  DeleteIndexField'
-    {_difiDomainName = pDomainName_, _difiIndexFieldName = pIndexFieldName_}
-
+deleteIndexField pDomainName_ pIndexFieldName_
+  = DeleteIndexField'{_difiDomainName = pDomainName_,
+                      _difiIndexFieldName = pIndexFieldName_}
 
 -- | Undocumented member.
 difiDomainName :: Lens' DeleteIndexField Text
@@ -114,13 +109,12 @@ instance ToQuery DeleteIndexField where
 --
 --
 -- /See:/ 'deleteIndexFieldResponse' smart constructor.
-data DeleteIndexFieldResponse =
-  DeleteIndexFieldResponse'
-    { _difrsResponseStatus :: !Int
-    , _difrsIndexField     :: !IndexFieldStatus
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data DeleteIndexFieldResponse = DeleteIndexFieldResponse'{_difrsResponseStatus
+                                                          :: !Int,
+                                                          _difrsIndexField ::
+                                                          !IndexFieldStatus}
+                                  deriving (Eq, Read, Show, Data, Typeable,
+                                            Generic)
 
 -- | Creates a value of 'DeleteIndexFieldResponse' with the minimum fields required to make a request.
 --
@@ -133,10 +127,11 @@ deleteIndexFieldResponse
     :: Int -- ^ 'difrsResponseStatus'
     -> IndexFieldStatus -- ^ 'difrsIndexField'
     -> DeleteIndexFieldResponse
-deleteIndexFieldResponse pResponseStatus_ pIndexField_ =
-  DeleteIndexFieldResponse'
-    {_difrsResponseStatus = pResponseStatus_, _difrsIndexField = pIndexField_}
-
+deleteIndexFieldResponse pResponseStatus_
+  pIndexField_
+  = DeleteIndexFieldResponse'{_difrsResponseStatus =
+                                pResponseStatus_,
+                              _difrsIndexField = pIndexField_}
 
 -- | -- | The response status code.
 difrsResponseStatus :: Lens' DeleteIndexFieldResponse Int

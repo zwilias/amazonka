@@ -18,7 +18,7 @@
 -- Stability   : auto-generated
 -- Portability : non-portable (GHC extensions)
 --
--- Creates a job to import or export data between Amazon S3 and your on-premises data center. Your AWS account must have the right trust policies and permissions in place to create a job for Snowball. If you're creating a job for a node in a cluster, you only need to provide the @clusterId@ value; the other job attributes are inherited from the cluster.
+-- Creates a job to import or export data between Amazon S3 and your on-premises data center. Your AWS account must have the right trust policies and permissions in place to create a job for Snowball. If you're creating a job for a node in a cluster, you only need to provide the @clusterId@ value; the other job attributes are inherited from the cluster. 
 --
 --
 module Network.AWS.Snowball.CreateJob
@@ -53,32 +53,29 @@ import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 import Network.AWS.Snowball.Types
-import Network.AWS.Snowball.Types.Product
 
 -- | /See:/ 'createJob' smart constructor.
-data CreateJob =
-  CreateJob'
-    { _cjJobType                    :: !(Maybe JobType)
-    , _cjKMSKeyARN                  :: !(Maybe Text)
-    , _cjNotification               :: !(Maybe Notification)
-    , _cjForwardingAddressId        :: !(Maybe Text)
-    , _cjAddressId                  :: !(Maybe Text)
-    , _cjSnowballType               :: !(Maybe SnowballType)
-    , _cjShippingOption             :: !(Maybe ShippingOption)
-    , _cjResources                  :: !(Maybe JobResource)
-    , _cjClusterId                  :: !(Maybe Text)
-    , _cjDescription                :: !(Maybe Text)
-    , _cjRoleARN                    :: !(Maybe Text)
-    , _cjSnowballCapacityPreference :: !(Maybe SnowballCapacity)
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data CreateJob = CreateJob'{_cjJobType ::
+                            !(Maybe JobType),
+                            _cjKMSKeyARN :: !(Maybe Text),
+                            _cjNotification :: !(Maybe Notification),
+                            _cjForwardingAddressId :: !(Maybe Text),
+                            _cjAddressId :: !(Maybe Text),
+                            _cjSnowballType :: !(Maybe SnowballType),
+                            _cjShippingOption :: !(Maybe ShippingOption),
+                            _cjResources :: !(Maybe JobResource),
+                            _cjClusterId :: !(Maybe Text),
+                            _cjDescription :: !(Maybe Text),
+                            _cjRoleARN :: !(Maybe Text),
+                            _cjSnowballCapacityPreference ::
+                            !(Maybe SnowballCapacity)}
+                   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'CreateJob' with the minimum fields required to make a request.
 --
 -- Use one of the following lenses to modify other fields as desired:
 --
--- * 'cjJobType' - Defines the type of job that you're creating.
+-- * 'cjJobType' - Defines the type of job that you're creating. 
 --
 -- * 'cjKMSKeyARN' - The @KmsKeyARN@ that you want to associate with this job. @KmsKeyARN@ s are created using the <http://docs.aws.amazon.com/kms/latest/APIReference/API_CreateKey.html CreateKey> AWS Key Management Service (KMS) API action.
 --
@@ -103,24 +100,17 @@ data CreateJob =
 -- * 'cjSnowballCapacityPreference' - If your job is being created in one of the US regions, you have the option of specifying what size Snowball you'd like for this job. In all other regions, Snowballs come with 80 TB in storage capacity.
 createJob
     :: CreateJob
-createJob =
-  CreateJob'
-    { _cjJobType = Nothing
-    , _cjKMSKeyARN = Nothing
-    , _cjNotification = Nothing
-    , _cjForwardingAddressId = Nothing
-    , _cjAddressId = Nothing
-    , _cjSnowballType = Nothing
-    , _cjShippingOption = Nothing
-    , _cjResources = Nothing
-    , _cjClusterId = Nothing
-    , _cjDescription = Nothing
-    , _cjRoleARN = Nothing
-    , _cjSnowballCapacityPreference = Nothing
-    }
+createJob
+  = CreateJob'{_cjJobType = Nothing,
+               _cjKMSKeyARN = Nothing, _cjNotification = Nothing,
+               _cjForwardingAddressId = Nothing,
+               _cjAddressId = Nothing, _cjSnowballType = Nothing,
+               _cjShippingOption = Nothing, _cjResources = Nothing,
+               _cjClusterId = Nothing, _cjDescription = Nothing,
+               _cjRoleARN = Nothing,
+               _cjSnowballCapacityPreference = Nothing}
 
-
--- | Defines the type of job that you're creating.
+-- | Defines the type of job that you're creating. 
 cjJobType :: Lens' CreateJob (Maybe JobType)
 cjJobType = lens _cjJobType (\ s a -> s{_cjJobType = a})
 
@@ -217,13 +207,10 @@ instance ToQuery CreateJob where
         toQuery = const mempty
 
 -- | /See:/ 'createJobResponse' smart constructor.
-data CreateJobResponse =
-  CreateJobResponse'
-    { _cjrsJobId          :: !(Maybe Text)
-    , _cjrsResponseStatus :: !Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data CreateJobResponse = CreateJobResponse'{_cjrsJobId
+                                            :: !(Maybe Text),
+                                            _cjrsResponseStatus :: !Int}
+                           deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'CreateJobResponse' with the minimum fields required to make a request.
 --
@@ -235,10 +222,9 @@ data CreateJobResponse =
 createJobResponse
     :: Int -- ^ 'cjrsResponseStatus'
     -> CreateJobResponse
-createJobResponse pResponseStatus_ =
-  CreateJobResponse'
-    {_cjrsJobId = Nothing, _cjrsResponseStatus = pResponseStatus_}
-
+createJobResponse pResponseStatus_
+  = CreateJobResponse'{_cjrsJobId = Nothing,
+                       _cjrsResponseStatus = pResponseStatus_}
 
 -- | The automatically generated ID for a job, for example @JID123e4567-e89b-12d3-a456-426655440000@ .
 cjrsJobId :: Lens' CreateJobResponse (Maybe Text)

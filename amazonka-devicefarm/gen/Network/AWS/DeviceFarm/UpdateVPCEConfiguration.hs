@@ -42,23 +42,23 @@ module Network.AWS.DeviceFarm.UpdateVPCEConfiguration
     ) where
 
 import Network.AWS.DeviceFarm.Types
-import Network.AWS.DeviceFarm.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 
 -- | /See:/ 'updateVPCEConfiguration' smart constructor.
-data UpdateVPCEConfiguration =
-  UpdateVPCEConfiguration'
-    { _uvecVpceServiceName              :: !(Maybe Text)
-    , _uvecVpceConfigurationName        :: !(Maybe Text)
-    , _uvecServiceDNSName               :: !(Maybe Text)
-    , _uvecVpceConfigurationDescription :: !(Maybe Text)
-    , _uvecArn                          :: !Text
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data UpdateVPCEConfiguration = UpdateVPCEConfiguration'{_uvecVpceServiceName
+                                                        :: !(Maybe Text),
+                                                        _uvecVpceConfigurationName
+                                                        :: !(Maybe Text),
+                                                        _uvecServiceDNSName ::
+                                                        !(Maybe Text),
+                                                        _uvecVpceConfigurationDescription
+                                                        :: !(Maybe Text),
+                                                        _uvecArn :: !Text}
+                                 deriving (Eq, Read, Show, Data, Typeable,
+                                           Generic)
 
 -- | Creates a value of 'UpdateVPCEConfiguration' with the minimum fields required to make a request.
 --
@@ -76,15 +76,13 @@ data UpdateVPCEConfiguration =
 updateVPCEConfiguration
     :: Text -- ^ 'uvecArn'
     -> UpdateVPCEConfiguration
-updateVPCEConfiguration pArn_ =
-  UpdateVPCEConfiguration'
-    { _uvecVpceServiceName = Nothing
-    , _uvecVpceConfigurationName = Nothing
-    , _uvecServiceDNSName = Nothing
-    , _uvecVpceConfigurationDescription = Nothing
-    , _uvecArn = pArn_
-    }
-
+updateVPCEConfiguration pArn_
+  = UpdateVPCEConfiguration'{_uvecVpceServiceName =
+                               Nothing,
+                             _uvecVpceConfigurationName = Nothing,
+                             _uvecServiceDNSName = Nothing,
+                             _uvecVpceConfigurationDescription = Nothing,
+                             _uvecArn = pArn_}
 
 -- | The name of the VPC endpoint service running in your AWS account that you want Device Farm to test.
 uvecVpceServiceName :: Lens' UpdateVPCEConfiguration (Maybe Text)
@@ -149,13 +147,14 @@ instance ToQuery UpdateVPCEConfiguration where
         toQuery = const mempty
 
 -- | /See:/ 'updateVPCEConfigurationResponse' smart constructor.
-data UpdateVPCEConfigurationResponse =
-  UpdateVPCEConfigurationResponse'
-    { _uvecrsVpceConfiguration :: !(Maybe VPCEConfiguration)
-    , _uvecrsResponseStatus    :: !Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data UpdateVPCEConfigurationResponse = UpdateVPCEConfigurationResponse'{_uvecrsVpceConfiguration
+                                                                        ::
+                                                                        !(Maybe
+                                                                            VPCEConfiguration),
+                                                                        _uvecrsResponseStatus
+                                                                        :: !Int}
+                                         deriving (Eq, Read, Show, Data,
+                                                   Typeable, Generic)
 
 -- | Creates a value of 'UpdateVPCEConfigurationResponse' with the minimum fields required to make a request.
 --
@@ -167,12 +166,10 @@ data UpdateVPCEConfigurationResponse =
 updateVPCEConfigurationResponse
     :: Int -- ^ 'uvecrsResponseStatus'
     -> UpdateVPCEConfigurationResponse
-updateVPCEConfigurationResponse pResponseStatus_ =
-  UpdateVPCEConfigurationResponse'
-    { _uvecrsVpceConfiguration = Nothing
-    , _uvecrsResponseStatus = pResponseStatus_
-    }
-
+updateVPCEConfigurationResponse pResponseStatus_
+  = UpdateVPCEConfigurationResponse'{_uvecrsVpceConfiguration
+                                       = Nothing,
+                                     _uvecrsResponseStatus = pResponseStatus_}
 
 -- | An object that contains information about your VPC endpoint configuration.
 uvecrsVpceConfiguration :: Lens' UpdateVPCEConfigurationResponse (Maybe VPCEConfiguration)

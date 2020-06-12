@@ -37,21 +37,19 @@ module Network.AWS.Connect.UpdateUserRoutingProfile
     ) where
 
 import Network.AWS.Connect.Types
-import Network.AWS.Connect.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 
 -- | /See:/ 'updateUserRoutingProfile' smart constructor.
-data UpdateUserRoutingProfile =
-  UpdateUserRoutingProfile'
-    { _uurpRoutingProfileId :: !Text
-    , _uurpUserId           :: !Text
-    , _uurpInstanceId       :: !Text
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data UpdateUserRoutingProfile = UpdateUserRoutingProfile'{_uurpRoutingProfileId
+                                                          :: !Text,
+                                                          _uurpUserId :: !Text,
+                                                          _uurpInstanceId ::
+                                                          !Text}
+                                  deriving (Eq, Read, Show, Data, Typeable,
+                                            Generic)
 
 -- | Creates a value of 'UpdateUserRoutingProfile' with the minimum fields required to make a request.
 --
@@ -67,13 +65,12 @@ updateUserRoutingProfile
     -> Text -- ^ 'uurpUserId'
     -> Text -- ^ 'uurpInstanceId'
     -> UpdateUserRoutingProfile
-updateUserRoutingProfile pRoutingProfileId_ pUserId_ pInstanceId_ =
-  UpdateUserRoutingProfile'
-    { _uurpRoutingProfileId = pRoutingProfileId_
-    , _uurpUserId = pUserId_
-    , _uurpInstanceId = pInstanceId_
-    }
-
+updateUserRoutingProfile pRoutingProfileId_ pUserId_
+  pInstanceId_
+  = UpdateUserRoutingProfile'{_uurpRoutingProfileId =
+                                pRoutingProfileId_,
+                              _uurpUserId = pUserId_,
+                              _uurpInstanceId = pInstanceId_}
 
 -- | The identifier of the routing profile for the user.
 uurpRoutingProfileId :: Lens' UpdateUserRoutingProfile Text
@@ -121,17 +118,16 @@ instance ToQuery UpdateUserRoutingProfile where
         toQuery = const mempty
 
 -- | /See:/ 'updateUserRoutingProfileResponse' smart constructor.
-data UpdateUserRoutingProfileResponse =
-  UpdateUserRoutingProfileResponse'
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data UpdateUserRoutingProfileResponse = UpdateUserRoutingProfileResponse'
+                                          deriving (Eq, Read, Show, Data,
+                                                    Typeable, Generic)
 
 -- | Creates a value of 'UpdateUserRoutingProfileResponse' with the minimum fields required to make a request.
 --
 updateUserRoutingProfileResponse
     :: UpdateUserRoutingProfileResponse
-updateUserRoutingProfileResponse = UpdateUserRoutingProfileResponse'
-
+updateUserRoutingProfileResponse
+  = UpdateUserRoutingProfileResponse'
 
 instance NFData UpdateUserRoutingProfileResponse
          where

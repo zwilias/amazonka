@@ -49,32 +49,30 @@ import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 import Network.AWS.StorageGateway.Types
-import Network.AWS.StorageGateway.Types.Product
 
 -- | A JSON object containing one or more of the following fields:
 --
 --
---     * 'UpdateSnapshotScheduleInput$Description'
+--     * 'UpdateSnapshotScheduleInput$Description' 
 --
---     * 'UpdateSnapshotScheduleInput$RecurrenceInHours'
+--     * 'UpdateSnapshotScheduleInput$RecurrenceInHours' 
 --
---     * 'UpdateSnapshotScheduleInput$StartAt'
+--     * 'UpdateSnapshotScheduleInput$StartAt' 
 --
---     * 'UpdateSnapshotScheduleInput$VolumeARN'
+--     * 'UpdateSnapshotScheduleInput$VolumeARN' 
 --
 --
 --
 --
 -- /See:/ 'updateSnapshotSchedule' smart constructor.
-data UpdateSnapshotSchedule =
-  UpdateSnapshotSchedule'
-    { _ussDescription       :: !(Maybe Text)
-    , _ussVolumeARN         :: !Text
-    , _ussStartAt           :: !Nat
-    , _ussRecurrenceInHours :: !Nat
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data UpdateSnapshotSchedule = UpdateSnapshotSchedule'{_ussDescription
+                                                      :: !(Maybe Text),
+                                                      _ussVolumeARN :: !Text,
+                                                      _ussStartAt :: !Nat,
+                                                      _ussRecurrenceInHours ::
+                                                      !Nat}
+                                deriving (Eq, Read, Show, Data, Typeable,
+                                          Generic)
 
 -- | Creates a value of 'UpdateSnapshotSchedule' with the minimum fields required to make a request.
 --
@@ -92,14 +90,12 @@ updateSnapshotSchedule
     -> Natural -- ^ 'ussStartAt'
     -> Natural -- ^ 'ussRecurrenceInHours'
     -> UpdateSnapshotSchedule
-updateSnapshotSchedule pVolumeARN_ pStartAt_ pRecurrenceInHours_ =
-  UpdateSnapshotSchedule'
-    { _ussDescription = Nothing
-    , _ussVolumeARN = pVolumeARN_
-    , _ussStartAt = _Nat # pStartAt_
-    , _ussRecurrenceInHours = _Nat # pRecurrenceInHours_
-    }
-
+updateSnapshotSchedule pVolumeARN_ pStartAt_
+  pRecurrenceInHours_
+  = UpdateSnapshotSchedule'{_ussDescription = Nothing,
+                            _ussVolumeARN = pVolumeARN_,
+                            _ussStartAt = _Nat # pStartAt_,
+                            _ussRecurrenceInHours = _Nat # pRecurrenceInHours_}
 
 -- | Optional description of the snapshot that overwrites the existing description.
 ussDescription :: Lens' UpdateSnapshotSchedule (Maybe Text)
@@ -161,30 +157,31 @@ instance ToQuery UpdateSnapshotSchedule where
 --
 --
 -- /See:/ 'updateSnapshotScheduleResponse' smart constructor.
-data UpdateSnapshotScheduleResponse =
-  UpdateSnapshotScheduleResponse'
-    { _ussrsVolumeARN      :: !(Maybe Text)
-    , _ussrsResponseStatus :: !Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data UpdateSnapshotScheduleResponse = UpdateSnapshotScheduleResponse'{_ussrsVolumeARN
+                                                                      ::
+                                                                      !(Maybe
+                                                                          Text),
+                                                                      _ussrsResponseStatus
+                                                                      :: !Int}
+                                        deriving (Eq, Read, Show, Data,
+                                                  Typeable, Generic)
 
 -- | Creates a value of 'UpdateSnapshotScheduleResponse' with the minimum fields required to make a request.
 --
 -- Use one of the following lenses to modify other fields as desired:
 --
--- * 'ussrsVolumeARN' -
+-- * 'ussrsVolumeARN' - 
 --
 -- * 'ussrsResponseStatus' - -- | The response status code.
 updateSnapshotScheduleResponse
     :: Int -- ^ 'ussrsResponseStatus'
     -> UpdateSnapshotScheduleResponse
-updateSnapshotScheduleResponse pResponseStatus_ =
-  UpdateSnapshotScheduleResponse'
-    {_ussrsVolumeARN = Nothing, _ussrsResponseStatus = pResponseStatus_}
+updateSnapshotScheduleResponse pResponseStatus_
+  = UpdateSnapshotScheduleResponse'{_ussrsVolumeARN =
+                                      Nothing,
+                                    _ussrsResponseStatus = pResponseStatus_}
 
-
--- |
+-- | 
 ussrsVolumeARN :: Lens' UpdateSnapshotScheduleResponse (Maybe Text)
 ussrsVolumeARN = lens _ussrsVolumeARN (\ s a -> s{_ussrsVolumeARN = a})
 

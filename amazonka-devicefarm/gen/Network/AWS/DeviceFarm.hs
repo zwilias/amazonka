@@ -77,22 +77,22 @@ module Network.AWS.DeviceFarm
     -- ** ListProjects (Paginated)
     , module Network.AWS.DeviceFarm.ListProjects
 
-    -- ** DeleteProject
+    -- ** DeleteProject 
     , module Network.AWS.DeviceFarm.DeleteProject
 
-    -- ** UpdateProject
+    -- ** UpdateProject 
     , module Network.AWS.DeviceFarm.UpdateProject
 
-    -- ** UpdateNetworkProfile
+    -- ** UpdateNetworkProfile 
     , module Network.AWS.DeviceFarm.UpdateNetworkProfile
 
-    -- ** DeleteNetworkProfile
+    -- ** DeleteNetworkProfile 
     , module Network.AWS.DeviceFarm.DeleteNetworkProfile
 
-    -- ** GetDevicePoolCompatibility
+    -- ** GetDevicePoolCompatibility 
     , module Network.AWS.DeviceFarm.GetDevicePoolCompatibility
 
-    -- ** InstallToRemoteAccessSession
+    -- ** InstallToRemoteAccessSession 
     , module Network.AWS.DeviceFarm.InstallToRemoteAccessSession
 
     -- ** ListTests (Paginated)
@@ -101,133 +101,133 @@ module Network.AWS.DeviceFarm
     -- ** ListArtifacts (Paginated)
     , module Network.AWS.DeviceFarm.ListArtifacts
 
-    -- ** ListTestGridSessionActions
+    -- ** ListTestGridSessionActions 
     , module Network.AWS.DeviceFarm.ListTestGridSessionActions
 
-    -- ** CreateUpload
+    -- ** CreateUpload 
     , module Network.AWS.DeviceFarm.CreateUpload
 
-    -- ** GetDeviceInstance
+    -- ** GetDeviceInstance 
     , module Network.AWS.DeviceFarm.GetDeviceInstance
 
-    -- ** StopJob
+    -- ** StopJob 
     , module Network.AWS.DeviceFarm.StopJob
 
-    -- ** DeleteRemoteAccessSession
+    -- ** DeleteRemoteAccessSession 
     , module Network.AWS.DeviceFarm.DeleteRemoteAccessSession
 
-    -- ** ListTestGridSessionArtifacts
+    -- ** ListTestGridSessionArtifacts 
     , module Network.AWS.DeviceFarm.ListTestGridSessionArtifacts
 
-    -- ** ListTestGridProjects
+    -- ** ListTestGridProjects 
     , module Network.AWS.DeviceFarm.ListTestGridProjects
 
-    -- ** DeleteUpload
+    -- ** DeleteUpload 
     , module Network.AWS.DeviceFarm.DeleteUpload
 
-    -- ** UpdateUpload
+    -- ** UpdateUpload 
     , module Network.AWS.DeviceFarm.UpdateUpload
 
-    -- ** DeleteTestGridProject
+    -- ** DeleteTestGridProject 
     , module Network.AWS.DeviceFarm.DeleteTestGridProject
 
-    -- ** UpdateTestGridProject
+    -- ** UpdateTestGridProject 
     , module Network.AWS.DeviceFarm.UpdateTestGridProject
 
-    -- ** ListTagsForResource
+    -- ** ListTagsForResource 
     , module Network.AWS.DeviceFarm.ListTagsForResource
 
-    -- ** GetDevicePool
+    -- ** GetDevicePool 
     , module Network.AWS.DeviceFarm.GetDevicePool
 
     -- ** ListDevicePools (Paginated)
     , module Network.AWS.DeviceFarm.ListDevicePools
 
-    -- ** UpdateDevicePool
+    -- ** UpdateDevicePool 
     , module Network.AWS.DeviceFarm.UpdateDevicePool
 
-    -- ** DeleteDevicePool
+    -- ** DeleteDevicePool 
     , module Network.AWS.DeviceFarm.DeleteDevicePool
 
-    -- ** GetUpload
+    -- ** GetUpload 
     , module Network.AWS.DeviceFarm.GetUpload
 
     -- ** ListOfferingTransactions (Paginated)
     , module Network.AWS.DeviceFarm.ListOfferingTransactions
 
-    -- ** CreateDevicePool
+    -- ** CreateDevicePool 
     , module Network.AWS.DeviceFarm.CreateDevicePool
 
-    -- ** DeleteRun
+    -- ** DeleteRun 
     , module Network.AWS.DeviceFarm.DeleteRun
 
     -- ** ListRuns (Paginated)
     , module Network.AWS.DeviceFarm.ListRuns
 
-    -- ** GetTest
+    -- ** GetTest 
     , module Network.AWS.DeviceFarm.GetTest
 
-    -- ** UpdateDeviceInstance
+    -- ** UpdateDeviceInstance 
     , module Network.AWS.DeviceFarm.UpdateDeviceInstance
 
-    -- ** GetNetworkProfile
+    -- ** GetNetworkProfile 
     , module Network.AWS.DeviceFarm.GetNetworkProfile
 
-    -- ** RenewOffering
+    -- ** RenewOffering 
     , module Network.AWS.DeviceFarm.RenewOffering
 
-    -- ** DeleteInstanceProfile
+    -- ** DeleteInstanceProfile 
     , module Network.AWS.DeviceFarm.DeleteInstanceProfile
 
-    -- ** UpdateInstanceProfile
+    -- ** UpdateInstanceProfile 
     , module Network.AWS.DeviceFarm.UpdateInstanceProfile
 
-    -- ** CreateInstanceProfile
+    -- ** CreateInstanceProfile 
     , module Network.AWS.DeviceFarm.CreateInstanceProfile
 
-    -- ** GetDevice
+    -- ** GetDevice 
     , module Network.AWS.DeviceFarm.GetDevice
 
     -- ** ListJobs (Paginated)
     , module Network.AWS.DeviceFarm.ListJobs
 
-    -- ** GetTestGridSession
+    -- ** GetTestGridSession 
     , module Network.AWS.DeviceFarm.GetTestGridSession
 
-    -- ** GetVPCEConfiguration
+    -- ** GetVPCEConfiguration 
     , module Network.AWS.DeviceFarm.GetVPCEConfiguration
 
-    -- ** StopRemoteAccessSession
+    -- ** StopRemoteAccessSession 
     , module Network.AWS.DeviceFarm.StopRemoteAccessSession
 
-    -- ** CreateNetworkProfile
+    -- ** CreateNetworkProfile 
     , module Network.AWS.DeviceFarm.CreateNetworkProfile
 
-    -- ** DeleteVPCEConfiguration
+    -- ** DeleteVPCEConfiguration 
     , module Network.AWS.DeviceFarm.DeleteVPCEConfiguration
 
-    -- ** UpdateVPCEConfiguration
+    -- ** UpdateVPCEConfiguration 
     , module Network.AWS.DeviceFarm.UpdateVPCEConfiguration
 
-    -- ** GetJob
+    -- ** GetJob 
     , module Network.AWS.DeviceFarm.GetJob
 
-    -- ** GetInstanceProfile
+    -- ** GetInstanceProfile 
     , module Network.AWS.DeviceFarm.GetInstanceProfile
 
     -- ** ListNetworkProfiles (Paginated)
     , module Network.AWS.DeviceFarm.ListNetworkProfiles
 
-    -- ** CreateVPCEConfiguration
+    -- ** CreateVPCEConfiguration 
     , module Network.AWS.DeviceFarm.CreateVPCEConfiguration
 
-    -- ** ScheduleRun
+    -- ** ScheduleRun 
     , module Network.AWS.DeviceFarm.ScheduleRun
 
-    -- ** CreateTestGridProject
+    -- ** CreateTestGridProject 
     , module Network.AWS.DeviceFarm.CreateTestGridProject
 
-    -- ** GetRun
+    -- ** GetRun 
     , module Network.AWS.DeviceFarm.GetRun
 
     -- ** ListSamples (Paginated)
@@ -239,10 +239,10 @@ module Network.AWS.DeviceFarm
     -- ** ListRemoteAccessSessions (Paginated)
     , module Network.AWS.DeviceFarm.ListRemoteAccessSessions
 
-    -- ** GetAccountSettings
+    -- ** GetAccountSettings 
     , module Network.AWS.DeviceFarm.GetAccountSettings
 
-    -- ** CreateRemoteAccessSession
+    -- ** CreateRemoteAccessSession 
     , module Network.AWS.DeviceFarm.CreateRemoteAccessSession
 
     -- ** ListOfferingPromotions (Paginated)
@@ -254,31 +254,31 @@ module Network.AWS.DeviceFarm
     -- ** ListUploads (Paginated)
     , module Network.AWS.DeviceFarm.ListUploads
 
-    -- ** GetTestGridProject
+    -- ** GetTestGridProject 
     , module Network.AWS.DeviceFarm.GetTestGridProject
 
-    -- ** GetSuite
+    -- ** GetSuite 
     , module Network.AWS.DeviceFarm.GetSuite
 
-    -- ** TagResource
+    -- ** TagResource 
     , module Network.AWS.DeviceFarm.TagResource
 
-    -- ** GetRemoteAccessSession
+    -- ** GetRemoteAccessSession 
     , module Network.AWS.DeviceFarm.GetRemoteAccessSession
 
     -- ** ListDeviceInstances (Paginated)
     , module Network.AWS.DeviceFarm.ListDeviceInstances
 
-    -- ** PurchaseOffering
+    -- ** PurchaseOffering 
     , module Network.AWS.DeviceFarm.PurchaseOffering
 
     -- ** ListInstanceProfiles (Paginated)
     , module Network.AWS.DeviceFarm.ListInstanceProfiles
 
-    -- ** UntagResource
+    -- ** UntagResource 
     , module Network.AWS.DeviceFarm.UntagResource
 
-    -- ** GetProject
+    -- ** GetProject 
     , module Network.AWS.DeviceFarm.GetProject
 
     -- ** ListUniqueProblems (Paginated)
@@ -287,19 +287,19 @@ module Network.AWS.DeviceFarm
     -- ** ListVPCEConfigurations (Paginated)
     , module Network.AWS.DeviceFarm.ListVPCEConfigurations
 
-    -- ** StopRun
+    -- ** StopRun 
     , module Network.AWS.DeviceFarm.StopRun
 
     -- ** ListDevices (Paginated)
     , module Network.AWS.DeviceFarm.ListDevices
 
-    -- ** CreateProject
+    -- ** CreateProject 
     , module Network.AWS.DeviceFarm.CreateProject
 
-    -- ** ListTestGridSessions
+    -- ** ListTestGridSessions 
     , module Network.AWS.DeviceFarm.ListTestGridSessions
 
-    -- ** CreateTestGridURL
+    -- ** CreateTestGridURL 
     , module Network.AWS.DeviceFarm.CreateTestGridURL
 
     -- ** ListOfferings (Paginated)
@@ -918,8 +918,8 @@ import Network.AWS.DeviceFarm.ListInstanceProfiles
 import Network.AWS.DeviceFarm.ListJobs
 import Network.AWS.DeviceFarm.ListNetworkProfiles
 import Network.AWS.DeviceFarm.ListOfferingPromotions
-import Network.AWS.DeviceFarm.ListOfferings
 import Network.AWS.DeviceFarm.ListOfferingTransactions
+import Network.AWS.DeviceFarm.ListOfferings
 import Network.AWS.DeviceFarm.ListProjects
 import Network.AWS.DeviceFarm.ListRemoteAccessSessions
 import Network.AWS.DeviceFarm.ListRuns

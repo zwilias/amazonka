@@ -39,21 +39,17 @@ module Network.AWS.Glue.UpdateDatabase
     ) where
 
 import Network.AWS.Glue.Types
-import Network.AWS.Glue.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 
 -- | /See:/ 'updateDatabase' smart constructor.
-data UpdateDatabase =
-  UpdateDatabase'
-    { _udCatalogId     :: !(Maybe Text)
-    , _udName          :: !Text
-    , _udDatabaseInput :: !DatabaseInput
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data UpdateDatabase = UpdateDatabase'{_udCatalogId ::
+                                      !(Maybe Text),
+                                      _udName :: !Text,
+                                      _udDatabaseInput :: !DatabaseInput}
+                        deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'UpdateDatabase' with the minimum fields required to make a request.
 --
@@ -68,13 +64,9 @@ updateDatabase
     :: Text -- ^ 'udName'
     -> DatabaseInput -- ^ 'udDatabaseInput'
     -> UpdateDatabase
-updateDatabase pName_ pDatabaseInput_ =
-  UpdateDatabase'
-    { _udCatalogId = Nothing
-    , _udName = pName_
-    , _udDatabaseInput = pDatabaseInput_
-    }
-
+updateDatabase pName_ pDatabaseInput_
+  = UpdateDatabase'{_udCatalogId = Nothing,
+                    _udName = pName_, _udDatabaseInput = pDatabaseInput_}
 
 -- | The ID of the Data Catalog in which the metadata database resides. If none is supplied, the AWS account ID is used by default.
 udCatalogId :: Lens' UpdateDatabase (Maybe Text)
@@ -124,12 +116,10 @@ instance ToQuery UpdateDatabase where
         toQuery = const mempty
 
 -- | /See:/ 'updateDatabaseResponse' smart constructor.
-newtype UpdateDatabaseResponse =
-  UpdateDatabaseResponse'
-    { _udrsResponseStatus :: Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+newtype UpdateDatabaseResponse = UpdateDatabaseResponse'{_udrsResponseStatus
+                                                         :: Int}
+                                   deriving (Eq, Read, Show, Data, Typeable,
+                                             Generic)
 
 -- | Creates a value of 'UpdateDatabaseResponse' with the minimum fields required to make a request.
 --
@@ -139,9 +129,9 @@ newtype UpdateDatabaseResponse =
 updateDatabaseResponse
     :: Int -- ^ 'udrsResponseStatus'
     -> UpdateDatabaseResponse
-updateDatabaseResponse pResponseStatus_ =
-  UpdateDatabaseResponse' {_udrsResponseStatus = pResponseStatus_}
-
+updateDatabaseResponse pResponseStatus_
+  = UpdateDatabaseResponse'{_udrsResponseStatus =
+                              pResponseStatus_}
 
 -- | -- | The response status code.
 udrsResponseStatus :: Lens' UpdateDatabaseResponse Int

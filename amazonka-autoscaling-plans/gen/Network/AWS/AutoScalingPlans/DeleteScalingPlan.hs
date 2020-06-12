@@ -42,20 +42,16 @@ module Network.AWS.AutoScalingPlans.DeleteScalingPlan
     ) where
 
 import Network.AWS.AutoScalingPlans.Types
-import Network.AWS.AutoScalingPlans.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 
 -- | /See:/ 'deleteScalingPlan' smart constructor.
-data DeleteScalingPlan =
-  DeleteScalingPlan'
-    { _dspScalingPlanName    :: !Text
-    , _dspScalingPlanVersion :: !Integer
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data DeleteScalingPlan = DeleteScalingPlan'{_dspScalingPlanName
+                                            :: !Text,
+                                            _dspScalingPlanVersion :: !Integer}
+                           deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'DeleteScalingPlan' with the minimum fields required to make a request.
 --
@@ -68,12 +64,11 @@ deleteScalingPlan
     :: Text -- ^ 'dspScalingPlanName'
     -> Integer -- ^ 'dspScalingPlanVersion'
     -> DeleteScalingPlan
-deleteScalingPlan pScalingPlanName_ pScalingPlanVersion_ =
-  DeleteScalingPlan'
-    { _dspScalingPlanName = pScalingPlanName_
-    , _dspScalingPlanVersion = pScalingPlanVersion_
-    }
-
+deleteScalingPlan pScalingPlanName_
+  pScalingPlanVersion_
+  = DeleteScalingPlan'{_dspScalingPlanName =
+                         pScalingPlanName_,
+                       _dspScalingPlanVersion = pScalingPlanVersion_}
 
 -- | The name of the scaling plan.
 dspScalingPlanName :: Lens' DeleteScalingPlan Text
@@ -120,12 +115,10 @@ instance ToQuery DeleteScalingPlan where
         toQuery = const mempty
 
 -- | /See:/ 'deleteScalingPlanResponse' smart constructor.
-newtype DeleteScalingPlanResponse =
-  DeleteScalingPlanResponse'
-    { _dsprsResponseStatus :: Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+newtype DeleteScalingPlanResponse = DeleteScalingPlanResponse'{_dsprsResponseStatus
+                                                               :: Int}
+                                      deriving (Eq, Read, Show, Data, Typeable,
+                                                Generic)
 
 -- | Creates a value of 'DeleteScalingPlanResponse' with the minimum fields required to make a request.
 --
@@ -135,9 +128,9 @@ newtype DeleteScalingPlanResponse =
 deleteScalingPlanResponse
     :: Int -- ^ 'dsprsResponseStatus'
     -> DeleteScalingPlanResponse
-deleteScalingPlanResponse pResponseStatus_ =
-  DeleteScalingPlanResponse' {_dsprsResponseStatus = pResponseStatus_}
-
+deleteScalingPlanResponse pResponseStatus_
+  = DeleteScalingPlanResponse'{_dsprsResponseStatus =
+                                 pResponseStatus_}
 
 -- | -- | The response status code.
 dsprsResponseStatus :: Lens' DeleteScalingPlanResponse Int

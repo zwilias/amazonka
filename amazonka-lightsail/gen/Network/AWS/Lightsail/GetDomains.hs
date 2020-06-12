@@ -42,19 +42,15 @@ module Network.AWS.Lightsail.GetDomains
 
 import Network.AWS.Lens
 import Network.AWS.Lightsail.Types
-import Network.AWS.Lightsail.Types.Product
 import Network.AWS.Pager
 import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 
 -- | /See:/ 'getDomains' smart constructor.
-newtype GetDomains =
-  GetDomains'
-    { _gdPageToken :: Maybe Text
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+newtype GetDomains = GetDomains'{_gdPageToken ::
+                                 Maybe Text}
+                       deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'GetDomains' with the minimum fields required to make a request.
 --
@@ -63,8 +59,7 @@ newtype GetDomains =
 -- * 'gdPageToken' - A token used for advancing to the next page of results from your get domains request.
 getDomains
     :: GetDomains
-getDomains = GetDomains' {_gdPageToken = Nothing}
-
+getDomains = GetDomains'{_gdPageToken = Nothing}
 
 -- | A token used for advancing to the next page of results from your get domains request.
 gdPageToken :: Lens' GetDomains (Maybe Text)
@@ -113,14 +108,11 @@ instance ToQuery GetDomains where
         toQuery = const mempty
 
 -- | /See:/ 'getDomainsResponse' smart constructor.
-data GetDomainsResponse =
-  GetDomainsResponse'
-    { _ggrsNextPageToken  :: !(Maybe Text)
-    , _ggrsDomains        :: !(Maybe [Domain])
-    , _ggrsResponseStatus :: !Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data GetDomainsResponse = GetDomainsResponse'{_ggrsNextPageToken
+                                              :: !(Maybe Text),
+                                              _ggrsDomains :: !(Maybe [Domain]),
+                                              _ggrsResponseStatus :: !Int}
+                            deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'GetDomainsResponse' with the minimum fields required to make a request.
 --
@@ -134,13 +126,10 @@ data GetDomainsResponse =
 getDomainsResponse
     :: Int -- ^ 'ggrsResponseStatus'
     -> GetDomainsResponse
-getDomainsResponse pResponseStatus_ =
-  GetDomainsResponse'
-    { _ggrsNextPageToken = Nothing
-    , _ggrsDomains = Nothing
-    , _ggrsResponseStatus = pResponseStatus_
-    }
-
+getDomainsResponse pResponseStatus_
+  = GetDomainsResponse'{_ggrsNextPageToken = Nothing,
+                        _ggrsDomains = Nothing,
+                        _ggrsResponseStatus = pResponseStatus_}
 
 -- | A token used for advancing to the next page of results from your get active names request.
 ggrsNextPageToken :: Lens' GetDomainsResponse (Maybe Text)

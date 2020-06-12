@@ -37,19 +37,15 @@ module Network.AWS.IoT.DeleteAuthorizer
     ) where
 
 import Network.AWS.IoT.Types
-import Network.AWS.IoT.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 
 -- | /See:/ 'deleteAuthorizer' smart constructor.
-newtype DeleteAuthorizer =
-  DeleteAuthorizer'
-    { _dAuthorizerName :: Text
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+newtype DeleteAuthorizer = DeleteAuthorizer'{_dAuthorizerName
+                                             :: Text}
+                             deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'DeleteAuthorizer' with the minimum fields required to make a request.
 --
@@ -59,9 +55,9 @@ newtype DeleteAuthorizer =
 deleteAuthorizer
     :: Text -- ^ 'dAuthorizerName'
     -> DeleteAuthorizer
-deleteAuthorizer pAuthorizerName_ =
-  DeleteAuthorizer' {_dAuthorizerName = pAuthorizerName_}
-
+deleteAuthorizer pAuthorizerName_
+  = DeleteAuthorizer'{_dAuthorizerName =
+                        pAuthorizerName_}
 
 -- | The name of the authorizer to delete.
 dAuthorizerName :: Lens' DeleteAuthorizer Text
@@ -90,12 +86,10 @@ instance ToQuery DeleteAuthorizer where
         toQuery = const mempty
 
 -- | /See:/ 'deleteAuthorizerResponse' smart constructor.
-newtype DeleteAuthorizerResponse =
-  DeleteAuthorizerResponse'
-    { _delrsResponseStatus :: Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+newtype DeleteAuthorizerResponse = DeleteAuthorizerResponse'{_delrsResponseStatus
+                                                             :: Int}
+                                     deriving (Eq, Read, Show, Data, Typeable,
+                                               Generic)
 
 -- | Creates a value of 'DeleteAuthorizerResponse' with the minimum fields required to make a request.
 --
@@ -105,9 +99,9 @@ newtype DeleteAuthorizerResponse =
 deleteAuthorizerResponse
     :: Int -- ^ 'delrsResponseStatus'
     -> DeleteAuthorizerResponse
-deleteAuthorizerResponse pResponseStatus_ =
-  DeleteAuthorizerResponse' {_delrsResponseStatus = pResponseStatus_}
-
+deleteAuthorizerResponse pResponseStatus_
+  = DeleteAuthorizerResponse'{_delrsResponseStatus =
+                                pResponseStatus_}
 
 -- | -- | The response status code.
 delrsResponseStatus :: Lens' DeleteAuthorizerResponse Int

@@ -45,21 +45,20 @@ module Network.AWS.EC2.EnableFastSnapshotRestores
     ) where
 
 import Network.AWS.EC2.Types
-import Network.AWS.EC2.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 
 -- | /See:/ 'enableFastSnapshotRestores' smart constructor.
-data EnableFastSnapshotRestores =
-  EnableFastSnapshotRestores'
-    { _efsrDryRun            :: !(Maybe Bool)
-    , _efsrAvailabilityZones :: ![Text]
-    , _efsrSourceSnapshotIds :: ![Text]
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data EnableFastSnapshotRestores = EnableFastSnapshotRestores'{_efsrDryRun
+                                                              :: !(Maybe Bool),
+                                                              _efsrAvailabilityZones
+                                                              :: ![Text],
+                                                              _efsrSourceSnapshotIds
+                                                              :: ![Text]}
+                                    deriving (Eq, Read, Show, Data, Typeable,
+                                              Generic)
 
 -- | Creates a value of 'EnableFastSnapshotRestores' with the minimum fields required to make a request.
 --
@@ -72,13 +71,10 @@ data EnableFastSnapshotRestores =
 -- * 'efsrSourceSnapshotIds' - The IDs of one or more snapshots. For example, @snap-1234567890abcdef0@ . You can specify a snapshot that was shared with you from another AWS account.
 enableFastSnapshotRestores
     :: EnableFastSnapshotRestores
-enableFastSnapshotRestores =
-  EnableFastSnapshotRestores'
-    { _efsrDryRun = Nothing
-    , _efsrAvailabilityZones = mempty
-    , _efsrSourceSnapshotIds = mempty
-    }
-
+enableFastSnapshotRestores
+  = EnableFastSnapshotRestores'{_efsrDryRun = Nothing,
+                                _efsrAvailabilityZones = mempty,
+                                _efsrSourceSnapshotIds = mempty}
 
 -- | Checks whether you have the required permissions for the action, without actually making the request, and provides an error response. If you have the required permissions, the error response is @DryRunOperation@ . Otherwise, it is @UnauthorizedOperation@ .
 efsrDryRun :: Lens' EnableFastSnapshotRestores (Maybe Bool)
@@ -130,14 +126,19 @@ instance ToQuery EnableFastSnapshotRestores where
                  _efsrSourceSnapshotIds]
 
 -- | /See:/ 'enableFastSnapshotRestoresResponse' smart constructor.
-data EnableFastSnapshotRestoresResponse =
-  EnableFastSnapshotRestoresResponse'
-    { _efsrrsUnsuccessful   :: !(Maybe [EnableFastSnapshotRestoreErrorItem])
-    , _efsrrsSuccessful     :: !(Maybe [EnableFastSnapshotRestoreSuccessItem])
-    , _efsrrsResponseStatus :: !Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data EnableFastSnapshotRestoresResponse = EnableFastSnapshotRestoresResponse'{_efsrrsUnsuccessful
+                                                                              ::
+                                                                              !(Maybe
+                                                                                  [EnableFastSnapshotRestoreErrorItem]),
+                                                                              _efsrrsSuccessful
+                                                                              ::
+                                                                              !(Maybe
+                                                                                  [EnableFastSnapshotRestoreSuccessItem]),
+                                                                              _efsrrsResponseStatus
+                                                                              ::
+                                                                              !Int}
+                                            deriving (Eq, Read, Show, Data,
+                                                      Typeable, Generic)
 
 -- | Creates a value of 'EnableFastSnapshotRestoresResponse' with the minimum fields required to make a request.
 --
@@ -151,13 +152,12 @@ data EnableFastSnapshotRestoresResponse =
 enableFastSnapshotRestoresResponse
     :: Int -- ^ 'efsrrsResponseStatus'
     -> EnableFastSnapshotRestoresResponse
-enableFastSnapshotRestoresResponse pResponseStatus_ =
-  EnableFastSnapshotRestoresResponse'
-    { _efsrrsUnsuccessful = Nothing
-    , _efsrrsSuccessful = Nothing
-    , _efsrrsResponseStatus = pResponseStatus_
-    }
-
+enableFastSnapshotRestoresResponse pResponseStatus_
+  = EnableFastSnapshotRestoresResponse'{_efsrrsUnsuccessful
+                                          = Nothing,
+                                        _efsrrsSuccessful = Nothing,
+                                        _efsrrsResponseStatus =
+                                          pResponseStatus_}
 
 -- | Information about the snapshots for which fast snapshot restores could not be enabled.
 efsrrsUnsuccessful :: Lens' EnableFastSnapshotRestoresResponse [EnableFastSnapshotRestoreErrorItem]

@@ -27,47 +27,47 @@
 --
 -- Fleet-related operations include:
 --
---     * 'CreateFleet'
+--     * 'CreateFleet' 
 --
---     * 'ListFleets'
+--     * 'ListFleets' 
 --
---     * 'DeleteFleet'
+--     * 'DeleteFleet' 
 --
 --     * Describe fleets:
 --
---     * 'DescribeFleetAttributes'
+--     * 'DescribeFleetAttributes' 
 --
---     * 'DescribeFleetCapacity'
+--     * 'DescribeFleetCapacity' 
 --
---     * 'DescribeFleetPortSettings'
+--     * 'DescribeFleetPortSettings' 
 --
---     * 'DescribeFleetUtilization'
+--     * 'DescribeFleetUtilization' 
 --
---     * 'DescribeRuntimeConfiguration'
+--     * 'DescribeRuntimeConfiguration' 
 --
---     * 'DescribeEC2InstanceLimits'
+--     * 'DescribeEC2InstanceLimits' 
 --
---     * 'DescribeFleetEvents'
+--     * 'DescribeFleetEvents' 
 --
 --
 --
 --     * Update fleets:
 --
---     * 'UpdateFleetAttributes'
+--     * 'UpdateFleetAttributes' 
 --
---     * 'UpdateFleetCapacity'
+--     * 'UpdateFleetCapacity' 
 --
---     * 'UpdateFleetPortSettings'
+--     * 'UpdateFleetPortSettings' 
 --
---     * 'UpdateRuntimeConfiguration'
+--     * 'UpdateRuntimeConfiguration' 
 --
 --
 --
 --     * Manage fleet actions:
 --
---     * 'StartFleetActions'
+--     * 'StartFleetActions' 
 --
---     * 'StopFleetActions'
+--     * 'StopFleetActions' 
 --
 --
 --
@@ -91,7 +91,6 @@ module Network.AWS.GameLift.UpdateRuntimeConfiguration
     ) where
 
 import Network.AWS.GameLift.Types
-import Network.AWS.GameLift.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.Request
@@ -102,13 +101,13 @@ import Network.AWS.Response
 --
 --
 -- /See:/ 'updateRuntimeConfiguration' smart constructor.
-data UpdateRuntimeConfiguration =
-  UpdateRuntimeConfiguration'
-    { _urcFleetId              :: !Text
-    , _urcRuntimeConfiguration :: !RuntimeConfiguration
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data UpdateRuntimeConfiguration = UpdateRuntimeConfiguration'{_urcFleetId
+                                                              :: !Text,
+                                                              _urcRuntimeConfiguration
+                                                              ::
+                                                              !RuntimeConfiguration}
+                                    deriving (Eq, Read, Show, Data, Typeable,
+                                              Generic)
 
 -- | Creates a value of 'UpdateRuntimeConfiguration' with the minimum fields required to make a request.
 --
@@ -121,10 +120,12 @@ updateRuntimeConfiguration
     :: Text -- ^ 'urcFleetId'
     -> RuntimeConfiguration -- ^ 'urcRuntimeConfiguration'
     -> UpdateRuntimeConfiguration
-updateRuntimeConfiguration pFleetId_ pRuntimeConfiguration_ =
-  UpdateRuntimeConfiguration'
-    {_urcFleetId = pFleetId_, _urcRuntimeConfiguration = pRuntimeConfiguration_}
-
+updateRuntimeConfiguration pFleetId_
+  pRuntimeConfiguration_
+  = UpdateRuntimeConfiguration'{_urcFleetId =
+                                  pFleetId_,
+                                _urcRuntimeConfiguration =
+                                  pRuntimeConfiguration_}
 
 -- | Unique identifier for a fleet to update run-time configuration for.
 urcFleetId :: Lens' UpdateRuntimeConfiguration Text
@@ -179,13 +180,15 @@ instance ToQuery UpdateRuntimeConfiguration where
 --
 --
 -- /See:/ 'updateRuntimeConfigurationResponse' smart constructor.
-data UpdateRuntimeConfigurationResponse =
-  UpdateRuntimeConfigurationResponse'
-    { _urcrsRuntimeConfiguration :: !(Maybe RuntimeConfiguration)
-    , _urcrsResponseStatus       :: !Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data UpdateRuntimeConfigurationResponse = UpdateRuntimeConfigurationResponse'{_urcrsRuntimeConfiguration
+                                                                              ::
+                                                                              !(Maybe
+                                                                                  RuntimeConfiguration),
+                                                                              _urcrsResponseStatus
+                                                                              ::
+                                                                              !Int}
+                                            deriving (Eq, Read, Show, Data,
+                                                      Typeable, Generic)
 
 -- | Creates a value of 'UpdateRuntimeConfigurationResponse' with the minimum fields required to make a request.
 --
@@ -197,12 +200,10 @@ data UpdateRuntimeConfigurationResponse =
 updateRuntimeConfigurationResponse
     :: Int -- ^ 'urcrsResponseStatus'
     -> UpdateRuntimeConfigurationResponse
-updateRuntimeConfigurationResponse pResponseStatus_ =
-  UpdateRuntimeConfigurationResponse'
-    { _urcrsRuntimeConfiguration = Nothing
-    , _urcrsResponseStatus = pResponseStatus_
-    }
-
+updateRuntimeConfigurationResponse pResponseStatus_
+  = UpdateRuntimeConfigurationResponse'{_urcrsRuntimeConfiguration
+                                          = Nothing,
+                                        _urcrsResponseStatus = pResponseStatus_}
 
 -- | The run-time configuration currently in force. If the update was successful, this object matches the one in the request.
 urcrsRuntimeConfiguration :: Lens' UpdateRuntimeConfigurationResponse (Maybe RuntimeConfiguration)

@@ -64,21 +64,23 @@ module Network.AWS.DirectConnect.AllocatePrivateVirtualInterface
     ) where
 
 import Network.AWS.DirectConnect.Types
-import Network.AWS.DirectConnect.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 
 -- | /See:/ 'allocatePrivateVirtualInterface' smart constructor.
-data AllocatePrivateVirtualInterface =
-  AllocatePrivateVirtualInterface'
-    { _apviConnectionId :: !Text
-    , _apviOwnerAccount :: !Text
-    , _apviNewPrivateVirtualInterfaceAllocation :: !NewPrivateVirtualInterfaceAllocation
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data AllocatePrivateVirtualInterface = AllocatePrivateVirtualInterface'{_apviConnectionId
+                                                                        ::
+                                                                        !Text,
+                                                                        _apviOwnerAccount
+                                                                        ::
+                                                                        !Text,
+                                                                        _apviNewPrivateVirtualInterfaceAllocation
+                                                                        ::
+                                                                        !NewPrivateVirtualInterfaceAllocation}
+                                         deriving (Eq, Read, Show, Data,
+                                                   Typeable, Generic)
 
 -- | Creates a value of 'AllocatePrivateVirtualInterface' with the minimum fields required to make a request.
 --
@@ -94,14 +96,13 @@ allocatePrivateVirtualInterface
     -> Text -- ^ 'apviOwnerAccount'
     -> NewPrivateVirtualInterfaceAllocation -- ^ 'apviNewPrivateVirtualInterfaceAllocation'
     -> AllocatePrivateVirtualInterface
-allocatePrivateVirtualInterface pConnectionId_ pOwnerAccount_ pNewPrivateVirtualInterfaceAllocation_ =
-  AllocatePrivateVirtualInterface'
-    { _apviConnectionId = pConnectionId_
-    , _apviOwnerAccount = pOwnerAccount_
-    , _apviNewPrivateVirtualInterfaceAllocation =
-        pNewPrivateVirtualInterfaceAllocation_
-    }
-
+allocatePrivateVirtualInterface pConnectionId_
+  pOwnerAccount_ pNewPrivateVirtualInterfaceAllocation_
+  = AllocatePrivateVirtualInterface'{_apviConnectionId
+                                       = pConnectionId_,
+                                     _apviOwnerAccount = pOwnerAccount_,
+                                     _apviNewPrivateVirtualInterfaceAllocation =
+                                       pNewPrivateVirtualInterfaceAllocation_}
 
 -- | The ID of the connection on which the private virtual interface is provisioned.
 apviConnectionId :: Lens' AllocatePrivateVirtualInterface Text

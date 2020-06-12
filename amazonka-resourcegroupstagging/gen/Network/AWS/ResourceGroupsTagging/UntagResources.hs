@@ -48,17 +48,13 @@ import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.ResourceGroupsTagging.Types
-import Network.AWS.ResourceGroupsTagging.Types.Product
 import Network.AWS.Response
 
 -- | /See:/ 'untagResources' smart constructor.
-data UntagResources =
-  UntagResources'
-    { _urResourceARNList :: !(List1 Text)
-    , _urTagKeys         :: !(List1 Text)
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data UntagResources = UntagResources'{_urResourceARNList
+                                      :: !(List1 Text),
+                                      _urTagKeys :: !(List1 Text)}
+                        deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'UntagResources' with the minimum fields required to make a request.
 --
@@ -71,12 +67,10 @@ untagResources
     :: NonEmpty Text -- ^ 'urResourceARNList'
     -> NonEmpty Text -- ^ 'urTagKeys'
     -> UntagResources
-untagResources pResourceARNList_ pTagKeys_ =
-  UntagResources'
-    { _urResourceARNList = _List1 # pResourceARNList_
-    , _urTagKeys = _List1 # pTagKeys_
-    }
-
+untagResources pResourceARNList_ pTagKeys_
+  = UntagResources'{_urResourceARNList =
+                      _List1 # pResourceARNList_,
+                    _urTagKeys = _List1 # pTagKeys_}
 
 -- | A list of ARNs. An ARN (Amazon Resource Name) uniquely identifies a resource. You can specify a minimum of 1 and a maximum of 20 ARNs (resources) to untag. An ARN can be set to a maximum of 1600 characters. For more information, see <http://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html Amazon Resource Names (ARNs) and AWS Service Namespaces> in the /AWS General Reference/ .
 urResourceARNList :: Lens' UntagResources (NonEmpty Text)
@@ -124,13 +118,15 @@ instance ToQuery UntagResources where
         toQuery = const mempty
 
 -- | /See:/ 'untagResourcesResponse' smart constructor.
-data UntagResourcesResponse =
-  UntagResourcesResponse'
-    { _urrsFailedResourcesMap :: !(Maybe (Map Text FailureInfo))
-    , _urrsResponseStatus     :: !Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data UntagResourcesResponse = UntagResourcesResponse'{_urrsFailedResourcesMap
+                                                      ::
+                                                      !(Maybe
+                                                          (Map Text
+                                                             FailureInfo)),
+                                                      _urrsResponseStatus ::
+                                                      !Int}
+                                deriving (Eq, Read, Show, Data, Typeable,
+                                          Generic)
 
 -- | Creates a value of 'UntagResourcesResponse' with the minimum fields required to make a request.
 --
@@ -142,10 +138,10 @@ data UntagResourcesResponse =
 untagResourcesResponse
     :: Int -- ^ 'urrsResponseStatus'
     -> UntagResourcesResponse
-untagResourcesResponse pResponseStatus_ =
-  UntagResourcesResponse'
-    {_urrsFailedResourcesMap = Nothing, _urrsResponseStatus = pResponseStatus_}
-
+untagResourcesResponse pResponseStatus_
+  = UntagResourcesResponse'{_urrsFailedResourcesMap =
+                              Nothing,
+                            _urrsResponseStatus = pResponseStatus_}
 
 -- | Details of resources that could not be untagged. An error code, status code, and error message are returned for each failed item.
 urrsFailedResourcesMap :: Lens' UntagResourcesResponse (HashMap Text FailureInfo)

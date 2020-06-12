@@ -40,18 +40,15 @@ import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 import Network.AWS.S3.Types
-import Network.AWS.S3.Types.Product
 
 -- | /See:/ 'putBucketVersioning' smart constructor.
-data PutBucketVersioning =
-  PutBucketVersioning'
-    { _pbvMFA                     :: !(Maybe Text)
-    , _pbvContentMD5              :: !(Maybe Text)
-    , _pbvBucket                  :: !BucketName
-    , _pbvVersioningConfiguration :: !VersioningConfiguration
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data PutBucketVersioning = PutBucketVersioning'{_pbvMFA
+                                                :: !(Maybe Text),
+                                                _pbvContentMD5 :: !(Maybe Text),
+                                                _pbvBucket :: !BucketName,
+                                                _pbvVersioningConfiguration ::
+                                                !VersioningConfiguration}
+                             deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'PutBucketVersioning' with the minimum fields required to make a request.
 --
@@ -68,14 +65,12 @@ putBucketVersioning
     :: BucketName -- ^ 'pbvBucket'
     -> VersioningConfiguration -- ^ 'pbvVersioningConfiguration'
     -> PutBucketVersioning
-putBucketVersioning pBucket_ pVersioningConfiguration_ =
-  PutBucketVersioning'
-    { _pbvMFA = Nothing
-    , _pbvContentMD5 = Nothing
-    , _pbvBucket = pBucket_
-    , _pbvVersioningConfiguration = pVersioningConfiguration_
-    }
-
+putBucketVersioning pBucket_
+  pVersioningConfiguration_
+  = PutBucketVersioning'{_pbvMFA = Nothing,
+                         _pbvContentMD5 = Nothing, _pbvBucket = pBucket_,
+                         _pbvVersioningConfiguration =
+                           pVersioningConfiguration_}
 
 -- | The concatenation of the authentication device's serial number, a space, and the value that is displayed on your authentication device.
 pbvMFA :: Lens' PutBucketVersioning (Maybe Text)
@@ -124,16 +119,15 @@ instance ToQuery PutBucketVersioning where
         toQuery = const (mconcat ["versioning"])
 
 -- | /See:/ 'putBucketVersioningResponse' smart constructor.
-data PutBucketVersioningResponse =
-  PutBucketVersioningResponse'
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data PutBucketVersioningResponse = PutBucketVersioningResponse'
+                                     deriving (Eq, Read, Show, Data, Typeable,
+                                               Generic)
 
 -- | Creates a value of 'PutBucketVersioningResponse' with the minimum fields required to make a request.
 --
 putBucketVersioningResponse
     :: PutBucketVersioningResponse
-putBucketVersioningResponse = PutBucketVersioningResponse'
-
+putBucketVersioningResponse
+  = PutBucketVersioningResponse'
 
 instance NFData PutBucketVersioningResponse where

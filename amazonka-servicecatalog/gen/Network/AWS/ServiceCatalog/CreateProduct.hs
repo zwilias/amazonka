@@ -55,26 +55,22 @@ import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 import Network.AWS.ServiceCatalog.Types
-import Network.AWS.ServiceCatalog.Types.Product
 
 -- | /See:/ 'createProduct' smart constructor.
-data CreateProduct =
-  CreateProduct'
-    { _cpSupportURL                     :: !(Maybe Text)
-    , _cpDistributor                    :: !(Maybe Text)
-    , _cpAcceptLanguage                 :: !(Maybe Text)
-    , _cpSupportEmail                   :: !(Maybe Text)
-    , _cpDescription                    :: !(Maybe Text)
-    , _cpTags                           :: !(Maybe [Tag])
-    , _cpSupportDescription             :: !(Maybe Text)
-    , _cpName                           :: !Text
-    , _cpOwner                          :: !Text
-    , _cpProductType                    :: !ProductType
-    , _cpProvisioningArtifactParameters :: !ProvisioningArtifactProperties
-    , _cpIdempotencyToken               :: !Text
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data CreateProduct = CreateProduct'{_cpSupportURL ::
+                                    !(Maybe Text),
+                                    _cpDistributor :: !(Maybe Text),
+                                    _cpAcceptLanguage :: !(Maybe Text),
+                                    _cpSupportEmail :: !(Maybe Text),
+                                    _cpDescription :: !(Maybe Text),
+                                    _cpTags :: !(Maybe [Tag]),
+                                    _cpSupportDescription :: !(Maybe Text),
+                                    _cpName :: !Text, _cpOwner :: !Text,
+                                    _cpProductType :: !ProductType,
+                                    _cpProvisioningArtifactParameters ::
+                                    !ProvisioningArtifactProperties,
+                                    _cpIdempotencyToken :: !Text}
+                       deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'CreateProduct' with the minimum fields required to make a request.
 --
@@ -110,22 +106,18 @@ createProduct
     -> ProvisioningArtifactProperties -- ^ 'cpProvisioningArtifactParameters'
     -> Text -- ^ 'cpIdempotencyToken'
     -> CreateProduct
-createProduct pName_ pOwner_ pProductType_ pProvisioningArtifactParameters_ pIdempotencyToken_ =
-  CreateProduct'
-    { _cpSupportURL = Nothing
-    , _cpDistributor = Nothing
-    , _cpAcceptLanguage = Nothing
-    , _cpSupportEmail = Nothing
-    , _cpDescription = Nothing
-    , _cpTags = Nothing
-    , _cpSupportDescription = Nothing
-    , _cpName = pName_
-    , _cpOwner = pOwner_
-    , _cpProductType = pProductType_
-    , _cpProvisioningArtifactParameters = pProvisioningArtifactParameters_
-    , _cpIdempotencyToken = pIdempotencyToken_
-    }
-
+createProduct pName_ pOwner_ pProductType_
+  pProvisioningArtifactParameters_ pIdempotencyToken_
+  = CreateProduct'{_cpSupportURL = Nothing,
+                   _cpDistributor = Nothing,
+                   _cpAcceptLanguage = Nothing,
+                   _cpSupportEmail = Nothing, _cpDescription = Nothing,
+                   _cpTags = Nothing, _cpSupportDescription = Nothing,
+                   _cpName = pName_, _cpOwner = pOwner_,
+                   _cpProductType = pProductType_,
+                   _cpProvisioningArtifactParameters =
+                     pProvisioningArtifactParameters_,
+                   _cpIdempotencyToken = pIdempotencyToken_}
 
 -- | The contact URL for product support.
 cpSupportURL :: Lens' CreateProduct (Maybe Text)
@@ -226,15 +218,17 @@ instance ToQuery CreateProduct where
         toQuery = const mempty
 
 -- | /See:/ 'createProductResponse' smart constructor.
-data CreateProductResponse =
-  CreateProductResponse'
-    { _cprsProductViewDetail          :: !(Maybe ProductViewDetail)
-    , _cprsProvisioningArtifactDetail :: !(Maybe ProvisioningArtifactDetail)
-    , _cprsTags                       :: !(Maybe [Tag])
-    , _cprsResponseStatus             :: !Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data CreateProductResponse = CreateProductResponse'{_cprsProductViewDetail
+                                                    ::
+                                                    !(Maybe ProductViewDetail),
+                                                    _cprsProvisioningArtifactDetail
+                                                    ::
+                                                    !(Maybe
+                                                        ProvisioningArtifactDetail),
+                                                    _cprsTags :: !(Maybe [Tag]),
+                                                    _cprsResponseStatus :: !Int}
+                               deriving (Eq, Read, Show, Data, Typeable,
+                                         Generic)
 
 -- | Creates a value of 'CreateProductResponse' with the minimum fields required to make a request.
 --
@@ -250,14 +244,12 @@ data CreateProductResponse =
 createProductResponse
     :: Int -- ^ 'cprsResponseStatus'
     -> CreateProductResponse
-createProductResponse pResponseStatus_ =
-  CreateProductResponse'
-    { _cprsProductViewDetail = Nothing
-    , _cprsProvisioningArtifactDetail = Nothing
-    , _cprsTags = Nothing
-    , _cprsResponseStatus = pResponseStatus_
-    }
-
+createProductResponse pResponseStatus_
+  = CreateProductResponse'{_cprsProductViewDetail =
+                             Nothing,
+                           _cprsProvisioningArtifactDetail = Nothing,
+                           _cprsTags = Nothing,
+                           _cprsResponseStatus = pResponseStatus_}
 
 -- | Information about the product view.
 cprsProductViewDetail :: Lens' CreateProductResponse (Maybe ProductViewDetail)

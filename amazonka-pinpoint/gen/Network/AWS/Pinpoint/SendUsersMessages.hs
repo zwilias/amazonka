@@ -38,19 +38,16 @@ module Network.AWS.Pinpoint.SendUsersMessages
 
 import Network.AWS.Lens
 import Network.AWS.Pinpoint.Types
-import Network.AWS.Pinpoint.Types.Product
 import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 
 -- | /See:/ 'sendUsersMessages' smart constructor.
-data SendUsersMessages =
-  SendUsersMessages'
-    { _sumsApplicationId           :: !Text
-    , _sumsSendUsersMessageRequest :: !SendUsersMessageRequest
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data SendUsersMessages = SendUsersMessages'{_sumsApplicationId
+                                            :: !Text,
+                                            _sumsSendUsersMessageRequest ::
+                                            !SendUsersMessageRequest}
+                           deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'SendUsersMessages' with the minimum fields required to make a request.
 --
@@ -63,12 +60,12 @@ sendUsersMessages
     :: Text -- ^ 'sumsApplicationId'
     -> SendUsersMessageRequest -- ^ 'sumsSendUsersMessageRequest'
     -> SendUsersMessages
-sendUsersMessages pApplicationId_ pSendUsersMessageRequest_ =
-  SendUsersMessages'
-    { _sumsApplicationId = pApplicationId_
-    , _sumsSendUsersMessageRequest = pSendUsersMessageRequest_
-    }
-
+sendUsersMessages pApplicationId_
+  pSendUsersMessageRequest_
+  = SendUsersMessages'{_sumsApplicationId =
+                         pApplicationId_,
+                       _sumsSendUsersMessageRequest =
+                         pSendUsersMessageRequest_}
 
 -- | Undocumented member.
 sumsApplicationId :: Lens' SendUsersMessages Text
@@ -116,13 +113,13 @@ instance ToQuery SendUsersMessages where
         toQuery = const mempty
 
 -- | /See:/ 'sendUsersMessagesResponse' smart constructor.
-data SendUsersMessagesResponse =
-  SendUsersMessagesResponse'
-    { _sumrsResponseStatus           :: !Int
-    , _sumrsSendUsersMessageResponse :: !SendUsersMessageResponse
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data SendUsersMessagesResponse = SendUsersMessagesResponse'{_sumrsResponseStatus
+                                                            :: !Int,
+                                                            _sumrsSendUsersMessageResponse
+                                                            ::
+                                                            !SendUsersMessageResponse}
+                                   deriving (Eq, Read, Show, Data, Typeable,
+                                             Generic)
 
 -- | Creates a value of 'SendUsersMessagesResponse' with the minimum fields required to make a request.
 --
@@ -135,12 +132,12 @@ sendUsersMessagesResponse
     :: Int -- ^ 'sumrsResponseStatus'
     -> SendUsersMessageResponse -- ^ 'sumrsSendUsersMessageResponse'
     -> SendUsersMessagesResponse
-sendUsersMessagesResponse pResponseStatus_ pSendUsersMessageResponse_ =
-  SendUsersMessagesResponse'
-    { _sumrsResponseStatus = pResponseStatus_
-    , _sumrsSendUsersMessageResponse = pSendUsersMessageResponse_
-    }
-
+sendUsersMessagesResponse pResponseStatus_
+  pSendUsersMessageResponse_
+  = SendUsersMessagesResponse'{_sumrsResponseStatus =
+                                 pResponseStatus_,
+                               _sumrsSendUsersMessageResponse =
+                                 pSendUsersMessageResponse_}
 
 -- | -- | The response status code.
 sumrsResponseStatus :: Lens' SendUsersMessagesResponse Int

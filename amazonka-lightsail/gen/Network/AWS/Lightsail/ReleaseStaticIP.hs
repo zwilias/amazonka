@@ -39,18 +39,14 @@ module Network.AWS.Lightsail.ReleaseStaticIP
 
 import Network.AWS.Lens
 import Network.AWS.Lightsail.Types
-import Network.AWS.Lightsail.Types.Product
 import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 
 -- | /See:/ 'releaseStaticIP' smart constructor.
-newtype ReleaseStaticIP =
-  ReleaseStaticIP'
-    { _rsiStaticIPName :: Text
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+newtype ReleaseStaticIP = ReleaseStaticIP'{_rsiStaticIPName
+                                           :: Text}
+                            deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'ReleaseStaticIP' with the minimum fields required to make a request.
 --
@@ -60,9 +56,8 @@ newtype ReleaseStaticIP =
 releaseStaticIP
     :: Text -- ^ 'rsiStaticIPName'
     -> ReleaseStaticIP
-releaseStaticIP pStaticIPName_ =
-  ReleaseStaticIP' {_rsiStaticIPName = pStaticIPName_}
-
+releaseStaticIP pStaticIPName_
+  = ReleaseStaticIP'{_rsiStaticIPName = pStaticIPName_}
 
 -- | The name of the static IP to delete.
 rsiStaticIPName :: Lens' ReleaseStaticIP Text
@@ -104,13 +99,12 @@ instance ToQuery ReleaseStaticIP where
         toQuery = const mempty
 
 -- | /See:/ 'releaseStaticIPResponse' smart constructor.
-data ReleaseStaticIPResponse =
-  ReleaseStaticIPResponse'
-    { _rsirsOperations     :: !(Maybe [Operation])
-    , _rsirsResponseStatus :: !Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data ReleaseStaticIPResponse = ReleaseStaticIPResponse'{_rsirsOperations
+                                                        :: !(Maybe [Operation]),
+                                                        _rsirsResponseStatus ::
+                                                        !Int}
+                                 deriving (Eq, Read, Show, Data, Typeable,
+                                           Generic)
 
 -- | Creates a value of 'ReleaseStaticIPResponse' with the minimum fields required to make a request.
 --
@@ -122,10 +116,10 @@ data ReleaseStaticIPResponse =
 releaseStaticIPResponse
     :: Int -- ^ 'rsirsResponseStatus'
     -> ReleaseStaticIPResponse
-releaseStaticIPResponse pResponseStatus_ =
-  ReleaseStaticIPResponse'
-    {_rsirsOperations = Nothing, _rsirsResponseStatus = pResponseStatus_}
-
+releaseStaticIPResponse pResponseStatus_
+  = ReleaseStaticIPResponse'{_rsirsOperations =
+                               Nothing,
+                             _rsirsResponseStatus = pResponseStatus_}
 
 -- | An array of key-value pairs containing information about the request operation.
 rsirsOperations :: Lens' ReleaseStaticIPResponse [Operation]

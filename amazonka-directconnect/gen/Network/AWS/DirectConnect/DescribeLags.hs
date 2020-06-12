@@ -38,19 +38,15 @@ module Network.AWS.DirectConnect.DescribeLags
     ) where
 
 import Network.AWS.DirectConnect.Types
-import Network.AWS.DirectConnect.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 
 -- | /See:/ 'describeLags' smart constructor.
-newtype DescribeLags =
-  DescribeLags'
-    { _dlLagId :: Maybe Text
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+newtype DescribeLags = DescribeLags'{_dlLagId ::
+                                     Maybe Text}
+                         deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'DescribeLags' with the minimum fields required to make a request.
 --
@@ -59,8 +55,7 @@ newtype DescribeLags =
 -- * 'dlLagId' - The ID of the LAG.
 describeLags
     :: DescribeLags
-describeLags = DescribeLags' {_dlLagId = Nothing}
-
+describeLags = DescribeLags'{_dlLagId = Nothing}
 
 -- | The ID of the LAG.
 dlLagId :: Lens' DescribeLags (Maybe Text)
@@ -99,13 +94,10 @@ instance ToQuery DescribeLags where
         toQuery = const mempty
 
 -- | /See:/ 'describeLagsResponse' smart constructor.
-data DescribeLagsResponse =
-  DescribeLagsResponse'
-    { _desrsLags           :: !(Maybe [Lag])
-    , _desrsResponseStatus :: !Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data DescribeLagsResponse = DescribeLagsResponse'{_desrsLags
+                                                  :: !(Maybe [Lag]),
+                                                  _desrsResponseStatus :: !Int}
+                              deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'DescribeLagsResponse' with the minimum fields required to make a request.
 --
@@ -117,10 +109,9 @@ data DescribeLagsResponse =
 describeLagsResponse
     :: Int -- ^ 'desrsResponseStatus'
     -> DescribeLagsResponse
-describeLagsResponse pResponseStatus_ =
-  DescribeLagsResponse'
-    {_desrsLags = Nothing, _desrsResponseStatus = pResponseStatus_}
-
+describeLagsResponse pResponseStatus_
+  = DescribeLagsResponse'{_desrsLags = Nothing,
+                          _desrsResponseStatus = pResponseStatus_}
 
 -- | The LAGs.
 desrsLags :: Lens' DescribeLagsResponse [Lag]

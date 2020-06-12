@@ -47,15 +47,14 @@ import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 import Network.AWS.SSM.Types
-import Network.AWS.SSM.Types.Product
 
 -- | /See:/ 'createAssociationBatch' smart constructor.
-newtype CreateAssociationBatch =
-  CreateAssociationBatch'
-    { _cabEntries :: List1 CreateAssociationBatchRequestEntry
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+newtype CreateAssociationBatch = CreateAssociationBatch'{_cabEntries
+                                                         ::
+                                                         List1
+                                                           CreateAssociationBatchRequestEntry}
+                                   deriving (Eq, Read, Show, Data, Typeable,
+                                             Generic)
 
 -- | Creates a value of 'CreateAssociationBatch' with the minimum fields required to make a request.
 --
@@ -65,9 +64,9 @@ newtype CreateAssociationBatch =
 createAssociationBatch
     :: NonEmpty CreateAssociationBatchRequestEntry -- ^ 'cabEntries'
     -> CreateAssociationBatch
-createAssociationBatch pEntries_ =
-  CreateAssociationBatch' {_cabEntries = _List1 # pEntries_}
-
+createAssociationBatch pEntries_
+  = CreateAssociationBatch'{_cabEntries =
+                              _List1 # pEntries_}
 
 -- | One or more associations.
 cabEntries :: Lens' CreateAssociationBatch (NonEmpty CreateAssociationBatchRequestEntry)
@@ -110,14 +109,18 @@ instance ToQuery CreateAssociationBatch where
         toQuery = const mempty
 
 -- | /See:/ 'createAssociationBatchResponse' smart constructor.
-data CreateAssociationBatchResponse =
-  CreateAssociationBatchResponse'
-    { _cabrsSuccessful     :: !(Maybe [AssociationDescription])
-    , _cabrsFailed         :: !(Maybe [FailedCreateAssociation])
-    , _cabrsResponseStatus :: !Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data CreateAssociationBatchResponse = CreateAssociationBatchResponse'{_cabrsSuccessful
+                                                                      ::
+                                                                      !(Maybe
+                                                                          [AssociationDescription]),
+                                                                      _cabrsFailed
+                                                                      ::
+                                                                      !(Maybe
+                                                                          [FailedCreateAssociation]),
+                                                                      _cabrsResponseStatus
+                                                                      :: !Int}
+                                        deriving (Eq, Read, Show, Data,
+                                                  Typeable, Generic)
 
 -- | Creates a value of 'CreateAssociationBatchResponse' with the minimum fields required to make a request.
 --
@@ -131,13 +134,11 @@ data CreateAssociationBatchResponse =
 createAssociationBatchResponse
     :: Int -- ^ 'cabrsResponseStatus'
     -> CreateAssociationBatchResponse
-createAssociationBatchResponse pResponseStatus_ =
-  CreateAssociationBatchResponse'
-    { _cabrsSuccessful = Nothing
-    , _cabrsFailed = Nothing
-    , _cabrsResponseStatus = pResponseStatus_
-    }
-
+createAssociationBatchResponse pResponseStatus_
+  = CreateAssociationBatchResponse'{_cabrsSuccessful =
+                                      Nothing,
+                                    _cabrsFailed = Nothing,
+                                    _cabrsResponseStatus = pResponseStatus_}
 
 -- | Information about the associations that succeeded.
 cabrsSuccessful :: Lens' CreateAssociationBatchResponse [AssociationDescription]

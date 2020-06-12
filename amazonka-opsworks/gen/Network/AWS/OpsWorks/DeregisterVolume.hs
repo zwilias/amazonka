@@ -38,18 +38,14 @@ module Network.AWS.OpsWorks.DeregisterVolume
 
 import Network.AWS.Lens
 import Network.AWS.OpsWorks.Types
-import Network.AWS.OpsWorks.Types.Product
 import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 
 -- | /See:/ 'deregisterVolume' smart constructor.
-newtype DeregisterVolume =
-  DeregisterVolume'
-    { _dvVolumeId :: Text
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+newtype DeregisterVolume = DeregisterVolume'{_dvVolumeId
+                                             :: Text}
+                             deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'DeregisterVolume' with the minimum fields required to make a request.
 --
@@ -59,8 +55,8 @@ newtype DeregisterVolume =
 deregisterVolume
     :: Text -- ^ 'dvVolumeId'
     -> DeregisterVolume
-deregisterVolume pVolumeId_ = DeregisterVolume' {_dvVolumeId = pVolumeId_}
-
+deregisterVolume pVolumeId_
+  = DeregisterVolume'{_dvVolumeId = pVolumeId_}
 
 -- | The AWS OpsWorks Stacks volume ID, which is the GUID that AWS OpsWorks Stacks assigned to the instance when you registered the volume with the stack, not the Amazon EC2 volume ID.
 dvVolumeId :: Lens' DeregisterVolume Text
@@ -96,16 +92,14 @@ instance ToQuery DeregisterVolume where
         toQuery = const mempty
 
 -- | /See:/ 'deregisterVolumeResponse' smart constructor.
-data DeregisterVolumeResponse =
-  DeregisterVolumeResponse'
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data DeregisterVolumeResponse = DeregisterVolumeResponse'
+                                  deriving (Eq, Read, Show, Data, Typeable,
+                                            Generic)
 
 -- | Creates a value of 'DeregisterVolumeResponse' with the minimum fields required to make a request.
 --
 deregisterVolumeResponse
     :: DeregisterVolumeResponse
 deregisterVolumeResponse = DeregisterVolumeResponse'
-
 
 instance NFData DeregisterVolumeResponse where

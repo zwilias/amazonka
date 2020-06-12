@@ -80,20 +80,18 @@ import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 import Network.AWS.SSM.Types
-import Network.AWS.SSM.Types.Product
 
 -- | /See:/ 'putComplianceItems' smart constructor.
-data PutComplianceItems =
-  PutComplianceItems'
-    { _pciItemContentHash  :: !(Maybe Text)
-    , _pciResourceId       :: !Text
-    , _pciResourceType     :: !Text
-    , _pciComplianceType   :: !Text
-    , _pciExecutionSummary :: !ComplianceExecutionSummary
-    , _pciItems            :: ![ComplianceItemEntry]
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data PutComplianceItems = PutComplianceItems'{_pciItemContentHash
+                                              :: !(Maybe Text),
+                                              _pciResourceId :: !Text,
+                                              _pciResourceType :: !Text,
+                                              _pciComplianceType :: !Text,
+                                              _pciExecutionSummary ::
+                                              !ComplianceExecutionSummary,
+                                              _pciItems ::
+                                              ![ComplianceItemEntry]}
+                            deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'PutComplianceItems' with the minimum fields required to make a request.
 --
@@ -116,16 +114,14 @@ putComplianceItems
     -> Text -- ^ 'pciComplianceType'
     -> ComplianceExecutionSummary -- ^ 'pciExecutionSummary'
     -> PutComplianceItems
-putComplianceItems pResourceId_ pResourceType_ pComplianceType_ pExecutionSummary_ =
-  PutComplianceItems'
-    { _pciItemContentHash = Nothing
-    , _pciResourceId = pResourceId_
-    , _pciResourceType = pResourceType_
-    , _pciComplianceType = pComplianceType_
-    , _pciExecutionSummary = pExecutionSummary_
-    , _pciItems = mempty
-    }
-
+putComplianceItems pResourceId_ pResourceType_
+  pComplianceType_ pExecutionSummary_
+  = PutComplianceItems'{_pciItemContentHash = Nothing,
+                        _pciResourceId = pResourceId_,
+                        _pciResourceType = pResourceType_,
+                        _pciComplianceType = pComplianceType_,
+                        _pciExecutionSummary = pExecutionSummary_,
+                        _pciItems = mempty}
 
 -- | MD5 or SHA-256 content hash. The content hash is used to determine if existing information should be overwritten or ignored. If the content hashes match, the request to put compliance information is ignored.
 pciItemContentHash :: Lens' PutComplianceItems (Maybe Text)
@@ -191,12 +187,10 @@ instance ToQuery PutComplianceItems where
         toQuery = const mempty
 
 -- | /See:/ 'putComplianceItemsResponse' smart constructor.
-newtype PutComplianceItemsResponse =
-  PutComplianceItemsResponse'
-    { _pcirsResponseStatus :: Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+newtype PutComplianceItemsResponse = PutComplianceItemsResponse'{_pcirsResponseStatus
+                                                                 :: Int}
+                                       deriving (Eq, Read, Show, Data, Typeable,
+                                                 Generic)
 
 -- | Creates a value of 'PutComplianceItemsResponse' with the minimum fields required to make a request.
 --
@@ -206,9 +200,9 @@ newtype PutComplianceItemsResponse =
 putComplianceItemsResponse
     :: Int -- ^ 'pcirsResponseStatus'
     -> PutComplianceItemsResponse
-putComplianceItemsResponse pResponseStatus_ =
-  PutComplianceItemsResponse' {_pcirsResponseStatus = pResponseStatus_}
-
+putComplianceItemsResponse pResponseStatus_
+  = PutComplianceItemsResponse'{_pcirsResponseStatus =
+                                  pResponseStatus_}
 
 -- | -- | The response status code.
 pcirsResponseStatus :: Lens' PutComplianceItemsResponse Int

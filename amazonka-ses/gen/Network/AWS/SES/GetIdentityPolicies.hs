@@ -47,20 +47,16 @@ import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 import Network.AWS.SES.Types
-import Network.AWS.SES.Types.Product
 
 -- | Represents a request to return the requested sending authorization policies for an identity. Sending authorization is an Amazon SES feature that enables you to authorize other senders to use your identities. For information, see the <http://docs.aws.amazon.com/ses/latest/DeveloperGuide/sending-authorization.html Amazon SES Developer Guide> .
 --
 --
 --
 -- /See:/ 'getIdentityPolicies' smart constructor.
-data GetIdentityPolicies =
-  GetIdentityPolicies'
-    { _gipIdentity    :: !Text
-    , _gipPolicyNames :: ![Text]
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data GetIdentityPolicies = GetIdentityPolicies'{_gipIdentity
+                                                :: !Text,
+                                                _gipPolicyNames :: ![Text]}
+                             deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'GetIdentityPolicies' with the minimum fields required to make a request.
 --
@@ -72,9 +68,9 @@ data GetIdentityPolicies =
 getIdentityPolicies
     :: Text -- ^ 'gipIdentity'
     -> GetIdentityPolicies
-getIdentityPolicies pIdentity_ =
-  GetIdentityPolicies' {_gipIdentity = pIdentity_, _gipPolicyNames = mempty}
-
+getIdentityPolicies pIdentity_
+  = GetIdentityPolicies'{_gipIdentity = pIdentity_,
+                         _gipPolicyNames = mempty}
 
 -- | The identity for which the policies will be retrieved. You can specify an identity by using its name or by using its Amazon Resource Name (ARN). Examples: @user@example.com@ , @example.com@ , @arn:aws:ses:us-east-1:123456789012:identity/example.com@ . To successfully call this API, you must own the identity.
 gipIdentity :: Lens' GetIdentityPolicies Text
@@ -120,13 +116,14 @@ instance ToQuery GetIdentityPolicies where
 --
 --
 -- /See:/ 'getIdentityPoliciesResponse' smart constructor.
-data GetIdentityPoliciesResponse =
-  GetIdentityPoliciesResponse'
-    { _giprsResponseStatus :: !Int
-    , _giprsPolicies       :: !(Map Text Text)
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data GetIdentityPoliciesResponse = GetIdentityPoliciesResponse'{_giprsResponseStatus
+                                                                :: !Int,
+                                                                _giprsPolicies
+                                                                ::
+                                                                !(Map Text
+                                                                    Text)}
+                                     deriving (Eq, Read, Show, Data, Typeable,
+                                               Generic)
 
 -- | Creates a value of 'GetIdentityPoliciesResponse' with the minimum fields required to make a request.
 --
@@ -138,10 +135,10 @@ data GetIdentityPoliciesResponse =
 getIdentityPoliciesResponse
     :: Int -- ^ 'giprsResponseStatus'
     -> GetIdentityPoliciesResponse
-getIdentityPoliciesResponse pResponseStatus_ =
-  GetIdentityPoliciesResponse'
-    {_giprsResponseStatus = pResponseStatus_, _giprsPolicies = mempty}
-
+getIdentityPoliciesResponse pResponseStatus_
+  = GetIdentityPoliciesResponse'{_giprsResponseStatus =
+                                   pResponseStatus_,
+                                 _giprsPolicies = mempty}
 
 -- | -- | The response status code.
 giprsResponseStatus :: Lens' GetIdentityPoliciesResponse Int

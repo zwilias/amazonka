@@ -39,20 +39,16 @@ module Network.AWS.EC2.CreateDefaultSubnet
     ) where
 
 import Network.AWS.EC2.Types
-import Network.AWS.EC2.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 
 -- | /See:/ 'createDefaultSubnet' smart constructor.
-data CreateDefaultSubnet =
-  CreateDefaultSubnet'
-    { _cdsDryRun           :: !(Maybe Bool)
-    , _cdsAvailabilityZone :: !Text
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data CreateDefaultSubnet = CreateDefaultSubnet'{_cdsDryRun
+                                                :: !(Maybe Bool),
+                                                _cdsAvailabilityZone :: !Text}
+                             deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'CreateDefaultSubnet' with the minimum fields required to make a request.
 --
@@ -64,10 +60,9 @@ data CreateDefaultSubnet =
 createDefaultSubnet
     :: Text -- ^ 'cdsAvailabilityZone'
     -> CreateDefaultSubnet
-createDefaultSubnet pAvailabilityZone_ =
-  CreateDefaultSubnet'
-    {_cdsDryRun = Nothing, _cdsAvailabilityZone = pAvailabilityZone_}
-
+createDefaultSubnet pAvailabilityZone_
+  = CreateDefaultSubnet'{_cdsDryRun = Nothing,
+                         _cdsAvailabilityZone = pAvailabilityZone_}
 
 -- | Checks whether you have the required permissions for the action, without actually making the request, and provides an error response. If you have the required permissions, the error response is @DryRunOperation@ . Otherwise, it is @UnauthorizedOperation@ .
 cdsDryRun :: Lens' CreateDefaultSubnet (Maybe Bool)
@@ -106,13 +101,13 @@ instance ToQuery CreateDefaultSubnet where
                "AvailabilityZone" =: _cdsAvailabilityZone]
 
 -- | /See:/ 'createDefaultSubnetResponse' smart constructor.
-data CreateDefaultSubnetResponse =
-  CreateDefaultSubnetResponse'
-    { _cdsrsSubnet         :: !(Maybe Subnet)
-    , _cdsrsResponseStatus :: !Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data CreateDefaultSubnetResponse = CreateDefaultSubnetResponse'{_cdsrsSubnet
+                                                                ::
+                                                                !(Maybe Subnet),
+                                                                _cdsrsResponseStatus
+                                                                :: !Int}
+                                     deriving (Eq, Read, Show, Data, Typeable,
+                                               Generic)
 
 -- | Creates a value of 'CreateDefaultSubnetResponse' with the minimum fields required to make a request.
 --
@@ -124,10 +119,10 @@ data CreateDefaultSubnetResponse =
 createDefaultSubnetResponse
     :: Int -- ^ 'cdsrsResponseStatus'
     -> CreateDefaultSubnetResponse
-createDefaultSubnetResponse pResponseStatus_ =
-  CreateDefaultSubnetResponse'
-    {_cdsrsSubnet = Nothing, _cdsrsResponseStatus = pResponseStatus_}
-
+createDefaultSubnetResponse pResponseStatus_
+  = CreateDefaultSubnetResponse'{_cdsrsSubnet =
+                                   Nothing,
+                                 _cdsrsResponseStatus = pResponseStatus_}
 
 -- | Information about the subnet.
 cdsrsSubnet :: Lens' CreateDefaultSubnetResponse (Maybe Subnet)

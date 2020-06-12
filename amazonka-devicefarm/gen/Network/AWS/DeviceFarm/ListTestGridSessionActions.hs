@@ -41,21 +41,20 @@ module Network.AWS.DeviceFarm.ListTestGridSessionActions
     ) where
 
 import Network.AWS.DeviceFarm.Types
-import Network.AWS.DeviceFarm.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 
 -- | /See:/ 'listTestGridSessionActions' smart constructor.
-data ListTestGridSessionActions =
-  ListTestGridSessionActions'
-    { _ltgsaMaxResult  :: !(Maybe Nat)
-    , _ltgsaNextToken  :: !(Maybe Text)
-    , _ltgsaSessionARN :: !Text
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data ListTestGridSessionActions = ListTestGridSessionActions'{_ltgsaMaxResult
+                                                              :: !(Maybe Nat),
+                                                              _ltgsaNextToken ::
+                                                              !(Maybe Text),
+                                                              _ltgsaSessionARN
+                                                              :: !Text}
+                                    deriving (Eq, Read, Show, Data, Typeable,
+                                              Generic)
 
 -- | Creates a value of 'ListTestGridSessionActions' with the minimum fields required to make a request.
 --
@@ -69,13 +68,11 @@ data ListTestGridSessionActions =
 listTestGridSessionActions
     :: Text -- ^ 'ltgsaSessionARN'
     -> ListTestGridSessionActions
-listTestGridSessionActions pSessionARN_ =
-  ListTestGridSessionActions'
-    { _ltgsaMaxResult = Nothing
-    , _ltgsaNextToken = Nothing
-    , _ltgsaSessionARN = pSessionARN_
-    }
-
+listTestGridSessionActions pSessionARN_
+  = ListTestGridSessionActions'{_ltgsaMaxResult =
+                                  Nothing,
+                                _ltgsaNextToken = Nothing,
+                                _ltgsaSessionARN = pSessionARN_}
 
 -- | The maximum number of sessions to return per response.
 ltgsaMaxResult :: Lens' ListTestGridSessionActions (Maybe Natural)
@@ -129,14 +126,19 @@ instance ToQuery ListTestGridSessionActions where
         toQuery = const mempty
 
 -- | /See:/ 'listTestGridSessionActionsResponse' smart constructor.
-data ListTestGridSessionActionsResponse =
-  ListTestGridSessionActionsResponse'
-    { _ltgsarsActions        :: !(Maybe [TestGridSessionAction])
-    , _ltgsarsNextToken      :: !(Maybe Text)
-    , _ltgsarsResponseStatus :: !Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data ListTestGridSessionActionsResponse = ListTestGridSessionActionsResponse'{_ltgsarsActions
+                                                                              ::
+                                                                              !(Maybe
+                                                                                  [TestGridSessionAction]),
+                                                                              _ltgsarsNextToken
+                                                                              ::
+                                                                              !(Maybe
+                                                                                  Text),
+                                                                              _ltgsarsResponseStatus
+                                                                              ::
+                                                                              !Int}
+                                            deriving (Eq, Read, Show, Data,
+                                                      Typeable, Generic)
 
 -- | Creates a value of 'ListTestGridSessionActionsResponse' with the minimum fields required to make a request.
 --
@@ -150,13 +152,12 @@ data ListTestGridSessionActionsResponse =
 listTestGridSessionActionsResponse
     :: Int -- ^ 'ltgsarsResponseStatus'
     -> ListTestGridSessionActionsResponse
-listTestGridSessionActionsResponse pResponseStatus_ =
-  ListTestGridSessionActionsResponse'
-    { _ltgsarsActions = Nothing
-    , _ltgsarsNextToken = Nothing
-    , _ltgsarsResponseStatus = pResponseStatus_
-    }
-
+listTestGridSessionActionsResponse pResponseStatus_
+  = ListTestGridSessionActionsResponse'{_ltgsarsActions
+                                          = Nothing,
+                                        _ltgsarsNextToken = Nothing,
+                                        _ltgsarsResponseStatus =
+                                          pResponseStatus_}
 
 -- | The action taken by the session.
 ltgsarsActions :: Lens' ListTestGridSessionActionsResponse [TestGridSessionAction]

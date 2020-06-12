@@ -18,10 +18,10 @@
 -- Stability   : auto-generated
 -- Portability : non-portable (GHC extensions)
 --
--- Returns information about the last resize operation for the specified cluster. If no resize operation has ever been initiated for the specified cluster, a @HTTP 404@ error is returned. If a resize operation was initiated and completed, the status of the resize remains as @SUCCEEDED@ until the next resize.
+-- Returns information about the last resize operation for the specified cluster. If no resize operation has ever been initiated for the specified cluster, a @HTTP 404@ error is returned. If a resize operation was initiated and completed, the status of the resize remains as @SUCCEEDED@ until the next resize. 
 --
 --
--- A resize operation can be requested using 'ModifyCluster' and specifying a different number or type of nodes for the cluster.
+-- A resize operation can be requested using 'ModifyCluster' and specifying a different number or type of nodes for the cluster. 
 --
 module Network.AWS.Redshift.DescribeResize
     (
@@ -53,21 +53,17 @@ module Network.AWS.Redshift.DescribeResize
 import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.Redshift.Types
-import Network.AWS.Redshift.Types.Product
 import Network.AWS.Request
 import Network.AWS.Response
 
--- |
+-- | 
 --
 --
 --
 -- /See:/ 'describeResize' smart constructor.
-newtype DescribeResize =
-  DescribeResize'
-    { _drClusterIdentifier :: Text
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+newtype DescribeResize = DescribeResize'{_drClusterIdentifier
+                                         :: Text}
+                           deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'DescribeResize' with the minimum fields required to make a request.
 --
@@ -77,9 +73,9 @@ newtype DescribeResize =
 describeResize
     :: Text -- ^ 'drClusterIdentifier'
     -> DescribeResize
-describeResize pClusterIdentifier_ =
-  DescribeResize' {_drClusterIdentifier = pClusterIdentifier_}
-
+describeResize pClusterIdentifier_
+  = DescribeResize'{_drClusterIdentifier =
+                      pClusterIdentifier_}
 
 -- | The unique identifier of a cluster whose resize progress you are requesting. This parameter is case-sensitive. By default, resize operations for all clusters defined for an AWS account are returned.
 drClusterIdentifier :: Lens' DescribeResize Text
@@ -133,24 +129,34 @@ instance ToQuery DescribeResize where
 --
 --
 -- /See:/ 'describeResizeResponse' smart constructor.
-data DescribeResizeResponse =
-  DescribeResizeResponse'
-    { _drrsImportTablesNotStarted             :: !(Maybe [Text])
-    , _drrsStatus                             :: !(Maybe Text)
-    , _drrsEstimatedTimeToCompletionInSeconds :: !(Maybe Integer)
-    , _drrsAvgResizeRateInMegaBytesPerSecond  :: !(Maybe Double)
-    , _drrsTargetNumberOfNodes                :: !(Maybe Int)
-    , _drrsTargetNodeType                     :: !(Maybe Text)
-    , _drrsImportTablesInProgress             :: !(Maybe [Text])
-    , _drrsImportTablesCompleted              :: !(Maybe [Text])
-    , _drrsProgressInMegaBytes                :: !(Maybe Integer)
-    , _drrsTotalResizeDataInMegaBytes         :: !(Maybe Integer)
-    , _drrsTargetClusterType                  :: !(Maybe Text)
-    , _drrsElapsedTimeInSeconds               :: !(Maybe Integer)
-    , _drrsResponseStatus                     :: !Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data DescribeResizeResponse = DescribeResizeResponse'{_drrsImportTablesNotStarted
+                                                      :: !(Maybe [Text]),
+                                                      _drrsStatus ::
+                                                      !(Maybe Text),
+                                                      _drrsEstimatedTimeToCompletionInSeconds
+                                                      :: !(Maybe Integer),
+                                                      _drrsAvgResizeRateInMegaBytesPerSecond
+                                                      :: !(Maybe Double),
+                                                      _drrsTargetNumberOfNodes
+                                                      :: !(Maybe Int),
+                                                      _drrsTargetNodeType ::
+                                                      !(Maybe Text),
+                                                      _drrsImportTablesInProgress
+                                                      :: !(Maybe [Text]),
+                                                      _drrsImportTablesCompleted
+                                                      :: !(Maybe [Text]),
+                                                      _drrsProgressInMegaBytes
+                                                      :: !(Maybe Integer),
+                                                      _drrsTotalResizeDataInMegaBytes
+                                                      :: !(Maybe Integer),
+                                                      _drrsTargetClusterType ::
+                                                      !(Maybe Text),
+                                                      _drrsElapsedTimeInSeconds
+                                                      :: !(Maybe Integer),
+                                                      _drrsResponseStatus ::
+                                                      !Int}
+                                deriving (Eq, Read, Show, Data, Typeable,
+                                          Generic)
 
 -- | Creates a value of 'DescribeResizeResponse' with the minimum fields required to make a request.
 --
@@ -158,7 +164,7 @@ data DescribeResizeResponse =
 --
 -- * 'drrsImportTablesNotStarted' - The names of tables that have not been yet imported. Valid Values: List of table names
 --
--- * 'drrsStatus' - The status of the resize operation. Valid Values: @NONE@ | @IN_PROGRESS@ | @FAILED@ | @SUCCEEDED@
+-- * 'drrsStatus' - The status of the resize operation. Valid Values: @NONE@ | @IN_PROGRESS@ | @FAILED@ | @SUCCEEDED@ 
 --
 -- * 'drrsEstimatedTimeToCompletionInSeconds' - The estimated time remaining, in seconds, until the resize operation is complete. This value is calculated based on the average resize rate and the estimated amount of data remaining to be processed. Once the resize operation is complete, this value will be 0.
 --
@@ -176,7 +182,7 @@ data DescribeResizeResponse =
 --
 -- * 'drrsTotalResizeDataInMegaBytes' - The estimated total amount of data, in megabytes, on the cluster before the resize operation began.
 --
--- * 'drrsTargetClusterType' - The cluster type after the resize operation is complete. Valid Values: @multi-node@ | @single-node@
+-- * 'drrsTargetClusterType' - The cluster type after the resize operation is complete. Valid Values: @multi-node@ | @single-node@ 
 --
 -- * 'drrsElapsedTimeInSeconds' - The amount of seconds that have elapsed since the resize operation began. After the resize operation completes, this value shows the total actual time, in seconds, for the resize operation.
 --
@@ -184,29 +190,27 @@ data DescribeResizeResponse =
 describeResizeResponse
     :: Int -- ^ 'drrsResponseStatus'
     -> DescribeResizeResponse
-describeResizeResponse pResponseStatus_ =
-  DescribeResizeResponse'
-    { _drrsImportTablesNotStarted = Nothing
-    , _drrsStatus = Nothing
-    , _drrsEstimatedTimeToCompletionInSeconds = Nothing
-    , _drrsAvgResizeRateInMegaBytesPerSecond = Nothing
-    , _drrsTargetNumberOfNodes = Nothing
-    , _drrsTargetNodeType = Nothing
-    , _drrsImportTablesInProgress = Nothing
-    , _drrsImportTablesCompleted = Nothing
-    , _drrsProgressInMegaBytes = Nothing
-    , _drrsTotalResizeDataInMegaBytes = Nothing
-    , _drrsTargetClusterType = Nothing
-    , _drrsElapsedTimeInSeconds = Nothing
-    , _drrsResponseStatus = pResponseStatus_
-    }
-
+describeResizeResponse pResponseStatus_
+  = DescribeResizeResponse'{_drrsImportTablesNotStarted
+                              = Nothing,
+                            _drrsStatus = Nothing,
+                            _drrsEstimatedTimeToCompletionInSeconds = Nothing,
+                            _drrsAvgResizeRateInMegaBytesPerSecond = Nothing,
+                            _drrsTargetNumberOfNodes = Nothing,
+                            _drrsTargetNodeType = Nothing,
+                            _drrsImportTablesInProgress = Nothing,
+                            _drrsImportTablesCompleted = Nothing,
+                            _drrsProgressInMegaBytes = Nothing,
+                            _drrsTotalResizeDataInMegaBytes = Nothing,
+                            _drrsTargetClusterType = Nothing,
+                            _drrsElapsedTimeInSeconds = Nothing,
+                            _drrsResponseStatus = pResponseStatus_}
 
 -- | The names of tables that have not been yet imported. Valid Values: List of table names
 drrsImportTablesNotStarted :: Lens' DescribeResizeResponse [Text]
 drrsImportTablesNotStarted = lens _drrsImportTablesNotStarted (\ s a -> s{_drrsImportTablesNotStarted = a}) . _Default . _Coerce
 
--- | The status of the resize operation. Valid Values: @NONE@ | @IN_PROGRESS@ | @FAILED@ | @SUCCEEDED@
+-- | The status of the resize operation. Valid Values: @NONE@ | @IN_PROGRESS@ | @FAILED@ | @SUCCEEDED@ 
 drrsStatus :: Lens' DescribeResizeResponse (Maybe Text)
 drrsStatus = lens _drrsStatus (\ s a -> s{_drrsStatus = a})
 
@@ -242,7 +246,7 @@ drrsProgressInMegaBytes = lens _drrsProgressInMegaBytes (\ s a -> s{_drrsProgres
 drrsTotalResizeDataInMegaBytes :: Lens' DescribeResizeResponse (Maybe Integer)
 drrsTotalResizeDataInMegaBytes = lens _drrsTotalResizeDataInMegaBytes (\ s a -> s{_drrsTotalResizeDataInMegaBytes = a})
 
--- | The cluster type after the resize operation is complete. Valid Values: @multi-node@ | @single-node@
+-- | The cluster type after the resize operation is complete. Valid Values: @multi-node@ | @single-node@ 
 drrsTargetClusterType :: Lens' DescribeResizeResponse (Maybe Text)
 drrsTargetClusterType = lens _drrsTargetClusterType (\ s a -> s{_drrsTargetClusterType = a})
 

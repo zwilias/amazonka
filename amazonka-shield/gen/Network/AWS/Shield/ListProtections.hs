@@ -47,16 +47,12 @@ import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 import Network.AWS.Shield.Types
-import Network.AWS.Shield.Types.Product
 
 -- | /See:/ 'listProtections' smart constructor.
-data ListProtections =
-  ListProtections'
-    { _lpNextToken  :: !(Maybe Text)
-    , _lpMaxResults :: !(Maybe Nat)
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data ListProtections = ListProtections'{_lpNextToken
+                                        :: !(Maybe Text),
+                                        _lpMaxResults :: !(Maybe Nat)}
+                         deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'ListProtections' with the minimum fields required to make a request.
 --
@@ -67,9 +63,9 @@ data ListProtections =
 -- * 'lpMaxResults' - The maximum number of 'Protection' objects to be returned. If this is left blank the first 20 results will be returned.
 listProtections
     :: ListProtections
-listProtections =
-  ListProtections' {_lpNextToken = Nothing, _lpMaxResults = Nothing}
-
+listProtections
+  = ListProtections'{_lpNextToken = Nothing,
+                     _lpMaxResults = Nothing}
 
 -- | The @ListProtectionsRequest.NextToken@ value from a previous call to @ListProtections@ . Pass null if this is the first call.
 lpNextToken :: Lens' ListProtections (Maybe Text)
@@ -124,14 +120,15 @@ instance ToQuery ListProtections where
         toQuery = const mempty
 
 -- | /See:/ 'listProtectionsResponse' smart constructor.
-data ListProtectionsResponse =
-  ListProtectionsResponse'
-    { _lprsProtections    :: !(Maybe [Protection])
-    , _lprsNextToken      :: !(Maybe Text)
-    , _lprsResponseStatus :: !Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data ListProtectionsResponse = ListProtectionsResponse'{_lprsProtections
+                                                        ::
+                                                        !(Maybe [Protection]),
+                                                        _lprsNextToken ::
+                                                        !(Maybe Text),
+                                                        _lprsResponseStatus ::
+                                                        !Int}
+                                 deriving (Eq, Read, Show, Data, Typeable,
+                                           Generic)
 
 -- | Creates a value of 'ListProtectionsResponse' with the minimum fields required to make a request.
 --
@@ -145,13 +142,11 @@ data ListProtectionsResponse =
 listProtectionsResponse
     :: Int -- ^ 'lprsResponseStatus'
     -> ListProtectionsResponse
-listProtectionsResponse pResponseStatus_ =
-  ListProtectionsResponse'
-    { _lprsProtections = Nothing
-    , _lprsNextToken = Nothing
-    , _lprsResponseStatus = pResponseStatus_
-    }
-
+listProtectionsResponse pResponseStatus_
+  = ListProtectionsResponse'{_lprsProtections =
+                               Nothing,
+                             _lprsNextToken = Nothing,
+                             _lprsResponseStatus = pResponseStatus_}
 
 -- | The array of enabled 'Protection' objects.
 lprsProtections :: Lens' ListProtectionsResponse [Protection]

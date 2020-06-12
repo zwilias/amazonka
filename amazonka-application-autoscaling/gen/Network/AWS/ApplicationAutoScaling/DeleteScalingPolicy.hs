@@ -44,22 +44,20 @@ module Network.AWS.ApplicationAutoScaling.DeleteScalingPolicy
     ) where
 
 import Network.AWS.ApplicationAutoScaling.Types
-import Network.AWS.ApplicationAutoScaling.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 
 -- | /See:/ 'deleteScalingPolicy' smart constructor.
-data DeleteScalingPolicy =
-  DeleteScalingPolicy'
-    { _dspPolicyName        :: !Text
-    , _dspServiceNamespace  :: !ServiceNamespace
-    , _dspResourceId        :: !Text
-    , _dspScalableDimension :: !ScalableDimension
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data DeleteScalingPolicy = DeleteScalingPolicy'{_dspPolicyName
+                                                :: !Text,
+                                                _dspServiceNamespace ::
+                                                !ServiceNamespace,
+                                                _dspResourceId :: !Text,
+                                                _dspScalableDimension ::
+                                                !ScalableDimension}
+                             deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'DeleteScalingPolicy' with the minimum fields required to make a request.
 --
@@ -78,14 +76,12 @@ deleteScalingPolicy
     -> Text -- ^ 'dspResourceId'
     -> ScalableDimension -- ^ 'dspScalableDimension'
     -> DeleteScalingPolicy
-deleteScalingPolicy pPolicyName_ pServiceNamespace_ pResourceId_ pScalableDimension_ =
-  DeleteScalingPolicy'
-    { _dspPolicyName = pPolicyName_
-    , _dspServiceNamespace = pServiceNamespace_
-    , _dspResourceId = pResourceId_
-    , _dspScalableDimension = pScalableDimension_
-    }
-
+deleteScalingPolicy pPolicyName_ pServiceNamespace_
+  pResourceId_ pScalableDimension_
+  = DeleteScalingPolicy'{_dspPolicyName = pPolicyName_,
+                         _dspServiceNamespace = pServiceNamespace_,
+                         _dspResourceId = pResourceId_,
+                         _dspScalableDimension = pScalableDimension_}
 
 -- | The name of the scaling policy.
 dspPolicyName :: Lens' DeleteScalingPolicy Text
@@ -142,12 +138,10 @@ instance ToQuery DeleteScalingPolicy where
         toQuery = const mempty
 
 -- | /See:/ 'deleteScalingPolicyResponse' smart constructor.
-newtype DeleteScalingPolicyResponse =
-  DeleteScalingPolicyResponse'
-    { _dsprsResponseStatus :: Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+newtype DeleteScalingPolicyResponse = DeleteScalingPolicyResponse'{_dsprsResponseStatus
+                                                                   :: Int}
+                                        deriving (Eq, Read, Show, Data,
+                                                  Typeable, Generic)
 
 -- | Creates a value of 'DeleteScalingPolicyResponse' with the minimum fields required to make a request.
 --
@@ -157,9 +151,9 @@ newtype DeleteScalingPolicyResponse =
 deleteScalingPolicyResponse
     :: Int -- ^ 'dsprsResponseStatus'
     -> DeleteScalingPolicyResponse
-deleteScalingPolicyResponse pResponseStatus_ =
-  DeleteScalingPolicyResponse' {_dsprsResponseStatus = pResponseStatus_}
-
+deleteScalingPolicyResponse pResponseStatus_
+  = DeleteScalingPolicyResponse'{_dsprsResponseStatus =
+                                   pResponseStatus_}
 
 -- | -- | The response status code.
 dsprsResponseStatus :: Lens' DeleteScalingPolicyResponse Int

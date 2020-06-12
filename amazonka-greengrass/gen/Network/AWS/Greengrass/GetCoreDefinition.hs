@@ -42,19 +42,15 @@ module Network.AWS.Greengrass.GetCoreDefinition
     ) where
 
 import Network.AWS.Greengrass.Types
-import Network.AWS.Greengrass.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 
 -- | /See:/ 'getCoreDefinition' smart constructor.
-newtype GetCoreDefinition =
-  GetCoreDefinition'
-    { _gcdCoreDefinitionId :: Text
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+newtype GetCoreDefinition = GetCoreDefinition'{_gcdCoreDefinitionId
+                                               :: Text}
+                              deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'GetCoreDefinition' with the minimum fields required to make a request.
 --
@@ -64,9 +60,9 @@ newtype GetCoreDefinition =
 getCoreDefinition
     :: Text -- ^ 'gcdCoreDefinitionId'
     -> GetCoreDefinition
-getCoreDefinition pCoreDefinitionId_ =
-  GetCoreDefinition' {_gcdCoreDefinitionId = pCoreDefinitionId_}
-
+getCoreDefinition pCoreDefinitionId_
+  = GetCoreDefinition'{_gcdCoreDefinitionId =
+                         pCoreDefinitionId_}
 
 -- | The ID of the core definition.
 gcdCoreDefinitionId :: Lens' GetCoreDefinition Text
@@ -108,19 +104,24 @@ instance ToQuery GetCoreDefinition where
         toQuery = const mempty
 
 -- | /See:/ 'getCoreDefinitionResponse' smart constructor.
-data GetCoreDefinitionResponse =
-  GetCoreDefinitionResponse'
-    { _gcdrsLatestVersionARN     :: !(Maybe Text)
-    , _gcdrsARN                  :: !(Maybe Text)
-    , _gcdrsName                 :: !(Maybe Text)
-    , _gcdrsCreationTimestamp    :: !(Maybe Text)
-    , _gcdrsId                   :: !(Maybe Text)
-    , _gcdrsLatestVersion        :: !(Maybe Text)
-    , _gcdrsLastUpdatedTimestamp :: !(Maybe Text)
-    , _gcdrsResponseStatus       :: !Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data GetCoreDefinitionResponse = GetCoreDefinitionResponse'{_gcdrsLatestVersionARN
+                                                            :: !(Maybe Text),
+                                                            _gcdrsARN ::
+                                                            !(Maybe Text),
+                                                            _gcdrsName ::
+                                                            !(Maybe Text),
+                                                            _gcdrsCreationTimestamp
+                                                            :: !(Maybe Text),
+                                                            _gcdrsId ::
+                                                            !(Maybe Text),
+                                                            _gcdrsLatestVersion
+                                                            :: !(Maybe Text),
+                                                            _gcdrsLastUpdatedTimestamp
+                                                            :: !(Maybe Text),
+                                                            _gcdrsResponseStatus
+                                                            :: !Int}
+                                   deriving (Eq, Read, Show, Data, Typeable,
+                                             Generic)
 
 -- | Creates a value of 'GetCoreDefinitionResponse' with the minimum fields required to make a request.
 --
@@ -144,18 +145,15 @@ data GetCoreDefinitionResponse =
 getCoreDefinitionResponse
     :: Int -- ^ 'gcdrsResponseStatus'
     -> GetCoreDefinitionResponse
-getCoreDefinitionResponse pResponseStatus_ =
-  GetCoreDefinitionResponse'
-    { _gcdrsLatestVersionARN = Nothing
-    , _gcdrsARN = Nothing
-    , _gcdrsName = Nothing
-    , _gcdrsCreationTimestamp = Nothing
-    , _gcdrsId = Nothing
-    , _gcdrsLatestVersion = Nothing
-    , _gcdrsLastUpdatedTimestamp = Nothing
-    , _gcdrsResponseStatus = pResponseStatus_
-    }
-
+getCoreDefinitionResponse pResponseStatus_
+  = GetCoreDefinitionResponse'{_gcdrsLatestVersionARN =
+                                 Nothing,
+                               _gcdrsARN = Nothing, _gcdrsName = Nothing,
+                               _gcdrsCreationTimestamp = Nothing,
+                               _gcdrsId = Nothing,
+                               _gcdrsLatestVersion = Nothing,
+                               _gcdrsLastUpdatedTimestamp = Nothing,
+                               _gcdrsResponseStatus = pResponseStatus_}
 
 -- | The ARN of the latest version of the definition.
 gcdrsLatestVersionARN :: Lens' GetCoreDefinitionResponse (Maybe Text)

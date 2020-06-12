@@ -58,25 +58,27 @@ module Network.AWS.EC2.ModifyInstancePlacement
     ) where
 
 import Network.AWS.EC2.Types
-import Network.AWS.EC2.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 
 -- | /See:/ 'modifyInstancePlacement' smart constructor.
-data ModifyInstancePlacement =
-  ModifyInstancePlacement'
-    { _mipAffinity             :: !(Maybe Affinity)
-    , _mipHostId               :: !(Maybe Text)
-    , _mipPartitionNumber      :: !(Maybe Int)
-    , _mipTenancy              :: !(Maybe HostTenancy)
-    , _mipGroupName            :: !(Maybe Text)
-    , _mipHostResourceGroupARN :: !(Maybe Text)
-    , _mipInstanceId           :: !Text
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data ModifyInstancePlacement = ModifyInstancePlacement'{_mipAffinity
+                                                        :: !(Maybe Affinity),
+                                                        _mipHostId ::
+                                                        !(Maybe Text),
+                                                        _mipPartitionNumber ::
+                                                        !(Maybe Int),
+                                                        _mipTenancy ::
+                                                        !(Maybe HostTenancy),
+                                                        _mipGroupName ::
+                                                        !(Maybe Text),
+                                                        _mipHostResourceGroupARN
+                                                        :: !(Maybe Text),
+                                                        _mipInstanceId :: !Text}
+                                 deriving (Eq, Read, Show, Data, Typeable,
+                                           Generic)
 
 -- | Creates a value of 'ModifyInstancePlacement' with the minimum fields required to make a request.
 --
@@ -98,17 +100,13 @@ data ModifyInstancePlacement =
 modifyInstancePlacement
     :: Text -- ^ 'mipInstanceId'
     -> ModifyInstancePlacement
-modifyInstancePlacement pInstanceId_ =
-  ModifyInstancePlacement'
-    { _mipAffinity = Nothing
-    , _mipHostId = Nothing
-    , _mipPartitionNumber = Nothing
-    , _mipTenancy = Nothing
-    , _mipGroupName = Nothing
-    , _mipHostResourceGroupARN = Nothing
-    , _mipInstanceId = pInstanceId_
-    }
-
+modifyInstancePlacement pInstanceId_
+  = ModifyInstancePlacement'{_mipAffinity = Nothing,
+                             _mipHostId = Nothing,
+                             _mipPartitionNumber = Nothing,
+                             _mipTenancy = Nothing, _mipGroupName = Nothing,
+                             _mipHostResourceGroupARN = Nothing,
+                             _mipInstanceId = pInstanceId_}
 
 -- | The affinity setting for the instance.
 mipAffinity :: Lens' ModifyInstancePlacement (Maybe Affinity)
@@ -172,13 +170,14 @@ instance ToQuery ModifyInstancePlacement where
                "InstanceId" =: _mipInstanceId]
 
 -- | /See:/ 'modifyInstancePlacementResponse' smart constructor.
-data ModifyInstancePlacementResponse =
-  ModifyInstancePlacementResponse'
-    { _miprsReturn         :: !(Maybe Bool)
-    , _miprsResponseStatus :: !Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data ModifyInstancePlacementResponse = ModifyInstancePlacementResponse'{_miprsReturn
+                                                                        ::
+                                                                        !(Maybe
+                                                                            Bool),
+                                                                        _miprsResponseStatus
+                                                                        :: !Int}
+                                         deriving (Eq, Read, Show, Data,
+                                                   Typeable, Generic)
 
 -- | Creates a value of 'ModifyInstancePlacementResponse' with the minimum fields required to make a request.
 --
@@ -190,10 +189,10 @@ data ModifyInstancePlacementResponse =
 modifyInstancePlacementResponse
     :: Int -- ^ 'miprsResponseStatus'
     -> ModifyInstancePlacementResponse
-modifyInstancePlacementResponse pResponseStatus_ =
-  ModifyInstancePlacementResponse'
-    {_miprsReturn = Nothing, _miprsResponseStatus = pResponseStatus_}
-
+modifyInstancePlacementResponse pResponseStatus_
+  = ModifyInstancePlacementResponse'{_miprsReturn =
+                                       Nothing,
+                                     _miprsResponseStatus = pResponseStatus_}
 
 -- | Is @true@ if the request succeeds, and an error otherwise.
 miprsReturn :: Lens' ModifyInstancePlacementResponse (Maybe Bool)

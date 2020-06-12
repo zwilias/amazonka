@@ -52,7 +52,6 @@ module Network.AWS.IAM.ListPolicies
     ) where
 
 import Network.AWS.IAM.Types
-import Network.AWS.IAM.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Pager
 import Network.AWS.Prelude
@@ -60,16 +59,13 @@ import Network.AWS.Request
 import Network.AWS.Response
 
 -- | /See:/ 'listPolicies' smart constructor.
-data ListPolicies =
-  ListPolicies'
-    { _lpPathPrefix   :: !(Maybe Text)
-    , _lpOnlyAttached :: !(Maybe Bool)
-    , _lpMarker       :: !(Maybe Text)
-    , _lpScope        :: !(Maybe PolicyScopeType)
-    , _lpMaxItems     :: !(Maybe Nat)
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data ListPolicies = ListPolicies'{_lpPathPrefix ::
+                                  !(Maybe Text),
+                                  _lpOnlyAttached :: !(Maybe Bool),
+                                  _lpMarker :: !(Maybe Text),
+                                  _lpScope :: !(Maybe PolicyScopeType),
+                                  _lpMaxItems :: !(Maybe Nat)}
+                      deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'ListPolicies' with the minimum fields required to make a request.
 --
@@ -86,15 +82,10 @@ data ListPolicies =
 -- * 'lpMaxItems' - (Optional) Use this only when paginating results to indicate the maximum number of items you want in the response. If additional items exist beyond the maximum you specify, the @IsTruncated@ response element is @true@ . If you do not include this parameter, it defaults to 100. Note that IAM might return fewer results, even when there are more results available. In that case, the @IsTruncated@ response element returns @true@ and @Marker@ contains a value to include in the subsequent call that tells the service where to continue from.
 listPolicies
     :: ListPolicies
-listPolicies =
-  ListPolicies'
-    { _lpPathPrefix = Nothing
-    , _lpOnlyAttached = Nothing
-    , _lpMarker = Nothing
-    , _lpScope = Nothing
-    , _lpMaxItems = Nothing
-    }
-
+listPolicies
+  = ListPolicies'{_lpPathPrefix = Nothing,
+                  _lpOnlyAttached = Nothing, _lpMarker = Nothing,
+                  _lpScope = Nothing, _lpMaxItems = Nothing}
 
 -- | The path prefix for filtering the results. This parameter is optional. If it is not included, it defaults to a slash (/), listing all policies. This parameter allows (per its <http://wikipedia.org/wiki/regex regex pattern> ) a string of characters consisting of either a forward slash (/) by itself or a string that must begin and end with forward slashes. In addition, it can contain any ASCII character from the ! (\u0021) through the DEL character (\u007F), including most punctuation characters, digits, and upper and lowercased letters.
 lpPathPrefix :: Lens' ListPolicies (Maybe Text)
@@ -155,20 +146,19 @@ instance ToQuery ListPolicies where
                "Marker" =: _lpMarker, "Scope" =: _lpScope,
                "MaxItems" =: _lpMaxItems]
 
--- | Contains the response to a successful 'ListPolicies' request.
+-- | Contains the response to a successful 'ListPolicies' request. 
 --
 --
 --
 -- /See:/ 'listPoliciesResponse' smart constructor.
-data ListPoliciesResponse =
-  ListPoliciesResponse'
-    { _lprsMarker         :: !(Maybe Text)
-    , _lprsIsTruncated    :: !(Maybe Bool)
-    , _lprsPolicies       :: !(Maybe [Policy])
-    , _lprsResponseStatus :: !Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data ListPoliciesResponse = ListPoliciesResponse'{_lprsMarker
+                                                  :: !(Maybe Text),
+                                                  _lprsIsTruncated ::
+                                                  !(Maybe Bool),
+                                                  _lprsPolicies ::
+                                                  !(Maybe [Policy]),
+                                                  _lprsResponseStatus :: !Int}
+                              deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'ListPoliciesResponse' with the minimum fields required to make a request.
 --
@@ -184,14 +174,10 @@ data ListPoliciesResponse =
 listPoliciesResponse
     :: Int -- ^ 'lprsResponseStatus'
     -> ListPoliciesResponse
-listPoliciesResponse pResponseStatus_ =
-  ListPoliciesResponse'
-    { _lprsMarker = Nothing
-    , _lprsIsTruncated = Nothing
-    , _lprsPolicies = Nothing
-    , _lprsResponseStatus = pResponseStatus_
-    }
-
+listPoliciesResponse pResponseStatus_
+  = ListPoliciesResponse'{_lprsMarker = Nothing,
+                          _lprsIsTruncated = Nothing, _lprsPolicies = Nothing,
+                          _lprsResponseStatus = pResponseStatus_}
 
 -- | When @IsTruncated@ is @true@ , this element is present and contains the value to use for the @Marker@ parameter in a subsequent pagination request.
 lprsMarker :: Lens' ListPoliciesResponse (Maybe Text)

@@ -64,17 +64,13 @@ import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 import Network.AWS.WAF.Types
-import Network.AWS.WAF.Types.Product
 
 -- | /See:/ 'updateRuleGroup' smart constructor.
-data UpdateRuleGroup =
-  UpdateRuleGroup'
-    { _urgRuleGroupId :: !Text
-    , _urgUpdates     :: !(List1 RuleGroupUpdate)
-    , _urgChangeToken :: !Text
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data UpdateRuleGroup = UpdateRuleGroup'{_urgRuleGroupId
+                                        :: !Text,
+                                        _urgUpdates :: !(List1 RuleGroupUpdate),
+                                        _urgChangeToken :: !Text}
+                         deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'UpdateRuleGroup' with the minimum fields required to make a request.
 --
@@ -90,13 +86,10 @@ updateRuleGroup
     -> NonEmpty RuleGroupUpdate -- ^ 'urgUpdates'
     -> Text -- ^ 'urgChangeToken'
     -> UpdateRuleGroup
-updateRuleGroup pRuleGroupId_ pUpdates_ pChangeToken_ =
-  UpdateRuleGroup'
-    { _urgRuleGroupId = pRuleGroupId_
-    , _urgUpdates = _List1 # pUpdates_
-    , _urgChangeToken = pChangeToken_
-    }
-
+updateRuleGroup pRuleGroupId_ pUpdates_ pChangeToken_
+  = UpdateRuleGroup'{_urgRuleGroupId = pRuleGroupId_,
+                     _urgUpdates = _List1 # pUpdates_,
+                     _urgChangeToken = pChangeToken_}
 
 -- | The @RuleGroupId@ of the 'RuleGroup' that you want to update. @RuleGroupId@ is returned by 'CreateRuleGroup' and by 'ListRuleGroups' .
 urgRuleGroupId :: Lens' UpdateRuleGroup Text
@@ -147,13 +140,12 @@ instance ToQuery UpdateRuleGroup where
         toQuery = const mempty
 
 -- | /See:/ 'updateRuleGroupResponse' smart constructor.
-data UpdateRuleGroupResponse =
-  UpdateRuleGroupResponse'
-    { _urgrsChangeToken    :: !(Maybe Text)
-    , _urgrsResponseStatus :: !Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data UpdateRuleGroupResponse = UpdateRuleGroupResponse'{_urgrsChangeToken
+                                                        :: !(Maybe Text),
+                                                        _urgrsResponseStatus ::
+                                                        !Int}
+                                 deriving (Eq, Read, Show, Data, Typeable,
+                                           Generic)
 
 -- | Creates a value of 'UpdateRuleGroupResponse' with the minimum fields required to make a request.
 --
@@ -165,10 +157,10 @@ data UpdateRuleGroupResponse =
 updateRuleGroupResponse
     :: Int -- ^ 'urgrsResponseStatus'
     -> UpdateRuleGroupResponse
-updateRuleGroupResponse pResponseStatus_ =
-  UpdateRuleGroupResponse'
-    {_urgrsChangeToken = Nothing, _urgrsResponseStatus = pResponseStatus_}
-
+updateRuleGroupResponse pResponseStatus_
+  = UpdateRuleGroupResponse'{_urgrsChangeToken =
+                               Nothing,
+                             _urgrsResponseStatus = pResponseStatus_}
 
 -- | The @ChangeToken@ that you used to submit the @UpdateRuleGroup@ request. You can also use this value to query the status of the request. For more information, see 'GetChangeTokenStatus' .
 urgrsChangeToken :: Lens' UpdateRuleGroupResponse (Maybe Text)

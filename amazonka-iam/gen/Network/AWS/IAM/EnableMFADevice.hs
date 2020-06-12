@@ -38,22 +38,18 @@ module Network.AWS.IAM.EnableMFADevice
     ) where
 
 import Network.AWS.IAM.Types
-import Network.AWS.IAM.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 
 -- | /See:/ 'enableMFADevice' smart constructor.
-data EnableMFADevice =
-  EnableMFADevice'
-    { _emdUserName            :: !Text
-    , _emdSerialNumber        :: !Text
-    , _emdAuthenticationCode1 :: !Text
-    , _emdAuthenticationCode2 :: !Text
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data EnableMFADevice = EnableMFADevice'{_emdUserName
+                                        :: !Text,
+                                        _emdSerialNumber :: !Text,
+                                        _emdAuthenticationCode1 :: !Text,
+                                        _emdAuthenticationCode2 :: !Text}
+                         deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'EnableMFADevice' with the minimum fields required to make a request.
 --
@@ -72,14 +68,12 @@ enableMFADevice
     -> Text -- ^ 'emdAuthenticationCode1'
     -> Text -- ^ 'emdAuthenticationCode2'
     -> EnableMFADevice
-enableMFADevice pUserName_ pSerialNumber_ pAuthenticationCode1_ pAuthenticationCode2_ =
-  EnableMFADevice'
-    { _emdUserName = pUserName_
-    , _emdSerialNumber = pSerialNumber_
-    , _emdAuthenticationCode1 = pAuthenticationCode1_
-    , _emdAuthenticationCode2 = pAuthenticationCode2_
-    }
-
+enableMFADevice pUserName_ pSerialNumber_
+  pAuthenticationCode1_ pAuthenticationCode2_
+  = EnableMFADevice'{_emdUserName = pUserName_,
+                     _emdSerialNumber = pSerialNumber_,
+                     _emdAuthenticationCode1 = pAuthenticationCode1_,
+                     _emdAuthenticationCode2 = pAuthenticationCode2_}
 
 -- | The name of the IAM user for whom you want to enable the MFA device. This parameter allows (per its <http://wikipedia.org/wiki/regex regex pattern> ) a string of characters consisting of upper and lowercase alphanumeric characters with no spaces. You can also include any of the following characters: _+=,.@-
 emdUserName :: Lens' EnableMFADevice Text
@@ -123,16 +117,14 @@ instance ToQuery EnableMFADevice where
                "AuthenticationCode2" =: _emdAuthenticationCode2]
 
 -- | /See:/ 'enableMFADeviceResponse' smart constructor.
-data EnableMFADeviceResponse =
-  EnableMFADeviceResponse'
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data EnableMFADeviceResponse = EnableMFADeviceResponse'
+                                 deriving (Eq, Read, Show, Data, Typeable,
+                                           Generic)
 
 -- | Creates a value of 'EnableMFADeviceResponse' with the minimum fields required to make a request.
 --
 enableMFADeviceResponse
     :: EnableMFADeviceResponse
 enableMFADeviceResponse = EnableMFADeviceResponse'
-
 
 instance NFData EnableMFADeviceResponse where

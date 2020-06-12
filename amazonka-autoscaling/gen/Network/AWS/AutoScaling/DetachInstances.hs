@@ -48,21 +48,18 @@ module Network.AWS.AutoScaling.DetachInstances
     ) where
 
 import Network.AWS.AutoScaling.Types
-import Network.AWS.AutoScaling.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 
 -- | /See:/ 'detachInstances' smart constructor.
-data DetachInstances =
-  DetachInstances'
-    { _diInstanceIds                    :: !(Maybe [Text])
-    , _diAutoScalingGroupName           :: !Text
-    , _diShouldDecrementDesiredCapacity :: !Bool
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data DetachInstances = DetachInstances'{_diInstanceIds
+                                        :: !(Maybe [Text]),
+                                        _diAutoScalingGroupName :: !Text,
+                                        _diShouldDecrementDesiredCapacity ::
+                                        !Bool}
+                         deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'DetachInstances' with the minimum fields required to make a request.
 --
@@ -77,13 +74,12 @@ detachInstances
     :: Text -- ^ 'diAutoScalingGroupName'
     -> Bool -- ^ 'diShouldDecrementDesiredCapacity'
     -> DetachInstances
-detachInstances pAutoScalingGroupName_ pShouldDecrementDesiredCapacity_ =
-  DetachInstances'
-    { _diInstanceIds = Nothing
-    , _diAutoScalingGroupName = pAutoScalingGroupName_
-    , _diShouldDecrementDesiredCapacity = pShouldDecrementDesiredCapacity_
-    }
-
+detachInstances pAutoScalingGroupName_
+  pShouldDecrementDesiredCapacity_
+  = DetachInstances'{_diInstanceIds = Nothing,
+                     _diAutoScalingGroupName = pAutoScalingGroupName_,
+                     _diShouldDecrementDesiredCapacity =
+                       pShouldDecrementDesiredCapacity_}
 
 -- | The IDs of the instances. You can specify up to 20 instances.
 diInstanceIds :: Lens' DetachInstances [Text]
@@ -130,13 +126,12 @@ instance ToQuery DetachInstances where
                  _diShouldDecrementDesiredCapacity]
 
 -- | /See:/ 'detachInstancesResponse' smart constructor.
-data DetachInstancesResponse =
-  DetachInstancesResponse'
-    { _dirsActivities     :: !(Maybe [Activity])
-    , _dirsResponseStatus :: !Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data DetachInstancesResponse = DetachInstancesResponse'{_dirsActivities
+                                                        :: !(Maybe [Activity]),
+                                                        _dirsResponseStatus ::
+                                                        !Int}
+                                 deriving (Eq, Read, Show, Data, Typeable,
+                                           Generic)
 
 -- | Creates a value of 'DetachInstancesResponse' with the minimum fields required to make a request.
 --
@@ -148,10 +143,9 @@ data DetachInstancesResponse =
 detachInstancesResponse
     :: Int -- ^ 'dirsResponseStatus'
     -> DetachInstancesResponse
-detachInstancesResponse pResponseStatus_ =
-  DetachInstancesResponse'
-    {_dirsActivities = Nothing, _dirsResponseStatus = pResponseStatus_}
-
+detachInstancesResponse pResponseStatus_
+  = DetachInstancesResponse'{_dirsActivities = Nothing,
+                             _dirsResponseStatus = pResponseStatus_}
 
 -- | The activities related to detaching the instances from the Auto Scaling group.
 dirsActivities :: Lens' DetachInstancesResponse [Activity]

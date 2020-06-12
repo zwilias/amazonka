@@ -54,22 +54,17 @@ module Network.AWS.KMS.Encrypt
     ) where
 
 import Network.AWS.KMS.Types
-import Network.AWS.KMS.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 
 -- | /See:/ 'encrypt' smart constructor.
-data Encrypt =
-  Encrypt'
-    { _eEncryptionContext :: !(Maybe (Map Text Text))
-    , _eGrantTokens       :: !(Maybe [Text])
-    , _eKeyId             :: !Text
-    , _ePlaintext         :: !(Sensitive Base64)
-    }
-  deriving (Eq, Show, Data, Typeable, Generic)
-
+data Encrypt = Encrypt'{_eEncryptionContext ::
+                        !(Maybe (Map Text Text)),
+                        _eGrantTokens :: !(Maybe [Text]), _eKeyId :: !Text,
+                        _ePlaintext :: !(Sensitive Base64)}
+                 deriving (Eq, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'Encrypt' with the minimum fields required to make a request.
 --
@@ -86,14 +81,10 @@ encrypt
     :: Text -- ^ 'eKeyId'
     -> ByteString -- ^ 'ePlaintext'
     -> Encrypt
-encrypt pKeyId_ pPlaintext_ =
-  Encrypt'
-    { _eEncryptionContext = Nothing
-    , _eGrantTokens = Nothing
-    , _eKeyId = pKeyId_
-    , _ePlaintext = _Sensitive . _Base64 # pPlaintext_
-    }
-
+encrypt pKeyId_ pPlaintext_
+  = Encrypt'{_eEncryptionContext = Nothing,
+             _eGrantTokens = Nothing, _eKeyId = pKeyId_,
+             _ePlaintext = _Sensitive . _Base64 # pPlaintext_}
 
 -- | Name-value pair that specifies the encryption context to be used for authenticated encryption. If used here, the same value must be supplied to the @Decrypt@ API or decryption will fail. For more information, see <http://docs.aws.amazon.com/kms/latest/developerguide/encryption-context.html Encryption Context> .
 eEncryptionContext :: Lens' Encrypt (HashMap Text Text)
@@ -150,14 +141,11 @@ instance ToQuery Encrypt where
         toQuery = const mempty
 
 -- | /See:/ 'encryptResponse' smart constructor.
-data EncryptResponse =
-  EncryptResponse'
-    { _ersKeyId          :: !(Maybe Text)
-    , _ersCiphertextBlob :: !(Maybe Base64)
-    , _ersResponseStatus :: !Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data EncryptResponse = EncryptResponse'{_ersKeyId ::
+                                        !(Maybe Text),
+                                        _ersCiphertextBlob :: !(Maybe Base64),
+                                        _ersResponseStatus :: !Int}
+                         deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'EncryptResponse' with the minimum fields required to make a request.
 --
@@ -171,13 +159,10 @@ data EncryptResponse =
 encryptResponse
     :: Int -- ^ 'ersResponseStatus'
     -> EncryptResponse
-encryptResponse pResponseStatus_ =
-  EncryptResponse'
-    { _ersKeyId = Nothing
-    , _ersCiphertextBlob = Nothing
-    , _ersResponseStatus = pResponseStatus_
-    }
-
+encryptResponse pResponseStatus_
+  = EncryptResponse'{_ersKeyId = Nothing,
+                     _ersCiphertextBlob = Nothing,
+                     _ersResponseStatus = pResponseStatus_}
 
 -- | The ID of the key used during encryption.
 ersKeyId :: Lens' EncryptResponse (Maybe Text)

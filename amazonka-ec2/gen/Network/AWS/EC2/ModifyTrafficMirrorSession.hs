@@ -46,27 +46,34 @@ module Network.AWS.EC2.ModifyTrafficMirrorSession
     ) where
 
 import Network.AWS.EC2.Types
-import Network.AWS.EC2.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 
 -- | /See:/ 'modifyTrafficMirrorSession' smart constructor.
-data ModifyTrafficMirrorSession =
-  ModifyTrafficMirrorSession'
-    { _mtmsRemoveFields           :: !(Maybe [TrafficMirrorSessionField])
-    , _mtmsTrafficMirrorTargetId  :: !(Maybe Text)
-    , _mtmsTrafficMirrorFilterId  :: !(Maybe Text)
-    , _mtmsPacketLength           :: !(Maybe Int)
-    , _mtmsVirtualNetworkId       :: !(Maybe Int)
-    , _mtmsSessionNumber          :: !(Maybe Int)
-    , _mtmsDescription            :: !(Maybe Text)
-    , _mtmsDryRun                 :: !(Maybe Bool)
-    , _mtmsTrafficMirrorSessionId :: !Text
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data ModifyTrafficMirrorSession = ModifyTrafficMirrorSession'{_mtmsRemoveFields
+                                                              ::
+                                                              !(Maybe
+                                                                  [TrafficMirrorSessionField]),
+                                                              _mtmsTrafficMirrorTargetId
+                                                              :: !(Maybe Text),
+                                                              _mtmsTrafficMirrorFilterId
+                                                              :: !(Maybe Text),
+                                                              _mtmsPacketLength
+                                                              :: !(Maybe Int),
+                                                              _mtmsVirtualNetworkId
+                                                              :: !(Maybe Int),
+                                                              _mtmsSessionNumber
+                                                              :: !(Maybe Int),
+                                                              _mtmsDescription
+                                                              :: !(Maybe Text),
+                                                              _mtmsDryRun ::
+                                                              !(Maybe Bool),
+                                                              _mtmsTrafficMirrorSessionId
+                                                              :: !Text}
+                                    deriving (Eq, Read, Show, Data, Typeable,
+                                              Generic)
 
 -- | Creates a value of 'ModifyTrafficMirrorSession' with the minimum fields required to make a request.
 --
@@ -92,19 +99,18 @@ data ModifyTrafficMirrorSession =
 modifyTrafficMirrorSession
     :: Text -- ^ 'mtmsTrafficMirrorSessionId'
     -> ModifyTrafficMirrorSession
-modifyTrafficMirrorSession pTrafficMirrorSessionId_ =
-  ModifyTrafficMirrorSession'
-    { _mtmsRemoveFields = Nothing
-    , _mtmsTrafficMirrorTargetId = Nothing
-    , _mtmsTrafficMirrorFilterId = Nothing
-    , _mtmsPacketLength = Nothing
-    , _mtmsVirtualNetworkId = Nothing
-    , _mtmsSessionNumber = Nothing
-    , _mtmsDescription = Nothing
-    , _mtmsDryRun = Nothing
-    , _mtmsTrafficMirrorSessionId = pTrafficMirrorSessionId_
-    }
-
+modifyTrafficMirrorSession pTrafficMirrorSessionId_
+  = ModifyTrafficMirrorSession'{_mtmsRemoveFields =
+                                  Nothing,
+                                _mtmsTrafficMirrorTargetId = Nothing,
+                                _mtmsTrafficMirrorFilterId = Nothing,
+                                _mtmsPacketLength = Nothing,
+                                _mtmsVirtualNetworkId = Nothing,
+                                _mtmsSessionNumber = Nothing,
+                                _mtmsDescription = Nothing,
+                                _mtmsDryRun = Nothing,
+                                _mtmsTrafficMirrorSessionId =
+                                  pTrafficMirrorSessionId_}
 
 -- | The properties that you want to remove from the Traffic Mirror session. When you remove a property from a Traffic Mirror session, the property is set to the default.
 mtmsRemoveFields :: Lens' ModifyTrafficMirrorSession [TrafficMirrorSessionField]
@@ -184,13 +190,15 @@ instance ToQuery ModifyTrafficMirrorSession where
                  _mtmsTrafficMirrorSessionId]
 
 -- | /See:/ 'modifyTrafficMirrorSessionResponse' smart constructor.
-data ModifyTrafficMirrorSessionResponse =
-  ModifyTrafficMirrorSessionResponse'
-    { _mtmsrsTrafficMirrorSession :: !(Maybe TrafficMirrorSession)
-    , _mtmsrsResponseStatus       :: !Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data ModifyTrafficMirrorSessionResponse = ModifyTrafficMirrorSessionResponse'{_mtmsrsTrafficMirrorSession
+                                                                              ::
+                                                                              !(Maybe
+                                                                                  TrafficMirrorSession),
+                                                                              _mtmsrsResponseStatus
+                                                                              ::
+                                                                              !Int}
+                                            deriving (Eq, Read, Show, Data,
+                                                      Typeable, Generic)
 
 -- | Creates a value of 'ModifyTrafficMirrorSessionResponse' with the minimum fields required to make a request.
 --
@@ -202,12 +210,11 @@ data ModifyTrafficMirrorSessionResponse =
 modifyTrafficMirrorSessionResponse
     :: Int -- ^ 'mtmsrsResponseStatus'
     -> ModifyTrafficMirrorSessionResponse
-modifyTrafficMirrorSessionResponse pResponseStatus_ =
-  ModifyTrafficMirrorSessionResponse'
-    { _mtmsrsTrafficMirrorSession = Nothing
-    , _mtmsrsResponseStatus = pResponseStatus_
-    }
-
+modifyTrafficMirrorSessionResponse pResponseStatus_
+  = ModifyTrafficMirrorSessionResponse'{_mtmsrsTrafficMirrorSession
+                                          = Nothing,
+                                        _mtmsrsResponseStatus =
+                                          pResponseStatus_}
 
 -- | Information about the Traffic Mirror session.
 mtmsrsTrafficMirrorSession :: Lens' ModifyTrafficMirrorSessionResponse (Maybe TrafficMirrorSession)

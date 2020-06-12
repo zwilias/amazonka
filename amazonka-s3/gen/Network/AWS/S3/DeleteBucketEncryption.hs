@@ -37,15 +37,12 @@ import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 import Network.AWS.S3.Types
-import Network.AWS.S3.Types.Product
 
 -- | /See:/ 'deleteBucketEncryption' smart constructor.
-newtype DeleteBucketEncryption =
-  DeleteBucketEncryption'
-    { _dbeBucket :: BucketName
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+newtype DeleteBucketEncryption = DeleteBucketEncryption'{_dbeBucket
+                                                         :: BucketName}
+                                   deriving (Eq, Read, Show, Data, Typeable,
+                                             Generic)
 
 -- | Creates a value of 'DeleteBucketEncryption' with the minimum fields required to make a request.
 --
@@ -55,9 +52,8 @@ newtype DeleteBucketEncryption =
 deleteBucketEncryption
     :: BucketName -- ^ 'dbeBucket'
     -> DeleteBucketEncryption
-deleteBucketEncryption pBucket_ =
-  DeleteBucketEncryption' {_dbeBucket = pBucket_}
-
+deleteBucketEncryption pBucket_
+  = DeleteBucketEncryption'{_dbeBucket = pBucket_}
 
 -- | The name of the bucket containing the server-side encryption configuration to delete.
 dbeBucket :: Lens' DeleteBucketEncryption BucketName
@@ -85,16 +81,15 @@ instance ToQuery DeleteBucketEncryption where
         toQuery = const (mconcat ["encryption"])
 
 -- | /See:/ 'deleteBucketEncryptionResponse' smart constructor.
-data DeleteBucketEncryptionResponse =
-  DeleteBucketEncryptionResponse'
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data DeleteBucketEncryptionResponse = DeleteBucketEncryptionResponse'
+                                        deriving (Eq, Read, Show, Data,
+                                                  Typeable, Generic)
 
 -- | Creates a value of 'DeleteBucketEncryptionResponse' with the minimum fields required to make a request.
 --
 deleteBucketEncryptionResponse
     :: DeleteBucketEncryptionResponse
-deleteBucketEncryptionResponse = DeleteBucketEncryptionResponse'
-
+deleteBucketEncryptionResponse
+  = DeleteBucketEncryptionResponse'
 
 instance NFData DeleteBucketEncryptionResponse where

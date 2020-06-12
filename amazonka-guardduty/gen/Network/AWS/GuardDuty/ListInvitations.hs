@@ -40,7 +40,6 @@ module Network.AWS.GuardDuty.ListInvitations
     ) where
 
 import Network.AWS.GuardDuty.Types
-import Network.AWS.GuardDuty.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Pager
 import Network.AWS.Prelude
@@ -48,13 +47,10 @@ import Network.AWS.Request
 import Network.AWS.Response
 
 -- | /See:/ 'listInvitations' smart constructor.
-data ListInvitations =
-  ListInvitations'
-    { _liNextToken  :: !(Maybe Text)
-    , _liMaxResults :: !(Maybe Nat)
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data ListInvitations = ListInvitations'{_liNextToken
+                                        :: !(Maybe Text),
+                                        _liMaxResults :: !(Maybe Nat)}
+                         deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'ListInvitations' with the minimum fields required to make a request.
 --
@@ -65,9 +61,9 @@ data ListInvitations =
 -- * 'liMaxResults' - You can use this parameter to indicate the maximum number of invitations you want in the response. The default value is 50. The maximum value is 50.
 listInvitations
     :: ListInvitations
-listInvitations =
-  ListInvitations' {_liNextToken = Nothing, _liMaxResults = Nothing}
-
+listInvitations
+  = ListInvitations'{_liNextToken = Nothing,
+                     _liMaxResults = Nothing}
 
 -- | You can use this parameter when paginating results. Set the value of this parameter to null on your first call to the ListInvitations action. Subsequent calls to the action fill nextToken in the request with the value of NextToken from the previous response to continue listing data.
 liNextToken :: Lens' ListInvitations (Maybe Text)
@@ -116,14 +112,15 @@ instance ToQuery ListInvitations where
                "maxResults" =: _liMaxResults]
 
 -- | /See:/ 'listInvitationsResponse' smart constructor.
-data ListInvitationsResponse =
-  ListInvitationsResponse'
-    { _lirsInvitations    :: !(Maybe [Invitation])
-    , _lirsNextToken      :: !(Maybe Text)
-    , _lirsResponseStatus :: !Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data ListInvitationsResponse = ListInvitationsResponse'{_lirsInvitations
+                                                        ::
+                                                        !(Maybe [Invitation]),
+                                                        _lirsNextToken ::
+                                                        !(Maybe Text),
+                                                        _lirsResponseStatus ::
+                                                        !Int}
+                                 deriving (Eq, Read, Show, Data, Typeable,
+                                           Generic)
 
 -- | Creates a value of 'ListInvitationsResponse' with the minimum fields required to make a request.
 --
@@ -137,13 +134,11 @@ data ListInvitationsResponse =
 listInvitationsResponse
     :: Int -- ^ 'lirsResponseStatus'
     -> ListInvitationsResponse
-listInvitationsResponse pResponseStatus_ =
-  ListInvitationsResponse'
-    { _lirsInvitations = Nothing
-    , _lirsNextToken = Nothing
-    , _lirsResponseStatus = pResponseStatus_
-    }
-
+listInvitationsResponse pResponseStatus_
+  = ListInvitationsResponse'{_lirsInvitations =
+                               Nothing,
+                             _lirsNextToken = Nothing,
+                             _lirsResponseStatus = pResponseStatus_}
 
 -- | Undocumented member.
 lirsInvitations :: Lens' ListInvitationsResponse [Invitation]

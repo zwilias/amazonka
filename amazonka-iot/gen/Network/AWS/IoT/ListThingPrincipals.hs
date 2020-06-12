@@ -38,7 +38,6 @@ module Network.AWS.IoT.ListThingPrincipals
     ) where
 
 import Network.AWS.IoT.Types
-import Network.AWS.IoT.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.Request
@@ -49,12 +48,10 @@ import Network.AWS.Response
 --
 --
 -- /See:/ 'listThingPrincipals' smart constructor.
-newtype ListThingPrincipals =
-  ListThingPrincipals'
-    { _ltpThingName :: Text
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+newtype ListThingPrincipals = ListThingPrincipals'{_ltpThingName
+                                                   :: Text}
+                                deriving (Eq, Read, Show, Data, Typeable,
+                                          Generic)
 
 -- | Creates a value of 'ListThingPrincipals' with the minimum fields required to make a request.
 --
@@ -64,9 +61,8 @@ newtype ListThingPrincipals =
 listThingPrincipals
     :: Text -- ^ 'ltpThingName'
     -> ListThingPrincipals
-listThingPrincipals pThingName_ =
-  ListThingPrincipals' {_ltpThingName = pThingName_}
-
+listThingPrincipals pThingName_
+  = ListThingPrincipals'{_ltpThingName = pThingName_}
 
 -- | The name of the thing.
 ltpThingName :: Lens' ListThingPrincipals Text
@@ -103,13 +99,13 @@ instance ToQuery ListThingPrincipals where
 --
 --
 -- /See:/ 'listThingPrincipalsResponse' smart constructor.
-data ListThingPrincipalsResponse =
-  ListThingPrincipalsResponse'
-    { _ltprsPrincipals     :: !(Maybe [Text])
-    , _ltprsResponseStatus :: !Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data ListThingPrincipalsResponse = ListThingPrincipalsResponse'{_ltprsPrincipals
+                                                                ::
+                                                                !(Maybe [Text]),
+                                                                _ltprsResponseStatus
+                                                                :: !Int}
+                                     deriving (Eq, Read, Show, Data, Typeable,
+                                               Generic)
 
 -- | Creates a value of 'ListThingPrincipalsResponse' with the minimum fields required to make a request.
 --
@@ -121,10 +117,10 @@ data ListThingPrincipalsResponse =
 listThingPrincipalsResponse
     :: Int -- ^ 'ltprsResponseStatus'
     -> ListThingPrincipalsResponse
-listThingPrincipalsResponse pResponseStatus_ =
-  ListThingPrincipalsResponse'
-    {_ltprsPrincipals = Nothing, _ltprsResponseStatus = pResponseStatus_}
-
+listThingPrincipalsResponse pResponseStatus_
+  = ListThingPrincipalsResponse'{_ltprsPrincipals =
+                                   Nothing,
+                                 _ltprsResponseStatus = pResponseStatus_}
 
 -- | The principals associated with the thing.
 ltprsPrincipals :: Lens' ListThingPrincipalsResponse [Text]

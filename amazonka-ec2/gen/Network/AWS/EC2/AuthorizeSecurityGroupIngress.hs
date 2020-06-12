@@ -52,28 +52,54 @@ module Network.AWS.EC2.AuthorizeSecurityGroupIngress
     ) where
 
 import Network.AWS.EC2.Types
-import Network.AWS.EC2.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 
 -- | /See:/ 'authorizeSecurityGroupIngress' smart constructor.
-data AuthorizeSecurityGroupIngress =
-  AuthorizeSecurityGroupIngress'
-    { _asgiFromPort                   :: !(Maybe Int)
-    , _asgiIPPermissions              :: !(Maybe [IPPermission])
-    , _asgiIPProtocol                 :: !(Maybe Text)
-    , _asgiGroupId                    :: !(Maybe Text)
-    , _asgiToPort                     :: !(Maybe Int)
-    , _asgiCidrIP                     :: !(Maybe Text)
-    , _asgiSourceSecurityGroupOwnerId :: !(Maybe Text)
-    , _asgiGroupName                  :: !(Maybe Text)
-    , _asgiSourceSecurityGroupName    :: !(Maybe Text)
-    , _asgiDryRun                     :: !(Maybe Bool)
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data AuthorizeSecurityGroupIngress = AuthorizeSecurityGroupIngress'{_asgiFromPort
+                                                                    ::
+                                                                    !(Maybe
+                                                                        Int),
+                                                                    _asgiIPPermissions
+                                                                    ::
+                                                                    !(Maybe
+                                                                        [IPPermission]),
+                                                                    _asgiIPProtocol
+                                                                    ::
+                                                                    !(Maybe
+                                                                        Text),
+                                                                    _asgiGroupId
+                                                                    ::
+                                                                    !(Maybe
+                                                                        Text),
+                                                                    _asgiToPort
+                                                                    ::
+                                                                    !(Maybe
+                                                                        Int),
+                                                                    _asgiCidrIP
+                                                                    ::
+                                                                    !(Maybe
+                                                                        Text),
+                                                                    _asgiSourceSecurityGroupOwnerId
+                                                                    ::
+                                                                    !(Maybe
+                                                                        Text),
+                                                                    _asgiGroupName
+                                                                    ::
+                                                                    !(Maybe
+                                                                        Text),
+                                                                    _asgiSourceSecurityGroupName
+                                                                    ::
+                                                                    !(Maybe
+                                                                        Text),
+                                                                    _asgiDryRun
+                                                                    ::
+                                                                    !(Maybe
+                                                                        Bool)}
+                                       deriving (Eq, Read, Show, Data, Typeable,
+                                                 Generic)
 
 -- | Creates a value of 'AuthorizeSecurityGroupIngress' with the minimum fields required to make a request.
 --
@@ -100,20 +126,17 @@ data AuthorizeSecurityGroupIngress =
 -- * 'asgiDryRun' - Checks whether you have the required permissions for the action, without actually making the request, and provides an error response. If you have the required permissions, the error response is @DryRunOperation@ . Otherwise, it is @UnauthorizedOperation@ .
 authorizeSecurityGroupIngress
     :: AuthorizeSecurityGroupIngress
-authorizeSecurityGroupIngress =
-  AuthorizeSecurityGroupIngress'
-    { _asgiFromPort = Nothing
-    , _asgiIPPermissions = Nothing
-    , _asgiIPProtocol = Nothing
-    , _asgiGroupId = Nothing
-    , _asgiToPort = Nothing
-    , _asgiCidrIP = Nothing
-    , _asgiSourceSecurityGroupOwnerId = Nothing
-    , _asgiGroupName = Nothing
-    , _asgiSourceSecurityGroupName = Nothing
-    , _asgiDryRun = Nothing
-    }
-
+authorizeSecurityGroupIngress
+  = AuthorizeSecurityGroupIngress'{_asgiFromPort =
+                                     Nothing,
+                                   _asgiIPPermissions = Nothing,
+                                   _asgiIPProtocol = Nothing,
+                                   _asgiGroupId = Nothing,
+                                   _asgiToPort = Nothing, _asgiCidrIP = Nothing,
+                                   _asgiSourceSecurityGroupOwnerId = Nothing,
+                                   _asgiGroupName = Nothing,
+                                   _asgiSourceSecurityGroupName = Nothing,
+                                   _asgiDryRun = Nothing}
 
 -- | The start of port range for the TCP and UDP protocols, or an ICMP type number. For the ICMP type number, use @-1@ to specify all types. If you specify all ICMP types, you must specify all codes. Alternatively, use a set of IP permissions to specify multiple rules and a description for the rule.
 asgiFromPort :: Lens' AuthorizeSecurityGroupIngress (Maybe Int)
@@ -194,17 +217,16 @@ instance ToQuery AuthorizeSecurityGroupIngress where
                "DryRun" =: _asgiDryRun]
 
 -- | /See:/ 'authorizeSecurityGroupIngressResponse' smart constructor.
-data AuthorizeSecurityGroupIngressResponse =
-  AuthorizeSecurityGroupIngressResponse'
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data AuthorizeSecurityGroupIngressResponse = AuthorizeSecurityGroupIngressResponse'
+                                               deriving (Eq, Read, Show, Data,
+                                                         Typeable, Generic)
 
 -- | Creates a value of 'AuthorizeSecurityGroupIngressResponse' with the minimum fields required to make a request.
 --
 authorizeSecurityGroupIngressResponse
     :: AuthorizeSecurityGroupIngressResponse
-authorizeSecurityGroupIngressResponse = AuthorizeSecurityGroupIngressResponse'
-
+authorizeSecurityGroupIngressResponse
+  = AuthorizeSecurityGroupIngressResponse'
 
 instance NFData AuthorizeSecurityGroupIngressResponse
          where

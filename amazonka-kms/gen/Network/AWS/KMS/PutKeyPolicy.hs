@@ -40,22 +40,17 @@ module Network.AWS.KMS.PutKeyPolicy
     ) where
 
 import Network.AWS.KMS.Types
-import Network.AWS.KMS.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 
 -- | /See:/ 'putKeyPolicy' smart constructor.
-data PutKeyPolicy =
-  PutKeyPolicy'
-    { _pkpBypassPolicyLockoutSafetyCheck :: !(Maybe Bool)
-    , _pkpKeyId                          :: !Text
-    , _pkpPolicyName                     :: !Text
-    , _pkpPolicy                         :: !Text
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data PutKeyPolicy = PutKeyPolicy'{_pkpBypassPolicyLockoutSafetyCheck
+                                  :: !(Maybe Bool),
+                                  _pkpKeyId :: !Text, _pkpPolicyName :: !Text,
+                                  _pkpPolicy :: !Text}
+                      deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'PutKeyPolicy' with the minimum fields required to make a request.
 --
@@ -73,14 +68,11 @@ putKeyPolicy
     -> Text -- ^ 'pkpPolicyName'
     -> Text -- ^ 'pkpPolicy'
     -> PutKeyPolicy
-putKeyPolicy pKeyId_ pPolicyName_ pPolicy_ =
-  PutKeyPolicy'
-    { _pkpBypassPolicyLockoutSafetyCheck = Nothing
-    , _pkpKeyId = pKeyId_
-    , _pkpPolicyName = pPolicyName_
-    , _pkpPolicy = pPolicy_
-    }
-
+putKeyPolicy pKeyId_ pPolicyName_ pPolicy_
+  = PutKeyPolicy'{_pkpBypassPolicyLockoutSafetyCheck =
+                    Nothing,
+                  _pkpKeyId = pKeyId_, _pkpPolicyName = pPolicyName_,
+                  _pkpPolicy = pPolicy_}
 
 -- | A flag to indicate whether to bypass the key policy lockout safety check. /Important:/ Setting this value to true increases the risk that the CMK becomes unmanageable. Do not set this value to true indiscriminately. For more information, refer to the scenario in the <http://docs.aws.amazon.com/kms/latest/developerguide/key-policies.html#key-policy-default-allow-root-enable-iam Default Key Policy> section in the /AWS Key Management Service Developer Guide/ . Use this parameter only when you intend to prevent the principal that is making the request from making a subsequent @PutKeyPolicy@ request on the CMK. The default value is false.
 pkpBypassPolicyLockoutSafetyCheck :: Lens' PutKeyPolicy (Maybe Bool)
@@ -133,16 +125,13 @@ instance ToQuery PutKeyPolicy where
         toQuery = const mempty
 
 -- | /See:/ 'putKeyPolicyResponse' smart constructor.
-data PutKeyPolicyResponse =
-  PutKeyPolicyResponse'
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data PutKeyPolicyResponse = PutKeyPolicyResponse'
+                              deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'PutKeyPolicyResponse' with the minimum fields required to make a request.
 --
 putKeyPolicyResponse
     :: PutKeyPolicyResponse
 putKeyPolicyResponse = PutKeyPolicyResponse'
-
 
 instance NFData PutKeyPolicyResponse where

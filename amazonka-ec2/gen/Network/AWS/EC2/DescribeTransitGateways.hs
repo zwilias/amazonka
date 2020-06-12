@@ -45,7 +45,6 @@ module Network.AWS.EC2.DescribeTransitGateways
     ) where
 
 import Network.AWS.EC2.Types
-import Network.AWS.EC2.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Pager
 import Network.AWS.Prelude
@@ -53,16 +52,18 @@ import Network.AWS.Request
 import Network.AWS.Response
 
 -- | /See:/ 'describeTransitGateways' smart constructor.
-data DescribeTransitGateways =
-  DescribeTransitGateways'
-    { _dtgsFilters           :: !(Maybe [Filter])
-    , _dtgsTransitGatewayIds :: !(Maybe [Text])
-    , _dtgsNextToken         :: !(Maybe Text)
-    , _dtgsDryRun            :: !(Maybe Bool)
-    , _dtgsMaxResults        :: !(Maybe Nat)
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data DescribeTransitGateways = DescribeTransitGateways'{_dtgsFilters
+                                                        :: !(Maybe [Filter]),
+                                                        _dtgsTransitGatewayIds
+                                                        :: !(Maybe [Text]),
+                                                        _dtgsNextToken ::
+                                                        !(Maybe Text),
+                                                        _dtgsDryRun ::
+                                                        !(Maybe Bool),
+                                                        _dtgsMaxResults ::
+                                                        !(Maybe Nat)}
+                                 deriving (Eq, Read, Show, Data, Typeable,
+                                           Generic)
 
 -- | Creates a value of 'DescribeTransitGateways' with the minimum fields required to make a request.
 --
@@ -79,15 +80,11 @@ data DescribeTransitGateways =
 -- * 'dtgsMaxResults' - The maximum number of results to return with a single call. To retrieve the remaining results, make another call with the returned @nextToken@ value.
 describeTransitGateways
     :: DescribeTransitGateways
-describeTransitGateways =
-  DescribeTransitGateways'
-    { _dtgsFilters = Nothing
-    , _dtgsTransitGatewayIds = Nothing
-    , _dtgsNextToken = Nothing
-    , _dtgsDryRun = Nothing
-    , _dtgsMaxResults = Nothing
-    }
-
+describeTransitGateways
+  = DescribeTransitGateways'{_dtgsFilters = Nothing,
+                             _dtgsTransitGatewayIds = Nothing,
+                             _dtgsNextToken = Nothing, _dtgsDryRun = Nothing,
+                             _dtgsMaxResults = Nothing}
 
 -- | One or more filters. The possible values are:     * @options.propagation-default-route-table-id@ - The ID of the default propagation route table.     * @options.amazon-side-asn@ - The private ASN for the Amazon side of a BGP session.     * @options.association-default-route-table-id@ - The ID of the default association route table.     * @options.auto-accept-shared-attachments@ - Indicates whether there is automatic acceptance of attachment requests (@enable@ | @disable@ ).     * @options.default-route-table-association@ - Indicates whether resource attachments are automatically associated with the default association route table (@enable@ | @disable@ ).     * @options.default-route-table-propagation@ - Indicates whether resource attachments automatically propagate routes to the default propagation route table (@enable@ | @disable@ ).     * @options.dns-support@ - Indicates whether DNS support is enabled (@enable@ | @disable@ ).     * @options.vpn-ecmp-support@ - Indicates whether Equal Cost Multipath Protocol support is enabled (@enable@ | @disable@ ).     * @owner-id@ - The ID of the AWS account that owns the transit gateway.     * @state@ - The state of the attachment (@available@ | @deleted@ | @deleting@ | @failed@ | @modifying@ | @pendingAcceptance@ | @pending@ | @rollingBack@ | @rejected@ | @rejecting@ ).     * @transit-gateway-id@ - The ID of the transit gateway.
 dtgsFilters :: Lens' DescribeTransitGateways [Filter]
@@ -154,14 +151,18 @@ instance ToQuery DescribeTransitGateways where
                "MaxResults" =: _dtgsMaxResults]
 
 -- | /See:/ 'describeTransitGatewaysResponse' smart constructor.
-data DescribeTransitGatewaysResponse =
-  DescribeTransitGatewaysResponse'
-    { _dtgrsTransitGateways :: !(Maybe [TransitGateway])
-    , _dtgrsNextToken       :: !(Maybe Text)
-    , _dtgrsResponseStatus  :: !Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data DescribeTransitGatewaysResponse = DescribeTransitGatewaysResponse'{_dtgrsTransitGateways
+                                                                        ::
+                                                                        !(Maybe
+                                                                            [TransitGateway]),
+                                                                        _dtgrsNextToken
+                                                                        ::
+                                                                        !(Maybe
+                                                                            Text),
+                                                                        _dtgrsResponseStatus
+                                                                        :: !Int}
+                                         deriving (Eq, Read, Show, Data,
+                                                   Typeable, Generic)
 
 -- | Creates a value of 'DescribeTransitGatewaysResponse' with the minimum fields required to make a request.
 --
@@ -175,13 +176,11 @@ data DescribeTransitGatewaysResponse =
 describeTransitGatewaysResponse
     :: Int -- ^ 'dtgrsResponseStatus'
     -> DescribeTransitGatewaysResponse
-describeTransitGatewaysResponse pResponseStatus_ =
-  DescribeTransitGatewaysResponse'
-    { _dtgrsTransitGateways = Nothing
-    , _dtgrsNextToken = Nothing
-    , _dtgrsResponseStatus = pResponseStatus_
-    }
-
+describeTransitGatewaysResponse pResponseStatus_
+  = DescribeTransitGatewaysResponse'{_dtgrsTransitGateways
+                                       = Nothing,
+                                     _dtgrsNextToken = Nothing,
+                                     _dtgrsResponseStatus = pResponseStatus_}
 
 -- | Information about the transit gateways.
 dtgrsTransitGateways :: Lens' DescribeTransitGatewaysResponse [TransitGateway]

@@ -41,7 +41,6 @@ module Network.AWS.MediaPackage.CreateChannel
 
 import Network.AWS.Lens
 import Network.AWS.MediaPackage.Types
-import Network.AWS.MediaPackage.Types.Product
 import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
@@ -49,13 +48,10 @@ import Network.AWS.Response
 -- | A new Channel configuration.
 --
 -- /See:/ 'createChannel' smart constructor.
-data CreateChannel =
-  CreateChannel'
-    { _ccDescription :: !(Maybe Text)
-    , _ccId          :: !Text
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data CreateChannel = CreateChannel'{_ccDescription ::
+                                    !(Maybe Text),
+                                    _ccId :: !Text}
+                       deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'CreateChannel' with the minimum fields required to make a request.
 --
@@ -67,8 +63,9 @@ data CreateChannel =
 createChannel
     :: Text -- ^ 'ccId'
     -> CreateChannel
-createChannel pId_ = CreateChannel' {_ccDescription = Nothing, _ccId = pId_}
-
+createChannel pId_
+  = CreateChannel'{_ccDescription = Nothing,
+                   _ccId = pId_}
 
 -- | A short text description of the Channel.
 ccDescription :: Lens' CreateChannel (Maybe Text)
@@ -115,16 +112,15 @@ instance ToQuery CreateChannel where
         toQuery = const mempty
 
 -- | /See:/ 'createChannelResponse' smart constructor.
-data CreateChannelResponse =
-  CreateChannelResponse'
-    { _ccrsHlsIngest      :: !(Maybe HlsIngest)
-    , _ccrsARN            :: !(Maybe Text)
-    , _ccrsId             :: !(Maybe Text)
-    , _ccrsDescription    :: !(Maybe Text)
-    , _ccrsResponseStatus :: !Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data CreateChannelResponse = CreateChannelResponse'{_ccrsHlsIngest
+                                                    :: !(Maybe HlsIngest),
+                                                    _ccrsARN :: !(Maybe Text),
+                                                    _ccrsId :: !(Maybe Text),
+                                                    _ccrsDescription ::
+                                                    !(Maybe Text),
+                                                    _ccrsResponseStatus :: !Int}
+                               deriving (Eq, Read, Show, Data, Typeable,
+                                         Generic)
 
 -- | Creates a value of 'CreateChannelResponse' with the minimum fields required to make a request.
 --
@@ -142,15 +138,11 @@ data CreateChannelResponse =
 createChannelResponse
     :: Int -- ^ 'ccrsResponseStatus'
     -> CreateChannelResponse
-createChannelResponse pResponseStatus_ =
-  CreateChannelResponse'
-    { _ccrsHlsIngest = Nothing
-    , _ccrsARN = Nothing
-    , _ccrsId = Nothing
-    , _ccrsDescription = Nothing
-    , _ccrsResponseStatus = pResponseStatus_
-    }
-
+createChannelResponse pResponseStatus_
+  = CreateChannelResponse'{_ccrsHlsIngest = Nothing,
+                           _ccrsARN = Nothing, _ccrsId = Nothing,
+                           _ccrsDescription = Nothing,
+                           _ccrsResponseStatus = pResponseStatus_}
 
 -- | Undocumented member.
 ccrsHlsIngest :: Lens' CreateChannelResponse (Maybe HlsIngest)

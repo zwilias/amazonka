@@ -39,19 +39,15 @@ module Network.AWS.ELBv2.DeleteListener
     ) where
 
 import Network.AWS.ELBv2.Types
-import Network.AWS.ELBv2.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 
 -- | /See:/ 'deleteListener' smart constructor.
-newtype DeleteListener =
-  DeleteListener'
-    { _dlListenerARN :: Text
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+newtype DeleteListener = DeleteListener'{_dlListenerARN
+                                         :: Text}
+                           deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'DeleteListener' with the minimum fields required to make a request.
 --
@@ -61,8 +57,8 @@ newtype DeleteListener =
 deleteListener
     :: Text -- ^ 'dlListenerARN'
     -> DeleteListener
-deleteListener pListenerARN_ = DeleteListener' {_dlListenerARN = pListenerARN_}
-
+deleteListener pListenerARN_
+  = DeleteListener'{_dlListenerARN = pListenerARN_}
 
 -- | The Amazon Resource Name (ARN) of the listener.
 dlListenerARN :: Lens' DeleteListener Text
@@ -94,12 +90,10 @@ instance ToQuery DeleteListener where
                "ListenerArn" =: _dlListenerARN]
 
 -- | /See:/ 'deleteListenerResponse' smart constructor.
-newtype DeleteListenerResponse =
-  DeleteListenerResponse'
-    { _dlrsResponseStatus :: Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+newtype DeleteListenerResponse = DeleteListenerResponse'{_dlrsResponseStatus
+                                                         :: Int}
+                                   deriving (Eq, Read, Show, Data, Typeable,
+                                             Generic)
 
 -- | Creates a value of 'DeleteListenerResponse' with the minimum fields required to make a request.
 --
@@ -109,9 +103,9 @@ newtype DeleteListenerResponse =
 deleteListenerResponse
     :: Int -- ^ 'dlrsResponseStatus'
     -> DeleteListenerResponse
-deleteListenerResponse pResponseStatus_ =
-  DeleteListenerResponse' {_dlrsResponseStatus = pResponseStatus_}
-
+deleteListenerResponse pResponseStatus_
+  = DeleteListenerResponse'{_dlrsResponseStatus =
+                              pResponseStatus_}
 
 -- | -- | The response status code.
 dlrsResponseStatus :: Lens' DeleteListenerResponse Int

@@ -46,7 +46,6 @@ module Network.AWS.ElasticTranscoder.CreatePipeline
     ) where
 
 import Network.AWS.ElasticTranscoder.Types
-import Network.AWS.ElasticTranscoder.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.Request
@@ -57,19 +56,16 @@ import Network.AWS.Response
 --
 --
 -- /See:/ 'createPipeline' smart constructor.
-data CreatePipeline =
-  CreatePipeline'
-    { _cContentConfig   :: !(Maybe PipelineOutputConfig)
-    , _cOutputBucket    :: !(Maybe Text)
-    , _cAWSKMSKeyARN    :: !(Maybe Text)
-    , _cNotifications   :: !(Maybe Notifications)
-    , _cThumbnailConfig :: !(Maybe PipelineOutputConfig)
-    , _cName            :: !Text
-    , _cInputBucket     :: !Text
-    , _cRole            :: !Text
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data CreatePipeline = CreatePipeline'{_cContentConfig
+                                      :: !(Maybe PipelineOutputConfig),
+                                      _cOutputBucket :: !(Maybe Text),
+                                      _cAWSKMSKeyARN :: !(Maybe Text),
+                                      _cNotifications :: !(Maybe Notifications),
+                                      _cThumbnailConfig ::
+                                      !(Maybe PipelineOutputConfig),
+                                      _cName :: !Text, _cInputBucket :: !Text,
+                                      _cRole :: !Text}
+                        deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'CreatePipeline' with the minimum fields required to make a request.
 --
@@ -95,18 +91,12 @@ createPipeline
     -> Text -- ^ 'cInputBucket'
     -> Text -- ^ 'cRole'
     -> CreatePipeline
-createPipeline pName_ pInputBucket_ pRole_ =
-  CreatePipeline'
-    { _cContentConfig = Nothing
-    , _cOutputBucket = Nothing
-    , _cAWSKMSKeyARN = Nothing
-    , _cNotifications = Nothing
-    , _cThumbnailConfig = Nothing
-    , _cName = pName_
-    , _cInputBucket = pInputBucket_
-    , _cRole = pRole_
-    }
-
+createPipeline pName_ pInputBucket_ pRole_
+  = CreatePipeline'{_cContentConfig = Nothing,
+                    _cOutputBucket = Nothing, _cAWSKMSKeyARN = Nothing,
+                    _cNotifications = Nothing,
+                    _cThumbnailConfig = Nothing, _cName = pName_,
+                    _cInputBucket = pInputBucket_, _cRole = pRole_}
 
 -- | The optional @ContentConfig@ object specifies information about the Amazon S3 bucket in which you want Elastic Transcoder to save transcoded files and playlists: which bucket to use, which users you want to have access to the files, the type of access you want users to have, and the storage class that you want to assign to the files. If you specify values for @ContentConfig@ , you must also specify values for @ThumbnailConfig@ . If you specify values for @ContentConfig@ and @ThumbnailConfig@ , omit the @OutputBucket@ object.     * __Bucket__ : The Amazon S3 bucket in which you want Elastic Transcoder to save transcoded files and playlists.     * __Permissions__ (Optional): The Permissions object specifies which users you want to have access to transcoded files and the type of access you want them to have. You can grant permissions to a maximum of 30 users and/or predefined Amazon S3 groups.     * __Grantee Type__ : Specify the type of value that appears in the @Grantee@ object:      * __Canonical__ : The value in the @Grantee@ object is either the canonical user ID for an AWS account or an origin access identity for an Amazon CloudFront distribution. For more information about canonical user IDs, see Access Control List (ACL) Overview in the Amazon Simple Storage Service Developer Guide. For more information about using CloudFront origin access identities to require that users use CloudFront URLs instead of Amazon S3 URLs, see Using an Origin Access Identity to Restrict Access to Your Amazon S3 Content. /Important:/ A canonical user ID is not the same as an AWS account number.     * __Email__ : The value in the @Grantee@ object is the registered email address of an AWS account.     * __Group__ : The value in the @Grantee@ object is one of the following predefined Amazon S3 groups: @AllUsers@ , @AuthenticatedUsers@ , or @LogDelivery@ .     * __Grantee__ : The AWS user or group that you want to have access to transcoded files and playlists. To identify the user or group, you can specify the canonical user ID for an AWS account, an origin access identity for a CloudFront distribution, the registered email address of an AWS account, or a predefined Amazon S3 group      * __Access__ : The permission that you want to give to the AWS user that you specified in @Grantee@ . Permissions are granted on the files that Elastic Transcoder adds to the bucket, including playlists and video files. Valid values include:      * @READ@ : The grantee can read the objects and metadata for objects that Elastic Transcoder adds to the Amazon S3 bucket.     * @READ_ACP@ : The grantee can read the object ACL for objects that Elastic Transcoder adds to the Amazon S3 bucket.     * @WRITE_ACP@ : The grantee can write the ACL for the objects that Elastic Transcoder adds to the Amazon S3 bucket.     * @FULL_CONTROL@ : The grantee has @READ@ , @READ_ACP@ , and @WRITE_ACP@ permissions for the objects that Elastic Transcoder adds to the Amazon S3 bucket.     * __StorageClass__ : The Amazon S3 storage class, @Standard@ or @ReducedRedundancy@ , that you want Elastic Transcoder to assign to the video files and playlists that it stores in your Amazon S3 bucket.
 cContentConfig :: Lens' CreatePipeline (Maybe PipelineOutputConfig)
@@ -181,14 +171,14 @@ instance ToQuery CreatePipeline where
 --
 --
 -- /See:/ 'createPipelineResponse' smart constructor.
-data CreatePipelineResponse =
-  CreatePipelineResponse'
-    { _crsWarnings       :: !(Maybe [Warning])
-    , _crsPipeline       :: !(Maybe Pipeline)
-    , _crsResponseStatus :: !Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data CreatePipelineResponse = CreatePipelineResponse'{_crsWarnings
+                                                      :: !(Maybe [Warning]),
+                                                      _crsPipeline ::
+                                                      !(Maybe Pipeline),
+                                                      _crsResponseStatus ::
+                                                      !Int}
+                                deriving (Eq, Read, Show, Data, Typeable,
+                                          Generic)
 
 -- | Creates a value of 'CreatePipelineResponse' with the minimum fields required to make a request.
 --
@@ -202,13 +192,10 @@ data CreatePipelineResponse =
 createPipelineResponse
     :: Int -- ^ 'crsResponseStatus'
     -> CreatePipelineResponse
-createPipelineResponse pResponseStatus_ =
-  CreatePipelineResponse'
-    { _crsWarnings = Nothing
-    , _crsPipeline = Nothing
-    , _crsResponseStatus = pResponseStatus_
-    }
-
+createPipelineResponse pResponseStatus_
+  = CreatePipelineResponse'{_crsWarnings = Nothing,
+                            _crsPipeline = Nothing,
+                            _crsResponseStatus = pResponseStatus_}
 
 -- | Elastic Transcoder returns a warning if the resources used by your pipeline are not in the same region as the pipeline. Using resources in the same region, such as your Amazon S3 buckets, Amazon SNS notification topics, and AWS KMS key, reduces processing time and prevents cross-regional charges.
 crsWarnings :: Lens' CreatePipelineResponse [Warning]

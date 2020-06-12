@@ -23,7 +23,7 @@
 --
 -- If the job state is @IN_PROGRESS@ the job is marked for termination and put into the @STOP_REQUESTED@ state. If the job completes before it can be stopped, it is put into the @COMPLETED@ state; otherwise the job is be stopped and put into the @STOPPED@ state.
 --
--- If the job is in the @COMPLETED@ or @FAILED@ state when you call the @StopDominantLanguageDetectionJob@ operation, the operation returns a 400 Internal Request Exception.
+-- If the job is in the @COMPLETED@ or @FAILED@ state when you call the @StopDominantLanguageDetectionJob@ operation, the operation returns a 400 Internal Request Exception. 
 --
 -- When a job is stopped, any documents already processed are written to the output location.
 --
@@ -45,19 +45,16 @@ module Network.AWS.Comprehend.StopSentimentDetectionJob
     ) where
 
 import Network.AWS.Comprehend.Types
-import Network.AWS.Comprehend.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 
 -- | /See:/ 'stopSentimentDetectionJob' smart constructor.
-newtype StopSentimentDetectionJob =
-  StopSentimentDetectionJob'
-    { _ssdjJobId :: Text
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+newtype StopSentimentDetectionJob = StopSentimentDetectionJob'{_ssdjJobId
+                                                               :: Text}
+                                      deriving (Eq, Read, Show, Data, Typeable,
+                                                Generic)
 
 -- | Creates a value of 'StopSentimentDetectionJob' with the minimum fields required to make a request.
 --
@@ -67,9 +64,8 @@ newtype StopSentimentDetectionJob =
 stopSentimentDetectionJob
     :: Text -- ^ 'ssdjJobId'
     -> StopSentimentDetectionJob
-stopSentimentDetectionJob pJobId_ =
-  StopSentimentDetectionJob' {_ssdjJobId = pJobId_}
-
+stopSentimentDetectionJob pJobId_
+  = StopSentimentDetectionJob'{_ssdjJobId = pJobId_}
 
 -- | The identifier of the sentiment detection job to stop.
 ssdjJobId :: Lens' StopSentimentDetectionJob Text
@@ -111,14 +107,19 @@ instance ToQuery StopSentimentDetectionJob where
         toQuery = const mempty
 
 -- | /See:/ 'stopSentimentDetectionJobResponse' smart constructor.
-data StopSentimentDetectionJobResponse =
-  StopSentimentDetectionJobResponse'
-    { _srsJobId          :: !(Maybe Text)
-    , _srsJobStatus      :: !(Maybe JobStatus)
-    , _srsResponseStatus :: !Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data StopSentimentDetectionJobResponse = StopSentimentDetectionJobResponse'{_srsJobId
+                                                                            ::
+                                                                            !(Maybe
+                                                                                Text),
+                                                                            _srsJobStatus
+                                                                            ::
+                                                                            !(Maybe
+                                                                                JobStatus),
+                                                                            _srsResponseStatus
+                                                                            ::
+                                                                            !Int}
+                                           deriving (Eq, Read, Show, Data,
+                                                     Typeable, Generic)
 
 -- | Creates a value of 'StopSentimentDetectionJobResponse' with the minimum fields required to make a request.
 --
@@ -132,13 +133,11 @@ data StopSentimentDetectionJobResponse =
 stopSentimentDetectionJobResponse
     :: Int -- ^ 'srsResponseStatus'
     -> StopSentimentDetectionJobResponse
-stopSentimentDetectionJobResponse pResponseStatus_ =
-  StopSentimentDetectionJobResponse'
-    { _srsJobId = Nothing
-    , _srsJobStatus = Nothing
-    , _srsResponseStatus = pResponseStatus_
-    }
-
+stopSentimentDetectionJobResponse pResponseStatus_
+  = StopSentimentDetectionJobResponse'{_srsJobId =
+                                         Nothing,
+                                       _srsJobStatus = Nothing,
+                                       _srsResponseStatus = pResponseStatus_}
 
 -- | The identifier of the sentiment detection job to stop.
 srsJobId :: Lens' StopSentimentDetectionJobResponse (Maybe Text)

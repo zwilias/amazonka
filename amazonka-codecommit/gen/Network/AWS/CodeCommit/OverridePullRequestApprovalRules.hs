@@ -37,21 +37,23 @@ module Network.AWS.CodeCommit.OverridePullRequestApprovalRules
     ) where
 
 import Network.AWS.CodeCommit.Types
-import Network.AWS.CodeCommit.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 
 -- | /See:/ 'overridePullRequestApprovalRules' smart constructor.
-data OverridePullRequestApprovalRules =
-  OverridePullRequestApprovalRules'
-    { _oprarPullRequestId  :: !Text
-    , _oprarRevisionId     :: !Text
-    , _oprarOverrideStatus :: !OverrideStatus
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data OverridePullRequestApprovalRules = OverridePullRequestApprovalRules'{_oprarPullRequestId
+                                                                          ::
+                                                                          !Text,
+                                                                          _oprarRevisionId
+                                                                          ::
+                                                                          !Text,
+                                                                          _oprarOverrideStatus
+                                                                          ::
+                                                                          !OverrideStatus}
+                                          deriving (Eq, Read, Show, Data,
+                                                    Typeable, Generic)
 
 -- | Creates a value of 'OverridePullRequestApprovalRules' with the minimum fields required to make a request.
 --
@@ -67,13 +69,12 @@ overridePullRequestApprovalRules
     -> Text -- ^ 'oprarRevisionId'
     -> OverrideStatus -- ^ 'oprarOverrideStatus'
     -> OverridePullRequestApprovalRules
-overridePullRequestApprovalRules pPullRequestId_ pRevisionId_ pOverrideStatus_ =
-  OverridePullRequestApprovalRules'
-    { _oprarPullRequestId = pPullRequestId_
-    , _oprarRevisionId = pRevisionId_
-    , _oprarOverrideStatus = pOverrideStatus_
-    }
-
+overridePullRequestApprovalRules pPullRequestId_
+  pRevisionId_ pOverrideStatus_
+  = OverridePullRequestApprovalRules'{_oprarPullRequestId
+                                        = pPullRequestId_,
+                                      _oprarRevisionId = pRevisionId_,
+                                      _oprarOverrideStatus = pOverrideStatus_}
 
 -- | The system-generated ID of the pull request for which you want to override all approval rule requirements. To get this information, use 'GetPullRequest' .
 oprarPullRequestId :: Lens' OverridePullRequestApprovalRules Text
@@ -131,18 +132,17 @@ instance ToQuery OverridePullRequestApprovalRules
         toQuery = const mempty
 
 -- | /See:/ 'overridePullRequestApprovalRulesResponse' smart constructor.
-data OverridePullRequestApprovalRulesResponse =
-  OverridePullRequestApprovalRulesResponse'
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data OverridePullRequestApprovalRulesResponse = OverridePullRequestApprovalRulesResponse'
+                                                  deriving (Eq, Read, Show,
+                                                            Data, Typeable,
+                                                            Generic)
 
 -- | Creates a value of 'OverridePullRequestApprovalRulesResponse' with the minimum fields required to make a request.
 --
 overridePullRequestApprovalRulesResponse
     :: OverridePullRequestApprovalRulesResponse
-overridePullRequestApprovalRulesResponse =
-  OverridePullRequestApprovalRulesResponse'
-
+overridePullRequestApprovalRulesResponse
+  = OverridePullRequestApprovalRulesResponse'
 
 instance NFData
            OverridePullRequestApprovalRulesResponse

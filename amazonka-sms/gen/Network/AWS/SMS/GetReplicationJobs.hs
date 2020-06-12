@@ -46,17 +46,13 @@ import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 import Network.AWS.SMS.Types
-import Network.AWS.SMS.Types.Product
 
 -- | /See:/ 'getReplicationJobs' smart constructor.
-data GetReplicationJobs =
-  GetReplicationJobs'
-    { _grjReplicationJobId :: !(Maybe Text)
-    , _grjNextToken        :: !(Maybe Text)
-    , _grjMaxResults       :: !(Maybe Int)
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data GetReplicationJobs = GetReplicationJobs'{_grjReplicationJobId
+                                              :: !(Maybe Text),
+                                              _grjNextToken :: !(Maybe Text),
+                                              _grjMaxResults :: !(Maybe Int)}
+                            deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'GetReplicationJobs' with the minimum fields required to make a request.
 --
@@ -69,13 +65,9 @@ data GetReplicationJobs =
 -- * 'grjMaxResults' - Undocumented member.
 getReplicationJobs
     :: GetReplicationJobs
-getReplicationJobs =
-  GetReplicationJobs'
-    { _grjReplicationJobId = Nothing
-    , _grjNextToken = Nothing
-    , _grjMaxResults = Nothing
-    }
-
+getReplicationJobs
+  = GetReplicationJobs'{_grjReplicationJobId = Nothing,
+                        _grjNextToken = Nothing, _grjMaxResults = Nothing}
 
 -- | Undocumented member.
 grjReplicationJobId :: Lens' GetReplicationJobs (Maybe Text)
@@ -137,14 +129,16 @@ instance ToQuery GetReplicationJobs where
         toQuery = const mempty
 
 -- | /See:/ 'getReplicationJobsResponse' smart constructor.
-data GetReplicationJobsResponse =
-  GetReplicationJobsResponse'
-    { _grjrsReplicationJobList :: !(Maybe [ReplicationJob])
-    , _grjrsNextToken          :: !(Maybe Text)
-    , _grjrsResponseStatus     :: !Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data GetReplicationJobsResponse = GetReplicationJobsResponse'{_grjrsReplicationJobList
+                                                              ::
+                                                              !(Maybe
+                                                                  [ReplicationJob]),
+                                                              _grjrsNextToken ::
+                                                              !(Maybe Text),
+                                                              _grjrsResponseStatus
+                                                              :: !Int}
+                                    deriving (Eq, Read, Show, Data, Typeable,
+                                              Generic)
 
 -- | Creates a value of 'GetReplicationJobsResponse' with the minimum fields required to make a request.
 --
@@ -158,13 +152,11 @@ data GetReplicationJobsResponse =
 getReplicationJobsResponse
     :: Int -- ^ 'grjrsResponseStatus'
     -> GetReplicationJobsResponse
-getReplicationJobsResponse pResponseStatus_ =
-  GetReplicationJobsResponse'
-    { _grjrsReplicationJobList = Nothing
-    , _grjrsNextToken = Nothing
-    , _grjrsResponseStatus = pResponseStatus_
-    }
-
+getReplicationJobsResponse pResponseStatus_
+  = GetReplicationJobsResponse'{_grjrsReplicationJobList
+                                  = Nothing,
+                                _grjrsNextToken = Nothing,
+                                _grjrsResponseStatus = pResponseStatus_}
 
 -- | Undocumented member.
 grjrsReplicationJobList :: Lens' GetReplicationJobsResponse [ReplicationJob]

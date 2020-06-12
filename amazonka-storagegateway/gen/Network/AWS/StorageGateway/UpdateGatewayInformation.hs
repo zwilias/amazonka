@@ -45,17 +45,16 @@ import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 import Network.AWS.StorageGateway.Types
-import Network.AWS.StorageGateway.Types.Product
 
 -- | /See:/ 'updateGatewayInformation' smart constructor.
-data UpdateGatewayInformation =
-  UpdateGatewayInformation'
-    { _ugiGatewayName     :: !(Maybe Text)
-    , _ugiGatewayTimezone :: !(Maybe Text)
-    , _ugiGatewayARN      :: !Text
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data UpdateGatewayInformation = UpdateGatewayInformation'{_ugiGatewayName
+                                                          :: !(Maybe Text),
+                                                          _ugiGatewayTimezone ::
+                                                          !(Maybe Text),
+                                                          _ugiGatewayARN ::
+                                                          !Text}
+                                  deriving (Eq, Read, Show, Data, Typeable,
+                                            Generic)
 
 -- | Creates a value of 'UpdateGatewayInformation' with the minimum fields required to make a request.
 --
@@ -69,13 +68,11 @@ data UpdateGatewayInformation =
 updateGatewayInformation
     :: Text -- ^ 'ugiGatewayARN'
     -> UpdateGatewayInformation
-updateGatewayInformation pGatewayARN_ =
-  UpdateGatewayInformation'
-    { _ugiGatewayName = Nothing
-    , _ugiGatewayTimezone = Nothing
-    , _ugiGatewayARN = pGatewayARN_
-    }
-
+updateGatewayInformation pGatewayARN_
+  = UpdateGatewayInformation'{_ugiGatewayName =
+                                Nothing,
+                              _ugiGatewayTimezone = Nothing,
+                              _ugiGatewayARN = pGatewayARN_}
 
 -- | Undocumented member.
 ugiGatewayName :: Lens' UpdateGatewayInformation (Maybe Text)
@@ -133,14 +130,19 @@ instance ToQuery UpdateGatewayInformation where
 --
 --
 -- /See:/ 'updateGatewayInformationResponse' smart constructor.
-data UpdateGatewayInformationResponse =
-  UpdateGatewayInformationResponse'
-    { _ugirsGatewayARN     :: !(Maybe Text)
-    , _ugirsGatewayName    :: !(Maybe Text)
-    , _ugirsResponseStatus :: !Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data UpdateGatewayInformationResponse = UpdateGatewayInformationResponse'{_ugirsGatewayARN
+                                                                          ::
+                                                                          !(Maybe
+                                                                              Text),
+                                                                          _ugirsGatewayName
+                                                                          ::
+                                                                          !(Maybe
+                                                                              Text),
+                                                                          _ugirsResponseStatus
+                                                                          ::
+                                                                          !Int}
+                                          deriving (Eq, Read, Show, Data,
+                                                    Typeable, Generic)
 
 -- | Creates a value of 'UpdateGatewayInformationResponse' with the minimum fields required to make a request.
 --
@@ -154,13 +156,11 @@ data UpdateGatewayInformationResponse =
 updateGatewayInformationResponse
     :: Int -- ^ 'ugirsResponseStatus'
     -> UpdateGatewayInformationResponse
-updateGatewayInformationResponse pResponseStatus_ =
-  UpdateGatewayInformationResponse'
-    { _ugirsGatewayARN = Nothing
-    , _ugirsGatewayName = Nothing
-    , _ugirsResponseStatus = pResponseStatus_
-    }
-
+updateGatewayInformationResponse pResponseStatus_
+  = UpdateGatewayInformationResponse'{_ugirsGatewayARN
+                                        = Nothing,
+                                      _ugirsGatewayName = Nothing,
+                                      _ugirsResponseStatus = pResponseStatus_}
 
 -- | Undocumented member.
 ugirsGatewayARN :: Lens' UpdateGatewayInformationResponse (Maybe Text)

@@ -48,19 +48,15 @@ import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 import Network.AWS.SES.Types
-import Network.AWS.SES.Types.Product
 
 -- | Represents a request to generate the CNAME records needed to set up Easy DKIM with Amazon SES. For more information about setting up Easy DKIM, see the <http://docs.aws.amazon.com/ses/latest/DeveloperGuide/easy-dkim.html Amazon SES Developer Guide> .
 --
 --
 --
 -- /See:/ 'verifyDomainDkim' smart constructor.
-newtype VerifyDomainDkim =
-  VerifyDomainDkim'
-    { _vddDomain :: Text
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+newtype VerifyDomainDkim = VerifyDomainDkim'{_vddDomain
+                                             :: Text}
+                             deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'VerifyDomainDkim' with the minimum fields required to make a request.
 --
@@ -70,8 +66,8 @@ newtype VerifyDomainDkim =
 verifyDomainDkim
     :: Text -- ^ 'vddDomain'
     -> VerifyDomainDkim
-verifyDomainDkim pDomain_ = VerifyDomainDkim' {_vddDomain = pDomain_}
-
+verifyDomainDkim pDomain_
+  = VerifyDomainDkim'{_vddDomain = pDomain_}
 
 -- | The name of the domain to be verified for Easy DKIM signing.
 vddDomain :: Lens' VerifyDomainDkim Text
@@ -110,13 +106,12 @@ instance ToQuery VerifyDomainDkim where
 --
 --
 -- /See:/ 'verifyDomainDkimResponse' smart constructor.
-data VerifyDomainDkimResponse =
-  VerifyDomainDkimResponse'
-    { _vddrsResponseStatus :: !Int
-    , _vddrsDkimTokens     :: ![Text]
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data VerifyDomainDkimResponse = VerifyDomainDkimResponse'{_vddrsResponseStatus
+                                                          :: !Int,
+                                                          _vddrsDkimTokens ::
+                                                          ![Text]}
+                                  deriving (Eq, Read, Show, Data, Typeable,
+                                            Generic)
 
 -- | Creates a value of 'VerifyDomainDkimResponse' with the minimum fields required to make a request.
 --
@@ -128,10 +123,10 @@ data VerifyDomainDkimResponse =
 verifyDomainDkimResponse
     :: Int -- ^ 'vddrsResponseStatus'
     -> VerifyDomainDkimResponse
-verifyDomainDkimResponse pResponseStatus_ =
-  VerifyDomainDkimResponse'
-    {_vddrsResponseStatus = pResponseStatus_, _vddrsDkimTokens = mempty}
-
+verifyDomainDkimResponse pResponseStatus_
+  = VerifyDomainDkimResponse'{_vddrsResponseStatus =
+                                pResponseStatus_,
+                              _vddrsDkimTokens = mempty}
 
 -- | -- | The response status code.
 vddrsResponseStatus :: Lens' VerifyDomainDkimResponse Int

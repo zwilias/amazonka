@@ -41,7 +41,6 @@ module Network.AWS.APIGateway.UpdateBasePathMapping
     ) where
 
 import Network.AWS.APIGateway.Types
-import Network.AWS.APIGateway.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.Request
@@ -52,14 +51,13 @@ import Network.AWS.Response
 --
 --
 -- /See:/ 'updateBasePathMapping' smart constructor.
-data UpdateBasePathMapping =
-  UpdateBasePathMapping'
-    { _ubpmPatchOperations :: !(Maybe [PatchOperation])
-    , _ubpmDomainName      :: !Text
-    , _ubpmBasePath        :: !Text
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data UpdateBasePathMapping = UpdateBasePathMapping'{_ubpmPatchOperations
+                                                    ::
+                                                    !(Maybe [PatchOperation]),
+                                                    _ubpmDomainName :: !Text,
+                                                    _ubpmBasePath :: !Text}
+                               deriving (Eq, Read, Show, Data, Typeable,
+                                         Generic)
 
 -- | Creates a value of 'UpdateBasePathMapping' with the minimum fields required to make a request.
 --
@@ -74,13 +72,11 @@ updateBasePathMapping
     :: Text -- ^ 'ubpmDomainName'
     -> Text -- ^ 'ubpmBasePath'
     -> UpdateBasePathMapping
-updateBasePathMapping pDomainName_ pBasePath_ =
-  UpdateBasePathMapping'
-    { _ubpmPatchOperations = Nothing
-    , _ubpmDomainName = pDomainName_
-    , _ubpmBasePath = pBasePath_
-    }
-
+updateBasePathMapping pDomainName_ pBasePath_
+  = UpdateBasePathMapping'{_ubpmPatchOperations =
+                             Nothing,
+                           _ubpmDomainName = pDomainName_,
+                           _ubpmBasePath = pBasePath_}
 
 -- | A list of update operations to be applied to the specified resource and in the order specified in this list.
 ubpmPatchOperations :: Lens' UpdateBasePathMapping [PatchOperation]

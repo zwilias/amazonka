@@ -45,7 +45,6 @@ module Network.AWS.EC2.DescribeInstanceTypeOfferings
     ) where
 
 import Network.AWS.EC2.Types
-import Network.AWS.EC2.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Pager
 import Network.AWS.Prelude
@@ -53,16 +52,28 @@ import Network.AWS.Request
 import Network.AWS.Response
 
 -- | /See:/ 'describeInstanceTypeOfferings' smart constructor.
-data DescribeInstanceTypeOfferings =
-  DescribeInstanceTypeOfferings'
-    { _ditoFilters      :: !(Maybe [Filter])
-    , _ditoNextToken    :: !(Maybe Text)
-    , _ditoLocationType :: !(Maybe LocationType)
-    , _ditoDryRun       :: !(Maybe Bool)
-    , _ditoMaxResults   :: !(Maybe Nat)
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data DescribeInstanceTypeOfferings = DescribeInstanceTypeOfferings'{_ditoFilters
+                                                                    ::
+                                                                    !(Maybe
+                                                                        [Filter]),
+                                                                    _ditoNextToken
+                                                                    ::
+                                                                    !(Maybe
+                                                                        Text),
+                                                                    _ditoLocationType
+                                                                    ::
+                                                                    !(Maybe
+                                                                        LocationType),
+                                                                    _ditoDryRun
+                                                                    ::
+                                                                    !(Maybe
+                                                                        Bool),
+                                                                    _ditoMaxResults
+                                                                    ::
+                                                                    !(Maybe
+                                                                        Nat)}
+                                       deriving (Eq, Read, Show, Data, Typeable,
+                                                 Generic)
 
 -- | Creates a value of 'DescribeInstanceTypeOfferings' with the minimum fields required to make a request.
 --
@@ -79,15 +90,13 @@ data DescribeInstanceTypeOfferings =
 -- * 'ditoMaxResults' - The maximum number of results to return for the request in a single page. The remaining results can be seen by sending another request with the next token value.
 describeInstanceTypeOfferings
     :: DescribeInstanceTypeOfferings
-describeInstanceTypeOfferings =
-  DescribeInstanceTypeOfferings'
-    { _ditoFilters = Nothing
-    , _ditoNextToken = Nothing
-    , _ditoLocationType = Nothing
-    , _ditoDryRun = Nothing
-    , _ditoMaxResults = Nothing
-    }
-
+describeInstanceTypeOfferings
+  = DescribeInstanceTypeOfferings'{_ditoFilters =
+                                     Nothing,
+                                   _ditoNextToken = Nothing,
+                                   _ditoLocationType = Nothing,
+                                   _ditoDryRun = Nothing,
+                                   _ditoMaxResults = Nothing}
 
 -- | One or more filters. Filter names and values are case-sensitive.     * @location@ - This depends on the location type. For example, if the location type is @region@ (default), the location is the Region code (for example, @us-east-2@ .)     * @instance-type@ - The instance type.
 ditoFilters :: Lens' DescribeInstanceTypeOfferings [Filter]
@@ -154,14 +163,19 @@ instance ToQuery DescribeInstanceTypeOfferings where
                "MaxResults" =: _ditoMaxResults]
 
 -- | /See:/ 'describeInstanceTypeOfferingsResponse' smart constructor.
-data DescribeInstanceTypeOfferingsResponse =
-  DescribeInstanceTypeOfferingsResponse'
-    { _ditorsInstanceTypeOfferings :: !(Maybe [InstanceTypeOffering])
-    , _ditorsNextToken             :: !(Maybe Text)
-    , _ditorsResponseStatus        :: !Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data DescribeInstanceTypeOfferingsResponse = DescribeInstanceTypeOfferingsResponse'{_ditorsInstanceTypeOfferings
+                                                                                    ::
+                                                                                    !(Maybe
+                                                                                        [InstanceTypeOffering]),
+                                                                                    _ditorsNextToken
+                                                                                    ::
+                                                                                    !(Maybe
+                                                                                        Text),
+                                                                                    _ditorsResponseStatus
+                                                                                    ::
+                                                                                    !Int}
+                                               deriving (Eq, Read, Show, Data,
+                                                         Typeable, Generic)
 
 -- | Creates a value of 'DescribeInstanceTypeOfferingsResponse' with the minimum fields required to make a request.
 --
@@ -175,13 +189,13 @@ data DescribeInstanceTypeOfferingsResponse =
 describeInstanceTypeOfferingsResponse
     :: Int -- ^ 'ditorsResponseStatus'
     -> DescribeInstanceTypeOfferingsResponse
-describeInstanceTypeOfferingsResponse pResponseStatus_ =
-  DescribeInstanceTypeOfferingsResponse'
-    { _ditorsInstanceTypeOfferings = Nothing
-    , _ditorsNextToken = Nothing
-    , _ditorsResponseStatus = pResponseStatus_
-    }
-
+describeInstanceTypeOfferingsResponse
+  pResponseStatus_
+  = DescribeInstanceTypeOfferingsResponse'{_ditorsInstanceTypeOfferings
+                                             = Nothing,
+                                           _ditorsNextToken = Nothing,
+                                           _ditorsResponseStatus =
+                                             pResponseStatus_}
 
 -- | The instance types offered.
 ditorsInstanceTypeOfferings :: Lens' DescribeInstanceTypeOfferingsResponse [InstanceTypeOffering]

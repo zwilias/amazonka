@@ -42,19 +42,15 @@ module Network.AWS.OpsWorks.DescribeApps
 
 import Network.AWS.Lens
 import Network.AWS.OpsWorks.Types
-import Network.AWS.OpsWorks.Types.Product
 import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 
 -- | /See:/ 'describeApps' smart constructor.
-data DescribeApps =
-  DescribeApps'
-    { _daAppIds  :: !(Maybe [Text])
-    , _daStackId :: !(Maybe Text)
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data DescribeApps = DescribeApps'{_daAppIds ::
+                                  !(Maybe [Text]),
+                                  _daStackId :: !(Maybe Text)}
+                      deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'DescribeApps' with the minimum fields required to make a request.
 --
@@ -65,8 +61,9 @@ data DescribeApps =
 -- * 'daStackId' - The app stack ID. If you use this parameter, @DescribeApps@ returns a description of the apps in the specified stack.
 describeApps
     :: DescribeApps
-describeApps = DescribeApps' {_daAppIds = Nothing, _daStackId = Nothing}
-
+describeApps
+  = DescribeApps'{_daAppIds = Nothing,
+                  _daStackId = Nothing}
 
 -- | An array of app IDs for the apps to be described. If you use this parameter, @DescribeApps@ returns a description of the specified apps. Otherwise, it returns a description of every app.
 daAppIds :: Lens' DescribeApps [Text]
@@ -116,30 +113,26 @@ instance ToQuery DescribeApps where
 --
 --
 -- /See:/ 'describeAppsResponse' smart constructor.
-data DescribeAppsResponse =
-  DescribeAppsResponse'
-    { _darsApps           :: !(Maybe [App])
-    , _darsResponseStatus :: !Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data DescribeAppsResponse = DescribeAppsResponse'{_darsApps
+                                                  :: !(Maybe [App]),
+                                                  _darsResponseStatus :: !Int}
+                              deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'DescribeAppsResponse' with the minimum fields required to make a request.
 --
 -- Use one of the following lenses to modify other fields as desired:
 --
--- * 'darsApps' - An array of @App@ objects that describe the specified apps.
+-- * 'darsApps' - An array of @App@ objects that describe the specified apps. 
 --
 -- * 'darsResponseStatus' - -- | The response status code.
 describeAppsResponse
     :: Int -- ^ 'darsResponseStatus'
     -> DescribeAppsResponse
-describeAppsResponse pResponseStatus_ =
-  DescribeAppsResponse'
-    {_darsApps = Nothing, _darsResponseStatus = pResponseStatus_}
+describeAppsResponse pResponseStatus_
+  = DescribeAppsResponse'{_darsApps = Nothing,
+                          _darsResponseStatus = pResponseStatus_}
 
-
--- | An array of @App@ objects that describe the specified apps.
+-- | An array of @App@ objects that describe the specified apps. 
 darsApps :: Lens' DescribeAppsResponse [App]
 darsApps = lens _darsApps (\ s a -> s{_darsApps = a}) . _Default . _Coerce
 

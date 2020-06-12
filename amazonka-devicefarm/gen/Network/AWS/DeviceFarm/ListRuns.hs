@@ -42,7 +42,6 @@ module Network.AWS.DeviceFarm.ListRuns
     ) where
 
 import Network.AWS.DeviceFarm.Types
-import Network.AWS.DeviceFarm.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Pager
 import Network.AWS.Prelude
@@ -54,13 +53,10 @@ import Network.AWS.Response
 --
 --
 -- /See:/ 'listRuns' smart constructor.
-data ListRuns =
-  ListRuns'
-    { _lrNextToken :: !(Maybe Text)
-    , _lrArn       :: !Text
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data ListRuns = ListRuns'{_lrNextToken ::
+                          !(Maybe Text),
+                          _lrArn :: !Text}
+                  deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'ListRuns' with the minimum fields required to make a request.
 --
@@ -72,8 +68,8 @@ data ListRuns =
 listRuns
     :: Text -- ^ 'lrArn'
     -> ListRuns
-listRuns pArn_ = ListRuns' {_lrNextToken = Nothing, _lrArn = pArn_}
-
+listRuns pArn_
+  = ListRuns'{_lrNextToken = Nothing, _lrArn = pArn_}
 
 -- | An identifier that was returned from the previous call to this operation, which can be used to return the next set of items in the list.
 lrNextToken :: Lens' ListRuns (Maybe Text)
@@ -131,14 +127,11 @@ instance ToQuery ListRuns where
 --
 --
 -- /See:/ 'listRunsResponse' smart constructor.
-data ListRunsResponse =
-  ListRunsResponse'
-    { _lrrsRuns           :: !(Maybe [Run])
-    , _lrrsNextToken      :: !(Maybe Text)
-    , _lrrsResponseStatus :: !Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data ListRunsResponse = ListRunsResponse'{_lrrsRuns
+                                          :: !(Maybe [Run]),
+                                          _lrrsNextToken :: !(Maybe Text),
+                                          _lrrsResponseStatus :: !Int}
+                          deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'ListRunsResponse' with the minimum fields required to make a request.
 --
@@ -152,13 +145,10 @@ data ListRunsResponse =
 listRunsResponse
     :: Int -- ^ 'lrrsResponseStatus'
     -> ListRunsResponse
-listRunsResponse pResponseStatus_ =
-  ListRunsResponse'
-    { _lrrsRuns = Nothing
-    , _lrrsNextToken = Nothing
-    , _lrrsResponseStatus = pResponseStatus_
-    }
-
+listRunsResponse pResponseStatus_
+  = ListRunsResponse'{_lrrsRuns = Nothing,
+                      _lrrsNextToken = Nothing,
+                      _lrrsResponseStatus = pResponseStatus_}
 
 -- | Information about the runs.
 lrrsRuns :: Lens' ListRunsResponse [Run]

@@ -39,21 +39,17 @@ module Network.AWS.Greengrass.ListDeployments
     ) where
 
 import Network.AWS.Greengrass.Types
-import Network.AWS.Greengrass.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 
 -- | /See:/ 'listDeployments' smart constructor.
-data ListDeployments =
-  ListDeployments'
-    { _lNextToken  :: !(Maybe Text)
-    , _lMaxResults :: !(Maybe Text)
-    , _lGroupId    :: !Text
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data ListDeployments = ListDeployments'{_lNextToken
+                                        :: !(Maybe Text),
+                                        _lMaxResults :: !(Maybe Text),
+                                        _lGroupId :: !Text}
+                         deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'ListDeployments' with the minimum fields required to make a request.
 --
@@ -67,10 +63,9 @@ data ListDeployments =
 listDeployments
     :: Text -- ^ 'lGroupId'
     -> ListDeployments
-listDeployments pGroupId_ =
-  ListDeployments'
-    {_lNextToken = Nothing, _lMaxResults = Nothing, _lGroupId = pGroupId_}
-
+listDeployments pGroupId_
+  = ListDeployments'{_lNextToken = Nothing,
+                     _lMaxResults = Nothing, _lGroupId = pGroupId_}
 
 -- | The token for the next set of results, or ''null'' if there are no additional results.
 lNextToken :: Lens' ListDeployments (Maybe Text)
@@ -119,14 +114,14 @@ instance ToQuery ListDeployments where
                "MaxResults" =: _lMaxResults]
 
 -- | /See:/ 'listDeploymentsResponse' smart constructor.
-data ListDeploymentsResponse =
-  ListDeploymentsResponse'
-    { _ldrsNextToken      :: !(Maybe Text)
-    , _ldrsDeployments    :: !(Maybe [Deployment])
-    , _ldrsResponseStatus :: !Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data ListDeploymentsResponse = ListDeploymentsResponse'{_ldrsNextToken
+                                                        :: !(Maybe Text),
+                                                        _ldrsDeployments ::
+                                                        !(Maybe [Deployment]),
+                                                        _ldrsResponseStatus ::
+                                                        !Int}
+                                 deriving (Eq, Read, Show, Data, Typeable,
+                                           Generic)
 
 -- | Creates a value of 'ListDeploymentsResponse' with the minimum fields required to make a request.
 --
@@ -140,13 +135,10 @@ data ListDeploymentsResponse =
 listDeploymentsResponse
     :: Int -- ^ 'ldrsResponseStatus'
     -> ListDeploymentsResponse
-listDeploymentsResponse pResponseStatus_ =
-  ListDeploymentsResponse'
-    { _ldrsNextToken = Nothing
-    , _ldrsDeployments = Nothing
-    , _ldrsResponseStatus = pResponseStatus_
-    }
-
+listDeploymentsResponse pResponseStatus_
+  = ListDeploymentsResponse'{_ldrsNextToken = Nothing,
+                             _ldrsDeployments = Nothing,
+                             _ldrsResponseStatus = pResponseStatus_}
 
 -- | The token for the next set of results, or ''null'' if there are no additional results.
 ldrsNextToken :: Lens' ListDeploymentsResponse (Maybe Text)

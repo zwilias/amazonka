@@ -48,25 +48,22 @@ module Network.AWS.IoT.CreateOTAUpdate
     ) where
 
 import Network.AWS.IoT.Types
-import Network.AWS.IoT.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 
 -- | /See:/ 'createOTAUpdate' smart constructor.
-data CreateOTAUpdate =
-  CreateOTAUpdate'
-    { _cotauAdditionalParameters :: !(Maybe (Map Text Text))
-    , _cotauDescription          :: !(Maybe Text)
-    , _cotauTargetSelection      :: !(Maybe TargetSelection)
-    , _cotauOtaUpdateId          :: !Text
-    , _cotauTargets              :: !(List1 Text)
-    , _cotauFiles                :: !(List1 OTAUpdateFile)
-    , _cotauRoleARN              :: !Text
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data CreateOTAUpdate = CreateOTAUpdate'{_cotauAdditionalParameters
+                                        :: !(Maybe (Map Text Text)),
+                                        _cotauDescription :: !(Maybe Text),
+                                        _cotauTargetSelection ::
+                                        !(Maybe TargetSelection),
+                                        _cotauOtaUpdateId :: !Text,
+                                        _cotauTargets :: !(List1 Text),
+                                        _cotauFiles :: !(List1 OTAUpdateFile),
+                                        _cotauRoleARN :: !Text}
+                         deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'CreateOTAUpdate' with the minimum fields required to make a request.
 --
@@ -91,17 +88,16 @@ createOTAUpdate
     -> NonEmpty OTAUpdateFile -- ^ 'cotauFiles'
     -> Text -- ^ 'cotauRoleARN'
     -> CreateOTAUpdate
-createOTAUpdate pOtaUpdateId_ pTargets_ pFiles_ pRoleARN_ =
-  CreateOTAUpdate'
-    { _cotauAdditionalParameters = Nothing
-    , _cotauDescription = Nothing
-    , _cotauTargetSelection = Nothing
-    , _cotauOtaUpdateId = pOtaUpdateId_
-    , _cotauTargets = _List1 # pTargets_
-    , _cotauFiles = _List1 # pFiles_
-    , _cotauRoleARN = pRoleARN_
-    }
-
+createOTAUpdate pOtaUpdateId_ pTargets_ pFiles_
+  pRoleARN_
+  = CreateOTAUpdate'{_cotauAdditionalParameters =
+                       Nothing,
+                     _cotauDescription = Nothing,
+                     _cotauTargetSelection = Nothing,
+                     _cotauOtaUpdateId = pOtaUpdateId_,
+                     _cotauTargets = _List1 # pTargets_,
+                     _cotauFiles = _List1 # pFiles_,
+                     _cotauRoleARN = pRoleARN_}
 
 -- | A list of additional OTA update parameters which are name-value pairs.
 cotauAdditionalParameters :: Lens' CreateOTAUpdate (HashMap Text Text)
@@ -171,17 +167,22 @@ instance ToQuery CreateOTAUpdate where
         toQuery = const mempty
 
 -- | /See:/ 'createOTAUpdateResponse' smart constructor.
-data CreateOTAUpdateResponse =
-  CreateOTAUpdateResponse'
-    { _cotaursAwsIotJobId     :: !(Maybe Text)
-    , _cotaursOtaUpdateStatus :: !(Maybe OTAUpdateStatus)
-    , _cotaursAwsIotJobARN    :: !(Maybe Text)
-    , _cotaursOtaUpdateId     :: !(Maybe Text)
-    , _cotaursOtaUpdateARN    :: !(Maybe Text)
-    , _cotaursResponseStatus  :: !Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data CreateOTAUpdateResponse = CreateOTAUpdateResponse'{_cotaursAwsIotJobId
+                                                        :: !(Maybe Text),
+                                                        _cotaursOtaUpdateStatus
+                                                        ::
+                                                        !(Maybe
+                                                            OTAUpdateStatus),
+                                                        _cotaursAwsIotJobARN ::
+                                                        !(Maybe Text),
+                                                        _cotaursOtaUpdateId ::
+                                                        !(Maybe Text),
+                                                        _cotaursOtaUpdateARN ::
+                                                        !(Maybe Text),
+                                                        _cotaursResponseStatus
+                                                        :: !Int}
+                                 deriving (Eq, Read, Show, Data, Typeable,
+                                           Generic)
 
 -- | Creates a value of 'CreateOTAUpdateResponse' with the minimum fields required to make a request.
 --
@@ -201,16 +202,14 @@ data CreateOTAUpdateResponse =
 createOTAUpdateResponse
     :: Int -- ^ 'cotaursResponseStatus'
     -> CreateOTAUpdateResponse
-createOTAUpdateResponse pResponseStatus_ =
-  CreateOTAUpdateResponse'
-    { _cotaursAwsIotJobId = Nothing
-    , _cotaursOtaUpdateStatus = Nothing
-    , _cotaursAwsIotJobARN = Nothing
-    , _cotaursOtaUpdateId = Nothing
-    , _cotaursOtaUpdateARN = Nothing
-    , _cotaursResponseStatus = pResponseStatus_
-    }
-
+createOTAUpdateResponse pResponseStatus_
+  = CreateOTAUpdateResponse'{_cotaursAwsIotJobId =
+                               Nothing,
+                             _cotaursOtaUpdateStatus = Nothing,
+                             _cotaursAwsIotJobARN = Nothing,
+                             _cotaursOtaUpdateId = Nothing,
+                             _cotaursOtaUpdateARN = Nothing,
+                             _cotaursResponseStatus = pResponseStatus_}
 
 -- | The AWS IoT job ID associated with the OTA update.
 cotaursAwsIotJobId :: Lens' CreateOTAUpdateResponse (Maybe Text)

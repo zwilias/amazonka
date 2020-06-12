@@ -46,21 +46,18 @@ module Network.AWS.Organizations.ListTargetsForPolicy
 
 import Network.AWS.Lens
 import Network.AWS.Organizations.Types
-import Network.AWS.Organizations.Types.Product
 import Network.AWS.Pager
 import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 
 -- | /See:/ 'listTargetsForPolicy' smart constructor.
-data ListTargetsForPolicy =
-  ListTargetsForPolicy'
-    { _ltfpNextToken  :: !(Maybe Text)
-    , _ltfpMaxResults :: !(Maybe Nat)
-    , _ltfpPolicyId   :: !Text
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data ListTargetsForPolicy = ListTargetsForPolicy'{_ltfpNextToken
+                                                  :: !(Maybe Text),
+                                                  _ltfpMaxResults ::
+                                                  !(Maybe Nat),
+                                                  _ltfpPolicyId :: !Text}
+                              deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'ListTargetsForPolicy' with the minimum fields required to make a request.
 --
@@ -74,13 +71,10 @@ data ListTargetsForPolicy =
 listTargetsForPolicy
     :: Text -- ^ 'ltfpPolicyId'
     -> ListTargetsForPolicy
-listTargetsForPolicy pPolicyId_ =
-  ListTargetsForPolicy'
-    { _ltfpNextToken = Nothing
-    , _ltfpMaxResults = Nothing
-    , _ltfpPolicyId = pPolicyId_
-    }
-
+listTargetsForPolicy pPolicyId_
+  = ListTargetsForPolicy'{_ltfpNextToken = Nothing,
+                          _ltfpMaxResults = Nothing,
+                          _ltfpPolicyId = pPolicyId_}
 
 -- | Use this parameter if you receive a @NextToken@ response in a previous request that indicates that there is more output available. Set it to the value of the previous call's @NextToken@ response to indicate where the output should continue from.
 ltfpNextToken :: Lens' ListTargetsForPolicy (Maybe Text)
@@ -141,14 +135,17 @@ instance ToQuery ListTargetsForPolicy where
         toQuery = const mempty
 
 -- | /See:/ 'listTargetsForPolicyResponse' smart constructor.
-data ListTargetsForPolicyResponse =
-  ListTargetsForPolicyResponse'
-    { _ltfprsNextToken      :: !(Maybe Text)
-    , _ltfprsTargets        :: !(Maybe [PolicyTargetSummary])
-    , _ltfprsResponseStatus :: !Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data ListTargetsForPolicyResponse = ListTargetsForPolicyResponse'{_ltfprsNextToken
+                                                                  ::
+                                                                  !(Maybe Text),
+                                                                  _ltfprsTargets
+                                                                  ::
+                                                                  !(Maybe
+                                                                      [PolicyTargetSummary]),
+                                                                  _ltfprsResponseStatus
+                                                                  :: !Int}
+                                      deriving (Eq, Read, Show, Data, Typeable,
+                                                Generic)
 
 -- | Creates a value of 'ListTargetsForPolicyResponse' with the minimum fields required to make a request.
 --
@@ -162,13 +159,11 @@ data ListTargetsForPolicyResponse =
 listTargetsForPolicyResponse
     :: Int -- ^ 'ltfprsResponseStatus'
     -> ListTargetsForPolicyResponse
-listTargetsForPolicyResponse pResponseStatus_ =
-  ListTargetsForPolicyResponse'
-    { _ltfprsNextToken = Nothing
-    , _ltfprsTargets = Nothing
-    , _ltfprsResponseStatus = pResponseStatus_
-    }
-
+listTargetsForPolicyResponse pResponseStatus_
+  = ListTargetsForPolicyResponse'{_ltfprsNextToken =
+                                    Nothing,
+                                  _ltfprsTargets = Nothing,
+                                  _ltfprsResponseStatus = pResponseStatus_}
 
 -- | If present, this value indicates that there is more output available than is included in the current response. Use this value in the @NextToken@ request parameter in a subsequent call to the operation to get the next part of the output. You should repeat this until the @NextToken@ response element comes back as @null@ .
 ltfprsNextToken :: Lens' ListTargetsForPolicyResponse (Maybe Text)

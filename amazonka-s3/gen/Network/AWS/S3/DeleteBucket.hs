@@ -37,15 +37,11 @@ import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 import Network.AWS.S3.Types
-import Network.AWS.S3.Types.Product
 
 -- | /See:/ 'deleteBucket' smart constructor.
-newtype DeleteBucket =
-  DeleteBucket'
-    { _dbBucket :: BucketName
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+newtype DeleteBucket = DeleteBucket'{_dbBucket ::
+                                     BucketName}
+                         deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'DeleteBucket' with the minimum fields required to make a request.
 --
@@ -55,8 +51,8 @@ newtype DeleteBucket =
 deleteBucket
     :: BucketName -- ^ 'dbBucket'
     -> DeleteBucket
-deleteBucket pBucket_ = DeleteBucket' {_dbBucket = pBucket_}
-
+deleteBucket pBucket_
+  = DeleteBucket'{_dbBucket = pBucket_}
 
 -- | Undocumented member.
 dbBucket :: Lens' DeleteBucket BucketName
@@ -82,16 +78,13 @@ instance ToQuery DeleteBucket where
         toQuery = const mempty
 
 -- | /See:/ 'deleteBucketResponse' smart constructor.
-data DeleteBucketResponse =
-  DeleteBucketResponse'
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data DeleteBucketResponse = DeleteBucketResponse'
+                              deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'DeleteBucketResponse' with the minimum fields required to make a request.
 --
 deleteBucketResponse
     :: DeleteBucketResponse
 deleteBucketResponse = DeleteBucketResponse'
-
 
 instance NFData DeleteBucketResponse where

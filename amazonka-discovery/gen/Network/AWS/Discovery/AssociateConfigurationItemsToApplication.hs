@@ -38,20 +38,21 @@ module Network.AWS.Discovery.AssociateConfigurationItemsToApplication
     ) where
 
 import Network.AWS.Discovery.Types
-import Network.AWS.Discovery.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 
 -- | /See:/ 'associateConfigurationItemsToApplication' smart constructor.
-data AssociateConfigurationItemsToApplication =
-  AssociateConfigurationItemsToApplication'
-    { _acitaApplicationConfigurationId :: !Text
-    , _acitaConfigurationIds           :: ![Text]
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data AssociateConfigurationItemsToApplication = AssociateConfigurationItemsToApplication'{_acitaApplicationConfigurationId
+                                                                                          ::
+                                                                                          !Text,
+                                                                                          _acitaConfigurationIds
+                                                                                          ::
+                                                                                          ![Text]}
+                                                  deriving (Eq, Read, Show,
+                                                            Data, Typeable,
+                                                            Generic)
 
 -- | Creates a value of 'AssociateConfigurationItemsToApplication' with the minimum fields required to make a request.
 --
@@ -63,12 +64,11 @@ data AssociateConfigurationItemsToApplication =
 associateConfigurationItemsToApplication
     :: Text -- ^ 'acitaApplicationConfigurationId'
     -> AssociateConfigurationItemsToApplication
-associateConfigurationItemsToApplication pApplicationConfigurationId_ =
-  AssociateConfigurationItemsToApplication'
-    { _acitaApplicationConfigurationId = pApplicationConfigurationId_
-    , _acitaConfigurationIds = mempty
-    }
-
+associateConfigurationItemsToApplication
+  pApplicationConfigurationId_
+  = AssociateConfigurationItemsToApplication'{_acitaApplicationConfigurationId
+                                                = pApplicationConfigurationId_,
+                                              _acitaConfigurationIds = mempty}
 
 -- | The configuration ID of an application with which items are to be associated.
 acitaApplicationConfigurationId :: Lens' AssociateConfigurationItemsToApplication Text
@@ -132,12 +132,14 @@ instance ToQuery
         toQuery = const mempty
 
 -- | /See:/ 'associateConfigurationItemsToApplicationResponse' smart constructor.
-newtype AssociateConfigurationItemsToApplicationResponse =
-  AssociateConfigurationItemsToApplicationResponse'
-    { _acitarsResponseStatus :: Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+newtype AssociateConfigurationItemsToApplicationResponse = AssociateConfigurationItemsToApplicationResponse'{_acitarsResponseStatus
+                                                                                                             ::
+                                                                                                             Int}
+                                                             deriving (Eq, Read,
+                                                                       Show,
+                                                                       Data,
+                                                                       Typeable,
+                                                                       Generic)
 
 -- | Creates a value of 'AssociateConfigurationItemsToApplicationResponse' with the minimum fields required to make a request.
 --
@@ -147,10 +149,10 @@ newtype AssociateConfigurationItemsToApplicationResponse =
 associateConfigurationItemsToApplicationResponse
     :: Int -- ^ 'acitarsResponseStatus'
     -> AssociateConfigurationItemsToApplicationResponse
-associateConfigurationItemsToApplicationResponse pResponseStatus_ =
-  AssociateConfigurationItemsToApplicationResponse'
-    {_acitarsResponseStatus = pResponseStatus_}
-
+associateConfigurationItemsToApplicationResponse
+  pResponseStatus_
+  = AssociateConfigurationItemsToApplicationResponse'{_acitarsResponseStatus
+                                                        = pResponseStatus_}
 
 -- | -- | The response status code.
 acitarsResponseStatus :: Lens' AssociateConfigurationItemsToApplicationResponse Int

@@ -44,24 +44,23 @@ module Network.AWS.RDS.DescribeSourceRegions
 import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.RDS.Types
-import Network.AWS.RDS.Types.Product
 import Network.AWS.Request
 import Network.AWS.Response
 
--- |
+-- | 
 --
 --
 --
 -- /See:/ 'describeSourceRegions' smart constructor.
-data DescribeSourceRegions =
-  DescribeSourceRegions'
-    { _dsrRegionName :: !(Maybe Text)
-    , _dsrFilters    :: !(Maybe [Filter])
-    , _dsrMarker     :: !(Maybe Text)
-    , _dsrMaxRecords :: !(Maybe Int)
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data DescribeSourceRegions = DescribeSourceRegions'{_dsrRegionName
+                                                    :: !(Maybe Text),
+                                                    _dsrFilters ::
+                                                    !(Maybe [Filter]),
+                                                    _dsrMarker :: !(Maybe Text),
+                                                    _dsrMaxRecords ::
+                                                    !(Maybe Int)}
+                               deriving (Eq, Read, Show, Data, Typeable,
+                                         Generic)
 
 -- | Creates a value of 'DescribeSourceRegions' with the minimum fields required to make a request.
 --
@@ -76,14 +75,10 @@ data DescribeSourceRegions =
 -- * 'dsrMaxRecords' - The maximum number of records to include in the response. If more records exist than the specified @MaxRecords@ value, a pagination token called a marker is included in the response so that the remaining results can be retrieved.  Default: 100 Constraints: Minimum 20, maximum 100.
 describeSourceRegions
     :: DescribeSourceRegions
-describeSourceRegions =
-  DescribeSourceRegions'
-    { _dsrRegionName = Nothing
-    , _dsrFilters = Nothing
-    , _dsrMarker = Nothing
-    , _dsrMaxRecords = Nothing
-    }
-
+describeSourceRegions
+  = DescribeSourceRegions'{_dsrRegionName = Nothing,
+                           _dsrFilters = Nothing, _dsrMarker = Nothing,
+                           _dsrMaxRecords = Nothing}
 
 -- | The source AWS Region name. For example, @us-east-1@ . Constraints:     * Must specify a valid AWS Region name.
 dsrRegionName :: Lens' DescribeSourceRegions (Maybe Text)
@@ -140,20 +135,24 @@ instance ToQuery DescribeSourceRegions where
 --
 --
 -- /See:/ 'describeSourceRegionsResponse' smart constructor.
-data DescribeSourceRegionsResponse =
-  DescribeSourceRegionsResponse'
-    { _dsrrsMarker         :: !(Maybe Text)
-    , _dsrrsSourceRegions  :: !(Maybe [SourceRegion])
-    , _dsrrsResponseStatus :: !Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data DescribeSourceRegionsResponse = DescribeSourceRegionsResponse'{_dsrrsMarker
+                                                                    ::
+                                                                    !(Maybe
+                                                                        Text),
+                                                                    _dsrrsSourceRegions
+                                                                    ::
+                                                                    !(Maybe
+                                                                        [SourceRegion]),
+                                                                    _dsrrsResponseStatus
+                                                                    :: !Int}
+                                       deriving (Eq, Read, Show, Data, Typeable,
+                                                 Generic)
 
 -- | Creates a value of 'DescribeSourceRegionsResponse' with the minimum fields required to make a request.
 --
 -- Use one of the following lenses to modify other fields as desired:
 --
--- * 'dsrrsMarker' - An optional pagination token provided by a previous request. If this parameter is specified, the response includes only records beyond the marker, up to the value specified by @MaxRecords@ .
+-- * 'dsrrsMarker' - An optional pagination token provided by a previous request. If this parameter is specified, the response includes only records beyond the marker, up to the value specified by @MaxRecords@ . 
 --
 -- * 'dsrrsSourceRegions' - A list of SourceRegion instances that contains each source AWS Region that the current AWS Region can get a Read Replica or a DB snapshot from.
 --
@@ -161,15 +160,13 @@ data DescribeSourceRegionsResponse =
 describeSourceRegionsResponse
     :: Int -- ^ 'dsrrsResponseStatus'
     -> DescribeSourceRegionsResponse
-describeSourceRegionsResponse pResponseStatus_ =
-  DescribeSourceRegionsResponse'
-    { _dsrrsMarker = Nothing
-    , _dsrrsSourceRegions = Nothing
-    , _dsrrsResponseStatus = pResponseStatus_
-    }
+describeSourceRegionsResponse pResponseStatus_
+  = DescribeSourceRegionsResponse'{_dsrrsMarker =
+                                     Nothing,
+                                   _dsrrsSourceRegions = Nothing,
+                                   _dsrrsResponseStatus = pResponseStatus_}
 
-
--- | An optional pagination token provided by a previous request. If this parameter is specified, the response includes only records beyond the marker, up to the value specified by @MaxRecords@ .
+-- | An optional pagination token provided by a previous request. If this parameter is specified, the response includes only records beyond the marker, up to the value specified by @MaxRecords@ . 
 dsrrsMarker :: Lens' DescribeSourceRegionsResponse (Maybe Text)
 dsrrsMarker = lens _dsrrsMarker (\ s a -> s{_dsrrsMarker = a})
 

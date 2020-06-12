@@ -40,7 +40,6 @@ module Network.AWS.CodeDeploy.CreateApplication
     ) where
 
 import Network.AWS.CodeDeploy.Types
-import Network.AWS.CodeDeploy.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.Request
@@ -51,14 +50,11 @@ import Network.AWS.Response
 --
 --
 -- /See:/ 'createApplication' smart constructor.
-data CreateApplication =
-  CreateApplication'
-    { _caComputePlatform :: !(Maybe ComputePlatform)
-    , _caTags            :: !(Maybe [Tag])
-    , _caApplicationName :: !Text
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data CreateApplication = CreateApplication'{_caComputePlatform
+                                            :: !(Maybe ComputePlatform),
+                                            _caTags :: !(Maybe [Tag]),
+                                            _caApplicationName :: !Text}
+                           deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'CreateApplication' with the minimum fields required to make a request.
 --
@@ -66,25 +62,22 @@ data CreateApplication =
 --
 -- * 'caComputePlatform' - The destination platform type for the deployment (@Lambda@ , @Server@ , or @ECS@ ).
 --
--- * 'caTags' - The metadata that you apply to CodeDeploy applications to help you organize and categorize them. Each tag consists of a key and an optional value, both of which you define.
+-- * 'caTags' - The metadata that you apply to CodeDeploy applications to help you organize and categorize them. Each tag consists of a key and an optional value, both of which you define. 
 --
 -- * 'caApplicationName' - The name of the application. This name must be unique with the applicable IAM user or AWS account.
 createApplication
     :: Text -- ^ 'caApplicationName'
     -> CreateApplication
-createApplication pApplicationName_ =
-  CreateApplication'
-    { _caComputePlatform = Nothing
-    , _caTags = Nothing
-    , _caApplicationName = pApplicationName_
-    }
-
+createApplication pApplicationName_
+  = CreateApplication'{_caComputePlatform = Nothing,
+                       _caTags = Nothing,
+                       _caApplicationName = pApplicationName_}
 
 -- | The destination platform type for the deployment (@Lambda@ , @Server@ , or @ECS@ ).
 caComputePlatform :: Lens' CreateApplication (Maybe ComputePlatform)
 caComputePlatform = lens _caComputePlatform (\ s a -> s{_caComputePlatform = a})
 
--- | The metadata that you apply to CodeDeploy applications to help you organize and categorize them. Each tag consists of a key and an optional value, both of which you define.
+-- | The metadata that you apply to CodeDeploy applications to help you organize and categorize them. Each tag consists of a key and an optional value, both of which you define. 
 caTags :: Lens' CreateApplication [Tag]
 caTags = lens _caTags (\ s a -> s{_caTags = a}) . _Default . _Coerce
 
@@ -134,13 +127,12 @@ instance ToQuery CreateApplication where
 --
 --
 -- /See:/ 'createApplicationResponse' smart constructor.
-data CreateApplicationResponse =
-  CreateApplicationResponse'
-    { _carsApplicationId  :: !(Maybe Text)
-    , _carsResponseStatus :: !Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data CreateApplicationResponse = CreateApplicationResponse'{_carsApplicationId
+                                                            :: !(Maybe Text),
+                                                            _carsResponseStatus
+                                                            :: !Int}
+                                   deriving (Eq, Read, Show, Data, Typeable,
+                                             Generic)
 
 -- | Creates a value of 'CreateApplicationResponse' with the minimum fields required to make a request.
 --
@@ -152,10 +144,10 @@ data CreateApplicationResponse =
 createApplicationResponse
     :: Int -- ^ 'carsResponseStatus'
     -> CreateApplicationResponse
-createApplicationResponse pResponseStatus_ =
-  CreateApplicationResponse'
-    {_carsApplicationId = Nothing, _carsResponseStatus = pResponseStatus_}
-
+createApplicationResponse pResponseStatus_
+  = CreateApplicationResponse'{_carsApplicationId =
+                                 Nothing,
+                               _carsResponseStatus = pResponseStatus_}
 
 -- | A unique application ID.
 carsApplicationId :: Lens' CreateApplicationResponse (Maybe Text)

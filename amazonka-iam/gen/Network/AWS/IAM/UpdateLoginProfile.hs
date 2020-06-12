@@ -39,21 +39,18 @@ module Network.AWS.IAM.UpdateLoginProfile
     ) where
 
 import Network.AWS.IAM.Types
-import Network.AWS.IAM.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 
 -- | /See:/ 'updateLoginProfile' smart constructor.
-data UpdateLoginProfile =
-  UpdateLoginProfile'
-    { _ulpPassword              :: !(Maybe (Sensitive Text))
-    , _ulpPasswordResetRequired :: !(Maybe Bool)
-    , _ulpUserName              :: !Text
-    }
-  deriving (Eq, Show, Data, Typeable, Generic)
-
+data UpdateLoginProfile = UpdateLoginProfile'{_ulpPassword
+                                              :: !(Maybe (Sensitive Text)),
+                                              _ulpPasswordResetRequired ::
+                                              !(Maybe Bool),
+                                              _ulpUserName :: !Text}
+                            deriving (Eq, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'UpdateLoginProfile' with the minimum fields required to make a request.
 --
@@ -67,13 +64,10 @@ data UpdateLoginProfile =
 updateLoginProfile
     :: Text -- ^ 'ulpUserName'
     -> UpdateLoginProfile
-updateLoginProfile pUserName_ =
-  UpdateLoginProfile'
-    { _ulpPassword = Nothing
-    , _ulpPasswordResetRequired = Nothing
-    , _ulpUserName = pUserName_
-    }
-
+updateLoginProfile pUserName_
+  = UpdateLoginProfile'{_ulpPassword = Nothing,
+                        _ulpPasswordResetRequired = Nothing,
+                        _ulpUserName = pUserName_}
 
 -- | The new password for the specified IAM user. The <http://wikipedia.org/wiki/regex regex pattern> used to validate this parameter is a string of characters consisting of the following:     * Any printable ASCII character ranging from the space character (\u0020) through the end of the ASCII character range     * The printable characters in the Basic Latin and Latin-1 Supplement character set (through \u00FF)     * The special characters tab (\u0009), line feed (\u000A), and carriage return (\u000D) However, the format can be further restricted by the account administrator by setting a password policy on the AWS account. For more information, see 'UpdateAccountPasswordPolicy' .
 ulpPassword :: Lens' UpdateLoginProfile (Maybe Text)
@@ -113,16 +107,15 @@ instance ToQuery UpdateLoginProfile where
                "UserName" =: _ulpUserName]
 
 -- | /See:/ 'updateLoginProfileResponse' smart constructor.
-data UpdateLoginProfileResponse =
-  UpdateLoginProfileResponse'
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data UpdateLoginProfileResponse = UpdateLoginProfileResponse'
+                                    deriving (Eq, Read, Show, Data, Typeable,
+                                              Generic)
 
 -- | Creates a value of 'UpdateLoginProfileResponse' with the minimum fields required to make a request.
 --
 updateLoginProfileResponse
     :: UpdateLoginProfileResponse
-updateLoginProfileResponse = UpdateLoginProfileResponse'
-
+updateLoginProfileResponse
+  = UpdateLoginProfileResponse'
 
 instance NFData UpdateLoginProfileResponse where

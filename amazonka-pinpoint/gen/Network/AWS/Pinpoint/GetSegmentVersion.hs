@@ -39,20 +39,16 @@ module Network.AWS.Pinpoint.GetSegmentVersion
 
 import Network.AWS.Lens
 import Network.AWS.Pinpoint.Types
-import Network.AWS.Pinpoint.Types.Product
 import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 
 -- | /See:/ 'getSegmentVersion' smart constructor.
-data GetSegmentVersion =
-  GetSegmentVersion'
-    { _gSegmentId     :: !Text
-    , _gVersion       :: !Text
-    , _gApplicationId :: !Text
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data GetSegmentVersion = GetSegmentVersion'{_gSegmentId
+                                            :: !Text,
+                                            _gVersion :: !Text,
+                                            _gApplicationId :: !Text}
+                           deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'GetSegmentVersion' with the minimum fields required to make a request.
 --
@@ -68,13 +64,11 @@ getSegmentVersion
     -> Text -- ^ 'gVersion'
     -> Text -- ^ 'gApplicationId'
     -> GetSegmentVersion
-getSegmentVersion pSegmentId_ pVersion_ pApplicationId_ =
-  GetSegmentVersion'
-    { _gSegmentId = pSegmentId_
-    , _gVersion = pVersion_
-    , _gApplicationId = pApplicationId_
-    }
-
+getSegmentVersion pSegmentId_ pVersion_
+  pApplicationId_
+  = GetSegmentVersion'{_gSegmentId = pSegmentId_,
+                       _gVersion = pVersion_,
+                       _gApplicationId = pApplicationId_}
 
 -- | Undocumented member.
 gSegmentId :: Lens' GetSegmentVersion Text
@@ -118,13 +112,12 @@ instance ToQuery GetSegmentVersion where
         toQuery = const mempty
 
 -- | /See:/ 'getSegmentVersionResponse' smart constructor.
-data GetSegmentVersionResponse =
-  GetSegmentVersionResponse'
-    { _gsvrsResponseStatus  :: !Int
-    , _gsvrsSegmentResponse :: !SegmentResponse
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data GetSegmentVersionResponse = GetSegmentVersionResponse'{_gsvrsResponseStatus
+                                                            :: !Int,
+                                                            _gsvrsSegmentResponse
+                                                            :: !SegmentResponse}
+                                   deriving (Eq, Read, Show, Data, Typeable,
+                                             Generic)
 
 -- | Creates a value of 'GetSegmentVersionResponse' with the minimum fields required to make a request.
 --
@@ -137,12 +130,11 @@ getSegmentVersionResponse
     :: Int -- ^ 'gsvrsResponseStatus'
     -> SegmentResponse -- ^ 'gsvrsSegmentResponse'
     -> GetSegmentVersionResponse
-getSegmentVersionResponse pResponseStatus_ pSegmentResponse_ =
-  GetSegmentVersionResponse'
-    { _gsvrsResponseStatus = pResponseStatus_
-    , _gsvrsSegmentResponse = pSegmentResponse_
-    }
-
+getSegmentVersionResponse pResponseStatus_
+  pSegmentResponse_
+  = GetSegmentVersionResponse'{_gsvrsResponseStatus =
+                                 pResponseStatus_,
+                               _gsvrsSegmentResponse = pSegmentResponse_}
 
 -- | -- | The response status code.
 gsvrsResponseStatus :: Lens' GetSegmentVersionResponse Int

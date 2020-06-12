@@ -41,22 +41,28 @@ module Network.AWS.DirectConnect.AcceptDirectConnectGatewayAssociationProposal
     ) where
 
 import Network.AWS.DirectConnect.Types
-import Network.AWS.DirectConnect.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 
 -- | /See:/ 'acceptDirectConnectGatewayAssociationProposal' smart constructor.
-data AcceptDirectConnectGatewayAssociationProposal =
-  AcceptDirectConnectGatewayAssociationProposal'
-    { _adcgapOverrideAllowedPrefixesToDirectConnectGateway :: !(Maybe [RouteFilterPrefix])
-    , _adcgapDirectConnectGatewayId :: !Text
-    , _adcgapProposalId :: !Text
-    , _adcgapAssociatedGatewayOwnerAccount :: !Text
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data AcceptDirectConnectGatewayAssociationProposal = AcceptDirectConnectGatewayAssociationProposal'{_adcgapOverrideAllowedPrefixesToDirectConnectGateway
+                                                                                                    ::
+                                                                                                    !(Maybe
+                                                                                                        [RouteFilterPrefix]),
+                                                                                                    _adcgapDirectConnectGatewayId
+                                                                                                    ::
+                                                                                                    !Text,
+                                                                                                    _adcgapProposalId
+                                                                                                    ::
+                                                                                                    !Text,
+                                                                                                    _adcgapAssociatedGatewayOwnerAccount
+                                                                                                    ::
+                                                                                                    !Text}
+                                                       deriving (Eq, Read, Show,
+                                                                 Data, Typeable,
+                                                                 Generic)
 
 -- | Creates a value of 'AcceptDirectConnectGatewayAssociationProposal' with the minimum fields required to make a request.
 --
@@ -74,14 +80,18 @@ acceptDirectConnectGatewayAssociationProposal
     -> Text -- ^ 'adcgapProposalId'
     -> Text -- ^ 'adcgapAssociatedGatewayOwnerAccount'
     -> AcceptDirectConnectGatewayAssociationProposal
-acceptDirectConnectGatewayAssociationProposal pDirectConnectGatewayId_ pProposalId_ pAssociatedGatewayOwnerAccount_ =
-  AcceptDirectConnectGatewayAssociationProposal'
-    { _adcgapOverrideAllowedPrefixesToDirectConnectGateway = Nothing
-    , _adcgapDirectConnectGatewayId = pDirectConnectGatewayId_
-    , _adcgapProposalId = pProposalId_
-    , _adcgapAssociatedGatewayOwnerAccount = pAssociatedGatewayOwnerAccount_
-    }
-
+acceptDirectConnectGatewayAssociationProposal
+  pDirectConnectGatewayId_ pProposalId_
+  pAssociatedGatewayOwnerAccount_
+  = AcceptDirectConnectGatewayAssociationProposal'{_adcgapOverrideAllowedPrefixesToDirectConnectGateway
+                                                     = Nothing,
+                                                   _adcgapDirectConnectGatewayId
+                                                     = pDirectConnectGatewayId_,
+                                                   _adcgapProposalId =
+                                                     pProposalId_,
+                                                   _adcgapAssociatedGatewayOwnerAccount
+                                                     =
+                                                     pAssociatedGatewayOwnerAccount_}
 
 -- | Overrides the Amazon VPC prefixes advertised to the Direct Connect gateway. For information about how to set the prefixes, see <https://docs.aws.amazon.com/directconnect/latest/UserGuide/multi-account-associate-vgw.html#allowed-prefixes Allowed Prefixes> in the /AWS Direct Connect User Guide/ .
 adcgapOverrideAllowedPrefixesToDirectConnectGateway :: Lens' AcceptDirectConnectGatewayAssociationProposal [RouteFilterPrefix]
@@ -163,13 +173,19 @@ instance ToQuery
         toQuery = const mempty
 
 -- | /See:/ 'acceptDirectConnectGatewayAssociationProposalResponse' smart constructor.
-data AcceptDirectConnectGatewayAssociationProposalResponse =
-  AcceptDirectConnectGatewayAssociationProposalResponse'
-    { _adcgaprsDirectConnectGatewayAssociation :: !(Maybe DirectConnectGatewayAssociation)
-    , _adcgaprsResponseStatus :: !Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data AcceptDirectConnectGatewayAssociationProposalResponse = AcceptDirectConnectGatewayAssociationProposalResponse'{_adcgaprsDirectConnectGatewayAssociation
+                                                                                                                    ::
+                                                                                                                    !(Maybe
+                                                                                                                        DirectConnectGatewayAssociation),
+                                                                                                                    _adcgaprsResponseStatus
+                                                                                                                    ::
+                                                                                                                    !Int}
+                                                               deriving (Eq,
+                                                                         Read,
+                                                                         Show,
+                                                                         Data,
+                                                                         Typeable,
+                                                                         Generic)
 
 -- | Creates a value of 'AcceptDirectConnectGatewayAssociationProposalResponse' with the minimum fields required to make a request.
 --
@@ -181,12 +197,12 @@ data AcceptDirectConnectGatewayAssociationProposalResponse =
 acceptDirectConnectGatewayAssociationProposalResponse
     :: Int -- ^ 'adcgaprsResponseStatus'
     -> AcceptDirectConnectGatewayAssociationProposalResponse
-acceptDirectConnectGatewayAssociationProposalResponse pResponseStatus_ =
-  AcceptDirectConnectGatewayAssociationProposalResponse'
-    { _adcgaprsDirectConnectGatewayAssociation = Nothing
-    , _adcgaprsResponseStatus = pResponseStatus_
-    }
-
+acceptDirectConnectGatewayAssociationProposalResponse
+  pResponseStatus_
+  = AcceptDirectConnectGatewayAssociationProposalResponse'{_adcgaprsDirectConnectGatewayAssociation
+                                                             = Nothing,
+                                                           _adcgaprsResponseStatus
+                                                             = pResponseStatus_}
 
 -- | Undocumented member.
 adcgaprsDirectConnectGatewayAssociation :: Lens' AcceptDirectConnectGatewayAssociationProposalResponse (Maybe DirectConnectGatewayAssociation)

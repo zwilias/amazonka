@@ -41,21 +41,20 @@ module Network.AWS.IoT.ListThingGroupsForThing
     ) where
 
 import Network.AWS.IoT.Types
-import Network.AWS.IoT.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 
 -- | /See:/ 'listThingGroupsForThing' smart constructor.
-data ListThingGroupsForThing =
-  ListThingGroupsForThing'
-    { _ltgftNextToken  :: !(Maybe Text)
-    , _ltgftMaxResults :: !(Maybe Nat)
-    , _ltgftThingName  :: !Text
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data ListThingGroupsForThing = ListThingGroupsForThing'{_ltgftNextToken
+                                                        :: !(Maybe Text),
+                                                        _ltgftMaxResults ::
+                                                        !(Maybe Nat),
+                                                        _ltgftThingName ::
+                                                        !Text}
+                                 deriving (Eq, Read, Show, Data, Typeable,
+                                           Generic)
 
 -- | Creates a value of 'ListThingGroupsForThing' with the minimum fields required to make a request.
 --
@@ -69,13 +68,10 @@ data ListThingGroupsForThing =
 listThingGroupsForThing
     :: Text -- ^ 'ltgftThingName'
     -> ListThingGroupsForThing
-listThingGroupsForThing pThingName_ =
-  ListThingGroupsForThing'
-    { _ltgftNextToken = Nothing
-    , _ltgftMaxResults = Nothing
-    , _ltgftThingName = pThingName_
-    }
-
+listThingGroupsForThing pThingName_
+  = ListThingGroupsForThing'{_ltgftNextToken = Nothing,
+                             _ltgftMaxResults = Nothing,
+                             _ltgftThingName = pThingName_}
 
 -- | The token used to get the next set of results, or __null__ if there are no additional results.
 ltgftNextToken :: Lens' ListThingGroupsForThing (Maybe Text)
@@ -120,14 +116,18 @@ instance ToQuery ListThingGroupsForThing where
                "maxResults" =: _ltgftMaxResults]
 
 -- | /See:/ 'listThingGroupsForThingResponse' smart constructor.
-data ListThingGroupsForThingResponse =
-  ListThingGroupsForThingResponse'
-    { _ltgftrsThingGroups    :: !(Maybe [GroupNameAndARN])
-    , _ltgftrsNextToken      :: !(Maybe Text)
-    , _ltgftrsResponseStatus :: !Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data ListThingGroupsForThingResponse = ListThingGroupsForThingResponse'{_ltgftrsThingGroups
+                                                                        ::
+                                                                        !(Maybe
+                                                                            [GroupNameAndARN]),
+                                                                        _ltgftrsNextToken
+                                                                        ::
+                                                                        !(Maybe
+                                                                            Text),
+                                                                        _ltgftrsResponseStatus
+                                                                        :: !Int}
+                                         deriving (Eq, Read, Show, Data,
+                                                   Typeable, Generic)
 
 -- | Creates a value of 'ListThingGroupsForThingResponse' with the minimum fields required to make a request.
 --
@@ -141,13 +141,11 @@ data ListThingGroupsForThingResponse =
 listThingGroupsForThingResponse
     :: Int -- ^ 'ltgftrsResponseStatus'
     -> ListThingGroupsForThingResponse
-listThingGroupsForThingResponse pResponseStatus_ =
-  ListThingGroupsForThingResponse'
-    { _ltgftrsThingGroups = Nothing
-    , _ltgftrsNextToken = Nothing
-    , _ltgftrsResponseStatus = pResponseStatus_
-    }
-
+listThingGroupsForThingResponse pResponseStatus_
+  = ListThingGroupsForThingResponse'{_ltgftrsThingGroups
+                                       = Nothing,
+                                     _ltgftrsNextToken = Nothing,
+                                     _ltgftrsResponseStatus = pResponseStatus_}
 
 -- | The thing groups.
 ltgftrsThingGroups :: Lens' ListThingGroupsForThingResponse [GroupNameAndARN]

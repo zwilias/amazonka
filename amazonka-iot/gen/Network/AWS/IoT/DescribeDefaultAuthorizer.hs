@@ -36,24 +36,22 @@ module Network.AWS.IoT.DescribeDefaultAuthorizer
     ) where
 
 import Network.AWS.IoT.Types
-import Network.AWS.IoT.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 
 -- | /See:/ 'describeDefaultAuthorizer' smart constructor.
-data DescribeDefaultAuthorizer =
-  DescribeDefaultAuthorizer'
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data DescribeDefaultAuthorizer = DescribeDefaultAuthorizer'
+                                   deriving (Eq, Read, Show, Data, Typeable,
+                                             Generic)
 
 -- | Creates a value of 'DescribeDefaultAuthorizer' with the minimum fields required to make a request.
 --
 describeDefaultAuthorizer
     :: DescribeDefaultAuthorizer
-describeDefaultAuthorizer = DescribeDefaultAuthorizer'
-
+describeDefaultAuthorizer
+  = DescribeDefaultAuthorizer'
 
 instance AWSRequest DescribeDefaultAuthorizer where
         type Rs DescribeDefaultAuthorizer =
@@ -80,13 +78,15 @@ instance ToQuery DescribeDefaultAuthorizer where
         toQuery = const mempty
 
 -- | /See:/ 'describeDefaultAuthorizerResponse' smart constructor.
-data DescribeDefaultAuthorizerResponse =
-  DescribeDefaultAuthorizerResponse'
-    { _ddarsAuthorizerDescription :: !(Maybe AuthorizerDescription)
-    , _ddarsResponseStatus        :: !Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data DescribeDefaultAuthorizerResponse = DescribeDefaultAuthorizerResponse'{_ddarsAuthorizerDescription
+                                                                            ::
+                                                                            !(Maybe
+                                                                                AuthorizerDescription),
+                                                                            _ddarsResponseStatus
+                                                                            ::
+                                                                            !Int}
+                                           deriving (Eq, Read, Show, Data,
+                                                     Typeable, Generic)
 
 -- | Creates a value of 'DescribeDefaultAuthorizerResponse' with the minimum fields required to make a request.
 --
@@ -98,12 +98,10 @@ data DescribeDefaultAuthorizerResponse =
 describeDefaultAuthorizerResponse
     :: Int -- ^ 'ddarsResponseStatus'
     -> DescribeDefaultAuthorizerResponse
-describeDefaultAuthorizerResponse pResponseStatus_ =
-  DescribeDefaultAuthorizerResponse'
-    { _ddarsAuthorizerDescription = Nothing
-    , _ddarsResponseStatus = pResponseStatus_
-    }
-
+describeDefaultAuthorizerResponse pResponseStatus_
+  = DescribeDefaultAuthorizerResponse'{_ddarsAuthorizerDescription
+                                         = Nothing,
+                                       _ddarsResponseStatus = pResponseStatus_}
 
 -- | The default authorizer's description.
 ddarsAuthorizerDescription :: Lens' DescribeDefaultAuthorizerResponse (Maybe AuthorizerDescription)

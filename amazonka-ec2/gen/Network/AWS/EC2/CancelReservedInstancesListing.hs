@@ -40,7 +40,6 @@ module Network.AWS.EC2.CancelReservedInstancesListing
     ) where
 
 import Network.AWS.EC2.Types
-import Network.AWS.EC2.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.Request
@@ -51,12 +50,11 @@ import Network.AWS.Response
 --
 --
 -- /See:/ 'cancelReservedInstancesListing' smart constructor.
-newtype CancelReservedInstancesListing =
-  CancelReservedInstancesListing'
-    { _crilReservedInstancesListingId :: Text
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+newtype CancelReservedInstancesListing = CancelReservedInstancesListing'{_crilReservedInstancesListingId
+                                                                         ::
+                                                                         Text}
+                                           deriving (Eq, Read, Show, Data,
+                                                     Typeable, Generic)
 
 -- | Creates a value of 'CancelReservedInstancesListing' with the minimum fields required to make a request.
 --
@@ -66,10 +64,10 @@ newtype CancelReservedInstancesListing =
 cancelReservedInstancesListing
     :: Text -- ^ 'crilReservedInstancesListingId'
     -> CancelReservedInstancesListing
-cancelReservedInstancesListing pReservedInstancesListingId_ =
-  CancelReservedInstancesListing'
-    {_crilReservedInstancesListingId = pReservedInstancesListingId_}
-
+cancelReservedInstancesListing
+  pReservedInstancesListingId_
+  = CancelReservedInstancesListing'{_crilReservedInstancesListingId
+                                      = pReservedInstancesListingId_}
 
 -- | The ID of the Reserved Instance listing.
 crilReservedInstancesListingId :: Lens' CancelReservedInstancesListing Text
@@ -114,13 +112,15 @@ instance ToQuery CancelReservedInstancesListing where
 --
 --
 -- /See:/ 'cancelReservedInstancesListingResponse' smart constructor.
-data CancelReservedInstancesListingResponse =
-  CancelReservedInstancesListingResponse'
-    { _crilrsReservedInstancesListings :: !(Maybe [ReservedInstancesListing])
-    , _crilrsResponseStatus            :: !Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data CancelReservedInstancesListingResponse = CancelReservedInstancesListingResponse'{_crilrsReservedInstancesListings
+                                                                                      ::
+                                                                                      !(Maybe
+                                                                                          [ReservedInstancesListing]),
+                                                                                      _crilrsResponseStatus
+                                                                                      ::
+                                                                                      !Int}
+                                                deriving (Eq, Read, Show, Data,
+                                                          Typeable, Generic)
 
 -- | Creates a value of 'CancelReservedInstancesListingResponse' with the minimum fields required to make a request.
 --
@@ -132,12 +132,12 @@ data CancelReservedInstancesListingResponse =
 cancelReservedInstancesListingResponse
     :: Int -- ^ 'crilrsResponseStatus'
     -> CancelReservedInstancesListingResponse
-cancelReservedInstancesListingResponse pResponseStatus_ =
-  CancelReservedInstancesListingResponse'
-    { _crilrsReservedInstancesListings = Nothing
-    , _crilrsResponseStatus = pResponseStatus_
-    }
-
+cancelReservedInstancesListingResponse
+  pResponseStatus_
+  = CancelReservedInstancesListingResponse'{_crilrsReservedInstancesListings
+                                              = Nothing,
+                                            _crilrsResponseStatus =
+                                              pResponseStatus_}
 
 -- | The Reserved Instance listing.
 crilrsReservedInstancesListings :: Lens' CancelReservedInstancesListingResponse [ReservedInstancesListing]

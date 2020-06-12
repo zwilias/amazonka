@@ -52,33 +52,38 @@ import Network.AWS.Lens
 import Network.AWS.Pager
 import Network.AWS.Prelude
 import Network.AWS.RDS.Types
-import Network.AWS.RDS.Types.Product
 import Network.AWS.Request
 import Network.AWS.Response
 
 -- | /See:/ 'describeDBEngineVersions' smart constructor.
-data DescribeDBEngineVersions =
-  DescribeDBEngineVersions'
-    { _ddevEngineVersion              :: !(Maybe Text)
-    , _ddevListSupportedTimezones     :: !(Maybe Bool)
-    , _ddevDefaultOnly                :: !(Maybe Bool)
-    , _ddevFilters                    :: !(Maybe [Filter])
-    , _ddevEngine                     :: !(Maybe Text)
-    , _ddevDBParameterGroupFamily     :: !(Maybe Text)
-    , _ddevListSupportedCharacterSets :: !(Maybe Bool)
-    , _ddevMarker                     :: !(Maybe Text)
-    , _ddevMaxRecords                 :: !(Maybe Int)
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data DescribeDBEngineVersions = DescribeDBEngineVersions'{_ddevEngineVersion
+                                                          :: !(Maybe Text),
+                                                          _ddevListSupportedTimezones
+                                                          :: !(Maybe Bool),
+                                                          _ddevDefaultOnly ::
+                                                          !(Maybe Bool),
+                                                          _ddevFilters ::
+                                                          !(Maybe [Filter]),
+                                                          _ddevEngine ::
+                                                          !(Maybe Text),
+                                                          _ddevDBParameterGroupFamily
+                                                          :: !(Maybe Text),
+                                                          _ddevListSupportedCharacterSets
+                                                          :: !(Maybe Bool),
+                                                          _ddevMarker ::
+                                                          !(Maybe Text),
+                                                          _ddevMaxRecords ::
+                                                          !(Maybe Int)}
+                                  deriving (Eq, Read, Show, Data, Typeable,
+                                            Generic)
 
 -- | Creates a value of 'DescribeDBEngineVersions' with the minimum fields required to make a request.
 --
 -- Use one of the following lenses to modify other fields as desired:
 --
--- * 'ddevEngineVersion' - The database engine version to return. Example: @5.1.49@
+-- * 'ddevEngineVersion' - The database engine version to return. Example: @5.1.49@ 
 --
--- * 'ddevListSupportedTimezones' - If this parameter is specified and the requested engine supports the @TimeZone@ parameter for @CreateDBInstance@ , the response includes a list of supported time zones for each engine version.
+-- * 'ddevListSupportedTimezones' - If this parameter is specified and the requested engine supports the @TimeZone@ parameter for @CreateDBInstance@ , the response includes a list of supported time zones for each engine version. 
 --
 -- * 'ddevDefaultOnly' - Indicates that only the default version of the specified engine or engine and major version combination is returned.
 --
@@ -88,32 +93,28 @@ data DescribeDBEngineVersions =
 --
 -- * 'ddevDBParameterGroupFamily' - The name of a specific DB parameter group family to return details for. Constraints:     * If supplied, must match an existing DBParameterGroupFamily.
 --
--- * 'ddevListSupportedCharacterSets' - If this parameter is specified and the requested engine supports the @CharacterSetName@ parameter for @CreateDBInstance@ , the response includes a list of supported character sets for each engine version.
+-- * 'ddevListSupportedCharacterSets' - If this parameter is specified and the requested engine supports the @CharacterSetName@ parameter for @CreateDBInstance@ , the response includes a list of supported character sets for each engine version. 
 --
--- * 'ddevMarker' - An optional pagination token provided by a previous request. If this parameter is specified, the response includes only records beyond the marker, up to the value specified by @MaxRecords@ .
+-- * 'ddevMarker' - An optional pagination token provided by a previous request. If this parameter is specified, the response includes only records beyond the marker, up to the value specified by @MaxRecords@ . 
 --
 -- * 'ddevMaxRecords' - The maximum number of records to include in the response. If more than the @MaxRecords@ value is available, a pagination token called a marker is included in the response so that the following results can be retrieved.  Default: 100 Constraints: Minimum 20, maximum 100.
 describeDBEngineVersions
     :: DescribeDBEngineVersions
-describeDBEngineVersions =
-  DescribeDBEngineVersions'
-    { _ddevEngineVersion = Nothing
-    , _ddevListSupportedTimezones = Nothing
-    , _ddevDefaultOnly = Nothing
-    , _ddevFilters = Nothing
-    , _ddevEngine = Nothing
-    , _ddevDBParameterGroupFamily = Nothing
-    , _ddevListSupportedCharacterSets = Nothing
-    , _ddevMarker = Nothing
-    , _ddevMaxRecords = Nothing
-    }
+describeDBEngineVersions
+  = DescribeDBEngineVersions'{_ddevEngineVersion =
+                                Nothing,
+                              _ddevListSupportedTimezones = Nothing,
+                              _ddevDefaultOnly = Nothing,
+                              _ddevFilters = Nothing, _ddevEngine = Nothing,
+                              _ddevDBParameterGroupFamily = Nothing,
+                              _ddevListSupportedCharacterSets = Nothing,
+                              _ddevMarker = Nothing, _ddevMaxRecords = Nothing}
 
-
--- | The database engine version to return. Example: @5.1.49@
+-- | The database engine version to return. Example: @5.1.49@ 
 ddevEngineVersion :: Lens' DescribeDBEngineVersions (Maybe Text)
 ddevEngineVersion = lens _ddevEngineVersion (\ s a -> s{_ddevEngineVersion = a})
 
--- | If this parameter is specified and the requested engine supports the @TimeZone@ parameter for @CreateDBInstance@ , the response includes a list of supported time zones for each engine version.
+-- | If this parameter is specified and the requested engine supports the @TimeZone@ parameter for @CreateDBInstance@ , the response includes a list of supported time zones for each engine version. 
 ddevListSupportedTimezones :: Lens' DescribeDBEngineVersions (Maybe Bool)
 ddevListSupportedTimezones = lens _ddevListSupportedTimezones (\ s a -> s{_ddevListSupportedTimezones = a})
 
@@ -133,11 +134,11 @@ ddevEngine = lens _ddevEngine (\ s a -> s{_ddevEngine = a})
 ddevDBParameterGroupFamily :: Lens' DescribeDBEngineVersions (Maybe Text)
 ddevDBParameterGroupFamily = lens _ddevDBParameterGroupFamily (\ s a -> s{_ddevDBParameterGroupFamily = a})
 
--- | If this parameter is specified and the requested engine supports the @CharacterSetName@ parameter for @CreateDBInstance@ , the response includes a list of supported character sets for each engine version.
+-- | If this parameter is specified and the requested engine supports the @CharacterSetName@ parameter for @CreateDBInstance@ , the response includes a list of supported character sets for each engine version. 
 ddevListSupportedCharacterSets :: Lens' DescribeDBEngineVersions (Maybe Bool)
 ddevListSupportedCharacterSets = lens _ddevListSupportedCharacterSets (\ s a -> s{_ddevListSupportedCharacterSets = a})
 
--- | An optional pagination token provided by a previous request. If this parameter is specified, the response includes only records beyond the marker, up to the value specified by @MaxRecords@ .
+-- | An optional pagination token provided by a previous request. If this parameter is specified, the response includes only records beyond the marker, up to the value specified by @MaxRecords@ . 
 ddevMarker :: Lens' DescribeDBEngineVersions (Maybe Text)
 ddevMarker = lens _ddevMarker (\ s a -> s{_ddevMarker = a})
 
@@ -195,45 +196,48 @@ instance ToQuery DescribeDBEngineVersions where
                "Marker" =: _ddevMarker,
                "MaxRecords" =: _ddevMaxRecords]
 
--- | Contains the result of a successful invocation of the 'DescribeDBEngineVersions' action.
+-- | Contains the result of a successful invocation of the 'DescribeDBEngineVersions' action. 
 --
 --
 --
 -- /See:/ 'describeDBEngineVersionsResponse' smart constructor.
-data DescribeDBEngineVersionsResponse =
-  DescribeDBEngineVersionsResponse'
-    { _ddevrsMarker           :: !(Maybe Text)
-    , _ddevrsDBEngineVersions :: !(Maybe [DBEngineVersion])
-    , _ddevrsResponseStatus   :: !Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data DescribeDBEngineVersionsResponse = DescribeDBEngineVersionsResponse'{_ddevrsMarker
+                                                                          ::
+                                                                          !(Maybe
+                                                                              Text),
+                                                                          _ddevrsDBEngineVersions
+                                                                          ::
+                                                                          !(Maybe
+                                                                              [DBEngineVersion]),
+                                                                          _ddevrsResponseStatus
+                                                                          ::
+                                                                          !Int}
+                                          deriving (Eq, Read, Show, Data,
+                                                    Typeable, Generic)
 
 -- | Creates a value of 'DescribeDBEngineVersionsResponse' with the minimum fields required to make a request.
 --
 -- Use one of the following lenses to modify other fields as desired:
 --
--- * 'ddevrsMarker' - An optional pagination token provided by a previous request. If this parameter is specified, the response includes only records beyond the marker, up to the value specified by @MaxRecords@ .
+-- * 'ddevrsMarker' - An optional pagination token provided by a previous request. If this parameter is specified, the response includes only records beyond the marker, up to the value specified by @MaxRecords@ . 
 --
--- * 'ddevrsDBEngineVersions' - A list of @DBEngineVersion@ elements.
+-- * 'ddevrsDBEngineVersions' - A list of @DBEngineVersion@ elements. 
 --
 -- * 'ddevrsResponseStatus' - -- | The response status code.
 describeDBEngineVersionsResponse
     :: Int -- ^ 'ddevrsResponseStatus'
     -> DescribeDBEngineVersionsResponse
-describeDBEngineVersionsResponse pResponseStatus_ =
-  DescribeDBEngineVersionsResponse'
-    { _ddevrsMarker = Nothing
-    , _ddevrsDBEngineVersions = Nothing
-    , _ddevrsResponseStatus = pResponseStatus_
-    }
+describeDBEngineVersionsResponse pResponseStatus_
+  = DescribeDBEngineVersionsResponse'{_ddevrsMarker =
+                                        Nothing,
+                                      _ddevrsDBEngineVersions = Nothing,
+                                      _ddevrsResponseStatus = pResponseStatus_}
 
-
--- | An optional pagination token provided by a previous request. If this parameter is specified, the response includes only records beyond the marker, up to the value specified by @MaxRecords@ .
+-- | An optional pagination token provided by a previous request. If this parameter is specified, the response includes only records beyond the marker, up to the value specified by @MaxRecords@ . 
 ddevrsMarker :: Lens' DescribeDBEngineVersionsResponse (Maybe Text)
 ddevrsMarker = lens _ddevrsMarker (\ s a -> s{_ddevrsMarker = a})
 
--- | A list of @DBEngineVersion@ elements.
+-- | A list of @DBEngineVersion@ elements. 
 ddevrsDBEngineVersions :: Lens' DescribeDBEngineVersionsResponse [DBEngineVersion]
 ddevrsDBEngineVersions = lens _ddevrsDBEngineVersions (\ s a -> s{_ddevrsDBEngineVersions = a}) . _Default . _Coerce
 

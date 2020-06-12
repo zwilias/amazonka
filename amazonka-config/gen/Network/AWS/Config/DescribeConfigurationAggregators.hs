@@ -18,7 +18,7 @@
 -- Stability   : auto-generated
 -- Portability : non-portable (GHC extensions)
 --
--- Returns the details of one or more configuration aggregators. If the configuration aggregator is not specified, this action returns the details for all the configuration aggregators associated with the account.
+-- Returns the details of one or more configuration aggregators. If the configuration aggregator is not specified, this action returns the details for all the configuration aggregators associated with the account. 
 --
 --
 --
@@ -43,7 +43,6 @@ module Network.AWS.Config.DescribeConfigurationAggregators
     ) where
 
 import Network.AWS.Config.Types
-import Network.AWS.Config.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Pager
 import Network.AWS.Prelude
@@ -51,14 +50,20 @@ import Network.AWS.Request
 import Network.AWS.Response
 
 -- | /See:/ 'describeConfigurationAggregators' smart constructor.
-data DescribeConfigurationAggregators =
-  DescribeConfigurationAggregators'
-    { _dcaNextToken                    :: !(Maybe Text)
-    , _dcaLimit                        :: !(Maybe Nat)
-    , _dcaConfigurationAggregatorNames :: !(Maybe [Text])
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data DescribeConfigurationAggregators = DescribeConfigurationAggregators'{_dcaNextToken
+                                                                          ::
+                                                                          !(Maybe
+                                                                              Text),
+                                                                          _dcaLimit
+                                                                          ::
+                                                                          !(Maybe
+                                                                              Nat),
+                                                                          _dcaConfigurationAggregatorNames
+                                                                          ::
+                                                                          !(Maybe
+                                                                              [Text])}
+                                          deriving (Eq, Read, Show, Data,
+                                                    Typeable, Generic)
 
 -- | Creates a value of 'DescribeConfigurationAggregators' with the minimum fields required to make a request.
 --
@@ -71,13 +76,12 @@ data DescribeConfigurationAggregators =
 -- * 'dcaConfigurationAggregatorNames' - The name of the configuration aggregators.
 describeConfigurationAggregators
     :: DescribeConfigurationAggregators
-describeConfigurationAggregators =
-  DescribeConfigurationAggregators'
-    { _dcaNextToken = Nothing
-    , _dcaLimit = Nothing
-    , _dcaConfigurationAggregatorNames = Nothing
-    }
-
+describeConfigurationAggregators
+  = DescribeConfigurationAggregators'{_dcaNextToken =
+                                        Nothing,
+                                      _dcaLimit = Nothing,
+                                      _dcaConfigurationAggregatorNames =
+                                        Nothing}
 
 -- | The @nextToken@ string returned on a previous page that you use to get the next page of results in a paginated response.
 dcaNextToken :: Lens' DescribeConfigurationAggregators (Maybe Text)
@@ -149,14 +153,20 @@ instance ToQuery DescribeConfigurationAggregators
         toQuery = const mempty
 
 -- | /See:/ 'describeConfigurationAggregatorsResponse' smart constructor.
-data DescribeConfigurationAggregatorsResponse =
-  DescribeConfigurationAggregatorsResponse'
-    { _dcarsNextToken                :: !(Maybe Text)
-    , _dcarsConfigurationAggregators :: !(Maybe [ConfigurationAggregator])
-    , _dcarsResponseStatus           :: !Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data DescribeConfigurationAggregatorsResponse = DescribeConfigurationAggregatorsResponse'{_dcarsNextToken
+                                                                                          ::
+                                                                                          !(Maybe
+                                                                                              Text),
+                                                                                          _dcarsConfigurationAggregators
+                                                                                          ::
+                                                                                          !(Maybe
+                                                                                              [ConfigurationAggregator]),
+                                                                                          _dcarsResponseStatus
+                                                                                          ::
+                                                                                          !Int}
+                                                  deriving (Eq, Read, Show,
+                                                            Data, Typeable,
+                                                            Generic)
 
 -- | Creates a value of 'DescribeConfigurationAggregatorsResponse' with the minimum fields required to make a request.
 --
@@ -170,13 +180,14 @@ data DescribeConfigurationAggregatorsResponse =
 describeConfigurationAggregatorsResponse
     :: Int -- ^ 'dcarsResponseStatus'
     -> DescribeConfigurationAggregatorsResponse
-describeConfigurationAggregatorsResponse pResponseStatus_ =
-  DescribeConfigurationAggregatorsResponse'
-    { _dcarsNextToken = Nothing
-    , _dcarsConfigurationAggregators = Nothing
-    , _dcarsResponseStatus = pResponseStatus_
-    }
-
+describeConfigurationAggregatorsResponse
+  pResponseStatus_
+  = DescribeConfigurationAggregatorsResponse'{_dcarsNextToken
+                                                = Nothing,
+                                              _dcarsConfigurationAggregators =
+                                                Nothing,
+                                              _dcarsResponseStatus =
+                                                pResponseStatus_}
 
 -- | The @nextToken@ string returned on a previous page that you use to get the next page of results in a paginated response.
 dcarsNextToken :: Lens' DescribeConfigurationAggregatorsResponse (Maybe Text)

@@ -21,7 +21,7 @@
 -- Generates a random password of the specified complexity. This operation is intended for use in the Lambda rotation function. Per best practice, we recommend that you specify the maximum length and include every character type that the system you are generating a password for can support.
 --
 --
--- __Minimum permissions__
+-- __Minimum permissions__ 
 --
 -- To run this command, you must have the following permissions:
 --
@@ -57,22 +57,23 @@ import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 import Network.AWS.SecretsManager.Types
-import Network.AWS.SecretsManager.Types.Product
 
 -- | /See:/ 'getRandomPassword' smart constructor.
-data GetRandomPassword =
-  GetRandomPassword'
-    { _grpIncludeSpace            :: !(Maybe Bool)
-    , _grpExcludeNumbers          :: !(Maybe Bool)
-    , _grpExcludeLowercase        :: !(Maybe Bool)
-    , _grpExcludeCharacters       :: !(Maybe Text)
-    , _grpExcludePunctuation      :: !(Maybe Bool)
-    , _grpRequireEachIncludedType :: !(Maybe Bool)
-    , _grpExcludeUppercase        :: !(Maybe Bool)
-    , _grpPasswordLength          :: !(Maybe Nat)
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data GetRandomPassword = GetRandomPassword'{_grpIncludeSpace
+                                            :: !(Maybe Bool),
+                                            _grpExcludeNumbers :: !(Maybe Bool),
+                                            _grpExcludeLowercase ::
+                                            !(Maybe Bool),
+                                            _grpExcludeCharacters ::
+                                            !(Maybe Text),
+                                            _grpExcludePunctuation ::
+                                            !(Maybe Bool),
+                                            _grpRequireEachIncludedType ::
+                                            !(Maybe Bool),
+                                            _grpExcludeUppercase ::
+                                            !(Maybe Bool),
+                                            _grpPasswordLength :: !(Maybe Nat)}
+                           deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'GetRandomPassword' with the minimum fields required to make a request.
 --
@@ -95,18 +96,15 @@ data GetRandomPassword =
 -- * 'grpPasswordLength' - The desired length of the generated password. The default value if you do not include this parameter is 32 characters.
 getRandomPassword
     :: GetRandomPassword
-getRandomPassword =
-  GetRandomPassword'
-    { _grpIncludeSpace = Nothing
-    , _grpExcludeNumbers = Nothing
-    , _grpExcludeLowercase = Nothing
-    , _grpExcludeCharacters = Nothing
-    , _grpExcludePunctuation = Nothing
-    , _grpRequireEachIncludedType = Nothing
-    , _grpExcludeUppercase = Nothing
-    , _grpPasswordLength = Nothing
-    }
-
+getRandomPassword
+  = GetRandomPassword'{_grpIncludeSpace = Nothing,
+                       _grpExcludeNumbers = Nothing,
+                       _grpExcludeLowercase = Nothing,
+                       _grpExcludeCharacters = Nothing,
+                       _grpExcludePunctuation = Nothing,
+                       _grpRequireEachIncludedType = Nothing,
+                       _grpExcludeUppercase = Nothing,
+                       _grpPasswordLength = Nothing}
 
 -- | Specifies that the generated password can include the space character. The default if you do not include this switch parameter is that the space character is not included.
 grpIncludeSpace :: Lens' GetRandomPassword (Maybe Bool)
@@ -183,13 +181,12 @@ instance ToQuery GetRandomPassword where
         toQuery = const mempty
 
 -- | /See:/ 'getRandomPasswordResponse' smart constructor.
-data GetRandomPasswordResponse =
-  GetRandomPasswordResponse'
-    { _grprsRandomPassword :: !(Maybe Text)
-    , _grprsResponseStatus :: !Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data GetRandomPasswordResponse = GetRandomPasswordResponse'{_grprsRandomPassword
+                                                            :: !(Maybe Text),
+                                                            _grprsResponseStatus
+                                                            :: !Int}
+                                   deriving (Eq, Read, Show, Data, Typeable,
+                                             Generic)
 
 -- | Creates a value of 'GetRandomPasswordResponse' with the minimum fields required to make a request.
 --
@@ -201,10 +198,10 @@ data GetRandomPasswordResponse =
 getRandomPasswordResponse
     :: Int -- ^ 'grprsResponseStatus'
     -> GetRandomPasswordResponse
-getRandomPasswordResponse pResponseStatus_ =
-  GetRandomPasswordResponse'
-    {_grprsRandomPassword = Nothing, _grprsResponseStatus = pResponseStatus_}
-
+getRandomPasswordResponse pResponseStatus_
+  = GetRandomPasswordResponse'{_grprsRandomPassword =
+                                 Nothing,
+                               _grprsResponseStatus = pResponseStatus_}
 
 -- | A string with the generated password.
 grprsRandomPassword :: Lens' GetRandomPasswordResponse (Maybe Text)

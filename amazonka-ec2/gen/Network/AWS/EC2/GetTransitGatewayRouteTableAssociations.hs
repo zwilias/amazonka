@@ -45,7 +45,6 @@ module Network.AWS.EC2.GetTransitGatewayRouteTableAssociations
     ) where
 
 import Network.AWS.EC2.Types
-import Network.AWS.EC2.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Pager
 import Network.AWS.Prelude
@@ -53,16 +52,27 @@ import Network.AWS.Request
 import Network.AWS.Response
 
 -- | /See:/ 'getTransitGatewayRouteTableAssociations' smart constructor.
-data GetTransitGatewayRouteTableAssociations =
-  GetTransitGatewayRouteTableAssociations'
-    { _gtgrtaFilters                    :: !(Maybe [Filter])
-    , _gtgrtaNextToken                  :: !(Maybe Text)
-    , _gtgrtaDryRun                     :: !(Maybe Bool)
-    , _gtgrtaMaxResults                 :: !(Maybe Nat)
-    , _gtgrtaTransitGatewayRouteTableId :: !Text
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data GetTransitGatewayRouteTableAssociations = GetTransitGatewayRouteTableAssociations'{_gtgrtaFilters
+                                                                                        ::
+                                                                                        !(Maybe
+                                                                                            [Filter]),
+                                                                                        _gtgrtaNextToken
+                                                                                        ::
+                                                                                        !(Maybe
+                                                                                            Text),
+                                                                                        _gtgrtaDryRun
+                                                                                        ::
+                                                                                        !(Maybe
+                                                                                            Bool),
+                                                                                        _gtgrtaMaxResults
+                                                                                        ::
+                                                                                        !(Maybe
+                                                                                            Nat),
+                                                                                        _gtgrtaTransitGatewayRouteTableId
+                                                                                        ::
+                                                                                        !Text}
+                                                 deriving (Eq, Read, Show, Data,
+                                                           Typeable, Generic)
 
 -- | Creates a value of 'GetTransitGatewayRouteTableAssociations' with the minimum fields required to make a request.
 --
@@ -80,15 +90,15 @@ data GetTransitGatewayRouteTableAssociations =
 getTransitGatewayRouteTableAssociations
     :: Text -- ^ 'gtgrtaTransitGatewayRouteTableId'
     -> GetTransitGatewayRouteTableAssociations
-getTransitGatewayRouteTableAssociations pTransitGatewayRouteTableId_ =
-  GetTransitGatewayRouteTableAssociations'
-    { _gtgrtaFilters = Nothing
-    , _gtgrtaNextToken = Nothing
-    , _gtgrtaDryRun = Nothing
-    , _gtgrtaMaxResults = Nothing
-    , _gtgrtaTransitGatewayRouteTableId = pTransitGatewayRouteTableId_
-    }
-
+getTransitGatewayRouteTableAssociations
+  pTransitGatewayRouteTableId_
+  = GetTransitGatewayRouteTableAssociations'{_gtgrtaFilters
+                                               = Nothing,
+                                             _gtgrtaNextToken = Nothing,
+                                             _gtgrtaDryRun = Nothing,
+                                             _gtgrtaMaxResults = Nothing,
+                                             _gtgrtaTransitGatewayRouteTableId =
+                                               pTransitGatewayRouteTableId_}
 
 -- | One or more filters. The possible values are:     * @resource-id@ - The ID of the resource.     * @resource-type@ - The resource type (@vpc@ | @vpn@ ).     * @transit-gateway-attachment-id@ - The ID of the attachment.
 gtgrtaFilters :: Lens' GetTransitGatewayRouteTableAssociations [Filter]
@@ -170,14 +180,21 @@ instance ToQuery
                  _gtgrtaTransitGatewayRouteTableId]
 
 -- | /See:/ 'getTransitGatewayRouteTableAssociationsResponse' smart constructor.
-data GetTransitGatewayRouteTableAssociationsResponse =
-  GetTransitGatewayRouteTableAssociationsResponse'
-    { _gtgrtarsNextToken      :: !(Maybe Text)
-    , _gtgrtarsAssociations   :: !(Maybe [TransitGatewayRouteTableAssociation])
-    , _gtgrtarsResponseStatus :: !Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data GetTransitGatewayRouteTableAssociationsResponse = GetTransitGatewayRouteTableAssociationsResponse'{_gtgrtarsNextToken
+                                                                                                        ::
+                                                                                                        !(Maybe
+                                                                                                            Text),
+                                                                                                        _gtgrtarsAssociations
+                                                                                                        ::
+                                                                                                        !(Maybe
+                                                                                                            [TransitGatewayRouteTableAssociation]),
+                                                                                                        _gtgrtarsResponseStatus
+                                                                                                        ::
+                                                                                                        !Int}
+                                                         deriving (Eq, Read,
+                                                                   Show, Data,
+                                                                   Typeable,
+                                                                   Generic)
 
 -- | Creates a value of 'GetTransitGatewayRouteTableAssociationsResponse' with the minimum fields required to make a request.
 --
@@ -191,13 +208,14 @@ data GetTransitGatewayRouteTableAssociationsResponse =
 getTransitGatewayRouteTableAssociationsResponse
     :: Int -- ^ 'gtgrtarsResponseStatus'
     -> GetTransitGatewayRouteTableAssociationsResponse
-getTransitGatewayRouteTableAssociationsResponse pResponseStatus_ =
-  GetTransitGatewayRouteTableAssociationsResponse'
-    { _gtgrtarsNextToken = Nothing
-    , _gtgrtarsAssociations = Nothing
-    , _gtgrtarsResponseStatus = pResponseStatus_
-    }
-
+getTransitGatewayRouteTableAssociationsResponse
+  pResponseStatus_
+  = GetTransitGatewayRouteTableAssociationsResponse'{_gtgrtarsNextToken
+                                                       = Nothing,
+                                                     _gtgrtarsAssociations =
+                                                       Nothing,
+                                                     _gtgrtarsResponseStatus =
+                                                       pResponseStatus_}
 
 -- | The token to use to retrieve the next page of results. This value is @null@ when there are no more results to return.
 gtgrtarsNextToken :: Lens' GetTransitGatewayRouteTableAssociationsResponse (Maybe Text)

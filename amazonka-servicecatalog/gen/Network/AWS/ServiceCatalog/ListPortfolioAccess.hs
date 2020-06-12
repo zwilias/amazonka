@@ -44,16 +44,12 @@ import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 import Network.AWS.ServiceCatalog.Types
-import Network.AWS.ServiceCatalog.Types.Product
 
 -- | /See:/ 'listPortfolioAccess' smart constructor.
-data ListPortfolioAccess =
-  ListPortfolioAccess'
-    { _lAcceptLanguage :: !(Maybe Text)
-    , _lPortfolioId    :: !Text
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data ListPortfolioAccess = ListPortfolioAccess'{_lAcceptLanguage
+                                                :: !(Maybe Text),
+                                                _lPortfolioId :: !Text}
+                             deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'ListPortfolioAccess' with the minimum fields required to make a request.
 --
@@ -65,10 +61,9 @@ data ListPortfolioAccess =
 listPortfolioAccess
     :: Text -- ^ 'lPortfolioId'
     -> ListPortfolioAccess
-listPortfolioAccess pPortfolioId_ =
-  ListPortfolioAccess'
-    {_lAcceptLanguage = Nothing, _lPortfolioId = pPortfolioId_}
-
+listPortfolioAccess pPortfolioId_
+  = ListPortfolioAccess'{_lAcceptLanguage = Nothing,
+                         _lPortfolioId = pPortfolioId_}
 
 -- | The language code.     * @en@ - English (default)     * @jp@ - Japanese     * @zh@ - Chinese
 lAcceptLanguage :: Lens' ListPortfolioAccess (Maybe Text)
@@ -118,14 +113,16 @@ instance ToQuery ListPortfolioAccess where
         toQuery = const mempty
 
 -- | /See:/ 'listPortfolioAccessResponse' smart constructor.
-data ListPortfolioAccessResponse =
-  ListPortfolioAccessResponse'
-    { _lparsNextPageToken  :: !(Maybe Text)
-    , _lparsAccountIds     :: !(Maybe [Text])
-    , _lparsResponseStatus :: !Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data ListPortfolioAccessResponse = ListPortfolioAccessResponse'{_lparsNextPageToken
+                                                                ::
+                                                                !(Maybe Text),
+                                                                _lparsAccountIds
+                                                                ::
+                                                                !(Maybe [Text]),
+                                                                _lparsResponseStatus
+                                                                :: !Int}
+                                     deriving (Eq, Read, Show, Data, Typeable,
+                                               Generic)
 
 -- | Creates a value of 'ListPortfolioAccessResponse' with the minimum fields required to make a request.
 --
@@ -139,13 +136,11 @@ data ListPortfolioAccessResponse =
 listPortfolioAccessResponse
     :: Int -- ^ 'lparsResponseStatus'
     -> ListPortfolioAccessResponse
-listPortfolioAccessResponse pResponseStatus_ =
-  ListPortfolioAccessResponse'
-    { _lparsNextPageToken = Nothing
-    , _lparsAccountIds = Nothing
-    , _lparsResponseStatus = pResponseStatus_
-    }
-
+listPortfolioAccessResponse pResponseStatus_
+  = ListPortfolioAccessResponse'{_lparsNextPageToken =
+                                   Nothing,
+                                 _lparsAccountIds = Nothing,
+                                 _lparsResponseStatus = pResponseStatus_}
 
 -- | The page token to use to retrieve the next set of results. If there are no additional results, this value is null.
 lparsNextPageToken :: Lens' ListPortfolioAccessResponse (Maybe Text)

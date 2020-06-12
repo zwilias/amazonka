@@ -39,20 +39,21 @@ module Network.AWS.EC2.DescribeSecurityGroupReferences
     ) where
 
 import Network.AWS.EC2.Types
-import Network.AWS.EC2.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 
 -- | /See:/ 'describeSecurityGroupReferences' smart constructor.
-data DescribeSecurityGroupReferences =
-  DescribeSecurityGroupReferences'
-    { _dsgrDryRun  :: !(Maybe Bool)
-    , _dsgrGroupId :: ![Text]
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data DescribeSecurityGroupReferences = DescribeSecurityGroupReferences'{_dsgrDryRun
+                                                                        ::
+                                                                        !(Maybe
+                                                                            Bool),
+                                                                        _dsgrGroupId
+                                                                        ::
+                                                                        ![Text]}
+                                         deriving (Eq, Read, Show, Data,
+                                                   Typeable, Generic)
 
 -- | Creates a value of 'DescribeSecurityGroupReferences' with the minimum fields required to make a request.
 --
@@ -63,10 +64,10 @@ data DescribeSecurityGroupReferences =
 -- * 'dsgrGroupId' - The IDs of the security groups in your account.
 describeSecurityGroupReferences
     :: DescribeSecurityGroupReferences
-describeSecurityGroupReferences =
-  DescribeSecurityGroupReferences'
-    {_dsgrDryRun = Nothing, _dsgrGroupId = mempty}
-
+describeSecurityGroupReferences
+  = DescribeSecurityGroupReferences'{_dsgrDryRun =
+                                       Nothing,
+                                     _dsgrGroupId = mempty}
 
 -- | Checks whether you have the required permissions for the action, without actually making the request, and provides an error response. If you have the required permissions, the error response is @DryRunOperation@ . Otherwise, it is @UnauthorizedOperation@ .
 dsgrDryRun :: Lens' DescribeSecurityGroupReferences (Maybe Bool)
@@ -112,13 +113,15 @@ instance ToQuery DescribeSecurityGroupReferences
                toQueryList "GroupId" _dsgrGroupId]
 
 -- | /See:/ 'describeSecurityGroupReferencesResponse' smart constructor.
-data DescribeSecurityGroupReferencesResponse =
-  DescribeSecurityGroupReferencesResponse'
-    { _dsgrrsSecurityGroupReferenceSet :: !(Maybe [SecurityGroupReference])
-    , _dsgrrsResponseStatus            :: !Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data DescribeSecurityGroupReferencesResponse = DescribeSecurityGroupReferencesResponse'{_dsgrrsSecurityGroupReferenceSet
+                                                                                        ::
+                                                                                        !(Maybe
+                                                                                            [SecurityGroupReference]),
+                                                                                        _dsgrrsResponseStatus
+                                                                                        ::
+                                                                                        !Int}
+                                                 deriving (Eq, Read, Show, Data,
+                                                           Typeable, Generic)
 
 -- | Creates a value of 'DescribeSecurityGroupReferencesResponse' with the minimum fields required to make a request.
 --
@@ -130,12 +133,12 @@ data DescribeSecurityGroupReferencesResponse =
 describeSecurityGroupReferencesResponse
     :: Int -- ^ 'dsgrrsResponseStatus'
     -> DescribeSecurityGroupReferencesResponse
-describeSecurityGroupReferencesResponse pResponseStatus_ =
-  DescribeSecurityGroupReferencesResponse'
-    { _dsgrrsSecurityGroupReferenceSet = Nothing
-    , _dsgrrsResponseStatus = pResponseStatus_
-    }
-
+describeSecurityGroupReferencesResponse
+  pResponseStatus_
+  = DescribeSecurityGroupReferencesResponse'{_dsgrrsSecurityGroupReferenceSet
+                                               = Nothing,
+                                             _dsgrrsResponseStatus =
+                                               pResponseStatus_}
 
 -- | Information about the VPCs with the referencing security groups.
 dsgrrsSecurityGroupReferenceSet :: Lens' DescribeSecurityGroupReferencesResponse [SecurityGroupReference]

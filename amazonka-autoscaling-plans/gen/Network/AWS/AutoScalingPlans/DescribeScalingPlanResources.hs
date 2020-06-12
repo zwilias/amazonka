@@ -44,7 +44,6 @@ module Network.AWS.AutoScalingPlans.DescribeScalingPlanResources
     ) where
 
 import Network.AWS.AutoScalingPlans.Types
-import Network.AWS.AutoScalingPlans.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Pager
 import Network.AWS.Prelude
@@ -52,15 +51,18 @@ import Network.AWS.Request
 import Network.AWS.Response
 
 -- | /See:/ 'describeScalingPlanResources' smart constructor.
-data DescribeScalingPlanResources =
-  DescribeScalingPlanResources'
-    { _dsprNextToken          :: !(Maybe Text)
-    , _dsprMaxResults         :: !(Maybe Int)
-    , _dsprScalingPlanName    :: !Text
-    , _dsprScalingPlanVersion :: !Integer
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data DescribeScalingPlanResources = DescribeScalingPlanResources'{_dsprNextToken
+                                                                  ::
+                                                                  !(Maybe Text),
+                                                                  _dsprMaxResults
+                                                                  ::
+                                                                  !(Maybe Int),
+                                                                  _dsprScalingPlanName
+                                                                  :: !Text,
+                                                                  _dsprScalingPlanVersion
+                                                                  :: !Integer}
+                                      deriving (Eq, Read, Show, Data, Typeable,
+                                                Generic)
 
 -- | Creates a value of 'DescribeScalingPlanResources' with the minimum fields required to make a request.
 --
@@ -77,14 +79,14 @@ describeScalingPlanResources
     :: Text -- ^ 'dsprScalingPlanName'
     -> Integer -- ^ 'dsprScalingPlanVersion'
     -> DescribeScalingPlanResources
-describeScalingPlanResources pScalingPlanName_ pScalingPlanVersion_ =
-  DescribeScalingPlanResources'
-    { _dsprNextToken = Nothing
-    , _dsprMaxResults = Nothing
-    , _dsprScalingPlanName = pScalingPlanName_
-    , _dsprScalingPlanVersion = pScalingPlanVersion_
-    }
-
+describeScalingPlanResources pScalingPlanName_
+  pScalingPlanVersion_
+  = DescribeScalingPlanResources'{_dsprNextToken =
+                                    Nothing,
+                                  _dsprMaxResults = Nothing,
+                                  _dsprScalingPlanName = pScalingPlanName_,
+                                  _dsprScalingPlanVersion =
+                                    pScalingPlanVersion_}
 
 -- | The token for the next set of results.
 dsprNextToken :: Lens' DescribeScalingPlanResources (Maybe Text)
@@ -153,14 +155,19 @@ instance ToQuery DescribeScalingPlanResources where
         toQuery = const mempty
 
 -- | /See:/ 'describeScalingPlanResourcesResponse' smart constructor.
-data DescribeScalingPlanResourcesResponse =
-  DescribeScalingPlanResourcesResponse'
-    { _dsprrsNextToken            :: !(Maybe Text)
-    , _dsprrsScalingPlanResources :: !(Maybe [ScalingPlanResource])
-    , _dsprrsResponseStatus       :: !Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data DescribeScalingPlanResourcesResponse = DescribeScalingPlanResourcesResponse'{_dsprrsNextToken
+                                                                                  ::
+                                                                                  !(Maybe
+                                                                                      Text),
+                                                                                  _dsprrsScalingPlanResources
+                                                                                  ::
+                                                                                  !(Maybe
+                                                                                      [ScalingPlanResource]),
+                                                                                  _dsprrsResponseStatus
+                                                                                  ::
+                                                                                  !Int}
+                                              deriving (Eq, Read, Show, Data,
+                                                        Typeable, Generic)
 
 -- | Creates a value of 'DescribeScalingPlanResourcesResponse' with the minimum fields required to make a request.
 --
@@ -174,13 +181,12 @@ data DescribeScalingPlanResourcesResponse =
 describeScalingPlanResourcesResponse
     :: Int -- ^ 'dsprrsResponseStatus'
     -> DescribeScalingPlanResourcesResponse
-describeScalingPlanResourcesResponse pResponseStatus_ =
-  DescribeScalingPlanResourcesResponse'
-    { _dsprrsNextToken = Nothing
-    , _dsprrsScalingPlanResources = Nothing
-    , _dsprrsResponseStatus = pResponseStatus_
-    }
-
+describeScalingPlanResourcesResponse pResponseStatus_
+  = DescribeScalingPlanResourcesResponse'{_dsprrsNextToken
+                                            = Nothing,
+                                          _dsprrsScalingPlanResources = Nothing,
+                                          _dsprrsResponseStatus =
+                                            pResponseStatus_}
 
 -- | The token required to get the next set of results. This value is @null@ if there are no more results to return.
 dsprrsNextToken :: Lens' DescribeScalingPlanResourcesResponse (Maybe Text)

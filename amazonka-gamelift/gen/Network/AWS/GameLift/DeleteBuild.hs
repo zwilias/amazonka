@@ -25,15 +25,15 @@
 --
 -- Build-related operations include:
 --
---     * 'CreateBuild'
+--     * 'CreateBuild' 
 --
---     * 'ListBuilds'
+--     * 'ListBuilds' 
 --
---     * 'DescribeBuild'
+--     * 'DescribeBuild' 
 --
---     * 'UpdateBuild'
+--     * 'UpdateBuild' 
 --
---     * 'DeleteBuild'
+--     * 'DeleteBuild' 
 --
 --
 --
@@ -51,7 +51,6 @@ module Network.AWS.GameLift.DeleteBuild
     ) where
 
 import Network.AWS.GameLift.Types
-import Network.AWS.GameLift.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.Request
@@ -62,12 +61,9 @@ import Network.AWS.Response
 --
 --
 -- /See:/ 'deleteBuild' smart constructor.
-newtype DeleteBuild =
-  DeleteBuild'
-    { _dbBuildId :: Text
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+newtype DeleteBuild = DeleteBuild'{_dbBuildId ::
+                                   Text}
+                        deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'DeleteBuild' with the minimum fields required to make a request.
 --
@@ -77,8 +73,8 @@ newtype DeleteBuild =
 deleteBuild
     :: Text -- ^ 'dbBuildId'
     -> DeleteBuild
-deleteBuild pBuildId_ = DeleteBuild' {_dbBuildId = pBuildId_}
-
+deleteBuild pBuildId_
+  = DeleteBuild'{_dbBuildId = pBuildId_}
 
 -- | Unique identifier for a build to delete.
 dbBuildId :: Lens' DeleteBuild Text
@@ -113,16 +109,13 @@ instance ToQuery DeleteBuild where
         toQuery = const mempty
 
 -- | /See:/ 'deleteBuildResponse' smart constructor.
-data DeleteBuildResponse =
-  DeleteBuildResponse'
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data DeleteBuildResponse = DeleteBuildResponse'
+                             deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'DeleteBuildResponse' with the minimum fields required to make a request.
 --
 deleteBuildResponse
     :: DeleteBuildResponse
 deleteBuildResponse = DeleteBuildResponse'
-
 
 instance NFData DeleteBuildResponse where

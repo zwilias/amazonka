@@ -42,21 +42,17 @@ module Network.AWS.ELBv2.SetSubnets
     ) where
 
 import Network.AWS.ELBv2.Types
-import Network.AWS.ELBv2.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 
 -- | /See:/ 'setSubnets' smart constructor.
-data SetSubnets =
-  SetSubnets'
-    { _ssSubnetMappings  :: !(Maybe [SubnetMapping])
-    , _ssLoadBalancerARN :: !Text
-    , _ssSubnets         :: ![Text]
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data SetSubnets = SetSubnets'{_ssSubnetMappings ::
+                              !(Maybe [SubnetMapping]),
+                              _ssLoadBalancerARN :: !Text,
+                              _ssSubnets :: ![Text]}
+                    deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'SetSubnets' with the minimum fields required to make a request.
 --
@@ -70,13 +66,10 @@ data SetSubnets =
 setSubnets
     :: Text -- ^ 'ssLoadBalancerARN'
     -> SetSubnets
-setSubnets pLoadBalancerARN_ =
-  SetSubnets'
-    { _ssSubnetMappings = Nothing
-    , _ssLoadBalancerARN = pLoadBalancerARN_
-    , _ssSubnets = mempty
-    }
-
+setSubnets pLoadBalancerARN_
+  = SetSubnets'{_ssSubnetMappings = Nothing,
+                _ssLoadBalancerARN = pLoadBalancerARN_,
+                _ssSubnets = mempty}
 
 -- | The IDs of the public subnets. You must specify subnets from at least two Availability Zones. You can specify only one subnet per Availability Zone. You must specify either subnets or subnet mappings. You cannot specify Elastic IP addresses for your subnets.
 ssSubnetMappings :: Lens' SetSubnets [SubnetMapping]
@@ -122,13 +115,10 @@ instance ToQuery SetSubnets where
                "Subnets" =: toQueryList "member" _ssSubnets]
 
 -- | /See:/ 'setSubnetsResponse' smart constructor.
-data SetSubnetsResponse =
-  SetSubnetsResponse'
-    { _ssrsAvailabilityZones :: !(Maybe [AvailabilityZone])
-    , _ssrsResponseStatus    :: !Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data SetSubnetsResponse = SetSubnetsResponse'{_ssrsAvailabilityZones
+                                              :: !(Maybe [AvailabilityZone]),
+                                              _ssrsResponseStatus :: !Int}
+                            deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'SetSubnetsResponse' with the minimum fields required to make a request.
 --
@@ -140,10 +130,10 @@ data SetSubnetsResponse =
 setSubnetsResponse
     :: Int -- ^ 'ssrsResponseStatus'
     -> SetSubnetsResponse
-setSubnetsResponse pResponseStatus_ =
-  SetSubnetsResponse'
-    {_ssrsAvailabilityZones = Nothing, _ssrsResponseStatus = pResponseStatus_}
-
+setSubnetsResponse pResponseStatus_
+  = SetSubnetsResponse'{_ssrsAvailabilityZones =
+                          Nothing,
+                        _ssrsResponseStatus = pResponseStatus_}
 
 -- | Information about the subnet and Availability Zone.
 ssrsAvailabilityZones :: Lens' SetSubnetsResponse [AvailabilityZone]

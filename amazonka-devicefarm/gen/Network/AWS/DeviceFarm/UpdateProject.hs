@@ -40,7 +40,6 @@ module Network.AWS.DeviceFarm.UpdateProject
     ) where
 
 import Network.AWS.DeviceFarm.Types
-import Network.AWS.DeviceFarm.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.Request
@@ -51,14 +50,11 @@ import Network.AWS.Response
 --
 --
 -- /See:/ 'updateProject' smart constructor.
-data UpdateProject =
-  UpdateProject'
-    { _upName                     :: !(Maybe Text)
-    , _upDefaultJobTimeoutMinutes :: !(Maybe Int)
-    , _upArn                      :: !Text
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data UpdateProject = UpdateProject'{_upName ::
+                                    !(Maybe Text),
+                                    _upDefaultJobTimeoutMinutes :: !(Maybe Int),
+                                    _upArn :: !Text}
+                       deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'UpdateProject' with the minimum fields required to make a request.
 --
@@ -72,10 +68,10 @@ data UpdateProject =
 updateProject
     :: Text -- ^ 'upArn'
     -> UpdateProject
-updateProject pArn_ =
-  UpdateProject'
-    {_upName = Nothing, _upDefaultJobTimeoutMinutes = Nothing, _upArn = pArn_}
-
+updateProject pArn_
+  = UpdateProject'{_upName = Nothing,
+                   _upDefaultJobTimeoutMinutes = Nothing,
+                   _upArn = pArn_}
 
 -- | A string that represents the new name of the project that you are updating.
 upName :: Lens' UpdateProject (Maybe Text)
@@ -131,13 +127,11 @@ instance ToQuery UpdateProject where
 --
 --
 -- /See:/ 'updateProjectResponse' smart constructor.
-data UpdateProjectResponse =
-  UpdateProjectResponse'
-    { _uprsProject        :: !(Maybe Project)
-    , _uprsResponseStatus :: !Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data UpdateProjectResponse = UpdateProjectResponse'{_uprsProject
+                                                    :: !(Maybe Project),
+                                                    _uprsResponseStatus :: !Int}
+                               deriving (Eq, Read, Show, Data, Typeable,
+                                         Generic)
 
 -- | Creates a value of 'UpdateProjectResponse' with the minimum fields required to make a request.
 --
@@ -149,10 +143,9 @@ data UpdateProjectResponse =
 updateProjectResponse
     :: Int -- ^ 'uprsResponseStatus'
     -> UpdateProjectResponse
-updateProjectResponse pResponseStatus_ =
-  UpdateProjectResponse'
-    {_uprsProject = Nothing, _uprsResponseStatus = pResponseStatus_}
-
+updateProjectResponse pResponseStatus_
+  = UpdateProjectResponse'{_uprsProject = Nothing,
+                           _uprsResponseStatus = pResponseStatus_}
 
 -- | The project to update.
 uprsProject :: Lens' UpdateProjectResponse (Maybe Project)

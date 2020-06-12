@@ -38,7 +38,6 @@ module Network.AWS.AppSync.GetAPICache
     ) where
 
 import Network.AWS.AppSync.Types
-import Network.AWS.AppSync.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.Request
@@ -49,12 +48,8 @@ import Network.AWS.Response
 --
 --
 -- /See:/ 'getAPICache' smart constructor.
-newtype GetAPICache =
-  GetAPICache'
-    { _gacApiId :: Text
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+newtype GetAPICache = GetAPICache'{_gacApiId :: Text}
+                        deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'GetAPICache' with the minimum fields required to make a request.
 --
@@ -64,8 +59,8 @@ newtype GetAPICache =
 getAPICache
     :: Text -- ^ 'gacApiId'
     -> GetAPICache
-getAPICache pApiId_ = GetAPICache' {_gacApiId = pApiId_}
-
+getAPICache pApiId_
+  = GetAPICache'{_gacApiId = pApiId_}
 
 -- | The API ID.
 gacApiId :: Lens' GetAPICache Text
@@ -103,13 +98,10 @@ instance ToQuery GetAPICache where
 --
 --
 -- /See:/ 'getAPICacheResponse' smart constructor.
-data GetAPICacheResponse =
-  GetAPICacheResponse'
-    { _gacrsApiCache       :: !(Maybe APICache)
-    , _gacrsResponseStatus :: !Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data GetAPICacheResponse = GetAPICacheResponse'{_gacrsApiCache
+                                                :: !(Maybe APICache),
+                                                _gacrsResponseStatus :: !Int}
+                             deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'GetAPICacheResponse' with the minimum fields required to make a request.
 --
@@ -121,10 +113,9 @@ data GetAPICacheResponse =
 getAPICacheResponse
     :: Int -- ^ 'gacrsResponseStatus'
     -> GetAPICacheResponse
-getAPICacheResponse pResponseStatus_ =
-  GetAPICacheResponse'
-    {_gacrsApiCache = Nothing, _gacrsResponseStatus = pResponseStatus_}
-
+getAPICacheResponse pResponseStatus_
+  = GetAPICacheResponse'{_gacrsApiCache = Nothing,
+                         _gacrsResponseStatus = pResponseStatus_}
 
 -- | The @ApiCache@ object.
 gacrsApiCache :: Lens' GetAPICacheResponse (Maybe APICache)

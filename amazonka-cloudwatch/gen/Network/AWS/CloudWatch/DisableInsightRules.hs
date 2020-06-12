@@ -38,19 +38,16 @@ module Network.AWS.CloudWatch.DisableInsightRules
     ) where
 
 import Network.AWS.CloudWatch.Types
-import Network.AWS.CloudWatch.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 
 -- | /See:/ 'disableInsightRules' smart constructor.
-newtype DisableInsightRules =
-  DisableInsightRules'
-    { _dirRuleNames :: [Text]
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+newtype DisableInsightRules = DisableInsightRules'{_dirRuleNames
+                                                   :: [Text]}
+                                deriving (Eq, Read, Show, Data, Typeable,
+                                          Generic)
 
 -- | Creates a value of 'DisableInsightRules' with the minimum fields required to make a request.
 --
@@ -59,8 +56,8 @@ newtype DisableInsightRules =
 -- * 'dirRuleNames' - An array of the rule names to disable. If you need to find out the names of your rules, use <https://docs.aws.amazon.com/AmazonCloudWatch/latest/APIReference/API_DescribeInsightRules.html DescribeInsightRules> .
 disableInsightRules
     :: DisableInsightRules
-disableInsightRules = DisableInsightRules' {_dirRuleNames = mempty}
-
+disableInsightRules
+  = DisableInsightRules'{_dirRuleNames = mempty}
 
 -- | An array of the rule names to disable. If you need to find out the names of your rules, use <https://docs.aws.amazon.com/AmazonCloudWatch/latest/APIReference/API_DescribeInsightRules.html DescribeInsightRules> .
 dirRuleNames :: Lens' DisableInsightRules [Text]
@@ -96,13 +93,14 @@ instance ToQuery DisableInsightRules where
                "RuleNames" =: toQueryList "member" _dirRuleNames]
 
 -- | /See:/ 'disableInsightRulesResponse' smart constructor.
-data DisableInsightRulesResponse =
-  DisableInsightRulesResponse'
-    { _dirrsFailures       :: !(Maybe [PartialFailure])
-    , _dirrsResponseStatus :: !Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data DisableInsightRulesResponse = DisableInsightRulesResponse'{_dirrsFailures
+                                                                ::
+                                                                !(Maybe
+                                                                    [PartialFailure]),
+                                                                _dirrsResponseStatus
+                                                                :: !Int}
+                                     deriving (Eq, Read, Show, Data, Typeable,
+                                               Generic)
 
 -- | Creates a value of 'DisableInsightRulesResponse' with the minimum fields required to make a request.
 --
@@ -114,10 +112,10 @@ data DisableInsightRulesResponse =
 disableInsightRulesResponse
     :: Int -- ^ 'dirrsResponseStatus'
     -> DisableInsightRulesResponse
-disableInsightRulesResponse pResponseStatus_ =
-  DisableInsightRulesResponse'
-    {_dirrsFailures = Nothing, _dirrsResponseStatus = pResponseStatus_}
-
+disableInsightRulesResponse pResponseStatus_
+  = DisableInsightRulesResponse'{_dirrsFailures =
+                                   Nothing,
+                                 _dirrsResponseStatus = pResponseStatus_}
 
 -- | An array listing the rules that could not be disabled. You cannot disable built-in rules.
 dirrsFailures :: Lens' DisableInsightRulesResponse [PartialFailure]

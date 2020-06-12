@@ -49,15 +49,14 @@ import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 import Network.AWS.SageMaker.Types
-import Network.AWS.SageMaker.Types.Product
 
 -- | /See:/ 'describeNotebookInstanceLifecycleConfig' smart constructor.
-newtype DescribeNotebookInstanceLifecycleConfig =
-  DescribeNotebookInstanceLifecycleConfig'
-    { _dNotebookInstanceLifecycleConfigName :: Text
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+newtype DescribeNotebookInstanceLifecycleConfig = DescribeNotebookInstanceLifecycleConfig'{_dNotebookInstanceLifecycleConfigName
+                                                                                           ::
+                                                                                           Text}
+                                                    deriving (Eq, Read, Show,
+                                                              Data, Typeable,
+                                                              Generic)
 
 -- | Creates a value of 'DescribeNotebookInstanceLifecycleConfig' with the minimum fields required to make a request.
 --
@@ -67,12 +66,11 @@ newtype DescribeNotebookInstanceLifecycleConfig =
 describeNotebookInstanceLifecycleConfig
     :: Text -- ^ 'dNotebookInstanceLifecycleConfigName'
     -> DescribeNotebookInstanceLifecycleConfig
-describeNotebookInstanceLifecycleConfig pNotebookInstanceLifecycleConfigName_ =
-  DescribeNotebookInstanceLifecycleConfig'
-    { _dNotebookInstanceLifecycleConfigName =
-        pNotebookInstanceLifecycleConfigName_
-    }
-
+describeNotebookInstanceLifecycleConfig
+  pNotebookInstanceLifecycleConfigName_
+  = DescribeNotebookInstanceLifecycleConfig'{_dNotebookInstanceLifecycleConfigName
+                                               =
+                                               pNotebookInstanceLifecycleConfigName_}
 
 -- | The name of the lifecycle configuration to describe.
 dNotebookInstanceLifecycleConfigName :: Lens' DescribeNotebookInstanceLifecycleConfig Text
@@ -137,18 +135,37 @@ instance ToQuery
         toQuery = const mempty
 
 -- | /See:/ 'describeNotebookInstanceLifecycleConfigResponse' smart constructor.
-data DescribeNotebookInstanceLifecycleConfigResponse =
-  DescribeNotebookInstanceLifecycleConfigResponse'
-    { _dnilcrsCreationTime :: !(Maybe POSIX)
-    , _dnilcrsOnCreate :: !(Maybe [NotebookInstanceLifecycleHook])
-    , _dnilcrsLastModifiedTime :: !(Maybe POSIX)
-    , _dnilcrsNotebookInstanceLifecycleConfigARN :: !(Maybe Text)
-    , _dnilcrsOnStart :: !(Maybe [NotebookInstanceLifecycleHook])
-    , _dnilcrsNotebookInstanceLifecycleConfigName :: !(Maybe Text)
-    , _dnilcrsResponseStatus :: !Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data DescribeNotebookInstanceLifecycleConfigResponse = DescribeNotebookInstanceLifecycleConfigResponse'{_dnilcrsCreationTime
+                                                                                                        ::
+                                                                                                        !(Maybe
+                                                                                                            POSIX),
+                                                                                                        _dnilcrsOnCreate
+                                                                                                        ::
+                                                                                                        !(Maybe
+                                                                                                            [NotebookInstanceLifecycleHook]),
+                                                                                                        _dnilcrsLastModifiedTime
+                                                                                                        ::
+                                                                                                        !(Maybe
+                                                                                                            POSIX),
+                                                                                                        _dnilcrsNotebookInstanceLifecycleConfigARN
+                                                                                                        ::
+                                                                                                        !(Maybe
+                                                                                                            Text),
+                                                                                                        _dnilcrsOnStart
+                                                                                                        ::
+                                                                                                        !(Maybe
+                                                                                                            [NotebookInstanceLifecycleHook]),
+                                                                                                        _dnilcrsNotebookInstanceLifecycleConfigName
+                                                                                                        ::
+                                                                                                        !(Maybe
+                                                                                                            Text),
+                                                                                                        _dnilcrsResponseStatus
+                                                                                                        ::
+                                                                                                        !Int}
+                                                         deriving (Eq, Read,
+                                                                   Show, Data,
+                                                                   Typeable,
+                                                                   Generic)
 
 -- | Creates a value of 'DescribeNotebookInstanceLifecycleConfigResponse' with the minimum fields required to make a request.
 --
@@ -170,17 +187,20 @@ data DescribeNotebookInstanceLifecycleConfigResponse =
 describeNotebookInstanceLifecycleConfigResponse
     :: Int -- ^ 'dnilcrsResponseStatus'
     -> DescribeNotebookInstanceLifecycleConfigResponse
-describeNotebookInstanceLifecycleConfigResponse pResponseStatus_ =
-  DescribeNotebookInstanceLifecycleConfigResponse'
-    { _dnilcrsCreationTime = Nothing
-    , _dnilcrsOnCreate = Nothing
-    , _dnilcrsLastModifiedTime = Nothing
-    , _dnilcrsNotebookInstanceLifecycleConfigARN = Nothing
-    , _dnilcrsOnStart = Nothing
-    , _dnilcrsNotebookInstanceLifecycleConfigName = Nothing
-    , _dnilcrsResponseStatus = pResponseStatus_
-    }
-
+describeNotebookInstanceLifecycleConfigResponse
+  pResponseStatus_
+  = DescribeNotebookInstanceLifecycleConfigResponse'{_dnilcrsCreationTime
+                                                       = Nothing,
+                                                     _dnilcrsOnCreate = Nothing,
+                                                     _dnilcrsLastModifiedTime =
+                                                       Nothing,
+                                                     _dnilcrsNotebookInstanceLifecycleConfigARN
+                                                       = Nothing,
+                                                     _dnilcrsOnStart = Nothing,
+                                                     _dnilcrsNotebookInstanceLifecycleConfigName
+                                                       = Nothing,
+                                                     _dnilcrsResponseStatus =
+                                                       pResponseStatus_}
 
 -- | A timestamp that tells when the lifecycle configuration was created.
 dnilcrsCreationTime :: Lens' DescribeNotebookInstanceLifecycleConfigResponse (Maybe UTCTime)

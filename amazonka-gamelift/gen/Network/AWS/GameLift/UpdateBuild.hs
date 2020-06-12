@@ -23,15 +23,15 @@
 --
 -- Build-related operations include:
 --
---     * 'CreateBuild'
+--     * 'CreateBuild' 
 --
---     * 'ListBuilds'
+--     * 'ListBuilds' 
 --
---     * 'DescribeBuild'
+--     * 'DescribeBuild' 
 --
---     * 'UpdateBuild'
+--     * 'UpdateBuild' 
 --
---     * 'DeleteBuild'
+--     * 'DeleteBuild' 
 --
 --
 --
@@ -54,7 +54,6 @@ module Network.AWS.GameLift.UpdateBuild
     ) where
 
 import Network.AWS.GameLift.Types
-import Network.AWS.GameLift.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.Request
@@ -65,20 +64,17 @@ import Network.AWS.Response
 --
 --
 -- /See:/ 'updateBuild' smart constructor.
-data UpdateBuild =
-  UpdateBuild'
-    { _ubName    :: !(Maybe Text)
-    , _ubVersion :: !(Maybe Text)
-    , _ubBuildId :: !Text
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data UpdateBuild = UpdateBuild'{_ubName ::
+                                !(Maybe Text),
+                                _ubVersion :: !(Maybe Text),
+                                _ubBuildId :: !Text}
+                     deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'UpdateBuild' with the minimum fields required to make a request.
 --
 -- Use one of the following lenses to modify other fields as desired:
 --
--- * 'ubName' - Descriptive label that is associated with a build. Build names do not need to be unique.
+-- * 'ubName' - Descriptive label that is associated with a build. Build names do not need to be unique. 
 --
 -- * 'ubVersion' - Version that is associated with this build. Version strings do not need to be unique.
 --
@@ -86,11 +82,11 @@ data UpdateBuild =
 updateBuild
     :: Text -- ^ 'ubBuildId'
     -> UpdateBuild
-updateBuild pBuildId_ =
-  UpdateBuild' {_ubName = Nothing, _ubVersion = Nothing, _ubBuildId = pBuildId_}
+updateBuild pBuildId_
+  = UpdateBuild'{_ubName = Nothing,
+                 _ubVersion = Nothing, _ubBuildId = pBuildId_}
 
-
--- | Descriptive label that is associated with a build. Build names do not need to be unique.
+-- | Descriptive label that is associated with a build. Build names do not need to be unique. 
 ubName :: Lens' UpdateBuild (Maybe Text)
 ubName = lens _ubName (\ s a -> s{_ubName = a})
 
@@ -143,13 +139,10 @@ instance ToQuery UpdateBuild where
 --
 --
 -- /See:/ 'updateBuildResponse' smart constructor.
-data UpdateBuildResponse =
-  UpdateBuildResponse'
-    { _ubrsBuild          :: !(Maybe Build)
-    , _ubrsResponseStatus :: !Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data UpdateBuildResponse = UpdateBuildResponse'{_ubrsBuild
+                                                :: !(Maybe Build),
+                                                _ubrsResponseStatus :: !Int}
+                             deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'UpdateBuildResponse' with the minimum fields required to make a request.
 --
@@ -161,10 +154,9 @@ data UpdateBuildResponse =
 updateBuildResponse
     :: Int -- ^ 'ubrsResponseStatus'
     -> UpdateBuildResponse
-updateBuildResponse pResponseStatus_ =
-  UpdateBuildResponse'
-    {_ubrsBuild = Nothing, _ubrsResponseStatus = pResponseStatus_}
-
+updateBuildResponse pResponseStatus_
+  = UpdateBuildResponse'{_ubrsBuild = Nothing,
+                         _ubrsResponseStatus = pResponseStatus_}
 
 -- | Object that contains the updated build record.
 ubrsBuild :: Lens' UpdateBuildResponse (Maybe Build)

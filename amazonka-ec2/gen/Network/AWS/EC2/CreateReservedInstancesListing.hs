@@ -47,7 +47,6 @@ module Network.AWS.EC2.CreateReservedInstancesListing
     ) where
 
 import Network.AWS.EC2.Types
-import Network.AWS.EC2.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.Request
@@ -58,15 +57,17 @@ import Network.AWS.Response
 --
 --
 -- /See:/ 'createReservedInstancesListing' smart constructor.
-data CreateReservedInstancesListing =
-  CreateReservedInstancesListing'
-    { _crilClientToken         :: !Text
-    , _crilInstanceCount       :: !Int
-    , _crilPriceSchedules      :: ![PriceScheduleSpecification]
-    , _crilReservedInstancesId :: !Text
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data CreateReservedInstancesListing = CreateReservedInstancesListing'{_crilClientToken
+                                                                      :: !Text,
+                                                                      _crilInstanceCount
+                                                                      :: !Int,
+                                                                      _crilPriceSchedules
+                                                                      ::
+                                                                      ![PriceScheduleSpecification],
+                                                                      _crilReservedInstancesId
+                                                                      :: !Text}
+                                        deriving (Eq, Read, Show, Data,
+                                                  Typeable, Generic)
 
 -- | Creates a value of 'CreateReservedInstancesListing' with the minimum fields required to make a request.
 --
@@ -84,14 +85,14 @@ createReservedInstancesListing
     -> Int -- ^ 'crilInstanceCount'
     -> Text -- ^ 'crilReservedInstancesId'
     -> CreateReservedInstancesListing
-createReservedInstancesListing pClientToken_ pInstanceCount_ pReservedInstancesId_ =
-  CreateReservedInstancesListing'
-    { _crilClientToken = pClientToken_
-    , _crilInstanceCount = pInstanceCount_
-    , _crilPriceSchedules = mempty
-    , _crilReservedInstancesId = pReservedInstancesId_
-    }
-
+createReservedInstancesListing pClientToken_
+  pInstanceCount_ pReservedInstancesId_
+  = CreateReservedInstancesListing'{_crilClientToken =
+                                      pClientToken_,
+                                    _crilInstanceCount = pInstanceCount_,
+                                    _crilPriceSchedules = mempty,
+                                    _crilReservedInstancesId =
+                                      pReservedInstancesId_}
 
 -- | Unique, case-sensitive identifier you provide to ensure idempotency of your listings. This helps avoid duplicate listings. For more information, see <https://docs.aws.amazon.com/AWSEC2/latest/APIReference/Run_Instance_Idempotency.html Ensuring Idempotency> .
 crilClientToken :: Lens' CreateReservedInstancesListing Text
@@ -150,13 +151,15 @@ instance ToQuery CreateReservedInstancesListing where
 --
 --
 -- /See:/ 'createReservedInstancesListingResponse' smart constructor.
-data CreateReservedInstancesListingResponse =
-  CreateReservedInstancesListingResponse'
-    { _crilrrsReservedInstancesListings :: !(Maybe [ReservedInstancesListing])
-    , _crilrrsResponseStatus            :: !Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data CreateReservedInstancesListingResponse = CreateReservedInstancesListingResponse'{_crilrrsReservedInstancesListings
+                                                                                      ::
+                                                                                      !(Maybe
+                                                                                          [ReservedInstancesListing]),
+                                                                                      _crilrrsResponseStatus
+                                                                                      ::
+                                                                                      !Int}
+                                                deriving (Eq, Read, Show, Data,
+                                                          Typeable, Generic)
 
 -- | Creates a value of 'CreateReservedInstancesListingResponse' with the minimum fields required to make a request.
 --
@@ -168,12 +171,12 @@ data CreateReservedInstancesListingResponse =
 createReservedInstancesListingResponse
     :: Int -- ^ 'crilrrsResponseStatus'
     -> CreateReservedInstancesListingResponse
-createReservedInstancesListingResponse pResponseStatus_ =
-  CreateReservedInstancesListingResponse'
-    { _crilrrsReservedInstancesListings = Nothing
-    , _crilrrsResponseStatus = pResponseStatus_
-    }
-
+createReservedInstancesListingResponse
+  pResponseStatus_
+  = CreateReservedInstancesListingResponse'{_crilrrsReservedInstancesListings
+                                              = Nothing,
+                                            _crilrrsResponseStatus =
+                                              pResponseStatus_}
 
 -- | Information about the Standard Reserved Instance listing.
 crilrrsReservedInstancesListings :: Lens' CreateReservedInstancesListingResponse [ReservedInstancesListing]

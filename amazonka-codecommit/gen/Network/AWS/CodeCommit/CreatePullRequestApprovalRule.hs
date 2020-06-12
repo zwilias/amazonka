@@ -40,21 +40,20 @@ module Network.AWS.CodeCommit.CreatePullRequestApprovalRule
     ) where
 
 import Network.AWS.CodeCommit.Types
-import Network.AWS.CodeCommit.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 
 -- | /See:/ 'createPullRequestApprovalRule' smart constructor.
-data CreatePullRequestApprovalRule =
-  CreatePullRequestApprovalRule'
-    { _cprarPullRequestId       :: !Text
-    , _cprarApprovalRuleName    :: !Text
-    , _cprarApprovalRuleContent :: !Text
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data CreatePullRequestApprovalRule = CreatePullRequestApprovalRule'{_cprarPullRequestId
+                                                                    :: !Text,
+                                                                    _cprarApprovalRuleName
+                                                                    :: !Text,
+                                                                    _cprarApprovalRuleContent
+                                                                    :: !Text}
+                                       deriving (Eq, Read, Show, Data, Typeable,
+                                                 Generic)
 
 -- | Creates a value of 'CreatePullRequestApprovalRule' with the minimum fields required to make a request.
 --
@@ -70,13 +69,13 @@ createPullRequestApprovalRule
     -> Text -- ^ 'cprarApprovalRuleName'
     -> Text -- ^ 'cprarApprovalRuleContent'
     -> CreatePullRequestApprovalRule
-createPullRequestApprovalRule pPullRequestId_ pApprovalRuleName_ pApprovalRuleContent_ =
-  CreatePullRequestApprovalRule'
-    { _cprarPullRequestId = pPullRequestId_
-    , _cprarApprovalRuleName = pApprovalRuleName_
-    , _cprarApprovalRuleContent = pApprovalRuleContent_
-    }
-
+createPullRequestApprovalRule pPullRequestId_
+  pApprovalRuleName_ pApprovalRuleContent_
+  = CreatePullRequestApprovalRule'{_cprarPullRequestId
+                                     = pPullRequestId_,
+                                   _cprarApprovalRuleName = pApprovalRuleName_,
+                                   _cprarApprovalRuleContent =
+                                     pApprovalRuleContent_}
 
 -- | The system-generated ID of the pull request for which you want to create the approval rule.
 cprarPullRequestId :: Lens' CreatePullRequestApprovalRule Text
@@ -133,13 +132,14 @@ instance ToQuery CreatePullRequestApprovalRule where
         toQuery = const mempty
 
 -- | /See:/ 'createPullRequestApprovalRuleResponse' smart constructor.
-data CreatePullRequestApprovalRuleResponse =
-  CreatePullRequestApprovalRuleResponse'
-    { _cprarrsResponseStatus :: !Int
-    , _cprarrsApprovalRule   :: !ApprovalRule
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data CreatePullRequestApprovalRuleResponse = CreatePullRequestApprovalRuleResponse'{_cprarrsResponseStatus
+                                                                                    ::
+                                                                                    !Int,
+                                                                                    _cprarrsApprovalRule
+                                                                                    ::
+                                                                                    !ApprovalRule}
+                                               deriving (Eq, Read, Show, Data,
+                                                         Typeable, Generic)
 
 -- | Creates a value of 'CreatePullRequestApprovalRuleResponse' with the minimum fields required to make a request.
 --
@@ -152,12 +152,12 @@ createPullRequestApprovalRuleResponse
     :: Int -- ^ 'cprarrsResponseStatus'
     -> ApprovalRule -- ^ 'cprarrsApprovalRule'
     -> CreatePullRequestApprovalRuleResponse
-createPullRequestApprovalRuleResponse pResponseStatus_ pApprovalRule_ =
-  CreatePullRequestApprovalRuleResponse'
-    { _cprarrsResponseStatus = pResponseStatus_
-    , _cprarrsApprovalRule = pApprovalRule_
-    }
-
+createPullRequestApprovalRuleResponse
+  pResponseStatus_ pApprovalRule_
+  = CreatePullRequestApprovalRuleResponse'{_cprarrsResponseStatus
+                                             = pResponseStatus_,
+                                           _cprarrsApprovalRule =
+                                             pApprovalRule_}
 
 -- | -- | The response status code.
 cprarrsResponseStatus :: Lens' CreatePullRequestApprovalRuleResponse Int

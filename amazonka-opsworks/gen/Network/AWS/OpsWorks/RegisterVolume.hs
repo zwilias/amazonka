@@ -42,19 +42,15 @@ module Network.AWS.OpsWorks.RegisterVolume
 
 import Network.AWS.Lens
 import Network.AWS.OpsWorks.Types
-import Network.AWS.OpsWorks.Types.Product
 import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 
 -- | /See:/ 'registerVolume' smart constructor.
-data RegisterVolume =
-  RegisterVolume'
-    { _rvEC2VolumeId :: !(Maybe Text)
-    , _rvStackId     :: !Text
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data RegisterVolume = RegisterVolume'{_rvEC2VolumeId
+                                      :: !(Maybe Text),
+                                      _rvStackId :: !Text}
+                        deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'RegisterVolume' with the minimum fields required to make a request.
 --
@@ -66,9 +62,9 @@ data RegisterVolume =
 registerVolume
     :: Text -- ^ 'rvStackId'
     -> RegisterVolume
-registerVolume pStackId_ =
-  RegisterVolume' {_rvEC2VolumeId = Nothing, _rvStackId = pStackId_}
-
+registerVolume pStackId_
+  = RegisterVolume'{_rvEC2VolumeId = Nothing,
+                    _rvStackId = pStackId_}
 
 -- | The Amazon EBS volume ID.
 rvEC2VolumeId :: Lens' RegisterVolume (Maybe Text)
@@ -118,13 +114,12 @@ instance ToQuery RegisterVolume where
 --
 --
 -- /See:/ 'registerVolumeResponse' smart constructor.
-data RegisterVolumeResponse =
-  RegisterVolumeResponse'
-    { _rvrsVolumeId       :: !(Maybe Text)
-    , _rvrsResponseStatus :: !Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data RegisterVolumeResponse = RegisterVolumeResponse'{_rvrsVolumeId
+                                                      :: !(Maybe Text),
+                                                      _rvrsResponseStatus ::
+                                                      !Int}
+                                deriving (Eq, Read, Show, Data, Typeable,
+                                          Generic)
 
 -- | Creates a value of 'RegisterVolumeResponse' with the minimum fields required to make a request.
 --
@@ -136,10 +131,9 @@ data RegisterVolumeResponse =
 registerVolumeResponse
     :: Int -- ^ 'rvrsResponseStatus'
     -> RegisterVolumeResponse
-registerVolumeResponse pResponseStatus_ =
-  RegisterVolumeResponse'
-    {_rvrsVolumeId = Nothing, _rvrsResponseStatus = pResponseStatus_}
-
+registerVolumeResponse pResponseStatus_
+  = RegisterVolumeResponse'{_rvrsVolumeId = Nothing,
+                            _rvrsResponseStatus = pResponseStatus_}
 
 -- | The volume ID.
 rvrsVolumeId :: Lens' RegisterVolumeResponse (Maybe Text)

@@ -43,28 +43,25 @@ import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 import Network.AWS.Route53.Types
-import Network.AWS.Route53.Types.Product
 
 -- | /See:/ 'deleteQueryLoggingConfig' smart constructor.
-newtype DeleteQueryLoggingConfig =
-  DeleteQueryLoggingConfig'
-    { _dqlcId :: Text
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+newtype DeleteQueryLoggingConfig = DeleteQueryLoggingConfig'{_dqlcId
+                                                             :: Text}
+                                     deriving (Eq, Read, Show, Data, Typeable,
+                                               Generic)
 
 -- | Creates a value of 'DeleteQueryLoggingConfig' with the minimum fields required to make a request.
 --
 -- Use one of the following lenses to modify other fields as desired:
 --
--- * 'dqlcId' - The ID of the configuration that you want to delete.
+-- * 'dqlcId' - The ID of the configuration that you want to delete. 
 deleteQueryLoggingConfig
     :: Text -- ^ 'dqlcId'
     -> DeleteQueryLoggingConfig
-deleteQueryLoggingConfig pId_ = DeleteQueryLoggingConfig' {_dqlcId = pId_}
+deleteQueryLoggingConfig pId_
+  = DeleteQueryLoggingConfig'{_dqlcId = pId_}
 
-
--- | The ID of the configuration that you want to delete.
+-- | The ID of the configuration that you want to delete. 
 dqlcId :: Lens' DeleteQueryLoggingConfig Text
 dqlcId = lens _dqlcId (\ s a -> s{_dqlcId = a})
 
@@ -94,12 +91,11 @@ instance ToQuery DeleteQueryLoggingConfig where
         toQuery = const mempty
 
 -- | /See:/ 'deleteQueryLoggingConfigResponse' smart constructor.
-newtype DeleteQueryLoggingConfigResponse =
-  DeleteQueryLoggingConfigResponse'
-    { _dqlcrsResponseStatus :: Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+newtype DeleteQueryLoggingConfigResponse = DeleteQueryLoggingConfigResponse'{_dqlcrsResponseStatus
+                                                                             ::
+                                                                             Int}
+                                             deriving (Eq, Read, Show, Data,
+                                                       Typeable, Generic)
 
 -- | Creates a value of 'DeleteQueryLoggingConfigResponse' with the minimum fields required to make a request.
 --
@@ -109,9 +105,9 @@ newtype DeleteQueryLoggingConfigResponse =
 deleteQueryLoggingConfigResponse
     :: Int -- ^ 'dqlcrsResponseStatus'
     -> DeleteQueryLoggingConfigResponse
-deleteQueryLoggingConfigResponse pResponseStatus_ =
-  DeleteQueryLoggingConfigResponse' {_dqlcrsResponseStatus = pResponseStatus_}
-
+deleteQueryLoggingConfigResponse pResponseStatus_
+  = DeleteQueryLoggingConfigResponse'{_dqlcrsResponseStatus
+                                        = pResponseStatus_}
 
 -- | -- | The response status code.
 dqlcrsResponseStatus :: Lens' DeleteQueryLoggingConfigResponse Int

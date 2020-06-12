@@ -80,8 +80,69 @@ library
         , Network.AWS.ECS.Waiters
 
     other-modules:
-          Network.AWS.ECS.Types.Product
-        , Network.AWS.ECS.Types.Sum
+          Network.AWS.ECS.Types.AWSVPCConfiguration
+        , Network.AWS.ECS.Types.AgentUpdateStatus
+        , Network.AWS.ECS.Types.AssignPublicIP
+        , Network.AWS.ECS.Types.Attachment
+        , Network.AWS.ECS.Types.AttachmentStateChange
+        , Network.AWS.ECS.Types.Attribute
+        , Network.AWS.ECS.Types.Cluster
+        , Network.AWS.ECS.Types.ClusterField
+        , Network.AWS.ECS.Types.Compatibility
+        , Network.AWS.ECS.Types.Connectivity
+        , Network.AWS.ECS.Types.Container
+        , Network.AWS.ECS.Types.ContainerDefinition
+        , Network.AWS.ECS.Types.ContainerInstance
+        , Network.AWS.ECS.Types.ContainerInstanceStatus
+        , Network.AWS.ECS.Types.ContainerOverride
+        , Network.AWS.ECS.Types.ContainerService
+        , Network.AWS.ECS.Types.ContainerStateChange
+        , Network.AWS.ECS.Types.Deployment
+        , Network.AWS.ECS.Types.DeploymentConfiguration
+        , Network.AWS.ECS.Types.DesiredStatus
+        , Network.AWS.ECS.Types.Device
+        , Network.AWS.ECS.Types.DeviceCgroupPermission
+        , Network.AWS.ECS.Types.Failure
+        , Network.AWS.ECS.Types.HealthCheck
+        , Network.AWS.ECS.Types.HealthStatus
+        , Network.AWS.ECS.Types.HostEntry
+        , Network.AWS.ECS.Types.HostVolumeProperties
+        , Network.AWS.ECS.Types.KernelCapabilities
+        , Network.AWS.ECS.Types.KeyValuePair
+        , Network.AWS.ECS.Types.LaunchType
+        , Network.AWS.ECS.Types.LinuxParameters
+        , Network.AWS.ECS.Types.LoadBalancer
+        , Network.AWS.ECS.Types.LogConfiguration
+        , Network.AWS.ECS.Types.LogDriver
+        , Network.AWS.ECS.Types.MountPoint
+        , Network.AWS.ECS.Types.NetworkBinding
+        , Network.AWS.ECS.Types.NetworkConfiguration
+        , Network.AWS.ECS.Types.NetworkInterface
+        , Network.AWS.ECS.Types.NetworkMode
+        , Network.AWS.ECS.Types.PlacementConstraint
+        , Network.AWS.ECS.Types.PlacementConstraintType
+        , Network.AWS.ECS.Types.PlacementStrategy
+        , Network.AWS.ECS.Types.PlacementStrategyType
+        , Network.AWS.ECS.Types.PortMapping
+        , Network.AWS.ECS.Types.Resource
+        , Network.AWS.ECS.Types.ServiceEvent
+        , Network.AWS.ECS.Types.ServiceRegistry
+        , Network.AWS.ECS.Types.SortOrder
+        , Network.AWS.ECS.Types.TargetType
+        , Network.AWS.ECS.Types.Task
+        , Network.AWS.ECS.Types.TaskDefinition
+        , Network.AWS.ECS.Types.TaskDefinitionFamilyStatus
+        , Network.AWS.ECS.Types.TaskDefinitionPlacementConstraint
+        , Network.AWS.ECS.Types.TaskDefinitionPlacementConstraintType
+        , Network.AWS.ECS.Types.TaskDefinitionStatus
+        , Network.AWS.ECS.Types.TaskOverride
+        , Network.AWS.ECS.Types.Tmpfs
+        , Network.AWS.ECS.Types.TransportProtocol
+        , Network.AWS.ECS.Types.Ulimit
+        , Network.AWS.ECS.Types.UlimitName
+        , Network.AWS.ECS.Types.VersionInfo
+        , Network.AWS.ECS.Types.Volume
+        , Network.AWS.ECS.Types.VolumeFrom
 
     build-depends:
           amazonka-core == 1.6.1.*

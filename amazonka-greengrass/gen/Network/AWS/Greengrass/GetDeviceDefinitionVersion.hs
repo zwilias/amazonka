@@ -41,20 +41,18 @@ module Network.AWS.Greengrass.GetDeviceDefinitionVersion
     ) where
 
 import Network.AWS.Greengrass.Types
-import Network.AWS.Greengrass.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 
 -- | /See:/ 'getDeviceDefinitionVersion' smart constructor.
-data GetDeviceDefinitionVersion =
-  GetDeviceDefinitionVersion'
-    { _gddvDeviceDefinitionVersionId :: !Text
-    , _gddvDeviceDefinitionId        :: !Text
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data GetDeviceDefinitionVersion = GetDeviceDefinitionVersion'{_gddvDeviceDefinitionVersionId
+                                                              :: !Text,
+                                                              _gddvDeviceDefinitionId
+                                                              :: !Text}
+                                    deriving (Eq, Read, Show, Data, Typeable,
+                                              Generic)
 
 -- | Creates a value of 'GetDeviceDefinitionVersion' with the minimum fields required to make a request.
 --
@@ -67,12 +65,11 @@ getDeviceDefinitionVersion
     :: Text -- ^ 'gddvDeviceDefinitionVersionId'
     -> Text -- ^ 'gddvDeviceDefinitionId'
     -> GetDeviceDefinitionVersion
-getDeviceDefinitionVersion pDeviceDefinitionVersionId_ pDeviceDefinitionId_ =
-  GetDeviceDefinitionVersion'
-    { _gddvDeviceDefinitionVersionId = pDeviceDefinitionVersionId_
-    , _gddvDeviceDefinitionId = pDeviceDefinitionId_
-    }
-
+getDeviceDefinitionVersion
+  pDeviceDefinitionVersionId_ pDeviceDefinitionId_
+  = GetDeviceDefinitionVersion'{_gddvDeviceDefinitionVersionId
+                                  = pDeviceDefinitionVersionId_,
+                                _gddvDeviceDefinitionId = pDeviceDefinitionId_}
 
 -- | The ID of the device definition version.
 gddvDeviceDefinitionVersionId :: Lens' GetDeviceDefinitionVersion Text
@@ -118,17 +115,31 @@ instance ToQuery GetDeviceDefinitionVersion where
         toQuery = const mempty
 
 -- | /See:/ 'getDeviceDefinitionVersionResponse' smart constructor.
-data GetDeviceDefinitionVersionResponse =
-  GetDeviceDefinitionVersionResponse'
-    { _gddvrsDefinition        :: !(Maybe DeviceDefinitionVersion)
-    , _gddvrsARN               :: !(Maybe Text)
-    , _gddvrsCreationTimestamp :: !(Maybe Text)
-    , _gddvrsVersion           :: !(Maybe Text)
-    , _gddvrsId                :: !(Maybe Text)
-    , _gddvrsResponseStatus    :: !Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data GetDeviceDefinitionVersionResponse = GetDeviceDefinitionVersionResponse'{_gddvrsDefinition
+                                                                              ::
+                                                                              !(Maybe
+                                                                                  DeviceDefinitionVersion),
+                                                                              _gddvrsARN
+                                                                              ::
+                                                                              !(Maybe
+                                                                                  Text),
+                                                                              _gddvrsCreationTimestamp
+                                                                              ::
+                                                                              !(Maybe
+                                                                                  Text),
+                                                                              _gddvrsVersion
+                                                                              ::
+                                                                              !(Maybe
+                                                                                  Text),
+                                                                              _gddvrsId
+                                                                              ::
+                                                                              !(Maybe
+                                                                                  Text),
+                                                                              _gddvrsResponseStatus
+                                                                              ::
+                                                                              !Int}
+                                            deriving (Eq, Read, Show, Data,
+                                                      Typeable, Generic)
 
 -- | Creates a value of 'GetDeviceDefinitionVersionResponse' with the minimum fields required to make a request.
 --
@@ -148,16 +159,15 @@ data GetDeviceDefinitionVersionResponse =
 getDeviceDefinitionVersionResponse
     :: Int -- ^ 'gddvrsResponseStatus'
     -> GetDeviceDefinitionVersionResponse
-getDeviceDefinitionVersionResponse pResponseStatus_ =
-  GetDeviceDefinitionVersionResponse'
-    { _gddvrsDefinition = Nothing
-    , _gddvrsARN = Nothing
-    , _gddvrsCreationTimestamp = Nothing
-    , _gddvrsVersion = Nothing
-    , _gddvrsId = Nothing
-    , _gddvrsResponseStatus = pResponseStatus_
-    }
-
+getDeviceDefinitionVersionResponse pResponseStatus_
+  = GetDeviceDefinitionVersionResponse'{_gddvrsDefinition
+                                          = Nothing,
+                                        _gddvrsARN = Nothing,
+                                        _gddvrsCreationTimestamp = Nothing,
+                                        _gddvrsVersion = Nothing,
+                                        _gddvrsId = Nothing,
+                                        _gddvrsResponseStatus =
+                                          pResponseStatus_}
 
 -- | Information about the device definition version.
 gddvrsDefinition :: Lens' GetDeviceDefinitionVersionResponse (Maybe DeviceDefinitionVersion)

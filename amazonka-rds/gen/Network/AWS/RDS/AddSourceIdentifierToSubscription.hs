@@ -41,22 +41,22 @@ module Network.AWS.RDS.AddSourceIdentifierToSubscription
 import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.RDS.Types
-import Network.AWS.RDS.Types.Product
 import Network.AWS.Request
 import Network.AWS.Response
 
--- |
+-- | 
 --
 --
 --
 -- /See:/ 'addSourceIdentifierToSubscription' smart constructor.
-data AddSourceIdentifierToSubscription =
-  AddSourceIdentifierToSubscription'
-    { _asitsSubscriptionName :: !Text
-    , _asitsSourceIdentifier :: !Text
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data AddSourceIdentifierToSubscription = AddSourceIdentifierToSubscription'{_asitsSubscriptionName
+                                                                            ::
+                                                                            !Text,
+                                                                            _asitsSourceIdentifier
+                                                                            ::
+                                                                            !Text}
+                                           deriving (Eq, Read, Show, Data,
+                                                     Typeable, Generic)
 
 -- | Creates a value of 'AddSourceIdentifierToSubscription' with the minimum fields required to make a request.
 --
@@ -69,12 +69,12 @@ addSourceIdentifierToSubscription
     :: Text -- ^ 'asitsSubscriptionName'
     -> Text -- ^ 'asitsSourceIdentifier'
     -> AddSourceIdentifierToSubscription
-addSourceIdentifierToSubscription pSubscriptionName_ pSourceIdentifier_ =
-  AddSourceIdentifierToSubscription'
-    { _asitsSubscriptionName = pSubscriptionName_
-    , _asitsSourceIdentifier = pSourceIdentifier_
-    }
-
+addSourceIdentifierToSubscription pSubscriptionName_
+  pSourceIdentifier_
+  = AddSourceIdentifierToSubscription'{_asitsSubscriptionName
+                                         = pSubscriptionName_,
+                                       _asitsSourceIdentifier =
+                                         pSourceIdentifier_}
 
 -- | The name of the RDS event notification subscription you want to add a source identifier to.
 asitsSubscriptionName :: Lens' AddSourceIdentifierToSubscription Text
@@ -121,13 +121,16 @@ instance ToQuery AddSourceIdentifierToSubscription
                "SourceIdentifier" =: _asitsSourceIdentifier]
 
 -- | /See:/ 'addSourceIdentifierToSubscriptionResponse' smart constructor.
-data AddSourceIdentifierToSubscriptionResponse =
-  AddSourceIdentifierToSubscriptionResponse'
-    { _asitsrsEventSubscription :: !(Maybe EventSubscription)
-    , _asitsrsResponseStatus    :: !Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data AddSourceIdentifierToSubscriptionResponse = AddSourceIdentifierToSubscriptionResponse'{_asitsrsEventSubscription
+                                                                                            ::
+                                                                                            !(Maybe
+                                                                                                EventSubscription),
+                                                                                            _asitsrsResponseStatus
+                                                                                            ::
+                                                                                            !Int}
+                                                   deriving (Eq, Read, Show,
+                                                             Data, Typeable,
+                                                             Generic)
 
 -- | Creates a value of 'AddSourceIdentifierToSubscriptionResponse' with the minimum fields required to make a request.
 --
@@ -139,12 +142,12 @@ data AddSourceIdentifierToSubscriptionResponse =
 addSourceIdentifierToSubscriptionResponse
     :: Int -- ^ 'asitsrsResponseStatus'
     -> AddSourceIdentifierToSubscriptionResponse
-addSourceIdentifierToSubscriptionResponse pResponseStatus_ =
-  AddSourceIdentifierToSubscriptionResponse'
-    { _asitsrsEventSubscription = Nothing
-    , _asitsrsResponseStatus = pResponseStatus_
-    }
-
+addSourceIdentifierToSubscriptionResponse
+  pResponseStatus_
+  = AddSourceIdentifierToSubscriptionResponse'{_asitsrsEventSubscription
+                                                 = Nothing,
+                                               _asitsrsResponseStatus =
+                                                 pResponseStatus_}
 
 -- | Undocumented member.
 asitsrsEventSubscription :: Lens' AddSourceIdentifierToSubscriptionResponse (Maybe EventSubscription)

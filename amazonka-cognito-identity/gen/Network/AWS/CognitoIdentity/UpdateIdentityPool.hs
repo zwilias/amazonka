@@ -57,7 +57,6 @@ module Network.AWS.CognitoIdentity.UpdateIdentityPool
     ) where
 
 import Network.AWS.CognitoIdentity.Types
-import Network.AWS.CognitoIdentity.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.Request
@@ -68,21 +67,26 @@ import Network.AWS.Response
 --
 --
 -- /See:/ 'updateIdentityPool' smart constructor.
-data UpdateIdentityPool =
-  UpdateIdentityPool'
-    { _uipSamlProviderARNs               :: !(Maybe [Text])
-    , _uipSupportedLoginProviders        :: !(Maybe (Map Text Text))
-    , _uipAllowClassicFlow               :: !(Maybe Bool)
-    , _uipDeveloperProviderName          :: !(Maybe Text)
-    , _uipIdentityPoolTags               :: !(Maybe (Map Text Text))
-    , _uipOpenIdConnectProviderARNs      :: !(Maybe [Text])
-    , _uipCognitoIdentityProviders       :: !(Maybe [CognitoIdentityProvider])
-    , _uipIdentityPoolId                 :: !Text
-    , _uipIdentityPoolName               :: !Text
-    , _uipAllowUnauthenticatedIdentities :: !Bool
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data UpdateIdentityPool = UpdateIdentityPool'{_uipSamlProviderARNs
+                                              :: !(Maybe [Text]),
+                                              _uipSupportedLoginProviders ::
+                                              !(Maybe (Map Text Text)),
+                                              _uipAllowClassicFlow ::
+                                              !(Maybe Bool),
+                                              _uipDeveloperProviderName ::
+                                              !(Maybe Text),
+                                              _uipIdentityPoolTags ::
+                                              !(Maybe (Map Text Text)),
+                                              _uipOpenIdConnectProviderARNs ::
+                                              !(Maybe [Text]),
+                                              _uipCognitoIdentityProviders ::
+                                              !(Maybe
+                                                  [CognitoIdentityProvider]),
+                                              _uipIdentityPoolId :: !Text,
+                                              _uipIdentityPoolName :: !Text,
+                                              _uipAllowUnauthenticatedIdentities
+                                              :: !Bool}
+                            deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'UpdateIdentityPool' with the minimum fields required to make a request.
 --
@@ -112,20 +116,19 @@ updateIdentityPool
     -> Text -- ^ 'uipIdentityPoolName'
     -> Bool -- ^ 'uipAllowUnauthenticatedIdentities'
     -> UpdateIdentityPool
-updateIdentityPool pIdentityPoolId_ pIdentityPoolName_ pAllowUnauthenticatedIdentities_ =
-  UpdateIdentityPool'
-    { _uipSamlProviderARNs = Nothing
-    , _uipSupportedLoginProviders = Nothing
-    , _uipAllowClassicFlow = Nothing
-    , _uipDeveloperProviderName = Nothing
-    , _uipIdentityPoolTags = Nothing
-    , _uipOpenIdConnectProviderARNs = Nothing
-    , _uipCognitoIdentityProviders = Nothing
-    , _uipIdentityPoolId = pIdentityPoolId_
-    , _uipIdentityPoolName = pIdentityPoolName_
-    , _uipAllowUnauthenticatedIdentities = pAllowUnauthenticatedIdentities_
-    }
-
+updateIdentityPool pIdentityPoolId_
+  pIdentityPoolName_ pAllowUnauthenticatedIdentities_
+  = UpdateIdentityPool'{_uipSamlProviderARNs = Nothing,
+                        _uipSupportedLoginProviders = Nothing,
+                        _uipAllowClassicFlow = Nothing,
+                        _uipDeveloperProviderName = Nothing,
+                        _uipIdentityPoolTags = Nothing,
+                        _uipOpenIdConnectProviderARNs = Nothing,
+                        _uipCognitoIdentityProviders = Nothing,
+                        _uipIdentityPoolId = pIdentityPoolId_,
+                        _uipIdentityPoolName = pIdentityPoolName_,
+                        _uipAllowUnauthenticatedIdentities =
+                          pAllowUnauthenticatedIdentities_}
 
 -- | An array of Amazon Resource Names (ARNs) of the SAML provider for your identity pool.
 uipSamlProviderARNs :: Lens' UpdateIdentityPool [Text]

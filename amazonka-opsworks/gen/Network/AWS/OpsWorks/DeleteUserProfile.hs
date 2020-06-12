@@ -38,18 +38,14 @@ module Network.AWS.OpsWorks.DeleteUserProfile
 
 import Network.AWS.Lens
 import Network.AWS.OpsWorks.Types
-import Network.AWS.OpsWorks.Types.Product
 import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 
 -- | /See:/ 'deleteUserProfile' smart constructor.
-newtype DeleteUserProfile =
-  DeleteUserProfile'
-    { _dupIAMUserARN :: Text
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+newtype DeleteUserProfile = DeleteUserProfile'{_dupIAMUserARN
+                                               :: Text}
+                              deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'DeleteUserProfile' with the minimum fields required to make a request.
 --
@@ -59,9 +55,8 @@ newtype DeleteUserProfile =
 deleteUserProfile
     :: Text -- ^ 'dupIAMUserARN'
     -> DeleteUserProfile
-deleteUserProfile pIAMUserARN_ =
-  DeleteUserProfile' {_dupIAMUserARN = pIAMUserARN_}
-
+deleteUserProfile pIAMUserARN_
+  = DeleteUserProfile'{_dupIAMUserARN = pIAMUserARN_}
 
 -- | The user's IAM ARN. This can also be a federated user's ARN.
 dupIAMUserARN :: Lens' DeleteUserProfile Text
@@ -98,16 +93,15 @@ instance ToQuery DeleteUserProfile where
         toQuery = const mempty
 
 -- | /See:/ 'deleteUserProfileResponse' smart constructor.
-data DeleteUserProfileResponse =
-  DeleteUserProfileResponse'
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data DeleteUserProfileResponse = DeleteUserProfileResponse'
+                                   deriving (Eq, Read, Show, Data, Typeable,
+                                             Generic)
 
 -- | Creates a value of 'DeleteUserProfileResponse' with the minimum fields required to make a request.
 --
 deleteUserProfileResponse
     :: DeleteUserProfileResponse
-deleteUserProfileResponse = DeleteUserProfileResponse'
-
+deleteUserProfileResponse
+  = DeleteUserProfileResponse'
 
 instance NFData DeleteUserProfileResponse where

@@ -21,7 +21,7 @@
 -- The @CreateTable@ operation adds a new table to your account. In an AWS account, table names must be unique within each Region. That is, you can have two tables with same name if you create the tables in different Regions.
 --
 --
--- @CreateTable@ is an asynchronous operation. Upon receiving a @CreateTable@ request, DynamoDB immediately returns a response with a @TableStatus@ of @CREATING@ . After the table is created, DynamoDB sets the @TableStatus@ to @ACTIVE@ . You can perform read and write operations only on an @ACTIVE@ table.
+-- @CreateTable@ is an asynchronous operation. Upon receiving a @CreateTable@ request, DynamoDB immediately returns a response with a @TableStatus@ of @CREATING@ . After the table is created, DynamoDB sets the @TableStatus@ to @ACTIVE@ . You can perform read and write operations only on an @ACTIVE@ table. 
 --
 -- You can optionally define secondary indexes on the new table, as part of the @CreateTable@ operation. If you want to create multiple tables with secondary indexes on them, you must create the tables sequentially. Only one table with secondary indexes can be in the @CREATING@ state at any given time.
 --
@@ -53,7 +53,6 @@ module Network.AWS.DynamoDB.CreateTable
     ) where
 
 import Network.AWS.DynamoDB.Types
-import Network.AWS.DynamoDB.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.Request
@@ -64,21 +63,23 @@ import Network.AWS.Response
 --
 --
 -- /See:/ 'createTable' smart constructor.
-data CreateTable =
-  CreateTable'
-    { _ctProvisionedThroughput  :: !(Maybe ProvisionedThroughput)
-    , _ctSSESpecification       :: !(Maybe SSESpecification)
-    , _ctGlobalSecondaryIndexes :: !(Maybe [GlobalSecondaryIndex])
-    , _ctLocalSecondaryIndexes  :: !(Maybe [LocalSecondaryIndex])
-    , _ctBillingMode            :: !(Maybe BillingMode)
-    , _ctTags                   :: !(Maybe [Tag])
-    , _ctStreamSpecification    :: !(Maybe StreamSpecification)
-    , _ctAttributeDefinitions   :: ![AttributeDefinition]
-    , _ctTableName              :: !Text
-    , _ctKeySchema              :: !(List1 KeySchemaElement)
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data CreateTable = CreateTable'{_ctProvisionedThroughput
+                                :: !(Maybe ProvisionedThroughput),
+                                _ctSSESpecification ::
+                                !(Maybe SSESpecification),
+                                _ctGlobalSecondaryIndexes ::
+                                !(Maybe [GlobalSecondaryIndex]),
+                                _ctLocalSecondaryIndexes ::
+                                !(Maybe [LocalSecondaryIndex]),
+                                _ctBillingMode :: !(Maybe BillingMode),
+                                _ctTags :: !(Maybe [Tag]),
+                                _ctStreamSpecification ::
+                                !(Maybe StreamSpecification),
+                                _ctAttributeDefinitions ::
+                                ![AttributeDefinition],
+                                _ctTableName :: !Text,
+                                _ctKeySchema :: !(List1 KeySchemaElement)}
+                     deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'CreateTable' with the minimum fields required to make a request.
 --
@@ -92,7 +93,7 @@ data CreateTable =
 --
 -- * 'ctLocalSecondaryIndexes' - One or more local secondary indexes (the maximum is 5) to be created on the table. Each index is scoped to a given partition key value. There is a 10 GB size limit per partition key value; otherwise, the size of a local secondary index is unconstrained. Each local secondary index in the array includes the following:     * @IndexName@ - The name of the local secondary index. Must be unique only for this table.     * @KeySchema@ - Specifies the key schema for the local secondary index. The key schema must begin with the same partition key as the table.     * @Projection@ - Specifies attributes that are copied (projected) from the table into the index. These are in addition to the primary key attributes and index key attributes, which are automatically projected. Each attribute specification is composed of:     * @ProjectionType@ - One of the following:     * @KEYS_ONLY@ - Only the index and primary keys are projected into the index.     * @INCLUDE@ - Only the specified table attributes are projected into the index. The list of projected attributes is in @NonKeyAttributes@ .     * @ALL@ - All of the table attributes are projected into the index.     * @NonKeyAttributes@ - A list of one or more non-key attribute names that are projected into the secondary index. The total count of attributes provided in @NonKeyAttributes@ , summed across all of the secondary indexes, must not exceed 100. If you project the same attribute into two different indexes, this counts as two distinct attributes when determining the total.
 --
--- * 'ctBillingMode' - Controls how you are charged for read and write throughput and how you manage capacity. This setting can be changed later.     * @PROVISIONED@ - We recommend using @PROVISIONED@ for predictable workloads. @PROVISIONED@ sets the billing mode to <https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/HowItWorks.ReadWriteCapacityMode.html#HowItWorks.ProvisionedThroughput.Manual Provisioned Mode> .     * @PAY_PER_REQUEST@ - We recommend using @PAY_PER_REQUEST@ for unpredictable workloads. @PAY_PER_REQUEST@ sets the billing mode to <https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/HowItWorks.ReadWriteCapacityMode.html#HowItWorks.OnDemand On-Demand Mode> .
+-- * 'ctBillingMode' - Controls how you are charged for read and write throughput and how you manage capacity. This setting can be changed later.     * @PROVISIONED@ - We recommend using @PROVISIONED@ for predictable workloads. @PROVISIONED@ sets the billing mode to <https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/HowItWorks.ReadWriteCapacityMode.html#HowItWorks.ProvisionedThroughput.Manual Provisioned Mode> .     * @PAY_PER_REQUEST@ - We recommend using @PAY_PER_REQUEST@ for unpredictable workloads. @PAY_PER_REQUEST@ sets the billing mode to <https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/HowItWorks.ReadWriteCapacityMode.html#HowItWorks.OnDemand On-Demand Mode> . 
 --
 -- * 'ctTags' - A list of key-value pairs to label the table. For more information, see <https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/Tagging.html Tagging for DynamoDB> .
 --
@@ -107,20 +108,16 @@ createTable
     :: Text -- ^ 'ctTableName'
     -> NonEmpty KeySchemaElement -- ^ 'ctKeySchema'
     -> CreateTable
-createTable pTableName_ pKeySchema_ =
-  CreateTable'
-    { _ctProvisionedThroughput = Nothing
-    , _ctSSESpecification = Nothing
-    , _ctGlobalSecondaryIndexes = Nothing
-    , _ctLocalSecondaryIndexes = Nothing
-    , _ctBillingMode = Nothing
-    , _ctTags = Nothing
-    , _ctStreamSpecification = Nothing
-    , _ctAttributeDefinitions = mempty
-    , _ctTableName = pTableName_
-    , _ctKeySchema = _List1 # pKeySchema_
-    }
-
+createTable pTableName_ pKeySchema_
+  = CreateTable'{_ctProvisionedThroughput = Nothing,
+                 _ctSSESpecification = Nothing,
+                 _ctGlobalSecondaryIndexes = Nothing,
+                 _ctLocalSecondaryIndexes = Nothing,
+                 _ctBillingMode = Nothing, _ctTags = Nothing,
+                 _ctStreamSpecification = Nothing,
+                 _ctAttributeDefinitions = mempty,
+                 _ctTableName = pTableName_,
+                 _ctKeySchema = _List1 # pKeySchema_}
 
 -- | Represents the provisioned throughput settings for a specified table or index. The settings can be modified using the @UpdateTable@ operation. If you set BillingMode as @PROVISIONED@ , you must specify this property. If you set BillingMode as @PAY_PER_REQUEST@ , you cannot specify this property.  For current minimum and maximum provisioned throughput values, see <https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/Limits.html Limits> in the /Amazon DynamoDB Developer Guide/ .
 ctProvisionedThroughput :: Lens' CreateTable (Maybe ProvisionedThroughput)
@@ -138,7 +135,7 @@ ctGlobalSecondaryIndexes = lens _ctGlobalSecondaryIndexes (\ s a -> s{_ctGlobalS
 ctLocalSecondaryIndexes :: Lens' CreateTable [LocalSecondaryIndex]
 ctLocalSecondaryIndexes = lens _ctLocalSecondaryIndexes (\ s a -> s{_ctLocalSecondaryIndexes = a}) . _Default . _Coerce
 
--- | Controls how you are charged for read and write throughput and how you manage capacity. This setting can be changed later.     * @PROVISIONED@ - We recommend using @PROVISIONED@ for predictable workloads. @PROVISIONED@ sets the billing mode to <https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/HowItWorks.ReadWriteCapacityMode.html#HowItWorks.ProvisionedThroughput.Manual Provisioned Mode> .     * @PAY_PER_REQUEST@ - We recommend using @PAY_PER_REQUEST@ for unpredictable workloads. @PAY_PER_REQUEST@ sets the billing mode to <https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/HowItWorks.ReadWriteCapacityMode.html#HowItWorks.OnDemand On-Demand Mode> .
+-- | Controls how you are charged for read and write throughput and how you manage capacity. This setting can be changed later.     * @PROVISIONED@ - We recommend using @PROVISIONED@ for predictable workloads. @PROVISIONED@ sets the billing mode to <https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/HowItWorks.ReadWriteCapacityMode.html#HowItWorks.ProvisionedThroughput.Manual Provisioned Mode> .     * @PAY_PER_REQUEST@ - We recommend using @PAY_PER_REQUEST@ for unpredictable workloads. @PAY_PER_REQUEST@ sets the billing mode to <https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/HowItWorks.ReadWriteCapacityMode.html#HowItWorks.OnDemand On-Demand Mode> . 
 ctBillingMode :: Lens' CreateTable (Maybe BillingMode)
 ctBillingMode = lens _ctBillingMode (\ s a -> s{_ctBillingMode = a})
 
@@ -215,13 +212,10 @@ instance ToQuery CreateTable where
 --
 --
 -- /See:/ 'createTableResponse' smart constructor.
-data CreateTableResponse =
-  CreateTableResponse'
-    { _ctrsTableDescription :: !(Maybe TableDescription)
-    , _ctrsResponseStatus   :: !Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data CreateTableResponse = CreateTableResponse'{_ctrsTableDescription
+                                                :: !(Maybe TableDescription),
+                                                _ctrsResponseStatus :: !Int}
+                             deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'CreateTableResponse' with the minimum fields required to make a request.
 --
@@ -233,10 +227,10 @@ data CreateTableResponse =
 createTableResponse
     :: Int -- ^ 'ctrsResponseStatus'
     -> CreateTableResponse
-createTableResponse pResponseStatus_ =
-  CreateTableResponse'
-    {_ctrsTableDescription = Nothing, _ctrsResponseStatus = pResponseStatus_}
-
+createTableResponse pResponseStatus_
+  = CreateTableResponse'{_ctrsTableDescription =
+                           Nothing,
+                         _ctrsResponseStatus = pResponseStatus_}
 
 -- | Represents the properties of the table.
 ctrsTableDescription :: Lens' CreateTableResponse (Maybe TableDescription)

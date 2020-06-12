@@ -21,7 +21,7 @@
 -- Creates an alias for the specified version of the bot or replaces an alias for the specified bot. To change the version of the bot that the alias points to, replace the alias. For more information about aliases, see 'versioning-aliases' .
 --
 --
--- This operation requires permissions for the @lex:PutBotAlias@ action.
+-- This operation requires permissions for the @lex:PutBotAlias@ action. 
 --
 module Network.AWS.LexModels.PutBotAlias
     (
@@ -51,22 +51,17 @@ module Network.AWS.LexModels.PutBotAlias
 
 import Network.AWS.Lens
 import Network.AWS.LexModels.Types
-import Network.AWS.LexModels.Types.Product
 import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 
 -- | /See:/ 'putBotAlias' smart constructor.
-data PutBotAlias =
-  PutBotAlias'
-    { _pbaChecksum    :: !(Maybe Text)
-    , _pbaDescription :: !(Maybe Text)
-    , _pbaName        :: !Text
-    , _pbaBotVersion  :: !Text
-    , _pbaBotName     :: !Text
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data PutBotAlias = PutBotAlias'{_pbaChecksum ::
+                                !(Maybe Text),
+                                _pbaDescription :: !(Maybe Text),
+                                _pbaName :: !Text, _pbaBotVersion :: !Text,
+                                _pbaBotName :: !Text}
+                     deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'PutBotAlias' with the minimum fields required to make a request.
 --
@@ -86,15 +81,11 @@ putBotAlias
     -> Text -- ^ 'pbaBotVersion'
     -> Text -- ^ 'pbaBotName'
     -> PutBotAlias
-putBotAlias pName_ pBotVersion_ pBotName_ =
-  PutBotAlias'
-    { _pbaChecksum = Nothing
-    , _pbaDescription = Nothing
-    , _pbaName = pName_
-    , _pbaBotVersion = pBotVersion_
-    , _pbaBotName = pBotName_
-    }
-
+putBotAlias pName_ pBotVersion_ pBotName_
+  = PutBotAlias'{_pbaChecksum = Nothing,
+                 _pbaDescription = Nothing, _pbaName = pName_,
+                 _pbaBotVersion = pBotVersion_,
+                 _pbaBotName = pBotName_}
 
 -- | Identifies a specific revision of the @> LATEST@ version. When you create a new bot alias, leave the @checksum@ field blank. If you specify a checksum you get a @BadRequestException@ exception. When you want to update a bot alias, set the @checksum@ field to the checksum of the most recent revision of the @> LATEST@ version. If you don't specify the @checksum@ field, or if the checksum does not match the @> LATEST@ version, you get a @PreconditionFailedException@ exception.
 pbaChecksum :: Lens' PutBotAlias (Maybe Text)
@@ -160,19 +151,20 @@ instance ToQuery PutBotAlias where
         toQuery = const mempty
 
 -- | /See:/ 'putBotAliasResponse' smart constructor.
-data PutBotAliasResponse =
-  PutBotAliasResponse'
-    { _pbarsChecksum        :: !(Maybe Text)
-    , _pbarsBotVersion      :: !(Maybe Text)
-    , _pbarsBotName         :: !(Maybe Text)
-    , _pbarsCreatedDate     :: !(Maybe POSIX)
-    , _pbarsName            :: !(Maybe Text)
-    , _pbarsLastUpdatedDate :: !(Maybe POSIX)
-    , _pbarsDescription     :: !(Maybe Text)
-    , _pbarsResponseStatus  :: !Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data PutBotAliasResponse = PutBotAliasResponse'{_pbarsChecksum
+                                                :: !(Maybe Text),
+                                                _pbarsBotVersion ::
+                                                !(Maybe Text),
+                                                _pbarsBotName :: !(Maybe Text),
+                                                _pbarsCreatedDate ::
+                                                !(Maybe POSIX),
+                                                _pbarsName :: !(Maybe Text),
+                                                _pbarsLastUpdatedDate ::
+                                                !(Maybe POSIX),
+                                                _pbarsDescription ::
+                                                !(Maybe Text),
+                                                _pbarsResponseStatus :: !Int}
+                             deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'PutBotAliasResponse' with the minimum fields required to make a request.
 --
@@ -196,18 +188,13 @@ data PutBotAliasResponse =
 putBotAliasResponse
     :: Int -- ^ 'pbarsResponseStatus'
     -> PutBotAliasResponse
-putBotAliasResponse pResponseStatus_ =
-  PutBotAliasResponse'
-    { _pbarsChecksum = Nothing
-    , _pbarsBotVersion = Nothing
-    , _pbarsBotName = Nothing
-    , _pbarsCreatedDate = Nothing
-    , _pbarsName = Nothing
-    , _pbarsLastUpdatedDate = Nothing
-    , _pbarsDescription = Nothing
-    , _pbarsResponseStatus = pResponseStatus_
-    }
-
+putBotAliasResponse pResponseStatus_
+  = PutBotAliasResponse'{_pbarsChecksum = Nothing,
+                         _pbarsBotVersion = Nothing, _pbarsBotName = Nothing,
+                         _pbarsCreatedDate = Nothing, _pbarsName = Nothing,
+                         _pbarsLastUpdatedDate = Nothing,
+                         _pbarsDescription = Nothing,
+                         _pbarsResponseStatus = pResponseStatus_}
 
 -- | The checksum for the current version of the alias.
 pbarsChecksum :: Lens' PutBotAliasResponse (Maybe Text)

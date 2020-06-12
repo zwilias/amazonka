@@ -54,17 +54,21 @@ import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 import Network.AWS.SageMaker.Types
-import Network.AWS.SageMaker.Types.Product
 
 -- | /See:/ 'createNotebookInstanceLifecycleConfig' smart constructor.
-data CreateNotebookInstanceLifecycleConfig =
-  CreateNotebookInstanceLifecycleConfig'
-    { _cnilcOnCreate :: !(Maybe [NotebookInstanceLifecycleHook])
-    , _cnilcOnStart :: !(Maybe [NotebookInstanceLifecycleHook])
-    , _cnilcNotebookInstanceLifecycleConfigName :: !Text
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data CreateNotebookInstanceLifecycleConfig = CreateNotebookInstanceLifecycleConfig'{_cnilcOnCreate
+                                                                                    ::
+                                                                                    !(Maybe
+                                                                                        [NotebookInstanceLifecycleHook]),
+                                                                                    _cnilcOnStart
+                                                                                    ::
+                                                                                    !(Maybe
+                                                                                        [NotebookInstanceLifecycleHook]),
+                                                                                    _cnilcNotebookInstanceLifecycleConfigName
+                                                                                    ::
+                                                                                    !Text}
+                                               deriving (Eq, Read, Show, Data,
+                                                         Typeable, Generic)
 
 -- | Creates a value of 'CreateNotebookInstanceLifecycleConfig' with the minimum fields required to make a request.
 --
@@ -78,14 +82,14 @@ data CreateNotebookInstanceLifecycleConfig =
 createNotebookInstanceLifecycleConfig
     :: Text -- ^ 'cnilcNotebookInstanceLifecycleConfigName'
     -> CreateNotebookInstanceLifecycleConfig
-createNotebookInstanceLifecycleConfig pNotebookInstanceLifecycleConfigName_ =
-  CreateNotebookInstanceLifecycleConfig'
-    { _cnilcOnCreate = Nothing
-    , _cnilcOnStart = Nothing
-    , _cnilcNotebookInstanceLifecycleConfigName =
-        pNotebookInstanceLifecycleConfigName_
-    }
-
+createNotebookInstanceLifecycleConfig
+  pNotebookInstanceLifecycleConfigName_
+  = CreateNotebookInstanceLifecycleConfig'{_cnilcOnCreate
+                                             = Nothing,
+                                           _cnilcOnStart = Nothing,
+                                           _cnilcNotebookInstanceLifecycleConfigName
+                                             =
+                                             pNotebookInstanceLifecycleConfigName_}
 
 -- | A shell script that runs only once, when you create a notebook instance.
 cnilcOnCreate :: Lens' CreateNotebookInstanceLifecycleConfig [NotebookInstanceLifecycleHook]
@@ -152,13 +156,16 @@ instance ToQuery
         toQuery = const mempty
 
 -- | /See:/ 'createNotebookInstanceLifecycleConfigResponse' smart constructor.
-data CreateNotebookInstanceLifecycleConfigResponse =
-  CreateNotebookInstanceLifecycleConfigResponse'
-    { _cnilcrsNotebookInstanceLifecycleConfigARN :: !(Maybe Text)
-    , _cnilcrsResponseStatus                     :: !Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data CreateNotebookInstanceLifecycleConfigResponse = CreateNotebookInstanceLifecycleConfigResponse'{_cnilcrsNotebookInstanceLifecycleConfigARN
+                                                                                                    ::
+                                                                                                    !(Maybe
+                                                                                                        Text),
+                                                                                                    _cnilcrsResponseStatus
+                                                                                                    ::
+                                                                                                    !Int}
+                                                       deriving (Eq, Read, Show,
+                                                                 Data, Typeable,
+                                                                 Generic)
 
 -- | Creates a value of 'CreateNotebookInstanceLifecycleConfigResponse' with the minimum fields required to make a request.
 --
@@ -170,12 +177,12 @@ data CreateNotebookInstanceLifecycleConfigResponse =
 createNotebookInstanceLifecycleConfigResponse
     :: Int -- ^ 'cnilcrsResponseStatus'
     -> CreateNotebookInstanceLifecycleConfigResponse
-createNotebookInstanceLifecycleConfigResponse pResponseStatus_ =
-  CreateNotebookInstanceLifecycleConfigResponse'
-    { _cnilcrsNotebookInstanceLifecycleConfigARN = Nothing
-    , _cnilcrsResponseStatus = pResponseStatus_
-    }
-
+createNotebookInstanceLifecycleConfigResponse
+  pResponseStatus_
+  = CreateNotebookInstanceLifecycleConfigResponse'{_cnilcrsNotebookInstanceLifecycleConfigARN
+                                                     = Nothing,
+                                                   _cnilcrsResponseStatus =
+                                                     pResponseStatus_}
 
 -- | The Amazon Resource Name (ARN) of the lifecycle configuration.
 cnilcrsNotebookInstanceLifecycleConfigARN :: Lens' CreateNotebookInstanceLifecycleConfigResponse (Maybe Text)

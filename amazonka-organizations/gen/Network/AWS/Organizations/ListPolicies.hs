@@ -46,21 +46,17 @@ module Network.AWS.Organizations.ListPolicies
 
 import Network.AWS.Lens
 import Network.AWS.Organizations.Types
-import Network.AWS.Organizations.Types.Product
 import Network.AWS.Pager
 import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 
 -- | /See:/ 'listPolicies' smart constructor.
-data ListPolicies =
-  ListPolicies'
-    { _lpNextToken  :: !(Maybe Text)
-    , _lpMaxResults :: !(Maybe Nat)
-    , _lpFilter     :: !PolicyType
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data ListPolicies = ListPolicies'{_lpNextToken ::
+                                  !(Maybe Text),
+                                  _lpMaxResults :: !(Maybe Nat),
+                                  _lpFilter :: !PolicyType}
+                      deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'ListPolicies' with the minimum fields required to make a request.
 --
@@ -74,10 +70,9 @@ data ListPolicies =
 listPolicies
     :: PolicyType -- ^ 'lpFilter'
     -> ListPolicies
-listPolicies pFilter_ =
-  ListPolicies'
-    {_lpNextToken = Nothing, _lpMaxResults = Nothing, _lpFilter = pFilter_}
-
+listPolicies pFilter_
+  = ListPolicies'{_lpNextToken = Nothing,
+                  _lpMaxResults = Nothing, _lpFilter = pFilter_}
 
 -- | Use this parameter if you receive a @NextToken@ response in a previous request that indicates that there is more output available. Set it to the value of the previous call's @NextToken@ response to indicate where the output should continue from.
 lpNextToken :: Lens' ListPolicies (Maybe Text)
@@ -137,14 +132,12 @@ instance ToQuery ListPolicies where
         toQuery = const mempty
 
 -- | /See:/ 'listPoliciesResponse' smart constructor.
-data ListPoliciesResponse =
-  ListPoliciesResponse'
-    { _lprsNextToken      :: !(Maybe Text)
-    , _lprsPolicies       :: !(Maybe [PolicySummary])
-    , _lprsResponseStatus :: !Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data ListPoliciesResponse = ListPoliciesResponse'{_lprsNextToken
+                                                  :: !(Maybe Text),
+                                                  _lprsPolicies ::
+                                                  !(Maybe [PolicySummary]),
+                                                  _lprsResponseStatus :: !Int}
+                              deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'ListPoliciesResponse' with the minimum fields required to make a request.
 --
@@ -158,13 +151,10 @@ data ListPoliciesResponse =
 listPoliciesResponse
     :: Int -- ^ 'lprsResponseStatus'
     -> ListPoliciesResponse
-listPoliciesResponse pResponseStatus_ =
-  ListPoliciesResponse'
-    { _lprsNextToken = Nothing
-    , _lprsPolicies = Nothing
-    , _lprsResponseStatus = pResponseStatus_
-    }
-
+listPoliciesResponse pResponseStatus_
+  = ListPoliciesResponse'{_lprsNextToken = Nothing,
+                          _lprsPolicies = Nothing,
+                          _lprsResponseStatus = pResponseStatus_}
 
 -- | If present, this value indicates that there is more output available than is included in the current response. Use this value in the @NextToken@ request parameter in a subsequent call to the operation to get the next part of the output. You should repeat this until the @NextToken@ response element comes back as @null@ .
 lprsNextToken :: Lens' ListPoliciesResponse (Maybe Text)

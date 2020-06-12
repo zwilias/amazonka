@@ -40,21 +40,17 @@ module Network.AWS.Pinpoint.GetSegmentVersions
 
 import Network.AWS.Lens
 import Network.AWS.Pinpoint.Types
-import Network.AWS.Pinpoint.Types.Product
 import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 
 -- | /See:/ 'getSegmentVersions' smart constructor.
-data GetSegmentVersions =
-  GetSegmentVersions'
-    { _gsvToken         :: !(Maybe Text)
-    , _gsvPageSize      :: !(Maybe Text)
-    , _gsvSegmentId     :: !Text
-    , _gsvApplicationId :: !Text
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data GetSegmentVersions = GetSegmentVersions'{_gsvToken
+                                              :: !(Maybe Text),
+                                              _gsvPageSize :: !(Maybe Text),
+                                              _gsvSegmentId :: !Text,
+                                              _gsvApplicationId :: !Text}
+                            deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'GetSegmentVersions' with the minimum fields required to make a request.
 --
@@ -71,14 +67,10 @@ getSegmentVersions
     :: Text -- ^ 'gsvSegmentId'
     -> Text -- ^ 'gsvApplicationId'
     -> GetSegmentVersions
-getSegmentVersions pSegmentId_ pApplicationId_ =
-  GetSegmentVersions'
-    { _gsvToken = Nothing
-    , _gsvPageSize = Nothing
-    , _gsvSegmentId = pSegmentId_
-    , _gsvApplicationId = pApplicationId_
-    }
-
+getSegmentVersions pSegmentId_ pApplicationId_
+  = GetSegmentVersions'{_gsvToken = Nothing,
+                        _gsvPageSize = Nothing, _gsvSegmentId = pSegmentId_,
+                        _gsvApplicationId = pApplicationId_}
 
 -- | The NextToken string returned on a previous page that you use to get the next page of results in a paginated response.
 gsvToken :: Lens' GetSegmentVersions (Maybe Text)
@@ -129,13 +121,13 @@ instance ToQuery GetSegmentVersions where
               ["token" =: _gsvToken, "page-size" =: _gsvPageSize]
 
 -- | /See:/ 'getSegmentVersionsResponse' smart constructor.
-data GetSegmentVersionsResponse =
-  GetSegmentVersionsResponse'
-    { _grsResponseStatus   :: !Int
-    , _grsSegmentsResponse :: !SegmentsResponse
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data GetSegmentVersionsResponse = GetSegmentVersionsResponse'{_grsResponseStatus
+                                                              :: !Int,
+                                                              _grsSegmentsResponse
+                                                              ::
+                                                              !SegmentsResponse}
+                                    deriving (Eq, Read, Show, Data, Typeable,
+                                              Generic)
 
 -- | Creates a value of 'GetSegmentVersionsResponse' with the minimum fields required to make a request.
 --
@@ -148,12 +140,11 @@ getSegmentVersionsResponse
     :: Int -- ^ 'grsResponseStatus'
     -> SegmentsResponse -- ^ 'grsSegmentsResponse'
     -> GetSegmentVersionsResponse
-getSegmentVersionsResponse pResponseStatus_ pSegmentsResponse_ =
-  GetSegmentVersionsResponse'
-    { _grsResponseStatus = pResponseStatus_
-    , _grsSegmentsResponse = pSegmentsResponse_
-    }
-
+getSegmentVersionsResponse pResponseStatus_
+  pSegmentsResponse_
+  = GetSegmentVersionsResponse'{_grsResponseStatus =
+                                  pResponseStatus_,
+                                _grsSegmentsResponse = pSegmentsResponse_}
 
 -- | -- | The response status code.
 grsResponseStatus :: Lens' GetSegmentVersionsResponse Int

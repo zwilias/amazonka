@@ -38,7 +38,6 @@ module Network.AWS.ElastiCache.RemoveTagsFromResource
     ) where
 
 import Network.AWS.ElastiCache.Types
-import Network.AWS.ElastiCache.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.Request
@@ -49,13 +48,11 @@ import Network.AWS.Response
 --
 --
 -- /See:/ 'removeTagsFromResource' smart constructor.
-data RemoveTagsFromResource =
-  RemoveTagsFromResource'
-    { _rtfrResourceName :: !Text
-    , _rtfrTagKeys      :: ![Text]
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data RemoveTagsFromResource = RemoveTagsFromResource'{_rtfrResourceName
+                                                      :: !Text,
+                                                      _rtfrTagKeys :: ![Text]}
+                                deriving (Eq, Read, Show, Data, Typeable,
+                                          Generic)
 
 -- | Creates a value of 'RemoveTagsFromResource' with the minimum fields required to make a request.
 --
@@ -67,10 +64,10 @@ data RemoveTagsFromResource =
 removeTagsFromResource
     :: Text -- ^ 'rtfrResourceName'
     -> RemoveTagsFromResource
-removeTagsFromResource pResourceName_ =
-  RemoveTagsFromResource'
-    {_rtfrResourceName = pResourceName_, _rtfrTagKeys = mempty}
-
+removeTagsFromResource pResourceName_
+  = RemoveTagsFromResource'{_rtfrResourceName =
+                              pResourceName_,
+                            _rtfrTagKeys = mempty}
 
 -- | The Amazon Resource Name (ARN) of the resource from which you want the tags removed, for example @arn:aws:elasticache:us-west-2:0123456789:cluster:myCluster@ or @arn:aws:elasticache:us-west-2:0123456789:snapshot:mySnapshot@ . For more information about ARNs, see <http://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html Amazon Resource Names (ARNs) and AWS Service Namespaces> .
 rtfrResourceName :: Lens' RemoveTagsFromResource Text

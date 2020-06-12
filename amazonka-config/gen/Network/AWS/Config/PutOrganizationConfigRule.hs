@@ -47,28 +47,32 @@ module Network.AWS.Config.PutOrganizationConfigRule
     ) where
 
 import Network.AWS.Config.Types
-import Network.AWS.Config.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 
 -- | /See:/ 'putOrganizationConfigRule' smart constructor.
-data PutOrganizationConfigRule =
-  PutOrganizationConfigRule'
-    { _pocrOrganizationManagedRuleMetadata :: !(Maybe OrganizationManagedRuleMetadata)
-    , _pocrExcludedAccounts :: !(Maybe [Text])
-    , _pocrOrganizationCustomRuleMetadata :: !(Maybe OrganizationCustomRuleMetadata)
-    , _pocrOrganizationConfigRuleName :: !Text
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data PutOrganizationConfigRule = PutOrganizationConfigRule'{_pocrOrganizationManagedRuleMetadata
+                                                            ::
+                                                            !(Maybe
+                                                                OrganizationManagedRuleMetadata),
+                                                            _pocrExcludedAccounts
+                                                            :: !(Maybe [Text]),
+                                                            _pocrOrganizationCustomRuleMetadata
+                                                            ::
+                                                            !(Maybe
+                                                                OrganizationCustomRuleMetadata),
+                                                            _pocrOrganizationConfigRuleName
+                                                            :: !Text}
+                                   deriving (Eq, Read, Show, Data, Typeable,
+                                             Generic)
 
 -- | Creates a value of 'PutOrganizationConfigRule' with the minimum fields required to make a request.
 --
 -- Use one of the following lenses to modify other fields as desired:
 --
--- * 'pocrOrganizationManagedRuleMetadata' - An @OrganizationManagedRuleMetadata@ object.
+-- * 'pocrOrganizationManagedRuleMetadata' - An @OrganizationManagedRuleMetadata@ object. 
 --
 -- * 'pocrExcludedAccounts' - A comma-separated list of accounts that you want to exclude from an organization config rule.
 --
@@ -78,16 +82,16 @@ data PutOrganizationConfigRule =
 putOrganizationConfigRule
     :: Text -- ^ 'pocrOrganizationConfigRuleName'
     -> PutOrganizationConfigRule
-putOrganizationConfigRule pOrganizationConfigRuleName_ =
-  PutOrganizationConfigRule'
-    { _pocrOrganizationManagedRuleMetadata = Nothing
-    , _pocrExcludedAccounts = Nothing
-    , _pocrOrganizationCustomRuleMetadata = Nothing
-    , _pocrOrganizationConfigRuleName = pOrganizationConfigRuleName_
-    }
+putOrganizationConfigRule
+  pOrganizationConfigRuleName_
+  = PutOrganizationConfigRule'{_pocrOrganizationManagedRuleMetadata
+                                 = Nothing,
+                               _pocrExcludedAccounts = Nothing,
+                               _pocrOrganizationCustomRuleMetadata = Nothing,
+                               _pocrOrganizationConfigRuleName =
+                                 pOrganizationConfigRuleName_}
 
-
--- | An @OrganizationManagedRuleMetadata@ object.
+-- | An @OrganizationManagedRuleMetadata@ object. 
 pocrOrganizationManagedRuleMetadata :: Lens' PutOrganizationConfigRule (Maybe OrganizationManagedRuleMetadata)
 pocrOrganizationManagedRuleMetadata = lens _pocrOrganizationManagedRuleMetadata (\ s a -> s{_pocrOrganizationManagedRuleMetadata = a})
 
@@ -148,13 +152,15 @@ instance ToQuery PutOrganizationConfigRule where
         toQuery = const mempty
 
 -- | /See:/ 'putOrganizationConfigRuleResponse' smart constructor.
-data PutOrganizationConfigRuleResponse =
-  PutOrganizationConfigRuleResponse'
-    { _pocrrsOrganizationConfigRuleARN :: !(Maybe Text)
-    , _pocrrsResponseStatus            :: !Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data PutOrganizationConfigRuleResponse = PutOrganizationConfigRuleResponse'{_pocrrsOrganizationConfigRuleARN
+                                                                            ::
+                                                                            !(Maybe
+                                                                                Text),
+                                                                            _pocrrsResponseStatus
+                                                                            ::
+                                                                            !Int}
+                                           deriving (Eq, Read, Show, Data,
+                                                     Typeable, Generic)
 
 -- | Creates a value of 'PutOrganizationConfigRuleResponse' with the minimum fields required to make a request.
 --
@@ -166,12 +172,10 @@ data PutOrganizationConfigRuleResponse =
 putOrganizationConfigRuleResponse
     :: Int -- ^ 'pocrrsResponseStatus'
     -> PutOrganizationConfigRuleResponse
-putOrganizationConfigRuleResponse pResponseStatus_ =
-  PutOrganizationConfigRuleResponse'
-    { _pocrrsOrganizationConfigRuleARN = Nothing
-    , _pocrrsResponseStatus = pResponseStatus_
-    }
-
+putOrganizationConfigRuleResponse pResponseStatus_
+  = PutOrganizationConfigRuleResponse'{_pocrrsOrganizationConfigRuleARN
+                                         = Nothing,
+                                       _pocrrsResponseStatus = pResponseStatus_}
 
 -- | The Amazon Resource Name (ARN) of an organization config rule.
 pocrrsOrganizationConfigRuleARN :: Lens' PutOrganizationConfigRuleResponse (Maybe Text)

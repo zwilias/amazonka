@@ -40,20 +40,18 @@ module Network.AWS.CloudWatchLogs.DescribeResourcePolicies
     ) where
 
 import Network.AWS.CloudWatchLogs.Types
-import Network.AWS.CloudWatchLogs.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 
 -- | /See:/ 'describeResourcePolicies' smart constructor.
-data DescribeResourcePolicies =
-  DescribeResourcePolicies'
-    { _drpNextToken :: !(Maybe Text)
-    , _drpLimit     :: !(Maybe Nat)
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data DescribeResourcePolicies = DescribeResourcePolicies'{_drpNextToken
+                                                          :: !(Maybe Text),
+                                                          _drpLimit ::
+                                                          !(Maybe Nat)}
+                                  deriving (Eq, Read, Show, Data, Typeable,
+                                            Generic)
 
 -- | Creates a value of 'DescribeResourcePolicies' with the minimum fields required to make a request.
 --
@@ -64,9 +62,9 @@ data DescribeResourcePolicies =
 -- * 'drpLimit' - The maximum number of resource policies to be displayed with one call of this API.
 describeResourcePolicies
     :: DescribeResourcePolicies
-describeResourcePolicies =
-  DescribeResourcePolicies' {_drpNextToken = Nothing, _drpLimit = Nothing}
-
+describeResourcePolicies
+  = DescribeResourcePolicies'{_drpNextToken = Nothing,
+                              _drpLimit = Nothing}
 
 -- | Undocumented member.
 drpNextToken :: Lens' DescribeResourcePolicies (Maybe Text)
@@ -116,14 +114,19 @@ instance ToQuery DescribeResourcePolicies where
         toQuery = const mempty
 
 -- | /See:/ 'describeResourcePoliciesResponse' smart constructor.
-data DescribeResourcePoliciesResponse =
-  DescribeResourcePoliciesResponse'
-    { _drprsResourcePolicies :: !(Maybe [ResourcePolicy])
-    , _drprsNextToken        :: !(Maybe Text)
-    , _drprsResponseStatus   :: !Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data DescribeResourcePoliciesResponse = DescribeResourcePoliciesResponse'{_drprsResourcePolicies
+                                                                          ::
+                                                                          !(Maybe
+                                                                              [ResourcePolicy]),
+                                                                          _drprsNextToken
+                                                                          ::
+                                                                          !(Maybe
+                                                                              Text),
+                                                                          _drprsResponseStatus
+                                                                          ::
+                                                                          !Int}
+                                          deriving (Eq, Read, Show, Data,
+                                                    Typeable, Generic)
 
 -- | Creates a value of 'DescribeResourcePoliciesResponse' with the minimum fields required to make a request.
 --
@@ -137,13 +140,11 @@ data DescribeResourcePoliciesResponse =
 describeResourcePoliciesResponse
     :: Int -- ^ 'drprsResponseStatus'
     -> DescribeResourcePoliciesResponse
-describeResourcePoliciesResponse pResponseStatus_ =
-  DescribeResourcePoliciesResponse'
-    { _drprsResourcePolicies = Nothing
-    , _drprsNextToken = Nothing
-    , _drprsResponseStatus = pResponseStatus_
-    }
-
+describeResourcePoliciesResponse pResponseStatus_
+  = DescribeResourcePoliciesResponse'{_drprsResourcePolicies
+                                        = Nothing,
+                                      _drprsNextToken = Nothing,
+                                      _drprsResponseStatus = pResponseStatus_}
 
 -- | The resource policies that exist in this account.
 drprsResourcePolicies :: Lens' DescribeResourcePoliciesResponse [ResourcePolicy]

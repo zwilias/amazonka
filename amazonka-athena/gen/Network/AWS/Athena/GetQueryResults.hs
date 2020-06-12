@@ -48,7 +48,6 @@ module Network.AWS.Athena.GetQueryResults
     ) where
 
 import Network.AWS.Athena.Types
-import Network.AWS.Athena.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Pager
 import Network.AWS.Prelude
@@ -56,14 +55,11 @@ import Network.AWS.Request
 import Network.AWS.Response
 
 -- | /See:/ 'getQueryResults' smart constructor.
-data GetQueryResults =
-  GetQueryResults'
-    { _gqrNextToken        :: !(Maybe Text)
-    , _gqrMaxResults       :: !(Maybe Nat)
-    , _gqrQueryExecutionId :: !Text
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data GetQueryResults = GetQueryResults'{_gqrNextToken
+                                        :: !(Maybe Text),
+                                        _gqrMaxResults :: !(Maybe Nat),
+                                        _gqrQueryExecutionId :: !Text}
+                         deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'GetQueryResults' with the minimum fields required to make a request.
 --
@@ -77,13 +73,10 @@ data GetQueryResults =
 getQueryResults
     :: Text -- ^ 'gqrQueryExecutionId'
     -> GetQueryResults
-getQueryResults pQueryExecutionId_ =
-  GetQueryResults'
-    { _gqrNextToken = Nothing
-    , _gqrMaxResults = Nothing
-    , _gqrQueryExecutionId = pQueryExecutionId_
-    }
-
+getQueryResults pQueryExecutionId_
+  = GetQueryResults'{_gqrNextToken = Nothing,
+                     _gqrMaxResults = Nothing,
+                     _gqrQueryExecutionId = pQueryExecutionId_}
 
 -- | The token that specifies where to start pagination if a previous request was truncated.
 gqrNextToken :: Lens' GetQueryResults (Maybe Text)
@@ -144,21 +137,22 @@ instance ToQuery GetQueryResults where
         toQuery = const mempty
 
 -- | /See:/ 'getQueryResultsResponse' smart constructor.
-data GetQueryResultsResponse =
-  GetQueryResultsResponse'
-    { _gqrrsUpdateCount    :: !(Maybe Integer)
-    , _gqrrsNextToken      :: !(Maybe Text)
-    , _gqrrsResultSet      :: !(Maybe ResultSet)
-    , _gqrrsResponseStatus :: !Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data GetQueryResultsResponse = GetQueryResultsResponse'{_gqrrsUpdateCount
+                                                        :: !(Maybe Integer),
+                                                        _gqrrsNextToken ::
+                                                        !(Maybe Text),
+                                                        _gqrrsResultSet ::
+                                                        !(Maybe ResultSet),
+                                                        _gqrrsResponseStatus ::
+                                                        !Int}
+                                 deriving (Eq, Read, Show, Data, Typeable,
+                                           Generic)
 
 -- | Creates a value of 'GetQueryResultsResponse' with the minimum fields required to make a request.
 --
 -- Use one of the following lenses to modify other fields as desired:
 --
--- * 'gqrrsUpdateCount' - The number of rows inserted with a CREATE TABLE AS SELECT statement.
+-- * 'gqrrsUpdateCount' - The number of rows inserted with a CREATE TABLE AS SELECT statement. 
 --
 -- * 'gqrrsNextToken' - A token to be used by the next request if this request is truncated.
 --
@@ -168,16 +162,14 @@ data GetQueryResultsResponse =
 getQueryResultsResponse
     :: Int -- ^ 'gqrrsResponseStatus'
     -> GetQueryResultsResponse
-getQueryResultsResponse pResponseStatus_ =
-  GetQueryResultsResponse'
-    { _gqrrsUpdateCount = Nothing
-    , _gqrrsNextToken = Nothing
-    , _gqrrsResultSet = Nothing
-    , _gqrrsResponseStatus = pResponseStatus_
-    }
+getQueryResultsResponse pResponseStatus_
+  = GetQueryResultsResponse'{_gqrrsUpdateCount =
+                               Nothing,
+                             _gqrrsNextToken = Nothing,
+                             _gqrrsResultSet = Nothing,
+                             _gqrrsResponseStatus = pResponseStatus_}
 
-
--- | The number of rows inserted with a CREATE TABLE AS SELECT statement.
+-- | The number of rows inserted with a CREATE TABLE AS SELECT statement. 
 gqrrsUpdateCount :: Lens' GetQueryResultsResponse (Maybe Integer)
 gqrrsUpdateCount = lens _gqrrsUpdateCount (\ s a -> s{_gqrrsUpdateCount = a})
 

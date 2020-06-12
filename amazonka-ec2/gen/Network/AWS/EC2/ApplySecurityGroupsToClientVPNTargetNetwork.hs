@@ -41,22 +41,28 @@ module Network.AWS.EC2.ApplySecurityGroupsToClientVPNTargetNetwork
     ) where
 
 import Network.AWS.EC2.Types
-import Network.AWS.EC2.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 
 -- | /See:/ 'applySecurityGroupsToClientVPNTargetNetwork' smart constructor.
-data ApplySecurityGroupsToClientVPNTargetNetwork =
-  ApplySecurityGroupsToClientVPNTargetNetwork'
-    { _asgtcvtnDryRun              :: !(Maybe Bool)
-    , _asgtcvtnClientVPNEndpointId :: !Text
-    , _asgtcvtnVPCId               :: !Text
-    , _asgtcvtnSecurityGroupIds    :: ![Text]
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data ApplySecurityGroupsToClientVPNTargetNetwork = ApplySecurityGroupsToClientVPNTargetNetwork'{_asgtcvtnDryRun
+                                                                                                ::
+                                                                                                !(Maybe
+                                                                                                    Bool),
+                                                                                                _asgtcvtnClientVPNEndpointId
+                                                                                                ::
+                                                                                                !Text,
+                                                                                                _asgtcvtnVPCId
+                                                                                                ::
+                                                                                                !Text,
+                                                                                                _asgtcvtnSecurityGroupIds
+                                                                                                ::
+                                                                                                ![Text]}
+                                                     deriving (Eq, Read, Show,
+                                                               Data, Typeable,
+                                                               Generic)
 
 -- | Creates a value of 'ApplySecurityGroupsToClientVPNTargetNetwork' with the minimum fields required to make a request.
 --
@@ -73,14 +79,15 @@ applySecurityGroupsToClientVPNTargetNetwork
     :: Text -- ^ 'asgtcvtnClientVPNEndpointId'
     -> Text -- ^ 'asgtcvtnVPCId'
     -> ApplySecurityGroupsToClientVPNTargetNetwork
-applySecurityGroupsToClientVPNTargetNetwork pClientVPNEndpointId_ pVPCId_ =
-  ApplySecurityGroupsToClientVPNTargetNetwork'
-    { _asgtcvtnDryRun = Nothing
-    , _asgtcvtnClientVPNEndpointId = pClientVPNEndpointId_
-    , _asgtcvtnVPCId = pVPCId_
-    , _asgtcvtnSecurityGroupIds = mempty
-    }
-
+applySecurityGroupsToClientVPNTargetNetwork
+  pClientVPNEndpointId_ pVPCId_
+  = ApplySecurityGroupsToClientVPNTargetNetwork'{_asgtcvtnDryRun
+                                                   = Nothing,
+                                                 _asgtcvtnClientVPNEndpointId =
+                                                   pClientVPNEndpointId_,
+                                                 _asgtcvtnVPCId = pVPCId_,
+                                                 _asgtcvtnSecurityGroupIds =
+                                                   mempty}
 
 -- | Checks whether you have the required permissions for the action, without actually making the request, and provides an error response. If you have the required permissions, the error response is @DryRunOperation@ . Otherwise, it is @UnauthorizedOperation@ .
 asgtcvtnDryRun :: Lens' ApplySecurityGroupsToClientVPNTargetNetwork (Maybe Bool)
@@ -149,13 +156,18 @@ instance ToQuery
                  _asgtcvtnSecurityGroupIds]
 
 -- | /See:/ 'applySecurityGroupsToClientVPNTargetNetworkResponse' smart constructor.
-data ApplySecurityGroupsToClientVPNTargetNetworkResponse =
-  ApplySecurityGroupsToClientVPNTargetNetworkResponse'
-    { _asgtcvtnrsSecurityGroupIds :: !(Maybe [Text])
-    , _asgtcvtnrsResponseStatus   :: !Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data ApplySecurityGroupsToClientVPNTargetNetworkResponse = ApplySecurityGroupsToClientVPNTargetNetworkResponse'{_asgtcvtnrsSecurityGroupIds
+                                                                                                                ::
+                                                                                                                !(Maybe
+                                                                                                                    [Text]),
+                                                                                                                _asgtcvtnrsResponseStatus
+                                                                                                                ::
+                                                                                                                !Int}
+                                                             deriving (Eq, Read,
+                                                                       Show,
+                                                                       Data,
+                                                                       Typeable,
+                                                                       Generic)
 
 -- | Creates a value of 'ApplySecurityGroupsToClientVPNTargetNetworkResponse' with the minimum fields required to make a request.
 --
@@ -167,12 +179,12 @@ data ApplySecurityGroupsToClientVPNTargetNetworkResponse =
 applySecurityGroupsToClientVPNTargetNetworkResponse
     :: Int -- ^ 'asgtcvtnrsResponseStatus'
     -> ApplySecurityGroupsToClientVPNTargetNetworkResponse
-applySecurityGroupsToClientVPNTargetNetworkResponse pResponseStatus_ =
-  ApplySecurityGroupsToClientVPNTargetNetworkResponse'
-    { _asgtcvtnrsSecurityGroupIds = Nothing
-    , _asgtcvtnrsResponseStatus = pResponseStatus_
-    }
-
+applySecurityGroupsToClientVPNTargetNetworkResponse
+  pResponseStatus_
+  = ApplySecurityGroupsToClientVPNTargetNetworkResponse'{_asgtcvtnrsSecurityGroupIds
+                                                           = Nothing,
+                                                         _asgtcvtnrsResponseStatus
+                                                           = pResponseStatus_}
 
 -- | The IDs of the applied security groups.
 asgtcvtnrsSecurityGroupIds :: Lens' ApplySecurityGroupsToClientVPNTargetNetworkResponse [Text]

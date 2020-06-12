@@ -42,7 +42,6 @@ module Network.AWS.DeviceFarm.ListSamples
     ) where
 
 import Network.AWS.DeviceFarm.Types
-import Network.AWS.DeviceFarm.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Pager
 import Network.AWS.Prelude
@@ -54,13 +53,10 @@ import Network.AWS.Response
 --
 --
 -- /See:/ 'listSamples' smart constructor.
-data ListSamples =
-  ListSamples'
-    { _lsNextToken :: !(Maybe Text)
-    , _lsArn       :: !Text
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data ListSamples = ListSamples'{_lsNextToken ::
+                                !(Maybe Text),
+                                _lsArn :: !Text}
+                     deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'ListSamples' with the minimum fields required to make a request.
 --
@@ -72,8 +68,9 @@ data ListSamples =
 listSamples
     :: Text -- ^ 'lsArn'
     -> ListSamples
-listSamples pArn_ = ListSamples' {_lsNextToken = Nothing, _lsArn = pArn_}
-
+listSamples pArn_
+  = ListSamples'{_lsNextToken = Nothing,
+                 _lsArn = pArn_}
 
 -- | An identifier that was returned from the previous call to this operation, which can be used to return the next set of items in the list.
 lsNextToken :: Lens' ListSamples (Maybe Text)
@@ -131,14 +128,12 @@ instance ToQuery ListSamples where
 --
 --
 -- /See:/ 'listSamplesResponse' smart constructor.
-data ListSamplesResponse =
-  ListSamplesResponse'
-    { _lssrsNextToken      :: !(Maybe Text)
-    , _lssrsSamples        :: !(Maybe [Sample])
-    , _lssrsResponseStatus :: !Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data ListSamplesResponse = ListSamplesResponse'{_lssrsNextToken
+                                                :: !(Maybe Text),
+                                                _lssrsSamples ::
+                                                !(Maybe [Sample]),
+                                                _lssrsResponseStatus :: !Int}
+                             deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'ListSamplesResponse' with the minimum fields required to make a request.
 --
@@ -152,13 +147,10 @@ data ListSamplesResponse =
 listSamplesResponse
     :: Int -- ^ 'lssrsResponseStatus'
     -> ListSamplesResponse
-listSamplesResponse pResponseStatus_ =
-  ListSamplesResponse'
-    { _lssrsNextToken = Nothing
-    , _lssrsSamples = Nothing
-    , _lssrsResponseStatus = pResponseStatus_
-    }
-
+listSamplesResponse pResponseStatus_
+  = ListSamplesResponse'{_lssrsNextToken = Nothing,
+                         _lssrsSamples = Nothing,
+                         _lssrsResponseStatus = pResponseStatus_}
 
 -- | If the number of items that are returned is significantly large, this is an identifier that is also returned. It can be used in a subsequent call to this operation to return the next set of items in the list.
 lssrsNextToken :: Lens' ListSamplesResponse (Maybe Text)

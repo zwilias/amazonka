@@ -27,7 +27,7 @@
 --
 -- /Important:/ Because the number of workflow history events for a single workflow execution might be very large, the result returned might be split up across a number of pages. To retrieve subsequent pages, make additional calls to @PollForDecisionTask@ using the @nextPageToken@ returned by the initial call. Note that you do /not/ call @GetWorkflowExecutionHistory@ with this @nextPageToken@ . Instead, call @PollForDecisionTask@ again.
 --
--- __Access Control__
+-- __Access Control__ 
 --
 -- You can use IAM policies to control this action's access to Amazon SWF resources as follows:
 --
@@ -76,20 +76,18 @@ import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 import Network.AWS.SWF.Types
-import Network.AWS.SWF.Types.Product
 
 -- | /See:/ 'pollForDecisionTask' smart constructor.
-data PollForDecisionTask =
-  PollForDecisionTask'
-    { _pfdtNextPageToken   :: !(Maybe Text)
-    , _pfdtReverseOrder    :: !(Maybe Bool)
-    , _pfdtMaximumPageSize :: !(Maybe Nat)
-    , _pfdtIdentity        :: !(Maybe Text)
-    , _pfdtDomain          :: !Text
-    , _pfdtTaskList        :: !TaskList
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data PollForDecisionTask = PollForDecisionTask'{_pfdtNextPageToken
+                                                :: !(Maybe Text),
+                                                _pfdtReverseOrder ::
+                                                !(Maybe Bool),
+                                                _pfdtMaximumPageSize ::
+                                                !(Maybe Nat),
+                                                _pfdtIdentity :: !(Maybe Text),
+                                                _pfdtDomain :: !Text,
+                                                _pfdtTaskList :: !TaskList}
+                             deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'PollForDecisionTask' with the minimum fields required to make a request.
 --
@@ -110,16 +108,12 @@ pollForDecisionTask
     :: Text -- ^ 'pfdtDomain'
     -> TaskList -- ^ 'pfdtTaskList'
     -> PollForDecisionTask
-pollForDecisionTask pDomain_ pTaskList_ =
-  PollForDecisionTask'
-    { _pfdtNextPageToken = Nothing
-    , _pfdtReverseOrder = Nothing
-    , _pfdtMaximumPageSize = Nothing
-    , _pfdtIdentity = Nothing
-    , _pfdtDomain = pDomain_
-    , _pfdtTaskList = pTaskList_
-    }
-
+pollForDecisionTask pDomain_ pTaskList_
+  = PollForDecisionTask'{_pfdtNextPageToken = Nothing,
+                         _pfdtReverseOrder = Nothing,
+                         _pfdtMaximumPageSize = Nothing,
+                         _pfdtIdentity = Nothing, _pfdtDomain = pDomain_,
+                         _pfdtTaskList = pTaskList_}
 
 -- | If a @NextPageToken@ was returned by a previous call, there are more results available. To retrieve the next page of results, make the call again using the returned token in @nextPageToken@ . Keep all other arguments unchanged. The configured @maximumPageSize@ determines how many results can be returned in a single call.
 pfdtNextPageToken :: Lens' PollForDecisionTask (Maybe Text)
@@ -205,19 +199,33 @@ instance ToQuery PollForDecisionTask where
 --
 --
 -- /See:/ 'pollForDecisionTaskResponse' smart constructor.
-data PollForDecisionTaskResponse =
-  PollForDecisionTaskResponse'
-    { _pfdtrsNextPageToken          :: !(Maybe Text)
-    , _pfdtrsWorkflowType           :: !(Maybe WorkflowType)
-    , _pfdtrsPreviousStartedEventId :: !(Maybe Integer)
-    , _pfdtrsEvents                 :: !(Maybe [HistoryEvent])
-    , _pfdtrsTaskToken              :: !(Maybe Text)
-    , _pfdtrsWorkflowExecution      :: !(Maybe WorkflowExecution)
-    , _pfdtrsResponseStatus         :: !Int
-    , _pfdtrsStartedEventId         :: !Integer
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data PollForDecisionTaskResponse = PollForDecisionTaskResponse'{_pfdtrsNextPageToken
+                                                                ::
+                                                                !(Maybe Text),
+                                                                _pfdtrsWorkflowType
+                                                                ::
+                                                                !(Maybe
+                                                                    WorkflowType),
+                                                                _pfdtrsPreviousStartedEventId
+                                                                ::
+                                                                !(Maybe
+                                                                    Integer),
+                                                                _pfdtrsEvents ::
+                                                                !(Maybe
+                                                                    [HistoryEvent]),
+                                                                _pfdtrsTaskToken
+                                                                ::
+                                                                !(Maybe Text),
+                                                                _pfdtrsWorkflowExecution
+                                                                ::
+                                                                !(Maybe
+                                                                    WorkflowExecution),
+                                                                _pfdtrsResponseStatus
+                                                                :: !Int,
+                                                                _pfdtrsStartedEventId
+                                                                :: !Integer}
+                                     deriving (Eq, Read, Show, Data, Typeable,
+                                               Generic)
 
 -- | Creates a value of 'PollForDecisionTaskResponse' with the minimum fields required to make a request.
 --
@@ -242,18 +250,17 @@ pollForDecisionTaskResponse
     :: Int -- ^ 'pfdtrsResponseStatus'
     -> Integer -- ^ 'pfdtrsStartedEventId'
     -> PollForDecisionTaskResponse
-pollForDecisionTaskResponse pResponseStatus_ pStartedEventId_ =
-  PollForDecisionTaskResponse'
-    { _pfdtrsNextPageToken = Nothing
-    , _pfdtrsWorkflowType = Nothing
-    , _pfdtrsPreviousStartedEventId = Nothing
-    , _pfdtrsEvents = Nothing
-    , _pfdtrsTaskToken = Nothing
-    , _pfdtrsWorkflowExecution = Nothing
-    , _pfdtrsResponseStatus = pResponseStatus_
-    , _pfdtrsStartedEventId = pStartedEventId_
-    }
-
+pollForDecisionTaskResponse pResponseStatus_
+  pStartedEventId_
+  = PollForDecisionTaskResponse'{_pfdtrsNextPageToken =
+                                   Nothing,
+                                 _pfdtrsWorkflowType = Nothing,
+                                 _pfdtrsPreviousStartedEventId = Nothing,
+                                 _pfdtrsEvents = Nothing,
+                                 _pfdtrsTaskToken = Nothing,
+                                 _pfdtrsWorkflowExecution = Nothing,
+                                 _pfdtrsResponseStatus = pResponseStatus_,
+                                 _pfdtrsStartedEventId = pStartedEventId_}
 
 -- | If a @NextPageToken@ was returned by a previous call, there are more results available. To retrieve the next page of results, make the call again using the returned token in @nextPageToken@ . Keep all other arguments unchanged. The configured @maximumPageSize@ determines how many results can be returned in a single call.
 pfdtrsNextPageToken :: Lens' PollForDecisionTaskResponse (Maybe Text)

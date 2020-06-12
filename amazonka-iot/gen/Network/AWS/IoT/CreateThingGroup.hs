@@ -42,21 +42,18 @@ module Network.AWS.IoT.CreateThingGroup
     ) where
 
 import Network.AWS.IoT.Types
-import Network.AWS.IoT.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 
 -- | /See:/ 'createThingGroup' smart constructor.
-data CreateThingGroup =
-  CreateThingGroup'
-    { _ctgParentGroupName      :: !(Maybe Text)
-    , _ctgThingGroupProperties :: !(Maybe ThingGroupProperties)
-    , _ctgThingGroupName       :: !Text
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data CreateThingGroup = CreateThingGroup'{_ctgParentGroupName
+                                          :: !(Maybe Text),
+                                          _ctgThingGroupProperties ::
+                                          !(Maybe ThingGroupProperties),
+                                          _ctgThingGroupName :: !Text}
+                          deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'CreateThingGroup' with the minimum fields required to make a request.
 --
@@ -70,13 +67,10 @@ data CreateThingGroup =
 createThingGroup
     :: Text -- ^ 'ctgThingGroupName'
     -> CreateThingGroup
-createThingGroup pThingGroupName_ =
-  CreateThingGroup'
-    { _ctgParentGroupName = Nothing
-    , _ctgThingGroupProperties = Nothing
-    , _ctgThingGroupName = pThingGroupName_
-    }
-
+createThingGroup pThingGroupName_
+  = CreateThingGroup'{_ctgParentGroupName = Nothing,
+                      _ctgThingGroupProperties = Nothing,
+                      _ctgThingGroupName = pThingGroupName_}
 
 -- | The name of the parent thing group.
 ctgParentGroupName :: Lens' CreateThingGroup (Maybe Text)
@@ -124,15 +118,16 @@ instance ToQuery CreateThingGroup where
         toQuery = const mempty
 
 -- | /See:/ 'createThingGroupResponse' smart constructor.
-data CreateThingGroupResponse =
-  CreateThingGroupResponse'
-    { _ctgrsThingGroupARN  :: !(Maybe Text)
-    , _ctgrsThingGroupId   :: !(Maybe Text)
-    , _ctgrsThingGroupName :: !(Maybe Text)
-    , _ctgrsResponseStatus :: !Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data CreateThingGroupResponse = CreateThingGroupResponse'{_ctgrsThingGroupARN
+                                                          :: !(Maybe Text),
+                                                          _ctgrsThingGroupId ::
+                                                          !(Maybe Text),
+                                                          _ctgrsThingGroupName
+                                                          :: !(Maybe Text),
+                                                          _ctgrsResponseStatus
+                                                          :: !Int}
+                                  deriving (Eq, Read, Show, Data, Typeable,
+                                            Generic)
 
 -- | Creates a value of 'CreateThingGroupResponse' with the minimum fields required to make a request.
 --
@@ -148,14 +143,12 @@ data CreateThingGroupResponse =
 createThingGroupResponse
     :: Int -- ^ 'ctgrsResponseStatus'
     -> CreateThingGroupResponse
-createThingGroupResponse pResponseStatus_ =
-  CreateThingGroupResponse'
-    { _ctgrsThingGroupARN = Nothing
-    , _ctgrsThingGroupId = Nothing
-    , _ctgrsThingGroupName = Nothing
-    , _ctgrsResponseStatus = pResponseStatus_
-    }
-
+createThingGroupResponse pResponseStatus_
+  = CreateThingGroupResponse'{_ctgrsThingGroupARN =
+                                Nothing,
+                              _ctgrsThingGroupId = Nothing,
+                              _ctgrsThingGroupName = Nothing,
+                              _ctgrsResponseStatus = pResponseStatus_}
 
 -- | The thing group ARN.
 ctgrsThingGroupARN :: Lens' CreateThingGroupResponse (Maybe Text)

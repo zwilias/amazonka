@@ -18,7 +18,7 @@
 -- Stability   : auto-generated
 -- Portability : non-portable (GHC extensions)
 --
--- Describes the association for the specified target or instance. If you created the association by using the @Targets@ parameter, then you must retrieve the association by using the association ID. If you created the association by specifying an instance ID and a Systems Manager document, then you retrieve the association by specifying the document name and the instance ID.
+-- Describes the association for the specified target or instance. If you created the association by using the @Targets@ parameter, then you must retrieve the association by using the association ID. If you created the association by specifying an instance ID and a Systems Manager document, then you retrieve the association by specifying the document name and the instance ID. 
 --
 --
 module Network.AWS.SSM.DescribeAssociation
@@ -45,18 +45,15 @@ import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 import Network.AWS.SSM.Types
-import Network.AWS.SSM.Types.Product
 
 -- | /See:/ 'describeAssociation' smart constructor.
-data DescribeAssociation =
-  DescribeAssociation'
-    { _daAssociationId      :: !(Maybe Text)
-    , _daInstanceId         :: !(Maybe Text)
-    , _daName               :: !(Maybe Text)
-    , _daAssociationVersion :: !(Maybe Text)
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data DescribeAssociation = DescribeAssociation'{_daAssociationId
+                                                :: !(Maybe Text),
+                                                _daInstanceId :: !(Maybe Text),
+                                                _daName :: !(Maybe Text),
+                                                _daAssociationVersion ::
+                                                !(Maybe Text)}
+                             deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'DescribeAssociation' with the minimum fields required to make a request.
 --
@@ -68,17 +65,13 @@ data DescribeAssociation =
 --
 -- * 'daName' - The name of the Systems Manager document.
 --
--- * 'daAssociationVersion' - Specify the association version to retrieve. To view the latest version, either specify @> LATEST@ for this parameter, or omit this parameter. To view a list of all associations for an instance, use ListInstanceAssociations. To get a list of versions for a specific association, use ListAssociationVersions.
+-- * 'daAssociationVersion' - Specify the association version to retrieve. To view the latest version, either specify @> LATEST@ for this parameter, or omit this parameter. To view a list of all associations for an instance, use ListInstanceAssociations. To get a list of versions for a specific association, use ListAssociationVersions. 
 describeAssociation
     :: DescribeAssociation
-describeAssociation =
-  DescribeAssociation'
-    { _daAssociationId = Nothing
-    , _daInstanceId = Nothing
-    , _daName = Nothing
-    , _daAssociationVersion = Nothing
-    }
-
+describeAssociation
+  = DescribeAssociation'{_daAssociationId = Nothing,
+                         _daInstanceId = Nothing, _daName = Nothing,
+                         _daAssociationVersion = Nothing}
 
 -- | The association ID for which you want information.
 daAssociationId :: Lens' DescribeAssociation (Maybe Text)
@@ -92,7 +85,7 @@ daInstanceId = lens _daInstanceId (\ s a -> s{_daInstanceId = a})
 daName :: Lens' DescribeAssociation (Maybe Text)
 daName = lens _daName (\ s a -> s{_daName = a})
 
--- | Specify the association version to retrieve. To view the latest version, either specify @> LATEST@ for this parameter, or omit this parameter. To view a list of all associations for an instance, use ListInstanceAssociations. To get a list of versions for a specific association, use ListAssociationVersions.
+-- | Specify the association version to retrieve. To view the latest version, either specify @> LATEST@ for this parameter, or omit this parameter. To view a list of all associations for an instance, use ListInstanceAssociations. To get a list of versions for a specific association, use ListAssociationVersions. 
 daAssociationVersion :: Lens' DescribeAssociation (Maybe Text)
 daAssociationVersion = lens _daAssociationVersion (\ s a -> s{_daAssociationVersion = a})
 
@@ -136,13 +129,14 @@ instance ToQuery DescribeAssociation where
         toQuery = const mempty
 
 -- | /See:/ 'describeAssociationResponse' smart constructor.
-data DescribeAssociationResponse =
-  DescribeAssociationResponse'
-    { _daarsAssociationDescription :: !(Maybe AssociationDescription)
-    , _daarsResponseStatus         :: !Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data DescribeAssociationResponse = DescribeAssociationResponse'{_daarsAssociationDescription
+                                                                ::
+                                                                !(Maybe
+                                                                    AssociationDescription),
+                                                                _daarsResponseStatus
+                                                                :: !Int}
+                                     deriving (Eq, Read, Show, Data, Typeable,
+                                               Generic)
 
 -- | Creates a value of 'DescribeAssociationResponse' with the minimum fields required to make a request.
 --
@@ -154,12 +148,10 @@ data DescribeAssociationResponse =
 describeAssociationResponse
     :: Int -- ^ 'daarsResponseStatus'
     -> DescribeAssociationResponse
-describeAssociationResponse pResponseStatus_ =
-  DescribeAssociationResponse'
-    { _daarsAssociationDescription = Nothing
-    , _daarsResponseStatus = pResponseStatus_
-    }
-
+describeAssociationResponse pResponseStatus_
+  = DescribeAssociationResponse'{_daarsAssociationDescription
+                                   = Nothing,
+                                 _daarsResponseStatus = pResponseStatus_}
 
 -- | Information about the association.
 daarsAssociationDescription :: Lens' DescribeAssociationResponse (Maybe AssociationDescription)

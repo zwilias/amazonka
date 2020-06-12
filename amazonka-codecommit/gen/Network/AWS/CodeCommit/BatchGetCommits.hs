@@ -40,20 +40,16 @@ module Network.AWS.CodeCommit.BatchGetCommits
     ) where
 
 import Network.AWS.CodeCommit.Types
-import Network.AWS.CodeCommit.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 
 -- | /See:/ 'batchGetCommits' smart constructor.
-data BatchGetCommits =
-  BatchGetCommits'
-    { _bgcCommitIds      :: ![Text]
-    , _bgcRepositoryName :: !Text
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data BatchGetCommits = BatchGetCommits'{_bgcCommitIds
+                                        :: ![Text],
+                                        _bgcRepositoryName :: !Text}
+                         deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'BatchGetCommits' with the minimum fields required to make a request.
 --
@@ -65,10 +61,9 @@ data BatchGetCommits =
 batchGetCommits
     :: Text -- ^ 'bgcRepositoryName'
     -> BatchGetCommits
-batchGetCommits pRepositoryName_ =
-  BatchGetCommits'
-    {_bgcCommitIds = mempty, _bgcRepositoryName = pRepositoryName_}
-
+batchGetCommits pRepositoryName_
+  = BatchGetCommits'{_bgcCommitIds = mempty,
+                     _bgcRepositoryName = pRepositoryName_}
 
 -- | The full commit IDs of the commits to get information about.
 bgcCommitIds :: Lens' BatchGetCommits [Text]
@@ -117,14 +112,15 @@ instance ToQuery BatchGetCommits where
         toQuery = const mempty
 
 -- | /See:/ 'batchGetCommitsResponse' smart constructor.
-data BatchGetCommitsResponse =
-  BatchGetCommitsResponse'
-    { _bgcrsCommits        :: !(Maybe [Commit])
-    , _bgcrsErrors         :: !(Maybe [BatchGetCommitsError])
-    , _bgcrsResponseStatus :: !Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data BatchGetCommitsResponse = BatchGetCommitsResponse'{_bgcrsCommits
+                                                        :: !(Maybe [Commit]),
+                                                        _bgcrsErrors ::
+                                                        !(Maybe
+                                                            [BatchGetCommitsError]),
+                                                        _bgcrsResponseStatus ::
+                                                        !Int}
+                                 deriving (Eq, Read, Show, Data, Typeable,
+                                           Generic)
 
 -- | Creates a value of 'BatchGetCommitsResponse' with the minimum fields required to make a request.
 --
@@ -138,13 +134,10 @@ data BatchGetCommitsResponse =
 batchGetCommitsResponse
     :: Int -- ^ 'bgcrsResponseStatus'
     -> BatchGetCommitsResponse
-batchGetCommitsResponse pResponseStatus_ =
-  BatchGetCommitsResponse'
-    { _bgcrsCommits = Nothing
-    , _bgcrsErrors = Nothing
-    , _bgcrsResponseStatus = pResponseStatus_
-    }
-
+batchGetCommitsResponse pResponseStatus_
+  = BatchGetCommitsResponse'{_bgcrsCommits = Nothing,
+                             _bgcrsErrors = Nothing,
+                             _bgcrsResponseStatus = pResponseStatus_}
 
 -- | An array of commit data type objects, each of which contains information about a specified commit.
 bgcrsCommits :: Lens' BatchGetCommitsResponse [Commit]

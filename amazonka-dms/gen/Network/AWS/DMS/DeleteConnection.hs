@@ -39,24 +39,20 @@ module Network.AWS.DMS.DeleteConnection
     ) where
 
 import Network.AWS.DMS.Types
-import Network.AWS.DMS.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 
--- |
+-- | 
 --
 --
 --
 -- /See:/ 'deleteConnection' smart constructor.
-data DeleteConnection =
-  DeleteConnection'
-    { _dcEndpointARN            :: !Text
-    , _dcReplicationInstanceARN :: !Text
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data DeleteConnection = DeleteConnection'{_dcEndpointARN
+                                          :: !Text,
+                                          _dcReplicationInstanceARN :: !Text}
+                          deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'DeleteConnection' with the minimum fields required to make a request.
 --
@@ -69,12 +65,10 @@ deleteConnection
     :: Text -- ^ 'dcEndpointARN'
     -> Text -- ^ 'dcReplicationInstanceARN'
     -> DeleteConnection
-deleteConnection pEndpointARN_ pReplicationInstanceARN_ =
-  DeleteConnection'
-    { _dcEndpointARN = pEndpointARN_
-    , _dcReplicationInstanceARN = pReplicationInstanceARN_
-    }
-
+deleteConnection pEndpointARN_
+  pReplicationInstanceARN_
+  = DeleteConnection'{_dcEndpointARN = pEndpointARN_,
+                      _dcReplicationInstanceARN = pReplicationInstanceARN_}
 
 -- | The Amazon Resource Name (ARN) string that uniquely identifies the endpoint.
 dcEndpointARN :: Lens' DeleteConnection Text
@@ -122,18 +116,18 @@ instance ToPath DeleteConnection where
 instance ToQuery DeleteConnection where
         toQuery = const mempty
 
--- |
+-- | 
 --
 --
 --
 -- /See:/ 'deleteConnectionResponse' smart constructor.
-data DeleteConnectionResponse =
-  DeleteConnectionResponse'
-    { _dcrsConnection     :: !(Maybe Connection)
-    , _dcrsResponseStatus :: !Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data DeleteConnectionResponse = DeleteConnectionResponse'{_dcrsConnection
+                                                          ::
+                                                          !(Maybe Connection),
+                                                          _dcrsResponseStatus ::
+                                                          !Int}
+                                  deriving (Eq, Read, Show, Data, Typeable,
+                                            Generic)
 
 -- | Creates a value of 'DeleteConnectionResponse' with the minimum fields required to make a request.
 --
@@ -145,10 +139,10 @@ data DeleteConnectionResponse =
 deleteConnectionResponse
     :: Int -- ^ 'dcrsResponseStatus'
     -> DeleteConnectionResponse
-deleteConnectionResponse pResponseStatus_ =
-  DeleteConnectionResponse'
-    {_dcrsConnection = Nothing, _dcrsResponseStatus = pResponseStatus_}
-
+deleteConnectionResponse pResponseStatus_
+  = DeleteConnectionResponse'{_dcrsConnection =
+                                Nothing,
+                              _dcrsResponseStatus = pResponseStatus_}
 
 -- | The connection that is being deleted.
 dcrsConnection :: Lens' DeleteConnectionResponse (Maybe Connection)

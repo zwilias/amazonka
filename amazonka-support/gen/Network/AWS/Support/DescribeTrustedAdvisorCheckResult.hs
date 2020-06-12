@@ -23,11 +23,11 @@
 --
 -- The response contains a 'TrustedAdvisorCheckResult' object, which contains these three objects:
 --
---     * 'TrustedAdvisorCategorySpecificSummary'
+--     * 'TrustedAdvisorCategorySpecificSummary' 
 --
---     * 'TrustedAdvisorResourceDetail'
+--     * 'TrustedAdvisorResourceDetail' 
 --
---     * 'TrustedAdvisorResourcesSummary'
+--     * 'TrustedAdvisorResourcesSummary' 
 --
 --
 --
@@ -63,20 +63,21 @@ import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 import Network.AWS.Support.Types
-import Network.AWS.Support.Types.Product
 
--- |
+-- | 
 --
 --
 --
 -- /See:/ 'describeTrustedAdvisorCheckResult' smart constructor.
-data DescribeTrustedAdvisorCheckResult =
-  DescribeTrustedAdvisorCheckResult'
-    { _dtacrLanguage :: !(Maybe Text)
-    , _dtacrCheckId  :: !Text
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data DescribeTrustedAdvisorCheckResult = DescribeTrustedAdvisorCheckResult'{_dtacrLanguage
+                                                                            ::
+                                                                            !(Maybe
+                                                                                Text),
+                                                                            _dtacrCheckId
+                                                                            ::
+                                                                            !Text}
+                                           deriving (Eq, Read, Show, Data,
+                                                     Typeable, Generic)
 
 -- | Creates a value of 'DescribeTrustedAdvisorCheckResult' with the minimum fields required to make a request.
 --
@@ -88,10 +89,10 @@ data DescribeTrustedAdvisorCheckResult =
 describeTrustedAdvisorCheckResult
     :: Text -- ^ 'dtacrCheckId'
     -> DescribeTrustedAdvisorCheckResult
-describeTrustedAdvisorCheckResult pCheckId_ =
-  DescribeTrustedAdvisorCheckResult'
-    {_dtacrLanguage = Nothing, _dtacrCheckId = pCheckId_}
-
+describeTrustedAdvisorCheckResult pCheckId_
+  = DescribeTrustedAdvisorCheckResult'{_dtacrLanguage =
+                                         Nothing,
+                                       _dtacrCheckId = pCheckId_}
 
 -- | The ISO 639-1 code for the language in which AWS provides support. AWS Support currently supports English ("en") and Japanese ("ja"). Language parameters must be passed explicitly for operations that take them.
 dtacrLanguage :: Lens' DescribeTrustedAdvisorCheckResult (Maybe Text)
@@ -150,13 +151,16 @@ instance ToQuery DescribeTrustedAdvisorCheckResult
 --
 --
 -- /See:/ 'describeTrustedAdvisorCheckResultResponse' smart constructor.
-data DescribeTrustedAdvisorCheckResultResponse =
-  DescribeTrustedAdvisorCheckResultResponse'
-    { _dtacrrsResult         :: !(Maybe TrustedAdvisorCheckResult)
-    , _dtacrrsResponseStatus :: !Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data DescribeTrustedAdvisorCheckResultResponse = DescribeTrustedAdvisorCheckResultResponse'{_dtacrrsResult
+                                                                                            ::
+                                                                                            !(Maybe
+                                                                                                TrustedAdvisorCheckResult),
+                                                                                            _dtacrrsResponseStatus
+                                                                                            ::
+                                                                                            !Int}
+                                                   deriving (Eq, Read, Show,
+                                                             Data, Typeable,
+                                                             Generic)
 
 -- | Creates a value of 'DescribeTrustedAdvisorCheckResultResponse' with the minimum fields required to make a request.
 --
@@ -168,10 +172,12 @@ data DescribeTrustedAdvisorCheckResultResponse =
 describeTrustedAdvisorCheckResultResponse
     :: Int -- ^ 'dtacrrsResponseStatus'
     -> DescribeTrustedAdvisorCheckResultResponse
-describeTrustedAdvisorCheckResultResponse pResponseStatus_ =
-  DescribeTrustedAdvisorCheckResultResponse'
-    {_dtacrrsResult = Nothing, _dtacrrsResponseStatus = pResponseStatus_}
-
+describeTrustedAdvisorCheckResultResponse
+  pResponseStatus_
+  = DescribeTrustedAdvisorCheckResultResponse'{_dtacrrsResult
+                                                 = Nothing,
+                                               _dtacrrsResponseStatus =
+                                                 pResponseStatus_}
 
 -- | The detailed results of the Trusted Advisor check.
 dtacrrsResult :: Lens' DescribeTrustedAdvisorCheckResultResponse (Maybe TrustedAdvisorCheckResult)

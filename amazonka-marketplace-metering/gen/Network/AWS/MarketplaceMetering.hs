@@ -11,13 +11,13 @@
 -- Stability   : auto-generated
 -- Portability : non-portable (GHC extensions)
 --
--- __AWS Marketplace Metering Service__
+-- __AWS Marketplace Metering Service__ 
 --
 -- This reference provides descriptions of the low-level AWS Marketplace Metering Service API.
 --
 -- AWS Marketplace sellers can use this API to submit usage data for custom usage dimensions.
 --
--- __Submitting Metering Records__
+-- __Submitting Metering Records__ 
 --
 --     * /MeterUsage/ - Submits the metering record for a Marketplace product. MeterUsage is called from an EC2 instance.
 --
@@ -25,7 +25,7 @@
 --
 --
 --
--- __Accepting New Customers__
+-- __Accepting New Customers__ 
 --
 --     * /ResolveCustomer/ - Called by a SaaS application during the registration process. When a buyer visits your website during the registration process, the buyer submits a Registration Token through the browser. The Registration Token is resolved through this API to obtain a CustomerIdentifier and Product Code.
 --
@@ -75,13 +75,13 @@ module Network.AWS.MarketplaceMetering
     -- * Operations
     -- $operations
 
-    -- ** BatchMeterUsage
+    -- ** BatchMeterUsage 
     , module Network.AWS.MarketplaceMetering.BatchMeterUsage
 
-    -- ** ResolveCustomer
+    -- ** ResolveCustomer 
     , module Network.AWS.MarketplaceMetering.ResolveCustomer
 
-    -- ** MeterUsage
+    -- ** MeterUsage 
     , module Network.AWS.MarketplaceMetering.MeterUsage
 
     -- * Types

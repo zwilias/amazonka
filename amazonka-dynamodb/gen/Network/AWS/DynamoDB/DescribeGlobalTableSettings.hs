@@ -39,19 +39,16 @@ module Network.AWS.DynamoDB.DescribeGlobalTableSettings
     ) where
 
 import Network.AWS.DynamoDB.Types
-import Network.AWS.DynamoDB.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 
 -- | /See:/ 'describeGlobalTableSettings' smart constructor.
-newtype DescribeGlobalTableSettings =
-  DescribeGlobalTableSettings'
-    { _dgtsGlobalTableName :: Text
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+newtype DescribeGlobalTableSettings = DescribeGlobalTableSettings'{_dgtsGlobalTableName
+                                                                   :: Text}
+                                        deriving (Eq, Read, Show, Data,
+                                                  Typeable, Generic)
 
 -- | Creates a value of 'DescribeGlobalTableSettings' with the minimum fields required to make a request.
 --
@@ -61,9 +58,9 @@ newtype DescribeGlobalTableSettings =
 describeGlobalTableSettings
     :: Text -- ^ 'dgtsGlobalTableName'
     -> DescribeGlobalTableSettings
-describeGlobalTableSettings pGlobalTableName_ =
-  DescribeGlobalTableSettings' {_dgtsGlobalTableName = pGlobalTableName_}
-
+describeGlobalTableSettings pGlobalTableName_
+  = DescribeGlobalTableSettings'{_dgtsGlobalTableName =
+                                   pGlobalTableName_}
 
 -- | The name of the global table to describe.
 dgtsGlobalTableName :: Lens' DescribeGlobalTableSettings Text
@@ -108,14 +105,19 @@ instance ToQuery DescribeGlobalTableSettings where
         toQuery = const mempty
 
 -- | /See:/ 'describeGlobalTableSettingsResponse' smart constructor.
-data DescribeGlobalTableSettingsResponse =
-  DescribeGlobalTableSettingsResponse'
-    { _dgtsrsReplicaSettings :: !(Maybe [ReplicaSettingsDescription])
-    , _dgtsrsGlobalTableName :: !(Maybe Text)
-    , _dgtsrsResponseStatus  :: !Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data DescribeGlobalTableSettingsResponse = DescribeGlobalTableSettingsResponse'{_dgtsrsReplicaSettings
+                                                                                ::
+                                                                                !(Maybe
+                                                                                    [ReplicaSettingsDescription]),
+                                                                                _dgtsrsGlobalTableName
+                                                                                ::
+                                                                                !(Maybe
+                                                                                    Text),
+                                                                                _dgtsrsResponseStatus
+                                                                                ::
+                                                                                !Int}
+                                             deriving (Eq, Read, Show, Data,
+                                                       Typeable, Generic)
 
 -- | Creates a value of 'DescribeGlobalTableSettingsResponse' with the minimum fields required to make a request.
 --
@@ -129,13 +131,12 @@ data DescribeGlobalTableSettingsResponse =
 describeGlobalTableSettingsResponse
     :: Int -- ^ 'dgtsrsResponseStatus'
     -> DescribeGlobalTableSettingsResponse
-describeGlobalTableSettingsResponse pResponseStatus_ =
-  DescribeGlobalTableSettingsResponse'
-    { _dgtsrsReplicaSettings = Nothing
-    , _dgtsrsGlobalTableName = Nothing
-    , _dgtsrsResponseStatus = pResponseStatus_
-    }
-
+describeGlobalTableSettingsResponse pResponseStatus_
+  = DescribeGlobalTableSettingsResponse'{_dgtsrsReplicaSettings
+                                           = Nothing,
+                                         _dgtsrsGlobalTableName = Nothing,
+                                         _dgtsrsResponseStatus =
+                                           pResponseStatus_}
 
 -- | The Region-specific settings for the global table.
 dgtsrsReplicaSettings :: Lens' DescribeGlobalTableSettingsResponse [ReplicaSettingsDescription]

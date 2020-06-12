@@ -40,19 +40,19 @@ module Network.AWS.Lightsail.GetInstanceAccessDetails
 
 import Network.AWS.Lens
 import Network.AWS.Lightsail.Types
-import Network.AWS.Lightsail.Types.Product
 import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 
 -- | /See:/ 'getInstanceAccessDetails' smart constructor.
-data GetInstanceAccessDetails =
-  GetInstanceAccessDetails'
-    { _giadProtocol     :: !(Maybe InstanceAccessProtocol)
-    , _giadInstanceName :: !Text
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data GetInstanceAccessDetails = GetInstanceAccessDetails'{_giadProtocol
+                                                          ::
+                                                          !(Maybe
+                                                              InstanceAccessProtocol),
+                                                          _giadInstanceName ::
+                                                          !Text}
+                                  deriving (Eq, Read, Show, Data, Typeable,
+                                            Generic)
 
 -- | Creates a value of 'GetInstanceAccessDetails' with the minimum fields required to make a request.
 --
@@ -64,10 +64,9 @@ data GetInstanceAccessDetails =
 getInstanceAccessDetails
     :: Text -- ^ 'giadInstanceName'
     -> GetInstanceAccessDetails
-getInstanceAccessDetails pInstanceName_ =
-  GetInstanceAccessDetails'
-    {_giadProtocol = Nothing, _giadInstanceName = pInstanceName_}
-
+getInstanceAccessDetails pInstanceName_
+  = GetInstanceAccessDetails'{_giadProtocol = Nothing,
+                              _giadInstanceName = pInstanceName_}
 
 -- | The protocol to use to connect to your instance. Defaults to @ssh@ .
 giadProtocol :: Lens' GetInstanceAccessDetails (Maybe InstanceAccessProtocol)
@@ -115,13 +114,15 @@ instance ToQuery GetInstanceAccessDetails where
         toQuery = const mempty
 
 -- | /See:/ 'getInstanceAccessDetailsResponse' smart constructor.
-data GetInstanceAccessDetailsResponse =
-  GetInstanceAccessDetailsResponse'
-    { _giadrsAccessDetails  :: !(Maybe InstanceAccessDetails)
-    , _giadrsResponseStatus :: !Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data GetInstanceAccessDetailsResponse = GetInstanceAccessDetailsResponse'{_giadrsAccessDetails
+                                                                          ::
+                                                                          !(Maybe
+                                                                              InstanceAccessDetails),
+                                                                          _giadrsResponseStatus
+                                                                          ::
+                                                                          !Int}
+                                          deriving (Eq, Read, Show, Data,
+                                                    Typeable, Generic)
 
 -- | Creates a value of 'GetInstanceAccessDetailsResponse' with the minimum fields required to make a request.
 --
@@ -133,10 +134,10 @@ data GetInstanceAccessDetailsResponse =
 getInstanceAccessDetailsResponse
     :: Int -- ^ 'giadrsResponseStatus'
     -> GetInstanceAccessDetailsResponse
-getInstanceAccessDetailsResponse pResponseStatus_ =
-  GetInstanceAccessDetailsResponse'
-    {_giadrsAccessDetails = Nothing, _giadrsResponseStatus = pResponseStatus_}
-
+getInstanceAccessDetailsResponse pResponseStatus_
+  = GetInstanceAccessDetailsResponse'{_giadrsAccessDetails
+                                        = Nothing,
+                                      _giadrsResponseStatus = pResponseStatus_}
 
 -- | An array of key-value pairs containing information about a get instance access request.
 giadrsAccessDetails :: Lens' GetInstanceAccessDetailsResponse (Maybe InstanceAccessDetails)

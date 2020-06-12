@@ -40,13 +40,13 @@ module Network.AWS.APIGatewayManagementAPI
     -- * Operations
     -- $operations
 
-    -- ** DeleteConnection
+    -- ** DeleteConnection 
     , module Network.AWS.APIGatewayManagementAPI.DeleteConnection
 
-    -- ** GetConnection
+    -- ** GetConnection 
     , module Network.AWS.APIGatewayManagementAPI.GetConnection
 
-    -- ** PostToConnection
+    -- ** PostToConnection 
     , module Network.AWS.APIGatewayManagementAPI.PostToConnection
 
     -- * Types

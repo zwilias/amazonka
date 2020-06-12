@@ -46,23 +46,21 @@ module Network.AWS.EC2.ProvisionByoipCidr
     ) where
 
 import Network.AWS.EC2.Types
-import Network.AWS.EC2.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 
 -- | /See:/ 'provisionByoipCidr' smart constructor.
-data ProvisionByoipCidr =
-  ProvisionByoipCidr'
-    { _pbcCidrAuthorizationContext :: !(Maybe CidrAuthorizationContext)
-    , _pbcPubliclyAdvertisable     :: !(Maybe Bool)
-    , _pbcDescription              :: !(Maybe Text)
-    , _pbcDryRun                   :: !(Maybe Bool)
-    , _pbcCidr                     :: !Text
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data ProvisionByoipCidr = ProvisionByoipCidr'{_pbcCidrAuthorizationContext
+                                              ::
+                                              !(Maybe CidrAuthorizationContext),
+                                              _pbcPubliclyAdvertisable ::
+                                              !(Maybe Bool),
+                                              _pbcDescription :: !(Maybe Text),
+                                              _pbcDryRun :: !(Maybe Bool),
+                                              _pbcCidr :: !Text}
+                            deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'ProvisionByoipCidr' with the minimum fields required to make a request.
 --
@@ -80,15 +78,12 @@ data ProvisionByoipCidr =
 provisionByoipCidr
     :: Text -- ^ 'pbcCidr'
     -> ProvisionByoipCidr
-provisionByoipCidr pCidr_ =
-  ProvisionByoipCidr'
-    { _pbcCidrAuthorizationContext = Nothing
-    , _pbcPubliclyAdvertisable = Nothing
-    , _pbcDescription = Nothing
-    , _pbcDryRun = Nothing
-    , _pbcCidr = pCidr_
-    }
-
+provisionByoipCidr pCidr_
+  = ProvisionByoipCidr'{_pbcCidrAuthorizationContext =
+                          Nothing,
+                        _pbcPubliclyAdvertisable = Nothing,
+                        _pbcDescription = Nothing, _pbcDryRun = Nothing,
+                        _pbcCidr = pCidr_}
 
 -- | A signed document that proves that you are authorized to bring the specified IP address range to Amazon using BYOIP.
 pbcCidrAuthorizationContext :: Lens' ProvisionByoipCidr (Maybe CidrAuthorizationContext)
@@ -142,13 +137,14 @@ instance ToQuery ProvisionByoipCidr where
                "DryRun" =: _pbcDryRun, "Cidr" =: _pbcCidr]
 
 -- | /See:/ 'provisionByoipCidrResponse' smart constructor.
-data ProvisionByoipCidrResponse =
-  ProvisionByoipCidrResponse'
-    { _pbcrsByoipCidr      :: !(Maybe ByoipCidr)
-    , _pbcrsResponseStatus :: !Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data ProvisionByoipCidrResponse = ProvisionByoipCidrResponse'{_pbcrsByoipCidr
+                                                              ::
+                                                              !(Maybe
+                                                                  ByoipCidr),
+                                                              _pbcrsResponseStatus
+                                                              :: !Int}
+                                    deriving (Eq, Read, Show, Data, Typeable,
+                                              Generic)
 
 -- | Creates a value of 'ProvisionByoipCidrResponse' with the minimum fields required to make a request.
 --
@@ -160,10 +156,10 @@ data ProvisionByoipCidrResponse =
 provisionByoipCidrResponse
     :: Int -- ^ 'pbcrsResponseStatus'
     -> ProvisionByoipCidrResponse
-provisionByoipCidrResponse pResponseStatus_ =
-  ProvisionByoipCidrResponse'
-    {_pbcrsByoipCidr = Nothing, _pbcrsResponseStatus = pResponseStatus_}
-
+provisionByoipCidrResponse pResponseStatus_
+  = ProvisionByoipCidrResponse'{_pbcrsByoipCidr =
+                                  Nothing,
+                                _pbcrsResponseStatus = pResponseStatus_}
 
 -- | Information about the address range.
 pbcrsByoipCidr :: Lens' ProvisionByoipCidrResponse (Maybe ByoipCidr)

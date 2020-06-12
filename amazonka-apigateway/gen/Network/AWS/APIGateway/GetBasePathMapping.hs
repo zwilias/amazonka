@@ -40,7 +40,6 @@ module Network.AWS.APIGateway.GetBasePathMapping
     ) where
 
 import Network.AWS.APIGateway.Types
-import Network.AWS.APIGateway.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.Request
@@ -51,13 +50,10 @@ import Network.AWS.Response
 --
 --
 -- /See:/ 'getBasePathMapping' smart constructor.
-data GetBasePathMapping =
-  GetBasePathMapping'
-    { _gbpmDomainName :: !Text
-    , _gbpmBasePath   :: !Text
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data GetBasePathMapping = GetBasePathMapping'{_gbpmDomainName
+                                              :: !Text,
+                                              _gbpmBasePath :: !Text}
+                            deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'GetBasePathMapping' with the minimum fields required to make a request.
 --
@@ -70,10 +66,9 @@ getBasePathMapping
     :: Text -- ^ 'gbpmDomainName'
     -> Text -- ^ 'gbpmBasePath'
     -> GetBasePathMapping
-getBasePathMapping pDomainName_ pBasePath_ =
-  GetBasePathMapping'
-    {_gbpmDomainName = pDomainName_, _gbpmBasePath = pBasePath_}
-
+getBasePathMapping pDomainName_ pBasePath_
+  = GetBasePathMapping'{_gbpmDomainName = pDomainName_,
+                        _gbpmBasePath = pBasePath_}
 
 -- | [Required] The domain name of the 'BasePathMapping' resource to be described.
 gbpmDomainName :: Lens' GetBasePathMapping Text

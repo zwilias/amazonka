@@ -43,19 +43,16 @@ module Network.AWS.Firehose.DeleteDeliveryStream
     ) where
 
 import Network.AWS.Firehose.Types
-import Network.AWS.Firehose.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 
 -- | /See:/ 'deleteDeliveryStream' smart constructor.
-newtype DeleteDeliveryStream =
-  DeleteDeliveryStream'
-    { _dDeliveryStreamName :: Text
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+newtype DeleteDeliveryStream = DeleteDeliveryStream'{_dDeliveryStreamName
+                                                     :: Text}
+                                 deriving (Eq, Read, Show, Data, Typeable,
+                                           Generic)
 
 -- | Creates a value of 'DeleteDeliveryStream' with the minimum fields required to make a request.
 --
@@ -65,9 +62,9 @@ newtype DeleteDeliveryStream =
 deleteDeliveryStream
     :: Text -- ^ 'dDeliveryStreamName'
     -> DeleteDeliveryStream
-deleteDeliveryStream pDeliveryStreamName_ =
-  DeleteDeliveryStream' {_dDeliveryStreamName = pDeliveryStreamName_}
-
+deleteDeliveryStream pDeliveryStreamName_
+  = DeleteDeliveryStream'{_dDeliveryStreamName =
+                            pDeliveryStreamName_}
 
 -- | The name of the delivery stream.
 dDeliveryStreamName :: Lens' DeleteDeliveryStream Text
@@ -111,12 +108,10 @@ instance ToQuery DeleteDeliveryStream where
         toQuery = const mempty
 
 -- | /See:/ 'deleteDeliveryStreamResponse' smart constructor.
-newtype DeleteDeliveryStreamResponse =
-  DeleteDeliveryStreamResponse'
-    { _drsResponseStatus :: Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+newtype DeleteDeliveryStreamResponse = DeleteDeliveryStreamResponse'{_drsResponseStatus
+                                                                     :: Int}
+                                         deriving (Eq, Read, Show, Data,
+                                                   Typeable, Generic)
 
 -- | Creates a value of 'DeleteDeliveryStreamResponse' with the minimum fields required to make a request.
 --
@@ -126,9 +121,9 @@ newtype DeleteDeliveryStreamResponse =
 deleteDeliveryStreamResponse
     :: Int -- ^ 'drsResponseStatus'
     -> DeleteDeliveryStreamResponse
-deleteDeliveryStreamResponse pResponseStatus_ =
-  DeleteDeliveryStreamResponse' {_drsResponseStatus = pResponseStatus_}
-
+deleteDeliveryStreamResponse pResponseStatus_
+  = DeleteDeliveryStreamResponse'{_drsResponseStatus =
+                                    pResponseStatus_}
 
 -- | -- | The response status code.
 drsResponseStatus :: Lens' DeleteDeliveryStreamResponse Int

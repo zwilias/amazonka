@@ -41,20 +41,16 @@ module Network.AWS.IoT.CancelJob
     ) where
 
 import Network.AWS.IoT.Types
-import Network.AWS.IoT.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 
 -- | /See:/ 'cancelJob' smart constructor.
-data CancelJob =
-  CancelJob'
-    { _cComment :: !(Maybe Text)
-    , _cJobId   :: !Text
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data CancelJob = CancelJob'{_cComment ::
+                            !(Maybe Text),
+                            _cJobId :: !Text}
+                   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'CancelJob' with the minimum fields required to make a request.
 --
@@ -66,8 +62,8 @@ data CancelJob =
 cancelJob
     :: Text -- ^ 'cJobId'
     -> CancelJob
-cancelJob pJobId_ = CancelJob' {_cComment = Nothing, _cJobId = pJobId_}
-
+cancelJob pJobId_
+  = CancelJob'{_cComment = Nothing, _cJobId = pJobId_}
 
 -- | An optional comment string describing why the job was canceled.
 cComment :: Lens' CancelJob (Maybe Text)
@@ -107,15 +103,12 @@ instance ToQuery CancelJob where
         toQuery = const mempty
 
 -- | /See:/ 'cancelJobResponse' smart constructor.
-data CancelJobResponse =
-  CancelJobResponse'
-    { _crsJobId          :: !(Maybe Text)
-    , _crsJobARN         :: !(Maybe Text)
-    , _crsDescription    :: !(Maybe Text)
-    , _crsResponseStatus :: !Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data CancelJobResponse = CancelJobResponse'{_crsJobId
+                                            :: !(Maybe Text),
+                                            _crsJobARN :: !(Maybe Text),
+                                            _crsDescription :: !(Maybe Text),
+                                            _crsResponseStatus :: !Int}
+                           deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'CancelJobResponse' with the minimum fields required to make a request.
 --
@@ -131,14 +124,10 @@ data CancelJobResponse =
 cancelJobResponse
     :: Int -- ^ 'crsResponseStatus'
     -> CancelJobResponse
-cancelJobResponse pResponseStatus_ =
-  CancelJobResponse'
-    { _crsJobId = Nothing
-    , _crsJobARN = Nothing
-    , _crsDescription = Nothing
-    , _crsResponseStatus = pResponseStatus_
-    }
-
+cancelJobResponse pResponseStatus_
+  = CancelJobResponse'{_crsJobId = Nothing,
+                       _crsJobARN = Nothing, _crsDescription = Nothing,
+                       _crsResponseStatus = pResponseStatus_}
 
 -- | The unique identifier you assigned to this job when it was created.
 crsJobId :: Lens' CancelJobResponse (Maybe Text)

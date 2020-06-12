@@ -44,7 +44,6 @@ module Network.AWS.AppSync.ListResolversByFunction
     ) where
 
 import Network.AWS.AppSync.Types
-import Network.AWS.AppSync.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Pager
 import Network.AWS.Prelude
@@ -52,15 +51,15 @@ import Network.AWS.Request
 import Network.AWS.Response
 
 -- | /See:/ 'listResolversByFunction' smart constructor.
-data ListResolversByFunction =
-  ListResolversByFunction'
-    { _lrbfNextToken  :: !(Maybe Text)
-    , _lrbfMaxResults :: !(Maybe Nat)
-    , _lrbfApiId      :: !Text
-    , _lrbfFunctionId :: !Text
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data ListResolversByFunction = ListResolversByFunction'{_lrbfNextToken
+                                                        :: !(Maybe Text),
+                                                        _lrbfMaxResults ::
+                                                        !(Maybe Nat),
+                                                        _lrbfApiId :: !Text,
+                                                        _lrbfFunctionId ::
+                                                        !Text}
+                                 deriving (Eq, Read, Show, Data, Typeable,
+                                           Generic)
 
 -- | Creates a value of 'ListResolversByFunction' with the minimum fields required to make a request.
 --
@@ -77,14 +76,10 @@ listResolversByFunction
     :: Text -- ^ 'lrbfApiId'
     -> Text -- ^ 'lrbfFunctionId'
     -> ListResolversByFunction
-listResolversByFunction pApiId_ pFunctionId_ =
-  ListResolversByFunction'
-    { _lrbfNextToken = Nothing
-    , _lrbfMaxResults = Nothing
-    , _lrbfApiId = pApiId_
-    , _lrbfFunctionId = pFunctionId_
-    }
-
+listResolversByFunction pApiId_ pFunctionId_
+  = ListResolversByFunction'{_lrbfNextToken = Nothing,
+                             _lrbfMaxResults = Nothing, _lrbfApiId = pApiId_,
+                             _lrbfFunctionId = pFunctionId_}
 
 -- | An identifier that was returned from the previous call to this operation, which you can use to return the next set of items in the list.
 lrbfNextToken :: Lens' ListResolversByFunction (Maybe Text)
@@ -145,14 +140,18 @@ instance ToQuery ListResolversByFunction where
                "maxResults" =: _lrbfMaxResults]
 
 -- | /See:/ 'listResolversByFunctionResponse' smart constructor.
-data ListResolversByFunctionResponse =
-  ListResolversByFunctionResponse'
-    { _lrbfrsNextToken      :: !(Maybe Text)
-    , _lrbfrsResolvers      :: !(Maybe [Resolver])
-    , _lrbfrsResponseStatus :: !Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data ListResolversByFunctionResponse = ListResolversByFunctionResponse'{_lrbfrsNextToken
+                                                                        ::
+                                                                        !(Maybe
+                                                                            Text),
+                                                                        _lrbfrsResolvers
+                                                                        ::
+                                                                        !(Maybe
+                                                                            [Resolver]),
+                                                                        _lrbfrsResponseStatus
+                                                                        :: !Int}
+                                         deriving (Eq, Read, Show, Data,
+                                                   Typeable, Generic)
 
 -- | Creates a value of 'ListResolversByFunctionResponse' with the minimum fields required to make a request.
 --
@@ -166,13 +165,11 @@ data ListResolversByFunctionResponse =
 listResolversByFunctionResponse
     :: Int -- ^ 'lrbfrsResponseStatus'
     -> ListResolversByFunctionResponse
-listResolversByFunctionResponse pResponseStatus_ =
-  ListResolversByFunctionResponse'
-    { _lrbfrsNextToken = Nothing
-    , _lrbfrsResolvers = Nothing
-    , _lrbfrsResponseStatus = pResponseStatus_
-    }
-
+listResolversByFunctionResponse pResponseStatus_
+  = ListResolversByFunctionResponse'{_lrbfrsNextToken =
+                                       Nothing,
+                                     _lrbfrsResolvers = Nothing,
+                                     _lrbfrsResponseStatus = pResponseStatus_}
 
 -- | An identifier that can be used to return the next set of items in the list.
 lrbfrsNextToken :: Lens' ListResolversByFunctionResponse (Maybe Text)

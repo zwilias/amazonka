@@ -42,22 +42,24 @@ module Network.AWS.DeviceFarm.ListTestGridSessionArtifacts
     ) where
 
 import Network.AWS.DeviceFarm.Types
-import Network.AWS.DeviceFarm.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 
 -- | /See:/ 'listTestGridSessionArtifacts' smart constructor.
-data ListTestGridSessionArtifacts =
-  ListTestGridSessionArtifacts'
-    { _lMaxResult  :: !(Maybe Nat)
-    , _lNextToken  :: !(Maybe Text)
-    , _lType       :: !(Maybe TestGridSessionArtifactCategory)
-    , _lSessionARN :: !Text
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data ListTestGridSessionArtifacts = ListTestGridSessionArtifacts'{_lMaxResult
+                                                                  ::
+                                                                  !(Maybe Nat),
+                                                                  _lNextToken ::
+                                                                  !(Maybe Text),
+                                                                  _lType ::
+                                                                  !(Maybe
+                                                                      TestGridSessionArtifactCategory),
+                                                                  _lSessionARN
+                                                                  :: !Text}
+                                      deriving (Eq, Read, Show, Data, Typeable,
+                                                Generic)
 
 -- | Creates a value of 'ListTestGridSessionArtifacts' with the minimum fields required to make a request.
 --
@@ -69,18 +71,15 @@ data ListTestGridSessionArtifacts =
 --
 -- * 'lType' - Limit results to a specified type of artifact.
 --
--- * 'lSessionARN' - The ARN of a 'TestGridSession' .
+-- * 'lSessionARN' - The ARN of a 'TestGridSession' . 
 listTestGridSessionArtifacts
     :: Text -- ^ 'lSessionARN'
     -> ListTestGridSessionArtifacts
-listTestGridSessionArtifacts pSessionARN_ =
-  ListTestGridSessionArtifacts'
-    { _lMaxResult = Nothing
-    , _lNextToken = Nothing
-    , _lType = Nothing
-    , _lSessionARN = pSessionARN_
-    }
-
+listTestGridSessionArtifacts pSessionARN_
+  = ListTestGridSessionArtifacts'{_lMaxResult =
+                                    Nothing,
+                                  _lNextToken = Nothing, _lType = Nothing,
+                                  _lSessionARN = pSessionARN_}
 
 -- | The maximum number of results to be returned by a request.
 lMaxResult :: Lens' ListTestGridSessionArtifacts (Maybe Natural)
@@ -94,7 +93,7 @@ lNextToken = lens _lNextToken (\ s a -> s{_lNextToken = a})
 lType :: Lens' ListTestGridSessionArtifacts (Maybe TestGridSessionArtifactCategory)
 lType = lens _lType (\ s a -> s{_lType = a})
 
--- | The ARN of a 'TestGridSession' .
+-- | The ARN of a 'TestGridSession' . 
 lSessionARN :: Lens' ListTestGridSessionArtifacts Text
 lSessionARN = lens _lSessionARN (\ s a -> s{_lSessionARN = a})
 
@@ -141,14 +140,19 @@ instance ToQuery ListTestGridSessionArtifacts where
         toQuery = const mempty
 
 -- | /See:/ 'listTestGridSessionArtifactsResponse' smart constructor.
-data ListTestGridSessionArtifactsResponse =
-  ListTestGridSessionArtifactsResponse'
-    { _lrsArtifacts      :: !(Maybe [TestGridSessionArtifact])
-    , _lrsNextToken      :: !(Maybe Text)
-    , _lrsResponseStatus :: !Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data ListTestGridSessionArtifactsResponse = ListTestGridSessionArtifactsResponse'{_lrsArtifacts
+                                                                                  ::
+                                                                                  !(Maybe
+                                                                                      [TestGridSessionArtifact]),
+                                                                                  _lrsNextToken
+                                                                                  ::
+                                                                                  !(Maybe
+                                                                                      Text),
+                                                                                  _lrsResponseStatus
+                                                                                  ::
+                                                                                  !Int}
+                                              deriving (Eq, Read, Show, Data,
+                                                        Typeable, Generic)
 
 -- | Creates a value of 'ListTestGridSessionArtifactsResponse' with the minimum fields required to make a request.
 --
@@ -162,13 +166,11 @@ data ListTestGridSessionArtifactsResponse =
 listTestGridSessionArtifactsResponse
     :: Int -- ^ 'lrsResponseStatus'
     -> ListTestGridSessionArtifactsResponse
-listTestGridSessionArtifactsResponse pResponseStatus_ =
-  ListTestGridSessionArtifactsResponse'
-    { _lrsArtifacts = Nothing
-    , _lrsNextToken = Nothing
-    , _lrsResponseStatus = pResponseStatus_
-    }
-
+listTestGridSessionArtifactsResponse pResponseStatus_
+  = ListTestGridSessionArtifactsResponse'{_lrsArtifacts
+                                            = Nothing,
+                                          _lrsNextToken = Nothing,
+                                          _lrsResponseStatus = pResponseStatus_}
 
 -- | A list of test grid session artifacts for a 'TestGridSession' .
 lrsArtifacts :: Lens' ListTestGridSessionArtifactsResponse [TestGridSessionArtifact]

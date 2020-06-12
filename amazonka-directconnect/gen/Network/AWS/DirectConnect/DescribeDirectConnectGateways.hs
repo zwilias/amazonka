@@ -43,7 +43,6 @@ module Network.AWS.DirectConnect.DescribeDirectConnectGateways
     ) where
 
 import Network.AWS.DirectConnect.Types
-import Network.AWS.DirectConnect.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Pager
 import Network.AWS.Prelude
@@ -51,14 +50,20 @@ import Network.AWS.Request
 import Network.AWS.Response
 
 -- | /See:/ 'describeDirectConnectGateways' smart constructor.
-data DescribeDirectConnectGateways =
-  DescribeDirectConnectGateways'
-    { _ddcgDirectConnectGatewayId :: !(Maybe Text)
-    , _ddcgNextToken              :: !(Maybe Text)
-    , _ddcgMaxResults             :: !(Maybe Int)
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data DescribeDirectConnectGateways = DescribeDirectConnectGateways'{_ddcgDirectConnectGatewayId
+                                                                    ::
+                                                                    !(Maybe
+                                                                        Text),
+                                                                    _ddcgNextToken
+                                                                    ::
+                                                                    !(Maybe
+                                                                        Text),
+                                                                    _ddcgMaxResults
+                                                                    ::
+                                                                    !(Maybe
+                                                                        Int)}
+                                       deriving (Eq, Read, Show, Data, Typeable,
+                                                 Generic)
 
 -- | Creates a value of 'DescribeDirectConnectGateways' with the minimum fields required to make a request.
 --
@@ -71,13 +76,11 @@ data DescribeDirectConnectGateways =
 -- * 'ddcgMaxResults' - The maximum number of results to return with a single call. To retrieve the remaining results, make another call with the returned @nextToken@ value. If @MaxResults@ is given a value larger than 100, only 100 results are returned.
 describeDirectConnectGateways
     :: DescribeDirectConnectGateways
-describeDirectConnectGateways =
-  DescribeDirectConnectGateways'
-    { _ddcgDirectConnectGatewayId = Nothing
-    , _ddcgNextToken = Nothing
-    , _ddcgMaxResults = Nothing
-    }
-
+describeDirectConnectGateways
+  = DescribeDirectConnectGateways'{_ddcgDirectConnectGatewayId
+                                     = Nothing,
+                                   _ddcgNextToken = Nothing,
+                                   _ddcgMaxResults = Nothing}
 
 -- | The ID of the Direct Connect gateway.
 ddcgDirectConnectGatewayId :: Lens' DescribeDirectConnectGateways (Maybe Text)
@@ -142,14 +145,19 @@ instance ToQuery DescribeDirectConnectGateways where
         toQuery = const mempty
 
 -- | /See:/ 'describeDirectConnectGatewaysResponse' smart constructor.
-data DescribeDirectConnectGatewaysResponse =
-  DescribeDirectConnectGatewaysResponse'
-    { _ddcgrsDirectConnectGateways :: !(Maybe [DirectConnectGateway])
-    , _ddcgrsNextToken             :: !(Maybe Text)
-    , _ddcgrsResponseStatus        :: !Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data DescribeDirectConnectGatewaysResponse = DescribeDirectConnectGatewaysResponse'{_ddcgrsDirectConnectGateways
+                                                                                    ::
+                                                                                    !(Maybe
+                                                                                        [DirectConnectGateway]),
+                                                                                    _ddcgrsNextToken
+                                                                                    ::
+                                                                                    !(Maybe
+                                                                                        Text),
+                                                                                    _ddcgrsResponseStatus
+                                                                                    ::
+                                                                                    !Int}
+                                               deriving (Eq, Read, Show, Data,
+                                                         Typeable, Generic)
 
 -- | Creates a value of 'DescribeDirectConnectGatewaysResponse' with the minimum fields required to make a request.
 --
@@ -163,13 +171,13 @@ data DescribeDirectConnectGatewaysResponse =
 describeDirectConnectGatewaysResponse
     :: Int -- ^ 'ddcgrsResponseStatus'
     -> DescribeDirectConnectGatewaysResponse
-describeDirectConnectGatewaysResponse pResponseStatus_ =
-  DescribeDirectConnectGatewaysResponse'
-    { _ddcgrsDirectConnectGateways = Nothing
-    , _ddcgrsNextToken = Nothing
-    , _ddcgrsResponseStatus = pResponseStatus_
-    }
-
+describeDirectConnectGatewaysResponse
+  pResponseStatus_
+  = DescribeDirectConnectGatewaysResponse'{_ddcgrsDirectConnectGateways
+                                             = Nothing,
+                                           _ddcgrsNextToken = Nothing,
+                                           _ddcgrsResponseStatus =
+                                             pResponseStatus_}
 
 -- | The Direct Connect gateways.
 ddcgrsDirectConnectGateways :: Lens' DescribeDirectConnectGatewaysResponse [DirectConnectGateway]

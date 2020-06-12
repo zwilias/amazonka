@@ -43,17 +43,13 @@ import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 import Network.AWS.ServiceCatalog.Types
-import Network.AWS.ServiceCatalog.Types.Product
 
 -- | /See:/ 'deletePortfolioShare' smart constructor.
-data DeletePortfolioShare =
-  DeletePortfolioShare'
-    { _dpsAcceptLanguage :: !(Maybe Text)
-    , _dpsPortfolioId    :: !Text
-    , _dpsAccountId      :: !Text
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data DeletePortfolioShare = DeletePortfolioShare'{_dpsAcceptLanguage
+                                                  :: !(Maybe Text),
+                                                  _dpsPortfolioId :: !Text,
+                                                  _dpsAccountId :: !Text}
+                              deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'DeletePortfolioShare' with the minimum fields required to make a request.
 --
@@ -68,13 +64,10 @@ deletePortfolioShare
     :: Text -- ^ 'dpsPortfolioId'
     -> Text -- ^ 'dpsAccountId'
     -> DeletePortfolioShare
-deletePortfolioShare pPortfolioId_ pAccountId_ =
-  DeletePortfolioShare'
-    { _dpsAcceptLanguage = Nothing
-    , _dpsPortfolioId = pPortfolioId_
-    , _dpsAccountId = pAccountId_
-    }
-
+deletePortfolioShare pPortfolioId_ pAccountId_
+  = DeletePortfolioShare'{_dpsAcceptLanguage = Nothing,
+                          _dpsPortfolioId = pPortfolioId_,
+                          _dpsAccountId = pAccountId_}
 
 -- | The language code.     * @en@ - English (default)     * @jp@ - Japanese     * @zh@ - Chinese
 dpsAcceptLanguage :: Lens' DeletePortfolioShare (Maybe Text)
@@ -127,12 +120,10 @@ instance ToQuery DeletePortfolioShare where
         toQuery = const mempty
 
 -- | /See:/ 'deletePortfolioShareResponse' smart constructor.
-newtype DeletePortfolioShareResponse =
-  DeletePortfolioShareResponse'
-    { _dpsrsResponseStatus :: Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+newtype DeletePortfolioShareResponse = DeletePortfolioShareResponse'{_dpsrsResponseStatus
+                                                                     :: Int}
+                                         deriving (Eq, Read, Show, Data,
+                                                   Typeable, Generic)
 
 -- | Creates a value of 'DeletePortfolioShareResponse' with the minimum fields required to make a request.
 --
@@ -142,9 +133,9 @@ newtype DeletePortfolioShareResponse =
 deletePortfolioShareResponse
     :: Int -- ^ 'dpsrsResponseStatus'
     -> DeletePortfolioShareResponse
-deletePortfolioShareResponse pResponseStatus_ =
-  DeletePortfolioShareResponse' {_dpsrsResponseStatus = pResponseStatus_}
-
+deletePortfolioShareResponse pResponseStatus_
+  = DeletePortfolioShareResponse'{_dpsrsResponseStatus
+                                    = pResponseStatus_}
 
 -- | -- | The response status code.
 dpsrsResponseStatus :: Lens' DeletePortfolioShareResponse Int

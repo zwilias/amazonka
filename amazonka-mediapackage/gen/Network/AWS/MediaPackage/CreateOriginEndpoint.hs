@@ -59,7 +59,6 @@ module Network.AWS.MediaPackage.CreateOriginEndpoint
 
 import Network.AWS.Lens
 import Network.AWS.MediaPackage.Types
-import Network.AWS.MediaPackage.Types.Product
 import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
@@ -67,22 +66,28 @@ import Network.AWS.Response
 -- | Configuration parameters used to create a new OriginEndpoint.
 --
 -- /See:/ 'createOriginEndpoint' smart constructor.
-data CreateOriginEndpoint =
-  CreateOriginEndpoint'
-    { _coeWhitelist              :: !(Maybe [Text])
-    , _coeHlsPackage             :: !(Maybe HlsPackage)
-    , _coeManifestName           :: !(Maybe Text)
-    , _coeStartoverWindowSeconds :: !(Maybe Int)
-    , _coeDashPackage            :: !(Maybe DashPackage)
-    , _coeMssPackage             :: !(Maybe MssPackage)
-    , _coeTimeDelaySeconds       :: !(Maybe Int)
-    , _coeCmafPackage            :: !(Maybe CmafPackageCreateOrUpdateParameters)
-    , _coeDescription            :: !(Maybe Text)
-    , _coeChannelId              :: !Text
-    , _coeId                     :: !Text
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data CreateOriginEndpoint = CreateOriginEndpoint'{_coeWhitelist
+                                                  :: !(Maybe [Text]),
+                                                  _coeHlsPackage ::
+                                                  !(Maybe HlsPackage),
+                                                  _coeManifestName ::
+                                                  !(Maybe Text),
+                                                  _coeStartoverWindowSeconds ::
+                                                  !(Maybe Int),
+                                                  _coeDashPackage ::
+                                                  !(Maybe DashPackage),
+                                                  _coeMssPackage ::
+                                                  !(Maybe MssPackage),
+                                                  _coeTimeDelaySeconds ::
+                                                  !(Maybe Int),
+                                                  _coeCmafPackage ::
+                                                  !(Maybe
+                                                      CmafPackageCreateOrUpdateParameters),
+                                                  _coeDescription ::
+                                                  !(Maybe Text),
+                                                  _coeChannelId :: !Text,
+                                                  _coeId :: !Text}
+                              deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'CreateOriginEndpoint' with the minimum fields required to make a request.
 --
@@ -113,21 +118,14 @@ createOriginEndpoint
     :: Text -- ^ 'coeChannelId'
     -> Text -- ^ 'coeId'
     -> CreateOriginEndpoint
-createOriginEndpoint pChannelId_ pId_ =
-  CreateOriginEndpoint'
-    { _coeWhitelist = Nothing
-    , _coeHlsPackage = Nothing
-    , _coeManifestName = Nothing
-    , _coeStartoverWindowSeconds = Nothing
-    , _coeDashPackage = Nothing
-    , _coeMssPackage = Nothing
-    , _coeTimeDelaySeconds = Nothing
-    , _coeCmafPackage = Nothing
-    , _coeDescription = Nothing
-    , _coeChannelId = pChannelId_
-    , _coeId = pId_
-    }
-
+createOriginEndpoint pChannelId_ pId_
+  = CreateOriginEndpoint'{_coeWhitelist = Nothing,
+                          _coeHlsPackage = Nothing, _coeManifestName = Nothing,
+                          _coeStartoverWindowSeconds = Nothing,
+                          _coeDashPackage = Nothing, _coeMssPackage = Nothing,
+                          _coeTimeDelaySeconds = Nothing,
+                          _coeCmafPackage = Nothing, _coeDescription = Nothing,
+                          _coeChannelId = pChannelId_, _coeId = pId_}
 
 -- | A list of source IP CIDR blocks that will be allowed to access the OriginEndpoint.
 coeWhitelist :: Lens' CreateOriginEndpoint [Text]
@@ -231,25 +229,51 @@ instance ToQuery CreateOriginEndpoint where
         toQuery = const mempty
 
 -- | /See:/ 'createOriginEndpointResponse' smart constructor.
-data CreateOriginEndpointResponse =
-  CreateOriginEndpointResponse'
-    { _coersWhitelist              :: !(Maybe [Text])
-    , _coersHlsPackage             :: !(Maybe HlsPackage)
-    , _coersARN                    :: !(Maybe Text)
-    , _coersManifestName           :: !(Maybe Text)
-    , _coersURL                    :: !(Maybe Text)
-    , _coersChannelId              :: !(Maybe Text)
-    , _coersStartoverWindowSeconds :: !(Maybe Int)
-    , _coersDashPackage            :: !(Maybe DashPackage)
-    , _coersMssPackage             :: !(Maybe MssPackage)
-    , _coersId                     :: !(Maybe Text)
-    , _coersTimeDelaySeconds       :: !(Maybe Int)
-    , _coersCmafPackage            :: !(Maybe CmafPackage)
-    , _coersDescription            :: !(Maybe Text)
-    , _coersResponseStatus         :: !Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data CreateOriginEndpointResponse = CreateOriginEndpointResponse'{_coersWhitelist
+                                                                  ::
+                                                                  !(Maybe
+                                                                      [Text]),
+                                                                  _coersHlsPackage
+                                                                  ::
+                                                                  !(Maybe
+                                                                      HlsPackage),
+                                                                  _coersARN ::
+                                                                  !(Maybe Text),
+                                                                  _coersManifestName
+                                                                  ::
+                                                                  !(Maybe Text),
+                                                                  _coersURL ::
+                                                                  !(Maybe Text),
+                                                                  _coersChannelId
+                                                                  ::
+                                                                  !(Maybe Text),
+                                                                  _coersStartoverWindowSeconds
+                                                                  ::
+                                                                  !(Maybe Int),
+                                                                  _coersDashPackage
+                                                                  ::
+                                                                  !(Maybe
+                                                                      DashPackage),
+                                                                  _coersMssPackage
+                                                                  ::
+                                                                  !(Maybe
+                                                                      MssPackage),
+                                                                  _coersId ::
+                                                                  !(Maybe Text),
+                                                                  _coersTimeDelaySeconds
+                                                                  ::
+                                                                  !(Maybe Int),
+                                                                  _coersCmafPackage
+                                                                  ::
+                                                                  !(Maybe
+                                                                      CmafPackage),
+                                                                  _coersDescription
+                                                                  ::
+                                                                  !(Maybe Text),
+                                                                  _coersResponseStatus
+                                                                  :: !Int}
+                                      deriving (Eq, Read, Show, Data, Typeable,
+                                                Generic)
 
 -- | Creates a value of 'CreateOriginEndpointResponse' with the minimum fields required to make a request.
 --
@@ -285,24 +309,22 @@ data CreateOriginEndpointResponse =
 createOriginEndpointResponse
     :: Int -- ^ 'coersResponseStatus'
     -> CreateOriginEndpointResponse
-createOriginEndpointResponse pResponseStatus_ =
-  CreateOriginEndpointResponse'
-    { _coersWhitelist = Nothing
-    , _coersHlsPackage = Nothing
-    , _coersARN = Nothing
-    , _coersManifestName = Nothing
-    , _coersURL = Nothing
-    , _coersChannelId = Nothing
-    , _coersStartoverWindowSeconds = Nothing
-    , _coersDashPackage = Nothing
-    , _coersMssPackage = Nothing
-    , _coersId = Nothing
-    , _coersTimeDelaySeconds = Nothing
-    , _coersCmafPackage = Nothing
-    , _coersDescription = Nothing
-    , _coersResponseStatus = pResponseStatus_
-    }
-
+createOriginEndpointResponse pResponseStatus_
+  = CreateOriginEndpointResponse'{_coersWhitelist =
+                                    Nothing,
+                                  _coersHlsPackage = Nothing,
+                                  _coersARN = Nothing,
+                                  _coersManifestName = Nothing,
+                                  _coersURL = Nothing,
+                                  _coersChannelId = Nothing,
+                                  _coersStartoverWindowSeconds = Nothing,
+                                  _coersDashPackage = Nothing,
+                                  _coersMssPackage = Nothing,
+                                  _coersId = Nothing,
+                                  _coersTimeDelaySeconds = Nothing,
+                                  _coersCmafPackage = Nothing,
+                                  _coersDescription = Nothing,
+                                  _coersResponseStatus = pResponseStatus_}
 
 -- | A list of source IP CIDR blocks that will be allowed to access the OriginEndpoint.
 coersWhitelist :: Lens' CreateOriginEndpointResponse [Text]

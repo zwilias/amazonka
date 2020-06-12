@@ -46,7 +46,6 @@ module Network.AWS.CloudHSMv2.DescribeBackups
     ) where
 
 import Network.AWS.CloudHSMv2.Types
-import Network.AWS.CloudHSMv2.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Pager
 import Network.AWS.Prelude
@@ -54,15 +53,13 @@ import Network.AWS.Request
 import Network.AWS.Response
 
 -- | /See:/ 'describeBackups' smart constructor.
-data DescribeBackups =
-  DescribeBackups'
-    { _dbSortAscending :: !(Maybe Bool)
-    , _dbFilters       :: !(Maybe (Map Text [Text]))
-    , _dbNextToken     :: !(Maybe Text)
-    , _dbMaxResults    :: !(Maybe Nat)
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data DescribeBackups = DescribeBackups'{_dbSortAscending
+                                        :: !(Maybe Bool),
+                                        _dbFilters ::
+                                        !(Maybe (Map Text [Text])),
+                                        _dbNextToken :: !(Maybe Text),
+                                        _dbMaxResults :: !(Maybe Nat)}
+                         deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'DescribeBackups' with the minimum fields required to make a request.
 --
@@ -77,14 +74,10 @@ data DescribeBackups =
 -- * 'dbMaxResults' - The maximum number of backups to return in the response. When there are more backups than the number you specify, the response contains a @NextToken@ value.
 describeBackups
     :: DescribeBackups
-describeBackups =
-  DescribeBackups'
-    { _dbSortAscending = Nothing
-    , _dbFilters = Nothing
-    , _dbNextToken = Nothing
-    , _dbMaxResults = Nothing
-    }
-
+describeBackups
+  = DescribeBackups'{_dbSortAscending = Nothing,
+                     _dbFilters = Nothing, _dbNextToken = Nothing,
+                     _dbMaxResults = Nothing}
 
 -- | Designates whether or not to sort the return backups by ascending chronological order of generation.
 dbSortAscending :: Lens' DescribeBackups (Maybe Bool)
@@ -148,14 +141,14 @@ instance ToQuery DescribeBackups where
         toQuery = const mempty
 
 -- | /See:/ 'describeBackupsResponse' smart constructor.
-data DescribeBackupsResponse =
-  DescribeBackupsResponse'
-    { _dbsrsBackups        :: !(Maybe [Backup])
-    , _dbsrsNextToken      :: !(Maybe Text)
-    , _dbsrsResponseStatus :: !Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data DescribeBackupsResponse = DescribeBackupsResponse'{_dbsrsBackups
+                                                        :: !(Maybe [Backup]),
+                                                        _dbsrsNextToken ::
+                                                        !(Maybe Text),
+                                                        _dbsrsResponseStatus ::
+                                                        !Int}
+                                 deriving (Eq, Read, Show, Data, Typeable,
+                                           Generic)
 
 -- | Creates a value of 'DescribeBackupsResponse' with the minimum fields required to make a request.
 --
@@ -169,13 +162,10 @@ data DescribeBackupsResponse =
 describeBackupsResponse
     :: Int -- ^ 'dbsrsResponseStatus'
     -> DescribeBackupsResponse
-describeBackupsResponse pResponseStatus_ =
-  DescribeBackupsResponse'
-    { _dbsrsBackups = Nothing
-    , _dbsrsNextToken = Nothing
-    , _dbsrsResponseStatus = pResponseStatus_
-    }
-
+describeBackupsResponse pResponseStatus_
+  = DescribeBackupsResponse'{_dbsrsBackups = Nothing,
+                             _dbsrsNextToken = Nothing,
+                             _dbsrsResponseStatus = pResponseStatus_}
 
 -- | A list of backups.
 dbsrsBackups :: Lens' DescribeBackupsResponse [Backup]

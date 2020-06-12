@@ -41,22 +41,22 @@ module Network.AWS.EC2.CreateLocalGatewayRoute
     ) where
 
 import Network.AWS.EC2.Types
-import Network.AWS.EC2.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 
 -- | /See:/ 'createLocalGatewayRoute' smart constructor.
-data CreateLocalGatewayRoute =
-  CreateLocalGatewayRoute'
-    { _clgrDryRun                              :: !(Maybe Bool)
-    , _clgrDestinationCidrBlock                :: !Text
-    , _clgrLocalGatewayRouteTableId            :: !Text
-    , _clgrLocalGatewayVirtualInterfaceGroupId :: !Text
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data CreateLocalGatewayRoute = CreateLocalGatewayRoute'{_clgrDryRun
+                                                        :: !(Maybe Bool),
+                                                        _clgrDestinationCidrBlock
+                                                        :: !Text,
+                                                        _clgrLocalGatewayRouteTableId
+                                                        :: !Text,
+                                                        _clgrLocalGatewayVirtualInterfaceGroupId
+                                                        :: !Text}
+                                 deriving (Eq, Read, Show, Data, Typeable,
+                                           Generic)
 
 -- | Creates a value of 'CreateLocalGatewayRoute' with the minimum fields required to make a request.
 --
@@ -74,15 +74,15 @@ createLocalGatewayRoute
     -> Text -- ^ 'clgrLocalGatewayRouteTableId'
     -> Text -- ^ 'clgrLocalGatewayVirtualInterfaceGroupId'
     -> CreateLocalGatewayRoute
-createLocalGatewayRoute pDestinationCidrBlock_ pLocalGatewayRouteTableId_ pLocalGatewayVirtualInterfaceGroupId_ =
-  CreateLocalGatewayRoute'
-    { _clgrDryRun = Nothing
-    , _clgrDestinationCidrBlock = pDestinationCidrBlock_
-    , _clgrLocalGatewayRouteTableId = pLocalGatewayRouteTableId_
-    , _clgrLocalGatewayVirtualInterfaceGroupId =
-        pLocalGatewayVirtualInterfaceGroupId_
-    }
-
+createLocalGatewayRoute pDestinationCidrBlock_
+  pLocalGatewayRouteTableId_
+  pLocalGatewayVirtualInterfaceGroupId_
+  = CreateLocalGatewayRoute'{_clgrDryRun = Nothing,
+                             _clgrDestinationCidrBlock = pDestinationCidrBlock_,
+                             _clgrLocalGatewayRouteTableId =
+                               pLocalGatewayRouteTableId_,
+                             _clgrLocalGatewayVirtualInterfaceGroupId =
+                               pLocalGatewayVirtualInterfaceGroupId_}
 
 -- | Checks whether you have the required permissions for the action, without actually making the request, and provides an error response. If you have the required permissions, the error response is @DryRunOperation@ . Otherwise, it is @UnauthorizedOperation@ .
 clgrDryRun :: Lens' CreateLocalGatewayRoute (Maybe Bool)
@@ -134,13 +134,14 @@ instance ToQuery CreateLocalGatewayRoute where
                  _clgrLocalGatewayVirtualInterfaceGroupId]
 
 -- | /See:/ 'createLocalGatewayRouteResponse' smart constructor.
-data CreateLocalGatewayRouteResponse =
-  CreateLocalGatewayRouteResponse'
-    { _clgrrsRoute          :: !(Maybe LocalGatewayRoute)
-    , _clgrrsResponseStatus :: !Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data CreateLocalGatewayRouteResponse = CreateLocalGatewayRouteResponse'{_clgrrsRoute
+                                                                        ::
+                                                                        !(Maybe
+                                                                            LocalGatewayRoute),
+                                                                        _clgrrsResponseStatus
+                                                                        :: !Int}
+                                         deriving (Eq, Read, Show, Data,
+                                                   Typeable, Generic)
 
 -- | Creates a value of 'CreateLocalGatewayRouteResponse' with the minimum fields required to make a request.
 --
@@ -152,10 +153,10 @@ data CreateLocalGatewayRouteResponse =
 createLocalGatewayRouteResponse
     :: Int -- ^ 'clgrrsResponseStatus'
     -> CreateLocalGatewayRouteResponse
-createLocalGatewayRouteResponse pResponseStatus_ =
-  CreateLocalGatewayRouteResponse'
-    {_clgrrsRoute = Nothing, _clgrrsResponseStatus = pResponseStatus_}
-
+createLocalGatewayRouteResponse pResponseStatus_
+  = CreateLocalGatewayRouteResponse'{_clgrrsRoute =
+                                       Nothing,
+                                     _clgrrsResponseStatus = pResponseStatus_}
 
 -- | Information about the route.
 clgrrsRoute :: Lens' CreateLocalGatewayRouteResponse (Maybe LocalGatewayRoute)

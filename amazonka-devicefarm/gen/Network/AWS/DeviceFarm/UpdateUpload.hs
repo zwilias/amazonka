@@ -41,22 +41,18 @@ module Network.AWS.DeviceFarm.UpdateUpload
     ) where
 
 import Network.AWS.DeviceFarm.Types
-import Network.AWS.DeviceFarm.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 
 -- | /See:/ 'updateUpload' smart constructor.
-data UpdateUpload =
-  UpdateUpload'
-    { _uuEditContent :: !(Maybe Bool)
-    , _uuName        :: !(Maybe Text)
-    , _uuContentType :: !(Maybe Text)
-    , _uuArn         :: !Text
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data UpdateUpload = UpdateUpload'{_uuEditContent ::
+                                  !(Maybe Bool),
+                                  _uuName :: !(Maybe Text),
+                                  _uuContentType :: !(Maybe Text),
+                                  _uuArn :: !Text}
+                      deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'UpdateUpload' with the minimum fields required to make a request.
 --
@@ -72,14 +68,10 @@ data UpdateUpload =
 updateUpload
     :: Text -- ^ 'uuArn'
     -> UpdateUpload
-updateUpload pArn_ =
-  UpdateUpload'
-    { _uuEditContent = Nothing
-    , _uuName = Nothing
-    , _uuContentType = Nothing
-    , _uuArn = pArn_
-    }
-
+updateUpload pArn_
+  = UpdateUpload'{_uuEditContent = Nothing,
+                  _uuName = Nothing, _uuContentType = Nothing,
+                  _uuArn = pArn_}
 
 -- | Set to true if the YAML file has changed and must be updated. Otherwise, set to false.
 uuEditContent :: Lens' UpdateUpload (Maybe Bool)
@@ -135,13 +127,10 @@ instance ToQuery UpdateUpload where
         toQuery = const mempty
 
 -- | /See:/ 'updateUploadResponse' smart constructor.
-data UpdateUploadResponse =
-  UpdateUploadResponse'
-    { _uursUpload         :: !(Maybe Upload)
-    , _uursResponseStatus :: !Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data UpdateUploadResponse = UpdateUploadResponse'{_uursUpload
+                                                  :: !(Maybe Upload),
+                                                  _uursResponseStatus :: !Int}
+                              deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'UpdateUploadResponse' with the minimum fields required to make a request.
 --
@@ -153,10 +142,9 @@ data UpdateUploadResponse =
 updateUploadResponse
     :: Int -- ^ 'uursResponseStatus'
     -> UpdateUploadResponse
-updateUploadResponse pResponseStatus_ =
-  UpdateUploadResponse'
-    {_uursUpload = Nothing, _uursResponseStatus = pResponseStatus_}
-
+updateUploadResponse pResponseStatus_
+  = UpdateUploadResponse'{_uursUpload = Nothing,
+                          _uursResponseStatus = pResponseStatus_}
 
 -- | A test spec uploaded to Device Farm.
 uursUpload :: Lens' UpdateUploadResponse (Maybe Upload)

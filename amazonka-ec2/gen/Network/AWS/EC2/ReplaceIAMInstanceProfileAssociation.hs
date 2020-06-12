@@ -41,20 +41,20 @@ module Network.AWS.EC2.ReplaceIAMInstanceProfileAssociation
     ) where
 
 import Network.AWS.EC2.Types
-import Network.AWS.EC2.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 
 -- | /See:/ 'replaceIAMInstanceProfileAssociation' smart constructor.
-data ReplaceIAMInstanceProfileAssociation =
-  ReplaceIAMInstanceProfileAssociation'
-    { _riapaIAMInstanceProfile :: !IAMInstanceProfileSpecification
-    , _riapaAssociationId      :: !Text
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data ReplaceIAMInstanceProfileAssociation = ReplaceIAMInstanceProfileAssociation'{_riapaIAMInstanceProfile
+                                                                                  ::
+                                                                                  !IAMInstanceProfileSpecification,
+                                                                                  _riapaAssociationId
+                                                                                  ::
+                                                                                  !Text}
+                                              deriving (Eq, Read, Show, Data,
+                                                        Typeable, Generic)
 
 -- | Creates a value of 'ReplaceIAMInstanceProfileAssociation' with the minimum fields required to make a request.
 --
@@ -67,12 +67,11 @@ replaceIAMInstanceProfileAssociation
     :: IAMInstanceProfileSpecification -- ^ 'riapaIAMInstanceProfile'
     -> Text -- ^ 'riapaAssociationId'
     -> ReplaceIAMInstanceProfileAssociation
-replaceIAMInstanceProfileAssociation pIAMInstanceProfile_ pAssociationId_ =
-  ReplaceIAMInstanceProfileAssociation'
-    { _riapaIAMInstanceProfile = pIAMInstanceProfile_
-    , _riapaAssociationId = pAssociationId_
-    }
-
+replaceIAMInstanceProfileAssociation
+  pIAMInstanceProfile_ pAssociationId_
+  = ReplaceIAMInstanceProfileAssociation'{_riapaIAMInstanceProfile
+                                            = pIAMInstanceProfile_,
+                                          _riapaAssociationId = pAssociationId_}
 
 -- | The IAM instance profile.
 riapaIAMInstanceProfile :: Lens' ReplaceIAMInstanceProfileAssociation IAMInstanceProfileSpecification
@@ -123,13 +122,16 @@ instance ToQuery ReplaceIAMInstanceProfileAssociation
                "AssociationId" =: _riapaAssociationId]
 
 -- | /See:/ 'replaceIAMInstanceProfileAssociationResponse' smart constructor.
-data ReplaceIAMInstanceProfileAssociationResponse =
-  ReplaceIAMInstanceProfileAssociationResponse'
-    { _riaparsIAMInstanceProfileAssociation :: !(Maybe IAMInstanceProfileAssociation)
-    , _riaparsResponseStatus :: !Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data ReplaceIAMInstanceProfileAssociationResponse = ReplaceIAMInstanceProfileAssociationResponse'{_riaparsIAMInstanceProfileAssociation
+                                                                                                  ::
+                                                                                                  !(Maybe
+                                                                                                      IAMInstanceProfileAssociation),
+                                                                                                  _riaparsResponseStatus
+                                                                                                  ::
+                                                                                                  !Int}
+                                                      deriving (Eq, Read, Show,
+                                                                Data, Typeable,
+                                                                Generic)
 
 -- | Creates a value of 'ReplaceIAMInstanceProfileAssociationResponse' with the minimum fields required to make a request.
 --
@@ -141,12 +143,12 @@ data ReplaceIAMInstanceProfileAssociationResponse =
 replaceIAMInstanceProfileAssociationResponse
     :: Int -- ^ 'riaparsResponseStatus'
     -> ReplaceIAMInstanceProfileAssociationResponse
-replaceIAMInstanceProfileAssociationResponse pResponseStatus_ =
-  ReplaceIAMInstanceProfileAssociationResponse'
-    { _riaparsIAMInstanceProfileAssociation = Nothing
-    , _riaparsResponseStatus = pResponseStatus_
-    }
-
+replaceIAMInstanceProfileAssociationResponse
+  pResponseStatus_
+  = ReplaceIAMInstanceProfileAssociationResponse'{_riaparsIAMInstanceProfileAssociation
+                                                    = Nothing,
+                                                  _riaparsResponseStatus =
+                                                    pResponseStatus_}
 
 -- | Information about the IAM instance profile association.
 riaparsIAMInstanceProfileAssociation :: Lens' ReplaceIAMInstanceProfileAssociationResponse (Maybe IAMInstanceProfileAssociation)

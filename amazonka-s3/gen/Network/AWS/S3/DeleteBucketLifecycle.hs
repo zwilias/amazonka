@@ -37,15 +37,12 @@ import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 import Network.AWS.S3.Types
-import Network.AWS.S3.Types.Product
 
 -- | /See:/ 'deleteBucketLifecycle' smart constructor.
-newtype DeleteBucketLifecycle =
-  DeleteBucketLifecycle'
-    { _dblBucket :: BucketName
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+newtype DeleteBucketLifecycle = DeleteBucketLifecycle'{_dblBucket
+                                                       :: BucketName}
+                                  deriving (Eq, Read, Show, Data, Typeable,
+                                            Generic)
 
 -- | Creates a value of 'DeleteBucketLifecycle' with the minimum fields required to make a request.
 --
@@ -55,8 +52,8 @@ newtype DeleteBucketLifecycle =
 deleteBucketLifecycle
     :: BucketName -- ^ 'dblBucket'
     -> DeleteBucketLifecycle
-deleteBucketLifecycle pBucket_ = DeleteBucketLifecycle' {_dblBucket = pBucket_}
-
+deleteBucketLifecycle pBucket_
+  = DeleteBucketLifecycle'{_dblBucket = pBucket_}
 
 -- | Undocumented member.
 dblBucket :: Lens' DeleteBucketLifecycle BucketName
@@ -83,16 +80,15 @@ instance ToQuery DeleteBucketLifecycle where
         toQuery = const (mconcat ["lifecycle"])
 
 -- | /See:/ 'deleteBucketLifecycleResponse' smart constructor.
-data DeleteBucketLifecycleResponse =
-  DeleteBucketLifecycleResponse'
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data DeleteBucketLifecycleResponse = DeleteBucketLifecycleResponse'
+                                       deriving (Eq, Read, Show, Data, Typeable,
+                                                 Generic)
 
 -- | Creates a value of 'DeleteBucketLifecycleResponse' with the minimum fields required to make a request.
 --
 deleteBucketLifecycleResponse
     :: DeleteBucketLifecycleResponse
-deleteBucketLifecycleResponse = DeleteBucketLifecycleResponse'
-
+deleteBucketLifecycleResponse
+  = DeleteBucketLifecycleResponse'
 
 instance NFData DeleteBucketLifecycleResponse where

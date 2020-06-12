@@ -43,7 +43,6 @@ module Network.AWS.DMS.DescribeCertificates
     ) where
 
 import Network.AWS.DMS.Types
-import Network.AWS.DMS.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Pager
 import Network.AWS.Prelude
@@ -51,14 +50,11 @@ import Network.AWS.Request
 import Network.AWS.Response
 
 -- | /See:/ 'describeCertificates' smart constructor.
-data DescribeCertificates =
-  DescribeCertificates'
-    { _dFilters    :: !(Maybe [Filter])
-    , _dMarker     :: !(Maybe Text)
-    , _dMaxRecords :: !(Maybe Int)
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data DescribeCertificates = DescribeCertificates'{_dFilters
+                                                  :: !(Maybe [Filter]),
+                                                  _dMarker :: !(Maybe Text),
+                                                  _dMaxRecords :: !(Maybe Int)}
+                              deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'DescribeCertificates' with the minimum fields required to make a request.
 --
@@ -66,21 +62,20 @@ data DescribeCertificates =
 --
 -- * 'dFilters' - Filters applied to the certificate described in the form of key-value pairs.
 --
--- * 'dMarker' - An optional pagination token provided by a previous request. If this parameter is specified, the response includes only records beyond the marker, up to the value specified by @MaxRecords@ .
+-- * 'dMarker' - An optional pagination token provided by a previous request. If this parameter is specified, the response includes only records beyond the marker, up to the value specified by @MaxRecords@ . 
 --
 -- * 'dMaxRecords' - The maximum number of records to include in the response. If more records exist than the specified @MaxRecords@ value, a pagination token called a marker is included in the response so that the remaining results can be retrieved.  Default: 10
 describeCertificates
     :: DescribeCertificates
-describeCertificates =
-  DescribeCertificates'
-    {_dFilters = Nothing, _dMarker = Nothing, _dMaxRecords = Nothing}
-
+describeCertificates
+  = DescribeCertificates'{_dFilters = Nothing,
+                          _dMarker = Nothing, _dMaxRecords = Nothing}
 
 -- | Filters applied to the certificate described in the form of key-value pairs.
 dFilters :: Lens' DescribeCertificates [Filter]
 dFilters = lens _dFilters (\ s a -> s{_dFilters = a}) . _Default . _Coerce
 
--- | An optional pagination token provided by a previous request. If this parameter is specified, the response includes only records beyond the marker, up to the value specified by @MaxRecords@ .
+-- | An optional pagination token provided by a previous request. If this parameter is specified, the response includes only records beyond the marker, up to the value specified by @MaxRecords@ . 
 dMarker :: Lens' DescribeCertificates (Maybe Text)
 dMarker = lens _dMarker (\ s a -> s{_dMarker = a})
 
@@ -135,14 +130,16 @@ instance ToQuery DescribeCertificates where
         toQuery = const mempty
 
 -- | /See:/ 'describeCertificatesResponse' smart constructor.
-data DescribeCertificatesResponse =
-  DescribeCertificatesResponse'
-    { _drsCertificates   :: !(Maybe [Certificate])
-    , _drsMarker         :: !(Maybe Text)
-    , _drsResponseStatus :: !Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data DescribeCertificatesResponse = DescribeCertificatesResponse'{_drsCertificates
+                                                                  ::
+                                                                  !(Maybe
+                                                                      [Certificate]),
+                                                                  _drsMarker ::
+                                                                  !(Maybe Text),
+                                                                  _drsResponseStatus
+                                                                  :: !Int}
+                                      deriving (Eq, Read, Show, Data, Typeable,
+                                                Generic)
 
 -- | Creates a value of 'DescribeCertificatesResponse' with the minimum fields required to make a request.
 --
@@ -156,13 +153,11 @@ data DescribeCertificatesResponse =
 describeCertificatesResponse
     :: Int -- ^ 'drsResponseStatus'
     -> DescribeCertificatesResponse
-describeCertificatesResponse pResponseStatus_ =
-  DescribeCertificatesResponse'
-    { _drsCertificates = Nothing
-    , _drsMarker = Nothing
-    , _drsResponseStatus = pResponseStatus_
-    }
-
+describeCertificatesResponse pResponseStatus_
+  = DescribeCertificatesResponse'{_drsCertificates =
+                                    Nothing,
+                                  _drsMarker = Nothing,
+                                  _drsResponseStatus = pResponseStatus_}
 
 -- | The Secure Sockets Layer (SSL) certificates associated with the replication instance.
 drsCertificates :: Lens' DescribeCertificatesResponse [Certificate]

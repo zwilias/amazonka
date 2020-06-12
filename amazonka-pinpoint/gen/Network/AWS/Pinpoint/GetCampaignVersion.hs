@@ -39,20 +39,16 @@ module Network.AWS.Pinpoint.GetCampaignVersion
 
 import Network.AWS.Lens
 import Network.AWS.Pinpoint.Types
-import Network.AWS.Pinpoint.Types.Product
 import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 
 -- | /See:/ 'getCampaignVersion' smart constructor.
-data GetCampaignVersion =
-  GetCampaignVersion'
-    { _gcvcVersion       :: !Text
-    , _gcvcApplicationId :: !Text
-    , _gcvcCampaignId    :: !Text
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data GetCampaignVersion = GetCampaignVersion'{_gcvcVersion
+                                              :: !Text,
+                                              _gcvcApplicationId :: !Text,
+                                              _gcvcCampaignId :: !Text}
+                            deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'GetCampaignVersion' with the minimum fields required to make a request.
 --
@@ -68,13 +64,11 @@ getCampaignVersion
     -> Text -- ^ 'gcvcApplicationId'
     -> Text -- ^ 'gcvcCampaignId'
     -> GetCampaignVersion
-getCampaignVersion pVersion_ pApplicationId_ pCampaignId_ =
-  GetCampaignVersion'
-    { _gcvcVersion = pVersion_
-    , _gcvcApplicationId = pApplicationId_
-    , _gcvcCampaignId = pCampaignId_
-    }
-
+getCampaignVersion pVersion_ pApplicationId_
+  pCampaignId_
+  = GetCampaignVersion'{_gcvcVersion = pVersion_,
+                        _gcvcApplicationId = pApplicationId_,
+                        _gcvcCampaignId = pCampaignId_}
 
 -- | Undocumented member.
 gcvcVersion :: Lens' GetCampaignVersion Text
@@ -120,13 +114,13 @@ instance ToQuery GetCampaignVersion where
         toQuery = const mempty
 
 -- | /See:/ 'getCampaignVersionResponse' smart constructor.
-data GetCampaignVersionResponse =
-  GetCampaignVersionResponse'
-    { _gcvcrsResponseStatus   :: !Int
-    , _gcvcrsCampaignResponse :: !CampaignResponse
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data GetCampaignVersionResponse = GetCampaignVersionResponse'{_gcvcrsResponseStatus
+                                                              :: !Int,
+                                                              _gcvcrsCampaignResponse
+                                                              ::
+                                                              !CampaignResponse}
+                                    deriving (Eq, Read, Show, Data, Typeable,
+                                              Generic)
 
 -- | Creates a value of 'GetCampaignVersionResponse' with the minimum fields required to make a request.
 --
@@ -139,12 +133,11 @@ getCampaignVersionResponse
     :: Int -- ^ 'gcvcrsResponseStatus'
     -> CampaignResponse -- ^ 'gcvcrsCampaignResponse'
     -> GetCampaignVersionResponse
-getCampaignVersionResponse pResponseStatus_ pCampaignResponse_ =
-  GetCampaignVersionResponse'
-    { _gcvcrsResponseStatus = pResponseStatus_
-    , _gcvcrsCampaignResponse = pCampaignResponse_
-    }
-
+getCampaignVersionResponse pResponseStatus_
+  pCampaignResponse_
+  = GetCampaignVersionResponse'{_gcvcrsResponseStatus =
+                                  pResponseStatus_,
+                                _gcvcrsCampaignResponse = pCampaignResponse_}
 
 -- | -- | The response status code.
 gcvcrsResponseStatus :: Lens' GetCampaignVersionResponse Int

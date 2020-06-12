@@ -45,7 +45,6 @@ module Network.AWS.EC2.DescribeInstanceTypes
     ) where
 
 import Network.AWS.EC2.Types
-import Network.AWS.EC2.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Pager
 import Network.AWS.Prelude
@@ -53,16 +52,17 @@ import Network.AWS.Request
 import Network.AWS.Response
 
 -- | /See:/ 'describeInstanceTypes' smart constructor.
-data DescribeInstanceTypes =
-  DescribeInstanceTypes'
-    { _ditInstanceTypes :: !(Maybe [InstanceType])
-    , _ditFilters       :: !(Maybe [Filter])
-    , _ditNextToken     :: !(Maybe Text)
-    , _ditDryRun        :: !(Maybe Bool)
-    , _ditMaxResults    :: !(Maybe Nat)
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data DescribeInstanceTypes = DescribeInstanceTypes'{_ditInstanceTypes
+                                                    :: !(Maybe [InstanceType]),
+                                                    _ditFilters ::
+                                                    !(Maybe [Filter]),
+                                                    _ditNextToken ::
+                                                    !(Maybe Text),
+                                                    _ditDryRun :: !(Maybe Bool),
+                                                    _ditMaxResults ::
+                                                    !(Maybe Nat)}
+                               deriving (Eq, Read, Show, Data, Typeable,
+                                         Generic)
 
 -- | Creates a value of 'DescribeInstanceTypes' with the minimum fields required to make a request.
 --
@@ -79,15 +79,10 @@ data DescribeInstanceTypes =
 -- * 'ditMaxResults' - The maximum number of results to return for the request in a single page. The remaining results can be seen by sending another request with the next token value.
 describeInstanceTypes
     :: DescribeInstanceTypes
-describeInstanceTypes =
-  DescribeInstanceTypes'
-    { _ditInstanceTypes = Nothing
-    , _ditFilters = Nothing
-    , _ditNextToken = Nothing
-    , _ditDryRun = Nothing
-    , _ditMaxResults = Nothing
-    }
-
+describeInstanceTypes
+  = DescribeInstanceTypes'{_ditInstanceTypes = Nothing,
+                           _ditFilters = Nothing, _ditNextToken = Nothing,
+                           _ditDryRun = Nothing, _ditMaxResults = Nothing}
 
 -- | The instance types. For more information, see <https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/instance-types.html Instance Types> in the /Amazon Elastic Compute Cloud User Guide/ .
 ditInstanceTypes :: Lens' DescribeInstanceTypes [InstanceType]
@@ -151,14 +146,18 @@ instance ToQuery DescribeInstanceTypes where
                "MaxResults" =: _ditMaxResults]
 
 -- | /See:/ 'describeInstanceTypesResponse' smart constructor.
-data DescribeInstanceTypesResponse =
-  DescribeInstanceTypesResponse'
-    { _ditrsInstanceTypes  :: !(Maybe [InstanceTypeInfo])
-    , _ditrsNextToken      :: !(Maybe Text)
-    , _ditrsResponseStatus :: !Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data DescribeInstanceTypesResponse = DescribeInstanceTypesResponse'{_ditrsInstanceTypes
+                                                                    ::
+                                                                    !(Maybe
+                                                                        [InstanceTypeInfo]),
+                                                                    _ditrsNextToken
+                                                                    ::
+                                                                    !(Maybe
+                                                                        Text),
+                                                                    _ditrsResponseStatus
+                                                                    :: !Int}
+                                       deriving (Eq, Read, Show, Data, Typeable,
+                                                 Generic)
 
 -- | Creates a value of 'DescribeInstanceTypesResponse' with the minimum fields required to make a request.
 --
@@ -172,13 +171,11 @@ data DescribeInstanceTypesResponse =
 describeInstanceTypesResponse
     :: Int -- ^ 'ditrsResponseStatus'
     -> DescribeInstanceTypesResponse
-describeInstanceTypesResponse pResponseStatus_ =
-  DescribeInstanceTypesResponse'
-    { _ditrsInstanceTypes = Nothing
-    , _ditrsNextToken = Nothing
-    , _ditrsResponseStatus = pResponseStatus_
-    }
-
+describeInstanceTypesResponse pResponseStatus_
+  = DescribeInstanceTypesResponse'{_ditrsInstanceTypes
+                                     = Nothing,
+                                   _ditrsNextToken = Nothing,
+                                   _ditrsResponseStatus = pResponseStatus_}
 
 -- | The instance type. For more information, see <https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/instance-types.html Instance Types> in the /Amazon Elastic Compute Cloud User Guide/ .
 ditrsInstanceTypes :: Lens' DescribeInstanceTypesResponse [InstanceTypeInfo]

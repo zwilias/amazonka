@@ -18,14 +18,14 @@
 -- Stability   : auto-generated
 -- Portability : non-portable (GHC extensions)
 --
--- Creates a new case in the AWS Support Center. This operation is modeled on the behavior of the AWS Support Center <https://console.aws.amazon.com/support/home#/case/create Create Case> page. Its parameters require you to specify the following information:
+-- Creates a new case in the AWS Support Center. This operation is modeled on the behavior of the AWS Support Center <https://console.aws.amazon.com/support/home#/case/create Create Case> page. Its parameters require you to specify the following information: 
 --
 --
---     * __issueType.__ The type of issue for the case. You can specify either "customer-service" or "technical." If you do not indicate a value, the default is "technical."
+--     * __issueType.__ The type of issue for the case. You can specify either "customer-service" or "technical." If you do not indicate a value, the default is "technical." 
 --
---     * __serviceCode.__ The code for an AWS service. You obtain the @serviceCode@ by calling 'DescribeServices' .
+--     * __serviceCode.__ The code for an AWS service. You obtain the @serviceCode@ by calling 'DescribeServices' . 
 --
---     * __categoryCode.__ The category for the service defined for the @serviceCode@ value. You also obtain the category code for a service by calling 'DescribeServices' . Each AWS service defines its own set of category codes.
+--     * __categoryCode.__ The category for the service defined for the @serviceCode@ value. You also obtain the category code for a service by calling 'DescribeServices' . Each AWS service defines its own set of category codes. 
 --
 --     * __severityCode.__ A value that indicates the urgency of the case, which in turn determines the response time according to your service level agreement with AWS Support. You obtain the SeverityCode by calling 'DescribeSeverityLevels' .
 --
@@ -37,11 +37,11 @@
 --
 --     * __language.__ The human language in which AWS Support handles the case. English and Japanese are currently supported.
 --
---     * __ccEmailAddresses.__ The AWS Support Center __CC__ field on the <https://console.aws.amazon.com/support/home#/case/create Create Case> page. You can list email addresses to be copied on any correspondence about the case. The account that opens the case is already identified by passing the AWS Credentials in the HTTP POST method or in a method or function call from one of the programming languages supported by an <http://aws.amazon.com/tools/ AWS SDK> .
+--     * __ccEmailAddresses.__ The AWS Support Center __CC__ field on the <https://console.aws.amazon.com/support/home#/case/create Create Case> page. You can list email addresses to be copied on any correspondence about the case. The account that opens the case is already identified by passing the AWS Credentials in the HTTP POST method or in a method or function call from one of the programming languages supported by an <http://aws.amazon.com/tools/ AWS SDK> . 
 --
 --
 --
--- A successful 'CreateCase' request returns an AWS Support case number. Case numbers are used by the 'DescribeCases' operation to retrieve existing AWS Support cases.
+-- A successful 'CreateCase' request returns an AWS Support case number. Case numbers are used by the 'DescribeCases' operation to retrieve existing AWS Support cases. 
 --
 module Network.AWS.Support.CreateCase
     (
@@ -72,27 +72,23 @@ import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 import Network.AWS.Support.Types
-import Network.AWS.Support.Types.Product
 
--- |
+-- | 
 --
 --
 --
 -- /See:/ 'createCase' smart constructor.
-data CreateCase =
-  CreateCase'
-    { _ccSeverityCode      :: !(Maybe Text)
-    , _ccIssueType         :: !(Maybe Text)
-    , _ccCcEmailAddresses  :: !(Maybe [Text])
-    , _ccLanguage          :: !(Maybe Text)
-    , _ccCategoryCode      :: !(Maybe Text)
-    , _ccServiceCode       :: !(Maybe Text)
-    , _ccAttachmentSetId   :: !(Maybe Text)
-    , _ccSubject           :: !Text
-    , _ccCommunicationBody :: !Text
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data CreateCase = CreateCase'{_ccSeverityCode ::
+                              !(Maybe Text),
+                              _ccIssueType :: !(Maybe Text),
+                              _ccCcEmailAddresses :: !(Maybe [Text]),
+                              _ccLanguage :: !(Maybe Text),
+                              _ccCategoryCode :: !(Maybe Text),
+                              _ccServiceCode :: !(Maybe Text),
+                              _ccAttachmentSetId :: !(Maybe Text),
+                              _ccSubject :: !Text,
+                              _ccCommunicationBody :: !Text}
+                    deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'CreateCase' with the minimum fields required to make a request.
 --
@@ -119,19 +115,13 @@ createCase
     :: Text -- ^ 'ccSubject'
     -> Text -- ^ 'ccCommunicationBody'
     -> CreateCase
-createCase pSubject_ pCommunicationBody_ =
-  CreateCase'
-    { _ccSeverityCode = Nothing
-    , _ccIssueType = Nothing
-    , _ccCcEmailAddresses = Nothing
-    , _ccLanguage = Nothing
-    , _ccCategoryCode = Nothing
-    , _ccServiceCode = Nothing
-    , _ccAttachmentSetId = Nothing
-    , _ccSubject = pSubject_
-    , _ccCommunicationBody = pCommunicationBody_
-    }
-
+createCase pSubject_ pCommunicationBody_
+  = CreateCase'{_ccSeverityCode = Nothing,
+                _ccIssueType = Nothing,
+                _ccCcEmailAddresses = Nothing, _ccLanguage = Nothing,
+                _ccCategoryCode = Nothing, _ccServiceCode = Nothing,
+                _ccAttachmentSetId = Nothing, _ccSubject = pSubject_,
+                _ccCommunicationBody = pCommunicationBody_}
 
 -- | The code for the severity level returned by the call to 'DescribeSeverityLevels' .
 ccSeverityCode :: Lens' CreateCase (Maybe Text)
@@ -211,35 +201,31 @@ instance ToPath CreateCase where
 instance ToQuery CreateCase where
         toQuery = const mempty
 
--- | The AWS Support case ID returned by a successful completion of the 'CreateCase' operation.
+-- | The AWS Support case ID returned by a successful completion of the 'CreateCase' operation. 
 --
 --
 --
 -- /See:/ 'createCaseResponse' smart constructor.
-data CreateCaseResponse =
-  CreateCaseResponse'
-    { _ccrsCaseId         :: !(Maybe Text)
-    , _ccrsResponseStatus :: !Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data CreateCaseResponse = CreateCaseResponse'{_ccrsCaseId
+                                              :: !(Maybe Text),
+                                              _ccrsResponseStatus :: !Int}
+                            deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'CreateCaseResponse' with the minimum fields required to make a request.
 --
 -- Use one of the following lenses to modify other fields as desired:
 --
--- * 'ccrsCaseId' - The AWS Support case ID requested or returned in the call. The case ID is an alphanumeric string formatted as shown in this example: case-/12345678910-2013-c4c1d2bf33c5cf47/
+-- * 'ccrsCaseId' - The AWS Support case ID requested or returned in the call. The case ID is an alphanumeric string formatted as shown in this example: case-/12345678910-2013-c4c1d2bf33c5cf47/ 
 --
 -- * 'ccrsResponseStatus' - -- | The response status code.
 createCaseResponse
     :: Int -- ^ 'ccrsResponseStatus'
     -> CreateCaseResponse
-createCaseResponse pResponseStatus_ =
-  CreateCaseResponse'
-    {_ccrsCaseId = Nothing, _ccrsResponseStatus = pResponseStatus_}
+createCaseResponse pResponseStatus_
+  = CreateCaseResponse'{_ccrsCaseId = Nothing,
+                        _ccrsResponseStatus = pResponseStatus_}
 
-
--- | The AWS Support case ID requested or returned in the call. The case ID is an alphanumeric string formatted as shown in this example: case-/12345678910-2013-c4c1d2bf33c5cf47/
+-- | The AWS Support case ID requested or returned in the call. The case ID is an alphanumeric string formatted as shown in this example: case-/12345678910-2013-c4c1d2bf33c5cf47/ 
 ccrsCaseId :: Lens' CreateCaseResponse (Maybe Text)
 ccrsCaseId = lens _ccrsCaseId (\ s a -> s{_ccrsCaseId = a})
 

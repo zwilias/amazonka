@@ -48,16 +48,12 @@ import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 import Network.AWS.XRay.Types
-import Network.AWS.XRay.Types.Product
 
 -- | /See:/ 'batchGetTraces' smart constructor.
-data BatchGetTraces =
-  BatchGetTraces'
-    { _bgtNextToken :: !(Maybe Text)
-    , _bgtTraceIds  :: ![Text]
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data BatchGetTraces = BatchGetTraces'{_bgtNextToken
+                                      :: !(Maybe Text),
+                                      _bgtTraceIds :: ![Text]}
+                        deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'BatchGetTraces' with the minimum fields required to make a request.
 --
@@ -68,9 +64,9 @@ data BatchGetTraces =
 -- * 'bgtTraceIds' - Specify the trace IDs of requests for which to retrieve segments.
 batchGetTraces
     :: BatchGetTraces
-batchGetTraces =
-  BatchGetTraces' {_bgtNextToken = Nothing, _bgtTraceIds = mempty}
-
+batchGetTraces
+  = BatchGetTraces'{_bgtNextToken = Nothing,
+                    _bgtTraceIds = mempty}
 
 -- | Pagination token. Not used.
 bgtNextToken :: Lens' BatchGetTraces (Maybe Text)
@@ -119,15 +115,16 @@ instance ToQuery BatchGetTraces where
         toQuery = const mempty
 
 -- | /See:/ 'batchGetTracesResponse' smart constructor.
-data BatchGetTracesResponse =
-  BatchGetTracesResponse'
-    { _bgtrsNextToken           :: !(Maybe Text)
-    , _bgtrsTraces              :: !(Maybe [Trace])
-    , _bgtrsUnprocessedTraceIds :: !(Maybe [Text])
-    , _bgtrsResponseStatus      :: !Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data BatchGetTracesResponse = BatchGetTracesResponse'{_bgtrsNextToken
+                                                      :: !(Maybe Text),
+                                                      _bgtrsTraces ::
+                                                      !(Maybe [Trace]),
+                                                      _bgtrsUnprocessedTraceIds
+                                                      :: !(Maybe [Text]),
+                                                      _bgtrsResponseStatus ::
+                                                      !Int}
+                                deriving (Eq, Read, Show, Data, Typeable,
+                                          Generic)
 
 -- | Creates a value of 'BatchGetTracesResponse' with the minimum fields required to make a request.
 --
@@ -143,14 +140,11 @@ data BatchGetTracesResponse =
 batchGetTracesResponse
     :: Int -- ^ 'bgtrsResponseStatus'
     -> BatchGetTracesResponse
-batchGetTracesResponse pResponseStatus_ =
-  BatchGetTracesResponse'
-    { _bgtrsNextToken = Nothing
-    , _bgtrsTraces = Nothing
-    , _bgtrsUnprocessedTraceIds = Nothing
-    , _bgtrsResponseStatus = pResponseStatus_
-    }
-
+batchGetTracesResponse pResponseStatus_
+  = BatchGetTracesResponse'{_bgtrsNextToken = Nothing,
+                            _bgtrsTraces = Nothing,
+                            _bgtrsUnprocessedTraceIds = Nothing,
+                            _bgtrsResponseStatus = pResponseStatus_}
 
 -- | Pagination token. Not used.
 bgtrsNextToken :: Lens' BatchGetTracesResponse (Maybe Text)

@@ -61,24 +61,20 @@ module Network.AWS.DirectConnect.CreateInterconnect
     ) where
 
 import Network.AWS.DirectConnect.Types
-import Network.AWS.DirectConnect.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 
 -- | /See:/ 'createInterconnect' smart constructor.
-data CreateInterconnect =
-  CreateInterconnect'
-    { _ciLagId            :: !(Maybe Text)
-    , _ciProviderName     :: !(Maybe Text)
-    , _ciTags             :: !(Maybe (List1 Tag))
-    , _ciInterconnectName :: !Text
-    , _ciBandwidth        :: !Text
-    , _ciLocation         :: !Text
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data CreateInterconnect = CreateInterconnect'{_ciLagId
+                                              :: !(Maybe Text),
+                                              _ciProviderName :: !(Maybe Text),
+                                              _ciTags :: !(Maybe (List1 Tag)),
+                                              _ciInterconnectName :: !Text,
+                                              _ciBandwidth :: !Text,
+                                              _ciLocation :: !Text}
+                            deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'CreateInterconnect' with the minimum fields required to make a request.
 --
@@ -100,16 +96,12 @@ createInterconnect
     -> Text -- ^ 'ciBandwidth'
     -> Text -- ^ 'ciLocation'
     -> CreateInterconnect
-createInterconnect pInterconnectName_ pBandwidth_ pLocation_ =
-  CreateInterconnect'
-    { _ciLagId = Nothing
-    , _ciProviderName = Nothing
-    , _ciTags = Nothing
-    , _ciInterconnectName = pInterconnectName_
-    , _ciBandwidth = pBandwidth_
-    , _ciLocation = pLocation_
-    }
-
+createInterconnect pInterconnectName_ pBandwidth_
+  pLocation_
+  = CreateInterconnect'{_ciLagId = Nothing,
+                        _ciProviderName = Nothing, _ciTags = Nothing,
+                        _ciInterconnectName = pInterconnectName_,
+                        _ciBandwidth = pBandwidth_, _ciLocation = pLocation_}
 
 -- | The ID of the LAG.
 ciLagId :: Lens' CreateInterconnect (Maybe Text)

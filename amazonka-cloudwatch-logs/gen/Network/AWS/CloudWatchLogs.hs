@@ -68,97 +68,97 @@ module Network.AWS.CloudWatchLogs
     -- ** DescribeDestinations (Paginated)
     , module Network.AWS.CloudWatchLogs.DescribeDestinations
 
-    -- ** UntagLogGroup
+    -- ** UntagLogGroup 
     , module Network.AWS.CloudWatchLogs.UntagLogGroup
 
-    -- ** CreateExportTask
+    -- ** CreateExportTask 
     , module Network.AWS.CloudWatchLogs.CreateExportTask
 
-    -- ** PutDestination
+    -- ** PutDestination 
     , module Network.AWS.CloudWatchLogs.PutDestination
 
     -- ** DescribeSubscriptionFilters (Paginated)
     , module Network.AWS.CloudWatchLogs.DescribeSubscriptionFilters
 
-    -- ** GetLogEvents
+    -- ** GetLogEvents 
     , module Network.AWS.CloudWatchLogs.GetLogEvents
 
     -- ** DescribeLogGroups (Paginated)
     , module Network.AWS.CloudWatchLogs.DescribeLogGroups
 
-    -- ** DeleteDestination
+    -- ** DeleteDestination 
     , module Network.AWS.CloudWatchLogs.DeleteDestination
 
-    -- ** DisassociateKMSKey
+    -- ** DisassociateKMSKey 
     , module Network.AWS.CloudWatchLogs.DisassociateKMSKey
 
     -- ** FilterLogEvents (Paginated)
     , module Network.AWS.CloudWatchLogs.FilterLogEvents
 
-    -- ** TagLogGroup
+    -- ** TagLogGroup 
     , module Network.AWS.CloudWatchLogs.TagLogGroup
 
-    -- ** DescribeResourcePolicies
+    -- ** DescribeResourcePolicies 
     , module Network.AWS.CloudWatchLogs.DescribeResourcePolicies
 
-    -- ** DeleteLogStream
+    -- ** DeleteLogStream 
     , module Network.AWS.CloudWatchLogs.DeleteLogStream
 
-    -- ** CreateLogStream
+    -- ** CreateLogStream 
     , module Network.AWS.CloudWatchLogs.CreateLogStream
 
-    -- ** CreateLogGroup
+    -- ** CreateLogGroup 
     , module Network.AWS.CloudWatchLogs.CreateLogGroup
 
-    -- ** DescribeExportTasks
+    -- ** DescribeExportTasks 
     , module Network.AWS.CloudWatchLogs.DescribeExportTasks
 
-    -- ** CancelExportTask
+    -- ** CancelExportTask 
     , module Network.AWS.CloudWatchLogs.CancelExportTask
 
-    -- ** PutSubscriptionFilter
+    -- ** PutSubscriptionFilter 
     , module Network.AWS.CloudWatchLogs.PutSubscriptionFilter
 
-    -- ** DeleteLogGroup
+    -- ** DeleteLogGroup 
     , module Network.AWS.CloudWatchLogs.DeleteLogGroup
 
-    -- ** DeleteSubscriptionFilter
+    -- ** DeleteSubscriptionFilter 
     , module Network.AWS.CloudWatchLogs.DeleteSubscriptionFilter
 
-    -- ** PutLogEvents
+    -- ** PutLogEvents 
     , module Network.AWS.CloudWatchLogs.PutLogEvents
 
     -- ** DescribeMetricFilters (Paginated)
     , module Network.AWS.CloudWatchLogs.DescribeMetricFilters
 
-    -- ** TestMetricFilter
+    -- ** TestMetricFilter 
     , module Network.AWS.CloudWatchLogs.TestMetricFilter
 
-    -- ** PutDestinationPolicy
+    -- ** PutDestinationPolicy 
     , module Network.AWS.CloudWatchLogs.PutDestinationPolicy
 
-    -- ** PutMetricFilter
+    -- ** PutMetricFilter 
     , module Network.AWS.CloudWatchLogs.PutMetricFilter
 
-    -- ** DeleteRetentionPolicy
+    -- ** DeleteRetentionPolicy 
     , module Network.AWS.CloudWatchLogs.DeleteRetentionPolicy
 
-    -- ** DeleteMetricFilter
+    -- ** DeleteMetricFilter 
     , module Network.AWS.CloudWatchLogs.DeleteMetricFilter
 
-    -- ** PutRetentionPolicy
+    -- ** PutRetentionPolicy 
     , module Network.AWS.CloudWatchLogs.PutRetentionPolicy
 
-    -- ** ListTagsLogGroup
+    -- ** ListTagsLogGroup 
     , module Network.AWS.CloudWatchLogs.ListTagsLogGroup
 
-    -- ** PutResourcePolicy
+    -- ** PutResourcePolicy 
     , module Network.AWS.CloudWatchLogs.PutResourcePolicy
 
-    -- ** DeleteResourcePolicy
+    -- ** DeleteResourcePolicy 
     , module Network.AWS.CloudWatchLogs.DeleteResourcePolicy
 
-    -- ** AssociateKMSKey
+    -- ** AssociateKMSKey 
     , module Network.AWS.CloudWatchLogs.AssociateKMSKey
 
     -- ** DescribeLogStreams (Paginated)

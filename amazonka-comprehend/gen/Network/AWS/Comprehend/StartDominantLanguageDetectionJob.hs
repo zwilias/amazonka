@@ -45,25 +45,39 @@ module Network.AWS.Comprehend.StartDominantLanguageDetectionJob
     ) where
 
 import Network.AWS.Comprehend.Types
-import Network.AWS.Comprehend.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 
 -- | /See:/ 'startDominantLanguageDetectionJob' smart constructor.
-data StartDominantLanguageDetectionJob =
-  StartDominantLanguageDetectionJob'
-    { _sdldjJobName            :: !(Maybe Text)
-    , _sdldjVPCConfig          :: !(Maybe VPCConfig)
-    , _sdldjVolumeKMSKeyId     :: !(Maybe Text)
-    , _sdldjClientRequestToken :: !(Maybe Text)
-    , _sdldjInputDataConfig    :: !InputDataConfig
-    , _sdldjOutputDataConfig   :: !OutputDataConfig
-    , _sdldjDataAccessRoleARN  :: !Text
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data StartDominantLanguageDetectionJob = StartDominantLanguageDetectionJob'{_sdldjJobName
+                                                                            ::
+                                                                            !(Maybe
+                                                                                Text),
+                                                                            _sdldjVPCConfig
+                                                                            ::
+                                                                            !(Maybe
+                                                                                VPCConfig),
+                                                                            _sdldjVolumeKMSKeyId
+                                                                            ::
+                                                                            !(Maybe
+                                                                                Text),
+                                                                            _sdldjClientRequestToken
+                                                                            ::
+                                                                            !(Maybe
+                                                                                Text),
+                                                                            _sdldjInputDataConfig
+                                                                            ::
+                                                                            !InputDataConfig,
+                                                                            _sdldjOutputDataConfig
+                                                                            ::
+                                                                            !OutputDataConfig,
+                                                                            _sdldjDataAccessRoleARN
+                                                                            ::
+                                                                            !Text}
+                                           deriving (Eq, Read, Show, Data,
+                                                     Typeable, Generic)
 
 -- | Creates a value of 'StartDominantLanguageDetectionJob' with the minimum fields required to make a request.
 --
@@ -71,9 +85,9 @@ data StartDominantLanguageDetectionJob =
 --
 -- * 'sdldjJobName' - An identifier for the job.
 --
--- * 'sdldjVPCConfig' - Configuration parameters for an optional private Virtual Private Cloud (VPC) containing the resources you are using for your dominant language detection job. For more information, see <https://docs.aws.amazon.com/vpc/latest/userguide/what-is-amazon-vpc.html Amazon VPC> .
+-- * 'sdldjVPCConfig' - Configuration parameters for an optional private Virtual Private Cloud (VPC) containing the resources you are using for your dominant language detection job. For more information, see <https://docs.aws.amazon.com/vpc/latest/userguide/what-is-amazon-vpc.html Amazon VPC> . 
 --
--- * 'sdldjVolumeKMSKeyId' - ID for the AWS Key Management Service (KMS) key that Amazon Comprehend uses to encrypt data on the storage volume attached to the ML compute instance(s) that process the analysis job. The VolumeKmsKeyId can be either of the following formats:     * KMS Key ID: @"1234abcd-12ab-34cd-56ef-1234567890ab"@      * Amazon Resource Name (ARN) of a KMS Key: @"arn:aws:kms:us-west-2:111122223333:key/1234abcd-12ab-34cd-56ef-1234567890ab"@
+-- * 'sdldjVolumeKMSKeyId' - ID for the AWS Key Management Service (KMS) key that Amazon Comprehend uses to encrypt data on the storage volume attached to the ML compute instance(s) that process the analysis job. The VolumeKmsKeyId can be either of the following formats:     * KMS Key ID: @"1234abcd-12ab-34cd-56ef-1234567890ab"@      * Amazon Resource Name (ARN) of a KMS Key: @"arn:aws:kms:us-west-2:111122223333:key/1234abcd-12ab-34cd-56ef-1234567890ab"@ 
 --
 -- * 'sdldjClientRequestToken' - A unique identifier for the request. If you do not set the client request token, Amazon Comprehend generates one.
 --
@@ -87,27 +101,29 @@ startDominantLanguageDetectionJob
     -> OutputDataConfig -- ^ 'sdldjOutputDataConfig'
     -> Text -- ^ 'sdldjDataAccessRoleARN'
     -> StartDominantLanguageDetectionJob
-startDominantLanguageDetectionJob pInputDataConfig_ pOutputDataConfig_ pDataAccessRoleARN_ =
-  StartDominantLanguageDetectionJob'
-    { _sdldjJobName = Nothing
-    , _sdldjVPCConfig = Nothing
-    , _sdldjVolumeKMSKeyId = Nothing
-    , _sdldjClientRequestToken = Nothing
-    , _sdldjInputDataConfig = pInputDataConfig_
-    , _sdldjOutputDataConfig = pOutputDataConfig_
-    , _sdldjDataAccessRoleARN = pDataAccessRoleARN_
-    }
-
+startDominantLanguageDetectionJob pInputDataConfig_
+  pOutputDataConfig_ pDataAccessRoleARN_
+  = StartDominantLanguageDetectionJob'{_sdldjJobName =
+                                         Nothing,
+                                       _sdldjVPCConfig = Nothing,
+                                       _sdldjVolumeKMSKeyId = Nothing,
+                                       _sdldjClientRequestToken = Nothing,
+                                       _sdldjInputDataConfig =
+                                         pInputDataConfig_,
+                                       _sdldjOutputDataConfig =
+                                         pOutputDataConfig_,
+                                       _sdldjDataAccessRoleARN =
+                                         pDataAccessRoleARN_}
 
 -- | An identifier for the job.
 sdldjJobName :: Lens' StartDominantLanguageDetectionJob (Maybe Text)
 sdldjJobName = lens _sdldjJobName (\ s a -> s{_sdldjJobName = a})
 
--- | Configuration parameters for an optional private Virtual Private Cloud (VPC) containing the resources you are using for your dominant language detection job. For more information, see <https://docs.aws.amazon.com/vpc/latest/userguide/what-is-amazon-vpc.html Amazon VPC> .
+-- | Configuration parameters for an optional private Virtual Private Cloud (VPC) containing the resources you are using for your dominant language detection job. For more information, see <https://docs.aws.amazon.com/vpc/latest/userguide/what-is-amazon-vpc.html Amazon VPC> . 
 sdldjVPCConfig :: Lens' StartDominantLanguageDetectionJob (Maybe VPCConfig)
 sdldjVPCConfig = lens _sdldjVPCConfig (\ s a -> s{_sdldjVPCConfig = a})
 
--- | ID for the AWS Key Management Service (KMS) key that Amazon Comprehend uses to encrypt data on the storage volume attached to the ML compute instance(s) that process the analysis job. The VolumeKmsKeyId can be either of the following formats:     * KMS Key ID: @"1234abcd-12ab-34cd-56ef-1234567890ab"@      * Amazon Resource Name (ARN) of a KMS Key: @"arn:aws:kms:us-west-2:111122223333:key/1234abcd-12ab-34cd-56ef-1234567890ab"@
+-- | ID for the AWS Key Management Service (KMS) key that Amazon Comprehend uses to encrypt data on the storage volume attached to the ML compute instance(s) that process the analysis job. The VolumeKmsKeyId can be either of the following formats:     * KMS Key ID: @"1234abcd-12ab-34cd-56ef-1234567890ab"@      * Amazon Resource Name (ARN) of a KMS Key: @"arn:aws:kms:us-west-2:111122223333:key/1234abcd-12ab-34cd-56ef-1234567890ab"@ 
 sdldjVolumeKMSKeyId :: Lens' StartDominantLanguageDetectionJob (Maybe Text)
 sdldjVolumeKMSKeyId = lens _sdldjVolumeKMSKeyId (\ s a -> s{_sdldjVolumeKMSKeyId = a})
 
@@ -180,14 +196,20 @@ instance ToQuery StartDominantLanguageDetectionJob
         toQuery = const mempty
 
 -- | /See:/ 'startDominantLanguageDetectionJobResponse' smart constructor.
-data StartDominantLanguageDetectionJobResponse =
-  StartDominantLanguageDetectionJobResponse'
-    { _sdldjrsJobId          :: !(Maybe Text)
-    , _sdldjrsJobStatus      :: !(Maybe JobStatus)
-    , _sdldjrsResponseStatus :: !Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data StartDominantLanguageDetectionJobResponse = StartDominantLanguageDetectionJobResponse'{_sdldjrsJobId
+                                                                                            ::
+                                                                                            !(Maybe
+                                                                                                Text),
+                                                                                            _sdldjrsJobStatus
+                                                                                            ::
+                                                                                            !(Maybe
+                                                                                                JobStatus),
+                                                                                            _sdldjrsResponseStatus
+                                                                                            ::
+                                                                                            !Int}
+                                                   deriving (Eq, Read, Show,
+                                                             Data, Typeable,
+                                                             Generic)
 
 -- | Creates a value of 'StartDominantLanguageDetectionJobResponse' with the minimum fields required to make a request.
 --
@@ -201,13 +223,13 @@ data StartDominantLanguageDetectionJobResponse =
 startDominantLanguageDetectionJobResponse
     :: Int -- ^ 'sdldjrsResponseStatus'
     -> StartDominantLanguageDetectionJobResponse
-startDominantLanguageDetectionJobResponse pResponseStatus_ =
-  StartDominantLanguageDetectionJobResponse'
-    { _sdldjrsJobId = Nothing
-    , _sdldjrsJobStatus = Nothing
-    , _sdldjrsResponseStatus = pResponseStatus_
-    }
-
+startDominantLanguageDetectionJobResponse
+  pResponseStatus_
+  = StartDominantLanguageDetectionJobResponse'{_sdldjrsJobId
+                                                 = Nothing,
+                                               _sdldjrsJobStatus = Nothing,
+                                               _sdldjrsResponseStatus =
+                                                 pResponseStatus_}
 
 -- | The identifier generated for the job. To get the status of a job, use this identifier with the operation.
 sdldjrsJobId :: Lens' StartDominantLanguageDetectionJobResponse (Maybe Text)

@@ -40,20 +40,18 @@ module Network.AWS.CodeCommit.ListApprovalRuleTemplates
     ) where
 
 import Network.AWS.CodeCommit.Types
-import Network.AWS.CodeCommit.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 
 -- | /See:/ 'listApprovalRuleTemplates' smart constructor.
-data ListApprovalRuleTemplates =
-  ListApprovalRuleTemplates'
-    { _lartNextToken  :: !(Maybe Text)
-    , _lartMaxResults :: !(Maybe Int)
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data ListApprovalRuleTemplates = ListApprovalRuleTemplates'{_lartNextToken
+                                                            :: !(Maybe Text),
+                                                            _lartMaxResults ::
+                                                            !(Maybe Int)}
+                                   deriving (Eq, Read, Show, Data, Typeable,
+                                             Generic)
 
 -- | Creates a value of 'ListApprovalRuleTemplates' with the minimum fields required to make a request.
 --
@@ -64,10 +62,10 @@ data ListApprovalRuleTemplates =
 -- * 'lartMaxResults' - A non-zero, non-negative integer used to limit the number of returned results.
 listApprovalRuleTemplates
     :: ListApprovalRuleTemplates
-listApprovalRuleTemplates =
-  ListApprovalRuleTemplates'
-    {_lartNextToken = Nothing, _lartMaxResults = Nothing}
-
+listApprovalRuleTemplates
+  = ListApprovalRuleTemplates'{_lartNextToken =
+                                 Nothing,
+                               _lartMaxResults = Nothing}
 
 -- | An enumeration token that, when provided in a request, returns the next batch of the results.
 lartNextToken :: Lens' ListApprovalRuleTemplates (Maybe Text)
@@ -117,14 +115,19 @@ instance ToQuery ListApprovalRuleTemplates where
         toQuery = const mempty
 
 -- | /See:/ 'listApprovalRuleTemplatesResponse' smart constructor.
-data ListApprovalRuleTemplatesResponse =
-  ListApprovalRuleTemplatesResponse'
-    { _lartrsNextToken                 :: !(Maybe Text)
-    , _lartrsApprovalRuleTemplateNames :: !(Maybe [Text])
-    , _lartrsResponseStatus            :: !Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data ListApprovalRuleTemplatesResponse = ListApprovalRuleTemplatesResponse'{_lartrsNextToken
+                                                                            ::
+                                                                            !(Maybe
+                                                                                Text),
+                                                                            _lartrsApprovalRuleTemplateNames
+                                                                            ::
+                                                                            !(Maybe
+                                                                                [Text]),
+                                                                            _lartrsResponseStatus
+                                                                            ::
+                                                                            !Int}
+                                           deriving (Eq, Read, Show, Data,
+                                                     Typeable, Generic)
 
 -- | Creates a value of 'ListApprovalRuleTemplatesResponse' with the minimum fields required to make a request.
 --
@@ -138,13 +141,12 @@ data ListApprovalRuleTemplatesResponse =
 listApprovalRuleTemplatesResponse
     :: Int -- ^ 'lartrsResponseStatus'
     -> ListApprovalRuleTemplatesResponse
-listApprovalRuleTemplatesResponse pResponseStatus_ =
-  ListApprovalRuleTemplatesResponse'
-    { _lartrsNextToken = Nothing
-    , _lartrsApprovalRuleTemplateNames = Nothing
-    , _lartrsResponseStatus = pResponseStatus_
-    }
-
+listApprovalRuleTemplatesResponse pResponseStatus_
+  = ListApprovalRuleTemplatesResponse'{_lartrsNextToken
+                                         = Nothing,
+                                       _lartrsApprovalRuleTemplateNames =
+                                         Nothing,
+                                       _lartrsResponseStatus = pResponseStatus_}
 
 -- | An enumeration token that allows the operation to batch the next results of the operation.
 lartrsNextToken :: Lens' ListApprovalRuleTemplatesResponse (Maybe Text)

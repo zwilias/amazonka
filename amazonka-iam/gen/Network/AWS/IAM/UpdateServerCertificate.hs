@@ -41,21 +41,20 @@ module Network.AWS.IAM.UpdateServerCertificate
     ) where
 
 import Network.AWS.IAM.Types
-import Network.AWS.IAM.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 
 -- | /See:/ 'updateServerCertificate' smart constructor.
-data UpdateServerCertificate =
-  UpdateServerCertificate'
-    { _uNewServerCertificateName :: !(Maybe Text)
-    , _uNewPath                  :: !(Maybe Text)
-    , _uServerCertificateName    :: !Text
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data UpdateServerCertificate = UpdateServerCertificate'{_uNewServerCertificateName
+                                                        :: !(Maybe Text),
+                                                        _uNewPath ::
+                                                        !(Maybe Text),
+                                                        _uServerCertificateName
+                                                        :: !Text}
+                                 deriving (Eq, Read, Show, Data, Typeable,
+                                           Generic)
 
 -- | Creates a value of 'UpdateServerCertificate' with the minimum fields required to make a request.
 --
@@ -69,13 +68,11 @@ data UpdateServerCertificate =
 updateServerCertificate
     :: Text -- ^ 'uServerCertificateName'
     -> UpdateServerCertificate
-updateServerCertificate pServerCertificateName_ =
-  UpdateServerCertificate'
-    { _uNewServerCertificateName = Nothing
-    , _uNewPath = Nothing
-    , _uServerCertificateName = pServerCertificateName_
-    }
-
+updateServerCertificate pServerCertificateName_
+  = UpdateServerCertificate'{_uNewServerCertificateName
+                               = Nothing,
+                             _uNewPath = Nothing,
+                             _uServerCertificateName = pServerCertificateName_}
 
 -- | The new name for the server certificate. Include this only if you are updating the server certificate's name. The name of the certificate cannot contain any spaces. This parameter allows (per its <http://wikipedia.org/wiki/regex regex pattern> ) a string of characters consisting of upper and lowercase alphanumeric characters with no spaces. You can also include any of the following characters: _+=,.@-
 uNewServerCertificateName :: Lens' UpdateServerCertificate (Maybe Text)
@@ -118,16 +115,15 @@ instance ToQuery UpdateServerCertificate where
                "ServerCertificateName" =: _uServerCertificateName]
 
 -- | /See:/ 'updateServerCertificateResponse' smart constructor.
-data UpdateServerCertificateResponse =
-  UpdateServerCertificateResponse'
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data UpdateServerCertificateResponse = UpdateServerCertificateResponse'
+                                         deriving (Eq, Read, Show, Data,
+                                                   Typeable, Generic)
 
 -- | Creates a value of 'UpdateServerCertificateResponse' with the minimum fields required to make a request.
 --
 updateServerCertificateResponse
     :: UpdateServerCertificateResponse
-updateServerCertificateResponse = UpdateServerCertificateResponse'
-
+updateServerCertificateResponse
+  = UpdateServerCertificateResponse'
 
 instance NFData UpdateServerCertificateResponse where

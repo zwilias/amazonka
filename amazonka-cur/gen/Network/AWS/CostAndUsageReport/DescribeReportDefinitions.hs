@@ -42,7 +42,6 @@ module Network.AWS.CostAndUsageReport.DescribeReportDefinitions
     ) where
 
 import Network.AWS.CostAndUsageReport.Types
-import Network.AWS.CostAndUsageReport.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Pager
 import Network.AWS.Prelude
@@ -54,13 +53,12 @@ import Network.AWS.Response
 --
 --
 -- /See:/ 'describeReportDefinitions' smart constructor.
-data DescribeReportDefinitions =
-  DescribeReportDefinitions'
-    { _drdNextToken  :: !(Maybe Text)
-    , _drdMaxResults :: !(Maybe Nat)
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data DescribeReportDefinitions = DescribeReportDefinitions'{_drdNextToken
+                                                            :: !(Maybe Text),
+                                                            _drdMaxResults ::
+                                                            !(Maybe Nat)}
+                                   deriving (Eq, Read, Show, Data, Typeable,
+                                             Generic)
 
 -- | Creates a value of 'DescribeReportDefinitions' with the minimum fields required to make a request.
 --
@@ -71,9 +69,9 @@ data DescribeReportDefinitions =
 -- * 'drdMaxResults' - Undocumented member.
 describeReportDefinitions
     :: DescribeReportDefinitions
-describeReportDefinitions =
-  DescribeReportDefinitions' {_drdNextToken = Nothing, _drdMaxResults = Nothing}
-
+describeReportDefinitions
+  = DescribeReportDefinitions'{_drdNextToken = Nothing,
+                               _drdMaxResults = Nothing}
 
 -- | Undocumented member.
 drdNextToken :: Lens' DescribeReportDefinitions (Maybe Text)
@@ -134,14 +132,19 @@ instance ToQuery DescribeReportDefinitions where
 --
 --
 -- /See:/ 'describeReportDefinitionsResponse' smart constructor.
-data DescribeReportDefinitionsResponse =
-  DescribeReportDefinitionsResponse'
-    { _drdrsNextToken         :: !(Maybe Text)
-    , _drdrsReportDefinitions :: !(Maybe [ReportDefinition])
-    , _drdrsResponseStatus    :: !Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data DescribeReportDefinitionsResponse = DescribeReportDefinitionsResponse'{_drdrsNextToken
+                                                                            ::
+                                                                            !(Maybe
+                                                                                Text),
+                                                                            _drdrsReportDefinitions
+                                                                            ::
+                                                                            !(Maybe
+                                                                                [ReportDefinition]),
+                                                                            _drdrsResponseStatus
+                                                                            ::
+                                                                            !Int}
+                                           deriving (Eq, Read, Show, Data,
+                                                     Typeable, Generic)
 
 -- | Creates a value of 'DescribeReportDefinitionsResponse' with the minimum fields required to make a request.
 --
@@ -155,13 +158,11 @@ data DescribeReportDefinitionsResponse =
 describeReportDefinitionsResponse
     :: Int -- ^ 'drdrsResponseStatus'
     -> DescribeReportDefinitionsResponse
-describeReportDefinitionsResponse pResponseStatus_ =
-  DescribeReportDefinitionsResponse'
-    { _drdrsNextToken = Nothing
-    , _drdrsReportDefinitions = Nothing
-    , _drdrsResponseStatus = pResponseStatus_
-    }
-
+describeReportDefinitionsResponse pResponseStatus_
+  = DescribeReportDefinitionsResponse'{_drdrsNextToken
+                                         = Nothing,
+                                       _drdrsReportDefinitions = Nothing,
+                                       _drdrsResponseStatus = pResponseStatus_}
 
 -- | Undocumented member.
 drdrsNextToken :: Lens' DescribeReportDefinitionsResponse (Maybe Text)

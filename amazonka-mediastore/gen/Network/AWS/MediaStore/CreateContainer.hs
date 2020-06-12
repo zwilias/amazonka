@@ -39,18 +39,14 @@ module Network.AWS.MediaStore.CreateContainer
 
 import Network.AWS.Lens
 import Network.AWS.MediaStore.Types
-import Network.AWS.MediaStore.Types.Product
 import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 
 -- | /See:/ 'createContainer' smart constructor.
-newtype CreateContainer =
-  CreateContainer'
-    { _ccContainerName :: Text
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+newtype CreateContainer = CreateContainer'{_ccContainerName
+                                           :: Text}
+                            deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'CreateContainer' with the minimum fields required to make a request.
 --
@@ -60,9 +56,9 @@ newtype CreateContainer =
 createContainer
     :: Text -- ^ 'ccContainerName'
     -> CreateContainer
-createContainer pContainerName_ =
-  CreateContainer' {_ccContainerName = pContainerName_}
-
+createContainer pContainerName_
+  = CreateContainer'{_ccContainerName =
+                       pContainerName_}
 
 -- | The name for the container. The name must be from 1 to 255 characters. Container names must be unique to your AWS account within a specific region. As an example, you could create a container named @movies@ in every region, as long as you don’t have an existing container with that name.
 ccContainerName :: Lens' CreateContainer Text
@@ -104,13 +100,12 @@ instance ToQuery CreateContainer where
         toQuery = const mempty
 
 -- | /See:/ 'createContainerResponse' smart constructor.
-data CreateContainerResponse =
-  CreateContainerResponse'
-    { _ccrsResponseStatus :: !Int
-    , _ccrsContainer      :: !Container
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data CreateContainerResponse = CreateContainerResponse'{_ccrsResponseStatus
+                                                        :: !Int,
+                                                        _ccrsContainer ::
+                                                        !Container}
+                                 deriving (Eq, Read, Show, Data, Typeable,
+                                           Generic)
 
 -- | Creates a value of 'CreateContainerResponse' with the minimum fields required to make a request.
 --
@@ -123,10 +118,10 @@ createContainerResponse
     :: Int -- ^ 'ccrsResponseStatus'
     -> Container -- ^ 'ccrsContainer'
     -> CreateContainerResponse
-createContainerResponse pResponseStatus_ pContainer_ =
-  CreateContainerResponse'
-    {_ccrsResponseStatus = pResponseStatus_, _ccrsContainer = pContainer_}
-
+createContainerResponse pResponseStatus_ pContainer_
+  = CreateContainerResponse'{_ccrsResponseStatus =
+                               pResponseStatus_,
+                             _ccrsContainer = pContainer_}
 
 -- | -- | The response status code.
 ccrsResponseStatus :: Lens' CreateContainerResponse Int

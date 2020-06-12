@@ -43,20 +43,16 @@ module Network.AWS.EC2.WithdrawByoipCidr
     ) where
 
 import Network.AWS.EC2.Types
-import Network.AWS.EC2.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 
 -- | /See:/ 'withdrawByoipCidr' smart constructor.
-data WithdrawByoipCidr =
-  WithdrawByoipCidr'
-    { _wbcDryRun :: !(Maybe Bool)
-    , _wbcCidr   :: !Text
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data WithdrawByoipCidr = WithdrawByoipCidr'{_wbcDryRun
+                                            :: !(Maybe Bool),
+                                            _wbcCidr :: !Text}
+                           deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'WithdrawByoipCidr' with the minimum fields required to make a request.
 --
@@ -68,9 +64,9 @@ data WithdrawByoipCidr =
 withdrawByoipCidr
     :: Text -- ^ 'wbcCidr'
     -> WithdrawByoipCidr
-withdrawByoipCidr pCidr_ =
-  WithdrawByoipCidr' {_wbcDryRun = Nothing, _wbcCidr = pCidr_}
-
+withdrawByoipCidr pCidr_
+  = WithdrawByoipCidr'{_wbcDryRun = Nothing,
+                       _wbcCidr = pCidr_}
 
 -- | Checks whether you have the required permissions for the action, without actually making the request, and provides an error response. If you have the required permissions, the error response is @DryRunOperation@ . Otherwise, it is @UnauthorizedOperation@ .
 wbcDryRun :: Lens' WithdrawByoipCidr (Maybe Bool)
@@ -107,13 +103,13 @@ instance ToQuery WithdrawByoipCidr where
                "DryRun" =: _wbcDryRun, "Cidr" =: _wbcCidr]
 
 -- | /See:/ 'withdrawByoipCidrResponse' smart constructor.
-data WithdrawByoipCidrResponse =
-  WithdrawByoipCidrResponse'
-    { _wbcrsByoipCidr      :: !(Maybe ByoipCidr)
-    , _wbcrsResponseStatus :: !Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data WithdrawByoipCidrResponse = WithdrawByoipCidrResponse'{_wbcrsByoipCidr
+                                                            ::
+                                                            !(Maybe ByoipCidr),
+                                                            _wbcrsResponseStatus
+                                                            :: !Int}
+                                   deriving (Eq, Read, Show, Data, Typeable,
+                                             Generic)
 
 -- | Creates a value of 'WithdrawByoipCidrResponse' with the minimum fields required to make a request.
 --
@@ -125,10 +121,10 @@ data WithdrawByoipCidrResponse =
 withdrawByoipCidrResponse
     :: Int -- ^ 'wbcrsResponseStatus'
     -> WithdrawByoipCidrResponse
-withdrawByoipCidrResponse pResponseStatus_ =
-  WithdrawByoipCidrResponse'
-    {_wbcrsByoipCidr = Nothing, _wbcrsResponseStatus = pResponseStatus_}
-
+withdrawByoipCidrResponse pResponseStatus_
+  = WithdrawByoipCidrResponse'{_wbcrsByoipCidr =
+                                 Nothing,
+                               _wbcrsResponseStatus = pResponseStatus_}
 
 -- | Information about the address pool.
 wbcrsByoipCidr :: Lens' WithdrawByoipCidrResponse (Maybe ByoipCidr)

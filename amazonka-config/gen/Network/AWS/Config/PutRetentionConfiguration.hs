@@ -18,7 +18,7 @@
 -- Stability   : auto-generated
 -- Portability : non-portable (GHC extensions)
 --
--- Creates and updates the retention configuration with details about retention period (number of days) that AWS Config stores your historical information. The API creates the @RetentionConfiguration@ object and names the object as __default__ . When you have a @RetentionConfiguration@ object named __default__ , calling the API modifies the default object.
+-- Creates and updates the retention configuration with details about retention period (number of days) that AWS Config stores your historical information. The API creates the @RetentionConfiguration@ object and names the object as __default__ . When you have a @RetentionConfiguration@ object named __default__ , calling the API modifies the default object. 
 --
 --
 module Network.AWS.Config.PutRetentionConfiguration
@@ -38,19 +38,16 @@ module Network.AWS.Config.PutRetentionConfiguration
     ) where
 
 import Network.AWS.Config.Types
-import Network.AWS.Config.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 
 -- | /See:/ 'putRetentionConfiguration' smart constructor.
-newtype PutRetentionConfiguration =
-  PutRetentionConfiguration'
-    { _prcRetentionPeriodInDays :: Nat
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+newtype PutRetentionConfiguration = PutRetentionConfiguration'{_prcRetentionPeriodInDays
+                                                               :: Nat}
+                                      deriving (Eq, Read, Show, Data, Typeable,
+                                                Generic)
 
 -- | Creates a value of 'PutRetentionConfiguration' with the minimum fields required to make a request.
 --
@@ -60,10 +57,9 @@ newtype PutRetentionConfiguration =
 putRetentionConfiguration
     :: Natural -- ^ 'prcRetentionPeriodInDays'
     -> PutRetentionConfiguration
-putRetentionConfiguration pRetentionPeriodInDays_ =
-  PutRetentionConfiguration'
-    {_prcRetentionPeriodInDays = _Nat # pRetentionPeriodInDays_}
-
+putRetentionConfiguration pRetentionPeriodInDays_
+  = PutRetentionConfiguration'{_prcRetentionPeriodInDays
+                                 = _Nat # pRetentionPeriodInDays_}
 
 -- | Number of days AWS Config stores your historical information.
 prcRetentionPeriodInDays :: Lens' PutRetentionConfiguration Natural
@@ -109,13 +105,15 @@ instance ToQuery PutRetentionConfiguration where
         toQuery = const mempty
 
 -- | /See:/ 'putRetentionConfigurationResponse' smart constructor.
-data PutRetentionConfigurationResponse =
-  PutRetentionConfigurationResponse'
-    { _prsRetentionConfiguration :: !(Maybe RetentionConfiguration)
-    , _prsResponseStatus         :: !Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data PutRetentionConfigurationResponse = PutRetentionConfigurationResponse'{_prsRetentionConfiguration
+                                                                            ::
+                                                                            !(Maybe
+                                                                                RetentionConfiguration),
+                                                                            _prsResponseStatus
+                                                                            ::
+                                                                            !Int}
+                                           deriving (Eq, Read, Show, Data,
+                                                     Typeable, Generic)
 
 -- | Creates a value of 'PutRetentionConfigurationResponse' with the minimum fields required to make a request.
 --
@@ -127,12 +125,10 @@ data PutRetentionConfigurationResponse =
 putRetentionConfigurationResponse
     :: Int -- ^ 'prsResponseStatus'
     -> PutRetentionConfigurationResponse
-putRetentionConfigurationResponse pResponseStatus_ =
-  PutRetentionConfigurationResponse'
-    { _prsRetentionConfiguration = Nothing
-    , _prsResponseStatus = pResponseStatus_
-    }
-
+putRetentionConfigurationResponse pResponseStatus_
+  = PutRetentionConfigurationResponse'{_prsRetentionConfiguration
+                                         = Nothing,
+                                       _prsResponseStatus = pResponseStatus_}
 
 -- | Returns a retention configuration object.
 prsRetentionConfiguration :: Lens' PutRetentionConfigurationResponse (Maybe RetentionConfiguration)

@@ -40,19 +40,16 @@ module Network.AWS.CloudWatch.DeleteInsightRules
     ) where
 
 import Network.AWS.CloudWatch.Types
-import Network.AWS.CloudWatch.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 
 -- | /See:/ 'deleteInsightRules' smart constructor.
-newtype DeleteInsightRules =
-  DeleteInsightRules'
-    { _dRuleNames :: [Text]
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+newtype DeleteInsightRules = DeleteInsightRules'{_dRuleNames
+                                                 :: [Text]}
+                               deriving (Eq, Read, Show, Data, Typeable,
+                                         Generic)
 
 -- | Creates a value of 'DeleteInsightRules' with the minimum fields required to make a request.
 --
@@ -61,8 +58,8 @@ newtype DeleteInsightRules =
 -- * 'dRuleNames' - An array of the rule names to delete. If you need to find out the names of your rules, use <https://docs.aws.amazon.com/AmazonCloudWatch/latest/APIReference/API_DescribeInsightRules.html DescribeInsightRules> .
 deleteInsightRules
     :: DeleteInsightRules
-deleteInsightRules = DeleteInsightRules' {_dRuleNames = mempty}
-
+deleteInsightRules
+  = DeleteInsightRules'{_dRuleNames = mempty}
 
 -- | An array of the rule names to delete. If you need to find out the names of your rules, use <https://docs.aws.amazon.com/AmazonCloudWatch/latest/APIReference/API_DescribeInsightRules.html DescribeInsightRules> .
 dRuleNames :: Lens' DeleteInsightRules [Text]
@@ -98,13 +95,14 @@ instance ToQuery DeleteInsightRules where
                "RuleNames" =: toQueryList "member" _dRuleNames]
 
 -- | /See:/ 'deleteInsightRulesResponse' smart constructor.
-data DeleteInsightRulesResponse =
-  DeleteInsightRulesResponse'
-    { _dirsrsFailures       :: !(Maybe [PartialFailure])
-    , _dirsrsResponseStatus :: !Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data DeleteInsightRulesResponse = DeleteInsightRulesResponse'{_dirsrsFailures
+                                                              ::
+                                                              !(Maybe
+                                                                  [PartialFailure]),
+                                                              _dirsrsResponseStatus
+                                                              :: !Int}
+                                    deriving (Eq, Read, Show, Data, Typeable,
+                                              Generic)
 
 -- | Creates a value of 'DeleteInsightRulesResponse' with the minimum fields required to make a request.
 --
@@ -116,10 +114,10 @@ data DeleteInsightRulesResponse =
 deleteInsightRulesResponse
     :: Int -- ^ 'dirsrsResponseStatus'
     -> DeleteInsightRulesResponse
-deleteInsightRulesResponse pResponseStatus_ =
-  DeleteInsightRulesResponse'
-    {_dirsrsFailures = Nothing, _dirsrsResponseStatus = pResponseStatus_}
-
+deleteInsightRulesResponse pResponseStatus_
+  = DeleteInsightRulesResponse'{_dirsrsFailures =
+                                  Nothing,
+                                _dirsrsResponseStatus = pResponseStatus_}
 
 -- | An array listing the rules that could not be deleted. You cannot delete built-in rules.
 dirsrsFailures :: Lens' DeleteInsightRulesResponse [PartialFailure]

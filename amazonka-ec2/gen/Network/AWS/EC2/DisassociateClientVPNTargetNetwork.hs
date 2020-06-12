@@ -27,7 +27,7 @@
 --
 --     * New client connections are disallowed
 --
---     * The Client VPN endpoint's status changes to @pending-associate@
+--     * The Client VPN endpoint's status changes to @pending-associate@ 
 --
 --
 --
@@ -51,21 +51,24 @@ module Network.AWS.EC2.DisassociateClientVPNTargetNetwork
     ) where
 
 import Network.AWS.EC2.Types
-import Network.AWS.EC2.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 
 -- | /See:/ 'disassociateClientVPNTargetNetwork' smart constructor.
-data DisassociateClientVPNTargetNetwork =
-  DisassociateClientVPNTargetNetwork'
-    { _dcvpntnDryRun              :: !(Maybe Bool)
-    , _dcvpntnClientVPNEndpointId :: !Text
-    , _dcvpntnAssociationId       :: !Text
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data DisassociateClientVPNTargetNetwork = DisassociateClientVPNTargetNetwork'{_dcvpntnDryRun
+                                                                              ::
+                                                                              !(Maybe
+                                                                                  Bool),
+                                                                              _dcvpntnClientVPNEndpointId
+                                                                              ::
+                                                                              !Text,
+                                                                              _dcvpntnAssociationId
+                                                                              ::
+                                                                              !Text}
+                                            deriving (Eq, Read, Show, Data,
+                                                      Typeable, Generic)
 
 -- | Creates a value of 'DisassociateClientVPNTargetNetwork' with the minimum fields required to make a request.
 --
@@ -80,13 +83,13 @@ disassociateClientVPNTargetNetwork
     :: Text -- ^ 'dcvpntnClientVPNEndpointId'
     -> Text -- ^ 'dcvpntnAssociationId'
     -> DisassociateClientVPNTargetNetwork
-disassociateClientVPNTargetNetwork pClientVPNEndpointId_ pAssociationId_ =
-  DisassociateClientVPNTargetNetwork'
-    { _dcvpntnDryRun = Nothing
-    , _dcvpntnClientVPNEndpointId = pClientVPNEndpointId_
-    , _dcvpntnAssociationId = pAssociationId_
-    }
-
+disassociateClientVPNTargetNetwork
+  pClientVPNEndpointId_ pAssociationId_
+  = DisassociateClientVPNTargetNetwork'{_dcvpntnDryRun
+                                          = Nothing,
+                                        _dcvpntnClientVPNEndpointId =
+                                          pClientVPNEndpointId_,
+                                        _dcvpntnAssociationId = pAssociationId_}
 
 -- | Checks whether you have the required permissions for the action, without actually making the request, and provides an error response. If you have the required permissions, the error response is @DryRunOperation@ . Otherwise, it is @UnauthorizedOperation@ .
 dcvpntnDryRun :: Lens' DisassociateClientVPNTargetNetwork (Maybe Bool)
@@ -139,14 +142,20 @@ instance ToQuery DisassociateClientVPNTargetNetwork
                "AssociationId" =: _dcvpntnAssociationId]
 
 -- | /See:/ 'disassociateClientVPNTargetNetworkResponse' smart constructor.
-data DisassociateClientVPNTargetNetworkResponse =
-  DisassociateClientVPNTargetNetworkResponse'
-    { _dcvpntnrsAssociationId  :: !(Maybe Text)
-    , _dcvpntnrsStatus         :: !(Maybe AssociationStatus)
-    , _dcvpntnrsResponseStatus :: !Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data DisassociateClientVPNTargetNetworkResponse = DisassociateClientVPNTargetNetworkResponse'{_dcvpntnrsAssociationId
+                                                                                              ::
+                                                                                              !(Maybe
+                                                                                                  Text),
+                                                                                              _dcvpntnrsStatus
+                                                                                              ::
+                                                                                              !(Maybe
+                                                                                                  AssociationStatus),
+                                                                                              _dcvpntnrsResponseStatus
+                                                                                              ::
+                                                                                              !Int}
+                                                    deriving (Eq, Read, Show,
+                                                              Data, Typeable,
+                                                              Generic)
 
 -- | Creates a value of 'DisassociateClientVPNTargetNetworkResponse' with the minimum fields required to make a request.
 --
@@ -160,13 +169,13 @@ data DisassociateClientVPNTargetNetworkResponse =
 disassociateClientVPNTargetNetworkResponse
     :: Int -- ^ 'dcvpntnrsResponseStatus'
     -> DisassociateClientVPNTargetNetworkResponse
-disassociateClientVPNTargetNetworkResponse pResponseStatus_ =
-  DisassociateClientVPNTargetNetworkResponse'
-    { _dcvpntnrsAssociationId = Nothing
-    , _dcvpntnrsStatus = Nothing
-    , _dcvpntnrsResponseStatus = pResponseStatus_
-    }
-
+disassociateClientVPNTargetNetworkResponse
+  pResponseStatus_
+  = DisassociateClientVPNTargetNetworkResponse'{_dcvpntnrsAssociationId
+                                                  = Nothing,
+                                                _dcvpntnrsStatus = Nothing,
+                                                _dcvpntnrsResponseStatus =
+                                                  pResponseStatus_}
 
 -- | The ID of the target network association.
 dcvpntnrsAssociationId :: Lens' DisassociateClientVPNTargetNetworkResponse (Maybe Text)

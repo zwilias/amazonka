@@ -39,17 +39,17 @@ import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 import Network.AWS.S3.Types
-import Network.AWS.S3.Types.Product
 
 -- | /See:/ 'putBucketRequestPayment' smart constructor.
-data PutBucketRequestPayment =
-  PutBucketRequestPayment'
-    { _pbrpContentMD5                  :: !(Maybe Text)
-    , _pbrpBucket                      :: !BucketName
-    , _pbrpRequestPaymentConfiguration :: !RequestPaymentConfiguration
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data PutBucketRequestPayment = PutBucketRequestPayment'{_pbrpContentMD5
+                                                        :: !(Maybe Text),
+                                                        _pbrpBucket ::
+                                                        !BucketName,
+                                                        _pbrpRequestPaymentConfiguration
+                                                        ::
+                                                        !RequestPaymentConfiguration}
+                                 deriving (Eq, Read, Show, Data, Typeable,
+                                           Generic)
 
 -- | Creates a value of 'PutBucketRequestPayment' with the minimum fields required to make a request.
 --
@@ -64,13 +64,12 @@ putBucketRequestPayment
     :: BucketName -- ^ 'pbrpBucket'
     -> RequestPaymentConfiguration -- ^ 'pbrpRequestPaymentConfiguration'
     -> PutBucketRequestPayment
-putBucketRequestPayment pBucket_ pRequestPaymentConfiguration_ =
-  PutBucketRequestPayment'
-    { _pbrpContentMD5 = Nothing
-    , _pbrpBucket = pBucket_
-    , _pbrpRequestPaymentConfiguration = pRequestPaymentConfiguration_
-    }
-
+putBucketRequestPayment pBucket_
+  pRequestPaymentConfiguration_
+  = PutBucketRequestPayment'{_pbrpContentMD5 = Nothing,
+                             _pbrpBucket = pBucket_,
+                             _pbrpRequestPaymentConfiguration =
+                               pRequestPaymentConfiguration_}
 
 -- | Undocumented member.
 pbrpContentMD5 :: Lens' PutBucketRequestPayment (Maybe Text)
@@ -114,16 +113,15 @@ instance ToQuery PutBucketRequestPayment where
         toQuery = const (mconcat ["requestPayment"])
 
 -- | /See:/ 'putBucketRequestPaymentResponse' smart constructor.
-data PutBucketRequestPaymentResponse =
-  PutBucketRequestPaymentResponse'
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data PutBucketRequestPaymentResponse = PutBucketRequestPaymentResponse'
+                                         deriving (Eq, Read, Show, Data,
+                                                   Typeable, Generic)
 
 -- | Creates a value of 'PutBucketRequestPaymentResponse' with the minimum fields required to make a request.
 --
 putBucketRequestPaymentResponse
     :: PutBucketRequestPaymentResponse
-putBucketRequestPaymentResponse = PutBucketRequestPaymentResponse'
-
+putBucketRequestPaymentResponse
+  = PutBucketRequestPaymentResponse'
 
 instance NFData PutBucketRequestPaymentResponse where

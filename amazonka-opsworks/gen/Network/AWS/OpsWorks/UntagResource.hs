@@ -37,19 +37,15 @@ module Network.AWS.OpsWorks.UntagResource
 
 import Network.AWS.Lens
 import Network.AWS.OpsWorks.Types
-import Network.AWS.OpsWorks.Types.Product
 import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 
 -- | /See:/ 'untagResource' smart constructor.
-data UntagResource =
-  UntagResource'
-    { _urResourceARN :: !Text
-    , _urTagKeys     :: ![Text]
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data UntagResource = UntagResource'{_urResourceARN ::
+                                    !Text,
+                                    _urTagKeys :: ![Text]}
+                       deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'UntagResource' with the minimum fields required to make a request.
 --
@@ -61,9 +57,9 @@ data UntagResource =
 untagResource
     :: Text -- ^ 'urResourceARN'
     -> UntagResource
-untagResource pResourceARN_ =
-  UntagResource' {_urResourceARN = pResourceARN_, _urTagKeys = mempty}
-
+untagResource pResourceARN_
+  = UntagResource'{_urResourceARN = pResourceARN_,
+                   _urTagKeys = mempty}
 
 -- | The stack or layer's Amazon Resource Number (ARN).
 urResourceARN :: Lens' UntagResource Text
@@ -105,16 +101,14 @@ instance ToQuery UntagResource where
         toQuery = const mempty
 
 -- | /See:/ 'untagResourceResponse' smart constructor.
-data UntagResourceResponse =
-  UntagResourceResponse'
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data UntagResourceResponse = UntagResourceResponse'
+                               deriving (Eq, Read, Show, Data, Typeable,
+                                         Generic)
 
 -- | Creates a value of 'UntagResourceResponse' with the minimum fields required to make a request.
 --
 untagResourceResponse
     :: UntagResourceResponse
 untagResourceResponse = UntagResourceResponse'
-
 
 instance NFData UntagResourceResponse where

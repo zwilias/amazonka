@@ -40,20 +40,16 @@ module Network.AWS.Athena.ListWorkGroups
     ) where
 
 import Network.AWS.Athena.Types
-import Network.AWS.Athena.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 
 -- | /See:/ 'listWorkGroups' smart constructor.
-data ListWorkGroups =
-  ListWorkGroups'
-    { _lwgNextToken  :: !(Maybe Text)
-    , _lwgMaxResults :: !(Maybe Nat)
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data ListWorkGroups = ListWorkGroups'{_lwgNextToken
+                                      :: !(Maybe Text),
+                                      _lwgMaxResults :: !(Maybe Nat)}
+                        deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'ListWorkGroups' with the minimum fields required to make a request.
 --
@@ -64,9 +60,9 @@ data ListWorkGroups =
 -- * 'lwgMaxResults' - The maximum number of workgroups to return in this request.
 listWorkGroups
     :: ListWorkGroups
-listWorkGroups =
-  ListWorkGroups' {_lwgNextToken = Nothing, _lwgMaxResults = Nothing}
-
+listWorkGroups
+  = ListWorkGroups'{_lwgNextToken = Nothing,
+                    _lwgMaxResults = Nothing}
 
 -- | A token to be used by the next request if this request is truncated.
 lwgNextToken :: Lens' ListWorkGroups (Maybe Text)
@@ -114,14 +110,15 @@ instance ToQuery ListWorkGroups where
         toQuery = const mempty
 
 -- | /See:/ 'listWorkGroupsResponse' smart constructor.
-data ListWorkGroupsResponse =
-  ListWorkGroupsResponse'
-    { _lwgrsNextToken      :: !(Maybe Text)
-    , _lwgrsWorkGroups     :: !(Maybe [WorkGroupSummary])
-    , _lwgrsResponseStatus :: !Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data ListWorkGroupsResponse = ListWorkGroupsResponse'{_lwgrsNextToken
+                                                      :: !(Maybe Text),
+                                                      _lwgrsWorkGroups ::
+                                                      !(Maybe
+                                                          [WorkGroupSummary]),
+                                                      _lwgrsResponseStatus ::
+                                                      !Int}
+                                deriving (Eq, Read, Show, Data, Typeable,
+                                          Generic)
 
 -- | Creates a value of 'ListWorkGroupsResponse' with the minimum fields required to make a request.
 --
@@ -135,13 +132,10 @@ data ListWorkGroupsResponse =
 listWorkGroupsResponse
     :: Int -- ^ 'lwgrsResponseStatus'
     -> ListWorkGroupsResponse
-listWorkGroupsResponse pResponseStatus_ =
-  ListWorkGroupsResponse'
-    { _lwgrsNextToken = Nothing
-    , _lwgrsWorkGroups = Nothing
-    , _lwgrsResponseStatus = pResponseStatus_
-    }
-
+listWorkGroupsResponse pResponseStatus_
+  = ListWorkGroupsResponse'{_lwgrsNextToken = Nothing,
+                            _lwgrsWorkGroups = Nothing,
+                            _lwgrsResponseStatus = pResponseStatus_}
 
 -- | A token to be used by the next request if this request is truncated.
 lwgrsNextToken :: Lens' ListWorkGroupsResponse (Maybe Text)

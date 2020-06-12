@@ -59,55 +59,55 @@ module Network.AWS.KinesisAnalytics
     -- * Operations
     -- $operations
 
-    -- ** AddApplicationOutput
+    -- ** AddApplicationOutput 
     , module Network.AWS.KinesisAnalytics.AddApplicationOutput
 
-    -- ** DiscoverInputSchema
+    -- ** DiscoverInputSchema 
     , module Network.AWS.KinesisAnalytics.DiscoverInputSchema
 
-    -- ** DescribeApplication
+    -- ** DescribeApplication 
     , module Network.AWS.KinesisAnalytics.DescribeApplication
 
-    -- ** StartApplication
+    -- ** StartApplication 
     , module Network.AWS.KinesisAnalytics.StartApplication
 
-    -- ** DeleteApplicationReferenceDataSource
+    -- ** DeleteApplicationReferenceDataSource 
     , module Network.AWS.KinesisAnalytics.DeleteApplicationReferenceDataSource
 
-    -- ** DeleteApplication
+    -- ** DeleteApplication 
     , module Network.AWS.KinesisAnalytics.DeleteApplication
 
-    -- ** UpdateApplication
+    -- ** UpdateApplication 
     , module Network.AWS.KinesisAnalytics.UpdateApplication
 
-    -- ** DeleteApplicationCloudWatchLoggingOption
+    -- ** DeleteApplicationCloudWatchLoggingOption 
     , module Network.AWS.KinesisAnalytics.DeleteApplicationCloudWatchLoggingOption
 
-    -- ** AddApplicationInputProcessingConfiguration
+    -- ** AddApplicationInputProcessingConfiguration 
     , module Network.AWS.KinesisAnalytics.AddApplicationInputProcessingConfiguration
 
-    -- ** CreateApplication
+    -- ** CreateApplication 
     , module Network.AWS.KinesisAnalytics.CreateApplication
 
-    -- ** DeleteApplicationOutput
+    -- ** DeleteApplicationOutput 
     , module Network.AWS.KinesisAnalytics.DeleteApplicationOutput
 
-    -- ** StopApplication
+    -- ** StopApplication 
     , module Network.AWS.KinesisAnalytics.StopApplication
 
-    -- ** AddApplicationReferenceDataSource
+    -- ** AddApplicationReferenceDataSource 
     , module Network.AWS.KinesisAnalytics.AddApplicationReferenceDataSource
 
-    -- ** AddApplicationInput
+    -- ** AddApplicationInput 
     , module Network.AWS.KinesisAnalytics.AddApplicationInput
 
-    -- ** AddApplicationCloudWatchLoggingOption
+    -- ** AddApplicationCloudWatchLoggingOption 
     , module Network.AWS.KinesisAnalytics.AddApplicationCloudWatchLoggingOption
 
-    -- ** ListApplications
+    -- ** ListApplications 
     , module Network.AWS.KinesisAnalytics.ListApplications
 
-    -- ** DeleteApplicationInputProcessingConfiguration
+    -- ** DeleteApplicationInputProcessingConfiguration 
     , module Network.AWS.KinesisAnalytics.DeleteApplicationInputProcessingConfiguration
 
     -- * Types

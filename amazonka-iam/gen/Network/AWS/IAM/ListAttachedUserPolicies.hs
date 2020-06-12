@@ -49,7 +49,6 @@ module Network.AWS.IAM.ListAttachedUserPolicies
     ) where
 
 import Network.AWS.IAM.Types
-import Network.AWS.IAM.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Pager
 import Network.AWS.Prelude
@@ -57,15 +56,16 @@ import Network.AWS.Request
 import Network.AWS.Response
 
 -- | /See:/ 'listAttachedUserPolicies' smart constructor.
-data ListAttachedUserPolicies =
-  ListAttachedUserPolicies'
-    { _laupPathPrefix :: !(Maybe Text)
-    , _laupMarker     :: !(Maybe Text)
-    , _laupMaxItems   :: !(Maybe Nat)
-    , _laupUserName   :: !Text
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data ListAttachedUserPolicies = ListAttachedUserPolicies'{_laupPathPrefix
+                                                          :: !(Maybe Text),
+                                                          _laupMarker ::
+                                                          !(Maybe Text),
+                                                          _laupMaxItems ::
+                                                          !(Maybe Nat),
+                                                          _laupUserName ::
+                                                          !Text}
+                                  deriving (Eq, Read, Show, Data, Typeable,
+                                            Generic)
 
 -- | Creates a value of 'ListAttachedUserPolicies' with the minimum fields required to make a request.
 --
@@ -81,14 +81,11 @@ data ListAttachedUserPolicies =
 listAttachedUserPolicies
     :: Text -- ^ 'laupUserName'
     -> ListAttachedUserPolicies
-listAttachedUserPolicies pUserName_ =
-  ListAttachedUserPolicies'
-    { _laupPathPrefix = Nothing
-    , _laupMarker = Nothing
-    , _laupMaxItems = Nothing
-    , _laupUserName = pUserName_
-    }
-
+listAttachedUserPolicies pUserName_
+  = ListAttachedUserPolicies'{_laupPathPrefix =
+                                Nothing,
+                              _laupMarker = Nothing, _laupMaxItems = Nothing,
+                              _laupUserName = pUserName_}
 
 -- | The path prefix for filtering the results. This parameter is optional. If it is not included, it defaults to a slash (/), listing all policies. This parameter allows (per its <http://wikipedia.org/wiki/regex regex pattern> ) a string of characters consisting of either a forward slash (/) by itself or a string that must begin and end with forward slashes. In addition, it can contain any ASCII character from the ! (\u0021) through the DEL character (\u007F), including most punctuation characters, digits, and upper and lowercased letters.
 laupPathPrefix :: Lens' ListAttachedUserPolicies (Maybe Text)
@@ -147,20 +144,28 @@ instance ToQuery ListAttachedUserPolicies where
                "Marker" =: _laupMarker, "MaxItems" =: _laupMaxItems,
                "UserName" =: _laupUserName]
 
--- | Contains the response to a successful 'ListAttachedUserPolicies' request.
+-- | Contains the response to a successful 'ListAttachedUserPolicies' request. 
 --
 --
 --
 -- /See:/ 'listAttachedUserPoliciesResponse' smart constructor.
-data ListAttachedUserPoliciesResponse =
-  ListAttachedUserPoliciesResponse'
-    { _lauprsAttachedPolicies :: !(Maybe [AttachedPolicy])
-    , _lauprsMarker           :: !(Maybe Text)
-    , _lauprsIsTruncated      :: !(Maybe Bool)
-    , _lauprsResponseStatus   :: !Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data ListAttachedUserPoliciesResponse = ListAttachedUserPoliciesResponse'{_lauprsAttachedPolicies
+                                                                          ::
+                                                                          !(Maybe
+                                                                              [AttachedPolicy]),
+                                                                          _lauprsMarker
+                                                                          ::
+                                                                          !(Maybe
+                                                                              Text),
+                                                                          _lauprsIsTruncated
+                                                                          ::
+                                                                          !(Maybe
+                                                                              Bool),
+                                                                          _lauprsResponseStatus
+                                                                          ::
+                                                                          !Int}
+                                          deriving (Eq, Read, Show, Data,
+                                                    Typeable, Generic)
 
 -- | Creates a value of 'ListAttachedUserPoliciesResponse' with the minimum fields required to make a request.
 --
@@ -176,14 +181,12 @@ data ListAttachedUserPoliciesResponse =
 listAttachedUserPoliciesResponse
     :: Int -- ^ 'lauprsResponseStatus'
     -> ListAttachedUserPoliciesResponse
-listAttachedUserPoliciesResponse pResponseStatus_ =
-  ListAttachedUserPoliciesResponse'
-    { _lauprsAttachedPolicies = Nothing
-    , _lauprsMarker = Nothing
-    , _lauprsIsTruncated = Nothing
-    , _lauprsResponseStatus = pResponseStatus_
-    }
-
+listAttachedUserPoliciesResponse pResponseStatus_
+  = ListAttachedUserPoliciesResponse'{_lauprsAttachedPolicies
+                                        = Nothing,
+                                      _lauprsMarker = Nothing,
+                                      _lauprsIsTruncated = Nothing,
+                                      _lauprsResponseStatus = pResponseStatus_}
 
 -- | A list of the attached policies.
 lauprsAttachedPolicies :: Lens' ListAttachedUserPoliciesResponse [AttachedPolicy]

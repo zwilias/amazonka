@@ -34,7 +34,7 @@ module Network.AWS.XRay
     -- * Operations
     -- $operations
 
-    -- ** PutEncryptionConfig
+    -- ** PutEncryptionConfig 
     , module Network.AWS.XRay.PutEncryptionConfig
 
     -- ** GetServiceGraph (Paginated)
@@ -43,16 +43,16 @@ module Network.AWS.XRay
     -- ** GetTraceSummaries (Paginated)
     , module Network.AWS.XRay.GetTraceSummaries
 
-    -- ** PutTraceSegments
+    -- ** PutTraceSegments 
     , module Network.AWS.XRay.PutTraceSegments
 
     -- ** BatchGetTraces (Paginated)
     , module Network.AWS.XRay.BatchGetTraces
 
-    -- ** GetEncryptionConfig
+    -- ** GetEncryptionConfig 
     , module Network.AWS.XRay.GetEncryptionConfig
 
-    -- ** PutTelemetryRecords
+    -- ** PutTelemetryRecords 
     , module Network.AWS.XRay.PutTelemetryRecords
 
     -- ** GetTraceGraph (Paginated)

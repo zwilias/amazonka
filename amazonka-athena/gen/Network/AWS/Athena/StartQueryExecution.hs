@@ -44,23 +44,22 @@ module Network.AWS.Athena.StartQueryExecution
     ) where
 
 import Network.AWS.Athena.Types
-import Network.AWS.Athena.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 
 -- | /See:/ 'startQueryExecution' smart constructor.
-data StartQueryExecution =
-  StartQueryExecution'
-    { _sqeQueryExecutionContext :: !(Maybe QueryExecutionContext)
-    , _sqeResultConfiguration   :: !(Maybe ResultConfiguration)
-    , _sqeClientRequestToken    :: !(Maybe Text)
-    , _sqeWorkGroup             :: !(Maybe Text)
-    , _sqeQueryString           :: !Text
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data StartQueryExecution = StartQueryExecution'{_sqeQueryExecutionContext
+                                                ::
+                                                !(Maybe QueryExecutionContext),
+                                                _sqeResultConfiguration ::
+                                                !(Maybe ResultConfiguration),
+                                                _sqeClientRequestToken ::
+                                                !(Maybe Text),
+                                                _sqeWorkGroup :: !(Maybe Text),
+                                                _sqeQueryString :: !Text}
+                             deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'StartQueryExecution' with the minimum fields required to make a request.
 --
@@ -78,15 +77,13 @@ data StartQueryExecution =
 startQueryExecution
     :: Text -- ^ 'sqeQueryString'
     -> StartQueryExecution
-startQueryExecution pQueryString_ =
-  StartQueryExecution'
-    { _sqeQueryExecutionContext = Nothing
-    , _sqeResultConfiguration = Nothing
-    , _sqeClientRequestToken = Nothing
-    , _sqeWorkGroup = Nothing
-    , _sqeQueryString = pQueryString_
-    }
-
+startQueryExecution pQueryString_
+  = StartQueryExecution'{_sqeQueryExecutionContext =
+                           Nothing,
+                         _sqeResultConfiguration = Nothing,
+                         _sqeClientRequestToken = Nothing,
+                         _sqeWorkGroup = Nothing,
+                         _sqeQueryString = pQueryString_}
 
 -- | The database within which the query executes.
 sqeQueryExecutionContext :: Lens' StartQueryExecution (Maybe QueryExecutionContext)
@@ -150,13 +147,13 @@ instance ToQuery StartQueryExecution where
         toQuery = const mempty
 
 -- | /See:/ 'startQueryExecutionResponse' smart constructor.
-data StartQueryExecutionResponse =
-  StartQueryExecutionResponse'
-    { _sqersQueryExecutionId :: !(Maybe Text)
-    , _sqersResponseStatus   :: !Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data StartQueryExecutionResponse = StartQueryExecutionResponse'{_sqersQueryExecutionId
+                                                                ::
+                                                                !(Maybe Text),
+                                                                _sqersResponseStatus
+                                                                :: !Int}
+                                     deriving (Eq, Read, Show, Data, Typeable,
+                                               Generic)
 
 -- | Creates a value of 'StartQueryExecutionResponse' with the minimum fields required to make a request.
 --
@@ -168,10 +165,10 @@ data StartQueryExecutionResponse =
 startQueryExecutionResponse
     :: Int -- ^ 'sqersResponseStatus'
     -> StartQueryExecutionResponse
-startQueryExecutionResponse pResponseStatus_ =
-  StartQueryExecutionResponse'
-    {_sqersQueryExecutionId = Nothing, _sqersResponseStatus = pResponseStatus_}
-
+startQueryExecutionResponse pResponseStatus_
+  = StartQueryExecutionResponse'{_sqersQueryExecutionId
+                                   = Nothing,
+                                 _sqersResponseStatus = pResponseStatus_}
 
 -- | The unique ID of the query that ran as a result of this request.
 sqersQueryExecutionId :: Lens' StartQueryExecutionResponse (Maybe Text)

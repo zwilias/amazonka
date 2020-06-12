@@ -25,7 +25,7 @@
 --
 -- You cannot access the encrypted secret information in any secret that is scheduled for deletion. If you need to access that information, you must cancel the deletion with 'RestoreSecret' and then retrieve the information.
 --
--- __Minimum permissions__
+-- __Minimum permissions__ 
 --
 -- To run this command, you must have the following permissions:
 --
@@ -33,7 +33,7 @@
 --
 --
 --
--- __Related operations__
+-- __Related operations__ 
 --
 --     * To create a secret, use 'CreateSecret' .
 --
@@ -65,16 +65,12 @@ import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 import Network.AWS.SecretsManager.Types
-import Network.AWS.SecretsManager.Types.Product
 
 -- | /See:/ 'deleteSecret' smart constructor.
-data DeleteSecret =
-  DeleteSecret'
-    { _dsRecoveryWindowInDays :: !(Maybe Integer)
-    , _dsSecretId             :: !Text
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data DeleteSecret = DeleteSecret'{_dsRecoveryWindowInDays
+                                  :: !(Maybe Integer),
+                                  _dsSecretId :: !Text}
+                      deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'DeleteSecret' with the minimum fields required to make a request.
 --
@@ -86,9 +82,9 @@ data DeleteSecret =
 deleteSecret
     :: Text -- ^ 'dsSecretId'
     -> DeleteSecret
-deleteSecret pSecretId_ =
-  DeleteSecret' {_dsRecoveryWindowInDays = Nothing, _dsSecretId = pSecretId_}
-
+deleteSecret pSecretId_
+  = DeleteSecret'{_dsRecoveryWindowInDays = Nothing,
+                  _dsSecretId = pSecretId_}
 
 -- | (Optional) Specifies the number of days that Secrets Manager waits before it can delete the secret. This value can range from 7 to 30 days. The default value is 30.
 dsRecoveryWindowInDays :: Lens' DeleteSecret (Maybe Integer)
@@ -137,15 +133,13 @@ instance ToQuery DeleteSecret where
         toQuery = const mempty
 
 -- | /See:/ 'deleteSecretResponse' smart constructor.
-data DeleteSecretResponse =
-  DeleteSecretResponse'
-    { _dsrsARN            :: !(Maybe Text)
-    , _dsrsName           :: !(Maybe Text)
-    , _dsrsDeletionDate   :: !(Maybe POSIX)
-    , _dsrsResponseStatus :: !Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data DeleteSecretResponse = DeleteSecretResponse'{_dsrsARN
+                                                  :: !(Maybe Text),
+                                                  _dsrsName :: !(Maybe Text),
+                                                  _dsrsDeletionDate ::
+                                                  !(Maybe POSIX),
+                                                  _dsrsResponseStatus :: !Int}
+                              deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'DeleteSecretResponse' with the minimum fields required to make a request.
 --
@@ -161,14 +155,10 @@ data DeleteSecretResponse =
 deleteSecretResponse
     :: Int -- ^ 'dsrsResponseStatus'
     -> DeleteSecretResponse
-deleteSecretResponse pResponseStatus_ =
-  DeleteSecretResponse'
-    { _dsrsARN = Nothing
-    , _dsrsName = Nothing
-    , _dsrsDeletionDate = Nothing
-    , _dsrsResponseStatus = pResponseStatus_
-    }
-
+deleteSecretResponse pResponseStatus_
+  = DeleteSecretResponse'{_dsrsARN = Nothing,
+                          _dsrsName = Nothing, _dsrsDeletionDate = Nothing,
+                          _dsrsResponseStatus = pResponseStatus_}
 
 -- | The ARN of the secret that is now scheduled for deletion.
 dsrsARN :: Lens' DeleteSecretResponse (Maybe Text)

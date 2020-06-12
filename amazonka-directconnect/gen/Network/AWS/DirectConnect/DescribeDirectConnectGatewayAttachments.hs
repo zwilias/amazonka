@@ -44,7 +44,6 @@ module Network.AWS.DirectConnect.DescribeDirectConnectGatewayAttachments
     ) where
 
 import Network.AWS.DirectConnect.Types
-import Network.AWS.DirectConnect.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Pager
 import Network.AWS.Prelude
@@ -52,15 +51,24 @@ import Network.AWS.Request
 import Network.AWS.Response
 
 -- | /See:/ 'describeDirectConnectGatewayAttachments' smart constructor.
-data DescribeDirectConnectGatewayAttachments =
-  DescribeDirectConnectGatewayAttachments'
-    { _ddcgasDirectConnectGatewayId :: !(Maybe Text)
-    , _ddcgasNextToken              :: !(Maybe Text)
-    , _ddcgasMaxResults             :: !(Maybe Int)
-    , _ddcgasVirtualInterfaceId     :: !(Maybe Text)
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data DescribeDirectConnectGatewayAttachments = DescribeDirectConnectGatewayAttachments'{_ddcgasDirectConnectGatewayId
+                                                                                        ::
+                                                                                        !(Maybe
+                                                                                            Text),
+                                                                                        _ddcgasNextToken
+                                                                                        ::
+                                                                                        !(Maybe
+                                                                                            Text),
+                                                                                        _ddcgasMaxResults
+                                                                                        ::
+                                                                                        !(Maybe
+                                                                                            Int),
+                                                                                        _ddcgasVirtualInterfaceId
+                                                                                        ::
+                                                                                        !(Maybe
+                                                                                            Text)}
+                                                 deriving (Eq, Read, Show, Data,
+                                                           Typeable, Generic)
 
 -- | Creates a value of 'DescribeDirectConnectGatewayAttachments' with the minimum fields required to make a request.
 --
@@ -75,14 +83,13 @@ data DescribeDirectConnectGatewayAttachments =
 -- * 'ddcgasVirtualInterfaceId' - The ID of the virtual interface.
 describeDirectConnectGatewayAttachments
     :: DescribeDirectConnectGatewayAttachments
-describeDirectConnectGatewayAttachments =
-  DescribeDirectConnectGatewayAttachments'
-    { _ddcgasDirectConnectGatewayId = Nothing
-    , _ddcgasNextToken = Nothing
-    , _ddcgasMaxResults = Nothing
-    , _ddcgasVirtualInterfaceId = Nothing
-    }
-
+describeDirectConnectGatewayAttachments
+  = DescribeDirectConnectGatewayAttachments'{_ddcgasDirectConnectGatewayId
+                                               = Nothing,
+                                             _ddcgasNextToken = Nothing,
+                                             _ddcgasMaxResults = Nothing,
+                                             _ddcgasVirtualInterfaceId =
+                                               Nothing}
 
 -- | The ID of the Direct Connect gateway.
 ddcgasDirectConnectGatewayId :: Lens' DescribeDirectConnectGatewayAttachments (Maybe Text)
@@ -170,14 +177,21 @@ instance ToQuery
         toQuery = const mempty
 
 -- | /See:/ 'describeDirectConnectGatewayAttachmentsResponse' smart constructor.
-data DescribeDirectConnectGatewayAttachmentsResponse =
-  DescribeDirectConnectGatewayAttachmentsResponse'
-    { _ddcgasrsNextToken :: !(Maybe Text)
-    , _ddcgasrsDirectConnectGatewayAttachments :: !(Maybe [DirectConnectGatewayAttachment])
-    , _ddcgasrsResponseStatus :: !Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data DescribeDirectConnectGatewayAttachmentsResponse = DescribeDirectConnectGatewayAttachmentsResponse'{_ddcgasrsNextToken
+                                                                                                        ::
+                                                                                                        !(Maybe
+                                                                                                            Text),
+                                                                                                        _ddcgasrsDirectConnectGatewayAttachments
+                                                                                                        ::
+                                                                                                        !(Maybe
+                                                                                                            [DirectConnectGatewayAttachment]),
+                                                                                                        _ddcgasrsResponseStatus
+                                                                                                        ::
+                                                                                                        !Int}
+                                                         deriving (Eq, Read,
+                                                                   Show, Data,
+                                                                   Typeable,
+                                                                   Generic)
 
 -- | Creates a value of 'DescribeDirectConnectGatewayAttachmentsResponse' with the minimum fields required to make a request.
 --
@@ -191,13 +205,14 @@ data DescribeDirectConnectGatewayAttachmentsResponse =
 describeDirectConnectGatewayAttachmentsResponse
     :: Int -- ^ 'ddcgasrsResponseStatus'
     -> DescribeDirectConnectGatewayAttachmentsResponse
-describeDirectConnectGatewayAttachmentsResponse pResponseStatus_ =
-  DescribeDirectConnectGatewayAttachmentsResponse'
-    { _ddcgasrsNextToken = Nothing
-    , _ddcgasrsDirectConnectGatewayAttachments = Nothing
-    , _ddcgasrsResponseStatus = pResponseStatus_
-    }
-
+describeDirectConnectGatewayAttachmentsResponse
+  pResponseStatus_
+  = DescribeDirectConnectGatewayAttachmentsResponse'{_ddcgasrsNextToken
+                                                       = Nothing,
+                                                     _ddcgasrsDirectConnectGatewayAttachments
+                                                       = Nothing,
+                                                     _ddcgasrsResponseStatus =
+                                                       pResponseStatus_}
 
 -- | The token to retrieve the next page.
 ddcgasrsNextToken :: Lens' DescribeDirectConnectGatewayAttachmentsResponse (Maybe Text)

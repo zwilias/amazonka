@@ -40,22 +40,27 @@ module Network.AWS.KinesisAnalytics.AddApplicationInputProcessingConfiguration
     ) where
 
 import Network.AWS.KinesisAnalytics.Types
-import Network.AWS.KinesisAnalytics.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 
 -- | /See:/ 'addApplicationInputProcessingConfiguration' smart constructor.
-data AddApplicationInputProcessingConfiguration =
-  AddApplicationInputProcessingConfiguration'
-    { _aaipcApplicationName              :: !Text
-    , _aaipcCurrentApplicationVersionId  :: !Nat
-    , _aaipcInputId                      :: !Text
-    , _aaipcInputProcessingConfiguration :: !InputProcessingConfiguration
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data AddApplicationInputProcessingConfiguration = AddApplicationInputProcessingConfiguration'{_aaipcApplicationName
+                                                                                              ::
+                                                                                              !Text,
+                                                                                              _aaipcCurrentApplicationVersionId
+                                                                                              ::
+                                                                                              !Nat,
+                                                                                              _aaipcInputId
+                                                                                              ::
+                                                                                              !Text,
+                                                                                              _aaipcInputProcessingConfiguration
+                                                                                              ::
+                                                                                              !InputProcessingConfiguration}
+                                                    deriving (Eq, Read, Show,
+                                                              Data, Typeable,
+                                                              Generic)
 
 -- | Creates a value of 'AddApplicationInputProcessingConfiguration' with the minimum fields required to make a request.
 --
@@ -74,14 +79,19 @@ addApplicationInputProcessingConfiguration
     -> Text -- ^ 'aaipcInputId'
     -> InputProcessingConfiguration -- ^ 'aaipcInputProcessingConfiguration'
     -> AddApplicationInputProcessingConfiguration
-addApplicationInputProcessingConfiguration pApplicationName_ pCurrentApplicationVersionId_ pInputId_ pInputProcessingConfiguration_ =
-  AddApplicationInputProcessingConfiguration'
-    { _aaipcApplicationName = pApplicationName_
-    , _aaipcCurrentApplicationVersionId = _Nat # pCurrentApplicationVersionId_
-    , _aaipcInputId = pInputId_
-    , _aaipcInputProcessingConfiguration = pInputProcessingConfiguration_
-    }
-
+addApplicationInputProcessingConfiguration
+  pApplicationName_ pCurrentApplicationVersionId_
+  pInputId_ pInputProcessingConfiguration_
+  = AddApplicationInputProcessingConfiguration'{_aaipcApplicationName
+                                                  = pApplicationName_,
+                                                _aaipcCurrentApplicationVersionId
+                                                  =
+                                                  _Nat #
+                                                    pCurrentApplicationVersionId_,
+                                                _aaipcInputId = pInputId_,
+                                                _aaipcInputProcessingConfiguration
+                                                  =
+                                                  pInputProcessingConfiguration_}
 
 -- | Name of the application to which you want to add the input processing configuration.
 aaipcApplicationName :: Lens' AddApplicationInputProcessingConfiguration Text
@@ -158,12 +168,15 @@ instance ToQuery
         toQuery = const mempty
 
 -- | /See:/ 'addApplicationInputProcessingConfigurationResponse' smart constructor.
-newtype AddApplicationInputProcessingConfigurationResponse =
-  AddApplicationInputProcessingConfigurationResponse'
-    { _aaipcrsResponseStatus :: Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+newtype AddApplicationInputProcessingConfigurationResponse = AddApplicationInputProcessingConfigurationResponse'{_aaipcrsResponseStatus
+                                                                                                                 ::
+                                                                                                                 Int}
+                                                               deriving (Eq,
+                                                                         Read,
+                                                                         Show,
+                                                                         Data,
+                                                                         Typeable,
+                                                                         Generic)
 
 -- | Creates a value of 'AddApplicationInputProcessingConfigurationResponse' with the minimum fields required to make a request.
 --
@@ -173,10 +186,10 @@ newtype AddApplicationInputProcessingConfigurationResponse =
 addApplicationInputProcessingConfigurationResponse
     :: Int -- ^ 'aaipcrsResponseStatus'
     -> AddApplicationInputProcessingConfigurationResponse
-addApplicationInputProcessingConfigurationResponse pResponseStatus_ =
-  AddApplicationInputProcessingConfigurationResponse'
-    {_aaipcrsResponseStatus = pResponseStatus_}
-
+addApplicationInputProcessingConfigurationResponse
+  pResponseStatus_
+  = AddApplicationInputProcessingConfigurationResponse'{_aaipcrsResponseStatus
+                                                          = pResponseStatus_}
 
 -- | -- | The response status code.
 aaipcrsResponseStatus :: Lens' AddApplicationInputProcessingConfigurationResponse Int

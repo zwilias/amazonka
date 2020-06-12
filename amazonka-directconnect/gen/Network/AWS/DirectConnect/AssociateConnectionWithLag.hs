@@ -58,20 +58,18 @@ module Network.AWS.DirectConnect.AssociateConnectionWithLag
     ) where
 
 import Network.AWS.DirectConnect.Types
-import Network.AWS.DirectConnect.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 
 -- | /See:/ 'associateConnectionWithLag' smart constructor.
-data AssociateConnectionWithLag =
-  AssociateConnectionWithLag'
-    { _acwlConnectionId :: !Text
-    , _acwlLagId        :: !Text
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data AssociateConnectionWithLag = AssociateConnectionWithLag'{_acwlConnectionId
+                                                              :: !Text,
+                                                              _acwlLagId ::
+                                                              !Text}
+                                    deriving (Eq, Read, Show, Data, Typeable,
+                                              Generic)
 
 -- | Creates a value of 'AssociateConnectionWithLag' with the minimum fields required to make a request.
 --
@@ -84,10 +82,10 @@ associateConnectionWithLag
     :: Text -- ^ 'acwlConnectionId'
     -> Text -- ^ 'acwlLagId'
     -> AssociateConnectionWithLag
-associateConnectionWithLag pConnectionId_ pLagId_ =
-  AssociateConnectionWithLag'
-    {_acwlConnectionId = pConnectionId_, _acwlLagId = pLagId_}
-
+associateConnectionWithLag pConnectionId_ pLagId_
+  = AssociateConnectionWithLag'{_acwlConnectionId =
+                                  pConnectionId_,
+                                _acwlLagId = pLagId_}
 
 -- | The ID of the connection.
 acwlConnectionId :: Lens' AssociateConnectionWithLag Text

@@ -39,7 +39,6 @@ module Network.AWS.Glacier.GetVaultAccessPolicy
     ) where
 
 import Network.AWS.Glacier.Types
-import Network.AWS.Glacier.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.Request
@@ -50,13 +49,10 @@ import Network.AWS.Response
 --
 --
 -- /See:/ 'getVaultAccessPolicy' smart constructor.
-data GetVaultAccessPolicy =
-  GetVaultAccessPolicy'
-    { _gvapAccountId :: !Text
-    , _gvapVaultName :: !Text
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data GetVaultAccessPolicy = GetVaultAccessPolicy'{_gvapAccountId
+                                                  :: !Text,
+                                                  _gvapVaultName :: !Text}
+                              deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'GetVaultAccessPolicy' with the minimum fields required to make a request.
 --
@@ -69,10 +65,9 @@ getVaultAccessPolicy
     :: Text -- ^ 'gvapAccountId'
     -> Text -- ^ 'gvapVaultName'
     -> GetVaultAccessPolicy
-getVaultAccessPolicy pAccountId_ pVaultName_ =
-  GetVaultAccessPolicy'
-    {_gvapAccountId = pAccountId_, _gvapVaultName = pVaultName_}
-
+getVaultAccessPolicy pAccountId_ pVaultName_
+  = GetVaultAccessPolicy'{_gvapAccountId = pAccountId_,
+                          _gvapVaultName = pVaultName_}
 
 -- | The @AccountId@ value is the AWS account ID of the account that owns the vault. You can either specify an AWS account ID or optionally a single '@-@ ' (hyphen), in which case Amazon Glacier uses the AWS account ID associated with the credentials used to sign the request. If you use an account ID, do not include any hyphens ('-') in the ID.
 gvapAccountId :: Lens' GetVaultAccessPolicy Text
@@ -113,13 +108,14 @@ instance ToQuery GetVaultAccessPolicy where
 --
 --
 -- /See:/ 'getVaultAccessPolicyResponse' smart constructor.
-data GetVaultAccessPolicyResponse =
-  GetVaultAccessPolicyResponse'
-    { _gvaprsPolicy         :: !(Maybe VaultAccessPolicy)
-    , _gvaprsResponseStatus :: !Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data GetVaultAccessPolicyResponse = GetVaultAccessPolicyResponse'{_gvaprsPolicy
+                                                                  ::
+                                                                  !(Maybe
+                                                                      VaultAccessPolicy),
+                                                                  _gvaprsResponseStatus
+                                                                  :: !Int}
+                                      deriving (Eq, Read, Show, Data, Typeable,
+                                                Generic)
 
 -- | Creates a value of 'GetVaultAccessPolicyResponse' with the minimum fields required to make a request.
 --
@@ -131,10 +127,10 @@ data GetVaultAccessPolicyResponse =
 getVaultAccessPolicyResponse
     :: Int -- ^ 'gvaprsResponseStatus'
     -> GetVaultAccessPolicyResponse
-getVaultAccessPolicyResponse pResponseStatus_ =
-  GetVaultAccessPolicyResponse'
-    {_gvaprsPolicy = Nothing, _gvaprsResponseStatus = pResponseStatus_}
-
+getVaultAccessPolicyResponse pResponseStatus_
+  = GetVaultAccessPolicyResponse'{_gvaprsPolicy =
+                                    Nothing,
+                                  _gvaprsResponseStatus = pResponseStatus_}
 
 -- | Contains the returned vault access policy as a JSON string.
 gvaprsPolicy :: Lens' GetVaultAccessPolicyResponse (Maybe VaultAccessPolicy)

@@ -43,15 +43,12 @@ import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 import Network.AWS.Route53Domains.Types
-import Network.AWS.Route53Domains.Types.Product
 
 -- | /See:/ 'enableDomainAutoRenew' smart constructor.
-newtype EnableDomainAutoRenew =
-  EnableDomainAutoRenew'
-    { _edarDomainName :: Text
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+newtype EnableDomainAutoRenew = EnableDomainAutoRenew'{_edarDomainName
+                                                       :: Text}
+                                  deriving (Eq, Read, Show, Data, Typeable,
+                                            Generic)
 
 -- | Creates a value of 'EnableDomainAutoRenew' with the minimum fields required to make a request.
 --
@@ -61,9 +58,9 @@ newtype EnableDomainAutoRenew =
 enableDomainAutoRenew
     :: Text -- ^ 'edarDomainName'
     -> EnableDomainAutoRenew
-enableDomainAutoRenew pDomainName_ =
-  EnableDomainAutoRenew' {_edarDomainName = pDomainName_}
-
+enableDomainAutoRenew pDomainName_
+  = EnableDomainAutoRenew'{_edarDomainName =
+                             pDomainName_}
 
 -- | The name of the domain that you want to enable automatic renewal for.
 edarDomainName :: Lens' EnableDomainAutoRenew Text
@@ -105,12 +102,10 @@ instance ToQuery EnableDomainAutoRenew where
         toQuery = const mempty
 
 -- | /See:/ 'enableDomainAutoRenewResponse' smart constructor.
-newtype EnableDomainAutoRenewResponse =
-  EnableDomainAutoRenewResponse'
-    { _edarrsResponseStatus :: Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+newtype EnableDomainAutoRenewResponse = EnableDomainAutoRenewResponse'{_edarrsResponseStatus
+                                                                       :: Int}
+                                          deriving (Eq, Read, Show, Data,
+                                                    Typeable, Generic)
 
 -- | Creates a value of 'EnableDomainAutoRenewResponse' with the minimum fields required to make a request.
 --
@@ -120,9 +115,9 @@ newtype EnableDomainAutoRenewResponse =
 enableDomainAutoRenewResponse
     :: Int -- ^ 'edarrsResponseStatus'
     -> EnableDomainAutoRenewResponse
-enableDomainAutoRenewResponse pResponseStatus_ =
-  EnableDomainAutoRenewResponse' {_edarrsResponseStatus = pResponseStatus_}
-
+enableDomainAutoRenewResponse pResponseStatus_
+  = EnableDomainAutoRenewResponse'{_edarrsResponseStatus
+                                     = pResponseStatus_}
 
 -- | -- | The response status code.
 edarrsResponseStatus :: Lens' EnableDomainAutoRenewResponse Int

@@ -49,24 +49,25 @@ module Network.AWS.EC2.AssociateVPCCidrBlock
     ) where
 
 import Network.AWS.EC2.Types
-import Network.AWS.EC2.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 
 -- | /See:/ 'associateVPCCidrBlock' smart constructor.
-data AssociateVPCCidrBlock =
-  AssociateVPCCidrBlock'
-    { _avcbIPv6CidrBlock                   :: !(Maybe Text)
-    , _avcbIPv6CidrBlockNetworkBorderGroup :: !(Maybe Text)
-    , _avcbCidrBlock                       :: !(Maybe Text)
-    , _avcbIPv6Pool                        :: !(Maybe Text)
-    , _avcbAmazonProvidedIPv6CidrBlock     :: !(Maybe Bool)
-    , _avcbVPCId                           :: !Text
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data AssociateVPCCidrBlock = AssociateVPCCidrBlock'{_avcbIPv6CidrBlock
+                                                    :: !(Maybe Text),
+                                                    _avcbIPv6CidrBlockNetworkBorderGroup
+                                                    :: !(Maybe Text),
+                                                    _avcbCidrBlock ::
+                                                    !(Maybe Text),
+                                                    _avcbIPv6Pool ::
+                                                    !(Maybe Text),
+                                                    _avcbAmazonProvidedIPv6CidrBlock
+                                                    :: !(Maybe Bool),
+                                                    _avcbVPCId :: !Text}
+                               deriving (Eq, Read, Show, Data, Typeable,
+                                         Generic)
 
 -- | Creates a value of 'AssociateVPCCidrBlock' with the minimum fields required to make a request.
 --
@@ -86,16 +87,13 @@ data AssociateVPCCidrBlock =
 associateVPCCidrBlock
     :: Text -- ^ 'avcbVPCId'
     -> AssociateVPCCidrBlock
-associateVPCCidrBlock pVPCId_ =
-  AssociateVPCCidrBlock'
-    { _avcbIPv6CidrBlock = Nothing
-    , _avcbIPv6CidrBlockNetworkBorderGroup = Nothing
-    , _avcbCidrBlock = Nothing
-    , _avcbIPv6Pool = Nothing
-    , _avcbAmazonProvidedIPv6CidrBlock = Nothing
-    , _avcbVPCId = pVPCId_
-    }
-
+associateVPCCidrBlock pVPCId_
+  = AssociateVPCCidrBlock'{_avcbIPv6CidrBlock =
+                             Nothing,
+                           _avcbIPv6CidrBlockNetworkBorderGroup = Nothing,
+                           _avcbCidrBlock = Nothing, _avcbIPv6Pool = Nothing,
+                           _avcbAmazonProvidedIPv6CidrBlock = Nothing,
+                           _avcbVPCId = pVPCId_}
 
 -- | An IPv6 CIDR block from the IPv6 address pool. You must also specify @Ipv6Pool@ in the request. To let Amazon choose the IPv6 CIDR block for you, omit this parameter.
 avcbIPv6CidrBlock :: Lens' AssociateVPCCidrBlock (Maybe Text)
@@ -158,15 +156,22 @@ instance ToQuery AssociateVPCCidrBlock where
                "VpcId" =: _avcbVPCId]
 
 -- | /See:/ 'associateVPCCidrBlockResponse' smart constructor.
-data AssociateVPCCidrBlockResponse =
-  AssociateVPCCidrBlockResponse'
-    { _avcbrsVPCId                    :: !(Maybe Text)
-    , _avcbrsCidrBlockAssociation     :: !(Maybe VPCCidrBlockAssociation)
-    , _avcbrsIPv6CidrBlockAssociation :: !(Maybe VPCIPv6CidrBlockAssociation)
-    , _avcbrsResponseStatus           :: !Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data AssociateVPCCidrBlockResponse = AssociateVPCCidrBlockResponse'{_avcbrsVPCId
+                                                                    ::
+                                                                    !(Maybe
+                                                                        Text),
+                                                                    _avcbrsCidrBlockAssociation
+                                                                    ::
+                                                                    !(Maybe
+                                                                        VPCCidrBlockAssociation),
+                                                                    _avcbrsIPv6CidrBlockAssociation
+                                                                    ::
+                                                                    !(Maybe
+                                                                        VPCIPv6CidrBlockAssociation),
+                                                                    _avcbrsResponseStatus
+                                                                    :: !Int}
+                                       deriving (Eq, Read, Show, Data, Typeable,
+                                                 Generic)
 
 -- | Creates a value of 'AssociateVPCCidrBlockResponse' with the minimum fields required to make a request.
 --
@@ -182,14 +187,12 @@ data AssociateVPCCidrBlockResponse =
 associateVPCCidrBlockResponse
     :: Int -- ^ 'avcbrsResponseStatus'
     -> AssociateVPCCidrBlockResponse
-associateVPCCidrBlockResponse pResponseStatus_ =
-  AssociateVPCCidrBlockResponse'
-    { _avcbrsVPCId = Nothing
-    , _avcbrsCidrBlockAssociation = Nothing
-    , _avcbrsIPv6CidrBlockAssociation = Nothing
-    , _avcbrsResponseStatus = pResponseStatus_
-    }
-
+associateVPCCidrBlockResponse pResponseStatus_
+  = AssociateVPCCidrBlockResponse'{_avcbrsVPCId =
+                                     Nothing,
+                                   _avcbrsCidrBlockAssociation = Nothing,
+                                   _avcbrsIPv6CidrBlockAssociation = Nothing,
+                                   _avcbrsResponseStatus = pResponseStatus_}
 
 -- | The ID of the VPC.
 avcbrsVPCId :: Lens' AssociateVPCCidrBlockResponse (Maybe Text)

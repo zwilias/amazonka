@@ -38,7 +38,6 @@ module Network.AWS.IoT.DetachThingPrincipal
     ) where
 
 import Network.AWS.IoT.Types
-import Network.AWS.IoT.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.Request
@@ -49,13 +48,10 @@ import Network.AWS.Response
 --
 --
 -- /See:/ 'detachThingPrincipal' smart constructor.
-data DetachThingPrincipal =
-  DetachThingPrincipal'
-    { _dtpThingName :: !Text
-    , _dtpPrincipal :: !Text
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data DetachThingPrincipal = DetachThingPrincipal'{_dtpThingName
+                                                  :: !Text,
+                                                  _dtpPrincipal :: !Text}
+                              deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'DetachThingPrincipal' with the minimum fields required to make a request.
 --
@@ -68,10 +64,9 @@ detachThingPrincipal
     :: Text -- ^ 'dtpThingName'
     -> Text -- ^ 'dtpPrincipal'
     -> DetachThingPrincipal
-detachThingPrincipal pThingName_ pPrincipal_ =
-  DetachThingPrincipal'
-    {_dtpThingName = pThingName_, _dtpPrincipal = pPrincipal_}
-
+detachThingPrincipal pThingName_ pPrincipal_
+  = DetachThingPrincipal'{_dtpThingName = pThingName_,
+                          _dtpPrincipal = pPrincipal_}
 
 -- | The name of the thing.
 dtpThingName :: Lens' DetachThingPrincipal Text
@@ -112,12 +107,10 @@ instance ToQuery DetachThingPrincipal where
 --
 --
 -- /See:/ 'detachThingPrincipalResponse' smart constructor.
-newtype DetachThingPrincipalResponse =
-  DetachThingPrincipalResponse'
-    { _dtprsResponseStatus :: Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+newtype DetachThingPrincipalResponse = DetachThingPrincipalResponse'{_dtprsResponseStatus
+                                                                     :: Int}
+                                         deriving (Eq, Read, Show, Data,
+                                                   Typeable, Generic)
 
 -- | Creates a value of 'DetachThingPrincipalResponse' with the minimum fields required to make a request.
 --
@@ -127,9 +120,9 @@ newtype DetachThingPrincipalResponse =
 detachThingPrincipalResponse
     :: Int -- ^ 'dtprsResponseStatus'
     -> DetachThingPrincipalResponse
-detachThingPrincipalResponse pResponseStatus_ =
-  DetachThingPrincipalResponse' {_dtprsResponseStatus = pResponseStatus_}
-
+detachThingPrincipalResponse pResponseStatus_
+  = DetachThingPrincipalResponse'{_dtprsResponseStatus
+                                    = pResponseStatus_}
 
 -- | -- | The response status code.
 dtprsResponseStatus :: Lens' DetachThingPrincipalResponse Int

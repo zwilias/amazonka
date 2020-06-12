@@ -48,20 +48,16 @@ module Network.AWS.CloudWatchLogs.CreateLogStream
     ) where
 
 import Network.AWS.CloudWatchLogs.Types
-import Network.AWS.CloudWatchLogs.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 
 -- | /See:/ 'createLogStream' smart constructor.
-data CreateLogStream =
-  CreateLogStream'
-    { _clsLogGroupName  :: !Text
-    , _clsLogStreamName :: !Text
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data CreateLogStream = CreateLogStream'{_clsLogGroupName
+                                        :: !Text,
+                                        _clsLogStreamName :: !Text}
+                         deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'CreateLogStream' with the minimum fields required to make a request.
 --
@@ -74,10 +70,9 @@ createLogStream
     :: Text -- ^ 'clsLogGroupName'
     -> Text -- ^ 'clsLogStreamName'
     -> CreateLogStream
-createLogStream pLogGroupName_ pLogStreamName_ =
-  CreateLogStream'
-    {_clsLogGroupName = pLogGroupName_, _clsLogStreamName = pLogStreamName_}
-
+createLogStream pLogGroupName_ pLogStreamName_
+  = CreateLogStream'{_clsLogGroupName = pLogGroupName_,
+                     _clsLogStreamName = pLogStreamName_}
 
 -- | The name of the log group.
 clsLogGroupName :: Lens' CreateLogStream Text
@@ -119,16 +114,14 @@ instance ToQuery CreateLogStream where
         toQuery = const mempty
 
 -- | /See:/ 'createLogStreamResponse' smart constructor.
-data CreateLogStreamResponse =
-  CreateLogStreamResponse'
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data CreateLogStreamResponse = CreateLogStreamResponse'
+                                 deriving (Eq, Read, Show, Data, Typeable,
+                                           Generic)
 
 -- | Creates a value of 'CreateLogStreamResponse' with the minimum fields required to make a request.
 --
 createLogStreamResponse
     :: CreateLogStreamResponse
 createLogStreamResponse = CreateLogStreamResponse'
-
 
 instance NFData CreateLogStreamResponse where

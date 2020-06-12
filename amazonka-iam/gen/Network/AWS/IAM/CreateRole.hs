@@ -42,23 +42,19 @@ module Network.AWS.IAM.CreateRole
     ) where
 
 import Network.AWS.IAM.Types
-import Network.AWS.IAM.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 
 -- | /See:/ 'createRole' smart constructor.
-data CreateRole =
-  CreateRole'
-    { _crMaxSessionDuration       :: !(Maybe Nat)
-    , _crPath                     :: !(Maybe Text)
-    , _crDescription              :: !(Maybe Text)
-    , _crRoleName                 :: !Text
-    , _crAssumeRolePolicyDocument :: !Text
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data CreateRole = CreateRole'{_crMaxSessionDuration
+                              :: !(Maybe Nat),
+                              _crPath :: !(Maybe Text),
+                              _crDescription :: !(Maybe Text),
+                              _crRoleName :: !Text,
+                              _crAssumeRolePolicyDocument :: !Text}
+                    deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'CreateRole' with the minimum fields required to make a request.
 --
@@ -77,15 +73,12 @@ createRole
     :: Text -- ^ 'crRoleName'
     -> Text -- ^ 'crAssumeRolePolicyDocument'
     -> CreateRole
-createRole pRoleName_ pAssumeRolePolicyDocument_ =
-  CreateRole'
-    { _crMaxSessionDuration = Nothing
-    , _crPath = Nothing
-    , _crDescription = Nothing
-    , _crRoleName = pRoleName_
-    , _crAssumeRolePolicyDocument = pAssumeRolePolicyDocument_
-    }
-
+createRole pRoleName_ pAssumeRolePolicyDocument_
+  = CreateRole'{_crMaxSessionDuration = Nothing,
+                _crPath = Nothing, _crDescription = Nothing,
+                _crRoleName = pRoleName_,
+                _crAssumeRolePolicyDocument =
+                  pAssumeRolePolicyDocument_}
 
 -- | The maximum session duration (in seconds) that you want to set for the specified role. If you do not specify a value for this setting, the default maximum of one hour is applied. This setting can have a value from 1 hour to 12 hours. Anyone who assumes the role from the AWS CLI or API can use the @DurationSeconds@ API parameter or the @duration-seconds@ CLI parameter to request a longer session. The @MaxSessionDuration@ setting determines the maximum duration that can be requested using the @DurationSeconds@ parameter. If users don't specify a value for the @DurationSeconds@ parameter, their security credentials are valid for one hour by default. This applies when you use the @AssumeRole*@ API operations or the @assume-role*@ CLI operations but does not apply when you use those operations to create a console URL. For more information, see <http://docs.aws.amazon.com/IAM/latest/UserGuide/id_roles_use.html Using IAM Roles> in the /IAM User Guide/ .
 crMaxSessionDuration :: Lens' CreateRole (Maybe Natural)
@@ -137,18 +130,15 @@ instance ToQuery CreateRole where
                "AssumeRolePolicyDocument" =:
                  _crAssumeRolePolicyDocument]
 
--- | Contains the response to a successful 'CreateRole' request.
+-- | Contains the response to a successful 'CreateRole' request. 
 --
 --
 --
 -- /See:/ 'createRoleResponse' smart constructor.
-data CreateRoleResponse =
-  CreateRoleResponse'
-    { _crrsResponseStatus :: !Int
-    , _crrsRole           :: !Role
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data CreateRoleResponse = CreateRoleResponse'{_crrsResponseStatus
+                                              :: !Int,
+                                              _crrsRole :: !Role}
+                            deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'CreateRoleResponse' with the minimum fields required to make a request.
 --
@@ -161,10 +151,10 @@ createRoleResponse
     :: Int -- ^ 'crrsResponseStatus'
     -> Role -- ^ 'crrsRole'
     -> CreateRoleResponse
-createRoleResponse pResponseStatus_ pRole_ =
-  CreateRoleResponse'
-    {_crrsResponseStatus = pResponseStatus_, _crrsRole = pRole_}
-
+createRoleResponse pResponseStatus_ pRole_
+  = CreateRoleResponse'{_crrsResponseStatus =
+                          pResponseStatus_,
+                        _crrsRole = pRole_}
 
 -- | -- | The response status code.
 crrsResponseStatus :: Lens' CreateRoleResponse Int

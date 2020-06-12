@@ -23,7 +23,7 @@
 --
 -- An AWS account has full permission to perform all operations (actions). However, AWS Identity and Access Management (IAM) users don't have any permissions by default. You must grant them explicit permission to perform specific actions. For more information, see <http://docs.aws.amazon.com/amazonglacier/latest/dev/using-iam-with-amazon-glacier.html Access Control Using AWS Identity and Access Management (IAM)> .
 --
--- For conceptual information and underlying REST API, see <http://docs.aws.amazon.com/amazonglacier/latest/dev/configuring-notifications.html Configuring Vault Notifications in Amazon Glacier> and <http://docs.aws.amazon.com/amazonglacier/latest/dev/api-vault-notifications-delete.html Delete Vault Notification Configuration > in the Amazon Glacier Developer Guide.
+-- For conceptual information and underlying REST API, see <http://docs.aws.amazon.com/amazonglacier/latest/dev/configuring-notifications.html Configuring Vault Notifications in Amazon Glacier> and <http://docs.aws.amazon.com/amazonglacier/latest/dev/api-vault-notifications-delete.html Delete Vault Notification Configuration > in the Amazon Glacier Developer Guide. 
 --
 module Network.AWS.Glacier.DeleteVaultNotifications
     (
@@ -40,7 +40,6 @@ module Network.AWS.Glacier.DeleteVaultNotifications
     ) where
 
 import Network.AWS.Glacier.Types
-import Network.AWS.Glacier.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.Request
@@ -51,31 +50,30 @@ import Network.AWS.Response
 --
 --
 -- /See:/ 'deleteVaultNotifications' smart constructor.
-data DeleteVaultNotifications =
-  DeleteVaultNotifications'
-    { _dvnAccountId :: !Text
-    , _dvnVaultName :: !Text
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data DeleteVaultNotifications = DeleteVaultNotifications'{_dvnAccountId
+                                                          :: !Text,
+                                                          _dvnVaultName ::
+                                                          !Text}
+                                  deriving (Eq, Read, Show, Data, Typeable,
+                                            Generic)
 
 -- | Creates a value of 'DeleteVaultNotifications' with the minimum fields required to make a request.
 --
 -- Use one of the following lenses to modify other fields as desired:
 --
--- * 'dvnAccountId' - The @AccountId@ value is the AWS account ID of the account that owns the vault. You can either specify an AWS account ID or optionally a single '@-@ ' (hyphen), in which case Amazon Glacier uses the AWS account ID associated with the credentials used to sign the request. If you use an account ID, do not include any hyphens ('-') in the ID.
+-- * 'dvnAccountId' - The @AccountId@ value is the AWS account ID of the account that owns the vault. You can either specify an AWS account ID or optionally a single '@-@ ' (hyphen), in which case Amazon Glacier uses the AWS account ID associated with the credentials used to sign the request. If you use an account ID, do not include any hyphens ('-') in the ID. 
 --
 -- * 'dvnVaultName' - The name of the vault.
 deleteVaultNotifications
     :: Text -- ^ 'dvnAccountId'
     -> Text -- ^ 'dvnVaultName'
     -> DeleteVaultNotifications
-deleteVaultNotifications pAccountId_ pVaultName_ =
-  DeleteVaultNotifications'
-    {_dvnAccountId = pAccountId_, _dvnVaultName = pVaultName_}
+deleteVaultNotifications pAccountId_ pVaultName_
+  = DeleteVaultNotifications'{_dvnAccountId =
+                                pAccountId_,
+                              _dvnVaultName = pVaultName_}
 
-
--- | The @AccountId@ value is the AWS account ID of the account that owns the vault. You can either specify an AWS account ID or optionally a single '@-@ ' (hyphen), in which case Amazon Glacier uses the AWS account ID associated with the credentials used to sign the request. If you use an account ID, do not include any hyphens ('-') in the ID.
+-- | The @AccountId@ value is the AWS account ID of the account that owns the vault. You can either specify an AWS account ID or optionally a single '@-@ ' (hyphen), in which case Amazon Glacier uses the AWS account ID associated with the credentials used to sign the request. If you use an account ID, do not include any hyphens ('-') in the ID. 
 dvnAccountId :: Lens' DeleteVaultNotifications Text
 dvnAccountId = lens _dvnAccountId (\ s a -> s{_dvnAccountId = a})
 
@@ -107,17 +105,16 @@ instance ToQuery DeleteVaultNotifications where
         toQuery = const mempty
 
 -- | /See:/ 'deleteVaultNotificationsResponse' smart constructor.
-data DeleteVaultNotificationsResponse =
-  DeleteVaultNotificationsResponse'
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data DeleteVaultNotificationsResponse = DeleteVaultNotificationsResponse'
+                                          deriving (Eq, Read, Show, Data,
+                                                    Typeable, Generic)
 
 -- | Creates a value of 'DeleteVaultNotificationsResponse' with the minimum fields required to make a request.
 --
 deleteVaultNotificationsResponse
     :: DeleteVaultNotificationsResponse
-deleteVaultNotificationsResponse = DeleteVaultNotificationsResponse'
-
+deleteVaultNotificationsResponse
+  = DeleteVaultNotificationsResponse'
 
 instance NFData DeleteVaultNotificationsResponse
          where

@@ -39,20 +39,16 @@ module Network.AWS.DirectoryService.RegisterCertificate
     ) where
 
 import Network.AWS.DirectoryService.Types
-import Network.AWS.DirectoryService.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 
 -- | /See:/ 'registerCertificate' smart constructor.
-data RegisterCertificate =
-  RegisterCertificate'
-    { _rcDirectoryId     :: !Text
-    , _rcCertificateData :: !Text
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data RegisterCertificate = RegisterCertificate'{_rcDirectoryId
+                                                :: !Text,
+                                                _rcCertificateData :: !Text}
+                             deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'RegisterCertificate' with the minimum fields required to make a request.
 --
@@ -65,10 +61,10 @@ registerCertificate
     :: Text -- ^ 'rcDirectoryId'
     -> Text -- ^ 'rcCertificateData'
     -> RegisterCertificate
-registerCertificate pDirectoryId_ pCertificateData_ =
-  RegisterCertificate'
-    {_rcDirectoryId = pDirectoryId_, _rcCertificateData = pCertificateData_}
-
+registerCertificate pDirectoryId_ pCertificateData_
+  = RegisterCertificate'{_rcDirectoryId =
+                           pDirectoryId_,
+                         _rcCertificateData = pCertificateData_}
 
 -- | The identifier of the directory.
 rcDirectoryId :: Lens' RegisterCertificate Text
@@ -116,13 +112,13 @@ instance ToQuery RegisterCertificate where
         toQuery = const mempty
 
 -- | /See:/ 'registerCertificateResponse' smart constructor.
-data RegisterCertificateResponse =
-  RegisterCertificateResponse'
-    { _rcrsCertificateId  :: !(Maybe Text)
-    , _rcrsResponseStatus :: !Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data RegisterCertificateResponse = RegisterCertificateResponse'{_rcrsCertificateId
+                                                                ::
+                                                                !(Maybe Text),
+                                                                _rcrsResponseStatus
+                                                                :: !Int}
+                                     deriving (Eq, Read, Show, Data, Typeable,
+                                               Generic)
 
 -- | Creates a value of 'RegisterCertificateResponse' with the minimum fields required to make a request.
 --
@@ -134,10 +130,10 @@ data RegisterCertificateResponse =
 registerCertificateResponse
     :: Int -- ^ 'rcrsResponseStatus'
     -> RegisterCertificateResponse
-registerCertificateResponse pResponseStatus_ =
-  RegisterCertificateResponse'
-    {_rcrsCertificateId = Nothing, _rcrsResponseStatus = pResponseStatus_}
-
+registerCertificateResponse pResponseStatus_
+  = RegisterCertificateResponse'{_rcrsCertificateId =
+                                   Nothing,
+                                 _rcrsResponseStatus = pResponseStatus_}
 
 -- | The identifier of the certificate.
 rcrsCertificateId :: Lens' RegisterCertificateResponse (Maybe Text)

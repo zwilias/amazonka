@@ -44,16 +44,12 @@ import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 import Network.AWS.WAFRegional.Types
-import Network.AWS.WAFRegional.Types.Product
 
 -- | /See:/ 'listIPSets' smart constructor.
-data ListIPSets =
-  ListIPSets'
-    { _lisNextMarker :: !(Maybe Text)
-    , _lisLimit      :: !(Maybe Nat)
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data ListIPSets = ListIPSets'{_lisNextMarker ::
+                              !(Maybe Text),
+                              _lisLimit :: !(Maybe Nat)}
+                    deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'ListIPSets' with the minimum fields required to make a request.
 --
@@ -64,8 +60,9 @@ data ListIPSets =
 -- * 'lisLimit' - Specifies the number of @IPSet@ objects that you want AWS WAF to return for this request. If you have more @IPSet@ objects than the number you specify for @Limit@ , the response includes a @NextMarker@ value that you can use to get another batch of @IPSet@ objects.
 listIPSets
     :: ListIPSets
-listIPSets = ListIPSets' {_lisNextMarker = Nothing, _lisLimit = Nothing}
-
+listIPSets
+  = ListIPSets'{_lisNextMarker = Nothing,
+                _lisLimit = Nothing}
 
 -- | If you specify a value for @Limit@ and you have more @IPSets@ than the value of @Limit@ , AWS WAF returns a @NextMarker@ value in the response that allows you to list another group of @IPSets@ . For the second and subsequent @ListIPSets@ requests, specify the value of @NextMarker@ from the previous response to get information about another batch of @IPSets@ .
 lisNextMarker :: Lens' ListIPSets (Maybe Text)
@@ -113,14 +110,12 @@ instance ToQuery ListIPSets where
         toQuery = const mempty
 
 -- | /See:/ 'listIPSetsResponse' smart constructor.
-data ListIPSetsResponse =
-  ListIPSetsResponse'
-    { _lisrsNextMarker     :: !(Maybe Text)
-    , _lisrsIPSets         :: !(Maybe [IPSetSummary])
-    , _lisrsResponseStatus :: !Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data ListIPSetsResponse = ListIPSetsResponse'{_lisrsNextMarker
+                                              :: !(Maybe Text),
+                                              _lisrsIPSets ::
+                                              !(Maybe [IPSetSummary]),
+                                              _lisrsResponseStatus :: !Int}
+                            deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'ListIPSetsResponse' with the minimum fields required to make a request.
 --
@@ -134,13 +129,10 @@ data ListIPSetsResponse =
 listIPSetsResponse
     :: Int -- ^ 'lisrsResponseStatus'
     -> ListIPSetsResponse
-listIPSetsResponse pResponseStatus_ =
-  ListIPSetsResponse'
-    { _lisrsNextMarker = Nothing
-    , _lisrsIPSets = Nothing
-    , _lisrsResponseStatus = pResponseStatus_
-    }
-
+listIPSetsResponse pResponseStatus_
+  = ListIPSetsResponse'{_lisrsNextMarker = Nothing,
+                        _lisrsIPSets = Nothing,
+                        _lisrsResponseStatus = pResponseStatus_}
 
 -- | If you have more @IPSet@ objects than the number that you specified for @Limit@ in the request, the response includes a @NextMarker@ value. To list more @IPSet@ objects, submit another @ListIPSets@ request, and specify the @NextMarker@ value from the response in the @NextMarker@ value in the next request.
 lisrsNextMarker :: Lens' ListIPSetsResponse (Maybe Text)

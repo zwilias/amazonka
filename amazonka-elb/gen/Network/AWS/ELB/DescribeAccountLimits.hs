@@ -42,20 +42,18 @@ module Network.AWS.ELB.DescribeAccountLimits
     ) where
 
 import Network.AWS.ELB.Types
-import Network.AWS.ELB.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 
 -- | /See:/ 'describeAccountLimits' smart constructor.
-data DescribeAccountLimits =
-  DescribeAccountLimits'
-    { _dalMarker   :: !(Maybe Text)
-    , _dalPageSize :: !(Maybe Nat)
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data DescribeAccountLimits = DescribeAccountLimits'{_dalMarker
+                                                    :: !(Maybe Text),
+                                                    _dalPageSize ::
+                                                    !(Maybe Nat)}
+                               deriving (Eq, Read, Show, Data, Typeable,
+                                         Generic)
 
 -- | Creates a value of 'DescribeAccountLimits' with the minimum fields required to make a request.
 --
@@ -66,9 +64,9 @@ data DescribeAccountLimits =
 -- * 'dalPageSize' - The maximum number of results to return with this call.
 describeAccountLimits
     :: DescribeAccountLimits
-describeAccountLimits =
-  DescribeAccountLimits' {_dalMarker = Nothing, _dalPageSize = Nothing}
-
+describeAccountLimits
+  = DescribeAccountLimits'{_dalMarker = Nothing,
+                           _dalPageSize = Nothing}
 
 -- | The marker for the next set of results. (You received this marker from a previous call.)
 dalMarker :: Lens' DescribeAccountLimits (Maybe Text)
@@ -109,14 +107,18 @@ instance ToQuery DescribeAccountLimits where
                "Marker" =: _dalMarker, "PageSize" =: _dalPageSize]
 
 -- | /See:/ 'describeAccountLimitsResponse' smart constructor.
-data DescribeAccountLimitsResponse =
-  DescribeAccountLimitsResponse'
-    { _dalrsLimits         :: !(Maybe [Limit])
-    , _dalrsNextMarker     :: !(Maybe Text)
-    , _dalrsResponseStatus :: !Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data DescribeAccountLimitsResponse = DescribeAccountLimitsResponse'{_dalrsLimits
+                                                                    ::
+                                                                    !(Maybe
+                                                                        [Limit]),
+                                                                    _dalrsNextMarker
+                                                                    ::
+                                                                    !(Maybe
+                                                                        Text),
+                                                                    _dalrsResponseStatus
+                                                                    :: !Int}
+                                       deriving (Eq, Read, Show, Data, Typeable,
+                                                 Generic)
 
 -- | Creates a value of 'DescribeAccountLimitsResponse' with the minimum fields required to make a request.
 --
@@ -130,13 +132,11 @@ data DescribeAccountLimitsResponse =
 describeAccountLimitsResponse
     :: Int -- ^ 'dalrsResponseStatus'
     -> DescribeAccountLimitsResponse
-describeAccountLimitsResponse pResponseStatus_ =
-  DescribeAccountLimitsResponse'
-    { _dalrsLimits = Nothing
-    , _dalrsNextMarker = Nothing
-    , _dalrsResponseStatus = pResponseStatus_
-    }
-
+describeAccountLimitsResponse pResponseStatus_
+  = DescribeAccountLimitsResponse'{_dalrsLimits =
+                                     Nothing,
+                                   _dalrsNextMarker = Nothing,
+                                   _dalrsResponseStatus = pResponseStatus_}
 
 -- | Information about the limits.
 dalrsLimits :: Lens' DescribeAccountLimitsResponse [Limit]

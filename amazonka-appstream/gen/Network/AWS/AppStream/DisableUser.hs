@@ -18,7 +18,7 @@
 -- Stability   : auto-generated
 -- Portability : non-portable (GHC extensions)
 --
--- Disables the specified user in the user pool. Users can't sign in to AppStream 2.0 until they are re-enabled. This action does not delete the user.
+-- Disables the specified user in the user pool. Users can't sign in to AppStream 2.0 until they are re-enabled. This action does not delete the user. 
 --
 --
 module Network.AWS.AppStream.DisableUser
@@ -38,20 +38,16 @@ module Network.AWS.AppStream.DisableUser
     ) where
 
 import Network.AWS.AppStream.Types
-import Network.AWS.AppStream.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 
 -- | /See:/ 'disableUser' smart constructor.
-data DisableUser =
-  DisableUser'
-    { _dUserName           :: !(Sensitive Text)
-    , _dAuthenticationType :: !AuthenticationType
-    }
-  deriving (Eq, Show, Data, Typeable, Generic)
-
+data DisableUser = DisableUser'{_dUserName ::
+                                !(Sensitive Text),
+                                _dAuthenticationType :: !AuthenticationType}
+                     deriving (Eq, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'DisableUser' with the minimum fields required to make a request.
 --
@@ -64,12 +60,9 @@ disableUser
     :: Text -- ^ 'dUserName'
     -> AuthenticationType -- ^ 'dAuthenticationType'
     -> DisableUser
-disableUser pUserName_ pAuthenticationType_ =
-  DisableUser'
-    { _dUserName = _Sensitive # pUserName_
-    , _dAuthenticationType = pAuthenticationType_
-    }
-
+disableUser pUserName_ pAuthenticationType_
+  = DisableUser'{_dUserName = _Sensitive # pUserName_,
+                 _dAuthenticationType = pAuthenticationType_}
 
 -- | The email address of the user.
 dUserName :: Lens' DisableUser Text
@@ -115,12 +108,10 @@ instance ToQuery DisableUser where
         toQuery = const mempty
 
 -- | /See:/ 'disableUserResponse' smart constructor.
-newtype DisableUserResponse =
-  DisableUserResponse'
-    { _disrsResponseStatus :: Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+newtype DisableUserResponse = DisableUserResponse'{_disrsResponseStatus
+                                                   :: Int}
+                                deriving (Eq, Read, Show, Data, Typeable,
+                                          Generic)
 
 -- | Creates a value of 'DisableUserResponse' with the minimum fields required to make a request.
 --
@@ -130,9 +121,9 @@ newtype DisableUserResponse =
 disableUserResponse
     :: Int -- ^ 'disrsResponseStatus'
     -> DisableUserResponse
-disableUserResponse pResponseStatus_ =
-  DisableUserResponse' {_disrsResponseStatus = pResponseStatus_}
-
+disableUserResponse pResponseStatus_
+  = DisableUserResponse'{_disrsResponseStatus =
+                           pResponseStatus_}
 
 -- | -- | The response status code.
 disrsResponseStatus :: Lens' DisableUserResponse Int

@@ -37,7 +37,6 @@ module Network.AWS.GuardDuty.StartMonitoringMembers
     ) where
 
 import Network.AWS.GuardDuty.Types
-import Network.AWS.GuardDuty.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.Request
@@ -46,13 +45,11 @@ import Network.AWS.Response
 -- | StartMonitoringMembers request body.
 --
 -- /See:/ 'startMonitoringMembers' smart constructor.
-data StartMonitoringMembers =
-  StartMonitoringMembers'
-    { _sAccountIds :: !(Maybe [Text])
-    , _sDetectorId :: !Text
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data StartMonitoringMembers = StartMonitoringMembers'{_sAccountIds
+                                                      :: !(Maybe [Text]),
+                                                      _sDetectorId :: !Text}
+                                deriving (Eq, Read, Show, Data, Typeable,
+                                          Generic)
 
 -- | Creates a value of 'StartMonitoringMembers' with the minimum fields required to make a request.
 --
@@ -64,9 +61,9 @@ data StartMonitoringMembers =
 startMonitoringMembers
     :: Text -- ^ 'sDetectorId'
     -> StartMonitoringMembers
-startMonitoringMembers pDetectorId_ =
-  StartMonitoringMembers' {_sAccountIds = Nothing, _sDetectorId = pDetectorId_}
-
+startMonitoringMembers pDetectorId_
+  = StartMonitoringMembers'{_sAccountIds = Nothing,
+                            _sDetectorId = pDetectorId_}
 
 -- | A list of account IDs of the GuardDuty member accounts whose findings you want the master account to monitor.
 sAccountIds :: Lens' StartMonitoringMembers [Text]
@@ -112,13 +109,14 @@ instance ToQuery StartMonitoringMembers where
         toQuery = const mempty
 
 -- | /See:/ 'startMonitoringMembersResponse' smart constructor.
-data StartMonitoringMembersResponse =
-  StartMonitoringMembersResponse'
-    { _srsUnprocessedAccounts :: !(Maybe [UnprocessedAccount])
-    , _srsResponseStatus      :: !Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data StartMonitoringMembersResponse = StartMonitoringMembersResponse'{_srsUnprocessedAccounts
+                                                                      ::
+                                                                      !(Maybe
+                                                                          [UnprocessedAccount]),
+                                                                      _srsResponseStatus
+                                                                      :: !Int}
+                                        deriving (Eq, Read, Show, Data,
+                                                  Typeable, Generic)
 
 -- | Creates a value of 'StartMonitoringMembersResponse' with the minimum fields required to make a request.
 --
@@ -130,10 +128,10 @@ data StartMonitoringMembersResponse =
 startMonitoringMembersResponse
     :: Int -- ^ 'srsResponseStatus'
     -> StartMonitoringMembersResponse
-startMonitoringMembersResponse pResponseStatus_ =
-  StartMonitoringMembersResponse'
-    {_srsUnprocessedAccounts = Nothing, _srsResponseStatus = pResponseStatus_}
-
+startMonitoringMembersResponse pResponseStatus_
+  = StartMonitoringMembersResponse'{_srsUnprocessedAccounts
+                                      = Nothing,
+                                    _srsResponseStatus = pResponseStatus_}
 
 -- | A list of objects containing the unprocessed account and a result string explaining why it was unprocessed.
 srsUnprocessedAccounts :: Lens' StartMonitoringMembersResponse [UnprocessedAccount]

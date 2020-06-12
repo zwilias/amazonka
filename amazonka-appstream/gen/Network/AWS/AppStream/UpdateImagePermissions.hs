@@ -18,7 +18,7 @@
 -- Stability   : auto-generated
 -- Portability : non-portable (GHC extensions)
 --
--- Adds or updates permissions for the specified private image.
+-- Adds or updates permissions for the specified private image. 
 --
 --
 module Network.AWS.AppStream.UpdateImagePermissions
@@ -39,21 +39,20 @@ module Network.AWS.AppStream.UpdateImagePermissions
     ) where
 
 import Network.AWS.AppStream.Types
-import Network.AWS.AppStream.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 
 -- | /See:/ 'updateImagePermissions' smart constructor.
-data UpdateImagePermissions =
-  UpdateImagePermissions'
-    { _uipName             :: !Text
-    , _uipSharedAccountId  :: !Text
-    , _uipImagePermissions :: !ImagePermissions
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data UpdateImagePermissions = UpdateImagePermissions'{_uipName
+                                                      :: !Text,
+                                                      _uipSharedAccountId ::
+                                                      !Text,
+                                                      _uipImagePermissions ::
+                                                      !ImagePermissions}
+                                deriving (Eq, Read, Show, Data, Typeable,
+                                          Generic)
 
 -- | Creates a value of 'UpdateImagePermissions' with the minimum fields required to make a request.
 --
@@ -69,13 +68,11 @@ updateImagePermissions
     -> Text -- ^ 'uipSharedAccountId'
     -> ImagePermissions -- ^ 'uipImagePermissions'
     -> UpdateImagePermissions
-updateImagePermissions pName_ pSharedAccountId_ pImagePermissions_ =
-  UpdateImagePermissions'
-    { _uipName = pName_
-    , _uipSharedAccountId = pSharedAccountId_
-    , _uipImagePermissions = pImagePermissions_
-    }
-
+updateImagePermissions pName_ pSharedAccountId_
+  pImagePermissions_
+  = UpdateImagePermissions'{_uipName = pName_,
+                            _uipSharedAccountId = pSharedAccountId_,
+                            _uipImagePermissions = pImagePermissions_}
 
 -- | The name of the private image.
 uipName :: Lens' UpdateImagePermissions Text
@@ -128,12 +125,10 @@ instance ToQuery UpdateImagePermissions where
         toQuery = const mempty
 
 -- | /See:/ 'updateImagePermissionsResponse' smart constructor.
-newtype UpdateImagePermissionsResponse =
-  UpdateImagePermissionsResponse'
-    { _uiprsResponseStatus :: Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+newtype UpdateImagePermissionsResponse = UpdateImagePermissionsResponse'{_uiprsResponseStatus
+                                                                         :: Int}
+                                           deriving (Eq, Read, Show, Data,
+                                                     Typeable, Generic)
 
 -- | Creates a value of 'UpdateImagePermissionsResponse' with the minimum fields required to make a request.
 --
@@ -143,9 +138,9 @@ newtype UpdateImagePermissionsResponse =
 updateImagePermissionsResponse
     :: Int -- ^ 'uiprsResponseStatus'
     -> UpdateImagePermissionsResponse
-updateImagePermissionsResponse pResponseStatus_ =
-  UpdateImagePermissionsResponse' {_uiprsResponseStatus = pResponseStatus_}
-
+updateImagePermissionsResponse pResponseStatus_
+  = UpdateImagePermissionsResponse'{_uiprsResponseStatus
+                                      = pResponseStatus_}
 
 -- | -- | The response status code.
 uiprsResponseStatus :: Lens' UpdateImagePermissionsResponse Int

@@ -46,24 +46,20 @@ module Network.AWS.ECR.UploadLayerPart
     ) where
 
 import Network.AWS.ECR.Types
-import Network.AWS.ECR.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 
 -- | /See:/ 'uploadLayerPart' smart constructor.
-data UploadLayerPart =
-  UploadLayerPart'
-    { _ulpRegistryId     :: !(Maybe Text)
-    , _ulpRepositoryName :: !Text
-    , _ulpUploadId       :: !Text
-    , _ulpPartFirstByte  :: !Nat
-    , _ulpPartLastByte   :: !Nat
-    , _ulpLayerPartBlob  :: !Base64
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data UploadLayerPart = UploadLayerPart'{_ulpRegistryId
+                                        :: !(Maybe Text),
+                                        _ulpRepositoryName :: !Text,
+                                        _ulpUploadId :: !Text,
+                                        _ulpPartFirstByte :: !Nat,
+                                        _ulpPartLastByte :: !Nat,
+                                        _ulpLayerPartBlob :: !Base64}
+                         deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'UploadLayerPart' with the minimum fields required to make a request.
 --
@@ -87,16 +83,14 @@ uploadLayerPart
     -> Natural -- ^ 'ulpPartLastByte'
     -> ByteString -- ^ 'ulpLayerPartBlob'
     -> UploadLayerPart
-uploadLayerPart pRepositoryName_ pUploadId_ pPartFirstByte_ pPartLastByte_ pLayerPartBlob_ =
-  UploadLayerPart'
-    { _ulpRegistryId = Nothing
-    , _ulpRepositoryName = pRepositoryName_
-    , _ulpUploadId = pUploadId_
-    , _ulpPartFirstByte = _Nat # pPartFirstByte_
-    , _ulpPartLastByte = _Nat # pPartLastByte_
-    , _ulpLayerPartBlob = _Base64 # pLayerPartBlob_
-    }
-
+uploadLayerPart pRepositoryName_ pUploadId_
+  pPartFirstByte_ pPartLastByte_ pLayerPartBlob_
+  = UploadLayerPart'{_ulpRegistryId = Nothing,
+                     _ulpRepositoryName = pRepositoryName_,
+                     _ulpUploadId = pUploadId_,
+                     _ulpPartFirstByte = _Nat # pPartFirstByte_,
+                     _ulpPartLastByte = _Nat # pPartLastByte_,
+                     _ulpLayerPartBlob = _Base64 # pLayerPartBlob_}
 
 -- | The AWS account ID associated with the registry to which you are uploading layer parts. If you do not specify a registry, the default registry is assumed.
 ulpRegistryId :: Lens' UploadLayerPart (Maybe Text)
@@ -166,16 +160,18 @@ instance ToQuery UploadLayerPart where
         toQuery = const mempty
 
 -- | /See:/ 'uploadLayerPartResponse' smart constructor.
-data UploadLayerPartResponse =
-  UploadLayerPartResponse'
-    { _ulprsRegistryId       :: !(Maybe Text)
-    , _ulprsLastByteReceived :: !(Maybe Nat)
-    , _ulprsRepositoryName   :: !(Maybe Text)
-    , _ulprsUploadId         :: !(Maybe Text)
-    , _ulprsResponseStatus   :: !Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data UploadLayerPartResponse = UploadLayerPartResponse'{_ulprsRegistryId
+                                                        :: !(Maybe Text),
+                                                        _ulprsLastByteReceived
+                                                        :: !(Maybe Nat),
+                                                        _ulprsRepositoryName ::
+                                                        !(Maybe Text),
+                                                        _ulprsUploadId ::
+                                                        !(Maybe Text),
+                                                        _ulprsResponseStatus ::
+                                                        !Int}
+                                 deriving (Eq, Read, Show, Data, Typeable,
+                                           Generic)
 
 -- | Creates a value of 'UploadLayerPartResponse' with the minimum fields required to make a request.
 --
@@ -193,15 +189,13 @@ data UploadLayerPartResponse =
 uploadLayerPartResponse
     :: Int -- ^ 'ulprsResponseStatus'
     -> UploadLayerPartResponse
-uploadLayerPartResponse pResponseStatus_ =
-  UploadLayerPartResponse'
-    { _ulprsRegistryId = Nothing
-    , _ulprsLastByteReceived = Nothing
-    , _ulprsRepositoryName = Nothing
-    , _ulprsUploadId = Nothing
-    , _ulprsResponseStatus = pResponseStatus_
-    }
-
+uploadLayerPartResponse pResponseStatus_
+  = UploadLayerPartResponse'{_ulprsRegistryId =
+                               Nothing,
+                             _ulprsLastByteReceived = Nothing,
+                             _ulprsRepositoryName = Nothing,
+                             _ulprsUploadId = Nothing,
+                             _ulprsResponseStatus = pResponseStatus_}
 
 -- | The registry ID associated with the request.
 ulprsRegistryId :: Lens' UploadLayerPartResponse (Maybe Text)

@@ -47,7 +47,6 @@ module Network.AWS.EC2.DescribeImageAttribute
     ) where
 
 import Network.AWS.EC2.Types
-import Network.AWS.EC2.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.Request
@@ -58,14 +57,13 @@ import Network.AWS.Response
 --
 --
 -- /See:/ 'describeImageAttribute' smart constructor.
-data DescribeImageAttribute =
-  DescribeImageAttribute'
-    { _diaiDryRun    :: !(Maybe Bool)
-    , _diaiAttribute :: !ImageAttributeName
-    , _diaiImageId   :: !Text
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data DescribeImageAttribute = DescribeImageAttribute'{_diaiDryRun
+                                                      :: !(Maybe Bool),
+                                                      _diaiAttribute ::
+                                                      !ImageAttributeName,
+                                                      _diaiImageId :: !Text}
+                                deriving (Eq, Read, Show, Data, Typeable,
+                                          Generic)
 
 -- | Creates a value of 'DescribeImageAttribute' with the minimum fields required to make a request.
 --
@@ -80,13 +78,10 @@ describeImageAttribute
     :: ImageAttributeName -- ^ 'diaiAttribute'
     -> Text -- ^ 'diaiImageId'
     -> DescribeImageAttribute
-describeImageAttribute pAttribute_ pImageId_ =
-  DescribeImageAttribute'
-    { _diaiDryRun = Nothing
-    , _diaiAttribute = pAttribute_
-    , _diaiImageId = pImageId_
-    }
-
+describeImageAttribute pAttribute_ pImageId_
+  = DescribeImageAttribute'{_diaiDryRun = Nothing,
+                            _diaiAttribute = pAttribute_,
+                            _diaiImageId = pImageId_}
 
 -- | Checks whether you have the required permissions for the action, without actually making the request, and provides an error response. If you have the required permissions, the error response is @DryRunOperation@ . Otherwise, it is @UnauthorizedOperation@ .
 diaiDryRun :: Lens' DescribeImageAttribute (Maybe Bool)
@@ -148,20 +143,42 @@ instance ToQuery DescribeImageAttribute where
 --
 --
 -- /See:/ 'describeImageAttributeResponse' smart constructor.
-data DescribeImageAttributeResponse =
-  DescribeImageAttributeResponse'
-    { _diarsLaunchPermissions   :: !(Maybe [LaunchPermission])
-    , _diarsRAMDiskId           :: !(Maybe AttributeValue)
-    , _diarsKernelId            :: !(Maybe AttributeValue)
-    , _diarsSRIOVNetSupport     :: !(Maybe AttributeValue)
-    , _diarsImageId             :: !(Maybe Text)
-    , _diarsProductCodes        :: !(Maybe [ProductCode])
-    , _diarsDescription         :: !(Maybe AttributeValue)
-    , _diarsBlockDeviceMappings :: !(Maybe [BlockDeviceMapping])
-    , _diarsResponseStatus      :: !Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data DescribeImageAttributeResponse = DescribeImageAttributeResponse'{_diarsLaunchPermissions
+                                                                      ::
+                                                                      !(Maybe
+                                                                          [LaunchPermission]),
+                                                                      _diarsRAMDiskId
+                                                                      ::
+                                                                      !(Maybe
+                                                                          AttributeValue),
+                                                                      _diarsKernelId
+                                                                      ::
+                                                                      !(Maybe
+                                                                          AttributeValue),
+                                                                      _diarsSRIOVNetSupport
+                                                                      ::
+                                                                      !(Maybe
+                                                                          AttributeValue),
+                                                                      _diarsImageId
+                                                                      ::
+                                                                      !(Maybe
+                                                                          Text),
+                                                                      _diarsProductCodes
+                                                                      ::
+                                                                      !(Maybe
+                                                                          [ProductCode]),
+                                                                      _diarsDescription
+                                                                      ::
+                                                                      !(Maybe
+                                                                          AttributeValue),
+                                                                      _diarsBlockDeviceMappings
+                                                                      ::
+                                                                      !(Maybe
+                                                                          [BlockDeviceMapping]),
+                                                                      _diarsResponseStatus
+                                                                      :: !Int}
+                                        deriving (Eq, Read, Show, Data,
+                                                  Typeable, Generic)
 
 -- | Creates a value of 'DescribeImageAttributeResponse' with the minimum fields required to make a request.
 --
@@ -187,19 +204,17 @@ data DescribeImageAttributeResponse =
 describeImageAttributeResponse
     :: Int -- ^ 'diarsResponseStatus'
     -> DescribeImageAttributeResponse
-describeImageAttributeResponse pResponseStatus_ =
-  DescribeImageAttributeResponse'
-    { _diarsLaunchPermissions = Nothing
-    , _diarsRAMDiskId = Nothing
-    , _diarsKernelId = Nothing
-    , _diarsSRIOVNetSupport = Nothing
-    , _diarsImageId = Nothing
-    , _diarsProductCodes = Nothing
-    , _diarsDescription = Nothing
-    , _diarsBlockDeviceMappings = Nothing
-    , _diarsResponseStatus = pResponseStatus_
-    }
-
+describeImageAttributeResponse pResponseStatus_
+  = DescribeImageAttributeResponse'{_diarsLaunchPermissions
+                                      = Nothing,
+                                    _diarsRAMDiskId = Nothing,
+                                    _diarsKernelId = Nothing,
+                                    _diarsSRIOVNetSupport = Nothing,
+                                    _diarsImageId = Nothing,
+                                    _diarsProductCodes = Nothing,
+                                    _diarsDescription = Nothing,
+                                    _diarsBlockDeviceMappings = Nothing,
+                                    _diarsResponseStatus = pResponseStatus_}
 
 -- | The launch permissions.
 diarsLaunchPermissions :: Lens' DescribeImageAttributeResponse [LaunchPermission]

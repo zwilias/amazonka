@@ -37,21 +37,19 @@ module Network.AWS.EC2.AttachInternetGateway
     ) where
 
 import Network.AWS.EC2.Types
-import Network.AWS.EC2.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 
 -- | /See:/ 'attachInternetGateway' smart constructor.
-data AttachInternetGateway =
-  AttachInternetGateway'
-    { _aigDryRun            :: !(Maybe Bool)
-    , _aigInternetGatewayId :: !Text
-    , _aigVPCId             :: !Text
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data AttachInternetGateway = AttachInternetGateway'{_aigDryRun
+                                                    :: !(Maybe Bool),
+                                                    _aigInternetGatewayId ::
+                                                    !Text,
+                                                    _aigVPCId :: !Text}
+                               deriving (Eq, Read, Show, Data, Typeable,
+                                         Generic)
 
 -- | Creates a value of 'AttachInternetGateway' with the minimum fields required to make a request.
 --
@@ -66,13 +64,10 @@ attachInternetGateway
     :: Text -- ^ 'aigInternetGatewayId'
     -> Text -- ^ 'aigVPCId'
     -> AttachInternetGateway
-attachInternetGateway pInternetGatewayId_ pVPCId_ =
-  AttachInternetGateway'
-    { _aigDryRun = Nothing
-    , _aigInternetGatewayId = pInternetGatewayId_
-    , _aigVPCId = pVPCId_
-    }
-
+attachInternetGateway pInternetGatewayId_ pVPCId_
+  = AttachInternetGateway'{_aigDryRun = Nothing,
+                           _aigInternetGatewayId = pInternetGatewayId_,
+                           _aigVPCId = pVPCId_}
 
 -- | Checks whether you have the required permissions for the action, without actually making the request, and provides an error response. If you have the required permissions, the error response is @DryRunOperation@ . Otherwise, it is @UnauthorizedOperation@ .
 aigDryRun :: Lens' AttachInternetGateway (Maybe Bool)
@@ -112,16 +107,15 @@ instance ToQuery AttachInternetGateway where
                "VpcId" =: _aigVPCId]
 
 -- | /See:/ 'attachInternetGatewayResponse' smart constructor.
-data AttachInternetGatewayResponse =
-  AttachInternetGatewayResponse'
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data AttachInternetGatewayResponse = AttachInternetGatewayResponse'
+                                       deriving (Eq, Read, Show, Data, Typeable,
+                                                 Generic)
 
 -- | Creates a value of 'AttachInternetGatewayResponse' with the minimum fields required to make a request.
 --
 attachInternetGatewayResponse
     :: AttachInternetGatewayResponse
-attachInternetGatewayResponse = AttachInternetGatewayResponse'
-
+attachInternetGatewayResponse
+  = AttachInternetGatewayResponse'
 
 instance NFData AttachInternetGatewayResponse where

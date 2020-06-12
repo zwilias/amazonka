@@ -46,7 +46,6 @@ module Network.AWS.CodePipeline.CreateCustomActionType
     ) where
 
 import Network.AWS.CodePipeline.Types
-import Network.AWS.CodePipeline.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.Request
@@ -57,19 +56,26 @@ import Network.AWS.Response
 --
 --
 -- /See:/ 'createCustomActionType' smart constructor.
-data CreateCustomActionType =
-  CreateCustomActionType'
-    { _ccatSettings                :: !(Maybe ActionTypeSettings)
-    , _ccatConfigurationProperties :: !(Maybe [ActionConfigurationProperty])
-    , _ccatTags                    :: !(Maybe [Tag])
-    , _ccatCategory                :: !ActionCategory
-    , _ccatProvider                :: !Text
-    , _ccatVersion                 :: !Text
-    , _ccatInputArtifactDetails    :: !ArtifactDetails
-    , _ccatOutputArtifactDetails   :: !ArtifactDetails
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data CreateCustomActionType = CreateCustomActionType'{_ccatSettings
+                                                      ::
+                                                      !(Maybe
+                                                          ActionTypeSettings),
+                                                      _ccatConfigurationProperties
+                                                      ::
+                                                      !(Maybe
+                                                          [ActionConfigurationProperty]),
+                                                      _ccatTags ::
+                                                      !(Maybe [Tag]),
+                                                      _ccatCategory ::
+                                                      !ActionCategory,
+                                                      _ccatProvider :: !Text,
+                                                      _ccatVersion :: !Text,
+                                                      _ccatInputArtifactDetails
+                                                      :: !ArtifactDetails,
+                                                      _ccatOutputArtifactDetails
+                                                      :: !ArtifactDetails}
+                                deriving (Eq, Read, Show, Data, Typeable,
+                                          Generic)
 
 -- | Creates a value of 'CreateCustomActionType' with the minimum fields required to make a request.
 --
@@ -97,18 +103,17 @@ createCustomActionType
     -> ArtifactDetails -- ^ 'ccatInputArtifactDetails'
     -> ArtifactDetails -- ^ 'ccatOutputArtifactDetails'
     -> CreateCustomActionType
-createCustomActionType pCategory_ pProvider_ pVersion_ pInputArtifactDetails_ pOutputArtifactDetails_ =
-  CreateCustomActionType'
-    { _ccatSettings = Nothing
-    , _ccatConfigurationProperties = Nothing
-    , _ccatTags = Nothing
-    , _ccatCategory = pCategory_
-    , _ccatProvider = pProvider_
-    , _ccatVersion = pVersion_
-    , _ccatInputArtifactDetails = pInputArtifactDetails_
-    , _ccatOutputArtifactDetails = pOutputArtifactDetails_
-    }
-
+createCustomActionType pCategory_ pProvider_
+  pVersion_ pInputArtifactDetails_
+  pOutputArtifactDetails_
+  = CreateCustomActionType'{_ccatSettings = Nothing,
+                            _ccatConfigurationProperties = Nothing,
+                            _ccatTags = Nothing, _ccatCategory = pCategory_,
+                            _ccatProvider = pProvider_,
+                            _ccatVersion = pVersion_,
+                            _ccatInputArtifactDetails = pInputArtifactDetails_,
+                            _ccatOutputArtifactDetails =
+                              pOutputArtifactDetails_}
 
 -- | URLs that provide users information about this custom action.
 ccatSettings :: Lens' CreateCustomActionType (Maybe ActionTypeSettings)
@@ -196,14 +201,17 @@ instance ToQuery CreateCustomActionType where
 --
 --
 -- /See:/ 'createCustomActionTypeResponse' smart constructor.
-data CreateCustomActionTypeResponse =
-  CreateCustomActionTypeResponse'
-    { _ccatrsTags           :: !(Maybe [Tag])
-    , _ccatrsResponseStatus :: !Int
-    , _ccatrsActionType     :: !ActionType
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data CreateCustomActionTypeResponse = CreateCustomActionTypeResponse'{_ccatrsTags
+                                                                      ::
+                                                                      !(Maybe
+                                                                          [Tag]),
+                                                                      _ccatrsResponseStatus
+                                                                      :: !Int,
+                                                                      _ccatrsActionType
+                                                                      ::
+                                                                      !ActionType}
+                                        deriving (Eq, Read, Show, Data,
+                                                  Typeable, Generic)
 
 -- | Creates a value of 'CreateCustomActionTypeResponse' with the minimum fields required to make a request.
 --
@@ -218,13 +226,12 @@ createCustomActionTypeResponse
     :: Int -- ^ 'ccatrsResponseStatus'
     -> ActionType -- ^ 'ccatrsActionType'
     -> CreateCustomActionTypeResponse
-createCustomActionTypeResponse pResponseStatus_ pActionType_ =
-  CreateCustomActionTypeResponse'
-    { _ccatrsTags = Nothing
-    , _ccatrsResponseStatus = pResponseStatus_
-    , _ccatrsActionType = pActionType_
-    }
-
+createCustomActionTypeResponse pResponseStatus_
+  pActionType_
+  = CreateCustomActionTypeResponse'{_ccatrsTags =
+                                      Nothing,
+                                    _ccatrsResponseStatus = pResponseStatus_,
+                                    _ccatrsActionType = pActionType_}
 
 -- | Specifies the tags applied to the custom action.
 ccatrsTags :: Lens' CreateCustomActionTypeResponse [Tag]

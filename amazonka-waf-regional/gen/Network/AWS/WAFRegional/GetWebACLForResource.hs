@@ -42,15 +42,12 @@ import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 import Network.AWS.WAFRegional.Types
-import Network.AWS.WAFRegional.Types.Product
 
 -- | /See:/ 'getWebACLForResource' smart constructor.
-newtype GetWebACLForResource =
-  GetWebACLForResource'
-    { _gwafrResourceARN :: Text
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+newtype GetWebACLForResource = GetWebACLForResource'{_gwafrResourceARN
+                                                     :: Text}
+                                 deriving (Eq, Read, Show, Data, Typeable,
+                                           Generic)
 
 -- | Creates a value of 'GetWebACLForResource' with the minimum fields required to make a request.
 --
@@ -60,9 +57,9 @@ newtype GetWebACLForResource =
 getWebACLForResource
     :: Text -- ^ 'gwafrResourceARN'
     -> GetWebACLForResource
-getWebACLForResource pResourceARN_ =
-  GetWebACLForResource' {_gwafrResourceARN = pResourceARN_}
-
+getWebACLForResource pResourceARN_
+  = GetWebACLForResource'{_gwafrResourceARN =
+                            pResourceARN_}
 
 -- | The ARN (Amazon Resource Name) of the resource for which to get the web ACL.
 gwafrResourceARN :: Lens' GetWebACLForResource Text
@@ -105,13 +102,14 @@ instance ToQuery GetWebACLForResource where
         toQuery = const mempty
 
 -- | /See:/ 'getWebACLForResourceResponse' smart constructor.
-data GetWebACLForResourceResponse =
-  GetWebACLForResourceResponse'
-    { _gwafrrsWebACLSummary  :: !(Maybe WebACLSummary)
-    , _gwafrrsResponseStatus :: !Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data GetWebACLForResourceResponse = GetWebACLForResourceResponse'{_gwafrrsWebACLSummary
+                                                                  ::
+                                                                  !(Maybe
+                                                                      WebACLSummary),
+                                                                  _gwafrrsResponseStatus
+                                                                  :: !Int}
+                                      deriving (Eq, Read, Show, Data, Typeable,
+                                                Generic)
 
 -- | Creates a value of 'GetWebACLForResourceResponse' with the minimum fields required to make a request.
 --
@@ -123,10 +121,10 @@ data GetWebACLForResourceResponse =
 getWebACLForResourceResponse
     :: Int -- ^ 'gwafrrsResponseStatus'
     -> GetWebACLForResourceResponse
-getWebACLForResourceResponse pResponseStatus_ =
-  GetWebACLForResourceResponse'
-    {_gwafrrsWebACLSummary = Nothing, _gwafrrsResponseStatus = pResponseStatus_}
-
+getWebACLForResourceResponse pResponseStatus_
+  = GetWebACLForResourceResponse'{_gwafrrsWebACLSummary
+                                    = Nothing,
+                                  _gwafrrsResponseStatus = pResponseStatus_}
 
 -- | Information about the web ACL that you specified in the @GetWebACLForResource@ request. If there is no associated resource, a null WebACLSummary is returned.
 gwafrrsWebACLSummary :: Lens' GetWebACLForResourceResponse (Maybe WebACLSummary)

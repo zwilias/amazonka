@@ -56,31 +56,33 @@ module Network.AWS.EC2.CreateFleet
     ) where
 
 import Network.AWS.EC2.Types
-import Network.AWS.EC2.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 
 -- | /See:/ 'createFleet' smart constructor.
-data CreateFleet =
-  CreateFleet'
-    { _cfClientToken :: !(Maybe Text)
-    , _cfSpotOptions :: !(Maybe SpotOptionsRequest)
-    , _cfExcessCapacityTerminationPolicy :: !(Maybe FleetExcessCapacityTerminationPolicy)
-    , _cfOnDemandOptions :: !(Maybe OnDemandOptionsRequest)
-    , _cfTagSpecifications :: !(Maybe [TagSpecification])
-    , _cfValidUntil :: !(Maybe ISO8601)
-    , _cfTerminateInstancesWithExpiration :: !(Maybe Bool)
-    , _cfType :: !(Maybe FleetType)
-    , _cfValidFrom :: !(Maybe ISO8601)
-    , _cfReplaceUnhealthyInstances :: !(Maybe Bool)
-    , _cfDryRun :: !(Maybe Bool)
-    , _cfLaunchTemplateConfigs :: ![FleetLaunchTemplateConfigRequest]
-    , _cfTargetCapacitySpecification :: !TargetCapacitySpecificationRequest
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data CreateFleet = CreateFleet'{_cfClientToken ::
+                                !(Maybe Text),
+                                _cfSpotOptions :: !(Maybe SpotOptionsRequest),
+                                _cfExcessCapacityTerminationPolicy ::
+                                !(Maybe FleetExcessCapacityTerminationPolicy),
+                                _cfOnDemandOptions ::
+                                !(Maybe OnDemandOptionsRequest),
+                                _cfTagSpecifications ::
+                                !(Maybe [TagSpecification]),
+                                _cfValidUntil :: !(Maybe ISO8601),
+                                _cfTerminateInstancesWithExpiration ::
+                                !(Maybe Bool),
+                                _cfType :: !(Maybe FleetType),
+                                _cfValidFrom :: !(Maybe ISO8601),
+                                _cfReplaceUnhealthyInstances :: !(Maybe Bool),
+                                _cfDryRun :: !(Maybe Bool),
+                                _cfLaunchTemplateConfigs ::
+                                ![FleetLaunchTemplateConfigRequest],
+                                _cfTargetCapacitySpecification ::
+                                !TargetCapacitySpecificationRequest}
+                     deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'CreateFleet' with the minimum fields required to make a request.
 --
@@ -94,7 +96,7 @@ data CreateFleet =
 --
 -- * 'cfOnDemandOptions' - Describes the configuration of On-Demand Instances in an EC2 Fleet.
 --
--- * 'cfTagSpecifications' - The key-value pair for tagging the EC2 Fleet request on creation. The value for @ResourceType@ must be @fleet@ , otherwise the fleet request fails. To tag instances at launch, specify the tags in the <https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ec2-launch-templates.html#create-launch-template launch template> . For information about tagging after launch, see <https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/Using_Tags.html#tag-resources Tagging Your Resources> .
+-- * 'cfTagSpecifications' - The key-value pair for tagging the EC2 Fleet request on creation. The value for @ResourceType@ must be @fleet@ , otherwise the fleet request fails. To tag instances at launch, specify the tags in the <https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ec2-launch-templates.html#create-launch-template launch template> . For information about tagging after launch, see <https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/Using_Tags.html#tag-resources Tagging Your Resources> . 
 --
 -- * 'cfValidUntil' - The end date and time of the request, in UTC format (for example, /YYYY/ -/MM/ -/DD/ T/HH/ :/MM/ :/SS/ Z). At this point, no new EC2 Fleet requests are placed or able to fulfill the request. If no value is specified, the request remains until you cancel it.
 --
@@ -114,23 +116,20 @@ data CreateFleet =
 createFleet
     :: TargetCapacitySpecificationRequest -- ^ 'cfTargetCapacitySpecification'
     -> CreateFleet
-createFleet pTargetCapacitySpecification_ =
-  CreateFleet'
-    { _cfClientToken = Nothing
-    , _cfSpotOptions = Nothing
-    , _cfExcessCapacityTerminationPolicy = Nothing
-    , _cfOnDemandOptions = Nothing
-    , _cfTagSpecifications = Nothing
-    , _cfValidUntil = Nothing
-    , _cfTerminateInstancesWithExpiration = Nothing
-    , _cfType = Nothing
-    , _cfValidFrom = Nothing
-    , _cfReplaceUnhealthyInstances = Nothing
-    , _cfDryRun = Nothing
-    , _cfLaunchTemplateConfigs = mempty
-    , _cfTargetCapacitySpecification = pTargetCapacitySpecification_
-    }
-
+createFleet pTargetCapacitySpecification_
+  = CreateFleet'{_cfClientToken = Nothing,
+                 _cfSpotOptions = Nothing,
+                 _cfExcessCapacityTerminationPolicy = Nothing,
+                 _cfOnDemandOptions = Nothing,
+                 _cfTagSpecifications = Nothing,
+                 _cfValidUntil = Nothing,
+                 _cfTerminateInstancesWithExpiration = Nothing,
+                 _cfType = Nothing, _cfValidFrom = Nothing,
+                 _cfReplaceUnhealthyInstances = Nothing,
+                 _cfDryRun = Nothing,
+                 _cfLaunchTemplateConfigs = mempty,
+                 _cfTargetCapacitySpecification =
+                   pTargetCapacitySpecification_}
 
 -- | Unique, case-sensitive identifier that you provide to ensure the idempotency of the request. For more information, see <https://docs.aws.amazon.com/AWSEC2/latest/APIReference/Run_Instance_Idempotency.html Ensuring Idempotency> .
 cfClientToken :: Lens' CreateFleet (Maybe Text)
@@ -148,7 +147,7 @@ cfExcessCapacityTerminationPolicy = lens _cfExcessCapacityTerminationPolicy (\ s
 cfOnDemandOptions :: Lens' CreateFleet (Maybe OnDemandOptionsRequest)
 cfOnDemandOptions = lens _cfOnDemandOptions (\ s a -> s{_cfOnDemandOptions = a})
 
--- | The key-value pair for tagging the EC2 Fleet request on creation. The value for @ResourceType@ must be @fleet@ , otherwise the fleet request fails. To tag instances at launch, specify the tags in the <https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ec2-launch-templates.html#create-launch-template launch template> . For information about tagging after launch, see <https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/Using_Tags.html#tag-resources Tagging Your Resources> .
+-- | The key-value pair for tagging the EC2 Fleet request on creation. The value for @ResourceType@ must be @fleet@ , otherwise the fleet request fails. To tag instances at launch, specify the tags in the <https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ec2-launch-templates.html#create-launch-template launch template> . For information about tagging after launch, see <https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/Using_Tags.html#tag-resources Tagging Your Resources> . 
 cfTagSpecifications :: Lens' CreateFleet [TagSpecification]
 cfTagSpecifications = lens _cfTagSpecifications (\ s a -> s{_cfTagSpecifications = a}) . _Default . _Coerce
 
@@ -235,15 +234,14 @@ instance ToQuery CreateFleet where
                  _cfTargetCapacitySpecification]
 
 -- | /See:/ 'createFleetResponse' smart constructor.
-data CreateFleetResponse =
-  CreateFleetResponse'
-    { _cfrsInstances      :: !(Maybe [CreateFleetInstance])
-    , _cfrsFleetId        :: !(Maybe Text)
-    , _cfrsErrors         :: !(Maybe [CreateFleetError])
-    , _cfrsResponseStatus :: !Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data CreateFleetResponse = CreateFleetResponse'{_cfrsInstances
+                                                ::
+                                                !(Maybe [CreateFleetInstance]),
+                                                _cfrsFleetId :: !(Maybe Text),
+                                                _cfrsErrors ::
+                                                !(Maybe [CreateFleetError]),
+                                                _cfrsResponseStatus :: !Int}
+                             deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'CreateFleetResponse' with the minimum fields required to make a request.
 --
@@ -259,14 +257,10 @@ data CreateFleetResponse =
 createFleetResponse
     :: Int -- ^ 'cfrsResponseStatus'
     -> CreateFleetResponse
-createFleetResponse pResponseStatus_ =
-  CreateFleetResponse'
-    { _cfrsInstances = Nothing
-    , _cfrsFleetId = Nothing
-    , _cfrsErrors = Nothing
-    , _cfrsResponseStatus = pResponseStatus_
-    }
-
+createFleetResponse pResponseStatus_
+  = CreateFleetResponse'{_cfrsInstances = Nothing,
+                         _cfrsFleetId = Nothing, _cfrsErrors = Nothing,
+                         _cfrsResponseStatus = pResponseStatus_}
 
 -- | Information about the instances that were launched by the fleet. Valid only when __Type__ is set to @instant@ .
 cfrsInstances :: Lens' CreateFleetResponse [CreateFleetInstance]

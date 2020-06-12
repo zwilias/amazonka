@@ -47,19 +47,16 @@ import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 import Network.AWS.StorageGateway.Types
-import Network.AWS.StorageGateway.Types.Product
 
 -- | A JSON object containing the of the gateway.
 --
 --
 --
 -- /See:/ 'describeWorkingStorage' smart constructor.
-newtype DescribeWorkingStorage =
-  DescribeWorkingStorage'
-    { _dwsGatewayARN :: Text
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+newtype DescribeWorkingStorage = DescribeWorkingStorage'{_dwsGatewayARN
+                                                         :: Text}
+                                   deriving (Eq, Read, Show, Data, Typeable,
+                                             Generic)
 
 -- | Creates a value of 'DescribeWorkingStorage' with the minimum fields required to make a request.
 --
@@ -69,9 +66,9 @@ newtype DescribeWorkingStorage =
 describeWorkingStorage
     :: Text -- ^ 'dwsGatewayARN'
     -> DescribeWorkingStorage
-describeWorkingStorage pGatewayARN_ =
-  DescribeWorkingStorage' {_dwsGatewayARN = pGatewayARN_}
-
+describeWorkingStorage pGatewayARN_
+  = DescribeWorkingStorage'{_dwsGatewayARN =
+                              pGatewayARN_}
 
 -- | Undocumented member.
 dwsGatewayARN :: Lens' DescribeWorkingStorage Text
@@ -120,16 +117,26 @@ instance ToQuery DescribeWorkingStorage where
 --
 --
 -- /See:/ 'describeWorkingStorageResponse' smart constructor.
-data DescribeWorkingStorageResponse =
-  DescribeWorkingStorageResponse'
-    { _dwsrsGatewayARN                     :: !(Maybe Text)
-    , _dwsrsDiskIds                        :: !(Maybe [Text])
-    , _dwsrsWorkingStorageAllocatedInBytes :: !(Maybe Integer)
-    , _dwsrsWorkingStorageUsedInBytes      :: !(Maybe Integer)
-    , _dwsrsResponseStatus                 :: !Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data DescribeWorkingStorageResponse = DescribeWorkingStorageResponse'{_dwsrsGatewayARN
+                                                                      ::
+                                                                      !(Maybe
+                                                                          Text),
+                                                                      _dwsrsDiskIds
+                                                                      ::
+                                                                      !(Maybe
+                                                                          [Text]),
+                                                                      _dwsrsWorkingStorageAllocatedInBytes
+                                                                      ::
+                                                                      !(Maybe
+                                                                          Integer),
+                                                                      _dwsrsWorkingStorageUsedInBytes
+                                                                      ::
+                                                                      !(Maybe
+                                                                          Integer),
+                                                                      _dwsrsResponseStatus
+                                                                      :: !Int}
+                                        deriving (Eq, Read, Show, Data,
+                                                  Typeable, Generic)
 
 -- | Creates a value of 'DescribeWorkingStorageResponse' with the minimum fields required to make a request.
 --
@@ -147,15 +154,14 @@ data DescribeWorkingStorageResponse =
 describeWorkingStorageResponse
     :: Int -- ^ 'dwsrsResponseStatus'
     -> DescribeWorkingStorageResponse
-describeWorkingStorageResponse pResponseStatus_ =
-  DescribeWorkingStorageResponse'
-    { _dwsrsGatewayARN = Nothing
-    , _dwsrsDiskIds = Nothing
-    , _dwsrsWorkingStorageAllocatedInBytes = Nothing
-    , _dwsrsWorkingStorageUsedInBytes = Nothing
-    , _dwsrsResponseStatus = pResponseStatus_
-    }
-
+describeWorkingStorageResponse pResponseStatus_
+  = DescribeWorkingStorageResponse'{_dwsrsGatewayARN =
+                                      Nothing,
+                                    _dwsrsDiskIds = Nothing,
+                                    _dwsrsWorkingStorageAllocatedInBytes =
+                                      Nothing,
+                                    _dwsrsWorkingStorageUsedInBytes = Nothing,
+                                    _dwsrsResponseStatus = pResponseStatus_}
 
 -- | Undocumented member.
 dwsrsGatewayARN :: Lens' DescribeWorkingStorageResponse (Maybe Text)

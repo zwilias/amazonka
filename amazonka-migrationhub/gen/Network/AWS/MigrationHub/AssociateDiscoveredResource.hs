@@ -41,21 +41,23 @@ module Network.AWS.MigrationHub.AssociateDiscoveredResource
 
 import Network.AWS.Lens
 import Network.AWS.MigrationHub.Types
-import Network.AWS.MigrationHub.Types.Product
 import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 
 -- | /See:/ 'associateDiscoveredResource' smart constructor.
-data AssociateDiscoveredResource =
-  AssociateDiscoveredResource'
-    { _adrDryRun               :: !(Maybe Bool)
-    , _adrProgressUpdateStream :: !Text
-    , _adrMigrationTaskName    :: !Text
-    , _adrDiscoveredResource   :: !DiscoveredResource
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data AssociateDiscoveredResource = AssociateDiscoveredResource'{_adrDryRun
+                                                                ::
+                                                                !(Maybe Bool),
+                                                                _adrProgressUpdateStream
+                                                                :: !Text,
+                                                                _adrMigrationTaskName
+                                                                :: !Text,
+                                                                _adrDiscoveredResource
+                                                                ::
+                                                                !DiscoveredResource}
+                                     deriving (Eq, Read, Show, Data, Typeable,
+                                               Generic)
 
 -- | Creates a value of 'AssociateDiscoveredResource' with the minimum fields required to make a request.
 --
@@ -73,14 +75,13 @@ associateDiscoveredResource
     -> Text -- ^ 'adrMigrationTaskName'
     -> DiscoveredResource -- ^ 'adrDiscoveredResource'
     -> AssociateDiscoveredResource
-associateDiscoveredResource pProgressUpdateStream_ pMigrationTaskName_ pDiscoveredResource_ =
-  AssociateDiscoveredResource'
-    { _adrDryRun = Nothing
-    , _adrProgressUpdateStream = pProgressUpdateStream_
-    , _adrMigrationTaskName = pMigrationTaskName_
-    , _adrDiscoveredResource = pDiscoveredResource_
-    }
-
+associateDiscoveredResource pProgressUpdateStream_
+  pMigrationTaskName_ pDiscoveredResource_
+  = AssociateDiscoveredResource'{_adrDryRun = Nothing,
+                                 _adrProgressUpdateStream =
+                                   pProgressUpdateStream_,
+                                 _adrMigrationTaskName = pMigrationTaskName_,
+                                 _adrDiscoveredResource = pDiscoveredResource_}
 
 -- | Optional boolean flag to indicate whether any effect should take place. Used to test if the caller has permission to make the call.
 adrDryRun :: Lens' AssociateDiscoveredResource (Maybe Bool)
@@ -140,12 +141,11 @@ instance ToQuery AssociateDiscoveredResource where
         toQuery = const mempty
 
 -- | /See:/ 'associateDiscoveredResourceResponse' smart constructor.
-newtype AssociateDiscoveredResourceResponse =
-  AssociateDiscoveredResourceResponse'
-    { _adrrsResponseStatus :: Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+newtype AssociateDiscoveredResourceResponse = AssociateDiscoveredResourceResponse'{_adrrsResponseStatus
+                                                                                   ::
+                                                                                   Int}
+                                                deriving (Eq, Read, Show, Data,
+                                                          Typeable, Generic)
 
 -- | Creates a value of 'AssociateDiscoveredResourceResponse' with the minimum fields required to make a request.
 --
@@ -155,9 +155,9 @@ newtype AssociateDiscoveredResourceResponse =
 associateDiscoveredResourceResponse
     :: Int -- ^ 'adrrsResponseStatus'
     -> AssociateDiscoveredResourceResponse
-associateDiscoveredResourceResponse pResponseStatus_ =
-  AssociateDiscoveredResourceResponse' {_adrrsResponseStatus = pResponseStatus_}
-
+associateDiscoveredResourceResponse pResponseStatus_
+  = AssociateDiscoveredResourceResponse'{_adrrsResponseStatus
+                                           = pResponseStatus_}
 
 -- | -- | The response status code.
 adrrsResponseStatus :: Lens' AssociateDiscoveredResourceResponse Int

@@ -45,7 +45,6 @@ module Network.AWS.EC2.DescribeExportImageTasks
     ) where
 
 import Network.AWS.EC2.Types
-import Network.AWS.EC2.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Pager
 import Network.AWS.Prelude
@@ -53,16 +52,18 @@ import Network.AWS.Request
 import Network.AWS.Response
 
 -- | /See:/ 'describeExportImageTasks' smart constructor.
-data DescribeExportImageTasks =
-  DescribeExportImageTasks'
-    { _deitExportImageTaskIds :: !(Maybe [Text])
-    , _deitFilters            :: !(Maybe [Filter])
-    , _deitNextToken          :: !(Maybe Text)
-    , _deitDryRun             :: !(Maybe Bool)
-    , _deitMaxResults         :: !(Maybe Nat)
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data DescribeExportImageTasks = DescribeExportImageTasks'{_deitExportImageTaskIds
+                                                          :: !(Maybe [Text]),
+                                                          _deitFilters ::
+                                                          !(Maybe [Filter]),
+                                                          _deitNextToken ::
+                                                          !(Maybe Text),
+                                                          _deitDryRun ::
+                                                          !(Maybe Bool),
+                                                          _deitMaxResults ::
+                                                          !(Maybe Nat)}
+                                  deriving (Eq, Read, Show, Data, Typeable,
+                                            Generic)
 
 -- | Creates a value of 'DescribeExportImageTasks' with the minimum fields required to make a request.
 --
@@ -79,15 +80,11 @@ data DescribeExportImageTasks =
 -- * 'deitMaxResults' - The maximum number of results to return in a single call.
 describeExportImageTasks
     :: DescribeExportImageTasks
-describeExportImageTasks =
-  DescribeExportImageTasks'
-    { _deitExportImageTaskIds = Nothing
-    , _deitFilters = Nothing
-    , _deitNextToken = Nothing
-    , _deitDryRun = Nothing
-    , _deitMaxResults = Nothing
-    }
-
+describeExportImageTasks
+  = DescribeExportImageTasks'{_deitExportImageTaskIds =
+                                Nothing,
+                              _deitFilters = Nothing, _deitNextToken = Nothing,
+                              _deitDryRun = Nothing, _deitMaxResults = Nothing}
 
 -- | The IDs of the export image tasks.
 deitExportImageTaskIds :: Lens' DescribeExportImageTasks [Text]
@@ -154,14 +151,19 @@ instance ToQuery DescribeExportImageTasks where
                "MaxResults" =: _deitMaxResults]
 
 -- | /See:/ 'describeExportImageTasksResponse' smart constructor.
-data DescribeExportImageTasksResponse =
-  DescribeExportImageTasksResponse'
-    { _deitrsExportImageTasks :: !(Maybe [ExportImageTask])
-    , _deitrsNextToken        :: !(Maybe Text)
-    , _deitrsResponseStatus   :: !Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data DescribeExportImageTasksResponse = DescribeExportImageTasksResponse'{_deitrsExportImageTasks
+                                                                          ::
+                                                                          !(Maybe
+                                                                              [ExportImageTask]),
+                                                                          _deitrsNextToken
+                                                                          ::
+                                                                          !(Maybe
+                                                                              Text),
+                                                                          _deitrsResponseStatus
+                                                                          ::
+                                                                          !Int}
+                                          deriving (Eq, Read, Show, Data,
+                                                    Typeable, Generic)
 
 -- | Creates a value of 'DescribeExportImageTasksResponse' with the minimum fields required to make a request.
 --
@@ -175,13 +177,11 @@ data DescribeExportImageTasksResponse =
 describeExportImageTasksResponse
     :: Int -- ^ 'deitrsResponseStatus'
     -> DescribeExportImageTasksResponse
-describeExportImageTasksResponse pResponseStatus_ =
-  DescribeExportImageTasksResponse'
-    { _deitrsExportImageTasks = Nothing
-    , _deitrsNextToken = Nothing
-    , _deitrsResponseStatus = pResponseStatus_
-    }
-
+describeExportImageTasksResponse pResponseStatus_
+  = DescribeExportImageTasksResponse'{_deitrsExportImageTasks
+                                        = Nothing,
+                                      _deitrsNextToken = Nothing,
+                                      _deitrsResponseStatus = pResponseStatus_}
 
 -- | Information about the export image tasks.
 deitrsExportImageTasks :: Lens' DescribeExportImageTasksResponse [ExportImageTask]

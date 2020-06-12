@@ -47,19 +47,24 @@ import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 import Network.AWS.WorkDocs.Types
-import Network.AWS.WorkDocs.Types.Product
 
 -- | /See:/ 'describeResourcePermissions' smart constructor.
-data DescribeResourcePermissions =
-  DescribeResourcePermissions'
-    { _drpPrincipalId         :: !(Maybe Text)
-    , _drpAuthenticationToken :: !(Maybe (Sensitive Text))
-    , _drpMarker              :: !(Maybe Text)
-    , _drpLimit               :: !(Maybe Nat)
-    , _drpResourceId          :: !Text
-    }
-  deriving (Eq, Show, Data, Typeable, Generic)
-
+data DescribeResourcePermissions = DescribeResourcePermissions'{_drpPrincipalId
+                                                                ::
+                                                                !(Maybe Text),
+                                                                _drpAuthenticationToken
+                                                                ::
+                                                                !(Maybe
+                                                                    (Sensitive
+                                                                       Text)),
+                                                                _drpMarker ::
+                                                                !(Maybe Text),
+                                                                _drpLimit ::
+                                                                !(Maybe Nat),
+                                                                _drpResourceId
+                                                                :: !Text}
+                                     deriving (Eq, Show, Data, Typeable,
+                                               Generic)
 
 -- | Creates a value of 'DescribeResourcePermissions' with the minimum fields required to make a request.
 --
@@ -77,15 +82,12 @@ data DescribeResourcePermissions =
 describeResourcePermissions
     :: Text -- ^ 'drpResourceId'
     -> DescribeResourcePermissions
-describeResourcePermissions pResourceId_ =
-  DescribeResourcePermissions'
-    { _drpPrincipalId = Nothing
-    , _drpAuthenticationToken = Nothing
-    , _drpMarker = Nothing
-    , _drpLimit = Nothing
-    , _drpResourceId = pResourceId_
-    }
-
+describeResourcePermissions pResourceId_
+  = DescribeResourcePermissions'{_drpPrincipalId =
+                                   Nothing,
+                                 _drpAuthenticationToken = Nothing,
+                                 _drpMarker = Nothing, _drpLimit = Nothing,
+                                 _drpResourceId = pResourceId_}
 
 -- | The ID of the principal to filter permissions by.
 drpPrincipalId :: Lens' DescribeResourcePermissions (Maybe Text)
@@ -142,14 +144,19 @@ instance ToQuery DescribeResourcePermissions where
                "marker" =: _drpMarker, "limit" =: _drpLimit]
 
 -- | /See:/ 'describeResourcePermissionsResponse' smart constructor.
-data DescribeResourcePermissionsResponse =
-  DescribeResourcePermissionsResponse'
-    { _drprsPrincipals     :: !(Maybe [Principal])
-    , _drprsMarker         :: !(Maybe Text)
-    , _drprsResponseStatus :: !Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data DescribeResourcePermissionsResponse = DescribeResourcePermissionsResponse'{_drprsPrincipals
+                                                                                ::
+                                                                                !(Maybe
+                                                                                    [Principal]),
+                                                                                _drprsMarker
+                                                                                ::
+                                                                                !(Maybe
+                                                                                    Text),
+                                                                                _drprsResponseStatus
+                                                                                ::
+                                                                                !Int}
+                                             deriving (Eq, Read, Show, Data,
+                                                       Typeable, Generic)
 
 -- | Creates a value of 'DescribeResourcePermissionsResponse' with the minimum fields required to make a request.
 --
@@ -163,13 +170,12 @@ data DescribeResourcePermissionsResponse =
 describeResourcePermissionsResponse
     :: Int -- ^ 'drprsResponseStatus'
     -> DescribeResourcePermissionsResponse
-describeResourcePermissionsResponse pResponseStatus_ =
-  DescribeResourcePermissionsResponse'
-    { _drprsPrincipals = Nothing
-    , _drprsMarker = Nothing
-    , _drprsResponseStatus = pResponseStatus_
-    }
-
+describeResourcePermissionsResponse pResponseStatus_
+  = DescribeResourcePermissionsResponse'{_drprsPrincipals
+                                           = Nothing,
+                                         _drprsMarker = Nothing,
+                                         _drprsResponseStatus =
+                                           pResponseStatus_}
 
 -- | The principals.
 drprsPrincipals :: Lens' DescribeResourcePermissionsResponse [Principal]

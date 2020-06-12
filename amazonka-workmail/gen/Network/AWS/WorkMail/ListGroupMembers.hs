@@ -49,18 +49,14 @@ import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 import Network.AWS.WorkMail.Types
-import Network.AWS.WorkMail.Types.Product
 
 -- | /See:/ 'listGroupMembers' smart constructor.
-data ListGroupMembers =
-  ListGroupMembers'
-    { _lgmNextToken      :: !(Maybe Text)
-    , _lgmMaxResults     :: !(Maybe Nat)
-    , _lgmOrganizationId :: !Text
-    , _lgmGroupId        :: !Text
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data ListGroupMembers = ListGroupMembers'{_lgmNextToken
+                                          :: !(Maybe Text),
+                                          _lgmMaxResults :: !(Maybe Nat),
+                                          _lgmOrganizationId :: !Text,
+                                          _lgmGroupId :: !Text}
+                          deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'ListGroupMembers' with the minimum fields required to make a request.
 --
@@ -77,14 +73,11 @@ listGroupMembers
     :: Text -- ^ 'lgmOrganizationId'
     -> Text -- ^ 'lgmGroupId'
     -> ListGroupMembers
-listGroupMembers pOrganizationId_ pGroupId_ =
-  ListGroupMembers'
-    { _lgmNextToken = Nothing
-    , _lgmMaxResults = Nothing
-    , _lgmOrganizationId = pOrganizationId_
-    , _lgmGroupId = pGroupId_
-    }
-
+listGroupMembers pOrganizationId_ pGroupId_
+  = ListGroupMembers'{_lgmNextToken = Nothing,
+                      _lgmMaxResults = Nothing,
+                      _lgmOrganizationId = pOrganizationId_,
+                      _lgmGroupId = pGroupId_}
 
 -- | The token to use to retrieve the next page of results. The first call does not contain any tokens.
 lgmNextToken :: Lens' ListGroupMembers (Maybe Text)
@@ -148,14 +141,14 @@ instance ToQuery ListGroupMembers where
         toQuery = const mempty
 
 -- | /See:/ 'listGroupMembersResponse' smart constructor.
-data ListGroupMembersResponse =
-  ListGroupMembersResponse'
-    { _lgmrsMembers        :: !(Maybe [Member])
-    , _lgmrsNextToken      :: !(Maybe Text)
-    , _lgmrsResponseStatus :: !Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data ListGroupMembersResponse = ListGroupMembersResponse'{_lgmrsMembers
+                                                          :: !(Maybe [Member]),
+                                                          _lgmrsNextToken ::
+                                                          !(Maybe Text),
+                                                          _lgmrsResponseStatus
+                                                          :: !Int}
+                                  deriving (Eq, Read, Show, Data, Typeable,
+                                            Generic)
 
 -- | Creates a value of 'ListGroupMembersResponse' with the minimum fields required to make a request.
 --
@@ -169,13 +162,10 @@ data ListGroupMembersResponse =
 listGroupMembersResponse
     :: Int -- ^ 'lgmrsResponseStatus'
     -> ListGroupMembersResponse
-listGroupMembersResponse pResponseStatus_ =
-  ListGroupMembersResponse'
-    { _lgmrsMembers = Nothing
-    , _lgmrsNextToken = Nothing
-    , _lgmrsResponseStatus = pResponseStatus_
-    }
-
+listGroupMembersResponse pResponseStatus_
+  = ListGroupMembersResponse'{_lgmrsMembers = Nothing,
+                              _lgmrsNextToken = Nothing,
+                              _lgmrsResponseStatus = pResponseStatus_}
 
 -- | The members associated to the group.
 lgmrsMembers :: Lens' ListGroupMembersResponse [Member]

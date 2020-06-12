@@ -14,11 +14,11 @@
 module Test.AWS.Gen.Connect where
 
 import Data.Proxy
-import Network.AWS.Connect
-import Test.AWS.Connect.Internal
 import Test.AWS.Fixture
 import Test.AWS.Prelude
 import Test.Tasty
+import Network.AWS.Connect
+import Test.AWS.Connect.Internal
 
 -- Auto-generated: the actual test selection needs to be manually placed into
 -- the top-level so that real test data can be incrementally added.

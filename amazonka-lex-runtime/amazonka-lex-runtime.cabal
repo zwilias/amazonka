@@ -51,8 +51,12 @@ library
         , Network.AWS.LexRuntime.Waiters
 
     other-modules:
-          Network.AWS.LexRuntime.Types.Product
-        , Network.AWS.LexRuntime.Types.Sum
+          Network.AWS.LexRuntime.Types.Button
+        , Network.AWS.LexRuntime.Types.ContentType
+        , Network.AWS.LexRuntime.Types.DialogState
+        , Network.AWS.LexRuntime.Types.GenericAttachment
+        , Network.AWS.LexRuntime.Types.MessageFormatType
+        , Network.AWS.LexRuntime.Types.ResponseCard
 
     build-depends:
           amazonka-core == 1.6.1.*

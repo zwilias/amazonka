@@ -39,17 +39,13 @@ import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 import Network.AWS.S3.Types
-import Network.AWS.S3.Types.Product
 
 -- | /See:/ 'putBucketCORS' smart constructor.
-data PutBucketCORS =
-  PutBucketCORS'
-    { _pbcContentMD5        :: !(Maybe Text)
-    , _pbcBucket            :: !BucketName
-    , _pbcCORSConfiguration :: !CORSConfiguration
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data PutBucketCORS = PutBucketCORS'{_pbcContentMD5 ::
+                                    !(Maybe Text),
+                                    _pbcBucket :: !BucketName,
+                                    _pbcCORSConfiguration :: !CORSConfiguration}
+                       deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'PutBucketCORS' with the minimum fields required to make a request.
 --
@@ -64,13 +60,10 @@ putBucketCORS
     :: BucketName -- ^ 'pbcBucket'
     -> CORSConfiguration -- ^ 'pbcCORSConfiguration'
     -> PutBucketCORS
-putBucketCORS pBucket_ pCORSConfiguration_ =
-  PutBucketCORS'
-    { _pbcContentMD5 = Nothing
-    , _pbcBucket = pBucket_
-    , _pbcCORSConfiguration = pCORSConfiguration_
-    }
-
+putBucketCORS pBucket_ pCORSConfiguration_
+  = PutBucketCORS'{_pbcContentMD5 = Nothing,
+                   _pbcBucket = pBucket_,
+                   _pbcCORSConfiguration = pCORSConfiguration_}
 
 -- | Undocumented member.
 pbcContentMD5 :: Lens' PutBucketCORS (Maybe Text)
@@ -112,16 +105,14 @@ instance ToQuery PutBucketCORS where
         toQuery = const (mconcat ["cors"])
 
 -- | /See:/ 'putBucketCORSResponse' smart constructor.
-data PutBucketCORSResponse =
-  PutBucketCORSResponse'
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data PutBucketCORSResponse = PutBucketCORSResponse'
+                               deriving (Eq, Read, Show, Data, Typeable,
+                                         Generic)
 
 -- | Creates a value of 'PutBucketCORSResponse' with the minimum fields required to make a request.
 --
 putBucketCORSResponse
     :: PutBucketCORSResponse
 putBucketCORSResponse = PutBucketCORSResponse'
-
 
 instance NFData PutBucketCORSResponse where

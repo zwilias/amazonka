@@ -18,7 +18,7 @@
 -- Stability   : auto-generated
 -- Portability : non-portable (GHC extensions)
 --
--- Updates the status of a pull request.
+-- Updates the status of a pull request. 
 --
 --
 module Network.AWS.CodeCommit.UpdatePullRequestStatus
@@ -39,20 +39,19 @@ module Network.AWS.CodeCommit.UpdatePullRequestStatus
     ) where
 
 import Network.AWS.CodeCommit.Types
-import Network.AWS.CodeCommit.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 
 -- | /See:/ 'updatePullRequestStatus' smart constructor.
-data UpdatePullRequestStatus =
-  UpdatePullRequestStatus'
-    { _uprsPullRequestId     :: !Text
-    , _uprsPullRequestStatus :: !PullRequestStatusEnum
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data UpdatePullRequestStatus = UpdatePullRequestStatus'{_uprsPullRequestId
+                                                        :: !Text,
+                                                        _uprsPullRequestStatus
+                                                        ::
+                                                        !PullRequestStatusEnum}
+                                 deriving (Eq, Read, Show, Data, Typeable,
+                                           Generic)
 
 -- | Creates a value of 'UpdatePullRequestStatus' with the minimum fields required to make a request.
 --
@@ -65,12 +64,11 @@ updatePullRequestStatus
     :: Text -- ^ 'uprsPullRequestId'
     -> PullRequestStatusEnum -- ^ 'uprsPullRequestStatus'
     -> UpdatePullRequestStatus
-updatePullRequestStatus pPullRequestId_ pPullRequestStatus_ =
-  UpdatePullRequestStatus'
-    { _uprsPullRequestId = pPullRequestId_
-    , _uprsPullRequestStatus = pPullRequestStatus_
-    }
-
+updatePullRequestStatus pPullRequestId_
+  pPullRequestStatus_
+  = UpdatePullRequestStatus'{_uprsPullRequestId =
+                               pPullRequestId_,
+                             _uprsPullRequestStatus = pPullRequestStatus_}
 
 -- | The system-generated ID of the pull request. To get this ID, use 'ListPullRequests' .
 uprsPullRequestId :: Lens' UpdatePullRequestStatus Text
@@ -119,13 +117,13 @@ instance ToQuery UpdatePullRequestStatus where
         toQuery = const mempty
 
 -- | /See:/ 'updatePullRequestStatusResponse' smart constructor.
-data UpdatePullRequestStatusResponse =
-  UpdatePullRequestStatusResponse'
-    { _uprsrsResponseStatus :: !Int
-    , _uprsrsPullRequest    :: !PullRequest
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data UpdatePullRequestStatusResponse = UpdatePullRequestStatusResponse'{_uprsrsResponseStatus
+                                                                        :: !Int,
+                                                                        _uprsrsPullRequest
+                                                                        ::
+                                                                        !PullRequest}
+                                         deriving (Eq, Read, Show, Data,
+                                                   Typeable, Generic)
 
 -- | Creates a value of 'UpdatePullRequestStatusResponse' with the minimum fields required to make a request.
 --
@@ -138,12 +136,11 @@ updatePullRequestStatusResponse
     :: Int -- ^ 'uprsrsResponseStatus'
     -> PullRequest -- ^ 'uprsrsPullRequest'
     -> UpdatePullRequestStatusResponse
-updatePullRequestStatusResponse pResponseStatus_ pPullRequest_ =
-  UpdatePullRequestStatusResponse'
-    { _uprsrsResponseStatus = pResponseStatus_
-    , _uprsrsPullRequest = pPullRequest_
-    }
-
+updatePullRequestStatusResponse pResponseStatus_
+  pPullRequest_
+  = UpdatePullRequestStatusResponse'{_uprsrsResponseStatus
+                                       = pResponseStatus_,
+                                     _uprsrsPullRequest = pPullRequest_}
 
 -- | -- | The response status code.
 uprsrsResponseStatus :: Lens' UpdatePullRequestStatusResponse Int

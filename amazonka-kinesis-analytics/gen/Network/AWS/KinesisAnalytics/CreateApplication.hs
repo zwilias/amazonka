@@ -18,7 +18,7 @@
 -- Stability   : auto-generated
 -- Portability : non-portable (GHC extensions)
 --
--- Creates an Amazon Kinesis Analytics application. You can configure each application with one streaming source as input, application code to process the input, and up to three destinations where you want Amazon Kinesis Analytics to write the output data from your application. For an overview, see <http://docs.aws.amazon.com/kinesisanalytics/latest/dev/how-it-works.html How it Works> .
+-- Creates an Amazon Kinesis Analytics application. You can configure each application with one streaming source as input, application code to process the input, and up to three destinations where you want Amazon Kinesis Analytics to write the output data from your application. For an overview, see <http://docs.aws.amazon.com/kinesisanalytics/latest/dev/how-it-works.html How it Works> . 
 --
 --
 -- In the input configuration, you map the streaming source to an in-application stream, which you can think of as a constantly updating table. In the mapping, you must provide a schema for the in-application stream and map each data column in the in-application stream to a data element in the streaming source.
@@ -27,9 +27,9 @@
 --
 -- In the output configuration, you can configure the application to write data from in-application streams created in your applications to up to three destinations.
 --
--- To read data from your source stream or write data to destination streams, Amazon Kinesis Analytics needs your permissions. You grant these permissions by creating IAM roles. This operation requires permissions to perform the @kinesisanalytics:CreateApplication@ action.
+-- To read data from your source stream or write data to destination streams, Amazon Kinesis Analytics needs your permissions. You grant these permissions by creating IAM roles. This operation requires permissions to perform the @kinesisanalytics:CreateApplication@ action. 
 --
--- For introductory exercises to create an Amazon Kinesis Analytics application, see <http://docs.aws.amazon.com/kinesisanalytics/latest/dev/getting-started.html Getting Started> .
+-- For introductory exercises to create an Amazon Kinesis Analytics application, see <http://docs.aws.amazon.com/kinesisanalytics/latest/dev/getting-started.html Getting Started> . 
 --
 module Network.AWS.KinesisAnalytics.CreateApplication
     (
@@ -53,7 +53,6 @@ module Network.AWS.KinesisAnalytics.CreateApplication
     ) where
 
 import Network.AWS.KinesisAnalytics.Types
-import Network.AWS.KinesisAnalytics.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.Request
@@ -64,17 +63,15 @@ import Network.AWS.Response
 --
 --
 -- /See:/ 'createApplication' smart constructor.
-data CreateApplication =
-  CreateApplication'
-    { _caApplicationDescription   :: !(Maybe Text)
-    , _caInputs                   :: !(Maybe [Input])
-    , _caCloudWatchLoggingOptions :: !(Maybe [CloudWatchLoggingOption])
-    , _caOutputs                  :: !(Maybe [Output])
-    , _caApplicationCode          :: !(Maybe Text)
-    , _caApplicationName          :: !Text
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data CreateApplication = CreateApplication'{_caApplicationDescription
+                                            :: !(Maybe Text),
+                                            _caInputs :: !(Maybe [Input]),
+                                            _caCloudWatchLoggingOptions ::
+                                            !(Maybe [CloudWatchLoggingOption]),
+                                            _caOutputs :: !(Maybe [Output]),
+                                            _caApplicationCode :: !(Maybe Text),
+                                            _caApplicationName :: !Text}
+                           deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'CreateApplication' with the minimum fields required to make a request.
 --
@@ -88,22 +85,19 @@ data CreateApplication =
 --
 -- * 'caOutputs' - You can configure application output to write data from any of the in-application streams to up to three destinations. These destinations can be Amazon Kinesis streams, Amazon Kinesis Firehose delivery streams, Amazon Lambda destinations, or any combination of the three. In the configuration, you specify the in-application stream name, the destination stream or Lambda function Amazon Resource Name (ARN), and the format to use when writing data. You must also provide an IAM role that Amazon Kinesis Analytics can assume to write to the destination stream or Lambda function on your behalf. In the output configuration, you also provide the output stream or Lambda function ARN. For stream destinations, you provide the format of data in the stream (for example, JSON, CSV). You also must provide an IAM role that Amazon Kinesis Analytics can assume to write to the stream or Lambda function on your behalf.
 --
--- * 'caApplicationCode' - One or more SQL statements that read input data, transform it, and generate output. For example, you can write a SQL statement that reads data from one in-application stream, generates a running average of the number of advertisement clicks by vendor, and insert resulting rows in another in-application stream using pumps. For more information about the typical pattern, see <http://docs.aws.amazon.com/kinesisanalytics/latest/dev/how-it-works-app-code.html Application Code> .  You can provide such series of SQL statements, where output of one statement can be used as the input for the next statement. You store intermediate results by creating in-application streams and pumps. Note that the application code must create the streams with names specified in the @Outputs@ . For example, if your @Outputs@ defines output streams named @ExampleOutputStream1@ and @ExampleOutputStream2@ , then your application code must create these streams.
+-- * 'caApplicationCode' - One or more SQL statements that read input data, transform it, and generate output. For example, you can write a SQL statement that reads data from one in-application stream, generates a running average of the number of advertisement clicks by vendor, and insert resulting rows in another in-application stream using pumps. For more information about the typical pattern, see <http://docs.aws.amazon.com/kinesisanalytics/latest/dev/how-it-works-app-code.html Application Code> .  You can provide such series of SQL statements, where output of one statement can be used as the input for the next statement. You store intermediate results by creating in-application streams and pumps. Note that the application code must create the streams with names specified in the @Outputs@ . For example, if your @Outputs@ defines output streams named @ExampleOutputStream1@ and @ExampleOutputStream2@ , then your application code must create these streams. 
 --
 -- * 'caApplicationName' - Name of your Amazon Kinesis Analytics application (for example, @sample-app@ ).
 createApplication
     :: Text -- ^ 'caApplicationName'
     -> CreateApplication
-createApplication pApplicationName_ =
-  CreateApplication'
-    { _caApplicationDescription = Nothing
-    , _caInputs = Nothing
-    , _caCloudWatchLoggingOptions = Nothing
-    , _caOutputs = Nothing
-    , _caApplicationCode = Nothing
-    , _caApplicationName = pApplicationName_
-    }
-
+createApplication pApplicationName_
+  = CreateApplication'{_caApplicationDescription =
+                         Nothing,
+                       _caInputs = Nothing,
+                       _caCloudWatchLoggingOptions = Nothing,
+                       _caOutputs = Nothing, _caApplicationCode = Nothing,
+                       _caApplicationName = pApplicationName_}
 
 -- | Summary description of the application.
 caApplicationDescription :: Lens' CreateApplication (Maybe Text)
@@ -121,7 +115,7 @@ caCloudWatchLoggingOptions = lens _caCloudWatchLoggingOptions (\ s a -> s{_caClo
 caOutputs :: Lens' CreateApplication [Output]
 caOutputs = lens _caOutputs (\ s a -> s{_caOutputs = a}) . _Default . _Coerce
 
--- | One or more SQL statements that read input data, transform it, and generate output. For example, you can write a SQL statement that reads data from one in-application stream, generates a running average of the number of advertisement clicks by vendor, and insert resulting rows in another in-application stream using pumps. For more information about the typical pattern, see <http://docs.aws.amazon.com/kinesisanalytics/latest/dev/how-it-works-app-code.html Application Code> .  You can provide such series of SQL statements, where output of one statement can be used as the input for the next statement. You store intermediate results by creating in-application streams and pumps. Note that the application code must create the streams with names specified in the @Outputs@ . For example, if your @Outputs@ defines output streams named @ExampleOutputStream1@ and @ExampleOutputStream2@ , then your application code must create these streams.
+-- | One or more SQL statements that read input data, transform it, and generate output. For example, you can write a SQL statement that reads data from one in-application stream, generates a running average of the number of advertisement clicks by vendor, and insert resulting rows in another in-application stream using pumps. For more information about the typical pattern, see <http://docs.aws.amazon.com/kinesisanalytics/latest/dev/how-it-works-app-code.html Application Code> .  You can provide such series of SQL statements, where output of one statement can be used as the input for the next statement. You store intermediate results by creating in-application streams and pumps. Note that the application code must create the streams with names specified in the @Outputs@ . For example, if your @Outputs@ defines output streams named @ExampleOutputStream1@ and @ExampleOutputStream2@ , then your application code must create these streams. 
 caApplicationCode :: Lens' CreateApplication (Maybe Text)
 caApplicationCode = lens _caApplicationCode (\ s a -> s{_caApplicationCode = a})
 
@@ -176,13 +170,13 @@ instance ToQuery CreateApplication where
 --
 --
 -- /See:/ 'createApplicationResponse' smart constructor.
-data CreateApplicationResponse =
-  CreateApplicationResponse'
-    { _carsResponseStatus     :: !Int
-    , _carsApplicationSummary :: !ApplicationSummary
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data CreateApplicationResponse = CreateApplicationResponse'{_carsResponseStatus
+                                                            :: !Int,
+                                                            _carsApplicationSummary
+                                                            ::
+                                                            !ApplicationSummary}
+                                   deriving (Eq, Read, Show, Data, Typeable,
+                                             Generic)
 
 -- | Creates a value of 'CreateApplicationResponse' with the minimum fields required to make a request.
 --
@@ -195,12 +189,11 @@ createApplicationResponse
     :: Int -- ^ 'carsResponseStatus'
     -> ApplicationSummary -- ^ 'carsApplicationSummary'
     -> CreateApplicationResponse
-createApplicationResponse pResponseStatus_ pApplicationSummary_ =
-  CreateApplicationResponse'
-    { _carsResponseStatus = pResponseStatus_
-    , _carsApplicationSummary = pApplicationSummary_
-    }
-
+createApplicationResponse pResponseStatus_
+  pApplicationSummary_
+  = CreateApplicationResponse'{_carsResponseStatus =
+                                 pResponseStatus_,
+                               _carsApplicationSummary = pApplicationSummary_}
 
 -- | -- | The response status code.
 carsResponseStatus :: Lens' CreateApplicationResponse Int

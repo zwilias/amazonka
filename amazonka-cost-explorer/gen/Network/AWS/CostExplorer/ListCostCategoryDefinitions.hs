@@ -41,50 +41,49 @@ module Network.AWS.CostExplorer.ListCostCategoryDefinitions
     ) where
 
 import Network.AWS.CostExplorer.Types
-import Network.AWS.CostExplorer.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 
 -- | /See:/ 'listCostCategoryDefinitions' smart constructor.
-data ListCostCategoryDefinitions =
-  ListCostCategoryDefinitions'
-    { _lccdEffectiveOn :: !(Maybe Text)
-    , _lccdNextToken   :: !(Maybe Text)
-    , _lccdMaxResults  :: !(Maybe Nat)
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data ListCostCategoryDefinitions = ListCostCategoryDefinitions'{_lccdEffectiveOn
+                                                                ::
+                                                                !(Maybe Text),
+                                                                _lccdNextToken
+                                                                ::
+                                                                !(Maybe Text),
+                                                                _lccdMaxResults
+                                                                :: !(Maybe Nat)}
+                                     deriving (Eq, Read, Show, Data, Typeable,
+                                               Generic)
 
 -- | Creates a value of 'ListCostCategoryDefinitions' with the minimum fields required to make a request.
 --
 -- Use one of the following lenses to modify other fields as desired:
 --
--- * 'lccdEffectiveOn' - The date when the Cost Category was effective.
+-- * 'lccdEffectiveOn' - The date when the Cost Category was effective. 
 --
--- * 'lccdNextToken' - The token to retrieve the next set of results. Amazon Web Services provides the token when the response from a previous call has more results than the maximum page size.
+-- * 'lccdNextToken' - The token to retrieve the next set of results. Amazon Web Services provides the token when the response from a previous call has more results than the maximum page size. 
 --
--- * 'lccdMaxResults' - The number of entries a paginated response contains.
+-- * 'lccdMaxResults' - The number of entries a paginated response contains. 
 listCostCategoryDefinitions
     :: ListCostCategoryDefinitions
-listCostCategoryDefinitions =
-  ListCostCategoryDefinitions'
-    { _lccdEffectiveOn = Nothing
-    , _lccdNextToken = Nothing
-    , _lccdMaxResults = Nothing
-    }
+listCostCategoryDefinitions
+  = ListCostCategoryDefinitions'{_lccdEffectiveOn =
+                                   Nothing,
+                                 _lccdNextToken = Nothing,
+                                 _lccdMaxResults = Nothing}
 
-
--- | The date when the Cost Category was effective.
+-- | The date when the Cost Category was effective. 
 lccdEffectiveOn :: Lens' ListCostCategoryDefinitions (Maybe Text)
 lccdEffectiveOn = lens _lccdEffectiveOn (\ s a -> s{_lccdEffectiveOn = a})
 
--- | The token to retrieve the next set of results. Amazon Web Services provides the token when the response from a previous call has more results than the maximum page size.
+-- | The token to retrieve the next set of results. Amazon Web Services provides the token when the response from a previous call has more results than the maximum page size. 
 lccdNextToken :: Lens' ListCostCategoryDefinitions (Maybe Text)
 lccdNextToken = lens _lccdNextToken (\ s a -> s{_lccdNextToken = a})
 
--- | The number of entries a paginated response contains.
+-- | The number of entries a paginated response contains. 
 lccdMaxResults :: Lens' ListCostCategoryDefinitions (Maybe Natural)
 lccdMaxResults = lens _lccdMaxResults (\ s a -> s{_lccdMaxResults = a}) . mapping _Nat
 
@@ -129,40 +128,44 @@ instance ToQuery ListCostCategoryDefinitions where
         toQuery = const mempty
 
 -- | /See:/ 'listCostCategoryDefinitionsResponse' smart constructor.
-data ListCostCategoryDefinitionsResponse =
-  ListCostCategoryDefinitionsResponse'
-    { _lccdrsCostCategoryReferences :: !(Maybe [CostCategoryReference])
-    , _lccdrsNextToken              :: !(Maybe Text)
-    , _lccdrsResponseStatus         :: !Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data ListCostCategoryDefinitionsResponse = ListCostCategoryDefinitionsResponse'{_lccdrsCostCategoryReferences
+                                                                                ::
+                                                                                !(Maybe
+                                                                                    [CostCategoryReference]),
+                                                                                _lccdrsNextToken
+                                                                                ::
+                                                                                !(Maybe
+                                                                                    Text),
+                                                                                _lccdrsResponseStatus
+                                                                                ::
+                                                                                !Int}
+                                             deriving (Eq, Read, Show, Data,
+                                                       Typeable, Generic)
 
 -- | Creates a value of 'ListCostCategoryDefinitionsResponse' with the minimum fields required to make a request.
 --
 -- Use one of the following lenses to modify other fields as desired:
 --
--- * 'lccdrsCostCategoryReferences' - A reference to a Cost Category containing enough information to identify the Cost Category.
+-- * 'lccdrsCostCategoryReferences' - A reference to a Cost Category containing enough information to identify the Cost Category. 
 --
--- * 'lccdrsNextToken' - The token to retrieve the next set of results. Amazon Web Services provides the token when the response from a previous call has more results than the maximum page size.
+-- * 'lccdrsNextToken' - The token to retrieve the next set of results. Amazon Web Services provides the token when the response from a previous call has more results than the maximum page size. 
 --
 -- * 'lccdrsResponseStatus' - -- | The response status code.
 listCostCategoryDefinitionsResponse
     :: Int -- ^ 'lccdrsResponseStatus'
     -> ListCostCategoryDefinitionsResponse
-listCostCategoryDefinitionsResponse pResponseStatus_ =
-  ListCostCategoryDefinitionsResponse'
-    { _lccdrsCostCategoryReferences = Nothing
-    , _lccdrsNextToken = Nothing
-    , _lccdrsResponseStatus = pResponseStatus_
-    }
+listCostCategoryDefinitionsResponse pResponseStatus_
+  = ListCostCategoryDefinitionsResponse'{_lccdrsCostCategoryReferences
+                                           = Nothing,
+                                         _lccdrsNextToken = Nothing,
+                                         _lccdrsResponseStatus =
+                                           pResponseStatus_}
 
-
--- | A reference to a Cost Category containing enough information to identify the Cost Category.
+-- | A reference to a Cost Category containing enough information to identify the Cost Category. 
 lccdrsCostCategoryReferences :: Lens' ListCostCategoryDefinitionsResponse [CostCategoryReference]
 lccdrsCostCategoryReferences = lens _lccdrsCostCategoryReferences (\ s a -> s{_lccdrsCostCategoryReferences = a}) . _Default . _Coerce
 
--- | The token to retrieve the next set of results. Amazon Web Services provides the token when the response from a previous call has more results than the maximum page size.
+-- | The token to retrieve the next set of results. Amazon Web Services provides the token when the response from a previous call has more results than the maximum page size. 
 lccdrsNextToken :: Lens' ListCostCategoryDefinitionsResponse (Maybe Text)
 lccdrsNextToken = lens _lccdrsNextToken (\ s a -> s{_lccdrsNextToken = a})
 

@@ -48,26 +48,21 @@ module Network.AWS.CodeCommit.DeleteFile
     ) where
 
 import Network.AWS.CodeCommit.Types
-import Network.AWS.CodeCommit.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 
 -- | /See:/ 'deleteFile' smart constructor.
-data DeleteFile =
-  DeleteFile'
-    { _dfEmail            :: !(Maybe Text)
-    , _dfName             :: !(Maybe Text)
-    , _dfCommitMessage    :: !(Maybe Text)
-    , _dfKeepEmptyFolders :: !(Maybe Bool)
-    , _dfRepositoryName   :: !Text
-    , _dfBranchName       :: !Text
-    , _dfFilePath         :: !Text
-    , _dfParentCommitId   :: !Text
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data DeleteFile = DeleteFile'{_dfEmail ::
+                              !(Maybe Text),
+                              _dfName :: !(Maybe Text),
+                              _dfCommitMessage :: !(Maybe Text),
+                              _dfKeepEmptyFolders :: !(Maybe Bool),
+                              _dfRepositoryName :: !Text,
+                              _dfBranchName :: !Text, _dfFilePath :: !Text,
+                              _dfParentCommitId :: !Text}
+                    deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'DeleteFile' with the minimum fields required to make a request.
 --
@@ -94,18 +89,15 @@ deleteFile
     -> Text -- ^ 'dfFilePath'
     -> Text -- ^ 'dfParentCommitId'
     -> DeleteFile
-deleteFile pRepositoryName_ pBranchName_ pFilePath_ pParentCommitId_ =
-  DeleteFile'
-    { _dfEmail = Nothing
-    , _dfName = Nothing
-    , _dfCommitMessage = Nothing
-    , _dfKeepEmptyFolders = Nothing
-    , _dfRepositoryName = pRepositoryName_
-    , _dfBranchName = pBranchName_
-    , _dfFilePath = pFilePath_
-    , _dfParentCommitId = pParentCommitId_
-    }
-
+deleteFile pRepositoryName_ pBranchName_ pFilePath_
+  pParentCommitId_
+  = DeleteFile'{_dfEmail = Nothing, _dfName = Nothing,
+                _dfCommitMessage = Nothing,
+                _dfKeepEmptyFolders = Nothing,
+                _dfRepositoryName = pRepositoryName_,
+                _dfBranchName = pBranchName_,
+                _dfFilePath = pFilePath_,
+                _dfParentCommitId = pParentCommitId_}
 
 -- | The email address for the commit that deletes the file. If no email address is specified, the email address is left blank.
 dfEmail :: Lens' DeleteFile (Maybe Text)
@@ -183,16 +175,13 @@ instance ToQuery DeleteFile where
         toQuery = const mempty
 
 -- | /See:/ 'deleteFileResponse' smart constructor.
-data DeleteFileResponse =
-  DeleteFileResponse'
-    { _dfrsResponseStatus :: !Int
-    , _dfrsCommitId       :: !Text
-    , _dfrsBlobId         :: !Text
-    , _dfrsTreeId         :: !Text
-    , _dfrsFilePath       :: !Text
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data DeleteFileResponse = DeleteFileResponse'{_dfrsResponseStatus
+                                              :: !Int,
+                                              _dfrsCommitId :: !Text,
+                                              _dfrsBlobId :: !Text,
+                                              _dfrsTreeId :: !Text,
+                                              _dfrsFilePath :: !Text}
+                            deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'DeleteFileResponse' with the minimum fields required to make a request.
 --
@@ -214,15 +203,12 @@ deleteFileResponse
     -> Text -- ^ 'dfrsTreeId'
     -> Text -- ^ 'dfrsFilePath'
     -> DeleteFileResponse
-deleteFileResponse pResponseStatus_ pCommitId_ pBlobId_ pTreeId_ pFilePath_ =
-  DeleteFileResponse'
-    { _dfrsResponseStatus = pResponseStatus_
-    , _dfrsCommitId = pCommitId_
-    , _dfrsBlobId = pBlobId_
-    , _dfrsTreeId = pTreeId_
-    , _dfrsFilePath = pFilePath_
-    }
-
+deleteFileResponse pResponseStatus_ pCommitId_
+  pBlobId_ pTreeId_ pFilePath_
+  = DeleteFileResponse'{_dfrsResponseStatus =
+                          pResponseStatus_,
+                        _dfrsCommitId = pCommitId_, _dfrsBlobId = pBlobId_,
+                        _dfrsTreeId = pTreeId_, _dfrsFilePath = pFilePath_}
 
 -- | -- | The response status code.
 dfrsResponseStatus :: Lens' DeleteFileResponse Int

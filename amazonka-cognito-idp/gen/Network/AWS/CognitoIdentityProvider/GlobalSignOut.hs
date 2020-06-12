@@ -37,7 +37,6 @@ module Network.AWS.CognitoIdentityProvider.GlobalSignOut
     ) where
 
 import Network.AWS.CognitoIdentityProvider.Types
-import Network.AWS.CognitoIdentityProvider.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.Request
@@ -48,12 +47,9 @@ import Network.AWS.Response
 --
 --
 -- /See:/ 'globalSignOut' smart constructor.
-newtype GlobalSignOut =
-  GlobalSignOut'
-    { _gsoAccessToken :: Sensitive Text
-    }
-  deriving (Eq, Show, Data, Typeable, Generic)
-
+newtype GlobalSignOut = GlobalSignOut'{_gsoAccessToken
+                                       :: Sensitive Text}
+                          deriving (Eq, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'GlobalSignOut' with the minimum fields required to make a request.
 --
@@ -63,9 +59,9 @@ newtype GlobalSignOut =
 globalSignOut
     :: Text -- ^ 'gsoAccessToken'
     -> GlobalSignOut
-globalSignOut pAccessToken_ =
-  GlobalSignOut' {_gsoAccessToken = _Sensitive # pAccessToken_}
-
+globalSignOut pAccessToken_
+  = GlobalSignOut'{_gsoAccessToken =
+                     _Sensitive # pAccessToken_}
 
 -- | The access token.
 gsoAccessToken :: Lens' GlobalSignOut Text
@@ -109,12 +105,10 @@ instance ToQuery GlobalSignOut where
 --
 --
 -- /See:/ 'globalSignOutResponse' smart constructor.
-newtype GlobalSignOutResponse =
-  GlobalSignOutResponse'
-    { _gsorsResponseStatus :: Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+newtype GlobalSignOutResponse = GlobalSignOutResponse'{_gsorsResponseStatus
+                                                       :: Int}
+                                  deriving (Eq, Read, Show, Data, Typeable,
+                                            Generic)
 
 -- | Creates a value of 'GlobalSignOutResponse' with the minimum fields required to make a request.
 --
@@ -124,9 +118,9 @@ newtype GlobalSignOutResponse =
 globalSignOutResponse
     :: Int -- ^ 'gsorsResponseStatus'
     -> GlobalSignOutResponse
-globalSignOutResponse pResponseStatus_ =
-  GlobalSignOutResponse' {_gsorsResponseStatus = pResponseStatus_}
-
+globalSignOutResponse pResponseStatus_
+  = GlobalSignOutResponse'{_gsorsResponseStatus =
+                             pResponseStatus_}
 
 -- | -- | The response status code.
 gsorsResponseStatus :: Lens' GlobalSignOutResponse Int

@@ -21,11 +21,11 @@
 -- Decrypts ciphertext. Ciphertext is plaintext that has been previously encrypted by using any of the following operations:
 --
 --
---     * 'GenerateDataKey'
+--     * 'GenerateDataKey' 
 --
---     * 'GenerateDataKeyWithoutPlaintext'
+--     * 'GenerateDataKeyWithoutPlaintext' 
 --
---     * 'Encrypt'
+--     * 'Encrypt' 
 --
 --
 --
@@ -51,21 +51,17 @@ module Network.AWS.KMS.Decrypt
     ) where
 
 import Network.AWS.KMS.Types
-import Network.AWS.KMS.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 
 -- | /See:/ 'decrypt' smart constructor.
-data Decrypt =
-  Decrypt'
-    { _decEncryptionContext :: !(Maybe (Map Text Text))
-    , _decGrantTokens       :: !(Maybe [Text])
-    , _decCiphertextBlob    :: !Base64
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data Decrypt = Decrypt'{_decEncryptionContext ::
+                        !(Maybe (Map Text Text)),
+                        _decGrantTokens :: !(Maybe [Text]),
+                        _decCiphertextBlob :: !Base64}
+                 deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'Decrypt' with the minimum fields required to make a request.
 --
@@ -79,13 +75,10 @@ data Decrypt =
 decrypt
     :: ByteString -- ^ 'decCiphertextBlob'
     -> Decrypt
-decrypt pCiphertextBlob_ =
-  Decrypt'
-    { _decEncryptionContext = Nothing
-    , _decGrantTokens = Nothing
-    , _decCiphertextBlob = _Base64 # pCiphertextBlob_
-    }
-
+decrypt pCiphertextBlob_
+  = Decrypt'{_decEncryptionContext = Nothing,
+             _decGrantTokens = Nothing,
+             _decCiphertextBlob = _Base64 # pCiphertextBlob_}
 
 -- | The encryption context. If this was specified in the 'Encrypt' function, it must be specified here or the decryption operation will fail. For more information, see <http://docs.aws.amazon.com/kms/latest/developerguide/encryption-context.html Encryption Context> .
 decEncryptionContext :: Lens' Decrypt (HashMap Text Text)
@@ -137,14 +130,12 @@ instance ToQuery Decrypt where
         toQuery = const mempty
 
 -- | /See:/ 'decryptResponse' smart constructor.
-data DecryptResponse =
-  DecryptResponse'
-    { _drsKeyId          :: !(Maybe Text)
-    , _drsPlaintext      :: !(Maybe (Sensitive Base64))
-    , _drsResponseStatus :: !Int
-    }
-  deriving (Eq, Show, Data, Typeable, Generic)
-
+data DecryptResponse = DecryptResponse'{_drsKeyId ::
+                                        !(Maybe Text),
+                                        _drsPlaintext ::
+                                        !(Maybe (Sensitive Base64)),
+                                        _drsResponseStatus :: !Int}
+                         deriving (Eq, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'DecryptResponse' with the minimum fields required to make a request.
 --
@@ -158,13 +149,10 @@ data DecryptResponse =
 decryptResponse
     :: Int -- ^ 'drsResponseStatus'
     -> DecryptResponse
-decryptResponse pResponseStatus_ =
-  DecryptResponse'
-    { _drsKeyId = Nothing
-    , _drsPlaintext = Nothing
-    , _drsResponseStatus = pResponseStatus_
-    }
-
+decryptResponse pResponseStatus_
+  = DecryptResponse'{_drsKeyId = Nothing,
+                     _drsPlaintext = Nothing,
+                     _drsResponseStatus = pResponseStatus_}
 
 -- | ARN of the key used to perform the decryption. This value is returned if no errors are encountered during the operation.
 drsKeyId :: Lens' DecryptResponse (Maybe Text)

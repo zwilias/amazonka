@@ -42,23 +42,22 @@ module Network.AWS.EC2.ModifyLaunchTemplate
     ) where
 
 import Network.AWS.EC2.Types
-import Network.AWS.EC2.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 
 -- | /See:/ 'modifyLaunchTemplate' smart constructor.
-data ModifyLaunchTemplate =
-  ModifyLaunchTemplate'
-    { _mltLaunchTemplateName :: !(Maybe Text)
-    , _mltClientToken        :: !(Maybe Text)
-    , _mltLaunchTemplateId   :: !(Maybe Text)
-    , _mltDefaultVersion     :: !(Maybe Text)
-    , _mltDryRun             :: !(Maybe Bool)
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data ModifyLaunchTemplate = ModifyLaunchTemplate'{_mltLaunchTemplateName
+                                                  :: !(Maybe Text),
+                                                  _mltClientToken ::
+                                                  !(Maybe Text),
+                                                  _mltLaunchTemplateId ::
+                                                  !(Maybe Text),
+                                                  _mltDefaultVersion ::
+                                                  !(Maybe Text),
+                                                  _mltDryRun :: !(Maybe Bool)}
+                              deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'ModifyLaunchTemplate' with the minimum fields required to make a request.
 --
@@ -75,15 +74,12 @@ data ModifyLaunchTemplate =
 -- * 'mltDryRun' - Checks whether you have the required permissions for the action, without actually making the request, and provides an error response. If you have the required permissions, the error response is @DryRunOperation@ . Otherwise, it is @UnauthorizedOperation@ .
 modifyLaunchTemplate
     :: ModifyLaunchTemplate
-modifyLaunchTemplate =
-  ModifyLaunchTemplate'
-    { _mltLaunchTemplateName = Nothing
-    , _mltClientToken = Nothing
-    , _mltLaunchTemplateId = Nothing
-    , _mltDefaultVersion = Nothing
-    , _mltDryRun = Nothing
-    }
-
+modifyLaunchTemplate
+  = ModifyLaunchTemplate'{_mltLaunchTemplateName =
+                            Nothing,
+                          _mltClientToken = Nothing,
+                          _mltLaunchTemplateId = Nothing,
+                          _mltDefaultVersion = Nothing, _mltDryRun = Nothing}
 
 -- | The name of the launch template. You must specify either the launch template ID or launch template name in the request.
 mltLaunchTemplateName :: Lens' ModifyLaunchTemplate (Maybe Text)
@@ -137,13 +133,14 @@ instance ToQuery ModifyLaunchTemplate where
                "DryRun" =: _mltDryRun]
 
 -- | /See:/ 'modifyLaunchTemplateResponse' smart constructor.
-data ModifyLaunchTemplateResponse =
-  ModifyLaunchTemplateResponse'
-    { _mltrsLaunchTemplate :: !(Maybe LaunchTemplate)
-    , _mltrsResponseStatus :: !Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data ModifyLaunchTemplateResponse = ModifyLaunchTemplateResponse'{_mltrsLaunchTemplate
+                                                                  ::
+                                                                  !(Maybe
+                                                                      LaunchTemplate),
+                                                                  _mltrsResponseStatus
+                                                                  :: !Int}
+                                      deriving (Eq, Read, Show, Data, Typeable,
+                                                Generic)
 
 -- | Creates a value of 'ModifyLaunchTemplateResponse' with the minimum fields required to make a request.
 --
@@ -155,10 +152,10 @@ data ModifyLaunchTemplateResponse =
 modifyLaunchTemplateResponse
     :: Int -- ^ 'mltrsResponseStatus'
     -> ModifyLaunchTemplateResponse
-modifyLaunchTemplateResponse pResponseStatus_ =
-  ModifyLaunchTemplateResponse'
-    {_mltrsLaunchTemplate = Nothing, _mltrsResponseStatus = pResponseStatus_}
-
+modifyLaunchTemplateResponse pResponseStatus_
+  = ModifyLaunchTemplateResponse'{_mltrsLaunchTemplate
+                                    = Nothing,
+                                  _mltrsResponseStatus = pResponseStatus_}
 
 -- | Information about the launch template.
 mltrsLaunchTemplate :: Lens' ModifyLaunchTemplateResponse (Maybe LaunchTemplate)

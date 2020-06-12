@@ -37,7 +37,6 @@ module Network.AWS.EC2.EnableVGWRoutePropagation
     ) where
 
 import Network.AWS.EC2.Types
-import Network.AWS.EC2.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.Request
@@ -48,14 +47,14 @@ import Network.AWS.Response
 --
 --
 -- /See:/ 'enableVGWRoutePropagation' smart constructor.
-data EnableVGWRoutePropagation =
-  EnableVGWRoutePropagation'
-    { _evrpDryRun       :: !(Maybe Bool)
-    , _evrpGatewayId    :: !Text
-    , _evrpRouteTableId :: !Text
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data EnableVGWRoutePropagation = EnableVGWRoutePropagation'{_evrpDryRun
+                                                            :: !(Maybe Bool),
+                                                            _evrpGatewayId ::
+                                                            !Text,
+                                                            _evrpRouteTableId ::
+                                                            !Text}
+                                   deriving (Eq, Read, Show, Data, Typeable,
+                                             Generic)
 
 -- | Creates a value of 'EnableVGWRoutePropagation' with the minimum fields required to make a request.
 --
@@ -63,30 +62,27 @@ data EnableVGWRoutePropagation =
 --
 -- * 'evrpDryRun' - Checks whether you have the required permissions for the action, without actually making the request, and provides an error response. If you have the required permissions, the error response is @DryRunOperation@ . Otherwise, it is @UnauthorizedOperation@ .
 --
--- * 'evrpGatewayId' - The ID of the virtual private gateway that is attached to a VPC. The virtual private gateway must be attached to the same VPC that the routing tables are associated with.
+-- * 'evrpGatewayId' - The ID of the virtual private gateway that is attached to a VPC. The virtual private gateway must be attached to the same VPC that the routing tables are associated with. 
 --
--- * 'evrpRouteTableId' - The ID of the route table. The routing table must be associated with the same VPC that the virtual private gateway is attached to.
+-- * 'evrpRouteTableId' - The ID of the route table. The routing table must be associated with the same VPC that the virtual private gateway is attached to. 
 enableVGWRoutePropagation
     :: Text -- ^ 'evrpGatewayId'
     -> Text -- ^ 'evrpRouteTableId'
     -> EnableVGWRoutePropagation
-enableVGWRoutePropagation pGatewayId_ pRouteTableId_ =
-  EnableVGWRoutePropagation'
-    { _evrpDryRun = Nothing
-    , _evrpGatewayId = pGatewayId_
-    , _evrpRouteTableId = pRouteTableId_
-    }
-
+enableVGWRoutePropagation pGatewayId_ pRouteTableId_
+  = EnableVGWRoutePropagation'{_evrpDryRun = Nothing,
+                               _evrpGatewayId = pGatewayId_,
+                               _evrpRouteTableId = pRouteTableId_}
 
 -- | Checks whether you have the required permissions for the action, without actually making the request, and provides an error response. If you have the required permissions, the error response is @DryRunOperation@ . Otherwise, it is @UnauthorizedOperation@ .
 evrpDryRun :: Lens' EnableVGWRoutePropagation (Maybe Bool)
 evrpDryRun = lens _evrpDryRun (\ s a -> s{_evrpDryRun = a})
 
--- | The ID of the virtual private gateway that is attached to a VPC. The virtual private gateway must be attached to the same VPC that the routing tables are associated with.
+-- | The ID of the virtual private gateway that is attached to a VPC. The virtual private gateway must be attached to the same VPC that the routing tables are associated with. 
 evrpGatewayId :: Lens' EnableVGWRoutePropagation Text
 evrpGatewayId = lens _evrpGatewayId (\ s a -> s{_evrpGatewayId = a})
 
--- | The ID of the route table. The routing table must be associated with the same VPC that the virtual private gateway is attached to.
+-- | The ID of the route table. The routing table must be associated with the same VPC that the virtual private gateway is attached to. 
 evrpRouteTableId :: Lens' EnableVGWRoutePropagation Text
 evrpRouteTableId = lens _evrpRouteTableId (\ s a -> s{_evrpRouteTableId = a})
 
@@ -118,17 +114,16 @@ instance ToQuery EnableVGWRoutePropagation where
                "RouteTableId" =: _evrpRouteTableId]
 
 -- | /See:/ 'enableVGWRoutePropagationResponse' smart constructor.
-data EnableVGWRoutePropagationResponse =
-  EnableVGWRoutePropagationResponse'
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data EnableVGWRoutePropagationResponse = EnableVGWRoutePropagationResponse'
+                                           deriving (Eq, Read, Show, Data,
+                                                     Typeable, Generic)
 
 -- | Creates a value of 'EnableVGWRoutePropagationResponse' with the minimum fields required to make a request.
 --
 enableVGWRoutePropagationResponse
     :: EnableVGWRoutePropagationResponse
-enableVGWRoutePropagationResponse = EnableVGWRoutePropagationResponse'
-
+enableVGWRoutePropagationResponse
+  = EnableVGWRoutePropagationResponse'
 
 instance NFData EnableVGWRoutePropagationResponse
          where

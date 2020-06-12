@@ -44,16 +44,19 @@ import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 import Network.AWS.WorkSpaces.Types
-import Network.AWS.WorkSpaces.Types.Product
 
 -- | /See:/ 'describeWorkspacesConnectionStatus' smart constructor.
-data DescribeWorkspacesConnectionStatus =
-  DescribeWorkspacesConnectionStatus'
-    { _dwcsWorkspaceIds :: !(Maybe (List1 Text))
-    , _dwcsNextToken    :: !(Maybe Text)
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data DescribeWorkspacesConnectionStatus = DescribeWorkspacesConnectionStatus'{_dwcsWorkspaceIds
+                                                                              ::
+                                                                              !(Maybe
+                                                                                  (List1
+                                                                                     Text)),
+                                                                              _dwcsNextToken
+                                                                              ::
+                                                                              !(Maybe
+                                                                                  Text)}
+                                            deriving (Eq, Read, Show, Data,
+                                                      Typeable, Generic)
 
 -- | Creates a value of 'DescribeWorkspacesConnectionStatus' with the minimum fields required to make a request.
 --
@@ -64,10 +67,10 @@ data DescribeWorkspacesConnectionStatus =
 -- * 'dwcsNextToken' - The token for the next set of results. (You received this token from a previous call.)
 describeWorkspacesConnectionStatus
     :: DescribeWorkspacesConnectionStatus
-describeWorkspacesConnectionStatus =
-  DescribeWorkspacesConnectionStatus'
-    {_dwcsWorkspaceIds = Nothing, _dwcsNextToken = Nothing}
-
+describeWorkspacesConnectionStatus
+  = DescribeWorkspacesConnectionStatus'{_dwcsWorkspaceIds
+                                          = Nothing,
+                                        _dwcsNextToken = Nothing}
 
 -- | The identifiers of the WorkSpaces. You can specify up to 25 WorkSpaces.
 dwcsWorkspaceIds :: Lens' DescribeWorkspacesConnectionStatus (Maybe (NonEmpty Text))
@@ -125,14 +128,20 @@ instance ToQuery DescribeWorkspacesConnectionStatus
         toQuery = const mempty
 
 -- | /See:/ 'describeWorkspacesConnectionStatusResponse' smart constructor.
-data DescribeWorkspacesConnectionStatusResponse =
-  DescribeWorkspacesConnectionStatusResponse'
-    { _dwcsrsNextToken                  :: !(Maybe Text)
-    , _dwcsrsWorkspacesConnectionStatus :: !(Maybe [WorkspaceConnectionStatus])
-    , _dwcsrsResponseStatus             :: !Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data DescribeWorkspacesConnectionStatusResponse = DescribeWorkspacesConnectionStatusResponse'{_dwcsrsNextToken
+                                                                                              ::
+                                                                                              !(Maybe
+                                                                                                  Text),
+                                                                                              _dwcsrsWorkspacesConnectionStatus
+                                                                                              ::
+                                                                                              !(Maybe
+                                                                                                  [WorkspaceConnectionStatus]),
+                                                                                              _dwcsrsResponseStatus
+                                                                                              ::
+                                                                                              !Int}
+                                                    deriving (Eq, Read, Show,
+                                                              Data, Typeable,
+                                                              Generic)
 
 -- | Creates a value of 'DescribeWorkspacesConnectionStatusResponse' with the minimum fields required to make a request.
 --
@@ -146,13 +155,14 @@ data DescribeWorkspacesConnectionStatusResponse =
 describeWorkspacesConnectionStatusResponse
     :: Int -- ^ 'dwcsrsResponseStatus'
     -> DescribeWorkspacesConnectionStatusResponse
-describeWorkspacesConnectionStatusResponse pResponseStatus_ =
-  DescribeWorkspacesConnectionStatusResponse'
-    { _dwcsrsNextToken = Nothing
-    , _dwcsrsWorkspacesConnectionStatus = Nothing
-    , _dwcsrsResponseStatus = pResponseStatus_
-    }
-
+describeWorkspacesConnectionStatusResponse
+  pResponseStatus_
+  = DescribeWorkspacesConnectionStatusResponse'{_dwcsrsNextToken
+                                                  = Nothing,
+                                                _dwcsrsWorkspacesConnectionStatus
+                                                  = Nothing,
+                                                _dwcsrsResponseStatus =
+                                                  pResponseStatus_}
 
 -- | The token to use to retrieve the next set of results, or null if there are no more results available.
 dwcsrsNextToken :: Lens' DescribeWorkspacesConnectionStatusResponse (Maybe Text)

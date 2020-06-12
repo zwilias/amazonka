@@ -42,20 +42,17 @@ import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 import Network.AWS.SES.Types
-import Network.AWS.SES.Types.Product
 
 -- | /See:/ 'getAccountSendingEnabled' smart constructor.
-data GetAccountSendingEnabled =
-  GetAccountSendingEnabled'
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data GetAccountSendingEnabled = GetAccountSendingEnabled'
+                                  deriving (Eq, Read, Show, Data, Typeable,
+                                            Generic)
 
 -- | Creates a value of 'GetAccountSendingEnabled' with the minimum fields required to make a request.
 --
 getAccountSendingEnabled
     :: GetAccountSendingEnabled
 getAccountSendingEnabled = GetAccountSendingEnabled'
-
 
 instance AWSRequest GetAccountSendingEnabled where
         type Rs GetAccountSendingEnabled =
@@ -90,13 +87,15 @@ instance ToQuery GetAccountSendingEnabled where
 --
 --
 -- /See:/ 'getAccountSendingEnabledResponse' smart constructor.
-data GetAccountSendingEnabledResponse =
-  GetAccountSendingEnabledResponse'
-    { _gasersEnabled        :: !(Maybe Bool)
-    , _gasersResponseStatus :: !Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data GetAccountSendingEnabledResponse = GetAccountSendingEnabledResponse'{_gasersEnabled
+                                                                          ::
+                                                                          !(Maybe
+                                                                              Bool),
+                                                                          _gasersResponseStatus
+                                                                          ::
+                                                                          !Int}
+                                          deriving (Eq, Read, Show, Data,
+                                                    Typeable, Generic)
 
 -- | Creates a value of 'GetAccountSendingEnabledResponse' with the minimum fields required to make a request.
 --
@@ -108,10 +107,10 @@ data GetAccountSendingEnabledResponse =
 getAccountSendingEnabledResponse
     :: Int -- ^ 'gasersResponseStatus'
     -> GetAccountSendingEnabledResponse
-getAccountSendingEnabledResponse pResponseStatus_ =
-  GetAccountSendingEnabledResponse'
-    {_gasersEnabled = Nothing, _gasersResponseStatus = pResponseStatus_}
-
+getAccountSendingEnabledResponse pResponseStatus_
+  = GetAccountSendingEnabledResponse'{_gasersEnabled =
+                                        Nothing,
+                                      _gasersResponseStatus = pResponseStatus_}
 
 -- | Describes whether email sending is enabled or disabled for your Amazon SES account.
 gasersEnabled :: Lens' GetAccountSendingEnabledResponse (Maybe Bool)

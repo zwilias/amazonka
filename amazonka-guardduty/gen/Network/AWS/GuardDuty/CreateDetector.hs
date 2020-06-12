@@ -36,7 +36,6 @@ module Network.AWS.GuardDuty.CreateDetector
     ) where
 
 import Network.AWS.GuardDuty.Types
-import Network.AWS.GuardDuty.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.Request
@@ -45,12 +44,9 @@ import Network.AWS.Response
 -- | CreateDetector request body.
 --
 -- /See:/ 'createDetector' smart constructor.
-newtype CreateDetector =
-  CreateDetector'
-    { _cdEnable :: Maybe Bool
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+newtype CreateDetector = CreateDetector'{_cdEnable ::
+                                         Maybe Bool}
+                           deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'CreateDetector' with the minimum fields required to make a request.
 --
@@ -59,8 +55,7 @@ newtype CreateDetector =
 -- * 'cdEnable' - A boolean value that specifies whether the detector is to be enabled.
 createDetector
     :: CreateDetector
-createDetector = CreateDetector' {_cdEnable = Nothing}
-
+createDetector = CreateDetector'{_cdEnable = Nothing}
 
 -- | A boolean value that specifies whether the detector is to be enabled.
 cdEnable :: Lens' CreateDetector (Maybe Bool)
@@ -97,13 +92,12 @@ instance ToQuery CreateDetector where
         toQuery = const mempty
 
 -- | /See:/ 'createDetectorResponse' smart constructor.
-data CreateDetectorResponse =
-  CreateDetectorResponse'
-    { _cdrsDetectorId     :: !(Maybe Text)
-    , _cdrsResponseStatus :: !Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data CreateDetectorResponse = CreateDetectorResponse'{_cdrsDetectorId
+                                                      :: !(Maybe Text),
+                                                      _cdrsResponseStatus ::
+                                                      !Int}
+                                deriving (Eq, Read, Show, Data, Typeable,
+                                          Generic)
 
 -- | Creates a value of 'CreateDetectorResponse' with the minimum fields required to make a request.
 --
@@ -115,10 +109,9 @@ data CreateDetectorResponse =
 createDetectorResponse
     :: Int -- ^ 'cdrsResponseStatus'
     -> CreateDetectorResponse
-createDetectorResponse pResponseStatus_ =
-  CreateDetectorResponse'
-    {_cdrsDetectorId = Nothing, _cdrsResponseStatus = pResponseStatus_}
-
+createDetectorResponse pResponseStatus_
+  = CreateDetectorResponse'{_cdrsDetectorId = Nothing,
+                            _cdrsResponseStatus = pResponseStatus_}
 
 -- | The unique ID of the created detector.
 cdrsDetectorId :: Lens' CreateDetectorResponse (Maybe Text)

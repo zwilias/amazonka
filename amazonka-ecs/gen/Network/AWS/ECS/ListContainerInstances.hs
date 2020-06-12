@@ -45,7 +45,6 @@ module Network.AWS.ECS.ListContainerInstances
     ) where
 
 import Network.AWS.ECS.Types
-import Network.AWS.ECS.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Pager
 import Network.AWS.Prelude
@@ -53,16 +52,20 @@ import Network.AWS.Request
 import Network.AWS.Response
 
 -- | /See:/ 'listContainerInstances' smart constructor.
-data ListContainerInstances =
-  ListContainerInstances'
-    { _lciStatus     :: !(Maybe ContainerInstanceStatus)
-    , _lciCluster    :: !(Maybe Text)
-    , _lciNextToken  :: !(Maybe Text)
-    , _lciFilter     :: !(Maybe Text)
-    , _lciMaxResults :: !(Maybe Int)
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data ListContainerInstances = ListContainerInstances'{_lciStatus
+                                                      ::
+                                                      !(Maybe
+                                                          ContainerInstanceStatus),
+                                                      _lciCluster ::
+                                                      !(Maybe Text),
+                                                      _lciNextToken ::
+                                                      !(Maybe Text),
+                                                      _lciFilter ::
+                                                      !(Maybe Text),
+                                                      _lciMaxResults ::
+                                                      !(Maybe Int)}
+                                deriving (Eq, Read, Show, Data, Typeable,
+                                          Generic)
 
 -- | Creates a value of 'ListContainerInstances' with the minimum fields required to make a request.
 --
@@ -79,15 +82,10 @@ data ListContainerInstances =
 -- * 'lciMaxResults' - The maximum number of container instance results returned by @ListContainerInstances@ in paginated output. When this parameter is used, @ListContainerInstances@ only returns @maxResults@ results in a single page along with a @nextToken@ response element. The remaining results of the initial request can be seen by sending another @ListContainerInstances@ request with the returned @nextToken@ value. This value can be between 1 and 100. If this parameter is not used, then @ListContainerInstances@ returns up to 100 results and a @nextToken@ value if applicable.
 listContainerInstances
     :: ListContainerInstances
-listContainerInstances =
-  ListContainerInstances'
-    { _lciStatus = Nothing
-    , _lciCluster = Nothing
-    , _lciNextToken = Nothing
-    , _lciFilter = Nothing
-    , _lciMaxResults = Nothing
-    }
-
+listContainerInstances
+  = ListContainerInstances'{_lciStatus = Nothing,
+                            _lciCluster = Nothing, _lciNextToken = Nothing,
+                            _lciFilter = Nothing, _lciMaxResults = Nothing}
 
 -- | Filters the container instances by status. For example, if you specify the @DRAINING@ status, the results include only container instances that have been set to @DRAINING@ using 'UpdateContainerInstancesState' . If you do not specify this parameter, the default is to include container instances set to @ACTIVE@ and @DRAINING@ .
 lciStatus :: Lens' ListContainerInstances (Maybe ContainerInstanceStatus)
@@ -159,14 +157,18 @@ instance ToQuery ListContainerInstances where
         toQuery = const mempty
 
 -- | /See:/ 'listContainerInstancesResponse' smart constructor.
-data ListContainerInstancesResponse =
-  ListContainerInstancesResponse'
-    { _lcirsContainerInstanceARNs :: !(Maybe [Text])
-    , _lcirsNextToken             :: !(Maybe Text)
-    , _lcirsResponseStatus        :: !Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data ListContainerInstancesResponse = ListContainerInstancesResponse'{_lcirsContainerInstanceARNs
+                                                                      ::
+                                                                      !(Maybe
+                                                                          [Text]),
+                                                                      _lcirsNextToken
+                                                                      ::
+                                                                      !(Maybe
+                                                                          Text),
+                                                                      _lcirsResponseStatus
+                                                                      :: !Int}
+                                        deriving (Eq, Read, Show, Data,
+                                                  Typeable, Generic)
 
 -- | Creates a value of 'ListContainerInstancesResponse' with the minimum fields required to make a request.
 --
@@ -180,13 +182,11 @@ data ListContainerInstancesResponse =
 listContainerInstancesResponse
     :: Int -- ^ 'lcirsResponseStatus'
     -> ListContainerInstancesResponse
-listContainerInstancesResponse pResponseStatus_ =
-  ListContainerInstancesResponse'
-    { _lcirsContainerInstanceARNs = Nothing
-    , _lcirsNextToken = Nothing
-    , _lcirsResponseStatus = pResponseStatus_
-    }
-
+listContainerInstancesResponse pResponseStatus_
+  = ListContainerInstancesResponse'{_lcirsContainerInstanceARNs
+                                      = Nothing,
+                                    _lcirsNextToken = Nothing,
+                                    _lcirsResponseStatus = pResponseStatus_}
 
 -- | The list of container instances with full ARN entries for each container instance associated with the specified cluster.
 lcirsContainerInstanceARNs :: Lens' ListContainerInstancesResponse [Text]

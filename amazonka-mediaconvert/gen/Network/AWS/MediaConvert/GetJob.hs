@@ -37,18 +37,13 @@ module Network.AWS.MediaConvert.GetJob
 
 import Network.AWS.Lens
 import Network.AWS.MediaConvert.Types
-import Network.AWS.MediaConvert.Types.Product
 import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 
 -- | /See:/ 'getJob' smart constructor.
-newtype GetJob =
-  GetJob'
-    { _gjId :: Text
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+newtype GetJob = GetJob'{_gjId :: Text}
+                   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'GetJob' with the minimum fields required to make a request.
 --
@@ -58,8 +53,7 @@ newtype GetJob =
 getJob
     :: Text -- ^ 'gjId'
     -> GetJob
-getJob pId_ = GetJob' {_gjId = pId_}
-
+getJob pId_ = GetJob'{_gjId = pId_}
 
 -- | the job ID of the job.
 gjId :: Lens' GetJob Text
@@ -93,13 +87,10 @@ instance ToQuery GetJob where
         toQuery = const mempty
 
 -- | /See:/ 'getJobResponse' smart constructor.
-data GetJobResponse =
-  GetJobResponse'
-    { _gjrsJob            :: !(Maybe Job)
-    , _gjrsResponseStatus :: !Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data GetJobResponse = GetJobResponse'{_gjrsJob ::
+                                      !(Maybe Job),
+                                      _gjrsResponseStatus :: !Int}
+                        deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'GetJobResponse' with the minimum fields required to make a request.
 --
@@ -111,9 +102,9 @@ data GetJobResponse =
 getJobResponse
     :: Int -- ^ 'gjrsResponseStatus'
     -> GetJobResponse
-getJobResponse pResponseStatus_ =
-  GetJobResponse' {_gjrsJob = Nothing, _gjrsResponseStatus = pResponseStatus_}
-
+getJobResponse pResponseStatus_
+  = GetJobResponse'{_gjrsJob = Nothing,
+                    _gjrsResponseStatus = pResponseStatus_}
 
 -- | Undocumented member.
 gjrsJob :: Lens' GetJobResponse (Maybe Job)

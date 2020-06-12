@@ -35,19 +35,15 @@ module Network.AWS.IoTAnalytics.PutLoggingOptions
     ) where
 
 import Network.AWS.IoTAnalytics.Types
-import Network.AWS.IoTAnalytics.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 
 -- | /See:/ 'putLoggingOptions' smart constructor.
-newtype PutLoggingOptions =
-  PutLoggingOptions'
-    { _ploLoggingOptions :: LoggingOptions
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+newtype PutLoggingOptions = PutLoggingOptions'{_ploLoggingOptions
+                                               :: LoggingOptions}
+                              deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'PutLoggingOptions' with the minimum fields required to make a request.
 --
@@ -57,9 +53,9 @@ newtype PutLoggingOptions =
 putLoggingOptions
     :: LoggingOptions -- ^ 'ploLoggingOptions'
     -> PutLoggingOptions
-putLoggingOptions pLoggingOptions_ =
-  PutLoggingOptions' {_ploLoggingOptions = pLoggingOptions_}
-
+putLoggingOptions pLoggingOptions_
+  = PutLoggingOptions'{_ploLoggingOptions =
+                         pLoggingOptions_}
 
 -- | The new values of the AWS IoT Analytics logging options.
 ploLoggingOptions :: Lens' PutLoggingOptions LoggingOptions
@@ -90,16 +86,15 @@ instance ToQuery PutLoggingOptions where
         toQuery = const mempty
 
 -- | /See:/ 'putLoggingOptionsResponse' smart constructor.
-data PutLoggingOptionsResponse =
-  PutLoggingOptionsResponse'
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data PutLoggingOptionsResponse = PutLoggingOptionsResponse'
+                                   deriving (Eq, Read, Show, Data, Typeable,
+                                             Generic)
 
 -- | Creates a value of 'PutLoggingOptionsResponse' with the minimum fields required to make a request.
 --
 putLoggingOptionsResponse
     :: PutLoggingOptionsResponse
-putLoggingOptionsResponse = PutLoggingOptionsResponse'
-
+putLoggingOptionsResponse
+  = PutLoggingOptionsResponse'
 
 instance NFData PutLoggingOptionsResponse where

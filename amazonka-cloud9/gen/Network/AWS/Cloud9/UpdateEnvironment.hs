@@ -39,21 +39,18 @@ module Network.AWS.Cloud9.UpdateEnvironment
     ) where
 
 import Network.AWS.Cloud9.Types
-import Network.AWS.Cloud9.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 
 -- | /See:/ 'updateEnvironment' smart constructor.
-data UpdateEnvironment =
-  UpdateEnvironment'
-    { _ueName          :: !(Maybe Text)
-    , _ueDescription   :: !(Maybe (Sensitive Text))
-    , _ueEnvironmentId :: !Text
-    }
-  deriving (Eq, Show, Data, Typeable, Generic)
-
+data UpdateEnvironment = UpdateEnvironment'{_ueName
+                                            :: !(Maybe Text),
+                                            _ueDescription ::
+                                            !(Maybe (Sensitive Text)),
+                                            _ueEnvironmentId :: !Text}
+                           deriving (Eq, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'UpdateEnvironment' with the minimum fields required to make a request.
 --
@@ -67,13 +64,10 @@ data UpdateEnvironment =
 updateEnvironment
     :: Text -- ^ 'ueEnvironmentId'
     -> UpdateEnvironment
-updateEnvironment pEnvironmentId_ =
-  UpdateEnvironment'
-    { _ueName = Nothing
-    , _ueDescription = Nothing
-    , _ueEnvironmentId = pEnvironmentId_
-    }
-
+updateEnvironment pEnvironmentId_
+  = UpdateEnvironment'{_ueName = Nothing,
+                       _ueDescription = Nothing,
+                       _ueEnvironmentId = pEnvironmentId_}
 
 -- | A replacement name for the environment.
 ueName :: Lens' UpdateEnvironment (Maybe Text)
@@ -124,12 +118,10 @@ instance ToQuery UpdateEnvironment where
         toQuery = const mempty
 
 -- | /See:/ 'updateEnvironmentResponse' smart constructor.
-newtype UpdateEnvironmentResponse =
-  UpdateEnvironmentResponse'
-    { _uersResponseStatus :: Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+newtype UpdateEnvironmentResponse = UpdateEnvironmentResponse'{_uersResponseStatus
+                                                               :: Int}
+                                      deriving (Eq, Read, Show, Data, Typeable,
+                                                Generic)
 
 -- | Creates a value of 'UpdateEnvironmentResponse' with the minimum fields required to make a request.
 --
@@ -139,9 +131,9 @@ newtype UpdateEnvironmentResponse =
 updateEnvironmentResponse
     :: Int -- ^ 'uersResponseStatus'
     -> UpdateEnvironmentResponse
-updateEnvironmentResponse pResponseStatus_ =
-  UpdateEnvironmentResponse' {_uersResponseStatus = pResponseStatus_}
-
+updateEnvironmentResponse pResponseStatus_
+  = UpdateEnvironmentResponse'{_uersResponseStatus =
+                                 pResponseStatus_}
 
 -- | -- | The response status code.
 uersResponseStatus :: Lens' UpdateEnvironmentResponse Int

@@ -51,20 +51,22 @@ import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 import Network.AWS.ServiceCatalog.Types
-import Network.AWS.ServiceCatalog.Types.Product
 
 -- | /See:/ 'updateProvisioningArtifact' smart constructor.
-data UpdateProvisioningArtifact =
-  UpdateProvisioningArtifact'
-    { _upaActive                 :: !(Maybe Bool)
-    , _upaName                   :: !(Maybe Text)
-    , _upaAcceptLanguage         :: !(Maybe Text)
-    , _upaDescription            :: !(Maybe Text)
-    , _upaProductId              :: !Text
-    , _upaProvisioningArtifactId :: !Text
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data UpdateProvisioningArtifact = UpdateProvisioningArtifact'{_upaActive
+                                                              :: !(Maybe Bool),
+                                                              _upaName ::
+                                                              !(Maybe Text),
+                                                              _upaAcceptLanguage
+                                                              :: !(Maybe Text),
+                                                              _upaDescription ::
+                                                              !(Maybe Text),
+                                                              _upaProductId ::
+                                                              !Text,
+                                                              _upaProvisioningArtifactId
+                                                              :: !Text}
+                                    deriving (Eq, Read, Show, Data, Typeable,
+                                              Generic)
 
 -- | Creates a value of 'UpdateProvisioningArtifact' with the minimum fields required to make a request.
 --
@@ -85,16 +87,15 @@ updateProvisioningArtifact
     :: Text -- ^ 'upaProductId'
     -> Text -- ^ 'upaProvisioningArtifactId'
     -> UpdateProvisioningArtifact
-updateProvisioningArtifact pProductId_ pProvisioningArtifactId_ =
-  UpdateProvisioningArtifact'
-    { _upaActive = Nothing
-    , _upaName = Nothing
-    , _upaAcceptLanguage = Nothing
-    , _upaDescription = Nothing
-    , _upaProductId = pProductId_
-    , _upaProvisioningArtifactId = pProvisioningArtifactId_
-    }
-
+updateProvisioningArtifact pProductId_
+  pProvisioningArtifactId_
+  = UpdateProvisioningArtifact'{_upaActive = Nothing,
+                                _upaName = Nothing,
+                                _upaAcceptLanguage = Nothing,
+                                _upaDescription = Nothing,
+                                _upaProductId = pProductId_,
+                                _upaProvisioningArtifactId =
+                                  pProvisioningArtifactId_}
 
 -- | Indicates whether the product version is active.
 upaActive :: Lens' UpdateProvisioningArtifact (Maybe Bool)
@@ -166,15 +167,25 @@ instance ToQuery UpdateProvisioningArtifact where
         toQuery = const mempty
 
 -- | /See:/ 'updateProvisioningArtifactResponse' smart constructor.
-data UpdateProvisioningArtifactResponse =
-  UpdateProvisioningArtifactResponse'
-    { _uparsStatus                     :: !(Maybe RequestStatus)
-    , _uparsInfo                       :: !(Maybe (Map Text Text))
-    , _uparsProvisioningArtifactDetail :: !(Maybe ProvisioningArtifactDetail)
-    , _uparsResponseStatus             :: !Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data UpdateProvisioningArtifactResponse = UpdateProvisioningArtifactResponse'{_uparsStatus
+                                                                              ::
+                                                                              !(Maybe
+                                                                                  RequestStatus),
+                                                                              _uparsInfo
+                                                                              ::
+                                                                              !(Maybe
+                                                                                  (Map
+                                                                                     Text
+                                                                                     Text)),
+                                                                              _uparsProvisioningArtifactDetail
+                                                                              ::
+                                                                              !(Maybe
+                                                                                  ProvisioningArtifactDetail),
+                                                                              _uparsResponseStatus
+                                                                              ::
+                                                                              !Int}
+                                            deriving (Eq, Read, Show, Data,
+                                                      Typeable, Generic)
 
 -- | Creates a value of 'UpdateProvisioningArtifactResponse' with the minimum fields required to make a request.
 --
@@ -190,14 +201,13 @@ data UpdateProvisioningArtifactResponse =
 updateProvisioningArtifactResponse
     :: Int -- ^ 'uparsResponseStatus'
     -> UpdateProvisioningArtifactResponse
-updateProvisioningArtifactResponse pResponseStatus_ =
-  UpdateProvisioningArtifactResponse'
-    { _uparsStatus = Nothing
-    , _uparsInfo = Nothing
-    , _uparsProvisioningArtifactDetail = Nothing
-    , _uparsResponseStatus = pResponseStatus_
-    }
-
+updateProvisioningArtifactResponse pResponseStatus_
+  = UpdateProvisioningArtifactResponse'{_uparsStatus =
+                                          Nothing,
+                                        _uparsInfo = Nothing,
+                                        _uparsProvisioningArtifactDetail =
+                                          Nothing,
+                                        _uparsResponseStatus = pResponseStatus_}
 
 -- | The status of the current request.
 uparsStatus :: Lens' UpdateProvisioningArtifactResponse (Maybe RequestStatus)

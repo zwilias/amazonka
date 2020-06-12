@@ -69,29 +69,26 @@ module Network.AWS.EC2.CreateVolume
     ) where
 
 import Network.AWS.EC2.Types
-import Network.AWS.EC2.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 
 -- | /See:/ 'createVolume' smart constructor.
-data CreateVolume =
-  CreateVolume'
-    { _cvvMultiAttachEnabled :: !(Maybe Bool)
-    , _cvvSize               :: !(Maybe Int)
-    , _cvvIOPS               :: !(Maybe Int)
-    , _cvvOutpostARN         :: !(Maybe Text)
-    , _cvvEncrypted          :: !(Maybe Bool)
-    , _cvvTagSpecifications  :: !(Maybe [TagSpecification])
-    , _cvvKMSKeyId           :: !(Maybe Text)
-    , _cvvVolumeType         :: !(Maybe VolumeType)
-    , _cvvDryRun             :: !(Maybe Bool)
-    , _cvvSnapshotId         :: !(Maybe Text)
-    , _cvvAvailabilityZone   :: !Text
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data CreateVolume = CreateVolume'{_cvvMultiAttachEnabled
+                                  :: !(Maybe Bool),
+                                  _cvvSize :: !(Maybe Int),
+                                  _cvvIOPS :: !(Maybe Int),
+                                  _cvvOutpostARN :: !(Maybe Text),
+                                  _cvvEncrypted :: !(Maybe Bool),
+                                  _cvvTagSpecifications ::
+                                  !(Maybe [TagSpecification]),
+                                  _cvvKMSKeyId :: !(Maybe Text),
+                                  _cvvVolumeType :: !(Maybe VolumeType),
+                                  _cvvDryRun :: !(Maybe Bool),
+                                  _cvvSnapshotId :: !(Maybe Text),
+                                  _cvvAvailabilityZone :: !Text}
+                      deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'CreateVolume' with the minimum fields required to make a request.
 --
@@ -111,7 +108,7 @@ data CreateVolume =
 --
 -- * 'cvvKMSKeyId' - The identifier of the AWS Key Management Service (AWS KMS) customer master key (CMK) to use for Amazon EBS encryption. If this parameter is not specified, your AWS managed CMK for EBS is used. If @KmsKeyId@ is specified, the encrypted state must be @true@ . You can specify the CMK using any of the following:     * Key ID. For example, key/1234abcd-12ab-34cd-56ef-1234567890ab.     * Key alias. For example, alias/ExampleAlias.     * Key ARN. For example, arn:aws:kms:/us-east-1/ :/012345678910/ :key//abcd1234-a123-456a-a12b-a123b4cd56ef/ .     * Alias ARN. For example, arn:aws:kms:/us-east-1/ :/012345678910/ :alias//ExampleAlias/ . AWS authenticates the CMK asynchronously. Therefore, if you specify an ID, alias, or ARN that is not valid, the action can appear to complete, but eventually fails.
 --
--- * 'cvvVolumeType' - The volume type. This can be @gp2@ for General Purpose SSD, @io1@ for Provisioned IOPS SSD, @st1@ for Throughput Optimized HDD, @sc1@ for Cold HDD, or @standard@ for Magnetic volumes. Default: @gp2@
+-- * 'cvvVolumeType' - The volume type. This can be @gp2@ for General Purpose SSD, @io1@ for Provisioned IOPS SSD, @st1@ for Throughput Optimized HDD, @sc1@ for Cold HDD, or @standard@ for Magnetic volumes. Default: @gp2@ 
 --
 -- * 'cvvDryRun' - Checks whether you have the required permissions for the action, without actually making the request, and provides an error response. If you have the required permissions, the error response is @DryRunOperation@ . Otherwise, it is @UnauthorizedOperation@ .
 --
@@ -121,21 +118,14 @@ data CreateVolume =
 createVolume
     :: Text -- ^ 'cvvAvailabilityZone'
     -> CreateVolume
-createVolume pAvailabilityZone_ =
-  CreateVolume'
-    { _cvvMultiAttachEnabled = Nothing
-    , _cvvSize = Nothing
-    , _cvvIOPS = Nothing
-    , _cvvOutpostARN = Nothing
-    , _cvvEncrypted = Nothing
-    , _cvvTagSpecifications = Nothing
-    , _cvvKMSKeyId = Nothing
-    , _cvvVolumeType = Nothing
-    , _cvvDryRun = Nothing
-    , _cvvSnapshotId = Nothing
-    , _cvvAvailabilityZone = pAvailabilityZone_
-    }
-
+createVolume pAvailabilityZone_
+  = CreateVolume'{_cvvMultiAttachEnabled = Nothing,
+                  _cvvSize = Nothing, _cvvIOPS = Nothing,
+                  _cvvOutpostARN = Nothing, _cvvEncrypted = Nothing,
+                  _cvvTagSpecifications = Nothing,
+                  _cvvKMSKeyId = Nothing, _cvvVolumeType = Nothing,
+                  _cvvDryRun = Nothing, _cvvSnapshotId = Nothing,
+                  _cvvAvailabilityZone = pAvailabilityZone_}
 
 -- | Specifies whether to enable Amazon EBS Multi-Attach. If you enable Multi-Attach, you can attach the volume to up to 16 <https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/instance-types.html#ec2-nitro-instances Nitro-based instances> in the same Availability Zone. For more information, see <https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ebs-volumes-multi.html Amazon EBS Multi-Attach> in the /Amazon Elastic Compute Cloud User Guide/ .
 cvvMultiAttachEnabled :: Lens' CreateVolume (Maybe Bool)
@@ -165,7 +155,7 @@ cvvTagSpecifications = lens _cvvTagSpecifications (\ s a -> s{_cvvTagSpecificati
 cvvKMSKeyId :: Lens' CreateVolume (Maybe Text)
 cvvKMSKeyId = lens _cvvKMSKeyId (\ s a -> s{_cvvKMSKeyId = a})
 
--- | The volume type. This can be @gp2@ for General Purpose SSD, @io1@ for Provisioned IOPS SSD, @st1@ for Throughput Optimized HDD, @sc1@ for Cold HDD, or @standard@ for Magnetic volumes. Default: @gp2@
+-- | The volume type. This can be @gp2@ for General Purpose SSD, @io1@ for Provisioned IOPS SSD, @st1@ for Throughput Optimized HDD, @sc1@ for Cold HDD, or @standard@ for Magnetic volumes. Default: @gp2@ 
 cvvVolumeType :: Lens' CreateVolume (Maybe VolumeType)
 cvvVolumeType = lens _cvvVolumeType (\ s a -> s{_cvvVolumeType = a})
 

@@ -47,21 +47,22 @@ import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 import Network.AWS.SES.Types
-import Network.AWS.SES.Types.Product
 
 -- | Represents a request to specify the Amazon SNS topic to which Amazon SES will publish bounce, complaint, or delivery notifications for emails sent with that identity as the Source. For information about Amazon SES notifications, see the <http://docs.aws.amazon.com/ses/latest/DeveloperGuide/notifications-via-sns.html Amazon SES Developer Guide> .
 --
 --
 --
 -- /See:/ 'setIdentityNotificationTopic' smart constructor.
-data SetIdentityNotificationTopic =
-  SetIdentityNotificationTopic'
-    { _sintSNSTopic         :: !(Maybe Text)
-    , _sintIdentity         :: !Text
-    , _sintNotificationType :: !NotificationType
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data SetIdentityNotificationTopic = SetIdentityNotificationTopic'{_sintSNSTopic
+                                                                  ::
+                                                                  !(Maybe Text),
+                                                                  _sintIdentity
+                                                                  :: !Text,
+                                                                  _sintNotificationType
+                                                                  ::
+                                                                  !NotificationType}
+                                      deriving (Eq, Read, Show, Data, Typeable,
+                                                Generic)
 
 -- | Creates a value of 'SetIdentityNotificationTopic' with the minimum fields required to make a request.
 --
@@ -76,13 +77,12 @@ setIdentityNotificationTopic
     :: Text -- ^ 'sintIdentity'
     -> NotificationType -- ^ 'sintNotificationType'
     -> SetIdentityNotificationTopic
-setIdentityNotificationTopic pIdentity_ pNotificationType_ =
-  SetIdentityNotificationTopic'
-    { _sintSNSTopic = Nothing
-    , _sintIdentity = pIdentity_
-    , _sintNotificationType = pNotificationType_
-    }
-
+setIdentityNotificationTopic pIdentity_
+  pNotificationType_
+  = SetIdentityNotificationTopic'{_sintSNSTopic =
+                                    Nothing,
+                                  _sintIdentity = pIdentity_,
+                                  _sintNotificationType = pNotificationType_}
 
 -- | The Amazon Resource Name (ARN) of the Amazon SNS topic. If the parameter is omitted from the request or a null value is passed, @SnsTopic@ is cleared and publishing is disabled.
 sintSNSTopic :: Lens' SetIdentityNotificationTopic (Maybe Text)
@@ -133,12 +133,11 @@ instance ToQuery SetIdentityNotificationTopic where
 --
 --
 -- /See:/ 'setIdentityNotificationTopicResponse' smart constructor.
-newtype SetIdentityNotificationTopicResponse =
-  SetIdentityNotificationTopicResponse'
-    { _sintrsResponseStatus :: Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+newtype SetIdentityNotificationTopicResponse = SetIdentityNotificationTopicResponse'{_sintrsResponseStatus
+                                                                                     ::
+                                                                                     Int}
+                                                 deriving (Eq, Read, Show, Data,
+                                                           Typeable, Generic)
 
 -- | Creates a value of 'SetIdentityNotificationTopicResponse' with the minimum fields required to make a request.
 --
@@ -148,10 +147,9 @@ newtype SetIdentityNotificationTopicResponse =
 setIdentityNotificationTopicResponse
     :: Int -- ^ 'sintrsResponseStatus'
     -> SetIdentityNotificationTopicResponse
-setIdentityNotificationTopicResponse pResponseStatus_ =
-  SetIdentityNotificationTopicResponse'
-    {_sintrsResponseStatus = pResponseStatus_}
-
+setIdentityNotificationTopicResponse pResponseStatus_
+  = SetIdentityNotificationTopicResponse'{_sintrsResponseStatus
+                                            = pResponseStatus_}
 
 -- | -- | The response status code.
 sintrsResponseStatus :: Lens' SetIdentityNotificationTopicResponse Int

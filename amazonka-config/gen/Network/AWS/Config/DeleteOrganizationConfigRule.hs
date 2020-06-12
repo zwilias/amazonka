@@ -37,19 +37,16 @@ module Network.AWS.Config.DeleteOrganizationConfigRule
     ) where
 
 import Network.AWS.Config.Types
-import Network.AWS.Config.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 
 -- | /See:/ 'deleteOrganizationConfigRule' smart constructor.
-newtype DeleteOrganizationConfigRule =
-  DeleteOrganizationConfigRule'
-    { _docrOrganizationConfigRuleName :: Text
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+newtype DeleteOrganizationConfigRule = DeleteOrganizationConfigRule'{_docrOrganizationConfigRuleName
+                                                                     :: Text}
+                                         deriving (Eq, Read, Show, Data,
+                                                   Typeable, Generic)
 
 -- | Creates a value of 'DeleteOrganizationConfigRule' with the minimum fields required to make a request.
 --
@@ -59,10 +56,10 @@ newtype DeleteOrganizationConfigRule =
 deleteOrganizationConfigRule
     :: Text -- ^ 'docrOrganizationConfigRuleName'
     -> DeleteOrganizationConfigRule
-deleteOrganizationConfigRule pOrganizationConfigRuleName_ =
-  DeleteOrganizationConfigRule'
-    {_docrOrganizationConfigRuleName = pOrganizationConfigRuleName_}
-
+deleteOrganizationConfigRule
+  pOrganizationConfigRuleName_
+  = DeleteOrganizationConfigRule'{_docrOrganizationConfigRuleName
+                                    = pOrganizationConfigRuleName_}
 
 -- | The name of organization config rule that you want to delete.
 docrOrganizationConfigRuleName :: Lens' DeleteOrganizationConfigRule Text
@@ -105,17 +102,16 @@ instance ToQuery DeleteOrganizationConfigRule where
         toQuery = const mempty
 
 -- | /See:/ 'deleteOrganizationConfigRuleResponse' smart constructor.
-data DeleteOrganizationConfigRuleResponse =
-  DeleteOrganizationConfigRuleResponse'
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data DeleteOrganizationConfigRuleResponse = DeleteOrganizationConfigRuleResponse'
+                                              deriving (Eq, Read, Show, Data,
+                                                        Typeable, Generic)
 
 -- | Creates a value of 'DeleteOrganizationConfigRuleResponse' with the minimum fields required to make a request.
 --
 deleteOrganizationConfigRuleResponse
     :: DeleteOrganizationConfigRuleResponse
-deleteOrganizationConfigRuleResponse = DeleteOrganizationConfigRuleResponse'
-
+deleteOrganizationConfigRuleResponse
+  = DeleteOrganizationConfigRuleResponse'
 
 instance NFData DeleteOrganizationConfigRuleResponse
          where

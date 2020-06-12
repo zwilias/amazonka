@@ -14,11 +14,11 @@
 module Test.AWS.Gen.AppSync where
 
 import Data.Proxy
-import Network.AWS.AppSync
-import Test.AWS.AppSync.Internal
 import Test.AWS.Fixture
 import Test.AWS.Prelude
 import Test.Tasty
+import Network.AWS.AppSync
+import Test.AWS.AppSync.Internal
 
 -- Auto-generated: the actual test selection needs to be manually placed into
 -- the top-level so that real test data can be incrementally added.

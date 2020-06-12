@@ -41,21 +41,17 @@ module Network.AWS.DirectoryService.ListCertificates
     ) where
 
 import Network.AWS.DirectoryService.Types
-import Network.AWS.DirectoryService.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 
 -- | /See:/ 'listCertificates' smart constructor.
-data ListCertificates =
-  ListCertificates'
-    { _lcNextToken   :: !(Maybe Text)
-    , _lcLimit       :: !(Maybe Nat)
-    , _lcDirectoryId :: !Text
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data ListCertificates = ListCertificates'{_lcNextToken
+                                          :: !(Maybe Text),
+                                          _lcLimit :: !(Maybe Nat),
+                                          _lcDirectoryId :: !Text}
+                          deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'ListCertificates' with the minimum fields required to make a request.
 --
@@ -69,10 +65,9 @@ data ListCertificates =
 listCertificates
     :: Text -- ^ 'lcDirectoryId'
     -> ListCertificates
-listCertificates pDirectoryId_ =
-  ListCertificates'
-    {_lcNextToken = Nothing, _lcLimit = Nothing, _lcDirectoryId = pDirectoryId_}
-
+listCertificates pDirectoryId_
+  = ListCertificates'{_lcNextToken = Nothing,
+                      _lcLimit = Nothing, _lcDirectoryId = pDirectoryId_}
 
 -- | A token for requesting another page of certificates if the @NextToken@ response element indicates that more certificates are available. Use the value of the returned @NextToken@ element in your request until the token comes back as @null@ . Pass @null@ if this is the first call.
 lcNextToken :: Lens' ListCertificates (Maybe Text)
@@ -126,14 +121,16 @@ instance ToQuery ListCertificates where
         toQuery = const mempty
 
 -- | /See:/ 'listCertificatesResponse' smart constructor.
-data ListCertificatesResponse =
-  ListCertificatesResponse'
-    { _lcrsNextToken        :: !(Maybe Text)
-    , _lcrsCertificatesInfo :: !(Maybe [CertificateInfo])
-    , _lcrsResponseStatus   :: !Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data ListCertificatesResponse = ListCertificatesResponse'{_lcrsNextToken
+                                                          :: !(Maybe Text),
+                                                          _lcrsCertificatesInfo
+                                                          ::
+                                                          !(Maybe
+                                                              [CertificateInfo]),
+                                                          _lcrsResponseStatus ::
+                                                          !Int}
+                                  deriving (Eq, Read, Show, Data, Typeable,
+                                            Generic)
 
 -- | Creates a value of 'ListCertificatesResponse' with the minimum fields required to make a request.
 --
@@ -147,13 +144,10 @@ data ListCertificatesResponse =
 listCertificatesResponse
     :: Int -- ^ 'lcrsResponseStatus'
     -> ListCertificatesResponse
-listCertificatesResponse pResponseStatus_ =
-  ListCertificatesResponse'
-    { _lcrsNextToken = Nothing
-    , _lcrsCertificatesInfo = Nothing
-    , _lcrsResponseStatus = pResponseStatus_
-    }
-
+listCertificatesResponse pResponseStatus_
+  = ListCertificatesResponse'{_lcrsNextToken = Nothing,
+                              _lcrsCertificatesInfo = Nothing,
+                              _lcrsResponseStatus = pResponseStatus_}
 
 -- | Indicates whether another page of certificates is available when the number of available certificates exceeds the page limit.
 lcrsNextToken :: Lens' ListCertificatesResponse (Maybe Text)

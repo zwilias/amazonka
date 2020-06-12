@@ -46,16 +46,12 @@ import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 import Network.AWS.StepFunctions.Types
-import Network.AWS.StepFunctions.Types.Product
 
 -- | /See:/ 'getActivityTask' smart constructor.
-data GetActivityTask =
-  GetActivityTask'
-    { _gatWorkerName  :: !(Maybe Text)
-    , _gatActivityARN :: !Text
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data GetActivityTask = GetActivityTask'{_gatWorkerName
+                                        :: !(Maybe Text),
+                                        _gatActivityARN :: !Text}
+                         deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'GetActivityTask' with the minimum fields required to make a request.
 --
@@ -67,9 +63,9 @@ data GetActivityTask =
 getActivityTask
     :: Text -- ^ 'gatActivityARN'
     -> GetActivityTask
-getActivityTask pActivityARN_ =
-  GetActivityTask' {_gatWorkerName = Nothing, _gatActivityARN = pActivityARN_}
-
+getActivityTask pActivityARN_
+  = GetActivityTask'{_gatWorkerName = Nothing,
+                     _gatActivityARN = pActivityARN_}
 
 -- | You can provide an arbitrary name in order to identify the worker that the task is assigned to. This name is used when it is logged in the execution history.
 gatWorkerName :: Lens' GetActivityTask (Maybe Text)
@@ -116,14 +112,14 @@ instance ToQuery GetActivityTask where
         toQuery = const mempty
 
 -- | /See:/ 'getActivityTaskResponse' smart constructor.
-data GetActivityTaskResponse =
-  GetActivityTaskResponse'
-    { _gatrsInput          :: !(Maybe Text)
-    , _gatrsTaskToken      :: !(Maybe Text)
-    , _gatrsResponseStatus :: !Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data GetActivityTaskResponse = GetActivityTaskResponse'{_gatrsInput
+                                                        :: !(Maybe Text),
+                                                        _gatrsTaskToken ::
+                                                        !(Maybe Text),
+                                                        _gatrsResponseStatus ::
+                                                        !Int}
+                                 deriving (Eq, Read, Show, Data, Typeable,
+                                           Generic)
 
 -- | Creates a value of 'GetActivityTaskResponse' with the minimum fields required to make a request.
 --
@@ -137,13 +133,10 @@ data GetActivityTaskResponse =
 getActivityTaskResponse
     :: Int -- ^ 'gatrsResponseStatus'
     -> GetActivityTaskResponse
-getActivityTaskResponse pResponseStatus_ =
-  GetActivityTaskResponse'
-    { _gatrsInput = Nothing
-    , _gatrsTaskToken = Nothing
-    , _gatrsResponseStatus = pResponseStatus_
-    }
-
+getActivityTaskResponse pResponseStatus_
+  = GetActivityTaskResponse'{_gatrsInput = Nothing,
+                             _gatrsTaskToken = Nothing,
+                             _gatrsResponseStatus = pResponseStatus_}
 
 -- | The string that contains the JSON input data for the task.
 gatrsInput :: Lens' GetActivityTaskResponse (Maybe Text)

@@ -14,11 +14,11 @@
 module Test.AWS.Gen.Route53AutoNaming where
 
 import Data.Proxy
-import Network.AWS.Route53AutoNaming
 import Test.AWS.Fixture
 import Test.AWS.Prelude
-import Test.AWS.Route53AutoNaming.Internal
 import Test.Tasty
+import Network.AWS.Route53AutoNaming
+import Test.AWS.Route53AutoNaming.Internal
 
 -- Auto-generated: the actual test selection needs to be manually placed into
 -- the top-level so that real test data can be incrementally added.

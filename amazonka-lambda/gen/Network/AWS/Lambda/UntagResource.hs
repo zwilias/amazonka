@@ -18,7 +18,7 @@
 -- Stability   : auto-generated
 -- Portability : non-portable (GHC extensions)
 --
--- Removes tags from a Lambda function. Requires the function ARN (Amazon Resource Name). For more information, see <http://docs.aws.amazon.com/lambda/latest/dg/tagging.html Tagging Lambda Functions> in the __AWS Lambda Developer Guide__ .
+-- Removes tags from a Lambda function. Requires the function ARN (Amazon Resource Name). For more information, see <http://docs.aws.amazon.com/lambda/latest/dg/tagging.html Tagging Lambda Functions> in the __AWS Lambda Developer Guide__ . 
 --
 --
 module Network.AWS.Lambda.UntagResource
@@ -36,20 +36,16 @@ module Network.AWS.Lambda.UntagResource
     ) where
 
 import Network.AWS.Lambda.Types
-import Network.AWS.Lambda.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 
 -- | /See:/ 'untagResource' smart constructor.
-data UntagResource =
-  UntagResource'
-    { _urResource :: !Text
-    , _urTagKeys  :: ![Text]
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data UntagResource = UntagResource'{_urResource ::
+                                    !Text,
+                                    _urTagKeys :: ![Text]}
+                       deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'UntagResource' with the minimum fields required to make a request.
 --
@@ -61,9 +57,9 @@ data UntagResource =
 untagResource
     :: Text -- ^ 'urResource'
     -> UntagResource
-untagResource pResource_ =
-  UntagResource' {_urResource = pResource_, _urTagKeys = mempty}
-
+untagResource pResource_
+  = UntagResource'{_urResource = pResource_,
+                   _urTagKeys = mempty}
 
 -- | The ARN (Amazon Resource Name) of the function. For more information, see <http://docs.aws.amazon.com/lambda/latest/dg/tagging.html Tagging Lambda Functions> in the __AWS Lambda Developer Guide__ .
 urResource :: Lens' UntagResource Text
@@ -95,16 +91,14 @@ instance ToQuery UntagResource where
               ["tagKeys" =: toQueryList "member" _urTagKeys]
 
 -- | /See:/ 'untagResourceResponse' smart constructor.
-data UntagResourceResponse =
-  UntagResourceResponse'
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data UntagResourceResponse = UntagResourceResponse'
+                               deriving (Eq, Read, Show, Data, Typeable,
+                                         Generic)
 
 -- | Creates a value of 'UntagResourceResponse' with the minimum fields required to make a request.
 --
 untagResourceResponse
     :: UntagResourceResponse
 untagResourceResponse = UntagResourceResponse'
-
 
 instance NFData UntagResourceResponse where

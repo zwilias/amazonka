@@ -43,22 +43,30 @@ module Network.AWS.EC2.UpdateSecurityGroupRuleDescriptionsEgress
     ) where
 
 import Network.AWS.EC2.Types
-import Network.AWS.EC2.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 
 -- | /See:/ 'updateSecurityGroupRuleDescriptionsEgress' smart constructor.
-data UpdateSecurityGroupRuleDescriptionsEgress =
-  UpdateSecurityGroupRuleDescriptionsEgress'
-    { _usgrdeGroupId       :: !(Maybe Text)
-    , _usgrdeGroupName     :: !(Maybe Text)
-    , _usgrdeDryRun        :: !(Maybe Bool)
-    , _usgrdeIPPermissions :: ![IPPermission]
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data UpdateSecurityGroupRuleDescriptionsEgress = UpdateSecurityGroupRuleDescriptionsEgress'{_usgrdeGroupId
+                                                                                            ::
+                                                                                            !(Maybe
+                                                                                                Text),
+                                                                                            _usgrdeGroupName
+                                                                                            ::
+                                                                                            !(Maybe
+                                                                                                Text),
+                                                                                            _usgrdeDryRun
+                                                                                            ::
+                                                                                            !(Maybe
+                                                                                                Bool),
+                                                                                            _usgrdeIPPermissions
+                                                                                            ::
+                                                                                            ![IPPermission]}
+                                                   deriving (Eq, Read, Show,
+                                                             Data, Typeable,
+                                                             Generic)
 
 -- | Creates a value of 'UpdateSecurityGroupRuleDescriptionsEgress' with the minimum fields required to make a request.
 --
@@ -73,14 +81,12 @@ data UpdateSecurityGroupRuleDescriptionsEgress =
 -- * 'usgrdeIPPermissions' - The IP permissions for the security group rule.
 updateSecurityGroupRuleDescriptionsEgress
     :: UpdateSecurityGroupRuleDescriptionsEgress
-updateSecurityGroupRuleDescriptionsEgress =
-  UpdateSecurityGroupRuleDescriptionsEgress'
-    { _usgrdeGroupId = Nothing
-    , _usgrdeGroupName = Nothing
-    , _usgrdeDryRun = Nothing
-    , _usgrdeIPPermissions = mempty
-    }
-
+updateSecurityGroupRuleDescriptionsEgress
+  = UpdateSecurityGroupRuleDescriptionsEgress'{_usgrdeGroupId
+                                                 = Nothing,
+                                               _usgrdeGroupName = Nothing,
+                                               _usgrdeDryRun = Nothing,
+                                               _usgrdeIPPermissions = mempty}
 
 -- | The ID of the security group. You must specify either the security group ID or the security group name in the request. For security groups in a nondefault VPC, you must specify the security group ID.
 usgrdeGroupId :: Lens' UpdateSecurityGroupRuleDescriptionsEgress (Maybe Text)
@@ -144,13 +150,17 @@ instance ToQuery
                toQueryList "IpPermissions" _usgrdeIPPermissions]
 
 -- | /See:/ 'updateSecurityGroupRuleDescriptionsEgressResponse' smart constructor.
-data UpdateSecurityGroupRuleDescriptionsEgressResponse =
-  UpdateSecurityGroupRuleDescriptionsEgressResponse'
-    { _usgrdersReturn         :: !(Maybe Bool)
-    , _usgrdersResponseStatus :: !Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data UpdateSecurityGroupRuleDescriptionsEgressResponse = UpdateSecurityGroupRuleDescriptionsEgressResponse'{_usgrdersReturn
+                                                                                                            ::
+                                                                                                            !(Maybe
+                                                                                                                Bool),
+                                                                                                            _usgrdersResponseStatus
+                                                                                                            ::
+                                                                                                            !Int}
+                                                           deriving (Eq, Read,
+                                                                     Show, Data,
+                                                                     Typeable,
+                                                                     Generic)
 
 -- | Creates a value of 'UpdateSecurityGroupRuleDescriptionsEgressResponse' with the minimum fields required to make a request.
 --
@@ -162,10 +172,12 @@ data UpdateSecurityGroupRuleDescriptionsEgressResponse =
 updateSecurityGroupRuleDescriptionsEgressResponse
     :: Int -- ^ 'usgrdersResponseStatus'
     -> UpdateSecurityGroupRuleDescriptionsEgressResponse
-updateSecurityGroupRuleDescriptionsEgressResponse pResponseStatus_ =
-  UpdateSecurityGroupRuleDescriptionsEgressResponse'
-    {_usgrdersReturn = Nothing, _usgrdersResponseStatus = pResponseStatus_}
-
+updateSecurityGroupRuleDescriptionsEgressResponse
+  pResponseStatus_
+  = UpdateSecurityGroupRuleDescriptionsEgressResponse'{_usgrdersReturn
+                                                         = Nothing,
+                                                       _usgrdersResponseStatus =
+                                                         pResponseStatus_}
 
 -- | Returns @true@ if the request succeeds; otherwise, returns an error.
 usgrdersReturn :: Lens' UpdateSecurityGroupRuleDescriptionsEgressResponse (Maybe Bool)

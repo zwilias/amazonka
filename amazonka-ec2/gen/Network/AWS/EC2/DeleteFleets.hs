@@ -21,7 +21,7 @@
 -- Deletes the specified EC2 Fleet.
 --
 --
--- After you delete an EC2 Fleet, it launches no new instances. You must specify whether an EC2 Fleet should also terminate its instances. If you terminate the instances, the EC2 Fleet enters the @deleted_terminating@ state. Otherwise, the EC2 Fleet enters the @deleted_running@ state, and the instances continue to run until they are interrupted or you terminate them manually.
+-- After you delete an EC2 Fleet, it launches no new instances. You must specify whether an EC2 Fleet should also terminate its instances. If you terminate the instances, the EC2 Fleet enters the @deleted_terminating@ state. Otherwise, the EC2 Fleet enters the @deleted_running@ state, and the instances continue to run until they are interrupted or you terminate them manually. 
 --
 module Network.AWS.EC2.DeleteFleets
     (
@@ -43,21 +43,17 @@ module Network.AWS.EC2.DeleteFleets
     ) where
 
 import Network.AWS.EC2.Types
-import Network.AWS.EC2.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 
 -- | /See:/ 'deleteFleets' smart constructor.
-data DeleteFleets =
-  DeleteFleets'
-    { _dfDryRun             :: !(Maybe Bool)
-    , _dfFleetIds           :: ![Text]
-    , _dfTerminateInstances :: !Bool
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data DeleteFleets = DeleteFleets'{_dfDryRun ::
+                                  !(Maybe Bool),
+                                  _dfFleetIds :: ![Text],
+                                  _dfTerminateInstances :: !Bool}
+                      deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'DeleteFleets' with the minimum fields required to make a request.
 --
@@ -71,13 +67,10 @@ data DeleteFleets =
 deleteFleets
     :: Bool -- ^ 'dfTerminateInstances'
     -> DeleteFleets
-deleteFleets pTerminateInstances_ =
-  DeleteFleets'
-    { _dfDryRun = Nothing
-    , _dfFleetIds = mempty
-    , _dfTerminateInstances = pTerminateInstances_
-    }
-
+deleteFleets pTerminateInstances_
+  = DeleteFleets'{_dfDryRun = Nothing,
+                  _dfFleetIds = mempty,
+                  _dfTerminateInstances = pTerminateInstances_}
 
 -- | Checks whether you have the required permissions for the action, without actually making the request, and provides an error response. If you have the required permissions, the error response is @DryRunOperation@ . Otherwise, it is @UnauthorizedOperation@ .
 dfDryRun :: Lens' DeleteFleets (Maybe Bool)
@@ -125,14 +118,16 @@ instance ToQuery DeleteFleets where
                "TerminateInstances" =: _dfTerminateInstances]
 
 -- | /See:/ 'deleteFleetsResponse' smart constructor.
-data DeleteFleetsResponse =
-  DeleteFleetsResponse'
-    { _dfrsSuccessfulFleetDeletions   :: !(Maybe [DeleteFleetSuccessItem])
-    , _dfrsUnsuccessfulFleetDeletions :: !(Maybe [DeleteFleetErrorItem])
-    , _dfrsResponseStatus             :: !Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data DeleteFleetsResponse = DeleteFleetsResponse'{_dfrsSuccessfulFleetDeletions
+                                                  ::
+                                                  !(Maybe
+                                                      [DeleteFleetSuccessItem]),
+                                                  _dfrsUnsuccessfulFleetDeletions
+                                                  ::
+                                                  !(Maybe
+                                                      [DeleteFleetErrorItem]),
+                                                  _dfrsResponseStatus :: !Int}
+                              deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'DeleteFleetsResponse' with the minimum fields required to make a request.
 --
@@ -146,13 +141,11 @@ data DeleteFleetsResponse =
 deleteFleetsResponse
     :: Int -- ^ 'dfrsResponseStatus'
     -> DeleteFleetsResponse
-deleteFleetsResponse pResponseStatus_ =
-  DeleteFleetsResponse'
-    { _dfrsSuccessfulFleetDeletions = Nothing
-    , _dfrsUnsuccessfulFleetDeletions = Nothing
-    , _dfrsResponseStatus = pResponseStatus_
-    }
-
+deleteFleetsResponse pResponseStatus_
+  = DeleteFleetsResponse'{_dfrsSuccessfulFleetDeletions
+                            = Nothing,
+                          _dfrsUnsuccessfulFleetDeletions = Nothing,
+                          _dfrsResponseStatus = pResponseStatus_}
 
 -- | Information about the EC2 Fleets that are successfully deleted.
 dfrsSuccessfulFleetDeletions :: Lens' DeleteFleetsResponse [DeleteFleetSuccessItem]

@@ -35,19 +35,16 @@ module Network.AWS.Config.DeleteRetentionConfiguration
     ) where
 
 import Network.AWS.Config.Types
-import Network.AWS.Config.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 
 -- | /See:/ 'deleteRetentionConfiguration' smart constructor.
-newtype DeleteRetentionConfiguration =
-  DeleteRetentionConfiguration'
-    { _drcRetentionConfigurationName :: Text
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+newtype DeleteRetentionConfiguration = DeleteRetentionConfiguration'{_drcRetentionConfigurationName
+                                                                     :: Text}
+                                         deriving (Eq, Read, Show, Data,
+                                                   Typeable, Generic)
 
 -- | Creates a value of 'DeleteRetentionConfiguration' with the minimum fields required to make a request.
 --
@@ -57,10 +54,10 @@ newtype DeleteRetentionConfiguration =
 deleteRetentionConfiguration
     :: Text -- ^ 'drcRetentionConfigurationName'
     -> DeleteRetentionConfiguration
-deleteRetentionConfiguration pRetentionConfigurationName_ =
-  DeleteRetentionConfiguration'
-    {_drcRetentionConfigurationName = pRetentionConfigurationName_}
-
+deleteRetentionConfiguration
+  pRetentionConfigurationName_
+  = DeleteRetentionConfiguration'{_drcRetentionConfigurationName
+                                    = pRetentionConfigurationName_}
 
 -- | The name of the retention configuration to delete.
 drcRetentionConfigurationName :: Lens' DeleteRetentionConfiguration Text
@@ -103,17 +100,16 @@ instance ToQuery DeleteRetentionConfiguration where
         toQuery = const mempty
 
 -- | /See:/ 'deleteRetentionConfigurationResponse' smart constructor.
-data DeleteRetentionConfigurationResponse =
-  DeleteRetentionConfigurationResponse'
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data DeleteRetentionConfigurationResponse = DeleteRetentionConfigurationResponse'
+                                              deriving (Eq, Read, Show, Data,
+                                                        Typeable, Generic)
 
 -- | Creates a value of 'DeleteRetentionConfigurationResponse' with the minimum fields required to make a request.
 --
 deleteRetentionConfigurationResponse
     :: DeleteRetentionConfigurationResponse
-deleteRetentionConfigurationResponse = DeleteRetentionConfigurationResponse'
-
+deleteRetentionConfigurationResponse
+  = DeleteRetentionConfigurationResponse'
 
 instance NFData DeleteRetentionConfigurationResponse
          where

@@ -44,23 +44,33 @@ module Network.AWS.Config.GetAggregateConfigRuleComplianceSummary
     ) where
 
 import Network.AWS.Config.Types
-import Network.AWS.Config.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 
 -- | /See:/ 'getAggregateConfigRuleComplianceSummary' smart constructor.
-data GetAggregateConfigRuleComplianceSummary =
-  GetAggregateConfigRuleComplianceSummary'
-    { _gacrcsFilters :: !(Maybe ConfigRuleComplianceSummaryFilters)
-    , _gacrcsNextToken :: !(Maybe Text)
-    , _gacrcsLimit :: !(Maybe Nat)
-    , _gacrcsGroupByKey :: !(Maybe ConfigRuleComplianceSummaryGroupKey)
-    , _gacrcsConfigurationAggregatorName :: !Text
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data GetAggregateConfigRuleComplianceSummary = GetAggregateConfigRuleComplianceSummary'{_gacrcsFilters
+                                                                                        ::
+                                                                                        !(Maybe
+                                                                                            ConfigRuleComplianceSummaryFilters),
+                                                                                        _gacrcsNextToken
+                                                                                        ::
+                                                                                        !(Maybe
+                                                                                            Text),
+                                                                                        _gacrcsLimit
+                                                                                        ::
+                                                                                        !(Maybe
+                                                                                            Nat),
+                                                                                        _gacrcsGroupByKey
+                                                                                        ::
+                                                                                        !(Maybe
+                                                                                            ConfigRuleComplianceSummaryGroupKey),
+                                                                                        _gacrcsConfigurationAggregatorName
+                                                                                        ::
+                                                                                        !Text}
+                                                 deriving (Eq, Read, Show, Data,
+                                                           Typeable, Generic)
 
 -- | Creates a value of 'GetAggregateConfigRuleComplianceSummary' with the minimum fields required to make a request.
 --
@@ -78,15 +88,15 @@ data GetAggregateConfigRuleComplianceSummary =
 getAggregateConfigRuleComplianceSummary
     :: Text -- ^ 'gacrcsConfigurationAggregatorName'
     -> GetAggregateConfigRuleComplianceSummary
-getAggregateConfigRuleComplianceSummary pConfigurationAggregatorName_ =
-  GetAggregateConfigRuleComplianceSummary'
-    { _gacrcsFilters = Nothing
-    , _gacrcsNextToken = Nothing
-    , _gacrcsLimit = Nothing
-    , _gacrcsGroupByKey = Nothing
-    , _gacrcsConfigurationAggregatorName = pConfigurationAggregatorName_
-    }
-
+getAggregateConfigRuleComplianceSummary
+  pConfigurationAggregatorName_
+  = GetAggregateConfigRuleComplianceSummary'{_gacrcsFilters
+                                               = Nothing,
+                                             _gacrcsNextToken = Nothing,
+                                             _gacrcsLimit = Nothing,
+                                             _gacrcsGroupByKey = Nothing,
+                                             _gacrcsConfigurationAggregatorName
+                                               = pConfigurationAggregatorName_}
 
 -- | Filters the results based on the ConfigRuleComplianceSummaryFilters object.
 gacrcsFilters :: Lens' GetAggregateConfigRuleComplianceSummary (Maybe ConfigRuleComplianceSummaryFilters)
@@ -168,15 +178,25 @@ instance ToQuery
         toQuery = const mempty
 
 -- | /See:/ 'getAggregateConfigRuleComplianceSummaryResponse' smart constructor.
-data GetAggregateConfigRuleComplianceSummaryResponse =
-  GetAggregateConfigRuleComplianceSummaryResponse'
-    { _gacrcsrsAggregateComplianceCounts :: !(Maybe [AggregateComplianceCount])
-    , _gacrcsrsNextToken                 :: !(Maybe Text)
-    , _gacrcsrsGroupByKey                :: !(Maybe Text)
-    , _gacrcsrsResponseStatus            :: !Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data GetAggregateConfigRuleComplianceSummaryResponse = GetAggregateConfigRuleComplianceSummaryResponse'{_gacrcsrsAggregateComplianceCounts
+                                                                                                        ::
+                                                                                                        !(Maybe
+                                                                                                            [AggregateComplianceCount]),
+                                                                                                        _gacrcsrsNextToken
+                                                                                                        ::
+                                                                                                        !(Maybe
+                                                                                                            Text),
+                                                                                                        _gacrcsrsGroupByKey
+                                                                                                        ::
+                                                                                                        !(Maybe
+                                                                                                            Text),
+                                                                                                        _gacrcsrsResponseStatus
+                                                                                                        ::
+                                                                                                        !Int}
+                                                         deriving (Eq, Read,
+                                                                   Show, Data,
+                                                                   Typeable,
+                                                                   Generic)
 
 -- | Creates a value of 'GetAggregateConfigRuleComplianceSummaryResponse' with the minimum fields required to make a request.
 --
@@ -192,14 +212,16 @@ data GetAggregateConfigRuleComplianceSummaryResponse =
 getAggregateConfigRuleComplianceSummaryResponse
     :: Int -- ^ 'gacrcsrsResponseStatus'
     -> GetAggregateConfigRuleComplianceSummaryResponse
-getAggregateConfigRuleComplianceSummaryResponse pResponseStatus_ =
-  GetAggregateConfigRuleComplianceSummaryResponse'
-    { _gacrcsrsAggregateComplianceCounts = Nothing
-    , _gacrcsrsNextToken = Nothing
-    , _gacrcsrsGroupByKey = Nothing
-    , _gacrcsrsResponseStatus = pResponseStatus_
-    }
-
+getAggregateConfigRuleComplianceSummaryResponse
+  pResponseStatus_
+  = GetAggregateConfigRuleComplianceSummaryResponse'{_gacrcsrsAggregateComplianceCounts
+                                                       = Nothing,
+                                                     _gacrcsrsNextToken =
+                                                       Nothing,
+                                                     _gacrcsrsGroupByKey =
+                                                       Nothing,
+                                                     _gacrcsrsResponseStatus =
+                                                       pResponseStatus_}
 
 -- | Returns a list of AggregateComplianceCounts object.
 gacrcsrsAggregateComplianceCounts :: Lens' GetAggregateConfigRuleComplianceSummaryResponse [AggregateComplianceCount]

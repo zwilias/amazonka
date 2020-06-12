@@ -42,15 +42,11 @@ import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 import Network.AWS.Snowball.Types
-import Network.AWS.Snowball.Types.Product
 
 -- | /See:/ 'describeCluster' smart constructor.
-newtype DescribeCluster =
-  DescribeCluster'
-    { _dcClusterId :: Text
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+newtype DescribeCluster = DescribeCluster'{_dcClusterId
+                                           :: Text}
+                            deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'DescribeCluster' with the minimum fields required to make a request.
 --
@@ -60,8 +56,8 @@ newtype DescribeCluster =
 describeCluster
     :: Text -- ^ 'dcClusterId'
     -> DescribeCluster
-describeCluster pClusterId_ = DescribeCluster' {_dcClusterId = pClusterId_}
-
+describeCluster pClusterId_
+  = DescribeCluster'{_dcClusterId = pClusterId_}
 
 -- | The automatically generated ID for a cluster.
 dcClusterId :: Lens' DescribeCluster Text
@@ -102,13 +98,14 @@ instance ToQuery DescribeCluster where
         toQuery = const mempty
 
 -- | /See:/ 'describeClusterResponse' smart constructor.
-data DescribeClusterResponse =
-  DescribeClusterResponse'
-    { _dcrsClusterMetadata :: !(Maybe ClusterMetadata)
-    , _dcrsResponseStatus  :: !Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data DescribeClusterResponse = DescribeClusterResponse'{_dcrsClusterMetadata
+                                                        ::
+                                                        !(Maybe
+                                                            ClusterMetadata),
+                                                        _dcrsResponseStatus ::
+                                                        !Int}
+                                 deriving (Eq, Read, Show, Data, Typeable,
+                                           Generic)
 
 -- | Creates a value of 'DescribeClusterResponse' with the minimum fields required to make a request.
 --
@@ -120,10 +117,10 @@ data DescribeClusterResponse =
 describeClusterResponse
     :: Int -- ^ 'dcrsResponseStatus'
     -> DescribeClusterResponse
-describeClusterResponse pResponseStatus_ =
-  DescribeClusterResponse'
-    {_dcrsClusterMetadata = Nothing, _dcrsResponseStatus = pResponseStatus_}
-
+describeClusterResponse pResponseStatus_
+  = DescribeClusterResponse'{_dcrsClusterMetadata =
+                               Nothing,
+                             _dcrsResponseStatus = pResponseStatus_}
 
 -- | Information about a specific cluster, including shipping information, cluster status, and other important metadata.
 dcrsClusterMetadata :: Lens' DescribeClusterResponse (Maybe ClusterMetadata)

@@ -18,14 +18,14 @@
 -- Stability   : auto-generated
 -- Portability : non-portable (GHC extensions)
 --
--- Returns the list of voices that are available for use when requesting speech synthesis. Each voice speaks a specified language, is either male or female, and is identified by an ID, which is the ASCII version of the voice name.
+-- Returns the list of voices that are available for use when requesting speech synthesis. Each voice speaks a specified language, is either male or female, and is identified by an ID, which is the ASCII version of the voice name. 
 --
 --
 -- When synthesizing speech ( @SynthesizeSpeech@ ), you provide the voice ID for the voice you want from the list of voices returned by @DescribeVoices@ .
 --
 -- For example, you want your news reader application to read news in a specific language, but giving a user the option to choose the voice. Using the @DescribeVoices@ operation you can provide the user with a list of available voices to select from.
 --
--- You can optionally specify a language code to filter the available voices. For example, if you specify @en-US@ , the operation returns a list of all available US English voices.
+-- You can optionally specify a language code to filter the available voices. For example, if you specify @en-US@ , the operation returns a list of all available US English voices. 
 --
 -- This operation requires permissions to perform the @polly:DescribeVoices@ action.
 --
@@ -52,34 +52,30 @@ module Network.AWS.Polly.DescribeVoices
 import Network.AWS.Lens
 import Network.AWS.Pager
 import Network.AWS.Polly.Types
-import Network.AWS.Polly.Types.Product
 import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 
 -- | /See:/ 'describeVoices' smart constructor.
-data DescribeVoices =
-  DescribeVoices'
-    { _dvLanguageCode :: !(Maybe LanguageCode)
-    , _dvNextToken    :: !(Maybe Text)
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data DescribeVoices = DescribeVoices'{_dvLanguageCode
+                                      :: !(Maybe LanguageCode),
+                                      _dvNextToken :: !(Maybe Text)}
+                        deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'DescribeVoices' with the minimum fields required to make a request.
 --
 -- Use one of the following lenses to modify other fields as desired:
 --
--- * 'dvLanguageCode' - The language identification tag (ISO 639 code for the language name-ISO 3166 country code) for filtering the list of voices returned. If you don't specify this optional parameter, all available voices are returned.
+-- * 'dvLanguageCode' - The language identification tag (ISO 639 code for the language name-ISO 3166 country code) for filtering the list of voices returned. If you don't specify this optional parameter, all available voices are returned. 
 --
 -- * 'dvNextToken' - An opaque pagination token returned from the previous @DescribeVoices@ operation. If present, this indicates where to continue the listing.
 describeVoices
     :: DescribeVoices
-describeVoices =
-  DescribeVoices' {_dvLanguageCode = Nothing, _dvNextToken = Nothing}
+describeVoices
+  = DescribeVoices'{_dvLanguageCode = Nothing,
+                    _dvNextToken = Nothing}
 
-
--- | The language identification tag (ISO 639 code for the language name-ISO 3166 country code) for filtering the list of voices returned. If you don't specify this optional parameter, all available voices are returned.
+-- | The language identification tag (ISO 639 code for the language name-ISO 3166 country code) for filtering the list of voices returned. If you don't specify this optional parameter, all available voices are returned. 
 dvLanguageCode :: Lens' DescribeVoices (Maybe LanguageCode)
 dvLanguageCode = lens _dvLanguageCode (\ s a -> s{_dvLanguageCode = a})
 
@@ -121,14 +117,14 @@ instance ToQuery DescribeVoices where
                "NextToken" =: _dvNextToken]
 
 -- | /See:/ 'describeVoicesResponse' smart constructor.
-data DescribeVoicesResponse =
-  DescribeVoicesResponse'
-    { _dvrsNextToken      :: !(Maybe Text)
-    , _dvrsVoices         :: !(Maybe [Voice])
-    , _dvrsResponseStatus :: !Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data DescribeVoicesResponse = DescribeVoicesResponse'{_dvrsNextToken
+                                                      :: !(Maybe Text),
+                                                      _dvrsVoices ::
+                                                      !(Maybe [Voice]),
+                                                      _dvrsResponseStatus ::
+                                                      !Int}
+                                deriving (Eq, Read, Show, Data, Typeable,
+                                          Generic)
 
 -- | Creates a value of 'DescribeVoicesResponse' with the minimum fields required to make a request.
 --
@@ -142,13 +138,10 @@ data DescribeVoicesResponse =
 describeVoicesResponse
     :: Int -- ^ 'dvrsResponseStatus'
     -> DescribeVoicesResponse
-describeVoicesResponse pResponseStatus_ =
-  DescribeVoicesResponse'
-    { _dvrsNextToken = Nothing
-    , _dvrsVoices = Nothing
-    , _dvrsResponseStatus = pResponseStatus_
-    }
-
+describeVoicesResponse pResponseStatus_
+  = DescribeVoicesResponse'{_dvrsNextToken = Nothing,
+                            _dvrsVoices = Nothing,
+                            _dvrsResponseStatus = pResponseStatus_}
 
 -- | The pagination token to use in the next request to continue the listing of voices. @NextToken@ is returned only if the response is truncated.
 dvrsNextToken :: Lens' DescribeVoicesResponse (Maybe Text)

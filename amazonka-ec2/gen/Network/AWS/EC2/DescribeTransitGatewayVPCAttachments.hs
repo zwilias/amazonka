@@ -45,7 +45,6 @@ module Network.AWS.EC2.DescribeTransitGatewayVPCAttachments
     ) where
 
 import Network.AWS.EC2.Types
-import Network.AWS.EC2.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Pager
 import Network.AWS.Prelude
@@ -53,16 +52,28 @@ import Network.AWS.Request
 import Network.AWS.Response
 
 -- | /See:/ 'describeTransitGatewayVPCAttachments' smart constructor.
-data DescribeTransitGatewayVPCAttachments =
-  DescribeTransitGatewayVPCAttachments'
-    { _dtgvpcaFilters                     :: !(Maybe [Filter])
-    , _dtgvpcaNextToken                   :: !(Maybe Text)
-    , _dtgvpcaTransitGatewayAttachmentIds :: !(Maybe [Text])
-    , _dtgvpcaDryRun                      :: !(Maybe Bool)
-    , _dtgvpcaMaxResults                  :: !(Maybe Nat)
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data DescribeTransitGatewayVPCAttachments = DescribeTransitGatewayVPCAttachments'{_dtgvpcaFilters
+                                                                                  ::
+                                                                                  !(Maybe
+                                                                                      [Filter]),
+                                                                                  _dtgvpcaNextToken
+                                                                                  ::
+                                                                                  !(Maybe
+                                                                                      Text),
+                                                                                  _dtgvpcaTransitGatewayAttachmentIds
+                                                                                  ::
+                                                                                  !(Maybe
+                                                                                      [Text]),
+                                                                                  _dtgvpcaDryRun
+                                                                                  ::
+                                                                                  !(Maybe
+                                                                                      Bool),
+                                                                                  _dtgvpcaMaxResults
+                                                                                  ::
+                                                                                  !(Maybe
+                                                                                      Nat)}
+                                              deriving (Eq, Read, Show, Data,
+                                                        Typeable, Generic)
 
 -- | Creates a value of 'DescribeTransitGatewayVPCAttachments' with the minimum fields required to make a request.
 --
@@ -79,15 +90,14 @@ data DescribeTransitGatewayVPCAttachments =
 -- * 'dtgvpcaMaxResults' - The maximum number of results to return with a single call. To retrieve the remaining results, make another call with the returned @nextToken@ value.
 describeTransitGatewayVPCAttachments
     :: DescribeTransitGatewayVPCAttachments
-describeTransitGatewayVPCAttachments =
-  DescribeTransitGatewayVPCAttachments'
-    { _dtgvpcaFilters = Nothing
-    , _dtgvpcaNextToken = Nothing
-    , _dtgvpcaTransitGatewayAttachmentIds = Nothing
-    , _dtgvpcaDryRun = Nothing
-    , _dtgvpcaMaxResults = Nothing
-    }
-
+describeTransitGatewayVPCAttachments
+  = DescribeTransitGatewayVPCAttachments'{_dtgvpcaFilters
+                                            = Nothing,
+                                          _dtgvpcaNextToken = Nothing,
+                                          _dtgvpcaTransitGatewayAttachmentIds =
+                                            Nothing,
+                                          _dtgvpcaDryRun = Nothing,
+                                          _dtgvpcaMaxResults = Nothing}
 
 -- | One or more filters. The possible values are:     * @state@ - The state of the attachment (@available@ | @deleted@ | @deleting@ | @failed@ | @modifying@ | @pendingAcceptance@ | @pending@ | @rollingBack@ | @rejected@ | @rejecting@ ).     * @transit-gateway-attachment-id@ - The ID of the attachment.     * @transit-gateway-id@ - The ID of the transit gateway.     * @vpc-id@ - The ID of the VPC.
 dtgvpcaFilters :: Lens' DescribeTransitGatewayVPCAttachments [Filter]
@@ -168,14 +178,20 @@ instance ToQuery DescribeTransitGatewayVPCAttachments
                "MaxResults" =: _dtgvpcaMaxResults]
 
 -- | /See:/ 'describeTransitGatewayVPCAttachmentsResponse' smart constructor.
-data DescribeTransitGatewayVPCAttachmentsResponse =
-  DescribeTransitGatewayVPCAttachmentsResponse'
-    { _dtgvarsTransitGatewayVPCAttachments :: !(Maybe [TransitGatewayVPCAttachment])
-    , _dtgvarsNextToken :: !(Maybe Text)
-    , _dtgvarsResponseStatus :: !Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data DescribeTransitGatewayVPCAttachmentsResponse = DescribeTransitGatewayVPCAttachmentsResponse'{_dtgvarsTransitGatewayVPCAttachments
+                                                                                                  ::
+                                                                                                  !(Maybe
+                                                                                                      [TransitGatewayVPCAttachment]),
+                                                                                                  _dtgvarsNextToken
+                                                                                                  ::
+                                                                                                  !(Maybe
+                                                                                                      Text),
+                                                                                                  _dtgvarsResponseStatus
+                                                                                                  ::
+                                                                                                  !Int}
+                                                      deriving (Eq, Read, Show,
+                                                                Data, Typeable,
+                                                                Generic)
 
 -- | Creates a value of 'DescribeTransitGatewayVPCAttachmentsResponse' with the minimum fields required to make a request.
 --
@@ -189,13 +205,13 @@ data DescribeTransitGatewayVPCAttachmentsResponse =
 describeTransitGatewayVPCAttachmentsResponse
     :: Int -- ^ 'dtgvarsResponseStatus'
     -> DescribeTransitGatewayVPCAttachmentsResponse
-describeTransitGatewayVPCAttachmentsResponse pResponseStatus_ =
-  DescribeTransitGatewayVPCAttachmentsResponse'
-    { _dtgvarsTransitGatewayVPCAttachments = Nothing
-    , _dtgvarsNextToken = Nothing
-    , _dtgvarsResponseStatus = pResponseStatus_
-    }
-
+describeTransitGatewayVPCAttachmentsResponse
+  pResponseStatus_
+  = DescribeTransitGatewayVPCAttachmentsResponse'{_dtgvarsTransitGatewayVPCAttachments
+                                                    = Nothing,
+                                                  _dtgvarsNextToken = Nothing,
+                                                  _dtgvarsResponseStatus =
+                                                    pResponseStatus_}
 
 -- | Information about the VPC attachments.
 dtgvarsTransitGatewayVPCAttachments :: Lens' DescribeTransitGatewayVPCAttachmentsResponse [TransitGatewayVPCAttachment]

@@ -41,7 +41,6 @@ module Network.AWS.ELB.ConfigureHealthCheck
     ) where
 
 import Network.AWS.ELB.Types
-import Network.AWS.ELB.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.Request
@@ -52,13 +51,11 @@ import Network.AWS.Response
 --
 --
 -- /See:/ 'configureHealthCheck' smart constructor.
-data ConfigureHealthCheck =
-  ConfigureHealthCheck'
-    { _chcLoadBalancerName :: !Text
-    , _chcHealthCheck      :: !HealthCheck
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data ConfigureHealthCheck = ConfigureHealthCheck'{_chcLoadBalancerName
+                                                  :: !Text,
+                                                  _chcHealthCheck ::
+                                                  !HealthCheck}
+                              deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'ConfigureHealthCheck' with the minimum fields required to make a request.
 --
@@ -71,10 +68,10 @@ configureHealthCheck
     :: Text -- ^ 'chcLoadBalancerName'
     -> HealthCheck -- ^ 'chcHealthCheck'
     -> ConfigureHealthCheck
-configureHealthCheck pLoadBalancerName_ pHealthCheck_ =
-  ConfigureHealthCheck'
-    {_chcLoadBalancerName = pLoadBalancerName_, _chcHealthCheck = pHealthCheck_}
-
+configureHealthCheck pLoadBalancerName_ pHealthCheck_
+  = ConfigureHealthCheck'{_chcLoadBalancerName =
+                            pLoadBalancerName_,
+                          _chcHealthCheck = pHealthCheck_}
 
 -- | The name of the load balancer.
 chcLoadBalancerName :: Lens' ConfigureHealthCheck Text
@@ -117,13 +114,14 @@ instance ToQuery ConfigureHealthCheck where
 --
 --
 -- /See:/ 'configureHealthCheckResponse' smart constructor.
-data ConfigureHealthCheckResponse =
-  ConfigureHealthCheckResponse'
-    { _chcrsHealthCheck    :: !(Maybe HealthCheck)
-    , _chcrsResponseStatus :: !Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data ConfigureHealthCheckResponse = ConfigureHealthCheckResponse'{_chcrsHealthCheck
+                                                                  ::
+                                                                  !(Maybe
+                                                                      HealthCheck),
+                                                                  _chcrsResponseStatus
+                                                                  :: !Int}
+                                      deriving (Eq, Read, Show, Data, Typeable,
+                                                Generic)
 
 -- | Creates a value of 'ConfigureHealthCheckResponse' with the minimum fields required to make a request.
 --
@@ -135,10 +133,10 @@ data ConfigureHealthCheckResponse =
 configureHealthCheckResponse
     :: Int -- ^ 'chcrsResponseStatus'
     -> ConfigureHealthCheckResponse
-configureHealthCheckResponse pResponseStatus_ =
-  ConfigureHealthCheckResponse'
-    {_chcrsHealthCheck = Nothing, _chcrsResponseStatus = pResponseStatus_}
-
+configureHealthCheckResponse pResponseStatus_
+  = ConfigureHealthCheckResponse'{_chcrsHealthCheck =
+                                    Nothing,
+                                  _chcrsResponseStatus = pResponseStatus_}
 
 -- | The updated health check.
 chcrsHealthCheck :: Lens' ConfigureHealthCheckResponse (Maybe HealthCheck)

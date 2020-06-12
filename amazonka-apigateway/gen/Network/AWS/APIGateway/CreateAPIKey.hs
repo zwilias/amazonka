@@ -18,10 +18,10 @@
 -- Stability   : auto-generated
 -- Portability : non-portable (GHC extensions)
 --
--- Create an 'ApiKey' resource.
+-- Create an 'ApiKey' resource. 
 --
 --
--- <https://docs.aws.amazon.com/cli/latest/reference/apigateway/create-api-key.html AWS CLI>
+-- <https://docs.aws.amazon.com/cli/latest/reference/apigateway/create-api-key.html AWS CLI> 
 module Network.AWS.APIGateway.CreateAPIKey
     (
     -- * Creating a Request
@@ -54,7 +54,6 @@ module Network.AWS.APIGateway.CreateAPIKey
     ) where
 
 import Network.AWS.APIGateway.Types
-import Network.AWS.APIGateway.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.Request
@@ -65,19 +64,16 @@ import Network.AWS.Response
 --
 --
 -- /See:/ 'createAPIKey' smart constructor.
-data CreateAPIKey =
-  CreateAPIKey'
-    { _cakEnabled            :: !(Maybe Bool)
-    , _cakValue              :: !(Maybe Text)
-    , _cakCustomerId         :: !(Maybe Text)
-    , _cakGenerateDistinctId :: !(Maybe Bool)
-    , _cakName               :: !(Maybe Text)
-    , _cakStageKeys          :: !(Maybe [StageKey])
-    , _cakDescription        :: !(Maybe Text)
-    , _cakTags               :: !(Maybe (Map Text Text))
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data CreateAPIKey = CreateAPIKey'{_cakEnabled ::
+                                  !(Maybe Bool),
+                                  _cakValue :: !(Maybe Text),
+                                  _cakCustomerId :: !(Maybe Text),
+                                  _cakGenerateDistinctId :: !(Maybe Bool),
+                                  _cakName :: !(Maybe Text),
+                                  _cakStageKeys :: !(Maybe [StageKey]),
+                                  _cakDescription :: !(Maybe Text),
+                                  _cakTags :: !(Maybe (Map Text Text))}
+                      deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'CreateAPIKey' with the minimum fields required to make a request.
 --
@@ -100,18 +96,12 @@ data CreateAPIKey =
 -- * 'cakTags' - The key-value map of strings. The valid character set is [a-zA-Z+-=._:/]. The tag key can be up to 128 characters and must not start with @aws:@ . The tag value can be up to 256 characters.
 createAPIKey
     :: CreateAPIKey
-createAPIKey =
-  CreateAPIKey'
-    { _cakEnabled = Nothing
-    , _cakValue = Nothing
-    , _cakCustomerId = Nothing
-    , _cakGenerateDistinctId = Nothing
-    , _cakName = Nothing
-    , _cakStageKeys = Nothing
-    , _cakDescription = Nothing
-    , _cakTags = Nothing
-    }
-
+createAPIKey
+  = CreateAPIKey'{_cakEnabled = Nothing,
+                  _cakValue = Nothing, _cakCustomerId = Nothing,
+                  _cakGenerateDistinctId = Nothing, _cakName = Nothing,
+                  _cakStageKeys = Nothing, _cakDescription = Nothing,
+                  _cakTags = Nothing}
 
 -- | Specifies whether the 'ApiKey' can be used by callers.
 cakEnabled :: Lens' CreateAPIKey (Maybe Bool)

@@ -45,24 +45,21 @@ module Network.AWS.CostExplorer.GetCostAndUsage
     ) where
 
 import Network.AWS.CostExplorer.Types
-import Network.AWS.CostExplorer.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 
 -- | /See:/ 'getCostAndUsage' smart constructor.
-data GetCostAndUsage =
-  GetCostAndUsage'
-    { _gcauGroupBy       :: !(Maybe [GroupDefinition])
-    , _gcauNextPageToken :: !(Maybe Text)
-    , _gcauMetrics       :: !(Maybe [Text])
-    , _gcauGranularity   :: !(Maybe Granularity)
-    , _gcauFilter        :: !(Maybe Expression)
-    , _gcauTimePeriod    :: !DateInterval
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data GetCostAndUsage = GetCostAndUsage'{_gcauGroupBy
+                                        :: !(Maybe [GroupDefinition]),
+                                        _gcauNextPageToken :: !(Maybe Text),
+                                        _gcauMetrics :: !(Maybe [Text]),
+                                        _gcauGranularity ::
+                                        !(Maybe Granularity),
+                                        _gcauFilter :: !(Maybe Expression),
+                                        _gcauTimePeriod :: !DateInterval}
+                         deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'GetCostAndUsage' with the minimum fields required to make a request.
 --
@@ -74,24 +71,19 @@ data GetCostAndUsage =
 --
 -- * 'gcauMetrics' - Which metrics are returned in the query. For more information about blended and unblended rates, see <http://aws.amazon.com/premiumsupport/knowledge-center/blended-rates-intro/ Why does the "blended" annotation appear on some line items in my bill?> .  Valid values are @AmortizedCost@ , @BlendedCost@ , @NetAmortizedCost@ , @NetUnblendedCost@ , @NormalizedUsageAmount@ , @UnblendedCost@ , and @UsageQuantity@ .  @Metrics@ is required for @GetCostAndUsage@ requests.
 --
--- * 'gcauGranularity' - Sets the AWS cost granularity to @MONTHLY@ or @DAILY@ , or @HOURLY@ . If @Granularity@ isn't set, the response object doesn't include the @Granularity@ , either @MONTHLY@ or @DAILY@ , or @HOURLY@ .
+-- * 'gcauGranularity' - Sets the AWS cost granularity to @MONTHLY@ or @DAILY@ , or @HOURLY@ . If @Granularity@ isn't set, the response object doesn't include the @Granularity@ , either @MONTHLY@ or @DAILY@ , or @HOURLY@ . 
 --
--- * 'gcauFilter' - Filters AWS costs by different dimensions. For example, you can specify @SERVICE@ and @LINKED_ACCOUNT@ and get the costs that are associated with that account's usage of that service. You can nest @Expression@ objects to define any combination of dimension filters. For more information, see <https://docs.aws.amazon.com/aws-cost-management/latest/APIReference/API_Expression.html Expression> .
+-- * 'gcauFilter' - Filters AWS costs by different dimensions. For example, you can specify @SERVICE@ and @LINKED_ACCOUNT@ and get the costs that are associated with that account's usage of that service. You can nest @Expression@ objects to define any combination of dimension filters. For more information, see <https://docs.aws.amazon.com/aws-cost-management/latest/APIReference/API_Expression.html Expression> . 
 --
 -- * 'gcauTimePeriod' - Sets the start and end dates for retrieving AWS costs. The start date is inclusive, but the end date is exclusive. For example, if @start@ is @2017-01-01@ and @end@ is @2017-05-01@ , then the cost and usage data is retrieved from @2017-01-01@ up to and including @2017-04-30@ but not including @2017-05-01@ .
 getCostAndUsage
     :: DateInterval -- ^ 'gcauTimePeriod'
     -> GetCostAndUsage
-getCostAndUsage pTimePeriod_ =
-  GetCostAndUsage'
-    { _gcauGroupBy = Nothing
-    , _gcauNextPageToken = Nothing
-    , _gcauMetrics = Nothing
-    , _gcauGranularity = Nothing
-    , _gcauFilter = Nothing
-    , _gcauTimePeriod = pTimePeriod_
-    }
-
+getCostAndUsage pTimePeriod_
+  = GetCostAndUsage'{_gcauGroupBy = Nothing,
+                     _gcauNextPageToken = Nothing, _gcauMetrics = Nothing,
+                     _gcauGranularity = Nothing, _gcauFilter = Nothing,
+                     _gcauTimePeriod = pTimePeriod_}
 
 -- | You can group AWS costs using up to two different groups, either dimensions, tag keys, or both. When you group by tag key, you get all tag values, including empty strings. Valid values are @AZ@ , @INSTANCE_TYPE@ , @LEGAL_ENTITY_NAME@ , @LINKED_ACCOUNT@ , @OPERATION@ , @PLATFORM@ , @PURCHASE_TYPE@ , @SERVICE@ , @TAGS@ , @TENANCY@ , @RECORD_TYPE@ , and @USAGE_TYPE@ .
 gcauGroupBy :: Lens' GetCostAndUsage [GroupDefinition]
@@ -105,11 +97,11 @@ gcauNextPageToken = lens _gcauNextPageToken (\ s a -> s{_gcauNextPageToken = a})
 gcauMetrics :: Lens' GetCostAndUsage [Text]
 gcauMetrics = lens _gcauMetrics (\ s a -> s{_gcauMetrics = a}) . _Default . _Coerce
 
--- | Sets the AWS cost granularity to @MONTHLY@ or @DAILY@ , or @HOURLY@ . If @Granularity@ isn't set, the response object doesn't include the @Granularity@ , either @MONTHLY@ or @DAILY@ , or @HOURLY@ .
+-- | Sets the AWS cost granularity to @MONTHLY@ or @DAILY@ , or @HOURLY@ . If @Granularity@ isn't set, the response object doesn't include the @Granularity@ , either @MONTHLY@ or @DAILY@ , or @HOURLY@ . 
 gcauGranularity :: Lens' GetCostAndUsage (Maybe Granularity)
 gcauGranularity = lens _gcauGranularity (\ s a -> s{_gcauGranularity = a})
 
--- | Filters AWS costs by different dimensions. For example, you can specify @SERVICE@ and @LINKED_ACCOUNT@ and get the costs that are associated with that account's usage of that service. You can nest @Expression@ objects to define any combination of dimension filters. For more information, see <https://docs.aws.amazon.com/aws-cost-management/latest/APIReference/API_Expression.html Expression> .
+-- | Filters AWS costs by different dimensions. For example, you can specify @SERVICE@ and @LINKED_ACCOUNT@ and get the costs that are associated with that account's usage of that service. You can nest @Expression@ objects to define any combination of dimension filters. For more information, see <https://docs.aws.amazon.com/aws-cost-management/latest/APIReference/API_Expression.html Expression> . 
 gcauFilter :: Lens' GetCostAndUsage (Maybe Expression)
 gcauFilter = lens _gcauFilter (\ s a -> s{_gcauFilter = a})
 
@@ -161,15 +153,19 @@ instance ToQuery GetCostAndUsage where
         toQuery = const mempty
 
 -- | /See:/ 'getCostAndUsageResponse' smart constructor.
-data GetCostAndUsageResponse =
-  GetCostAndUsageResponse'
-    { _gcaursResultsByTime    :: !(Maybe [ResultByTime])
-    , _gcaursNextPageToken    :: !(Maybe Text)
-    , _gcaursGroupDefinitions :: !(Maybe [GroupDefinition])
-    , _gcaursResponseStatus   :: !Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data GetCostAndUsageResponse = GetCostAndUsageResponse'{_gcaursResultsByTime
+                                                        ::
+                                                        !(Maybe [ResultByTime]),
+                                                        _gcaursNextPageToken ::
+                                                        !(Maybe Text),
+                                                        _gcaursGroupDefinitions
+                                                        ::
+                                                        !(Maybe
+                                                            [GroupDefinition]),
+                                                        _gcaursResponseStatus ::
+                                                        !Int}
+                                 deriving (Eq, Read, Show, Data, Typeable,
+                                           Generic)
 
 -- | Creates a value of 'GetCostAndUsageResponse' with the minimum fields required to make a request.
 --
@@ -185,14 +181,12 @@ data GetCostAndUsageResponse =
 getCostAndUsageResponse
     :: Int -- ^ 'gcaursResponseStatus'
     -> GetCostAndUsageResponse
-getCostAndUsageResponse pResponseStatus_ =
-  GetCostAndUsageResponse'
-    { _gcaursResultsByTime = Nothing
-    , _gcaursNextPageToken = Nothing
-    , _gcaursGroupDefinitions = Nothing
-    , _gcaursResponseStatus = pResponseStatus_
-    }
-
+getCostAndUsageResponse pResponseStatus_
+  = GetCostAndUsageResponse'{_gcaursResultsByTime =
+                               Nothing,
+                             _gcaursNextPageToken = Nothing,
+                             _gcaursGroupDefinitions = Nothing,
+                             _gcaursResponseStatus = pResponseStatus_}
 
 -- | The time period that is covered by the results in the response.
 gcaursResultsByTime :: Lens' GetCostAndUsageResponse [ResultByTime]

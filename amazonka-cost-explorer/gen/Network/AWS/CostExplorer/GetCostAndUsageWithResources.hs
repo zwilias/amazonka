@@ -45,24 +45,36 @@ module Network.AWS.CostExplorer.GetCostAndUsageWithResources
     ) where
 
 import Network.AWS.CostExplorer.Types
-import Network.AWS.CostExplorer.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 
 -- | /See:/ 'getCostAndUsageWithResources' smart constructor.
-data GetCostAndUsageWithResources =
-  GetCostAndUsageWithResources'
-    { _gcauwrGroupBy       :: !(Maybe [GroupDefinition])
-    , _gcauwrNextPageToken :: !(Maybe Text)
-    , _gcauwrMetrics       :: !(Maybe [Text])
-    , _gcauwrGranularity   :: !(Maybe Granularity)
-    , _gcauwrFilter        :: !(Maybe Expression)
-    , _gcauwrTimePeriod    :: !DateInterval
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data GetCostAndUsageWithResources = GetCostAndUsageWithResources'{_gcauwrGroupBy
+                                                                  ::
+                                                                  !(Maybe
+                                                                      [GroupDefinition]),
+                                                                  _gcauwrNextPageToken
+                                                                  ::
+                                                                  !(Maybe Text),
+                                                                  _gcauwrMetrics
+                                                                  ::
+                                                                  !(Maybe
+                                                                      [Text]),
+                                                                  _gcauwrGranularity
+                                                                  ::
+                                                                  !(Maybe
+                                                                      Granularity),
+                                                                  _gcauwrFilter
+                                                                  ::
+                                                                  !(Maybe
+                                                                      Expression),
+                                                                  _gcauwrTimePeriod
+                                                                  ::
+                                                                  !DateInterval}
+                                      deriving (Eq, Read, Show, Data, Typeable,
+                                                Generic)
 
 -- | Creates a value of 'GetCostAndUsageWithResources' with the minimum fields required to make a request.
 --
@@ -74,7 +86,7 @@ data GetCostAndUsageWithResources =
 --
 -- * 'gcauwrMetrics' - Which metrics are returned in the query. For more information about blended and unblended rates, see <http://aws.amazon.com/premiumsupport/knowledge-center/blended-rates-intro/ Why does the "blended" annotation appear on some line items in my bill?> .  Valid values are @AmortizedCost@ , @BlendedCost@ , @NetAmortizedCost@ , @NetUnblendedCost@ , @NormalizedUsageAmount@ , @UnblendedCost@ , and @UsageQuantity@ .  @Metrics@ is required for @GetCostAndUsageWithResources@ requests.
 --
--- * 'gcauwrGranularity' - Sets the AWS cost granularity to @MONTHLY@ , @DAILY@ , or @HOURLY@ . If @Granularity@ isn't set, the response object doesn't include the @Granularity@ , @MONTHLY@ , @DAILY@ , or @HOURLY@ .
+-- * 'gcauwrGranularity' - Sets the AWS cost granularity to @MONTHLY@ , @DAILY@ , or @HOURLY@ . If @Granularity@ isn't set, the response object doesn't include the @Granularity@ , @MONTHLY@ , @DAILY@ , or @HOURLY@ . 
 --
 -- * 'gcauwrFilter' - Filters Amazon Web Services costs by different dimensions. For example, you can specify @SERVICE@ and @LINKED_ACCOUNT@ and get the costs that are associated with that account's usage of that service. You can nest @Expression@ objects to define any combination of dimension filters. For more information, see <https://docs.aws.amazon.com/aws-cost-management/latest/APIReference/API_Expression.html Expression> .  The @GetCostAndUsageWithResources@ operation requires that you either group by or filter by a @ResourceId@ .
 --
@@ -82,16 +94,14 @@ data GetCostAndUsageWithResources =
 getCostAndUsageWithResources
     :: DateInterval -- ^ 'gcauwrTimePeriod'
     -> GetCostAndUsageWithResources
-getCostAndUsageWithResources pTimePeriod_ =
-  GetCostAndUsageWithResources'
-    { _gcauwrGroupBy = Nothing
-    , _gcauwrNextPageToken = Nothing
-    , _gcauwrMetrics = Nothing
-    , _gcauwrGranularity = Nothing
-    , _gcauwrFilter = Nothing
-    , _gcauwrTimePeriod = pTimePeriod_
-    }
-
+getCostAndUsageWithResources pTimePeriod_
+  = GetCostAndUsageWithResources'{_gcauwrGroupBy =
+                                    Nothing,
+                                  _gcauwrNextPageToken = Nothing,
+                                  _gcauwrMetrics = Nothing,
+                                  _gcauwrGranularity = Nothing,
+                                  _gcauwrFilter = Nothing,
+                                  _gcauwrTimePeriod = pTimePeriod_}
 
 -- | You can group Amazon Web Services costs using up to two different groups: either dimensions, tag keys, or both.
 gcauwrGroupBy :: Lens' GetCostAndUsageWithResources [GroupDefinition]
@@ -105,7 +115,7 @@ gcauwrNextPageToken = lens _gcauwrNextPageToken (\ s a -> s{_gcauwrNextPageToken
 gcauwrMetrics :: Lens' GetCostAndUsageWithResources [Text]
 gcauwrMetrics = lens _gcauwrMetrics (\ s a -> s{_gcauwrMetrics = a}) . _Default . _Coerce
 
--- | Sets the AWS cost granularity to @MONTHLY@ , @DAILY@ , or @HOURLY@ . If @Granularity@ isn't set, the response object doesn't include the @Granularity@ , @MONTHLY@ , @DAILY@ , or @HOURLY@ .
+-- | Sets the AWS cost granularity to @MONTHLY@ , @DAILY@ , or @HOURLY@ . If @Granularity@ isn't set, the response object doesn't include the @Granularity@ , @MONTHLY@ , @DAILY@ , or @HOURLY@ . 
 gcauwrGranularity :: Lens' GetCostAndUsageWithResources (Maybe Granularity)
 gcauwrGranularity = lens _gcauwrGranularity (\ s a -> s{_gcauwrGranularity = a})
 
@@ -163,15 +173,23 @@ instance ToQuery GetCostAndUsageWithResources where
         toQuery = const mempty
 
 -- | /See:/ 'getCostAndUsageWithResourcesResponse' smart constructor.
-data GetCostAndUsageWithResourcesResponse =
-  GetCostAndUsageWithResourcesResponse'
-    { _gcauwrrsResultsByTime    :: !(Maybe [ResultByTime])
-    , _gcauwrrsNextPageToken    :: !(Maybe Text)
-    , _gcauwrrsGroupDefinitions :: !(Maybe [GroupDefinition])
-    , _gcauwrrsResponseStatus   :: !Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data GetCostAndUsageWithResourcesResponse = GetCostAndUsageWithResourcesResponse'{_gcauwrrsResultsByTime
+                                                                                  ::
+                                                                                  !(Maybe
+                                                                                      [ResultByTime]),
+                                                                                  _gcauwrrsNextPageToken
+                                                                                  ::
+                                                                                  !(Maybe
+                                                                                      Text),
+                                                                                  _gcauwrrsGroupDefinitions
+                                                                                  ::
+                                                                                  !(Maybe
+                                                                                      [GroupDefinition]),
+                                                                                  _gcauwrrsResponseStatus
+                                                                                  ::
+                                                                                  !Int}
+                                              deriving (Eq, Read, Show, Data,
+                                                        Typeable, Generic)
 
 -- | Creates a value of 'GetCostAndUsageWithResourcesResponse' with the minimum fields required to make a request.
 --
@@ -187,14 +205,13 @@ data GetCostAndUsageWithResourcesResponse =
 getCostAndUsageWithResourcesResponse
     :: Int -- ^ 'gcauwrrsResponseStatus'
     -> GetCostAndUsageWithResourcesResponse
-getCostAndUsageWithResourcesResponse pResponseStatus_ =
-  GetCostAndUsageWithResourcesResponse'
-    { _gcauwrrsResultsByTime = Nothing
-    , _gcauwrrsNextPageToken = Nothing
-    , _gcauwrrsGroupDefinitions = Nothing
-    , _gcauwrrsResponseStatus = pResponseStatus_
-    }
-
+getCostAndUsageWithResourcesResponse pResponseStatus_
+  = GetCostAndUsageWithResourcesResponse'{_gcauwrrsResultsByTime
+                                            = Nothing,
+                                          _gcauwrrsNextPageToken = Nothing,
+                                          _gcauwrrsGroupDefinitions = Nothing,
+                                          _gcauwrrsResponseStatus =
+                                            pResponseStatus_}
 
 -- | The time period that is covered by the results in the response.
 gcauwrrsResultsByTime :: Lens' GetCostAndUsageWithResourcesResponse [ResultByTime]

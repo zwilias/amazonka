@@ -42,7 +42,6 @@ module Network.AWS.DeviceFarm.ListDeviceInstances
     ) where
 
 import Network.AWS.DeviceFarm.Types
-import Network.AWS.DeviceFarm.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Pager
 import Network.AWS.Prelude
@@ -50,13 +49,10 @@ import Network.AWS.Request
 import Network.AWS.Response
 
 -- | /See:/ 'listDeviceInstances' smart constructor.
-data ListDeviceInstances =
-  ListDeviceInstances'
-    { _ldiNextToken  :: !(Maybe Text)
-    , _ldiMaxResults :: !(Maybe Int)
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data ListDeviceInstances = ListDeviceInstances'{_ldiNextToken
+                                                :: !(Maybe Text),
+                                                _ldiMaxResults :: !(Maybe Int)}
+                             deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'ListDeviceInstances' with the minimum fields required to make a request.
 --
@@ -67,9 +63,9 @@ data ListDeviceInstances =
 -- * 'ldiMaxResults' - An integer that specifies the maximum number of items you want to return in the API response.
 listDeviceInstances
     :: ListDeviceInstances
-listDeviceInstances =
-  ListDeviceInstances' {_ldiNextToken = Nothing, _ldiMaxResults = Nothing}
-
+listDeviceInstances
+  = ListDeviceInstances'{_ldiNextToken = Nothing,
+                         _ldiMaxResults = Nothing}
 
 -- | An identifier that was returned from the previous call to this operation, which can be used to return the next set of items in the list.
 ldiNextToken :: Lens' ListDeviceInstances (Maybe Text)
@@ -126,14 +122,17 @@ instance ToQuery ListDeviceInstances where
         toQuery = const mempty
 
 -- | /See:/ 'listDeviceInstancesResponse' smart constructor.
-data ListDeviceInstancesResponse =
-  ListDeviceInstancesResponse'
-    { _ldirsNextToken       :: !(Maybe Text)
-    , _ldirsDeviceInstances :: !(Maybe [DeviceInstance])
-    , _ldirsResponseStatus  :: !Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data ListDeviceInstancesResponse = ListDeviceInstancesResponse'{_ldirsNextToken
+                                                                ::
+                                                                !(Maybe Text),
+                                                                _ldirsDeviceInstances
+                                                                ::
+                                                                !(Maybe
+                                                                    [DeviceInstance]),
+                                                                _ldirsResponseStatus
+                                                                :: !Int}
+                                     deriving (Eq, Read, Show, Data, Typeable,
+                                               Generic)
 
 -- | Creates a value of 'ListDeviceInstancesResponse' with the minimum fields required to make a request.
 --
@@ -147,13 +146,11 @@ data ListDeviceInstancesResponse =
 listDeviceInstancesResponse
     :: Int -- ^ 'ldirsResponseStatus'
     -> ListDeviceInstancesResponse
-listDeviceInstancesResponse pResponseStatus_ =
-  ListDeviceInstancesResponse'
-    { _ldirsNextToken = Nothing
-    , _ldirsDeviceInstances = Nothing
-    , _ldirsResponseStatus = pResponseStatus_
-    }
-
+listDeviceInstancesResponse pResponseStatus_
+  = ListDeviceInstancesResponse'{_ldirsNextToken =
+                                   Nothing,
+                                 _ldirsDeviceInstances = Nothing,
+                                 _ldirsResponseStatus = pResponseStatus_}
 
 -- | An identifier that can be used in the next call to this operation to return the next set of items in the list.
 ldirsNextToken :: Lens' ListDeviceInstancesResponse (Maybe Text)

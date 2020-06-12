@@ -41,21 +41,18 @@ module Network.AWS.EC2.ConfirmProductInstance
     ) where
 
 import Network.AWS.EC2.Types
-import Network.AWS.EC2.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 
 -- | /See:/ 'confirmProductInstance' smart constructor.
-data ConfirmProductInstance =
-  ConfirmProductInstance'
-    { _cpiDryRun      :: !(Maybe Bool)
-    , _cpiInstanceId  :: !Text
-    , _cpiProductCode :: !Text
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data ConfirmProductInstance = ConfirmProductInstance'{_cpiDryRun
+                                                      :: !(Maybe Bool),
+                                                      _cpiInstanceId :: !Text,
+                                                      _cpiProductCode :: !Text}
+                                deriving (Eq, Read, Show, Data, Typeable,
+                                          Generic)
 
 -- | Creates a value of 'ConfirmProductInstance' with the minimum fields required to make a request.
 --
@@ -70,13 +67,10 @@ confirmProductInstance
     :: Text -- ^ 'cpiInstanceId'
     -> Text -- ^ 'cpiProductCode'
     -> ConfirmProductInstance
-confirmProductInstance pInstanceId_ pProductCode_ =
-  ConfirmProductInstance'
-    { _cpiDryRun = Nothing
-    , _cpiInstanceId = pInstanceId_
-    , _cpiProductCode = pProductCode_
-    }
-
+confirmProductInstance pInstanceId_ pProductCode_
+  = ConfirmProductInstance'{_cpiDryRun = Nothing,
+                            _cpiInstanceId = pInstanceId_,
+                            _cpiProductCode = pProductCode_}
 
 -- | Checks whether you have the required permissions for the action, without actually making the request, and provides an error response. If you have the required permissions, the error response is @DryRunOperation@ . Otherwise, it is @UnauthorizedOperation@ .
 cpiDryRun :: Lens' ConfirmProductInstance (Maybe Bool)
@@ -122,14 +116,18 @@ instance ToQuery ConfirmProductInstance where
                "ProductCode" =: _cpiProductCode]
 
 -- | /See:/ 'confirmProductInstanceResponse' smart constructor.
-data ConfirmProductInstanceResponse =
-  ConfirmProductInstanceResponse'
-    { _cpirsReturn         :: !(Maybe Bool)
-    , _cpirsOwnerId        :: !(Maybe Text)
-    , _cpirsResponseStatus :: !Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data ConfirmProductInstanceResponse = ConfirmProductInstanceResponse'{_cpirsReturn
+                                                                      ::
+                                                                      !(Maybe
+                                                                          Bool),
+                                                                      _cpirsOwnerId
+                                                                      ::
+                                                                      !(Maybe
+                                                                          Text),
+                                                                      _cpirsResponseStatus
+                                                                      :: !Int}
+                                        deriving (Eq, Read, Show, Data,
+                                                  Typeable, Generic)
 
 -- | Creates a value of 'ConfirmProductInstanceResponse' with the minimum fields required to make a request.
 --
@@ -143,13 +141,11 @@ data ConfirmProductInstanceResponse =
 confirmProductInstanceResponse
     :: Int -- ^ 'cpirsResponseStatus'
     -> ConfirmProductInstanceResponse
-confirmProductInstanceResponse pResponseStatus_ =
-  ConfirmProductInstanceResponse'
-    { _cpirsReturn = Nothing
-    , _cpirsOwnerId = Nothing
-    , _cpirsResponseStatus = pResponseStatus_
-    }
-
+confirmProductInstanceResponse pResponseStatus_
+  = ConfirmProductInstanceResponse'{_cpirsReturn =
+                                      Nothing,
+                                    _cpirsOwnerId = Nothing,
+                                    _cpirsResponseStatus = pResponseStatus_}
 
 -- | The return value of the request. Returns @true@ if the specified product code is owned by the requester and associated with the specified instance.
 cpirsReturn :: Lens' ConfirmProductInstanceResponse (Maybe Bool)

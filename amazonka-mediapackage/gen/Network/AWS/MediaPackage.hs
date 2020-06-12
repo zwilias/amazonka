@@ -44,37 +44,37 @@ module Network.AWS.MediaPackage
     -- * Operations
     -- $operations
 
-    -- ** RotateChannelCredentials
+    -- ** RotateChannelCredentials 
     , module Network.AWS.MediaPackage.RotateChannelCredentials
 
-    -- ** DescribeOriginEndpoint
+    -- ** DescribeOriginEndpoint 
     , module Network.AWS.MediaPackage.DescribeOriginEndpoint
 
     -- ** ListChannels (Paginated)
     , module Network.AWS.MediaPackage.ListChannels
 
-    -- ** DeleteChannel
+    -- ** DeleteChannel 
     , module Network.AWS.MediaPackage.DeleteChannel
 
-    -- ** UpdateChannel
+    -- ** UpdateChannel 
     , module Network.AWS.MediaPackage.UpdateChannel
 
-    -- ** CreateOriginEndpoint
+    -- ** CreateOriginEndpoint 
     , module Network.AWS.MediaPackage.CreateOriginEndpoint
 
     -- ** ListOriginEndpoints (Paginated)
     , module Network.AWS.MediaPackage.ListOriginEndpoints
 
-    -- ** CreateChannel
+    -- ** CreateChannel 
     , module Network.AWS.MediaPackage.CreateChannel
 
-    -- ** DescribeChannel
+    -- ** DescribeChannel 
     , module Network.AWS.MediaPackage.DescribeChannel
 
-    -- ** DeleteOriginEndpoint
+    -- ** DeleteOriginEndpoint 
     , module Network.AWS.MediaPackage.DeleteOriginEndpoint
 
-    -- ** UpdateOriginEndpoint
+    -- ** UpdateOriginEndpoint 
     , module Network.AWS.MediaPackage.UpdateOriginEndpoint
 
     -- * Types

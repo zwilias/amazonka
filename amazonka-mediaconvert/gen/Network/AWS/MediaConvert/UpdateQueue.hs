@@ -39,20 +39,16 @@ module Network.AWS.MediaConvert.UpdateQueue
 
 import Network.AWS.Lens
 import Network.AWS.MediaConvert.Types
-import Network.AWS.MediaConvert.Types.Product
 import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 
 -- | /See:/ 'updateQueue' smart constructor.
-data UpdateQueue =
-  UpdateQueue'
-    { _uqStatus      :: !(Maybe QueueStatus)
-    , _uqDescription :: !(Maybe Text)
-    , _uqName        :: !Text
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data UpdateQueue = UpdateQueue'{_uqStatus ::
+                                !(Maybe QueueStatus),
+                                _uqDescription :: !(Maybe Text),
+                                _uqName :: !Text}
+                     deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'UpdateQueue' with the minimum fields required to make a request.
 --
@@ -66,9 +62,9 @@ data UpdateQueue =
 updateQueue
     :: Text -- ^ 'uqName'
     -> UpdateQueue
-updateQueue pName_ =
-  UpdateQueue' {_uqStatus = Nothing, _uqDescription = Nothing, _uqName = pName_}
-
+updateQueue pName_
+  = UpdateQueue'{_uqStatus = Nothing,
+                 _uqDescription = Nothing, _uqName = pName_}
 
 -- | Undocumented member.
 uqStatus :: Lens' UpdateQueue (Maybe QueueStatus)
@@ -117,13 +113,10 @@ instance ToQuery UpdateQueue where
         toQuery = const mempty
 
 -- | /See:/ 'updateQueueResponse' smart constructor.
-data UpdateQueueResponse =
-  UpdateQueueResponse'
-    { _uqrsQueue          :: !(Maybe Queue)
-    , _uqrsResponseStatus :: !Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data UpdateQueueResponse = UpdateQueueResponse'{_uqrsQueue
+                                                :: !(Maybe Queue),
+                                                _uqrsResponseStatus :: !Int}
+                             deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'UpdateQueueResponse' with the minimum fields required to make a request.
 --
@@ -135,10 +128,9 @@ data UpdateQueueResponse =
 updateQueueResponse
     :: Int -- ^ 'uqrsResponseStatus'
     -> UpdateQueueResponse
-updateQueueResponse pResponseStatus_ =
-  UpdateQueueResponse'
-    {_uqrsQueue = Nothing, _uqrsResponseStatus = pResponseStatus_}
-
+updateQueueResponse pResponseStatus_
+  = UpdateQueueResponse'{_uqrsQueue = Nothing,
+                         _uqrsResponseStatus = pResponseStatus_}
 
 -- | Undocumented member.
 uqrsQueue :: Lens' UpdateQueueResponse (Maybe Queue)

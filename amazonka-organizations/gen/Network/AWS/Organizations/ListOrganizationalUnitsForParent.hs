@@ -46,21 +46,25 @@ module Network.AWS.Organizations.ListOrganizationalUnitsForParent
 
 import Network.AWS.Lens
 import Network.AWS.Organizations.Types
-import Network.AWS.Organizations.Types.Product
 import Network.AWS.Pager
 import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 
 -- | /See:/ 'listOrganizationalUnitsForParent' smart constructor.
-data ListOrganizationalUnitsForParent =
-  ListOrganizationalUnitsForParent'
-    { _loufpNextToken  :: !(Maybe Text)
-    , _loufpMaxResults :: !(Maybe Nat)
-    , _loufpParentId   :: !Text
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data ListOrganizationalUnitsForParent = ListOrganizationalUnitsForParent'{_loufpNextToken
+                                                                          ::
+                                                                          !(Maybe
+                                                                              Text),
+                                                                          _loufpMaxResults
+                                                                          ::
+                                                                          !(Maybe
+                                                                              Nat),
+                                                                          _loufpParentId
+                                                                          ::
+                                                                          !Text}
+                                          deriving (Eq, Read, Show, Data,
+                                                    Typeable, Generic)
 
 -- | Creates a value of 'ListOrganizationalUnitsForParent' with the minimum fields required to make a request.
 --
@@ -74,13 +78,11 @@ data ListOrganizationalUnitsForParent =
 listOrganizationalUnitsForParent
     :: Text -- ^ 'loufpParentId'
     -> ListOrganizationalUnitsForParent
-listOrganizationalUnitsForParent pParentId_ =
-  ListOrganizationalUnitsForParent'
-    { _loufpNextToken = Nothing
-    , _loufpMaxResults = Nothing
-    , _loufpParentId = pParentId_
-    }
-
+listOrganizationalUnitsForParent pParentId_
+  = ListOrganizationalUnitsForParent'{_loufpNextToken =
+                                        Nothing,
+                                      _loufpMaxResults = Nothing,
+                                      _loufpParentId = pParentId_}
 
 -- | Use this parameter if you receive a @NextToken@ response in a previous request that indicates that there is more output available. Set it to the value of the previous call's @NextToken@ response to indicate where the output should continue from.
 loufpNextToken :: Lens' ListOrganizationalUnitsForParent (Maybe Text)
@@ -150,14 +152,20 @@ instance ToQuery ListOrganizationalUnitsForParent
         toQuery = const mempty
 
 -- | /See:/ 'listOrganizationalUnitsForParentResponse' smart constructor.
-data ListOrganizationalUnitsForParentResponse =
-  ListOrganizationalUnitsForParentResponse'
-    { _loufprsNextToken           :: !(Maybe Text)
-    , _loufprsOrganizationalUnits :: !(Maybe [OrganizationalUnit])
-    , _loufprsResponseStatus      :: !Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data ListOrganizationalUnitsForParentResponse = ListOrganizationalUnitsForParentResponse'{_loufprsNextToken
+                                                                                          ::
+                                                                                          !(Maybe
+                                                                                              Text),
+                                                                                          _loufprsOrganizationalUnits
+                                                                                          ::
+                                                                                          !(Maybe
+                                                                                              [OrganizationalUnit]),
+                                                                                          _loufprsResponseStatus
+                                                                                          ::
+                                                                                          !Int}
+                                                  deriving (Eq, Read, Show,
+                                                            Data, Typeable,
+                                                            Generic)
 
 -- | Creates a value of 'ListOrganizationalUnitsForParentResponse' with the minimum fields required to make a request.
 --
@@ -171,13 +179,14 @@ data ListOrganizationalUnitsForParentResponse =
 listOrganizationalUnitsForParentResponse
     :: Int -- ^ 'loufprsResponseStatus'
     -> ListOrganizationalUnitsForParentResponse
-listOrganizationalUnitsForParentResponse pResponseStatus_ =
-  ListOrganizationalUnitsForParentResponse'
-    { _loufprsNextToken = Nothing
-    , _loufprsOrganizationalUnits = Nothing
-    , _loufprsResponseStatus = pResponseStatus_
-    }
-
+listOrganizationalUnitsForParentResponse
+  pResponseStatus_
+  = ListOrganizationalUnitsForParentResponse'{_loufprsNextToken
+                                                = Nothing,
+                                              _loufprsOrganizationalUnits =
+                                                Nothing,
+                                              _loufprsResponseStatus =
+                                                pResponseStatus_}
 
 -- | If present, this value indicates that there is more output available than is included in the current response. Use this value in the @NextToken@ request parameter in a subsequent call to the operation to get the next part of the output. You should repeat this until the @NextToken@ response element comes back as @null@ .
 loufprsNextToken :: Lens' ListOrganizationalUnitsForParentResponse (Maybe Text)

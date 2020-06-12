@@ -46,24 +46,21 @@ module Network.AWS.KinesisAnalytics.StartApplication
     ) where
 
 import Network.AWS.KinesisAnalytics.Types
-import Network.AWS.KinesisAnalytics.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 
--- |
+-- | 
 --
 --
 --
 -- /See:/ 'startApplication' smart constructor.
-data StartApplication =
-  StartApplication'
-    { _saApplicationName     :: !Text
-    , _saInputConfigurations :: ![InputConfiguration]
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data StartApplication = StartApplication'{_saApplicationName
+                                          :: !Text,
+                                          _saInputConfigurations ::
+                                          ![InputConfiguration]}
+                          deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'StartApplication' with the minimum fields required to make a request.
 --
@@ -75,10 +72,10 @@ data StartApplication =
 startApplication
     :: Text -- ^ 'saApplicationName'
     -> StartApplication
-startApplication pApplicationName_ =
-  StartApplication'
-    {_saApplicationName = pApplicationName_, _saInputConfigurations = mempty}
-
+startApplication pApplicationName_
+  = StartApplication'{_saApplicationName =
+                        pApplicationName_,
+                      _saInputConfigurations = mempty}
 
 -- | Name of the application.
 saApplicationName :: Lens' StartApplication Text
@@ -124,17 +121,15 @@ instance ToPath StartApplication where
 instance ToQuery StartApplication where
         toQuery = const mempty
 
--- |
+-- | 
 --
 --
 --
 -- /See:/ 'startApplicationResponse' smart constructor.
-newtype StartApplicationResponse =
-  StartApplicationResponse'
-    { _sarsResponseStatus :: Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+newtype StartApplicationResponse = StartApplicationResponse'{_sarsResponseStatus
+                                                             :: Int}
+                                     deriving (Eq, Read, Show, Data, Typeable,
+                                               Generic)
 
 -- | Creates a value of 'StartApplicationResponse' with the minimum fields required to make a request.
 --
@@ -144,9 +139,9 @@ newtype StartApplicationResponse =
 startApplicationResponse
     :: Int -- ^ 'sarsResponseStatus'
     -> StartApplicationResponse
-startApplicationResponse pResponseStatus_ =
-  StartApplicationResponse' {_sarsResponseStatus = pResponseStatus_}
-
+startApplicationResponse pResponseStatus_
+  = StartApplicationResponse'{_sarsResponseStatus =
+                                pResponseStatus_}
 
 -- | -- | The response status code.
 sarsResponseStatus :: Lens' StartApplicationResponse Int

@@ -38,20 +38,16 @@ module Network.AWS.Comprehend.UpdateEndpoint
     ) where
 
 import Network.AWS.Comprehend.Types
-import Network.AWS.Comprehend.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 
 -- | /See:/ 'updateEndpoint' smart constructor.
-data UpdateEndpoint =
-  UpdateEndpoint'
-    { _ueEndpointARN           :: !Text
-    , _ueDesiredInferenceUnits :: !Nat
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data UpdateEndpoint = UpdateEndpoint'{_ueEndpointARN
+                                      :: !Text,
+                                      _ueDesiredInferenceUnits :: !Nat}
+                        deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'UpdateEndpoint' with the minimum fields required to make a request.
 --
@@ -64,12 +60,10 @@ updateEndpoint
     :: Text -- ^ 'ueEndpointARN'
     -> Natural -- ^ 'ueDesiredInferenceUnits'
     -> UpdateEndpoint
-updateEndpoint pEndpointARN_ pDesiredInferenceUnits_ =
-  UpdateEndpoint'
-    { _ueEndpointARN = pEndpointARN_
-    , _ueDesiredInferenceUnits = _Nat # pDesiredInferenceUnits_
-    }
-
+updateEndpoint pEndpointARN_ pDesiredInferenceUnits_
+  = UpdateEndpoint'{_ueEndpointARN = pEndpointARN_,
+                    _ueDesiredInferenceUnits =
+                      _Nat # pDesiredInferenceUnits_}
 
 -- | The Amazon Resource Number (ARN) of the endpoint being updated.
 ueEndpointARN :: Lens' UpdateEndpoint Text
@@ -116,12 +110,10 @@ instance ToQuery UpdateEndpoint where
         toQuery = const mempty
 
 -- | /See:/ 'updateEndpointResponse' smart constructor.
-newtype UpdateEndpointResponse =
-  UpdateEndpointResponse'
-    { _uersResponseStatus :: Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+newtype UpdateEndpointResponse = UpdateEndpointResponse'{_uersResponseStatus
+                                                         :: Int}
+                                   deriving (Eq, Read, Show, Data, Typeable,
+                                             Generic)
 
 -- | Creates a value of 'UpdateEndpointResponse' with the minimum fields required to make a request.
 --
@@ -131,9 +123,9 @@ newtype UpdateEndpointResponse =
 updateEndpointResponse
     :: Int -- ^ 'uersResponseStatus'
     -> UpdateEndpointResponse
-updateEndpointResponse pResponseStatus_ =
-  UpdateEndpointResponse' {_uersResponseStatus = pResponseStatus_}
-
+updateEndpointResponse pResponseStatus_
+  = UpdateEndpointResponse'{_uersResponseStatus =
+                              pResponseStatus_}
 
 -- | -- | The response status code.
 uersResponseStatus :: Lens' UpdateEndpointResponse Int

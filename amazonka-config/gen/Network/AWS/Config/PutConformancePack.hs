@@ -45,32 +45,32 @@ module Network.AWS.Config.PutConformancePack
     ) where
 
 import Network.AWS.Config.Types
-import Network.AWS.Config.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 
 -- | /See:/ 'putConformancePack' smart constructor.
-data PutConformancePack =
-  PutConformancePack'
-    { _pcpDeliveryS3KeyPrefix :: !(Maybe Text)
-    , _pcpTemplateS3URI :: !(Maybe Text)
-    , _pcpConformancePackInputParameters :: !(Maybe [ConformancePackInputParameter])
-    , _pcpTemplateBody :: !(Maybe Text)
-    , _pcpConformancePackName :: !Text
-    , _pcpDeliveryS3Bucket :: !Text
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data PutConformancePack = PutConformancePack'{_pcpDeliveryS3KeyPrefix
+                                              :: !(Maybe Text),
+                                              _pcpTemplateS3URI ::
+                                              !(Maybe Text),
+                                              _pcpConformancePackInputParameters
+                                              ::
+                                              !(Maybe
+                                                  [ConformancePackInputParameter]),
+                                              _pcpTemplateBody :: !(Maybe Text),
+                                              _pcpConformancePackName :: !Text,
+                                              _pcpDeliveryS3Bucket :: !Text}
+                            deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'PutConformancePack' with the minimum fields required to make a request.
 --
 -- Use one of the following lenses to modify other fields as desired:
 --
--- * 'pcpDeliveryS3KeyPrefix' - The prefix for the Amazon S3 bucket.
+-- * 'pcpDeliveryS3KeyPrefix' - The prefix for the Amazon S3 bucket. 
 --
--- * 'pcpTemplateS3URI' - Location of file containing the template body (@s3://bucketname/prefix@ ). The uri must point to the conformance pack template (max size: 300 KB) that is located in an Amazon S3 bucket in the same region as the conformance pack.
+-- * 'pcpTemplateS3URI' - Location of file containing the template body (@s3://bucketname/prefix@ ). The uri must point to the conformance pack template (max size: 300 KB) that is located in an Amazon S3 bucket in the same region as the conformance pack. 
 --
 -- * 'pcpConformancePackInputParameters' - A list of @ConformancePackInputParameter@ objects.
 --
@@ -83,22 +83,21 @@ putConformancePack
     :: Text -- ^ 'pcpConformancePackName'
     -> Text -- ^ 'pcpDeliveryS3Bucket'
     -> PutConformancePack
-putConformancePack pConformancePackName_ pDeliveryS3Bucket_ =
-  PutConformancePack'
-    { _pcpDeliveryS3KeyPrefix = Nothing
-    , _pcpTemplateS3URI = Nothing
-    , _pcpConformancePackInputParameters = Nothing
-    , _pcpTemplateBody = Nothing
-    , _pcpConformancePackName = pConformancePackName_
-    , _pcpDeliveryS3Bucket = pDeliveryS3Bucket_
-    }
+putConformancePack pConformancePackName_
+  pDeliveryS3Bucket_
+  = PutConformancePack'{_pcpDeliveryS3KeyPrefix =
+                          Nothing,
+                        _pcpTemplateS3URI = Nothing,
+                        _pcpConformancePackInputParameters = Nothing,
+                        _pcpTemplateBody = Nothing,
+                        _pcpConformancePackName = pConformancePackName_,
+                        _pcpDeliveryS3Bucket = pDeliveryS3Bucket_}
 
-
--- | The prefix for the Amazon S3 bucket.
+-- | The prefix for the Amazon S3 bucket. 
 pcpDeliveryS3KeyPrefix :: Lens' PutConformancePack (Maybe Text)
 pcpDeliveryS3KeyPrefix = lens _pcpDeliveryS3KeyPrefix (\ s a -> s{_pcpDeliveryS3KeyPrefix = a})
 
--- | Location of file containing the template body (@s3://bucketname/prefix@ ). The uri must point to the conformance pack template (max size: 300 KB) that is located in an Amazon S3 bucket in the same region as the conformance pack.
+-- | Location of file containing the template body (@s3://bucketname/prefix@ ). The uri must point to the conformance pack template (max size: 300 KB) that is located in an Amazon S3 bucket in the same region as the conformance pack. 
 pcpTemplateS3URI :: Lens' PutConformancePack (Maybe Text)
 pcpTemplateS3URI = lens _pcpTemplateS3URI (\ s a -> s{_pcpTemplateS3URI = a})
 
@@ -163,13 +162,12 @@ instance ToQuery PutConformancePack where
         toQuery = const mempty
 
 -- | /See:/ 'putConformancePackResponse' smart constructor.
-data PutConformancePackResponse =
-  PutConformancePackResponse'
-    { _pcprsConformancePackARN :: !(Maybe Text)
-    , _pcprsResponseStatus     :: !Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data PutConformancePackResponse = PutConformancePackResponse'{_pcprsConformancePackARN
+                                                              :: !(Maybe Text),
+                                                              _pcprsResponseStatus
+                                                              :: !Int}
+                                    deriving (Eq, Read, Show, Data, Typeable,
+                                              Generic)
 
 -- | Creates a value of 'PutConformancePackResponse' with the minimum fields required to make a request.
 --
@@ -181,12 +179,10 @@ data PutConformancePackResponse =
 putConformancePackResponse
     :: Int -- ^ 'pcprsResponseStatus'
     -> PutConformancePackResponse
-putConformancePackResponse pResponseStatus_ =
-  PutConformancePackResponse'
-    { _pcprsConformancePackARN = Nothing
-    , _pcprsResponseStatus = pResponseStatus_
-    }
-
+putConformancePackResponse pResponseStatus_
+  = PutConformancePackResponse'{_pcprsConformancePackARN
+                                  = Nothing,
+                                _pcprsResponseStatus = pResponseStatus_}
 
 -- | ARN of the conformance pack.
 pcprsConformancePackARN :: Lens' PutConformancePackResponse (Maybe Text)

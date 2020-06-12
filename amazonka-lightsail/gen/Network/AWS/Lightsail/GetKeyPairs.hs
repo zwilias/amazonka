@@ -42,19 +42,15 @@ module Network.AWS.Lightsail.GetKeyPairs
 
 import Network.AWS.Lens
 import Network.AWS.Lightsail.Types
-import Network.AWS.Lightsail.Types.Product
 import Network.AWS.Pager
 import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 
 -- | /See:/ 'getKeyPairs' smart constructor.
-newtype GetKeyPairs =
-  GetKeyPairs'
-    { _gkpPageToken :: Maybe Text
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+newtype GetKeyPairs = GetKeyPairs'{_gkpPageToken ::
+                                   Maybe Text}
+                        deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'GetKeyPairs' with the minimum fields required to make a request.
 --
@@ -63,8 +59,7 @@ newtype GetKeyPairs =
 -- * 'gkpPageToken' - A token used for advancing to the next page of results from your get key pairs request.
 getKeyPairs
     :: GetKeyPairs
-getKeyPairs = GetKeyPairs' {_gkpPageToken = Nothing}
-
+getKeyPairs = GetKeyPairs'{_gkpPageToken = Nothing}
 
 -- | A token used for advancing to the next page of results from your get key pairs request.
 gkpPageToken :: Lens' GetKeyPairs (Maybe Text)
@@ -113,14 +108,12 @@ instance ToQuery GetKeyPairs where
         toQuery = const mempty
 
 -- | /See:/ 'getKeyPairsResponse' smart constructor.
-data GetKeyPairsResponse =
-  GetKeyPairsResponse'
-    { _gkpsrsNextPageToken  :: !(Maybe Text)
-    , _gkpsrsKeyPairs       :: !(Maybe [KeyPair])
-    , _gkpsrsResponseStatus :: !Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data GetKeyPairsResponse = GetKeyPairsResponse'{_gkpsrsNextPageToken
+                                                :: !(Maybe Text),
+                                                _gkpsrsKeyPairs ::
+                                                !(Maybe [KeyPair]),
+                                                _gkpsrsResponseStatus :: !Int}
+                             deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'GetKeyPairsResponse' with the minimum fields required to make a request.
 --
@@ -134,13 +127,11 @@ data GetKeyPairsResponse =
 getKeyPairsResponse
     :: Int -- ^ 'gkpsrsResponseStatus'
     -> GetKeyPairsResponse
-getKeyPairsResponse pResponseStatus_ =
-  GetKeyPairsResponse'
-    { _gkpsrsNextPageToken = Nothing
-    , _gkpsrsKeyPairs = Nothing
-    , _gkpsrsResponseStatus = pResponseStatus_
-    }
-
+getKeyPairsResponse pResponseStatus_
+  = GetKeyPairsResponse'{_gkpsrsNextPageToken =
+                           Nothing,
+                         _gkpsrsKeyPairs = Nothing,
+                         _gkpsrsResponseStatus = pResponseStatus_}
 
 -- | A token used for advancing to the next page of results from your get key pairs request.
 gkpsrsNextPageToken :: Lens' GetKeyPairsResponse (Maybe Text)

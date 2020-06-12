@@ -40,7 +40,6 @@ module Network.AWS.CodeCommit.CreateRepository
     ) where
 
 import Network.AWS.CodeCommit.Types
-import Network.AWS.CodeCommit.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.Request
@@ -51,14 +50,11 @@ import Network.AWS.Response
 --
 --
 -- /See:/ 'createRepository' smart constructor.
-data CreateRepository =
-  CreateRepository'
-    { _crRepositoryDescription :: !(Maybe Text)
-    , _crTags                  :: !(Maybe (Map Text Text))
-    , _crRepositoryName        :: !Text
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data CreateRepository = CreateRepository'{_crRepositoryDescription
+                                          :: !(Maybe Text),
+                                          _crTags :: !(Maybe (Map Text Text)),
+                                          _crRepositoryName :: !Text}
+                          deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'CreateRepository' with the minimum fields required to make a request.
 --
@@ -72,13 +68,11 @@ data CreateRepository =
 createRepository
     :: Text -- ^ 'crRepositoryName'
     -> CreateRepository
-createRepository pRepositoryName_ =
-  CreateRepository'
-    { _crRepositoryDescription = Nothing
-    , _crTags = Nothing
-    , _crRepositoryName = pRepositoryName_
-    }
-
+createRepository pRepositoryName_
+  = CreateRepository'{_crRepositoryDescription =
+                        Nothing,
+                      _crTags = Nothing,
+                      _crRepositoryName = pRepositoryName_}
 
 -- | A comment or description about the new repository.
 crRepositoryDescription :: Lens' CreateRepository (Maybe Text)
@@ -135,13 +129,14 @@ instance ToQuery CreateRepository where
 --
 --
 -- /See:/ 'createRepositoryResponse' smart constructor.
-data CreateRepositoryResponse =
-  CreateRepositoryResponse'
-    { _crrsRepositoryMetadata :: !(Maybe RepositoryMetadata)
-    , _crrsResponseStatus     :: !Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data CreateRepositoryResponse = CreateRepositoryResponse'{_crrsRepositoryMetadata
+                                                          ::
+                                                          !(Maybe
+                                                              RepositoryMetadata),
+                                                          _crrsResponseStatus ::
+                                                          !Int}
+                                  deriving (Eq, Read, Show, Data, Typeable,
+                                            Generic)
 
 -- | Creates a value of 'CreateRepositoryResponse' with the minimum fields required to make a request.
 --
@@ -153,10 +148,10 @@ data CreateRepositoryResponse =
 createRepositoryResponse
     :: Int -- ^ 'crrsResponseStatus'
     -> CreateRepositoryResponse
-createRepositoryResponse pResponseStatus_ =
-  CreateRepositoryResponse'
-    {_crrsRepositoryMetadata = Nothing, _crrsResponseStatus = pResponseStatus_}
-
+createRepositoryResponse pResponseStatus_
+  = CreateRepositoryResponse'{_crrsRepositoryMetadata =
+                                Nothing,
+                              _crrsResponseStatus = pResponseStatus_}
 
 -- | Information about the newly created repository.
 crrsRepositoryMetadata :: Lens' CreateRepositoryResponse (Maybe RepositoryMetadata)

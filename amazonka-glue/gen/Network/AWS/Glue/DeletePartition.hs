@@ -40,22 +40,18 @@ module Network.AWS.Glue.DeletePartition
     ) where
 
 import Network.AWS.Glue.Types
-import Network.AWS.Glue.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 
 -- | /See:/ 'deletePartition' smart constructor.
-data DeletePartition =
-  DeletePartition'
-    { _dpCatalogId       :: !(Maybe Text)
-    , _dpDatabaseName    :: !Text
-    , _dpTableName       :: !Text
-    , _dpPartitionValues :: ![Text]
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data DeletePartition = DeletePartition'{_dpCatalogId
+                                        :: !(Maybe Text),
+                                        _dpDatabaseName :: !Text,
+                                        _dpTableName :: !Text,
+                                        _dpPartitionValues :: ![Text]}
+                         deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'DeletePartition' with the minimum fields required to make a request.
 --
@@ -72,14 +68,11 @@ deletePartition
     :: Text -- ^ 'dpDatabaseName'
     -> Text -- ^ 'dpTableName'
     -> DeletePartition
-deletePartition pDatabaseName_ pTableName_ =
-  DeletePartition'
-    { _dpCatalogId = Nothing
-    , _dpDatabaseName = pDatabaseName_
-    , _dpTableName = pTableName_
-    , _dpPartitionValues = mempty
-    }
-
+deletePartition pDatabaseName_ pTableName_
+  = DeletePartition'{_dpCatalogId = Nothing,
+                     _dpDatabaseName = pDatabaseName_,
+                     _dpTableName = pTableName_,
+                     _dpPartitionValues = mempty}
 
 -- | The ID of the Data Catalog where the partition to be deleted resides. If none is supplied, the AWS account ID is used by default.
 dpCatalogId :: Lens' DeletePartition (Maybe Text)
@@ -134,12 +127,10 @@ instance ToQuery DeletePartition where
         toQuery = const mempty
 
 -- | /See:/ 'deletePartitionResponse' smart constructor.
-newtype DeletePartitionResponse =
-  DeletePartitionResponse'
-    { _dprsResponseStatus :: Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+newtype DeletePartitionResponse = DeletePartitionResponse'{_dprsResponseStatus
+                                                           :: Int}
+                                    deriving (Eq, Read, Show, Data, Typeable,
+                                              Generic)
 
 -- | Creates a value of 'DeletePartitionResponse' with the minimum fields required to make a request.
 --
@@ -149,9 +140,9 @@ newtype DeletePartitionResponse =
 deletePartitionResponse
     :: Int -- ^ 'dprsResponseStatus'
     -> DeletePartitionResponse
-deletePartitionResponse pResponseStatus_ =
-  DeletePartitionResponse' {_dprsResponseStatus = pResponseStatus_}
-
+deletePartitionResponse pResponseStatus_
+  = DeletePartitionResponse'{_dprsResponseStatus =
+                               pResponseStatus_}
 
 -- | -- | The response status code.
 dprsResponseStatus :: Lens' DeletePartitionResponse Int

@@ -41,18 +41,15 @@ module Network.AWS.Lightsail.DeleteDiskSnapshot
 
 import Network.AWS.Lens
 import Network.AWS.Lightsail.Types
-import Network.AWS.Lightsail.Types.Product
 import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 
 -- | /See:/ 'deleteDiskSnapshot' smart constructor.
-newtype DeleteDiskSnapshot =
-  DeleteDiskSnapshot'
-    { _ddsDiskSnapshotName :: Text
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+newtype DeleteDiskSnapshot = DeleteDiskSnapshot'{_ddsDiskSnapshotName
+                                                 :: Text}
+                               deriving (Eq, Read, Show, Data, Typeable,
+                                         Generic)
 
 -- | Creates a value of 'DeleteDiskSnapshot' with the minimum fields required to make a request.
 --
@@ -62,9 +59,9 @@ newtype DeleteDiskSnapshot =
 deleteDiskSnapshot
     :: Text -- ^ 'ddsDiskSnapshotName'
     -> DeleteDiskSnapshot
-deleteDiskSnapshot pDiskSnapshotName_ =
-  DeleteDiskSnapshot' {_ddsDiskSnapshotName = pDiskSnapshotName_}
-
+deleteDiskSnapshot pDiskSnapshotName_
+  = DeleteDiskSnapshot'{_ddsDiskSnapshotName =
+                          pDiskSnapshotName_}
 
 -- | The name of the disk snapshot you want to delete (e.g., @my-disk-snapshot@ ).
 ddsDiskSnapshotName :: Lens' DeleteDiskSnapshot Text
@@ -108,13 +105,14 @@ instance ToQuery DeleteDiskSnapshot where
         toQuery = const mempty
 
 -- | /See:/ 'deleteDiskSnapshotResponse' smart constructor.
-data DeleteDiskSnapshotResponse =
-  DeleteDiskSnapshotResponse'
-    { _ddsrsOperations     :: !(Maybe [Operation])
-    , _ddsrsResponseStatus :: !Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data DeleteDiskSnapshotResponse = DeleteDiskSnapshotResponse'{_ddsrsOperations
+                                                              ::
+                                                              !(Maybe
+                                                                  [Operation]),
+                                                              _ddsrsResponseStatus
+                                                              :: !Int}
+                                    deriving (Eq, Read, Show, Data, Typeable,
+                                              Generic)
 
 -- | Creates a value of 'DeleteDiskSnapshotResponse' with the minimum fields required to make a request.
 --
@@ -126,10 +124,10 @@ data DeleteDiskSnapshotResponse =
 deleteDiskSnapshotResponse
     :: Int -- ^ 'ddsrsResponseStatus'
     -> DeleteDiskSnapshotResponse
-deleteDiskSnapshotResponse pResponseStatus_ =
-  DeleteDiskSnapshotResponse'
-    {_ddsrsOperations = Nothing, _ddsrsResponseStatus = pResponseStatus_}
-
+deleteDiskSnapshotResponse pResponseStatus_
+  = DeleteDiskSnapshotResponse'{_ddsrsOperations =
+                                  Nothing,
+                                _ddsrsResponseStatus = pResponseStatus_}
 
 -- | An object describing the API operations.
 ddsrsOperations :: Lens' DeleteDiskSnapshotResponse [Operation]

@@ -18,7 +18,7 @@
 -- Stability   : auto-generated
 -- Portability : non-portable (GHC extensions)
 --
--- Set the default version of a document.
+-- Set the default version of a document. 
 --
 --
 module Network.AWS.SSM.UpdateDocumentDefaultVersion
@@ -43,16 +43,14 @@ import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 import Network.AWS.SSM.Types
-import Network.AWS.SSM.Types.Product
 
 -- | /See:/ 'updateDocumentDefaultVersion' smart constructor.
-data UpdateDocumentDefaultVersion =
-  UpdateDocumentDefaultVersion'
-    { _uddvName            :: !Text
-    , _uddvDocumentVersion :: !Text
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data UpdateDocumentDefaultVersion = UpdateDocumentDefaultVersion'{_uddvName
+                                                                  :: !Text,
+                                                                  _uddvDocumentVersion
+                                                                  :: !Text}
+                                      deriving (Eq, Read, Show, Data, Typeable,
+                                                Generic)
 
 -- | Creates a value of 'UpdateDocumentDefaultVersion' with the minimum fields required to make a request.
 --
@@ -65,10 +63,9 @@ updateDocumentDefaultVersion
     :: Text -- ^ 'uddvName'
     -> Text -- ^ 'uddvDocumentVersion'
     -> UpdateDocumentDefaultVersion
-updateDocumentDefaultVersion pName_ pDocumentVersion_ =
-  UpdateDocumentDefaultVersion'
-    {_uddvName = pName_, _uddvDocumentVersion = pDocumentVersion_}
-
+updateDocumentDefaultVersion pName_ pDocumentVersion_
+  = UpdateDocumentDefaultVersion'{_uddvName = pName_,
+                                  _uddvDocumentVersion = pDocumentVersion_}
 
 -- | The name of a custom document that you want to set as the default version.
 uddvName :: Lens' UpdateDocumentDefaultVersion Text
@@ -117,13 +114,15 @@ instance ToQuery UpdateDocumentDefaultVersion where
         toQuery = const mempty
 
 -- | /See:/ 'updateDocumentDefaultVersionResponse' smart constructor.
-data UpdateDocumentDefaultVersionResponse =
-  UpdateDocumentDefaultVersionResponse'
-    { _uddvrsDescription    :: !(Maybe DocumentDefaultVersionDescription)
-    , _uddvrsResponseStatus :: !Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data UpdateDocumentDefaultVersionResponse = UpdateDocumentDefaultVersionResponse'{_uddvrsDescription
+                                                                                  ::
+                                                                                  !(Maybe
+                                                                                      DocumentDefaultVersionDescription),
+                                                                                  _uddvrsResponseStatus
+                                                                                  ::
+                                                                                  !Int}
+                                              deriving (Eq, Read, Show, Data,
+                                                        Typeable, Generic)
 
 -- | Creates a value of 'UpdateDocumentDefaultVersionResponse' with the minimum fields required to make a request.
 --
@@ -135,10 +134,11 @@ data UpdateDocumentDefaultVersionResponse =
 updateDocumentDefaultVersionResponse
     :: Int -- ^ 'uddvrsResponseStatus'
     -> UpdateDocumentDefaultVersionResponse
-updateDocumentDefaultVersionResponse pResponseStatus_ =
-  UpdateDocumentDefaultVersionResponse'
-    {_uddvrsDescription = Nothing, _uddvrsResponseStatus = pResponseStatus_}
-
+updateDocumentDefaultVersionResponse pResponseStatus_
+  = UpdateDocumentDefaultVersionResponse'{_uddvrsDescription
+                                            = Nothing,
+                                          _uddvrsResponseStatus =
+                                            pResponseStatus_}
 
 -- | The description of a custom document that you want to set as the default version.
 uddvrsDescription :: Lens' UpdateDocumentDefaultVersionResponse (Maybe DocumentDefaultVersionDescription)

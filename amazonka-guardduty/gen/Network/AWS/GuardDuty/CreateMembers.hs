@@ -37,7 +37,6 @@ module Network.AWS.GuardDuty.CreateMembers
     ) where
 
 import Network.AWS.GuardDuty.Types
-import Network.AWS.GuardDuty.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.Request
@@ -46,13 +45,10 @@ import Network.AWS.Response
 -- | CreateMembers request body.
 --
 -- /See:/ 'createMembers' smart constructor.
-data CreateMembers =
-  CreateMembers'
-    { _cmAccountDetails :: !(Maybe [AccountDetail])
-    , _cmDetectorId     :: !Text
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data CreateMembers = CreateMembers'{_cmAccountDetails
+                                    :: !(Maybe [AccountDetail]),
+                                    _cmDetectorId :: !Text}
+                       deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'CreateMembers' with the minimum fields required to make a request.
 --
@@ -64,9 +60,9 @@ data CreateMembers =
 createMembers
     :: Text -- ^ 'cmDetectorId'
     -> CreateMembers
-createMembers pDetectorId_ =
-  CreateMembers' {_cmAccountDetails = Nothing, _cmDetectorId = pDetectorId_}
-
+createMembers pDetectorId_
+  = CreateMembers'{_cmAccountDetails = Nothing,
+                   _cmDetectorId = pDetectorId_}
 
 -- | A list of account ID and email address pairs of the accounts that you want to associate with the master GuardDuty account.
 cmAccountDetails :: Lens' CreateMembers [AccountDetail]
@@ -112,13 +108,13 @@ instance ToQuery CreateMembers where
         toQuery = const mempty
 
 -- | /See:/ 'createMembersResponse' smart constructor.
-data CreateMembersResponse =
-  CreateMembersResponse'
-    { _cmrsUnprocessedAccounts :: !(Maybe [UnprocessedAccount])
-    , _cmrsResponseStatus      :: !Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data CreateMembersResponse = CreateMembersResponse'{_cmrsUnprocessedAccounts
+                                                    ::
+                                                    !(Maybe
+                                                        [UnprocessedAccount]),
+                                                    _cmrsResponseStatus :: !Int}
+                               deriving (Eq, Read, Show, Data, Typeable,
+                                         Generic)
 
 -- | Creates a value of 'CreateMembersResponse' with the minimum fields required to make a request.
 --
@@ -130,10 +126,10 @@ data CreateMembersResponse =
 createMembersResponse
     :: Int -- ^ 'cmrsResponseStatus'
     -> CreateMembersResponse
-createMembersResponse pResponseStatus_ =
-  CreateMembersResponse'
-    {_cmrsUnprocessedAccounts = Nothing, _cmrsResponseStatus = pResponseStatus_}
-
+createMembersResponse pResponseStatus_
+  = CreateMembersResponse'{_cmrsUnprocessedAccounts =
+                             Nothing,
+                           _cmrsResponseStatus = pResponseStatus_}
 
 -- | A list of objects containing the unprocessed account and a result string explaining why it was unprocessed.
 cmrsUnprocessedAccounts :: Lens' CreateMembersResponse [UnprocessedAccount]

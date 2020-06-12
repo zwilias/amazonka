@@ -43,7 +43,6 @@ module Network.AWS.ELB.SetLoadBalancerPoliciesOfListener
     ) where
 
 import Network.AWS.ELB.Types
-import Network.AWS.ELB.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.Request
@@ -54,14 +53,17 @@ import Network.AWS.Response
 --
 --
 -- /See:/ 'setLoadBalancerPoliciesOfListener' smart constructor.
-data SetLoadBalancerPoliciesOfListener =
-  SetLoadBalancerPoliciesOfListener'
-    { _slbpolLoadBalancerName :: !Text
-    , _slbpolLoadBalancerPort :: !Int
-    , _slbpolPolicyNames      :: ![Text]
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data SetLoadBalancerPoliciesOfListener = SetLoadBalancerPoliciesOfListener'{_slbpolLoadBalancerName
+                                                                            ::
+                                                                            !Text,
+                                                                            _slbpolLoadBalancerPort
+                                                                            ::
+                                                                            !Int,
+                                                                            _slbpolPolicyNames
+                                                                            ::
+                                                                            ![Text]}
+                                           deriving (Eq, Read, Show, Data,
+                                                     Typeable, Generic)
 
 -- | Creates a value of 'SetLoadBalancerPoliciesOfListener' with the minimum fields required to make a request.
 --
@@ -76,13 +78,13 @@ setLoadBalancerPoliciesOfListener
     :: Text -- ^ 'slbpolLoadBalancerName'
     -> Int -- ^ 'slbpolLoadBalancerPort'
     -> SetLoadBalancerPoliciesOfListener
-setLoadBalancerPoliciesOfListener pLoadBalancerName_ pLoadBalancerPort_ =
-  SetLoadBalancerPoliciesOfListener'
-    { _slbpolLoadBalancerName = pLoadBalancerName_
-    , _slbpolLoadBalancerPort = pLoadBalancerPort_
-    , _slbpolPolicyNames = mempty
-    }
-
+setLoadBalancerPoliciesOfListener pLoadBalancerName_
+  pLoadBalancerPort_
+  = SetLoadBalancerPoliciesOfListener'{_slbpolLoadBalancerName
+                                         = pLoadBalancerName_,
+                                       _slbpolLoadBalancerPort =
+                                         pLoadBalancerPort_,
+                                       _slbpolPolicyNames = mempty}
 
 -- | The name of the load balancer.
 slbpolLoadBalancerName :: Lens' SetLoadBalancerPoliciesOfListener Text
@@ -139,12 +141,12 @@ instance ToQuery SetLoadBalancerPoliciesOfListener
 --
 --
 -- /See:/ 'setLoadBalancerPoliciesOfListenerResponse' smart constructor.
-newtype SetLoadBalancerPoliciesOfListenerResponse =
-  SetLoadBalancerPoliciesOfListenerResponse'
-    { _slbpolrsResponseStatus :: Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+newtype SetLoadBalancerPoliciesOfListenerResponse = SetLoadBalancerPoliciesOfListenerResponse'{_slbpolrsResponseStatus
+                                                                                               ::
+                                                                                               Int}
+                                                      deriving (Eq, Read, Show,
+                                                                Data, Typeable,
+                                                                Generic)
 
 -- | Creates a value of 'SetLoadBalancerPoliciesOfListenerResponse' with the minimum fields required to make a request.
 --
@@ -154,10 +156,10 @@ newtype SetLoadBalancerPoliciesOfListenerResponse =
 setLoadBalancerPoliciesOfListenerResponse
     :: Int -- ^ 'slbpolrsResponseStatus'
     -> SetLoadBalancerPoliciesOfListenerResponse
-setLoadBalancerPoliciesOfListenerResponse pResponseStatus_ =
-  SetLoadBalancerPoliciesOfListenerResponse'
-    {_slbpolrsResponseStatus = pResponseStatus_}
-
+setLoadBalancerPoliciesOfListenerResponse
+  pResponseStatus_
+  = SetLoadBalancerPoliciesOfListenerResponse'{_slbpolrsResponseStatus
+                                                 = pResponseStatus_}
 
 -- | -- | The response status code.
 slbpolrsResponseStatus :: Lens' SetLoadBalancerPoliciesOfListenerResponse Int

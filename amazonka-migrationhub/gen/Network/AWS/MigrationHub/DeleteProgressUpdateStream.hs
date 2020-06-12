@@ -51,19 +51,17 @@ module Network.AWS.MigrationHub.DeleteProgressUpdateStream
 
 import Network.AWS.Lens
 import Network.AWS.MigrationHub.Types
-import Network.AWS.MigrationHub.Types.Product
 import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 
 -- | /See:/ 'deleteProgressUpdateStream' smart constructor.
-data DeleteProgressUpdateStream =
-  DeleteProgressUpdateStream'
-    { _dpusDryRun                   :: !(Maybe Bool)
-    , _dpusProgressUpdateStreamName :: !Text
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data DeleteProgressUpdateStream = DeleteProgressUpdateStream'{_dpusDryRun
+                                                              :: !(Maybe Bool),
+                                                              _dpusProgressUpdateStreamName
+                                                              :: !Text}
+                                    deriving (Eq, Read, Show, Data, Typeable,
+                                              Generic)
 
 -- | Creates a value of 'DeleteProgressUpdateStream' with the minimum fields required to make a request.
 --
@@ -71,22 +69,20 @@ data DeleteProgressUpdateStream =
 --
 -- * 'dpusDryRun' - Optional boolean flag to indicate whether any effect should take place. Used to test if the caller has permission to make the call.
 --
--- * 'dpusProgressUpdateStreamName' - The name of the ProgressUpdateStream.
+-- * 'dpusProgressUpdateStreamName' - The name of the ProgressUpdateStream. 
 deleteProgressUpdateStream
     :: Text -- ^ 'dpusProgressUpdateStreamName'
     -> DeleteProgressUpdateStream
-deleteProgressUpdateStream pProgressUpdateStreamName_ =
-  DeleteProgressUpdateStream'
-    { _dpusDryRun = Nothing
-    , _dpusProgressUpdateStreamName = pProgressUpdateStreamName_
-    }
-
+deleteProgressUpdateStream pProgressUpdateStreamName_
+  = DeleteProgressUpdateStream'{_dpusDryRun = Nothing,
+                                _dpusProgressUpdateStreamName =
+                                  pProgressUpdateStreamName_}
 
 -- | Optional boolean flag to indicate whether any effect should take place. Used to test if the caller has permission to make the call.
 dpusDryRun :: Lens' DeleteProgressUpdateStream (Maybe Bool)
 dpusDryRun = lens _dpusDryRun (\ s a -> s{_dpusDryRun = a})
 
--- | The name of the ProgressUpdateStream.
+-- | The name of the ProgressUpdateStream. 
 dpusProgressUpdateStreamName :: Lens' DeleteProgressUpdateStream Text
 dpusProgressUpdateStreamName = lens _dpusProgressUpdateStreamName (\ s a -> s{_dpusProgressUpdateStreamName = a})
 
@@ -130,12 +126,11 @@ instance ToQuery DeleteProgressUpdateStream where
         toQuery = const mempty
 
 -- | /See:/ 'deleteProgressUpdateStreamResponse' smart constructor.
-newtype DeleteProgressUpdateStreamResponse =
-  DeleteProgressUpdateStreamResponse'
-    { _dpusrsResponseStatus :: Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+newtype DeleteProgressUpdateStreamResponse = DeleteProgressUpdateStreamResponse'{_dpusrsResponseStatus
+                                                                                 ::
+                                                                                 Int}
+                                               deriving (Eq, Read, Show, Data,
+                                                         Typeable, Generic)
 
 -- | Creates a value of 'DeleteProgressUpdateStreamResponse' with the minimum fields required to make a request.
 --
@@ -145,9 +140,9 @@ newtype DeleteProgressUpdateStreamResponse =
 deleteProgressUpdateStreamResponse
     :: Int -- ^ 'dpusrsResponseStatus'
     -> DeleteProgressUpdateStreamResponse
-deleteProgressUpdateStreamResponse pResponseStatus_ =
-  DeleteProgressUpdateStreamResponse' {_dpusrsResponseStatus = pResponseStatus_}
-
+deleteProgressUpdateStreamResponse pResponseStatus_
+  = DeleteProgressUpdateStreamResponse'{_dpusrsResponseStatus
+                                          = pResponseStatus_}
 
 -- | -- | The response status code.
 dpusrsResponseStatus :: Lens' DeleteProgressUpdateStreamResponse Int

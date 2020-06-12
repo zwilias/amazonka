@@ -48,23 +48,18 @@ module Network.AWS.Lambda.CreateAlias
     ) where
 
 import Network.AWS.Lambda.Types
-import Network.AWS.Lambda.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 
 -- | /See:/ 'createAlias' smart constructor.
-data CreateAlias =
-  CreateAlias'
-    { _caRoutingConfig   :: !(Maybe AliasRoutingConfiguration)
-    , _caDescription     :: !(Maybe Text)
-    , _caFunctionName    :: !Text
-    , _caName            :: !Text
-    , _caFunctionVersion :: !Text
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data CreateAlias = CreateAlias'{_caRoutingConfig ::
+                                !(Maybe AliasRoutingConfiguration),
+                                _caDescription :: !(Maybe Text),
+                                _caFunctionName :: !Text, _caName :: !Text,
+                                _caFunctionVersion :: !Text}
+                     deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'CreateAlias' with the minimum fields required to make a request.
 --
@@ -84,15 +79,11 @@ createAlias
     -> Text -- ^ 'caName'
     -> Text -- ^ 'caFunctionVersion'
     -> CreateAlias
-createAlias pFunctionName_ pName_ pFunctionVersion_ =
-  CreateAlias'
-    { _caRoutingConfig = Nothing
-    , _caDescription = Nothing
-    , _caFunctionName = pFunctionName_
-    , _caName = pName_
-    , _caFunctionVersion = pFunctionVersion_
-    }
-
+createAlias pFunctionName_ pName_ pFunctionVersion_
+  = CreateAlias'{_caRoutingConfig = Nothing,
+                 _caDescription = Nothing,
+                 _caFunctionName = pFunctionName_, _caName = pName_,
+                 _caFunctionVersion = pFunctionVersion_}
 
 -- | Specifies an additional version your alias can point to, allowing you to dictate what percentage of traffic will invoke each version. For more information, see 'lambda-traffic-shifting-using-aliases' .
 caRoutingConfig :: Lens' CreateAlias (Maybe AliasRoutingConfiguration)

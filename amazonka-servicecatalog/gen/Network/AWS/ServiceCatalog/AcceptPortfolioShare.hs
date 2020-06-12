@@ -42,16 +42,12 @@ import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 import Network.AWS.ServiceCatalog.Types
-import Network.AWS.ServiceCatalog.Types.Product
 
 -- | /See:/ 'acceptPortfolioShare' smart constructor.
-data AcceptPortfolioShare =
-  AcceptPortfolioShare'
-    { _apsAcceptLanguage :: !(Maybe Text)
-    , _apsPortfolioId    :: !Text
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data AcceptPortfolioShare = AcceptPortfolioShare'{_apsAcceptLanguage
+                                                  :: !(Maybe Text),
+                                                  _apsPortfolioId :: !Text}
+                              deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'AcceptPortfolioShare' with the minimum fields required to make a request.
 --
@@ -63,10 +59,9 @@ data AcceptPortfolioShare =
 acceptPortfolioShare
     :: Text -- ^ 'apsPortfolioId'
     -> AcceptPortfolioShare
-acceptPortfolioShare pPortfolioId_ =
-  AcceptPortfolioShare'
-    {_apsAcceptLanguage = Nothing, _apsPortfolioId = pPortfolioId_}
-
+acceptPortfolioShare pPortfolioId_
+  = AcceptPortfolioShare'{_apsAcceptLanguage = Nothing,
+                          _apsPortfolioId = pPortfolioId_}
 
 -- | The language code.     * @en@ - English (default)     * @jp@ - Japanese     * @zh@ - Chinese
 apsAcceptLanguage :: Lens' AcceptPortfolioShare (Maybe Text)
@@ -114,12 +109,10 @@ instance ToQuery AcceptPortfolioShare where
         toQuery = const mempty
 
 -- | /See:/ 'acceptPortfolioShareResponse' smart constructor.
-newtype AcceptPortfolioShareResponse =
-  AcceptPortfolioShareResponse'
-    { _apsrsResponseStatus :: Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+newtype AcceptPortfolioShareResponse = AcceptPortfolioShareResponse'{_apsrsResponseStatus
+                                                                     :: Int}
+                                         deriving (Eq, Read, Show, Data,
+                                                   Typeable, Generic)
 
 -- | Creates a value of 'AcceptPortfolioShareResponse' with the minimum fields required to make a request.
 --
@@ -129,9 +122,9 @@ newtype AcceptPortfolioShareResponse =
 acceptPortfolioShareResponse
     :: Int -- ^ 'apsrsResponseStatus'
     -> AcceptPortfolioShareResponse
-acceptPortfolioShareResponse pResponseStatus_ =
-  AcceptPortfolioShareResponse' {_apsrsResponseStatus = pResponseStatus_}
-
+acceptPortfolioShareResponse pResponseStatus_
+  = AcceptPortfolioShareResponse'{_apsrsResponseStatus
+                                    = pResponseStatus_}
 
 -- | -- | The response status code.
 apsrsResponseStatus :: Lens' AcceptPortfolioShareResponse Int

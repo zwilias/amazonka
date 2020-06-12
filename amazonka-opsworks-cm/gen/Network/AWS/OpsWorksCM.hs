@@ -11,11 +11,11 @@
 -- Stability   : auto-generated
 -- Portability : non-portable (GHC extensions)
 --
--- __AWS OpsWorks CM__
+-- __AWS OpsWorks CM__ 
 --
--- AWS OpsWorks for configuration management (CM) is a service that runs and manages configuration management servers.
+-- AWS OpsWorks for configuration management (CM) is a service that runs and manages configuration management servers. 
 --
--- __Glossary of terms__
+-- __Glossary of terms__ 
 --
 --     * __Server__ : A configuration management server that can be highly-available. The configuration management server runs on an Amazon Elastic Compute Cloud (EC2) instance, and may use various other AWS services, such as Amazon Relational Database Service (RDS) and Elastic Load Balancing. A server is a generic abstraction over the configuration manager that you want to use, much like Amazon RDS. In AWS OpsWorks CM, you do not start or stop servers. After you create servers, they continue to run until they are deleted.
 --
@@ -25,11 +25,11 @@
 --
 --     * __Events__ : Events are always related to a server. Events are written during server creation, when health checks run, when backups are created, when system maintenance is performed, etc. When you delete a server, the server's events are also deleted.
 --
---     * __Account attributes__ : Every account has attributes that are assigned in the AWS OpsWorks CM database. These attributes store information about configuration limits (servers, backups, etc.) and your customer account.
+--     * __Account attributes__ : Every account has attributes that are assigned in the AWS OpsWorks CM database. These attributes store information about configuration limits (servers, backups, etc.) and your customer account. 
 --
 --
 --
--- __Endpoints__
+-- __Endpoints__ 
 --
 -- AWS OpsWorks CM supports the following endpoints, all HTTPS. You must connect to one of the following endpoints. Your servers can only be accessed or managed within the endpoint in which they are created.
 --
@@ -41,7 +41,7 @@
 --
 --
 --
--- __Throttling limits__
+-- __Throttling limits__ 
 --
 -- All API operations allow for five requests per second with a burst of 10 requests per second.
 --
@@ -80,49 +80,49 @@ module Network.AWS.OpsWorksCM
     -- * Operations
     -- $operations
 
-    -- ** AssociateNode
+    -- ** AssociateNode 
     , module Network.AWS.OpsWorksCM.AssociateNode
 
-    -- ** UpdateServer
+    -- ** UpdateServer 
     , module Network.AWS.OpsWorksCM.UpdateServer
 
-    -- ** DeleteServer
+    -- ** DeleteServer 
     , module Network.AWS.OpsWorksCM.DeleteServer
 
-    -- ** DeleteBackup
+    -- ** DeleteBackup 
     , module Network.AWS.OpsWorksCM.DeleteBackup
 
-    -- ** DescribeEvents
+    -- ** DescribeEvents 
     , module Network.AWS.OpsWorksCM.DescribeEvents
 
-    -- ** DisassociateNode
+    -- ** DisassociateNode 
     , module Network.AWS.OpsWorksCM.DisassociateNode
 
-    -- ** CreateBackup
+    -- ** CreateBackup 
     , module Network.AWS.OpsWorksCM.CreateBackup
 
-    -- ** UpdateServerEngineAttributes
+    -- ** UpdateServerEngineAttributes 
     , module Network.AWS.OpsWorksCM.UpdateServerEngineAttributes
 
-    -- ** StartMaintenance
+    -- ** StartMaintenance 
     , module Network.AWS.OpsWorksCM.StartMaintenance
 
-    -- ** DescribeBackups
+    -- ** DescribeBackups 
     , module Network.AWS.OpsWorksCM.DescribeBackups
 
-    -- ** CreateServer
+    -- ** CreateServer 
     , module Network.AWS.OpsWorksCM.CreateServer
 
-    -- ** RestoreServer
+    -- ** RestoreServer 
     , module Network.AWS.OpsWorksCM.RestoreServer
 
-    -- ** DescribeNodeAssociationStatus
+    -- ** DescribeNodeAssociationStatus 
     , module Network.AWS.OpsWorksCM.DescribeNodeAssociationStatus
 
-    -- ** DescribeAccountAttributes
+    -- ** DescribeAccountAttributes 
     , module Network.AWS.OpsWorksCM.DescribeAccountAttributes
 
-    -- ** DescribeServers
+    -- ** DescribeServers 
     , module Network.AWS.OpsWorksCM.DescribeServers
 
     -- * Types

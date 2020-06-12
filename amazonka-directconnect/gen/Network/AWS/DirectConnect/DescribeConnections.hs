@@ -37,19 +37,16 @@ module Network.AWS.DirectConnect.DescribeConnections
     ) where
 
 import Network.AWS.DirectConnect.Types
-import Network.AWS.DirectConnect.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 
 -- | /See:/ 'describeConnections' smart constructor.
-newtype DescribeConnections =
-  DescribeConnections'
-    { _dConnectionId :: Maybe Text
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+newtype DescribeConnections = DescribeConnections'{_dConnectionId
+                                                   :: Maybe Text}
+                                deriving (Eq, Read, Show, Data, Typeable,
+                                          Generic)
 
 -- | Creates a value of 'DescribeConnections' with the minimum fields required to make a request.
 --
@@ -58,8 +55,8 @@ newtype DescribeConnections =
 -- * 'dConnectionId' - The ID of the connection.
 describeConnections
     :: DescribeConnections
-describeConnections = DescribeConnections' {_dConnectionId = Nothing}
-
+describeConnections
+  = DescribeConnections'{_dConnectionId = Nothing}
 
 -- | The ID of the connection.
 dConnectionId :: Lens' DescribeConnections (Maybe Text)

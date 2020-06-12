@@ -50,7 +50,6 @@ module Network.AWS.MQ.CreateBroker
 
 import Network.AWS.Lens
 import Network.AWS.MQ.Types
-import Network.AWS.MQ.Types.Product
 import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
@@ -58,24 +57,22 @@ import Network.AWS.Response
 -- | Creates a broker using the specified properties.
 --
 -- /See:/ 'createBroker' smart constructor.
-data CreateBroker =
-  CreateBroker'
-    { _cbBrokerName                 :: !(Maybe Text)
-    , _cbEngineVersion              :: !(Maybe Text)
-    , _cbPubliclyAccessible         :: !(Maybe Bool)
-    , _cbAutoMinorVersionUpgrade    :: !(Maybe Bool)
-    , _cbSecurityGroups             :: !(Maybe [Text])
-    , _cbUsers                      :: !(Maybe [User])
-    , _cbSubnetIds                  :: !(Maybe [Text])
-    , _cbCreatorRequestId           :: !(Maybe Text)
-    , _cbMaintenanceWindowStartTime :: !(Maybe WeeklyStartTime)
-    , _cbDeploymentMode             :: !(Maybe DeploymentMode)
-    , _cbConfiguration              :: !(Maybe ConfigurationId)
-    , _cbEngineType                 :: !(Maybe EngineType)
-    , _cbHostInstanceType           :: !(Maybe Text)
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data CreateBroker = CreateBroker'{_cbBrokerName ::
+                                  !(Maybe Text),
+                                  _cbEngineVersion :: !(Maybe Text),
+                                  _cbPubliclyAccessible :: !(Maybe Bool),
+                                  _cbAutoMinorVersionUpgrade :: !(Maybe Bool),
+                                  _cbSecurityGroups :: !(Maybe [Text]),
+                                  _cbUsers :: !(Maybe [User]),
+                                  _cbSubnetIds :: !(Maybe [Text]),
+                                  _cbCreatorRequestId :: !(Maybe Text),
+                                  _cbMaintenanceWindowStartTime ::
+                                  !(Maybe WeeklyStartTime),
+                                  _cbDeploymentMode :: !(Maybe DeploymentMode),
+                                  _cbConfiguration :: !(Maybe ConfigurationId),
+                                  _cbEngineType :: !(Maybe EngineType),
+                                  _cbHostInstanceType :: !(Maybe Text)}
+                      deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'CreateBroker' with the minimum fields required to make a request.
 --
@@ -108,23 +105,18 @@ data CreateBroker =
 -- * 'cbHostInstanceType' - Required. The broker's instance type. Possible values: mq.t2.micro, mq.m4.large
 createBroker
     :: CreateBroker
-createBroker =
-  CreateBroker'
-    { _cbBrokerName = Nothing
-    , _cbEngineVersion = Nothing
-    , _cbPubliclyAccessible = Nothing
-    , _cbAutoMinorVersionUpgrade = Nothing
-    , _cbSecurityGroups = Nothing
-    , _cbUsers = Nothing
-    , _cbSubnetIds = Nothing
-    , _cbCreatorRequestId = Nothing
-    , _cbMaintenanceWindowStartTime = Nothing
-    , _cbDeploymentMode = Nothing
-    , _cbConfiguration = Nothing
-    , _cbEngineType = Nothing
-    , _cbHostInstanceType = Nothing
-    }
-
+createBroker
+  = CreateBroker'{_cbBrokerName = Nothing,
+                  _cbEngineVersion = Nothing,
+                  _cbPubliclyAccessible = Nothing,
+                  _cbAutoMinorVersionUpgrade = Nothing,
+                  _cbSecurityGroups = Nothing, _cbUsers = Nothing,
+                  _cbSubnetIds = Nothing,
+                  _cbCreatorRequestId = Nothing,
+                  _cbMaintenanceWindowStartTime = Nothing,
+                  _cbDeploymentMode = Nothing,
+                  _cbConfiguration = Nothing, _cbEngineType = Nothing,
+                  _cbHostInstanceType = Nothing}
 
 -- | Required. The name of the broker. This value must be unique in your AWS account, 1-50 characters long, must contain only letters, numbers, dashes, and underscores, and must not contain whitespaces, brackets, wildcard characters, or special characters.
 cbBrokerName :: Lens' CreateBroker (Maybe Text)
@@ -226,14 +218,12 @@ instance ToQuery CreateBroker where
         toQuery = const mempty
 
 -- | /See:/ 'createBrokerResponse' smart constructor.
-data CreateBrokerResponse =
-  CreateBrokerResponse'
-    { _cbrsBrokerId       :: !(Maybe Text)
-    , _cbrsBrokerARN      :: !(Maybe Text)
-    , _cbrsResponseStatus :: !Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data CreateBrokerResponse = CreateBrokerResponse'{_cbrsBrokerId
+                                                  :: !(Maybe Text),
+                                                  _cbrsBrokerARN ::
+                                                  !(Maybe Text),
+                                                  _cbrsResponseStatus :: !Int}
+                              deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'CreateBrokerResponse' with the minimum fields required to make a request.
 --
@@ -247,13 +237,10 @@ data CreateBrokerResponse =
 createBrokerResponse
     :: Int -- ^ 'cbrsResponseStatus'
     -> CreateBrokerResponse
-createBrokerResponse pResponseStatus_ =
-  CreateBrokerResponse'
-    { _cbrsBrokerId = Nothing
-    , _cbrsBrokerARN = Nothing
-    , _cbrsResponseStatus = pResponseStatus_
-    }
-
+createBrokerResponse pResponseStatus_
+  = CreateBrokerResponse'{_cbrsBrokerId = Nothing,
+                          _cbrsBrokerARN = Nothing,
+                          _cbrsResponseStatus = pResponseStatus_}
 
 -- | The unique ID that Amazon MQ generates for the broker.
 cbrsBrokerId :: Lens' CreateBrokerResponse (Maybe Text)

@@ -37,21 +37,19 @@ module Network.AWS.EC2.DetachInternetGateway
     ) where
 
 import Network.AWS.EC2.Types
-import Network.AWS.EC2.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 
 -- | /See:/ 'detachInternetGateway' smart constructor.
-data DetachInternetGateway =
-  DetachInternetGateway'
-    { _digDryRun            :: !(Maybe Bool)
-    , _digInternetGatewayId :: !Text
-    , _digVPCId             :: !Text
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data DetachInternetGateway = DetachInternetGateway'{_digDryRun
+                                                    :: !(Maybe Bool),
+                                                    _digInternetGatewayId ::
+                                                    !Text,
+                                                    _digVPCId :: !Text}
+                               deriving (Eq, Read, Show, Data, Typeable,
+                                         Generic)
 
 -- | Creates a value of 'DetachInternetGateway' with the minimum fields required to make a request.
 --
@@ -66,13 +64,10 @@ detachInternetGateway
     :: Text -- ^ 'digInternetGatewayId'
     -> Text -- ^ 'digVPCId'
     -> DetachInternetGateway
-detachInternetGateway pInternetGatewayId_ pVPCId_ =
-  DetachInternetGateway'
-    { _digDryRun = Nothing
-    , _digInternetGatewayId = pInternetGatewayId_
-    , _digVPCId = pVPCId_
-    }
-
+detachInternetGateway pInternetGatewayId_ pVPCId_
+  = DetachInternetGateway'{_digDryRun = Nothing,
+                           _digInternetGatewayId = pInternetGatewayId_,
+                           _digVPCId = pVPCId_}
 
 -- | Checks whether you have the required permissions for the action, without actually making the request, and provides an error response. If you have the required permissions, the error response is @DryRunOperation@ . Otherwise, it is @UnauthorizedOperation@ .
 digDryRun :: Lens' DetachInternetGateway (Maybe Bool)
@@ -112,16 +107,15 @@ instance ToQuery DetachInternetGateway where
                "VpcId" =: _digVPCId]
 
 -- | /See:/ 'detachInternetGatewayResponse' smart constructor.
-data DetachInternetGatewayResponse =
-  DetachInternetGatewayResponse'
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data DetachInternetGatewayResponse = DetachInternetGatewayResponse'
+                                       deriving (Eq, Read, Show, Data, Typeable,
+                                                 Generic)
 
 -- | Creates a value of 'DetachInternetGatewayResponse' with the minimum fields required to make a request.
 --
 detachInternetGatewayResponse
     :: DetachInternetGatewayResponse
-detachInternetGatewayResponse = DetachInternetGatewayResponse'
-
+detachInternetGatewayResponse
+  = DetachInternetGatewayResponse'
 
 instance NFData DetachInternetGatewayResponse where

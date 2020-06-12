@@ -39,19 +39,15 @@ module Network.AWS.ELBv2.DeleteTargetGroup
     ) where
 
 import Network.AWS.ELBv2.Types
-import Network.AWS.ELBv2.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 
 -- | /See:/ 'deleteTargetGroup' smart constructor.
-newtype DeleteTargetGroup =
-  DeleteTargetGroup'
-    { _dtgTargetGroupARN :: Text
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+newtype DeleteTargetGroup = DeleteTargetGroup'{_dtgTargetGroupARN
+                                               :: Text}
+                              deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'DeleteTargetGroup' with the minimum fields required to make a request.
 --
@@ -61,9 +57,9 @@ newtype DeleteTargetGroup =
 deleteTargetGroup
     :: Text -- ^ 'dtgTargetGroupARN'
     -> DeleteTargetGroup
-deleteTargetGroup pTargetGroupARN_ =
-  DeleteTargetGroup' {_dtgTargetGroupARN = pTargetGroupARN_}
-
+deleteTargetGroup pTargetGroupARN_
+  = DeleteTargetGroup'{_dtgTargetGroupARN =
+                         pTargetGroupARN_}
 
 -- | The Amazon Resource Name (ARN) of the target group.
 dtgTargetGroupARN :: Lens' DeleteTargetGroup Text
@@ -95,12 +91,10 @@ instance ToQuery DeleteTargetGroup where
                "TargetGroupArn" =: _dtgTargetGroupARN]
 
 -- | /See:/ 'deleteTargetGroupResponse' smart constructor.
-newtype DeleteTargetGroupResponse =
-  DeleteTargetGroupResponse'
-    { _dtgrsResponseStatus :: Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+newtype DeleteTargetGroupResponse = DeleteTargetGroupResponse'{_dtgrsResponseStatus
+                                                               :: Int}
+                                      deriving (Eq, Read, Show, Data, Typeable,
+                                                Generic)
 
 -- | Creates a value of 'DeleteTargetGroupResponse' with the minimum fields required to make a request.
 --
@@ -110,9 +104,9 @@ newtype DeleteTargetGroupResponse =
 deleteTargetGroupResponse
     :: Int -- ^ 'dtgrsResponseStatus'
     -> DeleteTargetGroupResponse
-deleteTargetGroupResponse pResponseStatus_ =
-  DeleteTargetGroupResponse' {_dtgrsResponseStatus = pResponseStatus_}
-
+deleteTargetGroupResponse pResponseStatus_
+  = DeleteTargetGroupResponse'{_dtgrsResponseStatus =
+                                 pResponseStatus_}
 
 -- | -- | The response status code.
 dtgrsResponseStatus :: Lens' DeleteTargetGroupResponse Int

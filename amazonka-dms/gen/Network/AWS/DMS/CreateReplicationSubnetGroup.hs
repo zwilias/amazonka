@@ -41,26 +41,28 @@ module Network.AWS.DMS.CreateReplicationSubnetGroup
     ) where
 
 import Network.AWS.DMS.Types
-import Network.AWS.DMS.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 
--- |
+-- | 
 --
 --
 --
 -- /See:/ 'createReplicationSubnetGroup' smart constructor.
-data CreateReplicationSubnetGroup =
-  CreateReplicationSubnetGroup'
-    { _crsgTags                              :: !(Maybe [Tag])
-    , _crsgReplicationSubnetGroupIdentifier  :: !Text
-    , _crsgReplicationSubnetGroupDescription :: !Text
-    , _crsgSubnetIds                         :: ![Text]
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data CreateReplicationSubnetGroup = CreateReplicationSubnetGroup'{_crsgTags
+                                                                  ::
+                                                                  !(Maybe
+                                                                      [Tag]),
+                                                                  _crsgReplicationSubnetGroupIdentifier
+                                                                  :: !Text,
+                                                                  _crsgReplicationSubnetGroupDescription
+                                                                  :: !Text,
+                                                                  _crsgSubnetIds
+                                                                  :: ![Text]}
+                                      deriving (Eq, Read, Show, Data, Typeable,
+                                                Generic)
 
 -- | Creates a value of 'CreateReplicationSubnetGroup' with the minimum fields required to make a request.
 --
@@ -68,7 +70,7 @@ data CreateReplicationSubnetGroup =
 --
 -- * 'crsgTags' - One or more tags to be assigned to the subnet group.
 --
--- * 'crsgReplicationSubnetGroupIdentifier' - The name for the replication subnet group. This value is stored as a lowercase string. Constraints: Must contain no more than 255 alphanumeric characters, periods, spaces, underscores, or hyphens. Must not be "default". Example: @mySubnetgroup@
+-- * 'crsgReplicationSubnetGroupIdentifier' - The name for the replication subnet group. This value is stored as a lowercase string. Constraints: Must contain no more than 255 alphanumeric characters, periods, spaces, underscores, or hyphens. Must not be "default". Example: @mySubnetgroup@ 
 --
 -- * 'crsgReplicationSubnetGroupDescription' - The description for the subnet group.
 --
@@ -77,21 +79,21 @@ createReplicationSubnetGroup
     :: Text -- ^ 'crsgReplicationSubnetGroupIdentifier'
     -> Text -- ^ 'crsgReplicationSubnetGroupDescription'
     -> CreateReplicationSubnetGroup
-createReplicationSubnetGroup pReplicationSubnetGroupIdentifier_ pReplicationSubnetGroupDescription_ =
-  CreateReplicationSubnetGroup'
-    { _crsgTags = Nothing
-    , _crsgReplicationSubnetGroupIdentifier = pReplicationSubnetGroupIdentifier_
-    , _crsgReplicationSubnetGroupDescription =
-        pReplicationSubnetGroupDescription_
-    , _crsgSubnetIds = mempty
-    }
-
+createReplicationSubnetGroup
+  pReplicationSubnetGroupIdentifier_
+  pReplicationSubnetGroupDescription_
+  = CreateReplicationSubnetGroup'{_crsgTags = Nothing,
+                                  _crsgReplicationSubnetGroupIdentifier =
+                                    pReplicationSubnetGroupIdentifier_,
+                                  _crsgReplicationSubnetGroupDescription =
+                                    pReplicationSubnetGroupDescription_,
+                                  _crsgSubnetIds = mempty}
 
 -- | One or more tags to be assigned to the subnet group.
 crsgTags :: Lens' CreateReplicationSubnetGroup [Tag]
 crsgTags = lens _crsgTags (\ s a -> s{_crsgTags = a}) . _Default . _Coerce
 
--- | The name for the replication subnet group. This value is stored as a lowercase string. Constraints: Must contain no more than 255 alphanumeric characters, periods, spaces, underscores, or hyphens. Must not be "default". Example: @mySubnetgroup@
+-- | The name for the replication subnet group. This value is stored as a lowercase string. Constraints: Must contain no more than 255 alphanumeric characters, periods, spaces, underscores, or hyphens. Must not be "default". Example: @mySubnetgroup@ 
 crsgReplicationSubnetGroupIdentifier :: Lens' CreateReplicationSubnetGroup Text
 crsgReplicationSubnetGroupIdentifier = lens _crsgReplicationSubnetGroupIdentifier (\ s a -> s{_crsgReplicationSubnetGroupIdentifier = a})
 
@@ -148,18 +150,20 @@ instance ToPath CreateReplicationSubnetGroup where
 instance ToQuery CreateReplicationSubnetGroup where
         toQuery = const mempty
 
--- |
+-- | 
 --
 --
 --
 -- /See:/ 'createReplicationSubnetGroupResponse' smart constructor.
-data CreateReplicationSubnetGroupResponse =
-  CreateReplicationSubnetGroupResponse'
-    { _crsgrsReplicationSubnetGroup :: !(Maybe ReplicationSubnetGroup)
-    , _crsgrsResponseStatus         :: !Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data CreateReplicationSubnetGroupResponse = CreateReplicationSubnetGroupResponse'{_crsgrsReplicationSubnetGroup
+                                                                                  ::
+                                                                                  !(Maybe
+                                                                                      ReplicationSubnetGroup),
+                                                                                  _crsgrsResponseStatus
+                                                                                  ::
+                                                                                  !Int}
+                                              deriving (Eq, Read, Show, Data,
+                                                        Typeable, Generic)
 
 -- | Creates a value of 'CreateReplicationSubnetGroupResponse' with the minimum fields required to make a request.
 --
@@ -171,12 +175,11 @@ data CreateReplicationSubnetGroupResponse =
 createReplicationSubnetGroupResponse
     :: Int -- ^ 'crsgrsResponseStatus'
     -> CreateReplicationSubnetGroupResponse
-createReplicationSubnetGroupResponse pResponseStatus_ =
-  CreateReplicationSubnetGroupResponse'
-    { _crsgrsReplicationSubnetGroup = Nothing
-    , _crsgrsResponseStatus = pResponseStatus_
-    }
-
+createReplicationSubnetGroupResponse pResponseStatus_
+  = CreateReplicationSubnetGroupResponse'{_crsgrsReplicationSubnetGroup
+                                            = Nothing,
+                                          _crsgrsResponseStatus =
+                                            pResponseStatus_}
 
 -- | The replication subnet group that was created.
 crsgrsReplicationSubnetGroup :: Lens' CreateReplicationSubnetGroupResponse (Maybe ReplicationSubnetGroup)

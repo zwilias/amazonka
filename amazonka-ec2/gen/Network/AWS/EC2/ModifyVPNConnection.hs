@@ -33,7 +33,7 @@
 --
 -- Before you perform the migration to the new gateway, you must configure the new gateway. Use 'CreateVpnGateway' to create a virtual private gateway, or 'CreateTransitGateway' to create a transit gateway.
 --
--- This step is required when you migrate from a virtual private gateway with static routes to a transit gateway.
+-- This step is required when you migrate from a virtual private gateway with static routes to a transit gateway. 
 --
 -- You must delete the static routes before you migrate to the new gateway.
 --
@@ -68,23 +68,21 @@ module Network.AWS.EC2.ModifyVPNConnection
     ) where
 
 import Network.AWS.EC2.Types
-import Network.AWS.EC2.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 
 -- | /See:/ 'modifyVPNConnection' smart constructor.
-data ModifyVPNConnection =
-  ModifyVPNConnection'
-    { _mvcVPNGatewayId      :: !(Maybe Text)
-    , _mvcCustomerGatewayId :: !(Maybe Text)
-    , _mvcTransitGatewayId  :: !(Maybe Text)
-    , _mvcDryRun            :: !(Maybe Bool)
-    , _mvcVPNConnectionId   :: !Text
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data ModifyVPNConnection = ModifyVPNConnection'{_mvcVPNGatewayId
+                                                :: !(Maybe Text),
+                                                _mvcCustomerGatewayId ::
+                                                !(Maybe Text),
+                                                _mvcTransitGatewayId ::
+                                                !(Maybe Text),
+                                                _mvcDryRun :: !(Maybe Bool),
+                                                _mvcVPNConnectionId :: !Text}
+                             deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'ModifyVPNConnection' with the minimum fields required to make a request.
 --
@@ -102,15 +100,11 @@ data ModifyVPNConnection =
 modifyVPNConnection
     :: Text -- ^ 'mvcVPNConnectionId'
     -> ModifyVPNConnection
-modifyVPNConnection pVPNConnectionId_ =
-  ModifyVPNConnection'
-    { _mvcVPNGatewayId = Nothing
-    , _mvcCustomerGatewayId = Nothing
-    , _mvcTransitGatewayId = Nothing
-    , _mvcDryRun = Nothing
-    , _mvcVPNConnectionId = pVPNConnectionId_
-    }
-
+modifyVPNConnection pVPNConnectionId_
+  = ModifyVPNConnection'{_mvcVPNGatewayId = Nothing,
+                         _mvcCustomerGatewayId = Nothing,
+                         _mvcTransitGatewayId = Nothing, _mvcDryRun = Nothing,
+                         _mvcVPNConnectionId = pVPNConnectionId_}
 
 -- | The ID of the virtual private gateway at the AWS side of the VPN connection.
 mvcVPNGatewayId :: Lens' ModifyVPNConnection (Maybe Text)
@@ -164,13 +158,14 @@ instance ToQuery ModifyVPNConnection where
                "VpnConnectionId" =: _mvcVPNConnectionId]
 
 -- | /See:/ 'modifyVPNConnectionResponse' smart constructor.
-data ModifyVPNConnectionResponse =
-  ModifyVPNConnectionResponse'
-    { _mvcrsVPNConnection  :: !(Maybe VPNConnection)
-    , _mvcrsResponseStatus :: !Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data ModifyVPNConnectionResponse = ModifyVPNConnectionResponse'{_mvcrsVPNConnection
+                                                                ::
+                                                                !(Maybe
+                                                                    VPNConnection),
+                                                                _mvcrsResponseStatus
+                                                                :: !Int}
+                                     deriving (Eq, Read, Show, Data, Typeable,
+                                               Generic)
 
 -- | Creates a value of 'ModifyVPNConnectionResponse' with the minimum fields required to make a request.
 --
@@ -182,10 +177,10 @@ data ModifyVPNConnectionResponse =
 modifyVPNConnectionResponse
     :: Int -- ^ 'mvcrsResponseStatus'
     -> ModifyVPNConnectionResponse
-modifyVPNConnectionResponse pResponseStatus_ =
-  ModifyVPNConnectionResponse'
-    {_mvcrsVPNConnection = Nothing, _mvcrsResponseStatus = pResponseStatus_}
-
+modifyVPNConnectionResponse pResponseStatus_
+  = ModifyVPNConnectionResponse'{_mvcrsVPNConnection =
+                                   Nothing,
+                                 _mvcrsResponseStatus = pResponseStatus_}
 
 -- | Undocumented member.
 mvcrsVPNConnection :: Lens' ModifyVPNConnectionResponse (Maybe VPNConnection)

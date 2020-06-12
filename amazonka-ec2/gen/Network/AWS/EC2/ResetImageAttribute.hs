@@ -37,7 +37,6 @@ module Network.AWS.EC2.ResetImageAttribute
     ) where
 
 import Network.AWS.EC2.Types
-import Network.AWS.EC2.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.Request
@@ -48,14 +47,12 @@ import Network.AWS.Response
 --
 --
 -- /See:/ 'resetImageAttribute' smart constructor.
-data ResetImageAttribute =
-  ResetImageAttribute'
-    { _resDryRun    :: !(Maybe Bool)
-    , _resAttribute :: !ResetImageAttributeName
-    , _resImageId   :: !Text
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data ResetImageAttribute = ResetImageAttribute'{_resDryRun
+                                                :: !(Maybe Bool),
+                                                _resAttribute ::
+                                                !ResetImageAttributeName,
+                                                _resImageId :: !Text}
+                             deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'ResetImageAttribute' with the minimum fields required to make a request.
 --
@@ -70,10 +67,9 @@ resetImageAttribute
     :: ResetImageAttributeName -- ^ 'resAttribute'
     -> Text -- ^ 'resImageId'
     -> ResetImageAttribute
-resetImageAttribute pAttribute_ pImageId_ =
-  ResetImageAttribute'
-    {_resDryRun = Nothing, _resAttribute = pAttribute_, _resImageId = pImageId_}
-
+resetImageAttribute pAttribute_ pImageId_
+  = ResetImageAttribute'{_resDryRun = Nothing,
+                         _resAttribute = pAttribute_, _resImageId = pImageId_}
 
 -- | Checks whether you have the required permissions for the action, without actually making the request, and provides an error response. If you have the required permissions, the error response is @DryRunOperation@ . Otherwise, it is @UnauthorizedOperation@ .
 resDryRun :: Lens' ResetImageAttribute (Maybe Bool)
@@ -112,16 +108,15 @@ instance ToQuery ResetImageAttribute where
                "ImageId" =: _resImageId]
 
 -- | /See:/ 'resetImageAttributeResponse' smart constructor.
-data ResetImageAttributeResponse =
-  ResetImageAttributeResponse'
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data ResetImageAttributeResponse = ResetImageAttributeResponse'
+                                     deriving (Eq, Read, Show, Data, Typeable,
+                                               Generic)
 
 -- | Creates a value of 'ResetImageAttributeResponse' with the minimum fields required to make a request.
 --
 resetImageAttributeResponse
     :: ResetImageAttributeResponse
-resetImageAttributeResponse = ResetImageAttributeResponse'
-
+resetImageAttributeResponse
+  = ResetImageAttributeResponse'
 
 instance NFData ResetImageAttributeResponse where

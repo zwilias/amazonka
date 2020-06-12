@@ -41,7 +41,6 @@ module Network.AWS.APIGateway.ImportAPIKeys
     ) where
 
 import Network.AWS.APIGateway.Types
-import Network.AWS.APIGateway.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.Request
@@ -52,14 +51,11 @@ import Network.AWS.Response
 --
 --
 -- /See:/ 'importAPIKeys' smart constructor.
-data ImportAPIKeys =
-  ImportAPIKeys'
-    { _iakFailOnWarnings :: !(Maybe Bool)
-    , _iakBody           :: !ByteString
-    , _iakFormat         :: !APIKeysFormat
-    }
-  deriving (Eq, Show, Data, Typeable, Generic)
-
+data ImportAPIKeys = ImportAPIKeys'{_iakFailOnWarnings
+                                    :: !(Maybe Bool),
+                                    _iakBody :: !ByteString,
+                                    _iakFormat :: !APIKeysFormat}
+                       deriving (Eq, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'ImportAPIKeys' with the minimum fields required to make a request.
 --
@@ -74,10 +70,9 @@ importAPIKeys
     :: ByteString -- ^ 'iakBody'
     -> APIKeysFormat -- ^ 'iakFormat'
     -> ImportAPIKeys
-importAPIKeys pBody_ pFormat_ =
-  ImportAPIKeys'
-    {_iakFailOnWarnings = Nothing, _iakBody = pBody_, _iakFormat = pFormat_}
-
+importAPIKeys pBody_ pFormat_
+  = ImportAPIKeys'{_iakFailOnWarnings = Nothing,
+                   _iakBody = pBody_, _iakFormat = pFormat_}
 
 -- | A query parameter to indicate whether to rollback 'ApiKey' importation (@true@ ) or not (@false@ ) when error is encountered.
 iakFailOnWarnings :: Lens' ImportAPIKeys (Maybe Bool)
@@ -129,14 +124,14 @@ instance ToQuery ImportAPIKeys where
 --
 --
 -- /See:/ 'importAPIKeysResponse' smart constructor.
-data ImportAPIKeysResponse =
-  ImportAPIKeysResponse'
-    { _iakrsIds            :: !(Maybe [Text])
-    , _iakrsWarnings       :: !(Maybe [Text])
-    , _iakrsResponseStatus :: !Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data ImportAPIKeysResponse = ImportAPIKeysResponse'{_iakrsIds
+                                                    :: !(Maybe [Text]),
+                                                    _iakrsWarnings ::
+                                                    !(Maybe [Text]),
+                                                    _iakrsResponseStatus ::
+                                                    !Int}
+                               deriving (Eq, Read, Show, Data, Typeable,
+                                         Generic)
 
 -- | Creates a value of 'ImportAPIKeysResponse' with the minimum fields required to make a request.
 --
@@ -150,13 +145,10 @@ data ImportAPIKeysResponse =
 importAPIKeysResponse
     :: Int -- ^ 'iakrsResponseStatus'
     -> ImportAPIKeysResponse
-importAPIKeysResponse pResponseStatus_ =
-  ImportAPIKeysResponse'
-    { _iakrsIds = Nothing
-    , _iakrsWarnings = Nothing
-    , _iakrsResponseStatus = pResponseStatus_
-    }
-
+importAPIKeysResponse pResponseStatus_
+  = ImportAPIKeysResponse'{_iakrsIds = Nothing,
+                           _iakrsWarnings = Nothing,
+                           _iakrsResponseStatus = pResponseStatus_}
 
 -- | A list of all the 'ApiKey' identifiers.
 iakrsIds :: Lens' ImportAPIKeysResponse [Text]

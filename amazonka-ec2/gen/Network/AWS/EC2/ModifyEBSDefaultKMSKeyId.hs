@@ -45,20 +45,18 @@ module Network.AWS.EC2.ModifyEBSDefaultKMSKeyId
     ) where
 
 import Network.AWS.EC2.Types
-import Network.AWS.EC2.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 
 -- | /See:/ 'modifyEBSDefaultKMSKeyId' smart constructor.
-data ModifyEBSDefaultKMSKeyId =
-  ModifyEBSDefaultKMSKeyId'
-    { _medkkiDryRun   :: !(Maybe Bool)
-    , _medkkiKMSKeyId :: !Text
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data ModifyEBSDefaultKMSKeyId = ModifyEBSDefaultKMSKeyId'{_medkkiDryRun
+                                                          :: !(Maybe Bool),
+                                                          _medkkiKMSKeyId ::
+                                                          !Text}
+                                  deriving (Eq, Read, Show, Data, Typeable,
+                                            Generic)
 
 -- | Creates a value of 'ModifyEBSDefaultKMSKeyId' with the minimum fields required to make a request.
 --
@@ -70,10 +68,9 @@ data ModifyEBSDefaultKMSKeyId =
 modifyEBSDefaultKMSKeyId
     :: Text -- ^ 'medkkiKMSKeyId'
     -> ModifyEBSDefaultKMSKeyId
-modifyEBSDefaultKMSKeyId pKMSKeyId_ =
-  ModifyEBSDefaultKMSKeyId'
-    {_medkkiDryRun = Nothing, _medkkiKMSKeyId = pKMSKeyId_}
-
+modifyEBSDefaultKMSKeyId pKMSKeyId_
+  = ModifyEBSDefaultKMSKeyId'{_medkkiDryRun = Nothing,
+                              _medkkiKMSKeyId = pKMSKeyId_}
 
 -- | Checks whether you have the required permissions for the action, without actually making the request, and provides an error response. If you have the required permissions, the error response is @DryRunOperation@ . Otherwise, it is @UnauthorizedOperation@ .
 medkkiDryRun :: Lens' ModifyEBSDefaultKMSKeyId (Maybe Bool)
@@ -113,13 +110,15 @@ instance ToQuery ModifyEBSDefaultKMSKeyId where
                "KmsKeyId" =: _medkkiKMSKeyId]
 
 -- | /See:/ 'modifyEBSDefaultKMSKeyIdResponse' smart constructor.
-data ModifyEBSDefaultKMSKeyIdResponse =
-  ModifyEBSDefaultKMSKeyIdResponse'
-    { _medkkirsKMSKeyId       :: !(Maybe Text)
-    , _medkkirsResponseStatus :: !Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data ModifyEBSDefaultKMSKeyIdResponse = ModifyEBSDefaultKMSKeyIdResponse'{_medkkirsKMSKeyId
+                                                                          ::
+                                                                          !(Maybe
+                                                                              Text),
+                                                                          _medkkirsResponseStatus
+                                                                          ::
+                                                                          !Int}
+                                          deriving (Eq, Read, Show, Data,
+                                                    Typeable, Generic)
 
 -- | Creates a value of 'ModifyEBSDefaultKMSKeyIdResponse' with the minimum fields required to make a request.
 --
@@ -131,10 +130,11 @@ data ModifyEBSDefaultKMSKeyIdResponse =
 modifyEBSDefaultKMSKeyIdResponse
     :: Int -- ^ 'medkkirsResponseStatus'
     -> ModifyEBSDefaultKMSKeyIdResponse
-modifyEBSDefaultKMSKeyIdResponse pResponseStatus_ =
-  ModifyEBSDefaultKMSKeyIdResponse'
-    {_medkkirsKMSKeyId = Nothing, _medkkirsResponseStatus = pResponseStatus_}
-
+modifyEBSDefaultKMSKeyIdResponse pResponseStatus_
+  = ModifyEBSDefaultKMSKeyIdResponse'{_medkkirsKMSKeyId
+                                        = Nothing,
+                                      _medkkirsResponseStatus =
+                                        pResponseStatus_}
 
 -- | The Amazon Resource Name (ARN) of the default CMK for encryption by default.
 medkkirsKMSKeyId :: Lens' ModifyEBSDefaultKMSKeyIdResponse (Maybe Text)

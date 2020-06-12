@@ -44,7 +44,6 @@ module Network.AWS.GameLift.DescribeInstances
     ) where
 
 import Network.AWS.GameLift.Types
-import Network.AWS.GameLift.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.Request
@@ -55,15 +54,12 @@ import Network.AWS.Response
 --
 --
 -- /See:/ 'describeInstances' smart constructor.
-data DescribeInstances =
-  DescribeInstances'
-    { _diInstanceId :: !(Maybe Text)
-    , _diNextToken  :: !(Maybe Text)
-    , _diLimit      :: !(Maybe Nat)
-    , _diFleetId    :: !Text
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data DescribeInstances = DescribeInstances'{_diInstanceId
+                                            :: !(Maybe Text),
+                                            _diNextToken :: !(Maybe Text),
+                                            _diLimit :: !(Maybe Nat),
+                                            _diFleetId :: !Text}
+                           deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'DescribeInstances' with the minimum fields required to make a request.
 --
@@ -79,14 +75,10 @@ data DescribeInstances =
 describeInstances
     :: Text -- ^ 'diFleetId'
     -> DescribeInstances
-describeInstances pFleetId_ =
-  DescribeInstances'
-    { _diInstanceId = Nothing
-    , _diNextToken = Nothing
-    , _diLimit = Nothing
-    , _diFleetId = pFleetId_
-    }
-
+describeInstances pFleetId_
+  = DescribeInstances'{_diInstanceId = Nothing,
+                       _diNextToken = Nothing, _diLimit = Nothing,
+                       _diFleetId = pFleetId_}
 
 -- | Unique identifier for an instance to retrieve. Specify an instance ID or leave blank to retrieve all instances in the fleet.
 diInstanceId :: Lens' DescribeInstances (Maybe Text)
@@ -148,14 +140,14 @@ instance ToQuery DescribeInstances where
 --
 --
 -- /See:/ 'describeInstancesResponse' smart constructor.
-data DescribeInstancesResponse =
-  DescribeInstancesResponse'
-    { _dirsNextToken      :: !(Maybe Text)
-    , _dirsInstances      :: !(Maybe [Instance])
-    , _dirsResponseStatus :: !Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data DescribeInstancesResponse = DescribeInstancesResponse'{_dirsNextToken
+                                                            :: !(Maybe Text),
+                                                            _dirsInstances ::
+                                                            !(Maybe [Instance]),
+                                                            _dirsResponseStatus
+                                                            :: !Int}
+                                   deriving (Eq, Read, Show, Data, Typeable,
+                                             Generic)
 
 -- | Creates a value of 'DescribeInstancesResponse' with the minimum fields required to make a request.
 --
@@ -169,13 +161,11 @@ data DescribeInstancesResponse =
 describeInstancesResponse
     :: Int -- ^ 'dirsResponseStatus'
     -> DescribeInstancesResponse
-describeInstancesResponse pResponseStatus_ =
-  DescribeInstancesResponse'
-    { _dirsNextToken = Nothing
-    , _dirsInstances = Nothing
-    , _dirsResponseStatus = pResponseStatus_
-    }
-
+describeInstancesResponse pResponseStatus_
+  = DescribeInstancesResponse'{_dirsNextToken =
+                                 Nothing,
+                               _dirsInstances = Nothing,
+                               _dirsResponseStatus = pResponseStatus_}
 
 -- | Token that indicates where to resume retrieving results on the next call to this action. If no token is returned, these results represent the end of the list.
 dirsNextToken :: Lens' DescribeInstancesResponse (Maybe Text)

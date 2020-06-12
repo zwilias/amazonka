@@ -38,18 +38,15 @@ module Network.AWS.OpsWorks.DeregisterRDSDBInstance
 
 import Network.AWS.Lens
 import Network.AWS.OpsWorks.Types
-import Network.AWS.OpsWorks.Types.Product
 import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 
 -- | /See:/ 'deregisterRDSDBInstance' smart constructor.
-newtype DeregisterRDSDBInstance =
-  DeregisterRDSDBInstance'
-    { _drdiRDSDBInstanceARN :: Text
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+newtype DeregisterRDSDBInstance = DeregisterRDSDBInstance'{_drdiRDSDBInstanceARN
+                                                           :: Text}
+                                    deriving (Eq, Read, Show, Data, Typeable,
+                                              Generic)
 
 -- | Creates a value of 'DeregisterRDSDBInstance' with the minimum fields required to make a request.
 --
@@ -59,9 +56,9 @@ newtype DeregisterRDSDBInstance =
 deregisterRDSDBInstance
     :: Text -- ^ 'drdiRDSDBInstanceARN'
     -> DeregisterRDSDBInstance
-deregisterRDSDBInstance pRDSDBInstanceARN_ =
-  DeregisterRDSDBInstance' {_drdiRDSDBInstanceARN = pRDSDBInstanceARN_}
-
+deregisterRDSDBInstance pRDSDBInstanceARN_
+  = DeregisterRDSDBInstance'{_drdiRDSDBInstanceARN =
+                               pRDSDBInstanceARN_}
 
 -- | The Amazon RDS instance's ARN.
 drdiRDSDBInstanceARN :: Lens' DeregisterRDSDBInstance Text
@@ -101,16 +98,15 @@ instance ToQuery DeregisterRDSDBInstance where
         toQuery = const mempty
 
 -- | /See:/ 'deregisterRDSDBInstanceResponse' smart constructor.
-data DeregisterRDSDBInstanceResponse =
-  DeregisterRDSDBInstanceResponse'
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data DeregisterRDSDBInstanceResponse = DeregisterRDSDBInstanceResponse'
+                                         deriving (Eq, Read, Show, Data,
+                                                   Typeable, Generic)
 
 -- | Creates a value of 'DeregisterRDSDBInstanceResponse' with the minimum fields required to make a request.
 --
 deregisterRDSDBInstanceResponse
     :: DeregisterRDSDBInstanceResponse
-deregisterRDSDBInstanceResponse = DeregisterRDSDBInstanceResponse'
-
+deregisterRDSDBInstanceResponse
+  = DeregisterRDSDBInstanceResponse'
 
 instance NFData DeregisterRDSDBInstanceResponse where

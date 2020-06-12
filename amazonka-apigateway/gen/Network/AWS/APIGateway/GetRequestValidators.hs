@@ -43,7 +43,6 @@ module Network.AWS.APIGateway.GetRequestValidators
     ) where
 
 import Network.AWS.APIGateway.Types
-import Network.AWS.APIGateway.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Pager
 import Network.AWS.Prelude
@@ -55,14 +54,11 @@ import Network.AWS.Response
 --
 --
 -- /See:/ 'getRequestValidators' smart constructor.
-data GetRequestValidators =
-  GetRequestValidators'
-    { _grvLimit     :: !(Maybe Int)
-    , _grvPosition  :: !(Maybe Text)
-    , _grvRestAPIId :: !Text
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data GetRequestValidators = GetRequestValidators'{_grvLimit
+                                                  :: !(Maybe Int),
+                                                  _grvPosition :: !(Maybe Text),
+                                                  _grvRestAPIId :: !Text}
+                              deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'GetRequestValidators' with the minimum fields required to make a request.
 --
@@ -76,10 +72,9 @@ data GetRequestValidators =
 getRequestValidators
     :: Text -- ^ 'grvRestAPIId'
     -> GetRequestValidators
-getRequestValidators pRestAPIId_ =
-  GetRequestValidators'
-    {_grvLimit = Nothing, _grvPosition = Nothing, _grvRestAPIId = pRestAPIId_}
-
+getRequestValidators pRestAPIId_
+  = GetRequestValidators'{_grvLimit = Nothing,
+                          _grvPosition = Nothing, _grvRestAPIId = pRestAPIId_}
 
 -- | The maximum number of returned results per page. The default value is 25 and the maximum value is 500.
 grvLimit :: Lens' GetRequestValidators (Maybe Int)
@@ -137,17 +132,20 @@ instance ToQuery GetRequestValidators where
 --
 -- In OpenAPI, the 'RequestValidators' of an API is defined by the <https://docs.aws.amazon.com/apigateway/latest/developerguide/api-gateway-swagger-extensions.html#api-gateway-swagger-extensions-request-validators.html x-amazon-apigateway-request-validators> extension.
 --
--- <https://docs.aws.amazon.com/apigateway/latest/developerguide/api-gateway-method-request-validation.html Enable Basic Request Validation in API Gateway>
+-- <https://docs.aws.amazon.com/apigateway/latest/developerguide/api-gateway-method-request-validation.html Enable Basic Request Validation in API Gateway> 
 --
 -- /See:/ 'getRequestValidatorsResponse' smart constructor.
-data GetRequestValidatorsResponse =
-  GetRequestValidatorsResponse'
-    { _grvrsItems          :: !(Maybe [RequestValidator])
-    , _grvrsPosition       :: !(Maybe Text)
-    , _grvrsResponseStatus :: !Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data GetRequestValidatorsResponse = GetRequestValidatorsResponse'{_grvrsItems
+                                                                  ::
+                                                                  !(Maybe
+                                                                      [RequestValidator]),
+                                                                  _grvrsPosition
+                                                                  ::
+                                                                  !(Maybe Text),
+                                                                  _grvrsResponseStatus
+                                                                  :: !Int}
+                                      deriving (Eq, Read, Show, Data, Typeable,
+                                                Generic)
 
 -- | Creates a value of 'GetRequestValidatorsResponse' with the minimum fields required to make a request.
 --
@@ -161,13 +159,11 @@ data GetRequestValidatorsResponse =
 getRequestValidatorsResponse
     :: Int -- ^ 'grvrsResponseStatus'
     -> GetRequestValidatorsResponse
-getRequestValidatorsResponse pResponseStatus_ =
-  GetRequestValidatorsResponse'
-    { _grvrsItems = Nothing
-    , _grvrsPosition = Nothing
-    , _grvrsResponseStatus = pResponseStatus_
-    }
-
+getRequestValidatorsResponse pResponseStatus_
+  = GetRequestValidatorsResponse'{_grvrsItems =
+                                    Nothing,
+                                  _grvrsPosition = Nothing,
+                                  _grvrsResponseStatus = pResponseStatus_}
 
 -- | The current page of elements from this collection.
 grvrsItems :: Lens' GetRequestValidatorsResponse [RequestValidator]

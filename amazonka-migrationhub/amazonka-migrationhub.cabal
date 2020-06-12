@@ -65,8 +65,16 @@ library
         , Network.AWS.MigrationHub.Waiters
 
     other-modules:
-          Network.AWS.MigrationHub.Types.Product
-        , Network.AWS.MigrationHub.Types.Sum
+          Network.AWS.MigrationHub.Types.ApplicationStatus
+        , Network.AWS.MigrationHub.Types.CreatedArtifact
+        , Network.AWS.MigrationHub.Types.DiscoveredResource
+        , Network.AWS.MigrationHub.Types.MigrationStatus
+        , Network.AWS.MigrationHub.Types.MigrationTask
+        , Network.AWS.MigrationHub.Types.MigrationTaskSummary
+        , Network.AWS.MigrationHub.Types.ProgressUpdateStreamSummary
+        , Network.AWS.MigrationHub.Types.ResourceAttribute
+        , Network.AWS.MigrationHub.Types.ResourceAttributeType
+        , Network.AWS.MigrationHub.Types.Task
 
     build-depends:
           amazonka-core == 1.6.1.*

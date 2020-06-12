@@ -37,19 +37,18 @@ module Network.AWS.CodePipeline.DeregisterWebhookWithThirdParty
     ) where
 
 import Network.AWS.CodePipeline.Types
-import Network.AWS.CodePipeline.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 
 -- | /See:/ 'deregisterWebhookWithThirdParty' smart constructor.
-newtype DeregisterWebhookWithThirdParty =
-  DeregisterWebhookWithThirdParty'
-    { _dwwtpWebhookName :: Maybe Text
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+newtype DeregisterWebhookWithThirdParty = DeregisterWebhookWithThirdParty'{_dwwtpWebhookName
+                                                                           ::
+                                                                           Maybe
+                                                                             Text}
+                                            deriving (Eq, Read, Show, Data,
+                                                      Typeable, Generic)
 
 -- | Creates a value of 'DeregisterWebhookWithThirdParty' with the minimum fields required to make a request.
 --
@@ -58,9 +57,9 @@ newtype DeregisterWebhookWithThirdParty =
 -- * 'dwwtpWebhookName' - The name of the webhook you want to deregister.
 deregisterWebhookWithThirdParty
     :: DeregisterWebhookWithThirdParty
-deregisterWebhookWithThirdParty =
-  DeregisterWebhookWithThirdParty' {_dwwtpWebhookName = Nothing}
-
+deregisterWebhookWithThirdParty
+  = DeregisterWebhookWithThirdParty'{_dwwtpWebhookName
+                                       = Nothing}
 
 -- | The name of the webhook you want to deregister.
 dwwtpWebhookName :: Lens' DeregisterWebhookWithThirdParty (Maybe Text)
@@ -107,12 +106,12 @@ instance ToQuery DeregisterWebhookWithThirdParty
         toQuery = const mempty
 
 -- | /See:/ 'deregisterWebhookWithThirdPartyResponse' smart constructor.
-newtype DeregisterWebhookWithThirdPartyResponse =
-  DeregisterWebhookWithThirdPartyResponse'
-    { _dwwtprsResponseStatus :: Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+newtype DeregisterWebhookWithThirdPartyResponse = DeregisterWebhookWithThirdPartyResponse'{_dwwtprsResponseStatus
+                                                                                           ::
+                                                                                           Int}
+                                                    deriving (Eq, Read, Show,
+                                                              Data, Typeable,
+                                                              Generic)
 
 -- | Creates a value of 'DeregisterWebhookWithThirdPartyResponse' with the minimum fields required to make a request.
 --
@@ -122,10 +121,10 @@ newtype DeregisterWebhookWithThirdPartyResponse =
 deregisterWebhookWithThirdPartyResponse
     :: Int -- ^ 'dwwtprsResponseStatus'
     -> DeregisterWebhookWithThirdPartyResponse
-deregisterWebhookWithThirdPartyResponse pResponseStatus_ =
-  DeregisterWebhookWithThirdPartyResponse'
-    {_dwwtprsResponseStatus = pResponseStatus_}
-
+deregisterWebhookWithThirdPartyResponse
+  pResponseStatus_
+  = DeregisterWebhookWithThirdPartyResponse'{_dwwtprsResponseStatus
+                                               = pResponseStatus_}
 
 -- | -- | The response status code.
 dwwtprsResponseStatus :: Lens' DeregisterWebhookWithThirdPartyResponse Int

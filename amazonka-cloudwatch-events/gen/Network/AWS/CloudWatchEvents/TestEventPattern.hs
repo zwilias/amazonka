@@ -41,20 +41,16 @@ module Network.AWS.CloudWatchEvents.TestEventPattern
     ) where
 
 import Network.AWS.CloudWatchEvents.Types
-import Network.AWS.CloudWatchEvents.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 
 -- | /See:/ 'testEventPattern' smart constructor.
-data TestEventPattern =
-  TestEventPattern'
-    { _tepEventPattern :: !Text
-    , _tepEvent        :: !Text
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data TestEventPattern = TestEventPattern'{_tepEventPattern
+                                          :: !Text,
+                                          _tepEvent :: !Text}
+                          deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'TestEventPattern' with the minimum fields required to make a request.
 --
@@ -67,9 +63,10 @@ testEventPattern
     :: Text -- ^ 'tepEventPattern'
     -> Text -- ^ 'tepEvent'
     -> TestEventPattern
-testEventPattern pEventPattern_ pEvent_ =
-  TestEventPattern' {_tepEventPattern = pEventPattern_, _tepEvent = pEvent_}
-
+testEventPattern pEventPattern_ pEvent_
+  = TestEventPattern'{_tepEventPattern =
+                        pEventPattern_,
+                      _tepEvent = pEvent_}
 
 -- | The event pattern. For more information, see <https://docs.aws.amazon.com/eventbridge/latest/userguide/eventbridge-and-event-patterns.html Event Patterns> in the /Amazon EventBridge User Guide/ .
 tepEventPattern :: Lens' TestEventPattern Text
@@ -115,13 +112,12 @@ instance ToQuery TestEventPattern where
         toQuery = const mempty
 
 -- | /See:/ 'testEventPatternResponse' smart constructor.
-data TestEventPatternResponse =
-  TestEventPatternResponse'
-    { _teprsResult         :: !(Maybe Bool)
-    , _teprsResponseStatus :: !Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data TestEventPatternResponse = TestEventPatternResponse'{_teprsResult
+                                                          :: !(Maybe Bool),
+                                                          _teprsResponseStatus
+                                                          :: !Int}
+                                  deriving (Eq, Read, Show, Data, Typeable,
+                                            Generic)
 
 -- | Creates a value of 'TestEventPatternResponse' with the minimum fields required to make a request.
 --
@@ -133,10 +129,9 @@ data TestEventPatternResponse =
 testEventPatternResponse
     :: Int -- ^ 'teprsResponseStatus'
     -> TestEventPatternResponse
-testEventPatternResponse pResponseStatus_ =
-  TestEventPatternResponse'
-    {_teprsResult = Nothing, _teprsResponseStatus = pResponseStatus_}
-
+testEventPatternResponse pResponseStatus_
+  = TestEventPatternResponse'{_teprsResult = Nothing,
+                              _teprsResponseStatus = pResponseStatus_}
 
 -- | Indicates whether the event matches the event pattern.
 teprsResult :: Lens' TestEventPatternResponse (Maybe Bool)

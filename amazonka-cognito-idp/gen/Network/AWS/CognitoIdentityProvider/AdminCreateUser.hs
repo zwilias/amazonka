@@ -23,7 +23,7 @@
 --
 -- If @MessageAction@ is not set, the default is to send a welcome message via email or phone (SMS).
 --
--- Alternatively, you can call AdminCreateUser with “SUPPRESS” for the @MessageAction@ parameter, and Amazon Cognito will not send any email.
+-- Alternatively, you can call AdminCreateUser with “SUPPRESS” for the @MessageAction@ parameter, and Amazon Cognito will not send any email. 
 --
 -- In either case, the user will be in the @FORCE_CHANGE_PASSWORD@ state until they sign in and change their password.
 --
@@ -54,7 +54,6 @@ module Network.AWS.CognitoIdentityProvider.AdminCreateUser
     ) where
 
 import Network.AWS.CognitoIdentityProvider.Types
-import Network.AWS.CognitoIdentityProvider.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.Request
@@ -65,20 +64,22 @@ import Network.AWS.Response
 --
 --
 -- /See:/ 'adminCreateUser' smart constructor.
-data AdminCreateUser =
-  AdminCreateUser'
-    { _acuClientMetadata         :: !(Maybe (Map Text Text))
-    , _acuTemporaryPassword      :: !(Maybe (Sensitive Text))
-    , _acuForceAliasCreation     :: !(Maybe Bool)
-    , _acuDesiredDeliveryMediums :: !(Maybe [DeliveryMediumType])
-    , _acuMessageAction          :: !(Maybe MessageActionType)
-    , _acuUserAttributes         :: !(Maybe [AttributeType])
-    , _acuValidationData         :: !(Maybe [AttributeType])
-    , _acuUserPoolId             :: !Text
-    , _acuUsername               :: !(Sensitive Text)
-    }
-  deriving (Eq, Show, Data, Typeable, Generic)
-
+data AdminCreateUser = AdminCreateUser'{_acuClientMetadata
+                                        :: !(Maybe (Map Text Text)),
+                                        _acuTemporaryPassword ::
+                                        !(Maybe (Sensitive Text)),
+                                        _acuForceAliasCreation :: !(Maybe Bool),
+                                        _acuDesiredDeliveryMediums ::
+                                        !(Maybe [DeliveryMediumType]),
+                                        _acuMessageAction ::
+                                        !(Maybe MessageActionType),
+                                        _acuUserAttributes ::
+                                        !(Maybe [AttributeType]),
+                                        _acuValidationData ::
+                                        !(Maybe [AttributeType]),
+                                        _acuUserPoolId :: !Text,
+                                        _acuUsername :: !(Sensitive Text)}
+                         deriving (Eq, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'AdminCreateUser' with the minimum fields required to make a request.
 --
@@ -105,19 +106,16 @@ adminCreateUser
     :: Text -- ^ 'acuUserPoolId'
     -> Text -- ^ 'acuUsername'
     -> AdminCreateUser
-adminCreateUser pUserPoolId_ pUsername_ =
-  AdminCreateUser'
-    { _acuClientMetadata = Nothing
-    , _acuTemporaryPassword = Nothing
-    , _acuForceAliasCreation = Nothing
-    , _acuDesiredDeliveryMediums = Nothing
-    , _acuMessageAction = Nothing
-    , _acuUserAttributes = Nothing
-    , _acuValidationData = Nothing
-    , _acuUserPoolId = pUserPoolId_
-    , _acuUsername = _Sensitive # pUsername_
-    }
-
+adminCreateUser pUserPoolId_ pUsername_
+  = AdminCreateUser'{_acuClientMetadata = Nothing,
+                     _acuTemporaryPassword = Nothing,
+                     _acuForceAliasCreation = Nothing,
+                     _acuDesiredDeliveryMediums = Nothing,
+                     _acuMessageAction = Nothing,
+                     _acuUserAttributes = Nothing,
+                     _acuValidationData = Nothing,
+                     _acuUserPoolId = pUserPoolId_,
+                     _acuUsername = _Sensitive # pUsername_}
 
 -- | A map of custom key-value pairs that you can provide as input for any custom workflows that this action triggers.  You create custom workflows by assigning AWS Lambda functions to user pool triggers. When you use the AdminCreateUser API action, Amazon Cognito invokes the function that is assigned to the /pre sign-up/ trigger. When Amazon Cognito invokes this function, it passes a JSON payload, which the function receives as input. This payload contains a @clientMetadata@ attribute, which provides the data that you assigned to the ClientMetadata parameter in your AdminCreateUser request. In your function code in AWS Lambda, you can process the @clientMetadata@ value to enhance your workflow for your specific needs. For more information, see <https://docs.aws.amazon.com/cognito/latest/developerguide/cognito-user-identity-pools-working-with-aws-lambda-triggers.html Customizing User Pool Workflows with Lambda Triggers> in the /Amazon Cognito Developer Guide/ .
 acuClientMetadata :: Lens' AdminCreateUser (HashMap Text Text)
@@ -204,13 +202,11 @@ instance ToQuery AdminCreateUser where
 --
 --
 -- /See:/ 'adminCreateUserResponse' smart constructor.
-data AdminCreateUserResponse =
-  AdminCreateUserResponse'
-    { _acursUser           :: !(Maybe UserType)
-    , _acursResponseStatus :: !Int
-    }
-  deriving (Eq, Show, Data, Typeable, Generic)
-
+data AdminCreateUserResponse = AdminCreateUserResponse'{_acursUser
+                                                        :: !(Maybe UserType),
+                                                        _acursResponseStatus ::
+                                                        !Int}
+                                 deriving (Eq, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'AdminCreateUserResponse' with the minimum fields required to make a request.
 --
@@ -222,10 +218,9 @@ data AdminCreateUserResponse =
 adminCreateUserResponse
     :: Int -- ^ 'acursResponseStatus'
     -> AdminCreateUserResponse
-adminCreateUserResponse pResponseStatus_ =
-  AdminCreateUserResponse'
-    {_acursUser = Nothing, _acursResponseStatus = pResponseStatus_}
-
+adminCreateUserResponse pResponseStatus_
+  = AdminCreateUserResponse'{_acursUser = Nothing,
+                             _acursResponseStatus = pResponseStatus_}
 
 -- | The newly created user.
 acursUser :: Lens' AdminCreateUserResponse (Maybe UserType)

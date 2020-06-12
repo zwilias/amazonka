@@ -38,7 +38,6 @@ module Network.AWS.GuardDuty.GetFindings
     ) where
 
 import Network.AWS.GuardDuty.Types
-import Network.AWS.GuardDuty.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.Request
@@ -47,14 +46,11 @@ import Network.AWS.Response
 -- | GetFindings request body.
 --
 -- /See:/ 'getFindings' smart constructor.
-data GetFindings =
-  GetFindings'
-    { _gfFindingIds   :: !(Maybe [Text])
-    , _gfSortCriteria :: !(Maybe SortCriteria)
-    , _gfDetectorId   :: !Text
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data GetFindings = GetFindings'{_gfFindingIds ::
+                                !(Maybe [Text]),
+                                _gfSortCriteria :: !(Maybe SortCriteria),
+                                _gfDetectorId :: !Text}
+                     deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'GetFindings' with the minimum fields required to make a request.
 --
@@ -68,13 +64,10 @@ data GetFindings =
 getFindings
     :: Text -- ^ 'gfDetectorId'
     -> GetFindings
-getFindings pDetectorId_ =
-  GetFindings'
-    { _gfFindingIds = Nothing
-    , _gfSortCriteria = Nothing
-    , _gfDetectorId = pDetectorId_
-    }
-
+getFindings pDetectorId_
+  = GetFindings'{_gfFindingIds = Nothing,
+                 _gfSortCriteria = Nothing,
+                 _gfDetectorId = pDetectorId_}
 
 -- | IDs of the findings that you want to retrieve.
 gfFindingIds :: Lens' GetFindings [Text]
@@ -125,13 +118,10 @@ instance ToQuery GetFindings where
         toQuery = const mempty
 
 -- | /See:/ 'getFindingsResponse' smart constructor.
-data GetFindingsResponse =
-  GetFindingsResponse'
-    { _grsFindings       :: !(Maybe [Finding])
-    , _grsResponseStatus :: !Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data GetFindingsResponse = GetFindingsResponse'{_grsFindings
+                                                :: !(Maybe [Finding]),
+                                                _grsResponseStatus :: !Int}
+                             deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'GetFindingsResponse' with the minimum fields required to make a request.
 --
@@ -143,10 +133,9 @@ data GetFindingsResponse =
 getFindingsResponse
     :: Int -- ^ 'grsResponseStatus'
     -> GetFindingsResponse
-getFindingsResponse pResponseStatus_ =
-  GetFindingsResponse'
-    {_grsFindings = Nothing, _grsResponseStatus = pResponseStatus_}
-
+getFindingsResponse pResponseStatus_
+  = GetFindingsResponse'{_grsFindings = Nothing,
+                         _grsResponseStatus = pResponseStatus_}
 
 -- | Undocumented member.
 grsFindings :: Lens' GetFindingsResponse [Finding]

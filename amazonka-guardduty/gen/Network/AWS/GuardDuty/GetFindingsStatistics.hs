@@ -38,7 +38,6 @@ module Network.AWS.GuardDuty.GetFindingsStatistics
     ) where
 
 import Network.AWS.GuardDuty.Types
-import Network.AWS.GuardDuty.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.Request
@@ -47,14 +46,15 @@ import Network.AWS.Response
 -- | GetFindingsStatistics request body.
 --
 -- /See:/ 'getFindingsStatistics' smart constructor.
-data GetFindingsStatistics =
-  GetFindingsStatistics'
-    { _gfsFindingStatisticTypes :: !(Maybe [FindingStatisticType])
-    , _gfsFindingCriteria       :: !(Maybe FindingCriteria)
-    , _gfsDetectorId            :: !Text
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data GetFindingsStatistics = GetFindingsStatistics'{_gfsFindingStatisticTypes
+                                                    ::
+                                                    !(Maybe
+                                                        [FindingStatisticType]),
+                                                    _gfsFindingCriteria ::
+                                                    !(Maybe FindingCriteria),
+                                                    _gfsDetectorId :: !Text}
+                               deriving (Eq, Read, Show, Data, Typeable,
+                                         Generic)
 
 -- | Creates a value of 'GetFindingsStatistics' with the minimum fields required to make a request.
 --
@@ -68,13 +68,11 @@ data GetFindingsStatistics =
 getFindingsStatistics
     :: Text -- ^ 'gfsDetectorId'
     -> GetFindingsStatistics
-getFindingsStatistics pDetectorId_ =
-  GetFindingsStatistics'
-    { _gfsFindingStatisticTypes = Nothing
-    , _gfsFindingCriteria = Nothing
-    , _gfsDetectorId = pDetectorId_
-    }
-
+getFindingsStatistics pDetectorId_
+  = GetFindingsStatistics'{_gfsFindingStatisticTypes =
+                             Nothing,
+                           _gfsFindingCriteria = Nothing,
+                           _gfsDetectorId = pDetectorId_}
 
 -- | Types of finding statistics to retrieve.
 gfsFindingStatisticTypes :: Lens' GetFindingsStatistics [FindingStatisticType]
@@ -127,13 +125,14 @@ instance ToQuery GetFindingsStatistics where
         toQuery = const mempty
 
 -- | /See:/ 'getFindingsStatisticsResponse' smart constructor.
-data GetFindingsStatisticsResponse =
-  GetFindingsStatisticsResponse'
-    { _gfsrsFindingStatistics :: !(Maybe FindingStatistics)
-    , _gfsrsResponseStatus    :: !Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data GetFindingsStatisticsResponse = GetFindingsStatisticsResponse'{_gfsrsFindingStatistics
+                                                                    ::
+                                                                    !(Maybe
+                                                                        FindingStatistics),
+                                                                    _gfsrsResponseStatus
+                                                                    :: !Int}
+                                       deriving (Eq, Read, Show, Data, Typeable,
+                                                 Generic)
 
 -- | Creates a value of 'GetFindingsStatisticsResponse' with the minimum fields required to make a request.
 --
@@ -145,10 +144,10 @@ data GetFindingsStatisticsResponse =
 getFindingsStatisticsResponse
     :: Int -- ^ 'gfsrsResponseStatus'
     -> GetFindingsStatisticsResponse
-getFindingsStatisticsResponse pResponseStatus_ =
-  GetFindingsStatisticsResponse'
-    {_gfsrsFindingStatistics = Nothing, _gfsrsResponseStatus = pResponseStatus_}
-
+getFindingsStatisticsResponse pResponseStatus_
+  = GetFindingsStatisticsResponse'{_gfsrsFindingStatistics
+                                     = Nothing,
+                                   _gfsrsResponseStatus = pResponseStatus_}
 
 -- | Finding statistics object.
 gfsrsFindingStatistics :: Lens' GetFindingsStatisticsResponse (Maybe FindingStatistics)

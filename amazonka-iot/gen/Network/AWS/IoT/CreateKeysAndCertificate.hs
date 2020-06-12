@@ -43,7 +43,6 @@ module Network.AWS.IoT.CreateKeysAndCertificate
     ) where
 
 import Network.AWS.IoT.Types
-import Network.AWS.IoT.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.Request
@@ -54,12 +53,10 @@ import Network.AWS.Response
 --
 --
 -- /See:/ 'createKeysAndCertificate' smart constructor.
-newtype CreateKeysAndCertificate =
-  CreateKeysAndCertificate'
-    { _ckacSetAsActive :: Maybe Bool
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+newtype CreateKeysAndCertificate = CreateKeysAndCertificate'{_ckacSetAsActive
+                                                             :: Maybe Bool}
+                                     deriving (Eq, Read, Show, Data, Typeable,
+                                               Generic)
 
 -- | Creates a value of 'CreateKeysAndCertificate' with the minimum fields required to make a request.
 --
@@ -68,9 +65,9 @@ newtype CreateKeysAndCertificate =
 -- * 'ckacSetAsActive' - Specifies whether the certificate is active.
 createKeysAndCertificate
     :: CreateKeysAndCertificate
-createKeysAndCertificate =
-  CreateKeysAndCertificate' {_ckacSetAsActive = Nothing}
-
+createKeysAndCertificate
+  = CreateKeysAndCertificate'{_ckacSetAsActive =
+                                Nothing}
 
 -- | Specifies whether the certificate is active.
 ckacSetAsActive :: Lens' CreateKeysAndCertificate (Maybe Bool)
@@ -111,16 +108,27 @@ instance ToQuery CreateKeysAndCertificate where
 --
 --
 -- /See:/ 'createKeysAndCertificateResponse' smart constructor.
-data CreateKeysAndCertificateResponse =
-  CreateKeysAndCertificateResponse'
-    { _ckacrsKeyPair        :: !(Maybe KeyPair)
-    , _ckacrsCertificatePem :: !(Maybe Text)
-    , _ckacrsCertificateARN :: !(Maybe Text)
-    , _ckacrsCertificateId  :: !(Maybe Text)
-    , _ckacrsResponseStatus :: !Int
-    }
-  deriving (Eq, Show, Data, Typeable, Generic)
-
+data CreateKeysAndCertificateResponse = CreateKeysAndCertificateResponse'{_ckacrsKeyPair
+                                                                          ::
+                                                                          !(Maybe
+                                                                              KeyPair),
+                                                                          _ckacrsCertificatePem
+                                                                          ::
+                                                                          !(Maybe
+                                                                              Text),
+                                                                          _ckacrsCertificateARN
+                                                                          ::
+                                                                          !(Maybe
+                                                                              Text),
+                                                                          _ckacrsCertificateId
+                                                                          ::
+                                                                          !(Maybe
+                                                                              Text),
+                                                                          _ckacrsResponseStatus
+                                                                          ::
+                                                                          !Int}
+                                          deriving (Eq, Show, Data, Typeable,
+                                                    Generic)
 
 -- | Creates a value of 'CreateKeysAndCertificateResponse' with the minimum fields required to make a request.
 --
@@ -138,15 +146,13 @@ data CreateKeysAndCertificateResponse =
 createKeysAndCertificateResponse
     :: Int -- ^ 'ckacrsResponseStatus'
     -> CreateKeysAndCertificateResponse
-createKeysAndCertificateResponse pResponseStatus_ =
-  CreateKeysAndCertificateResponse'
-    { _ckacrsKeyPair = Nothing
-    , _ckacrsCertificatePem = Nothing
-    , _ckacrsCertificateARN = Nothing
-    , _ckacrsCertificateId = Nothing
-    , _ckacrsResponseStatus = pResponseStatus_
-    }
-
+createKeysAndCertificateResponse pResponseStatus_
+  = CreateKeysAndCertificateResponse'{_ckacrsKeyPair =
+                                        Nothing,
+                                      _ckacrsCertificatePem = Nothing,
+                                      _ckacrsCertificateARN = Nothing,
+                                      _ckacrsCertificateId = Nothing,
+                                      _ckacrsResponseStatus = pResponseStatus_}
 
 -- | The generated key pair.
 ckacrsKeyPair :: Lens' CreateKeysAndCertificateResponse (Maybe KeyPair)

@@ -44,16 +44,17 @@ import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 import Network.AWS.S3.Types
-import Network.AWS.S3.Types.Product
 
 -- | /See:/ 'listBucketAnalyticsConfigurations' smart constructor.
-data ListBucketAnalyticsConfigurations =
-  ListBucketAnalyticsConfigurations'
-    { _lbacContinuationToken :: !(Maybe Text)
-    , _lbacBucket            :: !BucketName
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data ListBucketAnalyticsConfigurations = ListBucketAnalyticsConfigurations'{_lbacContinuationToken
+                                                                            ::
+                                                                            !(Maybe
+                                                                                Text),
+                                                                            _lbacBucket
+                                                                            ::
+                                                                            !BucketName}
+                                           deriving (Eq, Read, Show, Data,
+                                                     Typeable, Generic)
 
 -- | Creates a value of 'ListBucketAnalyticsConfigurations' with the minimum fields required to make a request.
 --
@@ -65,10 +66,10 @@ data ListBucketAnalyticsConfigurations =
 listBucketAnalyticsConfigurations
     :: BucketName -- ^ 'lbacBucket'
     -> ListBucketAnalyticsConfigurations
-listBucketAnalyticsConfigurations pBucket_ =
-  ListBucketAnalyticsConfigurations'
-    {_lbacContinuationToken = Nothing, _lbacBucket = pBucket_}
-
+listBucketAnalyticsConfigurations pBucket_
+  = ListBucketAnalyticsConfigurations'{_lbacContinuationToken
+                                         = Nothing,
+                                       _lbacBucket = pBucket_}
 
 -- | The ContinuationToken that represents a placeholder from where this request should begin.
 lbacContinuationToken :: Lens' ListBucketAnalyticsConfigurations (Maybe Text)
@@ -116,16 +117,28 @@ instance ToQuery ListBucketAnalyticsConfigurations
                "analytics"]
 
 -- | /See:/ 'listBucketAnalyticsConfigurationsResponse' smart constructor.
-data ListBucketAnalyticsConfigurationsResponse =
-  ListBucketAnalyticsConfigurationsResponse'
-    { _lbacrsAnalyticsConfigurationList :: !(Maybe [AnalyticsConfiguration])
-    , _lbacrsContinuationToken          :: !(Maybe Text)
-    , _lbacrsNextContinuationToken      :: !(Maybe Text)
-    , _lbacrsIsTruncated                :: !(Maybe Bool)
-    , _lbacrsResponseStatus             :: !Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data ListBucketAnalyticsConfigurationsResponse = ListBucketAnalyticsConfigurationsResponse'{_lbacrsAnalyticsConfigurationList
+                                                                                            ::
+                                                                                            !(Maybe
+                                                                                                [AnalyticsConfiguration]),
+                                                                                            _lbacrsContinuationToken
+                                                                                            ::
+                                                                                            !(Maybe
+                                                                                                Text),
+                                                                                            _lbacrsNextContinuationToken
+                                                                                            ::
+                                                                                            !(Maybe
+                                                                                                Text),
+                                                                                            _lbacrsIsTruncated
+                                                                                            ::
+                                                                                            !(Maybe
+                                                                                                Bool),
+                                                                                            _lbacrsResponseStatus
+                                                                                            ::
+                                                                                            !Int}
+                                                   deriving (Eq, Read, Show,
+                                                             Data, Typeable,
+                                                             Generic)
 
 -- | Creates a value of 'ListBucketAnalyticsConfigurationsResponse' with the minimum fields required to make a request.
 --
@@ -143,15 +156,17 @@ data ListBucketAnalyticsConfigurationsResponse =
 listBucketAnalyticsConfigurationsResponse
     :: Int -- ^ 'lbacrsResponseStatus'
     -> ListBucketAnalyticsConfigurationsResponse
-listBucketAnalyticsConfigurationsResponse pResponseStatus_ =
-  ListBucketAnalyticsConfigurationsResponse'
-    { _lbacrsAnalyticsConfigurationList = Nothing
-    , _lbacrsContinuationToken = Nothing
-    , _lbacrsNextContinuationToken = Nothing
-    , _lbacrsIsTruncated = Nothing
-    , _lbacrsResponseStatus = pResponseStatus_
-    }
-
+listBucketAnalyticsConfigurationsResponse
+  pResponseStatus_
+  = ListBucketAnalyticsConfigurationsResponse'{_lbacrsAnalyticsConfigurationList
+                                                 = Nothing,
+                                               _lbacrsContinuationToken =
+                                                 Nothing,
+                                               _lbacrsNextContinuationToken =
+                                                 Nothing,
+                                               _lbacrsIsTruncated = Nothing,
+                                               _lbacrsResponseStatus =
+                                                 pResponseStatus_}
 
 -- | The list of analytics configurations for a bucket.
 lbacrsAnalyticsConfigurationList :: Lens' ListBucketAnalyticsConfigurationsResponse [AnalyticsConfiguration]

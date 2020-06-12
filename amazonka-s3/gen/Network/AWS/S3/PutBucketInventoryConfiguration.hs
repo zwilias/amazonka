@@ -39,17 +39,19 @@ import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 import Network.AWS.S3.Types
-import Network.AWS.S3.Types.Product
 
 -- | /See:/ 'putBucketInventoryConfiguration' smart constructor.
-data PutBucketInventoryConfiguration =
-  PutBucketInventoryConfiguration'
-    { _pbicBucket                 :: !BucketName
-    , _pbicId                     :: !Text
-    , _pbicInventoryConfiguration :: !InventoryConfiguration
-    }
-  deriving (Eq, Show, Data, Typeable, Generic)
-
+data PutBucketInventoryConfiguration = PutBucketInventoryConfiguration'{_pbicBucket
+                                                                        ::
+                                                                        !BucketName,
+                                                                        _pbicId
+                                                                        ::
+                                                                        !Text,
+                                                                        _pbicInventoryConfiguration
+                                                                        ::
+                                                                        !InventoryConfiguration}
+                                         deriving (Eq, Show, Data, Typeable,
+                                                   Generic)
 
 -- | Creates a value of 'PutBucketInventoryConfiguration' with the minimum fields required to make a request.
 --
@@ -65,13 +67,13 @@ putBucketInventoryConfiguration
     -> Text -- ^ 'pbicId'
     -> InventoryConfiguration -- ^ 'pbicInventoryConfiguration'
     -> PutBucketInventoryConfiguration
-putBucketInventoryConfiguration pBucket_ pId_ pInventoryConfiguration_ =
-  PutBucketInventoryConfiguration'
-    { _pbicBucket = pBucket_
-    , _pbicId = pId_
-    , _pbicInventoryConfiguration = pInventoryConfiguration_
-    }
-
+putBucketInventoryConfiguration pBucket_ pId_
+  pInventoryConfiguration_
+  = PutBucketInventoryConfiguration'{_pbicBucket =
+                                       pBucket_,
+                                     _pbicId = pId_,
+                                     _pbicInventoryConfiguration =
+                                       pInventoryConfiguration_}
 
 -- | The name of the bucket where the inventory configuration will be stored.
 pbicBucket :: Lens' PutBucketInventoryConfiguration BucketName
@@ -121,18 +123,16 @@ instance ToQuery PutBucketInventoryConfiguration
           = mconcat ["id" =: _pbicId, "inventory"]
 
 -- | /See:/ 'putBucketInventoryConfigurationResponse' smart constructor.
-data PutBucketInventoryConfigurationResponse =
-  PutBucketInventoryConfigurationResponse'
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data PutBucketInventoryConfigurationResponse = PutBucketInventoryConfigurationResponse'
+                                                 deriving (Eq, Read, Show, Data,
+                                                           Typeable, Generic)
 
 -- | Creates a value of 'PutBucketInventoryConfigurationResponse' with the minimum fields required to make a request.
 --
 putBucketInventoryConfigurationResponse
     :: PutBucketInventoryConfigurationResponse
-putBucketInventoryConfigurationResponse =
-  PutBucketInventoryConfigurationResponse'
-
+putBucketInventoryConfigurationResponse
+  = PutBucketInventoryConfigurationResponse'
 
 instance NFData
            PutBucketInventoryConfigurationResponse

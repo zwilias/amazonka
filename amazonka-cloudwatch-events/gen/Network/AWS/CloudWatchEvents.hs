@@ -65,97 +65,97 @@ module Network.AWS.CloudWatchEvents
     -- * Operations
     -- $operations
 
-    -- ** RemoveTargets
+    -- ** RemoveTargets 
     , module Network.AWS.CloudWatchEvents.RemoveTargets
 
-    -- ** DeleteRule
+    -- ** DeleteRule 
     , module Network.AWS.CloudWatchEvents.DeleteRule
 
-    -- ** ListPartnerEventSourceAccounts
+    -- ** ListPartnerEventSourceAccounts 
     , module Network.AWS.CloudWatchEvents.ListPartnerEventSourceAccounts
 
     -- ** ListRules (Paginated)
     , module Network.AWS.CloudWatchEvents.ListRules
 
-    -- ** PutRule
+    -- ** PutRule 
     , module Network.AWS.CloudWatchEvents.PutRule
 
-    -- ** DisableRule
+    -- ** DisableRule 
     , module Network.AWS.CloudWatchEvents.DisableRule
 
-    -- ** PutPermission
+    -- ** PutPermission 
     , module Network.AWS.CloudWatchEvents.PutPermission
 
-    -- ** ListTagsForResource
+    -- ** ListTagsForResource 
     , module Network.AWS.CloudWatchEvents.ListTagsForResource
 
     -- ** ListTargetsByRule (Paginated)
     , module Network.AWS.CloudWatchEvents.ListTargetsByRule
 
-    -- ** RemovePermission
+    -- ** RemovePermission 
     , module Network.AWS.CloudWatchEvents.RemovePermission
 
-    -- ** ActivateEventSource
+    -- ** ActivateEventSource 
     , module Network.AWS.CloudWatchEvents.ActivateEventSource
 
-    -- ** PutPartnerEvents
+    -- ** PutPartnerEvents 
     , module Network.AWS.CloudWatchEvents.PutPartnerEvents
 
-    -- ** DescribeRule
+    -- ** DescribeRule 
     , module Network.AWS.CloudWatchEvents.DescribeRule
 
-    -- ** DeletePartnerEventSource
+    -- ** DeletePartnerEventSource 
     , module Network.AWS.CloudWatchEvents.DeletePartnerEventSource
 
-    -- ** ListEventBuses
+    -- ** ListEventBuses 
     , module Network.AWS.CloudWatchEvents.ListEventBuses
 
-    -- ** CreateEventBus
+    -- ** CreateEventBus 
     , module Network.AWS.CloudWatchEvents.CreateEventBus
 
-    -- ** DescribeEventSource
+    -- ** DescribeEventSource 
     , module Network.AWS.CloudWatchEvents.DescribeEventSource
 
-    -- ** EnableRule
+    -- ** EnableRule 
     , module Network.AWS.CloudWatchEvents.EnableRule
 
     -- ** ListRuleNamesByTarget (Paginated)
     , module Network.AWS.CloudWatchEvents.ListRuleNamesByTarget
 
-    -- ** TestEventPattern
+    -- ** TestEventPattern 
     , module Network.AWS.CloudWatchEvents.TestEventPattern
 
-    -- ** DescribePartnerEventSource
+    -- ** DescribePartnerEventSource 
     , module Network.AWS.CloudWatchEvents.DescribePartnerEventSource
 
-    -- ** DescribeEventBus
+    -- ** DescribeEventBus 
     , module Network.AWS.CloudWatchEvents.DescribeEventBus
 
-    -- ** ListEventSources
+    -- ** ListEventSources 
     , module Network.AWS.CloudWatchEvents.ListEventSources
 
-    -- ** TagResource
+    -- ** TagResource 
     , module Network.AWS.CloudWatchEvents.TagResource
 
-    -- ** CreatePartnerEventSource
+    -- ** CreatePartnerEventSource 
     , module Network.AWS.CloudWatchEvents.CreatePartnerEventSource
 
-    -- ** PutTargets
+    -- ** PutTargets 
     , module Network.AWS.CloudWatchEvents.PutTargets
 
-    -- ** UntagResource
+    -- ** UntagResource 
     , module Network.AWS.CloudWatchEvents.UntagResource
 
-    -- ** PutEvents
+    -- ** PutEvents 
     , module Network.AWS.CloudWatchEvents.PutEvents
 
-    -- ** ListPartnerEventSources
+    -- ** ListPartnerEventSources 
     , module Network.AWS.CloudWatchEvents.ListPartnerEventSources
 
-    -- ** DeactivateEventSource
+    -- ** DeactivateEventSource 
     , module Network.AWS.CloudWatchEvents.DeactivateEventSource
 
-    -- ** DeleteEventBus
+    -- ** DeleteEventBus 
     , module Network.AWS.CloudWatchEvents.DeleteEventBus
 
     -- * Types

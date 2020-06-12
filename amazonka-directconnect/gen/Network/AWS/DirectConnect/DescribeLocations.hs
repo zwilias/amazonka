@@ -36,24 +36,20 @@ module Network.AWS.DirectConnect.DescribeLocations
     ) where
 
 import Network.AWS.DirectConnect.Types
-import Network.AWS.DirectConnect.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 
 -- | /See:/ 'describeLocations' smart constructor.
-data DescribeLocations =
-  DescribeLocations'
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data DescribeLocations = DescribeLocations'
+                           deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'DescribeLocations' with the minimum fields required to make a request.
 --
 describeLocations
     :: DescribeLocations
 describeLocations = DescribeLocations'
-
 
 instance AWSRequest DescribeLocations where
         type Rs DescribeLocations = DescribeLocationsResponse
@@ -88,13 +84,13 @@ instance ToQuery DescribeLocations where
         toQuery = const mempty
 
 -- | /See:/ 'describeLocationsResponse' smart constructor.
-data DescribeLocationsResponse =
-  DescribeLocationsResponse'
-    { _dlsrsLocations      :: !(Maybe [Location])
-    , _dlsrsResponseStatus :: !Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data DescribeLocationsResponse = DescribeLocationsResponse'{_dlsrsLocations
+                                                            ::
+                                                            !(Maybe [Location]),
+                                                            _dlsrsResponseStatus
+                                                            :: !Int}
+                                   deriving (Eq, Read, Show, Data, Typeable,
+                                             Generic)
 
 -- | Creates a value of 'DescribeLocationsResponse' with the minimum fields required to make a request.
 --
@@ -106,10 +102,10 @@ data DescribeLocationsResponse =
 describeLocationsResponse
     :: Int -- ^ 'dlsrsResponseStatus'
     -> DescribeLocationsResponse
-describeLocationsResponse pResponseStatus_ =
-  DescribeLocationsResponse'
-    {_dlsrsLocations = Nothing, _dlsrsResponseStatus = pResponseStatus_}
-
+describeLocationsResponse pResponseStatus_
+  = DescribeLocationsResponse'{_dlsrsLocations =
+                                 Nothing,
+                               _dlsrsResponseStatus = pResponseStatus_}
 
 -- | The locations.
 dlsrsLocations :: Lens' DescribeLocationsResponse [Location]

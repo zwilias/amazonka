@@ -39,20 +39,16 @@ module Network.AWS.EC2.DeleteTransitGateway
     ) where
 
 import Network.AWS.EC2.Types
-import Network.AWS.EC2.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 
 -- | /See:/ 'deleteTransitGateway' smart constructor.
-data DeleteTransitGateway =
-  DeleteTransitGateway'
-    { _dtgDryRun           :: !(Maybe Bool)
-    , _dtgTransitGatewayId :: !Text
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data DeleteTransitGateway = DeleteTransitGateway'{_dtgDryRun
+                                                  :: !(Maybe Bool),
+                                                  _dtgTransitGatewayId :: !Text}
+                              deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'DeleteTransitGateway' with the minimum fields required to make a request.
 --
@@ -64,10 +60,9 @@ data DeleteTransitGateway =
 deleteTransitGateway
     :: Text -- ^ 'dtgTransitGatewayId'
     -> DeleteTransitGateway
-deleteTransitGateway pTransitGatewayId_ =
-  DeleteTransitGateway'
-    {_dtgDryRun = Nothing, _dtgTransitGatewayId = pTransitGatewayId_}
-
+deleteTransitGateway pTransitGatewayId_
+  = DeleteTransitGateway'{_dtgDryRun = Nothing,
+                          _dtgTransitGatewayId = pTransitGatewayId_}
 
 -- | Checks whether you have the required permissions for the action, without actually making the request, and provides an error response. If you have the required permissions, the error response is @DryRunOperation@ . Otherwise, it is @UnauthorizedOperation@ .
 dtgDryRun :: Lens' DeleteTransitGateway (Maybe Bool)
@@ -106,13 +101,14 @@ instance ToQuery DeleteTransitGateway where
                "TransitGatewayId" =: _dtgTransitGatewayId]
 
 -- | /See:/ 'deleteTransitGatewayResponse' smart constructor.
-data DeleteTransitGatewayResponse =
-  DeleteTransitGatewayResponse'
-    { _dtgtrsTransitGateway :: !(Maybe TransitGateway)
-    , _dtgtrsResponseStatus :: !Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data DeleteTransitGatewayResponse = DeleteTransitGatewayResponse'{_dtgtrsTransitGateway
+                                                                  ::
+                                                                  !(Maybe
+                                                                      TransitGateway),
+                                                                  _dtgtrsResponseStatus
+                                                                  :: !Int}
+                                      deriving (Eq, Read, Show, Data, Typeable,
+                                                Generic)
 
 -- | Creates a value of 'DeleteTransitGatewayResponse' with the minimum fields required to make a request.
 --
@@ -124,10 +120,10 @@ data DeleteTransitGatewayResponse =
 deleteTransitGatewayResponse
     :: Int -- ^ 'dtgtrsResponseStatus'
     -> DeleteTransitGatewayResponse
-deleteTransitGatewayResponse pResponseStatus_ =
-  DeleteTransitGatewayResponse'
-    {_dtgtrsTransitGateway = Nothing, _dtgtrsResponseStatus = pResponseStatus_}
-
+deleteTransitGatewayResponse pResponseStatus_
+  = DeleteTransitGatewayResponse'{_dtgtrsTransitGateway
+                                    = Nothing,
+                                  _dtgtrsResponseStatus = pResponseStatus_}
 
 -- | Information about the deleted transit gateway.
 dtgtrsTransitGateway :: Lens' DeleteTransitGatewayResponse (Maybe TransitGateway)

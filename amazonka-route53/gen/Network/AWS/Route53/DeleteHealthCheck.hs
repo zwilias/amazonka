@@ -43,19 +43,15 @@ import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 import Network.AWS.Route53.Types
-import Network.AWS.Route53.Types.Product
 
 -- | This action deletes a health check.
 --
 --
 --
 -- /See:/ 'deleteHealthCheck' smart constructor.
-newtype DeleteHealthCheck =
-  DeleteHealthCheck'
-    { _dhcHealthCheckId :: Text
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+newtype DeleteHealthCheck = DeleteHealthCheck'{_dhcHealthCheckId
+                                               :: Text}
+                              deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'DeleteHealthCheck' with the minimum fields required to make a request.
 --
@@ -65,9 +61,9 @@ newtype DeleteHealthCheck =
 deleteHealthCheck
     :: Text -- ^ 'dhcHealthCheckId'
     -> DeleteHealthCheck
-deleteHealthCheck pHealthCheckId_ =
-  DeleteHealthCheck' {_dhcHealthCheckId = pHealthCheckId_}
-
+deleteHealthCheck pHealthCheckId_
+  = DeleteHealthCheck'{_dhcHealthCheckId =
+                         pHealthCheckId_}
 
 -- | The ID of the health check that you want to delete.
 dhcHealthCheckId :: Lens' DeleteHealthCheck Text
@@ -101,12 +97,10 @@ instance ToQuery DeleteHealthCheck where
 --
 --
 -- /See:/ 'deleteHealthCheckResponse' smart constructor.
-newtype DeleteHealthCheckResponse =
-  DeleteHealthCheckResponse'
-    { _dhcrsResponseStatus :: Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+newtype DeleteHealthCheckResponse = DeleteHealthCheckResponse'{_dhcrsResponseStatus
+                                                               :: Int}
+                                      deriving (Eq, Read, Show, Data, Typeable,
+                                                Generic)
 
 -- | Creates a value of 'DeleteHealthCheckResponse' with the minimum fields required to make a request.
 --
@@ -116,9 +110,9 @@ newtype DeleteHealthCheckResponse =
 deleteHealthCheckResponse
     :: Int -- ^ 'dhcrsResponseStatus'
     -> DeleteHealthCheckResponse
-deleteHealthCheckResponse pResponseStatus_ =
-  DeleteHealthCheckResponse' {_dhcrsResponseStatus = pResponseStatus_}
-
+deleteHealthCheckResponse pResponseStatus_
+  = DeleteHealthCheckResponse'{_dhcrsResponseStatus =
+                                 pResponseStatus_}
 
 -- | -- | The response status code.
 dhcrsResponseStatus :: Lens' DeleteHealthCheckResponse Int

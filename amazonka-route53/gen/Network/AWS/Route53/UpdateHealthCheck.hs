@@ -18,7 +18,7 @@
 -- Stability   : auto-generated
 -- Portability : non-portable (GHC extensions)
 --
--- Updates an existing health check. Note that some values can't be updated.
+-- Updates an existing health check. Note that some values can't be updated. 
 --
 --
 -- For more information about updating health checks, see <http://docs.aws.amazon.com/Route53/latest/DeveloperGuide/health-checks-creating-deleting.html Creating, Updating, and Deleting Health Checks> in the /Amazon Route 53 Developer Guide/ .
@@ -59,34 +59,38 @@ import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 import Network.AWS.Route53.Types
-import Network.AWS.Route53.Types.Product
 
 -- | A complex type that contains information about a request to update a health check.
 --
 --
 --
 -- /See:/ 'updateHealthCheck' smart constructor.
-data UpdateHealthCheck =
-  UpdateHealthCheck'
-    { _uhcFailureThreshold             :: !(Maybe Nat)
-    , _uhcIPAddress                    :: !(Maybe Text)
-    , _uhcEnableSNI                    :: !(Maybe Bool)
-    , _uhcResetElements                :: !(Maybe [ResettableElementName])
-    , _uhcSearchString                 :: !(Maybe Text)
-    , _uhcHealthThreshold              :: !(Maybe Nat)
-    , _uhcRegions                      :: !(Maybe (List1 HealthCheckRegion))
-    , _uhcResourcePath                 :: !(Maybe Text)
-    , _uhcInsufficientDataHealthStatus :: !(Maybe InsufficientDataHealthStatus)
-    , _uhcHealthCheckVersion           :: !(Maybe Nat)
-    , _uhcAlarmIdentifier              :: !(Maybe AlarmIdentifier)
-    , _uhcInverted                     :: !(Maybe Bool)
-    , _uhcFullyQualifiedDomainName     :: !(Maybe Text)
-    , _uhcChildHealthChecks            :: !(Maybe [Text])
-    , _uhcPort                         :: !(Maybe Nat)
-    , _uhcHealthCheckId                :: !Text
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data UpdateHealthCheck = UpdateHealthCheck'{_uhcFailureThreshold
+                                            :: !(Maybe Nat),
+                                            _uhcIPAddress :: !(Maybe Text),
+                                            _uhcEnableSNI :: !(Maybe Bool),
+                                            _uhcResetElements ::
+                                            !(Maybe [ResettableElementName]),
+                                            _uhcSearchString :: !(Maybe Text),
+                                            _uhcHealthThreshold :: !(Maybe Nat),
+                                            _uhcRegions ::
+                                            !(Maybe (List1 HealthCheckRegion)),
+                                            _uhcResourcePath :: !(Maybe Text),
+                                            _uhcInsufficientDataHealthStatus ::
+                                            !(Maybe
+                                                InsufficientDataHealthStatus),
+                                            _uhcHealthCheckVersion ::
+                                            !(Maybe Nat),
+                                            _uhcAlarmIdentifier ::
+                                            !(Maybe AlarmIdentifier),
+                                            _uhcInverted :: !(Maybe Bool),
+                                            _uhcFullyQualifiedDomainName ::
+                                            !(Maybe Text),
+                                            _uhcChildHealthChecks ::
+                                            !(Maybe [Text]),
+                                            _uhcPort :: !(Maybe Nat),
+                                            _uhcHealthCheckId :: !Text}
+                           deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'UpdateHealthCheck' with the minimum fields required to make a request.
 --
@@ -94,7 +98,7 @@ data UpdateHealthCheck =
 --
 -- * 'uhcFailureThreshold' - The number of consecutive health checks that an endpoint must pass or fail for Amazon Route 53 to change the current status of the endpoint from unhealthy to healthy or vice versa. For more information, see <http://docs.aws.amazon.com/Route53/latest/DeveloperGuide/dns-failover-determining-health-of-endpoints.html How Amazon Route 53 Determines Whether an Endpoint Is Healthy> in the /Amazon Route 53 Developer Guide/ . If you don't specify a value for @FailureThreshold@ , the default value is three health checks.
 --
--- * 'uhcIPAddress' - The IPv4 or IPv6 IP address for the endpoint that you want Amazon Route 53 to perform health checks on. If you don't specify a value for @IPAddress@ , Amazon Route 53 sends a DNS request to resolve the domain name that you specify in @FullyQualifiedDomainName@ at the interval that you specify in @RequestInterval@ . Using an IP address that is returned by DNS, Amazon Route 53 then checks the health of the endpoint. Use one of the following formats for the value of @IPAddress@ :      * __IPv4 address__ : four values between 0 and 255, separated by periods (.), for example, @192.0.2.44@ .     * __IPv6 address__ : eight groups of four hexadecimal values, separated by colons (:), for example, @2001:0db8:85a3:0000:0000:abcd:0001:2345@ . You can also shorten IPv6 addresses as described in RFC 5952, for example, @2001:db8:85a3::abcd:1:2345@ . If the endpoint is an EC2 instance, we recommend that you create an Elastic IP address, associate it with your EC2 instance, and specify the Elastic IP address for @IPAddress@ . This ensures that the IP address of your instance never changes. For more information, see the applicable documentation:     * Linux: <http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/elastic-ip-addresses-eip.html Elastic IP Addresses (EIP)> in the /Amazon EC2 User Guide for Linux Instances/      * Windows: <http://docs.aws.amazon.com/AWSEC2/latest/WindowsGuide/elastic-ip-addresses-eip.html Elastic IP Addresses (EIP)> in the /Amazon EC2 User Guide for Windows Instances/  For more information, see 'UpdateHealthCheckRequest$FullyQualifiedDomainName' . Constraints: Amazon Route 53 can't check the health of endpoints for which the IP address is in local, private, non-routable, or multicast ranges. For more information about IP addresses for which you can't create health checks, see the following documents:     * <https://tools.ietf.org/html/rfc5735 RFC 5735, Special Use IPv4 Addresses>      * <https://tools.ietf.org/html/rfc6598 RFC 6598, IANA-Reserved IPv4 Prefix for Shared Address Space>      * <https://tools.ietf.org/html/rfc5156 RFC 5156, Special-Use IPv6 Addresses>
+-- * 'uhcIPAddress' - The IPv4 or IPv6 IP address for the endpoint that you want Amazon Route 53 to perform health checks on. If you don't specify a value for @IPAddress@ , Amazon Route 53 sends a DNS request to resolve the domain name that you specify in @FullyQualifiedDomainName@ at the interval that you specify in @RequestInterval@ . Using an IP address that is returned by DNS, Amazon Route 53 then checks the health of the endpoint. Use one of the following formats for the value of @IPAddress@ :      * __IPv4 address__ : four values between 0 and 255, separated by periods (.), for example, @192.0.2.44@ .     * __IPv6 address__ : eight groups of four hexadecimal values, separated by colons (:), for example, @2001:0db8:85a3:0000:0000:abcd:0001:2345@ . You can also shorten IPv6 addresses as described in RFC 5952, for example, @2001:db8:85a3::abcd:1:2345@ . If the endpoint is an EC2 instance, we recommend that you create an Elastic IP address, associate it with your EC2 instance, and specify the Elastic IP address for @IPAddress@ . This ensures that the IP address of your instance never changes. For more information, see the applicable documentation:     * Linux: <http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/elastic-ip-addresses-eip.html Elastic IP Addresses (EIP)> in the /Amazon EC2 User Guide for Linux Instances/      * Windows: <http://docs.aws.amazon.com/AWSEC2/latest/WindowsGuide/elastic-ip-addresses-eip.html Elastic IP Addresses (EIP)> in the /Amazon EC2 User Guide for Windows Instances/  For more information, see 'UpdateHealthCheckRequest$FullyQualifiedDomainName' . Constraints: Amazon Route 53 can't check the health of endpoints for which the IP address is in local, private, non-routable, or multicast ranges. For more information about IP addresses for which you can't create health checks, see the following documents:     * <https://tools.ietf.org/html/rfc5735 RFC 5735, Special Use IPv4 Addresses>      * <https://tools.ietf.org/html/rfc6598 RFC 6598, IANA-Reserved IPv4 Prefix for Shared Address Space>      * <https://tools.ietf.org/html/rfc5156 RFC 5156, Special-Use IPv6 Addresses> 
 --
 -- * 'uhcEnableSNI' - Specify whether you want Amazon Route 53 to send the value of @FullyQualifiedDomainName@ to the endpoint in the @client_hello@ message during @TLS@ negotiation. This allows the endpoint to respond to @HTTPS@ health check requests with the applicable SSL/TLS certificate. Some endpoints require that HTTPS requests include the host name in the @client_hello@ message. If you don't enable SNI, the status of the health check will be SSL alert @handshake_failure@ . A health check can also have that status for other reasons. If SNI is enabled and you're still getting the error, check the SSL/TLS configuration on your endpoint and confirm that your certificate is valid. The SSL/TLS certificate on your endpoint includes a domain name in the @Common Name@ field and possibly several more in the @Subject Alternative Names@ field. One of the domain names in the certificate should match the value that you specify for @FullyQualifiedDomainName@ . If the endpoint responds to the @client_hello@ message with a certificate that does not include the domain name that you specified in @FullyQualifiedDomainName@ , a health checker will retry the handshake. In the second attempt, the health checker will omit @FullyQualifiedDomainName@ from the @client_hello@ message.
 --
@@ -126,32 +130,26 @@ data UpdateHealthCheck =
 updateHealthCheck
     :: Text -- ^ 'uhcHealthCheckId'
     -> UpdateHealthCheck
-updateHealthCheck pHealthCheckId_ =
-  UpdateHealthCheck'
-    { _uhcFailureThreshold = Nothing
-    , _uhcIPAddress = Nothing
-    , _uhcEnableSNI = Nothing
-    , _uhcResetElements = Nothing
-    , _uhcSearchString = Nothing
-    , _uhcHealthThreshold = Nothing
-    , _uhcRegions = Nothing
-    , _uhcResourcePath = Nothing
-    , _uhcInsufficientDataHealthStatus = Nothing
-    , _uhcHealthCheckVersion = Nothing
-    , _uhcAlarmIdentifier = Nothing
-    , _uhcInverted = Nothing
-    , _uhcFullyQualifiedDomainName = Nothing
-    , _uhcChildHealthChecks = Nothing
-    , _uhcPort = Nothing
-    , _uhcHealthCheckId = pHealthCheckId_
-    }
-
+updateHealthCheck pHealthCheckId_
+  = UpdateHealthCheck'{_uhcFailureThreshold = Nothing,
+                       _uhcIPAddress = Nothing, _uhcEnableSNI = Nothing,
+                       _uhcResetElements = Nothing,
+                       _uhcSearchString = Nothing,
+                       _uhcHealthThreshold = Nothing, _uhcRegions = Nothing,
+                       _uhcResourcePath = Nothing,
+                       _uhcInsufficientDataHealthStatus = Nothing,
+                       _uhcHealthCheckVersion = Nothing,
+                       _uhcAlarmIdentifier = Nothing,
+                       _uhcInverted = Nothing,
+                       _uhcFullyQualifiedDomainName = Nothing,
+                       _uhcChildHealthChecks = Nothing, _uhcPort = Nothing,
+                       _uhcHealthCheckId = pHealthCheckId_}
 
 -- | The number of consecutive health checks that an endpoint must pass or fail for Amazon Route 53 to change the current status of the endpoint from unhealthy to healthy or vice versa. For more information, see <http://docs.aws.amazon.com/Route53/latest/DeveloperGuide/dns-failover-determining-health-of-endpoints.html How Amazon Route 53 Determines Whether an Endpoint Is Healthy> in the /Amazon Route 53 Developer Guide/ . If you don't specify a value for @FailureThreshold@ , the default value is three health checks.
 uhcFailureThreshold :: Lens' UpdateHealthCheck (Maybe Natural)
 uhcFailureThreshold = lens _uhcFailureThreshold (\ s a -> s{_uhcFailureThreshold = a}) . mapping _Nat
 
--- | The IPv4 or IPv6 IP address for the endpoint that you want Amazon Route 53 to perform health checks on. If you don't specify a value for @IPAddress@ , Amazon Route 53 sends a DNS request to resolve the domain name that you specify in @FullyQualifiedDomainName@ at the interval that you specify in @RequestInterval@ . Using an IP address that is returned by DNS, Amazon Route 53 then checks the health of the endpoint. Use one of the following formats for the value of @IPAddress@ :      * __IPv4 address__ : four values between 0 and 255, separated by periods (.), for example, @192.0.2.44@ .     * __IPv6 address__ : eight groups of four hexadecimal values, separated by colons (:), for example, @2001:0db8:85a3:0000:0000:abcd:0001:2345@ . You can also shorten IPv6 addresses as described in RFC 5952, for example, @2001:db8:85a3::abcd:1:2345@ . If the endpoint is an EC2 instance, we recommend that you create an Elastic IP address, associate it with your EC2 instance, and specify the Elastic IP address for @IPAddress@ . This ensures that the IP address of your instance never changes. For more information, see the applicable documentation:     * Linux: <http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/elastic-ip-addresses-eip.html Elastic IP Addresses (EIP)> in the /Amazon EC2 User Guide for Linux Instances/      * Windows: <http://docs.aws.amazon.com/AWSEC2/latest/WindowsGuide/elastic-ip-addresses-eip.html Elastic IP Addresses (EIP)> in the /Amazon EC2 User Guide for Windows Instances/  For more information, see 'UpdateHealthCheckRequest$FullyQualifiedDomainName' . Constraints: Amazon Route 53 can't check the health of endpoints for which the IP address is in local, private, non-routable, or multicast ranges. For more information about IP addresses for which you can't create health checks, see the following documents:     * <https://tools.ietf.org/html/rfc5735 RFC 5735, Special Use IPv4 Addresses>      * <https://tools.ietf.org/html/rfc6598 RFC 6598, IANA-Reserved IPv4 Prefix for Shared Address Space>      * <https://tools.ietf.org/html/rfc5156 RFC 5156, Special-Use IPv6 Addresses>
+-- | The IPv4 or IPv6 IP address for the endpoint that you want Amazon Route 53 to perform health checks on. If you don't specify a value for @IPAddress@ , Amazon Route 53 sends a DNS request to resolve the domain name that you specify in @FullyQualifiedDomainName@ at the interval that you specify in @RequestInterval@ . Using an IP address that is returned by DNS, Amazon Route 53 then checks the health of the endpoint. Use one of the following formats for the value of @IPAddress@ :      * __IPv4 address__ : four values between 0 and 255, separated by periods (.), for example, @192.0.2.44@ .     * __IPv6 address__ : eight groups of four hexadecimal values, separated by colons (:), for example, @2001:0db8:85a3:0000:0000:abcd:0001:2345@ . You can also shorten IPv6 addresses as described in RFC 5952, for example, @2001:db8:85a3::abcd:1:2345@ . If the endpoint is an EC2 instance, we recommend that you create an Elastic IP address, associate it with your EC2 instance, and specify the Elastic IP address for @IPAddress@ . This ensures that the IP address of your instance never changes. For more information, see the applicable documentation:     * Linux: <http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/elastic-ip-addresses-eip.html Elastic IP Addresses (EIP)> in the /Amazon EC2 User Guide for Linux Instances/      * Windows: <http://docs.aws.amazon.com/AWSEC2/latest/WindowsGuide/elastic-ip-addresses-eip.html Elastic IP Addresses (EIP)> in the /Amazon EC2 User Guide for Windows Instances/  For more information, see 'UpdateHealthCheckRequest$FullyQualifiedDomainName' . Constraints: Amazon Route 53 can't check the health of endpoints for which the IP address is in local, private, non-routable, or multicast ranges. For more information about IP addresses for which you can't create health checks, see the following documents:     * <https://tools.ietf.org/html/rfc5735 RFC 5735, Special Use IPv4 Addresses>      * <https://tools.ietf.org/html/rfc6598 RFC 6598, IANA-Reserved IPv4 Prefix for Shared Address Space>      * <https://tools.ietf.org/html/rfc5156 RFC 5156, Special-Use IPv6 Addresses> 
 uhcIPAddress :: Lens' UpdateHealthCheck (Maybe Text)
 uhcIPAddress = lens _uhcIPAddress (\ s a -> s{_uhcIPAddress = a})
 
@@ -269,13 +267,12 @@ instance ToXML UpdateHealthCheck where
                "Port" @= _uhcPort]
 
 -- | /See:/ 'updateHealthCheckResponse' smart constructor.
-data UpdateHealthCheckResponse =
-  UpdateHealthCheckResponse'
-    { _uhcrsResponseStatus :: !Int
-    , _uhcrsHealthCheck    :: !HealthCheck
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data UpdateHealthCheckResponse = UpdateHealthCheckResponse'{_uhcrsResponseStatus
+                                                            :: !Int,
+                                                            _uhcrsHealthCheck ::
+                                                            !HealthCheck}
+                                   deriving (Eq, Read, Show, Data, Typeable,
+                                             Generic)
 
 -- | Creates a value of 'UpdateHealthCheckResponse' with the minimum fields required to make a request.
 --
@@ -288,10 +285,11 @@ updateHealthCheckResponse
     :: Int -- ^ 'uhcrsResponseStatus'
     -> HealthCheck -- ^ 'uhcrsHealthCheck'
     -> UpdateHealthCheckResponse
-updateHealthCheckResponse pResponseStatus_ pHealthCheck_ =
-  UpdateHealthCheckResponse'
-    {_uhcrsResponseStatus = pResponseStatus_, _uhcrsHealthCheck = pHealthCheck_}
-
+updateHealthCheckResponse pResponseStatus_
+  pHealthCheck_
+  = UpdateHealthCheckResponse'{_uhcrsResponseStatus =
+                                 pResponseStatus_,
+                               _uhcrsHealthCheck = pHealthCheck_}
 
 -- | -- | The response status code.
 uhcrsResponseStatus :: Lens' UpdateHealthCheckResponse Int

@@ -62,8 +62,16 @@ library
         , Network.AWS.CloudHSMv2.Waiters
 
     other-modules:
-          Network.AWS.CloudHSMv2.Types.Product
-        , Network.AWS.CloudHSMv2.Types.Sum
+          Network.AWS.CloudHSMv2.Types.Backup
+        , Network.AWS.CloudHSMv2.Types.BackupPolicy
+        , Network.AWS.CloudHSMv2.Types.BackupState
+        , Network.AWS.CloudHSMv2.Types.Certificates
+        , Network.AWS.CloudHSMv2.Types.Cluster
+        , Network.AWS.CloudHSMv2.Types.ClusterState
+        , Network.AWS.CloudHSMv2.Types.DestinationBackup
+        , Network.AWS.CloudHSMv2.Types.HSM
+        , Network.AWS.CloudHSMv2.Types.HSMState
+        , Network.AWS.CloudHSMv2.Types.Tag
 
     build-depends:
           amazonka-core == 1.6.1.*

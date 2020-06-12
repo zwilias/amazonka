@@ -57,24 +57,21 @@ module Network.AWS.EC2.AllocateAddress
     ) where
 
 import Network.AWS.EC2.Types
-import Network.AWS.EC2.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 
 -- | /See:/ 'allocateAddress' smart constructor.
-data AllocateAddress =
-  AllocateAddress'
-    { _aaNetworkBorderGroup    :: !(Maybe Text)
-    , _aaDomain                :: !(Maybe DomainType)
-    , _aaAddress               :: !(Maybe Text)
-    , _aaPublicIPv4Pool        :: !(Maybe Text)
-    , _aaCustomerOwnedIPv4Pool :: !(Maybe Text)
-    , _aaDryRun                :: !(Maybe Bool)
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data AllocateAddress = AllocateAddress'{_aaNetworkBorderGroup
+                                        :: !(Maybe Text),
+                                        _aaDomain :: !(Maybe DomainType),
+                                        _aaAddress :: !(Maybe Text),
+                                        _aaPublicIPv4Pool :: !(Maybe Text),
+                                        _aaCustomerOwnedIPv4Pool ::
+                                        !(Maybe Text),
+                                        _aaDryRun :: !(Maybe Bool)}
+                         deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'AllocateAddress' with the minimum fields required to make a request.
 --
@@ -93,16 +90,12 @@ data AllocateAddress =
 -- * 'aaDryRun' - Checks whether you have the required permissions for the action, without actually making the request, and provides an error response. If you have the required permissions, the error response is @DryRunOperation@ . Otherwise, it is @UnauthorizedOperation@ .
 allocateAddress
     :: AllocateAddress
-allocateAddress =
-  AllocateAddress'
-    { _aaNetworkBorderGroup = Nothing
-    , _aaDomain = Nothing
-    , _aaAddress = Nothing
-    , _aaPublicIPv4Pool = Nothing
-    , _aaCustomerOwnedIPv4Pool = Nothing
-    , _aaDryRun = Nothing
-    }
-
+allocateAddress
+  = AllocateAddress'{_aaNetworkBorderGroup = Nothing,
+                     _aaDomain = Nothing, _aaAddress = Nothing,
+                     _aaPublicIPv4Pool = Nothing,
+                     _aaCustomerOwnedIPv4Pool = Nothing,
+                     _aaDryRun = Nothing}
 
 -- | The location from which the IP address is advertised. Use this parameter to limit the address to this location. A network border group is a unique set of Availability Zones or Local Zones from where AWS advertises IP addresses and limits the addresses to the group. IP addresses cannot move between network border groups. Use <https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_DescribeAvailabilityZones.html DescribeAvailabilityZones> to view the network border groups.
 aaNetworkBorderGroup :: Lens' AllocateAddress (Maybe Text)
@@ -166,19 +159,24 @@ instance ToQuery AllocateAddress where
                "DryRun" =: _aaDryRun]
 
 -- | /See:/ 'allocateAddressResponse' smart constructor.
-data AllocateAddressResponse =
-  AllocateAddressResponse'
-    { _aarsAllocationId          :: !(Maybe Text)
-    , _aarsNetworkBorderGroup    :: !(Maybe Text)
-    , _aarsDomain                :: !(Maybe DomainType)
-    , _aarsPublicIPv4Pool        :: !(Maybe Text)
-    , _aarsCustomerOwnedIPv4Pool :: !(Maybe Text)
-    , _aarsCustomerOwnedIP       :: !(Maybe Text)
-    , _aarsPublicIP              :: !(Maybe Text)
-    , _aarsResponseStatus        :: !Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data AllocateAddressResponse = AllocateAddressResponse'{_aarsAllocationId
+                                                        :: !(Maybe Text),
+                                                        _aarsNetworkBorderGroup
+                                                        :: !(Maybe Text),
+                                                        _aarsDomain ::
+                                                        !(Maybe DomainType),
+                                                        _aarsPublicIPv4Pool ::
+                                                        !(Maybe Text),
+                                                        _aarsCustomerOwnedIPv4Pool
+                                                        :: !(Maybe Text),
+                                                        _aarsCustomerOwnedIP ::
+                                                        !(Maybe Text),
+                                                        _aarsPublicIP ::
+                                                        !(Maybe Text),
+                                                        _aarsResponseStatus ::
+                                                        !Int}
+                                 deriving (Eq, Read, Show, Data, Typeable,
+                                           Generic)
 
 -- | Creates a value of 'AllocateAddressResponse' with the minimum fields required to make a request.
 --
@@ -202,18 +200,16 @@ data AllocateAddressResponse =
 allocateAddressResponse
     :: Int -- ^ 'aarsResponseStatus'
     -> AllocateAddressResponse
-allocateAddressResponse pResponseStatus_ =
-  AllocateAddressResponse'
-    { _aarsAllocationId = Nothing
-    , _aarsNetworkBorderGroup = Nothing
-    , _aarsDomain = Nothing
-    , _aarsPublicIPv4Pool = Nothing
-    , _aarsCustomerOwnedIPv4Pool = Nothing
-    , _aarsCustomerOwnedIP = Nothing
-    , _aarsPublicIP = Nothing
-    , _aarsResponseStatus = pResponseStatus_
-    }
-
+allocateAddressResponse pResponseStatus_
+  = AllocateAddressResponse'{_aarsAllocationId =
+                               Nothing,
+                             _aarsNetworkBorderGroup = Nothing,
+                             _aarsDomain = Nothing,
+                             _aarsPublicIPv4Pool = Nothing,
+                             _aarsCustomerOwnedIPv4Pool = Nothing,
+                             _aarsCustomerOwnedIP = Nothing,
+                             _aarsPublicIP = Nothing,
+                             _aarsResponseStatus = pResponseStatus_}
 
 -- | [EC2-VPC] The ID that AWS assigns to represent the allocation of the Elastic IP address for use with instances in a VPC.
 aarsAllocationId :: Lens' AllocateAddressResponse (Maybe Text)

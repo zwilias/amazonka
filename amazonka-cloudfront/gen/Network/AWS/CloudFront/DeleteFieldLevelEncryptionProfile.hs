@@ -36,20 +36,21 @@ module Network.AWS.CloudFront.DeleteFieldLevelEncryptionProfile
     ) where
 
 import Network.AWS.CloudFront.Types
-import Network.AWS.CloudFront.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 
 -- | /See:/ 'deleteFieldLevelEncryptionProfile' smart constructor.
-data DeleteFieldLevelEncryptionProfile =
-  DeleteFieldLevelEncryptionProfile'
-    { _dflepIfMatch :: !(Maybe Text)
-    , _dflepId      :: !Text
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data DeleteFieldLevelEncryptionProfile = DeleteFieldLevelEncryptionProfile'{_dflepIfMatch
+                                                                            ::
+                                                                            !(Maybe
+                                                                                Text),
+                                                                            _dflepId
+                                                                            ::
+                                                                            !Text}
+                                           deriving (Eq, Read, Show, Data,
+                                                     Typeable, Generic)
 
 -- | Creates a value of 'DeleteFieldLevelEncryptionProfile' with the minimum fields required to make a request.
 --
@@ -61,9 +62,10 @@ data DeleteFieldLevelEncryptionProfile =
 deleteFieldLevelEncryptionProfile
     :: Text -- ^ 'dflepId'
     -> DeleteFieldLevelEncryptionProfile
-deleteFieldLevelEncryptionProfile pId_ =
-  DeleteFieldLevelEncryptionProfile' {_dflepIfMatch = Nothing, _dflepId = pId_}
-
+deleteFieldLevelEncryptionProfile pId_
+  = DeleteFieldLevelEncryptionProfile'{_dflepIfMatch =
+                                         Nothing,
+                                       _dflepId = pId_}
 
 -- | The value of the @ETag@ header that you received when retrieving the profile to delete. For example: @E2QWRUHAPOMQZL@ .
 dflepIfMatch :: Lens' DeleteFieldLevelEncryptionProfile (Maybe Text)
@@ -105,18 +107,17 @@ instance ToQuery DeleteFieldLevelEncryptionProfile
         toQuery = const mempty
 
 -- | /See:/ 'deleteFieldLevelEncryptionProfileResponse' smart constructor.
-data DeleteFieldLevelEncryptionProfileResponse =
-  DeleteFieldLevelEncryptionProfileResponse'
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data DeleteFieldLevelEncryptionProfileResponse = DeleteFieldLevelEncryptionProfileResponse'
+                                                   deriving (Eq, Read, Show,
+                                                             Data, Typeable,
+                                                             Generic)
 
 -- | Creates a value of 'DeleteFieldLevelEncryptionProfileResponse' with the minimum fields required to make a request.
 --
 deleteFieldLevelEncryptionProfileResponse
     :: DeleteFieldLevelEncryptionProfileResponse
-deleteFieldLevelEncryptionProfileResponse =
-  DeleteFieldLevelEncryptionProfileResponse'
-
+deleteFieldLevelEncryptionProfileResponse
+  = DeleteFieldLevelEncryptionProfileResponse'
 
 instance NFData
            DeleteFieldLevelEncryptionProfileResponse

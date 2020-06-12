@@ -39,21 +39,17 @@ module Network.AWS.IAM.UpdateGroup
     ) where
 
 import Network.AWS.IAM.Types
-import Network.AWS.IAM.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 
 -- | /See:/ 'updateGroup' smart constructor.
-data UpdateGroup =
-  UpdateGroup'
-    { _ugNewGroupName :: !(Maybe Text)
-    , _ugNewPath      :: !(Maybe Text)
-    , _ugGroupName    :: !Text
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data UpdateGroup = UpdateGroup'{_ugNewGroupName ::
+                                !(Maybe Text),
+                                _ugNewPath :: !(Maybe Text),
+                                _ugGroupName :: !Text}
+                     deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'UpdateGroup' with the minimum fields required to make a request.
 --
@@ -67,13 +63,9 @@ data UpdateGroup =
 updateGroup
     :: Text -- ^ 'ugGroupName'
     -> UpdateGroup
-updateGroup pGroupName_ =
-  UpdateGroup'
-    { _ugNewGroupName = Nothing
-    , _ugNewPath = Nothing
-    , _ugGroupName = pGroupName_
-    }
-
+updateGroup pGroupName_
+  = UpdateGroup'{_ugNewGroupName = Nothing,
+                 _ugNewPath = Nothing, _ugGroupName = pGroupName_}
 
 -- | New name for the IAM group. Only include this if changing the group's name. This parameter allows (per its <http://wikipedia.org/wiki/regex regex pattern> ) a string of characters consisting of upper and lowercase alphanumeric characters with no spaces. You can also include any of the following characters: _+=,.@-
 ugNewGroupName :: Lens' UpdateGroup (Maybe Text)
@@ -111,16 +103,13 @@ instance ToQuery UpdateGroup where
                "NewPath" =: _ugNewPath, "GroupName" =: _ugGroupName]
 
 -- | /See:/ 'updateGroupResponse' smart constructor.
-data UpdateGroupResponse =
-  UpdateGroupResponse'
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data UpdateGroupResponse = UpdateGroupResponse'
+                             deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'UpdateGroupResponse' with the minimum fields required to make a request.
 --
 updateGroupResponse
     :: UpdateGroupResponse
 updateGroupResponse = UpdateGroupResponse'
-
 
 instance NFData UpdateGroupResponse where

@@ -43,7 +43,6 @@ module Network.AWS.EC2.CreateVPNGateway
     ) where
 
 import Network.AWS.EC2.Types
-import Network.AWS.EC2.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.Request
@@ -54,15 +53,12 @@ import Network.AWS.Response
 --
 --
 -- /See:/ 'createVPNGateway' smart constructor.
-data CreateVPNGateway =
-  CreateVPNGateway'
-    { _cvgAmazonSideASN    :: !(Maybe Integer)
-    , _cvgAvailabilityZone :: !(Maybe Text)
-    , _cvgDryRun           :: !(Maybe Bool)
-    , _cvgType             :: !GatewayType
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data CreateVPNGateway = CreateVPNGateway'{_cvgAmazonSideASN
+                                          :: !(Maybe Integer),
+                                          _cvgAvailabilityZone :: !(Maybe Text),
+                                          _cvgDryRun :: !(Maybe Bool),
+                                          _cvgType :: !GatewayType}
+                          deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'CreateVPNGateway' with the minimum fields required to make a request.
 --
@@ -78,14 +74,10 @@ data CreateVPNGateway =
 createVPNGateway
     :: GatewayType -- ^ 'cvgType'
     -> CreateVPNGateway
-createVPNGateway pType_ =
-  CreateVPNGateway'
-    { _cvgAmazonSideASN = Nothing
-    , _cvgAvailabilityZone = Nothing
-    , _cvgDryRun = Nothing
-    , _cvgType = pType_
-    }
-
+createVPNGateway pType_
+  = CreateVPNGateway'{_cvgAmazonSideASN = Nothing,
+                      _cvgAvailabilityZone = Nothing, _cvgDryRun = Nothing,
+                      _cvgType = pType_}
 
 -- | A private Autonomous System Number (ASN) for the Amazon side of a BGP session. If you're using a 16-bit ASN, it must be in the 64512 to 65534 range. If you're using a 32-bit ASN, it must be in the 4200000000 to 4294967294 range. Default: 64512
 cvgAmazonSideASN :: Lens' CreateVPNGateway (Maybe Integer)
@@ -136,13 +128,13 @@ instance ToQuery CreateVPNGateway where
 --
 --
 -- /See:/ 'createVPNGatewayResponse' smart constructor.
-data CreateVPNGatewayResponse =
-  CreateVPNGatewayResponse'
-    { _cvgrsVPNGateway     :: !(Maybe VPNGateway)
-    , _cvgrsResponseStatus :: !Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data CreateVPNGatewayResponse = CreateVPNGatewayResponse'{_cvgrsVPNGateway
+                                                          ::
+                                                          !(Maybe VPNGateway),
+                                                          _cvgrsResponseStatus
+                                                          :: !Int}
+                                  deriving (Eq, Read, Show, Data, Typeable,
+                                            Generic)
 
 -- | Creates a value of 'CreateVPNGatewayResponse' with the minimum fields required to make a request.
 --
@@ -154,10 +146,10 @@ data CreateVPNGatewayResponse =
 createVPNGatewayResponse
     :: Int -- ^ 'cvgrsResponseStatus'
     -> CreateVPNGatewayResponse
-createVPNGatewayResponse pResponseStatus_ =
-  CreateVPNGatewayResponse'
-    {_cvgrsVPNGateway = Nothing, _cvgrsResponseStatus = pResponseStatus_}
-
+createVPNGatewayResponse pResponseStatus_
+  = CreateVPNGatewayResponse'{_cvgrsVPNGateway =
+                                Nothing,
+                              _cvgrsResponseStatus = pResponseStatus_}
 
 -- | Information about the virtual private gateway.
 cvgrsVPNGateway :: Lens' CreateVPNGatewayResponse (Maybe VPNGateway)

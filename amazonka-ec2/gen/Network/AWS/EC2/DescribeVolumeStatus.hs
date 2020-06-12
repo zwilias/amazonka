@@ -55,7 +55,6 @@ module Network.AWS.EC2.DescribeVolumeStatus
     ) where
 
 import Network.AWS.EC2.Types
-import Network.AWS.EC2.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Pager
 import Network.AWS.Prelude
@@ -63,16 +62,16 @@ import Network.AWS.Request
 import Network.AWS.Response
 
 -- | /See:/ 'describeVolumeStatus' smart constructor.
-data DescribeVolumeStatus =
-  DescribeVolumeStatus'
-    { _dvssFilters    :: !(Maybe [Filter])
-    , _dvssVolumeIds  :: !(Maybe [Text])
-    , _dvssNextToken  :: !(Maybe Text)
-    , _dvssDryRun     :: !(Maybe Bool)
-    , _dvssMaxResults :: !(Maybe Int)
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data DescribeVolumeStatus = DescribeVolumeStatus'{_dvssFilters
+                                                  :: !(Maybe [Filter]),
+                                                  _dvssVolumeIds ::
+                                                  !(Maybe [Text]),
+                                                  _dvssNextToken ::
+                                                  !(Maybe Text),
+                                                  _dvssDryRun :: !(Maybe Bool),
+                                                  _dvssMaxResults ::
+                                                  !(Maybe Int)}
+                              deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'DescribeVolumeStatus' with the minimum fields required to make a request.
 --
@@ -89,15 +88,10 @@ data DescribeVolumeStatus =
 -- * 'dvssMaxResults' - The maximum number of volume results returned by @DescribeVolumeStatus@ in paginated output. When this parameter is used, the request only returns @MaxResults@ results in a single page along with a @NextToken@ response element. The remaining results of the initial request can be seen by sending another request with the returned @NextToken@ value. This value can be between 5 and 1000; if @MaxResults@ is given a value larger than 1000, only 1000 results are returned. If this parameter is not used, then @DescribeVolumeStatus@ returns all results. You cannot specify this parameter and the volume IDs parameter in the same request.
 describeVolumeStatus
     :: DescribeVolumeStatus
-describeVolumeStatus =
-  DescribeVolumeStatus'
-    { _dvssFilters = Nothing
-    , _dvssVolumeIds = Nothing
-    , _dvssNextToken = Nothing
-    , _dvssDryRun = Nothing
-    , _dvssMaxResults = Nothing
-    }
-
+describeVolumeStatus
+  = DescribeVolumeStatus'{_dvssFilters = Nothing,
+                          _dvssVolumeIds = Nothing, _dvssNextToken = Nothing,
+                          _dvssDryRun = Nothing, _dvssMaxResults = Nothing}
 
 -- | The filters.     * @action.code@ - The action code for the event (for example, @enable-volume-io@ ).     * @action.description@ - A description of the action.     * @action.event-id@ - The event ID associated with the action.     * @availability-zone@ - The Availability Zone of the instance.     * @event.description@ - A description of the event.     * @event.event-id@ - The event ID.     * @event.event-type@ - The event type (for @io-enabled@ : @passed@ | @failed@ ; for @io-performance@ : @io-performance:degraded@ | @io-performance:severely-degraded@ | @io-performance:stalled@ ).     * @event.not-after@ - The latest end time for the event.     * @event.not-before@ - The earliest start time for the event.     * @volume-status.details-name@ - The cause for @volume-status.status@ (@io-enabled@ | @io-performance@ ).     * @volume-status.details-status@ - The status of @volume-status.details-name@ (for @io-enabled@ : @passed@ | @failed@ ; for @io-performance@ : @normal@ | @degraded@ | @severely-degraded@ | @stalled@ ).     * @volume-status.status@ - The status of the volume (@ok@ | @impaired@ | @warning@ | @insufficient-data@ ).
 dvssFilters :: Lens' DescribeVolumeStatus [Filter]
@@ -161,14 +155,17 @@ instance ToQuery DescribeVolumeStatus where
                "MaxResults" =: _dvssMaxResults]
 
 -- | /See:/ 'describeVolumeStatusResponse' smart constructor.
-data DescribeVolumeStatusResponse =
-  DescribeVolumeStatusResponse'
-    { _dvsrsNextToken      :: !(Maybe Text)
-    , _dvsrsVolumeStatuses :: !(Maybe [VolumeStatusItem])
-    , _dvsrsResponseStatus :: !Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data DescribeVolumeStatusResponse = DescribeVolumeStatusResponse'{_dvsrsNextToken
+                                                                  ::
+                                                                  !(Maybe Text),
+                                                                  _dvsrsVolumeStatuses
+                                                                  ::
+                                                                  !(Maybe
+                                                                      [VolumeStatusItem]),
+                                                                  _dvsrsResponseStatus
+                                                                  :: !Int}
+                                      deriving (Eq, Read, Show, Data, Typeable,
+                                                Generic)
 
 -- | Creates a value of 'DescribeVolumeStatusResponse' with the minimum fields required to make a request.
 --
@@ -182,13 +179,11 @@ data DescribeVolumeStatusResponse =
 describeVolumeStatusResponse
     :: Int -- ^ 'dvsrsResponseStatus'
     -> DescribeVolumeStatusResponse
-describeVolumeStatusResponse pResponseStatus_ =
-  DescribeVolumeStatusResponse'
-    { _dvsrsNextToken = Nothing
-    , _dvsrsVolumeStatuses = Nothing
-    , _dvsrsResponseStatus = pResponseStatus_
-    }
-
+describeVolumeStatusResponse pResponseStatus_
+  = DescribeVolumeStatusResponse'{_dvsrsNextToken =
+                                    Nothing,
+                                  _dvsrsVolumeStatuses = Nothing,
+                                  _dvsrsResponseStatus = pResponseStatus_}
 
 -- | The token to use to retrieve the next page of results. This value is @null@ when there are no more results to return.
 dvsrsNextToken :: Lens' DescribeVolumeStatusResponse (Maybe Text)

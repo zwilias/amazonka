@@ -41,7 +41,6 @@ module Network.AWS.DeviceFarm.CreateUpload
     ) where
 
 import Network.AWS.DeviceFarm.Types
-import Network.AWS.DeviceFarm.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.Request
@@ -52,15 +51,11 @@ import Network.AWS.Response
 --
 --
 -- /See:/ 'createUpload' smart constructor.
-data CreateUpload =
-  CreateUpload'
-    { _cuContentType :: !(Maybe Text)
-    , _cuProjectARN  :: !Text
-    , _cuName        :: !Text
-    , _cuType        :: !UploadType
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data CreateUpload = CreateUpload'{_cuContentType ::
+                                  !(Maybe Text),
+                                  _cuProjectARN :: !Text, _cuName :: !Text,
+                                  _cuType :: !UploadType}
+                      deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'CreateUpload' with the minimum fields required to make a request.
 --
@@ -78,14 +73,10 @@ createUpload
     -> Text -- ^ 'cuName'
     -> UploadType -- ^ 'cuType'
     -> CreateUpload
-createUpload pProjectARN_ pName_ pType_ =
-  CreateUpload'
-    { _cuContentType = Nothing
-    , _cuProjectARN = pProjectARN_
-    , _cuName = pName_
-    , _cuType = pType_
-    }
-
+createUpload pProjectARN_ pName_ pType_
+  = CreateUpload'{_cuContentType = Nothing,
+                  _cuProjectARN = pProjectARN_, _cuName = pName_,
+                  _cuType = pType_}
 
 -- | The upload's content type (for example, @application/octet-stream@ ).
 cuContentType :: Lens' CreateUpload (Maybe Text)
@@ -144,13 +135,10 @@ instance ToQuery CreateUpload where
 --
 --
 -- /See:/ 'createUploadResponse' smart constructor.
-data CreateUploadResponse =
-  CreateUploadResponse'
-    { _cursUpload         :: !(Maybe Upload)
-    , _cursResponseStatus :: !Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data CreateUploadResponse = CreateUploadResponse'{_cursUpload
+                                                  :: !(Maybe Upload),
+                                                  _cursResponseStatus :: !Int}
+                              deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'CreateUploadResponse' with the minimum fields required to make a request.
 --
@@ -162,10 +150,9 @@ data CreateUploadResponse =
 createUploadResponse
     :: Int -- ^ 'cursResponseStatus'
     -> CreateUploadResponse
-createUploadResponse pResponseStatus_ =
-  CreateUploadResponse'
-    {_cursUpload = Nothing, _cursResponseStatus = pResponseStatus_}
-
+createUploadResponse pResponseStatus_
+  = CreateUploadResponse'{_cursUpload = Nothing,
+                          _cursResponseStatus = pResponseStatus_}
 
 -- | The newly created upload.
 cursUpload :: Lens' CreateUploadResponse (Maybe Upload)

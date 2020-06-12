@@ -23,25 +23,25 @@
 --
 -- Game-session-related operations include:
 --
---     * 'CreateGameSession'
+--     * 'CreateGameSession' 
 --
---     * 'DescribeGameSessions'
+--     * 'DescribeGameSessions' 
 --
---     * 'DescribeGameSessionDetails'
+--     * 'DescribeGameSessionDetails' 
 --
---     * 'SearchGameSessions'
+--     * 'SearchGameSessions' 
 --
---     * 'UpdateGameSession'
+--     * 'UpdateGameSession' 
 --
---     * 'GetGameSessionLogUrl'
+--     * 'GetGameSessionLogUrl' 
 --
 --     * Game session placements
 --
---     * 'StartGameSessionPlacement'
+--     * 'StartGameSessionPlacement' 
 --
---     * 'DescribeGameSessionPlacement'
+--     * 'DescribeGameSessionPlacement' 
 --
---     * 'StopGameSessionPlacement'
+--     * 'StopGameSessionPlacement' 
 --
 --
 --
@@ -64,7 +64,6 @@ module Network.AWS.GameLift.DescribeGameSessionPlacement
     ) where
 
 import Network.AWS.GameLift.Types
-import Network.AWS.GameLift.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.Request
@@ -75,12 +74,10 @@ import Network.AWS.Response
 --
 --
 -- /See:/ 'describeGameSessionPlacement' smart constructor.
-newtype DescribeGameSessionPlacement =
-  DescribeGameSessionPlacement'
-    { _dgspPlacementId :: Text
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+newtype DescribeGameSessionPlacement = DescribeGameSessionPlacement'{_dgspPlacementId
+                                                                     :: Text}
+                                         deriving (Eq, Read, Show, Data,
+                                                   Typeable, Generic)
 
 -- | Creates a value of 'DescribeGameSessionPlacement' with the minimum fields required to make a request.
 --
@@ -90,9 +87,9 @@ newtype DescribeGameSessionPlacement =
 describeGameSessionPlacement
     :: Text -- ^ 'dgspPlacementId'
     -> DescribeGameSessionPlacement
-describeGameSessionPlacement pPlacementId_ =
-  DescribeGameSessionPlacement' {_dgspPlacementId = pPlacementId_}
-
+describeGameSessionPlacement pPlacementId_
+  = DescribeGameSessionPlacement'{_dgspPlacementId =
+                                    pPlacementId_}
 
 -- | Unique identifier for a game session placement to retrieve.
 dgspPlacementId :: Lens' DescribeGameSessionPlacement Text
@@ -141,13 +138,15 @@ instance ToQuery DescribeGameSessionPlacement where
 --
 --
 -- /See:/ 'describeGameSessionPlacementResponse' smart constructor.
-data DescribeGameSessionPlacementResponse =
-  DescribeGameSessionPlacementResponse'
-    { _dgsprsGameSessionPlacement :: !(Maybe GameSessionPlacement)
-    , _dgsprsResponseStatus       :: !Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data DescribeGameSessionPlacementResponse = DescribeGameSessionPlacementResponse'{_dgsprsGameSessionPlacement
+                                                                                  ::
+                                                                                  !(Maybe
+                                                                                      GameSessionPlacement),
+                                                                                  _dgsprsResponseStatus
+                                                                                  ::
+                                                                                  !Int}
+                                              deriving (Eq, Read, Show, Data,
+                                                        Typeable, Generic)
 
 -- | Creates a value of 'DescribeGameSessionPlacementResponse' with the minimum fields required to make a request.
 --
@@ -159,12 +158,11 @@ data DescribeGameSessionPlacementResponse =
 describeGameSessionPlacementResponse
     :: Int -- ^ 'dgsprsResponseStatus'
     -> DescribeGameSessionPlacementResponse
-describeGameSessionPlacementResponse pResponseStatus_ =
-  DescribeGameSessionPlacementResponse'
-    { _dgsprsGameSessionPlacement = Nothing
-    , _dgsprsResponseStatus = pResponseStatus_
-    }
-
+describeGameSessionPlacementResponse pResponseStatus_
+  = DescribeGameSessionPlacementResponse'{_dgsprsGameSessionPlacement
+                                            = Nothing,
+                                          _dgsprsResponseStatus =
+                                            pResponseStatus_}
 
 -- | Object that describes the requested game session placement.
 dgsprsGameSessionPlacement :: Lens' DescribeGameSessionPlacementResponse (Maybe GameSessionPlacement)

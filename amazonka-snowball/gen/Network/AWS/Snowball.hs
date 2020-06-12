@@ -52,55 +52,55 @@ module Network.AWS.Snowball
     -- * Operations
     -- $operations
 
-    -- ** CancelCluster
+    -- ** CancelCluster 
     , module Network.AWS.Snowball.CancelCluster
 
-    -- ** DescribeCluster
+    -- ** DescribeCluster 
     , module Network.AWS.Snowball.DescribeCluster
 
-    -- ** CreateAddress
+    -- ** CreateAddress 
     , module Network.AWS.Snowball.CreateAddress
 
-    -- ** GetSnowballUsage
+    -- ** GetSnowballUsage 
     , module Network.AWS.Snowball.GetSnowballUsage
 
     -- ** DescribeAddresses (Paginated)
     , module Network.AWS.Snowball.DescribeAddresses
 
-    -- ** UpdateCluster
+    -- ** UpdateCluster 
     , module Network.AWS.Snowball.UpdateCluster
 
-    -- ** CreateJob
+    -- ** CreateJob 
     , module Network.AWS.Snowball.CreateJob
 
-    -- ** GetJobManifest
+    -- ** GetJobManifest 
     , module Network.AWS.Snowball.GetJobManifest
 
-    -- ** CreateCluster
+    -- ** CreateCluster 
     , module Network.AWS.Snowball.CreateCluster
 
     -- ** ListJobs (Paginated)
     , module Network.AWS.Snowball.ListJobs
 
-    -- ** UpdateJob
+    -- ** UpdateJob 
     , module Network.AWS.Snowball.UpdateJob
 
-    -- ** GetJobUnlockCode
+    -- ** GetJobUnlockCode 
     , module Network.AWS.Snowball.GetJobUnlockCode
 
-    -- ** ListClusterJobs
+    -- ** ListClusterJobs 
     , module Network.AWS.Snowball.ListClusterJobs
 
-    -- ** DescribeJob
+    -- ** DescribeJob 
     , module Network.AWS.Snowball.DescribeJob
 
-    -- ** ListClusters
+    -- ** ListClusters 
     , module Network.AWS.Snowball.ListClusters
 
-    -- ** DescribeAddress
+    -- ** DescribeAddress 
     , module Network.AWS.Snowball.DescribeAddress
 
-    -- ** CancelJob
+    -- ** CancelJob 
     , module Network.AWS.Snowball.CancelJob
 
     -- * Types

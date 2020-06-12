@@ -18,7 +18,7 @@
 -- Stability   : auto-generated
 -- Portability : non-portable (GHC extensions)
 --
--- Associates a group with a continuous job. The following criteria must be met:
+-- Associates a group with a continuous job. The following criteria must be met: 
 --
 --
 --     * The job must have been created with the @targetSelection@ field set to "CONTINUOUS".
@@ -50,21 +50,19 @@ module Network.AWS.IoT.AssociateTargetsWithJob
     ) where
 
 import Network.AWS.IoT.Types
-import Network.AWS.IoT.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 
 -- | /See:/ 'associateTargetsWithJob' smart constructor.
-data AssociateTargetsWithJob =
-  AssociateTargetsWithJob'
-    { _atwjComment :: !(Maybe Text)
-    , _atwjTargets :: !(List1 Text)
-    , _atwjJobId   :: !Text
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data AssociateTargetsWithJob = AssociateTargetsWithJob'{_atwjComment
+                                                        :: !(Maybe Text),
+                                                        _atwjTargets ::
+                                                        !(List1 Text),
+                                                        _atwjJobId :: !Text}
+                                 deriving (Eq, Read, Show, Data, Typeable,
+                                           Generic)
 
 -- | Creates a value of 'AssociateTargetsWithJob' with the minimum fields required to make a request.
 --
@@ -79,13 +77,10 @@ associateTargetsWithJob
     :: NonEmpty Text -- ^ 'atwjTargets'
     -> Text -- ^ 'atwjJobId'
     -> AssociateTargetsWithJob
-associateTargetsWithJob pTargets_ pJobId_ =
-  AssociateTargetsWithJob'
-    { _atwjComment = Nothing
-    , _atwjTargets = _List1 # pTargets_
-    , _atwjJobId = pJobId_
-    }
-
+associateTargetsWithJob pTargets_ pJobId_
+  = AssociateTargetsWithJob'{_atwjComment = Nothing,
+                             _atwjTargets = _List1 # pTargets_,
+                             _atwjJobId = pJobId_}
 
 -- | An optional comment string describing why the job was associated with the targets.
 atwjComment :: Lens' AssociateTargetsWithJob (Maybe Text)
@@ -133,15 +128,22 @@ instance ToQuery AssociateTargetsWithJob where
         toQuery = const mempty
 
 -- | /See:/ 'associateTargetsWithJobResponse' smart constructor.
-data AssociateTargetsWithJobResponse =
-  AssociateTargetsWithJobResponse'
-    { _atwjrsJobId          :: !(Maybe Text)
-    , _atwjrsJobARN         :: !(Maybe Text)
-    , _atwjrsDescription    :: !(Maybe Text)
-    , _atwjrsResponseStatus :: !Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data AssociateTargetsWithJobResponse = AssociateTargetsWithJobResponse'{_atwjrsJobId
+                                                                        ::
+                                                                        !(Maybe
+                                                                            Text),
+                                                                        _atwjrsJobARN
+                                                                        ::
+                                                                        !(Maybe
+                                                                            Text),
+                                                                        _atwjrsDescription
+                                                                        ::
+                                                                        !(Maybe
+                                                                            Text),
+                                                                        _atwjrsResponseStatus
+                                                                        :: !Int}
+                                         deriving (Eq, Read, Show, Data,
+                                                   Typeable, Generic)
 
 -- | Creates a value of 'AssociateTargetsWithJobResponse' with the minimum fields required to make a request.
 --
@@ -157,14 +159,12 @@ data AssociateTargetsWithJobResponse =
 associateTargetsWithJobResponse
     :: Int -- ^ 'atwjrsResponseStatus'
     -> AssociateTargetsWithJobResponse
-associateTargetsWithJobResponse pResponseStatus_ =
-  AssociateTargetsWithJobResponse'
-    { _atwjrsJobId = Nothing
-    , _atwjrsJobARN = Nothing
-    , _atwjrsDescription = Nothing
-    , _atwjrsResponseStatus = pResponseStatus_
-    }
-
+associateTargetsWithJobResponse pResponseStatus_
+  = AssociateTargetsWithJobResponse'{_atwjrsJobId =
+                                       Nothing,
+                                     _atwjrsJobARN = Nothing,
+                                     _atwjrsDescription = Nothing,
+                                     _atwjrsResponseStatus = pResponseStatus_}
 
 -- | The unique identifier you assigned to this job when it was created.
 atwjrsJobId :: Lens' AssociateTargetsWithJobResponse (Maybe Text)

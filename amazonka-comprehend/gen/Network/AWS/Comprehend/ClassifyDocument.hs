@@ -40,20 +40,16 @@ module Network.AWS.Comprehend.ClassifyDocument
     ) where
 
 import Network.AWS.Comprehend.Types
-import Network.AWS.Comprehend.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 
 -- | /See:/ 'classifyDocument' smart constructor.
-data ClassifyDocument =
-  ClassifyDocument'
-    { _cdText        :: !Text
-    , _cdEndpointARN :: !Text
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data ClassifyDocument = ClassifyDocument'{_cdText ::
+                                          !Text,
+                                          _cdEndpointARN :: !Text}
+                          deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'ClassifyDocument' with the minimum fields required to make a request.
 --
@@ -66,9 +62,9 @@ classifyDocument
     :: Text -- ^ 'cdText'
     -> Text -- ^ 'cdEndpointARN'
     -> ClassifyDocument
-classifyDocument pText_ pEndpointARN_ =
-  ClassifyDocument' {_cdText = pText_, _cdEndpointARN = pEndpointARN_}
-
+classifyDocument pText_ pEndpointARN_
+  = ClassifyDocument'{_cdText = pText_,
+                      _cdEndpointARN = pEndpointARN_}
 
 -- | The document text to be analyzed.
 cdText :: Lens' ClassifyDocument Text
@@ -117,40 +113,40 @@ instance ToQuery ClassifyDocument where
         toQuery = const mempty
 
 -- | /See:/ 'classifyDocumentResponse' smart constructor.
-data ClassifyDocumentResponse =
-  ClassifyDocumentResponse'
-    { _cdrsLabels         :: !(Maybe [DocumentLabel])
-    , _cdrsClasses        :: !(Maybe [DocumentClass])
-    , _cdrsResponseStatus :: !Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data ClassifyDocumentResponse = ClassifyDocumentResponse'{_cdrsLabels
+                                                          ::
+                                                          !(Maybe
+                                                              [DocumentLabel]),
+                                                          _cdrsClasses ::
+                                                          !(Maybe
+                                                              [DocumentClass]),
+                                                          _cdrsResponseStatus ::
+                                                          !Int}
+                                  deriving (Eq, Read, Show, Data, Typeable,
+                                            Generic)
 
 -- | Creates a value of 'ClassifyDocumentResponse' with the minimum fields required to make a request.
 --
 -- Use one of the following lenses to modify other fields as desired:
 --
--- * 'cdrsLabels' - The labels used the document being analyzed. These are used for multi-label trained models. Individual labels represent different categories that are related in some manner and are not multually exclusive. For example, a movie can be just an action movie, or it can be an action movie, a science fiction movie, and a comedy, all at the same time.
+-- * 'cdrsLabels' - The labels used the document being analyzed. These are used for multi-label trained models. Individual labels represent different categories that are related in some manner and are not multually exclusive. For example, a movie can be just an action movie, or it can be an action movie, a science fiction movie, and a comedy, all at the same time. 
 --
--- * 'cdrsClasses' - The classes used by the document being analyzed. These are used for multi-class trained models. Individual classes are mutually exclusive and each document is expected to have only a single class assigned to it. For example, an animal can be a dog or a cat, but not both at the same time.
+-- * 'cdrsClasses' - The classes used by the document being analyzed. These are used for multi-class trained models. Individual classes are mutually exclusive and each document is expected to have only a single class assigned to it. For example, an animal can be a dog or a cat, but not both at the same time. 
 --
 -- * 'cdrsResponseStatus' - -- | The response status code.
 classifyDocumentResponse
     :: Int -- ^ 'cdrsResponseStatus'
     -> ClassifyDocumentResponse
-classifyDocumentResponse pResponseStatus_ =
-  ClassifyDocumentResponse'
-    { _cdrsLabels = Nothing
-    , _cdrsClasses = Nothing
-    , _cdrsResponseStatus = pResponseStatus_
-    }
+classifyDocumentResponse pResponseStatus_
+  = ClassifyDocumentResponse'{_cdrsLabels = Nothing,
+                              _cdrsClasses = Nothing,
+                              _cdrsResponseStatus = pResponseStatus_}
 
-
--- | The labels used the document being analyzed. These are used for multi-label trained models. Individual labels represent different categories that are related in some manner and are not multually exclusive. For example, a movie can be just an action movie, or it can be an action movie, a science fiction movie, and a comedy, all at the same time.
+-- | The labels used the document being analyzed. These are used for multi-label trained models. Individual labels represent different categories that are related in some manner and are not multually exclusive. For example, a movie can be just an action movie, or it can be an action movie, a science fiction movie, and a comedy, all at the same time. 
 cdrsLabels :: Lens' ClassifyDocumentResponse [DocumentLabel]
 cdrsLabels = lens _cdrsLabels (\ s a -> s{_cdrsLabels = a}) . _Default . _Coerce
 
--- | The classes used by the document being analyzed. These are used for multi-class trained models. Individual classes are mutually exclusive and each document is expected to have only a single class assigned to it. For example, an animal can be a dog or a cat, but not both at the same time.
+-- | The classes used by the document being analyzed. These are used for multi-class trained models. Individual classes are mutually exclusive and each document is expected to have only a single class assigned to it. For example, an animal can be a dog or a cat, but not both at the same time. 
 cdrsClasses :: Lens' ClassifyDocumentResponse [DocumentClass]
 cdrsClasses = lens _cdrsClasses (\ s a -> s{_cdrsClasses = a}) . _Default . _Coerce
 

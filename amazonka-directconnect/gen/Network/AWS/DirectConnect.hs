@@ -43,148 +43,148 @@ module Network.AWS.DirectConnect
     -- ** DescribeDirectConnectGatewayAssociations (Paginated)
     , module Network.AWS.DirectConnect.DescribeDirectConnectGatewayAssociations
 
-    -- ** DescribeInterconnects
+    -- ** DescribeInterconnects 
     , module Network.AWS.DirectConnect.DescribeInterconnects
 
-    -- ** DescribeTags
+    -- ** DescribeTags 
     , module Network.AWS.DirectConnect.DescribeTags
 
-    -- ** CreateTransitVirtualInterface
+    -- ** CreateTransitVirtualInterface 
     , module Network.AWS.DirectConnect.CreateTransitVirtualInterface
 
-    -- ** DescribeLoa
+    -- ** DescribeLoa 
     , module Network.AWS.DirectConnect.DescribeLoa
 
-    -- ** DeleteConnection
+    -- ** DeleteConnection 
     , module Network.AWS.DirectConnect.DeleteConnection
 
-    -- ** UpdateVirtualInterfaceAttributes
+    -- ** UpdateVirtualInterfaceAttributes 
     , module Network.AWS.DirectConnect.UpdateVirtualInterfaceAttributes
 
-    -- ** AssociateConnectionWithLag
+    -- ** AssociateConnectionWithLag 
     , module Network.AWS.DirectConnect.AssociateConnectionWithLag
 
-    -- ** CreateDirectConnectGatewayAssociationProposal
+    -- ** CreateDirectConnectGatewayAssociationProposal 
     , module Network.AWS.DirectConnect.CreateDirectConnectGatewayAssociationProposal
 
-    -- ** CreateConnection
+    -- ** CreateConnection 
     , module Network.AWS.DirectConnect.CreateConnection
 
     -- ** DescribeDirectConnectGateways (Paginated)
     , module Network.AWS.DirectConnect.DescribeDirectConnectGateways
 
-    -- ** AssociateVirtualInterface
+    -- ** AssociateVirtualInterface 
     , module Network.AWS.DirectConnect.AssociateVirtualInterface
 
-    -- ** DescribeConnections
+    -- ** DescribeConnections 
     , module Network.AWS.DirectConnect.DescribeConnections
 
-    -- ** DeleteInterconnect
+    -- ** DeleteInterconnect 
     , module Network.AWS.DirectConnect.DeleteInterconnect
 
-    -- ** ConfirmPrivateVirtualInterface
+    -- ** ConfirmPrivateVirtualInterface 
     , module Network.AWS.DirectConnect.ConfirmPrivateVirtualInterface
 
-    -- ** UpdateDirectConnectGatewayAssociation
+    -- ** UpdateDirectConnectGatewayAssociation 
     , module Network.AWS.DirectConnect.UpdateDirectConnectGatewayAssociation
 
-    -- ** DeleteDirectConnectGatewayAssociation
+    -- ** DeleteDirectConnectGatewayAssociation 
     , module Network.AWS.DirectConnect.DeleteDirectConnectGatewayAssociation
 
-    -- ** DescribeLocations
+    -- ** DescribeLocations 
     , module Network.AWS.DirectConnect.DescribeLocations
 
-    -- ** CreateDirectConnectGatewayAssociation
+    -- ** CreateDirectConnectGatewayAssociation 
     , module Network.AWS.DirectConnect.CreateDirectConnectGatewayAssociation
 
-    -- ** AcceptDirectConnectGatewayAssociationProposal
+    -- ** AcceptDirectConnectGatewayAssociationProposal 
     , module Network.AWS.DirectConnect.AcceptDirectConnectGatewayAssociationProposal
 
-    -- ** CreatePublicVirtualInterface
+    -- ** CreatePublicVirtualInterface 
     , module Network.AWS.DirectConnect.CreatePublicVirtualInterface
 
-    -- ** AllocatePrivateVirtualInterface
+    -- ** AllocatePrivateVirtualInterface 
     , module Network.AWS.DirectConnect.AllocatePrivateVirtualInterface
 
-    -- ** DescribeLags
+    -- ** DescribeLags 
     , module Network.AWS.DirectConnect.DescribeLags
 
-    -- ** ConfirmConnection
+    -- ** ConfirmConnection 
     , module Network.AWS.DirectConnect.ConfirmConnection
 
     -- ** DescribeDirectConnectGatewayAttachments (Paginated)
     , module Network.AWS.DirectConnect.DescribeDirectConnectGatewayAttachments
 
-    -- ** ConfirmPublicVirtualInterface
+    -- ** ConfirmPublicVirtualInterface 
     , module Network.AWS.DirectConnect.ConfirmPublicVirtualInterface
 
-    -- ** DescribeVirtualGateways
+    -- ** DescribeVirtualGateways 
     , module Network.AWS.DirectConnect.DescribeVirtualGateways
 
-    -- ** DeleteDirectConnectGatewayAssociationProposal
+    -- ** DeleteDirectConnectGatewayAssociationProposal 
     , module Network.AWS.DirectConnect.DeleteDirectConnectGatewayAssociationProposal
 
-    -- ** CreateDirectConnectGateway
+    -- ** CreateDirectConnectGateway 
     , module Network.AWS.DirectConnect.CreateDirectConnectGateway
 
-    -- ** DeleteDirectConnectGateway
+    -- ** DeleteDirectConnectGateway 
     , module Network.AWS.DirectConnect.DeleteDirectConnectGateway
 
-    -- ** DescribeVirtualInterfaces
+    -- ** DescribeVirtualInterfaces 
     , module Network.AWS.DirectConnect.DescribeVirtualInterfaces
 
-    -- ** AllocateHostedConnection
+    -- ** AllocateHostedConnection 
     , module Network.AWS.DirectConnect.AllocateHostedConnection
 
-    -- ** DeleteVirtualInterface
+    -- ** DeleteVirtualInterface 
     , module Network.AWS.DirectConnect.DeleteVirtualInterface
 
-    -- ** CreatePrivateVirtualInterface
+    -- ** CreatePrivateVirtualInterface 
     , module Network.AWS.DirectConnect.CreatePrivateVirtualInterface
 
-    -- ** AllocatePublicVirtualInterface
+    -- ** AllocatePublicVirtualInterface 
     , module Network.AWS.DirectConnect.AllocatePublicVirtualInterface
 
-    -- ** DescribeDirectConnectGatewayAssociationProposals
+    -- ** DescribeDirectConnectGatewayAssociationProposals 
     , module Network.AWS.DirectConnect.DescribeDirectConnectGatewayAssociationProposals
 
-    -- ** DisassociateConnectionFromLag
+    -- ** DisassociateConnectionFromLag 
     , module Network.AWS.DirectConnect.DisassociateConnectionFromLag
 
-    -- ** TagResource
+    -- ** TagResource 
     , module Network.AWS.DirectConnect.TagResource
 
-    -- ** DeleteLag
+    -- ** DeleteLag 
     , module Network.AWS.DirectConnect.DeleteLag
 
-    -- ** UpdateLag
+    -- ** UpdateLag 
     , module Network.AWS.DirectConnect.UpdateLag
 
-    -- ** UntagResource
+    -- ** UntagResource 
     , module Network.AWS.DirectConnect.UntagResource
 
-    -- ** CreateBGPPeer
+    -- ** CreateBGPPeer 
     , module Network.AWS.DirectConnect.CreateBGPPeer
 
-    -- ** AssociateHostedConnection
+    -- ** AssociateHostedConnection 
     , module Network.AWS.DirectConnect.AssociateHostedConnection
 
-    -- ** CreateInterconnect
+    -- ** CreateInterconnect 
     , module Network.AWS.DirectConnect.CreateInterconnect
 
-    -- ** DeleteBGPPeer
+    -- ** DeleteBGPPeer 
     , module Network.AWS.DirectConnect.DeleteBGPPeer
 
-    -- ** AllocateTransitVirtualInterface
+    -- ** AllocateTransitVirtualInterface 
     , module Network.AWS.DirectConnect.AllocateTransitVirtualInterface
 
-    -- ** CreateLag
+    -- ** CreateLag 
     , module Network.AWS.DirectConnect.CreateLag
 
-    -- ** ConfirmTransitVirtualInterface
+    -- ** ConfirmTransitVirtualInterface 
     , module Network.AWS.DirectConnect.ConfirmTransitVirtualInterface
 
-    -- ** DescribeHostedConnections
+    -- ** DescribeHostedConnections 
     , module Network.AWS.DirectConnect.DescribeHostedConnections
 
     -- * Types

@@ -23,7 +23,7 @@
 --
 -- When you create each subnet, you provide the VPC ID and IPv4 CIDR block for the subnet. After you create a subnet, you can't change its CIDR block. The size of the subnet's IPv4 CIDR block can be the same as a VPC's IPv4 CIDR block, or a subset of a VPC's IPv4 CIDR block. If you create more than one subnet in a VPC, the subnets' CIDR blocks must not overlap. The smallest IPv4 subnet (and VPC) you can create uses a /28 netmask (16 IPv4 addresses), and the largest uses a /16 netmask (65,536 IPv4 addresses).
 --
--- If you've associated an IPv6 CIDR block with your VPC, you can create a subnet with an IPv6 CIDR block that uses a /64 prefix length.
+-- If you've associated an IPv6 CIDR block with your VPC, you can create a subnet with an IPv6 CIDR block that uses a /64 prefix length. 
 --
 -- /Important:/ AWS reserves both the first four and the last IPv4 address in each subnet's CIDR block. They're not available for use.
 --
@@ -56,25 +56,20 @@ module Network.AWS.EC2.CreateSubnet
     ) where
 
 import Network.AWS.EC2.Types
-import Network.AWS.EC2.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 
 -- | /See:/ 'createSubnet' smart constructor.
-data CreateSubnet =
-  CreateSubnet'
-    { _cssIPv6CidrBlock      :: !(Maybe Text)
-    , _cssAvailabilityZoneId :: !(Maybe Text)
-    , _cssOutpostARN         :: !(Maybe Text)
-    , _cssAvailabilityZone   :: !(Maybe Text)
-    , _cssDryRun             :: !(Maybe Bool)
-    , _cssCidrBlock          :: !Text
-    , _cssVPCId              :: !Text
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data CreateSubnet = CreateSubnet'{_cssIPv6CidrBlock
+                                  :: !(Maybe Text),
+                                  _cssAvailabilityZoneId :: !(Maybe Text),
+                                  _cssOutpostARN :: !(Maybe Text),
+                                  _cssAvailabilityZone :: !(Maybe Text),
+                                  _cssDryRun :: !(Maybe Bool),
+                                  _cssCidrBlock :: !Text, _cssVPCId :: !Text}
+                      deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'CreateSubnet' with the minimum fields required to make a request.
 --
@@ -97,17 +92,12 @@ createSubnet
     :: Text -- ^ 'cssCidrBlock'
     -> Text -- ^ 'cssVPCId'
     -> CreateSubnet
-createSubnet pCidrBlock_ pVPCId_ =
-  CreateSubnet'
-    { _cssIPv6CidrBlock = Nothing
-    , _cssAvailabilityZoneId = Nothing
-    , _cssOutpostARN = Nothing
-    , _cssAvailabilityZone = Nothing
-    , _cssDryRun = Nothing
-    , _cssCidrBlock = pCidrBlock_
-    , _cssVPCId = pVPCId_
-    }
-
+createSubnet pCidrBlock_ pVPCId_
+  = CreateSubnet'{_cssIPv6CidrBlock = Nothing,
+                  _cssAvailabilityZoneId = Nothing,
+                  _cssOutpostARN = Nothing,
+                  _cssAvailabilityZone = Nothing, _cssDryRun = Nothing,
+                  _cssCidrBlock = pCidrBlock_, _cssVPCId = pVPCId_}
 
 -- | The IPv6 network range for the subnet, in CIDR notation. The subnet size must use a /64 prefix length.
 cssIPv6CidrBlock :: Lens' CreateSubnet (Maybe Text)
@@ -169,13 +159,10 @@ instance ToQuery CreateSubnet where
                "VpcId" =: _cssVPCId]
 
 -- | /See:/ 'createSubnetResponse' smart constructor.
-data CreateSubnetResponse =
-  CreateSubnetResponse'
-    { _crersSubnet         :: !(Maybe Subnet)
-    , _crersResponseStatus :: !Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data CreateSubnetResponse = CreateSubnetResponse'{_crersSubnet
+                                                  :: !(Maybe Subnet),
+                                                  _crersResponseStatus :: !Int}
+                              deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'CreateSubnetResponse' with the minimum fields required to make a request.
 --
@@ -187,10 +174,9 @@ data CreateSubnetResponse =
 createSubnetResponse
     :: Int -- ^ 'crersResponseStatus'
     -> CreateSubnetResponse
-createSubnetResponse pResponseStatus_ =
-  CreateSubnetResponse'
-    {_crersSubnet = Nothing, _crersResponseStatus = pResponseStatus_}
-
+createSubnetResponse pResponseStatus_
+  = CreateSubnetResponse'{_crersSubnet = Nothing,
+                          _crersResponseStatus = pResponseStatus_}
 
 -- | Information about the subnet.
 crersSubnet :: Lens' CreateSubnetResponse (Maybe Subnet)

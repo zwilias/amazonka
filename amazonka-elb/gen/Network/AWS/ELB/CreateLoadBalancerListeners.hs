@@ -40,7 +40,6 @@ module Network.AWS.ELB.CreateLoadBalancerListeners
     ) where
 
 import Network.AWS.ELB.Types
-import Network.AWS.ELB.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.Request
@@ -51,13 +50,12 @@ import Network.AWS.Response
 --
 --
 -- /See:/ 'createLoadBalancerListeners' smart constructor.
-data CreateLoadBalancerListeners =
-  CreateLoadBalancerListeners'
-    { _clblLoadBalancerName :: !Text
-    , _clblListeners        :: ![Listener]
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data CreateLoadBalancerListeners = CreateLoadBalancerListeners'{_clblLoadBalancerName
+                                                                :: !Text,
+                                                                _clblListeners
+                                                                :: ![Listener]}
+                                     deriving (Eq, Read, Show, Data, Typeable,
+                                               Generic)
 
 -- | Creates a value of 'CreateLoadBalancerListeners' with the minimum fields required to make a request.
 --
@@ -69,10 +67,10 @@ data CreateLoadBalancerListeners =
 createLoadBalancerListeners
     :: Text -- ^ 'clblLoadBalancerName'
     -> CreateLoadBalancerListeners
-createLoadBalancerListeners pLoadBalancerName_ =
-  CreateLoadBalancerListeners'
-    {_clblLoadBalancerName = pLoadBalancerName_, _clblListeners = mempty}
-
+createLoadBalancerListeners pLoadBalancerName_
+  = CreateLoadBalancerListeners'{_clblLoadBalancerName
+                                   = pLoadBalancerName_,
+                                 _clblListeners = mempty}
 
 -- | The name of the load balancer.
 clblLoadBalancerName :: Lens' CreateLoadBalancerListeners Text
@@ -117,12 +115,11 @@ instance ToQuery CreateLoadBalancerListeners where
 --
 --
 -- /See:/ 'createLoadBalancerListenersResponse' smart constructor.
-newtype CreateLoadBalancerListenersResponse =
-  CreateLoadBalancerListenersResponse'
-    { _clblrsResponseStatus :: Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+newtype CreateLoadBalancerListenersResponse = CreateLoadBalancerListenersResponse'{_clblrsResponseStatus
+                                                                                   ::
+                                                                                   Int}
+                                                deriving (Eq, Read, Show, Data,
+                                                          Typeable, Generic)
 
 -- | Creates a value of 'CreateLoadBalancerListenersResponse' with the minimum fields required to make a request.
 --
@@ -132,10 +129,9 @@ newtype CreateLoadBalancerListenersResponse =
 createLoadBalancerListenersResponse
     :: Int -- ^ 'clblrsResponseStatus'
     -> CreateLoadBalancerListenersResponse
-createLoadBalancerListenersResponse pResponseStatus_ =
-  CreateLoadBalancerListenersResponse'
-    {_clblrsResponseStatus = pResponseStatus_}
-
+createLoadBalancerListenersResponse pResponseStatus_
+  = CreateLoadBalancerListenersResponse'{_clblrsResponseStatus
+                                           = pResponseStatus_}
 
 -- | -- | The response status code.
 clblrsResponseStatus :: Lens' CreateLoadBalancerListenersResponse Int

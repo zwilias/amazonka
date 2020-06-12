@@ -46,18 +46,17 @@ import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 import Network.AWS.WorkMail.Types
-import Network.AWS.WorkMail.Types.Product
 
 -- | /See:/ 'listMailboxPermissions' smart constructor.
-data ListMailboxPermissions =
-  ListMailboxPermissions'
-    { _lmpNextToken      :: !(Maybe Text)
-    , _lmpMaxResults     :: !(Maybe Nat)
-    , _lmpOrganizationId :: !Text
-    , _lmpEntityId       :: !Text
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data ListMailboxPermissions = ListMailboxPermissions'{_lmpNextToken
+                                                      :: !(Maybe Text),
+                                                      _lmpMaxResults ::
+                                                      !(Maybe Nat),
+                                                      _lmpOrganizationId ::
+                                                      !Text,
+                                                      _lmpEntityId :: !Text}
+                                deriving (Eq, Read, Show, Data, Typeable,
+                                          Generic)
 
 -- | Creates a value of 'ListMailboxPermissions' with the minimum fields required to make a request.
 --
@@ -74,14 +73,11 @@ listMailboxPermissions
     :: Text -- ^ 'lmpOrganizationId'
     -> Text -- ^ 'lmpEntityId'
     -> ListMailboxPermissions
-listMailboxPermissions pOrganizationId_ pEntityId_ =
-  ListMailboxPermissions'
-    { _lmpNextToken = Nothing
-    , _lmpMaxResults = Nothing
-    , _lmpOrganizationId = pOrganizationId_
-    , _lmpEntityId = pEntityId_
-    }
-
+listMailboxPermissions pOrganizationId_ pEntityId_
+  = ListMailboxPermissions'{_lmpNextToken = Nothing,
+                            _lmpMaxResults = Nothing,
+                            _lmpOrganizationId = pOrganizationId_,
+                            _lmpEntityId = pEntityId_}
 
 -- | The token to use to retrieve the next page of results. The first call does not contain any tokens.
 lmpNextToken :: Lens' ListMailboxPermissions (Maybe Text)
@@ -141,14 +137,18 @@ instance ToQuery ListMailboxPermissions where
         toQuery = const mempty
 
 -- | /See:/ 'listMailboxPermissionsResponse' smart constructor.
-data ListMailboxPermissionsResponse =
-  ListMailboxPermissionsResponse'
-    { _lmprsNextToken      :: !(Maybe Text)
-    , _lmprsPermissions    :: !(Maybe [Permission])
-    , _lmprsResponseStatus :: !Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data ListMailboxPermissionsResponse = ListMailboxPermissionsResponse'{_lmprsNextToken
+                                                                      ::
+                                                                      !(Maybe
+                                                                          Text),
+                                                                      _lmprsPermissions
+                                                                      ::
+                                                                      !(Maybe
+                                                                          [Permission]),
+                                                                      _lmprsResponseStatus
+                                                                      :: !Int}
+                                        deriving (Eq, Read, Show, Data,
+                                                  Typeable, Generic)
 
 -- | Creates a value of 'ListMailboxPermissionsResponse' with the minimum fields required to make a request.
 --
@@ -162,13 +162,11 @@ data ListMailboxPermissionsResponse =
 listMailboxPermissionsResponse
     :: Int -- ^ 'lmprsResponseStatus'
     -> ListMailboxPermissionsResponse
-listMailboxPermissionsResponse pResponseStatus_ =
-  ListMailboxPermissionsResponse'
-    { _lmprsNextToken = Nothing
-    , _lmprsPermissions = Nothing
-    , _lmprsResponseStatus = pResponseStatus_
-    }
-
+listMailboxPermissionsResponse pResponseStatus_
+  = ListMailboxPermissionsResponse'{_lmprsNextToken =
+                                      Nothing,
+                                    _lmprsPermissions = Nothing,
+                                    _lmprsResponseStatus = pResponseStatus_}
 
 -- | The token to use to retrieve the next page of results. The value is "null" when there are no more results to return.
 lmprsNextToken :: Lens' ListMailboxPermissionsResponse (Maybe Text)

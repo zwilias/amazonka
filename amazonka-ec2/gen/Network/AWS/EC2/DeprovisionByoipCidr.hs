@@ -41,20 +41,16 @@ module Network.AWS.EC2.DeprovisionByoipCidr
     ) where
 
 import Network.AWS.EC2.Types
-import Network.AWS.EC2.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 
 -- | /See:/ 'deprovisionByoipCidr' smart constructor.
-data DeprovisionByoipCidr =
-  DeprovisionByoipCidr'
-    { _depDryRun :: !(Maybe Bool)
-    , _depCidr   :: !Text
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data DeprovisionByoipCidr = DeprovisionByoipCidr'{_depDryRun
+                                                  :: !(Maybe Bool),
+                                                  _depCidr :: !Text}
+                              deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'DeprovisionByoipCidr' with the minimum fields required to make a request.
 --
@@ -66,9 +62,9 @@ data DeprovisionByoipCidr =
 deprovisionByoipCidr
     :: Text -- ^ 'depCidr'
     -> DeprovisionByoipCidr
-deprovisionByoipCidr pCidr_ =
-  DeprovisionByoipCidr' {_depDryRun = Nothing, _depCidr = pCidr_}
-
+deprovisionByoipCidr pCidr_
+  = DeprovisionByoipCidr'{_depDryRun = Nothing,
+                          _depCidr = pCidr_}
 
 -- | Checks whether you have the required permissions for the action, without actually making the request, and provides an error response. If you have the required permissions, the error response is @DryRunOperation@ . Otherwise, it is @UnauthorizedOperation@ .
 depDryRun :: Lens' DeprovisionByoipCidr (Maybe Bool)
@@ -106,13 +102,14 @@ instance ToQuery DeprovisionByoipCidr where
                "DryRun" =: _depDryRun, "Cidr" =: _depCidr]
 
 -- | /See:/ 'deprovisionByoipCidrResponse' smart constructor.
-data DeprovisionByoipCidrResponse =
-  DeprovisionByoipCidrResponse'
-    { _deprsByoipCidr      :: !(Maybe ByoipCidr)
-    , _deprsResponseStatus :: !Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data DeprovisionByoipCidrResponse = DeprovisionByoipCidrResponse'{_deprsByoipCidr
+                                                                  ::
+                                                                  !(Maybe
+                                                                      ByoipCidr),
+                                                                  _deprsResponseStatus
+                                                                  :: !Int}
+                                      deriving (Eq, Read, Show, Data, Typeable,
+                                                Generic)
 
 -- | Creates a value of 'DeprovisionByoipCidrResponse' with the minimum fields required to make a request.
 --
@@ -124,10 +121,10 @@ data DeprovisionByoipCidrResponse =
 deprovisionByoipCidrResponse
     :: Int -- ^ 'deprsResponseStatus'
     -> DeprovisionByoipCidrResponse
-deprovisionByoipCidrResponse pResponseStatus_ =
-  DeprovisionByoipCidrResponse'
-    {_deprsByoipCidr = Nothing, _deprsResponseStatus = pResponseStatus_}
-
+deprovisionByoipCidrResponse pResponseStatus_
+  = DeprovisionByoipCidrResponse'{_deprsByoipCidr =
+                                    Nothing,
+                                  _deprsResponseStatus = pResponseStatus_}
 
 -- | Information about the address range.
 deprsByoipCidr :: Lens' DeprovisionByoipCidrResponse (Maybe ByoipCidr)

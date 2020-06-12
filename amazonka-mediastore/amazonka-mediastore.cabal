@@ -59,8 +59,10 @@ library
         , Network.AWS.MediaStore.Waiters
 
     other-modules:
-          Network.AWS.MediaStore.Types.Product
-        , Network.AWS.MediaStore.Types.Sum
+          Network.AWS.MediaStore.Types.CORSRule
+        , Network.AWS.MediaStore.Types.Container
+        , Network.AWS.MediaStore.Types.ContainerStatus
+        , Network.AWS.MediaStore.Types.MethodName
 
     build-depends:
           amazonka-core == 1.6.1.*

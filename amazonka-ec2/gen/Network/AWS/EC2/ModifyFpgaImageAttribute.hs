@@ -47,28 +47,38 @@ module Network.AWS.EC2.ModifyFpgaImageAttribute
     ) where
 
 import Network.AWS.EC2.Types
-import Network.AWS.EC2.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 
 -- | /See:/ 'modifyFpgaImageAttribute' smart constructor.
-data ModifyFpgaImageAttribute =
-  ModifyFpgaImageAttribute'
-    { _mfiaAttribute      :: !(Maybe FpgaImageAttributeName)
-    , _mfiaUserIds        :: !(Maybe [Text])
-    , _mfiaUserGroups     :: !(Maybe [Text])
-    , _mfiaLoadPermission :: !(Maybe LoadPermissionModifications)
-    , _mfiaName           :: !(Maybe Text)
-    , _mfiaOperationType  :: !(Maybe OperationType)
-    , _mfiaProductCodes   :: !(Maybe [Text])
-    , _mfiaDescription    :: !(Maybe Text)
-    , _mfiaDryRun         :: !(Maybe Bool)
-    , _mfiaFpgaImageId    :: !Text
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data ModifyFpgaImageAttribute = ModifyFpgaImageAttribute'{_mfiaAttribute
+                                                          ::
+                                                          !(Maybe
+                                                              FpgaImageAttributeName),
+                                                          _mfiaUserIds ::
+                                                          !(Maybe [Text]),
+                                                          _mfiaUserGroups ::
+                                                          !(Maybe [Text]),
+                                                          _mfiaLoadPermission ::
+                                                          !(Maybe
+                                                              LoadPermissionModifications),
+                                                          _mfiaName ::
+                                                          !(Maybe Text),
+                                                          _mfiaOperationType ::
+                                                          !(Maybe
+                                                              OperationType),
+                                                          _mfiaProductCodes ::
+                                                          !(Maybe [Text]),
+                                                          _mfiaDescription ::
+                                                          !(Maybe Text),
+                                                          _mfiaDryRun ::
+                                                          !(Maybe Bool),
+                                                          _mfiaFpgaImageId ::
+                                                          !Text}
+                                  deriving (Eq, Read, Show, Data, Typeable,
+                                            Generic)
 
 -- | Creates a value of 'ModifyFpgaImageAttribute' with the minimum fields required to make a request.
 --
@@ -96,20 +106,14 @@ data ModifyFpgaImageAttribute =
 modifyFpgaImageAttribute
     :: Text -- ^ 'mfiaFpgaImageId'
     -> ModifyFpgaImageAttribute
-modifyFpgaImageAttribute pFpgaImageId_ =
-  ModifyFpgaImageAttribute'
-    { _mfiaAttribute = Nothing
-    , _mfiaUserIds = Nothing
-    , _mfiaUserGroups = Nothing
-    , _mfiaLoadPermission = Nothing
-    , _mfiaName = Nothing
-    , _mfiaOperationType = Nothing
-    , _mfiaProductCodes = Nothing
-    , _mfiaDescription = Nothing
-    , _mfiaDryRun = Nothing
-    , _mfiaFpgaImageId = pFpgaImageId_
-    }
-
+modifyFpgaImageAttribute pFpgaImageId_
+  = ModifyFpgaImageAttribute'{_mfiaAttribute = Nothing,
+                              _mfiaUserIds = Nothing, _mfiaUserGroups = Nothing,
+                              _mfiaLoadPermission = Nothing,
+                              _mfiaName = Nothing, _mfiaOperationType = Nothing,
+                              _mfiaProductCodes = Nothing,
+                              _mfiaDescription = Nothing, _mfiaDryRun = Nothing,
+                              _mfiaFpgaImageId = pFpgaImageId_}
 
 -- | The name of the attribute.
 mfiaAttribute :: Lens' ModifyFpgaImageAttribute (Maybe FpgaImageAttributeName)
@@ -191,13 +195,15 @@ instance ToQuery ModifyFpgaImageAttribute where
                "FpgaImageId" =: _mfiaFpgaImageId]
 
 -- | /See:/ 'modifyFpgaImageAttributeResponse' smart constructor.
-data ModifyFpgaImageAttributeResponse =
-  ModifyFpgaImageAttributeResponse'
-    { _mfiarsFpgaImageAttribute :: !(Maybe FpgaImageAttribute)
-    , _mfiarsResponseStatus     :: !Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data ModifyFpgaImageAttributeResponse = ModifyFpgaImageAttributeResponse'{_mfiarsFpgaImageAttribute
+                                                                          ::
+                                                                          !(Maybe
+                                                                              FpgaImageAttribute),
+                                                                          _mfiarsResponseStatus
+                                                                          ::
+                                                                          !Int}
+                                          deriving (Eq, Read, Show, Data,
+                                                    Typeable, Generic)
 
 -- | Creates a value of 'ModifyFpgaImageAttributeResponse' with the minimum fields required to make a request.
 --
@@ -209,12 +215,10 @@ data ModifyFpgaImageAttributeResponse =
 modifyFpgaImageAttributeResponse
     :: Int -- ^ 'mfiarsResponseStatus'
     -> ModifyFpgaImageAttributeResponse
-modifyFpgaImageAttributeResponse pResponseStatus_ =
-  ModifyFpgaImageAttributeResponse'
-    { _mfiarsFpgaImageAttribute = Nothing
-    , _mfiarsResponseStatus = pResponseStatus_
-    }
-
+modifyFpgaImageAttributeResponse pResponseStatus_
+  = ModifyFpgaImageAttributeResponse'{_mfiarsFpgaImageAttribute
+                                        = Nothing,
+                                      _mfiarsResponseStatus = pResponseStatus_}
 
 -- | Information about the attribute.
 mfiarsFpgaImageAttribute :: Lens' ModifyFpgaImageAttributeResponse (Maybe FpgaImageAttribute)

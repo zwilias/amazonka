@@ -41,23 +41,19 @@ module Network.AWS.AlexaBusiness.UpdateContact
     ) where
 
 import Network.AWS.AlexaBusiness.Types
-import Network.AWS.AlexaBusiness.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 
 -- | /See:/ 'updateContact' smart constructor.
-data UpdateContact =
-  UpdateContact'
-    { _ucLastName    :: !(Maybe Text)
-    , _ucPhoneNumber :: !(Maybe Text)
-    , _ucFirstName   :: !(Maybe Text)
-    , _ucDisplayName :: !(Maybe Text)
-    , _ucContactARN  :: !Text
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data UpdateContact = UpdateContact'{_ucLastName ::
+                                    !(Maybe Text),
+                                    _ucPhoneNumber :: !(Maybe Text),
+                                    _ucFirstName :: !(Maybe Text),
+                                    _ucDisplayName :: !(Maybe Text),
+                                    _ucContactARN :: !Text}
+                       deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'UpdateContact' with the minimum fields required to make a request.
 --
@@ -75,15 +71,11 @@ data UpdateContact =
 updateContact
     :: Text -- ^ 'ucContactARN'
     -> UpdateContact
-updateContact pContactARN_ =
-  UpdateContact'
-    { _ucLastName = Nothing
-    , _ucPhoneNumber = Nothing
-    , _ucFirstName = Nothing
-    , _ucDisplayName = Nothing
-    , _ucContactARN = pContactARN_
-    }
-
+updateContact pContactARN_
+  = UpdateContact'{_ucLastName = Nothing,
+                   _ucPhoneNumber = Nothing, _ucFirstName = Nothing,
+                   _ucDisplayName = Nothing,
+                   _ucContactARN = pContactARN_}
 
 -- | The updated last name of the contact.
 ucLastName :: Lens' UpdateContact (Maybe Text)
@@ -143,12 +135,10 @@ instance ToQuery UpdateContact where
         toQuery = const mempty
 
 -- | /See:/ 'updateContactResponse' smart constructor.
-newtype UpdateContactResponse =
-  UpdateContactResponse'
-    { _ucrsResponseStatus :: Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+newtype UpdateContactResponse = UpdateContactResponse'{_ucrsResponseStatus
+                                                       :: Int}
+                                  deriving (Eq, Read, Show, Data, Typeable,
+                                            Generic)
 
 -- | Creates a value of 'UpdateContactResponse' with the minimum fields required to make a request.
 --
@@ -158,9 +148,9 @@ newtype UpdateContactResponse =
 updateContactResponse
     :: Int -- ^ 'ucrsResponseStatus'
     -> UpdateContactResponse
-updateContactResponse pResponseStatus_ =
-  UpdateContactResponse' {_ucrsResponseStatus = pResponseStatus_}
-
+updateContactResponse pResponseStatus_
+  = UpdateContactResponse'{_ucrsResponseStatus =
+                             pResponseStatus_}
 
 -- | -- | The response status code.
 ucrsResponseStatus :: Lens' UpdateContactResponse Int

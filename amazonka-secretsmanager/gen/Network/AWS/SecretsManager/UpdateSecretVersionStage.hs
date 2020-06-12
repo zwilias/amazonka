@@ -18,7 +18,7 @@
 -- Stability   : auto-generated
 -- Portability : non-portable (GHC extensions)
 --
--- Modifies the staging labels attached to a version of a secret. Staging labels are used to track a version as it progresses through the secret rotation process. You can attach a staging label to only one version of a secret at a time. If a staging label to be added is already attached to another version, then it is moved--removed from the other version first and then attached to this one. For more information about staging labels, see <http://docs.aws.amazon.com/secretsmanager/latest/userguide/terms-concepts.html#term_staging-label Staging Labels> in the /AWS Secrets Manager User Guide/ .
+-- Modifies the staging labels attached to a version of a secret. Staging labels are used to track a version as it progresses through the secret rotation process. You can attach a staging label to only one version of a secret at a time. If a staging label to be added is already attached to another version, then it is moved--removed from the other version first and then attached to this one. For more information about staging labels, see <http://docs.aws.amazon.com/secretsmanager/latest/userguide/terms-concepts.html#term_staging-label Staging Labels> in the /AWS Secrets Manager User Guide/ . 
 --
 --
 -- The staging labels that you specify in the @VersionStage@ parameter are added to the existing list of staging labels--they don't replace it.
@@ -27,7 +27,7 @@
 --
 -- If this action results in the last label being removed from a version, then the version is considered to be 'deprecated' and can be deleted by Secrets Manager.
 --
--- __Minimum permissions__
+-- __Minimum permissions__ 
 --
 -- To run this command, you must have the following permissions:
 --
@@ -35,7 +35,7 @@
 --
 --
 --
--- __Related operations__
+-- __Related operations__ 
 --
 --     * To get the list of staging labels that are currently associated with a version of a secret, use @'DescribeSecret' @ and examine the @SecretVersionsToStages@ response value.
 --
@@ -66,18 +66,18 @@ import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 import Network.AWS.SecretsManager.Types
-import Network.AWS.SecretsManager.Types.Product
 
 -- | /See:/ 'updateSecretVersionStage' smart constructor.
-data UpdateSecretVersionStage =
-  UpdateSecretVersionStage'
-    { _usvsRemoveFromVersionId :: !(Maybe Text)
-    , _usvsMoveToVersionId     :: !(Maybe Text)
-    , _usvsSecretId            :: !Text
-    , _usvsVersionStage        :: !Text
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data UpdateSecretVersionStage = UpdateSecretVersionStage'{_usvsRemoveFromVersionId
+                                                          :: !(Maybe Text),
+                                                          _usvsMoveToVersionId
+                                                          :: !(Maybe Text),
+                                                          _usvsSecretId ::
+                                                          !Text,
+                                                          _usvsVersionStage ::
+                                                          !Text}
+                                  deriving (Eq, Read, Show, Data, Typeable,
+                                            Generic)
 
 -- | Creates a value of 'UpdateSecretVersionStage' with the minimum fields required to make a request.
 --
@@ -94,14 +94,12 @@ updateSecretVersionStage
     :: Text -- ^ 'usvsSecretId'
     -> Text -- ^ 'usvsVersionStage'
     -> UpdateSecretVersionStage
-updateSecretVersionStage pSecretId_ pVersionStage_ =
-  UpdateSecretVersionStage'
-    { _usvsRemoveFromVersionId = Nothing
-    , _usvsMoveToVersionId = Nothing
-    , _usvsSecretId = pSecretId_
-    , _usvsVersionStage = pVersionStage_
-    }
-
+updateSecretVersionStage pSecretId_ pVersionStage_
+  = UpdateSecretVersionStage'{_usvsRemoveFromVersionId
+                                = Nothing,
+                              _usvsMoveToVersionId = Nothing,
+                              _usvsSecretId = pSecretId_,
+                              _usvsVersionStage = pVersionStage_}
 
 -- | (Optional) Specifies the secret version ID of the version that the staging labels are to be removed from. If you want to move a label to a new version, you do not have to explicitly remove it with this parameter. Adding a label using the @MoveToVersionId@ parameter automatically removes it from the old version. However, if you do include both the "MoveTo" and "RemoveFrom" parameters, then the move is successful only if the staging labels are actually present on the "RemoveFrom" version. If a staging label was on a different version than "RemoveFrom", then the request fails.
 usvsRemoveFromVersionId :: Lens' UpdateSecretVersionStage (Maybe Text)
@@ -161,14 +159,19 @@ instance ToQuery UpdateSecretVersionStage where
         toQuery = const mempty
 
 -- | /See:/ 'updateSecretVersionStageResponse' smart constructor.
-data UpdateSecretVersionStageResponse =
-  UpdateSecretVersionStageResponse'
-    { _usvsrsARN            :: !(Maybe Text)
-    , _usvsrsName           :: !(Maybe Text)
-    , _usvsrsResponseStatus :: !Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data UpdateSecretVersionStageResponse = UpdateSecretVersionStageResponse'{_usvsrsARN
+                                                                          ::
+                                                                          !(Maybe
+                                                                              Text),
+                                                                          _usvsrsName
+                                                                          ::
+                                                                          !(Maybe
+                                                                              Text),
+                                                                          _usvsrsResponseStatus
+                                                                          ::
+                                                                          !Int}
+                                          deriving (Eq, Read, Show, Data,
+                                                    Typeable, Generic)
 
 -- | Creates a value of 'UpdateSecretVersionStageResponse' with the minimum fields required to make a request.
 --
@@ -182,13 +185,11 @@ data UpdateSecretVersionStageResponse =
 updateSecretVersionStageResponse
     :: Int -- ^ 'usvsrsResponseStatus'
     -> UpdateSecretVersionStageResponse
-updateSecretVersionStageResponse pResponseStatus_ =
-  UpdateSecretVersionStageResponse'
-    { _usvsrsARN = Nothing
-    , _usvsrsName = Nothing
-    , _usvsrsResponseStatus = pResponseStatus_
-    }
-
+updateSecretVersionStageResponse pResponseStatus_
+  = UpdateSecretVersionStageResponse'{_usvsrsARN =
+                                        Nothing,
+                                      _usvsrsName = Nothing,
+                                      _usvsrsResponseStatus = pResponseStatus_}
 
 -- | The ARN of the secret with the staging labels that were modified.
 usvsrsARN :: Lens' UpdateSecretVersionStageResponse (Maybe Text)

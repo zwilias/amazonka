@@ -41,15 +41,11 @@ import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 import Network.AWS.SSM.Types
-import Network.AWS.SSM.Types.Product
 
 -- | /See:/ 'deleteActivation' smart constructor.
-newtype DeleteActivation =
-  DeleteActivation'
-    { _daActivationId :: Text
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+newtype DeleteActivation = DeleteActivation'{_daActivationId
+                                             :: Text}
+                             deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'DeleteActivation' with the minimum fields required to make a request.
 --
@@ -59,9 +55,8 @@ newtype DeleteActivation =
 deleteActivation
     :: Text -- ^ 'daActivationId'
     -> DeleteActivation
-deleteActivation pActivationId_ =
-  DeleteActivation' {_daActivationId = pActivationId_}
-
+deleteActivation pActivationId_
+  = DeleteActivation'{_daActivationId = pActivationId_}
 
 -- | The ID of the activation that you want to delete.
 daActivationId :: Lens' DeleteActivation Text
@@ -101,12 +96,10 @@ instance ToQuery DeleteActivation where
         toQuery = const mempty
 
 -- | /See:/ 'deleteActivationResponse' smart constructor.
-newtype DeleteActivationResponse =
-  DeleteActivationResponse'
-    { _delersResponseStatus :: Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+newtype DeleteActivationResponse = DeleteActivationResponse'{_delersResponseStatus
+                                                             :: Int}
+                                     deriving (Eq, Read, Show, Data, Typeable,
+                                               Generic)
 
 -- | Creates a value of 'DeleteActivationResponse' with the minimum fields required to make a request.
 --
@@ -116,9 +109,9 @@ newtype DeleteActivationResponse =
 deleteActivationResponse
     :: Int -- ^ 'delersResponseStatus'
     -> DeleteActivationResponse
-deleteActivationResponse pResponseStatus_ =
-  DeleteActivationResponse' {_delersResponseStatus = pResponseStatus_}
-
+deleteActivationResponse pResponseStatus_
+  = DeleteActivationResponse'{_delersResponseStatus =
+                                pResponseStatus_}
 
 -- | -- | The response status code.
 delersResponseStatus :: Lens' DeleteActivationResponse Int

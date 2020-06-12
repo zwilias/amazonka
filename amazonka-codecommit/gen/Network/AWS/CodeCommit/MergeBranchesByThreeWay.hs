@@ -49,29 +49,42 @@ module Network.AWS.CodeCommit.MergeBranchesByThreeWay
     ) where
 
 import Network.AWS.CodeCommit.Types
-import Network.AWS.CodeCommit.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 
 -- | /See:/ 'mergeBranchesByThreeWay' smart constructor.
-data MergeBranchesByThreeWay =
-  MergeBranchesByThreeWay'
-    { _mbbtwEmail :: !(Maybe Text)
-    , _mbbtwAuthorName :: !(Maybe Text)
-    , _mbbtwTargetBranch :: !(Maybe Text)
-    , _mbbtwConflictDetailLevel :: !(Maybe ConflictDetailLevelTypeEnum)
-    , _mbbtwCommitMessage :: !(Maybe Text)
-    , _mbbtwConflictResolution :: !(Maybe ConflictResolution)
-    , _mbbtwConflictResolutionStrategy :: !(Maybe ConflictResolutionStrategyTypeEnum)
-    , _mbbtwKeepEmptyFolders :: !(Maybe Bool)
-    , _mbbtwRepositoryName :: !Text
-    , _mbbtwSourceCommitSpecifier :: !Text
-    , _mbbtwDestinationCommitSpecifier :: !Text
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data MergeBranchesByThreeWay = MergeBranchesByThreeWay'{_mbbtwEmail
+                                                        :: !(Maybe Text),
+                                                        _mbbtwAuthorName ::
+                                                        !(Maybe Text),
+                                                        _mbbtwTargetBranch ::
+                                                        !(Maybe Text),
+                                                        _mbbtwConflictDetailLevel
+                                                        ::
+                                                        !(Maybe
+                                                            ConflictDetailLevelTypeEnum),
+                                                        _mbbtwCommitMessage ::
+                                                        !(Maybe Text),
+                                                        _mbbtwConflictResolution
+                                                        ::
+                                                        !(Maybe
+                                                            ConflictResolution),
+                                                        _mbbtwConflictResolutionStrategy
+                                                        ::
+                                                        !(Maybe
+                                                            ConflictResolutionStrategyTypeEnum),
+                                                        _mbbtwKeepEmptyFolders
+                                                        :: !(Maybe Bool),
+                                                        _mbbtwRepositoryName ::
+                                                        !Text,
+                                                        _mbbtwSourceCommitSpecifier
+                                                        :: !Text,
+                                                        _mbbtwDestinationCommitSpecifier
+                                                        :: !Text}
+                                 deriving (Eq, Read, Show, Data, Typeable,
+                                           Generic)
 
 -- | Creates a value of 'MergeBranchesByThreeWay' with the minimum fields required to make a request.
 --
@@ -81,7 +94,7 @@ data MergeBranchesByThreeWay =
 --
 -- * 'mbbtwAuthorName' - The name of the author who created the commit. This information is used as both the author and committer for the commit.
 --
--- * 'mbbtwTargetBranch' - The branch where the merge is applied.
+-- * 'mbbtwTargetBranch' - The branch where the merge is applied. 
 --
 -- * 'mbbtwConflictDetailLevel' - The level of conflict detail to use. If unspecified, the default FILE_LEVEL is used, which returns a not-mergeable result if the same file has differences in both branches. If LINE_LEVEL is specified, a conflict is considered not mergeable if the same file in both branches has differences on the same line.
 --
@@ -103,21 +116,21 @@ mergeBranchesByThreeWay
     -> Text -- ^ 'mbbtwSourceCommitSpecifier'
     -> Text -- ^ 'mbbtwDestinationCommitSpecifier'
     -> MergeBranchesByThreeWay
-mergeBranchesByThreeWay pRepositoryName_ pSourceCommitSpecifier_ pDestinationCommitSpecifier_ =
-  MergeBranchesByThreeWay'
-    { _mbbtwEmail = Nothing
-    , _mbbtwAuthorName = Nothing
-    , _mbbtwTargetBranch = Nothing
-    , _mbbtwConflictDetailLevel = Nothing
-    , _mbbtwCommitMessage = Nothing
-    , _mbbtwConflictResolution = Nothing
-    , _mbbtwConflictResolutionStrategy = Nothing
-    , _mbbtwKeepEmptyFolders = Nothing
-    , _mbbtwRepositoryName = pRepositoryName_
-    , _mbbtwSourceCommitSpecifier = pSourceCommitSpecifier_
-    , _mbbtwDestinationCommitSpecifier = pDestinationCommitSpecifier_
-    }
-
+mergeBranchesByThreeWay pRepositoryName_
+  pSourceCommitSpecifier_ pDestinationCommitSpecifier_
+  = MergeBranchesByThreeWay'{_mbbtwEmail = Nothing,
+                             _mbbtwAuthorName = Nothing,
+                             _mbbtwTargetBranch = Nothing,
+                             _mbbtwConflictDetailLevel = Nothing,
+                             _mbbtwCommitMessage = Nothing,
+                             _mbbtwConflictResolution = Nothing,
+                             _mbbtwConflictResolutionStrategy = Nothing,
+                             _mbbtwKeepEmptyFolders = Nothing,
+                             _mbbtwRepositoryName = pRepositoryName_,
+                             _mbbtwSourceCommitSpecifier =
+                               pSourceCommitSpecifier_,
+                             _mbbtwDestinationCommitSpecifier =
+                               pDestinationCommitSpecifier_}
 
 -- | The email address of the person merging the branches. This information is used in the commit information for the merge.
 mbbtwEmail :: Lens' MergeBranchesByThreeWay (Maybe Text)
@@ -127,7 +140,7 @@ mbbtwEmail = lens _mbbtwEmail (\ s a -> s{_mbbtwEmail = a})
 mbbtwAuthorName :: Lens' MergeBranchesByThreeWay (Maybe Text)
 mbbtwAuthorName = lens _mbbtwAuthorName (\ s a -> s{_mbbtwAuthorName = a})
 
--- | The branch where the merge is applied.
+-- | The branch where the merge is applied. 
 mbbtwTargetBranch :: Lens' MergeBranchesByThreeWay (Maybe Text)
 mbbtwTargetBranch = lens _mbbtwTargetBranch (\ s a -> s{_mbbtwTargetBranch = a})
 
@@ -218,14 +231,18 @@ instance ToQuery MergeBranchesByThreeWay where
         toQuery = const mempty
 
 -- | /See:/ 'mergeBranchesByThreeWayResponse' smart constructor.
-data MergeBranchesByThreeWayResponse =
-  MergeBranchesByThreeWayResponse'
-    { _mbbtwrsCommitId       :: !(Maybe Text)
-    , _mbbtwrsTreeId         :: !(Maybe Text)
-    , _mbbtwrsResponseStatus :: !Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data MergeBranchesByThreeWayResponse = MergeBranchesByThreeWayResponse'{_mbbtwrsCommitId
+                                                                        ::
+                                                                        !(Maybe
+                                                                            Text),
+                                                                        _mbbtwrsTreeId
+                                                                        ::
+                                                                        !(Maybe
+                                                                            Text),
+                                                                        _mbbtwrsResponseStatus
+                                                                        :: !Int}
+                                         deriving (Eq, Read, Show, Data,
+                                                   Typeable, Generic)
 
 -- | Creates a value of 'MergeBranchesByThreeWayResponse' with the minimum fields required to make a request.
 --
@@ -239,13 +256,11 @@ data MergeBranchesByThreeWayResponse =
 mergeBranchesByThreeWayResponse
     :: Int -- ^ 'mbbtwrsResponseStatus'
     -> MergeBranchesByThreeWayResponse
-mergeBranchesByThreeWayResponse pResponseStatus_ =
-  MergeBranchesByThreeWayResponse'
-    { _mbbtwrsCommitId = Nothing
-    , _mbbtwrsTreeId = Nothing
-    , _mbbtwrsResponseStatus = pResponseStatus_
-    }
-
+mergeBranchesByThreeWayResponse pResponseStatus_
+  = MergeBranchesByThreeWayResponse'{_mbbtwrsCommitId =
+                                       Nothing,
+                                     _mbbtwrsTreeId = Nothing,
+                                     _mbbtwrsResponseStatus = pResponseStatus_}
 
 -- | The commit ID of the merge in the destination or target branch.
 mbbtwrsCommitId :: Lens' MergeBranchesByThreeWayResponse (Maybe Text)

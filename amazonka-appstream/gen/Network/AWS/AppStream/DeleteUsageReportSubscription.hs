@@ -35,24 +35,22 @@ module Network.AWS.AppStream.DeleteUsageReportSubscription
     ) where
 
 import Network.AWS.AppStream.Types
-import Network.AWS.AppStream.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 
 -- | /See:/ 'deleteUsageReportSubscription' smart constructor.
-data DeleteUsageReportSubscription =
-  DeleteUsageReportSubscription'
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data DeleteUsageReportSubscription = DeleteUsageReportSubscription'
+                                       deriving (Eq, Read, Show, Data, Typeable,
+                                                 Generic)
 
 -- | Creates a value of 'DeleteUsageReportSubscription' with the minimum fields required to make a request.
 --
 deleteUsageReportSubscription
     :: DeleteUsageReportSubscription
-deleteUsageReportSubscription = DeleteUsageReportSubscription'
-
+deleteUsageReportSubscription
+  = DeleteUsageReportSubscription'
 
 instance AWSRequest DeleteUsageReportSubscription
          where
@@ -90,12 +88,12 @@ instance ToQuery DeleteUsageReportSubscription where
         toQuery = const mempty
 
 -- | /See:/ 'deleteUsageReportSubscriptionResponse' smart constructor.
-newtype DeleteUsageReportSubscriptionResponse =
-  DeleteUsageReportSubscriptionResponse'
-    { _dursrsResponseStatus :: Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+newtype DeleteUsageReportSubscriptionResponse = DeleteUsageReportSubscriptionResponse'{_dursrsResponseStatus
+                                                                                       ::
+                                                                                       Int}
+                                                  deriving (Eq, Read, Show,
+                                                            Data, Typeable,
+                                                            Generic)
 
 -- | Creates a value of 'DeleteUsageReportSubscriptionResponse' with the minimum fields required to make a request.
 --
@@ -105,10 +103,10 @@ newtype DeleteUsageReportSubscriptionResponse =
 deleteUsageReportSubscriptionResponse
     :: Int -- ^ 'dursrsResponseStatus'
     -> DeleteUsageReportSubscriptionResponse
-deleteUsageReportSubscriptionResponse pResponseStatus_ =
-  DeleteUsageReportSubscriptionResponse'
-    {_dursrsResponseStatus = pResponseStatus_}
-
+deleteUsageReportSubscriptionResponse
+  pResponseStatus_
+  = DeleteUsageReportSubscriptionResponse'{_dursrsResponseStatus
+                                             = pResponseStatus_}
 
 -- | -- | The response status code.
 dursrsResponseStatus :: Lens' DeleteUsageReportSubscriptionResponse Int

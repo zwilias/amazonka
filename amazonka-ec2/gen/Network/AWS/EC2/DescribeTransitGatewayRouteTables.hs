@@ -45,7 +45,6 @@ module Network.AWS.EC2.DescribeTransitGatewayRouteTables
     ) where
 
 import Network.AWS.EC2.Types
-import Network.AWS.EC2.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Pager
 import Network.AWS.Prelude
@@ -53,16 +52,28 @@ import Network.AWS.Request
 import Network.AWS.Response
 
 -- | /See:/ 'describeTransitGatewayRouteTables' smart constructor.
-data DescribeTransitGatewayRouteTables =
-  DescribeTransitGatewayRouteTables'
-    { _dtgrtsFilters                     :: !(Maybe [Filter])
-    , _dtgrtsNextToken                   :: !(Maybe Text)
-    , _dtgrtsDryRun                      :: !(Maybe Bool)
-    , _dtgrtsTransitGatewayRouteTableIds :: !(Maybe [Text])
-    , _dtgrtsMaxResults                  :: !(Maybe Nat)
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data DescribeTransitGatewayRouteTables = DescribeTransitGatewayRouteTables'{_dtgrtsFilters
+                                                                            ::
+                                                                            !(Maybe
+                                                                                [Filter]),
+                                                                            _dtgrtsNextToken
+                                                                            ::
+                                                                            !(Maybe
+                                                                                Text),
+                                                                            _dtgrtsDryRun
+                                                                            ::
+                                                                            !(Maybe
+                                                                                Bool),
+                                                                            _dtgrtsTransitGatewayRouteTableIds
+                                                                            ::
+                                                                            !(Maybe
+                                                                                [Text]),
+                                                                            _dtgrtsMaxResults
+                                                                            ::
+                                                                            !(Maybe
+                                                                                Nat)}
+                                           deriving (Eq, Read, Show, Data,
+                                                     Typeable, Generic)
 
 -- | Creates a value of 'DescribeTransitGatewayRouteTables' with the minimum fields required to make a request.
 --
@@ -79,15 +90,14 @@ data DescribeTransitGatewayRouteTables =
 -- * 'dtgrtsMaxResults' - The maximum number of results to return with a single call. To retrieve the remaining results, make another call with the returned @nextToken@ value.
 describeTransitGatewayRouteTables
     :: DescribeTransitGatewayRouteTables
-describeTransitGatewayRouteTables =
-  DescribeTransitGatewayRouteTables'
-    { _dtgrtsFilters = Nothing
-    , _dtgrtsNextToken = Nothing
-    , _dtgrtsDryRun = Nothing
-    , _dtgrtsTransitGatewayRouteTableIds = Nothing
-    , _dtgrtsMaxResults = Nothing
-    }
-
+describeTransitGatewayRouteTables
+  = DescribeTransitGatewayRouteTables'{_dtgrtsFilters =
+                                         Nothing,
+                                       _dtgrtsNextToken = Nothing,
+                                       _dtgrtsDryRun = Nothing,
+                                       _dtgrtsTransitGatewayRouteTableIds =
+                                         Nothing,
+                                       _dtgrtsMaxResults = Nothing}
 
 -- | One or more filters. The possible values are:     * @default-association-route-table@ - Indicates whether this is the default association route table for the transit gateway (@true@ | @false@ ).     * @default-propagation-route-table@ - Indicates whether this is the default propagation route table for the transit gateway (@true@ | @false@ ).     * @state@ - The state of the attachment (@available@ | @deleted@ | @deleting@ | @failed@ | @modifying@ | @pendingAcceptance@ | @pending@ | @rollingBack@ | @rejected@ | @rejecting@ ).     * @transit-gateway-id@ - The ID of the transit gateway.     * @transit-gateway-route-table-id@ - The ID of the transit gateway route table.
 dtgrtsFilters :: Lens' DescribeTransitGatewayRouteTables [Filter]
@@ -163,14 +173,20 @@ instance ToQuery DescribeTransitGatewayRouteTables
                "MaxResults" =: _dtgrtsMaxResults]
 
 -- | /See:/ 'describeTransitGatewayRouteTablesResponse' smart constructor.
-data DescribeTransitGatewayRouteTablesResponse =
-  DescribeTransitGatewayRouteTablesResponse'
-    { _dtgrtsrsTransitGatewayRouteTables :: !(Maybe [TransitGatewayRouteTable])
-    , _dtgrtsrsNextToken                 :: !(Maybe Text)
-    , _dtgrtsrsResponseStatus            :: !Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data DescribeTransitGatewayRouteTablesResponse = DescribeTransitGatewayRouteTablesResponse'{_dtgrtsrsTransitGatewayRouteTables
+                                                                                            ::
+                                                                                            !(Maybe
+                                                                                                [TransitGatewayRouteTable]),
+                                                                                            _dtgrtsrsNextToken
+                                                                                            ::
+                                                                                            !(Maybe
+                                                                                                Text),
+                                                                                            _dtgrtsrsResponseStatus
+                                                                                            ::
+                                                                                            !Int}
+                                                   deriving (Eq, Read, Show,
+                                                             Data, Typeable,
+                                                             Generic)
 
 -- | Creates a value of 'DescribeTransitGatewayRouteTablesResponse' with the minimum fields required to make a request.
 --
@@ -184,13 +200,13 @@ data DescribeTransitGatewayRouteTablesResponse =
 describeTransitGatewayRouteTablesResponse
     :: Int -- ^ 'dtgrtsrsResponseStatus'
     -> DescribeTransitGatewayRouteTablesResponse
-describeTransitGatewayRouteTablesResponse pResponseStatus_ =
-  DescribeTransitGatewayRouteTablesResponse'
-    { _dtgrtsrsTransitGatewayRouteTables = Nothing
-    , _dtgrtsrsNextToken = Nothing
-    , _dtgrtsrsResponseStatus = pResponseStatus_
-    }
-
+describeTransitGatewayRouteTablesResponse
+  pResponseStatus_
+  = DescribeTransitGatewayRouteTablesResponse'{_dtgrtsrsTransitGatewayRouteTables
+                                                 = Nothing,
+                                               _dtgrtsrsNextToken = Nothing,
+                                               _dtgrtsrsResponseStatus =
+                                                 pResponseStatus_}
 
 -- | Information about the transit gateway route tables.
 dtgrtsrsTransitGatewayRouteTables :: Lens' DescribeTransitGatewayRouteTablesResponse [TransitGatewayRouteTable]

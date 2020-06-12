@@ -42,22 +42,18 @@ module Network.AWS.KinesisVideoArchivedMedia.ListFragments
     ) where
 
 import Network.AWS.KinesisVideoArchivedMedia.Types
-import Network.AWS.KinesisVideoArchivedMedia.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 
 -- | /See:/ 'listFragments' smart constructor.
-data ListFragments =
-  ListFragments'
-    { _lfFragmentSelector :: !(Maybe FragmentSelector)
-    , _lfNextToken        :: !(Maybe Text)
-    , _lfMaxResults       :: !(Maybe Nat)
-    , _lfStreamName       :: !Text
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data ListFragments = ListFragments'{_lfFragmentSelector
+                                    :: !(Maybe FragmentSelector),
+                                    _lfNextToken :: !(Maybe Text),
+                                    _lfMaxResults :: !(Maybe Nat),
+                                    _lfStreamName :: !Text}
+                       deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'ListFragments' with the minimum fields required to make a request.
 --
@@ -73,14 +69,10 @@ data ListFragments =
 listFragments
     :: Text -- ^ 'lfStreamName'
     -> ListFragments
-listFragments pStreamName_ =
-  ListFragments'
-    { _lfFragmentSelector = Nothing
-    , _lfNextToken = Nothing
-    , _lfMaxResults = Nothing
-    , _lfStreamName = pStreamName_
-    }
-
+listFragments pStreamName_
+  = ListFragments'{_lfFragmentSelector = Nothing,
+                   _lfNextToken = Nothing, _lfMaxResults = Nothing,
+                   _lfStreamName = pStreamName_}
 
 -- | Describes the time stamp range and time stamp origin for the range of fragments to return.
 lfFragmentSelector :: Lens' ListFragments (Maybe FragmentSelector)
@@ -132,14 +124,13 @@ instance ToQuery ListFragments where
         toQuery = const mempty
 
 -- | /See:/ 'listFragmentsResponse' smart constructor.
-data ListFragmentsResponse =
-  ListFragmentsResponse'
-    { _lfrsNextToken      :: !(Maybe Text)
-    , _lfrsFragments      :: !(Maybe [Fragment])
-    , _lfrsResponseStatus :: !Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data ListFragmentsResponse = ListFragmentsResponse'{_lfrsNextToken
+                                                    :: !(Maybe Text),
+                                                    _lfrsFragments ::
+                                                    !(Maybe [Fragment]),
+                                                    _lfrsResponseStatus :: !Int}
+                               deriving (Eq, Read, Show, Data, Typeable,
+                                         Generic)
 
 -- | Creates a value of 'ListFragmentsResponse' with the minimum fields required to make a request.
 --
@@ -153,13 +144,10 @@ data ListFragmentsResponse =
 listFragmentsResponse
     :: Int -- ^ 'lfrsResponseStatus'
     -> ListFragmentsResponse
-listFragmentsResponse pResponseStatus_ =
-  ListFragmentsResponse'
-    { _lfrsNextToken = Nothing
-    , _lfrsFragments = Nothing
-    , _lfrsResponseStatus = pResponseStatus_
-    }
-
+listFragmentsResponse pResponseStatus_
+  = ListFragmentsResponse'{_lfrsNextToken = Nothing,
+                           _lfrsFragments = Nothing,
+                           _lfrsResponseStatus = pResponseStatus_}
 
 -- | If the returned list is truncated, the operation returns this token to use to retrieve the next page of results. This value is @null@ when there are no more results to return.
 lfrsNextToken :: Lens' ListFragmentsResponse (Maybe Text)

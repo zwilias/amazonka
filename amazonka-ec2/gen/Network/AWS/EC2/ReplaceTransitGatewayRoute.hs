@@ -42,23 +42,24 @@ module Network.AWS.EC2.ReplaceTransitGatewayRoute
     ) where
 
 import Network.AWS.EC2.Types
-import Network.AWS.EC2.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 
 -- | /See:/ 'replaceTransitGatewayRoute' smart constructor.
-data ReplaceTransitGatewayRoute =
-  ReplaceTransitGatewayRoute'
-    { _rtgrBlackhole                  :: !(Maybe Bool)
-    , _rtgrTransitGatewayAttachmentId :: !(Maybe Text)
-    , _rtgrDryRun                     :: !(Maybe Bool)
-    , _rtgrDestinationCidrBlock       :: !Text
-    , _rtgrTransitGatewayRouteTableId :: !Text
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data ReplaceTransitGatewayRoute = ReplaceTransitGatewayRoute'{_rtgrBlackhole
+                                                              :: !(Maybe Bool),
+                                                              _rtgrTransitGatewayAttachmentId
+                                                              :: !(Maybe Text),
+                                                              _rtgrDryRun ::
+                                                              !(Maybe Bool),
+                                                              _rtgrDestinationCidrBlock
+                                                              :: !Text,
+                                                              _rtgrTransitGatewayRouteTableId
+                                                              :: !Text}
+                                    deriving (Eq, Read, Show, Data, Typeable,
+                                              Generic)
 
 -- | Creates a value of 'ReplaceTransitGatewayRoute' with the minimum fields required to make a request.
 --
@@ -77,15 +78,16 @@ replaceTransitGatewayRoute
     :: Text -- ^ 'rtgrDestinationCidrBlock'
     -> Text -- ^ 'rtgrTransitGatewayRouteTableId'
     -> ReplaceTransitGatewayRoute
-replaceTransitGatewayRoute pDestinationCidrBlock_ pTransitGatewayRouteTableId_ =
-  ReplaceTransitGatewayRoute'
-    { _rtgrBlackhole = Nothing
-    , _rtgrTransitGatewayAttachmentId = Nothing
-    , _rtgrDryRun = Nothing
-    , _rtgrDestinationCidrBlock = pDestinationCidrBlock_
-    , _rtgrTransitGatewayRouteTableId = pTransitGatewayRouteTableId_
-    }
-
+replaceTransitGatewayRoute pDestinationCidrBlock_
+  pTransitGatewayRouteTableId_
+  = ReplaceTransitGatewayRoute'{_rtgrBlackhole =
+                                  Nothing,
+                                _rtgrTransitGatewayAttachmentId = Nothing,
+                                _rtgrDryRun = Nothing,
+                                _rtgrDestinationCidrBlock =
+                                  pDestinationCidrBlock_,
+                                _rtgrTransitGatewayRouteTableId =
+                                  pTransitGatewayRouteTableId_}
 
 -- | Indicates whether traffic matching this route is to be dropped.
 rtgrBlackhole :: Lens' ReplaceTransitGatewayRoute (Maybe Bool)
@@ -142,13 +144,15 @@ instance ToQuery ReplaceTransitGatewayRoute where
                  _rtgrTransitGatewayRouteTableId]
 
 -- | /See:/ 'replaceTransitGatewayRouteResponse' smart constructor.
-data ReplaceTransitGatewayRouteResponse =
-  ReplaceTransitGatewayRouteResponse'
-    { _rtgrrsRoute          :: !(Maybe TransitGatewayRoute)
-    , _rtgrrsResponseStatus :: !Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data ReplaceTransitGatewayRouteResponse = ReplaceTransitGatewayRouteResponse'{_rtgrrsRoute
+                                                                              ::
+                                                                              !(Maybe
+                                                                                  TransitGatewayRoute),
+                                                                              _rtgrrsResponseStatus
+                                                                              ::
+                                                                              !Int}
+                                            deriving (Eq, Read, Show, Data,
+                                                      Typeable, Generic)
 
 -- | Creates a value of 'ReplaceTransitGatewayRouteResponse' with the minimum fields required to make a request.
 --
@@ -160,10 +164,11 @@ data ReplaceTransitGatewayRouteResponse =
 replaceTransitGatewayRouteResponse
     :: Int -- ^ 'rtgrrsResponseStatus'
     -> ReplaceTransitGatewayRouteResponse
-replaceTransitGatewayRouteResponse pResponseStatus_ =
-  ReplaceTransitGatewayRouteResponse'
-    {_rtgrrsRoute = Nothing, _rtgrrsResponseStatus = pResponseStatus_}
-
+replaceTransitGatewayRouteResponse pResponseStatus_
+  = ReplaceTransitGatewayRouteResponse'{_rtgrrsRoute =
+                                          Nothing,
+                                        _rtgrrsResponseStatus =
+                                          pResponseStatus_}
 
 -- | Information about the modified route.
 rtgrrsRoute :: Lens' ReplaceTransitGatewayRouteResponse (Maybe TransitGatewayRoute)

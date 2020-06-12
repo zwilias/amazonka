@@ -98,8 +98,44 @@ library
         , Network.AWS.DirectConnect.Waiters
 
     other-modules:
-          Network.AWS.DirectConnect.Types.Product
-        , Network.AWS.DirectConnect.Types.Sum
+          Network.AWS.DirectConnect.Types.AddressFamily
+        , Network.AWS.DirectConnect.Types.AssociatedGateway
+        , Network.AWS.DirectConnect.Types.BGPPeer
+        , Network.AWS.DirectConnect.Types.BGPPeerState
+        , Network.AWS.DirectConnect.Types.BGPStatus
+        , Network.AWS.DirectConnect.Types.Connection
+        , Network.AWS.DirectConnect.Types.ConnectionState
+        , Network.AWS.DirectConnect.Types.Connections
+        , Network.AWS.DirectConnect.Types.DirectConnectGateway
+        , Network.AWS.DirectConnect.Types.DirectConnectGatewayAssociation
+        , Network.AWS.DirectConnect.Types.DirectConnectGatewayAssociationProposal
+        , Network.AWS.DirectConnect.Types.DirectConnectGatewayAssociationProposalState
+        , Network.AWS.DirectConnect.Types.DirectConnectGatewayAssociationState
+        , Network.AWS.DirectConnect.Types.DirectConnectGatewayAttachment
+        , Network.AWS.DirectConnect.Types.DirectConnectGatewayAttachmentState
+        , Network.AWS.DirectConnect.Types.DirectConnectGatewayAttachmentType
+        , Network.AWS.DirectConnect.Types.DirectConnectGatewayState
+        , Network.AWS.DirectConnect.Types.GatewayType
+        , Network.AWS.DirectConnect.Types.HasLogicalRedundancy
+        , Network.AWS.DirectConnect.Types.Interconnect
+        , Network.AWS.DirectConnect.Types.InterconnectState
+        , Network.AWS.DirectConnect.Types.Lag
+        , Network.AWS.DirectConnect.Types.LagState
+        , Network.AWS.DirectConnect.Types.LoaContentType
+        , Network.AWS.DirectConnect.Types.Location
+        , Network.AWS.DirectConnect.Types.NewBGPPeer
+        , Network.AWS.DirectConnect.Types.NewPrivateVirtualInterface
+        , Network.AWS.DirectConnect.Types.NewPrivateVirtualInterfaceAllocation
+        , Network.AWS.DirectConnect.Types.NewPublicVirtualInterface
+        , Network.AWS.DirectConnect.Types.NewPublicVirtualInterfaceAllocation
+        , Network.AWS.DirectConnect.Types.NewTransitVirtualInterface
+        , Network.AWS.DirectConnect.Types.NewTransitVirtualInterfaceAllocation
+        , Network.AWS.DirectConnect.Types.ResourceTag
+        , Network.AWS.DirectConnect.Types.RouteFilterPrefix
+        , Network.AWS.DirectConnect.Types.Tag
+        , Network.AWS.DirectConnect.Types.VirtualGateway
+        , Network.AWS.DirectConnect.Types.VirtualInterface
+        , Network.AWS.DirectConnect.Types.VirtualInterfaceState
 
     build-depends:
           amazonka-core == 1.6.1.*

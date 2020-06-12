@@ -18,14 +18,14 @@
 -- Stability   : auto-generated
 -- Portability : non-portable (GHC extensions)
 --
--- Composes an email message and immediately queues it for sending. When calling this operation, you may specify the message headers as well as the content. The @SendRawEmail@ operation is particularly useful for sending multipart MIME emails (such as those that contain both a plain-text and an HTML version).
+-- Composes an email message and immediately queues it for sending. When calling this operation, you may specify the message headers as well as the content. The @SendRawEmail@ operation is particularly useful for sending multipart MIME emails (such as those that contain both a plain-text and an HTML version). 
 --
 --
 -- In order to send email using the @SendRawEmail@ operation, your message must meet the following requirements:
 --
---     * The message must be sent from a verified email address or domain. If you attempt to send email using a non-verified address or domain, the operation will result in an "Email address not verified" error.
+--     * The message must be sent from a verified email address or domain. If you attempt to send email using a non-verified address or domain, the operation will result in an "Email address not verified" error. 
 --
---     * If your account is still in the Amazon SES sandbox, you may only send to verified addresses or domains, or to email addresses associated with the Amazon SES Mailbox Simulator. For more information, see <http://docs.aws.amazon.com/ses/latest/DeveloperGuide/verify-addresses-and-domains.html Verifying Email Addresses and Domains> in the /Amazon SES Developer Guide./
+--     * If your account is still in the Amazon SES sandbox, you may only send to verified addresses or domains, or to email addresses associated with the Amazon SES Mailbox Simulator. For more information, see <http://docs.aws.amazon.com/ses/latest/DeveloperGuide/verify-addresses-and-domains.html Verifying Email Addresses and Domains> in the /Amazon SES Developer Guide./ 
 --
 --     * The total size of the message, including attachments, must be smaller than 10 MB.
 --
@@ -35,7 +35,7 @@
 --
 --
 --
--- /Important:/ For every message that you send, the total number of recipients (including each recipient in the To:, CC: and BCC: fields) is counted against the maximum number of emails you can send in a 24-hour period (your /sending quota/ ). For more information about sending quotas in Amazon SES, see <http://docs.aws.amazon.com/ses/latest/DeveloperGuide/manage-sending-limits.html Managing Your Amazon SES Sending Limits> in the /Amazon SES Developer Guide./
+-- /Important:/ For every message that you send, the total number of recipients (including each recipient in the To:, CC: and BCC: fields) is counted against the maximum number of emails you can send in a 24-hour period (your /sending quota/ ). For more information about sending quotas in Amazon SES, see <http://docs.aws.amazon.com/ses/latest/DeveloperGuide/manage-sending-limits.html Managing Your Amazon SES Sending Limits> in the /Amazon SES Developer Guide./ 
 --
 -- Additionally, keep the following considerations in mind when using the @SendRawEmail@ operation:
 --
@@ -43,17 +43,17 @@
 --
 --     * If you are using sending authorization to send on behalf of another user, @SendRawEmail@ enables you to specify the cross-account identity for the email's Source, From, and Return-Path parameters in one of two ways: you can pass optional parameters @SourceArn@ , @FromArn@ , and/or @ReturnPathArn@ to the API, or you can include the following X-headers in the header of your raw email:
 --
---     * @X-SES-SOURCE-ARN@
+--     * @X-SES-SOURCE-ARN@ 
 --
---     * @X-SES-FROM-ARN@
+--     * @X-SES-FROM-ARN@ 
 --
---     * @X-SES-RETURN-PATH-ARN@
+--     * @X-SES-RETURN-PATH-ARN@ 
 --
 --
 --
 -- /Important:/ Do not include these X-headers in the DKIM signature; Amazon SES will remove them before sending the email.
 --
--- For most common sending authorization scenarios, we recommend that you specify the @SourceIdentityArn@ parameter and not the @FromIdentityArn@ or @ReturnPathIdentityArn@ parameters. If you only specify the @SourceIdentityArn@ parameter, Amazon SES will set the From and Return Path addresses to the identity specified in @SourceIdentityArn@ . For more information about sending authorization, see the <http://docs.aws.amazon.com/ses/latest/DeveloperGuide/sending-authorization.html Using Sending Authorization with Amazon SES> in the /Amazon SES Developer Guide./
+-- For most common sending authorization scenarios, we recommend that you specify the @SourceIdentityArn@ parameter and not the @FromIdentityArn@ or @ReturnPathIdentityArn@ parameters. If you only specify the @SourceIdentityArn@ parameter, Amazon SES will set the From and Return Path addresses to the identity specified in @SourceIdentityArn@ . For more information about sending authorization, see the <http://docs.aws.amazon.com/ses/latest/DeveloperGuide/sending-authorization.html Using Sending Authorization with Amazon SES> in the /Amazon SES Developer Guide./ 
 --
 --
 --
@@ -85,26 +85,22 @@ import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 import Network.AWS.SES.Types
-import Network.AWS.SES.Types.Product
 
 -- | Represents a request to send a single raw email using Amazon SES. For more information, see the <http://docs.aws.amazon.com/ses/latest/DeveloperGuide/send-email-raw.html Amazon SES Developer Guide> .
 --
 --
 --
 -- /See:/ 'sendRawEmail' smart constructor.
-data SendRawEmail =
-  SendRawEmail'
-    { _sreConfigurationSetName :: !(Maybe Text)
-    , _sreSourceARN            :: !(Maybe Text)
-    , _sreDestinations         :: !(Maybe [Text])
-    , _sreReturnPathARN        :: !(Maybe Text)
-    , _sreSource               :: !(Maybe Text)
-    , _sreFromARN              :: !(Maybe Text)
-    , _sreTags                 :: !(Maybe [MessageTag])
-    , _sreRawMessage           :: !RawMessage
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data SendRawEmail = SendRawEmail'{_sreConfigurationSetName
+                                  :: !(Maybe Text),
+                                  _sreSourceARN :: !(Maybe Text),
+                                  _sreDestinations :: !(Maybe [Text]),
+                                  _sreReturnPathARN :: !(Maybe Text),
+                                  _sreSource :: !(Maybe Text),
+                                  _sreFromARN :: !(Maybe Text),
+                                  _sreTags :: !(Maybe [MessageTag]),
+                                  _sreRawMessage :: !RawMessage}
+                      deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'SendRawEmail' with the minimum fields required to make a request.
 --
@@ -128,18 +124,12 @@ data SendRawEmail =
 sendRawEmail
     :: RawMessage -- ^ 'sreRawMessage'
     -> SendRawEmail
-sendRawEmail pRawMessage_ =
-  SendRawEmail'
-    { _sreConfigurationSetName = Nothing
-    , _sreSourceARN = Nothing
-    , _sreDestinations = Nothing
-    , _sreReturnPathARN = Nothing
-    , _sreSource = Nothing
-    , _sreFromARN = Nothing
-    , _sreTags = Nothing
-    , _sreRawMessage = pRawMessage_
-    }
-
+sendRawEmail pRawMessage_
+  = SendRawEmail'{_sreConfigurationSetName = Nothing,
+                  _sreSourceARN = Nothing, _sreDestinations = Nothing,
+                  _sreReturnPathARN = Nothing, _sreSource = Nothing,
+                  _sreFromARN = Nothing, _sreTags = Nothing,
+                  _sreRawMessage = pRawMessage_}
 
 -- | The name of the configuration set to use when you send an email using @SendRawEmail@ .
 sreConfigurationSetName :: Lens' SendRawEmail (Maybe Text)
@@ -212,13 +202,10 @@ instance ToQuery SendRawEmail where
 --
 --
 -- /See:/ 'sendRawEmailResponse' smart constructor.
-data SendRawEmailResponse =
-  SendRawEmailResponse'
-    { _srersResponseStatus :: !Int
-    , _srersMessageId      :: !Text
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data SendRawEmailResponse = SendRawEmailResponse'{_srersResponseStatus
+                                                  :: !Int,
+                                                  _srersMessageId :: !Text}
+                              deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'SendRawEmailResponse' with the minimum fields required to make a request.
 --
@@ -226,21 +213,21 @@ data SendRawEmailResponse =
 --
 -- * 'srersResponseStatus' - -- | The response status code.
 --
--- * 'srersMessageId' - The unique message identifier returned from the @SendRawEmail@ action.
+-- * 'srersMessageId' - The unique message identifier returned from the @SendRawEmail@ action. 
 sendRawEmailResponse
     :: Int -- ^ 'srersResponseStatus'
     -> Text -- ^ 'srersMessageId'
     -> SendRawEmailResponse
-sendRawEmailResponse pResponseStatus_ pMessageId_ =
-  SendRawEmailResponse'
-    {_srersResponseStatus = pResponseStatus_, _srersMessageId = pMessageId_}
-
+sendRawEmailResponse pResponseStatus_ pMessageId_
+  = SendRawEmailResponse'{_srersResponseStatus =
+                            pResponseStatus_,
+                          _srersMessageId = pMessageId_}
 
 -- | -- | The response status code.
 srersResponseStatus :: Lens' SendRawEmailResponse Int
 srersResponseStatus = lens _srersResponseStatus (\ s a -> s{_srersResponseStatus = a})
 
--- | The unique message identifier returned from the @SendRawEmail@ action.
+-- | The unique message identifier returned from the @SendRawEmail@ action. 
 srersMessageId :: Lens' SendRawEmailResponse Text
 srersMessageId = lens _srersMessageId (\ s a -> s{_srersMessageId = a})
 

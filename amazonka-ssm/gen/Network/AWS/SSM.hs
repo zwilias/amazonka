@@ -11,7 +11,7 @@
 -- Stability   : auto-generated
 -- Portability : non-portable (GHC extensions)
 --
--- __AWS Systems Manager__
+-- __AWS Systems Manager__ 
 --
 -- AWS Systems Manager is a collection of capabilities that helps you automate management tasks such as collecting system inventory, applying operating system (OS) patches, automating the creation of Amazon Machine Images (AMIs), and configuring operating systems (OSs) and applications at scale. Systems Manager lets you remotely and securely manage the configuration of your managed instances. A /managed instance/ is any Amazon EC2 instance or on-premises machine in your hybrid environment that has been configured for Systems Manager.
 --
@@ -19,7 +19,7 @@
 --
 -- To get started, verify prerequisites and configure managed instances. For more information, see <http://docs.aws.amazon.com/systems-manager/latest/userguide/systems-manager-setting-up.html Systems Manager Prerequisites> .
 --
--- For information about other API actions you can perform on Amazon EC2 instances, see the <http://docs.aws.amazon.com/AWSEC2/latest/APIReference/ Amazon EC2 API Reference> . For information about how to use a Query API, see <http://docs.aws.amazon.com/AWSEC2/latest/APIReference/making-api-requests.html Making API Requests> .
+-- For information about other API actions you can perform on Amazon EC2 instances, see the <http://docs.aws.amazon.com/AWSEC2/latest/APIReference/ Amazon EC2 API Reference> . For information about how to use a Query API, see <http://docs.aws.amazon.com/AWSEC2/latest/APIReference/making-api-requests.html Making API Requests> . 
 --
 module Network.AWS.SSM
     (
@@ -314,31 +314,31 @@ module Network.AWS.SSM
     -- * Operations
     -- $operations
 
-    -- ** DescribeInstancePatches
+    -- ** DescribeInstancePatches 
     , module Network.AWS.SSM.DescribeInstancePatches
 
-    -- ** GetInventory
+    -- ** GetInventory 
     , module Network.AWS.SSM.GetInventory
 
-    -- ** GetParameters
+    -- ** GetParameters 
     , module Network.AWS.SSM.GetParameters
 
-    -- ** DeletePatchBaseline
+    -- ** DeletePatchBaseline 
     , module Network.AWS.SSM.DeletePatchBaseline
 
-    -- ** UpdatePatchBaseline
+    -- ** UpdatePatchBaseline 
     , module Network.AWS.SSM.UpdatePatchBaseline
 
-    -- ** GetParameter
+    -- ** GetParameter 
     , module Network.AWS.SSM.GetParameter
 
-    -- ** UpdateDocumentDefaultVersion
+    -- ** UpdateDocumentDefaultVersion 
     , module Network.AWS.SSM.UpdateDocumentDefaultVersion
 
-    -- ** ListResourceDataSync
+    -- ** ListResourceDataSync 
     , module Network.AWS.SSM.ListResourceDataSync
 
-    -- ** GetDeployablePatchSnapshotForInstance
+    -- ** GetDeployablePatchSnapshotForInstance 
     , module Network.AWS.SSM.GetDeployablePatchSnapshotForInstance
 
     -- ** DescribeParameters (Paginated)
@@ -347,202 +347,202 @@ module Network.AWS.SSM
     -- ** GetParametersByPath (Paginated)
     , module Network.AWS.SSM.GetParametersByPath
 
-    -- ** PutComplianceItems
+    -- ** PutComplianceItems 
     , module Network.AWS.SSM.PutComplianceItems
 
     -- ** DescribeActivations (Paginated)
     , module Network.AWS.SSM.DescribeActivations
 
-    -- ** GetMaintenanceWindowTask
+    -- ** GetMaintenanceWindowTask 
     , module Network.AWS.SSM.GetMaintenanceWindowTask
 
-    -- ** ListTagsForResource
+    -- ** ListTagsForResource 
     , module Network.AWS.SSM.ListTagsForResource
 
-    -- ** DescribeDocument
+    -- ** DescribeDocument 
     , module Network.AWS.SSM.DescribeDocument
 
-    -- ** CreateAssociation
+    -- ** CreateAssociation 
     , module Network.AWS.SSM.CreateAssociation
 
-    -- ** DeleteActivation
+    -- ** DeleteActivation 
     , module Network.AWS.SSM.DeleteActivation
 
-    -- ** DescribeMaintenanceWindowExecutions
+    -- ** DescribeMaintenanceWindowExecutions 
     , module Network.AWS.SSM.DescribeMaintenanceWindowExecutions
 
-    -- ** GetInventorySchema
+    -- ** GetInventorySchema 
     , module Network.AWS.SSM.GetInventorySchema
 
-    -- ** ListComplianceSummaries
+    -- ** ListComplianceSummaries 
     , module Network.AWS.SSM.ListComplianceSummaries
 
-    -- ** StartAutomationExecution
+    -- ** StartAutomationExecution 
     , module Network.AWS.SSM.StartAutomationExecution
 
-    -- ** CreateActivation
+    -- ** CreateActivation 
     , module Network.AWS.SSM.CreateActivation
 
-    -- ** DeleteMaintenanceWindow
+    -- ** DeleteMaintenanceWindow 
     , module Network.AWS.SSM.DeleteMaintenanceWindow
 
-    -- ** UpdateMaintenanceWindow
+    -- ** UpdateMaintenanceWindow 
     , module Network.AWS.SSM.UpdateMaintenanceWindow
 
-    -- ** DescribeMaintenanceWindowExecutionTasks
+    -- ** DescribeMaintenanceWindowExecutionTasks 
     , module Network.AWS.SSM.DescribeMaintenanceWindowExecutionTasks
 
-    -- ** GetDefaultPatchBaseline
+    -- ** GetDefaultPatchBaseline 
     , module Network.AWS.SSM.GetDefaultPatchBaseline
 
-    -- ** GetMaintenanceWindowExecutionTask
+    -- ** GetMaintenanceWindowExecutionTask 
     , module Network.AWS.SSM.GetMaintenanceWindowExecutionTask
 
-    -- ** CreateDocument
+    -- ** CreateDocument 
     , module Network.AWS.SSM.CreateDocument
 
-    -- ** RemoveTagsFromResource
+    -- ** RemoveTagsFromResource 
     , module Network.AWS.SSM.RemoveTagsFromResource
 
-    -- ** DeleteParameters
+    -- ** DeleteParameters 
     , module Network.AWS.SSM.DeleteParameters
 
-    -- ** DescribePatchGroupState
+    -- ** DescribePatchGroupState 
     , module Network.AWS.SSM.DescribePatchGroupState
 
     -- ** ListCommandInvocations (Paginated)
     , module Network.AWS.SSM.ListCommandInvocations
 
-    -- ** DeregisterTargetFromMaintenanceWindow
+    -- ** DeregisterTargetFromMaintenanceWindow 
     , module Network.AWS.SSM.DeregisterTargetFromMaintenanceWindow
 
-    -- ** DescribeEffectivePatchesForPatchBaseline
+    -- ** DescribeEffectivePatchesForPatchBaseline 
     , module Network.AWS.SSM.DescribeEffectivePatchesForPatchBaseline
 
-    -- ** DescribeMaintenanceWindowTargets
+    -- ** DescribeMaintenanceWindowTargets 
     , module Network.AWS.SSM.DescribeMaintenanceWindowTargets
 
-    -- ** RegisterPatchBaselineForPatchGroup
+    -- ** RegisterPatchBaselineForPatchGroup 
     , module Network.AWS.SSM.RegisterPatchBaselineForPatchGroup
 
     -- ** ListDocuments (Paginated)
     , module Network.AWS.SSM.ListDocuments
 
-    -- ** DescribeInstancePatchStates
+    -- ** DescribeInstancePatchStates 
     , module Network.AWS.SSM.DescribeInstancePatchStates
 
-    -- ** GetPatchBaselineForPatchGroup
+    -- ** GetPatchBaselineForPatchGroup 
     , module Network.AWS.SSM.GetPatchBaselineForPatchGroup
 
-    -- ** UpdateManagedInstanceRole
+    -- ** UpdateManagedInstanceRole 
     , module Network.AWS.SSM.UpdateManagedInstanceRole
 
-    -- ** ListComplianceItems
+    -- ** ListComplianceItems 
     , module Network.AWS.SSM.ListComplianceItems
 
-    -- ** GetDocument
+    -- ** GetDocument 
     , module Network.AWS.SSM.GetDocument
 
-    -- ** AddTagsToResource
+    -- ** AddTagsToResource 
     , module Network.AWS.SSM.AddTagsToResource
 
-    -- ** CancelCommand
+    -- ** CancelCommand 
     , module Network.AWS.SSM.CancelCommand
 
-    -- ** DescribeAutomationStepExecutions
+    -- ** DescribeAutomationStepExecutions 
     , module Network.AWS.SSM.DescribeAutomationStepExecutions
 
-    -- ** GetCommandInvocation
+    -- ** GetCommandInvocation 
     , module Network.AWS.SSM.GetCommandInvocation
 
-    -- ** DescribeInstancePatchStatesForPatchGroup
+    -- ** DescribeInstancePatchStatesForPatchGroup 
     , module Network.AWS.SSM.DescribeInstancePatchStatesForPatchGroup
 
-    -- ** DeregisterManagedInstance
+    -- ** DeregisterManagedInstance 
     , module Network.AWS.SSM.DeregisterManagedInstance
 
-    -- ** DescribeAssociation
+    -- ** DescribeAssociation 
     , module Network.AWS.SSM.DescribeAssociation
 
-    -- ** ModifyDocumentPermission
+    -- ** ModifyDocumentPermission 
     , module Network.AWS.SSM.ModifyDocumentPermission
 
-    -- ** DeleteResourceDataSync
+    -- ** DeleteResourceDataSync 
     , module Network.AWS.SSM.DeleteResourceDataSync
 
-    -- ** UpdateAssociationStatus
+    -- ** UpdateAssociationStatus 
     , module Network.AWS.SSM.UpdateAssociationStatus
 
-    -- ** DescribeAvailablePatches
+    -- ** DescribeAvailablePatches 
     , module Network.AWS.SSM.DescribeAvailablePatches
 
-    -- ** ListDocumentVersions
+    -- ** ListDocumentVersions 
     , module Network.AWS.SSM.ListDocumentVersions
 
-    -- ** DeregisterPatchBaselineForPatchGroup
+    -- ** DeregisterPatchBaselineForPatchGroup 
     , module Network.AWS.SSM.DeregisterPatchBaselineForPatchGroup
 
-    -- ** DescribePatchGroups
+    -- ** DescribePatchGroups 
     , module Network.AWS.SSM.DescribePatchGroups
 
-    -- ** GetMaintenanceWindow
+    -- ** GetMaintenanceWindow 
     , module Network.AWS.SSM.GetMaintenanceWindow
 
-    -- ** DescribeMaintenanceWindows
+    -- ** DescribeMaintenanceWindows 
     , module Network.AWS.SSM.DescribeMaintenanceWindows
 
-    -- ** RegisterTaskWithMaintenanceWindow
+    -- ** RegisterTaskWithMaintenanceWindow 
     , module Network.AWS.SSM.RegisterTaskWithMaintenanceWindow
 
-    -- ** RegisterDefaultPatchBaseline
+    -- ** RegisterDefaultPatchBaseline 
     , module Network.AWS.SSM.RegisterDefaultPatchBaseline
 
-    -- ** ListResourceComplianceSummaries
+    -- ** ListResourceComplianceSummaries 
     , module Network.AWS.SSM.ListResourceComplianceSummaries
 
-    -- ** ListAssociationVersions
+    -- ** ListAssociationVersions 
     , module Network.AWS.SSM.ListAssociationVersions
 
-    -- ** DescribeMaintenanceWindowTasks
+    -- ** DescribeMaintenanceWindowTasks 
     , module Network.AWS.SSM.DescribeMaintenanceWindowTasks
 
-    -- ** DescribeInstanceAssociationsStatus
+    -- ** DescribeInstanceAssociationsStatus 
     , module Network.AWS.SSM.DescribeInstanceAssociationsStatus
 
-    -- ** DeregisterTaskFromMaintenanceWindow
+    -- ** DeregisterTaskFromMaintenanceWindow 
     , module Network.AWS.SSM.DeregisterTaskFromMaintenanceWindow
 
-    -- ** ListInventoryEntries
+    -- ** ListInventoryEntries 
     , module Network.AWS.SSM.ListInventoryEntries
 
-    -- ** UpdateMaintenanceWindowTask
+    -- ** UpdateMaintenanceWindowTask 
     , module Network.AWS.SSM.UpdateMaintenanceWindowTask
 
     -- ** GetParameterHistory (Paginated)
     , module Network.AWS.SSM.GetParameterHistory
 
-    -- ** CreateMaintenanceWindow
+    -- ** CreateMaintenanceWindow 
     , module Network.AWS.SSM.CreateMaintenanceWindow
 
-    -- ** StopAutomationExecution
+    -- ** StopAutomationExecution 
     , module Network.AWS.SSM.StopAutomationExecution
 
-    -- ** GetMaintenanceWindowExecution
+    -- ** GetMaintenanceWindowExecution 
     , module Network.AWS.SSM.GetMaintenanceWindowExecution
 
-    -- ** SendAutomationSignal
+    -- ** SendAutomationSignal 
     , module Network.AWS.SSM.SendAutomationSignal
 
-    -- ** PutParameter
+    -- ** PutParameter 
     , module Network.AWS.SSM.PutParameter
 
-    -- ** DescribeMaintenanceWindowExecutionTaskInvocations
+    -- ** DescribeMaintenanceWindowExecutionTaskInvocations 
     , module Network.AWS.SSM.DescribeMaintenanceWindowExecutionTaskInvocations
 
-    -- ** GetMaintenanceWindowExecutionTaskInvocation
+    -- ** GetMaintenanceWindowExecutionTaskInvocation 
     , module Network.AWS.SSM.GetMaintenanceWindowExecutionTaskInvocation
 
-    -- ** DeleteParameter
+    -- ** DeleteParameter 
     , module Network.AWS.SSM.DeleteParameter
 
     -- ** DescribeInstanceInformation (Paginated)
@@ -551,64 +551,64 @@ module Network.AWS.SSM
     -- ** ListAssociations (Paginated)
     , module Network.AWS.SSM.ListAssociations
 
-    -- ** DeleteAssociation
+    -- ** DeleteAssociation 
     , module Network.AWS.SSM.DeleteAssociation
 
-    -- ** UpdateAssociation
+    -- ** UpdateAssociation 
     , module Network.AWS.SSM.UpdateAssociation
 
-    -- ** DescribeInventoryDeletions
+    -- ** DescribeInventoryDeletions 
     , module Network.AWS.SSM.DescribeInventoryDeletions
 
-    -- ** DeleteInventory
+    -- ** DeleteInventory 
     , module Network.AWS.SSM.DeleteInventory
 
-    -- ** PutInventory
+    -- ** PutInventory 
     , module Network.AWS.SSM.PutInventory
 
-    -- ** DescribeEffectiveInstanceAssociations
+    -- ** DescribeEffectiveInstanceAssociations 
     , module Network.AWS.SSM.DescribeEffectiveInstanceAssociations
 
-    -- ** DescribeAutomationExecutions
+    -- ** DescribeAutomationExecutions 
     , module Network.AWS.SSM.DescribeAutomationExecutions
 
-    -- ** GetAutomationExecution
+    -- ** GetAutomationExecution 
     , module Network.AWS.SSM.GetAutomationExecution
 
-    -- ** SendCommand
+    -- ** SendCommand 
     , module Network.AWS.SSM.SendCommand
 
-    -- ** DescribePatchBaselines
+    -- ** DescribePatchBaselines 
     , module Network.AWS.SSM.DescribePatchBaselines
 
-    -- ** GetPatchBaseline
+    -- ** GetPatchBaseline 
     , module Network.AWS.SSM.GetPatchBaseline
 
-    -- ** RegisterTargetWithMaintenanceWindow
+    -- ** RegisterTargetWithMaintenanceWindow 
     , module Network.AWS.SSM.RegisterTargetWithMaintenanceWindow
 
     -- ** ListCommands (Paginated)
     , module Network.AWS.SSM.ListCommands
 
-    -- ** UpdateDocument
+    -- ** UpdateDocument 
     , module Network.AWS.SSM.UpdateDocument
 
-    -- ** DeleteDocument
+    -- ** DeleteDocument 
     , module Network.AWS.SSM.DeleteDocument
 
-    -- ** DescribeDocumentPermission
+    -- ** DescribeDocumentPermission 
     , module Network.AWS.SSM.DescribeDocumentPermission
 
-    -- ** CreateAssociationBatch
+    -- ** CreateAssociationBatch 
     , module Network.AWS.SSM.CreateAssociationBatch
 
-    -- ** UpdateMaintenanceWindowTarget
+    -- ** UpdateMaintenanceWindowTarget 
     , module Network.AWS.SSM.UpdateMaintenanceWindowTarget
 
-    -- ** CreateResourceDataSync
+    -- ** CreateResourceDataSync 
     , module Network.AWS.SSM.CreateResourceDataSync
 
-    -- ** CreatePatchBaseline
+    -- ** CreatePatchBaseline 
     , module Network.AWS.SSM.CreatePatchBaseline
 
     -- * Types
@@ -1713,20 +1713,20 @@ import Network.AWS.SSM.DescribeEffectiveInstanceAssociations
 import Network.AWS.SSM.DescribeEffectivePatchesForPatchBaseline
 import Network.AWS.SSM.DescribeInstanceAssociationsStatus
 import Network.AWS.SSM.DescribeInstanceInformation
-import Network.AWS.SSM.DescribeInstancePatches
 import Network.AWS.SSM.DescribeInstancePatchStates
 import Network.AWS.SSM.DescribeInstancePatchStatesForPatchGroup
+import Network.AWS.SSM.DescribeInstancePatches
 import Network.AWS.SSM.DescribeInventoryDeletions
-import Network.AWS.SSM.DescribeMaintenanceWindowExecutions
 import Network.AWS.SSM.DescribeMaintenanceWindowExecutionTaskInvocations
 import Network.AWS.SSM.DescribeMaintenanceWindowExecutionTasks
-import Network.AWS.SSM.DescribeMaintenanceWindows
+import Network.AWS.SSM.DescribeMaintenanceWindowExecutions
 import Network.AWS.SSM.DescribeMaintenanceWindowTargets
 import Network.AWS.SSM.DescribeMaintenanceWindowTasks
+import Network.AWS.SSM.DescribeMaintenanceWindows
 import Network.AWS.SSM.DescribeParameters
 import Network.AWS.SSM.DescribePatchBaselines
-import Network.AWS.SSM.DescribePatchGroups
 import Network.AWS.SSM.DescribePatchGroupState
+import Network.AWS.SSM.DescribePatchGroups
 import Network.AWS.SSM.GetAutomationExecution
 import Network.AWS.SSM.GetCommandInvocation
 import Network.AWS.SSM.GetDefaultPatchBaseline
@@ -1745,14 +1745,14 @@ import Network.AWS.SSM.GetParameters
 import Network.AWS.SSM.GetParametersByPath
 import Network.AWS.SSM.GetPatchBaseline
 import Network.AWS.SSM.GetPatchBaselineForPatchGroup
-import Network.AWS.SSM.ListAssociations
 import Network.AWS.SSM.ListAssociationVersions
+import Network.AWS.SSM.ListAssociations
 import Network.AWS.SSM.ListCommandInvocations
 import Network.AWS.SSM.ListCommands
 import Network.AWS.SSM.ListComplianceItems
 import Network.AWS.SSM.ListComplianceSummaries
-import Network.AWS.SSM.ListDocuments
 import Network.AWS.SSM.ListDocumentVersions
+import Network.AWS.SSM.ListDocuments
 import Network.AWS.SSM.ListInventoryEntries
 import Network.AWS.SSM.ListResourceComplianceSummaries
 import Network.AWS.SSM.ListResourceDataSync

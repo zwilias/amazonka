@@ -101,55 +101,55 @@ module Network.AWS.ECS
     -- ** ListServices (Paginated)
     , module Network.AWS.ECS.ListServices
 
-    -- ** DescribeClusters
+    -- ** DescribeClusters 
     , module Network.AWS.ECS.DescribeClusters
 
-    -- ** DeleteService
+    -- ** DeleteService 
     , module Network.AWS.ECS.DeleteService
 
-    -- ** UpdateService
+    -- ** UpdateService 
     , module Network.AWS.ECS.UpdateService
 
-    -- ** DiscoverPollEndpoint
+    -- ** DiscoverPollEndpoint 
     , module Network.AWS.ECS.DiscoverPollEndpoint
 
-    -- ** SubmitContainerStateChange
+    -- ** SubmitContainerStateChange 
     , module Network.AWS.ECS.SubmitContainerStateChange
 
-    -- ** StopTask
+    -- ** StopTask 
     , module Network.AWS.ECS.StopTask
 
-    -- ** DescribeTaskDefinition
+    -- ** DescribeTaskDefinition 
     , module Network.AWS.ECS.DescribeTaskDefinition
 
-    -- ** SubmitTaskStateChange
+    -- ** SubmitTaskStateChange 
     , module Network.AWS.ECS.SubmitTaskStateChange
 
-    -- ** DescribeContainerInstances
+    -- ** DescribeContainerInstances 
     , module Network.AWS.ECS.DescribeContainerInstances
 
-    -- ** UpdateContainerInstancesState
+    -- ** UpdateContainerInstancesState 
     , module Network.AWS.ECS.UpdateContainerInstancesState
 
-    -- ** DeleteCluster
+    -- ** DeleteCluster 
     , module Network.AWS.ECS.DeleteCluster
 
-    -- ** CreateCluster
+    -- ** CreateCluster 
     , module Network.AWS.ECS.CreateCluster
 
     -- ** ListTaskDefinitions (Paginated)
     , module Network.AWS.ECS.ListTaskDefinitions
 
-    -- ** RunTask
+    -- ** RunTask 
     , module Network.AWS.ECS.RunTask
 
     -- ** ListTasks (Paginated)
     , module Network.AWS.ECS.ListTasks
 
-    -- ** RegisterContainerInstance
+    -- ** RegisterContainerInstance 
     , module Network.AWS.ECS.RegisterContainerInstance
 
-    -- ** UpdateContainerAgent
+    -- ** UpdateContainerAgent 
     , module Network.AWS.ECS.UpdateContainerAgent
 
     -- ** ListContainerInstances (Paginated)
@@ -158,37 +158,37 @@ module Network.AWS.ECS
     -- ** ListTaskDefinitionFamilies (Paginated)
     , module Network.AWS.ECS.ListTaskDefinitionFamilies
 
-    -- ** StartTask
+    -- ** StartTask 
     , module Network.AWS.ECS.StartTask
 
-    -- ** ListAttributes
+    -- ** ListAttributes 
     , module Network.AWS.ECS.ListAttributes
 
-    -- ** DeregisterTaskDefinition
+    -- ** DeregisterTaskDefinition 
     , module Network.AWS.ECS.DeregisterTaskDefinition
 
-    -- ** DescribeTasks
+    -- ** DescribeTasks 
     , module Network.AWS.ECS.DescribeTasks
 
     -- ** ListClusters (Paginated)
     , module Network.AWS.ECS.ListClusters
 
-    -- ** DescribeServices
+    -- ** DescribeServices 
     , module Network.AWS.ECS.DescribeServices
 
-    -- ** DeregisterContainerInstance
+    -- ** DeregisterContainerInstance 
     , module Network.AWS.ECS.DeregisterContainerInstance
 
-    -- ** DeleteAttributes
+    -- ** DeleteAttributes 
     , module Network.AWS.ECS.DeleteAttributes
 
-    -- ** PutAttributes
+    -- ** PutAttributes 
     , module Network.AWS.ECS.PutAttributes
 
-    -- ** RegisterTaskDefinition
+    -- ** RegisterTaskDefinition 
     , module Network.AWS.ECS.RegisterTaskDefinition
 
-    -- ** CreateService
+    -- ** CreateService 
     , module Network.AWS.ECS.CreateService
 
     -- * Types

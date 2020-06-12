@@ -18,12 +18,12 @@
 -- Stability   : auto-generated
 -- Portability : non-portable (GHC extensions)
 --
--- Returns a data encryption key that you can use in your application to encrypt data locally.
+-- Returns a data encryption key that you can use in your application to encrypt data locally. 
 --
 --
 -- You must specify the customer master key (CMK) under which to generate the data key. You must also specify the length of the data key using either the @KeySpec@ or @NumberOfBytes@ field. You must specify one field or the other, but not both. For common key lengths (128-bit and 256-bit symmetric keys), we recommend that you use @KeySpec@ . To perform this operation on a CMK in a different AWS account, specify the key ARN or alias ARN in the value of the KeyId parameter.
 --
--- This operation returns a plaintext copy of the data key in the @Plaintext@ field of the response, and an encrypted copy of the data key in the @CiphertextBlob@ field. The data key is encrypted under the CMK specified in the @KeyId@ field of the request.
+-- This operation returns a plaintext copy of the data key in the @Plaintext@ field of the response, and an encrypted copy of the data key in the @CiphertextBlob@ field. The data key is encrypted under the CMK specified in the @KeyId@ field of the request. 
 --
 -- We recommend that you use the following pattern to encrypt data locally in your application:
 --
@@ -70,23 +70,20 @@ module Network.AWS.KMS.GenerateDataKey
     ) where
 
 import Network.AWS.KMS.Types
-import Network.AWS.KMS.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 
 -- | /See:/ 'generateDataKey' smart constructor.
-data GenerateDataKey =
-  GenerateDataKey'
-    { _gdkKeySpec           :: !(Maybe DataKeySpec)
-    , _gdkEncryptionContext :: !(Maybe (Map Text Text))
-    , _gdkNumberOfBytes     :: !(Maybe Nat)
-    , _gdkGrantTokens       :: !(Maybe [Text])
-    , _gdkKeyId             :: !Text
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data GenerateDataKey = GenerateDataKey'{_gdkKeySpec
+                                        :: !(Maybe DataKeySpec),
+                                        _gdkEncryptionContext ::
+                                        !(Maybe (Map Text Text)),
+                                        _gdkNumberOfBytes :: !(Maybe Nat),
+                                        _gdkGrantTokens :: !(Maybe [Text]),
+                                        _gdkKeyId :: !Text}
+                         deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'GenerateDataKey' with the minimum fields required to make a request.
 --
@@ -104,15 +101,11 @@ data GenerateDataKey =
 generateDataKey
     :: Text -- ^ 'gdkKeyId'
     -> GenerateDataKey
-generateDataKey pKeyId_ =
-  GenerateDataKey'
-    { _gdkKeySpec = Nothing
-    , _gdkEncryptionContext = Nothing
-    , _gdkNumberOfBytes = Nothing
-    , _gdkGrantTokens = Nothing
-    , _gdkKeyId = pKeyId_
-    }
-
+generateDataKey pKeyId_
+  = GenerateDataKey'{_gdkKeySpec = Nothing,
+                     _gdkEncryptionContext = Nothing,
+                     _gdkNumberOfBytes = Nothing,
+                     _gdkGrantTokens = Nothing, _gdkKeyId = pKeyId_}
 
 -- | The length of the data encryption key. Use @AES_128@ to generate a 128-bit symmetric key, or @AES_256@ to generate a 256-bit symmetric key.
 gdkKeySpec :: Lens' GenerateDataKey (Maybe DataKeySpec)
@@ -175,15 +168,14 @@ instance ToQuery GenerateDataKey where
         toQuery = const mempty
 
 -- | /See:/ 'generateDataKeyResponse' smart constructor.
-data GenerateDataKeyResponse =
-  GenerateDataKeyResponse'
-    { _gdkrsResponseStatus :: !Int
-    , _gdkrsKeyId          :: !Text
-    , _gdkrsPlaintext      :: !(Sensitive Base64)
-    , _gdkrsCiphertextBlob :: !Base64
-    }
-  deriving (Eq, Show, Data, Typeable, Generic)
-
+data GenerateDataKeyResponse = GenerateDataKeyResponse'{_gdkrsResponseStatus
+                                                        :: !Int,
+                                                        _gdkrsKeyId :: !Text,
+                                                        _gdkrsPlaintext ::
+                                                        !(Sensitive Base64),
+                                                        _gdkrsCiphertextBlob ::
+                                                        !Base64}
+                                 deriving (Eq, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'GenerateDataKeyResponse' with the minimum fields required to make a request.
 --
@@ -202,14 +194,14 @@ generateDataKeyResponse
     -> ByteString -- ^ 'gdkrsPlaintext'
     -> ByteString -- ^ 'gdkrsCiphertextBlob'
     -> GenerateDataKeyResponse
-generateDataKeyResponse pResponseStatus_ pKeyId_ pPlaintext_ pCiphertextBlob_ =
-  GenerateDataKeyResponse'
-    { _gdkrsResponseStatus = pResponseStatus_
-    , _gdkrsKeyId = pKeyId_
-    , _gdkrsPlaintext = _Sensitive . _Base64 # pPlaintext_
-    , _gdkrsCiphertextBlob = _Base64 # pCiphertextBlob_
-    }
-
+generateDataKeyResponse pResponseStatus_ pKeyId_
+  pPlaintext_ pCiphertextBlob_
+  = GenerateDataKeyResponse'{_gdkrsResponseStatus =
+                               pResponseStatus_,
+                             _gdkrsKeyId = pKeyId_,
+                             _gdkrsPlaintext =
+                               _Sensitive . _Base64 # pPlaintext_,
+                             _gdkrsCiphertextBlob = _Base64 # pCiphertextBlob_}
 
 -- | -- | The response status code.
 gdkrsResponseStatus :: Lens' GenerateDataKeyResponse Int

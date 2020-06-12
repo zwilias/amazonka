@@ -39,7 +39,6 @@ module Network.AWS.CodePipeline.AcknowledgeJob
     ) where
 
 import Network.AWS.CodePipeline.Types
-import Network.AWS.CodePipeline.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.Request
@@ -50,13 +49,10 @@ import Network.AWS.Response
 --
 --
 -- /See:/ 'acknowledgeJob' smart constructor.
-data AcknowledgeJob =
-  AcknowledgeJob'
-    { _ajJobId :: !Text
-    , _ajNonce :: !Text
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data AcknowledgeJob = AcknowledgeJob'{_ajJobId ::
+                                      !Text,
+                                      _ajNonce :: !Text}
+                        deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'AcknowledgeJob' with the minimum fields required to make a request.
 --
@@ -69,9 +65,9 @@ acknowledgeJob
     :: Text -- ^ 'ajJobId'
     -> Text -- ^ 'ajNonce'
     -> AcknowledgeJob
-acknowledgeJob pJobId_ pNonce_ =
-  AcknowledgeJob' {_ajJobId = pJobId_, _ajNonce = pNonce_}
-
+acknowledgeJob pJobId_ pNonce_
+  = AcknowledgeJob'{_ajJobId = pJobId_,
+                    _ajNonce = pNonce_}
 
 -- | The unique system-generated ID of the job for which you want to confirm receipt.
 ajJobId :: Lens' AcknowledgeJob Text
@@ -122,13 +118,12 @@ instance ToQuery AcknowledgeJob where
 --
 --
 -- /See:/ 'acknowledgeJobResponse' smart constructor.
-data AcknowledgeJobResponse =
-  AcknowledgeJobResponse'
-    { _ajrsStatus         :: !(Maybe JobStatus)
-    , _ajrsResponseStatus :: !Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data AcknowledgeJobResponse = AcknowledgeJobResponse'{_ajrsStatus
+                                                      :: !(Maybe JobStatus),
+                                                      _ajrsResponseStatus ::
+                                                      !Int}
+                                deriving (Eq, Read, Show, Data, Typeable,
+                                          Generic)
 
 -- | Creates a value of 'AcknowledgeJobResponse' with the minimum fields required to make a request.
 --
@@ -140,10 +135,9 @@ data AcknowledgeJobResponse =
 acknowledgeJobResponse
     :: Int -- ^ 'ajrsResponseStatus'
     -> AcknowledgeJobResponse
-acknowledgeJobResponse pResponseStatus_ =
-  AcknowledgeJobResponse'
-    {_ajrsStatus = Nothing, _ajrsResponseStatus = pResponseStatus_}
-
+acknowledgeJobResponse pResponseStatus_
+  = AcknowledgeJobResponse'{_ajrsStatus = Nothing,
+                            _ajrsResponseStatus = pResponseStatus_}
 
 -- | Whether the job worker has received the specified job.
 ajrsStatus :: Lens' AcknowledgeJobResponse (Maybe JobStatus)

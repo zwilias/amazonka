@@ -53,22 +53,22 @@ import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 import Network.AWS.SSM.Types
-import Network.AWS.SSM.Types.Product
 
 -- | /See:/ 'createAssociation' smart constructor.
-data CreateAssociation =
-  CreateAssociation'
-    { _caInstanceId         :: !(Maybe Text)
-    , _caScheduleExpression :: !(Maybe Text)
-    , _caOutputLocation     :: !(Maybe InstanceAssociationOutputLocation)
-    , _caTargets            :: !(Maybe [Target])
-    , _caParameters         :: !(Maybe (Map Text [Text]))
-    , _caDocumentVersion    :: !(Maybe Text)
-    , _caAssociationName    :: !(Maybe Text)
-    , _caName               :: !Text
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data CreateAssociation = CreateAssociation'{_caInstanceId
+                                            :: !(Maybe Text),
+                                            _caScheduleExpression ::
+                                            !(Maybe Text),
+                                            _caOutputLocation ::
+                                            !(Maybe
+                                                InstanceAssociationOutputLocation),
+                                            _caTargets :: !(Maybe [Target]),
+                                            _caParameters ::
+                                            !(Maybe (Map Text [Text])),
+                                            _caDocumentVersion :: !(Maybe Text),
+                                            _caAssociationName :: !(Maybe Text),
+                                            _caName :: !Text}
+                           deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'CreateAssociation' with the minimum fields required to make a request.
 --
@@ -82,7 +82,7 @@ data CreateAssociation =
 --
 -- * 'caTargets' - The targets (either instances or tags) for the association.
 --
--- * 'caParameters' - The parameters for the documents runtime configuration.
+-- * 'caParameters' - The parameters for the documents runtime configuration. 
 --
 -- * 'caDocumentVersion' - The document version you want to associate with the target(s). Can be a specific version or the default version.
 --
@@ -92,18 +92,13 @@ data CreateAssociation =
 createAssociation
     :: Text -- ^ 'caName'
     -> CreateAssociation
-createAssociation pName_ =
-  CreateAssociation'
-    { _caInstanceId = Nothing
-    , _caScheduleExpression = Nothing
-    , _caOutputLocation = Nothing
-    , _caTargets = Nothing
-    , _caParameters = Nothing
-    , _caDocumentVersion = Nothing
-    , _caAssociationName = Nothing
-    , _caName = pName_
-    }
-
+createAssociation pName_
+  = CreateAssociation'{_caInstanceId = Nothing,
+                       _caScheduleExpression = Nothing,
+                       _caOutputLocation = Nothing, _caTargets = Nothing,
+                       _caParameters = Nothing,
+                       _caDocumentVersion = Nothing,
+                       _caAssociationName = Nothing, _caName = pName_}
 
 -- | The instance ID.
 caInstanceId :: Lens' CreateAssociation (Maybe Text)
@@ -121,7 +116,7 @@ caOutputLocation = lens _caOutputLocation (\ s a -> s{_caOutputLocation = a})
 caTargets :: Lens' CreateAssociation [Target]
 caTargets = lens _caTargets (\ s a -> s{_caTargets = a}) . _Default . _Coerce
 
--- | The parameters for the documents runtime configuration.
+-- | The parameters for the documents runtime configuration. 
 caParameters :: Lens' CreateAssociation (HashMap Text [Text])
 caParameters = lens _caParameters (\ s a -> s{_caParameters = a}) . _Default . _Map
 
@@ -180,13 +175,14 @@ instance ToQuery CreateAssociation where
         toQuery = const mempty
 
 -- | /See:/ 'createAssociationResponse' smart constructor.
-data CreateAssociationResponse =
-  CreateAssociationResponse'
-    { _crsAssociationDescription :: !(Maybe AssociationDescription)
-    , _crsResponseStatus         :: !Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data CreateAssociationResponse = CreateAssociationResponse'{_crsAssociationDescription
+                                                            ::
+                                                            !(Maybe
+                                                                AssociationDescription),
+                                                            _crsResponseStatus
+                                                            :: !Int}
+                                   deriving (Eq, Read, Show, Data, Typeable,
+                                             Generic)
 
 -- | Creates a value of 'CreateAssociationResponse' with the minimum fields required to make a request.
 --
@@ -198,12 +194,10 @@ data CreateAssociationResponse =
 createAssociationResponse
     :: Int -- ^ 'crsResponseStatus'
     -> CreateAssociationResponse
-createAssociationResponse pResponseStatus_ =
-  CreateAssociationResponse'
-    { _crsAssociationDescription = Nothing
-    , _crsResponseStatus = pResponseStatus_
-    }
-
+createAssociationResponse pResponseStatus_
+  = CreateAssociationResponse'{_crsAssociationDescription
+                                 = Nothing,
+                               _crsResponseStatus = pResponseStatus_}
 
 -- | Information about the association.
 crsAssociationDescription :: Lens' CreateAssociationResponse (Maybe AssociationDescription)

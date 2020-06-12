@@ -39,20 +39,15 @@ module Network.AWS.Glue.UpdateTrigger
     ) where
 
 import Network.AWS.Glue.Types
-import Network.AWS.Glue.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 
 -- | /See:/ 'updateTrigger' smart constructor.
-data UpdateTrigger =
-  UpdateTrigger'
-    { _utName          :: !Text
-    , _utTriggerUpdate :: !TriggerUpdate
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data UpdateTrigger = UpdateTrigger'{_utName :: !Text,
+                                    _utTriggerUpdate :: !TriggerUpdate}
+                       deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'UpdateTrigger' with the minimum fields required to make a request.
 --
@@ -65,9 +60,9 @@ updateTrigger
     :: Text -- ^ 'utName'
     -> TriggerUpdate -- ^ 'utTriggerUpdate'
     -> UpdateTrigger
-updateTrigger pName_ pTriggerUpdate_ =
-  UpdateTrigger' {_utName = pName_, _utTriggerUpdate = pTriggerUpdate_}
-
+updateTrigger pName_ pTriggerUpdate_
+  = UpdateTrigger'{_utName = pName_,
+                   _utTriggerUpdate = pTriggerUpdate_}
 
 -- | The name of the trigger to update.
 utName :: Lens' UpdateTrigger Text
@@ -113,13 +108,12 @@ instance ToQuery UpdateTrigger where
         toQuery = const mempty
 
 -- | /See:/ 'updateTriggerResponse' smart constructor.
-data UpdateTriggerResponse =
-  UpdateTriggerResponse'
-    { _updrsTrigger        :: !(Maybe Trigger)
-    , _updrsResponseStatus :: !Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data UpdateTriggerResponse = UpdateTriggerResponse'{_updrsTrigger
+                                                    :: !(Maybe Trigger),
+                                                    _updrsResponseStatus ::
+                                                    !Int}
+                               deriving (Eq, Read, Show, Data, Typeable,
+                                         Generic)
 
 -- | Creates a value of 'UpdateTriggerResponse' with the minimum fields required to make a request.
 --
@@ -131,10 +125,9 @@ data UpdateTriggerResponse =
 updateTriggerResponse
     :: Int -- ^ 'updrsResponseStatus'
     -> UpdateTriggerResponse
-updateTriggerResponse pResponseStatus_ =
-  UpdateTriggerResponse'
-    {_updrsTrigger = Nothing, _updrsResponseStatus = pResponseStatus_}
-
+updateTriggerResponse pResponseStatus_
+  = UpdateTriggerResponse'{_updrsTrigger = Nothing,
+                           _updrsResponseStatus = pResponseStatus_}
 
 -- | The resulting trigger definition.
 updrsTrigger :: Lens' UpdateTriggerResponse (Maybe Trigger)

@@ -47,20 +47,16 @@ module Network.AWS.IAM.GetRolePolicy
     ) where
 
 import Network.AWS.IAM.Types
-import Network.AWS.IAM.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 
 -- | /See:/ 'getRolePolicy' smart constructor.
-data GetRolePolicy =
-  GetRolePolicy'
-    { _grpRoleName   :: !Text
-    , _grpPolicyName :: !Text
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data GetRolePolicy = GetRolePolicy'{_grpRoleName ::
+                                    !Text,
+                                    _grpPolicyName :: !Text}
+                       deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'GetRolePolicy' with the minimum fields required to make a request.
 --
@@ -73,9 +69,9 @@ getRolePolicy
     :: Text -- ^ 'grpRoleName'
     -> Text -- ^ 'grpPolicyName'
     -> GetRolePolicy
-getRolePolicy pRoleName_ pPolicyName_ =
-  GetRolePolicy' {_grpRoleName = pRoleName_, _grpPolicyName = pPolicyName_}
-
+getRolePolicy pRoleName_ pPolicyName_
+  = GetRolePolicy'{_grpRoleName = pRoleName_,
+                   _grpPolicyName = pPolicyName_}
 
 -- | The name of the role associated with the policy. This parameter allows (per its <http://wikipedia.org/wiki/regex regex pattern> ) a string of characters consisting of upper and lowercase alphanumeric characters with no spaces. You can also include any of the following characters: _+=,.@-
 grpRoleName :: Lens' GetRolePolicy Text
@@ -114,20 +110,19 @@ instance ToQuery GetRolePolicy where
                "RoleName" =: _grpRoleName,
                "PolicyName" =: _grpPolicyName]
 
--- | Contains the response to a successful 'GetRolePolicy' request.
+-- | Contains the response to a successful 'GetRolePolicy' request. 
 --
 --
 --
 -- /See:/ 'getRolePolicyResponse' smart constructor.
-data GetRolePolicyResponse =
-  GetRolePolicyResponse'
-    { _grprsResponseStatus :: !Int
-    , _grprsRoleName       :: !Text
-    , _grprsPolicyName     :: !Text
-    , _grprsPolicyDocument :: !Text
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data GetRolePolicyResponse = GetRolePolicyResponse'{_grprsResponseStatus
+                                                    :: !Int,
+                                                    _grprsRoleName :: !Text,
+                                                    _grprsPolicyName :: !Text,
+                                                    _grprsPolicyDocument ::
+                                                    !Text}
+                               deriving (Eq, Read, Show, Data, Typeable,
+                                         Generic)
 
 -- | Creates a value of 'GetRolePolicyResponse' with the minimum fields required to make a request.
 --
@@ -146,14 +141,13 @@ getRolePolicyResponse
     -> Text -- ^ 'grprsPolicyName'
     -> Text -- ^ 'grprsPolicyDocument'
     -> GetRolePolicyResponse
-getRolePolicyResponse pResponseStatus_ pRoleName_ pPolicyName_ pPolicyDocument_ =
-  GetRolePolicyResponse'
-    { _grprsResponseStatus = pResponseStatus_
-    , _grprsRoleName = pRoleName_
-    , _grprsPolicyName = pPolicyName_
-    , _grprsPolicyDocument = pPolicyDocument_
-    }
-
+getRolePolicyResponse pResponseStatus_ pRoleName_
+  pPolicyName_ pPolicyDocument_
+  = GetRolePolicyResponse'{_grprsResponseStatus =
+                             pResponseStatus_,
+                           _grprsRoleName = pRoleName_,
+                           _grprsPolicyName = pPolicyName_,
+                           _grprsPolicyDocument = pPolicyDocument_}
 
 -- | -- | The response status code.
 grprsResponseStatus :: Lens' GetRolePolicyResponse Int

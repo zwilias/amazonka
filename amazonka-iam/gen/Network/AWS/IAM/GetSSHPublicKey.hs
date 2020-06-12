@@ -42,21 +42,17 @@ module Network.AWS.IAM.GetSSHPublicKey
     ) where
 
 import Network.AWS.IAM.Types
-import Network.AWS.IAM.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 
 -- | /See:/ 'getSSHPublicKey' smart constructor.
-data GetSSHPublicKey =
-  GetSSHPublicKey'
-    { _gspkUserName       :: !Text
-    , _gspkSSHPublicKeyId :: !Text
-    , _gspkEncoding       :: !EncodingType
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data GetSSHPublicKey = GetSSHPublicKey'{_gspkUserName
+                                        :: !Text,
+                                        _gspkSSHPublicKeyId :: !Text,
+                                        _gspkEncoding :: !EncodingType}
+                         deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'GetSSHPublicKey' with the minimum fields required to make a request.
 --
@@ -72,13 +68,11 @@ getSSHPublicKey
     -> Text -- ^ 'gspkSSHPublicKeyId'
     -> EncodingType -- ^ 'gspkEncoding'
     -> GetSSHPublicKey
-getSSHPublicKey pUserName_ pSSHPublicKeyId_ pEncoding_ =
-  GetSSHPublicKey'
-    { _gspkUserName = pUserName_
-    , _gspkSSHPublicKeyId = pSSHPublicKeyId_
-    , _gspkEncoding = pEncoding_
-    }
-
+getSSHPublicKey pUserName_ pSSHPublicKeyId_
+  pEncoding_
+  = GetSSHPublicKey'{_gspkUserName = pUserName_,
+                     _gspkSSHPublicKeyId = pSSHPublicKeyId_,
+                     _gspkEncoding = pEncoding_}
 
 -- | The name of the IAM user associated with the SSH public key. This parameter allows (per its <http://wikipedia.org/wiki/regex regex pattern> ) a string of characters consisting of upper and lowercase alphanumeric characters with no spaces. You can also include any of the following characters: _+=,.@-
 gspkUserName :: Lens' GetSSHPublicKey Text
@@ -125,13 +119,13 @@ instance ToQuery GetSSHPublicKey where
 --
 --
 -- /See:/ 'getSSHPublicKeyResponse' smart constructor.
-data GetSSHPublicKeyResponse =
-  GetSSHPublicKeyResponse'
-    { _gspkrsSSHPublicKey   :: !(Maybe SSHPublicKey)
-    , _gspkrsResponseStatus :: !Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data GetSSHPublicKeyResponse = GetSSHPublicKeyResponse'{_gspkrsSSHPublicKey
+                                                        ::
+                                                        !(Maybe SSHPublicKey),
+                                                        _gspkrsResponseStatus ::
+                                                        !Int}
+                                 deriving (Eq, Read, Show, Data, Typeable,
+                                           Generic)
 
 -- | Creates a value of 'GetSSHPublicKeyResponse' with the minimum fields required to make a request.
 --
@@ -143,10 +137,10 @@ data GetSSHPublicKeyResponse =
 getSSHPublicKeyResponse
     :: Int -- ^ 'gspkrsResponseStatus'
     -> GetSSHPublicKeyResponse
-getSSHPublicKeyResponse pResponseStatus_ =
-  GetSSHPublicKeyResponse'
-    {_gspkrsSSHPublicKey = Nothing, _gspkrsResponseStatus = pResponseStatus_}
-
+getSSHPublicKeyResponse pResponseStatus_
+  = GetSSHPublicKeyResponse'{_gspkrsSSHPublicKey =
+                               Nothing,
+                             _gspkrsResponseStatus = pResponseStatus_}
 
 -- | A structure containing details about the SSH public key.
 gspkrsSSHPublicKey :: Lens' GetSSHPublicKeyResponse (Maybe SSHPublicKey)

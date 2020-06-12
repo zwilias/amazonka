@@ -43,7 +43,6 @@ module Network.AWS.Comprehend.ListSentimentDetectionJobs
     ) where
 
 import Network.AWS.Comprehend.Types
-import Network.AWS.Comprehend.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Pager
 import Network.AWS.Prelude
@@ -51,14 +50,15 @@ import Network.AWS.Request
 import Network.AWS.Response
 
 -- | /See:/ 'listSentimentDetectionJobs' smart constructor.
-data ListSentimentDetectionJobs =
-  ListSentimentDetectionJobs'
-    { _lsdjNextToken  :: !(Maybe Text)
-    , _lsdjFilter     :: !(Maybe SentimentDetectionJobFilter)
-    , _lsdjMaxResults :: !(Maybe Nat)
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data ListSentimentDetectionJobs = ListSentimentDetectionJobs'{_lsdjNextToken
+                                                              :: !(Maybe Text),
+                                                              _lsdjFilter ::
+                                                              !(Maybe
+                                                                  SentimentDetectionJobFilter),
+                                                              _lsdjMaxResults ::
+                                                              !(Maybe Nat)}
+                                    deriving (Eq, Read, Show, Data, Typeable,
+                                              Generic)
 
 -- | Creates a value of 'ListSentimentDetectionJobs' with the minimum fields required to make a request.
 --
@@ -71,10 +71,11 @@ data ListSentimentDetectionJobs =
 -- * 'lsdjMaxResults' - The maximum number of results to return in each page. The default is 100.
 listSentimentDetectionJobs
     :: ListSentimentDetectionJobs
-listSentimentDetectionJobs =
-  ListSentimentDetectionJobs'
-    {_lsdjNextToken = Nothing, _lsdjFilter = Nothing, _lsdjMaxResults = Nothing}
-
+listSentimentDetectionJobs
+  = ListSentimentDetectionJobs'{_lsdjNextToken =
+                                  Nothing,
+                                _lsdjFilter = Nothing,
+                                _lsdjMaxResults = Nothing}
 
 -- | Identifies the next page of results to return.
 lsdjNextToken :: Lens' ListSentimentDetectionJobs (Maybe Text)
@@ -139,14 +140,19 @@ instance ToQuery ListSentimentDetectionJobs where
         toQuery = const mempty
 
 -- | /See:/ 'listSentimentDetectionJobsResponse' smart constructor.
-data ListSentimentDetectionJobsResponse =
-  ListSentimentDetectionJobsResponse'
-    { _lsdjrsNextToken :: !(Maybe Text)
-    , _lsdjrsSentimentDetectionJobPropertiesList :: !(Maybe [SentimentDetectionJobProperties])
-    , _lsdjrsResponseStatus :: !Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data ListSentimentDetectionJobsResponse = ListSentimentDetectionJobsResponse'{_lsdjrsNextToken
+                                                                              ::
+                                                                              !(Maybe
+                                                                                  Text),
+                                                                              _lsdjrsSentimentDetectionJobPropertiesList
+                                                                              ::
+                                                                              !(Maybe
+                                                                                  [SentimentDetectionJobProperties]),
+                                                                              _lsdjrsResponseStatus
+                                                                              ::
+                                                                              !Int}
+                                            deriving (Eq, Read, Show, Data,
+                                                      Typeable, Generic)
 
 -- | Creates a value of 'ListSentimentDetectionJobsResponse' with the minimum fields required to make a request.
 --
@@ -160,13 +166,13 @@ data ListSentimentDetectionJobsResponse =
 listSentimentDetectionJobsResponse
     :: Int -- ^ 'lsdjrsResponseStatus'
     -> ListSentimentDetectionJobsResponse
-listSentimentDetectionJobsResponse pResponseStatus_ =
-  ListSentimentDetectionJobsResponse'
-    { _lsdjrsNextToken = Nothing
-    , _lsdjrsSentimentDetectionJobPropertiesList = Nothing
-    , _lsdjrsResponseStatus = pResponseStatus_
-    }
-
+listSentimentDetectionJobsResponse pResponseStatus_
+  = ListSentimentDetectionJobsResponse'{_lsdjrsNextToken
+                                          = Nothing,
+                                        _lsdjrsSentimentDetectionJobPropertiesList
+                                          = Nothing,
+                                        _lsdjrsResponseStatus =
+                                          pResponseStatus_}
 
 -- | Identifies the next page of results to return.
 lsdjrsNextToken :: Lens' ListSentimentDetectionJobsResponse (Maybe Text)

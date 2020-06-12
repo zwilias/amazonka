@@ -50,18 +50,22 @@ import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 import Network.AWS.ServiceCatalog.Types
-import Network.AWS.ServiceCatalog.Types.Product
 
 -- | /See:/ 'describeProvisioningParameters' smart constructor.
-data DescribeProvisioningParameters =
-  DescribeProvisioningParameters'
-    { _dppsAcceptLanguage         :: !(Maybe Text)
-    , _dppsPathId                 :: !(Maybe Text)
-    , _dppsProductId              :: !Text
-    , _dppsProvisioningArtifactId :: !Text
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data DescribeProvisioningParameters = DescribeProvisioningParameters'{_dppsAcceptLanguage
+                                                                      ::
+                                                                      !(Maybe
+                                                                          Text),
+                                                                      _dppsPathId
+                                                                      ::
+                                                                      !(Maybe
+                                                                          Text),
+                                                                      _dppsProductId
+                                                                      :: !Text,
+                                                                      _dppsProvisioningArtifactId
+                                                                      :: !Text}
+                                        deriving (Eq, Read, Show, Data,
+                                                  Typeable, Generic)
 
 -- | Creates a value of 'DescribeProvisioningParameters' with the minimum fields required to make a request.
 --
@@ -78,14 +82,14 @@ describeProvisioningParameters
     :: Text -- ^ 'dppsProductId'
     -> Text -- ^ 'dppsProvisioningArtifactId'
     -> DescribeProvisioningParameters
-describeProvisioningParameters pProductId_ pProvisioningArtifactId_ =
-  DescribeProvisioningParameters'
-    { _dppsAcceptLanguage = Nothing
-    , _dppsPathId = Nothing
-    , _dppsProductId = pProductId_
-    , _dppsProvisioningArtifactId = pProvisioningArtifactId_
-    }
-
+describeProvisioningParameters pProductId_
+  pProvisioningArtifactId_
+  = DescribeProvisioningParameters'{_dppsAcceptLanguage
+                                      = Nothing,
+                                    _dppsPathId = Nothing,
+                                    _dppsProductId = pProductId_,
+                                    _dppsProvisioningArtifactId =
+                                      pProvisioningArtifactId_}
 
 -- | The language code.     * @en@ - English (default)     * @jp@ - Japanese     * @zh@ - Chinese
 dppsAcceptLanguage :: Lens' DescribeProvisioningParameters (Maybe Text)
@@ -152,16 +156,27 @@ instance ToQuery DescribeProvisioningParameters where
         toQuery = const mempty
 
 -- | /See:/ 'describeProvisioningParametersResponse' smart constructor.
-data DescribeProvisioningParametersResponse =
-  DescribeProvisioningParametersResponse'
-    { _dpprsProvisioningArtifactParameters :: !(Maybe [ProvisioningArtifactParameter])
-    , _dpprsUsageInstructions :: !(Maybe [UsageInstruction])
-    , _dpprsConstraintSummaries :: !(Maybe [ConstraintSummary])
-    , _dpprsTagOptions :: !(Maybe [TagOptionSummary])
-    , _dpprsResponseStatus :: !Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data DescribeProvisioningParametersResponse = DescribeProvisioningParametersResponse'{_dpprsProvisioningArtifactParameters
+                                                                                      ::
+                                                                                      !(Maybe
+                                                                                          [ProvisioningArtifactParameter]),
+                                                                                      _dpprsUsageInstructions
+                                                                                      ::
+                                                                                      !(Maybe
+                                                                                          [UsageInstruction]),
+                                                                                      _dpprsConstraintSummaries
+                                                                                      ::
+                                                                                      !(Maybe
+                                                                                          [ConstraintSummary]),
+                                                                                      _dpprsTagOptions
+                                                                                      ::
+                                                                                      !(Maybe
+                                                                                          [TagOptionSummary]),
+                                                                                      _dpprsResponseStatus
+                                                                                      ::
+                                                                                      !Int}
+                                                deriving (Eq, Read, Show, Data,
+                                                          Typeable, Generic)
 
 -- | Creates a value of 'DescribeProvisioningParametersResponse' with the minimum fields required to make a request.
 --
@@ -179,15 +194,15 @@ data DescribeProvisioningParametersResponse =
 describeProvisioningParametersResponse
     :: Int -- ^ 'dpprsResponseStatus'
     -> DescribeProvisioningParametersResponse
-describeProvisioningParametersResponse pResponseStatus_ =
-  DescribeProvisioningParametersResponse'
-    { _dpprsProvisioningArtifactParameters = Nothing
-    , _dpprsUsageInstructions = Nothing
-    , _dpprsConstraintSummaries = Nothing
-    , _dpprsTagOptions = Nothing
-    , _dpprsResponseStatus = pResponseStatus_
-    }
-
+describeProvisioningParametersResponse
+  pResponseStatus_
+  = DescribeProvisioningParametersResponse'{_dpprsProvisioningArtifactParameters
+                                              = Nothing,
+                                            _dpprsUsageInstructions = Nothing,
+                                            _dpprsConstraintSummaries = Nothing,
+                                            _dpprsTagOptions = Nothing,
+                                            _dpprsResponseStatus =
+                                              pResponseStatus_}
 
 -- | Information about the parameters used to provision the product.
 dpprsProvisioningArtifactParameters :: Lens' DescribeProvisioningParametersResponse [ProvisioningArtifactParameter]

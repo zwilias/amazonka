@@ -37,18 +37,15 @@ module Network.AWS.Pinpoint.GetApplicationSettings
 
 import Network.AWS.Lens
 import Network.AWS.Pinpoint.Types
-import Network.AWS.Pinpoint.Types.Product
 import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 
 -- | /See:/ 'getApplicationSettings' smart constructor.
-newtype GetApplicationSettings =
-  GetApplicationSettings'
-    { _gasApplicationId :: Text
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+newtype GetApplicationSettings = GetApplicationSettings'{_gasApplicationId
+                                                         :: Text}
+                                   deriving (Eq, Read, Show, Data, Typeable,
+                                             Generic)
 
 -- | Creates a value of 'GetApplicationSettings' with the minimum fields required to make a request.
 --
@@ -58,9 +55,9 @@ newtype GetApplicationSettings =
 getApplicationSettings
     :: Text -- ^ 'gasApplicationId'
     -> GetApplicationSettings
-getApplicationSettings pApplicationId_ =
-  GetApplicationSettings' {_gasApplicationId = pApplicationId_}
-
+getApplicationSettings pApplicationId_
+  = GetApplicationSettings'{_gasApplicationId =
+                              pApplicationId_}
 
 -- | Undocumented member.
 gasApplicationId :: Lens' GetApplicationSettings Text
@@ -96,13 +93,13 @@ instance ToQuery GetApplicationSettings where
         toQuery = const mempty
 
 -- | /See:/ 'getApplicationSettingsResponse' smart constructor.
-data GetApplicationSettingsResponse =
-  GetApplicationSettingsResponse'
-    { _gassrsResponseStatus              :: !Int
-    , _gassrsApplicationSettingsResource :: !ApplicationSettingsResource
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data GetApplicationSettingsResponse = GetApplicationSettingsResponse'{_gassrsResponseStatus
+                                                                      :: !Int,
+                                                                      _gassrsApplicationSettingsResource
+                                                                      ::
+                                                                      !ApplicationSettingsResource}
+                                        deriving (Eq, Read, Show, Data,
+                                                  Typeable, Generic)
 
 -- | Creates a value of 'GetApplicationSettingsResponse' with the minimum fields required to make a request.
 --
@@ -115,12 +112,12 @@ getApplicationSettingsResponse
     :: Int -- ^ 'gassrsResponseStatus'
     -> ApplicationSettingsResource -- ^ 'gassrsApplicationSettingsResource'
     -> GetApplicationSettingsResponse
-getApplicationSettingsResponse pResponseStatus_ pApplicationSettingsResource_ =
-  GetApplicationSettingsResponse'
-    { _gassrsResponseStatus = pResponseStatus_
-    , _gassrsApplicationSettingsResource = pApplicationSettingsResource_
-    }
-
+getApplicationSettingsResponse pResponseStatus_
+  pApplicationSettingsResource_
+  = GetApplicationSettingsResponse'{_gassrsResponseStatus
+                                      = pResponseStatus_,
+                                    _gassrsApplicationSettingsResource =
+                                      pApplicationSettingsResource_}
 
 -- | -- | The response status code.
 gassrsResponseStatus :: Lens' GetApplicationSettingsResponse Int

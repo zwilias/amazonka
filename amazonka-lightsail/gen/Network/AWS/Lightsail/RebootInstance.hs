@@ -39,18 +39,14 @@ module Network.AWS.Lightsail.RebootInstance
 
 import Network.AWS.Lens
 import Network.AWS.Lightsail.Types
-import Network.AWS.Lightsail.Types.Product
 import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 
 -- | /See:/ 'rebootInstance' smart constructor.
-newtype RebootInstance =
-  RebootInstance'
-    { _riInstanceName :: Text
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+newtype RebootInstance = RebootInstance'{_riInstanceName
+                                         :: Text}
+                           deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'RebootInstance' with the minimum fields required to make a request.
 --
@@ -60,9 +56,8 @@ newtype RebootInstance =
 rebootInstance
     :: Text -- ^ 'riInstanceName'
     -> RebootInstance
-rebootInstance pInstanceName_ =
-  RebootInstance' {_riInstanceName = pInstanceName_}
-
+rebootInstance pInstanceName_
+  = RebootInstance'{_riInstanceName = pInstanceName_}
 
 -- | The name of the instance to reboot.
 riInstanceName :: Lens' RebootInstance Text
@@ -104,13 +99,12 @@ instance ToQuery RebootInstance where
         toQuery = const mempty
 
 -- | /See:/ 'rebootInstanceResponse' smart constructor.
-data RebootInstanceResponse =
-  RebootInstanceResponse'
-    { _rirsOperations     :: !(Maybe [Operation])
-    , _rirsResponseStatus :: !Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data RebootInstanceResponse = RebootInstanceResponse'{_rirsOperations
+                                                      :: !(Maybe [Operation]),
+                                                      _rirsResponseStatus ::
+                                                      !Int}
+                                deriving (Eq, Read, Show, Data, Typeable,
+                                          Generic)
 
 -- | Creates a value of 'RebootInstanceResponse' with the minimum fields required to make a request.
 --
@@ -122,10 +116,9 @@ data RebootInstanceResponse =
 rebootInstanceResponse
     :: Int -- ^ 'rirsResponseStatus'
     -> RebootInstanceResponse
-rebootInstanceResponse pResponseStatus_ =
-  RebootInstanceResponse'
-    {_rirsOperations = Nothing, _rirsResponseStatus = pResponseStatus_}
-
+rebootInstanceResponse pResponseStatus_
+  = RebootInstanceResponse'{_rirsOperations = Nothing,
+                            _rirsResponseStatus = pResponseStatus_}
 
 -- | An array of key-value pairs containing information about the request operations.
 rirsOperations :: Lens' RebootInstanceResponse [Operation]

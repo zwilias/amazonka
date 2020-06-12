@@ -37,18 +37,14 @@ module Network.AWS.Pinpoint.GetGCMChannel
 
 import Network.AWS.Lens
 import Network.AWS.Pinpoint.Types
-import Network.AWS.Pinpoint.Types.Product
 import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 
 -- | /See:/ 'getGCMChannel' smart constructor.
-newtype GetGCMChannel =
-  GetGCMChannel'
-    { _ggcApplicationId :: Text
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+newtype GetGCMChannel = GetGCMChannel'{_ggcApplicationId
+                                       :: Text}
+                          deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'GetGCMChannel' with the minimum fields required to make a request.
 --
@@ -58,9 +54,8 @@ newtype GetGCMChannel =
 getGCMChannel
     :: Text -- ^ 'ggcApplicationId'
     -> GetGCMChannel
-getGCMChannel pApplicationId_ =
-  GetGCMChannel' {_ggcApplicationId = pApplicationId_}
-
+getGCMChannel pApplicationId_
+  = GetGCMChannel'{_ggcApplicationId = pApplicationId_}
 
 -- | Undocumented member.
 ggcApplicationId :: Lens' GetGCMChannel Text
@@ -96,13 +91,12 @@ instance ToQuery GetGCMChannel where
         toQuery = const mempty
 
 -- | /See:/ 'getGCMChannelResponse' smart constructor.
-data GetGCMChannelResponse =
-  GetGCMChannelResponse'
-    { _ggcrsResponseStatus     :: !Int
-    , _ggcrsGCMChannelResponse :: !GCMChannelResponse
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data GetGCMChannelResponse = GetGCMChannelResponse'{_ggcrsResponseStatus
+                                                    :: !Int,
+                                                    _ggcrsGCMChannelResponse ::
+                                                    !GCMChannelResponse}
+                               deriving (Eq, Read, Show, Data, Typeable,
+                                         Generic)
 
 -- | Creates a value of 'GetGCMChannelResponse' with the minimum fields required to make a request.
 --
@@ -115,12 +109,11 @@ getGCMChannelResponse
     :: Int -- ^ 'ggcrsResponseStatus'
     -> GCMChannelResponse -- ^ 'ggcrsGCMChannelResponse'
     -> GetGCMChannelResponse
-getGCMChannelResponse pResponseStatus_ pGCMChannelResponse_ =
-  GetGCMChannelResponse'
-    { _ggcrsResponseStatus = pResponseStatus_
-    , _ggcrsGCMChannelResponse = pGCMChannelResponse_
-    }
-
+getGCMChannelResponse pResponseStatus_
+  pGCMChannelResponse_
+  = GetGCMChannelResponse'{_ggcrsResponseStatus =
+                             pResponseStatus_,
+                           _ggcrsGCMChannelResponse = pGCMChannelResponse_}
 
 -- | -- | The response status code.
 ggcrsResponseStatus :: Lens' GetGCMChannelResponse Int

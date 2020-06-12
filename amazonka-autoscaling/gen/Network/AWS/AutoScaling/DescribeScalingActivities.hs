@@ -44,7 +44,6 @@ module Network.AWS.AutoScaling.DescribeScalingActivities
     ) where
 
 import Network.AWS.AutoScaling.Types
-import Network.AWS.AutoScaling.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Pager
 import Network.AWS.Prelude
@@ -52,15 +51,16 @@ import Network.AWS.Request
 import Network.AWS.Response
 
 -- | /See:/ 'describeScalingActivities' smart constructor.
-data DescribeScalingActivities =
-  DescribeScalingActivities'
-    { _desNextToken            :: !(Maybe Text)
-    , _desAutoScalingGroupName :: !(Maybe Text)
-    , _desMaxRecords           :: !(Maybe Int)
-    , _desActivityIds          :: !(Maybe [Text])
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data DescribeScalingActivities = DescribeScalingActivities'{_desNextToken
+                                                            :: !(Maybe Text),
+                                                            _desAutoScalingGroupName
+                                                            :: !(Maybe Text),
+                                                            _desMaxRecords ::
+                                                            !(Maybe Int),
+                                                            _desActivityIds ::
+                                                            !(Maybe [Text])}
+                                   deriving (Eq, Read, Show, Data, Typeable,
+                                             Generic)
 
 -- | Creates a value of 'DescribeScalingActivities' with the minimum fields required to make a request.
 --
@@ -75,14 +75,11 @@ data DescribeScalingActivities =
 -- * 'desActivityIds' - The activity IDs of the desired scaling activities. You can specify up to 50 IDs. If you omit this parameter, all activities for the past six weeks are described. If unknown activities are requested, they are ignored with no error. If you specify an Auto Scaling group, the results are limited to that group.
 describeScalingActivities
     :: DescribeScalingActivities
-describeScalingActivities =
-  DescribeScalingActivities'
-    { _desNextToken = Nothing
-    , _desAutoScalingGroupName = Nothing
-    , _desMaxRecords = Nothing
-    , _desActivityIds = Nothing
-    }
-
+describeScalingActivities
+  = DescribeScalingActivities'{_desNextToken = Nothing,
+                               _desAutoScalingGroupName = Nothing,
+                               _desMaxRecords = Nothing,
+                               _desActivityIds = Nothing}
 
 -- | The token for the next set of items to return. (You received this token from a previous call.)
 desNextToken :: Lens' DescribeScalingActivities (Maybe Text)
@@ -142,14 +139,18 @@ instance ToQuery DescribeScalingActivities where
                  toQuery (toQueryList "member" <$> _desActivityIds)]
 
 -- | /See:/ 'describeScalingActivitiesResponse' smart constructor.
-data DescribeScalingActivitiesResponse =
-  DescribeScalingActivitiesResponse'
-    { _dsasrsNextToken      :: !(Maybe Text)
-    , _dsasrsResponseStatus :: !Int
-    , _dsasrsActivities     :: ![Activity]
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data DescribeScalingActivitiesResponse = DescribeScalingActivitiesResponse'{_dsasrsNextToken
+                                                                            ::
+                                                                            !(Maybe
+                                                                                Text),
+                                                                            _dsasrsResponseStatus
+                                                                            ::
+                                                                            !Int,
+                                                                            _dsasrsActivities
+                                                                            ::
+                                                                            ![Activity]}
+                                           deriving (Eq, Read, Show, Data,
+                                                     Typeable, Generic)
 
 -- | Creates a value of 'DescribeScalingActivitiesResponse' with the minimum fields required to make a request.
 --
@@ -163,13 +164,11 @@ data DescribeScalingActivitiesResponse =
 describeScalingActivitiesResponse
     :: Int -- ^ 'dsasrsResponseStatus'
     -> DescribeScalingActivitiesResponse
-describeScalingActivitiesResponse pResponseStatus_ =
-  DescribeScalingActivitiesResponse'
-    { _dsasrsNextToken = Nothing
-    , _dsasrsResponseStatus = pResponseStatus_
-    , _dsasrsActivities = mempty
-    }
-
+describeScalingActivitiesResponse pResponseStatus_
+  = DescribeScalingActivitiesResponse'{_dsasrsNextToken
+                                         = Nothing,
+                                       _dsasrsResponseStatus = pResponseStatus_,
+                                       _dsasrsActivities = mempty}
 
 -- | A string that indicates that the response contains more items than can be returned in a single response. To receive additional items, specify this string for the @NextToken@ value when requesting the next set of items. This value is null when there are no more items to return.
 dsasrsNextToken :: Lens' DescribeScalingActivitiesResponse (Maybe Text)

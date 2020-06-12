@@ -23,7 +23,7 @@
 --
 -- Rekognition Video is a consumer of live video from Amazon Kinesis Video Streams. Rekognition Video sends analysis results to Amazon Kinesis Data Streams.
 --
--- You provide as input a Kinesis video stream (@Input@ ) and a Kinesis data stream (@Output@ ) stream. You also specify the face recognition criteria in @Settings@ . For example, the collection containing faces that you want to recognize. Use @Name@ to assign an identifier for the stream processor. You use @Name@ to manage the stream processor. For example, you can start processing the source video by calling with the @Name@ field.
+-- You provide as input a Kinesis video stream (@Input@ ) and a Kinesis data stream (@Output@ ) stream. You also specify the face recognition criteria in @Settings@ . For example, the collection containing faces that you want to recognize. Use @Name@ to assign an identifier for the stream processor. You use @Name@ to manage the stream processor. For example, you can start processing the source video by calling with the @Name@ field. 
 --
 -- After you have finished analyzing a streaming video, use to stop processing. You can delete the stream processor by calling .
 --
@@ -50,21 +50,20 @@ module Network.AWS.Rekognition.CreateStreamProcessor
 import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.Rekognition.Types
-import Network.AWS.Rekognition.Types.Product
 import Network.AWS.Request
 import Network.AWS.Response
 
 -- | /See:/ 'createStreamProcessor' smart constructor.
-data CreateStreamProcessor =
-  CreateStreamProcessor'
-    { _cspInput    :: !StreamProcessorInput
-    , _cspOutput   :: !StreamProcessorOutput
-    , _cspName     :: !Text
-    , _cspSettings :: !StreamProcessorSettings
-    , _cspRoleARN  :: !Text
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data CreateStreamProcessor = CreateStreamProcessor'{_cspInput
+                                                    :: !StreamProcessorInput,
+                                                    _cspOutput ::
+                                                    !StreamProcessorOutput,
+                                                    _cspName :: !Text,
+                                                    _cspSettings ::
+                                                    !StreamProcessorSettings,
+                                                    _cspRoleARN :: !Text}
+                               deriving (Eq, Read, Show, Data, Typeable,
+                                         Generic)
 
 -- | Creates a value of 'CreateStreamProcessor' with the minimum fields required to make a request.
 --
@@ -74,7 +73,7 @@ data CreateStreamProcessor =
 --
 -- * 'cspOutput' - Kinesis data stream stream to which Rekognition Video puts the analysis results. If you are using the AWS CLI, the parameter name is @StreamProcessorOutput@ .
 --
--- * 'cspName' - An identifier you assign to the stream processor. You can use @Name@ to manage the stream processor. For example, you can get the current status of the stream processor by calling . @Name@ is idempotent.
+-- * 'cspName' - An identifier you assign to the stream processor. You can use @Name@ to manage the stream processor. For example, you can get the current status of the stream processor by calling . @Name@ is idempotent. 
 --
 -- * 'cspSettings' - Face recognition input parameters to be used by the stream processor. Includes the collection to use for face recognition and the face attributes to detect.
 --
@@ -86,15 +85,11 @@ createStreamProcessor
     -> StreamProcessorSettings -- ^ 'cspSettings'
     -> Text -- ^ 'cspRoleARN'
     -> CreateStreamProcessor
-createStreamProcessor pInput_ pOutput_ pName_ pSettings_ pRoleARN_ =
-  CreateStreamProcessor'
-    { _cspInput = pInput_
-    , _cspOutput = pOutput_
-    , _cspName = pName_
-    , _cspSettings = pSettings_
-    , _cspRoleARN = pRoleARN_
-    }
-
+createStreamProcessor pInput_ pOutput_ pName_
+  pSettings_ pRoleARN_
+  = CreateStreamProcessor'{_cspInput = pInput_,
+                           _cspOutput = pOutput_, _cspName = pName_,
+                           _cspSettings = pSettings_, _cspRoleARN = pRoleARN_}
 
 -- | Kinesis video stream stream that provides the source streaming video. If you are using the AWS CLI, the parameter name is @StreamProcessorInput@ .
 cspInput :: Lens' CreateStreamProcessor StreamProcessorInput
@@ -104,7 +99,7 @@ cspInput = lens _cspInput (\ s a -> s{_cspInput = a})
 cspOutput :: Lens' CreateStreamProcessor StreamProcessorOutput
 cspOutput = lens _cspOutput (\ s a -> s{_cspOutput = a})
 
--- | An identifier you assign to the stream processor. You can use @Name@ to manage the stream processor. For example, you can get the current status of the stream processor by calling . @Name@ is idempotent.
+-- | An identifier you assign to the stream processor. You can use @Name@ to manage the stream processor. For example, you can get the current status of the stream processor by calling . @Name@ is idempotent. 
 cspName :: Lens' CreateStreamProcessor Text
 cspName = lens _cspName (\ s a -> s{_cspName = a})
 
@@ -157,13 +152,14 @@ instance ToQuery CreateStreamProcessor where
         toQuery = const mempty
 
 -- | /See:/ 'createStreamProcessorResponse' smart constructor.
-data CreateStreamProcessorResponse =
-  CreateStreamProcessorResponse'
-    { _csprsStreamProcessorARN :: !(Maybe Text)
-    , _csprsResponseStatus     :: !Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data CreateStreamProcessorResponse = CreateStreamProcessorResponse'{_csprsStreamProcessorARN
+                                                                    ::
+                                                                    !(Maybe
+                                                                        Text),
+                                                                    _csprsResponseStatus
+                                                                    :: !Int}
+                                       deriving (Eq, Read, Show, Data, Typeable,
+                                                 Generic)
 
 -- | Creates a value of 'CreateStreamProcessorResponse' with the minimum fields required to make a request.
 --
@@ -175,12 +171,10 @@ data CreateStreamProcessorResponse =
 createStreamProcessorResponse
     :: Int -- ^ 'csprsResponseStatus'
     -> CreateStreamProcessorResponse
-createStreamProcessorResponse pResponseStatus_ =
-  CreateStreamProcessorResponse'
-    { _csprsStreamProcessorARN = Nothing
-    , _csprsResponseStatus = pResponseStatus_
-    }
-
+createStreamProcessorResponse pResponseStatus_
+  = CreateStreamProcessorResponse'{_csprsStreamProcessorARN
+                                     = Nothing,
+                                   _csprsResponseStatus = pResponseStatus_}
 
 -- | ARN for the newly create stream processor.
 csprsStreamProcessorARN :: Lens' CreateStreamProcessorResponse (Maybe Text)

@@ -47,24 +47,35 @@ module Network.AWS.EC2.CreateTransitGatewayVPCAttachment
     ) where
 
 import Network.AWS.EC2.Types
-import Network.AWS.EC2.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 
 -- | /See:/ 'createTransitGatewayVPCAttachment' smart constructor.
-data CreateTransitGatewayVPCAttachment =
-  CreateTransitGatewayVPCAttachment'
-    { _ctgvaTagSpecifications :: !(Maybe [TagSpecification])
-    , _ctgvaOptions :: !(Maybe CreateTransitGatewayVPCAttachmentRequestOptions)
-    , _ctgvaDryRun :: !(Maybe Bool)
-    , _ctgvaTransitGatewayId :: !Text
-    , _ctgvaVPCId :: !Text
-    , _ctgvaSubnetIds :: ![Text]
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data CreateTransitGatewayVPCAttachment = CreateTransitGatewayVPCAttachment'{_ctgvaTagSpecifications
+                                                                            ::
+                                                                            !(Maybe
+                                                                                [TagSpecification]),
+                                                                            _ctgvaOptions
+                                                                            ::
+                                                                            !(Maybe
+                                                                                CreateTransitGatewayVPCAttachmentRequestOptions),
+                                                                            _ctgvaDryRun
+                                                                            ::
+                                                                            !(Maybe
+                                                                                Bool),
+                                                                            _ctgvaTransitGatewayId
+                                                                            ::
+                                                                            !Text,
+                                                                            _ctgvaVPCId
+                                                                            ::
+                                                                            !Text,
+                                                                            _ctgvaSubnetIds
+                                                                            ::
+                                                                            ![Text]}
+                                           deriving (Eq, Read, Show, Data,
+                                                     Typeable, Generic)
 
 -- | Creates a value of 'CreateTransitGatewayVPCAttachment' with the minimum fields required to make a request.
 --
@@ -85,16 +96,16 @@ createTransitGatewayVPCAttachment
     :: Text -- ^ 'ctgvaTransitGatewayId'
     -> Text -- ^ 'ctgvaVPCId'
     -> CreateTransitGatewayVPCAttachment
-createTransitGatewayVPCAttachment pTransitGatewayId_ pVPCId_ =
-  CreateTransitGatewayVPCAttachment'
-    { _ctgvaTagSpecifications = Nothing
-    , _ctgvaOptions = Nothing
-    , _ctgvaDryRun = Nothing
-    , _ctgvaTransitGatewayId = pTransitGatewayId_
-    , _ctgvaVPCId = pVPCId_
-    , _ctgvaSubnetIds = mempty
-    }
-
+createTransitGatewayVPCAttachment pTransitGatewayId_
+  pVPCId_
+  = CreateTransitGatewayVPCAttachment'{_ctgvaTagSpecifications
+                                         = Nothing,
+                                       _ctgvaOptions = Nothing,
+                                       _ctgvaDryRun = Nothing,
+                                       _ctgvaTransitGatewayId =
+                                         pTransitGatewayId_,
+                                       _ctgvaVPCId = pVPCId_,
+                                       _ctgvaSubnetIds = mempty}
 
 -- | The tags to apply to the VPC attachment.
 ctgvaTagSpecifications :: Lens' CreateTransitGatewayVPCAttachment [TagSpecification]
@@ -162,13 +173,16 @@ instance ToQuery CreateTransitGatewayVPCAttachment
                toQueryList "SubnetIds" _ctgvaSubnetIds]
 
 -- | /See:/ 'createTransitGatewayVPCAttachmentResponse' smart constructor.
-data CreateTransitGatewayVPCAttachmentResponse =
-  CreateTransitGatewayVPCAttachmentResponse'
-    { _ctgvarsTransitGatewayVPCAttachment :: !(Maybe TransitGatewayVPCAttachment)
-    , _ctgvarsResponseStatus :: !Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data CreateTransitGatewayVPCAttachmentResponse = CreateTransitGatewayVPCAttachmentResponse'{_ctgvarsTransitGatewayVPCAttachment
+                                                                                            ::
+                                                                                            !(Maybe
+                                                                                                TransitGatewayVPCAttachment),
+                                                                                            _ctgvarsResponseStatus
+                                                                                            ::
+                                                                                            !Int}
+                                                   deriving (Eq, Read, Show,
+                                                             Data, Typeable,
+                                                             Generic)
 
 -- | Creates a value of 'CreateTransitGatewayVPCAttachmentResponse' with the minimum fields required to make a request.
 --
@@ -180,12 +194,12 @@ data CreateTransitGatewayVPCAttachmentResponse =
 createTransitGatewayVPCAttachmentResponse
     :: Int -- ^ 'ctgvarsResponseStatus'
     -> CreateTransitGatewayVPCAttachmentResponse
-createTransitGatewayVPCAttachmentResponse pResponseStatus_ =
-  CreateTransitGatewayVPCAttachmentResponse'
-    { _ctgvarsTransitGatewayVPCAttachment = Nothing
-    , _ctgvarsResponseStatus = pResponseStatus_
-    }
-
+createTransitGatewayVPCAttachmentResponse
+  pResponseStatus_
+  = CreateTransitGatewayVPCAttachmentResponse'{_ctgvarsTransitGatewayVPCAttachment
+                                                 = Nothing,
+                                               _ctgvarsResponseStatus =
+                                                 pResponseStatus_}
 
 -- | Information about the VPC attachment.
 ctgvarsTransitGatewayVPCAttachment :: Lens' CreateTransitGatewayVPCAttachmentResponse (Maybe TransitGatewayVPCAttachment)

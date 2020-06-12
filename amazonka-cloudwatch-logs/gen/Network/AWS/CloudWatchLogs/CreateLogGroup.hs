@@ -35,7 +35,7 @@
 --
 -- If you associate a AWS Key Management Service (AWS KMS) customer master key (CMK) with the log group, ingested data is encrypted using the CMK. This association is stored as long as the data encrypted with the CMK is still within Amazon CloudWatch Logs. This enables Amazon CloudWatch Logs to decrypt this data whenever it is requested.
 --
--- If you attempt to associate a CMK with the log group but the CMK does not exist or the CMK is disabled, you will receive an @InvalidParameterException@ error.
+-- If you attempt to associate a CMK with the log group but the CMK does not exist or the CMK is disabled, you will receive an @InvalidParameterException@ error. 
 --
 module Network.AWS.CloudWatchLogs.CreateLogGroup
     (
@@ -53,21 +53,17 @@ module Network.AWS.CloudWatchLogs.CreateLogGroup
     ) where
 
 import Network.AWS.CloudWatchLogs.Types
-import Network.AWS.CloudWatchLogs.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 
 -- | /See:/ 'createLogGroup' smart constructor.
-data CreateLogGroup =
-  CreateLogGroup'
-    { _clgKmsKeyId     :: !(Maybe Text)
-    , _clgTags         :: !(Maybe (Map Text Text))
-    , _clgLogGroupName :: !Text
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data CreateLogGroup = CreateLogGroup'{_clgKmsKeyId ::
+                                      !(Maybe Text),
+                                      _clgTags :: !(Maybe (Map Text Text)),
+                                      _clgLogGroupName :: !Text}
+                        deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'CreateLogGroup' with the minimum fields required to make a request.
 --
@@ -81,13 +77,10 @@ data CreateLogGroup =
 createLogGroup
     :: Text -- ^ 'clgLogGroupName'
     -> CreateLogGroup
-createLogGroup pLogGroupName_ =
-  CreateLogGroup'
-    { _clgKmsKeyId = Nothing
-    , _clgTags = Nothing
-    , _clgLogGroupName = pLogGroupName_
-    }
-
+createLogGroup pLogGroupName_
+  = CreateLogGroup'{_clgKmsKeyId = Nothing,
+                    _clgTags = Nothing,
+                    _clgLogGroupName = pLogGroupName_}
 
 -- | The Amazon Resource Name (ARN) of the CMK to use when encrypting log data. For more information, see <http://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html#arn-syntax-kms Amazon Resource Names - AWS Key Management Service (AWS KMS)> .
 clgKmsKeyId :: Lens' CreateLogGroup (Maybe Text)
@@ -134,16 +127,14 @@ instance ToQuery CreateLogGroup where
         toQuery = const mempty
 
 -- | /See:/ 'createLogGroupResponse' smart constructor.
-data CreateLogGroupResponse =
-  CreateLogGroupResponse'
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data CreateLogGroupResponse = CreateLogGroupResponse'
+                                deriving (Eq, Read, Show, Data, Typeable,
+                                          Generic)
 
 -- | Creates a value of 'CreateLogGroupResponse' with the minimum fields required to make a request.
 --
 createLogGroupResponse
     :: CreateLogGroupResponse
 createLogGroupResponse = CreateLogGroupResponse'
-
 
 instance NFData CreateLogGroupResponse where

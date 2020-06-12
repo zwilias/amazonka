@@ -39,18 +39,13 @@ module Network.AWS.Lightsail.DetachDisk
 
 import Network.AWS.Lens
 import Network.AWS.Lightsail.Types
-import Network.AWS.Lightsail.Types.Product
 import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 
 -- | /See:/ 'detachDisk' smart constructor.
-newtype DetachDisk =
-  DetachDisk'
-    { _ddDiskName :: Text
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+newtype DetachDisk = DetachDisk'{_ddDiskName :: Text}
+                       deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'DetachDisk' with the minimum fields required to make a request.
 --
@@ -60,8 +55,8 @@ newtype DetachDisk =
 detachDisk
     :: Text -- ^ 'ddDiskName'
     -> DetachDisk
-detachDisk pDiskName_ = DetachDisk' {_ddDiskName = pDiskName_}
-
+detachDisk pDiskName_
+  = DetachDisk'{_ddDiskName = pDiskName_}
 
 -- | The unique name of the disk you want to detach from your instance (e.g., @my-disk@ ).
 ddDiskName :: Lens' DetachDisk Text
@@ -102,13 +97,10 @@ instance ToQuery DetachDisk where
         toQuery = const mempty
 
 -- | /See:/ 'detachDiskResponse' smart constructor.
-data DetachDiskResponse =
-  DetachDiskResponse'
-    { _ddrsOperations     :: !(Maybe [Operation])
-    , _ddrsResponseStatus :: !Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data DetachDiskResponse = DetachDiskResponse'{_ddrsOperations
+                                              :: !(Maybe [Operation]),
+                                              _ddrsResponseStatus :: !Int}
+                            deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'DetachDiskResponse' with the minimum fields required to make a request.
 --
@@ -120,10 +112,9 @@ data DetachDiskResponse =
 detachDiskResponse
     :: Int -- ^ 'ddrsResponseStatus'
     -> DetachDiskResponse
-detachDiskResponse pResponseStatus_ =
-  DetachDiskResponse'
-    {_ddrsOperations = Nothing, _ddrsResponseStatus = pResponseStatus_}
-
+detachDiskResponse pResponseStatus_
+  = DetachDiskResponse'{_ddrsOperations = Nothing,
+                        _ddrsResponseStatus = pResponseStatus_}
 
 -- | An object describing the API operations.
 ddrsOperations :: Lens' DetachDiskResponse [Operation]

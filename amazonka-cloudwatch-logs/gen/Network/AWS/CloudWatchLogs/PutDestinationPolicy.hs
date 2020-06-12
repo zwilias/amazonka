@@ -36,20 +36,16 @@ module Network.AWS.CloudWatchLogs.PutDestinationPolicy
     ) where
 
 import Network.AWS.CloudWatchLogs.Types
-import Network.AWS.CloudWatchLogs.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 
 -- | /See:/ 'putDestinationPolicy' smart constructor.
-data PutDestinationPolicy =
-  PutDestinationPolicy'
-    { _pdpDestinationName :: !Text
-    , _pdpAccessPolicy    :: !Text
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data PutDestinationPolicy = PutDestinationPolicy'{_pdpDestinationName
+                                                  :: !Text,
+                                                  _pdpAccessPolicy :: !Text}
+                              deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'PutDestinationPolicy' with the minimum fields required to make a request.
 --
@@ -62,10 +58,10 @@ putDestinationPolicy
     :: Text -- ^ 'pdpDestinationName'
     -> Text -- ^ 'pdpAccessPolicy'
     -> PutDestinationPolicy
-putDestinationPolicy pDestinationName_ pAccessPolicy_ =
-  PutDestinationPolicy'
-    {_pdpDestinationName = pDestinationName_, _pdpAccessPolicy = pAccessPolicy_}
-
+putDestinationPolicy pDestinationName_ pAccessPolicy_
+  = PutDestinationPolicy'{_pdpDestinationName =
+                            pDestinationName_,
+                          _pdpAccessPolicy = pAccessPolicy_}
 
 -- | A name for an existing destination.
 pdpDestinationName :: Lens' PutDestinationPolicy Text
@@ -108,16 +104,15 @@ instance ToQuery PutDestinationPolicy where
         toQuery = const mempty
 
 -- | /See:/ 'putDestinationPolicyResponse' smart constructor.
-data PutDestinationPolicyResponse =
-  PutDestinationPolicyResponse'
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data PutDestinationPolicyResponse = PutDestinationPolicyResponse'
+                                      deriving (Eq, Read, Show, Data, Typeable,
+                                                Generic)
 
 -- | Creates a value of 'PutDestinationPolicyResponse' with the minimum fields required to make a request.
 --
 putDestinationPolicyResponse
     :: PutDestinationPolicyResponse
-putDestinationPolicyResponse = PutDestinationPolicyResponse'
-
+putDestinationPolicyResponse
+  = PutDestinationPolicyResponse'
 
 instance NFData PutDestinationPolicyResponse where

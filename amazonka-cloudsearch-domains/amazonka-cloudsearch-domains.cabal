@@ -52,8 +52,18 @@ library
         , Network.AWS.CloudSearchDomains.Waiters
 
     other-modules:
-          Network.AWS.CloudSearchDomains.Types.Product
-        , Network.AWS.CloudSearchDomains.Types.Sum
+          Network.AWS.CloudSearchDomains.Types.Bucket
+        , Network.AWS.CloudSearchDomains.Types.BucketInfo
+        , Network.AWS.CloudSearchDomains.Types.ContentType
+        , Network.AWS.CloudSearchDomains.Types.DocumentServiceWarning
+        , Network.AWS.CloudSearchDomains.Types.FieldStats
+        , Network.AWS.CloudSearchDomains.Types.Hit
+        , Network.AWS.CloudSearchDomains.Types.Hits
+        , Network.AWS.CloudSearchDomains.Types.QueryParser
+        , Network.AWS.CloudSearchDomains.Types.SearchStatus
+        , Network.AWS.CloudSearchDomains.Types.SuggestModel
+        , Network.AWS.CloudSearchDomains.Types.SuggestStatus
+        , Network.AWS.CloudSearchDomains.Types.SuggestionMatch
 
     build-depends:
           amazonka-core == 1.6.1.*

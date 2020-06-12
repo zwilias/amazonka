@@ -44,19 +44,15 @@ module Network.AWS.Lightsail.GetOperations
 
 import Network.AWS.Lens
 import Network.AWS.Lightsail.Types
-import Network.AWS.Lightsail.Types.Product
 import Network.AWS.Pager
 import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 
 -- | /See:/ 'getOperations' smart constructor.
-newtype GetOperations =
-  GetOperations'
-    { _goPageToken :: Maybe Text
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+newtype GetOperations = GetOperations'{_goPageToken
+                                       :: Maybe Text}
+                          deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'GetOperations' with the minimum fields required to make a request.
 --
@@ -65,8 +61,8 @@ newtype GetOperations =
 -- * 'goPageToken' - A token used for advancing to the next page of results from your get operations request.
 getOperations
     :: GetOperations
-getOperations = GetOperations' {_goPageToken = Nothing}
-
+getOperations
+  = GetOperations'{_goPageToken = Nothing}
 
 -- | A token used for advancing to the next page of results from your get operations request.
 goPageToken :: Lens' GetOperations (Maybe Text)
@@ -115,14 +111,14 @@ instance ToQuery GetOperations where
         toQuery = const mempty
 
 -- | /See:/ 'getOperationsResponse' smart constructor.
-data GetOperationsResponse =
-  GetOperationsResponse'
-    { _gosrsNextPageToken  :: !(Maybe Text)
-    , _gosrsOperations     :: !(Maybe [Operation])
-    , _gosrsResponseStatus :: !Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data GetOperationsResponse = GetOperationsResponse'{_gosrsNextPageToken
+                                                    :: !(Maybe Text),
+                                                    _gosrsOperations ::
+                                                    !(Maybe [Operation]),
+                                                    _gosrsResponseStatus ::
+                                                    !Int}
+                               deriving (Eq, Read, Show, Data, Typeable,
+                                         Generic)
 
 -- | Creates a value of 'GetOperationsResponse' with the minimum fields required to make a request.
 --
@@ -136,13 +132,11 @@ data GetOperationsResponse =
 getOperationsResponse
     :: Int -- ^ 'gosrsResponseStatus'
     -> GetOperationsResponse
-getOperationsResponse pResponseStatus_ =
-  GetOperationsResponse'
-    { _gosrsNextPageToken = Nothing
-    , _gosrsOperations = Nothing
-    , _gosrsResponseStatus = pResponseStatus_
-    }
-
+getOperationsResponse pResponseStatus_
+  = GetOperationsResponse'{_gosrsNextPageToken =
+                             Nothing,
+                           _gosrsOperations = Nothing,
+                           _gosrsResponseStatus = pResponseStatus_}
 
 -- | A token used for advancing to the next page of results from your get operations request.
 gosrsNextPageToken :: Lens' GetOperationsResponse (Maybe Text)

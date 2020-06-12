@@ -46,28 +46,24 @@ module Network.AWS.Glue.UpdateCrawler
     ) where
 
 import Network.AWS.Glue.Types
-import Network.AWS.Glue.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 
 -- | /See:/ 'updateCrawler' smart constructor.
-data UpdateCrawler =
-  UpdateCrawler'
-    { _uSchemaChangePolicy :: !(Maybe SchemaChangePolicy)
-    , _uSchedule           :: !(Maybe Text)
-    , _uClassifiers        :: !(Maybe [Text])
-    , _uRole               :: !(Maybe Text)
-    , _uTargets            :: !(Maybe CrawlerTargets)
-    , _uDatabaseName       :: !(Maybe Text)
-    , _uConfiguration      :: !(Maybe Text)
-    , _uTablePrefix        :: !(Maybe Text)
-    , _uDescription        :: !(Maybe Text)
-    , _uName               :: !Text
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data UpdateCrawler = UpdateCrawler'{_uSchemaChangePolicy
+                                    :: !(Maybe SchemaChangePolicy),
+                                    _uSchedule :: !(Maybe Text),
+                                    _uClassifiers :: !(Maybe [Text]),
+                                    _uRole :: !(Maybe Text),
+                                    _uTargets :: !(Maybe CrawlerTargets),
+                                    _uDatabaseName :: !(Maybe Text),
+                                    _uConfiguration :: !(Maybe Text),
+                                    _uTablePrefix :: !(Maybe Text),
+                                    _uDescription :: !(Maybe Text),
+                                    _uName :: !Text}
+                       deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'UpdateCrawler' with the minimum fields required to make a request.
 --
@@ -85,7 +81,7 @@ data UpdateCrawler =
 --
 -- * 'uDatabaseName' - The AWS Glue database where results are stored, such as: @arn:aws:daylight:us-east-1::database/sometable/*@ .
 --
--- * 'uConfiguration' - Crawler configuration information. This versioned JSON string allows users to specify aspects of a Crawler's behavior. You can use this field to force partitions to inherit metadata such as classification, input format, output format, serde information, and schema from their parent table, rather than detect this information separately for each partition. Use the following JSON string to specify that behavior: Example: @'{ "Version": 1.0, "CrawlerOutput": { "Partitions": { "AddOrUpdateBehavior": "InheritFromTable" } } }'@
+-- * 'uConfiguration' - Crawler configuration information. This versioned JSON string allows users to specify aspects of a Crawler's behavior. You can use this field to force partitions to inherit metadata such as classification, input format, output format, serde information, and schema from their parent table, rather than detect this information separately for each partition. Use the following JSON string to specify that behavior: Example: @'{ "Version": 1.0, "CrawlerOutput": { "Partitions": { "AddOrUpdateBehavior": "InheritFromTable" } } }'@ 
 --
 -- * 'uTablePrefix' - The table prefix used for catalog tables that are created.
 --
@@ -95,20 +91,13 @@ data UpdateCrawler =
 updateCrawler
     :: Text -- ^ 'uName'
     -> UpdateCrawler
-updateCrawler pName_ =
-  UpdateCrawler'
-    { _uSchemaChangePolicy = Nothing
-    , _uSchedule = Nothing
-    , _uClassifiers = Nothing
-    , _uRole = Nothing
-    , _uTargets = Nothing
-    , _uDatabaseName = Nothing
-    , _uConfiguration = Nothing
-    , _uTablePrefix = Nothing
-    , _uDescription = Nothing
-    , _uName = pName_
-    }
-
+updateCrawler pName_
+  = UpdateCrawler'{_uSchemaChangePolicy = Nothing,
+                   _uSchedule = Nothing, _uClassifiers = Nothing,
+                   _uRole = Nothing, _uTargets = Nothing,
+                   _uDatabaseName = Nothing, _uConfiguration = Nothing,
+                   _uTablePrefix = Nothing, _uDescription = Nothing,
+                   _uName = pName_}
 
 -- | Policy for the crawler's update and deletion behavior.
 uSchemaChangePolicy :: Lens' UpdateCrawler (Maybe SchemaChangePolicy)
@@ -134,7 +123,7 @@ uTargets = lens _uTargets (\ s a -> s{_uTargets = a})
 uDatabaseName :: Lens' UpdateCrawler (Maybe Text)
 uDatabaseName = lens _uDatabaseName (\ s a -> s{_uDatabaseName = a})
 
--- | Crawler configuration information. This versioned JSON string allows users to specify aspects of a Crawler's behavior. You can use this field to force partitions to inherit metadata such as classification, input format, output format, serde information, and schema from their parent table, rather than detect this information separately for each partition. Use the following JSON string to specify that behavior: Example: @'{ "Version": 1.0, "CrawlerOutput": { "Partitions": { "AddOrUpdateBehavior": "InheritFromTable" } } }'@
+-- | Crawler configuration information. This versioned JSON string allows users to specify aspects of a Crawler's behavior. You can use this field to force partitions to inherit metadata such as classification, input format, output format, serde information, and schema from their parent table, rather than detect this information separately for each partition. Use the following JSON string to specify that behavior: Example: @'{ "Version": 1.0, "CrawlerOutput": { "Partitions": { "AddOrUpdateBehavior": "InheritFromTable" } } }'@ 
 uConfiguration :: Lens' UpdateCrawler (Maybe Text)
 uConfiguration = lens _uConfiguration (\ s a -> s{_uConfiguration = a})
 
@@ -192,12 +181,10 @@ instance ToQuery UpdateCrawler where
         toQuery = const mempty
 
 -- | /See:/ 'updateCrawlerResponse' smart constructor.
-newtype UpdateCrawlerResponse =
-  UpdateCrawlerResponse'
-    { _uccrsResponseStatus :: Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+newtype UpdateCrawlerResponse = UpdateCrawlerResponse'{_uccrsResponseStatus
+                                                       :: Int}
+                                  deriving (Eq, Read, Show, Data, Typeable,
+                                            Generic)
 
 -- | Creates a value of 'UpdateCrawlerResponse' with the minimum fields required to make a request.
 --
@@ -207,9 +194,9 @@ newtype UpdateCrawlerResponse =
 updateCrawlerResponse
     :: Int -- ^ 'uccrsResponseStatus'
     -> UpdateCrawlerResponse
-updateCrawlerResponse pResponseStatus_ =
-  UpdateCrawlerResponse' {_uccrsResponseStatus = pResponseStatus_}
-
+updateCrawlerResponse pResponseStatus_
+  = UpdateCrawlerResponse'{_uccrsResponseStatus =
+                             pResponseStatus_}
 
 -- | -- | The response status code.
 uccrsResponseStatus :: Lens' UpdateCrawlerResponse Int

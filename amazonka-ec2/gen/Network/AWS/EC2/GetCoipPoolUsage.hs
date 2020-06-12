@@ -44,29 +44,25 @@ module Network.AWS.EC2.GetCoipPoolUsage
     ) where
 
 import Network.AWS.EC2.Types
-import Network.AWS.EC2.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 
 -- | /See:/ 'getCoipPoolUsage' smart constructor.
-data GetCoipPoolUsage =
-  GetCoipPoolUsage'
-    { _gcpuFilters    :: !(Maybe [Filter])
-    , _gcpuNextToken  :: !(Maybe Text)
-    , _gcpuDryRun     :: !(Maybe Bool)
-    , _gcpuMaxResults :: !(Maybe Nat)
-    , _gcpuPoolId     :: !Text
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data GetCoipPoolUsage = GetCoipPoolUsage'{_gcpuFilters
+                                          :: !(Maybe [Filter]),
+                                          _gcpuNextToken :: !(Maybe Text),
+                                          _gcpuDryRun :: !(Maybe Bool),
+                                          _gcpuMaxResults :: !(Maybe Nat),
+                                          _gcpuPoolId :: !Text}
+                          deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'GetCoipPoolUsage' with the minimum fields required to make a request.
 --
 -- Use one of the following lenses to modify other fields as desired:
 --
--- * 'gcpuFilters' - The filters. The following are the possible values:     * @coip-address-usage.allocation-id@      * @coip-address-usage.aws-account-id@      * @coip-address-usage.aws-service@      * @coip-address-usage.co-ip@
+-- * 'gcpuFilters' - The filters. The following are the possible values:     * @coip-address-usage.allocation-id@      * @coip-address-usage.aws-account-id@      * @coip-address-usage.aws-service@      * @coip-address-usage.co-ip@ 
 --
 -- * 'gcpuNextToken' - The token for the next page of results.
 --
@@ -78,17 +74,12 @@ data GetCoipPoolUsage =
 getCoipPoolUsage
     :: Text -- ^ 'gcpuPoolId'
     -> GetCoipPoolUsage
-getCoipPoolUsage pPoolId_ =
-  GetCoipPoolUsage'
-    { _gcpuFilters = Nothing
-    , _gcpuNextToken = Nothing
-    , _gcpuDryRun = Nothing
-    , _gcpuMaxResults = Nothing
-    , _gcpuPoolId = pPoolId_
-    }
+getCoipPoolUsage pPoolId_
+  = GetCoipPoolUsage'{_gcpuFilters = Nothing,
+                      _gcpuNextToken = Nothing, _gcpuDryRun = Nothing,
+                      _gcpuMaxResults = Nothing, _gcpuPoolId = pPoolId_}
 
-
--- | The filters. The following are the possible values:     * @coip-address-usage.allocation-id@      * @coip-address-usage.aws-account-id@      * @coip-address-usage.aws-service@      * @coip-address-usage.co-ip@
+-- | The filters. The following are the possible values:     * @coip-address-usage.allocation-id@      * @coip-address-usage.aws-account-id@      * @coip-address-usage.aws-service@      * @coip-address-usage.co-ip@ 
 gcpuFilters :: Lens' GetCoipPoolUsage [Filter]
 gcpuFilters = lens _gcpuFilters (\ s a -> s{_gcpuFilters = a}) . _Default . _Coerce
 
@@ -143,15 +134,18 @@ instance ToQuery GetCoipPoolUsage where
                "PoolId" =: _gcpuPoolId]
 
 -- | /See:/ 'getCoipPoolUsageResponse' smart constructor.
-data GetCoipPoolUsageResponse =
-  GetCoipPoolUsageResponse'
-    { _gcpursCoipAddressUsages        :: !(Maybe [CoipAddressUsage])
-    , _gcpursCoipPoolId               :: !(Maybe Text)
-    , _gcpursLocalGatewayRouteTableId :: !(Maybe Text)
-    , _gcpursResponseStatus           :: !Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data GetCoipPoolUsageResponse = GetCoipPoolUsageResponse'{_gcpursCoipAddressUsages
+                                                          ::
+                                                          !(Maybe
+                                                              [CoipAddressUsage]),
+                                                          _gcpursCoipPoolId ::
+                                                          !(Maybe Text),
+                                                          _gcpursLocalGatewayRouteTableId
+                                                          :: !(Maybe Text),
+                                                          _gcpursResponseStatus
+                                                          :: !Int}
+                                  deriving (Eq, Read, Show, Data, Typeable,
+                                            Generic)
 
 -- | Creates a value of 'GetCoipPoolUsageResponse' with the minimum fields required to make a request.
 --
@@ -167,14 +161,12 @@ data GetCoipPoolUsageResponse =
 getCoipPoolUsageResponse
     :: Int -- ^ 'gcpursResponseStatus'
     -> GetCoipPoolUsageResponse
-getCoipPoolUsageResponse pResponseStatus_ =
-  GetCoipPoolUsageResponse'
-    { _gcpursCoipAddressUsages = Nothing
-    , _gcpursCoipPoolId = Nothing
-    , _gcpursLocalGatewayRouteTableId = Nothing
-    , _gcpursResponseStatus = pResponseStatus_
-    }
-
+getCoipPoolUsageResponse pResponseStatus_
+  = GetCoipPoolUsageResponse'{_gcpursCoipAddressUsages
+                                = Nothing,
+                              _gcpursCoipPoolId = Nothing,
+                              _gcpursLocalGatewayRouteTableId = Nothing,
+                              _gcpursResponseStatus = pResponseStatus_}
 
 -- | Information about the address usage.
 gcpursCoipAddressUsages :: Lens' GetCoipPoolUsageResponse [CoipAddressUsage]

@@ -46,7 +46,6 @@ module Network.AWS.EC2.DescribeScheduledInstances
     ) where
 
 import Network.AWS.EC2.Types
-import Network.AWS.EC2.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Pager
 import Network.AWS.Prelude
@@ -58,17 +57,24 @@ import Network.AWS.Response
 --
 --
 -- /See:/ 'describeScheduledInstances' smart constructor.
-data DescribeScheduledInstances =
-  DescribeScheduledInstances'
-    { _dsiFilters              :: !(Maybe [Filter])
-    , _dsiSlotStartTimeRange   :: !(Maybe SlotStartTimeRangeRequest)
-    , _dsiNextToken            :: !(Maybe Text)
-    , _dsiScheduledInstanceIds :: !(Maybe [Text])
-    , _dsiDryRun               :: !(Maybe Bool)
-    , _dsiMaxResults           :: !(Maybe Int)
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data DescribeScheduledInstances = DescribeScheduledInstances'{_dsiFilters
+                                                              ::
+                                                              !(Maybe [Filter]),
+                                                              _dsiSlotStartTimeRange
+                                                              ::
+                                                              !(Maybe
+                                                                  SlotStartTimeRangeRequest),
+                                                              _dsiNextToken ::
+                                                              !(Maybe Text),
+                                                              _dsiScheduledInstanceIds
+                                                              ::
+                                                              !(Maybe [Text]),
+                                                              _dsiDryRun ::
+                                                              !(Maybe Bool),
+                                                              _dsiMaxResults ::
+                                                              !(Maybe Int)}
+                                    deriving (Eq, Read, Show, Data, Typeable,
+                                              Generic)
 
 -- | Creates a value of 'DescribeScheduledInstances' with the minimum fields required to make a request.
 --
@@ -87,16 +93,12 @@ data DescribeScheduledInstances =
 -- * 'dsiMaxResults' - The maximum number of results to return in a single call. This value can be between 5 and 300. The default value is 100. To retrieve the remaining results, make another call with the returned @NextToken@ value.
 describeScheduledInstances
     :: DescribeScheduledInstances
-describeScheduledInstances =
-  DescribeScheduledInstances'
-    { _dsiFilters = Nothing
-    , _dsiSlotStartTimeRange = Nothing
-    , _dsiNextToken = Nothing
-    , _dsiScheduledInstanceIds = Nothing
-    , _dsiDryRun = Nothing
-    , _dsiMaxResults = Nothing
-    }
-
+describeScheduledInstances
+  = DescribeScheduledInstances'{_dsiFilters = Nothing,
+                                _dsiSlotStartTimeRange = Nothing,
+                                _dsiNextToken = Nothing,
+                                _dsiScheduledInstanceIds = Nothing,
+                                _dsiDryRun = Nothing, _dsiMaxResults = Nothing}
 
 -- | The filters.     * @availability-zone@ - The Availability Zone (for example, @us-west-2a@ ).     * @instance-type@ - The instance type (for example, @c4.large@ ).     * @network-platform@ - The network platform (@EC2-Classic@ or @EC2-VPC@ ).     * @platform@ - The platform (@Linux/UNIX@ or @Windows@ ).
 dsiFilters :: Lens' DescribeScheduledInstances [Filter]
@@ -172,14 +174,19 @@ instance ToQuery DescribeScheduledInstances where
 --
 --
 -- /See:/ 'describeScheduledInstancesResponse' smart constructor.
-data DescribeScheduledInstancesResponse =
-  DescribeScheduledInstancesResponse'
-    { _dsirsNextToken            :: !(Maybe Text)
-    , _dsirsScheduledInstanceSet :: !(Maybe [ScheduledInstance])
-    , _dsirsResponseStatus       :: !Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data DescribeScheduledInstancesResponse = DescribeScheduledInstancesResponse'{_dsirsNextToken
+                                                                              ::
+                                                                              !(Maybe
+                                                                                  Text),
+                                                                              _dsirsScheduledInstanceSet
+                                                                              ::
+                                                                              !(Maybe
+                                                                                  [ScheduledInstance]),
+                                                                              _dsirsResponseStatus
+                                                                              ::
+                                                                              !Int}
+                                            deriving (Eq, Read, Show, Data,
+                                                      Typeable, Generic)
 
 -- | Creates a value of 'DescribeScheduledInstancesResponse' with the minimum fields required to make a request.
 --
@@ -193,13 +200,11 @@ data DescribeScheduledInstancesResponse =
 describeScheduledInstancesResponse
     :: Int -- ^ 'dsirsResponseStatus'
     -> DescribeScheduledInstancesResponse
-describeScheduledInstancesResponse pResponseStatus_ =
-  DescribeScheduledInstancesResponse'
-    { _dsirsNextToken = Nothing
-    , _dsirsScheduledInstanceSet = Nothing
-    , _dsirsResponseStatus = pResponseStatus_
-    }
-
+describeScheduledInstancesResponse pResponseStatus_
+  = DescribeScheduledInstancesResponse'{_dsirsNextToken
+                                          = Nothing,
+                                        _dsirsScheduledInstanceSet = Nothing,
+                                        _dsirsResponseStatus = pResponseStatus_}
 
 -- | The token required to retrieve the next set of results. This value is @null@ when there are no more results to return.
 dsirsNextToken :: Lens' DescribeScheduledInstancesResponse (Maybe Text)

@@ -23,7 +23,7 @@
 --
 -- You can use this action for custom AWS Config rules and AWS managed Config rules. A custom AWS Config rule is a rule that you develop and maintain. An AWS managed Config rule is a customizable, predefined rule that AWS Config provides.
 --
--- If you are adding a new custom AWS Config rule, you must first create the AWS Lambda function that the rule invokes to evaluate your resources. When you use the @PutConfigRule@ action to add the rule to AWS Config, you must specify the Amazon Resource Name (ARN) that AWS Lambda assigns to the function. Specify the ARN for the @SourceIdentifier@ key. This key is part of the @Source@ object, which is part of the @ConfigRule@ object.
+-- If you are adding a new custom AWS Config rule, you must first create the AWS Lambda function that the rule invokes to evaluate your resources. When you use the @PutConfigRule@ action to add the rule to AWS Config, you must specify the Amazon Resource Name (ARN) that AWS Lambda assigns to the function. Specify the ARN for the @SourceIdentifier@ key. This key is part of the @Source@ object, which is part of the @ConfigRule@ object. 
 --
 -- If you are adding an AWS managed Config rule, specify the rule's identifier for the @SourceIdentifier@ key. To reference AWS managed Config rule identifiers, see <https://docs.aws.amazon.com/config/latest/developerguide/evaluate-config_use-managed-rules.html About AWS Managed Config Rules> .
 --
@@ -52,20 +52,16 @@ module Network.AWS.Config.PutConfigRule
     ) where
 
 import Network.AWS.Config.Types
-import Network.AWS.Config.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 
 -- | /See:/ 'putConfigRule' smart constructor.
-data PutConfigRule =
-  PutConfigRule'
-    { _pcrTags       :: !(Maybe [Tag])
-    , _pcrConfigRule :: !ConfigRule
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data PutConfigRule = PutConfigRule'{_pcrTags ::
+                                    !(Maybe [Tag]),
+                                    _pcrConfigRule :: !ConfigRule}
+                       deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'PutConfigRule' with the minimum fields required to make a request.
 --
@@ -77,9 +73,9 @@ data PutConfigRule =
 putConfigRule
     :: ConfigRule -- ^ 'pcrConfigRule'
     -> PutConfigRule
-putConfigRule pConfigRule_ =
-  PutConfigRule' {_pcrTags = Nothing, _pcrConfigRule = pConfigRule_}
-
+putConfigRule pConfigRule_
+  = PutConfigRule'{_pcrTags = Nothing,
+                   _pcrConfigRule = pConfigRule_}
 
 -- | An array of tag object.
 pcrTags :: Lens' PutConfigRule [Tag]
@@ -121,16 +117,14 @@ instance ToQuery PutConfigRule where
         toQuery = const mempty
 
 -- | /See:/ 'putConfigRuleResponse' smart constructor.
-data PutConfigRuleResponse =
-  PutConfigRuleResponse'
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data PutConfigRuleResponse = PutConfigRuleResponse'
+                               deriving (Eq, Read, Show, Data, Typeable,
+                                         Generic)
 
 -- | Creates a value of 'PutConfigRuleResponse' with the minimum fields required to make a request.
 --
 putConfigRuleResponse
     :: PutConfigRuleResponse
 putConfigRuleResponse = PutConfigRuleResponse'
-
 
 instance NFData PutConfigRuleResponse where

@@ -42,21 +42,17 @@ module Network.AWS.ECR.PutLifecyclePolicy
     ) where
 
 import Network.AWS.ECR.Types
-import Network.AWS.ECR.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 
 -- | /See:/ 'putLifecyclePolicy' smart constructor.
-data PutLifecyclePolicy =
-  PutLifecyclePolicy'
-    { _plpRegistryId          :: !(Maybe Text)
-    , _plpRepositoryName      :: !Text
-    , _plpLifecyclePolicyText :: !Text
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data PutLifecyclePolicy = PutLifecyclePolicy'{_plpRegistryId
+                                              :: !(Maybe Text),
+                                              _plpRepositoryName :: !Text,
+                                              _plpLifecyclePolicyText :: !Text}
+                            deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'PutLifecyclePolicy' with the minimum fields required to make a request.
 --
@@ -71,13 +67,11 @@ putLifecyclePolicy
     :: Text -- ^ 'plpRepositoryName'
     -> Text -- ^ 'plpLifecyclePolicyText'
     -> PutLifecyclePolicy
-putLifecyclePolicy pRepositoryName_ pLifecyclePolicyText_ =
-  PutLifecyclePolicy'
-    { _plpRegistryId = Nothing
-    , _plpRepositoryName = pRepositoryName_
-    , _plpLifecyclePolicyText = pLifecyclePolicyText_
-    }
-
+putLifecyclePolicy pRepositoryName_
+  pLifecyclePolicyText_
+  = PutLifecyclePolicy'{_plpRegistryId = Nothing,
+                        _plpRepositoryName = pRepositoryName_,
+                        _plpLifecyclePolicyText = pLifecyclePolicyText_}
 
 -- | The AWS account ID associated with the registry that contains the repository. If you do  not specify a registry, the default registry is assumed.
 plpRegistryId :: Lens' PutLifecyclePolicy (Maybe Text)
@@ -134,15 +128,16 @@ instance ToQuery PutLifecyclePolicy where
         toQuery = const mempty
 
 -- | /See:/ 'putLifecyclePolicyResponse' smart constructor.
-data PutLifecyclePolicyResponse =
-  PutLifecyclePolicyResponse'
-    { _plprsRegistryId          :: !(Maybe Text)
-    , _plprsLifecyclePolicyText :: !(Maybe Text)
-    , _plprsRepositoryName      :: !(Maybe Text)
-    , _plprsResponseStatus      :: !Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data PutLifecyclePolicyResponse = PutLifecyclePolicyResponse'{_plprsRegistryId
+                                                              :: !(Maybe Text),
+                                                              _plprsLifecyclePolicyText
+                                                              :: !(Maybe Text),
+                                                              _plprsRepositoryName
+                                                              :: !(Maybe Text),
+                                                              _plprsResponseStatus
+                                                              :: !Int}
+                                    deriving (Eq, Read, Show, Data, Typeable,
+                                              Generic)
 
 -- | Creates a value of 'PutLifecyclePolicyResponse' with the minimum fields required to make a request.
 --
@@ -158,14 +153,12 @@ data PutLifecyclePolicyResponse =
 putLifecyclePolicyResponse
     :: Int -- ^ 'plprsResponseStatus'
     -> PutLifecyclePolicyResponse
-putLifecyclePolicyResponse pResponseStatus_ =
-  PutLifecyclePolicyResponse'
-    { _plprsRegistryId = Nothing
-    , _plprsLifecyclePolicyText = Nothing
-    , _plprsRepositoryName = Nothing
-    , _plprsResponseStatus = pResponseStatus_
-    }
-
+putLifecyclePolicyResponse pResponseStatus_
+  = PutLifecyclePolicyResponse'{_plprsRegistryId =
+                                  Nothing,
+                                _plprsLifecyclePolicyText = Nothing,
+                                _plprsRepositoryName = Nothing,
+                                _plprsResponseStatus = pResponseStatus_}
 
 -- | The registry ID associated with the request.
 plprsRegistryId :: Lens' PutLifecyclePolicyResponse (Maybe Text)

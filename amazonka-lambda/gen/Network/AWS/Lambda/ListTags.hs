@@ -38,19 +38,14 @@ module Network.AWS.Lambda.ListTags
     ) where
 
 import Network.AWS.Lambda.Types
-import Network.AWS.Lambda.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 
 -- | /See:/ 'listTags' smart constructor.
-newtype ListTags =
-  ListTags'
-    { _ltResource :: Text
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+newtype ListTags = ListTags'{_ltResource :: Text}
+                     deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'ListTags' with the minimum fields required to make a request.
 --
@@ -60,8 +55,8 @@ newtype ListTags =
 listTags
     :: Text -- ^ 'ltResource'
     -> ListTags
-listTags pResource_ = ListTags' {_ltResource = pResource_}
-
+listTags pResource_
+  = ListTags'{_ltResource = pResource_}
 
 -- | The ARN (Amazon Resource Name) of the function. For more information, see <http://docs.aws.amazon.com/lambda/latest/dg/tagging.html Tagging Lambda Functions> in the __AWS Lambda Developer Guide__ .
 ltResource :: Lens' ListTags Text
@@ -91,13 +86,10 @@ instance ToQuery ListTags where
         toQuery = const mempty
 
 -- | /See:/ 'listTagsResponse' smart constructor.
-data ListTagsResponse =
-  ListTagsResponse'
-    { _ltrsTags           :: !(Maybe (Map Text Text))
-    , _ltrsResponseStatus :: !Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data ListTagsResponse = ListTagsResponse'{_ltrsTags
+                                          :: !(Maybe (Map Text Text)),
+                                          _ltrsResponseStatus :: !Int}
+                          deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'ListTagsResponse' with the minimum fields required to make a request.
 --
@@ -109,10 +101,9 @@ data ListTagsResponse =
 listTagsResponse
     :: Int -- ^ 'ltrsResponseStatus'
     -> ListTagsResponse
-listTagsResponse pResponseStatus_ =
-  ListTagsResponse'
-    {_ltrsTags = Nothing, _ltrsResponseStatus = pResponseStatus_}
-
+listTagsResponse pResponseStatus_
+  = ListTagsResponse'{_ltrsTags = Nothing,
+                      _ltrsResponseStatus = pResponseStatus_}
 
 -- | The list of tags assigned to the function. For more information, see <http://docs.aws.amazon.com/lambda/latest/dg/tagging.html Tagging Lambda Functions> in the __AWS Lambda Developer Guide__ .
 ltrsTags :: Lens' ListTagsResponse (HashMap Text Text)

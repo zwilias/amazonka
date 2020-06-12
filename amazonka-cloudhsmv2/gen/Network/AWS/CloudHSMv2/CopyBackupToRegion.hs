@@ -40,21 +40,17 @@ module Network.AWS.CloudHSMv2.CopyBackupToRegion
     ) where
 
 import Network.AWS.CloudHSMv2.Types
-import Network.AWS.CloudHSMv2.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 
 -- | /See:/ 'copyBackupToRegion' smart constructor.
-data CopyBackupToRegion =
-  CopyBackupToRegion'
-    { _cbtrTagList           :: !(Maybe [Tag])
-    , _cbtrDestinationRegion :: !Text
-    , _cbtrBackupId          :: !Text
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data CopyBackupToRegion = CopyBackupToRegion'{_cbtrTagList
+                                              :: !(Maybe [Tag]),
+                                              _cbtrDestinationRegion :: !Text,
+                                              _cbtrBackupId :: !Text}
+                            deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'CopyBackupToRegion' with the minimum fields required to make a request.
 --
@@ -64,18 +60,15 @@ data CopyBackupToRegion =
 --
 -- * 'cbtrDestinationRegion' - The AWS region that will contain your copied CloudHSM cluster backup.
 --
--- * 'cbtrBackupId' - The ID of the backup that will be copied to the destination region.
+-- * 'cbtrBackupId' - The ID of the backup that will be copied to the destination region. 
 copyBackupToRegion
     :: Text -- ^ 'cbtrDestinationRegion'
     -> Text -- ^ 'cbtrBackupId'
     -> CopyBackupToRegion
-copyBackupToRegion pDestinationRegion_ pBackupId_ =
-  CopyBackupToRegion'
-    { _cbtrTagList = Nothing
-    , _cbtrDestinationRegion = pDestinationRegion_
-    , _cbtrBackupId = pBackupId_
-    }
-
+copyBackupToRegion pDestinationRegion_ pBackupId_
+  = CopyBackupToRegion'{_cbtrTagList = Nothing,
+                        _cbtrDestinationRegion = pDestinationRegion_,
+                        _cbtrBackupId = pBackupId_}
 
 -- | Undocumented member.
 cbtrTagList :: Lens' CopyBackupToRegion [Tag]
@@ -85,7 +78,7 @@ cbtrTagList = lens _cbtrTagList (\ s a -> s{_cbtrTagList = a}) . _Default . _Coe
 cbtrDestinationRegion :: Lens' CopyBackupToRegion Text
 cbtrDestinationRegion = lens _cbtrDestinationRegion (\ s a -> s{_cbtrDestinationRegion = a})
 
--- | The ID of the backup that will be copied to the destination region.
+-- | The ID of the backup that will be copied to the destination region. 
 cbtrBackupId :: Lens' CopyBackupToRegion Text
 cbtrBackupId = lens _cbtrBackupId (\ s a -> s{_cbtrBackupId = a})
 
@@ -127,13 +120,14 @@ instance ToQuery CopyBackupToRegion where
         toQuery = const mempty
 
 -- | /See:/ 'copyBackupToRegionResponse' smart constructor.
-data CopyBackupToRegionResponse =
-  CopyBackupToRegionResponse'
-    { _cbtrrsDestinationBackup :: !(Maybe DestinationBackup)
-    , _cbtrrsResponseStatus    :: !Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data CopyBackupToRegionResponse = CopyBackupToRegionResponse'{_cbtrrsDestinationBackup
+                                                              ::
+                                                              !(Maybe
+                                                                  DestinationBackup),
+                                                              _cbtrrsResponseStatus
+                                                              :: !Int}
+                                    deriving (Eq, Read, Show, Data, Typeable,
+                                              Generic)
 
 -- | Creates a value of 'CopyBackupToRegionResponse' with the minimum fields required to make a request.
 --
@@ -145,12 +139,10 @@ data CopyBackupToRegionResponse =
 copyBackupToRegionResponse
     :: Int -- ^ 'cbtrrsResponseStatus'
     -> CopyBackupToRegionResponse
-copyBackupToRegionResponse pResponseStatus_ =
-  CopyBackupToRegionResponse'
-    { _cbtrrsDestinationBackup = Nothing
-    , _cbtrrsResponseStatus = pResponseStatus_
-    }
-
+copyBackupToRegionResponse pResponseStatus_
+  = CopyBackupToRegionResponse'{_cbtrrsDestinationBackup
+                                  = Nothing,
+                                _cbtrrsResponseStatus = pResponseStatus_}
 
 -- | Information on the backup that will be copied to the destination region, including CreateTimestamp, SourceBackup, SourceCluster, and Source Region. CreateTimestamp of the destination backup will be the same as that of the source backup. You will need to use the @sourceBackupID@ returned in this operation to use the 'DescribeBackups' operation on the backup that will be copied to the destination region.
 cbtrrsDestinationBackup :: Lens' CopyBackupToRegionResponse (Maybe DestinationBackup)

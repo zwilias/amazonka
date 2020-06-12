@@ -48,7 +48,6 @@ module Network.AWS.APIGateway.CreateDeployment
     ) where
 
 import Network.AWS.APIGateway.Types
-import Network.AWS.APIGateway.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.Request
@@ -59,20 +58,21 @@ import Network.AWS.Response
 --
 --
 -- /See:/ 'createDeployment' smart constructor.
-data CreateDeployment =
-  CreateDeployment'
-    { _cdStageDescription    :: !(Maybe Text)
-    , _cdVariables           :: !(Maybe (Map Text Text))
-    , _cdTracingEnabled      :: !(Maybe Bool)
-    , _cdCacheClusterSize    :: !(Maybe CacheClusterSize)
-    , _cdCanarySettings      :: !(Maybe DeploymentCanarySettings)
-    , _cdCacheClusterEnabled :: !(Maybe Bool)
-    , _cdStageName           :: !(Maybe Text)
-    , _cdDescription         :: !(Maybe Text)
-    , _cdRestAPIId           :: !Text
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data CreateDeployment = CreateDeployment'{_cdStageDescription
+                                          :: !(Maybe Text),
+                                          _cdVariables ::
+                                          !(Maybe (Map Text Text)),
+                                          _cdTracingEnabled :: !(Maybe Bool),
+                                          _cdCacheClusterSize ::
+                                          !(Maybe CacheClusterSize),
+                                          _cdCanarySettings ::
+                                          !(Maybe DeploymentCanarySettings),
+                                          _cdCacheClusterEnabled ::
+                                          !(Maybe Bool),
+                                          _cdStageName :: !(Maybe Text),
+                                          _cdDescription :: !(Maybe Text),
+                                          _cdRestAPIId :: !Text}
+                          deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'CreateDeployment' with the minimum fields required to make a request.
 --
@@ -86,7 +86,7 @@ data CreateDeployment =
 --
 -- * 'cdCacheClusterSize' - Specifies the cache cluster size for the 'Stage' resource specified in the input, if a cache cluster is enabled.
 --
--- * 'cdCanarySettings' - The input configuration for the canary deployment when the deployment is a canary release deployment.
+-- * 'cdCanarySettings' - The input configuration for the canary deployment when the deployment is a canary release deployment. 
 --
 -- * 'cdCacheClusterEnabled' - Enables a cache cluster for the 'Stage' resource specified in the input.
 --
@@ -98,19 +98,14 @@ data CreateDeployment =
 createDeployment
     :: Text -- ^ 'cdRestAPIId'
     -> CreateDeployment
-createDeployment pRestAPIId_ =
-  CreateDeployment'
-    { _cdStageDescription = Nothing
-    , _cdVariables = Nothing
-    , _cdTracingEnabled = Nothing
-    , _cdCacheClusterSize = Nothing
-    , _cdCanarySettings = Nothing
-    , _cdCacheClusterEnabled = Nothing
-    , _cdStageName = Nothing
-    , _cdDescription = Nothing
-    , _cdRestAPIId = pRestAPIId_
-    }
-
+createDeployment pRestAPIId_
+  = CreateDeployment'{_cdStageDescription = Nothing,
+                      _cdVariables = Nothing, _cdTracingEnabled = Nothing,
+                      _cdCacheClusterSize = Nothing,
+                      _cdCanarySettings = Nothing,
+                      _cdCacheClusterEnabled = Nothing,
+                      _cdStageName = Nothing, _cdDescription = Nothing,
+                      _cdRestAPIId = pRestAPIId_}
 
 -- | The description of the 'Stage' resource for the 'Deployment' resource to create.
 cdStageDescription :: Lens' CreateDeployment (Maybe Text)
@@ -128,7 +123,7 @@ cdTracingEnabled = lens _cdTracingEnabled (\ s a -> s{_cdTracingEnabled = a})
 cdCacheClusterSize :: Lens' CreateDeployment (Maybe CacheClusterSize)
 cdCacheClusterSize = lens _cdCacheClusterSize (\ s a -> s{_cdCacheClusterSize = a})
 
--- | The input configuration for the canary deployment when the deployment is a canary release deployment.
+-- | The input configuration for the canary deployment when the deployment is a canary release deployment. 
 cdCanarySettings :: Lens' CreateDeployment (Maybe DeploymentCanarySettings)
 cdCanarySettings = lens _cdCanarySettings (\ s a -> s{_cdCanarySettings = a})
 

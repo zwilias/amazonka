@@ -43,22 +43,28 @@ module Network.AWS.EC2.TerminateClientVPNConnections
     ) where
 
 import Network.AWS.EC2.Types
-import Network.AWS.EC2.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 
 -- | /See:/ 'terminateClientVPNConnections' smart constructor.
-data TerminateClientVPNConnections =
-  TerminateClientVPNConnections'
-    { _tcvcConnectionId        :: !(Maybe Text)
-    , _tcvcUsername            :: !(Maybe Text)
-    , _tcvcDryRun              :: !(Maybe Bool)
-    , _tcvcClientVPNEndpointId :: !Text
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data TerminateClientVPNConnections = TerminateClientVPNConnections'{_tcvcConnectionId
+                                                                    ::
+                                                                    !(Maybe
+                                                                        Text),
+                                                                    _tcvcUsername
+                                                                    ::
+                                                                    !(Maybe
+                                                                        Text),
+                                                                    _tcvcDryRun
+                                                                    ::
+                                                                    !(Maybe
+                                                                        Bool),
+                                                                    _tcvcClientVPNEndpointId
+                                                                    :: !Text}
+                                       deriving (Eq, Read, Show, Data, Typeable,
+                                                 Generic)
 
 -- | Creates a value of 'TerminateClientVPNConnections' with the minimum fields required to make a request.
 --
@@ -74,14 +80,13 @@ data TerminateClientVPNConnections =
 terminateClientVPNConnections
     :: Text -- ^ 'tcvcClientVPNEndpointId'
     -> TerminateClientVPNConnections
-terminateClientVPNConnections pClientVPNEndpointId_ =
-  TerminateClientVPNConnections'
-    { _tcvcConnectionId = Nothing
-    , _tcvcUsername = Nothing
-    , _tcvcDryRun = Nothing
-    , _tcvcClientVPNEndpointId = pClientVPNEndpointId_
-    }
-
+terminateClientVPNConnections pClientVPNEndpointId_
+  = TerminateClientVPNConnections'{_tcvcConnectionId =
+                                     Nothing,
+                                   _tcvcUsername = Nothing,
+                                   _tcvcDryRun = Nothing,
+                                   _tcvcClientVPNEndpointId =
+                                     pClientVPNEndpointId_}
 
 -- | The ID of the client connection to be terminated.
 tcvcConnectionId :: Lens' TerminateClientVPNConnections (Maybe Text)
@@ -136,15 +141,23 @@ instance ToQuery TerminateClientVPNConnections where
                "ClientVpnEndpointId" =: _tcvcClientVPNEndpointId]
 
 -- | /See:/ 'terminateClientVPNConnectionsResponse' smart constructor.
-data TerminateClientVPNConnectionsResponse =
-  TerminateClientVPNConnectionsResponse'
-    { _tcvcrsConnectionStatuses  :: !(Maybe [TerminateConnectionStatus])
-    , _tcvcrsUsername            :: !(Maybe Text)
-    , _tcvcrsClientVPNEndpointId :: !(Maybe Text)
-    , _tcvcrsResponseStatus      :: !Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data TerminateClientVPNConnectionsResponse = TerminateClientVPNConnectionsResponse'{_tcvcrsConnectionStatuses
+                                                                                    ::
+                                                                                    !(Maybe
+                                                                                        [TerminateConnectionStatus]),
+                                                                                    _tcvcrsUsername
+                                                                                    ::
+                                                                                    !(Maybe
+                                                                                        Text),
+                                                                                    _tcvcrsClientVPNEndpointId
+                                                                                    ::
+                                                                                    !(Maybe
+                                                                                        Text),
+                                                                                    _tcvcrsResponseStatus
+                                                                                    ::
+                                                                                    !Int}
+                                               deriving (Eq, Read, Show, Data,
+                                                         Typeable, Generic)
 
 -- | Creates a value of 'TerminateClientVPNConnectionsResponse' with the minimum fields required to make a request.
 --
@@ -160,14 +173,14 @@ data TerminateClientVPNConnectionsResponse =
 terminateClientVPNConnectionsResponse
     :: Int -- ^ 'tcvcrsResponseStatus'
     -> TerminateClientVPNConnectionsResponse
-terminateClientVPNConnectionsResponse pResponseStatus_ =
-  TerminateClientVPNConnectionsResponse'
-    { _tcvcrsConnectionStatuses = Nothing
-    , _tcvcrsUsername = Nothing
-    , _tcvcrsClientVPNEndpointId = Nothing
-    , _tcvcrsResponseStatus = pResponseStatus_
-    }
-
+terminateClientVPNConnectionsResponse
+  pResponseStatus_
+  = TerminateClientVPNConnectionsResponse'{_tcvcrsConnectionStatuses
+                                             = Nothing,
+                                           _tcvcrsUsername = Nothing,
+                                           _tcvcrsClientVPNEndpointId = Nothing,
+                                           _tcvcrsResponseStatus =
+                                             pResponseStatus_}
 
 -- | The current state of the client connections.
 tcvcrsConnectionStatuses :: Lens' TerminateClientVPNConnectionsResponse [TerminateConnectionStatus]

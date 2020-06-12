@@ -41,20 +41,16 @@ module Network.AWS.EC2.CreateRouteTable
     ) where
 
 import Network.AWS.EC2.Types
-import Network.AWS.EC2.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 
 -- | /See:/ 'createRouteTable' smart constructor.
-data CreateRouteTable =
-  CreateRouteTable'
-    { _crtDryRun :: !(Maybe Bool)
-    , _crtVPCId  :: !Text
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data CreateRouteTable = CreateRouteTable'{_crtDryRun
+                                          :: !(Maybe Bool),
+                                          _crtVPCId :: !Text}
+                          deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'CreateRouteTable' with the minimum fields required to make a request.
 --
@@ -66,9 +62,9 @@ data CreateRouteTable =
 createRouteTable
     :: Text -- ^ 'crtVPCId'
     -> CreateRouteTable
-createRouteTable pVPCId_ =
-  CreateRouteTable' {_crtDryRun = Nothing, _crtVPCId = pVPCId_}
-
+createRouteTable pVPCId_
+  = CreateRouteTable'{_crtDryRun = Nothing,
+                      _crtVPCId = pVPCId_}
 
 -- | Checks whether you have the required permissions for the action, without actually making the request, and provides an error response. If you have the required permissions, the error response is @DryRunOperation@ . Otherwise, it is @UnauthorizedOperation@ .
 crtDryRun :: Lens' CreateRouteTable (Maybe Bool)
@@ -105,13 +101,13 @@ instance ToQuery CreateRouteTable where
                "DryRun" =: _crtDryRun, "VpcId" =: _crtVPCId]
 
 -- | /See:/ 'createRouteTableResponse' smart constructor.
-data CreateRouteTableResponse =
-  CreateRouteTableResponse'
-    { _crtrsRouteTable     :: !(Maybe RouteTable)
-    , _crtrsResponseStatus :: !Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data CreateRouteTableResponse = CreateRouteTableResponse'{_crtrsRouteTable
+                                                          ::
+                                                          !(Maybe RouteTable),
+                                                          _crtrsResponseStatus
+                                                          :: !Int}
+                                  deriving (Eq, Read, Show, Data, Typeable,
+                                            Generic)
 
 -- | Creates a value of 'CreateRouteTableResponse' with the minimum fields required to make a request.
 --
@@ -123,10 +119,10 @@ data CreateRouteTableResponse =
 createRouteTableResponse
     :: Int -- ^ 'crtrsResponseStatus'
     -> CreateRouteTableResponse
-createRouteTableResponse pResponseStatus_ =
-  CreateRouteTableResponse'
-    {_crtrsRouteTable = Nothing, _crtrsResponseStatus = pResponseStatus_}
-
+createRouteTableResponse pResponseStatus_
+  = CreateRouteTableResponse'{_crtrsRouteTable =
+                                Nothing,
+                              _crtrsResponseStatus = pResponseStatus_}
 
 -- | Information about the route table.
 crtrsRouteTable :: Lens' CreateRouteTableResponse (Maybe RouteTable)

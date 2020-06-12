@@ -52,37 +52,38 @@ module Network.AWS.AppStream.CreateImageBuilder
     ) where
 
 import Network.AWS.AppStream.Types
-import Network.AWS.AppStream.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 
 -- | /See:/ 'createImageBuilder' smart constructor.
-data CreateImageBuilder =
-  CreateImageBuilder'
-    { _cibDomainJoinInfo              :: !(Maybe DomainJoinInfo)
-    , _cibIAMRoleARN                  :: !(Maybe Text)
-    , _cibAccessEndpoints             :: !(Maybe (List1 AccessEndpoint))
-    , _cibVPCConfig                   :: !(Maybe VPCConfig)
-    , _cibImageARN                    :: !(Maybe Text)
-    , _cibDisplayName                 :: !(Maybe Text)
-    , _cibEnableDefaultInternetAccess :: !(Maybe Bool)
-    , _cibImageName                   :: !(Maybe Text)
-    , _cibDescription                 :: !(Maybe Text)
-    , _cibAppstreamAgentVersion       :: !(Maybe Text)
-    , _cibTags                        :: !(Maybe (Map Text Text))
-    , _cibName                        :: !Text
-    , _cibInstanceType                :: !Text
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data CreateImageBuilder = CreateImageBuilder'{_cibDomainJoinInfo
+                                              :: !(Maybe DomainJoinInfo),
+                                              _cibIAMRoleARN :: !(Maybe Text),
+                                              _cibAccessEndpoints ::
+                                              !(Maybe (List1 AccessEndpoint)),
+                                              _cibVPCConfig ::
+                                              !(Maybe VPCConfig),
+                                              _cibImageARN :: !(Maybe Text),
+                                              _cibDisplayName :: !(Maybe Text),
+                                              _cibEnableDefaultInternetAccess ::
+                                              !(Maybe Bool),
+                                              _cibImageName :: !(Maybe Text),
+                                              _cibDescription :: !(Maybe Text),
+                                              _cibAppstreamAgentVersion ::
+                                              !(Maybe Text),
+                                              _cibTags ::
+                                              !(Maybe (Map Text Text)),
+                                              _cibName :: !Text,
+                                              _cibInstanceType :: !Text}
+                            deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'CreateImageBuilder' with the minimum fields required to make a request.
 --
 -- Use one of the following lenses to modify other fields as desired:
 --
--- * 'cibDomainJoinInfo' - The name of the directory and organizational unit (OU) to use to join the image builder to a Microsoft Active Directory domain.
+-- * 'cibDomainJoinInfo' - The name of the directory and organizational unit (OU) to use to join the image builder to a Microsoft Active Directory domain. 
 --
 -- * 'cibIAMRoleARN' - The Amazon Resource Name (ARN) of the IAM role to apply to the image builder. To assume a role, the image builder calls the AWS Security Token Service (STS) @AssumeRole@ API operation and passes the ARN of the role to use. The operation creates a new session with temporary credentials. AppStream 2.0 retrieves the temporary credentials and creates the __AppStream_Machine_Role__ credential profile on the instance. For more information, see <https://docs.aws.amazon.com/appstream2/latest/developerguide/using-iam-roles-to-grant-permissions-to-applications-scripts-streaming-instances.html Using an IAM Role to Grant Permissions to Applications and Scripts Running on AppStream 2.0 Streaming Instances> in the /Amazon AppStream 2.0 Administration Guide/ .
 --
@@ -100,7 +101,7 @@ data CreateImageBuilder =
 --
 -- * 'cibDescription' - The description to display.
 --
--- * 'cibAppstreamAgentVersion' - The version of the AppStream 2.0 agent to use for this image builder. To use the latest version of the AppStream 2.0 agent, specify [LATEST].
+-- * 'cibAppstreamAgentVersion' - The version of the AppStream 2.0 agent to use for this image builder. To use the latest version of the AppStream 2.0 agent, specify [LATEST]. 
 --
 -- * 'cibTags' - The tags to associate with the image builder. A tag is a key-value pair, and the value is optional. For example, Environment=Test. If you do not specify a value, Environment=.  Generally allowed characters are: letters, numbers, and spaces representable in UTF-8, and the following special characters:  _ . : / = + \ - @ If you do not specify a value, the value is set to an empty string. For more information about tags, see <https://docs.aws.amazon.com/appstream2/latest/developerguide/tagging-basic.html Tagging Your Resources> in the /Amazon AppStream 2.0 Administration Guide/ .
 --
@@ -111,25 +112,19 @@ createImageBuilder
     :: Text -- ^ 'cibName'
     -> Text -- ^ 'cibInstanceType'
     -> CreateImageBuilder
-createImageBuilder pName_ pInstanceType_ =
-  CreateImageBuilder'
-    { _cibDomainJoinInfo = Nothing
-    , _cibIAMRoleARN = Nothing
-    , _cibAccessEndpoints = Nothing
-    , _cibVPCConfig = Nothing
-    , _cibImageARN = Nothing
-    , _cibDisplayName = Nothing
-    , _cibEnableDefaultInternetAccess = Nothing
-    , _cibImageName = Nothing
-    , _cibDescription = Nothing
-    , _cibAppstreamAgentVersion = Nothing
-    , _cibTags = Nothing
-    , _cibName = pName_
-    , _cibInstanceType = pInstanceType_
-    }
+createImageBuilder pName_ pInstanceType_
+  = CreateImageBuilder'{_cibDomainJoinInfo = Nothing,
+                        _cibIAMRoleARN = Nothing,
+                        _cibAccessEndpoints = Nothing,
+                        _cibVPCConfig = Nothing, _cibImageARN = Nothing,
+                        _cibDisplayName = Nothing,
+                        _cibEnableDefaultInternetAccess = Nothing,
+                        _cibImageName = Nothing, _cibDescription = Nothing,
+                        _cibAppstreamAgentVersion = Nothing,
+                        _cibTags = Nothing, _cibName = pName_,
+                        _cibInstanceType = pInstanceType_}
 
-
--- | The name of the directory and organizational unit (OU) to use to join the image builder to a Microsoft Active Directory domain.
+-- | The name of the directory and organizational unit (OU) to use to join the image builder to a Microsoft Active Directory domain. 
 cibDomainJoinInfo :: Lens' CreateImageBuilder (Maybe DomainJoinInfo)
 cibDomainJoinInfo = lens _cibDomainJoinInfo (\ s a -> s{_cibDomainJoinInfo = a})
 
@@ -165,7 +160,7 @@ cibImageName = lens _cibImageName (\ s a -> s{_cibImageName = a})
 cibDescription :: Lens' CreateImageBuilder (Maybe Text)
 cibDescription = lens _cibDescription (\ s a -> s{_cibDescription = a})
 
--- | The version of the AppStream 2.0 agent to use for this image builder. To use the latest version of the AppStream 2.0 agent, specify [LATEST].
+-- | The version of the AppStream 2.0 agent to use for this image builder. To use the latest version of the AppStream 2.0 agent, specify [LATEST]. 
 cibAppstreamAgentVersion :: Lens' CreateImageBuilder (Maybe Text)
 cibAppstreamAgentVersion = lens _cibAppstreamAgentVersion (\ s a -> s{_cibAppstreamAgentVersion = a})
 
@@ -231,13 +226,14 @@ instance ToQuery CreateImageBuilder where
         toQuery = const mempty
 
 -- | /See:/ 'createImageBuilderResponse' smart constructor.
-data CreateImageBuilderResponse =
-  CreateImageBuilderResponse'
-    { _cibrsImageBuilder   :: !(Maybe ImageBuilder)
-    , _cibrsResponseStatus :: !Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data CreateImageBuilderResponse = CreateImageBuilderResponse'{_cibrsImageBuilder
+                                                              ::
+                                                              !(Maybe
+                                                                  ImageBuilder),
+                                                              _cibrsResponseStatus
+                                                              :: !Int}
+                                    deriving (Eq, Read, Show, Data, Typeable,
+                                              Generic)
 
 -- | Creates a value of 'CreateImageBuilderResponse' with the minimum fields required to make a request.
 --
@@ -249,10 +245,10 @@ data CreateImageBuilderResponse =
 createImageBuilderResponse
     :: Int -- ^ 'cibrsResponseStatus'
     -> CreateImageBuilderResponse
-createImageBuilderResponse pResponseStatus_ =
-  CreateImageBuilderResponse'
-    {_cibrsImageBuilder = Nothing, _cibrsResponseStatus = pResponseStatus_}
-
+createImageBuilderResponse pResponseStatus_
+  = CreateImageBuilderResponse'{_cibrsImageBuilder =
+                                  Nothing,
+                                _cibrsResponseStatus = pResponseStatus_}
 
 -- | Information about the image builder.
 cibrsImageBuilder :: Lens' CreateImageBuilderResponse (Maybe ImageBuilder)

@@ -46,19 +46,15 @@ import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 import Network.AWS.S3.Types
-import Network.AWS.S3.Types.Product
 
 -- | /See:/ 'deleteObject' smart constructor.
-data DeleteObject =
-  DeleteObject'
-    { _doVersionId    :: !(Maybe ObjectVersionId)
-    , _doMFA          :: !(Maybe Text)
-    , _doRequestPayer :: !(Maybe RequestPayer)
-    , _doBucket       :: !BucketName
-    , _doKey          :: !ObjectKey
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data DeleteObject = DeleteObject'{_doVersionId ::
+                                  !(Maybe ObjectVersionId),
+                                  _doMFA :: !(Maybe Text),
+                                  _doRequestPayer :: !(Maybe RequestPayer),
+                                  _doBucket :: !BucketName,
+                                  _doKey :: !ObjectKey}
+                      deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'DeleteObject' with the minimum fields required to make a request.
 --
@@ -77,15 +73,10 @@ deleteObject
     :: BucketName -- ^ 'doBucket'
     -> ObjectKey -- ^ 'doKey'
     -> DeleteObject
-deleteObject pBucket_ pKey_ =
-  DeleteObject'
-    { _doVersionId = Nothing
-    , _doMFA = Nothing
-    , _doRequestPayer = Nothing
-    , _doBucket = pBucket_
-    , _doKey = pKey_
-    }
-
+deleteObject pBucket_ pKey_
+  = DeleteObject'{_doVersionId = Nothing,
+                  _doMFA = Nothing, _doRequestPayer = Nothing,
+                  _doBucket = pBucket_, _doKey = pKey_}
 
 -- | VersionId used to reference a specific version of the object.
 doVersionId :: Lens' DeleteObject (Maybe ObjectVersionId)
@@ -138,15 +129,14 @@ instance ToQuery DeleteObject where
           = mconcat ["versionId" =: _doVersionId]
 
 -- | /See:/ 'deleteObjectResponse' smart constructor.
-data DeleteObjectResponse =
-  DeleteObjectResponse'
-    { _dorsRequestCharged :: !(Maybe RequestCharged)
-    , _dorsVersionId      :: !(Maybe ObjectVersionId)
-    , _dorsDeleteMarker   :: !(Maybe Bool)
-    , _dorsResponseStatus :: !Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data DeleteObjectResponse = DeleteObjectResponse'{_dorsRequestCharged
+                                                  :: !(Maybe RequestCharged),
+                                                  _dorsVersionId ::
+                                                  !(Maybe ObjectVersionId),
+                                                  _dorsDeleteMarker ::
+                                                  !(Maybe Bool),
+                                                  _dorsResponseStatus :: !Int}
+                              deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'DeleteObjectResponse' with the minimum fields required to make a request.
 --
@@ -162,14 +152,12 @@ data DeleteObjectResponse =
 deleteObjectResponse
     :: Int -- ^ 'dorsResponseStatus'
     -> DeleteObjectResponse
-deleteObjectResponse pResponseStatus_ =
-  DeleteObjectResponse'
-    { _dorsRequestCharged = Nothing
-    , _dorsVersionId = Nothing
-    , _dorsDeleteMarker = Nothing
-    , _dorsResponseStatus = pResponseStatus_
-    }
-
+deleteObjectResponse pResponseStatus_
+  = DeleteObjectResponse'{_dorsRequestCharged =
+                            Nothing,
+                          _dorsVersionId = Nothing,
+                          _dorsDeleteMarker = Nothing,
+                          _dorsResponseStatus = pResponseStatus_}
 
 -- | Undocumented member.
 dorsRequestCharged :: Lens' DeleteObjectResponse (Maybe RequestCharged)

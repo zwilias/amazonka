@@ -46,29 +46,26 @@ module Network.AWS.DirectoryService.CreateDirectory
     ) where
 
 import Network.AWS.DirectoryService.Types
-import Network.AWS.DirectoryService.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 
--- | Contains the inputs for the 'CreateDirectory' operation.
+-- | Contains the inputs for the 'CreateDirectory' operation. 
 --
 --
 --
 -- /See:/ 'createDirectory' smart constructor.
-data CreateDirectory =
-  CreateDirectory'
-    { _cShortName   :: !(Maybe Text)
-    , _cVPCSettings :: !(Maybe DirectoryVPCSettings)
-    , _cDescription :: !(Maybe Text)
-    , _cTags        :: !(Maybe [Tag])
-    , _cName        :: !Text
-    , _cPassword    :: !(Sensitive Text)
-    , _cSize        :: !DirectorySize
-    }
-  deriving (Eq, Show, Data, Typeable, Generic)
-
+data CreateDirectory = CreateDirectory'{_cShortName
+                                        :: !(Maybe Text),
+                                        _cVPCSettings ::
+                                        !(Maybe DirectoryVPCSettings),
+                                        _cDescription :: !(Maybe Text),
+                                        _cTags :: !(Maybe [Tag]),
+                                        _cName :: !Text,
+                                        _cPassword :: !(Sensitive Text),
+                                        _cSize :: !DirectorySize}
+                         deriving (Eq, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'CreateDirectory' with the minimum fields required to make a request.
 --
@@ -92,17 +89,12 @@ createDirectory
     -> Text -- ^ 'cPassword'
     -> DirectorySize -- ^ 'cSize'
     -> CreateDirectory
-createDirectory pName_ pPassword_ pSize_ =
-  CreateDirectory'
-    { _cShortName = Nothing
-    , _cVPCSettings = Nothing
-    , _cDescription = Nothing
-    , _cTags = Nothing
-    , _cName = pName_
-    , _cPassword = _Sensitive # pPassword_
-    , _cSize = pSize_
-    }
-
+createDirectory pName_ pPassword_ pSize_
+  = CreateDirectory'{_cShortName = Nothing,
+                     _cVPCSettings = Nothing, _cDescription = Nothing,
+                     _cTags = Nothing, _cName = pName_,
+                     _cPassword = _Sensitive # pPassword_,
+                     _cSize = pSize_}
 
 -- | The NetBIOS name of the directory, such as @CORP@ .
 cShortName :: Lens' CreateDirectory (Maybe Text)
@@ -177,13 +169,12 @@ instance ToQuery CreateDirectory where
 --
 --
 -- /See:/ 'createDirectoryResponse' smart constructor.
-data CreateDirectoryResponse =
-  CreateDirectoryResponse'
-    { _crsDirectoryId    :: !(Maybe Text)
-    , _crsResponseStatus :: !Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data CreateDirectoryResponse = CreateDirectoryResponse'{_crsDirectoryId
+                                                        :: !(Maybe Text),
+                                                        _crsResponseStatus ::
+                                                        !Int}
+                                 deriving (Eq, Read, Show, Data, Typeable,
+                                           Generic)
 
 -- | Creates a value of 'CreateDirectoryResponse' with the minimum fields required to make a request.
 --
@@ -195,10 +186,9 @@ data CreateDirectoryResponse =
 createDirectoryResponse
     :: Int -- ^ 'crsResponseStatus'
     -> CreateDirectoryResponse
-createDirectoryResponse pResponseStatus_ =
-  CreateDirectoryResponse'
-    {_crsDirectoryId = Nothing, _crsResponseStatus = pResponseStatus_}
-
+createDirectoryResponse pResponseStatus_
+  = CreateDirectoryResponse'{_crsDirectoryId = Nothing,
+                             _crsResponseStatus = pResponseStatus_}
 
 -- | The identifier of the directory that was created.
 crsDirectoryId :: Lens' CreateDirectoryResponse (Maybe Text)

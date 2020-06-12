@@ -45,7 +45,6 @@ module Network.AWS.EC2.GetTransitGatewayMulticastDomainAssociations
     ) where
 
 import Network.AWS.EC2.Types
-import Network.AWS.EC2.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Pager
 import Network.AWS.Prelude
@@ -53,16 +52,29 @@ import Network.AWS.Request
 import Network.AWS.Response
 
 -- | /See:/ 'getTransitGatewayMulticastDomainAssociations' smart constructor.
-data GetTransitGatewayMulticastDomainAssociations =
-  GetTransitGatewayMulticastDomainAssociations'
-    { _gtgmdaFilters                         :: !(Maybe [Filter])
-    , _gtgmdaTransitGatewayMulticastDomainId :: !(Maybe Text)
-    , _gtgmdaNextToken                       :: !(Maybe Text)
-    , _gtgmdaDryRun                          :: !(Maybe Bool)
-    , _gtgmdaMaxResults                      :: !(Maybe Nat)
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data GetTransitGatewayMulticastDomainAssociations = GetTransitGatewayMulticastDomainAssociations'{_gtgmdaFilters
+                                                                                                  ::
+                                                                                                  !(Maybe
+                                                                                                      [Filter]),
+                                                                                                  _gtgmdaTransitGatewayMulticastDomainId
+                                                                                                  ::
+                                                                                                  !(Maybe
+                                                                                                      Text),
+                                                                                                  _gtgmdaNextToken
+                                                                                                  ::
+                                                                                                  !(Maybe
+                                                                                                      Text),
+                                                                                                  _gtgmdaDryRun
+                                                                                                  ::
+                                                                                                  !(Maybe
+                                                                                                      Bool),
+                                                                                                  _gtgmdaMaxResults
+                                                                                                  ::
+                                                                                                  !(Maybe
+                                                                                                      Nat)}
+                                                      deriving (Eq, Read, Show,
+                                                                Data, Typeable,
+                                                                Generic)
 
 -- | Creates a value of 'GetTransitGatewayMulticastDomainAssociations' with the minimum fields required to make a request.
 --
@@ -79,15 +91,14 @@ data GetTransitGatewayMulticastDomainAssociations =
 -- * 'gtgmdaMaxResults' - The maximum number of results to return with a single call. To retrieve the remaining results, make another call with the returned @nextToken@ value.
 getTransitGatewayMulticastDomainAssociations
     :: GetTransitGatewayMulticastDomainAssociations
-getTransitGatewayMulticastDomainAssociations =
-  GetTransitGatewayMulticastDomainAssociations'
-    { _gtgmdaFilters = Nothing
-    , _gtgmdaTransitGatewayMulticastDomainId = Nothing
-    , _gtgmdaNextToken = Nothing
-    , _gtgmdaDryRun = Nothing
-    , _gtgmdaMaxResults = Nothing
-    }
-
+getTransitGatewayMulticastDomainAssociations
+  = GetTransitGatewayMulticastDomainAssociations'{_gtgmdaFilters
+                                                    = Nothing,
+                                                  _gtgmdaTransitGatewayMulticastDomainId
+                                                    = Nothing,
+                                                  _gtgmdaNextToken = Nothing,
+                                                  _gtgmdaDryRun = Nothing,
+                                                  _gtgmdaMaxResults = Nothing}
 
 -- | One or more filters. The possible values are:     * @resource-id@ - The ID of the resource.     * @resource-type@ - The type of resource. The valid value is: @vpc@ .     * @state@ - The state of the subnet association. Valid values are @associated@ | @associating@ | @disassociated@ | @disassociating@ .     * @subnet-id@ - The ID of the subnet.     * @transit-gateway-attachment-id@ - The id of the transit gateway attachment.
 gtgmdaFilters :: Lens' GetTransitGatewayMulticastDomainAssociations [Filter]
@@ -173,14 +184,23 @@ instance ToQuery
                "MaxResults" =: _gtgmdaMaxResults]
 
 -- | /See:/ 'getTransitGatewayMulticastDomainAssociationsResponse' smart constructor.
-data GetTransitGatewayMulticastDomainAssociationsResponse =
-  GetTransitGatewayMulticastDomainAssociationsResponse'
-    { _gtgmdarsNextToken :: !(Maybe Text)
-    , _gtgmdarsMulticastDomainAssociations :: !(Maybe [TransitGatewayMulticastDomainAssociation])
-    , _gtgmdarsResponseStatus :: !Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data GetTransitGatewayMulticastDomainAssociationsResponse = GetTransitGatewayMulticastDomainAssociationsResponse'{_gtgmdarsNextToken
+                                                                                                                  ::
+                                                                                                                  !(Maybe
+                                                                                                                      Text),
+                                                                                                                  _gtgmdarsMulticastDomainAssociations
+                                                                                                                  ::
+                                                                                                                  !(Maybe
+                                                                                                                      [TransitGatewayMulticastDomainAssociation]),
+                                                                                                                  _gtgmdarsResponseStatus
+                                                                                                                  ::
+                                                                                                                  !Int}
+                                                              deriving (Eq,
+                                                                        Read,
+                                                                        Show,
+                                                                        Data,
+                                                                        Typeable,
+                                                                        Generic)
 
 -- | Creates a value of 'GetTransitGatewayMulticastDomainAssociationsResponse' with the minimum fields required to make a request.
 --
@@ -194,13 +214,14 @@ data GetTransitGatewayMulticastDomainAssociationsResponse =
 getTransitGatewayMulticastDomainAssociationsResponse
     :: Int -- ^ 'gtgmdarsResponseStatus'
     -> GetTransitGatewayMulticastDomainAssociationsResponse
-getTransitGatewayMulticastDomainAssociationsResponse pResponseStatus_ =
-  GetTransitGatewayMulticastDomainAssociationsResponse'
-    { _gtgmdarsNextToken = Nothing
-    , _gtgmdarsMulticastDomainAssociations = Nothing
-    , _gtgmdarsResponseStatus = pResponseStatus_
-    }
-
+getTransitGatewayMulticastDomainAssociationsResponse
+  pResponseStatus_
+  = GetTransitGatewayMulticastDomainAssociationsResponse'{_gtgmdarsNextToken
+                                                            = Nothing,
+                                                          _gtgmdarsMulticastDomainAssociations
+                                                            = Nothing,
+                                                          _gtgmdarsResponseStatus
+                                                            = pResponseStatus_}
 
 -- | The token to use to retrieve the next page of results. This value is @null@ when there are no more results to return.
 gtgmdarsNextToken :: Lens' GetTransitGatewayMulticastDomainAssociationsResponse (Maybe Text)

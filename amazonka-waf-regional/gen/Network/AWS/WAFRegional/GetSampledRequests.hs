@@ -49,18 +49,14 @@ import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 import Network.AWS.WAFRegional.Types
-import Network.AWS.WAFRegional.Types.Product
 
 -- | /See:/ 'getSampledRequests' smart constructor.
-data GetSampledRequests =
-  GetSampledRequests'
-    { _gsrWebACLId   :: !Text
-    , _gsrRuleId     :: !Text
-    , _gsrTimeWindow :: !TimeWindow
-    , _gsrMaxItems   :: !Nat
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data GetSampledRequests = GetSampledRequests'{_gsrWebACLId
+                                              :: !Text,
+                                              _gsrRuleId :: !Text,
+                                              _gsrTimeWindow :: !TimeWindow,
+                                              _gsrMaxItems :: !Nat}
+                            deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'GetSampledRequests' with the minimum fields required to make a request.
 --
@@ -72,21 +68,18 @@ data GetSampledRequests =
 --
 -- * 'gsrTimeWindow' - The start date and time and the end date and time of the range for which you want @GetSampledRequests@ to return a sample of requests. Specify the date and time in the following format: @"2016-09-27T14:50Z"@ . You can specify any time range in the previous three hours.
 --
--- * 'gsrMaxItems' - The number of requests that you want AWS WAF to return from among the first 5,000 requests that your AWS resource received during the time range. If your resource received fewer requests than the value of @MaxItems@ , @GetSampledRequests@ returns information about all of them.
+-- * 'gsrMaxItems' - The number of requests that you want AWS WAF to return from among the first 5,000 requests that your AWS resource received during the time range. If your resource received fewer requests than the value of @MaxItems@ , @GetSampledRequests@ returns information about all of them. 
 getSampledRequests
     :: Text -- ^ 'gsrWebACLId'
     -> Text -- ^ 'gsrRuleId'
     -> TimeWindow -- ^ 'gsrTimeWindow'
     -> Natural -- ^ 'gsrMaxItems'
     -> GetSampledRequests
-getSampledRequests pWebACLId_ pRuleId_ pTimeWindow_ pMaxItems_ =
-  GetSampledRequests'
-    { _gsrWebACLId = pWebACLId_
-    , _gsrRuleId = pRuleId_
-    , _gsrTimeWindow = pTimeWindow_
-    , _gsrMaxItems = _Nat # pMaxItems_
-    }
-
+getSampledRequests pWebACLId_ pRuleId_ pTimeWindow_
+  pMaxItems_
+  = GetSampledRequests'{_gsrWebACLId = pWebACLId_,
+                        _gsrRuleId = pRuleId_, _gsrTimeWindow = pTimeWindow_,
+                        _gsrMaxItems = _Nat # pMaxItems_}
 
 -- | The @WebACLId@ of the @WebACL@ for which you want @GetSampledRequests@ to return a sample of requests.
 gsrWebACLId :: Lens' GetSampledRequests Text
@@ -100,7 +93,7 @@ gsrRuleId = lens _gsrRuleId (\ s a -> s{_gsrRuleId = a})
 gsrTimeWindow :: Lens' GetSampledRequests TimeWindow
 gsrTimeWindow = lens _gsrTimeWindow (\ s a -> s{_gsrTimeWindow = a})
 
--- | The number of requests that you want AWS WAF to return from among the first 5,000 requests that your AWS resource received during the time range. If your resource received fewer requests than the value of @MaxItems@ , @GetSampledRequests@ returns information about all of them.
+-- | The number of requests that you want AWS WAF to return from among the first 5,000 requests that your AWS resource received during the time range. If your resource received fewer requests than the value of @MaxItems@ , @GetSampledRequests@ returns information about all of them. 
 gsrMaxItems :: Lens' GetSampledRequests Natural
 gsrMaxItems = lens _gsrMaxItems (\ s a -> s{_gsrMaxItems = a}) . _Nat
 
@@ -147,15 +140,21 @@ instance ToQuery GetSampledRequests where
         toQuery = const mempty
 
 -- | /See:/ 'getSampledRequestsResponse' smart constructor.
-data GetSampledRequestsResponse =
-  GetSampledRequestsResponse'
-    { _gsrrsSampledRequests :: !(Maybe [SampledHTTPRequest])
-    , _gsrrsPopulationSize  :: !(Maybe Integer)
-    , _gsrrsTimeWindow      :: !(Maybe TimeWindow)
-    , _gsrrsResponseStatus  :: !Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data GetSampledRequestsResponse = GetSampledRequestsResponse'{_gsrrsSampledRequests
+                                                              ::
+                                                              !(Maybe
+                                                                  [SampledHTTPRequest]),
+                                                              _gsrrsPopulationSize
+                                                              ::
+                                                              !(Maybe Integer),
+                                                              _gsrrsTimeWindow
+                                                              ::
+                                                              !(Maybe
+                                                                  TimeWindow),
+                                                              _gsrrsResponseStatus
+                                                              :: !Int}
+                                    deriving (Eq, Read, Show, Data, Typeable,
+                                              Generic)
 
 -- | Creates a value of 'GetSampledRequestsResponse' with the minimum fields required to make a request.
 --
@@ -171,14 +170,12 @@ data GetSampledRequestsResponse =
 getSampledRequestsResponse
     :: Int -- ^ 'gsrrsResponseStatus'
     -> GetSampledRequestsResponse
-getSampledRequestsResponse pResponseStatus_ =
-  GetSampledRequestsResponse'
-    { _gsrrsSampledRequests = Nothing
-    , _gsrrsPopulationSize = Nothing
-    , _gsrrsTimeWindow = Nothing
-    , _gsrrsResponseStatus = pResponseStatus_
-    }
-
+getSampledRequestsResponse pResponseStatus_
+  = GetSampledRequestsResponse'{_gsrrsSampledRequests =
+                                  Nothing,
+                                _gsrrsPopulationSize = Nothing,
+                                _gsrrsTimeWindow = Nothing,
+                                _gsrrsResponseStatus = pResponseStatus_}
 
 -- | A complex type that contains detailed information about each of the requests in the sample.
 gsrrsSampledRequests :: Lens' GetSampledRequestsResponse [SampledHTTPRequest]

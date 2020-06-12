@@ -41,7 +41,6 @@ module Network.AWS.DeviceFarm.ListOfferingTransactions
     ) where
 
 import Network.AWS.DeviceFarm.Types
-import Network.AWS.DeviceFarm.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Pager
 import Network.AWS.Prelude
@@ -53,12 +52,10 @@ import Network.AWS.Response
 --
 --
 -- /See:/ 'listOfferingTransactions' smart constructor.
-newtype ListOfferingTransactions =
-  ListOfferingTransactions'
-    { _lotNextToken :: Maybe Text
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+newtype ListOfferingTransactions = ListOfferingTransactions'{_lotNextToken
+                                                             :: Maybe Text}
+                                     deriving (Eq, Read, Show, Data, Typeable,
+                                               Generic)
 
 -- | Creates a value of 'ListOfferingTransactions' with the minimum fields required to make a request.
 --
@@ -67,8 +64,8 @@ newtype ListOfferingTransactions =
 -- * 'lotNextToken' - An identifier that was returned from the previous call to this operation, which can be used to return the next set of items in the list.
 listOfferingTransactions
     :: ListOfferingTransactions
-listOfferingTransactions = ListOfferingTransactions' {_lotNextToken = Nothing}
-
+listOfferingTransactions
+  = ListOfferingTransactions'{_lotNextToken = Nothing}
 
 -- | An identifier that was returned from the previous call to this operation, which can be used to return the next set of items in the list.
 lotNextToken :: Lens' ListOfferingTransactions (Maybe Text)
@@ -123,14 +120,19 @@ instance ToQuery ListOfferingTransactions where
 --
 --
 -- /See:/ 'listOfferingTransactionsResponse' smart constructor.
-data ListOfferingTransactionsResponse =
-  ListOfferingTransactionsResponse'
-    { _lotrsOfferingTransactions :: !(Maybe [OfferingTransaction])
-    , _lotrsNextToken            :: !(Maybe Text)
-    , _lotrsResponseStatus       :: !Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data ListOfferingTransactionsResponse = ListOfferingTransactionsResponse'{_lotrsOfferingTransactions
+                                                                          ::
+                                                                          !(Maybe
+                                                                              [OfferingTransaction]),
+                                                                          _lotrsNextToken
+                                                                          ::
+                                                                          !(Maybe
+                                                                              Text),
+                                                                          _lotrsResponseStatus
+                                                                          ::
+                                                                          !Int}
+                                          deriving (Eq, Read, Show, Data,
+                                                    Typeable, Generic)
 
 -- | Creates a value of 'ListOfferingTransactionsResponse' with the minimum fields required to make a request.
 --
@@ -144,13 +146,11 @@ data ListOfferingTransactionsResponse =
 listOfferingTransactionsResponse
     :: Int -- ^ 'lotrsResponseStatus'
     -> ListOfferingTransactionsResponse
-listOfferingTransactionsResponse pResponseStatus_ =
-  ListOfferingTransactionsResponse'
-    { _lotrsOfferingTransactions = Nothing
-    , _lotrsNextToken = Nothing
-    , _lotrsResponseStatus = pResponseStatus_
-    }
-
+listOfferingTransactionsResponse pResponseStatus_
+  = ListOfferingTransactionsResponse'{_lotrsOfferingTransactions
+                                        = Nothing,
+                                      _lotrsNextToken = Nothing,
+                                      _lotrsResponseStatus = pResponseStatus_}
 
 -- | The audit log of subscriptions you have purchased and modified through AWS Device Farm.
 lotrsOfferingTransactions :: Lens' ListOfferingTransactionsResponse [OfferingTransaction]

@@ -46,20 +46,19 @@ import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 import Network.AWS.SQS.Types
-import Network.AWS.SQS.Types.Product
 
--- |
+-- | 
 --
 --
 --
 -- /See:/ 'changeMessageVisibilityBatch' smart constructor.
-data ChangeMessageVisibilityBatch =
-  ChangeMessageVisibilityBatch'
-    { _cmvbQueueURL :: !Text
-    , _cmvbEntries  :: ![ChangeMessageVisibilityBatchRequestEntry]
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data ChangeMessageVisibilityBatch = ChangeMessageVisibilityBatch'{_cmvbQueueURL
+                                                                  :: !Text,
+                                                                  _cmvbEntries
+                                                                  ::
+                                                                  ![ChangeMessageVisibilityBatchRequestEntry]}
+                                      deriving (Eq, Read, Show, Data, Typeable,
+                                                Generic)
 
 -- | Creates a value of 'ChangeMessageVisibilityBatch' with the minimum fields required to make a request.
 --
@@ -71,10 +70,10 @@ data ChangeMessageVisibilityBatch =
 changeMessageVisibilityBatch
     :: Text -- ^ 'cmvbQueueURL'
     -> ChangeMessageVisibilityBatch
-changeMessageVisibilityBatch pQueueURL_ =
-  ChangeMessageVisibilityBatch'
-    {_cmvbQueueURL = pQueueURL_, _cmvbEntries = mempty}
-
+changeMessageVisibilityBatch pQueueURL_
+  = ChangeMessageVisibilityBatch'{_cmvbQueueURL =
+                                    pQueueURL_,
+                                  _cmvbEntries = mempty}
 
 -- | The URL of the Amazon SQS queue whose messages' visibility is changed. Queue URLs are case-sensitive.
 cmvbQueueURL :: Lens' ChangeMessageVisibilityBatch Text
@@ -126,14 +125,17 @@ instance ToQuery ChangeMessageVisibilityBatch where
 --
 --
 -- /See:/ 'changeMessageVisibilityBatchResponse' smart constructor.
-data ChangeMessageVisibilityBatchResponse =
-  ChangeMessageVisibilityBatchResponse'
-    { _cmvbrsResponseStatus :: !Int
-    , _cmvbrsSuccessful     :: ![ChangeMessageVisibilityBatchResultEntry]
-    , _cmvbrsFailed         :: ![BatchResultErrorEntry]
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data ChangeMessageVisibilityBatchResponse = ChangeMessageVisibilityBatchResponse'{_cmvbrsResponseStatus
+                                                                                  ::
+                                                                                  !Int,
+                                                                                  _cmvbrsSuccessful
+                                                                                  ::
+                                                                                  ![ChangeMessageVisibilityBatchResultEntry],
+                                                                                  _cmvbrsFailed
+                                                                                  ::
+                                                                                  ![BatchResultErrorEntry]}
+                                              deriving (Eq, Read, Show, Data,
+                                                        Typeable, Generic)
 
 -- | Creates a value of 'ChangeMessageVisibilityBatchResponse' with the minimum fields required to make a request.
 --
@@ -147,13 +149,11 @@ data ChangeMessageVisibilityBatchResponse =
 changeMessageVisibilityBatchResponse
     :: Int -- ^ 'cmvbrsResponseStatus'
     -> ChangeMessageVisibilityBatchResponse
-changeMessageVisibilityBatchResponse pResponseStatus_ =
-  ChangeMessageVisibilityBatchResponse'
-    { _cmvbrsResponseStatus = pResponseStatus_
-    , _cmvbrsSuccessful = mempty
-    , _cmvbrsFailed = mempty
-    }
-
+changeMessageVisibilityBatchResponse pResponseStatus_
+  = ChangeMessageVisibilityBatchResponse'{_cmvbrsResponseStatus
+                                            = pResponseStatus_,
+                                          _cmvbrsSuccessful = mempty,
+                                          _cmvbrsFailed = mempty}
 
 -- | -- | The response status code.
 cmvbrsResponseStatus :: Lens' ChangeMessageVisibilityBatchResponse Int

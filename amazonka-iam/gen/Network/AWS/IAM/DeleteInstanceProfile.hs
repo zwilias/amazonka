@@ -39,19 +39,16 @@ module Network.AWS.IAM.DeleteInstanceProfile
     ) where
 
 import Network.AWS.IAM.Types
-import Network.AWS.IAM.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 
 -- | /See:/ 'deleteInstanceProfile' smart constructor.
-newtype DeleteInstanceProfile =
-  DeleteInstanceProfile'
-    { _dipInstanceProfileName :: Text
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+newtype DeleteInstanceProfile = DeleteInstanceProfile'{_dipInstanceProfileName
+                                                       :: Text}
+                                  deriving (Eq, Read, Show, Data, Typeable,
+                                            Generic)
 
 -- | Creates a value of 'DeleteInstanceProfile' with the minimum fields required to make a request.
 --
@@ -61,9 +58,9 @@ newtype DeleteInstanceProfile =
 deleteInstanceProfile
     :: Text -- ^ 'dipInstanceProfileName'
     -> DeleteInstanceProfile
-deleteInstanceProfile pInstanceProfileName_ =
-  DeleteInstanceProfile' {_dipInstanceProfileName = pInstanceProfileName_}
-
+deleteInstanceProfile pInstanceProfileName_
+  = DeleteInstanceProfile'{_dipInstanceProfileName =
+                             pInstanceProfileName_}
 
 -- | The name of the instance profile to delete. This parameter allows (per its <http://wikipedia.org/wiki/regex regex pattern> ) a string of characters consisting of upper and lowercase alphanumeric characters with no spaces. You can also include any of the following characters: _+=,.@-
 dipInstanceProfileName :: Lens' DeleteInstanceProfile Text
@@ -93,16 +90,15 @@ instance ToQuery DeleteInstanceProfile where
                "InstanceProfileName" =: _dipInstanceProfileName]
 
 -- | /See:/ 'deleteInstanceProfileResponse' smart constructor.
-data DeleteInstanceProfileResponse =
-  DeleteInstanceProfileResponse'
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data DeleteInstanceProfileResponse = DeleteInstanceProfileResponse'
+                                       deriving (Eq, Read, Show, Data, Typeable,
+                                                 Generic)
 
 -- | Creates a value of 'DeleteInstanceProfileResponse' with the minimum fields required to make a request.
 --
 deleteInstanceProfileResponse
     :: DeleteInstanceProfileResponse
-deleteInstanceProfileResponse = DeleteInstanceProfileResponse'
-
+deleteInstanceProfileResponse
+  = DeleteInstanceProfileResponse'
 
 instance NFData DeleteInstanceProfileResponse where

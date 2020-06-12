@@ -44,7 +44,6 @@ module Network.AWS.AppSync.ListTypes
     ) where
 
 import Network.AWS.AppSync.Types
-import Network.AWS.AppSync.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Pager
 import Network.AWS.Prelude
@@ -52,21 +51,17 @@ import Network.AWS.Request
 import Network.AWS.Response
 
 -- | /See:/ 'listTypes' smart constructor.
-data ListTypes =
-  ListTypes'
-    { _ltNextToken  :: !(Maybe Text)
-    , _ltMaxResults :: !(Maybe Nat)
-    , _ltApiId      :: !Text
-    , _ltFormat     :: !TypeDefinitionFormat
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data ListTypes = ListTypes'{_ltNextToken ::
+                            !(Maybe Text),
+                            _ltMaxResults :: !(Maybe Nat), _ltApiId :: !Text,
+                            _ltFormat :: !TypeDefinitionFormat}
+                   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'ListTypes' with the minimum fields required to make a request.
 --
 -- Use one of the following lenses to modify other fields as desired:
 --
--- * 'ltNextToken' - An identifier that was returned from the previous call to this operation, which can be used to return the next set of items in the list.
+-- * 'ltNextToken' - An identifier that was returned from the previous call to this operation, which can be used to return the next set of items in the list. 
 --
 -- * 'ltMaxResults' - The maximum number of results you want the request to return.
 --
@@ -77,16 +72,12 @@ listTypes
     :: Text -- ^ 'ltApiId'
     -> TypeDefinitionFormat -- ^ 'ltFormat'
     -> ListTypes
-listTypes pApiId_ pFormat_ =
-  ListTypes'
-    { _ltNextToken = Nothing
-    , _ltMaxResults = Nothing
-    , _ltApiId = pApiId_
-    , _ltFormat = pFormat_
-    }
+listTypes pApiId_ pFormat_
+  = ListTypes'{_ltNextToken = Nothing,
+               _ltMaxResults = Nothing, _ltApiId = pApiId_,
+               _ltFormat = pFormat_}
 
-
--- | An identifier that was returned from the previous call to this operation, which can be used to return the next set of items in the list.
+-- | An identifier that was returned from the previous call to this operation, which can be used to return the next set of items in the list. 
 ltNextToken :: Lens' ListTypes (Maybe Text)
 ltNextToken = lens _ltNextToken (\ s a -> s{_ltNextToken = a})
 
@@ -141,14 +132,11 @@ instance ToQuery ListTypes where
                "maxResults" =: _ltMaxResults, "format" =: _ltFormat]
 
 -- | /See:/ 'listTypesResponse' smart constructor.
-data ListTypesResponse =
-  ListTypesResponse'
-    { _ltrsTypes          :: !(Maybe [Type])
-    , _ltrsNextToken      :: !(Maybe Text)
-    , _ltrsResponseStatus :: !Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data ListTypesResponse = ListTypesResponse'{_ltrsTypes
+                                            :: !(Maybe [Type]),
+                                            _ltrsNextToken :: !(Maybe Text),
+                                            _ltrsResponseStatus :: !Int}
+                           deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'ListTypesResponse' with the minimum fields required to make a request.
 --
@@ -162,13 +150,10 @@ data ListTypesResponse =
 listTypesResponse
     :: Int -- ^ 'ltrsResponseStatus'
     -> ListTypesResponse
-listTypesResponse pResponseStatus_ =
-  ListTypesResponse'
-    { _ltrsTypes = Nothing
-    , _ltrsNextToken = Nothing
-    , _ltrsResponseStatus = pResponseStatus_
-    }
-
+listTypesResponse pResponseStatus_
+  = ListTypesResponse'{_ltrsTypes = Nothing,
+                       _ltrsNextToken = Nothing,
+                       _ltrsResponseStatus = pResponseStatus_}
 
 -- | The @Type@ objects.
 ltrsTypes :: Lens' ListTypesResponse [Type]

@@ -40,19 +40,15 @@ module Network.AWS.Lightsail.ImportKeyPair
 
 import Network.AWS.Lens
 import Network.AWS.Lightsail.Types
-import Network.AWS.Lightsail.Types.Product
 import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 
 -- | /See:/ 'importKeyPair' smart constructor.
-data ImportKeyPair =
-  ImportKeyPair'
-    { _ikpKeyPairName     :: !Text
-    , _ikpPublicKeyBase64 :: !Text
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data ImportKeyPair = ImportKeyPair'{_ikpKeyPairName
+                                    :: !Text,
+                                    _ikpPublicKeyBase64 :: !Text}
+                       deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'ImportKeyPair' with the minimum fields required to make a request.
 --
@@ -65,10 +61,9 @@ importKeyPair
     :: Text -- ^ 'ikpKeyPairName'
     -> Text -- ^ 'ikpPublicKeyBase64'
     -> ImportKeyPair
-importKeyPair pKeyPairName_ pPublicKeyBase64_ =
-  ImportKeyPair'
-    {_ikpKeyPairName = pKeyPairName_, _ikpPublicKeyBase64 = pPublicKeyBase64_}
-
+importKeyPair pKeyPairName_ pPublicKeyBase64_
+  = ImportKeyPair'{_ikpKeyPairName = pKeyPairName_,
+                   _ikpPublicKeyBase64 = pPublicKeyBase64_}
 
 -- | The name of the key pair for which you want to import the public key.
 ikpKeyPairName :: Lens' ImportKeyPair Text
@@ -114,13 +109,12 @@ instance ToQuery ImportKeyPair where
         toQuery = const mempty
 
 -- | /See:/ 'importKeyPairResponse' smart constructor.
-data ImportKeyPairResponse =
-  ImportKeyPairResponse'
-    { _ikprsOperation      :: !(Maybe Operation)
-    , _ikprsResponseStatus :: !Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data ImportKeyPairResponse = ImportKeyPairResponse'{_ikprsOperation
+                                                    :: !(Maybe Operation),
+                                                    _ikprsResponseStatus ::
+                                                    !Int}
+                               deriving (Eq, Read, Show, Data, Typeable,
+                                         Generic)
 
 -- | Creates a value of 'ImportKeyPairResponse' with the minimum fields required to make a request.
 --
@@ -132,10 +126,9 @@ data ImportKeyPairResponse =
 importKeyPairResponse
     :: Int -- ^ 'ikprsResponseStatus'
     -> ImportKeyPairResponse
-importKeyPairResponse pResponseStatus_ =
-  ImportKeyPairResponse'
-    {_ikprsOperation = Nothing, _ikprsResponseStatus = pResponseStatus_}
-
+importKeyPairResponse pResponseStatus_
+  = ImportKeyPairResponse'{_ikprsOperation = Nothing,
+                           _ikprsResponseStatus = pResponseStatus_}
 
 -- | An array of key-value pairs containing information about the request operation.
 ikprsOperation :: Lens' ImportKeyPairResponse (Maybe Operation)

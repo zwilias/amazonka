@@ -40,7 +40,6 @@ module Network.AWS.CloudSearch.DescribeIndexFields
     ) where
 
 import Network.AWS.CloudSearch.Types
-import Network.AWS.CloudSearch.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.Request
@@ -51,14 +50,12 @@ import Network.AWS.Response
 --
 --
 -- /See:/ 'describeIndexFields' smart constructor.
-data DescribeIndexFields =
-  DescribeIndexFields'
-    { _difDeployed   :: !(Maybe Bool)
-    , _difFieldNames :: !(Maybe [Text])
-    , _difDomainName :: !Text
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data DescribeIndexFields = DescribeIndexFields'{_difDeployed
+                                                :: !(Maybe Bool),
+                                                _difFieldNames ::
+                                                !(Maybe [Text]),
+                                                _difDomainName :: !Text}
+                             deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'DescribeIndexFields' with the minimum fields required to make a request.
 --
@@ -72,13 +69,10 @@ data DescribeIndexFields =
 describeIndexFields
     :: Text -- ^ 'difDomainName'
     -> DescribeIndexFields
-describeIndexFields pDomainName_ =
-  DescribeIndexFields'
-    { _difDeployed = Nothing
-    , _difFieldNames = Nothing
-    , _difDomainName = pDomainName_
-    }
-
+describeIndexFields pDomainName_
+  = DescribeIndexFields'{_difDeployed = Nothing,
+                         _difFieldNames = Nothing,
+                         _difDomainName = pDomainName_}
 
 -- | Whether to display the deployed configuration (@true@ ) or include any pending changes (@false@ ). Defaults to @false@ .
 difDeployed :: Lens' DescribeIndexFields (Maybe Bool)
@@ -129,13 +123,13 @@ instance ToQuery DescribeIndexFields where
 --
 --
 -- /See:/ 'describeIndexFieldsResponse' smart constructor.
-data DescribeIndexFieldsResponse =
-  DescribeIndexFieldsResponse'
-    { _difsrsResponseStatus :: !Int
-    , _difsrsIndexFields    :: ![IndexFieldStatus]
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data DescribeIndexFieldsResponse = DescribeIndexFieldsResponse'{_difsrsResponseStatus
+                                                                :: !Int,
+                                                                _difsrsIndexFields
+                                                                ::
+                                                                ![IndexFieldStatus]}
+                                     deriving (Eq, Read, Show, Data, Typeable,
+                                               Generic)
 
 -- | Creates a value of 'DescribeIndexFieldsResponse' with the minimum fields required to make a request.
 --
@@ -147,10 +141,10 @@ data DescribeIndexFieldsResponse =
 describeIndexFieldsResponse
     :: Int -- ^ 'difsrsResponseStatus'
     -> DescribeIndexFieldsResponse
-describeIndexFieldsResponse pResponseStatus_ =
-  DescribeIndexFieldsResponse'
-    {_difsrsResponseStatus = pResponseStatus_, _difsrsIndexFields = mempty}
-
+describeIndexFieldsResponse pResponseStatus_
+  = DescribeIndexFieldsResponse'{_difsrsResponseStatus
+                                   = pResponseStatus_,
+                                 _difsrsIndexFields = mempty}
 
 -- | -- | The response status code.
 difsrsResponseStatus :: Lens' DescribeIndexFieldsResponse Int

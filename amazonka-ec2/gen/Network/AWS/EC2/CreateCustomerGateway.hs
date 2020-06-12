@@ -49,7 +49,6 @@ module Network.AWS.EC2.CreateCustomerGateway
     ) where
 
 import Network.AWS.EC2.Types
-import Network.AWS.EC2.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.Request
@@ -60,17 +59,17 @@ import Network.AWS.Response
 --
 --
 -- /See:/ 'createCustomerGateway' smart constructor.
-data CreateCustomerGateway =
-  CreateCustomerGateway'
-    { _ccgCertificateARN :: !(Maybe Text)
-    , _ccgDeviceName     :: !(Maybe Text)
-    , _ccgPublicIP       :: !(Maybe Text)
-    , _ccgDryRun         :: !(Maybe Bool)
-    , _ccgBGPASN         :: !Int
-    , _ccgType           :: !GatewayType
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data CreateCustomerGateway = CreateCustomerGateway'{_ccgCertificateARN
+                                                    :: !(Maybe Text),
+                                                    _ccgDeviceName ::
+                                                    !(Maybe Text),
+                                                    _ccgPublicIP ::
+                                                    !(Maybe Text),
+                                                    _ccgDryRun :: !(Maybe Bool),
+                                                    _ccgBGPASN :: !Int,
+                                                    _ccgType :: !GatewayType}
+                               deriving (Eq, Read, Show, Data, Typeable,
+                                         Generic)
 
 -- | Creates a value of 'CreateCustomerGateway' with the minimum fields required to make a request.
 --
@@ -91,16 +90,12 @@ createCustomerGateway
     :: Int -- ^ 'ccgBGPASN'
     -> GatewayType -- ^ 'ccgType'
     -> CreateCustomerGateway
-createCustomerGateway pBGPASN_ pType_ =
-  CreateCustomerGateway'
-    { _ccgCertificateARN = Nothing
-    , _ccgDeviceName = Nothing
-    , _ccgPublicIP = Nothing
-    , _ccgDryRun = Nothing
-    , _ccgBGPASN = pBGPASN_
-    , _ccgType = pType_
-    }
-
+createCustomerGateway pBGPASN_ pType_
+  = CreateCustomerGateway'{_ccgCertificateARN =
+                             Nothing,
+                           _ccgDeviceName = Nothing, _ccgPublicIP = Nothing,
+                           _ccgDryRun = Nothing, _ccgBGPASN = pBGPASN_,
+                           _ccgType = pType_}
 
 -- | The Amazon Resource Name (ARN) for the customer gateway certificate.
 ccgCertificateARN :: Lens' CreateCustomerGateway (Maybe Text)
@@ -161,13 +156,14 @@ instance ToQuery CreateCustomerGateway where
 --
 --
 -- /See:/ 'createCustomerGatewayResponse' smart constructor.
-data CreateCustomerGatewayResponse =
-  CreateCustomerGatewayResponse'
-    { _ccgrsCustomerGateway :: !(Maybe CustomerGateway)
-    , _ccgrsResponseStatus  :: !Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data CreateCustomerGatewayResponse = CreateCustomerGatewayResponse'{_ccgrsCustomerGateway
+                                                                    ::
+                                                                    !(Maybe
+                                                                        CustomerGateway),
+                                                                    _ccgrsResponseStatus
+                                                                    :: !Int}
+                                       deriving (Eq, Read, Show, Data, Typeable,
+                                                 Generic)
 
 -- | Creates a value of 'CreateCustomerGatewayResponse' with the minimum fields required to make a request.
 --
@@ -179,10 +175,10 @@ data CreateCustomerGatewayResponse =
 createCustomerGatewayResponse
     :: Int -- ^ 'ccgrsResponseStatus'
     -> CreateCustomerGatewayResponse
-createCustomerGatewayResponse pResponseStatus_ =
-  CreateCustomerGatewayResponse'
-    {_ccgrsCustomerGateway = Nothing, _ccgrsResponseStatus = pResponseStatus_}
-
+createCustomerGatewayResponse pResponseStatus_
+  = CreateCustomerGatewayResponse'{_ccgrsCustomerGateway
+                                     = Nothing,
+                                   _ccgrsResponseStatus = pResponseStatus_}
 
 -- | Information about the customer gateway.
 ccgrsCustomerGateway :: Lens' CreateCustomerGatewayResponse (Maybe CustomerGateway)

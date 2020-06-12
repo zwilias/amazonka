@@ -46,7 +46,6 @@ module Network.AWS.Lambda.ListAliases
     ) where
 
 import Network.AWS.Lambda.Types
-import Network.AWS.Lambda.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Pager
 import Network.AWS.Prelude
@@ -54,15 +53,12 @@ import Network.AWS.Request
 import Network.AWS.Response
 
 -- | /See:/ 'listAliases' smart constructor.
-data ListAliases =
-  ListAliases'
-    { _laMarker          :: !(Maybe Text)
-    , _laMaxItems        :: !(Maybe Nat)
-    , _laFunctionVersion :: !(Maybe Text)
-    , _laFunctionName    :: !Text
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data ListAliases = ListAliases'{_laMarker ::
+                                !(Maybe Text),
+                                _laMaxItems :: !(Maybe Nat),
+                                _laFunctionVersion :: !(Maybe Text),
+                                _laFunctionName :: !Text}
+                     deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'ListAliases' with the minimum fields required to make a request.
 --
@@ -78,14 +74,10 @@ data ListAliases =
 listAliases
     :: Text -- ^ 'laFunctionName'
     -> ListAliases
-listAliases pFunctionName_ =
-  ListAliases'
-    { _laMarker = Nothing
-    , _laMaxItems = Nothing
-    , _laFunctionVersion = Nothing
-    , _laFunctionName = pFunctionName_
-    }
-
+listAliases pFunctionName_
+  = ListAliases'{_laMarker = Nothing,
+                 _laMaxItems = Nothing, _laFunctionVersion = Nothing,
+                 _laFunctionName = pFunctionName_}
 
 -- | Optional string. An opaque pagination token returned from a previous @ListAliases@ operation. If present, indicates where to continue the listing.
 laMarker :: Lens' ListAliases (Maybe Text)
@@ -140,14 +132,13 @@ instance ToQuery ListAliases where
                "FunctionVersion" =: _laFunctionVersion]
 
 -- | /See:/ 'listAliasesResponse' smart constructor.
-data ListAliasesResponse =
-  ListAliasesResponse'
-    { _larsAliases        :: !(Maybe [AliasConfiguration])
-    , _larsNextMarker     :: !(Maybe Text)
-    , _larsResponseStatus :: !Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data ListAliasesResponse = ListAliasesResponse'{_larsAliases
+                                                ::
+                                                !(Maybe [AliasConfiguration]),
+                                                _larsNextMarker ::
+                                                !(Maybe Text),
+                                                _larsResponseStatus :: !Int}
+                             deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'ListAliasesResponse' with the minimum fields required to make a request.
 --
@@ -161,13 +152,10 @@ data ListAliasesResponse =
 listAliasesResponse
     :: Int -- ^ 'larsResponseStatus'
     -> ListAliasesResponse
-listAliasesResponse pResponseStatus_ =
-  ListAliasesResponse'
-    { _larsAliases = Nothing
-    , _larsNextMarker = Nothing
-    , _larsResponseStatus = pResponseStatus_
-    }
-
+listAliasesResponse pResponseStatus_
+  = ListAliasesResponse'{_larsAliases = Nothing,
+                         _larsNextMarker = Nothing,
+                         _larsResponseStatus = pResponseStatus_}
 
 -- | A list of aliases.
 larsAliases :: Lens' ListAliasesResponse [AliasConfiguration]

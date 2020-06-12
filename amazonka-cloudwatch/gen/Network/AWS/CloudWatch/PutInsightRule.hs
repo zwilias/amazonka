@@ -42,22 +42,18 @@ module Network.AWS.CloudWatch.PutInsightRule
     ) where
 
 import Network.AWS.CloudWatch.Types
-import Network.AWS.CloudWatch.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 
 -- | /See:/ 'putInsightRule' smart constructor.
-data PutInsightRule =
-  PutInsightRule'
-    { _pirTags           :: !(Maybe [Tag])
-    , _pirRuleState      :: !(Maybe Text)
-    , _pirRuleName       :: !Text
-    , _pirRuleDefinition :: !Text
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data PutInsightRule = PutInsightRule'{_pirTags ::
+                                      !(Maybe [Tag]),
+                                      _pirRuleState :: !(Maybe Text),
+                                      _pirRuleName :: !Text,
+                                      _pirRuleDefinition :: !Text}
+                        deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'PutInsightRule' with the minimum fields required to make a request.
 --
@@ -74,14 +70,10 @@ putInsightRule
     :: Text -- ^ 'pirRuleName'
     -> Text -- ^ 'pirRuleDefinition'
     -> PutInsightRule
-putInsightRule pRuleName_ pRuleDefinition_ =
-  PutInsightRule'
-    { _pirTags = Nothing
-    , _pirRuleState = Nothing
-    , _pirRuleName = pRuleName_
-    , _pirRuleDefinition = pRuleDefinition_
-    }
-
+putInsightRule pRuleName_ pRuleDefinition_
+  = PutInsightRule'{_pirTags = Nothing,
+                    _pirRuleState = Nothing, _pirRuleName = pRuleName_,
+                    _pirRuleDefinition = pRuleDefinition_}
 
 -- | A list of key-value pairs to associate with the Contributor Insights rule. You can associate as many as 50 tags with a rule. Tags can help you organize and categorize your resources. You can also use them to scope user permissions, by granting a user permission to access or change only the resources that have certain tag values. To be able to associate tags with a rule, you must have the @cloudwatch:TagResource@ permission in addition to the @cloudwatch:PutInsightRule@ permission. If you are using this operation to update an existing Contributor Insights rule, any tags you specify in this parameter are ignored. To change the tags of an existing rule, use <https://docs.aws.amazon.com/AmazonCloudWatch/latest/APIReference/API_TagResource.html TagResource> .
 pirTags :: Lens' PutInsightRule [Tag]
@@ -129,12 +121,10 @@ instance ToQuery PutInsightRule where
                "RuleDefinition" =: _pirRuleDefinition]
 
 -- | /See:/ 'putInsightRuleResponse' smart constructor.
-newtype PutInsightRuleResponse =
-  PutInsightRuleResponse'
-    { _pirrsResponseStatus :: Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+newtype PutInsightRuleResponse = PutInsightRuleResponse'{_pirrsResponseStatus
+                                                         :: Int}
+                                   deriving (Eq, Read, Show, Data, Typeable,
+                                             Generic)
 
 -- | Creates a value of 'PutInsightRuleResponse' with the minimum fields required to make a request.
 --
@@ -144,9 +134,9 @@ newtype PutInsightRuleResponse =
 putInsightRuleResponse
     :: Int -- ^ 'pirrsResponseStatus'
     -> PutInsightRuleResponse
-putInsightRuleResponse pResponseStatus_ =
-  PutInsightRuleResponse' {_pirrsResponseStatus = pResponseStatus_}
-
+putInsightRuleResponse pResponseStatus_
+  = PutInsightRuleResponse'{_pirrsResponseStatus =
+                              pResponseStatus_}
 
 -- | -- | The response status code.
 pirrsResponseStatus :: Lens' PutInsightRuleResponse Int

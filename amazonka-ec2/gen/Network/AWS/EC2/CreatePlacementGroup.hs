@@ -18,7 +18,7 @@
 -- Stability   : auto-generated
 -- Portability : non-portable (GHC extensions)
 --
--- Creates a placement group in which to launch instances. The strategy of the placement group determines how the instances are organized within the group.
+-- Creates a placement group in which to launch instances. The strategy of the placement group determines how the instances are organized within the group. 
 --
 --
 -- A @cluster@ placement group is a logical grouping of instances within a single Availability Zone that benefit from low network latency, high network throughput. A @spread@ placement group places instances on distinct hardware. A @partition@ placement group places groups of instances in different partitions, where instances in one partition do not share the same hardware with instances in another partition.
@@ -46,23 +46,22 @@ module Network.AWS.EC2.CreatePlacementGroup
     ) where
 
 import Network.AWS.EC2.Types
-import Network.AWS.EC2.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 
 -- | /See:/ 'createPlacementGroup' smart constructor.
-data CreatePlacementGroup =
-  CreatePlacementGroup'
-    { _cpgStrategy          :: !(Maybe PlacementStrategy)
-    , _cpgTagSpecifications :: !(Maybe [TagSpecification])
-    , _cpgGroupName         :: !(Maybe Text)
-    , _cpgDryRun            :: !(Maybe Bool)
-    , _cpgPartitionCount    :: !(Maybe Int)
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data CreatePlacementGroup = CreatePlacementGroup'{_cpgStrategy
+                                                  :: !(Maybe PlacementStrategy),
+                                                  _cpgTagSpecifications ::
+                                                  !(Maybe [TagSpecification]),
+                                                  _cpgGroupName ::
+                                                  !(Maybe Text),
+                                                  _cpgDryRun :: !(Maybe Bool),
+                                                  _cpgPartitionCount ::
+                                                  !(Maybe Int)}
+                              deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'CreatePlacementGroup' with the minimum fields required to make a request.
 --
@@ -79,15 +78,11 @@ data CreatePlacementGroup =
 -- * 'cpgPartitionCount' - The number of partitions. Valid only when __Strategy__ is set to @partition@ .
 createPlacementGroup
     :: CreatePlacementGroup
-createPlacementGroup =
-  CreatePlacementGroup'
-    { _cpgStrategy = Nothing
-    , _cpgTagSpecifications = Nothing
-    , _cpgGroupName = Nothing
-    , _cpgDryRun = Nothing
-    , _cpgPartitionCount = Nothing
-    }
-
+createPlacementGroup
+  = CreatePlacementGroup'{_cpgStrategy = Nothing,
+                          _cpgTagSpecifications = Nothing,
+                          _cpgGroupName = Nothing, _cpgDryRun = Nothing,
+                          _cpgPartitionCount = Nothing}
 
 -- | The placement strategy.
 cpgStrategy :: Lens' CreatePlacementGroup (Maybe PlacementStrategy)
@@ -142,13 +137,14 @@ instance ToQuery CreatePlacementGroup where
                "PartitionCount" =: _cpgPartitionCount]
 
 -- | /See:/ 'createPlacementGroupResponse' smart constructor.
-data CreatePlacementGroupResponse =
-  CreatePlacementGroupResponse'
-    { _cpgrsPlacementGroup :: !(Maybe PlacementGroup)
-    , _cpgrsResponseStatus :: !Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data CreatePlacementGroupResponse = CreatePlacementGroupResponse'{_cpgrsPlacementGroup
+                                                                  ::
+                                                                  !(Maybe
+                                                                      PlacementGroup),
+                                                                  _cpgrsResponseStatus
+                                                                  :: !Int}
+                                      deriving (Eq, Read, Show, Data, Typeable,
+                                                Generic)
 
 -- | Creates a value of 'CreatePlacementGroupResponse' with the minimum fields required to make a request.
 --
@@ -160,10 +156,10 @@ data CreatePlacementGroupResponse =
 createPlacementGroupResponse
     :: Int -- ^ 'cpgrsResponseStatus'
     -> CreatePlacementGroupResponse
-createPlacementGroupResponse pResponseStatus_ =
-  CreatePlacementGroupResponse'
-    {_cpgrsPlacementGroup = Nothing, _cpgrsResponseStatus = pResponseStatus_}
-
+createPlacementGroupResponse pResponseStatus_
+  = CreatePlacementGroupResponse'{_cpgrsPlacementGroup
+                                    = Nothing,
+                                  _cpgrsResponseStatus = pResponseStatus_}
 
 -- | Undocumented member.
 cpgrsPlacementGroup :: Lens' CreatePlacementGroupResponse (Maybe PlacementGroup)

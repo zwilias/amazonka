@@ -23,7 +23,7 @@
 --
 -- A task is considered open from the time that it is scheduled until it is closed. Therefore a task is reported as open while a worker is processing it. A task is closed after it has been specified in a call to 'RespondActivityTaskCompleted' , 'RespondActivityTaskCanceled' , RespondActivityTaskFailed, or the task has <http://docs.aws.amazon.com/amazonswf/latest/developerguide/swf-dg-basic.html#swf-dev-timeout-types timed out> .
 --
--- __Access Control__
+-- __Access Control__ 
 --
 -- You can use IAM policies to control this action's access to Amazon SWF resources as follows:
 --
@@ -57,17 +57,16 @@ import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 import Network.AWS.SWF.Types
-import Network.AWS.SWF.Types.Product
 
 -- | /See:/ 'respondActivityTaskFailed' smart constructor.
-data RespondActivityTaskFailed =
-  RespondActivityTaskFailed'
-    { _ratfReason    :: !(Maybe Text)
-    , _ratfDetails   :: !(Maybe Text)
-    , _ratfTaskToken :: !Text
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data RespondActivityTaskFailed = RespondActivityTaskFailed'{_ratfReason
+                                                            :: !(Maybe Text),
+                                                            _ratfDetails ::
+                                                            !(Maybe Text),
+                                                            _ratfTaskToken ::
+                                                            !Text}
+                                   deriving (Eq, Read, Show, Data, Typeable,
+                                             Generic)
 
 -- | Creates a value of 'RespondActivityTaskFailed' with the minimum fields required to make a request.
 --
@@ -81,13 +80,10 @@ data RespondActivityTaskFailed =
 respondActivityTaskFailed
     :: Text -- ^ 'ratfTaskToken'
     -> RespondActivityTaskFailed
-respondActivityTaskFailed pTaskToken_ =
-  RespondActivityTaskFailed'
-    { _ratfReason = Nothing
-    , _ratfDetails = Nothing
-    , _ratfTaskToken = pTaskToken_
-    }
-
+respondActivityTaskFailed pTaskToken_
+  = RespondActivityTaskFailed'{_ratfReason = Nothing,
+                               _ratfDetails = Nothing,
+                               _ratfTaskToken = pTaskToken_}
 
 -- | Description of the error that may assist in diagnostics.
 ratfReason :: Lens' RespondActivityTaskFailed (Maybe Text)
@@ -137,17 +133,16 @@ instance ToQuery RespondActivityTaskFailed where
         toQuery = const mempty
 
 -- | /See:/ 'respondActivityTaskFailedResponse' smart constructor.
-data RespondActivityTaskFailedResponse =
-  RespondActivityTaskFailedResponse'
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data RespondActivityTaskFailedResponse = RespondActivityTaskFailedResponse'
+                                           deriving (Eq, Read, Show, Data,
+                                                     Typeable, Generic)
 
 -- | Creates a value of 'RespondActivityTaskFailedResponse' with the minimum fields required to make a request.
 --
 respondActivityTaskFailedResponse
     :: RespondActivityTaskFailedResponse
-respondActivityTaskFailedResponse = RespondActivityTaskFailedResponse'
-
+respondActivityTaskFailedResponse
+  = RespondActivityTaskFailedResponse'
 
 instance NFData RespondActivityTaskFailedResponse
          where

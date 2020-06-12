@@ -45,22 +45,18 @@ module Network.AWS.EC2.AttachClassicLinkVPC
     ) where
 
 import Network.AWS.EC2.Types
-import Network.AWS.EC2.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 
 -- | /See:/ 'attachClassicLinkVPC' smart constructor.
-data AttachClassicLinkVPC =
-  AttachClassicLinkVPC'
-    { _aclvDryRun     :: !(Maybe Bool)
-    , _aclvGroups     :: ![Text]
-    , _aclvInstanceId :: !Text
-    , _aclvVPCId      :: !Text
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data AttachClassicLinkVPC = AttachClassicLinkVPC'{_aclvDryRun
+                                                  :: !(Maybe Bool),
+                                                  _aclvGroups :: ![Text],
+                                                  _aclvInstanceId :: !Text,
+                                                  _aclvVPCId :: !Text}
+                              deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'AttachClassicLinkVPC' with the minimum fields required to make a request.
 --
@@ -77,14 +73,10 @@ attachClassicLinkVPC
     :: Text -- ^ 'aclvInstanceId'
     -> Text -- ^ 'aclvVPCId'
     -> AttachClassicLinkVPC
-attachClassicLinkVPC pInstanceId_ pVPCId_ =
-  AttachClassicLinkVPC'
-    { _aclvDryRun = Nothing
-    , _aclvGroups = mempty
-    , _aclvInstanceId = pInstanceId_
-    , _aclvVPCId = pVPCId_
-    }
-
+attachClassicLinkVPC pInstanceId_ pVPCId_
+  = AttachClassicLinkVPC'{_aclvDryRun = Nothing,
+                          _aclvGroups = mempty, _aclvInstanceId = pInstanceId_,
+                          _aclvVPCId = pVPCId_}
 
 -- | Checks whether you have the required permissions for the action, without actually making the request, and provides an error response. If you have the required permissions, the error response is @DryRunOperation@ . Otherwise, it is @UnauthorizedOperation@ .
 aclvDryRun :: Lens' AttachClassicLinkVPC (Maybe Bool)
@@ -133,13 +125,13 @@ instance ToQuery AttachClassicLinkVPC where
                "VpcId" =: _aclvVPCId]
 
 -- | /See:/ 'attachClassicLinkVPCResponse' smart constructor.
-data AttachClassicLinkVPCResponse =
-  AttachClassicLinkVPCResponse'
-    { _aclvrsReturn         :: !(Maybe Bool)
-    , _aclvrsResponseStatus :: !Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data AttachClassicLinkVPCResponse = AttachClassicLinkVPCResponse'{_aclvrsReturn
+                                                                  ::
+                                                                  !(Maybe Bool),
+                                                                  _aclvrsResponseStatus
+                                                                  :: !Int}
+                                      deriving (Eq, Read, Show, Data, Typeable,
+                                                Generic)
 
 -- | Creates a value of 'AttachClassicLinkVPCResponse' with the minimum fields required to make a request.
 --
@@ -151,10 +143,10 @@ data AttachClassicLinkVPCResponse =
 attachClassicLinkVPCResponse
     :: Int -- ^ 'aclvrsResponseStatus'
     -> AttachClassicLinkVPCResponse
-attachClassicLinkVPCResponse pResponseStatus_ =
-  AttachClassicLinkVPCResponse'
-    {_aclvrsReturn = Nothing, _aclvrsResponseStatus = pResponseStatus_}
-
+attachClassicLinkVPCResponse pResponseStatus_
+  = AttachClassicLinkVPCResponse'{_aclvrsReturn =
+                                    Nothing,
+                                  _aclvrsResponseStatus = pResponseStatus_}
 
 -- | Returns @true@ if the request succeeds; otherwise, it returns an error.
 aclvrsReturn :: Lens' AttachClassicLinkVPCResponse (Maybe Bool)

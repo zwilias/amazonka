@@ -39,19 +39,15 @@ module Network.AWS.CodeBuild.BatchGetProjects
     ) where
 
 import Network.AWS.CodeBuild.Types
-import Network.AWS.CodeBuild.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 
 -- | /See:/ 'batchGetProjects' smart constructor.
-newtype BatchGetProjects =
-  BatchGetProjects'
-    { _bgpNames :: List1 Text
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+newtype BatchGetProjects = BatchGetProjects'{_bgpNames
+                                             :: List1 Text}
+                             deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'BatchGetProjects' with the minimum fields required to make a request.
 --
@@ -61,8 +57,8 @@ newtype BatchGetProjects =
 batchGetProjects
     :: NonEmpty Text -- ^ 'bgpNames'
     -> BatchGetProjects
-batchGetProjects pNames_ = BatchGetProjects' {_bgpNames = _List1 # pNames_}
-
+batchGetProjects pNames_
+  = BatchGetProjects'{_bgpNames = _List1 # pNames_}
 
 -- | The names or ARNs of the build projects. To get information about a project shared with your AWS account, its ARN must be specified. You cannot specify a shared project using its name.
 bgpNames :: Lens' BatchGetProjects (NonEmpty Text)
@@ -104,14 +100,15 @@ instance ToQuery BatchGetProjects where
         toQuery = const mempty
 
 -- | /See:/ 'batchGetProjectsResponse' smart constructor.
-data BatchGetProjectsResponse =
-  BatchGetProjectsResponse'
-    { _bgprsProjectsNotFound :: !(Maybe (List1 Text))
-    , _bgprsProjects         :: !(Maybe [Project])
-    , _bgprsResponseStatus   :: !Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data BatchGetProjectsResponse = BatchGetProjectsResponse'{_bgprsProjectsNotFound
+                                                          ::
+                                                          !(Maybe (List1 Text)),
+                                                          _bgprsProjects ::
+                                                          !(Maybe [Project]),
+                                                          _bgprsResponseStatus
+                                                          :: !Int}
+                                  deriving (Eq, Read, Show, Data, Typeable,
+                                            Generic)
 
 -- | Creates a value of 'BatchGetProjectsResponse' with the minimum fields required to make a request.
 --
@@ -125,13 +122,11 @@ data BatchGetProjectsResponse =
 batchGetProjectsResponse
     :: Int -- ^ 'bgprsResponseStatus'
     -> BatchGetProjectsResponse
-batchGetProjectsResponse pResponseStatus_ =
-  BatchGetProjectsResponse'
-    { _bgprsProjectsNotFound = Nothing
-    , _bgprsProjects = Nothing
-    , _bgprsResponseStatus = pResponseStatus_
-    }
-
+batchGetProjectsResponse pResponseStatus_
+  = BatchGetProjectsResponse'{_bgprsProjectsNotFound =
+                                Nothing,
+                              _bgprsProjects = Nothing,
+                              _bgprsResponseStatus = pResponseStatus_}
 
 -- | The names of build projects for which information could not be found.
 bgprsProjectsNotFound :: Lens' BatchGetProjectsResponse (Maybe (NonEmpty Text))

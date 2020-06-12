@@ -25,7 +25,7 @@
 --
 -- /Important:/ If the type already exists, then a @TypeAlreadyExists@ fault is returned. You cannot change the configuration settings of a workflow type once it is registered and it must be registered as a new version.
 --
--- __Access Control__
+-- __Access Control__ 
 --
 -- You can use IAM policies to control this action's access to Amazon SWF resources as follows:
 --
@@ -74,24 +74,26 @@ import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 import Network.AWS.SWF.Types
-import Network.AWS.SWF.Types.Product
 
 -- | /See:/ 'registerWorkflowType' smart constructor.
-data RegisterWorkflowType =
-  RegisterWorkflowType'
-    { _rwtDefaultLambdaRole                   :: !(Maybe Text)
-    , _rwtDefaultChildPolicy                  :: !(Maybe ChildPolicy)
-    , _rwtDefaultTaskList                     :: !(Maybe TaskList)
-    , _rwtDefaultTaskPriority                 :: !(Maybe Text)
-    , _rwtDefaultExecutionStartToCloseTimeout :: !(Maybe Text)
-    , _rwtDefaultTaskStartToCloseTimeout      :: !(Maybe Text)
-    , _rwtDescription                         :: !(Maybe Text)
-    , _rwtDomain                              :: !Text
-    , _rwtName                                :: !Text
-    , _rwtVersion                             :: !Text
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data RegisterWorkflowType = RegisterWorkflowType'{_rwtDefaultLambdaRole
+                                                  :: !(Maybe Text),
+                                                  _rwtDefaultChildPolicy ::
+                                                  !(Maybe ChildPolicy),
+                                                  _rwtDefaultTaskList ::
+                                                  !(Maybe TaskList),
+                                                  _rwtDefaultTaskPriority ::
+                                                  !(Maybe Text),
+                                                  _rwtDefaultExecutionStartToCloseTimeout
+                                                  :: !(Maybe Text),
+                                                  _rwtDefaultTaskStartToCloseTimeout
+                                                  :: !(Maybe Text),
+                                                  _rwtDescription ::
+                                                  !(Maybe Text),
+                                                  _rwtDomain :: !Text,
+                                                  _rwtName :: !Text,
+                                                  _rwtVersion :: !Text}
+                              deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'RegisterWorkflowType' with the minimum fields required to make a request.
 --
@@ -121,20 +123,16 @@ registerWorkflowType
     -> Text -- ^ 'rwtName'
     -> Text -- ^ 'rwtVersion'
     -> RegisterWorkflowType
-registerWorkflowType pDomain_ pName_ pVersion_ =
-  RegisterWorkflowType'
-    { _rwtDefaultLambdaRole = Nothing
-    , _rwtDefaultChildPolicy = Nothing
-    , _rwtDefaultTaskList = Nothing
-    , _rwtDefaultTaskPriority = Nothing
-    , _rwtDefaultExecutionStartToCloseTimeout = Nothing
-    , _rwtDefaultTaskStartToCloseTimeout = Nothing
-    , _rwtDescription = Nothing
-    , _rwtDomain = pDomain_
-    , _rwtName = pName_
-    , _rwtVersion = pVersion_
-    }
-
+registerWorkflowType pDomain_ pName_ pVersion_
+  = RegisterWorkflowType'{_rwtDefaultLambdaRole =
+                            Nothing,
+                          _rwtDefaultChildPolicy = Nothing,
+                          _rwtDefaultTaskList = Nothing,
+                          _rwtDefaultTaskPriority = Nothing,
+                          _rwtDefaultExecutionStartToCloseTimeout = Nothing,
+                          _rwtDefaultTaskStartToCloseTimeout = Nothing,
+                          _rwtDescription = Nothing, _rwtDomain = pDomain_,
+                          _rwtName = pName_, _rwtVersion = pVersion_}
 
 -- | The default IAM role attached to this workflow type.
 rwtDefaultLambdaRole :: Lens' RegisterWorkflowType (Maybe Text)
@@ -221,16 +219,15 @@ instance ToQuery RegisterWorkflowType where
         toQuery = const mempty
 
 -- | /See:/ 'registerWorkflowTypeResponse' smart constructor.
-data RegisterWorkflowTypeResponse =
-  RegisterWorkflowTypeResponse'
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data RegisterWorkflowTypeResponse = RegisterWorkflowTypeResponse'
+                                      deriving (Eq, Read, Show, Data, Typeable,
+                                                Generic)
 
 -- | Creates a value of 'RegisterWorkflowTypeResponse' with the minimum fields required to make a request.
 --
 registerWorkflowTypeResponse
     :: RegisterWorkflowTypeResponse
-registerWorkflowTypeResponse = RegisterWorkflowTypeResponse'
-
+registerWorkflowTypeResponse
+  = RegisterWorkflowTypeResponse'
 
 instance NFData RegisterWorkflowTypeResponse where

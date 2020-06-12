@@ -18,7 +18,7 @@
 -- Stability   : auto-generated
 -- Portability : non-portable (GHC extensions)
 --
--- Configures and starts the asynchronous process of rotating this secret. If you include the configuration parameters, the operation sets those values for the secret and then immediately starts a rotation. If you do not include the configuration parameters, the operation starts a rotation with the values already stored in the secret. After the rotation completes, the protected service and its clients all use the new version of the secret.
+-- Configures and starts the asynchronous process of rotating this secret. If you include the configuration parameters, the operation sets those values for the secret and then immediately starts a rotation. If you do not include the configuration parameters, the operation starts a rotation with the values already stored in the secret. After the rotation completes, the protected service and its clients all use the new version of the secret. 
 --
 --
 -- This required configuration information includes the ARN of an AWS Lambda function and the time between scheduled rotations. The Lambda rotation function creates a new version of the secret and creates or updates the credentials on the protected service to match. After testing the new credentials, the function marks the new secret with the staging label @AWSCURRENT@ so that your clients all immediately begin to use the new version. For more information about rotating secrets and how to configure a Lambda function to rotate the secrets for your protected service, see <http://docs.aws.amazon.com/secretsmanager/latest/userguide/rotating-secrets.html Rotating Secrets in AWS Secrets Manager> in the /AWS Secrets Manager User Guide/ .
@@ -33,7 +33,7 @@
 --
 -- If instead the @AWSPENDING@ staging label is present but is not attached to the same version as @AWSCURRENT@ then any later invocation of @RotateSecret@ assumes that a previous rotation request is still in progress and returns an error.
 --
--- __Minimum permissions__
+-- __Minimum permissions__ 
 --
 -- To run this command, you must have the following permissions:
 --
@@ -43,7 +43,7 @@
 --
 --
 --
--- __Related operations__
+-- __Related operations__ 
 --
 --     * To list the secrets in your account, use 'ListSecrets' .
 --
@@ -81,18 +81,14 @@ import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 import Network.AWS.SecretsManager.Types
-import Network.AWS.SecretsManager.Types.Product
 
 -- | /See:/ 'rotateSecret' smart constructor.
-data RotateSecret =
-  RotateSecret'
-    { _rsRotationRules      :: !(Maybe RotationRulesType)
-    , _rsClientRequestToken :: !(Maybe Text)
-    , _rsRotationLambdaARN  :: !(Maybe Text)
-    , _rsSecretId           :: !Text
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data RotateSecret = RotateSecret'{_rsRotationRules ::
+                                  !(Maybe RotationRulesType),
+                                  _rsClientRequestToken :: !(Maybe Text),
+                                  _rsRotationLambdaARN :: !(Maybe Text),
+                                  _rsSecretId :: !Text}
+                      deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'RotateSecret' with the minimum fields required to make a request.
 --
@@ -108,14 +104,11 @@ data RotateSecret =
 rotateSecret
     :: Text -- ^ 'rsSecretId'
     -> RotateSecret
-rotateSecret pSecretId_ =
-  RotateSecret'
-    { _rsRotationRules = Nothing
-    , _rsClientRequestToken = Nothing
-    , _rsRotationLambdaARN = Nothing
-    , _rsSecretId = pSecretId_
-    }
-
+rotateSecret pSecretId_
+  = RotateSecret'{_rsRotationRules = Nothing,
+                  _rsClientRequestToken = Nothing,
+                  _rsRotationLambdaARN = Nothing,
+                  _rsSecretId = pSecretId_}
 
 -- | A structure that defines the rotation configuration for this secret.
 rsRotationRules :: Lens' RotateSecret (Maybe RotationRulesType)
@@ -173,15 +166,12 @@ instance ToQuery RotateSecret where
         toQuery = const mempty
 
 -- | /See:/ 'rotateSecretResponse' smart constructor.
-data RotateSecretResponse =
-  RotateSecretResponse'
-    { _rsrsVersionId      :: !(Maybe Text)
-    , _rsrsARN            :: !(Maybe Text)
-    , _rsrsName           :: !(Maybe Text)
-    , _rsrsResponseStatus :: !Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data RotateSecretResponse = RotateSecretResponse'{_rsrsVersionId
+                                                  :: !(Maybe Text),
+                                                  _rsrsARN :: !(Maybe Text),
+                                                  _rsrsName :: !(Maybe Text),
+                                                  _rsrsResponseStatus :: !Int}
+                              deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'RotateSecretResponse' with the minimum fields required to make a request.
 --
@@ -197,14 +187,10 @@ data RotateSecretResponse =
 rotateSecretResponse
     :: Int -- ^ 'rsrsResponseStatus'
     -> RotateSecretResponse
-rotateSecretResponse pResponseStatus_ =
-  RotateSecretResponse'
-    { _rsrsVersionId = Nothing
-    , _rsrsARN = Nothing
-    , _rsrsName = Nothing
-    , _rsrsResponseStatus = pResponseStatus_
-    }
-
+rotateSecretResponse pResponseStatus_
+  = RotateSecretResponse'{_rsrsVersionId = Nothing,
+                          _rsrsARN = Nothing, _rsrsName = Nothing,
+                          _rsrsResponseStatus = pResponseStatus_}
 
 -- | The ID of the new version of the secret created by the rotation started by this request.
 rsrsVersionId :: Lens' RotateSecretResponse (Maybe Text)

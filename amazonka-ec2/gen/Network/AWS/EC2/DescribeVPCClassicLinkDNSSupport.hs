@@ -43,7 +43,6 @@ module Network.AWS.EC2.DescribeVPCClassicLinkDNSSupport
     ) where
 
 import Network.AWS.EC2.Types
-import Network.AWS.EC2.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Pager
 import Network.AWS.Prelude
@@ -51,14 +50,20 @@ import Network.AWS.Request
 import Network.AWS.Response
 
 -- | /See:/ 'describeVPCClassicLinkDNSSupport' smart constructor.
-data DescribeVPCClassicLinkDNSSupport =
-  DescribeVPCClassicLinkDNSSupport'
-    { _dvcldsNextToken  :: !(Maybe Text)
-    , _dvcldsVPCIds     :: !(Maybe [Text])
-    , _dvcldsMaxResults :: !(Maybe Nat)
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data DescribeVPCClassicLinkDNSSupport = DescribeVPCClassicLinkDNSSupport'{_dvcldsNextToken
+                                                                          ::
+                                                                          !(Maybe
+                                                                              Text),
+                                                                          _dvcldsVPCIds
+                                                                          ::
+                                                                          !(Maybe
+                                                                              [Text]),
+                                                                          _dvcldsMaxResults
+                                                                          ::
+                                                                          !(Maybe
+                                                                              Nat)}
+                                          deriving (Eq, Read, Show, Data,
+                                                    Typeable, Generic)
 
 -- | Creates a value of 'DescribeVPCClassicLinkDNSSupport' with the minimum fields required to make a request.
 --
@@ -71,13 +76,11 @@ data DescribeVPCClassicLinkDNSSupport =
 -- * 'dvcldsMaxResults' - The maximum number of results to return with a single call. To retrieve the remaining results, make another call with the returned @nextToken@ value.
 describeVPCClassicLinkDNSSupport
     :: DescribeVPCClassicLinkDNSSupport
-describeVPCClassicLinkDNSSupport =
-  DescribeVPCClassicLinkDNSSupport'
-    { _dvcldsNextToken = Nothing
-    , _dvcldsVPCIds = Nothing
-    , _dvcldsMaxResults = Nothing
-    }
-
+describeVPCClassicLinkDNSSupport
+  = DescribeVPCClassicLinkDNSSupport'{_dvcldsNextToken
+                                        = Nothing,
+                                      _dvcldsVPCIds = Nothing,
+                                      _dvcldsMaxResults = Nothing}
 
 -- | The token for the next page of results.
 dvcldsNextToken :: Lens' DescribeVPCClassicLinkDNSSupport (Maybe Text)
@@ -140,14 +143,20 @@ instance ToQuery DescribeVPCClassicLinkDNSSupport
                "MaxResults" =: _dvcldsMaxResults]
 
 -- | /See:/ 'describeVPCClassicLinkDNSSupportResponse' smart constructor.
-data DescribeVPCClassicLinkDNSSupportResponse =
-  DescribeVPCClassicLinkDNSSupportResponse'
-    { _dvpccldnssrsVPCs           :: !(Maybe [ClassicLinkDNSSupport])
-    , _dvpccldnssrsNextToken      :: !(Maybe Text)
-    , _dvpccldnssrsResponseStatus :: !Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data DescribeVPCClassicLinkDNSSupportResponse = DescribeVPCClassicLinkDNSSupportResponse'{_dvpccldnssrsVPCs
+                                                                                          ::
+                                                                                          !(Maybe
+                                                                                              [ClassicLinkDNSSupport]),
+                                                                                          _dvpccldnssrsNextToken
+                                                                                          ::
+                                                                                          !(Maybe
+                                                                                              Text),
+                                                                                          _dvpccldnssrsResponseStatus
+                                                                                          ::
+                                                                                          !Int}
+                                                  deriving (Eq, Read, Show,
+                                                            Data, Typeable,
+                                                            Generic)
 
 -- | Creates a value of 'DescribeVPCClassicLinkDNSSupportResponse' with the minimum fields required to make a request.
 --
@@ -161,13 +170,13 @@ data DescribeVPCClassicLinkDNSSupportResponse =
 describeVPCClassicLinkDNSSupportResponse
     :: Int -- ^ 'dvpccldnssrsResponseStatus'
     -> DescribeVPCClassicLinkDNSSupportResponse
-describeVPCClassicLinkDNSSupportResponse pResponseStatus_ =
-  DescribeVPCClassicLinkDNSSupportResponse'
-    { _dvpccldnssrsVPCs = Nothing
-    , _dvpccldnssrsNextToken = Nothing
-    , _dvpccldnssrsResponseStatus = pResponseStatus_
-    }
-
+describeVPCClassicLinkDNSSupportResponse
+  pResponseStatus_
+  = DescribeVPCClassicLinkDNSSupportResponse'{_dvpccldnssrsVPCs
+                                                = Nothing,
+                                              _dvpccldnssrsNextToken = Nothing,
+                                              _dvpccldnssrsResponseStatus =
+                                                pResponseStatus_}
 
 -- | Information about the ClassicLink DNS support status of the VPCs.
 dvpccldnssrsVPCs :: Lens' DescribeVPCClassicLinkDNSSupportResponse [ClassicLinkDNSSupport]

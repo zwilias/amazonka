@@ -45,17 +45,18 @@ import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 import Network.AWS.SSM.Types
-import Network.AWS.SSM.Types.Product
 
 -- | /See:/ 'describePatchBaselines' smart constructor.
-data DescribePatchBaselines =
-  DescribePatchBaselines'
-    { _dpbFilters    :: !(Maybe [PatchOrchestratorFilter])
-    , _dpbNextToken  :: !(Maybe Text)
-    , _dpbMaxResults :: !(Maybe Nat)
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data DescribePatchBaselines = DescribePatchBaselines'{_dpbFilters
+                                                      ::
+                                                      !(Maybe
+                                                          [PatchOrchestratorFilter]),
+                                                      _dpbNextToken ::
+                                                      !(Maybe Text),
+                                                      _dpbMaxResults ::
+                                                      !(Maybe Nat)}
+                                deriving (Eq, Read, Show, Data, Typeable,
+                                          Generic)
 
 -- | Creates a value of 'DescribePatchBaselines' with the minimum fields required to make a request.
 --
@@ -68,10 +69,9 @@ data DescribePatchBaselines =
 -- * 'dpbMaxResults' - The maximum number of patch baselines to return (per page).
 describePatchBaselines
     :: DescribePatchBaselines
-describePatchBaselines =
-  DescribePatchBaselines'
-    {_dpbFilters = Nothing, _dpbNextToken = Nothing, _dpbMaxResults = Nothing}
-
+describePatchBaselines
+  = DescribePatchBaselines'{_dpbFilters = Nothing,
+                            _dpbNextToken = Nothing, _dpbMaxResults = Nothing}
 
 -- | Each element in the array is a structure containing:  Key: (string, "NAME_PREFIX" or "OWNER") Value: (array of strings, exactly 1 entry, between 1 and 255 characters)
 dpbFilters :: Lens' DescribePatchBaselines [PatchOrchestratorFilter]
@@ -125,14 +125,18 @@ instance ToQuery DescribePatchBaselines where
         toQuery = const mempty
 
 -- | /See:/ 'describePatchBaselinesResponse' smart constructor.
-data DescribePatchBaselinesResponse =
-  DescribePatchBaselinesResponse'
-    { _dpbsrsBaselineIdentities :: !(Maybe [PatchBaselineIdentity])
-    , _dpbsrsNextToken          :: !(Maybe Text)
-    , _dpbsrsResponseStatus     :: !Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data DescribePatchBaselinesResponse = DescribePatchBaselinesResponse'{_dpbsrsBaselineIdentities
+                                                                      ::
+                                                                      !(Maybe
+                                                                          [PatchBaselineIdentity]),
+                                                                      _dpbsrsNextToken
+                                                                      ::
+                                                                      !(Maybe
+                                                                          Text),
+                                                                      _dpbsrsResponseStatus
+                                                                      :: !Int}
+                                        deriving (Eq, Read, Show, Data,
+                                                  Typeable, Generic)
 
 -- | Creates a value of 'DescribePatchBaselinesResponse' with the minimum fields required to make a request.
 --
@@ -146,13 +150,11 @@ data DescribePatchBaselinesResponse =
 describePatchBaselinesResponse
     :: Int -- ^ 'dpbsrsResponseStatus'
     -> DescribePatchBaselinesResponse
-describePatchBaselinesResponse pResponseStatus_ =
-  DescribePatchBaselinesResponse'
-    { _dpbsrsBaselineIdentities = Nothing
-    , _dpbsrsNextToken = Nothing
-    , _dpbsrsResponseStatus = pResponseStatus_
-    }
-
+describePatchBaselinesResponse pResponseStatus_
+  = DescribePatchBaselinesResponse'{_dpbsrsBaselineIdentities
+                                      = Nothing,
+                                    _dpbsrsNextToken = Nothing,
+                                    _dpbsrsResponseStatus = pResponseStatus_}
 
 -- | An array of PatchBaselineIdentity elements.
 dpbsrsBaselineIdentities :: Lens' DescribePatchBaselinesResponse [PatchBaselineIdentity]

@@ -43,15 +43,11 @@ import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 import Network.AWS.SSM.Types
-import Network.AWS.SSM.Types.Product
 
 -- | /See:/ 'deleteDocument' smart constructor.
-newtype DeleteDocument =
-  DeleteDocument'
-    { _dddName :: Text
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+newtype DeleteDocument = DeleteDocument'{_dddName ::
+                                         Text}
+                           deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'DeleteDocument' with the minimum fields required to make a request.
 --
@@ -61,8 +57,8 @@ newtype DeleteDocument =
 deleteDocument
     :: Text -- ^ 'dddName'
     -> DeleteDocument
-deleteDocument pName_ = DeleteDocument' {_dddName = pName_}
-
+deleteDocument pName_
+  = DeleteDocument'{_dddName = pName_}
 
 -- | The name of the document.
 dddName :: Lens' DeleteDocument Text
@@ -100,12 +96,10 @@ instance ToQuery DeleteDocument where
         toQuery = const mempty
 
 -- | /See:/ 'deleteDocumentResponse' smart constructor.
-newtype DeleteDocumentResponse =
-  DeleteDocumentResponse'
-    { _ddrsResponseStatus :: Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+newtype DeleteDocumentResponse = DeleteDocumentResponse'{_ddrsResponseStatus
+                                                         :: Int}
+                                   deriving (Eq, Read, Show, Data, Typeable,
+                                             Generic)
 
 -- | Creates a value of 'DeleteDocumentResponse' with the minimum fields required to make a request.
 --
@@ -115,9 +109,9 @@ newtype DeleteDocumentResponse =
 deleteDocumentResponse
     :: Int -- ^ 'ddrsResponseStatus'
     -> DeleteDocumentResponse
-deleteDocumentResponse pResponseStatus_ =
-  DeleteDocumentResponse' {_ddrsResponseStatus = pResponseStatus_}
-
+deleteDocumentResponse pResponseStatus_
+  = DeleteDocumentResponse'{_ddrsResponseStatus =
+                              pResponseStatus_}
 
 -- | -- | The response status code.
 ddrsResponseStatus :: Lens' DeleteDocumentResponse Int

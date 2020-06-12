@@ -38,19 +38,15 @@ module Network.AWS.IoT.GetJobDocument
     ) where
 
 import Network.AWS.IoT.Types
-import Network.AWS.IoT.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 
 -- | /See:/ 'getJobDocument' smart constructor.
-newtype GetJobDocument =
-  GetJobDocument'
-    { _gjdJobId :: Text
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+newtype GetJobDocument = GetJobDocument'{_gjdJobId ::
+                                         Text}
+                           deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'GetJobDocument' with the minimum fields required to make a request.
 --
@@ -60,8 +56,8 @@ newtype GetJobDocument =
 getJobDocument
     :: Text -- ^ 'gjdJobId'
     -> GetJobDocument
-getJobDocument pJobId_ = GetJobDocument' {_gjdJobId = pJobId_}
-
+getJobDocument pJobId_
+  = GetJobDocument'{_gjdJobId = pJobId_}
 
 -- | The unique identifier you assigned to this job when it was created.
 gjdJobId :: Lens' GetJobDocument Text
@@ -91,13 +87,12 @@ instance ToQuery GetJobDocument where
         toQuery = const mempty
 
 -- | /See:/ 'getJobDocumentResponse' smart constructor.
-data GetJobDocumentResponse =
-  GetJobDocumentResponse'
-    { _gjdrsDocument       :: !(Maybe Text)
-    , _gjdrsResponseStatus :: !Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data GetJobDocumentResponse = GetJobDocumentResponse'{_gjdrsDocument
+                                                      :: !(Maybe Text),
+                                                      _gjdrsResponseStatus ::
+                                                      !Int}
+                                deriving (Eq, Read, Show, Data, Typeable,
+                                          Generic)
 
 -- | Creates a value of 'GetJobDocumentResponse' with the minimum fields required to make a request.
 --
@@ -109,10 +104,9 @@ data GetJobDocumentResponse =
 getJobDocumentResponse
     :: Int -- ^ 'gjdrsResponseStatus'
     -> GetJobDocumentResponse
-getJobDocumentResponse pResponseStatus_ =
-  GetJobDocumentResponse'
-    {_gjdrsDocument = Nothing, _gjdrsResponseStatus = pResponseStatus_}
-
+getJobDocumentResponse pResponseStatus_
+  = GetJobDocumentResponse'{_gjdrsDocument = Nothing,
+                            _gjdrsResponseStatus = pResponseStatus_}
 
 -- | The job document content.
 gjdrsDocument :: Lens' GetJobDocumentResponse (Maybe Text)

@@ -35,7 +35,6 @@ module Network.AWS.IoT.EnableTopicRule
     ) where
 
 import Network.AWS.IoT.Types
-import Network.AWS.IoT.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.Request
@@ -46,12 +45,9 @@ import Network.AWS.Response
 --
 --
 -- /See:/ 'enableTopicRule' smart constructor.
-newtype EnableTopicRule =
-  EnableTopicRule'
-    { _etrRuleName :: Text
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+newtype EnableTopicRule = EnableTopicRule'{_etrRuleName
+                                           :: Text}
+                            deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'EnableTopicRule' with the minimum fields required to make a request.
 --
@@ -61,8 +57,8 @@ newtype EnableTopicRule =
 enableTopicRule
     :: Text -- ^ 'etrRuleName'
     -> EnableTopicRule
-enableTopicRule pRuleName_ = EnableTopicRule' {_etrRuleName = pRuleName_}
-
+enableTopicRule pRuleName_
+  = EnableTopicRule'{_etrRuleName = pRuleName_}
 
 -- | The name of the topic rule to enable.
 etrRuleName :: Lens' EnableTopicRule Text
@@ -91,16 +87,14 @@ instance ToQuery EnableTopicRule where
         toQuery = const mempty
 
 -- | /See:/ 'enableTopicRuleResponse' smart constructor.
-data EnableTopicRuleResponse =
-  EnableTopicRuleResponse'
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data EnableTopicRuleResponse = EnableTopicRuleResponse'
+                                 deriving (Eq, Read, Show, Data, Typeable,
+                                           Generic)
 
 -- | Creates a value of 'EnableTopicRuleResponse' with the minimum fields required to make a request.
 --
 enableTopicRuleResponse
     :: EnableTopicRuleResponse
 enableTopicRuleResponse = EnableTopicRuleResponse'
-
 
 instance NFData EnableTopicRuleResponse where

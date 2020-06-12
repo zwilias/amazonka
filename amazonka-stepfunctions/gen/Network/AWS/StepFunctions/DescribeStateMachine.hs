@@ -47,15 +47,12 @@ import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 import Network.AWS.StepFunctions.Types
-import Network.AWS.StepFunctions.Types.Product
 
 -- | /See:/ 'describeStateMachine' smart constructor.
-newtype DescribeStateMachine =
-  DescribeStateMachine'
-    { _dsmStateMachineARN :: Text
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+newtype DescribeStateMachine = DescribeStateMachine'{_dsmStateMachineARN
+                                                     :: Text}
+                                 deriving (Eq, Read, Show, Data, Typeable,
+                                           Generic)
 
 -- | Creates a value of 'DescribeStateMachine' with the minimum fields required to make a request.
 --
@@ -65,9 +62,9 @@ newtype DescribeStateMachine =
 describeStateMachine
     :: Text -- ^ 'dsmStateMachineARN'
     -> DescribeStateMachine
-describeStateMachine pStateMachineARN_ =
-  DescribeStateMachine' {_dsmStateMachineARN = pStateMachineARN_}
-
+describeStateMachine pStateMachineARN_
+  = DescribeStateMachine'{_dsmStateMachineARN =
+                            pStateMachineARN_}
 
 -- | The Amazon Resource Name (ARN) of the state machine to describe.
 dsmStateMachineARN :: Lens' DescribeStateMachine Text
@@ -115,18 +112,24 @@ instance ToQuery DescribeStateMachine where
         toQuery = const mempty
 
 -- | /See:/ 'describeStateMachineResponse' smart constructor.
-data DescribeStateMachineResponse =
-  DescribeStateMachineResponse'
-    { _dsmrsStatus          :: !(Maybe StateMachineStatus)
-    , _dsmrsResponseStatus  :: !Int
-    , _dsmrsStateMachineARN :: !Text
-    , _dsmrsName            :: !Text
-    , _dsmrsDefinition      :: !Text
-    , _dsmrsRoleARN         :: !Text
-    , _dsmrsCreationDate    :: !POSIX
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data DescribeStateMachineResponse = DescribeStateMachineResponse'{_dsmrsStatus
+                                                                  ::
+                                                                  !(Maybe
+                                                                      StateMachineStatus),
+                                                                  _dsmrsResponseStatus
+                                                                  :: !Int,
+                                                                  _dsmrsStateMachineARN
+                                                                  :: !Text,
+                                                                  _dsmrsName ::
+                                                                  !Text,
+                                                                  _dsmrsDefinition
+                                                                  :: !Text,
+                                                                  _dsmrsRoleARN
+                                                                  :: !Text,
+                                                                  _dsmrsCreationDate
+                                                                  :: !POSIX}
+                                      deriving (Eq, Read, Show, Data, Typeable,
+                                                Generic)
 
 -- | Creates a value of 'DescribeStateMachineResponse' with the minimum fields required to make a request.
 --
@@ -153,17 +156,17 @@ describeStateMachineResponse
     -> Text -- ^ 'dsmrsRoleARN'
     -> UTCTime -- ^ 'dsmrsCreationDate'
     -> DescribeStateMachineResponse
-describeStateMachineResponse pResponseStatus_ pStateMachineARN_ pName_ pDefinition_ pRoleARN_ pCreationDate_ =
-  DescribeStateMachineResponse'
-    { _dsmrsStatus = Nothing
-    , _dsmrsResponseStatus = pResponseStatus_
-    , _dsmrsStateMachineARN = pStateMachineARN_
-    , _dsmrsName = pName_
-    , _dsmrsDefinition = pDefinition_
-    , _dsmrsRoleARN = pRoleARN_
-    , _dsmrsCreationDate = _Time # pCreationDate_
-    }
-
+describeStateMachineResponse pResponseStatus_
+  pStateMachineARN_ pName_ pDefinition_ pRoleARN_
+  pCreationDate_
+  = DescribeStateMachineResponse'{_dsmrsStatus =
+                                    Nothing,
+                                  _dsmrsResponseStatus = pResponseStatus_,
+                                  _dsmrsStateMachineARN = pStateMachineARN_,
+                                  _dsmrsName = pName_,
+                                  _dsmrsDefinition = pDefinition_,
+                                  _dsmrsRoleARN = pRoleARN_,
+                                  _dsmrsCreationDate = _Time # pCreationDate_}
 
 -- | The current status of the state machine.
 dsmrsStatus :: Lens' DescribeStateMachineResponse (Maybe StateMachineStatus)

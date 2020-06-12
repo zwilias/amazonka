@@ -39,20 +39,18 @@ module Network.AWS.CodeCommit.GetPullRequestApprovalStates
     ) where
 
 import Network.AWS.CodeCommit.Types
-import Network.AWS.CodeCommit.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 
 -- | /See:/ 'getPullRequestApprovalStates' smart constructor.
-data GetPullRequestApprovalStates =
-  GetPullRequestApprovalStates'
-    { _gprasPullRequestId :: !Text
-    , _gprasRevisionId    :: !Text
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data GetPullRequestApprovalStates = GetPullRequestApprovalStates'{_gprasPullRequestId
+                                                                  :: !Text,
+                                                                  _gprasRevisionId
+                                                                  :: !Text}
+                                      deriving (Eq, Read, Show, Data, Typeable,
+                                                Generic)
 
 -- | Creates a value of 'GetPullRequestApprovalStates' with the minimum fields required to make a request.
 --
@@ -65,10 +63,11 @@ getPullRequestApprovalStates
     :: Text -- ^ 'gprasPullRequestId'
     -> Text -- ^ 'gprasRevisionId'
     -> GetPullRequestApprovalStates
-getPullRequestApprovalStates pPullRequestId_ pRevisionId_ =
-  GetPullRequestApprovalStates'
-    {_gprasPullRequestId = pPullRequestId_, _gprasRevisionId = pRevisionId_}
-
+getPullRequestApprovalStates pPullRequestId_
+  pRevisionId_
+  = GetPullRequestApprovalStates'{_gprasPullRequestId =
+                                    pPullRequestId_,
+                                  _gprasRevisionId = pRevisionId_}
 
 -- | The system-generated ID for the pull request.
 gprasPullRequestId :: Lens' GetPullRequestApprovalStates Text
@@ -118,13 +117,15 @@ instance ToQuery GetPullRequestApprovalStates where
         toQuery = const mempty
 
 -- | /See:/ 'getPullRequestApprovalStatesResponse' smart constructor.
-data GetPullRequestApprovalStatesResponse =
-  GetPullRequestApprovalStatesResponse'
-    { _gprasrsApprovals      :: !(Maybe [Approval])
-    , _gprasrsResponseStatus :: !Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data GetPullRequestApprovalStatesResponse = GetPullRequestApprovalStatesResponse'{_gprasrsApprovals
+                                                                                  ::
+                                                                                  !(Maybe
+                                                                                      [Approval]),
+                                                                                  _gprasrsResponseStatus
+                                                                                  ::
+                                                                                  !Int}
+                                              deriving (Eq, Read, Show, Data,
+                                                        Typeable, Generic)
 
 -- | Creates a value of 'GetPullRequestApprovalStatesResponse' with the minimum fields required to make a request.
 --
@@ -136,10 +137,11 @@ data GetPullRequestApprovalStatesResponse =
 getPullRequestApprovalStatesResponse
     :: Int -- ^ 'gprasrsResponseStatus'
     -> GetPullRequestApprovalStatesResponse
-getPullRequestApprovalStatesResponse pResponseStatus_ =
-  GetPullRequestApprovalStatesResponse'
-    {_gprasrsApprovals = Nothing, _gprasrsResponseStatus = pResponseStatus_}
-
+getPullRequestApprovalStatesResponse pResponseStatus_
+  = GetPullRequestApprovalStatesResponse'{_gprasrsApprovals
+                                            = Nothing,
+                                          _gprasrsResponseStatus =
+                                            pResponseStatus_}
 
 -- | Information about users who have approved the pull request.
 gprasrsApprovals :: Lens' GetPullRequestApprovalStatesResponse [Approval]

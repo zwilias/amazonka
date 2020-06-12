@@ -38,20 +38,16 @@ module Network.AWS.IAM.DeactivateMFADevice
     ) where
 
 import Network.AWS.IAM.Types
-import Network.AWS.IAM.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 
 -- | /See:/ 'deactivateMFADevice' smart constructor.
-data DeactivateMFADevice =
-  DeactivateMFADevice'
-    { _dmdUserName     :: !Text
-    , _dmdSerialNumber :: !Text
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data DeactivateMFADevice = DeactivateMFADevice'{_dmdUserName
+                                                :: !Text,
+                                                _dmdSerialNumber :: !Text}
+                             deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'DeactivateMFADevice' with the minimum fields required to make a request.
 --
@@ -64,10 +60,9 @@ deactivateMFADevice
     :: Text -- ^ 'dmdUserName'
     -> Text -- ^ 'dmdSerialNumber'
     -> DeactivateMFADevice
-deactivateMFADevice pUserName_ pSerialNumber_ =
-  DeactivateMFADevice'
-    {_dmdUserName = pUserName_, _dmdSerialNumber = pSerialNumber_}
-
+deactivateMFADevice pUserName_ pSerialNumber_
+  = DeactivateMFADevice'{_dmdUserName = pUserName_,
+                         _dmdSerialNumber = pSerialNumber_}
 
 -- | The name of the user whose MFA device you want to deactivate. This parameter allows (per its <http://wikipedia.org/wiki/regex regex pattern> ) a string of characters consisting of upper and lowercase alphanumeric characters with no spaces. You can also include any of the following characters: _+=,.@-
 dmdUserName :: Lens' DeactivateMFADevice Text
@@ -102,16 +97,15 @@ instance ToQuery DeactivateMFADevice where
                "SerialNumber" =: _dmdSerialNumber]
 
 -- | /See:/ 'deactivateMFADeviceResponse' smart constructor.
-data DeactivateMFADeviceResponse =
-  DeactivateMFADeviceResponse'
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data DeactivateMFADeviceResponse = DeactivateMFADeviceResponse'
+                                     deriving (Eq, Read, Show, Data, Typeable,
+                                               Generic)
 
 -- | Creates a value of 'DeactivateMFADeviceResponse' with the minimum fields required to make a request.
 --
 deactivateMFADeviceResponse
     :: DeactivateMFADeviceResponse
-deactivateMFADeviceResponse = DeactivateMFADeviceResponse'
-
+deactivateMFADeviceResponse
+  = DeactivateMFADeviceResponse'
 
 instance NFData DeactivateMFADeviceResponse where

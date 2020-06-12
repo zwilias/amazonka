@@ -45,7 +45,6 @@ module Network.AWS.EC2.DescribeCapacityReservations
     ) where
 
 import Network.AWS.EC2.Types
-import Network.AWS.EC2.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Pager
 import Network.AWS.Prelude
@@ -53,16 +52,23 @@ import Network.AWS.Request
 import Network.AWS.Response
 
 -- | /See:/ 'describeCapacityReservations' smart constructor.
-data DescribeCapacityReservations =
-  DescribeCapacityReservations'
-    { _dcrCapacityReservationIds :: !(Maybe [Text])
-    , _dcrFilters                :: !(Maybe [Filter])
-    , _dcrNextToken              :: !(Maybe Text)
-    , _dcrDryRun                 :: !(Maybe Bool)
-    , _dcrMaxResults             :: !(Maybe Nat)
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data DescribeCapacityReservations = DescribeCapacityReservations'{_dcrCapacityReservationIds
+                                                                  ::
+                                                                  !(Maybe
+                                                                      [Text]),
+                                                                  _dcrFilters ::
+                                                                  !(Maybe
+                                                                      [Filter]),
+                                                                  _dcrNextToken
+                                                                  ::
+                                                                  !(Maybe Text),
+                                                                  _dcrDryRun ::
+                                                                  !(Maybe Bool),
+                                                                  _dcrMaxResults
+                                                                  ::
+                                                                  !(Maybe Nat)}
+                                      deriving (Eq, Read, Show, Data, Typeable,
+                                                Generic)
 
 -- | Creates a value of 'DescribeCapacityReservations' with the minimum fields required to make a request.
 --
@@ -79,15 +85,12 @@ data DescribeCapacityReservations =
 -- * 'dcrMaxResults' - The maximum number of results to return for the request in a single page. The remaining results can be seen by sending another request with the returned nextToken value.
 describeCapacityReservations
     :: DescribeCapacityReservations
-describeCapacityReservations =
-  DescribeCapacityReservations'
-    { _dcrCapacityReservationIds = Nothing
-    , _dcrFilters = Nothing
-    , _dcrNextToken = Nothing
-    , _dcrDryRun = Nothing
-    , _dcrMaxResults = Nothing
-    }
-
+describeCapacityReservations
+  = DescribeCapacityReservations'{_dcrCapacityReservationIds
+                                    = Nothing,
+                                  _dcrFilters = Nothing,
+                                  _dcrNextToken = Nothing, _dcrDryRun = Nothing,
+                                  _dcrMaxResults = Nothing}
 
 -- | The ID of the Capacity Reservation.
 dcrCapacityReservationIds :: Lens' DescribeCapacityReservations [Text]
@@ -154,14 +157,19 @@ instance ToQuery DescribeCapacityReservations where
                "MaxResults" =: _dcrMaxResults]
 
 -- | /See:/ 'describeCapacityReservationsResponse' smart constructor.
-data DescribeCapacityReservationsResponse =
-  DescribeCapacityReservationsResponse'
-    { _dcrrsCapacityReservations :: !(Maybe [CapacityReservation])
-    , _dcrrsNextToken            :: !(Maybe Text)
-    , _dcrrsResponseStatus       :: !Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data DescribeCapacityReservationsResponse = DescribeCapacityReservationsResponse'{_dcrrsCapacityReservations
+                                                                                  ::
+                                                                                  !(Maybe
+                                                                                      [CapacityReservation]),
+                                                                                  _dcrrsNextToken
+                                                                                  ::
+                                                                                  !(Maybe
+                                                                                      Text),
+                                                                                  _dcrrsResponseStatus
+                                                                                  ::
+                                                                                  !Int}
+                                              deriving (Eq, Read, Show, Data,
+                                                        Typeable, Generic)
 
 -- | Creates a value of 'DescribeCapacityReservationsResponse' with the minimum fields required to make a request.
 --
@@ -175,13 +183,12 @@ data DescribeCapacityReservationsResponse =
 describeCapacityReservationsResponse
     :: Int -- ^ 'dcrrsResponseStatus'
     -> DescribeCapacityReservationsResponse
-describeCapacityReservationsResponse pResponseStatus_ =
-  DescribeCapacityReservationsResponse'
-    { _dcrrsCapacityReservations = Nothing
-    , _dcrrsNextToken = Nothing
-    , _dcrrsResponseStatus = pResponseStatus_
-    }
-
+describeCapacityReservationsResponse pResponseStatus_
+  = DescribeCapacityReservationsResponse'{_dcrrsCapacityReservations
+                                            = Nothing,
+                                          _dcrrsNextToken = Nothing,
+                                          _dcrrsResponseStatus =
+                                            pResponseStatus_}
 
 -- | Information about the Capacity Reservations.
 dcrrsCapacityReservations :: Lens' DescribeCapacityReservationsResponse [CapacityReservation]

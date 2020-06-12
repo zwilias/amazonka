@@ -41,7 +41,6 @@ module Network.AWS.MediaLive.ListChannels
 
 import Network.AWS.Lens
 import Network.AWS.MediaLive.Types
-import Network.AWS.MediaLive.Types.Product
 import Network.AWS.Pager
 import Network.AWS.Prelude
 import Network.AWS.Request
@@ -50,13 +49,10 @@ import Network.AWS.Response
 -- | Placeholder documentation for ListChannelsRequest
 --
 -- /See:/ 'listChannels' smart constructor.
-data ListChannels =
-  ListChannels'
-    { _lcNextToken  :: !(Maybe Text)
-    , _lcMaxResults :: !(Maybe Nat)
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data ListChannels = ListChannels'{_lcNextToken ::
+                                  !(Maybe Text),
+                                  _lcMaxResults :: !(Maybe Nat)}
+                      deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'ListChannels' with the minimum fields required to make a request.
 --
@@ -67,8 +63,9 @@ data ListChannels =
 -- * 'lcMaxResults' - Undocumented member.
 listChannels
     :: ListChannels
-listChannels = ListChannels' {_lcNextToken = Nothing, _lcMaxResults = Nothing}
-
+listChannels
+  = ListChannels'{_lcNextToken = Nothing,
+                  _lcMaxResults = Nothing}
 
 -- | Undocumented member.
 lcNextToken :: Lens' ListChannels (Maybe Text)
@@ -118,14 +115,12 @@ instance ToQuery ListChannels where
 -- | Placeholder documentation for ListChannelsResponse
 --
 -- /See:/ 'listChannelsResponse' smart constructor.
-data ListChannelsResponse =
-  ListChannelsResponse'
-    { _lcrsChannels       :: !(Maybe [ChannelSummary])
-    , _lcrsNextToken      :: !(Maybe Text)
-    , _lcrsResponseStatus :: !Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data ListChannelsResponse = ListChannelsResponse'{_lcrsChannels
+                                                  :: !(Maybe [ChannelSummary]),
+                                                  _lcrsNextToken ::
+                                                  !(Maybe Text),
+                                                  _lcrsResponseStatus :: !Int}
+                              deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'ListChannelsResponse' with the minimum fields required to make a request.
 --
@@ -139,13 +134,10 @@ data ListChannelsResponse =
 listChannelsResponse
     :: Int -- ^ 'lcrsResponseStatus'
     -> ListChannelsResponse
-listChannelsResponse pResponseStatus_ =
-  ListChannelsResponse'
-    { _lcrsChannels = Nothing
-    , _lcrsNextToken = Nothing
-    , _lcrsResponseStatus = pResponseStatus_
-    }
-
+listChannelsResponse pResponseStatus_
+  = ListChannelsResponse'{_lcrsChannels = Nothing,
+                          _lcrsNextToken = Nothing,
+                          _lcrsResponseStatus = pResponseStatus_}
 
 -- | Undocumented member.
 lcrsChannels :: Lens' ListChannelsResponse [ChannelSummary]

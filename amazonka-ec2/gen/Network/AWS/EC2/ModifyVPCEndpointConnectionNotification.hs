@@ -18,7 +18,7 @@
 -- Stability   : auto-generated
 -- Portability : non-portable (GHC extensions)
 --
--- Modifies a connection notification for VPC endpoint or VPC endpoint service. You can change the SNS topic for the notification, or the events for which to be notified.
+-- Modifies a connection notification for VPC endpoint or VPC endpoint service. You can change the SNS topic for the notification, or the events for which to be notified. 
 --
 --
 module Network.AWS.EC2.ModifyVPCEndpointConnectionNotification
@@ -41,22 +41,29 @@ module Network.AWS.EC2.ModifyVPCEndpointConnectionNotification
     ) where
 
 import Network.AWS.EC2.Types
-import Network.AWS.EC2.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 
 -- | /See:/ 'modifyVPCEndpointConnectionNotification' smart constructor.
-data ModifyVPCEndpointConnectionNotification =
-  ModifyVPCEndpointConnectionNotification'
-    { _mvecnConnectionEvents          :: !(Maybe [Text])
-    , _mvecnConnectionNotificationARN :: !(Maybe Text)
-    , _mvecnDryRun                    :: !(Maybe Bool)
-    , _mvecnConnectionNotificationId  :: !Text
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data ModifyVPCEndpointConnectionNotification = ModifyVPCEndpointConnectionNotification'{_mvecnConnectionEvents
+                                                                                        ::
+                                                                                        !(Maybe
+                                                                                            [Text]),
+                                                                                        _mvecnConnectionNotificationARN
+                                                                                        ::
+                                                                                        !(Maybe
+                                                                                            Text),
+                                                                                        _mvecnDryRun
+                                                                                        ::
+                                                                                        !(Maybe
+                                                                                            Bool),
+                                                                                        _mvecnConnectionNotificationId
+                                                                                        ::
+                                                                                        !Text}
+                                                 deriving (Eq, Read, Show, Data,
+                                                           Typeable, Generic)
 
 -- | Creates a value of 'ModifyVPCEndpointConnectionNotification' with the minimum fields required to make a request.
 --
@@ -72,14 +79,15 @@ data ModifyVPCEndpointConnectionNotification =
 modifyVPCEndpointConnectionNotification
     :: Text -- ^ 'mvecnConnectionNotificationId'
     -> ModifyVPCEndpointConnectionNotification
-modifyVPCEndpointConnectionNotification pConnectionNotificationId_ =
-  ModifyVPCEndpointConnectionNotification'
-    { _mvecnConnectionEvents = Nothing
-    , _mvecnConnectionNotificationARN = Nothing
-    , _mvecnDryRun = Nothing
-    , _mvecnConnectionNotificationId = pConnectionNotificationId_
-    }
-
+modifyVPCEndpointConnectionNotification
+  pConnectionNotificationId_
+  = ModifyVPCEndpointConnectionNotification'{_mvecnConnectionEvents
+                                               = Nothing,
+                                             _mvecnConnectionNotificationARN =
+                                               Nothing,
+                                             _mvecnDryRun = Nothing,
+                                             _mvecnConnectionNotificationId =
+                                               pConnectionNotificationId_}
 
 -- | One or more events for the endpoint. Valid values are @Accept@ , @Connect@ , @Delete@ , and @Reject@ .
 mvecnConnectionEvents :: Lens' ModifyVPCEndpointConnectionNotification [Text]
@@ -146,13 +154,17 @@ instance ToQuery
                  _mvecnConnectionNotificationId]
 
 -- | /See:/ 'modifyVPCEndpointConnectionNotificationResponse' smart constructor.
-data ModifyVPCEndpointConnectionNotificationResponse =
-  ModifyVPCEndpointConnectionNotificationResponse'
-    { _mvecnrsReturnValue    :: !(Maybe Bool)
-    , _mvecnrsResponseStatus :: !Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data ModifyVPCEndpointConnectionNotificationResponse = ModifyVPCEndpointConnectionNotificationResponse'{_mvecnrsReturnValue
+                                                                                                        ::
+                                                                                                        !(Maybe
+                                                                                                            Bool),
+                                                                                                        _mvecnrsResponseStatus
+                                                                                                        ::
+                                                                                                        !Int}
+                                                         deriving (Eq, Read,
+                                                                   Show, Data,
+                                                                   Typeable,
+                                                                   Generic)
 
 -- | Creates a value of 'ModifyVPCEndpointConnectionNotificationResponse' with the minimum fields required to make a request.
 --
@@ -164,10 +176,12 @@ data ModifyVPCEndpointConnectionNotificationResponse =
 modifyVPCEndpointConnectionNotificationResponse
     :: Int -- ^ 'mvecnrsResponseStatus'
     -> ModifyVPCEndpointConnectionNotificationResponse
-modifyVPCEndpointConnectionNotificationResponse pResponseStatus_ =
-  ModifyVPCEndpointConnectionNotificationResponse'
-    {_mvecnrsReturnValue = Nothing, _mvecnrsResponseStatus = pResponseStatus_}
-
+modifyVPCEndpointConnectionNotificationResponse
+  pResponseStatus_
+  = ModifyVPCEndpointConnectionNotificationResponse'{_mvecnrsReturnValue
+                                                       = Nothing,
+                                                     _mvecnrsResponseStatus =
+                                                       pResponseStatus_}
 
 -- | Returns @true@ if the request succeeds; otherwise, it returns an error.
 mvecnrsReturnValue :: Lens' ModifyVPCEndpointConnectionNotificationResponse (Maybe Bool)

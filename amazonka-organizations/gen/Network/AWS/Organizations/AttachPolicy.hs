@@ -57,19 +57,15 @@ module Network.AWS.Organizations.AttachPolicy
 
 import Network.AWS.Lens
 import Network.AWS.Organizations.Types
-import Network.AWS.Organizations.Types.Product
 import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 
 -- | /See:/ 'attachPolicy' smart constructor.
-data AttachPolicy =
-  AttachPolicy'
-    { _apPolicyId :: !Text
-    , _apTargetId :: !Text
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data AttachPolicy = AttachPolicy'{_apPolicyId ::
+                                  !Text,
+                                  _apTargetId :: !Text}
+                      deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'AttachPolicy' with the minimum fields required to make a request.
 --
@@ -82,9 +78,9 @@ attachPolicy
     :: Text -- ^ 'apPolicyId'
     -> Text -- ^ 'apTargetId'
     -> AttachPolicy
-attachPolicy pPolicyId_ pTargetId_ =
-  AttachPolicy' {_apPolicyId = pPolicyId_, _apTargetId = pTargetId_}
-
+attachPolicy pPolicyId_ pTargetId_
+  = AttachPolicy'{_apPolicyId = pPolicyId_,
+                  _apTargetId = pTargetId_}
 
 -- | The unique identifier (ID) of the policy that you want to attach to the target. You can get the ID for the policy by calling the 'ListPolicies' operation. The <http://wikipedia.org/wiki/regex regex pattern> for a policy ID string requires "p-" followed by from 8 to 128 lower-case letters or digits.
 apPolicyId :: Lens' AttachPolicy Text
@@ -127,16 +123,13 @@ instance ToQuery AttachPolicy where
         toQuery = const mempty
 
 -- | /See:/ 'attachPolicyResponse' smart constructor.
-data AttachPolicyResponse =
-  AttachPolicyResponse'
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data AttachPolicyResponse = AttachPolicyResponse'
+                              deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'AttachPolicyResponse' with the minimum fields required to make a request.
 --
 attachPolicyResponse
     :: AttachPolicyResponse
 attachPolicyResponse = AttachPolicyResponse'
-
 
 instance NFData AttachPolicyResponse where

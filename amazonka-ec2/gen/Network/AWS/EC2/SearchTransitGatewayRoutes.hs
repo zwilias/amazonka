@@ -42,22 +42,22 @@ module Network.AWS.EC2.SearchTransitGatewayRoutes
     ) where
 
 import Network.AWS.EC2.Types
-import Network.AWS.EC2.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 
 -- | /See:/ 'searchTransitGatewayRoutes' smart constructor.
-data SearchTransitGatewayRoutes =
-  SearchTransitGatewayRoutes'
-    { _stgrDryRun                     :: !(Maybe Bool)
-    , _stgrMaxResults                 :: !(Maybe Nat)
-    , _stgrTransitGatewayRouteTableId :: !Text
-    , _stgrFilters                    :: ![Filter]
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data SearchTransitGatewayRoutes = SearchTransitGatewayRoutes'{_stgrDryRun
+                                                              :: !(Maybe Bool),
+                                                              _stgrMaxResults ::
+                                                              !(Maybe Nat),
+                                                              _stgrTransitGatewayRouteTableId
+                                                              :: !Text,
+                                                              _stgrFilters ::
+                                                              ![Filter]}
+                                    deriving (Eq, Read, Show, Data, Typeable,
+                                              Generic)
 
 -- | Creates a value of 'SearchTransitGatewayRoutes' with the minimum fields required to make a request.
 --
@@ -73,14 +73,13 @@ data SearchTransitGatewayRoutes =
 searchTransitGatewayRoutes
     :: Text -- ^ 'stgrTransitGatewayRouteTableId'
     -> SearchTransitGatewayRoutes
-searchTransitGatewayRoutes pTransitGatewayRouteTableId_ =
-  SearchTransitGatewayRoutes'
-    { _stgrDryRun = Nothing
-    , _stgrMaxResults = Nothing
-    , _stgrTransitGatewayRouteTableId = pTransitGatewayRouteTableId_
-    , _stgrFilters = mempty
-    }
-
+searchTransitGatewayRoutes
+  pTransitGatewayRouteTableId_
+  = SearchTransitGatewayRoutes'{_stgrDryRun = Nothing,
+                                _stgrMaxResults = Nothing,
+                                _stgrTransitGatewayRouteTableId =
+                                  pTransitGatewayRouteTableId_,
+                                _stgrFilters = mempty}
 
 -- | Checks whether you have the required permissions for the action, without actually making the request, and provides an error response. If you have the required permissions, the error response is @DryRunOperation@ . Otherwise, it is @UnauthorizedOperation@ .
 stgrDryRun :: Lens' SearchTransitGatewayRoutes (Maybe Bool)
@@ -134,14 +133,19 @@ instance ToQuery SearchTransitGatewayRoutes where
                toQueryList "Filter" _stgrFilters]
 
 -- | /See:/ 'searchTransitGatewayRoutesResponse' smart constructor.
-data SearchTransitGatewayRoutesResponse =
-  SearchTransitGatewayRoutesResponse'
-    { _stgrrsAdditionalRoutesAvailable :: !(Maybe Bool)
-    , _stgrrsRoutes                    :: !(Maybe [TransitGatewayRoute])
-    , _stgrrsResponseStatus            :: !Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data SearchTransitGatewayRoutesResponse = SearchTransitGatewayRoutesResponse'{_stgrrsAdditionalRoutesAvailable
+                                                                              ::
+                                                                              !(Maybe
+                                                                                  Bool),
+                                                                              _stgrrsRoutes
+                                                                              ::
+                                                                              !(Maybe
+                                                                                  [TransitGatewayRoute]),
+                                                                              _stgrrsResponseStatus
+                                                                              ::
+                                                                              !Int}
+                                            deriving (Eq, Read, Show, Data,
+                                                      Typeable, Generic)
 
 -- | Creates a value of 'SearchTransitGatewayRoutesResponse' with the minimum fields required to make a request.
 --
@@ -155,13 +159,12 @@ data SearchTransitGatewayRoutesResponse =
 searchTransitGatewayRoutesResponse
     :: Int -- ^ 'stgrrsResponseStatus'
     -> SearchTransitGatewayRoutesResponse
-searchTransitGatewayRoutesResponse pResponseStatus_ =
-  SearchTransitGatewayRoutesResponse'
-    { _stgrrsAdditionalRoutesAvailable = Nothing
-    , _stgrrsRoutes = Nothing
-    , _stgrrsResponseStatus = pResponseStatus_
-    }
-
+searchTransitGatewayRoutesResponse pResponseStatus_
+  = SearchTransitGatewayRoutesResponse'{_stgrrsAdditionalRoutesAvailable
+                                          = Nothing,
+                                        _stgrrsRoutes = Nothing,
+                                        _stgrrsResponseStatus =
+                                          pResponseStatus_}
 
 -- | Indicates whether there are additional routes available.
 stgrrsAdditionalRoutesAvailable :: Lens' SearchTransitGatewayRoutesResponse (Maybe Bool)

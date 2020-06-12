@@ -49,29 +49,51 @@ module Network.AWS.CodeCommit.CreateUnreferencedMergeCommit
     ) where
 
 import Network.AWS.CodeCommit.Types
-import Network.AWS.CodeCommit.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 
 -- | /See:/ 'createUnreferencedMergeCommit' smart constructor.
-data CreateUnreferencedMergeCommit =
-  CreateUnreferencedMergeCommit'
-    { _cumcEmail :: !(Maybe Text)
-    , _cumcAuthorName :: !(Maybe Text)
-    , _cumcConflictDetailLevel :: !(Maybe ConflictDetailLevelTypeEnum)
-    , _cumcCommitMessage :: !(Maybe Text)
-    , _cumcConflictResolution :: !(Maybe ConflictResolution)
-    , _cumcConflictResolutionStrategy :: !(Maybe ConflictResolutionStrategyTypeEnum)
-    , _cumcKeepEmptyFolders :: !(Maybe Bool)
-    , _cumcRepositoryName :: !Text
-    , _cumcSourceCommitSpecifier :: !Text
-    , _cumcDestinationCommitSpecifier :: !Text
-    , _cumcMergeOption :: !MergeOptionTypeEnum
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data CreateUnreferencedMergeCommit = CreateUnreferencedMergeCommit'{_cumcEmail
+                                                                    ::
+                                                                    !(Maybe
+                                                                        Text),
+                                                                    _cumcAuthorName
+                                                                    ::
+                                                                    !(Maybe
+                                                                        Text),
+                                                                    _cumcConflictDetailLevel
+                                                                    ::
+                                                                    !(Maybe
+                                                                        ConflictDetailLevelTypeEnum),
+                                                                    _cumcCommitMessage
+                                                                    ::
+                                                                    !(Maybe
+                                                                        Text),
+                                                                    _cumcConflictResolution
+                                                                    ::
+                                                                    !(Maybe
+                                                                        ConflictResolution),
+                                                                    _cumcConflictResolutionStrategy
+                                                                    ::
+                                                                    !(Maybe
+                                                                        ConflictResolutionStrategyTypeEnum),
+                                                                    _cumcKeepEmptyFolders
+                                                                    ::
+                                                                    !(Maybe
+                                                                        Bool),
+                                                                    _cumcRepositoryName
+                                                                    :: !Text,
+                                                                    _cumcSourceCommitSpecifier
+                                                                    :: !Text,
+                                                                    _cumcDestinationCommitSpecifier
+                                                                    :: !Text,
+                                                                    _cumcMergeOption
+                                                                    ::
+                                                                    !MergeOptionTypeEnum}
+                                       deriving (Eq, Read, Show, Data, Typeable,
+                                                 Generic)
 
 -- | Creates a value of 'CreateUnreferencedMergeCommit' with the minimum fields required to make a request.
 --
@@ -104,21 +126,23 @@ createUnreferencedMergeCommit
     -> Text -- ^ 'cumcDestinationCommitSpecifier'
     -> MergeOptionTypeEnum -- ^ 'cumcMergeOption'
     -> CreateUnreferencedMergeCommit
-createUnreferencedMergeCommit pRepositoryName_ pSourceCommitSpecifier_ pDestinationCommitSpecifier_ pMergeOption_ =
-  CreateUnreferencedMergeCommit'
-    { _cumcEmail = Nothing
-    , _cumcAuthorName = Nothing
-    , _cumcConflictDetailLevel = Nothing
-    , _cumcCommitMessage = Nothing
-    , _cumcConflictResolution = Nothing
-    , _cumcConflictResolutionStrategy = Nothing
-    , _cumcKeepEmptyFolders = Nothing
-    , _cumcRepositoryName = pRepositoryName_
-    , _cumcSourceCommitSpecifier = pSourceCommitSpecifier_
-    , _cumcDestinationCommitSpecifier = pDestinationCommitSpecifier_
-    , _cumcMergeOption = pMergeOption_
-    }
-
+createUnreferencedMergeCommit pRepositoryName_
+  pSourceCommitSpecifier_ pDestinationCommitSpecifier_
+  pMergeOption_
+  = CreateUnreferencedMergeCommit'{_cumcEmail =
+                                     Nothing,
+                                   _cumcAuthorName = Nothing,
+                                   _cumcConflictDetailLevel = Nothing,
+                                   _cumcCommitMessage = Nothing,
+                                   _cumcConflictResolution = Nothing,
+                                   _cumcConflictResolutionStrategy = Nothing,
+                                   _cumcKeepEmptyFolders = Nothing,
+                                   _cumcRepositoryName = pRepositoryName_,
+                                   _cumcSourceCommitSpecifier =
+                                     pSourceCommitSpecifier_,
+                                   _cumcDestinationCommitSpecifier =
+                                     pDestinationCommitSpecifier_,
+                                   _cumcMergeOption = pMergeOption_}
 
 -- | The email address for the person who created the unreferenced commit.
 cumcEmail :: Lens' CreateUnreferencedMergeCommit (Maybe Text)
@@ -221,14 +245,19 @@ instance ToQuery CreateUnreferencedMergeCommit where
         toQuery = const mempty
 
 -- | /See:/ 'createUnreferencedMergeCommitResponse' smart constructor.
-data CreateUnreferencedMergeCommitResponse =
-  CreateUnreferencedMergeCommitResponse'
-    { _cumcrsCommitId       :: !(Maybe Text)
-    , _cumcrsTreeId         :: !(Maybe Text)
-    , _cumcrsResponseStatus :: !Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data CreateUnreferencedMergeCommitResponse = CreateUnreferencedMergeCommitResponse'{_cumcrsCommitId
+                                                                                    ::
+                                                                                    !(Maybe
+                                                                                        Text),
+                                                                                    _cumcrsTreeId
+                                                                                    ::
+                                                                                    !(Maybe
+                                                                                        Text),
+                                                                                    _cumcrsResponseStatus
+                                                                                    ::
+                                                                                    !Int}
+                                               deriving (Eq, Read, Show, Data,
+                                                         Typeable, Generic)
 
 -- | Creates a value of 'CreateUnreferencedMergeCommitResponse' with the minimum fields required to make a request.
 --
@@ -242,13 +271,13 @@ data CreateUnreferencedMergeCommitResponse =
 createUnreferencedMergeCommitResponse
     :: Int -- ^ 'cumcrsResponseStatus'
     -> CreateUnreferencedMergeCommitResponse
-createUnreferencedMergeCommitResponse pResponseStatus_ =
-  CreateUnreferencedMergeCommitResponse'
-    { _cumcrsCommitId = Nothing
-    , _cumcrsTreeId = Nothing
-    , _cumcrsResponseStatus = pResponseStatus_
-    }
-
+createUnreferencedMergeCommitResponse
+  pResponseStatus_
+  = CreateUnreferencedMergeCommitResponse'{_cumcrsCommitId
+                                             = Nothing,
+                                           _cumcrsTreeId = Nothing,
+                                           _cumcrsResponseStatus =
+                                             pResponseStatus_}
 
 -- | The full commit ID of the commit that contains your merge results.
 cumcrsCommitId :: Lens' CreateUnreferencedMergeCommitResponse (Maybe Text)

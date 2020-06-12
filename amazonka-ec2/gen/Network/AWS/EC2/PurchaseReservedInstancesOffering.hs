@@ -48,7 +48,6 @@ module Network.AWS.EC2.PurchaseReservedInstancesOffering
     ) where
 
 import Network.AWS.EC2.Types
-import Network.AWS.EC2.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.Request
@@ -59,16 +58,26 @@ import Network.AWS.Response
 --
 --
 -- /See:/ 'purchaseReservedInstancesOffering' smart constructor.
-data PurchaseReservedInstancesOffering =
-  PurchaseReservedInstancesOffering'
-    { _prioPurchaseTime                :: !(Maybe ISO8601)
-    , _prioLimitPrice                  :: !(Maybe ReservedInstanceLimitPrice)
-    , _prioDryRun                      :: !(Maybe Bool)
-    , _prioInstanceCount               :: !Int
-    , _prioReservedInstancesOfferingId :: !Text
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data PurchaseReservedInstancesOffering = PurchaseReservedInstancesOffering'{_prioPurchaseTime
+                                                                            ::
+                                                                            !(Maybe
+                                                                                ISO8601),
+                                                                            _prioLimitPrice
+                                                                            ::
+                                                                            !(Maybe
+                                                                                ReservedInstanceLimitPrice),
+                                                                            _prioDryRun
+                                                                            ::
+                                                                            !(Maybe
+                                                                                Bool),
+                                                                            _prioInstanceCount
+                                                                            ::
+                                                                            !Int,
+                                                                            _prioReservedInstancesOfferingId
+                                                                            ::
+                                                                            !Text}
+                                           deriving (Eq, Read, Show, Data,
+                                                     Typeable, Generic)
 
 -- | Creates a value of 'PurchaseReservedInstancesOffering' with the minimum fields required to make a request.
 --
@@ -87,15 +96,15 @@ purchaseReservedInstancesOffering
     :: Int -- ^ 'prioInstanceCount'
     -> Text -- ^ 'prioReservedInstancesOfferingId'
     -> PurchaseReservedInstancesOffering
-purchaseReservedInstancesOffering pInstanceCount_ pReservedInstancesOfferingId_ =
-  PurchaseReservedInstancesOffering'
-    { _prioPurchaseTime = Nothing
-    , _prioLimitPrice = Nothing
-    , _prioDryRun = Nothing
-    , _prioInstanceCount = pInstanceCount_
-    , _prioReservedInstancesOfferingId = pReservedInstancesOfferingId_
-    }
-
+purchaseReservedInstancesOffering pInstanceCount_
+  pReservedInstancesOfferingId_
+  = PurchaseReservedInstancesOffering'{_prioPurchaseTime
+                                         = Nothing,
+                                       _prioLimitPrice = Nothing,
+                                       _prioDryRun = Nothing,
+                                       _prioInstanceCount = pInstanceCount_,
+                                       _prioReservedInstancesOfferingId =
+                                         pReservedInstancesOfferingId_}
 
 -- | The time at which to purchase the Reserved Instance, in UTC format (for example, /YYYY/ -/MM/ -/DD/ T/HH/ :/MM/ :/SS/ Z).
 prioPurchaseTime :: Lens' PurchaseReservedInstancesOffering (Maybe UTCTime)
@@ -162,13 +171,16 @@ instance ToQuery PurchaseReservedInstancesOffering
 --
 --
 -- /See:/ 'purchaseReservedInstancesOfferingResponse' smart constructor.
-data PurchaseReservedInstancesOfferingResponse =
-  PurchaseReservedInstancesOfferingResponse'
-    { _priorsReservedInstancesId :: !(Maybe Text)
-    , _priorsResponseStatus      :: !Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data PurchaseReservedInstancesOfferingResponse = PurchaseReservedInstancesOfferingResponse'{_priorsReservedInstancesId
+                                                                                            ::
+                                                                                            !(Maybe
+                                                                                                Text),
+                                                                                            _priorsResponseStatus
+                                                                                            ::
+                                                                                            !Int}
+                                                   deriving (Eq, Read, Show,
+                                                             Data, Typeable,
+                                                             Generic)
 
 -- | Creates a value of 'PurchaseReservedInstancesOfferingResponse' with the minimum fields required to make a request.
 --
@@ -180,12 +192,12 @@ data PurchaseReservedInstancesOfferingResponse =
 purchaseReservedInstancesOfferingResponse
     :: Int -- ^ 'priorsResponseStatus'
     -> PurchaseReservedInstancesOfferingResponse
-purchaseReservedInstancesOfferingResponse pResponseStatus_ =
-  PurchaseReservedInstancesOfferingResponse'
-    { _priorsReservedInstancesId = Nothing
-    , _priorsResponseStatus = pResponseStatus_
-    }
-
+purchaseReservedInstancesOfferingResponse
+  pResponseStatus_
+  = PurchaseReservedInstancesOfferingResponse'{_priorsReservedInstancesId
+                                                 = Nothing,
+                                               _priorsResponseStatus =
+                                                 pResponseStatus_}
 
 -- | The IDs of the purchased Reserved Instances.
 priorsReservedInstancesId :: Lens' PurchaseReservedInstancesOfferingResponse (Maybe Text)

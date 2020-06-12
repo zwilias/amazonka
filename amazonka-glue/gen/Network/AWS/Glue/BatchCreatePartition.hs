@@ -41,22 +41,19 @@ module Network.AWS.Glue.BatchCreatePartition
     ) where
 
 import Network.AWS.Glue.Types
-import Network.AWS.Glue.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 
 -- | /See:/ 'batchCreatePartition' smart constructor.
-data BatchCreatePartition =
-  BatchCreatePartition'
-    { _bcpCatalogId          :: !(Maybe Text)
-    , _bcpDatabaseName       :: !Text
-    , _bcpTableName          :: !Text
-    , _bcpPartitionInputList :: ![PartitionInput]
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data BatchCreatePartition = BatchCreatePartition'{_bcpCatalogId
+                                                  :: !(Maybe Text),
+                                                  _bcpDatabaseName :: !Text,
+                                                  _bcpTableName :: !Text,
+                                                  _bcpPartitionInputList ::
+                                                  ![PartitionInput]}
+                              deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'BatchCreatePartition' with the minimum fields required to make a request.
 --
@@ -73,14 +70,11 @@ batchCreatePartition
     :: Text -- ^ 'bcpDatabaseName'
     -> Text -- ^ 'bcpTableName'
     -> BatchCreatePartition
-batchCreatePartition pDatabaseName_ pTableName_ =
-  BatchCreatePartition'
-    { _bcpCatalogId = Nothing
-    , _bcpDatabaseName = pDatabaseName_
-    , _bcpTableName = pTableName_
-    , _bcpPartitionInputList = mempty
-    }
-
+batchCreatePartition pDatabaseName_ pTableName_
+  = BatchCreatePartition'{_bcpCatalogId = Nothing,
+                          _bcpDatabaseName = pDatabaseName_,
+                          _bcpTableName = pTableName_,
+                          _bcpPartitionInputList = mempty}
 
 -- | The ID of the catalog in which the partion is to be created. Currently, this should be the AWS account ID.
 bcpCatalogId :: Lens' BatchCreatePartition (Maybe Text)
@@ -138,13 +132,14 @@ instance ToQuery BatchCreatePartition where
         toQuery = const mempty
 
 -- | /See:/ 'batchCreatePartitionResponse' smart constructor.
-data BatchCreatePartitionResponse =
-  BatchCreatePartitionResponse'
-    { _bcprsErrors         :: !(Maybe [PartitionError])
-    , _bcprsResponseStatus :: !Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data BatchCreatePartitionResponse = BatchCreatePartitionResponse'{_bcprsErrors
+                                                                  ::
+                                                                  !(Maybe
+                                                                      [PartitionError]),
+                                                                  _bcprsResponseStatus
+                                                                  :: !Int}
+                                      deriving (Eq, Read, Show, Data, Typeable,
+                                                Generic)
 
 -- | Creates a value of 'BatchCreatePartitionResponse' with the minimum fields required to make a request.
 --
@@ -156,10 +151,10 @@ data BatchCreatePartitionResponse =
 batchCreatePartitionResponse
     :: Int -- ^ 'bcprsResponseStatus'
     -> BatchCreatePartitionResponse
-batchCreatePartitionResponse pResponseStatus_ =
-  BatchCreatePartitionResponse'
-    {_bcprsErrors = Nothing, _bcprsResponseStatus = pResponseStatus_}
-
+batchCreatePartitionResponse pResponseStatus_
+  = BatchCreatePartitionResponse'{_bcprsErrors =
+                                    Nothing,
+                                  _bcprsResponseStatus = pResponseStatus_}
 
 -- | Errors encountered when trying to create the requested partitions.
 bcprsErrors :: Lens' BatchCreatePartitionResponse [PartitionError]

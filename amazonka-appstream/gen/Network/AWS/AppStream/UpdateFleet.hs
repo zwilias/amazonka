@@ -55,40 +55,38 @@ module Network.AWS.AppStream.UpdateFleet
     ) where
 
 import Network.AWS.AppStream.Types
-import Network.AWS.AppStream.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 
 -- | /See:/ 'updateFleet' smart constructor.
-data UpdateFleet =
-  UpdateFleet'
-    { _ufDomainJoinInfo                 :: !(Maybe DomainJoinInfo)
-    , _ufIAMRoleARN                     :: !(Maybe Text)
-    , _ufDisconnectTimeoutInSeconds     :: !(Maybe Int)
-    , _ufMaxUserDurationInSeconds       :: !(Maybe Int)
-    , _ufAttributesToDelete             :: !(Maybe [FleetAttribute])
-    , _ufIdleDisconnectTimeoutInSeconds :: !(Maybe Int)
-    , _ufDeleteVPCConfig                :: !(Maybe Bool)
-    , _ufInstanceType                   :: !(Maybe Text)
-    , _ufVPCConfig                      :: !(Maybe VPCConfig)
-    , _ufName                           :: !(Maybe Text)
-    , _ufImageARN                       :: !(Maybe Text)
-    , _ufDisplayName                    :: !(Maybe Text)
-    , _ufEnableDefaultInternetAccess    :: !(Maybe Bool)
-    , _ufImageName                      :: !(Maybe Text)
-    , _ufDescription                    :: !(Maybe Text)
-    , _ufComputeCapacity                :: !(Maybe ComputeCapacity)
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data UpdateFleet = UpdateFleet'{_ufDomainJoinInfo ::
+                                !(Maybe DomainJoinInfo),
+                                _ufIAMRoleARN :: !(Maybe Text),
+                                _ufDisconnectTimeoutInSeconds :: !(Maybe Int),
+                                _ufMaxUserDurationInSeconds :: !(Maybe Int),
+                                _ufAttributesToDelete ::
+                                !(Maybe [FleetAttribute]),
+                                _ufIdleDisconnectTimeoutInSeconds ::
+                                !(Maybe Int),
+                                _ufDeleteVPCConfig :: !(Maybe Bool),
+                                _ufInstanceType :: !(Maybe Text),
+                                _ufVPCConfig :: !(Maybe VPCConfig),
+                                _ufName :: !(Maybe Text),
+                                _ufImageARN :: !(Maybe Text),
+                                _ufDisplayName :: !(Maybe Text),
+                                _ufEnableDefaultInternetAccess :: !(Maybe Bool),
+                                _ufImageName :: !(Maybe Text),
+                                _ufDescription :: !(Maybe Text),
+                                _ufComputeCapacity :: !(Maybe ComputeCapacity)}
+                     deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'UpdateFleet' with the minimum fields required to make a request.
 --
 -- Use one of the following lenses to modify other fields as desired:
 --
--- * 'ufDomainJoinInfo' - The name of the directory and organizational unit (OU) to use to join the fleet to a Microsoft Active Directory domain.
+-- * 'ufDomainJoinInfo' - The name of the directory and organizational unit (OU) to use to join the fleet to a Microsoft Active Directory domain. 
 --
 -- * 'ufIAMRoleARN' - The Amazon Resource Name (ARN) of the IAM role to apply to the fleet. To assume a role, a fleet instance calls the AWS Security Token Service (STS) @AssumeRole@ API operation and passes the ARN of the role to use. The operation creates a new session with temporary credentials. AppStream 2.0 retrieves the temporary credentials and creates the __AppStream_Machine_Role__ credential profile on the instance. For more information, see <https://docs.aws.amazon.com/appstream2/latest/developerguide/using-iam-roles-to-grant-permissions-to-applications-scripts-streaming-instances.html Using an IAM Role to Grant Permissions to Applications and Scripts Running on AppStream 2.0 Streaming Instances> in the /Amazon AppStream 2.0 Administration Guide/ .
 --
@@ -121,28 +119,22 @@ data UpdateFleet =
 -- * 'ufComputeCapacity' - The desired capacity for the fleet.
 updateFleet
     :: UpdateFleet
-updateFleet =
-  UpdateFleet'
-    { _ufDomainJoinInfo = Nothing
-    , _ufIAMRoleARN = Nothing
-    , _ufDisconnectTimeoutInSeconds = Nothing
-    , _ufMaxUserDurationInSeconds = Nothing
-    , _ufAttributesToDelete = Nothing
-    , _ufIdleDisconnectTimeoutInSeconds = Nothing
-    , _ufDeleteVPCConfig = Nothing
-    , _ufInstanceType = Nothing
-    , _ufVPCConfig = Nothing
-    , _ufName = Nothing
-    , _ufImageARN = Nothing
-    , _ufDisplayName = Nothing
-    , _ufEnableDefaultInternetAccess = Nothing
-    , _ufImageName = Nothing
-    , _ufDescription = Nothing
-    , _ufComputeCapacity = Nothing
-    }
+updateFleet
+  = UpdateFleet'{_ufDomainJoinInfo = Nothing,
+                 _ufIAMRoleARN = Nothing,
+                 _ufDisconnectTimeoutInSeconds = Nothing,
+                 _ufMaxUserDurationInSeconds = Nothing,
+                 _ufAttributesToDelete = Nothing,
+                 _ufIdleDisconnectTimeoutInSeconds = Nothing,
+                 _ufDeleteVPCConfig = Nothing,
+                 _ufInstanceType = Nothing, _ufVPCConfig = Nothing,
+                 _ufName = Nothing, _ufImageARN = Nothing,
+                 _ufDisplayName = Nothing,
+                 _ufEnableDefaultInternetAccess = Nothing,
+                 _ufImageName = Nothing, _ufDescription = Nothing,
+                 _ufComputeCapacity = Nothing}
 
-
--- | The name of the directory and organizational unit (OU) to use to join the fleet to a Microsoft Active Directory domain.
+-- | The name of the directory and organizational unit (OU) to use to join the fleet to a Microsoft Active Directory domain. 
 ufDomainJoinInfo :: Lens' UpdateFleet (Maybe DomainJoinInfo)
 ufDomainJoinInfo = lens _ufDomainJoinInfo (\ s a -> s{_ufDomainJoinInfo = a})
 
@@ -261,13 +253,10 @@ instance ToQuery UpdateFleet where
         toQuery = const mempty
 
 -- | /See:/ 'updateFleetResponse' smart constructor.
-data UpdateFleetResponse =
-  UpdateFleetResponse'
-    { _ufrsFleet          :: !(Maybe Fleet)
-    , _ufrsResponseStatus :: !Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data UpdateFleetResponse = UpdateFleetResponse'{_ufrsFleet
+                                                :: !(Maybe Fleet),
+                                                _ufrsResponseStatus :: !Int}
+                             deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'UpdateFleetResponse' with the minimum fields required to make a request.
 --
@@ -279,10 +268,9 @@ data UpdateFleetResponse =
 updateFleetResponse
     :: Int -- ^ 'ufrsResponseStatus'
     -> UpdateFleetResponse
-updateFleetResponse pResponseStatus_ =
-  UpdateFleetResponse'
-    {_ufrsFleet = Nothing, _ufrsResponseStatus = pResponseStatus_}
-
+updateFleetResponse pResponseStatus_
+  = UpdateFleetResponse'{_ufrsFleet = Nothing,
+                         _ufrsResponseStatus = pResponseStatus_}
 
 -- | Information about the fleet.
 ufrsFleet :: Lens' UpdateFleetResponse (Maybe Fleet)

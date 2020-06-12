@@ -37,18 +37,14 @@ module Network.AWS.Pinpoint.DeleteADMChannel
 
 import Network.AWS.Lens
 import Network.AWS.Pinpoint.Types
-import Network.AWS.Pinpoint.Types.Product
 import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 
 -- | /See:/ 'deleteADMChannel' smart constructor.
-newtype DeleteADMChannel =
-  DeleteADMChannel'
-    { _dadmcApplicationId :: Text
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+newtype DeleteADMChannel = DeleteADMChannel'{_dadmcApplicationId
+                                             :: Text}
+                             deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'DeleteADMChannel' with the minimum fields required to make a request.
 --
@@ -58,9 +54,9 @@ newtype DeleteADMChannel =
 deleteADMChannel
     :: Text -- ^ 'dadmcApplicationId'
     -> DeleteADMChannel
-deleteADMChannel pApplicationId_ =
-  DeleteADMChannel' {_dadmcApplicationId = pApplicationId_}
-
+deleteADMChannel pApplicationId_
+  = DeleteADMChannel'{_dadmcApplicationId =
+                        pApplicationId_}
 
 -- | Undocumented member.
 dadmcApplicationId :: Lens' DeleteADMChannel Text
@@ -96,13 +92,13 @@ instance ToQuery DeleteADMChannel where
         toQuery = const mempty
 
 -- | /See:/ 'deleteADMChannelResponse' smart constructor.
-data DeleteADMChannelResponse =
-  DeleteADMChannelResponse'
-    { _dadmcrsResponseStatus     :: !Int
-    , _dadmcrsADMChannelResponse :: !ADMChannelResponse
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data DeleteADMChannelResponse = DeleteADMChannelResponse'{_dadmcrsResponseStatus
+                                                          :: !Int,
+                                                          _dadmcrsADMChannelResponse
+                                                          ::
+                                                          !ADMChannelResponse}
+                                  deriving (Eq, Read, Show, Data, Typeable,
+                                            Generic)
 
 -- | Creates a value of 'DeleteADMChannelResponse' with the minimum fields required to make a request.
 --
@@ -115,12 +111,11 @@ deleteADMChannelResponse
     :: Int -- ^ 'dadmcrsResponseStatus'
     -> ADMChannelResponse -- ^ 'dadmcrsADMChannelResponse'
     -> DeleteADMChannelResponse
-deleteADMChannelResponse pResponseStatus_ pADMChannelResponse_ =
-  DeleteADMChannelResponse'
-    { _dadmcrsResponseStatus = pResponseStatus_
-    , _dadmcrsADMChannelResponse = pADMChannelResponse_
-    }
-
+deleteADMChannelResponse pResponseStatus_
+  pADMChannelResponse_
+  = DeleteADMChannelResponse'{_dadmcrsResponseStatus =
+                                pResponseStatus_,
+                              _dadmcrsADMChannelResponse = pADMChannelResponse_}
 
 -- | -- | The response status code.
 dadmcrsResponseStatus :: Lens' DeleteADMChannelResponse Int

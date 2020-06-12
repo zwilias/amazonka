@@ -39,7 +39,6 @@ module Network.AWS.IoT.DescribeCACertificate
     ) where
 
 import Network.AWS.IoT.Types
-import Network.AWS.IoT.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.Request
@@ -50,12 +49,10 @@ import Network.AWS.Response
 --
 --
 -- /See:/ 'describeCACertificate' smart constructor.
-newtype DescribeCACertificate =
-  DescribeCACertificate'
-    { _dCertificateId :: Text
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+newtype DescribeCACertificate = DescribeCACertificate'{_dCertificateId
+                                                       :: Text}
+                                  deriving (Eq, Read, Show, Data, Typeable,
+                                            Generic)
 
 -- | Creates a value of 'DescribeCACertificate' with the minimum fields required to make a request.
 --
@@ -65,9 +62,9 @@ newtype DescribeCACertificate =
 describeCACertificate
     :: Text -- ^ 'dCertificateId'
     -> DescribeCACertificate
-describeCACertificate pCertificateId_ =
-  DescribeCACertificate' {_dCertificateId = pCertificateId_}
-
+describeCACertificate pCertificateId_
+  = DescribeCACertificate'{_dCertificateId =
+                             pCertificateId_}
 
 -- | The CA certificate identifier.
 dCertificateId :: Lens' DescribeCACertificate Text
@@ -104,14 +101,18 @@ instance ToQuery DescribeCACertificate where
 --
 --
 -- /See:/ 'describeCACertificateResponse' smart constructor.
-data DescribeCACertificateResponse =
-  DescribeCACertificateResponse'
-    { _dcaccrsCertificateDescription :: !(Maybe CACertificateDescription)
-    , _dcaccrsRegistrationConfig     :: !(Maybe RegistrationConfig)
-    , _dcaccrsResponseStatus         :: !Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data DescribeCACertificateResponse = DescribeCACertificateResponse'{_dcaccrsCertificateDescription
+                                                                    ::
+                                                                    !(Maybe
+                                                                        CACertificateDescription),
+                                                                    _dcaccrsRegistrationConfig
+                                                                    ::
+                                                                    !(Maybe
+                                                                        RegistrationConfig),
+                                                                    _dcaccrsResponseStatus
+                                                                    :: !Int}
+                                       deriving (Eq, Read, Show, Data, Typeable,
+                                                 Generic)
 
 -- | Creates a value of 'DescribeCACertificateResponse' with the minimum fields required to make a request.
 --
@@ -125,13 +126,11 @@ data DescribeCACertificateResponse =
 describeCACertificateResponse
     :: Int -- ^ 'dcaccrsResponseStatus'
     -> DescribeCACertificateResponse
-describeCACertificateResponse pResponseStatus_ =
-  DescribeCACertificateResponse'
-    { _dcaccrsCertificateDescription = Nothing
-    , _dcaccrsRegistrationConfig = Nothing
-    , _dcaccrsResponseStatus = pResponseStatus_
-    }
-
+describeCACertificateResponse pResponseStatus_
+  = DescribeCACertificateResponse'{_dcaccrsCertificateDescription
+                                     = Nothing,
+                                   _dcaccrsRegistrationConfig = Nothing,
+                                   _dcaccrsResponseStatus = pResponseStatus_}
 
 -- | The CA certificate description.
 dcaccrsCertificateDescription :: Lens' DescribeCACertificateResponse (Maybe CACertificateDescription)

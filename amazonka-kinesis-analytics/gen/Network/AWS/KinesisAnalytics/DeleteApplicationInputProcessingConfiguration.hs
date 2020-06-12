@@ -39,21 +39,24 @@ module Network.AWS.KinesisAnalytics.DeleteApplicationInputProcessingConfiguratio
     ) where
 
 import Network.AWS.KinesisAnalytics.Types
-import Network.AWS.KinesisAnalytics.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 
 -- | /See:/ 'deleteApplicationInputProcessingConfiguration' smart constructor.
-data DeleteApplicationInputProcessingConfiguration =
-  DeleteApplicationInputProcessingConfiguration'
-    { _daipcApplicationName             :: !Text
-    , _daipcCurrentApplicationVersionId :: !Nat
-    , _daipcInputId                     :: !Text
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data DeleteApplicationInputProcessingConfiguration = DeleteApplicationInputProcessingConfiguration'{_daipcApplicationName
+                                                                                                    ::
+                                                                                                    !Text,
+                                                                                                    _daipcCurrentApplicationVersionId
+                                                                                                    ::
+                                                                                                    !Nat,
+                                                                                                    _daipcInputId
+                                                                                                    ::
+                                                                                                    !Text}
+                                                       deriving (Eq, Read, Show,
+                                                                 Data, Typeable,
+                                                                 Generic)
 
 -- | Creates a value of 'DeleteApplicationInputProcessingConfiguration' with the minimum fields required to make a request.
 --
@@ -69,13 +72,16 @@ deleteApplicationInputProcessingConfiguration
     -> Natural -- ^ 'daipcCurrentApplicationVersionId'
     -> Text -- ^ 'daipcInputId'
     -> DeleteApplicationInputProcessingConfiguration
-deleteApplicationInputProcessingConfiguration pApplicationName_ pCurrentApplicationVersionId_ pInputId_ =
-  DeleteApplicationInputProcessingConfiguration'
-    { _daipcApplicationName = pApplicationName_
-    , _daipcCurrentApplicationVersionId = _Nat # pCurrentApplicationVersionId_
-    , _daipcInputId = pInputId_
-    }
-
+deleteApplicationInputProcessingConfiguration
+  pApplicationName_ pCurrentApplicationVersionId_
+  pInputId_
+  = DeleteApplicationInputProcessingConfiguration'{_daipcApplicationName
+                                                     = pApplicationName_,
+                                                   _daipcCurrentApplicationVersionId
+                                                     =
+                                                     _Nat #
+                                                       pCurrentApplicationVersionId_,
+                                                   _daipcInputId = pInputId_}
 
 -- | The Kinesis Analytics application name.
 daipcApplicationName :: Lens' DeleteApplicationInputProcessingConfiguration Text
@@ -146,12 +152,15 @@ instance ToQuery
         toQuery = const mempty
 
 -- | /See:/ 'deleteApplicationInputProcessingConfigurationResponse' smart constructor.
-newtype DeleteApplicationInputProcessingConfigurationResponse =
-  DeleteApplicationInputProcessingConfigurationResponse'
-    { _daipcrsResponseStatus :: Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+newtype DeleteApplicationInputProcessingConfigurationResponse = DeleteApplicationInputProcessingConfigurationResponse'{_daipcrsResponseStatus
+                                                                                                                       ::
+                                                                                                                       Int}
+                                                                  deriving (Eq,
+                                                                            Read,
+                                                                            Show,
+                                                                            Data,
+                                                                            Typeable,
+                                                                            Generic)
 
 -- | Creates a value of 'DeleteApplicationInputProcessingConfigurationResponse' with the minimum fields required to make a request.
 --
@@ -161,10 +170,10 @@ newtype DeleteApplicationInputProcessingConfigurationResponse =
 deleteApplicationInputProcessingConfigurationResponse
     :: Int -- ^ 'daipcrsResponseStatus'
     -> DeleteApplicationInputProcessingConfigurationResponse
-deleteApplicationInputProcessingConfigurationResponse pResponseStatus_ =
-  DeleteApplicationInputProcessingConfigurationResponse'
-    {_daipcrsResponseStatus = pResponseStatus_}
-
+deleteApplicationInputProcessingConfigurationResponse
+  pResponseStatus_
+  = DeleteApplicationInputProcessingConfigurationResponse'{_daipcrsResponseStatus
+                                                             = pResponseStatus_}
 
 -- | -- | The response status code.
 daipcrsResponseStatus :: Lens' DeleteApplicationInputProcessingConfigurationResponse Int

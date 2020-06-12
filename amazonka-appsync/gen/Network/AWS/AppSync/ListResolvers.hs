@@ -44,7 +44,6 @@ module Network.AWS.AppSync.ListResolvers
     ) where
 
 import Network.AWS.AppSync.Types
-import Network.AWS.AppSync.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Pager
 import Network.AWS.Prelude
@@ -52,21 +51,17 @@ import Network.AWS.Request
 import Network.AWS.Response
 
 -- | /See:/ 'listResolvers' smart constructor.
-data ListResolvers =
-  ListResolvers'
-    { _lrNextToken  :: !(Maybe Text)
-    , _lrMaxResults :: !(Maybe Nat)
-    , _lrApiId      :: !Text
-    , _lrTypeName   :: !Text
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data ListResolvers = ListResolvers'{_lrNextToken ::
+                                    !(Maybe Text),
+                                    _lrMaxResults :: !(Maybe Nat),
+                                    _lrApiId :: !Text, _lrTypeName :: !Text}
+                       deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'ListResolvers' with the minimum fields required to make a request.
 --
 -- Use one of the following lenses to modify other fields as desired:
 --
--- * 'lrNextToken' - An identifier that was returned from the previous call to this operation, which can be used to return the next set of items in the list.
+-- * 'lrNextToken' - An identifier that was returned from the previous call to this operation, which can be used to return the next set of items in the list. 
 --
 -- * 'lrMaxResults' - The maximum number of results you want the request to return.
 --
@@ -77,16 +72,12 @@ listResolvers
     :: Text -- ^ 'lrApiId'
     -> Text -- ^ 'lrTypeName'
     -> ListResolvers
-listResolvers pApiId_ pTypeName_ =
-  ListResolvers'
-    { _lrNextToken = Nothing
-    , _lrMaxResults = Nothing
-    , _lrApiId = pApiId_
-    , _lrTypeName = pTypeName_
-    }
+listResolvers pApiId_ pTypeName_
+  = ListResolvers'{_lrNextToken = Nothing,
+                   _lrMaxResults = Nothing, _lrApiId = pApiId_,
+                   _lrTypeName = pTypeName_}
 
-
--- | An identifier that was returned from the previous call to this operation, which can be used to return the next set of items in the list.
+-- | An identifier that was returned from the previous call to this operation, which can be used to return the next set of items in the list. 
 lrNextToken :: Lens' ListResolvers (Maybe Text)
 lrNextToken = lens _lrNextToken (\ s a -> s{_lrNextToken = a})
 
@@ -144,14 +135,13 @@ instance ToQuery ListResolvers where
                "maxResults" =: _lrMaxResults]
 
 -- | /See:/ 'listResolversResponse' smart constructor.
-data ListResolversResponse =
-  ListResolversResponse'
-    { _lrrsNextToken      :: !(Maybe Text)
-    , _lrrsResolvers      :: !(Maybe [Resolver])
-    , _lrrsResponseStatus :: !Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data ListResolversResponse = ListResolversResponse'{_lrrsNextToken
+                                                    :: !(Maybe Text),
+                                                    _lrrsResolvers ::
+                                                    !(Maybe [Resolver]),
+                                                    _lrrsResponseStatus :: !Int}
+                               deriving (Eq, Read, Show, Data, Typeable,
+                                         Generic)
 
 -- | Creates a value of 'ListResolversResponse' with the minimum fields required to make a request.
 --
@@ -165,13 +155,10 @@ data ListResolversResponse =
 listResolversResponse
     :: Int -- ^ 'lrrsResponseStatus'
     -> ListResolversResponse
-listResolversResponse pResponseStatus_ =
-  ListResolversResponse'
-    { _lrrsNextToken = Nothing
-    , _lrrsResolvers = Nothing
-    , _lrrsResponseStatus = pResponseStatus_
-    }
-
+listResolversResponse pResponseStatus_
+  = ListResolversResponse'{_lrrsNextToken = Nothing,
+                           _lrrsResolvers = Nothing,
+                           _lrrsResponseStatus = pResponseStatus_}
 
 -- | An identifier to be passed in the next request to this operation to return the next set of items in the list.
 lrrsNextToken :: Lens' ListResolversResponse (Maybe Text)

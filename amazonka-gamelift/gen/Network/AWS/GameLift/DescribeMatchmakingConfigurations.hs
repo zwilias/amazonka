@@ -18,24 +18,24 @@
 -- Stability   : auto-generated
 -- Portability : non-portable (GHC extensions)
 --
--- Retrieves the details of FlexMatch matchmaking configurations. with this operation, you have the following options: (1) retrieve all existing configurations, (2) provide the names of one or more configurations to retrieve, or (3) retrieve all configurations that use a specified rule set name. When requesting multiple items, use the pagination parameters to retrieve results as a set of sequential pages. If successful, a configuration is returned for each requested name. When specifying a list of names, only configurations that currently exist are returned.
+-- Retrieves the details of FlexMatch matchmaking configurations. with this operation, you have the following options: (1) retrieve all existing configurations, (2) provide the names of one or more configurations to retrieve, or (3) retrieve all configurations that use a specified rule set name. When requesting multiple items, use the pagination parameters to retrieve results as a set of sequential pages. If successful, a configuration is returned for each requested name. When specifying a list of names, only configurations that currently exist are returned. 
 --
 --
 -- Operations related to match configurations and rule sets include:
 --
---     * 'CreateMatchmakingConfiguration'
+--     * 'CreateMatchmakingConfiguration' 
 --
---     * 'DescribeMatchmakingConfigurations'
+--     * 'DescribeMatchmakingConfigurations' 
 --
---     * 'UpdateMatchmakingConfiguration'
+--     * 'UpdateMatchmakingConfiguration' 
 --
---     * 'DeleteMatchmakingConfiguration'
+--     * 'DeleteMatchmakingConfiguration' 
 --
---     * 'CreateMatchmakingRuleSet'
+--     * 'CreateMatchmakingRuleSet' 
 --
---     * 'DescribeMatchmakingRuleSets'
+--     * 'DescribeMatchmakingRuleSets' 
 --
---     * 'ValidateMatchmakingRuleSet'
+--     * 'ValidateMatchmakingRuleSet' 
 --
 --
 --
@@ -60,7 +60,6 @@ module Network.AWS.GameLift.DescribeMatchmakingConfigurations
     ) where
 
 import Network.AWS.GameLift.Types
-import Network.AWS.GameLift.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.Request
@@ -71,15 +70,24 @@ import Network.AWS.Response
 --
 --
 -- /See:/ 'describeMatchmakingConfigurations' smart constructor.
-data DescribeMatchmakingConfigurations =
-  DescribeMatchmakingConfigurations'
-    { _dmcRuleSetName :: !(Maybe Text)
-    , _dmcNextToken   :: !(Maybe Text)
-    , _dmcNames       :: !(Maybe [Text])
-    , _dmcLimit       :: !(Maybe Nat)
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data DescribeMatchmakingConfigurations = DescribeMatchmakingConfigurations'{_dmcRuleSetName
+                                                                            ::
+                                                                            !(Maybe
+                                                                                Text),
+                                                                            _dmcNextToken
+                                                                            ::
+                                                                            !(Maybe
+                                                                                Text),
+                                                                            _dmcNames
+                                                                            ::
+                                                                            !(Maybe
+                                                                                [Text]),
+                                                                            _dmcLimit
+                                                                            ::
+                                                                            !(Maybe
+                                                                                Nat)}
+                                           deriving (Eq, Read, Show, Data,
+                                                     Typeable, Generic)
 
 -- | Creates a value of 'DescribeMatchmakingConfigurations' with the minimum fields required to make a request.
 --
@@ -94,14 +102,11 @@ data DescribeMatchmakingConfigurations =
 -- * 'dmcLimit' - Maximum number of results to return. Use this parameter with @NextToken@ to get results as a set of sequential pages. This parameter is limited to 10.
 describeMatchmakingConfigurations
     :: DescribeMatchmakingConfigurations
-describeMatchmakingConfigurations =
-  DescribeMatchmakingConfigurations'
-    { _dmcRuleSetName = Nothing
-    , _dmcNextToken = Nothing
-    , _dmcNames = Nothing
-    , _dmcLimit = Nothing
-    }
-
+describeMatchmakingConfigurations
+  = DescribeMatchmakingConfigurations'{_dmcRuleSetName
+                                         = Nothing,
+                                       _dmcNextToken = Nothing,
+                                       _dmcNames = Nothing, _dmcLimit = Nothing}
 
 -- | Unique identifier for a matchmaking rule set. Use this parameter to retrieve all matchmaking configurations that use this rule set.
 dmcRuleSetName :: Lens' DescribeMatchmakingConfigurations (Maybe Text)
@@ -172,14 +177,20 @@ instance ToQuery DescribeMatchmakingConfigurations
 --
 --
 -- /See:/ 'describeMatchmakingConfigurationsResponse' smart constructor.
-data DescribeMatchmakingConfigurationsResponse =
-  DescribeMatchmakingConfigurationsResponse'
-    { _dmcsrsConfigurations :: !(Maybe [MatchmakingConfiguration])
-    , _dmcsrsNextToken      :: !(Maybe Text)
-    , _dmcsrsResponseStatus :: !Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data DescribeMatchmakingConfigurationsResponse = DescribeMatchmakingConfigurationsResponse'{_dmcsrsConfigurations
+                                                                                            ::
+                                                                                            !(Maybe
+                                                                                                [MatchmakingConfiguration]),
+                                                                                            _dmcsrsNextToken
+                                                                                            ::
+                                                                                            !(Maybe
+                                                                                                Text),
+                                                                                            _dmcsrsResponseStatus
+                                                                                            ::
+                                                                                            !Int}
+                                                   deriving (Eq, Read, Show,
+                                                             Data, Typeable,
+                                                             Generic)
 
 -- | Creates a value of 'DescribeMatchmakingConfigurationsResponse' with the minimum fields required to make a request.
 --
@@ -193,13 +204,13 @@ data DescribeMatchmakingConfigurationsResponse =
 describeMatchmakingConfigurationsResponse
     :: Int -- ^ 'dmcsrsResponseStatus'
     -> DescribeMatchmakingConfigurationsResponse
-describeMatchmakingConfigurationsResponse pResponseStatus_ =
-  DescribeMatchmakingConfigurationsResponse'
-    { _dmcsrsConfigurations = Nothing
-    , _dmcsrsNextToken = Nothing
-    , _dmcsrsResponseStatus = pResponseStatus_
-    }
-
+describeMatchmakingConfigurationsResponse
+  pResponseStatus_
+  = DescribeMatchmakingConfigurationsResponse'{_dmcsrsConfigurations
+                                                 = Nothing,
+                                               _dmcsrsNextToken = Nothing,
+                                               _dmcsrsResponseStatus =
+                                                 pResponseStatus_}
 
 -- | Collection of requested matchmaking configuration objects.
 dmcsrsConfigurations :: Lens' DescribeMatchmakingConfigurationsResponse [MatchmakingConfiguration]

@@ -40,19 +40,17 @@ module Network.AWS.CloudFront.CreateFieldLevelEncryptionProfile
     ) where
 
 import Network.AWS.CloudFront.Types
-import Network.AWS.CloudFront.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 
 -- | /See:/ 'createFieldLevelEncryptionProfile' smart constructor.
-newtype CreateFieldLevelEncryptionProfile =
-  CreateFieldLevelEncryptionProfile'
-    { _cflepFieldLevelEncryptionProfileConfig :: FieldLevelEncryptionProfileConfig
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+newtype CreateFieldLevelEncryptionProfile = CreateFieldLevelEncryptionProfile'{_cflepFieldLevelEncryptionProfileConfig
+                                                                               ::
+                                                                               FieldLevelEncryptionProfileConfig}
+                                              deriving (Eq, Read, Show, Data,
+                                                        Typeable, Generic)
 
 -- | Creates a value of 'CreateFieldLevelEncryptionProfile' with the minimum fields required to make a request.
 --
@@ -62,12 +60,10 @@ newtype CreateFieldLevelEncryptionProfile =
 createFieldLevelEncryptionProfile
     :: FieldLevelEncryptionProfileConfig -- ^ 'cflepFieldLevelEncryptionProfileConfig'
     -> CreateFieldLevelEncryptionProfile
-createFieldLevelEncryptionProfile pFieldLevelEncryptionProfileConfig_ =
-  CreateFieldLevelEncryptionProfile'
-    { _cflepFieldLevelEncryptionProfileConfig =
-        pFieldLevelEncryptionProfileConfig_
-    }
-
+createFieldLevelEncryptionProfile
+  pFieldLevelEncryptionProfileConfig_
+  = CreateFieldLevelEncryptionProfile'{_cflepFieldLevelEncryptionProfileConfig
+                                         = pFieldLevelEncryptionProfileConfig_}
 
 -- | The request to create a field-level encryption profile.
 cflepFieldLevelEncryptionProfileConfig :: Lens' CreateFieldLevelEncryptionProfile FieldLevelEncryptionProfileConfig
@@ -114,15 +110,24 @@ instance ToQuery CreateFieldLevelEncryptionProfile
         toQuery = const mempty
 
 -- | /See:/ 'createFieldLevelEncryptionProfileResponse' smart constructor.
-data CreateFieldLevelEncryptionProfileResponse =
-  CreateFieldLevelEncryptionProfileResponse'
-    { _cfleprsETag :: !(Maybe Text)
-    , _cfleprsLocation :: !(Maybe Text)
-    , _cfleprsFieldLevelEncryptionProfile :: !(Maybe FieldLevelEncryptionProfile)
-    , _cfleprsResponseStatus :: !Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data CreateFieldLevelEncryptionProfileResponse = CreateFieldLevelEncryptionProfileResponse'{_cfleprsETag
+                                                                                            ::
+                                                                                            !(Maybe
+                                                                                                Text),
+                                                                                            _cfleprsLocation
+                                                                                            ::
+                                                                                            !(Maybe
+                                                                                                Text),
+                                                                                            _cfleprsFieldLevelEncryptionProfile
+                                                                                            ::
+                                                                                            !(Maybe
+                                                                                                FieldLevelEncryptionProfile),
+                                                                                            _cfleprsResponseStatus
+                                                                                            ::
+                                                                                            !Int}
+                                                   deriving (Eq, Read, Show,
+                                                             Data, Typeable,
+                                                             Generic)
 
 -- | Creates a value of 'CreateFieldLevelEncryptionProfileResponse' with the minimum fields required to make a request.
 --
@@ -138,14 +143,15 @@ data CreateFieldLevelEncryptionProfileResponse =
 createFieldLevelEncryptionProfileResponse
     :: Int -- ^ 'cfleprsResponseStatus'
     -> CreateFieldLevelEncryptionProfileResponse
-createFieldLevelEncryptionProfileResponse pResponseStatus_ =
-  CreateFieldLevelEncryptionProfileResponse'
-    { _cfleprsETag = Nothing
-    , _cfleprsLocation = Nothing
-    , _cfleprsFieldLevelEncryptionProfile = Nothing
-    , _cfleprsResponseStatus = pResponseStatus_
-    }
-
+createFieldLevelEncryptionProfileResponse
+  pResponseStatus_
+  = CreateFieldLevelEncryptionProfileResponse'{_cfleprsETag
+                                                 = Nothing,
+                                               _cfleprsLocation = Nothing,
+                                               _cfleprsFieldLevelEncryptionProfile
+                                                 = Nothing,
+                                               _cfleprsResponseStatus =
+                                                 pResponseStatus_}
 
 -- | The current version of the field level encryption profile. For example: @E2QWRUHAPOMQZL@ .
 cfleprsETag :: Lens' CreateFieldLevelEncryptionProfileResponse (Maybe Text)

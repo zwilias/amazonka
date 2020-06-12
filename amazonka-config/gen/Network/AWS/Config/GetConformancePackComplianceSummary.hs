@@ -41,21 +41,26 @@ module Network.AWS.Config.GetConformancePackComplianceSummary
     ) where
 
 import Network.AWS.Config.Types
-import Network.AWS.Config.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 
 -- | /See:/ 'getConformancePackComplianceSummary' smart constructor.
-data GetConformancePackComplianceSummary =
-  GetConformancePackComplianceSummary'
-    { _gcpcsNextToken            :: !(Maybe Text)
-    , _gcpcsLimit                :: !(Maybe Nat)
-    , _gcpcsConformancePackNames :: !(List1 Text)
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data GetConformancePackComplianceSummary = GetConformancePackComplianceSummary'{_gcpcsNextToken
+                                                                                ::
+                                                                                !(Maybe
+                                                                                    Text),
+                                                                                _gcpcsLimit
+                                                                                ::
+                                                                                !(Maybe
+                                                                                    Nat),
+                                                                                _gcpcsConformancePackNames
+                                                                                ::
+                                                                                !(List1
+                                                                                    Text)}
+                                             deriving (Eq, Read, Show, Data,
+                                                       Typeable, Generic)
 
 -- | Creates a value of 'GetConformancePackComplianceSummary' with the minimum fields required to make a request.
 --
@@ -69,13 +74,13 @@ data GetConformancePackComplianceSummary =
 getConformancePackComplianceSummary
     :: NonEmpty Text -- ^ 'gcpcsConformancePackNames'
     -> GetConformancePackComplianceSummary
-getConformancePackComplianceSummary pConformancePackNames_ =
-  GetConformancePackComplianceSummary'
-    { _gcpcsNextToken = Nothing
-    , _gcpcsLimit = Nothing
-    , _gcpcsConformancePackNames = _List1 # pConformancePackNames_
-    }
-
+getConformancePackComplianceSummary
+  pConformancePackNames_
+  = GetConformancePackComplianceSummary'{_gcpcsNextToken
+                                           = Nothing,
+                                         _gcpcsLimit = Nothing,
+                                         _gcpcsConformancePackNames =
+                                           _List1 # pConformancePackNames_}
 
 -- | The nextToken string returned on a previous page that you use to get the next page of results in a paginated response.
 gcpcsNextToken :: Lens' GetConformancePackComplianceSummary (Maybe Text)
@@ -141,20 +146,27 @@ instance ToQuery GetConformancePackComplianceSummary
         toQuery = const mempty
 
 -- | /See:/ 'getConformancePackComplianceSummaryResponse' smart constructor.
-data GetConformancePackComplianceSummaryResponse =
-  GetConformancePackComplianceSummaryResponse'
-    { _gcpcsrsConformancePackComplianceSummaryList :: !(Maybe (List1 ConformancePackComplianceSummary))
-    , _gcpcsrsNextToken :: !(Maybe Text)
-    , _gcpcsrsResponseStatus :: !Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data GetConformancePackComplianceSummaryResponse = GetConformancePackComplianceSummaryResponse'{_gcpcsrsConformancePackComplianceSummaryList
+                                                                                                ::
+                                                                                                !(Maybe
+                                                                                                    (List1
+                                                                                                       ConformancePackComplianceSummary)),
+                                                                                                _gcpcsrsNextToken
+                                                                                                ::
+                                                                                                !(Maybe
+                                                                                                    Text),
+                                                                                                _gcpcsrsResponseStatus
+                                                                                                ::
+                                                                                                !Int}
+                                                     deriving (Eq, Read, Show,
+                                                               Data, Typeable,
+                                                               Generic)
 
 -- | Creates a value of 'GetConformancePackComplianceSummaryResponse' with the minimum fields required to make a request.
 --
 -- Use one of the following lenses to modify other fields as desired:
 --
--- * 'gcpcsrsConformancePackComplianceSummaryList' - A list of @ConformancePackComplianceSummary@ objects.
+-- * 'gcpcsrsConformancePackComplianceSummaryList' - A list of @ConformancePackComplianceSummary@ objects. 
 --
 -- * 'gcpcsrsNextToken' - The nextToken string returned on a previous page that you use to get the next page of results in a paginated response.
 --
@@ -162,15 +174,15 @@ data GetConformancePackComplianceSummaryResponse =
 getConformancePackComplianceSummaryResponse
     :: Int -- ^ 'gcpcsrsResponseStatus'
     -> GetConformancePackComplianceSummaryResponse
-getConformancePackComplianceSummaryResponse pResponseStatus_ =
-  GetConformancePackComplianceSummaryResponse'
-    { _gcpcsrsConformancePackComplianceSummaryList = Nothing
-    , _gcpcsrsNextToken = Nothing
-    , _gcpcsrsResponseStatus = pResponseStatus_
-    }
+getConformancePackComplianceSummaryResponse
+  pResponseStatus_
+  = GetConformancePackComplianceSummaryResponse'{_gcpcsrsConformancePackComplianceSummaryList
+                                                   = Nothing,
+                                                 _gcpcsrsNextToken = Nothing,
+                                                 _gcpcsrsResponseStatus =
+                                                   pResponseStatus_}
 
-
--- | A list of @ConformancePackComplianceSummary@ objects.
+-- | A list of @ConformancePackComplianceSummary@ objects. 
 gcpcsrsConformancePackComplianceSummaryList :: Lens' GetConformancePackComplianceSummaryResponse (Maybe (NonEmpty ConformancePackComplianceSummary))
 gcpcsrsConformancePackComplianceSummaryList = lens _gcpcsrsConformancePackComplianceSummaryList (\ s a -> s{_gcpcsrsConformancePackComplianceSummaryList = a}) . mapping _List1
 

@@ -37,18 +37,14 @@ module Network.AWS.Pinpoint.GetAPNSChannel
 
 import Network.AWS.Lens
 import Network.AWS.Pinpoint.Types
-import Network.AWS.Pinpoint.Types.Product
 import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 
 -- | /See:/ 'getAPNSChannel' smart constructor.
-newtype GetAPNSChannel =
-  GetAPNSChannel'
-    { _gacApplicationId :: Text
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+newtype GetAPNSChannel = GetAPNSChannel'{_gacApplicationId
+                                         :: Text}
+                           deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'GetAPNSChannel' with the minimum fields required to make a request.
 --
@@ -58,9 +54,9 @@ newtype GetAPNSChannel =
 getAPNSChannel
     :: Text -- ^ 'gacApplicationId'
     -> GetAPNSChannel
-getAPNSChannel pApplicationId_ =
-  GetAPNSChannel' {_gacApplicationId = pApplicationId_}
-
+getAPNSChannel pApplicationId_
+  = GetAPNSChannel'{_gacApplicationId =
+                      pApplicationId_}
 
 -- | Undocumented member.
 gacApplicationId :: Lens' GetAPNSChannel Text
@@ -96,13 +92,12 @@ instance ToQuery GetAPNSChannel where
         toQuery = const mempty
 
 -- | /See:/ 'getAPNSChannelResponse' smart constructor.
-data GetAPNSChannelResponse =
-  GetAPNSChannelResponse'
-    { _gacrsResponseStatus      :: !Int
-    , _gacrsAPNSChannelResponse :: !APNSChannelResponse
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data GetAPNSChannelResponse = GetAPNSChannelResponse'{_gacrsResponseStatus
+                                                      :: !Int,
+                                                      _gacrsAPNSChannelResponse
+                                                      :: !APNSChannelResponse}
+                                deriving (Eq, Read, Show, Data, Typeable,
+                                          Generic)
 
 -- | Creates a value of 'GetAPNSChannelResponse' with the minimum fields required to make a request.
 --
@@ -115,12 +110,11 @@ getAPNSChannelResponse
     :: Int -- ^ 'gacrsResponseStatus'
     -> APNSChannelResponse -- ^ 'gacrsAPNSChannelResponse'
     -> GetAPNSChannelResponse
-getAPNSChannelResponse pResponseStatus_ pAPNSChannelResponse_ =
-  GetAPNSChannelResponse'
-    { _gacrsResponseStatus = pResponseStatus_
-    , _gacrsAPNSChannelResponse = pAPNSChannelResponse_
-    }
-
+getAPNSChannelResponse pResponseStatus_
+  pAPNSChannelResponse_
+  = GetAPNSChannelResponse'{_gacrsResponseStatus =
+                              pResponseStatus_,
+                            _gacrsAPNSChannelResponse = pAPNSChannelResponse_}
 
 -- | -- | The response status code.
 gacrsResponseStatus :: Lens' GetAPNSChannelResponse Int

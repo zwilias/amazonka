@@ -18,7 +18,7 @@
 -- Stability   : auto-generated
 -- Portability : non-portable (GHC extensions)
 --
--- Creates a list of tags (key-value pairs) on the Lambda function. Requires the Lambda function ARN (Amazon Resource Name). If a key is specified without a value, Lambda creates a tag with the specified key and a value of null. For more information, see <http://docs.aws.amazon.com/lambda/latest/dg/tagging.html Tagging Lambda Functions> in the __AWS Lambda Developer Guide__ .
+-- Creates a list of tags (key-value pairs) on the Lambda function. Requires the Lambda function ARN (Amazon Resource Name). If a key is specified without a value, Lambda creates a tag with the specified key and a value of null. For more information, see <http://docs.aws.amazon.com/lambda/latest/dg/tagging.html Tagging Lambda Functions> in the __AWS Lambda Developer Guide__ . 
 --
 --
 module Network.AWS.Lambda.TagResource
@@ -36,20 +36,15 @@ module Network.AWS.Lambda.TagResource
     ) where
 
 import Network.AWS.Lambda.Types
-import Network.AWS.Lambda.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 
 -- | /See:/ 'tagResource' smart constructor.
-data TagResource =
-  TagResource'
-    { _trResource :: !Text
-    , _trTags     :: !(Map Text Text)
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data TagResource = TagResource'{_trResource :: !Text,
+                                _trTags :: !(Map Text Text)}
+                     deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'TagResource' with the minimum fields required to make a request.
 --
@@ -61,9 +56,9 @@ data TagResource =
 tagResource
     :: Text -- ^ 'trResource'
     -> TagResource
-tagResource pResource_ =
-  TagResource' {_trResource = pResource_, _trTags = mempty}
-
+tagResource pResource_
+  = TagResource'{_trResource = pResource_,
+                 _trTags = mempty}
 
 -- | The ARN (Amazon Resource Name) of the Lambda function. For more information, see <http://docs.aws.amazon.com/lambda/latest/dg/tagging.html Tagging Lambda Functions> in the __AWS Lambda Developer Guide__ .
 trResource :: Lens' TagResource Text
@@ -97,16 +92,13 @@ instance ToQuery TagResource where
         toQuery = const mempty
 
 -- | /See:/ 'tagResourceResponse' smart constructor.
-data TagResourceResponse =
-  TagResourceResponse'
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data TagResourceResponse = TagResourceResponse'
+                             deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'TagResourceResponse' with the minimum fields required to make a request.
 --
 tagResourceResponse
     :: TagResourceResponse
 tagResourceResponse = TagResourceResponse'
-
 
 instance NFData TagResourceResponse where

@@ -18,7 +18,7 @@
 -- Stability   : auto-generated
 -- Portability : non-portable (GHC extensions)
 --
--- Adds or updates the remediation configuration with a specific AWS Config rule with the selected target or action. The API creates the @RemediationConfiguration@ object for the AWS Config rule. The AWS Config rule must already exist for you to add a remediation configuration. The target (SSM document) must exist and have permissions to use the target.
+-- Adds or updates the remediation configuration with a specific AWS Config rule with the selected target or action. The API creates the @RemediationConfiguration@ object for the AWS Config rule. The AWS Config rule must already exist for you to add a remediation configuration. The target (SSM document) must exist and have permissions to use the target. 
 --
 --
 module Network.AWS.Config.PutRemediationConfigurations
@@ -38,19 +38,17 @@ module Network.AWS.Config.PutRemediationConfigurations
     ) where
 
 import Network.AWS.Config.Types
-import Network.AWS.Config.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 
 -- | /See:/ 'putRemediationConfigurations' smart constructor.
-newtype PutRemediationConfigurations =
-  PutRemediationConfigurations'
-    { _prcRemediationConfigurations :: [RemediationConfiguration]
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+newtype PutRemediationConfigurations = PutRemediationConfigurations'{_prcRemediationConfigurations
+                                                                     ::
+                                                                     [RemediationConfiguration]}
+                                         deriving (Eq, Read, Show, Data,
+                                                   Typeable, Generic)
 
 -- | Creates a value of 'PutRemediationConfigurations' with the minimum fields required to make a request.
 --
@@ -59,9 +57,9 @@ newtype PutRemediationConfigurations =
 -- * 'prcRemediationConfigurations' - A list of remediation configuration objects.
 putRemediationConfigurations
     :: PutRemediationConfigurations
-putRemediationConfigurations =
-  PutRemediationConfigurations' {_prcRemediationConfigurations = mempty}
-
+putRemediationConfigurations
+  = PutRemediationConfigurations'{_prcRemediationConfigurations
+                                    = mempty}
 
 -- | A list of remediation configuration objects.
 prcRemediationConfigurations :: Lens' PutRemediationConfigurations [RemediationConfiguration]
@@ -108,13 +106,15 @@ instance ToQuery PutRemediationConfigurations where
         toQuery = const mempty
 
 -- | /See:/ 'putRemediationConfigurationsResponse' smart constructor.
-data PutRemediationConfigurationsResponse =
-  PutRemediationConfigurationsResponse'
-    { _prcrsFailedBatches  :: !(Maybe [FailedRemediationBatch])
-    , _prcrsResponseStatus :: !Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data PutRemediationConfigurationsResponse = PutRemediationConfigurationsResponse'{_prcrsFailedBatches
+                                                                                  ::
+                                                                                  !(Maybe
+                                                                                      [FailedRemediationBatch]),
+                                                                                  _prcrsResponseStatus
+                                                                                  ::
+                                                                                  !Int}
+                                              deriving (Eq, Read, Show, Data,
+                                                        Typeable, Generic)
 
 -- | Creates a value of 'PutRemediationConfigurationsResponse' with the minimum fields required to make a request.
 --
@@ -126,10 +126,11 @@ data PutRemediationConfigurationsResponse =
 putRemediationConfigurationsResponse
     :: Int -- ^ 'prcrsResponseStatus'
     -> PutRemediationConfigurationsResponse
-putRemediationConfigurationsResponse pResponseStatus_ =
-  PutRemediationConfigurationsResponse'
-    {_prcrsFailedBatches = Nothing, _prcrsResponseStatus = pResponseStatus_}
-
+putRemediationConfigurationsResponse pResponseStatus_
+  = PutRemediationConfigurationsResponse'{_prcrsFailedBatches
+                                            = Nothing,
+                                          _prcrsResponseStatus =
+                                            pResponseStatus_}
 
 -- | Returns a list of failed remediation batch objects.
 prcrsFailedBatches :: Lens' PutRemediationConfigurationsResponse [FailedRemediationBatch]

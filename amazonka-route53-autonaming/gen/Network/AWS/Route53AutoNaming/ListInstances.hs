@@ -48,17 +48,13 @@ import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 import Network.AWS.Route53AutoNaming.Types
-import Network.AWS.Route53AutoNaming.Types.Product
 
 -- | /See:/ 'listInstances' smart constructor.
-data ListInstances =
-  ListInstances'
-    { _liNextToken  :: !(Maybe Text)
-    , _liMaxResults :: !(Maybe Nat)
-    , _liServiceId  :: !Text
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data ListInstances = ListInstances'{_liNextToken ::
+                                    !(Maybe Text),
+                                    _liMaxResults :: !(Maybe Nat),
+                                    _liServiceId :: !Text}
+                       deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'ListInstances' with the minimum fields required to make a request.
 --
@@ -72,13 +68,9 @@ data ListInstances =
 listInstances
     :: Text -- ^ 'liServiceId'
     -> ListInstances
-listInstances pServiceId_ =
-  ListInstances'
-    { _liNextToken = Nothing
-    , _liMaxResults = Nothing
-    , _liServiceId = pServiceId_
-    }
-
+listInstances pServiceId_
+  = ListInstances'{_liNextToken = Nothing,
+                   _liMaxResults = Nothing, _liServiceId = pServiceId_}
 
 -- | For the first @ListInstances@ request, omit this value. If more than @MaxResults@ instances match the specified criteria, you can submit another @ListInstances@ request to get the next group of results. Specify the value of @NextToken@ from the previous response in the next request.
 liNextToken :: Lens' ListInstances (Maybe Text)
@@ -139,14 +131,13 @@ instance ToQuery ListInstances where
         toQuery = const mempty
 
 -- | /See:/ 'listInstancesResponse' smart constructor.
-data ListInstancesResponse =
-  ListInstancesResponse'
-    { _lirsNextToken      :: !(Maybe Text)
-    , _lirsInstances      :: !(Maybe [InstanceSummary])
-    , _lirsResponseStatus :: !Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data ListInstancesResponse = ListInstancesResponse'{_lirsNextToken
+                                                    :: !(Maybe Text),
+                                                    _lirsInstances ::
+                                                    !(Maybe [InstanceSummary]),
+                                                    _lirsResponseStatus :: !Int}
+                               deriving (Eq, Read, Show, Data, Typeable,
+                                         Generic)
 
 -- | Creates a value of 'ListInstancesResponse' with the minimum fields required to make a request.
 --
@@ -160,13 +151,10 @@ data ListInstancesResponse =
 listInstancesResponse
     :: Int -- ^ 'lirsResponseStatus'
     -> ListInstancesResponse
-listInstancesResponse pResponseStatus_ =
-  ListInstancesResponse'
-    { _lirsNextToken = Nothing
-    , _lirsInstances = Nothing
-    , _lirsResponseStatus = pResponseStatus_
-    }
-
+listInstancesResponse pResponseStatus_
+  = ListInstancesResponse'{_lirsNextToken = Nothing,
+                           _lirsInstances = Nothing,
+                           _lirsResponseStatus = pResponseStatus_}
 
 -- | If more than @MaxResults@ instances match the specified criteria, you can submit another @ListInstances@ request to get the next group of results. Specify the value of @NextToken@ from the previous response in the next request.
 lirsNextToken :: Lens' ListInstancesResponse (Maybe Text)

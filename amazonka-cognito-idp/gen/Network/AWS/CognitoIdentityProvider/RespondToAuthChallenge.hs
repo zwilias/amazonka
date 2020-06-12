@@ -47,7 +47,6 @@ module Network.AWS.CognitoIdentityProvider.RespondToAuthChallenge
     ) where
 
 import Network.AWS.CognitoIdentityProvider.Types
-import Network.AWS.CognitoIdentityProvider.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.Request
@@ -58,18 +57,24 @@ import Network.AWS.Response
 --
 --
 -- /See:/ 'respondToAuthChallenge' smart constructor.
-data RespondToAuthChallenge =
-  RespondToAuthChallenge'
-    { _rtacClientMetadata     :: !(Maybe (Map Text Text))
-    , _rtacAnalyticsMetadata  :: !(Maybe AnalyticsMetadataType)
-    , _rtacChallengeResponses :: !(Maybe (Map Text Text))
-    , _rtacUserContextData    :: !(Maybe UserContextDataType)
-    , _rtacSession            :: !(Maybe Text)
-    , _rtacClientId           :: !(Sensitive Text)
-    , _rtacChallengeName      :: !ChallengeNameType
-    }
-  deriving (Eq, Show, Data, Typeable, Generic)
-
+data RespondToAuthChallenge = RespondToAuthChallenge'{_rtacClientMetadata
+                                                      ::
+                                                      !(Maybe (Map Text Text)),
+                                                      _rtacAnalyticsMetadata ::
+                                                      !(Maybe
+                                                          AnalyticsMetadataType),
+                                                      _rtacChallengeResponses ::
+                                                      !(Maybe (Map Text Text)),
+                                                      _rtacUserContextData ::
+                                                      !(Maybe
+                                                          UserContextDataType),
+                                                      _rtacSession ::
+                                                      !(Maybe Text),
+                                                      _rtacClientId ::
+                                                      !(Sensitive Text),
+                                                      _rtacChallengeName ::
+                                                      !ChallengeNameType}
+                                deriving (Eq, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'RespondToAuthChallenge' with the minimum fields required to make a request.
 --
@@ -92,17 +97,15 @@ respondToAuthChallenge
     :: Text -- ^ 'rtacClientId'
     -> ChallengeNameType -- ^ 'rtacChallengeName'
     -> RespondToAuthChallenge
-respondToAuthChallenge pClientId_ pChallengeName_ =
-  RespondToAuthChallenge'
-    { _rtacClientMetadata = Nothing
-    , _rtacAnalyticsMetadata = Nothing
-    , _rtacChallengeResponses = Nothing
-    , _rtacUserContextData = Nothing
-    , _rtacSession = Nothing
-    , _rtacClientId = _Sensitive # pClientId_
-    , _rtacChallengeName = pChallengeName_
-    }
-
+respondToAuthChallenge pClientId_ pChallengeName_
+  = RespondToAuthChallenge'{_rtacClientMetadata =
+                              Nothing,
+                            _rtacAnalyticsMetadata = Nothing,
+                            _rtacChallengeResponses = Nothing,
+                            _rtacUserContextData = Nothing,
+                            _rtacSession = Nothing,
+                            _rtacClientId = _Sensitive # pClientId_,
+                            _rtacChallengeName = pChallengeName_}
 
 -- | A map of custom key-value pairs that you can provide as input for any custom workflows that this action triggers.  You create custom workflows by assigning AWS Lambda functions to user pool triggers. When you use the RespondToAuthChallenge API action, Amazon Cognito invokes any functions that are assigned to the following triggers: /post authentication/ , /pre token generation/ , /define auth challenge/ , /create auth challenge/ , and /verify auth challenge/ . When Amazon Cognito invokes any of these functions, it passes a JSON payload, which the function receives as input. This payload contains a @clientMetadata@ attribute, which provides the data that you assigned to the ClientMetadata parameter in your RespondToAuthChallenge request. In your function code in AWS Lambda, you can process the @clientMetadata@ value to enhance your workflow for your specific needs. For more information, see <https://docs.aws.amazon.com/cognito/latest/developerguide/cognito-user-identity-pools-working-with-aws-lambda-triggers.html Customizing User Pool Workflows with Lambda Triggers> in the /Amazon Cognito Developer Guide/ .
 rtacClientMetadata :: Lens' RespondToAuthChallenge (HashMap Text Text)
@@ -184,16 +187,28 @@ instance ToQuery RespondToAuthChallenge where
 --
 --
 -- /See:/ 'respondToAuthChallengeResponse' smart constructor.
-data RespondToAuthChallengeResponse =
-  RespondToAuthChallengeResponse'
-    { _rtacrsChallengeName        :: !(Maybe ChallengeNameType)
-    , _rtacrsChallengeParameters  :: !(Maybe (Map Text Text))
-    , _rtacrsAuthenticationResult :: !(Maybe AuthenticationResultType)
-    , _rtacrsSession              :: !(Maybe Text)
-    , _rtacrsResponseStatus       :: !Int
-    }
-  deriving (Eq, Show, Data, Typeable, Generic)
-
+data RespondToAuthChallengeResponse = RespondToAuthChallengeResponse'{_rtacrsChallengeName
+                                                                      ::
+                                                                      !(Maybe
+                                                                          ChallengeNameType),
+                                                                      _rtacrsChallengeParameters
+                                                                      ::
+                                                                      !(Maybe
+                                                                          (Map
+                                                                             Text
+                                                                             Text)),
+                                                                      _rtacrsAuthenticationResult
+                                                                      ::
+                                                                      !(Maybe
+                                                                          AuthenticationResultType),
+                                                                      _rtacrsSession
+                                                                      ::
+                                                                      !(Maybe
+                                                                          Text),
+                                                                      _rtacrsResponseStatus
+                                                                      :: !Int}
+                                        deriving (Eq, Show, Data, Typeable,
+                                                  Generic)
 
 -- | Creates a value of 'RespondToAuthChallengeResponse' with the minimum fields required to make a request.
 --
@@ -211,15 +226,13 @@ data RespondToAuthChallengeResponse =
 respondToAuthChallengeResponse
     :: Int -- ^ 'rtacrsResponseStatus'
     -> RespondToAuthChallengeResponse
-respondToAuthChallengeResponse pResponseStatus_ =
-  RespondToAuthChallengeResponse'
-    { _rtacrsChallengeName = Nothing
-    , _rtacrsChallengeParameters = Nothing
-    , _rtacrsAuthenticationResult = Nothing
-    , _rtacrsSession = Nothing
-    , _rtacrsResponseStatus = pResponseStatus_
-    }
-
+respondToAuthChallengeResponse pResponseStatus_
+  = RespondToAuthChallengeResponse'{_rtacrsChallengeName
+                                      = Nothing,
+                                    _rtacrsChallengeParameters = Nothing,
+                                    _rtacrsAuthenticationResult = Nothing,
+                                    _rtacrsSession = Nothing,
+                                    _rtacrsResponseStatus = pResponseStatus_}
 
 -- | The challenge name. For more information, see .
 rtacrsChallengeName :: Lens' RespondToAuthChallengeResponse (Maybe ChallengeNameType)

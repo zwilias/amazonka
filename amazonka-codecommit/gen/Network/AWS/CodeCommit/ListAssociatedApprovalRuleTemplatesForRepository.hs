@@ -41,21 +41,27 @@ module Network.AWS.CodeCommit.ListAssociatedApprovalRuleTemplatesForRepository
     ) where
 
 import Network.AWS.CodeCommit.Types
-import Network.AWS.CodeCommit.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 
 -- | /See:/ 'listAssociatedApprovalRuleTemplatesForRepository' smart constructor.
-data ListAssociatedApprovalRuleTemplatesForRepository =
-  ListAssociatedApprovalRuleTemplatesForRepository'
-    { _laartfrNextToken      :: !(Maybe Text)
-    , _laartfrMaxResults     :: !(Maybe Int)
-    , _laartfrRepositoryName :: !Text
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data ListAssociatedApprovalRuleTemplatesForRepository = ListAssociatedApprovalRuleTemplatesForRepository'{_laartfrNextToken
+                                                                                                          ::
+                                                                                                          !(Maybe
+                                                                                                              Text),
+                                                                                                          _laartfrMaxResults
+                                                                                                          ::
+                                                                                                          !(Maybe
+                                                                                                              Int),
+                                                                                                          _laartfrRepositoryName
+                                                                                                          ::
+                                                                                                          !Text}
+                                                          deriving (Eq, Read,
+                                                                    Show, Data,
+                                                                    Typeable,
+                                                                    Generic)
 
 -- | Creates a value of 'ListAssociatedApprovalRuleTemplatesForRepository' with the minimum fields required to make a request.
 --
@@ -69,13 +75,14 @@ data ListAssociatedApprovalRuleTemplatesForRepository =
 listAssociatedApprovalRuleTemplatesForRepository
     :: Text -- ^ 'laartfrRepositoryName'
     -> ListAssociatedApprovalRuleTemplatesForRepository
-listAssociatedApprovalRuleTemplatesForRepository pRepositoryName_ =
-  ListAssociatedApprovalRuleTemplatesForRepository'
-    { _laartfrNextToken = Nothing
-    , _laartfrMaxResults = Nothing
-    , _laartfrRepositoryName = pRepositoryName_
-    }
-
+listAssociatedApprovalRuleTemplatesForRepository
+  pRepositoryName_
+  = ListAssociatedApprovalRuleTemplatesForRepository'{_laartfrNextToken
+                                                        = Nothing,
+                                                      _laartfrMaxResults =
+                                                        Nothing,
+                                                      _laartfrRepositoryName =
+                                                        pRepositoryName_}
 
 -- | An enumeration token that, when provided in a request, returns the next batch of the results.
 laartfrNextToken :: Lens' ListAssociatedApprovalRuleTemplatesForRepository (Maybe Text)
@@ -148,14 +155,23 @@ instance ToQuery
         toQuery = const mempty
 
 -- | /See:/ 'listAssociatedApprovalRuleTemplatesForRepositoryResponse' smart constructor.
-data ListAssociatedApprovalRuleTemplatesForRepositoryResponse =
-  ListAssociatedApprovalRuleTemplatesForRepositoryResponse'
-    { _laartfrrsNextToken                 :: !(Maybe Text)
-    , _laartfrrsApprovalRuleTemplateNames :: !(Maybe [Text])
-    , _laartfrrsResponseStatus            :: !Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data ListAssociatedApprovalRuleTemplatesForRepositoryResponse = ListAssociatedApprovalRuleTemplatesForRepositoryResponse'{_laartfrrsNextToken
+                                                                                                                          ::
+                                                                                                                          !(Maybe
+                                                                                                                              Text),
+                                                                                                                          _laartfrrsApprovalRuleTemplateNames
+                                                                                                                          ::
+                                                                                                                          !(Maybe
+                                                                                                                              [Text]),
+                                                                                                                          _laartfrrsResponseStatus
+                                                                                                                          ::
+                                                                                                                          !Int}
+                                                                  deriving (Eq,
+                                                                            Read,
+                                                                            Show,
+                                                                            Data,
+                                                                            Typeable,
+                                                                            Generic)
 
 -- | Creates a value of 'ListAssociatedApprovalRuleTemplatesForRepositoryResponse' with the minimum fields required to make a request.
 --
@@ -169,13 +185,15 @@ data ListAssociatedApprovalRuleTemplatesForRepositoryResponse =
 listAssociatedApprovalRuleTemplatesForRepositoryResponse
     :: Int -- ^ 'laartfrrsResponseStatus'
     -> ListAssociatedApprovalRuleTemplatesForRepositoryResponse
-listAssociatedApprovalRuleTemplatesForRepositoryResponse pResponseStatus_ =
-  ListAssociatedApprovalRuleTemplatesForRepositoryResponse'
-    { _laartfrrsNextToken = Nothing
-    , _laartfrrsApprovalRuleTemplateNames = Nothing
-    , _laartfrrsResponseStatus = pResponseStatus_
-    }
-
+listAssociatedApprovalRuleTemplatesForRepositoryResponse
+  pResponseStatus_
+  = ListAssociatedApprovalRuleTemplatesForRepositoryResponse'{_laartfrrsNextToken
+                                                                = Nothing,
+                                                              _laartfrrsApprovalRuleTemplateNames
+                                                                = Nothing,
+                                                              _laartfrrsResponseStatus
+                                                                =
+                                                                pResponseStatus_}
 
 -- | An enumeration token that allows the operation to batch the next results of the operation.
 laartfrrsNextToken :: Lens' ListAssociatedApprovalRuleTemplatesForRepositoryResponse (Maybe Text)

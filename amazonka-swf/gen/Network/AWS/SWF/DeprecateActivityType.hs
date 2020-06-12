@@ -21,7 +21,7 @@
 -- Deprecates the specified /activity type/ . After an activity type has been deprecated, you cannot create new tasks of that activity type. Tasks of this type that were scheduled before the type was deprecated continue to run.
 --
 --
--- __Access Control__
+-- __Access Control__ 
 --
 -- You can use IAM policies to control this action's access to Amazon SWF resources as follows:
 --
@@ -60,16 +60,14 @@ import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 import Network.AWS.SWF.Types
-import Network.AWS.SWF.Types.Product
 
 -- | /See:/ 'deprecateActivityType' smart constructor.
-data DeprecateActivityType =
-  DeprecateActivityType'
-    { _depDomain       :: !Text
-    , _depActivityType :: !ActivityType
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data DeprecateActivityType = DeprecateActivityType'{_depDomain
+                                                    :: !Text,
+                                                    _depActivityType ::
+                                                    !ActivityType}
+                               deriving (Eq, Read, Show, Data, Typeable,
+                                         Generic)
 
 -- | Creates a value of 'DeprecateActivityType' with the minimum fields required to make a request.
 --
@@ -82,10 +80,9 @@ deprecateActivityType
     :: Text -- ^ 'depDomain'
     -> ActivityType -- ^ 'depActivityType'
     -> DeprecateActivityType
-deprecateActivityType pDomain_ pActivityType_ =
-  DeprecateActivityType'
-    {_depDomain = pDomain_, _depActivityType = pActivityType_}
-
+deprecateActivityType pDomain_ pActivityType_
+  = DeprecateActivityType'{_depDomain = pDomain_,
+                           _depActivityType = pActivityType_}
 
 -- | The name of the domain in which the activity type is registered.
 depDomain :: Lens' DeprecateActivityType Text
@@ -129,16 +126,15 @@ instance ToQuery DeprecateActivityType where
         toQuery = const mempty
 
 -- | /See:/ 'deprecateActivityTypeResponse' smart constructor.
-data DeprecateActivityTypeResponse =
-  DeprecateActivityTypeResponse'
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data DeprecateActivityTypeResponse = DeprecateActivityTypeResponse'
+                                       deriving (Eq, Read, Show, Data, Typeable,
+                                                 Generic)
 
 -- | Creates a value of 'DeprecateActivityTypeResponse' with the minimum fields required to make a request.
 --
 deprecateActivityTypeResponse
     :: DeprecateActivityTypeResponse
-deprecateActivityTypeResponse = DeprecateActivityTypeResponse'
-
+deprecateActivityTypeResponse
+  = DeprecateActivityTypeResponse'
 
 instance NFData DeprecateActivityTypeResponse where

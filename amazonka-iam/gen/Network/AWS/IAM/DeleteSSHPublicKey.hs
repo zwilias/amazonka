@@ -38,20 +38,16 @@ module Network.AWS.IAM.DeleteSSHPublicKey
     ) where
 
 import Network.AWS.IAM.Types
-import Network.AWS.IAM.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 
 -- | /See:/ 'deleteSSHPublicKey' smart constructor.
-data DeleteSSHPublicKey =
-  DeleteSSHPublicKey'
-    { _dspkUserName       :: !Text
-    , _dspkSSHPublicKeyId :: !Text
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data DeleteSSHPublicKey = DeleteSSHPublicKey'{_dspkUserName
+                                              :: !Text,
+                                              _dspkSSHPublicKeyId :: !Text}
+                            deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'DeleteSSHPublicKey' with the minimum fields required to make a request.
 --
@@ -64,10 +60,9 @@ deleteSSHPublicKey
     :: Text -- ^ 'dspkUserName'
     -> Text -- ^ 'dspkSSHPublicKeyId'
     -> DeleteSSHPublicKey
-deleteSSHPublicKey pUserName_ pSSHPublicKeyId_ =
-  DeleteSSHPublicKey'
-    {_dspkUserName = pUserName_, _dspkSSHPublicKeyId = pSSHPublicKeyId_}
-
+deleteSSHPublicKey pUserName_ pSSHPublicKeyId_
+  = DeleteSSHPublicKey'{_dspkUserName = pUserName_,
+                        _dspkSSHPublicKeyId = pSSHPublicKeyId_}
 
 -- | The name of the IAM user associated with the SSH public key. This parameter allows (per its <http://wikipedia.org/wiki/regex regex pattern> ) a string of characters consisting of upper and lowercase alphanumeric characters with no spaces. You can also include any of the following characters: _+=,.@-
 dspkUserName :: Lens' DeleteSSHPublicKey Text
@@ -102,16 +97,15 @@ instance ToQuery DeleteSSHPublicKey where
                "SSHPublicKeyId" =: _dspkSSHPublicKeyId]
 
 -- | /See:/ 'deleteSSHPublicKeyResponse' smart constructor.
-data DeleteSSHPublicKeyResponse =
-  DeleteSSHPublicKeyResponse'
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data DeleteSSHPublicKeyResponse = DeleteSSHPublicKeyResponse'
+                                    deriving (Eq, Read, Show, Data, Typeable,
+                                              Generic)
 
 -- | Creates a value of 'DeleteSSHPublicKeyResponse' with the minimum fields required to make a request.
 --
 deleteSSHPublicKeyResponse
     :: DeleteSSHPublicKeyResponse
-deleteSSHPublicKeyResponse = DeleteSSHPublicKeyResponse'
-
+deleteSSHPublicKeyResponse
+  = DeleteSSHPublicKeyResponse'
 
 instance NFData DeleteSSHPublicKeyResponse where

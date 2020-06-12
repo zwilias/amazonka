@@ -40,21 +40,16 @@ module Network.AWS.Glue.GetJobRun
     ) where
 
 import Network.AWS.Glue.Types
-import Network.AWS.Glue.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 
 -- | /See:/ 'getJobRun' smart constructor.
-data GetJobRun =
-  GetJobRun'
-    { _gPredecessorsIncluded :: !(Maybe Bool)
-    , _gJobName              :: !Text
-    , _gRunId                :: !Text
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data GetJobRun = GetJobRun'{_gPredecessorsIncluded ::
+                            !(Maybe Bool),
+                            _gJobName :: !Text, _gRunId :: !Text}
+                   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'GetJobRun' with the minimum fields required to make a request.
 --
@@ -69,10 +64,9 @@ getJobRun
     :: Text -- ^ 'gJobName'
     -> Text -- ^ 'gRunId'
     -> GetJobRun
-getJobRun pJobName_ pRunId_ =
-  GetJobRun'
-    {_gPredecessorsIncluded = Nothing, _gJobName = pJobName_, _gRunId = pRunId_}
-
+getJobRun pJobName_ pRunId_
+  = GetJobRun'{_gPredecessorsIncluded = Nothing,
+               _gJobName = pJobName_, _gRunId = pRunId_}
 
 -- | True if a list of predecessor runs should be returned.
 gPredecessorsIncluded :: Lens' GetJobRun (Maybe Bool)
@@ -124,13 +118,10 @@ instance ToQuery GetJobRun where
         toQuery = const mempty
 
 -- | /See:/ 'getJobRunResponse' smart constructor.
-data GetJobRunResponse =
-  GetJobRunResponse'
-    { _gjrjrsJobRun         :: !(Maybe JobRun)
-    , _gjrjrsResponseStatus :: !Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data GetJobRunResponse = GetJobRunResponse'{_gjrjrsJobRun
+                                            :: !(Maybe JobRun),
+                                            _gjrjrsResponseStatus :: !Int}
+                           deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'GetJobRunResponse' with the minimum fields required to make a request.
 --
@@ -142,10 +133,9 @@ data GetJobRunResponse =
 getJobRunResponse
     :: Int -- ^ 'gjrjrsResponseStatus'
     -> GetJobRunResponse
-getJobRunResponse pResponseStatus_ =
-  GetJobRunResponse'
-    {_gjrjrsJobRun = Nothing, _gjrjrsResponseStatus = pResponseStatus_}
-
+getJobRunResponse pResponseStatus_
+  = GetJobRunResponse'{_gjrjrsJobRun = Nothing,
+                       _gjrjrsResponseStatus = pResponseStatus_}
 
 -- | The requested job-run metadata.
 gjrjrsJobRun :: Lens' GetJobRunResponse (Maybe JobRun)

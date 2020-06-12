@@ -57,7 +57,6 @@ module Network.AWS.APIGateway.PutMethod
     ) where
 
 import Network.AWS.APIGateway.Types
-import Network.AWS.APIGateway.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.Request
@@ -68,22 +67,18 @@ import Network.AWS.Response
 --
 --
 -- /See:/ 'putMethod' smart constructor.
-data PutMethod =
-  PutMethod'
-    { _putAuthorizationScopes :: !(Maybe [Text])
-    , _putRequestValidatorId  :: !(Maybe Text)
-    , _putRequestModels       :: !(Maybe (Map Text Text))
-    , _putRequestParameters   :: !(Maybe (Map Text Bool))
-    , _putAuthorizerId        :: !(Maybe Text)
-    , _putOperationName       :: !(Maybe Text)
-    , _putApiKeyRequired      :: !(Maybe Bool)
-    , _putRestAPIId           :: !Text
-    , _putResourceId          :: !Text
-    , _putHttpMethod          :: !Text
-    , _putAuthorizationType   :: !Text
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data PutMethod = PutMethod'{_putAuthorizationScopes
+                            :: !(Maybe [Text]),
+                            _putRequestValidatorId :: !(Maybe Text),
+                            _putRequestModels :: !(Maybe (Map Text Text)),
+                            _putRequestParameters :: !(Maybe (Map Text Bool)),
+                            _putAuthorizerId :: !(Maybe Text),
+                            _putOperationName :: !(Maybe Text),
+                            _putApiKeyRequired :: !(Maybe Bool),
+                            _putRestAPIId :: !Text, _putResourceId :: !Text,
+                            _putHttpMethod :: !Text,
+                            _putAuthorizationType :: !Text}
+                   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'PutMethod' with the minimum fields required to make a request.
 --
@@ -116,21 +111,19 @@ putMethod
     -> Text -- ^ 'putHttpMethod'
     -> Text -- ^ 'putAuthorizationType'
     -> PutMethod
-putMethod pRestAPIId_ pResourceId_ pHttpMethod_ pAuthorizationType_ =
-  PutMethod'
-    { _putAuthorizationScopes = Nothing
-    , _putRequestValidatorId = Nothing
-    , _putRequestModels = Nothing
-    , _putRequestParameters = Nothing
-    , _putAuthorizerId = Nothing
-    , _putOperationName = Nothing
-    , _putApiKeyRequired = Nothing
-    , _putRestAPIId = pRestAPIId_
-    , _putResourceId = pResourceId_
-    , _putHttpMethod = pHttpMethod_
-    , _putAuthorizationType = pAuthorizationType_
-    }
-
+putMethod pRestAPIId_ pResourceId_ pHttpMethod_
+  pAuthorizationType_
+  = PutMethod'{_putAuthorizationScopes = Nothing,
+               _putRequestValidatorId = Nothing,
+               _putRequestModels = Nothing,
+               _putRequestParameters = Nothing,
+               _putAuthorizerId = Nothing,
+               _putOperationName = Nothing,
+               _putApiKeyRequired = Nothing,
+               _putRestAPIId = pRestAPIId_,
+               _putResourceId = pResourceId_,
+               _putHttpMethod = pHttpMethod_,
+               _putAuthorizationType = pAuthorizationType_}
 
 -- | A list of authorization scopes configured on the method. The scopes are used with a @COGNITO_USER_POOLS@ authorizer to authorize the method invocation. The authorization works by matching the method scopes against the scopes parsed from the access token in the incoming request. The method invocation is authorized if any method scopes matches a claimed scope in the access token. Otherwise, the invocation is not authorized. When the method scope is configured, the client must provide an access token instead of an identity token for authorization purposes.
 putAuthorizationScopes :: Lens' PutMethod [Text]

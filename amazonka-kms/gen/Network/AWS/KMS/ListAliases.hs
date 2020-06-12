@@ -45,7 +45,6 @@ module Network.AWS.KMS.ListAliases
     ) where
 
 import Network.AWS.KMS.Types
-import Network.AWS.KMS.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Pager
 import Network.AWS.Prelude
@@ -53,13 +52,10 @@ import Network.AWS.Request
 import Network.AWS.Response
 
 -- | /See:/ 'listAliases' smart constructor.
-data ListAliases =
-  ListAliases'
-    { _laMarker :: !(Maybe Text)
-    , _laLimit  :: !(Maybe Nat)
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data ListAliases = ListAliases'{_laMarker ::
+                                !(Maybe Text),
+                                _laLimit :: !(Maybe Nat)}
+                     deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'ListAliases' with the minimum fields required to make a request.
 --
@@ -70,8 +66,9 @@ data ListAliases =
 -- * 'laLimit' - Use this parameter to specify the maximum number of items to return. When this value is present, AWS KMS does not return more than the specified number of items, but it might return fewer. This value is optional. If you include a value, it must be between 1 and 100, inclusive. If you do not include a value, it defaults to 50.
 listAliases
     :: ListAliases
-listAliases = ListAliases' {_laMarker = Nothing, _laLimit = Nothing}
-
+listAliases
+  = ListAliases'{_laMarker = Nothing,
+                 _laLimit = Nothing}
 
 -- | Use this parameter in a subsequent request after you receive a response with truncated results. Set it to the value of @NextMarker@ from the truncated response you just received.
 laMarker :: Lens' ListAliases (Maybe Text)
@@ -126,15 +123,14 @@ instance ToQuery ListAliases where
         toQuery = const mempty
 
 -- | /See:/ 'listAliasesResponse' smart constructor.
-data ListAliasesResponse =
-  ListAliasesResponse'
-    { _larsTruncated      :: !(Maybe Bool)
-    , _larsAliases        :: !(Maybe [AliasListEntry])
-    , _larsNextMarker     :: !(Maybe Text)
-    , _larsResponseStatus :: !Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data ListAliasesResponse = ListAliasesResponse'{_larsTruncated
+                                                :: !(Maybe Bool),
+                                                _larsAliases ::
+                                                !(Maybe [AliasListEntry]),
+                                                _larsNextMarker ::
+                                                !(Maybe Text),
+                                                _larsResponseStatus :: !Int}
+                             deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'ListAliasesResponse' with the minimum fields required to make a request.
 --
@@ -150,14 +146,10 @@ data ListAliasesResponse =
 listAliasesResponse
     :: Int -- ^ 'larsResponseStatus'
     -> ListAliasesResponse
-listAliasesResponse pResponseStatus_ =
-  ListAliasesResponse'
-    { _larsTruncated = Nothing
-    , _larsAliases = Nothing
-    , _larsNextMarker = Nothing
-    , _larsResponseStatus = pResponseStatus_
-    }
-
+listAliasesResponse pResponseStatus_
+  = ListAliasesResponse'{_larsTruncated = Nothing,
+                         _larsAliases = Nothing, _larsNextMarker = Nothing,
+                         _larsResponseStatus = pResponseStatus_}
 
 -- | A flag that indicates whether there are more items in the list. When this value is true, the list in this response is truncated. To get more items, pass the value of the @NextMarker@ element in this response to the @Marker@ parameter in a subsequent request.
 larsTruncated :: Lens' ListAliasesResponse (Maybe Bool)

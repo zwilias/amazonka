@@ -40,25 +40,25 @@ module Network.AWS.DMS.ModifyReplicationSubnetGroup
     ) where
 
 import Network.AWS.DMS.Types
-import Network.AWS.DMS.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 
--- |
+-- | 
 --
 --
 --
 -- /See:/ 'modifyReplicationSubnetGroup' smart constructor.
-data ModifyReplicationSubnetGroup =
-  ModifyReplicationSubnetGroup'
-    { _mrsgReplicationSubnetGroupDescription :: !(Maybe Text)
-    , _mrsgReplicationSubnetGroupIdentifier  :: !Text
-    , _mrsgSubnetIds                         :: ![Text]
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data ModifyReplicationSubnetGroup = ModifyReplicationSubnetGroup'{_mrsgReplicationSubnetGroupDescription
+                                                                  ::
+                                                                  !(Maybe Text),
+                                                                  _mrsgReplicationSubnetGroupIdentifier
+                                                                  :: !Text,
+                                                                  _mrsgSubnetIds
+                                                                  :: ![Text]}
+                                      deriving (Eq, Read, Show, Data, Typeable,
+                                                Generic)
 
 -- | Creates a value of 'ModifyReplicationSubnetGroup' with the minimum fields required to make a request.
 --
@@ -72,13 +72,13 @@ data ModifyReplicationSubnetGroup =
 modifyReplicationSubnetGroup
     :: Text -- ^ 'mrsgReplicationSubnetGroupIdentifier'
     -> ModifyReplicationSubnetGroup
-modifyReplicationSubnetGroup pReplicationSubnetGroupIdentifier_ =
-  ModifyReplicationSubnetGroup'
-    { _mrsgReplicationSubnetGroupDescription = Nothing
-    , _mrsgReplicationSubnetGroupIdentifier = pReplicationSubnetGroupIdentifier_
-    , _mrsgSubnetIds = mempty
-    }
-
+modifyReplicationSubnetGroup
+  pReplicationSubnetGroupIdentifier_
+  = ModifyReplicationSubnetGroup'{_mrsgReplicationSubnetGroupDescription
+                                    = Nothing,
+                                  _mrsgReplicationSubnetGroupIdentifier =
+                                    pReplicationSubnetGroupIdentifier_,
+                                  _mrsgSubnetIds = mempty}
 
 -- | A description for the replication instance subnet group.
 mrsgReplicationSubnetGroupDescription :: Lens' ModifyReplicationSubnetGroup (Maybe Text)
@@ -135,18 +135,20 @@ instance ToPath ModifyReplicationSubnetGroup where
 instance ToQuery ModifyReplicationSubnetGroup where
         toQuery = const mempty
 
--- |
+-- | 
 --
 --
 --
 -- /See:/ 'modifyReplicationSubnetGroupResponse' smart constructor.
-data ModifyReplicationSubnetGroupResponse =
-  ModifyReplicationSubnetGroupResponse'
-    { _mrsgrsReplicationSubnetGroup :: !(Maybe ReplicationSubnetGroup)
-    , _mrsgrsResponseStatus         :: !Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data ModifyReplicationSubnetGroupResponse = ModifyReplicationSubnetGroupResponse'{_mrsgrsReplicationSubnetGroup
+                                                                                  ::
+                                                                                  !(Maybe
+                                                                                      ReplicationSubnetGroup),
+                                                                                  _mrsgrsResponseStatus
+                                                                                  ::
+                                                                                  !Int}
+                                              deriving (Eq, Read, Show, Data,
+                                                        Typeable, Generic)
 
 -- | Creates a value of 'ModifyReplicationSubnetGroupResponse' with the minimum fields required to make a request.
 --
@@ -158,12 +160,11 @@ data ModifyReplicationSubnetGroupResponse =
 modifyReplicationSubnetGroupResponse
     :: Int -- ^ 'mrsgrsResponseStatus'
     -> ModifyReplicationSubnetGroupResponse
-modifyReplicationSubnetGroupResponse pResponseStatus_ =
-  ModifyReplicationSubnetGroupResponse'
-    { _mrsgrsReplicationSubnetGroup = Nothing
-    , _mrsgrsResponseStatus = pResponseStatus_
-    }
-
+modifyReplicationSubnetGroupResponse pResponseStatus_
+  = ModifyReplicationSubnetGroupResponse'{_mrsgrsReplicationSubnetGroup
+                                            = Nothing,
+                                          _mrsgrsResponseStatus =
+                                            pResponseStatus_}
 
 -- | The modified replication subnet group.
 mrsgrsReplicationSubnetGroup :: Lens' ModifyReplicationSubnetGroupResponse (Maybe ReplicationSubnetGroup)

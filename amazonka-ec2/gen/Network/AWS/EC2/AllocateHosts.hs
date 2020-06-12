@@ -45,26 +45,23 @@ module Network.AWS.EC2.AllocateHosts
     ) where
 
 import Network.AWS.EC2.Types
-import Network.AWS.EC2.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 
 -- | /See:/ 'allocateHosts' smart constructor.
-data AllocateHosts =
-  AllocateHosts'
-    { _ahInstanceFamily    :: !(Maybe Text)
-    , _ahClientToken       :: !(Maybe Text)
-    , _ahInstanceType      :: !(Maybe Text)
-    , _ahTagSpecifications :: !(Maybe [TagSpecification])
-    , _ahHostRecovery      :: !(Maybe HostRecovery)
-    , _ahAutoPlacement     :: !(Maybe AutoPlacement)
-    , _ahAvailabilityZone  :: !Text
-    , _ahQuantity          :: !Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data AllocateHosts = AllocateHosts'{_ahInstanceFamily
+                                    :: !(Maybe Text),
+                                    _ahClientToken :: !(Maybe Text),
+                                    _ahInstanceType :: !(Maybe Text),
+                                    _ahTagSpecifications ::
+                                    !(Maybe [TagSpecification]),
+                                    _ahHostRecovery :: !(Maybe HostRecovery),
+                                    _ahAutoPlacement :: !(Maybe AutoPlacement),
+                                    _ahAvailabilityZone :: !Text,
+                                    _ahQuantity :: !Int}
+                       deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'AllocateHosts' with the minimum fields required to make a request.
 --
@@ -78,9 +75,9 @@ data AllocateHosts =
 --
 -- * 'ahTagSpecifications' - The tags to apply to the Dedicated Host during creation.
 --
--- * 'ahHostRecovery' - Indicates whether to enable or disable host recovery for the Dedicated Host. Host recovery is disabled by default. For more information, see <https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/dedicated-hosts-recovery.html Host Recovery> in the /Amazon Elastic Compute Cloud User Guide/ . Default: @off@
+-- * 'ahHostRecovery' - Indicates whether to enable or disable host recovery for the Dedicated Host. Host recovery is disabled by default. For more information, see <https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/dedicated-hosts-recovery.html Host Recovery> in the /Amazon Elastic Compute Cloud User Guide/ . Default: @off@ 
 --
--- * 'ahAutoPlacement' - Indicates whether the host accepts any untargeted instance launches that match its instance type configuration, or if it only accepts Host tenancy instance launches that specify its unique host ID. For more information, see <https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/how-dedicated-hosts-work.html#dedicated-hosts-understanding Understanding Instance Placement and Host Affinity> in the /Amazon EC2 User Guide for Linux Instances/ . Default: @on@
+-- * 'ahAutoPlacement' - Indicates whether the host accepts any untargeted instance launches that match its instance type configuration, or if it only accepts Host tenancy instance launches that specify its unique host ID. For more information, see <https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/how-dedicated-hosts-work.html#dedicated-hosts-understanding Understanding Instance Placement and Host Affinity> in the /Amazon EC2 User Guide for Linux Instances/ . Default: @on@ 
 --
 -- * 'ahAvailabilityZone' - The Availability Zone in which to allocate the Dedicated Host.
 --
@@ -89,18 +86,14 @@ allocateHosts
     :: Text -- ^ 'ahAvailabilityZone'
     -> Int -- ^ 'ahQuantity'
     -> AllocateHosts
-allocateHosts pAvailabilityZone_ pQuantity_ =
-  AllocateHosts'
-    { _ahInstanceFamily = Nothing
-    , _ahClientToken = Nothing
-    , _ahInstanceType = Nothing
-    , _ahTagSpecifications = Nothing
-    , _ahHostRecovery = Nothing
-    , _ahAutoPlacement = Nothing
-    , _ahAvailabilityZone = pAvailabilityZone_
-    , _ahQuantity = pQuantity_
-    }
-
+allocateHosts pAvailabilityZone_ pQuantity_
+  = AllocateHosts'{_ahInstanceFamily = Nothing,
+                   _ahClientToken = Nothing, _ahInstanceType = Nothing,
+                   _ahTagSpecifications = Nothing,
+                   _ahHostRecovery = Nothing,
+                   _ahAutoPlacement = Nothing,
+                   _ahAvailabilityZone = pAvailabilityZone_,
+                   _ahQuantity = pQuantity_}
 
 -- | Specifies the instance family to be supported by the Dedicated Hosts. If you specify an instance family, the Dedicated Hosts support multiple instance types within that instance family. If you want the Dedicated Hosts to support a specific instance type only, omit this parameter and specify __InstanceType__ instead. You cannot specify __InstanceFamily__ and __InstanceType__ in the same request.
 ahInstanceFamily :: Lens' AllocateHosts (Maybe Text)
@@ -118,11 +111,11 @@ ahInstanceType = lens _ahInstanceType (\ s a -> s{_ahInstanceType = a})
 ahTagSpecifications :: Lens' AllocateHosts [TagSpecification]
 ahTagSpecifications = lens _ahTagSpecifications (\ s a -> s{_ahTagSpecifications = a}) . _Default . _Coerce
 
--- | Indicates whether to enable or disable host recovery for the Dedicated Host. Host recovery is disabled by default. For more information, see <https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/dedicated-hosts-recovery.html Host Recovery> in the /Amazon Elastic Compute Cloud User Guide/ . Default: @off@
+-- | Indicates whether to enable or disable host recovery for the Dedicated Host. Host recovery is disabled by default. For more information, see <https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/dedicated-hosts-recovery.html Host Recovery> in the /Amazon Elastic Compute Cloud User Guide/ . Default: @off@ 
 ahHostRecovery :: Lens' AllocateHosts (Maybe HostRecovery)
 ahHostRecovery = lens _ahHostRecovery (\ s a -> s{_ahHostRecovery = a})
 
--- | Indicates whether the host accepts any untargeted instance launches that match its instance type configuration, or if it only accepts Host tenancy instance launches that specify its unique host ID. For more information, see <https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/how-dedicated-hosts-work.html#dedicated-hosts-understanding Understanding Instance Placement and Host Affinity> in the /Amazon EC2 User Guide for Linux Instances/ . Default: @on@
+-- | Indicates whether the host accepts any untargeted instance launches that match its instance type configuration, or if it only accepts Host tenancy instance launches that specify its unique host ID. For more information, see <https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/how-dedicated-hosts-work.html#dedicated-hosts-understanding Understanding Instance Placement and Host Affinity> in the /Amazon EC2 User Guide for Linux Instances/ . Default: @on@ 
 ahAutoPlacement :: Lens' AllocateHosts (Maybe AutoPlacement)
 ahAutoPlacement = lens _ahAutoPlacement (\ s a -> s{_ahAutoPlacement = a})
 
@@ -176,13 +169,11 @@ instance ToQuery AllocateHosts where
 --
 --
 -- /See:/ 'allocateHostsResponse' smart constructor.
-data AllocateHostsResponse =
-  AllocateHostsResponse'
-    { _ahrsHostIds        :: !(Maybe [Text])
-    , _ahrsResponseStatus :: !Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data AllocateHostsResponse = AllocateHostsResponse'{_ahrsHostIds
+                                                    :: !(Maybe [Text]),
+                                                    _ahrsResponseStatus :: !Int}
+                               deriving (Eq, Read, Show, Data, Typeable,
+                                         Generic)
 
 -- | Creates a value of 'AllocateHostsResponse' with the minimum fields required to make a request.
 --
@@ -194,10 +185,9 @@ data AllocateHostsResponse =
 allocateHostsResponse
     :: Int -- ^ 'ahrsResponseStatus'
     -> AllocateHostsResponse
-allocateHostsResponse pResponseStatus_ =
-  AllocateHostsResponse'
-    {_ahrsHostIds = Nothing, _ahrsResponseStatus = pResponseStatus_}
-
+allocateHostsResponse pResponseStatus_
+  = AllocateHostsResponse'{_ahrsHostIds = Nothing,
+                           _ahrsResponseStatus = pResponseStatus_}
 
 -- | The ID of the allocated Dedicated Host. This is used to launch an instance onto a specific host.
 ahrsHostIds :: Lens' AllocateHostsResponse [Text]

@@ -38,19 +38,15 @@ module Network.AWS.IoT.GetOTAUpdate
     ) where
 
 import Network.AWS.IoT.Types
-import Network.AWS.IoT.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 
 -- | /See:/ 'getOTAUpdate' smart constructor.
-newtype GetOTAUpdate =
-  GetOTAUpdate'
-    { _gotauOtaUpdateId :: Text
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+newtype GetOTAUpdate = GetOTAUpdate'{_gotauOtaUpdateId
+                                     :: Text}
+                         deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'GetOTAUpdate' with the minimum fields required to make a request.
 --
@@ -60,8 +56,8 @@ newtype GetOTAUpdate =
 getOTAUpdate
     :: Text -- ^ 'gotauOtaUpdateId'
     -> GetOTAUpdate
-getOTAUpdate pOtaUpdateId_ = GetOTAUpdate' {_gotauOtaUpdateId = pOtaUpdateId_}
-
+getOTAUpdate pOtaUpdateId_
+  = GetOTAUpdate'{_gotauOtaUpdateId = pOtaUpdateId_}
 
 -- | The OTA update ID.
 gotauOtaUpdateId :: Lens' GetOTAUpdate Text
@@ -91,13 +87,11 @@ instance ToQuery GetOTAUpdate where
         toQuery = const mempty
 
 -- | /See:/ 'getOTAUpdateResponse' smart constructor.
-data GetOTAUpdateResponse =
-  GetOTAUpdateResponse'
-    { _gotaursOtaUpdateInfo  :: !(Maybe OTAUpdateInfo)
-    , _gotaursResponseStatus :: !Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data GetOTAUpdateResponse = GetOTAUpdateResponse'{_gotaursOtaUpdateInfo
+                                                  :: !(Maybe OTAUpdateInfo),
+                                                  _gotaursResponseStatus ::
+                                                  !Int}
+                              deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'GetOTAUpdateResponse' with the minimum fields required to make a request.
 --
@@ -109,10 +103,10 @@ data GetOTAUpdateResponse =
 getOTAUpdateResponse
     :: Int -- ^ 'gotaursResponseStatus'
     -> GetOTAUpdateResponse
-getOTAUpdateResponse pResponseStatus_ =
-  GetOTAUpdateResponse'
-    {_gotaursOtaUpdateInfo = Nothing, _gotaursResponseStatus = pResponseStatus_}
-
+getOTAUpdateResponse pResponseStatus_
+  = GetOTAUpdateResponse'{_gotaursOtaUpdateInfo =
+                            Nothing,
+                          _gotaursResponseStatus = pResponseStatus_}
 
 -- | The OTA update info.
 gotaursOtaUpdateInfo :: Lens' GetOTAUpdateResponse (Maybe OTAUpdateInfo)

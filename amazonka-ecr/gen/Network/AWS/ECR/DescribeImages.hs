@@ -46,7 +46,6 @@ module Network.AWS.ECR.DescribeImages
     ) where
 
 import Network.AWS.ECR.Types
-import Network.AWS.ECR.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Pager
 import Network.AWS.Prelude
@@ -54,17 +53,15 @@ import Network.AWS.Request
 import Network.AWS.Response
 
 -- | /See:/ 'describeImages' smart constructor.
-data DescribeImages =
-  DescribeImages'
-    { _diRegistryId     :: !(Maybe Text)
-    , _diImageIds       :: !(Maybe [ImageIdentifier])
-    , _diNextToken      :: !(Maybe Text)
-    , _diFilter         :: !(Maybe DescribeImagesFilter)
-    , _diMaxResults     :: !(Maybe Nat)
-    , _diRepositoryName :: !Text
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data DescribeImages = DescribeImages'{_diRegistryId
+                                      :: !(Maybe Text),
+                                      _diImageIds :: !(Maybe [ImageIdentifier]),
+                                      _diNextToken :: !(Maybe Text),
+                                      _diFilter ::
+                                      !(Maybe DescribeImagesFilter),
+                                      _diMaxResults :: !(Maybe Nat),
+                                      _diRepositoryName :: !Text}
+                        deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'DescribeImages' with the minimum fields required to make a request.
 --
@@ -84,16 +81,11 @@ data DescribeImages =
 describeImages
     :: Text -- ^ 'diRepositoryName'
     -> DescribeImages
-describeImages pRepositoryName_ =
-  DescribeImages'
-    { _diRegistryId = Nothing
-    , _diImageIds = Nothing
-    , _diNextToken = Nothing
-    , _diFilter = Nothing
-    , _diMaxResults = Nothing
-    , _diRepositoryName = pRepositoryName_
-    }
-
+describeImages pRepositoryName_
+  = DescribeImages'{_diRegistryId = Nothing,
+                    _diImageIds = Nothing, _diNextToken = Nothing,
+                    _diFilter = Nothing, _diMaxResults = Nothing,
+                    _diRepositoryName = pRepositoryName_}
 
 -- | The AWS account ID associated with the registry that contains the repository in which to describe images. If you do not specify a registry, the default registry is assumed.
 diRegistryId :: Lens' DescribeImages (Maybe Text)
@@ -169,14 +161,14 @@ instance ToQuery DescribeImages where
         toQuery = const mempty
 
 -- | /See:/ 'describeImagesResponse' smart constructor.
-data DescribeImagesResponse =
-  DescribeImagesResponse'
-    { _dirsImageDetails   :: !(Maybe [ImageDetail])
-    , _dirsNextToken      :: !(Maybe Text)
-    , _dirsResponseStatus :: !Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data DescribeImagesResponse = DescribeImagesResponse'{_dirsImageDetails
+                                                      :: !(Maybe [ImageDetail]),
+                                                      _dirsNextToken ::
+                                                      !(Maybe Text),
+                                                      _dirsResponseStatus ::
+                                                      !Int}
+                                deriving (Eq, Read, Show, Data, Typeable,
+                                          Generic)
 
 -- | Creates a value of 'DescribeImagesResponse' with the minimum fields required to make a request.
 --
@@ -190,13 +182,11 @@ data DescribeImagesResponse =
 describeImagesResponse
     :: Int -- ^ 'dirsResponseStatus'
     -> DescribeImagesResponse
-describeImagesResponse pResponseStatus_ =
-  DescribeImagesResponse'
-    { _dirsImageDetails = Nothing
-    , _dirsNextToken = Nothing
-    , _dirsResponseStatus = pResponseStatus_
-    }
-
+describeImagesResponse pResponseStatus_
+  = DescribeImagesResponse'{_dirsImageDetails =
+                              Nothing,
+                            _dirsNextToken = Nothing,
+                            _dirsResponseStatus = pResponseStatus_}
 
 -- | A list of 'ImageDetail' objects that contain data about the image.
 dirsImageDetails :: Lens' DescribeImagesResponse [ImageDetail]

@@ -48,24 +48,37 @@ import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 import Network.AWS.SES.Types
-import Network.AWS.SES.Types.Product
 
 -- | Represents a request to update an existing custom verification email template.
 --
 --
 --
 -- /See:/ 'updateCustomVerificationEmailTemplate' smart constructor.
-data UpdateCustomVerificationEmailTemplate =
-  UpdateCustomVerificationEmailTemplate'
-    { _ucvetFromEmailAddress      :: !(Maybe Text)
-    , _ucvetFailureRedirectionURL :: !(Maybe Text)
-    , _ucvetTemplateSubject       :: !(Maybe Text)
-    , _ucvetSuccessRedirectionURL :: !(Maybe Text)
-    , _ucvetTemplateContent       :: !(Maybe Text)
-    , _ucvetTemplateName          :: !Text
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data UpdateCustomVerificationEmailTemplate = UpdateCustomVerificationEmailTemplate'{_ucvetFromEmailAddress
+                                                                                    ::
+                                                                                    !(Maybe
+                                                                                        Text),
+                                                                                    _ucvetFailureRedirectionURL
+                                                                                    ::
+                                                                                    !(Maybe
+                                                                                        Text),
+                                                                                    _ucvetTemplateSubject
+                                                                                    ::
+                                                                                    !(Maybe
+                                                                                        Text),
+                                                                                    _ucvetSuccessRedirectionURL
+                                                                                    ::
+                                                                                    !(Maybe
+                                                                                        Text),
+                                                                                    _ucvetTemplateContent
+                                                                                    ::
+                                                                                    !(Maybe
+                                                                                        Text),
+                                                                                    _ucvetTemplateName
+                                                                                    ::
+                                                                                    !Text}
+                                               deriving (Eq, Read, Show, Data,
+                                                         Typeable, Generic)
 
 -- | Creates a value of 'UpdateCustomVerificationEmailTemplate' with the minimum fields required to make a request.
 --
@@ -85,16 +98,16 @@ data UpdateCustomVerificationEmailTemplate =
 updateCustomVerificationEmailTemplate
     :: Text -- ^ 'ucvetTemplateName'
     -> UpdateCustomVerificationEmailTemplate
-updateCustomVerificationEmailTemplate pTemplateName_ =
-  UpdateCustomVerificationEmailTemplate'
-    { _ucvetFromEmailAddress = Nothing
-    , _ucvetFailureRedirectionURL = Nothing
-    , _ucvetTemplateSubject = Nothing
-    , _ucvetSuccessRedirectionURL = Nothing
-    , _ucvetTemplateContent = Nothing
-    , _ucvetTemplateName = pTemplateName_
-    }
-
+updateCustomVerificationEmailTemplate pTemplateName_
+  = UpdateCustomVerificationEmailTemplate'{_ucvetFromEmailAddress
+                                             = Nothing,
+                                           _ucvetFailureRedirectionURL =
+                                             Nothing,
+                                           _ucvetTemplateSubject = Nothing,
+                                           _ucvetSuccessRedirectionURL =
+                                             Nothing,
+                                           _ucvetTemplateContent = Nothing,
+                                           _ucvetTemplateName = pTemplateName_}
 
 -- | The email address that the custom verification email is sent from.
 ucvetFromEmailAddress :: Lens' UpdateCustomVerificationEmailTemplate (Maybe Text)
@@ -165,18 +178,17 @@ instance ToQuery
                "TemplateName" =: _ucvetTemplateName]
 
 -- | /See:/ 'updateCustomVerificationEmailTemplateResponse' smart constructor.
-data UpdateCustomVerificationEmailTemplateResponse =
-  UpdateCustomVerificationEmailTemplateResponse'
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data UpdateCustomVerificationEmailTemplateResponse = UpdateCustomVerificationEmailTemplateResponse'
+                                                       deriving (Eq, Read, Show,
+                                                                 Data, Typeable,
+                                                                 Generic)
 
 -- | Creates a value of 'UpdateCustomVerificationEmailTemplateResponse' with the minimum fields required to make a request.
 --
 updateCustomVerificationEmailTemplateResponse
     :: UpdateCustomVerificationEmailTemplateResponse
-updateCustomVerificationEmailTemplateResponse =
-  UpdateCustomVerificationEmailTemplateResponse'
-
+updateCustomVerificationEmailTemplateResponse
+  = UpdateCustomVerificationEmailTemplateResponse'
 
 instance NFData
            UpdateCustomVerificationEmailTemplateResponse

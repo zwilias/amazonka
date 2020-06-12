@@ -38,19 +38,15 @@ module Network.AWS.CloudHSMv2.RestoreBackup
     ) where
 
 import Network.AWS.CloudHSMv2.Types
-import Network.AWS.CloudHSMv2.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 
 -- | /See:/ 'restoreBackup' smart constructor.
-newtype RestoreBackup =
-  RestoreBackup'
-    { _rbBackupId :: Text
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+newtype RestoreBackup = RestoreBackup'{_rbBackupId ::
+                                       Text}
+                          deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'RestoreBackup' with the minimum fields required to make a request.
 --
@@ -60,8 +56,8 @@ newtype RestoreBackup =
 restoreBackup
     :: Text -- ^ 'rbBackupId'
     -> RestoreBackup
-restoreBackup pBackupId_ = RestoreBackup' {_rbBackupId = pBackupId_}
-
+restoreBackup pBackupId_
+  = RestoreBackup'{_rbBackupId = pBackupId_}
 
 -- | The ID of the backup to be restored. To find the ID of a backup, use the 'DescribeBackups' operation.
 rbBackupId :: Lens' RestoreBackup Text
@@ -101,13 +97,11 @@ instance ToQuery RestoreBackup where
         toQuery = const mempty
 
 -- | /See:/ 'restoreBackupResponse' smart constructor.
-data RestoreBackupResponse =
-  RestoreBackupResponse'
-    { _rbrsBackup         :: !(Maybe Backup)
-    , _rbrsResponseStatus :: !Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data RestoreBackupResponse = RestoreBackupResponse'{_rbrsBackup
+                                                    :: !(Maybe Backup),
+                                                    _rbrsResponseStatus :: !Int}
+                               deriving (Eq, Read, Show, Data, Typeable,
+                                         Generic)
 
 -- | Creates a value of 'RestoreBackupResponse' with the minimum fields required to make a request.
 --
@@ -119,10 +113,9 @@ data RestoreBackupResponse =
 restoreBackupResponse
     :: Int -- ^ 'rbrsResponseStatus'
     -> RestoreBackupResponse
-restoreBackupResponse pResponseStatus_ =
-  RestoreBackupResponse'
-    {_rbrsBackup = Nothing, _rbrsResponseStatus = pResponseStatus_}
-
+restoreBackupResponse pResponseStatus_
+  = RestoreBackupResponse'{_rbrsBackup = Nothing,
+                           _rbrsResponseStatus = pResponseStatus_}
 
 -- | Information on the @Backup@ object created.
 rbrsBackup :: Lens' RestoreBackupResponse (Maybe Backup)

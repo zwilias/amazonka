@@ -40,19 +40,15 @@ module Network.AWS.IoT.DescribeIndex
     ) where
 
 import Network.AWS.IoT.Types
-import Network.AWS.IoT.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 
 -- | /See:/ 'describeIndex' smart constructor.
-newtype DescribeIndex =
-  DescribeIndex'
-    { _diIndexName :: Text
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+newtype DescribeIndex = DescribeIndex'{_diIndexName
+                                       :: Text}
+                          deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'DescribeIndex' with the minimum fields required to make a request.
 --
@@ -62,8 +58,8 @@ newtype DescribeIndex =
 describeIndex
     :: Text -- ^ 'diIndexName'
     -> DescribeIndex
-describeIndex pIndexName_ = DescribeIndex' {_diIndexName = pIndexName_}
-
+describeIndex pIndexName_
+  = DescribeIndex'{_diIndexName = pIndexName_}
 
 -- | The index name.
 diIndexName :: Lens' DescribeIndex Text
@@ -95,15 +91,15 @@ instance ToQuery DescribeIndex where
         toQuery = const mempty
 
 -- | /See:/ 'describeIndexResponse' smart constructor.
-data DescribeIndexResponse =
-  DescribeIndexResponse'
-    { _dirsIndexStatus    :: !(Maybe IndexStatus)
-    , _dirsSchema         :: !(Maybe Text)
-    , _dirsIndexName      :: !(Maybe Text)
-    , _dirsResponseStatus :: !Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data DescribeIndexResponse = DescribeIndexResponse'{_dirsIndexStatus
+                                                    :: !(Maybe IndexStatus),
+                                                    _dirsSchema ::
+                                                    !(Maybe Text),
+                                                    _dirsIndexName ::
+                                                    !(Maybe Text),
+                                                    _dirsResponseStatus :: !Int}
+                               deriving (Eq, Read, Show, Data, Typeable,
+                                         Generic)
 
 -- | Creates a value of 'DescribeIndexResponse' with the minimum fields required to make a request.
 --
@@ -119,14 +115,10 @@ data DescribeIndexResponse =
 describeIndexResponse
     :: Int -- ^ 'dirsResponseStatus'
     -> DescribeIndexResponse
-describeIndexResponse pResponseStatus_ =
-  DescribeIndexResponse'
-    { _dirsIndexStatus = Nothing
-    , _dirsSchema = Nothing
-    , _dirsIndexName = Nothing
-    , _dirsResponseStatus = pResponseStatus_
-    }
-
+describeIndexResponse pResponseStatus_
+  = DescribeIndexResponse'{_dirsIndexStatus = Nothing,
+                           _dirsSchema = Nothing, _dirsIndexName = Nothing,
+                           _dirsResponseStatus = pResponseStatus_}
 
 -- | The index status.
 dirsIndexStatus :: Lens' DescribeIndexResponse (Maybe IndexStatus)

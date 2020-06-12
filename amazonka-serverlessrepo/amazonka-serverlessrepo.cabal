@@ -59,8 +59,12 @@ library
         , Network.AWS.ServerlessApplicationRepository.Waiters
 
     other-modules:
-          Network.AWS.ServerlessApplicationRepository.Types.Product
-        , Network.AWS.ServerlessApplicationRepository.Types.Sum
+          Network.AWS.ServerlessApplicationRepository.Types.ApplicationPolicyStatement
+        , Network.AWS.ServerlessApplicationRepository.Types.ApplicationSummary
+        , Network.AWS.ServerlessApplicationRepository.Types.ParameterDefinition
+        , Network.AWS.ServerlessApplicationRepository.Types.ParameterValue
+        , Network.AWS.ServerlessApplicationRepository.Types.Version
+        , Network.AWS.ServerlessApplicationRepository.Types.VersionSummary
 
     build-depends:
           amazonka-core == 1.6.1.*

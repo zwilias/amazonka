@@ -42,19 +42,16 @@ import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 import Network.AWS.SNS.Types
-import Network.AWS.SNS.Types.Product
 
 -- | Input for GetTopicAttributes action.
 --
 --
 --
 -- /See:/ 'getTopicAttributes' smart constructor.
-newtype GetTopicAttributes =
-  GetTopicAttributes'
-    { _gtaTopicARN :: Text
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+newtype GetTopicAttributes = GetTopicAttributes'{_gtaTopicARN
+                                                 :: Text}
+                               deriving (Eq, Read, Show, Data, Typeable,
+                                         Generic)
 
 -- | Creates a value of 'GetTopicAttributes' with the minimum fields required to make a request.
 --
@@ -64,8 +61,8 @@ newtype GetTopicAttributes =
 getTopicAttributes
     :: Text -- ^ 'gtaTopicARN'
     -> GetTopicAttributes
-getTopicAttributes pTopicARN_ = GetTopicAttributes' {_gtaTopicARN = pTopicARN_}
-
+getTopicAttributes pTopicARN_
+  = GetTopicAttributes'{_gtaTopicARN = pTopicARN_}
 
 -- | The ARN of the topic whose properties you want to get.
 gtaTopicARN :: Lens' GetTopicAttributes Text
@@ -105,13 +102,15 @@ instance ToQuery GetTopicAttributes where
 --
 --
 -- /See:/ 'getTopicAttributesResponse' smart constructor.
-data GetTopicAttributesResponse =
-  GetTopicAttributesResponse'
-    { _gtarsAttributes     :: !(Maybe (Map Text Text))
-    , _gtarsResponseStatus :: !Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data GetTopicAttributesResponse = GetTopicAttributesResponse'{_gtarsAttributes
+                                                              ::
+                                                              !(Maybe
+                                                                  (Map Text
+                                                                     Text)),
+                                                              _gtarsResponseStatus
+                                                              :: !Int}
+                                    deriving (Eq, Read, Show, Data, Typeable,
+                                              Generic)
 
 -- | Creates a value of 'GetTopicAttributesResponse' with the minimum fields required to make a request.
 --
@@ -123,10 +122,10 @@ data GetTopicAttributesResponse =
 getTopicAttributesResponse
     :: Int -- ^ 'gtarsResponseStatus'
     -> GetTopicAttributesResponse
-getTopicAttributesResponse pResponseStatus_ =
-  GetTopicAttributesResponse'
-    {_gtarsAttributes = Nothing, _gtarsResponseStatus = pResponseStatus_}
-
+getTopicAttributesResponse pResponseStatus_
+  = GetTopicAttributesResponse'{_gtarsAttributes =
+                                  Nothing,
+                                _gtarsResponseStatus = pResponseStatus_}
 
 -- | A map of the topic's attributes. Attributes in this map include the following:     * @TopicArn@ -- the topic's ARN     * @Owner@ -- the AWS account ID of the topic's owner     * @Policy@ -- the JSON serialization of the topic's access control policy     * @DisplayName@ -- the human-readable name used in the "From" field for notifications to email and email-json endpoints     * @SubscriptionsPending@ -- the number of subscriptions pending confirmation on this topic     * @SubscriptionsConfirmed@ -- the number of confirmed subscriptions on this topic     * @SubscriptionsDeleted@ -- the number of deleted subscriptions on this topic     * @DeliveryPolicy@ -- the JSON serialization of the topic's delivery policy     * @EffectiveDeliveryPolicy@ -- the JSON serialization of the effective delivery policy that takes into account system defaults
 gtarsAttributes :: Lens' GetTopicAttributesResponse (HashMap Text Text)

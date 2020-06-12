@@ -40,7 +40,6 @@ module Network.AWS.IoTData.DeleteThingShadow
     ) where
 
 import Network.AWS.IoTData.Types
-import Network.AWS.IoTData.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.Request
@@ -51,12 +50,9 @@ import Network.AWS.Response
 --
 --
 -- /See:/ 'deleteThingShadow' smart constructor.
-newtype DeleteThingShadow =
-  DeleteThingShadow'
-    { _dtsThingName :: Text
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+newtype DeleteThingShadow = DeleteThingShadow'{_dtsThingName
+                                               :: Text}
+                              deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'DeleteThingShadow' with the minimum fields required to make a request.
 --
@@ -66,8 +62,8 @@ newtype DeleteThingShadow =
 deleteThingShadow
     :: Text -- ^ 'dtsThingName'
     -> DeleteThingShadow
-deleteThingShadow pThingName_ = DeleteThingShadow' {_dtsThingName = pThingName_}
-
+deleteThingShadow pThingName_
+  = DeleteThingShadow'{_dtsThingName = pThingName_}
 
 -- | The name of the thing.
 dtsThingName :: Lens' DeleteThingShadow Text
@@ -101,13 +97,11 @@ instance ToQuery DeleteThingShadow where
 --
 --
 -- /See:/ 'deleteThingShadowResponse' smart constructor.
-data DeleteThingShadowResponse =
-  DeleteThingShadowResponse'
-    { _dtsrsResponseStatus :: !Int
-    , _dtsrsPayload        :: !ByteString
-    }
-  deriving (Eq, Show, Data, Typeable, Generic)
-
+data DeleteThingShadowResponse = DeleteThingShadowResponse'{_dtsrsResponseStatus
+                                                            :: !Int,
+                                                            _dtsrsPayload ::
+                                                            !ByteString}
+                                   deriving (Eq, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'DeleteThingShadowResponse' with the minimum fields required to make a request.
 --
@@ -120,10 +114,10 @@ deleteThingShadowResponse
     :: Int -- ^ 'dtsrsResponseStatus'
     -> ByteString -- ^ 'dtsrsPayload'
     -> DeleteThingShadowResponse
-deleteThingShadowResponse pResponseStatus_ pPayload_ =
-  DeleteThingShadowResponse'
-    {_dtsrsResponseStatus = pResponseStatus_, _dtsrsPayload = pPayload_}
-
+deleteThingShadowResponse pResponseStatus_ pPayload_
+  = DeleteThingShadowResponse'{_dtsrsResponseStatus =
+                                 pResponseStatus_,
+                               _dtsrsPayload = pPayload_}
 
 -- | -- | The response status code.
 dtsrsResponseStatus :: Lens' DeleteThingShadowResponse Int

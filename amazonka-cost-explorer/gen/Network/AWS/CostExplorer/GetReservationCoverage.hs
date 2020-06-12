@@ -47,7 +47,7 @@
 --
 --
 --
--- To determine valid values for a dimension, use the @GetDimensionValues@ operation.
+-- To determine valid values for a dimension, use the @GetDimensionValues@ operation. 
 --
 module Network.AWS.CostExplorer.GetReservationCoverage
     (
@@ -73,7 +73,6 @@ module Network.AWS.CostExplorer.GetReservationCoverage
     ) where
 
 import Network.AWS.CostExplorer.Types
-import Network.AWS.CostExplorer.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.Request
@@ -84,17 +83,22 @@ import Network.AWS.Response
 --
 --
 -- /See:/ 'getReservationCoverage' smart constructor.
-data GetReservationCoverage =
-  GetReservationCoverage'
-    { _grcGroupBy       :: !(Maybe [GroupDefinition])
-    , _grcNextPageToken :: !(Maybe Text)
-    , _grcMetrics       :: !(Maybe [Text])
-    , _grcGranularity   :: !(Maybe Granularity)
-    , _grcFilter        :: !(Maybe Expression)
-    , _grcTimePeriod    :: !DateInterval
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data GetReservationCoverage = GetReservationCoverage'{_grcGroupBy
+                                                      ::
+                                                      !(Maybe
+                                                          [GroupDefinition]),
+                                                      _grcNextPageToken ::
+                                                      !(Maybe Text),
+                                                      _grcMetrics ::
+                                                      !(Maybe [Text]),
+                                                      _grcGranularity ::
+                                                      !(Maybe Granularity),
+                                                      _grcFilter ::
+                                                      !(Maybe Expression),
+                                                      _grcTimePeriod ::
+                                                      !DateInterval}
+                                deriving (Eq, Read, Show, Data, Typeable,
+                                          Generic)
 
 -- | Creates a value of 'GetReservationCoverage' with the minimum fields required to make a request.
 --
@@ -110,20 +114,15 @@ data GetReservationCoverage =
 --
 -- * 'grcFilter' - Filters utilization data by dimensions. You can filter by the following dimensions:     * AZ     * CACHE_ENGINE     * DATABASE_ENGINE     * DEPLOYMENT_OPTION     * INSTANCE_TYPE     * LINKED_ACCOUNT     * OPERATING_SYSTEM     * PLATFORM     * REGION     * SERVICE     * TAG     * TENANCY @GetReservationCoverage@ uses the same <https://docs.aws.amazon.com/aws-cost-management/latest/APIReference/API_Expression.html Expression> object as the other operations, but only @AND@ is supported among each dimension. You can nest only one level deep. If there are multiple values for a dimension, they are OR'd together. If you don't provide a @SERVICE@ filter, Cost Explorer defaults to EC2. Cost category is also supported.
 --
--- * 'grcTimePeriod' - The start and end dates of the period that you want to retrieve data about reservation coverage for. You can retrieve data for a maximum of 13 months: the last 12 months and the current month. The start date is inclusive, but the end date is exclusive. For example, if @start@ is @2017-01-01@ and @end@ is @2017-05-01@ , then the cost and usage data is retrieved from @2017-01-01@ up to and including @2017-04-30@ but not including @2017-05-01@ .
+-- * 'grcTimePeriod' - The start and end dates of the period that you want to retrieve data about reservation coverage for. You can retrieve data for a maximum of 13 months: the last 12 months and the current month. The start date is inclusive, but the end date is exclusive. For example, if @start@ is @2017-01-01@ and @end@ is @2017-05-01@ , then the cost and usage data is retrieved from @2017-01-01@ up to and including @2017-04-30@ but not including @2017-05-01@ . 
 getReservationCoverage
     :: DateInterval -- ^ 'grcTimePeriod'
     -> GetReservationCoverage
-getReservationCoverage pTimePeriod_ =
-  GetReservationCoverage'
-    { _grcGroupBy = Nothing
-    , _grcNextPageToken = Nothing
-    , _grcMetrics = Nothing
-    , _grcGranularity = Nothing
-    , _grcFilter = Nothing
-    , _grcTimePeriod = pTimePeriod_
-    }
-
+getReservationCoverage pTimePeriod_
+  = GetReservationCoverage'{_grcGroupBy = Nothing,
+                            _grcNextPageToken = Nothing, _grcMetrics = Nothing,
+                            _grcGranularity = Nothing, _grcFilter = Nothing,
+                            _grcTimePeriod = pTimePeriod_}
 
 -- | You can group the data by the following attributes:     * AZ     * CACHE_ENGINE     * DATABASE_ENGINE     * DEPLOYMENT_OPTION     * INSTANCE_TYPE     * LINKED_ACCOUNT     * OPERATING_SYSTEM     * PLATFORM     * REGION     * TENANCY
 grcGroupBy :: Lens' GetReservationCoverage [GroupDefinition]
@@ -145,7 +144,7 @@ grcGranularity = lens _grcGranularity (\ s a -> s{_grcGranularity = a})
 grcFilter :: Lens' GetReservationCoverage (Maybe Expression)
 grcFilter = lens _grcFilter (\ s a -> s{_grcFilter = a})
 
--- | The start and end dates of the period that you want to retrieve data about reservation coverage for. You can retrieve data for a maximum of 13 months: the last 12 months and the current month. The start date is inclusive, but the end date is exclusive. For example, if @start@ is @2017-01-01@ and @end@ is @2017-05-01@ , then the cost and usage data is retrieved from @2017-01-01@ up to and including @2017-04-30@ but not including @2017-05-01@ .
+-- | The start and end dates of the period that you want to retrieve data about reservation coverage for. You can retrieve data for a maximum of 13 months: the last 12 months and the current month. The start date is inclusive, but the end date is exclusive. For example, if @start@ is @2017-01-01@ and @end@ is @2017-05-01@ , then the cost and usage data is retrieved from @2017-01-01@ up to and including @2017-04-30@ but not including @2017-05-01@ . 
 grcTimePeriod :: Lens' GetReservationCoverage DateInterval
 grcTimePeriod = lens _grcTimePeriod (\ s a -> s{_grcTimePeriod = a})
 
@@ -193,15 +192,21 @@ instance ToQuery GetReservationCoverage where
         toQuery = const mempty
 
 -- | /See:/ 'getReservationCoverageResponse' smart constructor.
-data GetReservationCoverageResponse =
-  GetReservationCoverageResponse'
-    { _grcrsNextPageToken   :: !(Maybe Text)
-    , _grcrsTotal           :: !(Maybe Coverage)
-    , _grcrsResponseStatus  :: !Int
-    , _grcrsCoveragesByTime :: ![CoverageByTime]
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data GetReservationCoverageResponse = GetReservationCoverageResponse'{_grcrsNextPageToken
+                                                                      ::
+                                                                      !(Maybe
+                                                                          Text),
+                                                                      _grcrsTotal
+                                                                      ::
+                                                                      !(Maybe
+                                                                          Coverage),
+                                                                      _grcrsResponseStatus
+                                                                      :: !Int,
+                                                                      _grcrsCoveragesByTime
+                                                                      ::
+                                                                      ![CoverageByTime]}
+                                        deriving (Eq, Read, Show, Data,
+                                                  Typeable, Generic)
 
 -- | Creates a value of 'GetReservationCoverageResponse' with the minimum fields required to make a request.
 --
@@ -217,14 +222,12 @@ data GetReservationCoverageResponse =
 getReservationCoverageResponse
     :: Int -- ^ 'grcrsResponseStatus'
     -> GetReservationCoverageResponse
-getReservationCoverageResponse pResponseStatus_ =
-  GetReservationCoverageResponse'
-    { _grcrsNextPageToken = Nothing
-    , _grcrsTotal = Nothing
-    , _grcrsResponseStatus = pResponseStatus_
-    , _grcrsCoveragesByTime = mempty
-    }
-
+getReservationCoverageResponse pResponseStatus_
+  = GetReservationCoverageResponse'{_grcrsNextPageToken
+                                      = Nothing,
+                                    _grcrsTotal = Nothing,
+                                    _grcrsResponseStatus = pResponseStatus_,
+                                    _grcrsCoveragesByTime = mempty}
 
 -- | The token for the next set of retrievable results. AWS provides the token when the response from a previous call has more results than the maximum page size.
 grcrsNextPageToken :: Lens' GetReservationCoverageResponse (Maybe Text)

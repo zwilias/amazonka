@@ -45,19 +45,16 @@ import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 import Network.AWS.SES.Types
-import Network.AWS.SES.Types.Product
 
 -- | Represents a request to create a configuration set. Configuration sets enable you to publish email sending events. For information about using configuration sets, see the <http://docs.aws.amazon.com/ses/latest/DeveloperGuide/monitor-sending-activity.html Amazon SES Developer Guide> .
 --
 --
 --
 -- /See:/ 'createConfigurationSet' smart constructor.
-newtype CreateConfigurationSet =
-  CreateConfigurationSet'
-    { _ccsConfigurationSet :: ConfigurationSet
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+newtype CreateConfigurationSet = CreateConfigurationSet'{_ccsConfigurationSet
+                                                         :: ConfigurationSet}
+                                   deriving (Eq, Read, Show, Data, Typeable,
+                                             Generic)
 
 -- | Creates a value of 'CreateConfigurationSet' with the minimum fields required to make a request.
 --
@@ -67,9 +64,9 @@ newtype CreateConfigurationSet =
 createConfigurationSet
     :: ConfigurationSet -- ^ 'ccsConfigurationSet'
     -> CreateConfigurationSet
-createConfigurationSet pConfigurationSet_ =
-  CreateConfigurationSet' {_ccsConfigurationSet = pConfigurationSet_}
-
+createConfigurationSet pConfigurationSet_
+  = CreateConfigurationSet'{_ccsConfigurationSet =
+                              pConfigurationSet_}
 
 -- | A data structure that contains the name of the configuration set.
 ccsConfigurationSet :: Lens' CreateConfigurationSet ConfigurationSet
@@ -108,12 +105,10 @@ instance ToQuery CreateConfigurationSet where
 --
 --
 -- /See:/ 'createConfigurationSetResponse' smart constructor.
-newtype CreateConfigurationSetResponse =
-  CreateConfigurationSetResponse'
-    { _ccsrsResponseStatus :: Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+newtype CreateConfigurationSetResponse = CreateConfigurationSetResponse'{_ccsrsResponseStatus
+                                                                         :: Int}
+                                           deriving (Eq, Read, Show, Data,
+                                                     Typeable, Generic)
 
 -- | Creates a value of 'CreateConfigurationSetResponse' with the minimum fields required to make a request.
 --
@@ -123,9 +118,9 @@ newtype CreateConfigurationSetResponse =
 createConfigurationSetResponse
     :: Int -- ^ 'ccsrsResponseStatus'
     -> CreateConfigurationSetResponse
-createConfigurationSetResponse pResponseStatus_ =
-  CreateConfigurationSetResponse' {_ccsrsResponseStatus = pResponseStatus_}
-
+createConfigurationSetResponse pResponseStatus_
+  = CreateConfigurationSetResponse'{_ccsrsResponseStatus
+                                      = pResponseStatus_}
 
 -- | -- | The response status code.
 ccsrsResponseStatus :: Lens' CreateConfigurationSetResponse Int

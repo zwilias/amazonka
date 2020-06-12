@@ -40,21 +40,20 @@ module Network.AWS.CodeCommit.CreateApprovalRuleTemplate
     ) where
 
 import Network.AWS.CodeCommit.Types
-import Network.AWS.CodeCommit.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 
 -- | /See:/ 'createApprovalRuleTemplate' smart constructor.
-data CreateApprovalRuleTemplate =
-  CreateApprovalRuleTemplate'
-    { _cartApprovalRuleTemplateDescription :: !(Maybe Text)
-    , _cartApprovalRuleTemplateName        :: !Text
-    , _cartApprovalRuleTemplateContent     :: !Text
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data CreateApprovalRuleTemplate = CreateApprovalRuleTemplate'{_cartApprovalRuleTemplateDescription
+                                                              :: !(Maybe Text),
+                                                              _cartApprovalRuleTemplateName
+                                                              :: !Text,
+                                                              _cartApprovalRuleTemplateContent
+                                                              :: !Text}
+                                    deriving (Eq, Read, Show, Data, Typeable,
+                                              Generic)
 
 -- | Creates a value of 'CreateApprovalRuleTemplate' with the minimum fields required to make a request.
 --
@@ -69,13 +68,14 @@ createApprovalRuleTemplate
     :: Text -- ^ 'cartApprovalRuleTemplateName'
     -> Text -- ^ 'cartApprovalRuleTemplateContent'
     -> CreateApprovalRuleTemplate
-createApprovalRuleTemplate pApprovalRuleTemplateName_ pApprovalRuleTemplateContent_ =
-  CreateApprovalRuleTemplate'
-    { _cartApprovalRuleTemplateDescription = Nothing
-    , _cartApprovalRuleTemplateName = pApprovalRuleTemplateName_
-    , _cartApprovalRuleTemplateContent = pApprovalRuleTemplateContent_
-    }
-
+createApprovalRuleTemplate pApprovalRuleTemplateName_
+  pApprovalRuleTemplateContent_
+  = CreateApprovalRuleTemplate'{_cartApprovalRuleTemplateDescription
+                                  = Nothing,
+                                _cartApprovalRuleTemplateName =
+                                  pApprovalRuleTemplateName_,
+                                _cartApprovalRuleTemplateContent =
+                                  pApprovalRuleTemplateContent_}
 
 -- | The description of the approval rule template. Consider providing a description that explains what this template does and when it might be appropriate to associate it with repositories.
 cartApprovalRuleTemplateDescription :: Lens' CreateApprovalRuleTemplate (Maybe Text)
@@ -134,13 +134,14 @@ instance ToQuery CreateApprovalRuleTemplate where
         toQuery = const mempty
 
 -- | /See:/ 'createApprovalRuleTemplateResponse' smart constructor.
-data CreateApprovalRuleTemplateResponse =
-  CreateApprovalRuleTemplateResponse'
-    { _cartrsResponseStatus       :: !Int
-    , _cartrsApprovalRuleTemplate :: !ApprovalRuleTemplate
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data CreateApprovalRuleTemplateResponse = CreateApprovalRuleTemplateResponse'{_cartrsResponseStatus
+                                                                              ::
+                                                                              !Int,
+                                                                              _cartrsApprovalRuleTemplate
+                                                                              ::
+                                                                              !ApprovalRuleTemplate}
+                                            deriving (Eq, Read, Show, Data,
+                                                      Typeable, Generic)
 
 -- | Creates a value of 'CreateApprovalRuleTemplateResponse' with the minimum fields required to make a request.
 --
@@ -153,12 +154,12 @@ createApprovalRuleTemplateResponse
     :: Int -- ^ 'cartrsResponseStatus'
     -> ApprovalRuleTemplate -- ^ 'cartrsApprovalRuleTemplate'
     -> CreateApprovalRuleTemplateResponse
-createApprovalRuleTemplateResponse pResponseStatus_ pApprovalRuleTemplate_ =
-  CreateApprovalRuleTemplateResponse'
-    { _cartrsResponseStatus = pResponseStatus_
-    , _cartrsApprovalRuleTemplate = pApprovalRuleTemplate_
-    }
-
+createApprovalRuleTemplateResponse pResponseStatus_
+  pApprovalRuleTemplate_
+  = CreateApprovalRuleTemplateResponse'{_cartrsResponseStatus
+                                          = pResponseStatus_,
+                                        _cartrsApprovalRuleTemplate =
+                                          pApprovalRuleTemplate_}
 
 -- | -- | The response status code.
 cartrsResponseStatus :: Lens' CreateApprovalRuleTemplateResponse Int

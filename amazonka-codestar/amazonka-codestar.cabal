@@ -67,8 +67,19 @@ library
         , Network.AWS.CodeStar.Waiters
 
     other-modules:
-          Network.AWS.CodeStar.Types.Product
-        , Network.AWS.CodeStar.Types.Sum
+          Network.AWS.CodeStar.Types.Code
+        , Network.AWS.CodeStar.Types.CodeCommitCodeDestination
+        , Network.AWS.CodeStar.Types.CodeDestination
+        , Network.AWS.CodeStar.Types.CodeSource
+        , Network.AWS.CodeStar.Types.GitHubCodeDestination
+        , Network.AWS.CodeStar.Types.ProjectStatus
+        , Network.AWS.CodeStar.Types.ProjectSummary
+        , Network.AWS.CodeStar.Types.Resource
+        , Network.AWS.CodeStar.Types.S3Location
+        , Network.AWS.CodeStar.Types.TeamMember
+        , Network.AWS.CodeStar.Types.Toolchain
+        , Network.AWS.CodeStar.Types.ToolchainSource
+        , Network.AWS.CodeStar.Types.UserProfileSummary
 
     build-depends:
           amazonka-core == 1.6.1.*

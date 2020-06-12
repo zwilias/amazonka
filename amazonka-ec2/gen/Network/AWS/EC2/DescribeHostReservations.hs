@@ -44,7 +44,6 @@ module Network.AWS.EC2.DescribeHostReservations
     ) where
 
 import Network.AWS.EC2.Types
-import Network.AWS.EC2.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Pager
 import Network.AWS.Prelude
@@ -52,15 +51,16 @@ import Network.AWS.Request
 import Network.AWS.Response
 
 -- | /See:/ 'describeHostReservations' smart constructor.
-data DescribeHostReservations =
-  DescribeHostReservations'
-    { _dhrNextToken            :: !(Maybe Text)
-    , _dhrHostReservationIdSet :: !(Maybe [Text])
-    , _dhrFilter               :: !(Maybe [Filter])
-    , _dhrMaxResults           :: !(Maybe Int)
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data DescribeHostReservations = DescribeHostReservations'{_dhrNextToken
+                                                          :: !(Maybe Text),
+                                                          _dhrHostReservationIdSet
+                                                          :: !(Maybe [Text]),
+                                                          _dhrFilter ::
+                                                          !(Maybe [Filter]),
+                                                          _dhrMaxResults ::
+                                                          !(Maybe Int)}
+                                  deriving (Eq, Read, Show, Data, Typeable,
+                                            Generic)
 
 -- | Creates a value of 'DescribeHostReservations' with the minimum fields required to make a request.
 --
@@ -75,14 +75,10 @@ data DescribeHostReservations =
 -- * 'dhrMaxResults' - The maximum number of results to return for the request in a single page. The remaining results can be seen by sending another request with the returned @nextToken@ value. This value can be between 5 and 500. If @maxResults@ is given a larger value than 500, you receive an error.
 describeHostReservations
     :: DescribeHostReservations
-describeHostReservations =
-  DescribeHostReservations'
-    { _dhrNextToken = Nothing
-    , _dhrHostReservationIdSet = Nothing
-    , _dhrFilter = Nothing
-    , _dhrMaxResults = Nothing
-    }
-
+describeHostReservations
+  = DescribeHostReservations'{_dhrNextToken = Nothing,
+                              _dhrHostReservationIdSet = Nothing,
+                              _dhrFilter = Nothing, _dhrMaxResults = Nothing}
 
 -- | The token to use to retrieve the next page of results.
 dhrNextToken :: Lens' DescribeHostReservations (Maybe Text)
@@ -144,14 +140,19 @@ instance ToQuery DescribeHostReservations where
                "MaxResults" =: _dhrMaxResults]
 
 -- | /See:/ 'describeHostReservationsResponse' smart constructor.
-data DescribeHostReservationsResponse =
-  DescribeHostReservationsResponse'
-    { _dhrrsNextToken          :: !(Maybe Text)
-    , _dhrrsHostReservationSet :: !(Maybe [HostReservation])
-    , _dhrrsResponseStatus     :: !Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data DescribeHostReservationsResponse = DescribeHostReservationsResponse'{_dhrrsNextToken
+                                                                          ::
+                                                                          !(Maybe
+                                                                              Text),
+                                                                          _dhrrsHostReservationSet
+                                                                          ::
+                                                                          !(Maybe
+                                                                              [HostReservation]),
+                                                                          _dhrrsResponseStatus
+                                                                          ::
+                                                                          !Int}
+                                          deriving (Eq, Read, Show, Data,
+                                                    Typeable, Generic)
 
 -- | Creates a value of 'DescribeHostReservationsResponse' with the minimum fields required to make a request.
 --
@@ -165,13 +166,11 @@ data DescribeHostReservationsResponse =
 describeHostReservationsResponse
     :: Int -- ^ 'dhrrsResponseStatus'
     -> DescribeHostReservationsResponse
-describeHostReservationsResponse pResponseStatus_ =
-  DescribeHostReservationsResponse'
-    { _dhrrsNextToken = Nothing
-    , _dhrrsHostReservationSet = Nothing
-    , _dhrrsResponseStatus = pResponseStatus_
-    }
-
+describeHostReservationsResponse pResponseStatus_
+  = DescribeHostReservationsResponse'{_dhrrsNextToken =
+                                        Nothing,
+                                      _dhrrsHostReservationSet = Nothing,
+                                      _dhrrsResponseStatus = pResponseStatus_}
 
 -- | The token to use to retrieve the next page of results. This value is @null@ when there are no more results to return.
 dhrrsNextToken :: Lens' DescribeHostReservationsResponse (Maybe Text)

@@ -47,46 +47,37 @@ import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 import Network.AWS.Shield.Types
-import Network.AWS.Shield.Types.Product
 
 -- | /See:/ 'listAttacks' smart constructor.
-data ListAttacks =
-  ListAttacks'
-    { _laStartTime    :: !(Maybe TimeRange)
-    , _laResourceARNs :: !(Maybe [Text])
-    , _laNextToken    :: !(Maybe Text)
-    , _laEndTime      :: !(Maybe TimeRange)
-    , _laMaxResults   :: !(Maybe Nat)
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data ListAttacks = ListAttacks'{_laStartTime ::
+                                !(Maybe TimeRange),
+                                _laResourceARNs :: !(Maybe [Text]),
+                                _laNextToken :: !(Maybe Text),
+                                _laEndTime :: !(Maybe TimeRange),
+                                _laMaxResults :: !(Maybe Nat)}
+                     deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'ListAttacks' with the minimum fields required to make a request.
 --
 -- Use one of the following lenses to modify other fields as desired:
 --
--- * 'laStartTime' - The start of the time period for the attacks. This is a @timestamp@ type. The sample request above indicates a @number@ type because the default used by WAF is Unix time in seconds. However any valid <http://docs.aws.amazon.com/cli/latest/userguide/cli-using-param.html#parameter-types timestamp format> is allowed.
+-- * 'laStartTime' - The start of the time period for the attacks. This is a @timestamp@ type. The sample request above indicates a @number@ type because the default used by WAF is Unix time in seconds. However any valid <http://docs.aws.amazon.com/cli/latest/userguide/cli-using-param.html#parameter-types timestamp format> is allowed. 
 --
 -- * 'laResourceARNs' - The ARN (Amazon Resource Name) of the resource that was attacked. If this is left blank, all applicable resources for this account will be included.
 --
 -- * 'laNextToken' - The @ListAttacksRequest.NextMarker@ value from a previous call to @ListAttacksRequest@ . Pass null if this is the first call.
 --
--- * 'laEndTime' - The end of the time period for the attacks. This is a @timestamp@ type. The sample request above indicates a @number@ type because the default used by WAF is Unix time in seconds. However any valid <http://docs.aws.amazon.com/cli/latest/userguide/cli-using-param.html#parameter-types timestamp format> is allowed.
+-- * 'laEndTime' - The end of the time period for the attacks. This is a @timestamp@ type. The sample request above indicates a @number@ type because the default used by WAF is Unix time in seconds. However any valid <http://docs.aws.amazon.com/cli/latest/userguide/cli-using-param.html#parameter-types timestamp format> is allowed. 
 --
 -- * 'laMaxResults' - The maximum number of 'AttackSummary' objects to be returned. If this is left blank, the first 20 results will be returned.
 listAttacks
     :: ListAttacks
-listAttacks =
-  ListAttacks'
-    { _laStartTime = Nothing
-    , _laResourceARNs = Nothing
-    , _laNextToken = Nothing
-    , _laEndTime = Nothing
-    , _laMaxResults = Nothing
-    }
+listAttacks
+  = ListAttacks'{_laStartTime = Nothing,
+                 _laResourceARNs = Nothing, _laNextToken = Nothing,
+                 _laEndTime = Nothing, _laMaxResults = Nothing}
 
-
--- | The start of the time period for the attacks. This is a @timestamp@ type. The sample request above indicates a @number@ type because the default used by WAF is Unix time in seconds. However any valid <http://docs.aws.amazon.com/cli/latest/userguide/cli-using-param.html#parameter-types timestamp format> is allowed.
+-- | The start of the time period for the attacks. This is a @timestamp@ type. The sample request above indicates a @number@ type because the default used by WAF is Unix time in seconds. However any valid <http://docs.aws.amazon.com/cli/latest/userguide/cli-using-param.html#parameter-types timestamp format> is allowed. 
 laStartTime :: Lens' ListAttacks (Maybe TimeRange)
 laStartTime = lens _laStartTime (\ s a -> s{_laStartTime = a})
 
@@ -98,7 +89,7 @@ laResourceARNs = lens _laResourceARNs (\ s a -> s{_laResourceARNs = a}) . _Defau
 laNextToken :: Lens' ListAttacks (Maybe Text)
 laNextToken = lens _laNextToken (\ s a -> s{_laNextToken = a})
 
--- | The end of the time period for the attacks. This is a @timestamp@ type. The sample request above indicates a @number@ type because the default used by WAF is Unix time in seconds. However any valid <http://docs.aws.amazon.com/cli/latest/userguide/cli-using-param.html#parameter-types timestamp format> is allowed.
+-- | The end of the time period for the attacks. This is a @timestamp@ type. The sample request above indicates a @number@ type because the default used by WAF is Unix time in seconds. However any valid <http://docs.aws.amazon.com/cli/latest/userguide/cli-using-param.html#parameter-types timestamp format> is allowed. 
 laEndTime :: Lens' ListAttacks (Maybe TimeRange)
 laEndTime = lens _laEndTime (\ s a -> s{_laEndTime = a})
 
@@ -147,14 +138,11 @@ instance ToQuery ListAttacks where
         toQuery = const mempty
 
 -- | /See:/ 'listAttacksResponse' smart constructor.
-data ListAttacksResponse =
-  ListAttacksResponse'
-    { _larsAttackSummaries :: !(Maybe [AttackSummary])
-    , _larsNextToken       :: !(Maybe Text)
-    , _larsResponseStatus  :: !Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data ListAttacksResponse = ListAttacksResponse'{_larsAttackSummaries
+                                                :: !(Maybe [AttackSummary]),
+                                                _larsNextToken :: !(Maybe Text),
+                                                _larsResponseStatus :: !Int}
+                             deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'ListAttacksResponse' with the minimum fields required to make a request.
 --
@@ -168,13 +156,11 @@ data ListAttacksResponse =
 listAttacksResponse
     :: Int -- ^ 'larsResponseStatus'
     -> ListAttacksResponse
-listAttacksResponse pResponseStatus_ =
-  ListAttacksResponse'
-    { _larsAttackSummaries = Nothing
-    , _larsNextToken = Nothing
-    , _larsResponseStatus = pResponseStatus_
-    }
-
+listAttacksResponse pResponseStatus_
+  = ListAttacksResponse'{_larsAttackSummaries =
+                           Nothing,
+                         _larsNextToken = Nothing,
+                         _larsResponseStatus = pResponseStatus_}
 
 -- | The attack information for the specified time range.
 larsAttackSummaries :: Lens' ListAttacksResponse [AttackSummary]

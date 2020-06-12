@@ -18,10 +18,10 @@
 -- Stability   : auto-generated
 -- Portability : non-portable (GHC extensions)
 --
--- Deletes the specified alias. You cannot perform this operation on an alias in a different AWS account.
+-- Deletes the specified alias. You cannot perform this operation on an alias in a different AWS account. 
 --
 --
--- Because an alias is not a property of a CMK, you can delete and change the aliases of a CMK without affecting the CMK. Also, aliases do not appear in the response from the 'DescribeKey' operation. To get the aliases of all CMKs, use the 'ListAliases' operation.
+-- Because an alias is not a property of a CMK, you can delete and change the aliases of a CMK without affecting the CMK. Also, aliases do not appear in the response from the 'DescribeKey' operation. To get the aliases of all CMKs, use the 'ListAliases' operation. 
 --
 -- Each CMK can have multiple aliases. To change the alias of a CMK, use 'DeleteAlias' to delete the current alias and 'CreateAlias' to create a new alias. To associate an existing alias with a different customer master key (CMK), call 'UpdateAlias' .
 --
@@ -39,19 +39,15 @@ module Network.AWS.KMS.DeleteAlias
     ) where
 
 import Network.AWS.KMS.Types
-import Network.AWS.KMS.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 
 -- | /See:/ 'deleteAlias' smart constructor.
-newtype DeleteAlias =
-  DeleteAlias'
-    { _daAliasName :: Text
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+newtype DeleteAlias = DeleteAlias'{_daAliasName ::
+                                   Text}
+                        deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'DeleteAlias' with the minimum fields required to make a request.
 --
@@ -61,8 +57,8 @@ newtype DeleteAlias =
 deleteAlias
     :: Text -- ^ 'daAliasName'
     -> DeleteAlias
-deleteAlias pAliasName_ = DeleteAlias' {_daAliasName = pAliasName_}
-
+deleteAlias pAliasName_
+  = DeleteAlias'{_daAliasName = pAliasName_}
 
 -- | The alias to be deleted. The name must start with the word "alias" followed by a forward slash (alias/). Aliases that begin with "alias/aws" are reserved.
 daAliasName :: Lens' DeleteAlias Text
@@ -98,16 +94,13 @@ instance ToQuery DeleteAlias where
         toQuery = const mempty
 
 -- | /See:/ 'deleteAliasResponse' smart constructor.
-data DeleteAliasResponse =
-  DeleteAliasResponse'
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data DeleteAliasResponse = DeleteAliasResponse'
+                             deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'DeleteAliasResponse' with the minimum fields required to make a request.
 --
 deleteAliasResponse
     :: DeleteAliasResponse
 deleteAliasResponse = DeleteAliasResponse'
-
 
 instance NFData DeleteAliasResponse where

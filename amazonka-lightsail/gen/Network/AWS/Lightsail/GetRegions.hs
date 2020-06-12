@@ -39,18 +39,14 @@ module Network.AWS.Lightsail.GetRegions
 
 import Network.AWS.Lens
 import Network.AWS.Lightsail.Types
-import Network.AWS.Lightsail.Types.Product
 import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 
 -- | /See:/ 'getRegions' smart constructor.
-newtype GetRegions =
-  GetRegions'
-    { _grIncludeAvailabilityZones :: Maybe Bool
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+newtype GetRegions = GetRegions'{_grIncludeAvailabilityZones
+                                 :: Maybe Bool}
+                       deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'GetRegions' with the minimum fields required to make a request.
 --
@@ -59,8 +55,8 @@ newtype GetRegions =
 -- * 'grIncludeAvailabilityZones' - A Boolean value indicating whether to also include Availability Zones in your get regions request. Availability Zones are indicated with a letter: e.g., @us-east-2a@ .
 getRegions
     :: GetRegions
-getRegions = GetRegions' {_grIncludeAvailabilityZones = Nothing}
-
+getRegions
+  = GetRegions'{_grIncludeAvailabilityZones = Nothing}
 
 -- | A Boolean value indicating whether to also include Availability Zones in your get regions request. Availability Zones are indicated with a letter: e.g., @us-east-2a@ .
 grIncludeAvailabilityZones :: Lens' GetRegions (Maybe Bool)
@@ -102,13 +98,10 @@ instance ToQuery GetRegions where
         toQuery = const mempty
 
 -- | /See:/ 'getRegionsResponse' smart constructor.
-data GetRegionsResponse =
-  GetRegionsResponse'
-    { _grrsRegions        :: !(Maybe [RegionInfo])
-    , _grrsResponseStatus :: !Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data GetRegionsResponse = GetRegionsResponse'{_grrsRegions
+                                              :: !(Maybe [RegionInfo]),
+                                              _grrsResponseStatus :: !Int}
+                            deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'GetRegionsResponse' with the minimum fields required to make a request.
 --
@@ -120,10 +113,9 @@ data GetRegionsResponse =
 getRegionsResponse
     :: Int -- ^ 'grrsResponseStatus'
     -> GetRegionsResponse
-getRegionsResponse pResponseStatus_ =
-  GetRegionsResponse'
-    {_grrsRegions = Nothing, _grrsResponseStatus = pResponseStatus_}
-
+getRegionsResponse pResponseStatus_
+  = GetRegionsResponse'{_grrsRegions = Nothing,
+                        _grrsResponseStatus = pResponseStatus_}
 
 -- | An array of key-value pairs containing information about your get regions request.
 grrsRegions :: Lens' GetRegionsResponse [RegionInfo]

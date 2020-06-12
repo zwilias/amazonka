@@ -21,7 +21,7 @@
 -- Deletes the specified tags from an Amazon SageMaker resource.
 --
 --
--- To list a resource's tags, use the @ListTags@ API.
+-- To list a resource's tags, use the @ListTags@ API. 
 --
 module Network.AWS.SageMaker.DeleteTags
     (
@@ -44,16 +44,12 @@ import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 import Network.AWS.SageMaker.Types
-import Network.AWS.SageMaker.Types.Product
 
 -- | /See:/ 'deleteTags' smart constructor.
-data DeleteTags =
-  DeleteTags'
-    { _dtResourceARN :: !Text
-    , _dtTagKeys     :: !(List1 Text)
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data DeleteTags = DeleteTags'{_dtResourceARN ::
+                              !Text,
+                              _dtTagKeys :: !(List1 Text)}
+                    deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'DeleteTags' with the minimum fields required to make a request.
 --
@@ -66,9 +62,9 @@ deleteTags
     :: Text -- ^ 'dtResourceARN'
     -> NonEmpty Text -- ^ 'dtTagKeys'
     -> DeleteTags
-deleteTags pResourceARN_ pTagKeys_ =
-  DeleteTags' {_dtResourceARN = pResourceARN_, _dtTagKeys = _List1 # pTagKeys_}
-
+deleteTags pResourceARN_ pTagKeys_
+  = DeleteTags'{_dtResourceARN = pResourceARN_,
+                _dtTagKeys = _List1 # pTagKeys_}
 
 -- | The Amazon Resource Name (ARN) of the resource whose tags you want to delete.
 dtResourceARN :: Lens' DeleteTags Text
@@ -113,12 +109,10 @@ instance ToQuery DeleteTags where
         toQuery = const mempty
 
 -- | /See:/ 'deleteTagsResponse' smart constructor.
-newtype DeleteTagsResponse =
-  DeleteTagsResponse'
-    { _dtrsResponseStatus :: Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+newtype DeleteTagsResponse = DeleteTagsResponse'{_dtrsResponseStatus
+                                                 :: Int}
+                               deriving (Eq, Read, Show, Data, Typeable,
+                                         Generic)
 
 -- | Creates a value of 'DeleteTagsResponse' with the minimum fields required to make a request.
 --
@@ -128,9 +122,9 @@ newtype DeleteTagsResponse =
 deleteTagsResponse
     :: Int -- ^ 'dtrsResponseStatus'
     -> DeleteTagsResponse
-deleteTagsResponse pResponseStatus_ =
-  DeleteTagsResponse' {_dtrsResponseStatus = pResponseStatus_}
-
+deleteTagsResponse pResponseStatus_
+  = DeleteTagsResponse'{_dtrsResponseStatus =
+                          pResponseStatus_}
 
 -- | -- | The response status code.
 dtrsResponseStatus :: Lens' DeleteTagsResponse Int

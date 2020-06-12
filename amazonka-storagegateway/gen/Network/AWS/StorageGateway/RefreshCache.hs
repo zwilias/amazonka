@@ -42,15 +42,11 @@ import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 import Network.AWS.StorageGateway.Types
-import Network.AWS.StorageGateway.Types.Product
 
 -- | /See:/ 'refreshCache' smart constructor.
-newtype RefreshCache =
-  RefreshCache'
-    { _rcFileShareARN :: Text
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+newtype RefreshCache = RefreshCache'{_rcFileShareARN
+                                     :: Text}
+                         deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'RefreshCache' with the minimum fields required to make a request.
 --
@@ -60,8 +56,8 @@ newtype RefreshCache =
 refreshCache
     :: Text -- ^ 'rcFileShareARN'
     -> RefreshCache
-refreshCache pFileShareARN_ = RefreshCache' {_rcFileShareARN = pFileShareARN_}
-
+refreshCache pFileShareARN_
+  = RefreshCache'{_rcFileShareARN = pFileShareARN_}
 
 -- | Undocumented member.
 rcFileShareARN :: Lens' RefreshCache Text
@@ -103,13 +99,10 @@ instance ToQuery RefreshCache where
         toQuery = const mempty
 
 -- | /See:/ 'refreshCacheResponse' smart constructor.
-data RefreshCacheResponse =
-  RefreshCacheResponse'
-    { _rcrsFileShareARN   :: !(Maybe Text)
-    , _rcrsResponseStatus :: !Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data RefreshCacheResponse = RefreshCacheResponse'{_rcrsFileShareARN
+                                                  :: !(Maybe Text),
+                                                  _rcrsResponseStatus :: !Int}
+                              deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'RefreshCacheResponse' with the minimum fields required to make a request.
 --
@@ -121,10 +114,9 @@ data RefreshCacheResponse =
 refreshCacheResponse
     :: Int -- ^ 'rcrsResponseStatus'
     -> RefreshCacheResponse
-refreshCacheResponse pResponseStatus_ =
-  RefreshCacheResponse'
-    {_rcrsFileShareARN = Nothing, _rcrsResponseStatus = pResponseStatus_}
-
+refreshCacheResponse pResponseStatus_
+  = RefreshCacheResponse'{_rcrsFileShareARN = Nothing,
+                          _rcrsResponseStatus = pResponseStatus_}
 
 -- | Undocumented member.
 rcrsFileShareARN :: Lens' RefreshCacheResponse (Maybe Text)

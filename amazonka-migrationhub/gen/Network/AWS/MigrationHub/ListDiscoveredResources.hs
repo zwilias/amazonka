@@ -43,21 +43,21 @@ module Network.AWS.MigrationHub.ListDiscoveredResources
 
 import Network.AWS.Lens
 import Network.AWS.MigrationHub.Types
-import Network.AWS.MigrationHub.Types.Product
 import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 
 -- | /See:/ 'listDiscoveredResources' smart constructor.
-data ListDiscoveredResources =
-  ListDiscoveredResources'
-    { _ldrNextToken            :: !(Maybe Text)
-    , _ldrMaxResults           :: !(Maybe Nat)
-    , _ldrProgressUpdateStream :: !Text
-    , _ldrMigrationTaskName    :: !Text
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data ListDiscoveredResources = ListDiscoveredResources'{_ldrNextToken
+                                                        :: !(Maybe Text),
+                                                        _ldrMaxResults ::
+                                                        !(Maybe Nat),
+                                                        _ldrProgressUpdateStream
+                                                        :: !Text,
+                                                        _ldrMigrationTaskName ::
+                                                        !Text}
+                                 deriving (Eq, Read, Show, Data, Typeable,
+                                           Generic)
 
 -- | Creates a value of 'ListDiscoveredResources' with the minimum fields required to make a request.
 --
@@ -74,14 +74,12 @@ listDiscoveredResources
     :: Text -- ^ 'ldrProgressUpdateStream'
     -> Text -- ^ 'ldrMigrationTaskName'
     -> ListDiscoveredResources
-listDiscoveredResources pProgressUpdateStream_ pMigrationTaskName_ =
-  ListDiscoveredResources'
-    { _ldrNextToken = Nothing
-    , _ldrMaxResults = Nothing
-    , _ldrProgressUpdateStream = pProgressUpdateStream_
-    , _ldrMigrationTaskName = pMigrationTaskName_
-    }
-
+listDiscoveredResources pProgressUpdateStream_
+  pMigrationTaskName_
+  = ListDiscoveredResources'{_ldrNextToken = Nothing,
+                             _ldrMaxResults = Nothing,
+                             _ldrProgressUpdateStream = pProgressUpdateStream_,
+                             _ldrMigrationTaskName = pMigrationTaskName_}
 
 -- | If a @NextToken@ was returned by a previous call, there are more results available. To retrieve the next page of results, make the call again using the returned token in @NextToken@ .
 ldrNextToken :: Lens' ListDiscoveredResources (Maybe Text)
@@ -142,14 +140,18 @@ instance ToQuery ListDiscoveredResources where
         toQuery = const mempty
 
 -- | /See:/ 'listDiscoveredResourcesResponse' smart constructor.
-data ListDiscoveredResourcesResponse =
-  ListDiscoveredResourcesResponse'
-    { _ldrrsDiscoveredResourceList :: !(Maybe [DiscoveredResource])
-    , _ldrrsNextToken              :: !(Maybe Text)
-    , _ldrrsResponseStatus         :: !Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data ListDiscoveredResourcesResponse = ListDiscoveredResourcesResponse'{_ldrrsDiscoveredResourceList
+                                                                        ::
+                                                                        !(Maybe
+                                                                            [DiscoveredResource]),
+                                                                        _ldrrsNextToken
+                                                                        ::
+                                                                        !(Maybe
+                                                                            Text),
+                                                                        _ldrrsResponseStatus
+                                                                        :: !Int}
+                                         deriving (Eq, Read, Show, Data,
+                                                   Typeable, Generic)
 
 -- | Creates a value of 'ListDiscoveredResourcesResponse' with the minimum fields required to make a request.
 --
@@ -163,13 +165,11 @@ data ListDiscoveredResourcesResponse =
 listDiscoveredResourcesResponse
     :: Int -- ^ 'ldrrsResponseStatus'
     -> ListDiscoveredResourcesResponse
-listDiscoveredResourcesResponse pResponseStatus_ =
-  ListDiscoveredResourcesResponse'
-    { _ldrrsDiscoveredResourceList = Nothing
-    , _ldrrsNextToken = Nothing
-    , _ldrrsResponseStatus = pResponseStatus_
-    }
-
+listDiscoveredResourcesResponse pResponseStatus_
+  = ListDiscoveredResourcesResponse'{_ldrrsDiscoveredResourceList
+                                       = Nothing,
+                                     _ldrrsNextToken = Nothing,
+                                     _ldrrsResponseStatus = pResponseStatus_}
 
 -- | Returned list of discovered resources associated with the given MigrationTask.
 ldrrsDiscoveredResourceList :: Lens' ListDiscoveredResourcesResponse [DiscoveredResource]

@@ -41,7 +41,6 @@ module Network.AWS.MediaPackage.UpdateChannel
 
 import Network.AWS.Lens
 import Network.AWS.MediaPackage.Types
-import Network.AWS.MediaPackage.Types.Product
 import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
@@ -49,13 +48,10 @@ import Network.AWS.Response
 -- | Configuration parameters used to update the Channel.
 --
 -- /See:/ 'updateChannel' smart constructor.
-data UpdateChannel =
-  UpdateChannel'
-    { _ucDescription :: !(Maybe Text)
-    , _ucId          :: !Text
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data UpdateChannel = UpdateChannel'{_ucDescription ::
+                                    !(Maybe Text),
+                                    _ucId :: !Text}
+                       deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'UpdateChannel' with the minimum fields required to make a request.
 --
@@ -67,8 +63,9 @@ data UpdateChannel =
 updateChannel
     :: Text -- ^ 'ucId'
     -> UpdateChannel
-updateChannel pId_ = UpdateChannel' {_ucDescription = Nothing, _ucId = pId_}
-
+updateChannel pId_
+  = UpdateChannel'{_ucDescription = Nothing,
+                   _ucId = pId_}
 
 -- | A short text description of the Channel.
 ucDescription :: Lens' UpdateChannel (Maybe Text)
@@ -114,16 +111,15 @@ instance ToQuery UpdateChannel where
         toQuery = const mempty
 
 -- | /See:/ 'updateChannelResponse' smart constructor.
-data UpdateChannelResponse =
-  UpdateChannelResponse'
-    { _ucrsHlsIngest      :: !(Maybe HlsIngest)
-    , _ucrsARN            :: !(Maybe Text)
-    , _ucrsId             :: !(Maybe Text)
-    , _ucrsDescription    :: !(Maybe Text)
-    , _ucrsResponseStatus :: !Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data UpdateChannelResponse = UpdateChannelResponse'{_ucrsHlsIngest
+                                                    :: !(Maybe HlsIngest),
+                                                    _ucrsARN :: !(Maybe Text),
+                                                    _ucrsId :: !(Maybe Text),
+                                                    _ucrsDescription ::
+                                                    !(Maybe Text),
+                                                    _ucrsResponseStatus :: !Int}
+                               deriving (Eq, Read, Show, Data, Typeable,
+                                         Generic)
 
 -- | Creates a value of 'UpdateChannelResponse' with the minimum fields required to make a request.
 --
@@ -141,15 +137,11 @@ data UpdateChannelResponse =
 updateChannelResponse
     :: Int -- ^ 'ucrsResponseStatus'
     -> UpdateChannelResponse
-updateChannelResponse pResponseStatus_ =
-  UpdateChannelResponse'
-    { _ucrsHlsIngest = Nothing
-    , _ucrsARN = Nothing
-    , _ucrsId = Nothing
-    , _ucrsDescription = Nothing
-    , _ucrsResponseStatus = pResponseStatus_
-    }
-
+updateChannelResponse pResponseStatus_
+  = UpdateChannelResponse'{_ucrsHlsIngest = Nothing,
+                           _ucrsARN = Nothing, _ucrsId = Nothing,
+                           _ucrsDescription = Nothing,
+                           _ucrsResponseStatus = pResponseStatus_}
 
 -- | Undocumented member.
 ucrsHlsIngest :: Lens' UpdateChannelResponse (Maybe HlsIngest)

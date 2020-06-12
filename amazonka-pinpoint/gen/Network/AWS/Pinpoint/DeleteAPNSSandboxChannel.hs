@@ -37,18 +37,15 @@ module Network.AWS.Pinpoint.DeleteAPNSSandboxChannel
 
 import Network.AWS.Lens
 import Network.AWS.Pinpoint.Types
-import Network.AWS.Pinpoint.Types.Product
 import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 
 -- | /See:/ 'deleteAPNSSandboxChannel' smart constructor.
-newtype DeleteAPNSSandboxChannel =
-  DeleteAPNSSandboxChannel'
-    { _dascApplicationId :: Text
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+newtype DeleteAPNSSandboxChannel = DeleteAPNSSandboxChannel'{_dascApplicationId
+                                                             :: Text}
+                                     deriving (Eq, Read, Show, Data, Typeable,
+                                               Generic)
 
 -- | Creates a value of 'DeleteAPNSSandboxChannel' with the minimum fields required to make a request.
 --
@@ -58,9 +55,9 @@ newtype DeleteAPNSSandboxChannel =
 deleteAPNSSandboxChannel
     :: Text -- ^ 'dascApplicationId'
     -> DeleteAPNSSandboxChannel
-deleteAPNSSandboxChannel pApplicationId_ =
-  DeleteAPNSSandboxChannel' {_dascApplicationId = pApplicationId_}
-
+deleteAPNSSandboxChannel pApplicationId_
+  = DeleteAPNSSandboxChannel'{_dascApplicationId =
+                                pApplicationId_}
 
 -- | Undocumented member.
 dascApplicationId :: Lens' DeleteAPNSSandboxChannel Text
@@ -97,13 +94,14 @@ instance ToQuery DeleteAPNSSandboxChannel where
         toQuery = const mempty
 
 -- | /See:/ 'deleteAPNSSandboxChannelResponse' smart constructor.
-data DeleteAPNSSandboxChannelResponse =
-  DeleteAPNSSandboxChannelResponse'
-    { _dascrsResponseStatus             :: !Int
-    , _dascrsAPNSSandboxChannelResponse :: !APNSSandboxChannelResponse
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data DeleteAPNSSandboxChannelResponse = DeleteAPNSSandboxChannelResponse'{_dascrsResponseStatus
+                                                                          ::
+                                                                          !Int,
+                                                                          _dascrsAPNSSandboxChannelResponse
+                                                                          ::
+                                                                          !APNSSandboxChannelResponse}
+                                          deriving (Eq, Read, Show, Data,
+                                                    Typeable, Generic)
 
 -- | Creates a value of 'DeleteAPNSSandboxChannelResponse' with the minimum fields required to make a request.
 --
@@ -116,12 +114,12 @@ deleteAPNSSandboxChannelResponse
     :: Int -- ^ 'dascrsResponseStatus'
     -> APNSSandboxChannelResponse -- ^ 'dascrsAPNSSandboxChannelResponse'
     -> DeleteAPNSSandboxChannelResponse
-deleteAPNSSandboxChannelResponse pResponseStatus_ pAPNSSandboxChannelResponse_ =
-  DeleteAPNSSandboxChannelResponse'
-    { _dascrsResponseStatus = pResponseStatus_
-    , _dascrsAPNSSandboxChannelResponse = pAPNSSandboxChannelResponse_
-    }
-
+deleteAPNSSandboxChannelResponse pResponseStatus_
+  pAPNSSandboxChannelResponse_
+  = DeleteAPNSSandboxChannelResponse'{_dascrsResponseStatus
+                                        = pResponseStatus_,
+                                      _dascrsAPNSSandboxChannelResponse =
+                                        pAPNSSandboxChannelResponse_}
 
 -- | -- | The response status code.
 dascrsResponseStatus :: Lens' DeleteAPNSSandboxChannelResponse Int

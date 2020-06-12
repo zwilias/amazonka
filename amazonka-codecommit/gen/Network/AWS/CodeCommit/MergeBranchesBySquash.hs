@@ -49,29 +49,39 @@ module Network.AWS.CodeCommit.MergeBranchesBySquash
     ) where
 
 import Network.AWS.CodeCommit.Types
-import Network.AWS.CodeCommit.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 
 -- | /See:/ 'mergeBranchesBySquash' smart constructor.
-data MergeBranchesBySquash =
-  MergeBranchesBySquash'
-    { _mbbsEmail :: !(Maybe Text)
-    , _mbbsAuthorName :: !(Maybe Text)
-    , _mbbsTargetBranch :: !(Maybe Text)
-    , _mbbsConflictDetailLevel :: !(Maybe ConflictDetailLevelTypeEnum)
-    , _mbbsCommitMessage :: !(Maybe Text)
-    , _mbbsConflictResolution :: !(Maybe ConflictResolution)
-    , _mbbsConflictResolutionStrategy :: !(Maybe ConflictResolutionStrategyTypeEnum)
-    , _mbbsKeepEmptyFolders :: !(Maybe Bool)
-    , _mbbsRepositoryName :: !Text
-    , _mbbsSourceCommitSpecifier :: !Text
-    , _mbbsDestinationCommitSpecifier :: !Text
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data MergeBranchesBySquash = MergeBranchesBySquash'{_mbbsEmail
+                                                    :: !(Maybe Text),
+                                                    _mbbsAuthorName ::
+                                                    !(Maybe Text),
+                                                    _mbbsTargetBranch ::
+                                                    !(Maybe Text),
+                                                    _mbbsConflictDetailLevel ::
+                                                    !(Maybe
+                                                        ConflictDetailLevelTypeEnum),
+                                                    _mbbsCommitMessage ::
+                                                    !(Maybe Text),
+                                                    _mbbsConflictResolution ::
+                                                    !(Maybe ConflictResolution),
+                                                    _mbbsConflictResolutionStrategy
+                                                    ::
+                                                    !(Maybe
+                                                        ConflictResolutionStrategyTypeEnum),
+                                                    _mbbsKeepEmptyFolders ::
+                                                    !(Maybe Bool),
+                                                    _mbbsRepositoryName ::
+                                                    !Text,
+                                                    _mbbsSourceCommitSpecifier
+                                                    :: !Text,
+                                                    _mbbsDestinationCommitSpecifier
+                                                    :: !Text}
+                               deriving (Eq, Read, Show, Data, Typeable,
+                                         Generic)
 
 -- | Creates a value of 'MergeBranchesBySquash' with the minimum fields required to make a request.
 --
@@ -81,7 +91,7 @@ data MergeBranchesBySquash =
 --
 -- * 'mbbsAuthorName' - The name of the author who created the commit. This information is used as both the author and committer for the commit.
 --
--- * 'mbbsTargetBranch' - The branch where the merge is applied.
+-- * 'mbbsTargetBranch' - The branch where the merge is applied. 
 --
 -- * 'mbbsConflictDetailLevel' - The level of conflict detail to use. If unspecified, the default FILE_LEVEL is used, which returns a not-mergeable result if the same file has differences in both branches. If LINE_LEVEL is specified, a conflict is considered not mergeable if the same file in both branches has differences on the same line.
 --
@@ -103,21 +113,20 @@ mergeBranchesBySquash
     -> Text -- ^ 'mbbsSourceCommitSpecifier'
     -> Text -- ^ 'mbbsDestinationCommitSpecifier'
     -> MergeBranchesBySquash
-mergeBranchesBySquash pRepositoryName_ pSourceCommitSpecifier_ pDestinationCommitSpecifier_ =
-  MergeBranchesBySquash'
-    { _mbbsEmail = Nothing
-    , _mbbsAuthorName = Nothing
-    , _mbbsTargetBranch = Nothing
-    , _mbbsConflictDetailLevel = Nothing
-    , _mbbsCommitMessage = Nothing
-    , _mbbsConflictResolution = Nothing
-    , _mbbsConflictResolutionStrategy = Nothing
-    , _mbbsKeepEmptyFolders = Nothing
-    , _mbbsRepositoryName = pRepositoryName_
-    , _mbbsSourceCommitSpecifier = pSourceCommitSpecifier_
-    , _mbbsDestinationCommitSpecifier = pDestinationCommitSpecifier_
-    }
-
+mergeBranchesBySquash pRepositoryName_
+  pSourceCommitSpecifier_ pDestinationCommitSpecifier_
+  = MergeBranchesBySquash'{_mbbsEmail = Nothing,
+                           _mbbsAuthorName = Nothing,
+                           _mbbsTargetBranch = Nothing,
+                           _mbbsConflictDetailLevel = Nothing,
+                           _mbbsCommitMessage = Nothing,
+                           _mbbsConflictResolution = Nothing,
+                           _mbbsConflictResolutionStrategy = Nothing,
+                           _mbbsKeepEmptyFolders = Nothing,
+                           _mbbsRepositoryName = pRepositoryName_,
+                           _mbbsSourceCommitSpecifier = pSourceCommitSpecifier_,
+                           _mbbsDestinationCommitSpecifier =
+                             pDestinationCommitSpecifier_}
 
 -- | The email address of the person merging the branches. This information is used in the commit information for the merge.
 mbbsEmail :: Lens' MergeBranchesBySquash (Maybe Text)
@@ -127,7 +136,7 @@ mbbsEmail = lens _mbbsEmail (\ s a -> s{_mbbsEmail = a})
 mbbsAuthorName :: Lens' MergeBranchesBySquash (Maybe Text)
 mbbsAuthorName = lens _mbbsAuthorName (\ s a -> s{_mbbsAuthorName = a})
 
--- | The branch where the merge is applied.
+-- | The branch where the merge is applied. 
 mbbsTargetBranch :: Lens' MergeBranchesBySquash (Maybe Text)
 mbbsTargetBranch = lens _mbbsTargetBranch (\ s a -> s{_mbbsTargetBranch = a})
 
@@ -218,14 +227,18 @@ instance ToQuery MergeBranchesBySquash where
         toQuery = const mempty
 
 -- | /See:/ 'mergeBranchesBySquashResponse' smart constructor.
-data MergeBranchesBySquashResponse =
-  MergeBranchesBySquashResponse'
-    { _mbbsrsCommitId       :: !(Maybe Text)
-    , _mbbsrsTreeId         :: !(Maybe Text)
-    , _mbbsrsResponseStatus :: !Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data MergeBranchesBySquashResponse = MergeBranchesBySquashResponse'{_mbbsrsCommitId
+                                                                    ::
+                                                                    !(Maybe
+                                                                        Text),
+                                                                    _mbbsrsTreeId
+                                                                    ::
+                                                                    !(Maybe
+                                                                        Text),
+                                                                    _mbbsrsResponseStatus
+                                                                    :: !Int}
+                                       deriving (Eq, Read, Show, Data, Typeable,
+                                                 Generic)
 
 -- | Creates a value of 'MergeBranchesBySquashResponse' with the minimum fields required to make a request.
 --
@@ -239,13 +252,11 @@ data MergeBranchesBySquashResponse =
 mergeBranchesBySquashResponse
     :: Int -- ^ 'mbbsrsResponseStatus'
     -> MergeBranchesBySquashResponse
-mergeBranchesBySquashResponse pResponseStatus_ =
-  MergeBranchesBySquashResponse'
-    { _mbbsrsCommitId = Nothing
-    , _mbbsrsTreeId = Nothing
-    , _mbbsrsResponseStatus = pResponseStatus_
-    }
-
+mergeBranchesBySquashResponse pResponseStatus_
+  = MergeBranchesBySquashResponse'{_mbbsrsCommitId =
+                                     Nothing,
+                                   _mbbsrsTreeId = Nothing,
+                                   _mbbsrsResponseStatus = pResponseStatus_}
 
 -- | The commit ID of the merge in the destination or target branch.
 mbbsrsCommitId :: Lens' MergeBranchesBySquashResponse (Maybe Text)

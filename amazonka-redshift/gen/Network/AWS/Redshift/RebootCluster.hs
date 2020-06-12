@@ -18,7 +18,7 @@
 -- Stability   : auto-generated
 -- Portability : non-portable (GHC extensions)
 --
--- Reboots a cluster. This action is taken as soon as possible. It results in a momentary outage to the cluster, during which the cluster status is set to @rebooting@ . A cluster event is created when the reboot is completed. Any pending cluster modifications (see 'ModifyCluster' ) are applied at this reboot. For more information about managing clusters, go to <http://docs.aws.amazon.com/redshift/latest/mgmt/working-with-clusters.html Amazon Redshift Clusters> in the /Amazon Redshift Cluster Management Guide/ .
+-- Reboots a cluster. This action is taken as soon as possible. It results in a momentary outage to the cluster, during which the cluster status is set to @rebooting@ . A cluster event is created when the reboot is completed. Any pending cluster modifications (see 'ModifyCluster' ) are applied at this reboot. For more information about managing clusters, go to <http://docs.aws.amazon.com/redshift/latest/mgmt/working-with-clusters.html Amazon Redshift Clusters> in the /Amazon Redshift Cluster Management Guide/ . 
 --
 --
 module Network.AWS.Redshift.RebootCluster
@@ -40,21 +40,17 @@ module Network.AWS.Redshift.RebootCluster
 import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.Redshift.Types
-import Network.AWS.Redshift.Types.Product
 import Network.AWS.Request
 import Network.AWS.Response
 
--- |
+-- | 
 --
 --
 --
 -- /See:/ 'rebootCluster' smart constructor.
-newtype RebootCluster =
-  RebootCluster'
-    { _rcClusterIdentifier :: Text
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+newtype RebootCluster = RebootCluster'{_rcClusterIdentifier
+                                       :: Text}
+                          deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'RebootCluster' with the minimum fields required to make a request.
 --
@@ -64,9 +60,9 @@ newtype RebootCluster =
 rebootCluster
     :: Text -- ^ 'rcClusterIdentifier'
     -> RebootCluster
-rebootCluster pClusterIdentifier_ =
-  RebootCluster' {_rcClusterIdentifier = pClusterIdentifier_}
-
+rebootCluster pClusterIdentifier_
+  = RebootCluster'{_rcClusterIdentifier =
+                     pClusterIdentifier_}
 
 -- | The cluster identifier.
 rcClusterIdentifier :: Lens' RebootCluster Text
@@ -99,13 +95,11 @@ instance ToQuery RebootCluster where
                "ClusterIdentifier" =: _rcClusterIdentifier]
 
 -- | /See:/ 'rebootClusterResponse' smart constructor.
-data RebootClusterResponse =
-  RebootClusterResponse'
-    { _rcrsCluster        :: !(Maybe Cluster)
-    , _rcrsResponseStatus :: !Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data RebootClusterResponse = RebootClusterResponse'{_rcrsCluster
+                                                    :: !(Maybe Cluster),
+                                                    _rcrsResponseStatus :: !Int}
+                               deriving (Eq, Read, Show, Data, Typeable,
+                                         Generic)
 
 -- | Creates a value of 'RebootClusterResponse' with the minimum fields required to make a request.
 --
@@ -117,10 +111,9 @@ data RebootClusterResponse =
 rebootClusterResponse
     :: Int -- ^ 'rcrsResponseStatus'
     -> RebootClusterResponse
-rebootClusterResponse pResponseStatus_ =
-  RebootClusterResponse'
-    {_rcrsCluster = Nothing, _rcrsResponseStatus = pResponseStatus_}
-
+rebootClusterResponse pResponseStatus_
+  = RebootClusterResponse'{_rcrsCluster = Nothing,
+                           _rcrsResponseStatus = pResponseStatus_}
 
 -- | Undocumented member.
 rcrsCluster :: Lens' RebootClusterResponse (Maybe Cluster)

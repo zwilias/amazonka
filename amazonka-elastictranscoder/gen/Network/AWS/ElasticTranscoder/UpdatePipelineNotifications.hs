@@ -41,7 +41,6 @@ module Network.AWS.ElasticTranscoder.UpdatePipelineNotifications
     ) where
 
 import Network.AWS.ElasticTranscoder.Types
-import Network.AWS.ElasticTranscoder.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.Request
@@ -52,13 +51,13 @@ import Network.AWS.Response
 --
 --
 -- /See:/ 'updatePipelineNotifications' smart constructor.
-data UpdatePipelineNotifications =
-  UpdatePipelineNotifications'
-    { _upnId            :: !Text
-    , _upnNotifications :: !Notifications
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data UpdatePipelineNotifications = UpdatePipelineNotifications'{_upnId
+                                                                :: !Text,
+                                                                _upnNotifications
+                                                                ::
+                                                                !Notifications}
+                                     deriving (Eq, Read, Show, Data, Typeable,
+                                               Generic)
 
 -- | Creates a value of 'UpdatePipelineNotifications' with the minimum fields required to make a request.
 --
@@ -71,10 +70,9 @@ updatePipelineNotifications
     :: Text -- ^ 'upnId'
     -> Notifications -- ^ 'upnNotifications'
     -> UpdatePipelineNotifications
-updatePipelineNotifications pId_ pNotifications_ =
-  UpdatePipelineNotifications'
-    {_upnId = pId_, _upnNotifications = pNotifications_}
-
+updatePipelineNotifications pId_ pNotifications_
+  = UpdatePipelineNotifications'{_upnId = pId_,
+                                 _upnNotifications = pNotifications_}
 
 -- | The identifier of the pipeline for which you want to change notification settings.
 upnId :: Lens' UpdatePipelineNotifications Text
@@ -121,13 +119,15 @@ instance ToQuery UpdatePipelineNotifications where
 --
 --
 -- /See:/ 'updatePipelineNotificationsResponse' smart constructor.
-data UpdatePipelineNotificationsResponse =
-  UpdatePipelineNotificationsResponse'
-    { _upnrsPipeline       :: !(Maybe Pipeline)
-    , _upnrsResponseStatus :: !Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data UpdatePipelineNotificationsResponse = UpdatePipelineNotificationsResponse'{_upnrsPipeline
+                                                                                ::
+                                                                                !(Maybe
+                                                                                    Pipeline),
+                                                                                _upnrsResponseStatus
+                                                                                ::
+                                                                                !Int}
+                                             deriving (Eq, Read, Show, Data,
+                                                       Typeable, Generic)
 
 -- | Creates a value of 'UpdatePipelineNotificationsResponse' with the minimum fields required to make a request.
 --
@@ -139,10 +139,11 @@ data UpdatePipelineNotificationsResponse =
 updatePipelineNotificationsResponse
     :: Int -- ^ 'upnrsResponseStatus'
     -> UpdatePipelineNotificationsResponse
-updatePipelineNotificationsResponse pResponseStatus_ =
-  UpdatePipelineNotificationsResponse'
-    {_upnrsPipeline = Nothing, _upnrsResponseStatus = pResponseStatus_}
-
+updatePipelineNotificationsResponse pResponseStatus_
+  = UpdatePipelineNotificationsResponse'{_upnrsPipeline
+                                           = Nothing,
+                                         _upnrsResponseStatus =
+                                           pResponseStatus_}
 
 -- | A section of the response body that provides information about the pipeline associated with this notification.
 upnrsPipeline :: Lens' UpdatePipelineNotificationsResponse (Maybe Pipeline)

@@ -36,20 +36,17 @@ module Network.AWS.CloudDirectory.DetachTypedLink
     ) where
 
 import Network.AWS.CloudDirectory.Types
-import Network.AWS.CloudDirectory.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 
 -- | /See:/ 'detachTypedLink' smart constructor.
-data DetachTypedLink =
-  DetachTypedLink'
-    { _dtlDirectoryARN       :: !Text
-    , _dtlTypedLinkSpecifier :: !TypedLinkSpecifier
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data DetachTypedLink = DetachTypedLink'{_dtlDirectoryARN
+                                        :: !Text,
+                                        _dtlTypedLinkSpecifier ::
+                                        !TypedLinkSpecifier}
+                         deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'DetachTypedLink' with the minimum fields required to make a request.
 --
@@ -62,12 +59,9 @@ detachTypedLink
     :: Text -- ^ 'dtlDirectoryARN'
     -> TypedLinkSpecifier -- ^ 'dtlTypedLinkSpecifier'
     -> DetachTypedLink
-detachTypedLink pDirectoryARN_ pTypedLinkSpecifier_ =
-  DetachTypedLink'
-    { _dtlDirectoryARN = pDirectoryARN_
-    , _dtlTypedLinkSpecifier = pTypedLinkSpecifier_
-    }
-
+detachTypedLink pDirectoryARN_ pTypedLinkSpecifier_
+  = DetachTypedLink'{_dtlDirectoryARN = pDirectoryARN_,
+                     _dtlTypedLinkSpecifier = pTypedLinkSpecifier_}
 
 -- | The Amazon Resource Name (ARN) of the directory where you want to detach the typed link.
 dtlDirectoryARN :: Lens' DetachTypedLink Text
@@ -107,16 +101,14 @@ instance ToQuery DetachTypedLink where
         toQuery = const mempty
 
 -- | /See:/ 'detachTypedLinkResponse' smart constructor.
-data DetachTypedLinkResponse =
-  DetachTypedLinkResponse'
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data DetachTypedLinkResponse = DetachTypedLinkResponse'
+                                 deriving (Eq, Read, Show, Data, Typeable,
+                                           Generic)
 
 -- | Creates a value of 'DetachTypedLinkResponse' with the minimum fields required to make a request.
 --
 detachTypedLinkResponse
     :: DetachTypedLinkResponse
 detachTypedLinkResponse = DetachTypedLinkResponse'
-
 
 instance NFData DetachTypedLinkResponse where

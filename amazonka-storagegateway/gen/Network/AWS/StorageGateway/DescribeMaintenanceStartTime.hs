@@ -46,19 +46,16 @@ import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 import Network.AWS.StorageGateway.Types
-import Network.AWS.StorageGateway.Types.Product
 
 -- | A JSON object containing the of the gateway.
 --
 --
 --
 -- /See:/ 'describeMaintenanceStartTime' smart constructor.
-newtype DescribeMaintenanceStartTime =
-  DescribeMaintenanceStartTime'
-    { _dmstGatewayARN :: Text
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+newtype DescribeMaintenanceStartTime = DescribeMaintenanceStartTime'{_dmstGatewayARN
+                                                                     :: Text}
+                                         deriving (Eq, Read, Show, Data,
+                                                   Typeable, Generic)
 
 -- | Creates a value of 'DescribeMaintenanceStartTime' with the minimum fields required to make a request.
 --
@@ -68,9 +65,9 @@ newtype DescribeMaintenanceStartTime =
 describeMaintenanceStartTime
     :: Text -- ^ 'dmstGatewayARN'
     -> DescribeMaintenanceStartTime
-describeMaintenanceStartTime pGatewayARN_ =
-  DescribeMaintenanceStartTime' {_dmstGatewayARN = pGatewayARN_}
-
+describeMaintenanceStartTime pGatewayARN_
+  = DescribeMaintenanceStartTime'{_dmstGatewayARN =
+                                    pGatewayARN_}
 
 -- | Undocumented member.
 dmstGatewayARN :: Lens' DescribeMaintenanceStartTime Text
@@ -119,29 +116,43 @@ instance ToQuery DescribeMaintenanceStartTime where
 -- | A JSON object containing the following fields:
 --
 --
---     * 'DescribeMaintenanceStartTimeOutput$DayOfWeek'
+--     * 'DescribeMaintenanceStartTimeOutput$DayOfWeek' 
 --
---     * 'DescribeMaintenanceStartTimeOutput$HourOfDay'
+--     * 'DescribeMaintenanceStartTimeOutput$HourOfDay' 
 --
---     * 'DescribeMaintenanceStartTimeOutput$MinuteOfHour'
+--     * 'DescribeMaintenanceStartTimeOutput$MinuteOfHour' 
 --
---     * 'DescribeMaintenanceStartTimeOutput$Timezone'
+--     * 'DescribeMaintenanceStartTimeOutput$Timezone' 
 --
 --
 --
 --
 -- /See:/ 'describeMaintenanceStartTimeResponse' smart constructor.
-data DescribeMaintenanceStartTimeResponse =
-  DescribeMaintenanceStartTimeResponse'
-    { _dmstrsGatewayARN     :: !(Maybe Text)
-    , _dmstrsMinuteOfHour   :: !(Maybe Nat)
-    , _dmstrsHourOfDay      :: !(Maybe Nat)
-    , _dmstrsTimezone       :: !(Maybe Text)
-    , _dmstrsDayOfWeek      :: !(Maybe Nat)
-    , _dmstrsResponseStatus :: !Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data DescribeMaintenanceStartTimeResponse = DescribeMaintenanceStartTimeResponse'{_dmstrsGatewayARN
+                                                                                  ::
+                                                                                  !(Maybe
+                                                                                      Text),
+                                                                                  _dmstrsMinuteOfHour
+                                                                                  ::
+                                                                                  !(Maybe
+                                                                                      Nat),
+                                                                                  _dmstrsHourOfDay
+                                                                                  ::
+                                                                                  !(Maybe
+                                                                                      Nat),
+                                                                                  _dmstrsTimezone
+                                                                                  ::
+                                                                                  !(Maybe
+                                                                                      Text),
+                                                                                  _dmstrsDayOfWeek
+                                                                                  ::
+                                                                                  !(Maybe
+                                                                                      Nat),
+                                                                                  _dmstrsResponseStatus
+                                                                                  ::
+                                                                                  !Int}
+                                              deriving (Eq, Read, Show, Data,
+                                                        Typeable, Generic)
 
 -- | Creates a value of 'DescribeMaintenanceStartTimeResponse' with the minimum fields required to make a request.
 --
@@ -161,16 +172,15 @@ data DescribeMaintenanceStartTimeResponse =
 describeMaintenanceStartTimeResponse
     :: Int -- ^ 'dmstrsResponseStatus'
     -> DescribeMaintenanceStartTimeResponse
-describeMaintenanceStartTimeResponse pResponseStatus_ =
-  DescribeMaintenanceStartTimeResponse'
-    { _dmstrsGatewayARN = Nothing
-    , _dmstrsMinuteOfHour = Nothing
-    , _dmstrsHourOfDay = Nothing
-    , _dmstrsTimezone = Nothing
-    , _dmstrsDayOfWeek = Nothing
-    , _dmstrsResponseStatus = pResponseStatus_
-    }
-
+describeMaintenanceStartTimeResponse pResponseStatus_
+  = DescribeMaintenanceStartTimeResponse'{_dmstrsGatewayARN
+                                            = Nothing,
+                                          _dmstrsMinuteOfHour = Nothing,
+                                          _dmstrsHourOfDay = Nothing,
+                                          _dmstrsTimezone = Nothing,
+                                          _dmstrsDayOfWeek = Nothing,
+                                          _dmstrsResponseStatus =
+                                            pResponseStatus_}
 
 -- | Undocumented member.
 dmstrsGatewayARN :: Lens' DescribeMaintenanceStartTimeResponse (Maybe Text)

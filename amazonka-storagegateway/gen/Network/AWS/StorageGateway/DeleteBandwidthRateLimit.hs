@@ -43,24 +43,22 @@ import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 import Network.AWS.StorageGateway.Types
-import Network.AWS.StorageGateway.Types.Product
 
 -- | A JSON object containing the following fields:
 --
 --
---     * 'DeleteBandwidthRateLimitInput$BandwidthType'
+--     * 'DeleteBandwidthRateLimitInput$BandwidthType' 
 --
 --
 --
 --
 -- /See:/ 'deleteBandwidthRateLimit' smart constructor.
-data DeleteBandwidthRateLimit =
-  DeleteBandwidthRateLimit'
-    { _dbrlbGatewayARN    :: !Text
-    , _dbrlbBandwidthType :: !Text
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data DeleteBandwidthRateLimit = DeleteBandwidthRateLimit'{_dbrlbGatewayARN
+                                                          :: !Text,
+                                                          _dbrlbBandwidthType ::
+                                                          !Text}
+                                  deriving (Eq, Read, Show, Data, Typeable,
+                                            Generic)
 
 -- | Creates a value of 'DeleteBandwidthRateLimit' with the minimum fields required to make a request.
 --
@@ -73,10 +71,10 @@ deleteBandwidthRateLimit
     :: Text -- ^ 'dbrlbGatewayARN'
     -> Text -- ^ 'dbrlbBandwidthType'
     -> DeleteBandwidthRateLimit
-deleteBandwidthRateLimit pGatewayARN_ pBandwidthType_ =
-  DeleteBandwidthRateLimit'
-    {_dbrlbGatewayARN = pGatewayARN_, _dbrlbBandwidthType = pBandwidthType_}
-
+deleteBandwidthRateLimit pGatewayARN_ pBandwidthType_
+  = DeleteBandwidthRateLimit'{_dbrlbGatewayARN =
+                                pGatewayARN_,
+                              _dbrlbBandwidthType = pBandwidthType_}
 
 -- | Undocumented member.
 dbrlbGatewayARN :: Lens' DeleteBandwidthRateLimit Text
@@ -128,13 +126,15 @@ instance ToQuery DeleteBandwidthRateLimit where
 --
 --
 -- /See:/ 'deleteBandwidthRateLimitResponse' smart constructor.
-data DeleteBandwidthRateLimitResponse =
-  DeleteBandwidthRateLimitResponse'
-    { _delrsGatewayARN     :: !(Maybe Text)
-    , _delrsResponseStatus :: !Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data DeleteBandwidthRateLimitResponse = DeleteBandwidthRateLimitResponse'{_delrsGatewayARN
+                                                                          ::
+                                                                          !(Maybe
+                                                                              Text),
+                                                                          _delrsResponseStatus
+                                                                          ::
+                                                                          !Int}
+                                          deriving (Eq, Read, Show, Data,
+                                                    Typeable, Generic)
 
 -- | Creates a value of 'DeleteBandwidthRateLimitResponse' with the minimum fields required to make a request.
 --
@@ -146,10 +146,10 @@ data DeleteBandwidthRateLimitResponse =
 deleteBandwidthRateLimitResponse
     :: Int -- ^ 'delrsResponseStatus'
     -> DeleteBandwidthRateLimitResponse
-deleteBandwidthRateLimitResponse pResponseStatus_ =
-  DeleteBandwidthRateLimitResponse'
-    {_delrsGatewayARN = Nothing, _delrsResponseStatus = pResponseStatus_}
-
+deleteBandwidthRateLimitResponse pResponseStatus_
+  = DeleteBandwidthRateLimitResponse'{_delrsGatewayARN
+                                        = Nothing,
+                                      _delrsResponseStatus = pResponseStatus_}
 
 -- | Undocumented member.
 delrsGatewayARN :: Lens' DeleteBandwidthRateLimitResponse (Maybe Text)

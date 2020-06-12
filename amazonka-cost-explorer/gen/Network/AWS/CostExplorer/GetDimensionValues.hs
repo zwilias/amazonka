@@ -18,7 +18,7 @@
 -- Stability   : auto-generated
 -- Portability : non-portable (GHC extensions)
 --
--- Retrieves all available filter values for a specified filter over a period of time. You can search the dimension values for an arbitrary string.
+-- Retrieves all available filter values for a specified filter over a period of time. You can search the dimension values for an arbitrary string. 
 --
 --
 module Network.AWS.CostExplorer.GetDimensionValues
@@ -45,23 +45,19 @@ module Network.AWS.CostExplorer.GetDimensionValues
     ) where
 
 import Network.AWS.CostExplorer.Types
-import Network.AWS.CostExplorer.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 
 -- | /See:/ 'getDimensionValues' smart constructor.
-data GetDimensionValues =
-  GetDimensionValues'
-    { _gdvNextPageToken :: !(Maybe Text)
-    , _gdvContext       :: !(Maybe Context)
-    , _gdvSearchString  :: !(Maybe Text)
-    , _gdvTimePeriod    :: !DateInterval
-    , _gdvDimension     :: !Dimension
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data GetDimensionValues = GetDimensionValues'{_gdvNextPageToken
+                                              :: !(Maybe Text),
+                                              _gdvContext :: !(Maybe Context),
+                                              _gdvSearchString :: !(Maybe Text),
+                                              _gdvTimePeriod :: !DateInterval,
+                                              _gdvDimension :: !Dimension}
+                            deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'GetDimensionValues' with the minimum fields required to make a request.
 --
@@ -75,20 +71,16 @@ data GetDimensionValues =
 --
 -- * 'gdvTimePeriod' - The start and end dates for retrieving the dimension values. The start date is inclusive, but the end date is exclusive. For example, if @start@ is @2017-01-01@ and @end@ is @2017-05-01@ , then the cost and usage data is retrieved from @2017-01-01@ up to and including @2017-04-30@ but not including @2017-05-01@ .
 --
--- * 'gdvDimension' - The name of the dimension. Each @Dimension@ is available for a different @Context@ . For more information, see @Context@ .
+-- * 'gdvDimension' - The name of the dimension. Each @Dimension@ is available for a different @Context@ . For more information, see @Context@ . 
 getDimensionValues
     :: DateInterval -- ^ 'gdvTimePeriod'
     -> Dimension -- ^ 'gdvDimension'
     -> GetDimensionValues
-getDimensionValues pTimePeriod_ pDimension_ =
-  GetDimensionValues'
-    { _gdvNextPageToken = Nothing
-    , _gdvContext = Nothing
-    , _gdvSearchString = Nothing
-    , _gdvTimePeriod = pTimePeriod_
-    , _gdvDimension = pDimension_
-    }
-
+getDimensionValues pTimePeriod_ pDimension_
+  = GetDimensionValues'{_gdvNextPageToken = Nothing,
+                        _gdvContext = Nothing, _gdvSearchString = Nothing,
+                        _gdvTimePeriod = pTimePeriod_,
+                        _gdvDimension = pDimension_}
 
 -- | The token to retrieve the next set of results. AWS provides the token when the response from a previous call has more results than the maximum page size.
 gdvNextPageToken :: Lens' GetDimensionValues (Maybe Text)
@@ -106,7 +98,7 @@ gdvSearchString = lens _gdvSearchString (\ s a -> s{_gdvSearchString = a})
 gdvTimePeriod :: Lens' GetDimensionValues DateInterval
 gdvTimePeriod = lens _gdvTimePeriod (\ s a -> s{_gdvTimePeriod = a})
 
--- | The name of the dimension. Each @Dimension@ is available for a different @Context@ . For more information, see @Context@ .
+-- | The name of the dimension. Each @Dimension@ is available for a different @Context@ . For more information, see @Context@ . 
 gdvDimension :: Lens' GetDimensionValues Dimension
 gdvDimension = lens _gdvDimension (\ s a -> s{_gdvDimension = a})
 
@@ -154,16 +146,19 @@ instance ToQuery GetDimensionValues where
         toQuery = const mempty
 
 -- | /See:/ 'getDimensionValuesResponse' smart constructor.
-data GetDimensionValuesResponse =
-  GetDimensionValuesResponse'
-    { _gdvrsNextPageToken   :: !(Maybe Text)
-    , _gdvrsResponseStatus  :: !Int
-    , _gdvrsDimensionValues :: ![DimensionValuesWithAttributes]
-    , _gdvrsReturnSize      :: !Int
-    , _gdvrsTotalSize       :: !Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data GetDimensionValuesResponse = GetDimensionValuesResponse'{_gdvrsNextPageToken
+                                                              :: !(Maybe Text),
+                                                              _gdvrsResponseStatus
+                                                              :: !Int,
+                                                              _gdvrsDimensionValues
+                                                              ::
+                                                              ![DimensionValuesWithAttributes],
+                                                              _gdvrsReturnSize
+                                                              :: !Int,
+                                                              _gdvrsTotalSize ::
+                                                              !Int}
+                                    deriving (Eq, Read, Show, Data, Typeable,
+                                              Generic)
 
 -- | Creates a value of 'GetDimensionValuesResponse' with the minimum fields required to make a request.
 --
@@ -183,15 +178,14 @@ getDimensionValuesResponse
     -> Int -- ^ 'gdvrsReturnSize'
     -> Int -- ^ 'gdvrsTotalSize'
     -> GetDimensionValuesResponse
-getDimensionValuesResponse pResponseStatus_ pReturnSize_ pTotalSize_ =
-  GetDimensionValuesResponse'
-    { _gdvrsNextPageToken = Nothing
-    , _gdvrsResponseStatus = pResponseStatus_
-    , _gdvrsDimensionValues = mempty
-    , _gdvrsReturnSize = pReturnSize_
-    , _gdvrsTotalSize = pTotalSize_
-    }
-
+getDimensionValuesResponse pResponseStatus_
+  pReturnSize_ pTotalSize_
+  = GetDimensionValuesResponse'{_gdvrsNextPageToken =
+                                  Nothing,
+                                _gdvrsResponseStatus = pResponseStatus_,
+                                _gdvrsDimensionValues = mempty,
+                                _gdvrsReturnSize = pReturnSize_,
+                                _gdvrsTotalSize = pTotalSize_}
 
 -- | The token for the next set of retrievable results. AWS provides the token when the response from a previous call has more results than the maximum page size.
 gdvrsNextPageToken :: Lens' GetDimensionValuesResponse (Maybe Text)

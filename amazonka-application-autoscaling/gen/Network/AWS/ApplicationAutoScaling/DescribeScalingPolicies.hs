@@ -50,7 +50,6 @@ module Network.AWS.ApplicationAutoScaling.DescribeScalingPolicies
     ) where
 
 import Network.AWS.ApplicationAutoScaling.Types
-import Network.AWS.ApplicationAutoScaling.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Pager
 import Network.AWS.Prelude
@@ -58,17 +57,21 @@ import Network.AWS.Request
 import Network.AWS.Response
 
 -- | /See:/ 'describeScalingPolicies' smart constructor.
-data DescribeScalingPolicies =
-  DescribeScalingPolicies'
-    { _dPolicyNames       :: !(Maybe [Text])
-    , _dScalableDimension :: !(Maybe ScalableDimension)
-    , _dResourceId        :: !(Maybe Text)
-    , _dNextToken         :: !(Maybe Text)
-    , _dMaxResults        :: !(Maybe Int)
-    , _dServiceNamespace  :: !ServiceNamespace
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data DescribeScalingPolicies = DescribeScalingPolicies'{_dPolicyNames
+                                                        :: !(Maybe [Text]),
+                                                        _dScalableDimension ::
+                                                        !(Maybe
+                                                            ScalableDimension),
+                                                        _dResourceId ::
+                                                        !(Maybe Text),
+                                                        _dNextToken ::
+                                                        !(Maybe Text),
+                                                        _dMaxResults ::
+                                                        !(Maybe Int),
+                                                        _dServiceNamespace ::
+                                                        !ServiceNamespace}
+                                 deriving (Eq, Read, Show, Data, Typeable,
+                                           Generic)
 
 -- | Creates a value of 'DescribeScalingPolicies' with the minimum fields required to make a request.
 --
@@ -88,16 +91,12 @@ data DescribeScalingPolicies =
 describeScalingPolicies
     :: ServiceNamespace -- ^ 'dServiceNamespace'
     -> DescribeScalingPolicies
-describeScalingPolicies pServiceNamespace_ =
-  DescribeScalingPolicies'
-    { _dPolicyNames = Nothing
-    , _dScalableDimension = Nothing
-    , _dResourceId = Nothing
-    , _dNextToken = Nothing
-    , _dMaxResults = Nothing
-    , _dServiceNamespace = pServiceNamespace_
-    }
-
+describeScalingPolicies pServiceNamespace_
+  = DescribeScalingPolicies'{_dPolicyNames = Nothing,
+                             _dScalableDimension = Nothing,
+                             _dResourceId = Nothing, _dNextToken = Nothing,
+                             _dMaxResults = Nothing,
+                             _dServiceNamespace = pServiceNamespace_}
 
 -- | The names of the scaling policies to describe.
 dPolicyNames :: Lens' DescribeScalingPolicies [Text]
@@ -174,14 +173,18 @@ instance ToQuery DescribeScalingPolicies where
         toQuery = const mempty
 
 -- | /See:/ 'describeScalingPoliciesResponse' smart constructor.
-data DescribeScalingPoliciesResponse =
-  DescribeScalingPoliciesResponse'
-    { _drsNextToken       :: !(Maybe Text)
-    , _drsScalingPolicies :: !(Maybe [ScalingPolicy])
-    , _drsResponseStatus  :: !Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data DescribeScalingPoliciesResponse = DescribeScalingPoliciesResponse'{_drsNextToken
+                                                                        ::
+                                                                        !(Maybe
+                                                                            Text),
+                                                                        _drsScalingPolicies
+                                                                        ::
+                                                                        !(Maybe
+                                                                            [ScalingPolicy]),
+                                                                        _drsResponseStatus
+                                                                        :: !Int}
+                                         deriving (Eq, Read, Show, Data,
+                                                   Typeable, Generic)
 
 -- | Creates a value of 'DescribeScalingPoliciesResponse' with the minimum fields required to make a request.
 --
@@ -195,13 +198,11 @@ data DescribeScalingPoliciesResponse =
 describeScalingPoliciesResponse
     :: Int -- ^ 'drsResponseStatus'
     -> DescribeScalingPoliciesResponse
-describeScalingPoliciesResponse pResponseStatus_ =
-  DescribeScalingPoliciesResponse'
-    { _drsNextToken = Nothing
-    , _drsScalingPolicies = Nothing
-    , _drsResponseStatus = pResponseStatus_
-    }
-
+describeScalingPoliciesResponse pResponseStatus_
+  = DescribeScalingPoliciesResponse'{_drsNextToken =
+                                       Nothing,
+                                     _drsScalingPolicies = Nothing,
+                                     _drsResponseStatus = pResponseStatus_}
 
 -- | The token required to get the next set of results. This value is @null@ if there are no more results to return.
 drsNextToken :: Lens' DescribeScalingPoliciesResponse (Maybe Text)

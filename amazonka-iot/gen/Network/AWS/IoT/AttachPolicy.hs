@@ -36,20 +36,16 @@ module Network.AWS.IoT.AttachPolicy
     ) where
 
 import Network.AWS.IoT.Types
-import Network.AWS.IoT.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 
 -- | /See:/ 'attachPolicy' smart constructor.
-data AttachPolicy =
-  AttachPolicy'
-    { _apPolicyName :: !Text
-    , _apTarget     :: !Text
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data AttachPolicy = AttachPolicy'{_apPolicyName ::
+                                  !Text,
+                                  _apTarget :: !Text}
+                      deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'AttachPolicy' with the minimum fields required to make a request.
 --
@@ -62,9 +58,9 @@ attachPolicy
     :: Text -- ^ 'apPolicyName'
     -> Text -- ^ 'apTarget'
     -> AttachPolicy
-attachPolicy pPolicyName_ pTarget_ =
-  AttachPolicy' {_apPolicyName = pPolicyName_, _apTarget = pTarget_}
-
+attachPolicy pPolicyName_ pTarget_
+  = AttachPolicy'{_apPolicyName = pPolicyName_,
+                  _apTarget = pTarget_}
 
 -- | The name of the policy to attach.
 apPolicyName :: Lens' AttachPolicy Text
@@ -98,16 +94,13 @@ instance ToQuery AttachPolicy where
         toQuery = const mempty
 
 -- | /See:/ 'attachPolicyResponse' smart constructor.
-data AttachPolicyResponse =
-  AttachPolicyResponse'
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data AttachPolicyResponse = AttachPolicyResponse'
+                              deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'AttachPolicyResponse' with the minimum fields required to make a request.
 --
 attachPolicyResponse
     :: AttachPolicyResponse
 attachPolicyResponse = AttachPolicyResponse'
-
 
 instance NFData AttachPolicyResponse where

@@ -62,17 +62,12 @@ import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 import Network.AWS.Translate.Types
-import Network.AWS.Translate.Types.Product
 
 -- | /See:/ 'translateText' smart constructor.
-data TranslateText =
-  TranslateText'
-    { _ttText               :: !Text
-    , _ttSourceLanguageCode :: !Text
-    , _ttTargetLanguageCode :: !Text
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data TranslateText = TranslateText'{_ttText :: !Text,
+                                    _ttSourceLanguageCode :: !Text,
+                                    _ttTargetLanguageCode :: !Text}
+                       deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'TranslateText' with the minimum fields required to make a request.
 --
@@ -88,13 +83,11 @@ translateText
     -> Text -- ^ 'ttSourceLanguageCode'
     -> Text -- ^ 'ttTargetLanguageCode'
     -> TranslateText
-translateText pText_ pSourceLanguageCode_ pTargetLanguageCode_ =
-  TranslateText'
-    { _ttText = pText_
-    , _ttSourceLanguageCode = pSourceLanguageCode_
-    , _ttTargetLanguageCode = pTargetLanguageCode_
-    }
-
+translateText pText_ pSourceLanguageCode_
+  pTargetLanguageCode_
+  = TranslateText'{_ttText = pText_,
+                   _ttSourceLanguageCode = pSourceLanguageCode_,
+                   _ttTargetLanguageCode = pTargetLanguageCode_}
 
 -- | The text to translate.
 ttText :: Lens' TranslateText Text
@@ -149,15 +142,16 @@ instance ToQuery TranslateText where
         toQuery = const mempty
 
 -- | /See:/ 'translateTextResponse' smart constructor.
-data TranslateTextResponse =
-  TranslateTextResponse'
-    { _ttrsResponseStatus     :: !Int
-    , _ttrsTranslatedText     :: !Text
-    , _ttrsSourceLanguageCode :: !Text
-    , _ttrsTargetLanguageCode :: !Text
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data TranslateTextResponse = TranslateTextResponse'{_ttrsResponseStatus
+                                                    :: !Int,
+                                                    _ttrsTranslatedText ::
+                                                    !Text,
+                                                    _ttrsSourceLanguageCode ::
+                                                    !Text,
+                                                    _ttrsTargetLanguageCode ::
+                                                    !Text}
+                               deriving (Eq, Read, Show, Data, Typeable,
+                                         Generic)
 
 -- | Creates a value of 'TranslateTextResponse' with the minimum fields required to make a request.
 --
@@ -167,23 +161,23 @@ data TranslateTextResponse =
 --
 -- * 'ttrsTranslatedText' - The text translated into the target language.
 --
--- * 'ttrsSourceLanguageCode' - The language code for the language of the input text.
+-- * 'ttrsSourceLanguageCode' - The language code for the language of the input text. 
 --
--- * 'ttrsTargetLanguageCode' - The language code for the language of the translated text.
+-- * 'ttrsTargetLanguageCode' - The language code for the language of the translated text. 
 translateTextResponse
     :: Int -- ^ 'ttrsResponseStatus'
     -> Text -- ^ 'ttrsTranslatedText'
     -> Text -- ^ 'ttrsSourceLanguageCode'
     -> Text -- ^ 'ttrsTargetLanguageCode'
     -> TranslateTextResponse
-translateTextResponse pResponseStatus_ pTranslatedText_ pSourceLanguageCode_ pTargetLanguageCode_ =
-  TranslateTextResponse'
-    { _ttrsResponseStatus = pResponseStatus_
-    , _ttrsTranslatedText = pTranslatedText_
-    , _ttrsSourceLanguageCode = pSourceLanguageCode_
-    , _ttrsTargetLanguageCode = pTargetLanguageCode_
-    }
-
+translateTextResponse pResponseStatus_
+  pTranslatedText_ pSourceLanguageCode_
+  pTargetLanguageCode_
+  = TranslateTextResponse'{_ttrsResponseStatus =
+                             pResponseStatus_,
+                           _ttrsTranslatedText = pTranslatedText_,
+                           _ttrsSourceLanguageCode = pSourceLanguageCode_,
+                           _ttrsTargetLanguageCode = pTargetLanguageCode_}
 
 -- | -- | The response status code.
 ttrsResponseStatus :: Lens' TranslateTextResponse Int
@@ -193,11 +187,11 @@ ttrsResponseStatus = lens _ttrsResponseStatus (\ s a -> s{_ttrsResponseStatus = 
 ttrsTranslatedText :: Lens' TranslateTextResponse Text
 ttrsTranslatedText = lens _ttrsTranslatedText (\ s a -> s{_ttrsTranslatedText = a})
 
--- | The language code for the language of the input text.
+-- | The language code for the language of the input text. 
 ttrsSourceLanguageCode :: Lens' TranslateTextResponse Text
 ttrsSourceLanguageCode = lens _ttrsSourceLanguageCode (\ s a -> s{_ttrsSourceLanguageCode = a})
 
--- | The language code for the language of the translated text.
+-- | The language code for the language of the translated text. 
 ttrsTargetLanguageCode :: Lens' TranslateTextResponse Text
 ttrsTargetLanguageCode = lens _ttrsTargetLanguageCode (\ s a -> s{_ttrsTargetLanguageCode = a})
 

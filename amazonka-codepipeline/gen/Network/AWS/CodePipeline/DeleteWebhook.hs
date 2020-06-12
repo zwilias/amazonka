@@ -37,19 +37,15 @@ module Network.AWS.CodePipeline.DeleteWebhook
     ) where
 
 import Network.AWS.CodePipeline.Types
-import Network.AWS.CodePipeline.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 
 -- | /See:/ 'deleteWebhook' smart constructor.
-newtype DeleteWebhook =
-  DeleteWebhook'
-    { _dwName :: Text
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+newtype DeleteWebhook = DeleteWebhook'{_dwName ::
+                                       Text}
+                          deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'DeleteWebhook' with the minimum fields required to make a request.
 --
@@ -59,8 +55,8 @@ newtype DeleteWebhook =
 deleteWebhook
     :: Text -- ^ 'dwName'
     -> DeleteWebhook
-deleteWebhook pName_ = DeleteWebhook' {_dwName = pName_}
-
+deleteWebhook pName_
+  = DeleteWebhook'{_dwName = pName_}
 
 -- | The name of the webhook you want to delete.
 dwName :: Lens' DeleteWebhook Text
@@ -99,12 +95,10 @@ instance ToQuery DeleteWebhook where
         toQuery = const mempty
 
 -- | /See:/ 'deleteWebhookResponse' smart constructor.
-newtype DeleteWebhookResponse =
-  DeleteWebhookResponse'
-    { _dwrsResponseStatus :: Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+newtype DeleteWebhookResponse = DeleteWebhookResponse'{_dwrsResponseStatus
+                                                       :: Int}
+                                  deriving (Eq, Read, Show, Data, Typeable,
+                                            Generic)
 
 -- | Creates a value of 'DeleteWebhookResponse' with the minimum fields required to make a request.
 --
@@ -114,9 +108,9 @@ newtype DeleteWebhookResponse =
 deleteWebhookResponse
     :: Int -- ^ 'dwrsResponseStatus'
     -> DeleteWebhookResponse
-deleteWebhookResponse pResponseStatus_ =
-  DeleteWebhookResponse' {_dwrsResponseStatus = pResponseStatus_}
-
+deleteWebhookResponse pResponseStatus_
+  = DeleteWebhookResponse'{_dwrsResponseStatus =
+                             pResponseStatus_}
 
 -- | -- | The response status code.
 dwrsResponseStatus :: Lens' DeleteWebhookResponse Int

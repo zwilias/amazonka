@@ -39,7 +39,6 @@ module Network.AWS.CodePipeline.StartPipelineExecution
     ) where
 
 import Network.AWS.CodePipeline.Types
-import Network.AWS.CodePipeline.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.Request
@@ -50,13 +49,11 @@ import Network.AWS.Response
 --
 --
 -- /See:/ 'startPipelineExecution' smart constructor.
-data StartPipelineExecution =
-  StartPipelineExecution'
-    { _speClientRequestToken :: !(Maybe Text)
-    , _speName               :: !Text
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data StartPipelineExecution = StartPipelineExecution'{_speClientRequestToken
+                                                      :: !(Maybe Text),
+                                                      _speName :: !Text}
+                                deriving (Eq, Read, Show, Data, Typeable,
+                                          Generic)
 
 -- | Creates a value of 'StartPipelineExecution' with the minimum fields required to make a request.
 --
@@ -68,9 +65,10 @@ data StartPipelineExecution =
 startPipelineExecution
     :: Text -- ^ 'speName'
     -> StartPipelineExecution
-startPipelineExecution pName_ =
-  StartPipelineExecution' {_speClientRequestToken = Nothing, _speName = pName_}
-
+startPipelineExecution pName_
+  = StartPipelineExecution'{_speClientRequestToken =
+                              Nothing,
+                            _speName = pName_}
 
 -- | The system-generated unique ID used to identify a unique execution request.
 speClientRequestToken :: Lens' StartPipelineExecution (Maybe Text)
@@ -124,13 +122,14 @@ instance ToQuery StartPipelineExecution where
 --
 --
 -- /See:/ 'startPipelineExecutionResponse' smart constructor.
-data StartPipelineExecutionResponse =
-  StartPipelineExecutionResponse'
-    { _spersPipelineExecutionId :: !(Maybe Text)
-    , _spersResponseStatus      :: !Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data StartPipelineExecutionResponse = StartPipelineExecutionResponse'{_spersPipelineExecutionId
+                                                                      ::
+                                                                      !(Maybe
+                                                                          Text),
+                                                                      _spersResponseStatus
+                                                                      :: !Int}
+                                        deriving (Eq, Read, Show, Data,
+                                                  Typeable, Generic)
 
 -- | Creates a value of 'StartPipelineExecutionResponse' with the minimum fields required to make a request.
 --
@@ -142,12 +141,10 @@ data StartPipelineExecutionResponse =
 startPipelineExecutionResponse
     :: Int -- ^ 'spersResponseStatus'
     -> StartPipelineExecutionResponse
-startPipelineExecutionResponse pResponseStatus_ =
-  StartPipelineExecutionResponse'
-    { _spersPipelineExecutionId = Nothing
-    , _spersResponseStatus = pResponseStatus_
-    }
-
+startPipelineExecutionResponse pResponseStatus_
+  = StartPipelineExecutionResponse'{_spersPipelineExecutionId
+                                      = Nothing,
+                                    _spersResponseStatus = pResponseStatus_}
 
 -- | The unique system-generated ID of the pipeline execution that was started.
 spersPipelineExecutionId :: Lens' StartPipelineExecutionResponse (Maybe Text)

@@ -41,22 +41,23 @@ module Network.AWS.EC2.ModifyInstanceEventStartTime
     ) where
 
 import Network.AWS.EC2.Types
-import Network.AWS.EC2.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 
 -- | /See:/ 'modifyInstanceEventStartTime' smart constructor.
-data ModifyInstanceEventStartTime =
-  ModifyInstanceEventStartTime'
-    { _miestDryRun          :: !(Maybe Bool)
-    , _miestInstanceId      :: !Text
-    , _miestInstanceEventId :: !Text
-    , _miestNotBefore       :: !ISO8601
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data ModifyInstanceEventStartTime = ModifyInstanceEventStartTime'{_miestDryRun
+                                                                  ::
+                                                                  !(Maybe Bool),
+                                                                  _miestInstanceId
+                                                                  :: !Text,
+                                                                  _miestInstanceEventId
+                                                                  :: !Text,
+                                                                  _miestNotBefore
+                                                                  :: !ISO8601}
+                                      deriving (Eq, Read, Show, Data, Typeable,
+                                                Generic)
 
 -- | Creates a value of 'ModifyInstanceEventStartTime' with the minimum fields required to make a request.
 --
@@ -74,14 +75,13 @@ modifyInstanceEventStartTime
     -> Text -- ^ 'miestInstanceEventId'
     -> UTCTime -- ^ 'miestNotBefore'
     -> ModifyInstanceEventStartTime
-modifyInstanceEventStartTime pInstanceId_ pInstanceEventId_ pNotBefore_ =
-  ModifyInstanceEventStartTime'
-    { _miestDryRun = Nothing
-    , _miestInstanceId = pInstanceId_
-    , _miestInstanceEventId = pInstanceEventId_
-    , _miestNotBefore = _Time # pNotBefore_
-    }
-
+modifyInstanceEventStartTime pInstanceId_
+  pInstanceEventId_ pNotBefore_
+  = ModifyInstanceEventStartTime'{_miestDryRun =
+                                    Nothing,
+                                  _miestInstanceId = pInstanceId_,
+                                  _miestInstanceEventId = pInstanceEventId_,
+                                  _miestNotBefore = _Time # pNotBefore_}
 
 -- | Checks whether you have the required permissions for the action, without actually making the request, and provides an error response. If you have the required permissions, the error response is @DryRunOperation@ . Otherwise, it is @UnauthorizedOperation@ .
 miestDryRun :: Lens' ModifyInstanceEventStartTime (Maybe Bool)
@@ -132,13 +132,15 @@ instance ToQuery ModifyInstanceEventStartTime where
                "NotBefore" =: _miestNotBefore]
 
 -- | /See:/ 'modifyInstanceEventStartTimeResponse' smart constructor.
-data ModifyInstanceEventStartTimeResponse =
-  ModifyInstanceEventStartTimeResponse'
-    { _miestrsEvent          :: !(Maybe InstanceStatusEvent)
-    , _miestrsResponseStatus :: !Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data ModifyInstanceEventStartTimeResponse = ModifyInstanceEventStartTimeResponse'{_miestrsEvent
+                                                                                  ::
+                                                                                  !(Maybe
+                                                                                      InstanceStatusEvent),
+                                                                                  _miestrsResponseStatus
+                                                                                  ::
+                                                                                  !Int}
+                                              deriving (Eq, Read, Show, Data,
+                                                        Typeable, Generic)
 
 -- | Creates a value of 'ModifyInstanceEventStartTimeResponse' with the minimum fields required to make a request.
 --
@@ -150,10 +152,11 @@ data ModifyInstanceEventStartTimeResponse =
 modifyInstanceEventStartTimeResponse
     :: Int -- ^ 'miestrsResponseStatus'
     -> ModifyInstanceEventStartTimeResponse
-modifyInstanceEventStartTimeResponse pResponseStatus_ =
-  ModifyInstanceEventStartTimeResponse'
-    {_miestrsEvent = Nothing, _miestrsResponseStatus = pResponseStatus_}
-
+modifyInstanceEventStartTimeResponse pResponseStatus_
+  = ModifyInstanceEventStartTimeResponse'{_miestrsEvent
+                                            = Nothing,
+                                          _miestrsResponseStatus =
+                                            pResponseStatus_}
 
 -- | Undocumented member.
 miestrsEvent :: Lens' ModifyInstanceEventStartTimeResponse (Maybe InstanceStatusEvent)

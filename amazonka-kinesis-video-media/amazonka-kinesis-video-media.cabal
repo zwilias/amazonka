@@ -50,8 +50,8 @@ library
         , Network.AWS.KinesisVideoMedia.Waiters
 
     other-modules:
-          Network.AWS.KinesisVideoMedia.Types.Product
-        , Network.AWS.KinesisVideoMedia.Types.Sum
+          Network.AWS.KinesisVideoMedia.Types.StartSelector
+        , Network.AWS.KinesisVideoMedia.Types.StartSelectorType
 
     build-depends:
           amazonka-core == 1.6.1.*

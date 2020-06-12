@@ -42,21 +42,22 @@ module Network.AWS.EC2.ModifyAvailabilityZoneGroup
     ) where
 
 import Network.AWS.EC2.Types
-import Network.AWS.EC2.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 
 -- | /See:/ 'modifyAvailabilityZoneGroup' smart constructor.
-data ModifyAvailabilityZoneGroup =
-  ModifyAvailabilityZoneGroup'
-    { _mazgDryRun      :: !(Maybe Bool)
-    , _mazgGroupName   :: !Text
-    , _mazgOptInStatus :: !ModifyAvailabilityZoneOptInStatus
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data ModifyAvailabilityZoneGroup = ModifyAvailabilityZoneGroup'{_mazgDryRun
+                                                                ::
+                                                                !(Maybe Bool),
+                                                                _mazgGroupName
+                                                                :: !Text,
+                                                                _mazgOptInStatus
+                                                                ::
+                                                                !ModifyAvailabilityZoneOptInStatus}
+                                     deriving (Eq, Read, Show, Data, Typeable,
+                                               Generic)
 
 -- | Creates a value of 'ModifyAvailabilityZoneGroup' with the minimum fields required to make a request.
 --
@@ -71,13 +72,10 @@ modifyAvailabilityZoneGroup
     :: Text -- ^ 'mazgGroupName'
     -> ModifyAvailabilityZoneOptInStatus -- ^ 'mazgOptInStatus'
     -> ModifyAvailabilityZoneGroup
-modifyAvailabilityZoneGroup pGroupName_ pOptInStatus_ =
-  ModifyAvailabilityZoneGroup'
-    { _mazgDryRun = Nothing
-    , _mazgGroupName = pGroupName_
-    , _mazgOptInStatus = pOptInStatus_
-    }
-
+modifyAvailabilityZoneGroup pGroupName_ pOptInStatus_
+  = ModifyAvailabilityZoneGroup'{_mazgDryRun = Nothing,
+                                 _mazgGroupName = pGroupName_,
+                                 _mazgOptInStatus = pOptInStatus_}
 
 -- | Checks whether you have the required permissions for the action, without actually making the request, and provides an error response. If you have the required permissions, the error response is @DryRunOperation@ . Otherwise, it is @UnauthorizedOperation@ .
 mazgDryRun :: Lens' ModifyAvailabilityZoneGroup (Maybe Bool)
@@ -122,13 +120,15 @@ instance ToQuery ModifyAvailabilityZoneGroup where
                "OptInStatus" =: _mazgOptInStatus]
 
 -- | /See:/ 'modifyAvailabilityZoneGroupResponse' smart constructor.
-data ModifyAvailabilityZoneGroupResponse =
-  ModifyAvailabilityZoneGroupResponse'
-    { _mazgrsReturn         :: !(Maybe Bool)
-    , _mazgrsResponseStatus :: !Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data ModifyAvailabilityZoneGroupResponse = ModifyAvailabilityZoneGroupResponse'{_mazgrsReturn
+                                                                                ::
+                                                                                !(Maybe
+                                                                                    Bool),
+                                                                                _mazgrsResponseStatus
+                                                                                ::
+                                                                                !Int}
+                                             deriving (Eq, Read, Show, Data,
+                                                       Typeable, Generic)
 
 -- | Creates a value of 'ModifyAvailabilityZoneGroupResponse' with the minimum fields required to make a request.
 --
@@ -140,10 +140,11 @@ data ModifyAvailabilityZoneGroupResponse =
 modifyAvailabilityZoneGroupResponse
     :: Int -- ^ 'mazgrsResponseStatus'
     -> ModifyAvailabilityZoneGroupResponse
-modifyAvailabilityZoneGroupResponse pResponseStatus_ =
-  ModifyAvailabilityZoneGroupResponse'
-    {_mazgrsReturn = Nothing, _mazgrsResponseStatus = pResponseStatus_}
-
+modifyAvailabilityZoneGroupResponse pResponseStatus_
+  = ModifyAvailabilityZoneGroupResponse'{_mazgrsReturn
+                                           = Nothing,
+                                         _mazgrsResponseStatus =
+                                           pResponseStatus_}
 
 -- | Is @true@ if the request succeeds, and an error otherwise.
 mazgrsReturn :: Lens' ModifyAvailabilityZoneGroupResponse (Maybe Bool)

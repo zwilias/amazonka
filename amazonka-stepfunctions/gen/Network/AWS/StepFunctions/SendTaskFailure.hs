@@ -43,17 +43,13 @@ import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 import Network.AWS.StepFunctions.Types
-import Network.AWS.StepFunctions.Types.Product
 
 -- | /See:/ 'sendTaskFailure' smart constructor.
-data SendTaskFailure =
-  SendTaskFailure'
-    { _stfError     :: !(Maybe Text)
-    , _stfCause     :: !(Maybe Text)
-    , _stfTaskToken :: !Text
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data SendTaskFailure = SendTaskFailure'{_stfError ::
+                                        !(Maybe Text),
+                                        _stfCause :: !(Maybe Text),
+                                        _stfTaskToken :: !Text}
+                         deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'SendTaskFailure' with the minimum fields required to make a request.
 --
@@ -67,10 +63,9 @@ data SendTaskFailure =
 sendTaskFailure
     :: Text -- ^ 'stfTaskToken'
     -> SendTaskFailure
-sendTaskFailure pTaskToken_ =
-  SendTaskFailure'
-    {_stfError = Nothing, _stfCause = Nothing, _stfTaskToken = pTaskToken_}
-
+sendTaskFailure pTaskToken_
+  = SendTaskFailure'{_stfError = Nothing,
+                     _stfCause = Nothing, _stfTaskToken = pTaskToken_}
 
 -- | An arbitrary error code that identifies the cause of the failure.
 stfError :: Lens' SendTaskFailure (Maybe Text)
@@ -120,12 +115,10 @@ instance ToQuery SendTaskFailure where
         toQuery = const mempty
 
 -- | /See:/ 'sendTaskFailureResponse' smart constructor.
-newtype SendTaskFailureResponse =
-  SendTaskFailureResponse'
-    { _stfrsResponseStatus :: Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+newtype SendTaskFailureResponse = SendTaskFailureResponse'{_stfrsResponseStatus
+                                                           :: Int}
+                                    deriving (Eq, Read, Show, Data, Typeable,
+                                              Generic)
 
 -- | Creates a value of 'SendTaskFailureResponse' with the minimum fields required to make a request.
 --
@@ -135,9 +128,9 @@ newtype SendTaskFailureResponse =
 sendTaskFailureResponse
     :: Int -- ^ 'stfrsResponseStatus'
     -> SendTaskFailureResponse
-sendTaskFailureResponse pResponseStatus_ =
-  SendTaskFailureResponse' {_stfrsResponseStatus = pResponseStatus_}
-
+sendTaskFailureResponse pResponseStatus_
+  = SendTaskFailureResponse'{_stfrsResponseStatus =
+                               pResponseStatus_}
 
 -- | -- | The response status code.
 stfrsResponseStatus :: Lens' SendTaskFailureResponse Int

@@ -38,19 +38,17 @@ module Network.AWS.Comprehend.DescribeDominantLanguageDetectionJob
     ) where
 
 import Network.AWS.Comprehend.Types
-import Network.AWS.Comprehend.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 
 -- | /See:/ 'describeDominantLanguageDetectionJob' smart constructor.
-newtype DescribeDominantLanguageDetectionJob =
-  DescribeDominantLanguageDetectionJob'
-    { _ddldjJobId :: Text
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+newtype DescribeDominantLanguageDetectionJob = DescribeDominantLanguageDetectionJob'{_ddldjJobId
+                                                                                     ::
+                                                                                     Text}
+                                                 deriving (Eq, Read, Show, Data,
+                                                           Typeable, Generic)
 
 -- | Creates a value of 'DescribeDominantLanguageDetectionJob' with the minimum fields required to make a request.
 --
@@ -60,9 +58,9 @@ newtype DescribeDominantLanguageDetectionJob =
 describeDominantLanguageDetectionJob
     :: Text -- ^ 'ddldjJobId'
     -> DescribeDominantLanguageDetectionJob
-describeDominantLanguageDetectionJob pJobId_ =
-  DescribeDominantLanguageDetectionJob' {_ddldjJobId = pJobId_}
-
+describeDominantLanguageDetectionJob pJobId_
+  = DescribeDominantLanguageDetectionJob'{_ddldjJobId =
+                                            pJobId_}
 
 -- | The identifier that Amazon Comprehend generated for the job. The operation returns this identifier in its response.
 ddldjJobId :: Lens' DescribeDominantLanguageDetectionJob Text
@@ -114,13 +112,16 @@ instance ToQuery DescribeDominantLanguageDetectionJob
         toQuery = const mempty
 
 -- | /See:/ 'describeDominantLanguageDetectionJobResponse' smart constructor.
-data DescribeDominantLanguageDetectionJobResponse =
-  DescribeDominantLanguageDetectionJobResponse'
-    { _ddldjrsDominantLanguageDetectionJobProperties :: !(Maybe DominantLanguageDetectionJobProperties)
-    , _ddldjrsResponseStatus :: !Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data DescribeDominantLanguageDetectionJobResponse = DescribeDominantLanguageDetectionJobResponse'{_ddldjrsDominantLanguageDetectionJobProperties
+                                                                                                  ::
+                                                                                                  !(Maybe
+                                                                                                      DominantLanguageDetectionJobProperties),
+                                                                                                  _ddldjrsResponseStatus
+                                                                                                  ::
+                                                                                                  !Int}
+                                                      deriving (Eq, Read, Show,
+                                                                Data, Typeable,
+                                                                Generic)
 
 -- | Creates a value of 'DescribeDominantLanguageDetectionJobResponse' with the minimum fields required to make a request.
 --
@@ -132,12 +133,12 @@ data DescribeDominantLanguageDetectionJobResponse =
 describeDominantLanguageDetectionJobResponse
     :: Int -- ^ 'ddldjrsResponseStatus'
     -> DescribeDominantLanguageDetectionJobResponse
-describeDominantLanguageDetectionJobResponse pResponseStatus_ =
-  DescribeDominantLanguageDetectionJobResponse'
-    { _ddldjrsDominantLanguageDetectionJobProperties = Nothing
-    , _ddldjrsResponseStatus = pResponseStatus_
-    }
-
+describeDominantLanguageDetectionJobResponse
+  pResponseStatus_
+  = DescribeDominantLanguageDetectionJobResponse'{_ddldjrsDominantLanguageDetectionJobProperties
+                                                    = Nothing,
+                                                  _ddldjrsResponseStatus =
+                                                    pResponseStatus_}
 
 -- | An object that contains the properties associated with a dominant language detection job.
 ddldjrsDominantLanguageDetectionJobProperties :: Lens' DescribeDominantLanguageDetectionJobResponse (Maybe DominantLanguageDetectionJobProperties)

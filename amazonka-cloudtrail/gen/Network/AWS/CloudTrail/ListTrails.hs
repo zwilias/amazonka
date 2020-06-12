@@ -41,7 +41,6 @@ module Network.AWS.CloudTrail.ListTrails
     ) where
 
 import Network.AWS.CloudTrail.Types
-import Network.AWS.CloudTrail.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Pager
 import Network.AWS.Prelude
@@ -49,12 +48,9 @@ import Network.AWS.Request
 import Network.AWS.Response
 
 -- | /See:/ 'listTrails' smart constructor.
-newtype ListTrails =
-  ListTrails'
-    { _lNextToken :: Maybe Text
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+newtype ListTrails = ListTrails'{_lNextToken ::
+                                 Maybe Text}
+                       deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'ListTrails' with the minimum fields required to make a request.
 --
@@ -63,8 +59,7 @@ newtype ListTrails =
 -- * 'lNextToken' - The token to use to get the next page of results after a previous API call. This token must be passed in with the same parameters that were specified in the the original call. For example, if the original call specified an AttributeKey of 'Username' with a value of 'root', the call with NextToken should include those same parameters.
 listTrails
     :: ListTrails
-listTrails = ListTrails' {_lNextToken = Nothing}
-
+listTrails = ListTrails'{_lNextToken = Nothing}
 
 -- | The token to use to get the next page of results after a previous API call. This token must be passed in with the same parameters that were specified in the the original call. For example, if the original call specified an AttributeKey of 'Username' with a value of 'root', the call with NextToken should include those same parameters.
 lNextToken :: Lens' ListTrails (Maybe Text)
@@ -113,14 +108,12 @@ instance ToQuery ListTrails where
         toQuery = const mempty
 
 -- | /See:/ 'listTrailsResponse' smart constructor.
-data ListTrailsResponse =
-  ListTrailsResponse'
-    { _lrsNextToken      :: !(Maybe Text)
-    , _lrsTrails         :: !(Maybe [TrailInfo])
-    , _lrsResponseStatus :: !Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data ListTrailsResponse = ListTrailsResponse'{_lrsNextToken
+                                              :: !(Maybe Text),
+                                              _lrsTrails ::
+                                              !(Maybe [TrailInfo]),
+                                              _lrsResponseStatus :: !Int}
+                            deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'ListTrailsResponse' with the minimum fields required to make a request.
 --
@@ -134,13 +127,10 @@ data ListTrailsResponse =
 listTrailsResponse
     :: Int -- ^ 'lrsResponseStatus'
     -> ListTrailsResponse
-listTrailsResponse pResponseStatus_ =
-  ListTrailsResponse'
-    { _lrsNextToken = Nothing
-    , _lrsTrails = Nothing
-    , _lrsResponseStatus = pResponseStatus_
-    }
-
+listTrailsResponse pResponseStatus_
+  = ListTrailsResponse'{_lrsNextToken = Nothing,
+                        _lrsTrails = Nothing,
+                        _lrsResponseStatus = pResponseStatus_}
 
 -- | The token to use to get the next page of results after a previous API call. If the token does not appear, there are no more results to return. The token must be passed in with the same parameters as the previous call. For example, if the original call specified an AttributeKey of 'Username' with a value of 'root', the call with NextToken should include those same parameters.
 lrsNextToken :: Lens' ListTrailsResponse (Maybe Text)

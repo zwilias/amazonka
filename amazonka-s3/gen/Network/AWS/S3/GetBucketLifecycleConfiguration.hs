@@ -40,15 +40,13 @@ import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 import Network.AWS.S3.Types
-import Network.AWS.S3.Types.Product
 
 -- | /See:/ 'getBucketLifecycleConfiguration' smart constructor.
-newtype GetBucketLifecycleConfiguration =
-  GetBucketLifecycleConfiguration'
-    { _gblcBucket :: BucketName
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+newtype GetBucketLifecycleConfiguration = GetBucketLifecycleConfiguration'{_gblcBucket
+                                                                           ::
+                                                                           BucketName}
+                                            deriving (Eq, Read, Show, Data,
+                                                      Typeable, Generic)
 
 -- | Creates a value of 'GetBucketLifecycleConfiguration' with the minimum fields required to make a request.
 --
@@ -58,9 +56,9 @@ newtype GetBucketLifecycleConfiguration =
 getBucketLifecycleConfiguration
     :: BucketName -- ^ 'gblcBucket'
     -> GetBucketLifecycleConfiguration
-getBucketLifecycleConfiguration pBucket_ =
-  GetBucketLifecycleConfiguration' {_gblcBucket = pBucket_}
-
+getBucketLifecycleConfiguration pBucket_
+  = GetBucketLifecycleConfiguration'{_gblcBucket =
+                                       pBucket_}
 
 -- | Undocumented member.
 gblcBucket :: Lens' GetBucketLifecycleConfiguration BucketName
@@ -96,13 +94,15 @@ instance ToQuery GetBucketLifecycleConfiguration
         toQuery = const (mconcat ["lifecycle"])
 
 -- | /See:/ 'getBucketLifecycleConfigurationResponse' smart constructor.
-data GetBucketLifecycleConfigurationResponse =
-  GetBucketLifecycleConfigurationResponse'
-    { _gblcrsRules          :: !(Maybe [LifecycleRule])
-    , _gblcrsResponseStatus :: !Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data GetBucketLifecycleConfigurationResponse = GetBucketLifecycleConfigurationResponse'{_gblcrsRules
+                                                                                        ::
+                                                                                        !(Maybe
+                                                                                            [LifecycleRule]),
+                                                                                        _gblcrsResponseStatus
+                                                                                        ::
+                                                                                        !Int}
+                                                 deriving (Eq, Read, Show, Data,
+                                                           Typeable, Generic)
 
 -- | Creates a value of 'GetBucketLifecycleConfigurationResponse' with the minimum fields required to make a request.
 --
@@ -114,10 +114,12 @@ data GetBucketLifecycleConfigurationResponse =
 getBucketLifecycleConfigurationResponse
     :: Int -- ^ 'gblcrsResponseStatus'
     -> GetBucketLifecycleConfigurationResponse
-getBucketLifecycleConfigurationResponse pResponseStatus_ =
-  GetBucketLifecycleConfigurationResponse'
-    {_gblcrsRules = Nothing, _gblcrsResponseStatus = pResponseStatus_}
-
+getBucketLifecycleConfigurationResponse
+  pResponseStatus_
+  = GetBucketLifecycleConfigurationResponse'{_gblcrsRules
+                                               = Nothing,
+                                             _gblcrsResponseStatus =
+                                               pResponseStatus_}
 
 -- | Undocumented member.
 gblcrsRules :: Lens' GetBucketLifecycleConfigurationResponse [LifecycleRule]

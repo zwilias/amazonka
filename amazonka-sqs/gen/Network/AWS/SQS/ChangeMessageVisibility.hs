@@ -53,17 +53,16 @@ import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 import Network.AWS.SQS.Types
-import Network.AWS.SQS.Types.Product
 
 -- | /See:/ 'changeMessageVisibility' smart constructor.
-data ChangeMessageVisibility =
-  ChangeMessageVisibility'
-    { _cmvQueueURL          :: !Text
-    , _cmvReceiptHandle     :: !Text
-    , _cmvVisibilityTimeout :: !Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data ChangeMessageVisibility = ChangeMessageVisibility'{_cmvQueueURL
+                                                        :: !Text,
+                                                        _cmvReceiptHandle ::
+                                                        !Text,
+                                                        _cmvVisibilityTimeout ::
+                                                        !Int}
+                                 deriving (Eq, Read, Show, Data, Typeable,
+                                           Generic)
 
 -- | Creates a value of 'ChangeMessageVisibility' with the minimum fields required to make a request.
 --
@@ -79,13 +78,11 @@ changeMessageVisibility
     -> Text -- ^ 'cmvReceiptHandle'
     -> Int -- ^ 'cmvVisibilityTimeout'
     -> ChangeMessageVisibility
-changeMessageVisibility pQueueURL_ pReceiptHandle_ pVisibilityTimeout_ =
-  ChangeMessageVisibility'
-    { _cmvQueueURL = pQueueURL_
-    , _cmvReceiptHandle = pReceiptHandle_
-    , _cmvVisibilityTimeout = pVisibilityTimeout_
-    }
-
+changeMessageVisibility pQueueURL_ pReceiptHandle_
+  pVisibilityTimeout_
+  = ChangeMessageVisibility'{_cmvQueueURL = pQueueURL_,
+                             _cmvReceiptHandle = pReceiptHandle_,
+                             _cmvVisibilityTimeout = pVisibilityTimeout_}
 
 -- | The URL of the Amazon SQS queue whose message's visibility is changed. Queue URLs are case-sensitive.
 cmvQueueURL :: Lens' ChangeMessageVisibility Text
@@ -127,16 +124,15 @@ instance ToQuery ChangeMessageVisibility where
                "VisibilityTimeout" =: _cmvVisibilityTimeout]
 
 -- | /See:/ 'changeMessageVisibilityResponse' smart constructor.
-data ChangeMessageVisibilityResponse =
-  ChangeMessageVisibilityResponse'
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data ChangeMessageVisibilityResponse = ChangeMessageVisibilityResponse'
+                                         deriving (Eq, Read, Show, Data,
+                                                   Typeable, Generic)
 
 -- | Creates a value of 'ChangeMessageVisibilityResponse' with the minimum fields required to make a request.
 --
 changeMessageVisibilityResponse
     :: ChangeMessageVisibilityResponse
-changeMessageVisibilityResponse = ChangeMessageVisibilityResponse'
-
+changeMessageVisibilityResponse
+  = ChangeMessageVisibilityResponse'
 
 instance NFData ChangeMessageVisibilityResponse where

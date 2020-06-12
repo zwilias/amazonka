@@ -38,19 +38,16 @@ module Network.AWS.DeviceFarm.GetInstanceProfile
     ) where
 
 import Network.AWS.DeviceFarm.Types
-import Network.AWS.DeviceFarm.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 
 -- | /See:/ 'getInstanceProfile' smart constructor.
-newtype GetInstanceProfile =
-  GetInstanceProfile'
-    { _gipArn :: Text
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+newtype GetInstanceProfile = GetInstanceProfile'{_gipArn
+                                                 :: Text}
+                               deriving (Eq, Read, Show, Data, Typeable,
+                                         Generic)
 
 -- | Creates a value of 'GetInstanceProfile' with the minimum fields required to make a request.
 --
@@ -60,8 +57,8 @@ newtype GetInstanceProfile =
 getInstanceProfile
     :: Text -- ^ 'gipArn'
     -> GetInstanceProfile
-getInstanceProfile pArn_ = GetInstanceProfile' {_gipArn = pArn_}
-
+getInstanceProfile pArn_
+  = GetInstanceProfile'{_gipArn = pArn_}
 
 -- | The Amazon Resource Name (ARN) of an instance profile.
 gipArn :: Lens' GetInstanceProfile Text
@@ -102,13 +99,14 @@ instance ToQuery GetInstanceProfile where
         toQuery = const mempty
 
 -- | /See:/ 'getInstanceProfileResponse' smart constructor.
-data GetInstanceProfileResponse =
-  GetInstanceProfileResponse'
-    { _giprsInstanceProfile :: !(Maybe InstanceProfile)
-    , _giprsResponseStatus  :: !Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data GetInstanceProfileResponse = GetInstanceProfileResponse'{_giprsInstanceProfile
+                                                              ::
+                                                              !(Maybe
+                                                                  InstanceProfile),
+                                                              _giprsResponseStatus
+                                                              :: !Int}
+                                    deriving (Eq, Read, Show, Data, Typeable,
+                                              Generic)
 
 -- | Creates a value of 'GetInstanceProfileResponse' with the minimum fields required to make a request.
 --
@@ -120,10 +118,10 @@ data GetInstanceProfileResponse =
 getInstanceProfileResponse
     :: Int -- ^ 'giprsResponseStatus'
     -> GetInstanceProfileResponse
-getInstanceProfileResponse pResponseStatus_ =
-  GetInstanceProfileResponse'
-    {_giprsInstanceProfile = Nothing, _giprsResponseStatus = pResponseStatus_}
-
+getInstanceProfileResponse pResponseStatus_
+  = GetInstanceProfileResponse'{_giprsInstanceProfile =
+                                  Nothing,
+                                _giprsResponseStatus = pResponseStatus_}
 
 -- | An object that contains information about an instance profile.
 giprsInstanceProfile :: Lens' GetInstanceProfileResponse (Maybe InstanceProfile)

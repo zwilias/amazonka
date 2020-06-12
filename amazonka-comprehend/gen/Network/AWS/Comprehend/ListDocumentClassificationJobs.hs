@@ -43,7 +43,6 @@ module Network.AWS.Comprehend.ListDocumentClassificationJobs
     ) where
 
 import Network.AWS.Comprehend.Types
-import Network.AWS.Comprehend.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Pager
 import Network.AWS.Prelude
@@ -51,14 +50,20 @@ import Network.AWS.Request
 import Network.AWS.Response
 
 -- | /See:/ 'listDocumentClassificationJobs' smart constructor.
-data ListDocumentClassificationJobs =
-  ListDocumentClassificationJobs'
-    { _ldcjNextToken  :: !(Maybe Text)
-    , _ldcjFilter     :: !(Maybe DocumentClassificationJobFilter)
-    , _ldcjMaxResults :: !(Maybe Nat)
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data ListDocumentClassificationJobs = ListDocumentClassificationJobs'{_ldcjNextToken
+                                                                      ::
+                                                                      !(Maybe
+                                                                          Text),
+                                                                      _ldcjFilter
+                                                                      ::
+                                                                      !(Maybe
+                                                                          DocumentClassificationJobFilter),
+                                                                      _ldcjMaxResults
+                                                                      ::
+                                                                      !(Maybe
+                                                                          Nat)}
+                                        deriving (Eq, Read, Show, Data,
+                                                  Typeable, Generic)
 
 -- | Creates a value of 'ListDocumentClassificationJobs' with the minimum fields required to make a request.
 --
@@ -71,10 +76,11 @@ data ListDocumentClassificationJobs =
 -- * 'ldcjMaxResults' - The maximum number of results to return in each page. The default is 100.
 listDocumentClassificationJobs
     :: ListDocumentClassificationJobs
-listDocumentClassificationJobs =
-  ListDocumentClassificationJobs'
-    {_ldcjNextToken = Nothing, _ldcjFilter = Nothing, _ldcjMaxResults = Nothing}
-
+listDocumentClassificationJobs
+  = ListDocumentClassificationJobs'{_ldcjNextToken =
+                                      Nothing,
+                                    _ldcjFilter = Nothing,
+                                    _ldcjMaxResults = Nothing}
 
 -- | Identifies the next page of results to return.
 ldcjNextToken :: Lens' ListDocumentClassificationJobs (Maybe Text)
@@ -143,14 +149,19 @@ instance ToQuery ListDocumentClassificationJobs where
         toQuery = const mempty
 
 -- | /See:/ 'listDocumentClassificationJobsResponse' smart constructor.
-data ListDocumentClassificationJobsResponse =
-  ListDocumentClassificationJobsResponse'
-    { _ldcjrsNextToken :: !(Maybe Text)
-    , _ldcjrsDocumentClassificationJobPropertiesList :: !(Maybe [DocumentClassificationJobProperties])
-    , _ldcjrsResponseStatus :: !Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data ListDocumentClassificationJobsResponse = ListDocumentClassificationJobsResponse'{_ldcjrsNextToken
+                                                                                      ::
+                                                                                      !(Maybe
+                                                                                          Text),
+                                                                                      _ldcjrsDocumentClassificationJobPropertiesList
+                                                                                      ::
+                                                                                      !(Maybe
+                                                                                          [DocumentClassificationJobProperties]),
+                                                                                      _ldcjrsResponseStatus
+                                                                                      ::
+                                                                                      !Int}
+                                                deriving (Eq, Read, Show, Data,
+                                                          Typeable, Generic)
 
 -- | Creates a value of 'ListDocumentClassificationJobsResponse' with the minimum fields required to make a request.
 --
@@ -164,13 +175,14 @@ data ListDocumentClassificationJobsResponse =
 listDocumentClassificationJobsResponse
     :: Int -- ^ 'ldcjrsResponseStatus'
     -> ListDocumentClassificationJobsResponse
-listDocumentClassificationJobsResponse pResponseStatus_ =
-  ListDocumentClassificationJobsResponse'
-    { _ldcjrsNextToken = Nothing
-    , _ldcjrsDocumentClassificationJobPropertiesList = Nothing
-    , _ldcjrsResponseStatus = pResponseStatus_
-    }
-
+listDocumentClassificationJobsResponse
+  pResponseStatus_
+  = ListDocumentClassificationJobsResponse'{_ldcjrsNextToken
+                                              = Nothing,
+                                            _ldcjrsDocumentClassificationJobPropertiesList
+                                              = Nothing,
+                                            _ldcjrsResponseStatus =
+                                              pResponseStatus_}
 
 -- | Identifies the next page of results to return.
 ldcjrsNextToken :: Lens' ListDocumentClassificationJobsResponse (Maybe Text)

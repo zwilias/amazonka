@@ -39,17 +39,14 @@ import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 import Network.AWS.S3.Types
-import Network.AWS.S3.Types.Product
 
 -- | /See:/ 'putBucketLogging' smart constructor.
-data PutBucketLogging =
-  PutBucketLogging'
-    { _pblContentMD5          :: !(Maybe Text)
-    , _pblBucket              :: !BucketName
-    , _pblBucketLoggingStatus :: !BucketLoggingStatus
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data PutBucketLogging = PutBucketLogging'{_pblContentMD5
+                                          :: !(Maybe Text),
+                                          _pblBucket :: !BucketName,
+                                          _pblBucketLoggingStatus ::
+                                          !BucketLoggingStatus}
+                          deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'PutBucketLogging' with the minimum fields required to make a request.
 --
@@ -64,13 +61,10 @@ putBucketLogging
     :: BucketName -- ^ 'pblBucket'
     -> BucketLoggingStatus -- ^ 'pblBucketLoggingStatus'
     -> PutBucketLogging
-putBucketLogging pBucket_ pBucketLoggingStatus_ =
-  PutBucketLogging'
-    { _pblContentMD5 = Nothing
-    , _pblBucket = pBucket_
-    , _pblBucketLoggingStatus = pBucketLoggingStatus_
-    }
-
+putBucketLogging pBucket_ pBucketLoggingStatus_
+  = PutBucketLogging'{_pblContentMD5 = Nothing,
+                      _pblBucket = pBucket_,
+                      _pblBucketLoggingStatus = pBucketLoggingStatus_}
 
 -- | Undocumented member.
 pblContentMD5 :: Lens' PutBucketLogging (Maybe Text)
@@ -112,16 +106,14 @@ instance ToQuery PutBucketLogging where
         toQuery = const (mconcat ["logging"])
 
 -- | /See:/ 'putBucketLoggingResponse' smart constructor.
-data PutBucketLoggingResponse =
-  PutBucketLoggingResponse'
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data PutBucketLoggingResponse = PutBucketLoggingResponse'
+                                  deriving (Eq, Read, Show, Data, Typeable,
+                                            Generic)
 
 -- | Creates a value of 'PutBucketLoggingResponse' with the minimum fields required to make a request.
 --
 putBucketLoggingResponse
     :: PutBucketLoggingResponse
 putBucketLoggingResponse = PutBucketLoggingResponse'
-
 
 instance NFData PutBucketLoggingResponse where

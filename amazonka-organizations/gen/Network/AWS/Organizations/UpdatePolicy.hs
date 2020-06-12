@@ -44,21 +44,17 @@ module Network.AWS.Organizations.UpdatePolicy
 
 import Network.AWS.Lens
 import Network.AWS.Organizations.Types
-import Network.AWS.Organizations.Types.Product
 import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 
 -- | /See:/ 'updatePolicy' smart constructor.
-data UpdatePolicy =
-  UpdatePolicy'
-    { _upContent     :: !(Maybe Text)
-    , _upName        :: !(Maybe Text)
-    , _upDescription :: !(Maybe Text)
-    , _upPolicyId    :: !Text
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data UpdatePolicy = UpdatePolicy'{_upContent ::
+                                  !(Maybe Text),
+                                  _upName :: !(Maybe Text),
+                                  _upDescription :: !(Maybe Text),
+                                  _upPolicyId :: !Text}
+                      deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'UpdatePolicy' with the minimum fields required to make a request.
 --
@@ -74,14 +70,10 @@ data UpdatePolicy =
 updatePolicy
     :: Text -- ^ 'upPolicyId'
     -> UpdatePolicy
-updatePolicy pPolicyId_ =
-  UpdatePolicy'
-    { _upContent = Nothing
-    , _upName = Nothing
-    , _upDescription = Nothing
-    , _upPolicyId = pPolicyId_
-    }
-
+updatePolicy pPolicyId_
+  = UpdatePolicy'{_upContent = Nothing,
+                  _upName = Nothing, _upDescription = Nothing,
+                  _upPolicyId = pPolicyId_}
 
 -- | If provided, the new content for the policy. The text must be correctly formatted JSON that complies with the syntax for the policy's type. For more information, see <http://docs.aws.amazon.com/organizations/latest/userguide/orgs_reference_scp-syntax.html Service Control Policy Syntax> in the /AWS Organizations User Guide/ .
 upContent :: Lens' UpdatePolicy (Maybe Text)
@@ -138,13 +130,10 @@ instance ToQuery UpdatePolicy where
         toQuery = const mempty
 
 -- | /See:/ 'updatePolicyResponse' smart constructor.
-data UpdatePolicyResponse =
-  UpdatePolicyResponse'
-    { _uprsPolicy         :: !(Maybe Policy)
-    , _uprsResponseStatus :: !Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data UpdatePolicyResponse = UpdatePolicyResponse'{_uprsPolicy
+                                                  :: !(Maybe Policy),
+                                                  _uprsResponseStatus :: !Int}
+                              deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'UpdatePolicyResponse' with the minimum fields required to make a request.
 --
@@ -156,10 +145,9 @@ data UpdatePolicyResponse =
 updatePolicyResponse
     :: Int -- ^ 'uprsResponseStatus'
     -> UpdatePolicyResponse
-updatePolicyResponse pResponseStatus_ =
-  UpdatePolicyResponse'
-    {_uprsPolicy = Nothing, _uprsResponseStatus = pResponseStatus_}
-
+updatePolicyResponse pResponseStatus_
+  = UpdatePolicyResponse'{_uprsPolicy = Nothing,
+                          _uprsResponseStatus = pResponseStatus_}
 
 -- | A structure that contains details about the updated policy, showing the requested changes.
 uprsPolicy :: Lens' UpdatePolicyResponse (Maybe Policy)

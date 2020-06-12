@@ -18,7 +18,7 @@
 -- Stability   : auto-generated
 -- Portability : non-portable (GHC extensions)
 --
--- Returns the details of one or more remediation exceptions. A detailed view of a remediation exception for a set of resources that includes an explanation of an exception and the time when the exception will be deleted. When you specify the limit and the next token, you receive a paginated response.
+-- Returns the details of one or more remediation exceptions. A detailed view of a remediation exception for a set of resources that includes an explanation of an exception and the time when the exception will be deleted. When you specify the limit and the next token, you receive a paginated response. 
 --
 --
 module Network.AWS.Config.DescribeRemediationExceptions
@@ -42,22 +42,28 @@ module Network.AWS.Config.DescribeRemediationExceptions
     ) where
 
 import Network.AWS.Config.Types
-import Network.AWS.Config.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 
 -- | /See:/ 'describeRemediationExceptions' smart constructor.
-data DescribeRemediationExceptions =
-  DescribeRemediationExceptions'
-    { _dreNextToken      :: !(Maybe Text)
-    , _dreLimit          :: !(Maybe Nat)
-    , _dreResourceKeys   :: !(Maybe (List1 RemediationExceptionResourceKey))
-    , _dreConfigRuleName :: !Text
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data DescribeRemediationExceptions = DescribeRemediationExceptions'{_dreNextToken
+                                                                    ::
+                                                                    !(Maybe
+                                                                        Text),
+                                                                    _dreLimit ::
+                                                                    !(Maybe
+                                                                        Nat),
+                                                                    _dreResourceKeys
+                                                                    ::
+                                                                    !(Maybe
+                                                                        (List1
+                                                                           RemediationExceptionResourceKey)),
+                                                                    _dreConfigRuleName
+                                                                    :: !Text}
+                                       deriving (Eq, Read, Show, Data, Typeable,
+                                                 Generic)
 
 -- | Creates a value of 'DescribeRemediationExceptions' with the minimum fields required to make a request.
 --
@@ -67,20 +73,18 @@ data DescribeRemediationExceptions =
 --
 -- * 'dreLimit' - The maximum number of RemediationExceptionResourceKey returned on each page. The default is 25. If you specify 0, AWS Config uses the default.
 --
--- * 'dreResourceKeys' - An exception list of resource exception keys to be processed with the current request. AWS Config adds exception for each resource key. For example, AWS Config adds 3 exceptions for 3 resource keys.
+-- * 'dreResourceKeys' - An exception list of resource exception keys to be processed with the current request. AWS Config adds exception for each resource key. For example, AWS Config adds 3 exceptions for 3 resource keys. 
 --
 -- * 'dreConfigRuleName' - The name of the AWS Config rule.
 describeRemediationExceptions
     :: Text -- ^ 'dreConfigRuleName'
     -> DescribeRemediationExceptions
-describeRemediationExceptions pConfigRuleName_ =
-  DescribeRemediationExceptions'
-    { _dreNextToken = Nothing
-    , _dreLimit = Nothing
-    , _dreResourceKeys = Nothing
-    , _dreConfigRuleName = pConfigRuleName_
-    }
-
+describeRemediationExceptions pConfigRuleName_
+  = DescribeRemediationExceptions'{_dreNextToken =
+                                     Nothing,
+                                   _dreLimit = Nothing,
+                                   _dreResourceKeys = Nothing,
+                                   _dreConfigRuleName = pConfigRuleName_}
 
 -- | The @nextToken@ string returned in a previous request that you use to request the next page of results in a paginated response.
 dreNextToken :: Lens' DescribeRemediationExceptions (Maybe Text)
@@ -90,7 +94,7 @@ dreNextToken = lens _dreNextToken (\ s a -> s{_dreNextToken = a})
 dreLimit :: Lens' DescribeRemediationExceptions (Maybe Natural)
 dreLimit = lens _dreLimit (\ s a -> s{_dreLimit = a}) . mapping _Nat
 
--- | An exception list of resource exception keys to be processed with the current request. AWS Config adds exception for each resource key. For example, AWS Config adds 3 exceptions for 3 resource keys.
+-- | An exception list of resource exception keys to be processed with the current request. AWS Config adds exception for each resource key. For example, AWS Config adds 3 exceptions for 3 resource keys. 
 dreResourceKeys :: Lens' DescribeRemediationExceptions (Maybe (NonEmpty RemediationExceptionResourceKey))
 dreResourceKeys = lens _dreResourceKeys (\ s a -> s{_dreResourceKeys = a}) . mapping _List1
 
@@ -142,14 +146,19 @@ instance ToQuery DescribeRemediationExceptions where
         toQuery = const mempty
 
 -- | /See:/ 'describeRemediationExceptionsResponse' smart constructor.
-data DescribeRemediationExceptionsResponse =
-  DescribeRemediationExceptionsResponse'
-    { _drersNextToken             :: !(Maybe Text)
-    , _drersRemediationExceptions :: !(Maybe [RemediationException])
-    , _drersResponseStatus        :: !Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data DescribeRemediationExceptionsResponse = DescribeRemediationExceptionsResponse'{_drersNextToken
+                                                                                    ::
+                                                                                    !(Maybe
+                                                                                        Text),
+                                                                                    _drersRemediationExceptions
+                                                                                    ::
+                                                                                    !(Maybe
+                                                                                        [RemediationException]),
+                                                                                    _drersResponseStatus
+                                                                                    ::
+                                                                                    !Int}
+                                               deriving (Eq, Read, Show, Data,
+                                                         Typeable, Generic)
 
 -- | Creates a value of 'DescribeRemediationExceptionsResponse' with the minimum fields required to make a request.
 --
@@ -163,13 +172,14 @@ data DescribeRemediationExceptionsResponse =
 describeRemediationExceptionsResponse
     :: Int -- ^ 'drersResponseStatus'
     -> DescribeRemediationExceptionsResponse
-describeRemediationExceptionsResponse pResponseStatus_ =
-  DescribeRemediationExceptionsResponse'
-    { _drersNextToken = Nothing
-    , _drersRemediationExceptions = Nothing
-    , _drersResponseStatus = pResponseStatus_
-    }
-
+describeRemediationExceptionsResponse
+  pResponseStatus_
+  = DescribeRemediationExceptionsResponse'{_drersNextToken
+                                             = Nothing,
+                                           _drersRemediationExceptions =
+                                             Nothing,
+                                           _drersResponseStatus =
+                                             pResponseStatus_}
 
 -- | The @nextToken@ string returned in a previous request that you use to request the next page of results in a paginated response.
 drersNextToken :: Lens' DescribeRemediationExceptionsResponse (Maybe Text)

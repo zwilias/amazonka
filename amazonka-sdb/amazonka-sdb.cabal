@@ -59,8 +59,12 @@ library
         , Network.AWS.SDB.Waiters
 
     other-modules:
-          Network.AWS.SDB.Types.Product
-        , Network.AWS.SDB.Types.Sum
+          Network.AWS.SDB.Types.Attribute
+        , Network.AWS.SDB.Types.DeletableItem
+        , Network.AWS.SDB.Types.Item
+        , Network.AWS.SDB.Types.ReplaceableAttribute
+        , Network.AWS.SDB.Types.ReplaceableItem
+        , Network.AWS.SDB.Types.UpdateCondition
 
     build-depends:
           amazonka-core == 1.6.1.*

@@ -44,24 +44,20 @@ module Network.AWS.IoT.ListJobs
     ) where
 
 import Network.AWS.IoT.Types
-import Network.AWS.IoT.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 
 -- | /See:/ 'listJobs' smart constructor.
-data ListJobs =
-  ListJobs'
-    { _ljStatus          :: !(Maybe JobStatus)
-    , _ljThingGroupId    :: !(Maybe Text)
-    , _ljNextToken       :: !(Maybe Text)
-    , _ljThingGroupName  :: !(Maybe Text)
-    , _ljMaxResults      :: !(Maybe Nat)
-    , _ljTargetSelection :: !(Maybe TargetSelection)
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data ListJobs = ListJobs'{_ljStatus ::
+                          !(Maybe JobStatus),
+                          _ljThingGroupId :: !(Maybe Text),
+                          _ljNextToken :: !(Maybe Text),
+                          _ljThingGroupName :: !(Maybe Text),
+                          _ljMaxResults :: !(Maybe Nat),
+                          _ljTargetSelection :: !(Maybe TargetSelection)}
+                  deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'ListJobs' with the minimum fields required to make a request.
 --
@@ -77,19 +73,14 @@ data ListJobs =
 --
 -- * 'ljMaxResults' - The maximum number of results to return per request.
 --
--- * 'ljTargetSelection' - Specifies whether the job will continue to run (CONTINUOUS), or will be complete after all those things specified as targets have completed the job (SNAPSHOT). If continuous, the job may also be run on a thing when a change is detected in a target. For example, a job will run on a thing when the thing is added to a target group, even after the job was completed by all things originally in the group.
+-- * 'ljTargetSelection' - Specifies whether the job will continue to run (CONTINUOUS), or will be complete after all those things specified as targets have completed the job (SNAPSHOT). If continuous, the job may also be run on a thing when a change is detected in a target. For example, a job will run on a thing when the thing is added to a target group, even after the job was completed by all things originally in the group. 
 listJobs
     :: ListJobs
-listJobs =
-  ListJobs'
-    { _ljStatus = Nothing
-    , _ljThingGroupId = Nothing
-    , _ljNextToken = Nothing
-    , _ljThingGroupName = Nothing
-    , _ljMaxResults = Nothing
-    , _ljTargetSelection = Nothing
-    }
-
+listJobs
+  = ListJobs'{_ljStatus = Nothing,
+              _ljThingGroupId = Nothing, _ljNextToken = Nothing,
+              _ljThingGroupName = Nothing, _ljMaxResults = Nothing,
+              _ljTargetSelection = Nothing}
 
 -- | An optional filter that lets you search for jobs that have the specified status.
 ljStatus :: Lens' ListJobs (Maybe JobStatus)
@@ -111,7 +102,7 @@ ljThingGroupName = lens _ljThingGroupName (\ s a -> s{_ljThingGroupName = a})
 ljMaxResults :: Lens' ListJobs (Maybe Natural)
 ljMaxResults = lens _ljMaxResults (\ s a -> s{_ljMaxResults = a}) . mapping _Nat
 
--- | Specifies whether the job will continue to run (CONTINUOUS), or will be complete after all those things specified as targets have completed the job (SNAPSHOT). If continuous, the job may also be run on a thing when a change is detected in a target. For example, a job will run on a thing when the thing is added to a target group, even after the job was completed by all things originally in the group.
+-- | Specifies whether the job will continue to run (CONTINUOUS), or will be complete after all those things specified as targets have completed the job (SNAPSHOT). If continuous, the job may also be run on a thing when a change is detected in a target. For example, a job will run on a thing when the thing is added to a target group, even after the job was completed by all things originally in the group. 
 ljTargetSelection :: Lens' ListJobs (Maybe TargetSelection)
 ljTargetSelection = lens _ljTargetSelection (\ s a -> s{_ljTargetSelection = a})
 
@@ -146,14 +137,11 @@ instance ToQuery ListJobs where
                "targetSelection" =: _ljTargetSelection]
 
 -- | /See:/ 'listJobsResponse' smart constructor.
-data ListJobsResponse =
-  ListJobsResponse'
-    { _ljrsJobs           :: !(Maybe [JobSummary])
-    , _ljrsNextToken      :: !(Maybe Text)
-    , _ljrsResponseStatus :: !Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data ListJobsResponse = ListJobsResponse'{_ljrsJobs
+                                          :: !(Maybe [JobSummary]),
+                                          _ljrsNextToken :: !(Maybe Text),
+                                          _ljrsResponseStatus :: !Int}
+                          deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'ListJobsResponse' with the minimum fields required to make a request.
 --
@@ -167,13 +155,10 @@ data ListJobsResponse =
 listJobsResponse
     :: Int -- ^ 'ljrsResponseStatus'
     -> ListJobsResponse
-listJobsResponse pResponseStatus_ =
-  ListJobsResponse'
-    { _ljrsJobs = Nothing
-    , _ljrsNextToken = Nothing
-    , _ljrsResponseStatus = pResponseStatus_
-    }
-
+listJobsResponse pResponseStatus_
+  = ListJobsResponse'{_ljrsJobs = Nothing,
+                      _ljrsNextToken = Nothing,
+                      _ljrsResponseStatus = pResponseStatus_}
 
 -- | A list of jobs.
 ljrsJobs :: Lens' ListJobsResponse [JobSummary]

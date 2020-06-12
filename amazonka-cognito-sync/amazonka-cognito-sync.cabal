@@ -66,8 +66,17 @@ library
         , Network.AWS.CognitoSync.Waiters
 
     other-modules:
-          Network.AWS.CognitoSync.Types.Product
-        , Network.AWS.CognitoSync.Types.Sum
+          Network.AWS.CognitoSync.Types.BulkPublishStatus
+        , Network.AWS.CognitoSync.Types.CognitoStreams
+        , Network.AWS.CognitoSync.Types.Dataset
+        , Network.AWS.CognitoSync.Types.IdentityPoolUsage
+        , Network.AWS.CognitoSync.Types.IdentityUsage
+        , Network.AWS.CognitoSync.Types.Operation
+        , Network.AWS.CognitoSync.Types.Platform
+        , Network.AWS.CognitoSync.Types.PushSync
+        , Network.AWS.CognitoSync.Types.Record
+        , Network.AWS.CognitoSync.Types.RecordPatch
+        , Network.AWS.CognitoSync.Types.StreamingStatus
 
     build-depends:
           amazonka-core == 1.6.1.*

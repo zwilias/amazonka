@@ -48,7 +48,6 @@ module Network.AWS.IAM.ListGroupPolicies
     ) where
 
 import Network.AWS.IAM.Types
-import Network.AWS.IAM.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Pager
 import Network.AWS.Prelude
@@ -56,14 +55,11 @@ import Network.AWS.Request
 import Network.AWS.Response
 
 -- | /See:/ 'listGroupPolicies' smart constructor.
-data ListGroupPolicies =
-  ListGroupPolicies'
-    { _lgpMarker    :: !(Maybe Text)
-    , _lgpMaxItems  :: !(Maybe Nat)
-    , _lgpGroupName :: !Text
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data ListGroupPolicies = ListGroupPolicies'{_lgpMarker
+                                            :: !(Maybe Text),
+                                            _lgpMaxItems :: !(Maybe Nat),
+                                            _lgpGroupName :: !Text}
+                           deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'ListGroupPolicies' with the minimum fields required to make a request.
 --
@@ -77,10 +73,9 @@ data ListGroupPolicies =
 listGroupPolicies
     :: Text -- ^ 'lgpGroupName'
     -> ListGroupPolicies
-listGroupPolicies pGroupName_ =
-  ListGroupPolicies'
-    {_lgpMarker = Nothing, _lgpMaxItems = Nothing, _lgpGroupName = pGroupName_}
-
+listGroupPolicies pGroupName_
+  = ListGroupPolicies'{_lgpMarker = Nothing,
+                       _lgpMaxItems = Nothing, _lgpGroupName = pGroupName_}
 
 -- | Use this parameter only when paginating results and only after you receive a response indicating that the results are truncated. Set it to the value of the @Marker@ element in the response that you received to indicate where the next call should start.
 lgpMarker :: Lens' ListGroupPolicies (Maybe Text)
@@ -132,20 +127,21 @@ instance ToQuery ListGroupPolicies where
                "Marker" =: _lgpMarker, "MaxItems" =: _lgpMaxItems,
                "GroupName" =: _lgpGroupName]
 
--- | Contains the response to a successful 'ListGroupPolicies' request.
+-- | Contains the response to a successful 'ListGroupPolicies' request. 
 --
 --
 --
 -- /See:/ 'listGroupPoliciesResponse' smart constructor.
-data ListGroupPoliciesResponse =
-  ListGroupPoliciesResponse'
-    { _lgprsMarker         :: !(Maybe Text)
-    , _lgprsIsTruncated    :: !(Maybe Bool)
-    , _lgprsResponseStatus :: !Int
-    , _lgprsPolicyNames    :: ![Text]
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data ListGroupPoliciesResponse = ListGroupPoliciesResponse'{_lgprsMarker
+                                                            :: !(Maybe Text),
+                                                            _lgprsIsTruncated ::
+                                                            !(Maybe Bool),
+                                                            _lgprsResponseStatus
+                                                            :: !Int,
+                                                            _lgprsPolicyNames ::
+                                                            ![Text]}
+                                   deriving (Eq, Read, Show, Data, Typeable,
+                                             Generic)
 
 -- | Creates a value of 'ListGroupPoliciesResponse' with the minimum fields required to make a request.
 --
@@ -161,14 +157,11 @@ data ListGroupPoliciesResponse =
 listGroupPoliciesResponse
     :: Int -- ^ 'lgprsResponseStatus'
     -> ListGroupPoliciesResponse
-listGroupPoliciesResponse pResponseStatus_ =
-  ListGroupPoliciesResponse'
-    { _lgprsMarker = Nothing
-    , _lgprsIsTruncated = Nothing
-    , _lgprsResponseStatus = pResponseStatus_
-    , _lgprsPolicyNames = mempty
-    }
-
+listGroupPoliciesResponse pResponseStatus_
+  = ListGroupPoliciesResponse'{_lgprsMarker = Nothing,
+                               _lgprsIsTruncated = Nothing,
+                               _lgprsResponseStatus = pResponseStatus_,
+                               _lgprsPolicyNames = mempty}
 
 -- | When @IsTruncated@ is @true@ , this element is present and contains the value to use for the @Marker@ parameter in a subsequent pagination request.
 lgprsMarker :: Lens' ListGroupPoliciesResponse (Maybe Text)

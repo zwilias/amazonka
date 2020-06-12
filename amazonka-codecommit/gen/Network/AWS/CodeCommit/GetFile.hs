@@ -45,21 +45,16 @@ module Network.AWS.CodeCommit.GetFile
     ) where
 
 import Network.AWS.CodeCommit.Types
-import Network.AWS.CodeCommit.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 
 -- | /See:/ 'getFile' smart constructor.
-data GetFile =
-  GetFile'
-    { _getCommitSpecifier :: !(Maybe Text)
-    , _getRepositoryName  :: !Text
-    , _getFilePath        :: !Text
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data GetFile = GetFile'{_getCommitSpecifier ::
+                        !(Maybe Text),
+                        _getRepositoryName :: !Text, _getFilePath :: !Text}
+                 deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'GetFile' with the minimum fields required to make a request.
 --
@@ -74,13 +69,10 @@ getFile
     :: Text -- ^ 'getRepositoryName'
     -> Text -- ^ 'getFilePath'
     -> GetFile
-getFile pRepositoryName_ pFilePath_ =
-  GetFile'
-    { _getCommitSpecifier = Nothing
-    , _getRepositoryName = pRepositoryName_
-    , _getFilePath = pFilePath_
-    }
-
+getFile pRepositoryName_ pFilePath_
+  = GetFile'{_getCommitSpecifier = Nothing,
+             _getRepositoryName = pRepositoryName_,
+             _getFilePath = pFilePath_}
 
 -- | The fully quaified reference that identifies the commit that contains the file. For example, you can specify a full commit ID, a tag, a branch name, or a reference such as refs/heads/master. If none is provided, the head commit is used.
 getCommitSpecifier :: Lens' GetFile (Maybe Text)
@@ -136,18 +128,15 @@ instance ToQuery GetFile where
         toQuery = const mempty
 
 -- | /See:/ 'getFileResponse' smart constructor.
-data GetFileResponse =
-  GetFileResponse'
-    { _getrsResponseStatus :: !Int
-    , _getrsCommitId       :: !Text
-    , _getrsBlobId         :: !Text
-    , _getrsFilePath       :: !Text
-    , _getrsFileMode       :: !FileModeTypeEnum
-    , _getrsFileSize       :: !Integer
-    , _getrsFileContent    :: !Base64
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data GetFileResponse = GetFileResponse'{_getrsResponseStatus
+                                        :: !Int,
+                                        _getrsCommitId :: !Text,
+                                        _getrsBlobId :: !Text,
+                                        _getrsFilePath :: !Text,
+                                        _getrsFileMode :: !FileModeTypeEnum,
+                                        _getrsFileSize :: !Integer,
+                                        _getrsFileContent :: !Base64}
+                         deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'GetFileResponse' with the minimum fields required to make a request.
 --
@@ -175,17 +164,15 @@ getFileResponse
     -> Integer -- ^ 'getrsFileSize'
     -> ByteString -- ^ 'getrsFileContent'
     -> GetFileResponse
-getFileResponse pResponseStatus_ pCommitId_ pBlobId_ pFilePath_ pFileMode_ pFileSize_ pFileContent_ =
-  GetFileResponse'
-    { _getrsResponseStatus = pResponseStatus_
-    , _getrsCommitId = pCommitId_
-    , _getrsBlobId = pBlobId_
-    , _getrsFilePath = pFilePath_
-    , _getrsFileMode = pFileMode_
-    , _getrsFileSize = pFileSize_
-    , _getrsFileContent = _Base64 # pFileContent_
-    }
-
+getFileResponse pResponseStatus_ pCommitId_ pBlobId_
+  pFilePath_ pFileMode_ pFileSize_ pFileContent_
+  = GetFileResponse'{_getrsResponseStatus =
+                       pResponseStatus_,
+                     _getrsCommitId = pCommitId_, _getrsBlobId = pBlobId_,
+                     _getrsFilePath = pFilePath_,
+                     _getrsFileMode = pFileMode_,
+                     _getrsFileSize = pFileSize_,
+                     _getrsFileContent = _Base64 # pFileContent_}
 
 -- | -- | The response status code.
 getrsResponseStatus :: Lens' GetFileResponse Int

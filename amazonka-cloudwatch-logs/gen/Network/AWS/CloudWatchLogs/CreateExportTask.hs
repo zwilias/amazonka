@@ -48,25 +48,21 @@ module Network.AWS.CloudWatchLogs.CreateExportTask
     ) where
 
 import Network.AWS.CloudWatchLogs.Types
-import Network.AWS.CloudWatchLogs.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 
 -- | /See:/ 'createExportTask' smart constructor.
-data CreateExportTask =
-  CreateExportTask'
-    { _cetDestinationPrefix   :: !(Maybe Text)
-    , _cetTaskName            :: !(Maybe Text)
-    , _cetLogStreamNamePrefix :: !(Maybe Text)
-    , _cetLogGroupName        :: !Text
-    , _cetFrom                :: !Nat
-    , _cetTo                  :: !Nat
-    , _cetDestination         :: !Text
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data CreateExportTask = CreateExportTask'{_cetDestinationPrefix
+                                          :: !(Maybe Text),
+                                          _cetTaskName :: !(Maybe Text),
+                                          _cetLogStreamNamePrefix ::
+                                          !(Maybe Text),
+                                          _cetLogGroupName :: !Text,
+                                          _cetFrom :: !Nat, _cetTo :: !Nat,
+                                          _cetDestination :: !Text}
+                          deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'CreateExportTask' with the minimum fields required to make a request.
 --
@@ -91,17 +87,14 @@ createExportTask
     -> Natural -- ^ 'cetTo'
     -> Text -- ^ 'cetDestination'
     -> CreateExportTask
-createExportTask pLogGroupName_ pFrom_ pTo_ pDestination_ =
-  CreateExportTask'
-    { _cetDestinationPrefix = Nothing
-    , _cetTaskName = Nothing
-    , _cetLogStreamNamePrefix = Nothing
-    , _cetLogGroupName = pLogGroupName_
-    , _cetFrom = _Nat # pFrom_
-    , _cetTo = _Nat # pTo_
-    , _cetDestination = pDestination_
-    }
-
+createExportTask pLogGroupName_ pFrom_ pTo_
+  pDestination_
+  = CreateExportTask'{_cetDestinationPrefix = Nothing,
+                      _cetTaskName = Nothing,
+                      _cetLogStreamNamePrefix = Nothing,
+                      _cetLogGroupName = pLogGroupName_,
+                      _cetFrom = _Nat # pFrom_, _cetTo = _Nat # pTo_,
+                      _cetDestination = pDestination_}
 
 -- | The prefix used as the start of the key for every object exported. If you don't specify a value, the default is @exportedlogs@ .
 cetDestinationPrefix :: Lens' CreateExportTask (Maybe Text)
@@ -172,13 +165,12 @@ instance ToQuery CreateExportTask where
         toQuery = const mempty
 
 -- | /See:/ 'createExportTaskResponse' smart constructor.
-data CreateExportTaskResponse =
-  CreateExportTaskResponse'
-    { _cetrsTaskId         :: !(Maybe Text)
-    , _cetrsResponseStatus :: !Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data CreateExportTaskResponse = CreateExportTaskResponse'{_cetrsTaskId
+                                                          :: !(Maybe Text),
+                                                          _cetrsResponseStatus
+                                                          :: !Int}
+                                  deriving (Eq, Read, Show, Data, Typeable,
+                                            Generic)
 
 -- | Creates a value of 'CreateExportTaskResponse' with the minimum fields required to make a request.
 --
@@ -190,10 +182,9 @@ data CreateExportTaskResponse =
 createExportTaskResponse
     :: Int -- ^ 'cetrsResponseStatus'
     -> CreateExportTaskResponse
-createExportTaskResponse pResponseStatus_ =
-  CreateExportTaskResponse'
-    {_cetrsTaskId = Nothing, _cetrsResponseStatus = pResponseStatus_}
-
+createExportTaskResponse pResponseStatus_
+  = CreateExportTaskResponse'{_cetrsTaskId = Nothing,
+                              _cetrsResponseStatus = pResponseStatus_}
 
 -- | The ID of the export task.
 cetrsTaskId :: Lens' CreateExportTaskResponse (Maybe Text)

@@ -38,7 +38,6 @@ module Network.AWS.DeviceFarm.GetProject
     ) where
 
 import Network.AWS.DeviceFarm.Types
-import Network.AWS.DeviceFarm.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.Request
@@ -49,12 +48,8 @@ import Network.AWS.Response
 --
 --
 -- /See:/ 'getProject' smart constructor.
-newtype GetProject =
-  GetProject'
-    { _gpArn :: Text
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+newtype GetProject = GetProject'{_gpArn :: Text}
+                       deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'GetProject' with the minimum fields required to make a request.
 --
@@ -64,8 +59,7 @@ newtype GetProject =
 getProject
     :: Text -- ^ 'gpArn'
     -> GetProject
-getProject pArn_ = GetProject' {_gpArn = pArn_}
-
+getProject pArn_ = GetProject'{_gpArn = pArn_}
 
 -- | The project's ARN.
 gpArn :: Lens' GetProject Text
@@ -108,13 +102,10 @@ instance ToQuery GetProject where
 --
 --
 -- /See:/ 'getProjectResponse' smart constructor.
-data GetProjectResponse =
-  GetProjectResponse'
-    { _gprsProject        :: !(Maybe Project)
-    , _gprsResponseStatus :: !Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data GetProjectResponse = GetProjectResponse'{_gprsProject
+                                              :: !(Maybe Project),
+                                              _gprsResponseStatus :: !Int}
+                            deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'GetProjectResponse' with the minimum fields required to make a request.
 --
@@ -126,10 +117,9 @@ data GetProjectResponse =
 getProjectResponse
     :: Int -- ^ 'gprsResponseStatus'
     -> GetProjectResponse
-getProjectResponse pResponseStatus_ =
-  GetProjectResponse'
-    {_gprsProject = Nothing, _gprsResponseStatus = pResponseStatus_}
-
+getProjectResponse pResponseStatus_
+  = GetProjectResponse'{_gprsProject = Nothing,
+                        _gprsResponseStatus = pResponseStatus_}
 
 -- | The project to get information about.
 gprsProject :: Lens' GetProjectResponse (Maybe Project)

@@ -52,20 +52,17 @@ module Network.AWS.DynamoDB.TransactGetItems
     ) where
 
 import Network.AWS.DynamoDB.Types
-import Network.AWS.DynamoDB.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 
 -- | /See:/ 'transactGetItems' smart constructor.
-data TransactGetItems =
-  TransactGetItems'
-    { _tgiReturnConsumedCapacity :: !(Maybe ReturnConsumedCapacity)
-    , _tgiTransactItems          :: !(List1 TransactGetItem)
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data TransactGetItems = TransactGetItems'{_tgiReturnConsumedCapacity
+                                          :: !(Maybe ReturnConsumedCapacity),
+                                          _tgiTransactItems ::
+                                          !(List1 TransactGetItem)}
+                          deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'TransactGetItems' with the minimum fields required to make a request.
 --
@@ -77,12 +74,10 @@ data TransactGetItems =
 transactGetItems
     :: NonEmpty TransactGetItem -- ^ 'tgiTransactItems'
     -> TransactGetItems
-transactGetItems pTransactItems_ =
-  TransactGetItems'
-    { _tgiReturnConsumedCapacity = Nothing
-    , _tgiTransactItems = _List1 # pTransactItems_
-    }
-
+transactGetItems pTransactItems_
+  = TransactGetItems'{_tgiReturnConsumedCapacity =
+                        Nothing,
+                      _tgiTransactItems = _List1 # pTransactItems_}
 
 -- | A value of @TOTAL@ causes consumed capacity information to be returned, and a value of @NONE@ prevents that information from being returned. No other value is valid.
 tgiReturnConsumedCapacity :: Lens' TransactGetItems (Maybe ReturnConsumedCapacity)
@@ -131,20 +126,25 @@ instance ToQuery TransactGetItems where
         toQuery = const mempty
 
 -- | /See:/ 'transactGetItemsResponse' smart constructor.
-data TransactGetItemsResponse =
-  TransactGetItemsResponse'
-    { _tgirsResponses        :: !(Maybe (List1 ItemResponse))
-    , _tgirsConsumedCapacity :: !(Maybe [ConsumedCapacity])
-    , _tgirsResponseStatus   :: !Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data TransactGetItemsResponse = TransactGetItemsResponse'{_tgirsResponses
+                                                          ::
+                                                          !(Maybe
+                                                              (List1
+                                                                 ItemResponse)),
+                                                          _tgirsConsumedCapacity
+                                                          ::
+                                                          !(Maybe
+                                                              [ConsumedCapacity]),
+                                                          _tgirsResponseStatus
+                                                          :: !Int}
+                                  deriving (Eq, Read, Show, Data, Typeable,
+                                            Generic)
 
 -- | Creates a value of 'TransactGetItemsResponse' with the minimum fields required to make a request.
 --
 -- Use one of the following lenses to modify other fields as desired:
 --
--- * 'tgirsResponses' - An ordered array of up to 25 @ItemResponse@ objects, each of which corresponds to the @TransactGetItem@ object in the same position in the /TransactItems/ array. Each @ItemResponse@ object contains a Map of the name-value pairs that are the projected attributes of the requested item. If a requested item could not be retrieved, the corresponding @ItemResponse@ object is Null, or if the requested item has no projected attributes, the corresponding @ItemResponse@ object is an empty Map.
+-- * 'tgirsResponses' - An ordered array of up to 25 @ItemResponse@ objects, each of which corresponds to the @TransactGetItem@ object in the same position in the /TransactItems/ array. Each @ItemResponse@ object contains a Map of the name-value pairs that are the projected attributes of the requested item. If a requested item could not be retrieved, the corresponding @ItemResponse@ object is Null, or if the requested item has no projected attributes, the corresponding @ItemResponse@ object is an empty Map. 
 --
 -- * 'tgirsConsumedCapacity' - If the /ReturnConsumedCapacity/ value was @TOTAL@ , this is an array of @ConsumedCapacity@ objects, one for each table addressed by @TransactGetItem@ objects in the /TransactItems/ parameter. These @ConsumedCapacity@ objects report the read-capacity units consumed by the @TransactGetItems@ call in that table.
 --
@@ -152,15 +152,13 @@ data TransactGetItemsResponse =
 transactGetItemsResponse
     :: Int -- ^ 'tgirsResponseStatus'
     -> TransactGetItemsResponse
-transactGetItemsResponse pResponseStatus_ =
-  TransactGetItemsResponse'
-    { _tgirsResponses = Nothing
-    , _tgirsConsumedCapacity = Nothing
-    , _tgirsResponseStatus = pResponseStatus_
-    }
+transactGetItemsResponse pResponseStatus_
+  = TransactGetItemsResponse'{_tgirsResponses =
+                                Nothing,
+                              _tgirsConsumedCapacity = Nothing,
+                              _tgirsResponseStatus = pResponseStatus_}
 
-
--- | An ordered array of up to 25 @ItemResponse@ objects, each of which corresponds to the @TransactGetItem@ object in the same position in the /TransactItems/ array. Each @ItemResponse@ object contains a Map of the name-value pairs that are the projected attributes of the requested item. If a requested item could not be retrieved, the corresponding @ItemResponse@ object is Null, or if the requested item has no projected attributes, the corresponding @ItemResponse@ object is an empty Map.
+-- | An ordered array of up to 25 @ItemResponse@ objects, each of which corresponds to the @TransactGetItem@ object in the same position in the /TransactItems/ array. Each @ItemResponse@ object contains a Map of the name-value pairs that are the projected attributes of the requested item. If a requested item could not be retrieved, the corresponding @ItemResponse@ object is Null, or if the requested item has no projected attributes, the corresponding @ItemResponse@ object is an empty Map. 
 tgirsResponses :: Lens' TransactGetItemsResponse (Maybe (NonEmpty ItemResponse))
 tgirsResponses = lens _tgirsResponses (\ s a -> s{_tgirsResponses = a}) . mapping _List1
 

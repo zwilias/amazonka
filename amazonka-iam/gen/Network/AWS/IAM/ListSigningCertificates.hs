@@ -48,7 +48,6 @@ module Network.AWS.IAM.ListSigningCertificates
     ) where
 
 import Network.AWS.IAM.Types
-import Network.AWS.IAM.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Pager
 import Network.AWS.Prelude
@@ -56,14 +55,14 @@ import Network.AWS.Request
 import Network.AWS.Response
 
 -- | /See:/ 'listSigningCertificates' smart constructor.
-data ListSigningCertificates =
-  ListSigningCertificates'
-    { _lUserName :: !(Maybe Text)
-    , _lMarker   :: !(Maybe Text)
-    , _lMaxItems :: !(Maybe Nat)
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data ListSigningCertificates = ListSigningCertificates'{_lUserName
+                                                        :: !(Maybe Text),
+                                                        _lMarker ::
+                                                        !(Maybe Text),
+                                                        _lMaxItems ::
+                                                        !(Maybe Nat)}
+                                 deriving (Eq, Read, Show, Data, Typeable,
+                                           Generic)
 
 -- | Creates a value of 'ListSigningCertificates' with the minimum fields required to make a request.
 --
@@ -76,10 +75,9 @@ data ListSigningCertificates =
 -- * 'lMaxItems' - (Optional) Use this only when paginating results to indicate the maximum number of items you want in the response. If additional items exist beyond the maximum you specify, the @IsTruncated@ response element is @true@ . If you do not include this parameter, it defaults to 100. Note that IAM might return fewer results, even when there are more results available. In that case, the @IsTruncated@ response element returns @true@ and @Marker@ contains a value to include in the subsequent call that tells the service where to continue from.
 listSigningCertificates
     :: ListSigningCertificates
-listSigningCertificates =
-  ListSigningCertificates'
-    {_lUserName = Nothing, _lMarker = Nothing, _lMaxItems = Nothing}
-
+listSigningCertificates
+  = ListSigningCertificates'{_lUserName = Nothing,
+                             _lMarker = Nothing, _lMaxItems = Nothing}
 
 -- | The name of the IAM user whose signing certificates you want to examine. This parameter allows (per its <http://wikipedia.org/wiki/regex regex pattern> ) a string of characters consisting of upper and lowercase alphanumeric characters with no spaces. You can also include any of the following characters: _+=,.@-
 lUserName :: Lens' ListSigningCertificates (Maybe Text)
@@ -132,20 +130,26 @@ instance ToQuery ListSigningCertificates where
                "UserName" =: _lUserName, "Marker" =: _lMarker,
                "MaxItems" =: _lMaxItems]
 
--- | Contains the response to a successful 'ListSigningCertificates' request.
+-- | Contains the response to a successful 'ListSigningCertificates' request. 
 --
 --
 --
 -- /See:/ 'listSigningCertificatesResponse' smart constructor.
-data ListSigningCertificatesResponse =
-  ListSigningCertificatesResponse'
-    { _lrsMarker         :: !(Maybe Text)
-    , _lrsIsTruncated    :: !(Maybe Bool)
-    , _lrsResponseStatus :: !Int
-    , _lrsCertificates   :: ![SigningCertificate]
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data ListSigningCertificatesResponse = ListSigningCertificatesResponse'{_lrsMarker
+                                                                        ::
+                                                                        !(Maybe
+                                                                            Text),
+                                                                        _lrsIsTruncated
+                                                                        ::
+                                                                        !(Maybe
+                                                                            Bool),
+                                                                        _lrsResponseStatus
+                                                                        :: !Int,
+                                                                        _lrsCertificates
+                                                                        ::
+                                                                        ![SigningCertificate]}
+                                         deriving (Eq, Read, Show, Data,
+                                                   Typeable, Generic)
 
 -- | Creates a value of 'ListSigningCertificatesResponse' with the minimum fields required to make a request.
 --
@@ -161,14 +165,12 @@ data ListSigningCertificatesResponse =
 listSigningCertificatesResponse
     :: Int -- ^ 'lrsResponseStatus'
     -> ListSigningCertificatesResponse
-listSigningCertificatesResponse pResponseStatus_ =
-  ListSigningCertificatesResponse'
-    { _lrsMarker = Nothing
-    , _lrsIsTruncated = Nothing
-    , _lrsResponseStatus = pResponseStatus_
-    , _lrsCertificates = mempty
-    }
-
+listSigningCertificatesResponse pResponseStatus_
+  = ListSigningCertificatesResponse'{_lrsMarker =
+                                       Nothing,
+                                     _lrsIsTruncated = Nothing,
+                                     _lrsResponseStatus = pResponseStatus_,
+                                     _lrsCertificates = mempty}
 
 -- | When @IsTruncated@ is @true@ , this element is present and contains the value to use for the @Marker@ parameter in a subsequent pagination request.
 lrsMarker :: Lens' ListSigningCertificatesResponse (Maybe Text)

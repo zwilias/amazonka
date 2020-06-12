@@ -42,22 +42,29 @@ module Network.AWS.Config.GetOrganizationConfigRuleDetailedStatus
     ) where
 
 import Network.AWS.Config.Types
-import Network.AWS.Config.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 
 -- | /See:/ 'getOrganizationConfigRuleDetailedStatus' smart constructor.
-data GetOrganizationConfigRuleDetailedStatus =
-  GetOrganizationConfigRuleDetailedStatus'
-    { _gocrdsFilters                    :: !(Maybe StatusDetailFilters)
-    , _gocrdsNextToken                  :: !(Maybe Text)
-    , _gocrdsLimit                      :: !(Maybe Nat)
-    , _gocrdsOrganizationConfigRuleName :: !Text
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data GetOrganizationConfigRuleDetailedStatus = GetOrganizationConfigRuleDetailedStatus'{_gocrdsFilters
+                                                                                        ::
+                                                                                        !(Maybe
+                                                                                            StatusDetailFilters),
+                                                                                        _gocrdsNextToken
+                                                                                        ::
+                                                                                        !(Maybe
+                                                                                            Text),
+                                                                                        _gocrdsLimit
+                                                                                        ::
+                                                                                        !(Maybe
+                                                                                            Nat),
+                                                                                        _gocrdsOrganizationConfigRuleName
+                                                                                        ::
+                                                                                        !Text}
+                                                 deriving (Eq, Read, Show, Data,
+                                                           Typeable, Generic)
 
 -- | Creates a value of 'GetOrganizationConfigRuleDetailedStatus' with the minimum fields required to make a request.
 --
@@ -65,7 +72,7 @@ data GetOrganizationConfigRuleDetailedStatus =
 --
 -- * 'gocrdsFilters' - A @StatusDetailFilters@ object.
 --
--- * 'gocrdsNextToken' - The @nextToken@ string returned on a previous page that you use to get the next page of results in a paginated response.
+-- * 'gocrdsNextToken' - The @nextToken@ string returned on a previous page that you use to get the next page of results in a paginated response. 
 --
 -- * 'gocrdsLimit' - The maximum number of @OrganizationConfigRuleDetailedStatus@ returned on each page. If you do not specify a number, AWS Config uses the default. The default is 100.
 --
@@ -73,20 +80,20 @@ data GetOrganizationConfigRuleDetailedStatus =
 getOrganizationConfigRuleDetailedStatus
     :: Text -- ^ 'gocrdsOrganizationConfigRuleName'
     -> GetOrganizationConfigRuleDetailedStatus
-getOrganizationConfigRuleDetailedStatus pOrganizationConfigRuleName_ =
-  GetOrganizationConfigRuleDetailedStatus'
-    { _gocrdsFilters = Nothing
-    , _gocrdsNextToken = Nothing
-    , _gocrdsLimit = Nothing
-    , _gocrdsOrganizationConfigRuleName = pOrganizationConfigRuleName_
-    }
-
+getOrganizationConfigRuleDetailedStatus
+  pOrganizationConfigRuleName_
+  = GetOrganizationConfigRuleDetailedStatus'{_gocrdsFilters
+                                               = Nothing,
+                                             _gocrdsNextToken = Nothing,
+                                             _gocrdsLimit = Nothing,
+                                             _gocrdsOrganizationConfigRuleName =
+                                               pOrganizationConfigRuleName_}
 
 -- | A @StatusDetailFilters@ object.
 gocrdsFilters :: Lens' GetOrganizationConfigRuleDetailedStatus (Maybe StatusDetailFilters)
 gocrdsFilters = lens _gocrdsFilters (\ s a -> s{_gocrdsFilters = a})
 
--- | The @nextToken@ string returned on a previous page that you use to get the next page of results in a paginated response.
+-- | The @nextToken@ string returned on a previous page that you use to get the next page of results in a paginated response. 
 gocrdsNextToken :: Lens' GetOrganizationConfigRuleDetailedStatus (Maybe Text)
 gocrdsNextToken = lens _gocrdsNextToken (\ s a -> s{_gocrdsNextToken = a})
 
@@ -157,14 +164,21 @@ instance ToQuery
         toQuery = const mempty
 
 -- | /See:/ 'getOrganizationConfigRuleDetailedStatusResponse' smart constructor.
-data GetOrganizationConfigRuleDetailedStatusResponse =
-  GetOrganizationConfigRuleDetailedStatusResponse'
-    { _gocrdsrsOrganizationConfigRuleDetailedStatus :: !(Maybe [MemberAccountStatus])
-    , _gocrdsrsNextToken :: !(Maybe Text)
-    , _gocrdsrsResponseStatus :: !Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data GetOrganizationConfigRuleDetailedStatusResponse = GetOrganizationConfigRuleDetailedStatusResponse'{_gocrdsrsOrganizationConfigRuleDetailedStatus
+                                                                                                        ::
+                                                                                                        !(Maybe
+                                                                                                            [MemberAccountStatus]),
+                                                                                                        _gocrdsrsNextToken
+                                                                                                        ::
+                                                                                                        !(Maybe
+                                                                                                            Text),
+                                                                                                        _gocrdsrsResponseStatus
+                                                                                                        ::
+                                                                                                        !Int}
+                                                         deriving (Eq, Read,
+                                                                   Show, Data,
+                                                                   Typeable,
+                                                                   Generic)
 
 -- | Creates a value of 'GetOrganizationConfigRuleDetailedStatusResponse' with the minimum fields required to make a request.
 --
@@ -172,25 +186,26 @@ data GetOrganizationConfigRuleDetailedStatusResponse =
 --
 -- * 'gocrdsrsOrganizationConfigRuleDetailedStatus' - A list of @MemberAccountStatus@ objects.
 --
--- * 'gocrdsrsNextToken' - The @nextToken@ string returned on a previous page that you use to get the next page of results in a paginated response.
+-- * 'gocrdsrsNextToken' - The @nextToken@ string returned on a previous page that you use to get the next page of results in a paginated response. 
 --
 -- * 'gocrdsrsResponseStatus' - -- | The response status code.
 getOrganizationConfigRuleDetailedStatusResponse
     :: Int -- ^ 'gocrdsrsResponseStatus'
     -> GetOrganizationConfigRuleDetailedStatusResponse
-getOrganizationConfigRuleDetailedStatusResponse pResponseStatus_ =
-  GetOrganizationConfigRuleDetailedStatusResponse'
-    { _gocrdsrsOrganizationConfigRuleDetailedStatus = Nothing
-    , _gocrdsrsNextToken = Nothing
-    , _gocrdsrsResponseStatus = pResponseStatus_
-    }
-
+getOrganizationConfigRuleDetailedStatusResponse
+  pResponseStatus_
+  = GetOrganizationConfigRuleDetailedStatusResponse'{_gocrdsrsOrganizationConfigRuleDetailedStatus
+                                                       = Nothing,
+                                                     _gocrdsrsNextToken =
+                                                       Nothing,
+                                                     _gocrdsrsResponseStatus =
+                                                       pResponseStatus_}
 
 -- | A list of @MemberAccountStatus@ objects.
 gocrdsrsOrganizationConfigRuleDetailedStatus :: Lens' GetOrganizationConfigRuleDetailedStatusResponse [MemberAccountStatus]
 gocrdsrsOrganizationConfigRuleDetailedStatus = lens _gocrdsrsOrganizationConfigRuleDetailedStatus (\ s a -> s{_gocrdsrsOrganizationConfigRuleDetailedStatus = a}) . _Default . _Coerce
 
--- | The @nextToken@ string returned on a previous page that you use to get the next page of results in a paginated response.
+-- | The @nextToken@ string returned on a previous page that you use to get the next page of results in a paginated response. 
 gocrdsrsNextToken :: Lens' GetOrganizationConfigRuleDetailedStatusResponse (Maybe Text)
 gocrdsrsNextToken = lens _gocrdsrsNextToken (\ s a -> s{_gocrdsrsNextToken = a})
 

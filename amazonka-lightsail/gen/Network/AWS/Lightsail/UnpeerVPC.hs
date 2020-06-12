@@ -37,23 +37,19 @@ module Network.AWS.Lightsail.UnpeerVPC
 
 import Network.AWS.Lens
 import Network.AWS.Lightsail.Types
-import Network.AWS.Lightsail.Types.Product
 import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 
 -- | /See:/ 'unpeerVPC' smart constructor.
-data UnpeerVPC =
-  UnpeerVPC'
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data UnpeerVPC = UnpeerVPC'
+                   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'UnpeerVPC' with the minimum fields required to make a request.
 --
 unpeerVPC
     :: UnpeerVPC
 unpeerVPC = UnpeerVPC'
-
 
 instance AWSRequest UnpeerVPC where
         type Rs UnpeerVPC = UnpeerVPCResponse
@@ -87,13 +83,10 @@ instance ToQuery UnpeerVPC where
         toQuery = const mempty
 
 -- | /See:/ 'unpeerVPCResponse' smart constructor.
-data UnpeerVPCResponse =
-  UnpeerVPCResponse'
-    { _uvrsOperation      :: !(Maybe Operation)
-    , _uvrsResponseStatus :: !Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data UnpeerVPCResponse = UnpeerVPCResponse'{_uvrsOperation
+                                            :: !(Maybe Operation),
+                                            _uvrsResponseStatus :: !Int}
+                           deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'UnpeerVPCResponse' with the minimum fields required to make a request.
 --
@@ -105,10 +98,9 @@ data UnpeerVPCResponse =
 unpeerVPCResponse
     :: Int -- ^ 'uvrsResponseStatus'
     -> UnpeerVPCResponse
-unpeerVPCResponse pResponseStatus_ =
-  UnpeerVPCResponse'
-    {_uvrsOperation = Nothing, _uvrsResponseStatus = pResponseStatus_}
-
+unpeerVPCResponse pResponseStatus_
+  = UnpeerVPCResponse'{_uvrsOperation = Nothing,
+                       _uvrsResponseStatus = pResponseStatus_}
 
 -- | An array of key-value pairs containing information about the request operation.
 uvrsOperation :: Lens' UnpeerVPCResponse (Maybe Operation)

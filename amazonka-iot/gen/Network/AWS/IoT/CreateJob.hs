@@ -48,27 +48,23 @@ module Network.AWS.IoT.CreateJob
     ) where
 
 import Network.AWS.IoT.Types
-import Network.AWS.IoT.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 
 -- | /See:/ 'createJob' smart constructor.
-data CreateJob =
-  CreateJob'
-    { _cjJobExecutionsRolloutConfig :: !(Maybe JobExecutionsRolloutConfig)
-    , _cjDocumentSource             :: !(Maybe Text)
-    , _cjDocumentParameters         :: !(Maybe (Map Text Text))
-    , _cjPresignedURLConfig         :: !(Maybe PresignedURLConfig)
-    , _cjDocument                   :: !(Maybe Text)
-    , _cjDescription                :: !(Maybe Text)
-    , _cjTargetSelection            :: !(Maybe TargetSelection)
-    , _cjJobId                      :: !Text
-    , _cjTargets                    :: !(List1 Text)
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data CreateJob = CreateJob'{_cjJobExecutionsRolloutConfig
+                            :: !(Maybe JobExecutionsRolloutConfig),
+                            _cjDocumentSource :: !(Maybe Text),
+                            _cjDocumentParameters :: !(Maybe (Map Text Text)),
+                            _cjPresignedURLConfig ::
+                            !(Maybe PresignedURLConfig),
+                            _cjDocument :: !(Maybe Text),
+                            _cjDescription :: !(Maybe Text),
+                            _cjTargetSelection :: !(Maybe TargetSelection),
+                            _cjJobId :: !Text, _cjTargets :: !(List1 Text)}
+                   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'CreateJob' with the minimum fields required to make a request.
 --
@@ -95,19 +91,14 @@ createJob
     :: Text -- ^ 'cjJobId'
     -> NonEmpty Text -- ^ 'cjTargets'
     -> CreateJob
-createJob pJobId_ pTargets_ =
-  CreateJob'
-    { _cjJobExecutionsRolloutConfig = Nothing
-    , _cjDocumentSource = Nothing
-    , _cjDocumentParameters = Nothing
-    , _cjPresignedURLConfig = Nothing
-    , _cjDocument = Nothing
-    , _cjDescription = Nothing
-    , _cjTargetSelection = Nothing
-    , _cjJobId = pJobId_
-    , _cjTargets = _List1 # pTargets_
-    }
-
+createJob pJobId_ pTargets_
+  = CreateJob'{_cjJobExecutionsRolloutConfig = Nothing,
+               _cjDocumentSource = Nothing,
+               _cjDocumentParameters = Nothing,
+               _cjPresignedURLConfig = Nothing,
+               _cjDocument = Nothing, _cjDescription = Nothing,
+               _cjTargetSelection = Nothing, _cjJobId = pJobId_,
+               _cjTargets = _List1 # pTargets_}
 
 -- | Allows you to create a staged rollout of the job.
 cjJobExecutionsRolloutConfig :: Lens' CreateJob (Maybe JobExecutionsRolloutConfig)
@@ -185,15 +176,12 @@ instance ToQuery CreateJob where
         toQuery = const mempty
 
 -- | /See:/ 'createJobResponse' smart constructor.
-data CreateJobResponse =
-  CreateJobResponse'
-    { _cjrsJobId          :: !(Maybe Text)
-    , _cjrsJobARN         :: !(Maybe Text)
-    , _cjrsDescription    :: !(Maybe Text)
-    , _cjrsResponseStatus :: !Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data CreateJobResponse = CreateJobResponse'{_cjrsJobId
+                                            :: !(Maybe Text),
+                                            _cjrsJobARN :: !(Maybe Text),
+                                            _cjrsDescription :: !(Maybe Text),
+                                            _cjrsResponseStatus :: !Int}
+                           deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'CreateJobResponse' with the minimum fields required to make a request.
 --
@@ -209,14 +197,10 @@ data CreateJobResponse =
 createJobResponse
     :: Int -- ^ 'cjrsResponseStatus'
     -> CreateJobResponse
-createJobResponse pResponseStatus_ =
-  CreateJobResponse'
-    { _cjrsJobId = Nothing
-    , _cjrsJobARN = Nothing
-    , _cjrsDescription = Nothing
-    , _cjrsResponseStatus = pResponseStatus_
-    }
-
+createJobResponse pResponseStatus_
+  = CreateJobResponse'{_cjrsJobId = Nothing,
+                       _cjrsJobARN = Nothing, _cjrsDescription = Nothing,
+                       _cjrsResponseStatus = pResponseStatus_}
 
 -- | The unique identifier you assigned to this job.
 cjrsJobId :: Lens' CreateJobResponse (Maybe Text)

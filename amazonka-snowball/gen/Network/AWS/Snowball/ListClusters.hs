@@ -44,16 +44,12 @@ import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 import Network.AWS.Snowball.Types
-import Network.AWS.Snowball.Types.Product
 
 -- | /See:/ 'listClusters' smart constructor.
-data ListClusters =
-  ListClusters'
-    { _lcNextToken  :: !(Maybe Text)
-    , _lcMaxResults :: !(Maybe Nat)
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data ListClusters = ListClusters'{_lcNextToken ::
+                                  !(Maybe Text),
+                                  _lcMaxResults :: !(Maybe Nat)}
+                      deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'ListClusters' with the minimum fields required to make a request.
 --
@@ -64,8 +60,9 @@ data ListClusters =
 -- * 'lcMaxResults' - The number of @ClusterListEntry@ objects to return.
 listClusters
     :: ListClusters
-listClusters = ListClusters' {_lcNextToken = Nothing, _lcMaxResults = Nothing}
-
+listClusters
+  = ListClusters'{_lcNextToken = Nothing,
+                  _lcMaxResults = Nothing}
 
 -- | HTTP requests are stateless. To identify what object comes "next" in the list of @ClusterListEntry@ objects, you have the option of specifying @NextToken@ as the starting point for your returned list.
 lcNextToken :: Lens' ListClusters (Maybe Text)
@@ -114,14 +111,13 @@ instance ToQuery ListClusters where
         toQuery = const mempty
 
 -- | /See:/ 'listClustersResponse' smart constructor.
-data ListClustersResponse =
-  ListClustersResponse'
-    { _lcrsClusterListEntries :: !(Maybe [ClusterListEntry])
-    , _lcrsNextToken          :: !(Maybe Text)
-    , _lcrsResponseStatus     :: !Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data ListClustersResponse = ListClustersResponse'{_lcrsClusterListEntries
+                                                  ::
+                                                  !(Maybe [ClusterListEntry]),
+                                                  _lcrsNextToken ::
+                                                  !(Maybe Text),
+                                                  _lcrsResponseStatus :: !Int}
+                              deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'ListClustersResponse' with the minimum fields required to make a request.
 --
@@ -135,13 +131,11 @@ data ListClustersResponse =
 listClustersResponse
     :: Int -- ^ 'lcrsResponseStatus'
     -> ListClustersResponse
-listClustersResponse pResponseStatus_ =
-  ListClustersResponse'
-    { _lcrsClusterListEntries = Nothing
-    , _lcrsNextToken = Nothing
-    , _lcrsResponseStatus = pResponseStatus_
-    }
-
+listClustersResponse pResponseStatus_
+  = ListClustersResponse'{_lcrsClusterListEntries =
+                            Nothing,
+                          _lcrsNextToken = Nothing,
+                          _lcrsResponseStatus = pResponseStatus_}
 
 -- | Each @ClusterListEntry@ object contains a cluster's state, a cluster's ID, and other important status information.
 lcrsClusterListEntries :: Lens' ListClustersResponse [ClusterListEntry]

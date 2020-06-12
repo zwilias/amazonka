@@ -44,7 +44,6 @@ module Network.AWS.Config.DescribeRemediationExecutionStatus
     ) where
 
 import Network.AWS.Config.Types
-import Network.AWS.Config.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Pager
 import Network.AWS.Prelude
@@ -52,15 +51,24 @@ import Network.AWS.Request
 import Network.AWS.Response
 
 -- | /See:/ 'describeRemediationExecutionStatus' smart constructor.
-data DescribeRemediationExecutionStatus =
-  DescribeRemediationExecutionStatus'
-    { _dresNextToken      :: !(Maybe Text)
-    , _dresLimit          :: !(Maybe Nat)
-    , _dresResourceKeys   :: !(Maybe (List1 ResourceKey))
-    , _dresConfigRuleName :: !Text
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data DescribeRemediationExecutionStatus = DescribeRemediationExecutionStatus'{_dresNextToken
+                                                                              ::
+                                                                              !(Maybe
+                                                                                  Text),
+                                                                              _dresLimit
+                                                                              ::
+                                                                              !(Maybe
+                                                                                  Nat),
+                                                                              _dresResourceKeys
+                                                                              ::
+                                                                              !(Maybe
+                                                                                  (List1
+                                                                                     ResourceKey)),
+                                                                              _dresConfigRuleName
+                                                                              ::
+                                                                              !Text}
+                                            deriving (Eq, Read, Show, Data,
+                                                      Typeable, Generic)
 
 -- | Creates a value of 'DescribeRemediationExecutionStatus' with the minimum fields required to make a request.
 --
@@ -68,32 +76,30 @@ data DescribeRemediationExecutionStatus =
 --
 -- * 'dresNextToken' - The @nextToken@ string returned on a previous page that you use to get the next page of results in a paginated response.
 --
--- * 'dresLimit' - The maximum number of RemediationExecutionStatuses returned on each page. The default is maximum. If you specify 0, AWS Config uses the default.
+-- * 'dresLimit' - The maximum number of RemediationExecutionStatuses returned on each page. The default is maximum. If you specify 0, AWS Config uses the default. 
 --
--- * 'dresResourceKeys' - A list of resource keys to be processed with the current request. Each element in the list consists of the resource type and resource ID.
+-- * 'dresResourceKeys' - A list of resource keys to be processed with the current request. Each element in the list consists of the resource type and resource ID. 
 --
 -- * 'dresConfigRuleName' - A list of AWS Config rule names.
 describeRemediationExecutionStatus
     :: Text -- ^ 'dresConfigRuleName'
     -> DescribeRemediationExecutionStatus
-describeRemediationExecutionStatus pConfigRuleName_ =
-  DescribeRemediationExecutionStatus'
-    { _dresNextToken = Nothing
-    , _dresLimit = Nothing
-    , _dresResourceKeys = Nothing
-    , _dresConfigRuleName = pConfigRuleName_
-    }
-
+describeRemediationExecutionStatus pConfigRuleName_
+  = DescribeRemediationExecutionStatus'{_dresNextToken
+                                          = Nothing,
+                                        _dresLimit = Nothing,
+                                        _dresResourceKeys = Nothing,
+                                        _dresConfigRuleName = pConfigRuleName_}
 
 -- | The @nextToken@ string returned on a previous page that you use to get the next page of results in a paginated response.
 dresNextToken :: Lens' DescribeRemediationExecutionStatus (Maybe Text)
 dresNextToken = lens _dresNextToken (\ s a -> s{_dresNextToken = a})
 
--- | The maximum number of RemediationExecutionStatuses returned on each page. The default is maximum. If you specify 0, AWS Config uses the default.
+-- | The maximum number of RemediationExecutionStatuses returned on each page. The default is maximum. If you specify 0, AWS Config uses the default. 
 dresLimit :: Lens' DescribeRemediationExecutionStatus (Maybe Natural)
 dresLimit = lens _dresLimit (\ s a -> s{_dresLimit = a}) . mapping _Nat
 
--- | A list of resource keys to be processed with the current request. Each element in the list consists of the resource type and resource ID.
+-- | A list of resource keys to be processed with the current request. Each element in the list consists of the resource type and resource ID. 
 dresResourceKeys :: Lens' DescribeRemediationExecutionStatus (Maybe (NonEmpty ResourceKey))
 dresResourceKeys = lens _dresResourceKeys (\ s a -> s{_dresResourceKeys = a}) . mapping _List1
 
@@ -160,14 +166,20 @@ instance ToQuery DescribeRemediationExecutionStatus
         toQuery = const mempty
 
 -- | /See:/ 'describeRemediationExecutionStatusResponse' smart constructor.
-data DescribeRemediationExecutionStatusResponse =
-  DescribeRemediationExecutionStatusResponse'
-    { _dresrsRemediationExecutionStatuses :: !(Maybe [RemediationExecutionStatus])
-    , _dresrsNextToken :: !(Maybe Text)
-    , _dresrsResponseStatus :: !Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data DescribeRemediationExecutionStatusResponse = DescribeRemediationExecutionStatusResponse'{_dresrsRemediationExecutionStatuses
+                                                                                              ::
+                                                                                              !(Maybe
+                                                                                                  [RemediationExecutionStatus]),
+                                                                                              _dresrsNextToken
+                                                                                              ::
+                                                                                              !(Maybe
+                                                                                                  Text),
+                                                                                              _dresrsResponseStatus
+                                                                                              ::
+                                                                                              !Int}
+                                                    deriving (Eq, Read, Show,
+                                                              Data, Typeable,
+                                                              Generic)
 
 -- | Creates a value of 'DescribeRemediationExecutionStatusResponse' with the minimum fields required to make a request.
 --
@@ -181,13 +193,13 @@ data DescribeRemediationExecutionStatusResponse =
 describeRemediationExecutionStatusResponse
     :: Int -- ^ 'dresrsResponseStatus'
     -> DescribeRemediationExecutionStatusResponse
-describeRemediationExecutionStatusResponse pResponseStatus_ =
-  DescribeRemediationExecutionStatusResponse'
-    { _dresrsRemediationExecutionStatuses = Nothing
-    , _dresrsNextToken = Nothing
-    , _dresrsResponseStatus = pResponseStatus_
-    }
-
+describeRemediationExecutionStatusResponse
+  pResponseStatus_
+  = DescribeRemediationExecutionStatusResponse'{_dresrsRemediationExecutionStatuses
+                                                  = Nothing,
+                                                _dresrsNextToken = Nothing,
+                                                _dresrsResponseStatus =
+                                                  pResponseStatus_}
 
 -- | Returns a list of remediation execution statuses objects.
 dresrsRemediationExecutionStatuses :: Lens' DescribeRemediationExecutionStatusResponse [RemediationExecutionStatus]

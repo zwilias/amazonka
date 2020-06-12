@@ -35,24 +35,21 @@ module Network.AWS.IoT.ClearDefaultAuthorizer
     ) where
 
 import Network.AWS.IoT.Types
-import Network.AWS.IoT.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 
 -- | /See:/ 'clearDefaultAuthorizer' smart constructor.
-data ClearDefaultAuthorizer =
-  ClearDefaultAuthorizer'
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data ClearDefaultAuthorizer = ClearDefaultAuthorizer'
+                                deriving (Eq, Read, Show, Data, Typeable,
+                                          Generic)
 
 -- | Creates a value of 'ClearDefaultAuthorizer' with the minimum fields required to make a request.
 --
 clearDefaultAuthorizer
     :: ClearDefaultAuthorizer
 clearDefaultAuthorizer = ClearDefaultAuthorizer'
-
 
 instance AWSRequest ClearDefaultAuthorizer where
         type Rs ClearDefaultAuthorizer =
@@ -78,12 +75,10 @@ instance ToQuery ClearDefaultAuthorizer where
         toQuery = const mempty
 
 -- | /See:/ 'clearDefaultAuthorizerResponse' smart constructor.
-newtype ClearDefaultAuthorizerResponse =
-  ClearDefaultAuthorizerResponse'
-    { _cdarsResponseStatus :: Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+newtype ClearDefaultAuthorizerResponse = ClearDefaultAuthorizerResponse'{_cdarsResponseStatus
+                                                                         :: Int}
+                                           deriving (Eq, Read, Show, Data,
+                                                     Typeable, Generic)
 
 -- | Creates a value of 'ClearDefaultAuthorizerResponse' with the minimum fields required to make a request.
 --
@@ -93,9 +88,9 @@ newtype ClearDefaultAuthorizerResponse =
 clearDefaultAuthorizerResponse
     :: Int -- ^ 'cdarsResponseStatus'
     -> ClearDefaultAuthorizerResponse
-clearDefaultAuthorizerResponse pResponseStatus_ =
-  ClearDefaultAuthorizerResponse' {_cdarsResponseStatus = pResponseStatus_}
-
+clearDefaultAuthorizerResponse pResponseStatus_
+  = ClearDefaultAuthorizerResponse'{_cdarsResponseStatus
+                                      = pResponseStatus_}
 
 -- | -- | The response status code.
 cdarsResponseStatus :: Lens' ClearDefaultAuthorizerResponse Int

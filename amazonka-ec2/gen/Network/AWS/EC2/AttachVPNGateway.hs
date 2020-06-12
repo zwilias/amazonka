@@ -42,7 +42,6 @@ module Network.AWS.EC2.AttachVPNGateway
     ) where
 
 import Network.AWS.EC2.Types
-import Network.AWS.EC2.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.Request
@@ -53,14 +52,11 @@ import Network.AWS.Response
 --
 --
 -- /See:/ 'attachVPNGateway' smart constructor.
-data AttachVPNGateway =
-  AttachVPNGateway'
-    { _avgDryRun       :: !(Maybe Bool)
-    , _avgVPCId        :: !Text
-    , _avgVPNGatewayId :: !Text
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data AttachVPNGateway = AttachVPNGateway'{_avgDryRun
+                                          :: !(Maybe Bool),
+                                          _avgVPCId :: !Text,
+                                          _avgVPNGatewayId :: !Text}
+                          deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'AttachVPNGateway' with the minimum fields required to make a request.
 --
@@ -75,13 +71,10 @@ attachVPNGateway
     :: Text -- ^ 'avgVPCId'
     -> Text -- ^ 'avgVPNGatewayId'
     -> AttachVPNGateway
-attachVPNGateway pVPCId_ pVPNGatewayId_ =
-  AttachVPNGateway'
-    { _avgDryRun = Nothing
-    , _avgVPCId = pVPCId_
-    , _avgVPNGatewayId = pVPNGatewayId_
-    }
-
+attachVPNGateway pVPCId_ pVPNGatewayId_
+  = AttachVPNGateway'{_avgDryRun = Nothing,
+                      _avgVPCId = pVPCId_,
+                      _avgVPNGatewayId = pVPNGatewayId_}
 
 -- | Checks whether you have the required permissions for the action, without actually making the request, and provides an error response. If you have the required permissions, the error response is @DryRunOperation@ . Otherwise, it is @UnauthorizedOperation@ .
 avgDryRun :: Lens' AttachVPNGateway (Maybe Bool)
@@ -127,13 +120,14 @@ instance ToQuery AttachVPNGateway where
 --
 --
 -- /See:/ 'attachVPNGatewayResponse' smart constructor.
-data AttachVPNGatewayResponse =
-  AttachVPNGatewayResponse'
-    { _avgrsVPCAttachment  :: !(Maybe VPCAttachment)
-    , _avgrsResponseStatus :: !Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data AttachVPNGatewayResponse = AttachVPNGatewayResponse'{_avgrsVPCAttachment
+                                                          ::
+                                                          !(Maybe
+                                                              VPCAttachment),
+                                                          _avgrsResponseStatus
+                                                          :: !Int}
+                                  deriving (Eq, Read, Show, Data, Typeable,
+                                            Generic)
 
 -- | Creates a value of 'AttachVPNGatewayResponse' with the minimum fields required to make a request.
 --
@@ -145,10 +139,10 @@ data AttachVPNGatewayResponse =
 attachVPNGatewayResponse
     :: Int -- ^ 'avgrsResponseStatus'
     -> AttachVPNGatewayResponse
-attachVPNGatewayResponse pResponseStatus_ =
-  AttachVPNGatewayResponse'
-    {_avgrsVPCAttachment = Nothing, _avgrsResponseStatus = pResponseStatus_}
-
+attachVPNGatewayResponse pResponseStatus_
+  = AttachVPNGatewayResponse'{_avgrsVPCAttachment =
+                                Nothing,
+                              _avgrsResponseStatus = pResponseStatus_}
 
 -- | Information about the attachment.
 avgrsVPCAttachment :: Lens' AttachVPNGatewayResponse (Maybe VPCAttachment)

@@ -36,24 +36,20 @@ module Network.AWS.FMS.GetAdminAccount
     ) where
 
 import Network.AWS.FMS.Types
-import Network.AWS.FMS.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 
 -- | /See:/ 'getAdminAccount' smart constructor.
-data GetAdminAccount =
-  GetAdminAccount'
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data GetAdminAccount = GetAdminAccount'
+                         deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'GetAdminAccount' with the minimum fields required to make a request.
 --
 getAdminAccount
     :: GetAdminAccount
 getAdminAccount = GetAdminAccount'
-
 
 instance AWSRequest GetAdminAccount where
         type Rs GetAdminAccount = GetAdminAccountResponse
@@ -87,13 +83,12 @@ instance ToQuery GetAdminAccount where
         toQuery = const mempty
 
 -- | /See:/ 'getAdminAccountResponse' smart constructor.
-data GetAdminAccountResponse =
-  GetAdminAccountResponse'
-    { _gaarsAdminAccount   :: !(Maybe Text)
-    , _gaarsResponseStatus :: !Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data GetAdminAccountResponse = GetAdminAccountResponse'{_gaarsAdminAccount
+                                                        :: !(Maybe Text),
+                                                        _gaarsResponseStatus ::
+                                                        !Int}
+                                 deriving (Eq, Read, Show, Data, Typeable,
+                                           Generic)
 
 -- | Creates a value of 'GetAdminAccountResponse' with the minimum fields required to make a request.
 --
@@ -105,10 +100,10 @@ data GetAdminAccountResponse =
 getAdminAccountResponse
     :: Int -- ^ 'gaarsResponseStatus'
     -> GetAdminAccountResponse
-getAdminAccountResponse pResponseStatus_ =
-  GetAdminAccountResponse'
-    {_gaarsAdminAccount = Nothing, _gaarsResponseStatus = pResponseStatus_}
-
+getAdminAccountResponse pResponseStatus_
+  = GetAdminAccountResponse'{_gaarsAdminAccount =
+                               Nothing,
+                             _gaarsResponseStatus = pResponseStatus_}
 
 -- | The AWS account that is set as the AWS Firewall Manager administrator.
 gaarsAdminAccount :: Lens' GetAdminAccountResponse (Maybe Text)

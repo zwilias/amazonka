@@ -42,7 +42,6 @@ module Network.AWS.DeviceFarm.ListTests
     ) where
 
 import Network.AWS.DeviceFarm.Types
-import Network.AWS.DeviceFarm.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Pager
 import Network.AWS.Prelude
@@ -54,13 +53,10 @@ import Network.AWS.Response
 --
 --
 -- /See:/ 'listTests' smart constructor.
-data ListTests =
-  ListTests'
-    { _ltNextToken :: !(Maybe Text)
-    , _ltArn       :: !Text
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data ListTests = ListTests'{_ltNextToken ::
+                            !(Maybe Text),
+                            _ltArn :: !Text}
+                   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'ListTests' with the minimum fields required to make a request.
 --
@@ -72,8 +68,8 @@ data ListTests =
 listTests
     :: Text -- ^ 'ltArn'
     -> ListTests
-listTests pArn_ = ListTests' {_ltNextToken = Nothing, _ltArn = pArn_}
-
+listTests pArn_
+  = ListTests'{_ltNextToken = Nothing, _ltArn = pArn_}
 
 -- | An identifier that was returned from the previous call to this operation, which can be used to return the next set of items in the list.
 ltNextToken :: Lens' ListTests (Maybe Text)
@@ -131,14 +127,11 @@ instance ToQuery ListTests where
 --
 --
 -- /See:/ 'listTestsResponse' smart constructor.
-data ListTestsResponse =
-  ListTestsResponse'
-    { _ltrsTests          :: !(Maybe [Test])
-    , _ltrsNextToken      :: !(Maybe Text)
-    , _ltrsResponseStatus :: !Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data ListTestsResponse = ListTestsResponse'{_ltrsTests
+                                            :: !(Maybe [Test]),
+                                            _ltrsNextToken :: !(Maybe Text),
+                                            _ltrsResponseStatus :: !Int}
+                           deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'ListTestsResponse' with the minimum fields required to make a request.
 --
@@ -152,13 +145,10 @@ data ListTestsResponse =
 listTestsResponse
     :: Int -- ^ 'ltrsResponseStatus'
     -> ListTestsResponse
-listTestsResponse pResponseStatus_ =
-  ListTestsResponse'
-    { _ltrsTests = Nothing
-    , _ltrsNextToken = Nothing
-    , _ltrsResponseStatus = pResponseStatus_
-    }
-
+listTestsResponse pResponseStatus_
+  = ListTestsResponse'{_ltrsTests = Nothing,
+                       _ltrsNextToken = Nothing,
+                       _ltrsResponseStatus = pResponseStatus_}
 
 -- | Information about the tests.
 ltrsTests :: Lens' ListTestsResponse [Test]

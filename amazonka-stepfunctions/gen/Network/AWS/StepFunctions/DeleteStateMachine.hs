@@ -41,15 +41,12 @@ import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 import Network.AWS.StepFunctions.Types
-import Network.AWS.StepFunctions.Types.Product
 
 -- | /See:/ 'deleteStateMachine' smart constructor.
-newtype DeleteStateMachine =
-  DeleteStateMachine'
-    { _dStateMachineARN :: Text
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+newtype DeleteStateMachine = DeleteStateMachine'{_dStateMachineARN
+                                                 :: Text}
+                               deriving (Eq, Read, Show, Data, Typeable,
+                                         Generic)
 
 -- | Creates a value of 'DeleteStateMachine' with the minimum fields required to make a request.
 --
@@ -59,9 +56,9 @@ newtype DeleteStateMachine =
 deleteStateMachine
     :: Text -- ^ 'dStateMachineARN'
     -> DeleteStateMachine
-deleteStateMachine pStateMachineARN_ =
-  DeleteStateMachine' {_dStateMachineARN = pStateMachineARN_}
-
+deleteStateMachine pStateMachineARN_
+  = DeleteStateMachine'{_dStateMachineARN =
+                          pStateMachineARN_}
 
 -- | The Amazon Resource Name (ARN) of the state machine to delete.
 dStateMachineARN :: Lens' DeleteStateMachine Text
@@ -103,12 +100,10 @@ instance ToQuery DeleteStateMachine where
         toQuery = const mempty
 
 -- | /See:/ 'deleteStateMachineResponse' smart constructor.
-newtype DeleteStateMachineResponse =
-  DeleteStateMachineResponse'
-    { _drsResponseStatus :: Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+newtype DeleteStateMachineResponse = DeleteStateMachineResponse'{_drsResponseStatus
+                                                                 :: Int}
+                                       deriving (Eq, Read, Show, Data, Typeable,
+                                                 Generic)
 
 -- | Creates a value of 'DeleteStateMachineResponse' with the minimum fields required to make a request.
 --
@@ -118,9 +113,9 @@ newtype DeleteStateMachineResponse =
 deleteStateMachineResponse
     :: Int -- ^ 'drsResponseStatus'
     -> DeleteStateMachineResponse
-deleteStateMachineResponse pResponseStatus_ =
-  DeleteStateMachineResponse' {_drsResponseStatus = pResponseStatus_}
-
+deleteStateMachineResponse pResponseStatus_
+  = DeleteStateMachineResponse'{_drsResponseStatus =
+                                  pResponseStatus_}
 
 -- | -- | The response status code.
 drsResponseStatus :: Lens' DeleteStateMachineResponse Int

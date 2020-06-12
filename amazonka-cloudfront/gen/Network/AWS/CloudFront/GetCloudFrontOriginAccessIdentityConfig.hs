@@ -18,7 +18,7 @@
 -- Stability   : auto-generated
 -- Portability : non-portable (GHC extensions)
 --
--- Get the configuration information about an origin access identity.
+-- Get the configuration information about an origin access identity. 
 --
 --
 module Network.AWS.CloudFront.GetCloudFrontOriginAccessIdentityConfig
@@ -39,7 +39,6 @@ module Network.AWS.CloudFront.GetCloudFrontOriginAccessIdentityConfig
     ) where
 
 import Network.AWS.CloudFront.Types
-import Network.AWS.CloudFront.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.Request
@@ -50,26 +49,26 @@ import Network.AWS.Response
 --
 --
 -- /See:/ 'getCloudFrontOriginAccessIdentityConfig' smart constructor.
-newtype GetCloudFrontOriginAccessIdentityConfig =
-  GetCloudFrontOriginAccessIdentityConfig'
-    { _gcfoaicId :: Text
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+newtype GetCloudFrontOriginAccessIdentityConfig = GetCloudFrontOriginAccessIdentityConfig'{_gcfoaicId
+                                                                                           ::
+                                                                                           Text}
+                                                    deriving (Eq, Read, Show,
+                                                              Data, Typeable,
+                                                              Generic)
 
 -- | Creates a value of 'GetCloudFrontOriginAccessIdentityConfig' with the minimum fields required to make a request.
 --
 -- Use one of the following lenses to modify other fields as desired:
 --
--- * 'gcfoaicId' - The identity's ID.
+-- * 'gcfoaicId' - The identity's ID. 
 getCloudFrontOriginAccessIdentityConfig
     :: Text -- ^ 'gcfoaicId'
     -> GetCloudFrontOriginAccessIdentityConfig
-getCloudFrontOriginAccessIdentityConfig pId_ =
-  GetCloudFrontOriginAccessIdentityConfig' {_gcfoaicId = pId_}
+getCloudFrontOriginAccessIdentityConfig pId_
+  = GetCloudFrontOriginAccessIdentityConfig'{_gcfoaicId
+                                               = pId_}
 
-
--- | The identity's ID.
+-- | The identity's ID. 
 gcfoaicId :: Lens' GetCloudFrontOriginAccessIdentityConfig Text
 gcfoaicId = lens _gcfoaicId (\ s a -> s{_gcfoaicId = a})
 
@@ -117,20 +116,27 @@ instance ToQuery
 --
 --
 -- /See:/ 'getCloudFrontOriginAccessIdentityConfigResponse' smart constructor.
-data GetCloudFrontOriginAccessIdentityConfigResponse =
-  GetCloudFrontOriginAccessIdentityConfigResponse'
-    { _gcfoaicrsCloudFrontOriginAccessIdentityConfig :: !(Maybe CloudFrontOriginAccessIdentityConfig)
-    , _gcfoaicrsETag :: !(Maybe Text)
-    , _gcfoaicrsResponseStatus :: !Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data GetCloudFrontOriginAccessIdentityConfigResponse = GetCloudFrontOriginAccessIdentityConfigResponse'{_gcfoaicrsCloudFrontOriginAccessIdentityConfig
+                                                                                                        ::
+                                                                                                        !(Maybe
+                                                                                                            CloudFrontOriginAccessIdentityConfig),
+                                                                                                        _gcfoaicrsETag
+                                                                                                        ::
+                                                                                                        !(Maybe
+                                                                                                            Text),
+                                                                                                        _gcfoaicrsResponseStatus
+                                                                                                        ::
+                                                                                                        !Int}
+                                                         deriving (Eq, Read,
+                                                                   Show, Data,
+                                                                   Typeable,
+                                                                   Generic)
 
 -- | Creates a value of 'GetCloudFrontOriginAccessIdentityConfigResponse' with the minimum fields required to make a request.
 --
 -- Use one of the following lenses to modify other fields as desired:
 --
--- * 'gcfoaicrsCloudFrontOriginAccessIdentityConfig' - The origin access identity's configuration information.
+-- * 'gcfoaicrsCloudFrontOriginAccessIdentityConfig' - The origin access identity's configuration information. 
 --
 -- * 'gcfoaicrsETag' - The current version of the configuration. For example: @E2QWRUHAPOMQZL@ .
 --
@@ -138,15 +144,15 @@ data GetCloudFrontOriginAccessIdentityConfigResponse =
 getCloudFrontOriginAccessIdentityConfigResponse
     :: Int -- ^ 'gcfoaicrsResponseStatus'
     -> GetCloudFrontOriginAccessIdentityConfigResponse
-getCloudFrontOriginAccessIdentityConfigResponse pResponseStatus_ =
-  GetCloudFrontOriginAccessIdentityConfigResponse'
-    { _gcfoaicrsCloudFrontOriginAccessIdentityConfig = Nothing
-    , _gcfoaicrsETag = Nothing
-    , _gcfoaicrsResponseStatus = pResponseStatus_
-    }
+getCloudFrontOriginAccessIdentityConfigResponse
+  pResponseStatus_
+  = GetCloudFrontOriginAccessIdentityConfigResponse'{_gcfoaicrsCloudFrontOriginAccessIdentityConfig
+                                                       = Nothing,
+                                                     _gcfoaicrsETag = Nothing,
+                                                     _gcfoaicrsResponseStatus =
+                                                       pResponseStatus_}
 
-
--- | The origin access identity's configuration information.
+-- | The origin access identity's configuration information. 
 gcfoaicrsCloudFrontOriginAccessIdentityConfig :: Lens' GetCloudFrontOriginAccessIdentityConfigResponse (Maybe CloudFrontOriginAccessIdentityConfig)
 gcfoaicrsCloudFrontOriginAccessIdentityConfig = lens _gcfoaicrsCloudFrontOriginAccessIdentityConfig (\ s a -> s{_gcfoaicrsCloudFrontOriginAccessIdentityConfig = a})
 

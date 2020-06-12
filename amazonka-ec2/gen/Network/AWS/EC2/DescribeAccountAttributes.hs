@@ -29,7 +29,7 @@
 --
 --     * @vpc-max-security-groups-per-interface@ : The maximum number of security groups that you can assign to a network interface.
 --
---     * @max-elastic-ips@ : The maximum number of Elastic IP addresses that you can allocate for use with EC2-Classic.
+--     * @max-elastic-ips@ : The maximum number of Elastic IP addresses that you can allocate for use with EC2-Classic. 
 --
 --     * @vpc-max-elastic-ips@ : The maximum number of Elastic IP addresses that you can allocate for use with EC2-VPC.
 --
@@ -53,20 +53,20 @@ module Network.AWS.EC2.DescribeAccountAttributes
     ) where
 
 import Network.AWS.EC2.Types
-import Network.AWS.EC2.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 
 -- | /See:/ 'describeAccountAttributes' smart constructor.
-data DescribeAccountAttributes =
-  DescribeAccountAttributes'
-    { _daaAttributeNames :: !(Maybe [AccountAttributeName])
-    , _daaDryRun         :: !(Maybe Bool)
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data DescribeAccountAttributes = DescribeAccountAttributes'{_daaAttributeNames
+                                                            ::
+                                                            !(Maybe
+                                                                [AccountAttributeName]),
+                                                            _daaDryRun ::
+                                                            !(Maybe Bool)}
+                                   deriving (Eq, Read, Show, Data, Typeable,
+                                             Generic)
 
 -- | Creates a value of 'DescribeAccountAttributes' with the minimum fields required to make a request.
 --
@@ -77,10 +77,10 @@ data DescribeAccountAttributes =
 -- * 'daaDryRun' - Checks whether you have the required permissions for the action, without actually making the request, and provides an error response. If you have the required permissions, the error response is @DryRunOperation@ . Otherwise, it is @UnauthorizedOperation@ .
 describeAccountAttributes
     :: DescribeAccountAttributes
-describeAccountAttributes =
-  DescribeAccountAttributes'
-    {_daaAttributeNames = Nothing, _daaDryRun = Nothing}
-
+describeAccountAttributes
+  = DescribeAccountAttributes'{_daaAttributeNames =
+                                 Nothing,
+                               _daaDryRun = Nothing}
 
 -- | The account attribute names.
 daaAttributeNames :: Lens' DescribeAccountAttributes [AccountAttributeName]
@@ -123,13 +123,15 @@ instance ToQuery DescribeAccountAttributes where
                "DryRun" =: _daaDryRun]
 
 -- | /See:/ 'describeAccountAttributesResponse' smart constructor.
-data DescribeAccountAttributesResponse =
-  DescribeAccountAttributesResponse'
-    { _daarsAccountAttributes :: !(Maybe [AccountAttribute])
-    , _daarsResponseStatus    :: !Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data DescribeAccountAttributesResponse = DescribeAccountAttributesResponse'{_daarsAccountAttributes
+                                                                            ::
+                                                                            !(Maybe
+                                                                                [AccountAttribute]),
+                                                                            _daarsResponseStatus
+                                                                            ::
+                                                                            !Int}
+                                           deriving (Eq, Read, Show, Data,
+                                                     Typeable, Generic)
 
 -- | Creates a value of 'DescribeAccountAttributesResponse' with the minimum fields required to make a request.
 --
@@ -141,10 +143,10 @@ data DescribeAccountAttributesResponse =
 describeAccountAttributesResponse
     :: Int -- ^ 'daarsResponseStatus'
     -> DescribeAccountAttributesResponse
-describeAccountAttributesResponse pResponseStatus_ =
-  DescribeAccountAttributesResponse'
-    {_daarsAccountAttributes = Nothing, _daarsResponseStatus = pResponseStatus_}
-
+describeAccountAttributesResponse pResponseStatus_
+  = DescribeAccountAttributesResponse'{_daarsAccountAttributes
+                                         = Nothing,
+                                       _daarsResponseStatus = pResponseStatus_}
 
 -- | Information about the account attributes.
 daarsAccountAttributes :: Lens' DescribeAccountAttributesResponse [AccountAttribute]

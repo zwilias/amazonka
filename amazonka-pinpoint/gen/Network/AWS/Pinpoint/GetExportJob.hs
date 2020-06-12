@@ -38,19 +38,15 @@ module Network.AWS.Pinpoint.GetExportJob
 
 import Network.AWS.Lens
 import Network.AWS.Pinpoint.Types
-import Network.AWS.Pinpoint.Types.Product
 import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 
 -- | /See:/ 'getExportJob' smart constructor.
-data GetExportJob =
-  GetExportJob'
-    { _gejApplicationId :: !Text
-    , _gejJobId         :: !Text
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data GetExportJob = GetExportJob'{_gejApplicationId
+                                  :: !Text,
+                                  _gejJobId :: !Text}
+                      deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'GetExportJob' with the minimum fields required to make a request.
 --
@@ -63,9 +59,9 @@ getExportJob
     :: Text -- ^ 'gejApplicationId'
     -> Text -- ^ 'gejJobId'
     -> GetExportJob
-getExportJob pApplicationId_ pJobId_ =
-  GetExportJob' {_gejApplicationId = pApplicationId_, _gejJobId = pJobId_}
-
+getExportJob pApplicationId_ pJobId_
+  = GetExportJob'{_gejApplicationId = pApplicationId_,
+                  _gejJobId = pJobId_}
 
 -- | Undocumented member.
 gejApplicationId :: Lens' GetExportJob Text
@@ -105,13 +101,11 @@ instance ToQuery GetExportJob where
         toQuery = const mempty
 
 -- | /See:/ 'getExportJobResponse' smart constructor.
-data GetExportJobResponse =
-  GetExportJobResponse'
-    { _getrsResponseStatus    :: !Int
-    , _getrsExportJobResponse :: !ExportJobResponse
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data GetExportJobResponse = GetExportJobResponse'{_getrsResponseStatus
+                                                  :: !Int,
+                                                  _getrsExportJobResponse ::
+                                                  !ExportJobResponse}
+                              deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'GetExportJobResponse' with the minimum fields required to make a request.
 --
@@ -124,12 +118,11 @@ getExportJobResponse
     :: Int -- ^ 'getrsResponseStatus'
     -> ExportJobResponse -- ^ 'getrsExportJobResponse'
     -> GetExportJobResponse
-getExportJobResponse pResponseStatus_ pExportJobResponse_ =
-  GetExportJobResponse'
-    { _getrsResponseStatus = pResponseStatus_
-    , _getrsExportJobResponse = pExportJobResponse_
-    }
-
+getExportJobResponse pResponseStatus_
+  pExportJobResponse_
+  = GetExportJobResponse'{_getrsResponseStatus =
+                            pResponseStatus_,
+                          _getrsExportJobResponse = pExportJobResponse_}
 
 -- | -- | The response status code.
 getrsResponseStatus :: Lens' GetExportJobResponse Int

@@ -38,19 +38,16 @@ module Network.AWS.Pinpoint.UpdateSmsChannel
 
 import Network.AWS.Lens
 import Network.AWS.Pinpoint.Types
-import Network.AWS.Pinpoint.Types.Product
 import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 
 -- | /See:/ 'updateSmsChannel' smart constructor.
-data UpdateSmsChannel =
-  UpdateSmsChannel'
-    { _uscApplicationId     :: !Text
-    , _uscSMSChannelRequest :: !SMSChannelRequest
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data UpdateSmsChannel = UpdateSmsChannel'{_uscApplicationId
+                                          :: !Text,
+                                          _uscSMSChannelRequest ::
+                                          !SMSChannelRequest}
+                          deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'UpdateSmsChannel' with the minimum fields required to make a request.
 --
@@ -63,12 +60,10 @@ updateSmsChannel
     :: Text -- ^ 'uscApplicationId'
     -> SMSChannelRequest -- ^ 'uscSMSChannelRequest'
     -> UpdateSmsChannel
-updateSmsChannel pApplicationId_ pSMSChannelRequest_ =
-  UpdateSmsChannel'
-    { _uscApplicationId = pApplicationId_
-    , _uscSMSChannelRequest = pSMSChannelRequest_
-    }
-
+updateSmsChannel pApplicationId_ pSMSChannelRequest_
+  = UpdateSmsChannel'{_uscApplicationId =
+                        pApplicationId_,
+                      _uscSMSChannelRequest = pSMSChannelRequest_}
 
 -- | Undocumented member.
 uscApplicationId :: Lens' UpdateSmsChannel Text
@@ -115,13 +110,13 @@ instance ToQuery UpdateSmsChannel where
         toQuery = const mempty
 
 -- | /See:/ 'updateSmsChannelResponse' smart constructor.
-data UpdateSmsChannelResponse =
-  UpdateSmsChannelResponse'
-    { _uscrsResponseStatus     :: !Int
-    , _uscrsSMSChannelResponse :: !SMSChannelResponse
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data UpdateSmsChannelResponse = UpdateSmsChannelResponse'{_uscrsResponseStatus
+                                                          :: !Int,
+                                                          _uscrsSMSChannelResponse
+                                                          ::
+                                                          !SMSChannelResponse}
+                                  deriving (Eq, Read, Show, Data, Typeable,
+                                            Generic)
 
 -- | Creates a value of 'UpdateSmsChannelResponse' with the minimum fields required to make a request.
 --
@@ -134,12 +129,11 @@ updateSmsChannelResponse
     :: Int -- ^ 'uscrsResponseStatus'
     -> SMSChannelResponse -- ^ 'uscrsSMSChannelResponse'
     -> UpdateSmsChannelResponse
-updateSmsChannelResponse pResponseStatus_ pSMSChannelResponse_ =
-  UpdateSmsChannelResponse'
-    { _uscrsResponseStatus = pResponseStatus_
-    , _uscrsSMSChannelResponse = pSMSChannelResponse_
-    }
-
+updateSmsChannelResponse pResponseStatus_
+  pSMSChannelResponse_
+  = UpdateSmsChannelResponse'{_uscrsResponseStatus =
+                                pResponseStatus_,
+                              _uscrsSMSChannelResponse = pSMSChannelResponse_}
 
 -- | -- | The response status code.
 uscrsResponseStatus :: Lens' UpdateSmsChannelResponse Int

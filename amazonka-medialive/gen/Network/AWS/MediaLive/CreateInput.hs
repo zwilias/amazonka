@@ -42,7 +42,6 @@ module Network.AWS.MediaLive.CreateInput
 
 import Network.AWS.Lens
 import Network.AWS.MediaLive.Types
-import Network.AWS.MediaLive.Types.Product
 import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
@@ -50,17 +49,15 @@ import Network.AWS.Response
 -- | The name of the input
 --
 -- /See:/ 'createInput' smart constructor.
-data CreateInput =
-  CreateInput'
-    { _ciRequestId           :: !(Maybe Text)
-    , _ciSources             :: !(Maybe [InputSourceRequest])
-    , _ciInputSecurityGroups :: !(Maybe [Text])
-    , _ciDestinations        :: !(Maybe [InputDestinationRequest])
-    , _ciName                :: !(Maybe Text)
-    , _ciType                :: !(Maybe InputType)
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data CreateInput = CreateInput'{_ciRequestId ::
+                                !(Maybe Text),
+                                _ciSources :: !(Maybe [InputSourceRequest]),
+                                _ciInputSecurityGroups :: !(Maybe [Text]),
+                                _ciDestinations ::
+                                !(Maybe [InputDestinationRequest]),
+                                _ciName :: !(Maybe Text),
+                                _ciType :: !(Maybe InputType)}
+                     deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'CreateInput' with the minimum fields required to make a request.
 --
@@ -79,16 +76,12 @@ data CreateInput =
 -- * 'ciType' - Undocumented member.
 createInput
     :: CreateInput
-createInput =
-  CreateInput'
-    { _ciRequestId = Nothing
-    , _ciSources = Nothing
-    , _ciInputSecurityGroups = Nothing
-    , _ciDestinations = Nothing
-    , _ciName = Nothing
-    , _ciType = Nothing
-    }
-
+createInput
+  = CreateInput'{_ciRequestId = Nothing,
+                 _ciSources = Nothing,
+                 _ciInputSecurityGroups = Nothing,
+                 _ciDestinations = Nothing, _ciName = Nothing,
+                 _ciType = Nothing}
 
 -- | Unique identifier of the request to ensure the request is handled exactly once in case of retries.
 ciRequestId :: Lens' CreateInput (Maybe Text)
@@ -154,13 +147,10 @@ instance ToQuery CreateInput where
 -- | Placeholder documentation for CreateInputResponse
 --
 -- /See:/ 'createInputResponse' smart constructor.
-data CreateInputResponse =
-  CreateInputResponse'
-    { _cirsInput          :: !(Maybe Input)
-    , _cirsResponseStatus :: !Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data CreateInputResponse = CreateInputResponse'{_cirsInput
+                                                :: !(Maybe Input),
+                                                _cirsResponseStatus :: !Int}
+                             deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'CreateInputResponse' with the minimum fields required to make a request.
 --
@@ -172,10 +162,9 @@ data CreateInputResponse =
 createInputResponse
     :: Int -- ^ 'cirsResponseStatus'
     -> CreateInputResponse
-createInputResponse pResponseStatus_ =
-  CreateInputResponse'
-    {_cirsInput = Nothing, _cirsResponseStatus = pResponseStatus_}
-
+createInputResponse pResponseStatus_
+  = CreateInputResponse'{_cirsInput = Nothing,
+                         _cirsResponseStatus = pResponseStatus_}
 
 -- | Undocumented member.
 cirsInput :: Lens' CreateInputResponse (Maybe Input)

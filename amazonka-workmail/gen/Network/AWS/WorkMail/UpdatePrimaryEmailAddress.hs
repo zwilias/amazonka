@@ -43,17 +43,15 @@ import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 import Network.AWS.WorkMail.Types
-import Network.AWS.WorkMail.Types.Product
 
 -- | /See:/ 'updatePrimaryEmailAddress' smart constructor.
-data UpdatePrimaryEmailAddress =
-  UpdatePrimaryEmailAddress'
-    { _upeaOrganizationId :: !Text
-    , _upeaEntityId       :: !Text
-    , _upeaEmail          :: !Text
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data UpdatePrimaryEmailAddress = UpdatePrimaryEmailAddress'{_upeaOrganizationId
+                                                            :: !Text,
+                                                            _upeaEntityId ::
+                                                            !Text,
+                                                            _upeaEmail :: !Text}
+                                   deriving (Eq, Read, Show, Data, Typeable,
+                                             Generic)
 
 -- | Creates a value of 'UpdatePrimaryEmailAddress' with the minimum fields required to make a request.
 --
@@ -69,13 +67,11 @@ updatePrimaryEmailAddress
     -> Text -- ^ 'upeaEntityId'
     -> Text -- ^ 'upeaEmail'
     -> UpdatePrimaryEmailAddress
-updatePrimaryEmailAddress pOrganizationId_ pEntityId_ pEmail_ =
-  UpdatePrimaryEmailAddress'
-    { _upeaOrganizationId = pOrganizationId_
-    , _upeaEntityId = pEntityId_
-    , _upeaEmail = pEmail_
-    }
-
+updatePrimaryEmailAddress pOrganizationId_ pEntityId_
+  pEmail_
+  = UpdatePrimaryEmailAddress'{_upeaOrganizationId =
+                                 pOrganizationId_,
+                               _upeaEntityId = pEntityId_, _upeaEmail = pEmail_}
 
 -- | The organization that contains the entity to update.
 upeaOrganizationId :: Lens' UpdatePrimaryEmailAddress Text
@@ -128,12 +124,11 @@ instance ToQuery UpdatePrimaryEmailAddress where
         toQuery = const mempty
 
 -- | /See:/ 'updatePrimaryEmailAddressResponse' smart constructor.
-newtype UpdatePrimaryEmailAddressResponse =
-  UpdatePrimaryEmailAddressResponse'
-    { _upearsResponseStatus :: Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+newtype UpdatePrimaryEmailAddressResponse = UpdatePrimaryEmailAddressResponse'{_upearsResponseStatus
+                                                                               ::
+                                                                               Int}
+                                              deriving (Eq, Read, Show, Data,
+                                                        Typeable, Generic)
 
 -- | Creates a value of 'UpdatePrimaryEmailAddressResponse' with the minimum fields required to make a request.
 --
@@ -143,9 +138,9 @@ newtype UpdatePrimaryEmailAddressResponse =
 updatePrimaryEmailAddressResponse
     :: Int -- ^ 'upearsResponseStatus'
     -> UpdatePrimaryEmailAddressResponse
-updatePrimaryEmailAddressResponse pResponseStatus_ =
-  UpdatePrimaryEmailAddressResponse' {_upearsResponseStatus = pResponseStatus_}
-
+updatePrimaryEmailAddressResponse pResponseStatus_
+  = UpdatePrimaryEmailAddressResponse'{_upearsResponseStatus
+                                         = pResponseStatus_}
 
 -- | -- | The response status code.
 upearsResponseStatus :: Lens' UpdatePrimaryEmailAddressResponse Int

@@ -44,55 +44,55 @@ module Network.AWS.Athena
     -- * Operations
     -- $operations
 
-    -- ** DeleteWorkGroup
+    -- ** DeleteWorkGroup 
     , module Network.AWS.Athena.DeleteWorkGroup
 
-    -- ** UpdateWorkGroup
+    -- ** UpdateWorkGroup 
     , module Network.AWS.Athena.UpdateWorkGroup
 
-    -- ** GetNamedQuery
+    -- ** GetNamedQuery 
     , module Network.AWS.Athena.GetNamedQuery
 
-    -- ** ListTagsForResource
+    -- ** ListTagsForResource 
     , module Network.AWS.Athena.ListTagsForResource
 
-    -- ** CreateNamedQuery
+    -- ** CreateNamedQuery 
     , module Network.AWS.Athena.CreateNamedQuery
 
     -- ** ListNamedQueries (Paginated)
     , module Network.AWS.Athena.ListNamedQueries
 
-    -- ** DeleteNamedQuery
+    -- ** DeleteNamedQuery 
     , module Network.AWS.Athena.DeleteNamedQuery
 
-    -- ** StartQueryExecution
+    -- ** StartQueryExecution 
     , module Network.AWS.Athena.StartQueryExecution
 
-    -- ** BatchGetNamedQuery
+    -- ** BatchGetNamedQuery 
     , module Network.AWS.Athena.BatchGetNamedQuery
 
-    -- ** GetQueryExecution
+    -- ** GetQueryExecution 
     , module Network.AWS.Athena.GetQueryExecution
 
-    -- ** ListWorkGroups
+    -- ** ListWorkGroups 
     , module Network.AWS.Athena.ListWorkGroups
 
-    -- ** CreateWorkGroup
+    -- ** CreateWorkGroup 
     , module Network.AWS.Athena.CreateWorkGroup
 
-    -- ** BatchGetQueryExecution
+    -- ** BatchGetQueryExecution 
     , module Network.AWS.Athena.BatchGetQueryExecution
 
-    -- ** StopQueryExecution
+    -- ** StopQueryExecution 
     , module Network.AWS.Athena.StopQueryExecution
 
-    -- ** TagResource
+    -- ** TagResource 
     , module Network.AWS.Athena.TagResource
 
-    -- ** GetWorkGroup
+    -- ** GetWorkGroup 
     , module Network.AWS.Athena.GetWorkGroup
 
-    -- ** UntagResource
+    -- ** UntagResource 
     , module Network.AWS.Athena.UntagResource
 
     -- ** GetQueryResults (Paginated)

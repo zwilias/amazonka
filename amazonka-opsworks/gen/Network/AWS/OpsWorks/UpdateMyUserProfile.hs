@@ -38,18 +38,15 @@ module Network.AWS.OpsWorks.UpdateMyUserProfile
 
 import Network.AWS.Lens
 import Network.AWS.OpsWorks.Types
-import Network.AWS.OpsWorks.Types.Product
 import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 
 -- | /See:/ 'updateMyUserProfile' smart constructor.
-newtype UpdateMyUserProfile =
-  UpdateMyUserProfile'
-    { _umupSSHPublicKey :: Maybe Text
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+newtype UpdateMyUserProfile = UpdateMyUserProfile'{_umupSSHPublicKey
+                                                   :: Maybe Text}
+                                deriving (Eq, Read, Show, Data, Typeable,
+                                          Generic)
 
 -- | Creates a value of 'UpdateMyUserProfile' with the minimum fields required to make a request.
 --
@@ -58,8 +55,8 @@ newtype UpdateMyUserProfile =
 -- * 'umupSSHPublicKey' - The user's SSH public key.
 updateMyUserProfile
     :: UpdateMyUserProfile
-updateMyUserProfile = UpdateMyUserProfile' {_umupSSHPublicKey = Nothing}
-
+updateMyUserProfile
+  = UpdateMyUserProfile'{_umupSSHPublicKey = Nothing}
 
 -- | The user's SSH public key.
 umupSSHPublicKey :: Lens' UpdateMyUserProfile (Maybe Text)
@@ -98,16 +95,15 @@ instance ToQuery UpdateMyUserProfile where
         toQuery = const mempty
 
 -- | /See:/ 'updateMyUserProfileResponse' smart constructor.
-data UpdateMyUserProfileResponse =
-  UpdateMyUserProfileResponse'
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data UpdateMyUserProfileResponse = UpdateMyUserProfileResponse'
+                                     deriving (Eq, Read, Show, Data, Typeable,
+                                               Generic)
 
 -- | Creates a value of 'UpdateMyUserProfileResponse' with the minimum fields required to make a request.
 --
 updateMyUserProfileResponse
     :: UpdateMyUserProfileResponse
-updateMyUserProfileResponse = UpdateMyUserProfileResponse'
-
+updateMyUserProfileResponse
+  = UpdateMyUserProfileResponse'
 
 instance NFData UpdateMyUserProfileResponse where

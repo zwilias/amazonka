@@ -40,15 +40,12 @@ import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 import Network.AWS.S3.Types
-import Network.AWS.S3.Types.Product
 
 -- | /See:/ 'getBucketReplication' smart constructor.
-newtype GetBucketReplication =
-  GetBucketReplication'
-    { _gbrBucket :: BucketName
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+newtype GetBucketReplication = GetBucketReplication'{_gbrBucket
+                                                     :: BucketName}
+                                 deriving (Eq, Read, Show, Data, Typeable,
+                                           Generic)
 
 -- | Creates a value of 'GetBucketReplication' with the minimum fields required to make a request.
 --
@@ -58,8 +55,8 @@ newtype GetBucketReplication =
 getBucketReplication
     :: BucketName -- ^ 'gbrBucket'
     -> GetBucketReplication
-getBucketReplication pBucket_ = GetBucketReplication' {_gbrBucket = pBucket_}
-
+getBucketReplication pBucket_
+  = GetBucketReplication'{_gbrBucket = pBucket_}
 
 -- | Undocumented member.
 gbrBucket :: Lens' GetBucketReplication BucketName
@@ -90,13 +87,14 @@ instance ToQuery GetBucketReplication where
         toQuery = const (mconcat ["replication"])
 
 -- | /See:/ 'getBucketReplicationResponse' smart constructor.
-data GetBucketReplicationResponse =
-  GetBucketReplicationResponse'
-    { _gbrrsReplicationConfiguration :: !(Maybe ReplicationConfiguration)
-    , _gbrrsResponseStatus           :: !Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data GetBucketReplicationResponse = GetBucketReplicationResponse'{_gbrrsReplicationConfiguration
+                                                                  ::
+                                                                  !(Maybe
+                                                                      ReplicationConfiguration),
+                                                                  _gbrrsResponseStatus
+                                                                  :: !Int}
+                                      deriving (Eq, Read, Show, Data, Typeable,
+                                                Generic)
 
 -- | Creates a value of 'GetBucketReplicationResponse' with the minimum fields required to make a request.
 --
@@ -108,12 +106,10 @@ data GetBucketReplicationResponse =
 getBucketReplicationResponse
     :: Int -- ^ 'gbrrsResponseStatus'
     -> GetBucketReplicationResponse
-getBucketReplicationResponse pResponseStatus_ =
-  GetBucketReplicationResponse'
-    { _gbrrsReplicationConfiguration = Nothing
-    , _gbrrsResponseStatus = pResponseStatus_
-    }
-
+getBucketReplicationResponse pResponseStatus_
+  = GetBucketReplicationResponse'{_gbrrsReplicationConfiguration
+                                    = Nothing,
+                                  _gbrrsResponseStatus = pResponseStatus_}
 
 -- | Undocumented member.
 gbrrsReplicationConfiguration :: Lens' GetBucketReplicationResponse (Maybe ReplicationConfiguration)

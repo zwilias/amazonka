@@ -25,7 +25,7 @@
 --
 -- Note that it can take up to 5 minutes for this operation to take effect.
 --
--- If you attempt to associate a CMK with a log group but the CMK does not exist or the CMK is disabled, you will receive an @InvalidParameterException@ error.
+-- If you attempt to associate a CMK with a log group but the CMK does not exist or the CMK is disabled, you will receive an @InvalidParameterException@ error. 
 --
 module Network.AWS.CloudWatchLogs.AssociateKMSKey
     (
@@ -42,20 +42,16 @@ module Network.AWS.CloudWatchLogs.AssociateKMSKey
     ) where
 
 import Network.AWS.CloudWatchLogs.Types
-import Network.AWS.CloudWatchLogs.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 
 -- | /See:/ 'associateKMSKey' smart constructor.
-data AssociateKMSKey =
-  AssociateKMSKey'
-    { _akkLogGroupName :: !Text
-    , _akkKmsKeyId     :: !Text
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data AssociateKMSKey = AssociateKMSKey'{_akkLogGroupName
+                                        :: !Text,
+                                        _akkKmsKeyId :: !Text}
+                         deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'AssociateKMSKey' with the minimum fields required to make a request.
 --
@@ -68,10 +64,9 @@ associateKMSKey
     :: Text -- ^ 'akkLogGroupName'
     -> Text -- ^ 'akkKmsKeyId'
     -> AssociateKMSKey
-associateKMSKey pLogGroupName_ pKmsKeyId_ =
-  AssociateKMSKey'
-    {_akkLogGroupName = pLogGroupName_, _akkKmsKeyId = pKmsKeyId_}
-
+associateKMSKey pLogGroupName_ pKmsKeyId_
+  = AssociateKMSKey'{_akkLogGroupName = pLogGroupName_,
+                     _akkKmsKeyId = pKmsKeyId_}
 
 -- | The name of the log group.
 akkLogGroupName :: Lens' AssociateKMSKey Text
@@ -113,16 +108,14 @@ instance ToQuery AssociateKMSKey where
         toQuery = const mempty
 
 -- | /See:/ 'associateKMSKeyResponse' smart constructor.
-data AssociateKMSKeyResponse =
-  AssociateKMSKeyResponse'
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data AssociateKMSKeyResponse = AssociateKMSKeyResponse'
+                                 deriving (Eq, Read, Show, Data, Typeable,
+                                           Generic)
 
 -- | Creates a value of 'AssociateKMSKeyResponse' with the minimum fields required to make a request.
 --
 associateKMSKeyResponse
     :: AssociateKMSKeyResponse
 associateKMSKeyResponse = AssociateKMSKeyResponse'
-
 
 instance NFData AssociateKMSKeyResponse where

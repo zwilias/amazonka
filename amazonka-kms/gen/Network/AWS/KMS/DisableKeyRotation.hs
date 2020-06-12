@@ -35,19 +35,16 @@ module Network.AWS.KMS.DisableKeyRotation
     ) where
 
 import Network.AWS.KMS.Types
-import Network.AWS.KMS.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 
 -- | /See:/ 'disableKeyRotation' smart constructor.
-newtype DisableKeyRotation =
-  DisableKeyRotation'
-    { _dkrKeyId :: Text
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+newtype DisableKeyRotation = DisableKeyRotation'{_dkrKeyId
+                                                 :: Text}
+                               deriving (Eq, Read, Show, Data, Typeable,
+                                         Generic)
 
 -- | Creates a value of 'DisableKeyRotation' with the minimum fields required to make a request.
 --
@@ -57,8 +54,8 @@ newtype DisableKeyRotation =
 disableKeyRotation
     :: Text -- ^ 'dkrKeyId'
     -> DisableKeyRotation
-disableKeyRotation pKeyId_ = DisableKeyRotation' {_dkrKeyId = pKeyId_}
-
+disableKeyRotation pKeyId_
+  = DisableKeyRotation'{_dkrKeyId = pKeyId_}
 
 -- | A unique identifier for the customer master key (CMK). Specify the key ID or the Amazon Resource Name (ARN) of the CMK. For example:     * Key ID: @1234abcd-12ab-34cd-56ef-1234567890ab@      * Key ARN: @arn:aws:kms:us-east-2:111122223333:key/1234abcd-12ab-34cd-56ef-1234567890ab@  To get the key ID and key ARN for a CMK, use 'ListKeys' or 'DescribeKey' .
 dkrKeyId :: Lens' DisableKeyRotation Text
@@ -94,16 +91,15 @@ instance ToQuery DisableKeyRotation where
         toQuery = const mempty
 
 -- | /See:/ 'disableKeyRotationResponse' smart constructor.
-data DisableKeyRotationResponse =
-  DisableKeyRotationResponse'
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data DisableKeyRotationResponse = DisableKeyRotationResponse'
+                                    deriving (Eq, Read, Show, Data, Typeable,
+                                              Generic)
 
 -- | Creates a value of 'DisableKeyRotationResponse' with the minimum fields required to make a request.
 --
 disableKeyRotationResponse
     :: DisableKeyRotationResponse
-disableKeyRotationResponse = DisableKeyRotationResponse'
-
+disableKeyRotationResponse
+  = DisableKeyRotationResponse'
 
 instance NFData DisableKeyRotationResponse where

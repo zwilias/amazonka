@@ -38,24 +38,20 @@ module Network.AWS.IAM.GetAccountSummary
     ) where
 
 import Network.AWS.IAM.Types
-import Network.AWS.IAM.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 
 -- | /See:/ 'getAccountSummary' smart constructor.
-data GetAccountSummary =
-  GetAccountSummary'
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data GetAccountSummary = GetAccountSummary'
+                           deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'GetAccountSummary' with the minimum fields required to make a request.
 --
 getAccountSummary
     :: GetAccountSummary
 getAccountSummary = GetAccountSummary'
-
 
 instance AWSRequest GetAccountSummary where
         type Rs GetAccountSummary = GetAccountSummaryResponse
@@ -85,18 +81,21 @@ instance ToQuery GetAccountSummary where
                  ["Action" =: ("GetAccountSummary" :: ByteString),
                   "Version" =: ("2010-05-08" :: ByteString)])
 
--- | Contains the response to a successful 'GetAccountSummary' request.
+-- | Contains the response to a successful 'GetAccountSummary' request. 
 --
 --
 --
 -- /See:/ 'getAccountSummaryResponse' smart constructor.
-data GetAccountSummaryResponse =
-  GetAccountSummaryResponse'
-    { _gasrsSummaryMap     :: !(Maybe (Map SummaryKeyType Int))
-    , _gasrsResponseStatus :: !Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data GetAccountSummaryResponse = GetAccountSummaryResponse'{_gasrsSummaryMap
+                                                            ::
+                                                            !(Maybe
+                                                                (Map
+                                                                   SummaryKeyType
+                                                                   Int)),
+                                                            _gasrsResponseStatus
+                                                            :: !Int}
+                                   deriving (Eq, Read, Show, Data, Typeable,
+                                             Generic)
 
 -- | Creates a value of 'GetAccountSummaryResponse' with the minimum fields required to make a request.
 --
@@ -108,10 +107,10 @@ data GetAccountSummaryResponse =
 getAccountSummaryResponse
     :: Int -- ^ 'gasrsResponseStatus'
     -> GetAccountSummaryResponse
-getAccountSummaryResponse pResponseStatus_ =
-  GetAccountSummaryResponse'
-    {_gasrsSummaryMap = Nothing, _gasrsResponseStatus = pResponseStatus_}
-
+getAccountSummaryResponse pResponseStatus_
+  = GetAccountSummaryResponse'{_gasrsSummaryMap =
+                                 Nothing,
+                               _gasrsResponseStatus = pResponseStatus_}
 
 -- | A set of key value pairs containing information about IAM entity usage and IAM quotas.
 gasrsSummaryMap :: Lens' GetAccountSummaryResponse (HashMap SummaryKeyType Int)

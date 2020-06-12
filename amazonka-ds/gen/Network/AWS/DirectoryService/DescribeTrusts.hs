@@ -46,7 +46,6 @@ module Network.AWS.DirectoryService.DescribeTrusts
     ) where
 
 import Network.AWS.DirectoryService.Types
-import Network.AWS.DirectoryService.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Pager
 import Network.AWS.Prelude
@@ -58,15 +57,12 @@ import Network.AWS.Response
 --
 --
 -- /See:/ 'describeTrusts' smart constructor.
-data DescribeTrusts =
-  DescribeTrusts'
-    { _dtDirectoryId :: !(Maybe Text)
-    , _dtNextToken   :: !(Maybe Text)
-    , _dtTrustIds    :: !(Maybe [Text])
-    , _dtLimit       :: !(Maybe Nat)
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data DescribeTrusts = DescribeTrusts'{_dtDirectoryId
+                                      :: !(Maybe Text),
+                                      _dtNextToken :: !(Maybe Text),
+                                      _dtTrustIds :: !(Maybe [Text]),
+                                      _dtLimit :: !(Maybe Nat)}
+                        deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'DescribeTrusts' with the minimum fields required to make a request.
 --
@@ -81,14 +77,10 @@ data DescribeTrusts =
 -- * 'dtLimit' - The maximum number of objects to return.
 describeTrusts
     :: DescribeTrusts
-describeTrusts =
-  DescribeTrusts'
-    { _dtDirectoryId = Nothing
-    , _dtNextToken = Nothing
-    , _dtTrustIds = Nothing
-    , _dtLimit = Nothing
-    }
-
+describeTrusts
+  = DescribeTrusts'{_dtDirectoryId = Nothing,
+                    _dtNextToken = Nothing, _dtTrustIds = Nothing,
+                    _dtLimit = Nothing}
 
 -- | The Directory ID of the AWS directory that is a part of the requested trust relationship.
 dtDirectoryId :: Lens' DescribeTrusts (Maybe Text)
@@ -157,14 +149,14 @@ instance ToQuery DescribeTrusts where
 --
 --
 -- /See:/ 'describeTrustsResponse' smart constructor.
-data DescribeTrustsResponse =
-  DescribeTrustsResponse'
-    { _dtrsNextToken      :: !(Maybe Text)
-    , _dtrsTrusts         :: !(Maybe [Trust])
-    , _dtrsResponseStatus :: !Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data DescribeTrustsResponse = DescribeTrustsResponse'{_dtrsNextToken
+                                                      :: !(Maybe Text),
+                                                      _dtrsTrusts ::
+                                                      !(Maybe [Trust]),
+                                                      _dtrsResponseStatus ::
+                                                      !Int}
+                                deriving (Eq, Read, Show, Data, Typeable,
+                                          Generic)
 
 -- | Creates a value of 'DescribeTrustsResponse' with the minimum fields required to make a request.
 --
@@ -178,13 +170,10 @@ data DescribeTrustsResponse =
 describeTrustsResponse
     :: Int -- ^ 'dtrsResponseStatus'
     -> DescribeTrustsResponse
-describeTrustsResponse pResponseStatus_ =
-  DescribeTrustsResponse'
-    { _dtrsNextToken = Nothing
-    , _dtrsTrusts = Nothing
-    , _dtrsResponseStatus = pResponseStatus_
-    }
-
+describeTrustsResponse pResponseStatus_
+  = DescribeTrustsResponse'{_dtrsNextToken = Nothing,
+                            _dtrsTrusts = Nothing,
+                            _dtrsResponseStatus = pResponseStatus_}
 
 -- | If not null, more results are available. Pass this value for the /NextToken/ parameter in a subsequent call to 'DescribeTrusts' to retrieve the next set of items.
 dtrsNextToken :: Lens' DescribeTrustsResponse (Maybe Text)

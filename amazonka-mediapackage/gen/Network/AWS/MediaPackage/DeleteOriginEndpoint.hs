@@ -36,18 +36,15 @@ module Network.AWS.MediaPackage.DeleteOriginEndpoint
 
 import Network.AWS.Lens
 import Network.AWS.MediaPackage.Types
-import Network.AWS.MediaPackage.Types.Product
 import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 
 -- | /See:/ 'deleteOriginEndpoint' smart constructor.
-newtype DeleteOriginEndpoint =
-  DeleteOriginEndpoint'
-    { _delId :: Text
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+newtype DeleteOriginEndpoint = DeleteOriginEndpoint'{_delId
+                                                     :: Text}
+                                 deriving (Eq, Read, Show, Data, Typeable,
+                                           Generic)
 
 -- | Creates a value of 'DeleteOriginEndpoint' with the minimum fields required to make a request.
 --
@@ -57,8 +54,8 @@ newtype DeleteOriginEndpoint =
 deleteOriginEndpoint
     :: Text -- ^ 'delId'
     -> DeleteOriginEndpoint
-deleteOriginEndpoint pId_ = DeleteOriginEndpoint' {_delId = pId_}
-
+deleteOriginEndpoint pId_
+  = DeleteOriginEndpoint'{_delId = pId_}
 
 -- | The ID of the OriginEndpoint to delete.
 delId :: Lens' DeleteOriginEndpoint Text
@@ -93,12 +90,10 @@ instance ToQuery DeleteOriginEndpoint where
         toQuery = const mempty
 
 -- | /See:/ 'deleteOriginEndpointResponse' smart constructor.
-newtype DeleteOriginEndpointResponse =
-  DeleteOriginEndpointResponse'
-    { _doersResponseStatus :: Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+newtype DeleteOriginEndpointResponse = DeleteOriginEndpointResponse'{_doersResponseStatus
+                                                                     :: Int}
+                                         deriving (Eq, Read, Show, Data,
+                                                   Typeable, Generic)
 
 -- | Creates a value of 'DeleteOriginEndpointResponse' with the minimum fields required to make a request.
 --
@@ -108,9 +103,9 @@ newtype DeleteOriginEndpointResponse =
 deleteOriginEndpointResponse
     :: Int -- ^ 'doersResponseStatus'
     -> DeleteOriginEndpointResponse
-deleteOriginEndpointResponse pResponseStatus_ =
-  DeleteOriginEndpointResponse' {_doersResponseStatus = pResponseStatus_}
-
+deleteOriginEndpointResponse pResponseStatus_
+  = DeleteOriginEndpointResponse'{_doersResponseStatus
+                                    = pResponseStatus_}
 
 -- | -- | The response status code.
 doersResponseStatus :: Lens' DeleteOriginEndpointResponse Int

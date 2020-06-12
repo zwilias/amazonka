@@ -38,19 +38,15 @@ module Network.AWS.CodeCommit.GetComment
     ) where
 
 import Network.AWS.CodeCommit.Types
-import Network.AWS.CodeCommit.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 
 -- | /See:/ 'getComment' smart constructor.
-newtype GetComment =
-  GetComment'
-    { _gcCommentId :: Text
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+newtype GetComment = GetComment'{_gcCommentId ::
+                                 Text}
+                       deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'GetComment' with the minimum fields required to make a request.
 --
@@ -60,8 +56,8 @@ newtype GetComment =
 getComment
     :: Text -- ^ 'gcCommentId'
     -> GetComment
-getComment pCommentId_ = GetComment' {_gcCommentId = pCommentId_}
-
+getComment pCommentId_
+  = GetComment'{_gcCommentId = pCommentId_}
 
 -- | The unique, system-generated ID of the comment. To get this ID, use 'GetCommentsForComparedCommit' or 'GetCommentsForPullRequest' .
 gcCommentId :: Lens' GetComment Text
@@ -101,13 +97,10 @@ instance ToQuery GetComment where
         toQuery = const mempty
 
 -- | /See:/ 'getCommentResponse' smart constructor.
-data GetCommentResponse =
-  GetCommentResponse'
-    { _gccrsComment        :: !(Maybe Comment)
-    , _gccrsResponseStatus :: !Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data GetCommentResponse = GetCommentResponse'{_gccrsComment
+                                              :: !(Maybe Comment),
+                                              _gccrsResponseStatus :: !Int}
+                            deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'GetCommentResponse' with the minimum fields required to make a request.
 --
@@ -119,10 +112,9 @@ data GetCommentResponse =
 getCommentResponse
     :: Int -- ^ 'gccrsResponseStatus'
     -> GetCommentResponse
-getCommentResponse pResponseStatus_ =
-  GetCommentResponse'
-    {_gccrsComment = Nothing, _gccrsResponseStatus = pResponseStatus_}
-
+getCommentResponse pResponseStatus_
+  = GetCommentResponse'{_gccrsComment = Nothing,
+                        _gccrsResponseStatus = pResponseStatus_}
 
 -- | The contents of the comment.
 gccrsComment :: Lens' GetCommentResponse (Maybe Comment)

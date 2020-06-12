@@ -40,22 +40,21 @@ module Network.AWS.IoT.AddThingToThingGroup
     ) where
 
 import Network.AWS.IoT.Types
-import Network.AWS.IoT.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 
 -- | /See:/ 'addThingToThingGroup' smart constructor.
-data AddThingToThingGroup =
-  AddThingToThingGroup'
-    { _atttgThingGroupARN  :: !(Maybe Text)
-    , _atttgThingARN       :: !(Maybe Text)
-    , _atttgThingGroupName :: !(Maybe Text)
-    , _atttgThingName      :: !(Maybe Text)
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data AddThingToThingGroup = AddThingToThingGroup'{_atttgThingGroupARN
+                                                  :: !(Maybe Text),
+                                                  _atttgThingARN ::
+                                                  !(Maybe Text),
+                                                  _atttgThingGroupName ::
+                                                  !(Maybe Text),
+                                                  _atttgThingName ::
+                                                  !(Maybe Text)}
+                              deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'AddThingToThingGroup' with the minimum fields required to make a request.
 --
@@ -70,14 +69,12 @@ data AddThingToThingGroup =
 -- * 'atttgThingName' - The name of the thing to add to a group.
 addThingToThingGroup
     :: AddThingToThingGroup
-addThingToThingGroup =
-  AddThingToThingGroup'
-    { _atttgThingGroupARN = Nothing
-    , _atttgThingARN = Nothing
-    , _atttgThingGroupName = Nothing
-    , _atttgThingName = Nothing
-    }
-
+addThingToThingGroup
+  = AddThingToThingGroup'{_atttgThingGroupARN =
+                            Nothing,
+                          _atttgThingARN = Nothing,
+                          _atttgThingGroupName = Nothing,
+                          _atttgThingName = Nothing}
 
 -- | The ARN of the group to which you are adding a thing.
 atttgThingGroupARN :: Lens' AddThingToThingGroup (Maybe Text)
@@ -128,12 +125,10 @@ instance ToQuery AddThingToThingGroup where
         toQuery = const mempty
 
 -- | /See:/ 'addThingToThingGroupResponse' smart constructor.
-newtype AddThingToThingGroupResponse =
-  AddThingToThingGroupResponse'
-    { _atttgrsResponseStatus :: Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+newtype AddThingToThingGroupResponse = AddThingToThingGroupResponse'{_atttgrsResponseStatus
+                                                                     :: Int}
+                                         deriving (Eq, Read, Show, Data,
+                                                   Typeable, Generic)
 
 -- | Creates a value of 'AddThingToThingGroupResponse' with the minimum fields required to make a request.
 --
@@ -143,9 +138,9 @@ newtype AddThingToThingGroupResponse =
 addThingToThingGroupResponse
     :: Int -- ^ 'atttgrsResponseStatus'
     -> AddThingToThingGroupResponse
-addThingToThingGroupResponse pResponseStatus_ =
-  AddThingToThingGroupResponse' {_atttgrsResponseStatus = pResponseStatus_}
-
+addThingToThingGroupResponse pResponseStatus_
+  = AddThingToThingGroupResponse'{_atttgrsResponseStatus
+                                    = pResponseStatus_}
 
 -- | -- | The response status code.
 atttgrsResponseStatus :: Lens' AddThingToThingGroupResponse Int

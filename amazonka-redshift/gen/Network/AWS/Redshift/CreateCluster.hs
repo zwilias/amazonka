@@ -68,47 +68,48 @@ module Network.AWS.Redshift.CreateCluster
 import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.Redshift.Types
-import Network.AWS.Redshift.Types.Product
 import Network.AWS.Request
 import Network.AWS.Response
 
--- |
+-- | 
 --
 --
 --
 -- /See:/ 'createCluster' smart constructor.
-data CreateCluster =
-  CreateCluster'
-    { _ccEnhancedVPCRouting               :: !(Maybe Bool)
-    , _ccAdditionalInfo                   :: !(Maybe Text)
-    , _ccPubliclyAccessible               :: !(Maybe Bool)
-    , _ccHSMConfigurationIdentifier       :: !(Maybe Text)
-    , _ccClusterSecurityGroups            :: !(Maybe [Text])
-    , _ccAutomatedSnapshotRetentionPeriod :: !(Maybe Int)
-    , _ccEncrypted                        :: !(Maybe Bool)
-    , _ccClusterSubnetGroupName           :: !(Maybe Text)
-    , _ccHSMClientCertificateIdentifier   :: !(Maybe Text)
-    , _ccNumberOfNodes                    :: !(Maybe Int)
-    , _ccElasticIP                        :: !(Maybe Text)
-    , _ccPreferredMaintenanceWindow       :: !(Maybe Text)
-    , _ccKMSKeyId                         :: !(Maybe Text)
-    , _ccAvailabilityZone                 :: !(Maybe Text)
-    , _ccVPCSecurityGroupIds              :: !(Maybe [Text])
-    , _ccIAMRoles                         :: !(Maybe [Text])
-    , _ccClusterType                      :: !(Maybe Text)
-    , _ccClusterVersion                   :: !(Maybe Text)
-    , _ccAllowVersionUpgrade              :: !(Maybe Bool)
-    , _ccClusterParameterGroupName        :: !(Maybe Text)
-    , _ccTags                             :: !(Maybe [Tag])
-    , _ccPort                             :: !(Maybe Int)
-    , _ccDBName                           :: !(Maybe Text)
-    , _ccClusterIdentifier                :: !Text
-    , _ccNodeType                         :: !Text
-    , _ccMasterUsername                   :: !Text
-    , _ccMasterUserPassword               :: !Text
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data CreateCluster = CreateCluster'{_ccEnhancedVPCRouting
+                                    :: !(Maybe Bool),
+                                    _ccAdditionalInfo :: !(Maybe Text),
+                                    _ccPubliclyAccessible :: !(Maybe Bool),
+                                    _ccHSMConfigurationIdentifier ::
+                                    !(Maybe Text),
+                                    _ccClusterSecurityGroups :: !(Maybe [Text]),
+                                    _ccAutomatedSnapshotRetentionPeriod ::
+                                    !(Maybe Int),
+                                    _ccEncrypted :: !(Maybe Bool),
+                                    _ccClusterSubnetGroupName :: !(Maybe Text),
+                                    _ccHSMClientCertificateIdentifier ::
+                                    !(Maybe Text),
+                                    _ccNumberOfNodes :: !(Maybe Int),
+                                    _ccElasticIP :: !(Maybe Text),
+                                    _ccPreferredMaintenanceWindow ::
+                                    !(Maybe Text),
+                                    _ccKMSKeyId :: !(Maybe Text),
+                                    _ccAvailabilityZone :: !(Maybe Text),
+                                    _ccVPCSecurityGroupIds :: !(Maybe [Text]),
+                                    _ccIAMRoles :: !(Maybe [Text]),
+                                    _ccClusterType :: !(Maybe Text),
+                                    _ccClusterVersion :: !(Maybe Text),
+                                    _ccAllowVersionUpgrade :: !(Maybe Bool),
+                                    _ccClusterParameterGroupName ::
+                                    !(Maybe Text),
+                                    _ccTags :: !(Maybe [Tag]),
+                                    _ccPort :: !(Maybe Int),
+                                    _ccDBName :: !(Maybe Text),
+                                    _ccClusterIdentifier :: !Text,
+                                    _ccNodeType :: !Text,
+                                    _ccMasterUsername :: !Text,
+                                    _ccMasterUserPassword :: !Text}
+                       deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'CreateCluster' with the minimum fields required to make a request.
 --
@@ -118,7 +119,7 @@ data CreateCluster =
 --
 -- * 'ccAdditionalInfo' - Reserved.
 --
--- * 'ccPubliclyAccessible' - If @true@ , the cluster can be accessed from a public network.
+-- * 'ccPubliclyAccessible' - If @true@ , the cluster can be accessed from a public network. 
 --
 -- * 'ccHSMConfigurationIdentifier' - Specifies the name of the HSM configuration that contains the information the Amazon Redshift cluster can use to retrieve and store keys in an HSM.
 --
@@ -146,25 +147,25 @@ data CreateCluster =
 --
 -- * 'ccIAMRoles' - A list of AWS Identity and Access Management (IAM) roles that can be used by the cluster to access other AWS services. You must supply the IAM roles in their Amazon Resource Name (ARN) format. You can supply up to 10 IAM roles in a single request. A cluster can have up to 10 IAM roles associated with it at any time.
 --
--- * 'ccClusterType' - The type of the cluster. When cluster type is specified as     * @single-node@ , the __NumberOfNodes__ parameter is not required.     * @multi-node@ , the __NumberOfNodes__ parameter is required. Valid Values: @multi-node@ | @single-node@  Default: @multi-node@
+-- * 'ccClusterType' - The type of the cluster. When cluster type is specified as     * @single-node@ , the __NumberOfNodes__ parameter is not required.     * @multi-node@ , the __NumberOfNodes__ parameter is required. Valid Values: @multi-node@ | @single-node@  Default: @multi-node@ 
 --
--- * 'ccClusterVersion' - The version of the Amazon Redshift engine software that you want to deploy on the cluster. The version selected runs on all the nodes in the cluster. Constraints: Only version 1.0 is currently available. Example: @1.0@
+-- * 'ccClusterVersion' - The version of the Amazon Redshift engine software that you want to deploy on the cluster. The version selected runs on all the nodes in the cluster. Constraints: Only version 1.0 is currently available. Example: @1.0@ 
 --
--- * 'ccAllowVersionUpgrade' - If @true@ , major version upgrades can be applied during the maintenance window to the Amazon Redshift engine that is running on the cluster. When a new major version of the Amazon Redshift engine is released, you can request that the service automatically apply upgrades during the maintenance window to the Amazon Redshift engine that is running on your cluster. Default: @true@
+-- * 'ccAllowVersionUpgrade' - If @true@ , major version upgrades can be applied during the maintenance window to the Amazon Redshift engine that is running on the cluster. When a new major version of the Amazon Redshift engine is released, you can request that the service automatically apply upgrades during the maintenance window to the Amazon Redshift engine that is running on your cluster. Default: @true@ 
 --
 -- * 'ccClusterParameterGroupName' - The name of the parameter group to be associated with this cluster. Default: The default Amazon Redshift cluster parameter group. For information about the default parameter group, go to <http://docs.aws.amazon.com/redshift/latest/mgmt/working-with-parameter-groups.html Working with Amazon Redshift Parameter Groups>  Constraints:     * Must be 1 to 255 alphanumeric characters or hyphens.     * First character must be a letter.     * Cannot end with a hyphen or contain two consecutive hyphens.
 --
 -- * 'ccTags' - A list of tag instances.
 --
--- * 'ccPort' - The port number on which the cluster accepts incoming connections. The cluster is accessible only via the JDBC and ODBC connection strings. Part of the connection string requires the port on which the cluster will listen for incoming connections. Default: @5439@  Valid Values: @1150-65535@
+-- * 'ccPort' - The port number on which the cluster accepts incoming connections. The cluster is accessible only via the JDBC and ODBC connection strings. Part of the connection string requires the port on which the cluster will listen for incoming connections. Default: @5439@  Valid Values: @1150-65535@ 
 --
--- * 'ccDBName' - The name of the first database to be created when the cluster is created. To create additional databases after the cluster is created, connect to the cluster with a SQL client and use SQL commands to create a database. For more information, go to <http://docs.aws.amazon.com/redshift/latest/dg/t_creating_database.html Create a Database> in the Amazon Redshift Database Developer Guide.  Default: @dev@  Constraints:     * Must contain 1 to 64 alphanumeric characters.     * Must contain only lowercase letters.     * Cannot be a word that is reserved by the service. A list of reserved words can be found in <http://docs.aws.amazon.com/redshift/latest/dg/r_pg_keywords.html Reserved Words> in the Amazon Redshift Database Developer Guide.
+-- * 'ccDBName' - The name of the first database to be created when the cluster is created. To create additional databases after the cluster is created, connect to the cluster with a SQL client and use SQL commands to create a database. For more information, go to <http://docs.aws.amazon.com/redshift/latest/dg/t_creating_database.html Create a Database> in the Amazon Redshift Database Developer Guide.  Default: @dev@  Constraints:     * Must contain 1 to 64 alphanumeric characters.     * Must contain only lowercase letters.     * Cannot be a word that is reserved by the service. A list of reserved words can be found in <http://docs.aws.amazon.com/redshift/latest/dg/r_pg_keywords.html Reserved Words> in the Amazon Redshift Database Developer Guide. 
 --
--- * 'ccClusterIdentifier' - A unique identifier for the cluster. You use this identifier to refer to the cluster for any subsequent cluster operations such as deleting or modifying. The identifier also appears in the Amazon Redshift console. Constraints:     * Must contain from 1 to 63 alphanumeric characters or hyphens.     * Alphabetic characters must be lowercase.     * First character must be a letter.     * Cannot end with a hyphen or contain two consecutive hyphens.     * Must be unique for all clusters within an AWS account. Example: @myexamplecluster@
+-- * 'ccClusterIdentifier' - A unique identifier for the cluster. You use this identifier to refer to the cluster for any subsequent cluster operations such as deleting or modifying. The identifier also appears in the Amazon Redshift console. Constraints:     * Must contain from 1 to 63 alphanumeric characters or hyphens.     * Alphabetic characters must be lowercase.     * First character must be a letter.     * Cannot end with a hyphen or contain two consecutive hyphens.     * Must be unique for all clusters within an AWS account. Example: @myexamplecluster@ 
 --
--- * 'ccNodeType' - The node type to be provisioned for the cluster. For information about node types, go to <http://docs.aws.amazon.com/redshift/latest/mgmt/working-with-clusters.html#how-many-nodes Working with Clusters> in the /Amazon Redshift Cluster Management Guide/ .  Valid Values: @ds2.xlarge@ | @ds2.8xlarge@ | @ds2.xlarge@ | @ds2.8xlarge@ | @dc1.large@ | @dc1.8xlarge@ | @dc2.large@ | @dc2.8xlarge@
+-- * 'ccNodeType' - The node type to be provisioned for the cluster. For information about node types, go to <http://docs.aws.amazon.com/redshift/latest/mgmt/working-with-clusters.html#how-many-nodes Working with Clusters> in the /Amazon Redshift Cluster Management Guide/ .  Valid Values: @ds2.xlarge@ | @ds2.8xlarge@ | @ds2.xlarge@ | @ds2.8xlarge@ | @dc1.large@ | @dc1.8xlarge@ | @dc2.large@ | @dc2.8xlarge@ 
 --
--- * 'ccMasterUsername' - The user name associated with the master user account for the cluster that is being created. Constraints:     * Must be 1 - 128 alphanumeric characters. The user name can't be @PUBLIC@ .     * First character must be a letter.     * Cannot be a reserved word. A list of reserved words can be found in <http://docs.aws.amazon.com/redshift/latest/dg/r_pg_keywords.html Reserved Words> in the Amazon Redshift Database Developer Guide.
+-- * 'ccMasterUsername' - The user name associated with the master user account for the cluster that is being created. Constraints:     * Must be 1 - 128 alphanumeric characters. The user name can't be @PUBLIC@ .     * First character must be a letter.     * Cannot be a reserved word. A list of reserved words can be found in <http://docs.aws.amazon.com/redshift/latest/dg/r_pg_keywords.html Reserved Words> in the Amazon Redshift Database Developer Guide. 
 --
 -- * 'ccMasterUserPassword' - The password associated with the master user account for the cluster that is being created. Constraints:     * Must be between 8 and 64 characters in length.     * Must contain at least one uppercase letter.     * Must contain at least one lowercase letter.     * Must contain one number.     * Can be any printable ASCII character (ASCII code 33 to 126) except ' (single quote), " (double quote), \, /, @, or space.
 createCluster
@@ -173,37 +174,31 @@ createCluster
     -> Text -- ^ 'ccMasterUsername'
     -> Text -- ^ 'ccMasterUserPassword'
     -> CreateCluster
-createCluster pClusterIdentifier_ pNodeType_ pMasterUsername_ pMasterUserPassword_ =
-  CreateCluster'
-    { _ccEnhancedVPCRouting = Nothing
-    , _ccAdditionalInfo = Nothing
-    , _ccPubliclyAccessible = Nothing
-    , _ccHSMConfigurationIdentifier = Nothing
-    , _ccClusterSecurityGroups = Nothing
-    , _ccAutomatedSnapshotRetentionPeriod = Nothing
-    , _ccEncrypted = Nothing
-    , _ccClusterSubnetGroupName = Nothing
-    , _ccHSMClientCertificateIdentifier = Nothing
-    , _ccNumberOfNodes = Nothing
-    , _ccElasticIP = Nothing
-    , _ccPreferredMaintenanceWindow = Nothing
-    , _ccKMSKeyId = Nothing
-    , _ccAvailabilityZone = Nothing
-    , _ccVPCSecurityGroupIds = Nothing
-    , _ccIAMRoles = Nothing
-    , _ccClusterType = Nothing
-    , _ccClusterVersion = Nothing
-    , _ccAllowVersionUpgrade = Nothing
-    , _ccClusterParameterGroupName = Nothing
-    , _ccTags = Nothing
-    , _ccPort = Nothing
-    , _ccDBName = Nothing
-    , _ccClusterIdentifier = pClusterIdentifier_
-    , _ccNodeType = pNodeType_
-    , _ccMasterUsername = pMasterUsername_
-    , _ccMasterUserPassword = pMasterUserPassword_
-    }
-
+createCluster pClusterIdentifier_ pNodeType_
+  pMasterUsername_ pMasterUserPassword_
+  = CreateCluster'{_ccEnhancedVPCRouting = Nothing,
+                   _ccAdditionalInfo = Nothing,
+                   _ccPubliclyAccessible = Nothing,
+                   _ccHSMConfigurationIdentifier = Nothing,
+                   _ccClusterSecurityGroups = Nothing,
+                   _ccAutomatedSnapshotRetentionPeriod = Nothing,
+                   _ccEncrypted = Nothing,
+                   _ccClusterSubnetGroupName = Nothing,
+                   _ccHSMClientCertificateIdentifier = Nothing,
+                   _ccNumberOfNodes = Nothing, _ccElasticIP = Nothing,
+                   _ccPreferredMaintenanceWindow = Nothing,
+                   _ccKMSKeyId = Nothing, _ccAvailabilityZone = Nothing,
+                   _ccVPCSecurityGroupIds = Nothing,
+                   _ccIAMRoles = Nothing, _ccClusterType = Nothing,
+                   _ccClusterVersion = Nothing,
+                   _ccAllowVersionUpgrade = Nothing,
+                   _ccClusterParameterGroupName = Nothing,
+                   _ccTags = Nothing, _ccPort = Nothing,
+                   _ccDBName = Nothing,
+                   _ccClusterIdentifier = pClusterIdentifier_,
+                   _ccNodeType = pNodeType_,
+                   _ccMasterUsername = pMasterUsername_,
+                   _ccMasterUserPassword = pMasterUserPassword_}
 
 -- | An option that specifies whether to create the cluster with enhanced VPC routing enabled. To create a cluster that uses enhanced VPC routing, the cluster must be in a VPC. For more information, see <http://docs.aws.amazon.com/redshift/latest/mgmt/enhanced-vpc-routing.html Enhanced VPC Routing> in the Amazon Redshift Cluster Management Guide. If this option is @true@ , enhanced VPC routing is enabled.  Default: false
 ccEnhancedVPCRouting :: Lens' CreateCluster (Maybe Bool)
@@ -213,7 +208,7 @@ ccEnhancedVPCRouting = lens _ccEnhancedVPCRouting (\ s a -> s{_ccEnhancedVPCRout
 ccAdditionalInfo :: Lens' CreateCluster (Maybe Text)
 ccAdditionalInfo = lens _ccAdditionalInfo (\ s a -> s{_ccAdditionalInfo = a})
 
--- | If @true@ , the cluster can be accessed from a public network.
+-- | If @true@ , the cluster can be accessed from a public network. 
 ccPubliclyAccessible :: Lens' CreateCluster (Maybe Bool)
 ccPubliclyAccessible = lens _ccPubliclyAccessible (\ s a -> s{_ccPubliclyAccessible = a})
 
@@ -269,15 +264,15 @@ ccVPCSecurityGroupIds = lens _ccVPCSecurityGroupIds (\ s a -> s{_ccVPCSecurityGr
 ccIAMRoles :: Lens' CreateCluster [Text]
 ccIAMRoles = lens _ccIAMRoles (\ s a -> s{_ccIAMRoles = a}) . _Default . _Coerce
 
--- | The type of the cluster. When cluster type is specified as     * @single-node@ , the __NumberOfNodes__ parameter is not required.     * @multi-node@ , the __NumberOfNodes__ parameter is required. Valid Values: @multi-node@ | @single-node@  Default: @multi-node@
+-- | The type of the cluster. When cluster type is specified as     * @single-node@ , the __NumberOfNodes__ parameter is not required.     * @multi-node@ , the __NumberOfNodes__ parameter is required. Valid Values: @multi-node@ | @single-node@  Default: @multi-node@ 
 ccClusterType :: Lens' CreateCluster (Maybe Text)
 ccClusterType = lens _ccClusterType (\ s a -> s{_ccClusterType = a})
 
--- | The version of the Amazon Redshift engine software that you want to deploy on the cluster. The version selected runs on all the nodes in the cluster. Constraints: Only version 1.0 is currently available. Example: @1.0@
+-- | The version of the Amazon Redshift engine software that you want to deploy on the cluster. The version selected runs on all the nodes in the cluster. Constraints: Only version 1.0 is currently available. Example: @1.0@ 
 ccClusterVersion :: Lens' CreateCluster (Maybe Text)
 ccClusterVersion = lens _ccClusterVersion (\ s a -> s{_ccClusterVersion = a})
 
--- | If @true@ , major version upgrades can be applied during the maintenance window to the Amazon Redshift engine that is running on the cluster. When a new major version of the Amazon Redshift engine is released, you can request that the service automatically apply upgrades during the maintenance window to the Amazon Redshift engine that is running on your cluster. Default: @true@
+-- | If @true@ , major version upgrades can be applied during the maintenance window to the Amazon Redshift engine that is running on the cluster. When a new major version of the Amazon Redshift engine is released, you can request that the service automatically apply upgrades during the maintenance window to the Amazon Redshift engine that is running on your cluster. Default: @true@ 
 ccAllowVersionUpgrade :: Lens' CreateCluster (Maybe Bool)
 ccAllowVersionUpgrade = lens _ccAllowVersionUpgrade (\ s a -> s{_ccAllowVersionUpgrade = a})
 
@@ -289,23 +284,23 @@ ccClusterParameterGroupName = lens _ccClusterParameterGroupName (\ s a -> s{_ccC
 ccTags :: Lens' CreateCluster [Tag]
 ccTags = lens _ccTags (\ s a -> s{_ccTags = a}) . _Default . _Coerce
 
--- | The port number on which the cluster accepts incoming connections. The cluster is accessible only via the JDBC and ODBC connection strings. Part of the connection string requires the port on which the cluster will listen for incoming connections. Default: @5439@  Valid Values: @1150-65535@
+-- | The port number on which the cluster accepts incoming connections. The cluster is accessible only via the JDBC and ODBC connection strings. Part of the connection string requires the port on which the cluster will listen for incoming connections. Default: @5439@  Valid Values: @1150-65535@ 
 ccPort :: Lens' CreateCluster (Maybe Int)
 ccPort = lens _ccPort (\ s a -> s{_ccPort = a})
 
--- | The name of the first database to be created when the cluster is created. To create additional databases after the cluster is created, connect to the cluster with a SQL client and use SQL commands to create a database. For more information, go to <http://docs.aws.amazon.com/redshift/latest/dg/t_creating_database.html Create a Database> in the Amazon Redshift Database Developer Guide.  Default: @dev@  Constraints:     * Must contain 1 to 64 alphanumeric characters.     * Must contain only lowercase letters.     * Cannot be a word that is reserved by the service. A list of reserved words can be found in <http://docs.aws.amazon.com/redshift/latest/dg/r_pg_keywords.html Reserved Words> in the Amazon Redshift Database Developer Guide.
+-- | The name of the first database to be created when the cluster is created. To create additional databases after the cluster is created, connect to the cluster with a SQL client and use SQL commands to create a database. For more information, go to <http://docs.aws.amazon.com/redshift/latest/dg/t_creating_database.html Create a Database> in the Amazon Redshift Database Developer Guide.  Default: @dev@  Constraints:     * Must contain 1 to 64 alphanumeric characters.     * Must contain only lowercase letters.     * Cannot be a word that is reserved by the service. A list of reserved words can be found in <http://docs.aws.amazon.com/redshift/latest/dg/r_pg_keywords.html Reserved Words> in the Amazon Redshift Database Developer Guide. 
 ccDBName :: Lens' CreateCluster (Maybe Text)
 ccDBName = lens _ccDBName (\ s a -> s{_ccDBName = a})
 
--- | A unique identifier for the cluster. You use this identifier to refer to the cluster for any subsequent cluster operations such as deleting or modifying. The identifier also appears in the Amazon Redshift console. Constraints:     * Must contain from 1 to 63 alphanumeric characters or hyphens.     * Alphabetic characters must be lowercase.     * First character must be a letter.     * Cannot end with a hyphen or contain two consecutive hyphens.     * Must be unique for all clusters within an AWS account. Example: @myexamplecluster@
+-- | A unique identifier for the cluster. You use this identifier to refer to the cluster for any subsequent cluster operations such as deleting or modifying. The identifier also appears in the Amazon Redshift console. Constraints:     * Must contain from 1 to 63 alphanumeric characters or hyphens.     * Alphabetic characters must be lowercase.     * First character must be a letter.     * Cannot end with a hyphen or contain two consecutive hyphens.     * Must be unique for all clusters within an AWS account. Example: @myexamplecluster@ 
 ccClusterIdentifier :: Lens' CreateCluster Text
 ccClusterIdentifier = lens _ccClusterIdentifier (\ s a -> s{_ccClusterIdentifier = a})
 
--- | The node type to be provisioned for the cluster. For information about node types, go to <http://docs.aws.amazon.com/redshift/latest/mgmt/working-with-clusters.html#how-many-nodes Working with Clusters> in the /Amazon Redshift Cluster Management Guide/ .  Valid Values: @ds2.xlarge@ | @ds2.8xlarge@ | @ds2.xlarge@ | @ds2.8xlarge@ | @dc1.large@ | @dc1.8xlarge@ | @dc2.large@ | @dc2.8xlarge@
+-- | The node type to be provisioned for the cluster. For information about node types, go to <http://docs.aws.amazon.com/redshift/latest/mgmt/working-with-clusters.html#how-many-nodes Working with Clusters> in the /Amazon Redshift Cluster Management Guide/ .  Valid Values: @ds2.xlarge@ | @ds2.8xlarge@ | @ds2.xlarge@ | @ds2.8xlarge@ | @dc1.large@ | @dc1.8xlarge@ | @dc2.large@ | @dc2.8xlarge@ 
 ccNodeType :: Lens' CreateCluster Text
 ccNodeType = lens _ccNodeType (\ s a -> s{_ccNodeType = a})
 
--- | The user name associated with the master user account for the cluster that is being created. Constraints:     * Must be 1 - 128 alphanumeric characters. The user name can't be @PUBLIC@ .     * First character must be a letter.     * Cannot be a reserved word. A list of reserved words can be found in <http://docs.aws.amazon.com/redshift/latest/dg/r_pg_keywords.html Reserved Words> in the Amazon Redshift Database Developer Guide.
+-- | The user name associated with the master user account for the cluster that is being created. Constraints:     * Must be 1 - 128 alphanumeric characters. The user name can't be @PUBLIC@ .     * First character must be a letter.     * Cannot be a reserved word. A list of reserved words can be found in <http://docs.aws.amazon.com/redshift/latest/dg/r_pg_keywords.html Reserved Words> in the Amazon Redshift Database Developer Guide. 
 ccMasterUsername :: Lens' CreateCluster Text
 ccMasterUsername = lens _ccMasterUsername (\ s a -> s{_ccMasterUsername = a})
 
@@ -378,13 +373,11 @@ instance ToQuery CreateCluster where
                "MasterUserPassword" =: _ccMasterUserPassword]
 
 -- | /See:/ 'createClusterResponse' smart constructor.
-data CreateClusterResponse =
-  CreateClusterResponse'
-    { _ccrsCluster        :: !(Maybe Cluster)
-    , _ccrsResponseStatus :: !Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data CreateClusterResponse = CreateClusterResponse'{_ccrsCluster
+                                                    :: !(Maybe Cluster),
+                                                    _ccrsResponseStatus :: !Int}
+                               deriving (Eq, Read, Show, Data, Typeable,
+                                         Generic)
 
 -- | Creates a value of 'CreateClusterResponse' with the minimum fields required to make a request.
 --
@@ -396,10 +389,9 @@ data CreateClusterResponse =
 createClusterResponse
     :: Int -- ^ 'ccrsResponseStatus'
     -> CreateClusterResponse
-createClusterResponse pResponseStatus_ =
-  CreateClusterResponse'
-    {_ccrsCluster = Nothing, _ccrsResponseStatus = pResponseStatus_}
-
+createClusterResponse pResponseStatus_
+  = CreateClusterResponse'{_ccrsCluster = Nothing,
+                           _ccrsResponseStatus = pResponseStatus_}
 
 -- | Undocumented member.
 ccrsCluster :: Lens' CreateClusterResponse (Maybe Cluster)

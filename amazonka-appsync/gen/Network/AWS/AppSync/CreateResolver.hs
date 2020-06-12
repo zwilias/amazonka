@@ -49,28 +49,26 @@ module Network.AWS.AppSync.CreateResolver
     ) where
 
 import Network.AWS.AppSync.Types
-import Network.AWS.AppSync.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 
 -- | /See:/ 'createResolver' smart constructor.
-data CreateResolver =
-  CreateResolver'
-    { _crDataSourceName          :: !(Maybe Text)
-    , _crKind                    :: !(Maybe ResolverKind)
-    , _crCachingConfig           :: !(Maybe CachingConfig)
-    , _crResponseMappingTemplate :: !(Maybe Text)
-    , _crSyncConfig              :: !(Maybe SyncConfig)
-    , _crPipelineConfig          :: !(Maybe PipelineConfig)
-    , _crApiId                   :: !Text
-    , _crTypeName                :: !Text
-    , _crFieldName               :: !Text
-    , _crRequestMappingTemplate  :: !Text
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data CreateResolver = CreateResolver'{_crDataSourceName
+                                      :: !(Maybe Text),
+                                      _crKind :: !(Maybe ResolverKind),
+                                      _crCachingConfig ::
+                                      !(Maybe CachingConfig),
+                                      _crResponseMappingTemplate ::
+                                      !(Maybe Text),
+                                      _crSyncConfig :: !(Maybe SyncConfig),
+                                      _crPipelineConfig ::
+                                      !(Maybe PipelineConfig),
+                                      _crApiId :: !Text, _crTypeName :: !Text,
+                                      _crFieldName :: !Text,
+                                      _crRequestMappingTemplate :: !Text}
+                        deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'CreateResolver' with the minimum fields required to make a request.
 --
@@ -101,20 +99,15 @@ createResolver
     -> Text -- ^ 'crFieldName'
     -> Text -- ^ 'crRequestMappingTemplate'
     -> CreateResolver
-createResolver pApiId_ pTypeName_ pFieldName_ pRequestMappingTemplate_ =
-  CreateResolver'
-    { _crDataSourceName = Nothing
-    , _crKind = Nothing
-    , _crCachingConfig = Nothing
-    , _crResponseMappingTemplate = Nothing
-    , _crSyncConfig = Nothing
-    , _crPipelineConfig = Nothing
-    , _crApiId = pApiId_
-    , _crTypeName = pTypeName_
-    , _crFieldName = pFieldName_
-    , _crRequestMappingTemplate = pRequestMappingTemplate_
-    }
-
+createResolver pApiId_ pTypeName_ pFieldName_
+  pRequestMappingTemplate_
+  = CreateResolver'{_crDataSourceName = Nothing,
+                    _crKind = Nothing, _crCachingConfig = Nothing,
+                    _crResponseMappingTemplate = Nothing,
+                    _crSyncConfig = Nothing, _crPipelineConfig = Nothing,
+                    _crApiId = pApiId_, _crTypeName = pTypeName_,
+                    _crFieldName = pFieldName_,
+                    _crRequestMappingTemplate = pRequestMappingTemplate_}
 
 -- | The name of the data source for which the resolver is being created.
 crDataSourceName :: Lens' CreateResolver (Maybe Text)
@@ -202,13 +195,12 @@ instance ToQuery CreateResolver where
         toQuery = const mempty
 
 -- | /See:/ 'createResolverResponse' smart constructor.
-data CreateResolverResponse =
-  CreateResolverResponse'
-    { _crrsResolver       :: !(Maybe Resolver)
-    , _crrsResponseStatus :: !Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data CreateResolverResponse = CreateResolverResponse'{_crrsResolver
+                                                      :: !(Maybe Resolver),
+                                                      _crrsResponseStatus ::
+                                                      !Int}
+                                deriving (Eq, Read, Show, Data, Typeable,
+                                          Generic)
 
 -- | Creates a value of 'CreateResolverResponse' with the minimum fields required to make a request.
 --
@@ -220,10 +212,9 @@ data CreateResolverResponse =
 createResolverResponse
     :: Int -- ^ 'crrsResponseStatus'
     -> CreateResolverResponse
-createResolverResponse pResponseStatus_ =
-  CreateResolverResponse'
-    {_crrsResolver = Nothing, _crrsResponseStatus = pResponseStatus_}
-
+createResolverResponse pResponseStatus_
+  = CreateResolverResponse'{_crrsResolver = Nothing,
+                            _crrsResponseStatus = pResponseStatus_}
 
 -- | The @Resolver@ object.
 crrsResolver :: Lens' CreateResolverResponse (Maybe Resolver)

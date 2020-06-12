@@ -47,24 +47,23 @@ module Network.AWS.Connect.GetCurrentMetricData
     ) where
 
 import Network.AWS.Connect.Types
-import Network.AWS.Connect.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 
 -- | /See:/ 'getCurrentMetricData' smart constructor.
-data GetCurrentMetricData =
-  GetCurrentMetricData'
-    { _gcmdNextToken      :: !(Maybe Text)
-    , _gcmdGroupings      :: !(Maybe [Grouping])
-    , _gcmdMaxResults     :: !(Maybe Nat)
-    , _gcmdInstanceId     :: !Text
-    , _gcmdFilters        :: !Filters
-    , _gcmdCurrentMetrics :: ![CurrentMetric]
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data GetCurrentMetricData = GetCurrentMetricData'{_gcmdNextToken
+                                                  :: !(Maybe Text),
+                                                  _gcmdGroupings ::
+                                                  !(Maybe [Grouping]),
+                                                  _gcmdMaxResults ::
+                                                  !(Maybe Nat),
+                                                  _gcmdInstanceId :: !Text,
+                                                  _gcmdFilters :: !Filters,
+                                                  _gcmdCurrentMetrics ::
+                                                  ![CurrentMetric]}
+                              deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'GetCurrentMetricData' with the minimum fields required to make a request.
 --
@@ -85,16 +84,12 @@ getCurrentMetricData
     :: Text -- ^ 'gcmdInstanceId'
     -> Filters -- ^ 'gcmdFilters'
     -> GetCurrentMetricData
-getCurrentMetricData pInstanceId_ pFilters_ =
-  GetCurrentMetricData'
-    { _gcmdNextToken = Nothing
-    , _gcmdGroupings = Nothing
-    , _gcmdMaxResults = Nothing
-    , _gcmdInstanceId = pInstanceId_
-    , _gcmdFilters = pFilters_
-    , _gcmdCurrentMetrics = mempty
-    }
-
+getCurrentMetricData pInstanceId_ pFilters_
+  = GetCurrentMetricData'{_gcmdNextToken = Nothing,
+                          _gcmdGroupings = Nothing, _gcmdMaxResults = Nothing,
+                          _gcmdInstanceId = pInstanceId_,
+                          _gcmdFilters = pFilters_,
+                          _gcmdCurrentMetrics = mempty}
 
 -- | The token for the next set of results. Use the value returned in the previous response in the next request to retrieve the next set of results. The token expires after 5 minutes from the time it is created. Subsequent requests that use the token must use the same request parameters as the request that generated the token.
 gcmdNextToken :: Lens' GetCurrentMetricData (Maybe Text)
@@ -162,15 +157,21 @@ instance ToQuery GetCurrentMetricData where
         toQuery = const mempty
 
 -- | /See:/ 'getCurrentMetricDataResponse' smart constructor.
-data GetCurrentMetricDataResponse =
-  GetCurrentMetricDataResponse'
-    { _gcmdrsMetricResults    :: !(Maybe [CurrentMetricResult])
-    , _gcmdrsDataSnapshotTime :: !(Maybe POSIX)
-    , _gcmdrsNextToken        :: !(Maybe Text)
-    , _gcmdrsResponseStatus   :: !Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data GetCurrentMetricDataResponse = GetCurrentMetricDataResponse'{_gcmdrsMetricResults
+                                                                  ::
+                                                                  !(Maybe
+                                                                      [CurrentMetricResult]),
+                                                                  _gcmdrsDataSnapshotTime
+                                                                  ::
+                                                                  !(Maybe
+                                                                      POSIX),
+                                                                  _gcmdrsNextToken
+                                                                  ::
+                                                                  !(Maybe Text),
+                                                                  _gcmdrsResponseStatus
+                                                                  :: !Int}
+                                      deriving (Eq, Read, Show, Data, Typeable,
+                                                Generic)
 
 -- | Creates a value of 'GetCurrentMetricDataResponse' with the minimum fields required to make a request.
 --
@@ -186,14 +187,12 @@ data GetCurrentMetricDataResponse =
 getCurrentMetricDataResponse
     :: Int -- ^ 'gcmdrsResponseStatus'
     -> GetCurrentMetricDataResponse
-getCurrentMetricDataResponse pResponseStatus_ =
-  GetCurrentMetricDataResponse'
-    { _gcmdrsMetricResults = Nothing
-    , _gcmdrsDataSnapshotTime = Nothing
-    , _gcmdrsNextToken = Nothing
-    , _gcmdrsResponseStatus = pResponseStatus_
-    }
-
+getCurrentMetricDataResponse pResponseStatus_
+  = GetCurrentMetricDataResponse'{_gcmdrsMetricResults
+                                    = Nothing,
+                                  _gcmdrsDataSnapshotTime = Nothing,
+                                  _gcmdrsNextToken = Nothing,
+                                  _gcmdrsResponseStatus = pResponseStatus_}
 
 -- | Information about the real-time metrics.
 gcmdrsMetricResults :: Lens' GetCurrentMetricDataResponse [CurrentMetricResult]

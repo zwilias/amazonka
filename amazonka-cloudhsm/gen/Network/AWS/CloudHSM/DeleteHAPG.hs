@@ -42,7 +42,6 @@ module Network.AWS.CloudHSM.DeleteHAPG
     ) where
 
 import Network.AWS.CloudHSM.Types
-import Network.AWS.CloudHSM.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.Request
@@ -53,12 +52,8 @@ import Network.AWS.Response
 --
 --
 -- /See:/ 'deleteHAPG' smart constructor.
-newtype DeleteHAPG =
-  DeleteHAPG'
-    { _dhHAPGARN :: Text
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+newtype DeleteHAPG = DeleteHAPG'{_dhHAPGARN :: Text}
+                       deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'DeleteHAPG' with the minimum fields required to make a request.
 --
@@ -68,8 +63,8 @@ newtype DeleteHAPG =
 deleteHAPG
     :: Text -- ^ 'dhHAPGARN'
     -> DeleteHAPG
-deleteHAPG pHAPGARN_ = DeleteHAPG' {_dhHAPGARN = pHAPGARN_}
-
+deleteHAPG pHAPGARN_
+  = DeleteHAPG'{_dhHAPGARN = pHAPGARN_}
 
 -- | The ARN of the high-availability partition group to delete.
 dhHAPGARN :: Lens' DeleteHAPG Text
@@ -112,13 +107,10 @@ instance ToQuery DeleteHAPG where
 --
 --
 -- /See:/ 'deleteHAPGResponse' smart constructor.
-data DeleteHAPGResponse =
-  DeleteHAPGResponse'
-    { _dhrsResponseStatus :: !Int
-    , _dhrsStatus         :: !Text
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data DeleteHAPGResponse = DeleteHAPGResponse'{_dhrsResponseStatus
+                                              :: !Int,
+                                              _dhrsStatus :: !Text}
+                            deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'DeleteHAPGResponse' with the minimum fields required to make a request.
 --
@@ -131,10 +123,10 @@ deleteHAPGResponse
     :: Int -- ^ 'dhrsResponseStatus'
     -> Text -- ^ 'dhrsStatus'
     -> DeleteHAPGResponse
-deleteHAPGResponse pResponseStatus_ pStatus_ =
-  DeleteHAPGResponse'
-    {_dhrsResponseStatus = pResponseStatus_, _dhrsStatus = pStatus_}
-
+deleteHAPGResponse pResponseStatus_ pStatus_
+  = DeleteHAPGResponse'{_dhrsResponseStatus =
+                          pResponseStatus_,
+                        _dhrsStatus = pStatus_}
 
 -- | -- | The response status code.
 dhrsResponseStatus :: Lens' DeleteHAPGResponse Int

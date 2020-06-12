@@ -21,7 +21,7 @@
 -- You can update an event source mapping. This is useful if you want to change the parameters of the existing mapping without losing your position in the stream. You can change which function will receive the stream records, but to change the stream itself, you must create a new mapping.
 --
 --
--- If you are using the versioning feature, you can update the event source mapping to map to a specific Lambda function version or alias as described in the @FunctionName@ parameter. For information about the versioning feature, see <http://docs.aws.amazon.com/lambda/latest/dg/versioning-aliases.html AWS Lambda Function Versioning and Aliases> .
+-- If you are using the versioning feature, you can update the event source mapping to map to a specific Lambda function version or alias as described in the @FunctionName@ parameter. For information about the versioning feature, see <http://docs.aws.amazon.com/lambda/latest/dg/versioning-aliases.html AWS Lambda Function Versioning and Aliases> . 
 --
 -- If you disable the event source mapping, AWS Lambda stops polling. If you enable again, it will resume polling from the time it had stopped polling, so you don't lose processing of any records. However, if you delete event source mapping and create it again, it will reset.
 --
@@ -53,26 +53,25 @@ module Network.AWS.Lambda.UpdateEventSourceMapping
     ) where
 
 import Network.AWS.Lambda.Types
-import Network.AWS.Lambda.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 
--- |
+-- | 
 --
 --
 --
 -- /See:/ 'updateEventSourceMapping' smart constructor.
-data UpdateEventSourceMapping =
-  UpdateEventSourceMapping'
-    { _uesmEnabled      :: !(Maybe Bool)
-    , _uesmBatchSize    :: !(Maybe Nat)
-    , _uesmFunctionName :: !(Maybe Text)
-    , _uesmUUId         :: !Text
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data UpdateEventSourceMapping = UpdateEventSourceMapping'{_uesmEnabled
+                                                          :: !(Maybe Bool),
+                                                          _uesmBatchSize ::
+                                                          !(Maybe Nat),
+                                                          _uesmFunctionName ::
+                                                          !(Maybe Text),
+                                                          _uesmUUId :: !Text}
+                                  deriving (Eq, Read, Show, Data, Typeable,
+                                            Generic)
 
 -- | Creates a value of 'UpdateEventSourceMapping' with the minimum fields required to make a request.
 --
@@ -88,14 +87,10 @@ data UpdateEventSourceMapping =
 updateEventSourceMapping
     :: Text -- ^ 'uesmUUId'
     -> UpdateEventSourceMapping
-updateEventSourceMapping pUUId_ =
-  UpdateEventSourceMapping'
-    { _uesmEnabled = Nothing
-    , _uesmBatchSize = Nothing
-    , _uesmFunctionName = Nothing
-    , _uesmUUId = pUUId_
-    }
-
+updateEventSourceMapping pUUId_
+  = UpdateEventSourceMapping'{_uesmEnabled = Nothing,
+                              _uesmBatchSize = Nothing,
+                              _uesmFunctionName = Nothing, _uesmUUId = pUUId_}
 
 -- | Specifies whether AWS Lambda should actively poll the stream or not. If disabled, AWS Lambda will not poll the stream.
 uesmEnabled :: Lens' UpdateEventSourceMapping (Maybe Bool)

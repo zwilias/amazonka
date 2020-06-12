@@ -18,7 +18,7 @@
 -- Stability   : auto-generated
 -- Portability : non-portable (GHC extensions)
 --
--- Creates an 'IPSet' , which you use to specify which web requests you want to allow or block based on the IP addresses that the requests originate from. For example, if you're receiving a lot of requests from one or more individual IP addresses or one or more ranges of IP addresses and you want to block the requests, you can create an @IPSet@ that contains those IP addresses and then configure AWS WAF to block the requests.
+-- Creates an 'IPSet' , which you use to specify which web requests you want to allow or block based on the IP addresses that the requests originate from. For example, if you're receiving a lot of requests from one or more individual IP addresses or one or more ranges of IP addresses and you want to block the requests, you can create an @IPSet@ that contains those IP addresses and then configure AWS WAF to block the requests. 
 --
 --
 -- To create and configure an @IPSet@ , perform the following steps:
@@ -58,16 +58,11 @@ import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 import Network.AWS.WAFRegional.Types
-import Network.AWS.WAFRegional.Types.Product
 
 -- | /See:/ 'createIPSet' smart constructor.
-data CreateIPSet =
-  CreateIPSet'
-    { _cisName        :: !Text
-    , _cisChangeToken :: !Text
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data CreateIPSet = CreateIPSet'{_cisName :: !Text,
+                                _cisChangeToken :: !Text}
+                     deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'CreateIPSet' with the minimum fields required to make a request.
 --
@@ -80,9 +75,9 @@ createIPSet
     :: Text -- ^ 'cisName'
     -> Text -- ^ 'cisChangeToken'
     -> CreateIPSet
-createIPSet pName_ pChangeToken_ =
-  CreateIPSet' {_cisName = pName_, _cisChangeToken = pChangeToken_}
-
+createIPSet pName_ pChangeToken_
+  = CreateIPSet'{_cisName = pName_,
+                 _cisChangeToken = pChangeToken_}
 
 -- | A friendly name or description of the 'IPSet' . You can't change @Name@ after you create the @IPSet@ .
 cisName :: Lens' CreateIPSet Text
@@ -130,14 +125,11 @@ instance ToQuery CreateIPSet where
         toQuery = const mempty
 
 -- | /See:/ 'createIPSetResponse' smart constructor.
-data CreateIPSetResponse =
-  CreateIPSetResponse'
-    { _cisrsChangeToken    :: !(Maybe Text)
-    , _cisrsIPSet          :: !(Maybe IPSet)
-    , _cisrsResponseStatus :: !Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data CreateIPSetResponse = CreateIPSetResponse'{_cisrsChangeToken
+                                                :: !(Maybe Text),
+                                                _cisrsIPSet :: !(Maybe IPSet),
+                                                _cisrsResponseStatus :: !Int}
+                             deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'CreateIPSetResponse' with the minimum fields required to make a request.
 --
@@ -151,13 +143,10 @@ data CreateIPSetResponse =
 createIPSetResponse
     :: Int -- ^ 'cisrsResponseStatus'
     -> CreateIPSetResponse
-createIPSetResponse pResponseStatus_ =
-  CreateIPSetResponse'
-    { _cisrsChangeToken = Nothing
-    , _cisrsIPSet = Nothing
-    , _cisrsResponseStatus = pResponseStatus_
-    }
-
+createIPSetResponse pResponseStatus_
+  = CreateIPSetResponse'{_cisrsChangeToken = Nothing,
+                         _cisrsIPSet = Nothing,
+                         _cisrsResponseStatus = pResponseStatus_}
 
 -- | The @ChangeToken@ that you used to submit the @CreateIPSet@ request. You can also use this value to query the status of the request. For more information, see 'GetChangeTokenStatus' .
 cisrsChangeToken :: Lens' CreateIPSetResponse (Maybe Text)

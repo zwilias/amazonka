@@ -58,35 +58,33 @@ module Network.AWS.OpsWorks.CreateLayer
 
 import Network.AWS.Lens
 import Network.AWS.OpsWorks.Types
-import Network.AWS.OpsWorks.Types.Product
 import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 
 -- | /See:/ 'createLayer' smart constructor.
-data CreateLayer =
-  CreateLayer'
-    { _clCustomInstanceProfileARN :: !(Maybe Text)
-    , _clCustomSecurityGroupIds :: !(Maybe [Text])
-    , _clInstallUpdatesOnBoot :: !(Maybe Bool)
-    , _clCloudWatchLogsConfiguration :: !(Maybe CloudWatchLogsConfiguration)
-    , _clLifecycleEventConfiguration :: !(Maybe LifecycleEventConfiguration)
-    , _clCustomRecipes :: !(Maybe Recipes)
-    , _clCustomJSON :: !(Maybe Text)
-    , _clVolumeConfigurations :: !(Maybe [VolumeConfiguration])
-    , _clEnableAutoHealing :: !(Maybe Bool)
-    , _clPackages :: !(Maybe [Text])
-    , _clAttributes :: !(Maybe (Map LayerAttributesKeys (Maybe Text)))
-    , _clAutoAssignPublicIPs :: !(Maybe Bool)
-    , _clUseEBSOptimizedInstances :: !(Maybe Bool)
-    , _clAutoAssignElasticIPs :: !(Maybe Bool)
-    , _clStackId :: !Text
-    , _clType :: !LayerType
-    , _clName :: !Text
-    , _clShortname :: !Text
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data CreateLayer = CreateLayer'{_clCustomInstanceProfileARN
+                                :: !(Maybe Text),
+                                _clCustomSecurityGroupIds :: !(Maybe [Text]),
+                                _clInstallUpdatesOnBoot :: !(Maybe Bool),
+                                _clCloudWatchLogsConfiguration ::
+                                !(Maybe CloudWatchLogsConfiguration),
+                                _clLifecycleEventConfiguration ::
+                                !(Maybe LifecycleEventConfiguration),
+                                _clCustomRecipes :: !(Maybe Recipes),
+                                _clCustomJSON :: !(Maybe Text),
+                                _clVolumeConfigurations ::
+                                !(Maybe [VolumeConfiguration]),
+                                _clEnableAutoHealing :: !(Maybe Bool),
+                                _clPackages :: !(Maybe [Text]),
+                                _clAttributes ::
+                                !(Maybe (Map LayerAttributesKeys (Maybe Text))),
+                                _clAutoAssignPublicIPs :: !(Maybe Bool),
+                                _clUseEBSOptimizedInstances :: !(Maybe Bool),
+                                _clAutoAssignElasticIPs :: !(Maybe Bool),
+                                _clStackId :: !Text, _clType :: !LayerType,
+                                _clName :: !Text, _clShortname :: !Text}
+                     deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'CreateLayer' with the minimum fields required to make a request.
 --
@@ -96,7 +94,7 @@ data CreateLayer =
 --
 -- * 'clCustomSecurityGroupIds' - An array containing the layer custom security group IDs.
 --
--- * 'clInstallUpdatesOnBoot' - Whether to install operating system and package updates when the instance boots. The default value is @true@ . To control when updates are installed, set this value to @false@ . You must then update your instances manually by using 'CreateDeployment' to run the @update_dependencies@ stack command or by manually running @yum@ (Amazon Linux) or @apt-get@ (Ubuntu) on the instances.
+-- * 'clInstallUpdatesOnBoot' - Whether to install operating system and package updates when the instance boots. The default value is @true@ . To control when updates are installed, set this value to @false@ . You must then update your instances manually by using 'CreateDeployment' to run the @update_dependencies@ stack command or by manually running @yum@ (Amazon Linux) or @apt-get@ (Ubuntu) on the instances. 
 --
 -- * 'clCloudWatchLogsConfiguration' - Specifies CloudWatch Logs configuration options for the layer. For more information, see 'CloudWatchLogsLogStream' .
 --
@@ -104,7 +102,7 @@ data CreateLayer =
 --
 -- * 'clCustomRecipes' - A @LayerCustomRecipes@ object that specifies the layer custom recipes.
 --
--- * 'clCustomJSON' - A JSON-formatted string containing custom stack configuration and deployment attributes to be installed on the layer's instances. For more information, see <http://docs.aws.amazon.com/opsworks/latest/userguide/workingcookbook-json-override.html Using Custom JSON> . This feature is supported as of version 1.7.42 of the AWS CLI.
+-- * 'clCustomJSON' - A JSON-formatted string containing custom stack configuration and deployment attributes to be installed on the layer's instances. For more information, see <http://docs.aws.amazon.com/opsworks/latest/userguide/workingcookbook-json-override.html Using Custom JSON> . This feature is supported as of version 1.7.42 of the AWS CLI. 
 --
 -- * 'clVolumeConfigurations' - A @VolumeConfigurations@ object that describes the layer's Amazon EBS volumes.
 --
@@ -133,28 +131,21 @@ createLayer
     -> Text -- ^ 'clName'
     -> Text -- ^ 'clShortname'
     -> CreateLayer
-createLayer pStackId_ pType_ pName_ pShortname_ =
-  CreateLayer'
-    { _clCustomInstanceProfileARN = Nothing
-    , _clCustomSecurityGroupIds = Nothing
-    , _clInstallUpdatesOnBoot = Nothing
-    , _clCloudWatchLogsConfiguration = Nothing
-    , _clLifecycleEventConfiguration = Nothing
-    , _clCustomRecipes = Nothing
-    , _clCustomJSON = Nothing
-    , _clVolumeConfigurations = Nothing
-    , _clEnableAutoHealing = Nothing
-    , _clPackages = Nothing
-    , _clAttributes = Nothing
-    , _clAutoAssignPublicIPs = Nothing
-    , _clUseEBSOptimizedInstances = Nothing
-    , _clAutoAssignElasticIPs = Nothing
-    , _clStackId = pStackId_
-    , _clType = pType_
-    , _clName = pName_
-    , _clShortname = pShortname_
-    }
-
+createLayer pStackId_ pType_ pName_ pShortname_
+  = CreateLayer'{_clCustomInstanceProfileARN = Nothing,
+                 _clCustomSecurityGroupIds = Nothing,
+                 _clInstallUpdatesOnBoot = Nothing,
+                 _clCloudWatchLogsConfiguration = Nothing,
+                 _clLifecycleEventConfiguration = Nothing,
+                 _clCustomRecipes = Nothing, _clCustomJSON = Nothing,
+                 _clVolumeConfigurations = Nothing,
+                 _clEnableAutoHealing = Nothing,
+                 _clPackages = Nothing, _clAttributes = Nothing,
+                 _clAutoAssignPublicIPs = Nothing,
+                 _clUseEBSOptimizedInstances = Nothing,
+                 _clAutoAssignElasticIPs = Nothing,
+                 _clStackId = pStackId_, _clType = pType_,
+                 _clName = pName_, _clShortname = pShortname_}
 
 -- | The ARN of an IAM profile to be used for the layer's EC2 instances. For more information about IAM ARNs, see <http://docs.aws.amazon.com/IAM/latest/UserGuide/Using_Identifiers.html Using Identifiers> .
 clCustomInstanceProfileARN :: Lens' CreateLayer (Maybe Text)
@@ -164,7 +155,7 @@ clCustomInstanceProfileARN = lens _clCustomInstanceProfileARN (\ s a -> s{_clCus
 clCustomSecurityGroupIds :: Lens' CreateLayer [Text]
 clCustomSecurityGroupIds = lens _clCustomSecurityGroupIds (\ s a -> s{_clCustomSecurityGroupIds = a}) . _Default . _Coerce
 
--- | Whether to install operating system and package updates when the instance boots. The default value is @true@ . To control when updates are installed, set this value to @false@ . You must then update your instances manually by using 'CreateDeployment' to run the @update_dependencies@ stack command or by manually running @yum@ (Amazon Linux) or @apt-get@ (Ubuntu) on the instances.
+-- | Whether to install operating system and package updates when the instance boots. The default value is @true@ . To control when updates are installed, set this value to @false@ . You must then update your instances manually by using 'CreateDeployment' to run the @update_dependencies@ stack command or by manually running @yum@ (Amazon Linux) or @apt-get@ (Ubuntu) on the instances. 
 clInstallUpdatesOnBoot :: Lens' CreateLayer (Maybe Bool)
 clInstallUpdatesOnBoot = lens _clInstallUpdatesOnBoot (\ s a -> s{_clInstallUpdatesOnBoot = a})
 
@@ -180,7 +171,7 @@ clLifecycleEventConfiguration = lens _clLifecycleEventConfiguration (\ s a -> s{
 clCustomRecipes :: Lens' CreateLayer (Maybe Recipes)
 clCustomRecipes = lens _clCustomRecipes (\ s a -> s{_clCustomRecipes = a})
 
--- | A JSON-formatted string containing custom stack configuration and deployment attributes to be installed on the layer's instances. For more information, see <http://docs.aws.amazon.com/opsworks/latest/userguide/workingcookbook-json-override.html Using Custom JSON> . This feature is supported as of version 1.7.42 of the AWS CLI.
+-- | A JSON-formatted string containing custom stack configuration and deployment attributes to be installed on the layer's instances. For more information, see <http://docs.aws.amazon.com/opsworks/latest/userguide/workingcookbook-json-override.html Using Custom JSON> . This feature is supported as of version 1.7.42 of the AWS CLI. 
 clCustomJSON :: Lens' CreateLayer (Maybe Text)
 clCustomJSON = lens _clCustomJSON (\ s a -> s{_clCustomJSON = a})
 
@@ -292,13 +283,10 @@ instance ToQuery CreateLayer where
 --
 --
 -- /See:/ 'createLayerResponse' smart constructor.
-data CreateLayerResponse =
-  CreateLayerResponse'
-    { _clrsLayerId        :: !(Maybe Text)
-    , _clrsResponseStatus :: !Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data CreateLayerResponse = CreateLayerResponse'{_clrsLayerId
+                                                :: !(Maybe Text),
+                                                _clrsResponseStatus :: !Int}
+                             deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'CreateLayerResponse' with the minimum fields required to make a request.
 --
@@ -310,10 +298,9 @@ data CreateLayerResponse =
 createLayerResponse
     :: Int -- ^ 'clrsResponseStatus'
     -> CreateLayerResponse
-createLayerResponse pResponseStatus_ =
-  CreateLayerResponse'
-    {_clrsLayerId = Nothing, _clrsResponseStatus = pResponseStatus_}
-
+createLayerResponse pResponseStatus_
+  = CreateLayerResponse'{_clrsLayerId = Nothing,
+                         _clrsResponseStatus = pResponseStatus_}
 
 -- | The layer ID.
 clrsLayerId :: Lens' CreateLayerResponse (Maybe Text)

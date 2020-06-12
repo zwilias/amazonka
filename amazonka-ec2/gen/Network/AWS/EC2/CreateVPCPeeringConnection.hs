@@ -46,23 +46,24 @@ module Network.AWS.EC2.CreateVPCPeeringConnection
     ) where
 
 import Network.AWS.EC2.Types
-import Network.AWS.EC2.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 
 -- | /See:/ 'createVPCPeeringConnection' smart constructor.
-data CreateVPCPeeringConnection =
-  CreateVPCPeeringConnection'
-    { _cvpcPeerVPCId   :: !(Maybe Text)
-    , _cvpcVPCId       :: !(Maybe Text)
-    , _cvpcPeerOwnerId :: !(Maybe Text)
-    , _cvpcPeerRegion  :: !(Maybe Text)
-    , _cvpcDryRun      :: !(Maybe Bool)
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data CreateVPCPeeringConnection = CreateVPCPeeringConnection'{_cvpcPeerVPCId
+                                                              :: !(Maybe Text),
+                                                              _cvpcVPCId ::
+                                                              !(Maybe Text),
+                                                              _cvpcPeerOwnerId
+                                                              :: !(Maybe Text),
+                                                              _cvpcPeerRegion ::
+                                                              !(Maybe Text),
+                                                              _cvpcDryRun ::
+                                                              !(Maybe Bool)}
+                                    deriving (Eq, Read, Show, Data, Typeable,
+                                              Generic)
 
 -- | Creates a value of 'CreateVPCPeeringConnection' with the minimum fields required to make a request.
 --
@@ -79,15 +80,13 @@ data CreateVPCPeeringConnection =
 -- * 'cvpcDryRun' - Checks whether you have the required permissions for the action, without actually making the request, and provides an error response. If you have the required permissions, the error response is @DryRunOperation@ . Otherwise, it is @UnauthorizedOperation@ .
 createVPCPeeringConnection
     :: CreateVPCPeeringConnection
-createVPCPeeringConnection =
-  CreateVPCPeeringConnection'
-    { _cvpcPeerVPCId = Nothing
-    , _cvpcVPCId = Nothing
-    , _cvpcPeerOwnerId = Nothing
-    , _cvpcPeerRegion = Nothing
-    , _cvpcDryRun = Nothing
-    }
-
+createVPCPeeringConnection
+  = CreateVPCPeeringConnection'{_cvpcPeerVPCId =
+                                  Nothing,
+                                _cvpcVPCId = Nothing,
+                                _cvpcPeerOwnerId = Nothing,
+                                _cvpcPeerRegion = Nothing,
+                                _cvpcDryRun = Nothing}
 
 -- | The ID of the VPC with which you are creating the VPC peering connection. You must specify this parameter in the request.
 cvpcPeerVPCId :: Lens' CreateVPCPeeringConnection (Maybe Text)
@@ -142,13 +141,15 @@ instance ToQuery CreateVPCPeeringConnection where
                "DryRun" =: _cvpcDryRun]
 
 -- | /See:/ 'createVPCPeeringConnectionResponse' smart constructor.
-data CreateVPCPeeringConnectionResponse =
-  CreateVPCPeeringConnectionResponse'
-    { _cvpcrsVPCPeeringConnection :: !(Maybe VPCPeeringConnection)
-    , _cvpcrsResponseStatus       :: !Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data CreateVPCPeeringConnectionResponse = CreateVPCPeeringConnectionResponse'{_cvpcrsVPCPeeringConnection
+                                                                              ::
+                                                                              !(Maybe
+                                                                                  VPCPeeringConnection),
+                                                                              _cvpcrsResponseStatus
+                                                                              ::
+                                                                              !Int}
+                                            deriving (Eq, Read, Show, Data,
+                                                      Typeable, Generic)
 
 -- | Creates a value of 'CreateVPCPeeringConnectionResponse' with the minimum fields required to make a request.
 --
@@ -160,12 +161,11 @@ data CreateVPCPeeringConnectionResponse =
 createVPCPeeringConnectionResponse
     :: Int -- ^ 'cvpcrsResponseStatus'
     -> CreateVPCPeeringConnectionResponse
-createVPCPeeringConnectionResponse pResponseStatus_ =
-  CreateVPCPeeringConnectionResponse'
-    { _cvpcrsVPCPeeringConnection = Nothing
-    , _cvpcrsResponseStatus = pResponseStatus_
-    }
-
+createVPCPeeringConnectionResponse pResponseStatus_
+  = CreateVPCPeeringConnectionResponse'{_cvpcrsVPCPeeringConnection
+                                          = Nothing,
+                                        _cvpcrsResponseStatus =
+                                          pResponseStatus_}
 
 -- | Information about the VPC peering connection.
 cvpcrsVPCPeeringConnection :: Lens' CreateVPCPeeringConnectionResponse (Maybe VPCPeeringConnection)

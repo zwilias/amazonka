@@ -40,7 +40,6 @@ module Network.AWS.GuardDuty.ListDetectors
     ) where
 
 import Network.AWS.GuardDuty.Types
-import Network.AWS.GuardDuty.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Pager
 import Network.AWS.Prelude
@@ -48,13 +47,10 @@ import Network.AWS.Request
 import Network.AWS.Response
 
 -- | /See:/ 'listDetectors' smart constructor.
-data ListDetectors =
-  ListDetectors'
-    { _ldNextToken  :: !(Maybe Text)
-    , _ldMaxResults :: !(Maybe Nat)
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data ListDetectors = ListDetectors'{_ldNextToken ::
+                                    !(Maybe Text),
+                                    _ldMaxResults :: !(Maybe Nat)}
+                       deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'ListDetectors' with the minimum fields required to make a request.
 --
@@ -65,8 +61,9 @@ data ListDetectors =
 -- * 'ldMaxResults' - You can use this parameter to indicate the maximum number of detectors that you want in the response.
 listDetectors
     :: ListDetectors
-listDetectors = ListDetectors' {_ldNextToken = Nothing, _ldMaxResults = Nothing}
-
+listDetectors
+  = ListDetectors'{_ldNextToken = Nothing,
+                   _ldMaxResults = Nothing}
 
 -- | You can use this parameter when paginating results. Set the value of this parameter to null on your first call to the ListDetectors action. For subsequent calls to the action fill nextToken in the request with the value of nextToken from the previous response to continue listing data.
 ldNextToken :: Lens' ListDetectors (Maybe Text)
@@ -115,14 +112,13 @@ instance ToQuery ListDetectors where
                "maxResults" =: _ldMaxResults]
 
 -- | /See:/ 'listDetectorsResponse' smart constructor.
-data ListDetectorsResponse =
-  ListDetectorsResponse'
-    { _ldrsNextToken      :: !(Maybe Text)
-    , _ldrsDetectorIds    :: !(Maybe [Text])
-    , _ldrsResponseStatus :: !Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data ListDetectorsResponse = ListDetectorsResponse'{_ldrsNextToken
+                                                    :: !(Maybe Text),
+                                                    _ldrsDetectorIds ::
+                                                    !(Maybe [Text]),
+                                                    _ldrsResponseStatus :: !Int}
+                               deriving (Eq, Read, Show, Data, Typeable,
+                                         Generic)
 
 -- | Creates a value of 'ListDetectorsResponse' with the minimum fields required to make a request.
 --
@@ -136,13 +132,10 @@ data ListDetectorsResponse =
 listDetectorsResponse
     :: Int -- ^ 'ldrsResponseStatus'
     -> ListDetectorsResponse
-listDetectorsResponse pResponseStatus_ =
-  ListDetectorsResponse'
-    { _ldrsNextToken = Nothing
-    , _ldrsDetectorIds = Nothing
-    , _ldrsResponseStatus = pResponseStatus_
-    }
-
+listDetectorsResponse pResponseStatus_
+  = ListDetectorsResponse'{_ldrsNextToken = Nothing,
+                           _ldrsDetectorIds = Nothing,
+                           _ldrsResponseStatus = pResponseStatus_}
 
 -- | Undocumented member.
 ldrsNextToken :: Lens' ListDetectorsResponse (Maybe Text)

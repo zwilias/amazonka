@@ -39,20 +39,19 @@ module Network.AWS.DirectConnect.CreateDirectConnectGateway
     ) where
 
 import Network.AWS.DirectConnect.Types
-import Network.AWS.DirectConnect.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 
 -- | /See:/ 'createDirectConnectGateway' smart constructor.
-data CreateDirectConnectGateway =
-  CreateDirectConnectGateway'
-    { _cdcgAmazonSideASN            :: !(Maybe Integer)
-    , _cdcgDirectConnectGatewayName :: !Text
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data CreateDirectConnectGateway = CreateDirectConnectGateway'{_cdcgAmazonSideASN
+                                                              ::
+                                                              !(Maybe Integer),
+                                                              _cdcgDirectConnectGatewayName
+                                                              :: !Text}
+                                    deriving (Eq, Read, Show, Data, Typeable,
+                                              Generic)
 
 -- | Creates a value of 'CreateDirectConnectGateway' with the minimum fields required to make a request.
 --
@@ -64,12 +63,11 @@ data CreateDirectConnectGateway =
 createDirectConnectGateway
     :: Text -- ^ 'cdcgDirectConnectGatewayName'
     -> CreateDirectConnectGateway
-createDirectConnectGateway pDirectConnectGatewayName_ =
-  CreateDirectConnectGateway'
-    { _cdcgAmazonSideASN = Nothing
-    , _cdcgDirectConnectGatewayName = pDirectConnectGatewayName_
-    }
-
+createDirectConnectGateway pDirectConnectGatewayName_
+  = CreateDirectConnectGateway'{_cdcgAmazonSideASN =
+                                  Nothing,
+                                _cdcgDirectConnectGatewayName =
+                                  pDirectConnectGatewayName_}
 
 -- | The autonomous system number (ASN) for Border Gateway Protocol (BGP) to be configured on the Amazon side of the connection. The ASN must be in the private range of 64,512 to 65,534 or 4,200,000,000 to 4,294,967,294. The default is 64512.
 cdcgAmazonSideASN :: Lens' CreateDirectConnectGateway (Maybe Integer)
@@ -120,13 +118,15 @@ instance ToQuery CreateDirectConnectGateway where
         toQuery = const mempty
 
 -- | /See:/ 'createDirectConnectGatewayResponse' smart constructor.
-data CreateDirectConnectGatewayResponse =
-  CreateDirectConnectGatewayResponse'
-    { _cdcgrsDirectConnectGateway :: !(Maybe DirectConnectGateway)
-    , _cdcgrsResponseStatus       :: !Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data CreateDirectConnectGatewayResponse = CreateDirectConnectGatewayResponse'{_cdcgrsDirectConnectGateway
+                                                                              ::
+                                                                              !(Maybe
+                                                                                  DirectConnectGateway),
+                                                                              _cdcgrsResponseStatus
+                                                                              ::
+                                                                              !Int}
+                                            deriving (Eq, Read, Show, Data,
+                                                      Typeable, Generic)
 
 -- | Creates a value of 'CreateDirectConnectGatewayResponse' with the minimum fields required to make a request.
 --
@@ -138,12 +138,11 @@ data CreateDirectConnectGatewayResponse =
 createDirectConnectGatewayResponse
     :: Int -- ^ 'cdcgrsResponseStatus'
     -> CreateDirectConnectGatewayResponse
-createDirectConnectGatewayResponse pResponseStatus_ =
-  CreateDirectConnectGatewayResponse'
-    { _cdcgrsDirectConnectGateway = Nothing
-    , _cdcgrsResponseStatus = pResponseStatus_
-    }
-
+createDirectConnectGatewayResponse pResponseStatus_
+  = CreateDirectConnectGatewayResponse'{_cdcgrsDirectConnectGateway
+                                          = Nothing,
+                                        _cdcgrsResponseStatus =
+                                          pResponseStatus_}
 
 -- | The Direct Connect gateway.
 cdcgrsDirectConnectGateway :: Lens' CreateDirectConnectGatewayResponse (Maybe DirectConnectGateway)

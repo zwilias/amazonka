@@ -49,38 +49,40 @@ import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 import Network.AWS.S3.Types
-import Network.AWS.S3.Types.Product
 
--- | <https://docs.aws.amazon.com/AmazonS3/latest/API/RESTObjectSELECTContent.html S3Select API Documentation>
+-- | <https://docs.aws.amazon.com/AmazonS3/latest/API/RESTObjectSELECTContent.html S3Select API Documentation> 
 --
 -- /See:/ 'selectObjectContent' smart constructor.
-data SelectObjectContent =
-  SelectObjectContent'
-    { _socSSECustomerAlgorithm :: !(Maybe Text)
-    , _socSSECustomerKey       :: !(Maybe (Sensitive Text))
-    , _socRequestProgress      :: !(Maybe RequestProgress)
-    , _socSSECustomerKeyMD5    :: !(Maybe Text)
-    , _socBucket               :: !BucketName
-    , _socKey                  :: !ObjectKey
-    , _socExpression           :: !Text
-    , _socExpressionType       :: !ExpressionType
-    , _socInputSerialization   :: !InputSerialization
-    , _socOutputSerialization  :: !OutputSerialization
-    }
-  deriving (Eq, Show, Data, Typeable, Generic)
-
+data SelectObjectContent = SelectObjectContent'{_socSSECustomerAlgorithm
+                                                :: !(Maybe Text),
+                                                _socSSECustomerKey ::
+                                                !(Maybe (Sensitive Text)),
+                                                _socRequestProgress ::
+                                                !(Maybe RequestProgress),
+                                                _socSSECustomerKeyMD5 ::
+                                                !(Maybe Text),
+                                                _socBucket :: !BucketName,
+                                                _socKey :: !ObjectKey,
+                                                _socExpression :: !Text,
+                                                _socExpressionType ::
+                                                !ExpressionType,
+                                                _socInputSerialization ::
+                                                !InputSerialization,
+                                                _socOutputSerialization ::
+                                                !OutputSerialization}
+                             deriving (Eq, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'SelectObjectContent' with the minimum fields required to make a request.
 --
 -- Use one of the following lenses to modify other fields as desired:
 --
--- * 'socSSECustomerAlgorithm' - <https://docs.aws.amazon.com/AmazonS3/latest/dev/ServerSideEncryptionCustomerKeys.html Server-Side Encryption (Using Customer-Provided Encryption Keys>
+-- * 'socSSECustomerAlgorithm' - <https://docs.aws.amazon.com/AmazonS3/latest/dev/ServerSideEncryptionCustomerKeys.html Server-Side Encryption (Using Customer-Provided Encryption Keys> 
 --
--- * 'socSSECustomerKey' - <https://docs.aws.amazon.com/AmazonS3/latest/dev/ServerSideEncryptionCustomerKeys.html Server-Side Encryption (Using Customer-Provided Encryption Keys>
+-- * 'socSSECustomerKey' - <https://docs.aws.amazon.com/AmazonS3/latest/dev/ServerSideEncryptionCustomerKeys.html Server-Side Encryption (Using Customer-Provided Encryption Keys> 
 --
 -- * 'socRequestProgress' - Specifies if periodic request progress information should be enabled.
 --
--- * 'socSSECustomerKeyMD5' - <https://docs.aws.amazon.com/AmazonS3/latest/dev/ServerSideEncryptionCustomerKeys.html Server-Side Encryption (Using Customer-Provided Encryption Keys>
+-- * 'socSSECustomerKeyMD5' - <https://docs.aws.amazon.com/AmazonS3/latest/dev/ServerSideEncryptionCustomerKeys.html Server-Side Encryption (Using Customer-Provided Encryption Keys> 
 --
 -- * 'socBucket' - The S3 Bucket.
 --
@@ -101,26 +103,25 @@ selectObjectContent
     -> InputSerialization -- ^ 'socInputSerialization'
     -> OutputSerialization -- ^ 'socOutputSerialization'
     -> SelectObjectContent
-selectObjectContent pBucket_ pKey_ pExpression_ pExpressionType_ pInputSerialization_ pOutputSerialization_ =
-  SelectObjectContent'
-    { _socSSECustomerAlgorithm = Nothing
-    , _socSSECustomerKey = Nothing
-    , _socRequestProgress = Nothing
-    , _socSSECustomerKeyMD5 = Nothing
-    , _socBucket = pBucket_
-    , _socKey = pKey_
-    , _socExpression = pExpression_
-    , _socExpressionType = pExpressionType_
-    , _socInputSerialization = pInputSerialization_
-    , _socOutputSerialization = pOutputSerialization_
-    }
+selectObjectContent pBucket_ pKey_ pExpression_
+  pExpressionType_ pInputSerialization_
+  pOutputSerialization_
+  = SelectObjectContent'{_socSSECustomerAlgorithm =
+                           Nothing,
+                         _socSSECustomerKey = Nothing,
+                         _socRequestProgress = Nothing,
+                         _socSSECustomerKeyMD5 = Nothing,
+                         _socBucket = pBucket_, _socKey = pKey_,
+                         _socExpression = pExpression_,
+                         _socExpressionType = pExpressionType_,
+                         _socInputSerialization = pInputSerialization_,
+                         _socOutputSerialization = pOutputSerialization_}
 
-
--- | <https://docs.aws.amazon.com/AmazonS3/latest/dev/ServerSideEncryptionCustomerKeys.html Server-Side Encryption (Using Customer-Provided Encryption Keys>
+-- | <https://docs.aws.amazon.com/AmazonS3/latest/dev/ServerSideEncryptionCustomerKeys.html Server-Side Encryption (Using Customer-Provided Encryption Keys> 
 socSSECustomerAlgorithm :: Lens' SelectObjectContent (Maybe Text)
 socSSECustomerAlgorithm = lens _socSSECustomerAlgorithm (\ s a -> s{_socSSECustomerAlgorithm = a})
 
--- | <https://docs.aws.amazon.com/AmazonS3/latest/dev/ServerSideEncryptionCustomerKeys.html Server-Side Encryption (Using Customer-Provided Encryption Keys>
+-- | <https://docs.aws.amazon.com/AmazonS3/latest/dev/ServerSideEncryptionCustomerKeys.html Server-Side Encryption (Using Customer-Provided Encryption Keys> 
 socSSECustomerKey :: Lens' SelectObjectContent (Maybe Text)
 socSSECustomerKey = lens _socSSECustomerKey (\ s a -> s{_socSSECustomerKey = a}) . mapping _Sensitive
 
@@ -128,7 +129,7 @@ socSSECustomerKey = lens _socSSECustomerKey (\ s a -> s{_socSSECustomerKey = a})
 socRequestProgress :: Lens' SelectObjectContent (Maybe RequestProgress)
 socRequestProgress = lens _socRequestProgress (\ s a -> s{_socRequestProgress = a})
 
--- | <https://docs.aws.amazon.com/AmazonS3/latest/dev/ServerSideEncryptionCustomerKeys.html Server-Side Encryption (Using Customer-Provided Encryption Keys>
+-- | <https://docs.aws.amazon.com/AmazonS3/latest/dev/ServerSideEncryptionCustomerKeys.html Server-Side Encryption (Using Customer-Provided Encryption Keys> 
 socSSECustomerKeyMD5 :: Lens' SelectObjectContent (Maybe Text)
 socSSECustomerKeyMD5 = lens _socSSECustomerKeyMD5 (\ s a -> s{_socSSECustomerKeyMD5 = a})
 
@@ -202,13 +203,14 @@ instance ToXML SelectObjectContent where
                "OutputSerialization" @= _socOutputSerialization]
 
 -- | /See:/ 'selectObjectContentResponse' smart constructor.
-data SelectObjectContentResponse =
-  SelectObjectContentResponse'
-    { _socrsPayload        :: !(Maybe SelectObjectContentEventStream)
-    , _socrsResponseStatus :: !Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data SelectObjectContentResponse = SelectObjectContentResponse'{_socrsPayload
+                                                                ::
+                                                                !(Maybe
+                                                                    SelectObjectContentEventStream),
+                                                                _socrsResponseStatus
+                                                                :: !Int}
+                                     deriving (Eq, Read, Show, Data, Typeable,
+                                               Generic)
 
 -- | Creates a value of 'SelectObjectContentResponse' with the minimum fields required to make a request.
 --
@@ -220,10 +222,10 @@ data SelectObjectContentResponse =
 selectObjectContentResponse
     :: Int -- ^ 'socrsResponseStatus'
     -> SelectObjectContentResponse
-selectObjectContentResponse pResponseStatus_ =
-  SelectObjectContentResponse'
-    {_socrsPayload = Nothing, _socrsResponseStatus = pResponseStatus_}
-
+selectObjectContentResponse pResponseStatus_
+  = SelectObjectContentResponse'{_socrsPayload =
+                                   Nothing,
+                                 _socrsResponseStatus = pResponseStatus_}
 
 -- | Undocumented member.
 socrsPayload :: Lens' SelectObjectContentResponse (Maybe SelectObjectContentEventStream)

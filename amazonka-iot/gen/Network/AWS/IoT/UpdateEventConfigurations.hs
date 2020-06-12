@@ -37,19 +37,19 @@ module Network.AWS.IoT.UpdateEventConfigurations
     ) where
 
 import Network.AWS.IoT.Types
-import Network.AWS.IoT.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 
 -- | /See:/ 'updateEventConfigurations' smart constructor.
-newtype UpdateEventConfigurations =
-  UpdateEventConfigurations'
-    { _uecEventConfigurations :: Maybe (Map EventType Configuration)
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+newtype UpdateEventConfigurations = UpdateEventConfigurations'{_uecEventConfigurations
+                                                               ::
+                                                               Maybe
+                                                                 (Map EventType
+                                                                    Configuration)}
+                                      deriving (Eq, Read, Show, Data, Typeable,
+                                                Generic)
 
 -- | Creates a value of 'UpdateEventConfigurations' with the minimum fields required to make a request.
 --
@@ -58,9 +58,9 @@ newtype UpdateEventConfigurations =
 -- * 'uecEventConfigurations' - The new event configuration values.
 updateEventConfigurations
     :: UpdateEventConfigurations
-updateEventConfigurations =
-  UpdateEventConfigurations' {_uecEventConfigurations = Nothing}
-
+updateEventConfigurations
+  = UpdateEventConfigurations'{_uecEventConfigurations
+                                 = Nothing}
 
 -- | The new event configuration values.
 uecEventConfigurations :: Lens' UpdateEventConfigurations (HashMap EventType Configuration)
@@ -97,12 +97,11 @@ instance ToQuery UpdateEventConfigurations where
         toQuery = const mempty
 
 -- | /See:/ 'updateEventConfigurationsResponse' smart constructor.
-newtype UpdateEventConfigurationsResponse =
-  UpdateEventConfigurationsResponse'
-    { _uecrsResponseStatus :: Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+newtype UpdateEventConfigurationsResponse = UpdateEventConfigurationsResponse'{_uecrsResponseStatus
+                                                                               ::
+                                                                               Int}
+                                              deriving (Eq, Read, Show, Data,
+                                                        Typeable, Generic)
 
 -- | Creates a value of 'UpdateEventConfigurationsResponse' with the minimum fields required to make a request.
 --
@@ -112,9 +111,9 @@ newtype UpdateEventConfigurationsResponse =
 updateEventConfigurationsResponse
     :: Int -- ^ 'uecrsResponseStatus'
     -> UpdateEventConfigurationsResponse
-updateEventConfigurationsResponse pResponseStatus_ =
-  UpdateEventConfigurationsResponse' {_uecrsResponseStatus = pResponseStatus_}
-
+updateEventConfigurationsResponse pResponseStatus_
+  = UpdateEventConfigurationsResponse'{_uecrsResponseStatus
+                                         = pResponseStatus_}
 
 -- | -- | The response status code.
 uecrsResponseStatus :: Lens' UpdateEventConfigurationsResponse Int

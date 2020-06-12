@@ -36,20 +36,16 @@ module Network.AWS.GuardDuty.DeleteIPSet
     ) where
 
 import Network.AWS.GuardDuty.Types
-import Network.AWS.GuardDuty.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 
 -- | /See:/ 'deleteIPSet' smart constructor.
-data DeleteIPSet =
-  DeleteIPSet'
-    { _disDetectorId :: !Text
-    , _disIPSetId    :: !Text
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data DeleteIPSet = DeleteIPSet'{_disDetectorId ::
+                                !Text,
+                                _disIPSetId :: !Text}
+                     deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'DeleteIPSet' with the minimum fields required to make a request.
 --
@@ -62,9 +58,9 @@ deleteIPSet
     :: Text -- ^ 'disDetectorId'
     -> Text -- ^ 'disIPSetId'
     -> DeleteIPSet
-deleteIPSet pDetectorId_ pIPSetId_ =
-  DeleteIPSet' {_disDetectorId = pDetectorId_, _disIPSetId = pIPSetId_}
-
+deleteIPSet pDetectorId_ pIPSetId_
+  = DeleteIPSet'{_disDetectorId = pDetectorId_,
+                 _disIPSetId = pIPSetId_}
 
 -- | The detectorID that specifies the GuardDuty service whose IPSet you want to delete.
 disDetectorId :: Lens' DeleteIPSet Text
@@ -103,12 +99,10 @@ instance ToQuery DeleteIPSet where
         toQuery = const mempty
 
 -- | /See:/ 'deleteIPSetResponse' smart constructor.
-newtype DeleteIPSetResponse =
-  DeleteIPSetResponse'
-    { _dipsrsResponseStatus :: Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+newtype DeleteIPSetResponse = DeleteIPSetResponse'{_dipsrsResponseStatus
+                                                   :: Int}
+                                deriving (Eq, Read, Show, Data, Typeable,
+                                          Generic)
 
 -- | Creates a value of 'DeleteIPSetResponse' with the minimum fields required to make a request.
 --
@@ -118,9 +112,9 @@ newtype DeleteIPSetResponse =
 deleteIPSetResponse
     :: Int -- ^ 'dipsrsResponseStatus'
     -> DeleteIPSetResponse
-deleteIPSetResponse pResponseStatus_ =
-  DeleteIPSetResponse' {_dipsrsResponseStatus = pResponseStatus_}
-
+deleteIPSetResponse pResponseStatus_
+  = DeleteIPSetResponse'{_dipsrsResponseStatus =
+                           pResponseStatus_}
 
 -- | -- | The response status code.
 dipsrsResponseStatus :: Lens' DeleteIPSetResponse Int

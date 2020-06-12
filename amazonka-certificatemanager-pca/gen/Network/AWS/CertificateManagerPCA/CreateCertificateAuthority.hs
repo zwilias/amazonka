@@ -41,22 +41,26 @@ module Network.AWS.CertificateManagerPCA.CreateCertificateAuthority
     ) where
 
 import Network.AWS.CertificateManagerPCA.Types
-import Network.AWS.CertificateManagerPCA.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 
 -- | /See:/ 'createCertificateAuthority' smart constructor.
-data CreateCertificateAuthority =
-  CreateCertificateAuthority'
-    { _ccaIdempotencyToken :: !(Maybe Text)
-    , _ccaRevocationConfiguration :: !(Maybe RevocationConfiguration)
-    , _ccaCertificateAuthorityConfiguration :: !CertificateAuthorityConfiguration
-    , _ccaCertificateAuthorityType :: !CertificateAuthorityType
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data CreateCertificateAuthority = CreateCertificateAuthority'{_ccaIdempotencyToken
+                                                              :: !(Maybe Text),
+                                                              _ccaRevocationConfiguration
+                                                              ::
+                                                              !(Maybe
+                                                                  RevocationConfiguration),
+                                                              _ccaCertificateAuthorityConfiguration
+                                                              ::
+                                                              !CertificateAuthorityConfiguration,
+                                                              _ccaCertificateAuthorityType
+                                                              ::
+                                                              !CertificateAuthorityType}
+                                    deriving (Eq, Read, Show, Data, Typeable,
+                                              Generic)
 
 -- | Creates a value of 'CreateCertificateAuthority' with the minimum fields required to make a request.
 --
@@ -64,7 +68,7 @@ data CreateCertificateAuthority =
 --
 -- * 'ccaIdempotencyToken' - Alphanumeric string that can be used to distinguish between calls to __CreateCertificateAuthority__ . Idempotency tokens time out after five minutes. Therefore, if you call __CreateCertificateAuthority__ multiple times with the same idempotency token within a five minute period, ACM PCA recognizes that you are requesting only one certificate and will issue only one. If you change the idempotency token for each call, however, ACM PCA recognizes that you are requesting multiple certificates.
 --
--- * 'ccaRevocationConfiguration' - Contains a Boolean value that you can use to enable a certification revocation list (CRL) for the CA, the name of the S3 bucket to which ACM PCA will write the CRL, and an optional CNAME alias that you can use to hide the name of your bucket in the __CRL Distribution Points__ extension of your CA certificate. For more information, see the 'CrlConfiguration' structure.
+-- * 'ccaRevocationConfiguration' - Contains a Boolean value that you can use to enable a certification revocation list (CRL) for the CA, the name of the S3 bucket to which ACM PCA will write the CRL, and an optional CNAME alias that you can use to hide the name of your bucket in the __CRL Distribution Points__ extension of your CA certificate. For more information, see the 'CrlConfiguration' structure. 
 --
 -- * 'ccaCertificateAuthorityConfiguration' - Name and bit size of the private key algorithm, the name of the signing algorithm, and X.500 certificate subject information.
 --
@@ -73,21 +77,22 @@ createCertificateAuthority
     :: CertificateAuthorityConfiguration -- ^ 'ccaCertificateAuthorityConfiguration'
     -> CertificateAuthorityType -- ^ 'ccaCertificateAuthorityType'
     -> CreateCertificateAuthority
-createCertificateAuthority pCertificateAuthorityConfiguration_ pCertificateAuthorityType_ =
-  CreateCertificateAuthority'
-    { _ccaIdempotencyToken = Nothing
-    , _ccaRevocationConfiguration = Nothing
-    , _ccaCertificateAuthorityConfiguration =
-        pCertificateAuthorityConfiguration_
-    , _ccaCertificateAuthorityType = pCertificateAuthorityType_
-    }
-
+createCertificateAuthority
+  pCertificateAuthorityConfiguration_
+  pCertificateAuthorityType_
+  = CreateCertificateAuthority'{_ccaIdempotencyToken =
+                                  Nothing,
+                                _ccaRevocationConfiguration = Nothing,
+                                _ccaCertificateAuthorityConfiguration =
+                                  pCertificateAuthorityConfiguration_,
+                                _ccaCertificateAuthorityType =
+                                  pCertificateAuthorityType_}
 
 -- | Alphanumeric string that can be used to distinguish between calls to __CreateCertificateAuthority__ . Idempotency tokens time out after five minutes. Therefore, if you call __CreateCertificateAuthority__ multiple times with the same idempotency token within a five minute period, ACM PCA recognizes that you are requesting only one certificate and will issue only one. If you change the idempotency token for each call, however, ACM PCA recognizes that you are requesting multiple certificates.
 ccaIdempotencyToken :: Lens' CreateCertificateAuthority (Maybe Text)
 ccaIdempotencyToken = lens _ccaIdempotencyToken (\ s a -> s{_ccaIdempotencyToken = a})
 
--- | Contains a Boolean value that you can use to enable a certification revocation list (CRL) for the CA, the name of the S3 bucket to which ACM PCA will write the CRL, and an optional CNAME alias that you can use to hide the name of your bucket in the __CRL Distribution Points__ extension of your CA certificate. For more information, see the 'CrlConfiguration' structure.
+-- | Contains a Boolean value that you can use to enable a certification revocation list (CRL) for the CA, the name of the S3 bucket to which ACM PCA will write the CRL, and an optional CNAME alias that you can use to hide the name of your bucket in the __CRL Distribution Points__ extension of your CA certificate. For more information, see the 'CrlConfiguration' structure. 
 ccaRevocationConfiguration :: Lens' CreateCertificateAuthority (Maybe RevocationConfiguration)
 ccaRevocationConfiguration = lens _ccaRevocationConfiguration (\ s a -> s{_ccaRevocationConfiguration = a})
 
@@ -145,32 +150,32 @@ instance ToQuery CreateCertificateAuthority where
         toQuery = const mempty
 
 -- | /See:/ 'createCertificateAuthorityResponse' smart constructor.
-data CreateCertificateAuthorityResponse =
-  CreateCertificateAuthorityResponse'
-    { _ccarsCertificateAuthorityARN :: !(Maybe Text)
-    , _ccarsResponseStatus          :: !Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data CreateCertificateAuthorityResponse = CreateCertificateAuthorityResponse'{_ccarsCertificateAuthorityARN
+                                                                              ::
+                                                                              !(Maybe
+                                                                                  Text),
+                                                                              _ccarsResponseStatus
+                                                                              ::
+                                                                              !Int}
+                                            deriving (Eq, Read, Show, Data,
+                                                      Typeable, Generic)
 
 -- | Creates a value of 'CreateCertificateAuthorityResponse' with the minimum fields required to make a request.
 --
 -- Use one of the following lenses to modify other fields as desired:
 --
--- * 'ccarsCertificateAuthorityARN' - If successful, the Amazon Resource Name (ARN) of the certificate authority (CA). This is of the form:  @arn:aws:acm:/region/ :/account/ :certificate-authority//12345678-1234-1234-1234-123456789012/ @ .
+-- * 'ccarsCertificateAuthorityARN' - If successful, the Amazon Resource Name (ARN) of the certificate authority (CA). This is of the form:  @arn:aws:acm:/region/ :/account/ :certificate-authority//12345678-1234-1234-1234-123456789012/ @ . 
 --
 -- * 'ccarsResponseStatus' - -- | The response status code.
 createCertificateAuthorityResponse
     :: Int -- ^ 'ccarsResponseStatus'
     -> CreateCertificateAuthorityResponse
-createCertificateAuthorityResponse pResponseStatus_ =
-  CreateCertificateAuthorityResponse'
-    { _ccarsCertificateAuthorityARN = Nothing
-    , _ccarsResponseStatus = pResponseStatus_
-    }
+createCertificateAuthorityResponse pResponseStatus_
+  = CreateCertificateAuthorityResponse'{_ccarsCertificateAuthorityARN
+                                          = Nothing,
+                                        _ccarsResponseStatus = pResponseStatus_}
 
-
--- | If successful, the Amazon Resource Name (ARN) of the certificate authority (CA). This is of the form:  @arn:aws:acm:/region/ :/account/ :certificate-authority//12345678-1234-1234-1234-123456789012/ @ .
+-- | If successful, the Amazon Resource Name (ARN) of the certificate authority (CA). This is of the form:  @arn:aws:acm:/region/ :/account/ :certificate-authority//12345678-1234-1234-1234-123456789012/ @ . 
 ccarsCertificateAuthorityARN :: Lens' CreateCertificateAuthorityResponse (Maybe Text)
 ccarsCertificateAuthorityARN = lens _ccarsCertificateAuthorityARN (\ s a -> s{_ccarsCertificateAuthorityARN = a})
 

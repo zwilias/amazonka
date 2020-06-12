@@ -44,7 +44,6 @@ module Network.AWS.EMR.ListSteps
     ) where
 
 import Network.AWS.EMR.Types
-import Network.AWS.EMR.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Pager
 import Network.AWS.Prelude
@@ -56,15 +55,11 @@ import Network.AWS.Response
 --
 --
 -- /See:/ 'listSteps' smart constructor.
-data ListSteps =
-  ListSteps'
-    { _lsStepIds    :: !(Maybe [Text])
-    , _lsStepStates :: !(Maybe [StepState])
-    , _lsMarker     :: !(Maybe Text)
-    , _lsClusterId  :: !Text
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data ListSteps = ListSteps'{_lsStepIds ::
+                            !(Maybe [Text]),
+                            _lsStepStates :: !(Maybe [StepState]),
+                            _lsMarker :: !(Maybe Text), _lsClusterId :: !Text}
+                   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'ListSteps' with the minimum fields required to make a request.
 --
@@ -80,14 +75,10 @@ data ListSteps =
 listSteps
     :: Text -- ^ 'lsClusterId'
     -> ListSteps
-listSteps pClusterId_ =
-  ListSteps'
-    { _lsStepIds = Nothing
-    , _lsStepStates = Nothing
-    , _lsMarker = Nothing
-    , _lsClusterId = pClusterId_
-    }
-
+listSteps pClusterId_
+  = ListSteps'{_lsStepIds = Nothing,
+               _lsStepStates = Nothing, _lsMarker = Nothing,
+               _lsClusterId = pClusterId_}
 
 -- | The filter to limit the step list based on the identifier of the steps.
 lsStepIds :: Lens' ListSteps [Text]
@@ -155,14 +146,11 @@ instance ToQuery ListSteps where
 --
 --
 -- /See:/ 'listStepsResponse' smart constructor.
-data ListStepsResponse =
-  ListStepsResponse'
-    { _lsrsSteps          :: !(Maybe [StepSummary])
-    , _lsrsMarker         :: !(Maybe Text)
-    , _lsrsResponseStatus :: !Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data ListStepsResponse = ListStepsResponse'{_lsrsSteps
+                                            :: !(Maybe [StepSummary]),
+                                            _lsrsMarker :: !(Maybe Text),
+                                            _lsrsResponseStatus :: !Int}
+                           deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'ListStepsResponse' with the minimum fields required to make a request.
 --
@@ -176,13 +164,10 @@ data ListStepsResponse =
 listStepsResponse
     :: Int -- ^ 'lsrsResponseStatus'
     -> ListStepsResponse
-listStepsResponse pResponseStatus_ =
-  ListStepsResponse'
-    { _lsrsSteps = Nothing
-    , _lsrsMarker = Nothing
-    , _lsrsResponseStatus = pResponseStatus_
-    }
-
+listStepsResponse pResponseStatus_
+  = ListStepsResponse'{_lsrsSteps = Nothing,
+                       _lsrsMarker = Nothing,
+                       _lsrsResponseStatus = pResponseStatus_}
 
 -- | The filtered list of steps for the cluster.
 lsrsSteps :: Lens' ListStepsResponse [StepSummary]

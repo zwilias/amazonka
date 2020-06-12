@@ -41,22 +41,20 @@ module Network.AWS.CodePipeline.StopPipelineExecution
     ) where
 
 import Network.AWS.CodePipeline.Types
-import Network.AWS.CodePipeline.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 
 -- | /See:/ 'stopPipelineExecution' smart constructor.
-data StopPipelineExecution =
-  StopPipelineExecution'
-    { _speAbandon             :: !(Maybe Bool)
-    , _speReason              :: !(Maybe Text)
-    , _spePipelineName        :: !Text
-    , _spePipelineExecutionId :: !Text
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data StopPipelineExecution = StopPipelineExecution'{_speAbandon
+                                                    :: !(Maybe Bool),
+                                                    _speReason :: !(Maybe Text),
+                                                    _spePipelineName :: !Text,
+                                                    _spePipelineExecutionId ::
+                                                    !Text}
+                               deriving (Eq, Read, Show, Data, Typeable,
+                                         Generic)
 
 -- | Creates a value of 'StopPipelineExecution' with the minimum fields required to make a request.
 --
@@ -73,14 +71,12 @@ stopPipelineExecution
     :: Text -- ^ 'spePipelineName'
     -> Text -- ^ 'spePipelineExecutionId'
     -> StopPipelineExecution
-stopPipelineExecution pPipelineName_ pPipelineExecutionId_ =
-  StopPipelineExecution'
-    { _speAbandon = Nothing
-    , _speReason = Nothing
-    , _spePipelineName = pPipelineName_
-    , _spePipelineExecutionId = pPipelineExecutionId_
-    }
-
+stopPipelineExecution pPipelineName_
+  pPipelineExecutionId_
+  = StopPipelineExecution'{_speAbandon = Nothing,
+                           _speReason = Nothing,
+                           _spePipelineName = pPipelineName_,
+                           _spePipelineExecutionId = pPipelineExecutionId_}
 
 -- | Use this option to stop the pipeline execution by abandoning, rather than finishing, in-progress actions.
 speAbandon :: Lens' StopPipelineExecution (Maybe Bool)
@@ -140,13 +136,14 @@ instance ToQuery StopPipelineExecution where
         toQuery = const mempty
 
 -- | /See:/ 'stopPipelineExecutionResponse' smart constructor.
-data StopPipelineExecutionResponse =
-  StopPipelineExecutionResponse'
-    { _srsPipelineExecutionId :: !(Maybe Text)
-    , _srsResponseStatus      :: !Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data StopPipelineExecutionResponse = StopPipelineExecutionResponse'{_srsPipelineExecutionId
+                                                                    ::
+                                                                    !(Maybe
+                                                                        Text),
+                                                                    _srsResponseStatus
+                                                                    :: !Int}
+                                       deriving (Eq, Read, Show, Data, Typeable,
+                                                 Generic)
 
 -- | Creates a value of 'StopPipelineExecutionResponse' with the minimum fields required to make a request.
 --
@@ -158,10 +155,10 @@ data StopPipelineExecutionResponse =
 stopPipelineExecutionResponse
     :: Int -- ^ 'srsResponseStatus'
     -> StopPipelineExecutionResponse
-stopPipelineExecutionResponse pResponseStatus_ =
-  StopPipelineExecutionResponse'
-    {_srsPipelineExecutionId = Nothing, _srsResponseStatus = pResponseStatus_}
-
+stopPipelineExecutionResponse pResponseStatus_
+  = StopPipelineExecutionResponse'{_srsPipelineExecutionId
+                                     = Nothing,
+                                   _srsResponseStatus = pResponseStatus_}
 
 -- | The unique system-generated ID of the pipeline execution that was stopped.
 srsPipelineExecutionId :: Lens' StopPipelineExecutionResponse (Maybe Text)

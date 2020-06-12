@@ -11,7 +11,7 @@
 -- Stability   : auto-generated
 -- Portability : non-portable (GHC extensions)
 --
--- __Amazon ElastiCache__
+-- __Amazon ElastiCache__ 
 --
 -- Amazon ElastiCache is a web service that makes it easier to set up, operate, and scale a distributed cache in the cloud.
 --
@@ -183,22 +183,22 @@ module Network.AWS.ElastiCache
     -- * Operations
     -- $operations
 
-    -- ** DeleteCacheSecurityGroup
+    -- ** DeleteCacheSecurityGroup 
     , module Network.AWS.ElastiCache.DeleteCacheSecurityGroup
 
-    -- ** CreateReplicationGroup
+    -- ** CreateReplicationGroup 
     , module Network.AWS.ElastiCache.CreateReplicationGroup
 
-    -- ** DeleteCacheCluster
+    -- ** DeleteCacheCluster 
     , module Network.AWS.ElastiCache.DeleteCacheCluster
 
-    -- ** RebootCacheCluster
+    -- ** RebootCacheCluster 
     , module Network.AWS.ElastiCache.RebootCacheCluster
 
-    -- ** RevokeCacheSecurityGroupIngress
+    -- ** RevokeCacheSecurityGroupIngress 
     , module Network.AWS.ElastiCache.RevokeCacheSecurityGroupIngress
 
-    -- ** CreateCacheCluster
+    -- ** CreateCacheCluster 
     , module Network.AWS.ElastiCache.CreateCacheCluster
 
     -- ** DescribeEvents (Paginated)
@@ -207,28 +207,28 @@ module Network.AWS.ElastiCache
     -- ** DescribeEngineDefaultParameters (Paginated)
     , module Network.AWS.ElastiCache.DescribeEngineDefaultParameters
 
-    -- ** ModifyCacheParameterGroup
+    -- ** ModifyCacheParameterGroup 
     , module Network.AWS.ElastiCache.ModifyCacheParameterGroup
 
-    -- ** TestFailover
+    -- ** TestFailover 
     , module Network.AWS.ElastiCache.TestFailover
 
-    -- ** DeleteReplicationGroup
+    -- ** DeleteReplicationGroup 
     , module Network.AWS.ElastiCache.DeleteReplicationGroup
 
-    -- ** ListTagsForResource
+    -- ** ListTagsForResource 
     , module Network.AWS.ElastiCache.ListTagsForResource
 
     -- ** DescribeCacheClusters (Paginated)
     , module Network.AWS.ElastiCache.DescribeCacheClusters
 
-    -- ** PurchaseReservedCacheNodesOffering
+    -- ** PurchaseReservedCacheNodesOffering 
     , module Network.AWS.ElastiCache.PurchaseReservedCacheNodesOffering
 
-    -- ** RemoveTagsFromResource
+    -- ** RemoveTagsFromResource 
     , module Network.AWS.ElastiCache.RemoveTagsFromResource
 
-    -- ** ModifyReplicationGroup
+    -- ** ModifyReplicationGroup 
     , module Network.AWS.ElastiCache.ModifyReplicationGroup
 
     -- ** DescribeCacheParameters (Paginated)
@@ -237,31 +237,31 @@ module Network.AWS.ElastiCache
     -- ** DescribeCacheSubnetGroups (Paginated)
     , module Network.AWS.ElastiCache.DescribeCacheSubnetGroups
 
-    -- ** CreateCacheSecurityGroup
+    -- ** CreateCacheSecurityGroup 
     , module Network.AWS.ElastiCache.CreateCacheSecurityGroup
 
-    -- ** AddTagsToResource
+    -- ** AddTagsToResource 
     , module Network.AWS.ElastiCache.AddTagsToResource
 
-    -- ** AuthorizeCacheSecurityGroupIngress
+    -- ** AuthorizeCacheSecurityGroupIngress 
     , module Network.AWS.ElastiCache.AuthorizeCacheSecurityGroupIngress
 
-    -- ** CopySnapshot
+    -- ** CopySnapshot 
     , module Network.AWS.ElastiCache.CopySnapshot
 
-    -- ** CreateCacheSubnetGroup
+    -- ** CreateCacheSubnetGroup 
     , module Network.AWS.ElastiCache.CreateCacheSubnetGroup
 
     -- ** DescribeCacheParameterGroups (Paginated)
     , module Network.AWS.ElastiCache.DescribeCacheParameterGroups
 
-    -- ** ResetCacheParameterGroup
+    -- ** ResetCacheParameterGroup 
     , module Network.AWS.ElastiCache.ResetCacheParameterGroup
 
-    -- ** ListAllowedNodeTypeModifications
+    -- ** ListAllowedNodeTypeModifications 
     , module Network.AWS.ElastiCache.ListAllowedNodeTypeModifications
 
-    -- ** ModifyReplicationGroupShardConfiguration
+    -- ** ModifyReplicationGroupShardConfiguration 
     , module Network.AWS.ElastiCache.ModifyReplicationGroupShardConfiguration
 
     -- ** DescribeSnapshots (Paginated)
@@ -270,37 +270,37 @@ module Network.AWS.ElastiCache
     -- ** DescribeReplicationGroups (Paginated)
     , module Network.AWS.ElastiCache.DescribeReplicationGroups
 
-    -- ** DeleteSnapshot
+    -- ** DeleteSnapshot 
     , module Network.AWS.ElastiCache.DeleteSnapshot
 
     -- ** DescribeReservedCacheNodesOfferings (Paginated)
     , module Network.AWS.ElastiCache.DescribeReservedCacheNodesOfferings
 
-    -- ** ModifyCacheSubnetGroup
+    -- ** ModifyCacheSubnetGroup 
     , module Network.AWS.ElastiCache.ModifyCacheSubnetGroup
 
-    -- ** CreateSnapshot
+    -- ** CreateSnapshot 
     , module Network.AWS.ElastiCache.CreateSnapshot
 
-    -- ** DeleteCacheParameterGroup
+    -- ** DeleteCacheParameterGroup 
     , module Network.AWS.ElastiCache.DeleteCacheParameterGroup
 
     -- ** DescribeCacheSecurityGroups (Paginated)
     , module Network.AWS.ElastiCache.DescribeCacheSecurityGroups
 
-    -- ** ModifyCacheCluster
+    -- ** ModifyCacheCluster 
     , module Network.AWS.ElastiCache.ModifyCacheCluster
 
     -- ** DescribeCacheEngineVersions (Paginated)
     , module Network.AWS.ElastiCache.DescribeCacheEngineVersions
 
-    -- ** CreateCacheParameterGroup
+    -- ** CreateCacheParameterGroup 
     , module Network.AWS.ElastiCache.CreateCacheParameterGroup
 
     -- ** DescribeReservedCacheNodes (Paginated)
     , module Network.AWS.ElastiCache.DescribeReservedCacheNodes
 
-    -- ** DeleteCacheSubnetGroup
+    -- ** DeleteCacheSubnetGroup 
     , module Network.AWS.ElastiCache.DeleteCacheSubnetGroup
 
     -- * Types

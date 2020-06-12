@@ -38,19 +38,15 @@ module Network.AWS.IoT.DescribeStream
     ) where
 
 import Network.AWS.IoT.Types
-import Network.AWS.IoT.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 
 -- | /See:/ 'describeStream' smart constructor.
-newtype DescribeStream =
-  DescribeStream'
-    { _dStreamId :: Text
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+newtype DescribeStream = DescribeStream'{_dStreamId
+                                         :: Text}
+                           deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'DescribeStream' with the minimum fields required to make a request.
 --
@@ -60,8 +56,8 @@ newtype DescribeStream =
 describeStream
     :: Text -- ^ 'dStreamId'
     -> DescribeStream
-describeStream pStreamId_ = DescribeStream' {_dStreamId = pStreamId_}
-
+describeStream pStreamId_
+  = DescribeStream'{_dStreamId = pStreamId_}
 
 -- | The stream ID.
 dStreamId :: Lens' DescribeStream Text
@@ -91,13 +87,12 @@ instance ToQuery DescribeStream where
         toQuery = const mempty
 
 -- | /See:/ 'describeStreamResponse' smart constructor.
-data DescribeStreamResponse =
-  DescribeStreamResponse'
-    { _dssrsStreamInfo     :: !(Maybe StreamInfo)
-    , _dssrsResponseStatus :: !Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data DescribeStreamResponse = DescribeStreamResponse'{_dssrsStreamInfo
+                                                      :: !(Maybe StreamInfo),
+                                                      _dssrsResponseStatus ::
+                                                      !Int}
+                                deriving (Eq, Read, Show, Data, Typeable,
+                                          Generic)
 
 -- | Creates a value of 'DescribeStreamResponse' with the minimum fields required to make a request.
 --
@@ -109,10 +104,9 @@ data DescribeStreamResponse =
 describeStreamResponse
     :: Int -- ^ 'dssrsResponseStatus'
     -> DescribeStreamResponse
-describeStreamResponse pResponseStatus_ =
-  DescribeStreamResponse'
-    {_dssrsStreamInfo = Nothing, _dssrsResponseStatus = pResponseStatus_}
-
+describeStreamResponse pResponseStatus_
+  = DescribeStreamResponse'{_dssrsStreamInfo = Nothing,
+                            _dssrsResponseStatus = pResponseStatus_}
 
 -- | Information about the stream.
 dssrsStreamInfo :: Lens' DescribeStreamResponse (Maybe StreamInfo)

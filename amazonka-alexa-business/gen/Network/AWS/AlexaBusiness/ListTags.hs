@@ -43,7 +43,6 @@ module Network.AWS.AlexaBusiness.ListTags
     ) where
 
 import Network.AWS.AlexaBusiness.Types
-import Network.AWS.AlexaBusiness.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Pager
 import Network.AWS.Prelude
@@ -51,20 +50,16 @@ import Network.AWS.Request
 import Network.AWS.Response
 
 -- | /See:/ 'listTags' smart constructor.
-data ListTags =
-  ListTags'
-    { _ltNextToken  :: !(Maybe Text)
-    , _ltMaxResults :: !(Maybe Nat)
-    , _ltARN        :: !Text
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data ListTags = ListTags'{_ltNextToken ::
+                          !(Maybe Text),
+                          _ltMaxResults :: !(Maybe Nat), _ltARN :: !Text}
+                  deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'ListTags' with the minimum fields required to make a request.
 --
 -- Use one of the following lenses to modify other fields as desired:
 --
--- * 'ltNextToken' - An optional token returned from a prior request. Use this token for pagination of results from this action. If this parameter is specified, the response includes only results beyond the token, up to the value specified by @MaxResults@ .
+-- * 'ltNextToken' - An optional token returned from a prior request. Use this token for pagination of results from this action. If this parameter is specified, the response includes only results beyond the token, up to the value specified by @MaxResults@ . 
 --
 -- * 'ltMaxResults' - The maximum number of results to include in the response. If more results exist than the specified @MaxResults@ value, a token is included in the response so that the remaining results can be retrieved.
 --
@@ -72,11 +67,11 @@ data ListTags =
 listTags
     :: Text -- ^ 'ltARN'
     -> ListTags
-listTags pARN_ =
-  ListTags' {_ltNextToken = Nothing, _ltMaxResults = Nothing, _ltARN = pARN_}
+listTags pARN_
+  = ListTags'{_ltNextToken = Nothing,
+              _ltMaxResults = Nothing, _ltARN = pARN_}
 
-
--- | An optional token returned from a prior request. Use this token for pagination of results from this action. If this parameter is specified, the response includes only results beyond the token, up to the value specified by @MaxResults@ .
+-- | An optional token returned from a prior request. Use this token for pagination of results from this action. If this parameter is specified, the response includes only results beyond the token, up to the value specified by @MaxResults@ . 
 ltNextToken :: Lens' ListTags (Maybe Text)
 ltNextToken = lens _ltNextToken (\ s a -> s{_ltNextToken = a})
 
@@ -133,14 +128,11 @@ instance ToQuery ListTags where
         toQuery = const mempty
 
 -- | /See:/ 'listTagsResponse' smart constructor.
-data ListTagsResponse =
-  ListTagsResponse'
-    { _ltrsNextToken      :: !(Maybe Text)
-    , _ltrsTags           :: !(Maybe [Tag])
-    , _ltrsResponseStatus :: !Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data ListTagsResponse = ListTagsResponse'{_ltrsNextToken
+                                          :: !(Maybe Text),
+                                          _ltrsTags :: !(Maybe [Tag]),
+                                          _ltrsResponseStatus :: !Int}
+                          deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'ListTagsResponse' with the minimum fields required to make a request.
 --
@@ -154,13 +146,10 @@ data ListTagsResponse =
 listTagsResponse
     :: Int -- ^ 'ltrsResponseStatus'
     -> ListTagsResponse
-listTagsResponse pResponseStatus_ =
-  ListTagsResponse'
-    { _ltrsNextToken = Nothing
-    , _ltrsTags = Nothing
-    , _ltrsResponseStatus = pResponseStatus_
-    }
-
+listTagsResponse pResponseStatus_
+  = ListTagsResponse'{_ltrsNextToken = Nothing,
+                      _ltrsTags = Nothing,
+                      _ltrsResponseStatus = pResponseStatus_}
 
 -- | The token returned to indicate that there is more data available.
 ltrsNextToken :: Lens' ListTagsResponse (Maybe Text)

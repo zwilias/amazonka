@@ -56,36 +56,54 @@ module Network.AWS.AutoScaling.CreateLaunchConfiguration
     ) where
 
 import Network.AWS.AutoScaling.Types
-import Network.AWS.AutoScaling.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 
 -- | /See:/ 'createLaunchConfiguration' smart constructor.
-data CreateLaunchConfiguration =
-  CreateLaunchConfiguration'
-    { _clcInstanceId                   :: !(Maybe Text)
-    , _clcAssociatePublicIPAddress     :: !(Maybe Bool)
-    , _clcSecurityGroups               :: !(Maybe [Text])
-    , _clcSpotPrice                    :: !(Maybe Text)
-    , _clcInstanceMonitoring           :: !(Maybe InstanceMonitoring)
-    , _clcKeyName                      :: !(Maybe Text)
-    , _clcClassicLinkVPCSecurityGroups :: !(Maybe [Text])
-    , _clcRAMDiskId                    :: !(Maybe Text)
-    , _clcKernelId                     :: !(Maybe Text)
-    , _clcInstanceType                 :: !(Maybe Text)
-    , _clcEBSOptimized                 :: !(Maybe Bool)
-    , _clcUserData                     :: !(Maybe Text)
-    , _clcClassicLinkVPCId             :: !(Maybe Text)
-    , _clcIAMInstanceProfile           :: !(Maybe Text)
-    , _clcImageId                      :: !(Maybe Text)
-    , _clcPlacementTenancy             :: !(Maybe Text)
-    , _clcBlockDeviceMappings          :: !(Maybe [BlockDeviceMapping])
-    , _clcLaunchConfigurationName      :: !Text
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data CreateLaunchConfiguration = CreateLaunchConfiguration'{_clcInstanceId
+                                                            :: !(Maybe Text),
+                                                            _clcAssociatePublicIPAddress
+                                                            :: !(Maybe Bool),
+                                                            _clcSecurityGroups
+                                                            :: !(Maybe [Text]),
+                                                            _clcSpotPrice ::
+                                                            !(Maybe Text),
+                                                            _clcInstanceMonitoring
+                                                            ::
+                                                            !(Maybe
+                                                                InstanceMonitoring),
+                                                            _clcKeyName ::
+                                                            !(Maybe Text),
+                                                            _clcClassicLinkVPCSecurityGroups
+                                                            :: !(Maybe [Text]),
+                                                            _clcRAMDiskId ::
+                                                            !(Maybe Text),
+                                                            _clcKernelId ::
+                                                            !(Maybe Text),
+                                                            _clcInstanceType ::
+                                                            !(Maybe Text),
+                                                            _clcEBSOptimized ::
+                                                            !(Maybe Bool),
+                                                            _clcUserData ::
+                                                            !(Maybe Text),
+                                                            _clcClassicLinkVPCId
+                                                            :: !(Maybe Text),
+                                                            _clcIAMInstanceProfile
+                                                            :: !(Maybe Text),
+                                                            _clcImageId ::
+                                                            !(Maybe Text),
+                                                            _clcPlacementTenancy
+                                                            :: !(Maybe Text),
+                                                            _clcBlockDeviceMappings
+                                                            ::
+                                                            !(Maybe
+                                                                [BlockDeviceMapping]),
+                                                            _clcLaunchConfigurationName
+                                                            :: !Text}
+                                   deriving (Eq, Read, Show, Data, Typeable,
+                                             Generic)
 
 -- | Creates a value of 'CreateLaunchConfiguration' with the minimum fields required to make a request.
 --
@@ -121,7 +139,7 @@ data CreateLaunchConfiguration =
 --
 -- * 'clcImageId' - The ID of the Amazon Machine Image (AMI) that was assigned during registration. For more information, see <https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/finding-an-ami.html Finding an AMI> in the /Amazon EC2 User Guide for Linux Instances/ . If you do not specify @InstanceId@ , you must specify @ImageId@ .
 --
--- * 'clcPlacementTenancy' - The tenancy of the instance. An instance with @dedicated@ tenancy runs on isolated, single-tenant hardware and can only be launched into a VPC. To launch dedicated instances into a shared tenancy VPC (a VPC with the instance placement tenancy attribute set to @default@ ), you must set the value of this parameter to @dedicated@ . If you specify @PlacementTenancy@ , you must specify at least one subnet for @VPCZoneIdentifier@ when you create your group. For more information, see <https://docs.aws.amazon.com/autoscaling/ec2/userguide/asg-in-vpc.html#as-vpc-tenancy Instance Placement Tenancy> in the /Amazon EC2 Auto Scaling User Guide/ . Valid Values: @default@ | @dedicated@
+-- * 'clcPlacementTenancy' - The tenancy of the instance. An instance with @dedicated@ tenancy runs on isolated, single-tenant hardware and can only be launched into a VPC. To launch dedicated instances into a shared tenancy VPC (a VPC with the instance placement tenancy attribute set to @default@ ), you must set the value of this parameter to @dedicated@ . If you specify @PlacementTenancy@ , you must specify at least one subnet for @VPCZoneIdentifier@ when you create your group. For more information, see <https://docs.aws.amazon.com/autoscaling/ec2/userguide/asg-in-vpc.html#as-vpc-tenancy Instance Placement Tenancy> in the /Amazon EC2 Auto Scaling User Guide/ . Valid Values: @default@ | @dedicated@ 
 --
 -- * 'clcBlockDeviceMappings' - A block device mapping, which specifies the block devices for the instance. You can specify virtual devices and EBS volumes. For more information, see <https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/block-device-mapping-concepts.html Block Device Mapping> in the /Amazon EC2 User Guide for Linux Instances/ .
 --
@@ -129,28 +147,26 @@ data CreateLaunchConfiguration =
 createLaunchConfiguration
     :: Text -- ^ 'clcLaunchConfigurationName'
     -> CreateLaunchConfiguration
-createLaunchConfiguration pLaunchConfigurationName_ =
-  CreateLaunchConfiguration'
-    { _clcInstanceId = Nothing
-    , _clcAssociatePublicIPAddress = Nothing
-    , _clcSecurityGroups = Nothing
-    , _clcSpotPrice = Nothing
-    , _clcInstanceMonitoring = Nothing
-    , _clcKeyName = Nothing
-    , _clcClassicLinkVPCSecurityGroups = Nothing
-    , _clcRAMDiskId = Nothing
-    , _clcKernelId = Nothing
-    , _clcInstanceType = Nothing
-    , _clcEBSOptimized = Nothing
-    , _clcUserData = Nothing
-    , _clcClassicLinkVPCId = Nothing
-    , _clcIAMInstanceProfile = Nothing
-    , _clcImageId = Nothing
-    , _clcPlacementTenancy = Nothing
-    , _clcBlockDeviceMappings = Nothing
-    , _clcLaunchConfigurationName = pLaunchConfigurationName_
-    }
-
+createLaunchConfiguration pLaunchConfigurationName_
+  = CreateLaunchConfiguration'{_clcInstanceId =
+                                 Nothing,
+                               _clcAssociatePublicIPAddress = Nothing,
+                               _clcSecurityGroups = Nothing,
+                               _clcSpotPrice = Nothing,
+                               _clcInstanceMonitoring = Nothing,
+                               _clcKeyName = Nothing,
+                               _clcClassicLinkVPCSecurityGroups = Nothing,
+                               _clcRAMDiskId = Nothing, _clcKernelId = Nothing,
+                               _clcInstanceType = Nothing,
+                               _clcEBSOptimized = Nothing,
+                               _clcUserData = Nothing,
+                               _clcClassicLinkVPCId = Nothing,
+                               _clcIAMInstanceProfile = Nothing,
+                               _clcImageId = Nothing,
+                               _clcPlacementTenancy = Nothing,
+                               _clcBlockDeviceMappings = Nothing,
+                               _clcLaunchConfigurationName =
+                                 pLaunchConfigurationName_}
 
 -- | The ID of the instance to use to create the launch configuration. The new launch configuration derives attributes from the instance, except for the block device mapping. To create a launch configuration with a block device mapping or override any other instance attributes, specify them as part of the same request. For more information, see <https://docs.aws.amazon.com/autoscaling/ec2/userguide/create-lc-with-instanceID.html Create a Launch Configuration Using an EC2 Instance> in the /Amazon EC2 Auto Scaling User Guide/ . If you do not specify @InstanceId@ , you must specify both @ImageId@ and @InstanceType@ .
 clcInstanceId :: Lens' CreateLaunchConfiguration (Maybe Text)
@@ -212,7 +228,7 @@ clcIAMInstanceProfile = lens _clcIAMInstanceProfile (\ s a -> s{_clcIAMInstanceP
 clcImageId :: Lens' CreateLaunchConfiguration (Maybe Text)
 clcImageId = lens _clcImageId (\ s a -> s{_clcImageId = a})
 
--- | The tenancy of the instance. An instance with @dedicated@ tenancy runs on isolated, single-tenant hardware and can only be launched into a VPC. To launch dedicated instances into a shared tenancy VPC (a VPC with the instance placement tenancy attribute set to @default@ ), you must set the value of this parameter to @dedicated@ . If you specify @PlacementTenancy@ , you must specify at least one subnet for @VPCZoneIdentifier@ when you create your group. For more information, see <https://docs.aws.amazon.com/autoscaling/ec2/userguide/asg-in-vpc.html#as-vpc-tenancy Instance Placement Tenancy> in the /Amazon EC2 Auto Scaling User Guide/ . Valid Values: @default@ | @dedicated@
+-- | The tenancy of the instance. An instance with @dedicated@ tenancy runs on isolated, single-tenant hardware and can only be launched into a VPC. To launch dedicated instances into a shared tenancy VPC (a VPC with the instance placement tenancy attribute set to @default@ ), you must set the value of this parameter to @dedicated@ . If you specify @PlacementTenancy@ , you must specify at least one subnet for @VPCZoneIdentifier@ when you create your group. For more information, see <https://docs.aws.amazon.com/autoscaling/ec2/userguide/asg-in-vpc.html#as-vpc-tenancy Instance Placement Tenancy> in the /Amazon EC2 Auto Scaling User Guide/ . Valid Values: @default@ | @dedicated@ 
 clcPlacementTenancy :: Lens' CreateLaunchConfiguration (Maybe Text)
 clcPlacementTenancy = lens _clcPlacementTenancy (\ s a -> s{_clcPlacementTenancy = a})
 
@@ -276,17 +292,16 @@ instance ToQuery CreateLaunchConfiguration where
                  _clcLaunchConfigurationName]
 
 -- | /See:/ 'createLaunchConfigurationResponse' smart constructor.
-data CreateLaunchConfigurationResponse =
-  CreateLaunchConfigurationResponse'
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data CreateLaunchConfigurationResponse = CreateLaunchConfigurationResponse'
+                                           deriving (Eq, Read, Show, Data,
+                                                     Typeable, Generic)
 
 -- | Creates a value of 'CreateLaunchConfigurationResponse' with the minimum fields required to make a request.
 --
 createLaunchConfigurationResponse
     :: CreateLaunchConfigurationResponse
-createLaunchConfigurationResponse = CreateLaunchConfigurationResponse'
-
+createLaunchConfigurationResponse
+  = CreateLaunchConfigurationResponse'
 
 instance NFData CreateLaunchConfigurationResponse
          where

@@ -45,16 +45,12 @@ import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 import Network.AWS.SMS.Types
-import Network.AWS.SMS.Types.Product
 
 -- | /See:/ 'getConnectors' smart constructor.
-data GetConnectors =
-  GetConnectors'
-    { _gcNextToken  :: !(Maybe Text)
-    , _gcMaxResults :: !(Maybe Int)
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data GetConnectors = GetConnectors'{_gcNextToken ::
+                                    !(Maybe Text),
+                                    _gcMaxResults :: !(Maybe Int)}
+                       deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'GetConnectors' with the minimum fields required to make a request.
 --
@@ -65,8 +61,9 @@ data GetConnectors =
 -- * 'gcMaxResults' - Undocumented member.
 getConnectors
     :: GetConnectors
-getConnectors = GetConnectors' {_gcNextToken = Nothing, _gcMaxResults = Nothing}
-
+getConnectors
+  = GetConnectors'{_gcNextToken = Nothing,
+                   _gcMaxResults = Nothing}
 
 -- | Undocumented member.
 gcNextToken :: Lens' GetConnectors (Maybe Text)
@@ -122,14 +119,13 @@ instance ToQuery GetConnectors where
         toQuery = const mempty
 
 -- | /See:/ 'getConnectorsResponse' smart constructor.
-data GetConnectorsResponse =
-  GetConnectorsResponse'
-    { _gcrsConnectorList  :: !(Maybe [Connector])
-    , _gcrsNextToken      :: !(Maybe Text)
-    , _gcrsResponseStatus :: !Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data GetConnectorsResponse = GetConnectorsResponse'{_gcrsConnectorList
+                                                    :: !(Maybe [Connector]),
+                                                    _gcrsNextToken ::
+                                                    !(Maybe Text),
+                                                    _gcrsResponseStatus :: !Int}
+                               deriving (Eq, Read, Show, Data, Typeable,
+                                         Generic)
 
 -- | Creates a value of 'GetConnectorsResponse' with the minimum fields required to make a request.
 --
@@ -143,13 +139,11 @@ data GetConnectorsResponse =
 getConnectorsResponse
     :: Int -- ^ 'gcrsResponseStatus'
     -> GetConnectorsResponse
-getConnectorsResponse pResponseStatus_ =
-  GetConnectorsResponse'
-    { _gcrsConnectorList = Nothing
-    , _gcrsNextToken = Nothing
-    , _gcrsResponseStatus = pResponseStatus_
-    }
-
+getConnectorsResponse pResponseStatus_
+  = GetConnectorsResponse'{_gcrsConnectorList =
+                             Nothing,
+                           _gcrsNextToken = Nothing,
+                           _gcrsResponseStatus = pResponseStatus_}
 
 -- | Undocumented member.
 gcrsConnectorList :: Lens' GetConnectorsResponse [Connector]

@@ -120,8 +120,66 @@ library
         , Network.AWS.Lightsail.Waiters
 
     other-modules:
-          Network.AWS.Lightsail.Types.Product
-        , Network.AWS.Lightsail.Types.Sum
+          Network.AWS.Lightsail.Types.AccessDirection
+        , Network.AWS.Lightsail.Types.AvailabilityZone
+        , Network.AWS.Lightsail.Types.Blueprint
+        , Network.AWS.Lightsail.Types.BlueprintType
+        , Network.AWS.Lightsail.Types.Bundle
+        , Network.AWS.Lightsail.Types.Disk
+        , Network.AWS.Lightsail.Types.DiskMap
+        , Network.AWS.Lightsail.Types.DiskSnapshot
+        , Network.AWS.Lightsail.Types.DiskSnapshotState
+        , Network.AWS.Lightsail.Types.DiskState
+        , Network.AWS.Lightsail.Types.Domain
+        , Network.AWS.Lightsail.Types.DomainEntry
+        , Network.AWS.Lightsail.Types.Instance
+        , Network.AWS.Lightsail.Types.InstanceAccessDetails
+        , Network.AWS.Lightsail.Types.InstanceAccessProtocol
+        , Network.AWS.Lightsail.Types.InstanceHardware
+        , Network.AWS.Lightsail.Types.InstanceHealthReason
+        , Network.AWS.Lightsail.Types.InstanceHealthState
+        , Network.AWS.Lightsail.Types.InstanceHealthSummary
+        , Network.AWS.Lightsail.Types.InstanceMetricName
+        , Network.AWS.Lightsail.Types.InstanceNetworking
+        , Network.AWS.Lightsail.Types.InstancePlatform
+        , Network.AWS.Lightsail.Types.InstancePortInfo
+        , Network.AWS.Lightsail.Types.InstancePortState
+        , Network.AWS.Lightsail.Types.InstanceSnapshot
+        , Network.AWS.Lightsail.Types.InstanceSnapshotState
+        , Network.AWS.Lightsail.Types.InstanceState
+        , Network.AWS.Lightsail.Types.KeyPair
+        , Network.AWS.Lightsail.Types.LoadBalancer
+        , Network.AWS.Lightsail.Types.LoadBalancerAttributeName
+        , Network.AWS.Lightsail.Types.LoadBalancerMetricName
+        , Network.AWS.Lightsail.Types.LoadBalancerProtocol
+        , Network.AWS.Lightsail.Types.LoadBalancerState
+        , Network.AWS.Lightsail.Types.LoadBalancerTLSCertificate
+        , Network.AWS.Lightsail.Types.LoadBalancerTLSCertificateDomainStatus
+        , Network.AWS.Lightsail.Types.LoadBalancerTLSCertificateDomainValidationOption
+        , Network.AWS.Lightsail.Types.LoadBalancerTLSCertificateDomainValidationRecord
+        , Network.AWS.Lightsail.Types.LoadBalancerTLSCertificateFailureReason
+        , Network.AWS.Lightsail.Types.LoadBalancerTLSCertificateRenewalStatus
+        , Network.AWS.Lightsail.Types.LoadBalancerTLSCertificateRenewalSummary
+        , Network.AWS.Lightsail.Types.LoadBalancerTLSCertificateRevocationReason
+        , Network.AWS.Lightsail.Types.LoadBalancerTLSCertificateStatus
+        , Network.AWS.Lightsail.Types.LoadBalancerTLSCertificateSummary
+        , Network.AWS.Lightsail.Types.MetricDatapoint
+        , Network.AWS.Lightsail.Types.MetricStatistic
+        , Network.AWS.Lightsail.Types.MetricUnit
+        , Network.AWS.Lightsail.Types.MonthlyTransfer
+        , Network.AWS.Lightsail.Types.NetworkProtocol
+        , Network.AWS.Lightsail.Types.Operation
+        , Network.AWS.Lightsail.Types.OperationStatus
+        , Network.AWS.Lightsail.Types.OperationType
+        , Network.AWS.Lightsail.Types.PasswordData
+        , Network.AWS.Lightsail.Types.PortAccessType
+        , Network.AWS.Lightsail.Types.PortInfo
+        , Network.AWS.Lightsail.Types.PortState
+        , Network.AWS.Lightsail.Types.RegionInfo
+        , Network.AWS.Lightsail.Types.RegionName
+        , Network.AWS.Lightsail.Types.ResourceLocation
+        , Network.AWS.Lightsail.Types.ResourceType
+        , Network.AWS.Lightsail.Types.StaticIP
 
     build-depends:
           amazonka-core == 1.6.1.*

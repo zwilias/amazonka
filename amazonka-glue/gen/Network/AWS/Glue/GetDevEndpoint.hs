@@ -38,19 +38,15 @@ module Network.AWS.Glue.GetDevEndpoint
     ) where
 
 import Network.AWS.Glue.Types
-import Network.AWS.Glue.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 
 -- | /See:/ 'getDevEndpoint' smart constructor.
-newtype GetDevEndpoint =
-  GetDevEndpoint'
-    { _gdeEndpointName :: Text
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+newtype GetDevEndpoint = GetDevEndpoint'{_gdeEndpointName
+                                         :: Text}
+                           deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'GetDevEndpoint' with the minimum fields required to make a request.
 --
@@ -60,9 +56,8 @@ newtype GetDevEndpoint =
 getDevEndpoint
     :: Text -- ^ 'gdeEndpointName'
     -> GetDevEndpoint
-getDevEndpoint pEndpointName_ =
-  GetDevEndpoint' {_gdeEndpointName = pEndpointName_}
-
+getDevEndpoint pEndpointName_
+  = GetDevEndpoint'{_gdeEndpointName = pEndpointName_}
 
 -- | Name of the DevEndpoint for which to retrieve information.
 gdeEndpointName :: Lens' GetDevEndpoint Text
@@ -103,13 +98,12 @@ instance ToQuery GetDevEndpoint where
         toQuery = const mempty
 
 -- | /See:/ 'getDevEndpointResponse' smart constructor.
-data GetDevEndpointResponse =
-  GetDevEndpointResponse'
-    { _gdedrsDevEndpoint    :: !(Maybe DevEndpoint)
-    , _gdedrsResponseStatus :: !Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data GetDevEndpointResponse = GetDevEndpointResponse'{_gdedrsDevEndpoint
+                                                      :: !(Maybe DevEndpoint),
+                                                      _gdedrsResponseStatus ::
+                                                      !Int}
+                                deriving (Eq, Read, Show, Data, Typeable,
+                                          Generic)
 
 -- | Creates a value of 'GetDevEndpointResponse' with the minimum fields required to make a request.
 --
@@ -121,10 +115,10 @@ data GetDevEndpointResponse =
 getDevEndpointResponse
     :: Int -- ^ 'gdedrsResponseStatus'
     -> GetDevEndpointResponse
-getDevEndpointResponse pResponseStatus_ =
-  GetDevEndpointResponse'
-    {_gdedrsDevEndpoint = Nothing, _gdedrsResponseStatus = pResponseStatus_}
-
+getDevEndpointResponse pResponseStatus_
+  = GetDevEndpointResponse'{_gdedrsDevEndpoint =
+                              Nothing,
+                            _gdedrsResponseStatus = pResponseStatus_}
 
 -- | A DevEndpoint definition.
 gdedrsDevEndpoint :: Lens' GetDevEndpointResponse (Maybe DevEndpoint)

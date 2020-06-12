@@ -45,7 +45,6 @@ module Network.AWS.DeviceFarm.ScheduleRun
     ) where
 
 import Network.AWS.DeviceFarm.Types
-import Network.AWS.DeviceFarm.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.Request
@@ -56,19 +55,18 @@ import Network.AWS.Response
 --
 --
 -- /See:/ 'scheduleRun' smart constructor.
-data ScheduleRun =
-  ScheduleRun'
-    { _srExecutionConfiguration       :: !(Maybe ExecutionConfiguration)
-    , _srDeviceSelectionConfiguration :: !(Maybe DeviceSelectionConfiguration)
-    , _srAppARN                       :: !(Maybe Text)
-    , _srName                         :: !(Maybe Text)
-    , _srConfiguration                :: !(Maybe ScheduleRunConfiguration)
-    , _srDevicePoolARN                :: !(Maybe Text)
-    , _srProjectARN                   :: !Text
-    , _srTest                         :: !ScheduleRunTest
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data ScheduleRun = ScheduleRun'{_srExecutionConfiguration
+                                :: !(Maybe ExecutionConfiguration),
+                                _srDeviceSelectionConfiguration ::
+                                !(Maybe DeviceSelectionConfiguration),
+                                _srAppARN :: !(Maybe Text),
+                                _srName :: !(Maybe Text),
+                                _srConfiguration ::
+                                !(Maybe ScheduleRunConfiguration),
+                                _srDevicePoolARN :: !(Maybe Text),
+                                _srProjectARN :: !Text,
+                                _srTest :: !ScheduleRunTest}
+                     deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'ScheduleRun' with the minimum fields required to make a request.
 --
@@ -93,18 +91,13 @@ scheduleRun
     :: Text -- ^ 'srProjectARN'
     -> ScheduleRunTest -- ^ 'srTest'
     -> ScheduleRun
-scheduleRun pProjectARN_ pTest_ =
-  ScheduleRun'
-    { _srExecutionConfiguration = Nothing
-    , _srDeviceSelectionConfiguration = Nothing
-    , _srAppARN = Nothing
-    , _srName = Nothing
-    , _srConfiguration = Nothing
-    , _srDevicePoolARN = Nothing
-    , _srProjectARN = pProjectARN_
-    , _srTest = pTest_
-    }
-
+scheduleRun pProjectARN_ pTest_
+  = ScheduleRun'{_srExecutionConfiguration = Nothing,
+                 _srDeviceSelectionConfiguration = Nothing,
+                 _srAppARN = Nothing, _srName = Nothing,
+                 _srConfiguration = Nothing,
+                 _srDevicePoolARN = Nothing,
+                 _srProjectARN = pProjectARN_, _srTest = pTest_}
 
 -- | Specifies configuration information about a test run, such as the execution timeout (in minutes).
 srExecutionConfiguration :: Lens' ScheduleRun (Maybe ExecutionConfiguration)
@@ -185,13 +178,10 @@ instance ToQuery ScheduleRun where
 --
 --
 -- /See:/ 'scheduleRunResponse' smart constructor.
-data ScheduleRunResponse =
-  ScheduleRunResponse'
-    { _srrsRun            :: !(Maybe Run)
-    , _srrsResponseStatus :: !Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data ScheduleRunResponse = ScheduleRunResponse'{_srrsRun
+                                                :: !(Maybe Run),
+                                                _srrsResponseStatus :: !Int}
+                             deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'ScheduleRunResponse' with the minimum fields required to make a request.
 --
@@ -203,10 +193,9 @@ data ScheduleRunResponse =
 scheduleRunResponse
     :: Int -- ^ 'srrsResponseStatus'
     -> ScheduleRunResponse
-scheduleRunResponse pResponseStatus_ =
-  ScheduleRunResponse'
-    {_srrsRun = Nothing, _srrsResponseStatus = pResponseStatus_}
-
+scheduleRunResponse pResponseStatus_
+  = ScheduleRunResponse'{_srrsRun = Nothing,
+                         _srrsResponseStatus = pResponseStatus_}
 
 -- | Information about the scheduled run.
 srrsRun :: Lens' ScheduleRunResponse (Maybe Run)

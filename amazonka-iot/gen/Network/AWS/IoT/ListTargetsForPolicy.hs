@@ -41,21 +41,17 @@ module Network.AWS.IoT.ListTargetsForPolicy
     ) where
 
 import Network.AWS.IoT.Types
-import Network.AWS.IoT.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 
 -- | /See:/ 'listTargetsForPolicy' smart constructor.
-data ListTargetsForPolicy =
-  ListTargetsForPolicy'
-    { _ltfpMarker     :: !(Maybe Text)
-    , _ltfpPageSize   :: !(Maybe Nat)
-    , _ltfpPolicyName :: !Text
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data ListTargetsForPolicy = ListTargetsForPolicy'{_ltfpMarker
+                                                  :: !(Maybe Text),
+                                                  _ltfpPageSize :: !(Maybe Nat),
+                                                  _ltfpPolicyName :: !Text}
+                              deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'ListTargetsForPolicy' with the minimum fields required to make a request.
 --
@@ -69,13 +65,10 @@ data ListTargetsForPolicy =
 listTargetsForPolicy
     :: Text -- ^ 'ltfpPolicyName'
     -> ListTargetsForPolicy
-listTargetsForPolicy pPolicyName_ =
-  ListTargetsForPolicy'
-    { _ltfpMarker = Nothing
-    , _ltfpPageSize = Nothing
-    , _ltfpPolicyName = pPolicyName_
-    }
-
+listTargetsForPolicy pPolicyName_
+  = ListTargetsForPolicy'{_ltfpMarker = Nothing,
+                          _ltfpPageSize = Nothing,
+                          _ltfpPolicyName = pPolicyName_}
 
 -- | A marker used to get the next set of results.
 ltfpMarker :: Lens' ListTargetsForPolicy (Maybe Text)
@@ -121,14 +114,17 @@ instance ToQuery ListTargetsForPolicy where
                "pageSize" =: _ltfpPageSize]
 
 -- | /See:/ 'listTargetsForPolicyResponse' smart constructor.
-data ListTargetsForPolicyResponse =
-  ListTargetsForPolicyResponse'
-    { _ltfprsTargets        :: !(Maybe [Text])
-    , _ltfprsNextMarker     :: !(Maybe Text)
-    , _ltfprsResponseStatus :: !Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data ListTargetsForPolicyResponse = ListTargetsForPolicyResponse'{_ltfprsTargets
+                                                                  ::
+                                                                  !(Maybe
+                                                                      [Text]),
+                                                                  _ltfprsNextMarker
+                                                                  ::
+                                                                  !(Maybe Text),
+                                                                  _ltfprsResponseStatus
+                                                                  :: !Int}
+                                      deriving (Eq, Read, Show, Data, Typeable,
+                                                Generic)
 
 -- | Creates a value of 'ListTargetsForPolicyResponse' with the minimum fields required to make a request.
 --
@@ -142,13 +138,11 @@ data ListTargetsForPolicyResponse =
 listTargetsForPolicyResponse
     :: Int -- ^ 'ltfprsResponseStatus'
     -> ListTargetsForPolicyResponse
-listTargetsForPolicyResponse pResponseStatus_ =
-  ListTargetsForPolicyResponse'
-    { _ltfprsTargets = Nothing
-    , _ltfprsNextMarker = Nothing
-    , _ltfprsResponseStatus = pResponseStatus_
-    }
-
+listTargetsForPolicyResponse pResponseStatus_
+  = ListTargetsForPolicyResponse'{_ltfprsTargets =
+                                    Nothing,
+                                  _ltfprsNextMarker = Nothing,
+                                  _ltfprsResponseStatus = pResponseStatus_}
 
 -- | The policy targets.
 ltfprsTargets :: Lens' ListTargetsForPolicyResponse [Text]

@@ -46,22 +46,18 @@ module Network.AWS.EC2.ReleaseAddress
     ) where
 
 import Network.AWS.EC2.Types
-import Network.AWS.EC2.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 
 -- | /See:/ 'releaseAddress' smart constructor.
-data ReleaseAddress =
-  ReleaseAddress'
-    { _raAllocationId       :: !(Maybe Text)
-    , _raNetworkBorderGroup :: !(Maybe Text)
-    , _raPublicIP           :: !(Maybe Text)
-    , _raDryRun             :: !(Maybe Bool)
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data ReleaseAddress = ReleaseAddress'{_raAllocationId
+                                      :: !(Maybe Text),
+                                      _raNetworkBorderGroup :: !(Maybe Text),
+                                      _raPublicIP :: !(Maybe Text),
+                                      _raDryRun :: !(Maybe Bool)}
+                        deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'ReleaseAddress' with the minimum fields required to make a request.
 --
@@ -76,14 +72,10 @@ data ReleaseAddress =
 -- * 'raDryRun' - Checks whether you have the required permissions for the action, without actually making the request, and provides an error response. If you have the required permissions, the error response is @DryRunOperation@ . Otherwise, it is @UnauthorizedOperation@ .
 releaseAddress
     :: ReleaseAddress
-releaseAddress =
-  ReleaseAddress'
-    { _raAllocationId = Nothing
-    , _raNetworkBorderGroup = Nothing
-    , _raPublicIP = Nothing
-    , _raDryRun = Nothing
-    }
-
+releaseAddress
+  = ReleaseAddress'{_raAllocationId = Nothing,
+                    _raNetworkBorderGroup = Nothing,
+                    _raPublicIP = Nothing, _raDryRun = Nothing}
 
 -- | [EC2-VPC] The allocation ID. Required for EC2-VPC.
 raAllocationId :: Lens' ReleaseAddress (Maybe Text)
@@ -126,16 +118,14 @@ instance ToQuery ReleaseAddress where
                "PublicIp" =: _raPublicIP, "DryRun" =: _raDryRun]
 
 -- | /See:/ 'releaseAddressResponse' smart constructor.
-data ReleaseAddressResponse =
-  ReleaseAddressResponse'
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data ReleaseAddressResponse = ReleaseAddressResponse'
+                                deriving (Eq, Read, Show, Data, Typeable,
+                                          Generic)
 
 -- | Creates a value of 'ReleaseAddressResponse' with the minimum fields required to make a request.
 --
 releaseAddressResponse
     :: ReleaseAddressResponse
 releaseAddressResponse = ReleaseAddressResponse'
-
 
 instance NFData ReleaseAddressResponse where

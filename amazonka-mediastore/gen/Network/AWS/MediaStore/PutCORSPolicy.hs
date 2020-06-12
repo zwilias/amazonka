@@ -41,19 +41,15 @@ module Network.AWS.MediaStore.PutCORSPolicy
 
 import Network.AWS.Lens
 import Network.AWS.MediaStore.Types
-import Network.AWS.MediaStore.Types.Product
 import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 
 -- | /See:/ 'putCORSPolicy' smart constructor.
-data PutCORSPolicy =
-  PutCORSPolicy'
-    { _pcpContainerName :: !Text
-    , _pcpCORSPolicy    :: !(List1 CORSRule)
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data PutCORSPolicy = PutCORSPolicy'{_pcpContainerName
+                                    :: !Text,
+                                    _pcpCORSPolicy :: !(List1 CORSRule)}
+                       deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'PutCORSPolicy' with the minimum fields required to make a request.
 --
@@ -61,23 +57,20 @@ data PutCORSPolicy =
 --
 -- * 'pcpContainerName' - The name of the container that you want to assign the CORS policy to.
 --
--- * 'pcpCORSPolicy' - The CORS policy to apply to the container.
+-- * 'pcpCORSPolicy' - The CORS policy to apply to the container. 
 putCORSPolicy
     :: Text -- ^ 'pcpContainerName'
     -> NonEmpty CORSRule -- ^ 'pcpCORSPolicy'
     -> PutCORSPolicy
-putCORSPolicy pContainerName_ pCORSPolicy_ =
-  PutCORSPolicy'
-    { _pcpContainerName = pContainerName_
-    , _pcpCORSPolicy = _List1 # pCORSPolicy_
-    }
-
+putCORSPolicy pContainerName_ pCORSPolicy_
+  = PutCORSPolicy'{_pcpContainerName = pContainerName_,
+                   _pcpCORSPolicy = _List1 # pCORSPolicy_}
 
 -- | The name of the container that you want to assign the CORS policy to.
 pcpContainerName :: Lens' PutCORSPolicy Text
 pcpContainerName = lens _pcpContainerName (\ s a -> s{_pcpContainerName = a})
 
--- | The CORS policy to apply to the container.
+-- | The CORS policy to apply to the container. 
 pcpCORSPolicy :: Lens' PutCORSPolicy (NonEmpty CORSRule)
 pcpCORSPolicy = lens _pcpCORSPolicy (\ s a -> s{_pcpCORSPolicy = a}) . _List1
 
@@ -116,12 +109,10 @@ instance ToQuery PutCORSPolicy where
         toQuery = const mempty
 
 -- | /See:/ 'putCORSPolicyResponse' smart constructor.
-newtype PutCORSPolicyResponse =
-  PutCORSPolicyResponse'
-    { _pcorsprsResponseStatus :: Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+newtype PutCORSPolicyResponse = PutCORSPolicyResponse'{_pcorsprsResponseStatus
+                                                       :: Int}
+                                  deriving (Eq, Read, Show, Data, Typeable,
+                                            Generic)
 
 -- | Creates a value of 'PutCORSPolicyResponse' with the minimum fields required to make a request.
 --
@@ -131,9 +122,9 @@ newtype PutCORSPolicyResponse =
 putCORSPolicyResponse
     :: Int -- ^ 'pcorsprsResponseStatus'
     -> PutCORSPolicyResponse
-putCORSPolicyResponse pResponseStatus_ =
-  PutCORSPolicyResponse' {_pcorsprsResponseStatus = pResponseStatus_}
-
+putCORSPolicyResponse pResponseStatus_
+  = PutCORSPolicyResponse'{_pcorsprsResponseStatus =
+                             pResponseStatus_}
 
 -- | -- | The response status code.
 pcorsprsResponseStatus :: Lens' PutCORSPolicyResponse Int

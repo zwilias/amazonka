@@ -59,38 +59,39 @@ module Network.AWS.Redshift.ModifyCluster
 import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.Redshift.Types
-import Network.AWS.Redshift.Types.Product
 import Network.AWS.Request
 import Network.AWS.Response
 
--- |
+-- | 
 --
 --
 --
 -- /See:/ 'modifyCluster' smart constructor.
-data ModifyCluster =
-  ModifyCluster'
-    { _mcEnhancedVPCRouting               :: !(Maybe Bool)
-    , _mcMasterUserPassword               :: !(Maybe Text)
-    , _mcPubliclyAccessible               :: !(Maybe Bool)
-    , _mcHSMConfigurationIdentifier       :: !(Maybe Text)
-    , _mcClusterSecurityGroups            :: !(Maybe [Text])
-    , _mcAutomatedSnapshotRetentionPeriod :: !(Maybe Int)
-    , _mcHSMClientCertificateIdentifier   :: !(Maybe Text)
-    , _mcNumberOfNodes                    :: !(Maybe Int)
-    , _mcElasticIP                        :: !(Maybe Text)
-    , _mcPreferredMaintenanceWindow       :: !(Maybe Text)
-    , _mcVPCSecurityGroupIds              :: !(Maybe [Text])
-    , _mcClusterType                      :: !(Maybe Text)
-    , _mcNewClusterIdentifier             :: !(Maybe Text)
-    , _mcClusterVersion                   :: !(Maybe Text)
-    , _mcNodeType                         :: !(Maybe Text)
-    , _mcAllowVersionUpgrade              :: !(Maybe Bool)
-    , _mcClusterParameterGroupName        :: !(Maybe Text)
-    , _mcClusterIdentifier                :: !Text
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data ModifyCluster = ModifyCluster'{_mcEnhancedVPCRouting
+                                    :: !(Maybe Bool),
+                                    _mcMasterUserPassword :: !(Maybe Text),
+                                    _mcPubliclyAccessible :: !(Maybe Bool),
+                                    _mcHSMConfigurationIdentifier ::
+                                    !(Maybe Text),
+                                    _mcClusterSecurityGroups :: !(Maybe [Text]),
+                                    _mcAutomatedSnapshotRetentionPeriod ::
+                                    !(Maybe Int),
+                                    _mcHSMClientCertificateIdentifier ::
+                                    !(Maybe Text),
+                                    _mcNumberOfNodes :: !(Maybe Int),
+                                    _mcElasticIP :: !(Maybe Text),
+                                    _mcPreferredMaintenanceWindow ::
+                                    !(Maybe Text),
+                                    _mcVPCSecurityGroupIds :: !(Maybe [Text]),
+                                    _mcClusterType :: !(Maybe Text),
+                                    _mcNewClusterIdentifier :: !(Maybe Text),
+                                    _mcClusterVersion :: !(Maybe Text),
+                                    _mcNodeType :: !(Maybe Text),
+                                    _mcAllowVersionUpgrade :: !(Maybe Bool),
+                                    _mcClusterParameterGroupName ::
+                                    !(Maybe Text),
+                                    _mcClusterIdentifier :: !Text}
+                       deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'ModifyCluster' with the minimum fields required to make a request.
 --
@@ -118,44 +119,39 @@ data ModifyCluster =
 --
 -- * 'mcVPCSecurityGroupIds' - A list of virtual private cloud (VPC) security groups to be associated with the cluster.
 --
--- * 'mcClusterType' - The new cluster type. When you submit your cluster resize request, your existing cluster goes into a read-only mode. After Amazon Redshift provisions a new cluster based on your resize requirements, there will be outage for a period while the old cluster is deleted and your connection is switched to the new cluster. You can use 'DescribeResize' to track the progress of the resize request.  Valid Values: @multi-node | single-node @
+-- * 'mcClusterType' - The new cluster type. When you submit your cluster resize request, your existing cluster goes into a read-only mode. After Amazon Redshift provisions a new cluster based on your resize requirements, there will be outage for a period while the old cluster is deleted and your connection is switched to the new cluster. You can use 'DescribeResize' to track the progress of the resize request.  Valid Values: @multi-node | single-node @ 
 --
--- * 'mcNewClusterIdentifier' - The new identifier for the cluster. Constraints:     * Must contain from 1 to 63 alphanumeric characters or hyphens.     * Alphabetic characters must be lowercase.     * First character must be a letter.     * Cannot end with a hyphen or contain two consecutive hyphens.     * Must be unique for all clusters within an AWS account. Example: @examplecluster@
+-- * 'mcNewClusterIdentifier' - The new identifier for the cluster. Constraints:     * Must contain from 1 to 63 alphanumeric characters or hyphens.     * Alphabetic characters must be lowercase.     * First character must be a letter.     * Cannot end with a hyphen or contain two consecutive hyphens.     * Must be unique for all clusters within an AWS account. Example: @examplecluster@ 
 --
--- * 'mcClusterVersion' - The new version number of the Amazon Redshift engine to upgrade to. For major version upgrades, if a non-default cluster parameter group is currently in use, a new cluster parameter group in the cluster parameter group family for the new version must be specified. The new cluster parameter group can be the default for that cluster parameter group family. For more information about parameters and parameter groups, go to <http://docs.aws.amazon.com/redshift/latest/mgmt/working-with-parameter-groups.html Amazon Redshift Parameter Groups> in the /Amazon Redshift Cluster Management Guide/ . Example: @1.0@
+-- * 'mcClusterVersion' - The new version number of the Amazon Redshift engine to upgrade to. For major version upgrades, if a non-default cluster parameter group is currently in use, a new cluster parameter group in the cluster parameter group family for the new version must be specified. The new cluster parameter group can be the default for that cluster parameter group family. For more information about parameters and parameter groups, go to <http://docs.aws.amazon.com/redshift/latest/mgmt/working-with-parameter-groups.html Amazon Redshift Parameter Groups> in the /Amazon Redshift Cluster Management Guide/ . Example: @1.0@ 
 --
--- * 'mcNodeType' - The new node type of the cluster. If you specify a new node type, you must also specify the number of nodes parameter. When you submit your request to resize a cluster, Amazon Redshift sets access permissions for the cluster to read-only. After Amazon Redshift provisions a new cluster according to your resize requirements, there will be a temporary outage while the old cluster is deleted and your connection is switched to the new cluster. When the new connection is complete, the original access permissions for the cluster are restored. You can use 'DescribeResize' to track the progress of the resize request.  Valid Values: @ds2.xlarge@ | @ds2.8xlarge@ | @dc1.large@ | @dc1.8xlarge@ | @dc2.large@ | @dc2.8xlarge@
+-- * 'mcNodeType' - The new node type of the cluster. If you specify a new node type, you must also specify the number of nodes parameter. When you submit your request to resize a cluster, Amazon Redshift sets access permissions for the cluster to read-only. After Amazon Redshift provisions a new cluster according to your resize requirements, there will be a temporary outage while the old cluster is deleted and your connection is switched to the new cluster. When the new connection is complete, the original access permissions for the cluster are restored. You can use 'DescribeResize' to track the progress of the resize request.  Valid Values: @ds2.xlarge@ | @ds2.8xlarge@ | @dc1.large@ | @dc1.8xlarge@ | @dc2.large@ | @dc2.8xlarge@ 
 --
--- * 'mcAllowVersionUpgrade' - If @true@ , major version upgrades will be applied automatically to the cluster during the maintenance window.  Default: @false@
+-- * 'mcAllowVersionUpgrade' - If @true@ , major version upgrades will be applied automatically to the cluster during the maintenance window.  Default: @false@ 
 --
 -- * 'mcClusterParameterGroupName' - The name of the cluster parameter group to apply to this cluster. This change is applied only after the cluster is rebooted. To reboot a cluster use 'RebootCluster' .  Default: Uses existing setting. Constraints: The cluster parameter group must be in the same parameter group family that matches the cluster version.
 --
--- * 'mcClusterIdentifier' - The unique identifier of the cluster to be modified. Example: @examplecluster@
+-- * 'mcClusterIdentifier' - The unique identifier of the cluster to be modified. Example: @examplecluster@ 
 modifyCluster
     :: Text -- ^ 'mcClusterIdentifier'
     -> ModifyCluster
-modifyCluster pClusterIdentifier_ =
-  ModifyCluster'
-    { _mcEnhancedVPCRouting = Nothing
-    , _mcMasterUserPassword = Nothing
-    , _mcPubliclyAccessible = Nothing
-    , _mcHSMConfigurationIdentifier = Nothing
-    , _mcClusterSecurityGroups = Nothing
-    , _mcAutomatedSnapshotRetentionPeriod = Nothing
-    , _mcHSMClientCertificateIdentifier = Nothing
-    , _mcNumberOfNodes = Nothing
-    , _mcElasticIP = Nothing
-    , _mcPreferredMaintenanceWindow = Nothing
-    , _mcVPCSecurityGroupIds = Nothing
-    , _mcClusterType = Nothing
-    , _mcNewClusterIdentifier = Nothing
-    , _mcClusterVersion = Nothing
-    , _mcNodeType = Nothing
-    , _mcAllowVersionUpgrade = Nothing
-    , _mcClusterParameterGroupName = Nothing
-    , _mcClusterIdentifier = pClusterIdentifier_
-    }
-
+modifyCluster pClusterIdentifier_
+  = ModifyCluster'{_mcEnhancedVPCRouting = Nothing,
+                   _mcMasterUserPassword = Nothing,
+                   _mcPubliclyAccessible = Nothing,
+                   _mcHSMConfigurationIdentifier = Nothing,
+                   _mcClusterSecurityGroups = Nothing,
+                   _mcAutomatedSnapshotRetentionPeriod = Nothing,
+                   _mcHSMClientCertificateIdentifier = Nothing,
+                   _mcNumberOfNodes = Nothing, _mcElasticIP = Nothing,
+                   _mcPreferredMaintenanceWindow = Nothing,
+                   _mcVPCSecurityGroupIds = Nothing,
+                   _mcClusterType = Nothing,
+                   _mcNewClusterIdentifier = Nothing,
+                   _mcClusterVersion = Nothing, _mcNodeType = Nothing,
+                   _mcAllowVersionUpgrade = Nothing,
+                   _mcClusterParameterGroupName = Nothing,
+                   _mcClusterIdentifier = pClusterIdentifier_}
 
 -- | An option that specifies whether to create the cluster with enhanced VPC routing enabled. To create a cluster that uses enhanced VPC routing, the cluster must be in a VPC. For more information, see <http://docs.aws.amazon.com/redshift/latest/mgmt/enhanced-vpc-routing.html Enhanced VPC Routing> in the Amazon Redshift Cluster Management Guide. If this option is @true@ , enhanced VPC routing is enabled.  Default: false
 mcEnhancedVPCRouting :: Lens' ModifyCluster (Maybe Bool)
@@ -201,23 +197,23 @@ mcPreferredMaintenanceWindow = lens _mcPreferredMaintenanceWindow (\ s a -> s{_m
 mcVPCSecurityGroupIds :: Lens' ModifyCluster [Text]
 mcVPCSecurityGroupIds = lens _mcVPCSecurityGroupIds (\ s a -> s{_mcVPCSecurityGroupIds = a}) . _Default . _Coerce
 
--- | The new cluster type. When you submit your cluster resize request, your existing cluster goes into a read-only mode. After Amazon Redshift provisions a new cluster based on your resize requirements, there will be outage for a period while the old cluster is deleted and your connection is switched to the new cluster. You can use 'DescribeResize' to track the progress of the resize request.  Valid Values: @multi-node | single-node @
+-- | The new cluster type. When you submit your cluster resize request, your existing cluster goes into a read-only mode. After Amazon Redshift provisions a new cluster based on your resize requirements, there will be outage for a period while the old cluster is deleted and your connection is switched to the new cluster. You can use 'DescribeResize' to track the progress of the resize request.  Valid Values: @multi-node | single-node @ 
 mcClusterType :: Lens' ModifyCluster (Maybe Text)
 mcClusterType = lens _mcClusterType (\ s a -> s{_mcClusterType = a})
 
--- | The new identifier for the cluster. Constraints:     * Must contain from 1 to 63 alphanumeric characters or hyphens.     * Alphabetic characters must be lowercase.     * First character must be a letter.     * Cannot end with a hyphen or contain two consecutive hyphens.     * Must be unique for all clusters within an AWS account. Example: @examplecluster@
+-- | The new identifier for the cluster. Constraints:     * Must contain from 1 to 63 alphanumeric characters or hyphens.     * Alphabetic characters must be lowercase.     * First character must be a letter.     * Cannot end with a hyphen or contain two consecutive hyphens.     * Must be unique for all clusters within an AWS account. Example: @examplecluster@ 
 mcNewClusterIdentifier :: Lens' ModifyCluster (Maybe Text)
 mcNewClusterIdentifier = lens _mcNewClusterIdentifier (\ s a -> s{_mcNewClusterIdentifier = a})
 
--- | The new version number of the Amazon Redshift engine to upgrade to. For major version upgrades, if a non-default cluster parameter group is currently in use, a new cluster parameter group in the cluster parameter group family for the new version must be specified. The new cluster parameter group can be the default for that cluster parameter group family. For more information about parameters and parameter groups, go to <http://docs.aws.amazon.com/redshift/latest/mgmt/working-with-parameter-groups.html Amazon Redshift Parameter Groups> in the /Amazon Redshift Cluster Management Guide/ . Example: @1.0@
+-- | The new version number of the Amazon Redshift engine to upgrade to. For major version upgrades, if a non-default cluster parameter group is currently in use, a new cluster parameter group in the cluster parameter group family for the new version must be specified. The new cluster parameter group can be the default for that cluster parameter group family. For more information about parameters and parameter groups, go to <http://docs.aws.amazon.com/redshift/latest/mgmt/working-with-parameter-groups.html Amazon Redshift Parameter Groups> in the /Amazon Redshift Cluster Management Guide/ . Example: @1.0@ 
 mcClusterVersion :: Lens' ModifyCluster (Maybe Text)
 mcClusterVersion = lens _mcClusterVersion (\ s a -> s{_mcClusterVersion = a})
 
--- | The new node type of the cluster. If you specify a new node type, you must also specify the number of nodes parameter. When you submit your request to resize a cluster, Amazon Redshift sets access permissions for the cluster to read-only. After Amazon Redshift provisions a new cluster according to your resize requirements, there will be a temporary outage while the old cluster is deleted and your connection is switched to the new cluster. When the new connection is complete, the original access permissions for the cluster are restored. You can use 'DescribeResize' to track the progress of the resize request.  Valid Values: @ds2.xlarge@ | @ds2.8xlarge@ | @dc1.large@ | @dc1.8xlarge@ | @dc2.large@ | @dc2.8xlarge@
+-- | The new node type of the cluster. If you specify a new node type, you must also specify the number of nodes parameter. When you submit your request to resize a cluster, Amazon Redshift sets access permissions for the cluster to read-only. After Amazon Redshift provisions a new cluster according to your resize requirements, there will be a temporary outage while the old cluster is deleted and your connection is switched to the new cluster. When the new connection is complete, the original access permissions for the cluster are restored. You can use 'DescribeResize' to track the progress of the resize request.  Valid Values: @ds2.xlarge@ | @ds2.8xlarge@ | @dc1.large@ | @dc1.8xlarge@ | @dc2.large@ | @dc2.8xlarge@ 
 mcNodeType :: Lens' ModifyCluster (Maybe Text)
 mcNodeType = lens _mcNodeType (\ s a -> s{_mcNodeType = a})
 
--- | If @true@ , major version upgrades will be applied automatically to the cluster during the maintenance window.  Default: @false@
+-- | If @true@ , major version upgrades will be applied automatically to the cluster during the maintenance window.  Default: @false@ 
 mcAllowVersionUpgrade :: Lens' ModifyCluster (Maybe Bool)
 mcAllowVersionUpgrade = lens _mcAllowVersionUpgrade (\ s a -> s{_mcAllowVersionUpgrade = a})
 
@@ -225,7 +221,7 @@ mcAllowVersionUpgrade = lens _mcAllowVersionUpgrade (\ s a -> s{_mcAllowVersionU
 mcClusterParameterGroupName :: Lens' ModifyCluster (Maybe Text)
 mcClusterParameterGroupName = lens _mcClusterParameterGroupName (\ s a -> s{_mcClusterParameterGroupName = a})
 
--- | The unique identifier of the cluster to be modified. Example: @examplecluster@
+-- | The unique identifier of the cluster to be modified. Example: @examplecluster@ 
 mcClusterIdentifier :: Lens' ModifyCluster Text
 mcClusterIdentifier = lens _mcClusterIdentifier (\ s a -> s{_mcClusterIdentifier = a})
 
@@ -284,13 +280,11 @@ instance ToQuery ModifyCluster where
                "ClusterIdentifier" =: _mcClusterIdentifier]
 
 -- | /See:/ 'modifyClusterResponse' smart constructor.
-data ModifyClusterResponse =
-  ModifyClusterResponse'
-    { _mcrsCluster        :: !(Maybe Cluster)
-    , _mcrsResponseStatus :: !Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data ModifyClusterResponse = ModifyClusterResponse'{_mcrsCluster
+                                                    :: !(Maybe Cluster),
+                                                    _mcrsResponseStatus :: !Int}
+                               deriving (Eq, Read, Show, Data, Typeable,
+                                         Generic)
 
 -- | Creates a value of 'ModifyClusterResponse' with the minimum fields required to make a request.
 --
@@ -302,10 +296,9 @@ data ModifyClusterResponse =
 modifyClusterResponse
     :: Int -- ^ 'mcrsResponseStatus'
     -> ModifyClusterResponse
-modifyClusterResponse pResponseStatus_ =
-  ModifyClusterResponse'
-    {_mcrsCluster = Nothing, _mcrsResponseStatus = pResponseStatus_}
-
+modifyClusterResponse pResponseStatus_
+  = ModifyClusterResponse'{_mcrsCluster = Nothing,
+                           _mcrsResponseStatus = pResponseStatus_}
 
 -- | Undocumented member.
 mcrsCluster :: Lens' ModifyClusterResponse (Maybe Cluster)

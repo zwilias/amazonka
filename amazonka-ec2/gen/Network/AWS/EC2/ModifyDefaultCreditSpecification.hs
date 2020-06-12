@@ -44,21 +44,24 @@ module Network.AWS.EC2.ModifyDefaultCreditSpecification
     ) where
 
 import Network.AWS.EC2.Types
-import Network.AWS.EC2.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 
 -- | /See:/ 'modifyDefaultCreditSpecification' smart constructor.
-data ModifyDefaultCreditSpecification =
-  ModifyDefaultCreditSpecification'
-    { _mdcsDryRun         :: !(Maybe Bool)
-    , _mdcsInstanceFamily :: !UnlimitedSupportedInstanceFamily
-    , _mdcsCPUCredits     :: !Text
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data ModifyDefaultCreditSpecification = ModifyDefaultCreditSpecification'{_mdcsDryRun
+                                                                          ::
+                                                                          !(Maybe
+                                                                              Bool),
+                                                                          _mdcsInstanceFamily
+                                                                          ::
+                                                                          !UnlimitedSupportedInstanceFamily,
+                                                                          _mdcsCPUCredits
+                                                                          ::
+                                                                          !Text}
+                                          deriving (Eq, Read, Show, Data,
+                                                    Typeable, Generic)
 
 -- | Creates a value of 'ModifyDefaultCreditSpecification' with the minimum fields required to make a request.
 --
@@ -68,18 +71,17 @@ data ModifyDefaultCreditSpecification =
 --
 -- * 'mdcsInstanceFamily' - The instance family.
 --
--- * 'mdcsCPUCredits' - The credit option for CPU usage of the instance family. Valid Values: @standard@ | @unlimited@
+-- * 'mdcsCPUCredits' - The credit option for CPU usage of the instance family. Valid Values: @standard@ | @unlimited@ 
 modifyDefaultCreditSpecification
     :: UnlimitedSupportedInstanceFamily -- ^ 'mdcsInstanceFamily'
     -> Text -- ^ 'mdcsCPUCredits'
     -> ModifyDefaultCreditSpecification
-modifyDefaultCreditSpecification pInstanceFamily_ pCPUCredits_ =
-  ModifyDefaultCreditSpecification'
-    { _mdcsDryRun = Nothing
-    , _mdcsInstanceFamily = pInstanceFamily_
-    , _mdcsCPUCredits = pCPUCredits_
-    }
-
+modifyDefaultCreditSpecification pInstanceFamily_
+  pCPUCredits_
+  = ModifyDefaultCreditSpecification'{_mdcsDryRun =
+                                        Nothing,
+                                      _mdcsInstanceFamily = pInstanceFamily_,
+                                      _mdcsCPUCredits = pCPUCredits_}
 
 -- | Checks whether you have the required permissions for the action, without actually making the request, and provides an error response. If you have the required permissions, the error response is @DryRunOperation@ . Otherwise, it is @UnauthorizedOperation@ .
 mdcsDryRun :: Lens' ModifyDefaultCreditSpecification (Maybe Bool)
@@ -89,7 +91,7 @@ mdcsDryRun = lens _mdcsDryRun (\ s a -> s{_mdcsDryRun = a})
 mdcsInstanceFamily :: Lens' ModifyDefaultCreditSpecification UnlimitedSupportedInstanceFamily
 mdcsInstanceFamily = lens _mdcsInstanceFamily (\ s a -> s{_mdcsInstanceFamily = a})
 
--- | The credit option for CPU usage of the instance family. Valid Values: @standard@ | @unlimited@
+-- | The credit option for CPU usage of the instance family. Valid Values: @standard@ | @unlimited@ 
 mdcsCPUCredits :: Lens' ModifyDefaultCreditSpecification Text
 mdcsCPUCredits = lens _mdcsCPUCredits (\ s a -> s{_mdcsCPUCredits = a})
 
@@ -131,13 +133,16 @@ instance ToQuery ModifyDefaultCreditSpecification
                "CpuCredits" =: _mdcsCPUCredits]
 
 -- | /See:/ 'modifyDefaultCreditSpecificationResponse' smart constructor.
-data ModifyDefaultCreditSpecificationResponse =
-  ModifyDefaultCreditSpecificationResponse'
-    { _mdcsrsInstanceFamilyCreditSpecification :: !(Maybe InstanceFamilyCreditSpecification)
-    , _mdcsrsResponseStatus :: !Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data ModifyDefaultCreditSpecificationResponse = ModifyDefaultCreditSpecificationResponse'{_mdcsrsInstanceFamilyCreditSpecification
+                                                                                          ::
+                                                                                          !(Maybe
+                                                                                              InstanceFamilyCreditSpecification),
+                                                                                          _mdcsrsResponseStatus
+                                                                                          ::
+                                                                                          !Int}
+                                                  deriving (Eq, Read, Show,
+                                                            Data, Typeable,
+                                                            Generic)
 
 -- | Creates a value of 'ModifyDefaultCreditSpecificationResponse' with the minimum fields required to make a request.
 --
@@ -149,12 +154,12 @@ data ModifyDefaultCreditSpecificationResponse =
 modifyDefaultCreditSpecificationResponse
     :: Int -- ^ 'mdcsrsResponseStatus'
     -> ModifyDefaultCreditSpecificationResponse
-modifyDefaultCreditSpecificationResponse pResponseStatus_ =
-  ModifyDefaultCreditSpecificationResponse'
-    { _mdcsrsInstanceFamilyCreditSpecification = Nothing
-    , _mdcsrsResponseStatus = pResponseStatus_
-    }
-
+modifyDefaultCreditSpecificationResponse
+  pResponseStatus_
+  = ModifyDefaultCreditSpecificationResponse'{_mdcsrsInstanceFamilyCreditSpecification
+                                                = Nothing,
+                                              _mdcsrsResponseStatus =
+                                                pResponseStatus_}
 
 -- | The default credit option for CPU usage of the instance family.
 mdcsrsInstanceFamilyCreditSpecification :: Lens' ModifyDefaultCreditSpecificationResponse (Maybe InstanceFamilyCreditSpecification)

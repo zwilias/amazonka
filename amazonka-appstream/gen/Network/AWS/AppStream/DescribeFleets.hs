@@ -42,7 +42,6 @@ module Network.AWS.AppStream.DescribeFleets
     ) where
 
 import Network.AWS.AppStream.Types
-import Network.AWS.AppStream.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Pager
 import Network.AWS.Prelude
@@ -50,13 +49,10 @@ import Network.AWS.Request
 import Network.AWS.Response
 
 -- | /See:/ 'describeFleets' smart constructor.
-data DescribeFleets =
-  DescribeFleets'
-    { _dfNextToken :: !(Maybe Text)
-    , _dfNames     :: !(Maybe [Text])
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data DescribeFleets = DescribeFleets'{_dfNextToken ::
+                                      !(Maybe Text),
+                                      _dfNames :: !(Maybe [Text])}
+                        deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'DescribeFleets' with the minimum fields required to make a request.
 --
@@ -67,8 +63,9 @@ data DescribeFleets =
 -- * 'dfNames' - The names of the fleets to describe.
 describeFleets
     :: DescribeFleets
-describeFleets = DescribeFleets' {_dfNextToken = Nothing, _dfNames = Nothing}
-
+describeFleets
+  = DescribeFleets'{_dfNextToken = Nothing,
+                    _dfNames = Nothing}
 
 -- | The pagination token to use to retrieve the next page of results for this operation. If this value is null, it retrieves the first page.
 dfNextToken :: Lens' DescribeFleets (Maybe Text)
@@ -123,14 +120,14 @@ instance ToQuery DescribeFleets where
         toQuery = const mempty
 
 -- | /See:/ 'describeFleetsResponse' smart constructor.
-data DescribeFleetsResponse =
-  DescribeFleetsResponse'
-    { _dfsrsNextToken      :: !(Maybe Text)
-    , _dfsrsFleets         :: !(Maybe [Fleet])
-    , _dfsrsResponseStatus :: !Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data DescribeFleetsResponse = DescribeFleetsResponse'{_dfsrsNextToken
+                                                      :: !(Maybe Text),
+                                                      _dfsrsFleets ::
+                                                      !(Maybe [Fleet]),
+                                                      _dfsrsResponseStatus ::
+                                                      !Int}
+                                deriving (Eq, Read, Show, Data, Typeable,
+                                          Generic)
 
 -- | Creates a value of 'DescribeFleetsResponse' with the minimum fields required to make a request.
 --
@@ -144,13 +141,10 @@ data DescribeFleetsResponse =
 describeFleetsResponse
     :: Int -- ^ 'dfsrsResponseStatus'
     -> DescribeFleetsResponse
-describeFleetsResponse pResponseStatus_ =
-  DescribeFleetsResponse'
-    { _dfsrsNextToken = Nothing
-    , _dfsrsFleets = Nothing
-    , _dfsrsResponseStatus = pResponseStatus_
-    }
-
+describeFleetsResponse pResponseStatus_
+  = DescribeFleetsResponse'{_dfsrsNextToken = Nothing,
+                            _dfsrsFleets = Nothing,
+                            _dfsrsResponseStatus = pResponseStatus_}
 
 -- | The pagination token to use to retrieve the next page of results for this operation. If there are no more pages, this value is null.
 dfsrsNextToken :: Lens' DescribeFleetsResponse (Maybe Text)

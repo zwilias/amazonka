@@ -43,22 +43,18 @@ module Network.AWS.DirectConnect.DeleteBGPPeer
     ) where
 
 import Network.AWS.DirectConnect.Types
-import Network.AWS.DirectConnect.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 
 -- | /See:/ 'deleteBGPPeer' smart constructor.
-data DeleteBGPPeer =
-  DeleteBGPPeer'
-    { _dbpCustomerAddress    :: !(Maybe Text)
-    , _dbpAsn                :: !(Maybe Int)
-    , _dbpBgpPeerId          :: !(Maybe Text)
-    , _dbpVirtualInterfaceId :: !(Maybe Text)
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data DeleteBGPPeer = DeleteBGPPeer'{_dbpCustomerAddress
+                                    :: !(Maybe Text),
+                                    _dbpAsn :: !(Maybe Int),
+                                    _dbpBgpPeerId :: !(Maybe Text),
+                                    _dbpVirtualInterfaceId :: !(Maybe Text)}
+                       deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'DeleteBGPPeer' with the minimum fields required to make a request.
 --
@@ -73,14 +69,10 @@ data DeleteBGPPeer =
 -- * 'dbpVirtualInterfaceId' - The ID of the virtual interface.
 deleteBGPPeer
     :: DeleteBGPPeer
-deleteBGPPeer =
-  DeleteBGPPeer'
-    { _dbpCustomerAddress = Nothing
-    , _dbpAsn = Nothing
-    , _dbpBgpPeerId = Nothing
-    , _dbpVirtualInterfaceId = Nothing
-    }
-
+deleteBGPPeer
+  = DeleteBGPPeer'{_dbpCustomerAddress = Nothing,
+                   _dbpAsn = Nothing, _dbpBgpPeerId = Nothing,
+                   _dbpVirtualInterfaceId = Nothing}
 
 -- | The IP address assigned to the customer interface.
 dbpCustomerAddress :: Lens' DeleteBGPPeer (Maybe Text)
@@ -137,13 +129,13 @@ instance ToQuery DeleteBGPPeer where
         toQuery = const mempty
 
 -- | /See:/ 'deleteBGPPeerResponse' smart constructor.
-data DeleteBGPPeerResponse =
-  DeleteBGPPeerResponse'
-    { _dbprsVirtualInterface :: !(Maybe VirtualInterface)
-    , _dbprsResponseStatus   :: !Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data DeleteBGPPeerResponse = DeleteBGPPeerResponse'{_dbprsVirtualInterface
+                                                    ::
+                                                    !(Maybe VirtualInterface),
+                                                    _dbprsResponseStatus ::
+                                                    !Int}
+                               deriving (Eq, Read, Show, Data, Typeable,
+                                         Generic)
 
 -- | Creates a value of 'DeleteBGPPeerResponse' with the minimum fields required to make a request.
 --
@@ -155,10 +147,10 @@ data DeleteBGPPeerResponse =
 deleteBGPPeerResponse
     :: Int -- ^ 'dbprsResponseStatus'
     -> DeleteBGPPeerResponse
-deleteBGPPeerResponse pResponseStatus_ =
-  DeleteBGPPeerResponse'
-    {_dbprsVirtualInterface = Nothing, _dbprsResponseStatus = pResponseStatus_}
-
+deleteBGPPeerResponse pResponseStatus_
+  = DeleteBGPPeerResponse'{_dbprsVirtualInterface =
+                             Nothing,
+                           _dbprsResponseStatus = pResponseStatus_}
 
 -- | The virtual interface.
 dbprsVirtualInterface :: Lens' DeleteBGPPeerResponse (Maybe VirtualInterface)

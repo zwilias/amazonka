@@ -47,26 +47,22 @@ module Network.AWS.EC2.ImportSnapshot
     ) where
 
 import Network.AWS.EC2.Types
-import Network.AWS.EC2.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 
 -- | /See:/ 'importSnapshot' smart constructor.
-data ImportSnapshot =
-  ImportSnapshot'
-    { _isDiskContainer :: !(Maybe SnapshotDiskContainer)
-    , _isClientToken   :: !(Maybe Text)
-    , _isRoleName      :: !(Maybe Text)
-    , _isEncrypted     :: !(Maybe Bool)
-    , _isKMSKeyId      :: !(Maybe Text)
-    , _isDescription   :: !(Maybe Text)
-    , _isDryRun        :: !(Maybe Bool)
-    , _isClientData    :: !(Maybe ClientData)
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data ImportSnapshot = ImportSnapshot'{_isDiskContainer
+                                      :: !(Maybe SnapshotDiskContainer),
+                                      _isClientToken :: !(Maybe Text),
+                                      _isRoleName :: !(Maybe Text),
+                                      _isEncrypted :: !(Maybe Bool),
+                                      _isKMSKeyId :: !(Maybe Text),
+                                      _isDescription :: !(Maybe Text),
+                                      _isDryRun :: !(Maybe Bool),
+                                      _isClientData :: !(Maybe ClientData)}
+                        deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'ImportSnapshot' with the minimum fields required to make a request.
 --
@@ -89,18 +85,12 @@ data ImportSnapshot =
 -- * 'isClientData' - The client-specific data.
 importSnapshot
     :: ImportSnapshot
-importSnapshot =
-  ImportSnapshot'
-    { _isDiskContainer = Nothing
-    , _isClientToken = Nothing
-    , _isRoleName = Nothing
-    , _isEncrypted = Nothing
-    , _isKMSKeyId = Nothing
-    , _isDescription = Nothing
-    , _isDryRun = Nothing
-    , _isClientData = Nothing
-    }
-
+importSnapshot
+  = ImportSnapshot'{_isDiskContainer = Nothing,
+                    _isClientToken = Nothing, _isRoleName = Nothing,
+                    _isEncrypted = Nothing, _isKMSKeyId = Nothing,
+                    _isDescription = Nothing, _isDryRun = Nothing,
+                    _isClientData = Nothing}
 
 -- | Information about the disk container.
 isDiskContainer :: Lens' ImportSnapshot (Maybe SnapshotDiskContainer)
@@ -170,15 +160,18 @@ instance ToQuery ImportSnapshot where
                "DryRun" =: _isDryRun, "ClientData" =: _isClientData]
 
 -- | /See:/ 'importSnapshotResponse' smart constructor.
-data ImportSnapshotResponse =
-  ImportSnapshotResponse'
-    { _isrsSnapshotTaskDetail :: !(Maybe SnapshotTaskDetail)
-    , _isrsImportTaskId       :: !(Maybe Text)
-    , _isrsDescription        :: !(Maybe Text)
-    , _isrsResponseStatus     :: !Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data ImportSnapshotResponse = ImportSnapshotResponse'{_isrsSnapshotTaskDetail
+                                                      ::
+                                                      !(Maybe
+                                                          SnapshotTaskDetail),
+                                                      _isrsImportTaskId ::
+                                                      !(Maybe Text),
+                                                      _isrsDescription ::
+                                                      !(Maybe Text),
+                                                      _isrsResponseStatus ::
+                                                      !Int}
+                                deriving (Eq, Read, Show, Data, Typeable,
+                                          Generic)
 
 -- | Creates a value of 'ImportSnapshotResponse' with the minimum fields required to make a request.
 --
@@ -194,14 +187,12 @@ data ImportSnapshotResponse =
 importSnapshotResponse
     :: Int -- ^ 'isrsResponseStatus'
     -> ImportSnapshotResponse
-importSnapshotResponse pResponseStatus_ =
-  ImportSnapshotResponse'
-    { _isrsSnapshotTaskDetail = Nothing
-    , _isrsImportTaskId = Nothing
-    , _isrsDescription = Nothing
-    , _isrsResponseStatus = pResponseStatus_
-    }
-
+importSnapshotResponse pResponseStatus_
+  = ImportSnapshotResponse'{_isrsSnapshotTaskDetail =
+                              Nothing,
+                            _isrsImportTaskId = Nothing,
+                            _isrsDescription = Nothing,
+                            _isrsResponseStatus = pResponseStatus_}
 
 -- | Information about the import snapshot task.
 isrsSnapshotTaskDetail :: Lens' ImportSnapshotResponse (Maybe SnapshotTaskDetail)

@@ -46,20 +46,16 @@ import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 import Network.AWS.SES.Types
-import Network.AWS.SES.Types.Product
 
 -- | Represents a request to update a receipt rule. You use receipt rules to receive email with Amazon SES. For more information, see the <http://docs.aws.amazon.com/ses/latest/DeveloperGuide/receiving-email-concepts.html Amazon SES Developer Guide> .
 --
 --
 --
 -- /See:/ 'updateReceiptRule' smart constructor.
-data UpdateReceiptRule =
-  UpdateReceiptRule'
-    { _urrRuleSetName :: !Text
-    , _urrRule        :: !ReceiptRule
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data UpdateReceiptRule = UpdateReceiptRule'{_urrRuleSetName
+                                            :: !Text,
+                                            _urrRule :: !ReceiptRule}
+                           deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'UpdateReceiptRule' with the minimum fields required to make a request.
 --
@@ -72,9 +68,9 @@ updateReceiptRule
     :: Text -- ^ 'urrRuleSetName'
     -> ReceiptRule -- ^ 'urrRule'
     -> UpdateReceiptRule
-updateReceiptRule pRuleSetName_ pRule_ =
-  UpdateReceiptRule' {_urrRuleSetName = pRuleSetName_, _urrRule = pRule_}
-
+updateReceiptRule pRuleSetName_ pRule_
+  = UpdateReceiptRule'{_urrRuleSetName = pRuleSetName_,
+                       _urrRule = pRule_}
 
 -- | The name of the receipt rule set that the receipt rule belongs to.
 urrRuleSetName :: Lens' UpdateReceiptRule Text
@@ -114,12 +110,10 @@ instance ToQuery UpdateReceiptRule where
 --
 --
 -- /See:/ 'updateReceiptRuleResponse' smart constructor.
-newtype UpdateReceiptRuleResponse =
-  UpdateReceiptRuleResponse'
-    { _urrrsResponseStatus :: Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+newtype UpdateReceiptRuleResponse = UpdateReceiptRuleResponse'{_urrrsResponseStatus
+                                                               :: Int}
+                                      deriving (Eq, Read, Show, Data, Typeable,
+                                                Generic)
 
 -- | Creates a value of 'UpdateReceiptRuleResponse' with the minimum fields required to make a request.
 --
@@ -129,9 +123,9 @@ newtype UpdateReceiptRuleResponse =
 updateReceiptRuleResponse
     :: Int -- ^ 'urrrsResponseStatus'
     -> UpdateReceiptRuleResponse
-updateReceiptRuleResponse pResponseStatus_ =
-  UpdateReceiptRuleResponse' {_urrrsResponseStatus = pResponseStatus_}
-
+updateReceiptRuleResponse pResponseStatus_
+  = UpdateReceiptRuleResponse'{_urrrsResponseStatus =
+                                 pResponseStatus_}
 
 -- | -- | The response status code.
 urrrsResponseStatus :: Lens' UpdateReceiptRuleResponse Int

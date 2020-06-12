@@ -52,25 +52,31 @@ import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 import Network.AWS.SSM.Types
-import Network.AWS.SSM.Types.Product
 
 -- | /See:/ 'createPatchBaseline' smart constructor.
-data CreatePatchBaseline =
-  CreatePatchBaseline'
-    { _cpbApprovalRules                    :: !(Maybe PatchRuleGroup)
-    , _cpbClientToken                      :: !(Maybe Text)
-    , _cpbOperatingSystem                  :: !(Maybe OperatingSystem)
-    , _cpbGlobalFilters                    :: !(Maybe PatchFilterGroup)
-    , _cpbApprovedPatchesComplianceLevel   :: !(Maybe PatchComplianceLevel)
-    , _cpbApprovedPatches                  :: !(Maybe [Text])
-    , _cpbApprovedPatchesEnableNonSecurity :: !(Maybe Bool)
-    , _cpbRejectedPatches                  :: !(Maybe [Text])
-    , _cpbSources                          :: !(Maybe [PatchSource])
-    , _cpbDescription                      :: !(Maybe Text)
-    , _cpbName                             :: !Text
-    }
-  deriving (Eq, Show, Data, Typeable, Generic)
-
+data CreatePatchBaseline = CreatePatchBaseline'{_cpbApprovalRules
+                                                :: !(Maybe PatchRuleGroup),
+                                                _cpbClientToken ::
+                                                !(Maybe Text),
+                                                _cpbOperatingSystem ::
+                                                !(Maybe OperatingSystem),
+                                                _cpbGlobalFilters ::
+                                                !(Maybe PatchFilterGroup),
+                                                _cpbApprovedPatchesComplianceLevel
+                                                ::
+                                                !(Maybe PatchComplianceLevel),
+                                                _cpbApprovedPatches ::
+                                                !(Maybe [Text]),
+                                                _cpbApprovedPatchesEnableNonSecurity
+                                                :: !(Maybe Bool),
+                                                _cpbRejectedPatches ::
+                                                !(Maybe [Text]),
+                                                _cpbSources ::
+                                                !(Maybe [PatchSource]),
+                                                _cpbDescription ::
+                                                !(Maybe Text),
+                                                _cpbName :: !Text}
+                             deriving (Eq, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'CreatePatchBaseline' with the minimum fields required to make a request.
 --
@@ -100,21 +106,16 @@ data CreatePatchBaseline =
 createPatchBaseline
     :: Text -- ^ 'cpbName'
     -> CreatePatchBaseline
-createPatchBaseline pName_ =
-  CreatePatchBaseline'
-    { _cpbApprovalRules = Nothing
-    , _cpbClientToken = Nothing
-    , _cpbOperatingSystem = Nothing
-    , _cpbGlobalFilters = Nothing
-    , _cpbApprovedPatchesComplianceLevel = Nothing
-    , _cpbApprovedPatches = Nothing
-    , _cpbApprovedPatchesEnableNonSecurity = Nothing
-    , _cpbRejectedPatches = Nothing
-    , _cpbSources = Nothing
-    , _cpbDescription = Nothing
-    , _cpbName = pName_
-    }
-
+createPatchBaseline pName_
+  = CreatePatchBaseline'{_cpbApprovalRules = Nothing,
+                         _cpbClientToken = Nothing,
+                         _cpbOperatingSystem = Nothing,
+                         _cpbGlobalFilters = Nothing,
+                         _cpbApprovedPatchesComplianceLevel = Nothing,
+                         _cpbApprovedPatches = Nothing,
+                         _cpbApprovedPatchesEnableNonSecurity = Nothing,
+                         _cpbRejectedPatches = Nothing, _cpbSources = Nothing,
+                         _cpbDescription = Nothing, _cpbName = pName_}
 
 -- | A set of rules used to include patches in the baseline.
 cpbApprovalRules :: Lens' CreatePatchBaseline (Maybe PatchRuleGroup)
@@ -208,13 +209,13 @@ instance ToQuery CreatePatchBaseline where
         toQuery = const mempty
 
 -- | /See:/ 'createPatchBaselineResponse' smart constructor.
-data CreatePatchBaselineResponse =
-  CreatePatchBaselineResponse'
-    { _cpbrsBaselineId     :: !(Maybe Text)
-    , _cpbrsResponseStatus :: !Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data CreatePatchBaselineResponse = CreatePatchBaselineResponse'{_cpbrsBaselineId
+                                                                ::
+                                                                !(Maybe Text),
+                                                                _cpbrsResponseStatus
+                                                                :: !Int}
+                                     deriving (Eq, Read, Show, Data, Typeable,
+                                               Generic)
 
 -- | Creates a value of 'CreatePatchBaselineResponse' with the minimum fields required to make a request.
 --
@@ -226,10 +227,10 @@ data CreatePatchBaselineResponse =
 createPatchBaselineResponse
     :: Int -- ^ 'cpbrsResponseStatus'
     -> CreatePatchBaselineResponse
-createPatchBaselineResponse pResponseStatus_ =
-  CreatePatchBaselineResponse'
-    {_cpbrsBaselineId = Nothing, _cpbrsResponseStatus = pResponseStatus_}
-
+createPatchBaselineResponse pResponseStatus_
+  = CreatePatchBaselineResponse'{_cpbrsBaselineId =
+                                   Nothing,
+                                 _cpbrsResponseStatus = pResponseStatus_}
 
 -- | The ID of the created patch baseline.
 cpbrsBaselineId :: Lens' CreatePatchBaselineResponse (Maybe Text)

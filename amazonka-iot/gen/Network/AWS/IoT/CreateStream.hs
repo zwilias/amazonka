@@ -44,22 +44,18 @@ module Network.AWS.IoT.CreateStream
     ) where
 
 import Network.AWS.IoT.Types
-import Network.AWS.IoT.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 
 -- | /See:/ 'createStream' smart constructor.
-data CreateStream =
-  CreateStream'
-    { _csDescription :: !(Maybe Text)
-    , _csStreamId    :: !Text
-    , _csFiles       :: !(List1 StreamFile)
-    , _csRoleARN     :: !Text
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data CreateStream = CreateStream'{_csDescription ::
+                                  !(Maybe Text),
+                                  _csStreamId :: !Text,
+                                  _csFiles :: !(List1 StreamFile),
+                                  _csRoleARN :: !Text}
+                      deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'CreateStream' with the minimum fields required to make a request.
 --
@@ -77,14 +73,10 @@ createStream
     -> NonEmpty StreamFile -- ^ 'csFiles'
     -> Text -- ^ 'csRoleARN'
     -> CreateStream
-createStream pStreamId_ pFiles_ pRoleARN_ =
-  CreateStream'
-    { _csDescription = Nothing
-    , _csStreamId = pStreamId_
-    , _csFiles = _List1 # pFiles_
-    , _csRoleARN = pRoleARN_
-    }
-
+createStream pStreamId_ pFiles_ pRoleARN_
+  = CreateStream'{_csDescription = Nothing,
+                  _csStreamId = pStreamId_,
+                  _csFiles = _List1 # pFiles_, _csRoleARN = pRoleARN_}
 
 -- | A description of the stream.
 csDescription :: Lens' CreateStream (Maybe Text)
@@ -137,16 +129,16 @@ instance ToQuery CreateStream where
         toQuery = const mempty
 
 -- | /See:/ 'createStreamResponse' smart constructor.
-data CreateStreamResponse =
-  CreateStreamResponse'
-    { _csrsStreamVersion  :: !(Maybe Nat)
-    , _csrsStreamARN      :: !(Maybe Text)
-    , _csrsDescription    :: !(Maybe Text)
-    , _csrsStreamId       :: !(Maybe Text)
-    , _csrsResponseStatus :: !Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data CreateStreamResponse = CreateStreamResponse'{_csrsStreamVersion
+                                                  :: !(Maybe Nat),
+                                                  _csrsStreamARN ::
+                                                  !(Maybe Text),
+                                                  _csrsDescription ::
+                                                  !(Maybe Text),
+                                                  _csrsStreamId ::
+                                                  !(Maybe Text),
+                                                  _csrsResponseStatus :: !Int}
+                              deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'CreateStreamResponse' with the minimum fields required to make a request.
 --
@@ -164,15 +156,11 @@ data CreateStreamResponse =
 createStreamResponse
     :: Int -- ^ 'csrsResponseStatus'
     -> CreateStreamResponse
-createStreamResponse pResponseStatus_ =
-  CreateStreamResponse'
-    { _csrsStreamVersion = Nothing
-    , _csrsStreamARN = Nothing
-    , _csrsDescription = Nothing
-    , _csrsStreamId = Nothing
-    , _csrsResponseStatus = pResponseStatus_
-    }
-
+createStreamResponse pResponseStatus_
+  = CreateStreamResponse'{_csrsStreamVersion = Nothing,
+                          _csrsStreamARN = Nothing, _csrsDescription = Nothing,
+                          _csrsStreamId = Nothing,
+                          _csrsResponseStatus = pResponseStatus_}
 
 -- | The version of the stream.
 csrsStreamVersion :: Lens' CreateStreamResponse (Maybe Natural)

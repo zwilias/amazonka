@@ -41,21 +41,17 @@ module Network.AWS.MediaConvert.ListQueues
 
 import Network.AWS.Lens
 import Network.AWS.MediaConvert.Types
-import Network.AWS.MediaConvert.Types.Product
 import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 
 -- | /See:/ 'listQueues' smart constructor.
-data ListQueues =
-  ListQueues'
-    { _lqListBy     :: !(Maybe QueueListBy)
-    , _lqNextToken  :: !(Maybe Text)
-    , _lqOrder      :: !(Maybe Order)
-    , _lqMaxResults :: !(Maybe Int)
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data ListQueues = ListQueues'{_lqListBy ::
+                              !(Maybe QueueListBy),
+                              _lqNextToken :: !(Maybe Text),
+                              _lqOrder :: !(Maybe Order),
+                              _lqMaxResults :: !(Maybe Int)}
+                    deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'ListQueues' with the minimum fields required to make a request.
 --
@@ -70,14 +66,10 @@ data ListQueues =
 -- * 'lqMaxResults' - Optional. Number of queues, up to twenty, that will be returned at one time.
 listQueues
     :: ListQueues
-listQueues =
-  ListQueues'
-    { _lqListBy = Nothing
-    , _lqNextToken = Nothing
-    , _lqOrder = Nothing
-    , _lqMaxResults = Nothing
-    }
-
+listQueues
+  = ListQueues'{_lqListBy = Nothing,
+                _lqNextToken = Nothing, _lqOrder = Nothing,
+                _lqMaxResults = Nothing}
 
 -- | Undocumented member.
 lqListBy :: Lens' ListQueues (Maybe QueueListBy)
@@ -126,14 +118,11 @@ instance ToQuery ListQueues where
                "order" =: _lqOrder, "maxResults" =: _lqMaxResults]
 
 -- | /See:/ 'listQueuesResponse' smart constructor.
-data ListQueuesResponse =
-  ListQueuesResponse'
-    { _lqrsQueues         :: !(Maybe [Queue])
-    , _lqrsNextToken      :: !(Maybe Text)
-    , _lqrsResponseStatus :: !Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data ListQueuesResponse = ListQueuesResponse'{_lqrsQueues
+                                              :: !(Maybe [Queue]),
+                                              _lqrsNextToken :: !(Maybe Text),
+                                              _lqrsResponseStatus :: !Int}
+                            deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'ListQueuesResponse' with the minimum fields required to make a request.
 --
@@ -147,13 +136,10 @@ data ListQueuesResponse =
 listQueuesResponse
     :: Int -- ^ 'lqrsResponseStatus'
     -> ListQueuesResponse
-listQueuesResponse pResponseStatus_ =
-  ListQueuesResponse'
-    { _lqrsQueues = Nothing
-    , _lqrsNextToken = Nothing
-    , _lqrsResponseStatus = pResponseStatus_
-    }
-
+listQueuesResponse pResponseStatus_
+  = ListQueuesResponse'{_lqrsQueues = Nothing,
+                        _lqrsNextToken = Nothing,
+                        _lqrsResponseStatus = pResponseStatus_}
 
 -- | List of queues
 lqrsQueues :: Lens' ListQueuesResponse [Queue]

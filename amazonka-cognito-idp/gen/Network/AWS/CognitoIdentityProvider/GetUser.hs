@@ -42,7 +42,6 @@ module Network.AWS.CognitoIdentityProvider.GetUser
     ) where
 
 import Network.AWS.CognitoIdentityProvider.Types
-import Network.AWS.CognitoIdentityProvider.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.Request
@@ -53,12 +52,9 @@ import Network.AWS.Response
 --
 --
 -- /See:/ 'getUser' smart constructor.
-newtype GetUser =
-  GetUser'
-    { _guAccessToken :: Sensitive Text
-    }
-  deriving (Eq, Show, Data, Typeable, Generic)
-
+newtype GetUser = GetUser'{_guAccessToken ::
+                           Sensitive Text}
+                    deriving (Eq, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'GetUser' with the minimum fields required to make a request.
 --
@@ -68,8 +64,9 @@ newtype GetUser =
 getUser
     :: Text -- ^ 'guAccessToken'
     -> GetUser
-getUser pAccessToken_ = GetUser' {_guAccessToken = _Sensitive # pAccessToken_}
-
+getUser pAccessToken_
+  = GetUser'{_guAccessToken =
+               _Sensitive # pAccessToken_}
 
 -- | The access token returned by the server response to get information about the user.
 guAccessToken :: Lens' GetUser Text
@@ -119,17 +116,16 @@ instance ToQuery GetUser where
 --
 --
 -- /See:/ 'getUserResponse' smart constructor.
-data GetUserResponse =
-  GetUserResponse'
-    { _gursUserMFASettingList  :: !(Maybe [Text])
-    , _gursMFAOptions          :: !(Maybe [MFAOptionType])
-    , _gursPreferredMFASetting :: !(Maybe Text)
-    , _gursResponseStatus      :: !Int
-    , _gursUsername            :: !(Sensitive Text)
-    , _gursUserAttributes      :: ![AttributeType]
-    }
-  deriving (Eq, Show, Data, Typeable, Generic)
-
+data GetUserResponse = GetUserResponse'{_gursUserMFASettingList
+                                        :: !(Maybe [Text]),
+                                        _gursMFAOptions ::
+                                        !(Maybe [MFAOptionType]),
+                                        _gursPreferredMFASetting ::
+                                        !(Maybe Text),
+                                        _gursResponseStatus :: !Int,
+                                        _gursUsername :: !(Sensitive Text),
+                                        _gursUserAttributes :: ![AttributeType]}
+                         deriving (Eq, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'GetUserResponse' with the minimum fields required to make a request.
 --
@@ -150,16 +146,13 @@ getUserResponse
     :: Int -- ^ 'gursResponseStatus'
     -> Text -- ^ 'gursUsername'
     -> GetUserResponse
-getUserResponse pResponseStatus_ pUsername_ =
-  GetUserResponse'
-    { _gursUserMFASettingList = Nothing
-    , _gursMFAOptions = Nothing
-    , _gursPreferredMFASetting = Nothing
-    , _gursResponseStatus = pResponseStatus_
-    , _gursUsername = _Sensitive # pUsername_
-    , _gursUserAttributes = mempty
-    }
-
+getUserResponse pResponseStatus_ pUsername_
+  = GetUserResponse'{_gursUserMFASettingList = Nothing,
+                     _gursMFAOptions = Nothing,
+                     _gursPreferredMFASetting = Nothing,
+                     _gursResponseStatus = pResponseStatus_,
+                     _gursUsername = _Sensitive # pUsername_,
+                     _gursUserAttributes = mempty}
 
 -- | The MFA options that are enabled for the user. The possible values in this list are @SMS_MFA@ and @SOFTWARE_TOKEN_MFA@ .
 gursUserMFASettingList :: Lens' GetUserResponse [Text]

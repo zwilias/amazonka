@@ -42,19 +42,16 @@ import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 import Network.AWS.StorageGateway.Types
-import Network.AWS.StorageGateway.Types.Product
 
 -- | A JSON object containing a list of 'DescribeStorediSCSIVolumesInput$VolumeARNs' .
 --
 --
 --
 -- /See:/ 'describeStorediSCSIVolumes' smart constructor.
-newtype DescribeStorediSCSIVolumes =
-  DescribeStorediSCSIVolumes'
-    { _dsscsivVolumeARNs :: [Text]
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+newtype DescribeStorediSCSIVolumes = DescribeStorediSCSIVolumes'{_dsscsivVolumeARNs
+                                                                 :: [Text]}
+                                       deriving (Eq, Read, Show, Data, Typeable,
+                                                 Generic)
 
 -- | Creates a value of 'DescribeStorediSCSIVolumes' with the minimum fields required to make a request.
 --
@@ -63,9 +60,9 @@ newtype DescribeStorediSCSIVolumes =
 -- * 'dsscsivVolumeARNs' - An array of strings where each string represents the Amazon Resource Name (ARN) of a stored volume. All of the specified stored volumes must from the same gateway. Use 'ListVolumes' to get volume ARNs for a gateway.
 describeStorediSCSIVolumes
     :: DescribeStorediSCSIVolumes
-describeStorediSCSIVolumes =
-  DescribeStorediSCSIVolumes' {_dsscsivVolumeARNs = mempty}
-
+describeStorediSCSIVolumes
+  = DescribeStorediSCSIVolumes'{_dsscsivVolumeARNs =
+                                  mempty}
 
 -- | An array of strings where each string represents the Amazon Resource Name (ARN) of a stored volume. All of the specified stored volumes must from the same gateway. Use 'ListVolumes' to get volume ARNs for a gateway.
 dsscsivVolumeARNs :: Lens' DescribeStorediSCSIVolumes [Text]
@@ -109,13 +106,15 @@ instance ToQuery DescribeStorediSCSIVolumes where
         toQuery = const mempty
 
 -- | /See:/ 'describeStorediSCSIVolumesResponse' smart constructor.
-data DescribeStorediSCSIVolumesResponse =
-  DescribeStorediSCSIVolumesResponse'
-    { _dsscsivrsStorediSCSIVolumes :: !(Maybe [StorediSCSIVolume])
-    , _dsscsivrsResponseStatus     :: !Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data DescribeStorediSCSIVolumesResponse = DescribeStorediSCSIVolumesResponse'{_dsscsivrsStorediSCSIVolumes
+                                                                              ::
+                                                                              !(Maybe
+                                                                                  [StorediSCSIVolume]),
+                                                                              _dsscsivrsResponseStatus
+                                                                              ::
+                                                                              !Int}
+                                            deriving (Eq, Read, Show, Data,
+                                                      Typeable, Generic)
 
 -- | Creates a value of 'DescribeStorediSCSIVolumesResponse' with the minimum fields required to make a request.
 --
@@ -127,12 +126,11 @@ data DescribeStorediSCSIVolumesResponse =
 describeStorediSCSIVolumesResponse
     :: Int -- ^ 'dsscsivrsResponseStatus'
     -> DescribeStorediSCSIVolumesResponse
-describeStorediSCSIVolumesResponse pResponseStatus_ =
-  DescribeStorediSCSIVolumesResponse'
-    { _dsscsivrsStorediSCSIVolumes = Nothing
-    , _dsscsivrsResponseStatus = pResponseStatus_
-    }
-
+describeStorediSCSIVolumesResponse pResponseStatus_
+  = DescribeStorediSCSIVolumesResponse'{_dsscsivrsStorediSCSIVolumes
+                                          = Nothing,
+                                        _dsscsivrsResponseStatus =
+                                          pResponseStatus_}
 
 -- | Undocumented member.
 dsscsivrsStorediSCSIVolumes :: Lens' DescribeStorediSCSIVolumesResponse [StorediSCSIVolume]

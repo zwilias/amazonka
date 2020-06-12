@@ -40,7 +40,6 @@ module Network.AWS.CognitoIdentityProvider.AdminUserGlobalSignOut
     ) where
 
 import Network.AWS.CognitoIdentityProvider.Types
-import Network.AWS.CognitoIdentityProvider.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.Request
@@ -51,13 +50,11 @@ import Network.AWS.Response
 --
 --
 -- /See:/ 'adminUserGlobalSignOut' smart constructor.
-data AdminUserGlobalSignOut =
-  AdminUserGlobalSignOut'
-    { _augsoUserPoolId :: !Text
-    , _augsoUsername   :: !(Sensitive Text)
-    }
-  deriving (Eq, Show, Data, Typeable, Generic)
-
+data AdminUserGlobalSignOut = AdminUserGlobalSignOut'{_augsoUserPoolId
+                                                      :: !Text,
+                                                      _augsoUsername ::
+                                                      !(Sensitive Text)}
+                                deriving (Eq, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'AdminUserGlobalSignOut' with the minimum fields required to make a request.
 --
@@ -70,10 +67,10 @@ adminUserGlobalSignOut
     :: Text -- ^ 'augsoUserPoolId'
     -> Text -- ^ 'augsoUsername'
     -> AdminUserGlobalSignOut
-adminUserGlobalSignOut pUserPoolId_ pUsername_ =
-  AdminUserGlobalSignOut'
-    {_augsoUserPoolId = pUserPoolId_, _augsoUsername = _Sensitive # pUsername_}
-
+adminUserGlobalSignOut pUserPoolId_ pUsername_
+  = AdminUserGlobalSignOut'{_augsoUserPoolId =
+                              pUserPoolId_,
+                            _augsoUsername = _Sensitive # pUsername_}
 
 -- | The user pool ID.
 augsoUserPoolId :: Lens' AdminUserGlobalSignOut Text
@@ -125,12 +122,10 @@ instance ToQuery AdminUserGlobalSignOut where
 --
 --
 -- /See:/ 'adminUserGlobalSignOutResponse' smart constructor.
-newtype AdminUserGlobalSignOutResponse =
-  AdminUserGlobalSignOutResponse'
-    { _augsorsResponseStatus :: Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+newtype AdminUserGlobalSignOutResponse = AdminUserGlobalSignOutResponse'{_augsorsResponseStatus
+                                                                         :: Int}
+                                           deriving (Eq, Read, Show, Data,
+                                                     Typeable, Generic)
 
 -- | Creates a value of 'AdminUserGlobalSignOutResponse' with the minimum fields required to make a request.
 --
@@ -140,9 +135,9 @@ newtype AdminUserGlobalSignOutResponse =
 adminUserGlobalSignOutResponse
     :: Int -- ^ 'augsorsResponseStatus'
     -> AdminUserGlobalSignOutResponse
-adminUserGlobalSignOutResponse pResponseStatus_ =
-  AdminUserGlobalSignOutResponse' {_augsorsResponseStatus = pResponseStatus_}
-
+adminUserGlobalSignOutResponse pResponseStatus_
+  = AdminUserGlobalSignOutResponse'{_augsorsResponseStatus
+                                      = pResponseStatus_}
 
 -- | -- | The response status code.
 augsorsResponseStatus :: Lens' AdminUserGlobalSignOutResponse Int

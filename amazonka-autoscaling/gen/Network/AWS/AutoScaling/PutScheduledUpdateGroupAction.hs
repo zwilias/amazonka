@@ -45,27 +45,46 @@ module Network.AWS.AutoScaling.PutScheduledUpdateGroupAction
     ) where
 
 import Network.AWS.AutoScaling.Types
-import Network.AWS.AutoScaling.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 
 -- | /See:/ 'putScheduledUpdateGroupAction' smart constructor.
-data PutScheduledUpdateGroupAction =
-  PutScheduledUpdateGroupAction'
-    { _psugaStartTime            :: !(Maybe ISO8601)
-    , _psugaTime                 :: !(Maybe ISO8601)
-    , _psugaMaxSize              :: !(Maybe Int)
-    , _psugaRecurrence           :: !(Maybe Text)
-    , _psugaDesiredCapacity      :: !(Maybe Int)
-    , _psugaMinSize              :: !(Maybe Int)
-    , _psugaEndTime              :: !(Maybe ISO8601)
-    , _psugaAutoScalingGroupName :: !Text
-    , _psugaScheduledActionName  :: !Text
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data PutScheduledUpdateGroupAction = PutScheduledUpdateGroupAction'{_psugaStartTime
+                                                                    ::
+                                                                    !(Maybe
+                                                                        ISO8601),
+                                                                    _psugaTime
+                                                                    ::
+                                                                    !(Maybe
+                                                                        ISO8601),
+                                                                    _psugaMaxSize
+                                                                    ::
+                                                                    !(Maybe
+                                                                        Int),
+                                                                    _psugaRecurrence
+                                                                    ::
+                                                                    !(Maybe
+                                                                        Text),
+                                                                    _psugaDesiredCapacity
+                                                                    ::
+                                                                    !(Maybe
+                                                                        Int),
+                                                                    _psugaMinSize
+                                                                    ::
+                                                                    !(Maybe
+                                                                        Int),
+                                                                    _psugaEndTime
+                                                                    ::
+                                                                    !(Maybe
+                                                                        ISO8601),
+                                                                    _psugaAutoScalingGroupName
+                                                                    :: !Text,
+                                                                    _psugaScheduledActionName
+                                                                    :: !Text}
+                                       deriving (Eq, Read, Show, Data, Typeable,
+                                                 Generic)
 
 -- | Creates a value of 'PutScheduledUpdateGroupAction' with the minimum fields required to make a request.
 --
@@ -92,19 +111,20 @@ putScheduledUpdateGroupAction
     :: Text -- ^ 'psugaAutoScalingGroupName'
     -> Text -- ^ 'psugaScheduledActionName'
     -> PutScheduledUpdateGroupAction
-putScheduledUpdateGroupAction pAutoScalingGroupName_ pScheduledActionName_ =
-  PutScheduledUpdateGroupAction'
-    { _psugaStartTime = Nothing
-    , _psugaTime = Nothing
-    , _psugaMaxSize = Nothing
-    , _psugaRecurrence = Nothing
-    , _psugaDesiredCapacity = Nothing
-    , _psugaMinSize = Nothing
-    , _psugaEndTime = Nothing
-    , _psugaAutoScalingGroupName = pAutoScalingGroupName_
-    , _psugaScheduledActionName = pScheduledActionName_
-    }
-
+putScheduledUpdateGroupAction pAutoScalingGroupName_
+  pScheduledActionName_
+  = PutScheduledUpdateGroupAction'{_psugaStartTime =
+                                     Nothing,
+                                   _psugaTime = Nothing,
+                                   _psugaMaxSize = Nothing,
+                                   _psugaRecurrence = Nothing,
+                                   _psugaDesiredCapacity = Nothing,
+                                   _psugaMinSize = Nothing,
+                                   _psugaEndTime = Nothing,
+                                   _psugaAutoScalingGroupName =
+                                     pAutoScalingGroupName_,
+                                   _psugaScheduledActionName =
+                                     pScheduledActionName_}
 
 -- | The date and time for this action to start, in YYYY-MM-DDThh:mm:ssZ format in UTC/GMT only and in quotes (for example, @"2019-06-01T00:00:00Z"@ ). If you specify @Recurrence@ and @StartTime@ , Amazon EC2 Auto Scaling performs the action at this time, and then performs the action based on the specified recurrence. If you try to schedule your action in the past, Amazon EC2 Auto Scaling returns an error message.
 psugaStartTime :: Lens' PutScheduledUpdateGroupAction (Maybe UTCTime)
@@ -177,17 +197,16 @@ instance ToQuery PutScheduledUpdateGroupAction where
                "ScheduledActionName" =: _psugaScheduledActionName]
 
 -- | /See:/ 'putScheduledUpdateGroupActionResponse' smart constructor.
-data PutScheduledUpdateGroupActionResponse =
-  PutScheduledUpdateGroupActionResponse'
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data PutScheduledUpdateGroupActionResponse = PutScheduledUpdateGroupActionResponse'
+                                               deriving (Eq, Read, Show, Data,
+                                                         Typeable, Generic)
 
 -- | Creates a value of 'PutScheduledUpdateGroupActionResponse' with the minimum fields required to make a request.
 --
 putScheduledUpdateGroupActionResponse
     :: PutScheduledUpdateGroupActionResponse
-putScheduledUpdateGroupActionResponse = PutScheduledUpdateGroupActionResponse'
-
+putScheduledUpdateGroupActionResponse
+  = PutScheduledUpdateGroupActionResponse'
 
 instance NFData PutScheduledUpdateGroupActionResponse
          where

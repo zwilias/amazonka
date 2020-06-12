@@ -43,28 +43,28 @@ module Network.AWS.Transcribe
     -- * Operations
     -- $operations
 
-    -- ** GetVocabulary
+    -- ** GetVocabulary 
     , module Network.AWS.Transcribe.GetVocabulary
 
-    -- ** GetTranscriptionJob
+    -- ** GetTranscriptionJob 
     , module Network.AWS.Transcribe.GetTranscriptionJob
 
-    -- ** DeleteVocabulary
+    -- ** DeleteVocabulary 
     , module Network.AWS.Transcribe.DeleteVocabulary
 
-    -- ** UpdateVocabulary
+    -- ** UpdateVocabulary 
     , module Network.AWS.Transcribe.UpdateVocabulary
 
-    -- ** ListTranscriptionJobs
+    -- ** ListTranscriptionJobs 
     , module Network.AWS.Transcribe.ListTranscriptionJobs
 
-    -- ** ListVocabularies
+    -- ** ListVocabularies 
     , module Network.AWS.Transcribe.ListVocabularies
 
-    -- ** CreateVocabulary
+    -- ** CreateVocabulary 
     , module Network.AWS.Transcribe.CreateVocabulary
 
-    -- ** StartTranscriptionJob
+    -- ** StartTranscriptionJob 
     , module Network.AWS.Transcribe.StartTranscriptionJob
 
     -- * Types

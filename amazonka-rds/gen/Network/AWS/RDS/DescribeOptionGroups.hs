@@ -49,26 +49,26 @@ import Network.AWS.Lens
 import Network.AWS.Pager
 import Network.AWS.Prelude
 import Network.AWS.RDS.Types
-import Network.AWS.RDS.Types.Product
 import Network.AWS.Request
 import Network.AWS.Response
 
--- |
+-- | 
 --
 --
 --
 -- /See:/ 'describeOptionGroups' smart constructor.
-data DescribeOptionGroups =
-  DescribeOptionGroups'
-    { _dogFilters            :: !(Maybe [Filter])
-    , _dogEngineName         :: !(Maybe Text)
-    , _dogMajorEngineVersion :: !(Maybe Text)
-    , _dogMarker             :: !(Maybe Text)
-    , _dogMaxRecords         :: !(Maybe Int)
-    , _dogOptionGroupName    :: !(Maybe Text)
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data DescribeOptionGroups = DescribeOptionGroups'{_dogFilters
+                                                  :: !(Maybe [Filter]),
+                                                  _dogEngineName ::
+                                                  !(Maybe Text),
+                                                  _dogMajorEngineVersion ::
+                                                  !(Maybe Text),
+                                                  _dogMarker :: !(Maybe Text),
+                                                  _dogMaxRecords ::
+                                                  !(Maybe Int),
+                                                  _dogOptionGroupName ::
+                                                  !(Maybe Text)}
+                              deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'DescribeOptionGroups' with the minimum fields required to make a request.
 --
@@ -80,23 +80,19 @@ data DescribeOptionGroups =
 --
 -- * 'dogMajorEngineVersion' - Filters the list of option groups to only include groups associated with a specific database engine version. If specified, then EngineName must also be specified.
 --
--- * 'dogMarker' - An optional pagination token provided by a previous DescribeOptionGroups request. If this parameter is specified, the response includes only records beyond the marker, up to the value specified by @MaxRecords@ .
+-- * 'dogMarker' - An optional pagination token provided by a previous DescribeOptionGroups request. If this parameter is specified, the response includes only records beyond the marker, up to the value specified by @MaxRecords@ . 
 --
 -- * 'dogMaxRecords' - The maximum number of records to include in the response. If more records exist than the specified @MaxRecords@ value, a pagination token called a marker is included in the response so that the remaining results can be retrieved.  Default: 100 Constraints: Minimum 20, maximum 100.
 --
 -- * 'dogOptionGroupName' - The name of the option group to describe. Cannot be supplied together with EngineName or MajorEngineVersion.
 describeOptionGroups
     :: DescribeOptionGroups
-describeOptionGroups =
-  DescribeOptionGroups'
-    { _dogFilters = Nothing
-    , _dogEngineName = Nothing
-    , _dogMajorEngineVersion = Nothing
-    , _dogMarker = Nothing
-    , _dogMaxRecords = Nothing
-    , _dogOptionGroupName = Nothing
-    }
-
+describeOptionGroups
+  = DescribeOptionGroups'{_dogFilters = Nothing,
+                          _dogEngineName = Nothing,
+                          _dogMajorEngineVersion = Nothing,
+                          _dogMarker = Nothing, _dogMaxRecords = Nothing,
+                          _dogOptionGroupName = Nothing}
 
 -- | This parameter is not currently supported.
 dogFilters :: Lens' DescribeOptionGroups [Filter]
@@ -110,7 +106,7 @@ dogEngineName = lens _dogEngineName (\ s a -> s{_dogEngineName = a})
 dogMajorEngineVersion :: Lens' DescribeOptionGroups (Maybe Text)
 dogMajorEngineVersion = lens _dogMajorEngineVersion (\ s a -> s{_dogMajorEngineVersion = a})
 
--- | An optional pagination token provided by a previous DescribeOptionGroups request. If this parameter is specified, the response includes only records beyond the marker, up to the value specified by @MaxRecords@ .
+-- | An optional pagination token provided by a previous DescribeOptionGroups request. If this parameter is specified, the response includes only records beyond the marker, up to the value specified by @MaxRecords@ . 
 dogMarker :: Lens' DescribeOptionGroups (Maybe Text)
 dogMarker = lens _dogMarker (\ s a -> s{_dogMarker = a})
 
@@ -170,20 +166,23 @@ instance ToQuery DescribeOptionGroups where
 --
 --
 -- /See:/ 'describeOptionGroupsResponse' smart constructor.
-data DescribeOptionGroupsResponse =
-  DescribeOptionGroupsResponse'
-    { _dogrsMarker           :: !(Maybe Text)
-    , _dogrsOptionGroupsList :: !(Maybe [OptionGroup])
-    , _dogrsResponseStatus   :: !Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data DescribeOptionGroupsResponse = DescribeOptionGroupsResponse'{_dogrsMarker
+                                                                  ::
+                                                                  !(Maybe Text),
+                                                                  _dogrsOptionGroupsList
+                                                                  ::
+                                                                  !(Maybe
+                                                                      [OptionGroup]),
+                                                                  _dogrsResponseStatus
+                                                                  :: !Int}
+                                      deriving (Eq, Read, Show, Data, Typeable,
+                                                Generic)
 
 -- | Creates a value of 'DescribeOptionGroupsResponse' with the minimum fields required to make a request.
 --
 -- Use one of the following lenses to modify other fields as desired:
 --
--- * 'dogrsMarker' - An optional pagination token provided by a previous request. If this parameter is specified, the response includes only records beyond the marker, up to the value specified by @MaxRecords@ .
+-- * 'dogrsMarker' - An optional pagination token provided by a previous request. If this parameter is specified, the response includes only records beyond the marker, up to the value specified by @MaxRecords@ . 
 --
 -- * 'dogrsOptionGroupsList' - List of option groups.
 --
@@ -191,15 +190,13 @@ data DescribeOptionGroupsResponse =
 describeOptionGroupsResponse
     :: Int -- ^ 'dogrsResponseStatus'
     -> DescribeOptionGroupsResponse
-describeOptionGroupsResponse pResponseStatus_ =
-  DescribeOptionGroupsResponse'
-    { _dogrsMarker = Nothing
-    , _dogrsOptionGroupsList = Nothing
-    , _dogrsResponseStatus = pResponseStatus_
-    }
+describeOptionGroupsResponse pResponseStatus_
+  = DescribeOptionGroupsResponse'{_dogrsMarker =
+                                    Nothing,
+                                  _dogrsOptionGroupsList = Nothing,
+                                  _dogrsResponseStatus = pResponseStatus_}
 
-
--- | An optional pagination token provided by a previous request. If this parameter is specified, the response includes only records beyond the marker, up to the value specified by @MaxRecords@ .
+-- | An optional pagination token provided by a previous request. If this parameter is specified, the response includes only records beyond the marker, up to the value specified by @MaxRecords@ . 
 dogrsMarker :: Lens' DescribeOptionGroupsResponse (Maybe Text)
 dogrsMarker = lens _dogrsMarker (\ s a -> s{_dogrsMarker = a})
 

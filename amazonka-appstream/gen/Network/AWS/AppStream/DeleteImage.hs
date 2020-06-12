@@ -38,19 +38,14 @@ module Network.AWS.AppStream.DeleteImage
     ) where
 
 import Network.AWS.AppStream.Types
-import Network.AWS.AppStream.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 
 -- | /See:/ 'deleteImage' smart constructor.
-newtype DeleteImage =
-  DeleteImage'
-    { _diName :: Text
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+newtype DeleteImage = DeleteImage'{_diName :: Text}
+                        deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'DeleteImage' with the minimum fields required to make a request.
 --
@@ -60,8 +55,7 @@ newtype DeleteImage =
 deleteImage
     :: Text -- ^ 'diName'
     -> DeleteImage
-deleteImage pName_ = DeleteImage' {_diName = pName_}
-
+deleteImage pName_ = DeleteImage'{_diName = pName_}
 
 -- | The name of the image.
 diName :: Lens' DeleteImage Text
@@ -101,13 +95,10 @@ instance ToQuery DeleteImage where
         toQuery = const mempty
 
 -- | /See:/ 'deleteImageResponse' smart constructor.
-data DeleteImageResponse =
-  DeleteImageResponse'
-    { _dirsImage          :: !(Maybe Image)
-    , _dirsResponseStatus :: !Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data DeleteImageResponse = DeleteImageResponse'{_dirsImage
+                                                :: !(Maybe Image),
+                                                _dirsResponseStatus :: !Int}
+                             deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'DeleteImageResponse' with the minimum fields required to make a request.
 --
@@ -119,10 +110,9 @@ data DeleteImageResponse =
 deleteImageResponse
     :: Int -- ^ 'dirsResponseStatus'
     -> DeleteImageResponse
-deleteImageResponse pResponseStatus_ =
-  DeleteImageResponse'
-    {_dirsImage = Nothing, _dirsResponseStatus = pResponseStatus_}
-
+deleteImageResponse pResponseStatus_
+  = DeleteImageResponse'{_dirsImage = Nothing,
+                         _dirsResponseStatus = pResponseStatus_}
 
 -- | Information about the image.
 dirsImage :: Lens' DeleteImageResponse (Maybe Image)

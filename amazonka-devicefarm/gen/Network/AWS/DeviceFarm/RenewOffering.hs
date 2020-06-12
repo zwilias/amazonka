@@ -39,7 +39,6 @@ module Network.AWS.DeviceFarm.RenewOffering
     ) where
 
 import Network.AWS.DeviceFarm.Types
-import Network.AWS.DeviceFarm.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.Request
@@ -50,13 +49,10 @@ import Network.AWS.Response
 --
 --
 -- /See:/ 'renewOffering' smart constructor.
-data RenewOffering =
-  RenewOffering'
-    { _roQuantity   :: !(Maybe Int)
-    , _roOfferingId :: !(Maybe Text)
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data RenewOffering = RenewOffering'{_roQuantity ::
+                                    !(Maybe Int),
+                                    _roOfferingId :: !(Maybe Text)}
+                       deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'RenewOffering' with the minimum fields required to make a request.
 --
@@ -67,8 +63,9 @@ data RenewOffering =
 -- * 'roOfferingId' - The ID of a request to renew an offering.
 renewOffering
     :: RenewOffering
-renewOffering = RenewOffering' {_roQuantity = Nothing, _roOfferingId = Nothing}
-
+renewOffering
+  = RenewOffering'{_roQuantity = Nothing,
+                   _roOfferingId = Nothing}
 
 -- | The quantity requested in an offering renewal.
 roQuantity :: Lens' RenewOffering (Maybe Int)
@@ -119,13 +116,13 @@ instance ToQuery RenewOffering where
 --
 --
 -- /See:/ 'renewOfferingResponse' smart constructor.
-data RenewOfferingResponse =
-  RenewOfferingResponse'
-    { _rorsOfferingTransaction :: !(Maybe OfferingTransaction)
-    , _rorsResponseStatus      :: !Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data RenewOfferingResponse = RenewOfferingResponse'{_rorsOfferingTransaction
+                                                    ::
+                                                    !(Maybe
+                                                        OfferingTransaction),
+                                                    _rorsResponseStatus :: !Int}
+                               deriving (Eq, Read, Show, Data, Typeable,
+                                         Generic)
 
 -- | Creates a value of 'RenewOfferingResponse' with the minimum fields required to make a request.
 --
@@ -137,10 +134,10 @@ data RenewOfferingResponse =
 renewOfferingResponse
     :: Int -- ^ 'rorsResponseStatus'
     -> RenewOfferingResponse
-renewOfferingResponse pResponseStatus_ =
-  RenewOfferingResponse'
-    {_rorsOfferingTransaction = Nothing, _rorsResponseStatus = pResponseStatus_}
-
+renewOfferingResponse pResponseStatus_
+  = RenewOfferingResponse'{_rorsOfferingTransaction =
+                             Nothing,
+                           _rorsResponseStatus = pResponseStatus_}
 
 -- | Represents the status of the offering transaction for the renewal.
 rorsOfferingTransaction :: Lens' RenewOfferingResponse (Maybe OfferingTransaction)

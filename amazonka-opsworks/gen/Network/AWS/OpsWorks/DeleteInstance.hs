@@ -42,20 +42,16 @@ module Network.AWS.OpsWorks.DeleteInstance
 
 import Network.AWS.Lens
 import Network.AWS.OpsWorks.Types
-import Network.AWS.OpsWorks.Types.Product
 import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 
 -- | /See:/ 'deleteInstance' smart constructor.
-data DeleteInstance =
-  DeleteInstance'
-    { _diDeleteVolumes   :: !(Maybe Bool)
-    , _diDeleteElasticIP :: !(Maybe Bool)
-    , _diInstanceId      :: !Text
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data DeleteInstance = DeleteInstance'{_diDeleteVolumes
+                                      :: !(Maybe Bool),
+                                      _diDeleteElasticIP :: !(Maybe Bool),
+                                      _diInstanceId :: !Text}
+                        deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'DeleteInstance' with the minimum fields required to make a request.
 --
@@ -69,13 +65,10 @@ data DeleteInstance =
 deleteInstance
     :: Text -- ^ 'diInstanceId'
     -> DeleteInstance
-deleteInstance pInstanceId_ =
-  DeleteInstance'
-    { _diDeleteVolumes = Nothing
-    , _diDeleteElasticIP = Nothing
-    , _diInstanceId = pInstanceId_
-    }
-
+deleteInstance pInstanceId_
+  = DeleteInstance'{_diDeleteVolumes = Nothing,
+                    _diDeleteElasticIP = Nothing,
+                    _diInstanceId = pInstanceId_}
 
 -- | Whether to delete the instance's Amazon EBS volumes.
 diDeleteVolumes :: Lens' DeleteInstance (Maybe Bool)
@@ -122,16 +115,14 @@ instance ToQuery DeleteInstance where
         toQuery = const mempty
 
 -- | /See:/ 'deleteInstanceResponse' smart constructor.
-data DeleteInstanceResponse =
-  DeleteInstanceResponse'
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data DeleteInstanceResponse = DeleteInstanceResponse'
+                                deriving (Eq, Read, Show, Data, Typeable,
+                                          Generic)
 
 -- | Creates a value of 'DeleteInstanceResponse' with the minimum fields required to make a request.
 --
 deleteInstanceResponse
     :: DeleteInstanceResponse
 deleteInstanceResponse = DeleteInstanceResponse'
-
 
 instance NFData DeleteInstanceResponse where

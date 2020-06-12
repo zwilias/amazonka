@@ -46,21 +46,17 @@ module Network.AWS.Organizations.ListParents
 
 import Network.AWS.Lens
 import Network.AWS.Organizations.Types
-import Network.AWS.Organizations.Types.Product
 import Network.AWS.Pager
 import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 
 -- | /See:/ 'listParents' smart constructor.
-data ListParents =
-  ListParents'
-    { _lNextToken  :: !(Maybe Text)
-    , _lMaxResults :: !(Maybe Nat)
-    , _lChildId    :: !Text
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data ListParents = ListParents'{_lNextToken ::
+                                !(Maybe Text),
+                                _lMaxResults :: !(Maybe Nat),
+                                _lChildId :: !Text}
+                     deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'ListParents' with the minimum fields required to make a request.
 --
@@ -74,10 +70,9 @@ data ListParents =
 listParents
     :: Text -- ^ 'lChildId'
     -> ListParents
-listParents pChildId_ =
-  ListParents'
-    {_lNextToken = Nothing, _lMaxResults = Nothing, _lChildId = pChildId_}
-
+listParents pChildId_
+  = ListParents'{_lNextToken = Nothing,
+                 _lMaxResults = Nothing, _lChildId = pChildId_}
 
 -- | Use this parameter if you receive a @NextToken@ response in a previous request that indicates that there is more output available. Set it to the value of the previous call's @NextToken@ response to indicate where the output should continue from.
 lNextToken :: Lens' ListParents (Maybe Text)
@@ -137,14 +132,12 @@ instance ToQuery ListParents where
         toQuery = const mempty
 
 -- | /See:/ 'listParentsResponse' smart constructor.
-data ListParentsResponse =
-  ListParentsResponse'
-    { _lrsNextToken      :: !(Maybe Text)
-    , _lrsParents        :: !(Maybe [Parent])
-    , _lrsResponseStatus :: !Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data ListParentsResponse = ListParentsResponse'{_lrsNextToken
+                                                :: !(Maybe Text),
+                                                _lrsParents ::
+                                                !(Maybe [Parent]),
+                                                _lrsResponseStatus :: !Int}
+                             deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'ListParentsResponse' with the minimum fields required to make a request.
 --
@@ -158,13 +151,10 @@ data ListParentsResponse =
 listParentsResponse
     :: Int -- ^ 'lrsResponseStatus'
     -> ListParentsResponse
-listParentsResponse pResponseStatus_ =
-  ListParentsResponse'
-    { _lrsNextToken = Nothing
-    , _lrsParents = Nothing
-    , _lrsResponseStatus = pResponseStatus_
-    }
-
+listParentsResponse pResponseStatus_
+  = ListParentsResponse'{_lrsNextToken = Nothing,
+                         _lrsParents = Nothing,
+                         _lrsResponseStatus = pResponseStatus_}
 
 -- | If present, this value indicates that there is more output available than is included in the current response. Use this value in the @NextToken@ request parameter in a subsequent call to the operation to get the next part of the output. You should repeat this until the @NextToken@ response element comes back as @null@ .
 lrsNextToken :: Lens' ListParentsResponse (Maybe Text)

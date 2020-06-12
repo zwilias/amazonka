@@ -40,26 +40,23 @@ module Network.AWS.Budgets.CreateNotification
     ) where
 
 import Network.AWS.Budgets.Types
-import Network.AWS.Budgets.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 
--- | Request of CreateNotification
+-- | Request of CreateNotification 
 --
 --
 --
 -- /See:/ 'createNotification' smart constructor.
-data CreateNotification =
-  CreateNotification'
-    { _cnAccountId    :: !Text
-    , _cnBudgetName   :: !Text
-    , _cnNotification :: !Notification
-    , _cnSubscribers  :: !(List1 Subscriber)
-    }
-  deriving (Eq, Show, Data, Typeable, Generic)
-
+data CreateNotification = CreateNotification'{_cnAccountId
+                                              :: !Text,
+                                              _cnBudgetName :: !Text,
+                                              _cnNotification :: !Notification,
+                                              _cnSubscribers ::
+                                              !(List1 Subscriber)}
+                            deriving (Eq, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'CreateNotification' with the minimum fields required to make a request.
 --
@@ -78,14 +75,12 @@ createNotification
     -> Notification -- ^ 'cnNotification'
     -> NonEmpty Subscriber -- ^ 'cnSubscribers'
     -> CreateNotification
-createNotification pAccountId_ pBudgetName_ pNotification_ pSubscribers_ =
-  CreateNotification'
-    { _cnAccountId = pAccountId_
-    , _cnBudgetName = pBudgetName_
-    , _cnNotification = pNotification_
-    , _cnSubscribers = _List1 # pSubscribers_
-    }
-
+createNotification pAccountId_ pBudgetName_
+  pNotification_ pSubscribers_
+  = CreateNotification'{_cnAccountId = pAccountId_,
+                        _cnBudgetName = pBudgetName_,
+                        _cnNotification = pNotification_,
+                        _cnSubscribers = _List1 # pSubscribers_}
 
 -- | The @accountId@ that is associated with the budget that you want to create a notification for.
 cnAccountId :: Lens' CreateNotification Text
@@ -141,17 +136,15 @@ instance ToPath CreateNotification where
 instance ToQuery CreateNotification where
         toQuery = const mempty
 
--- | Response of CreateNotification
+-- | Response of CreateNotification 
 --
 --
 --
 -- /See:/ 'createNotificationResponse' smart constructor.
-newtype CreateNotificationResponse =
-  CreateNotificationResponse'
-    { _cnrsResponseStatus :: Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+newtype CreateNotificationResponse = CreateNotificationResponse'{_cnrsResponseStatus
+                                                                 :: Int}
+                                       deriving (Eq, Read, Show, Data, Typeable,
+                                                 Generic)
 
 -- | Creates a value of 'CreateNotificationResponse' with the minimum fields required to make a request.
 --
@@ -161,9 +154,9 @@ newtype CreateNotificationResponse =
 createNotificationResponse
     :: Int -- ^ 'cnrsResponseStatus'
     -> CreateNotificationResponse
-createNotificationResponse pResponseStatus_ =
-  CreateNotificationResponse' {_cnrsResponseStatus = pResponseStatus_}
-
+createNotificationResponse pResponseStatus_
+  = CreateNotificationResponse'{_cnrsResponseStatus =
+                                  pResponseStatus_}
 
 -- | -- | The response status code.
 cnrsResponseStatus :: Lens' CreateNotificationResponse Int

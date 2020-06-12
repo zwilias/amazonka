@@ -43,7 +43,6 @@ module Network.AWS.DirectoryService.ListLogSubscriptions
     ) where
 
 import Network.AWS.DirectoryService.Types
-import Network.AWS.DirectoryService.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Pager
 import Network.AWS.Prelude
@@ -51,14 +50,12 @@ import Network.AWS.Request
 import Network.AWS.Response
 
 -- | /See:/ 'listLogSubscriptions' smart constructor.
-data ListLogSubscriptions =
-  ListLogSubscriptions'
-    { _llsDirectoryId :: !(Maybe Text)
-    , _llsNextToken   :: !(Maybe Text)
-    , _llsLimit       :: !(Maybe Nat)
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data ListLogSubscriptions = ListLogSubscriptions'{_llsDirectoryId
+                                                  :: !(Maybe Text),
+                                                  _llsNextToken ::
+                                                  !(Maybe Text),
+                                                  _llsLimit :: !(Maybe Nat)}
+                              deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'ListLogSubscriptions' with the minimum fields required to make a request.
 --
@@ -71,10 +68,9 @@ data ListLogSubscriptions =
 -- * 'llsLimit' - The maximum number of items returned.
 listLogSubscriptions
     :: ListLogSubscriptions
-listLogSubscriptions =
-  ListLogSubscriptions'
-    {_llsDirectoryId = Nothing, _llsNextToken = Nothing, _llsLimit = Nothing}
-
+listLogSubscriptions
+  = ListLogSubscriptions'{_llsDirectoryId = Nothing,
+                          _llsNextToken = Nothing, _llsLimit = Nothing}
 
 -- | If a /DirectoryID/ is provided, lists only the log subscription associated with that directory. If no /DirectoryId/ is provided, lists all log subscriptions associated with your AWS account. If there are no log subscriptions for the AWS account or the directory, an empty list will be returned.
 llsDirectoryId :: Lens' ListLogSubscriptions (Maybe Text)
@@ -136,14 +132,17 @@ instance ToQuery ListLogSubscriptions where
         toQuery = const mempty
 
 -- | /See:/ 'listLogSubscriptionsResponse' smart constructor.
-data ListLogSubscriptionsResponse =
-  ListLogSubscriptionsResponse'
-    { _llsrsNextToken        :: !(Maybe Text)
-    , _llsrsLogSubscriptions :: !(Maybe [LogSubscription])
-    , _llsrsResponseStatus   :: !Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data ListLogSubscriptionsResponse = ListLogSubscriptionsResponse'{_llsrsNextToken
+                                                                  ::
+                                                                  !(Maybe Text),
+                                                                  _llsrsLogSubscriptions
+                                                                  ::
+                                                                  !(Maybe
+                                                                      [LogSubscription]),
+                                                                  _llsrsResponseStatus
+                                                                  :: !Int}
+                                      deriving (Eq, Read, Show, Data, Typeable,
+                                                Generic)
 
 -- | Creates a value of 'ListLogSubscriptionsResponse' with the minimum fields required to make a request.
 --
@@ -157,13 +156,11 @@ data ListLogSubscriptionsResponse =
 listLogSubscriptionsResponse
     :: Int -- ^ 'llsrsResponseStatus'
     -> ListLogSubscriptionsResponse
-listLogSubscriptionsResponse pResponseStatus_ =
-  ListLogSubscriptionsResponse'
-    { _llsrsNextToken = Nothing
-    , _llsrsLogSubscriptions = Nothing
-    , _llsrsResponseStatus = pResponseStatus_
-    }
-
+listLogSubscriptionsResponse pResponseStatus_
+  = ListLogSubscriptionsResponse'{_llsrsNextToken =
+                                    Nothing,
+                                  _llsrsLogSubscriptions = Nothing,
+                                  _llsrsResponseStatus = pResponseStatus_}
 
 -- | The token for the next set of items to return.
 llsrsNextToken :: Lens' ListLogSubscriptionsResponse (Maybe Text)

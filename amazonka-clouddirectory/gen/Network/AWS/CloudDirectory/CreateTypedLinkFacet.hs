@@ -38,20 +38,16 @@ module Network.AWS.CloudDirectory.CreateTypedLinkFacet
     ) where
 
 import Network.AWS.CloudDirectory.Types
-import Network.AWS.CloudDirectory.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 
 -- | /See:/ 'createTypedLinkFacet' smart constructor.
-data CreateTypedLinkFacet =
-  CreateTypedLinkFacet'
-    { _ctlfSchemaARN :: !Text
-    , _ctlfFacet     :: !TypedLinkFacet
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data CreateTypedLinkFacet = CreateTypedLinkFacet'{_ctlfSchemaARN
+                                                  :: !Text,
+                                                  _ctlfFacet :: !TypedLinkFacet}
+                              deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'CreateTypedLinkFacet' with the minimum fields required to make a request.
 --
@@ -64,9 +60,9 @@ createTypedLinkFacet
     :: Text -- ^ 'ctlfSchemaARN'
     -> TypedLinkFacet -- ^ 'ctlfFacet'
     -> CreateTypedLinkFacet
-createTypedLinkFacet pSchemaARN_ pFacet_ =
-  CreateTypedLinkFacet' {_ctlfSchemaARN = pSchemaARN_, _ctlfFacet = pFacet_}
-
+createTypedLinkFacet pSchemaARN_ pFacet_
+  = CreateTypedLinkFacet'{_ctlfSchemaARN = pSchemaARN_,
+                          _ctlfFacet = pFacet_}
 
 -- | The Amazon Resource Name (ARN) that is associated with the schema. For more information, see 'arns' .
 ctlfSchemaARN :: Lens' CreateTypedLinkFacet Text
@@ -107,12 +103,10 @@ instance ToQuery CreateTypedLinkFacet where
         toQuery = const mempty
 
 -- | /See:/ 'createTypedLinkFacetResponse' smart constructor.
-newtype CreateTypedLinkFacetResponse =
-  CreateTypedLinkFacetResponse'
-    { _ctlfrsResponseStatus :: Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+newtype CreateTypedLinkFacetResponse = CreateTypedLinkFacetResponse'{_ctlfrsResponseStatus
+                                                                     :: Int}
+                                         deriving (Eq, Read, Show, Data,
+                                                   Typeable, Generic)
 
 -- | Creates a value of 'CreateTypedLinkFacetResponse' with the minimum fields required to make a request.
 --
@@ -122,9 +116,9 @@ newtype CreateTypedLinkFacetResponse =
 createTypedLinkFacetResponse
     :: Int -- ^ 'ctlfrsResponseStatus'
     -> CreateTypedLinkFacetResponse
-createTypedLinkFacetResponse pResponseStatus_ =
-  CreateTypedLinkFacetResponse' {_ctlfrsResponseStatus = pResponseStatus_}
-
+createTypedLinkFacetResponse pResponseStatus_
+  = CreateTypedLinkFacetResponse'{_ctlfrsResponseStatus
+                                    = pResponseStatus_}
 
 -- | -- | The response status code.
 ctlfrsResponseStatus :: Lens' CreateTypedLinkFacetResponse Int

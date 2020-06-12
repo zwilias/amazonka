@@ -40,19 +40,16 @@ module Network.AWS.ECR.GetAuthorizationToken
     ) where
 
 import Network.AWS.ECR.Types
-import Network.AWS.ECR.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 
 -- | /See:/ 'getAuthorizationToken' smart constructor.
-newtype GetAuthorizationToken =
-  GetAuthorizationToken'
-    { _gatRegistryIds :: Maybe (List1 Text)
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+newtype GetAuthorizationToken = GetAuthorizationToken'{_gatRegistryIds
+                                                       :: Maybe (List1 Text)}
+                                  deriving (Eq, Read, Show, Data, Typeable,
+                                            Generic)
 
 -- | Creates a value of 'GetAuthorizationToken' with the minimum fields required to make a request.
 --
@@ -61,8 +58,8 @@ newtype GetAuthorizationToken =
 -- * 'gatRegistryIds' - A list of AWS account IDs that are associated with the registries for which to get authorization tokens. If you do not specify a registry, the default registry is assumed.
 getAuthorizationToken
     :: GetAuthorizationToken
-getAuthorizationToken = GetAuthorizationToken' {_gatRegistryIds = Nothing}
-
+getAuthorizationToken
+  = GetAuthorizationToken'{_gatRegistryIds = Nothing}
 
 -- | A list of AWS account IDs that are associated with the registries for which to get authorization tokens. If you do not specify a registry, the default registry is assumed.
 gatRegistryIds :: Lens' GetAuthorizationToken (Maybe (NonEmpty Text))
@@ -105,13 +102,14 @@ instance ToQuery GetAuthorizationToken where
         toQuery = const mempty
 
 -- | /See:/ 'getAuthorizationTokenResponse' smart constructor.
-data GetAuthorizationTokenResponse =
-  GetAuthorizationTokenResponse'
-    { _gatrsAuthorizationData :: !(Maybe [AuthorizationData])
-    , _gatrsResponseStatus    :: !Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data GetAuthorizationTokenResponse = GetAuthorizationTokenResponse'{_gatrsAuthorizationData
+                                                                    ::
+                                                                    !(Maybe
+                                                                        [AuthorizationData]),
+                                                                    _gatrsResponseStatus
+                                                                    :: !Int}
+                                       deriving (Eq, Read, Show, Data, Typeable,
+                                                 Generic)
 
 -- | Creates a value of 'GetAuthorizationTokenResponse' with the minimum fields required to make a request.
 --
@@ -123,10 +121,10 @@ data GetAuthorizationTokenResponse =
 getAuthorizationTokenResponse
     :: Int -- ^ 'gatrsResponseStatus'
     -> GetAuthorizationTokenResponse
-getAuthorizationTokenResponse pResponseStatus_ =
-  GetAuthorizationTokenResponse'
-    {_gatrsAuthorizationData = Nothing, _gatrsResponseStatus = pResponseStatus_}
-
+getAuthorizationTokenResponse pResponseStatus_
+  = GetAuthorizationTokenResponse'{_gatrsAuthorizationData
+                                     = Nothing,
+                                   _gatrsResponseStatus = pResponseStatus_}
 
 -- | A list of authorization token data objects that correspond to the @registryIds@ values in the request.
 gatrsAuthorizationData :: Lens' GetAuthorizationTokenResponse [AuthorizationData]

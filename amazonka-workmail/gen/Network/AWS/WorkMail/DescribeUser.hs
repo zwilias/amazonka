@@ -50,16 +50,12 @@ import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 import Network.AWS.WorkMail.Types
-import Network.AWS.WorkMail.Types.Product
 
 -- | /See:/ 'describeUser' smart constructor.
-data DescribeUser =
-  DescribeUser'
-    { _duOrganizationId :: !Text
-    , _duUserId         :: !Text
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data DescribeUser = DescribeUser'{_duOrganizationId
+                                  :: !Text,
+                                  _duUserId :: !Text}
+                      deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'DescribeUser' with the minimum fields required to make a request.
 --
@@ -72,9 +68,9 @@ describeUser
     :: Text -- ^ 'duOrganizationId'
     -> Text -- ^ 'duUserId'
     -> DescribeUser
-describeUser pOrganizationId_ pUserId_ =
-  DescribeUser' {_duOrganizationId = pOrganizationId_, _duUserId = pUserId_}
-
+describeUser pOrganizationId_ pUserId_
+  = DescribeUser'{_duOrganizationId = pOrganizationId_,
+                  _duUserId = pUserId_}
 
 -- | The identifier for the organization under which the user exists.
 duOrganizationId :: Lens' DescribeUser Text
@@ -127,20 +123,22 @@ instance ToQuery DescribeUser where
         toQuery = const mempty
 
 -- | /See:/ 'describeUserResponse' smart constructor.
-data DescribeUserResponse =
-  DescribeUserResponse'
-    { _dursEmail          :: !(Maybe Text)
-    , _dursState          :: !(Maybe EntityState)
-    , _dursUserId         :: !(Maybe Text)
-    , _dursDisabledDate   :: !(Maybe POSIX)
-    , _dursName           :: !(Maybe Text)
-    , _dursDisplayName    :: !(Maybe Text)
-    , _dursUserRole       :: !(Maybe UserRole)
-    , _dursEnabledDate    :: !(Maybe POSIX)
-    , _dursResponseStatus :: !Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data DescribeUserResponse = DescribeUserResponse'{_dursEmail
+                                                  :: !(Maybe Text),
+                                                  _dursState ::
+                                                  !(Maybe EntityState),
+                                                  _dursUserId :: !(Maybe Text),
+                                                  _dursDisabledDate ::
+                                                  !(Maybe POSIX),
+                                                  _dursName :: !(Maybe Text),
+                                                  _dursDisplayName ::
+                                                  !(Maybe Text),
+                                                  _dursUserRole ::
+                                                  !(Maybe UserRole),
+                                                  _dursEnabledDate ::
+                                                  !(Maybe POSIX),
+                                                  _dursResponseStatus :: !Int}
+                              deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'DescribeUserResponse' with the minimum fields required to make a request.
 --
@@ -166,19 +164,13 @@ data DescribeUserResponse =
 describeUserResponse
     :: Int -- ^ 'dursResponseStatus'
     -> DescribeUserResponse
-describeUserResponse pResponseStatus_ =
-  DescribeUserResponse'
-    { _dursEmail = Nothing
-    , _dursState = Nothing
-    , _dursUserId = Nothing
-    , _dursDisabledDate = Nothing
-    , _dursName = Nothing
-    , _dursDisplayName = Nothing
-    , _dursUserRole = Nothing
-    , _dursEnabledDate = Nothing
-    , _dursResponseStatus = pResponseStatus_
-    }
-
+describeUserResponse pResponseStatus_
+  = DescribeUserResponse'{_dursEmail = Nothing,
+                          _dursState = Nothing, _dursUserId = Nothing,
+                          _dursDisabledDate = Nothing, _dursName = Nothing,
+                          _dursDisplayName = Nothing, _dursUserRole = Nothing,
+                          _dursEnabledDate = Nothing,
+                          _dursResponseStatus = pResponseStatus_}
 
 -- | The email of the user.
 dursEmail :: Lens' DescribeUserResponse (Maybe Text)

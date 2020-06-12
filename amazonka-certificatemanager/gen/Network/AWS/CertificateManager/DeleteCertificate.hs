@@ -18,7 +18,7 @@
 -- Stability   : auto-generated
 -- Portability : non-portable (GHC extensions)
 --
--- Deletes a certificate and its associated private key. If this action succeeds, the certificate no longer appears in the list that can be displayed by calling the 'ListCertificates' action or be retrieved by calling the 'GetCertificate' action. The certificate will not be available for use by AWS services integrated with ACM.
+-- Deletes a certificate and its associated private key. If this action succeeds, the certificate no longer appears in the list that can be displayed by calling the 'ListCertificates' action or be retrieved by calling the 'GetCertificate' action. The certificate will not be available for use by AWS services integrated with ACM. 
 --
 --
 module Network.AWS.CertificateManager.DeleteCertificate
@@ -35,19 +35,15 @@ module Network.AWS.CertificateManager.DeleteCertificate
     ) where
 
 import Network.AWS.CertificateManager.Types
-import Network.AWS.CertificateManager.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 
 -- | /See:/ 'deleteCertificate' smart constructor.
-newtype DeleteCertificate =
-  DeleteCertificate'
-    { _dcCertificateARN :: Text
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+newtype DeleteCertificate = DeleteCertificate'{_dcCertificateARN
+                                               :: Text}
+                              deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'DeleteCertificate' with the minimum fields required to make a request.
 --
@@ -57,9 +53,9 @@ newtype DeleteCertificate =
 deleteCertificate
     :: Text -- ^ 'dcCertificateARN'
     -> DeleteCertificate
-deleteCertificate pCertificateARN_ =
-  DeleteCertificate' {_dcCertificateARN = pCertificateARN_}
-
+deleteCertificate pCertificateARN_
+  = DeleteCertificate'{_dcCertificateARN =
+                         pCertificateARN_}
 
 -- | String that contains the ARN of the ACM certificate to be deleted. This must be of the form: @arn:aws:acm:region:123456789012:certificate/12345678-1234-1234-1234-123456789012@  For more information about ARNs, see <http://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html Amazon Resource Names (ARNs) and AWS Service Namespaces> .
 dcCertificateARN :: Lens' DeleteCertificate Text
@@ -97,16 +93,15 @@ instance ToQuery DeleteCertificate where
         toQuery = const mempty
 
 -- | /See:/ 'deleteCertificateResponse' smart constructor.
-data DeleteCertificateResponse =
-  DeleteCertificateResponse'
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data DeleteCertificateResponse = DeleteCertificateResponse'
+                                   deriving (Eq, Read, Show, Data, Typeable,
+                                             Generic)
 
 -- | Creates a value of 'DeleteCertificateResponse' with the minimum fields required to make a request.
 --
 deleteCertificateResponse
     :: DeleteCertificateResponse
-deleteCertificateResponse = DeleteCertificateResponse'
-
+deleteCertificateResponse
+  = DeleteCertificateResponse'
 
 instance NFData DeleteCertificateResponse where

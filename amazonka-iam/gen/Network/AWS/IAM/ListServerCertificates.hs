@@ -48,7 +48,6 @@ module Network.AWS.IAM.ListServerCertificates
     ) where
 
 import Network.AWS.IAM.Types
-import Network.AWS.IAM.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Pager
 import Network.AWS.Prelude
@@ -56,14 +55,14 @@ import Network.AWS.Request
 import Network.AWS.Response
 
 -- | /See:/ 'listServerCertificates' smart constructor.
-data ListServerCertificates =
-  ListServerCertificates'
-    { _lscPathPrefix :: !(Maybe Text)
-    , _lscMarker     :: !(Maybe Text)
-    , _lscMaxItems   :: !(Maybe Nat)
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data ListServerCertificates = ListServerCertificates'{_lscPathPrefix
+                                                      :: !(Maybe Text),
+                                                      _lscMarker ::
+                                                      !(Maybe Text),
+                                                      _lscMaxItems ::
+                                                      !(Maybe Nat)}
+                                deriving (Eq, Read, Show, Data, Typeable,
+                                          Generic)
 
 -- | Creates a value of 'ListServerCertificates' with the minimum fields required to make a request.
 --
@@ -76,10 +75,9 @@ data ListServerCertificates =
 -- * 'lscMaxItems' - (Optional) Use this only when paginating results to indicate the maximum number of items you want in the response. If additional items exist beyond the maximum you specify, the @IsTruncated@ response element is @true@ . If you do not include this parameter, it defaults to 100. Note that IAM might return fewer results, even when there are more results available. In that case, the @IsTruncated@ response element returns @true@ and @Marker@ contains a value to include in the subsequent call that tells the service where to continue from.
 listServerCertificates
     :: ListServerCertificates
-listServerCertificates =
-  ListServerCertificates'
-    {_lscPathPrefix = Nothing, _lscMarker = Nothing, _lscMaxItems = Nothing}
-
+listServerCertificates
+  = ListServerCertificates'{_lscPathPrefix = Nothing,
+                            _lscMarker = Nothing, _lscMaxItems = Nothing}
 
 -- | The path prefix for filtering the results. For example: @/company/servercerts@ would get all server certificates for which the path starts with @/company/servercerts@ . This parameter is optional. If it is not included, it defaults to a slash (/), listing all server certificates. This parameter allows (per its <http://wikipedia.org/wiki/regex regex pattern> ) a string of characters consisting of either a forward slash (/) by itself or a string that must begin and end with forward slashes. In addition, it can contain any ASCII character from the ! (\u0021) through the DEL character (\u007F), including most punctuation characters, digits, and upper and lowercased letters.
 lscPathPrefix :: Lens' ListServerCertificates (Maybe Text)
@@ -133,20 +131,26 @@ instance ToQuery ListServerCertificates where
                "PathPrefix" =: _lscPathPrefix,
                "Marker" =: _lscMarker, "MaxItems" =: _lscMaxItems]
 
--- | Contains the response to a successful 'ListServerCertificates' request.
+-- | Contains the response to a successful 'ListServerCertificates' request. 
 --
 --
 --
 -- /See:/ 'listServerCertificatesResponse' smart constructor.
-data ListServerCertificatesResponse =
-  ListServerCertificatesResponse'
-    { _lscrsMarker                        :: !(Maybe Text)
-    , _lscrsIsTruncated                   :: !(Maybe Bool)
-    , _lscrsResponseStatus                :: !Int
-    , _lscrsServerCertificateMetadataList :: ![ServerCertificateMetadata]
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data ListServerCertificatesResponse = ListServerCertificatesResponse'{_lscrsMarker
+                                                                      ::
+                                                                      !(Maybe
+                                                                          Text),
+                                                                      _lscrsIsTruncated
+                                                                      ::
+                                                                      !(Maybe
+                                                                          Bool),
+                                                                      _lscrsResponseStatus
+                                                                      :: !Int,
+                                                                      _lscrsServerCertificateMetadataList
+                                                                      ::
+                                                                      ![ServerCertificateMetadata]}
+                                        deriving (Eq, Read, Show, Data,
+                                                  Typeable, Generic)
 
 -- | Creates a value of 'ListServerCertificatesResponse' with the minimum fields required to make a request.
 --
@@ -162,14 +166,13 @@ data ListServerCertificatesResponse =
 listServerCertificatesResponse
     :: Int -- ^ 'lscrsResponseStatus'
     -> ListServerCertificatesResponse
-listServerCertificatesResponse pResponseStatus_ =
-  ListServerCertificatesResponse'
-    { _lscrsMarker = Nothing
-    , _lscrsIsTruncated = Nothing
-    , _lscrsResponseStatus = pResponseStatus_
-    , _lscrsServerCertificateMetadataList = mempty
-    }
-
+listServerCertificatesResponse pResponseStatus_
+  = ListServerCertificatesResponse'{_lscrsMarker =
+                                      Nothing,
+                                    _lscrsIsTruncated = Nothing,
+                                    _lscrsResponseStatus = pResponseStatus_,
+                                    _lscrsServerCertificateMetadataList =
+                                      mempty}
 
 -- | When @IsTruncated@ is @true@ , this element is present and contains the value to use for the @Marker@ parameter in a subsequent pagination request.
 lscrsMarker :: Lens' ListServerCertificatesResponse (Maybe Text)

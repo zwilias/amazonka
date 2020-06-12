@@ -44,17 +44,15 @@ import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 import Network.AWS.Route53AutoNaming.Types
-import Network.AWS.Route53AutoNaming.Types.Product
 
 -- | /See:/ 'createPublicDNSNamespace' smart constructor.
-data CreatePublicDNSNamespace =
-  CreatePublicDNSNamespace'
-    { _cpdnCreatorRequestId :: !(Maybe Text)
-    , _cpdnDescription      :: !(Maybe Text)
-    , _cpdnName             :: !Text
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data CreatePublicDNSNamespace = CreatePublicDNSNamespace'{_cpdnCreatorRequestId
+                                                          :: !(Maybe Text),
+                                                          _cpdnDescription ::
+                                                          !(Maybe Text),
+                                                          _cpdnName :: !Text}
+                                  deriving (Eq, Read, Show, Data, Typeable,
+                                            Generic)
 
 -- | Creates a value of 'CreatePublicDNSNamespace' with the minimum fields required to make a request.
 --
@@ -68,13 +66,10 @@ data CreatePublicDNSNamespace =
 createPublicDNSNamespace
     :: Text -- ^ 'cpdnName'
     -> CreatePublicDNSNamespace
-createPublicDNSNamespace pName_ =
-  CreatePublicDNSNamespace'
-    { _cpdnCreatorRequestId = Nothing
-    , _cpdnDescription = Nothing
-    , _cpdnName = pName_
-    }
-
+createPublicDNSNamespace pName_
+  = CreatePublicDNSNamespace'{_cpdnCreatorRequestId =
+                                Nothing,
+                              _cpdnDescription = Nothing, _cpdnName = pName_}
 
 -- | A unique string that identifies the request and that allows failed @CreatePublicDnsNamespace@ requests to be retried without the risk of executing the operation twice. @CreatorRequestId@ can be any unique string, for example, a date/time stamp.
 cpdnCreatorRequestId :: Lens' CreatePublicDNSNamespace (Maybe Text)
@@ -127,13 +122,15 @@ instance ToQuery CreatePublicDNSNamespace where
         toQuery = const mempty
 
 -- | /See:/ 'createPublicDNSNamespaceResponse' smart constructor.
-data CreatePublicDNSNamespaceResponse =
-  CreatePublicDNSNamespaceResponse'
-    { _cpdnrsOperationId    :: !(Maybe Text)
-    , _cpdnrsResponseStatus :: !Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data CreatePublicDNSNamespaceResponse = CreatePublicDNSNamespaceResponse'{_cpdnrsOperationId
+                                                                          ::
+                                                                          !(Maybe
+                                                                              Text),
+                                                                          _cpdnrsResponseStatus
+                                                                          ::
+                                                                          !Int}
+                                          deriving (Eq, Read, Show, Data,
+                                                    Typeable, Generic)
 
 -- | Creates a value of 'CreatePublicDNSNamespaceResponse' with the minimum fields required to make a request.
 --
@@ -145,10 +142,10 @@ data CreatePublicDNSNamespaceResponse =
 createPublicDNSNamespaceResponse
     :: Int -- ^ 'cpdnrsResponseStatus'
     -> CreatePublicDNSNamespaceResponse
-createPublicDNSNamespaceResponse pResponseStatus_ =
-  CreatePublicDNSNamespaceResponse'
-    {_cpdnrsOperationId = Nothing, _cpdnrsResponseStatus = pResponseStatus_}
-
+createPublicDNSNamespaceResponse pResponseStatus_
+  = CreatePublicDNSNamespaceResponse'{_cpdnrsOperationId
+                                        = Nothing,
+                                      _cpdnrsResponseStatus = pResponseStatus_}
 
 -- | A value that you can use to determine whether the request completed successfully. To get the status of the operation, see 'GetOperation' .
 cpdnrsOperationId :: Lens' CreatePublicDNSNamespaceResponse (Maybe Text)

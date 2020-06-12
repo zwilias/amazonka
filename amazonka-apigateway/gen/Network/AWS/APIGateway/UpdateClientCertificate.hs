@@ -43,7 +43,6 @@ module Network.AWS.APIGateway.UpdateClientCertificate
     ) where
 
 import Network.AWS.APIGateway.Types
-import Network.AWS.APIGateway.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.Request
@@ -54,13 +53,14 @@ import Network.AWS.Response
 --
 --
 -- /See:/ 'updateClientCertificate' smart constructor.
-data UpdateClientCertificate =
-  UpdateClientCertificate'
-    { _uccPatchOperations     :: !(Maybe [PatchOperation])
-    , _uccClientCertificateId :: !Text
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data UpdateClientCertificate = UpdateClientCertificate'{_uccPatchOperations
+                                                        ::
+                                                        !(Maybe
+                                                            [PatchOperation]),
+                                                        _uccClientCertificateId
+                                                        :: !Text}
+                                 deriving (Eq, Read, Show, Data, Typeable,
+                                           Generic)
 
 -- | Creates a value of 'UpdateClientCertificate' with the minimum fields required to make a request.
 --
@@ -72,12 +72,10 @@ data UpdateClientCertificate =
 updateClientCertificate
     :: Text -- ^ 'uccClientCertificateId'
     -> UpdateClientCertificate
-updateClientCertificate pClientCertificateId_ =
-  UpdateClientCertificate'
-    { _uccPatchOperations = Nothing
-    , _uccClientCertificateId = pClientCertificateId_
-    }
-
+updateClientCertificate pClientCertificateId_
+  = UpdateClientCertificate'{_uccPatchOperations =
+                               Nothing,
+                             _uccClientCertificateId = pClientCertificateId_}
 
 -- | A list of update operations to be applied to the specified resource and in the order specified in this list.
 uccPatchOperations :: Lens' UpdateClientCertificate [PatchOperation]

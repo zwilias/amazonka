@@ -48,21 +48,37 @@ import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 import Network.AWS.SSM.Types
-import Network.AWS.SSM.Types.Product
 
 -- | /See:/ 'registerTargetWithMaintenanceWindow' smart constructor.
-data RegisterTargetWithMaintenanceWindow =
-  RegisterTargetWithMaintenanceWindow'
-    { _rClientToken      :: !(Maybe Text)
-    , _rOwnerInformation :: !(Maybe (Sensitive Text))
-    , _rName             :: !(Maybe Text)
-    , _rDescription      :: !(Maybe (Sensitive Text))
-    , _rWindowId         :: !Text
-    , _rResourceType     :: !MaintenanceWindowResourceType
-    , _rTargets          :: ![Target]
-    }
-  deriving (Eq, Show, Data, Typeable, Generic)
-
+data RegisterTargetWithMaintenanceWindow = RegisterTargetWithMaintenanceWindow'{_rClientToken
+                                                                                ::
+                                                                                !(Maybe
+                                                                                    Text),
+                                                                                _rOwnerInformation
+                                                                                ::
+                                                                                !(Maybe
+                                                                                    (Sensitive
+                                                                                       Text)),
+                                                                                _rName
+                                                                                ::
+                                                                                !(Maybe
+                                                                                    Text),
+                                                                                _rDescription
+                                                                                ::
+                                                                                !(Maybe
+                                                                                    (Sensitive
+                                                                                       Text)),
+                                                                                _rWindowId
+                                                                                ::
+                                                                                !Text,
+                                                                                _rResourceType
+                                                                                ::
+                                                                                !MaintenanceWindowResourceType,
+                                                                                _rTargets
+                                                                                ::
+                                                                                ![Target]}
+                                             deriving (Eq, Show, Data, Typeable,
+                                                       Generic)
 
 -- | Creates a value of 'RegisterTargetWithMaintenanceWindow' with the minimum fields required to make a request.
 --
@@ -80,22 +96,21 @@ data RegisterTargetWithMaintenanceWindow =
 --
 -- * 'rResourceType' - The type of target being registered with the Maintenance Window.
 --
--- * 'rTargets' - The targets (either instances or tags).  Specify instances using the following format: @Key=InstanceIds,Values=<instance-id-1>,<instance-id-2>@  Specify tags using either of the following formats: @Key=tag:<tag-key>,Values=<tag-value-1>,<tag-value-2>@  @Key=tag-key,Values=<tag-key-1>,<tag-key-2>@
+-- * 'rTargets' - The targets (either instances or tags).  Specify instances using the following format: @Key=InstanceIds,Values=<instance-id-1>,<instance-id-2>@  Specify tags using either of the following formats: @Key=tag:<tag-key>,Values=<tag-value-1>,<tag-value-2>@  @Key=tag-key,Values=<tag-key-1>,<tag-key-2>@ 
 registerTargetWithMaintenanceWindow
     :: Text -- ^ 'rWindowId'
     -> MaintenanceWindowResourceType -- ^ 'rResourceType'
     -> RegisterTargetWithMaintenanceWindow
-registerTargetWithMaintenanceWindow pWindowId_ pResourceType_ =
-  RegisterTargetWithMaintenanceWindow'
-    { _rClientToken = Nothing
-    , _rOwnerInformation = Nothing
-    , _rName = Nothing
-    , _rDescription = Nothing
-    , _rWindowId = pWindowId_
-    , _rResourceType = pResourceType_
-    , _rTargets = mempty
-    }
-
+registerTargetWithMaintenanceWindow pWindowId_
+  pResourceType_
+  = RegisterTargetWithMaintenanceWindow'{_rClientToken
+                                           = Nothing,
+                                         _rOwnerInformation = Nothing,
+                                         _rName = Nothing,
+                                         _rDescription = Nothing,
+                                         _rWindowId = pWindowId_,
+                                         _rResourceType = pResourceType_,
+                                         _rTargets = mempty}
 
 -- | User-provided idempotency token.
 rClientToken :: Lens' RegisterTargetWithMaintenanceWindow (Maybe Text)
@@ -121,7 +136,7 @@ rWindowId = lens _rWindowId (\ s a -> s{_rWindowId = a})
 rResourceType :: Lens' RegisterTargetWithMaintenanceWindow MaintenanceWindowResourceType
 rResourceType = lens _rResourceType (\ s a -> s{_rResourceType = a})
 
--- | The targets (either instances or tags).  Specify instances using the following format: @Key=InstanceIds,Values=<instance-id-1>,<instance-id-2>@  Specify tags using either of the following formats: @Key=tag:<tag-key>,Values=<tag-value-1>,<tag-value-2>@  @Key=tag-key,Values=<tag-key-1>,<tag-key-2>@
+-- | The targets (either instances or tags).  Specify instances using the following format: @Key=InstanceIds,Values=<instance-id-1>,<instance-id-2>@  Specify tags using either of the following formats: @Key=tag:<tag-key>,Values=<tag-value-1>,<tag-value-2>@  @Key=tag-key,Values=<tag-key-1>,<tag-key-2>@ 
 rTargets :: Lens' RegisterTargetWithMaintenanceWindow [Target]
 rTargets = lens _rTargets (\ s a -> s{_rTargets = a}) . _Coerce
 
@@ -177,13 +192,16 @@ instance ToQuery RegisterTargetWithMaintenanceWindow
         toQuery = const mempty
 
 -- | /See:/ 'registerTargetWithMaintenanceWindowResponse' smart constructor.
-data RegisterTargetWithMaintenanceWindowResponse =
-  RegisterTargetWithMaintenanceWindowResponse'
-    { _rrsWindowTargetId :: !(Maybe Text)
-    , _rrsResponseStatus :: !Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data RegisterTargetWithMaintenanceWindowResponse = RegisterTargetWithMaintenanceWindowResponse'{_rrsWindowTargetId
+                                                                                                ::
+                                                                                                !(Maybe
+                                                                                                    Text),
+                                                                                                _rrsResponseStatus
+                                                                                                ::
+                                                                                                !Int}
+                                                     deriving (Eq, Read, Show,
+                                                               Data, Typeable,
+                                                               Generic)
 
 -- | Creates a value of 'RegisterTargetWithMaintenanceWindowResponse' with the minimum fields required to make a request.
 --
@@ -195,10 +213,12 @@ data RegisterTargetWithMaintenanceWindowResponse =
 registerTargetWithMaintenanceWindowResponse
     :: Int -- ^ 'rrsResponseStatus'
     -> RegisterTargetWithMaintenanceWindowResponse
-registerTargetWithMaintenanceWindowResponse pResponseStatus_ =
-  RegisterTargetWithMaintenanceWindowResponse'
-    {_rrsWindowTargetId = Nothing, _rrsResponseStatus = pResponseStatus_}
-
+registerTargetWithMaintenanceWindowResponse
+  pResponseStatus_
+  = RegisterTargetWithMaintenanceWindowResponse'{_rrsWindowTargetId
+                                                   = Nothing,
+                                                 _rrsResponseStatus =
+                                                   pResponseStatus_}
 
 -- | The ID of the target definition in this Maintenance Window.
 rrsWindowTargetId :: Lens' RegisterTargetWithMaintenanceWindowResponse (Maybe Text)

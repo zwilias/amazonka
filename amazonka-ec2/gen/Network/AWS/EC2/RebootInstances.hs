@@ -40,20 +40,16 @@ module Network.AWS.EC2.RebootInstances
     ) where
 
 import Network.AWS.EC2.Types
-import Network.AWS.EC2.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 
 -- | /See:/ 'rebootInstances' smart constructor.
-data RebootInstances =
-  RebootInstances'
-    { _rebDryRun      :: !(Maybe Bool)
-    , _rebInstanceIds :: ![Text]
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data RebootInstances = RebootInstances'{_rebDryRun ::
+                                        !(Maybe Bool),
+                                        _rebInstanceIds :: ![Text]}
+                         deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'RebootInstances' with the minimum fields required to make a request.
 --
@@ -64,9 +60,9 @@ data RebootInstances =
 -- * 'rebInstanceIds' - The instance IDs.
 rebootInstances
     :: RebootInstances
-rebootInstances =
-  RebootInstances' {_rebDryRun = Nothing, _rebInstanceIds = mempty}
-
+rebootInstances
+  = RebootInstances'{_rebDryRun = Nothing,
+                     _rebInstanceIds = mempty}
 
 -- | Checks whether you have the required permissions for the action, without actually making the request, and provides an error response. If you have the required permissions, the error response is @DryRunOperation@ . Otherwise, it is @UnauthorizedOperation@ .
 rebDryRun :: Lens' RebootInstances (Maybe Bool)
@@ -100,16 +96,14 @@ instance ToQuery RebootInstances where
                toQueryList "InstanceId" _rebInstanceIds]
 
 -- | /See:/ 'rebootInstancesResponse' smart constructor.
-data RebootInstancesResponse =
-  RebootInstancesResponse'
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data RebootInstancesResponse = RebootInstancesResponse'
+                                 deriving (Eq, Read, Show, Data, Typeable,
+                                           Generic)
 
 -- | Creates a value of 'RebootInstancesResponse' with the minimum fields required to make a request.
 --
 rebootInstancesResponse
     :: RebootInstancesResponse
 rebootInstancesResponse = RebootInstancesResponse'
-
 
 instance NFData RebootInstancesResponse where

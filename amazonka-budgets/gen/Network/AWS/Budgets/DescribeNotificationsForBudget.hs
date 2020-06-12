@@ -44,27 +44,31 @@ module Network.AWS.Budgets.DescribeNotificationsForBudget
     ) where
 
 import Network.AWS.Budgets.Types
-import Network.AWS.Budgets.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Pager
 import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 
--- | Request of DescribeNotificationsForBudget
+-- | Request of DescribeNotificationsForBudget 
 --
 --
 --
 -- /See:/ 'describeNotificationsForBudget' smart constructor.
-data DescribeNotificationsForBudget =
-  DescribeNotificationsForBudget'
-    { _dnfbNextToken  :: !(Maybe Text)
-    , _dnfbMaxResults :: !(Maybe Nat)
-    , _dnfbAccountId  :: !Text
-    , _dnfbBudgetName :: !Text
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data DescribeNotificationsForBudget = DescribeNotificationsForBudget'{_dnfbNextToken
+                                                                      ::
+                                                                      !(Maybe
+                                                                          Text),
+                                                                      _dnfbMaxResults
+                                                                      ::
+                                                                      !(Maybe
+                                                                          Nat),
+                                                                      _dnfbAccountId
+                                                                      :: !Text,
+                                                                      _dnfbBudgetName
+                                                                      :: !Text}
+                                        deriving (Eq, Read, Show, Data,
+                                                  Typeable, Generic)
 
 -- | Creates a value of 'DescribeNotificationsForBudget' with the minimum fields required to make a request.
 --
@@ -81,14 +85,13 @@ describeNotificationsForBudget
     :: Text -- ^ 'dnfbAccountId'
     -> Text -- ^ 'dnfbBudgetName'
     -> DescribeNotificationsForBudget
-describeNotificationsForBudget pAccountId_ pBudgetName_ =
-  DescribeNotificationsForBudget'
-    { _dnfbNextToken = Nothing
-    , _dnfbMaxResults = Nothing
-    , _dnfbAccountId = pAccountId_
-    , _dnfbBudgetName = pBudgetName_
-    }
-
+describeNotificationsForBudget pAccountId_
+  pBudgetName_
+  = DescribeNotificationsForBudget'{_dnfbNextToken =
+                                      Nothing,
+                                    _dnfbMaxResults = Nothing,
+                                    _dnfbAccountId = pAccountId_,
+                                    _dnfbBudgetName = pBudgetName_}
 
 -- | The pagination token that you include in your request to indicate the next set of results that you want to retrieve.
 dnfbNextToken :: Lens' DescribeNotificationsForBudget (Maybe Text)
@@ -158,19 +161,24 @@ instance ToPath DescribeNotificationsForBudget where
 instance ToQuery DescribeNotificationsForBudget where
         toQuery = const mempty
 
--- | Response of GetNotificationsForBudget
+-- | Response of GetNotificationsForBudget 
 --
 --
 --
 -- /See:/ 'describeNotificationsForBudgetResponse' smart constructor.
-data DescribeNotificationsForBudgetResponse =
-  DescribeNotificationsForBudgetResponse'
-    { _dnfbrsNextToken      :: !(Maybe Text)
-    , _dnfbrsNotifications  :: !(Maybe [Notification])
-    , _dnfbrsResponseStatus :: !Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data DescribeNotificationsForBudgetResponse = DescribeNotificationsForBudgetResponse'{_dnfbrsNextToken
+                                                                                      ::
+                                                                                      !(Maybe
+                                                                                          Text),
+                                                                                      _dnfbrsNotifications
+                                                                                      ::
+                                                                                      !(Maybe
+                                                                                          [Notification]),
+                                                                                      _dnfbrsResponseStatus
+                                                                                      ::
+                                                                                      !Int}
+                                                deriving (Eq, Read, Show, Data,
+                                                          Typeable, Generic)
 
 -- | Creates a value of 'DescribeNotificationsForBudgetResponse' with the minimum fields required to make a request.
 --
@@ -184,13 +192,13 @@ data DescribeNotificationsForBudgetResponse =
 describeNotificationsForBudgetResponse
     :: Int -- ^ 'dnfbrsResponseStatus'
     -> DescribeNotificationsForBudgetResponse
-describeNotificationsForBudgetResponse pResponseStatus_ =
-  DescribeNotificationsForBudgetResponse'
-    { _dnfbrsNextToken = Nothing
-    , _dnfbrsNotifications = Nothing
-    , _dnfbrsResponseStatus = pResponseStatus_
-    }
-
+describeNotificationsForBudgetResponse
+  pResponseStatus_
+  = DescribeNotificationsForBudgetResponse'{_dnfbrsNextToken
+                                              = Nothing,
+                                            _dnfbrsNotifications = Nothing,
+                                            _dnfbrsResponseStatus =
+                                              pResponseStatus_}
 
 -- | The pagination token in the service response that indicates the next set of results that you can retrieve.
 dnfbrsNextToken :: Lens' DescribeNotificationsForBudgetResponse (Maybe Text)

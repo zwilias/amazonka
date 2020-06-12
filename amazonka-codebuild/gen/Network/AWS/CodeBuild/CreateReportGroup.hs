@@ -18,7 +18,7 @@
 -- Stability   : auto-generated
 -- Portability : non-portable (GHC extensions)
 --
--- Creates a report group. A report group contains a collection of reports.
+-- Creates a report group. A report group contains a collection of reports. 
 --
 --
 module Network.AWS.CodeBuild.CreateReportGroup
@@ -40,50 +40,46 @@ module Network.AWS.CodeBuild.CreateReportGroup
     ) where
 
 import Network.AWS.CodeBuild.Types
-import Network.AWS.CodeBuild.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 
 -- | /See:/ 'createReportGroup' smart constructor.
-data CreateReportGroup =
-  CreateReportGroup'
-    { _crgName         :: !Text
-    , _crgType         :: !ReportType
-    , _crgExportConfig :: !ReportExportConfig
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data CreateReportGroup = CreateReportGroup'{_crgName
+                                            :: !Text,
+                                            _crgType :: !ReportType,
+                                            _crgExportConfig ::
+                                            !ReportExportConfig}
+                           deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'CreateReportGroup' with the minimum fields required to make a request.
 --
 -- Use one of the following lenses to modify other fields as desired:
 --
--- * 'crgName' - The name of the report group.
+-- * 'crgName' - The name of the report group. 
 --
--- * 'crgType' - The type of report group.
+-- * 'crgType' - The type of report group. 
 --
--- * 'crgExportConfig' - A @ReportExportConfig@ object that contains information about where the report group test results are exported.
+-- * 'crgExportConfig' - A @ReportExportConfig@ object that contains information about where the report group test results are exported. 
 createReportGroup
     :: Text -- ^ 'crgName'
     -> ReportType -- ^ 'crgType'
     -> ReportExportConfig -- ^ 'crgExportConfig'
     -> CreateReportGroup
-createReportGroup pName_ pType_ pExportConfig_ =
-  CreateReportGroup'
-    {_crgName = pName_, _crgType = pType_, _crgExportConfig = pExportConfig_}
+createReportGroup pName_ pType_ pExportConfig_
+  = CreateReportGroup'{_crgName = pName_,
+                       _crgType = pType_, _crgExportConfig = pExportConfig_}
 
-
--- | The name of the report group.
+-- | The name of the report group. 
 crgName :: Lens' CreateReportGroup Text
 crgName = lens _crgName (\ s a -> s{_crgName = a})
 
--- | The type of report group.
+-- | The type of report group. 
 crgType :: Lens' CreateReportGroup ReportType
 crgType = lens _crgType (\ s a -> s{_crgType = a})
 
--- | A @ReportExportConfig@ object that contains information about where the report group test results are exported.
+-- | A @ReportExportConfig@ object that contains information about where the report group test results are exported. 
 crgExportConfig :: Lens' CreateReportGroup ReportExportConfig
 crgExportConfig = lens _crgExportConfig (\ s a -> s{_crgExportConfig = a})
 
@@ -125,30 +121,31 @@ instance ToQuery CreateReportGroup where
         toQuery = const mempty
 
 -- | /See:/ 'createReportGroupResponse' smart constructor.
-data CreateReportGroupResponse =
-  CreateReportGroupResponse'
-    { _crgrsReportGroup    :: !(Maybe ReportGroup)
-    , _crgrsResponseStatus :: !Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data CreateReportGroupResponse = CreateReportGroupResponse'{_crgrsReportGroup
+                                                            ::
+                                                            !(Maybe
+                                                                ReportGroup),
+                                                            _crgrsResponseStatus
+                                                            :: !Int}
+                                   deriving (Eq, Read, Show, Data, Typeable,
+                                             Generic)
 
 -- | Creates a value of 'CreateReportGroupResponse' with the minimum fields required to make a request.
 --
 -- Use one of the following lenses to modify other fields as desired:
 --
--- * 'crgrsReportGroup' - Information about the report group that was created.
+-- * 'crgrsReportGroup' - Information about the report group that was created. 
 --
 -- * 'crgrsResponseStatus' - -- | The response status code.
 createReportGroupResponse
     :: Int -- ^ 'crgrsResponseStatus'
     -> CreateReportGroupResponse
-createReportGroupResponse pResponseStatus_ =
-  CreateReportGroupResponse'
-    {_crgrsReportGroup = Nothing, _crgrsResponseStatus = pResponseStatus_}
+createReportGroupResponse pResponseStatus_
+  = CreateReportGroupResponse'{_crgrsReportGroup =
+                                 Nothing,
+                               _crgrsResponseStatus = pResponseStatus_}
 
-
--- | Information about the report group that was created.
+-- | Information about the report group that was created. 
 crgrsReportGroup :: Lens' CreateReportGroupResponse (Maybe ReportGroup)
 crgrsReportGroup = lens _crgrsReportGroup (\ s a -> s{_crgrsReportGroup = a})
 

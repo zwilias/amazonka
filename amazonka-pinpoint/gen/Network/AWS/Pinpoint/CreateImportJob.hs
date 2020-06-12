@@ -38,19 +38,16 @@ module Network.AWS.Pinpoint.CreateImportJob
 
 import Network.AWS.Lens
 import Network.AWS.Pinpoint.Types
-import Network.AWS.Pinpoint.Types.Product
 import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 
 -- | /See:/ 'createImportJob' smart constructor.
-data CreateImportJob =
-  CreateImportJob'
-    { _cijApplicationId    :: !Text
-    , _cijImportJobRequest :: !ImportJobRequest
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data CreateImportJob = CreateImportJob'{_cijApplicationId
+                                        :: !Text,
+                                        _cijImportJobRequest ::
+                                        !ImportJobRequest}
+                         deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'CreateImportJob' with the minimum fields required to make a request.
 --
@@ -63,12 +60,10 @@ createImportJob
     :: Text -- ^ 'cijApplicationId'
     -> ImportJobRequest -- ^ 'cijImportJobRequest'
     -> CreateImportJob
-createImportJob pApplicationId_ pImportJobRequest_ =
-  CreateImportJob'
-    { _cijApplicationId = pApplicationId_
-    , _cijImportJobRequest = pImportJobRequest_
-    }
-
+createImportJob pApplicationId_ pImportJobRequest_
+  = CreateImportJob'{_cijApplicationId =
+                       pApplicationId_,
+                     _cijImportJobRequest = pImportJobRequest_}
 
 -- | Undocumented member.
 cijApplicationId :: Lens' CreateImportJob Text
@@ -113,13 +108,12 @@ instance ToQuery CreateImportJob where
         toQuery = const mempty
 
 -- | /See:/ 'createImportJobResponse' smart constructor.
-data CreateImportJobResponse =
-  CreateImportJobResponse'
-    { _cijrsResponseStatus    :: !Int
-    , _cijrsImportJobResponse :: !ImportJobResponse
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data CreateImportJobResponse = CreateImportJobResponse'{_cijrsResponseStatus
+                                                        :: !Int,
+                                                        _cijrsImportJobResponse
+                                                        :: !ImportJobResponse}
+                                 deriving (Eq, Read, Show, Data, Typeable,
+                                           Generic)
 
 -- | Creates a value of 'CreateImportJobResponse' with the minimum fields required to make a request.
 --
@@ -132,12 +126,11 @@ createImportJobResponse
     :: Int -- ^ 'cijrsResponseStatus'
     -> ImportJobResponse -- ^ 'cijrsImportJobResponse'
     -> CreateImportJobResponse
-createImportJobResponse pResponseStatus_ pImportJobResponse_ =
-  CreateImportJobResponse'
-    { _cijrsResponseStatus = pResponseStatus_
-    , _cijrsImportJobResponse = pImportJobResponse_
-    }
-
+createImportJobResponse pResponseStatus_
+  pImportJobResponse_
+  = CreateImportJobResponse'{_cijrsResponseStatus =
+                               pResponseStatus_,
+                             _cijrsImportJobResponse = pImportJobResponse_}
 
 -- | -- | The response status code.
 cijrsResponseStatus :: Lens' CreateImportJobResponse Int

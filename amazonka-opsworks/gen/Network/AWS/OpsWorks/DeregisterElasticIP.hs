@@ -38,18 +38,15 @@ module Network.AWS.OpsWorks.DeregisterElasticIP
 
 import Network.AWS.Lens
 import Network.AWS.OpsWorks.Types
-import Network.AWS.OpsWorks.Types.Product
 import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 
 -- | /See:/ 'deregisterElasticIP' smart constructor.
-newtype DeregisterElasticIP =
-  DeregisterElasticIP'
-    { _deipElasticIP :: Text
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+newtype DeregisterElasticIP = DeregisterElasticIP'{_deipElasticIP
+                                                   :: Text}
+                                deriving (Eq, Read, Show, Data, Typeable,
+                                          Generic)
 
 -- | Creates a value of 'DeregisterElasticIP' with the minimum fields required to make a request.
 --
@@ -59,9 +56,8 @@ newtype DeregisterElasticIP =
 deregisterElasticIP
     :: Text -- ^ 'deipElasticIP'
     -> DeregisterElasticIP
-deregisterElasticIP pElasticIP_ =
-  DeregisterElasticIP' {_deipElasticIP = pElasticIP_}
-
+deregisterElasticIP pElasticIP_
+  = DeregisterElasticIP'{_deipElasticIP = pElasticIP_}
 
 -- | The Elastic IP address.
 deipElasticIP :: Lens' DeregisterElasticIP Text
@@ -99,16 +95,15 @@ instance ToQuery DeregisterElasticIP where
         toQuery = const mempty
 
 -- | /See:/ 'deregisterElasticIPResponse' smart constructor.
-data DeregisterElasticIPResponse =
-  DeregisterElasticIPResponse'
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data DeregisterElasticIPResponse = DeregisterElasticIPResponse'
+                                     deriving (Eq, Read, Show, Data, Typeable,
+                                               Generic)
 
 -- | Creates a value of 'DeregisterElasticIPResponse' with the minimum fields required to make a request.
 --
 deregisterElasticIPResponse
     :: DeregisterElasticIPResponse
-deregisterElasticIPResponse = DeregisterElasticIPResponse'
-
+deregisterElasticIPResponse
+  = DeregisterElasticIPResponse'
 
 instance NFData DeregisterElasticIPResponse where

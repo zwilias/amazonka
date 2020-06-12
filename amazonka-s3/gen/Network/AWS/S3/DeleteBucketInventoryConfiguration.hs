@@ -38,16 +38,16 @@ import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 import Network.AWS.S3.Types
-import Network.AWS.S3.Types.Product
 
 -- | /See:/ 'deleteBucketInventoryConfiguration' smart constructor.
-data DeleteBucketInventoryConfiguration =
-  DeleteBucketInventoryConfiguration'
-    { _dbicBucket :: !BucketName
-    , _dbicId     :: !Text
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data DeleteBucketInventoryConfiguration = DeleteBucketInventoryConfiguration'{_dbicBucket
+                                                                              ::
+                                                                              !BucketName,
+                                                                              _dbicId
+                                                                              ::
+                                                                              !Text}
+                                            deriving (Eq, Read, Show, Data,
+                                                      Typeable, Generic)
 
 -- | Creates a value of 'DeleteBucketInventoryConfiguration' with the minimum fields required to make a request.
 --
@@ -60,9 +60,10 @@ deleteBucketInventoryConfiguration
     :: BucketName -- ^ 'dbicBucket'
     -> Text -- ^ 'dbicId'
     -> DeleteBucketInventoryConfiguration
-deleteBucketInventoryConfiguration pBucket_ pId_ =
-  DeleteBucketInventoryConfiguration' {_dbicBucket = pBucket_, _dbicId = pId_}
-
+deleteBucketInventoryConfiguration pBucket_ pId_
+  = DeleteBucketInventoryConfiguration'{_dbicBucket =
+                                          pBucket_,
+                                        _dbicId = pId_}
 
 -- | The name of the bucket containing the inventory configuration to delete.
 dbicBucket :: Lens' DeleteBucketInventoryConfiguration BucketName
@@ -103,18 +104,17 @@ instance ToQuery DeleteBucketInventoryConfiguration
           = mconcat ["id" =: _dbicId, "inventory"]
 
 -- | /See:/ 'deleteBucketInventoryConfigurationResponse' smart constructor.
-data DeleteBucketInventoryConfigurationResponse =
-  DeleteBucketInventoryConfigurationResponse'
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data DeleteBucketInventoryConfigurationResponse = DeleteBucketInventoryConfigurationResponse'
+                                                    deriving (Eq, Read, Show,
+                                                              Data, Typeable,
+                                                              Generic)
 
 -- | Creates a value of 'DeleteBucketInventoryConfigurationResponse' with the minimum fields required to make a request.
 --
 deleteBucketInventoryConfigurationResponse
     :: DeleteBucketInventoryConfigurationResponse
-deleteBucketInventoryConfigurationResponse =
-  DeleteBucketInventoryConfigurationResponse'
-
+deleteBucketInventoryConfigurationResponse
+  = DeleteBucketInventoryConfigurationResponse'
 
 instance NFData
            DeleteBucketInventoryConfigurationResponse

@@ -39,7 +39,6 @@ module Network.AWS.MediaConvert.DescribeEndpoints
 
 import Network.AWS.Lens
 import Network.AWS.MediaConvert.Types
-import Network.AWS.MediaConvert.Types.Product
 import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
@@ -47,13 +46,10 @@ import Network.AWS.Response
 -- | DescribeEndpointsRequest
 --
 -- /See:/ 'describeEndpoints' smart constructor.
-data DescribeEndpoints =
-  DescribeEndpoints'
-    { _deNextToken  :: !(Maybe Text)
-    , _deMaxResults :: !(Maybe Int)
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data DescribeEndpoints = DescribeEndpoints'{_deNextToken
+                                            :: !(Maybe Text),
+                                            _deMaxResults :: !(Maybe Int)}
+                           deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'DescribeEndpoints' with the minimum fields required to make a request.
 --
@@ -64,9 +60,9 @@ data DescribeEndpoints =
 -- * 'deMaxResults' - Optional. Max number of endpoints, up to twenty, that will be returned at one time.
 describeEndpoints
     :: DescribeEndpoints
-describeEndpoints =
-  DescribeEndpoints' {_deNextToken = Nothing, _deMaxResults = Nothing}
-
+describeEndpoints
+  = DescribeEndpoints'{_deNextToken = Nothing,
+                       _deMaxResults = Nothing}
 
 -- | Use this string, provided with the response to a previous request, to request the next batch of endpoints.
 deNextToken :: Lens' DescribeEndpoints (Maybe Text)
@@ -112,14 +108,14 @@ instance ToQuery DescribeEndpoints where
         toQuery = const mempty
 
 -- | /See:/ 'describeEndpointsResponse' smart constructor.
-data DescribeEndpointsResponse =
-  DescribeEndpointsResponse'
-    { _dersNextToken      :: !(Maybe Text)
-    , _dersEndpoints      :: !(Maybe [Endpoint])
-    , _dersResponseStatus :: !Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data DescribeEndpointsResponse = DescribeEndpointsResponse'{_dersNextToken
+                                                            :: !(Maybe Text),
+                                                            _dersEndpoints ::
+                                                            !(Maybe [Endpoint]),
+                                                            _dersResponseStatus
+                                                            :: !Int}
+                                   deriving (Eq, Read, Show, Data, Typeable,
+                                             Generic)
 
 -- | Creates a value of 'DescribeEndpointsResponse' with the minimum fields required to make a request.
 --
@@ -133,13 +129,11 @@ data DescribeEndpointsResponse =
 describeEndpointsResponse
     :: Int -- ^ 'dersResponseStatus'
     -> DescribeEndpointsResponse
-describeEndpointsResponse pResponseStatus_ =
-  DescribeEndpointsResponse'
-    { _dersNextToken = Nothing
-    , _dersEndpoints = Nothing
-    , _dersResponseStatus = pResponseStatus_
-    }
-
+describeEndpointsResponse pResponseStatus_
+  = DescribeEndpointsResponse'{_dersNextToken =
+                                 Nothing,
+                               _dersEndpoints = Nothing,
+                               _dersResponseStatus = pResponseStatus_}
 
 -- | Use this string to request the next batch of endpoints.
 dersNextToken :: Lens' DescribeEndpointsResponse (Maybe Text)

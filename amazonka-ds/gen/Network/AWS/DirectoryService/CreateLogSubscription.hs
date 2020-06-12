@@ -38,20 +38,17 @@ module Network.AWS.DirectoryService.CreateLogSubscription
     ) where
 
 import Network.AWS.DirectoryService.Types
-import Network.AWS.DirectoryService.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 
 -- | /See:/ 'createLogSubscription' smart constructor.
-data CreateLogSubscription =
-  CreateLogSubscription'
-    { _clsDirectoryId  :: !Text
-    , _clsLogGroupName :: !Text
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data CreateLogSubscription = CreateLogSubscription'{_clsDirectoryId
+                                                    :: !Text,
+                                                    _clsLogGroupName :: !Text}
+                               deriving (Eq, Read, Show, Data, Typeable,
+                                         Generic)
 
 -- | Creates a value of 'CreateLogSubscription' with the minimum fields required to make a request.
 --
@@ -64,10 +61,10 @@ createLogSubscription
     :: Text -- ^ 'clsDirectoryId'
     -> Text -- ^ 'clsLogGroupName'
     -> CreateLogSubscription
-createLogSubscription pDirectoryId_ pLogGroupName_ =
-  CreateLogSubscription'
-    {_clsDirectoryId = pDirectoryId_, _clsLogGroupName = pLogGroupName_}
-
+createLogSubscription pDirectoryId_ pLogGroupName_
+  = CreateLogSubscription'{_clsDirectoryId =
+                             pDirectoryId_,
+                           _clsLogGroupName = pLogGroupName_}
 
 -- | Identifier of the directory to which you want to subscribe and receive real-time logs to your specified CloudWatch log group.
 clsDirectoryId :: Lens' CreateLogSubscription Text
@@ -115,12 +112,10 @@ instance ToQuery CreateLogSubscription where
         toQuery = const mempty
 
 -- | /See:/ 'createLogSubscriptionResponse' smart constructor.
-newtype CreateLogSubscriptionResponse =
-  CreateLogSubscriptionResponse'
-    { _clsrsResponseStatus :: Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+newtype CreateLogSubscriptionResponse = CreateLogSubscriptionResponse'{_clsrsResponseStatus
+                                                                       :: Int}
+                                          deriving (Eq, Read, Show, Data,
+                                                    Typeable, Generic)
 
 -- | Creates a value of 'CreateLogSubscriptionResponse' with the minimum fields required to make a request.
 --
@@ -130,9 +125,9 @@ newtype CreateLogSubscriptionResponse =
 createLogSubscriptionResponse
     :: Int -- ^ 'clsrsResponseStatus'
     -> CreateLogSubscriptionResponse
-createLogSubscriptionResponse pResponseStatus_ =
-  CreateLogSubscriptionResponse' {_clsrsResponseStatus = pResponseStatus_}
-
+createLogSubscriptionResponse pResponseStatus_
+  = CreateLogSubscriptionResponse'{_clsrsResponseStatus
+                                     = pResponseStatus_}
 
 -- | -- | The response status code.
 clsrsResponseStatus :: Lens' CreateLogSubscriptionResponse Int

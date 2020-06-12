@@ -41,21 +41,20 @@ module Network.AWS.ECR.GetDownloadURLForLayer
     ) where
 
 import Network.AWS.ECR.Types
-import Network.AWS.ECR.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 
 -- | /See:/ 'getDownloadURLForLayer' smart constructor.
-data GetDownloadURLForLayer =
-  GetDownloadURLForLayer'
-    { _gduflRegistryId     :: !(Maybe Text)
-    , _gduflRepositoryName :: !Text
-    , _gduflLayerDigest    :: !Text
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data GetDownloadURLForLayer = GetDownloadURLForLayer'{_gduflRegistryId
+                                                      :: !(Maybe Text),
+                                                      _gduflRepositoryName ::
+                                                      !Text,
+                                                      _gduflLayerDigest ::
+                                                      !Text}
+                                deriving (Eq, Read, Show, Data, Typeable,
+                                          Generic)
 
 -- | Creates a value of 'GetDownloadURLForLayer' with the minimum fields required to make a request.
 --
@@ -70,13 +69,10 @@ getDownloadURLForLayer
     :: Text -- ^ 'gduflRepositoryName'
     -> Text -- ^ 'gduflLayerDigest'
     -> GetDownloadURLForLayer
-getDownloadURLForLayer pRepositoryName_ pLayerDigest_ =
-  GetDownloadURLForLayer'
-    { _gduflRegistryId = Nothing
-    , _gduflRepositoryName = pRepositoryName_
-    , _gduflLayerDigest = pLayerDigest_
-    }
-
+getDownloadURLForLayer pRepositoryName_ pLayerDigest_
+  = GetDownloadURLForLayer'{_gduflRegistryId = Nothing,
+                            _gduflRepositoryName = pRepositoryName_,
+                            _gduflLayerDigest = pLayerDigest_}
 
 -- | The AWS account ID associated with the registry that contains the image layer to download. If you do not specify a registry, the default registry is assumed.
 gduflRegistryId :: Lens' GetDownloadURLForLayer (Maybe Text)
@@ -130,14 +126,18 @@ instance ToQuery GetDownloadURLForLayer where
         toQuery = const mempty
 
 -- | /See:/ 'getDownloadURLForLayerResponse' smart constructor.
-data GetDownloadURLForLayerResponse =
-  GetDownloadURLForLayerResponse'
-    { _gduflrsLayerDigest    :: !(Maybe Text)
-    , _gduflrsDownloadURL    :: !(Maybe Text)
-    , _gduflrsResponseStatus :: !Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data GetDownloadURLForLayerResponse = GetDownloadURLForLayerResponse'{_gduflrsLayerDigest
+                                                                      ::
+                                                                      !(Maybe
+                                                                          Text),
+                                                                      _gduflrsDownloadURL
+                                                                      ::
+                                                                      !(Maybe
+                                                                          Text),
+                                                                      _gduflrsResponseStatus
+                                                                      :: !Int}
+                                        deriving (Eq, Read, Show, Data,
+                                                  Typeable, Generic)
 
 -- | Creates a value of 'GetDownloadURLForLayerResponse' with the minimum fields required to make a request.
 --
@@ -151,13 +151,11 @@ data GetDownloadURLForLayerResponse =
 getDownloadURLForLayerResponse
     :: Int -- ^ 'gduflrsResponseStatus'
     -> GetDownloadURLForLayerResponse
-getDownloadURLForLayerResponse pResponseStatus_ =
-  GetDownloadURLForLayerResponse'
-    { _gduflrsLayerDigest = Nothing
-    , _gduflrsDownloadURL = Nothing
-    , _gduflrsResponseStatus = pResponseStatus_
-    }
-
+getDownloadURLForLayerResponse pResponseStatus_
+  = GetDownloadURLForLayerResponse'{_gduflrsLayerDigest
+                                      = Nothing,
+                                    _gduflrsDownloadURL = Nothing,
+                                    _gduflrsResponseStatus = pResponseStatus_}
 
 -- | The digest of the image layer to download.
 gduflrsLayerDigest :: Lens' GetDownloadURLForLayerResponse (Maybe Text)

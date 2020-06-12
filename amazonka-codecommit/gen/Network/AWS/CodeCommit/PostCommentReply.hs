@@ -40,21 +40,17 @@ module Network.AWS.CodeCommit.PostCommentReply
     ) where
 
 import Network.AWS.CodeCommit.Types
-import Network.AWS.CodeCommit.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 
 -- | /See:/ 'postCommentReply' smart constructor.
-data PostCommentReply =
-  PostCommentReply'
-    { _pcrClientRequestToken :: !(Maybe Text)
-    , _pcrInReplyTo          :: !Text
-    , _pcrContent            :: !Text
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data PostCommentReply = PostCommentReply'{_pcrClientRequestToken
+                                          :: !(Maybe Text),
+                                          _pcrInReplyTo :: !Text,
+                                          _pcrContent :: !Text}
+                          deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'PostCommentReply' with the minimum fields required to make a request.
 --
@@ -69,13 +65,9 @@ postCommentReply
     :: Text -- ^ 'pcrInReplyTo'
     -> Text -- ^ 'pcrContent'
     -> PostCommentReply
-postCommentReply pInReplyTo_ pContent_ =
-  PostCommentReply'
-    { _pcrClientRequestToken = Nothing
-    , _pcrInReplyTo = pInReplyTo_
-    , _pcrContent = pContent_
-    }
-
+postCommentReply pInReplyTo_ pContent_
+  = PostCommentReply'{_pcrClientRequestToken = Nothing,
+                      _pcrInReplyTo = pInReplyTo_, _pcrContent = pContent_}
 
 -- | A unique, client-generated idempotency token that, when provided in a request, ensures the request cannot be repeated with a changed parameter. If a request is received with the same parameters and a token is included, the request returns information about the initial request that used that token.
 pcrClientRequestToken :: Lens' PostCommentReply (Maybe Text)
@@ -128,13 +120,12 @@ instance ToQuery PostCommentReply where
         toQuery = const mempty
 
 -- | /See:/ 'postCommentReplyResponse' smart constructor.
-data PostCommentReplyResponse =
-  PostCommentReplyResponse'
-    { _pcrrsComment        :: !(Maybe Comment)
-    , _pcrrsResponseStatus :: !Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data PostCommentReplyResponse = PostCommentReplyResponse'{_pcrrsComment
+                                                          :: !(Maybe Comment),
+                                                          _pcrrsResponseStatus
+                                                          :: !Int}
+                                  deriving (Eq, Read, Show, Data, Typeable,
+                                            Generic)
 
 -- | Creates a value of 'PostCommentReplyResponse' with the minimum fields required to make a request.
 --
@@ -146,10 +137,9 @@ data PostCommentReplyResponse =
 postCommentReplyResponse
     :: Int -- ^ 'pcrrsResponseStatus'
     -> PostCommentReplyResponse
-postCommentReplyResponse pResponseStatus_ =
-  PostCommentReplyResponse'
-    {_pcrrsComment = Nothing, _pcrrsResponseStatus = pResponseStatus_}
-
+postCommentReplyResponse pResponseStatus_
+  = PostCommentReplyResponse'{_pcrrsComment = Nothing,
+                              _pcrrsResponseStatus = pResponseStatus_}
 
 -- | Information about the reply to a comment.
 pcrrsComment :: Lens' PostCommentReplyResponse (Maybe Comment)

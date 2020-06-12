@@ -49,7 +49,6 @@ module Network.AWS.APIGateway.UpdateRestAPI
     ) where
 
 import Network.AWS.APIGateway.Types
-import Network.AWS.APIGateway.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.Request
@@ -60,13 +59,10 @@ import Network.AWS.Response
 --
 --
 -- /See:/ 'updateRestAPI' smart constructor.
-data UpdateRestAPI =
-  UpdateRestAPI'
-    { _uraPatchOperations :: !(Maybe [PatchOperation])
-    , _uraRestAPIId       :: !Text
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data UpdateRestAPI = UpdateRestAPI'{_uraPatchOperations
+                                    :: !(Maybe [PatchOperation]),
+                                    _uraRestAPIId :: !Text}
+                       deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'UpdateRestAPI' with the minimum fields required to make a request.
 --
@@ -78,9 +74,9 @@ data UpdateRestAPI =
 updateRestAPI
     :: Text -- ^ 'uraRestAPIId'
     -> UpdateRestAPI
-updateRestAPI pRestAPIId_ =
-  UpdateRestAPI' {_uraPatchOperations = Nothing, _uraRestAPIId = pRestAPIId_}
-
+updateRestAPI pRestAPIId_
+  = UpdateRestAPI'{_uraPatchOperations = Nothing,
+                   _uraRestAPIId = pRestAPIId_}
 
 -- | A list of update operations to be applied to the specified resource and in the order specified in this list.
 uraPatchOperations :: Lens' UpdateRestAPI [PatchOperation]

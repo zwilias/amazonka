@@ -48,31 +48,32 @@ module Network.AWS.Rekognition.StartContentModeration
 import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.Rekognition.Types
-import Network.AWS.Rekognition.Types.Product
 import Network.AWS.Request
 import Network.AWS.Response
 
 -- | /See:/ 'startContentModeration' smart constructor.
-data StartContentModeration =
-  StartContentModeration'
-    { _scmJobTag              :: !(Maybe Text)
-    , _scmNotificationChannel :: !(Maybe NotificationChannel)
-    , _scmClientRequestToken  :: !(Maybe Text)
-    , _scmMinConfidence       :: !(Maybe Double)
-    , _scmVideo               :: !Video
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data StartContentModeration = StartContentModeration'{_scmJobTag
+                                                      :: !(Maybe Text),
+                                                      _scmNotificationChannel ::
+                                                      !(Maybe
+                                                          NotificationChannel),
+                                                      _scmClientRequestToken ::
+                                                      !(Maybe Text),
+                                                      _scmMinConfidence ::
+                                                      !(Maybe Double),
+                                                      _scmVideo :: !Video}
+                                deriving (Eq, Read, Show, Data, Typeable,
+                                          Generic)
 
 -- | Creates a value of 'StartContentModeration' with the minimum fields required to make a request.
 --
 -- Use one of the following lenses to modify other fields as desired:
 --
--- * 'scmJobTag' - Unique identifier you specify to identify the job in the completion status published to the Amazon Simple Notification Service topic.
+-- * 'scmJobTag' - Unique identifier you specify to identify the job in the completion status published to the Amazon Simple Notification Service topic. 
 --
 -- * 'scmNotificationChannel' - The Amazon SNS topic ARN that you want Rekognition Video to publish the completion status of the content moderation analysis to.
 --
--- * 'scmClientRequestToken' - Idempotent token used to identify the start request. If you use the same token with multiple @StartContentModeration@ requests, the same @JobId@ is returned. Use @ClientRequestToken@ to prevent the same job from being accidently started more than once.
+-- * 'scmClientRequestToken' - Idempotent token used to identify the start request. If you use the same token with multiple @StartContentModeration@ requests, the same @JobId@ is returned. Use @ClientRequestToken@ to prevent the same job from being accidently started more than once. 
 --
 -- * 'scmMinConfidence' - Specifies the minimum confidence that Amazon Rekognition must have in order to return a moderated content label. Confidence represents how certain Amazon Rekognition is that the moderated content is correctly identified. 0 is the lowest confidence. 100 is the highest confidence. Amazon Rekognition doesn't return any moderated content labels with a confidence level lower than this specified value.
 --
@@ -80,17 +81,13 @@ data StartContentModeration =
 startContentModeration
     :: Video -- ^ 'scmVideo'
     -> StartContentModeration
-startContentModeration pVideo_ =
-  StartContentModeration'
-    { _scmJobTag = Nothing
-    , _scmNotificationChannel = Nothing
-    , _scmClientRequestToken = Nothing
-    , _scmMinConfidence = Nothing
-    , _scmVideo = pVideo_
-    }
+startContentModeration pVideo_
+  = StartContentModeration'{_scmJobTag = Nothing,
+                            _scmNotificationChannel = Nothing,
+                            _scmClientRequestToken = Nothing,
+                            _scmMinConfidence = Nothing, _scmVideo = pVideo_}
 
-
--- | Unique identifier you specify to identify the job in the completion status published to the Amazon Simple Notification Service topic.
+-- | Unique identifier you specify to identify the job in the completion status published to the Amazon Simple Notification Service topic. 
 scmJobTag :: Lens' StartContentModeration (Maybe Text)
 scmJobTag = lens _scmJobTag (\ s a -> s{_scmJobTag = a})
 
@@ -98,7 +95,7 @@ scmJobTag = lens _scmJobTag (\ s a -> s{_scmJobTag = a})
 scmNotificationChannel :: Lens' StartContentModeration (Maybe NotificationChannel)
 scmNotificationChannel = lens _scmNotificationChannel (\ s a -> s{_scmNotificationChannel = a})
 
--- | Idempotent token used to identify the start request. If you use the same token with multiple @StartContentModeration@ requests, the same @JobId@ is returned. Use @ClientRequestToken@ to prevent the same job from being accidently started more than once.
+-- | Idempotent token used to identify the start request. If you use the same token with multiple @StartContentModeration@ requests, the same @JobId@ is returned. Use @ClientRequestToken@ to prevent the same job from being accidently started more than once. 
 scmClientRequestToken :: Lens' StartContentModeration (Maybe Text)
 scmClientRequestToken = lens _scmClientRequestToken (\ s a -> s{_scmClientRequestToken = a})
 
@@ -152,13 +149,14 @@ instance ToQuery StartContentModeration where
         toQuery = const mempty
 
 -- | /See:/ 'startContentModerationResponse' smart constructor.
-data StartContentModerationResponse =
-  StartContentModerationResponse'
-    { _scmrsJobId          :: !(Maybe Text)
-    , _scmrsResponseStatus :: !Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data StartContentModerationResponse = StartContentModerationResponse'{_scmrsJobId
+                                                                      ::
+                                                                      !(Maybe
+                                                                          Text),
+                                                                      _scmrsResponseStatus
+                                                                      :: !Int}
+                                        deriving (Eq, Read, Show, Data,
+                                                  Typeable, Generic)
 
 -- | Creates a value of 'StartContentModerationResponse' with the minimum fields required to make a request.
 --
@@ -170,10 +168,10 @@ data StartContentModerationResponse =
 startContentModerationResponse
     :: Int -- ^ 'scmrsResponseStatus'
     -> StartContentModerationResponse
-startContentModerationResponse pResponseStatus_ =
-  StartContentModerationResponse'
-    {_scmrsJobId = Nothing, _scmrsResponseStatus = pResponseStatus_}
-
+startContentModerationResponse pResponseStatus_
+  = StartContentModerationResponse'{_scmrsJobId =
+                                      Nothing,
+                                    _scmrsResponseStatus = pResponseStatus_}
 
 -- | The identifier for the content moderation analysis job. Use @JobId@ to identify the job in a subsequent call to @GetContentModeration@ .
 scmrsJobId :: Lens' StartContentModerationResponse (Maybe Text)

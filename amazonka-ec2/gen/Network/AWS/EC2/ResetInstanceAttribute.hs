@@ -39,21 +39,19 @@ module Network.AWS.EC2.ResetInstanceAttribute
     ) where
 
 import Network.AWS.EC2.Types
-import Network.AWS.EC2.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 
 -- | /See:/ 'resetInstanceAttribute' smart constructor.
-data ResetInstanceAttribute =
-  ResetInstanceAttribute'
-    { _riaDryRun     :: !(Maybe Bool)
-    , _riaAttribute  :: !InstanceAttributeName
-    , _riaInstanceId :: !Text
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data ResetInstanceAttribute = ResetInstanceAttribute'{_riaDryRun
+                                                      :: !(Maybe Bool),
+                                                      _riaAttribute ::
+                                                      !InstanceAttributeName,
+                                                      _riaInstanceId :: !Text}
+                                deriving (Eq, Read, Show, Data, Typeable,
+                                          Generic)
 
 -- | Creates a value of 'ResetInstanceAttribute' with the minimum fields required to make a request.
 --
@@ -68,13 +66,10 @@ resetInstanceAttribute
     :: InstanceAttributeName -- ^ 'riaAttribute'
     -> Text -- ^ 'riaInstanceId'
     -> ResetInstanceAttribute
-resetInstanceAttribute pAttribute_ pInstanceId_ =
-  ResetInstanceAttribute'
-    { _riaDryRun = Nothing
-    , _riaAttribute = pAttribute_
-    , _riaInstanceId = pInstanceId_
-    }
-
+resetInstanceAttribute pAttribute_ pInstanceId_
+  = ResetInstanceAttribute'{_riaDryRun = Nothing,
+                            _riaAttribute = pAttribute_,
+                            _riaInstanceId = pInstanceId_}
 
 -- | Checks whether you have the required permissions for the action, without actually making the request, and provides an error response. If you have the required permissions, the error response is @DryRunOperation@ . Otherwise, it is @UnauthorizedOperation@ .
 riaDryRun :: Lens' ResetInstanceAttribute (Maybe Bool)
@@ -115,16 +110,15 @@ instance ToQuery ResetInstanceAttribute where
                "InstanceId" =: _riaInstanceId]
 
 -- | /See:/ 'resetInstanceAttributeResponse' smart constructor.
-data ResetInstanceAttributeResponse =
-  ResetInstanceAttributeResponse'
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data ResetInstanceAttributeResponse = ResetInstanceAttributeResponse'
+                                        deriving (Eq, Read, Show, Data,
+                                                  Typeable, Generic)
 
 -- | Creates a value of 'ResetInstanceAttributeResponse' with the minimum fields required to make a request.
 --
 resetInstanceAttributeResponse
     :: ResetInstanceAttributeResponse
-resetInstanceAttributeResponse = ResetInstanceAttributeResponse'
-
+resetInstanceAttributeResponse
+  = ResetInstanceAttributeResponse'
 
 instance NFData ResetInstanceAttributeResponse where

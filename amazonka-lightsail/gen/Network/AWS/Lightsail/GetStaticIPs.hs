@@ -42,19 +42,15 @@ module Network.AWS.Lightsail.GetStaticIPs
 
 import Network.AWS.Lens
 import Network.AWS.Lightsail.Types
-import Network.AWS.Lightsail.Types.Product
 import Network.AWS.Pager
 import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 
 -- | /See:/ 'getStaticIPs' smart constructor.
-newtype GetStaticIPs =
-  GetStaticIPs'
-    { _gsiPageToken :: Maybe Text
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+newtype GetStaticIPs = GetStaticIPs'{_gsiPageToken ::
+                                     Maybe Text}
+                         deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'GetStaticIPs' with the minimum fields required to make a request.
 --
@@ -63,8 +59,7 @@ newtype GetStaticIPs =
 -- * 'gsiPageToken' - A token used for advancing to the next page of results from your get static IPs request.
 getStaticIPs
     :: GetStaticIPs
-getStaticIPs = GetStaticIPs' {_gsiPageToken = Nothing}
-
+getStaticIPs = GetStaticIPs'{_gsiPageToken = Nothing}
 
 -- | A token used for advancing to the next page of results from your get static IPs request.
 gsiPageToken :: Lens' GetStaticIPs (Maybe Text)
@@ -113,14 +108,12 @@ instance ToQuery GetStaticIPs where
         toQuery = const mempty
 
 -- | /See:/ 'getStaticIPsResponse' smart constructor.
-data GetStaticIPsResponse =
-  GetStaticIPsResponse'
-    { _gsiprsNextPageToken  :: !(Maybe Text)
-    , _gsiprsStaticIPs      :: !(Maybe [StaticIP])
-    , _gsiprsResponseStatus :: !Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data GetStaticIPsResponse = GetStaticIPsResponse'{_gsiprsNextPageToken
+                                                  :: !(Maybe Text),
+                                                  _gsiprsStaticIPs ::
+                                                  !(Maybe [StaticIP]),
+                                                  _gsiprsResponseStatus :: !Int}
+                              deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'GetStaticIPsResponse' with the minimum fields required to make a request.
 --
@@ -134,13 +127,11 @@ data GetStaticIPsResponse =
 getStaticIPsResponse
     :: Int -- ^ 'gsiprsResponseStatus'
     -> GetStaticIPsResponse
-getStaticIPsResponse pResponseStatus_ =
-  GetStaticIPsResponse'
-    { _gsiprsNextPageToken = Nothing
-    , _gsiprsStaticIPs = Nothing
-    , _gsiprsResponseStatus = pResponseStatus_
-    }
-
+getStaticIPsResponse pResponseStatus_
+  = GetStaticIPsResponse'{_gsiprsNextPageToken =
+                            Nothing,
+                          _gsiprsStaticIPs = Nothing,
+                          _gsiprsResponseStatus = pResponseStatus_}
 
 -- | A token used for advancing to the next page of results from your get static IPs request.
 gsiprsNextPageToken :: Lens' GetStaticIPsResponse (Maybe Text)

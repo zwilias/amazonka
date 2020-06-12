@@ -45,16 +45,11 @@ import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 import Network.AWS.StorageGateway.Types
-import Network.AWS.StorageGateway.Types.Product
 
 -- | /See:/ 'addCache' smart constructor.
-data AddCache =
-  AddCache'
-    { _acGatewayARN :: !Text
-    , _acDiskIds    :: ![Text]
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data AddCache = AddCache'{_acGatewayARN :: !Text,
+                          _acDiskIds :: ![Text]}
+                  deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'AddCache' with the minimum fields required to make a request.
 --
@@ -66,9 +61,9 @@ data AddCache =
 addCache
     :: Text -- ^ 'acGatewayARN'
     -> AddCache
-addCache pGatewayARN_ =
-  AddCache' {_acGatewayARN = pGatewayARN_, _acDiskIds = mempty}
-
+addCache pGatewayARN_
+  = AddCache'{_acGatewayARN = pGatewayARN_,
+              _acDiskIds = mempty}
 
 -- | Undocumented member.
 acGatewayARN :: Lens' AddCache Text
@@ -114,13 +109,10 @@ instance ToQuery AddCache where
         toQuery = const mempty
 
 -- | /See:/ 'addCacheResponse' smart constructor.
-data AddCacheResponse =
-  AddCacheResponse'
-    { _acrsGatewayARN     :: !(Maybe Text)
-    , _acrsResponseStatus :: !Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data AddCacheResponse = AddCacheResponse'{_acrsGatewayARN
+                                          :: !(Maybe Text),
+                                          _acrsResponseStatus :: !Int}
+                          deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'AddCacheResponse' with the minimum fields required to make a request.
 --
@@ -132,10 +124,9 @@ data AddCacheResponse =
 addCacheResponse
     :: Int -- ^ 'acrsResponseStatus'
     -> AddCacheResponse
-addCacheResponse pResponseStatus_ =
-  AddCacheResponse'
-    {_acrsGatewayARN = Nothing, _acrsResponseStatus = pResponseStatus_}
-
+addCacheResponse pResponseStatus_
+  = AddCacheResponse'{_acrsGatewayARN = Nothing,
+                      _acrsResponseStatus = pResponseStatus_}
 
 -- | Undocumented member.
 acrsGatewayARN :: Lens' AddCacheResponse (Maybe Text)

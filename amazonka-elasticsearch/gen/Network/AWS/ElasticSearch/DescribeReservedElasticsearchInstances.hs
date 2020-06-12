@@ -41,25 +41,30 @@ module Network.AWS.ElasticSearch.DescribeReservedElasticsearchInstances
     ) where
 
 import Network.AWS.ElasticSearch.Types
-import Network.AWS.ElasticSearch.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 
--- | Container for parameters to @DescribeReservedElasticsearchInstances@
+-- | Container for parameters to @DescribeReservedElasticsearchInstances@ 
 --
 --
 --
 -- /See:/ 'describeReservedElasticsearchInstances' smart constructor.
-data DescribeReservedElasticsearchInstances =
-  DescribeReservedElasticsearchInstances'
-    { _dreiReservedElasticsearchInstanceId :: !(Maybe Text)
-    , _dreiNextToken                       :: !(Maybe Text)
-    , _dreiMaxResults                      :: !(Maybe Int)
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data DescribeReservedElasticsearchInstances = DescribeReservedElasticsearchInstances'{_dreiReservedElasticsearchInstanceId
+                                                                                      ::
+                                                                                      !(Maybe
+                                                                                          Text),
+                                                                                      _dreiNextToken
+                                                                                      ::
+                                                                                      !(Maybe
+                                                                                          Text),
+                                                                                      _dreiMaxResults
+                                                                                      ::
+                                                                                      !(Maybe
+                                                                                          Int)}
+                                                deriving (Eq, Read, Show, Data,
+                                                          Typeable, Generic)
 
 -- | Creates a value of 'DescribeReservedElasticsearchInstances' with the minimum fields required to make a request.
 --
@@ -72,13 +77,11 @@ data DescribeReservedElasticsearchInstances =
 -- * 'dreiMaxResults' - Set this value to limit the number of results returned. If not specified, defaults to 100.
 describeReservedElasticsearchInstances
     :: DescribeReservedElasticsearchInstances
-describeReservedElasticsearchInstances =
-  DescribeReservedElasticsearchInstances'
-    { _dreiReservedElasticsearchInstanceId = Nothing
-    , _dreiNextToken = Nothing
-    , _dreiMaxResults = Nothing
-    }
-
+describeReservedElasticsearchInstances
+  = DescribeReservedElasticsearchInstances'{_dreiReservedElasticsearchInstanceId
+                                              = Nothing,
+                                            _dreiNextToken = Nothing,
+                                            _dreiMaxResults = Nothing}
 
 -- | The reserved instance identifier filter value. Use this parameter to show only the reservation that matches the specified reserved Elasticsearch instance ID.
 dreiReservedElasticsearchInstanceId :: Lens' DescribeReservedElasticsearchInstances (Maybe Text)
@@ -134,19 +137,26 @@ instance ToQuery
                "nextToken" =: _dreiNextToken,
                "maxResults" =: _dreiMaxResults]
 
--- | Container for results from @DescribeReservedElasticsearchInstances@
+-- | Container for results from @DescribeReservedElasticsearchInstances@ 
 --
 --
 --
 -- /See:/ 'describeReservedElasticsearchInstancesResponse' smart constructor.
-data DescribeReservedElasticsearchInstancesResponse =
-  DescribeReservedElasticsearchInstancesResponse'
-    { _dreirsReservedElasticsearchInstances :: !(Maybe [ReservedElasticsearchInstance])
-    , _dreirsNextToken :: !(Maybe Text)
-    , _dreirsResponseStatus :: !Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data DescribeReservedElasticsearchInstancesResponse = DescribeReservedElasticsearchInstancesResponse'{_dreirsReservedElasticsearchInstances
+                                                                                                      ::
+                                                                                                      !(Maybe
+                                                                                                          [ReservedElasticsearchInstance]),
+                                                                                                      _dreirsNextToken
+                                                                                                      ::
+                                                                                                      !(Maybe
+                                                                                                          Text),
+                                                                                                      _dreirsResponseStatus
+                                                                                                      ::
+                                                                                                      !Int}
+                                                        deriving (Eq, Read,
+                                                                  Show, Data,
+                                                                  Typeable,
+                                                                  Generic)
 
 -- | Creates a value of 'DescribeReservedElasticsearchInstancesResponse' with the minimum fields required to make a request.
 --
@@ -160,13 +170,13 @@ data DescribeReservedElasticsearchInstancesResponse =
 describeReservedElasticsearchInstancesResponse
     :: Int -- ^ 'dreirsResponseStatus'
     -> DescribeReservedElasticsearchInstancesResponse
-describeReservedElasticsearchInstancesResponse pResponseStatus_ =
-  DescribeReservedElasticsearchInstancesResponse'
-    { _dreirsReservedElasticsearchInstances = Nothing
-    , _dreirsNextToken = Nothing
-    , _dreirsResponseStatus = pResponseStatus_
-    }
-
+describeReservedElasticsearchInstancesResponse
+  pResponseStatus_
+  = DescribeReservedElasticsearchInstancesResponse'{_dreirsReservedElasticsearchInstances
+                                                      = Nothing,
+                                                    _dreirsNextToken = Nothing,
+                                                    _dreirsResponseStatus =
+                                                      pResponseStatus_}
 
 -- | List of reserved Elasticsearch instances.
 dreirsReservedElasticsearchInstances :: Lens' DescribeReservedElasticsearchInstancesResponse [ReservedElasticsearchInstance]

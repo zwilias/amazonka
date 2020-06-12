@@ -51,7 +51,6 @@ module Network.AWS.AppStream.DescribeUserStackAssociations
     ) where
 
 import Network.AWS.AppStream.Types
-import Network.AWS.AppStream.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Pager
 import Network.AWS.Prelude
@@ -59,16 +58,29 @@ import Network.AWS.Request
 import Network.AWS.Response
 
 -- | /See:/ 'describeUserStackAssociations' smart constructor.
-data DescribeUserStackAssociations =
-  DescribeUserStackAssociations'
-    { _dusaUserName           :: !(Maybe (Sensitive Text))
-    , _dusaNextToken          :: !(Maybe Text)
-    , _dusaAuthenticationType :: !(Maybe AuthenticationType)
-    , _dusaMaxResults         :: !(Maybe Nat)
-    , _dusaStackName          :: !(Maybe Text)
-    }
-  deriving (Eq, Show, Data, Typeable, Generic)
-
+data DescribeUserStackAssociations = DescribeUserStackAssociations'{_dusaUserName
+                                                                    ::
+                                                                    !(Maybe
+                                                                        (Sensitive
+                                                                           Text)),
+                                                                    _dusaNextToken
+                                                                    ::
+                                                                    !(Maybe
+                                                                        Text),
+                                                                    _dusaAuthenticationType
+                                                                    ::
+                                                                    !(Maybe
+                                                                        AuthenticationType),
+                                                                    _dusaMaxResults
+                                                                    ::
+                                                                    !(Maybe
+                                                                        Nat),
+                                                                    _dusaStackName
+                                                                    ::
+                                                                    !(Maybe
+                                                                        Text)}
+                                       deriving (Eq, Show, Data, Typeable,
+                                                 Generic)
 
 -- | Creates a value of 'DescribeUserStackAssociations' with the minimum fields required to make a request.
 --
@@ -85,15 +97,13 @@ data DescribeUserStackAssociations =
 -- * 'dusaStackName' - The name of the stack that is associated with the user.
 describeUserStackAssociations
     :: DescribeUserStackAssociations
-describeUserStackAssociations =
-  DescribeUserStackAssociations'
-    { _dusaUserName = Nothing
-    , _dusaNextToken = Nothing
-    , _dusaAuthenticationType = Nothing
-    , _dusaMaxResults = Nothing
-    , _dusaStackName = Nothing
-    }
-
+describeUserStackAssociations
+  = DescribeUserStackAssociations'{_dusaUserName =
+                                     Nothing,
+                                   _dusaNextToken = Nothing,
+                                   _dusaAuthenticationType = Nothing,
+                                   _dusaMaxResults = Nothing,
+                                   _dusaStackName = Nothing}
 
 -- | The email address of the user who is associated with the stack.
 dusaUserName :: Lens' DescribeUserStackAssociations (Maybe Text)
@@ -168,14 +178,20 @@ instance ToQuery DescribeUserStackAssociations where
         toQuery = const mempty
 
 -- | /See:/ 'describeUserStackAssociationsResponse' smart constructor.
-data DescribeUserStackAssociationsResponse =
-  DescribeUserStackAssociationsResponse'
-    { _dusarsUserStackAssociations :: !(Maybe (List1 UserStackAssociation))
-    , _dusarsNextToken             :: !(Maybe Text)
-    , _dusarsResponseStatus        :: !Int
-    }
-  deriving (Eq, Show, Data, Typeable, Generic)
-
+data DescribeUserStackAssociationsResponse = DescribeUserStackAssociationsResponse'{_dusarsUserStackAssociations
+                                                                                    ::
+                                                                                    !(Maybe
+                                                                                        (List1
+                                                                                           UserStackAssociation)),
+                                                                                    _dusarsNextToken
+                                                                                    ::
+                                                                                    !(Maybe
+                                                                                        Text),
+                                                                                    _dusarsResponseStatus
+                                                                                    ::
+                                                                                    !Int}
+                                               deriving (Eq, Show, Data,
+                                                         Typeable, Generic)
 
 -- | Creates a value of 'DescribeUserStackAssociationsResponse' with the minimum fields required to make a request.
 --
@@ -189,13 +205,13 @@ data DescribeUserStackAssociationsResponse =
 describeUserStackAssociationsResponse
     :: Int -- ^ 'dusarsResponseStatus'
     -> DescribeUserStackAssociationsResponse
-describeUserStackAssociationsResponse pResponseStatus_ =
-  DescribeUserStackAssociationsResponse'
-    { _dusarsUserStackAssociations = Nothing
-    , _dusarsNextToken = Nothing
-    , _dusarsResponseStatus = pResponseStatus_
-    }
-
+describeUserStackAssociationsResponse
+  pResponseStatus_
+  = DescribeUserStackAssociationsResponse'{_dusarsUserStackAssociations
+                                             = Nothing,
+                                           _dusarsNextToken = Nothing,
+                                           _dusarsResponseStatus =
+                                             pResponseStatus_}
 
 -- | The UserStackAssociation objects.
 dusarsUserStackAssociations :: Lens' DescribeUserStackAssociationsResponse (Maybe (NonEmpty UserStackAssociation))

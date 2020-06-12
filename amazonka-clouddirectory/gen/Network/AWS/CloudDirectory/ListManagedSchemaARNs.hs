@@ -43,7 +43,6 @@ module Network.AWS.CloudDirectory.ListManagedSchemaARNs
     ) where
 
 import Network.AWS.CloudDirectory.Types
-import Network.AWS.CloudDirectory.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Pager
 import Network.AWS.Prelude
@@ -51,14 +50,14 @@ import Network.AWS.Request
 import Network.AWS.Response
 
 -- | /See:/ 'listManagedSchemaARNs' smart constructor.
-data ListManagedSchemaARNs =
-  ListManagedSchemaARNs'
-    { _lmsaNextToken  :: !(Maybe Text)
-    , _lmsaSchemaARN  :: !(Maybe Text)
-    , _lmsaMaxResults :: !(Maybe Nat)
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data ListManagedSchemaARNs = ListManagedSchemaARNs'{_lmsaNextToken
+                                                    :: !(Maybe Text),
+                                                    _lmsaSchemaARN ::
+                                                    !(Maybe Text),
+                                                    _lmsaMaxResults ::
+                                                    !(Maybe Nat)}
+                               deriving (Eq, Read, Show, Data, Typeable,
+                                         Generic)
 
 -- | Creates a value of 'ListManagedSchemaARNs' with the minimum fields required to make a request.
 --
@@ -71,13 +70,9 @@ data ListManagedSchemaARNs =
 -- * 'lmsaMaxResults' - The maximum number of results to retrieve.
 listManagedSchemaARNs
     :: ListManagedSchemaARNs
-listManagedSchemaARNs =
-  ListManagedSchemaARNs'
-    { _lmsaNextToken = Nothing
-    , _lmsaSchemaARN = Nothing
-    , _lmsaMaxResults = Nothing
-    }
-
+listManagedSchemaARNs
+  = ListManagedSchemaARNs'{_lmsaNextToken = Nothing,
+                           _lmsaSchemaARN = Nothing, _lmsaMaxResults = Nothing}
 
 -- | The pagination token.
 lmsaNextToken :: Lens' ListManagedSchemaARNs (Maybe Text)
@@ -134,14 +129,18 @@ instance ToQuery ListManagedSchemaARNs where
         toQuery = const mempty
 
 -- | /See:/ 'listManagedSchemaARNsResponse' smart constructor.
-data ListManagedSchemaARNsResponse =
-  ListManagedSchemaARNsResponse'
-    { _lmsarsSchemaARNs     :: !(Maybe [Text])
-    , _lmsarsNextToken      :: !(Maybe Text)
-    , _lmsarsResponseStatus :: !Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data ListManagedSchemaARNsResponse = ListManagedSchemaARNsResponse'{_lmsarsSchemaARNs
+                                                                    ::
+                                                                    !(Maybe
+                                                                        [Text]),
+                                                                    _lmsarsNextToken
+                                                                    ::
+                                                                    !(Maybe
+                                                                        Text),
+                                                                    _lmsarsResponseStatus
+                                                                    :: !Int}
+                                       deriving (Eq, Read, Show, Data, Typeable,
+                                                 Generic)
 
 -- | Creates a value of 'ListManagedSchemaARNsResponse' with the minimum fields required to make a request.
 --
@@ -155,13 +154,11 @@ data ListManagedSchemaARNsResponse =
 listManagedSchemaARNsResponse
     :: Int -- ^ 'lmsarsResponseStatus'
     -> ListManagedSchemaARNsResponse
-listManagedSchemaARNsResponse pResponseStatus_ =
-  ListManagedSchemaARNsResponse'
-    { _lmsarsSchemaARNs = Nothing
-    , _lmsarsNextToken = Nothing
-    , _lmsarsResponseStatus = pResponseStatus_
-    }
-
+listManagedSchemaARNsResponse pResponseStatus_
+  = ListManagedSchemaARNsResponse'{_lmsarsSchemaARNs =
+                                     Nothing,
+                                   _lmsarsNextToken = Nothing,
+                                   _lmsarsResponseStatus = pResponseStatus_}
 
 -- | The ARNs for all AWS managed schemas.
 lmsarsSchemaARNs :: Lens' ListManagedSchemaARNsResponse [Text]

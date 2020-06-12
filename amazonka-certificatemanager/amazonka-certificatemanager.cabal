@@ -61,8 +61,30 @@ library
         , Network.AWS.CertificateManager.Waiters
 
     other-modules:
-          Network.AWS.CertificateManager.Types.Product
-        , Network.AWS.CertificateManager.Types.Sum
+          Network.AWS.CertificateManager.Types.CertificateDetail
+        , Network.AWS.CertificateManager.Types.CertificateOptions
+        , Network.AWS.CertificateManager.Types.CertificateStatus
+        , Network.AWS.CertificateManager.Types.CertificateSummary
+        , Network.AWS.CertificateManager.Types.CertificateTransparencyLoggingPreference
+        , Network.AWS.CertificateManager.Types.CertificateType
+        , Network.AWS.CertificateManager.Types.DomainStatus
+        , Network.AWS.CertificateManager.Types.DomainValidation
+        , Network.AWS.CertificateManager.Types.DomainValidationOption
+        , Network.AWS.CertificateManager.Types.ExtendedKeyUsage
+        , Network.AWS.CertificateManager.Types.ExtendedKeyUsageName
+        , Network.AWS.CertificateManager.Types.FailureReason
+        , Network.AWS.CertificateManager.Types.Filters
+        , Network.AWS.CertificateManager.Types.KeyAlgorithm
+        , Network.AWS.CertificateManager.Types.KeyUsage
+        , Network.AWS.CertificateManager.Types.KeyUsageName
+        , Network.AWS.CertificateManager.Types.RecordType
+        , Network.AWS.CertificateManager.Types.RenewalEligibility
+        , Network.AWS.CertificateManager.Types.RenewalStatus
+        , Network.AWS.CertificateManager.Types.RenewalSummary
+        , Network.AWS.CertificateManager.Types.ResourceRecord
+        , Network.AWS.CertificateManager.Types.RevocationReason
+        , Network.AWS.CertificateManager.Types.Tag
+        , Network.AWS.CertificateManager.Types.ValidationMethod
 
     build-depends:
           amazonka-core == 1.6.1.*

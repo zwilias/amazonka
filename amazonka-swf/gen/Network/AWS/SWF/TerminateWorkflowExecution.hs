@@ -23,7 +23,7 @@
 --
 -- /Important:/ If the identified workflow execution was in progress, it is terminated immediately.
 --
--- __Access Control__
+-- __Access Control__ 
 --
 -- You can use IAM policies to control this action's access to Amazon SWF resources as follows:
 --
@@ -60,20 +60,23 @@ import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 import Network.AWS.SWF.Types
-import Network.AWS.SWF.Types.Product
 
 -- | /See:/ 'terminateWorkflowExecution' smart constructor.
-data TerminateWorkflowExecution =
-  TerminateWorkflowExecution'
-    { _tweReason      :: !(Maybe Text)
-    , _tweRunId       :: !(Maybe Text)
-    , _tweChildPolicy :: !(Maybe ChildPolicy)
-    , _tweDetails     :: !(Maybe Text)
-    , _tweDomain      :: !Text
-    , _tweWorkflowId  :: !Text
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data TerminateWorkflowExecution = TerminateWorkflowExecution'{_tweReason
+                                                              :: !(Maybe Text),
+                                                              _tweRunId ::
+                                                              !(Maybe Text),
+                                                              _tweChildPolicy ::
+                                                              !(Maybe
+                                                                  ChildPolicy),
+                                                              _tweDetails ::
+                                                              !(Maybe Text),
+                                                              _tweDomain ::
+                                                              !Text,
+                                                              _tweWorkflowId ::
+                                                              !Text}
+                                    deriving (Eq, Read, Show, Data, Typeable,
+                                              Generic)
 
 -- | Creates a value of 'TerminateWorkflowExecution' with the minimum fields required to make a request.
 --
@@ -94,16 +97,11 @@ terminateWorkflowExecution
     :: Text -- ^ 'tweDomain'
     -> Text -- ^ 'tweWorkflowId'
     -> TerminateWorkflowExecution
-terminateWorkflowExecution pDomain_ pWorkflowId_ =
-  TerminateWorkflowExecution'
-    { _tweReason = Nothing
-    , _tweRunId = Nothing
-    , _tweChildPolicy = Nothing
-    , _tweDetails = Nothing
-    , _tweDomain = pDomain_
-    , _tweWorkflowId = pWorkflowId_
-    }
-
+terminateWorkflowExecution pDomain_ pWorkflowId_
+  = TerminateWorkflowExecution'{_tweReason = Nothing,
+                                _tweRunId = Nothing, _tweChildPolicy = Nothing,
+                                _tweDetails = Nothing, _tweDomain = pDomain_,
+                                _tweWorkflowId = pWorkflowId_}
 
 -- | A descriptive reason for terminating the workflow execution.
 tweReason :: Lens' TerminateWorkflowExecution (Maybe Text)
@@ -168,17 +166,16 @@ instance ToQuery TerminateWorkflowExecution where
         toQuery = const mempty
 
 -- | /See:/ 'terminateWorkflowExecutionResponse' smart constructor.
-data TerminateWorkflowExecutionResponse =
-  TerminateWorkflowExecutionResponse'
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data TerminateWorkflowExecutionResponse = TerminateWorkflowExecutionResponse'
+                                            deriving (Eq, Read, Show, Data,
+                                                      Typeable, Generic)
 
 -- | Creates a value of 'TerminateWorkflowExecutionResponse' with the minimum fields required to make a request.
 --
 terminateWorkflowExecutionResponse
     :: TerminateWorkflowExecutionResponse
-terminateWorkflowExecutionResponse = TerminateWorkflowExecutionResponse'
-
+terminateWorkflowExecutionResponse
+  = TerminateWorkflowExecutionResponse'
 
 instance NFData TerminateWorkflowExecutionResponse
          where

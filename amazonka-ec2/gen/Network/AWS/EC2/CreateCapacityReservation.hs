@@ -57,32 +57,49 @@ module Network.AWS.EC2.CreateCapacityReservation
     ) where
 
 import Network.AWS.EC2.Types
-import Network.AWS.EC2.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 
 -- | /See:/ 'createCapacityReservation' smart constructor.
-data CreateCapacityReservation =
-  CreateCapacityReservation'
-    { _ccrClientToken           :: !(Maybe Text)
-    , _ccrAvailabilityZoneId    :: !(Maybe Text)
-    , _ccrEndDate               :: !(Maybe ISO8601)
-    , _ccrEphemeralStorage      :: !(Maybe Bool)
-    , _ccrInstanceMatchCriteria :: !(Maybe InstanceMatchCriteria)
-    , _ccrEBSOptimized          :: !(Maybe Bool)
-    , _ccrTagSpecifications     :: !(Maybe [TagSpecification])
-    , _ccrAvailabilityZone      :: !(Maybe Text)
-    , _ccrTenancy               :: !(Maybe CapacityReservationTenancy)
-    , _ccrEndDateType           :: !(Maybe EndDateType)
-    , _ccrDryRun                :: !(Maybe Bool)
-    , _ccrInstanceType          :: !Text
-    , _ccrInstancePlatform      :: !CapacityReservationInstancePlatform
-    , _ccrInstanceCount         :: !Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data CreateCapacityReservation = CreateCapacityReservation'{_ccrClientToken
+                                                            :: !(Maybe Text),
+                                                            _ccrAvailabilityZoneId
+                                                            :: !(Maybe Text),
+                                                            _ccrEndDate ::
+                                                            !(Maybe ISO8601),
+                                                            _ccrEphemeralStorage
+                                                            :: !(Maybe Bool),
+                                                            _ccrInstanceMatchCriteria
+                                                            ::
+                                                            !(Maybe
+                                                                InstanceMatchCriteria),
+                                                            _ccrEBSOptimized ::
+                                                            !(Maybe Bool),
+                                                            _ccrTagSpecifications
+                                                            ::
+                                                            !(Maybe
+                                                                [TagSpecification]),
+                                                            _ccrAvailabilityZone
+                                                            :: !(Maybe Text),
+                                                            _ccrTenancy ::
+                                                            !(Maybe
+                                                                CapacityReservationTenancy),
+                                                            _ccrEndDateType ::
+                                                            !(Maybe
+                                                                EndDateType),
+                                                            _ccrDryRun ::
+                                                            !(Maybe Bool),
+                                                            _ccrInstanceType ::
+                                                            !Text,
+                                                            _ccrInstancePlatform
+                                                            ::
+                                                            !CapacityReservationInstancePlatform,
+                                                            _ccrInstanceCount ::
+                                                            !Int}
+                                   deriving (Eq, Read, Show, Data, Typeable,
+                                             Generic)
 
 -- | Creates a value of 'CreateCapacityReservation' with the minimum fields required to make a request.
 --
@@ -96,7 +113,7 @@ data CreateCapacityReservation =
 --
 -- * 'ccrEphemeralStorage' - Indicates whether the Capacity Reservation supports instances with temporary, block-level storage.
 --
--- * 'ccrInstanceMatchCriteria' - Indicates the type of instance launches that the Capacity Reservation accepts. The options include:     * @open@ - The Capacity Reservation automatically matches all instances that have matching attributes (instance type, platform, and Availability Zone). Instances that have matching attributes run in the Capacity Reservation automatically without specifying any additional parameters.     * @targeted@ - The Capacity Reservation only accepts instances that have matching attributes (instance type, platform, and Availability Zone), and explicitly target the Capacity Reservation. This ensures that only permitted instances can use the reserved capacity.  Default: @open@
+-- * 'ccrInstanceMatchCriteria' - Indicates the type of instance launches that the Capacity Reservation accepts. The options include:     * @open@ - The Capacity Reservation automatically matches all instances that have matching attributes (instance type, platform, and Availability Zone). Instances that have matching attributes run in the Capacity Reservation automatically without specifying any additional parameters.     * @targeted@ - The Capacity Reservation only accepts instances that have matching attributes (instance type, platform, and Availability Zone), and explicitly target the Capacity Reservation. This ensures that only permitted instances can use the reserved capacity.  Default: @open@ 
 --
 -- * 'ccrEBSOptimized' - Indicates whether the Capacity Reservation supports EBS-optimized instances. This optimization provides dedicated throughput to Amazon EBS and an optimized configuration stack to provide optimal I/O performance. This optimization isn't available with all instance types. Additional usage charges apply when using an EBS- optimized instance.
 --
@@ -120,24 +137,22 @@ createCapacityReservation
     -> CapacityReservationInstancePlatform -- ^ 'ccrInstancePlatform'
     -> Int -- ^ 'ccrInstanceCount'
     -> CreateCapacityReservation
-createCapacityReservation pInstanceType_ pInstancePlatform_ pInstanceCount_ =
-  CreateCapacityReservation'
-    { _ccrClientToken = Nothing
-    , _ccrAvailabilityZoneId = Nothing
-    , _ccrEndDate = Nothing
-    , _ccrEphemeralStorage = Nothing
-    , _ccrInstanceMatchCriteria = Nothing
-    , _ccrEBSOptimized = Nothing
-    , _ccrTagSpecifications = Nothing
-    , _ccrAvailabilityZone = Nothing
-    , _ccrTenancy = Nothing
-    , _ccrEndDateType = Nothing
-    , _ccrDryRun = Nothing
-    , _ccrInstanceType = pInstanceType_
-    , _ccrInstancePlatform = pInstancePlatform_
-    , _ccrInstanceCount = pInstanceCount_
-    }
-
+createCapacityReservation pInstanceType_
+  pInstancePlatform_ pInstanceCount_
+  = CreateCapacityReservation'{_ccrClientToken =
+                                 Nothing,
+                               _ccrAvailabilityZoneId = Nothing,
+                               _ccrEndDate = Nothing,
+                               _ccrEphemeralStorage = Nothing,
+                               _ccrInstanceMatchCriteria = Nothing,
+                               _ccrEBSOptimized = Nothing,
+                               _ccrTagSpecifications = Nothing,
+                               _ccrAvailabilityZone = Nothing,
+                               _ccrTenancy = Nothing, _ccrEndDateType = Nothing,
+                               _ccrDryRun = Nothing,
+                               _ccrInstanceType = pInstanceType_,
+                               _ccrInstancePlatform = pInstancePlatform_,
+                               _ccrInstanceCount = pInstanceCount_}
 
 -- | Unique, case-sensitive identifier that you provide to ensure the idempotency of the request. For more information, see <https://docs.aws.amazon.com/AWSEC2/latest/APIReference/Run_Instance_Idempotency.html How to Ensure Idempotency> . Constraint: Maximum 64 ASCII characters.
 ccrClientToken :: Lens' CreateCapacityReservation (Maybe Text)
@@ -155,7 +170,7 @@ ccrEndDate = lens _ccrEndDate (\ s a -> s{_ccrEndDate = a}) . mapping _Time
 ccrEphemeralStorage :: Lens' CreateCapacityReservation (Maybe Bool)
 ccrEphemeralStorage = lens _ccrEphemeralStorage (\ s a -> s{_ccrEphemeralStorage = a})
 
--- | Indicates the type of instance launches that the Capacity Reservation accepts. The options include:     * @open@ - The Capacity Reservation automatically matches all instances that have matching attributes (instance type, platform, and Availability Zone). Instances that have matching attributes run in the Capacity Reservation automatically without specifying any additional parameters.     * @targeted@ - The Capacity Reservation only accepts instances that have matching attributes (instance type, platform, and Availability Zone), and explicitly target the Capacity Reservation. This ensures that only permitted instances can use the reserved capacity.  Default: @open@
+-- | Indicates the type of instance launches that the Capacity Reservation accepts. The options include:     * @open@ - The Capacity Reservation automatically matches all instances that have matching attributes (instance type, platform, and Availability Zone). Instances that have matching attributes run in the Capacity Reservation automatically without specifying any additional parameters.     * @targeted@ - The Capacity Reservation only accepts instances that have matching attributes (instance type, platform, and Availability Zone), and explicitly target the Capacity Reservation. This ensures that only permitted instances can use the reserved capacity.  Default: @open@ 
 ccrInstanceMatchCriteria :: Lens' CreateCapacityReservation (Maybe InstanceMatchCriteria)
 ccrInstanceMatchCriteria = lens _ccrInstanceMatchCriteria (\ s a -> s{_ccrInstanceMatchCriteria = a})
 
@@ -240,13 +255,15 @@ instance ToQuery CreateCapacityReservation where
                "InstanceCount" =: _ccrInstanceCount]
 
 -- | /See:/ 'createCapacityReservationResponse' smart constructor.
-data CreateCapacityReservationResponse =
-  CreateCapacityReservationResponse'
-    { _ccrrsCapacityReservation :: !(Maybe CapacityReservation)
-    , _ccrrsResponseStatus      :: !Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data CreateCapacityReservationResponse = CreateCapacityReservationResponse'{_ccrrsCapacityReservation
+                                                                            ::
+                                                                            !(Maybe
+                                                                                CapacityReservation),
+                                                                            _ccrrsResponseStatus
+                                                                            ::
+                                                                            !Int}
+                                           deriving (Eq, Read, Show, Data,
+                                                     Typeable, Generic)
 
 -- | Creates a value of 'CreateCapacityReservationResponse' with the minimum fields required to make a request.
 --
@@ -258,12 +275,10 @@ data CreateCapacityReservationResponse =
 createCapacityReservationResponse
     :: Int -- ^ 'ccrrsResponseStatus'
     -> CreateCapacityReservationResponse
-createCapacityReservationResponse pResponseStatus_ =
-  CreateCapacityReservationResponse'
-    { _ccrrsCapacityReservation = Nothing
-    , _ccrrsResponseStatus = pResponseStatus_
-    }
-
+createCapacityReservationResponse pResponseStatus_
+  = CreateCapacityReservationResponse'{_ccrrsCapacityReservation
+                                         = Nothing,
+                                       _ccrrsResponseStatus = pResponseStatus_}
 
 -- | Information about the Capacity Reservation.
 ccrrsCapacityReservation :: Lens' CreateCapacityReservationResponse (Maybe CapacityReservation)

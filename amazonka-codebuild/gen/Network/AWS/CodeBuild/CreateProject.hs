@@ -56,61 +56,60 @@ module Network.AWS.CodeBuild.CreateProject
     ) where
 
 import Network.AWS.CodeBuild.Types
-import Network.AWS.CodeBuild.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 
 -- | /See:/ 'createProject' smart constructor.
-data CreateProject =
-  CreateProject'
-    { _cpSecondaryArtifacts      :: !(Maybe [ProjectArtifacts])
-    , _cpBadgeEnabled            :: !(Maybe Bool)
-    , _cpSecondarySourceVersions :: !(Maybe [ProjectSourceVersion])
-    , _cpQueuedTimeoutInMinutes  :: !(Maybe Nat)
-    , _cpCache                   :: !(Maybe ProjectCache)
-    , _cpSecondarySources        :: !(Maybe [ProjectSource])
-    , _cpSourceVersion           :: !(Maybe Text)
-    , _cpVpcConfig               :: !(Maybe VPCConfig)
-    , _cpLogsConfig              :: !(Maybe LogsConfig)
-    , _cpFileSystemLocations     :: !(Maybe [ProjectFileSystemLocation])
-    , _cpEncryptionKey           :: !(Maybe Text)
-    , _cpDescription             :: !(Maybe Text)
-    , _cpTags                    :: !(Maybe [Tag])
-    , _cpTimeoutInMinutes        :: !(Maybe Nat)
-    , _cpName                    :: !Text
-    , _cpSource                  :: !ProjectSource
-    , _cpArtifacts               :: !ProjectArtifacts
-    , _cpEnvironment             :: !ProjectEnvironment
-    , _cpServiceRole             :: !Text
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data CreateProject = CreateProject'{_cpSecondaryArtifacts
+                                    :: !(Maybe [ProjectArtifacts]),
+                                    _cpBadgeEnabled :: !(Maybe Bool),
+                                    _cpSecondarySourceVersions ::
+                                    !(Maybe [ProjectSourceVersion]),
+                                    _cpQueuedTimeoutInMinutes :: !(Maybe Nat),
+                                    _cpCache :: !(Maybe ProjectCache),
+                                    _cpSecondarySources ::
+                                    !(Maybe [ProjectSource]),
+                                    _cpSourceVersion :: !(Maybe Text),
+                                    _cpVpcConfig :: !(Maybe VPCConfig),
+                                    _cpLogsConfig :: !(Maybe LogsConfig),
+                                    _cpFileSystemLocations ::
+                                    !(Maybe [ProjectFileSystemLocation]),
+                                    _cpEncryptionKey :: !(Maybe Text),
+                                    _cpDescription :: !(Maybe Text),
+                                    _cpTags :: !(Maybe [Tag]),
+                                    _cpTimeoutInMinutes :: !(Maybe Nat),
+                                    _cpName :: !Text,
+                                    _cpSource :: !ProjectSource,
+                                    _cpArtifacts :: !ProjectArtifacts,
+                                    _cpEnvironment :: !ProjectEnvironment,
+                                    _cpServiceRole :: !Text}
+                       deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'CreateProject' with the minimum fields required to make a request.
 --
 -- Use one of the following lenses to modify other fields as desired:
 --
--- * 'cpSecondaryArtifacts' - An array of @ProjectArtifacts@ objects.
+-- * 'cpSecondaryArtifacts' - An array of @ProjectArtifacts@ objects. 
 --
 -- * 'cpBadgeEnabled' - Set this to true to generate a publicly accessible URL for your project's build badge.
 --
--- * 'cpSecondarySourceVersions' - An array of @ProjectSourceVersion@ objects. If @secondarySourceVersions@ is specified at the build level, then they take precedence over these @secondarySourceVersions@ (at the project level).
+-- * 'cpSecondarySourceVersions' - An array of @ProjectSourceVersion@ objects. If @secondarySourceVersions@ is specified at the build level, then they take precedence over these @secondarySourceVersions@ (at the project level). 
 --
--- * 'cpQueuedTimeoutInMinutes' - The number of minutes a build is allowed to be queued before it times out.
+-- * 'cpQueuedTimeoutInMinutes' - The number of minutes a build is allowed to be queued before it times out. 
 --
 -- * 'cpCache' - Stores recently used information so that it can be quickly accessed at a later time.
 --
--- * 'cpSecondarySources' - An array of @ProjectSource@ objects.
+-- * 'cpSecondarySources' - An array of @ProjectSource@ objects. 
 --
--- * 'cpSourceVersion' - A version of the build input to be built for this project. If not specified, the latest version is used. If specified, it must be one of:      * For AWS CodeCommit: the commit ID, branch, or Git tag to use.     * For GitHub: the commit ID, pull request ID, branch name, or tag name that corresponds to the version of the source code you want to build. If a pull request ID is specified, it must use the format @pr/pull-request-ID@ (for example @pr/25@ ). If a branch name is specified, the branch's HEAD commit ID is used. If not specified, the default branch's HEAD commit ID is used.     * For Bitbucket: the commit ID, branch name, or tag name that corresponds to the version of the source code you want to build. If a branch name is specified, the branch's HEAD commit ID is used. If not specified, the default branch's HEAD commit ID is used.     * For Amazon Simple Storage Service (Amazon S3): the version ID of the object that represents the build input ZIP file to use. If @sourceVersion@ is specified at the build level, then that version takes precedence over this @sourceVersion@ (at the project level).  For more information, see <https://docs.aws.amazon.com/codebuild/latest/userguide/sample-source-version.html Source Version Sample with CodeBuild> in the /AWS CodeBuild User Guide/ .
+-- * 'cpSourceVersion' - A version of the build input to be built for this project. If not specified, the latest version is used. If specified, it must be one of:      * For AWS CodeCommit: the commit ID, branch, or Git tag to use.     * For GitHub: the commit ID, pull request ID, branch name, or tag name that corresponds to the version of the source code you want to build. If a pull request ID is specified, it must use the format @pr/pull-request-ID@ (for example @pr/25@ ). If a branch name is specified, the branch's HEAD commit ID is used. If not specified, the default branch's HEAD commit ID is used.     * For Bitbucket: the commit ID, branch name, or tag name that corresponds to the version of the source code you want to build. If a branch name is specified, the branch's HEAD commit ID is used. If not specified, the default branch's HEAD commit ID is used.     * For Amazon Simple Storage Service (Amazon S3): the version ID of the object that represents the build input ZIP file to use. If @sourceVersion@ is specified at the build level, then that version takes precedence over this @sourceVersion@ (at the project level).  For more information, see <https://docs.aws.amazon.com/codebuild/latest/userguide/sample-source-version.html Source Version Sample with CodeBuild> in the /AWS CodeBuild User Guide/ . 
 --
 -- * 'cpVpcConfig' - VpcConfig enables AWS CodeBuild to access resources in an Amazon VPC.
 --
--- * 'cpLogsConfig' - Information about logs for the build project. These can be logs in Amazon CloudWatch Logs, logs uploaded to a specified S3 bucket, or both.
+-- * 'cpLogsConfig' - Information about logs for the build project. These can be logs in Amazon CloudWatch Logs, logs uploaded to a specified S3 bucket, or both. 
 --
--- * 'cpFileSystemLocations' - An array of @ProjectFileSystemLocation@ objects for a CodeBuild build project. A @ProjectFileSystemLocation@ object specifies the @identifier@ , @location@ , @mountOptions@ , @mountPoint@ , and @type@ of a file system created using Amazon Elastic File System.
+-- * 'cpFileSystemLocations' - An array of @ProjectFileSystemLocation@ objects for a CodeBuild build project. A @ProjectFileSystemLocation@ object specifies the @identifier@ , @location@ , @mountOptions@ , @mountPoint@ , and @type@ of a file system created using Amazon Elastic File System. 
 --
 -- * 'cpEncryptionKey' - The AWS Key Management Service (AWS KMS) customer master key (CMK) to be used for encrypting the build output artifacts. You can specify either the Amazon Resource Name (ARN) of the CMK or, if available, the CMK's alias (using the format @alias//alias-name/ @ ).
 --
@@ -136,31 +135,24 @@ createProject
     -> ProjectEnvironment -- ^ 'cpEnvironment'
     -> Text -- ^ 'cpServiceRole'
     -> CreateProject
-createProject pName_ pSource_ pArtifacts_ pEnvironment_ pServiceRole_ =
-  CreateProject'
-    { _cpSecondaryArtifacts = Nothing
-    , _cpBadgeEnabled = Nothing
-    , _cpSecondarySourceVersions = Nothing
-    , _cpQueuedTimeoutInMinutes = Nothing
-    , _cpCache = Nothing
-    , _cpSecondarySources = Nothing
-    , _cpSourceVersion = Nothing
-    , _cpVpcConfig = Nothing
-    , _cpLogsConfig = Nothing
-    , _cpFileSystemLocations = Nothing
-    , _cpEncryptionKey = Nothing
-    , _cpDescription = Nothing
-    , _cpTags = Nothing
-    , _cpTimeoutInMinutes = Nothing
-    , _cpName = pName_
-    , _cpSource = pSource_
-    , _cpArtifacts = pArtifacts_
-    , _cpEnvironment = pEnvironment_
-    , _cpServiceRole = pServiceRole_
-    }
+createProject pName_ pSource_ pArtifacts_
+  pEnvironment_ pServiceRole_
+  = CreateProject'{_cpSecondaryArtifacts = Nothing,
+                   _cpBadgeEnabled = Nothing,
+                   _cpSecondarySourceVersions = Nothing,
+                   _cpQueuedTimeoutInMinutes = Nothing,
+                   _cpCache = Nothing, _cpSecondarySources = Nothing,
+                   _cpSourceVersion = Nothing, _cpVpcConfig = Nothing,
+                   _cpLogsConfig = Nothing,
+                   _cpFileSystemLocations = Nothing,
+                   _cpEncryptionKey = Nothing, _cpDescription = Nothing,
+                   _cpTags = Nothing, _cpTimeoutInMinutes = Nothing,
+                   _cpName = pName_, _cpSource = pSource_,
+                   _cpArtifacts = pArtifacts_,
+                   _cpEnvironment = pEnvironment_,
+                   _cpServiceRole = pServiceRole_}
 
-
--- | An array of @ProjectArtifacts@ objects.
+-- | An array of @ProjectArtifacts@ objects. 
 cpSecondaryArtifacts :: Lens' CreateProject [ProjectArtifacts]
 cpSecondaryArtifacts = lens _cpSecondaryArtifacts (\ s a -> s{_cpSecondaryArtifacts = a}) . _Default . _Coerce
 
@@ -168,11 +160,11 @@ cpSecondaryArtifacts = lens _cpSecondaryArtifacts (\ s a -> s{_cpSecondaryArtifa
 cpBadgeEnabled :: Lens' CreateProject (Maybe Bool)
 cpBadgeEnabled = lens _cpBadgeEnabled (\ s a -> s{_cpBadgeEnabled = a})
 
--- | An array of @ProjectSourceVersion@ objects. If @secondarySourceVersions@ is specified at the build level, then they take precedence over these @secondarySourceVersions@ (at the project level).
+-- | An array of @ProjectSourceVersion@ objects. If @secondarySourceVersions@ is specified at the build level, then they take precedence over these @secondarySourceVersions@ (at the project level). 
 cpSecondarySourceVersions :: Lens' CreateProject [ProjectSourceVersion]
 cpSecondarySourceVersions = lens _cpSecondarySourceVersions (\ s a -> s{_cpSecondarySourceVersions = a}) . _Default . _Coerce
 
--- | The number of minutes a build is allowed to be queued before it times out.
+-- | The number of minutes a build is allowed to be queued before it times out. 
 cpQueuedTimeoutInMinutes :: Lens' CreateProject (Maybe Natural)
 cpQueuedTimeoutInMinutes = lens _cpQueuedTimeoutInMinutes (\ s a -> s{_cpQueuedTimeoutInMinutes = a}) . mapping _Nat
 
@@ -180,11 +172,11 @@ cpQueuedTimeoutInMinutes = lens _cpQueuedTimeoutInMinutes (\ s a -> s{_cpQueuedT
 cpCache :: Lens' CreateProject (Maybe ProjectCache)
 cpCache = lens _cpCache (\ s a -> s{_cpCache = a})
 
--- | An array of @ProjectSource@ objects.
+-- | An array of @ProjectSource@ objects. 
 cpSecondarySources :: Lens' CreateProject [ProjectSource]
 cpSecondarySources = lens _cpSecondarySources (\ s a -> s{_cpSecondarySources = a}) . _Default . _Coerce
 
--- | A version of the build input to be built for this project. If not specified, the latest version is used. If specified, it must be one of:      * For AWS CodeCommit: the commit ID, branch, or Git tag to use.     * For GitHub: the commit ID, pull request ID, branch name, or tag name that corresponds to the version of the source code you want to build. If a pull request ID is specified, it must use the format @pr/pull-request-ID@ (for example @pr/25@ ). If a branch name is specified, the branch's HEAD commit ID is used. If not specified, the default branch's HEAD commit ID is used.     * For Bitbucket: the commit ID, branch name, or tag name that corresponds to the version of the source code you want to build. If a branch name is specified, the branch's HEAD commit ID is used. If not specified, the default branch's HEAD commit ID is used.     * For Amazon Simple Storage Service (Amazon S3): the version ID of the object that represents the build input ZIP file to use. If @sourceVersion@ is specified at the build level, then that version takes precedence over this @sourceVersion@ (at the project level).  For more information, see <https://docs.aws.amazon.com/codebuild/latest/userguide/sample-source-version.html Source Version Sample with CodeBuild> in the /AWS CodeBuild User Guide/ .
+-- | A version of the build input to be built for this project. If not specified, the latest version is used. If specified, it must be one of:      * For AWS CodeCommit: the commit ID, branch, or Git tag to use.     * For GitHub: the commit ID, pull request ID, branch name, or tag name that corresponds to the version of the source code you want to build. If a pull request ID is specified, it must use the format @pr/pull-request-ID@ (for example @pr/25@ ). If a branch name is specified, the branch's HEAD commit ID is used. If not specified, the default branch's HEAD commit ID is used.     * For Bitbucket: the commit ID, branch name, or tag name that corresponds to the version of the source code you want to build. If a branch name is specified, the branch's HEAD commit ID is used. If not specified, the default branch's HEAD commit ID is used.     * For Amazon Simple Storage Service (Amazon S3): the version ID of the object that represents the build input ZIP file to use. If @sourceVersion@ is specified at the build level, then that version takes precedence over this @sourceVersion@ (at the project level).  For more information, see <https://docs.aws.amazon.com/codebuild/latest/userguide/sample-source-version.html Source Version Sample with CodeBuild> in the /AWS CodeBuild User Guide/ . 
 cpSourceVersion :: Lens' CreateProject (Maybe Text)
 cpSourceVersion = lens _cpSourceVersion (\ s a -> s{_cpSourceVersion = a})
 
@@ -192,11 +184,11 @@ cpSourceVersion = lens _cpSourceVersion (\ s a -> s{_cpSourceVersion = a})
 cpVpcConfig :: Lens' CreateProject (Maybe VPCConfig)
 cpVpcConfig = lens _cpVpcConfig (\ s a -> s{_cpVpcConfig = a})
 
--- | Information about logs for the build project. These can be logs in Amazon CloudWatch Logs, logs uploaded to a specified S3 bucket, or both.
+-- | Information about logs for the build project. These can be logs in Amazon CloudWatch Logs, logs uploaded to a specified S3 bucket, or both. 
 cpLogsConfig :: Lens' CreateProject (Maybe LogsConfig)
 cpLogsConfig = lens _cpLogsConfig (\ s a -> s{_cpLogsConfig = a})
 
--- | An array of @ProjectFileSystemLocation@ objects for a CodeBuild build project. A @ProjectFileSystemLocation@ object specifies the @identifier@ , @location@ , @mountOptions@ , @mountPoint@ , and @type@ of a file system created using Amazon Elastic File System.
+-- | An array of @ProjectFileSystemLocation@ objects for a CodeBuild build project. A @ProjectFileSystemLocation@ object specifies the @identifier@ , @location@ , @mountOptions@ , @mountPoint@ , and @type@ of a file system created using Amazon Elastic File System. 
 cpFileSystemLocations :: Lens' CreateProject [ProjectFileSystemLocation]
 cpFileSystemLocations = lens _cpFileSystemLocations (\ s a -> s{_cpFileSystemLocations = a}) . _Default . _Coerce
 
@@ -292,13 +284,11 @@ instance ToQuery CreateProject where
         toQuery = const mempty
 
 -- | /See:/ 'createProjectResponse' smart constructor.
-data CreateProjectResponse =
-  CreateProjectResponse'
-    { _cprsProject        :: !(Maybe Project)
-    , _cprsResponseStatus :: !Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data CreateProjectResponse = CreateProjectResponse'{_cprsProject
+                                                    :: !(Maybe Project),
+                                                    _cprsResponseStatus :: !Int}
+                               deriving (Eq, Read, Show, Data, Typeable,
+                                         Generic)
 
 -- | Creates a value of 'CreateProjectResponse' with the minimum fields required to make a request.
 --
@@ -310,10 +300,9 @@ data CreateProjectResponse =
 createProjectResponse
     :: Int -- ^ 'cprsResponseStatus'
     -> CreateProjectResponse
-createProjectResponse pResponseStatus_ =
-  CreateProjectResponse'
-    {_cprsProject = Nothing, _cprsResponseStatus = pResponseStatus_}
-
+createProjectResponse pResponseStatus_
+  = CreateProjectResponse'{_cprsProject = Nothing,
+                           _cprsResponseStatus = pResponseStatus_}
 
 -- | Information about the build project that was created.
 cprsProject :: Lens' CreateProjectResponse (Maybe Project)

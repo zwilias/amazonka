@@ -47,16 +47,12 @@ import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 import Network.AWS.SMS.Types
-import Network.AWS.SMS.Types.Product
 
 -- | /See:/ 'getServers' smart constructor.
-data GetServers =
-  GetServers'
-    { _gsNextToken  :: !(Maybe Text)
-    , _gsMaxResults :: !(Maybe Int)
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data GetServers = GetServers'{_gsNextToken ::
+                              !(Maybe Text),
+                              _gsMaxResults :: !(Maybe Int)}
+                    deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'GetServers' with the minimum fields required to make a request.
 --
@@ -67,8 +63,9 @@ data GetServers =
 -- * 'gsMaxResults' - Undocumented member.
 getServers
     :: GetServers
-getServers = GetServers' {_gsNextToken = Nothing, _gsMaxResults = Nothing}
-
+getServers
+  = GetServers'{_gsNextToken = Nothing,
+                _gsMaxResults = Nothing}
 
 -- | Undocumented member.
 gsNextToken :: Lens' GetServers (Maybe Text)
@@ -126,16 +123,15 @@ instance ToQuery GetServers where
         toQuery = const mempty
 
 -- | /See:/ 'getServersResponse' smart constructor.
-data GetServersResponse =
-  GetServersResponse'
-    { _gsrsServerCatalogStatus :: !(Maybe ServerCatalogStatus)
-    , _gsrsLastModifiedOn      :: !(Maybe POSIX)
-    , _gsrsNextToken           :: !(Maybe Text)
-    , _gsrsServerList          :: !(Maybe [Server])
-    , _gsrsResponseStatus      :: !Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data GetServersResponse = GetServersResponse'{_gsrsServerCatalogStatus
+                                              :: !(Maybe ServerCatalogStatus),
+                                              _gsrsLastModifiedOn ::
+                                              !(Maybe POSIX),
+                                              _gsrsNextToken :: !(Maybe Text),
+                                              _gsrsServerList ::
+                                              !(Maybe [Server]),
+                                              _gsrsResponseStatus :: !Int}
+                            deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'GetServersResponse' with the minimum fields required to make a request.
 --
@@ -153,15 +149,12 @@ data GetServersResponse =
 getServersResponse
     :: Int -- ^ 'gsrsResponseStatus'
     -> GetServersResponse
-getServersResponse pResponseStatus_ =
-  GetServersResponse'
-    { _gsrsServerCatalogStatus = Nothing
-    , _gsrsLastModifiedOn = Nothing
-    , _gsrsNextToken = Nothing
-    , _gsrsServerList = Nothing
-    , _gsrsResponseStatus = pResponseStatus_
-    }
-
+getServersResponse pResponseStatus_
+  = GetServersResponse'{_gsrsServerCatalogStatus =
+                          Nothing,
+                        _gsrsLastModifiedOn = Nothing,
+                        _gsrsNextToken = Nothing, _gsrsServerList = Nothing,
+                        _gsrsResponseStatus = pResponseStatus_}
 
 -- | Undocumented member.
 gsrsServerCatalogStatus :: Lens' GetServersResponse (Maybe ServerCatalogStatus)

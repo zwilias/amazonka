@@ -44,23 +44,20 @@ module Network.AWS.EC2.DescribeElasticGpus
     ) where
 
 import Network.AWS.EC2.Types
-import Network.AWS.EC2.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 
 -- | /See:/ 'describeElasticGpus' smart constructor.
-data DescribeElasticGpus =
-  DescribeElasticGpus'
-    { _degFilters       :: !(Maybe [Filter])
-    , _degNextToken     :: !(Maybe Text)
-    , _degDryRun        :: !(Maybe Bool)
-    , _degMaxResults    :: !(Maybe Nat)
-    , _degElasticGpuIds :: !(Maybe [Text])
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data DescribeElasticGpus = DescribeElasticGpus'{_degFilters
+                                                :: !(Maybe [Filter]),
+                                                _degNextToken :: !(Maybe Text),
+                                                _degDryRun :: !(Maybe Bool),
+                                                _degMaxResults :: !(Maybe Nat),
+                                                _degElasticGpuIds ::
+                                                !(Maybe [Text])}
+                             deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'DescribeElasticGpus' with the minimum fields required to make a request.
 --
@@ -77,15 +74,11 @@ data DescribeElasticGpus =
 -- * 'degElasticGpuIds' - The Elastic Graphics accelerator IDs.
 describeElasticGpus
     :: DescribeElasticGpus
-describeElasticGpus =
-  DescribeElasticGpus'
-    { _degFilters = Nothing
-    , _degNextToken = Nothing
-    , _degDryRun = Nothing
-    , _degMaxResults = Nothing
-    , _degElasticGpuIds = Nothing
-    }
-
+describeElasticGpus
+  = DescribeElasticGpus'{_degFilters = Nothing,
+                         _degNextToken = Nothing, _degDryRun = Nothing,
+                         _degMaxResults = Nothing,
+                         _degElasticGpuIds = Nothing}
 
 -- | The filters.     * @availability-zone@ - The Availability Zone in which the Elastic Graphics accelerator resides.     * @elastic-gpu-health@ - The status of the Elastic Graphics accelerator (@OK@ | @IMPAIRED@ ).     * @elastic-gpu-state@ - The state of the Elastic Graphics accelerator (@ATTACHED@ ).     * @elastic-gpu-type@ - The type of Elastic Graphics accelerator; for example, @eg1.medium@ .     * @instance-id@ - The ID of the instance to which the Elastic Graphics accelerator is associated.
 degFilters :: Lens' DescribeElasticGpus [Filter]
@@ -143,15 +136,19 @@ instance ToQuery DescribeElasticGpus where
                  (toQueryList "ElasticGpuId" <$> _degElasticGpuIds)]
 
 -- | /See:/ 'describeElasticGpusResponse' smart constructor.
-data DescribeElasticGpusResponse =
-  DescribeElasticGpusResponse'
-    { _degrsElasticGpuSet  :: !(Maybe [ElasticGpus])
-    , _degrsNextToken      :: !(Maybe Text)
-    , _degrsMaxResults     :: !(Maybe Int)
-    , _degrsResponseStatus :: !Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data DescribeElasticGpusResponse = DescribeElasticGpusResponse'{_degrsElasticGpuSet
+                                                                ::
+                                                                !(Maybe
+                                                                    [ElasticGpus]),
+                                                                _degrsNextToken
+                                                                ::
+                                                                !(Maybe Text),
+                                                                _degrsMaxResults
+                                                                :: !(Maybe Int),
+                                                                _degrsResponseStatus
+                                                                :: !Int}
+                                     deriving (Eq, Read, Show, Data, Typeable,
+                                               Generic)
 
 -- | Creates a value of 'DescribeElasticGpusResponse' with the minimum fields required to make a request.
 --
@@ -167,14 +164,12 @@ data DescribeElasticGpusResponse =
 describeElasticGpusResponse
     :: Int -- ^ 'degrsResponseStatus'
     -> DescribeElasticGpusResponse
-describeElasticGpusResponse pResponseStatus_ =
-  DescribeElasticGpusResponse'
-    { _degrsElasticGpuSet = Nothing
-    , _degrsNextToken = Nothing
-    , _degrsMaxResults = Nothing
-    , _degrsResponseStatus = pResponseStatus_
-    }
-
+describeElasticGpusResponse pResponseStatus_
+  = DescribeElasticGpusResponse'{_degrsElasticGpuSet =
+                                   Nothing,
+                                 _degrsNextToken = Nothing,
+                                 _degrsMaxResults = Nothing,
+                                 _degrsResponseStatus = pResponseStatus_}
 
 -- | Information about the Elastic Graphics accelerators.
 degrsElasticGpuSet :: Lens' DescribeElasticGpusResponse [ElasticGpus]

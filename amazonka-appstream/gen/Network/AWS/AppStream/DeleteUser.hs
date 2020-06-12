@@ -38,20 +38,16 @@ module Network.AWS.AppStream.DeleteUser
     ) where
 
 import Network.AWS.AppStream.Types
-import Network.AWS.AppStream.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 
 -- | /See:/ 'deleteUser' smart constructor.
-data DeleteUser =
-  DeleteUser'
-    { _delUserName           :: !(Sensitive Text)
-    , _delAuthenticationType :: !AuthenticationType
-    }
-  deriving (Eq, Show, Data, Typeable, Generic)
-
+data DeleteUser = DeleteUser'{_delUserName ::
+                              !(Sensitive Text),
+                              _delAuthenticationType :: !AuthenticationType}
+                    deriving (Eq, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'DeleteUser' with the minimum fields required to make a request.
 --
@@ -64,12 +60,9 @@ deleteUser
     :: Text -- ^ 'delUserName'
     -> AuthenticationType -- ^ 'delAuthenticationType'
     -> DeleteUser
-deleteUser pUserName_ pAuthenticationType_ =
-  DeleteUser'
-    { _delUserName = _Sensitive # pUserName_
-    , _delAuthenticationType = pAuthenticationType_
-    }
-
+deleteUser pUserName_ pAuthenticationType_
+  = DeleteUser'{_delUserName = _Sensitive # pUserName_,
+                _delAuthenticationType = pAuthenticationType_}
 
 -- | The email address of the user.
 delUserName :: Lens' DeleteUser Text
@@ -115,12 +108,10 @@ instance ToQuery DeleteUser where
         toQuery = const mempty
 
 -- | /See:/ 'deleteUserResponse' smart constructor.
-newtype DeleteUserResponse =
-  DeleteUserResponse'
-    { _delrsResponseStatus :: Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+newtype DeleteUserResponse = DeleteUserResponse'{_delrsResponseStatus
+                                                 :: Int}
+                               deriving (Eq, Read, Show, Data, Typeable,
+                                         Generic)
 
 -- | Creates a value of 'DeleteUserResponse' with the minimum fields required to make a request.
 --
@@ -130,9 +121,9 @@ newtype DeleteUserResponse =
 deleteUserResponse
     :: Int -- ^ 'delrsResponseStatus'
     -> DeleteUserResponse
-deleteUserResponse pResponseStatus_ =
-  DeleteUserResponse' {_delrsResponseStatus = pResponseStatus_}
-
+deleteUserResponse pResponseStatus_
+  = DeleteUserResponse'{_delrsResponseStatus =
+                          pResponseStatus_}
 
 -- | -- | The response status code.
 delrsResponseStatus :: Lens' DeleteUserResponse Int

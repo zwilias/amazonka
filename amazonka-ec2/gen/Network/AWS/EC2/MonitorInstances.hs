@@ -41,20 +41,16 @@ module Network.AWS.EC2.MonitorInstances
     ) where
 
 import Network.AWS.EC2.Types
-import Network.AWS.EC2.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 
 -- | /See:/ 'monitorInstances' smart constructor.
-data MonitorInstances =
-  MonitorInstances'
-    { _miDryRun      :: !(Maybe Bool)
-    , _miInstanceIds :: ![Text]
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data MonitorInstances = MonitorInstances'{_miDryRun
+                                          :: !(Maybe Bool),
+                                          _miInstanceIds :: ![Text]}
+                          deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'MonitorInstances' with the minimum fields required to make a request.
 --
@@ -65,9 +61,9 @@ data MonitorInstances =
 -- * 'miInstanceIds' - The IDs of the instances.
 monitorInstances
     :: MonitorInstances
-monitorInstances =
-  MonitorInstances' {_miDryRun = Nothing, _miInstanceIds = mempty}
-
+monitorInstances
+  = MonitorInstances'{_miDryRun = Nothing,
+                      _miInstanceIds = mempty}
 
 -- | Checks whether you have the required permissions for the action, without actually making the request, and provides an error response. If you have the required permissions, the error response is @DryRunOperation@ . Otherwise, it is @UnauthorizedOperation@ .
 miDryRun :: Lens' MonitorInstances (Maybe Bool)
@@ -107,13 +103,14 @@ instance ToQuery MonitorInstances where
                toQueryList "InstanceId" _miInstanceIds]
 
 -- | /See:/ 'monitorInstancesResponse' smart constructor.
-data MonitorInstancesResponse =
-  MonitorInstancesResponse'
-    { _mirsInstanceMonitorings :: !(Maybe [InstanceMonitoring])
-    , _mirsResponseStatus      :: !Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data MonitorInstancesResponse = MonitorInstancesResponse'{_mirsInstanceMonitorings
+                                                          ::
+                                                          !(Maybe
+                                                              [InstanceMonitoring]),
+                                                          _mirsResponseStatus ::
+                                                          !Int}
+                                  deriving (Eq, Read, Show, Data, Typeable,
+                                            Generic)
 
 -- | Creates a value of 'MonitorInstancesResponse' with the minimum fields required to make a request.
 --
@@ -125,10 +122,10 @@ data MonitorInstancesResponse =
 monitorInstancesResponse
     :: Int -- ^ 'mirsResponseStatus'
     -> MonitorInstancesResponse
-monitorInstancesResponse pResponseStatus_ =
-  MonitorInstancesResponse'
-    {_mirsInstanceMonitorings = Nothing, _mirsResponseStatus = pResponseStatus_}
-
+monitorInstancesResponse pResponseStatus_
+  = MonitorInstancesResponse'{_mirsInstanceMonitorings
+                                = Nothing,
+                              _mirsResponseStatus = pResponseStatus_}
 
 -- | The monitoring information.
 mirsInstanceMonitorings :: Lens' MonitorInstancesResponse [InstanceMonitoring]

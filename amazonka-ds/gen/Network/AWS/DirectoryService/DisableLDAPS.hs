@@ -38,20 +38,16 @@ module Network.AWS.DirectoryService.DisableLDAPS
     ) where
 
 import Network.AWS.DirectoryService.Types
-import Network.AWS.DirectoryService.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 
 -- | /See:/ 'disableLDAPS' smart constructor.
-data DisableLDAPS =
-  DisableLDAPS'
-    { _dldapsDirectoryId :: !Text
-    , _dldapsType        :: !LDAPSType
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data DisableLDAPS = DisableLDAPS'{_dldapsDirectoryId
+                                  :: !Text,
+                                  _dldapsType :: !LDAPSType}
+                      deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'DisableLDAPS' with the minimum fields required to make a request.
 --
@@ -64,9 +60,9 @@ disableLDAPS
     :: Text -- ^ 'dldapsDirectoryId'
     -> LDAPSType -- ^ 'dldapsType'
     -> DisableLDAPS
-disableLDAPS pDirectoryId_ pType_ =
-  DisableLDAPS' {_dldapsDirectoryId = pDirectoryId_, _dldapsType = pType_}
-
+disableLDAPS pDirectoryId_ pType_
+  = DisableLDAPS'{_dldapsDirectoryId = pDirectoryId_,
+                  _dldapsType = pType_}
 
 -- | The identifier of the directory.
 dldapsDirectoryId :: Lens' DisableLDAPS Text
@@ -112,12 +108,10 @@ instance ToQuery DisableLDAPS where
         toQuery = const mempty
 
 -- | /See:/ 'disableLDAPSResponse' smart constructor.
-newtype DisableLDAPSResponse =
-  DisableLDAPSResponse'
-    { _dldapsrsResponseStatus :: Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+newtype DisableLDAPSResponse = DisableLDAPSResponse'{_dldapsrsResponseStatus
+                                                     :: Int}
+                                 deriving (Eq, Read, Show, Data, Typeable,
+                                           Generic)
 
 -- | Creates a value of 'DisableLDAPSResponse' with the minimum fields required to make a request.
 --
@@ -127,9 +121,9 @@ newtype DisableLDAPSResponse =
 disableLDAPSResponse
     :: Int -- ^ 'dldapsrsResponseStatus'
     -> DisableLDAPSResponse
-disableLDAPSResponse pResponseStatus_ =
-  DisableLDAPSResponse' {_dldapsrsResponseStatus = pResponseStatus_}
-
+disableLDAPSResponse pResponseStatus_
+  = DisableLDAPSResponse'{_dldapsrsResponseStatus =
+                            pResponseStatus_}
 
 -- | -- | The response status code.
 dldapsrsResponseStatus :: Lens' DisableLDAPSResponse Int

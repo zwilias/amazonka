@@ -43,7 +43,6 @@ module Network.AWS.DAX.DescribeParameterGroups
     ) where
 
 import Network.AWS.DAX.Types
-import Network.AWS.DAX.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Pager
 import Network.AWS.Prelude
@@ -51,14 +50,14 @@ import Network.AWS.Request
 import Network.AWS.Response
 
 -- | /See:/ 'describeParameterGroups' smart constructor.
-data DescribeParameterGroups =
-  DescribeParameterGroups'
-    { _dpgNextToken           :: !(Maybe Text)
-    , _dpgParameterGroupNames :: !(Maybe [Text])
-    , _dpgMaxResults          :: !(Maybe Int)
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data DescribeParameterGroups = DescribeParameterGroups'{_dpgNextToken
+                                                        :: !(Maybe Text),
+                                                        _dpgParameterGroupNames
+                                                        :: !(Maybe [Text]),
+                                                        _dpgMaxResults ::
+                                                        !(Maybe Int)}
+                                 deriving (Eq, Read, Show, Data, Typeable,
+                                           Generic)
 
 -- | Creates a value of 'DescribeParameterGroups' with the minimum fields required to make a request.
 --
@@ -71,13 +70,10 @@ data DescribeParameterGroups =
 -- * 'dpgMaxResults' - The maximum number of results to include in the response. If more results exist than the specified @MaxResults@ value, a token is included in the response so that the remaining results can be retrieved. The value for @MaxResults@ must be between 20 and 100.
 describeParameterGroups
     :: DescribeParameterGroups
-describeParameterGroups =
-  DescribeParameterGroups'
-    { _dpgNextToken = Nothing
-    , _dpgParameterGroupNames = Nothing
-    , _dpgMaxResults = Nothing
-    }
-
+describeParameterGroups
+  = DescribeParameterGroups'{_dpgNextToken = Nothing,
+                             _dpgParameterGroupNames = Nothing,
+                             _dpgMaxResults = Nothing}
 
 -- | An optional token returned from a prior request. Use this token for pagination of results from this action. If this parameter is specified, the response includes only results beyond the token, up to the value specified by @MaxResults@ .
 dpgNextToken :: Lens' DescribeParameterGroups (Maybe Text)
@@ -140,14 +136,18 @@ instance ToQuery DescribeParameterGroups where
         toQuery = const mempty
 
 -- | /See:/ 'describeParameterGroupsResponse' smart constructor.
-data DescribeParameterGroupsResponse =
-  DescribeParameterGroupsResponse'
-    { _dpgsrsNextToken       :: !(Maybe Text)
-    , _dpgsrsParameterGroups :: !(Maybe [ParameterGroup])
-    , _dpgsrsResponseStatus  :: !Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data DescribeParameterGroupsResponse = DescribeParameterGroupsResponse'{_dpgsrsNextToken
+                                                                        ::
+                                                                        !(Maybe
+                                                                            Text),
+                                                                        _dpgsrsParameterGroups
+                                                                        ::
+                                                                        !(Maybe
+                                                                            [ParameterGroup]),
+                                                                        _dpgsrsResponseStatus
+                                                                        :: !Int}
+                                         deriving (Eq, Read, Show, Data,
+                                                   Typeable, Generic)
 
 -- | Creates a value of 'DescribeParameterGroupsResponse' with the minimum fields required to make a request.
 --
@@ -161,13 +161,11 @@ data DescribeParameterGroupsResponse =
 describeParameterGroupsResponse
     :: Int -- ^ 'dpgsrsResponseStatus'
     -> DescribeParameterGroupsResponse
-describeParameterGroupsResponse pResponseStatus_ =
-  DescribeParameterGroupsResponse'
-    { _dpgsrsNextToken = Nothing
-    , _dpgsrsParameterGroups = Nothing
-    , _dpgsrsResponseStatus = pResponseStatus_
-    }
-
+describeParameterGroupsResponse pResponseStatus_
+  = DescribeParameterGroupsResponse'{_dpgsrsNextToken =
+                                       Nothing,
+                                     _dpgsrsParameterGroups = Nothing,
+                                     _dpgsrsResponseStatus = pResponseStatus_}
 
 -- | Provides an identifier to allow retrieval of paginated results.
 dpgsrsNextToken :: Lens' DescribeParameterGroupsResponse (Maybe Text)

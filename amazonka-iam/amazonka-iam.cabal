@@ -172,8 +172,59 @@ library
         , Network.AWS.IAM.Waiters
 
     other-modules:
-          Network.AWS.IAM.Types.Product
-        , Network.AWS.IAM.Types.Sum
+          Network.AWS.IAM.Types.AccessKeyInfo
+        , Network.AWS.IAM.Types.AccessKeyLastUsed
+        , Network.AWS.IAM.Types.AccessKeyMetadata
+        , Network.AWS.IAM.Types.AssignmentStatusType
+        , Network.AWS.IAM.Types.AttachedPolicy
+        , Network.AWS.IAM.Types.ContextEntry
+        , Network.AWS.IAM.Types.ContextKeyTypeEnum
+        , Network.AWS.IAM.Types.DeletionTaskFailureReasonType
+        , Network.AWS.IAM.Types.DeletionTaskStatusType
+        , Network.AWS.IAM.Types.EncodingType
+        , Network.AWS.IAM.Types.EntityType
+        , Network.AWS.IAM.Types.EvaluationResult
+        , Network.AWS.IAM.Types.GetContextKeysForPolicyResponse
+        , Network.AWS.IAM.Types.Group
+        , Network.AWS.IAM.Types.GroupDetail
+        , Network.AWS.IAM.Types.InstanceProfile
+        , Network.AWS.IAM.Types.LoginProfile
+        , Network.AWS.IAM.Types.MFADevice
+        , Network.AWS.IAM.Types.ManagedPolicyDetail
+        , Network.AWS.IAM.Types.OpenIdConnectProviderListEntry
+        , Network.AWS.IAM.Types.OrganizationsDecisionDetail
+        , Network.AWS.IAM.Types.PasswordPolicy
+        , Network.AWS.IAM.Types.Policy
+        , Network.AWS.IAM.Types.PolicyDetail
+        , Network.AWS.IAM.Types.PolicyEvaluationDecisionType
+        , Network.AWS.IAM.Types.PolicyGroup
+        , Network.AWS.IAM.Types.PolicyRole
+        , Network.AWS.IAM.Types.PolicyScopeType
+        , Network.AWS.IAM.Types.PolicySourceType
+        , Network.AWS.IAM.Types.PolicyUser
+        , Network.AWS.IAM.Types.PolicyVersion
+        , Network.AWS.IAM.Types.Position
+        , Network.AWS.IAM.Types.ReportFormatType
+        , Network.AWS.IAM.Types.ReportStateType
+        , Network.AWS.IAM.Types.ResourceSpecificResult
+        , Network.AWS.IAM.Types.Role
+        , Network.AWS.IAM.Types.RoleDetail
+        , Network.AWS.IAM.Types.RoleUsageType
+        , Network.AWS.IAM.Types.SAMLProviderListEntry
+        , Network.AWS.IAM.Types.SSHPublicKey
+        , Network.AWS.IAM.Types.SSHPublicKeyMetadata
+        , Network.AWS.IAM.Types.ServerCertificate
+        , Network.AWS.IAM.Types.ServerCertificateMetadata
+        , Network.AWS.IAM.Types.ServiceSpecificCredential
+        , Network.AWS.IAM.Types.ServiceSpecificCredentialMetadata
+        , Network.AWS.IAM.Types.SigningCertificate
+        , Network.AWS.IAM.Types.SimulatePolicyResponse
+        , Network.AWS.IAM.Types.Statement
+        , Network.AWS.IAM.Types.StatusType
+        , Network.AWS.IAM.Types.SummaryKeyType
+        , Network.AWS.IAM.Types.User
+        , Network.AWS.IAM.Types.UserDetail
+        , Network.AWS.IAM.Types.VirtualMFADevice
 
     build-depends:
           amazonka-core == 1.6.1.*

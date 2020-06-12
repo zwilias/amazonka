@@ -41,7 +41,6 @@ module Network.AWS.CognitoIdentityProvider.AdminConfirmSignUp
     ) where
 
 import Network.AWS.CognitoIdentityProvider.Types
-import Network.AWS.CognitoIdentityProvider.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.Request
@@ -52,14 +51,12 @@ import Network.AWS.Response
 --
 --
 -- /See:/ 'adminConfirmSignUp' smart constructor.
-data AdminConfirmSignUp =
-  AdminConfirmSignUp'
-    { _acsuClientMetadata :: !(Maybe (Map Text Text))
-    , _acsuUserPoolId     :: !Text
-    , _acsuUsername       :: !(Sensitive Text)
-    }
-  deriving (Eq, Show, Data, Typeable, Generic)
-
+data AdminConfirmSignUp = AdminConfirmSignUp'{_acsuClientMetadata
+                                              :: !(Maybe (Map Text Text)),
+                                              _acsuUserPoolId :: !Text,
+                                              _acsuUsername ::
+                                              !(Sensitive Text)}
+                            deriving (Eq, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'AdminConfirmSignUp' with the minimum fields required to make a request.
 --
@@ -74,13 +71,10 @@ adminConfirmSignUp
     :: Text -- ^ 'acsuUserPoolId'
     -> Text -- ^ 'acsuUsername'
     -> AdminConfirmSignUp
-adminConfirmSignUp pUserPoolId_ pUsername_ =
-  AdminConfirmSignUp'
-    { _acsuClientMetadata = Nothing
-    , _acsuUserPoolId = pUserPoolId_
-    , _acsuUsername = _Sensitive # pUsername_
-    }
-
+adminConfirmSignUp pUserPoolId_ pUsername_
+  = AdminConfirmSignUp'{_acsuClientMetadata = Nothing,
+                        _acsuUserPoolId = pUserPoolId_,
+                        _acsuUsername = _Sensitive # pUsername_}
 
 -- | A map of custom key-value pairs that you can provide as input for any custom workflows that this action triggers.  If your user pool configuration includes triggers, the AdminConfirmSignUp API action invokes the AWS Lambda function that is specified for the /post confirmation/ trigger. When Amazon Cognito invokes this function, it passes a JSON payload, which the function receives as input. In this payload, the @clientMetadata@ attribute provides the data that you assigned to the ClientMetadata parameter in your AdminConfirmSignUp request. In your function code in AWS Lambda, you can process the ClientMetadata value to enhance your workflow for your specific needs. For more information, see <https://docs.aws.amazon.com/cognito/latest/developerguide/cognito-user-identity-pools-working-with-aws-lambda-triggers.html Customizing User Pool Workflows with Lambda Triggers> in the /Amazon Cognito Developer Guide/ .
 acsuClientMetadata :: Lens' AdminConfirmSignUp (HashMap Text Text)
@@ -136,12 +130,10 @@ instance ToQuery AdminConfirmSignUp where
 --
 --
 -- /See:/ 'adminConfirmSignUpResponse' smart constructor.
-newtype AdminConfirmSignUpResponse =
-  AdminConfirmSignUpResponse'
-    { _acsursResponseStatus :: Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+newtype AdminConfirmSignUpResponse = AdminConfirmSignUpResponse'{_acsursResponseStatus
+                                                                 :: Int}
+                                       deriving (Eq, Read, Show, Data, Typeable,
+                                                 Generic)
 
 -- | Creates a value of 'AdminConfirmSignUpResponse' with the minimum fields required to make a request.
 --
@@ -151,9 +143,9 @@ newtype AdminConfirmSignUpResponse =
 adminConfirmSignUpResponse
     :: Int -- ^ 'acsursResponseStatus'
     -> AdminConfirmSignUpResponse
-adminConfirmSignUpResponse pResponseStatus_ =
-  AdminConfirmSignUpResponse' {_acsursResponseStatus = pResponseStatus_}
-
+adminConfirmSignUpResponse pResponseStatus_
+  = AdminConfirmSignUpResponse'{_acsursResponseStatus =
+                                  pResponseStatus_}
 
 -- | -- | The response status code.
 acsursResponseStatus :: Lens' AdminConfirmSignUpResponse Int

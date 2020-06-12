@@ -42,16 +42,12 @@ import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 import Network.AWS.WAFRegional.Types
-import Network.AWS.WAFRegional.Types.Product
 
 -- | /See:/ 'associateWebACL' smart constructor.
-data AssociateWebACL =
-  AssociateWebACL'
-    { _awaWebACLId    :: !Text
-    , _awaResourceARN :: !Text
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data AssociateWebACL = AssociateWebACL'{_awaWebACLId
+                                        :: !Text,
+                                        _awaResourceARN :: !Text}
+                         deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'AssociateWebACL' with the minimum fields required to make a request.
 --
@@ -64,9 +60,9 @@ associateWebACL
     :: Text -- ^ 'awaWebACLId'
     -> Text -- ^ 'awaResourceARN'
     -> AssociateWebACL
-associateWebACL pWebACLId_ pResourceARN_ =
-  AssociateWebACL' {_awaWebACLId = pWebACLId_, _awaResourceARN = pResourceARN_}
-
+associateWebACL pWebACLId_ pResourceARN_
+  = AssociateWebACL'{_awaWebACLId = pWebACLId_,
+                     _awaResourceARN = pResourceARN_}
 
 -- | A unique identifier (ID) for the web ACL.
 awaWebACLId :: Lens' AssociateWebACL Text
@@ -112,12 +108,10 @@ instance ToQuery AssociateWebACL where
         toQuery = const mempty
 
 -- | /See:/ 'associateWebACLResponse' smart constructor.
-newtype AssociateWebACLResponse =
-  AssociateWebACLResponse'
-    { _awarsResponseStatus :: Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+newtype AssociateWebACLResponse = AssociateWebACLResponse'{_awarsResponseStatus
+                                                           :: Int}
+                                    deriving (Eq, Read, Show, Data, Typeable,
+                                              Generic)
 
 -- | Creates a value of 'AssociateWebACLResponse' with the minimum fields required to make a request.
 --
@@ -127,9 +121,9 @@ newtype AssociateWebACLResponse =
 associateWebACLResponse
     :: Int -- ^ 'awarsResponseStatus'
     -> AssociateWebACLResponse
-associateWebACLResponse pResponseStatus_ =
-  AssociateWebACLResponse' {_awarsResponseStatus = pResponseStatus_}
-
+associateWebACLResponse pResponseStatus_
+  = AssociateWebACLResponse'{_awarsResponseStatus =
+                               pResponseStatus_}
 
 -- | -- | The response status code.
 awarsResponseStatus :: Lens' AssociateWebACLResponse Int

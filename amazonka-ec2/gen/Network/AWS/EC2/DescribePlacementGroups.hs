@@ -41,22 +41,22 @@ module Network.AWS.EC2.DescribePlacementGroups
     ) where
 
 import Network.AWS.EC2.Types
-import Network.AWS.EC2.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 
 -- | /See:/ 'describePlacementGroups' smart constructor.
-data DescribePlacementGroups =
-  DescribePlacementGroups'
-    { _dpgsFilters    :: !(Maybe [Filter])
-    , _dpgsGroupNames :: !(Maybe [Text])
-    , _dpgsGroupIds   :: !(Maybe [Text])
-    , _dpgsDryRun     :: !(Maybe Bool)
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data DescribePlacementGroups = DescribePlacementGroups'{_dpgsFilters
+                                                        :: !(Maybe [Filter]),
+                                                        _dpgsGroupNames ::
+                                                        !(Maybe [Text]),
+                                                        _dpgsGroupIds ::
+                                                        !(Maybe [Text]),
+                                                        _dpgsDryRun ::
+                                                        !(Maybe Bool)}
+                                 deriving (Eq, Read, Show, Data, Typeable,
+                                           Generic)
 
 -- | Creates a value of 'DescribePlacementGroups' with the minimum fields required to make a request.
 --
@@ -71,14 +71,10 @@ data DescribePlacementGroups =
 -- * 'dpgsDryRun' - Checks whether you have the required permissions for the action, without actually making the request, and provides an error response. If you have the required permissions, the error response is @DryRunOperation@ . Otherwise, it is @UnauthorizedOperation@ .
 describePlacementGroups
     :: DescribePlacementGroups
-describePlacementGroups =
-  DescribePlacementGroups'
-    { _dpgsFilters = Nothing
-    , _dpgsGroupNames = Nothing
-    , _dpgsGroupIds = Nothing
-    , _dpgsDryRun = Nothing
-    }
-
+describePlacementGroups
+  = DescribePlacementGroups'{_dpgsFilters = Nothing,
+                             _dpgsGroupNames = Nothing, _dpgsGroupIds = Nothing,
+                             _dpgsDryRun = Nothing}
 
 -- | The filters.     * @group-name@ - The name of the placement group.     * @state@ - The state of the placement group (@pending@ | @available@ | @deleting@ | @deleted@ ).     * @strategy@ - The strategy of the placement group (@cluster@ | @spread@ | @partition@ ).     * @tag@ :<key> - The key/value combination of a tag assigned to the resource. Use the tag key in the filter name and the tag value as the filter value. For example, to find all resources that have a tag with the key @Owner@ and the value @TeamA@ , specify @tag:Owner@ for the filter name and @TeamA@ for the filter value.     * @tag-key@ - The key of a tag assigned to the resource. Use this filter to find all resources that have a tag with a specific key, regardless of the tag value.
 dpgsFilters :: Lens' DescribePlacementGroups [Filter]
@@ -131,13 +127,14 @@ instance ToQuery DescribePlacementGroups where
                "DryRun" =: _dpgsDryRun]
 
 -- | /See:/ 'describePlacementGroupsResponse' smart constructor.
-data DescribePlacementGroupsResponse =
-  DescribePlacementGroupsResponse'
-    { _dpgrsPlacementGroups :: !(Maybe [PlacementGroup])
-    , _dpgrsResponseStatus  :: !Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data DescribePlacementGroupsResponse = DescribePlacementGroupsResponse'{_dpgrsPlacementGroups
+                                                                        ::
+                                                                        !(Maybe
+                                                                            [PlacementGroup]),
+                                                                        _dpgrsResponseStatus
+                                                                        :: !Int}
+                                         deriving (Eq, Read, Show, Data,
+                                                   Typeable, Generic)
 
 -- | Creates a value of 'DescribePlacementGroupsResponse' with the minimum fields required to make a request.
 --
@@ -149,10 +146,10 @@ data DescribePlacementGroupsResponse =
 describePlacementGroupsResponse
     :: Int -- ^ 'dpgrsResponseStatus'
     -> DescribePlacementGroupsResponse
-describePlacementGroupsResponse pResponseStatus_ =
-  DescribePlacementGroupsResponse'
-    {_dpgrsPlacementGroups = Nothing, _dpgrsResponseStatus = pResponseStatus_}
-
+describePlacementGroupsResponse pResponseStatus_
+  = DescribePlacementGroupsResponse'{_dpgrsPlacementGroups
+                                       = Nothing,
+                                     _dpgrsResponseStatus = pResponseStatus_}
 
 -- | Information about the placement groups.
 dpgrsPlacementGroups :: Lens' DescribePlacementGroupsResponse [PlacementGroup]

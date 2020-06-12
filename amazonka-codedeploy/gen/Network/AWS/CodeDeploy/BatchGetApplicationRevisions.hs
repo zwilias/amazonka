@@ -41,7 +41,6 @@ module Network.AWS.CodeDeploy.BatchGetApplicationRevisions
     ) where
 
 import Network.AWS.CodeDeploy.Types
-import Network.AWS.CodeDeploy.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.Request
@@ -52,13 +51,13 @@ import Network.AWS.Response
 --
 --
 -- /See:/ 'batchGetApplicationRevisions' smart constructor.
-data BatchGetApplicationRevisions =
-  BatchGetApplicationRevisions'
-    { _bgarApplicationName :: !Text
-    , _bgarRevisions       :: ![RevisionLocation]
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data BatchGetApplicationRevisions = BatchGetApplicationRevisions'{_bgarApplicationName
+                                                                  :: !Text,
+                                                                  _bgarRevisions
+                                                                  ::
+                                                                  ![RevisionLocation]}
+                                      deriving (Eq, Read, Show, Data, Typeable,
+                                                Generic)
 
 -- | Creates a value of 'BatchGetApplicationRevisions' with the minimum fields required to make a request.
 --
@@ -70,10 +69,10 @@ data BatchGetApplicationRevisions =
 batchGetApplicationRevisions
     :: Text -- ^ 'bgarApplicationName'
     -> BatchGetApplicationRevisions
-batchGetApplicationRevisions pApplicationName_ =
-  BatchGetApplicationRevisions'
-    {_bgarApplicationName = pApplicationName_, _bgarRevisions = mempty}
-
+batchGetApplicationRevisions pApplicationName_
+  = BatchGetApplicationRevisions'{_bgarApplicationName
+                                    = pApplicationName_,
+                                  _bgarRevisions = mempty}
 
 -- | The name of an AWS CodeDeploy application about which to get revision information.
 bgarApplicationName :: Lens' BatchGetApplicationRevisions Text
@@ -129,15 +128,23 @@ instance ToQuery BatchGetApplicationRevisions where
 --
 --
 -- /See:/ 'batchGetApplicationRevisionsResponse' smart constructor.
-data BatchGetApplicationRevisionsResponse =
-  BatchGetApplicationRevisionsResponse'
-    { _bgarrsApplicationName :: !(Maybe Text)
-    , _bgarrsRevisions       :: !(Maybe [RevisionInfo])
-    , _bgarrsErrorMessage    :: !(Maybe Text)
-    , _bgarrsResponseStatus  :: !Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data BatchGetApplicationRevisionsResponse = BatchGetApplicationRevisionsResponse'{_bgarrsApplicationName
+                                                                                  ::
+                                                                                  !(Maybe
+                                                                                      Text),
+                                                                                  _bgarrsRevisions
+                                                                                  ::
+                                                                                  !(Maybe
+                                                                                      [RevisionInfo]),
+                                                                                  _bgarrsErrorMessage
+                                                                                  ::
+                                                                                  !(Maybe
+                                                                                      Text),
+                                                                                  _bgarrsResponseStatus
+                                                                                  ::
+                                                                                  !Int}
+                                              deriving (Eq, Read, Show, Data,
+                                                        Typeable, Generic)
 
 -- | Creates a value of 'BatchGetApplicationRevisionsResponse' with the minimum fields required to make a request.
 --
@@ -153,14 +160,13 @@ data BatchGetApplicationRevisionsResponse =
 batchGetApplicationRevisionsResponse
     :: Int -- ^ 'bgarrsResponseStatus'
     -> BatchGetApplicationRevisionsResponse
-batchGetApplicationRevisionsResponse pResponseStatus_ =
-  BatchGetApplicationRevisionsResponse'
-    { _bgarrsApplicationName = Nothing
-    , _bgarrsRevisions = Nothing
-    , _bgarrsErrorMessage = Nothing
-    , _bgarrsResponseStatus = pResponseStatus_
-    }
-
+batchGetApplicationRevisionsResponse pResponseStatus_
+  = BatchGetApplicationRevisionsResponse'{_bgarrsApplicationName
+                                            = Nothing,
+                                          _bgarrsRevisions = Nothing,
+                                          _bgarrsErrorMessage = Nothing,
+                                          _bgarrsResponseStatus =
+                                            pResponseStatus_}
 
 -- | The name of the application that corresponds to the revisions.
 bgarrsApplicationName :: Lens' BatchGetApplicationRevisionsResponse (Maybe Text)

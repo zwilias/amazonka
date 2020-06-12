@@ -44,23 +44,21 @@ module Network.AWS.EC2.ImportInstance
     ) where
 
 import Network.AWS.EC2.Types
-import Network.AWS.EC2.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 
 -- | /See:/ 'importInstance' smart constructor.
-data ImportInstance =
-  ImportInstance'
-    { _iiLaunchSpecification :: !(Maybe ImportInstanceLaunchSpecification)
-    , _iiDiskImages          :: !(Maybe [DiskImage])
-    , _iiDescription         :: !(Maybe Text)
-    , _iiDryRun              :: !(Maybe Bool)
-    , _iiPlatform            :: !PlatformValues
-    }
-  deriving (Eq, Show, Data, Typeable, Generic)
-
+data ImportInstance = ImportInstance'{_iiLaunchSpecification
+                                      ::
+                                      !(Maybe
+                                          ImportInstanceLaunchSpecification),
+                                      _iiDiskImages :: !(Maybe [DiskImage]),
+                                      _iiDescription :: !(Maybe Text),
+                                      _iiDryRun :: !(Maybe Bool),
+                                      _iiPlatform :: !PlatformValues}
+                        deriving (Eq, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'ImportInstance' with the minimum fields required to make a request.
 --
@@ -78,15 +76,10 @@ data ImportInstance =
 importInstance
     :: PlatformValues -- ^ 'iiPlatform'
     -> ImportInstance
-importInstance pPlatform_ =
-  ImportInstance'
-    { _iiLaunchSpecification = Nothing
-    , _iiDiskImages = Nothing
-    , _iiDescription = Nothing
-    , _iiDryRun = Nothing
-    , _iiPlatform = pPlatform_
-    }
-
+importInstance pPlatform_
+  = ImportInstance'{_iiLaunchSpecification = Nothing,
+                    _iiDiskImages = Nothing, _iiDescription = Nothing,
+                    _iiDryRun = Nothing, _iiPlatform = pPlatform_}
 
 -- | The launch specification.
 iiLaunchSpecification :: Lens' ImportInstance (Maybe ImportInstanceLaunchSpecification)
@@ -138,13 +131,13 @@ instance ToQuery ImportInstance where
                "DryRun" =: _iiDryRun, "Platform" =: _iiPlatform]
 
 -- | /See:/ 'importInstanceResponse' smart constructor.
-data ImportInstanceResponse =
-  ImportInstanceResponse'
-    { _iirsConversionTask :: !(Maybe ConversionTask)
-    , _iirsResponseStatus :: !Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data ImportInstanceResponse = ImportInstanceResponse'{_iirsConversionTask
+                                                      ::
+                                                      !(Maybe ConversionTask),
+                                                      _iirsResponseStatus ::
+                                                      !Int}
+                                deriving (Eq, Read, Show, Data, Typeable,
+                                          Generic)
 
 -- | Creates a value of 'ImportInstanceResponse' with the minimum fields required to make a request.
 --
@@ -156,10 +149,10 @@ data ImportInstanceResponse =
 importInstanceResponse
     :: Int -- ^ 'iirsResponseStatus'
     -> ImportInstanceResponse
-importInstanceResponse pResponseStatus_ =
-  ImportInstanceResponse'
-    {_iirsConversionTask = Nothing, _iirsResponseStatus = pResponseStatus_}
-
+importInstanceResponse pResponseStatus_
+  = ImportInstanceResponse'{_iirsConversionTask =
+                              Nothing,
+                            _iirsResponseStatus = pResponseStatus_}
 
 -- | Information about the conversion task.
 iirsConversionTask :: Lens' ImportInstanceResponse (Maybe ConversionTask)

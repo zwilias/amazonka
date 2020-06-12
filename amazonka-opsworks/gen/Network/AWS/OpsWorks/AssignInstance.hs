@@ -47,19 +47,15 @@ module Network.AWS.OpsWorks.AssignInstance
 
 import Network.AWS.Lens
 import Network.AWS.OpsWorks.Types
-import Network.AWS.OpsWorks.Types.Product
 import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 
 -- | /See:/ 'assignInstance' smart constructor.
-data AssignInstance =
-  AssignInstance'
-    { _aiInstanceId :: !Text
-    , _aiLayerIds   :: ![Text]
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data AssignInstance = AssignInstance'{_aiInstanceId
+                                      :: !Text,
+                                      _aiLayerIds :: ![Text]}
+                        deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'AssignInstance' with the minimum fields required to make a request.
 --
@@ -71,9 +67,9 @@ data AssignInstance =
 assignInstance
     :: Text -- ^ 'aiInstanceId'
     -> AssignInstance
-assignInstance pInstanceId_ =
-  AssignInstance' {_aiInstanceId = pInstanceId_, _aiLayerIds = mempty}
-
+assignInstance pInstanceId_
+  = AssignInstance'{_aiInstanceId = pInstanceId_,
+                    _aiLayerIds = mempty}
 
 -- | The instance ID.
 aiInstanceId :: Lens' AssignInstance Text
@@ -115,16 +111,14 @@ instance ToQuery AssignInstance where
         toQuery = const mempty
 
 -- | /See:/ 'assignInstanceResponse' smart constructor.
-data AssignInstanceResponse =
-  AssignInstanceResponse'
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data AssignInstanceResponse = AssignInstanceResponse'
+                                deriving (Eq, Read, Show, Data, Typeable,
+                                          Generic)
 
 -- | Creates a value of 'AssignInstanceResponse' with the minimum fields required to make a request.
 --
 assignInstanceResponse
     :: AssignInstanceResponse
 assignInstanceResponse = AssignInstanceResponse'
-
 
 instance NFData AssignInstanceResponse where

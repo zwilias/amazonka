@@ -1,4 +1,4 @@
-{-# LANGUAGE OverloadedStrings #-}
+{-# LANGUAGE OverloadedStrings  #-}
 
 -- Derived from AWS service descriptions, licensed under Apache 2.0.
 
@@ -271,104 +271,139 @@ module Network.AWS.IoTAnalytics.Types
     , sqdaSqlQuery
     ) where
 
-import Network.AWS.IoTAnalytics.Types.Product
-import Network.AWS.IoTAnalytics.Types.Sum
 import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.Sign.V4
+import Network.AWS.IoTAnalytics.Types.ChannelStatus
+import Network.AWS.IoTAnalytics.Types.DatasetContentState
+import Network.AWS.IoTAnalytics.Types.DatasetStatus
+import Network.AWS.IoTAnalytics.Types.DatastoreStatus
+import Network.AWS.IoTAnalytics.Types.LoggingLevel
+import Network.AWS.IoTAnalytics.Types.ReprocessingStatus
+import Network.AWS.IoTAnalytics.Types.AddAttributesActivity
+import Network.AWS.IoTAnalytics.Types.BatchPutMessageErrorEntry
+import Network.AWS.IoTAnalytics.Types.Channel
+import Network.AWS.IoTAnalytics.Types.ChannelActivity
+import Network.AWS.IoTAnalytics.Types.ChannelSummary
+import Network.AWS.IoTAnalytics.Types.Dataset
+import Network.AWS.IoTAnalytics.Types.DatasetAction
+import Network.AWS.IoTAnalytics.Types.DatasetContentStatus
+import Network.AWS.IoTAnalytics.Types.DatasetEntry
+import Network.AWS.IoTAnalytics.Types.DatasetSummary
+import Network.AWS.IoTAnalytics.Types.DatasetTrigger
+import Network.AWS.IoTAnalytics.Types.Datastore
+import Network.AWS.IoTAnalytics.Types.DatastoreActivity
+import Network.AWS.IoTAnalytics.Types.DatastoreSummary
+import Network.AWS.IoTAnalytics.Types.DeviceRegistryEnrichActivity
+import Network.AWS.IoTAnalytics.Types.DeviceShadowEnrichActivity
+import Network.AWS.IoTAnalytics.Types.FilterActivity
+import Network.AWS.IoTAnalytics.Types.LambdaActivity
+import Network.AWS.IoTAnalytics.Types.LoggingOptions
+import Network.AWS.IoTAnalytics.Types.MathActivity
+import Network.AWS.IoTAnalytics.Types.Message
+import Network.AWS.IoTAnalytics.Types.Pipeline
+import Network.AWS.IoTAnalytics.Types.PipelineActivity
+import Network.AWS.IoTAnalytics.Types.PipelineSummary
+import Network.AWS.IoTAnalytics.Types.RemoveAttributesActivity
+import Network.AWS.IoTAnalytics.Types.ReprocessingSummary
+import Network.AWS.IoTAnalytics.Types.RetentionPeriod
+import Network.AWS.IoTAnalytics.Types.Schedule
+import Network.AWS.IoTAnalytics.Types.SelectAttributesActivity
+import Network.AWS.IoTAnalytics.Types.SqlQueryDatasetAction
 
 -- | API version @2017-11-27@ of the Amazon IoT Analytics SDK configuration.
 ioTAnalytics :: Service
-ioTAnalytics =
-  Service
-    { _svcAbbrev = "IoTAnalytics"
-    , _svcSigner = v4
-    , _svcPrefix = "iotanalytics"
-    , _svcVersion = "2017-11-27"
-    , _svcEndpoint = defaultEndpoint ioTAnalytics
-    , _svcTimeout = Just 70
-    , _svcCheck = statusSuccess
-    , _svcError = parseJSONError "IoTAnalytics"
-    , _svcRetry = retry
-    }
-  where
-    retry =
-      Exponential
-        { _retryBase = 5.0e-2
-        , _retryGrowth = 2
-        , _retryAttempts = 5
-        , _retryCheck = check
-        }
-    check e
-      | has (hasCode "ThrottledException" . hasStatus 400) e =
-        Just "throttled_exception"
-      | has (hasStatus 429) e = Just "too_many_requests"
-      | has (hasCode "ThrottlingException" . hasStatus 400) e =
-        Just "throttling_exception"
-      | has (hasCode "Throttling" . hasStatus 400) e = Just "throttling"
-      | has (hasStatus 504) e = Just "gateway_timeout"
-      | has (hasCode "RequestThrottledException" . hasStatus 400) e =
-        Just "request_throttled_exception"
-      | has (hasStatus 502) e = Just "bad_gateway"
-      | has (hasStatus 503) e = Just "service_unavailable"
-      | has (hasStatus 500) e = Just "general_server_error"
-      | has (hasStatus 509) e = Just "limit_exceeded"
-      | otherwise = Nothing
-
+ioTAnalytics
+  = Service{_svcAbbrev = "IoTAnalytics",
+            _svcSigner = v4, _svcPrefix = "iotanalytics",
+            _svcVersion = "2017-11-27",
+            _svcEndpoint = defaultEndpoint ioTAnalytics,
+            _svcTimeout = Just 70, _svcCheck = statusSuccess,
+            _svcError = parseJSONError "IoTAnalytics",
+            _svcRetry = retry}
+  where retry
+          = Exponential{_retryBase = 5.0e-2, _retryGrowth = 2,
+                        _retryAttempts = 5, _retryCheck = check}
+        check e
+          | has (hasCode "ThrottledException" . hasStatus 400)
+              e
+            = Just "throttled_exception"
+          | has (hasStatus 429) e = Just "too_many_requests"
+          | has (hasCode "ThrottlingException" . hasStatus 400)
+              e
+            = Just "throttling_exception"
+          | has (hasCode "Throttling" . hasStatus 400) e =
+            Just "throttling"
+          | has (hasStatus 504) e = Just "gateway_timeout"
+          | has
+              (hasCode "RequestThrottledException" . hasStatus 400)
+              e
+            = Just "request_throttled_exception"
+          | has (hasStatus 502) e = Just "bad_gateway"
+          | has (hasStatus 503) e = Just "service_unavailable"
+          | has (hasStatus 500) e = Just "general_server_error"
+          | has (hasStatus 509) e = Just "limit_exceeded"
+          | otherwise = Nothing
 
 -- | The request was not valid.
 --
 --
 _InvalidRequestException :: AsError a => Getting (First ServiceError) a ServiceError
-_InvalidRequestException =
-  _MatchServiceError ioTAnalytics "InvalidRequestException" . hasStatus 400
-
+_InvalidRequestException
+  = _MatchServiceError ioTAnalytics
+      "InvalidRequestException"
+      . hasStatus 400
 
 -- | A resource with the same name already exists.
 --
 --
 _ResourceAlreadyExistsException :: AsError a => Getting (First ServiceError) a ServiceError
-_ResourceAlreadyExistsException =
-  _MatchServiceError ioTAnalytics "ResourceAlreadyExistsException" .
-  hasStatus 409
-
+_ResourceAlreadyExistsException
+  = _MatchServiceError ioTAnalytics
+      "ResourceAlreadyExistsException"
+      . hasStatus 409
 
 -- | The request was denied due to request throttling.
 --
 --
 _ThrottlingException :: AsError a => Getting (First ServiceError) a ServiceError
-_ThrottlingException =
-  _MatchServiceError ioTAnalytics "ThrottlingException" . hasStatus 429
-
+_ThrottlingException
+  = _MatchServiceError ioTAnalytics
+      "ThrottlingException"
+      . hasStatus 429
 
 -- | There was an internal failure.
 --
 --
 _InternalFailureException :: AsError a => Getting (First ServiceError) a ServiceError
-_InternalFailureException =
-  _MatchServiceError ioTAnalytics "InternalFailureException" . hasStatus 500
-
+_InternalFailureException
+  = _MatchServiceError ioTAnalytics
+      "InternalFailureException"
+      . hasStatus 500
 
 -- | The service is temporarily unavailable.
 --
 --
 _ServiceUnavailableException :: AsError a => Getting (First ServiceError) a ServiceError
-_ServiceUnavailableException =
-  _MatchServiceError ioTAnalytics "ServiceUnavailableException" . hasStatus 503
-
+_ServiceUnavailableException
+  = _MatchServiceError ioTAnalytics
+      "ServiceUnavailableException"
+      . hasStatus 503
 
 -- | A resource with the specified name could not be found.
 --
 --
 _ResourceNotFoundException :: AsError a => Getting (First ServiceError) a ServiceError
-_ResourceNotFoundException =
-  _MatchServiceError ioTAnalytics "ResourceNotFoundException" . hasStatus 404
-
+_ResourceNotFoundException
+  = _MatchServiceError ioTAnalytics
+      "ResourceNotFoundException"
+      . hasStatus 404
 
 -- | The command caused an internal limit to be exceeded.
 --
 --
 _LimitExceededException :: AsError a => Getting (First ServiceError) a ServiceError
-_LimitExceededException =
-  _MatchServiceError ioTAnalytics "LimitExceededException" . hasStatus 410
-
+_LimitExceededException
+  = _MatchServiceError ioTAnalytics
+      "LimitExceededException"
+      . hasStatus 410

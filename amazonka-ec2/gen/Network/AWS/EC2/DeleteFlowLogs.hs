@@ -39,20 +39,16 @@ module Network.AWS.EC2.DeleteFlowLogs
     ) where
 
 import Network.AWS.EC2.Types
-import Network.AWS.EC2.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 
 -- | /See:/ 'deleteFlowLogs' smart constructor.
-data DeleteFlowLogs =
-  DeleteFlowLogs'
-    { _dflDryRun     :: !(Maybe Bool)
-    , _dflFlowLogIds :: ![Text]
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data DeleteFlowLogs = DeleteFlowLogs'{_dflDryRun ::
+                                      !(Maybe Bool),
+                                      _dflFlowLogIds :: ![Text]}
+                        deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'DeleteFlowLogs' with the minimum fields required to make a request.
 --
@@ -63,8 +59,9 @@ data DeleteFlowLogs =
 -- * 'dflFlowLogIds' - One or more flow log IDs. Constraint: Maximum of 1000 flow log IDs.
 deleteFlowLogs
     :: DeleteFlowLogs
-deleteFlowLogs = DeleteFlowLogs' {_dflDryRun = Nothing, _dflFlowLogIds = mempty}
-
+deleteFlowLogs
+  = DeleteFlowLogs'{_dflDryRun = Nothing,
+                    _dflFlowLogIds = mempty}
 
 -- | Checks whether you have the required permissions for the action, without actually making the request, and provides an error response. If you have the required permissions, the error response is @DryRunOperation@ . Otherwise, it is @UnauthorizedOperation@ .
 dflDryRun :: Lens' DeleteFlowLogs (Maybe Bool)
@@ -104,13 +101,14 @@ instance ToQuery DeleteFlowLogs where
                toQueryList "FlowLogId" _dflFlowLogIds]
 
 -- | /See:/ 'deleteFlowLogsResponse' smart constructor.
-data DeleteFlowLogsResponse =
-  DeleteFlowLogsResponse'
-    { _dflrsUnsuccessful   :: !(Maybe [UnsuccessfulItem])
-    , _dflrsResponseStatus :: !Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data DeleteFlowLogsResponse = DeleteFlowLogsResponse'{_dflrsUnsuccessful
+                                                      ::
+                                                      !(Maybe
+                                                          [UnsuccessfulItem]),
+                                                      _dflrsResponseStatus ::
+                                                      !Int}
+                                deriving (Eq, Read, Show, Data, Typeable,
+                                          Generic)
 
 -- | Creates a value of 'DeleteFlowLogsResponse' with the minimum fields required to make a request.
 --
@@ -122,10 +120,10 @@ data DeleteFlowLogsResponse =
 deleteFlowLogsResponse
     :: Int -- ^ 'dflrsResponseStatus'
     -> DeleteFlowLogsResponse
-deleteFlowLogsResponse pResponseStatus_ =
-  DeleteFlowLogsResponse'
-    {_dflrsUnsuccessful = Nothing, _dflrsResponseStatus = pResponseStatus_}
-
+deleteFlowLogsResponse pResponseStatus_
+  = DeleteFlowLogsResponse'{_dflrsUnsuccessful =
+                              Nothing,
+                            _dflrsResponseStatus = pResponseStatus_}
 
 -- | Information about the flow logs that could not be deleted successfully.
 dflrsUnsuccessful :: Lens' DeleteFlowLogsResponse [UnsuccessfulItem]

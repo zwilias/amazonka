@@ -53,16 +53,12 @@ import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 import Network.AWS.ServerlessApplicationRepository.Types
-import Network.AWS.ServerlessApplicationRepository.Types.Product
 
 -- | /See:/ 'getApplication' smart constructor.
-data GetApplication =
-  GetApplication'
-    { _gaSemanticVersion :: !(Maybe Text)
-    , _gaApplicationId   :: !Text
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data GetApplication = GetApplication'{_gaSemanticVersion
+                                      :: !(Maybe Text),
+                                      _gaApplicationId :: !Text}
+                        deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'GetApplication' with the minimum fields required to make a request.
 --
@@ -74,10 +70,9 @@ data GetApplication =
 getApplication
     :: Text -- ^ 'gaApplicationId'
     -> GetApplication
-getApplication pApplicationId_ =
-  GetApplication'
-    {_gaSemanticVersion = Nothing, _gaApplicationId = pApplicationId_}
-
+getApplication pApplicationId_
+  = GetApplication'{_gaSemanticVersion = Nothing,
+                    _gaApplicationId = pApplicationId_}
 
 -- | The semantic version of the application to get.
 gaSemanticVersion :: Lens' GetApplication (Maybe Text)
@@ -126,23 +121,32 @@ instance ToQuery GetApplication where
           = mconcat ["semanticVersion" =: _gaSemanticVersion]
 
 -- | /See:/ 'getApplicationResponse' smart constructor.
-data GetApplicationResponse =
-  GetApplicationResponse'
-    { _garsCreationTime   :: !(Maybe Text)
-    , _garsHomePageURL    :: !(Maybe Text)
-    , _garsLicenseURL     :: !(Maybe Text)
-    , _garsReadmeURL      :: !(Maybe Text)
-    , _garsApplicationId  :: !(Maybe Text)
-    , _garsName           :: !(Maybe Text)
-    , _garsVersion        :: !(Maybe Version)
-    , _garsAuthor         :: !(Maybe Text)
-    , _garsLabels         :: !(Maybe [Text])
-    , _garsDescription    :: !(Maybe Text)
-    , _garsSpdxLicenseId  :: !(Maybe Text)
-    , _garsResponseStatus :: !Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data GetApplicationResponse = GetApplicationResponse'{_garsCreationTime
+                                                      :: !(Maybe Text),
+                                                      _garsHomePageURL ::
+                                                      !(Maybe Text),
+                                                      _garsLicenseURL ::
+                                                      !(Maybe Text),
+                                                      _garsReadmeURL ::
+                                                      !(Maybe Text),
+                                                      _garsApplicationId ::
+                                                      !(Maybe Text),
+                                                      _garsName ::
+                                                      !(Maybe Text),
+                                                      _garsVersion ::
+                                                      !(Maybe Version),
+                                                      _garsAuthor ::
+                                                      !(Maybe Text),
+                                                      _garsLabels ::
+                                                      !(Maybe [Text]),
+                                                      _garsDescription ::
+                                                      !(Maybe Text),
+                                                      _garsSpdxLicenseId ::
+                                                      !(Maybe Text),
+                                                      _garsResponseStatus ::
+                                                      !Int}
+                                deriving (Eq, Read, Show, Data, Typeable,
+                                          Generic)
 
 -- | Creates a value of 'GetApplicationResponse' with the minimum fields required to make a request.
 --
@@ -174,22 +178,16 @@ data GetApplicationResponse =
 getApplicationResponse
     :: Int -- ^ 'garsResponseStatus'
     -> GetApplicationResponse
-getApplicationResponse pResponseStatus_ =
-  GetApplicationResponse'
-    { _garsCreationTime = Nothing
-    , _garsHomePageURL = Nothing
-    , _garsLicenseURL = Nothing
-    , _garsReadmeURL = Nothing
-    , _garsApplicationId = Nothing
-    , _garsName = Nothing
-    , _garsVersion = Nothing
-    , _garsAuthor = Nothing
-    , _garsLabels = Nothing
-    , _garsDescription = Nothing
-    , _garsSpdxLicenseId = Nothing
-    , _garsResponseStatus = pResponseStatus_
-    }
-
+getApplicationResponse pResponseStatus_
+  = GetApplicationResponse'{_garsCreationTime =
+                              Nothing,
+                            _garsHomePageURL = Nothing,
+                            _garsLicenseURL = Nothing, _garsReadmeURL = Nothing,
+                            _garsApplicationId = Nothing, _garsName = Nothing,
+                            _garsVersion = Nothing, _garsAuthor = Nothing,
+                            _garsLabels = Nothing, _garsDescription = Nothing,
+                            _garsSpdxLicenseId = Nothing,
+                            _garsResponseStatus = pResponseStatus_}
 
 -- | The date/time this resource was created.
 garsCreationTime :: Lens' GetApplicationResponse (Maybe Text)

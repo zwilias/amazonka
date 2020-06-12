@@ -43,7 +43,6 @@ module Network.AWS.DeviceFarm.ListDevices
     ) where
 
 import Network.AWS.DeviceFarm.Types
-import Network.AWS.DeviceFarm.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Pager
 import Network.AWS.Prelude
@@ -55,14 +54,11 @@ import Network.AWS.Response
 --
 --
 -- /See:/ 'listDevices' smart constructor.
-data ListDevices =
-  ListDevices'
-    { _ldArn       :: !(Maybe Text)
-    , _ldFilters   :: !(Maybe [DeviceFilter])
-    , _ldNextToken :: !(Maybe Text)
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data ListDevices = ListDevices'{_ldArn ::
+                                !(Maybe Text),
+                                _ldFilters :: !(Maybe [DeviceFilter]),
+                                _ldNextToken :: !(Maybe Text)}
+                     deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'ListDevices' with the minimum fields required to make a request.
 --
@@ -75,9 +71,9 @@ data ListDevices =
 -- * 'ldNextToken' - An identifier that was returned from the previous call to this operation, which can be used to return the next set of items in the list.
 listDevices
     :: ListDevices
-listDevices =
-  ListDevices' {_ldArn = Nothing, _ldFilters = Nothing, _ldNextToken = Nothing}
-
+listDevices
+  = ListDevices'{_ldArn = Nothing,
+                 _ldFilters = Nothing, _ldNextToken = Nothing}
 
 -- | The Amazon Resource Name (ARN) of the project.
 ldArn :: Lens' ListDevices (Maybe Text)
@@ -140,14 +136,12 @@ instance ToQuery ListDevices where
 --
 --
 -- /See:/ 'listDevicesResponse' smart constructor.
-data ListDevicesResponse =
-  ListDevicesResponse'
-    { _ldrsNextToken      :: !(Maybe Text)
-    , _ldrsDevices        :: !(Maybe [Device])
-    , _ldrsResponseStatus :: !Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data ListDevicesResponse = ListDevicesResponse'{_ldrsNextToken
+                                                :: !(Maybe Text),
+                                                _ldrsDevices ::
+                                                !(Maybe [Device]),
+                                                _ldrsResponseStatus :: !Int}
+                             deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'ListDevicesResponse' with the minimum fields required to make a request.
 --
@@ -161,13 +155,10 @@ data ListDevicesResponse =
 listDevicesResponse
     :: Int -- ^ 'ldrsResponseStatus'
     -> ListDevicesResponse
-listDevicesResponse pResponseStatus_ =
-  ListDevicesResponse'
-    { _ldrsNextToken = Nothing
-    , _ldrsDevices = Nothing
-    , _ldrsResponseStatus = pResponseStatus_
-    }
-
+listDevicesResponse pResponseStatus_
+  = ListDevicesResponse'{_ldrsNextToken = Nothing,
+                         _ldrsDevices = Nothing,
+                         _ldrsResponseStatus = pResponseStatus_}
 
 -- | If the number of items that are returned is significantly large, this is an identifier that is also returned. It can be used in a subsequent call to this operation to return the next set of items in the list.
 ldrsNextToken :: Lens' ListDevicesResponse (Maybe Text)

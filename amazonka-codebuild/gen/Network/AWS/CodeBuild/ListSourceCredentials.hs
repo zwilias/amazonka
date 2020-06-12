@@ -18,7 +18,7 @@
 -- Stability   : auto-generated
 -- Portability : non-portable (GHC extensions)
 --
--- Returns a list of @SourceCredentialsInfo@ objects.
+-- Returns a list of @SourceCredentialsInfo@ objects. 
 --
 --
 module Network.AWS.CodeBuild.ListSourceCredentials
@@ -36,24 +36,21 @@ module Network.AWS.CodeBuild.ListSourceCredentials
     ) where
 
 import Network.AWS.CodeBuild.Types
-import Network.AWS.CodeBuild.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 
 -- | /See:/ 'listSourceCredentials' smart constructor.
-data ListSourceCredentials =
-  ListSourceCredentials'
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data ListSourceCredentials = ListSourceCredentials'
+                               deriving (Eq, Read, Show, Data, Typeable,
+                                         Generic)
 
 -- | Creates a value of 'ListSourceCredentials' with the minimum fields required to make a request.
 --
 listSourceCredentials
     :: ListSourceCredentials
 listSourceCredentials = ListSourceCredentials'
-
 
 instance AWSRequest ListSourceCredentials where
         type Rs ListSourceCredentials =
@@ -90,32 +87,31 @@ instance ToQuery ListSourceCredentials where
         toQuery = const mempty
 
 -- | /See:/ 'listSourceCredentialsResponse' smart constructor.
-data ListSourceCredentialsResponse =
-  ListSourceCredentialsResponse'
-    { _lscrsSourceCredentialsInfos :: !(Maybe [SourceCredentialsInfo])
-    , _lscrsResponseStatus         :: !Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data ListSourceCredentialsResponse = ListSourceCredentialsResponse'{_lscrsSourceCredentialsInfos
+                                                                    ::
+                                                                    !(Maybe
+                                                                        [SourceCredentialsInfo]),
+                                                                    _lscrsResponseStatus
+                                                                    :: !Int}
+                                       deriving (Eq, Read, Show, Data, Typeable,
+                                                 Generic)
 
 -- | Creates a value of 'ListSourceCredentialsResponse' with the minimum fields required to make a request.
 --
 -- Use one of the following lenses to modify other fields as desired:
 --
--- * 'lscrsSourceCredentialsInfos' - A list of @SourceCredentialsInfo@ objects. Each @SourceCredentialsInfo@ object includes the authentication type, token ARN, and type of source provider for one set of credentials.
+-- * 'lscrsSourceCredentialsInfos' - A list of @SourceCredentialsInfo@ objects. Each @SourceCredentialsInfo@ object includes the authentication type, token ARN, and type of source provider for one set of credentials. 
 --
 -- * 'lscrsResponseStatus' - -- | The response status code.
 listSourceCredentialsResponse
     :: Int -- ^ 'lscrsResponseStatus'
     -> ListSourceCredentialsResponse
-listSourceCredentialsResponse pResponseStatus_ =
-  ListSourceCredentialsResponse'
-    { _lscrsSourceCredentialsInfos = Nothing
-    , _lscrsResponseStatus = pResponseStatus_
-    }
+listSourceCredentialsResponse pResponseStatus_
+  = ListSourceCredentialsResponse'{_lscrsSourceCredentialsInfos
+                                     = Nothing,
+                                   _lscrsResponseStatus = pResponseStatus_}
 
-
--- | A list of @SourceCredentialsInfo@ objects. Each @SourceCredentialsInfo@ object includes the authentication type, token ARN, and type of source provider for one set of credentials.
+-- | A list of @SourceCredentialsInfo@ objects. Each @SourceCredentialsInfo@ object includes the authentication type, token ARN, and type of source provider for one set of credentials. 
 lscrsSourceCredentialsInfos :: Lens' ListSourceCredentialsResponse [SourceCredentialsInfo]
 lscrsSourceCredentialsInfos = lens _lscrsSourceCredentialsInfos (\ s a -> s{_lscrsSourceCredentialsInfos = a}) . _Default . _Coerce
 

@@ -38,18 +38,14 @@ module Network.AWS.OpsWorks.UnassignInstance
 
 import Network.AWS.Lens
 import Network.AWS.OpsWorks.Types
-import Network.AWS.OpsWorks.Types.Product
 import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 
 -- | /See:/ 'unassignInstance' smart constructor.
-newtype UnassignInstance =
-  UnassignInstance'
-    { _uInstanceId :: Text
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+newtype UnassignInstance = UnassignInstance'{_uInstanceId
+                                             :: Text}
+                             deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'UnassignInstance' with the minimum fields required to make a request.
 --
@@ -59,8 +55,8 @@ newtype UnassignInstance =
 unassignInstance
     :: Text -- ^ 'uInstanceId'
     -> UnassignInstance
-unassignInstance pInstanceId_ = UnassignInstance' {_uInstanceId = pInstanceId_}
-
+unassignInstance pInstanceId_
+  = UnassignInstance'{_uInstanceId = pInstanceId_}
 
 -- | The instance ID.
 uInstanceId :: Lens' UnassignInstance Text
@@ -96,16 +92,14 @@ instance ToQuery UnassignInstance where
         toQuery = const mempty
 
 -- | /See:/ 'unassignInstanceResponse' smart constructor.
-data UnassignInstanceResponse =
-  UnassignInstanceResponse'
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data UnassignInstanceResponse = UnassignInstanceResponse'
+                                  deriving (Eq, Read, Show, Data, Typeable,
+                                            Generic)
 
 -- | Creates a value of 'UnassignInstanceResponse' with the minimum fields required to make a request.
 --
 unassignInstanceResponse
     :: UnassignInstanceResponse
 unassignInstanceResponse = UnassignInstanceResponse'
-
 
 instance NFData UnassignInstanceResponse where

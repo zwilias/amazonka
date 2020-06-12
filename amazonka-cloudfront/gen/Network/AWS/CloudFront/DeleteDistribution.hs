@@ -18,7 +18,7 @@
 -- Stability   : auto-generated
 -- Portability : non-portable (GHC extensions)
 --
--- Delete a distribution.
+-- Delete a distribution. 
 --
 --
 module Network.AWS.CloudFront.DeleteDistribution
@@ -36,7 +36,6 @@ module Network.AWS.CloudFront.DeleteDistribution
     ) where
 
 import Network.AWS.CloudFront.Types
-import Network.AWS.CloudFront.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.Request
@@ -45,9 +44,9 @@ import Network.AWS.Response
 -- | This action deletes a web distribution. To delete a web distribution using the CloudFront API, perform the following steps.
 --
 --
--- __To delete a web distribution using the CloudFront API:__
+-- __To delete a web distribution using the CloudFront API:__ 
 --
---     * Disable the web distribution
+--     * Disable the web distribution 
 --
 --     * Submit a @GET Distribution Config@ request to get the current configuration and the @Etag@ header for the distribution.
 --
@@ -69,33 +68,30 @@ import Network.AWS.Response
 --
 --
 -- /See:/ 'deleteDistribution' smart constructor.
-data DeleteDistribution =
-  DeleteDistribution'
-    { _ddIfMatch :: !(Maybe Text)
-    , _ddId      :: !Text
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data DeleteDistribution = DeleteDistribution'{_ddIfMatch
+                                              :: !(Maybe Text),
+                                              _ddId :: !Text}
+                            deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'DeleteDistribution' with the minimum fields required to make a request.
 --
 -- Use one of the following lenses to modify other fields as desired:
 --
--- * 'ddIfMatch' - The value of the @ETag@ header that you received when you disabled the distribution. For example: @E2QWRUHAPOMQZL@ .
+-- * 'ddIfMatch' - The value of the @ETag@ header that you received when you disabled the distribution. For example: @E2QWRUHAPOMQZL@ . 
 --
--- * 'ddId' - The distribution ID.
+-- * 'ddId' - The distribution ID. 
 deleteDistribution
     :: Text -- ^ 'ddId'
     -> DeleteDistribution
-deleteDistribution pId_ =
-  DeleteDistribution' {_ddIfMatch = Nothing, _ddId = pId_}
+deleteDistribution pId_
+  = DeleteDistribution'{_ddIfMatch = Nothing,
+                        _ddId = pId_}
 
-
--- | The value of the @ETag@ header that you received when you disabled the distribution. For example: @E2QWRUHAPOMQZL@ .
+-- | The value of the @ETag@ header that you received when you disabled the distribution. For example: @E2QWRUHAPOMQZL@ . 
 ddIfMatch :: Lens' DeleteDistribution (Maybe Text)
 ddIfMatch = lens _ddIfMatch (\ s a -> s{_ddIfMatch = a})
 
--- | The distribution ID.
+-- | The distribution ID. 
 ddId :: Lens' DeleteDistribution Text
 ddId = lens _ddId (\ s a -> s{_ddId = a})
 
@@ -121,16 +117,15 @@ instance ToQuery DeleteDistribution where
         toQuery = const mempty
 
 -- | /See:/ 'deleteDistributionResponse' smart constructor.
-data DeleteDistributionResponse =
-  DeleteDistributionResponse'
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data DeleteDistributionResponse = DeleteDistributionResponse'
+                                    deriving (Eq, Read, Show, Data, Typeable,
+                                              Generic)
 
 -- | Creates a value of 'DeleteDistributionResponse' with the minimum fields required to make a request.
 --
 deleteDistributionResponse
     :: DeleteDistributionResponse
-deleteDistributionResponse = DeleteDistributionResponse'
-
+deleteDistributionResponse
+  = DeleteDistributionResponse'
 
 instance NFData DeleteDistributionResponse where

@@ -39,19 +39,16 @@ module Network.AWS.CloudWatchLogs.DisassociateKMSKey
     ) where
 
 import Network.AWS.CloudWatchLogs.Types
-import Network.AWS.CloudWatchLogs.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 
 -- | /See:/ 'disassociateKMSKey' smart constructor.
-newtype DisassociateKMSKey =
-  DisassociateKMSKey'
-    { _dkkLogGroupName :: Text
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+newtype DisassociateKMSKey = DisassociateKMSKey'{_dkkLogGroupName
+                                                 :: Text}
+                               deriving (Eq, Read, Show, Data, Typeable,
+                                         Generic)
 
 -- | Creates a value of 'DisassociateKMSKey' with the minimum fields required to make a request.
 --
@@ -61,9 +58,9 @@ newtype DisassociateKMSKey =
 disassociateKMSKey
     :: Text -- ^ 'dkkLogGroupName'
     -> DisassociateKMSKey
-disassociateKMSKey pLogGroupName_ =
-  DisassociateKMSKey' {_dkkLogGroupName = pLogGroupName_}
-
+disassociateKMSKey pLogGroupName_
+  = DisassociateKMSKey'{_dkkLogGroupName =
+                          pLogGroupName_}
 
 -- | The name of the log group.
 dkkLogGroupName :: Lens' DisassociateKMSKey Text
@@ -101,16 +98,15 @@ instance ToQuery DisassociateKMSKey where
         toQuery = const mempty
 
 -- | /See:/ 'disassociateKMSKeyResponse' smart constructor.
-data DisassociateKMSKeyResponse =
-  DisassociateKMSKeyResponse'
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data DisassociateKMSKeyResponse = DisassociateKMSKeyResponse'
+                                    deriving (Eq, Read, Show, Data, Typeable,
+                                              Generic)
 
 -- | Creates a value of 'DisassociateKMSKeyResponse' with the minimum fields required to make a request.
 --
 disassociateKMSKeyResponse
     :: DisassociateKMSKeyResponse
-disassociateKMSKeyResponse = DisassociateKMSKeyResponse'
-
+disassociateKMSKeyResponse
+  = DisassociateKMSKeyResponse'
 
 instance NFData DisassociateKMSKeyResponse where

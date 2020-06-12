@@ -43,15 +43,11 @@ import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 import Network.AWS.S3.Types
-import Network.AWS.S3.Types.Product
 
 -- | /See:/ 'getBucketWebsite' smart constructor.
-newtype GetBucketWebsite =
-  GetBucketWebsite'
-    { _gbwBucket :: BucketName
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+newtype GetBucketWebsite = GetBucketWebsite'{_gbwBucket
+                                             :: BucketName}
+                             deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'GetBucketWebsite' with the minimum fields required to make a request.
 --
@@ -61,8 +57,8 @@ newtype GetBucketWebsite =
 getBucketWebsite
     :: BucketName -- ^ 'gbwBucket'
     -> GetBucketWebsite
-getBucketWebsite pBucket_ = GetBucketWebsite' {_gbwBucket = pBucket_}
-
+getBucketWebsite pBucket_
+  = GetBucketWebsite'{_gbwBucket = pBucket_}
 
 -- | Undocumented member.
 gbwBucket :: Lens' GetBucketWebsite BucketName
@@ -98,16 +94,23 @@ instance ToQuery GetBucketWebsite where
         toQuery = const (mconcat ["website"])
 
 -- | /See:/ 'getBucketWebsiteResponse' smart constructor.
-data GetBucketWebsiteResponse =
-  GetBucketWebsiteResponse'
-    { _gbwrsRedirectAllRequestsTo :: !(Maybe RedirectAllRequestsTo)
-    , _gbwrsErrorDocument         :: !(Maybe ErrorDocument)
-    , _gbwrsIndexDocument         :: !(Maybe IndexDocument)
-    , _gbwrsRoutingRules          :: !(Maybe [RoutingRule])
-    , _gbwrsResponseStatus        :: !Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data GetBucketWebsiteResponse = GetBucketWebsiteResponse'{_gbwrsRedirectAllRequestsTo
+                                                          ::
+                                                          !(Maybe
+                                                              RedirectAllRequestsTo),
+                                                          _gbwrsErrorDocument ::
+                                                          !(Maybe
+                                                              ErrorDocument),
+                                                          _gbwrsIndexDocument ::
+                                                          !(Maybe
+                                                              IndexDocument),
+                                                          _gbwrsRoutingRules ::
+                                                          !(Maybe
+                                                              [RoutingRule]),
+                                                          _gbwrsResponseStatus
+                                                          :: !Int}
+                                  deriving (Eq, Read, Show, Data, Typeable,
+                                            Generic)
 
 -- | Creates a value of 'GetBucketWebsiteResponse' with the minimum fields required to make a request.
 --
@@ -125,15 +128,13 @@ data GetBucketWebsiteResponse =
 getBucketWebsiteResponse
     :: Int -- ^ 'gbwrsResponseStatus'
     -> GetBucketWebsiteResponse
-getBucketWebsiteResponse pResponseStatus_ =
-  GetBucketWebsiteResponse'
-    { _gbwrsRedirectAllRequestsTo = Nothing
-    , _gbwrsErrorDocument = Nothing
-    , _gbwrsIndexDocument = Nothing
-    , _gbwrsRoutingRules = Nothing
-    , _gbwrsResponseStatus = pResponseStatus_
-    }
-
+getBucketWebsiteResponse pResponseStatus_
+  = GetBucketWebsiteResponse'{_gbwrsRedirectAllRequestsTo
+                                = Nothing,
+                              _gbwrsErrorDocument = Nothing,
+                              _gbwrsIndexDocument = Nothing,
+                              _gbwrsRoutingRules = Nothing,
+                              _gbwrsResponseStatus = pResponseStatus_}
 
 -- | Undocumented member.
 gbwrsRedirectAllRequestsTo :: Lens' GetBucketWebsiteResponse (Maybe RedirectAllRequestsTo)

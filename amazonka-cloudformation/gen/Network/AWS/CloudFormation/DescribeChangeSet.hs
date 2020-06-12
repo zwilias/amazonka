@@ -55,7 +55,6 @@ module Network.AWS.CloudFormation.DescribeChangeSet
     ) where
 
 import Network.AWS.CloudFormation.Types
-import Network.AWS.CloudFormation.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.Request
@@ -66,14 +65,11 @@ import Network.AWS.Response
 --
 --
 -- /See:/ 'describeChangeSet' smart constructor.
-data DescribeChangeSet =
-  DescribeChangeSet'
-    { _desNextToken     :: !(Maybe Text)
-    , _desStackName     :: !(Maybe Text)
-    , _desChangeSetName :: !Text
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data DescribeChangeSet = DescribeChangeSet'{_desNextToken
+                                            :: !(Maybe Text),
+                                            _desStackName :: !(Maybe Text),
+                                            _desChangeSetName :: !Text}
+                           deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'DescribeChangeSet' with the minimum fields required to make a request.
 --
@@ -87,13 +83,10 @@ data DescribeChangeSet =
 describeChangeSet
     :: Text -- ^ 'desChangeSetName'
     -> DescribeChangeSet
-describeChangeSet pChangeSetName_ =
-  DescribeChangeSet'
-    { _desNextToken = Nothing
-    , _desStackName = Nothing
-    , _desChangeSetName = pChangeSetName_
-    }
-
+describeChangeSet pChangeSetName_
+  = DescribeChangeSet'{_desNextToken = Nothing,
+                       _desStackName = Nothing,
+                       _desChangeSetName = pChangeSetName_}
 
 -- | A string (provided by the 'DescribeChangeSet' response output) that identifies the next page of information that you want to retrieve.
 desNextToken :: Lens' DescribeChangeSet (Maybe Text)
@@ -165,28 +158,49 @@ instance ToQuery DescribeChangeSet where
 --
 --
 -- /See:/ 'describeChangeSetResponse' smart constructor.
-data DescribeChangeSetResponse =
-  DescribeChangeSetResponse'
-    { _desrsCreationTime          :: !(Maybe ISO8601)
-    , _desrsChanges               :: !(Maybe [Change])
-    , _desrsNotificationARNs      :: !(Maybe [Text])
-    , _desrsChangeSetName         :: !(Maybe Text)
-    , _desrsExecutionStatus       :: !(Maybe ExecutionStatus)
-    , _desrsChangeSetId           :: !(Maybe Text)
-    , _desrsNextToken             :: !(Maybe Text)
-    , _desrsParameters            :: !(Maybe [Parameter])
-    , _desrsStatusReason          :: !(Maybe Text)
-    , _desrsStackId               :: !(Maybe Text)
-    , _desrsDescription           :: !(Maybe Text)
-    , _desrsCapabilities          :: !(Maybe [Capability])
-    , _desrsRollbackConfiguration :: !(Maybe RollbackConfiguration)
-    , _desrsTags                  :: !(Maybe [Tag])
-    , _desrsStackName             :: !(Maybe Text)
-    , _desrsResponseStatus        :: !Int
-    , _desrsStatus                :: !ChangeSetStatus
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data DescribeChangeSetResponse = DescribeChangeSetResponse'{_desrsCreationTime
+                                                            :: !(Maybe ISO8601),
+                                                            _desrsChanges ::
+                                                            !(Maybe [Change]),
+                                                            _desrsNotificationARNs
+                                                            :: !(Maybe [Text]),
+                                                            _desrsChangeSetName
+                                                            :: !(Maybe Text),
+                                                            _desrsExecutionStatus
+                                                            ::
+                                                            !(Maybe
+                                                                ExecutionStatus),
+                                                            _desrsChangeSetId ::
+                                                            !(Maybe Text),
+                                                            _desrsNextToken ::
+                                                            !(Maybe Text),
+                                                            _desrsParameters ::
+                                                            !(Maybe
+                                                                [Parameter]),
+                                                            _desrsStatusReason
+                                                            :: !(Maybe Text),
+                                                            _desrsStackId ::
+                                                            !(Maybe Text),
+                                                            _desrsDescription ::
+                                                            !(Maybe Text),
+                                                            _desrsCapabilities
+                                                            ::
+                                                            !(Maybe
+                                                                [Capability]),
+                                                            _desrsRollbackConfiguration
+                                                            ::
+                                                            !(Maybe
+                                                                RollbackConfiguration),
+                                                            _desrsTags ::
+                                                            !(Maybe [Tag]),
+                                                            _desrsStackName ::
+                                                            !(Maybe Text),
+                                                            _desrsResponseStatus
+                                                            :: !Int,
+                                                            _desrsStatus ::
+                                                            !ChangeSetStatus}
+                                   deriving (Eq, Read, Show, Data, Typeable,
+                                             Generic)
 
 -- | Creates a value of 'DescribeChangeSetResponse' with the minimum fields required to make a request.
 --
@@ -229,27 +243,24 @@ describeChangeSetResponse
     :: Int -- ^ 'desrsResponseStatus'
     -> ChangeSetStatus -- ^ 'desrsStatus'
     -> DescribeChangeSetResponse
-describeChangeSetResponse pResponseStatus_ pStatus_ =
-  DescribeChangeSetResponse'
-    { _desrsCreationTime = Nothing
-    , _desrsChanges = Nothing
-    , _desrsNotificationARNs = Nothing
-    , _desrsChangeSetName = Nothing
-    , _desrsExecutionStatus = Nothing
-    , _desrsChangeSetId = Nothing
-    , _desrsNextToken = Nothing
-    , _desrsParameters = Nothing
-    , _desrsStatusReason = Nothing
-    , _desrsStackId = Nothing
-    , _desrsDescription = Nothing
-    , _desrsCapabilities = Nothing
-    , _desrsRollbackConfiguration = Nothing
-    , _desrsTags = Nothing
-    , _desrsStackName = Nothing
-    , _desrsResponseStatus = pResponseStatus_
-    , _desrsStatus = pStatus_
-    }
-
+describeChangeSetResponse pResponseStatus_ pStatus_
+  = DescribeChangeSetResponse'{_desrsCreationTime =
+                                 Nothing,
+                               _desrsChanges = Nothing,
+                               _desrsNotificationARNs = Nothing,
+                               _desrsChangeSetName = Nothing,
+                               _desrsExecutionStatus = Nothing,
+                               _desrsChangeSetId = Nothing,
+                               _desrsNextToken = Nothing,
+                               _desrsParameters = Nothing,
+                               _desrsStatusReason = Nothing,
+                               _desrsStackId = Nothing,
+                               _desrsDescription = Nothing,
+                               _desrsCapabilities = Nothing,
+                               _desrsRollbackConfiguration = Nothing,
+                               _desrsTags = Nothing, _desrsStackName = Nothing,
+                               _desrsResponseStatus = pResponseStatus_,
+                               _desrsStatus = pStatus_}
 
 -- | The start time when the change set was created, in UTC.
 desrsCreationTime :: Lens' DescribeChangeSetResponse (Maybe UTCTime)

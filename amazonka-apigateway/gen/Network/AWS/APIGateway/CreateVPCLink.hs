@@ -46,7 +46,6 @@ module Network.AWS.APIGateway.CreateVPCLink
     ) where
 
 import Network.AWS.APIGateway.Types
-import Network.AWS.APIGateway.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.Request
@@ -57,15 +56,12 @@ import Network.AWS.Response
 --
 --
 -- /See:/ 'createVPCLink' smart constructor.
-data CreateVPCLink =
-  CreateVPCLink'
-    { _cvlDescription :: !(Maybe Text)
-    , _cvlTags        :: !(Maybe (Map Text Text))
-    , _cvlName        :: !Text
-    , _cvlTargetARNs  :: ![Text]
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data CreateVPCLink = CreateVPCLink'{_cvlDescription
+                                    :: !(Maybe Text),
+                                    _cvlTags :: !(Maybe (Map Text Text)),
+                                    _cvlName :: !Text,
+                                    _cvlTargetARNs :: ![Text]}
+                       deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'CreateVPCLink' with the minimum fields required to make a request.
 --
@@ -81,14 +77,10 @@ data CreateVPCLink =
 createVPCLink
     :: Text -- ^ 'cvlName'
     -> CreateVPCLink
-createVPCLink pName_ =
-  CreateVPCLink'
-    { _cvlDescription = Nothing
-    , _cvlTags = Nothing
-    , _cvlName = pName_
-    , _cvlTargetARNs = mempty
-    }
-
+createVPCLink pName_
+  = CreateVPCLink'{_cvlDescription = Nothing,
+                   _cvlTags = Nothing, _cvlName = pName_,
+                   _cvlTargetARNs = mempty}
 
 -- | The description of the VPC link.
 cvlDescription :: Lens' CreateVPCLink (Maybe Text)

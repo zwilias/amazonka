@@ -58,15 +58,11 @@ import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 import Network.AWS.SQS.Types
-import Network.AWS.SQS.Types.Product
 
 -- | /See:/ 'listQueueTags' smart constructor.
-newtype ListQueueTags =
-  ListQueueTags'
-    { _lqtQueueURL :: Text
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+newtype ListQueueTags = ListQueueTags'{_lqtQueueURL
+                                       :: Text}
+                          deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'ListQueueTags' with the minimum fields required to make a request.
 --
@@ -76,8 +72,8 @@ newtype ListQueueTags =
 listQueueTags
     :: Text -- ^ 'lqtQueueURL'
     -> ListQueueTags
-listQueueTags pQueueURL_ = ListQueueTags' {_lqtQueueURL = pQueueURL_}
-
+listQueueTags pQueueURL_
+  = ListQueueTags'{_lqtQueueURL = pQueueURL_}
 
 -- | The URL of the queue.
 lqtQueueURL :: Lens' ListQueueTags Text
@@ -111,13 +107,12 @@ instance ToQuery ListQueueTags where
                "QueueUrl" =: _lqtQueueURL]
 
 -- | /See:/ 'listQueueTagsResponse' smart constructor.
-data ListQueueTagsResponse =
-  ListQueueTagsResponse'
-    { _lqtrsTags           :: !(Maybe (Map Text Text))
-    , _lqtrsResponseStatus :: !Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data ListQueueTagsResponse = ListQueueTagsResponse'{_lqtrsTags
+                                                    :: !(Maybe (Map Text Text)),
+                                                    _lqtrsResponseStatus ::
+                                                    !Int}
+                               deriving (Eq, Read, Show, Data, Typeable,
+                                         Generic)
 
 -- | Creates a value of 'ListQueueTagsResponse' with the minimum fields required to make a request.
 --
@@ -129,10 +124,9 @@ data ListQueueTagsResponse =
 listQueueTagsResponse
     :: Int -- ^ 'lqtrsResponseStatus'
     -> ListQueueTagsResponse
-listQueueTagsResponse pResponseStatus_ =
-  ListQueueTagsResponse'
-    {_lqtrsTags = Nothing, _lqtrsResponseStatus = pResponseStatus_}
-
+listQueueTagsResponse pResponseStatus_
+  = ListQueueTagsResponse'{_lqtrsTags = Nothing,
+                           _lqtrsResponseStatus = pResponseStatus_}
 
 -- | The list of all tags added to the specified queue.
 lqtrsTags :: Lens' ListQueueTagsResponse (HashMap Text Text)

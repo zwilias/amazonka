@@ -18,7 +18,7 @@
 -- Stability   : auto-generated
 -- Portability : non-portable (GHC extensions)
 --
--- Returns a list of the Amazon SageMaker notebook instances in the requester's account in an AWS Region.
+-- Returns a list of the Amazon SageMaker notebook instances in the requester's account in an AWS Region. 
 --
 --
 --
@@ -56,25 +56,35 @@ import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 import Network.AWS.SageMaker.Types
-import Network.AWS.SageMaker.Types.Product
 
 -- | /See:/ 'listNotebookInstances' smart constructor.
-data ListNotebookInstances =
-  ListNotebookInstances'
-    { _lniNameContains :: !(Maybe Text)
-    , _lniLastModifiedTimeBefore :: !(Maybe POSIX)
-    , _lniNotebookInstanceLifecycleConfigNameContains :: !(Maybe Text)
-    , _lniCreationTimeAfter :: !(Maybe POSIX)
-    , _lniNextToken :: !(Maybe Text)
-    , _lniSortOrder :: !(Maybe NotebookInstanceSortOrder)
-    , _lniLastModifiedTimeAfter :: !(Maybe POSIX)
-    , _lniCreationTimeBefore :: !(Maybe POSIX)
-    , _lniStatusEquals :: !(Maybe NotebookInstanceStatus)
-    , _lniMaxResults :: !(Maybe Nat)
-    , _lniSortBy :: !(Maybe NotebookInstanceSortKey)
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data ListNotebookInstances = ListNotebookInstances'{_lniNameContains
+                                                    :: !(Maybe Text),
+                                                    _lniLastModifiedTimeBefore
+                                                    :: !(Maybe POSIX),
+                                                    _lniNotebookInstanceLifecycleConfigNameContains
+                                                    :: !(Maybe Text),
+                                                    _lniCreationTimeAfter ::
+                                                    !(Maybe POSIX),
+                                                    _lniNextToken ::
+                                                    !(Maybe Text),
+                                                    _lniSortOrder ::
+                                                    !(Maybe
+                                                        NotebookInstanceSortOrder),
+                                                    _lniLastModifiedTimeAfter ::
+                                                    !(Maybe POSIX),
+                                                    _lniCreationTimeBefore ::
+                                                    !(Maybe POSIX),
+                                                    _lniStatusEquals ::
+                                                    !(Maybe
+                                                        NotebookInstanceStatus),
+                                                    _lniMaxResults ::
+                                                    !(Maybe Nat),
+                                                    _lniSortBy ::
+                                                    !(Maybe
+                                                        NotebookInstanceSortKey)}
+                               deriving (Eq, Read, Show, Data, Typeable,
+                                         Generic)
 
 -- | Creates a value of 'ListNotebookInstances' with the minimum fields required to make a request.
 --
@@ -88,13 +98,13 @@ data ListNotebookInstances =
 --
 -- * 'lniCreationTimeAfter' - A filter that returns only notebook instances that were created after the specified time (timestamp).
 --
--- * 'lniNextToken' - If the previous call to the @ListNotebookInstances@ is truncated, the response includes a @NextToken@ . You can use this token in your subsequent @ListNotebookInstances@ request to fetch the next set of notebook instances.
+-- * 'lniNextToken' - If the previous call to the @ListNotebookInstances@ is truncated, the response includes a @NextToken@ . You can use this token in your subsequent @ListNotebookInstances@ request to fetch the next set of notebook instances. 
 --
--- * 'lniSortOrder' - The sort order for results.
+-- * 'lniSortOrder' - The sort order for results. 
 --
 -- * 'lniLastModifiedTimeAfter' - A filter that returns only notebook instances that were modified after the specified time (timestamp).
 --
--- * 'lniCreationTimeBefore' - A filter that returns only notebook instances that were created before the specified time (timestamp).
+-- * 'lniCreationTimeBefore' - A filter that returns only notebook instances that were created before the specified time (timestamp). 
 --
 -- * 'lniStatusEquals' - A filter that returns only notebook instances with the specified status.
 --
@@ -103,21 +113,17 @@ data ListNotebookInstances =
 -- * 'lniSortBy' - The field to sort results by. The default is @Name@ .
 listNotebookInstances
     :: ListNotebookInstances
-listNotebookInstances =
-  ListNotebookInstances'
-    { _lniNameContains = Nothing
-    , _lniLastModifiedTimeBefore = Nothing
-    , _lniNotebookInstanceLifecycleConfigNameContains = Nothing
-    , _lniCreationTimeAfter = Nothing
-    , _lniNextToken = Nothing
-    , _lniSortOrder = Nothing
-    , _lniLastModifiedTimeAfter = Nothing
-    , _lniCreationTimeBefore = Nothing
-    , _lniStatusEquals = Nothing
-    , _lniMaxResults = Nothing
-    , _lniSortBy = Nothing
-    }
-
+listNotebookInstances
+  = ListNotebookInstances'{_lniNameContains = Nothing,
+                           _lniLastModifiedTimeBefore = Nothing,
+                           _lniNotebookInstanceLifecycleConfigNameContains =
+                             Nothing,
+                           _lniCreationTimeAfter = Nothing,
+                           _lniNextToken = Nothing, _lniSortOrder = Nothing,
+                           _lniLastModifiedTimeAfter = Nothing,
+                           _lniCreationTimeBefore = Nothing,
+                           _lniStatusEquals = Nothing, _lniMaxResults = Nothing,
+                           _lniSortBy = Nothing}
 
 -- | A string in the notebook instances' name. This filter returns only notebook instances whose name contains the specified string.
 lniNameContains :: Lens' ListNotebookInstances (Maybe Text)
@@ -135,11 +141,11 @@ lniNotebookInstanceLifecycleConfigNameContains = lens _lniNotebookInstanceLifecy
 lniCreationTimeAfter :: Lens' ListNotebookInstances (Maybe UTCTime)
 lniCreationTimeAfter = lens _lniCreationTimeAfter (\ s a -> s{_lniCreationTimeAfter = a}) . mapping _Time
 
--- | If the previous call to the @ListNotebookInstances@ is truncated, the response includes a @NextToken@ . You can use this token in your subsequent @ListNotebookInstances@ request to fetch the next set of notebook instances.
+-- | If the previous call to the @ListNotebookInstances@ is truncated, the response includes a @NextToken@ . You can use this token in your subsequent @ListNotebookInstances@ request to fetch the next set of notebook instances. 
 lniNextToken :: Lens' ListNotebookInstances (Maybe Text)
 lniNextToken = lens _lniNextToken (\ s a -> s{_lniNextToken = a})
 
--- | The sort order for results.
+-- | The sort order for results. 
 lniSortOrder :: Lens' ListNotebookInstances (Maybe NotebookInstanceSortOrder)
 lniSortOrder = lens _lniSortOrder (\ s a -> s{_lniSortOrder = a})
 
@@ -147,7 +153,7 @@ lniSortOrder = lens _lniSortOrder (\ s a -> s{_lniSortOrder = a})
 lniLastModifiedTimeAfter :: Lens' ListNotebookInstances (Maybe UTCTime)
 lniLastModifiedTimeAfter = lens _lniLastModifiedTimeAfter (\ s a -> s{_lniLastModifiedTimeAfter = a}) . mapping _Time
 
--- | A filter that returns only notebook instances that were created before the specified time (timestamp).
+-- | A filter that returns only notebook instances that were created before the specified time (timestamp). 
 lniCreationTimeBefore :: Lens' ListNotebookInstances (Maybe UTCTime)
 lniCreationTimeBefore = lens _lniCreationTimeBefore (\ s a -> s{_lniCreationTimeBefore = a}) . mapping _Time
 
@@ -221,14 +227,18 @@ instance ToQuery ListNotebookInstances where
         toQuery = const mempty
 
 -- | /See:/ 'listNotebookInstancesResponse' smart constructor.
-data ListNotebookInstancesResponse =
-  ListNotebookInstancesResponse'
-    { _lnirsNotebookInstances :: !(Maybe [NotebookInstanceSummary])
-    , _lnirsNextToken         :: !(Maybe Text)
-    , _lnirsResponseStatus    :: !Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data ListNotebookInstancesResponse = ListNotebookInstancesResponse'{_lnirsNotebookInstances
+                                                                    ::
+                                                                    !(Maybe
+                                                                        [NotebookInstanceSummary]),
+                                                                    _lnirsNextToken
+                                                                    ::
+                                                                    !(Maybe
+                                                                        Text),
+                                                                    _lnirsResponseStatus
+                                                                    :: !Int}
+                                       deriving (Eq, Read, Show, Data, Typeable,
+                                                 Generic)
 
 -- | Creates a value of 'ListNotebookInstancesResponse' with the minimum fields required to make a request.
 --
@@ -242,13 +252,11 @@ data ListNotebookInstancesResponse =
 listNotebookInstancesResponse
     :: Int -- ^ 'lnirsResponseStatus'
     -> ListNotebookInstancesResponse
-listNotebookInstancesResponse pResponseStatus_ =
-  ListNotebookInstancesResponse'
-    { _lnirsNotebookInstances = Nothing
-    , _lnirsNextToken = Nothing
-    , _lnirsResponseStatus = pResponseStatus_
-    }
-
+listNotebookInstancesResponse pResponseStatus_
+  = ListNotebookInstancesResponse'{_lnirsNotebookInstances
+                                     = Nothing,
+                                   _lnirsNextToken = Nothing,
+                                   _lnirsResponseStatus = pResponseStatus_}
 
 -- | An array of @NotebookInstanceSummary@ objects, one for each notebook instance.
 lnirsNotebookInstances :: Lens' ListNotebookInstancesResponse [NotebookInstanceSummary]

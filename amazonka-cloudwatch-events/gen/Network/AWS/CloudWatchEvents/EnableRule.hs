@@ -38,20 +38,16 @@ module Network.AWS.CloudWatchEvents.EnableRule
     ) where
 
 import Network.AWS.CloudWatchEvents.Types
-import Network.AWS.CloudWatchEvents.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 
 -- | /See:/ 'enableRule' smart constructor.
-data EnableRule =
-  EnableRule'
-    { _erEventBusName :: !(Maybe Text)
-    , _erName         :: !Text
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data EnableRule = EnableRule'{_erEventBusName ::
+                              !(Maybe Text),
+                              _erName :: !Text}
+                    deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'EnableRule' with the minimum fields required to make a request.
 --
@@ -63,8 +59,9 @@ data EnableRule =
 enableRule
     :: Text -- ^ 'erName'
     -> EnableRule
-enableRule pName_ = EnableRule' {_erEventBusName = Nothing, _erName = pName_}
-
+enableRule pName_
+  = EnableRule'{_erEventBusName = Nothing,
+                _erName = pName_}
 
 -- | The event bus associated with the rule. If you omit this, the default event bus is used.
 erEventBusName :: Lens' EnableRule (Maybe Text)
@@ -106,16 +103,13 @@ instance ToQuery EnableRule where
         toQuery = const mempty
 
 -- | /See:/ 'enableRuleResponse' smart constructor.
-data EnableRuleResponse =
-  EnableRuleResponse'
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data EnableRuleResponse = EnableRuleResponse'
+                            deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'EnableRuleResponse' with the minimum fields required to make a request.
 --
 enableRuleResponse
     :: EnableRuleResponse
 enableRuleResponse = EnableRuleResponse'
-
 
 instance NFData EnableRuleResponse where

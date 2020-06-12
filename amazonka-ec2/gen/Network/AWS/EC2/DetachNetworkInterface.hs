@@ -37,7 +37,6 @@ module Network.AWS.EC2.DetachNetworkInterface
     ) where
 
 import Network.AWS.EC2.Types
-import Network.AWS.EC2.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.Request
@@ -48,14 +47,13 @@ import Network.AWS.Response
 --
 --
 -- /See:/ 'detachNetworkInterface' smart constructor.
-data DetachNetworkInterface =
-  DetachNetworkInterface'
-    { _dniForce        :: !(Maybe Bool)
-    , _dniDryRun       :: !(Maybe Bool)
-    , _dniAttachmentId :: !Text
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data DetachNetworkInterface = DetachNetworkInterface'{_dniForce
+                                                      :: !(Maybe Bool),
+                                                      _dniDryRun ::
+                                                      !(Maybe Bool),
+                                                      _dniAttachmentId :: !Text}
+                                deriving (Eq, Read, Show, Data, Typeable,
+                                          Generic)
 
 -- | Creates a value of 'DetachNetworkInterface' with the minimum fields required to make a request.
 --
@@ -69,13 +67,10 @@ data DetachNetworkInterface =
 detachNetworkInterface
     :: Text -- ^ 'dniAttachmentId'
     -> DetachNetworkInterface
-detachNetworkInterface pAttachmentId_ =
-  DetachNetworkInterface'
-    { _dniForce = Nothing
-    , _dniDryRun = Nothing
-    , _dniAttachmentId = pAttachmentId_
-    }
-
+detachNetworkInterface pAttachmentId_
+  = DetachNetworkInterface'{_dniForce = Nothing,
+                            _dniDryRun = Nothing,
+                            _dniAttachmentId = pAttachmentId_}
 
 -- | Specifies whether to force a detachment.
 dniForce :: Lens' DetachNetworkInterface (Maybe Bool)
@@ -116,16 +111,15 @@ instance ToQuery DetachNetworkInterface where
                "AttachmentId" =: _dniAttachmentId]
 
 -- | /See:/ 'detachNetworkInterfaceResponse' smart constructor.
-data DetachNetworkInterfaceResponse =
-  DetachNetworkInterfaceResponse'
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data DetachNetworkInterfaceResponse = DetachNetworkInterfaceResponse'
+                                        deriving (Eq, Read, Show, Data,
+                                                  Typeable, Generic)
 
 -- | Creates a value of 'DetachNetworkInterfaceResponse' with the minimum fields required to make a request.
 --
 detachNetworkInterfaceResponse
     :: DetachNetworkInterfaceResponse
-detachNetworkInterfaceResponse = DetachNetworkInterfaceResponse'
-
+detachNetworkInterfaceResponse
+  = DetachNetworkInterfaceResponse'
 
 instance NFData DetachNetworkInterfaceResponse where

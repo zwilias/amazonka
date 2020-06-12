@@ -43,23 +43,19 @@ module Network.AWS.EC2.DescribeIPv6Pools
     ) where
 
 import Network.AWS.EC2.Types
-import Network.AWS.EC2.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 
 -- | /See:/ 'describeIPv6Pools' smart constructor.
-data DescribeIPv6Pools =
-  DescribeIPv6Pools'
-    { _dipPoolIds    :: !(Maybe [Text])
-    , _dipFilters    :: !(Maybe [Filter])
-    , _dipNextToken  :: !(Maybe Text)
-    , _dipDryRun     :: !(Maybe Bool)
-    , _dipMaxResults :: !(Maybe Nat)
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data DescribeIPv6Pools = DescribeIPv6Pools'{_dipPoolIds
+                                            :: !(Maybe [Text]),
+                                            _dipFilters :: !(Maybe [Filter]),
+                                            _dipNextToken :: !(Maybe Text),
+                                            _dipDryRun :: !(Maybe Bool),
+                                            _dipMaxResults :: !(Maybe Nat)}
+                           deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'DescribeIPv6Pools' with the minimum fields required to make a request.
 --
@@ -76,15 +72,10 @@ data DescribeIPv6Pools =
 -- * 'dipMaxResults' - The maximum number of results to return with a single call. To retrieve the remaining results, make another call with the returned @nextToken@ value.
 describeIPv6Pools
     :: DescribeIPv6Pools
-describeIPv6Pools =
-  DescribeIPv6Pools'
-    { _dipPoolIds = Nothing
-    , _dipFilters = Nothing
-    , _dipNextToken = Nothing
-    , _dipDryRun = Nothing
-    , _dipMaxResults = Nothing
-    }
-
+describeIPv6Pools
+  = DescribeIPv6Pools'{_dipPoolIds = Nothing,
+                       _dipFilters = Nothing, _dipNextToken = Nothing,
+                       _dipDryRun = Nothing, _dipMaxResults = Nothing}
 
 -- | The IDs of the IPv6 address pools.
 dipPoolIds :: Lens' DescribeIPv6Pools [Text]
@@ -139,14 +130,15 @@ instance ToQuery DescribeIPv6Pools where
                "MaxResults" =: _dipMaxResults]
 
 -- | /See:/ 'describeIPv6PoolsResponse' smart constructor.
-data DescribeIPv6PoolsResponse =
-  DescribeIPv6PoolsResponse'
-    { _diprsIPv6Pools      :: !(Maybe [IPv6Pool])
-    , _diprsNextToken      :: !(Maybe Text)
-    , _diprsResponseStatus :: !Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data DescribeIPv6PoolsResponse = DescribeIPv6PoolsResponse'{_diprsIPv6Pools
+                                                            ::
+                                                            !(Maybe [IPv6Pool]),
+                                                            _diprsNextToken ::
+                                                            !(Maybe Text),
+                                                            _diprsResponseStatus
+                                                            :: !Int}
+                                   deriving (Eq, Read, Show, Data, Typeable,
+                                             Generic)
 
 -- | Creates a value of 'DescribeIPv6PoolsResponse' with the minimum fields required to make a request.
 --
@@ -160,13 +152,11 @@ data DescribeIPv6PoolsResponse =
 describeIPv6PoolsResponse
     :: Int -- ^ 'diprsResponseStatus'
     -> DescribeIPv6PoolsResponse
-describeIPv6PoolsResponse pResponseStatus_ =
-  DescribeIPv6PoolsResponse'
-    { _diprsIPv6Pools = Nothing
-    , _diprsNextToken = Nothing
-    , _diprsResponseStatus = pResponseStatus_
-    }
-
+describeIPv6PoolsResponse pResponseStatus_
+  = DescribeIPv6PoolsResponse'{_diprsIPv6Pools =
+                                 Nothing,
+                               _diprsNextToken = Nothing,
+                               _diprsResponseStatus = pResponseStatus_}
 
 -- | Information about the IPv6 address pools.
 diprsIPv6Pools :: Lens' DescribeIPv6PoolsResponse [IPv6Pool]

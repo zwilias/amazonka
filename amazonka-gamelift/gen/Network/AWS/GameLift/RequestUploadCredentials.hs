@@ -41,7 +41,6 @@ module Network.AWS.GameLift.RequestUploadCredentials
     ) where
 
 import Network.AWS.GameLift.Types
-import Network.AWS.GameLift.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.Request
@@ -52,12 +51,10 @@ import Network.AWS.Response
 --
 --
 -- /See:/ 'requestUploadCredentials' smart constructor.
-newtype RequestUploadCredentials =
-  RequestUploadCredentials'
-    { _rucBuildId :: Text
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+newtype RequestUploadCredentials = RequestUploadCredentials'{_rucBuildId
+                                                             :: Text}
+                                     deriving (Eq, Read, Show, Data, Typeable,
+                                               Generic)
 
 -- | Creates a value of 'RequestUploadCredentials' with the minimum fields required to make a request.
 --
@@ -67,9 +64,8 @@ newtype RequestUploadCredentials =
 requestUploadCredentials
     :: Text -- ^ 'rucBuildId'
     -> RequestUploadCredentials
-requestUploadCredentials pBuildId_ =
-  RequestUploadCredentials' {_rucBuildId = pBuildId_}
-
+requestUploadCredentials pBuildId_
+  = RequestUploadCredentials'{_rucBuildId = pBuildId_}
 
 -- | Unique identifier for a build to get credentials for.
 rucBuildId :: Lens' RequestUploadCredentials Text
@@ -116,14 +112,20 @@ instance ToQuery RequestUploadCredentials where
 --
 --
 -- /See:/ 'requestUploadCredentialsResponse' smart constructor.
-data RequestUploadCredentialsResponse =
-  RequestUploadCredentialsResponse'
-    { _rucrsStorageLocation   :: !(Maybe S3Location)
-    , _rucrsUploadCredentials :: !(Maybe (Sensitive AWSCredentials))
-    , _rucrsResponseStatus    :: !Int
-    }
-  deriving (Eq, Show, Data, Typeable, Generic)
-
+data RequestUploadCredentialsResponse = RequestUploadCredentialsResponse'{_rucrsStorageLocation
+                                                                          ::
+                                                                          !(Maybe
+                                                                              S3Location),
+                                                                          _rucrsUploadCredentials
+                                                                          ::
+                                                                          !(Maybe
+                                                                              (Sensitive
+                                                                                 AWSCredentials)),
+                                                                          _rucrsResponseStatus
+                                                                          ::
+                                                                          !Int}
+                                          deriving (Eq, Show, Data, Typeable,
+                                                    Generic)
 
 -- | Creates a value of 'RequestUploadCredentialsResponse' with the minimum fields required to make a request.
 --
@@ -137,13 +139,11 @@ data RequestUploadCredentialsResponse =
 requestUploadCredentialsResponse
     :: Int -- ^ 'rucrsResponseStatus'
     -> RequestUploadCredentialsResponse
-requestUploadCredentialsResponse pResponseStatus_ =
-  RequestUploadCredentialsResponse'
-    { _rucrsStorageLocation = Nothing
-    , _rucrsUploadCredentials = Nothing
-    , _rucrsResponseStatus = pResponseStatus_
-    }
-
+requestUploadCredentialsResponse pResponseStatus_
+  = RequestUploadCredentialsResponse'{_rucrsStorageLocation
+                                        = Nothing,
+                                      _rucrsUploadCredentials = Nothing,
+                                      _rucrsResponseStatus = pResponseStatus_}
 
 -- | Amazon S3 path and key, identifying where the game build files are stored.
 rucrsStorageLocation :: Lens' RequestUploadCredentialsResponse (Maybe S3Location)

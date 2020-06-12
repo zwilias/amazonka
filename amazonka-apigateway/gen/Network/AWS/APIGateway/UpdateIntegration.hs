@@ -53,7 +53,6 @@ module Network.AWS.APIGateway.UpdateIntegration
     ) where
 
 import Network.AWS.APIGateway.Types
-import Network.AWS.APIGateway.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.Request
@@ -64,15 +63,12 @@ import Network.AWS.Response
 --
 --
 -- /See:/ 'updateIntegration' smart constructor.
-data UpdateIntegration =
-  UpdateIntegration'
-    { _updPatchOperations :: !(Maybe [PatchOperation])
-    , _updRestAPIId       :: !Text
-    , _updResourceId      :: !Text
-    , _updHttpMethod      :: !Text
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data UpdateIntegration = UpdateIntegration'{_updPatchOperations
+                                            :: !(Maybe [PatchOperation]),
+                                            _updRestAPIId :: !Text,
+                                            _updResourceId :: !Text,
+                                            _updHttpMethod :: !Text}
+                           deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'UpdateIntegration' with the minimum fields required to make a request.
 --
@@ -90,14 +86,12 @@ updateIntegration
     -> Text -- ^ 'updResourceId'
     -> Text -- ^ 'updHttpMethod'
     -> UpdateIntegration
-updateIntegration pRestAPIId_ pResourceId_ pHttpMethod_ =
-  UpdateIntegration'
-    { _updPatchOperations = Nothing
-    , _updRestAPIId = pRestAPIId_
-    , _updResourceId = pResourceId_
-    , _updHttpMethod = pHttpMethod_
-    }
-
+updateIntegration pRestAPIId_ pResourceId_
+  pHttpMethod_
+  = UpdateIntegration'{_updPatchOperations = Nothing,
+                       _updRestAPIId = pRestAPIId_,
+                       _updResourceId = pResourceId_,
+                       _updHttpMethod = pHttpMethod_}
 
 -- | A list of update operations to be applied to the specified resource and in the order specified in this list.
 updPatchOperations :: Lens' UpdateIntegration [PatchOperation]

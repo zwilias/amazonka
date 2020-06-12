@@ -41,19 +41,17 @@ module Network.AWS.MigrationHub.ListProgressUpdateStreams
 
 import Network.AWS.Lens
 import Network.AWS.MigrationHub.Types
-import Network.AWS.MigrationHub.Types.Product
 import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 
 -- | /See:/ 'listProgressUpdateStreams' smart constructor.
-data ListProgressUpdateStreams =
-  ListProgressUpdateStreams'
-    { _lpusNextToken  :: !(Maybe Text)
-    , _lpusMaxResults :: !(Maybe Nat)
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data ListProgressUpdateStreams = ListProgressUpdateStreams'{_lpusNextToken
+                                                            :: !(Maybe Text),
+                                                            _lpusMaxResults ::
+                                                            !(Maybe Nat)}
+                                   deriving (Eq, Read, Show, Data, Typeable,
+                                             Generic)
 
 -- | Creates a value of 'ListProgressUpdateStreams' with the minimum fields required to make a request.
 --
@@ -64,10 +62,10 @@ data ListProgressUpdateStreams =
 -- * 'lpusMaxResults' - Filter to limit the maximum number of results to list per page.
 listProgressUpdateStreams
     :: ListProgressUpdateStreams
-listProgressUpdateStreams =
-  ListProgressUpdateStreams'
-    {_lpusNextToken = Nothing, _lpusMaxResults = Nothing}
-
+listProgressUpdateStreams
+  = ListProgressUpdateStreams'{_lpusNextToken =
+                                 Nothing,
+                               _lpusMaxResults = Nothing}
 
 -- | If a @NextToken@ was returned by a previous call, there are more results available. To retrieve the next page of results, make the call again using the returned token in @NextToken@ .
 lpusNextToken :: Lens' ListProgressUpdateStreams (Maybe Text)
@@ -117,14 +115,19 @@ instance ToQuery ListProgressUpdateStreams where
         toQuery = const mempty
 
 -- | /See:/ 'listProgressUpdateStreamsResponse' smart constructor.
-data ListProgressUpdateStreamsResponse =
-  ListProgressUpdateStreamsResponse'
-    { _lpusrsProgressUpdateStreamSummaryList :: !(Maybe [ProgressUpdateStreamSummary])
-    , _lpusrsNextToken :: !(Maybe Text)
-    , _lpusrsResponseStatus :: !Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data ListProgressUpdateStreamsResponse = ListProgressUpdateStreamsResponse'{_lpusrsProgressUpdateStreamSummaryList
+                                                                            ::
+                                                                            !(Maybe
+                                                                                [ProgressUpdateStreamSummary]),
+                                                                            _lpusrsNextToken
+                                                                            ::
+                                                                            !(Maybe
+                                                                                Text),
+                                                                            _lpusrsResponseStatus
+                                                                            ::
+                                                                            !Int}
+                                           deriving (Eq, Read, Show, Data,
+                                                     Typeable, Generic)
 
 -- | Creates a value of 'ListProgressUpdateStreamsResponse' with the minimum fields required to make a request.
 --
@@ -138,13 +141,11 @@ data ListProgressUpdateStreamsResponse =
 listProgressUpdateStreamsResponse
     :: Int -- ^ 'lpusrsResponseStatus'
     -> ListProgressUpdateStreamsResponse
-listProgressUpdateStreamsResponse pResponseStatus_ =
-  ListProgressUpdateStreamsResponse'
-    { _lpusrsProgressUpdateStreamSummaryList = Nothing
-    , _lpusrsNextToken = Nothing
-    , _lpusrsResponseStatus = pResponseStatus_
-    }
-
+listProgressUpdateStreamsResponse pResponseStatus_
+  = ListProgressUpdateStreamsResponse'{_lpusrsProgressUpdateStreamSummaryList
+                                         = Nothing,
+                                       _lpusrsNextToken = Nothing,
+                                       _lpusrsResponseStatus = pResponseStatus_}
 
 -- | List of progress update streams up to the max number of results passed in the input.
 lpusrsProgressUpdateStreamSummaryList :: Lens' ListProgressUpdateStreamsResponse [ProgressUpdateStreamSummary]

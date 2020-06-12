@@ -21,7 +21,7 @@
 -- Simulate the execution of an 'Authorizer' in your 'RestApi' with headers, parameters, and an incoming request body.
 --
 --
--- <https://docs.aws.amazon.com/apigateway/latest/developerguide/apigateway-use-lambda-authorizer.html Use Lambda Function as Authorizer> <https://docs.aws.amazon.com/apigateway/latest/developerguide/apigateway-integrate-with-cognito.html Use Cognito User Pool as Authorizer>
+-- <https://docs.aws.amazon.com/apigateway/latest/developerguide/apigateway-use-lambda-authorizer.html Use Lambda Function as Authorizer> <https://docs.aws.amazon.com/apigateway/latest/developerguide/apigateway-integrate-with-cognito.html Use Cognito User Pool as Authorizer> 
 module Network.AWS.APIGateway.TestInvokeAuthorizer
     (
     -- * Creating a Request
@@ -52,7 +52,6 @@ module Network.AWS.APIGateway.TestInvokeAuthorizer
     ) where
 
 import Network.AWS.APIGateway.Types
-import Network.AWS.APIGateway.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.Request
@@ -63,19 +62,20 @@ import Network.AWS.Response
 --
 --
 -- /See:/ 'testInvokeAuthorizer' smart constructor.
-data TestInvokeAuthorizer =
-  TestInvokeAuthorizer'
-    { _tiaPathWithQueryString :: !(Maybe Text)
-    , _tiaBody                :: !(Maybe Text)
-    , _tiaAdditionalContext   :: !(Maybe (Map Text Text))
-    , _tiaStageVariables      :: !(Maybe (Map Text Text))
-    , _tiaHeaders             :: !(Maybe (Map Text Text))
-    , _tiaMultiValueHeaders   :: !(Maybe (Map Text [Text]))
-    , _tiaRestAPIId           :: !Text
-    , _tiaAuthorizerId        :: !Text
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data TestInvokeAuthorizer = TestInvokeAuthorizer'{_tiaPathWithQueryString
+                                                  :: !(Maybe Text),
+                                                  _tiaBody :: !(Maybe Text),
+                                                  _tiaAdditionalContext ::
+                                                  !(Maybe (Map Text Text)),
+                                                  _tiaStageVariables ::
+                                                  !(Maybe (Map Text Text)),
+                                                  _tiaHeaders ::
+                                                  !(Maybe (Map Text Text)),
+                                                  _tiaMultiValueHeaders ::
+                                                  !(Maybe (Map Text [Text])),
+                                                  _tiaRestAPIId :: !Text,
+                                                  _tiaAuthorizerId :: !Text}
+                              deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'TestInvokeAuthorizer' with the minimum fields required to make a request.
 --
@@ -100,18 +100,14 @@ testInvokeAuthorizer
     :: Text -- ^ 'tiaRestAPIId'
     -> Text -- ^ 'tiaAuthorizerId'
     -> TestInvokeAuthorizer
-testInvokeAuthorizer pRestAPIId_ pAuthorizerId_ =
-  TestInvokeAuthorizer'
-    { _tiaPathWithQueryString = Nothing
-    , _tiaBody = Nothing
-    , _tiaAdditionalContext = Nothing
-    , _tiaStageVariables = Nothing
-    , _tiaHeaders = Nothing
-    , _tiaMultiValueHeaders = Nothing
-    , _tiaRestAPIId = pRestAPIId_
-    , _tiaAuthorizerId = pAuthorizerId_
-    }
-
+testInvokeAuthorizer pRestAPIId_ pAuthorizerId_
+  = TestInvokeAuthorizer'{_tiaPathWithQueryString =
+                            Nothing,
+                          _tiaBody = Nothing, _tiaAdditionalContext = Nothing,
+                          _tiaStageVariables = Nothing, _tiaHeaders = Nothing,
+                          _tiaMultiValueHeaders = Nothing,
+                          _tiaRestAPIId = pRestAPIId_,
+                          _tiaAuthorizerId = pAuthorizerId_}
 
 -- | [Optional] The URI path, including query string, of the simulated invocation request. Use this to specify path parameters and query string parameters.
 tiaPathWithQueryString :: Lens' TestInvokeAuthorizer (Maybe Text)
@@ -192,24 +188,41 @@ instance ToPath TestInvokeAuthorizer where
 instance ToQuery TestInvokeAuthorizer where
         toQuery = const mempty
 
--- | Represents the response of the test invoke request for a custom 'Authorizer'
+-- | Represents the response of the test invoke request for a custom 'Authorizer' 
 --
 --
 --
 -- /See:/ 'testInvokeAuthorizerResponse' smart constructor.
-data TestInvokeAuthorizerResponse =
-  TestInvokeAuthorizerResponse'
-    { _tiarsLog            :: !(Maybe Text)
-    , _tiarsPrincipalId    :: !(Maybe Text)
-    , _tiarsLatency        :: !(Maybe Integer)
-    , _tiarsAuthorization  :: !(Maybe (Map Text [Text]))
-    , _tiarsClaims         :: !(Maybe (Map Text Text))
-    , _tiarsClientStatus   :: !(Maybe Int)
-    , _tiarsPolicy         :: !(Maybe Text)
-    , _tiarsResponseStatus :: !Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data TestInvokeAuthorizerResponse = TestInvokeAuthorizerResponse'{_tiarsLog
+                                                                  ::
+                                                                  !(Maybe Text),
+                                                                  _tiarsPrincipalId
+                                                                  ::
+                                                                  !(Maybe Text),
+                                                                  _tiarsLatency
+                                                                  ::
+                                                                  !(Maybe
+                                                                      Integer),
+                                                                  _tiarsAuthorization
+                                                                  ::
+                                                                  !(Maybe
+                                                                      (Map Text
+                                                                         [Text])),
+                                                                  _tiarsClaims
+                                                                  ::
+                                                                  !(Maybe
+                                                                      (Map Text
+                                                                         Text)),
+                                                                  _tiarsClientStatus
+                                                                  ::
+                                                                  !(Maybe Int),
+                                                                  _tiarsPolicy
+                                                                  ::
+                                                                  !(Maybe Text),
+                                                                  _tiarsResponseStatus
+                                                                  :: !Int}
+                                      deriving (Eq, Read, Show, Data, Typeable,
+                                                Generic)
 
 -- | Creates a value of 'TestInvokeAuthorizerResponse' with the minimum fields required to make a request.
 --
@@ -217,7 +230,7 @@ data TestInvokeAuthorizerResponse =
 --
 -- * 'tiarsLog' - The API Gateway execution log for the test authorizer request.
 --
--- * 'tiarsPrincipalId' - The principal identity returned by the 'Authorizer'
+-- * 'tiarsPrincipalId' - The principal identity returned by the 'Authorizer' 
 --
 -- * 'tiarsLatency' - The execution latency of the test authorizer request.
 --
@@ -227,30 +240,27 @@ data TestInvokeAuthorizerResponse =
 --
 -- * 'tiarsClientStatus' - The HTTP status code that the client would have received. Value is 0 if the authorizer succeeded.
 --
--- * 'tiarsPolicy' - The JSON policy document returned by the 'Authorizer'
+-- * 'tiarsPolicy' - The JSON policy document returned by the 'Authorizer' 
 --
 -- * 'tiarsResponseStatus' - -- | The response status code.
 testInvokeAuthorizerResponse
     :: Int -- ^ 'tiarsResponseStatus'
     -> TestInvokeAuthorizerResponse
-testInvokeAuthorizerResponse pResponseStatus_ =
-  TestInvokeAuthorizerResponse'
-    { _tiarsLog = Nothing
-    , _tiarsPrincipalId = Nothing
-    , _tiarsLatency = Nothing
-    , _tiarsAuthorization = Nothing
-    , _tiarsClaims = Nothing
-    , _tiarsClientStatus = Nothing
-    , _tiarsPolicy = Nothing
-    , _tiarsResponseStatus = pResponseStatus_
-    }
-
+testInvokeAuthorizerResponse pResponseStatus_
+  = TestInvokeAuthorizerResponse'{_tiarsLog = Nothing,
+                                  _tiarsPrincipalId = Nothing,
+                                  _tiarsLatency = Nothing,
+                                  _tiarsAuthorization = Nothing,
+                                  _tiarsClaims = Nothing,
+                                  _tiarsClientStatus = Nothing,
+                                  _tiarsPolicy = Nothing,
+                                  _tiarsResponseStatus = pResponseStatus_}
 
 -- | The API Gateway execution log for the test authorizer request.
 tiarsLog :: Lens' TestInvokeAuthorizerResponse (Maybe Text)
 tiarsLog = lens _tiarsLog (\ s a -> s{_tiarsLog = a})
 
--- | The principal identity returned by the 'Authorizer'
+-- | The principal identity returned by the 'Authorizer' 
 tiarsPrincipalId :: Lens' TestInvokeAuthorizerResponse (Maybe Text)
 tiarsPrincipalId = lens _tiarsPrincipalId (\ s a -> s{_tiarsPrincipalId = a})
 
@@ -270,7 +280,7 @@ tiarsClaims = lens _tiarsClaims (\ s a -> s{_tiarsClaims = a}) . _Default . _Map
 tiarsClientStatus :: Lens' TestInvokeAuthorizerResponse (Maybe Int)
 tiarsClientStatus = lens _tiarsClientStatus (\ s a -> s{_tiarsClientStatus = a})
 
--- | The JSON policy document returned by the 'Authorizer'
+-- | The JSON policy document returned by the 'Authorizer' 
 tiarsPolicy :: Lens' TestInvokeAuthorizerResponse (Maybe Text)
 tiarsPolicy = lens _tiarsPolicy (\ s a -> s{_tiarsPolicy = a})
 

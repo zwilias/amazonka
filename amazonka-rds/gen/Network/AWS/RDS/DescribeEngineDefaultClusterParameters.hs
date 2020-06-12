@@ -21,7 +21,7 @@
 -- Returns the default engine and system parameter information for the cluster database engine.
 --
 --
--- For more information on Amazon Aurora, see <http://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/CHAP_Aurora.html Aurora on Amazon RDS> in the /Amazon RDS User Guide./
+-- For more information on Amazon Aurora, see <http://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/CHAP_Aurora.html Aurora on Amazon RDS> in the /Amazon RDS User Guide./ 
 --
 module Network.AWS.RDS.DescribeEngineDefaultClusterParameters
     (
@@ -45,24 +45,31 @@ module Network.AWS.RDS.DescribeEngineDefaultClusterParameters
 import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.RDS.Types
-import Network.AWS.RDS.Types.Product
 import Network.AWS.Request
 import Network.AWS.Response
 
--- |
+-- | 
 --
 --
 --
 -- /See:/ 'describeEngineDefaultClusterParameters' smart constructor.
-data DescribeEngineDefaultClusterParameters =
-  DescribeEngineDefaultClusterParameters'
-    { _dedcpFilters                :: !(Maybe [Filter])
-    , _dedcpMarker                 :: !(Maybe Text)
-    , _dedcpMaxRecords             :: !(Maybe Int)
-    , _dedcpDBParameterGroupFamily :: !Text
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data DescribeEngineDefaultClusterParameters = DescribeEngineDefaultClusterParameters'{_dedcpFilters
+                                                                                      ::
+                                                                                      !(Maybe
+                                                                                          [Filter]),
+                                                                                      _dedcpMarker
+                                                                                      ::
+                                                                                      !(Maybe
+                                                                                          Text),
+                                                                                      _dedcpMaxRecords
+                                                                                      ::
+                                                                                      !(Maybe
+                                                                                          Int),
+                                                                                      _dedcpDBParameterGroupFamily
+                                                                                      ::
+                                                                                      !Text}
+                                                deriving (Eq, Read, Show, Data,
+                                                          Typeable, Generic)
 
 -- | Creates a value of 'DescribeEngineDefaultClusterParameters' with the minimum fields required to make a request.
 --
@@ -70,7 +77,7 @@ data DescribeEngineDefaultClusterParameters =
 --
 -- * 'dedcpFilters' - This parameter is not currently supported.
 --
--- * 'dedcpMarker' - An optional pagination token provided by a previous @DescribeEngineDefaultClusterParameters@ request. If this parameter is specified, the response includes only records beyond the marker, up to the value specified by @MaxRecords@ .
+-- * 'dedcpMarker' - An optional pagination token provided by a previous @DescribeEngineDefaultClusterParameters@ request. If this parameter is specified, the response includes only records beyond the marker, up to the value specified by @MaxRecords@ . 
 --
 -- * 'dedcpMaxRecords' - The maximum number of records to include in the response. If more records exist than the specified @MaxRecords@ value, a pagination token called a marker is included in the response so that the remaining results can be retrieved.  Default: 100 Constraints: Minimum 20, maximum 100.
 --
@@ -78,20 +85,20 @@ data DescribeEngineDefaultClusterParameters =
 describeEngineDefaultClusterParameters
     :: Text -- ^ 'dedcpDBParameterGroupFamily'
     -> DescribeEngineDefaultClusterParameters
-describeEngineDefaultClusterParameters pDBParameterGroupFamily_ =
-  DescribeEngineDefaultClusterParameters'
-    { _dedcpFilters = Nothing
-    , _dedcpMarker = Nothing
-    , _dedcpMaxRecords = Nothing
-    , _dedcpDBParameterGroupFamily = pDBParameterGroupFamily_
-    }
-
+describeEngineDefaultClusterParameters
+  pDBParameterGroupFamily_
+  = DescribeEngineDefaultClusterParameters'{_dedcpFilters
+                                              = Nothing,
+                                            _dedcpMarker = Nothing,
+                                            _dedcpMaxRecords = Nothing,
+                                            _dedcpDBParameterGroupFamily =
+                                              pDBParameterGroupFamily_}
 
 -- | This parameter is not currently supported.
 dedcpFilters :: Lens' DescribeEngineDefaultClusterParameters [Filter]
 dedcpFilters = lens _dedcpFilters (\ s a -> s{_dedcpFilters = a}) . _Default . _Coerce
 
--- | An optional pagination token provided by a previous @DescribeEngineDefaultClusterParameters@ request. If this parameter is specified, the response includes only records beyond the marker, up to the value specified by @MaxRecords@ .
+-- | An optional pagination token provided by a previous @DescribeEngineDefaultClusterParameters@ request. If this parameter is specified, the response includes only records beyond the marker, up to the value specified by @MaxRecords@ . 
 dedcpMarker :: Lens' DescribeEngineDefaultClusterParameters (Maybe Text)
 dedcpMarker = lens _dedcpMarker (\ s a -> s{_dedcpMarker = a})
 
@@ -151,13 +158,17 @@ instance ToQuery
                  _dedcpDBParameterGroupFamily]
 
 -- | /See:/ 'describeEngineDefaultClusterParametersResponse' smart constructor.
-data DescribeEngineDefaultClusterParametersResponse =
-  DescribeEngineDefaultClusterParametersResponse'
-    { _dedcprsEngineDefaults :: !(Maybe EngineDefaults)
-    , _dedcprsResponseStatus :: !Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data DescribeEngineDefaultClusterParametersResponse = DescribeEngineDefaultClusterParametersResponse'{_dedcprsEngineDefaults
+                                                                                                      ::
+                                                                                                      !(Maybe
+                                                                                                          EngineDefaults),
+                                                                                                      _dedcprsResponseStatus
+                                                                                                      ::
+                                                                                                      !Int}
+                                                        deriving (Eq, Read,
+                                                                  Show, Data,
+                                                                  Typeable,
+                                                                  Generic)
 
 -- | Creates a value of 'DescribeEngineDefaultClusterParametersResponse' with the minimum fields required to make a request.
 --
@@ -169,12 +180,12 @@ data DescribeEngineDefaultClusterParametersResponse =
 describeEngineDefaultClusterParametersResponse
     :: Int -- ^ 'dedcprsResponseStatus'
     -> DescribeEngineDefaultClusterParametersResponse
-describeEngineDefaultClusterParametersResponse pResponseStatus_ =
-  DescribeEngineDefaultClusterParametersResponse'
-    { _dedcprsEngineDefaults = Nothing
-    , _dedcprsResponseStatus = pResponseStatus_
-    }
-
+describeEngineDefaultClusterParametersResponse
+  pResponseStatus_
+  = DescribeEngineDefaultClusterParametersResponse'{_dedcprsEngineDefaults
+                                                      = Nothing,
+                                                    _dedcprsResponseStatus =
+                                                      pResponseStatus_}
 
 -- | Undocumented member.
 dedcprsEngineDefaults :: Lens' DescribeEngineDefaultClusterParametersResponse (Maybe EngineDefaults)

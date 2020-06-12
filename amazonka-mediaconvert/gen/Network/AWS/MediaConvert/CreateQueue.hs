@@ -38,19 +38,15 @@ module Network.AWS.MediaConvert.CreateQueue
 
 import Network.AWS.Lens
 import Network.AWS.MediaConvert.Types
-import Network.AWS.MediaConvert.Types.Product
 import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 
 -- | /See:/ 'createQueue' smart constructor.
-data CreateQueue =
-  CreateQueue'
-    { _cqName        :: !(Maybe Text)
-    , _cqDescription :: !(Maybe Text)
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data CreateQueue = CreateQueue'{_cqName ::
+                                !(Maybe Text),
+                                _cqDescription :: !(Maybe Text)}
+                     deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'CreateQueue' with the minimum fields required to make a request.
 --
@@ -61,8 +57,9 @@ data CreateQueue =
 -- * 'cqDescription' - Optional. A description of the queue you are creating.
 createQueue
     :: CreateQueue
-createQueue = CreateQueue' {_cqName = Nothing, _cqDescription = Nothing}
-
+createQueue
+  = CreateQueue'{_cqName = Nothing,
+                 _cqDescription = Nothing}
 
 -- | The name of the queue you are creating.
 cqName :: Lens' CreateQueue (Maybe Text)
@@ -106,13 +103,10 @@ instance ToQuery CreateQueue where
         toQuery = const mempty
 
 -- | /See:/ 'createQueueResponse' smart constructor.
-data CreateQueueResponse =
-  CreateQueueResponse'
-    { _cqrsQueue          :: !(Maybe Queue)
-    , _cqrsResponseStatus :: !Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data CreateQueueResponse = CreateQueueResponse'{_cqrsQueue
+                                                :: !(Maybe Queue),
+                                                _cqrsResponseStatus :: !Int}
+                             deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'CreateQueueResponse' with the minimum fields required to make a request.
 --
@@ -124,10 +118,9 @@ data CreateQueueResponse =
 createQueueResponse
     :: Int -- ^ 'cqrsResponseStatus'
     -> CreateQueueResponse
-createQueueResponse pResponseStatus_ =
-  CreateQueueResponse'
-    {_cqrsQueue = Nothing, _cqrsResponseStatus = pResponseStatus_}
-
+createQueueResponse pResponseStatus_
+  = CreateQueueResponse'{_cqrsQueue = Nothing,
+                         _cqrsResponseStatus = pResponseStatus_}
 
 -- | Undocumented member.
 cqrsQueue :: Lens' CreateQueueResponse (Maybe Queue)

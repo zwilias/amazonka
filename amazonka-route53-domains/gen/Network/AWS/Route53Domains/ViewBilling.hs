@@ -46,22 +46,18 @@ import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 import Network.AWS.Route53Domains.Types
-import Network.AWS.Route53Domains.Types.Product
 
 -- | The ViewBilling request includes the following elements.
 --
 --
 --
 -- /See:/ 'viewBilling' smart constructor.
-data ViewBilling =
-  ViewBilling'
-    { _vbStart    :: !(Maybe POSIX)
-    , _vbEnd      :: !(Maybe POSIX)
-    , _vbMarker   :: !(Maybe Text)
-    , _vbMaxItems :: !(Maybe Int)
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data ViewBilling = ViewBilling'{_vbStart ::
+                                !(Maybe POSIX),
+                                _vbEnd :: !(Maybe POSIX),
+                                _vbMarker :: !(Maybe Text),
+                                _vbMaxItems :: !(Maybe Int)}
+                     deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'ViewBilling' with the minimum fields required to make a request.
 --
@@ -76,14 +72,9 @@ data ViewBilling =
 -- * 'vbMaxItems' - The number of billing records to be returned. Default: 20
 viewBilling
     :: ViewBilling
-viewBilling =
-  ViewBilling'
-    { _vbStart = Nothing
-    , _vbEnd = Nothing
-    , _vbMarker = Nothing
-    , _vbMaxItems = Nothing
-    }
-
+viewBilling
+  = ViewBilling'{_vbStart = Nothing, _vbEnd = Nothing,
+                 _vbMarker = Nothing, _vbMaxItems = Nothing}
 
 -- | The beginning date and time for the time period for which you want a list of billing records. Specify the date and time in Coordinated Universal time (UTC).
 vbStart :: Lens' ViewBilling (Maybe UTCTime)
@@ -145,14 +136,12 @@ instance ToQuery ViewBilling where
 --
 --
 -- /See:/ 'viewBillingResponse' smart constructor.
-data ViewBillingResponse =
-  ViewBillingResponse'
-    { _vbrsNextPageMarker :: !(Maybe Text)
-    , _vbrsBillingRecords :: !(Maybe [BillingRecord])
-    , _vbrsResponseStatus :: !Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data ViewBillingResponse = ViewBillingResponse'{_vbrsNextPageMarker
+                                                :: !(Maybe Text),
+                                                _vbrsBillingRecords ::
+                                                !(Maybe [BillingRecord]),
+                                                _vbrsResponseStatus :: !Int}
+                             deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'ViewBillingResponse' with the minimum fields required to make a request.
 --
@@ -166,13 +155,10 @@ data ViewBillingResponse =
 viewBillingResponse
     :: Int -- ^ 'vbrsResponseStatus'
     -> ViewBillingResponse
-viewBillingResponse pResponseStatus_ =
-  ViewBillingResponse'
-    { _vbrsNextPageMarker = Nothing
-    , _vbrsBillingRecords = Nothing
-    , _vbrsResponseStatus = pResponseStatus_
-    }
-
+viewBillingResponse pResponseStatus_
+  = ViewBillingResponse'{_vbrsNextPageMarker = Nothing,
+                         _vbrsBillingRecords = Nothing,
+                         _vbrsResponseStatus = pResponseStatus_}
 
 -- | If there are more billing records than you specified for @MaxItems@ in the request, submit another request and include the value of @NextPageMarker@ in the value of @Marker@ .
 vbrsNextPageMarker :: Lens' ViewBillingResponse (Maybe Text)

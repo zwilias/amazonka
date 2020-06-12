@@ -42,21 +42,16 @@ module Network.AWS.ECS.StopTask
     ) where
 
 import Network.AWS.ECS.Types
-import Network.AWS.ECS.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 
 -- | /See:/ 'stopTask' smart constructor.
-data StopTask =
-  StopTask'
-    { _stCluster :: !(Maybe Text)
-    , _stReason  :: !(Maybe Text)
-    , _stTask    :: !Text
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data StopTask = StopTask'{_stCluster ::
+                          !(Maybe Text),
+                          _stReason :: !(Maybe Text), _stTask :: !Text}
+                  deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'StopTask' with the minimum fields required to make a request.
 --
@@ -70,9 +65,9 @@ data StopTask =
 stopTask
     :: Text -- ^ 'stTask'
     -> StopTask
-stopTask pTask_ =
-  StopTask' {_stCluster = Nothing, _stReason = Nothing, _stTask = pTask_}
-
+stopTask pTask_
+  = StopTask'{_stCluster = Nothing,
+              _stReason = Nothing, _stTask = pTask_}
 
 -- | The short name or full Amazon Resource Name (ARN) of the cluster that hosts the task to stop. If you do not specify a cluster, the default cluster is assumed.
 stCluster :: Lens' StopTask (Maybe Text)
@@ -124,13 +119,10 @@ instance ToQuery StopTask where
         toQuery = const mempty
 
 -- | /See:/ 'stopTaskResponse' smart constructor.
-data StopTaskResponse =
-  StopTaskResponse'
-    { _srsTask           :: !(Maybe Task)
-    , _srsResponseStatus :: !Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data StopTaskResponse = StopTaskResponse'{_srsTask ::
+                                          !(Maybe Task),
+                                          _srsResponseStatus :: !Int}
+                          deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'StopTaskResponse' with the minimum fields required to make a request.
 --
@@ -142,9 +134,9 @@ data StopTaskResponse =
 stopTaskResponse
     :: Int -- ^ 'srsResponseStatus'
     -> StopTaskResponse
-stopTaskResponse pResponseStatus_ =
-  StopTaskResponse' {_srsTask = Nothing, _srsResponseStatus = pResponseStatus_}
-
+stopTaskResponse pResponseStatus_
+  = StopTaskResponse'{_srsTask = Nothing,
+                      _srsResponseStatus = pResponseStatus_}
 
 -- | The task that was stopped.
 srsTask :: Lens' StopTaskResponse (Maybe Task)

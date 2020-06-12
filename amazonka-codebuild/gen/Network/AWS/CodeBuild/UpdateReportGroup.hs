@@ -18,7 +18,7 @@
 -- Stability   : auto-generated
 -- Portability : non-portable (GHC extensions)
 --
--- Updates a report group.
+-- Updates a report group. 
 --
 --
 module Network.AWS.CodeBuild.UpdateReportGroup
@@ -39,40 +39,36 @@ module Network.AWS.CodeBuild.UpdateReportGroup
     ) where
 
 import Network.AWS.CodeBuild.Types
-import Network.AWS.CodeBuild.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 
 -- | /See:/ 'updateReportGroup' smart constructor.
-data UpdateReportGroup =
-  UpdateReportGroup'
-    { _urgExportConfig :: !(Maybe ReportExportConfig)
-    , _urgArn          :: !Text
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data UpdateReportGroup = UpdateReportGroup'{_urgExportConfig
+                                            :: !(Maybe ReportExportConfig),
+                                            _urgArn :: !Text}
+                           deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'UpdateReportGroup' with the minimum fields required to make a request.
 --
 -- Use one of the following lenses to modify other fields as desired:
 --
--- * 'urgExportConfig' - Used to specify an updated export type. Valid values are:      * @S3@ : The report results are exported to an S3 bucket.      * @NO_EXPORT@ : The report results are not exported.
+-- * 'urgExportConfig' - Used to specify an updated export type. Valid values are:      * @S3@ : The report results are exported to an S3 bucket.      * @NO_EXPORT@ : The report results are not exported. 
 --
--- * 'urgArn' - The ARN of the report group to update.
+-- * 'urgArn' - The ARN of the report group to update. 
 updateReportGroup
     :: Text -- ^ 'urgArn'
     -> UpdateReportGroup
-updateReportGroup pArn_ =
-  UpdateReportGroup' {_urgExportConfig = Nothing, _urgArn = pArn_}
+updateReportGroup pArn_
+  = UpdateReportGroup'{_urgExportConfig = Nothing,
+                       _urgArn = pArn_}
 
-
--- | Used to specify an updated export type. Valid values are:      * @S3@ : The report results are exported to an S3 bucket.      * @NO_EXPORT@ : The report results are not exported.
+-- | Used to specify an updated export type. Valid values are:      * @S3@ : The report results are exported to an S3 bucket.      * @NO_EXPORT@ : The report results are not exported. 
 urgExportConfig :: Lens' UpdateReportGroup (Maybe ReportExportConfig)
 urgExportConfig = lens _urgExportConfig (\ s a -> s{_urgExportConfig = a})
 
--- | The ARN of the report group to update.
+-- | The ARN of the report group to update. 
 urgArn :: Lens' UpdateReportGroup Text
 urgArn = lens _urgArn (\ s a -> s{_urgArn = a})
 
@@ -113,30 +109,31 @@ instance ToQuery UpdateReportGroup where
         toQuery = const mempty
 
 -- | /See:/ 'updateReportGroupResponse' smart constructor.
-data UpdateReportGroupResponse =
-  UpdateReportGroupResponse'
-    { _urgrsReportGroup    :: !(Maybe ReportGroup)
-    , _urgrsResponseStatus :: !Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data UpdateReportGroupResponse = UpdateReportGroupResponse'{_urgrsReportGroup
+                                                            ::
+                                                            !(Maybe
+                                                                ReportGroup),
+                                                            _urgrsResponseStatus
+                                                            :: !Int}
+                                   deriving (Eq, Read, Show, Data, Typeable,
+                                             Generic)
 
 -- | Creates a value of 'UpdateReportGroupResponse' with the minimum fields required to make a request.
 --
 -- Use one of the following lenses to modify other fields as desired:
 --
--- * 'urgrsReportGroup' - Information about the updated report group.
+-- * 'urgrsReportGroup' - Information about the updated report group. 
 --
 -- * 'urgrsResponseStatus' - -- | The response status code.
 updateReportGroupResponse
     :: Int -- ^ 'urgrsResponseStatus'
     -> UpdateReportGroupResponse
-updateReportGroupResponse pResponseStatus_ =
-  UpdateReportGroupResponse'
-    {_urgrsReportGroup = Nothing, _urgrsResponseStatus = pResponseStatus_}
+updateReportGroupResponse pResponseStatus_
+  = UpdateReportGroupResponse'{_urgrsReportGroup =
+                                 Nothing,
+                               _urgrsResponseStatus = pResponseStatus_}
 
-
--- | Information about the updated report group.
+-- | Information about the updated report group. 
 urgrsReportGroup :: Lens' UpdateReportGroupResponse (Maybe ReportGroup)
 urgrsReportGroup = lens _urgrsReportGroup (\ s a -> s{_urgrsReportGroup = a})
 

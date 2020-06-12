@@ -42,17 +42,13 @@ import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 import Network.AWS.S3.Types
-import Network.AWS.S3.Types.Product
 
 -- | /See:/ 'deleteObjectTagging' smart constructor.
-data DeleteObjectTagging =
-  DeleteObjectTagging'
-    { _dotVersionId :: !(Maybe ObjectVersionId)
-    , _dotBucket    :: !BucketName
-    , _dotKey       :: !ObjectKey
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data DeleteObjectTagging = DeleteObjectTagging'{_dotVersionId
+                                                :: !(Maybe ObjectVersionId),
+                                                _dotBucket :: !BucketName,
+                                                _dotKey :: !ObjectKey}
+                             deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'DeleteObjectTagging' with the minimum fields required to make a request.
 --
@@ -67,10 +63,9 @@ deleteObjectTagging
     :: BucketName -- ^ 'dotBucket'
     -> ObjectKey -- ^ 'dotKey'
     -> DeleteObjectTagging
-deleteObjectTagging pBucket_ pKey_ =
-  DeleteObjectTagging'
-    {_dotVersionId = Nothing, _dotBucket = pBucket_, _dotKey = pKey_}
-
+deleteObjectTagging pBucket_ pKey_
+  = DeleteObjectTagging'{_dotVersionId = Nothing,
+                         _dotBucket = pBucket_, _dotKey = pKey_}
 
 -- | The versionId of the object that the tag-set will be removed from.
 dotVersionId :: Lens' DeleteObjectTagging (Maybe ObjectVersionId)
@@ -110,13 +105,14 @@ instance ToQuery DeleteObjectTagging where
           = mconcat ["versionId" =: _dotVersionId, "tagging"]
 
 -- | /See:/ 'deleteObjectTaggingResponse' smart constructor.
-data DeleteObjectTaggingResponse =
-  DeleteObjectTaggingResponse'
-    { _dotrsVersionId      :: !(Maybe ObjectVersionId)
-    , _dotrsResponseStatus :: !Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data DeleteObjectTaggingResponse = DeleteObjectTaggingResponse'{_dotrsVersionId
+                                                                ::
+                                                                !(Maybe
+                                                                    ObjectVersionId),
+                                                                _dotrsResponseStatus
+                                                                :: !Int}
+                                     deriving (Eq, Read, Show, Data, Typeable,
+                                               Generic)
 
 -- | Creates a value of 'DeleteObjectTaggingResponse' with the minimum fields required to make a request.
 --
@@ -128,10 +124,10 @@ data DeleteObjectTaggingResponse =
 deleteObjectTaggingResponse
     :: Int -- ^ 'dotrsResponseStatus'
     -> DeleteObjectTaggingResponse
-deleteObjectTaggingResponse pResponseStatus_ =
-  DeleteObjectTaggingResponse'
-    {_dotrsVersionId = Nothing, _dotrsResponseStatus = pResponseStatus_}
-
+deleteObjectTaggingResponse pResponseStatus_
+  = DeleteObjectTaggingResponse'{_dotrsVersionId =
+                                   Nothing,
+                                 _dotrsResponseStatus = pResponseStatus_}
 
 -- | The versionId of the object the tag-set was removed from.
 dotrsVersionId :: Lens' DeleteObjectTaggingResponse (Maybe ObjectVersionId)

@@ -112,8 +112,26 @@ library
         , Network.AWS.StorageGateway.Waiters
 
     other-modules:
-          Network.AWS.StorageGateway.Types.Product
-        , Network.AWS.StorageGateway.Types.Sum
+          Network.AWS.StorageGateway.Types.CachediSCSIVolume
+        , Network.AWS.StorageGateway.Types.ChapInfo
+        , Network.AWS.StorageGateway.Types.DeviceiSCSIAttributes
+        , Network.AWS.StorageGateway.Types.Disk
+        , Network.AWS.StorageGateway.Types.FileShareInfo
+        , Network.AWS.StorageGateway.Types.GatewayInfo
+        , Network.AWS.StorageGateway.Types.NFSFileShareDefaults
+        , Network.AWS.StorageGateway.Types.NFSFileShareInfo
+        , Network.AWS.StorageGateway.Types.NetworkInterface
+        , Network.AWS.StorageGateway.Types.ObjectACL
+        , Network.AWS.StorageGateway.Types.StorediSCSIVolume
+        , Network.AWS.StorageGateway.Types.Tag
+        , Network.AWS.StorageGateway.Types.Tape
+        , Network.AWS.StorageGateway.Types.TapeArchive
+        , Network.AWS.StorageGateway.Types.TapeInfo
+        , Network.AWS.StorageGateway.Types.TapeRecoveryPointInfo
+        , Network.AWS.StorageGateway.Types.VTLDevice
+        , Network.AWS.StorageGateway.Types.VolumeInfo
+        , Network.AWS.StorageGateway.Types.VolumeRecoveryPointInfo
+        , Network.AWS.StorageGateway.Types.VolumeiSCSIAttributes
 
     build-depends:
           amazonka-core == 1.6.1.*

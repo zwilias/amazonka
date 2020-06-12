@@ -39,18 +39,13 @@ module Network.AWS.Lightsail.GetDisk
 
 import Network.AWS.Lens
 import Network.AWS.Lightsail.Types
-import Network.AWS.Lightsail.Types.Product
 import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 
 -- | /See:/ 'getDisk' smart constructor.
-newtype GetDisk =
-  GetDisk'
-    { _gdDiskName :: Text
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+newtype GetDisk = GetDisk'{_gdDiskName :: Text}
+                    deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'GetDisk' with the minimum fields required to make a request.
 --
@@ -60,8 +55,8 @@ newtype GetDisk =
 getDisk
     :: Text -- ^ 'gdDiskName'
     -> GetDisk
-getDisk pDiskName_ = GetDisk' {_gdDiskName = pDiskName_}
-
+getDisk pDiskName_
+  = GetDisk'{_gdDiskName = pDiskName_}
 
 -- | The name of the disk (e.g., @my-disk@ ).
 gdDiskName :: Lens' GetDisk Text
@@ -101,13 +96,10 @@ instance ToQuery GetDisk where
         toQuery = const mempty
 
 -- | /See:/ 'getDiskResponse' smart constructor.
-data GetDiskResponse =
-  GetDiskResponse'
-    { _getrsDisk           :: !(Maybe Disk)
-    , _getrsResponseStatus :: !Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data GetDiskResponse = GetDiskResponse'{_getrsDisk ::
+                                        !(Maybe Disk),
+                                        _getrsResponseStatus :: !Int}
+                         deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'GetDiskResponse' with the minimum fields required to make a request.
 --
@@ -119,10 +111,9 @@ data GetDiskResponse =
 getDiskResponse
     :: Int -- ^ 'getrsResponseStatus'
     -> GetDiskResponse
-getDiskResponse pResponseStatus_ =
-  GetDiskResponse'
-    {_getrsDisk = Nothing, _getrsResponseStatus = pResponseStatus_}
-
+getDiskResponse pResponseStatus_
+  = GetDiskResponse'{_getrsDisk = Nothing,
+                     _getrsResponseStatus = pResponseStatus_}
 
 -- | An object containing information about the disk.
 getrsDisk :: Lens' GetDiskResponse (Maybe Disk)

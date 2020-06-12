@@ -44,16 +44,14 @@ import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 import Network.AWS.SSM.Types
-import Network.AWS.SSM.Types.Product
 
 -- | /See:/ 'createResourceDataSync' smart constructor.
-data CreateResourceDataSync =
-  CreateResourceDataSync'
-    { _crdsSyncName      :: !Text
-    , _crdsS3Destination :: !ResourceDataSyncS3Destination
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data CreateResourceDataSync = CreateResourceDataSync'{_crdsSyncName
+                                                      :: !Text,
+                                                      _crdsS3Destination ::
+                                                      !ResourceDataSyncS3Destination}
+                                deriving (Eq, Read, Show, Data, Typeable,
+                                          Generic)
 
 -- | Creates a value of 'CreateResourceDataSync' with the minimum fields required to make a request.
 --
@@ -66,10 +64,9 @@ createResourceDataSync
     :: Text -- ^ 'crdsSyncName'
     -> ResourceDataSyncS3Destination -- ^ 'crdsS3Destination'
     -> CreateResourceDataSync
-createResourceDataSync pSyncName_ pS3Destination_ =
-  CreateResourceDataSync'
-    {_crdsSyncName = pSyncName_, _crdsS3Destination = pS3Destination_}
-
+createResourceDataSync pSyncName_ pS3Destination_
+  = CreateResourceDataSync'{_crdsSyncName = pSyncName_,
+                            _crdsS3Destination = pS3Destination_}
 
 -- | A name for the configuration.
 crdsSyncName :: Lens' CreateResourceDataSync Text
@@ -116,12 +113,10 @@ instance ToQuery CreateResourceDataSync where
         toQuery = const mempty
 
 -- | /See:/ 'createResourceDataSyncResponse' smart constructor.
-newtype CreateResourceDataSyncResponse =
-  CreateResourceDataSyncResponse'
-    { _crdsrsResponseStatus :: Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+newtype CreateResourceDataSyncResponse = CreateResourceDataSyncResponse'{_crdsrsResponseStatus
+                                                                         :: Int}
+                                           deriving (Eq, Read, Show, Data,
+                                                     Typeable, Generic)
 
 -- | Creates a value of 'CreateResourceDataSyncResponse' with the minimum fields required to make a request.
 --
@@ -131,9 +126,9 @@ newtype CreateResourceDataSyncResponse =
 createResourceDataSyncResponse
     :: Int -- ^ 'crdsrsResponseStatus'
     -> CreateResourceDataSyncResponse
-createResourceDataSyncResponse pResponseStatus_ =
-  CreateResourceDataSyncResponse' {_crdsrsResponseStatus = pResponseStatus_}
-
+createResourceDataSyncResponse pResponseStatus_
+  = CreateResourceDataSyncResponse'{_crdsrsResponseStatus
+                                      = pResponseStatus_}
 
 -- | -- | The response status code.
 crdsrsResponseStatus :: Lens' CreateResourceDataSyncResponse Int

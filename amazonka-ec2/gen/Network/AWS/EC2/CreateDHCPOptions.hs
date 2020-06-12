@@ -53,20 +53,17 @@ module Network.AWS.EC2.CreateDHCPOptions
     ) where
 
 import Network.AWS.EC2.Types
-import Network.AWS.EC2.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 
 -- | /See:/ 'createDHCPOptions' smart constructor.
-data CreateDHCPOptions =
-  CreateDHCPOptions'
-    { _cdoDryRun             :: !(Maybe Bool)
-    , _cdoDHCPConfigurations :: ![NewDHCPConfiguration]
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data CreateDHCPOptions = CreateDHCPOptions'{_cdoDryRun
+                                            :: !(Maybe Bool),
+                                            _cdoDHCPConfigurations ::
+                                            ![NewDHCPConfiguration]}
+                           deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'CreateDHCPOptions' with the minimum fields required to make a request.
 --
@@ -77,9 +74,9 @@ data CreateDHCPOptions =
 -- * 'cdoDHCPConfigurations' - A DHCP configuration option.
 createDHCPOptions
     :: CreateDHCPOptions
-createDHCPOptions =
-  CreateDHCPOptions' {_cdoDryRun = Nothing, _cdoDHCPConfigurations = mempty}
-
+createDHCPOptions
+  = CreateDHCPOptions'{_cdoDryRun = Nothing,
+                       _cdoDHCPConfigurations = mempty}
 
 -- | Checks whether you have the required permissions for the action, without actually making the request, and provides an error response. If you have the required permissions, the error response is @DryRunOperation@ . Otherwise, it is @UnauthorizedOperation@ .
 cdoDryRun :: Lens' CreateDHCPOptions (Maybe Bool)
@@ -118,13 +115,14 @@ instance ToQuery CreateDHCPOptions where
                  _cdoDHCPConfigurations]
 
 -- | /See:/ 'createDHCPOptionsResponse' smart constructor.
-data CreateDHCPOptionsResponse =
-  CreateDHCPOptionsResponse'
-    { _cdorsDHCPOptions    :: !(Maybe DHCPOptions)
-    , _cdorsResponseStatus :: !Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data CreateDHCPOptionsResponse = CreateDHCPOptionsResponse'{_cdorsDHCPOptions
+                                                            ::
+                                                            !(Maybe
+                                                                DHCPOptions),
+                                                            _cdorsResponseStatus
+                                                            :: !Int}
+                                   deriving (Eq, Read, Show, Data, Typeable,
+                                             Generic)
 
 -- | Creates a value of 'CreateDHCPOptionsResponse' with the minimum fields required to make a request.
 --
@@ -136,10 +134,10 @@ data CreateDHCPOptionsResponse =
 createDHCPOptionsResponse
     :: Int -- ^ 'cdorsResponseStatus'
     -> CreateDHCPOptionsResponse
-createDHCPOptionsResponse pResponseStatus_ =
-  CreateDHCPOptionsResponse'
-    {_cdorsDHCPOptions = Nothing, _cdorsResponseStatus = pResponseStatus_}
-
+createDHCPOptionsResponse pResponseStatus_
+  = CreateDHCPOptionsResponse'{_cdorsDHCPOptions =
+                                 Nothing,
+                               _cdorsResponseStatus = pResponseStatus_}
 
 -- | A set of DHCP options.
 cdorsDHCPOptions :: Lens' CreateDHCPOptionsResponse (Maybe DHCPOptions)

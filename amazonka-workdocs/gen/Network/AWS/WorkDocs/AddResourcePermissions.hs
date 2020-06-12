@@ -45,18 +45,18 @@ import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 import Network.AWS.WorkDocs.Types
-import Network.AWS.WorkDocs.Types.Product
 
 -- | /See:/ 'addResourcePermissions' smart constructor.
-data AddResourcePermissions =
-  AddResourcePermissions'
-    { _arpNotificationOptions :: !(Maybe NotificationOptions)
-    , _arpAuthenticationToken :: !(Maybe (Sensitive Text))
-    , _arpResourceId          :: !Text
-    , _arpPrincipals          :: ![SharePrincipal]
-    }
-  deriving (Eq, Show, Data, Typeable, Generic)
-
+data AddResourcePermissions = AddResourcePermissions'{_arpNotificationOptions
+                                                      ::
+                                                      !(Maybe
+                                                          NotificationOptions),
+                                                      _arpAuthenticationToken ::
+                                                      !(Maybe (Sensitive Text)),
+                                                      _arpResourceId :: !Text,
+                                                      _arpPrincipals ::
+                                                      ![SharePrincipal]}
+                                deriving (Eq, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'AddResourcePermissions' with the minimum fields required to make a request.
 --
@@ -72,14 +72,12 @@ data AddResourcePermissions =
 addResourcePermissions
     :: Text -- ^ 'arpResourceId'
     -> AddResourcePermissions
-addResourcePermissions pResourceId_ =
-  AddResourcePermissions'
-    { _arpNotificationOptions = Nothing
-    , _arpAuthenticationToken = Nothing
-    , _arpResourceId = pResourceId_
-    , _arpPrincipals = mempty
-    }
-
+addResourcePermissions pResourceId_
+  = AddResourcePermissions'{_arpNotificationOptions =
+                              Nothing,
+                            _arpAuthenticationToken = Nothing,
+                            _arpResourceId = pResourceId_,
+                            _arpPrincipals = mempty}
 
 -- | The notification options.
 arpNotificationOptions :: Lens' AddResourcePermissions (Maybe NotificationOptions)
@@ -137,13 +135,14 @@ instance ToQuery AddResourcePermissions where
         toQuery = const mempty
 
 -- | /See:/ 'addResourcePermissionsResponse' smart constructor.
-data AddResourcePermissionsResponse =
-  AddResourcePermissionsResponse'
-    { _arprsShareResults   :: !(Maybe [ShareResult])
-    , _arprsResponseStatus :: !Int
-    }
-  deriving (Eq, Show, Data, Typeable, Generic)
-
+data AddResourcePermissionsResponse = AddResourcePermissionsResponse'{_arprsShareResults
+                                                                      ::
+                                                                      !(Maybe
+                                                                          [ShareResult]),
+                                                                      _arprsResponseStatus
+                                                                      :: !Int}
+                                        deriving (Eq, Show, Data, Typeable,
+                                                  Generic)
 
 -- | Creates a value of 'AddResourcePermissionsResponse' with the minimum fields required to make a request.
 --
@@ -155,10 +154,10 @@ data AddResourcePermissionsResponse =
 addResourcePermissionsResponse
     :: Int -- ^ 'arprsResponseStatus'
     -> AddResourcePermissionsResponse
-addResourcePermissionsResponse pResponseStatus_ =
-  AddResourcePermissionsResponse'
-    {_arprsShareResults = Nothing, _arprsResponseStatus = pResponseStatus_}
-
+addResourcePermissionsResponse pResponseStatus_
+  = AddResourcePermissionsResponse'{_arprsShareResults
+                                      = Nothing,
+                                    _arprsResponseStatus = pResponseStatus_}
 
 -- | The share results.
 arprsShareResults :: Lens' AddResourcePermissionsResponse [ShareResult]

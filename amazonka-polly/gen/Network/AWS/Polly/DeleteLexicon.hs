@@ -40,18 +40,14 @@ module Network.AWS.Polly.DeleteLexicon
 
 import Network.AWS.Lens
 import Network.AWS.Polly.Types
-import Network.AWS.Polly.Types.Product
 import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 
 -- | /See:/ 'deleteLexicon' smart constructor.
-newtype DeleteLexicon =
-  DeleteLexicon'
-    { _dlName :: Sensitive Text
-    }
-  deriving (Eq, Show, Data, Typeable, Generic)
-
+newtype DeleteLexicon = DeleteLexicon'{_dlName ::
+                                       Sensitive Text}
+                          deriving (Eq, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'DeleteLexicon' with the minimum fields required to make a request.
 --
@@ -61,8 +57,8 @@ newtype DeleteLexicon =
 deleteLexicon
     :: Text -- ^ 'dlName'
     -> DeleteLexicon
-deleteLexicon pName_ = DeleteLexicon' {_dlName = _Sensitive # pName_}
-
+deleteLexicon pName_
+  = DeleteLexicon'{_dlName = _Sensitive # pName_}
 
 -- | The name of the lexicon to delete. Must be an existing lexicon in the region.
 dlName :: Lens' DeleteLexicon Text
@@ -91,12 +87,10 @@ instance ToQuery DeleteLexicon where
         toQuery = const mempty
 
 -- | /See:/ 'deleteLexiconResponse' smart constructor.
-newtype DeleteLexiconResponse =
-  DeleteLexiconResponse'
-    { _dlrsResponseStatus :: Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+newtype DeleteLexiconResponse = DeleteLexiconResponse'{_dlrsResponseStatus
+                                                       :: Int}
+                                  deriving (Eq, Read, Show, Data, Typeable,
+                                            Generic)
 
 -- | Creates a value of 'DeleteLexiconResponse' with the minimum fields required to make a request.
 --
@@ -106,9 +100,9 @@ newtype DeleteLexiconResponse =
 deleteLexiconResponse
     :: Int -- ^ 'dlrsResponseStatus'
     -> DeleteLexiconResponse
-deleteLexiconResponse pResponseStatus_ =
-  DeleteLexiconResponse' {_dlrsResponseStatus = pResponseStatus_}
-
+deleteLexiconResponse pResponseStatus_
+  = DeleteLexiconResponse'{_dlrsResponseStatus =
+                             pResponseStatus_}
 
 -- | -- | The response status code.
 dlrsResponseStatus :: Lens' DeleteLexiconResponse Int

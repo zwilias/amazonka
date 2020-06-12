@@ -51,8 +51,8 @@ library
         , Network.AWS.MarketplaceAnalytics.Waiters
 
     other-modules:
-          Network.AWS.MarketplaceAnalytics.Types.Product
-        , Network.AWS.MarketplaceAnalytics.Types.Sum
+          Network.AWS.MarketplaceAnalytics.Types.DataSetType
+        , Network.AWS.MarketplaceAnalytics.Types.SupportDataSetType
 
     build-depends:
           amazonka-core == 1.6.1.*

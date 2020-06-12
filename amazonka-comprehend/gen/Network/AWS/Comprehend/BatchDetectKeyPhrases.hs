@@ -40,20 +40,18 @@ module Network.AWS.Comprehend.BatchDetectKeyPhrases
     ) where
 
 import Network.AWS.Comprehend.Types
-import Network.AWS.Comprehend.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 
 -- | /See:/ 'batchDetectKeyPhrases' smart constructor.
-data BatchDetectKeyPhrases =
-  BatchDetectKeyPhrases'
-    { _bdkpTextList     :: ![Text]
-    , _bdkpLanguageCode :: !LanguageCode
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data BatchDetectKeyPhrases = BatchDetectKeyPhrases'{_bdkpTextList
+                                                    :: ![Text],
+                                                    _bdkpLanguageCode ::
+                                                    !LanguageCode}
+                               deriving (Eq, Read, Show, Data, Typeable,
+                                         Generic)
 
 -- | Creates a value of 'BatchDetectKeyPhrases' with the minimum fields required to make a request.
 --
@@ -65,10 +63,9 @@ data BatchDetectKeyPhrases =
 batchDetectKeyPhrases
     :: LanguageCode -- ^ 'bdkpLanguageCode'
     -> BatchDetectKeyPhrases
-batchDetectKeyPhrases pLanguageCode_ =
-  BatchDetectKeyPhrases'
-    {_bdkpTextList = mempty, _bdkpLanguageCode = pLanguageCode_}
-
+batchDetectKeyPhrases pLanguageCode_
+  = BatchDetectKeyPhrases'{_bdkpTextList = mempty,
+                           _bdkpLanguageCode = pLanguageCode_}
 
 -- | A list containing the text of the input documents. The list can contain a maximum of 25 documents. Each document must contain fewer that 5,000 bytes of UTF-8 encoded characters.
 bdkpTextList :: Lens' BatchDetectKeyPhrases [Text]
@@ -118,14 +115,16 @@ instance ToQuery BatchDetectKeyPhrases where
         toQuery = const mempty
 
 -- | /See:/ 'batchDetectKeyPhrasesResponse' smart constructor.
-data BatchDetectKeyPhrasesResponse =
-  BatchDetectKeyPhrasesResponse'
-    { _bdkprsResponseStatus :: !Int
-    , _bdkprsResultList     :: ![BatchDetectKeyPhrasesItemResult]
-    , _bdkprsErrorList      :: ![BatchItemError]
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data BatchDetectKeyPhrasesResponse = BatchDetectKeyPhrasesResponse'{_bdkprsResponseStatus
+                                                                    :: !Int,
+                                                                    _bdkprsResultList
+                                                                    ::
+                                                                    ![BatchDetectKeyPhrasesItemResult],
+                                                                    _bdkprsErrorList
+                                                                    ::
+                                                                    ![BatchItemError]}
+                                       deriving (Eq, Read, Show, Data, Typeable,
+                                                 Generic)
 
 -- | Creates a value of 'BatchDetectKeyPhrasesResponse' with the minimum fields required to make a request.
 --
@@ -139,13 +138,11 @@ data BatchDetectKeyPhrasesResponse =
 batchDetectKeyPhrasesResponse
     :: Int -- ^ 'bdkprsResponseStatus'
     -> BatchDetectKeyPhrasesResponse
-batchDetectKeyPhrasesResponse pResponseStatus_ =
-  BatchDetectKeyPhrasesResponse'
-    { _bdkprsResponseStatus = pResponseStatus_
-    , _bdkprsResultList = mempty
-    , _bdkprsErrorList = mempty
-    }
-
+batchDetectKeyPhrasesResponse pResponseStatus_
+  = BatchDetectKeyPhrasesResponse'{_bdkprsResponseStatus
+                                     = pResponseStatus_,
+                                   _bdkprsResultList = mempty,
+                                   _bdkprsErrorList = mempty}
 
 -- | -- | The response status code.
 bdkprsResponseStatus :: Lens' BatchDetectKeyPhrasesResponse Int

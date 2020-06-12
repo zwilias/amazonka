@@ -41,16 +41,15 @@ import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 import Network.AWS.S3.Types
-import Network.AWS.S3.Types.Product
 
 -- | /See:/ 'getBucketMetricsConfiguration' smart constructor.
-data GetBucketMetricsConfiguration =
-  GetBucketMetricsConfiguration'
-    { _gbmcBucket :: !BucketName
-    , _gbmcId     :: !Text
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data GetBucketMetricsConfiguration = GetBucketMetricsConfiguration'{_gbmcBucket
+                                                                    ::
+                                                                    !BucketName,
+                                                                    _gbmcId ::
+                                                                    !Text}
+                                       deriving (Eq, Read, Show, Data, Typeable,
+                                                 Generic)
 
 -- | Creates a value of 'GetBucketMetricsConfiguration' with the minimum fields required to make a request.
 --
@@ -63,9 +62,10 @@ getBucketMetricsConfiguration
     :: BucketName -- ^ 'gbmcBucket'
     -> Text -- ^ 'gbmcId'
     -> GetBucketMetricsConfiguration
-getBucketMetricsConfiguration pBucket_ pId_ =
-  GetBucketMetricsConfiguration' {_gbmcBucket = pBucket_, _gbmcId = pId_}
-
+getBucketMetricsConfiguration pBucket_ pId_
+  = GetBucketMetricsConfiguration'{_gbmcBucket =
+                                     pBucket_,
+                                   _gbmcId = pId_}
 
 -- | The name of the bucket containing the metrics configuration to retrieve.
 gbmcBucket :: Lens' GetBucketMetricsConfiguration BucketName
@@ -103,13 +103,15 @@ instance ToQuery GetBucketMetricsConfiguration where
           = mconcat ["id" =: _gbmcId, "metrics"]
 
 -- | /See:/ 'getBucketMetricsConfigurationResponse' smart constructor.
-data GetBucketMetricsConfigurationResponse =
-  GetBucketMetricsConfigurationResponse'
-    { _gbmcrsMetricsConfiguration :: !(Maybe MetricsConfiguration)
-    , _gbmcrsResponseStatus       :: !Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data GetBucketMetricsConfigurationResponse = GetBucketMetricsConfigurationResponse'{_gbmcrsMetricsConfiguration
+                                                                                    ::
+                                                                                    !(Maybe
+                                                                                        MetricsConfiguration),
+                                                                                    _gbmcrsResponseStatus
+                                                                                    ::
+                                                                                    !Int}
+                                               deriving (Eq, Read, Show, Data,
+                                                         Typeable, Generic)
 
 -- | Creates a value of 'GetBucketMetricsConfigurationResponse' with the minimum fields required to make a request.
 --
@@ -121,12 +123,12 @@ data GetBucketMetricsConfigurationResponse =
 getBucketMetricsConfigurationResponse
     :: Int -- ^ 'gbmcrsResponseStatus'
     -> GetBucketMetricsConfigurationResponse
-getBucketMetricsConfigurationResponse pResponseStatus_ =
-  GetBucketMetricsConfigurationResponse'
-    { _gbmcrsMetricsConfiguration = Nothing
-    , _gbmcrsResponseStatus = pResponseStatus_
-    }
-
+getBucketMetricsConfigurationResponse
+  pResponseStatus_
+  = GetBucketMetricsConfigurationResponse'{_gbmcrsMetricsConfiguration
+                                             = Nothing,
+                                           _gbmcrsResponseStatus =
+                                             pResponseStatus_}
 
 -- | Specifies the metrics configuration.
 gbmcrsMetricsConfiguration :: Lens' GetBucketMetricsConfigurationResponse (Maybe MetricsConfiguration)

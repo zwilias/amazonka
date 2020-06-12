@@ -58,7 +58,6 @@ module Network.AWS.MediaPackage.UpdateOriginEndpoint
 
 import Network.AWS.Lens
 import Network.AWS.MediaPackage.Types
-import Network.AWS.MediaPackage.Types.Product
 import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
@@ -66,21 +65,27 @@ import Network.AWS.Response
 -- | Configuration parameters used to update an existing OriginEndpoint.
 --
 -- /See:/ 'updateOriginEndpoint' smart constructor.
-data UpdateOriginEndpoint =
-  UpdateOriginEndpoint'
-    { _uoeWhitelist              :: !(Maybe [Text])
-    , _uoeHlsPackage             :: !(Maybe HlsPackage)
-    , _uoeManifestName           :: !(Maybe Text)
-    , _uoeStartoverWindowSeconds :: !(Maybe Int)
-    , _uoeDashPackage            :: !(Maybe DashPackage)
-    , _uoeMssPackage             :: !(Maybe MssPackage)
-    , _uoeTimeDelaySeconds       :: !(Maybe Int)
-    , _uoeCmafPackage            :: !(Maybe CmafPackageCreateOrUpdateParameters)
-    , _uoeDescription            :: !(Maybe Text)
-    , _uoeId                     :: !Text
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data UpdateOriginEndpoint = UpdateOriginEndpoint'{_uoeWhitelist
+                                                  :: !(Maybe [Text]),
+                                                  _uoeHlsPackage ::
+                                                  !(Maybe HlsPackage),
+                                                  _uoeManifestName ::
+                                                  !(Maybe Text),
+                                                  _uoeStartoverWindowSeconds ::
+                                                  !(Maybe Int),
+                                                  _uoeDashPackage ::
+                                                  !(Maybe DashPackage),
+                                                  _uoeMssPackage ::
+                                                  !(Maybe MssPackage),
+                                                  _uoeTimeDelaySeconds ::
+                                                  !(Maybe Int),
+                                                  _uoeCmafPackage ::
+                                                  !(Maybe
+                                                      CmafPackageCreateOrUpdateParameters),
+                                                  _uoeDescription ::
+                                                  !(Maybe Text),
+                                                  _uoeId :: !Text}
+                              deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'UpdateOriginEndpoint' with the minimum fields required to make a request.
 --
@@ -108,20 +113,14 @@ data UpdateOriginEndpoint =
 updateOriginEndpoint
     :: Text -- ^ 'uoeId'
     -> UpdateOriginEndpoint
-updateOriginEndpoint pId_ =
-  UpdateOriginEndpoint'
-    { _uoeWhitelist = Nothing
-    , _uoeHlsPackage = Nothing
-    , _uoeManifestName = Nothing
-    , _uoeStartoverWindowSeconds = Nothing
-    , _uoeDashPackage = Nothing
-    , _uoeMssPackage = Nothing
-    , _uoeTimeDelaySeconds = Nothing
-    , _uoeCmafPackage = Nothing
-    , _uoeDescription = Nothing
-    , _uoeId = pId_
-    }
-
+updateOriginEndpoint pId_
+  = UpdateOriginEndpoint'{_uoeWhitelist = Nothing,
+                          _uoeHlsPackage = Nothing, _uoeManifestName = Nothing,
+                          _uoeStartoverWindowSeconds = Nothing,
+                          _uoeDashPackage = Nothing, _uoeMssPackage = Nothing,
+                          _uoeTimeDelaySeconds = Nothing,
+                          _uoeCmafPackage = Nothing, _uoeDescription = Nothing,
+                          _uoeId = pId_}
 
 -- | A list of source IP CIDR blocks that will be allowed to access the OriginEndpoint.
 uoeWhitelist :: Lens' UpdateOriginEndpoint [Text]
@@ -220,25 +219,51 @@ instance ToQuery UpdateOriginEndpoint where
         toQuery = const mempty
 
 -- | /See:/ 'updateOriginEndpointResponse' smart constructor.
-data UpdateOriginEndpointResponse =
-  UpdateOriginEndpointResponse'
-    { _uoersWhitelist              :: !(Maybe [Text])
-    , _uoersHlsPackage             :: !(Maybe HlsPackage)
-    , _uoersARN                    :: !(Maybe Text)
-    , _uoersManifestName           :: !(Maybe Text)
-    , _uoersURL                    :: !(Maybe Text)
-    , _uoersChannelId              :: !(Maybe Text)
-    , _uoersStartoverWindowSeconds :: !(Maybe Int)
-    , _uoersDashPackage            :: !(Maybe DashPackage)
-    , _uoersMssPackage             :: !(Maybe MssPackage)
-    , _uoersId                     :: !(Maybe Text)
-    , _uoersTimeDelaySeconds       :: !(Maybe Int)
-    , _uoersCmafPackage            :: !(Maybe CmafPackage)
-    , _uoersDescription            :: !(Maybe Text)
-    , _uoersResponseStatus         :: !Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data UpdateOriginEndpointResponse = UpdateOriginEndpointResponse'{_uoersWhitelist
+                                                                  ::
+                                                                  !(Maybe
+                                                                      [Text]),
+                                                                  _uoersHlsPackage
+                                                                  ::
+                                                                  !(Maybe
+                                                                      HlsPackage),
+                                                                  _uoersARN ::
+                                                                  !(Maybe Text),
+                                                                  _uoersManifestName
+                                                                  ::
+                                                                  !(Maybe Text),
+                                                                  _uoersURL ::
+                                                                  !(Maybe Text),
+                                                                  _uoersChannelId
+                                                                  ::
+                                                                  !(Maybe Text),
+                                                                  _uoersStartoverWindowSeconds
+                                                                  ::
+                                                                  !(Maybe Int),
+                                                                  _uoersDashPackage
+                                                                  ::
+                                                                  !(Maybe
+                                                                      DashPackage),
+                                                                  _uoersMssPackage
+                                                                  ::
+                                                                  !(Maybe
+                                                                      MssPackage),
+                                                                  _uoersId ::
+                                                                  !(Maybe Text),
+                                                                  _uoersTimeDelaySeconds
+                                                                  ::
+                                                                  !(Maybe Int),
+                                                                  _uoersCmafPackage
+                                                                  ::
+                                                                  !(Maybe
+                                                                      CmafPackage),
+                                                                  _uoersDescription
+                                                                  ::
+                                                                  !(Maybe Text),
+                                                                  _uoersResponseStatus
+                                                                  :: !Int}
+                                      deriving (Eq, Read, Show, Data, Typeable,
+                                                Generic)
 
 -- | Creates a value of 'UpdateOriginEndpointResponse' with the minimum fields required to make a request.
 --
@@ -274,24 +299,22 @@ data UpdateOriginEndpointResponse =
 updateOriginEndpointResponse
     :: Int -- ^ 'uoersResponseStatus'
     -> UpdateOriginEndpointResponse
-updateOriginEndpointResponse pResponseStatus_ =
-  UpdateOriginEndpointResponse'
-    { _uoersWhitelist = Nothing
-    , _uoersHlsPackage = Nothing
-    , _uoersARN = Nothing
-    , _uoersManifestName = Nothing
-    , _uoersURL = Nothing
-    , _uoersChannelId = Nothing
-    , _uoersStartoverWindowSeconds = Nothing
-    , _uoersDashPackage = Nothing
-    , _uoersMssPackage = Nothing
-    , _uoersId = Nothing
-    , _uoersTimeDelaySeconds = Nothing
-    , _uoersCmafPackage = Nothing
-    , _uoersDescription = Nothing
-    , _uoersResponseStatus = pResponseStatus_
-    }
-
+updateOriginEndpointResponse pResponseStatus_
+  = UpdateOriginEndpointResponse'{_uoersWhitelist =
+                                    Nothing,
+                                  _uoersHlsPackage = Nothing,
+                                  _uoersARN = Nothing,
+                                  _uoersManifestName = Nothing,
+                                  _uoersURL = Nothing,
+                                  _uoersChannelId = Nothing,
+                                  _uoersStartoverWindowSeconds = Nothing,
+                                  _uoersDashPackage = Nothing,
+                                  _uoersMssPackage = Nothing,
+                                  _uoersId = Nothing,
+                                  _uoersTimeDelaySeconds = Nothing,
+                                  _uoersCmafPackage = Nothing,
+                                  _uoersDescription = Nothing,
+                                  _uoersResponseStatus = pResponseStatus_}
 
 -- | A list of source IP CIDR blocks that will be allowed to access the OriginEndpoint.
 uoersWhitelist :: Lens' UpdateOriginEndpointResponse [Text]

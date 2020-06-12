@@ -38,18 +38,14 @@ module Network.AWS.RDS.AddRoleToDBCluster
 import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.RDS.Types
-import Network.AWS.RDS.Types.Product
 import Network.AWS.Request
 import Network.AWS.Response
 
 -- | /See:/ 'addRoleToDBCluster' smart constructor.
-data AddRoleToDBCluster =
-  AddRoleToDBCluster'
-    { _artdcDBClusterIdentifier :: !Text
-    , _artdcRoleARN             :: !Text
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data AddRoleToDBCluster = AddRoleToDBCluster'{_artdcDBClusterIdentifier
+                                              :: !Text,
+                                              _artdcRoleARN :: !Text}
+                            deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'AddRoleToDBCluster' with the minimum fields required to make a request.
 --
@@ -62,12 +58,10 @@ addRoleToDBCluster
     :: Text -- ^ 'artdcDBClusterIdentifier'
     -> Text -- ^ 'artdcRoleARN'
     -> AddRoleToDBCluster
-addRoleToDBCluster pDBClusterIdentifier_ pRoleARN_ =
-  AddRoleToDBCluster'
-    { _artdcDBClusterIdentifier = pDBClusterIdentifier_
-    , _artdcRoleARN = pRoleARN_
-    }
-
+addRoleToDBCluster pDBClusterIdentifier_ pRoleARN_
+  = AddRoleToDBCluster'{_artdcDBClusterIdentifier =
+                          pDBClusterIdentifier_,
+                        _artdcRoleARN = pRoleARN_}
 
 -- | The name of the DB cluster to associate the IAM role with.
 artdcDBClusterIdentifier :: Lens' AddRoleToDBCluster Text
@@ -102,16 +96,15 @@ instance ToQuery AddRoleToDBCluster where
                "RoleArn" =: _artdcRoleARN]
 
 -- | /See:/ 'addRoleToDBClusterResponse' smart constructor.
-data AddRoleToDBClusterResponse =
-  AddRoleToDBClusterResponse'
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data AddRoleToDBClusterResponse = AddRoleToDBClusterResponse'
+                                    deriving (Eq, Read, Show, Data, Typeable,
+                                              Generic)
 
 -- | Creates a value of 'AddRoleToDBClusterResponse' with the minimum fields required to make a request.
 --
 addRoleToDBClusterResponse
     :: AddRoleToDBClusterResponse
-addRoleToDBClusterResponse = AddRoleToDBClusterResponse'
-
+addRoleToDBClusterResponse
+  = AddRoleToDBClusterResponse'
 
 instance NFData AddRoleToDBClusterResponse where

@@ -18,10 +18,10 @@
 -- Stability   : auto-generated
 -- Portability : non-portable (GHC extensions)
 --
--- Retrieves the details of a secret. It does not include the encrypted fields. Only those fields that are populated with a value are returned in the response.
+-- Retrieves the details of a secret. It does not include the encrypted fields. Only those fields that are populated with a value are returned in the response. 
 --
 --
--- __Minimum permissions__
+-- __Minimum permissions__ 
 --
 -- To run this command, you must have the following permissions:
 --
@@ -29,7 +29,7 @@
 --
 --
 --
--- __Related operations__
+-- __Related operations__ 
 --
 --     * To create a secret, use 'CreateSecret' .
 --
@@ -74,15 +74,11 @@ import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 import Network.AWS.SecretsManager.Types
-import Network.AWS.SecretsManager.Types.Product
 
 -- | /See:/ 'describeSecret' smart constructor.
-newtype DescribeSecret =
-  DescribeSecret'
-    { _dSecretId :: Text
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+newtype DescribeSecret = DescribeSecret'{_dSecretId
+                                         :: Text}
+                           deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'DescribeSecret' with the minimum fields required to make a request.
 --
@@ -92,8 +88,8 @@ newtype DescribeSecret =
 describeSecret
     :: Text -- ^ 'dSecretId'
     -> DescribeSecret
-describeSecret pSecretId_ = DescribeSecret' {_dSecretId = pSecretId_}
-
+describeSecret pSecretId_
+  = DescribeSecret'{_dSecretId = pSecretId_}
 
 -- | The identifier of the secret whose details you want to retrieve. You can specify either the Amazon Resource Name (ARN) or the friendly name of the secret.
 dSecretId :: Lens' DescribeSecret Text
@@ -145,25 +141,37 @@ instance ToQuery DescribeSecret where
         toQuery = const mempty
 
 -- | /See:/ 'describeSecretResponse' smart constructor.
-data DescribeSecretResponse =
-  DescribeSecretResponse'
-    { _drsLastChangedDate    :: !(Maybe POSIX)
-    , _drsARN                :: !(Maybe Text)
-    , _drsRotationRules      :: !(Maybe RotationRulesType)
-    , _drsDeletedDate        :: !(Maybe POSIX)
-    , _drsRotationEnabled    :: !(Maybe Bool)
-    , _drsKMSKeyId           :: !(Maybe Text)
-    , _drsName               :: !(Maybe Text)
-    , _drsVersionIdsToStages :: !(Maybe (Map Text (List1 Text)))
-    , _drsLastRotatedDate    :: !(Maybe POSIX)
-    , _drsLastAccessedDate   :: !(Maybe POSIX)
-    , _drsDescription        :: !(Maybe Text)
-    , _drsRotationLambdaARN  :: !(Maybe Text)
-    , _drsTags               :: !(Maybe [Tag])
-    , _drsResponseStatus     :: !Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data DescribeSecretResponse = DescribeSecretResponse'{_drsLastChangedDate
+                                                      :: !(Maybe POSIX),
+                                                      _drsARN :: !(Maybe Text),
+                                                      _drsRotationRules ::
+                                                      !(Maybe
+                                                          RotationRulesType),
+                                                      _drsDeletedDate ::
+                                                      !(Maybe POSIX),
+                                                      _drsRotationEnabled ::
+                                                      !(Maybe Bool),
+                                                      _drsKMSKeyId ::
+                                                      !(Maybe Text),
+                                                      _drsName :: !(Maybe Text),
+                                                      _drsVersionIdsToStages ::
+                                                      !(Maybe
+                                                          (Map Text
+                                                             (List1 Text))),
+                                                      _drsLastRotatedDate ::
+                                                      !(Maybe POSIX),
+                                                      _drsLastAccessedDate ::
+                                                      !(Maybe POSIX),
+                                                      _drsDescription ::
+                                                      !(Maybe Text),
+                                                      _drsRotationLambdaARN ::
+                                                      !(Maybe Text),
+                                                      _drsTags ::
+                                                      !(Maybe [Tag]),
+                                                      _drsResponseStatus ::
+                                                      !Int}
+                                deriving (Eq, Read, Show, Data, Typeable,
+                                          Generic)
 
 -- | Creates a value of 'DescribeSecretResponse' with the minimum fields required to make a request.
 --
@@ -199,24 +207,19 @@ data DescribeSecretResponse =
 describeSecretResponse
     :: Int -- ^ 'drsResponseStatus'
     -> DescribeSecretResponse
-describeSecretResponse pResponseStatus_ =
-  DescribeSecretResponse'
-    { _drsLastChangedDate = Nothing
-    , _drsARN = Nothing
-    , _drsRotationRules = Nothing
-    , _drsDeletedDate = Nothing
-    , _drsRotationEnabled = Nothing
-    , _drsKMSKeyId = Nothing
-    , _drsName = Nothing
-    , _drsVersionIdsToStages = Nothing
-    , _drsLastRotatedDate = Nothing
-    , _drsLastAccessedDate = Nothing
-    , _drsDescription = Nothing
-    , _drsRotationLambdaARN = Nothing
-    , _drsTags = Nothing
-    , _drsResponseStatus = pResponseStatus_
-    }
-
+describeSecretResponse pResponseStatus_
+  = DescribeSecretResponse'{_drsLastChangedDate =
+                              Nothing,
+                            _drsARN = Nothing, _drsRotationRules = Nothing,
+                            _drsDeletedDate = Nothing,
+                            _drsRotationEnabled = Nothing,
+                            _drsKMSKeyId = Nothing, _drsName = Nothing,
+                            _drsVersionIdsToStages = Nothing,
+                            _drsLastRotatedDate = Nothing,
+                            _drsLastAccessedDate = Nothing,
+                            _drsDescription = Nothing,
+                            _drsRotationLambdaARN = Nothing, _drsTags = Nothing,
+                            _drsResponseStatus = pResponseStatus_}
 
 -- | The last date and time that this secret was modified in any way.
 drsLastChangedDate :: Lens' DescribeSecretResponse (Maybe UTCTime)

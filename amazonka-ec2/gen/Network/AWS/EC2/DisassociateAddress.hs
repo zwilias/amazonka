@@ -41,21 +41,17 @@ module Network.AWS.EC2.DisassociateAddress
     ) where
 
 import Network.AWS.EC2.Types
-import Network.AWS.EC2.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 
 -- | /See:/ 'disassociateAddress' smart constructor.
-data DisassociateAddress =
-  DisassociateAddress'
-    { _dasAssociationId :: !(Maybe Text)
-    , _dasPublicIP      :: !(Maybe Text)
-    , _dasDryRun        :: !(Maybe Bool)
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data DisassociateAddress = DisassociateAddress'{_dasAssociationId
+                                                :: !(Maybe Text),
+                                                _dasPublicIP :: !(Maybe Text),
+                                                _dasDryRun :: !(Maybe Bool)}
+                             deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'DisassociateAddress' with the minimum fields required to make a request.
 --
@@ -68,10 +64,9 @@ data DisassociateAddress =
 -- * 'dasDryRun' - Checks whether you have the required permissions for the action, without actually making the request, and provides an error response. If you have the required permissions, the error response is @DryRunOperation@ . Otherwise, it is @UnauthorizedOperation@ .
 disassociateAddress
     :: DisassociateAddress
-disassociateAddress =
-  DisassociateAddress'
-    {_dasAssociationId = Nothing, _dasPublicIP = Nothing, _dasDryRun = Nothing}
-
+disassociateAddress
+  = DisassociateAddress'{_dasAssociationId = Nothing,
+                         _dasPublicIP = Nothing, _dasDryRun = Nothing}
 
 -- | [EC2-VPC] The association ID. Required for EC2-VPC.
 dasAssociationId :: Lens' DisassociateAddress (Maybe Text)
@@ -110,16 +105,15 @@ instance ToQuery DisassociateAddress where
                "PublicIp" =: _dasPublicIP, "DryRun" =: _dasDryRun]
 
 -- | /See:/ 'disassociateAddressResponse' smart constructor.
-data DisassociateAddressResponse =
-  DisassociateAddressResponse'
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data DisassociateAddressResponse = DisassociateAddressResponse'
+                                     deriving (Eq, Read, Show, Data, Typeable,
+                                               Generic)
 
 -- | Creates a value of 'DisassociateAddressResponse' with the minimum fields required to make a request.
 --
 disassociateAddressResponse
     :: DisassociateAddressResponse
-disassociateAddressResponse = DisassociateAddressResponse'
-
+disassociateAddressResponse
+  = DisassociateAddressResponse'
 
 instance NFData DisassociateAddressResponse where

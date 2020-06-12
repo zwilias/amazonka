@@ -18,7 +18,7 @@
 -- Stability   : auto-generated
 -- Portability : non-portable (GHC extensions)
 --
--- Deletes a Selenium testing project and all content generated under it.
+-- Deletes a Selenium testing project and all content generated under it. 
 --
 --
 -- /Important:/ You cannot undo this operation.
@@ -39,19 +39,16 @@ module Network.AWS.DeviceFarm.DeleteTestGridProject
     ) where
 
 import Network.AWS.DeviceFarm.Types
-import Network.AWS.DeviceFarm.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 
 -- | /See:/ 'deleteTestGridProject' smart constructor.
-newtype DeleteTestGridProject =
-  DeleteTestGridProject'
-    { _dtgpProjectARN :: Text
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+newtype DeleteTestGridProject = DeleteTestGridProject'{_dtgpProjectARN
+                                                       :: Text}
+                                  deriving (Eq, Read, Show, Data, Typeable,
+                                            Generic)
 
 -- | Creates a value of 'DeleteTestGridProject' with the minimum fields required to make a request.
 --
@@ -61,9 +58,9 @@ newtype DeleteTestGridProject =
 deleteTestGridProject
     :: Text -- ^ 'dtgpProjectARN'
     -> DeleteTestGridProject
-deleteTestGridProject pProjectARN_ =
-  DeleteTestGridProject' {_dtgpProjectARN = pProjectARN_}
-
+deleteTestGridProject pProjectARN_
+  = DeleteTestGridProject'{_dtgpProjectARN =
+                             pProjectARN_}
 
 -- | The ARN of the project to delete, from 'CreateTestGridProject' or 'ListTestGridProjects' .
 dtgpProjectARN :: Lens' DeleteTestGridProject Text
@@ -105,12 +102,10 @@ instance ToQuery DeleteTestGridProject where
         toQuery = const mempty
 
 -- | /See:/ 'deleteTestGridProjectResponse' smart constructor.
-newtype DeleteTestGridProjectResponse =
-  DeleteTestGridProjectResponse'
-    { _dtgprsResponseStatus :: Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+newtype DeleteTestGridProjectResponse = DeleteTestGridProjectResponse'{_dtgprsResponseStatus
+                                                                       :: Int}
+                                          deriving (Eq, Read, Show, Data,
+                                                    Typeable, Generic)
 
 -- | Creates a value of 'DeleteTestGridProjectResponse' with the minimum fields required to make a request.
 --
@@ -120,9 +115,9 @@ newtype DeleteTestGridProjectResponse =
 deleteTestGridProjectResponse
     :: Int -- ^ 'dtgprsResponseStatus'
     -> DeleteTestGridProjectResponse
-deleteTestGridProjectResponse pResponseStatus_ =
-  DeleteTestGridProjectResponse' {_dtgprsResponseStatus = pResponseStatus_}
-
+deleteTestGridProjectResponse pResponseStatus_
+  = DeleteTestGridProjectResponse'{_dtgprsResponseStatus
+                                     = pResponseStatus_}
 
 -- | -- | The response status code.
 dtgprsResponseStatus :: Lens' DeleteTestGridProjectResponse Int

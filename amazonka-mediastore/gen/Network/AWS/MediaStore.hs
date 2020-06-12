@@ -11,7 +11,7 @@
 -- Stability   : auto-generated
 -- Portability : non-portable (GHC extensions)
 --
--- An AWS Elemental MediaStore container is a namespace that holds folders and objects. You use a container endpoint to create, read, and delete objects.
+-- An AWS Elemental MediaStore container is a namespace that holds folders and objects. You use a container endpoint to create, read, and delete objects. 
 --
 --
 module Network.AWS.MediaStore
@@ -46,34 +46,34 @@ module Network.AWS.MediaStore
     -- * Operations
     -- $operations
 
-    -- ** CreateContainer
+    -- ** CreateContainer 
     , module Network.AWS.MediaStore.CreateContainer
 
-    -- ** ListContainers
+    -- ** ListContainers 
     , module Network.AWS.MediaStore.ListContainers
 
-    -- ** DeleteContainer
+    -- ** DeleteContainer 
     , module Network.AWS.MediaStore.DeleteContainer
 
-    -- ** PutCORSPolicy
+    -- ** PutCORSPolicy 
     , module Network.AWS.MediaStore.PutCORSPolicy
 
-    -- ** DeleteCORSPolicy
+    -- ** DeleteCORSPolicy 
     , module Network.AWS.MediaStore.DeleteCORSPolicy
 
-    -- ** DescribeContainer
+    -- ** DescribeContainer 
     , module Network.AWS.MediaStore.DescribeContainer
 
-    -- ** GetCORSPolicy
+    -- ** GetCORSPolicy 
     , module Network.AWS.MediaStore.GetCORSPolicy
 
-    -- ** DeleteContainerPolicy
+    -- ** DeleteContainerPolicy 
     , module Network.AWS.MediaStore.DeleteContainerPolicy
 
-    -- ** PutContainerPolicy
+    -- ** PutContainerPolicy 
     , module Network.AWS.MediaStore.PutContainerPolicy
 
-    -- ** GetContainerPolicy
+    -- ** GetContainerPolicy 
     , module Network.AWS.MediaStore.GetContainerPolicy
 
     -- * Types
@@ -104,15 +104,15 @@ module Network.AWS.MediaStore
     ) where
 
 import Network.AWS.MediaStore.CreateContainer
+import Network.AWS.MediaStore.DeleteCORSPolicy
 import Network.AWS.MediaStore.DeleteContainer
 import Network.AWS.MediaStore.DeleteContainerPolicy
-import Network.AWS.MediaStore.DeleteCORSPolicy
 import Network.AWS.MediaStore.DescribeContainer
-import Network.AWS.MediaStore.GetContainerPolicy
 import Network.AWS.MediaStore.GetCORSPolicy
+import Network.AWS.MediaStore.GetContainerPolicy
 import Network.AWS.MediaStore.ListContainers
-import Network.AWS.MediaStore.PutContainerPolicy
 import Network.AWS.MediaStore.PutCORSPolicy
+import Network.AWS.MediaStore.PutContainerPolicy
 import Network.AWS.MediaStore.Types
 import Network.AWS.MediaStore.Waiters
 

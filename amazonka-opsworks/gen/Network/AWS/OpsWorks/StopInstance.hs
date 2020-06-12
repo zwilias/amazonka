@@ -39,19 +39,15 @@ module Network.AWS.OpsWorks.StopInstance
 
 import Network.AWS.Lens
 import Network.AWS.OpsWorks.Types
-import Network.AWS.OpsWorks.Types.Product
 import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 
 -- | /See:/ 'stopInstance' smart constructor.
-data StopInstance =
-  StopInstance'
-    { _siForce      :: !(Maybe Bool)
-    , _siInstanceId :: !Text
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data StopInstance = StopInstance'{_siForce ::
+                                  !(Maybe Bool),
+                                  _siInstanceId :: !Text}
+                      deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'StopInstance' with the minimum fields required to make a request.
 --
@@ -63,9 +59,9 @@ data StopInstance =
 stopInstance
     :: Text -- ^ 'siInstanceId'
     -> StopInstance
-stopInstance pInstanceId_ =
-  StopInstance' {_siForce = Nothing, _siInstanceId = pInstanceId_}
-
+stopInstance pInstanceId_
+  = StopInstance'{_siForce = Nothing,
+                  _siInstanceId = pInstanceId_}
 
 -- | Undocumented member.
 siForce :: Lens' StopInstance (Maybe Bool)
@@ -107,16 +103,13 @@ instance ToQuery StopInstance where
         toQuery = const mempty
 
 -- | /See:/ 'stopInstanceResponse' smart constructor.
-data StopInstanceResponse =
-  StopInstanceResponse'
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data StopInstanceResponse = StopInstanceResponse'
+                              deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'StopInstanceResponse' with the minimum fields required to make a request.
 --
 stopInstanceResponse
     :: StopInstanceResponse
 stopInstanceResponse = StopInstanceResponse'
-
 
 instance NFData StopInstanceResponse where

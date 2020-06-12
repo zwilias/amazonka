@@ -43,22 +43,22 @@ module Network.AWS.CognitoIdentityProvider.SetUserPoolMFAConfig
     ) where
 
 import Network.AWS.CognitoIdentityProvider.Types
-import Network.AWS.CognitoIdentityProvider.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 
 -- | /See:/ 'setUserPoolMFAConfig' smart constructor.
-data SetUserPoolMFAConfig =
-  SetUserPoolMFAConfig'
-    { _supmcSmsMFAConfiguration           :: !(Maybe SmsMFAConfigType)
-    , _supmcSoftwareTokenMFAConfiguration :: !(Maybe SoftwareTokenMFAConfigType)
-    , _supmcMFAConfiguration              :: !(Maybe UserPoolMFAType)
-    , _supmcUserPoolId                    :: !Text
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data SetUserPoolMFAConfig = SetUserPoolMFAConfig'{_supmcSmsMFAConfiguration
+                                                  :: !(Maybe SmsMFAConfigType),
+                                                  _supmcSoftwareTokenMFAConfiguration
+                                                  ::
+                                                  !(Maybe
+                                                      SoftwareTokenMFAConfigType),
+                                                  _supmcMFAConfiguration ::
+                                                  !(Maybe UserPoolMFAType),
+                                                  _supmcUserPoolId :: !Text}
+                              deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'SetUserPoolMFAConfig' with the minimum fields required to make a request.
 --
@@ -74,14 +74,12 @@ data SetUserPoolMFAConfig =
 setUserPoolMFAConfig
     :: Text -- ^ 'supmcUserPoolId'
     -> SetUserPoolMFAConfig
-setUserPoolMFAConfig pUserPoolId_ =
-  SetUserPoolMFAConfig'
-    { _supmcSmsMFAConfiguration = Nothing
-    , _supmcSoftwareTokenMFAConfiguration = Nothing
-    , _supmcMFAConfiguration = Nothing
-    , _supmcUserPoolId = pUserPoolId_
-    }
-
+setUserPoolMFAConfig pUserPoolId_
+  = SetUserPoolMFAConfig'{_supmcSmsMFAConfiguration =
+                            Nothing,
+                          _supmcSoftwareTokenMFAConfiguration = Nothing,
+                          _supmcMFAConfiguration = Nothing,
+                          _supmcUserPoolId = pUserPoolId_}
 
 -- | The SMS text message MFA configuration.
 supmcSmsMFAConfiguration :: Lens' SetUserPoolMFAConfig (Maybe SmsMFAConfigType)
@@ -144,15 +142,22 @@ instance ToQuery SetUserPoolMFAConfig where
         toQuery = const mempty
 
 -- | /See:/ 'setUserPoolMFAConfigResponse' smart constructor.
-data SetUserPoolMFAConfigResponse =
-  SetUserPoolMFAConfigResponse'
-    { _supmcrsSmsMFAConfiguration :: !(Maybe SmsMFAConfigType)
-    , _supmcrsSoftwareTokenMFAConfiguration :: !(Maybe SoftwareTokenMFAConfigType)
-    , _supmcrsMFAConfiguration :: !(Maybe UserPoolMFAType)
-    , _supmcrsResponseStatus :: !Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data SetUserPoolMFAConfigResponse = SetUserPoolMFAConfigResponse'{_supmcrsSmsMFAConfiguration
+                                                                  ::
+                                                                  !(Maybe
+                                                                      SmsMFAConfigType),
+                                                                  _supmcrsSoftwareTokenMFAConfiguration
+                                                                  ::
+                                                                  !(Maybe
+                                                                      SoftwareTokenMFAConfigType),
+                                                                  _supmcrsMFAConfiguration
+                                                                  ::
+                                                                  !(Maybe
+                                                                      UserPoolMFAType),
+                                                                  _supmcrsResponseStatus
+                                                                  :: !Int}
+                                      deriving (Eq, Read, Show, Data, Typeable,
+                                                Generic)
 
 -- | Creates a value of 'SetUserPoolMFAConfigResponse' with the minimum fields required to make a request.
 --
@@ -168,14 +173,13 @@ data SetUserPoolMFAConfigResponse =
 setUserPoolMFAConfigResponse
     :: Int -- ^ 'supmcrsResponseStatus'
     -> SetUserPoolMFAConfigResponse
-setUserPoolMFAConfigResponse pResponseStatus_ =
-  SetUserPoolMFAConfigResponse'
-    { _supmcrsSmsMFAConfiguration = Nothing
-    , _supmcrsSoftwareTokenMFAConfiguration = Nothing
-    , _supmcrsMFAConfiguration = Nothing
-    , _supmcrsResponseStatus = pResponseStatus_
-    }
-
+setUserPoolMFAConfigResponse pResponseStatus_
+  = SetUserPoolMFAConfigResponse'{_supmcrsSmsMFAConfiguration
+                                    = Nothing,
+                                  _supmcrsSoftwareTokenMFAConfiguration =
+                                    Nothing,
+                                  _supmcrsMFAConfiguration = Nothing,
+                                  _supmcrsResponseStatus = pResponseStatus_}
 
 -- | The SMS text message MFA configuration.
 supmcrsSmsMFAConfiguration :: Lens' SetUserPoolMFAConfigResponse (Maybe SmsMFAConfigType)

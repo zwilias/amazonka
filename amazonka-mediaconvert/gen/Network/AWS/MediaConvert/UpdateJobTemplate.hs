@@ -41,22 +41,18 @@ module Network.AWS.MediaConvert.UpdateJobTemplate
 
 import Network.AWS.Lens
 import Network.AWS.MediaConvert.Types
-import Network.AWS.MediaConvert.Types.Product
 import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 
 -- | /See:/ 'updateJobTemplate' smart constructor.
-data UpdateJobTemplate =
-  UpdateJobTemplate'
-    { _ujtSettings    :: !(Maybe JobTemplateSettings)
-    , _ujtCategory    :: !(Maybe Text)
-    , _ujtQueue       :: !(Maybe Text)
-    , _ujtDescription :: !(Maybe Text)
-    , _ujtName        :: !Text
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data UpdateJobTemplate = UpdateJobTemplate'{_ujtSettings
+                                            :: !(Maybe JobTemplateSettings),
+                                            _ujtCategory :: !(Maybe Text),
+                                            _ujtQueue :: !(Maybe Text),
+                                            _ujtDescription :: !(Maybe Text),
+                                            _ujtName :: !Text}
+                           deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'UpdateJobTemplate' with the minimum fields required to make a request.
 --
@@ -74,15 +70,10 @@ data UpdateJobTemplate =
 updateJobTemplate
     :: Text -- ^ 'ujtName'
     -> UpdateJobTemplate
-updateJobTemplate pName_ =
-  UpdateJobTemplate'
-    { _ujtSettings = Nothing
-    , _ujtCategory = Nothing
-    , _ujtQueue = Nothing
-    , _ujtDescription = Nothing
-    , _ujtName = pName_
-    }
-
+updateJobTemplate pName_
+  = UpdateJobTemplate'{_ujtSettings = Nothing,
+                       _ujtCategory = Nothing, _ujtQueue = Nothing,
+                       _ujtDescription = Nothing, _ujtName = pName_}
 
 -- | Undocumented member.
 ujtSettings :: Lens' UpdateJobTemplate (Maybe JobTemplateSettings)
@@ -142,13 +133,14 @@ instance ToQuery UpdateJobTemplate where
         toQuery = const mempty
 
 -- | /See:/ 'updateJobTemplateResponse' smart constructor.
-data UpdateJobTemplateResponse =
-  UpdateJobTemplateResponse'
-    { _ujtrsJobTemplate    :: !(Maybe JobTemplate)
-    , _ujtrsResponseStatus :: !Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data UpdateJobTemplateResponse = UpdateJobTemplateResponse'{_ujtrsJobTemplate
+                                                            ::
+                                                            !(Maybe
+                                                                JobTemplate),
+                                                            _ujtrsResponseStatus
+                                                            :: !Int}
+                                   deriving (Eq, Read, Show, Data, Typeable,
+                                             Generic)
 
 -- | Creates a value of 'UpdateJobTemplateResponse' with the minimum fields required to make a request.
 --
@@ -160,10 +152,10 @@ data UpdateJobTemplateResponse =
 updateJobTemplateResponse
     :: Int -- ^ 'ujtrsResponseStatus'
     -> UpdateJobTemplateResponse
-updateJobTemplateResponse pResponseStatus_ =
-  UpdateJobTemplateResponse'
-    {_ujtrsJobTemplate = Nothing, _ujtrsResponseStatus = pResponseStatus_}
-
+updateJobTemplateResponse pResponseStatus_
+  = UpdateJobTemplateResponse'{_ujtrsJobTemplate =
+                                 Nothing,
+                               _ujtrsResponseStatus = pResponseStatus_}
 
 -- | Undocumented member.
 ujtrsJobTemplate :: Lens' UpdateJobTemplateResponse (Maybe JobTemplate)

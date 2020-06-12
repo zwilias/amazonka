@@ -44,20 +44,17 @@ module Network.AWS.AutoScaling.AttachLoadBalancers
     ) where
 
 import Network.AWS.AutoScaling.Types
-import Network.AWS.AutoScaling.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 
 -- | /See:/ 'attachLoadBalancers' smart constructor.
-data AttachLoadBalancers =
-  AttachLoadBalancers'
-    { _albAutoScalingGroupName :: !Text
-    , _albLoadBalancerNames    :: ![Text]
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data AttachLoadBalancers = AttachLoadBalancers'{_albAutoScalingGroupName
+                                                :: !Text,
+                                                _albLoadBalancerNames ::
+                                                ![Text]}
+                             deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'AttachLoadBalancers' with the minimum fields required to make a request.
 --
@@ -69,12 +66,10 @@ data AttachLoadBalancers =
 attachLoadBalancers
     :: Text -- ^ 'albAutoScalingGroupName'
     -> AttachLoadBalancers
-attachLoadBalancers pAutoScalingGroupName_ =
-  AttachLoadBalancers'
-    { _albAutoScalingGroupName = pAutoScalingGroupName_
-    , _albLoadBalancerNames = mempty
-    }
-
+attachLoadBalancers pAutoScalingGroupName_
+  = AttachLoadBalancers'{_albAutoScalingGroupName =
+                           pAutoScalingGroupName_,
+                         _albLoadBalancerNames = mempty}
 
 -- | The name of the Auto Scaling group.
 albAutoScalingGroupName :: Lens' AttachLoadBalancers Text
@@ -113,12 +108,10 @@ instance ToQuery AttachLoadBalancers where
                  toQueryList "member" _albLoadBalancerNames]
 
 -- | /See:/ 'attachLoadBalancersResponse' smart constructor.
-newtype AttachLoadBalancersResponse =
-  AttachLoadBalancersResponse'
-    { _albrsResponseStatus :: Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+newtype AttachLoadBalancersResponse = AttachLoadBalancersResponse'{_albrsResponseStatus
+                                                                   :: Int}
+                                        deriving (Eq, Read, Show, Data,
+                                                  Typeable, Generic)
 
 -- | Creates a value of 'AttachLoadBalancersResponse' with the minimum fields required to make a request.
 --
@@ -128,9 +121,9 @@ newtype AttachLoadBalancersResponse =
 attachLoadBalancersResponse
     :: Int -- ^ 'albrsResponseStatus'
     -> AttachLoadBalancersResponse
-attachLoadBalancersResponse pResponseStatus_ =
-  AttachLoadBalancersResponse' {_albrsResponseStatus = pResponseStatus_}
-
+attachLoadBalancersResponse pResponseStatus_
+  = AttachLoadBalancersResponse'{_albrsResponseStatus =
+                                   pResponseStatus_}
 
 -- | -- | The response status code.
 albrsResponseStatus :: Lens' AttachLoadBalancersResponse Int

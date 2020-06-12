@@ -40,21 +40,25 @@ module Network.AWS.EC2.ModifyInstanceCapacityReservationAttributes
     ) where
 
 import Network.AWS.EC2.Types
-import Network.AWS.EC2.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 
 -- | /See:/ 'modifyInstanceCapacityReservationAttributes' smart constructor.
-data ModifyInstanceCapacityReservationAttributes =
-  ModifyInstanceCapacityReservationAttributes'
-    { _micraDryRun :: !(Maybe Bool)
-    , _micraInstanceId :: !Text
-    , _micraCapacityReservationSpecification :: !CapacityReservationSpecification
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data ModifyInstanceCapacityReservationAttributes = ModifyInstanceCapacityReservationAttributes'{_micraDryRun
+                                                                                                ::
+                                                                                                !(Maybe
+                                                                                                    Bool),
+                                                                                                _micraInstanceId
+                                                                                                ::
+                                                                                                !Text,
+                                                                                                _micraCapacityReservationSpecification
+                                                                                                ::
+                                                                                                !CapacityReservationSpecification}
+                                                     deriving (Eq, Read, Show,
+                                                               Data, Typeable,
+                                                               Generic)
 
 -- | Creates a value of 'ModifyInstanceCapacityReservationAttributes' with the minimum fields required to make a request.
 --
@@ -69,14 +73,15 @@ modifyInstanceCapacityReservationAttributes
     :: Text -- ^ 'micraInstanceId'
     -> CapacityReservationSpecification -- ^ 'micraCapacityReservationSpecification'
     -> ModifyInstanceCapacityReservationAttributes
-modifyInstanceCapacityReservationAttributes pInstanceId_ pCapacityReservationSpecification_ =
-  ModifyInstanceCapacityReservationAttributes'
-    { _micraDryRun = Nothing
-    , _micraInstanceId = pInstanceId_
-    , _micraCapacityReservationSpecification =
-        pCapacityReservationSpecification_
-    }
-
+modifyInstanceCapacityReservationAttributes
+  pInstanceId_ pCapacityReservationSpecification_
+  = ModifyInstanceCapacityReservationAttributes'{_micraDryRun
+                                                   = Nothing,
+                                                 _micraInstanceId =
+                                                   pInstanceId_,
+                                                 _micraCapacityReservationSpecification
+                                                   =
+                                                   pCapacityReservationSpecification_}
 
 -- | Checks whether you have the required permissions for the action, without actually making the request, and provides an error response. If you have the required permissions, the error response is @DryRunOperation@ . Otherwise, it is @UnauthorizedOperation@ .
 micraDryRun :: Lens' ModifyInstanceCapacityReservationAttributes (Maybe Bool)
@@ -136,13 +141,18 @@ instance ToQuery
                  _micraCapacityReservationSpecification]
 
 -- | /See:/ 'modifyInstanceCapacityReservationAttributesResponse' smart constructor.
-data ModifyInstanceCapacityReservationAttributesResponse =
-  ModifyInstanceCapacityReservationAttributesResponse'
-    { _micrarsReturn         :: !(Maybe Bool)
-    , _micrarsResponseStatus :: !Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data ModifyInstanceCapacityReservationAttributesResponse = ModifyInstanceCapacityReservationAttributesResponse'{_micrarsReturn
+                                                                                                                ::
+                                                                                                                !(Maybe
+                                                                                                                    Bool),
+                                                                                                                _micrarsResponseStatus
+                                                                                                                ::
+                                                                                                                !Int}
+                                                             deriving (Eq, Read,
+                                                                       Show,
+                                                                       Data,
+                                                                       Typeable,
+                                                                       Generic)
 
 -- | Creates a value of 'ModifyInstanceCapacityReservationAttributesResponse' with the minimum fields required to make a request.
 --
@@ -154,10 +164,12 @@ data ModifyInstanceCapacityReservationAttributesResponse =
 modifyInstanceCapacityReservationAttributesResponse
     :: Int -- ^ 'micrarsResponseStatus'
     -> ModifyInstanceCapacityReservationAttributesResponse
-modifyInstanceCapacityReservationAttributesResponse pResponseStatus_ =
-  ModifyInstanceCapacityReservationAttributesResponse'
-    {_micrarsReturn = Nothing, _micrarsResponseStatus = pResponseStatus_}
-
+modifyInstanceCapacityReservationAttributesResponse
+  pResponseStatus_
+  = ModifyInstanceCapacityReservationAttributesResponse'{_micrarsReturn
+                                                           = Nothing,
+                                                         _micrarsResponseStatus
+                                                           = pResponseStatus_}
 
 -- | Returns @true@ if the request succeeds; otherwise, it returns an error.
 micrarsReturn :: Lens' ModifyInstanceCapacityReservationAttributesResponse (Maybe Bool)

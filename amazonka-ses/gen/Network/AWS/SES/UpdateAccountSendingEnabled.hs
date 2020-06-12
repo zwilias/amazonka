@@ -41,19 +41,17 @@ import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 import Network.AWS.SES.Types
-import Network.AWS.SES.Types.Product
 
 -- | Represents a request to enable or disable the email sending capabilities for your entire Amazon SES account.
 --
 --
 --
 -- /See:/ 'updateAccountSendingEnabled' smart constructor.
-newtype UpdateAccountSendingEnabled =
-  UpdateAccountSendingEnabled'
-    { _uaseEnabled :: Maybe Bool
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+newtype UpdateAccountSendingEnabled = UpdateAccountSendingEnabled'{_uaseEnabled
+                                                                   ::
+                                                                   Maybe Bool}
+                                        deriving (Eq, Read, Show, Data,
+                                                  Typeable, Generic)
 
 -- | Creates a value of 'UpdateAccountSendingEnabled' with the minimum fields required to make a request.
 --
@@ -62,9 +60,9 @@ newtype UpdateAccountSendingEnabled =
 -- * 'uaseEnabled' - Describes whether email sending is enabled or disabled for your Amazon SES account.
 updateAccountSendingEnabled
     :: UpdateAccountSendingEnabled
-updateAccountSendingEnabled =
-  UpdateAccountSendingEnabled' {_uaseEnabled = Nothing}
-
+updateAccountSendingEnabled
+  = UpdateAccountSendingEnabled'{_uaseEnabled =
+                                   Nothing}
 
 -- | Describes whether email sending is enabled or disabled for your Amazon SES account.
 uaseEnabled :: Lens' UpdateAccountSendingEnabled (Maybe Bool)
@@ -96,17 +94,16 @@ instance ToQuery UpdateAccountSendingEnabled where
                "Enabled" =: _uaseEnabled]
 
 -- | /See:/ 'updateAccountSendingEnabledResponse' smart constructor.
-data UpdateAccountSendingEnabledResponse =
-  UpdateAccountSendingEnabledResponse'
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data UpdateAccountSendingEnabledResponse = UpdateAccountSendingEnabledResponse'
+                                             deriving (Eq, Read, Show, Data,
+                                                       Typeable, Generic)
 
 -- | Creates a value of 'UpdateAccountSendingEnabledResponse' with the minimum fields required to make a request.
 --
 updateAccountSendingEnabledResponse
     :: UpdateAccountSendingEnabledResponse
-updateAccountSendingEnabledResponse = UpdateAccountSendingEnabledResponse'
-
+updateAccountSendingEnabledResponse
+  = UpdateAccountSendingEnabledResponse'
 
 instance NFData UpdateAccountSendingEnabledResponse
          where

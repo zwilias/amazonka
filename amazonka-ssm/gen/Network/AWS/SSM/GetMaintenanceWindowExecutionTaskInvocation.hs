@@ -18,7 +18,7 @@
 -- Stability   : auto-generated
 -- Portability : non-portable (GHC extensions)
 --
--- Retrieves a task invocation. A task invocation is a specific task executing on a specific target. Maintenance Windows report status for all invocations.
+-- Retrieves a task invocation. A task invocation is a specific task executing on a specific target. Maintenance Windows report status for all invocations. 
 --
 --
 module Network.AWS.SSM.GetMaintenanceWindowExecutionTaskInvocation
@@ -55,17 +55,20 @@ import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 import Network.AWS.SSM.Types
-import Network.AWS.SSM.Types.Product
 
 -- | /See:/ 'getMaintenanceWindowExecutionTaskInvocation' smart constructor.
-data GetMaintenanceWindowExecutionTaskInvocation =
-  GetMaintenanceWindowExecutionTaskInvocation'
-    { _gmwetiWindowExecutionId :: !Text
-    , _gmwetiTaskId            :: !Text
-    , _gmwetiInvocationId      :: !Text
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data GetMaintenanceWindowExecutionTaskInvocation = GetMaintenanceWindowExecutionTaskInvocation'{_gmwetiWindowExecutionId
+                                                                                                ::
+                                                                                                !Text,
+                                                                                                _gmwetiTaskId
+                                                                                                ::
+                                                                                                !Text,
+                                                                                                _gmwetiInvocationId
+                                                                                                ::
+                                                                                                !Text}
+                                                     deriving (Eq, Read, Show,
+                                                               Data, Typeable,
+                                                               Generic)
 
 -- | Creates a value of 'GetMaintenanceWindowExecutionTaskInvocation' with the minimum fields required to make a request.
 --
@@ -73,7 +76,7 @@ data GetMaintenanceWindowExecutionTaskInvocation =
 --
 -- * 'gmwetiWindowExecutionId' - The ID of the Maintenance Window execution for which the task is a part.
 --
--- * 'gmwetiTaskId' - The ID of the specific task in the Maintenance Window task that should be retrieved.
+-- * 'gmwetiTaskId' - The ID of the specific task in the Maintenance Window task that should be retrieved. 
 --
 -- * 'gmwetiInvocationId' - The invocation ID to retrieve.
 getMaintenanceWindowExecutionTaskInvocation
@@ -81,19 +84,19 @@ getMaintenanceWindowExecutionTaskInvocation
     -> Text -- ^ 'gmwetiTaskId'
     -> Text -- ^ 'gmwetiInvocationId'
     -> GetMaintenanceWindowExecutionTaskInvocation
-getMaintenanceWindowExecutionTaskInvocation pWindowExecutionId_ pTaskId_ pInvocationId_ =
-  GetMaintenanceWindowExecutionTaskInvocation'
-    { _gmwetiWindowExecutionId = pWindowExecutionId_
-    , _gmwetiTaskId = pTaskId_
-    , _gmwetiInvocationId = pInvocationId_
-    }
-
+getMaintenanceWindowExecutionTaskInvocation
+  pWindowExecutionId_ pTaskId_ pInvocationId_
+  = GetMaintenanceWindowExecutionTaskInvocation'{_gmwetiWindowExecutionId
+                                                   = pWindowExecutionId_,
+                                                 _gmwetiTaskId = pTaskId_,
+                                                 _gmwetiInvocationId =
+                                                   pInvocationId_}
 
 -- | The ID of the Maintenance Window execution for which the task is a part.
 gmwetiWindowExecutionId :: Lens' GetMaintenanceWindowExecutionTaskInvocation Text
 gmwetiWindowExecutionId = lens _gmwetiWindowExecutionId (\ s a -> s{_gmwetiWindowExecutionId = a})
 
--- | The ID of the specific task in the Maintenance Window task that should be retrieved.
+-- | The ID of the specific task in the Maintenance Window task that should be retrieved. 
 gmwetiTaskId :: Lens' GetMaintenanceWindowExecutionTaskInvocation Text
 gmwetiTaskId = lens _gmwetiTaskId (\ s a -> s{_gmwetiTaskId = a})
 
@@ -168,24 +171,63 @@ instance ToQuery
         toQuery = const mempty
 
 -- | /See:/ 'getMaintenanceWindowExecutionTaskInvocationResponse' smart constructor.
-data GetMaintenanceWindowExecutionTaskInvocationResponse =
-  GetMaintenanceWindowExecutionTaskInvocationResponse'
-    { _gmwetirsStatus            :: !(Maybe MaintenanceWindowExecutionStatus)
-    , _gmwetirsExecutionId       :: !(Maybe Text)
-    , _gmwetirsTaskExecutionId   :: !(Maybe Text)
-    , _gmwetirsStartTime         :: !(Maybe POSIX)
-    , _gmwetirsInvocationId      :: !(Maybe Text)
-    , _gmwetirsOwnerInformation  :: !(Maybe (Sensitive Text))
-    , _gmwetirsTaskType          :: !(Maybe MaintenanceWindowTaskType)
-    , _gmwetirsWindowTargetId    :: !(Maybe Text)
-    , _gmwetirsWindowExecutionId :: !(Maybe Text)
-    , _gmwetirsStatusDetails     :: !(Maybe Text)
-    , _gmwetirsEndTime           :: !(Maybe POSIX)
-    , _gmwetirsParameters        :: !(Maybe (Sensitive Text))
-    , _gmwetirsResponseStatus    :: !Int
-    }
-  deriving (Eq, Show, Data, Typeable, Generic)
-
+data GetMaintenanceWindowExecutionTaskInvocationResponse = GetMaintenanceWindowExecutionTaskInvocationResponse'{_gmwetirsStatus
+                                                                                                                ::
+                                                                                                                !(Maybe
+                                                                                                                    MaintenanceWindowExecutionStatus),
+                                                                                                                _gmwetirsExecutionId
+                                                                                                                ::
+                                                                                                                !(Maybe
+                                                                                                                    Text),
+                                                                                                                _gmwetirsTaskExecutionId
+                                                                                                                ::
+                                                                                                                !(Maybe
+                                                                                                                    Text),
+                                                                                                                _gmwetirsStartTime
+                                                                                                                ::
+                                                                                                                !(Maybe
+                                                                                                                    POSIX),
+                                                                                                                _gmwetirsInvocationId
+                                                                                                                ::
+                                                                                                                !(Maybe
+                                                                                                                    Text),
+                                                                                                                _gmwetirsOwnerInformation
+                                                                                                                ::
+                                                                                                                !(Maybe
+                                                                                                                    (Sensitive
+                                                                                                                       Text)),
+                                                                                                                _gmwetirsTaskType
+                                                                                                                ::
+                                                                                                                !(Maybe
+                                                                                                                    MaintenanceWindowTaskType),
+                                                                                                                _gmwetirsWindowTargetId
+                                                                                                                ::
+                                                                                                                !(Maybe
+                                                                                                                    Text),
+                                                                                                                _gmwetirsWindowExecutionId
+                                                                                                                ::
+                                                                                                                !(Maybe
+                                                                                                                    Text),
+                                                                                                                _gmwetirsStatusDetails
+                                                                                                                ::
+                                                                                                                !(Maybe
+                                                                                                                    Text),
+                                                                                                                _gmwetirsEndTime
+                                                                                                                ::
+                                                                                                                !(Maybe
+                                                                                                                    POSIX),
+                                                                                                                _gmwetirsParameters
+                                                                                                                ::
+                                                                                                                !(Maybe
+                                                                                                                    (Sensitive
+                                                                                                                       Text)),
+                                                                                                                _gmwetirsResponseStatus
+                                                                                                                ::
+                                                                                                                !Int}
+                                                             deriving (Eq, Show,
+                                                                       Data,
+                                                                       Typeable,
+                                                                       Generic)
 
 -- | Creates a value of 'GetMaintenanceWindowExecutionTaskInvocationResponse' with the minimum fields required to make a request.
 --
@@ -201,7 +243,7 @@ data GetMaintenanceWindowExecutionTaskInvocationResponse =
 --
 -- * 'gmwetirsInvocationId' - The invocation ID.
 --
--- * 'gmwetirsOwnerInformation' - User-provided value to be included in any CloudWatch events raised while running tasks for these targets in this Maintenance Window.
+-- * 'gmwetirsOwnerInformation' - User-provided value to be included in any CloudWatch events raised while running tasks for these targets in this Maintenance Window. 
 --
 -- * 'gmwetirsTaskType' - Retrieves the task type for a Maintenance Window. Task types include the following: LAMBDA, STEP_FUNCTION, AUTOMATION, RUN_COMMAND.
 --
@@ -219,23 +261,34 @@ data GetMaintenanceWindowExecutionTaskInvocationResponse =
 getMaintenanceWindowExecutionTaskInvocationResponse
     :: Int -- ^ 'gmwetirsResponseStatus'
     -> GetMaintenanceWindowExecutionTaskInvocationResponse
-getMaintenanceWindowExecutionTaskInvocationResponse pResponseStatus_ =
-  GetMaintenanceWindowExecutionTaskInvocationResponse'
-    { _gmwetirsStatus = Nothing
-    , _gmwetirsExecutionId = Nothing
-    , _gmwetirsTaskExecutionId = Nothing
-    , _gmwetirsStartTime = Nothing
-    , _gmwetirsInvocationId = Nothing
-    , _gmwetirsOwnerInformation = Nothing
-    , _gmwetirsTaskType = Nothing
-    , _gmwetirsWindowTargetId = Nothing
-    , _gmwetirsWindowExecutionId = Nothing
-    , _gmwetirsStatusDetails = Nothing
-    , _gmwetirsEndTime = Nothing
-    , _gmwetirsParameters = Nothing
-    , _gmwetirsResponseStatus = pResponseStatus_
-    }
-
+getMaintenanceWindowExecutionTaskInvocationResponse
+  pResponseStatus_
+  = GetMaintenanceWindowExecutionTaskInvocationResponse'{_gmwetirsStatus
+                                                           = Nothing,
+                                                         _gmwetirsExecutionId =
+                                                           Nothing,
+                                                         _gmwetirsTaskExecutionId
+                                                           = Nothing,
+                                                         _gmwetirsStartTime =
+                                                           Nothing,
+                                                         _gmwetirsInvocationId =
+                                                           Nothing,
+                                                         _gmwetirsOwnerInformation
+                                                           = Nothing,
+                                                         _gmwetirsTaskType =
+                                                           Nothing,
+                                                         _gmwetirsWindowTargetId
+                                                           = Nothing,
+                                                         _gmwetirsWindowExecutionId
+                                                           = Nothing,
+                                                         _gmwetirsStatusDetails
+                                                           = Nothing,
+                                                         _gmwetirsEndTime =
+                                                           Nothing,
+                                                         _gmwetirsParameters =
+                                                           Nothing,
+                                                         _gmwetirsResponseStatus
+                                                           = pResponseStatus_}
 
 -- | The task status for an invocation.
 gmwetirsStatus :: Lens' GetMaintenanceWindowExecutionTaskInvocationResponse (Maybe MaintenanceWindowExecutionStatus)
@@ -257,7 +310,7 @@ gmwetirsStartTime = lens _gmwetirsStartTime (\ s a -> s{_gmwetirsStartTime = a})
 gmwetirsInvocationId :: Lens' GetMaintenanceWindowExecutionTaskInvocationResponse (Maybe Text)
 gmwetirsInvocationId = lens _gmwetirsInvocationId (\ s a -> s{_gmwetirsInvocationId = a})
 
--- | User-provided value to be included in any CloudWatch events raised while running tasks for these targets in this Maintenance Window.
+-- | User-provided value to be included in any CloudWatch events raised while running tasks for these targets in this Maintenance Window. 
 gmwetirsOwnerInformation :: Lens' GetMaintenanceWindowExecutionTaskInvocationResponse (Maybe Text)
 gmwetirsOwnerInformation = lens _gmwetirsOwnerInformation (\ s a -> s{_gmwetirsOwnerInformation = a}) . mapping _Sensitive
 

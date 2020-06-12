@@ -44,7 +44,6 @@ module Network.AWS.IoT.CreatePolicy
     ) where
 
 import Network.AWS.IoT.Types
-import Network.AWS.IoT.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.Request
@@ -55,13 +54,10 @@ import Network.AWS.Response
 --
 --
 -- /See:/ 'createPolicy' smart constructor.
-data CreatePolicy =
-  CreatePolicy'
-    { _cpPolicyName     :: !Text
-    , _cpPolicyDocument :: !Text
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data CreatePolicy = CreatePolicy'{_cpPolicyName ::
+                                  !Text,
+                                  _cpPolicyDocument :: !Text}
+                      deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'CreatePolicy' with the minimum fields required to make a request.
 --
@@ -74,10 +70,9 @@ createPolicy
     :: Text -- ^ 'cpPolicyName'
     -> Text -- ^ 'cpPolicyDocument'
     -> CreatePolicy
-createPolicy pPolicyName_ pPolicyDocument_ =
-  CreatePolicy'
-    {_cpPolicyName = pPolicyName_, _cpPolicyDocument = pPolicyDocument_}
-
+createPolicy pPolicyName_ pPolicyDocument_
+  = CreatePolicy'{_cpPolicyName = pPolicyName_,
+                  _cpPolicyDocument = pPolicyDocument_}
 
 -- | The policy name.
 cpPolicyName :: Lens' CreatePolicy Text
@@ -124,16 +119,16 @@ instance ToQuery CreatePolicy where
 --
 --
 -- /See:/ 'createPolicyResponse' smart constructor.
-data CreatePolicyResponse =
-  CreatePolicyResponse'
-    { _cprsPolicyName      :: !(Maybe Text)
-    , _cprsPolicyDocument  :: !(Maybe Text)
-    , _cprsPolicyVersionId :: !(Maybe Text)
-    , _cprsPolicyARN       :: !(Maybe Text)
-    , _cprsResponseStatus  :: !Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data CreatePolicyResponse = CreatePolicyResponse'{_cprsPolicyName
+                                                  :: !(Maybe Text),
+                                                  _cprsPolicyDocument ::
+                                                  !(Maybe Text),
+                                                  _cprsPolicyVersionId ::
+                                                  !(Maybe Text),
+                                                  _cprsPolicyARN ::
+                                                  !(Maybe Text),
+                                                  _cprsResponseStatus :: !Int}
+                              deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'CreatePolicyResponse' with the minimum fields required to make a request.
 --
@@ -151,15 +146,12 @@ data CreatePolicyResponse =
 createPolicyResponse
     :: Int -- ^ 'cprsResponseStatus'
     -> CreatePolicyResponse
-createPolicyResponse pResponseStatus_ =
-  CreatePolicyResponse'
-    { _cprsPolicyName = Nothing
-    , _cprsPolicyDocument = Nothing
-    , _cprsPolicyVersionId = Nothing
-    , _cprsPolicyARN = Nothing
-    , _cprsResponseStatus = pResponseStatus_
-    }
-
+createPolicyResponse pResponseStatus_
+  = CreatePolicyResponse'{_cprsPolicyName = Nothing,
+                          _cprsPolicyDocument = Nothing,
+                          _cprsPolicyVersionId = Nothing,
+                          _cprsPolicyARN = Nothing,
+                          _cprsResponseStatus = pResponseStatus_}
 
 -- | The policy name.
 cprsPolicyName :: Lens' CreatePolicyResponse (Maybe Text)

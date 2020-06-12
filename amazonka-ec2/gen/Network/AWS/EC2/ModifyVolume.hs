@@ -18,12 +18,12 @@
 -- Stability   : auto-generated
 -- Portability : non-portable (GHC extensions)
 --
--- You can modify several parameters of an existing EBS volume, including volume size, volume type, and IOPS capacity. If your EBS volume is attached to a current-generation EC2 instance type, you may be able to apply these changes without stopping the instance or detaching the volume from it. For more information about modifying an EBS volume running Linux, see <https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ebs-expand-volume.html Modifying the Size, IOPS, or Type of an EBS Volume on Linux> . For more information about modifying an EBS volume running Windows, see <https://docs.aws.amazon.com/AWSEC2/latest/WindowsGuide/ebs-expand-volume.html Modifying the Size, IOPS, or Type of an EBS Volume on Windows> .
+-- You can modify several parameters of an existing EBS volume, including volume size, volume type, and IOPS capacity. If your EBS volume is attached to a current-generation EC2 instance type, you may be able to apply these changes without stopping the instance or detaching the volume from it. For more information about modifying an EBS volume running Linux, see <https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ebs-expand-volume.html Modifying the Size, IOPS, or Type of an EBS Volume on Linux> . For more information about modifying an EBS volume running Windows, see <https://docs.aws.amazon.com/AWSEC2/latest/WindowsGuide/ebs-expand-volume.html Modifying the Size, IOPS, or Type of an EBS Volume on Windows> . 
 --
 --
--- When you complete a resize operation on your volume, you need to extend the volume's file-system size to take advantage of the new storage capacity. For information about extending a Linux file system, see <https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ebs-expand-volume.html#recognize-expanded-volume-linux Extending a Linux File System> . For information about extending a Windows file system, see <https://docs.aws.amazon.com/AWSEC2/latest/WindowsGuide/ebs-expand-volume.html#recognize-expanded-volume-windows Extending a Windows File System> .
+-- When you complete a resize operation on your volume, you need to extend the volume's file-system size to take advantage of the new storage capacity. For information about extending a Linux file system, see <https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ebs-expand-volume.html#recognize-expanded-volume-linux Extending a Linux File System> . For information about extending a Windows file system, see <https://docs.aws.amazon.com/AWSEC2/latest/WindowsGuide/ebs-expand-volume.html#recognize-expanded-volume-windows Extending a Windows File System> . 
 --
--- You can use CloudWatch Events to check the status of a modification to an EBS volume. For information about CloudWatch Events, see the <https://docs.aws.amazon.com/AmazonCloudWatch/latest/events/ Amazon CloudWatch Events User Guide> . You can also track the status of a modification using 'DescribeVolumesModifications' . For information about tracking status changes using either method, see <https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ebs-expand-volume.html#monitoring_mods Monitoring Volume Modifications> .
+-- You can use CloudWatch Events to check the status of a modification to an EBS volume. For information about CloudWatch Events, see the <https://docs.aws.amazon.com/AmazonCloudWatch/latest/events/ Amazon CloudWatch Events User Guide> . You can also track the status of a modification using 'DescribeVolumesModifications' . For information about tracking status changes using either method, see <https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ebs-expand-volume.html#monitoring_mods Monitoring Volume Modifications> . 
 --
 -- With previous-generation instance types, resizing an EBS volume may require detaching and reattaching the volume or stopping and restarting the instance. For more information, see <https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ebs-expand-volume.html Modifying the Size, IOPS, or Type of an EBS Volume on Linux> and <https://docs.aws.amazon.com/AWSEC2/latest/WindowsGuide/ebs-expand-volume.html Modifying the Size, IOPS, or Type of an EBS Volume on Windows> .
 --
@@ -50,23 +50,19 @@ module Network.AWS.EC2.ModifyVolume
     ) where
 
 import Network.AWS.EC2.Types
-import Network.AWS.EC2.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 
 -- | /See:/ 'modifyVolume' smart constructor.
-data ModifyVolume =
-  ModifyVolume'
-    { _mvSize       :: !(Maybe Int)
-    , _mvIOPS       :: !(Maybe Int)
-    , _mvVolumeType :: !(Maybe VolumeType)
-    , _mvDryRun     :: !(Maybe Bool)
-    , _mvVolumeId   :: !Text
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data ModifyVolume = ModifyVolume'{_mvSize ::
+                                  !(Maybe Int),
+                                  _mvIOPS :: !(Maybe Int),
+                                  _mvVolumeType :: !(Maybe VolumeType),
+                                  _mvDryRun :: !(Maybe Bool),
+                                  _mvVolumeId :: !Text}
+                      deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'ModifyVolume' with the minimum fields required to make a request.
 --
@@ -84,15 +80,10 @@ data ModifyVolume =
 modifyVolume
     :: Text -- ^ 'mvVolumeId'
     -> ModifyVolume
-modifyVolume pVolumeId_ =
-  ModifyVolume'
-    { _mvSize = Nothing
-    , _mvIOPS = Nothing
-    , _mvVolumeType = Nothing
-    , _mvDryRun = Nothing
-    , _mvVolumeId = pVolumeId_
-    }
-
+modifyVolume pVolumeId_
+  = ModifyVolume'{_mvSize = Nothing, _mvIOPS = Nothing,
+                  _mvVolumeType = Nothing, _mvDryRun = Nothing,
+                  _mvVolumeId = pVolumeId_}
 
 -- | The target size of the volume, in GiB. The target volume size must be greater than or equal to than the existing size of the volume. For information about available EBS volume sizes, see <https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/EBSVolumeTypes.html Amazon EBS Volume Types> . Default: If no size is specified, the existing size is retained.
 mvSize :: Lens' ModifyVolume (Maybe Int)
@@ -143,13 +134,11 @@ instance ToQuery ModifyVolume where
                "VolumeId" =: _mvVolumeId]
 
 -- | /See:/ 'modifyVolumeResponse' smart constructor.
-data ModifyVolumeResponse =
-  ModifyVolumeResponse'
-    { _mvrsVolumeModification :: !(Maybe VolumeModification)
-    , _mvrsResponseStatus     :: !Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data ModifyVolumeResponse = ModifyVolumeResponse'{_mvrsVolumeModification
+                                                  ::
+                                                  !(Maybe VolumeModification),
+                                                  _mvrsResponseStatus :: !Int}
+                              deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'ModifyVolumeResponse' with the minimum fields required to make a request.
 --
@@ -161,10 +150,10 @@ data ModifyVolumeResponse =
 modifyVolumeResponse
     :: Int -- ^ 'mvrsResponseStatus'
     -> ModifyVolumeResponse
-modifyVolumeResponse pResponseStatus_ =
-  ModifyVolumeResponse'
-    {_mvrsVolumeModification = Nothing, _mvrsResponseStatus = pResponseStatus_}
-
+modifyVolumeResponse pResponseStatus_
+  = ModifyVolumeResponse'{_mvrsVolumeModification =
+                            Nothing,
+                          _mvrsResponseStatus = pResponseStatus_}
 
 -- | Information about the volume modification.
 mvrsVolumeModification :: Lens' ModifyVolumeResponse (Maybe VolumeModification)

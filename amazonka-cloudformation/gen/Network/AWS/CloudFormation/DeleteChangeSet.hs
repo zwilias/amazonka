@@ -40,7 +40,6 @@ module Network.AWS.CloudFormation.DeleteChangeSet
     ) where
 
 import Network.AWS.CloudFormation.Types
-import Network.AWS.CloudFormation.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.Request
@@ -51,13 +50,10 @@ import Network.AWS.Response
 --
 --
 -- /See:/ 'deleteChangeSet' smart constructor.
-data DeleteChangeSet =
-  DeleteChangeSet'
-    { _dcsStackName     :: !(Maybe Text)
-    , _dcsChangeSetName :: !Text
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data DeleteChangeSet = DeleteChangeSet'{_dcsStackName
+                                        :: !(Maybe Text),
+                                        _dcsChangeSetName :: !Text}
+                         deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'DeleteChangeSet' with the minimum fields required to make a request.
 --
@@ -69,10 +65,9 @@ data DeleteChangeSet =
 deleteChangeSet
     :: Text -- ^ 'dcsChangeSetName'
     -> DeleteChangeSet
-deleteChangeSet pChangeSetName_ =
-  DeleteChangeSet'
-    {_dcsStackName = Nothing, _dcsChangeSetName = pChangeSetName_}
-
+deleteChangeSet pChangeSetName_
+  = DeleteChangeSet'{_dcsStackName = Nothing,
+                     _dcsChangeSetName = pChangeSetName_}
 
 -- | If you specified the name of a change set to delete, specify the stack name or ID (ARN) that is associated with it.
 dcsStackName :: Lens' DeleteChangeSet (Maybe Text)
@@ -113,12 +108,10 @@ instance ToQuery DeleteChangeSet where
 --
 --
 -- /See:/ 'deleteChangeSetResponse' smart constructor.
-newtype DeleteChangeSetResponse =
-  DeleteChangeSetResponse'
-    { _dcsrsResponseStatus :: Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+newtype DeleteChangeSetResponse = DeleteChangeSetResponse'{_dcsrsResponseStatus
+                                                           :: Int}
+                                    deriving (Eq, Read, Show, Data, Typeable,
+                                              Generic)
 
 -- | Creates a value of 'DeleteChangeSetResponse' with the minimum fields required to make a request.
 --
@@ -128,9 +121,9 @@ newtype DeleteChangeSetResponse =
 deleteChangeSetResponse
     :: Int -- ^ 'dcsrsResponseStatus'
     -> DeleteChangeSetResponse
-deleteChangeSetResponse pResponseStatus_ =
-  DeleteChangeSetResponse' {_dcsrsResponseStatus = pResponseStatus_}
-
+deleteChangeSetResponse pResponseStatus_
+  = DeleteChangeSetResponse'{_dcsrsResponseStatus =
+                               pResponseStatus_}
 
 -- | -- | The response status code.
 dcsrsResponseStatus :: Lens' DeleteChangeSetResponse Int

@@ -37,15 +37,12 @@ import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 import Network.AWS.S3.Types
-import Network.AWS.S3.Types.Product
 
 -- | /See:/ 'deleteBucketReplication' smart constructor.
-newtype DeleteBucketReplication =
-  DeleteBucketReplication'
-    { _dbrBucket :: BucketName
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+newtype DeleteBucketReplication = DeleteBucketReplication'{_dbrBucket
+                                                           :: BucketName}
+                                    deriving (Eq, Read, Show, Data, Typeable,
+                                              Generic)
 
 -- | Creates a value of 'DeleteBucketReplication' with the minimum fields required to make a request.
 --
@@ -55,9 +52,8 @@ newtype DeleteBucketReplication =
 deleteBucketReplication
     :: BucketName -- ^ 'dbrBucket'
     -> DeleteBucketReplication
-deleteBucketReplication pBucket_ =
-  DeleteBucketReplication' {_dbrBucket = pBucket_}
-
+deleteBucketReplication pBucket_
+  = DeleteBucketReplication'{_dbrBucket = pBucket_}
 
 -- | Undocumented member.
 dbrBucket :: Lens' DeleteBucketReplication BucketName
@@ -85,16 +81,15 @@ instance ToQuery DeleteBucketReplication where
         toQuery = const (mconcat ["replication"])
 
 -- | /See:/ 'deleteBucketReplicationResponse' smart constructor.
-data DeleteBucketReplicationResponse =
-  DeleteBucketReplicationResponse'
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data DeleteBucketReplicationResponse = DeleteBucketReplicationResponse'
+                                         deriving (Eq, Read, Show, Data,
+                                                   Typeable, Generic)
 
 -- | Creates a value of 'DeleteBucketReplicationResponse' with the minimum fields required to make a request.
 --
 deleteBucketReplicationResponse
     :: DeleteBucketReplicationResponse
-deleteBucketReplicationResponse = DeleteBucketReplicationResponse'
-
+deleteBucketReplicationResponse
+  = DeleteBucketReplicationResponse'
 
 instance NFData DeleteBucketReplicationResponse where

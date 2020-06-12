@@ -43,20 +43,16 @@ module Network.AWS.OpsWorks.DescribeElasticIPs
 
 import Network.AWS.Lens
 import Network.AWS.OpsWorks.Types
-import Network.AWS.OpsWorks.Types.Product
 import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 
 -- | /See:/ 'describeElasticIPs' smart constructor.
-data DescribeElasticIPs =
-  DescribeElasticIPs'
-    { _deiInstanceId :: !(Maybe Text)
-    , _deiIPs        :: !(Maybe [Text])
-    , _deiStackId    :: !(Maybe Text)
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data DescribeElasticIPs = DescribeElasticIPs'{_deiInstanceId
+                                              :: !(Maybe Text),
+                                              _deiIPs :: !(Maybe [Text]),
+                                              _deiStackId :: !(Maybe Text)}
+                            deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'DescribeElasticIPs' with the minimum fields required to make a request.
 --
@@ -69,10 +65,9 @@ data DescribeElasticIPs =
 -- * 'deiStackId' - A stack ID. If you include this parameter, @DescribeElasticIps@ returns a description of the Elastic IP addresses that are registered with the specified stack.
 describeElasticIPs
     :: DescribeElasticIPs
-describeElasticIPs =
-  DescribeElasticIPs'
-    {_deiInstanceId = Nothing, _deiIPs = Nothing, _deiStackId = Nothing}
-
+describeElasticIPs
+  = DescribeElasticIPs'{_deiInstanceId = Nothing,
+                        _deiIPs = Nothing, _deiStackId = Nothing}
 
 -- | The instance ID. If you include this parameter, @DescribeElasticIps@ returns a description of the Elastic IP addresses associated with the specified instance.
 deiInstanceId :: Lens' DescribeElasticIPs (Maybe Text)
@@ -130,13 +125,14 @@ instance ToQuery DescribeElasticIPs where
 --
 --
 -- /See:/ 'describeElasticIPsResponse' smart constructor.
-data DescribeElasticIPsResponse =
-  DescribeElasticIPsResponse'
-    { _deirsElasticIPs     :: !(Maybe [ElasticIP])
-    , _deirsResponseStatus :: !Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data DescribeElasticIPsResponse = DescribeElasticIPsResponse'{_deirsElasticIPs
+                                                              ::
+                                                              !(Maybe
+                                                                  [ElasticIP]),
+                                                              _deirsResponseStatus
+                                                              :: !Int}
+                                    deriving (Eq, Read, Show, Data, Typeable,
+                                              Generic)
 
 -- | Creates a value of 'DescribeElasticIPsResponse' with the minimum fields required to make a request.
 --
@@ -148,10 +144,10 @@ data DescribeElasticIPsResponse =
 describeElasticIPsResponse
     :: Int -- ^ 'deirsResponseStatus'
     -> DescribeElasticIPsResponse
-describeElasticIPsResponse pResponseStatus_ =
-  DescribeElasticIPsResponse'
-    {_deirsElasticIPs = Nothing, _deirsResponseStatus = pResponseStatus_}
-
+describeElasticIPsResponse pResponseStatus_
+  = DescribeElasticIPsResponse'{_deirsElasticIPs =
+                                  Nothing,
+                                _deirsResponseStatus = pResponseStatus_}
 
 -- | An @ElasticIps@ object that describes the specified Elastic IP addresses.
 deirsElasticIPs :: Lens' DescribeElasticIPsResponse [ElasticIP]

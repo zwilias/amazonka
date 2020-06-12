@@ -44,23 +44,23 @@ module Network.AWS.EC2.DescribeFleetInstances
     ) where
 
 import Network.AWS.EC2.Types
-import Network.AWS.EC2.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 
 -- | /See:/ 'describeFleetInstances' smart constructor.
-data DescribeFleetInstances =
-  DescribeFleetInstances'
-    { _dfisFilters    :: !(Maybe [Filter])
-    , _dfisNextToken  :: !(Maybe Text)
-    , _dfisDryRun     :: !(Maybe Bool)
-    , _dfisMaxResults :: !(Maybe Int)
-    , _dfisFleetId    :: !Text
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data DescribeFleetInstances = DescribeFleetInstances'{_dfisFilters
+                                                      :: !(Maybe [Filter]),
+                                                      _dfisNextToken ::
+                                                      !(Maybe Text),
+                                                      _dfisDryRun ::
+                                                      !(Maybe Bool),
+                                                      _dfisMaxResults ::
+                                                      !(Maybe Int),
+                                                      _dfisFleetId :: !Text}
+                                deriving (Eq, Read, Show, Data, Typeable,
+                                          Generic)
 
 -- | Creates a value of 'DescribeFleetInstances' with the minimum fields required to make a request.
 --
@@ -78,15 +78,10 @@ data DescribeFleetInstances =
 describeFleetInstances
     :: Text -- ^ 'dfisFleetId'
     -> DescribeFleetInstances
-describeFleetInstances pFleetId_ =
-  DescribeFleetInstances'
-    { _dfisFilters = Nothing
-    , _dfisNextToken = Nothing
-    , _dfisDryRun = Nothing
-    , _dfisMaxResults = Nothing
-    , _dfisFleetId = pFleetId_
-    }
-
+describeFleetInstances pFleetId_
+  = DescribeFleetInstances'{_dfisFilters = Nothing,
+                            _dfisNextToken = Nothing, _dfisDryRun = Nothing,
+                            _dfisMaxResults = Nothing, _dfisFleetId = pFleetId_}
 
 -- | The filters.     * @instance-type@ - The instance type.
 dfisFilters :: Lens' DescribeFleetInstances [Filter]
@@ -144,15 +139,22 @@ instance ToQuery DescribeFleetInstances where
                "FleetId" =: _dfisFleetId]
 
 -- | /See:/ 'describeFleetInstancesResponse' smart constructor.
-data DescribeFleetInstancesResponse =
-  DescribeFleetInstancesResponse'
-    { _drsNextToken       :: !(Maybe Text)
-    , _drsFleetId         :: !(Maybe Text)
-    , _drsActiveInstances :: !(Maybe [ActiveInstance])
-    , _drsResponseStatus  :: !Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data DescribeFleetInstancesResponse = DescribeFleetInstancesResponse'{_drsNextToken
+                                                                      ::
+                                                                      !(Maybe
+                                                                          Text),
+                                                                      _drsFleetId
+                                                                      ::
+                                                                      !(Maybe
+                                                                          Text),
+                                                                      _drsActiveInstances
+                                                                      ::
+                                                                      !(Maybe
+                                                                          [ActiveInstance]),
+                                                                      _drsResponseStatus
+                                                                      :: !Int}
+                                        deriving (Eq, Read, Show, Data,
+                                                  Typeable, Generic)
 
 -- | Creates a value of 'DescribeFleetInstancesResponse' with the minimum fields required to make a request.
 --
@@ -168,14 +170,12 @@ data DescribeFleetInstancesResponse =
 describeFleetInstancesResponse
     :: Int -- ^ 'drsResponseStatus'
     -> DescribeFleetInstancesResponse
-describeFleetInstancesResponse pResponseStatus_ =
-  DescribeFleetInstancesResponse'
-    { _drsNextToken = Nothing
-    , _drsFleetId = Nothing
-    , _drsActiveInstances = Nothing
-    , _drsResponseStatus = pResponseStatus_
-    }
-
+describeFleetInstancesResponse pResponseStatus_
+  = DescribeFleetInstancesResponse'{_drsNextToken =
+                                      Nothing,
+                                    _drsFleetId = Nothing,
+                                    _drsActiveInstances = Nothing,
+                                    _drsResponseStatus = pResponseStatus_}
 
 -- | The token for the next set of results.
 drsNextToken :: Lens' DescribeFleetInstancesResponse (Maybe Text)

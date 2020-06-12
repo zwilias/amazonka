@@ -21,7 +21,7 @@
 -- Returns the estimated number of decision tasks in the specified task list. The count returned is an approximation and isn't guaranteed to be exact. If you specify a task list that no decision task was ever scheduled in then @0@ is returned.
 --
 --
--- __Access Control__
+-- __Access Control__ 
 --
 -- You can use IAM policies to control this action's access to Amazon SWF resources as follows:
 --
@@ -57,16 +57,14 @@ import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 import Network.AWS.SWF.Types
-import Network.AWS.SWF.Types.Product
 
 -- | /See:/ 'countPendingDecisionTasks' smart constructor.
-data CountPendingDecisionTasks =
-  CountPendingDecisionTasks'
-    { _cpdtDomain   :: !Text
-    , _cpdtTaskList :: !TaskList
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data CountPendingDecisionTasks = CountPendingDecisionTasks'{_cpdtDomain
+                                                            :: !Text,
+                                                            _cpdtTaskList ::
+                                                            !TaskList}
+                                   deriving (Eq, Read, Show, Data, Typeable,
+                                             Generic)
 
 -- | Creates a value of 'CountPendingDecisionTasks' with the minimum fields required to make a request.
 --
@@ -79,10 +77,9 @@ countPendingDecisionTasks
     :: Text -- ^ 'cpdtDomain'
     -> TaskList -- ^ 'cpdtTaskList'
     -> CountPendingDecisionTasks
-countPendingDecisionTasks pDomain_ pTaskList_ =
-  CountPendingDecisionTasks'
-    {_cpdtDomain = pDomain_, _cpdtTaskList = pTaskList_}
-
+countPendingDecisionTasks pDomain_ pTaskList_
+  = CountPendingDecisionTasks'{_cpdtDomain = pDomain_,
+                               _cpdtTaskList = pTaskList_}
 
 -- | The name of the domain that contains the task list.
 cpdtDomain :: Lens' CountPendingDecisionTasks Text

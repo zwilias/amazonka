@@ -38,16 +38,16 @@ import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 import Network.AWS.S3.Types
-import Network.AWS.S3.Types.Product
 
 -- | /See:/ 'deleteBucketAnalyticsConfiguration' smart constructor.
-data DeleteBucketAnalyticsConfiguration =
-  DeleteBucketAnalyticsConfiguration'
-    { _dbacBucket :: !BucketName
-    , _dbacId     :: !Text
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data DeleteBucketAnalyticsConfiguration = DeleteBucketAnalyticsConfiguration'{_dbacBucket
+                                                                              ::
+                                                                              !BucketName,
+                                                                              _dbacId
+                                                                              ::
+                                                                              !Text}
+                                            deriving (Eq, Read, Show, Data,
+                                                      Typeable, Generic)
 
 -- | Creates a value of 'DeleteBucketAnalyticsConfiguration' with the minimum fields required to make a request.
 --
@@ -60,9 +60,10 @@ deleteBucketAnalyticsConfiguration
     :: BucketName -- ^ 'dbacBucket'
     -> Text -- ^ 'dbacId'
     -> DeleteBucketAnalyticsConfiguration
-deleteBucketAnalyticsConfiguration pBucket_ pId_ =
-  DeleteBucketAnalyticsConfiguration' {_dbacBucket = pBucket_, _dbacId = pId_}
-
+deleteBucketAnalyticsConfiguration pBucket_ pId_
+  = DeleteBucketAnalyticsConfiguration'{_dbacBucket =
+                                          pBucket_,
+                                        _dbacId = pId_}
 
 -- | The name of the bucket from which an analytics configuration is deleted.
 dbacBucket :: Lens' DeleteBucketAnalyticsConfiguration BucketName
@@ -103,18 +104,17 @@ instance ToQuery DeleteBucketAnalyticsConfiguration
           = mconcat ["id" =: _dbacId, "analytics"]
 
 -- | /See:/ 'deleteBucketAnalyticsConfigurationResponse' smart constructor.
-data DeleteBucketAnalyticsConfigurationResponse =
-  DeleteBucketAnalyticsConfigurationResponse'
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data DeleteBucketAnalyticsConfigurationResponse = DeleteBucketAnalyticsConfigurationResponse'
+                                                    deriving (Eq, Read, Show,
+                                                              Data, Typeable,
+                                                              Generic)
 
 -- | Creates a value of 'DeleteBucketAnalyticsConfigurationResponse' with the minimum fields required to make a request.
 --
 deleteBucketAnalyticsConfigurationResponse
     :: DeleteBucketAnalyticsConfigurationResponse
-deleteBucketAnalyticsConfigurationResponse =
-  DeleteBucketAnalyticsConfigurationResponse'
-
+deleteBucketAnalyticsConfigurationResponse
+  = DeleteBucketAnalyticsConfigurationResponse'
 
 instance NFData
            DeleteBucketAnalyticsConfigurationResponse

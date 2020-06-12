@@ -18,22 +18,22 @@
 -- Stability   : auto-generated
 -- Portability : non-portable (GHC extensions)
 --
--- Cancels a pending VPC peering authorization for the specified VPC. If the authorization has already been used to create a peering connection, call 'DeleteVpcPeeringConnection' to remove the connection.
+-- Cancels a pending VPC peering authorization for the specified VPC. If the authorization has already been used to create a peering connection, call 'DeleteVpcPeeringConnection' to remove the connection. 
 --
 --
 -- VPC peering connection operations include:
 --
---     * 'CreateVpcPeeringAuthorization'
+--     * 'CreateVpcPeeringAuthorization' 
 --
---     * 'DescribeVpcPeeringAuthorizations'
+--     * 'DescribeVpcPeeringAuthorizations' 
 --
---     * 'DeleteVpcPeeringAuthorization'
+--     * 'DeleteVpcPeeringAuthorization' 
 --
---     * 'CreateVpcPeeringConnection'
+--     * 'CreateVpcPeeringConnection' 
 --
---     * 'DescribeVpcPeeringConnections'
+--     * 'DescribeVpcPeeringConnections' 
 --
---     * 'DeleteVpcPeeringConnection'
+--     * 'DeleteVpcPeeringConnection' 
 --
 --
 --
@@ -54,7 +54,6 @@ module Network.AWS.GameLift.DeleteVPCPeeringAuthorization
     ) where
 
 import Network.AWS.GameLift.Types
-import Network.AWS.GameLift.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.Request
@@ -65,13 +64,12 @@ import Network.AWS.Response
 --
 --
 -- /See:/ 'deleteVPCPeeringAuthorization' smart constructor.
-data DeleteVPCPeeringAuthorization =
-  DeleteVPCPeeringAuthorization'
-    { _dvpaGameLiftAWSAccountId :: !Text
-    , _dvpaPeerVPCId            :: !Text
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data DeleteVPCPeeringAuthorization = DeleteVPCPeeringAuthorization'{_dvpaGameLiftAWSAccountId
+                                                                    :: !Text,
+                                                                    _dvpaPeerVPCId
+                                                                    :: !Text}
+                                       deriving (Eq, Read, Show, Data, Typeable,
+                                                 Generic)
 
 -- | Creates a value of 'DeleteVPCPeeringAuthorization' with the minimum fields required to make a request.
 --
@@ -84,12 +82,11 @@ deleteVPCPeeringAuthorization
     :: Text -- ^ 'dvpaGameLiftAWSAccountId'
     -> Text -- ^ 'dvpaPeerVPCId'
     -> DeleteVPCPeeringAuthorization
-deleteVPCPeeringAuthorization pGameLiftAWSAccountId_ pPeerVPCId_ =
-  DeleteVPCPeeringAuthorization'
-    { _dvpaGameLiftAWSAccountId = pGameLiftAWSAccountId_
-    , _dvpaPeerVPCId = pPeerVPCId_
-    }
-
+deleteVPCPeeringAuthorization pGameLiftAWSAccountId_
+  pPeerVPCId_
+  = DeleteVPCPeeringAuthorization'{_dvpaGameLiftAWSAccountId
+                                     = pGameLiftAWSAccountId_,
+                                   _dvpaPeerVPCId = pPeerVPCId_}
 
 -- | Unique identifier for the AWS account that you use to manage your Amazon GameLift fleet. You can find your Account ID in the AWS Management Console under account settings.
 dvpaGameLiftAWSAccountId :: Lens' DeleteVPCPeeringAuthorization Text
@@ -141,12 +138,12 @@ instance ToQuery DeleteVPCPeeringAuthorization where
         toQuery = const mempty
 
 -- | /See:/ 'deleteVPCPeeringAuthorizationResponse' smart constructor.
-newtype DeleteVPCPeeringAuthorizationResponse =
-  DeleteVPCPeeringAuthorizationResponse'
-    { _dvparsResponseStatus :: Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+newtype DeleteVPCPeeringAuthorizationResponse = DeleteVPCPeeringAuthorizationResponse'{_dvparsResponseStatus
+                                                                                       ::
+                                                                                       Int}
+                                                  deriving (Eq, Read, Show,
+                                                            Data, Typeable,
+                                                            Generic)
 
 -- | Creates a value of 'DeleteVPCPeeringAuthorizationResponse' with the minimum fields required to make a request.
 --
@@ -156,10 +153,10 @@ newtype DeleteVPCPeeringAuthorizationResponse =
 deleteVPCPeeringAuthorizationResponse
     :: Int -- ^ 'dvparsResponseStatus'
     -> DeleteVPCPeeringAuthorizationResponse
-deleteVPCPeeringAuthorizationResponse pResponseStatus_ =
-  DeleteVPCPeeringAuthorizationResponse'
-    {_dvparsResponseStatus = pResponseStatus_}
-
+deleteVPCPeeringAuthorizationResponse
+  pResponseStatus_
+  = DeleteVPCPeeringAuthorizationResponse'{_dvparsResponseStatus
+                                             = pResponseStatus_}
 
 -- | -- | The response status code.
 dvparsResponseStatus :: Lens' DeleteVPCPeeringAuthorizationResponse Int

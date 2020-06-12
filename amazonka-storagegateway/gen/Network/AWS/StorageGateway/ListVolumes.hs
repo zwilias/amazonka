@@ -51,27 +51,23 @@ import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 import Network.AWS.StorageGateway.Types
-import Network.AWS.StorageGateway.Types.Product
 
 -- | A JSON object that contains one or more of the following fields:
 --
 --
---     * 'ListVolumesInput$Limit'
+--     * 'ListVolumesInput$Limit' 
 --
---     * 'ListVolumesInput$Marker'
+--     * 'ListVolumesInput$Marker' 
 --
 --
 --
 --
 -- /See:/ 'listVolumes' smart constructor.
-data ListVolumes =
-  ListVolumes'
-    { _lvGatewayARN :: !(Maybe Text)
-    , _lvMarker     :: !(Maybe Text)
-    , _lvLimit      :: !(Maybe Nat)
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data ListVolumes = ListVolumes'{_lvGatewayARN ::
+                                !(Maybe Text),
+                                _lvMarker :: !(Maybe Text),
+                                _lvLimit :: !(Maybe Nat)}
+                     deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'ListVolumes' with the minimum fields required to make a request.
 --
@@ -84,10 +80,9 @@ data ListVolumes =
 -- * 'lvLimit' - Specifies that the list of volumes returned be limited to the specified number of items.
 listVolumes
     :: ListVolumes
-listVolumes =
-  ListVolumes'
-    {_lvGatewayARN = Nothing, _lvMarker = Nothing, _lvLimit = Nothing}
-
+listVolumes
+  = ListVolumes'{_lvGatewayARN = Nothing,
+                 _lvMarker = Nothing, _lvLimit = Nothing}
 
 -- | Undocumented member.
 lvGatewayARN :: Lens' ListVolumes (Maybe Text)
@@ -148,15 +143,13 @@ instance ToQuery ListVolumes where
         toQuery = const mempty
 
 -- | /See:/ 'listVolumesResponse' smart constructor.
-data ListVolumesResponse =
-  ListVolumesResponse'
-    { _lvrsGatewayARN     :: !(Maybe Text)
-    , _lvrsMarker         :: !(Maybe Text)
-    , _lvrsVolumeInfos    :: !(Maybe [VolumeInfo])
-    , _lvrsResponseStatus :: !Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data ListVolumesResponse = ListVolumesResponse'{_lvrsGatewayARN
+                                                :: !(Maybe Text),
+                                                _lvrsMarker :: !(Maybe Text),
+                                                _lvrsVolumeInfos ::
+                                                !(Maybe [VolumeInfo]),
+                                                _lvrsResponseStatus :: !Int}
+                             deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'ListVolumesResponse' with the minimum fields required to make a request.
 --
@@ -172,14 +165,10 @@ data ListVolumesResponse =
 listVolumesResponse
     :: Int -- ^ 'lvrsResponseStatus'
     -> ListVolumesResponse
-listVolumesResponse pResponseStatus_ =
-  ListVolumesResponse'
-    { _lvrsGatewayARN = Nothing
-    , _lvrsMarker = Nothing
-    , _lvrsVolumeInfos = Nothing
-    , _lvrsResponseStatus = pResponseStatus_
-    }
-
+listVolumesResponse pResponseStatus_
+  = ListVolumesResponse'{_lvrsGatewayARN = Nothing,
+                         _lvrsMarker = Nothing, _lvrsVolumeInfos = Nothing,
+                         _lvrsResponseStatus = pResponseStatus_}
 
 -- | Undocumented member.
 lvrsGatewayARN :: Lens' ListVolumesResponse (Maybe Text)

@@ -18,7 +18,7 @@
 -- Stability   : auto-generated
 -- Portability : non-portable (GHC extensions)
 --
--- Creates a Traffic Mirror filter rule.
+-- Creates a Traffic Mirror filter rule. 
 --
 --
 -- A Traffic Mirror rule defines the Traffic Mirror source traffic to mirror.
@@ -54,30 +54,52 @@ module Network.AWS.EC2.CreateTrafficMirrorFilterRule
     ) where
 
 import Network.AWS.EC2.Types
-import Network.AWS.EC2.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 
 -- | /See:/ 'createTrafficMirrorFilterRule' smart constructor.
-data CreateTrafficMirrorFilterRule =
-  CreateTrafficMirrorFilterRule'
-    { _ctmfrClientToken           :: !(Maybe Text)
-    , _ctmfrProtocol              :: !(Maybe Int)
-    , _ctmfrDestinationPortRange  :: !(Maybe TrafficMirrorPortRangeRequest)
-    , _ctmfrSourcePortRange       :: !(Maybe TrafficMirrorPortRangeRequest)
-    , _ctmfrDescription           :: !(Maybe Text)
-    , _ctmfrDryRun                :: !(Maybe Bool)
-    , _ctmfrTrafficMirrorFilterId :: !Text
-    , _ctmfrTrafficDirection      :: !TrafficDirection
-    , _ctmfrRuleNumber            :: !Int
-    , _ctmfrRuleAction            :: !TrafficMirrorRuleAction
-    , _ctmfrDestinationCidrBlock  :: !Text
-    , _ctmfrSourceCidrBlock       :: !Text
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data CreateTrafficMirrorFilterRule = CreateTrafficMirrorFilterRule'{_ctmfrClientToken
+                                                                    ::
+                                                                    !(Maybe
+                                                                        Text),
+                                                                    _ctmfrProtocol
+                                                                    ::
+                                                                    !(Maybe
+                                                                        Int),
+                                                                    _ctmfrDestinationPortRange
+                                                                    ::
+                                                                    !(Maybe
+                                                                        TrafficMirrorPortRangeRequest),
+                                                                    _ctmfrSourcePortRange
+                                                                    ::
+                                                                    !(Maybe
+                                                                        TrafficMirrorPortRangeRequest),
+                                                                    _ctmfrDescription
+                                                                    ::
+                                                                    !(Maybe
+                                                                        Text),
+                                                                    _ctmfrDryRun
+                                                                    ::
+                                                                    !(Maybe
+                                                                        Bool),
+                                                                    _ctmfrTrafficMirrorFilterId
+                                                                    :: !Text,
+                                                                    _ctmfrTrafficDirection
+                                                                    ::
+                                                                    !TrafficDirection,
+                                                                    _ctmfrRuleNumber
+                                                                    :: !Int,
+                                                                    _ctmfrRuleAction
+                                                                    ::
+                                                                    !TrafficMirrorRuleAction,
+                                                                    _ctmfrDestinationCidrBlock
+                                                                    :: !Text,
+                                                                    _ctmfrSourceCidrBlock
+                                                                    :: !Text}
+                                       deriving (Eq, Read, Show, Data, Typeable,
+                                                 Generic)
 
 -- | Creates a value of 'CreateTrafficMirrorFilterRule' with the minimum fields required to make a request.
 --
@@ -114,22 +136,24 @@ createTrafficMirrorFilterRule
     -> Text -- ^ 'ctmfrDestinationCidrBlock'
     -> Text -- ^ 'ctmfrSourceCidrBlock'
     -> CreateTrafficMirrorFilterRule
-createTrafficMirrorFilterRule pTrafficMirrorFilterId_ pTrafficDirection_ pRuleNumber_ pRuleAction_ pDestinationCidrBlock_ pSourceCidrBlock_ =
-  CreateTrafficMirrorFilterRule'
-    { _ctmfrClientToken = Nothing
-    , _ctmfrProtocol = Nothing
-    , _ctmfrDestinationPortRange = Nothing
-    , _ctmfrSourcePortRange = Nothing
-    , _ctmfrDescription = Nothing
-    , _ctmfrDryRun = Nothing
-    , _ctmfrTrafficMirrorFilterId = pTrafficMirrorFilterId_
-    , _ctmfrTrafficDirection = pTrafficDirection_
-    , _ctmfrRuleNumber = pRuleNumber_
-    , _ctmfrRuleAction = pRuleAction_
-    , _ctmfrDestinationCidrBlock = pDestinationCidrBlock_
-    , _ctmfrSourceCidrBlock = pSourceCidrBlock_
-    }
-
+createTrafficMirrorFilterRule pTrafficMirrorFilterId_
+  pTrafficDirection_ pRuleNumber_ pRuleAction_
+  pDestinationCidrBlock_ pSourceCidrBlock_
+  = CreateTrafficMirrorFilterRule'{_ctmfrClientToken =
+                                     Nothing,
+                                   _ctmfrProtocol = Nothing,
+                                   _ctmfrDestinationPortRange = Nothing,
+                                   _ctmfrSourcePortRange = Nothing,
+                                   _ctmfrDescription = Nothing,
+                                   _ctmfrDryRun = Nothing,
+                                   _ctmfrTrafficMirrorFilterId =
+                                     pTrafficMirrorFilterId_,
+                                   _ctmfrTrafficDirection = pTrafficDirection_,
+                                   _ctmfrRuleNumber = pRuleNumber_,
+                                   _ctmfrRuleAction = pRuleAction_,
+                                   _ctmfrDestinationCidrBlock =
+                                     pDestinationCidrBlock_,
+                                   _ctmfrSourceCidrBlock = pSourceCidrBlock_}
 
 -- | Unique, case-sensitive identifier that you provide to ensure the idempotency of the request. For more information, see <https://docs.aws.amazon.com/AWSEC2/latest/APIReference/Run_Instance_Idempotency.html How to Ensure Idempotency> .
 ctmfrClientToken :: Lens' CreateTrafficMirrorFilterRule (Maybe Text)
@@ -224,14 +248,19 @@ instance ToQuery CreateTrafficMirrorFilterRule where
                "SourceCidrBlock" =: _ctmfrSourceCidrBlock]
 
 -- | /See:/ 'createTrafficMirrorFilterRuleResponse' smart constructor.
-data CreateTrafficMirrorFilterRuleResponse =
-  CreateTrafficMirrorFilterRuleResponse'
-    { _ctmfrrsTrafficMirrorFilterRule :: !(Maybe TrafficMirrorFilterRule)
-    , _ctmfrrsClientToken             :: !(Maybe Text)
-    , _ctmfrrsResponseStatus          :: !Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data CreateTrafficMirrorFilterRuleResponse = CreateTrafficMirrorFilterRuleResponse'{_ctmfrrsTrafficMirrorFilterRule
+                                                                                    ::
+                                                                                    !(Maybe
+                                                                                        TrafficMirrorFilterRule),
+                                                                                    _ctmfrrsClientToken
+                                                                                    ::
+                                                                                    !(Maybe
+                                                                                        Text),
+                                                                                    _ctmfrrsResponseStatus
+                                                                                    ::
+                                                                                    !Int}
+                                               deriving (Eq, Read, Show, Data,
+                                                         Typeable, Generic)
 
 -- | Creates a value of 'CreateTrafficMirrorFilterRuleResponse' with the minimum fields required to make a request.
 --
@@ -245,13 +274,13 @@ data CreateTrafficMirrorFilterRuleResponse =
 createTrafficMirrorFilterRuleResponse
     :: Int -- ^ 'ctmfrrsResponseStatus'
     -> CreateTrafficMirrorFilterRuleResponse
-createTrafficMirrorFilterRuleResponse pResponseStatus_ =
-  CreateTrafficMirrorFilterRuleResponse'
-    { _ctmfrrsTrafficMirrorFilterRule = Nothing
-    , _ctmfrrsClientToken = Nothing
-    , _ctmfrrsResponseStatus = pResponseStatus_
-    }
-
+createTrafficMirrorFilterRuleResponse
+  pResponseStatus_
+  = CreateTrafficMirrorFilterRuleResponse'{_ctmfrrsTrafficMirrorFilterRule
+                                             = Nothing,
+                                           _ctmfrrsClientToken = Nothing,
+                                           _ctmfrrsResponseStatus =
+                                             pResponseStatus_}
 
 -- | The Traffic Mirror rule.
 ctmfrrsTrafficMirrorFilterRule :: Lens' CreateTrafficMirrorFilterRuleResponse (Maybe TrafficMirrorFilterRule)

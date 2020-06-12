@@ -40,19 +40,17 @@ module Network.AWS.Lightsail.PutInstancePublicPorts
 
 import Network.AWS.Lens
 import Network.AWS.Lightsail.Types
-import Network.AWS.Lightsail.Types.Product
 import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 
 -- | /See:/ 'putInstancePublicPorts' smart constructor.
-data PutInstancePublicPorts =
-  PutInstancePublicPorts'
-    { _pippPortInfos    :: ![PortInfo]
-    , _pippInstanceName :: !Text
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data PutInstancePublicPorts = PutInstancePublicPorts'{_pippPortInfos
+                                                      :: ![PortInfo],
+                                                      _pippInstanceName ::
+                                                      !Text}
+                                deriving (Eq, Read, Show, Data, Typeable,
+                                          Generic)
 
 -- | Creates a value of 'PutInstancePublicPorts' with the minimum fields required to make a request.
 --
@@ -64,10 +62,9 @@ data PutInstancePublicPorts =
 putInstancePublicPorts
     :: Text -- ^ 'pippInstanceName'
     -> PutInstancePublicPorts
-putInstancePublicPorts pInstanceName_ =
-  PutInstancePublicPorts'
-    {_pippPortInfos = mempty, _pippInstanceName = pInstanceName_}
-
+putInstancePublicPorts pInstanceName_
+  = PutInstancePublicPorts'{_pippPortInfos = mempty,
+                            _pippInstanceName = pInstanceName_}
 
 -- | Specifies information about the public port(s).
 pippPortInfos :: Lens' PutInstancePublicPorts [PortInfo]
@@ -115,13 +112,14 @@ instance ToQuery PutInstancePublicPorts where
         toQuery = const mempty
 
 -- | /See:/ 'putInstancePublicPortsResponse' smart constructor.
-data PutInstancePublicPortsResponse =
-  PutInstancePublicPortsResponse'
-    { _pipprsOperation      :: !(Maybe Operation)
-    , _pipprsResponseStatus :: !Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data PutInstancePublicPortsResponse = PutInstancePublicPortsResponse'{_pipprsOperation
+                                                                      ::
+                                                                      !(Maybe
+                                                                          Operation),
+                                                                      _pipprsResponseStatus
+                                                                      :: !Int}
+                                        deriving (Eq, Read, Show, Data,
+                                                  Typeable, Generic)
 
 -- | Creates a value of 'PutInstancePublicPortsResponse' with the minimum fields required to make a request.
 --
@@ -133,10 +131,10 @@ data PutInstancePublicPortsResponse =
 putInstancePublicPortsResponse
     :: Int -- ^ 'pipprsResponseStatus'
     -> PutInstancePublicPortsResponse
-putInstancePublicPortsResponse pResponseStatus_ =
-  PutInstancePublicPortsResponse'
-    {_pipprsOperation = Nothing, _pipprsResponseStatus = pResponseStatus_}
-
+putInstancePublicPortsResponse pResponseStatus_
+  = PutInstancePublicPortsResponse'{_pipprsOperation =
+                                      Nothing,
+                                    _pipprsResponseStatus = pResponseStatus_}
 
 -- | Describes metadata about the operation you just executed.
 pipprsOperation :: Lens' PutInstancePublicPortsResponse (Maybe Operation)

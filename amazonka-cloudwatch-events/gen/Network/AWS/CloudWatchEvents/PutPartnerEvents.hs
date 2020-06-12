@@ -39,19 +39,16 @@ module Network.AWS.CloudWatchEvents.PutPartnerEvents
     ) where
 
 import Network.AWS.CloudWatchEvents.Types
-import Network.AWS.CloudWatchEvents.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 
 -- | /See:/ 'putPartnerEvents' smart constructor.
-newtype PutPartnerEvents =
-  PutPartnerEvents'
-    { _ppeEntries :: List1 PutPartnerEventsRequestEntry
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+newtype PutPartnerEvents = PutPartnerEvents'{_ppeEntries
+                                             ::
+                                             List1 PutPartnerEventsRequestEntry}
+                             deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'PutPartnerEvents' with the minimum fields required to make a request.
 --
@@ -61,9 +58,8 @@ newtype PutPartnerEvents =
 putPartnerEvents
     :: NonEmpty PutPartnerEventsRequestEntry -- ^ 'ppeEntries'
     -> PutPartnerEvents
-putPartnerEvents pEntries_ =
-  PutPartnerEvents' {_ppeEntries = _List1 # pEntries_}
-
+putPartnerEvents pEntries_
+  = PutPartnerEvents'{_ppeEntries = _List1 # pEntries_}
 
 -- | The list of events to write to the event bus.
 ppeEntries :: Lens' PutPartnerEvents (NonEmpty PutPartnerEventsRequestEntry)
@@ -105,14 +101,15 @@ instance ToQuery PutPartnerEvents where
         toQuery = const mempty
 
 -- | /See:/ 'putPartnerEventsResponse' smart constructor.
-data PutPartnerEventsResponse =
-  PutPartnerEventsResponse'
-    { _ppersFailedEntryCount :: !(Maybe Int)
-    , _ppersEntries          :: !(Maybe [PutPartnerEventsResultEntry])
-    , _ppersResponseStatus   :: !Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data PutPartnerEventsResponse = PutPartnerEventsResponse'{_ppersFailedEntryCount
+                                                          :: !(Maybe Int),
+                                                          _ppersEntries ::
+                                                          !(Maybe
+                                                              [PutPartnerEventsResultEntry]),
+                                                          _ppersResponseStatus
+                                                          :: !Int}
+                                  deriving (Eq, Read, Show, Data, Typeable,
+                                            Generic)
 
 -- | Creates a value of 'PutPartnerEventsResponse' with the minimum fields required to make a request.
 --
@@ -126,13 +123,11 @@ data PutPartnerEventsResponse =
 putPartnerEventsResponse
     :: Int -- ^ 'ppersResponseStatus'
     -> PutPartnerEventsResponse
-putPartnerEventsResponse pResponseStatus_ =
-  PutPartnerEventsResponse'
-    { _ppersFailedEntryCount = Nothing
-    , _ppersEntries = Nothing
-    , _ppersResponseStatus = pResponseStatus_
-    }
-
+putPartnerEventsResponse pResponseStatus_
+  = PutPartnerEventsResponse'{_ppersFailedEntryCount =
+                                Nothing,
+                              _ppersEntries = Nothing,
+                              _ppersResponseStatus = pResponseStatus_}
 
 -- | The number of events from this operation that couldn't be written to the partner event bus.
 ppersFailedEntryCount :: Lens' PutPartnerEventsResponse (Maybe Int)

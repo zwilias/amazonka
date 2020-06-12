@@ -37,18 +37,13 @@ module Network.AWS.Pinpoint.GetApp
 
 import Network.AWS.Lens
 import Network.AWS.Pinpoint.Types
-import Network.AWS.Pinpoint.Types.Product
 import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 
 -- | /See:/ 'getApp' smart constructor.
-newtype GetApp =
-  GetApp'
-    { _gaApplicationId :: Text
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+newtype GetApp = GetApp'{_gaApplicationId :: Text}
+                   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'GetApp' with the minimum fields required to make a request.
 --
@@ -58,8 +53,8 @@ newtype GetApp =
 getApp
     :: Text -- ^ 'gaApplicationId'
     -> GetApp
-getApp pApplicationId_ = GetApp' {_gaApplicationId = pApplicationId_}
-
+getApp pApplicationId_
+  = GetApp'{_gaApplicationId = pApplicationId_}
 
 -- | Undocumented member.
 gaApplicationId :: Lens' GetApp Text
@@ -93,13 +88,11 @@ instance ToQuery GetApp where
         toQuery = const mempty
 
 -- | /See:/ 'getAppResponse' smart constructor.
-data GetAppResponse =
-  GetAppResponse'
-    { _garsResponseStatus      :: !Int
-    , _garsApplicationResponse :: !ApplicationResponse
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data GetAppResponse = GetAppResponse'{_garsResponseStatus
+                                      :: !Int,
+                                      _garsApplicationResponse ::
+                                      !ApplicationResponse}
+                        deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'GetAppResponse' with the minimum fields required to make a request.
 --
@@ -112,12 +105,10 @@ getAppResponse
     :: Int -- ^ 'garsResponseStatus'
     -> ApplicationResponse -- ^ 'garsApplicationResponse'
     -> GetAppResponse
-getAppResponse pResponseStatus_ pApplicationResponse_ =
-  GetAppResponse'
-    { _garsResponseStatus = pResponseStatus_
-    , _garsApplicationResponse = pApplicationResponse_
-    }
-
+getAppResponse pResponseStatus_ pApplicationResponse_
+  = GetAppResponse'{_garsResponseStatus =
+                      pResponseStatus_,
+                    _garsApplicationResponse = pApplicationResponse_}
 
 -- | -- | The response status code.
 garsResponseStatus :: Lens' GetAppResponse Int

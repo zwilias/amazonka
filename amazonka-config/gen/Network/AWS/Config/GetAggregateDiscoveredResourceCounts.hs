@@ -47,23 +47,33 @@ module Network.AWS.Config.GetAggregateDiscoveredResourceCounts
     ) where
 
 import Network.AWS.Config.Types
-import Network.AWS.Config.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 
 -- | /See:/ 'getAggregateDiscoveredResourceCounts' smart constructor.
-data GetAggregateDiscoveredResourceCounts =
-  GetAggregateDiscoveredResourceCounts'
-    { _gadrcFilters                     :: !(Maybe ResourceCountFilters)
-    , _gadrcNextToken                   :: !(Maybe Text)
-    , _gadrcLimit                       :: !(Maybe Nat)
-    , _gadrcGroupByKey                  :: !(Maybe ResourceCountGroupKey)
-    , _gadrcConfigurationAggregatorName :: !Text
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data GetAggregateDiscoveredResourceCounts = GetAggregateDiscoveredResourceCounts'{_gadrcFilters
+                                                                                  ::
+                                                                                  !(Maybe
+                                                                                      ResourceCountFilters),
+                                                                                  _gadrcNextToken
+                                                                                  ::
+                                                                                  !(Maybe
+                                                                                      Text),
+                                                                                  _gadrcLimit
+                                                                                  ::
+                                                                                  !(Maybe
+                                                                                      Nat),
+                                                                                  _gadrcGroupByKey
+                                                                                  ::
+                                                                                  !(Maybe
+                                                                                      ResourceCountGroupKey),
+                                                                                  _gadrcConfigurationAggregatorName
+                                                                                  ::
+                                                                                  !Text}
+                                              deriving (Eq, Read, Show, Data,
+                                                        Typeable, Generic)
 
 -- | Creates a value of 'GetAggregateDiscoveredResourceCounts' with the minimum fields required to make a request.
 --
@@ -71,7 +81,7 @@ data GetAggregateDiscoveredResourceCounts =
 --
 -- * 'gadrcFilters' - Filters the results based on the @ResourceCountFilters@ object.
 --
--- * 'gadrcNextToken' - The @nextToken@ string returned on a previous page that you use to get the next page of results in a paginated response.
+-- * 'gadrcNextToken' - The @nextToken@ string returned on a previous page that you use to get the next page of results in a paginated response. 
 --
 -- * 'gadrcLimit' - The maximum number of 'GroupedResourceCount' objects returned on each page. The default is 1000. You cannot specify a number greater than 1000. If you specify 0, AWS Config uses the default.
 --
@@ -81,21 +91,21 @@ data GetAggregateDiscoveredResourceCounts =
 getAggregateDiscoveredResourceCounts
     :: Text -- ^ 'gadrcConfigurationAggregatorName'
     -> GetAggregateDiscoveredResourceCounts
-getAggregateDiscoveredResourceCounts pConfigurationAggregatorName_ =
-  GetAggregateDiscoveredResourceCounts'
-    { _gadrcFilters = Nothing
-    , _gadrcNextToken = Nothing
-    , _gadrcLimit = Nothing
-    , _gadrcGroupByKey = Nothing
-    , _gadrcConfigurationAggregatorName = pConfigurationAggregatorName_
-    }
-
+getAggregateDiscoveredResourceCounts
+  pConfigurationAggregatorName_
+  = GetAggregateDiscoveredResourceCounts'{_gadrcFilters
+                                            = Nothing,
+                                          _gadrcNextToken = Nothing,
+                                          _gadrcLimit = Nothing,
+                                          _gadrcGroupByKey = Nothing,
+                                          _gadrcConfigurationAggregatorName =
+                                            pConfigurationAggregatorName_}
 
 -- | Filters the results based on the @ResourceCountFilters@ object.
 gadrcFilters :: Lens' GetAggregateDiscoveredResourceCounts (Maybe ResourceCountFilters)
 gadrcFilters = lens _gadrcFilters (\ s a -> s{_gadrcFilters = a})
 
--- | The @nextToken@ string returned on a previous page that you use to get the next page of results in a paginated response.
+-- | The @nextToken@ string returned on a previous page that you use to get the next page of results in a paginated response. 
 gadrcNextToken :: Lens' GetAggregateDiscoveredResourceCounts (Maybe Text)
 gadrcNextToken = lens _gadrcNextToken (\ s a -> s{_gadrcNextToken = a})
 
@@ -168,16 +178,27 @@ instance ToQuery GetAggregateDiscoveredResourceCounts
         toQuery = const mempty
 
 -- | /See:/ 'getAggregateDiscoveredResourceCountsResponse' smart constructor.
-data GetAggregateDiscoveredResourceCountsResponse =
-  GetAggregateDiscoveredResourceCountsResponse'
-    { _gadrcrsGroupedResourceCounts    :: !(Maybe [GroupedResourceCount])
-    , _gadrcrsNextToken                :: !(Maybe Text)
-    , _gadrcrsGroupByKey               :: !(Maybe Text)
-    , _gadrcrsResponseStatus           :: !Int
-    , _gadrcrsTotalDiscoveredResources :: !Integer
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data GetAggregateDiscoveredResourceCountsResponse = GetAggregateDiscoveredResourceCountsResponse'{_gadrcrsGroupedResourceCounts
+                                                                                                  ::
+                                                                                                  !(Maybe
+                                                                                                      [GroupedResourceCount]),
+                                                                                                  _gadrcrsNextToken
+                                                                                                  ::
+                                                                                                  !(Maybe
+                                                                                                      Text),
+                                                                                                  _gadrcrsGroupByKey
+                                                                                                  ::
+                                                                                                  !(Maybe
+                                                                                                      Text),
+                                                                                                  _gadrcrsResponseStatus
+                                                                                                  ::
+                                                                                                  !Int,
+                                                                                                  _gadrcrsTotalDiscoveredResources
+                                                                                                  ::
+                                                                                                  !Integer}
+                                                      deriving (Eq, Read, Show,
+                                                                Data, Typeable,
+                                                                Generic)
 
 -- | Creates a value of 'GetAggregateDiscoveredResourceCountsResponse' with the minimum fields required to make a request.
 --
@@ -196,15 +217,17 @@ getAggregateDiscoveredResourceCountsResponse
     :: Int -- ^ 'gadrcrsResponseStatus'
     -> Integer -- ^ 'gadrcrsTotalDiscoveredResources'
     -> GetAggregateDiscoveredResourceCountsResponse
-getAggregateDiscoveredResourceCountsResponse pResponseStatus_ pTotalDiscoveredResources_ =
-  GetAggregateDiscoveredResourceCountsResponse'
-    { _gadrcrsGroupedResourceCounts = Nothing
-    , _gadrcrsNextToken = Nothing
-    , _gadrcrsGroupByKey = Nothing
-    , _gadrcrsResponseStatus = pResponseStatus_
-    , _gadrcrsTotalDiscoveredResources = pTotalDiscoveredResources_
-    }
-
+getAggregateDiscoveredResourceCountsResponse
+  pResponseStatus_ pTotalDiscoveredResources_
+  = GetAggregateDiscoveredResourceCountsResponse'{_gadrcrsGroupedResourceCounts
+                                                    = Nothing,
+                                                  _gadrcrsNextToken = Nothing,
+                                                  _gadrcrsGroupByKey = Nothing,
+                                                  _gadrcrsResponseStatus =
+                                                    pResponseStatus_,
+                                                  _gadrcrsTotalDiscoveredResources
+                                                    =
+                                                    pTotalDiscoveredResources_}
 
 -- | Returns a list of GroupedResourceCount objects.
 gadrcrsGroupedResourceCounts :: Lens' GetAggregateDiscoveredResourceCountsResponse [GroupedResourceCount]

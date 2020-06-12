@@ -44,24 +44,22 @@ module Network.AWS.AutoScaling.DescribeLifecycleHookTypes
     ) where
 
 import Network.AWS.AutoScaling.Types
-import Network.AWS.AutoScaling.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 
 -- | /See:/ 'describeLifecycleHookTypes' smart constructor.
-data DescribeLifecycleHookTypes =
-  DescribeLifecycleHookTypes'
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data DescribeLifecycleHookTypes = DescribeLifecycleHookTypes'
+                                    deriving (Eq, Read, Show, Data, Typeable,
+                                              Generic)
 
 -- | Creates a value of 'DescribeLifecycleHookTypes' with the minimum fields required to make a request.
 --
 describeLifecycleHookTypes
     :: DescribeLifecycleHookTypes
-describeLifecycleHookTypes = DescribeLifecycleHookTypes'
-
+describeLifecycleHookTypes
+  = DescribeLifecycleHookTypes'
 
 instance AWSRequest DescribeLifecycleHookTypes where
         type Rs DescribeLifecycleHookTypes =
@@ -95,13 +93,15 @@ instance ToQuery DescribeLifecycleHookTypes where
                   "Version" =: ("2011-01-01" :: ByteString)])
 
 -- | /See:/ 'describeLifecycleHookTypesResponse' smart constructor.
-data DescribeLifecycleHookTypesResponse =
-  DescribeLifecycleHookTypesResponse'
-    { _dlhtrsLifecycleHookTypes :: !(Maybe [Text])
-    , _dlhtrsResponseStatus     :: !Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data DescribeLifecycleHookTypesResponse = DescribeLifecycleHookTypesResponse'{_dlhtrsLifecycleHookTypes
+                                                                              ::
+                                                                              !(Maybe
+                                                                                  [Text]),
+                                                                              _dlhtrsResponseStatus
+                                                                              ::
+                                                                              !Int}
+                                            deriving (Eq, Read, Show, Data,
+                                                      Typeable, Generic)
 
 -- | Creates a value of 'DescribeLifecycleHookTypesResponse' with the minimum fields required to make a request.
 --
@@ -113,12 +113,11 @@ data DescribeLifecycleHookTypesResponse =
 describeLifecycleHookTypesResponse
     :: Int -- ^ 'dlhtrsResponseStatus'
     -> DescribeLifecycleHookTypesResponse
-describeLifecycleHookTypesResponse pResponseStatus_ =
-  DescribeLifecycleHookTypesResponse'
-    { _dlhtrsLifecycleHookTypes = Nothing
-    , _dlhtrsResponseStatus = pResponseStatus_
-    }
-
+describeLifecycleHookTypesResponse pResponseStatus_
+  = DescribeLifecycleHookTypesResponse'{_dlhtrsLifecycleHookTypes
+                                          = Nothing,
+                                        _dlhtrsResponseStatus =
+                                          pResponseStatus_}
 
 -- | The lifecycle hook types.
 dlhtrsLifecycleHookTypes :: Lens' DescribeLifecycleHookTypesResponse [Text]

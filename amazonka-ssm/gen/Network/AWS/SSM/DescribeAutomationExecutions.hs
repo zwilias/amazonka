@@ -45,17 +45,21 @@ import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 import Network.AWS.SSM.Types
-import Network.AWS.SSM.Types.Product
 
 -- | /See:/ 'describeAutomationExecutions' smart constructor.
-data DescribeAutomationExecutions =
-  DescribeAutomationExecutions'
-    { _daeFilters    :: !(Maybe (List1 AutomationExecutionFilter))
-    , _daeNextToken  :: !(Maybe Text)
-    , _daeMaxResults :: !(Maybe Nat)
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data DescribeAutomationExecutions = DescribeAutomationExecutions'{_daeFilters
+                                                                  ::
+                                                                  !(Maybe
+                                                                      (List1
+                                                                         AutomationExecutionFilter)),
+                                                                  _daeNextToken
+                                                                  ::
+                                                                  !(Maybe Text),
+                                                                  _daeMaxResults
+                                                                  ::
+                                                                  !(Maybe Nat)}
+                                      deriving (Eq, Read, Show, Data, Typeable,
+                                                Generic)
 
 -- | Creates a value of 'DescribeAutomationExecutions' with the minimum fields required to make a request.
 --
@@ -68,10 +72,11 @@ data DescribeAutomationExecutions =
 -- * 'daeMaxResults' - The maximum number of items to return for this call. The call also returns a token that you can specify in a subsequent call to get the next set of results.
 describeAutomationExecutions
     :: DescribeAutomationExecutions
-describeAutomationExecutions =
-  DescribeAutomationExecutions'
-    {_daeFilters = Nothing, _daeNextToken = Nothing, _daeMaxResults = Nothing}
-
+describeAutomationExecutions
+  = DescribeAutomationExecutions'{_daeFilters =
+                                    Nothing,
+                                  _daeNextToken = Nothing,
+                                  _daeMaxResults = Nothing}
 
 -- | Filters used to limit the scope of executions that are requested.
 daeFilters :: Lens' DescribeAutomationExecutions (Maybe (NonEmpty AutomationExecutionFilter))
@@ -127,14 +132,19 @@ instance ToQuery DescribeAutomationExecutions where
         toQuery = const mempty
 
 -- | /See:/ 'describeAutomationExecutionsResponse' smart constructor.
-data DescribeAutomationExecutionsResponse =
-  DescribeAutomationExecutionsResponse'
-    { _daersNextToken :: !(Maybe Text)
-    , _daersAutomationExecutionMetadataList :: !(Maybe [AutomationExecutionMetadata])
-    , _daersResponseStatus :: !Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data DescribeAutomationExecutionsResponse = DescribeAutomationExecutionsResponse'{_daersNextToken
+                                                                                  ::
+                                                                                  !(Maybe
+                                                                                      Text),
+                                                                                  _daersAutomationExecutionMetadataList
+                                                                                  ::
+                                                                                  !(Maybe
+                                                                                      [AutomationExecutionMetadata]),
+                                                                                  _daersResponseStatus
+                                                                                  ::
+                                                                                  !Int}
+                                              deriving (Eq, Read, Show, Data,
+                                                        Typeable, Generic)
 
 -- | Creates a value of 'DescribeAutomationExecutionsResponse' with the minimum fields required to make a request.
 --
@@ -148,13 +158,13 @@ data DescribeAutomationExecutionsResponse =
 describeAutomationExecutionsResponse
     :: Int -- ^ 'daersResponseStatus'
     -> DescribeAutomationExecutionsResponse
-describeAutomationExecutionsResponse pResponseStatus_ =
-  DescribeAutomationExecutionsResponse'
-    { _daersNextToken = Nothing
-    , _daersAutomationExecutionMetadataList = Nothing
-    , _daersResponseStatus = pResponseStatus_
-    }
-
+describeAutomationExecutionsResponse pResponseStatus_
+  = DescribeAutomationExecutionsResponse'{_daersNextToken
+                                            = Nothing,
+                                          _daersAutomationExecutionMetadataList
+                                            = Nothing,
+                                          _daersResponseStatus =
+                                            pResponseStatus_}
 
 -- | The token to use when requesting the next set of items. If there are no additional items to return, the string is empty.
 daersNextToken :: Lens' DescribeAutomationExecutionsResponse (Maybe Text)

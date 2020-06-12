@@ -51,26 +51,23 @@ import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 import Network.AWS.S3.Types
-import Network.AWS.S3.Types.Product
 
 -- | /See:/ 'putObjectACL' smart constructor.
-data PutObjectACL =
-  PutObjectACL'
-    { _poaVersionId           :: !(Maybe ObjectVersionId)
-    , _poaGrantReadACP        :: !(Maybe Text)
-    , _poaRequestPayer        :: !(Maybe RequestPayer)
-    , _poaGrantWriteACP       :: !(Maybe Text)
-    , _poaGrantRead           :: !(Maybe Text)
-    , _poaGrantFullControl    :: !(Maybe Text)
-    , _poaContentMD5          :: !(Maybe Text)
-    , _poaAccessControlPolicy :: !(Maybe AccessControlPolicy)
-    , _poaGrantWrite          :: !(Maybe Text)
-    , _poaACL                 :: !(Maybe ObjectCannedACL)
-    , _poaBucket              :: !BucketName
-    , _poaKey                 :: !ObjectKey
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data PutObjectACL = PutObjectACL'{_poaVersionId ::
+                                  !(Maybe ObjectVersionId),
+                                  _poaGrantReadACP :: !(Maybe Text),
+                                  _poaRequestPayer :: !(Maybe RequestPayer),
+                                  _poaGrantWriteACP :: !(Maybe Text),
+                                  _poaGrantRead :: !(Maybe Text),
+                                  _poaGrantFullControl :: !(Maybe Text),
+                                  _poaContentMD5 :: !(Maybe Text),
+                                  _poaAccessControlPolicy ::
+                                  !(Maybe AccessControlPolicy),
+                                  _poaGrantWrite :: !(Maybe Text),
+                                  _poaACL :: !(Maybe ObjectCannedACL),
+                                  _poaBucket :: !BucketName,
+                                  _poaKey :: !ObjectKey}
+                      deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'PutObjectACL' with the minimum fields required to make a request.
 --
@@ -103,22 +100,16 @@ putObjectACL
     :: BucketName -- ^ 'poaBucket'
     -> ObjectKey -- ^ 'poaKey'
     -> PutObjectACL
-putObjectACL pBucket_ pKey_ =
-  PutObjectACL'
-    { _poaVersionId = Nothing
-    , _poaGrantReadACP = Nothing
-    , _poaRequestPayer = Nothing
-    , _poaGrantWriteACP = Nothing
-    , _poaGrantRead = Nothing
-    , _poaGrantFullControl = Nothing
-    , _poaContentMD5 = Nothing
-    , _poaAccessControlPolicy = Nothing
-    , _poaGrantWrite = Nothing
-    , _poaACL = Nothing
-    , _poaBucket = pBucket_
-    , _poaKey = pKey_
-    }
-
+putObjectACL pBucket_ pKey_
+  = PutObjectACL'{_poaVersionId = Nothing,
+                  _poaGrantReadACP = Nothing,
+                  _poaRequestPayer = Nothing,
+                  _poaGrantWriteACP = Nothing, _poaGrantRead = Nothing,
+                  _poaGrantFullControl = Nothing,
+                  _poaContentMD5 = Nothing,
+                  _poaAccessControlPolicy = Nothing,
+                  _poaGrantWrite = Nothing, _poaACL = Nothing,
+                  _poaBucket = pBucket_, _poaKey = pKey_}
 
 -- | VersionId used to reference a specific version of the object.
 poaVersionId :: Lens' PutObjectACL (Maybe ObjectVersionId)
@@ -210,13 +201,10 @@ instance ToQuery PutObjectACL where
           = mconcat ["versionId" =: _poaVersionId, "acl"]
 
 -- | /See:/ 'putObjectACLResponse' smart constructor.
-data PutObjectACLResponse =
-  PutObjectACLResponse'
-    { _poarsRequestCharged :: !(Maybe RequestCharged)
-    , _poarsResponseStatus :: !Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data PutObjectACLResponse = PutObjectACLResponse'{_poarsRequestCharged
+                                                  :: !(Maybe RequestCharged),
+                                                  _poarsResponseStatus :: !Int}
+                              deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'PutObjectACLResponse' with the minimum fields required to make a request.
 --
@@ -228,10 +216,10 @@ data PutObjectACLResponse =
 putObjectACLResponse
     :: Int -- ^ 'poarsResponseStatus'
     -> PutObjectACLResponse
-putObjectACLResponse pResponseStatus_ =
-  PutObjectACLResponse'
-    {_poarsRequestCharged = Nothing, _poarsResponseStatus = pResponseStatus_}
-
+putObjectACLResponse pResponseStatus_
+  = PutObjectACLResponse'{_poarsRequestCharged =
+                            Nothing,
+                          _poarsResponseStatus = pResponseStatus_}
 
 -- | Undocumented member.
 poarsRequestCharged :: Lens' PutObjectACLResponse (Maybe RequestCharged)

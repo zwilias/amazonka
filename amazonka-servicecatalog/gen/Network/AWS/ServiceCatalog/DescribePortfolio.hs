@@ -45,16 +45,12 @@ import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 import Network.AWS.ServiceCatalog.Types
-import Network.AWS.ServiceCatalog.Types.Product
 
 -- | /See:/ 'describePortfolio' smart constructor.
-data DescribePortfolio =
-  DescribePortfolio'
-    { _desAcceptLanguage :: !(Maybe Text)
-    , _desId             :: !Text
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data DescribePortfolio = DescribePortfolio'{_desAcceptLanguage
+                                            :: !(Maybe Text),
+                                            _desId :: !Text}
+                           deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'DescribePortfolio' with the minimum fields required to make a request.
 --
@@ -66,9 +62,9 @@ data DescribePortfolio =
 describePortfolio
     :: Text -- ^ 'desId'
     -> DescribePortfolio
-describePortfolio pId_ =
-  DescribePortfolio' {_desAcceptLanguage = Nothing, _desId = pId_}
-
+describePortfolio pId_
+  = DescribePortfolio'{_desAcceptLanguage = Nothing,
+                       _desId = pId_}
 
 -- | The language code.     * @en@ - English (default)     * @jp@ - Japanese     * @zh@ - Chinese
 desAcceptLanguage :: Lens' DescribePortfolio (Maybe Text)
@@ -118,15 +114,19 @@ instance ToQuery DescribePortfolio where
         toQuery = const mempty
 
 -- | /See:/ 'describePortfolioResponse' smart constructor.
-data DescribePortfolioResponse =
-  DescribePortfolioResponse'
-    { _dprsPortfolioDetail :: !(Maybe PortfolioDetail)
-    , _dprsTagOptions      :: !(Maybe [TagOptionDetail])
-    , _dprsTags            :: !(Maybe [Tag])
-    , _dprsResponseStatus  :: !Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data DescribePortfolioResponse = DescribePortfolioResponse'{_dprsPortfolioDetail
+                                                            ::
+                                                            !(Maybe
+                                                                PortfolioDetail),
+                                                            _dprsTagOptions ::
+                                                            !(Maybe
+                                                                [TagOptionDetail]),
+                                                            _dprsTags ::
+                                                            !(Maybe [Tag]),
+                                                            _dprsResponseStatus
+                                                            :: !Int}
+                                   deriving (Eq, Read, Show, Data, Typeable,
+                                             Generic)
 
 -- | Creates a value of 'DescribePortfolioResponse' with the minimum fields required to make a request.
 --
@@ -142,14 +142,11 @@ data DescribePortfolioResponse =
 describePortfolioResponse
     :: Int -- ^ 'dprsResponseStatus'
     -> DescribePortfolioResponse
-describePortfolioResponse pResponseStatus_ =
-  DescribePortfolioResponse'
-    { _dprsPortfolioDetail = Nothing
-    , _dprsTagOptions = Nothing
-    , _dprsTags = Nothing
-    , _dprsResponseStatus = pResponseStatus_
-    }
-
+describePortfolioResponse pResponseStatus_
+  = DescribePortfolioResponse'{_dprsPortfolioDetail =
+                                 Nothing,
+                               _dprsTagOptions = Nothing, _dprsTags = Nothing,
+                               _dprsResponseStatus = pResponseStatus_}
 
 -- | Information about the portfolio.
 dprsPortfolioDetail :: Lens' DescribePortfolioResponse (Maybe PortfolioDetail)

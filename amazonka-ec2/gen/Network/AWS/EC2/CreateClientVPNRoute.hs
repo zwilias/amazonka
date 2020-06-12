@@ -43,24 +43,24 @@ module Network.AWS.EC2.CreateClientVPNRoute
     ) where
 
 import Network.AWS.EC2.Types
-import Network.AWS.EC2.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 
 -- | /See:/ 'createClientVPNRoute' smart constructor.
-data CreateClientVPNRoute =
-  CreateClientVPNRoute'
-    { _ccvrClientToken          :: !(Maybe Text)
-    , _ccvrDescription          :: !(Maybe Text)
-    , _ccvrDryRun               :: !(Maybe Bool)
-    , _ccvrClientVPNEndpointId  :: !Text
-    , _ccvrDestinationCidrBlock :: !Text
-    , _ccvrTargetVPCSubnetId    :: !Text
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data CreateClientVPNRoute = CreateClientVPNRoute'{_ccvrClientToken
+                                                  :: !(Maybe Text),
+                                                  _ccvrDescription ::
+                                                  !(Maybe Text),
+                                                  _ccvrDryRun :: !(Maybe Bool),
+                                                  _ccvrClientVPNEndpointId ::
+                                                  !Text,
+                                                  _ccvrDestinationCidrBlock ::
+                                                  !Text,
+                                                  _ccvrTargetVPCSubnetId ::
+                                                  !Text}
+                              deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'CreateClientVPNRoute' with the minimum fields required to make a request.
 --
@@ -82,16 +82,13 @@ createClientVPNRoute
     -> Text -- ^ 'ccvrDestinationCidrBlock'
     -> Text -- ^ 'ccvrTargetVPCSubnetId'
     -> CreateClientVPNRoute
-createClientVPNRoute pClientVPNEndpointId_ pDestinationCidrBlock_ pTargetVPCSubnetId_ =
-  CreateClientVPNRoute'
-    { _ccvrClientToken = Nothing
-    , _ccvrDescription = Nothing
-    , _ccvrDryRun = Nothing
-    , _ccvrClientVPNEndpointId = pClientVPNEndpointId_
-    , _ccvrDestinationCidrBlock = pDestinationCidrBlock_
-    , _ccvrTargetVPCSubnetId = pTargetVPCSubnetId_
-    }
-
+createClientVPNRoute pClientVPNEndpointId_
+  pDestinationCidrBlock_ pTargetVPCSubnetId_
+  = CreateClientVPNRoute'{_ccvrClientToken = Nothing,
+                          _ccvrDescription = Nothing, _ccvrDryRun = Nothing,
+                          _ccvrClientVPNEndpointId = pClientVPNEndpointId_,
+                          _ccvrDestinationCidrBlock = pDestinationCidrBlock_,
+                          _ccvrTargetVPCSubnetId = pTargetVPCSubnetId_}
 
 -- | Unique, case-sensitive identifier that you provide to ensure the idempotency of the request. For more information, see <https://docs.aws.amazon.com/AWSEC2/latest/APIReference/Run_Instance_Idempotency.html How to Ensure Idempotency> .
 ccvrClientToken :: Lens' CreateClientVPNRoute (Maybe Text)
@@ -150,13 +147,14 @@ instance ToQuery CreateClientVPNRoute where
                "TargetVpcSubnetId" =: _ccvrTargetVPCSubnetId]
 
 -- | /See:/ 'createClientVPNRouteResponse' smart constructor.
-data CreateClientVPNRouteResponse =
-  CreateClientVPNRouteResponse'
-    { _ccvrrsStatus         :: !(Maybe ClientVPNRouteStatus)
-    , _ccvrrsResponseStatus :: !Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data CreateClientVPNRouteResponse = CreateClientVPNRouteResponse'{_ccvrrsStatus
+                                                                  ::
+                                                                  !(Maybe
+                                                                      ClientVPNRouteStatus),
+                                                                  _ccvrrsResponseStatus
+                                                                  :: !Int}
+                                      deriving (Eq, Read, Show, Data, Typeable,
+                                                Generic)
 
 -- | Creates a value of 'CreateClientVPNRouteResponse' with the minimum fields required to make a request.
 --
@@ -168,10 +166,10 @@ data CreateClientVPNRouteResponse =
 createClientVPNRouteResponse
     :: Int -- ^ 'ccvrrsResponseStatus'
     -> CreateClientVPNRouteResponse
-createClientVPNRouteResponse pResponseStatus_ =
-  CreateClientVPNRouteResponse'
-    {_ccvrrsStatus = Nothing, _ccvrrsResponseStatus = pResponseStatus_}
-
+createClientVPNRouteResponse pResponseStatus_
+  = CreateClientVPNRouteResponse'{_ccvrrsStatus =
+                                    Nothing,
+                                  _ccvrrsResponseStatus = pResponseStatus_}
 
 -- | The current state of the route.
 ccvrrsStatus :: Lens' CreateClientVPNRouteResponse (Maybe ClientVPNRouteStatus)

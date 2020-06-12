@@ -109,8 +109,64 @@ library
         , Network.AWS.ServiceCatalog.Waiters
 
     other-modules:
-          Network.AWS.ServiceCatalog.Types.Product
-        , Network.AWS.ServiceCatalog.Types.Sum
+          Network.AWS.ServiceCatalog.Types.AccessLevelFilter
+        , Network.AWS.ServiceCatalog.Types.AccessLevelFilterKey
+        , Network.AWS.ServiceCatalog.Types.ChangeAction
+        , Network.AWS.ServiceCatalog.Types.CloudWatchDashboard
+        , Network.AWS.ServiceCatalog.Types.ConstraintDetail
+        , Network.AWS.ServiceCatalog.Types.ConstraintSummary
+        , Network.AWS.ServiceCatalog.Types.CopyOption
+        , Network.AWS.ServiceCatalog.Types.CopyProductStatus
+        , Network.AWS.ServiceCatalog.Types.EvaluationType
+        , Network.AWS.ServiceCatalog.Types.LaunchPathSummary
+        , Network.AWS.ServiceCatalog.Types.ListRecordHistorySearchFilter
+        , Network.AWS.ServiceCatalog.Types.ListTagOptionsFilters
+        , Network.AWS.ServiceCatalog.Types.ParameterConstraints
+        , Network.AWS.ServiceCatalog.Types.PortfolioDetail
+        , Network.AWS.ServiceCatalog.Types.Principal
+        , Network.AWS.ServiceCatalog.Types.PrincipalType
+        , Network.AWS.ServiceCatalog.Types.ProductSource
+        , Network.AWS.ServiceCatalog.Types.ProductType
+        , Network.AWS.ServiceCatalog.Types.ProductViewAggregationValue
+        , Network.AWS.ServiceCatalog.Types.ProductViewDetail
+        , Network.AWS.ServiceCatalog.Types.ProductViewFilterBy
+        , Network.AWS.ServiceCatalog.Types.ProductViewSortBy
+        , Network.AWS.ServiceCatalog.Types.ProductViewSummary
+        , Network.AWS.ServiceCatalog.Types.ProvisionedProductAttribute
+        , Network.AWS.ServiceCatalog.Types.ProvisionedProductDetail
+        , Network.AWS.ServiceCatalog.Types.ProvisionedProductPlanDetails
+        , Network.AWS.ServiceCatalog.Types.ProvisionedProductPlanStatus
+        , Network.AWS.ServiceCatalog.Types.ProvisionedProductPlanSummary
+        , Network.AWS.ServiceCatalog.Types.ProvisionedProductPlanType
+        , Network.AWS.ServiceCatalog.Types.ProvisionedProductStatus
+        , Network.AWS.ServiceCatalog.Types.ProvisionedProductViewFilterBy
+        , Network.AWS.ServiceCatalog.Types.ProvisioningArtifact
+        , Network.AWS.ServiceCatalog.Types.ProvisioningArtifactDetail
+        , Network.AWS.ServiceCatalog.Types.ProvisioningArtifactParameter
+        , Network.AWS.ServiceCatalog.Types.ProvisioningArtifactProperties
+        , Network.AWS.ServiceCatalog.Types.ProvisioningArtifactPropertyName
+        , Network.AWS.ServiceCatalog.Types.ProvisioningArtifactSummary
+        , Network.AWS.ServiceCatalog.Types.ProvisioningArtifactType
+        , Network.AWS.ServiceCatalog.Types.ProvisioningParameter
+        , Network.AWS.ServiceCatalog.Types.RecordDetail
+        , Network.AWS.ServiceCatalog.Types.RecordError
+        , Network.AWS.ServiceCatalog.Types.RecordOutput
+        , Network.AWS.ServiceCatalog.Types.RecordStatus
+        , Network.AWS.ServiceCatalog.Types.RecordTag
+        , Network.AWS.ServiceCatalog.Types.Replacement
+        , Network.AWS.ServiceCatalog.Types.RequestStatus
+        , Network.AWS.ServiceCatalog.Types.RequiresRecreation
+        , Network.AWS.ServiceCatalog.Types.ResourceAttribute
+        , Network.AWS.ServiceCatalog.Types.ResourceChange
+        , Network.AWS.ServiceCatalog.Types.ResourceChangeDetail
+        , Network.AWS.ServiceCatalog.Types.ResourceDetail
+        , Network.AWS.ServiceCatalog.Types.ResourceTargetDefinition
+        , Network.AWS.ServiceCatalog.Types.SortOrder
+        , Network.AWS.ServiceCatalog.Types.Tag
+        , Network.AWS.ServiceCatalog.Types.TagOptionDetail
+        , Network.AWS.ServiceCatalog.Types.TagOptionSummary
+        , Network.AWS.ServiceCatalog.Types.UpdateProvisioningParameter
+        , Network.AWS.ServiceCatalog.Types.UsageInstruction
 
     build-depends:
           amazonka-core == 1.6.1.*

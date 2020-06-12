@@ -43,7 +43,6 @@ module Network.AWS.Comprehend.ListKeyPhrasesDetectionJobs
     ) where
 
 import Network.AWS.Comprehend.Types
-import Network.AWS.Comprehend.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Pager
 import Network.AWS.Prelude
@@ -51,14 +50,16 @@ import Network.AWS.Request
 import Network.AWS.Response
 
 -- | /See:/ 'listKeyPhrasesDetectionJobs' smart constructor.
-data ListKeyPhrasesDetectionJobs =
-  ListKeyPhrasesDetectionJobs'
-    { _lkpdjNextToken  :: !(Maybe Text)
-    , _lkpdjFilter     :: !(Maybe KeyPhrasesDetectionJobFilter)
-    , _lkpdjMaxResults :: !(Maybe Nat)
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data ListKeyPhrasesDetectionJobs = ListKeyPhrasesDetectionJobs'{_lkpdjNextToken
+                                                                ::
+                                                                !(Maybe Text),
+                                                                _lkpdjFilter ::
+                                                                !(Maybe
+                                                                    KeyPhrasesDetectionJobFilter),
+                                                                _lkpdjMaxResults
+                                                                :: !(Maybe Nat)}
+                                     deriving (Eq, Read, Show, Data, Typeable,
+                                               Generic)
 
 -- | Creates a value of 'ListKeyPhrasesDetectionJobs' with the minimum fields required to make a request.
 --
@@ -71,13 +72,11 @@ data ListKeyPhrasesDetectionJobs =
 -- * 'lkpdjMaxResults' - The maximum number of results to return in each page. The default is 100.
 listKeyPhrasesDetectionJobs
     :: ListKeyPhrasesDetectionJobs
-listKeyPhrasesDetectionJobs =
-  ListKeyPhrasesDetectionJobs'
-    { _lkpdjNextToken = Nothing
-    , _lkpdjFilter = Nothing
-    , _lkpdjMaxResults = Nothing
-    }
-
+listKeyPhrasesDetectionJobs
+  = ListKeyPhrasesDetectionJobs'{_lkpdjNextToken =
+                                   Nothing,
+                                 _lkpdjFilter = Nothing,
+                                 _lkpdjMaxResults = Nothing}
 
 -- | Identifies the next page of results to return.
 lkpdjNextToken :: Lens' ListKeyPhrasesDetectionJobs (Maybe Text)
@@ -142,14 +141,19 @@ instance ToQuery ListKeyPhrasesDetectionJobs where
         toQuery = const mempty
 
 -- | /See:/ 'listKeyPhrasesDetectionJobsResponse' smart constructor.
-data ListKeyPhrasesDetectionJobsResponse =
-  ListKeyPhrasesDetectionJobsResponse'
-    { _lkpdjrsKeyPhrasesDetectionJobPropertiesList :: !(Maybe [KeyPhrasesDetectionJobProperties])
-    , _lkpdjrsNextToken :: !(Maybe Text)
-    , _lkpdjrsResponseStatus :: !Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data ListKeyPhrasesDetectionJobsResponse = ListKeyPhrasesDetectionJobsResponse'{_lkpdjrsKeyPhrasesDetectionJobPropertiesList
+                                                                                ::
+                                                                                !(Maybe
+                                                                                    [KeyPhrasesDetectionJobProperties]),
+                                                                                _lkpdjrsNextToken
+                                                                                ::
+                                                                                !(Maybe
+                                                                                    Text),
+                                                                                _lkpdjrsResponseStatus
+                                                                                ::
+                                                                                !Int}
+                                             deriving (Eq, Read, Show, Data,
+                                                       Typeable, Generic)
 
 -- | Creates a value of 'ListKeyPhrasesDetectionJobsResponse' with the minimum fields required to make a request.
 --
@@ -163,13 +167,12 @@ data ListKeyPhrasesDetectionJobsResponse =
 listKeyPhrasesDetectionJobsResponse
     :: Int -- ^ 'lkpdjrsResponseStatus'
     -> ListKeyPhrasesDetectionJobsResponse
-listKeyPhrasesDetectionJobsResponse pResponseStatus_ =
-  ListKeyPhrasesDetectionJobsResponse'
-    { _lkpdjrsKeyPhrasesDetectionJobPropertiesList = Nothing
-    , _lkpdjrsNextToken = Nothing
-    , _lkpdjrsResponseStatus = pResponseStatus_
-    }
-
+listKeyPhrasesDetectionJobsResponse pResponseStatus_
+  = ListKeyPhrasesDetectionJobsResponse'{_lkpdjrsKeyPhrasesDetectionJobPropertiesList
+                                           = Nothing,
+                                         _lkpdjrsNextToken = Nothing,
+                                         _lkpdjrsResponseStatus =
+                                           pResponseStatus_}
 
 -- | A list containing the properties of each job that is returned.
 lkpdjrsKeyPhrasesDetectionJobPropertiesList :: Lens' ListKeyPhrasesDetectionJobsResponse [KeyPhrasesDetectionJobProperties]

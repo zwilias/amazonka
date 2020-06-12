@@ -104,54 +104,66 @@ module Network.AWS.EC2.RunInstances
     ) where
 
 import Network.AWS.EC2.Types
-import Network.AWS.EC2.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 
 -- | /See:/ 'runInstances' smart constructor.
-data RunInstances =
-  RunInstances'
-    { _risAdditionalInfo :: !(Maybe Text)
-    , _risSecurityGroupIds :: !(Maybe [Text])
-    , _risSecurityGroups :: !(Maybe [Text])
-    , _risClientToken :: !(Maybe Text)
-    , _risElasticInferenceAccelerators :: !(Maybe [ElasticInferenceAccelerator])
-    , _risInstanceMarketOptions :: !(Maybe InstanceMarketOptionsRequest)
-    , _risLicenseSpecifications :: !(Maybe [LicenseConfigurationRequest])
-    , _risDisableAPITermination :: !(Maybe Bool)
-    , _risKeyName :: !(Maybe Text)
-    , _risNetworkInterfaces :: !(Maybe [InstanceNetworkInterfaceSpecification])
-    , _risRAMDiskId :: !(Maybe Text)
-    , _risCPUOptions :: !(Maybe CPUOptionsRequest)
-    , _risSubnetId :: !(Maybe Text)
-    , _risKernelId :: !(Maybe Text)
-    , _risInstanceType :: !(Maybe InstanceType)
-    , _risCapacityReservationSpecification :: !(Maybe CapacityReservationSpecification)
-    , _risEBSOptimized :: !(Maybe Bool)
-    , _risUserData :: !(Maybe Text)
-    , _risMonitoring :: !(Maybe RunInstancesMonitoringEnabled)
-    , _risTagSpecifications :: !(Maybe [TagSpecification])
-    , _risIPv6AddressCount :: !(Maybe Int)
-    , _risHibernationOptions :: !(Maybe HibernationOptionsRequest)
-    , _risIAMInstanceProfile :: !(Maybe IAMInstanceProfileSpecification)
-    , _risElasticGpuSpecification :: !(Maybe [ElasticGpuSpecification])
-    , _risImageId :: !(Maybe Text)
-    , _risPrivateIPAddress :: !(Maybe Text)
-    , _risInstanceInitiatedShutdownBehavior :: !(Maybe ShutdownBehavior)
-    , _risMetadataOptions :: !(Maybe InstanceMetadataOptionsRequest)
-    , _risLaunchTemplate :: !(Maybe LaunchTemplateSpecification)
-    , _risCreditSpecification :: !(Maybe CreditSpecificationRequest)
-    , _risBlockDeviceMappings :: !(Maybe [BlockDeviceMapping])
-    , _risDryRun :: !(Maybe Bool)
-    , _risPlacement :: !(Maybe Placement)
-    , _risIPv6Addresses :: !(Maybe [InstanceIPv6Address])
-    , _risMaxCount :: !Int
-    , _risMinCount :: !Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data RunInstances = RunInstances'{_risAdditionalInfo
+                                  :: !(Maybe Text),
+                                  _risSecurityGroupIds :: !(Maybe [Text]),
+                                  _risSecurityGroups :: !(Maybe [Text]),
+                                  _risClientToken :: !(Maybe Text),
+                                  _risElasticInferenceAccelerators ::
+                                  !(Maybe [ElasticInferenceAccelerator]),
+                                  _risInstanceMarketOptions ::
+                                  !(Maybe InstanceMarketOptionsRequest),
+                                  _risLicenseSpecifications ::
+                                  !(Maybe [LicenseConfigurationRequest]),
+                                  _risDisableAPITermination :: !(Maybe Bool),
+                                  _risKeyName :: !(Maybe Text),
+                                  _risNetworkInterfaces ::
+                                  !(Maybe
+                                      [InstanceNetworkInterfaceSpecification]),
+                                  _risRAMDiskId :: !(Maybe Text),
+                                  _risCPUOptions :: !(Maybe CPUOptionsRequest),
+                                  _risSubnetId :: !(Maybe Text),
+                                  _risKernelId :: !(Maybe Text),
+                                  _risInstanceType :: !(Maybe InstanceType),
+                                  _risCapacityReservationSpecification ::
+                                  !(Maybe CapacityReservationSpecification),
+                                  _risEBSOptimized :: !(Maybe Bool),
+                                  _risUserData :: !(Maybe Text),
+                                  _risMonitoring ::
+                                  !(Maybe RunInstancesMonitoringEnabled),
+                                  _risTagSpecifications ::
+                                  !(Maybe [TagSpecification]),
+                                  _risIPv6AddressCount :: !(Maybe Int),
+                                  _risHibernationOptions ::
+                                  !(Maybe HibernationOptionsRequest),
+                                  _risIAMInstanceProfile ::
+                                  !(Maybe IAMInstanceProfileSpecification),
+                                  _risElasticGpuSpecification ::
+                                  !(Maybe [ElasticGpuSpecification]),
+                                  _risImageId :: !(Maybe Text),
+                                  _risPrivateIPAddress :: !(Maybe Text),
+                                  _risInstanceInitiatedShutdownBehavior ::
+                                  !(Maybe ShutdownBehavior),
+                                  _risMetadataOptions ::
+                                  !(Maybe InstanceMetadataOptionsRequest),
+                                  _risLaunchTemplate ::
+                                  !(Maybe LaunchTemplateSpecification),
+                                  _risCreditSpecification ::
+                                  !(Maybe CreditSpecificationRequest),
+                                  _risBlockDeviceMappings ::
+                                  !(Maybe [BlockDeviceMapping]),
+                                  _risDryRun :: !(Maybe Bool),
+                                  _risPlacement :: !(Maybe Placement),
+                                  _risIPv6Addresses ::
+                                  !(Maybe [InstanceIPv6Address]),
+                                  _risMaxCount :: !Int, _risMinCount :: !Int}
+                      deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'RunInstances' with the minimum fields required to make a request.
 --
@@ -171,7 +183,7 @@ data RunInstances =
 --
 -- * 'risLicenseSpecifications' - The license configurations.
 --
--- * 'risDisableAPITermination' - If you set this parameter to @true@ , you can't terminate the instance using the Amazon EC2 console, CLI, or API; otherwise, you can. To change this attribute after launch, use <https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_ModifyInstanceAttribute.html ModifyInstanceAttribute> . Alternatively, if you set @InstanceInitiatedShutdownBehavior@ to @terminate@ , you can terminate the instance by running the shutdown command from the instance. Default: @false@
+-- * 'risDisableAPITermination' - If you set this parameter to @true@ , you can't terminate the instance using the Amazon EC2 console, CLI, or API; otherwise, you can. To change this attribute after launch, use <https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_ModifyInstanceAttribute.html ModifyInstanceAttribute> . Alternatively, if you set @InstanceInitiatedShutdownBehavior@ to @terminate@ , you can terminate the instance by running the shutdown command from the instance. Default: @false@ 
 --
 -- * 'risKeyName' - The name of the key pair. You can create a key pair using <https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_CreateKeyPair.html CreateKeyPair> or <https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_ImportKeyPair.html ImportKeyPair> . /Important:/ If you do not specify a key pair, you can't connect to the instance unless you choose an AMI that is configured to allow users another way to log in.
 --
@@ -185,11 +197,11 @@ data RunInstances =
 --
 -- * 'risKernelId' - The ID of the kernel. /Important:/ We recommend that you use PV-GRUB instead of kernels and RAM disks. For more information, see <https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/UserProvidedkernels.html PV-GRUB> in the /Amazon Elastic Compute Cloud User Guide/ .
 --
--- * 'risInstanceType' - The instance type. For more information, see <https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/instance-types.html Instance Types> in the /Amazon Elastic Compute Cloud User Guide/ . Default: @m1.small@
+-- * 'risInstanceType' - The instance type. For more information, see <https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/instance-types.html Instance Types> in the /Amazon Elastic Compute Cloud User Guide/ . Default: @m1.small@ 
 --
 -- * 'risCapacityReservationSpecification' - Information about the Capacity Reservation targeting option. If you do not specify this parameter, the instance's Capacity Reservation preference defaults to @open@ , which enables it to run in any open Capacity Reservation that has matching attributes (instance type, platform, Availability Zone).
 --
--- * 'risEBSOptimized' - Indicates whether the instance is optimized for Amazon EBS I/O. This optimization provides dedicated throughput to Amazon EBS and an optimized configuration stack to provide optimal Amazon EBS I/O performance. This optimization isn't available with all instance types. Additional usage charges apply when using an EBS-optimized instance. Default: @false@
+-- * 'risEBSOptimized' - Indicates whether the instance is optimized for Amazon EBS I/O. This optimization provides dedicated throughput to Amazon EBS and an optimized configuration stack to provide optimal Amazon EBS I/O performance. This optimization isn't available with all instance types. Additional usage charges apply when using an EBS-optimized instance. Default: @false@ 
 --
 -- * 'risUserData' - The user data to make available to the instance. For more information, see <https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/user-data.html Running Commands on Your Linux Instance at Launch> (Linux) and <https://docs.aws.amazon.com/AWSEC2/latest/WindowsGuide/ec2-instance-metadata.html#instancedata-add-user-data Adding User Data> (Windows). If you are using a command line tool, base64-encoding is performed for you, and you can load the text from a file. Otherwise, you must provide base64-encoded text. User data is limited to 16 KB.
 --
@@ -209,7 +221,7 @@ data RunInstances =
 --
 -- * 'risPrivateIPAddress' - [EC2-VPC] The primary IPv4 address. You must specify a value from the IPv4 address range of the subnet. Only one private IP address can be designated as primary. You can't specify this option if you've specified the option to designate a private IP address as the primary IP address in a network interface specification. You cannot specify this option if you're launching more than one instance in the request. You cannot specify this option and the network interfaces option in the same request.
 --
--- * 'risInstanceInitiatedShutdownBehavior' - Indicates whether an instance stops or terminates when you initiate shutdown from the instance (using the operating system command for system shutdown). Default: @stop@
+-- * 'risInstanceInitiatedShutdownBehavior' - Indicates whether an instance stops or terminates when you initiate shutdown from the instance (using the operating system command for system shutdown). Default: @stop@ 
 --
 -- * 'risMetadataOptions' - The metadata options for the instance. For more information, see <https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ec2-instance-metadata.html Instance Metadata and User Data> .
 --
@@ -232,46 +244,38 @@ runInstances
     :: Int -- ^ 'risMaxCount'
     -> Int -- ^ 'risMinCount'
     -> RunInstances
-runInstances pMaxCount_ pMinCount_ =
-  RunInstances'
-    { _risAdditionalInfo = Nothing
-    , _risSecurityGroupIds = Nothing
-    , _risSecurityGroups = Nothing
-    , _risClientToken = Nothing
-    , _risElasticInferenceAccelerators = Nothing
-    , _risInstanceMarketOptions = Nothing
-    , _risLicenseSpecifications = Nothing
-    , _risDisableAPITermination = Nothing
-    , _risKeyName = Nothing
-    , _risNetworkInterfaces = Nothing
-    , _risRAMDiskId = Nothing
-    , _risCPUOptions = Nothing
-    , _risSubnetId = Nothing
-    , _risKernelId = Nothing
-    , _risInstanceType = Nothing
-    , _risCapacityReservationSpecification = Nothing
-    , _risEBSOptimized = Nothing
-    , _risUserData = Nothing
-    , _risMonitoring = Nothing
-    , _risTagSpecifications = Nothing
-    , _risIPv6AddressCount = Nothing
-    , _risHibernationOptions = Nothing
-    , _risIAMInstanceProfile = Nothing
-    , _risElasticGpuSpecification = Nothing
-    , _risImageId = Nothing
-    , _risPrivateIPAddress = Nothing
-    , _risInstanceInitiatedShutdownBehavior = Nothing
-    , _risMetadataOptions = Nothing
-    , _risLaunchTemplate = Nothing
-    , _risCreditSpecification = Nothing
-    , _risBlockDeviceMappings = Nothing
-    , _risDryRun = Nothing
-    , _risPlacement = Nothing
-    , _risIPv6Addresses = Nothing
-    , _risMaxCount = pMaxCount_
-    , _risMinCount = pMinCount_
-    }
-
+runInstances pMaxCount_ pMinCount_
+  = RunInstances'{_risAdditionalInfo = Nothing,
+                  _risSecurityGroupIds = Nothing,
+                  _risSecurityGroups = Nothing,
+                  _risClientToken = Nothing,
+                  _risElasticInferenceAccelerators = Nothing,
+                  _risInstanceMarketOptions = Nothing,
+                  _risLicenseSpecifications = Nothing,
+                  _risDisableAPITermination = Nothing,
+                  _risKeyName = Nothing,
+                  _risNetworkInterfaces = Nothing,
+                  _risRAMDiskId = Nothing, _risCPUOptions = Nothing,
+                  _risSubnetId = Nothing, _risKernelId = Nothing,
+                  _risInstanceType = Nothing,
+                  _risCapacityReservationSpecification = Nothing,
+                  _risEBSOptimized = Nothing, _risUserData = Nothing,
+                  _risMonitoring = Nothing,
+                  _risTagSpecifications = Nothing,
+                  _risIPv6AddressCount = Nothing,
+                  _risHibernationOptions = Nothing,
+                  _risIAMInstanceProfile = Nothing,
+                  _risElasticGpuSpecification = Nothing,
+                  _risImageId = Nothing,
+                  _risPrivateIPAddress = Nothing,
+                  _risInstanceInitiatedShutdownBehavior = Nothing,
+                  _risMetadataOptions = Nothing,
+                  _risLaunchTemplate = Nothing,
+                  _risCreditSpecification = Nothing,
+                  _risBlockDeviceMappings = Nothing,
+                  _risDryRun = Nothing, _risPlacement = Nothing,
+                  _risIPv6Addresses = Nothing,
+                  _risMaxCount = pMaxCount_, _risMinCount = pMinCount_}
 
 -- | Reserved.
 risAdditionalInfo :: Lens' RunInstances (Maybe Text)
@@ -301,7 +305,7 @@ risInstanceMarketOptions = lens _risInstanceMarketOptions (\ s a -> s{_risInstan
 risLicenseSpecifications :: Lens' RunInstances [LicenseConfigurationRequest]
 risLicenseSpecifications = lens _risLicenseSpecifications (\ s a -> s{_risLicenseSpecifications = a}) . _Default . _Coerce
 
--- | If you set this parameter to @true@ , you can't terminate the instance using the Amazon EC2 console, CLI, or API; otherwise, you can. To change this attribute after launch, use <https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_ModifyInstanceAttribute.html ModifyInstanceAttribute> . Alternatively, if you set @InstanceInitiatedShutdownBehavior@ to @terminate@ , you can terminate the instance by running the shutdown command from the instance. Default: @false@
+-- | If you set this parameter to @true@ , you can't terminate the instance using the Amazon EC2 console, CLI, or API; otherwise, you can. To change this attribute after launch, use <https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_ModifyInstanceAttribute.html ModifyInstanceAttribute> . Alternatively, if you set @InstanceInitiatedShutdownBehavior@ to @terminate@ , you can terminate the instance by running the shutdown command from the instance. Default: @false@ 
 risDisableAPITermination :: Lens' RunInstances (Maybe Bool)
 risDisableAPITermination = lens _risDisableAPITermination (\ s a -> s{_risDisableAPITermination = a})
 
@@ -329,7 +333,7 @@ risSubnetId = lens _risSubnetId (\ s a -> s{_risSubnetId = a})
 risKernelId :: Lens' RunInstances (Maybe Text)
 risKernelId = lens _risKernelId (\ s a -> s{_risKernelId = a})
 
--- | The instance type. For more information, see <https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/instance-types.html Instance Types> in the /Amazon Elastic Compute Cloud User Guide/ . Default: @m1.small@
+-- | The instance type. For more information, see <https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/instance-types.html Instance Types> in the /Amazon Elastic Compute Cloud User Guide/ . Default: @m1.small@ 
 risInstanceType :: Lens' RunInstances (Maybe InstanceType)
 risInstanceType = lens _risInstanceType (\ s a -> s{_risInstanceType = a})
 
@@ -337,7 +341,7 @@ risInstanceType = lens _risInstanceType (\ s a -> s{_risInstanceType = a})
 risCapacityReservationSpecification :: Lens' RunInstances (Maybe CapacityReservationSpecification)
 risCapacityReservationSpecification = lens _risCapacityReservationSpecification (\ s a -> s{_risCapacityReservationSpecification = a})
 
--- | Indicates whether the instance is optimized for Amazon EBS I/O. This optimization provides dedicated throughput to Amazon EBS and an optimized configuration stack to provide optimal Amazon EBS I/O performance. This optimization isn't available with all instance types. Additional usage charges apply when using an EBS-optimized instance. Default: @false@
+-- | Indicates whether the instance is optimized for Amazon EBS I/O. This optimization provides dedicated throughput to Amazon EBS and an optimized configuration stack to provide optimal Amazon EBS I/O performance. This optimization isn't available with all instance types. Additional usage charges apply when using an EBS-optimized instance. Default: @false@ 
 risEBSOptimized :: Lens' RunInstances (Maybe Bool)
 risEBSOptimized = lens _risEBSOptimized (\ s a -> s{_risEBSOptimized = a})
 
@@ -377,7 +381,7 @@ risImageId = lens _risImageId (\ s a -> s{_risImageId = a})
 risPrivateIPAddress :: Lens' RunInstances (Maybe Text)
 risPrivateIPAddress = lens _risPrivateIPAddress (\ s a -> s{_risPrivateIPAddress = a})
 
--- | Indicates whether an instance stops or terminates when you initiate shutdown from the instance (using the operating system command for system shutdown). Default: @stop@
+-- | Indicates whether an instance stops or terminates when you initiate shutdown from the instance (using the operating system command for system shutdown). Default: @stop@ 
 risInstanceInitiatedShutdownBehavior :: Lens' RunInstances (Maybe ShutdownBehavior)
 risInstanceInitiatedShutdownBehavior = lens _risInstanceInitiatedShutdownBehavior (\ s a -> s{_risInstanceInitiatedShutdownBehavior = a})
 

@@ -54,36 +54,32 @@ module Network.AWS.CloudWatch.PutMetricData
     ) where
 
 import Network.AWS.CloudWatch.Types
-import Network.AWS.CloudWatch.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 
 -- | /See:/ 'putMetricData' smart constructor.
-data PutMetricData =
-  PutMetricData'
-    { _pmdNamespace  :: !Text
-    , _pmdMetricData :: ![MetricDatum]
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data PutMetricData = PutMetricData'{_pmdNamespace ::
+                                    !Text,
+                                    _pmdMetricData :: ![MetricDatum]}
+                       deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'PutMetricData' with the minimum fields required to make a request.
 --
 -- Use one of the following lenses to modify other fields as desired:
 --
--- * 'pmdNamespace' - The namespace for the metric data. To avoid conflicts with AWS service namespaces, you should not specify a namespace that begins with @AWS/@
+-- * 'pmdNamespace' - The namespace for the metric data. To avoid conflicts with AWS service namespaces, you should not specify a namespace that begins with @AWS/@ 
 --
 -- * 'pmdMetricData' - The data for the metric. The array can include no more than 20 metrics per call.
 putMetricData
     :: Text -- ^ 'pmdNamespace'
     -> PutMetricData
-putMetricData pNamespace_ =
-  PutMetricData' {_pmdNamespace = pNamespace_, _pmdMetricData = mempty}
+putMetricData pNamespace_
+  = PutMetricData'{_pmdNamespace = pNamespace_,
+                   _pmdMetricData = mempty}
 
-
--- | The namespace for the metric data. To avoid conflicts with AWS service namespaces, you should not specify a namespace that begins with @AWS/@
+-- | The namespace for the metric data. To avoid conflicts with AWS service namespaces, you should not specify a namespace that begins with @AWS/@ 
 pmdNamespace :: Lens' PutMetricData Text
 pmdNamespace = lens _pmdNamespace (\ s a -> s{_pmdNamespace = a})
 
@@ -115,16 +111,14 @@ instance ToQuery PutMetricData where
                "MetricData" =: toQueryList "member" _pmdMetricData]
 
 -- | /See:/ 'putMetricDataResponse' smart constructor.
-data PutMetricDataResponse =
-  PutMetricDataResponse'
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data PutMetricDataResponse = PutMetricDataResponse'
+                               deriving (Eq, Read, Show, Data, Typeable,
+                                         Generic)
 
 -- | Creates a value of 'PutMetricDataResponse' with the minimum fields required to make a request.
 --
 putMetricDataResponse
     :: PutMetricDataResponse
 putMetricDataResponse = PutMetricDataResponse'
-
 
 instance NFData PutMetricDataResponse where

@@ -11,7 +11,7 @@
 -- Stability   : auto-generated
 -- Portability : non-portable (GHC extensions)
 --
--- __AWS Health__
+-- __AWS Health__ 
 --
 -- The AWS Health API provides programmatic access to the AWS Health information that is presented in the <https://phd.aws.amazon.com/phd/home#/ AWS Personal Health Dashboard> . You can get information about events that affect your AWS resources:
 --
@@ -33,17 +33,17 @@
 --
 --
 --
--- The Health API requires a Business or Enterprise support plan from <http://aws.amazon.com/premiumsupport/ AWS Support> . Calling the Health API from an account that does not have a Business or Enterprise support plan causes a @SubscriptionRequiredException@ .
+-- The Health API requires a Business or Enterprise support plan from <http://aws.amazon.com/premiumsupport/ AWS Support> . Calling the Health API from an account that does not have a Business or Enterprise support plan causes a @SubscriptionRequiredException@ . 
 --
 -- For authentication of requests, AWS Health uses the <http://docs.aws.amazon.com/general/latest/gr/signature-version-4.html Signature Version 4 Signing Process> .
 --
 -- See the <http://docs.aws.amazon.com/health/latest/ug/what-is-aws-health.html AWS Health User Guide> for information about how to use the API.
 --
--- __Service Endpoint__
+-- __Service Endpoint__ 
 --
 -- The HTTP endpoint for the AWS Health API is:
 --
---     * https://health.us-east-1.amazonaws.com
+--     * https://health.us-east-1.amazonaws.com 
 --
 --
 --
@@ -67,13 +67,13 @@ module Network.AWS.AWSHealth
     -- * Operations
     -- $operations
 
-    -- ** DescribeEntityAggregates
+    -- ** DescribeEntityAggregates 
     , module Network.AWS.AWSHealth.DescribeEntityAggregates
 
     -- ** DescribeEvents (Paginated)
     , module Network.AWS.AWSHealth.DescribeEvents
 
-    -- ** DescribeEventDetails
+    -- ** DescribeEventDetails 
     , module Network.AWS.AWSHealth.DescribeEventDetails
 
     -- ** DescribeEventAggregates (Paginated)
@@ -207,8 +207,8 @@ import Network.AWS.AWSHealth.DescribeAffectedEntities
 import Network.AWS.AWSHealth.DescribeEntityAggregates
 import Network.AWS.AWSHealth.DescribeEventAggregates
 import Network.AWS.AWSHealth.DescribeEventDetails
-import Network.AWS.AWSHealth.DescribeEvents
 import Network.AWS.AWSHealth.DescribeEventTypes
+import Network.AWS.AWSHealth.DescribeEvents
 import Network.AWS.AWSHealth.Types
 import Network.AWS.AWSHealth.Waiters
 

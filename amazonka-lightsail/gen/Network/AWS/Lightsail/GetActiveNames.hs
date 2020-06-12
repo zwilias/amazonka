@@ -42,19 +42,15 @@ module Network.AWS.Lightsail.GetActiveNames
 
 import Network.AWS.Lens
 import Network.AWS.Lightsail.Types
-import Network.AWS.Lightsail.Types.Product
 import Network.AWS.Pager
 import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 
 -- | /See:/ 'getActiveNames' smart constructor.
-newtype GetActiveNames =
-  GetActiveNames'
-    { _ganPageToken :: Maybe Text
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+newtype GetActiveNames = GetActiveNames'{_ganPageToken
+                                         :: Maybe Text}
+                           deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'GetActiveNames' with the minimum fields required to make a request.
 --
@@ -63,8 +59,8 @@ newtype GetActiveNames =
 -- * 'ganPageToken' - A token used for paginating results from your get active names request.
 getActiveNames
     :: GetActiveNames
-getActiveNames = GetActiveNames' {_ganPageToken = Nothing}
-
+getActiveNames
+  = GetActiveNames'{_ganPageToken = Nothing}
 
 -- | A token used for paginating results from your get active names request.
 ganPageToken :: Lens' GetActiveNames (Maybe Text)
@@ -113,14 +109,14 @@ instance ToQuery GetActiveNames where
         toQuery = const mempty
 
 -- | /See:/ 'getActiveNamesResponse' smart constructor.
-data GetActiveNamesResponse =
-  GetActiveNamesResponse'
-    { _ganrsNextPageToken  :: !(Maybe Text)
-    , _ganrsActiveNames    :: !(Maybe [Text])
-    , _ganrsResponseStatus :: !Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data GetActiveNamesResponse = GetActiveNamesResponse'{_ganrsNextPageToken
+                                                      :: !(Maybe Text),
+                                                      _ganrsActiveNames ::
+                                                      !(Maybe [Text]),
+                                                      _ganrsResponseStatus ::
+                                                      !Int}
+                                deriving (Eq, Read, Show, Data, Typeable,
+                                          Generic)
 
 -- | Creates a value of 'GetActiveNamesResponse' with the minimum fields required to make a request.
 --
@@ -134,13 +130,11 @@ data GetActiveNamesResponse =
 getActiveNamesResponse
     :: Int -- ^ 'ganrsResponseStatus'
     -> GetActiveNamesResponse
-getActiveNamesResponse pResponseStatus_ =
-  GetActiveNamesResponse'
-    { _ganrsNextPageToken = Nothing
-    , _ganrsActiveNames = Nothing
-    , _ganrsResponseStatus = pResponseStatus_
-    }
-
+getActiveNamesResponse pResponseStatus_
+  = GetActiveNamesResponse'{_ganrsNextPageToken =
+                              Nothing,
+                            _ganrsActiveNames = Nothing,
+                            _ganrsResponseStatus = pResponseStatus_}
 
 -- | A token used for advancing to the next page of results from your get active names request.
 ganrsNextPageToken :: Lens' GetActiveNamesResponse (Maybe Text)

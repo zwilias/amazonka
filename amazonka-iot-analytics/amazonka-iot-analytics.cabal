@@ -79,8 +79,42 @@ library
         , Network.AWS.IoTAnalytics.Waiters
 
     other-modules:
-          Network.AWS.IoTAnalytics.Types.Product
-        , Network.AWS.IoTAnalytics.Types.Sum
+          Network.AWS.IoTAnalytics.Types.AddAttributesActivity
+        , Network.AWS.IoTAnalytics.Types.BatchPutMessageErrorEntry
+        , Network.AWS.IoTAnalytics.Types.Channel
+        , Network.AWS.IoTAnalytics.Types.ChannelActivity
+        , Network.AWS.IoTAnalytics.Types.ChannelStatus
+        , Network.AWS.IoTAnalytics.Types.ChannelSummary
+        , Network.AWS.IoTAnalytics.Types.Dataset
+        , Network.AWS.IoTAnalytics.Types.DatasetAction
+        , Network.AWS.IoTAnalytics.Types.DatasetContentState
+        , Network.AWS.IoTAnalytics.Types.DatasetContentStatus
+        , Network.AWS.IoTAnalytics.Types.DatasetEntry
+        , Network.AWS.IoTAnalytics.Types.DatasetStatus
+        , Network.AWS.IoTAnalytics.Types.DatasetSummary
+        , Network.AWS.IoTAnalytics.Types.DatasetTrigger
+        , Network.AWS.IoTAnalytics.Types.Datastore
+        , Network.AWS.IoTAnalytics.Types.DatastoreActivity
+        , Network.AWS.IoTAnalytics.Types.DatastoreStatus
+        , Network.AWS.IoTAnalytics.Types.DatastoreSummary
+        , Network.AWS.IoTAnalytics.Types.DeviceRegistryEnrichActivity
+        , Network.AWS.IoTAnalytics.Types.DeviceShadowEnrichActivity
+        , Network.AWS.IoTAnalytics.Types.FilterActivity
+        , Network.AWS.IoTAnalytics.Types.LambdaActivity
+        , Network.AWS.IoTAnalytics.Types.LoggingLevel
+        , Network.AWS.IoTAnalytics.Types.LoggingOptions
+        , Network.AWS.IoTAnalytics.Types.MathActivity
+        , Network.AWS.IoTAnalytics.Types.Message
+        , Network.AWS.IoTAnalytics.Types.Pipeline
+        , Network.AWS.IoTAnalytics.Types.PipelineActivity
+        , Network.AWS.IoTAnalytics.Types.PipelineSummary
+        , Network.AWS.IoTAnalytics.Types.RemoveAttributesActivity
+        , Network.AWS.IoTAnalytics.Types.ReprocessingStatus
+        , Network.AWS.IoTAnalytics.Types.ReprocessingSummary
+        , Network.AWS.IoTAnalytics.Types.RetentionPeriod
+        , Network.AWS.IoTAnalytics.Types.Schedule
+        , Network.AWS.IoTAnalytics.Types.SelectAttributesActivity
+        , Network.AWS.IoTAnalytics.Types.SqlQueryDatasetAction
 
     build-depends:
           amazonka-core == 1.6.1.*

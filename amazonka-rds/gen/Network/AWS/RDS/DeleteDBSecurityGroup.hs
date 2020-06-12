@@ -37,21 +37,18 @@ module Network.AWS.RDS.DeleteDBSecurityGroup
 import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.RDS.Types
-import Network.AWS.RDS.Types.Product
 import Network.AWS.Request
 import Network.AWS.Response
 
--- |
+-- | 
 --
 --
 --
 -- /See:/ 'deleteDBSecurityGroup' smart constructor.
-newtype DeleteDBSecurityGroup =
-  DeleteDBSecurityGroup'
-    { _ddsgDBSecurityGroupName :: Text
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+newtype DeleteDBSecurityGroup = DeleteDBSecurityGroup'{_ddsgDBSecurityGroupName
+                                                       :: Text}
+                                  deriving (Eq, Read, Show, Data, Typeable,
+                                            Generic)
 
 -- | Creates a value of 'DeleteDBSecurityGroup' with the minimum fields required to make a request.
 --
@@ -61,9 +58,9 @@ newtype DeleteDBSecurityGroup =
 deleteDBSecurityGroup
     :: Text -- ^ 'ddsgDBSecurityGroupName'
     -> DeleteDBSecurityGroup
-deleteDBSecurityGroup pDBSecurityGroupName_ =
-  DeleteDBSecurityGroup' {_ddsgDBSecurityGroupName = pDBSecurityGroupName_}
-
+deleteDBSecurityGroup pDBSecurityGroupName_
+  = DeleteDBSecurityGroup'{_ddsgDBSecurityGroupName =
+                             pDBSecurityGroupName_}
 
 -- | The name of the DB security group to delete. Constraints:     * Must be 1 to 255 letters, numbers, or hyphens.     * First character must be a letter     * Cannot end with a hyphen or contain two consecutive hyphens     * Must not be "Default"
 ddsgDBSecurityGroupName :: Lens' DeleteDBSecurityGroup Text
@@ -93,16 +90,15 @@ instance ToQuery DeleteDBSecurityGroup where
                "DBSecurityGroupName" =: _ddsgDBSecurityGroupName]
 
 -- | /See:/ 'deleteDBSecurityGroupResponse' smart constructor.
-data DeleteDBSecurityGroupResponse =
-  DeleteDBSecurityGroupResponse'
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data DeleteDBSecurityGroupResponse = DeleteDBSecurityGroupResponse'
+                                       deriving (Eq, Read, Show, Data, Typeable,
+                                                 Generic)
 
 -- | Creates a value of 'DeleteDBSecurityGroupResponse' with the minimum fields required to make a request.
 --
 deleteDBSecurityGroupResponse
     :: DeleteDBSecurityGroupResponse
-deleteDBSecurityGroupResponse = DeleteDBSecurityGroupResponse'
-
+deleteDBSecurityGroupResponse
+  = DeleteDBSecurityGroupResponse'
 
 instance NFData DeleteDBSecurityGroupResponse where

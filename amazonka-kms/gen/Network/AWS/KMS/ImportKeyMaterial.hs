@@ -59,23 +59,19 @@ module Network.AWS.KMS.ImportKeyMaterial
     ) where
 
 import Network.AWS.KMS.Types
-import Network.AWS.KMS.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 
 -- | /See:/ 'importKeyMaterial' smart constructor.
-data ImportKeyMaterial =
-  ImportKeyMaterial'
-    { _ikmExpirationModel      :: !(Maybe ExpirationModelType)
-    , _ikmValidTo              :: !(Maybe POSIX)
-    , _ikmKeyId                :: !Text
-    , _ikmImportToken          :: !Base64
-    , _ikmEncryptedKeyMaterial :: !Base64
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data ImportKeyMaterial = ImportKeyMaterial'{_ikmExpirationModel
+                                            :: !(Maybe ExpirationModelType),
+                                            _ikmValidTo :: !(Maybe POSIX),
+                                            _ikmKeyId :: !Text,
+                                            _ikmImportToken :: !Base64,
+                                            _ikmEncryptedKeyMaterial :: !Base64}
+                           deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'ImportKeyMaterial' with the minimum fields required to make a request.
 --
@@ -95,15 +91,13 @@ importKeyMaterial
     -> ByteString -- ^ 'ikmImportToken'
     -> ByteString -- ^ 'ikmEncryptedKeyMaterial'
     -> ImportKeyMaterial
-importKeyMaterial pKeyId_ pImportToken_ pEncryptedKeyMaterial_ =
-  ImportKeyMaterial'
-    { _ikmExpirationModel = Nothing
-    , _ikmValidTo = Nothing
-    , _ikmKeyId = pKeyId_
-    , _ikmImportToken = _Base64 # pImportToken_
-    , _ikmEncryptedKeyMaterial = _Base64 # pEncryptedKeyMaterial_
-    }
-
+importKeyMaterial pKeyId_ pImportToken_
+  pEncryptedKeyMaterial_
+  = ImportKeyMaterial'{_ikmExpirationModel = Nothing,
+                       _ikmValidTo = Nothing, _ikmKeyId = pKeyId_,
+                       _ikmImportToken = _Base64 # pImportToken_,
+                       _ikmEncryptedKeyMaterial =
+                         _Base64 # pEncryptedKeyMaterial_}
 
 -- | Specifies whether the key material expires. The default is @KEY_MATERIAL_EXPIRES@ , in which case you must include the @ValidTo@ parameter. When this parameter is set to @KEY_MATERIAL_DOES_NOT_EXPIRE@ , you must omit the @ValidTo@ parameter.
 ikmExpirationModel :: Lens' ImportKeyMaterial (Maybe ExpirationModelType)
@@ -165,12 +159,10 @@ instance ToQuery ImportKeyMaterial where
         toQuery = const mempty
 
 -- | /See:/ 'importKeyMaterialResponse' smart constructor.
-newtype ImportKeyMaterialResponse =
-  ImportKeyMaterialResponse'
-    { _ikmrsResponseStatus :: Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+newtype ImportKeyMaterialResponse = ImportKeyMaterialResponse'{_ikmrsResponseStatus
+                                                               :: Int}
+                                      deriving (Eq, Read, Show, Data, Typeable,
+                                                Generic)
 
 -- | Creates a value of 'ImportKeyMaterialResponse' with the minimum fields required to make a request.
 --
@@ -180,9 +172,9 @@ newtype ImportKeyMaterialResponse =
 importKeyMaterialResponse
     :: Int -- ^ 'ikmrsResponseStatus'
     -> ImportKeyMaterialResponse
-importKeyMaterialResponse pResponseStatus_ =
-  ImportKeyMaterialResponse' {_ikmrsResponseStatus = pResponseStatus_}
-
+importKeyMaterialResponse pResponseStatus_
+  = ImportKeyMaterialResponse'{_ikmrsResponseStatus =
+                                 pResponseStatus_}
 
 -- | -- | The response status code.
 ikmrsResponseStatus :: Lens' ImportKeyMaterialResponse Int

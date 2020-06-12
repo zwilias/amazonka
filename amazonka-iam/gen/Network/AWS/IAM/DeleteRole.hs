@@ -37,19 +37,14 @@ module Network.AWS.IAM.DeleteRole
     ) where
 
 import Network.AWS.IAM.Types
-import Network.AWS.IAM.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 
 -- | /See:/ 'deleteRole' smart constructor.
-newtype DeleteRole =
-  DeleteRole'
-    { _drRoleName :: Text
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+newtype DeleteRole = DeleteRole'{_drRoleName :: Text}
+                       deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'DeleteRole' with the minimum fields required to make a request.
 --
@@ -59,8 +54,8 @@ newtype DeleteRole =
 deleteRole
     :: Text -- ^ 'drRoleName'
     -> DeleteRole
-deleteRole pRoleName_ = DeleteRole' {_drRoleName = pRoleName_}
-
+deleteRole pRoleName_
+  = DeleteRole'{_drRoleName = pRoleName_}
 
 -- | The name of the role to delete. This parameter allows (per its <http://wikipedia.org/wiki/regex regex pattern> ) a string of characters consisting of upper and lowercase alphanumeric characters with no spaces. You can also include any of the following characters: _+=,.@-
 drRoleName :: Lens' DeleteRole Text
@@ -89,16 +84,13 @@ instance ToQuery DeleteRole where
                "RoleName" =: _drRoleName]
 
 -- | /See:/ 'deleteRoleResponse' smart constructor.
-data DeleteRoleResponse =
-  DeleteRoleResponse'
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data DeleteRoleResponse = DeleteRoleResponse'
+                            deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'DeleteRoleResponse' with the minimum fields required to make a request.
 --
 deleteRoleResponse
     :: DeleteRoleResponse
 deleteRoleResponse = DeleteRoleResponse'
-
 
 instance NFData DeleteRoleResponse where

@@ -100,8 +100,65 @@ library
         , Network.AWS.Comprehend.Waiters
 
     other-modules:
-          Network.AWS.Comprehend.Types.Product
-        , Network.AWS.Comprehend.Types.Sum
+          Network.AWS.Comprehend.Types.BatchDetectDominantLanguageItemResult
+        , Network.AWS.Comprehend.Types.BatchDetectEntitiesItemResult
+        , Network.AWS.Comprehend.Types.BatchDetectKeyPhrasesItemResult
+        , Network.AWS.Comprehend.Types.BatchDetectSentimentItemResult
+        , Network.AWS.Comprehend.Types.BatchDetectSyntaxItemResult
+        , Network.AWS.Comprehend.Types.BatchItemError
+        , Network.AWS.Comprehend.Types.ClassifierEvaluationMetrics
+        , Network.AWS.Comprehend.Types.ClassifierMetadata
+        , Network.AWS.Comprehend.Types.DocumentClass
+        , Network.AWS.Comprehend.Types.DocumentClassificationJobFilter
+        , Network.AWS.Comprehend.Types.DocumentClassificationJobProperties
+        , Network.AWS.Comprehend.Types.DocumentClassifierFilter
+        , Network.AWS.Comprehend.Types.DocumentClassifierInputDataConfig
+        , Network.AWS.Comprehend.Types.DocumentClassifierMode
+        , Network.AWS.Comprehend.Types.DocumentClassifierOutputDataConfig
+        , Network.AWS.Comprehend.Types.DocumentClassifierProperties
+        , Network.AWS.Comprehend.Types.DocumentLabel
+        , Network.AWS.Comprehend.Types.DominantLanguage
+        , Network.AWS.Comprehend.Types.DominantLanguageDetectionJobFilter
+        , Network.AWS.Comprehend.Types.DominantLanguageDetectionJobProperties
+        , Network.AWS.Comprehend.Types.EndpointFilter
+        , Network.AWS.Comprehend.Types.EndpointProperties
+        , Network.AWS.Comprehend.Types.EndpointStatus
+        , Network.AWS.Comprehend.Types.EntitiesDetectionJobFilter
+        , Network.AWS.Comprehend.Types.EntitiesDetectionJobProperties
+        , Network.AWS.Comprehend.Types.Entity
+        , Network.AWS.Comprehend.Types.EntityRecognizerAnnotations
+        , Network.AWS.Comprehend.Types.EntityRecognizerDocuments
+        , Network.AWS.Comprehend.Types.EntityRecognizerEntityList
+        , Network.AWS.Comprehend.Types.EntityRecognizerEvaluationMetrics
+        , Network.AWS.Comprehend.Types.EntityRecognizerFilter
+        , Network.AWS.Comprehend.Types.EntityRecognizerInputDataConfig
+        , Network.AWS.Comprehend.Types.EntityRecognizerMetadata
+        , Network.AWS.Comprehend.Types.EntityRecognizerMetadataEntityTypesListItem
+        , Network.AWS.Comprehend.Types.EntityRecognizerProperties
+        , Network.AWS.Comprehend.Types.EntityType
+        , Network.AWS.Comprehend.Types.EntityTypesEvaluationMetrics
+        , Network.AWS.Comprehend.Types.EntityTypesListItem
+        , Network.AWS.Comprehend.Types.InputDataConfig
+        , Network.AWS.Comprehend.Types.InputFormat
+        , Network.AWS.Comprehend.Types.JobStatus
+        , Network.AWS.Comprehend.Types.KeyPhrase
+        , Network.AWS.Comprehend.Types.KeyPhrasesDetectionJobFilter
+        , Network.AWS.Comprehend.Types.KeyPhrasesDetectionJobProperties
+        , Network.AWS.Comprehend.Types.LanguageCode
+        , Network.AWS.Comprehend.Types.ModelStatus
+        , Network.AWS.Comprehend.Types.OutputDataConfig
+        , Network.AWS.Comprehend.Types.PartOfSpeechTag
+        , Network.AWS.Comprehend.Types.PartOfSpeechTagType
+        , Network.AWS.Comprehend.Types.SentimentDetectionJobFilter
+        , Network.AWS.Comprehend.Types.SentimentDetectionJobProperties
+        , Network.AWS.Comprehend.Types.SentimentScore
+        , Network.AWS.Comprehend.Types.SentimentType
+        , Network.AWS.Comprehend.Types.SyntaxLanguageCode
+        , Network.AWS.Comprehend.Types.SyntaxToken
+        , Network.AWS.Comprehend.Types.Tag
+        , Network.AWS.Comprehend.Types.TopicsDetectionJobFilter
+        , Network.AWS.Comprehend.Types.TopicsDetectionJobProperties
+        , Network.AWS.Comprehend.Types.VPCConfig
 
     build-depends:
           amazonka-core == 1.6.1.*

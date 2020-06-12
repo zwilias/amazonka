@@ -44,7 +44,6 @@ module Network.AWS.EC2.DescribeFastSnapshotRestores
     ) where
 
 import Network.AWS.EC2.Types
-import Network.AWS.EC2.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Pager
 import Network.AWS.Prelude
@@ -52,15 +51,20 @@ import Network.AWS.Request
 import Network.AWS.Response
 
 -- | /See:/ 'describeFastSnapshotRestores' smart constructor.
-data DescribeFastSnapshotRestores =
-  DescribeFastSnapshotRestores'
-    { _dfsrFilters    :: !(Maybe [Filter])
-    , _dfsrNextToken  :: !(Maybe Text)
-    , _dfsrDryRun     :: !(Maybe Bool)
-    , _dfsrMaxResults :: !(Maybe Nat)
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data DescribeFastSnapshotRestores = DescribeFastSnapshotRestores'{_dfsrFilters
+                                                                  ::
+                                                                  !(Maybe
+                                                                      [Filter]),
+                                                                  _dfsrNextToken
+                                                                  ::
+                                                                  !(Maybe Text),
+                                                                  _dfsrDryRun ::
+                                                                  !(Maybe Bool),
+                                                                  _dfsrMaxResults
+                                                                  ::
+                                                                  !(Maybe Nat)}
+                                      deriving (Eq, Read, Show, Data, Typeable,
+                                                Generic)
 
 -- | Creates a value of 'DescribeFastSnapshotRestores' with the minimum fields required to make a request.
 --
@@ -75,14 +79,12 @@ data DescribeFastSnapshotRestores =
 -- * 'dfsrMaxResults' - The maximum number of results to return with a single call. To retrieve the remaining results, make another call with the returned @nextToken@ value.
 describeFastSnapshotRestores
     :: DescribeFastSnapshotRestores
-describeFastSnapshotRestores =
-  DescribeFastSnapshotRestores'
-    { _dfsrFilters = Nothing
-    , _dfsrNextToken = Nothing
-    , _dfsrDryRun = Nothing
-    , _dfsrMaxResults = Nothing
-    }
-
+describeFastSnapshotRestores
+  = DescribeFastSnapshotRestores'{_dfsrFilters =
+                                    Nothing,
+                                  _dfsrNextToken = Nothing,
+                                  _dfsrDryRun = Nothing,
+                                  _dfsrMaxResults = Nothing}
 
 -- | The filters. The possible values are:     * @availability-zone@ : The Availability Zone of the snapshot.     * @owner-id@ : The ID of the AWS account that owns the snapshot.     * @snapshot-id@ : The ID of the snapshot.     * @state@ : The state of fast snapshot restores for the snapshot (@enabling@ | @optimizing@ | @enabled@ | @disabling@ | @disabled@ ).
 dfsrFilters :: Lens' DescribeFastSnapshotRestores [Filter]
@@ -143,14 +145,19 @@ instance ToQuery DescribeFastSnapshotRestores where
                "MaxResults" =: _dfsrMaxResults]
 
 -- | /See:/ 'describeFastSnapshotRestoresResponse' smart constructor.
-data DescribeFastSnapshotRestoresResponse =
-  DescribeFastSnapshotRestoresResponse'
-    { _dfsrsrsFastSnapshotRestores :: !(Maybe [DescribeFastSnapshotRestoreSuccessItem])
-    , _dfsrsrsNextToken :: !(Maybe Text)
-    , _dfsrsrsResponseStatus :: !Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data DescribeFastSnapshotRestoresResponse = DescribeFastSnapshotRestoresResponse'{_dfsrsrsFastSnapshotRestores
+                                                                                  ::
+                                                                                  !(Maybe
+                                                                                      [DescribeFastSnapshotRestoreSuccessItem]),
+                                                                                  _dfsrsrsNextToken
+                                                                                  ::
+                                                                                  !(Maybe
+                                                                                      Text),
+                                                                                  _dfsrsrsResponseStatus
+                                                                                  ::
+                                                                                  !Int}
+                                              deriving (Eq, Read, Show, Data,
+                                                        Typeable, Generic)
 
 -- | Creates a value of 'DescribeFastSnapshotRestoresResponse' with the minimum fields required to make a request.
 --
@@ -164,13 +171,12 @@ data DescribeFastSnapshotRestoresResponse =
 describeFastSnapshotRestoresResponse
     :: Int -- ^ 'dfsrsrsResponseStatus'
     -> DescribeFastSnapshotRestoresResponse
-describeFastSnapshotRestoresResponse pResponseStatus_ =
-  DescribeFastSnapshotRestoresResponse'
-    { _dfsrsrsFastSnapshotRestores = Nothing
-    , _dfsrsrsNextToken = Nothing
-    , _dfsrsrsResponseStatus = pResponseStatus_
-    }
-
+describeFastSnapshotRestoresResponse pResponseStatus_
+  = DescribeFastSnapshotRestoresResponse'{_dfsrsrsFastSnapshotRestores
+                                            = Nothing,
+                                          _dfsrsrsNextToken = Nothing,
+                                          _dfsrsrsResponseStatus =
+                                            pResponseStatus_}
 
 -- | Information about the state of fast snapshot restores.
 dfsrsrsFastSnapshotRestores :: Lens' DescribeFastSnapshotRestoresResponse [DescribeFastSnapshotRestoreSuccessItem]

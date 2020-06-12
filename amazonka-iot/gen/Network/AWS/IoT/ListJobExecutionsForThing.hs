@@ -42,22 +42,24 @@ module Network.AWS.IoT.ListJobExecutionsForThing
     ) where
 
 import Network.AWS.IoT.Types
-import Network.AWS.IoT.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 
 -- | /See:/ 'listJobExecutionsForThing' smart constructor.
-data ListJobExecutionsForThing =
-  ListJobExecutionsForThing'
-    { _ljeftStatus     :: !(Maybe JobExecutionStatus)
-    , _ljeftNextToken  :: !(Maybe Text)
-    , _ljeftMaxResults :: !(Maybe Nat)
-    , _ljeftThingName  :: !Text
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data ListJobExecutionsForThing = ListJobExecutionsForThing'{_ljeftStatus
+                                                            ::
+                                                            !(Maybe
+                                                                JobExecutionStatus),
+                                                            _ljeftNextToken ::
+                                                            !(Maybe Text),
+                                                            _ljeftMaxResults ::
+                                                            !(Maybe Nat),
+                                                            _ljeftThingName ::
+                                                            !Text}
+                                   deriving (Eq, Read, Show, Data, Typeable,
+                                             Generic)
 
 -- | Creates a value of 'ListJobExecutionsForThing' with the minimum fields required to make a request.
 --
@@ -73,14 +75,11 @@ data ListJobExecutionsForThing =
 listJobExecutionsForThing
     :: Text -- ^ 'ljeftThingName'
     -> ListJobExecutionsForThing
-listJobExecutionsForThing pThingName_ =
-  ListJobExecutionsForThing'
-    { _ljeftStatus = Nothing
-    , _ljeftNextToken = Nothing
-    , _ljeftMaxResults = Nothing
-    , _ljeftThingName = pThingName_
-    }
-
+listJobExecutionsForThing pThingName_
+  = ListJobExecutionsForThing'{_ljeftStatus = Nothing,
+                               _ljeftNextToken = Nothing,
+                               _ljeftMaxResults = Nothing,
+                               _ljeftThingName = pThingName_}
 
 -- | An optional filter that lets you search for jobs that have the specified status.
 ljeftStatus :: Lens' ListJobExecutionsForThing (Maybe JobExecutionStatus)
@@ -129,14 +128,19 @@ instance ToQuery ListJobExecutionsForThing where
                "maxResults" =: _ljeftMaxResults]
 
 -- | /See:/ 'listJobExecutionsForThingResponse' smart constructor.
-data ListJobExecutionsForThingResponse =
-  ListJobExecutionsForThingResponse'
-    { _ljeftrsExecutionSummaries :: !(Maybe [JobExecutionSummaryForThing])
-    , _ljeftrsNextToken          :: !(Maybe Text)
-    , _ljeftrsResponseStatus     :: !Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data ListJobExecutionsForThingResponse = ListJobExecutionsForThingResponse'{_ljeftrsExecutionSummaries
+                                                                            ::
+                                                                            !(Maybe
+                                                                                [JobExecutionSummaryForThing]),
+                                                                            _ljeftrsNextToken
+                                                                            ::
+                                                                            !(Maybe
+                                                                                Text),
+                                                                            _ljeftrsResponseStatus
+                                                                            ::
+                                                                            !Int}
+                                           deriving (Eq, Read, Show, Data,
+                                                     Typeable, Generic)
 
 -- | Creates a value of 'ListJobExecutionsForThingResponse' with the minimum fields required to make a request.
 --
@@ -150,13 +154,12 @@ data ListJobExecutionsForThingResponse =
 listJobExecutionsForThingResponse
     :: Int -- ^ 'ljeftrsResponseStatus'
     -> ListJobExecutionsForThingResponse
-listJobExecutionsForThingResponse pResponseStatus_ =
-  ListJobExecutionsForThingResponse'
-    { _ljeftrsExecutionSummaries = Nothing
-    , _ljeftrsNextToken = Nothing
-    , _ljeftrsResponseStatus = pResponseStatus_
-    }
-
+listJobExecutionsForThingResponse pResponseStatus_
+  = ListJobExecutionsForThingResponse'{_ljeftrsExecutionSummaries
+                                         = Nothing,
+                                       _ljeftrsNextToken = Nothing,
+                                       _ljeftrsResponseStatus =
+                                         pResponseStatus_}
 
 -- | A list of job execution summaries.
 ljeftrsExecutionSummaries :: Lens' ListJobExecutionsForThingResponse [JobExecutionSummaryForThing]

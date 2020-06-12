@@ -39,19 +39,16 @@ module Network.AWS.AutoScaling.CreateOrUpdateTags
     ) where
 
 import Network.AWS.AutoScaling.Types
-import Network.AWS.AutoScaling.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 
 -- | /See:/ 'createOrUpdateTags' smart constructor.
-newtype CreateOrUpdateTags =
-  CreateOrUpdateTags'
-    { _coutTags :: [Tag]
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+newtype CreateOrUpdateTags = CreateOrUpdateTags'{_coutTags
+                                                 :: [Tag]}
+                               deriving (Eq, Read, Show, Data, Typeable,
+                                         Generic)
 
 -- | Creates a value of 'CreateOrUpdateTags' with the minimum fields required to make a request.
 --
@@ -60,8 +57,8 @@ newtype CreateOrUpdateTags =
 -- * 'coutTags' - One or more tags.
 createOrUpdateTags
     :: CreateOrUpdateTags
-createOrUpdateTags = CreateOrUpdateTags' {_coutTags = mempty}
-
+createOrUpdateTags
+  = CreateOrUpdateTags'{_coutTags = mempty}
 
 -- | One or more tags.
 coutTags :: Lens' CreateOrUpdateTags [Tag]
@@ -91,16 +88,15 @@ instance ToQuery CreateOrUpdateTags where
                "Tags" =: toQueryList "member" _coutTags]
 
 -- | /See:/ 'createOrUpdateTagsResponse' smart constructor.
-data CreateOrUpdateTagsResponse =
-  CreateOrUpdateTagsResponse'
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data CreateOrUpdateTagsResponse = CreateOrUpdateTagsResponse'
+                                    deriving (Eq, Read, Show, Data, Typeable,
+                                              Generic)
 
 -- | Creates a value of 'CreateOrUpdateTagsResponse' with the minimum fields required to make a request.
 --
 createOrUpdateTagsResponse
     :: CreateOrUpdateTagsResponse
-createOrUpdateTagsResponse = CreateOrUpdateTagsResponse'
-
+createOrUpdateTagsResponse
+  = CreateOrUpdateTagsResponse'
 
 instance NFData CreateOrUpdateTagsResponse where

@@ -44,16 +44,12 @@ import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 import Network.AWS.ServerlessApplicationRepository.Types
-import Network.AWS.ServerlessApplicationRepository.Types.Product
 
 -- | /See:/ 'listApplications' smart constructor.
-data ListApplications =
-  ListApplications'
-    { _laNextToken :: !(Maybe Text)
-    , _laMaxItems  :: !(Maybe Nat)
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data ListApplications = ListApplications'{_laNextToken
+                                          :: !(Maybe Text),
+                                          _laMaxItems :: !(Maybe Nat)}
+                          deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'ListApplications' with the minimum fields required to make a request.
 --
@@ -64,9 +60,9 @@ data ListApplications =
 -- * 'laMaxItems' - The total number of items to return.
 listApplications
     :: ListApplications
-listApplications =
-  ListApplications' {_laNextToken = Nothing, _laMaxItems = Nothing}
-
+listApplications
+  = ListApplications'{_laNextToken = Nothing,
+                      _laMaxItems = Nothing}
 
 -- | A token to specify where to start paginating.
 laNextToken :: Lens' ListApplications (Maybe Text)
@@ -108,14 +104,15 @@ instance ToQuery ListApplications where
                "maxItems" =: _laMaxItems]
 
 -- | /See:/ 'listApplicationsResponse' smart constructor.
-data ListApplicationsResponse =
-  ListApplicationsResponse'
-    { _larsNextToken      :: !(Maybe Text)
-    , _larsApplications   :: !(Maybe [ApplicationSummary])
-    , _larsResponseStatus :: !Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data ListApplicationsResponse = ListApplicationsResponse'{_larsNextToken
+                                                          :: !(Maybe Text),
+                                                          _larsApplications ::
+                                                          !(Maybe
+                                                              [ApplicationSummary]),
+                                                          _larsResponseStatus ::
+                                                          !Int}
+                                  deriving (Eq, Read, Show, Data, Typeable,
+                                            Generic)
 
 -- | Creates a value of 'ListApplicationsResponse' with the minimum fields required to make a request.
 --
@@ -129,13 +126,10 @@ data ListApplicationsResponse =
 listApplicationsResponse
     :: Int -- ^ 'larsResponseStatus'
     -> ListApplicationsResponse
-listApplicationsResponse pResponseStatus_ =
-  ListApplicationsResponse'
-    { _larsNextToken = Nothing
-    , _larsApplications = Nothing
-    , _larsResponseStatus = pResponseStatus_
-    }
-
+listApplicationsResponse pResponseStatus_
+  = ListApplicationsResponse'{_larsNextToken = Nothing,
+                              _larsApplications = Nothing,
+                              _larsResponseStatus = pResponseStatus_}
 
 -- | The token to request the next page of results.
 larsNextToken :: Lens' ListApplicationsResponse (Maybe Text)

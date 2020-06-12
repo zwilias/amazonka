@@ -44,16 +44,13 @@ import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 import Network.AWS.ServiceCatalog.Types
-import Network.AWS.ServiceCatalog.Types.Product
 
 -- | /See:/ 'describeProvisionedProduct' smart constructor.
-data DescribeProvisionedProduct =
-  DescribeProvisionedProduct'
-    { _deseAcceptLanguage :: !(Maybe Text)
-    , _deseId             :: !Text
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data DescribeProvisionedProduct = DescribeProvisionedProduct'{_deseAcceptLanguage
+                                                              :: !(Maybe Text),
+                                                              _deseId :: !Text}
+                                    deriving (Eq, Read, Show, Data, Typeable,
+                                              Generic)
 
 -- | Creates a value of 'DescribeProvisionedProduct' with the minimum fields required to make a request.
 --
@@ -65,9 +62,10 @@ data DescribeProvisionedProduct =
 describeProvisionedProduct
     :: Text -- ^ 'deseId'
     -> DescribeProvisionedProduct
-describeProvisionedProduct pId_ =
-  DescribeProvisionedProduct' {_deseAcceptLanguage = Nothing, _deseId = pId_}
-
+describeProvisionedProduct pId_
+  = DescribeProvisionedProduct'{_deseAcceptLanguage =
+                                  Nothing,
+                                _deseId = pId_}
 
 -- | The language code.     * @en@ - English (default)     * @jp@ - Japanese     * @zh@ - Chinese
 deseAcceptLanguage :: Lens' DescribeProvisionedProduct (Maybe Text)
@@ -117,14 +115,19 @@ instance ToQuery DescribeProvisionedProduct where
         toQuery = const mempty
 
 -- | /See:/ 'describeProvisionedProductResponse' smart constructor.
-data DescribeProvisionedProductResponse =
-  DescribeProvisionedProductResponse'
-    { _drsProvisionedProductDetail :: !(Maybe ProvisionedProductDetail)
-    , _drsCloudWatchDashboards     :: !(Maybe [CloudWatchDashboard])
-    , _drsResponseStatus           :: !Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data DescribeProvisionedProductResponse = DescribeProvisionedProductResponse'{_drsProvisionedProductDetail
+                                                                              ::
+                                                                              !(Maybe
+                                                                                  ProvisionedProductDetail),
+                                                                              _drsCloudWatchDashboards
+                                                                              ::
+                                                                              !(Maybe
+                                                                                  [CloudWatchDashboard]),
+                                                                              _drsResponseStatus
+                                                                              ::
+                                                                              !Int}
+                                            deriving (Eq, Read, Show, Data,
+                                                      Typeable, Generic)
 
 -- | Creates a value of 'DescribeProvisionedProductResponse' with the minimum fields required to make a request.
 --
@@ -138,13 +141,11 @@ data DescribeProvisionedProductResponse =
 describeProvisionedProductResponse
     :: Int -- ^ 'drsResponseStatus'
     -> DescribeProvisionedProductResponse
-describeProvisionedProductResponse pResponseStatus_ =
-  DescribeProvisionedProductResponse'
-    { _drsProvisionedProductDetail = Nothing
-    , _drsCloudWatchDashboards = Nothing
-    , _drsResponseStatus = pResponseStatus_
-    }
-
+describeProvisionedProductResponse pResponseStatus_
+  = DescribeProvisionedProductResponse'{_drsProvisionedProductDetail
+                                          = Nothing,
+                                        _drsCloudWatchDashboards = Nothing,
+                                        _drsResponseStatus = pResponseStatus_}
 
 -- | Information about the provisioned product.
 drsProvisionedProductDetail :: Lens' DescribeProvisionedProductResponse (Maybe ProvisionedProductDetail)

@@ -38,18 +38,15 @@ module Network.AWS.Organizations.DeleteOrganizationalUnit
 
 import Network.AWS.Lens
 import Network.AWS.Organizations.Types
-import Network.AWS.Organizations.Types.Product
 import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 
 -- | /See:/ 'deleteOrganizationalUnit' smart constructor.
-newtype DeleteOrganizationalUnit =
-  DeleteOrganizationalUnit'
-    { _dOrganizationalUnitId :: Text
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+newtype DeleteOrganizationalUnit = DeleteOrganizationalUnit'{_dOrganizationalUnitId
+                                                             :: Text}
+                                     deriving (Eq, Read, Show, Data, Typeable,
+                                               Generic)
 
 -- | Creates a value of 'DeleteOrganizationalUnit' with the minimum fields required to make a request.
 --
@@ -59,9 +56,9 @@ newtype DeleteOrganizationalUnit =
 deleteOrganizationalUnit
     :: Text -- ^ 'dOrganizationalUnitId'
     -> DeleteOrganizationalUnit
-deleteOrganizationalUnit pOrganizationalUnitId_ =
-  DeleteOrganizationalUnit' {_dOrganizationalUnitId = pOrganizationalUnitId_}
-
+deleteOrganizationalUnit pOrganizationalUnitId_
+  = DeleteOrganizationalUnit'{_dOrganizationalUnitId =
+                                pOrganizationalUnitId_}
 
 -- | The unique identifier (ID) of the organizational unit that you want to delete. You can get the ID from the 'ListOrganizationalUnitsForParent' operation. The <http://wikipedia.org/wiki/regex regex pattern> for an organizational unit ID string requires "ou-" followed by from 4 to 32 lower-case letters or digits (the ID of the root that contains the OU) followed by a second "-" dash and from 8 to 32 additional lower-case letters or digits.
 dOrganizationalUnitId :: Lens' DeleteOrganizationalUnit Text
@@ -102,17 +99,16 @@ instance ToQuery DeleteOrganizationalUnit where
         toQuery = const mempty
 
 -- | /See:/ 'deleteOrganizationalUnitResponse' smart constructor.
-data DeleteOrganizationalUnitResponse =
-  DeleteOrganizationalUnitResponse'
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data DeleteOrganizationalUnitResponse = DeleteOrganizationalUnitResponse'
+                                          deriving (Eq, Read, Show, Data,
+                                                    Typeable, Generic)
 
 -- | Creates a value of 'DeleteOrganizationalUnitResponse' with the minimum fields required to make a request.
 --
 deleteOrganizationalUnitResponse
     :: DeleteOrganizationalUnitResponse
-deleteOrganizationalUnitResponse = DeleteOrganizationalUnitResponse'
-
+deleteOrganizationalUnitResponse
+  = DeleteOrganizationalUnitResponse'
 
 instance NFData DeleteOrganizationalUnitResponse
          where

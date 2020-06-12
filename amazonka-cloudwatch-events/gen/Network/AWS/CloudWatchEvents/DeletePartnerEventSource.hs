@@ -38,20 +38,17 @@ module Network.AWS.CloudWatchEvents.DeletePartnerEventSource
     ) where
 
 import Network.AWS.CloudWatchEvents.Types
-import Network.AWS.CloudWatchEvents.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 
 -- | /See:/ 'deletePartnerEventSource' smart constructor.
-data DeletePartnerEventSource =
-  DeletePartnerEventSource'
-    { _dpesName    :: !Text
-    , _dpesAccount :: !Text
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data DeletePartnerEventSource = DeletePartnerEventSource'{_dpesName
+                                                          :: !Text,
+                                                          _dpesAccount :: !Text}
+                                  deriving (Eq, Read, Show, Data, Typeable,
+                                            Generic)
 
 -- | Creates a value of 'DeletePartnerEventSource' with the minimum fields required to make a request.
 --
@@ -64,9 +61,9 @@ deletePartnerEventSource
     :: Text -- ^ 'dpesName'
     -> Text -- ^ 'dpesAccount'
     -> DeletePartnerEventSource
-deletePartnerEventSource pName_ pAccount_ =
-  DeletePartnerEventSource' {_dpesName = pName_, _dpesAccount = pAccount_}
-
+deletePartnerEventSource pName_ pAccount_
+  = DeletePartnerEventSource'{_dpesName = pName_,
+                              _dpesAccount = pAccount_}
 
 -- | The name of the event source to delete.
 dpesName :: Lens' DeletePartnerEventSource Text
@@ -110,17 +107,16 @@ instance ToQuery DeletePartnerEventSource where
         toQuery = const mempty
 
 -- | /See:/ 'deletePartnerEventSourceResponse' smart constructor.
-data DeletePartnerEventSourceResponse =
-  DeletePartnerEventSourceResponse'
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data DeletePartnerEventSourceResponse = DeletePartnerEventSourceResponse'
+                                          deriving (Eq, Read, Show, Data,
+                                                    Typeable, Generic)
 
 -- | Creates a value of 'DeletePartnerEventSourceResponse' with the minimum fields required to make a request.
 --
 deletePartnerEventSourceResponse
     :: DeletePartnerEventSourceResponse
-deletePartnerEventSourceResponse = DeletePartnerEventSourceResponse'
-
+deletePartnerEventSourceResponse
+  = DeletePartnerEventSourceResponse'
 
 instance NFData DeletePartnerEventSourceResponse
          where

@@ -46,22 +46,24 @@ module Network.AWS.EC2.CreateTrafficMirrorFilter
     ) where
 
 import Network.AWS.EC2.Types
-import Network.AWS.EC2.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 
 -- | /See:/ 'createTrafficMirrorFilter' smart constructor.
-data CreateTrafficMirrorFilter =
-  CreateTrafficMirrorFilter'
-    { _ctmfClientToken       :: !(Maybe Text)
-    , _ctmfTagSpecifications :: !(Maybe [TagSpecification])
-    , _ctmfDescription       :: !(Maybe Text)
-    , _ctmfDryRun            :: !(Maybe Bool)
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data CreateTrafficMirrorFilter = CreateTrafficMirrorFilter'{_ctmfClientToken
+                                                            :: !(Maybe Text),
+                                                            _ctmfTagSpecifications
+                                                            ::
+                                                            !(Maybe
+                                                                [TagSpecification]),
+                                                            _ctmfDescription ::
+                                                            !(Maybe Text),
+                                                            _ctmfDryRun ::
+                                                            !(Maybe Bool)}
+                                   deriving (Eq, Read, Show, Data, Typeable,
+                                             Generic)
 
 -- | Creates a value of 'CreateTrafficMirrorFilter' with the minimum fields required to make a request.
 --
@@ -76,14 +78,12 @@ data CreateTrafficMirrorFilter =
 -- * 'ctmfDryRun' - Checks whether you have the required permissions for the action, without actually making the request, and provides an error response. If you have the required permissions, the error response is @DryRunOperation@ . Otherwise, it is @UnauthorizedOperation@ .
 createTrafficMirrorFilter
     :: CreateTrafficMirrorFilter
-createTrafficMirrorFilter =
-  CreateTrafficMirrorFilter'
-    { _ctmfClientToken = Nothing
-    , _ctmfTagSpecifications = Nothing
-    , _ctmfDescription = Nothing
-    , _ctmfDryRun = Nothing
-    }
-
+createTrafficMirrorFilter
+  = CreateTrafficMirrorFilter'{_ctmfClientToken =
+                                 Nothing,
+                               _ctmfTagSpecifications = Nothing,
+                               _ctmfDescription = Nothing,
+                               _ctmfDryRun = Nothing}
 
 -- | Unique, case-sensitive identifier that you provide to ensure the idempotency of the request. For more information, see <https://docs.aws.amazon.com/AWSEC2/latest/APIReference/Run_Instance_Idempotency.html How to Ensure Idempotency> .
 ctmfClientToken :: Lens' CreateTrafficMirrorFilter (Maybe Text)
@@ -137,14 +137,19 @@ instance ToQuery CreateTrafficMirrorFilter where
                "DryRun" =: _ctmfDryRun]
 
 -- | /See:/ 'createTrafficMirrorFilterResponse' smart constructor.
-data CreateTrafficMirrorFilterResponse =
-  CreateTrafficMirrorFilterResponse'
-    { _ctmfrsClientToken         :: !(Maybe Text)
-    , _ctmfrsTrafficMirrorFilter :: !(Maybe TrafficMirrorFilter)
-    , _ctmfrsResponseStatus      :: !Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data CreateTrafficMirrorFilterResponse = CreateTrafficMirrorFilterResponse'{_ctmfrsClientToken
+                                                                            ::
+                                                                            !(Maybe
+                                                                                Text),
+                                                                            _ctmfrsTrafficMirrorFilter
+                                                                            ::
+                                                                            !(Maybe
+                                                                                TrafficMirrorFilter),
+                                                                            _ctmfrsResponseStatus
+                                                                            ::
+                                                                            !Int}
+                                           deriving (Eq, Read, Show, Data,
+                                                     Typeable, Generic)
 
 -- | Creates a value of 'CreateTrafficMirrorFilterResponse' with the minimum fields required to make a request.
 --
@@ -158,13 +163,11 @@ data CreateTrafficMirrorFilterResponse =
 createTrafficMirrorFilterResponse
     :: Int -- ^ 'ctmfrsResponseStatus'
     -> CreateTrafficMirrorFilterResponse
-createTrafficMirrorFilterResponse pResponseStatus_ =
-  CreateTrafficMirrorFilterResponse'
-    { _ctmfrsClientToken = Nothing
-    , _ctmfrsTrafficMirrorFilter = Nothing
-    , _ctmfrsResponseStatus = pResponseStatus_
-    }
-
+createTrafficMirrorFilterResponse pResponseStatus_
+  = CreateTrafficMirrorFilterResponse'{_ctmfrsClientToken
+                                         = Nothing,
+                                       _ctmfrsTrafficMirrorFilter = Nothing,
+                                       _ctmfrsResponseStatus = pResponseStatus_}
 
 -- | Unique, case-sensitive identifier that you provide to ensure the idempotency of the request. For more information, see <https://docs.aws.amazon.com/AWSEC2/latest/APIReference/Run_Instance_Idempotency.html How to Ensure Idempotency> .
 ctmfrsClientToken :: Lens' CreateTrafficMirrorFilterResponse (Maybe Text)

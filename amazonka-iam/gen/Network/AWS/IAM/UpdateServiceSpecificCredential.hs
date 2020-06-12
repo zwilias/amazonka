@@ -37,21 +37,24 @@ module Network.AWS.IAM.UpdateServiceSpecificCredential
     ) where
 
 import Network.AWS.IAM.Types
-import Network.AWS.IAM.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 
 -- | /See:/ 'updateServiceSpecificCredential' smart constructor.
-data UpdateServiceSpecificCredential =
-  UpdateServiceSpecificCredential'
-    { _usscUserName                    :: !(Maybe Text)
-    , _usscServiceSpecificCredentialId :: !Text
-    , _usscStatus                      :: !StatusType
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data UpdateServiceSpecificCredential = UpdateServiceSpecificCredential'{_usscUserName
+                                                                        ::
+                                                                        !(Maybe
+                                                                            Text),
+                                                                        _usscServiceSpecificCredentialId
+                                                                        ::
+                                                                        !Text,
+                                                                        _usscStatus
+                                                                        ::
+                                                                        !StatusType}
+                                         deriving (Eq, Read, Show, Data,
+                                                   Typeable, Generic)
 
 -- | Creates a value of 'UpdateServiceSpecificCredential' with the minimum fields required to make a request.
 --
@@ -66,13 +69,13 @@ updateServiceSpecificCredential
     :: Text -- ^ 'usscServiceSpecificCredentialId'
     -> StatusType -- ^ 'usscStatus'
     -> UpdateServiceSpecificCredential
-updateServiceSpecificCredential pServiceSpecificCredentialId_ pStatus_ =
-  UpdateServiceSpecificCredential'
-    { _usscUserName = Nothing
-    , _usscServiceSpecificCredentialId = pServiceSpecificCredentialId_
-    , _usscStatus = pStatus_
-    }
-
+updateServiceSpecificCredential
+  pServiceSpecificCredentialId_ pStatus_
+  = UpdateServiceSpecificCredential'{_usscUserName =
+                                       Nothing,
+                                     _usscServiceSpecificCredentialId =
+                                       pServiceSpecificCredentialId_,
+                                     _usscStatus = pStatus_}
 
 -- | The name of the IAM user associated with the service-specific credential. If you do not specify this value, then the operation assumes the user whose credentials are used to call the operation. This parameter allows (per its <http://wikipedia.org/wiki/regex regex pattern> ) a string of characters consisting of upper and lowercase alphanumeric characters with no spaces. You can also include any of the following characters: _+=,.@-
 usscUserName :: Lens' UpdateServiceSpecificCredential (Maybe Text)
@@ -120,18 +123,16 @@ instance ToQuery UpdateServiceSpecificCredential
                "Status" =: _usscStatus]
 
 -- | /See:/ 'updateServiceSpecificCredentialResponse' smart constructor.
-data UpdateServiceSpecificCredentialResponse =
-  UpdateServiceSpecificCredentialResponse'
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data UpdateServiceSpecificCredentialResponse = UpdateServiceSpecificCredentialResponse'
+                                                 deriving (Eq, Read, Show, Data,
+                                                           Typeable, Generic)
 
 -- | Creates a value of 'UpdateServiceSpecificCredentialResponse' with the minimum fields required to make a request.
 --
 updateServiceSpecificCredentialResponse
     :: UpdateServiceSpecificCredentialResponse
-updateServiceSpecificCredentialResponse =
-  UpdateServiceSpecificCredentialResponse'
-
+updateServiceSpecificCredentialResponse
+  = UpdateServiceSpecificCredentialResponse'
 
 instance NFData
            UpdateServiceSpecificCredentialResponse

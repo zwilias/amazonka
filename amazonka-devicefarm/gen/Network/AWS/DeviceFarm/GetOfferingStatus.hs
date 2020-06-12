@@ -42,7 +42,6 @@ module Network.AWS.DeviceFarm.GetOfferingStatus
     ) where
 
 import Network.AWS.DeviceFarm.Types
-import Network.AWS.DeviceFarm.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Pager
 import Network.AWS.Prelude
@@ -54,12 +53,9 @@ import Network.AWS.Response
 --
 --
 -- /See:/ 'getOfferingStatus' smart constructor.
-newtype GetOfferingStatus =
-  GetOfferingStatus'
-    { _gosNextToken :: Maybe Text
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+newtype GetOfferingStatus = GetOfferingStatus'{_gosNextToken
+                                               :: Maybe Text}
+                              deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'GetOfferingStatus' with the minimum fields required to make a request.
 --
@@ -68,8 +64,8 @@ newtype GetOfferingStatus =
 -- * 'gosNextToken' - An identifier that was returned from the previous call to this operation, which can be used to return the next set of items in the list.
 getOfferingStatus
     :: GetOfferingStatus
-getOfferingStatus = GetOfferingStatus' {_gosNextToken = Nothing}
-
+getOfferingStatus
+  = GetOfferingStatus'{_gosNextToken = Nothing}
 
 -- | An identifier that was returned from the previous call to this operation, which can be used to return the next set of items in the list.
 gosNextToken :: Lens' GetOfferingStatus (Maybe Text)
@@ -125,15 +121,21 @@ instance ToQuery GetOfferingStatus where
 --
 --
 -- /See:/ 'getOfferingStatusResponse' smart constructor.
-data GetOfferingStatusResponse =
-  GetOfferingStatusResponse'
-    { _gosrsNextPeriod     :: !(Maybe (Map Text OfferingStatus))
-    , _gosrsCurrent        :: !(Maybe (Map Text OfferingStatus))
-    , _gosrsNextToken      :: !(Maybe Text)
-    , _gosrsResponseStatus :: !Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data GetOfferingStatusResponse = GetOfferingStatusResponse'{_gosrsNextPeriod
+                                                            ::
+                                                            !(Maybe
+                                                                (Map Text
+                                                                   OfferingStatus)),
+                                                            _gosrsCurrent ::
+                                                            !(Maybe
+                                                                (Map Text
+                                                                   OfferingStatus)),
+                                                            _gosrsNextToken ::
+                                                            !(Maybe Text),
+                                                            _gosrsResponseStatus
+                                                            :: !Int}
+                                   deriving (Eq, Read, Show, Data, Typeable,
+                                             Generic)
 
 -- | Creates a value of 'GetOfferingStatusResponse' with the minimum fields required to make a request.
 --
@@ -149,14 +151,12 @@ data GetOfferingStatusResponse =
 getOfferingStatusResponse
     :: Int -- ^ 'gosrsResponseStatus'
     -> GetOfferingStatusResponse
-getOfferingStatusResponse pResponseStatus_ =
-  GetOfferingStatusResponse'
-    { _gosrsNextPeriod = Nothing
-    , _gosrsCurrent = Nothing
-    , _gosrsNextToken = Nothing
-    , _gosrsResponseStatus = pResponseStatus_
-    }
-
+getOfferingStatusResponse pResponseStatus_
+  = GetOfferingStatusResponse'{_gosrsNextPeriod =
+                                 Nothing,
+                               _gosrsCurrent = Nothing,
+                               _gosrsNextToken = Nothing,
+                               _gosrsResponseStatus = pResponseStatus_}
 
 -- | When specified, gets the offering status for the next period.
 gosrsNextPeriod :: Lens' GetOfferingStatusResponse (HashMap Text OfferingStatus)

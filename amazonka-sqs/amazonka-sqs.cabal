@@ -69,8 +69,17 @@ library
         , Network.AWS.SQS.Waiters
 
     other-modules:
-          Network.AWS.SQS.Types.Product
-        , Network.AWS.SQS.Types.Sum
+          Network.AWS.SQS.Types.BatchResultErrorEntry
+        , Network.AWS.SQS.Types.ChangeMessageVisibilityBatchRequestEntry
+        , Network.AWS.SQS.Types.ChangeMessageVisibilityBatchResultEntry
+        , Network.AWS.SQS.Types.DeleteMessageBatchRequestEntry
+        , Network.AWS.SQS.Types.DeleteMessageBatchResultEntry
+        , Network.AWS.SQS.Types.Message
+        , Network.AWS.SQS.Types.MessageAttribute
+        , Network.AWS.SQS.Types.MessageAttributeValue
+        , Network.AWS.SQS.Types.QueueAttributeName
+        , Network.AWS.SQS.Types.SendMessageBatchRequestEntry
+        , Network.AWS.SQS.Types.SendMessageBatchResultEntry
 
     build-depends:
           amazonka-core == 1.6.1.*

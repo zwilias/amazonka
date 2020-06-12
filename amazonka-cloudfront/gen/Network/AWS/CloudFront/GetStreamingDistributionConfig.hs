@@ -18,7 +18,7 @@
 -- Stability   : auto-generated
 -- Portability : non-portable (GHC extensions)
 --
--- Get the configuration information about a streaming distribution.
+-- Get the configuration information about a streaming distribution. 
 --
 --
 module Network.AWS.CloudFront.GetStreamingDistributionConfig
@@ -39,7 +39,6 @@ module Network.AWS.CloudFront.GetStreamingDistributionConfig
     ) where
 
 import Network.AWS.CloudFront.Types
-import Network.AWS.CloudFront.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.Request
@@ -50,12 +49,11 @@ import Network.AWS.Response
 --
 --
 -- /See:/ 'getStreamingDistributionConfig' smart constructor.
-newtype GetStreamingDistributionConfig =
-  GetStreamingDistributionConfig'
-    { _gsdcId :: Text
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+newtype GetStreamingDistributionConfig = GetStreamingDistributionConfig'{_gsdcId
+                                                                         ::
+                                                                         Text}
+                                           deriving (Eq, Read, Show, Data,
+                                                     Typeable, Generic)
 
 -- | Creates a value of 'GetStreamingDistributionConfig' with the minimum fields required to make a request.
 --
@@ -65,9 +63,8 @@ newtype GetStreamingDistributionConfig =
 getStreamingDistributionConfig
     :: Text -- ^ 'gsdcId'
     -> GetStreamingDistributionConfig
-getStreamingDistributionConfig pId_ =
-  GetStreamingDistributionConfig' {_gsdcId = pId_}
-
+getStreamingDistributionConfig pId_
+  = GetStreamingDistributionConfig'{_gsdcId = pId_}
 
 -- | The streaming distribution's ID.
 gsdcId :: Lens' GetStreamingDistributionConfig Text
@@ -108,14 +105,19 @@ instance ToQuery GetStreamingDistributionConfig where
 --
 --
 -- /See:/ 'getStreamingDistributionConfigResponse' smart constructor.
-data GetStreamingDistributionConfigResponse =
-  GetStreamingDistributionConfigResponse'
-    { _gsdcrsStreamingDistributionConfig :: !(Maybe StreamingDistributionConfig)
-    , _gsdcrsETag                        :: !(Maybe Text)
-    , _gsdcrsResponseStatus              :: !Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data GetStreamingDistributionConfigResponse = GetStreamingDistributionConfigResponse'{_gsdcrsStreamingDistributionConfig
+                                                                                      ::
+                                                                                      !(Maybe
+                                                                                          StreamingDistributionConfig),
+                                                                                      _gsdcrsETag
+                                                                                      ::
+                                                                                      !(Maybe
+                                                                                          Text),
+                                                                                      _gsdcrsResponseStatus
+                                                                                      ::
+                                                                                      !Int}
+                                                deriving (Eq, Read, Show, Data,
+                                                          Typeable, Generic)
 
 -- | Creates a value of 'GetStreamingDistributionConfigResponse' with the minimum fields required to make a request.
 --
@@ -123,25 +125,25 @@ data GetStreamingDistributionConfigResponse =
 --
 -- * 'gsdcrsStreamingDistributionConfig' - The streaming distribution's configuration information.
 --
--- * 'gsdcrsETag' - The current version of the configuration. For example: @E2QWRUHAPOMQZL@ .
+-- * 'gsdcrsETag' - The current version of the configuration. For example: @E2QWRUHAPOMQZL@ . 
 --
 -- * 'gsdcrsResponseStatus' - -- | The response status code.
 getStreamingDistributionConfigResponse
     :: Int -- ^ 'gsdcrsResponseStatus'
     -> GetStreamingDistributionConfigResponse
-getStreamingDistributionConfigResponse pResponseStatus_ =
-  GetStreamingDistributionConfigResponse'
-    { _gsdcrsStreamingDistributionConfig = Nothing
-    , _gsdcrsETag = Nothing
-    , _gsdcrsResponseStatus = pResponseStatus_
-    }
-
+getStreamingDistributionConfigResponse
+  pResponseStatus_
+  = GetStreamingDistributionConfigResponse'{_gsdcrsStreamingDistributionConfig
+                                              = Nothing,
+                                            _gsdcrsETag = Nothing,
+                                            _gsdcrsResponseStatus =
+                                              pResponseStatus_}
 
 -- | The streaming distribution's configuration information.
 gsdcrsStreamingDistributionConfig :: Lens' GetStreamingDistributionConfigResponse (Maybe StreamingDistributionConfig)
 gsdcrsStreamingDistributionConfig = lens _gsdcrsStreamingDistributionConfig (\ s a -> s{_gsdcrsStreamingDistributionConfig = a})
 
--- | The current version of the configuration. For example: @E2QWRUHAPOMQZL@ .
+-- | The current version of the configuration. For example: @E2QWRUHAPOMQZL@ . 
 gsdcrsETag :: Lens' GetStreamingDistributionConfigResponse (Maybe Text)
 gsdcrsETag = lens _gsdcrsETag (\ s a -> s{_gsdcrsETag = a})
 

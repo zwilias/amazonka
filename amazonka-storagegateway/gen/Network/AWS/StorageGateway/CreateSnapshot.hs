@@ -50,26 +50,22 @@ import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 import Network.AWS.StorageGateway.Types
-import Network.AWS.StorageGateway.Types.Product
 
 -- | A JSON object containing one or more of the following fields:
 --
 --
---     * 'CreateSnapshotInput$SnapshotDescription'
+--     * 'CreateSnapshotInput$SnapshotDescription' 
 --
---     * 'CreateSnapshotInput$VolumeARN'
+--     * 'CreateSnapshotInput$VolumeARN' 
 --
 --
 --
 --
 -- /See:/ 'createSnapshot' smart constructor.
-data CreateSnapshot =
-  CreateSnapshot'
-    { _csVolumeARN           :: !Text
-    , _csSnapshotDescription :: !Text
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data CreateSnapshot = CreateSnapshot'{_csVolumeARN ::
+                                      !Text,
+                                      _csSnapshotDescription :: !Text}
+                        deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'CreateSnapshot' with the minimum fields required to make a request.
 --
@@ -82,10 +78,9 @@ createSnapshot
     :: Text -- ^ 'csVolumeARN'
     -> Text -- ^ 'csSnapshotDescription'
     -> CreateSnapshot
-createSnapshot pVolumeARN_ pSnapshotDescription_ =
-  CreateSnapshot'
-    {_csVolumeARN = pVolumeARN_, _csSnapshotDescription = pSnapshotDescription_}
-
+createSnapshot pVolumeARN_ pSnapshotDescription_
+  = CreateSnapshot'{_csVolumeARN = pVolumeARN_,
+                    _csSnapshotDescription = pSnapshotDescription_}
 
 -- | The Amazon Resource Name (ARN) of the volume. Use the 'ListVolumes' operation to return a list of gateway volumes.
 csVolumeARN :: Lens' CreateSnapshot Text
@@ -138,14 +133,14 @@ instance ToQuery CreateSnapshot where
 --
 --
 -- /See:/ 'createSnapshotResponse' smart constructor.
-data CreateSnapshotResponse =
-  CreateSnapshotResponse'
-    { _csrsVolumeARN      :: !(Maybe Text)
-    , _csrsSnapshotId     :: !(Maybe Text)
-    , _csrsResponseStatus :: !Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data CreateSnapshotResponse = CreateSnapshotResponse'{_csrsVolumeARN
+                                                      :: !(Maybe Text),
+                                                      _csrsSnapshotId ::
+                                                      !(Maybe Text),
+                                                      _csrsResponseStatus ::
+                                                      !Int}
+                                deriving (Eq, Read, Show, Data, Typeable,
+                                          Generic)
 
 -- | Creates a value of 'CreateSnapshotResponse' with the minimum fields required to make a request.
 --
@@ -159,13 +154,10 @@ data CreateSnapshotResponse =
 createSnapshotResponse
     :: Int -- ^ 'csrsResponseStatus'
     -> CreateSnapshotResponse
-createSnapshotResponse pResponseStatus_ =
-  CreateSnapshotResponse'
-    { _csrsVolumeARN = Nothing
-    , _csrsSnapshotId = Nothing
-    , _csrsResponseStatus = pResponseStatus_
-    }
-
+createSnapshotResponse pResponseStatus_
+  = CreateSnapshotResponse'{_csrsVolumeARN = Nothing,
+                            _csrsSnapshotId = Nothing,
+                            _csrsResponseStatus = pResponseStatus_}
 
 -- | The Amazon Resource Name (ARN) of the volume of which the snapshot was taken.
 csrsVolumeARN :: Lens' CreateSnapshotResponse (Maybe Text)

@@ -47,24 +47,20 @@ module Network.AWS.EC2.CreateImage
     ) where
 
 import Network.AWS.EC2.Types
-import Network.AWS.EC2.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 
 -- | /See:/ 'createImage' smart constructor.
-data CreateImage =
-  CreateImage'
-    { _ciiNoReboot            :: !(Maybe Bool)
-    , _ciiDescription         :: !(Maybe Text)
-    , _ciiBlockDeviceMappings :: !(Maybe [BlockDeviceMapping])
-    , _ciiDryRun              :: !(Maybe Bool)
-    , _ciiInstanceId          :: !Text
-    , _ciiName                :: !Text
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data CreateImage = CreateImage'{_ciiNoReboot ::
+                                !(Maybe Bool),
+                                _ciiDescription :: !(Maybe Text),
+                                _ciiBlockDeviceMappings ::
+                                !(Maybe [BlockDeviceMapping]),
+                                _ciiDryRun :: !(Maybe Bool),
+                                _ciiInstanceId :: !Text, _ciiName :: !Text}
+                     deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'CreateImage' with the minimum fields required to make a request.
 --
@@ -85,16 +81,12 @@ createImage
     :: Text -- ^ 'ciiInstanceId'
     -> Text -- ^ 'ciiName'
     -> CreateImage
-createImage pInstanceId_ pName_ =
-  CreateImage'
-    { _ciiNoReboot = Nothing
-    , _ciiDescription = Nothing
-    , _ciiBlockDeviceMappings = Nothing
-    , _ciiDryRun = Nothing
-    , _ciiInstanceId = pInstanceId_
-    , _ciiName = pName_
-    }
-
+createImage pInstanceId_ pName_
+  = CreateImage'{_ciiNoReboot = Nothing,
+                 _ciiDescription = Nothing,
+                 _ciiBlockDeviceMappings = Nothing,
+                 _ciiDryRun = Nothing, _ciiInstanceId = pInstanceId_,
+                 _ciiName = pName_}
 
 -- | By default, Amazon EC2 attempts to shut down and reboot the instance before creating the image. If the 'No Reboot' option is set, Amazon EC2 doesn't shut down the instance before creating the image. When this option is used, file system integrity on the created image can't be guaranteed.
 ciiNoReboot :: Lens' CreateImage (Maybe Bool)
@@ -153,13 +145,10 @@ instance ToQuery CreateImage where
                "InstanceId" =: _ciiInstanceId, "Name" =: _ciiName]
 
 -- | /See:/ 'createImageResponse' smart constructor.
-data CreateImageResponse =
-  CreateImageResponse'
-    { _cirsImageId        :: !(Maybe Text)
-    , _cirsResponseStatus :: !Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data CreateImageResponse = CreateImageResponse'{_cirsImageId
+                                                :: !(Maybe Text),
+                                                _cirsResponseStatus :: !Int}
+                             deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'CreateImageResponse' with the minimum fields required to make a request.
 --
@@ -171,10 +160,9 @@ data CreateImageResponse =
 createImageResponse
     :: Int -- ^ 'cirsResponseStatus'
     -> CreateImageResponse
-createImageResponse pResponseStatus_ =
-  CreateImageResponse'
-    {_cirsImageId = Nothing, _cirsResponseStatus = pResponseStatus_}
-
+createImageResponse pResponseStatus_
+  = CreateImageResponse'{_cirsImageId = Nothing,
+                         _cirsResponseStatus = pResponseStatus_}
 
 -- | The ID of the new AMI.
 cirsImageId :: Lens' CreateImageResponse (Maybe Text)

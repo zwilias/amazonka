@@ -44,15 +44,12 @@ import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 import Network.AWS.StorageGateway.Types
-import Network.AWS.StorageGateway.Types.Product
 
 -- | /See:/ 'deleteSnapshotSchedule' smart constructor.
-newtype DeleteSnapshotSchedule =
-  DeleteSnapshotSchedule'
-    { _dVolumeARN :: Text
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+newtype DeleteSnapshotSchedule = DeleteSnapshotSchedule'{_dVolumeARN
+                                                         :: Text}
+                                   deriving (Eq, Read, Show, Data, Typeable,
+                                             Generic)
 
 -- | Creates a value of 'DeleteSnapshotSchedule' with the minimum fields required to make a request.
 --
@@ -62,9 +59,8 @@ newtype DeleteSnapshotSchedule =
 deleteSnapshotSchedule
     :: Text -- ^ 'dVolumeARN'
     -> DeleteSnapshotSchedule
-deleteSnapshotSchedule pVolumeARN_ =
-  DeleteSnapshotSchedule' {_dVolumeARN = pVolumeARN_}
-
+deleteSnapshotSchedule pVolumeARN_
+  = DeleteSnapshotSchedule'{_dVolumeARN = pVolumeARN_}
 
 -- | Undocumented member.
 dVolumeARN :: Lens' DeleteSnapshotSchedule Text
@@ -106,13 +102,14 @@ instance ToQuery DeleteSnapshotSchedule where
         toQuery = const mempty
 
 -- | /See:/ 'deleteSnapshotScheduleResponse' smart constructor.
-data DeleteSnapshotScheduleResponse =
-  DeleteSnapshotScheduleResponse'
-    { _dsssrsVolumeARN      :: !(Maybe Text)
-    , _dsssrsResponseStatus :: !Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data DeleteSnapshotScheduleResponse = DeleteSnapshotScheduleResponse'{_dsssrsVolumeARN
+                                                                      ::
+                                                                      !(Maybe
+                                                                          Text),
+                                                                      _dsssrsResponseStatus
+                                                                      :: !Int}
+                                        deriving (Eq, Read, Show, Data,
+                                                  Typeable, Generic)
 
 -- | Creates a value of 'DeleteSnapshotScheduleResponse' with the minimum fields required to make a request.
 --
@@ -124,10 +121,10 @@ data DeleteSnapshotScheduleResponse =
 deleteSnapshotScheduleResponse
     :: Int -- ^ 'dsssrsResponseStatus'
     -> DeleteSnapshotScheduleResponse
-deleteSnapshotScheduleResponse pResponseStatus_ =
-  DeleteSnapshotScheduleResponse'
-    {_dsssrsVolumeARN = Nothing, _dsssrsResponseStatus = pResponseStatus_}
-
+deleteSnapshotScheduleResponse pResponseStatus_
+  = DeleteSnapshotScheduleResponse'{_dsssrsVolumeARN =
+                                      Nothing,
+                                    _dsssrsResponseStatus = pResponseStatus_}
 
 -- | Undocumented member.
 dsssrsVolumeARN :: Lens' DeleteSnapshotScheduleResponse (Maybe Text)

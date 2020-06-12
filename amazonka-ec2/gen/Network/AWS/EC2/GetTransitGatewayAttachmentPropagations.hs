@@ -45,7 +45,6 @@ module Network.AWS.EC2.GetTransitGatewayAttachmentPropagations
     ) where
 
 import Network.AWS.EC2.Types
-import Network.AWS.EC2.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Pager
 import Network.AWS.Prelude
@@ -53,16 +52,27 @@ import Network.AWS.Request
 import Network.AWS.Response
 
 -- | /See:/ 'getTransitGatewayAttachmentPropagations' smart constructor.
-data GetTransitGatewayAttachmentPropagations =
-  GetTransitGatewayAttachmentPropagations'
-    { _gtgapFilters                    :: !(Maybe [Filter])
-    , _gtgapNextToken                  :: !(Maybe Text)
-    , _gtgapDryRun                     :: !(Maybe Bool)
-    , _gtgapMaxResults                 :: !(Maybe Nat)
-    , _gtgapTransitGatewayAttachmentId :: !Text
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data GetTransitGatewayAttachmentPropagations = GetTransitGatewayAttachmentPropagations'{_gtgapFilters
+                                                                                        ::
+                                                                                        !(Maybe
+                                                                                            [Filter]),
+                                                                                        _gtgapNextToken
+                                                                                        ::
+                                                                                        !(Maybe
+                                                                                            Text),
+                                                                                        _gtgapDryRun
+                                                                                        ::
+                                                                                        !(Maybe
+                                                                                            Bool),
+                                                                                        _gtgapMaxResults
+                                                                                        ::
+                                                                                        !(Maybe
+                                                                                            Nat),
+                                                                                        _gtgapTransitGatewayAttachmentId
+                                                                                        ::
+                                                                                        !Text}
+                                                 deriving (Eq, Read, Show, Data,
+                                                           Typeable, Generic)
 
 -- | Creates a value of 'GetTransitGatewayAttachmentPropagations' with the minimum fields required to make a request.
 --
@@ -80,15 +90,15 @@ data GetTransitGatewayAttachmentPropagations =
 getTransitGatewayAttachmentPropagations
     :: Text -- ^ 'gtgapTransitGatewayAttachmentId'
     -> GetTransitGatewayAttachmentPropagations
-getTransitGatewayAttachmentPropagations pTransitGatewayAttachmentId_ =
-  GetTransitGatewayAttachmentPropagations'
-    { _gtgapFilters = Nothing
-    , _gtgapNextToken = Nothing
-    , _gtgapDryRun = Nothing
-    , _gtgapMaxResults = Nothing
-    , _gtgapTransitGatewayAttachmentId = pTransitGatewayAttachmentId_
-    }
-
+getTransitGatewayAttachmentPropagations
+  pTransitGatewayAttachmentId_
+  = GetTransitGatewayAttachmentPropagations'{_gtgapFilters
+                                               = Nothing,
+                                             _gtgapNextToken = Nothing,
+                                             _gtgapDryRun = Nothing,
+                                             _gtgapMaxResults = Nothing,
+                                             _gtgapTransitGatewayAttachmentId =
+                                               pTransitGatewayAttachmentId_}
 
 -- | One or more filters. The possible values are:     * @transit-gateway-route-table-id@ - The ID of the transit gateway route table.
 gtgapFilters :: Lens' GetTransitGatewayAttachmentPropagations [Filter]
@@ -172,14 +182,21 @@ instance ToQuery
                  _gtgapTransitGatewayAttachmentId]
 
 -- | /See:/ 'getTransitGatewayAttachmentPropagationsResponse' smart constructor.
-data GetTransitGatewayAttachmentPropagationsResponse =
-  GetTransitGatewayAttachmentPropagationsResponse'
-    { _gtgaprsNextToken :: !(Maybe Text)
-    , _gtgaprsTransitGatewayAttachmentPropagations :: !(Maybe [TransitGatewayAttachmentPropagation])
-    , _gtgaprsResponseStatus :: !Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data GetTransitGatewayAttachmentPropagationsResponse = GetTransitGatewayAttachmentPropagationsResponse'{_gtgaprsNextToken
+                                                                                                        ::
+                                                                                                        !(Maybe
+                                                                                                            Text),
+                                                                                                        _gtgaprsTransitGatewayAttachmentPropagations
+                                                                                                        ::
+                                                                                                        !(Maybe
+                                                                                                            [TransitGatewayAttachmentPropagation]),
+                                                                                                        _gtgaprsResponseStatus
+                                                                                                        ::
+                                                                                                        !Int}
+                                                         deriving (Eq, Read,
+                                                                   Show, Data,
+                                                                   Typeable,
+                                                                   Generic)
 
 -- | Creates a value of 'GetTransitGatewayAttachmentPropagationsResponse' with the minimum fields required to make a request.
 --
@@ -193,13 +210,14 @@ data GetTransitGatewayAttachmentPropagationsResponse =
 getTransitGatewayAttachmentPropagationsResponse
     :: Int -- ^ 'gtgaprsResponseStatus'
     -> GetTransitGatewayAttachmentPropagationsResponse
-getTransitGatewayAttachmentPropagationsResponse pResponseStatus_ =
-  GetTransitGatewayAttachmentPropagationsResponse'
-    { _gtgaprsNextToken = Nothing
-    , _gtgaprsTransitGatewayAttachmentPropagations = Nothing
-    , _gtgaprsResponseStatus = pResponseStatus_
-    }
-
+getTransitGatewayAttachmentPropagationsResponse
+  pResponseStatus_
+  = GetTransitGatewayAttachmentPropagationsResponse'{_gtgaprsNextToken
+                                                       = Nothing,
+                                                     _gtgaprsTransitGatewayAttachmentPropagations
+                                                       = Nothing,
+                                                     _gtgaprsResponseStatus =
+                                                       pResponseStatus_}
 
 -- | The token to use to retrieve the next page of results. This value is @null@ when there are no more results to return.
 gtgaprsNextToken :: Lens' GetTransitGatewayAttachmentPropagationsResponse (Maybe Text)

@@ -43,7 +43,6 @@ module Network.AWS.CognitoIdentityProvider.AdminResetUserPassword
     ) where
 
 import Network.AWS.CognitoIdentityProvider.Types
-import Network.AWS.CognitoIdentityProvider.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.Request
@@ -54,14 +53,13 @@ import Network.AWS.Response
 --
 --
 -- /See:/ 'adminResetUserPassword' smart constructor.
-data AdminResetUserPassword =
-  AdminResetUserPassword'
-    { _arupClientMetadata :: !(Maybe (Map Text Text))
-    , _arupUserPoolId     :: !Text
-    , _arupUsername       :: !(Sensitive Text)
-    }
-  deriving (Eq, Show, Data, Typeable, Generic)
-
+data AdminResetUserPassword = AdminResetUserPassword'{_arupClientMetadata
+                                                      ::
+                                                      !(Maybe (Map Text Text)),
+                                                      _arupUserPoolId :: !Text,
+                                                      _arupUsername ::
+                                                      !(Sensitive Text)}
+                                deriving (Eq, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'AdminResetUserPassword' with the minimum fields required to make a request.
 --
@@ -76,13 +74,11 @@ adminResetUserPassword
     :: Text -- ^ 'arupUserPoolId'
     -> Text -- ^ 'arupUsername'
     -> AdminResetUserPassword
-adminResetUserPassword pUserPoolId_ pUsername_ =
-  AdminResetUserPassword'
-    { _arupClientMetadata = Nothing
-    , _arupUserPoolId = pUserPoolId_
-    , _arupUsername = _Sensitive # pUsername_
-    }
-
+adminResetUserPassword pUserPoolId_ pUsername_
+  = AdminResetUserPassword'{_arupClientMetadata =
+                              Nothing,
+                            _arupUserPoolId = pUserPoolId_,
+                            _arupUsername = _Sensitive # pUsername_}
 
 -- | A map of custom key-value pairs that you can provide as input for any custom workflows that this action triggers.  You create custom workflows by assigning AWS Lambda functions to user pool triggers. When you use the AdminResetUserPassword API action, Amazon Cognito invokes the function that is assigned to the /custom message/ trigger. When Amazon Cognito invokes this function, it passes a JSON payload, which the function receives as input. This payload contains a @clientMetadata@ attribute, which provides the data that you assigned to the ClientMetadata parameter in your AdminResetUserPassword request. In your function code in AWS Lambda, you can process the @clientMetadata@ value to enhance your workflow for your specific needs. For more information, see <https://docs.aws.amazon.com/cognito/latest/developerguide/cognito-user-identity-pools-working-with-aws-lambda-triggers.html Customizing User Pool Workflows with Lambda Triggers> in the /Amazon Cognito Developer Guide/ .
 arupClientMetadata :: Lens' AdminResetUserPassword (HashMap Text Text)
@@ -139,12 +135,10 @@ instance ToQuery AdminResetUserPassword where
 --
 --
 -- /See:/ 'adminResetUserPasswordResponse' smart constructor.
-newtype AdminResetUserPasswordResponse =
-  AdminResetUserPasswordResponse'
-    { _aruprsResponseStatus :: Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+newtype AdminResetUserPasswordResponse = AdminResetUserPasswordResponse'{_aruprsResponseStatus
+                                                                         :: Int}
+                                           deriving (Eq, Read, Show, Data,
+                                                     Typeable, Generic)
 
 -- | Creates a value of 'AdminResetUserPasswordResponse' with the minimum fields required to make a request.
 --
@@ -154,9 +148,9 @@ newtype AdminResetUserPasswordResponse =
 adminResetUserPasswordResponse
     :: Int -- ^ 'aruprsResponseStatus'
     -> AdminResetUserPasswordResponse
-adminResetUserPasswordResponse pResponseStatus_ =
-  AdminResetUserPasswordResponse' {_aruprsResponseStatus = pResponseStatus_}
-
+adminResetUserPasswordResponse pResponseStatus_
+  = AdminResetUserPasswordResponse'{_aruprsResponseStatus
+                                      = pResponseStatus_}
 
 -- | -- | The response status code.
 aruprsResponseStatus :: Lens' AdminResetUserPasswordResponse Int

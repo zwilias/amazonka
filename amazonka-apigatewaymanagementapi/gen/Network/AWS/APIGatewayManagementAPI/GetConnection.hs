@@ -40,19 +40,15 @@ module Network.AWS.APIGatewayManagementAPI.GetConnection
     ) where
 
 import Network.AWS.APIGatewayManagementAPI.Types
-import Network.AWS.APIGatewayManagementAPI.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 
 -- | /See:/ 'getConnection' smart constructor.
-newtype GetConnection =
-  GetConnection'
-    { _gcConnectionId :: Text
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+newtype GetConnection = GetConnection'{_gcConnectionId
+                                       :: Text}
+                          deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'GetConnection' with the minimum fields required to make a request.
 --
@@ -62,8 +58,8 @@ newtype GetConnection =
 getConnection
     :: Text -- ^ 'gcConnectionId'
     -> GetConnection
-getConnection pConnectionId_ = GetConnection' {_gcConnectionId = pConnectionId_}
-
+getConnection pConnectionId_
+  = GetConnection'{_gcConnectionId = pConnectionId_}
 
 -- | Undocumented member.
 gcConnectionId :: Lens' GetConnection Text
@@ -99,15 +95,15 @@ instance ToQuery GetConnection where
         toQuery = const mempty
 
 -- | /See:/ 'getConnectionResponse' smart constructor.
-data GetConnectionResponse =
-  GetConnectionResponse'
-    { _gcrsConnectedAt    :: !(Maybe POSIX)
-    , _gcrsLastActiveAt   :: !(Maybe POSIX)
-    , _gcrsIdentity       :: !(Maybe Identity)
-    , _gcrsResponseStatus :: !Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data GetConnectionResponse = GetConnectionResponse'{_gcrsConnectedAt
+                                                    :: !(Maybe POSIX),
+                                                    _gcrsLastActiveAt ::
+                                                    !(Maybe POSIX),
+                                                    _gcrsIdentity ::
+                                                    !(Maybe Identity),
+                                                    _gcrsResponseStatus :: !Int}
+                               deriving (Eq, Read, Show, Data, Typeable,
+                                         Generic)
 
 -- | Creates a value of 'GetConnectionResponse' with the minimum fields required to make a request.
 --
@@ -123,14 +119,10 @@ data GetConnectionResponse =
 getConnectionResponse
     :: Int -- ^ 'gcrsResponseStatus'
     -> GetConnectionResponse
-getConnectionResponse pResponseStatus_ =
-  GetConnectionResponse'
-    { _gcrsConnectedAt = Nothing
-    , _gcrsLastActiveAt = Nothing
-    , _gcrsIdentity = Nothing
-    , _gcrsResponseStatus = pResponseStatus_
-    }
-
+getConnectionResponse pResponseStatus_
+  = GetConnectionResponse'{_gcrsConnectedAt = Nothing,
+                           _gcrsLastActiveAt = Nothing, _gcrsIdentity = Nothing,
+                           _gcrsResponseStatus = pResponseStatus_}
 
 -- | The time in ISO 8601 format for when the connection was established.
 gcrsConnectedAt :: Lens' GetConnectionResponse (Maybe UTCTime)

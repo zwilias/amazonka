@@ -54,8 +54,9 @@ library
         , Network.AWS.MediaStoreData.Waiters
 
     other-modules:
-          Network.AWS.MediaStoreData.Types.Product
-        , Network.AWS.MediaStoreData.Types.Sum
+          Network.AWS.MediaStoreData.Types.Item
+        , Network.AWS.MediaStoreData.Types.ItemType
+        , Network.AWS.MediaStoreData.Types.StorageClass
 
     build-depends:
           amazonka-core == 1.6.1.*

@@ -47,28 +47,38 @@ module Network.AWS.Comprehend.CreateDocumentClassifier
     ) where
 
 import Network.AWS.Comprehend.Types
-import Network.AWS.Comprehend.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 
 -- | /See:/ 'createDocumentClassifier' smart constructor.
-data CreateDocumentClassifier =
-  CreateDocumentClassifier'
-    { _cdcMode                   :: !(Maybe DocumentClassifierMode)
-    , _cdcVPCConfig              :: !(Maybe VPCConfig)
-    , _cdcVolumeKMSKeyId         :: !(Maybe Text)
-    , _cdcOutputDataConfig       :: !(Maybe DocumentClassifierOutputDataConfig)
-    , _cdcClientRequestToken     :: !(Maybe Text)
-    , _cdcTags                   :: !(Maybe [Tag])
-    , _cdcDocumentClassifierName :: !Text
-    , _cdcDataAccessRoleARN      :: !Text
-    , _cdcInputDataConfig        :: !DocumentClassifierInputDataConfig
-    , _cdcLanguageCode           :: !LanguageCode
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data CreateDocumentClassifier = CreateDocumentClassifier'{_cdcMode
+                                                          ::
+                                                          !(Maybe
+                                                              DocumentClassifierMode),
+                                                          _cdcVPCConfig ::
+                                                          !(Maybe VPCConfig),
+                                                          _cdcVolumeKMSKeyId ::
+                                                          !(Maybe Text),
+                                                          _cdcOutputDataConfig
+                                                          ::
+                                                          !(Maybe
+                                                              DocumentClassifierOutputDataConfig),
+                                                          _cdcClientRequestToken
+                                                          :: !(Maybe Text),
+                                                          _cdcTags ::
+                                                          !(Maybe [Tag]),
+                                                          _cdcDocumentClassifierName
+                                                          :: !Text,
+                                                          _cdcDataAccessRoleARN
+                                                          :: !Text,
+                                                          _cdcInputDataConfig ::
+                                                          !DocumentClassifierInputDataConfig,
+                                                          _cdcLanguageCode ::
+                                                          !LanguageCode}
+                                  deriving (Eq, Read, Show, Data, Typeable,
+                                            Generic)
 
 -- | Creates a value of 'CreateDocumentClassifier' with the minimum fields required to make a request.
 --
@@ -76,15 +86,15 @@ data CreateDocumentClassifier =
 --
 -- * 'cdcMode' - Indicates the mode in which the classifier will be trained. The classifier can be trained in multi-class mode, which identifies one and only one class for each document, or multi-label mode, which identifies one or more labels for each document. In multi-label mode, multiple labels for an individual document are separated by a delimiter. The default delimiter between labels is a pipe (|).
 --
--- * 'cdcVPCConfig' - Configuration parameters for an optional private Virtual Private Cloud (VPC) containing the resources you are using for your custom classifier. For more information, see <https://docs.aws.amazon.com/vpc/latest/userguide/what-is-amazon-vpc.html Amazon VPC> .
+-- * 'cdcVPCConfig' - Configuration parameters for an optional private Virtual Private Cloud (VPC) containing the resources you are using for your custom classifier. For more information, see <https://docs.aws.amazon.com/vpc/latest/userguide/what-is-amazon-vpc.html Amazon VPC> . 
 --
--- * 'cdcVolumeKMSKeyId' - ID for the AWS Key Management Service (KMS) key that Amazon Comprehend uses to encrypt data on the storage volume attached to the ML compute instance(s) that process the analysis job. The VolumeKmsKeyId can be either of the following formats:     * KMS Key ID: @"1234abcd-12ab-34cd-56ef-1234567890ab"@      * Amazon Resource Name (ARN) of a KMS Key: @"arn:aws:kms:us-west-2:111122223333:key/1234abcd-12ab-34cd-56ef-1234567890ab"@
+-- * 'cdcVolumeKMSKeyId' - ID for the AWS Key Management Service (KMS) key that Amazon Comprehend uses to encrypt data on the storage volume attached to the ML compute instance(s) that process the analysis job. The VolumeKmsKeyId can be either of the following formats:     * KMS Key ID: @"1234abcd-12ab-34cd-56ef-1234567890ab"@      * Amazon Resource Name (ARN) of a KMS Key: @"arn:aws:kms:us-west-2:111122223333:key/1234abcd-12ab-34cd-56ef-1234567890ab"@ 
 --
 -- * 'cdcOutputDataConfig' - Enables the addition of output results configuration parameters for custom classifier jobs.
 --
 -- * 'cdcClientRequestToken' - A unique identifier for the request. If you don't set the client request token, Amazon Comprehend generates one.
 --
--- * 'cdcTags' - Tags to be associated with the document classifier being created. A tag is a key-value pair that adds as a metadata to a resource used by Amazon Comprehend. For example, a tag with "Sales" as the key might be added to a resource to indicate its use by the sales department.
+-- * 'cdcTags' - Tags to be associated with the document classifier being created. A tag is a key-value pair that adds as a metadata to a resource used by Amazon Comprehend. For example, a tag with "Sales" as the key might be added to a resource to indicate its use by the sales department. 
 --
 -- * 'cdcDocumentClassifierName' - The name of the document classifier.
 --
@@ -99,30 +109,29 @@ createDocumentClassifier
     -> DocumentClassifierInputDataConfig -- ^ 'cdcInputDataConfig'
     -> LanguageCode -- ^ 'cdcLanguageCode'
     -> CreateDocumentClassifier
-createDocumentClassifier pDocumentClassifierName_ pDataAccessRoleARN_ pInputDataConfig_ pLanguageCode_ =
-  CreateDocumentClassifier'
-    { _cdcMode = Nothing
-    , _cdcVPCConfig = Nothing
-    , _cdcVolumeKMSKeyId = Nothing
-    , _cdcOutputDataConfig = Nothing
-    , _cdcClientRequestToken = Nothing
-    , _cdcTags = Nothing
-    , _cdcDocumentClassifierName = pDocumentClassifierName_
-    , _cdcDataAccessRoleARN = pDataAccessRoleARN_
-    , _cdcInputDataConfig = pInputDataConfig_
-    , _cdcLanguageCode = pLanguageCode_
-    }
-
+createDocumentClassifier pDocumentClassifierName_
+  pDataAccessRoleARN_ pInputDataConfig_ pLanguageCode_
+  = CreateDocumentClassifier'{_cdcMode = Nothing,
+                              _cdcVPCConfig = Nothing,
+                              _cdcVolumeKMSKeyId = Nothing,
+                              _cdcOutputDataConfig = Nothing,
+                              _cdcClientRequestToken = Nothing,
+                              _cdcTags = Nothing,
+                              _cdcDocumentClassifierName =
+                                pDocumentClassifierName_,
+                              _cdcDataAccessRoleARN = pDataAccessRoleARN_,
+                              _cdcInputDataConfig = pInputDataConfig_,
+                              _cdcLanguageCode = pLanguageCode_}
 
 -- | Indicates the mode in which the classifier will be trained. The classifier can be trained in multi-class mode, which identifies one and only one class for each document, or multi-label mode, which identifies one or more labels for each document. In multi-label mode, multiple labels for an individual document are separated by a delimiter. The default delimiter between labels is a pipe (|).
 cdcMode :: Lens' CreateDocumentClassifier (Maybe DocumentClassifierMode)
 cdcMode = lens _cdcMode (\ s a -> s{_cdcMode = a})
 
--- | Configuration parameters for an optional private Virtual Private Cloud (VPC) containing the resources you are using for your custom classifier. For more information, see <https://docs.aws.amazon.com/vpc/latest/userguide/what-is-amazon-vpc.html Amazon VPC> .
+-- | Configuration parameters for an optional private Virtual Private Cloud (VPC) containing the resources you are using for your custom classifier. For more information, see <https://docs.aws.amazon.com/vpc/latest/userguide/what-is-amazon-vpc.html Amazon VPC> . 
 cdcVPCConfig :: Lens' CreateDocumentClassifier (Maybe VPCConfig)
 cdcVPCConfig = lens _cdcVPCConfig (\ s a -> s{_cdcVPCConfig = a})
 
--- | ID for the AWS Key Management Service (KMS) key that Amazon Comprehend uses to encrypt data on the storage volume attached to the ML compute instance(s) that process the analysis job. The VolumeKmsKeyId can be either of the following formats:     * KMS Key ID: @"1234abcd-12ab-34cd-56ef-1234567890ab"@      * Amazon Resource Name (ARN) of a KMS Key: @"arn:aws:kms:us-west-2:111122223333:key/1234abcd-12ab-34cd-56ef-1234567890ab"@
+-- | ID for the AWS Key Management Service (KMS) key that Amazon Comprehend uses to encrypt data on the storage volume attached to the ML compute instance(s) that process the analysis job. The VolumeKmsKeyId can be either of the following formats:     * KMS Key ID: @"1234abcd-12ab-34cd-56ef-1234567890ab"@      * Amazon Resource Name (ARN) of a KMS Key: @"arn:aws:kms:us-west-2:111122223333:key/1234abcd-12ab-34cd-56ef-1234567890ab"@ 
 cdcVolumeKMSKeyId :: Lens' CreateDocumentClassifier (Maybe Text)
 cdcVolumeKMSKeyId = lens _cdcVolumeKMSKeyId (\ s a -> s{_cdcVolumeKMSKeyId = a})
 
@@ -134,7 +143,7 @@ cdcOutputDataConfig = lens _cdcOutputDataConfig (\ s a -> s{_cdcOutputDataConfig
 cdcClientRequestToken :: Lens' CreateDocumentClassifier (Maybe Text)
 cdcClientRequestToken = lens _cdcClientRequestToken (\ s a -> s{_cdcClientRequestToken = a})
 
--- | Tags to be associated with the document classifier being created. A tag is a key-value pair that adds as a metadata to a resource used by Amazon Comprehend. For example, a tag with "Sales" as the key might be added to a resource to indicate its use by the sales department.
+-- | Tags to be associated with the document classifier being created. A tag is a key-value pair that adds as a metadata to a resource used by Amazon Comprehend. For example, a tag with "Sales" as the key might be added to a resource to indicate its use by the sales department. 
 cdcTags :: Lens' CreateDocumentClassifier [Tag]
 cdcTags = lens _cdcTags (\ s a -> s{_cdcTags = a}) . _Default . _Coerce
 
@@ -203,13 +212,15 @@ instance ToQuery CreateDocumentClassifier where
         toQuery = const mempty
 
 -- | /See:/ 'createDocumentClassifierResponse' smart constructor.
-data CreateDocumentClassifierResponse =
-  CreateDocumentClassifierResponse'
-    { _cdcrsDocumentClassifierARN :: !(Maybe Text)
-    , _cdcrsResponseStatus        :: !Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data CreateDocumentClassifierResponse = CreateDocumentClassifierResponse'{_cdcrsDocumentClassifierARN
+                                                                          ::
+                                                                          !(Maybe
+                                                                              Text),
+                                                                          _cdcrsResponseStatus
+                                                                          ::
+                                                                          !Int}
+                                          deriving (Eq, Read, Show, Data,
+                                                    Typeable, Generic)
 
 -- | Creates a value of 'CreateDocumentClassifierResponse' with the minimum fields required to make a request.
 --
@@ -221,12 +232,10 @@ data CreateDocumentClassifierResponse =
 createDocumentClassifierResponse
     :: Int -- ^ 'cdcrsResponseStatus'
     -> CreateDocumentClassifierResponse
-createDocumentClassifierResponse pResponseStatus_ =
-  CreateDocumentClassifierResponse'
-    { _cdcrsDocumentClassifierARN = Nothing
-    , _cdcrsResponseStatus = pResponseStatus_
-    }
-
+createDocumentClassifierResponse pResponseStatus_
+  = CreateDocumentClassifierResponse'{_cdcrsDocumentClassifierARN
+                                        = Nothing,
+                                      _cdcrsResponseStatus = pResponseStatus_}
 
 -- | The Amazon Resource Name (ARN) that identifies the document classifier.
 cdcrsDocumentClassifierARN :: Lens' CreateDocumentClassifierResponse (Maybe Text)

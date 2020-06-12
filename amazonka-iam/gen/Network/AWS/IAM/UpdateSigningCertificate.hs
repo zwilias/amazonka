@@ -39,21 +39,20 @@ module Network.AWS.IAM.UpdateSigningCertificate
     ) where
 
 import Network.AWS.IAM.Types
-import Network.AWS.IAM.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 
 -- | /See:/ 'updateSigningCertificate' smart constructor.
-data UpdateSigningCertificate =
-  UpdateSigningCertificate'
-    { _uscUserName      :: !(Maybe Text)
-    , _uscCertificateId :: !Text
-    , _uscStatus        :: !StatusType
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data UpdateSigningCertificate = UpdateSigningCertificate'{_uscUserName
+                                                          :: !(Maybe Text),
+                                                          _uscCertificateId ::
+                                                          !Text,
+                                                          _uscStatus ::
+                                                          !StatusType}
+                                  deriving (Eq, Read, Show, Data, Typeable,
+                                            Generic)
 
 -- | Creates a value of 'UpdateSigningCertificate' with the minimum fields required to make a request.
 --
@@ -68,13 +67,10 @@ updateSigningCertificate
     :: Text -- ^ 'uscCertificateId'
     -> StatusType -- ^ 'uscStatus'
     -> UpdateSigningCertificate
-updateSigningCertificate pCertificateId_ pStatus_ =
-  UpdateSigningCertificate'
-    { _uscUserName = Nothing
-    , _uscCertificateId = pCertificateId_
-    , _uscStatus = pStatus_
-    }
-
+updateSigningCertificate pCertificateId_ pStatus_
+  = UpdateSigningCertificate'{_uscUserName = Nothing,
+                              _uscCertificateId = pCertificateId_,
+                              _uscStatus = pStatus_}
 
 -- | The name of the IAM user the signing certificate belongs to. This parameter allows (per its <http://wikipedia.org/wiki/regex regex pattern> ) a string of characters consisting of upper and lowercase alphanumeric characters with no spaces. You can also include any of the following characters: _+=,.@-
 uscUserName :: Lens' UpdateSigningCertificate (Maybe Text)
@@ -116,17 +112,16 @@ instance ToQuery UpdateSigningCertificate where
                "Status" =: _uscStatus]
 
 -- | /See:/ 'updateSigningCertificateResponse' smart constructor.
-data UpdateSigningCertificateResponse =
-  UpdateSigningCertificateResponse'
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data UpdateSigningCertificateResponse = UpdateSigningCertificateResponse'
+                                          deriving (Eq, Read, Show, Data,
+                                                    Typeable, Generic)
 
 -- | Creates a value of 'UpdateSigningCertificateResponse' with the minimum fields required to make a request.
 --
 updateSigningCertificateResponse
     :: UpdateSigningCertificateResponse
-updateSigningCertificateResponse = UpdateSigningCertificateResponse'
-
+updateSigningCertificateResponse
+  = UpdateSigningCertificateResponse'
 
 instance NFData UpdateSigningCertificateResponse
          where

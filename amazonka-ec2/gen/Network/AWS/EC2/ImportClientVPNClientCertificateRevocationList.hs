@@ -42,21 +42,26 @@ module Network.AWS.EC2.ImportClientVPNClientCertificateRevocationList
     ) where
 
 import Network.AWS.EC2.Types
-import Network.AWS.EC2.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 
 -- | /See:/ 'importClientVPNClientCertificateRevocationList' smart constructor.
-data ImportClientVPNClientCertificateRevocationList =
-  ImportClientVPNClientCertificateRevocationList'
-    { _icvccrlDryRun                    :: !(Maybe Bool)
-    , _icvccrlClientVPNEndpointId       :: !Text
-    , _icvccrlCertificateRevocationList :: !Text
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data ImportClientVPNClientCertificateRevocationList = ImportClientVPNClientCertificateRevocationList'{_icvccrlDryRun
+                                                                                                      ::
+                                                                                                      !(Maybe
+                                                                                                          Bool),
+                                                                                                      _icvccrlClientVPNEndpointId
+                                                                                                      ::
+                                                                                                      !Text,
+                                                                                                      _icvccrlCertificateRevocationList
+                                                                                                      ::
+                                                                                                      !Text}
+                                                        deriving (Eq, Read,
+                                                                  Show, Data,
+                                                                  Typeable,
+                                                                  Generic)
 
 -- | Creates a value of 'ImportClientVPNClientCertificateRevocationList' with the minimum fields required to make a request.
 --
@@ -71,13 +76,15 @@ importClientVPNClientCertificateRevocationList
     :: Text -- ^ 'icvccrlClientVPNEndpointId'
     -> Text -- ^ 'icvccrlCertificateRevocationList'
     -> ImportClientVPNClientCertificateRevocationList
-importClientVPNClientCertificateRevocationList pClientVPNEndpointId_ pCertificateRevocationList_ =
-  ImportClientVPNClientCertificateRevocationList'
-    { _icvccrlDryRun = Nothing
-    , _icvccrlClientVPNEndpointId = pClientVPNEndpointId_
-    , _icvccrlCertificateRevocationList = pCertificateRevocationList_
-    }
-
+importClientVPNClientCertificateRevocationList
+  pClientVPNEndpointId_ pCertificateRevocationList_
+  = ImportClientVPNClientCertificateRevocationList'{_icvccrlDryRun
+                                                      = Nothing,
+                                                    _icvccrlClientVPNEndpointId
+                                                      = pClientVPNEndpointId_,
+                                                    _icvccrlCertificateRevocationList
+                                                      =
+                                                      pCertificateRevocationList_}
 
 -- | Checks whether you have the required permissions for the action, without actually making the request, and provides an error response. If you have the required permissions, the error response is @DryRunOperation@ . Otherwise, it is @UnauthorizedOperation@ .
 icvccrlDryRun :: Lens' ImportClientVPNClientCertificateRevocationList (Maybe Bool)
@@ -139,13 +146,19 @@ instance ToQuery
                  _icvccrlCertificateRevocationList]
 
 -- | /See:/ 'importClientVPNClientCertificateRevocationListResponse' smart constructor.
-data ImportClientVPNClientCertificateRevocationListResponse =
-  ImportClientVPNClientCertificateRevocationListResponse'
-    { _icvccrlrsReturn         :: !(Maybe Bool)
-    , _icvccrlrsResponseStatus :: !Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data ImportClientVPNClientCertificateRevocationListResponse = ImportClientVPNClientCertificateRevocationListResponse'{_icvccrlrsReturn
+                                                                                                                      ::
+                                                                                                                      !(Maybe
+                                                                                                                          Bool),
+                                                                                                                      _icvccrlrsResponseStatus
+                                                                                                                      ::
+                                                                                                                      !Int}
+                                                                deriving (Eq,
+                                                                          Read,
+                                                                          Show,
+                                                                          Data,
+                                                                          Typeable,
+                                                                          Generic)
 
 -- | Creates a value of 'ImportClientVPNClientCertificateRevocationListResponse' with the minimum fields required to make a request.
 --
@@ -157,10 +170,13 @@ data ImportClientVPNClientCertificateRevocationListResponse =
 importClientVPNClientCertificateRevocationListResponse
     :: Int -- ^ 'icvccrlrsResponseStatus'
     -> ImportClientVPNClientCertificateRevocationListResponse
-importClientVPNClientCertificateRevocationListResponse pResponseStatus_ =
-  ImportClientVPNClientCertificateRevocationListResponse'
-    {_icvccrlrsReturn = Nothing, _icvccrlrsResponseStatus = pResponseStatus_}
-
+importClientVPNClientCertificateRevocationListResponse
+  pResponseStatus_
+  = ImportClientVPNClientCertificateRevocationListResponse'{_icvccrlrsReturn
+                                                              = Nothing,
+                                                            _icvccrlrsResponseStatus
+                                                              =
+                                                              pResponseStatus_}
 
 -- | Returns @true@ if the request succeeds; otherwise, it returns an error.
 icvccrlrsReturn :: Lens' ImportClientVPNClientCertificateRevocationListResponse (Maybe Bool)

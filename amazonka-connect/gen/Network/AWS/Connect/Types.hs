@@ -1,4 +1,4 @@
-{-# LANGUAGE OverloadedStrings #-}
+{-# LANGUAGE OverloadedStrings  #-}
 
 -- Derived from AWS service descriptions, licensed under Apache 2.0.
 
@@ -269,136 +269,175 @@ module Network.AWS.Connect.Types
     , usId
     ) where
 
-import Network.AWS.Connect.Types.Product
-import Network.AWS.Connect.Types.Sum
 import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.Sign.V4
+import Network.AWS.Connect.Types.Channel
+import Network.AWS.Connect.Types.Comparison
+import Network.AWS.Connect.Types.ContactFlowType
+import Network.AWS.Connect.Types.CurrentMetricName
+import Network.AWS.Connect.Types.Grouping
+import Network.AWS.Connect.Types.HistoricalMetricName
+import Network.AWS.Connect.Types.PhoneNumberCountryCode
+import Network.AWS.Connect.Types.PhoneNumberType
+import Network.AWS.Connect.Types.PhoneType
+import Network.AWS.Connect.Types.QueueType
+import Network.AWS.Connect.Types.Statistic
+import Network.AWS.Connect.Types.Unit
+import Network.AWS.Connect.Types.ChatMessage
+import Network.AWS.Connect.Types.ContactFlowSummary
+import Network.AWS.Connect.Types.Credentials
+import Network.AWS.Connect.Types.CurrentMetric
+import Network.AWS.Connect.Types.CurrentMetricData
+import Network.AWS.Connect.Types.CurrentMetricResult
+import Network.AWS.Connect.Types.Dimensions
+import Network.AWS.Connect.Types.Filters
+import Network.AWS.Connect.Types.HierarchyGroup
+import Network.AWS.Connect.Types.HierarchyGroupSummary
+import Network.AWS.Connect.Types.HierarchyLevel
+import Network.AWS.Connect.Types.HierarchyPath
+import Network.AWS.Connect.Types.HierarchyStructure
+import Network.AWS.Connect.Types.HistoricalMetric
+import Network.AWS.Connect.Types.HistoricalMetricData
+import Network.AWS.Connect.Types.HistoricalMetricResult
+import Network.AWS.Connect.Types.HoursOfOperationSummary
+import Network.AWS.Connect.Types.ParticipantDetails
+import Network.AWS.Connect.Types.PhoneNumberSummary
+import Network.AWS.Connect.Types.QueueReference
+import Network.AWS.Connect.Types.QueueSummary
+import Network.AWS.Connect.Types.RoutingProfileSummary
+import Network.AWS.Connect.Types.SecurityProfileSummary
+import Network.AWS.Connect.Types.Threshold
+import Network.AWS.Connect.Types.User
+import Network.AWS.Connect.Types.UserIdentityInfo
+import Network.AWS.Connect.Types.UserPhoneConfig
+import Network.AWS.Connect.Types.UserSummary
 
 -- | API version @2017-08-08@ of the Amazon Connect Service SDK configuration.
 connect :: Service
-connect =
-  Service
-    { _svcAbbrev = "Connect"
-    , _svcSigner = v4
-    , _svcPrefix = "connect"
-    , _svcVersion = "2017-08-08"
-    , _svcEndpoint = defaultEndpoint connect
-    , _svcTimeout = Just 70
-    , _svcCheck = statusSuccess
-    , _svcError = parseJSONError "Connect"
-    , _svcRetry = retry
-    }
-  where
-    retry =
-      Exponential
-        { _retryBase = 5.0e-2
-        , _retryGrowth = 2
-        , _retryAttempts = 5
-        , _retryCheck = check
-        }
-    check e
-      | has (hasCode "ThrottledException" . hasStatus 400) e =
-        Just "throttled_exception"
-      | has (hasStatus 429) e = Just "too_many_requests"
-      | has (hasCode "ThrottlingException" . hasStatus 400) e =
-        Just "throttling_exception"
-      | has (hasCode "Throttling" . hasStatus 400) e = Just "throttling"
-      | has (hasStatus 504) e = Just "gateway_timeout"
-      | has (hasCode "RequestThrottledException" . hasStatus 400) e =
-        Just "request_throttled_exception"
-      | has (hasStatus 502) e = Just "bad_gateway"
-      | has (hasStatus 503) e = Just "service_unavailable"
-      | has (hasStatus 500) e = Just "general_server_error"
-      | has (hasStatus 509) e = Just "limit_exceeded"
-      | otherwise = Nothing
-
+connect
+  = Service{_svcAbbrev = "Connect", _svcSigner = v4,
+            _svcPrefix = "connect", _svcVersion = "2017-08-08",
+            _svcEndpoint = defaultEndpoint connect,
+            _svcTimeout = Just 70, _svcCheck = statusSuccess,
+            _svcError = parseJSONError "Connect",
+            _svcRetry = retry}
+  where retry
+          = Exponential{_retryBase = 5.0e-2, _retryGrowth = 2,
+                        _retryAttempts = 5, _retryCheck = check}
+        check e
+          | has (hasCode "ThrottledException" . hasStatus 400)
+              e
+            = Just "throttled_exception"
+          | has (hasStatus 429) e = Just "too_many_requests"
+          | has (hasCode "ThrottlingException" . hasStatus 400)
+              e
+            = Just "throttling_exception"
+          | has (hasCode "Throttling" . hasStatus 400) e =
+            Just "throttling"
+          | has (hasStatus 504) e = Just "gateway_timeout"
+          | has
+              (hasCode "RequestThrottledException" . hasStatus 400)
+              e
+            = Just "request_throttled_exception"
+          | has (hasStatus 502) e = Just "bad_gateway"
+          | has (hasStatus 503) e = Just "service_unavailable"
+          | has (hasStatus 500) e = Just "general_server_error"
+          | has (hasStatus 509) e = Just "limit_exceeded"
+          | otherwise = Nothing
 
 -- | The contact is not permitted.
 --
 --
 _OutboundContactNotPermittedException :: AsError a => Getting (First ServiceError) a ServiceError
-_OutboundContactNotPermittedException =
-  _MatchServiceError connect "OutboundContactNotPermittedException" .
-  hasStatus 403
-
+_OutboundContactNotPermittedException
+  = _MatchServiceError connect
+      "OutboundContactNotPermittedException"
+      . hasStatus 403
 
 -- | One or more of the specified parameters are not valid.
 --
 --
 _InvalidParameterException :: AsError a => Getting (First ServiceError) a ServiceError
-_InvalidParameterException =
-  _MatchServiceError connect "InvalidParameterException" . hasStatus 400
-
+_InvalidParameterException
+  = _MatchServiceError connect
+      "InvalidParameterException"
+      . hasStatus 400
 
 -- | The request is not valid.
 --
 --
 _InvalidRequestException :: AsError a => Getting (First ServiceError) a ServiceError
-_InvalidRequestException =
-  _MatchServiceError connect "InvalidRequestException" . hasStatus 400
-
+_InvalidRequestException
+  = _MatchServiceError connect
+      "InvalidRequestException"
+      . hasStatus 400
 
 -- | A resource with the specified name already exists.
 --
 --
 _DuplicateResourceException :: AsError a => Getting (First ServiceError) a ServiceError
-_DuplicateResourceException =
-  _MatchServiceError connect "DuplicateResourceException" . hasStatus 409
-
+_DuplicateResourceException
+  = _MatchServiceError connect
+      "DuplicateResourceException"
+      . hasStatus 409
 
 -- | No user with the specified credentials was found in the Amazon Connect instance.
 --
 --
 _UserNotFoundException :: AsError a => Getting (First ServiceError) a ServiceError
-_UserNotFoundException =
-  _MatchServiceError connect "UserNotFoundException" . hasStatus 404
-
+_UserNotFoundException
+  = _MatchServiceError connect "UserNotFoundException"
+      . hasStatus 404
 
 -- | Outbound calls to the destination number are not allowed.
 --
 --
 _DestinationNotAllowedException :: AsError a => Getting (First ServiceError) a ServiceError
-_DestinationNotAllowedException =
-  _MatchServiceError connect "DestinationNotAllowedException" . hasStatus 403
-
+_DestinationNotAllowedException
+  = _MatchServiceError connect
+      "DestinationNotAllowedException"
+      . hasStatus 403
 
 -- | The contact with the specified ID is not active or does not exist.
 --
 --
 _ContactNotFoundException :: AsError a => Getting (First ServiceError) a ServiceError
-_ContactNotFoundException =
-  _MatchServiceError connect "ContactNotFoundException" . hasStatus 410
-
+_ContactNotFoundException
+  = _MatchServiceError connect
+      "ContactNotFoundException"
+      . hasStatus 410
 
 -- | The throttling limit has been exceeded.
 --
 --
 _ThrottlingException :: AsError a => Getting (First ServiceError) a ServiceError
-_ThrottlingException =
-  _MatchServiceError connect "ThrottlingException" . hasStatus 429
-
+_ThrottlingException
+  = _MatchServiceError connect "ThrottlingException" .
+      hasStatus 429
 
 -- | Request processing failed due to an error or failure with the service.
 --
 --
 _InternalServiceException :: AsError a => Getting (First ServiceError) a ServiceError
-_InternalServiceException =
-  _MatchServiceError connect "InternalServiceException" . hasStatus 500
-
+_InternalServiceException
+  = _MatchServiceError connect
+      "InternalServiceException"
+      . hasStatus 500
 
 -- | The specified resource was not found.
 --
 --
 _ResourceNotFoundException :: AsError a => Getting (First ServiceError) a ServiceError
-_ResourceNotFoundException =
-  _MatchServiceError connect "ResourceNotFoundException" . hasStatus 404
-
+_ResourceNotFoundException
+  = _MatchServiceError connect
+      "ResourceNotFoundException"
+      . hasStatus 404
 
 -- | The allowed limit for the resource has been exceeded.
 --
 --
 _LimitExceededException :: AsError a => Getting (First ServiceError) a ServiceError
-_LimitExceededException =
-  _MatchServiceError connect "LimitExceededException" . hasStatus 429
-
+_LimitExceededException
+  = _MatchServiceError connect "LimitExceededException"
+      . hasStatus 429

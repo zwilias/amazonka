@@ -61,118 +61,118 @@ module Network.AWS.AppSync
     -- * Operations
     -- $operations
 
-    -- ** UpdateDataSource
+    -- ** UpdateDataSource 
     , module Network.AWS.AppSync.UpdateDataSource
 
-    -- ** DeleteDataSource
+    -- ** DeleteDataSource 
     , module Network.AWS.AppSync.DeleteDataSource
 
-    -- ** CreateType
+    -- ** CreateType 
     , module Network.AWS.AppSync.CreateType
 
-    -- ** GetGraphqlAPI
+    -- ** GetGraphqlAPI 
     , module Network.AWS.AppSync.GetGraphqlAPI
 
-    -- ** ListTagsForResource
+    -- ** ListTagsForResource 
     , module Network.AWS.AppSync.ListTagsForResource
 
-    -- ** CreateGraphqlAPI
+    -- ** CreateGraphqlAPI 
     , module Network.AWS.AppSync.CreateGraphqlAPI
 
-    -- ** StartSchemaCreation
+    -- ** StartSchemaCreation 
     , module Network.AWS.AppSync.StartSchemaCreation
 
-    -- ** FlushAPICache
+    -- ** FlushAPICache 
     , module Network.AWS.AppSync.FlushAPICache
 
-    -- ** DeleteGraphqlAPI
+    -- ** DeleteGraphqlAPI 
     , module Network.AWS.AppSync.DeleteGraphqlAPI
 
-    -- ** UpdateGraphqlAPI
+    -- ** UpdateGraphqlAPI 
     , module Network.AWS.AppSync.UpdateGraphqlAPI
 
-    -- ** GetIntrospectionSchema
+    -- ** GetIntrospectionSchema 
     , module Network.AWS.AppSync.GetIntrospectionSchema
 
-    -- ** GetDataSource
+    -- ** GetDataSource 
     , module Network.AWS.AppSync.GetDataSource
 
     -- ** ListResolversByFunction (Paginated)
     , module Network.AWS.AppSync.ListResolversByFunction
 
-    -- ** CreateFunction
+    -- ** CreateFunction 
     , module Network.AWS.AppSync.CreateFunction
 
-    -- ** DeleteAPIKey
+    -- ** DeleteAPIKey 
     , module Network.AWS.AppSync.DeleteAPIKey
 
-    -- ** UpdateAPIKey
+    -- ** UpdateAPIKey 
     , module Network.AWS.AppSync.UpdateAPIKey
 
-    -- ** UpdateType
+    -- ** UpdateType 
     , module Network.AWS.AppSync.UpdateType
 
-    -- ** DeleteType
+    -- ** DeleteType 
     , module Network.AWS.AppSync.DeleteType
 
-    -- ** CreateDataSource
+    -- ** CreateDataSource 
     , module Network.AWS.AppSync.CreateDataSource
 
     -- ** ListTypes (Paginated)
     , module Network.AWS.AppSync.ListTypes
 
-    -- ** GetFunction
+    -- ** GetFunction 
     , module Network.AWS.AppSync.GetFunction
 
     -- ** ListDataSources (Paginated)
     , module Network.AWS.AppSync.ListDataSources
 
-    -- ** UpdateResolver
+    -- ** UpdateResolver 
     , module Network.AWS.AppSync.UpdateResolver
 
-    -- ** DeleteResolver
+    -- ** DeleteResolver 
     , module Network.AWS.AppSync.DeleteResolver
 
     -- ** ListResolvers (Paginated)
     , module Network.AWS.AppSync.ListResolvers
 
-    -- ** CreateResolver
+    -- ** CreateResolver 
     , module Network.AWS.AppSync.CreateResolver
 
-    -- ** GetSchemaCreationStatus
+    -- ** GetSchemaCreationStatus 
     , module Network.AWS.AppSync.GetSchemaCreationStatus
 
-    -- ** GetAPICache
+    -- ** GetAPICache 
     , module Network.AWS.AppSync.GetAPICache
 
-    -- ** UpdateAPICache
+    -- ** UpdateAPICache 
     , module Network.AWS.AppSync.UpdateAPICache
 
-    -- ** DeleteAPICache
+    -- ** DeleteAPICache 
     , module Network.AWS.AppSync.DeleteAPICache
 
     -- ** ListGraphqlAPIs (Paginated)
     , module Network.AWS.AppSync.ListGraphqlAPIs
 
-    -- ** CreateAPICache
+    -- ** CreateAPICache 
     , module Network.AWS.AppSync.CreateAPICache
 
-    -- ** TagResource
+    -- ** TagResource 
     , module Network.AWS.AppSync.TagResource
 
-    -- ** GetResolver
+    -- ** GetResolver 
     , module Network.AWS.AppSync.GetResolver
 
-    -- ** UpdateFunction
+    -- ** UpdateFunction 
     , module Network.AWS.AppSync.UpdateFunction
 
-    -- ** DeleteFunction
+    -- ** DeleteFunction 
     , module Network.AWS.AppSync.DeleteFunction
 
-    -- ** UntagResource
+    -- ** UntagResource 
     , module Network.AWS.AppSync.UntagResource
 
-    -- ** CreateAPIKey
+    -- ** CreateAPIKey 
     , module Network.AWS.AppSync.CreateAPIKey
 
     -- ** ListFunctions (Paginated)
@@ -181,7 +181,7 @@ module Network.AWS.AppSync
     -- ** ListAPIKeys (Paginated)
     , module Network.AWS.AppSync.ListAPIKeys
 
-    -- ** GetType
+    -- ** GetType 
     , module Network.AWS.AppSync.GetType
 
     -- * Types

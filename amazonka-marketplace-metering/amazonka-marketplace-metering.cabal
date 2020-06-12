@@ -52,8 +52,9 @@ library
         , Network.AWS.MarketplaceMetering.Waiters
 
     other-modules:
-          Network.AWS.MarketplaceMetering.Types.Product
-        , Network.AWS.MarketplaceMetering.Types.Sum
+          Network.AWS.MarketplaceMetering.Types.UsageRecord
+        , Network.AWS.MarketplaceMetering.Types.UsageRecordResult
+        , Network.AWS.MarketplaceMetering.Types.UsageRecordResultStatus
 
     build-depends:
           amazonka-core == 1.6.1.*

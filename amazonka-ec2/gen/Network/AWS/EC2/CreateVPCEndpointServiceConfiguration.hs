@@ -21,7 +21,7 @@
 -- Creates a VPC endpoint service configuration to which service consumers (AWS accounts, IAM users, and IAM roles) can connect. Service consumers can create an interface VPC endpoint to connect to your service.
 --
 --
--- To create an endpoint service configuration, you must first create a Network Load Balancer for your service. For more information, see <https://docs.aws.amazon.com/vpc/latest/userguide/endpoint-service.html VPC Endpoint Services> in the /Amazon Virtual Private Cloud User Guide/ .
+-- To create an endpoint service configuration, you must first create a Network Load Balancer for your service. For more information, see <https://docs.aws.amazon.com/vpc/latest/userguide/endpoint-service.html VPC Endpoint Services> in the /Amazon Virtual Private Cloud User Guide/ . 
 --
 -- If you set the private DNS name, you must prove that you own the private DNS domain name. For more information, see <https://docs.aws.amazon.com/vpc/latest/userguide/endpoint-services-dns-validation.html VPC Endpoint Service Private DNS Name Verification> in the /Amazon Virtual Private Cloud User Guide/ .
 --
@@ -48,24 +48,37 @@ module Network.AWS.EC2.CreateVPCEndpointServiceConfiguration
     ) where
 
 import Network.AWS.EC2.Types
-import Network.AWS.EC2.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 
 -- | /See:/ 'createVPCEndpointServiceConfiguration' smart constructor.
-data CreateVPCEndpointServiceConfiguration =
-  CreateVPCEndpointServiceConfiguration'
-    { _cvescClientToken             :: !(Maybe Text)
-    , _cvescTagSpecifications       :: !(Maybe [TagSpecification])
-    , _cvescAcceptanceRequired      :: !(Maybe Bool)
-    , _cvescPrivateDNSName          :: !(Maybe Text)
-    , _cvescDryRun                  :: !(Maybe Bool)
-    , _cvescNetworkLoadBalancerARNs :: ![Text]
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data CreateVPCEndpointServiceConfiguration = CreateVPCEndpointServiceConfiguration'{_cvescClientToken
+                                                                                    ::
+                                                                                    !(Maybe
+                                                                                        Text),
+                                                                                    _cvescTagSpecifications
+                                                                                    ::
+                                                                                    !(Maybe
+                                                                                        [TagSpecification]),
+                                                                                    _cvescAcceptanceRequired
+                                                                                    ::
+                                                                                    !(Maybe
+                                                                                        Bool),
+                                                                                    _cvescPrivateDNSName
+                                                                                    ::
+                                                                                    !(Maybe
+                                                                                        Text),
+                                                                                    _cvescDryRun
+                                                                                    ::
+                                                                                    !(Maybe
+                                                                                        Bool),
+                                                                                    _cvescNetworkLoadBalancerARNs
+                                                                                    ::
+                                                                                    ![Text]}
+                                               deriving (Eq, Read, Show, Data,
+                                                         Typeable, Generic)
 
 -- | Creates a value of 'CreateVPCEndpointServiceConfiguration' with the minimum fields required to make a request.
 --
@@ -84,16 +97,15 @@ data CreateVPCEndpointServiceConfiguration =
 -- * 'cvescNetworkLoadBalancerARNs' - The Amazon Resource Names (ARNs) of one or more Network Load Balancers for your service.
 createVPCEndpointServiceConfiguration
     :: CreateVPCEndpointServiceConfiguration
-createVPCEndpointServiceConfiguration =
-  CreateVPCEndpointServiceConfiguration'
-    { _cvescClientToken = Nothing
-    , _cvescTagSpecifications = Nothing
-    , _cvescAcceptanceRequired = Nothing
-    , _cvescPrivateDNSName = Nothing
-    , _cvescDryRun = Nothing
-    , _cvescNetworkLoadBalancerARNs = mempty
-    }
-
+createVPCEndpointServiceConfiguration
+  = CreateVPCEndpointServiceConfiguration'{_cvescClientToken
+                                             = Nothing,
+                                           _cvescTagSpecifications = Nothing,
+                                           _cvescAcceptanceRequired = Nothing,
+                                           _cvescPrivateDNSName = Nothing,
+                                           _cvescDryRun = Nothing,
+                                           _cvescNetworkLoadBalancerARNs =
+                                             mempty}
 
 -- | Unique, case-sensitive identifier that you provide to ensure the idempotency of the request. For more information, see <https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/Run_Instance_Idempotency.html How to Ensure Idempotency> .
 cvescClientToken :: Lens' CreateVPCEndpointServiceConfiguration (Maybe Text)
@@ -169,14 +181,20 @@ instance ToQuery
                  _cvescNetworkLoadBalancerARNs]
 
 -- | /See:/ 'createVPCEndpointServiceConfigurationResponse' smart constructor.
-data CreateVPCEndpointServiceConfigurationResponse =
-  CreateVPCEndpointServiceConfigurationResponse'
-    { _cvescrsClientToken          :: !(Maybe Text)
-    , _cvescrsServiceConfiguration :: !(Maybe ServiceConfiguration)
-    , _cvescrsResponseStatus       :: !Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data CreateVPCEndpointServiceConfigurationResponse = CreateVPCEndpointServiceConfigurationResponse'{_cvescrsClientToken
+                                                                                                    ::
+                                                                                                    !(Maybe
+                                                                                                        Text),
+                                                                                                    _cvescrsServiceConfiguration
+                                                                                                    ::
+                                                                                                    !(Maybe
+                                                                                                        ServiceConfiguration),
+                                                                                                    _cvescrsResponseStatus
+                                                                                                    ::
+                                                                                                    !Int}
+                                                       deriving (Eq, Read, Show,
+                                                                 Data, Typeable,
+                                                                 Generic)
 
 -- | Creates a value of 'CreateVPCEndpointServiceConfigurationResponse' with the minimum fields required to make a request.
 --
@@ -190,13 +208,14 @@ data CreateVPCEndpointServiceConfigurationResponse =
 createVPCEndpointServiceConfigurationResponse
     :: Int -- ^ 'cvescrsResponseStatus'
     -> CreateVPCEndpointServiceConfigurationResponse
-createVPCEndpointServiceConfigurationResponse pResponseStatus_ =
-  CreateVPCEndpointServiceConfigurationResponse'
-    { _cvescrsClientToken = Nothing
-    , _cvescrsServiceConfiguration = Nothing
-    , _cvescrsResponseStatus = pResponseStatus_
-    }
-
+createVPCEndpointServiceConfigurationResponse
+  pResponseStatus_
+  = CreateVPCEndpointServiceConfigurationResponse'{_cvescrsClientToken
+                                                     = Nothing,
+                                                   _cvescrsServiceConfiguration
+                                                     = Nothing,
+                                                   _cvescrsResponseStatus =
+                                                     pResponseStatus_}
 
 -- | Unique, case-sensitive identifier that you provide to ensure the idempotency of the request.
 cvescrsClientToken :: Lens' CreateVPCEndpointServiceConfigurationResponse (Maybe Text)

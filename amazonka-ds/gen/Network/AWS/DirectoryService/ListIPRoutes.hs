@@ -43,7 +43,6 @@ module Network.AWS.DirectoryService.ListIPRoutes
     ) where
 
 import Network.AWS.DirectoryService.Types
-import Network.AWS.DirectoryService.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Pager
 import Network.AWS.Prelude
@@ -51,14 +50,11 @@ import Network.AWS.Request
 import Network.AWS.Response
 
 -- | /See:/ 'listIPRoutes' smart constructor.
-data ListIPRoutes =
-  ListIPRoutes'
-    { _lirNextToken   :: !(Maybe Text)
-    , _lirLimit       :: !(Maybe Nat)
-    , _lirDirectoryId :: !Text
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data ListIPRoutes = ListIPRoutes'{_lirNextToken ::
+                                  !(Maybe Text),
+                                  _lirLimit :: !(Maybe Nat),
+                                  _lirDirectoryId :: !Text}
+                      deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'ListIPRoutes' with the minimum fields required to make a request.
 --
@@ -72,13 +68,9 @@ data ListIPRoutes =
 listIPRoutes
     :: Text -- ^ 'lirDirectoryId'
     -> ListIPRoutes
-listIPRoutes pDirectoryId_ =
-  ListIPRoutes'
-    { _lirNextToken = Nothing
-    , _lirLimit = Nothing
-    , _lirDirectoryId = pDirectoryId_
-    }
-
+listIPRoutes pDirectoryId_
+  = ListIPRoutes'{_lirNextToken = Nothing,
+                  _lirLimit = Nothing, _lirDirectoryId = pDirectoryId_}
 
 -- | The /ListIpRoutes.NextToken/ value from a previous call to 'ListIpRoutes' . Pass null if this is the first call.
 lirNextToken :: Lens' ListIPRoutes (Maybe Text)
@@ -139,14 +131,12 @@ instance ToQuery ListIPRoutes where
         toQuery = const mempty
 
 -- | /See:/ 'listIPRoutesResponse' smart constructor.
-data ListIPRoutesResponse =
-  ListIPRoutesResponse'
-    { _lirrsIPRoutesInfo   :: !(Maybe [IPRouteInfo])
-    , _lirrsNextToken      :: !(Maybe Text)
-    , _lirrsResponseStatus :: !Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data ListIPRoutesResponse = ListIPRoutesResponse'{_lirrsIPRoutesInfo
+                                                  :: !(Maybe [IPRouteInfo]),
+                                                  _lirrsNextToken ::
+                                                  !(Maybe Text),
+                                                  _lirrsResponseStatus :: !Int}
+                              deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'ListIPRoutesResponse' with the minimum fields required to make a request.
 --
@@ -160,13 +150,10 @@ data ListIPRoutesResponse =
 listIPRoutesResponse
     :: Int -- ^ 'lirrsResponseStatus'
     -> ListIPRoutesResponse
-listIPRoutesResponse pResponseStatus_ =
-  ListIPRoutesResponse'
-    { _lirrsIPRoutesInfo = Nothing
-    , _lirrsNextToken = Nothing
-    , _lirrsResponseStatus = pResponseStatus_
-    }
-
+listIPRoutesResponse pResponseStatus_
+  = ListIPRoutesResponse'{_lirrsIPRoutesInfo = Nothing,
+                          _lirrsNextToken = Nothing,
+                          _lirrsResponseStatus = pResponseStatus_}
 
 -- | A list of 'IpRoute' s.
 lirrsIPRoutesInfo :: Lens' ListIPRoutesResponse [IPRouteInfo]

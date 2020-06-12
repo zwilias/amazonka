@@ -40,7 +40,6 @@ module Network.AWS.APIGateway.GetSDKTypes
     ) where
 
 import Network.AWS.APIGateway.Types
-import Network.AWS.APIGateway.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Pager
 import Network.AWS.Prelude
@@ -52,13 +51,10 @@ import Network.AWS.Response
 --
 --
 -- /See:/ 'getSDKTypes' smart constructor.
-data GetSDKTypes =
-  GetSDKTypes'
-    { _gstLimit    :: !(Maybe Int)
-    , _gstPosition :: !(Maybe Text)
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data GetSDKTypes = GetSDKTypes'{_gstLimit ::
+                                !(Maybe Int),
+                                _gstPosition :: !(Maybe Text)}
+                     deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'GetSDKTypes' with the minimum fields required to make a request.
 --
@@ -69,8 +65,9 @@ data GetSDKTypes =
 -- * 'gstPosition' - The current pagination position in the paged result set.
 getSDKTypes
     :: GetSDKTypes
-getSDKTypes = GetSDKTypes' {_gstLimit = Nothing, _gstPosition = Nothing}
-
+getSDKTypes
+  = GetSDKTypes'{_gstLimit = Nothing,
+                 _gstPosition = Nothing}
 
 -- | The maximum number of returned results per page. The default value is 25 and the maximum value is 500.
 gstLimit :: Lens' GetSDKTypes (Maybe Int)
@@ -120,14 +117,11 @@ instance ToQuery GetSDKTypes where
 --
 --
 -- /See:/ 'getSDKTypesResponse' smart constructor.
-data GetSDKTypesResponse =
-  GetSDKTypesResponse'
-    { _gstrsItems          :: !(Maybe [SDKType])
-    , _gstrsPosition       :: !(Maybe Text)
-    , _gstrsResponseStatus :: !Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data GetSDKTypesResponse = GetSDKTypesResponse'{_gstrsItems
+                                                :: !(Maybe [SDKType]),
+                                                _gstrsPosition :: !(Maybe Text),
+                                                _gstrsResponseStatus :: !Int}
+                             deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'GetSDKTypesResponse' with the minimum fields required to make a request.
 --
@@ -141,13 +135,10 @@ data GetSDKTypesResponse =
 getSDKTypesResponse
     :: Int -- ^ 'gstrsResponseStatus'
     -> GetSDKTypesResponse
-getSDKTypesResponse pResponseStatus_ =
-  GetSDKTypesResponse'
-    { _gstrsItems = Nothing
-    , _gstrsPosition = Nothing
-    , _gstrsResponseStatus = pResponseStatus_
-    }
-
+getSDKTypesResponse pResponseStatus_
+  = GetSDKTypesResponse'{_gstrsItems = Nothing,
+                         _gstrsPosition = Nothing,
+                         _gstrsResponseStatus = pResponseStatus_}
 
 -- | The current page of elements from this collection.
 gstrsItems :: Lens' GetSDKTypesResponse [SDKType]

@@ -42,21 +42,17 @@ module Network.AWS.CloudWatchLogs.PutDestination
     ) where
 
 import Network.AWS.CloudWatchLogs.Types
-import Network.AWS.CloudWatchLogs.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 
 -- | /See:/ 'putDestination' smart constructor.
-data PutDestination =
-  PutDestination'
-    { _pdDestinationName :: !Text
-    , _pdTargetARN       :: !Text
-    , _pdRoleARN         :: !Text
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data PutDestination = PutDestination'{_pdDestinationName
+                                      :: !Text,
+                                      _pdTargetARN :: !Text,
+                                      _pdRoleARN :: !Text}
+                        deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'PutDestination' with the minimum fields required to make a request.
 --
@@ -72,13 +68,11 @@ putDestination
     -> Text -- ^ 'pdTargetARN'
     -> Text -- ^ 'pdRoleARN'
     -> PutDestination
-putDestination pDestinationName_ pTargetARN_ pRoleARN_ =
-  PutDestination'
-    { _pdDestinationName = pDestinationName_
-    , _pdTargetARN = pTargetARN_
-    , _pdRoleARN = pRoleARN_
-    }
-
+putDestination pDestinationName_ pTargetARN_
+  pRoleARN_
+  = PutDestination'{_pdDestinationName =
+                      pDestinationName_,
+                    _pdTargetARN = pTargetARN_, _pdRoleARN = pRoleARN_}
 
 -- | A name for the destination.
 pdDestinationName :: Lens' PutDestination Text
@@ -129,13 +123,12 @@ instance ToQuery PutDestination where
         toQuery = const mempty
 
 -- | /See:/ 'putDestinationResponse' smart constructor.
-data PutDestinationResponse =
-  PutDestinationResponse'
-    { _pdrsDestination    :: !(Maybe Destination)
-    , _pdrsResponseStatus :: !Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data PutDestinationResponse = PutDestinationResponse'{_pdrsDestination
+                                                      :: !(Maybe Destination),
+                                                      _pdrsResponseStatus ::
+                                                      !Int}
+                                deriving (Eq, Read, Show, Data, Typeable,
+                                          Generic)
 
 -- | Creates a value of 'PutDestinationResponse' with the minimum fields required to make a request.
 --
@@ -147,10 +140,9 @@ data PutDestinationResponse =
 putDestinationResponse
     :: Int -- ^ 'pdrsResponseStatus'
     -> PutDestinationResponse
-putDestinationResponse pResponseStatus_ =
-  PutDestinationResponse'
-    {_pdrsDestination = Nothing, _pdrsResponseStatus = pResponseStatus_}
-
+putDestinationResponse pResponseStatus_
+  = PutDestinationResponse'{_pdrsDestination = Nothing,
+                            _pdrsResponseStatus = pResponseStatus_}
 
 -- | The destination.
 pdrsDestination :: Lens' PutDestinationResponse (Maybe Destination)

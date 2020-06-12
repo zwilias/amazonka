@@ -18,7 +18,7 @@
 -- Stability   : auto-generated
 -- Portability : non-portable (GHC extensions)
 --
--- Inspects the text of a batch of documents for named entities and returns information about them. For more information about named entities, see 'how-entities'
+-- Inspects the text of a batch of documents for named entities and returns information about them. For more information about named entities, see 'how-entities' 
 --
 --
 module Network.AWS.Comprehend.BatchDetectEntities
@@ -40,20 +40,17 @@ module Network.AWS.Comprehend.BatchDetectEntities
     ) where
 
 import Network.AWS.Comprehend.Types
-import Network.AWS.Comprehend.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 
 -- | /See:/ 'batchDetectEntities' smart constructor.
-data BatchDetectEntities =
-  BatchDetectEntities'
-    { _bdeTextList     :: ![Text]
-    , _bdeLanguageCode :: !LanguageCode
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data BatchDetectEntities = BatchDetectEntities'{_bdeTextList
+                                                :: ![Text],
+                                                _bdeLanguageCode ::
+                                                !LanguageCode}
+                             deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'BatchDetectEntities' with the minimum fields required to make a request.
 --
@@ -65,10 +62,9 @@ data BatchDetectEntities =
 batchDetectEntities
     :: LanguageCode -- ^ 'bdeLanguageCode'
     -> BatchDetectEntities
-batchDetectEntities pLanguageCode_ =
-  BatchDetectEntities'
-    {_bdeTextList = mempty, _bdeLanguageCode = pLanguageCode_}
-
+batchDetectEntities pLanguageCode_
+  = BatchDetectEntities'{_bdeTextList = mempty,
+                         _bdeLanguageCode = pLanguageCode_}
 
 -- | A list containing the text of the input documents. The list can contain a maximum of 25 documents. Each document must contain fewer than 5,000 bytes of UTF-8 encoded characters.
 bdeTextList :: Lens' BatchDetectEntities [Text]
@@ -118,14 +114,16 @@ instance ToQuery BatchDetectEntities where
         toQuery = const mempty
 
 -- | /See:/ 'batchDetectEntitiesResponse' smart constructor.
-data BatchDetectEntitiesResponse =
-  BatchDetectEntitiesResponse'
-    { _bdersResponseStatus :: !Int
-    , _bdersResultList     :: ![BatchDetectEntitiesItemResult]
-    , _bdersErrorList      :: ![BatchItemError]
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data BatchDetectEntitiesResponse = BatchDetectEntitiesResponse'{_bdersResponseStatus
+                                                                :: !Int,
+                                                                _bdersResultList
+                                                                ::
+                                                                ![BatchDetectEntitiesItemResult],
+                                                                _bdersErrorList
+                                                                ::
+                                                                ![BatchItemError]}
+                                     deriving (Eq, Read, Show, Data, Typeable,
+                                               Generic)
 
 -- | Creates a value of 'BatchDetectEntitiesResponse' with the minimum fields required to make a request.
 --
@@ -139,13 +137,11 @@ data BatchDetectEntitiesResponse =
 batchDetectEntitiesResponse
     :: Int -- ^ 'bdersResponseStatus'
     -> BatchDetectEntitiesResponse
-batchDetectEntitiesResponse pResponseStatus_ =
-  BatchDetectEntitiesResponse'
-    { _bdersResponseStatus = pResponseStatus_
-    , _bdersResultList = mempty
-    , _bdersErrorList = mempty
-    }
-
+batchDetectEntitiesResponse pResponseStatus_
+  = BatchDetectEntitiesResponse'{_bdersResponseStatus =
+                                   pResponseStatus_,
+                                 _bdersResultList = mempty,
+                                 _bdersErrorList = mempty}
 
 -- | -- | The response status code.
 bdersResponseStatus :: Lens' BatchDetectEntitiesResponse Int

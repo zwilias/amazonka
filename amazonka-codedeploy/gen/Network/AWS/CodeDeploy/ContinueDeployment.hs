@@ -18,7 +18,7 @@
 -- Stability   : auto-generated
 -- Portability : non-portable (GHC extensions)
 --
--- For a blue/green deployment, starts the process of rerouting traffic from instances in the original environment to instances in the replacement environment without waiting for a specified wait time to elapse. (Traffic rerouting, which is achieved by registering instances in the replacement environment with the load balancer, can start as soon as all instances have a status of Ready.)
+-- For a blue/green deployment, starts the process of rerouting traffic from instances in the original environment to instances in the replacement environment without waiting for a specified wait time to elapse. (Traffic rerouting, which is achieved by registering instances in the replacement environment with the load balancer, can start as soon as all instances have a status of Ready.) 
 --
 --
 module Network.AWS.CodeDeploy.ContinueDeployment
@@ -36,40 +36,36 @@ module Network.AWS.CodeDeploy.ContinueDeployment
     ) where
 
 import Network.AWS.CodeDeploy.Types
-import Network.AWS.CodeDeploy.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 
 -- | /See:/ 'continueDeployment' smart constructor.
-data ContinueDeployment =
-  ContinueDeployment'
-    { _cdDeploymentId       :: !(Maybe Text)
-    , _cdDeploymentWaitType :: !(Maybe DeploymentWaitType)
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data ContinueDeployment = ContinueDeployment'{_cdDeploymentId
+                                              :: !(Maybe Text),
+                                              _cdDeploymentWaitType ::
+                                              !(Maybe DeploymentWaitType)}
+                            deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'ContinueDeployment' with the minimum fields required to make a request.
 --
 -- Use one of the following lenses to modify other fields as desired:
 --
--- * 'cdDeploymentId' - The unique ID of a blue/green deployment for which you want to start rerouting traffic to the replacement environment.
+-- * 'cdDeploymentId' - The unique ID of a blue/green deployment for which you want to start rerouting traffic to the replacement environment. 
 --
--- * 'cdDeploymentWaitType' - The status of the deployment's waiting period. READY_WAIT indicates the deployment is ready to start shifting traffic. TERMINATION_WAIT indicates the traffic is shifted, but the original target is not terminated.
+-- * 'cdDeploymentWaitType' - The status of the deployment's waiting period. READY_WAIT indicates the deployment is ready to start shifting traffic. TERMINATION_WAIT indicates the traffic is shifted, but the original target is not terminated. 
 continueDeployment
     :: ContinueDeployment
-continueDeployment =
-  ContinueDeployment'
-    {_cdDeploymentId = Nothing, _cdDeploymentWaitType = Nothing}
+continueDeployment
+  = ContinueDeployment'{_cdDeploymentId = Nothing,
+                        _cdDeploymentWaitType = Nothing}
 
-
--- | The unique ID of a blue/green deployment for which you want to start rerouting traffic to the replacement environment.
+-- | The unique ID of a blue/green deployment for which you want to start rerouting traffic to the replacement environment. 
 cdDeploymentId :: Lens' ContinueDeployment (Maybe Text)
 cdDeploymentId = lens _cdDeploymentId (\ s a -> s{_cdDeploymentId = a})
 
--- | The status of the deployment's waiting period. READY_WAIT indicates the deployment is ready to start shifting traffic. TERMINATION_WAIT indicates the traffic is shifted, but the original target is not terminated.
+-- | The status of the deployment's waiting period. READY_WAIT indicates the deployment is ready to start shifting traffic. TERMINATION_WAIT indicates the traffic is shifted, but the original target is not terminated. 
 cdDeploymentWaitType :: Lens' ContinueDeployment (Maybe DeploymentWaitType)
 cdDeploymentWaitType = lens _cdDeploymentWaitType (\ s a -> s{_cdDeploymentWaitType = a})
 
@@ -107,16 +103,15 @@ instance ToQuery ContinueDeployment where
         toQuery = const mempty
 
 -- | /See:/ 'continueDeploymentResponse' smart constructor.
-data ContinueDeploymentResponse =
-  ContinueDeploymentResponse'
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data ContinueDeploymentResponse = ContinueDeploymentResponse'
+                                    deriving (Eq, Read, Show, Data, Typeable,
+                                              Generic)
 
 -- | Creates a value of 'ContinueDeploymentResponse' with the minimum fields required to make a request.
 --
 continueDeploymentResponse
     :: ContinueDeploymentResponse
-continueDeploymentResponse = ContinueDeploymentResponse'
-
+continueDeploymentResponse
+  = ContinueDeploymentResponse'
 
 instance NFData ContinueDeploymentResponse where

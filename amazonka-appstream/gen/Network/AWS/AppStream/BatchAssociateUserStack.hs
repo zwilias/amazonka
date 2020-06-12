@@ -38,19 +38,17 @@ module Network.AWS.AppStream.BatchAssociateUserStack
     ) where
 
 import Network.AWS.AppStream.Types
-import Network.AWS.AppStream.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 
 -- | /See:/ 'batchAssociateUserStack' smart constructor.
-newtype BatchAssociateUserStack =
-  BatchAssociateUserStack'
-    { _bausUserStackAssociations :: List1 UserStackAssociation
-    }
-  deriving (Eq, Show, Data, Typeable, Generic)
-
+newtype BatchAssociateUserStack = BatchAssociateUserStack'{_bausUserStackAssociations
+                                                           ::
+                                                           List1
+                                                             UserStackAssociation}
+                                    deriving (Eq, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'BatchAssociateUserStack' with the minimum fields required to make a request.
 --
@@ -60,10 +58,9 @@ newtype BatchAssociateUserStack =
 batchAssociateUserStack
     :: NonEmpty UserStackAssociation -- ^ 'bausUserStackAssociations'
     -> BatchAssociateUserStack
-batchAssociateUserStack pUserStackAssociations_ =
-  BatchAssociateUserStack'
-    {_bausUserStackAssociations = _List1 # pUserStackAssociations_}
-
+batchAssociateUserStack pUserStackAssociations_
+  = BatchAssociateUserStack'{_bausUserStackAssociations
+                               = _List1 # pUserStackAssociations_}
 
 -- | The list of UserStackAssociation objects.
 bausUserStackAssociations :: Lens' BatchAssociateUserStack (NonEmpty UserStackAssociation)
@@ -108,13 +105,14 @@ instance ToQuery BatchAssociateUserStack where
         toQuery = const mempty
 
 -- | /See:/ 'batchAssociateUserStackResponse' smart constructor.
-data BatchAssociateUserStackResponse =
-  BatchAssociateUserStackResponse'
-    { _bausrsErrors         :: !(Maybe [UserStackAssociationError])
-    , _bausrsResponseStatus :: !Int
-    }
-  deriving (Eq, Show, Data, Typeable, Generic)
-
+data BatchAssociateUserStackResponse = BatchAssociateUserStackResponse'{_bausrsErrors
+                                                                        ::
+                                                                        !(Maybe
+                                                                            [UserStackAssociationError]),
+                                                                        _bausrsResponseStatus
+                                                                        :: !Int}
+                                         deriving (Eq, Show, Data, Typeable,
+                                                   Generic)
 
 -- | Creates a value of 'BatchAssociateUserStackResponse' with the minimum fields required to make a request.
 --
@@ -126,10 +124,10 @@ data BatchAssociateUserStackResponse =
 batchAssociateUserStackResponse
     :: Int -- ^ 'bausrsResponseStatus'
     -> BatchAssociateUserStackResponse
-batchAssociateUserStackResponse pResponseStatus_ =
-  BatchAssociateUserStackResponse'
-    {_bausrsErrors = Nothing, _bausrsResponseStatus = pResponseStatus_}
-
+batchAssociateUserStackResponse pResponseStatus_
+  = BatchAssociateUserStackResponse'{_bausrsErrors =
+                                       Nothing,
+                                     _bausrsResponseStatus = pResponseStatus_}
 
 -- | The list of UserStackAssociationError objects.
 bausrsErrors :: Lens' BatchAssociateUserStackResponse [UserStackAssociationError]

@@ -18,7 +18,7 @@
 -- Stability   : auto-generated
 -- Portability : non-portable (GHC extensions)
 --
--- Removes a specific tag associated with an Amazon Comprehend resource.
+-- Removes a specific tag associated with an Amazon Comprehend resource. 
 --
 --
 module Network.AWS.Comprehend.UntagResource
@@ -38,40 +38,36 @@ module Network.AWS.Comprehend.UntagResource
     ) where
 
 import Network.AWS.Comprehend.Types
-import Network.AWS.Comprehend.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 
 -- | /See:/ 'untagResource' smart constructor.
-data UntagResource =
-  UntagResource'
-    { _urResourceARN :: !Text
-    , _urTagKeys     :: ![Text]
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data UntagResource = UntagResource'{_urResourceARN ::
+                                    !Text,
+                                    _urTagKeys :: ![Text]}
+                       deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'UntagResource' with the minimum fields required to make a request.
 --
 -- Use one of the following lenses to modify other fields as desired:
 --
--- * 'urResourceARN' - The Amazon Resource Name (ARN) of the given Amazon Comprehend resource from which you want to remove the tags.
+-- * 'urResourceARN' - The Amazon Resource Name (ARN) of the given Amazon Comprehend resource from which you want to remove the tags. 
 --
--- * 'urTagKeys' - The initial part of a key-value pair that forms a tag being removed from a given resource. For example, a tag with "Sales" as the key might be added to a resource to indicate its use by the sales department. Keys must be unique and cannot be duplicated for a particular resource.
+-- * 'urTagKeys' - The initial part of a key-value pair that forms a tag being removed from a given resource. For example, a tag with "Sales" as the key might be added to a resource to indicate its use by the sales department. Keys must be unique and cannot be duplicated for a particular resource. 
 untagResource
     :: Text -- ^ 'urResourceARN'
     -> UntagResource
-untagResource pResourceARN_ =
-  UntagResource' {_urResourceARN = pResourceARN_, _urTagKeys = mempty}
+untagResource pResourceARN_
+  = UntagResource'{_urResourceARN = pResourceARN_,
+                   _urTagKeys = mempty}
 
-
--- | The Amazon Resource Name (ARN) of the given Amazon Comprehend resource from which you want to remove the tags.
+-- | The Amazon Resource Name (ARN) of the given Amazon Comprehend resource from which you want to remove the tags. 
 urResourceARN :: Lens' UntagResource Text
 urResourceARN = lens _urResourceARN (\ s a -> s{_urResourceARN = a})
 
--- | The initial part of a key-value pair that forms a tag being removed from a given resource. For example, a tag with "Sales" as the key might be added to a resource to indicate its use by the sales department. Keys must be unique and cannot be duplicated for a particular resource.
+-- | The initial part of a key-value pair that forms a tag being removed from a given resource. For example, a tag with "Sales" as the key might be added to a resource to indicate its use by the sales department. Keys must be unique and cannot be duplicated for a particular resource. 
 urTagKeys :: Lens' UntagResource [Text]
 urTagKeys = lens _urTagKeys (\ s a -> s{_urTagKeys = a}) . _Coerce
 
@@ -110,12 +106,10 @@ instance ToQuery UntagResource where
         toQuery = const mempty
 
 -- | /See:/ 'untagResourceResponse' smart constructor.
-newtype UntagResourceResponse =
-  UntagResourceResponse'
-    { _urrsResponseStatus :: Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+newtype UntagResourceResponse = UntagResourceResponse'{_urrsResponseStatus
+                                                       :: Int}
+                                  deriving (Eq, Read, Show, Data, Typeable,
+                                            Generic)
 
 -- | Creates a value of 'UntagResourceResponse' with the minimum fields required to make a request.
 --
@@ -125,9 +119,9 @@ newtype UntagResourceResponse =
 untagResourceResponse
     :: Int -- ^ 'urrsResponseStatus'
     -> UntagResourceResponse
-untagResourceResponse pResponseStatus_ =
-  UntagResourceResponse' {_urrsResponseStatus = pResponseStatus_}
-
+untagResourceResponse pResponseStatus_
+  = UntagResourceResponse'{_urrsResponseStatus =
+                             pResponseStatus_}
 
 -- | -- | The response status code.
 urrsResponseStatus :: Lens' UntagResourceResponse Int

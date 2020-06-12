@@ -45,19 +45,16 @@ import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 import Network.AWS.S3.Types
-import Network.AWS.S3.Types.Product
 
 -- | /See:/ 'restoreObject' smart constructor.
-data RestoreObject =
-  RestoreObject'
-    { _roVersionId      :: !(Maybe ObjectVersionId)
-    , _roRequestPayer   :: !(Maybe RequestPayer)
-    , _roRestoreRequest :: !(Maybe RestoreRequest)
-    , _roBucket         :: !BucketName
-    , _roKey            :: !ObjectKey
-    }
-  deriving (Eq, Show, Data, Typeable, Generic)
-
+data RestoreObject = RestoreObject'{_roVersionId ::
+                                    !(Maybe ObjectVersionId),
+                                    _roRequestPayer :: !(Maybe RequestPayer),
+                                    _roRestoreRequest ::
+                                    !(Maybe RestoreRequest),
+                                    _roBucket :: !BucketName,
+                                    _roKey :: !ObjectKey}
+                       deriving (Eq, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'RestoreObject' with the minimum fields required to make a request.
 --
@@ -76,15 +73,11 @@ restoreObject
     :: BucketName -- ^ 'roBucket'
     -> ObjectKey -- ^ 'roKey'
     -> RestoreObject
-restoreObject pBucket_ pKey_ =
-  RestoreObject'
-    { _roVersionId = Nothing
-    , _roRequestPayer = Nothing
-    , _roRestoreRequest = Nothing
-    , _roBucket = pBucket_
-    , _roKey = pKey_
-    }
-
+restoreObject pBucket_ pKey_
+  = RestoreObject'{_roVersionId = Nothing,
+                   _roRequestPayer = Nothing,
+                   _roRestoreRequest = Nothing, _roBucket = pBucket_,
+                   _roKey = pKey_}
 
 -- | Undocumented member.
 roVersionId :: Lens' RestoreObject (Maybe ObjectVersionId)
@@ -141,14 +134,13 @@ instance ToQuery RestoreObject where
           = mconcat ["versionId" =: _roVersionId, "restore"]
 
 -- | /See:/ 'restoreObjectResponse' smart constructor.
-data RestoreObjectResponse =
-  RestoreObjectResponse'
-    { _rorsRequestCharged    :: !(Maybe RequestCharged)
-    , _rorsRestoreOutputPath :: !(Maybe Text)
-    , _rorsResponseStatus    :: !Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data RestoreObjectResponse = RestoreObjectResponse'{_rorsRequestCharged
+                                                    :: !(Maybe RequestCharged),
+                                                    _rorsRestoreOutputPath ::
+                                                    !(Maybe Text),
+                                                    _rorsResponseStatus :: !Int}
+                               deriving (Eq, Read, Show, Data, Typeable,
+                                         Generic)
 
 -- | Creates a value of 'RestoreObjectResponse' with the minimum fields required to make a request.
 --
@@ -162,13 +154,11 @@ data RestoreObjectResponse =
 restoreObjectResponse
     :: Int -- ^ 'rorsResponseStatus'
     -> RestoreObjectResponse
-restoreObjectResponse pResponseStatus_ =
-  RestoreObjectResponse'
-    { _rorsRequestCharged = Nothing
-    , _rorsRestoreOutputPath = Nothing
-    , _rorsResponseStatus = pResponseStatus_
-    }
-
+restoreObjectResponse pResponseStatus_
+  = RestoreObjectResponse'{_rorsRequestCharged =
+                             Nothing,
+                           _rorsRestoreOutputPath = Nothing,
+                           _rorsResponseStatus = pResponseStatus_}
 
 -- | Undocumented member.
 rorsRequestCharged :: Lens' RestoreObjectResponse (Maybe RequestCharged)

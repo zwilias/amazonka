@@ -36,20 +36,22 @@ module Network.AWS.CodeCommit.DisassociateApprovalRuleTemplateFromRepository
     ) where
 
 import Network.AWS.CodeCommit.Types
-import Network.AWS.CodeCommit.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 
 -- | /See:/ 'disassociateApprovalRuleTemplateFromRepository' smart constructor.
-data DisassociateApprovalRuleTemplateFromRepository =
-  DisassociateApprovalRuleTemplateFromRepository'
-    { _dartfrApprovalRuleTemplateName :: !Text
-    , _dartfrRepositoryName           :: !Text
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data DisassociateApprovalRuleTemplateFromRepository = DisassociateApprovalRuleTemplateFromRepository'{_dartfrApprovalRuleTemplateName
+                                                                                                      ::
+                                                                                                      !Text,
+                                                                                                      _dartfrRepositoryName
+                                                                                                      ::
+                                                                                                      !Text}
+                                                        deriving (Eq, Read,
+                                                                  Show, Data,
+                                                                  Typeable,
+                                                                  Generic)
 
 -- | Creates a value of 'DisassociateApprovalRuleTemplateFromRepository' with the minimum fields required to make a request.
 --
@@ -62,12 +64,13 @@ disassociateApprovalRuleTemplateFromRepository
     :: Text -- ^ 'dartfrApprovalRuleTemplateName'
     -> Text -- ^ 'dartfrRepositoryName'
     -> DisassociateApprovalRuleTemplateFromRepository
-disassociateApprovalRuleTemplateFromRepository pApprovalRuleTemplateName_ pRepositoryName_ =
-  DisassociateApprovalRuleTemplateFromRepository'
-    { _dartfrApprovalRuleTemplateName = pApprovalRuleTemplateName_
-    , _dartfrRepositoryName = pRepositoryName_
-    }
-
+disassociateApprovalRuleTemplateFromRepository
+  pApprovalRuleTemplateName_ pRepositoryName_
+  = DisassociateApprovalRuleTemplateFromRepository'{_dartfrApprovalRuleTemplateName
+                                                      =
+                                                      pApprovalRuleTemplateName_,
+                                                    _dartfrRepositoryName =
+                                                      pRepositoryName_}
 
 -- | The name of the approval rule template to disassociate from a specified repository.
 dartfrApprovalRuleTemplateName :: Lens' DisassociateApprovalRuleTemplateFromRepository Text
@@ -132,18 +135,20 @@ instance ToQuery
         toQuery = const mempty
 
 -- | /See:/ 'disassociateApprovalRuleTemplateFromRepositoryResponse' smart constructor.
-data DisassociateApprovalRuleTemplateFromRepositoryResponse =
-  DisassociateApprovalRuleTemplateFromRepositoryResponse'
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data DisassociateApprovalRuleTemplateFromRepositoryResponse = DisassociateApprovalRuleTemplateFromRepositoryResponse'
+                                                                deriving (Eq,
+                                                                          Read,
+                                                                          Show,
+                                                                          Data,
+                                                                          Typeable,
+                                                                          Generic)
 
 -- | Creates a value of 'DisassociateApprovalRuleTemplateFromRepositoryResponse' with the minimum fields required to make a request.
 --
 disassociateApprovalRuleTemplateFromRepositoryResponse
     :: DisassociateApprovalRuleTemplateFromRepositoryResponse
-disassociateApprovalRuleTemplateFromRepositoryResponse =
-  DisassociateApprovalRuleTemplateFromRepositoryResponse'
-
+disassociateApprovalRuleTemplateFromRepositoryResponse
+  = DisassociateApprovalRuleTemplateFromRepositoryResponse'
 
 instance NFData
            DisassociateApprovalRuleTemplateFromRepositoryResponse

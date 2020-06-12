@@ -38,19 +38,16 @@ module Network.AWS.CloudWatch.EnableInsightRules
     ) where
 
 import Network.AWS.CloudWatch.Types
-import Network.AWS.CloudWatch.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 
 -- | /See:/ 'enableInsightRules' smart constructor.
-newtype EnableInsightRules =
-  EnableInsightRules'
-    { _eirRuleNames :: [Text]
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+newtype EnableInsightRules = EnableInsightRules'{_eirRuleNames
+                                                 :: [Text]}
+                               deriving (Eq, Read, Show, Data, Typeable,
+                                         Generic)
 
 -- | Creates a value of 'EnableInsightRules' with the minimum fields required to make a request.
 --
@@ -59,8 +56,8 @@ newtype EnableInsightRules =
 -- * 'eirRuleNames' - An array of the rule names to enable. If you need to find out the names of your rules, use <https://docs.aws.amazon.com/AmazonCloudWatch/latest/APIReference/API_DescribeInsightRules.html DescribeInsightRules> .
 enableInsightRules
     :: EnableInsightRules
-enableInsightRules = EnableInsightRules' {_eirRuleNames = mempty}
-
+enableInsightRules
+  = EnableInsightRules'{_eirRuleNames = mempty}
 
 -- | An array of the rule names to enable. If you need to find out the names of your rules, use <https://docs.aws.amazon.com/AmazonCloudWatch/latest/APIReference/API_DescribeInsightRules.html DescribeInsightRules> .
 eirRuleNames :: Lens' EnableInsightRules [Text]
@@ -96,13 +93,14 @@ instance ToQuery EnableInsightRules where
                "RuleNames" =: toQueryList "member" _eirRuleNames]
 
 -- | /See:/ 'enableInsightRulesResponse' smart constructor.
-data EnableInsightRulesResponse =
-  EnableInsightRulesResponse'
-    { _eirrsFailures       :: !(Maybe [PartialFailure])
-    , _eirrsResponseStatus :: !Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data EnableInsightRulesResponse = EnableInsightRulesResponse'{_eirrsFailures
+                                                              ::
+                                                              !(Maybe
+                                                                  [PartialFailure]),
+                                                              _eirrsResponseStatus
+                                                              :: !Int}
+                                    deriving (Eq, Read, Show, Data, Typeable,
+                                              Generic)
 
 -- | Creates a value of 'EnableInsightRulesResponse' with the minimum fields required to make a request.
 --
@@ -114,10 +112,10 @@ data EnableInsightRulesResponse =
 enableInsightRulesResponse
     :: Int -- ^ 'eirrsResponseStatus'
     -> EnableInsightRulesResponse
-enableInsightRulesResponse pResponseStatus_ =
-  EnableInsightRulesResponse'
-    {_eirrsFailures = Nothing, _eirrsResponseStatus = pResponseStatus_}
-
+enableInsightRulesResponse pResponseStatus_
+  = EnableInsightRulesResponse'{_eirrsFailures =
+                                  Nothing,
+                                _eirrsResponseStatus = pResponseStatus_}
 
 -- | An array listing the rules that could not be enabled. You cannot disable or enable built-in rules.
 eirrsFailures :: Lens' EnableInsightRulesResponse [PartialFailure]

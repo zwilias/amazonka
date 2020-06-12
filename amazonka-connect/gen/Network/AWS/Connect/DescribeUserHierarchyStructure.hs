@@ -38,19 +38,17 @@ module Network.AWS.Connect.DescribeUserHierarchyStructure
     ) where
 
 import Network.AWS.Connect.Types
-import Network.AWS.Connect.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 
 -- | /See:/ 'describeUserHierarchyStructure' smart constructor.
-newtype DescribeUserHierarchyStructure =
-  DescribeUserHierarchyStructure'
-    { _duhsInstanceId :: Text
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+newtype DescribeUserHierarchyStructure = DescribeUserHierarchyStructure'{_duhsInstanceId
+                                                                         ::
+                                                                         Text}
+                                           deriving (Eq, Read, Show, Data,
+                                                     Typeable, Generic)
 
 -- | Creates a value of 'DescribeUserHierarchyStructure' with the minimum fields required to make a request.
 --
@@ -60,9 +58,9 @@ newtype DescribeUserHierarchyStructure =
 describeUserHierarchyStructure
     :: Text -- ^ 'duhsInstanceId'
     -> DescribeUserHierarchyStructure
-describeUserHierarchyStructure pInstanceId_ =
-  DescribeUserHierarchyStructure' {_duhsInstanceId = pInstanceId_}
-
+describeUserHierarchyStructure pInstanceId_
+  = DescribeUserHierarchyStructure'{_duhsInstanceId =
+                                      pInstanceId_}
 
 -- | The identifier of the Amazon Connect instance.
 duhsInstanceId :: Lens' DescribeUserHierarchyStructure Text
@@ -101,13 +99,15 @@ instance ToQuery DescribeUserHierarchyStructure where
         toQuery = const mempty
 
 -- | /See:/ 'describeUserHierarchyStructureResponse' smart constructor.
-data DescribeUserHierarchyStructureResponse =
-  DescribeUserHierarchyStructureResponse'
-    { _duhsrsHierarchyStructure :: !(Maybe HierarchyStructure)
-    , _duhsrsResponseStatus     :: !Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data DescribeUserHierarchyStructureResponse = DescribeUserHierarchyStructureResponse'{_duhsrsHierarchyStructure
+                                                                                      ::
+                                                                                      !(Maybe
+                                                                                          HierarchyStructure),
+                                                                                      _duhsrsResponseStatus
+                                                                                      ::
+                                                                                      !Int}
+                                                deriving (Eq, Read, Show, Data,
+                                                          Typeable, Generic)
 
 -- | Creates a value of 'DescribeUserHierarchyStructureResponse' with the minimum fields required to make a request.
 --
@@ -119,12 +119,12 @@ data DescribeUserHierarchyStructureResponse =
 describeUserHierarchyStructureResponse
     :: Int -- ^ 'duhsrsResponseStatus'
     -> DescribeUserHierarchyStructureResponse
-describeUserHierarchyStructureResponse pResponseStatus_ =
-  DescribeUserHierarchyStructureResponse'
-    { _duhsrsHierarchyStructure = Nothing
-    , _duhsrsResponseStatus = pResponseStatus_
-    }
-
+describeUserHierarchyStructureResponse
+  pResponseStatus_
+  = DescribeUserHierarchyStructureResponse'{_duhsrsHierarchyStructure
+                                              = Nothing,
+                                            _duhsrsResponseStatus =
+                                              pResponseStatus_}
 
 -- | Information about the hierarchy structure.
 duhsrsHierarchyStructure :: Lens' DescribeUserHierarchyStructureResponse (Maybe HierarchyStructure)

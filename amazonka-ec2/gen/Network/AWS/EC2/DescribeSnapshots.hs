@@ -73,7 +73,6 @@ module Network.AWS.EC2.DescribeSnapshots
     ) where
 
 import Network.AWS.EC2.Types
-import Network.AWS.EC2.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Pager
 import Network.AWS.Prelude
@@ -81,18 +80,16 @@ import Network.AWS.Request
 import Network.AWS.Response
 
 -- | /See:/ 'describeSnapshots' smart constructor.
-data DescribeSnapshots =
-  DescribeSnapshots'
-    { _dssOwnerIds            :: !(Maybe [Text])
-    , _dssFilters             :: !(Maybe [Filter])
-    , _dssNextToken           :: !(Maybe Text)
-    , _dssSnapshotIds         :: !(Maybe [Text])
-    , _dssRestorableByUserIds :: !(Maybe [Text])
-    , _dssDryRun              :: !(Maybe Bool)
-    , _dssMaxResults          :: !(Maybe Int)
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data DescribeSnapshots = DescribeSnapshots'{_dssOwnerIds
+                                            :: !(Maybe [Text]),
+                                            _dssFilters :: !(Maybe [Filter]),
+                                            _dssNextToken :: !(Maybe Text),
+                                            _dssSnapshotIds :: !(Maybe [Text]),
+                                            _dssRestorableByUserIds ::
+                                            !(Maybe [Text]),
+                                            _dssDryRun :: !(Maybe Bool),
+                                            _dssMaxResults :: !(Maybe Int)}
+                           deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'DescribeSnapshots' with the minimum fields required to make a request.
 --
@@ -113,17 +110,12 @@ data DescribeSnapshots =
 -- * 'dssMaxResults' - The maximum number of snapshot results returned by @DescribeSnapshots@ in paginated output. When this parameter is used, @DescribeSnapshots@ only returns @MaxResults@ results in a single page along with a @NextToken@ response element. The remaining results of the initial request can be seen by sending another @DescribeSnapshots@ request with the returned @NextToken@ value. This value can be between 5 and 1000; if @MaxResults@ is given a value larger than 1000, only 1000 results are returned. If this parameter is not used, then @DescribeSnapshots@ returns all results. You cannot specify this parameter and the snapshot IDs parameter in the same request.
 describeSnapshots
     :: DescribeSnapshots
-describeSnapshots =
-  DescribeSnapshots'
-    { _dssOwnerIds = Nothing
-    , _dssFilters = Nothing
-    , _dssNextToken = Nothing
-    , _dssSnapshotIds = Nothing
-    , _dssRestorableByUserIds = Nothing
-    , _dssDryRun = Nothing
-    , _dssMaxResults = Nothing
-    }
-
+describeSnapshots
+  = DescribeSnapshots'{_dssOwnerIds = Nothing,
+                       _dssFilters = Nothing, _dssNextToken = Nothing,
+                       _dssSnapshotIds = Nothing,
+                       _dssRestorableByUserIds = Nothing,
+                       _dssDryRun = Nothing, _dssMaxResults = Nothing}
 
 -- | Describes the snapshots owned by these owners.
 dssOwnerIds :: Lens' DescribeSnapshots [Text]
@@ -199,14 +191,14 @@ instance ToQuery DescribeSnapshots where
                "MaxResults" =: _dssMaxResults]
 
 -- | /See:/ 'describeSnapshotsResponse' smart constructor.
-data DescribeSnapshotsResponse =
-  DescribeSnapshotsResponse'
-    { _dssrsNextToken      :: !(Maybe Text)
-    , _dssrsSnapshots      :: !(Maybe [Snapshot])
-    , _dssrsResponseStatus :: !Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data DescribeSnapshotsResponse = DescribeSnapshotsResponse'{_dssrsNextToken
+                                                            :: !(Maybe Text),
+                                                            _dssrsSnapshots ::
+                                                            !(Maybe [Snapshot]),
+                                                            _dssrsResponseStatus
+                                                            :: !Int}
+                                   deriving (Eq, Read, Show, Data, Typeable,
+                                             Generic)
 
 -- | Creates a value of 'DescribeSnapshotsResponse' with the minimum fields required to make a request.
 --
@@ -220,13 +212,11 @@ data DescribeSnapshotsResponse =
 describeSnapshotsResponse
     :: Int -- ^ 'dssrsResponseStatus'
     -> DescribeSnapshotsResponse
-describeSnapshotsResponse pResponseStatus_ =
-  DescribeSnapshotsResponse'
-    { _dssrsNextToken = Nothing
-    , _dssrsSnapshots = Nothing
-    , _dssrsResponseStatus = pResponseStatus_
-    }
-
+describeSnapshotsResponse pResponseStatus_
+  = DescribeSnapshotsResponse'{_dssrsNextToken =
+                                 Nothing,
+                               _dssrsSnapshots = Nothing,
+                               _dssrsResponseStatus = pResponseStatus_}
 
 -- | The @NextToken@ value to include in a future @DescribeSnapshots@ request. When the results of a @DescribeSnapshots@ request exceed @MaxResults@ , this value can be used to retrieve the next page of results. This value is @null@ when there are no more results to return.
 dssrsNextToken :: Lens' DescribeSnapshotsResponse (Maybe Text)

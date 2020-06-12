@@ -49,7 +49,6 @@ module Network.AWS.IAM.ListAttachedRolePolicies
     ) where
 
 import Network.AWS.IAM.Types
-import Network.AWS.IAM.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Pager
 import Network.AWS.Prelude
@@ -57,15 +56,16 @@ import Network.AWS.Request
 import Network.AWS.Response
 
 -- | /See:/ 'listAttachedRolePolicies' smart constructor.
-data ListAttachedRolePolicies =
-  ListAttachedRolePolicies'
-    { _larpPathPrefix :: !(Maybe Text)
-    , _larpMarker     :: !(Maybe Text)
-    , _larpMaxItems   :: !(Maybe Nat)
-    , _larpRoleName   :: !Text
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data ListAttachedRolePolicies = ListAttachedRolePolicies'{_larpPathPrefix
+                                                          :: !(Maybe Text),
+                                                          _larpMarker ::
+                                                          !(Maybe Text),
+                                                          _larpMaxItems ::
+                                                          !(Maybe Nat),
+                                                          _larpRoleName ::
+                                                          !Text}
+                                  deriving (Eq, Read, Show, Data, Typeable,
+                                            Generic)
 
 -- | Creates a value of 'ListAttachedRolePolicies' with the minimum fields required to make a request.
 --
@@ -81,14 +81,11 @@ data ListAttachedRolePolicies =
 listAttachedRolePolicies
     :: Text -- ^ 'larpRoleName'
     -> ListAttachedRolePolicies
-listAttachedRolePolicies pRoleName_ =
-  ListAttachedRolePolicies'
-    { _larpPathPrefix = Nothing
-    , _larpMarker = Nothing
-    , _larpMaxItems = Nothing
-    , _larpRoleName = pRoleName_
-    }
-
+listAttachedRolePolicies pRoleName_
+  = ListAttachedRolePolicies'{_larpPathPrefix =
+                                Nothing,
+                              _larpMarker = Nothing, _larpMaxItems = Nothing,
+                              _larpRoleName = pRoleName_}
 
 -- | The path prefix for filtering the results. This parameter is optional. If it is not included, it defaults to a slash (/), listing all policies. This parameter allows (per its <http://wikipedia.org/wiki/regex regex pattern> ) a string of characters consisting of either a forward slash (/) by itself or a string that must begin and end with forward slashes. In addition, it can contain any ASCII character from the ! (\u0021) through the DEL character (\u007F), including most punctuation characters, digits, and upper and lowercased letters.
 larpPathPrefix :: Lens' ListAttachedRolePolicies (Maybe Text)
@@ -147,20 +144,28 @@ instance ToQuery ListAttachedRolePolicies where
                "Marker" =: _larpMarker, "MaxItems" =: _larpMaxItems,
                "RoleName" =: _larpRoleName]
 
--- | Contains the response to a successful 'ListAttachedRolePolicies' request.
+-- | Contains the response to a successful 'ListAttachedRolePolicies' request. 
 --
 --
 --
 -- /See:/ 'listAttachedRolePoliciesResponse' smart constructor.
-data ListAttachedRolePoliciesResponse =
-  ListAttachedRolePoliciesResponse'
-    { _larprsAttachedPolicies :: !(Maybe [AttachedPolicy])
-    , _larprsMarker           :: !(Maybe Text)
-    , _larprsIsTruncated      :: !(Maybe Bool)
-    , _larprsResponseStatus   :: !Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data ListAttachedRolePoliciesResponse = ListAttachedRolePoliciesResponse'{_larprsAttachedPolicies
+                                                                          ::
+                                                                          !(Maybe
+                                                                              [AttachedPolicy]),
+                                                                          _larprsMarker
+                                                                          ::
+                                                                          !(Maybe
+                                                                              Text),
+                                                                          _larprsIsTruncated
+                                                                          ::
+                                                                          !(Maybe
+                                                                              Bool),
+                                                                          _larprsResponseStatus
+                                                                          ::
+                                                                          !Int}
+                                          deriving (Eq, Read, Show, Data,
+                                                    Typeable, Generic)
 
 -- | Creates a value of 'ListAttachedRolePoliciesResponse' with the minimum fields required to make a request.
 --
@@ -176,14 +181,12 @@ data ListAttachedRolePoliciesResponse =
 listAttachedRolePoliciesResponse
     :: Int -- ^ 'larprsResponseStatus'
     -> ListAttachedRolePoliciesResponse
-listAttachedRolePoliciesResponse pResponseStatus_ =
-  ListAttachedRolePoliciesResponse'
-    { _larprsAttachedPolicies = Nothing
-    , _larprsMarker = Nothing
-    , _larprsIsTruncated = Nothing
-    , _larprsResponseStatus = pResponseStatus_
-    }
-
+listAttachedRolePoliciesResponse pResponseStatus_
+  = ListAttachedRolePoliciesResponse'{_larprsAttachedPolicies
+                                        = Nothing,
+                                      _larprsMarker = Nothing,
+                                      _larprsIsTruncated = Nothing,
+                                      _larprsResponseStatus = pResponseStatus_}
 
 -- | A list of the attached policies.
 larprsAttachedPolicies :: Lens' ListAttachedRolePoliciesResponse [AttachedPolicy]

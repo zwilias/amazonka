@@ -45,7 +45,6 @@ module Network.AWS.CodeDeploy.ListDeployments
     ) where
 
 import Network.AWS.CodeDeploy.Types
-import Network.AWS.CodeDeploy.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Pager
 import Network.AWS.Prelude
@@ -57,16 +56,14 @@ import Network.AWS.Response
 --
 --
 -- /See:/ 'listDeployments' smart constructor.
-data ListDeployments =
-  ListDeployments'
-    { _ldCreateTimeRange     :: !(Maybe TimeRange)
-    , _ldNextToken           :: !(Maybe Text)
-    , _ldIncludeOnlyStatuses :: !(Maybe [DeploymentStatus])
-    , _ldApplicationName     :: !(Maybe Text)
-    , _ldDeploymentGroupName :: !(Maybe Text)
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data ListDeployments = ListDeployments'{_ldCreateTimeRange
+                                        :: !(Maybe TimeRange),
+                                        _ldNextToken :: !(Maybe Text),
+                                        _ldIncludeOnlyStatuses ::
+                                        !(Maybe [DeploymentStatus]),
+                                        _ldApplicationName :: !(Maybe Text),
+                                        _ldDeploymentGroupName :: !(Maybe Text)}
+                         deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'ListDeployments' with the minimum fields required to make a request.
 --
@@ -83,15 +80,12 @@ data ListDeployments =
 -- * 'ldDeploymentGroupName' - The name of a deployment group for the specified application.
 listDeployments
     :: ListDeployments
-listDeployments =
-  ListDeployments'
-    { _ldCreateTimeRange = Nothing
-    , _ldNextToken = Nothing
-    , _ldIncludeOnlyStatuses = Nothing
-    , _ldApplicationName = Nothing
-    , _ldDeploymentGroupName = Nothing
-    }
-
+listDeployments
+  = ListDeployments'{_ldCreateTimeRange = Nothing,
+                     _ldNextToken = Nothing,
+                     _ldIncludeOnlyStatuses = Nothing,
+                     _ldApplicationName = Nothing,
+                     _ldDeploymentGroupName = Nothing}
 
 -- | A time range (start and end) for returning a subset of the list of deployments.
 ldCreateTimeRange :: Lens' ListDeployments (Maybe TimeRange)
@@ -168,14 +162,14 @@ instance ToQuery ListDeployments where
 --
 --
 -- /See:/ 'listDeploymentsResponse' smart constructor.
-data ListDeploymentsResponse =
-  ListDeploymentsResponse'
-    { _ldrsNextToken      :: !(Maybe Text)
-    , _ldrsDeployments    :: !(Maybe [Text])
-    , _ldrsResponseStatus :: !Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data ListDeploymentsResponse = ListDeploymentsResponse'{_ldrsNextToken
+                                                        :: !(Maybe Text),
+                                                        _ldrsDeployments ::
+                                                        !(Maybe [Text]),
+                                                        _ldrsResponseStatus ::
+                                                        !Int}
+                                 deriving (Eq, Read, Show, Data, Typeable,
+                                           Generic)
 
 -- | Creates a value of 'ListDeploymentsResponse' with the minimum fields required to make a request.
 --
@@ -189,13 +183,10 @@ data ListDeploymentsResponse =
 listDeploymentsResponse
     :: Int -- ^ 'ldrsResponseStatus'
     -> ListDeploymentsResponse
-listDeploymentsResponse pResponseStatus_ =
-  ListDeploymentsResponse'
-    { _ldrsNextToken = Nothing
-    , _ldrsDeployments = Nothing
-    , _ldrsResponseStatus = pResponseStatus_
-    }
-
+listDeploymentsResponse pResponseStatus_
+  = ListDeploymentsResponse'{_ldrsNextToken = Nothing,
+                             _ldrsDeployments = Nothing,
+                             _ldrsResponseStatus = pResponseStatus_}
 
 -- | If a large amount of information is returned, an identifier is also returned. It can be used in a subsequent list deployments call to return the next set of deployments in the list.
 ldrsNextToken :: Lens' ListDeploymentsResponse (Maybe Text)

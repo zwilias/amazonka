@@ -38,24 +38,20 @@ module Network.AWS.EFS.DeleteTags
     ) where
 
 import Network.AWS.EFS.Types
-import Network.AWS.EFS.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 
--- |
+-- | 
 --
 --
 --
 -- /See:/ 'deleteTags' smart constructor.
-data DeleteTags =
-  DeleteTags'
-    { _dFileSystemId :: !Text
-    , _dTagKeys      :: ![Text]
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data DeleteTags = DeleteTags'{_dFileSystemId ::
+                              !Text,
+                              _dTagKeys :: ![Text]}
+                    deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'DeleteTags' with the minimum fields required to make a request.
 --
@@ -67,9 +63,9 @@ data DeleteTags =
 deleteTags
     :: Text -- ^ 'dFileSystemId'
     -> DeleteTags
-deleteTags pFileSystemId_ =
-  DeleteTags' {_dFileSystemId = pFileSystemId_, _dTagKeys = mempty}
-
+deleteTags pFileSystemId_
+  = DeleteTags'{_dFileSystemId = pFileSystemId_,
+                _dTagKeys = mempty}
 
 -- | ID of the file system whose tags you want to delete (String).
 dFileSystemId :: Lens' DeleteTags Text
@@ -104,16 +100,13 @@ instance ToQuery DeleteTags where
         toQuery = const mempty
 
 -- | /See:/ 'deleteTagsResponse' smart constructor.
-data DeleteTagsResponse =
-  DeleteTagsResponse'
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data DeleteTagsResponse = DeleteTagsResponse'
+                            deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'DeleteTagsResponse' with the minimum fields required to make a request.
 --
 deleteTagsResponse
     :: DeleteTagsResponse
 deleteTagsResponse = DeleteTagsResponse'
-
 
 instance NFData DeleteTagsResponse where

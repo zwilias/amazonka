@@ -41,42 +41,38 @@ module Network.AWS.Config.DescribeConformancePacks
     ) where
 
 import Network.AWS.Config.Types
-import Network.AWS.Config.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 
 -- | /See:/ 'describeConformancePacks' smart constructor.
-data DescribeConformancePacks =
-  DescribeConformancePacks'
-    { _dcpConformancePackNames :: !(Maybe [Text])
-    , _dcpNextToken            :: !(Maybe Text)
-    , _dcpLimit                :: !(Maybe Nat)
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data DescribeConformancePacks = DescribeConformancePacks'{_dcpConformancePackNames
+                                                          :: !(Maybe [Text]),
+                                                          _dcpNextToken ::
+                                                          !(Maybe Text),
+                                                          _dcpLimit ::
+                                                          !(Maybe Nat)}
+                                  deriving (Eq, Read, Show, Data, Typeable,
+                                            Generic)
 
 -- | Creates a value of 'DescribeConformancePacks' with the minimum fields required to make a request.
 --
 -- Use one of the following lenses to modify other fields as desired:
 --
--- * 'dcpConformancePackNames' - Comma-separated list of conformance pack names for which you want details. If you do not specify any names, AWS Config returns details for all your conformance packs.
+-- * 'dcpConformancePackNames' - Comma-separated list of conformance pack names for which you want details. If you do not specify any names, AWS Config returns details for all your conformance packs. 
 --
 -- * 'dcpNextToken' - The @nextToken@ string returned in a previous request that you use to request the next page of results in a paginated response.
 --
 -- * 'dcpLimit' - The maximum number of conformance packs returned on each page.
 describeConformancePacks
     :: DescribeConformancePacks
-describeConformancePacks =
-  DescribeConformancePacks'
-    { _dcpConformancePackNames = Nothing
-    , _dcpNextToken = Nothing
-    , _dcpLimit = Nothing
-    }
+describeConformancePacks
+  = DescribeConformancePacks'{_dcpConformancePackNames
+                                = Nothing,
+                              _dcpNextToken = Nothing, _dcpLimit = Nothing}
 
-
--- | Comma-separated list of conformance pack names for which you want details. If you do not specify any names, AWS Config returns details for all your conformance packs.
+-- | Comma-separated list of conformance pack names for which you want details. If you do not specify any names, AWS Config returns details for all your conformance packs. 
 dcpConformancePackNames :: Lens' DescribeConformancePacks [Text]
 dcpConformancePackNames = lens _dcpConformancePackNames (\ s a -> s{_dcpConformancePackNames = a}) . _Default . _Coerce
 
@@ -130,14 +126,19 @@ instance ToQuery DescribeConformancePacks where
         toQuery = const mempty
 
 -- | /See:/ 'describeConformancePacksResponse' smart constructor.
-data DescribeConformancePacksResponse =
-  DescribeConformancePacksResponse'
-    { _dcprsNextToken              :: !(Maybe Text)
-    , _dcprsConformancePackDetails :: !(Maybe [ConformancePackDetail])
-    , _dcprsResponseStatus         :: !Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data DescribeConformancePacksResponse = DescribeConformancePacksResponse'{_dcprsNextToken
+                                                                          ::
+                                                                          !(Maybe
+                                                                              Text),
+                                                                          _dcprsConformancePackDetails
+                                                                          ::
+                                                                          !(Maybe
+                                                                              [ConformancePackDetail]),
+                                                                          _dcprsResponseStatus
+                                                                          ::
+                                                                          !Int}
+                                          deriving (Eq, Read, Show, Data,
+                                                    Typeable, Generic)
 
 -- | Creates a value of 'DescribeConformancePacksResponse' with the minimum fields required to make a request.
 --
@@ -151,13 +152,11 @@ data DescribeConformancePacksResponse =
 describeConformancePacksResponse
     :: Int -- ^ 'dcprsResponseStatus'
     -> DescribeConformancePacksResponse
-describeConformancePacksResponse pResponseStatus_ =
-  DescribeConformancePacksResponse'
-    { _dcprsNextToken = Nothing
-    , _dcprsConformancePackDetails = Nothing
-    , _dcprsResponseStatus = pResponseStatus_
-    }
-
+describeConformancePacksResponse pResponseStatus_
+  = DescribeConformancePacksResponse'{_dcprsNextToken =
+                                        Nothing,
+                                      _dcprsConformancePackDetails = Nothing,
+                                      _dcprsResponseStatus = pResponseStatus_}
 
 -- | The @nextToken@ string returned in a previous request that you use to request the next page of results in a paginated response.
 dcprsNextToken :: Lens' DescribeConformancePacksResponse (Maybe Text)

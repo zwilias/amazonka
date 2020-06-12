@@ -44,35 +44,41 @@ module Network.AWS.ECS.RegisterContainerInstance
     ) where
 
 import Network.AWS.ECS.Types
-import Network.AWS.ECS.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 
 -- | /See:/ 'registerContainerInstance' smart constructor.
-data RegisterContainerInstance =
-  RegisterContainerInstance'
-    { _rciInstanceIdentityDocumentSignature :: !(Maybe Text)
-    , _rciCluster                           :: !(Maybe Text)
-    , _rciInstanceIdentityDocument          :: !(Maybe Text)
-    , _rciContainerInstanceARN              :: !(Maybe Text)
-    , _rciVersionInfo                       :: !(Maybe VersionInfo)
-    , _rciAttributes                        :: !(Maybe [Attribute])
-    , _rciTotalResources                    :: !(Maybe [Resource])
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data RegisterContainerInstance = RegisterContainerInstance'{_rciInstanceIdentityDocumentSignature
+                                                            :: !(Maybe Text),
+                                                            _rciCluster ::
+                                                            !(Maybe Text),
+                                                            _rciInstanceIdentityDocument
+                                                            :: !(Maybe Text),
+                                                            _rciContainerInstanceARN
+                                                            :: !(Maybe Text),
+                                                            _rciVersionInfo ::
+                                                            !(Maybe
+                                                                VersionInfo),
+                                                            _rciAttributes ::
+                                                            !(Maybe
+                                                                [Attribute]),
+                                                            _rciTotalResources
+                                                            ::
+                                                            !(Maybe [Resource])}
+                                   deriving (Eq, Read, Show, Data, Typeable,
+                                             Generic)
 
 -- | Creates a value of 'RegisterContainerInstance' with the minimum fields required to make a request.
 --
 -- Use one of the following lenses to modify other fields as desired:
 --
--- * 'rciInstanceIdentityDocumentSignature' - The instance identity document signature for the EC2 instance to register. This signature can be found by running the following command from the instance: @curl http://169.254.169.254/latest/dynamic/instance-identity/signature/@
+-- * 'rciInstanceIdentityDocumentSignature' - The instance identity document signature for the EC2 instance to register. This signature can be found by running the following command from the instance: @curl http://169.254.169.254/latest/dynamic/instance-identity/signature/@ 
 --
 -- * 'rciCluster' - The short name or full Amazon Resource Name (ARN) of the cluster with which to register your container instance. If you do not specify a cluster, the default cluster is assumed.
 --
--- * 'rciInstanceIdentityDocument' - The instance identity document for the EC2 instance to register. This document can be found by running the following command from the instance: @curl http://169.254.169.254/latest/dynamic/instance-identity/document/@
+-- * 'rciInstanceIdentityDocument' - The instance identity document for the EC2 instance to register. This document can be found by running the following command from the instance: @curl http://169.254.169.254/latest/dynamic/instance-identity/document/@ 
 --
 -- * 'rciContainerInstanceARN' - The ARN of the container instance (if it was previously registered).
 --
@@ -83,19 +89,17 @@ data RegisterContainerInstance =
 -- * 'rciTotalResources' - The resources available on the instance.
 registerContainerInstance
     :: RegisterContainerInstance
-registerContainerInstance =
-  RegisterContainerInstance'
-    { _rciInstanceIdentityDocumentSignature = Nothing
-    , _rciCluster = Nothing
-    , _rciInstanceIdentityDocument = Nothing
-    , _rciContainerInstanceARN = Nothing
-    , _rciVersionInfo = Nothing
-    , _rciAttributes = Nothing
-    , _rciTotalResources = Nothing
-    }
+registerContainerInstance
+  = RegisterContainerInstance'{_rciInstanceIdentityDocumentSignature
+                                 = Nothing,
+                               _rciCluster = Nothing,
+                               _rciInstanceIdentityDocument = Nothing,
+                               _rciContainerInstanceARN = Nothing,
+                               _rciVersionInfo = Nothing,
+                               _rciAttributes = Nothing,
+                               _rciTotalResources = Nothing}
 
-
--- | The instance identity document signature for the EC2 instance to register. This signature can be found by running the following command from the instance: @curl http://169.254.169.254/latest/dynamic/instance-identity/signature/@
+-- | The instance identity document signature for the EC2 instance to register. This signature can be found by running the following command from the instance: @curl http://169.254.169.254/latest/dynamic/instance-identity/signature/@ 
 rciInstanceIdentityDocumentSignature :: Lens' RegisterContainerInstance (Maybe Text)
 rciInstanceIdentityDocumentSignature = lens _rciInstanceIdentityDocumentSignature (\ s a -> s{_rciInstanceIdentityDocumentSignature = a})
 
@@ -103,7 +107,7 @@ rciInstanceIdentityDocumentSignature = lens _rciInstanceIdentityDocumentSignatur
 rciCluster :: Lens' RegisterContainerInstance (Maybe Text)
 rciCluster = lens _rciCluster (\ s a -> s{_rciCluster = a})
 
--- | The instance identity document for the EC2 instance to register. This document can be found by running the following command from the instance: @curl http://169.254.169.254/latest/dynamic/instance-identity/document/@
+-- | The instance identity document for the EC2 instance to register. This document can be found by running the following command from the instance: @curl http://169.254.169.254/latest/dynamic/instance-identity/document/@ 
 rciInstanceIdentityDocument :: Lens' RegisterContainerInstance (Maybe Text)
 rciInstanceIdentityDocument = lens _rciInstanceIdentityDocument (\ s a -> s{_rciInstanceIdentityDocument = a})
 
@@ -169,13 +173,15 @@ instance ToQuery RegisterContainerInstance where
         toQuery = const mempty
 
 -- | /See:/ 'registerContainerInstanceResponse' smart constructor.
-data RegisterContainerInstanceResponse =
-  RegisterContainerInstanceResponse'
-    { _rcirsContainerInstance :: !(Maybe ContainerInstance)
-    , _rcirsResponseStatus    :: !Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data RegisterContainerInstanceResponse = RegisterContainerInstanceResponse'{_rcirsContainerInstance
+                                                                            ::
+                                                                            !(Maybe
+                                                                                ContainerInstance),
+                                                                            _rcirsResponseStatus
+                                                                            ::
+                                                                            !Int}
+                                           deriving (Eq, Read, Show, Data,
+                                                     Typeable, Generic)
 
 -- | Creates a value of 'RegisterContainerInstanceResponse' with the minimum fields required to make a request.
 --
@@ -187,10 +193,10 @@ data RegisterContainerInstanceResponse =
 registerContainerInstanceResponse
     :: Int -- ^ 'rcirsResponseStatus'
     -> RegisterContainerInstanceResponse
-registerContainerInstanceResponse pResponseStatus_ =
-  RegisterContainerInstanceResponse'
-    {_rcirsContainerInstance = Nothing, _rcirsResponseStatus = pResponseStatus_}
-
+registerContainerInstanceResponse pResponseStatus_
+  = RegisterContainerInstanceResponse'{_rcirsContainerInstance
+                                         = Nothing,
+                                       _rcirsResponseStatus = pResponseStatus_}
 
 -- | The container instance that was registered.
 rcirsContainerInstance :: Lens' RegisterContainerInstanceResponse (Maybe ContainerInstance)

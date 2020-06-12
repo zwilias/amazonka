@@ -45,24 +45,24 @@ module Network.AWS.Redshift.CreateClusterSubnetGroup
 import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.Redshift.Types
-import Network.AWS.Redshift.Types.Product
 import Network.AWS.Request
 import Network.AWS.Response
 
--- |
+-- | 
 --
 --
 --
 -- /See:/ 'createClusterSubnetGroup' smart constructor.
-data CreateClusterSubnetGroup =
-  CreateClusterSubnetGroup'
-    { _ccsgTags                   :: !(Maybe [Tag])
-    , _ccsgClusterSubnetGroupName :: !Text
-    , _ccsgDescription            :: !Text
-    , _ccsgSubnetIds              :: ![Text]
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data CreateClusterSubnetGroup = CreateClusterSubnetGroup'{_ccsgTags
+                                                          :: !(Maybe [Tag]),
+                                                          _ccsgClusterSubnetGroupName
+                                                          :: !Text,
+                                                          _ccsgDescription ::
+                                                          !Text,
+                                                          _ccsgSubnetIds ::
+                                                          ![Text]}
+                                  deriving (Eq, Read, Show, Data, Typeable,
+                                            Generic)
 
 -- | Creates a value of 'CreateClusterSubnetGroup' with the minimum fields required to make a request.
 --
@@ -70,7 +70,7 @@ data CreateClusterSubnetGroup =
 --
 -- * 'ccsgTags' - A list of tag instances.
 --
--- * 'ccsgClusterSubnetGroupName' - The name for the subnet group. Amazon Redshift stores the value as a lowercase string. Constraints:     * Must contain no more than 255 alphanumeric characters or hyphens.     * Must not be "Default".     * Must be unique for all subnet groups that are created by your AWS account. Example: @examplesubnetgroup@
+-- * 'ccsgClusterSubnetGroupName' - The name for the subnet group. Amazon Redshift stores the value as a lowercase string. Constraints:     * Must contain no more than 255 alphanumeric characters or hyphens.     * Must not be "Default".     * Must be unique for all subnet groups that are created by your AWS account. Example: @examplesubnetgroup@ 
 --
 -- * 'ccsgDescription' - A description for the subnet group.
 --
@@ -79,20 +79,19 @@ createClusterSubnetGroup
     :: Text -- ^ 'ccsgClusterSubnetGroupName'
     -> Text -- ^ 'ccsgDescription'
     -> CreateClusterSubnetGroup
-createClusterSubnetGroup pClusterSubnetGroupName_ pDescription_ =
-  CreateClusterSubnetGroup'
-    { _ccsgTags = Nothing
-    , _ccsgClusterSubnetGroupName = pClusterSubnetGroupName_
-    , _ccsgDescription = pDescription_
-    , _ccsgSubnetIds = mempty
-    }
-
+createClusterSubnetGroup pClusterSubnetGroupName_
+  pDescription_
+  = CreateClusterSubnetGroup'{_ccsgTags = Nothing,
+                              _ccsgClusterSubnetGroupName =
+                                pClusterSubnetGroupName_,
+                              _ccsgDescription = pDescription_,
+                              _ccsgSubnetIds = mempty}
 
 -- | A list of tag instances.
 ccsgTags :: Lens' CreateClusterSubnetGroup [Tag]
 ccsgTags = lens _ccsgTags (\ s a -> s{_ccsgTags = a}) . _Default . _Coerce
 
--- | The name for the subnet group. Amazon Redshift stores the value as a lowercase string. Constraints:     * Must contain no more than 255 alphanumeric characters or hyphens.     * Must not be "Default".     * Must be unique for all subnet groups that are created by your AWS account. Example: @examplesubnetgroup@
+-- | The name for the subnet group. Amazon Redshift stores the value as a lowercase string. Constraints:     * Must contain no more than 255 alphanumeric characters or hyphens.     * Must not be "Default".     * Must be unique for all subnet groups that are created by your AWS account. Example: @examplesubnetgroup@ 
 ccsgClusterSubnetGroupName :: Lens' CreateClusterSubnetGroup Text
 ccsgClusterSubnetGroupName = lens _ccsgClusterSubnetGroupName (\ s a -> s{_ccsgClusterSubnetGroupName = a})
 
@@ -138,13 +137,15 @@ instance ToQuery CreateClusterSubnetGroup where
                  toQueryList "SubnetIdentifier" _ccsgSubnetIds]
 
 -- | /See:/ 'createClusterSubnetGroupResponse' smart constructor.
-data CreateClusterSubnetGroupResponse =
-  CreateClusterSubnetGroupResponse'
-    { _ccsgrsClusterSubnetGroup :: !(Maybe ClusterSubnetGroup)
-    , _ccsgrsResponseStatus     :: !Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data CreateClusterSubnetGroupResponse = CreateClusterSubnetGroupResponse'{_ccsgrsClusterSubnetGroup
+                                                                          ::
+                                                                          !(Maybe
+                                                                              ClusterSubnetGroup),
+                                                                          _ccsgrsResponseStatus
+                                                                          ::
+                                                                          !Int}
+                                          deriving (Eq, Read, Show, Data,
+                                                    Typeable, Generic)
 
 -- | Creates a value of 'CreateClusterSubnetGroupResponse' with the minimum fields required to make a request.
 --
@@ -156,12 +157,10 @@ data CreateClusterSubnetGroupResponse =
 createClusterSubnetGroupResponse
     :: Int -- ^ 'ccsgrsResponseStatus'
     -> CreateClusterSubnetGroupResponse
-createClusterSubnetGroupResponse pResponseStatus_ =
-  CreateClusterSubnetGroupResponse'
-    { _ccsgrsClusterSubnetGroup = Nothing
-    , _ccsgrsResponseStatus = pResponseStatus_
-    }
-
+createClusterSubnetGroupResponse pResponseStatus_
+  = CreateClusterSubnetGroupResponse'{_ccsgrsClusterSubnetGroup
+                                        = Nothing,
+                                      _ccsgrsResponseStatus = pResponseStatus_}
 
 -- | Undocumented member.
 ccsgrsClusterSubnetGroup :: Lens' CreateClusterSubnetGroupResponse (Maybe ClusterSubnetGroup)

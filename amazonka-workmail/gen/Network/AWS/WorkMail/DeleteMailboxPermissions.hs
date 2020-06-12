@@ -43,17 +43,15 @@ import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 import Network.AWS.WorkMail.Types
-import Network.AWS.WorkMail.Types.Product
 
 -- | /See:/ 'deleteMailboxPermissions' smart constructor.
-data DeleteMailboxPermissions =
-  DeleteMailboxPermissions'
-    { _dmpOrganizationId :: !Text
-    , _dmpEntityId       :: !Text
-    , _dmpGranteeId      :: !Text
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data DeleteMailboxPermissions = DeleteMailboxPermissions'{_dmpOrganizationId
+                                                          :: !Text,
+                                                          _dmpEntityId :: !Text,
+                                                          _dmpGranteeId ::
+                                                          !Text}
+                                  deriving (Eq, Read, Show, Data, Typeable,
+                                            Generic)
 
 -- | Creates a value of 'DeleteMailboxPermissions' with the minimum fields required to make a request.
 --
@@ -69,13 +67,12 @@ deleteMailboxPermissions
     -> Text -- ^ 'dmpEntityId'
     -> Text -- ^ 'dmpGranteeId'
     -> DeleteMailboxPermissions
-deleteMailboxPermissions pOrganizationId_ pEntityId_ pGranteeId_ =
-  DeleteMailboxPermissions'
-    { _dmpOrganizationId = pOrganizationId_
-    , _dmpEntityId = pEntityId_
-    , _dmpGranteeId = pGranteeId_
-    }
-
+deleteMailboxPermissions pOrganizationId_ pEntityId_
+  pGranteeId_
+  = DeleteMailboxPermissions'{_dmpOrganizationId =
+                                pOrganizationId_,
+                              _dmpEntityId = pEntityId_,
+                              _dmpGranteeId = pGranteeId_}
 
 -- | The identifier of the organization under which the entity (user or group) exists.
 dmpOrganizationId :: Lens' DeleteMailboxPermissions Text
@@ -128,12 +125,11 @@ instance ToQuery DeleteMailboxPermissions where
         toQuery = const mempty
 
 -- | /See:/ 'deleteMailboxPermissionsResponse' smart constructor.
-newtype DeleteMailboxPermissionsResponse =
-  DeleteMailboxPermissionsResponse'
-    { _dmprsResponseStatus :: Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+newtype DeleteMailboxPermissionsResponse = DeleteMailboxPermissionsResponse'{_dmprsResponseStatus
+                                                                             ::
+                                                                             Int}
+                                             deriving (Eq, Read, Show, Data,
+                                                       Typeable, Generic)
 
 -- | Creates a value of 'DeleteMailboxPermissionsResponse' with the minimum fields required to make a request.
 --
@@ -143,9 +139,9 @@ newtype DeleteMailboxPermissionsResponse =
 deleteMailboxPermissionsResponse
     :: Int -- ^ 'dmprsResponseStatus'
     -> DeleteMailboxPermissionsResponse
-deleteMailboxPermissionsResponse pResponseStatus_ =
-  DeleteMailboxPermissionsResponse' {_dmprsResponseStatus = pResponseStatus_}
-
+deleteMailboxPermissionsResponse pResponseStatus_
+  = DeleteMailboxPermissionsResponse'{_dmprsResponseStatus
+                                        = pResponseStatus_}
 
 -- | -- | The response status code.
 dmprsResponseStatus :: Lens' DeleteMailboxPermissionsResponse Int

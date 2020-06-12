@@ -37,19 +37,15 @@ module Network.AWS.Glue.DeleteClassifier
     ) where
 
 import Network.AWS.Glue.Types
-import Network.AWS.Glue.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 
 -- | /See:/ 'deleteClassifier' smart constructor.
-newtype DeleteClassifier =
-  DeleteClassifier'
-    { _delName :: Text
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+newtype DeleteClassifier = DeleteClassifier'{_delName
+                                             :: Text}
+                             deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'DeleteClassifier' with the minimum fields required to make a request.
 --
@@ -59,8 +55,8 @@ newtype DeleteClassifier =
 deleteClassifier
     :: Text -- ^ 'delName'
     -> DeleteClassifier
-deleteClassifier pName_ = DeleteClassifier' {_delName = pName_}
-
+deleteClassifier pName_
+  = DeleteClassifier'{_delName = pName_}
 
 -- | Name of the classifier to remove.
 delName :: Lens' DeleteClassifier Text
@@ -98,12 +94,10 @@ instance ToQuery DeleteClassifier where
         toQuery = const mempty
 
 -- | /See:/ 'deleteClassifierResponse' smart constructor.
-newtype DeleteClassifierResponse =
-  DeleteClassifierResponse'
-    { _drsResponseStatus :: Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+newtype DeleteClassifierResponse = DeleteClassifierResponse'{_drsResponseStatus
+                                                             :: Int}
+                                     deriving (Eq, Read, Show, Data, Typeable,
+                                               Generic)
 
 -- | Creates a value of 'DeleteClassifierResponse' with the minimum fields required to make a request.
 --
@@ -113,9 +107,9 @@ newtype DeleteClassifierResponse =
 deleteClassifierResponse
     :: Int -- ^ 'drsResponseStatus'
     -> DeleteClassifierResponse
-deleteClassifierResponse pResponseStatus_ =
-  DeleteClassifierResponse' {_drsResponseStatus = pResponseStatus_}
-
+deleteClassifierResponse pResponseStatus_
+  = DeleteClassifierResponse'{_drsResponseStatus =
+                                pResponseStatus_}
 
 -- | -- | The response status code.
 drsResponseStatus :: Lens' DeleteClassifierResponse Int

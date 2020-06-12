@@ -44,7 +44,6 @@ module Network.AWS.IoT.GetPolicy
     ) where
 
 import Network.AWS.IoT.Types
-import Network.AWS.IoT.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.Request
@@ -55,12 +54,8 @@ import Network.AWS.Response
 --
 --
 -- /See:/ 'getPolicy' smart constructor.
-newtype GetPolicy =
-  GetPolicy'
-    { _gpPolicyName :: Text
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+newtype GetPolicy = GetPolicy'{_gpPolicyName :: Text}
+                      deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'GetPolicy' with the minimum fields required to make a request.
 --
@@ -70,8 +65,8 @@ newtype GetPolicy =
 getPolicy
     :: Text -- ^ 'gpPolicyName'
     -> GetPolicy
-getPolicy pPolicyName_ = GetPolicy' {_gpPolicyName = pPolicyName_}
-
+getPolicy pPolicyName_
+  = GetPolicy'{_gpPolicyName = pPolicyName_}
 
 -- | The name of the policy.
 gpPolicyName :: Lens' GetPolicy Text
@@ -111,19 +106,18 @@ instance ToQuery GetPolicy where
 --
 --
 -- /See:/ 'getPolicyResponse' smart constructor.
-data GetPolicyResponse =
-  GetPolicyResponse'
-    { _gprsLastModifiedDate :: !(Maybe POSIX)
-    , _gprsPolicyName       :: !(Maybe Text)
-    , _gprsPolicyDocument   :: !(Maybe Text)
-    , _gprsDefaultVersionId :: !(Maybe Text)
-    , _gprsPolicyARN        :: !(Maybe Text)
-    , _gprsCreationDate     :: !(Maybe POSIX)
-    , _gprsGenerationId     :: !(Maybe Text)
-    , _gprsResponseStatus   :: !Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data GetPolicyResponse = GetPolicyResponse'{_gprsLastModifiedDate
+                                            :: !(Maybe POSIX),
+                                            _gprsPolicyName :: !(Maybe Text),
+                                            _gprsPolicyDocument ::
+                                            !(Maybe Text),
+                                            _gprsDefaultVersionId ::
+                                            !(Maybe Text),
+                                            _gprsPolicyARN :: !(Maybe Text),
+                                            _gprsCreationDate :: !(Maybe POSIX),
+                                            _gprsGenerationId :: !(Maybe Text),
+                                            _gprsResponseStatus :: !Int}
+                           deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'GetPolicyResponse' with the minimum fields required to make a request.
 --
@@ -147,18 +141,15 @@ data GetPolicyResponse =
 getPolicyResponse
     :: Int -- ^ 'gprsResponseStatus'
     -> GetPolicyResponse
-getPolicyResponse pResponseStatus_ =
-  GetPolicyResponse'
-    { _gprsLastModifiedDate = Nothing
-    , _gprsPolicyName = Nothing
-    , _gprsPolicyDocument = Nothing
-    , _gprsDefaultVersionId = Nothing
-    , _gprsPolicyARN = Nothing
-    , _gprsCreationDate = Nothing
-    , _gprsGenerationId = Nothing
-    , _gprsResponseStatus = pResponseStatus_
-    }
-
+getPolicyResponse pResponseStatus_
+  = GetPolicyResponse'{_gprsLastModifiedDate = Nothing,
+                       _gprsPolicyName = Nothing,
+                       _gprsPolicyDocument = Nothing,
+                       _gprsDefaultVersionId = Nothing,
+                       _gprsPolicyARN = Nothing,
+                       _gprsCreationDate = Nothing,
+                       _gprsGenerationId = Nothing,
+                       _gprsResponseStatus = pResponseStatus_}
 
 -- | The date the policy was last modified.
 gprsLastModifiedDate :: Lens' GetPolicyResponse (Maybe UTCTime)

@@ -46,56 +46,63 @@ module Network.AWS.Config.SelectAggregateResourceConfig
     ) where
 
 import Network.AWS.Config.Types
-import Network.AWS.Config.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 
 -- | /See:/ 'selectAggregateResourceConfig' smart constructor.
-data SelectAggregateResourceConfig =
-  SelectAggregateResourceConfig'
-    { _sarcNextToken                   :: !(Maybe Text)
-    , _sarcLimit                       :: !(Maybe Nat)
-    , _sarcMaxResults                  :: !(Maybe Nat)
-    , _sarcExpression                  :: !Text
-    , _sarcConfigurationAggregatorName :: !Text
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data SelectAggregateResourceConfig = SelectAggregateResourceConfig'{_sarcNextToken
+                                                                    ::
+                                                                    !(Maybe
+                                                                        Text),
+                                                                    _sarcLimit
+                                                                    ::
+                                                                    !(Maybe
+                                                                        Nat),
+                                                                    _sarcMaxResults
+                                                                    ::
+                                                                    !(Maybe
+                                                                        Nat),
+                                                                    _sarcExpression
+                                                                    :: !Text,
+                                                                    _sarcConfigurationAggregatorName
+                                                                    :: !Text}
+                                       deriving (Eq, Read, Show, Data, Typeable,
+                                                 Generic)
 
 -- | Creates a value of 'SelectAggregateResourceConfig' with the minimum fields required to make a request.
 --
 -- Use one of the following lenses to modify other fields as desired:
 --
--- * 'sarcNextToken' - The nextToken string returned in a previous request that you use to request the next page of results in a paginated response.
+-- * 'sarcNextToken' - The nextToken string returned in a previous request that you use to request the next page of results in a paginated response. 
 --
--- * 'sarcLimit' - The maximum number of query results returned on each page.
+-- * 'sarcLimit' - The maximum number of query results returned on each page. 
 --
 -- * 'sarcMaxResults' - Undocumented member.
 --
--- * 'sarcExpression' - The SQL query SELECT command.
+-- * 'sarcExpression' - The SQL query SELECT command. 
 --
 -- * 'sarcConfigurationAggregatorName' - The name of the configuration aggregator.
 selectAggregateResourceConfig
     :: Text -- ^ 'sarcExpression'
     -> Text -- ^ 'sarcConfigurationAggregatorName'
     -> SelectAggregateResourceConfig
-selectAggregateResourceConfig pExpression_ pConfigurationAggregatorName_ =
-  SelectAggregateResourceConfig'
-    { _sarcNextToken = Nothing
-    , _sarcLimit = Nothing
-    , _sarcMaxResults = Nothing
-    , _sarcExpression = pExpression_
-    , _sarcConfigurationAggregatorName = pConfigurationAggregatorName_
-    }
+selectAggregateResourceConfig pExpression_
+  pConfigurationAggregatorName_
+  = SelectAggregateResourceConfig'{_sarcNextToken =
+                                     Nothing,
+                                   _sarcLimit = Nothing,
+                                   _sarcMaxResults = Nothing,
+                                   _sarcExpression = pExpression_,
+                                   _sarcConfigurationAggregatorName =
+                                     pConfigurationAggregatorName_}
 
-
--- | The nextToken string returned in a previous request that you use to request the next page of results in a paginated response.
+-- | The nextToken string returned in a previous request that you use to request the next page of results in a paginated response. 
 sarcNextToken :: Lens' SelectAggregateResourceConfig (Maybe Text)
 sarcNextToken = lens _sarcNextToken (\ s a -> s{_sarcNextToken = a})
 
--- | The maximum number of query results returned on each page.
+-- | The maximum number of query results returned on each page. 
 sarcLimit :: Lens' SelectAggregateResourceConfig (Maybe Natural)
 sarcLimit = lens _sarcLimit (\ s a -> s{_sarcLimit = a}) . mapping _Nat
 
@@ -103,7 +110,7 @@ sarcLimit = lens _sarcLimit (\ s a -> s{_sarcLimit = a}) . mapping _Nat
 sarcMaxResults :: Lens' SelectAggregateResourceConfig (Maybe Natural)
 sarcMaxResults = lens _sarcMaxResults (\ s a -> s{_sarcMaxResults = a}) . mapping _Nat
 
--- | The SQL query SELECT command.
+-- | The SQL query SELECT command. 
 sarcExpression :: Lens' SelectAggregateResourceConfig Text
 sarcExpression = lens _sarcExpression (\ s a -> s{_sarcExpression = a})
 
@@ -158,15 +165,23 @@ instance ToQuery SelectAggregateResourceConfig where
         toQuery = const mempty
 
 -- | /See:/ 'selectAggregateResourceConfigResponse' smart constructor.
-data SelectAggregateResourceConfigResponse =
-  SelectAggregateResourceConfigResponse'
-    { _sarcrsResults        :: !(Maybe [Text])
-    , _sarcrsQueryInfo      :: !(Maybe QueryInfo)
-    , _sarcrsNextToken      :: !(Maybe Text)
-    , _sarcrsResponseStatus :: !Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data SelectAggregateResourceConfigResponse = SelectAggregateResourceConfigResponse'{_sarcrsResults
+                                                                                    ::
+                                                                                    !(Maybe
+                                                                                        [Text]),
+                                                                                    _sarcrsQueryInfo
+                                                                                    ::
+                                                                                    !(Maybe
+                                                                                        QueryInfo),
+                                                                                    _sarcrsNextToken
+                                                                                    ::
+                                                                                    !(Maybe
+                                                                                        Text),
+                                                                                    _sarcrsResponseStatus
+                                                                                    ::
+                                                                                    !Int}
+                                               deriving (Eq, Read, Show, Data,
+                                                         Typeable, Generic)
 
 -- | Creates a value of 'SelectAggregateResourceConfigResponse' with the minimum fields required to make a request.
 --
@@ -176,20 +191,20 @@ data SelectAggregateResourceConfigResponse =
 --
 -- * 'sarcrsQueryInfo' - Undocumented member.
 --
--- * 'sarcrsNextToken' - The nextToken string returned in a previous request that you use to request the next page of results in a paginated response.
+-- * 'sarcrsNextToken' - The nextToken string returned in a previous request that you use to request the next page of results in a paginated response. 
 --
 -- * 'sarcrsResponseStatus' - -- | The response status code.
 selectAggregateResourceConfigResponse
     :: Int -- ^ 'sarcrsResponseStatus'
     -> SelectAggregateResourceConfigResponse
-selectAggregateResourceConfigResponse pResponseStatus_ =
-  SelectAggregateResourceConfigResponse'
-    { _sarcrsResults = Nothing
-    , _sarcrsQueryInfo = Nothing
-    , _sarcrsNextToken = Nothing
-    , _sarcrsResponseStatus = pResponseStatus_
-    }
-
+selectAggregateResourceConfigResponse
+  pResponseStatus_
+  = SelectAggregateResourceConfigResponse'{_sarcrsResults
+                                             = Nothing,
+                                           _sarcrsQueryInfo = Nothing,
+                                           _sarcrsNextToken = Nothing,
+                                           _sarcrsResponseStatus =
+                                             pResponseStatus_}
 
 -- | Returns the results for the SQL query.
 sarcrsResults :: Lens' SelectAggregateResourceConfigResponse [Text]
@@ -199,7 +214,7 @@ sarcrsResults = lens _sarcrsResults (\ s a -> s{_sarcrsResults = a}) . _Default 
 sarcrsQueryInfo :: Lens' SelectAggregateResourceConfigResponse (Maybe QueryInfo)
 sarcrsQueryInfo = lens _sarcrsQueryInfo (\ s a -> s{_sarcrsQueryInfo = a})
 
--- | The nextToken string returned in a previous request that you use to request the next page of results in a paginated response.
+-- | The nextToken string returned in a previous request that you use to request the next page of results in a paginated response. 
 sarcrsNextToken :: Lens' SelectAggregateResourceConfigResponse (Maybe Text)
 sarcrsNextToken = lens _sarcrsNextToken (\ s a -> s{_sarcrsNextToken = a})
 

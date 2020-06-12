@@ -43,19 +43,16 @@ module Network.AWS.CodeStar.DescribeUserProfile
     ) where
 
 import Network.AWS.CodeStar.Types
-import Network.AWS.CodeStar.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 
 -- | /See:/ 'describeUserProfile' smart constructor.
-newtype DescribeUserProfile =
-  DescribeUserProfile'
-    { _dupUserARN :: Text
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+newtype DescribeUserProfile = DescribeUserProfile'{_dupUserARN
+                                                   :: Text}
+                                deriving (Eq, Read, Show, Data, Typeable,
+                                          Generic)
 
 -- | Creates a value of 'DescribeUserProfile' with the minimum fields required to make a request.
 --
@@ -65,8 +62,8 @@ newtype DescribeUserProfile =
 describeUserProfile
     :: Text -- ^ 'dupUserARN'
     -> DescribeUserProfile
-describeUserProfile pUserARN_ = DescribeUserProfile' {_dupUserARN = pUserARN_}
-
+describeUserProfile pUserARN_
+  = DescribeUserProfile'{_dupUserARN = pUserARN_}
 
 -- | The Amazon Resource Name (ARN) of the user.
 dupUserARN :: Lens' DescribeUserProfile Text
@@ -113,18 +110,29 @@ instance ToQuery DescribeUserProfile where
         toQuery = const mempty
 
 -- | /See:/ 'describeUserProfileResponse' smart constructor.
-data DescribeUserProfileResponse =
-  DescribeUserProfileResponse'
-    { _duprsSshPublicKey          :: !(Maybe Text)
-    , _duprsEmailAddress          :: !(Maybe (Sensitive Text))
-    , _duprsDisplayName           :: !(Maybe (Sensitive Text))
-    , _duprsResponseStatus        :: !Int
-    , _duprsUserARN               :: !Text
-    , _duprsCreatedTimestamp      :: !POSIX
-    , _duprsLastModifiedTimestamp :: !POSIX
-    }
-  deriving (Eq, Show, Data, Typeable, Generic)
-
+data DescribeUserProfileResponse = DescribeUserProfileResponse'{_duprsSshPublicKey
+                                                                ::
+                                                                !(Maybe Text),
+                                                                _duprsEmailAddress
+                                                                ::
+                                                                !(Maybe
+                                                                    (Sensitive
+                                                                       Text)),
+                                                                _duprsDisplayName
+                                                                ::
+                                                                !(Maybe
+                                                                    (Sensitive
+                                                                       Text)),
+                                                                _duprsResponseStatus
+                                                                :: !Int,
+                                                                _duprsUserARN ::
+                                                                !Text,
+                                                                _duprsCreatedTimestamp
+                                                                :: !POSIX,
+                                                                _duprsLastModifiedTimestamp
+                                                                :: !POSIX}
+                                     deriving (Eq, Show, Data, Typeable,
+                                               Generic)
 
 -- | Creates a value of 'DescribeUserProfileResponse' with the minimum fields required to make a request.
 --
@@ -149,17 +157,18 @@ describeUserProfileResponse
     -> UTCTime -- ^ 'duprsCreatedTimestamp'
     -> UTCTime -- ^ 'duprsLastModifiedTimestamp'
     -> DescribeUserProfileResponse
-describeUserProfileResponse pResponseStatus_ pUserARN_ pCreatedTimestamp_ pLastModifiedTimestamp_ =
-  DescribeUserProfileResponse'
-    { _duprsSshPublicKey = Nothing
-    , _duprsEmailAddress = Nothing
-    , _duprsDisplayName = Nothing
-    , _duprsResponseStatus = pResponseStatus_
-    , _duprsUserARN = pUserARN_
-    , _duprsCreatedTimestamp = _Time # pCreatedTimestamp_
-    , _duprsLastModifiedTimestamp = _Time # pLastModifiedTimestamp_
-    }
-
+describeUserProfileResponse pResponseStatus_
+  pUserARN_ pCreatedTimestamp_ pLastModifiedTimestamp_
+  = DescribeUserProfileResponse'{_duprsSshPublicKey =
+                                   Nothing,
+                                 _duprsEmailAddress = Nothing,
+                                 _duprsDisplayName = Nothing,
+                                 _duprsResponseStatus = pResponseStatus_,
+                                 _duprsUserARN = pUserARN_,
+                                 _duprsCreatedTimestamp =
+                                   _Time # pCreatedTimestamp_,
+                                 _duprsLastModifiedTimestamp =
+                                   _Time # pLastModifiedTimestamp_}
 
 -- | The SSH public key associated with the user. This SSH public key is associated with the user profile, and can be used in conjunction with the associated private key for access to project resources, such as Amazon EC2 instances, if a project owner grants remote access to those resources.
 duprsSshPublicKey :: Lens' DescribeUserProfileResponse (Maybe Text)

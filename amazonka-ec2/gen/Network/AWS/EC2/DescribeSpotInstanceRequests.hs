@@ -51,7 +51,6 @@ module Network.AWS.EC2.DescribeSpotInstanceRequests
     ) where
 
 import Network.AWS.EC2.Types
-import Network.AWS.EC2.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Pager
 import Network.AWS.Prelude
@@ -63,16 +62,24 @@ import Network.AWS.Response
 --
 --
 -- /See:/ 'describeSpotInstanceRequests' smart constructor.
-data DescribeSpotInstanceRequests =
-  DescribeSpotInstanceRequests'
-    { _dsirFilters                :: !(Maybe [Filter])
-    , _dsirSpotInstanceRequestIds :: !(Maybe [Text])
-    , _dsirNextToken              :: !(Maybe Text)
-    , _dsirDryRun                 :: !(Maybe Bool)
-    , _dsirMaxResults             :: !(Maybe Int)
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data DescribeSpotInstanceRequests = DescribeSpotInstanceRequests'{_dsirFilters
+                                                                  ::
+                                                                  !(Maybe
+                                                                      [Filter]),
+                                                                  _dsirSpotInstanceRequestIds
+                                                                  ::
+                                                                  !(Maybe
+                                                                      [Text]),
+                                                                  _dsirNextToken
+                                                                  ::
+                                                                  !(Maybe Text),
+                                                                  _dsirDryRun ::
+                                                                  !(Maybe Bool),
+                                                                  _dsirMaxResults
+                                                                  ::
+                                                                  !(Maybe Int)}
+                                      deriving (Eq, Read, Show, Data, Typeable,
+                                                Generic)
 
 -- | Creates a value of 'DescribeSpotInstanceRequests' with the minimum fields required to make a request.
 --
@@ -89,15 +96,13 @@ data DescribeSpotInstanceRequests =
 -- * 'dsirMaxResults' - The maximum number of results to return in a single call. Specify a value between 5 and 1000. To retrieve the remaining results, make another call with the returned @NextToken@ value.
 describeSpotInstanceRequests
     :: DescribeSpotInstanceRequests
-describeSpotInstanceRequests =
-  DescribeSpotInstanceRequests'
-    { _dsirFilters = Nothing
-    , _dsirSpotInstanceRequestIds = Nothing
-    , _dsirNextToken = Nothing
-    , _dsirDryRun = Nothing
-    , _dsirMaxResults = Nothing
-    }
-
+describeSpotInstanceRequests
+  = DescribeSpotInstanceRequests'{_dsirFilters =
+                                    Nothing,
+                                  _dsirSpotInstanceRequestIds = Nothing,
+                                  _dsirNextToken = Nothing,
+                                  _dsirDryRun = Nothing,
+                                  _dsirMaxResults = Nothing}
 
 -- | One or more filters.     * @availability-zone-group@ - The Availability Zone group.     * @create-time@ - The time stamp when the Spot Instance request was created.     * @fault-code@ - The fault code related to the request.     * @fault-message@ - The fault message related to the request.     * @instance-id@ - The ID of the instance that fulfilled the request.     * @launch-group@ - The Spot Instance launch group.     * @launch.block-device-mapping.delete-on-termination@ - Indicates whether the EBS volume is deleted on instance termination.     * @launch.block-device-mapping.device-name@ - The device name for the volume in the block device mapping (for example, @/dev/sdh@ or @xvdh@ ).     * @launch.block-device-mapping.snapshot-id@ - The ID of the snapshot for the EBS volume.     * @launch.block-device-mapping.volume-size@ - The size of the EBS volume, in GiB.     * @launch.block-device-mapping.volume-type@ - The type of EBS volume: @gp2@ for General Purpose SSD, @io1@ for Provisioned IOPS SSD, @st1@ for Throughput Optimized HDD, @sc1@ for Cold HDD, or @standard@ for Magnetic.     * @launch.group-id@ - The ID of the security group for the instance.     * @launch.group-name@ - The name of the security group for the instance.     * @launch.image-id@ - The ID of the AMI.     * @launch.instance-type@ - The type of instance (for example, @m3.medium@ ).     * @launch.kernel-id@ - The kernel ID.     * @launch.key-name@ - The name of the key pair the instance launched with.     * @launch.monitoring-enabled@ - Whether detailed monitoring is enabled for the Spot Instance.     * @launch.ramdisk-id@ - The RAM disk ID.     * @launched-availability-zone@ - The Availability Zone in which the request is launched.     * @network-interface.addresses.primary@ - Indicates whether the IP address is the primary private IP address.     * @network-interface.delete-on-termination@ - Indicates whether the network interface is deleted when the instance is terminated.     * @network-interface.description@ - A description of the network interface.     * @network-interface.device-index@ - The index of the device for the network interface attachment on the instance.     * @network-interface.group-id@ - The ID of the security group associated with the network interface.     * @network-interface.network-interface-id@ - The ID of the network interface.     * @network-interface.private-ip-address@ - The primary private IP address of the network interface.     * @network-interface.subnet-id@ - The ID of the subnet for the instance.     * @product-description@ - The product description associated with the instance (@Linux/UNIX@ | @Windows@ ).     * @spot-instance-request-id@ - The Spot Instance request ID.     * @spot-price@ - The maximum hourly price for any Spot Instance launched to fulfill the request.     * @state@ - The state of the Spot Instance request (@open@ | @active@ | @closed@ | @cancelled@ | @failed@ ). Spot request status information can help you track your Amazon EC2 Spot Instance requests. For more information, see <https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/spot-bid-status.html Spot Request Status> in the /Amazon EC2 User Guide for Linux Instances/ .     * @status-code@ - The short code describing the most recent evaluation of your Spot Instance request.     * @status-message@ - The message explaining the status of the Spot Instance request.     * @tag@ :<key> - The key/value combination of a tag assigned to the resource. Use the tag key in the filter name and the tag value as the filter value. For example, to find all resources that have a tag with the key @Owner@ and the value @TeamA@ , specify @tag:Owner@ for the filter name and @TeamA@ for the filter value.     * @tag-key@ - The key of a tag assigned to the resource. Use this filter to find all resources assigned a tag with a specific key, regardless of the tag value.     * @type@ - The type of Spot Instance request (@one-time@ | @persistent@ ).     * @valid-from@ - The start date of the request.     * @valid-until@ - The end date of the request.
 dsirFilters :: Lens' DescribeSpotInstanceRequests [Filter]
@@ -169,14 +174,19 @@ instance ToQuery DescribeSpotInstanceRequests where
 --
 --
 -- /See:/ 'describeSpotInstanceRequestsResponse' smart constructor.
-data DescribeSpotInstanceRequestsResponse =
-  DescribeSpotInstanceRequestsResponse'
-    { _dsirrsNextToken            :: !(Maybe Text)
-    , _dsirrsSpotInstanceRequests :: !(Maybe [SpotInstanceRequest])
-    , _dsirrsResponseStatus       :: !Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data DescribeSpotInstanceRequestsResponse = DescribeSpotInstanceRequestsResponse'{_dsirrsNextToken
+                                                                                  ::
+                                                                                  !(Maybe
+                                                                                      Text),
+                                                                                  _dsirrsSpotInstanceRequests
+                                                                                  ::
+                                                                                  !(Maybe
+                                                                                      [SpotInstanceRequest]),
+                                                                                  _dsirrsResponseStatus
+                                                                                  ::
+                                                                                  !Int}
+                                              deriving (Eq, Read, Show, Data,
+                                                        Typeable, Generic)
 
 -- | Creates a value of 'DescribeSpotInstanceRequestsResponse' with the minimum fields required to make a request.
 --
@@ -190,13 +200,12 @@ data DescribeSpotInstanceRequestsResponse =
 describeSpotInstanceRequestsResponse
     :: Int -- ^ 'dsirrsResponseStatus'
     -> DescribeSpotInstanceRequestsResponse
-describeSpotInstanceRequestsResponse pResponseStatus_ =
-  DescribeSpotInstanceRequestsResponse'
-    { _dsirrsNextToken = Nothing
-    , _dsirrsSpotInstanceRequests = Nothing
-    , _dsirrsResponseStatus = pResponseStatus_
-    }
-
+describeSpotInstanceRequestsResponse pResponseStatus_
+  = DescribeSpotInstanceRequestsResponse'{_dsirrsNextToken
+                                            = Nothing,
+                                          _dsirrsSpotInstanceRequests = Nothing,
+                                          _dsirrsResponseStatus =
+                                            pResponseStatus_}
 
 -- | The token to use to retrieve the next set of results. This value is @null@ when there are no more results to return.
 dsirrsNextToken :: Lens' DescribeSpotInstanceRequestsResponse (Maybe Text)

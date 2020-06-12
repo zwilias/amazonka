@@ -38,20 +38,17 @@ module Network.AWS.DirectoryService.DeregisterCertificate
     ) where
 
 import Network.AWS.DirectoryService.Types
-import Network.AWS.DirectoryService.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 
 -- | /See:/ 'deregisterCertificate' smart constructor.
-data DeregisterCertificate =
-  DeregisterCertificate'
-    { _derDirectoryId   :: !Text
-    , _derCertificateId :: !Text
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data DeregisterCertificate = DeregisterCertificate'{_derDirectoryId
+                                                    :: !Text,
+                                                    _derCertificateId :: !Text}
+                               deriving (Eq, Read, Show, Data, Typeable,
+                                         Generic)
 
 -- | Creates a value of 'DeregisterCertificate' with the minimum fields required to make a request.
 --
@@ -64,10 +61,10 @@ deregisterCertificate
     :: Text -- ^ 'derDirectoryId'
     -> Text -- ^ 'derCertificateId'
     -> DeregisterCertificate
-deregisterCertificate pDirectoryId_ pCertificateId_ =
-  DeregisterCertificate'
-    {_derDirectoryId = pDirectoryId_, _derCertificateId = pCertificateId_}
-
+deregisterCertificate pDirectoryId_ pCertificateId_
+  = DeregisterCertificate'{_derDirectoryId =
+                             pDirectoryId_,
+                           _derCertificateId = pCertificateId_}
 
 -- | The identifier of the directory.
 derDirectoryId :: Lens' DeregisterCertificate Text
@@ -115,12 +112,10 @@ instance ToQuery DeregisterCertificate where
         toQuery = const mempty
 
 -- | /See:/ 'deregisterCertificateResponse' smart constructor.
-newtype DeregisterCertificateResponse =
-  DeregisterCertificateResponse'
-    { _dcrsResponseStatus :: Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+newtype DeregisterCertificateResponse = DeregisterCertificateResponse'{_dcrsResponseStatus
+                                                                       :: Int}
+                                          deriving (Eq, Read, Show, Data,
+                                                    Typeable, Generic)
 
 -- | Creates a value of 'DeregisterCertificateResponse' with the minimum fields required to make a request.
 --
@@ -130,9 +125,9 @@ newtype DeregisterCertificateResponse =
 deregisterCertificateResponse
     :: Int -- ^ 'dcrsResponseStatus'
     -> DeregisterCertificateResponse
-deregisterCertificateResponse pResponseStatus_ =
-  DeregisterCertificateResponse' {_dcrsResponseStatus = pResponseStatus_}
-
+deregisterCertificateResponse pResponseStatus_
+  = DeregisterCertificateResponse'{_dcrsResponseStatus
+                                     = pResponseStatus_}
 
 -- | -- | The response status code.
 dcrsResponseStatus :: Lens' DeregisterCertificateResponse Int

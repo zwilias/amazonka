@@ -39,18 +39,13 @@ module Network.AWS.Lightsail.GetDomain
 
 import Network.AWS.Lens
 import Network.AWS.Lightsail.Types
-import Network.AWS.Lightsail.Types.Product
 import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 
 -- | /See:/ 'getDomain' smart constructor.
-newtype GetDomain =
-  GetDomain'
-    { _gdDomainName :: Text
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+newtype GetDomain = GetDomain'{_gdDomainName :: Text}
+                      deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'GetDomain' with the minimum fields required to make a request.
 --
@@ -60,8 +55,8 @@ newtype GetDomain =
 getDomain
     :: Text -- ^ 'gdDomainName'
     -> GetDomain
-getDomain pDomainName_ = GetDomain' {_gdDomainName = pDomainName_}
-
+getDomain pDomainName_
+  = GetDomain'{_gdDomainName = pDomainName_}
 
 -- | The domain name for which your want to return information about.
 gdDomainName :: Lens' GetDomain Text
@@ -101,13 +96,10 @@ instance ToQuery GetDomain where
         toQuery = const mempty
 
 -- | /See:/ 'getDomainResponse' smart constructor.
-data GetDomainResponse =
-  GetDomainResponse'
-    { _gdrsDomain         :: !(Maybe Domain)
-    , _gdrsResponseStatus :: !Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data GetDomainResponse = GetDomainResponse'{_gdrsDomain
+                                            :: !(Maybe Domain),
+                                            _gdrsResponseStatus :: !Int}
+                           deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'GetDomainResponse' with the minimum fields required to make a request.
 --
@@ -119,10 +111,9 @@ data GetDomainResponse =
 getDomainResponse
     :: Int -- ^ 'gdrsResponseStatus'
     -> GetDomainResponse
-getDomainResponse pResponseStatus_ =
-  GetDomainResponse'
-    {_gdrsDomain = Nothing, _gdrsResponseStatus = pResponseStatus_}
-
+getDomainResponse pResponseStatus_
+  = GetDomainResponse'{_gdrsDomain = Nothing,
+                       _gdrsResponseStatus = pResponseStatus_}
 
 -- | An array of key-value pairs containing information about your get domain request.
 gdrsDomain :: Lens' GetDomainResponse (Maybe Domain)

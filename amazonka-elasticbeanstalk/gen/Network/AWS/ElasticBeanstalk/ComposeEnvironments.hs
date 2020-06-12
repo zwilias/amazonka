@@ -40,7 +40,6 @@ module Network.AWS.ElasticBeanstalk.ComposeEnvironments
     ) where
 
 import Network.AWS.ElasticBeanstalk.Types
-import Network.AWS.ElasticBeanstalk.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.Request
@@ -51,14 +50,12 @@ import Network.AWS.Response
 --
 --
 -- /See:/ 'composeEnvironments' smart constructor.
-data ComposeEnvironments =
-  ComposeEnvironments'
-    { _ceVersionLabels   :: !(Maybe [Text])
-    , _ceApplicationName :: !(Maybe Text)
-    , _ceGroupName       :: !(Maybe Text)
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data ComposeEnvironments = ComposeEnvironments'{_ceVersionLabels
+                                                :: !(Maybe [Text]),
+                                                _ceApplicationName ::
+                                                !(Maybe Text),
+                                                _ceGroupName :: !(Maybe Text)}
+                             deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'ComposeEnvironments' with the minimum fields required to make a request.
 --
@@ -71,13 +68,9 @@ data ComposeEnvironments =
 -- * 'ceGroupName' - The name of the group to which the target environments belong. Specify a group name only if the environment name defined in each target environment's manifest ends with a + (plus) character. See <http://docs.aws.amazon.com/elasticbeanstalk/latest/dg/environment-cfg-manifest.html Environment Manifest (env.yaml)> for details.
 composeEnvironments
     :: ComposeEnvironments
-composeEnvironments =
-  ComposeEnvironments'
-    { _ceVersionLabels = Nothing
-    , _ceApplicationName = Nothing
-    , _ceGroupName = Nothing
-    }
-
+composeEnvironments
+  = ComposeEnvironments'{_ceVersionLabels = Nothing,
+                         _ceApplicationName = Nothing, _ceGroupName = Nothing}
 
 -- | A list of version labels, specifying one or more application source bundles that belong to the target application. Each source bundle must include an environment manifest that specifies the name of the environment and the name of the solution stack to use, and optionally can specify environment links to create.
 ceVersionLabels :: Lens' ComposeEnvironments [Text]

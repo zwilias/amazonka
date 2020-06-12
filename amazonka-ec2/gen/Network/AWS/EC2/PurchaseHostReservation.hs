@@ -46,23 +46,25 @@ module Network.AWS.EC2.PurchaseHostReservation
     ) where
 
 import Network.AWS.EC2.Types
-import Network.AWS.EC2.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 
 -- | /See:/ 'purchaseHostReservation' smart constructor.
-data PurchaseHostReservation =
-  PurchaseHostReservation'
-    { _phrCurrencyCode :: !(Maybe CurrencyCodeValues)
-    , _phrClientToken  :: !(Maybe Text)
-    , _phrLimitPrice   :: !(Maybe Text)
-    , _phrHostIdSet    :: ![Text]
-    , _phrOfferingId   :: !Text
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data PurchaseHostReservation = PurchaseHostReservation'{_phrCurrencyCode
+                                                        ::
+                                                        !(Maybe
+                                                            CurrencyCodeValues),
+                                                        _phrClientToken ::
+                                                        !(Maybe Text),
+                                                        _phrLimitPrice ::
+                                                        !(Maybe Text),
+                                                        _phrHostIdSet ::
+                                                        ![Text],
+                                                        _phrOfferingId :: !Text}
+                                 deriving (Eq, Read, Show, Data, Typeable,
+                                           Generic)
 
 -- | Creates a value of 'PurchaseHostReservation' with the minimum fields required to make a request.
 --
@@ -80,15 +82,12 @@ data PurchaseHostReservation =
 purchaseHostReservation
     :: Text -- ^ 'phrOfferingId'
     -> PurchaseHostReservation
-purchaseHostReservation pOfferingId_ =
-  PurchaseHostReservation'
-    { _phrCurrencyCode = Nothing
-    , _phrClientToken = Nothing
-    , _phrLimitPrice = Nothing
-    , _phrHostIdSet = mempty
-    , _phrOfferingId = pOfferingId_
-    }
-
+purchaseHostReservation pOfferingId_
+  = PurchaseHostReservation'{_phrCurrencyCode =
+                               Nothing,
+                             _phrClientToken = Nothing,
+                             _phrLimitPrice = Nothing, _phrHostIdSet = mempty,
+                             _phrOfferingId = pOfferingId_}
 
 -- | The currency in which the @totalUpfrontPrice@ , @LimitPrice@ , and @totalHourlyPrice@ amounts are specified. At this time, the only supported currency is @USD@ .
 phrCurrencyCode :: Lens' PurchaseHostReservation (Maybe CurrencyCodeValues)
@@ -149,17 +148,30 @@ instance ToQuery PurchaseHostReservation where
                "OfferingId" =: _phrOfferingId]
 
 -- | /See:/ 'purchaseHostReservationResponse' smart constructor.
-data PurchaseHostReservationResponse =
-  PurchaseHostReservationResponse'
-    { _phrrsCurrencyCode      :: !(Maybe CurrencyCodeValues)
-    , _phrrsClientToken       :: !(Maybe Text)
-    , _phrrsTotalHourlyPrice  :: !(Maybe Text)
-    , _phrrsTotalUpfrontPrice :: !(Maybe Text)
-    , _phrrsPurchase          :: !(Maybe [Purchase])
-    , _phrrsResponseStatus    :: !Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data PurchaseHostReservationResponse = PurchaseHostReservationResponse'{_phrrsCurrencyCode
+                                                                        ::
+                                                                        !(Maybe
+                                                                            CurrencyCodeValues),
+                                                                        _phrrsClientToken
+                                                                        ::
+                                                                        !(Maybe
+                                                                            Text),
+                                                                        _phrrsTotalHourlyPrice
+                                                                        ::
+                                                                        !(Maybe
+                                                                            Text),
+                                                                        _phrrsTotalUpfrontPrice
+                                                                        ::
+                                                                        !(Maybe
+                                                                            Text),
+                                                                        _phrrsPurchase
+                                                                        ::
+                                                                        !(Maybe
+                                                                            [Purchase]),
+                                                                        _phrrsResponseStatus
+                                                                        :: !Int}
+                                         deriving (Eq, Read, Show, Data,
+                                                   Typeable, Generic)
 
 -- | Creates a value of 'PurchaseHostReservationResponse' with the minimum fields required to make a request.
 --
@@ -179,16 +191,14 @@ data PurchaseHostReservationResponse =
 purchaseHostReservationResponse
     :: Int -- ^ 'phrrsResponseStatus'
     -> PurchaseHostReservationResponse
-purchaseHostReservationResponse pResponseStatus_ =
-  PurchaseHostReservationResponse'
-    { _phrrsCurrencyCode = Nothing
-    , _phrrsClientToken = Nothing
-    , _phrrsTotalHourlyPrice = Nothing
-    , _phrrsTotalUpfrontPrice = Nothing
-    , _phrrsPurchase = Nothing
-    , _phrrsResponseStatus = pResponseStatus_
-    }
-
+purchaseHostReservationResponse pResponseStatus_
+  = PurchaseHostReservationResponse'{_phrrsCurrencyCode
+                                       = Nothing,
+                                     _phrrsClientToken = Nothing,
+                                     _phrrsTotalHourlyPrice = Nothing,
+                                     _phrrsTotalUpfrontPrice = Nothing,
+                                     _phrrsPurchase = Nothing,
+                                     _phrrsResponseStatus = pResponseStatus_}
 
 -- | The currency in which the @totalUpfrontPrice@ and @totalHourlyPrice@ amounts are specified. At this time, the only supported currency is @USD@ .
 phrrsCurrencyCode :: Lens' PurchaseHostReservationResponse (Maybe CurrencyCodeValues)

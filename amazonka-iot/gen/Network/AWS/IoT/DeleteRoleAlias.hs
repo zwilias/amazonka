@@ -37,19 +37,15 @@ module Network.AWS.IoT.DeleteRoleAlias
     ) where
 
 import Network.AWS.IoT.Types
-import Network.AWS.IoT.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 
 -- | /See:/ 'deleteRoleAlias' smart constructor.
-newtype DeleteRoleAlias =
-  DeleteRoleAlias'
-    { _dRoleAlias :: Text
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+newtype DeleteRoleAlias = DeleteRoleAlias'{_dRoleAlias
+                                           :: Text}
+                            deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'DeleteRoleAlias' with the minimum fields required to make a request.
 --
@@ -59,8 +55,8 @@ newtype DeleteRoleAlias =
 deleteRoleAlias
     :: Text -- ^ 'dRoleAlias'
     -> DeleteRoleAlias
-deleteRoleAlias pRoleAlias_ = DeleteRoleAlias' {_dRoleAlias = pRoleAlias_}
-
+deleteRoleAlias pRoleAlias_
+  = DeleteRoleAlias'{_dRoleAlias = pRoleAlias_}
 
 -- | The role alias to delete.
 dRoleAlias :: Lens' DeleteRoleAlias Text
@@ -89,12 +85,10 @@ instance ToQuery DeleteRoleAlias where
         toQuery = const mempty
 
 -- | /See:/ 'deleteRoleAliasResponse' smart constructor.
-newtype DeleteRoleAliasResponse =
-  DeleteRoleAliasResponse'
-    { _drsResponseStatus :: Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+newtype DeleteRoleAliasResponse = DeleteRoleAliasResponse'{_drsResponseStatus
+                                                           :: Int}
+                                    deriving (Eq, Read, Show, Data, Typeable,
+                                              Generic)
 
 -- | Creates a value of 'DeleteRoleAliasResponse' with the minimum fields required to make a request.
 --
@@ -104,9 +98,9 @@ newtype DeleteRoleAliasResponse =
 deleteRoleAliasResponse
     :: Int -- ^ 'drsResponseStatus'
     -> DeleteRoleAliasResponse
-deleteRoleAliasResponse pResponseStatus_ =
-  DeleteRoleAliasResponse' {_drsResponseStatus = pResponseStatus_}
-
+deleteRoleAliasResponse pResponseStatus_
+  = DeleteRoleAliasResponse'{_drsResponseStatus =
+                               pResponseStatus_}
 
 -- | -- | The response status code.
 drsResponseStatus :: Lens' DeleteRoleAliasResponse Int

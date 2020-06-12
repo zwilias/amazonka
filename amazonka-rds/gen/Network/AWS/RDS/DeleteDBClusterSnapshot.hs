@@ -21,7 +21,7 @@
 -- Deletes a DB cluster snapshot. If the snapshot is being copied, the copy operation is terminated.
 --
 --
--- For more information on Amazon Aurora, see <http://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/CHAP_Aurora.html Aurora on Amazon RDS> in the /Amazon RDS User Guide./
+-- For more information on Amazon Aurora, see <http://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/CHAP_Aurora.html Aurora on Amazon RDS> in the /Amazon RDS User Guide./ 
 --
 module Network.AWS.RDS.DeleteDBClusterSnapshot
     (
@@ -42,21 +42,18 @@ module Network.AWS.RDS.DeleteDBClusterSnapshot
 import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.RDS.Types
-import Network.AWS.RDS.Types.Product
 import Network.AWS.Request
 import Network.AWS.Response
 
--- |
+-- | 
 --
 --
 --
 -- /See:/ 'deleteDBClusterSnapshot' smart constructor.
-newtype DeleteDBClusterSnapshot =
-  DeleteDBClusterSnapshot'
-    { _ddcsDBClusterSnapshotIdentifier :: Text
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+newtype DeleteDBClusterSnapshot = DeleteDBClusterSnapshot'{_ddcsDBClusterSnapshotIdentifier
+                                                           :: Text}
+                                    deriving (Eq, Read, Show, Data, Typeable,
+                                              Generic)
 
 -- | Creates a value of 'DeleteDBClusterSnapshot' with the minimum fields required to make a request.
 --
@@ -66,10 +63,9 @@ newtype DeleteDBClusterSnapshot =
 deleteDBClusterSnapshot
     :: Text -- ^ 'ddcsDBClusterSnapshotIdentifier'
     -> DeleteDBClusterSnapshot
-deleteDBClusterSnapshot pDBClusterSnapshotIdentifier_ =
-  DeleteDBClusterSnapshot'
-    {_ddcsDBClusterSnapshotIdentifier = pDBClusterSnapshotIdentifier_}
-
+deleteDBClusterSnapshot pDBClusterSnapshotIdentifier_
+  = DeleteDBClusterSnapshot'{_ddcsDBClusterSnapshotIdentifier
+                               = pDBClusterSnapshotIdentifier_}
 
 -- | The identifier of the DB cluster snapshot to delete. Constraints: Must be the name of an existing DB cluster snapshot in the @available@ state.
 ddcsDBClusterSnapshotIdentifier :: Lens' DeleteDBClusterSnapshot Text
@@ -105,13 +101,14 @@ instance ToQuery DeleteDBClusterSnapshot where
                  _ddcsDBClusterSnapshotIdentifier]
 
 -- | /See:/ 'deleteDBClusterSnapshotResponse' smart constructor.
-data DeleteDBClusterSnapshotResponse =
-  DeleteDBClusterSnapshotResponse'
-    { _ddcsrsDBClusterSnapshot :: !(Maybe DBClusterSnapshot)
-    , _ddcsrsResponseStatus    :: !Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data DeleteDBClusterSnapshotResponse = DeleteDBClusterSnapshotResponse'{_ddcsrsDBClusterSnapshot
+                                                                        ::
+                                                                        !(Maybe
+                                                                            DBClusterSnapshot),
+                                                                        _ddcsrsResponseStatus
+                                                                        :: !Int}
+                                         deriving (Eq, Read, Show, Data,
+                                                   Typeable, Generic)
 
 -- | Creates a value of 'DeleteDBClusterSnapshotResponse' with the minimum fields required to make a request.
 --
@@ -123,12 +120,10 @@ data DeleteDBClusterSnapshotResponse =
 deleteDBClusterSnapshotResponse
     :: Int -- ^ 'ddcsrsResponseStatus'
     -> DeleteDBClusterSnapshotResponse
-deleteDBClusterSnapshotResponse pResponseStatus_ =
-  DeleteDBClusterSnapshotResponse'
-    { _ddcsrsDBClusterSnapshot = Nothing
-    , _ddcsrsResponseStatus = pResponseStatus_
-    }
-
+deleteDBClusterSnapshotResponse pResponseStatus_
+  = DeleteDBClusterSnapshotResponse'{_ddcsrsDBClusterSnapshot
+                                       = Nothing,
+                                     _ddcsrsResponseStatus = pResponseStatus_}
 
 -- | Undocumented member.
 ddcsrsDBClusterSnapshot :: Lens' DeleteDBClusterSnapshotResponse (Maybe DBClusterSnapshot)

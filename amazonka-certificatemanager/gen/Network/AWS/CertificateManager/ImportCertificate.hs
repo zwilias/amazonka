@@ -18,7 +18,7 @@
 -- Stability   : auto-generated
 -- Portability : non-portable (GHC extensions)
 --
--- Imports a certificate into AWS Certificate Manager (ACM) to use with services that are integrated with ACM. Note that <http://docs.aws.amazon.com/acm/latest/userguide/acm-services.html integrated services> allow only certificate types and keys they support to be associated with their resources. Further, their support differs depending on whether the certificate is imported into IAM or into ACM. For more information, see the documentation for each service. For more information about importing certificates into ACM, see <http://docs.aws.amazon.com/acm/latest/userguide/import-certificate.html Importing Certificates> in the /AWS Certificate Manager User Guide/ .
+-- Imports a certificate into AWS Certificate Manager (ACM) to use with services that are integrated with ACM. Note that <http://docs.aws.amazon.com/acm/latest/userguide/acm-services.html integrated services> allow only certificate types and keys they support to be associated with their resources. Further, their support differs depending on whether the certificate is imported into IAM or into ACM. For more information, see the documentation for each service. For more information about importing certificates into ACM, see <http://docs.aws.amazon.com/acm/latest/userguide/import-certificate.html Importing Certificates> in the /AWS Certificate Manager User Guide/ . 
 --
 --
 -- Note the following guidelines when importing third party certificates:
@@ -41,9 +41,9 @@
 --
 --     * To import a new certificate, omit the @CertificateArn@ argument. Include this argument only when you want to replace a previously imported certificate.
 --
---     * When you import a certificate by using the CLI, you must specify the certificate, the certificate chain, and the private key by their file names preceded by @file://@ . For example, you can specify a certificate saved in the @C:\temp@ folder as @file://C:\temp\certificate_to_import.pem@ . If you are making an HTTP or HTTPS Query request, include these arguments as BLOBs.
+--     * When you import a certificate by using the CLI, you must specify the certificate, the certificate chain, and the private key by their file names preceded by @file://@ . For example, you can specify a certificate saved in the @C:\temp@ folder as @file://C:\temp\certificate_to_import.pem@ . If you are making an HTTP or HTTPS Query request, include these arguments as BLOBs. 
 --
---     * When you import a certificate by using an SDK, you must specify the certificate, the certificate chain, and the private key files in the manner required by the programming language you're using.
+--     * When you import a certificate by using an SDK, you must specify the certificate, the certificate chain, and the private key files in the manner required by the programming language you're using. 
 --
 --
 --
@@ -69,28 +69,26 @@ module Network.AWS.CertificateManager.ImportCertificate
     ) where
 
 import Network.AWS.CertificateManager.Types
-import Network.AWS.CertificateManager.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 
 -- | /See:/ 'importCertificate' smart constructor.
-data ImportCertificate =
-  ImportCertificate'
-    { _icCertificateARN   :: !(Maybe Text)
-    , _icCertificateChain :: !(Maybe Base64)
-    , _icCertificate      :: !Base64
-    , _icPrivateKey       :: !(Sensitive Base64)
-    }
-  deriving (Eq, Show, Data, Typeable, Generic)
-
+data ImportCertificate = ImportCertificate'{_icCertificateARN
+                                            :: !(Maybe Text),
+                                            _icCertificateChain ::
+                                            !(Maybe Base64),
+                                            _icCertificate :: !Base64,
+                                            _icPrivateKey ::
+                                            !(Sensitive Base64)}
+                           deriving (Eq, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'ImportCertificate' with the minimum fields required to make a request.
 --
 -- Use one of the following lenses to modify other fields as desired:
 --
--- * 'icCertificateARN' - The <http://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html Amazon Resource Name (ARN)> of an imported certificate to replace. To import a new certificate, omit this field.
+-- * 'icCertificateARN' - The <http://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html Amazon Resource Name (ARN)> of an imported certificate to replace. To import a new certificate, omit this field. 
 --
 -- * 'icCertificateChain' - The PEM encoded certificate chain.-- /Note:/ This 'Lens' automatically encodes and decodes Base64 data. The underlying isomorphism will encode to Base64 representation during serialisation, and decode from Base64 representation during deserialisation. This 'Lens' accepts and returns only raw unencoded data.
 --
@@ -101,16 +99,13 @@ importCertificate
     :: ByteString -- ^ 'icCertificate'
     -> ByteString -- ^ 'icPrivateKey'
     -> ImportCertificate
-importCertificate pCertificate_ pPrivateKey_ =
-  ImportCertificate'
-    { _icCertificateARN = Nothing
-    , _icCertificateChain = Nothing
-    , _icCertificate = _Base64 # pCertificate_
-    , _icPrivateKey = _Sensitive . _Base64 # pPrivateKey_
-    }
+importCertificate pCertificate_ pPrivateKey_
+  = ImportCertificate'{_icCertificateARN = Nothing,
+                       _icCertificateChain = Nothing,
+                       _icCertificate = _Base64 # pCertificate_,
+                       _icPrivateKey = _Sensitive . _Base64 # pPrivateKey_}
 
-
--- | The <http://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html Amazon Resource Name (ARN)> of an imported certificate to replace. To import a new certificate, omit this field.
+-- | The <http://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html Amazon Resource Name (ARN)> of an imported certificate to replace. To import a new certificate, omit this field. 
 icCertificateARN :: Lens' ImportCertificate (Maybe Text)
 icCertificateARN = lens _icCertificateARN (\ s a -> s{_icCertificateARN = a})
 
@@ -165,13 +160,12 @@ instance ToQuery ImportCertificate where
         toQuery = const mempty
 
 -- | /See:/ 'importCertificateResponse' smart constructor.
-data ImportCertificateResponse =
-  ImportCertificateResponse'
-    { _icrsCertificateARN :: !(Maybe Text)
-    , _icrsResponseStatus :: !Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data ImportCertificateResponse = ImportCertificateResponse'{_icrsCertificateARN
+                                                            :: !(Maybe Text),
+                                                            _icrsResponseStatus
+                                                            :: !Int}
+                                   deriving (Eq, Read, Show, Data, Typeable,
+                                             Generic)
 
 -- | Creates a value of 'ImportCertificateResponse' with the minimum fields required to make a request.
 --
@@ -183,10 +177,10 @@ data ImportCertificateResponse =
 importCertificateResponse
     :: Int -- ^ 'icrsResponseStatus'
     -> ImportCertificateResponse
-importCertificateResponse pResponseStatus_ =
-  ImportCertificateResponse'
-    {_icrsCertificateARN = Nothing, _icrsResponseStatus = pResponseStatus_}
-
+importCertificateResponse pResponseStatus_
+  = ImportCertificateResponse'{_icrsCertificateARN =
+                                 Nothing,
+                               _icrsResponseStatus = pResponseStatus_}
 
 -- | The <http://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html Amazon Resource Name (ARN)> of the imported certificate.
 icrsCertificateARN :: Lens' ImportCertificateResponse (Maybe Text)

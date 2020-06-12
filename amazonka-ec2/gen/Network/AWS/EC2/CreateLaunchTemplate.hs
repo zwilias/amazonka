@@ -43,24 +43,24 @@ module Network.AWS.EC2.CreateLaunchTemplate
     ) where
 
 import Network.AWS.EC2.Types
-import Network.AWS.EC2.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 
 -- | /See:/ 'createLaunchTemplate' smart constructor.
-data CreateLaunchTemplate =
-  CreateLaunchTemplate'
-    { _cltClientToken        :: !(Maybe Text)
-    , _cltVersionDescription :: !(Maybe Text)
-    , _cltTagSpecifications  :: !(Maybe [TagSpecification])
-    , _cltDryRun             :: !(Maybe Bool)
-    , _cltLaunchTemplateName :: !Text
-    , _cltLaunchTemplateData :: !RequestLaunchTemplateData
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data CreateLaunchTemplate = CreateLaunchTemplate'{_cltClientToken
+                                                  :: !(Maybe Text),
+                                                  _cltVersionDescription ::
+                                                  !(Maybe Text),
+                                                  _cltTagSpecifications ::
+                                                  !(Maybe [TagSpecification]),
+                                                  _cltDryRun :: !(Maybe Bool),
+                                                  _cltLaunchTemplateName ::
+                                                  !Text,
+                                                  _cltLaunchTemplateData ::
+                                                  !RequestLaunchTemplateData}
+                              deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'CreateLaunchTemplate' with the minimum fields required to make a request.
 --
@@ -81,16 +81,14 @@ createLaunchTemplate
     :: Text -- ^ 'cltLaunchTemplateName'
     -> RequestLaunchTemplateData -- ^ 'cltLaunchTemplateData'
     -> CreateLaunchTemplate
-createLaunchTemplate pLaunchTemplateName_ pLaunchTemplateData_ =
-  CreateLaunchTemplate'
-    { _cltClientToken = Nothing
-    , _cltVersionDescription = Nothing
-    , _cltTagSpecifications = Nothing
-    , _cltDryRun = Nothing
-    , _cltLaunchTemplateName = pLaunchTemplateName_
-    , _cltLaunchTemplateData = pLaunchTemplateData_
-    }
-
+createLaunchTemplate pLaunchTemplateName_
+  pLaunchTemplateData_
+  = CreateLaunchTemplate'{_cltClientToken = Nothing,
+                          _cltVersionDescription = Nothing,
+                          _cltTagSpecifications = Nothing,
+                          _cltDryRun = Nothing,
+                          _cltLaunchTemplateName = pLaunchTemplateName_,
+                          _cltLaunchTemplateData = pLaunchTemplateData_}
 
 -- | Unique, case-sensitive identifier you provide to ensure the idempotency of the request. For more information, see <https://docs.aws.amazon.com/AWSEC2/latest/APIReference/Run_Instance_Idempotency.html Ensuring Idempotency> . Constraint: Maximum 128 ASCII characters.
 cltClientToken :: Lens' CreateLaunchTemplate (Maybe Text)
@@ -151,13 +149,14 @@ instance ToQuery CreateLaunchTemplate where
                "LaunchTemplateData" =: _cltLaunchTemplateData]
 
 -- | /See:/ 'createLaunchTemplateResponse' smart constructor.
-data CreateLaunchTemplateResponse =
-  CreateLaunchTemplateResponse'
-    { _cltrsLaunchTemplate :: !(Maybe LaunchTemplate)
-    , _cltrsResponseStatus :: !Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data CreateLaunchTemplateResponse = CreateLaunchTemplateResponse'{_cltrsLaunchTemplate
+                                                                  ::
+                                                                  !(Maybe
+                                                                      LaunchTemplate),
+                                                                  _cltrsResponseStatus
+                                                                  :: !Int}
+                                      deriving (Eq, Read, Show, Data, Typeable,
+                                                Generic)
 
 -- | Creates a value of 'CreateLaunchTemplateResponse' with the minimum fields required to make a request.
 --
@@ -169,10 +168,10 @@ data CreateLaunchTemplateResponse =
 createLaunchTemplateResponse
     :: Int -- ^ 'cltrsResponseStatus'
     -> CreateLaunchTemplateResponse
-createLaunchTemplateResponse pResponseStatus_ =
-  CreateLaunchTemplateResponse'
-    {_cltrsLaunchTemplate = Nothing, _cltrsResponseStatus = pResponseStatus_}
-
+createLaunchTemplateResponse pResponseStatus_
+  = CreateLaunchTemplateResponse'{_cltrsLaunchTemplate
+                                    = Nothing,
+                                  _cltrsResponseStatus = pResponseStatus_}
 
 -- | Information about the launch template.
 cltrsLaunchTemplate :: Lens' CreateLaunchTemplateResponse (Maybe LaunchTemplate)

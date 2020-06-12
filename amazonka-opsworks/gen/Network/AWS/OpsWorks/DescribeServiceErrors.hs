@@ -45,20 +45,19 @@ module Network.AWS.OpsWorks.DescribeServiceErrors
 
 import Network.AWS.Lens
 import Network.AWS.OpsWorks.Types
-import Network.AWS.OpsWorks.Types.Product
 import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 
 -- | /See:/ 'describeServiceErrors' smart constructor.
-data DescribeServiceErrors =
-  DescribeServiceErrors'
-    { _dseInstanceId      :: !(Maybe Text)
-    , _dseStackId         :: !(Maybe Text)
-    , _dseServiceErrorIds :: !(Maybe [Text])
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data DescribeServiceErrors = DescribeServiceErrors'{_dseInstanceId
+                                                    :: !(Maybe Text),
+                                                    _dseStackId ::
+                                                    !(Maybe Text),
+                                                    _dseServiceErrorIds ::
+                                                    !(Maybe [Text])}
+                               deriving (Eq, Read, Show, Data, Typeable,
+                                         Generic)
 
 -- | Creates a value of 'DescribeServiceErrors' with the minimum fields required to make a request.
 --
@@ -71,13 +70,9 @@ data DescribeServiceErrors =
 -- * 'dseServiceErrorIds' - An array of service error IDs. If you use this parameter, @DescribeServiceErrors@ returns descriptions of the specified errors. Otherwise, it returns a description of every error.
 describeServiceErrors
     :: DescribeServiceErrors
-describeServiceErrors =
-  DescribeServiceErrors'
-    { _dseInstanceId = Nothing
-    , _dseStackId = Nothing
-    , _dseServiceErrorIds = Nothing
-    }
-
+describeServiceErrors
+  = DescribeServiceErrors'{_dseInstanceId = Nothing,
+                           _dseStackId = Nothing, _dseServiceErrorIds = Nothing}
 
 -- | The instance ID. If you use this parameter, @DescribeServiceErrors@ returns descriptions of the errors associated with the specified instance.
 dseInstanceId :: Lens' DescribeServiceErrors (Maybe Text)
@@ -135,13 +130,14 @@ instance ToQuery DescribeServiceErrors where
 --
 --
 -- /See:/ 'describeServiceErrorsResponse' smart constructor.
-data DescribeServiceErrorsResponse =
-  DescribeServiceErrorsResponse'
-    { _dsersServiceErrors  :: !(Maybe [ServiceError'])
-    , _dsersResponseStatus :: !Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data DescribeServiceErrorsResponse = DescribeServiceErrorsResponse'{_dsersServiceErrors
+                                                                    ::
+                                                                    !(Maybe
+                                                                        [ServiceError']),
+                                                                    _dsersResponseStatus
+                                                                    :: !Int}
+                                       deriving (Eq, Read, Show, Data, Typeable,
+                                                 Generic)
 
 -- | Creates a value of 'DescribeServiceErrorsResponse' with the minimum fields required to make a request.
 --
@@ -153,10 +149,10 @@ data DescribeServiceErrorsResponse =
 describeServiceErrorsResponse
     :: Int -- ^ 'dsersResponseStatus'
     -> DescribeServiceErrorsResponse
-describeServiceErrorsResponse pResponseStatus_ =
-  DescribeServiceErrorsResponse'
-    {_dsersServiceErrors = Nothing, _dsersResponseStatus = pResponseStatus_}
-
+describeServiceErrorsResponse pResponseStatus_
+  = DescribeServiceErrorsResponse'{_dsersServiceErrors
+                                     = Nothing,
+                                   _dsersResponseStatus = pResponseStatus_}
 
 -- | An array of @ServiceError@ objects that describe the specified service errors.
 dsersServiceErrors :: Lens' DescribeServiceErrorsResponse [ServiceError']

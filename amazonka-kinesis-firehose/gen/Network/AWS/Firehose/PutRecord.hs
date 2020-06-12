@@ -21,7 +21,7 @@
 -- Writes a single data record into an Amazon Kinesis Data Firehose delivery stream. To write multiple data records into a delivery stream, use 'PutRecordBatch' . Applications using these operations are referred to as producers.
 --
 --
--- By default, each delivery stream can take in up to 2,000 transactions per second, 5,000 records per second, or 5 MB per second. If you use 'PutRecord' and 'PutRecordBatch' , the limits are an aggregate across these two operations for each delivery stream. For more information about limits and how to request an increase, see <http://docs.aws.amazon.com/firehose/latest/dev/limits.html Amazon Kinesis Data Firehose Limits> .
+-- By default, each delivery stream can take in up to 2,000 transactions per second, 5,000 records per second, or 5 MB per second. If you use 'PutRecord' and 'PutRecordBatch' , the limits are an aggregate across these two operations for each delivery stream. For more information about limits and how to request an increase, see <http://docs.aws.amazon.com/firehose/latest/dev/limits.html Amazon Kinesis Data Firehose Limits> . 
 --
 -- You must specify the name of the delivery stream and the data record when using 'PutRecord' . The data record consists of a data blob that can be up to 1,000 KB in size, and any kind of data. For example, it can be a segment from a log file, geographic location data, website clickstream data, and so on.
 --
@@ -29,7 +29,7 @@
 --
 -- The @PutRecord@ operation returns a @RecordId@ , which is a unique string assigned to each record. Producer applications can use this ID for purposes such as auditability and investigation.
 --
--- If the @PutRecord@ operation throws a @ServiceUnavailableException@ , back off and retry. If the exception persists, it is possible that the throughput limits have been exceeded for the delivery stream.
+-- If the @PutRecord@ operation throws a @ServiceUnavailableException@ , back off and retry. If the exception persists, it is possible that the throughput limits have been exceeded for the delivery stream. 
 --
 -- Data records sent to Kinesis Data Firehose are stored for 24 hours from the time they are added to a delivery stream as it tries to send the records to the destination. If the destination is unreachable for more than 24 hours, the data is no longer available.
 --
@@ -51,20 +51,16 @@ module Network.AWS.Firehose.PutRecord
     ) where
 
 import Network.AWS.Firehose.Types
-import Network.AWS.Firehose.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 
 -- | /See:/ 'putRecord' smart constructor.
-data PutRecord =
-  PutRecord'
-    { _prDeliveryStreamName :: !Text
-    , _prRecord             :: !Record
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data PutRecord = PutRecord'{_prDeliveryStreamName ::
+                            !Text,
+                            _prRecord :: !Record}
+                   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'PutRecord' with the minimum fields required to make a request.
 --
@@ -77,10 +73,10 @@ putRecord
     :: Text -- ^ 'prDeliveryStreamName'
     -> Record -- ^ 'prRecord'
     -> PutRecord
-putRecord pDeliveryStreamName_ pRecord_ =
-  PutRecord'
-    {_prDeliveryStreamName = pDeliveryStreamName_, _prRecord = pRecord_}
-
+putRecord pDeliveryStreamName_ pRecord_
+  = PutRecord'{_prDeliveryStreamName =
+                 pDeliveryStreamName_,
+               _prRecord = pRecord_}
 
 -- | The name of the delivery stream.
 prDeliveryStreamName :: Lens' PutRecord Text
@@ -127,13 +123,10 @@ instance ToQuery PutRecord where
         toQuery = const mempty
 
 -- | /See:/ 'putRecordResponse' smart constructor.
-data PutRecordResponse =
-  PutRecordResponse'
-    { _prrsResponseStatus :: !Int
-    , _prrsRecordId       :: !Text
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data PutRecordResponse = PutRecordResponse'{_prrsResponseStatus
+                                            :: !Int,
+                                            _prrsRecordId :: !Text}
+                           deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'PutRecordResponse' with the minimum fields required to make a request.
 --
@@ -146,10 +139,10 @@ putRecordResponse
     :: Int -- ^ 'prrsResponseStatus'
     -> Text -- ^ 'prrsRecordId'
     -> PutRecordResponse
-putRecordResponse pResponseStatus_ pRecordId_ =
-  PutRecordResponse'
-    {_prrsResponseStatus = pResponseStatus_, _prrsRecordId = pRecordId_}
-
+putRecordResponse pResponseStatus_ pRecordId_
+  = PutRecordResponse'{_prrsResponseStatus =
+                         pResponseStatus_,
+                       _prrsRecordId = pRecordId_}
 
 -- | -- | The response status code.
 prrsResponseStatus :: Lens' PutRecordResponse Int

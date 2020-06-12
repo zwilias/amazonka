@@ -38,19 +38,15 @@ module Network.AWS.Glue.ResetJobBookmark
     ) where
 
 import Network.AWS.Glue.Types
-import Network.AWS.Glue.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 
 -- | /See:/ 'resetJobBookmark' smart constructor.
-newtype ResetJobBookmark =
-  ResetJobBookmark'
-    { _rjbJobName :: Text
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+newtype ResetJobBookmark = ResetJobBookmark'{_rjbJobName
+                                             :: Text}
+                             deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'ResetJobBookmark' with the minimum fields required to make a request.
 --
@@ -60,8 +56,8 @@ newtype ResetJobBookmark =
 resetJobBookmark
     :: Text -- ^ 'rjbJobName'
     -> ResetJobBookmark
-resetJobBookmark pJobName_ = ResetJobBookmark' {_rjbJobName = pJobName_}
-
+resetJobBookmark pJobName_
+  = ResetJobBookmark'{_rjbJobName = pJobName_}
 
 -- | The name of the job in question.
 rjbJobName :: Lens' ResetJobBookmark Text
@@ -101,13 +97,14 @@ instance ToQuery ResetJobBookmark where
         toQuery = const mempty
 
 -- | /See:/ 'resetJobBookmarkResponse' smart constructor.
-data ResetJobBookmarkResponse =
-  ResetJobBookmarkResponse'
-    { _rjbrsJobBookmarkEntry :: !(Maybe JobBookmarkEntry)
-    , _rjbrsResponseStatus   :: !Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data ResetJobBookmarkResponse = ResetJobBookmarkResponse'{_rjbrsJobBookmarkEntry
+                                                          ::
+                                                          !(Maybe
+                                                              JobBookmarkEntry),
+                                                          _rjbrsResponseStatus
+                                                          :: !Int}
+                                  deriving (Eq, Read, Show, Data, Typeable,
+                                            Generic)
 
 -- | Creates a value of 'ResetJobBookmarkResponse' with the minimum fields required to make a request.
 --
@@ -119,10 +116,10 @@ data ResetJobBookmarkResponse =
 resetJobBookmarkResponse
     :: Int -- ^ 'rjbrsResponseStatus'
     -> ResetJobBookmarkResponse
-resetJobBookmarkResponse pResponseStatus_ =
-  ResetJobBookmarkResponse'
-    {_rjbrsJobBookmarkEntry = Nothing, _rjbrsResponseStatus = pResponseStatus_}
-
+resetJobBookmarkResponse pResponseStatus_
+  = ResetJobBookmarkResponse'{_rjbrsJobBookmarkEntry =
+                                Nothing,
+                              _rjbrsResponseStatus = pResponseStatus_}
 
 -- | The reset bookmark entry.
 rjbrsJobBookmarkEntry :: Lens' ResetJobBookmarkResponse (Maybe JobBookmarkEntry)

@@ -55,7 +55,6 @@ module Network.AWS.CognitoIdentityProvider.UpdateUserPool
     ) where
 
 import Network.AWS.CognitoIdentityProvider.Types
-import Network.AWS.CognitoIdentityProvider.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.Request
@@ -66,28 +65,40 @@ import Network.AWS.Response
 --
 --
 -- /See:/ 'updateUserPool' smart constructor.
-data UpdateUserPool =
-  UpdateUserPool'
-    { _uupUserPoolTags :: !(Maybe (Map Text Text))
-    , _uupVerificationMessageTemplate :: !(Maybe VerificationMessageTemplateType)
-    , _uupEmailVerificationMessage :: !(Maybe Text)
-    , _uupSmsAuthenticationMessage :: !(Maybe Text)
-    , _uupUserPoolAddOns :: !(Maybe UserPoolAddOnsType)
-    , _uupEmailVerificationSubject :: !(Maybe Text)
-    , _uupAccountRecoverySetting :: !(Maybe AccountRecoverySettingType)
-    , _uupEmailConfiguration :: !(Maybe EmailConfigurationType)
-    , _uupSmsVerificationMessage :: !(Maybe Text)
-    , _uupMFAConfiguration :: !(Maybe UserPoolMFAType)
-    , _uupLambdaConfig :: !(Maybe LambdaConfigType)
-    , _uupSmsConfiguration :: !(Maybe SmsConfigurationType)
-    , _uupAdminCreateUserConfig :: !(Maybe AdminCreateUserConfigType)
-    , _uupDeviceConfiguration :: !(Maybe DeviceConfigurationType)
-    , _uupAutoVerifiedAttributes :: !(Maybe [VerifiedAttributeType])
-    , _uupPolicies :: !(Maybe UserPoolPolicyType)
-    , _uupUserPoolId :: !Text
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data UpdateUserPool = UpdateUserPool'{_uupUserPoolTags
+                                      :: !(Maybe (Map Text Text)),
+                                      _uupVerificationMessageTemplate ::
+                                      !(Maybe VerificationMessageTemplateType),
+                                      _uupEmailVerificationMessage ::
+                                      !(Maybe Text),
+                                      _uupSmsAuthenticationMessage ::
+                                      !(Maybe Text),
+                                      _uupUserPoolAddOns ::
+                                      !(Maybe UserPoolAddOnsType),
+                                      _uupEmailVerificationSubject ::
+                                      !(Maybe Text),
+                                      _uupAccountRecoverySetting ::
+                                      !(Maybe AccountRecoverySettingType),
+                                      _uupEmailConfiguration ::
+                                      !(Maybe EmailConfigurationType),
+                                      _uupSmsVerificationMessage ::
+                                      !(Maybe Text),
+                                      _uupMFAConfiguration ::
+                                      !(Maybe UserPoolMFAType),
+                                      _uupLambdaConfig ::
+                                      !(Maybe LambdaConfigType),
+                                      _uupSmsConfiguration ::
+                                      !(Maybe SmsConfigurationType),
+                                      _uupAdminCreateUserConfig ::
+                                      !(Maybe AdminCreateUserConfigType),
+                                      _uupDeviceConfiguration ::
+                                      !(Maybe DeviceConfigurationType),
+                                      _uupAutoVerifiedAttributes ::
+                                      !(Maybe [VerifiedAttributeType]),
+                                      _uupPolicies ::
+                                      !(Maybe UserPoolPolicyType),
+                                      _uupUserPoolId :: !Text}
+                        deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'UpdateUserPool' with the minimum fields required to make a request.
 --
@@ -129,27 +140,24 @@ data UpdateUserPool =
 updateUserPool
     :: Text -- ^ 'uupUserPoolId'
     -> UpdateUserPool
-updateUserPool pUserPoolId_ =
-  UpdateUserPool'
-    { _uupUserPoolTags = Nothing
-    , _uupVerificationMessageTemplate = Nothing
-    , _uupEmailVerificationMessage = Nothing
-    , _uupSmsAuthenticationMessage = Nothing
-    , _uupUserPoolAddOns = Nothing
-    , _uupEmailVerificationSubject = Nothing
-    , _uupAccountRecoverySetting = Nothing
-    , _uupEmailConfiguration = Nothing
-    , _uupSmsVerificationMessage = Nothing
-    , _uupMFAConfiguration = Nothing
-    , _uupLambdaConfig = Nothing
-    , _uupSmsConfiguration = Nothing
-    , _uupAdminCreateUserConfig = Nothing
-    , _uupDeviceConfiguration = Nothing
-    , _uupAutoVerifiedAttributes = Nothing
-    , _uupPolicies = Nothing
-    , _uupUserPoolId = pUserPoolId_
-    }
-
+updateUserPool pUserPoolId_
+  = UpdateUserPool'{_uupUserPoolTags = Nothing,
+                    _uupVerificationMessageTemplate = Nothing,
+                    _uupEmailVerificationMessage = Nothing,
+                    _uupSmsAuthenticationMessage = Nothing,
+                    _uupUserPoolAddOns = Nothing,
+                    _uupEmailVerificationSubject = Nothing,
+                    _uupAccountRecoverySetting = Nothing,
+                    _uupEmailConfiguration = Nothing,
+                    _uupSmsVerificationMessage = Nothing,
+                    _uupMFAConfiguration = Nothing,
+                    _uupLambdaConfig = Nothing,
+                    _uupSmsConfiguration = Nothing,
+                    _uupAdminCreateUserConfig = Nothing,
+                    _uupDeviceConfiguration = Nothing,
+                    _uupAutoVerifiedAttributes = Nothing,
+                    _uupPolicies = Nothing,
+                    _uupUserPoolId = pUserPoolId_}
 
 -- | The tag keys and values to assign to the user pool. A tag is a label that you can use to categorize and manage user pools in different ways, such as by purpose, owner, environment, or other criteria.
 uupUserPoolTags :: Lens' UpdateUserPool (HashMap Text Text)
@@ -283,12 +291,10 @@ instance ToQuery UpdateUserPool where
 --
 --
 -- /See:/ 'updateUserPoolResponse' smart constructor.
-newtype UpdateUserPoolResponse =
-  UpdateUserPoolResponse'
-    { _uuprsResponseStatus :: Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+newtype UpdateUserPoolResponse = UpdateUserPoolResponse'{_uuprsResponseStatus
+                                                         :: Int}
+                                   deriving (Eq, Read, Show, Data, Typeable,
+                                             Generic)
 
 -- | Creates a value of 'UpdateUserPoolResponse' with the minimum fields required to make a request.
 --
@@ -298,9 +304,9 @@ newtype UpdateUserPoolResponse =
 updateUserPoolResponse
     :: Int -- ^ 'uuprsResponseStatus'
     -> UpdateUserPoolResponse
-updateUserPoolResponse pResponseStatus_ =
-  UpdateUserPoolResponse' {_uuprsResponseStatus = pResponseStatus_}
-
+updateUserPoolResponse pResponseStatus_
+  = UpdateUserPoolResponse'{_uuprsResponseStatus =
+                              pResponseStatus_}
 
 -- | -- | The response status code.
 uuprsResponseStatus :: Lens' UpdateUserPoolResponse Int

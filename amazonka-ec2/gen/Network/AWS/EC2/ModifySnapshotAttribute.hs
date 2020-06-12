@@ -45,25 +45,31 @@ module Network.AWS.EC2.ModifySnapshotAttribute
     ) where
 
 import Network.AWS.EC2.Types
-import Network.AWS.EC2.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 
 -- | /See:/ 'modifySnapshotAttribute' smart constructor.
-data ModifySnapshotAttribute =
-  ModifySnapshotAttribute'
-    { _msaAttribute              :: !(Maybe SnapshotAttributeName)
-    , _msaCreateVolumePermission :: !(Maybe CreateVolumePermissionModifications)
-    , _msaUserIds                :: !(Maybe [Text])
-    , _msaGroupNames             :: !(Maybe [Text])
-    , _msaOperationType          :: !(Maybe OperationType)
-    , _msaDryRun                 :: !(Maybe Bool)
-    , _msaSnapshotId             :: !Text
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data ModifySnapshotAttribute = ModifySnapshotAttribute'{_msaAttribute
+                                                        ::
+                                                        !(Maybe
+                                                            SnapshotAttributeName),
+                                                        _msaCreateVolumePermission
+                                                        ::
+                                                        !(Maybe
+                                                            CreateVolumePermissionModifications),
+                                                        _msaUserIds ::
+                                                        !(Maybe [Text]),
+                                                        _msaGroupNames ::
+                                                        !(Maybe [Text]),
+                                                        _msaOperationType ::
+                                                        !(Maybe OperationType),
+                                                        _msaDryRun ::
+                                                        !(Maybe Bool),
+                                                        _msaSnapshotId :: !Text}
+                                 deriving (Eq, Read, Show, Data, Typeable,
+                                           Generic)
 
 -- | Creates a value of 'ModifySnapshotAttribute' with the minimum fields required to make a request.
 --
@@ -85,17 +91,12 @@ data ModifySnapshotAttribute =
 modifySnapshotAttribute
     :: Text -- ^ 'msaSnapshotId'
     -> ModifySnapshotAttribute
-modifySnapshotAttribute pSnapshotId_ =
-  ModifySnapshotAttribute'
-    { _msaAttribute = Nothing
-    , _msaCreateVolumePermission = Nothing
-    , _msaUserIds = Nothing
-    , _msaGroupNames = Nothing
-    , _msaOperationType = Nothing
-    , _msaDryRun = Nothing
-    , _msaSnapshotId = pSnapshotId_
-    }
-
+modifySnapshotAttribute pSnapshotId_
+  = ModifySnapshotAttribute'{_msaAttribute = Nothing,
+                             _msaCreateVolumePermission = Nothing,
+                             _msaUserIds = Nothing, _msaGroupNames = Nothing,
+                             _msaOperationType = Nothing, _msaDryRun = Nothing,
+                             _msaSnapshotId = pSnapshotId_}
 
 -- | The snapshot attribute to modify. Only volume creation permissions can be modified.
 msaAttribute :: Lens' ModifySnapshotAttribute (Maybe SnapshotAttributeName)
@@ -158,16 +159,15 @@ instance ToQuery ModifySnapshotAttribute where
                "SnapshotId" =: _msaSnapshotId]
 
 -- | /See:/ 'modifySnapshotAttributeResponse' smart constructor.
-data ModifySnapshotAttributeResponse =
-  ModifySnapshotAttributeResponse'
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data ModifySnapshotAttributeResponse = ModifySnapshotAttributeResponse'
+                                         deriving (Eq, Read, Show, Data,
+                                                   Typeable, Generic)
 
 -- | Creates a value of 'ModifySnapshotAttributeResponse' with the minimum fields required to make a request.
 --
 modifySnapshotAttributeResponse
     :: ModifySnapshotAttributeResponse
-modifySnapshotAttributeResponse = ModifySnapshotAttributeResponse'
-
+modifySnapshotAttributeResponse
+  = ModifySnapshotAttributeResponse'
 
 instance NFData ModifySnapshotAttributeResponse where

@@ -36,7 +36,6 @@ module Network.AWS.GuardDuty.UpdateDetector
     ) where
 
 import Network.AWS.GuardDuty.Types
-import Network.AWS.GuardDuty.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.Request
@@ -45,13 +44,10 @@ import Network.AWS.Response
 -- | UpdateDetector request body.
 --
 -- /See:/ 'updateDetector' smart constructor.
-data UpdateDetector =
-  UpdateDetector'
-    { _udEnable     :: !(Maybe Bool)
-    , _udDetectorId :: !Text
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data UpdateDetector = UpdateDetector'{_udEnable ::
+                                      !(Maybe Bool),
+                                      _udDetectorId :: !Text}
+                        deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'UpdateDetector' with the minimum fields required to make a request.
 --
@@ -63,9 +59,9 @@ data UpdateDetector =
 updateDetector
     :: Text -- ^ 'udDetectorId'
     -> UpdateDetector
-updateDetector pDetectorId_ =
-  UpdateDetector' {_udEnable = Nothing, _udDetectorId = pDetectorId_}
-
+updateDetector pDetectorId_
+  = UpdateDetector'{_udEnable = Nothing,
+                    _udDetectorId = pDetectorId_}
 
 -- | Updated boolean value for the detector that specifies whether the detector is enabled.
 udEnable :: Lens' UpdateDetector (Maybe Bool)
@@ -106,12 +102,10 @@ instance ToQuery UpdateDetector where
         toQuery = const mempty
 
 -- | /See:/ 'updateDetectorResponse' smart constructor.
-newtype UpdateDetectorResponse =
-  UpdateDetectorResponse'
-    { _udrsResponseStatus :: Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+newtype UpdateDetectorResponse = UpdateDetectorResponse'{_udrsResponseStatus
+                                                         :: Int}
+                                   deriving (Eq, Read, Show, Data, Typeable,
+                                             Generic)
 
 -- | Creates a value of 'UpdateDetectorResponse' with the minimum fields required to make a request.
 --
@@ -121,9 +115,9 @@ newtype UpdateDetectorResponse =
 updateDetectorResponse
     :: Int -- ^ 'udrsResponseStatus'
     -> UpdateDetectorResponse
-updateDetectorResponse pResponseStatus_ =
-  UpdateDetectorResponse' {_udrsResponseStatus = pResponseStatus_}
-
+updateDetectorResponse pResponseStatus_
+  = UpdateDetectorResponse'{_udrsResponseStatus =
+                              pResponseStatus_}
 
 -- | -- | The response status code.
 udrsResponseStatus :: Lens' UpdateDetectorResponse Int

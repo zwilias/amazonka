@@ -37,19 +37,15 @@ module Network.AWS.AppSync.DeleteGraphqlAPI
     ) where
 
 import Network.AWS.AppSync.Types
-import Network.AWS.AppSync.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 
 -- | /See:/ 'deleteGraphqlAPI' smart constructor.
-newtype DeleteGraphqlAPI =
-  DeleteGraphqlAPI'
-    { _dgaApiId :: Text
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+newtype DeleteGraphqlAPI = DeleteGraphqlAPI'{_dgaApiId
+                                             :: Text}
+                             deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'DeleteGraphqlAPI' with the minimum fields required to make a request.
 --
@@ -59,8 +55,8 @@ newtype DeleteGraphqlAPI =
 deleteGraphqlAPI
     :: Text -- ^ 'dgaApiId'
     -> DeleteGraphqlAPI
-deleteGraphqlAPI pApiId_ = DeleteGraphqlAPI' {_dgaApiId = pApiId_}
-
+deleteGraphqlAPI pApiId_
+  = DeleteGraphqlAPI'{_dgaApiId = pApiId_}
 
 -- | The API ID.
 dgaApiId :: Lens' DeleteGraphqlAPI Text
@@ -93,12 +89,10 @@ instance ToQuery DeleteGraphqlAPI where
         toQuery = const mempty
 
 -- | /See:/ 'deleteGraphqlAPIResponse' smart constructor.
-newtype DeleteGraphqlAPIResponse =
-  DeleteGraphqlAPIResponse'
-    { _dgarsResponseStatus :: Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+newtype DeleteGraphqlAPIResponse = DeleteGraphqlAPIResponse'{_dgarsResponseStatus
+                                                             :: Int}
+                                     deriving (Eq, Read, Show, Data, Typeable,
+                                               Generic)
 
 -- | Creates a value of 'DeleteGraphqlAPIResponse' with the minimum fields required to make a request.
 --
@@ -108,9 +102,9 @@ newtype DeleteGraphqlAPIResponse =
 deleteGraphqlAPIResponse
     :: Int -- ^ 'dgarsResponseStatus'
     -> DeleteGraphqlAPIResponse
-deleteGraphqlAPIResponse pResponseStatus_ =
-  DeleteGraphqlAPIResponse' {_dgarsResponseStatus = pResponseStatus_}
-
+deleteGraphqlAPIResponse pResponseStatus_
+  = DeleteGraphqlAPIResponse'{_dgarsResponseStatus =
+                                pResponseStatus_}
 
 -- | -- | The response status code.
 dgarsResponseStatus :: Lens' DeleteGraphqlAPIResponse Int

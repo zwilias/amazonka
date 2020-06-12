@@ -37,21 +37,17 @@ module Network.AWS.Connect.UpdateUserHierarchy
     ) where
 
 import Network.AWS.Connect.Types
-import Network.AWS.Connect.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 
 -- | /See:/ 'updateUserHierarchy' smart constructor.
-data UpdateUserHierarchy =
-  UpdateUserHierarchy'
-    { _uuhHierarchyGroupId :: !(Maybe Text)
-    , _uuhUserId           :: !Text
-    , _uuhInstanceId       :: !Text
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data UpdateUserHierarchy = UpdateUserHierarchy'{_uuhHierarchyGroupId
+                                                :: !(Maybe Text),
+                                                _uuhUserId :: !Text,
+                                                _uuhInstanceId :: !Text}
+                             deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'UpdateUserHierarchy' with the minimum fields required to make a request.
 --
@@ -66,13 +62,10 @@ updateUserHierarchy
     :: Text -- ^ 'uuhUserId'
     -> Text -- ^ 'uuhInstanceId'
     -> UpdateUserHierarchy
-updateUserHierarchy pUserId_ pInstanceId_ =
-  UpdateUserHierarchy'
-    { _uuhHierarchyGroupId = Nothing
-    , _uuhUserId = pUserId_
-    , _uuhInstanceId = pInstanceId_
-    }
-
+updateUserHierarchy pUserId_ pInstanceId_
+  = UpdateUserHierarchy'{_uuhHierarchyGroupId =
+                           Nothing,
+                         _uuhUserId = pUserId_, _uuhInstanceId = pInstanceId_}
 
 -- | The identifier of the hierarchy group.
 uuhHierarchyGroupId :: Lens' UpdateUserHierarchy (Maybe Text)
@@ -119,16 +112,15 @@ instance ToQuery UpdateUserHierarchy where
         toQuery = const mempty
 
 -- | /See:/ 'updateUserHierarchyResponse' smart constructor.
-data UpdateUserHierarchyResponse =
-  UpdateUserHierarchyResponse'
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data UpdateUserHierarchyResponse = UpdateUserHierarchyResponse'
+                                     deriving (Eq, Read, Show, Data, Typeable,
+                                               Generic)
 
 -- | Creates a value of 'UpdateUserHierarchyResponse' with the minimum fields required to make a request.
 --
 updateUserHierarchyResponse
     :: UpdateUserHierarchyResponse
-updateUserHierarchyResponse = UpdateUserHierarchyResponse'
-
+updateUserHierarchyResponse
+  = UpdateUserHierarchyResponse'
 
 instance NFData UpdateUserHierarchyResponse where

@@ -38,18 +38,14 @@ module Network.AWS.OpsWorks.DeleteStack
 
 import Network.AWS.Lens
 import Network.AWS.OpsWorks.Types
-import Network.AWS.OpsWorks.Types.Product
 import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 
 -- | /See:/ 'deleteStack' smart constructor.
-newtype DeleteStack =
-  DeleteStack'
-    { _dsStackId :: Text
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+newtype DeleteStack = DeleteStack'{_dsStackId ::
+                                   Text}
+                        deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'DeleteStack' with the minimum fields required to make a request.
 --
@@ -59,8 +55,8 @@ newtype DeleteStack =
 deleteStack
     :: Text -- ^ 'dsStackId'
     -> DeleteStack
-deleteStack pStackId_ = DeleteStack' {_dsStackId = pStackId_}
-
+deleteStack pStackId_
+  = DeleteStack'{_dsStackId = pStackId_}
 
 -- | The stack ID.
 dsStackId :: Lens' DeleteStack Text
@@ -95,16 +91,13 @@ instance ToQuery DeleteStack where
         toQuery = const mempty
 
 -- | /See:/ 'deleteStackResponse' smart constructor.
-data DeleteStackResponse =
-  DeleteStackResponse'
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data DeleteStackResponse = DeleteStackResponse'
+                             deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'DeleteStackResponse' with the minimum fields required to make a request.
 --
 deleteStackResponse
     :: DeleteStackResponse
 deleteStackResponse = DeleteStackResponse'
-
 
 instance NFData DeleteStackResponse where

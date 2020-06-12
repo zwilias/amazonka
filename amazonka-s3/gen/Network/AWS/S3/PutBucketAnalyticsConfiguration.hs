@@ -39,17 +39,18 @@ import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 import Network.AWS.S3.Types
-import Network.AWS.S3.Types.Product
 
 -- | /See:/ 'putBucketAnalyticsConfiguration' smart constructor.
-data PutBucketAnalyticsConfiguration =
-  PutBucketAnalyticsConfiguration'
-    { _pBucket                 :: !BucketName
-    , _pId                     :: !Text
-    , _pAnalyticsConfiguration :: !AnalyticsConfiguration
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data PutBucketAnalyticsConfiguration = PutBucketAnalyticsConfiguration'{_pBucket
+                                                                        ::
+                                                                        !BucketName,
+                                                                        _pId ::
+                                                                        !Text,
+                                                                        _pAnalyticsConfiguration
+                                                                        ::
+                                                                        !AnalyticsConfiguration}
+                                         deriving (Eq, Read, Show, Data,
+                                                   Typeable, Generic)
 
 -- | Creates a value of 'PutBucketAnalyticsConfiguration' with the minimum fields required to make a request.
 --
@@ -65,13 +66,13 @@ putBucketAnalyticsConfiguration
     -> Text -- ^ 'pId'
     -> AnalyticsConfiguration -- ^ 'pAnalyticsConfiguration'
     -> PutBucketAnalyticsConfiguration
-putBucketAnalyticsConfiguration pBucket_ pId_ pAnalyticsConfiguration_ =
-  PutBucketAnalyticsConfiguration'
-    { _pBucket = pBucket_
-    , _pId = pId_
-    , _pAnalyticsConfiguration = pAnalyticsConfiguration_
-    }
-
+putBucketAnalyticsConfiguration pBucket_ pId_
+  pAnalyticsConfiguration_
+  = PutBucketAnalyticsConfiguration'{_pBucket =
+                                       pBucket_,
+                                     _pId = pId_,
+                                     _pAnalyticsConfiguration =
+                                       pAnalyticsConfiguration_}
 
 -- | The name of the bucket to which an analytics configuration is stored.
 pBucket :: Lens' PutBucketAnalyticsConfiguration BucketName
@@ -121,18 +122,16 @@ instance ToQuery PutBucketAnalyticsConfiguration
           = mconcat ["id" =: _pId, "analytics"]
 
 -- | /See:/ 'putBucketAnalyticsConfigurationResponse' smart constructor.
-data PutBucketAnalyticsConfigurationResponse =
-  PutBucketAnalyticsConfigurationResponse'
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data PutBucketAnalyticsConfigurationResponse = PutBucketAnalyticsConfigurationResponse'
+                                                 deriving (Eq, Read, Show, Data,
+                                                           Typeable, Generic)
 
 -- | Creates a value of 'PutBucketAnalyticsConfigurationResponse' with the minimum fields required to make a request.
 --
 putBucketAnalyticsConfigurationResponse
     :: PutBucketAnalyticsConfigurationResponse
-putBucketAnalyticsConfigurationResponse =
-  PutBucketAnalyticsConfigurationResponse'
-
+putBucketAnalyticsConfigurationResponse
+  = PutBucketAnalyticsConfigurationResponse'
 
 instance NFData
            PutBucketAnalyticsConfigurationResponse

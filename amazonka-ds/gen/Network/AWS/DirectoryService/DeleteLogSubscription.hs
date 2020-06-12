@@ -37,19 +37,16 @@ module Network.AWS.DirectoryService.DeleteLogSubscription
     ) where
 
 import Network.AWS.DirectoryService.Types
-import Network.AWS.DirectoryService.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 
 -- | /See:/ 'deleteLogSubscription' smart constructor.
-newtype DeleteLogSubscription =
-  DeleteLogSubscription'
-    { _dlsDirectoryId :: Text
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+newtype DeleteLogSubscription = DeleteLogSubscription'{_dlsDirectoryId
+                                                       :: Text}
+                                  deriving (Eq, Read, Show, Data, Typeable,
+                                            Generic)
 
 -- | Creates a value of 'DeleteLogSubscription' with the minimum fields required to make a request.
 --
@@ -59,9 +56,9 @@ newtype DeleteLogSubscription =
 deleteLogSubscription
     :: Text -- ^ 'dlsDirectoryId'
     -> DeleteLogSubscription
-deleteLogSubscription pDirectoryId_ =
-  DeleteLogSubscription' {_dlsDirectoryId = pDirectoryId_}
-
+deleteLogSubscription pDirectoryId_
+  = DeleteLogSubscription'{_dlsDirectoryId =
+                             pDirectoryId_}
 
 -- | Identifier of the directory whose log subscription you want to delete.
 dlsDirectoryId :: Lens' DeleteLogSubscription Text
@@ -103,12 +100,10 @@ instance ToQuery DeleteLogSubscription where
         toQuery = const mempty
 
 -- | /See:/ 'deleteLogSubscriptionResponse' smart constructor.
-newtype DeleteLogSubscriptionResponse =
-  DeleteLogSubscriptionResponse'
-    { _dlsrsResponseStatus :: Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+newtype DeleteLogSubscriptionResponse = DeleteLogSubscriptionResponse'{_dlsrsResponseStatus
+                                                                       :: Int}
+                                          deriving (Eq, Read, Show, Data,
+                                                    Typeable, Generic)
 
 -- | Creates a value of 'DeleteLogSubscriptionResponse' with the minimum fields required to make a request.
 --
@@ -118,9 +113,9 @@ newtype DeleteLogSubscriptionResponse =
 deleteLogSubscriptionResponse
     :: Int -- ^ 'dlsrsResponseStatus'
     -> DeleteLogSubscriptionResponse
-deleteLogSubscriptionResponse pResponseStatus_ =
-  DeleteLogSubscriptionResponse' {_dlsrsResponseStatus = pResponseStatus_}
-
+deleteLogSubscriptionResponse pResponseStatus_
+  = DeleteLogSubscriptionResponse'{_dlsrsResponseStatus
+                                     = pResponseStatus_}
 
 -- | -- | The response status code.
 dlsrsResponseStatus :: Lens' DeleteLogSubscriptionResponse Int

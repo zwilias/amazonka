@@ -38,16 +38,17 @@ import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 import Network.AWS.S3.Types
-import Network.AWS.S3.Types.Product
 
 -- | /See:/ 'putBucketLifecycleConfiguration' smart constructor.
-data PutBucketLifecycleConfiguration =
-  PutBucketLifecycleConfiguration'
-    { _pblcLifecycleConfiguration :: !(Maybe BucketLifecycleConfiguration)
-    , _pblcBucket                 :: !BucketName
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data PutBucketLifecycleConfiguration = PutBucketLifecycleConfiguration'{_pblcLifecycleConfiguration
+                                                                        ::
+                                                                        !(Maybe
+                                                                            BucketLifecycleConfiguration),
+                                                                        _pblcBucket
+                                                                        ::
+                                                                        !BucketName}
+                                         deriving (Eq, Read, Show, Data,
+                                                   Typeable, Generic)
 
 -- | Creates a value of 'PutBucketLifecycleConfiguration' with the minimum fields required to make a request.
 --
@@ -59,10 +60,10 @@ data PutBucketLifecycleConfiguration =
 putBucketLifecycleConfiguration
     :: BucketName -- ^ 'pblcBucket'
     -> PutBucketLifecycleConfiguration
-putBucketLifecycleConfiguration pBucket_ =
-  PutBucketLifecycleConfiguration'
-    {_pblcLifecycleConfiguration = Nothing, _pblcBucket = pBucket_}
-
+putBucketLifecycleConfiguration pBucket_
+  = PutBucketLifecycleConfiguration'{_pblcLifecycleConfiguration
+                                       = Nothing,
+                                     _pblcBucket = pBucket_}
 
 -- | Undocumented member.
 pblcLifecycleConfiguration :: Lens' PutBucketLifecycleConfiguration (Maybe BucketLifecycleConfiguration)
@@ -107,18 +108,16 @@ instance ToQuery PutBucketLifecycleConfiguration
         toQuery = const (mconcat ["lifecycle"])
 
 -- | /See:/ 'putBucketLifecycleConfigurationResponse' smart constructor.
-data PutBucketLifecycleConfigurationResponse =
-  PutBucketLifecycleConfigurationResponse'
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data PutBucketLifecycleConfigurationResponse = PutBucketLifecycleConfigurationResponse'
+                                                 deriving (Eq, Read, Show, Data,
+                                                           Typeable, Generic)
 
 -- | Creates a value of 'PutBucketLifecycleConfigurationResponse' with the minimum fields required to make a request.
 --
 putBucketLifecycleConfigurationResponse
     :: PutBucketLifecycleConfigurationResponse
-putBucketLifecycleConfigurationResponse =
-  PutBucketLifecycleConfigurationResponse'
-
+putBucketLifecycleConfigurationResponse
+  = PutBucketLifecycleConfigurationResponse'
 
 instance NFData
            PutBucketLifecycleConfigurationResponse

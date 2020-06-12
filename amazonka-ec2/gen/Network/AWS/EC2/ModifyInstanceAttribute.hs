@@ -54,34 +54,54 @@ module Network.AWS.EC2.ModifyInstanceAttribute
     ) where
 
 import Network.AWS.EC2.Types
-import Network.AWS.EC2.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 
 -- | /See:/ 'modifyInstanceAttribute' smart constructor.
-data ModifyInstanceAttribute =
-  ModifyInstanceAttribute'
-    { _mGroups :: !(Maybe [Text])
-    , _mAttribute :: !(Maybe InstanceAttributeName)
-    , _mEnaSupport :: !(Maybe AttributeBooleanValue)
-    , _mSourceDestCheck :: !(Maybe AttributeBooleanValue)
-    , _mDisableAPITermination :: !(Maybe AttributeBooleanValue)
-    , _mKernel :: !(Maybe AttributeValue)
-    , _mRAMDisk :: !(Maybe AttributeValue)
-    , _mValue :: !(Maybe Text)
-    , _mInstanceType :: !(Maybe AttributeValue)
-    , _mSRIOVNetSupport :: !(Maybe AttributeValue)
-    , _mEBSOptimized :: !(Maybe AttributeBooleanValue)
-    , _mUserData :: !(Maybe BlobAttributeValue)
-    , _mInstanceInitiatedShutdownBehavior :: !(Maybe AttributeValue)
-    , _mBlockDeviceMappings :: !(Maybe [InstanceBlockDeviceMappingSpecification])
-    , _mDryRun :: !(Maybe Bool)
-    , _mInstanceId :: !Text
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data ModifyInstanceAttribute = ModifyInstanceAttribute'{_mGroups
+                                                        :: !(Maybe [Text]),
+                                                        _mAttribute ::
+                                                        !(Maybe
+                                                            InstanceAttributeName),
+                                                        _mEnaSupport ::
+                                                        !(Maybe
+                                                            AttributeBooleanValue),
+                                                        _mSourceDestCheck ::
+                                                        !(Maybe
+                                                            AttributeBooleanValue),
+                                                        _mDisableAPITermination
+                                                        ::
+                                                        !(Maybe
+                                                            AttributeBooleanValue),
+                                                        _mKernel ::
+                                                        !(Maybe AttributeValue),
+                                                        _mRAMDisk ::
+                                                        !(Maybe AttributeValue),
+                                                        _mValue ::
+                                                        !(Maybe Text),
+                                                        _mInstanceType ::
+                                                        !(Maybe AttributeValue),
+                                                        _mSRIOVNetSupport ::
+                                                        !(Maybe AttributeValue),
+                                                        _mEBSOptimized ::
+                                                        !(Maybe
+                                                            AttributeBooleanValue),
+                                                        _mUserData ::
+                                                        !(Maybe
+                                                            BlobAttributeValue),
+                                                        _mInstanceInitiatedShutdownBehavior
+                                                        ::
+                                                        !(Maybe AttributeValue),
+                                                        _mBlockDeviceMappings ::
+                                                        !(Maybe
+                                                            [InstanceBlockDeviceMappingSpecification]),
+                                                        _mDryRun ::
+                                                        !(Maybe Bool),
+                                                        _mInstanceId :: !Text}
+                                 deriving (Eq, Read, Show, Data, Typeable,
+                                           Generic)
 
 -- | Creates a value of 'ModifyInstanceAttribute' with the minimum fields required to make a request.
 --
@@ -121,26 +141,18 @@ data ModifyInstanceAttribute =
 modifyInstanceAttribute
     :: Text -- ^ 'mInstanceId'
     -> ModifyInstanceAttribute
-modifyInstanceAttribute pInstanceId_ =
-  ModifyInstanceAttribute'
-    { _mGroups = Nothing
-    , _mAttribute = Nothing
-    , _mEnaSupport = Nothing
-    , _mSourceDestCheck = Nothing
-    , _mDisableAPITermination = Nothing
-    , _mKernel = Nothing
-    , _mRAMDisk = Nothing
-    , _mValue = Nothing
-    , _mInstanceType = Nothing
-    , _mSRIOVNetSupport = Nothing
-    , _mEBSOptimized = Nothing
-    , _mUserData = Nothing
-    , _mInstanceInitiatedShutdownBehavior = Nothing
-    , _mBlockDeviceMappings = Nothing
-    , _mDryRun = Nothing
-    , _mInstanceId = pInstanceId_
-    }
-
+modifyInstanceAttribute pInstanceId_
+  = ModifyInstanceAttribute'{_mGroups = Nothing,
+                             _mAttribute = Nothing, _mEnaSupport = Nothing,
+                             _mSourceDestCheck = Nothing,
+                             _mDisableAPITermination = Nothing,
+                             _mKernel = Nothing, _mRAMDisk = Nothing,
+                             _mValue = Nothing, _mInstanceType = Nothing,
+                             _mSRIOVNetSupport = Nothing,
+                             _mEBSOptimized = Nothing, _mUserData = Nothing,
+                             _mInstanceInitiatedShutdownBehavior = Nothing,
+                             _mBlockDeviceMappings = Nothing,
+                             _mDryRun = Nothing, _mInstanceId = pInstanceId_}
 
 -- | [EC2-VPC] Changes the security groups of the instance. You must specify at least one security group, even if it's just the default security group for the VPC. You must specify the security group ID, not the security group name.
 mGroups :: Lens' ModifyInstanceAttribute [Text]
@@ -247,16 +259,15 @@ instance ToQuery ModifyInstanceAttribute where
                "DryRun" =: _mDryRun, "InstanceId" =: _mInstanceId]
 
 -- | /See:/ 'modifyInstanceAttributeResponse' smart constructor.
-data ModifyInstanceAttributeResponse =
-  ModifyInstanceAttributeResponse'
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data ModifyInstanceAttributeResponse = ModifyInstanceAttributeResponse'
+                                         deriving (Eq, Read, Show, Data,
+                                                   Typeable, Generic)
 
 -- | Creates a value of 'ModifyInstanceAttributeResponse' with the minimum fields required to make a request.
 --
 modifyInstanceAttributeResponse
     :: ModifyInstanceAttributeResponse
-modifyInstanceAttributeResponse = ModifyInstanceAttributeResponse'
-
+modifyInstanceAttributeResponse
+  = ModifyInstanceAttributeResponse'
 
 instance NFData ModifyInstanceAttributeResponse where

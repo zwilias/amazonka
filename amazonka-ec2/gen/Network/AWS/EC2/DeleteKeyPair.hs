@@ -37,21 +37,17 @@ module Network.AWS.EC2.DeleteKeyPair
     ) where
 
 import Network.AWS.EC2.Types
-import Network.AWS.EC2.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 
 -- | /See:/ 'deleteKeyPair' smart constructor.
-data DeleteKeyPair =
-  DeleteKeyPair'
-    { _dkpKeyName   :: !(Maybe Text)
-    , _dkpKeyPairId :: !(Maybe Text)
-    , _dkpDryRun    :: !(Maybe Bool)
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data DeleteKeyPair = DeleteKeyPair'{_dkpKeyName ::
+                                    !(Maybe Text),
+                                    _dkpKeyPairId :: !(Maybe Text),
+                                    _dkpDryRun :: !(Maybe Bool)}
+                       deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'DeleteKeyPair' with the minimum fields required to make a request.
 --
@@ -64,10 +60,9 @@ data DeleteKeyPair =
 -- * 'dkpDryRun' - Checks whether you have the required permissions for the action, without actually making the request, and provides an error response. If you have the required permissions, the error response is @DryRunOperation@ . Otherwise, it is @UnauthorizedOperation@ .
 deleteKeyPair
     :: DeleteKeyPair
-deleteKeyPair =
-  DeleteKeyPair'
-    {_dkpKeyName = Nothing, _dkpKeyPairId = Nothing, _dkpDryRun = Nothing}
-
+deleteKeyPair
+  = DeleteKeyPair'{_dkpKeyName = Nothing,
+                   _dkpKeyPairId = Nothing, _dkpDryRun = Nothing}
 
 -- | The name of the key pair.
 dkpKeyName :: Lens' DeleteKeyPair (Maybe Text)
@@ -105,16 +100,14 @@ instance ToQuery DeleteKeyPair where
                "KeyPairId" =: _dkpKeyPairId, "DryRun" =: _dkpDryRun]
 
 -- | /See:/ 'deleteKeyPairResponse' smart constructor.
-data DeleteKeyPairResponse =
-  DeleteKeyPairResponse'
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data DeleteKeyPairResponse = DeleteKeyPairResponse'
+                               deriving (Eq, Read, Show, Data, Typeable,
+                                         Generic)
 
 -- | Creates a value of 'DeleteKeyPairResponse' with the minimum fields required to make a request.
 --
 deleteKeyPairResponse
     :: DeleteKeyPairResponse
 deleteKeyPairResponse = DeleteKeyPairResponse'
-
 
 instance NFData DeleteKeyPairResponse where

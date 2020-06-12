@@ -39,19 +39,14 @@ module Network.AWS.CloudFront.GetPublicKey
     ) where
 
 import Network.AWS.CloudFront.Types
-import Network.AWS.CloudFront.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 
 -- | /See:/ 'getPublicKey' smart constructor.
-newtype GetPublicKey =
-  GetPublicKey'
-    { _gpkId :: Text
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+newtype GetPublicKey = GetPublicKey'{_gpkId :: Text}
+                         deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'GetPublicKey' with the minimum fields required to make a request.
 --
@@ -61,8 +56,7 @@ newtype GetPublicKey =
 getPublicKey
     :: Text -- ^ 'gpkId'
     -> GetPublicKey
-getPublicKey pId_ = GetPublicKey' {_gpkId = pId_}
-
+getPublicKey pId_ = GetPublicKey'{_gpkId = pId_}
 
 -- | Request the ID for the public key.
 gpkId :: Lens' GetPublicKey Text
@@ -93,14 +87,12 @@ instance ToQuery GetPublicKey where
         toQuery = const mempty
 
 -- | /See:/ 'getPublicKeyResponse' smart constructor.
-data GetPublicKeyResponse =
-  GetPublicKeyResponse'
-    { _gpkrsETag           :: !(Maybe Text)
-    , _gpkrsPublicKey      :: !(Maybe PublicKey)
-    , _gpkrsResponseStatus :: !Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data GetPublicKeyResponse = GetPublicKeyResponse'{_gpkrsETag
+                                                  :: !(Maybe Text),
+                                                  _gpkrsPublicKey ::
+                                                  !(Maybe PublicKey),
+                                                  _gpkrsResponseStatus :: !Int}
+                              deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'GetPublicKeyResponse' with the minimum fields required to make a request.
 --
@@ -114,13 +106,10 @@ data GetPublicKeyResponse =
 getPublicKeyResponse
     :: Int -- ^ 'gpkrsResponseStatus'
     -> GetPublicKeyResponse
-getPublicKeyResponse pResponseStatus_ =
-  GetPublicKeyResponse'
-    { _gpkrsETag = Nothing
-    , _gpkrsPublicKey = Nothing
-    , _gpkrsResponseStatus = pResponseStatus_
-    }
-
+getPublicKeyResponse pResponseStatus_
+  = GetPublicKeyResponse'{_gpkrsETag = Nothing,
+                          _gpkrsPublicKey = Nothing,
+                          _gpkrsResponseStatus = pResponseStatus_}
 
 -- | The current version of the public key. For example: @E2QWRUHAPOMQZL@ .
 gpkrsETag :: Lens' GetPublicKeyResponse (Maybe Text)

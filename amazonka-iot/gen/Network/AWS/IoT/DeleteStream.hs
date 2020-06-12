@@ -37,19 +37,15 @@ module Network.AWS.IoT.DeleteStream
     ) where
 
 import Network.AWS.IoT.Types
-import Network.AWS.IoT.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 
 -- | /See:/ 'deleteStream' smart constructor.
-newtype DeleteStream =
-  DeleteStream'
-    { _dsStreamId :: Text
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+newtype DeleteStream = DeleteStream'{_dsStreamId ::
+                                     Text}
+                         deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'DeleteStream' with the minimum fields required to make a request.
 --
@@ -59,8 +55,8 @@ newtype DeleteStream =
 deleteStream
     :: Text -- ^ 'dsStreamId'
     -> DeleteStream
-deleteStream pStreamId_ = DeleteStream' {_dsStreamId = pStreamId_}
-
+deleteStream pStreamId_
+  = DeleteStream'{_dsStreamId = pStreamId_}
 
 -- | The stream ID.
 dsStreamId :: Lens' DeleteStream Text
@@ -89,12 +85,10 @@ instance ToQuery DeleteStream where
         toQuery = const mempty
 
 -- | /See:/ 'deleteStreamResponse' smart constructor.
-newtype DeleteStreamResponse =
-  DeleteStreamResponse'
-    { _dsrsResponseStatus :: Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+newtype DeleteStreamResponse = DeleteStreamResponse'{_dsrsResponseStatus
+                                                     :: Int}
+                                 deriving (Eq, Read, Show, Data, Typeable,
+                                           Generic)
 
 -- | Creates a value of 'DeleteStreamResponse' with the minimum fields required to make a request.
 --
@@ -104,9 +98,9 @@ newtype DeleteStreamResponse =
 deleteStreamResponse
     :: Int -- ^ 'dsrsResponseStatus'
     -> DeleteStreamResponse
-deleteStreamResponse pResponseStatus_ =
-  DeleteStreamResponse' {_dsrsResponseStatus = pResponseStatus_}
-
+deleteStreamResponse pResponseStatus_
+  = DeleteStreamResponse'{_dsrsResponseStatus =
+                            pResponseStatus_}
 
 -- | -- | The response status code.
 dsrsResponseStatus :: Lens' DeleteStreamResponse Int

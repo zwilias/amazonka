@@ -41,22 +41,18 @@ module Network.AWS.CloudHSMv2.CreateCluster
     ) where
 
 import Network.AWS.CloudHSMv2.Types
-import Network.AWS.CloudHSMv2.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 
 -- | /See:/ 'createCluster' smart constructor.
-data CreateCluster =
-  CreateCluster'
-    { _ccTagList        :: !(Maybe [Tag])
-    , _ccSourceBackupId :: !(Maybe Text)
-    , _ccSubnetIds      :: !(List1 Text)
-    , _ccHSMType        :: !Text
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data CreateCluster = CreateCluster'{_ccTagList ::
+                                    !(Maybe [Tag]),
+                                    _ccSourceBackupId :: !(Maybe Text),
+                                    _ccSubnetIds :: !(List1 Text),
+                                    _ccHSMType :: !Text}
+                       deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'CreateCluster' with the minimum fields required to make a request.
 --
@@ -73,14 +69,11 @@ createCluster
     :: NonEmpty Text -- ^ 'ccSubnetIds'
     -> Text -- ^ 'ccHSMType'
     -> CreateCluster
-createCluster pSubnetIds_ pHSMType_ =
-  CreateCluster'
-    { _ccTagList = Nothing
-    , _ccSourceBackupId = Nothing
-    , _ccSubnetIds = _List1 # pSubnetIds_
-    , _ccHSMType = pHSMType_
-    }
-
+createCluster pSubnetIds_ pHSMType_
+  = CreateCluster'{_ccTagList = Nothing,
+                   _ccSourceBackupId = Nothing,
+                   _ccSubnetIds = _List1 # pSubnetIds_,
+                   _ccHSMType = pHSMType_}
 
 -- | Undocumented member.
 ccTagList :: Lens' CreateCluster [Tag]
@@ -136,13 +129,11 @@ instance ToQuery CreateCluster where
         toQuery = const mempty
 
 -- | /See:/ 'createClusterResponse' smart constructor.
-data CreateClusterResponse =
-  CreateClusterResponse'
-    { _ccrsCluster        :: !(Maybe Cluster)
-    , _ccrsResponseStatus :: !Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data CreateClusterResponse = CreateClusterResponse'{_ccrsCluster
+                                                    :: !(Maybe Cluster),
+                                                    _ccrsResponseStatus :: !Int}
+                               deriving (Eq, Read, Show, Data, Typeable,
+                                         Generic)
 
 -- | Creates a value of 'CreateClusterResponse' with the minimum fields required to make a request.
 --
@@ -154,10 +145,9 @@ data CreateClusterResponse =
 createClusterResponse
     :: Int -- ^ 'ccrsResponseStatus'
     -> CreateClusterResponse
-createClusterResponse pResponseStatus_ =
-  CreateClusterResponse'
-    {_ccrsCluster = Nothing, _ccrsResponseStatus = pResponseStatus_}
-
+createClusterResponse pResponseStatus_
+  = CreateClusterResponse'{_ccrsCluster = Nothing,
+                           _ccrsResponseStatus = pResponseStatus_}
 
 -- | Information about the cluster that was created.
 ccrsCluster :: Lens' CreateClusterResponse (Maybe Cluster)

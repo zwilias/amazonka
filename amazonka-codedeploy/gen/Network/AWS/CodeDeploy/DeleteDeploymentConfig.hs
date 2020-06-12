@@ -35,7 +35,6 @@ module Network.AWS.CodeDeploy.DeleteDeploymentConfig
     ) where
 
 import Network.AWS.CodeDeploy.Types
-import Network.AWS.CodeDeploy.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.Request
@@ -46,12 +45,10 @@ import Network.AWS.Response
 --
 --
 -- /See:/ 'deleteDeploymentConfig' smart constructor.
-newtype DeleteDeploymentConfig =
-  DeleteDeploymentConfig'
-    { _ddcDeploymentConfigName :: Text
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+newtype DeleteDeploymentConfig = DeleteDeploymentConfig'{_ddcDeploymentConfigName
+                                                         :: Text}
+                                   deriving (Eq, Read, Show, Data, Typeable,
+                                             Generic)
 
 -- | Creates a value of 'DeleteDeploymentConfig' with the minimum fields required to make a request.
 --
@@ -61,9 +58,9 @@ newtype DeleteDeploymentConfig =
 deleteDeploymentConfig
     :: Text -- ^ 'ddcDeploymentConfigName'
     -> DeleteDeploymentConfig
-deleteDeploymentConfig pDeploymentConfigName_ =
-  DeleteDeploymentConfig' {_ddcDeploymentConfigName = pDeploymentConfigName_}
-
+deleteDeploymentConfig pDeploymentConfigName_
+  = DeleteDeploymentConfig'{_ddcDeploymentConfigName =
+                              pDeploymentConfigName_}
 
 -- | The name of a deployment configuration associated with the IAM user or AWS account.
 ddcDeploymentConfigName :: Lens' DeleteDeploymentConfig Text
@@ -105,16 +102,15 @@ instance ToQuery DeleteDeploymentConfig where
         toQuery = const mempty
 
 -- | /See:/ 'deleteDeploymentConfigResponse' smart constructor.
-data DeleteDeploymentConfigResponse =
-  DeleteDeploymentConfigResponse'
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data DeleteDeploymentConfigResponse = DeleteDeploymentConfigResponse'
+                                        deriving (Eq, Read, Show, Data,
+                                                  Typeable, Generic)
 
 -- | Creates a value of 'DeleteDeploymentConfigResponse' with the minimum fields required to make a request.
 --
 deleteDeploymentConfigResponse
     :: DeleteDeploymentConfigResponse
-deleteDeploymentConfigResponse = DeleteDeploymentConfigResponse'
-
+deleteDeploymentConfigResponse
+  = DeleteDeploymentConfigResponse'
 
 instance NFData DeleteDeploymentConfigResponse where

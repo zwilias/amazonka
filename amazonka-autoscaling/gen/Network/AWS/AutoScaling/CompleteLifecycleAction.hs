@@ -31,7 +31,7 @@
 --
 --     * If you need more time, record the lifecycle action heartbeat to keep the instance in a pending state.
 --
---     * __If you finish before the timeout period ends, complete the lifecycle action.__
+--     * __If you finish before the timeout period ends, complete the lifecycle action.__ 
 --
 --
 --
@@ -57,23 +57,24 @@ module Network.AWS.AutoScaling.CompleteLifecycleAction
     ) where
 
 import Network.AWS.AutoScaling.Types
-import Network.AWS.AutoScaling.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 
 -- | /See:/ 'completeLifecycleAction' smart constructor.
-data CompleteLifecycleAction =
-  CompleteLifecycleAction'
-    { _claInstanceId            :: !(Maybe Text)
-    , _claLifecycleActionToken  :: !(Maybe Text)
-    , _claLifecycleHookName     :: !Text
-    , _claAutoScalingGroupName  :: !Text
-    , _claLifecycleActionResult :: !Text
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data CompleteLifecycleAction = CompleteLifecycleAction'{_claInstanceId
+                                                        :: !(Maybe Text),
+                                                        _claLifecycleActionToken
+                                                        :: !(Maybe Text),
+                                                        _claLifecycleHookName ::
+                                                        !Text,
+                                                        _claAutoScalingGroupName
+                                                        :: !Text,
+                                                        _claLifecycleActionResult
+                                                        :: !Text}
+                                 deriving (Eq, Read, Show, Data, Typeable,
+                                           Generic)
 
 -- | Creates a value of 'CompleteLifecycleAction' with the minimum fields required to make a request.
 --
@@ -93,15 +94,14 @@ completeLifecycleAction
     -> Text -- ^ 'claAutoScalingGroupName'
     -> Text -- ^ 'claLifecycleActionResult'
     -> CompleteLifecycleAction
-completeLifecycleAction pLifecycleHookName_ pAutoScalingGroupName_ pLifecycleActionResult_ =
-  CompleteLifecycleAction'
-    { _claInstanceId = Nothing
-    , _claLifecycleActionToken = Nothing
-    , _claLifecycleHookName = pLifecycleHookName_
-    , _claAutoScalingGroupName = pAutoScalingGroupName_
-    , _claLifecycleActionResult = pLifecycleActionResult_
-    }
-
+completeLifecycleAction pLifecycleHookName_
+  pAutoScalingGroupName_ pLifecycleActionResult_
+  = CompleteLifecycleAction'{_claInstanceId = Nothing,
+                             _claLifecycleActionToken = Nothing,
+                             _claLifecycleHookName = pLifecycleHookName_,
+                             _claAutoScalingGroupName = pAutoScalingGroupName_,
+                             _claLifecycleActionResult =
+                               pLifecycleActionResult_}
 
 -- | The ID of the instance.
 claInstanceId :: Lens' CompleteLifecycleAction (Maybe Text)
@@ -156,12 +156,11 @@ instance ToQuery CompleteLifecycleAction where
                "LifecycleActionResult" =: _claLifecycleActionResult]
 
 -- | /See:/ 'completeLifecycleActionResponse' smart constructor.
-newtype CompleteLifecycleActionResponse =
-  CompleteLifecycleActionResponse'
-    { _clarsResponseStatus :: Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+newtype CompleteLifecycleActionResponse = CompleteLifecycleActionResponse'{_clarsResponseStatus
+                                                                           ::
+                                                                           Int}
+                                            deriving (Eq, Read, Show, Data,
+                                                      Typeable, Generic)
 
 -- | Creates a value of 'CompleteLifecycleActionResponse' with the minimum fields required to make a request.
 --
@@ -171,9 +170,9 @@ newtype CompleteLifecycleActionResponse =
 completeLifecycleActionResponse
     :: Int -- ^ 'clarsResponseStatus'
     -> CompleteLifecycleActionResponse
-completeLifecycleActionResponse pResponseStatus_ =
-  CompleteLifecycleActionResponse' {_clarsResponseStatus = pResponseStatus_}
-
+completeLifecycleActionResponse pResponseStatus_
+  = CompleteLifecycleActionResponse'{_clarsResponseStatus
+                                       = pResponseStatus_}
 
 -- | -- | The response status code.
 clarsResponseStatus :: Lens' CompleteLifecycleActionResponse Int

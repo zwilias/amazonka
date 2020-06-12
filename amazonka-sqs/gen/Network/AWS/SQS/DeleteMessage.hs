@@ -18,7 +18,7 @@
 -- Stability   : auto-generated
 -- Portability : non-portable (GHC extensions)
 --
--- Deletes the specified message from the specified queue. You specify the message by using the message's /receipt handle/ and not the /MessageId/ you receive when you send the message. Even if the message is locked by another reader due to the visibility timeout setting, it is still deleted from the queue. If you leave a message in the queue for longer than the queue's configured retention period, Amazon SQS automatically deletes the message.
+-- Deletes the specified message from the specified queue. You specify the message by using the message's /receipt handle/ and not the /MessageId/ you receive when you send the message. Even if the message is locked by another reader due to the visibility timeout setting, it is still deleted from the queue. If you leave a message in the queue for longer than the queue's configured retention period, Amazon SQS automatically deletes the message. 
 --
 --
 module Network.AWS.SQS.DeleteMessage
@@ -40,20 +40,16 @@ import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 import Network.AWS.SQS.Types
-import Network.AWS.SQS.Types.Product
 
--- |
+-- | 
 --
 --
 --
 -- /See:/ 'deleteMessage' smart constructor.
-data DeleteMessage =
-  DeleteMessage'
-    { _dmQueueURL      :: !Text
-    , _dmReceiptHandle :: !Text
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data DeleteMessage = DeleteMessage'{_dmQueueURL ::
+                                    !Text,
+                                    _dmReceiptHandle :: !Text}
+                       deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'DeleteMessage' with the minimum fields required to make a request.
 --
@@ -66,9 +62,9 @@ deleteMessage
     :: Text -- ^ 'dmQueueURL'
     -> Text -- ^ 'dmReceiptHandle'
     -> DeleteMessage
-deleteMessage pQueueURL_ pReceiptHandle_ =
-  DeleteMessage' {_dmQueueURL = pQueueURL_, _dmReceiptHandle = pReceiptHandle_}
-
+deleteMessage pQueueURL_ pReceiptHandle_
+  = DeleteMessage'{_dmQueueURL = pQueueURL_,
+                   _dmReceiptHandle = pReceiptHandle_}
 
 -- | The URL of the Amazon SQS queue from which messages are deleted. Queue URLs are case-sensitive.
 dmQueueURL :: Lens' DeleteMessage Text
@@ -102,16 +98,14 @@ instance ToQuery DeleteMessage where
                "ReceiptHandle" =: _dmReceiptHandle]
 
 -- | /See:/ 'deleteMessageResponse' smart constructor.
-data DeleteMessageResponse =
-  DeleteMessageResponse'
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data DeleteMessageResponse = DeleteMessageResponse'
+                               deriving (Eq, Read, Show, Data, Typeable,
+                                         Generic)
 
 -- | Creates a value of 'DeleteMessageResponse' with the minimum fields required to make a request.
 --
 deleteMessageResponse
     :: DeleteMessageResponse
 deleteMessageResponse = DeleteMessageResponse'
-
 
 instance NFData DeleteMessageResponse where

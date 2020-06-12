@@ -37,21 +37,18 @@ module Network.AWS.IoT.SetV2LoggingOptions
     ) where
 
 import Network.AWS.IoT.Types
-import Network.AWS.IoT.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 
 -- | /See:/ 'setV2LoggingOptions' smart constructor.
-data SetV2LoggingOptions =
-  SetV2LoggingOptions'
-    { _svloDisableAllLogs  :: !(Maybe Bool)
-    , _svloDefaultLogLevel :: !(Maybe LogLevel)
-    , _svloRoleARN         :: !(Maybe Text)
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data SetV2LoggingOptions = SetV2LoggingOptions'{_svloDisableAllLogs
+                                                :: !(Maybe Bool),
+                                                _svloDefaultLogLevel ::
+                                                !(Maybe LogLevel),
+                                                _svloRoleARN :: !(Maybe Text)}
+                             deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'SetV2LoggingOptions' with the minimum fields required to make a request.
 --
@@ -64,13 +61,10 @@ data SetV2LoggingOptions =
 -- * 'svloRoleARN' - The role ARN that allows IoT to write to Cloudwatch logs.
 setV2LoggingOptions
     :: SetV2LoggingOptions
-setV2LoggingOptions =
-  SetV2LoggingOptions'
-    { _svloDisableAllLogs = Nothing
-    , _svloDefaultLogLevel = Nothing
-    , _svloRoleARN = Nothing
-    }
-
+setV2LoggingOptions
+  = SetV2LoggingOptions'{_svloDisableAllLogs = Nothing,
+                         _svloDefaultLogLevel = Nothing,
+                         _svloRoleARN = Nothing}
 
 -- | Set to true to disable all logs, otherwise set to false.
 svloDisableAllLogs :: Lens' SetV2LoggingOptions (Maybe Bool)
@@ -112,16 +106,15 @@ instance ToQuery SetV2LoggingOptions where
         toQuery = const mempty
 
 -- | /See:/ 'setV2LoggingOptionsResponse' smart constructor.
-data SetV2LoggingOptionsResponse =
-  SetV2LoggingOptionsResponse'
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data SetV2LoggingOptionsResponse = SetV2LoggingOptionsResponse'
+                                     deriving (Eq, Read, Show, Data, Typeable,
+                                               Generic)
 
 -- | Creates a value of 'SetV2LoggingOptionsResponse' with the minimum fields required to make a request.
 --
 setV2LoggingOptionsResponse
     :: SetV2LoggingOptionsResponse
-setV2LoggingOptionsResponse = SetV2LoggingOptionsResponse'
-
+setV2LoggingOptionsResponse
+  = SetV2LoggingOptionsResponse'
 
 instance NFData SetV2LoggingOptionsResponse where

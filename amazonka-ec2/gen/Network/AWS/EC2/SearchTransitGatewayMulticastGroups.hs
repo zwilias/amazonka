@@ -45,7 +45,6 @@ module Network.AWS.EC2.SearchTransitGatewayMulticastGroups
     ) where
 
 import Network.AWS.EC2.Types
-import Network.AWS.EC2.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Pager
 import Network.AWS.Prelude
@@ -53,16 +52,28 @@ import Network.AWS.Request
 import Network.AWS.Response
 
 -- | /See:/ 'searchTransitGatewayMulticastGroups' smart constructor.
-data SearchTransitGatewayMulticastGroups =
-  SearchTransitGatewayMulticastGroups'
-    { _stgmgFilters                         :: !(Maybe [Filter])
-    , _stgmgTransitGatewayMulticastDomainId :: !(Maybe Text)
-    , _stgmgNextToken                       :: !(Maybe Text)
-    , _stgmgDryRun                          :: !(Maybe Bool)
-    , _stgmgMaxResults                      :: !(Maybe Nat)
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data SearchTransitGatewayMulticastGroups = SearchTransitGatewayMulticastGroups'{_stgmgFilters
+                                                                                ::
+                                                                                !(Maybe
+                                                                                    [Filter]),
+                                                                                _stgmgTransitGatewayMulticastDomainId
+                                                                                ::
+                                                                                !(Maybe
+                                                                                    Text),
+                                                                                _stgmgNextToken
+                                                                                ::
+                                                                                !(Maybe
+                                                                                    Text),
+                                                                                _stgmgDryRun
+                                                                                ::
+                                                                                !(Maybe
+                                                                                    Bool),
+                                                                                _stgmgMaxResults
+                                                                                ::
+                                                                                !(Maybe
+                                                                                    Nat)}
+                                             deriving (Eq, Read, Show, Data,
+                                                       Typeable, Generic)
 
 -- | Creates a value of 'SearchTransitGatewayMulticastGroups' with the minimum fields required to make a request.
 --
@@ -79,15 +90,14 @@ data SearchTransitGatewayMulticastGroups =
 -- * 'stgmgMaxResults' - The maximum number of results to return with a single call. To retrieve the remaining results, make another call with the returned @nextToken@ value.
 searchTransitGatewayMulticastGroups
     :: SearchTransitGatewayMulticastGroups
-searchTransitGatewayMulticastGroups =
-  SearchTransitGatewayMulticastGroups'
-    { _stgmgFilters = Nothing
-    , _stgmgTransitGatewayMulticastDomainId = Nothing
-    , _stgmgNextToken = Nothing
-    , _stgmgDryRun = Nothing
-    , _stgmgMaxResults = Nothing
-    }
-
+searchTransitGatewayMulticastGroups
+  = SearchTransitGatewayMulticastGroups'{_stgmgFilters
+                                           = Nothing,
+                                         _stgmgTransitGatewayMulticastDomainId =
+                                           Nothing,
+                                         _stgmgNextToken = Nothing,
+                                         _stgmgDryRun = Nothing,
+                                         _stgmgMaxResults = Nothing}
 
 -- | One or more filters. The possible values are:     * @group-ip-address@ - The IP address of the transit gateway multicast group.     * @is-group-member@ - The resource is a group member. Valid values are @true@ | @false@ .     * @is-group-source@ - The resource is a group source. Valid values are @true@ | @false@ .     * @member-type@ - The member type. Valid values are @igmp@ | @static@ .     * @resource-id@ - The ID of the resource.     * @resource-type@ - The type of resource. Valid values are @vpc@ | @vpn@ | @direct-connect-gateway@ | @tgw-peering@ .     * @source-type@ - The source type. Valid values are @igmp@ | @static@ .     * @state@ - The state of the subnet association. Valid values are @associated@ | @associated@ | @disassociated@ | @disassociating@ .     * @subnet-id@ - The ID of the subnet.     * @transit-gateway-attachment-id@ - The id of the transit gateway attachment.
 stgmgFilters :: Lens' SearchTransitGatewayMulticastGroups [Filter]
@@ -163,14 +173,20 @@ instance ToQuery SearchTransitGatewayMulticastGroups
                "MaxResults" =: _stgmgMaxResults]
 
 -- | /See:/ 'searchTransitGatewayMulticastGroupsResponse' smart constructor.
-data SearchTransitGatewayMulticastGroupsResponse =
-  SearchTransitGatewayMulticastGroupsResponse'
-    { _stgmgrsNextToken       :: !(Maybe Text)
-    , _stgmgrsMulticastGroups :: !(Maybe [TransitGatewayMulticastGroup])
-    , _stgmgrsResponseStatus  :: !Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data SearchTransitGatewayMulticastGroupsResponse = SearchTransitGatewayMulticastGroupsResponse'{_stgmgrsNextToken
+                                                                                                ::
+                                                                                                !(Maybe
+                                                                                                    Text),
+                                                                                                _stgmgrsMulticastGroups
+                                                                                                ::
+                                                                                                !(Maybe
+                                                                                                    [TransitGatewayMulticastGroup]),
+                                                                                                _stgmgrsResponseStatus
+                                                                                                ::
+                                                                                                !Int}
+                                                     deriving (Eq, Read, Show,
+                                                               Data, Typeable,
+                                                               Generic)
 
 -- | Creates a value of 'SearchTransitGatewayMulticastGroupsResponse' with the minimum fields required to make a request.
 --
@@ -184,13 +200,14 @@ data SearchTransitGatewayMulticastGroupsResponse =
 searchTransitGatewayMulticastGroupsResponse
     :: Int -- ^ 'stgmgrsResponseStatus'
     -> SearchTransitGatewayMulticastGroupsResponse
-searchTransitGatewayMulticastGroupsResponse pResponseStatus_ =
-  SearchTransitGatewayMulticastGroupsResponse'
-    { _stgmgrsNextToken = Nothing
-    , _stgmgrsMulticastGroups = Nothing
-    , _stgmgrsResponseStatus = pResponseStatus_
-    }
-
+searchTransitGatewayMulticastGroupsResponse
+  pResponseStatus_
+  = SearchTransitGatewayMulticastGroupsResponse'{_stgmgrsNextToken
+                                                   = Nothing,
+                                                 _stgmgrsMulticastGroups =
+                                                   Nothing,
+                                                 _stgmgrsResponseStatus =
+                                                   pResponseStatus_}
 
 -- | The token to use to retrieve the next page of results. This value is @null@ when there are no more results to return.
 stgmgrsNextToken :: Lens' SearchTransitGatewayMulticastGroupsResponse (Maybe Text)

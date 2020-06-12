@@ -42,20 +42,22 @@ import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 import Network.AWS.SES.Types
-import Network.AWS.SES.Types.Product
 
 -- | Represents a request to modify the reputation metric publishing settings for a configuration set.
 --
 --
 --
 -- /See:/ 'updateConfigurationSetReputationMetricsEnabled' smart constructor.
-data UpdateConfigurationSetReputationMetricsEnabled =
-  UpdateConfigurationSetReputationMetricsEnabled'
-    { _ucsrmeConfigurationSetName :: !Text
-    , _ucsrmeEnabled              :: !Bool
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data UpdateConfigurationSetReputationMetricsEnabled = UpdateConfigurationSetReputationMetricsEnabled'{_ucsrmeConfigurationSetName
+                                                                                                      ::
+                                                                                                      !Text,
+                                                                                                      _ucsrmeEnabled
+                                                                                                      ::
+                                                                                                      !Bool}
+                                                        deriving (Eq, Read,
+                                                                  Show, Data,
+                                                                  Typeable,
+                                                                  Generic)
 
 -- | Creates a value of 'UpdateConfigurationSetReputationMetricsEnabled' with the minimum fields required to make a request.
 --
@@ -68,12 +70,11 @@ updateConfigurationSetReputationMetricsEnabled
     :: Text -- ^ 'ucsrmeConfigurationSetName'
     -> Bool -- ^ 'ucsrmeEnabled'
     -> UpdateConfigurationSetReputationMetricsEnabled
-updateConfigurationSetReputationMetricsEnabled pConfigurationSetName_ pEnabled_ =
-  UpdateConfigurationSetReputationMetricsEnabled'
-    { _ucsrmeConfigurationSetName = pConfigurationSetName_
-    , _ucsrmeEnabled = pEnabled_
-    }
-
+updateConfigurationSetReputationMetricsEnabled
+  pConfigurationSetName_ pEnabled_
+  = UpdateConfigurationSetReputationMetricsEnabled'{_ucsrmeConfigurationSetName
+                                                      = pConfigurationSetName_,
+                                                    _ucsrmeEnabled = pEnabled_}
 
 -- | The name of the configuration set that you want to update.
 ucsrmeConfigurationSetName :: Lens' UpdateConfigurationSetReputationMetricsEnabled Text
@@ -128,18 +129,20 @@ instance ToQuery
                "Enabled" =: _ucsrmeEnabled]
 
 -- | /See:/ 'updateConfigurationSetReputationMetricsEnabledResponse' smart constructor.
-data UpdateConfigurationSetReputationMetricsEnabledResponse =
-  UpdateConfigurationSetReputationMetricsEnabledResponse'
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data UpdateConfigurationSetReputationMetricsEnabledResponse = UpdateConfigurationSetReputationMetricsEnabledResponse'
+                                                                deriving (Eq,
+                                                                          Read,
+                                                                          Show,
+                                                                          Data,
+                                                                          Typeable,
+                                                                          Generic)
 
 -- | Creates a value of 'UpdateConfigurationSetReputationMetricsEnabledResponse' with the minimum fields required to make a request.
 --
 updateConfigurationSetReputationMetricsEnabledResponse
     :: UpdateConfigurationSetReputationMetricsEnabledResponse
-updateConfigurationSetReputationMetricsEnabledResponse =
-  UpdateConfigurationSetReputationMetricsEnabledResponse'
-
+updateConfigurationSetReputationMetricsEnabledResponse
+  = UpdateConfigurationSetReputationMetricsEnabledResponse'
 
 instance NFData
            UpdateConfigurationSetReputationMetricsEnabledResponse

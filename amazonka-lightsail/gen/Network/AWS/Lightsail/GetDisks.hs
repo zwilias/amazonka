@@ -42,18 +42,14 @@ module Network.AWS.Lightsail.GetDisks
 
 import Network.AWS.Lens
 import Network.AWS.Lightsail.Types
-import Network.AWS.Lightsail.Types.Product
 import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 
 -- | /See:/ 'getDisks' smart constructor.
-newtype GetDisks =
-  GetDisks'
-    { _gPageToken :: Maybe Text
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+newtype GetDisks = GetDisks'{_gPageToken ::
+                             Maybe Text}
+                     deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'GetDisks' with the minimum fields required to make a request.
 --
@@ -62,8 +58,7 @@ newtype GetDisks =
 -- * 'gPageToken' - A token used for advancing to the next page of results from your GetDisks request.
 getDisks
     :: GetDisks
-getDisks = GetDisks' {_gPageToken = Nothing}
-
+getDisks = GetDisks'{_gPageToken = Nothing}
 
 -- | A token used for advancing to the next page of results from your GetDisks request.
 gPageToken :: Lens' GetDisks (Maybe Text)
@@ -105,14 +100,11 @@ instance ToQuery GetDisks where
         toQuery = const mempty
 
 -- | /See:/ 'getDisksResponse' smart constructor.
-data GetDisksResponse =
-  GetDisksResponse'
-    { _gddrsNextPageToken  :: !(Maybe Text)
-    , _gddrsDisks          :: !(Maybe [Disk])
-    , _gddrsResponseStatus :: !Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data GetDisksResponse = GetDisksResponse'{_gddrsNextPageToken
+                                          :: !(Maybe Text),
+                                          _gddrsDisks :: !(Maybe [Disk]),
+                                          _gddrsResponseStatus :: !Int}
+                          deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'GetDisksResponse' with the minimum fields required to make a request.
 --
@@ -126,13 +118,10 @@ data GetDisksResponse =
 getDisksResponse
     :: Int -- ^ 'gddrsResponseStatus'
     -> GetDisksResponse
-getDisksResponse pResponseStatus_ =
-  GetDisksResponse'
-    { _gddrsNextPageToken = Nothing
-    , _gddrsDisks = Nothing
-    , _gddrsResponseStatus = pResponseStatus_
-    }
-
+getDisksResponse pResponseStatus_
+  = GetDisksResponse'{_gddrsNextPageToken = Nothing,
+                      _gddrsDisks = Nothing,
+                      _gddrsResponseStatus = pResponseStatus_}
 
 -- | A token used for advancing to the next page of results from your GetDisks request.
 gddrsNextPageToken :: Lens' GetDisksResponse (Maybe Text)

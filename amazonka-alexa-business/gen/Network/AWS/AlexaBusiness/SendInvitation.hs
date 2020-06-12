@@ -18,7 +18,7 @@
 -- Stability   : auto-generated
 -- Portability : non-portable (GHC extensions)
 --
--- Sends an enrollment invitation email with a URL to a user. The URL is valid for 72 hours or until you call this operation again, whichever comes first.
+-- Sends an enrollment invitation email with a URL to a user. The URL is valid for 72 hours or until you call this operation again, whichever comes first. 
 --
 --
 module Network.AWS.AlexaBusiness.SendInvitation
@@ -37,19 +37,15 @@ module Network.AWS.AlexaBusiness.SendInvitation
     ) where
 
 import Network.AWS.AlexaBusiness.Types
-import Network.AWS.AlexaBusiness.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 
 -- | /See:/ 'sendInvitation' smart constructor.
-newtype SendInvitation =
-  SendInvitation'
-    { _siUserARN :: Maybe Text
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+newtype SendInvitation = SendInvitation'{_siUserARN
+                                         :: Maybe Text}
+                           deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'SendInvitation' with the minimum fields required to make a request.
 --
@@ -58,8 +54,8 @@ newtype SendInvitation =
 -- * 'siUserARN' - The ARN of the user to whom to send an invitation. Required.
 sendInvitation
     :: SendInvitation
-sendInvitation = SendInvitation' {_siUserARN = Nothing}
-
+sendInvitation
+  = SendInvitation'{_siUserARN = Nothing}
 
 -- | The ARN of the user to whom to send an invitation. Required.
 siUserARN :: Lens' SendInvitation (Maybe Text)
@@ -97,12 +93,10 @@ instance ToQuery SendInvitation where
         toQuery = const mempty
 
 -- | /See:/ 'sendInvitationResponse' smart constructor.
-newtype SendInvitationResponse =
-  SendInvitationResponse'
-    { _sirsResponseStatus :: Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+newtype SendInvitationResponse = SendInvitationResponse'{_sirsResponseStatus
+                                                         :: Int}
+                                   deriving (Eq, Read, Show, Data, Typeable,
+                                             Generic)
 
 -- | Creates a value of 'SendInvitationResponse' with the minimum fields required to make a request.
 --
@@ -112,9 +106,9 @@ newtype SendInvitationResponse =
 sendInvitationResponse
     :: Int -- ^ 'sirsResponseStatus'
     -> SendInvitationResponse
-sendInvitationResponse pResponseStatus_ =
-  SendInvitationResponse' {_sirsResponseStatus = pResponseStatus_}
-
+sendInvitationResponse pResponseStatus_
+  = SendInvitationResponse'{_sirsResponseStatus =
+                              pResponseStatus_}
 
 -- | -- | The response status code.
 sirsResponseStatus :: Lens' SendInvitationResponse Int

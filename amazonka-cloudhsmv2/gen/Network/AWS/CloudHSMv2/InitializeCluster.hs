@@ -41,21 +41,17 @@ module Network.AWS.CloudHSMv2.InitializeCluster
     ) where
 
 import Network.AWS.CloudHSMv2.Types
-import Network.AWS.CloudHSMv2.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 
 -- | /See:/ 'initializeCluster' smart constructor.
-data InitializeCluster =
-  InitializeCluster'
-    { _icClusterId   :: !Text
-    , _icSignedCert  :: !Text
-    , _icTrustAnchor :: !Text
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data InitializeCluster = InitializeCluster'{_icClusterId
+                                            :: !Text,
+                                            _icSignedCert :: !Text,
+                                            _icTrustAnchor :: !Text}
+                           deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'InitializeCluster' with the minimum fields required to make a request.
 --
@@ -71,13 +67,11 @@ initializeCluster
     -> Text -- ^ 'icSignedCert'
     -> Text -- ^ 'icTrustAnchor'
     -> InitializeCluster
-initializeCluster pClusterId_ pSignedCert_ pTrustAnchor_ =
-  InitializeCluster'
-    { _icClusterId = pClusterId_
-    , _icSignedCert = pSignedCert_
-    , _icTrustAnchor = pTrustAnchor_
-    }
-
+initializeCluster pClusterId_ pSignedCert_
+  pTrustAnchor_
+  = InitializeCluster'{_icClusterId = pClusterId_,
+                       _icSignedCert = pSignedCert_,
+                       _icTrustAnchor = pTrustAnchor_}
 
 -- | The identifier (ID) of the cluster that you are claiming. To find the cluster ID, use 'DescribeClusters' .
 icClusterId :: Lens' InitializeCluster Text
@@ -129,14 +123,15 @@ instance ToQuery InitializeCluster where
         toQuery = const mempty
 
 -- | /See:/ 'initializeClusterResponse' smart constructor.
-data InitializeClusterResponse =
-  InitializeClusterResponse'
-    { _icrsStateMessage   :: !(Maybe Text)
-    , _icrsState          :: !(Maybe ClusterState)
-    , _icrsResponseStatus :: !Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data InitializeClusterResponse = InitializeClusterResponse'{_icrsStateMessage
+                                                            :: !(Maybe Text),
+                                                            _icrsState ::
+                                                            !(Maybe
+                                                                ClusterState),
+                                                            _icrsResponseStatus
+                                                            :: !Int}
+                                   deriving (Eq, Read, Show, Data, Typeable,
+                                             Generic)
 
 -- | Creates a value of 'InitializeClusterResponse' with the minimum fields required to make a request.
 --
@@ -150,13 +145,11 @@ data InitializeClusterResponse =
 initializeClusterResponse
     :: Int -- ^ 'icrsResponseStatus'
     -> InitializeClusterResponse
-initializeClusterResponse pResponseStatus_ =
-  InitializeClusterResponse'
-    { _icrsStateMessage = Nothing
-    , _icrsState = Nothing
-    , _icrsResponseStatus = pResponseStatus_
-    }
-
+initializeClusterResponse pResponseStatus_
+  = InitializeClusterResponse'{_icrsStateMessage =
+                                 Nothing,
+                               _icrsState = Nothing,
+                               _icrsResponseStatus = pResponseStatus_}
 
 -- | A description of the cluster's state.
 icrsStateMessage :: Lens' InitializeClusterResponse (Maybe Text)

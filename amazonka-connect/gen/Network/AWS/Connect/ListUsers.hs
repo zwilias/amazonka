@@ -43,7 +43,6 @@ module Network.AWS.Connect.ListUsers
     ) where
 
 import Network.AWS.Connect.Types
-import Network.AWS.Connect.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Pager
 import Network.AWS.Prelude
@@ -51,14 +50,11 @@ import Network.AWS.Request
 import Network.AWS.Response
 
 -- | /See:/ 'listUsers' smart constructor.
-data ListUsers =
-  ListUsers'
-    { _luNextToken  :: !(Maybe Text)
-    , _luMaxResults :: !(Maybe Nat)
-    , _luInstanceId :: !Text
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data ListUsers = ListUsers'{_luNextToken ::
+                            !(Maybe Text),
+                            _luMaxResults :: !(Maybe Nat),
+                            _luInstanceId :: !Text}
+                   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'ListUsers' with the minimum fields required to make a request.
 --
@@ -72,13 +68,10 @@ data ListUsers =
 listUsers
     :: Text -- ^ 'luInstanceId'
     -> ListUsers
-listUsers pInstanceId_ =
-  ListUsers'
-    { _luNextToken = Nothing
-    , _luMaxResults = Nothing
-    , _luInstanceId = pInstanceId_
-    }
-
+listUsers pInstanceId_
+  = ListUsers'{_luNextToken = Nothing,
+               _luMaxResults = Nothing,
+               _luInstanceId = pInstanceId_}
 
 -- | The token for the next set of results. Use the value returned in the previous response in the next request to retrieve the next set of results.
 luNextToken :: Lens' ListUsers (Maybe Text)
@@ -132,14 +125,12 @@ instance ToQuery ListUsers where
                "maxResults" =: _luMaxResults]
 
 -- | /See:/ 'listUsersResponse' smart constructor.
-data ListUsersResponse =
-  ListUsersResponse'
-    { _lursNextToken       :: !(Maybe Text)
-    , _lursUserSummaryList :: !(Maybe [UserSummary])
-    , _lursResponseStatus  :: !Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data ListUsersResponse = ListUsersResponse'{_lursNextToken
+                                            :: !(Maybe Text),
+                                            _lursUserSummaryList ::
+                                            !(Maybe [UserSummary]),
+                                            _lursResponseStatus :: !Int}
+                           deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'ListUsersResponse' with the minimum fields required to make a request.
 --
@@ -153,13 +144,10 @@ data ListUsersResponse =
 listUsersResponse
     :: Int -- ^ 'lursResponseStatus'
     -> ListUsersResponse
-listUsersResponse pResponseStatus_ =
-  ListUsersResponse'
-    { _lursNextToken = Nothing
-    , _lursUserSummaryList = Nothing
-    , _lursResponseStatus = pResponseStatus_
-    }
-
+listUsersResponse pResponseStatus_
+  = ListUsersResponse'{_lursNextToken = Nothing,
+                       _lursUserSummaryList = Nothing,
+                       _lursResponseStatus = pResponseStatus_}
 
 -- | If there are additional results, this is the token for the next set of results.
 lursNextToken :: Lens' ListUsersResponse (Maybe Text)

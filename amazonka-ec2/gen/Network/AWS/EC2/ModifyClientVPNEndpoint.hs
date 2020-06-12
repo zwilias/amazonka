@@ -47,28 +47,37 @@ module Network.AWS.EC2.ModifyClientVPNEndpoint
     ) where
 
 import Network.AWS.EC2.Types
-import Network.AWS.EC2.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 
 -- | /See:/ 'modifyClientVPNEndpoint' smart constructor.
-data ModifyClientVPNEndpoint =
-  ModifyClientVPNEndpoint'
-    { _mcveSecurityGroupIds     :: !(Maybe [Text])
-    , _mcveConnectionLogOptions :: !(Maybe ConnectionLogOptions)
-    , _mcveSplitTunnel          :: !(Maybe Bool)
-    , _mcveVPCId                :: !(Maybe Text)
-    , _mcveVPNPort              :: !(Maybe Int)
-    , _mcveDNSServers           :: !(Maybe DNSServersOptionsModifyStructure)
-    , _mcveServerCertificateARN :: !(Maybe Text)
-    , _mcveDescription          :: !(Maybe Text)
-    , _mcveDryRun               :: !(Maybe Bool)
-    , _mcveClientVPNEndpointId  :: !Text
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data ModifyClientVPNEndpoint = ModifyClientVPNEndpoint'{_mcveSecurityGroupIds
+                                                        :: !(Maybe [Text]),
+                                                        _mcveConnectionLogOptions
+                                                        ::
+                                                        !(Maybe
+                                                            ConnectionLogOptions),
+                                                        _mcveSplitTunnel ::
+                                                        !(Maybe Bool),
+                                                        _mcveVPCId ::
+                                                        !(Maybe Text),
+                                                        _mcveVPNPort ::
+                                                        !(Maybe Int),
+                                                        _mcveDNSServers ::
+                                                        !(Maybe
+                                                            DNSServersOptionsModifyStructure),
+                                                        _mcveServerCertificateARN
+                                                        :: !(Maybe Text),
+                                                        _mcveDescription ::
+                                                        !(Maybe Text),
+                                                        _mcveDryRun ::
+                                                        !(Maybe Bool),
+                                                        _mcveClientVPNEndpointId
+                                                        :: !Text}
+                                 deriving (Eq, Read, Show, Data, Typeable,
+                                           Generic)
 
 -- | Creates a value of 'ModifyClientVPNEndpoint' with the minimum fields required to make a request.
 --
@@ -82,7 +91,7 @@ data ModifyClientVPNEndpoint =
 --
 -- * 'mcveVPCId' - The ID of the VPC to associate with the Client VPN endpoint.
 --
--- * 'mcveVPNPort' - The port number to assign to the Client VPN endpoint for TCP and UDP traffic. Valid Values: @443@ | @1194@  Default Value: @443@
+-- * 'mcveVPNPort' - The port number to assign to the Client VPN endpoint for TCP and UDP traffic. Valid Values: @443@ | @1194@  Default Value: @443@ 
 --
 -- * 'mcveDNSServers' - Information about the DNS servers to be used by Client VPN connections. A Client VPN endpoint can have up to two DNS servers.
 --
@@ -96,20 +105,15 @@ data ModifyClientVPNEndpoint =
 modifyClientVPNEndpoint
     :: Text -- ^ 'mcveClientVPNEndpointId'
     -> ModifyClientVPNEndpoint
-modifyClientVPNEndpoint pClientVPNEndpointId_ =
-  ModifyClientVPNEndpoint'
-    { _mcveSecurityGroupIds = Nothing
-    , _mcveConnectionLogOptions = Nothing
-    , _mcveSplitTunnel = Nothing
-    , _mcveVPCId = Nothing
-    , _mcveVPNPort = Nothing
-    , _mcveDNSServers = Nothing
-    , _mcveServerCertificateARN = Nothing
-    , _mcveDescription = Nothing
-    , _mcveDryRun = Nothing
-    , _mcveClientVPNEndpointId = pClientVPNEndpointId_
-    }
-
+modifyClientVPNEndpoint pClientVPNEndpointId_
+  = ModifyClientVPNEndpoint'{_mcveSecurityGroupIds =
+                               Nothing,
+                             _mcveConnectionLogOptions = Nothing,
+                             _mcveSplitTunnel = Nothing, _mcveVPCId = Nothing,
+                             _mcveVPNPort = Nothing, _mcveDNSServers = Nothing,
+                             _mcveServerCertificateARN = Nothing,
+                             _mcveDescription = Nothing, _mcveDryRun = Nothing,
+                             _mcveClientVPNEndpointId = pClientVPNEndpointId_}
 
 -- | The IDs of one or more security groups to apply to the target network.
 mcveSecurityGroupIds :: Lens' ModifyClientVPNEndpoint [Text]
@@ -127,7 +131,7 @@ mcveSplitTunnel = lens _mcveSplitTunnel (\ s a -> s{_mcveSplitTunnel = a})
 mcveVPCId :: Lens' ModifyClientVPNEndpoint (Maybe Text)
 mcveVPCId = lens _mcveVPCId (\ s a -> s{_mcveVPCId = a})
 
--- | The port number to assign to the Client VPN endpoint for TCP and UDP traffic. Valid Values: @443@ | @1194@  Default Value: @443@
+-- | The port number to assign to the Client VPN endpoint for TCP and UDP traffic. Valid Values: @443@ | @1194@  Default Value: @443@ 
 mcveVPNPort :: Lens' ModifyClientVPNEndpoint (Maybe Int)
 mcveVPNPort = lens _mcveVPNPort (\ s a -> s{_mcveVPNPort = a})
 
@@ -190,13 +194,14 @@ instance ToQuery ModifyClientVPNEndpoint where
                "ClientVpnEndpointId" =: _mcveClientVPNEndpointId]
 
 -- | /See:/ 'modifyClientVPNEndpointResponse' smart constructor.
-data ModifyClientVPNEndpointResponse =
-  ModifyClientVPNEndpointResponse'
-    { _mcversReturn         :: !(Maybe Bool)
-    , _mcversResponseStatus :: !Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data ModifyClientVPNEndpointResponse = ModifyClientVPNEndpointResponse'{_mcversReturn
+                                                                        ::
+                                                                        !(Maybe
+                                                                            Bool),
+                                                                        _mcversResponseStatus
+                                                                        :: !Int}
+                                         deriving (Eq, Read, Show, Data,
+                                                   Typeable, Generic)
 
 -- | Creates a value of 'ModifyClientVPNEndpointResponse' with the minimum fields required to make a request.
 --
@@ -208,10 +213,10 @@ data ModifyClientVPNEndpointResponse =
 modifyClientVPNEndpointResponse
     :: Int -- ^ 'mcversResponseStatus'
     -> ModifyClientVPNEndpointResponse
-modifyClientVPNEndpointResponse pResponseStatus_ =
-  ModifyClientVPNEndpointResponse'
-    {_mcversReturn = Nothing, _mcversResponseStatus = pResponseStatus_}
-
+modifyClientVPNEndpointResponse pResponseStatus_
+  = ModifyClientVPNEndpointResponse'{_mcversReturn =
+                                       Nothing,
+                                     _mcversResponseStatus = pResponseStatus_}
 
 -- | Returns @true@ if the request succeeds; otherwise, it returns an error.
 mcversReturn :: Lens' ModifyClientVPNEndpointResponse (Maybe Bool)

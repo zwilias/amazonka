@@ -27,19 +27,19 @@
 --
 -- Operations related to match configurations and rule sets include:
 --
---     * 'CreateMatchmakingConfiguration'
+--     * 'CreateMatchmakingConfiguration' 
 --
---     * 'DescribeMatchmakingConfigurations'
+--     * 'DescribeMatchmakingConfigurations' 
 --
---     * 'UpdateMatchmakingConfiguration'
+--     * 'UpdateMatchmakingConfiguration' 
 --
---     * 'DeleteMatchmakingConfiguration'
+--     * 'DeleteMatchmakingConfiguration' 
 --
---     * 'CreateMatchmakingRuleSet'
+--     * 'CreateMatchmakingRuleSet' 
 --
---     * 'DescribeMatchmakingRuleSets'
+--     * 'DescribeMatchmakingRuleSets' 
 --
---     * 'ValidateMatchmakingRuleSet'
+--     * 'ValidateMatchmakingRuleSet' 
 --
 --
 --
@@ -61,7 +61,6 @@ module Network.AWS.GameLift.CreateMatchmakingRuleSet
     ) where
 
 import Network.AWS.GameLift.Types
-import Network.AWS.GameLift.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.Request
@@ -72,13 +71,12 @@ import Network.AWS.Response
 --
 --
 -- /See:/ 'createMatchmakingRuleSet' smart constructor.
-data CreateMatchmakingRuleSet =
-  CreateMatchmakingRuleSet'
-    { _cmrsName        :: !Text
-    , _cmrsRuleSetBody :: !Text
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data CreateMatchmakingRuleSet = CreateMatchmakingRuleSet'{_cmrsName
+                                                          :: !Text,
+                                                          _cmrsRuleSetBody ::
+                                                          !Text}
+                                  deriving (Eq, Read, Show, Data, Typeable,
+                                            Generic)
 
 -- | Creates a value of 'CreateMatchmakingRuleSet' with the minimum fields required to make a request.
 --
@@ -91,10 +89,9 @@ createMatchmakingRuleSet
     :: Text -- ^ 'cmrsName'
     -> Text -- ^ 'cmrsRuleSetBody'
     -> CreateMatchmakingRuleSet
-createMatchmakingRuleSet pName_ pRuleSetBody_ =
-  CreateMatchmakingRuleSet'
-    {_cmrsName = pName_, _cmrsRuleSetBody = pRuleSetBody_}
-
+createMatchmakingRuleSet pName_ pRuleSetBody_
+  = CreateMatchmakingRuleSet'{_cmrsName = pName_,
+                              _cmrsRuleSetBody = pRuleSetBody_}
 
 -- | Unique identifier for a matchmaking rule set. This name is used to identify the rule set associated with a matchmaking configuration.
 cmrsName :: Lens' CreateMatchmakingRuleSet Text
@@ -145,13 +142,14 @@ instance ToQuery CreateMatchmakingRuleSet where
 --
 --
 -- /See:/ 'createMatchmakingRuleSetResponse' smart constructor.
-data CreateMatchmakingRuleSetResponse =
-  CreateMatchmakingRuleSetResponse'
-    { _cmrsrsResponseStatus :: !Int
-    , _cmrsrsRuleSet        :: !MatchmakingRuleSet
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data CreateMatchmakingRuleSetResponse = CreateMatchmakingRuleSetResponse'{_cmrsrsResponseStatus
+                                                                          ::
+                                                                          !Int,
+                                                                          _cmrsrsRuleSet
+                                                                          ::
+                                                                          !MatchmakingRuleSet}
+                                          deriving (Eq, Read, Show, Data,
+                                                    Typeable, Generic)
 
 -- | Creates a value of 'CreateMatchmakingRuleSetResponse' with the minimum fields required to make a request.
 --
@@ -164,10 +162,11 @@ createMatchmakingRuleSetResponse
     :: Int -- ^ 'cmrsrsResponseStatus'
     -> MatchmakingRuleSet -- ^ 'cmrsrsRuleSet'
     -> CreateMatchmakingRuleSetResponse
-createMatchmakingRuleSetResponse pResponseStatus_ pRuleSet_ =
-  CreateMatchmakingRuleSetResponse'
-    {_cmrsrsResponseStatus = pResponseStatus_, _cmrsrsRuleSet = pRuleSet_}
-
+createMatchmakingRuleSetResponse pResponseStatus_
+  pRuleSet_
+  = CreateMatchmakingRuleSetResponse'{_cmrsrsResponseStatus
+                                        = pResponseStatus_,
+                                      _cmrsrsRuleSet = pRuleSet_}
 
 -- | -- | The response status code.
 cmrsrsResponseStatus :: Lens' CreateMatchmakingRuleSetResponse Int

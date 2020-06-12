@@ -46,31 +46,26 @@ module Network.AWS.AppSync.CreateFunction
     ) where
 
 import Network.AWS.AppSync.Types
-import Network.AWS.AppSync.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 
 -- | /See:/ 'createFunction' smart constructor.
-data CreateFunction =
-  CreateFunction'
-    { _cfResponseMappingTemplate :: !(Maybe Text)
-    , _cfDescription             :: !(Maybe Text)
-    , _cfApiId                   :: !Text
-    , _cfName                    :: !Text
-    , _cfDataSourceName          :: !Text
-    , _cfRequestMappingTemplate  :: !Text
-    , _cfFunctionVersion         :: !Text
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data CreateFunction = CreateFunction'{_cfResponseMappingTemplate
+                                      :: !(Maybe Text),
+                                      _cfDescription :: !(Maybe Text),
+                                      _cfApiId :: !Text, _cfName :: !Text,
+                                      _cfDataSourceName :: !Text,
+                                      _cfRequestMappingTemplate :: !Text,
+                                      _cfFunctionVersion :: !Text}
+                        deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'CreateFunction' with the minimum fields required to make a request.
 --
 -- Use one of the following lenses to modify other fields as desired:
 --
--- * 'cfResponseMappingTemplate' - The @Function@ response mapping template.
+-- * 'cfResponseMappingTemplate' - The @Function@ response mapping template. 
 --
 -- * 'cfDescription' - The @Function@ description.
 --
@@ -82,7 +77,7 @@ data CreateFunction =
 --
 -- * 'cfRequestMappingTemplate' - The @Function@ request mapping template. Functions support only the 2018-05-29 version of the request mapping template.
 --
--- * 'cfFunctionVersion' - The @version@ of the request mapping template. Currently the supported value is 2018-05-29.
+-- * 'cfFunctionVersion' - The @version@ of the request mapping template. Currently the supported value is 2018-05-29. 
 createFunction
     :: Text -- ^ 'cfApiId'
     -> Text -- ^ 'cfName'
@@ -90,19 +85,17 @@ createFunction
     -> Text -- ^ 'cfRequestMappingTemplate'
     -> Text -- ^ 'cfFunctionVersion'
     -> CreateFunction
-createFunction pApiId_ pName_ pDataSourceName_ pRequestMappingTemplate_ pFunctionVersion_ =
-  CreateFunction'
-    { _cfResponseMappingTemplate = Nothing
-    , _cfDescription = Nothing
-    , _cfApiId = pApiId_
-    , _cfName = pName_
-    , _cfDataSourceName = pDataSourceName_
-    , _cfRequestMappingTemplate = pRequestMappingTemplate_
-    , _cfFunctionVersion = pFunctionVersion_
-    }
+createFunction pApiId_ pName_ pDataSourceName_
+  pRequestMappingTemplate_ pFunctionVersion_
+  = CreateFunction'{_cfResponseMappingTemplate =
+                      Nothing,
+                    _cfDescription = Nothing, _cfApiId = pApiId_,
+                    _cfName = pName_,
+                    _cfDataSourceName = pDataSourceName_,
+                    _cfRequestMappingTemplate = pRequestMappingTemplate_,
+                    _cfFunctionVersion = pFunctionVersion_}
 
-
--- | The @Function@ response mapping template.
+-- | The @Function@ response mapping template. 
 cfResponseMappingTemplate :: Lens' CreateFunction (Maybe Text)
 cfResponseMappingTemplate = lens _cfResponseMappingTemplate (\ s a -> s{_cfResponseMappingTemplate = a})
 
@@ -126,7 +119,7 @@ cfDataSourceName = lens _cfDataSourceName (\ s a -> s{_cfDataSourceName = a})
 cfRequestMappingTemplate :: Lens' CreateFunction Text
 cfRequestMappingTemplate = lens _cfRequestMappingTemplate (\ s a -> s{_cfRequestMappingTemplate = a})
 
--- | The @version@ of the request mapping template. Currently the supported value is 2018-05-29.
+-- | The @version@ of the request mapping template. Currently the supported value is 2018-05-29. 
 cfFunctionVersion :: Lens' CreateFunction Text
 cfFunctionVersion = lens _cfFunctionVersion (\ s a -> s{_cfFunctionVersion = a})
 
@@ -173,13 +166,14 @@ instance ToQuery CreateFunction where
         toQuery = const mempty
 
 -- | /See:/ 'createFunctionResponse' smart constructor.
-data CreateFunctionResponse =
-  CreateFunctionResponse'
-    { _cfrsFunctionConfiguration :: !(Maybe FunctionConfiguration)
-    , _cfrsResponseStatus        :: !Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data CreateFunctionResponse = CreateFunctionResponse'{_cfrsFunctionConfiguration
+                                                      ::
+                                                      !(Maybe
+                                                          FunctionConfiguration),
+                                                      _cfrsResponseStatus ::
+                                                      !Int}
+                                deriving (Eq, Read, Show, Data, Typeable,
+                                          Generic)
 
 -- | Creates a value of 'CreateFunctionResponse' with the minimum fields required to make a request.
 --
@@ -191,12 +185,10 @@ data CreateFunctionResponse =
 createFunctionResponse
     :: Int -- ^ 'cfrsResponseStatus'
     -> CreateFunctionResponse
-createFunctionResponse pResponseStatus_ =
-  CreateFunctionResponse'
-    { _cfrsFunctionConfiguration = Nothing
-    , _cfrsResponseStatus = pResponseStatus_
-    }
-
+createFunctionResponse pResponseStatus_
+  = CreateFunctionResponse'{_cfrsFunctionConfiguration
+                              = Nothing,
+                            _cfrsResponseStatus = pResponseStatus_}
 
 -- | The @Function@ object.
 cfrsFunctionConfiguration :: Lens' CreateFunctionResponse (Maybe FunctionConfiguration)

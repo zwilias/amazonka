@@ -23,7 +23,7 @@
 --
 -- If the job state is @IN_PROGRESS@ the job is marked for termination and put into the @STOP_REQUESTED@ state. If the job completes before it can be stopped, it is put into the @COMPLETED@ state; otherwise the job is stopped and put into the @STOPPED@ state.
 --
--- If the job is in the @COMPLETED@ or @FAILED@ state when you call the @StopDominantLanguageDetectionJob@ operation, the operation returns a 400 Internal Request Exception.
+-- If the job is in the @COMPLETED@ or @FAILED@ state when you call the @StopDominantLanguageDetectionJob@ operation, the operation returns a 400 Internal Request Exception. 
 --
 -- When a job is stopped, any documents already processed are written to the output location.
 --
@@ -45,19 +45,16 @@ module Network.AWS.Comprehend.StopKeyPhrasesDetectionJob
     ) where
 
 import Network.AWS.Comprehend.Types
-import Network.AWS.Comprehend.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 
 -- | /See:/ 'stopKeyPhrasesDetectionJob' smart constructor.
-newtype StopKeyPhrasesDetectionJob =
-  StopKeyPhrasesDetectionJob'
-    { _skpdjJobId :: Text
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+newtype StopKeyPhrasesDetectionJob = StopKeyPhrasesDetectionJob'{_skpdjJobId
+                                                                 :: Text}
+                                       deriving (Eq, Read, Show, Data, Typeable,
+                                                 Generic)
 
 -- | Creates a value of 'StopKeyPhrasesDetectionJob' with the minimum fields required to make a request.
 --
@@ -67,9 +64,8 @@ newtype StopKeyPhrasesDetectionJob =
 stopKeyPhrasesDetectionJob
     :: Text -- ^ 'skpdjJobId'
     -> StopKeyPhrasesDetectionJob
-stopKeyPhrasesDetectionJob pJobId_ =
-  StopKeyPhrasesDetectionJob' {_skpdjJobId = pJobId_}
-
+stopKeyPhrasesDetectionJob pJobId_
+  = StopKeyPhrasesDetectionJob'{_skpdjJobId = pJobId_}
 
 -- | The identifier of the key phrases detection job to stop.
 skpdjJobId :: Lens' StopKeyPhrasesDetectionJob Text
@@ -111,14 +107,19 @@ instance ToQuery StopKeyPhrasesDetectionJob where
         toQuery = const mempty
 
 -- | /See:/ 'stopKeyPhrasesDetectionJobResponse' smart constructor.
-data StopKeyPhrasesDetectionJobResponse =
-  StopKeyPhrasesDetectionJobResponse'
-    { _skpdjrsJobId          :: !(Maybe Text)
-    , _skpdjrsJobStatus      :: !(Maybe JobStatus)
-    , _skpdjrsResponseStatus :: !Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data StopKeyPhrasesDetectionJobResponse = StopKeyPhrasesDetectionJobResponse'{_skpdjrsJobId
+                                                                              ::
+                                                                              !(Maybe
+                                                                                  Text),
+                                                                              _skpdjrsJobStatus
+                                                                              ::
+                                                                              !(Maybe
+                                                                                  JobStatus),
+                                                                              _skpdjrsResponseStatus
+                                                                              ::
+                                                                              !Int}
+                                            deriving (Eq, Read, Show, Data,
+                                                      Typeable, Generic)
 
 -- | Creates a value of 'StopKeyPhrasesDetectionJobResponse' with the minimum fields required to make a request.
 --
@@ -132,13 +133,12 @@ data StopKeyPhrasesDetectionJobResponse =
 stopKeyPhrasesDetectionJobResponse
     :: Int -- ^ 'skpdjrsResponseStatus'
     -> StopKeyPhrasesDetectionJobResponse
-stopKeyPhrasesDetectionJobResponse pResponseStatus_ =
-  StopKeyPhrasesDetectionJobResponse'
-    { _skpdjrsJobId = Nothing
-    , _skpdjrsJobStatus = Nothing
-    , _skpdjrsResponseStatus = pResponseStatus_
-    }
-
+stopKeyPhrasesDetectionJobResponse pResponseStatus_
+  = StopKeyPhrasesDetectionJobResponse'{_skpdjrsJobId =
+                                          Nothing,
+                                        _skpdjrsJobStatus = Nothing,
+                                        _skpdjrsResponseStatus =
+                                          pResponseStatus_}
 
 -- | The identifier of the key phrases detection job to stop.
 skpdjrsJobId :: Lens' StopKeyPhrasesDetectionJobResponse (Maybe Text)

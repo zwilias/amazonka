@@ -43,19 +43,16 @@ module Network.AWS.EC2.DescribeAggregateIdFormat
     ) where
 
 import Network.AWS.EC2.Types
-import Network.AWS.EC2.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 
 -- | /See:/ 'describeAggregateIdFormat' smart constructor.
-newtype DescribeAggregateIdFormat =
-  DescribeAggregateIdFormat'
-    { _daifDryRun :: Maybe Bool
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+newtype DescribeAggregateIdFormat = DescribeAggregateIdFormat'{_daifDryRun
+                                                               :: Maybe Bool}
+                                      deriving (Eq, Read, Show, Data, Typeable,
+                                                Generic)
 
 -- | Creates a value of 'DescribeAggregateIdFormat' with the minimum fields required to make a request.
 --
@@ -64,8 +61,8 @@ newtype DescribeAggregateIdFormat =
 -- * 'daifDryRun' - Checks whether you have the required permissions for the action, without actually making the request, and provides an error response. If you have the required permissions, the error response is @DryRunOperation@ . Otherwise, it is @UnauthorizedOperation@ .
 describeAggregateIdFormat
     :: DescribeAggregateIdFormat
-describeAggregateIdFormat = DescribeAggregateIdFormat' {_daifDryRun = Nothing}
-
+describeAggregateIdFormat
+  = DescribeAggregateIdFormat'{_daifDryRun = Nothing}
 
 -- | Checks whether you have the required permissions for the action, without actually making the request, and provides an error response. If you have the required permissions, the error response is @DryRunOperation@ . Otherwise, it is @UnauthorizedOperation@ .
 daifDryRun :: Lens' DescribeAggregateIdFormat (Maybe Bool)
@@ -103,14 +100,19 @@ instance ToQuery DescribeAggregateIdFormat where
                "DryRun" =: _daifDryRun]
 
 -- | /See:/ 'describeAggregateIdFormatResponse' smart constructor.
-data DescribeAggregateIdFormatResponse =
-  DescribeAggregateIdFormatResponse'
-    { _daifrsUseLongIdsAggregated :: !(Maybe Bool)
-    , _daifrsStatuses             :: !(Maybe [IdFormat])
-    , _daifrsResponseStatus       :: !Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data DescribeAggregateIdFormatResponse = DescribeAggregateIdFormatResponse'{_daifrsUseLongIdsAggregated
+                                                                            ::
+                                                                            !(Maybe
+                                                                                Bool),
+                                                                            _daifrsStatuses
+                                                                            ::
+                                                                            !(Maybe
+                                                                                [IdFormat]),
+                                                                            _daifrsResponseStatus
+                                                                            ::
+                                                                            !Int}
+                                           deriving (Eq, Read, Show, Data,
+                                                     Typeable, Generic)
 
 -- | Creates a value of 'DescribeAggregateIdFormatResponse' with the minimum fields required to make a request.
 --
@@ -124,13 +126,11 @@ data DescribeAggregateIdFormatResponse =
 describeAggregateIdFormatResponse
     :: Int -- ^ 'daifrsResponseStatus'
     -> DescribeAggregateIdFormatResponse
-describeAggregateIdFormatResponse pResponseStatus_ =
-  DescribeAggregateIdFormatResponse'
-    { _daifrsUseLongIdsAggregated = Nothing
-    , _daifrsStatuses = Nothing
-    , _daifrsResponseStatus = pResponseStatus_
-    }
-
+describeAggregateIdFormatResponse pResponseStatus_
+  = DescribeAggregateIdFormatResponse'{_daifrsUseLongIdsAggregated
+                                         = Nothing,
+                                       _daifrsStatuses = Nothing,
+                                       _daifrsResponseStatus = pResponseStatus_}
 
 -- | Indicates whether all resource types in the Region are configured to use longer IDs. This value is only @true@ if all users are configured to use longer IDs for all resources types in the Region.
 daifrsUseLongIdsAggregated :: Lens' DescribeAggregateIdFormatResponse (Maybe Bool)

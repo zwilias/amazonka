@@ -57,7 +57,7 @@
 --
 --
 --
--- Creating rules with built-in targets is supported only on the AWS Management Console. The built-in targets are @EC2 CreateSnapshot API call@ , @EC2 RebootInstances API call@ , @EC2 StopInstances API call@ , and @EC2 TerminateInstances API call@ .
+-- Creating rules with built-in targets is supported only on the AWS Management Console. The built-in targets are @EC2 CreateSnapshot API call@ , @EC2 RebootInstances API call@ , @EC2 StopInstances API call@ , and @EC2 TerminateInstances API call@ . 
 --
 -- For some target types, @PutTargets@ provides target-specific parameters. If the target is a Kinesis data stream, you can optionally specify which shard the event goes to by using the @KinesisParameters@ argument. To invoke a command on multiple EC2 instances with one rule, you can use the @RunCommandParameters@ field.
 --
@@ -107,21 +107,16 @@ module Network.AWS.CloudWatchEvents.PutTargets
     ) where
 
 import Network.AWS.CloudWatchEvents.Types
-import Network.AWS.CloudWatchEvents.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 
 -- | /See:/ 'putTargets' smart constructor.
-data PutTargets =
-  PutTargets'
-    { _ptEventBusName :: !(Maybe Text)
-    , _ptRule         :: !Text
-    , _ptTargets      :: !(List1 Target)
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data PutTargets = PutTargets'{_ptEventBusName ::
+                              !(Maybe Text),
+                              _ptRule :: !Text, _ptTargets :: !(List1 Target)}
+                    deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'PutTargets' with the minimum fields required to make a request.
 --
@@ -136,13 +131,9 @@ putTargets
     :: Text -- ^ 'ptRule'
     -> NonEmpty Target -- ^ 'ptTargets'
     -> PutTargets
-putTargets pRule_ pTargets_ =
-  PutTargets'
-    { _ptEventBusName = Nothing
-    , _ptRule = pRule_
-    , _ptTargets = _List1 # pTargets_
-    }
-
+putTargets pRule_ pTargets_
+  = PutTargets'{_ptEventBusName = Nothing,
+                _ptRule = pRule_, _ptTargets = _List1 # pTargets_}
 
 -- | The name of the event bus associated with the rule. If you omit this, the default event bus is used.
 ptEventBusName :: Lens' PutTargets (Maybe Text)
@@ -195,14 +186,12 @@ instance ToQuery PutTargets where
         toQuery = const mempty
 
 -- | /See:/ 'putTargetsResponse' smart constructor.
-data PutTargetsResponse =
-  PutTargetsResponse'
-    { _ptrsFailedEntryCount :: !(Maybe Int)
-    , _ptrsFailedEntries    :: !(Maybe [PutTargetsResultEntry])
-    , _ptrsResponseStatus   :: !Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data PutTargetsResponse = PutTargetsResponse'{_ptrsFailedEntryCount
+                                              :: !(Maybe Int),
+                                              _ptrsFailedEntries ::
+                                              !(Maybe [PutTargetsResultEntry]),
+                                              _ptrsResponseStatus :: !Int}
+                            deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'PutTargetsResponse' with the minimum fields required to make a request.
 --
@@ -216,13 +205,11 @@ data PutTargetsResponse =
 putTargetsResponse
     :: Int -- ^ 'ptrsResponseStatus'
     -> PutTargetsResponse
-putTargetsResponse pResponseStatus_ =
-  PutTargetsResponse'
-    { _ptrsFailedEntryCount = Nothing
-    , _ptrsFailedEntries = Nothing
-    , _ptrsResponseStatus = pResponseStatus_
-    }
-
+putTargetsResponse pResponseStatus_
+  = PutTargetsResponse'{_ptrsFailedEntryCount =
+                          Nothing,
+                        _ptrsFailedEntries = Nothing,
+                        _ptrsResponseStatus = pResponseStatus_}
 
 -- | The number of failed entries.
 ptrsFailedEntryCount :: Lens' PutTargetsResponse (Maybe Int)

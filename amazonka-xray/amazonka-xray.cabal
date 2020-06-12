@@ -57,8 +57,28 @@ library
         , Network.AWS.XRay.Waiters
 
     other-modules:
-          Network.AWS.XRay.Types.Product
-        , Network.AWS.XRay.Types.Sum
+          Network.AWS.XRay.Types.Alias
+        , Network.AWS.XRay.Types.AnnotationValue
+        , Network.AWS.XRay.Types.BackendConnectionErrors
+        , Network.AWS.XRay.Types.Edge
+        , Network.AWS.XRay.Types.EdgeStatistics
+        , Network.AWS.XRay.Types.EncryptionConfig
+        , Network.AWS.XRay.Types.EncryptionStatus
+        , Network.AWS.XRay.Types.EncryptionType
+        , Network.AWS.XRay.Types.ErrorStatistics
+        , Network.AWS.XRay.Types.FaultStatistics
+        , Network.AWS.XRay.Types.HTTP
+        , Network.AWS.XRay.Types.HistogramEntry
+        , Network.AWS.XRay.Types.Segment
+        , Network.AWS.XRay.Types.ServiceId
+        , Network.AWS.XRay.Types.ServiceInfo
+        , Network.AWS.XRay.Types.ServiceStatistics
+        , Network.AWS.XRay.Types.TelemetryRecord
+        , Network.AWS.XRay.Types.Trace
+        , Network.AWS.XRay.Types.TraceSummary
+        , Network.AWS.XRay.Types.TraceUser
+        , Network.AWS.XRay.Types.UnprocessedTraceSegment
+        , Network.AWS.XRay.Types.ValueWithServiceIds
 
     build-depends:
           amazonka-core == 1.6.1.*

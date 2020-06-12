@@ -21,9 +21,9 @@
 -- The @Scan@ operation returns one or more items and item attributes by accessing every item in a table or a secondary index. To have DynamoDB return fewer items, you can provide a @FilterExpression@ operation.
 --
 --
--- If the total number of scanned items exceeds the maximum dataset size limit of 1 MB, the scan stops and results are returned to the user as a @LastEvaluatedKey@ value to continue the scan in a subsequent operation. The results also include the number of items exceeding the limit. A scan can result in no table data meeting the filter criteria.
+-- If the total number of scanned items exceeds the maximum dataset size limit of 1 MB, the scan stops and results are returned to the user as a @LastEvaluatedKey@ value to continue the scan in a subsequent operation. The results also include the number of items exceeding the limit. A scan can result in no table data meeting the filter criteria. 
 --
--- A single @Scan@ operation reads up to the maximum number of items set (if using the @Limit@ parameter) or a maximum of 1 MB of data and then apply any filtering to the results using @FilterExpression@ . If @LastEvaluatedKey@ is present in the response, you need to paginate the result set. For more information, see <https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/Scan.html#Scan.Pagination Paginating the Results> in the /Amazon DynamoDB Developer Guide/ .
+-- A single @Scan@ operation reads up to the maximum number of items set (if using the @Limit@ parameter) or a maximum of 1 MB of data and then apply any filtering to the results using @FilterExpression@ . If @LastEvaluatedKey@ is present in the response, you need to paginate the result set. For more information, see <https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/Scan.html#Scan.Pagination Paginating the Results> in the /Amazon DynamoDB Developer Guide/ . 
 --
 -- @Scan@ operations proceed sequentially; however, for faster performance on a large table or secondary index, applications can request a parallel @Scan@ operation by providing the @Segment@ and @TotalSegments@ parameters. For more information, see <https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/Scan.html#Scan.ParallelScan Parallel Scan> in the /Amazon DynamoDB Developer Guide/ .
 --
@@ -67,7 +67,6 @@ module Network.AWS.DynamoDB.Scan
     ) where
 
 import Network.AWS.DynamoDB.Types
-import Network.AWS.DynamoDB.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Pager
 import Network.AWS.Prelude
@@ -79,27 +78,27 @@ import Network.AWS.Response
 --
 --
 -- /See:/ 'scan' smart constructor.
-data Scan =
-  Scan'
-    { _sProjectionExpression      :: !(Maybe Text)
-    , _sScanFilter                :: !(Maybe (Map Text Condition))
-    , _sAttributesToGet           :: !(Maybe (List1 Text))
-    , _sTotalSegments             :: !(Maybe Nat)
-    , _sExpressionAttributeNames  :: !(Maybe (Map Text Text))
-    , _sFilterExpression          :: !(Maybe Text)
-    , _sConsistentRead            :: !(Maybe Bool)
-    , _sExpressionAttributeValues :: !(Maybe (Map Text AttributeValue))
-    , _sReturnConsumedCapacity    :: !(Maybe ReturnConsumedCapacity)
-    , _sLimit                     :: !(Maybe Nat)
-    , _sSelect                    :: !(Maybe Select)
-    , _sSegment                   :: !(Maybe Nat)
-    , _sConditionalOperator       :: !(Maybe ConditionalOperator)
-    , _sExclusiveStartKey         :: !(Maybe (Map Text AttributeValue))
-    , _sIndexName                 :: !(Maybe Text)
-    , _sTableName                 :: !Text
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data Scan = Scan'{_sProjectionExpression ::
+                  !(Maybe Text),
+                  _sScanFilter :: !(Maybe (Map Text Condition)),
+                  _sAttributesToGet :: !(Maybe (List1 Text)),
+                  _sTotalSegments :: !(Maybe Nat),
+                  _sExpressionAttributeNames ::
+                  !(Maybe (Map Text Text)),
+                  _sFilterExpression :: !(Maybe Text),
+                  _sConsistentRead :: !(Maybe Bool),
+                  _sExpressionAttributeValues ::
+                  !(Maybe (Map Text AttributeValue)),
+                  _sReturnConsumedCapacity ::
+                  !(Maybe ReturnConsumedCapacity),
+                  _sLimit :: !(Maybe Nat), _sSelect :: !(Maybe Select),
+                  _sSegment :: !(Maybe Nat),
+                  _sConditionalOperator ::
+                  !(Maybe ConditionalOperator),
+                  _sExclusiveStartKey ::
+                  !(Maybe (Map Text AttributeValue)),
+                  _sIndexName :: !(Maybe Text), _sTableName :: !Text}
+              deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'Scan' with the minimum fields required to make a request.
 --
@@ -139,26 +138,19 @@ data Scan =
 scan
     :: Text -- ^ 'sTableName'
     -> Scan
-scan pTableName_ =
-  Scan'
-    { _sProjectionExpression = Nothing
-    , _sScanFilter = Nothing
-    , _sAttributesToGet = Nothing
-    , _sTotalSegments = Nothing
-    , _sExpressionAttributeNames = Nothing
-    , _sFilterExpression = Nothing
-    , _sConsistentRead = Nothing
-    , _sExpressionAttributeValues = Nothing
-    , _sReturnConsumedCapacity = Nothing
-    , _sLimit = Nothing
-    , _sSelect = Nothing
-    , _sSegment = Nothing
-    , _sConditionalOperator = Nothing
-    , _sExclusiveStartKey = Nothing
-    , _sIndexName = Nothing
-    , _sTableName = pTableName_
-    }
-
+scan pTableName_
+  = Scan'{_sProjectionExpression = Nothing,
+          _sScanFilter = Nothing, _sAttributesToGet = Nothing,
+          _sTotalSegments = Nothing,
+          _sExpressionAttributeNames = Nothing,
+          _sFilterExpression = Nothing,
+          _sConsistentRead = Nothing,
+          _sExpressionAttributeValues = Nothing,
+          _sReturnConsumedCapacity = Nothing,
+          _sLimit = Nothing, _sSelect = Nothing,
+          _sSegment = Nothing, _sConditionalOperator = Nothing,
+          _sExclusiveStartKey = Nothing, _sIndexName = Nothing,
+          _sTableName = pTableName_}
 
 -- | A string that identifies one or more attributes to retrieve from the specified table or index. These attributes can include scalars, sets, or elements of a JSON document. The attributes in the expression must be separated by commas. If no attribute names are specified, then all attributes will be returned. If any of the requested attributes are not found, they will not appear in the result. For more information, see <https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/Expressions.AccessingItemAttributes.html Specifying Item Attributes> in the /Amazon DynamoDB Developer Guide/ .
 sProjectionExpression :: Lens' Scan (Maybe Text)
@@ -293,17 +285,16 @@ instance ToQuery Scan where
 --
 --
 -- /See:/ 'scanResponse' smart constructor.
-data ScanResponse =
-  ScanResponse'
-    { _srsLastEvaluatedKey :: !(Maybe (Map Text AttributeValue))
-    , _srsCount            :: !(Maybe Int)
-    , _srsScannedCount     :: !(Maybe Int)
-    , _srsItems            :: !(Maybe [Map Text AttributeValue])
-    , _srsConsumedCapacity :: !(Maybe ConsumedCapacity)
-    , _srsResponseStatus   :: !Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data ScanResponse = ScanResponse'{_srsLastEvaluatedKey
+                                  :: !(Maybe (Map Text AttributeValue)),
+                                  _srsCount :: !(Maybe Int),
+                                  _srsScannedCount :: !(Maybe Int),
+                                  _srsItems ::
+                                  !(Maybe [Map Text AttributeValue]),
+                                  _srsConsumedCapacity ::
+                                  !(Maybe ConsumedCapacity),
+                                  _srsResponseStatus :: !Int}
+                      deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'ScanResponse' with the minimum fields required to make a request.
 --
@@ -323,16 +314,11 @@ data ScanResponse =
 scanResponse
     :: Int -- ^ 'srsResponseStatus'
     -> ScanResponse
-scanResponse pResponseStatus_ =
-  ScanResponse'
-    { _srsLastEvaluatedKey = Nothing
-    , _srsCount = Nothing
-    , _srsScannedCount = Nothing
-    , _srsItems = Nothing
-    , _srsConsumedCapacity = Nothing
-    , _srsResponseStatus = pResponseStatus_
-    }
-
+scanResponse pResponseStatus_
+  = ScanResponse'{_srsLastEvaluatedKey = Nothing,
+                  _srsCount = Nothing, _srsScannedCount = Nothing,
+                  _srsItems = Nothing, _srsConsumedCapacity = Nothing,
+                  _srsResponseStatus = pResponseStatus_}
 
 -- | The primary key of the item where the operation stopped, inclusive of the previous result set. Use this value to start a new operation, excluding this value in the new request. If @LastEvaluatedKey@ is empty, then the "last page" of results has been processed and there is no more data to be retrieved. If @LastEvaluatedKey@ is not empty, it does not necessarily mean that there is more data in the result set. The only way to know when you have reached the end of the result set is when @LastEvaluatedKey@ is empty.
 srsLastEvaluatedKey :: Lens' ScanResponse (HashMap Text AttributeValue)

@@ -41,7 +41,6 @@ module Network.AWS.GuardDuty.ListFilters
     ) where
 
 import Network.AWS.GuardDuty.Types
-import Network.AWS.GuardDuty.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Pager
 import Network.AWS.Prelude
@@ -49,14 +48,11 @@ import Network.AWS.Request
 import Network.AWS.Response
 
 -- | /See:/ 'listFilters' smart constructor.
-data ListFilters =
-  ListFilters'
-    { _lNextToken  :: !(Maybe Text)
-    , _lMaxResults :: !(Maybe Nat)
-    , _lDetectorId :: !Text
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data ListFilters = ListFilters'{_lNextToken ::
+                                !(Maybe Text),
+                                _lMaxResults :: !(Maybe Nat),
+                                _lDetectorId :: !Text}
+                     deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'ListFilters' with the minimum fields required to make a request.
 --
@@ -70,10 +66,9 @@ data ListFilters =
 listFilters
     :: Text -- ^ 'lDetectorId'
     -> ListFilters
-listFilters pDetectorId_ =
-  ListFilters'
-    {_lNextToken = Nothing, _lMaxResults = Nothing, _lDetectorId = pDetectorId_}
-
+listFilters pDetectorId_
+  = ListFilters'{_lNextToken = Nothing,
+                 _lMaxResults = Nothing, _lDetectorId = pDetectorId_}
 
 -- | Paginates results. Set the value of this parameter to NULL on your first call to the ListFilters operation.For subsequent calls to the operation, fill nextToken in the request with the value of nextToken from the previous response to continue listing data.
 lNextToken :: Lens' ListFilters (Maybe Text)
@@ -128,14 +123,11 @@ instance ToQuery ListFilters where
                "maxResults" =: _lMaxResults]
 
 -- | /See:/ 'listFiltersResponse' smart constructor.
-data ListFiltersResponse =
-  ListFiltersResponse'
-    { _lrsFilterNames    :: !(Maybe [Text])
-    , _lrsNextToken      :: !(Maybe Text)
-    , _lrsResponseStatus :: !Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data ListFiltersResponse = ListFiltersResponse'{_lrsFilterNames
+                                                :: !(Maybe [Text]),
+                                                _lrsNextToken :: !(Maybe Text),
+                                                _lrsResponseStatus :: !Int}
+                             deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'ListFiltersResponse' with the minimum fields required to make a request.
 --
@@ -149,13 +141,10 @@ data ListFiltersResponse =
 listFiltersResponse
     :: Int -- ^ 'lrsResponseStatus'
     -> ListFiltersResponse
-listFiltersResponse pResponseStatus_ =
-  ListFiltersResponse'
-    { _lrsFilterNames = Nothing
-    , _lrsNextToken = Nothing
-    , _lrsResponseStatus = pResponseStatus_
-    }
-
+listFiltersResponse pResponseStatus_
+  = ListFiltersResponse'{_lrsFilterNames = Nothing,
+                         _lrsNextToken = Nothing,
+                         _lrsResponseStatus = pResponseStatus_}
 
 -- | Undocumented member.
 lrsFilterNames :: Lens' ListFiltersResponse [Text]

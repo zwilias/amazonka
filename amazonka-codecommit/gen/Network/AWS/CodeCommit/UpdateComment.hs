@@ -39,20 +39,16 @@ module Network.AWS.CodeCommit.UpdateComment
     ) where
 
 import Network.AWS.CodeCommit.Types
-import Network.AWS.CodeCommit.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 
 -- | /See:/ 'updateComment' smart constructor.
-data UpdateComment =
-  UpdateComment'
-    { _ucCommentId :: !Text
-    , _ucContent   :: !Text
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data UpdateComment = UpdateComment'{_ucCommentId ::
+                                    !Text,
+                                    _ucContent :: !Text}
+                       deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'UpdateComment' with the minimum fields required to make a request.
 --
@@ -65,9 +61,9 @@ updateComment
     :: Text -- ^ 'ucCommentId'
     -> Text -- ^ 'ucContent'
     -> UpdateComment
-updateComment pCommentId_ pContent_ =
-  UpdateComment' {_ucCommentId = pCommentId_, _ucContent = pContent_}
-
+updateComment pCommentId_ pContent_
+  = UpdateComment'{_ucCommentId = pCommentId_,
+                   _ucContent = pContent_}
 
 -- | The system-generated ID of the comment you want to update. To get this ID, use 'GetCommentsForComparedCommit' or 'GetCommentsForPullRequest' .
 ucCommentId :: Lens' UpdateComment Text
@@ -113,13 +109,11 @@ instance ToQuery UpdateComment where
         toQuery = const mempty
 
 -- | /See:/ 'updateCommentResponse' smart constructor.
-data UpdateCommentResponse =
-  UpdateCommentResponse'
-    { _ucrsComment        :: !(Maybe Comment)
-    , _ucrsResponseStatus :: !Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data UpdateCommentResponse = UpdateCommentResponse'{_ucrsComment
+                                                    :: !(Maybe Comment),
+                                                    _ucrsResponseStatus :: !Int}
+                               deriving (Eq, Read, Show, Data, Typeable,
+                                         Generic)
 
 -- | Creates a value of 'UpdateCommentResponse' with the minimum fields required to make a request.
 --
@@ -131,10 +125,9 @@ data UpdateCommentResponse =
 updateCommentResponse
     :: Int -- ^ 'ucrsResponseStatus'
     -> UpdateCommentResponse
-updateCommentResponse pResponseStatus_ =
-  UpdateCommentResponse'
-    {_ucrsComment = Nothing, _ucrsResponseStatus = pResponseStatus_}
-
+updateCommentResponse pResponseStatus_
+  = UpdateCommentResponse'{_ucrsComment = Nothing,
+                           _ucrsResponseStatus = pResponseStatus_}
 
 -- | Information about the updated comment.
 ucrsComment :: Lens' UpdateCommentResponse (Maybe Comment)

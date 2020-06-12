@@ -18,7 +18,7 @@
 -- Stability   : auto-generated
 -- Portability : non-portable (GHC extensions)
 --
--- Deletes a report.
+-- Deletes a report. 
 --
 --
 module Network.AWS.CodeBuild.DeleteReport
@@ -37,32 +37,26 @@ module Network.AWS.CodeBuild.DeleteReport
     ) where
 
 import Network.AWS.CodeBuild.Types
-import Network.AWS.CodeBuild.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 
 -- | /See:/ 'deleteReport' smart constructor.
-newtype DeleteReport =
-  DeleteReport'
-    { _drArn :: Text
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+newtype DeleteReport = DeleteReport'{_drArn :: Text}
+                         deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'DeleteReport' with the minimum fields required to make a request.
 --
 -- Use one of the following lenses to modify other fields as desired:
 --
--- * 'drArn' - The ARN of the report to delete.
+-- * 'drArn' - The ARN of the report to delete. 
 deleteReport
     :: Text -- ^ 'drArn'
     -> DeleteReport
-deleteReport pArn_ = DeleteReport' {_drArn = pArn_}
+deleteReport pArn_ = DeleteReport'{_drArn = pArn_}
 
-
--- | The ARN of the report to delete.
+-- | The ARN of the report to delete. 
 drArn :: Lens' DeleteReport Text
 drArn = lens _drArn (\ s a -> s{_drArn = a})
 
@@ -98,12 +92,10 @@ instance ToQuery DeleteReport where
         toQuery = const mempty
 
 -- | /See:/ 'deleteReportResponse' smart constructor.
-newtype DeleteReportResponse =
-  DeleteReportResponse'
-    { _drrsResponseStatus :: Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+newtype DeleteReportResponse = DeleteReportResponse'{_drrsResponseStatus
+                                                     :: Int}
+                                 deriving (Eq, Read, Show, Data, Typeable,
+                                           Generic)
 
 -- | Creates a value of 'DeleteReportResponse' with the minimum fields required to make a request.
 --
@@ -113,9 +105,9 @@ newtype DeleteReportResponse =
 deleteReportResponse
     :: Int -- ^ 'drrsResponseStatus'
     -> DeleteReportResponse
-deleteReportResponse pResponseStatus_ =
-  DeleteReportResponse' {_drrsResponseStatus = pResponseStatus_}
-
+deleteReportResponse pResponseStatus_
+  = DeleteReportResponse'{_drrsResponseStatus =
+                            pResponseStatus_}
 
 -- | -- | The response status code.
 drrsResponseStatus :: Lens' DeleteReportResponse Int

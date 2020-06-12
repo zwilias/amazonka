@@ -38,7 +38,6 @@ module Network.AWS.DirectoryService.EnableRadius
     ) where
 
 import Network.AWS.DirectoryService.Types
-import Network.AWS.DirectoryService.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.Request
@@ -49,13 +48,10 @@ import Network.AWS.Response
 --
 --
 -- /See:/ 'enableRadius' smart constructor.
-data EnableRadius =
-  EnableRadius'
-    { _erDirectoryId    :: !Text
-    , _erRadiusSettings :: !RadiusSettings
-    }
-  deriving (Eq, Show, Data, Typeable, Generic)
-
+data EnableRadius = EnableRadius'{_erDirectoryId ::
+                                  !Text,
+                                  _erRadiusSettings :: !RadiusSettings}
+                      deriving (Eq, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'EnableRadius' with the minimum fields required to make a request.
 --
@@ -68,10 +64,9 @@ enableRadius
     :: Text -- ^ 'erDirectoryId'
     -> RadiusSettings -- ^ 'erRadiusSettings'
     -> EnableRadius
-enableRadius pDirectoryId_ pRadiusSettings_ =
-  EnableRadius'
-    {_erDirectoryId = pDirectoryId_, _erRadiusSettings = pRadiusSettings_}
-
+enableRadius pDirectoryId_ pRadiusSettings_
+  = EnableRadius'{_erDirectoryId = pDirectoryId_,
+                  _erRadiusSettings = pRadiusSettings_}
 
 -- | The identifier of the directory for which to enable MFA.
 erDirectoryId :: Lens' EnableRadius Text
@@ -121,12 +116,10 @@ instance ToQuery EnableRadius where
 --
 --
 -- /See:/ 'enableRadiusResponse' smart constructor.
-newtype EnableRadiusResponse =
-  EnableRadiusResponse'
-    { _errsResponseStatus :: Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+newtype EnableRadiusResponse = EnableRadiusResponse'{_errsResponseStatus
+                                                     :: Int}
+                                 deriving (Eq, Read, Show, Data, Typeable,
+                                           Generic)
 
 -- | Creates a value of 'EnableRadiusResponse' with the minimum fields required to make a request.
 --
@@ -136,9 +129,9 @@ newtype EnableRadiusResponse =
 enableRadiusResponse
     :: Int -- ^ 'errsResponseStatus'
     -> EnableRadiusResponse
-enableRadiusResponse pResponseStatus_ =
-  EnableRadiusResponse' {_errsResponseStatus = pResponseStatus_}
-
+enableRadiusResponse pResponseStatus_
+  = EnableRadiusResponse'{_errsResponseStatus =
+                            pResponseStatus_}
 
 -- | -- | The response status code.
 errsResponseStatus :: Lens' EnableRadiusResponse Int

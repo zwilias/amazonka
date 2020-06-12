@@ -42,23 +42,33 @@ module Network.AWS.EC2.ModifyTransitGatewayVPCAttachment
     ) where
 
 import Network.AWS.EC2.Types
-import Network.AWS.EC2.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 
 -- | /See:/ 'modifyTransitGatewayVPCAttachment' smart constructor.
-data ModifyTransitGatewayVPCAttachment =
-  ModifyTransitGatewayVPCAttachment'
-    { _mtgvaAddSubnetIds :: !(Maybe [Text])
-    , _mtgvaOptions :: !(Maybe ModifyTransitGatewayVPCAttachmentRequestOptions)
-    , _mtgvaRemoveSubnetIds :: !(Maybe [Text])
-    , _mtgvaDryRun :: !(Maybe Bool)
-    , _mtgvaTransitGatewayAttachmentId :: !Text
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data ModifyTransitGatewayVPCAttachment = ModifyTransitGatewayVPCAttachment'{_mtgvaAddSubnetIds
+                                                                            ::
+                                                                            !(Maybe
+                                                                                [Text]),
+                                                                            _mtgvaOptions
+                                                                            ::
+                                                                            !(Maybe
+                                                                                ModifyTransitGatewayVPCAttachmentRequestOptions),
+                                                                            _mtgvaRemoveSubnetIds
+                                                                            ::
+                                                                            !(Maybe
+                                                                                [Text]),
+                                                                            _mtgvaDryRun
+                                                                            ::
+                                                                            !(Maybe
+                                                                                Bool),
+                                                                            _mtgvaTransitGatewayAttachmentId
+                                                                            ::
+                                                                            !Text}
+                                           deriving (Eq, Read, Show, Data,
+                                                     Typeable, Generic)
 
 -- | Creates a value of 'ModifyTransitGatewayVPCAttachment' with the minimum fields required to make a request.
 --
@@ -76,15 +86,15 @@ data ModifyTransitGatewayVPCAttachment =
 modifyTransitGatewayVPCAttachment
     :: Text -- ^ 'mtgvaTransitGatewayAttachmentId'
     -> ModifyTransitGatewayVPCAttachment
-modifyTransitGatewayVPCAttachment pTransitGatewayAttachmentId_ =
-  ModifyTransitGatewayVPCAttachment'
-    { _mtgvaAddSubnetIds = Nothing
-    , _mtgvaOptions = Nothing
-    , _mtgvaRemoveSubnetIds = Nothing
-    , _mtgvaDryRun = Nothing
-    , _mtgvaTransitGatewayAttachmentId = pTransitGatewayAttachmentId_
-    }
-
+modifyTransitGatewayVPCAttachment
+  pTransitGatewayAttachmentId_
+  = ModifyTransitGatewayVPCAttachment'{_mtgvaAddSubnetIds
+                                         = Nothing,
+                                       _mtgvaOptions = Nothing,
+                                       _mtgvaRemoveSubnetIds = Nothing,
+                                       _mtgvaDryRun = Nothing,
+                                       _mtgvaTransitGatewayAttachmentId =
+                                         pTransitGatewayAttachmentId_}
 
 -- | The IDs of one or more subnets to add. You can specify at most one subnet per Availability Zone.
 mtgvaAddSubnetIds :: Lens' ModifyTransitGatewayVPCAttachment [Text]
@@ -150,13 +160,16 @@ instance ToQuery ModifyTransitGatewayVPCAttachment
                  _mtgvaTransitGatewayAttachmentId]
 
 -- | /See:/ 'modifyTransitGatewayVPCAttachmentResponse' smart constructor.
-data ModifyTransitGatewayVPCAttachmentResponse =
-  ModifyTransitGatewayVPCAttachmentResponse'
-    { _mtgvarsTransitGatewayVPCAttachment :: !(Maybe TransitGatewayVPCAttachment)
-    , _mtgvarsResponseStatus :: !Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data ModifyTransitGatewayVPCAttachmentResponse = ModifyTransitGatewayVPCAttachmentResponse'{_mtgvarsTransitGatewayVPCAttachment
+                                                                                            ::
+                                                                                            !(Maybe
+                                                                                                TransitGatewayVPCAttachment),
+                                                                                            _mtgvarsResponseStatus
+                                                                                            ::
+                                                                                            !Int}
+                                                   deriving (Eq, Read, Show,
+                                                             Data, Typeable,
+                                                             Generic)
 
 -- | Creates a value of 'ModifyTransitGatewayVPCAttachmentResponse' with the minimum fields required to make a request.
 --
@@ -168,12 +181,12 @@ data ModifyTransitGatewayVPCAttachmentResponse =
 modifyTransitGatewayVPCAttachmentResponse
     :: Int -- ^ 'mtgvarsResponseStatus'
     -> ModifyTransitGatewayVPCAttachmentResponse
-modifyTransitGatewayVPCAttachmentResponse pResponseStatus_ =
-  ModifyTransitGatewayVPCAttachmentResponse'
-    { _mtgvarsTransitGatewayVPCAttachment = Nothing
-    , _mtgvarsResponseStatus = pResponseStatus_
-    }
-
+modifyTransitGatewayVPCAttachmentResponse
+  pResponseStatus_
+  = ModifyTransitGatewayVPCAttachmentResponse'{_mtgvarsTransitGatewayVPCAttachment
+                                                 = Nothing,
+                                               _mtgvarsResponseStatus =
+                                                 pResponseStatus_}
 
 -- | Information about the modified attachment.
 mtgvarsTransitGatewayVPCAttachment :: Lens' ModifyTransitGatewayVPCAttachmentResponse (Maybe TransitGatewayVPCAttachment)

@@ -44,17 +44,13 @@ import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 import Network.AWS.WorkMail.Types
-import Network.AWS.WorkMail.Types.Product
 
 -- | /See:/ 'createResource' smart constructor.
-data CreateResource =
-  CreateResource'
-    { _crOrganizationId :: !Text
-    , _crName           :: !Text
-    , _crType           :: !ResourceType
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data CreateResource = CreateResource'{_crOrganizationId
+                                      :: !Text,
+                                      _crName :: !Text,
+                                      _crType :: !ResourceType}
+                        deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'CreateResource' with the minimum fields required to make a request.
 --
@@ -70,10 +66,10 @@ createResource
     -> Text -- ^ 'crName'
     -> ResourceType -- ^ 'crType'
     -> CreateResource
-createResource pOrganizationId_ pName_ pType_ =
-  CreateResource'
-    {_crOrganizationId = pOrganizationId_, _crName = pName_, _crType = pType_}
-
+createResource pOrganizationId_ pName_ pType_
+  = CreateResource'{_crOrganizationId =
+                      pOrganizationId_,
+                    _crName = pName_, _crType = pType_}
 
 -- | The identifier associated with the organization for which the resource is created.
 crOrganizationId :: Lens' CreateResource Text
@@ -123,13 +119,12 @@ instance ToQuery CreateResource where
         toQuery = const mempty
 
 -- | /See:/ 'createResourceResponse' smart constructor.
-data CreateResourceResponse =
-  CreateResourceResponse'
-    { _crrsResourceId     :: !(Maybe Text)
-    , _crrsResponseStatus :: !Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data CreateResourceResponse = CreateResourceResponse'{_crrsResourceId
+                                                      :: !(Maybe Text),
+                                                      _crrsResponseStatus ::
+                                                      !Int}
+                                deriving (Eq, Read, Show, Data, Typeable,
+                                          Generic)
 
 -- | Creates a value of 'CreateResourceResponse' with the minimum fields required to make a request.
 --
@@ -141,10 +136,9 @@ data CreateResourceResponse =
 createResourceResponse
     :: Int -- ^ 'crrsResponseStatus'
     -> CreateResourceResponse
-createResourceResponse pResponseStatus_ =
-  CreateResourceResponse'
-    {_crrsResourceId = Nothing, _crrsResponseStatus = pResponseStatus_}
-
+createResourceResponse pResponseStatus_
+  = CreateResourceResponse'{_crrsResourceId = Nothing,
+                            _crrsResponseStatus = pResponseStatus_}
 
 -- | The identifier of the created resource.
 crrsResourceId :: Lens' CreateResourceResponse (Maybe Text)

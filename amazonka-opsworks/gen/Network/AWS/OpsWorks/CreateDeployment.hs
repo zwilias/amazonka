@@ -47,24 +47,20 @@ module Network.AWS.OpsWorks.CreateDeployment
 
 import Network.AWS.Lens
 import Network.AWS.OpsWorks.Types
-import Network.AWS.OpsWorks.Types.Product
 import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 
 -- | /See:/ 'createDeployment' smart constructor.
-data CreateDeployment =
-  CreateDeployment'
-    { _cdCustomJSON  :: !(Maybe Text)
-    , _cdAppId       :: !(Maybe Text)
-    , _cdInstanceIds :: !(Maybe [Text])
-    , _cdLayerIds    :: !(Maybe [Text])
-    , _cdComment     :: !(Maybe Text)
-    , _cdStackId     :: !Text
-    , _cdCommand     :: !DeploymentCommand
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data CreateDeployment = CreateDeployment'{_cdCustomJSON
+                                          :: !(Maybe Text),
+                                          _cdAppId :: !(Maybe Text),
+                                          _cdInstanceIds :: !(Maybe [Text]),
+                                          _cdLayerIds :: !(Maybe [Text]),
+                                          _cdComment :: !(Maybe Text),
+                                          _cdStackId :: !Text,
+                                          _cdCommand :: !DeploymentCommand}
+                          deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'CreateDeployment' with the minimum fields required to make a request.
 --
@@ -87,17 +83,11 @@ createDeployment
     :: Text -- ^ 'cdStackId'
     -> DeploymentCommand -- ^ 'cdCommand'
     -> CreateDeployment
-createDeployment pStackId_ pCommand_ =
-  CreateDeployment'
-    { _cdCustomJSON = Nothing
-    , _cdAppId = Nothing
-    , _cdInstanceIds = Nothing
-    , _cdLayerIds = Nothing
-    , _cdComment = Nothing
-    , _cdStackId = pStackId_
-    , _cdCommand = pCommand_
-    }
-
+createDeployment pStackId_ pCommand_
+  = CreateDeployment'{_cdCustomJSON = Nothing,
+                      _cdAppId = Nothing, _cdInstanceIds = Nothing,
+                      _cdLayerIds = Nothing, _cdComment = Nothing,
+                      _cdStackId = pStackId_, _cdCommand = pCommand_}
 
 -- | A string that contains user-defined, custom JSON. It is used to override the corresponding default stack configuration JSON values. The string should be in the following format: @"{\"key1\": \"value1\", \"key2\": \"value2\",...}"@  For more information on custom JSON, see <http://docs.aws.amazon.com/opsworks/latest/userguide/workingstacks-json.html Use Custom JSON to Modify the Stack Configuration Attributes> .
 cdCustomJSON :: Lens' CreateDeployment (Maybe Text)
@@ -172,13 +162,12 @@ instance ToQuery CreateDeployment where
 --
 --
 -- /See:/ 'createDeploymentResponse' smart constructor.
-data CreateDeploymentResponse =
-  CreateDeploymentResponse'
-    { _cdrsDeploymentId   :: !(Maybe Text)
-    , _cdrsResponseStatus :: !Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data CreateDeploymentResponse = CreateDeploymentResponse'{_cdrsDeploymentId
+                                                          :: !(Maybe Text),
+                                                          _cdrsResponseStatus ::
+                                                          !Int}
+                                  deriving (Eq, Read, Show, Data, Typeable,
+                                            Generic)
 
 -- | Creates a value of 'CreateDeploymentResponse' with the minimum fields required to make a request.
 --
@@ -190,10 +179,10 @@ data CreateDeploymentResponse =
 createDeploymentResponse
     :: Int -- ^ 'cdrsResponseStatus'
     -> CreateDeploymentResponse
-createDeploymentResponse pResponseStatus_ =
-  CreateDeploymentResponse'
-    {_cdrsDeploymentId = Nothing, _cdrsResponseStatus = pResponseStatus_}
-
+createDeploymentResponse pResponseStatus_
+  = CreateDeploymentResponse'{_cdrsDeploymentId =
+                                Nothing,
+                              _cdrsResponseStatus = pResponseStatus_}
 
 -- | The deployment ID, which can be used with other requests to identify the deployment.
 cdrsDeploymentId :: Lens' CreateDeploymentResponse (Maybe Text)

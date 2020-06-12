@@ -47,7 +47,6 @@ module Network.AWS.CloudDirectory.ListOutgoingTypedLinks
     ) where
 
 import Network.AWS.CloudDirectory.Types
-import Network.AWS.CloudDirectory.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Pager
 import Network.AWS.Prelude
@@ -55,18 +54,25 @@ import Network.AWS.Request
 import Network.AWS.Response
 
 -- | /See:/ 'listOutgoingTypedLinks' smart constructor.
-data ListOutgoingTypedLinks =
-  ListOutgoingTypedLinks'
-    { _lotlFilterAttributeRanges :: !(Maybe [TypedLinkAttributeRange])
-    , _lotlConsistencyLevel      :: !(Maybe ConsistencyLevel)
-    , _lotlNextToken             :: !(Maybe Text)
-    , _lotlFilterTypedLink       :: !(Maybe TypedLinkSchemaAndFacetName)
-    , _lotlMaxResults            :: !(Maybe Nat)
-    , _lotlDirectoryARN          :: !Text
-    , _lotlObjectReference       :: !ObjectReference
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data ListOutgoingTypedLinks = ListOutgoingTypedLinks'{_lotlFilterAttributeRanges
+                                                      ::
+                                                      !(Maybe
+                                                          [TypedLinkAttributeRange]),
+                                                      _lotlConsistencyLevel ::
+                                                      !(Maybe ConsistencyLevel),
+                                                      _lotlNextToken ::
+                                                      !(Maybe Text),
+                                                      _lotlFilterTypedLink ::
+                                                      !(Maybe
+                                                          TypedLinkSchemaAndFacetName),
+                                                      _lotlMaxResults ::
+                                                      !(Maybe Nat),
+                                                      _lotlDirectoryARN ::
+                                                      !Text,
+                                                      _lotlObjectReference ::
+                                                      !ObjectReference}
+                                deriving (Eq, Read, Show, Data, Typeable,
+                                          Generic)
 
 -- | Creates a value of 'ListOutgoingTypedLinks' with the minimum fields required to make a request.
 --
@@ -89,17 +95,16 @@ listOutgoingTypedLinks
     :: Text -- ^ 'lotlDirectoryARN'
     -> ObjectReference -- ^ 'lotlObjectReference'
     -> ListOutgoingTypedLinks
-listOutgoingTypedLinks pDirectoryARN_ pObjectReference_ =
-  ListOutgoingTypedLinks'
-    { _lotlFilterAttributeRanges = Nothing
-    , _lotlConsistencyLevel = Nothing
-    , _lotlNextToken = Nothing
-    , _lotlFilterTypedLink = Nothing
-    , _lotlMaxResults = Nothing
-    , _lotlDirectoryARN = pDirectoryARN_
-    , _lotlObjectReference = pObjectReference_
-    }
-
+listOutgoingTypedLinks pDirectoryARN_
+  pObjectReference_
+  = ListOutgoingTypedLinks'{_lotlFilterAttributeRanges
+                              = Nothing,
+                            _lotlConsistencyLevel = Nothing,
+                            _lotlNextToken = Nothing,
+                            _lotlFilterTypedLink = Nothing,
+                            _lotlMaxResults = Nothing,
+                            _lotlDirectoryARN = pDirectoryARN_,
+                            _lotlObjectReference = pObjectReference_}
 
 -- | Provides range filters for multiple attributes. When providing ranges to typed link selection, any inexact ranges must be specified at the end. Any attributes that do not have a range specified are presumed to match the entire range.
 lotlFilterAttributeRanges :: Lens' ListOutgoingTypedLinks [TypedLinkAttributeRange]
@@ -178,14 +183,18 @@ instance ToQuery ListOutgoingTypedLinks where
         toQuery = const mempty
 
 -- | /See:/ 'listOutgoingTypedLinksResponse' smart constructor.
-data ListOutgoingTypedLinksResponse =
-  ListOutgoingTypedLinksResponse'
-    { _lotlrsTypedLinkSpecifiers :: !(Maybe [TypedLinkSpecifier])
-    , _lotlrsNextToken           :: !(Maybe Text)
-    , _lotlrsResponseStatus      :: !Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data ListOutgoingTypedLinksResponse = ListOutgoingTypedLinksResponse'{_lotlrsTypedLinkSpecifiers
+                                                                      ::
+                                                                      !(Maybe
+                                                                          [TypedLinkSpecifier]),
+                                                                      _lotlrsNextToken
+                                                                      ::
+                                                                      !(Maybe
+                                                                          Text),
+                                                                      _lotlrsResponseStatus
+                                                                      :: !Int}
+                                        deriving (Eq, Read, Show, Data,
+                                                  Typeable, Generic)
 
 -- | Creates a value of 'ListOutgoingTypedLinksResponse' with the minimum fields required to make a request.
 --
@@ -199,13 +208,11 @@ data ListOutgoingTypedLinksResponse =
 listOutgoingTypedLinksResponse
     :: Int -- ^ 'lotlrsResponseStatus'
     -> ListOutgoingTypedLinksResponse
-listOutgoingTypedLinksResponse pResponseStatus_ =
-  ListOutgoingTypedLinksResponse'
-    { _lotlrsTypedLinkSpecifiers = Nothing
-    , _lotlrsNextToken = Nothing
-    , _lotlrsResponseStatus = pResponseStatus_
-    }
-
+listOutgoingTypedLinksResponse pResponseStatus_
+  = ListOutgoingTypedLinksResponse'{_lotlrsTypedLinkSpecifiers
+                                      = Nothing,
+                                    _lotlrsNextToken = Nothing,
+                                    _lotlrsResponseStatus = pResponseStatus_}
 
 -- | Returns a typed link specifier as output.
 lotlrsTypedLinkSpecifiers :: Lens' ListOutgoingTypedLinksResponse [TypedLinkSpecifier]

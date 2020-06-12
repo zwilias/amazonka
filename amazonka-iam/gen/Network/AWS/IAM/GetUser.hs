@@ -40,19 +40,14 @@ module Network.AWS.IAM.GetUser
     ) where
 
 import Network.AWS.IAM.Types
-import Network.AWS.IAM.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 
 -- | /See:/ 'getUser' smart constructor.
-newtype GetUser =
-  GetUser'
-    { _guUserName :: Maybe Text
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+newtype GetUser = GetUser'{_guUserName :: Maybe Text}
+                    deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'GetUser' with the minimum fields required to make a request.
 --
@@ -61,8 +56,7 @@ newtype GetUser =
 -- * 'guUserName' - The name of the user to get information about. This parameter is optional. If it is not included, it defaults to the user making the request. This parameter allows (per its <http://wikipedia.org/wiki/regex regex pattern> ) a string of characters consisting of upper and lowercase alphanumeric characters with no spaces. You can also include any of the following characters: _+=,.@-
 getUser
     :: GetUser
-getUser = GetUser' {_guUserName = Nothing}
-
+getUser = GetUser'{_guUserName = Nothing}
 
 -- | The name of the user to get information about. This parameter is optional. If it is not included, it defaults to the user making the request. This parameter allows (per its <http://wikipedia.org/wiki/regex regex pattern> ) a string of characters consisting of upper and lowercase alphanumeric characters with no spaces. You can also include any of the following characters: _+=,.@-
 guUserName :: Lens' GetUser (Maybe Text)
@@ -94,18 +88,15 @@ instance ToQuery GetUser where
                "Version" =: ("2010-05-08" :: ByteString),
                "UserName" =: _guUserName]
 
--- | Contains the response to a successful 'GetUser' request.
+-- | Contains the response to a successful 'GetUser' request. 
 --
 --
 --
 -- /See:/ 'getUserResponse' smart constructor.
-data GetUserResponse =
-  GetUserResponse'
-    { _gursResponseStatus :: !Int
-    , _gursUser           :: !User
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data GetUserResponse = GetUserResponse'{_gursResponseStatus
+                                        :: !Int,
+                                        _gursUser :: !User}
+                         deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'GetUserResponse' with the minimum fields required to make a request.
 --
@@ -118,9 +109,10 @@ getUserResponse
     :: Int -- ^ 'gursResponseStatus'
     -> User -- ^ 'gursUser'
     -> GetUserResponse
-getUserResponse pResponseStatus_ pUser_ =
-  GetUserResponse' {_gursResponseStatus = pResponseStatus_, _gursUser = pUser_}
-
+getUserResponse pResponseStatus_ pUser_
+  = GetUserResponse'{_gursResponseStatus =
+                       pResponseStatus_,
+                     _gursUser = pUser_}
 
 -- | -- | The response status code.
 gursResponseStatus :: Lens' GetUserResponse Int

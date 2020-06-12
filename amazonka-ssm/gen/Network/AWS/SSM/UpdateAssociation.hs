@@ -50,23 +50,23 @@ import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 import Network.AWS.SSM.Types
-import Network.AWS.SSM.Types.Product
 
 -- | /See:/ 'updateAssociation' smart constructor.
-data UpdateAssociation =
-  UpdateAssociation'
-    { _uaScheduleExpression :: !(Maybe Text)
-    , _uaName               :: !(Maybe Text)
-    , _uaOutputLocation     :: !(Maybe InstanceAssociationOutputLocation)
-    , _uaTargets            :: !(Maybe [Target])
-    , _uaParameters         :: !(Maybe (Map Text [Text]))
-    , _uaDocumentVersion    :: !(Maybe Text)
-    , _uaAssociationVersion :: !(Maybe Text)
-    , _uaAssociationName    :: !(Maybe Text)
-    , _uaAssociationId      :: !Text
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data UpdateAssociation = UpdateAssociation'{_uaScheduleExpression
+                                            :: !(Maybe Text),
+                                            _uaName :: !(Maybe Text),
+                                            _uaOutputLocation ::
+                                            !(Maybe
+                                                InstanceAssociationOutputLocation),
+                                            _uaTargets :: !(Maybe [Target]),
+                                            _uaParameters ::
+                                            !(Maybe (Map Text [Text])),
+                                            _uaDocumentVersion :: !(Maybe Text),
+                                            _uaAssociationVersion ::
+                                            !(Maybe Text),
+                                            _uaAssociationName :: !(Maybe Text),
+                                            _uaAssociationId :: !Text}
+                           deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'UpdateAssociation' with the minimum fields required to make a request.
 --
@@ -82,29 +82,24 @@ data UpdateAssociation =
 --
 -- * 'uaParameters' - The parameters you want to update for the association. If you create a parameter using Parameter Store, you can reference the parameter using {{ssm:parameter-name}}
 --
--- * 'uaDocumentVersion' - The document version you want update for the association.
+-- * 'uaDocumentVersion' - The document version you want update for the association. 
 --
 -- * 'uaAssociationVersion' - This parameter is provided for concurrency control purposes. You must specify the latest association version in the service. If you want to ensure that this request succeeds, either specify @> LATEST@ , or omit this parameter.
 --
 -- * 'uaAssociationName' - The name of the association that you want to update.
 --
--- * 'uaAssociationId' - The ID of the association you want to update.
+-- * 'uaAssociationId' - The ID of the association you want to update. 
 updateAssociation
     :: Text -- ^ 'uaAssociationId'
     -> UpdateAssociation
-updateAssociation pAssociationId_ =
-  UpdateAssociation'
-    { _uaScheduleExpression = Nothing
-    , _uaName = Nothing
-    , _uaOutputLocation = Nothing
-    , _uaTargets = Nothing
-    , _uaParameters = Nothing
-    , _uaDocumentVersion = Nothing
-    , _uaAssociationVersion = Nothing
-    , _uaAssociationName = Nothing
-    , _uaAssociationId = pAssociationId_
-    }
-
+updateAssociation pAssociationId_
+  = UpdateAssociation'{_uaScheduleExpression = Nothing,
+                       _uaName = Nothing, _uaOutputLocation = Nothing,
+                       _uaTargets = Nothing, _uaParameters = Nothing,
+                       _uaDocumentVersion = Nothing,
+                       _uaAssociationVersion = Nothing,
+                       _uaAssociationName = Nothing,
+                       _uaAssociationId = pAssociationId_}
 
 -- | The cron expression used to schedule the association that you want to update.
 uaScheduleExpression :: Lens' UpdateAssociation (Maybe Text)
@@ -126,7 +121,7 @@ uaTargets = lens _uaTargets (\ s a -> s{_uaTargets = a}) . _Default . _Coerce
 uaParameters :: Lens' UpdateAssociation (HashMap Text [Text])
 uaParameters = lens _uaParameters (\ s a -> s{_uaParameters = a}) . _Default . _Map
 
--- | The document version you want update for the association.
+-- | The document version you want update for the association. 
 uaDocumentVersion :: Lens' UpdateAssociation (Maybe Text)
 uaDocumentVersion = lens _uaDocumentVersion (\ s a -> s{_uaDocumentVersion = a})
 
@@ -138,7 +133,7 @@ uaAssociationVersion = lens _uaAssociationVersion (\ s a -> s{_uaAssociationVers
 uaAssociationName :: Lens' UpdateAssociation (Maybe Text)
 uaAssociationName = lens _uaAssociationName (\ s a -> s{_uaAssociationName = a})
 
--- | The ID of the association you want to update.
+-- | The ID of the association you want to update. 
 uaAssociationId :: Lens' UpdateAssociation Text
 uaAssociationId = lens _uaAssociationId (\ s a -> s{_uaAssociationId = a})
 
@@ -186,13 +181,14 @@ instance ToQuery UpdateAssociation where
         toQuery = const mempty
 
 -- | /See:/ 'updateAssociationResponse' smart constructor.
-data UpdateAssociationResponse =
-  UpdateAssociationResponse'
-    { _uarsAssociationDescription :: !(Maybe AssociationDescription)
-    , _uarsResponseStatus         :: !Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data UpdateAssociationResponse = UpdateAssociationResponse'{_uarsAssociationDescription
+                                                            ::
+                                                            !(Maybe
+                                                                AssociationDescription),
+                                                            _uarsResponseStatus
+                                                            :: !Int}
+                                   deriving (Eq, Read, Show, Data, Typeable,
+                                             Generic)
 
 -- | Creates a value of 'UpdateAssociationResponse' with the minimum fields required to make a request.
 --
@@ -204,12 +200,10 @@ data UpdateAssociationResponse =
 updateAssociationResponse
     :: Int -- ^ 'uarsResponseStatus'
     -> UpdateAssociationResponse
-updateAssociationResponse pResponseStatus_ =
-  UpdateAssociationResponse'
-    { _uarsAssociationDescription = Nothing
-    , _uarsResponseStatus = pResponseStatus_
-    }
-
+updateAssociationResponse pResponseStatus_
+  = UpdateAssociationResponse'{_uarsAssociationDescription
+                                 = Nothing,
+                               _uarsResponseStatus = pResponseStatus_}
 
 -- | The description of the association that was updated.
 uarsAssociationDescription :: Lens' UpdateAssociationResponse (Maybe AssociationDescription)

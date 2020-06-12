@@ -40,19 +40,15 @@ module Network.AWS.KMS.GenerateRandom
     ) where
 
 import Network.AWS.KMS.Types
-import Network.AWS.KMS.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 
 -- | /See:/ 'generateRandom' smart constructor.
-newtype GenerateRandom =
-  GenerateRandom'
-    { _grNumberOfBytes :: Maybe Nat
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+newtype GenerateRandom = GenerateRandom'{_grNumberOfBytes
+                                         :: Maybe Nat}
+                           deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'GenerateRandom' with the minimum fields required to make a request.
 --
@@ -61,8 +57,8 @@ newtype GenerateRandom =
 -- * 'grNumberOfBytes' - The length of the byte string.
 generateRandom
     :: GenerateRandom
-generateRandom = GenerateRandom' {_grNumberOfBytes = Nothing}
-
+generateRandom
+  = GenerateRandom'{_grNumberOfBytes = Nothing}
 
 -- | The length of the byte string.
 grNumberOfBytes :: Lens' GenerateRandom (Maybe Natural)
@@ -103,13 +99,13 @@ instance ToQuery GenerateRandom where
         toQuery = const mempty
 
 -- | /See:/ 'generateRandomResponse' smart constructor.
-data GenerateRandomResponse =
-  GenerateRandomResponse'
-    { _grrsPlaintext      :: !(Maybe (Sensitive Base64))
-    , _grrsResponseStatus :: !Int
-    }
-  deriving (Eq, Show, Data, Typeable, Generic)
-
+data GenerateRandomResponse = GenerateRandomResponse'{_grrsPlaintext
+                                                      ::
+                                                      !(Maybe
+                                                          (Sensitive Base64)),
+                                                      _grrsResponseStatus ::
+                                                      !Int}
+                                deriving (Eq, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'GenerateRandomResponse' with the minimum fields required to make a request.
 --
@@ -121,10 +117,9 @@ data GenerateRandomResponse =
 generateRandomResponse
     :: Int -- ^ 'grrsResponseStatus'
     -> GenerateRandomResponse
-generateRandomResponse pResponseStatus_ =
-  GenerateRandomResponse'
-    {_grrsPlaintext = Nothing, _grrsResponseStatus = pResponseStatus_}
-
+generateRandomResponse pResponseStatus_
+  = GenerateRandomResponse'{_grrsPlaintext = Nothing,
+                            _grrsResponseStatus = pResponseStatus_}
 
 -- | The random byte string. When you use the HTTP API or the AWS CLI, the value is Base64-encoded. Otherwise, it is not encoded.-- /Note:/ This 'Lens' automatically encodes and decodes Base64 data. The underlying isomorphism will encode to Base64 representation during serialisation, and decode from Base64 representation during deserialisation. This 'Lens' accepts and returns only raw unencoded data.
 grrsPlaintext :: Lens' GenerateRandomResponse (Maybe ByteString)

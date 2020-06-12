@@ -40,20 +40,17 @@ module Network.AWS.Comprehend.BatchDetectSyntax
     ) where
 
 import Network.AWS.Comprehend.Types
-import Network.AWS.Comprehend.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 
 -- | /See:/ 'batchDetectSyntax' smart constructor.
-data BatchDetectSyntax =
-  BatchDetectSyntax'
-    { _bTextList     :: ![Text]
-    , _bLanguageCode :: !SyntaxLanguageCode
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data BatchDetectSyntax = BatchDetectSyntax'{_bTextList
+                                            :: ![Text],
+                                            _bLanguageCode ::
+                                            !SyntaxLanguageCode}
+                           deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'BatchDetectSyntax' with the minimum fields required to make a request.
 --
@@ -65,9 +62,9 @@ data BatchDetectSyntax =
 batchDetectSyntax
     :: SyntaxLanguageCode -- ^ 'bLanguageCode'
     -> BatchDetectSyntax
-batchDetectSyntax pLanguageCode_ =
-  BatchDetectSyntax' {_bTextList = mempty, _bLanguageCode = pLanguageCode_}
-
+batchDetectSyntax pLanguageCode_
+  = BatchDetectSyntax'{_bTextList = mempty,
+                       _bLanguageCode = pLanguageCode_}
 
 -- | A list containing the text of the input documents. The list can contain a maximum of 25 documents. Each document must contain fewer that 5,000 bytes of UTF-8 encoded characters.
 bTextList :: Lens' BatchDetectSyntax [Text]
@@ -116,14 +113,14 @@ instance ToQuery BatchDetectSyntax where
         toQuery = const mempty
 
 -- | /See:/ 'batchDetectSyntaxResponse' smart constructor.
-data BatchDetectSyntaxResponse =
-  BatchDetectSyntaxResponse'
-    { _brsResponseStatus :: !Int
-    , _brsResultList     :: ![BatchDetectSyntaxItemResult]
-    , _brsErrorList      :: ![BatchItemError]
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data BatchDetectSyntaxResponse = BatchDetectSyntaxResponse'{_brsResponseStatus
+                                                            :: !Int,
+                                                            _brsResultList ::
+                                                            ![BatchDetectSyntaxItemResult],
+                                                            _brsErrorList ::
+                                                            ![BatchItemError]}
+                                   deriving (Eq, Read, Show, Data, Typeable,
+                                             Generic)
 
 -- | Creates a value of 'BatchDetectSyntaxResponse' with the minimum fields required to make a request.
 --
@@ -137,13 +134,10 @@ data BatchDetectSyntaxResponse =
 batchDetectSyntaxResponse
     :: Int -- ^ 'brsResponseStatus'
     -> BatchDetectSyntaxResponse
-batchDetectSyntaxResponse pResponseStatus_ =
-  BatchDetectSyntaxResponse'
-    { _brsResponseStatus = pResponseStatus_
-    , _brsResultList = mempty
-    , _brsErrorList = mempty
-    }
-
+batchDetectSyntaxResponse pResponseStatus_
+  = BatchDetectSyntaxResponse'{_brsResponseStatus =
+                                 pResponseStatus_,
+                               _brsResultList = mempty, _brsErrorList = mempty}
 
 -- | -- | The response status code.
 brsResponseStatus :: Lens' BatchDetectSyntaxResponse Int

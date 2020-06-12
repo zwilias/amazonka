@@ -49,7 +49,7 @@ module Network.AWS.Translate
     -- * Operations
     -- $operations
 
-    -- ** TranslateText
+    -- ** TranslateText 
     , module Network.AWS.Translate.TranslateText
 
     -- * Types

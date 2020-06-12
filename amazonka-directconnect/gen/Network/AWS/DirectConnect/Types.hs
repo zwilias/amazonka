@@ -1,4 +1,4 @@
-{-# LANGUAGE OverloadedStrings #-}
+{-# LANGUAGE OverloadedStrings  #-}
 
 -- Derived from AWS service descriptions, licensed under Apache 2.0.
 
@@ -349,78 +349,110 @@ module Network.AWS.DirectConnect.Types
     , viTags
     ) where
 
-import Network.AWS.DirectConnect.Types.Product
-import Network.AWS.DirectConnect.Types.Sum
 import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.Sign.V4
+import Network.AWS.DirectConnect.Types.AddressFamily
+import Network.AWS.DirectConnect.Types.BGPPeerState
+import Network.AWS.DirectConnect.Types.BGPStatus
+import Network.AWS.DirectConnect.Types.ConnectionState
+import Network.AWS.DirectConnect.Types.DirectConnectGatewayAssociationProposalState
+import Network.AWS.DirectConnect.Types.DirectConnectGatewayAssociationState
+import Network.AWS.DirectConnect.Types.DirectConnectGatewayAttachmentState
+import Network.AWS.DirectConnect.Types.DirectConnectGatewayAttachmentType
+import Network.AWS.DirectConnect.Types.DirectConnectGatewayState
+import Network.AWS.DirectConnect.Types.GatewayType
+import Network.AWS.DirectConnect.Types.HasLogicalRedundancy
+import Network.AWS.DirectConnect.Types.InterconnectState
+import Network.AWS.DirectConnect.Types.LagState
+import Network.AWS.DirectConnect.Types.LoaContentType
+import Network.AWS.DirectConnect.Types.VirtualInterfaceState
+import Network.AWS.DirectConnect.Types.AssociatedGateway
+import Network.AWS.DirectConnect.Types.BGPPeer
+import Network.AWS.DirectConnect.Types.Connection
+import Network.AWS.DirectConnect.Types.Connections
+import Network.AWS.DirectConnect.Types.DirectConnectGateway
+import Network.AWS.DirectConnect.Types.DirectConnectGatewayAssociation
+import Network.AWS.DirectConnect.Types.DirectConnectGatewayAssociationProposal
+import Network.AWS.DirectConnect.Types.DirectConnectGatewayAttachment
+import Network.AWS.DirectConnect.Types.Interconnect
+import Network.AWS.DirectConnect.Types.Lag
+import Network.AWS.DirectConnect.Types.Location
+import Network.AWS.DirectConnect.Types.NewBGPPeer
+import Network.AWS.DirectConnect.Types.NewPrivateVirtualInterface
+import Network.AWS.DirectConnect.Types.NewPrivateVirtualInterfaceAllocation
+import Network.AWS.DirectConnect.Types.NewPublicVirtualInterface
+import Network.AWS.DirectConnect.Types.NewPublicVirtualInterfaceAllocation
+import Network.AWS.DirectConnect.Types.NewTransitVirtualInterface
+import Network.AWS.DirectConnect.Types.NewTransitVirtualInterfaceAllocation
+import Network.AWS.DirectConnect.Types.ResourceTag
+import Network.AWS.DirectConnect.Types.RouteFilterPrefix
+import Network.AWS.DirectConnect.Types.Tag
+import Network.AWS.DirectConnect.Types.VirtualGateway
+import Network.AWS.DirectConnect.Types.VirtualInterface
 
 -- | API version @2012-10-25@ of the Amazon Direct Connect SDK configuration.
 directConnect :: Service
-directConnect =
-  Service
-    { _svcAbbrev = "DirectConnect"
-    , _svcSigner = v4
-    , _svcPrefix = "directconnect"
-    , _svcVersion = "2012-10-25"
-    , _svcEndpoint = defaultEndpoint directConnect
-    , _svcTimeout = Just 70
-    , _svcCheck = statusSuccess
-    , _svcError = parseJSONError "DirectConnect"
-    , _svcRetry = retry
-    }
-  where
-    retry =
-      Exponential
-        { _retryBase = 5.0e-2
-        , _retryGrowth = 2
-        , _retryAttempts = 5
-        , _retryCheck = check
-        }
-    check e
-      | has (hasCode "ThrottledException" . hasStatus 400) e =
-        Just "throttled_exception"
-      | has (hasStatus 429) e = Just "too_many_requests"
-      | has (hasCode "ThrottlingException" . hasStatus 400) e =
-        Just "throttling_exception"
-      | has (hasCode "Throttling" . hasStatus 400) e = Just "throttling"
-      | has (hasStatus 504) e = Just "gateway_timeout"
-      | has (hasCode "RequestThrottledException" . hasStatus 400) e =
-        Just "request_throttled_exception"
-      | has (hasStatus 502) e = Just "bad_gateway"
-      | has (hasStatus 503) e = Just "service_unavailable"
-      | has (hasStatus 500) e = Just "general_server_error"
-      | has (hasStatus 509) e = Just "limit_exceeded"
-      | otherwise = Nothing
-
+directConnect
+  = Service{_svcAbbrev = "DirectConnect",
+            _svcSigner = v4, _svcPrefix = "directconnect",
+            _svcVersion = "2012-10-25",
+            _svcEndpoint = defaultEndpoint directConnect,
+            _svcTimeout = Just 70, _svcCheck = statusSuccess,
+            _svcError = parseJSONError "DirectConnect",
+            _svcRetry = retry}
+  where retry
+          = Exponential{_retryBase = 5.0e-2, _retryGrowth = 2,
+                        _retryAttempts = 5, _retryCheck = check}
+        check e
+          | has (hasCode "ThrottledException" . hasStatus 400)
+              e
+            = Just "throttled_exception"
+          | has (hasStatus 429) e = Just "too_many_requests"
+          | has (hasCode "ThrottlingException" . hasStatus 400)
+              e
+            = Just "throttling_exception"
+          | has (hasCode "Throttling" . hasStatus 400) e =
+            Just "throttling"
+          | has (hasStatus 504) e = Just "gateway_timeout"
+          | has
+              (hasCode "RequestThrottledException" . hasStatus 400)
+              e
+            = Just "request_throttled_exception"
+          | has (hasStatus 502) e = Just "bad_gateway"
+          | has (hasStatus 503) e = Just "service_unavailable"
+          | has (hasStatus 500) e = Just "general_server_error"
+          | has (hasStatus 509) e = Just "limit_exceeded"
+          | otherwise = Nothing
 
 -- | One or more parameters are not valid.
 --
 --
 _DirectConnectClientException :: AsError a => Getting (First ServiceError) a ServiceError
-_DirectConnectClientException =
-  _MatchServiceError directConnect "DirectConnectClientException"
-
+_DirectConnectClientException
+  = _MatchServiceError directConnect
+      "DirectConnectClientException"
 
 -- | A tag key was specified more than once.
 --
 --
 _DuplicateTagKeysException :: AsError a => Getting (First ServiceError) a ServiceError
-_DuplicateTagKeysException =
-  _MatchServiceError directConnect "DuplicateTagKeysException"
-
+_DuplicateTagKeysException
+  = _MatchServiceError directConnect
+      "DuplicateTagKeysException"
 
 -- | You have reached the limit on the number of tags that can be assigned.
 --
 --
 _TooManyTagsException :: AsError a => Getting (First ServiceError) a ServiceError
-_TooManyTagsException = _MatchServiceError directConnect "TooManyTagsException"
-
+_TooManyTagsException
+  = _MatchServiceError directConnect
+      "TooManyTagsException"
 
 -- | A server-side error occurred.
 --
 --
 _DirectConnectServerException :: AsError a => Getting (First ServiceError) a ServiceError
-_DirectConnectServerException =
-  _MatchServiceError directConnect "DirectConnectServerException"
-
+_DirectConnectServerException
+  = _MatchServiceError directConnect
+      "DirectConnectServerException"

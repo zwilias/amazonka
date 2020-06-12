@@ -43,24 +43,23 @@ module Network.AWS.RDS.CopyDBParameterGroup
 import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.RDS.Types
-import Network.AWS.RDS.Types.Product
 import Network.AWS.Request
 import Network.AWS.Response
 
--- |
+-- | 
 --
 --
 --
 -- /See:/ 'copyDBParameterGroup' smart constructor.
-data CopyDBParameterGroup =
-  CopyDBParameterGroup'
-    { _cdpgTags                              :: !(Maybe [Tag])
-    , _cdpgSourceDBParameterGroupIdentifier  :: !Text
-    , _cdpgTargetDBParameterGroupIdentifier  :: !Text
-    , _cdpgTargetDBParameterGroupDescription :: !Text
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data CopyDBParameterGroup = CopyDBParameterGroup'{_cdpgTags
+                                                  :: !(Maybe [Tag]),
+                                                  _cdpgSourceDBParameterGroupIdentifier
+                                                  :: !Text,
+                                                  _cdpgTargetDBParameterGroupIdentifier
+                                                  :: !Text,
+                                                  _cdpgTargetDBParameterGroupDescription
+                                                  :: !Text}
+                              deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'CopyDBParameterGroup' with the minimum fields required to make a request.
 --
@@ -70,7 +69,7 @@ data CopyDBParameterGroup =
 --
 -- * 'cdpgSourceDBParameterGroupIdentifier' - The identifier or ARN for the source DB parameter group. For information about creating an ARN, see <http://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/USER_Tagging.ARN.html#USER_Tagging.ARN.Constructing Constructing an RDS Amazon Resource Name (ARN)> .  Constraints:     * Must specify a valid DB parameter group.     * Must specify a valid DB parameter group identifier, for example @my-db-param-group@ , or a valid ARN.
 --
--- * 'cdpgTargetDBParameterGroupIdentifier' - The identifier for the copied DB parameter group. Constraints:     * Cannot be null, empty, or blank     * Must contain from 1 to 255 letters, numbers, or hyphens     * First character must be a letter     * Cannot end with a hyphen or contain two consecutive hyphens Example: @my-db-parameter-group@
+-- * 'cdpgTargetDBParameterGroupIdentifier' - The identifier for the copied DB parameter group. Constraints:     * Cannot be null, empty, or blank     * Must contain from 1 to 255 letters, numbers, or hyphens     * First character must be a letter     * Cannot end with a hyphen or contain two consecutive hyphens Example: @my-db-parameter-group@ 
 --
 -- * 'cdpgTargetDBParameterGroupDescription' - A description for the copied DB parameter group.
 copyDBParameterGroup
@@ -78,15 +77,17 @@ copyDBParameterGroup
     -> Text -- ^ 'cdpgTargetDBParameterGroupIdentifier'
     -> Text -- ^ 'cdpgTargetDBParameterGroupDescription'
     -> CopyDBParameterGroup
-copyDBParameterGroup pSourceDBParameterGroupIdentifier_ pTargetDBParameterGroupIdentifier_ pTargetDBParameterGroupDescription_ =
-  CopyDBParameterGroup'
-    { _cdpgTags = Nothing
-    , _cdpgSourceDBParameterGroupIdentifier = pSourceDBParameterGroupIdentifier_
-    , _cdpgTargetDBParameterGroupIdentifier = pTargetDBParameterGroupIdentifier_
-    , _cdpgTargetDBParameterGroupDescription =
-        pTargetDBParameterGroupDescription_
-    }
-
+copyDBParameterGroup
+  pSourceDBParameterGroupIdentifier_
+  pTargetDBParameterGroupIdentifier_
+  pTargetDBParameterGroupDescription_
+  = CopyDBParameterGroup'{_cdpgTags = Nothing,
+                          _cdpgSourceDBParameterGroupIdentifier =
+                            pSourceDBParameterGroupIdentifier_,
+                          _cdpgTargetDBParameterGroupIdentifier =
+                            pTargetDBParameterGroupIdentifier_,
+                          _cdpgTargetDBParameterGroupDescription =
+                            pTargetDBParameterGroupDescription_}
 
 -- | Undocumented member.
 cdpgTags :: Lens' CopyDBParameterGroup [Tag]
@@ -96,7 +97,7 @@ cdpgTags = lens _cdpgTags (\ s a -> s{_cdpgTags = a}) . _Default . _Coerce
 cdpgSourceDBParameterGroupIdentifier :: Lens' CopyDBParameterGroup Text
 cdpgSourceDBParameterGroupIdentifier = lens _cdpgSourceDBParameterGroupIdentifier (\ s a -> s{_cdpgSourceDBParameterGroupIdentifier = a})
 
--- | The identifier for the copied DB parameter group. Constraints:     * Cannot be null, empty, or blank     * Must contain from 1 to 255 letters, numbers, or hyphens     * First character must be a letter     * Cannot end with a hyphen or contain two consecutive hyphens Example: @my-db-parameter-group@
+-- | The identifier for the copied DB parameter group. Constraints:     * Cannot be null, empty, or blank     * Must contain from 1 to 255 letters, numbers, or hyphens     * First character must be a letter     * Cannot end with a hyphen or contain two consecutive hyphens Example: @my-db-parameter-group@ 
 cdpgTargetDBParameterGroupIdentifier :: Lens' CopyDBParameterGroup Text
 cdpgTargetDBParameterGroupIdentifier = lens _cdpgTargetDBParameterGroupIdentifier (\ s a -> s{_cdpgTargetDBParameterGroupIdentifier = a})
 
@@ -138,13 +139,14 @@ instance ToQuery CopyDBParameterGroup where
                  _cdpgTargetDBParameterGroupDescription]
 
 -- | /See:/ 'copyDBParameterGroupResponse' smart constructor.
-data CopyDBParameterGroupResponse =
-  CopyDBParameterGroupResponse'
-    { _cdbpgrsDBParameterGroup :: !(Maybe DBParameterGroup)
-    , _cdbpgrsResponseStatus   :: !Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data CopyDBParameterGroupResponse = CopyDBParameterGroupResponse'{_cdbpgrsDBParameterGroup
+                                                                  ::
+                                                                  !(Maybe
+                                                                      DBParameterGroup),
+                                                                  _cdbpgrsResponseStatus
+                                                                  :: !Int}
+                                      deriving (Eq, Read, Show, Data, Typeable,
+                                                Generic)
 
 -- | Creates a value of 'CopyDBParameterGroupResponse' with the minimum fields required to make a request.
 --
@@ -156,12 +158,10 @@ data CopyDBParameterGroupResponse =
 copyDBParameterGroupResponse
     :: Int -- ^ 'cdbpgrsResponseStatus'
     -> CopyDBParameterGroupResponse
-copyDBParameterGroupResponse pResponseStatus_ =
-  CopyDBParameterGroupResponse'
-    { _cdbpgrsDBParameterGroup = Nothing
-    , _cdbpgrsResponseStatus = pResponseStatus_
-    }
-
+copyDBParameterGroupResponse pResponseStatus_
+  = CopyDBParameterGroupResponse'{_cdbpgrsDBParameterGroup
+                                    = Nothing,
+                                  _cdbpgrsResponseStatus = pResponseStatus_}
 
 -- | Undocumented member.
 cdbpgrsDBParameterGroup :: Lens' CopyDBParameterGroupResponse (Maybe DBParameterGroup)

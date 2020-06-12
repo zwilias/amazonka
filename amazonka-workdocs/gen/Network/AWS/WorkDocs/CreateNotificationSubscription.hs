@@ -47,18 +47,20 @@ import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 import Network.AWS.WorkDocs.Types
-import Network.AWS.WorkDocs.Types.Product
 
 -- | /See:/ 'createNotificationSubscription' smart constructor.
-data CreateNotificationSubscription =
-  CreateNotificationSubscription'
-    { _cnsOrganizationId   :: !Text
-    , _cnsEndpoint         :: !Text
-    , _cnsProtocol         :: !SubscriptionProtocolType
-    , _cnsSubscriptionType :: !SubscriptionType
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data CreateNotificationSubscription = CreateNotificationSubscription'{_cnsOrganizationId
+                                                                      :: !Text,
+                                                                      _cnsEndpoint
+                                                                      :: !Text,
+                                                                      _cnsProtocol
+                                                                      ::
+                                                                      !SubscriptionProtocolType,
+                                                                      _cnsSubscriptionType
+                                                                      ::
+                                                                      !SubscriptionType}
+                                        deriving (Eq, Read, Show, Data,
+                                                  Typeable, Generic)
 
 -- | Creates a value of 'CreateNotificationSubscription' with the minimum fields required to make a request.
 --
@@ -77,14 +79,13 @@ createNotificationSubscription
     -> SubscriptionProtocolType -- ^ 'cnsProtocol'
     -> SubscriptionType -- ^ 'cnsSubscriptionType'
     -> CreateNotificationSubscription
-createNotificationSubscription pOrganizationId_ pEndpoint_ pProtocol_ pSubscriptionType_ =
-  CreateNotificationSubscription'
-    { _cnsOrganizationId = pOrganizationId_
-    , _cnsEndpoint = pEndpoint_
-    , _cnsProtocol = pProtocol_
-    , _cnsSubscriptionType = pSubscriptionType_
-    }
-
+createNotificationSubscription pOrganizationId_
+  pEndpoint_ pProtocol_ pSubscriptionType_
+  = CreateNotificationSubscription'{_cnsOrganizationId
+                                      = pOrganizationId_,
+                                    _cnsEndpoint = pEndpoint_,
+                                    _cnsProtocol = pProtocol_,
+                                    _cnsSubscriptionType = pSubscriptionType_}
 
 -- | The ID of the organization.
 cnsOrganizationId :: Lens' CreateNotificationSubscription Text
@@ -144,13 +145,15 @@ instance ToQuery CreateNotificationSubscription where
         toQuery = const mempty
 
 -- | /See:/ 'createNotificationSubscriptionResponse' smart constructor.
-data CreateNotificationSubscriptionResponse =
-  CreateNotificationSubscriptionResponse'
-    { _cnsrsSubscription   :: !(Maybe Subscription)
-    , _cnsrsResponseStatus :: !Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data CreateNotificationSubscriptionResponse = CreateNotificationSubscriptionResponse'{_cnsrsSubscription
+                                                                                      ::
+                                                                                      !(Maybe
+                                                                                          Subscription),
+                                                                                      _cnsrsResponseStatus
+                                                                                      ::
+                                                                                      !Int}
+                                                deriving (Eq, Read, Show, Data,
+                                                          Typeable, Generic)
 
 -- | Creates a value of 'CreateNotificationSubscriptionResponse' with the minimum fields required to make a request.
 --
@@ -162,10 +165,12 @@ data CreateNotificationSubscriptionResponse =
 createNotificationSubscriptionResponse
     :: Int -- ^ 'cnsrsResponseStatus'
     -> CreateNotificationSubscriptionResponse
-createNotificationSubscriptionResponse pResponseStatus_ =
-  CreateNotificationSubscriptionResponse'
-    {_cnsrsSubscription = Nothing, _cnsrsResponseStatus = pResponseStatus_}
-
+createNotificationSubscriptionResponse
+  pResponseStatus_
+  = CreateNotificationSubscriptionResponse'{_cnsrsSubscription
+                                              = Nothing,
+                                            _cnsrsResponseStatus =
+                                              pResponseStatus_}
 
 -- | The subscription.
 cnsrsSubscription :: Lens' CreateNotificationSubscriptionResponse (Maybe Subscription)

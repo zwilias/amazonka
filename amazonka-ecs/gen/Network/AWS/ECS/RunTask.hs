@@ -63,29 +63,27 @@ module Network.AWS.ECS.RunTask
     ) where
 
 import Network.AWS.ECS.Types
-import Network.AWS.ECS.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 
 -- | /See:/ 'runTask' smart constructor.
-data RunTask =
-  RunTask'
-    { _rtOverrides            :: !(Maybe TaskOverride)
-    , _rtGroup                :: !(Maybe Text)
-    , _rtCluster              :: !(Maybe Text)
-    , _rtPlatformVersion      :: !(Maybe Text)
-    , _rtCount                :: !(Maybe Int)
-    , _rtPlacementConstraints :: !(Maybe [PlacementConstraint])
-    , _rtPlacementStrategy    :: !(Maybe [PlacementStrategy])
-    , _rtStartedBy            :: !(Maybe Text)
-    , _rtLaunchType           :: !(Maybe LaunchType)
-    , _rtNetworkConfiguration :: !(Maybe NetworkConfiguration)
-    , _rtTaskDefinition       :: !Text
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data RunTask = RunTask'{_rtOverrides ::
+                        !(Maybe TaskOverride),
+                        _rtGroup :: !(Maybe Text),
+                        _rtCluster :: !(Maybe Text),
+                        _rtPlatformVersion :: !(Maybe Text),
+                        _rtCount :: !(Maybe Int),
+                        _rtPlacementConstraints ::
+                        !(Maybe [PlacementConstraint]),
+                        _rtPlacementStrategy :: !(Maybe [PlacementStrategy]),
+                        _rtStartedBy :: !(Maybe Text),
+                        _rtLaunchType :: !(Maybe LaunchType),
+                        _rtNetworkConfiguration ::
+                        !(Maybe NetworkConfiguration),
+                        _rtTaskDefinition :: !Text}
+                 deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'RunTask' with the minimum fields required to make a request.
 --
@@ -115,21 +113,15 @@ data RunTask =
 runTask
     :: Text -- ^ 'rtTaskDefinition'
     -> RunTask
-runTask pTaskDefinition_ =
-  RunTask'
-    { _rtOverrides = Nothing
-    , _rtGroup = Nothing
-    , _rtCluster = Nothing
-    , _rtPlatformVersion = Nothing
-    , _rtCount = Nothing
-    , _rtPlacementConstraints = Nothing
-    , _rtPlacementStrategy = Nothing
-    , _rtStartedBy = Nothing
-    , _rtLaunchType = Nothing
-    , _rtNetworkConfiguration = Nothing
-    , _rtTaskDefinition = pTaskDefinition_
-    }
-
+runTask pTaskDefinition_
+  = RunTask'{_rtOverrides = Nothing,
+             _rtGroup = Nothing, _rtCluster = Nothing,
+             _rtPlatformVersion = Nothing, _rtCount = Nothing,
+             _rtPlacementConstraints = Nothing,
+             _rtPlacementStrategy = Nothing,
+             _rtStartedBy = Nothing, _rtLaunchType = Nothing,
+             _rtNetworkConfiguration = Nothing,
+             _rtTaskDefinition = pTaskDefinition_}
 
 -- | A list of container overrides in JSON format that specify the name of a container in the specified task definition and the overrides it should receive. You can override the default command for a container (that is specified in the task definition or Docker image) with a @command@ override. You can also override existing environment variables (that are specified in the task definition or Docker image) on a container or add new environment variables to it with an @environment@ override.
 rtOverrides :: Lens' RunTask (Maybe TaskOverride)
@@ -225,14 +217,11 @@ instance ToQuery RunTask where
         toQuery = const mempty
 
 -- | /See:/ 'runTaskResponse' smart constructor.
-data RunTaskResponse =
-  RunTaskResponse'
-    { _rtrsFailures       :: !(Maybe [Failure])
-    , _rtrsTasks          :: !(Maybe [Task])
-    , _rtrsResponseStatus :: !Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data RunTaskResponse = RunTaskResponse'{_rtrsFailures
+                                        :: !(Maybe [Failure]),
+                                        _rtrsTasks :: !(Maybe [Task]),
+                                        _rtrsResponseStatus :: !Int}
+                         deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'RunTaskResponse' with the minimum fields required to make a request.
 --
@@ -246,13 +235,10 @@ data RunTaskResponse =
 runTaskResponse
     :: Int -- ^ 'rtrsResponseStatus'
     -> RunTaskResponse
-runTaskResponse pResponseStatus_ =
-  RunTaskResponse'
-    { _rtrsFailures = Nothing
-    , _rtrsTasks = Nothing
-    , _rtrsResponseStatus = pResponseStatus_
-    }
-
+runTaskResponse pResponseStatus_
+  = RunTaskResponse'{_rtrsFailures = Nothing,
+                     _rtrsTasks = Nothing,
+                     _rtrsResponseStatus = pResponseStatus_}
 
 -- | Any failures associated with the call.
 rtrsFailures :: Lens' RunTaskResponse [Failure]

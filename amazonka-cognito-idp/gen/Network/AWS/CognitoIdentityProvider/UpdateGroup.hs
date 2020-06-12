@@ -46,23 +46,18 @@ module Network.AWS.CognitoIdentityProvider.UpdateGroup
     ) where
 
 import Network.AWS.CognitoIdentityProvider.Types
-import Network.AWS.CognitoIdentityProvider.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 
 -- | /See:/ 'updateGroup' smart constructor.
-data UpdateGroup =
-  UpdateGroup'
-    { _ugPrecedence  :: !(Maybe Nat)
-    , _ugDescription :: !(Maybe Text)
-    , _ugRoleARN     :: !(Maybe Text)
-    , _ugGroupName   :: !Text
-    , _ugUserPoolId  :: !Text
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data UpdateGroup = UpdateGroup'{_ugPrecedence ::
+                                !(Maybe Nat),
+                                _ugDescription :: !(Maybe Text),
+                                _ugRoleARN :: !(Maybe Text),
+                                _ugGroupName :: !Text, _ugUserPoolId :: !Text}
+                     deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'UpdateGroup' with the minimum fields required to make a request.
 --
@@ -81,15 +76,11 @@ updateGroup
     :: Text -- ^ 'ugGroupName'
     -> Text -- ^ 'ugUserPoolId'
     -> UpdateGroup
-updateGroup pGroupName_ pUserPoolId_ =
-  UpdateGroup'
-    { _ugPrecedence = Nothing
-    , _ugDescription = Nothing
-    , _ugRoleARN = Nothing
-    , _ugGroupName = pGroupName_
-    , _ugUserPoolId = pUserPoolId_
-    }
-
+updateGroup pGroupName_ pUserPoolId_
+  = UpdateGroup'{_ugPrecedence = Nothing,
+                 _ugDescription = Nothing, _ugRoleARN = Nothing,
+                 _ugGroupName = pGroupName_,
+                 _ugUserPoolId = pUserPoolId_}
 
 -- | The new precedence value for the group. For more information about this parameter, see .
 ugPrecedence :: Lens' UpdateGroup (Maybe Natural)
@@ -151,13 +142,10 @@ instance ToQuery UpdateGroup where
         toQuery = const mempty
 
 -- | /See:/ 'updateGroupResponse' smart constructor.
-data UpdateGroupResponse =
-  UpdateGroupResponse'
-    { _ugrsGroup          :: !(Maybe GroupType)
-    , _ugrsResponseStatus :: !Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data UpdateGroupResponse = UpdateGroupResponse'{_ugrsGroup
+                                                :: !(Maybe GroupType),
+                                                _ugrsResponseStatus :: !Int}
+                             deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'UpdateGroupResponse' with the minimum fields required to make a request.
 --
@@ -169,10 +157,9 @@ data UpdateGroupResponse =
 updateGroupResponse
     :: Int -- ^ 'ugrsResponseStatus'
     -> UpdateGroupResponse
-updateGroupResponse pResponseStatus_ =
-  UpdateGroupResponse'
-    {_ugrsGroup = Nothing, _ugrsResponseStatus = pResponseStatus_}
-
+updateGroupResponse pResponseStatus_
+  = UpdateGroupResponse'{_ugrsGroup = Nothing,
+                         _ugrsResponseStatus = pResponseStatus_}
 
 -- | The group object for the group.
 ugrsGroup :: Lens' UpdateGroupResponse (Maybe GroupType)

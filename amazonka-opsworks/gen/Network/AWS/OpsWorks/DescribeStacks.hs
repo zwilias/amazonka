@@ -41,18 +41,14 @@ module Network.AWS.OpsWorks.DescribeStacks
 
 import Network.AWS.Lens
 import Network.AWS.OpsWorks.Types
-import Network.AWS.OpsWorks.Types.Product
 import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 
 -- | /See:/ 'describeStacks' smart constructor.
-newtype DescribeStacks =
-  DescribeStacks'
-    { _dsStackIds :: Maybe [Text]
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+newtype DescribeStacks = DescribeStacks'{_dsStackIds
+                                         :: Maybe [Text]}
+                           deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'DescribeStacks' with the minimum fields required to make a request.
 --
@@ -61,8 +57,8 @@ newtype DescribeStacks =
 -- * 'dsStackIds' - An array of stack IDs that specify the stacks to be described. If you omit this parameter, @DescribeStacks@ returns a description of every stack.
 describeStacks
     :: DescribeStacks
-describeStacks = DescribeStacks' {_dsStackIds = Nothing}
-
+describeStacks
+  = DescribeStacks'{_dsStackIds = Nothing}
 
 -- | An array of stack IDs that specify the stacks to be described. If you omit this parameter, @DescribeStacks@ returns a description of every stack.
 dsStackIds :: Lens' DescribeStacks [Text]
@@ -106,13 +102,12 @@ instance ToQuery DescribeStacks where
 --
 --
 -- /See:/ 'describeStacksResponse' smart constructor.
-data DescribeStacksResponse =
-  DescribeStacksResponse'
-    { _dsrsStacks         :: !(Maybe [Stack])
-    , _dsrsResponseStatus :: !Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data DescribeStacksResponse = DescribeStacksResponse'{_dsrsStacks
+                                                      :: !(Maybe [Stack]),
+                                                      _dsrsResponseStatus ::
+                                                      !Int}
+                                deriving (Eq, Read, Show, Data, Typeable,
+                                          Generic)
 
 -- | Creates a value of 'DescribeStacksResponse' with the minimum fields required to make a request.
 --
@@ -124,10 +119,9 @@ data DescribeStacksResponse =
 describeStacksResponse
     :: Int -- ^ 'dsrsResponseStatus'
     -> DescribeStacksResponse
-describeStacksResponse pResponseStatus_ =
-  DescribeStacksResponse'
-    {_dsrsStacks = Nothing, _dsrsResponseStatus = pResponseStatus_}
-
+describeStacksResponse pResponseStatus_
+  = DescribeStacksResponse'{_dsrsStacks = Nothing,
+                            _dsrsResponseStatus = pResponseStatus_}
 
 -- | An array of @Stack@ objects that describe the stacks.
 dsrsStacks :: Lens' DescribeStacksResponse [Stack]

@@ -47,7 +47,6 @@ module Network.AWS.EC2.DescribeSubnets
     ) where
 
 import Network.AWS.EC2.Types
-import Network.AWS.EC2.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Pager
 import Network.AWS.Prelude
@@ -55,16 +54,13 @@ import Network.AWS.Request
 import Network.AWS.Response
 
 -- | /See:/ 'describeSubnets' smart constructor.
-data DescribeSubnets =
-  DescribeSubnets'
-    { _dsSubnetIds  :: !(Maybe [Text])
-    , _dsFilters    :: !(Maybe [Filter])
-    , _dsNextToken  :: !(Maybe Text)
-    , _dsDryRun     :: !(Maybe Bool)
-    , _dsMaxResults :: !(Maybe Nat)
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data DescribeSubnets = DescribeSubnets'{_dsSubnetIds
+                                        :: !(Maybe [Text]),
+                                        _dsFilters :: !(Maybe [Filter]),
+                                        _dsNextToken :: !(Maybe Text),
+                                        _dsDryRun :: !(Maybe Bool),
+                                        _dsMaxResults :: !(Maybe Nat)}
+                         deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'DescribeSubnets' with the minimum fields required to make a request.
 --
@@ -81,15 +77,10 @@ data DescribeSubnets =
 -- * 'dsMaxResults' - The maximum number of results to return with a single call. To retrieve the remaining results, make another call with the returned @nextToken@ value.
 describeSubnets
     :: DescribeSubnets
-describeSubnets =
-  DescribeSubnets'
-    { _dsSubnetIds = Nothing
-    , _dsFilters = Nothing
-    , _dsNextToken = Nothing
-    , _dsDryRun = Nothing
-    , _dsMaxResults = Nothing
-    }
-
+describeSubnets
+  = DescribeSubnets'{_dsSubnetIds = Nothing,
+                     _dsFilters = Nothing, _dsNextToken = Nothing,
+                     _dsDryRun = Nothing, _dsMaxResults = Nothing}
 
 -- | One or more subnet IDs. Default: Describes all your subnets.
 dsSubnetIds :: Lens' DescribeSubnets [Text]
@@ -151,14 +142,14 @@ instance ToQuery DescribeSubnets where
                "MaxResults" =: _dsMaxResults]
 
 -- | /See:/ 'describeSubnetsResponse' smart constructor.
-data DescribeSubnetsResponse =
-  DescribeSubnetsResponse'
-    { _dsrsSubnets        :: !(Maybe [Subnet])
-    , _dsrsNextToken      :: !(Maybe Text)
-    , _dsrsResponseStatus :: !Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data DescribeSubnetsResponse = DescribeSubnetsResponse'{_dsrsSubnets
+                                                        :: !(Maybe [Subnet]),
+                                                        _dsrsNextToken ::
+                                                        !(Maybe Text),
+                                                        _dsrsResponseStatus ::
+                                                        !Int}
+                                 deriving (Eq, Read, Show, Data, Typeable,
+                                           Generic)
 
 -- | Creates a value of 'DescribeSubnetsResponse' with the minimum fields required to make a request.
 --
@@ -172,13 +163,10 @@ data DescribeSubnetsResponse =
 describeSubnetsResponse
     :: Int -- ^ 'dsrsResponseStatus'
     -> DescribeSubnetsResponse
-describeSubnetsResponse pResponseStatus_ =
-  DescribeSubnetsResponse'
-    { _dsrsSubnets = Nothing
-    , _dsrsNextToken = Nothing
-    , _dsrsResponseStatus = pResponseStatus_
-    }
-
+describeSubnetsResponse pResponseStatus_
+  = DescribeSubnetsResponse'{_dsrsSubnets = Nothing,
+                             _dsrsNextToken = Nothing,
+                             _dsrsResponseStatus = pResponseStatus_}
 
 -- | Information about one or more subnets.
 dsrsSubnets :: Lens' DescribeSubnetsResponse [Subnet]

@@ -40,18 +40,14 @@ module Network.AWS.MediaPackage.DescribeChannel
 
 import Network.AWS.Lens
 import Network.AWS.MediaPackage.Types
-import Network.AWS.MediaPackage.Types.Product
 import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 
 -- | /See:/ 'describeChannel' smart constructor.
-newtype DescribeChannel =
-  DescribeChannel'
-    { _dId :: Text
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+newtype DescribeChannel = DescribeChannel'{_dId ::
+                                           Text}
+                            deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'DescribeChannel' with the minimum fields required to make a request.
 --
@@ -61,8 +57,7 @@ newtype DescribeChannel =
 describeChannel
     :: Text -- ^ 'dId'
     -> DescribeChannel
-describeChannel pId_ = DescribeChannel' {_dId = pId_}
-
+describeChannel pId_ = DescribeChannel'{_dId = pId_}
 
 -- | The ID of a Channel.
 dId :: Lens' DescribeChannel Text
@@ -99,16 +94,18 @@ instance ToQuery DescribeChannel where
         toQuery = const mempty
 
 -- | /See:/ 'describeChannelResponse' smart constructor.
-data DescribeChannelResponse =
-  DescribeChannelResponse'
-    { _dcrsHlsIngest      :: !(Maybe HlsIngest)
-    , _dcrsARN            :: !(Maybe Text)
-    , _dcrsId             :: !(Maybe Text)
-    , _dcrsDescription    :: !(Maybe Text)
-    , _dcrsResponseStatus :: !Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data DescribeChannelResponse = DescribeChannelResponse'{_dcrsHlsIngest
+                                                        :: !(Maybe HlsIngest),
+                                                        _dcrsARN ::
+                                                        !(Maybe Text),
+                                                        _dcrsId ::
+                                                        !(Maybe Text),
+                                                        _dcrsDescription ::
+                                                        !(Maybe Text),
+                                                        _dcrsResponseStatus ::
+                                                        !Int}
+                                 deriving (Eq, Read, Show, Data, Typeable,
+                                           Generic)
 
 -- | Creates a value of 'DescribeChannelResponse' with the minimum fields required to make a request.
 --
@@ -126,15 +123,11 @@ data DescribeChannelResponse =
 describeChannelResponse
     :: Int -- ^ 'dcrsResponseStatus'
     -> DescribeChannelResponse
-describeChannelResponse pResponseStatus_ =
-  DescribeChannelResponse'
-    { _dcrsHlsIngest = Nothing
-    , _dcrsARN = Nothing
-    , _dcrsId = Nothing
-    , _dcrsDescription = Nothing
-    , _dcrsResponseStatus = pResponseStatus_
-    }
-
+describeChannelResponse pResponseStatus_
+  = DescribeChannelResponse'{_dcrsHlsIngest = Nothing,
+                             _dcrsARN = Nothing, _dcrsId = Nothing,
+                             _dcrsDescription = Nothing,
+                             _dcrsResponseStatus = pResponseStatus_}
 
 -- | Undocumented member.
 dcrsHlsIngest :: Lens' DescribeChannelResponse (Maybe HlsIngest)

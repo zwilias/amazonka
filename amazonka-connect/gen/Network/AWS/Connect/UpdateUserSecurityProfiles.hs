@@ -37,21 +37,20 @@ module Network.AWS.Connect.UpdateUserSecurityProfiles
     ) where
 
 import Network.AWS.Connect.Types
-import Network.AWS.Connect.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 
 -- | /See:/ 'updateUserSecurityProfiles' smart constructor.
-data UpdateUserSecurityProfiles =
-  UpdateUserSecurityProfiles'
-    { _uuspSecurityProfileIds :: !(List1 Text)
-    , _uuspUserId             :: !Text
-    , _uuspInstanceId         :: !Text
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data UpdateUserSecurityProfiles = UpdateUserSecurityProfiles'{_uuspSecurityProfileIds
+                                                              :: !(List1 Text),
+                                                              _uuspUserId ::
+                                                              !Text,
+                                                              _uuspInstanceId ::
+                                                              !Text}
+                                    deriving (Eq, Read, Show, Data, Typeable,
+                                              Generic)
 
 -- | Creates a value of 'UpdateUserSecurityProfiles' with the minimum fields required to make a request.
 --
@@ -67,13 +66,12 @@ updateUserSecurityProfiles
     -> Text -- ^ 'uuspUserId'
     -> Text -- ^ 'uuspInstanceId'
     -> UpdateUserSecurityProfiles
-updateUserSecurityProfiles pSecurityProfileIds_ pUserId_ pInstanceId_ =
-  UpdateUserSecurityProfiles'
-    { _uuspSecurityProfileIds = _List1 # pSecurityProfileIds_
-    , _uuspUserId = pUserId_
-    , _uuspInstanceId = pInstanceId_
-    }
-
+updateUserSecurityProfiles pSecurityProfileIds_
+  pUserId_ pInstanceId_
+  = UpdateUserSecurityProfiles'{_uuspSecurityProfileIds
+                                  = _List1 # pSecurityProfileIds_,
+                                _uuspUserId = pUserId_,
+                                _uuspInstanceId = pInstanceId_}
 
 -- | The identifiers of the security profiles for the user.
 uuspSecurityProfileIds :: Lens' UpdateUserSecurityProfiles (NonEmpty Text)
@@ -122,17 +120,16 @@ instance ToQuery UpdateUserSecurityProfiles where
         toQuery = const mempty
 
 -- | /See:/ 'updateUserSecurityProfilesResponse' smart constructor.
-data UpdateUserSecurityProfilesResponse =
-  UpdateUserSecurityProfilesResponse'
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data UpdateUserSecurityProfilesResponse = UpdateUserSecurityProfilesResponse'
+                                            deriving (Eq, Read, Show, Data,
+                                                      Typeable, Generic)
 
 -- | Creates a value of 'UpdateUserSecurityProfilesResponse' with the minimum fields required to make a request.
 --
 updateUserSecurityProfilesResponse
     :: UpdateUserSecurityProfilesResponse
-updateUserSecurityProfilesResponse = UpdateUserSecurityProfilesResponse'
-
+updateUserSecurityProfilesResponse
+  = UpdateUserSecurityProfilesResponse'
 
 instance NFData UpdateUserSecurityProfilesResponse
          where

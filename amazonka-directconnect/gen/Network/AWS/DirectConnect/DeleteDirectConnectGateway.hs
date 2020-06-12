@@ -38,19 +38,16 @@ module Network.AWS.DirectConnect.DeleteDirectConnectGateway
     ) where
 
 import Network.AWS.DirectConnect.Types
-import Network.AWS.DirectConnect.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 
 -- | /See:/ 'deleteDirectConnectGateway' smart constructor.
-newtype DeleteDirectConnectGateway =
-  DeleteDirectConnectGateway'
-    { _ddcgdDirectConnectGatewayId :: Text
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+newtype DeleteDirectConnectGateway = DeleteDirectConnectGateway'{_ddcgdDirectConnectGatewayId
+                                                                 :: Text}
+                                       deriving (Eq, Read, Show, Data, Typeable,
+                                                 Generic)
 
 -- | Creates a value of 'DeleteDirectConnectGateway' with the minimum fields required to make a request.
 --
@@ -60,10 +57,9 @@ newtype DeleteDirectConnectGateway =
 deleteDirectConnectGateway
     :: Text -- ^ 'ddcgdDirectConnectGatewayId'
     -> DeleteDirectConnectGateway
-deleteDirectConnectGateway pDirectConnectGatewayId_ =
-  DeleteDirectConnectGateway'
-    {_ddcgdDirectConnectGatewayId = pDirectConnectGatewayId_}
-
+deleteDirectConnectGateway pDirectConnectGatewayId_
+  = DeleteDirectConnectGateway'{_ddcgdDirectConnectGatewayId
+                                  = pDirectConnectGatewayId_}
 
 -- | The ID of the Direct Connect gateway.
 ddcgdDirectConnectGatewayId :: Lens' DeleteDirectConnectGateway Text
@@ -109,13 +105,15 @@ instance ToQuery DeleteDirectConnectGateway where
         toQuery = const mempty
 
 -- | /See:/ 'deleteDirectConnectGatewayResponse' smart constructor.
-data DeleteDirectConnectGatewayResponse =
-  DeleteDirectConnectGatewayResponse'
-    { _ddcgdrsDirectConnectGateway :: !(Maybe DirectConnectGateway)
-    , _ddcgdrsResponseStatus       :: !Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data DeleteDirectConnectGatewayResponse = DeleteDirectConnectGatewayResponse'{_ddcgdrsDirectConnectGateway
+                                                                              ::
+                                                                              !(Maybe
+                                                                                  DirectConnectGateway),
+                                                                              _ddcgdrsResponseStatus
+                                                                              ::
+                                                                              !Int}
+                                            deriving (Eq, Read, Show, Data,
+                                                      Typeable, Generic)
 
 -- | Creates a value of 'DeleteDirectConnectGatewayResponse' with the minimum fields required to make a request.
 --
@@ -127,12 +125,11 @@ data DeleteDirectConnectGatewayResponse =
 deleteDirectConnectGatewayResponse
     :: Int -- ^ 'ddcgdrsResponseStatus'
     -> DeleteDirectConnectGatewayResponse
-deleteDirectConnectGatewayResponse pResponseStatus_ =
-  DeleteDirectConnectGatewayResponse'
-    { _ddcgdrsDirectConnectGateway = Nothing
-    , _ddcgdrsResponseStatus = pResponseStatus_
-    }
-
+deleteDirectConnectGatewayResponse pResponseStatus_
+  = DeleteDirectConnectGatewayResponse'{_ddcgdrsDirectConnectGateway
+                                          = Nothing,
+                                        _ddcgdrsResponseStatus =
+                                          pResponseStatus_}
 
 -- | The Direct Connect gateway.
 ddcgdrsDirectConnectGateway :: Lens' DeleteDirectConnectGatewayResponse (Maybe DirectConnectGateway)

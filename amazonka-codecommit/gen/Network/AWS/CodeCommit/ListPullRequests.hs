@@ -45,7 +45,6 @@ module Network.AWS.CodeCommit.ListPullRequests
     ) where
 
 import Network.AWS.CodeCommit.Types
-import Network.AWS.CodeCommit.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Pager
 import Network.AWS.Prelude
@@ -53,16 +52,14 @@ import Network.AWS.Request
 import Network.AWS.Response
 
 -- | /See:/ 'listPullRequests' smart constructor.
-data ListPullRequests =
-  ListPullRequests'
-    { _lprAuthorARN         :: !(Maybe Text)
-    , _lprNextToken         :: !(Maybe Text)
-    , _lprPullRequestStatus :: !(Maybe PullRequestStatusEnum)
-    , _lprMaxResults        :: !(Maybe Int)
-    , _lprRepositoryName    :: !Text
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data ListPullRequests = ListPullRequests'{_lprAuthorARN
+                                          :: !(Maybe Text),
+                                          _lprNextToken :: !(Maybe Text),
+                                          _lprPullRequestStatus ::
+                                          !(Maybe PullRequestStatusEnum),
+                                          _lprMaxResults :: !(Maybe Int),
+                                          _lprRepositoryName :: !Text}
+                          deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'ListPullRequests' with the minimum fields required to make a request.
 --
@@ -80,15 +77,12 @@ data ListPullRequests =
 listPullRequests
     :: Text -- ^ 'lprRepositoryName'
     -> ListPullRequests
-listPullRequests pRepositoryName_ =
-  ListPullRequests'
-    { _lprAuthorARN = Nothing
-    , _lprNextToken = Nothing
-    , _lprPullRequestStatus = Nothing
-    , _lprMaxResults = Nothing
-    , _lprRepositoryName = pRepositoryName_
-    }
-
+listPullRequests pRepositoryName_
+  = ListPullRequests'{_lprAuthorARN = Nothing,
+                      _lprNextToken = Nothing,
+                      _lprPullRequestStatus = Nothing,
+                      _lprMaxResults = Nothing,
+                      _lprRepositoryName = pRepositoryName_}
 
 -- | Optional. The Amazon Resource Name (ARN) of the user who created the pull request. If used, this filters the results to pull requests created by that user.
 lprAuthorARN :: Lens' ListPullRequests (Maybe Text)
@@ -158,14 +152,14 @@ instance ToQuery ListPullRequests where
         toQuery = const mempty
 
 -- | /See:/ 'listPullRequestsResponse' smart constructor.
-data ListPullRequestsResponse =
-  ListPullRequestsResponse'
-    { _lprrsNextToken      :: !(Maybe Text)
-    , _lprrsResponseStatus :: !Int
-    , _lprrsPullRequestIds :: ![Text]
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data ListPullRequestsResponse = ListPullRequestsResponse'{_lprrsNextToken
+                                                          :: !(Maybe Text),
+                                                          _lprrsResponseStatus
+                                                          :: !Int,
+                                                          _lprrsPullRequestIds
+                                                          :: ![Text]}
+                                  deriving (Eq, Read, Show, Data, Typeable,
+                                            Generic)
 
 -- | Creates a value of 'ListPullRequestsResponse' with the minimum fields required to make a request.
 --
@@ -179,13 +173,11 @@ data ListPullRequestsResponse =
 listPullRequestsResponse
     :: Int -- ^ 'lprrsResponseStatus'
     -> ListPullRequestsResponse
-listPullRequestsResponse pResponseStatus_ =
-  ListPullRequestsResponse'
-    { _lprrsNextToken = Nothing
-    , _lprrsResponseStatus = pResponseStatus_
-    , _lprrsPullRequestIds = mempty
-    }
-
+listPullRequestsResponse pResponseStatus_
+  = ListPullRequestsResponse'{_lprrsNextToken =
+                                Nothing,
+                              _lprrsResponseStatus = pResponseStatus_,
+                              _lprrsPullRequestIds = mempty}
 
 -- | An enumeration token that allows the operation to batch the next results of the operation.
 lprrsNextToken :: Lens' ListPullRequestsResponse (Maybe Text)

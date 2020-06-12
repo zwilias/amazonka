@@ -45,22 +45,17 @@ module Network.AWS.ELBv2.CreateRule
     ) where
 
 import Network.AWS.ELBv2.Types
-import Network.AWS.ELBv2.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 
 -- | /See:/ 'createRule' smart constructor.
-data CreateRule =
-  CreateRule'
-    { _crListenerARN :: !Text
-    , _crConditions  :: ![RuleCondition]
-    , _crPriority    :: !Nat
-    , _crActions     :: ![Action]
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data CreateRule = CreateRule'{_crListenerARN ::
+                              !Text,
+                              _crConditions :: ![RuleCondition],
+                              _crPriority :: !Nat, _crActions :: ![Action]}
+                    deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'CreateRule' with the minimum fields required to make a request.
 --
@@ -77,14 +72,10 @@ createRule
     :: Text -- ^ 'crListenerARN'
     -> Natural -- ^ 'crPriority'
     -> CreateRule
-createRule pListenerARN_ pPriority_ =
-  CreateRule'
-    { _crListenerARN = pListenerARN_
-    , _crConditions = mempty
-    , _crPriority = _Nat # pPriority_
-    , _crActions = mempty
-    }
-
+createRule pListenerARN_ pPriority_
+  = CreateRule'{_crListenerARN = pListenerARN_,
+                _crConditions = mempty,
+                _crPriority = _Nat # pPriority_, _crActions = mempty}
 
 -- | The Amazon Resource Name (ARN) of the listener.
 crListenerARN :: Lens' CreateRule Text
@@ -134,13 +125,10 @@ instance ToQuery CreateRule where
                "Actions" =: toQueryList "member" _crActions]
 
 -- | /See:/ 'createRuleResponse' smart constructor.
-data CreateRuleResponse =
-  CreateRuleResponse'
-    { _crrsRules          :: !(Maybe [Rule])
-    , _crrsResponseStatus :: !Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data CreateRuleResponse = CreateRuleResponse'{_crrsRules
+                                              :: !(Maybe [Rule]),
+                                              _crrsResponseStatus :: !Int}
+                            deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'CreateRuleResponse' with the minimum fields required to make a request.
 --
@@ -152,10 +140,9 @@ data CreateRuleResponse =
 createRuleResponse
     :: Int -- ^ 'crrsResponseStatus'
     -> CreateRuleResponse
-createRuleResponse pResponseStatus_ =
-  CreateRuleResponse'
-    {_crrsRules = Nothing, _crrsResponseStatus = pResponseStatus_}
-
+createRuleResponse pResponseStatus_
+  = CreateRuleResponse'{_crrsRules = Nothing,
+                        _crrsResponseStatus = pResponseStatus_}
 
 -- | Information about the rule.
 crrsRules :: Lens' CreateRuleResponse [Rule]

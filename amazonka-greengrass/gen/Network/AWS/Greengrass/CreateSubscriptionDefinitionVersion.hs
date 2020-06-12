@@ -41,21 +41,25 @@ module Network.AWS.Greengrass.CreateSubscriptionDefinitionVersion
     ) where
 
 import Network.AWS.Greengrass.Types
-import Network.AWS.Greengrass.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 
 -- | /See:/ 'createSubscriptionDefinitionVersion' smart constructor.
-data CreateSubscriptionDefinitionVersion =
-  CreateSubscriptionDefinitionVersion'
-    { _csdvAmznClientToken          :: !(Maybe Text)
-    , _csdvSubscriptions            :: !(Maybe [Subscription])
-    , _csdvSubscriptionDefinitionId :: !Text
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data CreateSubscriptionDefinitionVersion = CreateSubscriptionDefinitionVersion'{_csdvAmznClientToken
+                                                                                ::
+                                                                                !(Maybe
+                                                                                    Text),
+                                                                                _csdvSubscriptions
+                                                                                ::
+                                                                                !(Maybe
+                                                                                    [Subscription]),
+                                                                                _csdvSubscriptionDefinitionId
+                                                                                ::
+                                                                                !Text}
+                                             deriving (Eq, Read, Show, Data,
+                                                       Typeable, Generic)
 
 -- | Creates a value of 'CreateSubscriptionDefinitionVersion' with the minimum fields required to make a request.
 --
@@ -69,13 +73,13 @@ data CreateSubscriptionDefinitionVersion =
 createSubscriptionDefinitionVersion
     :: Text -- ^ 'csdvSubscriptionDefinitionId'
     -> CreateSubscriptionDefinitionVersion
-createSubscriptionDefinitionVersion pSubscriptionDefinitionId_ =
-  CreateSubscriptionDefinitionVersion'
-    { _csdvAmznClientToken = Nothing
-    , _csdvSubscriptions = Nothing
-    , _csdvSubscriptionDefinitionId = pSubscriptionDefinitionId_
-    }
-
+createSubscriptionDefinitionVersion
+  pSubscriptionDefinitionId_
+  = CreateSubscriptionDefinitionVersion'{_csdvAmznClientToken
+                                           = Nothing,
+                                         _csdvSubscriptions = Nothing,
+                                         _csdvSubscriptionDefinitionId =
+                                           pSubscriptionDefinitionId_}
 
 -- | A client token used to correlate requests and responses.
 csdvAmznClientToken :: Lens' CreateSubscriptionDefinitionVersion (Maybe Text)
@@ -138,16 +142,28 @@ instance ToQuery CreateSubscriptionDefinitionVersion
         toQuery = const mempty
 
 -- | /See:/ 'createSubscriptionDefinitionVersionResponse' smart constructor.
-data CreateSubscriptionDefinitionVersionResponse =
-  CreateSubscriptionDefinitionVersionResponse'
-    { _csdvrsARN               :: !(Maybe Text)
-    , _csdvrsCreationTimestamp :: !(Maybe Text)
-    , _csdvrsVersion           :: !(Maybe Text)
-    , _csdvrsId                :: !(Maybe Text)
-    , _csdvrsResponseStatus    :: !Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data CreateSubscriptionDefinitionVersionResponse = CreateSubscriptionDefinitionVersionResponse'{_csdvrsARN
+                                                                                                ::
+                                                                                                !(Maybe
+                                                                                                    Text),
+                                                                                                _csdvrsCreationTimestamp
+                                                                                                ::
+                                                                                                !(Maybe
+                                                                                                    Text),
+                                                                                                _csdvrsVersion
+                                                                                                ::
+                                                                                                !(Maybe
+                                                                                                    Text),
+                                                                                                _csdvrsId
+                                                                                                ::
+                                                                                                !(Maybe
+                                                                                                    Text),
+                                                                                                _csdvrsResponseStatus
+                                                                                                ::
+                                                                                                !Int}
+                                                     deriving (Eq, Read, Show,
+                                                               Data, Typeable,
+                                                               Generic)
 
 -- | Creates a value of 'CreateSubscriptionDefinitionVersionResponse' with the minimum fields required to make a request.
 --
@@ -165,15 +181,16 @@ data CreateSubscriptionDefinitionVersionResponse =
 createSubscriptionDefinitionVersionResponse
     :: Int -- ^ 'csdvrsResponseStatus'
     -> CreateSubscriptionDefinitionVersionResponse
-createSubscriptionDefinitionVersionResponse pResponseStatus_ =
-  CreateSubscriptionDefinitionVersionResponse'
-    { _csdvrsARN = Nothing
-    , _csdvrsCreationTimestamp = Nothing
-    , _csdvrsVersion = Nothing
-    , _csdvrsId = Nothing
-    , _csdvrsResponseStatus = pResponseStatus_
-    }
-
+createSubscriptionDefinitionVersionResponse
+  pResponseStatus_
+  = CreateSubscriptionDefinitionVersionResponse'{_csdvrsARN
+                                                   = Nothing,
+                                                 _csdvrsCreationTimestamp =
+                                                   Nothing,
+                                                 _csdvrsVersion = Nothing,
+                                                 _csdvrsId = Nothing,
+                                                 _csdvrsResponseStatus =
+                                                   pResponseStatus_}
 
 -- | The ARN of the version.
 csdvrsARN :: Lens' CreateSubscriptionDefinitionVersionResponse (Maybe Text)

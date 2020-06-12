@@ -18,24 +18,24 @@
 -- Stability   : auto-generated
 -- Portability : non-portable (GHC extensions)
 --
--- Removes a VPC peering connection. To delete the connection, you must have a valid authorization for the VPC peering connection that you want to delete. You can check for an authorization by calling 'DescribeVpcPeeringAuthorizations' or request a new one using 'CreateVpcPeeringAuthorization' .
+-- Removes a VPC peering connection. To delete the connection, you must have a valid authorization for the VPC peering connection that you want to delete. You can check for an authorization by calling 'DescribeVpcPeeringAuthorizations' or request a new one using 'CreateVpcPeeringAuthorization' . 
 --
 --
--- Once a valid authorization exists, call this operation from the AWS account that is used to manage the Amazon GameLift fleets. Identify the connection to delete by the connection ID and fleet ID. If successful, the connection is removed.
+-- Once a valid authorization exists, call this operation from the AWS account that is used to manage the Amazon GameLift fleets. Identify the connection to delete by the connection ID and fleet ID. If successful, the connection is removed. 
 --
 -- VPC peering connection operations include:
 --
---     * 'CreateVpcPeeringAuthorization'
+--     * 'CreateVpcPeeringAuthorization' 
 --
---     * 'DescribeVpcPeeringAuthorizations'
+--     * 'DescribeVpcPeeringAuthorizations' 
 --
---     * 'DeleteVpcPeeringAuthorization'
+--     * 'DeleteVpcPeeringAuthorization' 
 --
---     * 'CreateVpcPeeringConnection'
+--     * 'CreateVpcPeeringConnection' 
 --
---     * 'DescribeVpcPeeringConnections'
+--     * 'DescribeVpcPeeringConnections' 
 --
---     * 'DeleteVpcPeeringConnection'
+--     * 'DeleteVpcPeeringConnection' 
 --
 --
 --
@@ -56,7 +56,6 @@ module Network.AWS.GameLift.DeleteVPCPeeringConnection
     ) where
 
 import Network.AWS.GameLift.Types
-import Network.AWS.GameLift.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.Request
@@ -67,13 +66,12 @@ import Network.AWS.Response
 --
 --
 -- /See:/ 'deleteVPCPeeringConnection' smart constructor.
-data DeleteVPCPeeringConnection =
-  DeleteVPCPeeringConnection'
-    { _dvpcFleetId                :: !Text
-    , _dvpcVPCPeeringConnectionId :: !Text
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data DeleteVPCPeeringConnection = DeleteVPCPeeringConnection'{_dvpcFleetId
+                                                              :: !Text,
+                                                              _dvpcVPCPeeringConnectionId
+                                                              :: !Text}
+                                    deriving (Eq, Read, Show, Data, Typeable,
+                                              Generic)
 
 -- | Creates a value of 'DeleteVPCPeeringConnection' with the minimum fields required to make a request.
 --
@@ -86,12 +84,12 @@ deleteVPCPeeringConnection
     :: Text -- ^ 'dvpcFleetId'
     -> Text -- ^ 'dvpcVPCPeeringConnectionId'
     -> DeleteVPCPeeringConnection
-deleteVPCPeeringConnection pFleetId_ pVPCPeeringConnectionId_ =
-  DeleteVPCPeeringConnection'
-    { _dvpcFleetId = pFleetId_
-    , _dvpcVPCPeeringConnectionId = pVPCPeeringConnectionId_
-    }
-
+deleteVPCPeeringConnection pFleetId_
+  pVPCPeeringConnectionId_
+  = DeleteVPCPeeringConnection'{_dvpcFleetId =
+                                  pFleetId_,
+                                _dvpcVPCPeeringConnectionId =
+                                  pVPCPeeringConnectionId_}
 
 -- | Unique identifier for a fleet. This value must match the fleet ID referenced in the VPC peering connection record.
 dvpcFleetId :: Lens' DeleteVPCPeeringConnection Text
@@ -141,12 +139,11 @@ instance ToQuery DeleteVPCPeeringConnection where
         toQuery = const mempty
 
 -- | /See:/ 'deleteVPCPeeringConnectionResponse' smart constructor.
-newtype DeleteVPCPeeringConnectionResponse =
-  DeleteVPCPeeringConnectionResponse'
-    { _dvpcrsResponseStatus :: Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+newtype DeleteVPCPeeringConnectionResponse = DeleteVPCPeeringConnectionResponse'{_dvpcrsResponseStatus
+                                                                                 ::
+                                                                                 Int}
+                                               deriving (Eq, Read, Show, Data,
+                                                         Typeable, Generic)
 
 -- | Creates a value of 'DeleteVPCPeeringConnectionResponse' with the minimum fields required to make a request.
 --
@@ -156,9 +153,9 @@ newtype DeleteVPCPeeringConnectionResponse =
 deleteVPCPeeringConnectionResponse
     :: Int -- ^ 'dvpcrsResponseStatus'
     -> DeleteVPCPeeringConnectionResponse
-deleteVPCPeeringConnectionResponse pResponseStatus_ =
-  DeleteVPCPeeringConnectionResponse' {_dvpcrsResponseStatus = pResponseStatus_}
-
+deleteVPCPeeringConnectionResponse pResponseStatus_
+  = DeleteVPCPeeringConnectionResponse'{_dvpcrsResponseStatus
+                                          = pResponseStatus_}
 
 -- | -- | The response status code.
 dvpcrsResponseStatus :: Lens' DeleteVPCPeeringConnectionResponse Int

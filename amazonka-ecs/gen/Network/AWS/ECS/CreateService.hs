@@ -74,33 +74,35 @@ module Network.AWS.ECS.CreateService
     ) where
 
 import Network.AWS.ECS.Types
-import Network.AWS.ECS.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 
 -- | /See:/ 'createService' smart constructor.
-data CreateService =
-  CreateService'
-    { _cCluster                       :: !(Maybe Text)
-    , _cClientToken                   :: !(Maybe Text)
-    , _cPlatformVersion               :: !(Maybe Text)
-    , _cLoadBalancers                 :: !(Maybe [LoadBalancer])
-    , _cRole                          :: !(Maybe Text)
-    , _cPlacementConstraints          :: !(Maybe [PlacementConstraint])
-    , _cPlacementStrategy             :: !(Maybe [PlacementStrategy])
-    , _cLaunchType                    :: !(Maybe LaunchType)
-    , _cHealthCheckGracePeriodSeconds :: !(Maybe Int)
-    , _cNetworkConfiguration          :: !(Maybe NetworkConfiguration)
-    , _cServiceRegistries             :: !(Maybe [ServiceRegistry])
-    , _cDeploymentConfiguration       :: !(Maybe DeploymentConfiguration)
-    , _cServiceName                   :: !Text
-    , _cTaskDefinition                :: !Text
-    , _cDesiredCount                  :: !Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data CreateService = CreateService'{_cCluster ::
+                                    !(Maybe Text),
+                                    _cClientToken :: !(Maybe Text),
+                                    _cPlatformVersion :: !(Maybe Text),
+                                    _cLoadBalancers :: !(Maybe [LoadBalancer]),
+                                    _cRole :: !(Maybe Text),
+                                    _cPlacementConstraints ::
+                                    !(Maybe [PlacementConstraint]),
+                                    _cPlacementStrategy ::
+                                    !(Maybe [PlacementStrategy]),
+                                    _cLaunchType :: !(Maybe LaunchType),
+                                    _cHealthCheckGracePeriodSeconds ::
+                                    !(Maybe Int),
+                                    _cNetworkConfiguration ::
+                                    !(Maybe NetworkConfiguration),
+                                    _cServiceRegistries ::
+                                    !(Maybe [ServiceRegistry]),
+                                    _cDeploymentConfiguration ::
+                                    !(Maybe DeploymentConfiguration),
+                                    _cServiceName :: !Text,
+                                    _cTaskDefinition :: !Text,
+                                    _cDesiredCount :: !Int}
+                       deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'CreateService' with the minimum fields required to make a request.
 --
@@ -116,7 +118,7 @@ data CreateService =
 --
 -- * 'cRole' - The name or full Amazon Resource Name (ARN) of the IAM role that allows Amazon ECS to make calls to your load balancer on your behalf. This parameter is only permitted if you are using a load balancer with your service and your task definition does not use the @awsvpc@ network mode. If you specify the @role@ parameter, you must also specify a load balancer object with the @loadBalancers@ parameter. /Important:/ If your account has already created the Amazon ECS service-linked role, that role is used by default for your service unless you specify a role here. The service-linked role is required if your task definition uses the @awsvpc@ network mode, in which case you should not specify a role here. For more information, see <http://docs.aws.amazon.com/AmazonECS/latest/developerguide/using-service-linked-roles.html Using Service-Linked Roles for Amazon ECS> in the /Amazon Elastic Container Service Developer Guide/ . If your specified role has a path other than @/@ , then you must either specify the full role ARN (this is recommended) or prefix the role name with the path. For example, if a role with the name @bar@ has a path of @/foo/@ then you would specify @/foo/bar@ as the role name. For more information, see <http://docs.aws.amazon.com/IAM/latest/UserGuide/reference_identifiers.html#identifiers-friendly-names Friendly Names and Paths> in the /IAM User Guide/ .
 --
--- * 'cPlacementConstraints' - An array of placement constraint objects to use for tasks in your service. You can specify a maximum of 10 constraints per task (this limit includes constraints in the task definition and those specified at run time).
+-- * 'cPlacementConstraints' - An array of placement constraint objects to use for tasks in your service. You can specify a maximum of 10 constraints per task (this limit includes constraints in the task definition and those specified at run time). 
 --
 -- * 'cPlacementStrategy' - The placement strategy objects to use for tasks in your service. You can specify a maximum of five strategy rules per service.
 --
@@ -140,25 +142,21 @@ createService
     -> Text -- ^ 'cTaskDefinition'
     -> Int -- ^ 'cDesiredCount'
     -> CreateService
-createService pServiceName_ pTaskDefinition_ pDesiredCount_ =
-  CreateService'
-    { _cCluster = Nothing
-    , _cClientToken = Nothing
-    , _cPlatformVersion = Nothing
-    , _cLoadBalancers = Nothing
-    , _cRole = Nothing
-    , _cPlacementConstraints = Nothing
-    , _cPlacementStrategy = Nothing
-    , _cLaunchType = Nothing
-    , _cHealthCheckGracePeriodSeconds = Nothing
-    , _cNetworkConfiguration = Nothing
-    , _cServiceRegistries = Nothing
-    , _cDeploymentConfiguration = Nothing
-    , _cServiceName = pServiceName_
-    , _cTaskDefinition = pTaskDefinition_
-    , _cDesiredCount = pDesiredCount_
-    }
-
+createService pServiceName_ pTaskDefinition_
+  pDesiredCount_
+  = CreateService'{_cCluster = Nothing,
+                   _cClientToken = Nothing, _cPlatformVersion = Nothing,
+                   _cLoadBalancers = Nothing, _cRole = Nothing,
+                   _cPlacementConstraints = Nothing,
+                   _cPlacementStrategy = Nothing,
+                   _cLaunchType = Nothing,
+                   _cHealthCheckGracePeriodSeconds = Nothing,
+                   _cNetworkConfiguration = Nothing,
+                   _cServiceRegistries = Nothing,
+                   _cDeploymentConfiguration = Nothing,
+                   _cServiceName = pServiceName_,
+                   _cTaskDefinition = pTaskDefinition_,
+                   _cDesiredCount = pDesiredCount_}
 
 -- | The short name or full Amazon Resource Name (ARN) of the cluster on which to run your service. If you do not specify a cluster, the default cluster is assumed.
 cCluster :: Lens' CreateService (Maybe Text)
@@ -180,7 +178,7 @@ cLoadBalancers = lens _cLoadBalancers (\ s a -> s{_cLoadBalancers = a}) . _Defau
 cRole :: Lens' CreateService (Maybe Text)
 cRole = lens _cRole (\ s a -> s{_cRole = a})
 
--- | An array of placement constraint objects to use for tasks in your service. You can specify a maximum of 10 constraints per task (this limit includes constraints in the task definition and those specified at run time).
+-- | An array of placement constraint objects to use for tasks in your service. You can specify a maximum of 10 constraints per task (this limit includes constraints in the task definition and those specified at run time). 
 cPlacementConstraints :: Lens' CreateService [PlacementConstraint]
 cPlacementConstraints = lens _cPlacementConstraints (\ s a -> s{_cPlacementConstraints = a}) . _Default . _Coerce
 
@@ -274,13 +272,12 @@ instance ToQuery CreateService where
         toQuery = const mempty
 
 -- | /See:/ 'createServiceResponse' smart constructor.
-data CreateServiceResponse =
-  CreateServiceResponse'
-    { _csrsService        :: !(Maybe ContainerService)
-    , _csrsResponseStatus :: !Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data CreateServiceResponse = CreateServiceResponse'{_csrsService
+                                                    ::
+                                                    !(Maybe ContainerService),
+                                                    _csrsResponseStatus :: !Int}
+                               deriving (Eq, Read, Show, Data, Typeable,
+                                         Generic)
 
 -- | Creates a value of 'CreateServiceResponse' with the minimum fields required to make a request.
 --
@@ -292,10 +289,9 @@ data CreateServiceResponse =
 createServiceResponse
     :: Int -- ^ 'csrsResponseStatus'
     -> CreateServiceResponse
-createServiceResponse pResponseStatus_ =
-  CreateServiceResponse'
-    {_csrsService = Nothing, _csrsResponseStatus = pResponseStatus_}
-
+createServiceResponse pResponseStatus_
+  = CreateServiceResponse'{_csrsService = Nothing,
+                           _csrsResponseStatus = pResponseStatus_}
 
 -- | The full description of your service following the create call.
 csrsService :: Lens' CreateServiceResponse (Maybe ContainerService)

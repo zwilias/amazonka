@@ -42,20 +42,15 @@ module Network.AWS.MediaStoreData.ListItems
 
 import Network.AWS.Lens
 import Network.AWS.MediaStoreData.Types
-import Network.AWS.MediaStoreData.Types.Product
 import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 
 -- | /See:/ 'listItems' smart constructor.
-data ListItems =
-  ListItems'
-    { _liPath       :: !(Maybe Text)
-    , _liNextToken  :: !(Maybe Text)
-    , _liMaxResults :: !(Maybe Nat)
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data ListItems = ListItems'{_liPath :: !(Maybe Text),
+                            _liNextToken :: !(Maybe Text),
+                            _liMaxResults :: !(Maybe Nat)}
+                   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'ListItems' with the minimum fields required to make a request.
 --
@@ -68,10 +63,9 @@ data ListItems =
 -- * 'liMaxResults' - The maximum results to return. The service might return fewer results.
 listItems
     :: ListItems
-listItems =
-  ListItems'
-    {_liPath = Nothing, _liNextToken = Nothing, _liMaxResults = Nothing}
-
+listItems
+  = ListItems'{_liPath = Nothing,
+               _liNextToken = Nothing, _liMaxResults = Nothing}
 
 -- | The path in the container from which to retrieve items. Format: <folder name>/<folder name>/<file name>
 liPath :: Lens' ListItems (Maybe Text)
@@ -112,14 +106,11 @@ instance ToQuery ListItems where
                "MaxResults" =: _liMaxResults]
 
 -- | /See:/ 'listItemsResponse' smart constructor.
-data ListItemsResponse =
-  ListItemsResponse'
-    { _lirsItems          :: !(Maybe [Item])
-    , _lirsNextToken      :: !(Maybe Text)
-    , _lirsResponseStatus :: !Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data ListItemsResponse = ListItemsResponse'{_lirsItems
+                                            :: !(Maybe [Item]),
+                                            _lirsNextToken :: !(Maybe Text),
+                                            _lirsResponseStatus :: !Int}
+                           deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'ListItemsResponse' with the minimum fields required to make a request.
 --
@@ -133,13 +124,10 @@ data ListItemsResponse =
 listItemsResponse
     :: Int -- ^ 'lirsResponseStatus'
     -> ListItemsResponse
-listItemsResponse pResponseStatus_ =
-  ListItemsResponse'
-    { _lirsItems = Nothing
-    , _lirsNextToken = Nothing
-    , _lirsResponseStatus = pResponseStatus_
-    }
-
+listItemsResponse pResponseStatus_
+  = ListItemsResponse'{_lirsItems = Nothing,
+                       _lirsNextToken = Nothing,
+                       _lirsResponseStatus = pResponseStatus_}
 
 -- | Metadata entries for the folders and objects at the requested path.
 lirsItems :: Lens' ListItemsResponse [Item]

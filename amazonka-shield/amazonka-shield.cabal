@@ -59,8 +59,23 @@ library
         , Network.AWS.Shield.Waiters
 
     other-modules:
-          Network.AWS.Shield.Types.Product
-        , Network.AWS.Shield.Types.Sum
+          Network.AWS.Shield.Types.AttackDetail
+        , Network.AWS.Shield.Types.AttackLayer
+        , Network.AWS.Shield.Types.AttackProperty
+        , Network.AWS.Shield.Types.AttackPropertyIdentifier
+        , Network.AWS.Shield.Types.AttackSummary
+        , Network.AWS.Shield.Types.AttackVectorDescription
+        , Network.AWS.Shield.Types.Contributor
+        , Network.AWS.Shield.Types.Mitigation
+        , Network.AWS.Shield.Types.Protection
+        , Network.AWS.Shield.Types.SubResourceSummary
+        , Network.AWS.Shield.Types.SubResourceType
+        , Network.AWS.Shield.Types.Subscription
+        , Network.AWS.Shield.Types.SubscriptionState
+        , Network.AWS.Shield.Types.SummarizedAttackVector
+        , Network.AWS.Shield.Types.SummarizedCounter
+        , Network.AWS.Shield.Types.TimeRange
+        , Network.AWS.Shield.Types.Unit
 
     build-depends:
           amazonka-core == 1.6.1.*

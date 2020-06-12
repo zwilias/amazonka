@@ -35,19 +35,14 @@ module Network.AWS.IAM.DeleteUser
     ) where
 
 import Network.AWS.IAM.Types
-import Network.AWS.IAM.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 
 -- | /See:/ 'deleteUser' smart constructor.
-newtype DeleteUser =
-  DeleteUser'
-    { _duUserName :: Text
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+newtype DeleteUser = DeleteUser'{_duUserName :: Text}
+                       deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'DeleteUser' with the minimum fields required to make a request.
 --
@@ -57,8 +52,8 @@ newtype DeleteUser =
 deleteUser
     :: Text -- ^ 'duUserName'
     -> DeleteUser
-deleteUser pUserName_ = DeleteUser' {_duUserName = pUserName_}
-
+deleteUser pUserName_
+  = DeleteUser'{_duUserName = pUserName_}
 
 -- | The name of the user to delete. This parameter allows (per its <http://wikipedia.org/wiki/regex regex pattern> ) a string of characters consisting of upper and lowercase alphanumeric characters with no spaces. You can also include any of the following characters: _+=,.@-
 duUserName :: Lens' DeleteUser Text
@@ -87,16 +82,13 @@ instance ToQuery DeleteUser where
                "UserName" =: _duUserName]
 
 -- | /See:/ 'deleteUserResponse' smart constructor.
-data DeleteUserResponse =
-  DeleteUserResponse'
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data DeleteUserResponse = DeleteUserResponse'
+                            deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'DeleteUserResponse' with the minimum fields required to make a request.
 --
 deleteUserResponse
     :: DeleteUserResponse
 deleteUserResponse = DeleteUserResponse'
-
 
 instance NFData DeleteUserResponse where

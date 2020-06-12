@@ -54,7 +54,6 @@ module Network.AWS.CognitoIdentityProvider.UpdateUserPoolDomain
     ) where
 
 import Network.AWS.CognitoIdentityProvider.Types
-import Network.AWS.CognitoIdentityProvider.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.Request
@@ -65,14 +64,12 @@ import Network.AWS.Response
 --
 --
 -- /See:/ 'updateUserPoolDomain' smart constructor.
-data UpdateUserPoolDomain =
-  UpdateUserPoolDomain'
-    { _uupdDomain             :: !Text
-    , _uupdUserPoolId         :: !Text
-    , _uupdCustomDomainConfig :: !CustomDomainConfigType
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data UpdateUserPoolDomain = UpdateUserPoolDomain'{_uupdDomain
+                                                  :: !Text,
+                                                  _uupdUserPoolId :: !Text,
+                                                  _uupdCustomDomainConfig ::
+                                                  !CustomDomainConfigType}
+                              deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'UpdateUserPoolDomain' with the minimum fields required to make a request.
 --
@@ -88,13 +85,11 @@ updateUserPoolDomain
     -> Text -- ^ 'uupdUserPoolId'
     -> CustomDomainConfigType -- ^ 'uupdCustomDomainConfig'
     -> UpdateUserPoolDomain
-updateUserPoolDomain pDomain_ pUserPoolId_ pCustomDomainConfig_ =
-  UpdateUserPoolDomain'
-    { _uupdDomain = pDomain_
-    , _uupdUserPoolId = pUserPoolId_
-    , _uupdCustomDomainConfig = pCustomDomainConfig_
-    }
-
+updateUserPoolDomain pDomain_ pUserPoolId_
+  pCustomDomainConfig_
+  = UpdateUserPoolDomain'{_uupdDomain = pDomain_,
+                          _uupdUserPoolId = pUserPoolId_,
+                          _uupdCustomDomainConfig = pCustomDomainConfig_}
 
 -- | The domain name for the custom domain that hosts the sign-up and sign-in pages for your application. For example: @auth.example.com@ .  This string can include only lowercase letters, numbers, and hyphens. Do not use a hyphen for the first or last character. Use periods to separate subdomain names.
 uupdDomain :: Lens' UpdateUserPoolDomain Text
@@ -152,13 +147,13 @@ instance ToQuery UpdateUserPoolDomain where
 --
 --
 -- /See:/ 'updateUserPoolDomainResponse' smart constructor.
-data UpdateUserPoolDomainResponse =
-  UpdateUserPoolDomainResponse'
-    { _uupdrsCloudFrontDomain :: !(Maybe Text)
-    , _uupdrsResponseStatus   :: !Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data UpdateUserPoolDomainResponse = UpdateUserPoolDomainResponse'{_uupdrsCloudFrontDomain
+                                                                  ::
+                                                                  !(Maybe Text),
+                                                                  _uupdrsResponseStatus
+                                                                  :: !Int}
+                                      deriving (Eq, Read, Show, Data, Typeable,
+                                                Generic)
 
 -- | Creates a value of 'UpdateUserPoolDomainResponse' with the minimum fields required to make a request.
 --
@@ -170,12 +165,10 @@ data UpdateUserPoolDomainResponse =
 updateUserPoolDomainResponse
     :: Int -- ^ 'uupdrsResponseStatus'
     -> UpdateUserPoolDomainResponse
-updateUserPoolDomainResponse pResponseStatus_ =
-  UpdateUserPoolDomainResponse'
-    { _uupdrsCloudFrontDomain = Nothing
-    , _uupdrsResponseStatus = pResponseStatus_
-    }
-
+updateUserPoolDomainResponse pResponseStatus_
+  = UpdateUserPoolDomainResponse'{_uupdrsCloudFrontDomain
+                                    = Nothing,
+                                  _uupdrsResponseStatus = pResponseStatus_}
 
 -- | The Amazon CloudFront endpoint that Amazon Cognito set up when you added the custom domain to your user pool.
 uupdrsCloudFrontDomain :: Lens' UpdateUserPoolDomainResponse (Maybe Text)

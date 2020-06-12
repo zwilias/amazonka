@@ -36,20 +36,16 @@ module Network.AWS.CloudFront.DeletePublicKey
     ) where
 
 import Network.AWS.CloudFront.Types
-import Network.AWS.CloudFront.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 
 -- | /See:/ 'deletePublicKey' smart constructor.
-data DeletePublicKey =
-  DeletePublicKey'
-    { _dpkIfMatch :: !(Maybe Text)
-    , _dpkId      :: !Text
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data DeletePublicKey = DeletePublicKey'{_dpkIfMatch
+                                        :: !(Maybe Text),
+                                        _dpkId :: !Text}
+                         deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'DeletePublicKey' with the minimum fields required to make a request.
 --
@@ -61,8 +57,9 @@ data DeletePublicKey =
 deletePublicKey
     :: Text -- ^ 'dpkId'
     -> DeletePublicKey
-deletePublicKey pId_ = DeletePublicKey' {_dpkIfMatch = Nothing, _dpkId = pId_}
-
+deletePublicKey pId_
+  = DeletePublicKey'{_dpkIfMatch = Nothing,
+                     _dpkId = pId_}
 
 -- | The value of the @ETag@ header that you received when retrieving the public key identity to delete. For example: @E2QWRUHAPOMQZL@ .
 dpkIfMatch :: Lens' DeletePublicKey (Maybe Text)
@@ -93,16 +90,14 @@ instance ToQuery DeletePublicKey where
         toQuery = const mempty
 
 -- | /See:/ 'deletePublicKeyResponse' smart constructor.
-data DeletePublicKeyResponse =
-  DeletePublicKeyResponse'
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data DeletePublicKeyResponse = DeletePublicKeyResponse'
+                                 deriving (Eq, Read, Show, Data, Typeable,
+                                           Generic)
 
 -- | Creates a value of 'DeletePublicKeyResponse' with the minimum fields required to make a request.
 --
 deletePublicKeyResponse
     :: DeletePublicKeyResponse
 deletePublicKeyResponse = DeletePublicKeyResponse'
-
 
 instance NFData DeletePublicKeyResponse where

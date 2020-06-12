@@ -23,23 +23,23 @@
 --
 -- To create player sessions, specify a game session ID, a list of player IDs, and optionally a set of player data strings. If successful, the players are added to the game session and a set of new 'PlayerSession' objects is returned. Player sessions cannot be updated.
 --
--- /Available in Amazon GameLift Local./
+-- /Available in Amazon GameLift Local./ 
 --
 -- Player-session-related operations include:
 --
---     * 'CreatePlayerSession'
+--     * 'CreatePlayerSession' 
 --
---     * 'CreatePlayerSessions'
+--     * 'CreatePlayerSessions' 
 --
---     * 'DescribePlayerSessions'
+--     * 'DescribePlayerSessions' 
 --
 --     * Game session placements
 --
---     * 'StartGameSessionPlacement'
+--     * 'StartGameSessionPlacement' 
 --
---     * 'DescribeGameSessionPlacement'
+--     * 'DescribeGameSessionPlacement' 
 --
---     * 'StopGameSessionPlacement'
+--     * 'StopGameSessionPlacement' 
 --
 --
 --
@@ -64,7 +64,6 @@ module Network.AWS.GameLift.CreatePlayerSessions
     ) where
 
 import Network.AWS.GameLift.Types
-import Network.AWS.GameLift.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.Request
@@ -75,20 +74,18 @@ import Network.AWS.Response
 --
 --
 -- /See:/ 'createPlayerSessions' smart constructor.
-data CreatePlayerSessions =
-  CreatePlayerSessions'
-    { _cpsPlayerDataMap :: !(Maybe (Map Text Text))
-    , _cpsGameSessionId :: !Text
-    , _cpsPlayerIds     :: !(List1 Text)
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data CreatePlayerSessions = CreatePlayerSessions'{_cpsPlayerDataMap
+                                                  :: !(Maybe (Map Text Text)),
+                                                  _cpsGameSessionId :: !Text,
+                                                  _cpsPlayerIds ::
+                                                  !(List1 Text)}
+                              deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'CreatePlayerSessions' with the minimum fields required to make a request.
 --
 -- Use one of the following lenses to modify other fields as desired:
 --
--- * 'cpsPlayerDataMap' - Map of string pairs, each specifying a player ID and a set of developer-defined information related to the player. Amazon GameLift does not use this data, so it can be formatted as needed for use in the game. Player data strings for player IDs not included in the @PlayerIds@ parameter are ignored.
+-- * 'cpsPlayerDataMap' - Map of string pairs, each specifying a player ID and a set of developer-defined information related to the player. Amazon GameLift does not use this data, so it can be formatted as needed for use in the game. Player data strings for player IDs not included in the @PlayerIds@ parameter are ignored. 
 --
 -- * 'cpsGameSessionId' - Unique identifier for the game session to add players to.
 --
@@ -97,15 +94,12 @@ createPlayerSessions
     :: Text -- ^ 'cpsGameSessionId'
     -> NonEmpty Text -- ^ 'cpsPlayerIds'
     -> CreatePlayerSessions
-createPlayerSessions pGameSessionId_ pPlayerIds_ =
-  CreatePlayerSessions'
-    { _cpsPlayerDataMap = Nothing
-    , _cpsGameSessionId = pGameSessionId_
-    , _cpsPlayerIds = _List1 # pPlayerIds_
-    }
+createPlayerSessions pGameSessionId_ pPlayerIds_
+  = CreatePlayerSessions'{_cpsPlayerDataMap = Nothing,
+                          _cpsGameSessionId = pGameSessionId_,
+                          _cpsPlayerIds = _List1 # pPlayerIds_}
 
-
--- | Map of string pairs, each specifying a player ID and a set of developer-defined information related to the player. Amazon GameLift does not use this data, so it can be formatted as needed for use in the game. Player data strings for player IDs not included in the @PlayerIds@ parameter are ignored.
+-- | Map of string pairs, each specifying a player ID and a set of developer-defined information related to the player. Amazon GameLift does not use this data, so it can be formatted as needed for use in the game. Player data strings for player IDs not included in the @PlayerIds@ parameter are ignored. 
 cpsPlayerDataMap :: Lens' CreatePlayerSessions (HashMap Text Text)
 cpsPlayerDataMap = lens _cpsPlayerDataMap (\ s a -> s{_cpsPlayerDataMap = a}) . _Default . _Map
 
@@ -160,13 +154,14 @@ instance ToQuery CreatePlayerSessions where
 --
 --
 -- /See:/ 'createPlayerSessionsResponse' smart constructor.
-data CreatePlayerSessionsResponse =
-  CreatePlayerSessionsResponse'
-    { _crsPlayerSessions :: !(Maybe [PlayerSession])
-    , _crsResponseStatus :: !Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data CreatePlayerSessionsResponse = CreatePlayerSessionsResponse'{_crsPlayerSessions
+                                                                  ::
+                                                                  !(Maybe
+                                                                      [PlayerSession]),
+                                                                  _crsResponseStatus
+                                                                  :: !Int}
+                                      deriving (Eq, Read, Show, Data, Typeable,
+                                                Generic)
 
 -- | Creates a value of 'CreatePlayerSessionsResponse' with the minimum fields required to make a request.
 --
@@ -178,10 +173,10 @@ data CreatePlayerSessionsResponse =
 createPlayerSessionsResponse
     :: Int -- ^ 'crsResponseStatus'
     -> CreatePlayerSessionsResponse
-createPlayerSessionsResponse pResponseStatus_ =
-  CreatePlayerSessionsResponse'
-    {_crsPlayerSessions = Nothing, _crsResponseStatus = pResponseStatus_}
-
+createPlayerSessionsResponse pResponseStatus_
+  = CreatePlayerSessionsResponse'{_crsPlayerSessions =
+                                    Nothing,
+                                  _crsResponseStatus = pResponseStatus_}
 
 -- | Collection of player session objects created for the added players.
 crsPlayerSessions :: Lens' CreatePlayerSessionsResponse [PlayerSession]

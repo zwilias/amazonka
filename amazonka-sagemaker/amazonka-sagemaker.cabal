@@ -83,8 +83,50 @@ library
         , Network.AWS.SageMaker.Waiters
 
     other-modules:
-          Network.AWS.SageMaker.Types.Product
-        , Network.AWS.SageMaker.Types.Sum
+          Network.AWS.SageMaker.Types.AlgorithmSpecification
+        , Network.AWS.SageMaker.Types.Channel
+        , Network.AWS.SageMaker.Types.CompressionType
+        , Network.AWS.SageMaker.Types.ContainerDefinition
+        , Network.AWS.SageMaker.Types.DataSource
+        , Network.AWS.SageMaker.Types.DesiredWeightAndCapacity
+        , Network.AWS.SageMaker.Types.DirectInternetAccess
+        , Network.AWS.SageMaker.Types.EndpointConfigSortKey
+        , Network.AWS.SageMaker.Types.EndpointConfigSummary
+        , Network.AWS.SageMaker.Types.EndpointSortKey
+        , Network.AWS.SageMaker.Types.EndpointStatus
+        , Network.AWS.SageMaker.Types.EndpointSummary
+        , Network.AWS.SageMaker.Types.InstanceType
+        , Network.AWS.SageMaker.Types.ModelArtifacts
+        , Network.AWS.SageMaker.Types.ModelSortKey
+        , Network.AWS.SageMaker.Types.ModelSummary
+        , Network.AWS.SageMaker.Types.NotebookInstanceLifecycleConfigSortKey
+        , Network.AWS.SageMaker.Types.NotebookInstanceLifecycleConfigSortOrder
+        , Network.AWS.SageMaker.Types.NotebookInstanceLifecycleConfigSummary
+        , Network.AWS.SageMaker.Types.NotebookInstanceLifecycleHook
+        , Network.AWS.SageMaker.Types.NotebookInstanceSortKey
+        , Network.AWS.SageMaker.Types.NotebookInstanceSortOrder
+        , Network.AWS.SageMaker.Types.NotebookInstanceStatus
+        , Network.AWS.SageMaker.Types.NotebookInstanceSummary
+        , Network.AWS.SageMaker.Types.OrderKey
+        , Network.AWS.SageMaker.Types.OutputDataConfig
+        , Network.AWS.SageMaker.Types.ProductionVariant
+        , Network.AWS.SageMaker.Types.ProductionVariantInstanceType
+        , Network.AWS.SageMaker.Types.ProductionVariantSummary
+        , Network.AWS.SageMaker.Types.RecordWrapper
+        , Network.AWS.SageMaker.Types.ResourceConfig
+        , Network.AWS.SageMaker.Types.S3DataDistribution
+        , Network.AWS.SageMaker.Types.S3DataSource
+        , Network.AWS.SageMaker.Types.S3DataType
+        , Network.AWS.SageMaker.Types.SecondaryStatus
+        , Network.AWS.SageMaker.Types.SortBy
+        , Network.AWS.SageMaker.Types.SortOrder
+        , Network.AWS.SageMaker.Types.StoppingCondition
+        , Network.AWS.SageMaker.Types.Tag
+        , Network.AWS.SageMaker.Types.TrainingInputMode
+        , Network.AWS.SageMaker.Types.TrainingInstanceType
+        , Network.AWS.SageMaker.Types.TrainingJobStatus
+        , Network.AWS.SageMaker.Types.TrainingJobSummary
+        , Network.AWS.SageMaker.Types.VPCConfig
 
     build-depends:
           amazonka-core == 1.6.1.*

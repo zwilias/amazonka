@@ -41,18 +41,14 @@ module Network.AWS.Organizations.DescribePolicy
 
 import Network.AWS.Lens
 import Network.AWS.Organizations.Types
-import Network.AWS.Organizations.Types.Product
 import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 
 -- | /See:/ 'describePolicy' smart constructor.
-newtype DescribePolicy =
-  DescribePolicy'
-    { _dpPolicyId :: Text
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+newtype DescribePolicy = DescribePolicy'{_dpPolicyId
+                                         :: Text}
+                           deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'DescribePolicy' with the minimum fields required to make a request.
 --
@@ -62,8 +58,8 @@ newtype DescribePolicy =
 describePolicy
     :: Text -- ^ 'dpPolicyId'
     -> DescribePolicy
-describePolicy pPolicyId_ = DescribePolicy' {_dpPolicyId = pPolicyId_}
-
+describePolicy pPolicyId_
+  = DescribePolicy'{_dpPolicyId = pPolicyId_}
 
 -- | The unique identifier (ID) of the policy that you want details about. You can get the ID from the 'ListPolicies' or 'ListPoliciesForTarget' operations. The <http://wikipedia.org/wiki/regex regex pattern> for a policy ID string requires "p-" followed by from 8 to 128 lower-case letters or digits.
 dpPolicyId :: Lens' DescribePolicy Text
@@ -104,13 +100,12 @@ instance ToQuery DescribePolicy where
         toQuery = const mempty
 
 -- | /See:/ 'describePolicyResponse' smart constructor.
-data DescribePolicyResponse =
-  DescribePolicyResponse'
-    { _dprsPolicy         :: !(Maybe Policy)
-    , _dprsResponseStatus :: !Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data DescribePolicyResponse = DescribePolicyResponse'{_dprsPolicy
+                                                      :: !(Maybe Policy),
+                                                      _dprsResponseStatus ::
+                                                      !Int}
+                                deriving (Eq, Read, Show, Data, Typeable,
+                                          Generic)
 
 -- | Creates a value of 'DescribePolicyResponse' with the minimum fields required to make a request.
 --
@@ -122,10 +117,9 @@ data DescribePolicyResponse =
 describePolicyResponse
     :: Int -- ^ 'dprsResponseStatus'
     -> DescribePolicyResponse
-describePolicyResponse pResponseStatus_ =
-  DescribePolicyResponse'
-    {_dprsPolicy = Nothing, _dprsResponseStatus = pResponseStatus_}
-
+describePolicyResponse pResponseStatus_
+  = DescribePolicyResponse'{_dprsPolicy = Nothing,
+                            _dprsResponseStatus = pResponseStatus_}
 
 -- | A structure that contains details about the specified policy.
 dprsPolicy :: Lens' DescribePolicyResponse (Maybe Policy)

@@ -50,7 +50,6 @@ module Network.AWS.CognitoIdentityProvider.AdminRespondToAuthChallenge
     ) where
 
 import Network.AWS.CognitoIdentityProvider.Types
-import Network.AWS.CognitoIdentityProvider.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.Request
@@ -61,19 +60,37 @@ import Network.AWS.Response
 --
 --
 -- /See:/ 'adminRespondToAuthChallenge' smart constructor.
-data AdminRespondToAuthChallenge =
-  AdminRespondToAuthChallenge'
-    { _artacClientMetadata     :: !(Maybe (Map Text Text))
-    , _artacContextData        :: !(Maybe ContextDataType)
-    , _artacAnalyticsMetadata  :: !(Maybe AnalyticsMetadataType)
-    , _artacChallengeResponses :: !(Maybe (Map Text Text))
-    , _artacSession            :: !(Maybe Text)
-    , _artacUserPoolId         :: !Text
-    , _artacClientId           :: !(Sensitive Text)
-    , _artacChallengeName      :: !ChallengeNameType
-    }
-  deriving (Eq, Show, Data, Typeable, Generic)
-
+data AdminRespondToAuthChallenge = AdminRespondToAuthChallenge'{_artacClientMetadata
+                                                                ::
+                                                                !(Maybe
+                                                                    (Map Text
+                                                                       Text)),
+                                                                _artacContextData
+                                                                ::
+                                                                !(Maybe
+                                                                    ContextDataType),
+                                                                _artacAnalyticsMetadata
+                                                                ::
+                                                                !(Maybe
+                                                                    AnalyticsMetadataType),
+                                                                _artacChallengeResponses
+                                                                ::
+                                                                !(Maybe
+                                                                    (Map Text
+                                                                       Text)),
+                                                                _artacSession ::
+                                                                !(Maybe Text),
+                                                                _artacUserPoolId
+                                                                :: !Text,
+                                                                _artacClientId
+                                                                ::
+                                                                !(Sensitive
+                                                                    Text),
+                                                                _artacChallengeName
+                                                                ::
+                                                                !ChallengeNameType}
+                                     deriving (Eq, Show, Data, Typeable,
+                                               Generic)
 
 -- | Creates a value of 'AdminRespondToAuthChallenge' with the minimum fields required to make a request.
 --
@@ -99,18 +116,17 @@ adminRespondToAuthChallenge
     -> Text -- ^ 'artacClientId'
     -> ChallengeNameType -- ^ 'artacChallengeName'
     -> AdminRespondToAuthChallenge
-adminRespondToAuthChallenge pUserPoolId_ pClientId_ pChallengeName_ =
-  AdminRespondToAuthChallenge'
-    { _artacClientMetadata = Nothing
-    , _artacContextData = Nothing
-    , _artacAnalyticsMetadata = Nothing
-    , _artacChallengeResponses = Nothing
-    , _artacSession = Nothing
-    , _artacUserPoolId = pUserPoolId_
-    , _artacClientId = _Sensitive # pClientId_
-    , _artacChallengeName = pChallengeName_
-    }
-
+adminRespondToAuthChallenge pUserPoolId_ pClientId_
+  pChallengeName_
+  = AdminRespondToAuthChallenge'{_artacClientMetadata =
+                                   Nothing,
+                                 _artacContextData = Nothing,
+                                 _artacAnalyticsMetadata = Nothing,
+                                 _artacChallengeResponses = Nothing,
+                                 _artacSession = Nothing,
+                                 _artacUserPoolId = pUserPoolId_,
+                                 _artacClientId = _Sensitive # pClientId_,
+                                 _artacChallengeName = pChallengeName_}
 
 -- | A map of custom key-value pairs that you can provide as input for any custom workflows that this action triggers.  You create custom workflows by assigning AWS Lambda functions to user pool triggers. When you use the AdminRespondToAuthChallenge API action, Amazon Cognito invokes any functions that are assigned to the following triggers: /pre sign-up/ , /custom message/ , /post authentication/ , /user migration/ , /pre token generation/ , /define auth challenge/ , /create auth challenge/ , and /verify auth challenge response/ . When Amazon Cognito invokes any of these functions, it passes a JSON payload, which the function receives as input. This payload contains a @clientMetadata@ attribute, which provides the data that you assigned to the ClientMetadata parameter in your AdminRespondToAuthChallenge request. In your function code in AWS Lambda, you can process the @clientMetadata@ value to enhance your workflow for your specific needs. For more information, see <https://docs.aws.amazon.com/cognito/latest/developerguide/cognito-user-identity-pools-working-with-aws-lambda-triggers.html Customizing User Pool Workflows with Lambda Triggers> in the /Amazon Cognito Developer Guide/ .
 artacClientMetadata :: Lens' AdminRespondToAuthChallenge (HashMap Text Text)
@@ -197,16 +213,29 @@ instance ToQuery AdminRespondToAuthChallenge where
 --
 --
 -- /See:/ 'adminRespondToAuthChallengeResponse' smart constructor.
-data AdminRespondToAuthChallengeResponse =
-  AdminRespondToAuthChallengeResponse'
-    { _artacrsChallengeName        :: !(Maybe ChallengeNameType)
-    , _artacrsChallengeParameters  :: !(Maybe (Map Text Text))
-    , _artacrsAuthenticationResult :: !(Maybe AuthenticationResultType)
-    , _artacrsSession              :: !(Maybe Text)
-    , _artacrsResponseStatus       :: !Int
-    }
-  deriving (Eq, Show, Data, Typeable, Generic)
-
+data AdminRespondToAuthChallengeResponse = AdminRespondToAuthChallengeResponse'{_artacrsChallengeName
+                                                                                ::
+                                                                                !(Maybe
+                                                                                    ChallengeNameType),
+                                                                                _artacrsChallengeParameters
+                                                                                ::
+                                                                                !(Maybe
+                                                                                    (Map
+                                                                                       Text
+                                                                                       Text)),
+                                                                                _artacrsAuthenticationResult
+                                                                                ::
+                                                                                !(Maybe
+                                                                                    AuthenticationResultType),
+                                                                                _artacrsSession
+                                                                                ::
+                                                                                !(Maybe
+                                                                                    Text),
+                                                                                _artacrsResponseStatus
+                                                                                ::
+                                                                                !Int}
+                                             deriving (Eq, Show, Data, Typeable,
+                                                       Generic)
 
 -- | Creates a value of 'AdminRespondToAuthChallengeResponse' with the minimum fields required to make a request.
 --
@@ -224,15 +253,14 @@ data AdminRespondToAuthChallengeResponse =
 adminRespondToAuthChallengeResponse
     :: Int -- ^ 'artacrsResponseStatus'
     -> AdminRespondToAuthChallengeResponse
-adminRespondToAuthChallengeResponse pResponseStatus_ =
-  AdminRespondToAuthChallengeResponse'
-    { _artacrsChallengeName = Nothing
-    , _artacrsChallengeParameters = Nothing
-    , _artacrsAuthenticationResult = Nothing
-    , _artacrsSession = Nothing
-    , _artacrsResponseStatus = pResponseStatus_
-    }
-
+adminRespondToAuthChallengeResponse pResponseStatus_
+  = AdminRespondToAuthChallengeResponse'{_artacrsChallengeName
+                                           = Nothing,
+                                         _artacrsChallengeParameters = Nothing,
+                                         _artacrsAuthenticationResult = Nothing,
+                                         _artacrsSession = Nothing,
+                                         _artacrsResponseStatus =
+                                           pResponseStatus_}
 
 -- | The name of the challenge. For more information, see .
 artacrsChallengeName :: Lens' AdminRespondToAuthChallengeResponse (Maybe ChallengeNameType)

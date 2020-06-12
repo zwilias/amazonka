@@ -44,18 +44,17 @@ import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 import Network.AWS.SSM.Types
-import Network.AWS.SSM.Types.Product
 
 -- | /See:/ 'modifyDocumentPermission' smart constructor.
-data ModifyDocumentPermission =
-  ModifyDocumentPermission'
-    { _mdpAccountIdsToAdd    :: !(Maybe [Text])
-    , _mdpAccountIdsToRemove :: !(Maybe [Text])
-    , _mdpName               :: !Text
-    , _mdpPermissionType     :: !DocumentPermissionType
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data ModifyDocumentPermission = ModifyDocumentPermission'{_mdpAccountIdsToAdd
+                                                          :: !(Maybe [Text]),
+                                                          _mdpAccountIdsToRemove
+                                                          :: !(Maybe [Text]),
+                                                          _mdpName :: !Text,
+                                                          _mdpPermissionType ::
+                                                          !DocumentPermissionType}
+                                  deriving (Eq, Read, Show, Data, Typeable,
+                                            Generic)
 
 -- | Creates a value of 'ModifyDocumentPermission' with the minimum fields required to make a request.
 --
@@ -72,14 +71,12 @@ modifyDocumentPermission
     :: Text -- ^ 'mdpName'
     -> DocumentPermissionType -- ^ 'mdpPermissionType'
     -> ModifyDocumentPermission
-modifyDocumentPermission pName_ pPermissionType_ =
-  ModifyDocumentPermission'
-    { _mdpAccountIdsToAdd = Nothing
-    , _mdpAccountIdsToRemove = Nothing
-    , _mdpName = pName_
-    , _mdpPermissionType = pPermissionType_
-    }
-
+modifyDocumentPermission pName_ pPermissionType_
+  = ModifyDocumentPermission'{_mdpAccountIdsToAdd =
+                                Nothing,
+                              _mdpAccountIdsToRemove = Nothing,
+                              _mdpName = pName_,
+                              _mdpPermissionType = pPermissionType_}
 
 -- | The AWS user accounts that should have access to the document. The account IDs can either be a group of account IDs or /All/ .
 mdpAccountIdsToAdd :: Lens' ModifyDocumentPermission [Text]
@@ -136,12 +133,11 @@ instance ToQuery ModifyDocumentPermission where
         toQuery = const mempty
 
 -- | /See:/ 'modifyDocumentPermissionResponse' smart constructor.
-newtype ModifyDocumentPermissionResponse =
-  ModifyDocumentPermissionResponse'
-    { _mdprsResponseStatus :: Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+newtype ModifyDocumentPermissionResponse = ModifyDocumentPermissionResponse'{_mdprsResponseStatus
+                                                                             ::
+                                                                             Int}
+                                             deriving (Eq, Read, Show, Data,
+                                                       Typeable, Generic)
 
 -- | Creates a value of 'ModifyDocumentPermissionResponse' with the minimum fields required to make a request.
 --
@@ -151,9 +147,9 @@ newtype ModifyDocumentPermissionResponse =
 modifyDocumentPermissionResponse
     :: Int -- ^ 'mdprsResponseStatus'
     -> ModifyDocumentPermissionResponse
-modifyDocumentPermissionResponse pResponseStatus_ =
-  ModifyDocumentPermissionResponse' {_mdprsResponseStatus = pResponseStatus_}
-
+modifyDocumentPermissionResponse pResponseStatus_
+  = ModifyDocumentPermissionResponse'{_mdprsResponseStatus
+                                        = pResponseStatus_}
 
 -- | -- | The response status code.
 mdprsResponseStatus :: Lens' ModifyDocumentPermissionResponse Int

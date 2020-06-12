@@ -47,27 +47,24 @@ module Network.AWS.EFS.DescribeMountTargets
     ) where
 
 import Network.AWS.EFS.Types
-import Network.AWS.EFS.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Pager
 import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 
--- |
+-- | 
 --
 --
 --
 -- /See:/ 'describeMountTargets' smart constructor.
-data DescribeMountTargets =
-  DescribeMountTargets'
-    { _dmtFileSystemId  :: !(Maybe Text)
-    , _dmtMarker        :: !(Maybe Text)
-    , _dmtMaxItems      :: !(Maybe Nat)
-    , _dmtMountTargetId :: !(Maybe Text)
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data DescribeMountTargets = DescribeMountTargets'{_dmtFileSystemId
+                                                  :: !(Maybe Text),
+                                                  _dmtMarker :: !(Maybe Text),
+                                                  _dmtMaxItems :: !(Maybe Nat),
+                                                  _dmtMountTargetId ::
+                                                  !(Maybe Text)}
+                              deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'DescribeMountTargets' with the minimum fields required to make a request.
 --
@@ -82,14 +79,10 @@ data DescribeMountTargets =
 -- * 'dmtMountTargetId' - (Optional) ID of the mount target that you want to have described (String). It must be included in your request if @FileSystemId@ is not included.
 describeMountTargets
     :: DescribeMountTargets
-describeMountTargets =
-  DescribeMountTargets'
-    { _dmtFileSystemId = Nothing
-    , _dmtMarker = Nothing
-    , _dmtMaxItems = Nothing
-    , _dmtMountTargetId = Nothing
-    }
-
+describeMountTargets
+  = DescribeMountTargets'{_dmtFileSystemId = Nothing,
+                          _dmtMarker = Nothing, _dmtMaxItems = Nothing,
+                          _dmtMountTargetId = Nothing}
 
 -- | (Optional) ID of the file system whose mount targets you want to list (String). It must be included in your request if @MountTargetId@ is not included.
 dmtFileSystemId :: Lens' DescribeMountTargets (Maybe Text)
@@ -144,20 +137,25 @@ instance ToQuery DescribeMountTargets where
                "Marker" =: _dmtMarker, "MaxItems" =: _dmtMaxItems,
                "MountTargetId" =: _dmtMountTargetId]
 
--- |
+-- | 
 --
 --
 --
 -- /See:/ 'describeMountTargetsResponse' smart constructor.
-data DescribeMountTargetsResponse =
-  DescribeMountTargetsResponse'
-    { _dmtrsMountTargets   :: !(Maybe [MountTargetDescription])
-    , _dmtrsMarker         :: !(Maybe Text)
-    , _dmtrsNextMarker     :: !(Maybe Text)
-    , _dmtrsResponseStatus :: !Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data DescribeMountTargetsResponse = DescribeMountTargetsResponse'{_dmtrsMountTargets
+                                                                  ::
+                                                                  !(Maybe
+                                                                      [MountTargetDescription]),
+                                                                  _dmtrsMarker
+                                                                  ::
+                                                                  !(Maybe Text),
+                                                                  _dmtrsNextMarker
+                                                                  ::
+                                                                  !(Maybe Text),
+                                                                  _dmtrsResponseStatus
+                                                                  :: !Int}
+                                      deriving (Eq, Read, Show, Data, Typeable,
+                                                Generic)
 
 -- | Creates a value of 'DescribeMountTargetsResponse' with the minimum fields required to make a request.
 --
@@ -173,14 +171,12 @@ data DescribeMountTargetsResponse =
 describeMountTargetsResponse
     :: Int -- ^ 'dmtrsResponseStatus'
     -> DescribeMountTargetsResponse
-describeMountTargetsResponse pResponseStatus_ =
-  DescribeMountTargetsResponse'
-    { _dmtrsMountTargets = Nothing
-    , _dmtrsMarker = Nothing
-    , _dmtrsNextMarker = Nothing
-    , _dmtrsResponseStatus = pResponseStatus_
-    }
-
+describeMountTargetsResponse pResponseStatus_
+  = DescribeMountTargetsResponse'{_dmtrsMountTargets =
+                                    Nothing,
+                                  _dmtrsMarker = Nothing,
+                                  _dmtrsNextMarker = Nothing,
+                                  _dmtrsResponseStatus = pResponseStatus_}
 
 -- | Returns the file system's mount targets as an array of @MountTargetDescription@ objects.
 dmtrsMountTargets :: Lens' DescribeMountTargetsResponse [MountTargetDescription]

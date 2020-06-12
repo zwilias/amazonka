@@ -40,22 +40,22 @@ module Network.AWS.IoT.RemoveThingFromThingGroup
     ) where
 
 import Network.AWS.IoT.Types
-import Network.AWS.IoT.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 
 -- | /See:/ 'removeThingFromThingGroup' smart constructor.
-data RemoveThingFromThingGroup =
-  RemoveThingFromThingGroup'
-    { _rtftgThingGroupARN  :: !(Maybe Text)
-    , _rtftgThingARN       :: !(Maybe Text)
-    , _rtftgThingGroupName :: !(Maybe Text)
-    , _rtftgThingName      :: !(Maybe Text)
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data RemoveThingFromThingGroup = RemoveThingFromThingGroup'{_rtftgThingGroupARN
+                                                            :: !(Maybe Text),
+                                                            _rtftgThingARN ::
+                                                            !(Maybe Text),
+                                                            _rtftgThingGroupName
+                                                            :: !(Maybe Text),
+                                                            _rtftgThingName ::
+                                                            !(Maybe Text)}
+                                   deriving (Eq, Read, Show, Data, Typeable,
+                                             Generic)
 
 -- | Creates a value of 'RemoveThingFromThingGroup' with the minimum fields required to make a request.
 --
@@ -70,14 +70,12 @@ data RemoveThingFromThingGroup =
 -- * 'rtftgThingName' - The name of the thing to remove from the group.
 removeThingFromThingGroup
     :: RemoveThingFromThingGroup
-removeThingFromThingGroup =
-  RemoveThingFromThingGroup'
-    { _rtftgThingGroupARN = Nothing
-    , _rtftgThingARN = Nothing
-    , _rtftgThingGroupName = Nothing
-    , _rtftgThingName = Nothing
-    }
-
+removeThingFromThingGroup
+  = RemoveThingFromThingGroup'{_rtftgThingGroupARN =
+                                 Nothing,
+                               _rtftgThingARN = Nothing,
+                               _rtftgThingGroupName = Nothing,
+                               _rtftgThingName = Nothing}
 
 -- | The group ARN.
 rtftgThingGroupARN :: Lens' RemoveThingFromThingGroup (Maybe Text)
@@ -129,12 +127,11 @@ instance ToQuery RemoveThingFromThingGroup where
         toQuery = const mempty
 
 -- | /See:/ 'removeThingFromThingGroupResponse' smart constructor.
-newtype RemoveThingFromThingGroupResponse =
-  RemoveThingFromThingGroupResponse'
-    { _rtftgrsResponseStatus :: Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+newtype RemoveThingFromThingGroupResponse = RemoveThingFromThingGroupResponse'{_rtftgrsResponseStatus
+                                                                               ::
+                                                                               Int}
+                                              deriving (Eq, Read, Show, Data,
+                                                        Typeable, Generic)
 
 -- | Creates a value of 'RemoveThingFromThingGroupResponse' with the minimum fields required to make a request.
 --
@@ -144,9 +141,9 @@ newtype RemoveThingFromThingGroupResponse =
 removeThingFromThingGroupResponse
     :: Int -- ^ 'rtftgrsResponseStatus'
     -> RemoveThingFromThingGroupResponse
-removeThingFromThingGroupResponse pResponseStatus_ =
-  RemoveThingFromThingGroupResponse' {_rtftgrsResponseStatus = pResponseStatus_}
-
+removeThingFromThingGroupResponse pResponseStatus_
+  = RemoveThingFromThingGroupResponse'{_rtftgrsResponseStatus
+                                         = pResponseStatus_}
 
 -- | -- | The response status code.
 rtftgrsResponseStatus :: Lens' RemoveThingFromThingGroupResponse Int

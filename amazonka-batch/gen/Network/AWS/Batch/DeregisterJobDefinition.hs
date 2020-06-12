@@ -37,19 +37,16 @@ module Network.AWS.Batch.DeregisterJobDefinition
     ) where
 
 import Network.AWS.Batch.Types
-import Network.AWS.Batch.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 
 -- | /See:/ 'deregisterJobDefinition' smart constructor.
-newtype DeregisterJobDefinition =
-  DeregisterJobDefinition'
-    { _djdJobDefinition :: Text
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+newtype DeregisterJobDefinition = DeregisterJobDefinition'{_djdJobDefinition
+                                                           :: Text}
+                                    deriving (Eq, Read, Show, Data, Typeable,
+                                              Generic)
 
 -- | Creates a value of 'DeregisterJobDefinition' with the minimum fields required to make a request.
 --
@@ -59,9 +56,9 @@ newtype DeregisterJobDefinition =
 deregisterJobDefinition
     :: Text -- ^ 'djdJobDefinition'
     -> DeregisterJobDefinition
-deregisterJobDefinition pJobDefinition_ =
-  DeregisterJobDefinition' {_djdJobDefinition = pJobDefinition_}
-
+deregisterJobDefinition pJobDefinition_
+  = DeregisterJobDefinition'{_djdJobDefinition =
+                               pJobDefinition_}
 
 -- | The name and revision (@name:revision@ ) or full Amazon Resource Name (ARN) of the job definition to deregister.
 djdJobDefinition :: Lens' DeregisterJobDefinition Text
@@ -101,12 +98,11 @@ instance ToQuery DeregisterJobDefinition where
         toQuery = const mempty
 
 -- | /See:/ 'deregisterJobDefinitionResponse' smart constructor.
-newtype DeregisterJobDefinitionResponse =
-  DeregisterJobDefinitionResponse'
-    { _derrsResponseStatus :: Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+newtype DeregisterJobDefinitionResponse = DeregisterJobDefinitionResponse'{_derrsResponseStatus
+                                                                           ::
+                                                                           Int}
+                                            deriving (Eq, Read, Show, Data,
+                                                      Typeable, Generic)
 
 -- | Creates a value of 'DeregisterJobDefinitionResponse' with the minimum fields required to make a request.
 --
@@ -116,9 +112,9 @@ newtype DeregisterJobDefinitionResponse =
 deregisterJobDefinitionResponse
     :: Int -- ^ 'derrsResponseStatus'
     -> DeregisterJobDefinitionResponse
-deregisterJobDefinitionResponse pResponseStatus_ =
-  DeregisterJobDefinitionResponse' {_derrsResponseStatus = pResponseStatus_}
-
+deregisterJobDefinitionResponse pResponseStatus_
+  = DeregisterJobDefinitionResponse'{_derrsResponseStatus
+                                       = pResponseStatus_}
 
 -- | -- | The response status code.
 derrsResponseStatus :: Lens' DeregisterJobDefinitionResponse Int

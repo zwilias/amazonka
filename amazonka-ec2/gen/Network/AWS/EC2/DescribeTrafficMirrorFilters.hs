@@ -45,7 +45,6 @@ module Network.AWS.EC2.DescribeTrafficMirrorFilters
     ) where
 
 import Network.AWS.EC2.Types
-import Network.AWS.EC2.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Pager
 import Network.AWS.Prelude
@@ -53,16 +52,24 @@ import Network.AWS.Request
 import Network.AWS.Response
 
 -- | /See:/ 'describeTrafficMirrorFilters' smart constructor.
-data DescribeTrafficMirrorFilters =
-  DescribeTrafficMirrorFilters'
-    { _dtmfTrafficMirrorFilterIds :: !(Maybe [Text])
-    , _dtmfFilters                :: !(Maybe [Filter])
-    , _dtmfNextToken              :: !(Maybe Text)
-    , _dtmfDryRun                 :: !(Maybe Bool)
-    , _dtmfMaxResults             :: !(Maybe Nat)
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data DescribeTrafficMirrorFilters = DescribeTrafficMirrorFilters'{_dtmfTrafficMirrorFilterIds
+                                                                  ::
+                                                                  !(Maybe
+                                                                      [Text]),
+                                                                  _dtmfFilters
+                                                                  ::
+                                                                  !(Maybe
+                                                                      [Filter]),
+                                                                  _dtmfNextToken
+                                                                  ::
+                                                                  !(Maybe Text),
+                                                                  _dtmfDryRun ::
+                                                                  !(Maybe Bool),
+                                                                  _dtmfMaxResults
+                                                                  ::
+                                                                  !(Maybe Nat)}
+                                      deriving (Eq, Read, Show, Data, Typeable,
+                                                Generic)
 
 -- | Creates a value of 'DescribeTrafficMirrorFilters' with the minimum fields required to make a request.
 --
@@ -79,15 +86,13 @@ data DescribeTrafficMirrorFilters =
 -- * 'dtmfMaxResults' - The maximum number of results to return with a single call. To retrieve the remaining results, make another call with the returned @nextToken@ value.
 describeTrafficMirrorFilters
     :: DescribeTrafficMirrorFilters
-describeTrafficMirrorFilters =
-  DescribeTrafficMirrorFilters'
-    { _dtmfTrafficMirrorFilterIds = Nothing
-    , _dtmfFilters = Nothing
-    , _dtmfNextToken = Nothing
-    , _dtmfDryRun = Nothing
-    , _dtmfMaxResults = Nothing
-    }
-
+describeTrafficMirrorFilters
+  = DescribeTrafficMirrorFilters'{_dtmfTrafficMirrorFilterIds
+                                    = Nothing,
+                                  _dtmfFilters = Nothing,
+                                  _dtmfNextToken = Nothing,
+                                  _dtmfDryRun = Nothing,
+                                  _dtmfMaxResults = Nothing}
 
 -- | The ID of the Traffic Mirror filter.
 dtmfTrafficMirrorFilterIds :: Lens' DescribeTrafficMirrorFilters [Text]
@@ -155,14 +160,19 @@ instance ToQuery DescribeTrafficMirrorFilters where
                "MaxResults" =: _dtmfMaxResults]
 
 -- | /See:/ 'describeTrafficMirrorFiltersResponse' smart constructor.
-data DescribeTrafficMirrorFiltersResponse =
-  DescribeTrafficMirrorFiltersResponse'
-    { _dtmfsrsTrafficMirrorFilters :: !(Maybe [TrafficMirrorFilter])
-    , _dtmfsrsNextToken            :: !(Maybe Text)
-    , _dtmfsrsResponseStatus       :: !Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data DescribeTrafficMirrorFiltersResponse = DescribeTrafficMirrorFiltersResponse'{_dtmfsrsTrafficMirrorFilters
+                                                                                  ::
+                                                                                  !(Maybe
+                                                                                      [TrafficMirrorFilter]),
+                                                                                  _dtmfsrsNextToken
+                                                                                  ::
+                                                                                  !(Maybe
+                                                                                      Text),
+                                                                                  _dtmfsrsResponseStatus
+                                                                                  ::
+                                                                                  !Int}
+                                              deriving (Eq, Read, Show, Data,
+                                                        Typeable, Generic)
 
 -- | Creates a value of 'DescribeTrafficMirrorFiltersResponse' with the minimum fields required to make a request.
 --
@@ -176,13 +186,12 @@ data DescribeTrafficMirrorFiltersResponse =
 describeTrafficMirrorFiltersResponse
     :: Int -- ^ 'dtmfsrsResponseStatus'
     -> DescribeTrafficMirrorFiltersResponse
-describeTrafficMirrorFiltersResponse pResponseStatus_ =
-  DescribeTrafficMirrorFiltersResponse'
-    { _dtmfsrsTrafficMirrorFilters = Nothing
-    , _dtmfsrsNextToken = Nothing
-    , _dtmfsrsResponseStatus = pResponseStatus_
-    }
-
+describeTrafficMirrorFiltersResponse pResponseStatus_
+  = DescribeTrafficMirrorFiltersResponse'{_dtmfsrsTrafficMirrorFilters
+                                            = Nothing,
+                                          _dtmfsrsNextToken = Nothing,
+                                          _dtmfsrsResponseStatus =
+                                            pResponseStatus_}
 
 -- | Information about one or more Traffic Mirror filters.
 dtmfsrsTrafficMirrorFilters :: Lens' DescribeTrafficMirrorFiltersResponse [TrafficMirrorFilter]

@@ -42,22 +42,17 @@ module Network.AWS.OpsWorks.SetPermission
 
 import Network.AWS.Lens
 import Network.AWS.OpsWorks.Types
-import Network.AWS.OpsWorks.Types.Product
 import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 
 -- | /See:/ 'setPermission' smart constructor.
-data SetPermission =
-  SetPermission'
-    { _spAllowSudo  :: !(Maybe Bool)
-    , _spLevel      :: !(Maybe Text)
-    , _spAllowSSH   :: !(Maybe Bool)
-    , _spStackId    :: !Text
-    , _spIAMUserARN :: !Text
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data SetPermission = SetPermission'{_spAllowSudo ::
+                                    !(Maybe Bool),
+                                    _spLevel :: !(Maybe Text),
+                                    _spAllowSSH :: !(Maybe Bool),
+                                    _spStackId :: !Text, _spIAMUserARN :: !Text}
+                       deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'SetPermission' with the minimum fields required to make a request.
 --
@@ -76,15 +71,10 @@ setPermission
     :: Text -- ^ 'spStackId'
     -> Text -- ^ 'spIAMUserARN'
     -> SetPermission
-setPermission pStackId_ pIAMUserARN_ =
-  SetPermission'
-    { _spAllowSudo = Nothing
-    , _spLevel = Nothing
-    , _spAllowSSH = Nothing
-    , _spStackId = pStackId_
-    , _spIAMUserARN = pIAMUserARN_
-    }
-
+setPermission pStackId_ pIAMUserARN_
+  = SetPermission'{_spAllowSudo = Nothing,
+                   _spLevel = Nothing, _spAllowSSH = Nothing,
+                   _spStackId = pStackId_, _spIAMUserARN = pIAMUserARN_}
 
 -- | The user is allowed to use __sudo__ to elevate privileges.
 spAllowSudo :: Lens' SetPermission (Maybe Bool)
@@ -141,16 +131,14 @@ instance ToQuery SetPermission where
         toQuery = const mempty
 
 -- | /See:/ 'setPermissionResponse' smart constructor.
-data SetPermissionResponse =
-  SetPermissionResponse'
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data SetPermissionResponse = SetPermissionResponse'
+                               deriving (Eq, Read, Show, Data, Typeable,
+                                         Generic)
 
 -- | Creates a value of 'SetPermissionResponse' with the minimum fields required to make a request.
 --
 setPermissionResponse
     :: SetPermissionResponse
 setPermissionResponse = SetPermissionResponse'
-
 
 instance NFData SetPermissionResponse where

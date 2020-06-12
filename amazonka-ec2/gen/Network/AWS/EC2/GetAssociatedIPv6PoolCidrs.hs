@@ -42,22 +42,22 @@ module Network.AWS.EC2.GetAssociatedIPv6PoolCidrs
     ) where
 
 import Network.AWS.EC2.Types
-import Network.AWS.EC2.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 
 -- | /See:/ 'getAssociatedIPv6PoolCidrs' smart constructor.
-data GetAssociatedIPv6PoolCidrs =
-  GetAssociatedIPv6PoolCidrs'
-    { _gaipcNextToken  :: !(Maybe Text)
-    , _gaipcDryRun     :: !(Maybe Bool)
-    , _gaipcMaxResults :: !(Maybe Nat)
-    , _gaipcPoolId     :: !Text
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data GetAssociatedIPv6PoolCidrs = GetAssociatedIPv6PoolCidrs'{_gaipcNextToken
+                                                              :: !(Maybe Text),
+                                                              _gaipcDryRun ::
+                                                              !(Maybe Bool),
+                                                              _gaipcMaxResults
+                                                              :: !(Maybe Nat),
+                                                              _gaipcPoolId ::
+                                                              !Text}
+                                    deriving (Eq, Read, Show, Data, Typeable,
+                                              Generic)
 
 -- | Creates a value of 'GetAssociatedIPv6PoolCidrs' with the minimum fields required to make a request.
 --
@@ -73,14 +73,12 @@ data GetAssociatedIPv6PoolCidrs =
 getAssociatedIPv6PoolCidrs
     :: Text -- ^ 'gaipcPoolId'
     -> GetAssociatedIPv6PoolCidrs
-getAssociatedIPv6PoolCidrs pPoolId_ =
-  GetAssociatedIPv6PoolCidrs'
-    { _gaipcNextToken = Nothing
-    , _gaipcDryRun = Nothing
-    , _gaipcMaxResults = Nothing
-    , _gaipcPoolId = pPoolId_
-    }
-
+getAssociatedIPv6PoolCidrs pPoolId_
+  = GetAssociatedIPv6PoolCidrs'{_gaipcNextToken =
+                                  Nothing,
+                                _gaipcDryRun = Nothing,
+                                _gaipcMaxResults = Nothing,
+                                _gaipcPoolId = pPoolId_}
 
 -- | The token for the next page of results.
 gaipcNextToken :: Lens' GetAssociatedIPv6PoolCidrs (Maybe Text)
@@ -133,14 +131,19 @@ instance ToQuery GetAssociatedIPv6PoolCidrs where
                "PoolId" =: _gaipcPoolId]
 
 -- | /See:/ 'getAssociatedIPv6PoolCidrsResponse' smart constructor.
-data GetAssociatedIPv6PoolCidrsResponse =
-  GetAssociatedIPv6PoolCidrsResponse'
-    { _gaipcrsIPv6CidrAssociations :: !(Maybe [IPv6CidrAssociation])
-    , _gaipcrsNextToken            :: !(Maybe Text)
-    , _gaipcrsResponseStatus       :: !Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data GetAssociatedIPv6PoolCidrsResponse = GetAssociatedIPv6PoolCidrsResponse'{_gaipcrsIPv6CidrAssociations
+                                                                              ::
+                                                                              !(Maybe
+                                                                                  [IPv6CidrAssociation]),
+                                                                              _gaipcrsNextToken
+                                                                              ::
+                                                                              !(Maybe
+                                                                                  Text),
+                                                                              _gaipcrsResponseStatus
+                                                                              ::
+                                                                              !Int}
+                                            deriving (Eq, Read, Show, Data,
+                                                      Typeable, Generic)
 
 -- | Creates a value of 'GetAssociatedIPv6PoolCidrsResponse' with the minimum fields required to make a request.
 --
@@ -154,13 +157,12 @@ data GetAssociatedIPv6PoolCidrsResponse =
 getAssociatedIPv6PoolCidrsResponse
     :: Int -- ^ 'gaipcrsResponseStatus'
     -> GetAssociatedIPv6PoolCidrsResponse
-getAssociatedIPv6PoolCidrsResponse pResponseStatus_ =
-  GetAssociatedIPv6PoolCidrsResponse'
-    { _gaipcrsIPv6CidrAssociations = Nothing
-    , _gaipcrsNextToken = Nothing
-    , _gaipcrsResponseStatus = pResponseStatus_
-    }
-
+getAssociatedIPv6PoolCidrsResponse pResponseStatus_
+  = GetAssociatedIPv6PoolCidrsResponse'{_gaipcrsIPv6CidrAssociations
+                                          = Nothing,
+                                        _gaipcrsNextToken = Nothing,
+                                        _gaipcrsResponseStatus =
+                                          pResponseStatus_}
 
 -- | Information about the IPv6 CIDR block associations.
 gaipcrsIPv6CidrAssociations :: Lens' GetAssociatedIPv6PoolCidrsResponse [IPv6CidrAssociation]

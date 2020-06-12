@@ -38,20 +38,16 @@ module Network.AWS.Glue.CreateDatabase
     ) where
 
 import Network.AWS.Glue.Types
-import Network.AWS.Glue.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 
 -- | /See:/ 'createDatabase' smart constructor.
-data CreateDatabase =
-  CreateDatabase'
-    { _cdCatalogId     :: !(Maybe Text)
-    , _cdDatabaseInput :: !DatabaseInput
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data CreateDatabase = CreateDatabase'{_cdCatalogId ::
+                                      !(Maybe Text),
+                                      _cdDatabaseInput :: !DatabaseInput}
+                        deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'CreateDatabase' with the minimum fields required to make a request.
 --
@@ -63,9 +59,9 @@ data CreateDatabase =
 createDatabase
     :: DatabaseInput -- ^ 'cdDatabaseInput'
     -> CreateDatabase
-createDatabase pDatabaseInput_ =
-  CreateDatabase' {_cdCatalogId = Nothing, _cdDatabaseInput = pDatabaseInput_}
-
+createDatabase pDatabaseInput_
+  = CreateDatabase'{_cdCatalogId = Nothing,
+                    _cdDatabaseInput = pDatabaseInput_}
 
 -- | The ID of the Data Catalog in which to create the database. If none is supplied, the AWS account ID is used by default.
 cdCatalogId :: Lens' CreateDatabase (Maybe Text)
@@ -110,12 +106,10 @@ instance ToQuery CreateDatabase where
         toQuery = const mempty
 
 -- | /See:/ 'createDatabaseResponse' smart constructor.
-newtype CreateDatabaseResponse =
-  CreateDatabaseResponse'
-    { _cdrsResponseStatus :: Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+newtype CreateDatabaseResponse = CreateDatabaseResponse'{_cdrsResponseStatus
+                                                         :: Int}
+                                   deriving (Eq, Read, Show, Data, Typeable,
+                                             Generic)
 
 -- | Creates a value of 'CreateDatabaseResponse' with the minimum fields required to make a request.
 --
@@ -125,9 +119,9 @@ newtype CreateDatabaseResponse =
 createDatabaseResponse
     :: Int -- ^ 'cdrsResponseStatus'
     -> CreateDatabaseResponse
-createDatabaseResponse pResponseStatus_ =
-  CreateDatabaseResponse' {_cdrsResponseStatus = pResponseStatus_}
-
+createDatabaseResponse pResponseStatus_
+  = CreateDatabaseResponse'{_cdrsResponseStatus =
+                              pResponseStatus_}
 
 -- | -- | The response status code.
 cdrsResponseStatus :: Lens' CreateDatabaseResponse Int

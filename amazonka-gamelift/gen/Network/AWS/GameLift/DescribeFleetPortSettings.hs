@@ -23,47 +23,47 @@
 --
 -- Fleet-related operations include:
 --
---     * 'CreateFleet'
+--     * 'CreateFleet' 
 --
---     * 'ListFleets'
+--     * 'ListFleets' 
 --
---     * 'DeleteFleet'
+--     * 'DeleteFleet' 
 --
 --     * Describe fleets:
 --
---     * 'DescribeFleetAttributes'
+--     * 'DescribeFleetAttributes' 
 --
---     * 'DescribeFleetCapacity'
+--     * 'DescribeFleetCapacity' 
 --
---     * 'DescribeFleetPortSettings'
+--     * 'DescribeFleetPortSettings' 
 --
---     * 'DescribeFleetUtilization'
+--     * 'DescribeFleetUtilization' 
 --
---     * 'DescribeRuntimeConfiguration'
+--     * 'DescribeRuntimeConfiguration' 
 --
---     * 'DescribeEC2InstanceLimits'
+--     * 'DescribeEC2InstanceLimits' 
 --
---     * 'DescribeFleetEvents'
+--     * 'DescribeFleetEvents' 
 --
 --
 --
 --     * Update fleets:
 --
---     * 'UpdateFleetAttributes'
+--     * 'UpdateFleetAttributes' 
 --
---     * 'UpdateFleetCapacity'
+--     * 'UpdateFleetCapacity' 
 --
---     * 'UpdateFleetPortSettings'
+--     * 'UpdateFleetPortSettings' 
 --
---     * 'UpdateRuntimeConfiguration'
+--     * 'UpdateRuntimeConfiguration' 
 --
 --
 --
 --     * Manage fleet actions:
 --
---     * 'StartFleetActions'
+--     * 'StartFleetActions' 
 --
---     * 'StopFleetActions'
+--     * 'StopFleetActions' 
 --
 --
 --
@@ -86,7 +86,6 @@ module Network.AWS.GameLift.DescribeFleetPortSettings
     ) where
 
 import Network.AWS.GameLift.Types
-import Network.AWS.GameLift.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.Request
@@ -97,12 +96,10 @@ import Network.AWS.Response
 --
 --
 -- /See:/ 'describeFleetPortSettings' smart constructor.
-newtype DescribeFleetPortSettings =
-  DescribeFleetPortSettings'
-    { _dfpsFleetId :: Text
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+newtype DescribeFleetPortSettings = DescribeFleetPortSettings'{_dfpsFleetId
+                                                               :: Text}
+                                      deriving (Eq, Read, Show, Data, Typeable,
+                                                Generic)
 
 -- | Creates a value of 'DescribeFleetPortSettings' with the minimum fields required to make a request.
 --
@@ -112,9 +109,9 @@ newtype DescribeFleetPortSettings =
 describeFleetPortSettings
     :: Text -- ^ 'dfpsFleetId'
     -> DescribeFleetPortSettings
-describeFleetPortSettings pFleetId_ =
-  DescribeFleetPortSettings' {_dfpsFleetId = pFleetId_}
-
+describeFleetPortSettings pFleetId_
+  = DescribeFleetPortSettings'{_dfpsFleetId =
+                                 pFleetId_}
 
 -- | Unique identifier for a fleet to retrieve port settings for.
 dfpsFleetId :: Lens' DescribeFleetPortSettings Text
@@ -160,13 +157,15 @@ instance ToQuery DescribeFleetPortSettings where
 --
 --
 -- /See:/ 'describeFleetPortSettingsResponse' smart constructor.
-data DescribeFleetPortSettingsResponse =
-  DescribeFleetPortSettingsResponse'
-    { _dfpsrsInboundPermissions :: !(Maybe [IPPermission])
-    , _dfpsrsResponseStatus     :: !Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data DescribeFleetPortSettingsResponse = DescribeFleetPortSettingsResponse'{_dfpsrsInboundPermissions
+                                                                            ::
+                                                                            !(Maybe
+                                                                                [IPPermission]),
+                                                                            _dfpsrsResponseStatus
+                                                                            ::
+                                                                            !Int}
+                                           deriving (Eq, Read, Show, Data,
+                                                     Typeable, Generic)
 
 -- | Creates a value of 'DescribeFleetPortSettingsResponse' with the minimum fields required to make a request.
 --
@@ -178,12 +177,10 @@ data DescribeFleetPortSettingsResponse =
 describeFleetPortSettingsResponse
     :: Int -- ^ 'dfpsrsResponseStatus'
     -> DescribeFleetPortSettingsResponse
-describeFleetPortSettingsResponse pResponseStatus_ =
-  DescribeFleetPortSettingsResponse'
-    { _dfpsrsInboundPermissions = Nothing
-    , _dfpsrsResponseStatus = pResponseStatus_
-    }
-
+describeFleetPortSettingsResponse pResponseStatus_
+  = DescribeFleetPortSettingsResponse'{_dfpsrsInboundPermissions
+                                         = Nothing,
+                                       _dfpsrsResponseStatus = pResponseStatus_}
 
 -- | Object that contains port settings for the requested fleet ID.
 dfpsrsInboundPermissions :: Lens' DescribeFleetPortSettingsResponse [IPPermission]

@@ -41,21 +41,22 @@ module Network.AWS.IoT.ListThingRegistrationTasks
     ) where
 
 import Network.AWS.IoT.Types
-import Network.AWS.IoT.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 
 -- | /See:/ 'listThingRegistrationTasks' smart constructor.
-data ListThingRegistrationTasks =
-  ListThingRegistrationTasks'
-    { _ltrtStatus     :: !(Maybe TaskStatus)
-    , _ltrtNextToken  :: !(Maybe Text)
-    , _ltrtMaxResults :: !(Maybe Nat)
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data ListThingRegistrationTasks = ListThingRegistrationTasks'{_ltrtStatus
+                                                              ::
+                                                              !(Maybe
+                                                                  TaskStatus),
+                                                              _ltrtNextToken ::
+                                                              !(Maybe Text),
+                                                              _ltrtMaxResults ::
+                                                              !(Maybe Nat)}
+                                    deriving (Eq, Read, Show, Data, Typeable,
+                                              Generic)
 
 -- | Creates a value of 'ListThingRegistrationTasks' with the minimum fields required to make a request.
 --
@@ -68,10 +69,10 @@ data ListThingRegistrationTasks =
 -- * 'ltrtMaxResults' - The maximum number of results to return at one time.
 listThingRegistrationTasks
     :: ListThingRegistrationTasks
-listThingRegistrationTasks =
-  ListThingRegistrationTasks'
-    {_ltrtStatus = Nothing, _ltrtNextToken = Nothing, _ltrtMaxResults = Nothing}
-
+listThingRegistrationTasks
+  = ListThingRegistrationTasks'{_ltrtStatus = Nothing,
+                                _ltrtNextToken = Nothing,
+                                _ltrtMaxResults = Nothing}
 
 -- | The status of the bulk thing provisioning task.
 ltrtStatus :: Lens' ListThingRegistrationTasks (Maybe TaskStatus)
@@ -114,14 +115,19 @@ instance ToQuery ListThingRegistrationTasks where
                "maxResults" =: _ltrtMaxResults]
 
 -- | /See:/ 'listThingRegistrationTasksResponse' smart constructor.
-data ListThingRegistrationTasksResponse =
-  ListThingRegistrationTasksResponse'
-    { _ltrtrsNextToken      :: !(Maybe Text)
-    , _ltrtrsTaskIds        :: !(Maybe [Text])
-    , _ltrtrsResponseStatus :: !Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data ListThingRegistrationTasksResponse = ListThingRegistrationTasksResponse'{_ltrtrsNextToken
+                                                                              ::
+                                                                              !(Maybe
+                                                                                  Text),
+                                                                              _ltrtrsTaskIds
+                                                                              ::
+                                                                              !(Maybe
+                                                                                  [Text]),
+                                                                              _ltrtrsResponseStatus
+                                                                              ::
+                                                                              !Int}
+                                            deriving (Eq, Read, Show, Data,
+                                                      Typeable, Generic)
 
 -- | Creates a value of 'ListThingRegistrationTasksResponse' with the minimum fields required to make a request.
 --
@@ -135,13 +141,12 @@ data ListThingRegistrationTasksResponse =
 listThingRegistrationTasksResponse
     :: Int -- ^ 'ltrtrsResponseStatus'
     -> ListThingRegistrationTasksResponse
-listThingRegistrationTasksResponse pResponseStatus_ =
-  ListThingRegistrationTasksResponse'
-    { _ltrtrsNextToken = Nothing
-    , _ltrtrsTaskIds = Nothing
-    , _ltrtrsResponseStatus = pResponseStatus_
-    }
-
+listThingRegistrationTasksResponse pResponseStatus_
+  = ListThingRegistrationTasksResponse'{_ltrtrsNextToken
+                                          = Nothing,
+                                        _ltrtrsTaskIds = Nothing,
+                                        _ltrtrsResponseStatus =
+                                          pResponseStatus_}
 
 -- | The token used to get the next set of results, or __null__ if there are no additional results.
 ltrtrsNextToken :: Lens' ListThingRegistrationTasksResponse (Maybe Text)

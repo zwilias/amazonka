@@ -40,16 +40,12 @@ import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 import Network.AWS.WorkDocs.Types
-import Network.AWS.WorkDocs.Types.Product
 
 -- | /See:/ 'deleteFolderContents' smart constructor.
-data DeleteFolderContents =
-  DeleteFolderContents'
-    { _dfcAuthenticationToken :: !(Maybe (Sensitive Text))
-    , _dfcFolderId            :: !Text
-    }
-  deriving (Eq, Show, Data, Typeable, Generic)
-
+data DeleteFolderContents = DeleteFolderContents'{_dfcAuthenticationToken
+                                                  :: !(Maybe (Sensitive Text)),
+                                                  _dfcFolderId :: !Text}
+                              deriving (Eq, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'DeleteFolderContents' with the minimum fields required to make a request.
 --
@@ -61,10 +57,10 @@ data DeleteFolderContents =
 deleteFolderContents
     :: Text -- ^ 'dfcFolderId'
     -> DeleteFolderContents
-deleteFolderContents pFolderId_ =
-  DeleteFolderContents'
-    {_dfcAuthenticationToken = Nothing, _dfcFolderId = pFolderId_}
-
+deleteFolderContents pFolderId_
+  = DeleteFolderContents'{_dfcAuthenticationToken =
+                            Nothing,
+                          _dfcFolderId = pFolderId_}
 
 -- | Amazon WorkDocs authentication token. Do not set this field when using administrative API actions, as in accessing the API using AWS credentials.
 dfcAuthenticationToken :: Lens' DeleteFolderContents (Maybe Text)
@@ -100,16 +96,15 @@ instance ToQuery DeleteFolderContents where
         toQuery = const mempty
 
 -- | /See:/ 'deleteFolderContentsResponse' smart constructor.
-data DeleteFolderContentsResponse =
-  DeleteFolderContentsResponse'
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data DeleteFolderContentsResponse = DeleteFolderContentsResponse'
+                                      deriving (Eq, Read, Show, Data, Typeable,
+                                                Generic)
 
 -- | Creates a value of 'DeleteFolderContentsResponse' with the minimum fields required to make a request.
 --
 deleteFolderContentsResponse
     :: DeleteFolderContentsResponse
-deleteFolderContentsResponse = DeleteFolderContentsResponse'
-
+deleteFolderContentsResponse
+  = DeleteFolderContentsResponse'
 
 instance NFData DeleteFolderContentsResponse where

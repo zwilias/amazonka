@@ -11,7 +11,7 @@
 -- Stability   : auto-generated
 -- Portability : non-portable (GHC extensions)
 --
--- __AWS Directory Service__
+-- __AWS Directory Service__ 
 --
 -- AWS Directory Service is a web service that makes it easy for you to setup and run directories in the AWS cloud, or connect your AWS resources with an existing on-premises Microsoft Active Directory. This guide provides detailed information about AWS Directory Service operations, data types, parameters, and errors. For information about AWS Directory Services features, see <https://aws.amazon.com/directoryservice/ AWS Directory Service> and the <http://docs.aws.amazon.com/directoryservice/latest/admin-guide/what_is.html AWS Directory Service Administration Guide> .
 --
@@ -122,37 +122,37 @@ module Network.AWS.DirectoryService
     -- * Operations
     -- $operations
 
-    -- ** ShareDirectory
+    -- ** ShareDirectory 
     , module Network.AWS.DirectoryService.ShareDirectory
 
-    -- ** UpdateNumberOfDomainControllers
+    -- ** UpdateNumberOfDomainControllers 
     , module Network.AWS.DirectoryService.UpdateNumberOfDomainControllers
 
-    -- ** DescribeConditionalForwarders
+    -- ** DescribeConditionalForwarders 
     , module Network.AWS.DirectoryService.DescribeConditionalForwarders
 
-    -- ** GetSnapshotLimits
+    -- ** GetSnapshotLimits 
     , module Network.AWS.DirectoryService.GetSnapshotLimits
 
-    -- ** RegisterEventTopic
+    -- ** RegisterEventTopic 
     , module Network.AWS.DirectoryService.RegisterEventTopic
 
-    -- ** RegisterCertificate
+    -- ** RegisterCertificate 
     , module Network.AWS.DirectoryService.RegisterCertificate
 
-    -- ** ConnectDirectory
+    -- ** ConnectDirectory 
     , module Network.AWS.DirectoryService.ConnectDirectory
 
-    -- ** DescribeLDAPSSettings
+    -- ** DescribeLDAPSSettings 
     , module Network.AWS.DirectoryService.DescribeLDAPSSettings
 
-    -- ** CreateAlias
+    -- ** CreateAlias 
     , module Network.AWS.DirectoryService.CreateAlias
 
     -- ** DescribeDirectories (Paginated)
     , module Network.AWS.DirectoryService.DescribeDirectories
 
-    -- ** AddIPRoutes
+    -- ** AddIPRoutes 
     , module Network.AWS.DirectoryService.AddIPRoutes
 
     -- ** ListTagsForResource (Paginated)
@@ -161,82 +161,82 @@ module Network.AWS.DirectoryService
     -- ** DescribeTrusts (Paginated)
     , module Network.AWS.DirectoryService.DescribeTrusts
 
-    -- ** DeleteTrust
+    -- ** DeleteTrust 
     , module Network.AWS.DirectoryService.DeleteTrust
 
-    -- ** UpdateTrust
+    -- ** UpdateTrust 
     , module Network.AWS.DirectoryService.UpdateTrust
 
-    -- ** CreateMicrosoftAD
+    -- ** CreateMicrosoftAD 
     , module Network.AWS.DirectoryService.CreateMicrosoftAD
 
-    -- ** DeregisterEventTopic
+    -- ** DeregisterEventTopic 
     , module Network.AWS.DirectoryService.DeregisterEventTopic
 
-    -- ** CreateDirectory
+    -- ** CreateDirectory 
     , module Network.AWS.DirectoryService.CreateDirectory
 
-    -- ** AcceptSharedDirectory
+    -- ** AcceptSharedDirectory 
     , module Network.AWS.DirectoryService.AcceptSharedDirectory
 
-    -- ** CreateLogSubscription
+    -- ** CreateLogSubscription 
     , module Network.AWS.DirectoryService.CreateLogSubscription
 
-    -- ** RemoveTagsFromResource
+    -- ** RemoveTagsFromResource 
     , module Network.AWS.DirectoryService.RemoveTagsFromResource
 
-    -- ** DescribeEventTopics
+    -- ** DescribeEventTopics 
     , module Network.AWS.DirectoryService.DescribeEventTopics
 
-    -- ** ResetUserPassword
+    -- ** ResetUserPassword 
     , module Network.AWS.DirectoryService.ResetUserPassword
 
-    -- ** UpdateConditionalForwarder
+    -- ** UpdateConditionalForwarder 
     , module Network.AWS.DirectoryService.UpdateConditionalForwarder
 
-    -- ** DeleteConditionalForwarder
+    -- ** DeleteConditionalForwarder 
     , module Network.AWS.DirectoryService.DeleteConditionalForwarder
 
-    -- ** DisableLDAPS
+    -- ** DisableLDAPS 
     , module Network.AWS.DirectoryService.DisableLDAPS
 
-    -- ** DeleteLogSubscription
+    -- ** DeleteLogSubscription 
     , module Network.AWS.DirectoryService.DeleteLogSubscription
 
-    -- ** EnableSSO
+    -- ** EnableSSO 
     , module Network.AWS.DirectoryService.EnableSSO
 
-    -- ** CancelSchemaExtension
+    -- ** CancelSchemaExtension 
     , module Network.AWS.DirectoryService.CancelSchemaExtension
 
     -- ** ListLogSubscriptions (Paginated)
     , module Network.AWS.DirectoryService.ListLogSubscriptions
 
-    -- ** EnableRadius
+    -- ** EnableRadius 
     , module Network.AWS.DirectoryService.EnableRadius
 
     -- ** ListIPRoutes (Paginated)
     , module Network.AWS.DirectoryService.ListIPRoutes
 
-    -- ** AddTagsToResource
+    -- ** AddTagsToResource 
     , module Network.AWS.DirectoryService.AddTagsToResource
 
     -- ** ListSchemaExtensions (Paginated)
     , module Network.AWS.DirectoryService.ListSchemaExtensions
 
-    -- ** DisableRadius
+    -- ** DisableRadius 
     , module Network.AWS.DirectoryService.DisableRadius
 
-    -- ** ListCertificates
+    -- ** ListCertificates 
     , module Network.AWS.DirectoryService.ListCertificates
 
-    -- ** RejectSharedDirectory
+    -- ** RejectSharedDirectory 
     , module Network.AWS.DirectoryService.RejectSharedDirectory
 
-    -- ** UnshareDirectory
+    -- ** UnshareDirectory 
     , module Network.AWS.DirectoryService.UnshareDirectory
 
-    -- ** RestoreFromSnapshot
+    -- ** RestoreFromSnapshot 
     , module Network.AWS.DirectoryService.RestoreFromSnapshot
 
     -- ** DescribeDomainControllers (Paginated)
@@ -245,52 +245,52 @@ module Network.AWS.DirectoryService
     -- ** DescribeSnapshots (Paginated)
     , module Network.AWS.DirectoryService.DescribeSnapshots
 
-    -- ** RemoveIPRoutes
+    -- ** RemoveIPRoutes 
     , module Network.AWS.DirectoryService.RemoveIPRoutes
 
-    -- ** DeleteSnapshot
+    -- ** DeleteSnapshot 
     , module Network.AWS.DirectoryService.DeleteSnapshot
 
-    -- ** DeregisterCertificate
+    -- ** DeregisterCertificate 
     , module Network.AWS.DirectoryService.DeregisterCertificate
 
-    -- ** StartSchemaExtension
+    -- ** StartSchemaExtension 
     , module Network.AWS.DirectoryService.StartSchemaExtension
 
-    -- ** CreateTrust
+    -- ** CreateTrust 
     , module Network.AWS.DirectoryService.CreateTrust
 
-    -- ** DeleteDirectory
+    -- ** DeleteDirectory 
     , module Network.AWS.DirectoryService.DeleteDirectory
 
-    -- ** CreateSnapshot
+    -- ** CreateSnapshot 
     , module Network.AWS.DirectoryService.CreateSnapshot
 
-    -- ** DescribeCertificate
+    -- ** DescribeCertificate 
     , module Network.AWS.DirectoryService.DescribeCertificate
 
-    -- ** CreateComputer
+    -- ** CreateComputer 
     , module Network.AWS.DirectoryService.CreateComputer
 
     -- ** DescribeSharedDirectories (Paginated)
     , module Network.AWS.DirectoryService.DescribeSharedDirectories
 
-    -- ** EnableLDAPS
+    -- ** EnableLDAPS 
     , module Network.AWS.DirectoryService.EnableLDAPS
 
-    -- ** DisableSSO
+    -- ** DisableSSO 
     , module Network.AWS.DirectoryService.DisableSSO
 
-    -- ** VerifyTrust
+    -- ** VerifyTrust 
     , module Network.AWS.DirectoryService.VerifyTrust
 
-    -- ** CreateConditionalForwarder
+    -- ** CreateConditionalForwarder 
     , module Network.AWS.DirectoryService.CreateConditionalForwarder
 
-    -- ** GetDirectoryLimits
+    -- ** GetDirectoryLimits 
     , module Network.AWS.DirectoryService.GetDirectoryLimits
 
-    -- ** UpdateRadius
+    -- ** UpdateRadius 
     , module Network.AWS.DirectoryService.UpdateRadius
 
     -- * Types

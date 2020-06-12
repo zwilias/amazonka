@@ -49,7 +49,6 @@ module Network.AWS.IAM.ListAttachedGroupPolicies
     ) where
 
 import Network.AWS.IAM.Types
-import Network.AWS.IAM.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Pager
 import Network.AWS.Prelude
@@ -57,15 +56,16 @@ import Network.AWS.Request
 import Network.AWS.Response
 
 -- | /See:/ 'listAttachedGroupPolicies' smart constructor.
-data ListAttachedGroupPolicies =
-  ListAttachedGroupPolicies'
-    { _lagpPathPrefix :: !(Maybe Text)
-    , _lagpMarker     :: !(Maybe Text)
-    , _lagpMaxItems   :: !(Maybe Nat)
-    , _lagpGroupName  :: !Text
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data ListAttachedGroupPolicies = ListAttachedGroupPolicies'{_lagpPathPrefix
+                                                            :: !(Maybe Text),
+                                                            _lagpMarker ::
+                                                            !(Maybe Text),
+                                                            _lagpMaxItems ::
+                                                            !(Maybe Nat),
+                                                            _lagpGroupName ::
+                                                            !Text}
+                                   deriving (Eq, Read, Show, Data, Typeable,
+                                             Generic)
 
 -- | Creates a value of 'ListAttachedGroupPolicies' with the minimum fields required to make a request.
 --
@@ -81,14 +81,11 @@ data ListAttachedGroupPolicies =
 listAttachedGroupPolicies
     :: Text -- ^ 'lagpGroupName'
     -> ListAttachedGroupPolicies
-listAttachedGroupPolicies pGroupName_ =
-  ListAttachedGroupPolicies'
-    { _lagpPathPrefix = Nothing
-    , _lagpMarker = Nothing
-    , _lagpMaxItems = Nothing
-    , _lagpGroupName = pGroupName_
-    }
-
+listAttachedGroupPolicies pGroupName_
+  = ListAttachedGroupPolicies'{_lagpPathPrefix =
+                                 Nothing,
+                               _lagpMarker = Nothing, _lagpMaxItems = Nothing,
+                               _lagpGroupName = pGroupName_}
 
 -- | The path prefix for filtering the results. This parameter is optional. If it is not included, it defaults to a slash (/), listing all policies. This parameter allows (per its <http://wikipedia.org/wiki/regex regex pattern> ) a string of characters consisting of either a forward slash (/) by itself or a string that must begin and end with forward slashes. In addition, it can contain any ASCII character from the ! (\u0021) through the DEL character (\u007F), including most punctuation characters, digits, and upper and lowercased letters.
 lagpPathPrefix :: Lens' ListAttachedGroupPolicies (Maybe Text)
@@ -147,20 +144,28 @@ instance ToQuery ListAttachedGroupPolicies where
                "Marker" =: _lagpMarker, "MaxItems" =: _lagpMaxItems,
                "GroupName" =: _lagpGroupName]
 
--- | Contains the response to a successful 'ListAttachedGroupPolicies' request.
+-- | Contains the response to a successful 'ListAttachedGroupPolicies' request. 
 --
 --
 --
 -- /See:/ 'listAttachedGroupPoliciesResponse' smart constructor.
-data ListAttachedGroupPoliciesResponse =
-  ListAttachedGroupPoliciesResponse'
-    { _lagprsAttachedPolicies :: !(Maybe [AttachedPolicy])
-    , _lagprsMarker           :: !(Maybe Text)
-    , _lagprsIsTruncated      :: !(Maybe Bool)
-    , _lagprsResponseStatus   :: !Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data ListAttachedGroupPoliciesResponse = ListAttachedGroupPoliciesResponse'{_lagprsAttachedPolicies
+                                                                            ::
+                                                                            !(Maybe
+                                                                                [AttachedPolicy]),
+                                                                            _lagprsMarker
+                                                                            ::
+                                                                            !(Maybe
+                                                                                Text),
+                                                                            _lagprsIsTruncated
+                                                                            ::
+                                                                            !(Maybe
+                                                                                Bool),
+                                                                            _lagprsResponseStatus
+                                                                            ::
+                                                                            !Int}
+                                           deriving (Eq, Read, Show, Data,
+                                                     Typeable, Generic)
 
 -- | Creates a value of 'ListAttachedGroupPoliciesResponse' with the minimum fields required to make a request.
 --
@@ -176,14 +181,12 @@ data ListAttachedGroupPoliciesResponse =
 listAttachedGroupPoliciesResponse
     :: Int -- ^ 'lagprsResponseStatus'
     -> ListAttachedGroupPoliciesResponse
-listAttachedGroupPoliciesResponse pResponseStatus_ =
-  ListAttachedGroupPoliciesResponse'
-    { _lagprsAttachedPolicies = Nothing
-    , _lagprsMarker = Nothing
-    , _lagprsIsTruncated = Nothing
-    , _lagprsResponseStatus = pResponseStatus_
-    }
-
+listAttachedGroupPoliciesResponse pResponseStatus_
+  = ListAttachedGroupPoliciesResponse'{_lagprsAttachedPolicies
+                                         = Nothing,
+                                       _lagprsMarker = Nothing,
+                                       _lagprsIsTruncated = Nothing,
+                                       _lagprsResponseStatus = pResponseStatus_}
 
 -- | A list of the attached policies.
 lagprsAttachedPolicies :: Lens' ListAttachedGroupPoliciesResponse [AttachedPolicy]

@@ -39,20 +39,18 @@ module Network.AWS.Connect.DescribeUserHierarchyGroup
     ) where
 
 import Network.AWS.Connect.Types
-import Network.AWS.Connect.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 
 -- | /See:/ 'describeUserHierarchyGroup' smart constructor.
-data DescribeUserHierarchyGroup =
-  DescribeUserHierarchyGroup'
-    { _duhgHierarchyGroupId :: !Text
-    , _duhgInstanceId       :: !Text
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data DescribeUserHierarchyGroup = DescribeUserHierarchyGroup'{_duhgHierarchyGroupId
+                                                              :: !Text,
+                                                              _duhgInstanceId ::
+                                                              !Text}
+                                    deriving (Eq, Read, Show, Data, Typeable,
+                                              Generic)
 
 -- | Creates a value of 'DescribeUserHierarchyGroup' with the minimum fields required to make a request.
 --
@@ -65,10 +63,11 @@ describeUserHierarchyGroup
     :: Text -- ^ 'duhgHierarchyGroupId'
     -> Text -- ^ 'duhgInstanceId'
     -> DescribeUserHierarchyGroup
-describeUserHierarchyGroup pHierarchyGroupId_ pInstanceId_ =
-  DescribeUserHierarchyGroup'
-    {_duhgHierarchyGroupId = pHierarchyGroupId_, _duhgInstanceId = pInstanceId_}
-
+describeUserHierarchyGroup pHierarchyGroupId_
+  pInstanceId_
+  = DescribeUserHierarchyGroup'{_duhgHierarchyGroupId =
+                                  pHierarchyGroupId_,
+                                _duhgInstanceId = pInstanceId_}
 
 -- | The identifier of the hierarchy group.
 duhgHierarchyGroupId :: Lens' DescribeUserHierarchyGroup Text
@@ -109,13 +108,15 @@ instance ToQuery DescribeUserHierarchyGroup where
         toQuery = const mempty
 
 -- | /See:/ 'describeUserHierarchyGroupResponse' smart constructor.
-data DescribeUserHierarchyGroupResponse =
-  DescribeUserHierarchyGroupResponse'
-    { _duhgrsHierarchyGroup :: !(Maybe HierarchyGroup)
-    , _duhgrsResponseStatus :: !Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data DescribeUserHierarchyGroupResponse = DescribeUserHierarchyGroupResponse'{_duhgrsHierarchyGroup
+                                                                              ::
+                                                                              !(Maybe
+                                                                                  HierarchyGroup),
+                                                                              _duhgrsResponseStatus
+                                                                              ::
+                                                                              !Int}
+                                            deriving (Eq, Read, Show, Data,
+                                                      Typeable, Generic)
 
 -- | Creates a value of 'DescribeUserHierarchyGroupResponse' with the minimum fields required to make a request.
 --
@@ -127,10 +128,11 @@ data DescribeUserHierarchyGroupResponse =
 describeUserHierarchyGroupResponse
     :: Int -- ^ 'duhgrsResponseStatus'
     -> DescribeUserHierarchyGroupResponse
-describeUserHierarchyGroupResponse pResponseStatus_ =
-  DescribeUserHierarchyGroupResponse'
-    {_duhgrsHierarchyGroup = Nothing, _duhgrsResponseStatus = pResponseStatus_}
-
+describeUserHierarchyGroupResponse pResponseStatus_
+  = DescribeUserHierarchyGroupResponse'{_duhgrsHierarchyGroup
+                                          = Nothing,
+                                        _duhgrsResponseStatus =
+                                          pResponseStatus_}
 
 -- | Information about the hierarchy group.
 duhgrsHierarchyGroup :: Lens' DescribeUserHierarchyGroupResponse (Maybe HierarchyGroup)

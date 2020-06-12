@@ -56,7 +56,7 @@ module Network.AWS.SMS
     -- * Operations
     -- $operations
 
-    -- ** DeleteServerCatalog
+    -- ** DeleteServerCatalog 
     , module Network.AWS.SMS.DeleteServerCatalog
 
     -- ** GetReplicationRuns (Paginated)
@@ -65,7 +65,7 @@ module Network.AWS.SMS
     -- ** GetServers (Paginated)
     , module Network.AWS.SMS.GetServers
 
-    -- ** ImportServerCatalog
+    -- ** ImportServerCatalog 
     , module Network.AWS.SMS.ImportServerCatalog
 
     -- ** GetConnectors (Paginated)
@@ -74,19 +74,19 @@ module Network.AWS.SMS
     -- ** GetReplicationJobs (Paginated)
     , module Network.AWS.SMS.GetReplicationJobs
 
-    -- ** DisassociateConnector
+    -- ** DisassociateConnector 
     , module Network.AWS.SMS.DisassociateConnector
 
-    -- ** CreateReplicationJob
+    -- ** CreateReplicationJob 
     , module Network.AWS.SMS.CreateReplicationJob
 
-    -- ** UpdateReplicationJob
+    -- ** UpdateReplicationJob 
     , module Network.AWS.SMS.UpdateReplicationJob
 
-    -- ** DeleteReplicationJob
+    -- ** DeleteReplicationJob 
     , module Network.AWS.SMS.DeleteReplicationJob
 
-    -- ** StartOnDemandReplicationRun
+    -- ** StartOnDemandReplicationRun 
     , module Network.AWS.SMS.StartOnDemandReplicationRun
 
     -- * Types

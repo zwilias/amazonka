@@ -18,10 +18,10 @@
 -- Stability   : auto-generated
 -- Portability : non-portable (GHC extensions)
 --
--- Restores a DB cluster to an arbitrary point in time. Users can restore to any point in time before @LatestRestorableTime@ for up to @BackupRetentionPeriod@ days. The target DB cluster is created from the source DB cluster with the same configuration as the original DB cluster, except that the new DB cluster is created with the default DB security group.
+-- Restores a DB cluster to an arbitrary point in time. Users can restore to any point in time before @LatestRestorableTime@ for up to @BackupRetentionPeriod@ days. The target DB cluster is created from the source DB cluster with the same configuration as the original DB cluster, except that the new DB cluster is created with the default DB security group. 
 --
 --
--- For more information on Amazon Aurora, see <http://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/CHAP_Aurora.html Aurora on Amazon RDS> in the /Amazon RDS User Guide./
+-- For more information on Amazon Aurora, see <http://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/CHAP_Aurora.html Aurora on Amazon RDS> in the /Amazon RDS User Guide./ 
 --
 module Network.AWS.RDS.RestoreDBClusterToPointInTime
     (
@@ -54,33 +54,64 @@ module Network.AWS.RDS.RestoreDBClusterToPointInTime
 import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.RDS.Types
-import Network.AWS.RDS.Types.Product
 import Network.AWS.Request
 import Network.AWS.Response
 
--- |
+-- | 
 --
 --
 --
 -- /See:/ 'restoreDBClusterToPointInTime' smart constructor.
-data RestoreDBClusterToPointInTime =
-  RestoreDBClusterToPointInTime'
-    { _rdctpitUseLatestRestorableTime         :: !(Maybe Bool)
-    , _rdctpitDBSubnetGroupName               :: !(Maybe Text)
-    , _rdctpitBacktrackWindow                 :: !(Maybe Integer)
-    , _rdctpitKMSKeyId                        :: !(Maybe Text)
-    , _rdctpitVPCSecurityGroupIds             :: !(Maybe [Text])
-    , _rdctpitRestoreType                     :: !(Maybe Text)
-    , _rdctpitOptionGroupName                 :: !(Maybe Text)
-    , _rdctpitRestoreToTime                   :: !(Maybe ISO8601)
-    , _rdctpitTags                            :: !(Maybe [Tag])
-    , _rdctpitPort                            :: !(Maybe Int)
-    , _rdctpitEnableIAMDatabaseAuthentication :: !(Maybe Bool)
-    , _rdctpitDBClusterIdentifier             :: !Text
-    , _rdctpitSourceDBClusterIdentifier       :: !Text
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data RestoreDBClusterToPointInTime = RestoreDBClusterToPointInTime'{_rdctpitUseLatestRestorableTime
+                                                                    ::
+                                                                    !(Maybe
+                                                                        Bool),
+                                                                    _rdctpitDBSubnetGroupName
+                                                                    ::
+                                                                    !(Maybe
+                                                                        Text),
+                                                                    _rdctpitBacktrackWindow
+                                                                    ::
+                                                                    !(Maybe
+                                                                        Integer),
+                                                                    _rdctpitKMSKeyId
+                                                                    ::
+                                                                    !(Maybe
+                                                                        Text),
+                                                                    _rdctpitVPCSecurityGroupIds
+                                                                    ::
+                                                                    !(Maybe
+                                                                        [Text]),
+                                                                    _rdctpitRestoreType
+                                                                    ::
+                                                                    !(Maybe
+                                                                        Text),
+                                                                    _rdctpitOptionGroupName
+                                                                    ::
+                                                                    !(Maybe
+                                                                        Text),
+                                                                    _rdctpitRestoreToTime
+                                                                    ::
+                                                                    !(Maybe
+                                                                        ISO8601),
+                                                                    _rdctpitTags
+                                                                    ::
+                                                                    !(Maybe
+                                                                        [Tag]),
+                                                                    _rdctpitPort
+                                                                    ::
+                                                                    !(Maybe
+                                                                        Int),
+                                                                    _rdctpitEnableIAMDatabaseAuthentication
+                                                                    ::
+                                                                    !(Maybe
+                                                                        Bool),
+                                                                    _rdctpitDBClusterIdentifier
+                                                                    :: !Text,
+                                                                    _rdctpitSourceDBClusterIdentifier
+                                                                    :: !Text}
+                                       deriving (Eq, Read, Show, Data, Typeable,
+                                                 Generic)
 
 -- | Creates a value of 'RestoreDBClusterToPointInTime' with the minimum fields required to make a request.
 --
@@ -88,7 +119,7 @@ data RestoreDBClusterToPointInTime =
 --
 -- * 'rdctpitUseLatestRestorableTime' - A value that is set to @true@ to restore the DB cluster to the latest restorable backup time, and @false@ otherwise.  Default: @false@  Constraints: Cannot be specified if @RestoreToTime@ parameter is provided.
 --
--- * 'rdctpitDBSubnetGroupName' - The DB subnet group name to use for the new DB cluster. Constraints: If supplied, must match the name of an existing DBSubnetGroup. Example: @mySubnetgroup@
+-- * 'rdctpitDBSubnetGroupName' - The DB subnet group name to use for the new DB cluster. Constraints: If supplied, must match the name of an existing DBSubnetGroup. Example: @mySubnetgroup@ 
 --
 -- * 'rdctpitBacktrackWindow' - The target backtrack window, in seconds. To disable backtracking, set this value to 0. Default: 0 Constraints:     * If specified, this value must be set to a number from 0 to 259,200 (72 hours).
 --
@@ -100,13 +131,13 @@ data RestoreDBClusterToPointInTime =
 --
 -- * 'rdctpitOptionGroupName' - The name of the option group for the new DB cluster.
 --
--- * 'rdctpitRestoreToTime' - The date and time to restore the DB cluster to. Valid Values: Value must be a time in Universal Coordinated Time (UTC) format Constraints:     * Must be before the latest restorable time for the DB instance     * Must be specified if @UseLatestRestorableTime@ parameter is not provided     * Cannot be specified if @UseLatestRestorableTime@ parameter is true     * Cannot be specified if @RestoreType@ parameter is @copy-on-write@  Example: @2015-03-07T23:45:00Z@
+-- * 'rdctpitRestoreToTime' - The date and time to restore the DB cluster to. Valid Values: Value must be a time in Universal Coordinated Time (UTC) format Constraints:     * Must be before the latest restorable time for the DB instance     * Must be specified if @UseLatestRestorableTime@ parameter is not provided     * Cannot be specified if @UseLatestRestorableTime@ parameter is true     * Cannot be specified if @RestoreType@ parameter is @copy-on-write@  Example: @2015-03-07T23:45:00Z@ 
 --
 -- * 'rdctpitTags' - Undocumented member.
 --
 -- * 'rdctpitPort' - The port number on which the new DB cluster accepts connections. Constraints: Value must be @1150-65535@  Default: The same port as the original DB cluster.
 --
--- * 'rdctpitEnableIAMDatabaseAuthentication' - True to enable mapping of AWS Identity and Access Management (IAM) accounts to database accounts, and otherwise false. Default: @false@
+-- * 'rdctpitEnableIAMDatabaseAuthentication' - True to enable mapping of AWS Identity and Access Management (IAM) accounts to database accounts, and otherwise false. Default: @false@ 
 --
 -- * 'rdctpitDBClusterIdentifier' - The name of the new DB cluster to be created. Constraints:     * Must contain from 1 to 63 letters, numbers, or hyphens     * First character must be a letter     * Cannot end with a hyphen or contain two consecutive hyphens
 --
@@ -115,29 +146,31 @@ restoreDBClusterToPointInTime
     :: Text -- ^ 'rdctpitDBClusterIdentifier'
     -> Text -- ^ 'rdctpitSourceDBClusterIdentifier'
     -> RestoreDBClusterToPointInTime
-restoreDBClusterToPointInTime pDBClusterIdentifier_ pSourceDBClusterIdentifier_ =
-  RestoreDBClusterToPointInTime'
-    { _rdctpitUseLatestRestorableTime = Nothing
-    , _rdctpitDBSubnetGroupName = Nothing
-    , _rdctpitBacktrackWindow = Nothing
-    , _rdctpitKMSKeyId = Nothing
-    , _rdctpitVPCSecurityGroupIds = Nothing
-    , _rdctpitRestoreType = Nothing
-    , _rdctpitOptionGroupName = Nothing
-    , _rdctpitRestoreToTime = Nothing
-    , _rdctpitTags = Nothing
-    , _rdctpitPort = Nothing
-    , _rdctpitEnableIAMDatabaseAuthentication = Nothing
-    , _rdctpitDBClusterIdentifier = pDBClusterIdentifier_
-    , _rdctpitSourceDBClusterIdentifier = pSourceDBClusterIdentifier_
-    }
-
+restoreDBClusterToPointInTime pDBClusterIdentifier_
+  pSourceDBClusterIdentifier_
+  = RestoreDBClusterToPointInTime'{_rdctpitUseLatestRestorableTime
+                                     = Nothing,
+                                   _rdctpitDBSubnetGroupName = Nothing,
+                                   _rdctpitBacktrackWindow = Nothing,
+                                   _rdctpitKMSKeyId = Nothing,
+                                   _rdctpitVPCSecurityGroupIds = Nothing,
+                                   _rdctpitRestoreType = Nothing,
+                                   _rdctpitOptionGroupName = Nothing,
+                                   _rdctpitRestoreToTime = Nothing,
+                                   _rdctpitTags = Nothing,
+                                   _rdctpitPort = Nothing,
+                                   _rdctpitEnableIAMDatabaseAuthentication =
+                                     Nothing,
+                                   _rdctpitDBClusterIdentifier =
+                                     pDBClusterIdentifier_,
+                                   _rdctpitSourceDBClusterIdentifier =
+                                     pSourceDBClusterIdentifier_}
 
 -- | A value that is set to @true@ to restore the DB cluster to the latest restorable backup time, and @false@ otherwise.  Default: @false@  Constraints: Cannot be specified if @RestoreToTime@ parameter is provided.
 rdctpitUseLatestRestorableTime :: Lens' RestoreDBClusterToPointInTime (Maybe Bool)
 rdctpitUseLatestRestorableTime = lens _rdctpitUseLatestRestorableTime (\ s a -> s{_rdctpitUseLatestRestorableTime = a})
 
--- | The DB subnet group name to use for the new DB cluster. Constraints: If supplied, must match the name of an existing DBSubnetGroup. Example: @mySubnetgroup@
+-- | The DB subnet group name to use for the new DB cluster. Constraints: If supplied, must match the name of an existing DBSubnetGroup. Example: @mySubnetgroup@ 
 rdctpitDBSubnetGroupName :: Lens' RestoreDBClusterToPointInTime (Maybe Text)
 rdctpitDBSubnetGroupName = lens _rdctpitDBSubnetGroupName (\ s a -> s{_rdctpitDBSubnetGroupName = a})
 
@@ -161,7 +194,7 @@ rdctpitRestoreType = lens _rdctpitRestoreType (\ s a -> s{_rdctpitRestoreType = 
 rdctpitOptionGroupName :: Lens' RestoreDBClusterToPointInTime (Maybe Text)
 rdctpitOptionGroupName = lens _rdctpitOptionGroupName (\ s a -> s{_rdctpitOptionGroupName = a})
 
--- | The date and time to restore the DB cluster to. Valid Values: Value must be a time in Universal Coordinated Time (UTC) format Constraints:     * Must be before the latest restorable time for the DB instance     * Must be specified if @UseLatestRestorableTime@ parameter is not provided     * Cannot be specified if @UseLatestRestorableTime@ parameter is true     * Cannot be specified if @RestoreType@ parameter is @copy-on-write@  Example: @2015-03-07T23:45:00Z@
+-- | The date and time to restore the DB cluster to. Valid Values: Value must be a time in Universal Coordinated Time (UTC) format Constraints:     * Must be before the latest restorable time for the DB instance     * Must be specified if @UseLatestRestorableTime@ parameter is not provided     * Cannot be specified if @UseLatestRestorableTime@ parameter is true     * Cannot be specified if @RestoreType@ parameter is @copy-on-write@  Example: @2015-03-07T23:45:00Z@ 
 rdctpitRestoreToTime :: Lens' RestoreDBClusterToPointInTime (Maybe UTCTime)
 rdctpitRestoreToTime = lens _rdctpitRestoreToTime (\ s a -> s{_rdctpitRestoreToTime = a}) . mapping _Time
 
@@ -173,7 +206,7 @@ rdctpitTags = lens _rdctpitTags (\ s a -> s{_rdctpitTags = a}) . _Default . _Coe
 rdctpitPort :: Lens' RestoreDBClusterToPointInTime (Maybe Int)
 rdctpitPort = lens _rdctpitPort (\ s a -> s{_rdctpitPort = a})
 
--- | True to enable mapping of AWS Identity and Access Management (IAM) accounts to database accounts, and otherwise false. Default: @false@
+-- | True to enable mapping of AWS Identity and Access Management (IAM) accounts to database accounts, and otherwise false. Default: @false@ 
 rdctpitEnableIAMDatabaseAuthentication :: Lens' RestoreDBClusterToPointInTime (Maybe Bool)
 rdctpitEnableIAMDatabaseAuthentication = lens _rdctpitEnableIAMDatabaseAuthentication (\ s a -> s{_rdctpitEnableIAMDatabaseAuthentication = a})
 
@@ -236,13 +269,15 @@ instance ToQuery RestoreDBClusterToPointInTime where
                  _rdctpitSourceDBClusterIdentifier]
 
 -- | /See:/ 'restoreDBClusterToPointInTimeResponse' smart constructor.
-data RestoreDBClusterToPointInTimeResponse =
-  RestoreDBClusterToPointInTimeResponse'
-    { _rdctpitrsDBCluster      :: !(Maybe DBCluster)
-    , _rdctpitrsResponseStatus :: !Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data RestoreDBClusterToPointInTimeResponse = RestoreDBClusterToPointInTimeResponse'{_rdctpitrsDBCluster
+                                                                                    ::
+                                                                                    !(Maybe
+                                                                                        DBCluster),
+                                                                                    _rdctpitrsResponseStatus
+                                                                                    ::
+                                                                                    !Int}
+                                               deriving (Eq, Read, Show, Data,
+                                                         Typeable, Generic)
 
 -- | Creates a value of 'RestoreDBClusterToPointInTimeResponse' with the minimum fields required to make a request.
 --
@@ -254,10 +289,12 @@ data RestoreDBClusterToPointInTimeResponse =
 restoreDBClusterToPointInTimeResponse
     :: Int -- ^ 'rdctpitrsResponseStatus'
     -> RestoreDBClusterToPointInTimeResponse
-restoreDBClusterToPointInTimeResponse pResponseStatus_ =
-  RestoreDBClusterToPointInTimeResponse'
-    {_rdctpitrsDBCluster = Nothing, _rdctpitrsResponseStatus = pResponseStatus_}
-
+restoreDBClusterToPointInTimeResponse
+  pResponseStatus_
+  = RestoreDBClusterToPointInTimeResponse'{_rdctpitrsDBCluster
+                                             = Nothing,
+                                           _rdctpitrsResponseStatus =
+                                             pResponseStatus_}
 
 -- | Undocumented member.
 rdctpitrsDBCluster :: Lens' RestoreDBClusterToPointInTimeResponse (Maybe DBCluster)

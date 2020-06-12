@@ -38,16 +38,16 @@ import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 import Network.AWS.S3.Types
-import Network.AWS.S3.Types.Product
 
 -- | /See:/ 'deleteBucketMetricsConfiguration' smart constructor.
-data DeleteBucketMetricsConfiguration =
-  DeleteBucketMetricsConfiguration'
-    { _dbmcBucket :: !BucketName
-    , _dbmcId     :: !Text
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data DeleteBucketMetricsConfiguration = DeleteBucketMetricsConfiguration'{_dbmcBucket
+                                                                          ::
+                                                                          !BucketName,
+                                                                          _dbmcId
+                                                                          ::
+                                                                          !Text}
+                                          deriving (Eq, Read, Show, Data,
+                                                    Typeable, Generic)
 
 -- | Creates a value of 'DeleteBucketMetricsConfiguration' with the minimum fields required to make a request.
 --
@@ -60,9 +60,10 @@ deleteBucketMetricsConfiguration
     :: BucketName -- ^ 'dbmcBucket'
     -> Text -- ^ 'dbmcId'
     -> DeleteBucketMetricsConfiguration
-deleteBucketMetricsConfiguration pBucket_ pId_ =
-  DeleteBucketMetricsConfiguration' {_dbmcBucket = pBucket_, _dbmcId = pId_}
-
+deleteBucketMetricsConfiguration pBucket_ pId_
+  = DeleteBucketMetricsConfiguration'{_dbmcBucket =
+                                        pBucket_,
+                                      _dbmcId = pId_}
 
 -- | The name of the bucket containing the metrics configuration to delete.
 dbmcBucket :: Lens' DeleteBucketMetricsConfiguration BucketName
@@ -102,18 +103,17 @@ instance ToQuery DeleteBucketMetricsConfiguration
           = mconcat ["id" =: _dbmcId, "metrics"]
 
 -- | /See:/ 'deleteBucketMetricsConfigurationResponse' smart constructor.
-data DeleteBucketMetricsConfigurationResponse =
-  DeleteBucketMetricsConfigurationResponse'
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data DeleteBucketMetricsConfigurationResponse = DeleteBucketMetricsConfigurationResponse'
+                                                  deriving (Eq, Read, Show,
+                                                            Data, Typeable,
+                                                            Generic)
 
 -- | Creates a value of 'DeleteBucketMetricsConfigurationResponse' with the minimum fields required to make a request.
 --
 deleteBucketMetricsConfigurationResponse
     :: DeleteBucketMetricsConfigurationResponse
-deleteBucketMetricsConfigurationResponse =
-  DeleteBucketMetricsConfigurationResponse'
-
+deleteBucketMetricsConfigurationResponse
+  = DeleteBucketMetricsConfigurationResponse'
 
 instance NFData
            DeleteBucketMetricsConfigurationResponse

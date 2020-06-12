@@ -43,22 +43,18 @@ module Network.AWS.EC2.DescribeAddresses
     ) where
 
 import Network.AWS.EC2.Types
-import Network.AWS.EC2.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 
 -- | /See:/ 'describeAddresses' smart constructor.
-data DescribeAddresses =
-  DescribeAddresses'
-    { _daFilters       :: !(Maybe [Filter])
-    , _daPublicIPs     :: !(Maybe [Text])
-    , _daAllocationIds :: !(Maybe [Text])
-    , _daDryRun        :: !(Maybe Bool)
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data DescribeAddresses = DescribeAddresses'{_daFilters
+                                            :: !(Maybe [Filter]),
+                                            _daPublicIPs :: !(Maybe [Text]),
+                                            _daAllocationIds :: !(Maybe [Text]),
+                                            _daDryRun :: !(Maybe Bool)}
+                           deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'DescribeAddresses' with the minimum fields required to make a request.
 --
@@ -73,14 +69,10 @@ data DescribeAddresses =
 -- * 'daDryRun' - Checks whether you have the required permissions for the action, without actually making the request, and provides an error response. If you have the required permissions, the error response is @DryRunOperation@ . Otherwise, it is @UnauthorizedOperation@ .
 describeAddresses
     :: DescribeAddresses
-describeAddresses =
-  DescribeAddresses'
-    { _daFilters = Nothing
-    , _daPublicIPs = Nothing
-    , _daAllocationIds = Nothing
-    , _daDryRun = Nothing
-    }
-
+describeAddresses
+  = DescribeAddresses'{_daFilters = Nothing,
+                       _daPublicIPs = Nothing, _daAllocationIds = Nothing,
+                       _daDryRun = Nothing}
 
 -- | One or more filters. Filter names and values are case-sensitive.     * @allocation-id@ - [EC2-VPC] The allocation ID for the address.     * @association-id@ - [EC2-VPC] The association ID for the address.     * @domain@ - Indicates whether the address is for use in EC2-Classic (@standard@ ) or in a VPC (@vpc@ ).     * @instance-id@ - The ID of the instance the address is associated with, if any.     * @network-border-group@ - The location from where the IP address is advertised.     * @network-interface-id@ - [EC2-VPC] The ID of the network interface that the address is associated with, if any.     * @network-interface-owner-id@ - The AWS account ID of the owner.     * @private-ip-address@ - [EC2-VPC] The private IP address associated with the Elastic IP address.     * @public-ip@ - The Elastic IP address.     * @tag@ :<key> - The key/value combination of a tag assigned to the resource. Use the tag key in the filter name and the tag value as the filter value. For example, to find all resources that have a tag with the key @Owner@ and the value @TeamA@ , specify @tag:Owner@ for the filter name and @TeamA@ for the filter value.     * @tag-key@ - The key of a tag assigned to the resource. Use this filter to find all resources assigned a tag with a specific key, regardless of the tag value.
 daFilters :: Lens' DescribeAddresses [Filter]
@@ -131,13 +123,13 @@ instance ToQuery DescribeAddresses where
                "DryRun" =: _daDryRun]
 
 -- | /See:/ 'describeAddressesResponse' smart constructor.
-data DescribeAddressesResponse =
-  DescribeAddressesResponse'
-    { _darsAddresses      :: !(Maybe [Address])
-    , _darsResponseStatus :: !Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data DescribeAddressesResponse = DescribeAddressesResponse'{_darsAddresses
+                                                            ::
+                                                            !(Maybe [Address]),
+                                                            _darsResponseStatus
+                                                            :: !Int}
+                                   deriving (Eq, Read, Show, Data, Typeable,
+                                             Generic)
 
 -- | Creates a value of 'DescribeAddressesResponse' with the minimum fields required to make a request.
 --
@@ -149,10 +141,10 @@ data DescribeAddressesResponse =
 describeAddressesResponse
     :: Int -- ^ 'darsResponseStatus'
     -> DescribeAddressesResponse
-describeAddressesResponse pResponseStatus_ =
-  DescribeAddressesResponse'
-    {_darsAddresses = Nothing, _darsResponseStatus = pResponseStatus_}
-
+describeAddressesResponse pResponseStatus_
+  = DescribeAddressesResponse'{_darsAddresses =
+                                 Nothing,
+                               _darsResponseStatus = pResponseStatus_}
 
 -- | Information about the Elastic IP addresses.
 darsAddresses :: Lens' DescribeAddressesResponse [Address]

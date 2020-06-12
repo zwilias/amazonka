@@ -44,7 +44,6 @@ module Network.AWS.DAX.DescribeParameters
     ) where
 
 import Network.AWS.DAX.Types
-import Network.AWS.DAX.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Pager
 import Network.AWS.Prelude
@@ -52,15 +51,12 @@ import Network.AWS.Request
 import Network.AWS.Response
 
 -- | /See:/ 'describeParameters' smart constructor.
-data DescribeParameters =
-  DescribeParameters'
-    { _dpNextToken          :: !(Maybe Text)
-    , _dpSource             :: !(Maybe Text)
-    , _dpMaxResults         :: !(Maybe Int)
-    , _dpParameterGroupName :: !Text
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data DescribeParameters = DescribeParameters'{_dpNextToken
+                                              :: !(Maybe Text),
+                                              _dpSource :: !(Maybe Text),
+                                              _dpMaxResults :: !(Maybe Int),
+                                              _dpParameterGroupName :: !Text}
+                            deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'DescribeParameters' with the minimum fields required to make a request.
 --
@@ -76,14 +72,10 @@ data DescribeParameters =
 describeParameters
     :: Text -- ^ 'dpParameterGroupName'
     -> DescribeParameters
-describeParameters pParameterGroupName_ =
-  DescribeParameters'
-    { _dpNextToken = Nothing
-    , _dpSource = Nothing
-    , _dpMaxResults = Nothing
-    , _dpParameterGroupName = pParameterGroupName_
-    }
-
+describeParameters pParameterGroupName_
+  = DescribeParameters'{_dpNextToken = Nothing,
+                        _dpSource = Nothing, _dpMaxResults = Nothing,
+                        _dpParameterGroupName = pParameterGroupName_}
 
 -- | An optional token returned from a prior request. Use this token for pagination of results from this action. If this parameter is specified, the response includes only results beyond the token, up to the value specified by @MaxResults@ .
 dpNextToken :: Lens' DescribeParameters (Maybe Text)
@@ -150,14 +142,15 @@ instance ToQuery DescribeParameters where
         toQuery = const mempty
 
 -- | /See:/ 'describeParametersResponse' smart constructor.
-data DescribeParametersResponse =
-  DescribeParametersResponse'
-    { _dprsNextToken      :: !(Maybe Text)
-    , _dprsParameters     :: !(Maybe [Parameter])
-    , _dprsResponseStatus :: !Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data DescribeParametersResponse = DescribeParametersResponse'{_dprsNextToken
+                                                              :: !(Maybe Text),
+                                                              _dprsParameters ::
+                                                              !(Maybe
+                                                                  [Parameter]),
+                                                              _dprsResponseStatus
+                                                              :: !Int}
+                                    deriving (Eq, Read, Show, Data, Typeable,
+                                              Generic)
 
 -- | Creates a value of 'DescribeParametersResponse' with the minimum fields required to make a request.
 --
@@ -171,13 +164,11 @@ data DescribeParametersResponse =
 describeParametersResponse
     :: Int -- ^ 'dprsResponseStatus'
     -> DescribeParametersResponse
-describeParametersResponse pResponseStatus_ =
-  DescribeParametersResponse'
-    { _dprsNextToken = Nothing
-    , _dprsParameters = Nothing
-    , _dprsResponseStatus = pResponseStatus_
-    }
-
+describeParametersResponse pResponseStatus_
+  = DescribeParametersResponse'{_dprsNextToken =
+                                  Nothing,
+                                _dprsParameters = Nothing,
+                                _dprsResponseStatus = pResponseStatus_}
 
 -- | Provides an identifier to allow retrieval of paginated results.
 dprsNextToken :: Lens' DescribeParametersResponse (Maybe Text)

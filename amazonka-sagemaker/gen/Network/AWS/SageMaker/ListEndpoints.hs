@@ -55,24 +55,20 @@ import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 import Network.AWS.SageMaker.Types
-import Network.AWS.SageMaker.Types.Product
 
 -- | /See:/ 'listEndpoints' smart constructor.
-data ListEndpoints =
-  ListEndpoints'
-    { _leNameContains           :: !(Maybe Text)
-    , _leLastModifiedTimeBefore :: !(Maybe POSIX)
-    , _leCreationTimeAfter      :: !(Maybe POSIX)
-    , _leNextToken              :: !(Maybe Text)
-    , _leSortOrder              :: !(Maybe OrderKey)
-    , _leLastModifiedTimeAfter  :: !(Maybe POSIX)
-    , _leCreationTimeBefore     :: !(Maybe POSIX)
-    , _leStatusEquals           :: !(Maybe EndpointStatus)
-    , _leMaxResults             :: !(Maybe Nat)
-    , _leSortBy                 :: !(Maybe EndpointSortKey)
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data ListEndpoints = ListEndpoints'{_leNameContains
+                                    :: !(Maybe Text),
+                                    _leLastModifiedTimeBefore :: !(Maybe POSIX),
+                                    _leCreationTimeAfter :: !(Maybe POSIX),
+                                    _leNextToken :: !(Maybe Text),
+                                    _leSortOrder :: !(Maybe OrderKey),
+                                    _leLastModifiedTimeAfter :: !(Maybe POSIX),
+                                    _leCreationTimeBefore :: !(Maybe POSIX),
+                                    _leStatusEquals :: !(Maybe EndpointStatus),
+                                    _leMaxResults :: !(Maybe Nat),
+                                    _leSortBy :: !(Maybe EndpointSortKey)}
+                       deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'ListEndpoints' with the minimum fields required to make a request.
 --
@@ -80,7 +76,7 @@ data ListEndpoints =
 --
 -- * 'leNameContains' - A string in endpoint names. This filter returns only endpoints whose name contains the specified string.
 --
--- * 'leLastModifiedTimeBefore' - A filter that returns only endpoints that were modified before the specified timestamp.
+-- * 'leLastModifiedTimeBefore' - A filter that returns only endpoints that were modified before the specified timestamp. 
 --
 -- * 'leCreationTimeAfter' - A filter that returns only endpoints that were created after the specified time (timestamp).
 --
@@ -88,37 +84,32 @@ data ListEndpoints =
 --
 -- * 'leSortOrder' - The sort order for results. The default is @Ascending@ .
 --
--- * 'leLastModifiedTimeAfter' - A filter that returns only endpoints that were modified after the specified timestamp.
+-- * 'leLastModifiedTimeAfter' - A filter that returns only endpoints that were modified after the specified timestamp. 
 --
 -- * 'leCreationTimeBefore' - A filter that returns only endpoints that were created before the specified time (timestamp).
 --
--- * 'leStatusEquals' - A filter that returns only endpoints with the specified status.
+-- * 'leStatusEquals' - A filter that returns only endpoints with the specified status. 
 --
 -- * 'leMaxResults' - The maximum number of endpoints to return in the response.
 --
 -- * 'leSortBy' - Sorts the list of results. The default is @CreationTime@ .
 listEndpoints
     :: ListEndpoints
-listEndpoints =
-  ListEndpoints'
-    { _leNameContains = Nothing
-    , _leLastModifiedTimeBefore = Nothing
-    , _leCreationTimeAfter = Nothing
-    , _leNextToken = Nothing
-    , _leSortOrder = Nothing
-    , _leLastModifiedTimeAfter = Nothing
-    , _leCreationTimeBefore = Nothing
-    , _leStatusEquals = Nothing
-    , _leMaxResults = Nothing
-    , _leSortBy = Nothing
-    }
-
+listEndpoints
+  = ListEndpoints'{_leNameContains = Nothing,
+                   _leLastModifiedTimeBefore = Nothing,
+                   _leCreationTimeAfter = Nothing,
+                   _leNextToken = Nothing, _leSortOrder = Nothing,
+                   _leLastModifiedTimeAfter = Nothing,
+                   _leCreationTimeBefore = Nothing,
+                   _leStatusEquals = Nothing, _leMaxResults = Nothing,
+                   _leSortBy = Nothing}
 
 -- | A string in endpoint names. This filter returns only endpoints whose name contains the specified string.
 leNameContains :: Lens' ListEndpoints (Maybe Text)
 leNameContains = lens _leNameContains (\ s a -> s{_leNameContains = a})
 
--- | A filter that returns only endpoints that were modified before the specified timestamp.
+-- | A filter that returns only endpoints that were modified before the specified timestamp. 
 leLastModifiedTimeBefore :: Lens' ListEndpoints (Maybe UTCTime)
 leLastModifiedTimeBefore = lens _leLastModifiedTimeBefore (\ s a -> s{_leLastModifiedTimeBefore = a}) . mapping _Time
 
@@ -134,7 +125,7 @@ leNextToken = lens _leNextToken (\ s a -> s{_leNextToken = a})
 leSortOrder :: Lens' ListEndpoints (Maybe OrderKey)
 leSortOrder = lens _leSortOrder (\ s a -> s{_leSortOrder = a})
 
--- | A filter that returns only endpoints that were modified after the specified timestamp.
+-- | A filter that returns only endpoints that were modified after the specified timestamp. 
 leLastModifiedTimeAfter :: Lens' ListEndpoints (Maybe UTCTime)
 leLastModifiedTimeAfter = lens _leLastModifiedTimeAfter (\ s a -> s{_leLastModifiedTimeAfter = a}) . mapping _Time
 
@@ -142,7 +133,7 @@ leLastModifiedTimeAfter = lens _leLastModifiedTimeAfter (\ s a -> s{_leLastModif
 leCreationTimeBefore :: Lens' ListEndpoints (Maybe UTCTime)
 leCreationTimeBefore = lens _leCreationTimeBefore (\ s a -> s{_leCreationTimeBefore = a}) . mapping _Time
 
--- | A filter that returns only endpoints with the specified status.
+-- | A filter that returns only endpoints with the specified status. 
 leStatusEquals :: Lens' ListEndpoints (Maybe EndpointStatus)
 leStatusEquals = lens _leStatusEquals (\ s a -> s{_leStatusEquals = a})
 
@@ -208,36 +199,32 @@ instance ToQuery ListEndpoints where
         toQuery = const mempty
 
 -- | /See:/ 'listEndpointsResponse' smart constructor.
-data ListEndpointsResponse =
-  ListEndpointsResponse'
-    { _lersNextToken      :: !(Maybe Text)
-    , _lersResponseStatus :: !Int
-    , _lersEndpoints      :: ![EndpointSummary]
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data ListEndpointsResponse = ListEndpointsResponse'{_lersNextToken
+                                                    :: !(Maybe Text),
+                                                    _lersResponseStatus :: !Int,
+                                                    _lersEndpoints ::
+                                                    ![EndpointSummary]}
+                               deriving (Eq, Read, Show, Data, Typeable,
+                                         Generic)
 
 -- | Creates a value of 'ListEndpointsResponse' with the minimum fields required to make a request.
 --
 -- Use one of the following lenses to modify other fields as desired:
 --
--- * 'lersNextToken' - If the response is truncated, Amazon SageMaker returns this token. To retrieve the next set of training jobs, use it in the subsequent request.
+-- * 'lersNextToken' - If the response is truncated, Amazon SageMaker returns this token. To retrieve the next set of training jobs, use it in the subsequent request. 
 --
 -- * 'lersResponseStatus' - -- | The response status code.
 --
--- * 'lersEndpoints' - An array or endpoint objects.
+-- * 'lersEndpoints' - An array or endpoint objects. 
 listEndpointsResponse
     :: Int -- ^ 'lersResponseStatus'
     -> ListEndpointsResponse
-listEndpointsResponse pResponseStatus_ =
-  ListEndpointsResponse'
-    { _lersNextToken = Nothing
-    , _lersResponseStatus = pResponseStatus_
-    , _lersEndpoints = mempty
-    }
+listEndpointsResponse pResponseStatus_
+  = ListEndpointsResponse'{_lersNextToken = Nothing,
+                           _lersResponseStatus = pResponseStatus_,
+                           _lersEndpoints = mempty}
 
-
--- | If the response is truncated, Amazon SageMaker returns this token. To retrieve the next set of training jobs, use it in the subsequent request.
+-- | If the response is truncated, Amazon SageMaker returns this token. To retrieve the next set of training jobs, use it in the subsequent request. 
 lersNextToken :: Lens' ListEndpointsResponse (Maybe Text)
 lersNextToken = lens _lersNextToken (\ s a -> s{_lersNextToken = a})
 
@@ -245,7 +232,7 @@ lersNextToken = lens _lersNextToken (\ s a -> s{_lersNextToken = a})
 lersResponseStatus :: Lens' ListEndpointsResponse Int
 lersResponseStatus = lens _lersResponseStatus (\ s a -> s{_lersResponseStatus = a})
 
--- | An array or endpoint objects.
+-- | An array or endpoint objects. 
 lersEndpoints :: Lens' ListEndpointsResponse [EndpointSummary]
 lersEndpoints = lens _lersEndpoints (\ s a -> s{_lersEndpoints = a}) . _Coerce
 

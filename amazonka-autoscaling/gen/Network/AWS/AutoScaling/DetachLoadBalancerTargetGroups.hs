@@ -38,20 +38,19 @@ module Network.AWS.AutoScaling.DetachLoadBalancerTargetGroups
     ) where
 
 import Network.AWS.AutoScaling.Types
-import Network.AWS.AutoScaling.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 
 -- | /See:/ 'detachLoadBalancerTargetGroups' smart constructor.
-data DetachLoadBalancerTargetGroups =
-  DetachLoadBalancerTargetGroups'
-    { _dlbtgAutoScalingGroupName :: !Text
-    , _dlbtgTargetGroupARNs      :: ![Text]
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data DetachLoadBalancerTargetGroups = DetachLoadBalancerTargetGroups'{_dlbtgAutoScalingGroupName
+                                                                      :: !Text,
+                                                                      _dlbtgTargetGroupARNs
+                                                                      ::
+                                                                      ![Text]}
+                                        deriving (Eq, Read, Show, Data,
+                                                  Typeable, Generic)
 
 -- | Creates a value of 'DetachLoadBalancerTargetGroups' with the minimum fields required to make a request.
 --
@@ -63,12 +62,10 @@ data DetachLoadBalancerTargetGroups =
 detachLoadBalancerTargetGroups
     :: Text -- ^ 'dlbtgAutoScalingGroupName'
     -> DetachLoadBalancerTargetGroups
-detachLoadBalancerTargetGroups pAutoScalingGroupName_ =
-  DetachLoadBalancerTargetGroups'
-    { _dlbtgAutoScalingGroupName = pAutoScalingGroupName_
-    , _dlbtgTargetGroupARNs = mempty
-    }
-
+detachLoadBalancerTargetGroups pAutoScalingGroupName_
+  = DetachLoadBalancerTargetGroups'{_dlbtgAutoScalingGroupName
+                                      = pAutoScalingGroupName_,
+                                    _dlbtgTargetGroupARNs = mempty}
 
 -- | The name of the Auto Scaling group.
 dlbtgAutoScalingGroupName :: Lens' DetachLoadBalancerTargetGroups Text
@@ -113,12 +110,12 @@ instance ToQuery DetachLoadBalancerTargetGroups where
                  toQueryList "member" _dlbtgTargetGroupARNs]
 
 -- | /See:/ 'detachLoadBalancerTargetGroupsResponse' smart constructor.
-newtype DetachLoadBalancerTargetGroupsResponse =
-  DetachLoadBalancerTargetGroupsResponse'
-    { _dlbtgrsResponseStatus :: Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+newtype DetachLoadBalancerTargetGroupsResponse = DetachLoadBalancerTargetGroupsResponse'{_dlbtgrsResponseStatus
+                                                                                         ::
+                                                                                         Int}
+                                                   deriving (Eq, Read, Show,
+                                                             Data, Typeable,
+                                                             Generic)
 
 -- | Creates a value of 'DetachLoadBalancerTargetGroupsResponse' with the minimum fields required to make a request.
 --
@@ -128,10 +125,10 @@ newtype DetachLoadBalancerTargetGroupsResponse =
 detachLoadBalancerTargetGroupsResponse
     :: Int -- ^ 'dlbtgrsResponseStatus'
     -> DetachLoadBalancerTargetGroupsResponse
-detachLoadBalancerTargetGroupsResponse pResponseStatus_ =
-  DetachLoadBalancerTargetGroupsResponse'
-    {_dlbtgrsResponseStatus = pResponseStatus_}
-
+detachLoadBalancerTargetGroupsResponse
+  pResponseStatus_
+  = DetachLoadBalancerTargetGroupsResponse'{_dlbtgrsResponseStatus
+                                              = pResponseStatus_}
 
 -- | -- | The response status code.
 dlbtgrsResponseStatus :: Lens' DetachLoadBalancerTargetGroupsResponse Int

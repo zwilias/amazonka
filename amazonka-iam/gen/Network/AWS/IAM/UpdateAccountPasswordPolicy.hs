@@ -45,27 +45,38 @@ module Network.AWS.IAM.UpdateAccountPasswordPolicy
     ) where
 
 import Network.AWS.IAM.Types
-import Network.AWS.IAM.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 
 -- | /See:/ 'updateAccountPasswordPolicy' smart constructor.
-data UpdateAccountPasswordPolicy =
-  UpdateAccountPasswordPolicy'
-    { _uappMinimumPasswordLength      :: !(Maybe Nat)
-    , _uappRequireNumbers             :: !(Maybe Bool)
-    , _uappPasswordReusePrevention    :: !(Maybe Nat)
-    , _uappRequireLowercaseCharacters :: !(Maybe Bool)
-    , _uappMaxPasswordAge             :: !(Maybe Nat)
-    , _uappHardExpiry                 :: !(Maybe Bool)
-    , _uappRequireSymbols             :: !(Maybe Bool)
-    , _uappRequireUppercaseCharacters :: !(Maybe Bool)
-    , _uappAllowUsersToChangePassword :: !(Maybe Bool)
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data UpdateAccountPasswordPolicy = UpdateAccountPasswordPolicy'{_uappMinimumPasswordLength
+                                                                :: !(Maybe Nat),
+                                                                _uappRequireNumbers
+                                                                ::
+                                                                !(Maybe Bool),
+                                                                _uappPasswordReusePrevention
+                                                                :: !(Maybe Nat),
+                                                                _uappRequireLowercaseCharacters
+                                                                ::
+                                                                !(Maybe Bool),
+                                                                _uappMaxPasswordAge
+                                                                :: !(Maybe Nat),
+                                                                _uappHardExpiry
+                                                                ::
+                                                                !(Maybe Bool),
+                                                                _uappRequireSymbols
+                                                                ::
+                                                                !(Maybe Bool),
+                                                                _uappRequireUppercaseCharacters
+                                                                ::
+                                                                !(Maybe Bool),
+                                                                _uappAllowUsersToChangePassword
+                                                                ::
+                                                                !(Maybe Bool)}
+                                     deriving (Eq, Read, Show, Data, Typeable,
+                                               Generic)
 
 -- | Creates a value of 'UpdateAccountPasswordPolicy' with the minimum fields required to make a request.
 --
@@ -90,19 +101,17 @@ data UpdateAccountPasswordPolicy =
 -- * 'uappAllowUsersToChangePassword' - Allows all IAM users in your account to use the AWS Management Console to change their own passwords. For more information, see <http://docs.aws.amazon.com/IAM/latest/UserGuide/HowToPwdIAMUser.html Letting IAM Users Change Their Own Passwords> in the /IAM User Guide/ . If you do not specify a value for this parameter, then the operation uses the default value of @false@ . The result is that IAM users in the account do not automatically have permissions to change their own password.
 updateAccountPasswordPolicy
     :: UpdateAccountPasswordPolicy
-updateAccountPasswordPolicy =
-  UpdateAccountPasswordPolicy'
-    { _uappMinimumPasswordLength = Nothing
-    , _uappRequireNumbers = Nothing
-    , _uappPasswordReusePrevention = Nothing
-    , _uappRequireLowercaseCharacters = Nothing
-    , _uappMaxPasswordAge = Nothing
-    , _uappHardExpiry = Nothing
-    , _uappRequireSymbols = Nothing
-    , _uappRequireUppercaseCharacters = Nothing
-    , _uappAllowUsersToChangePassword = Nothing
-    }
-
+updateAccountPasswordPolicy
+  = UpdateAccountPasswordPolicy'{_uappMinimumPasswordLength
+                                   = Nothing,
+                                 _uappRequireNumbers = Nothing,
+                                 _uappPasswordReusePrevention = Nothing,
+                                 _uappRequireLowercaseCharacters = Nothing,
+                                 _uappMaxPasswordAge = Nothing,
+                                 _uappHardExpiry = Nothing,
+                                 _uappRequireSymbols = Nothing,
+                                 _uappRequireUppercaseCharacters = Nothing,
+                                 _uappAllowUsersToChangePassword = Nothing}
 
 -- | The minimum number of characters allowed in an IAM user password. If you do not specify a value for this parameter, then the operation uses the default value of @6@ .
 uappMinimumPasswordLength :: Lens' UpdateAccountPasswordPolicy (Maybe Natural)
@@ -179,17 +188,16 @@ instance ToQuery UpdateAccountPasswordPolicy where
                  _uappAllowUsersToChangePassword]
 
 -- | /See:/ 'updateAccountPasswordPolicyResponse' smart constructor.
-data UpdateAccountPasswordPolicyResponse =
-  UpdateAccountPasswordPolicyResponse'
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data UpdateAccountPasswordPolicyResponse = UpdateAccountPasswordPolicyResponse'
+                                             deriving (Eq, Read, Show, Data,
+                                                       Typeable, Generic)
 
 -- | Creates a value of 'UpdateAccountPasswordPolicyResponse' with the minimum fields required to make a request.
 --
 updateAccountPasswordPolicyResponse
     :: UpdateAccountPasswordPolicyResponse
-updateAccountPasswordPolicyResponse = UpdateAccountPasswordPolicyResponse'
-
+updateAccountPasswordPolicyResponse
+  = UpdateAccountPasswordPolicyResponse'
 
 instance NFData UpdateAccountPasswordPolicyResponse
          where

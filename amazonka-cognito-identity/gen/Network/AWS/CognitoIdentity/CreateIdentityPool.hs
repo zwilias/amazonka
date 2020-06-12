@@ -21,15 +21,15 @@
 -- Creates a new identity pool. The identity pool is a store of user identity information that is specific to your AWS account. The keys for @SupportedLoginProviders@ are as follows:
 --
 --
---     * Facebook: @graph.facebook.com@
+--     * Facebook: @graph.facebook.com@ 
 --
---     * Google: @accounts.google.com@
+--     * Google: @accounts.google.com@ 
 --
---     * Amazon: @www.amazon.com@
+--     * Amazon: @www.amazon.com@ 
 --
---     * Twitter: @api.twitter.com@
+--     * Twitter: @api.twitter.com@ 
 --
---     * Digits: @www.digits.com@
+--     * Digits: @www.digits.com@ 
 --
 --
 --
@@ -68,7 +68,6 @@ module Network.AWS.CognitoIdentity.CreateIdentityPool
     ) where
 
 import Network.AWS.CognitoIdentity.Types
-import Network.AWS.CognitoIdentity.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.Request
@@ -79,20 +78,25 @@ import Network.AWS.Response
 --
 --
 -- /See:/ 'createIdentityPool' smart constructor.
-data CreateIdentityPool =
-  CreateIdentityPool'
-    { _cipSamlProviderARNs               :: !(Maybe [Text])
-    , _cipSupportedLoginProviders        :: !(Maybe (Map Text Text))
-    , _cipAllowClassicFlow               :: !(Maybe Bool)
-    , _cipDeveloperProviderName          :: !(Maybe Text)
-    , _cipIdentityPoolTags               :: !(Maybe (Map Text Text))
-    , _cipOpenIdConnectProviderARNs      :: !(Maybe [Text])
-    , _cipCognitoIdentityProviders       :: !(Maybe [CognitoIdentityProvider])
-    , _cipIdentityPoolName               :: !Text
-    , _cipAllowUnauthenticatedIdentities :: !Bool
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data CreateIdentityPool = CreateIdentityPool'{_cipSamlProviderARNs
+                                              :: !(Maybe [Text]),
+                                              _cipSupportedLoginProviders ::
+                                              !(Maybe (Map Text Text)),
+                                              _cipAllowClassicFlow ::
+                                              !(Maybe Bool),
+                                              _cipDeveloperProviderName ::
+                                              !(Maybe Text),
+                                              _cipIdentityPoolTags ::
+                                              !(Maybe (Map Text Text)),
+                                              _cipOpenIdConnectProviderARNs ::
+                                              !(Maybe [Text]),
+                                              _cipCognitoIdentityProviders ::
+                                              !(Maybe
+                                                  [CognitoIdentityProvider]),
+                                              _cipIdentityPoolName :: !Text,
+                                              _cipAllowUnauthenticatedIdentities
+                                              :: !Bool}
+                            deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'CreateIdentityPool' with the minimum fields required to make a request.
 --
@@ -119,19 +123,18 @@ createIdentityPool
     :: Text -- ^ 'cipIdentityPoolName'
     -> Bool -- ^ 'cipAllowUnauthenticatedIdentities'
     -> CreateIdentityPool
-createIdentityPool pIdentityPoolName_ pAllowUnauthenticatedIdentities_ =
-  CreateIdentityPool'
-    { _cipSamlProviderARNs = Nothing
-    , _cipSupportedLoginProviders = Nothing
-    , _cipAllowClassicFlow = Nothing
-    , _cipDeveloperProviderName = Nothing
-    , _cipIdentityPoolTags = Nothing
-    , _cipOpenIdConnectProviderARNs = Nothing
-    , _cipCognitoIdentityProviders = Nothing
-    , _cipIdentityPoolName = pIdentityPoolName_
-    , _cipAllowUnauthenticatedIdentities = pAllowUnauthenticatedIdentities_
-    }
-
+createIdentityPool pIdentityPoolName_
+  pAllowUnauthenticatedIdentities_
+  = CreateIdentityPool'{_cipSamlProviderARNs = Nothing,
+                        _cipSupportedLoginProviders = Nothing,
+                        _cipAllowClassicFlow = Nothing,
+                        _cipDeveloperProviderName = Nothing,
+                        _cipIdentityPoolTags = Nothing,
+                        _cipOpenIdConnectProviderARNs = Nothing,
+                        _cipCognitoIdentityProviders = Nothing,
+                        _cipIdentityPoolName = pIdentityPoolName_,
+                        _cipAllowUnauthenticatedIdentities =
+                          pAllowUnauthenticatedIdentities_}
 
 -- | An array of Amazon Resource Names (ARNs) of the SAML provider for your identity pool.
 cipSamlProviderARNs :: Lens' CreateIdentityPool [Text]

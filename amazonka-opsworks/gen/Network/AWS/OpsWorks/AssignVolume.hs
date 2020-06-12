@@ -39,19 +39,15 @@ module Network.AWS.OpsWorks.AssignVolume
 
 import Network.AWS.Lens
 import Network.AWS.OpsWorks.Types
-import Network.AWS.OpsWorks.Types.Product
 import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 
 -- | /See:/ 'assignVolume' smart constructor.
-data AssignVolume =
-  AssignVolume'
-    { _avInstanceId :: !(Maybe Text)
-    , _avVolumeId   :: !Text
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data AssignVolume = AssignVolume'{_avInstanceId ::
+                                  !(Maybe Text),
+                                  _avVolumeId :: !Text}
+                      deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'AssignVolume' with the minimum fields required to make a request.
 --
@@ -63,9 +59,9 @@ data AssignVolume =
 assignVolume
     :: Text -- ^ 'avVolumeId'
     -> AssignVolume
-assignVolume pVolumeId_ =
-  AssignVolume' {_avInstanceId = Nothing, _avVolumeId = pVolumeId_}
-
+assignVolume pVolumeId_
+  = AssignVolume'{_avInstanceId = Nothing,
+                  _avVolumeId = pVolumeId_}
 
 -- | The instance ID.
 avInstanceId :: Lens' AssignVolume (Maybe Text)
@@ -107,16 +103,13 @@ instance ToQuery AssignVolume where
         toQuery = const mempty
 
 -- | /See:/ 'assignVolumeResponse' smart constructor.
-data AssignVolumeResponse =
-  AssignVolumeResponse'
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data AssignVolumeResponse = AssignVolumeResponse'
+                              deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'AssignVolumeResponse' with the minimum fields required to make a request.
 --
 assignVolumeResponse
     :: AssignVolumeResponse
 assignVolumeResponse = AssignVolumeResponse'
-
 
 instance NFData AssignVolumeResponse where

@@ -42,19 +42,15 @@ module Network.AWS.Organizations.DisablePolicyType
 
 import Network.AWS.Lens
 import Network.AWS.Organizations.Types
-import Network.AWS.Organizations.Types.Product
 import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 
 -- | /See:/ 'disablePolicyType' smart constructor.
-data DisablePolicyType =
-  DisablePolicyType'
-    { _dptRootId     :: !Text
-    , _dptPolicyType :: !PolicyType
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data DisablePolicyType = DisablePolicyType'{_dptRootId
+                                            :: !Text,
+                                            _dptPolicyType :: !PolicyType}
+                           deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'DisablePolicyType' with the minimum fields required to make a request.
 --
@@ -67,9 +63,9 @@ disablePolicyType
     :: Text -- ^ 'dptRootId'
     -> PolicyType -- ^ 'dptPolicyType'
     -> DisablePolicyType
-disablePolicyType pRootId_ pPolicyType_ =
-  DisablePolicyType' {_dptRootId = pRootId_, _dptPolicyType = pPolicyType_}
-
+disablePolicyType pRootId_ pPolicyType_
+  = DisablePolicyType'{_dptRootId = pRootId_,
+                       _dptPolicyType = pPolicyType_}
 
 -- | The unique identifier (ID) of the root in which you want to disable a policy type. You can get the ID from the 'ListRoots' operation. The <http://wikipedia.org/wiki/regex regex pattern> for a root ID string requires "r-" followed by from 4 to 32 lower-case letters or digits.
 dptRootId :: Lens' DisablePolicyType Text
@@ -116,13 +112,12 @@ instance ToQuery DisablePolicyType where
         toQuery = const mempty
 
 -- | /See:/ 'disablePolicyTypeResponse' smart constructor.
-data DisablePolicyTypeResponse =
-  DisablePolicyTypeResponse'
-    { _dptrsRoot           :: !(Maybe Root)
-    , _dptrsResponseStatus :: !Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data DisablePolicyTypeResponse = DisablePolicyTypeResponse'{_dptrsRoot
+                                                            :: !(Maybe Root),
+                                                            _dptrsResponseStatus
+                                                            :: !Int}
+                                   deriving (Eq, Read, Show, Data, Typeable,
+                                             Generic)
 
 -- | Creates a value of 'DisablePolicyTypeResponse' with the minimum fields required to make a request.
 --
@@ -134,10 +129,9 @@ data DisablePolicyTypeResponse =
 disablePolicyTypeResponse
     :: Int -- ^ 'dptrsResponseStatus'
     -> DisablePolicyTypeResponse
-disablePolicyTypeResponse pResponseStatus_ =
-  DisablePolicyTypeResponse'
-    {_dptrsRoot = Nothing, _dptrsResponseStatus = pResponseStatus_}
-
+disablePolicyTypeResponse pResponseStatus_
+  = DisablePolicyTypeResponse'{_dptrsRoot = Nothing,
+                               _dptrsResponseStatus = pResponseStatus_}
 
 -- | A structure that shows the root with the updated list of enabled policy types.
 dptrsRoot :: Lens' DisablePolicyTypeResponse (Maybe Root)

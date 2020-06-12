@@ -47,19 +47,15 @@ import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 import Network.AWS.WorkDocs.Types
-import Network.AWS.WorkDocs.Types.Product
 
 -- | /See:/ 'describeComments' smart constructor.
-data DescribeComments =
-  DescribeComments'
-    { _dcAuthenticationToken :: !(Maybe (Sensitive Text))
-    , _dcMarker              :: !(Maybe Text)
-    , _dcLimit               :: !(Maybe Nat)
-    , _dcDocumentId          :: !Text
-    , _dcVersionId           :: !Text
-    }
-  deriving (Eq, Show, Data, Typeable, Generic)
-
+data DescribeComments = DescribeComments'{_dcAuthenticationToken
+                                          :: !(Maybe (Sensitive Text)),
+                                          _dcMarker :: !(Maybe Text),
+                                          _dcLimit :: !(Maybe Nat),
+                                          _dcDocumentId :: !Text,
+                                          _dcVersionId :: !Text}
+                          deriving (Eq, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'DescribeComments' with the minimum fields required to make a request.
 --
@@ -78,15 +74,11 @@ describeComments
     :: Text -- ^ 'dcDocumentId'
     -> Text -- ^ 'dcVersionId'
     -> DescribeComments
-describeComments pDocumentId_ pVersionId_ =
-  DescribeComments'
-    { _dcAuthenticationToken = Nothing
-    , _dcMarker = Nothing
-    , _dcLimit = Nothing
-    , _dcDocumentId = pDocumentId_
-    , _dcVersionId = pVersionId_
-    }
-
+describeComments pDocumentId_ pVersionId_
+  = DescribeComments'{_dcAuthenticationToken = Nothing,
+                      _dcMarker = Nothing, _dcLimit = Nothing,
+                      _dcDocumentId = pDocumentId_,
+                      _dcVersionId = pVersionId_}
 
 -- | Amazon WorkDocs authentication token. Do not set this field when using administrative API actions, as in accessing the API using AWS credentials.
 dcAuthenticationToken :: Lens' DescribeComments (Maybe Text)
@@ -141,14 +133,13 @@ instance ToQuery DescribeComments where
               ["marker" =: _dcMarker, "limit" =: _dcLimit]
 
 -- | /See:/ 'describeCommentsResponse' smart constructor.
-data DescribeCommentsResponse =
-  DescribeCommentsResponse'
-    { _dcrsMarker         :: !(Maybe Text)
-    , _dcrsComments       :: !(Maybe [Comment])
-    , _dcrsResponseStatus :: !Int
-    }
-  deriving (Eq, Show, Data, Typeable, Generic)
-
+data DescribeCommentsResponse = DescribeCommentsResponse'{_dcrsMarker
+                                                          :: !(Maybe Text),
+                                                          _dcrsComments ::
+                                                          !(Maybe [Comment]),
+                                                          _dcrsResponseStatus ::
+                                                          !Int}
+                                  deriving (Eq, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'DescribeCommentsResponse' with the minimum fields required to make a request.
 --
@@ -162,13 +153,10 @@ data DescribeCommentsResponse =
 describeCommentsResponse
     :: Int -- ^ 'dcrsResponseStatus'
     -> DescribeCommentsResponse
-describeCommentsResponse pResponseStatus_ =
-  DescribeCommentsResponse'
-    { _dcrsMarker = Nothing
-    , _dcrsComments = Nothing
-    , _dcrsResponseStatus = pResponseStatus_
-    }
-
+describeCommentsResponse pResponseStatus_
+  = DescribeCommentsResponse'{_dcrsMarker = Nothing,
+                              _dcrsComments = Nothing,
+                              _dcrsResponseStatus = pResponseStatus_}
 
 -- | The marker for the next set of results. This marker was received from a previous call.
 dcrsMarker :: Lens' DescribeCommentsResponse (Maybe Text)

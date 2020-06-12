@@ -48,7 +48,6 @@ module Network.AWS.CognitoIdentity.DescribeIdentityPool
     ) where
 
 import Network.AWS.CognitoIdentity.Types
-import Network.AWS.CognitoIdentity.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.Request
@@ -59,12 +58,10 @@ import Network.AWS.Response
 --
 --
 -- /See:/ 'describeIdentityPool' smart constructor.
-newtype DescribeIdentityPool =
-  DescribeIdentityPool'
-    { _dipIdentityPoolId :: Text
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+newtype DescribeIdentityPool = DescribeIdentityPool'{_dipIdentityPoolId
+                                                     :: Text}
+                                 deriving (Eq, Read, Show, Data, Typeable,
+                                           Generic)
 
 -- | Creates a value of 'DescribeIdentityPool' with the minimum fields required to make a request.
 --
@@ -74,9 +71,9 @@ newtype DescribeIdentityPool =
 describeIdentityPool
     :: Text -- ^ 'dipIdentityPoolId'
     -> DescribeIdentityPool
-describeIdentityPool pIdentityPoolId_ =
-  DescribeIdentityPool' {_dipIdentityPoolId = pIdentityPoolId_}
-
+describeIdentityPool pIdentityPoolId_
+  = DescribeIdentityPool'{_dipIdentityPoolId =
+                            pIdentityPoolId_}
 
 -- | An identity pool ID in the format REGION:GUID.
 dipIdentityPoolId :: Lens' DescribeIdentityPool Text

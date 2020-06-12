@@ -48,21 +48,17 @@ module Network.AWS.EC2.GetConsoleOutput
     ) where
 
 import Network.AWS.EC2.Types
-import Network.AWS.EC2.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 
 -- | /See:/ 'getConsoleOutput' smart constructor.
-data GetConsoleOutput =
-  GetConsoleOutput'
-    { _gcoLatest     :: !(Maybe Bool)
-    , _gcoDryRun     :: !(Maybe Bool)
-    , _gcoInstanceId :: !Text
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data GetConsoleOutput = GetConsoleOutput'{_gcoLatest
+                                          :: !(Maybe Bool),
+                                          _gcoDryRun :: !(Maybe Bool),
+                                          _gcoInstanceId :: !Text}
+                          deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'GetConsoleOutput' with the minimum fields required to make a request.
 --
@@ -76,10 +72,9 @@ data GetConsoleOutput =
 getConsoleOutput
     :: Text -- ^ 'gcoInstanceId'
     -> GetConsoleOutput
-getConsoleOutput pInstanceId_ =
-  GetConsoleOutput'
-    {_gcoLatest = Nothing, _gcoDryRun = Nothing, _gcoInstanceId = pInstanceId_}
-
+getConsoleOutput pInstanceId_
+  = GetConsoleOutput'{_gcoLatest = Nothing,
+                      _gcoDryRun = Nothing, _gcoInstanceId = pInstanceId_}
 
 -- | When enabled, retrieves the latest console output for the instance. Default: disabled (@false@ )
 gcoLatest :: Lens' GetConsoleOutput (Maybe Bool)
@@ -123,15 +118,16 @@ instance ToQuery GetConsoleOutput where
                "InstanceId" =: _gcoInstanceId]
 
 -- | /See:/ 'getConsoleOutputResponse' smart constructor.
-data GetConsoleOutputResponse =
-  GetConsoleOutputResponse'
-    { _gcorsInstanceId     :: !(Maybe Text)
-    , _gcorsOutput         :: !(Maybe Text)
-    , _gcorsTimestamp      :: !(Maybe ISO8601)
-    , _gcorsResponseStatus :: !Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data GetConsoleOutputResponse = GetConsoleOutputResponse'{_gcorsInstanceId
+                                                          :: !(Maybe Text),
+                                                          _gcorsOutput ::
+                                                          !(Maybe Text),
+                                                          _gcorsTimestamp ::
+                                                          !(Maybe ISO8601),
+                                                          _gcorsResponseStatus
+                                                          :: !Int}
+                                  deriving (Eq, Read, Show, Data, Typeable,
+                                            Generic)
 
 -- | Creates a value of 'GetConsoleOutputResponse' with the minimum fields required to make a request.
 --
@@ -147,14 +143,11 @@ data GetConsoleOutputResponse =
 getConsoleOutputResponse
     :: Int -- ^ 'gcorsResponseStatus'
     -> GetConsoleOutputResponse
-getConsoleOutputResponse pResponseStatus_ =
-  GetConsoleOutputResponse'
-    { _gcorsInstanceId = Nothing
-    , _gcorsOutput = Nothing
-    , _gcorsTimestamp = Nothing
-    , _gcorsResponseStatus = pResponseStatus_
-    }
-
+getConsoleOutputResponse pResponseStatus_
+  = GetConsoleOutputResponse'{_gcorsInstanceId =
+                                Nothing,
+                              _gcorsOutput = Nothing, _gcorsTimestamp = Nothing,
+                              _gcorsResponseStatus = pResponseStatus_}
 
 -- | The ID of the instance.
 gcorsInstanceId :: Lens' GetConsoleOutputResponse (Maybe Text)

@@ -18,7 +18,7 @@
 -- Stability   : auto-generated
 -- Portability : non-portable (GHC extensions)
 --
--- Associates the list of tags in the input @Tags@ parameter with the resource identified by the @ResourceArn@ input parameter.
+-- Associates the list of tags in the input @Tags@ parameter with the resource identified by the @ResourceArn@ input parameter. 
 --
 --
 module Network.AWS.CodeDeploy.TagResource
@@ -38,40 +38,36 @@ module Network.AWS.CodeDeploy.TagResource
     ) where
 
 import Network.AWS.CodeDeploy.Types
-import Network.AWS.CodeDeploy.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 
 -- | /See:/ 'tagResource' smart constructor.
-data TagResource =
-  TagResource'
-    { _trResourceARN :: !Text
-    , _trTags        :: ![Tag]
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data TagResource = TagResource'{_trResourceARN ::
+                                !Text,
+                                _trTags :: ![Tag]}
+                     deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'TagResource' with the minimum fields required to make a request.
 --
 -- Use one of the following lenses to modify other fields as desired:
 --
--- * 'trResourceARN' - The ARN of a resource, such as a CodeDeploy application or deployment group.
+-- * 'trResourceARN' - The ARN of a resource, such as a CodeDeploy application or deployment group. 
 --
--- * 'trTags' - A list of tags that @TagResource@ associates with a resource. The resource is identified by the @ResourceArn@ input parameter.
+-- * 'trTags' - A list of tags that @TagResource@ associates with a resource. The resource is identified by the @ResourceArn@ input parameter. 
 tagResource
     :: Text -- ^ 'trResourceARN'
     -> TagResource
-tagResource pResourceARN_ =
-  TagResource' {_trResourceARN = pResourceARN_, _trTags = mempty}
+tagResource pResourceARN_
+  = TagResource'{_trResourceARN = pResourceARN_,
+                 _trTags = mempty}
 
-
--- | The ARN of a resource, such as a CodeDeploy application or deployment group.
+-- | The ARN of a resource, such as a CodeDeploy application or deployment group. 
 trResourceARN :: Lens' TagResource Text
 trResourceARN = lens _trResourceARN (\ s a -> s{_trResourceARN = a})
 
--- | A list of tags that @TagResource@ associates with a resource. The resource is identified by the @ResourceArn@ input parameter.
+-- | A list of tags that @TagResource@ associates with a resource. The resource is identified by the @ResourceArn@ input parameter. 
 trTags :: Lens' TagResource [Tag]
 trTags = lens _trTags (\ s a -> s{_trTags = a}) . _Coerce
 
@@ -110,12 +106,10 @@ instance ToQuery TagResource where
         toQuery = const mempty
 
 -- | /See:/ 'tagResourceResponse' smart constructor.
-newtype TagResourceResponse =
-  TagResourceResponse'
-    { _trrsResponseStatus :: Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+newtype TagResourceResponse = TagResourceResponse'{_trrsResponseStatus
+                                                   :: Int}
+                                deriving (Eq, Read, Show, Data, Typeable,
+                                          Generic)
 
 -- | Creates a value of 'TagResourceResponse' with the minimum fields required to make a request.
 --
@@ -125,9 +119,9 @@ newtype TagResourceResponse =
 tagResourceResponse
     :: Int -- ^ 'trrsResponseStatus'
     -> TagResourceResponse
-tagResourceResponse pResponseStatus_ =
-  TagResourceResponse' {_trrsResponseStatus = pResponseStatus_}
-
+tagResourceResponse pResponseStatus_
+  = TagResourceResponse'{_trrsResponseStatus =
+                           pResponseStatus_}
 
 -- | -- | The response status code.
 trrsResponseStatus :: Lens' TagResourceResponse Int

@@ -14,11 +14,11 @@
 module Test.AWS.Gen.IoTAnalytics where
 
 import Data.Proxy
-import Network.AWS.IoTAnalytics
 import Test.AWS.Fixture
-import Test.AWS.IoTAnalytics.Internal
 import Test.AWS.Prelude
 import Test.Tasty
+import Network.AWS.IoTAnalytics
+import Test.AWS.IoTAnalytics.Internal
 
 -- Auto-generated: the actual test selection needs to be manually placed into
 -- the top-level so that real test data can be incrementally added.

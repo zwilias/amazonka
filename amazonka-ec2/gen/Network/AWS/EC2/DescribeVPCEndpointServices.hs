@@ -46,7 +46,6 @@ module Network.AWS.EC2.DescribeVPCEndpointServices
     ) where
 
 import Network.AWS.EC2.Types
-import Network.AWS.EC2.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Pager
 import Network.AWS.Prelude
@@ -58,16 +57,22 @@ import Network.AWS.Response
 --
 --
 -- /See:/ 'describeVPCEndpointServices' smart constructor.
-data DescribeVPCEndpointServices =
-  DescribeVPCEndpointServices'
-    { _dvesFilters      :: !(Maybe [Filter])
-    , _dvesServiceNames :: !(Maybe [Text])
-    , _dvesNextToken    :: !(Maybe Text)
-    , _dvesDryRun       :: !(Maybe Bool)
-    , _dvesMaxResults   :: !(Maybe Int)
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data DescribeVPCEndpointServices = DescribeVPCEndpointServices'{_dvesFilters
+                                                                ::
+                                                                !(Maybe
+                                                                    [Filter]),
+                                                                _dvesServiceNames
+                                                                ::
+                                                                !(Maybe [Text]),
+                                                                _dvesNextToken
+                                                                ::
+                                                                !(Maybe Text),
+                                                                _dvesDryRun ::
+                                                                !(Maybe Bool),
+                                                                _dvesMaxResults
+                                                                :: !(Maybe Int)}
+                                     deriving (Eq, Read, Show, Data, Typeable,
+                                               Generic)
 
 -- | Creates a value of 'DescribeVPCEndpointServices' with the minimum fields required to make a request.
 --
@@ -84,15 +89,13 @@ data DescribeVPCEndpointServices =
 -- * 'dvesMaxResults' - The maximum number of items to return for this request. The request returns a token that you can specify in a subsequent call to get the next set of results. Constraint: If the value is greater than 1,000, we return only 1,000 items.
 describeVPCEndpointServices
     :: DescribeVPCEndpointServices
-describeVPCEndpointServices =
-  DescribeVPCEndpointServices'
-    { _dvesFilters = Nothing
-    , _dvesServiceNames = Nothing
-    , _dvesNextToken = Nothing
-    , _dvesDryRun = Nothing
-    , _dvesMaxResults = Nothing
-    }
-
+describeVPCEndpointServices
+  = DescribeVPCEndpointServices'{_dvesFilters =
+                                   Nothing,
+                                 _dvesServiceNames = Nothing,
+                                 _dvesNextToken = Nothing,
+                                 _dvesDryRun = Nothing,
+                                 _dvesMaxResults = Nothing}
 
 -- | One or more filters.     * @service-name@ - The name of the service.     * @tag@ :<key> - The key/value combination of a tag assigned to the resource. Use the tag key in the filter name and the tag value as the filter value. For example, to find all resources that have a tag with the key @Owner@ and the value @TeamA@ , specify @tag:Owner@ for the filter name and @TeamA@ for the filter value.     * @tag-key@ - The key of a tag assigned to the resource. Use this filter to find all resources assigned a tag with a specific key, regardless of the tag value.
 dvesFilters :: Lens' DescribeVPCEndpointServices [Filter]
@@ -166,15 +169,23 @@ instance ToQuery DescribeVPCEndpointServices where
 --
 --
 -- /See:/ 'describeVPCEndpointServicesResponse' smart constructor.
-data DescribeVPCEndpointServicesResponse =
-  DescribeVPCEndpointServicesResponse'
-    { _dvesrsServiceDetails :: !(Maybe [ServiceDetail])
-    , _dvesrsServiceNames   :: !(Maybe [Text])
-    , _dvesrsNextToken      :: !(Maybe Text)
-    , _dvesrsResponseStatus :: !Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data DescribeVPCEndpointServicesResponse = DescribeVPCEndpointServicesResponse'{_dvesrsServiceDetails
+                                                                                ::
+                                                                                !(Maybe
+                                                                                    [ServiceDetail]),
+                                                                                _dvesrsServiceNames
+                                                                                ::
+                                                                                !(Maybe
+                                                                                    [Text]),
+                                                                                _dvesrsNextToken
+                                                                                ::
+                                                                                !(Maybe
+                                                                                    Text),
+                                                                                _dvesrsResponseStatus
+                                                                                ::
+                                                                                !Int}
+                                             deriving (Eq, Read, Show, Data,
+                                                       Typeable, Generic)
 
 -- | Creates a value of 'DescribeVPCEndpointServicesResponse' with the minimum fields required to make a request.
 --
@@ -190,14 +201,13 @@ data DescribeVPCEndpointServicesResponse =
 describeVPCEndpointServicesResponse
     :: Int -- ^ 'dvesrsResponseStatus'
     -> DescribeVPCEndpointServicesResponse
-describeVPCEndpointServicesResponse pResponseStatus_ =
-  DescribeVPCEndpointServicesResponse'
-    { _dvesrsServiceDetails = Nothing
-    , _dvesrsServiceNames = Nothing
-    , _dvesrsNextToken = Nothing
-    , _dvesrsResponseStatus = pResponseStatus_
-    }
-
+describeVPCEndpointServicesResponse pResponseStatus_
+  = DescribeVPCEndpointServicesResponse'{_dvesrsServiceDetails
+                                           = Nothing,
+                                         _dvesrsServiceNames = Nothing,
+                                         _dvesrsNextToken = Nothing,
+                                         _dvesrsResponseStatus =
+                                           pResponseStatus_}
 
 -- | Information about the service.
 dvesrsServiceDetails :: Lens' DescribeVPCEndpointServicesResponse [ServiceDetail]

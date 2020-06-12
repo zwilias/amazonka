@@ -55,8 +55,22 @@ library
         , Network.AWS.AWSHealth.Waiters
 
     other-modules:
-          Network.AWS.AWSHealth.Types.Product
-        , Network.AWS.AWSHealth.Types.Sum
+          Network.AWS.AWSHealth.Types.AffectedEntity
+        , Network.AWS.AWSHealth.Types.DateTimeRange
+        , Network.AWS.AWSHealth.Types.EntityAggregate
+        , Network.AWS.AWSHealth.Types.EntityFilter
+        , Network.AWS.AWSHealth.Types.EntityStatusCode
+        , Network.AWS.AWSHealth.Types.Event
+        , Network.AWS.AWSHealth.Types.EventAggregate
+        , Network.AWS.AWSHealth.Types.EventAggregateField
+        , Network.AWS.AWSHealth.Types.EventDescription
+        , Network.AWS.AWSHealth.Types.EventDetails
+        , Network.AWS.AWSHealth.Types.EventDetailsErrorItem
+        , Network.AWS.AWSHealth.Types.EventFilter
+        , Network.AWS.AWSHealth.Types.EventStatusCode
+        , Network.AWS.AWSHealth.Types.EventType
+        , Network.AWS.AWSHealth.Types.EventTypeCategory
+        , Network.AWS.AWSHealth.Types.EventTypeFilter
 
     build-depends:
           amazonka-core == 1.6.1.*

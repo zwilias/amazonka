@@ -43,7 +43,6 @@ module Network.AWS.Glue.GetDatabases
     ) where
 
 import Network.AWS.Glue.Types
-import Network.AWS.Glue.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Pager
 import Network.AWS.Prelude
@@ -51,14 +50,11 @@ import Network.AWS.Request
 import Network.AWS.Response
 
 -- | /See:/ 'getDatabases' smart constructor.
-data GetDatabases =
-  GetDatabases'
-    { _gdCatalogId  :: !(Maybe Text)
-    , _gdNextToken  :: !(Maybe Text)
-    , _gdMaxResults :: !(Maybe Nat)
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data GetDatabases = GetDatabases'{_gdCatalogId ::
+                                  !(Maybe Text),
+                                  _gdNextToken :: !(Maybe Text),
+                                  _gdMaxResults :: !(Maybe Nat)}
+                      deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'GetDatabases' with the minimum fields required to make a request.
 --
@@ -71,10 +67,9 @@ data GetDatabases =
 -- * 'gdMaxResults' - The maximum number of databases to return in one response.
 getDatabases
     :: GetDatabases
-getDatabases =
-  GetDatabases'
-    {_gdCatalogId = Nothing, _gdNextToken = Nothing, _gdMaxResults = Nothing}
-
+getDatabases
+  = GetDatabases'{_gdCatalogId = Nothing,
+                  _gdNextToken = Nothing, _gdMaxResults = Nothing}
 
 -- | The ID of the Data Catalog from which to retrieve @Databases@ . If none is supplied, the AWS account ID is used by default.
 gdCatalogId :: Lens' GetDatabases (Maybe Text)
@@ -133,14 +128,12 @@ instance ToQuery GetDatabases where
         toQuery = const mempty
 
 -- | /See:/ 'getDatabasesResponse' smart constructor.
-data GetDatabasesResponse =
-  GetDatabasesResponse'
-    { _gdsrsNextToken      :: !(Maybe Text)
-    , _gdsrsResponseStatus :: !Int
-    , _gdsrsDatabaseList   :: ![Database]
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data GetDatabasesResponse = GetDatabasesResponse'{_gdsrsNextToken
+                                                  :: !(Maybe Text),
+                                                  _gdsrsResponseStatus :: !Int,
+                                                  _gdsrsDatabaseList ::
+                                                  ![Database]}
+                              deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'GetDatabasesResponse' with the minimum fields required to make a request.
 --
@@ -154,13 +147,10 @@ data GetDatabasesResponse =
 getDatabasesResponse
     :: Int -- ^ 'gdsrsResponseStatus'
     -> GetDatabasesResponse
-getDatabasesResponse pResponseStatus_ =
-  GetDatabasesResponse'
-    { _gdsrsNextToken = Nothing
-    , _gdsrsResponseStatus = pResponseStatus_
-    , _gdsrsDatabaseList = mempty
-    }
-
+getDatabasesResponse pResponseStatus_
+  = GetDatabasesResponse'{_gdsrsNextToken = Nothing,
+                          _gdsrsResponseStatus = pResponseStatus_,
+                          _gdsrsDatabaseList = mempty}
 
 -- | A continuation token for paginating the returned list of tokens, returned if the current segment of the list is not the last.
 gdsrsNextToken :: Lens' GetDatabasesResponse (Maybe Text)

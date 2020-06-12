@@ -51,27 +51,35 @@ module Network.AWS.CodeCommit.DescribeMergeConflicts
     ) where
 
 import Network.AWS.CodeCommit.Types
-import Network.AWS.CodeCommit.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 
 -- | /See:/ 'describeMergeConflicts' smart constructor.
-data DescribeMergeConflicts =
-  DescribeMergeConflicts'
-    { _dmcConflictDetailLevel :: !(Maybe ConflictDetailLevelTypeEnum)
-    , _dmcNextToken :: !(Maybe Text)
-    , _dmcMaxMergeHunks :: !(Maybe Int)
-    , _dmcConflictResolutionStrategy :: !(Maybe ConflictResolutionStrategyTypeEnum)
-    , _dmcRepositoryName :: !Text
-    , _dmcDestinationCommitSpecifier :: !Text
-    , _dmcSourceCommitSpecifier :: !Text
-    , _dmcMergeOption :: !MergeOptionTypeEnum
-    , _dmcFilePath :: !Text
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data DescribeMergeConflicts = DescribeMergeConflicts'{_dmcConflictDetailLevel
+                                                      ::
+                                                      !(Maybe
+                                                          ConflictDetailLevelTypeEnum),
+                                                      _dmcNextToken ::
+                                                      !(Maybe Text),
+                                                      _dmcMaxMergeHunks ::
+                                                      !(Maybe Int),
+                                                      _dmcConflictResolutionStrategy
+                                                      ::
+                                                      !(Maybe
+                                                          ConflictResolutionStrategyTypeEnum),
+                                                      _dmcRepositoryName ::
+                                                      !Text,
+                                                      _dmcDestinationCommitSpecifier
+                                                      :: !Text,
+                                                      _dmcSourceCommitSpecifier
+                                                      :: !Text,
+                                                      _dmcMergeOption ::
+                                                      !MergeOptionTypeEnum,
+                                                      _dmcFilePath :: !Text}
+                                deriving (Eq, Read, Show, Data, Typeable,
+                                          Generic)
 
 -- | Creates a value of 'DescribeMergeConflicts' with the minimum fields required to make a request.
 --
@@ -93,7 +101,7 @@ data DescribeMergeConflicts =
 --
 -- * 'dmcMergeOption' - The merge option or strategy you want to use to merge the code.
 --
--- * 'dmcFilePath' - The path of the target files used to describe the conflicts.
+-- * 'dmcFilePath' - The path of the target files used to describe the conflicts. 
 describeMergeConflicts
     :: Text -- ^ 'dmcRepositoryName'
     -> Text -- ^ 'dmcDestinationCommitSpecifier'
@@ -101,19 +109,20 @@ describeMergeConflicts
     -> MergeOptionTypeEnum -- ^ 'dmcMergeOption'
     -> Text -- ^ 'dmcFilePath'
     -> DescribeMergeConflicts
-describeMergeConflicts pRepositoryName_ pDestinationCommitSpecifier_ pSourceCommitSpecifier_ pMergeOption_ pFilePath_ =
-  DescribeMergeConflicts'
-    { _dmcConflictDetailLevel = Nothing
-    , _dmcNextToken = Nothing
-    , _dmcMaxMergeHunks = Nothing
-    , _dmcConflictResolutionStrategy = Nothing
-    , _dmcRepositoryName = pRepositoryName_
-    , _dmcDestinationCommitSpecifier = pDestinationCommitSpecifier_
-    , _dmcSourceCommitSpecifier = pSourceCommitSpecifier_
-    , _dmcMergeOption = pMergeOption_
-    , _dmcFilePath = pFilePath_
-    }
-
+describeMergeConflicts pRepositoryName_
+  pDestinationCommitSpecifier_ pSourceCommitSpecifier_
+  pMergeOption_ pFilePath_
+  = DescribeMergeConflicts'{_dmcConflictDetailLevel =
+                              Nothing,
+                            _dmcNextToken = Nothing,
+                            _dmcMaxMergeHunks = Nothing,
+                            _dmcConflictResolutionStrategy = Nothing,
+                            _dmcRepositoryName = pRepositoryName_,
+                            _dmcDestinationCommitSpecifier =
+                              pDestinationCommitSpecifier_,
+                            _dmcSourceCommitSpecifier = pSourceCommitSpecifier_,
+                            _dmcMergeOption = pMergeOption_,
+                            _dmcFilePath = pFilePath_}
 
 -- | The level of conflict detail to use. If unspecified, the default FILE_LEVEL is used, which returns a not-mergeable result if the same file has differences in both branches. If LINE_LEVEL is specified, a conflict is considered not mergeable if the same file in both branches has differences on the same line.
 dmcConflictDetailLevel :: Lens' DescribeMergeConflicts (Maybe ConflictDetailLevelTypeEnum)
@@ -147,7 +156,7 @@ dmcSourceCommitSpecifier = lens _dmcSourceCommitSpecifier (\ s a -> s{_dmcSource
 dmcMergeOption :: Lens' DescribeMergeConflicts MergeOptionTypeEnum
 dmcMergeOption = lens _dmcMergeOption (\ s a -> s{_dmcMergeOption = a})
 
--- | The path of the target files used to describe the conflicts.
+-- | The path of the target files used to describe the conflicts. 
 dmcFilePath :: Lens' DescribeMergeConflicts Text
 dmcFilePath = lens _dmcFilePath (\ s a -> s{_dmcFilePath = a})
 
@@ -207,18 +216,28 @@ instance ToQuery DescribeMergeConflicts where
         toQuery = const mempty
 
 -- | /See:/ 'describeMergeConflictsResponse' smart constructor.
-data DescribeMergeConflictsResponse =
-  DescribeMergeConflictsResponse'
-    { _dmcrsBaseCommitId        :: !(Maybe Text)
-    , _dmcrsNextToken           :: !(Maybe Text)
-    , _dmcrsResponseStatus      :: !Int
-    , _dmcrsConflictMetadata    :: !ConflictMetadata
-    , _dmcrsMergeHunks          :: ![MergeHunk]
-    , _dmcrsDestinationCommitId :: !Text
-    , _dmcrsSourceCommitId      :: !Text
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data DescribeMergeConflictsResponse = DescribeMergeConflictsResponse'{_dmcrsBaseCommitId
+                                                                      ::
+                                                                      !(Maybe
+                                                                          Text),
+                                                                      _dmcrsNextToken
+                                                                      ::
+                                                                      !(Maybe
+                                                                          Text),
+                                                                      _dmcrsResponseStatus
+                                                                      :: !Int,
+                                                                      _dmcrsConflictMetadata
+                                                                      ::
+                                                                      !ConflictMetadata,
+                                                                      _dmcrsMergeHunks
+                                                                      ::
+                                                                      ![MergeHunk],
+                                                                      _dmcrsDestinationCommitId
+                                                                      :: !Text,
+                                                                      _dmcrsSourceCommitId
+                                                                      :: !Text}
+                                        deriving (Eq, Read, Show, Data,
+                                                  Typeable, Generic)
 
 -- | Creates a value of 'DescribeMergeConflictsResponse' with the minimum fields required to make a request.
 --
@@ -243,17 +262,18 @@ describeMergeConflictsResponse
     -> Text -- ^ 'dmcrsDestinationCommitId'
     -> Text -- ^ 'dmcrsSourceCommitId'
     -> DescribeMergeConflictsResponse
-describeMergeConflictsResponse pResponseStatus_ pConflictMetadata_ pDestinationCommitId_ pSourceCommitId_ =
-  DescribeMergeConflictsResponse'
-    { _dmcrsBaseCommitId = Nothing
-    , _dmcrsNextToken = Nothing
-    , _dmcrsResponseStatus = pResponseStatus_
-    , _dmcrsConflictMetadata = pConflictMetadata_
-    , _dmcrsMergeHunks = mempty
-    , _dmcrsDestinationCommitId = pDestinationCommitId_
-    , _dmcrsSourceCommitId = pSourceCommitId_
-    }
-
+describeMergeConflictsResponse pResponseStatus_
+  pConflictMetadata_ pDestinationCommitId_
+  pSourceCommitId_
+  = DescribeMergeConflictsResponse'{_dmcrsBaseCommitId
+                                      = Nothing,
+                                    _dmcrsNextToken = Nothing,
+                                    _dmcrsResponseStatus = pResponseStatus_,
+                                    _dmcrsConflictMetadata = pConflictMetadata_,
+                                    _dmcrsMergeHunks = mempty,
+                                    _dmcrsDestinationCommitId =
+                                      pDestinationCommitId_,
+                                    _dmcrsSourceCommitId = pSourceCommitId_}
 
 -- | The commit ID of the merge base.
 dmcrsBaseCommitId :: Lens' DescribeMergeConflictsResponse (Maybe Text)

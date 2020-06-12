@@ -39,19 +39,15 @@ module Network.AWS.OpsWorks.AssociateElasticIP
 
 import Network.AWS.Lens
 import Network.AWS.OpsWorks.Types
-import Network.AWS.OpsWorks.Types.Product
 import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 
 -- | /See:/ 'associateElasticIP' smart constructor.
-data AssociateElasticIP =
-  AssociateElasticIP'
-    { _aeiInstanceId :: !(Maybe Text)
-    , _aeiElasticIP  :: !Text
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data AssociateElasticIP = AssociateElasticIP'{_aeiInstanceId
+                                              :: !(Maybe Text),
+                                              _aeiElasticIP :: !Text}
+                            deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'AssociateElasticIP' with the minimum fields required to make a request.
 --
@@ -63,9 +59,9 @@ data AssociateElasticIP =
 associateElasticIP
     :: Text -- ^ 'aeiElasticIP'
     -> AssociateElasticIP
-associateElasticIP pElasticIP_ =
-  AssociateElasticIP' {_aeiInstanceId = Nothing, _aeiElasticIP = pElasticIP_}
-
+associateElasticIP pElasticIP_
+  = AssociateElasticIP'{_aeiInstanceId = Nothing,
+                        _aeiElasticIP = pElasticIP_}
 
 -- | The instance ID.
 aeiInstanceId :: Lens' AssociateElasticIP (Maybe Text)
@@ -109,16 +105,15 @@ instance ToQuery AssociateElasticIP where
         toQuery = const mempty
 
 -- | /See:/ 'associateElasticIPResponse' smart constructor.
-data AssociateElasticIPResponse =
-  AssociateElasticIPResponse'
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data AssociateElasticIPResponse = AssociateElasticIPResponse'
+                                    deriving (Eq, Read, Show, Data, Typeable,
+                                              Generic)
 
 -- | Creates a value of 'AssociateElasticIPResponse' with the minimum fields required to make a request.
 --
 associateElasticIPResponse
     :: AssociateElasticIPResponse
-associateElasticIPResponse = AssociateElasticIPResponse'
-
+associateElasticIPResponse
+  = AssociateElasticIPResponse'
 
 instance NFData AssociateElasticIPResponse where

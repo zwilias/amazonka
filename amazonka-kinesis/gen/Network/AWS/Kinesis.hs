@@ -11,7 +11,7 @@
 -- Stability   : auto-generated
 -- Portability : non-portable (GHC extensions)
 --
--- __Amazon Kinesis Data Streams Service API Reference__
+-- __Amazon Kinesis Data Streams Service API Reference__ 
 --
 -- Amazon Kinesis Data Streams is a managed service that scales elastically for real-time processing of streaming big data.
 --
@@ -74,70 +74,70 @@ module Network.AWS.Kinesis
     -- * Operations
     -- $operations
 
-    -- ** PutRecord
+    -- ** PutRecord 
     , module Network.AWS.Kinesis.PutRecord
 
-    -- ** DecreaseStreamRetentionPeriod
+    -- ** DecreaseStreamRetentionPeriod 
     , module Network.AWS.Kinesis.DecreaseStreamRetentionPeriod
 
-    -- ** MergeShards
+    -- ** MergeShards 
     , module Network.AWS.Kinesis.MergeShards
 
-    -- ** DescribeStreamSummary
+    -- ** DescribeStreamSummary 
     , module Network.AWS.Kinesis.DescribeStreamSummary
 
-    -- ** GetShardIterator
+    -- ** GetShardIterator 
     , module Network.AWS.Kinesis.GetShardIterator
 
-    -- ** GetRecords
+    -- ** GetRecords 
     , module Network.AWS.Kinesis.GetRecords
 
-    -- ** StopStreamEncryption
+    -- ** StopStreamEncryption 
     , module Network.AWS.Kinesis.StopStreamEncryption
 
-    -- ** EnableEnhancedMonitoring
+    -- ** EnableEnhancedMonitoring 
     , module Network.AWS.Kinesis.EnableEnhancedMonitoring
 
-    -- ** DescribeLimits
+    -- ** DescribeLimits 
     , module Network.AWS.Kinesis.DescribeLimits
 
-    -- ** DisableEnhancedMonitoring
+    -- ** DisableEnhancedMonitoring 
     , module Network.AWS.Kinesis.DisableEnhancedMonitoring
 
-    -- ** UpdateShardCount
+    -- ** UpdateShardCount 
     , module Network.AWS.Kinesis.UpdateShardCount
 
-    -- ** ListTagsForStream
+    -- ** ListTagsForStream 
     , module Network.AWS.Kinesis.ListTagsForStream
 
-    -- ** AddTagsToStream
+    -- ** AddTagsToStream 
     , module Network.AWS.Kinesis.AddTagsToStream
 
-    -- ** PutRecords
+    -- ** PutRecords 
     , module Network.AWS.Kinesis.PutRecords
 
-    -- ** ListShards
+    -- ** ListShards 
     , module Network.AWS.Kinesis.ListShards
 
-    -- ** DeleteStream
+    -- ** DeleteStream 
     , module Network.AWS.Kinesis.DeleteStream
 
-    -- ** RemoveTagsFromStream
+    -- ** RemoveTagsFromStream 
     , module Network.AWS.Kinesis.RemoveTagsFromStream
 
     -- ** ListStreams (Paginated)
     , module Network.AWS.Kinesis.ListStreams
 
-    -- ** CreateStream
+    -- ** CreateStream 
     , module Network.AWS.Kinesis.CreateStream
 
-    -- ** StartStreamEncryption
+    -- ** StartStreamEncryption 
     , module Network.AWS.Kinesis.StartStreamEncryption
 
-    -- ** SplitShard
+    -- ** SplitShard 
     , module Network.AWS.Kinesis.SplitShard
 
-    -- ** IncreaseStreamRetentionPeriod
+    -- ** IncreaseStreamRetentionPeriod 
     , module Network.AWS.Kinesis.IncreaseStreamRetentionPeriod
 
     -- ** DescribeStream (Paginated)

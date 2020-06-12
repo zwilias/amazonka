@@ -18,7 +18,7 @@
 -- Stability   : auto-generated
 -- Portability : non-portable (GHC extensions)
 --
--- Creates one or more flow logs to capture information about IP traffic for a specific network interface, subnet, or VPC.
+-- Creates one or more flow logs to capture information about IP traffic for a specific network interface, subnet, or VPC. 
 --
 --
 -- Flow log data for a monitored network interface is recorded as flow log records, which are log events consisting of fields that describe the traffic flow. For more information, see <https://docs.aws.amazon.com/vpc/latest/userguide/flow-logs.html#flow-log-records Flow Log Records> in the /Amazon Virtual Private Cloud User Guide/ .
@@ -57,30 +57,30 @@ module Network.AWS.EC2.CreateFlowLogs
     ) where
 
 import Network.AWS.EC2.Types
-import Network.AWS.EC2.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 
 -- | /See:/ 'createFlowLogs' smart constructor.
-data CreateFlowLogs =
-  CreateFlowLogs'
-    { _cflLogFormat                :: !(Maybe Text)
-    , _cflMaxAggregationInterval   :: !(Maybe Int)
-    , _cflClientToken              :: !(Maybe Text)
-    , _cflLogDestination           :: !(Maybe Text)
-    , _cflLogGroupName             :: !(Maybe Text)
-    , _cflTagSpecifications        :: !(Maybe [TagSpecification])
-    , _cflDeliverLogsPermissionARN :: !(Maybe Text)
-    , _cflLogDestinationType       :: !(Maybe LogDestinationType)
-    , _cflDryRun                   :: !(Maybe Bool)
-    , _cflResourceIds              :: ![Text]
-    , _cflResourceType             :: !FlowLogsResourceType
-    , _cflTrafficType              :: !TrafficType
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data CreateFlowLogs = CreateFlowLogs'{_cflLogFormat
+                                      :: !(Maybe Text),
+                                      _cflMaxAggregationInterval ::
+                                      !(Maybe Int),
+                                      _cflClientToken :: !(Maybe Text),
+                                      _cflLogDestination :: !(Maybe Text),
+                                      _cflLogGroupName :: !(Maybe Text),
+                                      _cflTagSpecifications ::
+                                      !(Maybe [TagSpecification]),
+                                      _cflDeliverLogsPermissionARN ::
+                                      !(Maybe Text),
+                                      _cflLogDestinationType ::
+                                      !(Maybe LogDestinationType),
+                                      _cflDryRun :: !(Maybe Bool),
+                                      _cflResourceIds :: ![Text],
+                                      _cflResourceType :: !FlowLogsResourceType,
+                                      _cflTrafficType :: !TrafficType}
+                        deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'CreateFlowLogs' with the minimum fields required to make a request.
 --
@@ -100,7 +100,7 @@ data CreateFlowLogs =
 --
 -- * 'cflDeliverLogsPermissionARN' - The ARN for the IAM role that permits Amazon EC2 to publish flow logs to a CloudWatch Logs log group in your account. If you specify @LogDestinationType@ as @s3@ , do not specify @DeliverLogsPermissionArn@ or @LogGroupName@ .
 --
--- * 'cflLogDestinationType' - Specifies the type of destination to which the flow log data is to be published. Flow log data can be published to CloudWatch Logs or Amazon S3. To publish flow log data to CloudWatch Logs, specify @cloud-watch-logs@ . To publish flow log data to Amazon S3, specify @s3@ . If you specify @LogDestinationType@ as @s3@ , do not specify @DeliverLogsPermissionArn@ or @LogGroupName@ . Default: @cloud-watch-logs@
+-- * 'cflLogDestinationType' - Specifies the type of destination to which the flow log data is to be published. Flow log data can be published to CloudWatch Logs or Amazon S3. To publish flow log data to CloudWatch Logs, specify @cloud-watch-logs@ . To publish flow log data to Amazon S3, specify @s3@ . If you specify @LogDestinationType@ as @s3@ , do not specify @DeliverLogsPermissionArn@ or @LogGroupName@ . Default: @cloud-watch-logs@ 
 --
 -- * 'cflDryRun' - Checks whether you have the required permissions for the action, without actually making the request, and provides an error response. If you have the required permissions, the error response is @DryRunOperation@ . Otherwise, it is @UnauthorizedOperation@ .
 --
@@ -113,22 +113,18 @@ createFlowLogs
     :: FlowLogsResourceType -- ^ 'cflResourceType'
     -> TrafficType -- ^ 'cflTrafficType'
     -> CreateFlowLogs
-createFlowLogs pResourceType_ pTrafficType_ =
-  CreateFlowLogs'
-    { _cflLogFormat = Nothing
-    , _cflMaxAggregationInterval = Nothing
-    , _cflClientToken = Nothing
-    , _cflLogDestination = Nothing
-    , _cflLogGroupName = Nothing
-    , _cflTagSpecifications = Nothing
-    , _cflDeliverLogsPermissionARN = Nothing
-    , _cflLogDestinationType = Nothing
-    , _cflDryRun = Nothing
-    , _cflResourceIds = mempty
-    , _cflResourceType = pResourceType_
-    , _cflTrafficType = pTrafficType_
-    }
-
+createFlowLogs pResourceType_ pTrafficType_
+  = CreateFlowLogs'{_cflLogFormat = Nothing,
+                    _cflMaxAggregationInterval = Nothing,
+                    _cflClientToken = Nothing,
+                    _cflLogDestination = Nothing,
+                    _cflLogGroupName = Nothing,
+                    _cflTagSpecifications = Nothing,
+                    _cflDeliverLogsPermissionARN = Nothing,
+                    _cflLogDestinationType = Nothing,
+                    _cflDryRun = Nothing, _cflResourceIds = mempty,
+                    _cflResourceType = pResourceType_,
+                    _cflTrafficType = pTrafficType_}
 
 -- | The fields to include in the flow log record, in the order in which they should appear. For a list of available fields, see <https://docs.aws.amazon.com/vpc/latest/userguide/flow-logs.html#flow-log-records Flow Log Records> . If you omit this parameter, the flow log is created using the default format. If you specify this parameter, you must specify at least one field. Specify the fields using the @> {field-id}@ format, separated by spaces. For the AWS CLI, use single quotation marks (' ') to surround the parameter value. Only applicable to flow logs that are published to an Amazon S3 bucket.
 cflLogFormat :: Lens' CreateFlowLogs (Maybe Text)
@@ -158,7 +154,7 @@ cflTagSpecifications = lens _cflTagSpecifications (\ s a -> s{_cflTagSpecificati
 cflDeliverLogsPermissionARN :: Lens' CreateFlowLogs (Maybe Text)
 cflDeliverLogsPermissionARN = lens _cflDeliverLogsPermissionARN (\ s a -> s{_cflDeliverLogsPermissionARN = a})
 
--- | Specifies the type of destination to which the flow log data is to be published. Flow log data can be published to CloudWatch Logs or Amazon S3. To publish flow log data to CloudWatch Logs, specify @cloud-watch-logs@ . To publish flow log data to Amazon S3, specify @s3@ . If you specify @LogDestinationType@ as @s3@ , do not specify @DeliverLogsPermissionArn@ or @LogGroupName@ . Default: @cloud-watch-logs@
+-- | Specifies the type of destination to which the flow log data is to be published. Flow log data can be published to CloudWatch Logs or Amazon S3. To publish flow log data to CloudWatch Logs, specify @cloud-watch-logs@ . To publish flow log data to Amazon S3, specify @s3@ . If you specify @LogDestinationType@ as @s3@ , do not specify @DeliverLogsPermissionArn@ or @LogGroupName@ . Default: @cloud-watch-logs@ 
 cflLogDestinationType :: Lens' CreateFlowLogs (Maybe LogDestinationType)
 cflLogDestinationType = lens _cflLogDestinationType (\ s a -> s{_cflLogDestinationType = a})
 
@@ -226,15 +222,18 @@ instance ToQuery CreateFlowLogs where
                "TrafficType" =: _cflTrafficType]
 
 -- | /See:/ 'createFlowLogsResponse' smart constructor.
-data CreateFlowLogsResponse =
-  CreateFlowLogsResponse'
-    { _cflrsUnsuccessful   :: !(Maybe [UnsuccessfulItem])
-    , _cflrsClientToken    :: !(Maybe Text)
-    , _cflrsFlowLogIds     :: !(Maybe [Text])
-    , _cflrsResponseStatus :: !Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data CreateFlowLogsResponse = CreateFlowLogsResponse'{_cflrsUnsuccessful
+                                                      ::
+                                                      !(Maybe
+                                                          [UnsuccessfulItem]),
+                                                      _cflrsClientToken ::
+                                                      !(Maybe Text),
+                                                      _cflrsFlowLogIds ::
+                                                      !(Maybe [Text]),
+                                                      _cflrsResponseStatus ::
+                                                      !Int}
+                                deriving (Eq, Read, Show, Data, Typeable,
+                                          Generic)
 
 -- | Creates a value of 'CreateFlowLogsResponse' with the minimum fields required to make a request.
 --
@@ -250,14 +249,12 @@ data CreateFlowLogsResponse =
 createFlowLogsResponse
     :: Int -- ^ 'cflrsResponseStatus'
     -> CreateFlowLogsResponse
-createFlowLogsResponse pResponseStatus_ =
-  CreateFlowLogsResponse'
-    { _cflrsUnsuccessful = Nothing
-    , _cflrsClientToken = Nothing
-    , _cflrsFlowLogIds = Nothing
-    , _cflrsResponseStatus = pResponseStatus_
-    }
-
+createFlowLogsResponse pResponseStatus_
+  = CreateFlowLogsResponse'{_cflrsUnsuccessful =
+                              Nothing,
+                            _cflrsClientToken = Nothing,
+                            _cflrsFlowLogIds = Nothing,
+                            _cflrsResponseStatus = pResponseStatus_}
 
 -- | Information about the flow logs that could not be created successfully.
 cflrsUnsuccessful :: Lens' CreateFlowLogsResponse [UnsuccessfulItem]

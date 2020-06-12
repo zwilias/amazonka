@@ -44,21 +44,21 @@ module Network.AWS.ECS.DeregisterContainerInstance
     ) where
 
 import Network.AWS.ECS.Types
-import Network.AWS.ECS.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 
 -- | /See:/ 'deregisterContainerInstance' smart constructor.
-data DeregisterContainerInstance =
-  DeregisterContainerInstance'
-    { _derCluster           :: !(Maybe Text)
-    , _derForce             :: !(Maybe Bool)
-    , _derContainerInstance :: !Text
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data DeregisterContainerInstance = DeregisterContainerInstance'{_derCluster
+                                                                ::
+                                                                !(Maybe Text),
+                                                                _derForce ::
+                                                                !(Maybe Bool),
+                                                                _derContainerInstance
+                                                                :: !Text}
+                                     deriving (Eq, Read, Show, Data, Typeable,
+                                               Generic)
 
 -- | Creates a value of 'DeregisterContainerInstance' with the minimum fields required to make a request.
 --
@@ -72,13 +72,10 @@ data DeregisterContainerInstance =
 deregisterContainerInstance
     :: Text -- ^ 'derContainerInstance'
     -> DeregisterContainerInstance
-deregisterContainerInstance pContainerInstance_ =
-  DeregisterContainerInstance'
-    { _derCluster = Nothing
-    , _derForce = Nothing
-    , _derContainerInstance = pContainerInstance_
-    }
-
+deregisterContainerInstance pContainerInstance_
+  = DeregisterContainerInstance'{_derCluster = Nothing,
+                                 _derForce = Nothing,
+                                 _derContainerInstance = pContainerInstance_}
 
 -- | The short name or full Amazon Resource Name (ARN) of the cluster that hosts the container instance to deregister. If you do not specify a cluster, the default cluster is assumed.
 derCluster :: Lens' DeregisterContainerInstance (Maybe Text)
@@ -131,13 +128,15 @@ instance ToQuery DeregisterContainerInstance where
         toQuery = const mempty
 
 -- | /See:/ 'deregisterContainerInstanceResponse' smart constructor.
-data DeregisterContainerInstanceResponse =
-  DeregisterContainerInstanceResponse'
-    { _dcirsContainerInstance :: !(Maybe ContainerInstance)
-    , _dcirsResponseStatus    :: !Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data DeregisterContainerInstanceResponse = DeregisterContainerInstanceResponse'{_dcirsContainerInstance
+                                                                                ::
+                                                                                !(Maybe
+                                                                                    ContainerInstance),
+                                                                                _dcirsResponseStatus
+                                                                                ::
+                                                                                !Int}
+                                             deriving (Eq, Read, Show, Data,
+                                                       Typeable, Generic)
 
 -- | Creates a value of 'DeregisterContainerInstanceResponse' with the minimum fields required to make a request.
 --
@@ -149,10 +148,11 @@ data DeregisterContainerInstanceResponse =
 deregisterContainerInstanceResponse
     :: Int -- ^ 'dcirsResponseStatus'
     -> DeregisterContainerInstanceResponse
-deregisterContainerInstanceResponse pResponseStatus_ =
-  DeregisterContainerInstanceResponse'
-    {_dcirsContainerInstance = Nothing, _dcirsResponseStatus = pResponseStatus_}
-
+deregisterContainerInstanceResponse pResponseStatus_
+  = DeregisterContainerInstanceResponse'{_dcirsContainerInstance
+                                           = Nothing,
+                                         _dcirsResponseStatus =
+                                           pResponseStatus_}
 
 -- | The container instance that was deregistered.
 dcirsContainerInstance :: Lens' DeregisterContainerInstanceResponse (Maybe ContainerInstance)

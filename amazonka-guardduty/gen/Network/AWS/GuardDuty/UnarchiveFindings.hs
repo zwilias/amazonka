@@ -36,7 +36,6 @@ module Network.AWS.GuardDuty.UnarchiveFindings
     ) where
 
 import Network.AWS.GuardDuty.Types
-import Network.AWS.GuardDuty.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.Request
@@ -45,13 +44,10 @@ import Network.AWS.Response
 -- | UnarchiveFindings request body.
 --
 -- /See:/ 'unarchiveFindings' smart constructor.
-data UnarchiveFindings =
-  UnarchiveFindings'
-    { _uFindingIds :: !(Maybe [Text])
-    , _uDetectorId :: !Text
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data UnarchiveFindings = UnarchiveFindings'{_uFindingIds
+                                            :: !(Maybe [Text]),
+                                            _uDetectorId :: !Text}
+                           deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'UnarchiveFindings' with the minimum fields required to make a request.
 --
@@ -63,9 +59,9 @@ data UnarchiveFindings =
 unarchiveFindings
     :: Text -- ^ 'uDetectorId'
     -> UnarchiveFindings
-unarchiveFindings pDetectorId_ =
-  UnarchiveFindings' {_uFindingIds = Nothing, _uDetectorId = pDetectorId_}
-
+unarchiveFindings pDetectorId_
+  = UnarchiveFindings'{_uFindingIds = Nothing,
+                       _uDetectorId = pDetectorId_}
 
 -- | IDs of the findings that you want to unarchive.
 uFindingIds :: Lens' UnarchiveFindings [Text]
@@ -109,12 +105,10 @@ instance ToQuery UnarchiveFindings where
         toQuery = const mempty
 
 -- | /See:/ 'unarchiveFindingsResponse' smart constructor.
-newtype UnarchiveFindingsResponse =
-  UnarchiveFindingsResponse'
-    { _ursResponseStatus :: Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+newtype UnarchiveFindingsResponse = UnarchiveFindingsResponse'{_ursResponseStatus
+                                                               :: Int}
+                                      deriving (Eq, Read, Show, Data, Typeable,
+                                                Generic)
 
 -- | Creates a value of 'UnarchiveFindingsResponse' with the minimum fields required to make a request.
 --
@@ -124,9 +118,9 @@ newtype UnarchiveFindingsResponse =
 unarchiveFindingsResponse
     :: Int -- ^ 'ursResponseStatus'
     -> UnarchiveFindingsResponse
-unarchiveFindingsResponse pResponseStatus_ =
-  UnarchiveFindingsResponse' {_ursResponseStatus = pResponseStatus_}
-
+unarchiveFindingsResponse pResponseStatus_
+  = UnarchiveFindingsResponse'{_ursResponseStatus =
+                                 pResponseStatus_}
 
 -- | -- | The response status code.
 ursResponseStatus :: Lens' UnarchiveFindingsResponse Int

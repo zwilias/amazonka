@@ -18,32 +18,32 @@
 -- Stability   : auto-generated
 -- Portability : non-portable (GHC extensions)
 --
--- Retrieves properties, including the protection policy in force, for one or more game sessions. This action can be used in several ways: (1) provide a @GameSessionId@ or @GameSessionArn@ to request details for a specific game session; (2) provide either a @FleetId@ or an @AliasId@ to request properties for all game sessions running on a fleet.
+-- Retrieves properties, including the protection policy in force, for one or more game sessions. This action can be used in several ways: (1) provide a @GameSessionId@ or @GameSessionArn@ to request details for a specific game session; (2) provide either a @FleetId@ or an @AliasId@ to request properties for all game sessions running on a fleet. 
 --
 --
 -- To get game session record(s), specify just one of the following: game session ID, fleet ID, or alias ID. You can filter this request by game session status. Use the pagination parameters to retrieve results as a set of sequential pages. If successful, a 'GameSessionDetail' object is returned for each session matching the request.
 --
 -- Game-session-related operations include:
 --
---     * 'CreateGameSession'
+--     * 'CreateGameSession' 
 --
---     * 'DescribeGameSessions'
+--     * 'DescribeGameSessions' 
 --
---     * 'DescribeGameSessionDetails'
+--     * 'DescribeGameSessionDetails' 
 --
---     * 'SearchGameSessions'
+--     * 'SearchGameSessions' 
 --
---     * 'UpdateGameSession'
+--     * 'UpdateGameSession' 
 --
---     * 'GetGameSessionLogUrl'
+--     * 'GetGameSessionLogUrl' 
 --
 --     * Game session placements
 --
---     * 'StartGameSessionPlacement'
+--     * 'StartGameSessionPlacement' 
 --
---     * 'DescribeGameSessionPlacement'
+--     * 'DescribeGameSessionPlacement' 
 --
---     * 'StopGameSessionPlacement'
+--     * 'StopGameSessionPlacement' 
 --
 --
 --
@@ -72,7 +72,6 @@ module Network.AWS.GameLift.DescribeGameSessionDetails
     ) where
 
 import Network.AWS.GameLift.Types
-import Network.AWS.GameLift.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.Request
@@ -83,17 +82,20 @@ import Network.AWS.Response
 --
 --
 -- /See:/ 'describeGameSessionDetails' smart constructor.
-data DescribeGameSessionDetails =
-  DescribeGameSessionDetails'
-    { _dgsdGameSessionId :: !(Maybe Text)
-    , _dgsdAliasId       :: !(Maybe Text)
-    , _dgsdNextToken     :: !(Maybe Text)
-    , _dgsdStatusFilter  :: !(Maybe Text)
-    , _dgsdLimit         :: !(Maybe Nat)
-    , _dgsdFleetId       :: !(Maybe Text)
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data DescribeGameSessionDetails = DescribeGameSessionDetails'{_dgsdGameSessionId
+                                                              :: !(Maybe Text),
+                                                              _dgsdAliasId ::
+                                                              !(Maybe Text),
+                                                              _dgsdNextToken ::
+                                                              !(Maybe Text),
+                                                              _dgsdStatusFilter
+                                                              :: !(Maybe Text),
+                                                              _dgsdLimit ::
+                                                              !(Maybe Nat),
+                                                              _dgsdFleetId ::
+                                                              !(Maybe Text)}
+                                    deriving (Eq, Read, Show, Data, Typeable,
+                                              Generic)
 
 -- | Creates a value of 'DescribeGameSessionDetails' with the minimum fields required to make a request.
 --
@@ -105,23 +107,20 @@ data DescribeGameSessionDetails =
 --
 -- * 'dgsdNextToken' - Token that indicates the start of the next sequential page of results. Use the token that is returned with a previous call to this action. To start at the beginning of the result set, do not specify a value.
 --
--- * 'dgsdStatusFilter' - Game session status to filter results on. Possible game session statuses include @ACTIVE@ , @TERMINATED@ , @ACTIVATING@ and @TERMINATING@ (the last two are transitory).
+-- * 'dgsdStatusFilter' - Game session status to filter results on. Possible game session statuses include @ACTIVE@ , @TERMINATED@ , @ACTIVATING@ and @TERMINATING@ (the last two are transitory). 
 --
 -- * 'dgsdLimit' - Maximum number of results to return. Use this parameter with @NextToken@ to get results as a set of sequential pages.
 --
 -- * 'dgsdFleetId' - Unique identifier for a fleet to retrieve all game sessions active on the fleet.
 describeGameSessionDetails
     :: DescribeGameSessionDetails
-describeGameSessionDetails =
-  DescribeGameSessionDetails'
-    { _dgsdGameSessionId = Nothing
-    , _dgsdAliasId = Nothing
-    , _dgsdNextToken = Nothing
-    , _dgsdStatusFilter = Nothing
-    , _dgsdLimit = Nothing
-    , _dgsdFleetId = Nothing
-    }
-
+describeGameSessionDetails
+  = DescribeGameSessionDetails'{_dgsdGameSessionId =
+                                  Nothing,
+                                _dgsdAliasId = Nothing,
+                                _dgsdNextToken = Nothing,
+                                _dgsdStatusFilter = Nothing,
+                                _dgsdLimit = Nothing, _dgsdFleetId = Nothing}
 
 -- | Unique identifier for the game session to retrieve.
 dgsdGameSessionId :: Lens' DescribeGameSessionDetails (Maybe Text)
@@ -135,7 +134,7 @@ dgsdAliasId = lens _dgsdAliasId (\ s a -> s{_dgsdAliasId = a})
 dgsdNextToken :: Lens' DescribeGameSessionDetails (Maybe Text)
 dgsdNextToken = lens _dgsdNextToken (\ s a -> s{_dgsdNextToken = a})
 
--- | Game session status to filter results on. Possible game session statuses include @ACTIVE@ , @TERMINATED@ , @ACTIVATING@ and @TERMINATING@ (the last two are transitory).
+-- | Game session status to filter results on. Possible game session statuses include @ACTIVE@ , @TERMINATED@ , @ACTIVATING@ and @TERMINATING@ (the last two are transitory). 
 dgsdStatusFilter :: Lens' DescribeGameSessionDetails (Maybe Text)
 dgsdStatusFilter = lens _dgsdStatusFilter (\ s a -> s{_dgsdStatusFilter = a})
 
@@ -195,14 +194,19 @@ instance ToQuery DescribeGameSessionDetails where
 --
 --
 -- /See:/ 'describeGameSessionDetailsResponse' smart constructor.
-data DescribeGameSessionDetailsResponse =
-  DescribeGameSessionDetailsResponse'
-    { _dgsdrsGameSessionDetails :: !(Maybe [GameSessionDetail])
-    , _dgsdrsNextToken          :: !(Maybe Text)
-    , _dgsdrsResponseStatus     :: !Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data DescribeGameSessionDetailsResponse = DescribeGameSessionDetailsResponse'{_dgsdrsGameSessionDetails
+                                                                              ::
+                                                                              !(Maybe
+                                                                                  [GameSessionDetail]),
+                                                                              _dgsdrsNextToken
+                                                                              ::
+                                                                              !(Maybe
+                                                                                  Text),
+                                                                              _dgsdrsResponseStatus
+                                                                              ::
+                                                                              !Int}
+                                            deriving (Eq, Read, Show, Data,
+                                                      Typeable, Generic)
 
 -- | Creates a value of 'DescribeGameSessionDetailsResponse' with the minimum fields required to make a request.
 --
@@ -216,13 +220,12 @@ data DescribeGameSessionDetailsResponse =
 describeGameSessionDetailsResponse
     :: Int -- ^ 'dgsdrsResponseStatus'
     -> DescribeGameSessionDetailsResponse
-describeGameSessionDetailsResponse pResponseStatus_ =
-  DescribeGameSessionDetailsResponse'
-    { _dgsdrsGameSessionDetails = Nothing
-    , _dgsdrsNextToken = Nothing
-    , _dgsdrsResponseStatus = pResponseStatus_
-    }
-
+describeGameSessionDetailsResponse pResponseStatus_
+  = DescribeGameSessionDetailsResponse'{_dgsdrsGameSessionDetails
+                                          = Nothing,
+                                        _dgsdrsNextToken = Nothing,
+                                        _dgsdrsResponseStatus =
+                                          pResponseStatus_}
 
 -- | Collection of objects containing game session properties and the protection policy currently in force for each session matching the request.
 dgsdrsGameSessionDetails :: Lens' DescribeGameSessionDetailsResponse [GameSessionDetail]

@@ -39,20 +39,21 @@ module Network.AWS.IoTJobsData.StartNextPendingJobExecution
     ) where
 
 import Network.AWS.IoTJobsData.Types
-import Network.AWS.IoTJobsData.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 
 -- | /See:/ 'startNextPendingJobExecution' smart constructor.
-data StartNextPendingJobExecution =
-  StartNextPendingJobExecution'
-    { _snpjeStatusDetails :: !(Maybe (Map Text Text))
-    , _snpjeThingName     :: !Text
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data StartNextPendingJobExecution = StartNextPendingJobExecution'{_snpjeStatusDetails
+                                                                  ::
+                                                                  !(Maybe
+                                                                      (Map Text
+                                                                         Text)),
+                                                                  _snpjeThingName
+                                                                  :: !Text}
+                                      deriving (Eq, Read, Show, Data, Typeable,
+                                                Generic)
 
 -- | Creates a value of 'StartNextPendingJobExecution' with the minimum fields required to make a request.
 --
@@ -64,10 +65,10 @@ data StartNextPendingJobExecution =
 startNextPendingJobExecution
     :: Text -- ^ 'snpjeThingName'
     -> StartNextPendingJobExecution
-startNextPendingJobExecution pThingName_ =
-  StartNextPendingJobExecution'
-    {_snpjeStatusDetails = Nothing, _snpjeThingName = pThingName_}
-
+startNextPendingJobExecution pThingName_
+  = StartNextPendingJobExecution'{_snpjeStatusDetails =
+                                    Nothing,
+                                  _snpjeThingName = pThingName_}
 
 -- | A collection of name/value pairs that describe the status of the job execution. If not specified, the statusDetails are unchanged.
 snpjeStatusDetails :: Lens' StartNextPendingJobExecution (HashMap Text Text)
@@ -110,13 +111,15 @@ instance ToQuery StartNextPendingJobExecution where
         toQuery = const mempty
 
 -- | /See:/ 'startNextPendingJobExecutionResponse' smart constructor.
-data StartNextPendingJobExecutionResponse =
-  StartNextPendingJobExecutionResponse'
-    { _snpjersExecution      :: !(Maybe JobExecution)
-    , _snpjersResponseStatus :: !Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data StartNextPendingJobExecutionResponse = StartNextPendingJobExecutionResponse'{_snpjersExecution
+                                                                                  ::
+                                                                                  !(Maybe
+                                                                                      JobExecution),
+                                                                                  _snpjersResponseStatus
+                                                                                  ::
+                                                                                  !Int}
+                                              deriving (Eq, Read, Show, Data,
+                                                        Typeable, Generic)
 
 -- | Creates a value of 'StartNextPendingJobExecutionResponse' with the minimum fields required to make a request.
 --
@@ -128,10 +131,11 @@ data StartNextPendingJobExecutionResponse =
 startNextPendingJobExecutionResponse
     :: Int -- ^ 'snpjersResponseStatus'
     -> StartNextPendingJobExecutionResponse
-startNextPendingJobExecutionResponse pResponseStatus_ =
-  StartNextPendingJobExecutionResponse'
-    {_snpjersExecution = Nothing, _snpjersResponseStatus = pResponseStatus_}
-
+startNextPendingJobExecutionResponse pResponseStatus_
+  = StartNextPendingJobExecutionResponse'{_snpjersExecution
+                                            = Nothing,
+                                          _snpjersResponseStatus =
+                                            pResponseStatus_}
 
 -- | A JobExecution object.
 snpjersExecution :: Lens' StartNextPendingJobExecutionResponse (Maybe JobExecution)

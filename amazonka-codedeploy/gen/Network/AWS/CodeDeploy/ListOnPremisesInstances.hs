@@ -45,7 +45,6 @@ module Network.AWS.CodeDeploy.ListOnPremisesInstances
     ) where
 
 import Network.AWS.CodeDeploy.Types
-import Network.AWS.CodeDeploy.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Pager
 import Network.AWS.Prelude
@@ -57,14 +56,16 @@ import Network.AWS.Response
 --
 --
 -- /See:/ 'listOnPremisesInstances' smart constructor.
-data ListOnPremisesInstances =
-  ListOnPremisesInstances'
-    { _lopiTagFilters         :: !(Maybe [TagFilter])
-    , _lopiNextToken          :: !(Maybe Text)
-    , _lopiRegistrationStatus :: !(Maybe RegistrationStatus)
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data ListOnPremisesInstances = ListOnPremisesInstances'{_lopiTagFilters
+                                                        :: !(Maybe [TagFilter]),
+                                                        _lopiNextToken ::
+                                                        !(Maybe Text),
+                                                        _lopiRegistrationStatus
+                                                        ::
+                                                        !(Maybe
+                                                            RegistrationStatus)}
+                                 deriving (Eq, Read, Show, Data, Typeable,
+                                           Generic)
 
 -- | Creates a value of 'ListOnPremisesInstances' with the minimum fields required to make a request.
 --
@@ -77,13 +78,10 @@ data ListOnPremisesInstances =
 -- * 'lopiRegistrationStatus' - The registration status of the on-premises instances:     * Deregistered: Include deregistered on-premises instances in the resulting list.     * Registered: Include registered on-premises instances in the resulting list.
 listOnPremisesInstances
     :: ListOnPremisesInstances
-listOnPremisesInstances =
-  ListOnPremisesInstances'
-    { _lopiTagFilters = Nothing
-    , _lopiNextToken = Nothing
-    , _lopiRegistrationStatus = Nothing
-    }
-
+listOnPremisesInstances
+  = ListOnPremisesInstances'{_lopiTagFilters = Nothing,
+                             _lopiNextToken = Nothing,
+                             _lopiRegistrationStatus = Nothing}
 
 -- | The on-premises instance tags that are used to restrict the on-premises instance names returned.
 lopiTagFilters :: Lens' ListOnPremisesInstances [TagFilter]
@@ -150,14 +148,18 @@ instance ToQuery ListOnPremisesInstances where
 --
 --
 -- /See:/ 'listOnPremisesInstancesResponse' smart constructor.
-data ListOnPremisesInstancesResponse =
-  ListOnPremisesInstancesResponse'
-    { _lopirsNextToken      :: !(Maybe Text)
-    , _lopirsInstanceNames  :: !(Maybe [Text])
-    , _lopirsResponseStatus :: !Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data ListOnPremisesInstancesResponse = ListOnPremisesInstancesResponse'{_lopirsNextToken
+                                                                        ::
+                                                                        !(Maybe
+                                                                            Text),
+                                                                        _lopirsInstanceNames
+                                                                        ::
+                                                                        !(Maybe
+                                                                            [Text]),
+                                                                        _lopirsResponseStatus
+                                                                        :: !Int}
+                                         deriving (Eq, Read, Show, Data,
+                                                   Typeable, Generic)
 
 -- | Creates a value of 'ListOnPremisesInstancesResponse' with the minimum fields required to make a request.
 --
@@ -171,13 +173,11 @@ data ListOnPremisesInstancesResponse =
 listOnPremisesInstancesResponse
     :: Int -- ^ 'lopirsResponseStatus'
     -> ListOnPremisesInstancesResponse
-listOnPremisesInstancesResponse pResponseStatus_ =
-  ListOnPremisesInstancesResponse'
-    { _lopirsNextToken = Nothing
-    , _lopirsInstanceNames = Nothing
-    , _lopirsResponseStatus = pResponseStatus_
-    }
-
+listOnPremisesInstancesResponse pResponseStatus_
+  = ListOnPremisesInstancesResponse'{_lopirsNextToken =
+                                       Nothing,
+                                     _lopirsInstanceNames = Nothing,
+                                     _lopirsResponseStatus = pResponseStatus_}
 
 -- | If a large amount of information is returned, an identifier is also returned. It can be used in a subsequent list on-premises instances call to return the next set of on-premises instances in the list.
 lopirsNextToken :: Lens' ListOnPremisesInstancesResponse (Maybe Text)

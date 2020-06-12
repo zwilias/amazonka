@@ -11,14 +11,14 @@
 -- Stability   : auto-generated
 -- Portability : non-portable (GHC extensions)
 --
--- You can use the ACM PCA API to create a private certificate authority (CA). You must first call the 'CreateCertificateAuthority' function. If successful, the function returns an Amazon Resource Name (ARN) for your private CA. Use this ARN as input to the 'GetCertificateAuthorityCsr' function to retrieve the certificate signing request (CSR) for your private CA certificate. Sign the CSR using the root or an intermediate CA in your on-premises PKI hierarchy, and call the 'ImportCertificateAuthorityCertificate' to import your signed private CA certificate into ACM PCA.
+-- You can use the ACM PCA API to create a private certificate authority (CA). You must first call the 'CreateCertificateAuthority' function. If successful, the function returns an Amazon Resource Name (ARN) for your private CA. Use this ARN as input to the 'GetCertificateAuthorityCsr' function to retrieve the certificate signing request (CSR) for your private CA certificate. Sign the CSR using the root or an intermediate CA in your on-premises PKI hierarchy, and call the 'ImportCertificateAuthorityCertificate' to import your signed private CA certificate into ACM PCA. 
 --
 --
--- Use your private CA to issue and revoke certificates. These are private certificates that identify and secure client computers, servers, applications, services, devices, and users over SSLS/TLS connections within your organization. Call the 'IssueCertificate' function to issue a certificate. Call the 'RevokeCertificate' function to revoke a certificate.
+-- Use your private CA to issue and revoke certificates. These are private certificates that identify and secure client computers, servers, applications, services, devices, and users over SSLS/TLS connections within your organization. Call the 'IssueCertificate' function to issue a certificate. Call the 'RevokeCertificate' function to revoke a certificate. 
 --
--- Your private CA can optionally create a certificate revocation list (CRL) to track the certificates you revoke. To create a CRL, you must specify a 'RevocationConfiguration' object when you call the 'CreateCertificateAuthority' function. ACM PCA writes the CRL to an S3 bucket that you specify. You must specify a bucket policy that grants ACM PCA write permission.
+-- Your private CA can optionally create a certificate revocation list (CRL) to track the certificates you revoke. To create a CRL, you must specify a 'RevocationConfiguration' object when you call the 'CreateCertificateAuthority' function. ACM PCA writes the CRL to an S3 bucket that you specify. You must specify a bucket policy that grants ACM PCA write permission. 
 --
--- You can also call the 'CreateCertificateAuthorityAuditReport' to create an optional audit report that lists every time the CA private key is used. The private key is used for signing when the __IssueCertificate__ or __RevokeCertificate__ function is called.
+-- You can also call the 'CreateCertificateAuthorityAuditReport' to create an optional audit report that lists every time the CA private key is used. The private key is used for signing when the __IssueCertificate__ or __RevokeCertificate__ function is called. 
 --
 module Network.AWS.CertificateManagerPCA
     (
@@ -82,52 +82,52 @@ module Network.AWS.CertificateManagerPCA
     -- * Operations
     -- $operations
 
-    -- ** ImportCertificateAuthorityCertificate
+    -- ** ImportCertificateAuthorityCertificate 
     , module Network.AWS.CertificateManagerPCA.ImportCertificateAuthorityCertificate
 
-    -- ** DescribeCertificateAuthorityAuditReport
+    -- ** DescribeCertificateAuthorityAuditReport 
     , module Network.AWS.CertificateManagerPCA.DescribeCertificateAuthorityAuditReport
 
-    -- ** RevokeCertificate
+    -- ** RevokeCertificate 
     , module Network.AWS.CertificateManagerPCA.RevokeCertificate
 
-    -- ** UpdateCertificateAuthority
+    -- ** UpdateCertificateAuthority 
     , module Network.AWS.CertificateManagerPCA.UpdateCertificateAuthority
 
-    -- ** DeleteCertificateAuthority
+    -- ** DeleteCertificateAuthority 
     , module Network.AWS.CertificateManagerPCA.DeleteCertificateAuthority
 
-    -- ** GetCertificateAuthorityCSR
+    -- ** GetCertificateAuthorityCSR 
     , module Network.AWS.CertificateManagerPCA.GetCertificateAuthorityCSR
 
-    -- ** CreateCertificateAuthority
+    -- ** CreateCertificateAuthority 
     , module Network.AWS.CertificateManagerPCA.CreateCertificateAuthority
 
-    -- ** ListCertificateAuthorities
+    -- ** ListCertificateAuthorities 
     , module Network.AWS.CertificateManagerPCA.ListCertificateAuthorities
 
-    -- ** GetCertificate
+    -- ** GetCertificate 
     , module Network.AWS.CertificateManagerPCA.GetCertificate
 
-    -- ** TagCertificateAuthority
+    -- ** TagCertificateAuthority 
     , module Network.AWS.CertificateManagerPCA.TagCertificateAuthority
 
-    -- ** DescribeCertificateAuthority
+    -- ** DescribeCertificateAuthority 
     , module Network.AWS.CertificateManagerPCA.DescribeCertificateAuthority
 
-    -- ** IssueCertificate
+    -- ** IssueCertificate 
     , module Network.AWS.CertificateManagerPCA.IssueCertificate
 
-    -- ** GetCertificateAuthorityCertificate
+    -- ** GetCertificateAuthorityCertificate 
     , module Network.AWS.CertificateManagerPCA.GetCertificateAuthorityCertificate
 
-    -- ** UntagCertificateAuthority
+    -- ** UntagCertificateAuthority 
     , module Network.AWS.CertificateManagerPCA.UntagCertificateAuthority
 
-    -- ** CreateCertificateAuthorityAuditReport
+    -- ** CreateCertificateAuthorityAuditReport 
     , module Network.AWS.CertificateManagerPCA.CreateCertificateAuthorityAuditReport
 
-    -- ** ListTags
+    -- ** ListTags 
     , module Network.AWS.CertificateManagerPCA.ListTags
 
     -- * Types
@@ -231,8 +231,8 @@ import Network.AWS.CertificateManagerPCA.DeleteCertificateAuthority
 import Network.AWS.CertificateManagerPCA.DescribeCertificateAuthority
 import Network.AWS.CertificateManagerPCA.DescribeCertificateAuthorityAuditReport
 import Network.AWS.CertificateManagerPCA.GetCertificate
-import Network.AWS.CertificateManagerPCA.GetCertificateAuthorityCertificate
 import Network.AWS.CertificateManagerPCA.GetCertificateAuthorityCSR
+import Network.AWS.CertificateManagerPCA.GetCertificateAuthorityCertificate
 import Network.AWS.CertificateManagerPCA.ImportCertificateAuthorityCertificate
 import Network.AWS.CertificateManagerPCA.IssueCertificate
 import Network.AWS.CertificateManagerPCA.ListCertificateAuthorities

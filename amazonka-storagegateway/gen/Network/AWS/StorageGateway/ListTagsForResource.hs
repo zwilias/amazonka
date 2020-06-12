@@ -46,21 +46,17 @@ import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 import Network.AWS.StorageGateway.Types
-import Network.AWS.StorageGateway.Types.Product
 
 -- | ListTagsForResourceInput
 --
 --
 --
 -- /See:/ 'listTagsForResource' smart constructor.
-data ListTagsForResource =
-  ListTagsForResource'
-    { _ltfrMarker      :: !(Maybe Text)
-    , _ltfrLimit       :: !(Maybe Nat)
-    , _ltfrResourceARN :: !Text
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data ListTagsForResource = ListTagsForResource'{_ltfrMarker
+                                                :: !(Maybe Text),
+                                                _ltfrLimit :: !(Maybe Nat),
+                                                _ltfrResourceARN :: !Text}
+                             deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'ListTagsForResource' with the minimum fields required to make a request.
 --
@@ -74,13 +70,10 @@ data ListTagsForResource =
 listTagsForResource
     :: Text -- ^ 'ltfrResourceARN'
     -> ListTagsForResource
-listTagsForResource pResourceARN_ =
-  ListTagsForResource'
-    { _ltfrMarker = Nothing
-    , _ltfrLimit = Nothing
-    , _ltfrResourceARN = pResourceARN_
-    }
-
+listTagsForResource pResourceARN_
+  = ListTagsForResource'{_ltfrMarker = Nothing,
+                         _ltfrLimit = Nothing,
+                         _ltfrResourceARN = pResourceARN_}
 
 -- | An opaque string that indicates the position at which to begin returning the list of tags.
 ltfrMarker :: Lens' ListTagsForResource (Maybe Text)
@@ -139,15 +132,17 @@ instance ToQuery ListTagsForResource where
 --
 --
 -- /See:/ 'listTagsForResourceResponse' smart constructor.
-data ListTagsForResourceResponse =
-  ListTagsForResourceResponse'
-    { _ltfrrsResourceARN    :: !(Maybe Text)
-    , _ltfrrsMarker         :: !(Maybe Text)
-    , _ltfrrsTags           :: !(Maybe [Tag])
-    , _ltfrrsResponseStatus :: !Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data ListTagsForResourceResponse = ListTagsForResourceResponse'{_ltfrrsResourceARN
+                                                                ::
+                                                                !(Maybe Text),
+                                                                _ltfrrsMarker ::
+                                                                !(Maybe Text),
+                                                                _ltfrrsTags ::
+                                                                !(Maybe [Tag]),
+                                                                _ltfrrsResponseStatus
+                                                                :: !Int}
+                                     deriving (Eq, Read, Show, Data, Typeable,
+                                               Generic)
 
 -- | Creates a value of 'ListTagsForResourceResponse' with the minimum fields required to make a request.
 --
@@ -163,14 +158,11 @@ data ListTagsForResourceResponse =
 listTagsForResourceResponse
     :: Int -- ^ 'ltfrrsResponseStatus'
     -> ListTagsForResourceResponse
-listTagsForResourceResponse pResponseStatus_ =
-  ListTagsForResourceResponse'
-    { _ltfrrsResourceARN = Nothing
-    , _ltfrrsMarker = Nothing
-    , _ltfrrsTags = Nothing
-    , _ltfrrsResponseStatus = pResponseStatus_
-    }
-
+listTagsForResourceResponse pResponseStatus_
+  = ListTagsForResourceResponse'{_ltfrrsResourceARN =
+                                   Nothing,
+                                 _ltfrrsMarker = Nothing, _ltfrrsTags = Nothing,
+                                 _ltfrrsResponseStatus = pResponseStatus_}
 
 -- | he Amazon Resource Name (ARN) of the resource for which you want to list tags.
 ltfrrsResourceARN :: Lens' ListTagsForResourceResponse (Maybe Text)

@@ -40,15 +40,11 @@ import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 import Network.AWS.S3.Types
-import Network.AWS.S3.Types.Product
 
 -- | /See:/ 'getBucketPolicy' smart constructor.
-newtype GetBucketPolicy =
-  GetBucketPolicy'
-    { _gbpBucket :: BucketName
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+newtype GetBucketPolicy = GetBucketPolicy'{_gbpBucket
+                                           :: BucketName}
+                            deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'GetBucketPolicy' with the minimum fields required to make a request.
 --
@@ -58,8 +54,8 @@ newtype GetBucketPolicy =
 getBucketPolicy
     :: BucketName -- ^ 'gbpBucket'
     -> GetBucketPolicy
-getBucketPolicy pBucket_ = GetBucketPolicy' {_gbpBucket = pBucket_}
-
+getBucketPolicy pBucket_
+  = GetBucketPolicy'{_gbpBucket = pBucket_}
 
 -- | Undocumented member.
 gbpBucket :: Lens' GetBucketPolicy BucketName
@@ -89,13 +85,11 @@ instance ToQuery GetBucketPolicy where
         toQuery = const (mconcat ["policy"])
 
 -- | /See:/ 'getBucketPolicyResponse' smart constructor.
-data GetBucketPolicyResponse =
-  GetBucketPolicyResponse'
-    { _gbprsResponseStatus :: !Int
-    , _gbprsPolicy         :: !ByteString
-    }
-  deriving (Eq, Show, Data, Typeable, Generic)
-
+data GetBucketPolicyResponse = GetBucketPolicyResponse'{_gbprsResponseStatus
+                                                        :: !Int,
+                                                        _gbprsPolicy ::
+                                                        !ByteString}
+                                 deriving (Eq, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'GetBucketPolicyResponse' with the minimum fields required to make a request.
 --
@@ -108,10 +102,10 @@ getBucketPolicyResponse
     :: Int -- ^ 'gbprsResponseStatus'
     -> ByteString -- ^ 'gbprsPolicy'
     -> GetBucketPolicyResponse
-getBucketPolicyResponse pResponseStatus_ pPolicy_ =
-  GetBucketPolicyResponse'
-    {_gbprsResponseStatus = pResponseStatus_, _gbprsPolicy = pPolicy_}
-
+getBucketPolicyResponse pResponseStatus_ pPolicy_
+  = GetBucketPolicyResponse'{_gbprsResponseStatus =
+                               pResponseStatus_,
+                             _gbprsPolicy = pPolicy_}
 
 -- | -- | The response status code.
 gbprsResponseStatus :: Lens' GetBucketPolicyResponse Int

@@ -39,19 +39,15 @@ module Network.AWS.CertificateManager.GetCertificate
     ) where
 
 import Network.AWS.CertificateManager.Types
-import Network.AWS.CertificateManager.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 
 -- | /See:/ 'getCertificate' smart constructor.
-newtype GetCertificate =
-  GetCertificate'
-    { _gcCertificateARN :: Text
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+newtype GetCertificate = GetCertificate'{_gcCertificateARN
+                                         :: Text}
+                           deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'GetCertificate' with the minimum fields required to make a request.
 --
@@ -61,9 +57,9 @@ newtype GetCertificate =
 getCertificate
     :: Text -- ^ 'gcCertificateARN'
     -> GetCertificate
-getCertificate pCertificateARN_ =
-  GetCertificate' {_gcCertificateARN = pCertificateARN_}
-
+getCertificate pCertificateARN_
+  = GetCertificate'{_gcCertificateARN =
+                      pCertificateARN_}
 
 -- | String that contains a certificate ARN in the following format: @arn:aws:acm:region:123456789012:certificate/12345678-1234-1234-1234-123456789012@  For more information about ARNs, see <http://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html Amazon Resource Names (ARNs) and AWS Service Namespaces> .
 gcCertificateARN :: Lens' GetCertificate Text
@@ -105,14 +101,14 @@ instance ToQuery GetCertificate where
         toQuery = const mempty
 
 -- | /See:/ 'getCertificateResponse' smart constructor.
-data GetCertificateResponse =
-  GetCertificateResponse'
-    { _gcrsCertificate      :: !(Maybe Text)
-    , _gcrsCertificateChain :: !(Maybe Text)
-    , _gcrsResponseStatus   :: !Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data GetCertificateResponse = GetCertificateResponse'{_gcrsCertificate
+                                                      :: !(Maybe Text),
+                                                      _gcrsCertificateChain ::
+                                                      !(Maybe Text),
+                                                      _gcrsResponseStatus ::
+                                                      !Int}
+                                deriving (Eq, Read, Show, Data, Typeable,
+                                          Generic)
 
 -- | Creates a value of 'GetCertificateResponse' with the minimum fields required to make a request.
 --
@@ -126,13 +122,10 @@ data GetCertificateResponse =
 getCertificateResponse
     :: Int -- ^ 'gcrsResponseStatus'
     -> GetCertificateResponse
-getCertificateResponse pResponseStatus_ =
-  GetCertificateResponse'
-    { _gcrsCertificate = Nothing
-    , _gcrsCertificateChain = Nothing
-    , _gcrsResponseStatus = pResponseStatus_
-    }
-
+getCertificateResponse pResponseStatus_
+  = GetCertificateResponse'{_gcrsCertificate = Nothing,
+                            _gcrsCertificateChain = Nothing,
+                            _gcrsResponseStatus = pResponseStatus_}
 
 -- | String that contains the ACM certificate represented by the ARN specified at input.
 gcrsCertificate :: Lens' GetCertificateResponse (Maybe Text)

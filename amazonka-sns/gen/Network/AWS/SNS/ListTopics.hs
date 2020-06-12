@@ -46,15 +46,11 @@ import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 import Network.AWS.SNS.Types
-import Network.AWS.SNS.Types.Product
 
 -- | /See:/ 'listTopics' smart constructor.
-newtype ListTopics =
-  ListTopics'
-    { _ltNextToken :: Maybe Text
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+newtype ListTopics = ListTopics'{_ltNextToken ::
+                                 Maybe Text}
+                       deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'ListTopics' with the minimum fields required to make a request.
 --
@@ -63,8 +59,7 @@ newtype ListTopics =
 -- * 'ltNextToken' - Token returned by the previous @ListTopics@ request.
 listTopics
     :: ListTopics
-listTopics = ListTopics' {_ltNextToken = Nothing}
-
+listTopics = ListTopics'{_ltNextToken = Nothing}
 
 -- | Token returned by the previous @ListTopics@ request.
 ltNextToken :: Lens' ListTopics (Maybe Text)
@@ -111,14 +106,11 @@ instance ToQuery ListTopics where
 --
 --
 -- /See:/ 'listTopicsResponse' smart constructor.
-data ListTopicsResponse =
-  ListTopicsResponse'
-    { _ltrsTopics         :: !(Maybe [Topic])
-    , _ltrsNextToken      :: !(Maybe Text)
-    , _ltrsResponseStatus :: !Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data ListTopicsResponse = ListTopicsResponse'{_ltrsTopics
+                                              :: !(Maybe [Topic]),
+                                              _ltrsNextToken :: !(Maybe Text),
+                                              _ltrsResponseStatus :: !Int}
+                            deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'ListTopicsResponse' with the minimum fields required to make a request.
 --
@@ -132,13 +124,10 @@ data ListTopicsResponse =
 listTopicsResponse
     :: Int -- ^ 'ltrsResponseStatus'
     -> ListTopicsResponse
-listTopicsResponse pResponseStatus_ =
-  ListTopicsResponse'
-    { _ltrsTopics = Nothing
-    , _ltrsNextToken = Nothing
-    , _ltrsResponseStatus = pResponseStatus_
-    }
-
+listTopicsResponse pResponseStatus_
+  = ListTopicsResponse'{_ltrsTopics = Nothing,
+                        _ltrsNextToken = Nothing,
+                        _ltrsResponseStatus = pResponseStatus_}
 
 -- | A list of topic ARNs.
 ltrsTopics :: Lens' ListTopicsResponse [Topic]

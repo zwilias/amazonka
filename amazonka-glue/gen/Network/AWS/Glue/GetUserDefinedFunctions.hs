@@ -45,7 +45,6 @@ module Network.AWS.Glue.GetUserDefinedFunctions
     ) where
 
 import Network.AWS.Glue.Types
-import Network.AWS.Glue.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Pager
 import Network.AWS.Prelude
@@ -53,16 +52,17 @@ import Network.AWS.Request
 import Network.AWS.Response
 
 -- | /See:/ 'getUserDefinedFunctions' smart constructor.
-data GetUserDefinedFunctions =
-  GetUserDefinedFunctions'
-    { _gudfCatalogId    :: !(Maybe Text)
-    , _gudfNextToken    :: !(Maybe Text)
-    , _gudfMaxResults   :: !(Maybe Nat)
-    , _gudfDatabaseName :: !Text
-    , _gudfPattern      :: !Text
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data GetUserDefinedFunctions = GetUserDefinedFunctions'{_gudfCatalogId
+                                                        :: !(Maybe Text),
+                                                        _gudfNextToken ::
+                                                        !(Maybe Text),
+                                                        _gudfMaxResults ::
+                                                        !(Maybe Nat),
+                                                        _gudfDatabaseName ::
+                                                        !Text,
+                                                        _gudfPattern :: !Text}
+                                 deriving (Eq, Read, Show, Data, Typeable,
+                                           Generic)
 
 -- | Creates a value of 'GetUserDefinedFunctions' with the minimum fields required to make a request.
 --
@@ -81,15 +81,12 @@ getUserDefinedFunctions
     :: Text -- ^ 'gudfDatabaseName'
     -> Text -- ^ 'gudfPattern'
     -> GetUserDefinedFunctions
-getUserDefinedFunctions pDatabaseName_ pPattern_ =
-  GetUserDefinedFunctions'
-    { _gudfCatalogId = Nothing
-    , _gudfNextToken = Nothing
-    , _gudfMaxResults = Nothing
-    , _gudfDatabaseName = pDatabaseName_
-    , _gudfPattern = pPattern_
-    }
-
+getUserDefinedFunctions pDatabaseName_ pPattern_
+  = GetUserDefinedFunctions'{_gudfCatalogId = Nothing,
+                             _gudfNextToken = Nothing,
+                             _gudfMaxResults = Nothing,
+                             _gudfDatabaseName = pDatabaseName_,
+                             _gudfPattern = pPattern_}
 
 -- | The ID of the Data Catalog where the functions to be retrieved are located. If none is supplied, the AWS account ID is used by default.
 gudfCatalogId :: Lens' GetUserDefinedFunctions (Maybe Text)
@@ -160,14 +157,18 @@ instance ToQuery GetUserDefinedFunctions where
         toQuery = const mempty
 
 -- | /See:/ 'getUserDefinedFunctionsResponse' smart constructor.
-data GetUserDefinedFunctionsResponse =
-  GetUserDefinedFunctionsResponse'
-    { _gudfrsNextToken            :: !(Maybe Text)
-    , _gudfrsUserDefinedFunctions :: !(Maybe [UserDefinedFunction])
-    , _gudfrsResponseStatus       :: !Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data GetUserDefinedFunctionsResponse = GetUserDefinedFunctionsResponse'{_gudfrsNextToken
+                                                                        ::
+                                                                        !(Maybe
+                                                                            Text),
+                                                                        _gudfrsUserDefinedFunctions
+                                                                        ::
+                                                                        !(Maybe
+                                                                            [UserDefinedFunction]),
+                                                                        _gudfrsResponseStatus
+                                                                        :: !Int}
+                                         deriving (Eq, Read, Show, Data,
+                                                   Typeable, Generic)
 
 -- | Creates a value of 'GetUserDefinedFunctionsResponse' with the minimum fields required to make a request.
 --
@@ -181,13 +182,11 @@ data GetUserDefinedFunctionsResponse =
 getUserDefinedFunctionsResponse
     :: Int -- ^ 'gudfrsResponseStatus'
     -> GetUserDefinedFunctionsResponse
-getUserDefinedFunctionsResponse pResponseStatus_ =
-  GetUserDefinedFunctionsResponse'
-    { _gudfrsNextToken = Nothing
-    , _gudfrsUserDefinedFunctions = Nothing
-    , _gudfrsResponseStatus = pResponseStatus_
-    }
-
+getUserDefinedFunctionsResponse pResponseStatus_
+  = GetUserDefinedFunctionsResponse'{_gudfrsNextToken =
+                                       Nothing,
+                                     _gudfrsUserDefinedFunctions = Nothing,
+                                     _gudfrsResponseStatus = pResponseStatus_}
 
 -- | A continuation token, if the list of functions returned does not include the last requested function.
 gudfrsNextToken :: Lens' GetUserDefinedFunctionsResponse (Maybe Text)

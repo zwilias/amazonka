@@ -38,7 +38,6 @@ module Network.AWS.EC2.DeregisterImage
     ) where
 
 import Network.AWS.EC2.Types
-import Network.AWS.EC2.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.Request
@@ -49,13 +48,10 @@ import Network.AWS.Response
 --
 --
 -- /See:/ 'deregisterImage' smart constructor.
-data DeregisterImage =
-  DeregisterImage'
-    { _diDryRun  :: !(Maybe Bool)
-    , _diImageId :: !Text
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data DeregisterImage = DeregisterImage'{_diDryRun ::
+                                        !(Maybe Bool),
+                                        _diImageId :: !Text}
+                         deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'DeregisterImage' with the minimum fields required to make a request.
 --
@@ -67,9 +63,9 @@ data DeregisterImage =
 deregisterImage
     :: Text -- ^ 'diImageId'
     -> DeregisterImage
-deregisterImage pImageId_ =
-  DeregisterImage' {_diDryRun = Nothing, _diImageId = pImageId_}
-
+deregisterImage pImageId_
+  = DeregisterImage'{_diDryRun = Nothing,
+                     _diImageId = pImageId_}
 
 -- | Checks whether you have the required permissions for the action, without actually making the request, and provides an error response. If you have the required permissions, the error response is @DryRunOperation@ . Otherwise, it is @UnauthorizedOperation@ .
 diDryRun :: Lens' DeregisterImage (Maybe Bool)
@@ -102,16 +98,14 @@ instance ToQuery DeregisterImage where
                "DryRun" =: _diDryRun, "ImageId" =: _diImageId]
 
 -- | /See:/ 'deregisterImageResponse' smart constructor.
-data DeregisterImageResponse =
-  DeregisterImageResponse'
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data DeregisterImageResponse = DeregisterImageResponse'
+                                 deriving (Eq, Read, Show, Data, Typeable,
+                                           Generic)
 
 -- | Creates a value of 'DeregisterImageResponse' with the minimum fields required to make a request.
 --
 deregisterImageResponse
     :: DeregisterImageResponse
 deregisterImageResponse = DeregisterImageResponse'
-
 
 instance NFData DeregisterImageResponse where

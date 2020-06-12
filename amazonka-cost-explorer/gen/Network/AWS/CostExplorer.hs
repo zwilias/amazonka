@@ -11,14 +11,14 @@
 -- Stability   : auto-generated
 -- Portability : non-portable (GHC extensions)
 --
--- The Cost Explorer API enables you to programmatically query your cost and usage data. You can query for aggregated data such as total monthly costs or total daily usage. You can also query for granular data, such as the number of daily write operations for Amazon DynamoDB database tables in your production environment.
+-- The Cost Explorer API enables you to programmatically query your cost and usage data. You can query for aggregated data such as total monthly costs or total daily usage. You can also query for granular data, such as the number of daily write operations for Amazon DynamoDB database tables in your production environment. 
 --
 --
 -- Service Endpoint
 --
 -- The Cost Explorer API provides the following endpoint:
 --
---     * @https://ce.us-east-1.amazonaws.com@
+--     * @https://ce.us-east-1.amazonaws.com@ 
 --
 --
 --
@@ -62,61 +62,61 @@ module Network.AWS.CostExplorer
     -- * Operations
     -- $operations
 
-    -- ** GetReservationUtilization
+    -- ** GetReservationUtilization 
     , module Network.AWS.CostExplorer.GetReservationUtilization
 
-    -- ** GetSavingsPlansCoverage
+    -- ** GetSavingsPlansCoverage 
     , module Network.AWS.CostExplorer.GetSavingsPlansCoverage
 
-    -- ** GetTags
+    -- ** GetTags 
     , module Network.AWS.CostExplorer.GetTags
 
-    -- ** GetRightsizingRecommendation
+    -- ** GetRightsizingRecommendation 
     , module Network.AWS.CostExplorer.GetRightsizingRecommendation
 
-    -- ** GetCostAndUsageWithResources
+    -- ** GetCostAndUsageWithResources 
     , module Network.AWS.CostExplorer.GetCostAndUsageWithResources
 
-    -- ** GetUsageForecast
+    -- ** GetUsageForecast 
     , module Network.AWS.CostExplorer.GetUsageForecast
 
-    -- ** GetReservationCoverage
+    -- ** GetReservationCoverage 
     , module Network.AWS.CostExplorer.GetReservationCoverage
 
-    -- ** GetCostForecast
+    -- ** GetCostForecast 
     , module Network.AWS.CostExplorer.GetCostForecast
 
-    -- ** GetDimensionValues
+    -- ** GetDimensionValues 
     , module Network.AWS.CostExplorer.GetDimensionValues
 
-    -- ** GetReservationPurchaseRecommendation
+    -- ** GetReservationPurchaseRecommendation 
     , module Network.AWS.CostExplorer.GetReservationPurchaseRecommendation
 
-    -- ** ListCostCategoryDefinitions
+    -- ** ListCostCategoryDefinitions 
     , module Network.AWS.CostExplorer.ListCostCategoryDefinitions
 
-    -- ** UpdateCostCategoryDefinition
+    -- ** UpdateCostCategoryDefinition 
     , module Network.AWS.CostExplorer.UpdateCostCategoryDefinition
 
-    -- ** DeleteCostCategoryDefinition
+    -- ** DeleteCostCategoryDefinition 
     , module Network.AWS.CostExplorer.DeleteCostCategoryDefinition
 
-    -- ** CreateCostCategoryDefinition
+    -- ** CreateCostCategoryDefinition 
     , module Network.AWS.CostExplorer.CreateCostCategoryDefinition
 
-    -- ** GetCostAndUsage
+    -- ** GetCostAndUsage 
     , module Network.AWS.CostExplorer.GetCostAndUsage
 
-    -- ** GetSavingsPlansPurchaseRecommendation
+    -- ** GetSavingsPlansPurchaseRecommendation 
     , module Network.AWS.CostExplorer.GetSavingsPlansPurchaseRecommendation
 
-    -- ** GetSavingsPlansUtilization
+    -- ** GetSavingsPlansUtilization 
     , module Network.AWS.CostExplorer.GetSavingsPlansUtilization
 
-    -- ** DescribeCostCategoryDefinition
+    -- ** DescribeCostCategoryDefinition 
     , module Network.AWS.CostExplorer.DescribeCostCategoryDefinition
 
-    -- ** GetSavingsPlansUtilizationDetails
+    -- ** GetSavingsPlansUtilizationDetails 
     , module Network.AWS.CostExplorer.GetSavingsPlansUtilizationDetails
 
     -- * Types

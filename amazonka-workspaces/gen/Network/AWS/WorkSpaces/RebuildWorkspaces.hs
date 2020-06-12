@@ -48,15 +48,11 @@ import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 import Network.AWS.WorkSpaces.Types
-import Network.AWS.WorkSpaces.Types.Product
 
 -- | /See:/ 'rebuildWorkspaces' smart constructor.
-newtype RebuildWorkspaces =
-  RebuildWorkspaces'
-    { _rwRebuildWorkspaceRequests :: List1 RebuildRequest
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+newtype RebuildWorkspaces = RebuildWorkspaces'{_rwRebuildWorkspaceRequests
+                                               :: List1 RebuildRequest}
+                              deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'RebuildWorkspaces' with the minimum fields required to make a request.
 --
@@ -66,10 +62,9 @@ newtype RebuildWorkspaces =
 rebuildWorkspaces
     :: NonEmpty RebuildRequest -- ^ 'rwRebuildWorkspaceRequests'
     -> RebuildWorkspaces
-rebuildWorkspaces pRebuildWorkspaceRequests_ =
-  RebuildWorkspaces'
-    {_rwRebuildWorkspaceRequests = _List1 # pRebuildWorkspaceRequests_}
-
+rebuildWorkspaces pRebuildWorkspaceRequests_
+  = RebuildWorkspaces'{_rwRebuildWorkspaceRequests =
+                         _List1 # pRebuildWorkspaceRequests_}
 
 -- | The WorkSpace to rebuild. You can specify a single WorkSpace.
 rwRebuildWorkspaceRequests :: Lens' RebuildWorkspaces (NonEmpty RebuildRequest)
@@ -114,13 +109,14 @@ instance ToQuery RebuildWorkspaces where
         toQuery = const mempty
 
 -- | /See:/ 'rebuildWorkspacesResponse' smart constructor.
-data RebuildWorkspacesResponse =
-  RebuildWorkspacesResponse'
-    { _rwrsFailedRequests :: !(Maybe [FailedWorkspaceChangeRequest])
-    , _rwrsResponseStatus :: !Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data RebuildWorkspacesResponse = RebuildWorkspacesResponse'{_rwrsFailedRequests
+                                                            ::
+                                                            !(Maybe
+                                                                [FailedWorkspaceChangeRequest]),
+                                                            _rwrsResponseStatus
+                                                            :: !Int}
+                                   deriving (Eq, Read, Show, Data, Typeable,
+                                             Generic)
 
 -- | Creates a value of 'RebuildWorkspacesResponse' with the minimum fields required to make a request.
 --
@@ -132,10 +128,10 @@ data RebuildWorkspacesResponse =
 rebuildWorkspacesResponse
     :: Int -- ^ 'rwrsResponseStatus'
     -> RebuildWorkspacesResponse
-rebuildWorkspacesResponse pResponseStatus_ =
-  RebuildWorkspacesResponse'
-    {_rwrsFailedRequests = Nothing, _rwrsResponseStatus = pResponseStatus_}
-
+rebuildWorkspacesResponse pResponseStatus_
+  = RebuildWorkspacesResponse'{_rwrsFailedRequests =
+                                 Nothing,
+                               _rwrsResponseStatus = pResponseStatus_}
 
 -- | Information about the WorkSpace if it could not be rebuilt.
 rwrsFailedRequests :: Lens' RebuildWorkspacesResponse [FailedWorkspaceChangeRequest]

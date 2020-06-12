@@ -49,21 +49,22 @@ module Network.AWS.MigrationHub.DisassociateCreatedArtifact
 
 import Network.AWS.Lens
 import Network.AWS.MigrationHub.Types
-import Network.AWS.MigrationHub.Types.Product
 import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 
 -- | /See:/ 'disassociateCreatedArtifact' smart constructor.
-data DisassociateCreatedArtifact =
-  DisassociateCreatedArtifact'
-    { _dcaDryRun               :: !(Maybe Bool)
-    , _dcaProgressUpdateStream :: !Text
-    , _dcaMigrationTaskName    :: !Text
-    , _dcaCreatedArtifactName  :: !Text
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data DisassociateCreatedArtifact = DisassociateCreatedArtifact'{_dcaDryRun
+                                                                ::
+                                                                !(Maybe Bool),
+                                                                _dcaProgressUpdateStream
+                                                                :: !Text,
+                                                                _dcaMigrationTaskName
+                                                                :: !Text,
+                                                                _dcaCreatedArtifactName
+                                                                :: !Text}
+                                     deriving (Eq, Read, Show, Data, Typeable,
+                                               Generic)
 
 -- | Creates a value of 'DisassociateCreatedArtifact' with the minimum fields required to make a request.
 --
@@ -71,7 +72,7 @@ data DisassociateCreatedArtifact =
 --
 -- * 'dcaDryRun' - Optional boolean flag to indicate whether any effect should take place. Used to test if the caller has permission to make the call.
 --
--- * 'dcaProgressUpdateStream' - The name of the ProgressUpdateStream.
+-- * 'dcaProgressUpdateStream' - The name of the ProgressUpdateStream. 
 --
 -- * 'dcaMigrationTaskName' - Unique identifier that references the migration task to be disassociated with the artifact.
 --
@@ -81,20 +82,20 @@ disassociateCreatedArtifact
     -> Text -- ^ 'dcaMigrationTaskName'
     -> Text -- ^ 'dcaCreatedArtifactName'
     -> DisassociateCreatedArtifact
-disassociateCreatedArtifact pProgressUpdateStream_ pMigrationTaskName_ pCreatedArtifactName_ =
-  DisassociateCreatedArtifact'
-    { _dcaDryRun = Nothing
-    , _dcaProgressUpdateStream = pProgressUpdateStream_
-    , _dcaMigrationTaskName = pMigrationTaskName_
-    , _dcaCreatedArtifactName = pCreatedArtifactName_
-    }
-
+disassociateCreatedArtifact pProgressUpdateStream_
+  pMigrationTaskName_ pCreatedArtifactName_
+  = DisassociateCreatedArtifact'{_dcaDryRun = Nothing,
+                                 _dcaProgressUpdateStream =
+                                   pProgressUpdateStream_,
+                                 _dcaMigrationTaskName = pMigrationTaskName_,
+                                 _dcaCreatedArtifactName =
+                                   pCreatedArtifactName_}
 
 -- | Optional boolean flag to indicate whether any effect should take place. Used to test if the caller has permission to make the call.
 dcaDryRun :: Lens' DisassociateCreatedArtifact (Maybe Bool)
 dcaDryRun = lens _dcaDryRun (\ s a -> s{_dcaDryRun = a})
 
--- | The name of the ProgressUpdateStream.
+-- | The name of the ProgressUpdateStream. 
 dcaProgressUpdateStream :: Lens' DisassociateCreatedArtifact Text
 dcaProgressUpdateStream = lens _dcaProgressUpdateStream (\ s a -> s{_dcaProgressUpdateStream = a})
 
@@ -148,12 +149,11 @@ instance ToQuery DisassociateCreatedArtifact where
         toQuery = const mempty
 
 -- | /See:/ 'disassociateCreatedArtifactResponse' smart constructor.
-newtype DisassociateCreatedArtifactResponse =
-  DisassociateCreatedArtifactResponse'
-    { _dcarsResponseStatus :: Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+newtype DisassociateCreatedArtifactResponse = DisassociateCreatedArtifactResponse'{_dcarsResponseStatus
+                                                                                   ::
+                                                                                   Int}
+                                                deriving (Eq, Read, Show, Data,
+                                                          Typeable, Generic)
 
 -- | Creates a value of 'DisassociateCreatedArtifactResponse' with the minimum fields required to make a request.
 --
@@ -163,9 +163,9 @@ newtype DisassociateCreatedArtifactResponse =
 disassociateCreatedArtifactResponse
     :: Int -- ^ 'dcarsResponseStatus'
     -> DisassociateCreatedArtifactResponse
-disassociateCreatedArtifactResponse pResponseStatus_ =
-  DisassociateCreatedArtifactResponse' {_dcarsResponseStatus = pResponseStatus_}
-
+disassociateCreatedArtifactResponse pResponseStatus_
+  = DisassociateCreatedArtifactResponse'{_dcarsResponseStatus
+                                           = pResponseStatus_}
 
 -- | -- | The response status code.
 dcarsResponseStatus :: Lens' DisassociateCreatedArtifactResponse Int

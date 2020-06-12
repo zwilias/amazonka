@@ -43,7 +43,6 @@ module Network.AWS.GuardDuty.ListFindings
     ) where
 
 import Network.AWS.GuardDuty.Types
-import Network.AWS.GuardDuty.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Pager
 import Network.AWS.Prelude
@@ -53,16 +52,13 @@ import Network.AWS.Response
 -- | ListFindings request body.
 --
 -- /See:/ 'listFindings' smart constructor.
-data ListFindings =
-  ListFindings'
-    { _lfFindingCriteria :: !(Maybe FindingCriteria)
-    , _lfSortCriteria    :: !(Maybe SortCriteria)
-    , _lfNextToken       :: !(Maybe Text)
-    , _lfMaxResults      :: !(Maybe Nat)
-    , _lfDetectorId      :: !Text
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data ListFindings = ListFindings'{_lfFindingCriteria
+                                  :: !(Maybe FindingCriteria),
+                                  _lfSortCriteria :: !(Maybe SortCriteria),
+                                  _lfNextToken :: !(Maybe Text),
+                                  _lfMaxResults :: !(Maybe Nat),
+                                  _lfDetectorId :: !Text}
+                      deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'ListFindings' with the minimum fields required to make a request.
 --
@@ -80,15 +76,11 @@ data ListFindings =
 listFindings
     :: Text -- ^ 'lfDetectorId'
     -> ListFindings
-listFindings pDetectorId_ =
-  ListFindings'
-    { _lfFindingCriteria = Nothing
-    , _lfSortCriteria = Nothing
-    , _lfNextToken = Nothing
-    , _lfMaxResults = Nothing
-    , _lfDetectorId = pDetectorId_
-    }
-
+listFindings pDetectorId_
+  = ListFindings'{_lfFindingCriteria = Nothing,
+                  _lfSortCriteria = Nothing, _lfNextToken = Nothing,
+                  _lfMaxResults = Nothing,
+                  _lfDetectorId = pDetectorId_}
 
 -- | Represents the criteria used for querying findings.
 lfFindingCriteria :: Lens' ListFindings (Maybe FindingCriteria)
@@ -157,14 +149,12 @@ instance ToQuery ListFindings where
         toQuery = const mempty
 
 -- | /See:/ 'listFindingsResponse' smart constructor.
-data ListFindingsResponse =
-  ListFindingsResponse'
-    { _lfrsFindingIds     :: !(Maybe [Text])
-    , _lfrsNextToken      :: !(Maybe Text)
-    , _lfrsResponseStatus :: !Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data ListFindingsResponse = ListFindingsResponse'{_lfrsFindingIds
+                                                  :: !(Maybe [Text]),
+                                                  _lfrsNextToken ::
+                                                  !(Maybe Text),
+                                                  _lfrsResponseStatus :: !Int}
+                              deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'ListFindingsResponse' with the minimum fields required to make a request.
 --
@@ -178,13 +168,10 @@ data ListFindingsResponse =
 listFindingsResponse
     :: Int -- ^ 'lfrsResponseStatus'
     -> ListFindingsResponse
-listFindingsResponse pResponseStatus_ =
-  ListFindingsResponse'
-    { _lfrsFindingIds = Nothing
-    , _lfrsNextToken = Nothing
-    , _lfrsResponseStatus = pResponseStatus_
-    }
-
+listFindingsResponse pResponseStatus_
+  = ListFindingsResponse'{_lfrsFindingIds = Nothing,
+                          _lfrsNextToken = Nothing,
+                          _lfrsResponseStatus = pResponseStatus_}
 
 -- | Undocumented member.
 lfrsFindingIds :: Lens' ListFindingsResponse [Text]

@@ -42,23 +42,23 @@ module Network.AWS.DeviceFarm.CreateInstanceProfile
     ) where
 
 import Network.AWS.DeviceFarm.Types
-import Network.AWS.DeviceFarm.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 
 -- | /See:/ 'createInstanceProfile' smart constructor.
-data CreateInstanceProfile =
-  CreateInstanceProfile'
-    { _cipRebootAfterUse                :: !(Maybe Bool)
-    , _cipPackageCleanup                :: !(Maybe Bool)
-    , _cipExcludeAppPackagesFromCleanup :: !(Maybe [Text])
-    , _cipDescription                   :: !(Maybe Text)
-    , _cipName                          :: !Text
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data CreateInstanceProfile = CreateInstanceProfile'{_cipRebootAfterUse
+                                                    :: !(Maybe Bool),
+                                                    _cipPackageCleanup ::
+                                                    !(Maybe Bool),
+                                                    _cipExcludeAppPackagesFromCleanup
+                                                    :: !(Maybe [Text]),
+                                                    _cipDescription ::
+                                                    !(Maybe Text),
+                                                    _cipName :: !Text}
+                               deriving (Eq, Read, Show, Data, Typeable,
+                                         Generic)
 
 -- | Creates a value of 'CreateInstanceProfile' with the minimum fields required to make a request.
 --
@@ -76,15 +76,12 @@ data CreateInstanceProfile =
 createInstanceProfile
     :: Text -- ^ 'cipName'
     -> CreateInstanceProfile
-createInstanceProfile pName_ =
-  CreateInstanceProfile'
-    { _cipRebootAfterUse = Nothing
-    , _cipPackageCleanup = Nothing
-    , _cipExcludeAppPackagesFromCleanup = Nothing
-    , _cipDescription = Nothing
-    , _cipName = pName_
-    }
-
+createInstanceProfile pName_
+  = CreateInstanceProfile'{_cipRebootAfterUse =
+                             Nothing,
+                           _cipPackageCleanup = Nothing,
+                           _cipExcludeAppPackagesFromCleanup = Nothing,
+                           _cipDescription = Nothing, _cipName = pName_}
 
 -- | When set to @true@ , Device Farm reboots the instance after a test run. The default value is @true@ .
 cipRebootAfterUse :: Lens' CreateInstanceProfile (Maybe Bool)
@@ -148,13 +145,14 @@ instance ToQuery CreateInstanceProfile where
         toQuery = const mempty
 
 -- | /See:/ 'createInstanceProfileResponse' smart constructor.
-data CreateInstanceProfileResponse =
-  CreateInstanceProfileResponse'
-    { _ciprsInstanceProfile :: !(Maybe InstanceProfile)
-    , _ciprsResponseStatus  :: !Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data CreateInstanceProfileResponse = CreateInstanceProfileResponse'{_ciprsInstanceProfile
+                                                                    ::
+                                                                    !(Maybe
+                                                                        InstanceProfile),
+                                                                    _ciprsResponseStatus
+                                                                    :: !Int}
+                                       deriving (Eq, Read, Show, Data, Typeable,
+                                                 Generic)
 
 -- | Creates a value of 'CreateInstanceProfileResponse' with the minimum fields required to make a request.
 --
@@ -166,10 +164,10 @@ data CreateInstanceProfileResponse =
 createInstanceProfileResponse
     :: Int -- ^ 'ciprsResponseStatus'
     -> CreateInstanceProfileResponse
-createInstanceProfileResponse pResponseStatus_ =
-  CreateInstanceProfileResponse'
-    {_ciprsInstanceProfile = Nothing, _ciprsResponseStatus = pResponseStatus_}
-
+createInstanceProfileResponse pResponseStatus_
+  = CreateInstanceProfileResponse'{_ciprsInstanceProfile
+                                     = Nothing,
+                                   _ciprsResponseStatus = pResponseStatus_}
 
 -- | An object that contains information about your instance profile.
 ciprsInstanceProfile :: Lens' CreateInstanceProfileResponse (Maybe InstanceProfile)

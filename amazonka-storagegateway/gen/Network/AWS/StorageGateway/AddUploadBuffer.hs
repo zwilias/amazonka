@@ -45,16 +45,12 @@ import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 import Network.AWS.StorageGateway.Types
-import Network.AWS.StorageGateway.Types.Product
 
 -- | /See:/ 'addUploadBuffer' smart constructor.
-data AddUploadBuffer =
-  AddUploadBuffer'
-    { _aubGatewayARN :: !Text
-    , _aubDiskIds    :: ![Text]
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data AddUploadBuffer = AddUploadBuffer'{_aubGatewayARN
+                                        :: !Text,
+                                        _aubDiskIds :: ![Text]}
+                         deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'AddUploadBuffer' with the minimum fields required to make a request.
 --
@@ -66,9 +62,9 @@ data AddUploadBuffer =
 addUploadBuffer
     :: Text -- ^ 'aubGatewayARN'
     -> AddUploadBuffer
-addUploadBuffer pGatewayARN_ =
-  AddUploadBuffer' {_aubGatewayARN = pGatewayARN_, _aubDiskIds = mempty}
-
+addUploadBuffer pGatewayARN_
+  = AddUploadBuffer'{_aubGatewayARN = pGatewayARN_,
+                     _aubDiskIds = mempty}
 
 -- | Undocumented member.
 aubGatewayARN :: Lens' AddUploadBuffer Text
@@ -115,13 +111,12 @@ instance ToQuery AddUploadBuffer where
         toQuery = const mempty
 
 -- | /See:/ 'addUploadBufferResponse' smart constructor.
-data AddUploadBufferResponse =
-  AddUploadBufferResponse'
-    { _aubrsGatewayARN     :: !(Maybe Text)
-    , _aubrsResponseStatus :: !Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data AddUploadBufferResponse = AddUploadBufferResponse'{_aubrsGatewayARN
+                                                        :: !(Maybe Text),
+                                                        _aubrsResponseStatus ::
+                                                        !Int}
+                                 deriving (Eq, Read, Show, Data, Typeable,
+                                           Generic)
 
 -- | Creates a value of 'AddUploadBufferResponse' with the minimum fields required to make a request.
 --
@@ -133,10 +128,10 @@ data AddUploadBufferResponse =
 addUploadBufferResponse
     :: Int -- ^ 'aubrsResponseStatus'
     -> AddUploadBufferResponse
-addUploadBufferResponse pResponseStatus_ =
-  AddUploadBufferResponse'
-    {_aubrsGatewayARN = Nothing, _aubrsResponseStatus = pResponseStatus_}
-
+addUploadBufferResponse pResponseStatus_
+  = AddUploadBufferResponse'{_aubrsGatewayARN =
+                               Nothing,
+                             _aubrsResponseStatus = pResponseStatus_}
 
 -- | Undocumented member.
 aubrsGatewayARN :: Lens' AddUploadBufferResponse (Maybe Text)

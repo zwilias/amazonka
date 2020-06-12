@@ -45,7 +45,6 @@ module Network.AWS.Comprehend.ListEntityRecognizers
     ) where
 
 import Network.AWS.Comprehend.Types
-import Network.AWS.Comprehend.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Pager
 import Network.AWS.Prelude
@@ -53,14 +52,15 @@ import Network.AWS.Request
 import Network.AWS.Response
 
 -- | /See:/ 'listEntityRecognizers' smart constructor.
-data ListEntityRecognizers =
-  ListEntityRecognizers'
-    { _lerNextToken  :: !(Maybe Text)
-    , _lerFilter     :: !(Maybe EntityRecognizerFilter)
-    , _lerMaxResults :: !(Maybe Nat)
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data ListEntityRecognizers = ListEntityRecognizers'{_lerNextToken
+                                                    :: !(Maybe Text),
+                                                    _lerFilter ::
+                                                    !(Maybe
+                                                        EntityRecognizerFilter),
+                                                    _lerMaxResults ::
+                                                    !(Maybe Nat)}
+                               deriving (Eq, Read, Show, Data, Typeable,
+                                         Generic)
 
 -- | Creates a value of 'ListEntityRecognizers' with the minimum fields required to make a request.
 --
@@ -73,10 +73,9 @@ data ListEntityRecognizers =
 -- * 'lerMaxResults' - The maximum number of results to return on each page. The default is 100.
 listEntityRecognizers
     :: ListEntityRecognizers
-listEntityRecognizers =
-  ListEntityRecognizers'
-    {_lerNextToken = Nothing, _lerFilter = Nothing, _lerMaxResults = Nothing}
-
+listEntityRecognizers
+  = ListEntityRecognizers'{_lerNextToken = Nothing,
+                           _lerFilter = Nothing, _lerMaxResults = Nothing}
 
 -- | Identifies the next page of results to return.
 lerNextToken :: Lens' ListEntityRecognizers (Maybe Text)
@@ -139,14 +138,18 @@ instance ToQuery ListEntityRecognizers where
         toQuery = const mempty
 
 -- | /See:/ 'listEntityRecognizersResponse' smart constructor.
-data ListEntityRecognizersResponse =
-  ListEntityRecognizersResponse'
-    { _lerrsNextToken :: !(Maybe Text)
-    , _lerrsEntityRecognizerPropertiesList :: !(Maybe [EntityRecognizerProperties])
-    , _lerrsResponseStatus :: !Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data ListEntityRecognizersResponse = ListEntityRecognizersResponse'{_lerrsNextToken
+                                                                    ::
+                                                                    !(Maybe
+                                                                        Text),
+                                                                    _lerrsEntityRecognizerPropertiesList
+                                                                    ::
+                                                                    !(Maybe
+                                                                        [EntityRecognizerProperties]),
+                                                                    _lerrsResponseStatus
+                                                                    :: !Int}
+                                       deriving (Eq, Read, Show, Data, Typeable,
+                                                 Generic)
 
 -- | Creates a value of 'ListEntityRecognizersResponse' with the minimum fields required to make a request.
 --
@@ -160,13 +163,12 @@ data ListEntityRecognizersResponse =
 listEntityRecognizersResponse
     :: Int -- ^ 'lerrsResponseStatus'
     -> ListEntityRecognizersResponse
-listEntityRecognizersResponse pResponseStatus_ =
-  ListEntityRecognizersResponse'
-    { _lerrsNextToken = Nothing
-    , _lerrsEntityRecognizerPropertiesList = Nothing
-    , _lerrsResponseStatus = pResponseStatus_
-    }
-
+listEntityRecognizersResponse pResponseStatus_
+  = ListEntityRecognizersResponse'{_lerrsNextToken =
+                                     Nothing,
+                                   _lerrsEntityRecognizerPropertiesList =
+                                     Nothing,
+                                   _lerrsResponseStatus = pResponseStatus_}
 
 -- | Identifies the next page of results to return.
 lerrsNextToken :: Lens' ListEntityRecognizersResponse (Maybe Text)

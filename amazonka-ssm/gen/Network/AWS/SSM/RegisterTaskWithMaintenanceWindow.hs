@@ -55,28 +55,64 @@ import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 import Network.AWS.SSM.Types
-import Network.AWS.SSM.Types.Product
 
 -- | /See:/ 'registerTaskWithMaintenanceWindow' smart constructor.
-data RegisterTaskWithMaintenanceWindow =
-  RegisterTaskWithMaintenanceWindow'
-    { _rtwmwTaskParameters :: !(Maybe (Sensitive (Map Text (Sensitive MaintenanceWindowTaskParameterValueExpression))))
-    , _rtwmwPriority :: !(Maybe Nat)
-    , _rtwmwClientToken :: !(Maybe Text)
-    , _rtwmwTaskInvocationParameters :: !(Maybe MaintenanceWindowTaskInvocationParameters)
-    , _rtwmwName :: !(Maybe Text)
-    , _rtwmwLoggingInfo :: !(Maybe LoggingInfo)
-    , _rtwmwDescription :: !(Maybe (Sensitive Text))
-    , _rtwmwWindowId :: !Text
-    , _rtwmwTargets :: ![Target]
-    , _rtwmwTaskARN :: !Text
-    , _rtwmwServiceRoleARN :: !Text
-    , _rtwmwTaskType :: !MaintenanceWindowTaskType
-    , _rtwmwMaxConcurrency :: !Text
-    , _rtwmwMaxErrors :: !Text
-    }
-  deriving (Eq, Show, Data, Typeable, Generic)
-
+data RegisterTaskWithMaintenanceWindow = RegisterTaskWithMaintenanceWindow'{_rtwmwTaskParameters
+                                                                            ::
+                                                                            !(Maybe
+                                                                                (Sensitive
+                                                                                   (Map
+                                                                                      Text
+                                                                                      (Sensitive
+                                                                                         MaintenanceWindowTaskParameterValueExpression)))),
+                                                                            _rtwmwPriority
+                                                                            ::
+                                                                            !(Maybe
+                                                                                Nat),
+                                                                            _rtwmwClientToken
+                                                                            ::
+                                                                            !(Maybe
+                                                                                Text),
+                                                                            _rtwmwTaskInvocationParameters
+                                                                            ::
+                                                                            !(Maybe
+                                                                                MaintenanceWindowTaskInvocationParameters),
+                                                                            _rtwmwName
+                                                                            ::
+                                                                            !(Maybe
+                                                                                Text),
+                                                                            _rtwmwLoggingInfo
+                                                                            ::
+                                                                            !(Maybe
+                                                                                LoggingInfo),
+                                                                            _rtwmwDescription
+                                                                            ::
+                                                                            !(Maybe
+                                                                                (Sensitive
+                                                                                   Text)),
+                                                                            _rtwmwWindowId
+                                                                            ::
+                                                                            !Text,
+                                                                            _rtwmwTargets
+                                                                            ::
+                                                                            ![Target],
+                                                                            _rtwmwTaskARN
+                                                                            ::
+                                                                            !Text,
+                                                                            _rtwmwServiceRoleARN
+                                                                            ::
+                                                                            !Text,
+                                                                            _rtwmwTaskType
+                                                                            ::
+                                                                            !MaintenanceWindowTaskType,
+                                                                            _rtwmwMaxConcurrency
+                                                                            ::
+                                                                            !Text,
+                                                                            _rtwmwMaxErrors
+                                                                            ::
+                                                                            !Text}
+                                           deriving (Eq, Show, Data, Typeable,
+                                                     Generic)
 
 -- | Creates a value of 'RegisterTaskWithMaintenanceWindow' with the minimum fields required to make a request.
 --
@@ -88,19 +124,19 @@ data RegisterTaskWithMaintenanceWindow =
 --
 -- * 'rtwmwClientToken' - User-provided idempotency token.
 --
--- * 'rtwmwTaskInvocationParameters' - The parameters that the task should use during execution. Populate only the fields that match the task type. All other fields should be empty.
+-- * 'rtwmwTaskInvocationParameters' - The parameters that the task should use during execution. Populate only the fields that match the task type. All other fields should be empty. 
 --
 -- * 'rtwmwName' - An optional name for the task.
 --
--- * 'rtwmwLoggingInfo' - A structure containing information about an Amazon S3 bucket to write instance-level logs to.
+-- * 'rtwmwLoggingInfo' - A structure containing information about an Amazon S3 bucket to write instance-level logs to. 
 --
 -- * 'rtwmwDescription' - An optional description for the task.
 --
 -- * 'rtwmwWindowId' - The ID of the Maintenance Window the task should be added to.
 --
--- * 'rtwmwTargets' - The targets (either instances or Maintenance Window targets). Specify instances using the following format:  @Key=InstanceIds,Values=<instance-id-1>,<instance-id-2>@  Specify Maintenance Window targets using the following format: @Key=<WindowTargetIds>,Values=<window-target-id-1>,<window-target-id-2>@
+-- * 'rtwmwTargets' - The targets (either instances or Maintenance Window targets). Specify instances using the following format:  @Key=InstanceIds,Values=<instance-id-1>,<instance-id-2>@  Specify Maintenance Window targets using the following format: @Key=<WindowTargetIds>,Values=<window-target-id-1>,<window-target-id-2>@ 
 --
--- * 'rtwmwTaskARN' - The ARN of the task to execute
+-- * 'rtwmwTaskARN' - The ARN of the task to execute 
 --
 -- * 'rtwmwServiceRoleARN' - The role that should be assumed when executing the task.
 --
@@ -117,24 +153,24 @@ registerTaskWithMaintenanceWindow
     -> Text -- ^ 'rtwmwMaxConcurrency'
     -> Text -- ^ 'rtwmwMaxErrors'
     -> RegisterTaskWithMaintenanceWindow
-registerTaskWithMaintenanceWindow pWindowId_ pTaskARN_ pServiceRoleARN_ pTaskType_ pMaxConcurrency_ pMaxErrors_ =
-  RegisterTaskWithMaintenanceWindow'
-    { _rtwmwTaskParameters = Nothing
-    , _rtwmwPriority = Nothing
-    , _rtwmwClientToken = Nothing
-    , _rtwmwTaskInvocationParameters = Nothing
-    , _rtwmwName = Nothing
-    , _rtwmwLoggingInfo = Nothing
-    , _rtwmwDescription = Nothing
-    , _rtwmwWindowId = pWindowId_
-    , _rtwmwTargets = mempty
-    , _rtwmwTaskARN = pTaskARN_
-    , _rtwmwServiceRoleARN = pServiceRoleARN_
-    , _rtwmwTaskType = pTaskType_
-    , _rtwmwMaxConcurrency = pMaxConcurrency_
-    , _rtwmwMaxErrors = pMaxErrors_
-    }
-
+registerTaskWithMaintenanceWindow pWindowId_
+  pTaskARN_ pServiceRoleARN_ pTaskType_
+  pMaxConcurrency_ pMaxErrors_
+  = RegisterTaskWithMaintenanceWindow'{_rtwmwTaskParameters
+                                         = Nothing,
+                                       _rtwmwPriority = Nothing,
+                                       _rtwmwClientToken = Nothing,
+                                       _rtwmwTaskInvocationParameters = Nothing,
+                                       _rtwmwName = Nothing,
+                                       _rtwmwLoggingInfo = Nothing,
+                                       _rtwmwDescription = Nothing,
+                                       _rtwmwWindowId = pWindowId_,
+                                       _rtwmwTargets = mempty,
+                                       _rtwmwTaskARN = pTaskARN_,
+                                       _rtwmwServiceRoleARN = pServiceRoleARN_,
+                                       _rtwmwTaskType = pTaskType_,
+                                       _rtwmwMaxConcurrency = pMaxConcurrency_,
+                                       _rtwmwMaxErrors = pMaxErrors_}
 
 -- | The parameters that should be passed to the task when it is executed.
 rtwmwTaskParameters :: Lens' RegisterTaskWithMaintenanceWindow (Maybe (HashMap Text MaintenanceWindowTaskParameterValueExpression))
@@ -148,7 +184,7 @@ rtwmwPriority = lens _rtwmwPriority (\ s a -> s{_rtwmwPriority = a}) . mapping _
 rtwmwClientToken :: Lens' RegisterTaskWithMaintenanceWindow (Maybe Text)
 rtwmwClientToken = lens _rtwmwClientToken (\ s a -> s{_rtwmwClientToken = a})
 
--- | The parameters that the task should use during execution. Populate only the fields that match the task type. All other fields should be empty.
+-- | The parameters that the task should use during execution. Populate only the fields that match the task type. All other fields should be empty. 
 rtwmwTaskInvocationParameters :: Lens' RegisterTaskWithMaintenanceWindow (Maybe MaintenanceWindowTaskInvocationParameters)
 rtwmwTaskInvocationParameters = lens _rtwmwTaskInvocationParameters (\ s a -> s{_rtwmwTaskInvocationParameters = a})
 
@@ -156,7 +192,7 @@ rtwmwTaskInvocationParameters = lens _rtwmwTaskInvocationParameters (\ s a -> s{
 rtwmwName :: Lens' RegisterTaskWithMaintenanceWindow (Maybe Text)
 rtwmwName = lens _rtwmwName (\ s a -> s{_rtwmwName = a})
 
--- | A structure containing information about an Amazon S3 bucket to write instance-level logs to.
+-- | A structure containing information about an Amazon S3 bucket to write instance-level logs to. 
 rtwmwLoggingInfo :: Lens' RegisterTaskWithMaintenanceWindow (Maybe LoggingInfo)
 rtwmwLoggingInfo = lens _rtwmwLoggingInfo (\ s a -> s{_rtwmwLoggingInfo = a})
 
@@ -168,11 +204,11 @@ rtwmwDescription = lens _rtwmwDescription (\ s a -> s{_rtwmwDescription = a}) . 
 rtwmwWindowId :: Lens' RegisterTaskWithMaintenanceWindow Text
 rtwmwWindowId = lens _rtwmwWindowId (\ s a -> s{_rtwmwWindowId = a})
 
--- | The targets (either instances or Maintenance Window targets). Specify instances using the following format:  @Key=InstanceIds,Values=<instance-id-1>,<instance-id-2>@  Specify Maintenance Window targets using the following format: @Key=<WindowTargetIds>,Values=<window-target-id-1>,<window-target-id-2>@
+-- | The targets (either instances or Maintenance Window targets). Specify instances using the following format:  @Key=InstanceIds,Values=<instance-id-1>,<instance-id-2>@  Specify Maintenance Window targets using the following format: @Key=<WindowTargetIds>,Values=<window-target-id-1>,<window-target-id-2>@ 
 rtwmwTargets :: Lens' RegisterTaskWithMaintenanceWindow [Target]
 rtwmwTargets = lens _rtwmwTargets (\ s a -> s{_rtwmwTargets = a}) . _Coerce
 
--- | The ARN of the task to execute
+-- | The ARN of the task to execute 
 rtwmwTaskARN :: Lens' RegisterTaskWithMaintenanceWindow Text
 rtwmwTaskARN = lens _rtwmwTaskARN (\ s a -> s{_rtwmwTaskARN = a})
 
@@ -250,13 +286,16 @@ instance ToQuery RegisterTaskWithMaintenanceWindow
         toQuery = const mempty
 
 -- | /See:/ 'registerTaskWithMaintenanceWindowResponse' smart constructor.
-data RegisterTaskWithMaintenanceWindowResponse =
-  RegisterTaskWithMaintenanceWindowResponse'
-    { _rtwmwrsWindowTaskId   :: !(Maybe Text)
-    , _rtwmwrsResponseStatus :: !Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data RegisterTaskWithMaintenanceWindowResponse = RegisterTaskWithMaintenanceWindowResponse'{_rtwmwrsWindowTaskId
+                                                                                            ::
+                                                                                            !(Maybe
+                                                                                                Text),
+                                                                                            _rtwmwrsResponseStatus
+                                                                                            ::
+                                                                                            !Int}
+                                                   deriving (Eq, Read, Show,
+                                                             Data, Typeable,
+                                                             Generic)
 
 -- | Creates a value of 'RegisterTaskWithMaintenanceWindowResponse' with the minimum fields required to make a request.
 --
@@ -268,10 +307,12 @@ data RegisterTaskWithMaintenanceWindowResponse =
 registerTaskWithMaintenanceWindowResponse
     :: Int -- ^ 'rtwmwrsResponseStatus'
     -> RegisterTaskWithMaintenanceWindowResponse
-registerTaskWithMaintenanceWindowResponse pResponseStatus_ =
-  RegisterTaskWithMaintenanceWindowResponse'
-    {_rtwmwrsWindowTaskId = Nothing, _rtwmwrsResponseStatus = pResponseStatus_}
-
+registerTaskWithMaintenanceWindowResponse
+  pResponseStatus_
+  = RegisterTaskWithMaintenanceWindowResponse'{_rtwmwrsWindowTaskId
+                                                 = Nothing,
+                                               _rtwmwrsResponseStatus =
+                                                 pResponseStatus_}
 
 -- | The id of the task in the Maintenance Window.
 rtwmwrsWindowTaskId :: Lens' RegisterTaskWithMaintenanceWindowResponse (Maybe Text)

@@ -47,20 +47,18 @@ import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 import Network.AWS.SNS.Types
-import Network.AWS.SNS.Types.Product
 
 -- | Input for ListSubscriptionsByTopic action.
 --
 --
 --
 -- /See:/ 'listSubscriptionsByTopic' smart constructor.
-data ListSubscriptionsByTopic =
-  ListSubscriptionsByTopic'
-    { _lsbtNextToken :: !(Maybe Text)
-    , _lsbtTopicARN  :: !Text
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data ListSubscriptionsByTopic = ListSubscriptionsByTopic'{_lsbtNextToken
+                                                          :: !(Maybe Text),
+                                                          _lsbtTopicARN ::
+                                                          !Text}
+                                  deriving (Eq, Read, Show, Data, Typeable,
+                                            Generic)
 
 -- | Creates a value of 'ListSubscriptionsByTopic' with the minimum fields required to make a request.
 --
@@ -72,10 +70,9 @@ data ListSubscriptionsByTopic =
 listSubscriptionsByTopic
     :: Text -- ^ 'lsbtTopicARN'
     -> ListSubscriptionsByTopic
-listSubscriptionsByTopic pTopicARN_ =
-  ListSubscriptionsByTopic'
-    {_lsbtNextToken = Nothing, _lsbtTopicARN = pTopicARN_}
-
+listSubscriptionsByTopic pTopicARN_
+  = ListSubscriptionsByTopic'{_lsbtNextToken = Nothing,
+                              _lsbtTopicARN = pTopicARN_}
 
 -- | Token returned by the previous @ListSubscriptionsByTopic@ request.
 lsbtNextToken :: Lens' ListSubscriptionsByTopic (Maybe Text)
@@ -129,14 +126,19 @@ instance ToQuery ListSubscriptionsByTopic where
 --
 --
 -- /See:/ 'listSubscriptionsByTopicResponse' smart constructor.
-data ListSubscriptionsByTopicResponse =
-  ListSubscriptionsByTopicResponse'
-    { _lsbtrsNextToken      :: !(Maybe Text)
-    , _lsbtrsSubscriptions  :: !(Maybe [Subscription])
-    , _lsbtrsResponseStatus :: !Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data ListSubscriptionsByTopicResponse = ListSubscriptionsByTopicResponse'{_lsbtrsNextToken
+                                                                          ::
+                                                                          !(Maybe
+                                                                              Text),
+                                                                          _lsbtrsSubscriptions
+                                                                          ::
+                                                                          !(Maybe
+                                                                              [Subscription]),
+                                                                          _lsbtrsResponseStatus
+                                                                          ::
+                                                                          !Int}
+                                          deriving (Eq, Read, Show, Data,
+                                                    Typeable, Generic)
 
 -- | Creates a value of 'ListSubscriptionsByTopicResponse' with the minimum fields required to make a request.
 --
@@ -150,13 +152,11 @@ data ListSubscriptionsByTopicResponse =
 listSubscriptionsByTopicResponse
     :: Int -- ^ 'lsbtrsResponseStatus'
     -> ListSubscriptionsByTopicResponse
-listSubscriptionsByTopicResponse pResponseStatus_ =
-  ListSubscriptionsByTopicResponse'
-    { _lsbtrsNextToken = Nothing
-    , _lsbtrsSubscriptions = Nothing
-    , _lsbtrsResponseStatus = pResponseStatus_
-    }
-
+listSubscriptionsByTopicResponse pResponseStatus_
+  = ListSubscriptionsByTopicResponse'{_lsbtrsNextToken
+                                        = Nothing,
+                                      _lsbtrsSubscriptions = Nothing,
+                                      _lsbtrsResponseStatus = pResponseStatus_}
 
 -- | Token to pass along to the next @ListSubscriptionsByTopic@ request. This element is returned if there are more subscriptions to retrieve.
 lsbtrsNextToken :: Lens' ListSubscriptionsByTopicResponse (Maybe Text)

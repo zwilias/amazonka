@@ -21,7 +21,7 @@
 -- Returns information about workflow types in the specified domain. The results may be split into multiple pages that can be retrieved by making the call repeatedly.
 --
 --
--- __Access Control__
+-- __Access Control__ 
 --
 -- You can use IAM policies to control this action's access to Amazon SWF resources as follows:
 --
@@ -65,20 +65,17 @@ import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 import Network.AWS.SWF.Types
-import Network.AWS.SWF.Types.Product
 
 -- | /See:/ 'listWorkflowTypes' smart constructor.
-data ListWorkflowTypes =
-  ListWorkflowTypes'
-    { _lwtNextPageToken      :: !(Maybe Text)
-    , _lwtReverseOrder       :: !(Maybe Bool)
-    , _lwtName               :: !(Maybe Text)
-    , _lwtMaximumPageSize    :: !(Maybe Nat)
-    , _lwtDomain             :: !Text
-    , _lwtRegistrationStatus :: !RegistrationStatus
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data ListWorkflowTypes = ListWorkflowTypes'{_lwtNextPageToken
+                                            :: !(Maybe Text),
+                                            _lwtReverseOrder :: !(Maybe Bool),
+                                            _lwtName :: !(Maybe Text),
+                                            _lwtMaximumPageSize :: !(Maybe Nat),
+                                            _lwtDomain :: !Text,
+                                            _lwtRegistrationStatus ::
+                                            !RegistrationStatus}
+                           deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'ListWorkflowTypes' with the minimum fields required to make a request.
 --
@@ -99,16 +96,11 @@ listWorkflowTypes
     :: Text -- ^ 'lwtDomain'
     -> RegistrationStatus -- ^ 'lwtRegistrationStatus'
     -> ListWorkflowTypes
-listWorkflowTypes pDomain_ pRegistrationStatus_ =
-  ListWorkflowTypes'
-    { _lwtNextPageToken = Nothing
-    , _lwtReverseOrder = Nothing
-    , _lwtName = Nothing
-    , _lwtMaximumPageSize = Nothing
-    , _lwtDomain = pDomain_
-    , _lwtRegistrationStatus = pRegistrationStatus_
-    }
-
+listWorkflowTypes pDomain_ pRegistrationStatus_
+  = ListWorkflowTypes'{_lwtNextPageToken = Nothing,
+                       _lwtReverseOrder = Nothing, _lwtName = Nothing,
+                       _lwtMaximumPageSize = Nothing, _lwtDomain = pDomain_,
+                       _lwtRegistrationStatus = pRegistrationStatus_}
 
 -- | If a @NextPageToken@ was returned by a previous call, there are more results available. To retrieve the next page of results, make the call again using the returned token in @nextPageToken@ . Keep all other arguments unchanged. The configured @maximumPageSize@ determines how many results can be returned in a single call.
 lwtNextPageToken :: Lens' ListWorkflowTypes (Maybe Text)
@@ -189,14 +181,14 @@ instance ToQuery ListWorkflowTypes where
 --
 --
 -- /See:/ 'listWorkflowTypesResponse' smart constructor.
-data ListWorkflowTypesResponse =
-  ListWorkflowTypesResponse'
-    { _lwtrsNextPageToken  :: !(Maybe Text)
-    , _lwtrsResponseStatus :: !Int
-    , _lwtrsTypeInfos      :: ![WorkflowTypeInfo]
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data ListWorkflowTypesResponse = ListWorkflowTypesResponse'{_lwtrsNextPageToken
+                                                            :: !(Maybe Text),
+                                                            _lwtrsResponseStatus
+                                                            :: !Int,
+                                                            _lwtrsTypeInfos ::
+                                                            ![WorkflowTypeInfo]}
+                                   deriving (Eq, Read, Show, Data, Typeable,
+                                             Generic)
 
 -- | Creates a value of 'ListWorkflowTypesResponse' with the minimum fields required to make a request.
 --
@@ -210,13 +202,11 @@ data ListWorkflowTypesResponse =
 listWorkflowTypesResponse
     :: Int -- ^ 'lwtrsResponseStatus'
     -> ListWorkflowTypesResponse
-listWorkflowTypesResponse pResponseStatus_ =
-  ListWorkflowTypesResponse'
-    { _lwtrsNextPageToken = Nothing
-    , _lwtrsResponseStatus = pResponseStatus_
-    , _lwtrsTypeInfos = mempty
-    }
-
+listWorkflowTypesResponse pResponseStatus_
+  = ListWorkflowTypesResponse'{_lwtrsNextPageToken =
+                                 Nothing,
+                               _lwtrsResponseStatus = pResponseStatus_,
+                               _lwtrsTypeInfos = mempty}
 
 -- | If a @NextPageToken@ was returned by a previous call, there are more results available. To retrieve the next page of results, make the call again using the returned token in @nextPageToken@ . Keep all other arguments unchanged. The configured @maximumPageSize@ determines how many results can be returned in a single call.
 lwtrsNextPageToken :: Lens' ListWorkflowTypesResponse (Maybe Text)

@@ -59,7 +59,6 @@ module Network.AWS.DynamoDB.UpdateTable
     ) where
 
 import Network.AWS.DynamoDB.Types
-import Network.AWS.DynamoDB.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.Request
@@ -70,19 +69,21 @@ import Network.AWS.Response
 --
 --
 -- /See:/ 'updateTable' smart constructor.
-data UpdateTable =
-  UpdateTable'
-    { _utAttributeDefinitions        :: !(Maybe [AttributeDefinition])
-    , _utProvisionedThroughput       :: !(Maybe ProvisionedThroughput)
-    , _utSSESpecification            :: !(Maybe SSESpecification)
-    , _utReplicaUpdates              :: !(Maybe (List1 ReplicationGroupUpdate))
-    , _utGlobalSecondaryIndexUpdates :: !(Maybe [GlobalSecondaryIndexUpdate])
-    , _utBillingMode                 :: !(Maybe BillingMode)
-    , _utStreamSpecification         :: !(Maybe StreamSpecification)
-    , _utTableName                   :: !Text
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data UpdateTable = UpdateTable'{_utAttributeDefinitions
+                                :: !(Maybe [AttributeDefinition]),
+                                _utProvisionedThroughput ::
+                                !(Maybe ProvisionedThroughput),
+                                _utSSESpecification ::
+                                !(Maybe SSESpecification),
+                                _utReplicaUpdates ::
+                                !(Maybe (List1 ReplicationGroupUpdate)),
+                                _utGlobalSecondaryIndexUpdates ::
+                                !(Maybe [GlobalSecondaryIndexUpdate]),
+                                _utBillingMode :: !(Maybe BillingMode),
+                                _utStreamSpecification ::
+                                !(Maybe StreamSpecification),
+                                _utTableName :: !Text}
+                     deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'UpdateTable' with the minimum fields required to make a request.
 --
@@ -96,9 +97,9 @@ data UpdateTable =
 --
 -- * 'utReplicaUpdates' - A list of replica update actions (create, delete, or update) for the table.
 --
--- * 'utGlobalSecondaryIndexUpdates' - An array of one or more global secondary indexes for the table. For each index in the array, you can request one action:     * @Create@ - add a new global secondary index to the table.     * @Update@ - modify the provisioned throughput settings of an existing global secondary index.     * @Delete@ - remove a global secondary index from the table. You can create or delete only one global secondary index per @UpdateTable@ operation. For more information, see <https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/GSI.OnlineOps.html Managing Global Secondary Indexes> in the /Amazon DynamoDB Developer Guide/ .
+-- * 'utGlobalSecondaryIndexUpdates' - An array of one or more global secondary indexes for the table. For each index in the array, you can request one action:     * @Create@ - add a new global secondary index to the table.     * @Update@ - modify the provisioned throughput settings of an existing global secondary index.     * @Delete@ - remove a global secondary index from the table. You can create or delete only one global secondary index per @UpdateTable@ operation. For more information, see <https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/GSI.OnlineOps.html Managing Global Secondary Indexes> in the /Amazon DynamoDB Developer Guide/ . 
 --
--- * 'utBillingMode' - Controls how you are charged for read and write throughput and how you manage capacity. When switching from pay-per-request to provisioned capacity, initial provisioned capacity values must be set. The initial provisioned capacity values are estimated based on the consumed read and write capacity of your table and global secondary indexes over the past 30 minutes.     * @PROVISIONED@ - We recommend using @PROVISIONED@ for predictable workloads. @PROVISIONED@ sets the billing mode to <https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/HowItWorks.ReadWriteCapacityMode.html#HowItWorks.ProvisionedThroughput.Manual Provisioned Mode> .     * @PAY_PER_REQUEST@ - We recommend using @PAY_PER_REQUEST@ for unpredictable workloads. @PAY_PER_REQUEST@ sets the billing mode to <https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/HowItWorks.ReadWriteCapacityMode.html#HowItWorks.OnDemand On-Demand Mode> .
+-- * 'utBillingMode' - Controls how you are charged for read and write throughput and how you manage capacity. When switching from pay-per-request to provisioned capacity, initial provisioned capacity values must be set. The initial provisioned capacity values are estimated based on the consumed read and write capacity of your table and global secondary indexes over the past 30 minutes.     * @PROVISIONED@ - We recommend using @PROVISIONED@ for predictable workloads. @PROVISIONED@ sets the billing mode to <https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/HowItWorks.ReadWriteCapacityMode.html#HowItWorks.ProvisionedThroughput.Manual Provisioned Mode> .     * @PAY_PER_REQUEST@ - We recommend using @PAY_PER_REQUEST@ for unpredictable workloads. @PAY_PER_REQUEST@ sets the billing mode to <https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/HowItWorks.ReadWriteCapacityMode.html#HowItWorks.OnDemand On-Demand Mode> . 
 --
 -- * 'utStreamSpecification' - Represents the DynamoDB Streams configuration for the table.
 --
@@ -106,18 +107,15 @@ data UpdateTable =
 updateTable
     :: Text -- ^ 'utTableName'
     -> UpdateTable
-updateTable pTableName_ =
-  UpdateTable'
-    { _utAttributeDefinitions = Nothing
-    , _utProvisionedThroughput = Nothing
-    , _utSSESpecification = Nothing
-    , _utReplicaUpdates = Nothing
-    , _utGlobalSecondaryIndexUpdates = Nothing
-    , _utBillingMode = Nothing
-    , _utStreamSpecification = Nothing
-    , _utTableName = pTableName_
-    }
-
+updateTable pTableName_
+  = UpdateTable'{_utAttributeDefinitions = Nothing,
+                 _utProvisionedThroughput = Nothing,
+                 _utSSESpecification = Nothing,
+                 _utReplicaUpdates = Nothing,
+                 _utGlobalSecondaryIndexUpdates = Nothing,
+                 _utBillingMode = Nothing,
+                 _utStreamSpecification = Nothing,
+                 _utTableName = pTableName_}
 
 -- | An array of attributes that describe the key schema for the table and indexes. If you are adding a new global secondary index to the table, @AttributeDefinitions@ must include the key element(s) of the new index.
 utAttributeDefinitions :: Lens' UpdateTable [AttributeDefinition]
@@ -135,11 +133,11 @@ utSSESpecification = lens _utSSESpecification (\ s a -> s{_utSSESpecification = 
 utReplicaUpdates :: Lens' UpdateTable (Maybe (NonEmpty ReplicationGroupUpdate))
 utReplicaUpdates = lens _utReplicaUpdates (\ s a -> s{_utReplicaUpdates = a}) . mapping _List1
 
--- | An array of one or more global secondary indexes for the table. For each index in the array, you can request one action:     * @Create@ - add a new global secondary index to the table.     * @Update@ - modify the provisioned throughput settings of an existing global secondary index.     * @Delete@ - remove a global secondary index from the table. You can create or delete only one global secondary index per @UpdateTable@ operation. For more information, see <https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/GSI.OnlineOps.html Managing Global Secondary Indexes> in the /Amazon DynamoDB Developer Guide/ .
+-- | An array of one or more global secondary indexes for the table. For each index in the array, you can request one action:     * @Create@ - add a new global secondary index to the table.     * @Update@ - modify the provisioned throughput settings of an existing global secondary index.     * @Delete@ - remove a global secondary index from the table. You can create or delete only one global secondary index per @UpdateTable@ operation. For more information, see <https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/GSI.OnlineOps.html Managing Global Secondary Indexes> in the /Amazon DynamoDB Developer Guide/ . 
 utGlobalSecondaryIndexUpdates :: Lens' UpdateTable [GlobalSecondaryIndexUpdate]
 utGlobalSecondaryIndexUpdates = lens _utGlobalSecondaryIndexUpdates (\ s a -> s{_utGlobalSecondaryIndexUpdates = a}) . _Default . _Coerce
 
--- | Controls how you are charged for read and write throughput and how you manage capacity. When switching from pay-per-request to provisioned capacity, initial provisioned capacity values must be set. The initial provisioned capacity values are estimated based on the consumed read and write capacity of your table and global secondary indexes over the past 30 minutes.     * @PROVISIONED@ - We recommend using @PROVISIONED@ for predictable workloads. @PROVISIONED@ sets the billing mode to <https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/HowItWorks.ReadWriteCapacityMode.html#HowItWorks.ProvisionedThroughput.Manual Provisioned Mode> .     * @PAY_PER_REQUEST@ - We recommend using @PAY_PER_REQUEST@ for unpredictable workloads. @PAY_PER_REQUEST@ sets the billing mode to <https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/HowItWorks.ReadWriteCapacityMode.html#HowItWorks.OnDemand On-Demand Mode> .
+-- | Controls how you are charged for read and write throughput and how you manage capacity. When switching from pay-per-request to provisioned capacity, initial provisioned capacity values must be set. The initial provisioned capacity values are estimated based on the consumed read and write capacity of your table and global secondary indexes over the past 30 minutes.     * @PROVISIONED@ - We recommend using @PROVISIONED@ for predictable workloads. @PROVISIONED@ sets the billing mode to <https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/HowItWorks.ReadWriteCapacityMode.html#HowItWorks.ProvisionedThroughput.Manual Provisioned Mode> .     * @PAY_PER_REQUEST@ - We recommend using @PAY_PER_REQUEST@ for unpredictable workloads. @PAY_PER_REQUEST@ sets the billing mode to <https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/HowItWorks.ReadWriteCapacityMode.html#HowItWorks.OnDemand On-Demand Mode> . 
 utBillingMode :: Lens' UpdateTable (Maybe BillingMode)
 utBillingMode = lens _utBillingMode (\ s a -> s{_utBillingMode = a})
 
@@ -201,13 +199,10 @@ instance ToQuery UpdateTable where
 --
 --
 -- /See:/ 'updateTableResponse' smart constructor.
-data UpdateTableResponse =
-  UpdateTableResponse'
-    { _utrsTableDescription :: !(Maybe TableDescription)
-    , _utrsResponseStatus   :: !Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data UpdateTableResponse = UpdateTableResponse'{_utrsTableDescription
+                                                :: !(Maybe TableDescription),
+                                                _utrsResponseStatus :: !Int}
+                             deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'UpdateTableResponse' with the minimum fields required to make a request.
 --
@@ -219,10 +214,10 @@ data UpdateTableResponse =
 updateTableResponse
     :: Int -- ^ 'utrsResponseStatus'
     -> UpdateTableResponse
-updateTableResponse pResponseStatus_ =
-  UpdateTableResponse'
-    {_utrsTableDescription = Nothing, _utrsResponseStatus = pResponseStatus_}
-
+updateTableResponse pResponseStatus_
+  = UpdateTableResponse'{_utrsTableDescription =
+                           Nothing,
+                         _utrsResponseStatus = pResponseStatus_}
 
 -- | Represents the properties of the table.
 utrsTableDescription :: Lens' UpdateTableResponse (Maybe TableDescription)

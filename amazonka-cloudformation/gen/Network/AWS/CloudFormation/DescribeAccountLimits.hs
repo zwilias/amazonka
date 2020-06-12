@@ -39,7 +39,6 @@ module Network.AWS.CloudFormation.DescribeAccountLimits
     ) where
 
 import Network.AWS.CloudFormation.Types
-import Network.AWS.CloudFormation.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.Request
@@ -50,12 +49,10 @@ import Network.AWS.Response
 --
 --
 -- /See:/ 'describeAccountLimits' smart constructor.
-newtype DescribeAccountLimits =
-  DescribeAccountLimits'
-    { _dalNextToken :: Maybe Text
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+newtype DescribeAccountLimits = DescribeAccountLimits'{_dalNextToken
+                                                       :: Maybe Text}
+                                  deriving (Eq, Read, Show, Data, Typeable,
+                                            Generic)
 
 -- | Creates a value of 'DescribeAccountLimits' with the minimum fields required to make a request.
 --
@@ -64,8 +61,8 @@ newtype DescribeAccountLimits =
 -- * 'dalNextToken' - A string that identifies the next page of limits that you want to retrieve.
 describeAccountLimits
     :: DescribeAccountLimits
-describeAccountLimits = DescribeAccountLimits' {_dalNextToken = Nothing}
-
+describeAccountLimits
+  = DescribeAccountLimits'{_dalNextToken = Nothing}
 
 -- | A string that identifies the next page of limits that you want to retrieve.
 dalNextToken :: Lens' DescribeAccountLimits (Maybe Text)
@@ -106,14 +103,18 @@ instance ToQuery DescribeAccountLimits where
 --
 --
 -- /See:/ 'describeAccountLimitsResponse' smart constructor.
-data DescribeAccountLimitsResponse =
-  DescribeAccountLimitsResponse'
-    { _dalrsNextToken      :: !(Maybe Text)
-    , _dalrsAccountLimits  :: !(Maybe [AccountLimit])
-    , _dalrsResponseStatus :: !Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data DescribeAccountLimitsResponse = DescribeAccountLimitsResponse'{_dalrsNextToken
+                                                                    ::
+                                                                    !(Maybe
+                                                                        Text),
+                                                                    _dalrsAccountLimits
+                                                                    ::
+                                                                    !(Maybe
+                                                                        [AccountLimit]),
+                                                                    _dalrsResponseStatus
+                                                                    :: !Int}
+                                       deriving (Eq, Read, Show, Data, Typeable,
+                                                 Generic)
 
 -- | Creates a value of 'DescribeAccountLimitsResponse' with the minimum fields required to make a request.
 --
@@ -127,13 +128,11 @@ data DescribeAccountLimitsResponse =
 describeAccountLimitsResponse
     :: Int -- ^ 'dalrsResponseStatus'
     -> DescribeAccountLimitsResponse
-describeAccountLimitsResponse pResponseStatus_ =
-  DescribeAccountLimitsResponse'
-    { _dalrsNextToken = Nothing
-    , _dalrsAccountLimits = Nothing
-    , _dalrsResponseStatus = pResponseStatus_
-    }
-
+describeAccountLimitsResponse pResponseStatus_
+  = DescribeAccountLimitsResponse'{_dalrsNextToken =
+                                     Nothing,
+                                   _dalrsAccountLimits = Nothing,
+                                   _dalrsResponseStatus = pResponseStatus_}
 
 -- | If the output exceeds 1 MB in size, a string that identifies the next page of limits. If no additional page exists, this value is null.
 dalrsNextToken :: Lens' DescribeAccountLimitsResponse (Maybe Text)

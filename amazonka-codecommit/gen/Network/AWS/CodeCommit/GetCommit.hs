@@ -39,7 +39,6 @@ module Network.AWS.CodeCommit.GetCommit
     ) where
 
 import Network.AWS.CodeCommit.Types
-import Network.AWS.CodeCommit.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.Request
@@ -50,13 +49,10 @@ import Network.AWS.Response
 --
 --
 -- /See:/ 'getCommit' smart constructor.
-data GetCommit =
-  GetCommit'
-    { _gcRepositoryName :: !Text
-    , _gcCommitId       :: !Text
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data GetCommit = GetCommit'{_gcRepositoryName ::
+                            !Text,
+                            _gcCommitId :: !Text}
+                   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'GetCommit' with the minimum fields required to make a request.
 --
@@ -69,9 +65,9 @@ getCommit
     :: Text -- ^ 'gcRepositoryName'
     -> Text -- ^ 'gcCommitId'
     -> GetCommit
-getCommit pRepositoryName_ pCommitId_ =
-  GetCommit' {_gcRepositoryName = pRepositoryName_, _gcCommitId = pCommitId_}
-
+getCommit pRepositoryName_ pCommitId_
+  = GetCommit'{_gcRepositoryName = pRepositoryName_,
+               _gcCommitId = pCommitId_}
 
 -- | The name of the repository to which the commit was made.
 gcRepositoryName :: Lens' GetCommit Text
@@ -121,13 +117,10 @@ instance ToQuery GetCommit where
 --
 --
 -- /See:/ 'getCommitResponse' smart constructor.
-data GetCommitResponse =
-  GetCommitResponse'
-    { _gcrsResponseStatus :: !Int
-    , _gcrsCommit         :: !Commit
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data GetCommitResponse = GetCommitResponse'{_gcrsResponseStatus
+                                            :: !Int,
+                                            _gcrsCommit :: !Commit}
+                           deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'GetCommitResponse' with the minimum fields required to make a request.
 --
@@ -140,10 +133,10 @@ getCommitResponse
     :: Int -- ^ 'gcrsResponseStatus'
     -> Commit -- ^ 'gcrsCommit'
     -> GetCommitResponse
-getCommitResponse pResponseStatus_ pCommit_ =
-  GetCommitResponse'
-    {_gcrsResponseStatus = pResponseStatus_, _gcrsCommit = pCommit_}
-
+getCommitResponse pResponseStatus_ pCommit_
+  = GetCommitResponse'{_gcrsResponseStatus =
+                         pResponseStatus_,
+                       _gcrsCommit = pCommit_}
 
 -- | -- | The response status code.
 gcrsResponseStatus :: Lens' GetCommitResponse Int

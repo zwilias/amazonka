@@ -40,21 +40,18 @@ module Network.AWS.Glue.GetUserDefinedFunction
     ) where
 
 import Network.AWS.Glue.Types
-import Network.AWS.Glue.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 
 -- | /See:/ 'getUserDefinedFunction' smart constructor.
-data GetUserDefinedFunction =
-  GetUserDefinedFunction'
-    { _getCatalogId    :: !(Maybe Text)
-    , _getDatabaseName :: !Text
-    , _getFunctionName :: !Text
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data GetUserDefinedFunction = GetUserDefinedFunction'{_getCatalogId
+                                                      :: !(Maybe Text),
+                                                      _getDatabaseName :: !Text,
+                                                      _getFunctionName :: !Text}
+                                deriving (Eq, Read, Show, Data, Typeable,
+                                          Generic)
 
 -- | Creates a value of 'GetUserDefinedFunction' with the minimum fields required to make a request.
 --
@@ -69,13 +66,10 @@ getUserDefinedFunction
     :: Text -- ^ 'getDatabaseName'
     -> Text -- ^ 'getFunctionName'
     -> GetUserDefinedFunction
-getUserDefinedFunction pDatabaseName_ pFunctionName_ =
-  GetUserDefinedFunction'
-    { _getCatalogId = Nothing
-    , _getDatabaseName = pDatabaseName_
-    , _getFunctionName = pFunctionName_
-    }
-
+getUserDefinedFunction pDatabaseName_ pFunctionName_
+  = GetUserDefinedFunction'{_getCatalogId = Nothing,
+                            _getDatabaseName = pDatabaseName_,
+                            _getFunctionName = pFunctionName_}
 
 -- | The ID of the Data Catalog where the function to be retrieved is located. If none is supplied, the AWS account ID is used by default.
 getCatalogId :: Lens' GetUserDefinedFunction (Maybe Text)
@@ -128,13 +122,14 @@ instance ToQuery GetUserDefinedFunction where
         toQuery = const mempty
 
 -- | /See:/ 'getUserDefinedFunctionResponse' smart constructor.
-data GetUserDefinedFunctionResponse =
-  GetUserDefinedFunctionResponse'
-    { _gudfursUserDefinedFunction :: !(Maybe UserDefinedFunction)
-    , _gudfursResponseStatus      :: !Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data GetUserDefinedFunctionResponse = GetUserDefinedFunctionResponse'{_gudfursUserDefinedFunction
+                                                                      ::
+                                                                      !(Maybe
+                                                                          UserDefinedFunction),
+                                                                      _gudfursResponseStatus
+                                                                      :: !Int}
+                                        deriving (Eq, Read, Show, Data,
+                                                  Typeable, Generic)
 
 -- | Creates a value of 'GetUserDefinedFunctionResponse' with the minimum fields required to make a request.
 --
@@ -146,12 +141,10 @@ data GetUserDefinedFunctionResponse =
 getUserDefinedFunctionResponse
     :: Int -- ^ 'gudfursResponseStatus'
     -> GetUserDefinedFunctionResponse
-getUserDefinedFunctionResponse pResponseStatus_ =
-  GetUserDefinedFunctionResponse'
-    { _gudfursUserDefinedFunction = Nothing
-    , _gudfursResponseStatus = pResponseStatus_
-    }
-
+getUserDefinedFunctionResponse pResponseStatus_
+  = GetUserDefinedFunctionResponse'{_gudfursUserDefinedFunction
+                                      = Nothing,
+                                    _gudfursResponseStatus = pResponseStatus_}
 
 -- | The requested function definition.
 gudfursUserDefinedFunction :: Lens' GetUserDefinedFunctionResponse (Maybe UserDefinedFunction)

@@ -42,19 +42,14 @@ import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 import Network.AWS.SNS.Types
-import Network.AWS.SNS.Types.Product
 
 -- | Input for CreateTopic action.
 --
 --
 --
 -- /See:/ 'createTopic' smart constructor.
-newtype CreateTopic =
-  CreateTopic'
-    { _ctName :: Text
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+newtype CreateTopic = CreateTopic'{_ctName :: Text}
+                        deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'CreateTopic' with the minimum fields required to make a request.
 --
@@ -64,8 +59,7 @@ newtype CreateTopic =
 createTopic
     :: Text -- ^ 'ctName'
     -> CreateTopic
-createTopic pName_ = CreateTopic' {_ctName = pName_}
-
+createTopic pName_ = CreateTopic'{_ctName = pName_}
 
 -- | The name of the topic you want to create. Constraints: Topic names must be made up of only uppercase and lowercase ASCII letters, numbers, underscores, and hyphens, and must be between 1 and 256 characters long.
 ctName :: Lens' CreateTopic Text
@@ -102,13 +96,10 @@ instance ToQuery CreateTopic where
 --
 --
 -- /See:/ 'createTopicResponse' smart constructor.
-data CreateTopicResponse =
-  CreateTopicResponse'
-    { _ctrsTopicARN       :: !(Maybe Text)
-    , _ctrsResponseStatus :: !Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data CreateTopicResponse = CreateTopicResponse'{_ctrsTopicARN
+                                                :: !(Maybe Text),
+                                                _ctrsResponseStatus :: !Int}
+                             deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'CreateTopicResponse' with the minimum fields required to make a request.
 --
@@ -120,10 +111,9 @@ data CreateTopicResponse =
 createTopicResponse
     :: Int -- ^ 'ctrsResponseStatus'
     -> CreateTopicResponse
-createTopicResponse pResponseStatus_ =
-  CreateTopicResponse'
-    {_ctrsTopicARN = Nothing, _ctrsResponseStatus = pResponseStatus_}
-
+createTopicResponse pResponseStatus_
+  = CreateTopicResponse'{_ctrsTopicARN = Nothing,
+                         _ctrsResponseStatus = pResponseStatus_}
 
 -- | The Amazon Resource Name (ARN) assigned to the created topic.
 ctrsTopicARN :: Lens' CreateTopicResponse (Maybe Text)

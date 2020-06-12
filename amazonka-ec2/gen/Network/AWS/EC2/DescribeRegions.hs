@@ -45,22 +45,18 @@ module Network.AWS.EC2.DescribeRegions
     ) where
 
 import Network.AWS.EC2.Types
-import Network.AWS.EC2.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 
 -- | /See:/ 'describeRegions' smart constructor.
-data DescribeRegions =
-  DescribeRegions'
-    { _drsRegionNames :: !(Maybe [Text])
-    , _drsFilters     :: !(Maybe [Filter])
-    , _drsAllRegions  :: !(Maybe Bool)
-    , _drsDryRun      :: !(Maybe Bool)
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data DescribeRegions = DescribeRegions'{_drsRegionNames
+                                        :: !(Maybe [Text]),
+                                        _drsFilters :: !(Maybe [Filter]),
+                                        _drsAllRegions :: !(Maybe Bool),
+                                        _drsDryRun :: !(Maybe Bool)}
+                         deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'DescribeRegions' with the minimum fields required to make a request.
 --
@@ -75,14 +71,10 @@ data DescribeRegions =
 -- * 'drsDryRun' - Checks whether you have the required permissions for the action, without actually making the request, and provides an error response. If you have the required permissions, the error response is @DryRunOperation@ . Otherwise, it is @UnauthorizedOperation@ .
 describeRegions
     :: DescribeRegions
-describeRegions =
-  DescribeRegions'
-    { _drsRegionNames = Nothing
-    , _drsFilters = Nothing
-    , _drsAllRegions = Nothing
-    , _drsDryRun = Nothing
-    }
-
+describeRegions
+  = DescribeRegions'{_drsRegionNames = Nothing,
+                     _drsFilters = Nothing, _drsAllRegions = Nothing,
+                     _drsDryRun = Nothing}
 
 -- | The names of the Regions. You can specify any Regions, whether they are enabled and disabled for your account.
 drsRegionNames :: Lens' DescribeRegions [Text]
@@ -133,13 +125,13 @@ instance ToQuery DescribeRegions where
                "DryRun" =: _drsDryRun]
 
 -- | /See:/ 'describeRegionsResponse' smart constructor.
-data DescribeRegionsResponse =
-  DescribeRegionsResponse'
-    { _drrsRegions        :: !(Maybe [RegionInfo])
-    , _drrsResponseStatus :: !Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data DescribeRegionsResponse = DescribeRegionsResponse'{_drrsRegions
+                                                        ::
+                                                        !(Maybe [RegionInfo]),
+                                                        _drrsResponseStatus ::
+                                                        !Int}
+                                 deriving (Eq, Read, Show, Data, Typeable,
+                                           Generic)
 
 -- | Creates a value of 'DescribeRegionsResponse' with the minimum fields required to make a request.
 --
@@ -151,10 +143,9 @@ data DescribeRegionsResponse =
 describeRegionsResponse
     :: Int -- ^ 'drrsResponseStatus'
     -> DescribeRegionsResponse
-describeRegionsResponse pResponseStatus_ =
-  DescribeRegionsResponse'
-    {_drrsRegions = Nothing, _drrsResponseStatus = pResponseStatus_}
-
+describeRegionsResponse pResponseStatus_
+  = DescribeRegionsResponse'{_drrsRegions = Nothing,
+                             _drrsResponseStatus = pResponseStatus_}
 
 -- | Information about the Regions.
 drrsRegions :: Lens' DescribeRegionsResponse [RegionInfo]

@@ -40,20 +40,16 @@ module Network.AWS.EC2.DeleteVolume
     ) where
 
 import Network.AWS.EC2.Types
-import Network.AWS.EC2.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 
 -- | /See:/ 'deleteVolume' smart constructor.
-data DeleteVolume =
-  DeleteVolume'
-    { _dvvDryRun   :: !(Maybe Bool)
-    , _dvvVolumeId :: !Text
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data DeleteVolume = DeleteVolume'{_dvvDryRun ::
+                                  !(Maybe Bool),
+                                  _dvvVolumeId :: !Text}
+                      deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'DeleteVolume' with the minimum fields required to make a request.
 --
@@ -65,9 +61,9 @@ data DeleteVolume =
 deleteVolume
     :: Text -- ^ 'dvvVolumeId'
     -> DeleteVolume
-deleteVolume pVolumeId_ =
-  DeleteVolume' {_dvvDryRun = Nothing, _dvvVolumeId = pVolumeId_}
-
+deleteVolume pVolumeId_
+  = DeleteVolume'{_dvvDryRun = Nothing,
+                  _dvvVolumeId = pVolumeId_}
 
 -- | Checks whether you have the required permissions for the action, without actually making the request, and provides an error response. If you have the required permissions, the error response is @DryRunOperation@ . Otherwise, it is @UnauthorizedOperation@ .
 dvvDryRun :: Lens' DeleteVolume (Maybe Bool)
@@ -100,16 +96,13 @@ instance ToQuery DeleteVolume where
                "DryRun" =: _dvvDryRun, "VolumeId" =: _dvvVolumeId]
 
 -- | /See:/ 'deleteVolumeResponse' smart constructor.
-data DeleteVolumeResponse =
-  DeleteVolumeResponse'
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data DeleteVolumeResponse = DeleteVolumeResponse'
+                              deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'DeleteVolumeResponse' with the minimum fields required to make a request.
 --
 deleteVolumeResponse
     :: DeleteVolumeResponse
 deleteVolumeResponse = DeleteVolumeResponse'
-
 
 instance NFData DeleteVolumeResponse where

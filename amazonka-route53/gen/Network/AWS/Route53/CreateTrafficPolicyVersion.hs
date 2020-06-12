@@ -45,21 +45,19 @@ import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 import Network.AWS.Route53.Types
-import Network.AWS.Route53.Types.Product
 
 -- | A complex type that contains information about the traffic policy that you want to create a new version for.
 --
 --
 --
 -- /See:/ 'createTrafficPolicyVersion' smart constructor.
-data CreateTrafficPolicyVersion =
-  CreateTrafficPolicyVersion'
-    { _ctpvComment  :: !(Maybe Text)
-    , _ctpvId       :: !Text
-    , _ctpvDocument :: !Text
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data CreateTrafficPolicyVersion = CreateTrafficPolicyVersion'{_ctpvComment
+                                                              :: !(Maybe Text),
+                                                              _ctpvId :: !Text,
+                                                              _ctpvDocument ::
+                                                              !Text}
+                                    deriving (Eq, Read, Show, Data, Typeable,
+                                              Generic)
 
 -- | Creates a value of 'CreateTrafficPolicyVersion' with the minimum fields required to make a request.
 --
@@ -74,10 +72,9 @@ createTrafficPolicyVersion
     :: Text -- ^ 'ctpvId'
     -> Text -- ^ 'ctpvDocument'
     -> CreateTrafficPolicyVersion
-createTrafficPolicyVersion pId_ pDocument_ =
-  CreateTrafficPolicyVersion'
-    {_ctpvComment = Nothing, _ctpvId = pId_, _ctpvDocument = pDocument_}
-
+createTrafficPolicyVersion pId_ pDocument_
+  = CreateTrafficPolicyVersion'{_ctpvComment = Nothing,
+                                _ctpvId = pId_, _ctpvDocument = pDocument_}
 
 -- | The comment that you specified in the @CreateTrafficPolicyVersion@ request, if any.
 ctpvComment :: Lens' CreateTrafficPolicyVersion (Maybe Text)
@@ -133,14 +130,17 @@ instance ToXML CreateTrafficPolicyVersion where
 --
 --
 -- /See:/ 'createTrafficPolicyVersionResponse' smart constructor.
-data CreateTrafficPolicyVersionResponse =
-  CreateTrafficPolicyVersionResponse'
-    { _ctpvrsResponseStatus :: !Int
-    , _ctpvrsTrafficPolicy  :: !TrafficPolicy
-    , _ctpvrsLocation       :: !Text
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data CreateTrafficPolicyVersionResponse = CreateTrafficPolicyVersionResponse'{_ctpvrsResponseStatus
+                                                                              ::
+                                                                              !Int,
+                                                                              _ctpvrsTrafficPolicy
+                                                                              ::
+                                                                              !TrafficPolicy,
+                                                                              _ctpvrsLocation
+                                                                              ::
+                                                                              !Text}
+                                            deriving (Eq, Read, Show, Data,
+                                                      Typeable, Generic)
 
 -- | Creates a value of 'CreateTrafficPolicyVersionResponse' with the minimum fields required to make a request.
 --
@@ -156,13 +156,12 @@ createTrafficPolicyVersionResponse
     -> TrafficPolicy -- ^ 'ctpvrsTrafficPolicy'
     -> Text -- ^ 'ctpvrsLocation'
     -> CreateTrafficPolicyVersionResponse
-createTrafficPolicyVersionResponse pResponseStatus_ pTrafficPolicy_ pLocation_ =
-  CreateTrafficPolicyVersionResponse'
-    { _ctpvrsResponseStatus = pResponseStatus_
-    , _ctpvrsTrafficPolicy = pTrafficPolicy_
-    , _ctpvrsLocation = pLocation_
-    }
-
+createTrafficPolicyVersionResponse pResponseStatus_
+  pTrafficPolicy_ pLocation_
+  = CreateTrafficPolicyVersionResponse'{_ctpvrsResponseStatus
+                                          = pResponseStatus_,
+                                        _ctpvrsTrafficPolicy = pTrafficPolicy_,
+                                        _ctpvrsLocation = pLocation_}
 
 -- | -- | The response status code.
 ctpvrsResponseStatus :: Lens' CreateTrafficPolicyVersionResponse Int

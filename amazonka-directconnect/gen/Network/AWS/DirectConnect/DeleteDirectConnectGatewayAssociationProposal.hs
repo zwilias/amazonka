@@ -38,19 +38,19 @@ module Network.AWS.DirectConnect.DeleteDirectConnectGatewayAssociationProposal
     ) where
 
 import Network.AWS.DirectConnect.Types
-import Network.AWS.DirectConnect.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 
 -- | /See:/ 'deleteDirectConnectGatewayAssociationProposal' smart constructor.
-newtype DeleteDirectConnectGatewayAssociationProposal =
-  DeleteDirectConnectGatewayAssociationProposal'
-    { _ddcgapProposalId :: Text
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+newtype DeleteDirectConnectGatewayAssociationProposal = DeleteDirectConnectGatewayAssociationProposal'{_ddcgapProposalId
+                                                                                                       ::
+                                                                                                       Text}
+                                                          deriving (Eq, Read,
+                                                                    Show, Data,
+                                                                    Typeable,
+                                                                    Generic)
 
 -- | Creates a value of 'DeleteDirectConnectGatewayAssociationProposal' with the minimum fields required to make a request.
 --
@@ -60,10 +60,10 @@ newtype DeleteDirectConnectGatewayAssociationProposal =
 deleteDirectConnectGatewayAssociationProposal
     :: Text -- ^ 'ddcgapProposalId'
     -> DeleteDirectConnectGatewayAssociationProposal
-deleteDirectConnectGatewayAssociationProposal pProposalId_ =
-  DeleteDirectConnectGatewayAssociationProposal'
-    {_ddcgapProposalId = pProposalId_}
-
+deleteDirectConnectGatewayAssociationProposal
+  pProposalId_
+  = DeleteDirectConnectGatewayAssociationProposal'{_ddcgapProposalId
+                                                     = pProposalId_}
 
 -- | The ID of the proposal.
 ddcgapProposalId :: Lens' DeleteDirectConnectGatewayAssociationProposal Text
@@ -124,13 +124,19 @@ instance ToQuery
         toQuery = const mempty
 
 -- | /See:/ 'deleteDirectConnectGatewayAssociationProposalResponse' smart constructor.
-data DeleteDirectConnectGatewayAssociationProposalResponse =
-  DeleteDirectConnectGatewayAssociationProposalResponse'
-    { _ddcgaprsDirectConnectGatewayAssociationProposal :: !(Maybe DirectConnectGatewayAssociationProposal)
-    , _ddcgaprsResponseStatus :: !Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data DeleteDirectConnectGatewayAssociationProposalResponse = DeleteDirectConnectGatewayAssociationProposalResponse'{_ddcgaprsDirectConnectGatewayAssociationProposal
+                                                                                                                    ::
+                                                                                                                    !(Maybe
+                                                                                                                        DirectConnectGatewayAssociationProposal),
+                                                                                                                    _ddcgaprsResponseStatus
+                                                                                                                    ::
+                                                                                                                    !Int}
+                                                               deriving (Eq,
+                                                                         Read,
+                                                                         Show,
+                                                                         Data,
+                                                                         Typeable,
+                                                                         Generic)
 
 -- | Creates a value of 'DeleteDirectConnectGatewayAssociationProposalResponse' with the minimum fields required to make a request.
 --
@@ -142,12 +148,12 @@ data DeleteDirectConnectGatewayAssociationProposalResponse =
 deleteDirectConnectGatewayAssociationProposalResponse
     :: Int -- ^ 'ddcgaprsResponseStatus'
     -> DeleteDirectConnectGatewayAssociationProposalResponse
-deleteDirectConnectGatewayAssociationProposalResponse pResponseStatus_ =
-  DeleteDirectConnectGatewayAssociationProposalResponse'
-    { _ddcgaprsDirectConnectGatewayAssociationProposal = Nothing
-    , _ddcgaprsResponseStatus = pResponseStatus_
-    }
-
+deleteDirectConnectGatewayAssociationProposalResponse
+  pResponseStatus_
+  = DeleteDirectConnectGatewayAssociationProposalResponse'{_ddcgaprsDirectConnectGatewayAssociationProposal
+                                                             = Nothing,
+                                                           _ddcgaprsResponseStatus
+                                                             = pResponseStatus_}
 
 -- | The ID of the associated gateway.
 ddcgaprsDirectConnectGatewayAssociationProposal :: Lens' DeleteDirectConnectGatewayAssociationProposalResponse (Maybe DirectConnectGatewayAssociationProposal)

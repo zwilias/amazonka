@@ -66,8 +66,24 @@ library
         , Network.AWS.Discovery.Waiters
 
     other-modules:
-          Network.AWS.Discovery.Types.Product
-        , Network.AWS.Discovery.Types.Sum
+          Network.AWS.Discovery.Types.AgentConfigurationStatus
+        , Network.AWS.Discovery.Types.AgentInfo
+        , Network.AWS.Discovery.Types.AgentNetworkInfo
+        , Network.AWS.Discovery.Types.AgentStatus
+        , Network.AWS.Discovery.Types.ConfigurationItemType
+        , Network.AWS.Discovery.Types.ConfigurationTag
+        , Network.AWS.Discovery.Types.CustomerAgentInfo
+        , Network.AWS.Discovery.Types.CustomerConnectorInfo
+        , Network.AWS.Discovery.Types.ExportDataFormat
+        , Network.AWS.Discovery.Types.ExportFilter
+        , Network.AWS.Discovery.Types.ExportInfo
+        , Network.AWS.Discovery.Types.ExportStatus
+        , Network.AWS.Discovery.Types.Filter
+        , Network.AWS.Discovery.Types.NeighborConnectionDetail
+        , Network.AWS.Discovery.Types.OrderByElement
+        , Network.AWS.Discovery.Types.OrderString
+        , Network.AWS.Discovery.Types.Tag
+        , Network.AWS.Discovery.Types.TagFilter
 
     build-depends:
           amazonka-core == 1.6.1.*

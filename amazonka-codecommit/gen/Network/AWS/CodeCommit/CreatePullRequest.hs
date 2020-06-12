@@ -41,22 +41,18 @@ module Network.AWS.CodeCommit.CreatePullRequest
     ) where
 
 import Network.AWS.CodeCommit.Types
-import Network.AWS.CodeCommit.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 
 -- | /See:/ 'createPullRequest' smart constructor.
-data CreatePullRequest =
-  CreatePullRequest'
-    { _cprClientRequestToken :: !(Maybe Text)
-    , _cprDescription        :: !(Maybe Text)
-    , _cprTitle              :: !Text
-    , _cprTargets            :: ![Target]
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data CreatePullRequest = CreatePullRequest'{_cprClientRequestToken
+                                            :: !(Maybe Text),
+                                            _cprDescription :: !(Maybe Text),
+                                            _cprTitle :: !Text,
+                                            _cprTargets :: ![Target]}
+                           deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'CreatePullRequest' with the minimum fields required to make a request.
 --
@@ -72,14 +68,11 @@ data CreatePullRequest =
 createPullRequest
     :: Text -- ^ 'cprTitle'
     -> CreatePullRequest
-createPullRequest pTitle_ =
-  CreatePullRequest'
-    { _cprClientRequestToken = Nothing
-    , _cprDescription = Nothing
-    , _cprTitle = pTitle_
-    , _cprTargets = mempty
-    }
-
+createPullRequest pTitle_
+  = CreatePullRequest'{_cprClientRequestToken =
+                         Nothing,
+                       _cprDescription = Nothing, _cprTitle = pTitle_,
+                       _cprTargets = mempty}
 
 -- | A unique, client-generated idempotency token that, when provided in a request, ensures the request cannot be repeated with a changed parameter. If a request is received with the same parameters and a token is included, the request returns information about the initial request that used that token.
 cprClientRequestToken :: Lens' CreatePullRequest (Maybe Text)
@@ -137,13 +130,12 @@ instance ToQuery CreatePullRequest where
         toQuery = const mempty
 
 -- | /See:/ 'createPullRequestResponse' smart constructor.
-data CreatePullRequestResponse =
-  CreatePullRequestResponse'
-    { _cprrsResponseStatus :: !Int
-    , _cprrsPullRequest    :: !PullRequest
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data CreatePullRequestResponse = CreatePullRequestResponse'{_cprrsResponseStatus
+                                                            :: !Int,
+                                                            _cprrsPullRequest ::
+                                                            !PullRequest}
+                                   deriving (Eq, Read, Show, Data, Typeable,
+                                             Generic)
 
 -- | Creates a value of 'CreatePullRequestResponse' with the minimum fields required to make a request.
 --
@@ -156,10 +148,11 @@ createPullRequestResponse
     :: Int -- ^ 'cprrsResponseStatus'
     -> PullRequest -- ^ 'cprrsPullRequest'
     -> CreatePullRequestResponse
-createPullRequestResponse pResponseStatus_ pPullRequest_ =
-  CreatePullRequestResponse'
-    {_cprrsResponseStatus = pResponseStatus_, _cprrsPullRequest = pPullRequest_}
-
+createPullRequestResponse pResponseStatus_
+  pPullRequest_
+  = CreatePullRequestResponse'{_cprrsResponseStatus =
+                                 pResponseStatus_,
+                               _cprrsPullRequest = pPullRequest_}
 
 -- | -- | The response status code.
 cprrsResponseStatus :: Lens' CreatePullRequestResponse Int

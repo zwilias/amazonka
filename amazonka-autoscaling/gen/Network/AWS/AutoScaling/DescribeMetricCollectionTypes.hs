@@ -39,24 +39,22 @@ module Network.AWS.AutoScaling.DescribeMetricCollectionTypes
     ) where
 
 import Network.AWS.AutoScaling.Types
-import Network.AWS.AutoScaling.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 
 -- | /See:/ 'describeMetricCollectionTypes' smart constructor.
-data DescribeMetricCollectionTypes =
-  DescribeMetricCollectionTypes'
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data DescribeMetricCollectionTypes = DescribeMetricCollectionTypes'
+                                       deriving (Eq, Read, Show, Data, Typeable,
+                                                 Generic)
 
 -- | Creates a value of 'DescribeMetricCollectionTypes' with the minimum fields required to make a request.
 --
 describeMetricCollectionTypes
     :: DescribeMetricCollectionTypes
-describeMetricCollectionTypes = DescribeMetricCollectionTypes'
-
+describeMetricCollectionTypes
+  = DescribeMetricCollectionTypes'
 
 instance AWSRequest DescribeMetricCollectionTypes
          where
@@ -95,14 +93,19 @@ instance ToQuery DescribeMetricCollectionTypes where
                   "Version" =: ("2011-01-01" :: ByteString)])
 
 -- | /See:/ 'describeMetricCollectionTypesResponse' smart constructor.
-data DescribeMetricCollectionTypesResponse =
-  DescribeMetricCollectionTypesResponse'
-    { _dmctrsMetrics        :: !(Maybe [MetricCollectionType])
-    , _dmctrsGranularities  :: !(Maybe [MetricGranularityType])
-    , _dmctrsResponseStatus :: !Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data DescribeMetricCollectionTypesResponse = DescribeMetricCollectionTypesResponse'{_dmctrsMetrics
+                                                                                    ::
+                                                                                    !(Maybe
+                                                                                        [MetricCollectionType]),
+                                                                                    _dmctrsGranularities
+                                                                                    ::
+                                                                                    !(Maybe
+                                                                                        [MetricGranularityType]),
+                                                                                    _dmctrsResponseStatus
+                                                                                    ::
+                                                                                    !Int}
+                                               deriving (Eq, Read, Show, Data,
+                                                         Typeable, Generic)
 
 -- | Creates a value of 'DescribeMetricCollectionTypesResponse' with the minimum fields required to make a request.
 --
@@ -116,13 +119,13 @@ data DescribeMetricCollectionTypesResponse =
 describeMetricCollectionTypesResponse
     :: Int -- ^ 'dmctrsResponseStatus'
     -> DescribeMetricCollectionTypesResponse
-describeMetricCollectionTypesResponse pResponseStatus_ =
-  DescribeMetricCollectionTypesResponse'
-    { _dmctrsMetrics = Nothing
-    , _dmctrsGranularities = Nothing
-    , _dmctrsResponseStatus = pResponseStatus_
-    }
-
+describeMetricCollectionTypesResponse
+  pResponseStatus_
+  = DescribeMetricCollectionTypesResponse'{_dmctrsMetrics
+                                             = Nothing,
+                                           _dmctrsGranularities = Nothing,
+                                           _dmctrsResponseStatus =
+                                             pResponseStatus_}
 
 -- | One or more metrics.
 dmctrsMetrics :: Lens' DescribeMetricCollectionTypesResponse [MetricCollectionType]

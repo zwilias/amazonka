@@ -35,19 +35,16 @@ module Network.AWS.Greengrass.DeleteCoreDefinition
     ) where
 
 import Network.AWS.Greengrass.Types
-import Network.AWS.Greengrass.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 
 -- | /See:/ 'deleteCoreDefinition' smart constructor.
-newtype DeleteCoreDefinition =
-  DeleteCoreDefinition'
-    { _dcdCoreDefinitionId :: Text
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+newtype DeleteCoreDefinition = DeleteCoreDefinition'{_dcdCoreDefinitionId
+                                                     :: Text}
+                                 deriving (Eq, Read, Show, Data, Typeable,
+                                           Generic)
 
 -- | Creates a value of 'DeleteCoreDefinition' with the minimum fields required to make a request.
 --
@@ -57,9 +54,9 @@ newtype DeleteCoreDefinition =
 deleteCoreDefinition
     :: Text -- ^ 'dcdCoreDefinitionId'
     -> DeleteCoreDefinition
-deleteCoreDefinition pCoreDefinitionId_ =
-  DeleteCoreDefinition' {_dcdCoreDefinitionId = pCoreDefinitionId_}
-
+deleteCoreDefinition pCoreDefinitionId_
+  = DeleteCoreDefinition'{_dcdCoreDefinitionId =
+                            pCoreDefinitionId_}
 
 -- | The ID of the core definition.
 dcdCoreDefinitionId :: Lens' DeleteCoreDefinition Text
@@ -96,12 +93,10 @@ instance ToQuery DeleteCoreDefinition where
         toQuery = const mempty
 
 -- | /See:/ 'deleteCoreDefinitionResponse' smart constructor.
-newtype DeleteCoreDefinitionResponse =
-  DeleteCoreDefinitionResponse'
-    { _dcdrsResponseStatus :: Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+newtype DeleteCoreDefinitionResponse = DeleteCoreDefinitionResponse'{_dcdrsResponseStatus
+                                                                     :: Int}
+                                         deriving (Eq, Read, Show, Data,
+                                                   Typeable, Generic)
 
 -- | Creates a value of 'DeleteCoreDefinitionResponse' with the minimum fields required to make a request.
 --
@@ -111,9 +106,9 @@ newtype DeleteCoreDefinitionResponse =
 deleteCoreDefinitionResponse
     :: Int -- ^ 'dcdrsResponseStatus'
     -> DeleteCoreDefinitionResponse
-deleteCoreDefinitionResponse pResponseStatus_ =
-  DeleteCoreDefinitionResponse' {_dcdrsResponseStatus = pResponseStatus_}
-
+deleteCoreDefinitionResponse pResponseStatus_
+  = DeleteCoreDefinitionResponse'{_dcdrsResponseStatus
+                                    = pResponseStatus_}
 
 -- | -- | The response status code.
 dcdrsResponseStatus :: Lens' DeleteCoreDefinitionResponse Int

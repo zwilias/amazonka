@@ -18,18 +18,18 @@
 -- Stability   : auto-generated
 -- Portability : non-portable (GHC extensions)
 --
--- Resumes activity on a fleet that was suspended with 'StopFleetActions' . Currently, this operation is used to restart a fleet's auto-scaling activity.
+-- Resumes activity on a fleet that was suspended with 'StopFleetActions' . Currently, this operation is used to restart a fleet's auto-scaling activity. 
 --
 --
 -- To start fleet actions, specify the fleet ID and the type of actions to restart. When auto-scaling fleet actions are restarted, Amazon GameLift once again initiates scaling events as triggered by the fleet's scaling policies. If actions on the fleet were never stopped, this operation will have no effect. You can view a fleet's stopped actions using 'DescribeFleetAttributes' .
 --
 -- Operations related to fleet capacity scaling include:
 --
---     * 'DescribeFleetCapacity'
+--     * 'DescribeFleetCapacity' 
 --
---     * 'UpdateFleetCapacity'
+--     * 'UpdateFleetCapacity' 
 --
---     * 'DescribeEC2InstanceLimits'
+--     * 'DescribeEC2InstanceLimits' 
 --
 --     * Manage scaling policies:
 --
@@ -43,9 +43,9 @@
 --
 --     * Manage fleet actions:
 --
---     * 'StartFleetActions'
+--     * 'StartFleetActions' 
 --
---     * 'StopFleetActions'
+--     * 'StopFleetActions' 
 --
 --
 --
@@ -68,20 +68,16 @@ module Network.AWS.GameLift.StartFleetActions
     ) where
 
 import Network.AWS.GameLift.Types
-import Network.AWS.GameLift.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 
 -- | /See:/ 'startFleetActions' smart constructor.
-data StartFleetActions =
-  StartFleetActions'
-    { _sfaFleetId :: !Text
-    , _sfaActions :: !(List1 FleetAction)
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data StartFleetActions = StartFleetActions'{_sfaFleetId
+                                            :: !Text,
+                                            _sfaActions :: !(List1 FleetAction)}
+                           deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'StartFleetActions' with the minimum fields required to make a request.
 --
@@ -94,9 +90,9 @@ startFleetActions
     :: Text -- ^ 'sfaFleetId'
     -> NonEmpty FleetAction -- ^ 'sfaActions'
     -> StartFleetActions
-startFleetActions pFleetId_ pActions_ =
-  StartFleetActions' {_sfaFleetId = pFleetId_, _sfaActions = _List1 # pActions_}
-
+startFleetActions pFleetId_ pActions_
+  = StartFleetActions'{_sfaFleetId = pFleetId_,
+                       _sfaActions = _List1 # pActions_}
 
 -- | Unique identifier for a fleet
 sfaFleetId :: Lens' StartFleetActions Text
@@ -141,12 +137,10 @@ instance ToQuery StartFleetActions where
         toQuery = const mempty
 
 -- | /See:/ 'startFleetActionsResponse' smart constructor.
-newtype StartFleetActionsResponse =
-  StartFleetActionsResponse'
-    { _sfarsResponseStatus :: Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+newtype StartFleetActionsResponse = StartFleetActionsResponse'{_sfarsResponseStatus
+                                                               :: Int}
+                                      deriving (Eq, Read, Show, Data, Typeable,
+                                                Generic)
 
 -- | Creates a value of 'StartFleetActionsResponse' with the minimum fields required to make a request.
 --
@@ -156,9 +150,9 @@ newtype StartFleetActionsResponse =
 startFleetActionsResponse
     :: Int -- ^ 'sfarsResponseStatus'
     -> StartFleetActionsResponse
-startFleetActionsResponse pResponseStatus_ =
-  StartFleetActionsResponse' {_sfarsResponseStatus = pResponseStatus_}
-
+startFleetActionsResponse pResponseStatus_
+  = StartFleetActionsResponse'{_sfarsResponseStatus =
+                                 pResponseStatus_}
 
 -- | -- | The response status code.
 sfarsResponseStatus :: Lens' StartFleetActionsResponse Int

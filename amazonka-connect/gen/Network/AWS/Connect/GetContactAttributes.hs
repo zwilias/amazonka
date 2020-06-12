@@ -39,20 +39,16 @@ module Network.AWS.Connect.GetContactAttributes
     ) where
 
 import Network.AWS.Connect.Types
-import Network.AWS.Connect.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 
 -- | /See:/ 'getContactAttributes' smart constructor.
-data GetContactAttributes =
-  GetContactAttributes'
-    { _gcaInstanceId       :: !Text
-    , _gcaInitialContactId :: !Text
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data GetContactAttributes = GetContactAttributes'{_gcaInstanceId
+                                                  :: !Text,
+                                                  _gcaInitialContactId :: !Text}
+                              deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'GetContactAttributes' with the minimum fields required to make a request.
 --
@@ -65,10 +61,10 @@ getContactAttributes
     :: Text -- ^ 'gcaInstanceId'
     -> Text -- ^ 'gcaInitialContactId'
     -> GetContactAttributes
-getContactAttributes pInstanceId_ pInitialContactId_ =
-  GetContactAttributes'
-    {_gcaInstanceId = pInstanceId_, _gcaInitialContactId = pInitialContactId_}
-
+getContactAttributes pInstanceId_ pInitialContactId_
+  = GetContactAttributes'{_gcaInstanceId =
+                            pInstanceId_,
+                          _gcaInitialContactId = pInitialContactId_}
 
 -- | The identifier of the Amazon Connect instance.
 gcaInstanceId :: Lens' GetContactAttributes Text
@@ -110,13 +106,15 @@ instance ToQuery GetContactAttributes where
         toQuery = const mempty
 
 -- | /See:/ 'getContactAttributesResponse' smart constructor.
-data GetContactAttributesResponse =
-  GetContactAttributesResponse'
-    { _gcarsAttributes     :: !(Maybe (Map Text Text))
-    , _gcarsResponseStatus :: !Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data GetContactAttributesResponse = GetContactAttributesResponse'{_gcarsAttributes
+                                                                  ::
+                                                                  !(Maybe
+                                                                      (Map Text
+                                                                         Text)),
+                                                                  _gcarsResponseStatus
+                                                                  :: !Int}
+                                      deriving (Eq, Read, Show, Data, Typeable,
+                                                Generic)
 
 -- | Creates a value of 'GetContactAttributesResponse' with the minimum fields required to make a request.
 --
@@ -128,10 +126,10 @@ data GetContactAttributesResponse =
 getContactAttributesResponse
     :: Int -- ^ 'gcarsResponseStatus'
     -> GetContactAttributesResponse
-getContactAttributesResponse pResponseStatus_ =
-  GetContactAttributesResponse'
-    {_gcarsAttributes = Nothing, _gcarsResponseStatus = pResponseStatus_}
-
+getContactAttributesResponse pResponseStatus_
+  = GetContactAttributesResponse'{_gcarsAttributes =
+                                    Nothing,
+                                  _gcarsResponseStatus = pResponseStatus_}
 
 -- | Information about the attributes.
 gcarsAttributes :: Lens' GetContactAttributesResponse (HashMap Text Text)

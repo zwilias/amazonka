@@ -38,20 +38,18 @@ module Network.AWS.AppStream.DeleteImagePermissions
     ) where
 
 import Network.AWS.AppStream.Types
-import Network.AWS.AppStream.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 
 -- | /See:/ 'deleteImagePermissions' smart constructor.
-data DeleteImagePermissions =
-  DeleteImagePermissions'
-    { _dipName            :: !Text
-    , _dipSharedAccountId :: !Text
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data DeleteImagePermissions = DeleteImagePermissions'{_dipName
+                                                      :: !Text,
+                                                      _dipSharedAccountId ::
+                                                      !Text}
+                                deriving (Eq, Read, Show, Data, Typeable,
+                                          Generic)
 
 -- | Creates a value of 'DeleteImagePermissions' with the minimum fields required to make a request.
 --
@@ -64,10 +62,9 @@ deleteImagePermissions
     :: Text -- ^ 'dipName'
     -> Text -- ^ 'dipSharedAccountId'
     -> DeleteImagePermissions
-deleteImagePermissions pName_ pSharedAccountId_ =
-  DeleteImagePermissions'
-    {_dipName = pName_, _dipSharedAccountId = pSharedAccountId_}
-
+deleteImagePermissions pName_ pSharedAccountId_
+  = DeleteImagePermissions'{_dipName = pName_,
+                            _dipSharedAccountId = pSharedAccountId_}
 
 -- | The name of the private image.
 dipName :: Lens' DeleteImagePermissions Text
@@ -115,12 +112,10 @@ instance ToQuery DeleteImagePermissions where
         toQuery = const mempty
 
 -- | /See:/ 'deleteImagePermissionsResponse' smart constructor.
-newtype DeleteImagePermissionsResponse =
-  DeleteImagePermissionsResponse'
-    { _diprsResponseStatus :: Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+newtype DeleteImagePermissionsResponse = DeleteImagePermissionsResponse'{_diprsResponseStatus
+                                                                         :: Int}
+                                           deriving (Eq, Read, Show, Data,
+                                                     Typeable, Generic)
 
 -- | Creates a value of 'DeleteImagePermissionsResponse' with the minimum fields required to make a request.
 --
@@ -130,9 +125,9 @@ newtype DeleteImagePermissionsResponse =
 deleteImagePermissionsResponse
     :: Int -- ^ 'diprsResponseStatus'
     -> DeleteImagePermissionsResponse
-deleteImagePermissionsResponse pResponseStatus_ =
-  DeleteImagePermissionsResponse' {_diprsResponseStatus = pResponseStatus_}
-
+deleteImagePermissionsResponse pResponseStatus_
+  = DeleteImagePermissionsResponse'{_diprsResponseStatus
+                                      = pResponseStatus_}
 
 -- | -- | The response status code.
 diprsResponseStatus :: Lens' DeleteImagePermissionsResponse Int

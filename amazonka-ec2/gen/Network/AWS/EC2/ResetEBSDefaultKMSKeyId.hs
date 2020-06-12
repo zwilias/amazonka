@@ -40,19 +40,16 @@ module Network.AWS.EC2.ResetEBSDefaultKMSKeyId
     ) where
 
 import Network.AWS.EC2.Types
-import Network.AWS.EC2.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 
 -- | /See:/ 'resetEBSDefaultKMSKeyId' smart constructor.
-newtype ResetEBSDefaultKMSKeyId =
-  ResetEBSDefaultKMSKeyId'
-    { _redkkiDryRun :: Maybe Bool
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+newtype ResetEBSDefaultKMSKeyId = ResetEBSDefaultKMSKeyId'{_redkkiDryRun
+                                                           :: Maybe Bool}
+                                    deriving (Eq, Read, Show, Data, Typeable,
+                                              Generic)
 
 -- | Creates a value of 'ResetEBSDefaultKMSKeyId' with the minimum fields required to make a request.
 --
@@ -61,8 +58,8 @@ newtype ResetEBSDefaultKMSKeyId =
 -- * 'redkkiDryRun' - Checks whether you have the required permissions for the action, without actually making the request, and provides an error response. If you have the required permissions, the error response is @DryRunOperation@ . Otherwise, it is @UnauthorizedOperation@ .
 resetEBSDefaultKMSKeyId
     :: ResetEBSDefaultKMSKeyId
-resetEBSDefaultKMSKeyId = ResetEBSDefaultKMSKeyId' {_redkkiDryRun = Nothing}
-
+resetEBSDefaultKMSKeyId
+  = ResetEBSDefaultKMSKeyId'{_redkkiDryRun = Nothing}
 
 -- | Checks whether you have the required permissions for the action, without actually making the request, and provides an error response. If you have the required permissions, the error response is @DryRunOperation@ . Otherwise, it is @UnauthorizedOperation@ .
 redkkiDryRun :: Lens' ResetEBSDefaultKMSKeyId (Maybe Bool)
@@ -97,13 +94,14 @@ instance ToQuery ResetEBSDefaultKMSKeyId where
                "DryRun" =: _redkkiDryRun]
 
 -- | /See:/ 'resetEBSDefaultKMSKeyIdResponse' smart constructor.
-data ResetEBSDefaultKMSKeyIdResponse =
-  ResetEBSDefaultKMSKeyIdResponse'
-    { _redkkirsKMSKeyId       :: !(Maybe Text)
-    , _redkkirsResponseStatus :: !Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data ResetEBSDefaultKMSKeyIdResponse = ResetEBSDefaultKMSKeyIdResponse'{_redkkirsKMSKeyId
+                                                                        ::
+                                                                        !(Maybe
+                                                                            Text),
+                                                                        _redkkirsResponseStatus
+                                                                        :: !Int}
+                                         deriving (Eq, Read, Show, Data,
+                                                   Typeable, Generic)
 
 -- | Creates a value of 'ResetEBSDefaultKMSKeyIdResponse' with the minimum fields required to make a request.
 --
@@ -115,10 +113,10 @@ data ResetEBSDefaultKMSKeyIdResponse =
 resetEBSDefaultKMSKeyIdResponse
     :: Int -- ^ 'redkkirsResponseStatus'
     -> ResetEBSDefaultKMSKeyIdResponse
-resetEBSDefaultKMSKeyIdResponse pResponseStatus_ =
-  ResetEBSDefaultKMSKeyIdResponse'
-    {_redkkirsKMSKeyId = Nothing, _redkkirsResponseStatus = pResponseStatus_}
-
+resetEBSDefaultKMSKeyIdResponse pResponseStatus_
+  = ResetEBSDefaultKMSKeyIdResponse'{_redkkirsKMSKeyId
+                                       = Nothing,
+                                     _redkkirsResponseStatus = pResponseStatus_}
 
 -- | The Amazon Resource Name (ARN) of the default CMK for EBS encryption by default.
 redkkirsKMSKeyId :: Lens' ResetEBSDefaultKMSKeyIdResponse (Maybe Text)

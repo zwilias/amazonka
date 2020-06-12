@@ -18,24 +18,24 @@
 -- Stability   : auto-generated
 -- Portability : non-portable (GHC extensions)
 --
--- Updates settings for a FlexMatch matchmaking configuration. To update settings, specify the configuration name to be updated and provide the new settings.
+-- Updates settings for a FlexMatch matchmaking configuration. To update settings, specify the configuration name to be updated and provide the new settings. 
 --
 --
 -- Operations related to match configurations and rule sets include:
 --
---     * 'CreateMatchmakingConfiguration'
+--     * 'CreateMatchmakingConfiguration' 
 --
---     * 'DescribeMatchmakingConfigurations'
+--     * 'DescribeMatchmakingConfigurations' 
 --
---     * 'UpdateMatchmakingConfiguration'
+--     * 'UpdateMatchmakingConfiguration' 
 --
---     * 'DeleteMatchmakingConfiguration'
+--     * 'DeleteMatchmakingConfiguration' 
 --
---     * 'CreateMatchmakingRuleSet'
+--     * 'CreateMatchmakingRuleSet' 
 --
---     * 'DescribeMatchmakingRuleSets'
+--     * 'DescribeMatchmakingRuleSets' 
 --
---     * 'ValidateMatchmakingRuleSet'
+--     * 'ValidateMatchmakingRuleSet' 
 --
 --
 --
@@ -67,7 +67,6 @@ module Network.AWS.GameLift.UpdateMatchmakingConfiguration
     ) where
 
 import Network.AWS.GameLift.Types
-import Network.AWS.GameLift.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.Request
@@ -78,29 +77,60 @@ import Network.AWS.Response
 --
 --
 -- /See:/ 'updateMatchmakingConfiguration' smart constructor.
-data UpdateMatchmakingConfiguration =
-  UpdateMatchmakingConfiguration'
-    { _umcGameProperties           :: !(Maybe [GameProperty])
-    , _umcRuleSetName              :: !(Maybe Text)
-    , _umcAcceptanceTimeoutSeconds :: !(Maybe Nat)
-    , _umcRequestTimeoutSeconds    :: !(Maybe Nat)
-    , _umcNotificationTarget       :: !(Maybe Text)
-    , _umcGameSessionQueueARNs     :: !(Maybe [Text])
-    , _umcCustomEventData          :: !(Maybe Text)
-    , _umcAcceptanceRequired       :: !(Maybe Bool)
-    , _umcGameSessionData          :: !(Maybe Text)
-    , _umcDescription              :: !(Maybe Text)
-    , _umcAdditionalPlayerCount    :: !(Maybe Nat)
-    , _umcName                     :: !Text
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data UpdateMatchmakingConfiguration = UpdateMatchmakingConfiguration'{_umcGameProperties
+                                                                      ::
+                                                                      !(Maybe
+                                                                          [GameProperty]),
+                                                                      _umcRuleSetName
+                                                                      ::
+                                                                      !(Maybe
+                                                                          Text),
+                                                                      _umcAcceptanceTimeoutSeconds
+                                                                      ::
+                                                                      !(Maybe
+                                                                          Nat),
+                                                                      _umcRequestTimeoutSeconds
+                                                                      ::
+                                                                      !(Maybe
+                                                                          Nat),
+                                                                      _umcNotificationTarget
+                                                                      ::
+                                                                      !(Maybe
+                                                                          Text),
+                                                                      _umcGameSessionQueueARNs
+                                                                      ::
+                                                                      !(Maybe
+                                                                          [Text]),
+                                                                      _umcCustomEventData
+                                                                      ::
+                                                                      !(Maybe
+                                                                          Text),
+                                                                      _umcAcceptanceRequired
+                                                                      ::
+                                                                      !(Maybe
+                                                                          Bool),
+                                                                      _umcGameSessionData
+                                                                      ::
+                                                                      !(Maybe
+                                                                          Text),
+                                                                      _umcDescription
+                                                                      ::
+                                                                      !(Maybe
+                                                                          Text),
+                                                                      _umcAdditionalPlayerCount
+                                                                      ::
+                                                                      !(Maybe
+                                                                          Nat),
+                                                                      _umcName
+                                                                      :: !Text}
+                                        deriving (Eq, Read, Show, Data,
+                                                  Typeable, Generic)
 
 -- | Creates a value of 'UpdateMatchmakingConfiguration' with the minimum fields required to make a request.
 --
 -- Use one of the following lenses to modify other fields as desired:
 --
--- * 'umcGameProperties' - Set of custom properties for a game session, formatted as key:value pairs. These properties are passed to a game server process in the 'GameSession' object with a request to start a new game session (see <http://docs.aws.amazon.com/gamelift/latest/developerguide/gamelift-sdk-server-api.html#gamelift-sdk-server-startsession Start a Game Session> ). This information is added to the new 'GameSession' object that is created for a successful match.
+-- * 'umcGameProperties' - Set of custom properties for a game session, formatted as key:value pairs. These properties are passed to a game server process in the 'GameSession' object with a request to start a new game session (see <http://docs.aws.amazon.com/gamelift/latest/developerguide/gamelift-sdk-server-api.html#gamelift-sdk-server-startsession Start a Game Session> ). This information is added to the new 'GameSession' object that is created for a successful match. 
 --
 -- * 'umcRuleSetName' - Unique identifier for a matchmaking rule set to use with this configuration. A matchmaking configuration can only use rule sets that are defined in the same region.
 --
@@ -112,11 +142,11 @@ data UpdateMatchmakingConfiguration =
 --
 -- * 'umcGameSessionQueueARNs' - Amazon Resource Name (<http://docs.aws.amazon.com/AmazonS3/latest/dev/s3-arn-format.html ARN> ) that is assigned to a game session queue and uniquely identifies it. Format is @arn:aws:gamelift:<region>::fleet/fleet-a1234567-b8c9-0d1e-2fa3-b45c6d7e8912@ . These queues are used when placing game sessions for matches that are created with this matchmaking configuration. Queues can be located in any region.
 --
--- * 'umcCustomEventData' - Information to attached to all events related to the matchmaking configuration.
+-- * 'umcCustomEventData' - Information to attached to all events related to the matchmaking configuration. 
 --
 -- * 'umcAcceptanceRequired' - Flag that determines whether or not a match that was created with this configuration must be accepted by the matched players. To require acceptance, set to TRUE.
 --
--- * 'umcGameSessionData' - Set of custom game session properties, formatted as a single string value. This data is passed to a game server process in the 'GameSession' object with a request to start a new game session (see <http://docs.aws.amazon.com/gamelift/latest/developerguide/gamelift-sdk-server-api.html#gamelift-sdk-server-startsession Start a Game Session> ). This information is added to the new 'GameSession' object that is created for a successful match.
+-- * 'umcGameSessionData' - Set of custom game session properties, formatted as a single string value. This data is passed to a game server process in the 'GameSession' object with a request to start a new game session (see <http://docs.aws.amazon.com/gamelift/latest/developerguide/gamelift-sdk-server-api.html#gamelift-sdk-server-startsession Start a Game Session> ). This information is added to the new 'GameSession' object that is created for a successful match. 
 --
 -- * 'umcDescription' - Descriptive label that is associated with matchmaking configuration.
 --
@@ -126,24 +156,22 @@ data UpdateMatchmakingConfiguration =
 updateMatchmakingConfiguration
     :: Text -- ^ 'umcName'
     -> UpdateMatchmakingConfiguration
-updateMatchmakingConfiguration pName_ =
-  UpdateMatchmakingConfiguration'
-    { _umcGameProperties = Nothing
-    , _umcRuleSetName = Nothing
-    , _umcAcceptanceTimeoutSeconds = Nothing
-    , _umcRequestTimeoutSeconds = Nothing
-    , _umcNotificationTarget = Nothing
-    , _umcGameSessionQueueARNs = Nothing
-    , _umcCustomEventData = Nothing
-    , _umcAcceptanceRequired = Nothing
-    , _umcGameSessionData = Nothing
-    , _umcDescription = Nothing
-    , _umcAdditionalPlayerCount = Nothing
-    , _umcName = pName_
-    }
+updateMatchmakingConfiguration pName_
+  = UpdateMatchmakingConfiguration'{_umcGameProperties
+                                      = Nothing,
+                                    _umcRuleSetName = Nothing,
+                                    _umcAcceptanceTimeoutSeconds = Nothing,
+                                    _umcRequestTimeoutSeconds = Nothing,
+                                    _umcNotificationTarget = Nothing,
+                                    _umcGameSessionQueueARNs = Nothing,
+                                    _umcCustomEventData = Nothing,
+                                    _umcAcceptanceRequired = Nothing,
+                                    _umcGameSessionData = Nothing,
+                                    _umcDescription = Nothing,
+                                    _umcAdditionalPlayerCount = Nothing,
+                                    _umcName = pName_}
 
-
--- | Set of custom properties for a game session, formatted as key:value pairs. These properties are passed to a game server process in the 'GameSession' object with a request to start a new game session (see <http://docs.aws.amazon.com/gamelift/latest/developerguide/gamelift-sdk-server-api.html#gamelift-sdk-server-startsession Start a Game Session> ). This information is added to the new 'GameSession' object that is created for a successful match.
+-- | Set of custom properties for a game session, formatted as key:value pairs. These properties are passed to a game server process in the 'GameSession' object with a request to start a new game session (see <http://docs.aws.amazon.com/gamelift/latest/developerguide/gamelift-sdk-server-api.html#gamelift-sdk-server-startsession Start a Game Session> ). This information is added to the new 'GameSession' object that is created for a successful match. 
 umcGameProperties :: Lens' UpdateMatchmakingConfiguration [GameProperty]
 umcGameProperties = lens _umcGameProperties (\ s a -> s{_umcGameProperties = a}) . _Default . _Coerce
 
@@ -167,7 +195,7 @@ umcNotificationTarget = lens _umcNotificationTarget (\ s a -> s{_umcNotification
 umcGameSessionQueueARNs :: Lens' UpdateMatchmakingConfiguration [Text]
 umcGameSessionQueueARNs = lens _umcGameSessionQueueARNs (\ s a -> s{_umcGameSessionQueueARNs = a}) . _Default . _Coerce
 
--- | Information to attached to all events related to the matchmaking configuration.
+-- | Information to attached to all events related to the matchmaking configuration. 
 umcCustomEventData :: Lens' UpdateMatchmakingConfiguration (Maybe Text)
 umcCustomEventData = lens _umcCustomEventData (\ s a -> s{_umcCustomEventData = a})
 
@@ -175,7 +203,7 @@ umcCustomEventData = lens _umcCustomEventData (\ s a -> s{_umcCustomEventData = 
 umcAcceptanceRequired :: Lens' UpdateMatchmakingConfiguration (Maybe Bool)
 umcAcceptanceRequired = lens _umcAcceptanceRequired (\ s a -> s{_umcAcceptanceRequired = a})
 
--- | Set of custom game session properties, formatted as a single string value. This data is passed to a game server process in the 'GameSession' object with a request to start a new game session (see <http://docs.aws.amazon.com/gamelift/latest/developerguide/gamelift-sdk-server-api.html#gamelift-sdk-server-startsession Start a Game Session> ). This information is added to the new 'GameSession' object that is created for a successful match.
+-- | Set of custom game session properties, formatted as a single string value. This data is passed to a game server process in the 'GameSession' object with a request to start a new game session (see <http://docs.aws.amazon.com/gamelift/latest/developerguide/gamelift-sdk-server-api.html#gamelift-sdk-server-startsession Start a Game Session> ). This information is added to the new 'GameSession' object that is created for a successful match. 
 umcGameSessionData :: Lens' UpdateMatchmakingConfiguration (Maybe Text)
 umcGameSessionData = lens _umcGameSessionData (\ s a -> s{_umcGameSessionData = a})
 
@@ -250,13 +278,15 @@ instance ToQuery UpdateMatchmakingConfiguration where
 --
 --
 -- /See:/ 'updateMatchmakingConfigurationResponse' smart constructor.
-data UpdateMatchmakingConfigurationResponse =
-  UpdateMatchmakingConfigurationResponse'
-    { _umcrsConfiguration  :: !(Maybe MatchmakingConfiguration)
-    , _umcrsResponseStatus :: !Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data UpdateMatchmakingConfigurationResponse = UpdateMatchmakingConfigurationResponse'{_umcrsConfiguration
+                                                                                      ::
+                                                                                      !(Maybe
+                                                                                          MatchmakingConfiguration),
+                                                                                      _umcrsResponseStatus
+                                                                                      ::
+                                                                                      !Int}
+                                                deriving (Eq, Read, Show, Data,
+                                                          Typeable, Generic)
 
 -- | Creates a value of 'UpdateMatchmakingConfigurationResponse' with the minimum fields required to make a request.
 --
@@ -268,10 +298,12 @@ data UpdateMatchmakingConfigurationResponse =
 updateMatchmakingConfigurationResponse
     :: Int -- ^ 'umcrsResponseStatus'
     -> UpdateMatchmakingConfigurationResponse
-updateMatchmakingConfigurationResponse pResponseStatus_ =
-  UpdateMatchmakingConfigurationResponse'
-    {_umcrsConfiguration = Nothing, _umcrsResponseStatus = pResponseStatus_}
-
+updateMatchmakingConfigurationResponse
+  pResponseStatus_
+  = UpdateMatchmakingConfigurationResponse'{_umcrsConfiguration
+                                              = Nothing,
+                                            _umcrsResponseStatus =
+                                              pResponseStatus_}
 
 -- | Object that describes the updated matchmaking configuration.
 umcrsConfiguration :: Lens' UpdateMatchmakingConfigurationResponse (Maybe MatchmakingConfiguration)

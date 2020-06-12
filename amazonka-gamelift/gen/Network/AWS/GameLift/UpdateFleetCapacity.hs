@@ -27,47 +27,47 @@
 --
 -- Fleet-related operations include:
 --
---     * 'CreateFleet'
+--     * 'CreateFleet' 
 --
---     * 'ListFleets'
+--     * 'ListFleets' 
 --
---     * 'DeleteFleet'
+--     * 'DeleteFleet' 
 --
 --     * Describe fleets:
 --
---     * 'DescribeFleetAttributes'
+--     * 'DescribeFleetAttributes' 
 --
---     * 'DescribeFleetCapacity'
+--     * 'DescribeFleetCapacity' 
 --
---     * 'DescribeFleetPortSettings'
+--     * 'DescribeFleetPortSettings' 
 --
---     * 'DescribeFleetUtilization'
+--     * 'DescribeFleetUtilization' 
 --
---     * 'DescribeRuntimeConfiguration'
+--     * 'DescribeRuntimeConfiguration' 
 --
---     * 'DescribeEC2InstanceLimits'
+--     * 'DescribeEC2InstanceLimits' 
 --
---     * 'DescribeFleetEvents'
+--     * 'DescribeFleetEvents' 
 --
 --
 --
 --     * Update fleets:
 --
---     * 'UpdateFleetAttributes'
+--     * 'UpdateFleetAttributes' 
 --
---     * 'UpdateFleetCapacity'
+--     * 'UpdateFleetCapacity' 
 --
---     * 'UpdateFleetPortSettings'
+--     * 'UpdateFleetPortSettings' 
 --
---     * 'UpdateRuntimeConfiguration'
+--     * 'UpdateRuntimeConfiguration' 
 --
 --
 --
 --     * Manage fleet actions:
 --
---     * 'StartFleetActions'
+--     * 'StartFleetActions' 
 --
---     * 'StopFleetActions'
+--     * 'StopFleetActions' 
 --
 --
 --
@@ -93,7 +93,6 @@ module Network.AWS.GameLift.UpdateFleetCapacity
     ) where
 
 import Network.AWS.GameLift.Types
-import Network.AWS.GameLift.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.Request
@@ -104,15 +103,13 @@ import Network.AWS.Response
 --
 --
 -- /See:/ 'updateFleetCapacity' smart constructor.
-data UpdateFleetCapacity =
-  UpdateFleetCapacity'
-    { _ufcMaxSize          :: !(Maybe Nat)
-    , _ufcMinSize          :: !(Maybe Nat)
-    , _ufcDesiredInstances :: !(Maybe Nat)
-    , _ufcFleetId          :: !Text
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data UpdateFleetCapacity = UpdateFleetCapacity'{_ufcMaxSize
+                                                :: !(Maybe Nat),
+                                                _ufcMinSize :: !(Maybe Nat),
+                                                _ufcDesiredInstances ::
+                                                !(Maybe Nat),
+                                                _ufcFleetId :: !Text}
+                             deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'UpdateFleetCapacity' with the minimum fields required to make a request.
 --
@@ -128,14 +125,11 @@ data UpdateFleetCapacity =
 updateFleetCapacity
     :: Text -- ^ 'ufcFleetId'
     -> UpdateFleetCapacity
-updateFleetCapacity pFleetId_ =
-  UpdateFleetCapacity'
-    { _ufcMaxSize = Nothing
-    , _ufcMinSize = Nothing
-    , _ufcDesiredInstances = Nothing
-    , _ufcFleetId = pFleetId_
-    }
-
+updateFleetCapacity pFleetId_
+  = UpdateFleetCapacity'{_ufcMaxSize = Nothing,
+                         _ufcMinSize = Nothing,
+                         _ufcDesiredInstances = Nothing,
+                         _ufcFleetId = pFleetId_}
 
 -- | Maximum value allowed for the fleet's instance count. Default if not set is 1.
 ufcMaxSize :: Lens' UpdateFleetCapacity (Maybe Natural)
@@ -196,13 +190,13 @@ instance ToQuery UpdateFleetCapacity where
 --
 --
 -- /See:/ 'updateFleetCapacityResponse' smart constructor.
-data UpdateFleetCapacityResponse =
-  UpdateFleetCapacityResponse'
-    { _ufcrsFleetId        :: !(Maybe Text)
-    , _ufcrsResponseStatus :: !Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data UpdateFleetCapacityResponse = UpdateFleetCapacityResponse'{_ufcrsFleetId
+                                                                ::
+                                                                !(Maybe Text),
+                                                                _ufcrsResponseStatus
+                                                                :: !Int}
+                                     deriving (Eq, Read, Show, Data, Typeable,
+                                               Generic)
 
 -- | Creates a value of 'UpdateFleetCapacityResponse' with the minimum fields required to make a request.
 --
@@ -214,10 +208,10 @@ data UpdateFleetCapacityResponse =
 updateFleetCapacityResponse
     :: Int -- ^ 'ufcrsResponseStatus'
     -> UpdateFleetCapacityResponse
-updateFleetCapacityResponse pResponseStatus_ =
-  UpdateFleetCapacityResponse'
-    {_ufcrsFleetId = Nothing, _ufcrsResponseStatus = pResponseStatus_}
-
+updateFleetCapacityResponse pResponseStatus_
+  = UpdateFleetCapacityResponse'{_ufcrsFleetId =
+                                   Nothing,
+                                 _ufcrsResponseStatus = pResponseStatus_}
 
 -- | Unique identifier for a fleet that was updated.
 ufcrsFleetId :: Lens' UpdateFleetCapacityResponse (Maybe Text)

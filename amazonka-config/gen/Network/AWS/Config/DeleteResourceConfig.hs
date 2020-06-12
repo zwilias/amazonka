@@ -18,7 +18,7 @@
 -- Stability   : auto-generated
 -- Portability : non-portable (GHC extensions)
 --
--- Records the configuration state for a custom resource that has been deleted. This API records a new ConfigurationItem with a ResourceDeleted status. You can retrieve the ConfigurationItems recorded for this resource in your AWS Config History.
+-- Records the configuration state for a custom resource that has been deleted. This API records a new ConfigurationItem with a ResourceDeleted status. You can retrieve the ConfigurationItems recorded for this resource in your AWS Config History. 
 --
 --
 module Network.AWS.Config.DeleteResourceConfig
@@ -36,20 +36,16 @@ module Network.AWS.Config.DeleteResourceConfig
     ) where
 
 import Network.AWS.Config.Types
-import Network.AWS.Config.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 
 -- | /See:/ 'deleteResourceConfig' smart constructor.
-data DeleteResourceConfig =
-  DeleteResourceConfig'
-    { _drcResourceType :: !Text
-    , _drcResourceId   :: !Text
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data DeleteResourceConfig = DeleteResourceConfig'{_drcResourceType
+                                                  :: !Text,
+                                                  _drcResourceId :: !Text}
+                              deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'DeleteResourceConfig' with the minimum fields required to make a request.
 --
@@ -62,10 +58,10 @@ deleteResourceConfig
     :: Text -- ^ 'drcResourceType'
     -> Text -- ^ 'drcResourceId'
     -> DeleteResourceConfig
-deleteResourceConfig pResourceType_ pResourceId_ =
-  DeleteResourceConfig'
-    {_drcResourceType = pResourceType_, _drcResourceId = pResourceId_}
-
+deleteResourceConfig pResourceType_ pResourceId_
+  = DeleteResourceConfig'{_drcResourceType =
+                            pResourceType_,
+                          _drcResourceId = pResourceId_}
 
 -- | The type of the resource.
 drcResourceType :: Lens' DeleteResourceConfig Text
@@ -109,16 +105,15 @@ instance ToQuery DeleteResourceConfig where
         toQuery = const mempty
 
 -- | /See:/ 'deleteResourceConfigResponse' smart constructor.
-data DeleteResourceConfigResponse =
-  DeleteResourceConfigResponse'
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data DeleteResourceConfigResponse = DeleteResourceConfigResponse'
+                                      deriving (Eq, Read, Show, Data, Typeable,
+                                                Generic)
 
 -- | Creates a value of 'DeleteResourceConfigResponse' with the minimum fields required to make a request.
 --
 deleteResourceConfigResponse
     :: DeleteResourceConfigResponse
-deleteResourceConfigResponse = DeleteResourceConfigResponse'
-
+deleteResourceConfigResponse
+  = DeleteResourceConfigResponse'
 
 instance NFData DeleteResourceConfigResponse where

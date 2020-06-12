@@ -40,26 +40,25 @@ module Network.AWS.APIGateway.ImportDocumentationParts
     ) where
 
 import Network.AWS.APIGateway.Types
-import Network.AWS.APIGateway.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 
--- | Import documentation parts from an external (e.g., OpenAPI) definition file.
+-- | Import documentation parts from an external (e.g., OpenAPI) definition file. 
 --
 --
 --
 -- /See:/ 'importDocumentationParts' smart constructor.
-data ImportDocumentationParts =
-  ImportDocumentationParts'
-    { _idpMode           :: !(Maybe PutMode)
-    , _idpFailOnWarnings :: !(Maybe Bool)
-    , _idpRestAPIId      :: !Text
-    , _idpBody           :: !ByteString
-    }
-  deriving (Eq, Show, Data, Typeable, Generic)
-
+data ImportDocumentationParts = ImportDocumentationParts'{_idpMode
+                                                          :: !(Maybe PutMode),
+                                                          _idpFailOnWarnings ::
+                                                          !(Maybe Bool),
+                                                          _idpRestAPIId ::
+                                                          !Text,
+                                                          _idpBody ::
+                                                          !ByteString}
+                                  deriving (Eq, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'ImportDocumentationParts' with the minimum fields required to make a request.
 --
@@ -76,14 +75,10 @@ importDocumentationParts
     :: Text -- ^ 'idpRestAPIId'
     -> ByteString -- ^ 'idpBody'
     -> ImportDocumentationParts
-importDocumentationParts pRestAPIId_ pBody_ =
-  ImportDocumentationParts'
-    { _idpMode = Nothing
-    , _idpFailOnWarnings = Nothing
-    , _idpRestAPIId = pRestAPIId_
-    , _idpBody = pBody_
-    }
-
+importDocumentationParts pRestAPIId_ pBody_
+  = ImportDocumentationParts'{_idpMode = Nothing,
+                              _idpFailOnWarnings = Nothing,
+                              _idpRestAPIId = pRestAPIId_, _idpBody = pBody_}
 
 -- | A query parameter to indicate whether to overwrite (@OVERWRITE@ ) any existing 'DocumentationParts' definition or to merge (@MERGE@ ) the new definition into the existing one. The default value is @MERGE@ .
 idpMode :: Lens' ImportDocumentationParts (Maybe PutMode)
@@ -141,17 +136,22 @@ instance ToQuery ImportDocumentationParts where
 -- | A collection of the imported 'DocumentationPart' identifiers.
 --
 --
--- This is used to return the result when documentation parts in an external (e.g., OpenAPI) file are imported into API Gateway<https://docs.aws.amazon.com/apigateway/latest/developerguide/api-gateway-documenting-api.html Documenting an API> , <https://docs.aws.amazon.com/apigateway/api-reference/link-relation/documentationpart-import/ documentationpart:import> , 'DocumentationPart'
+-- This is used to return the result when documentation parts in an external (e.g., OpenAPI) file are imported into API Gateway<https://docs.aws.amazon.com/apigateway/latest/developerguide/api-gateway-documenting-api.html Documenting an API> , <https://docs.aws.amazon.com/apigateway/api-reference/link-relation/documentationpart-import/ documentationpart:import> , 'DocumentationPart' 
 --
 -- /See:/ 'importDocumentationPartsResponse' smart constructor.
-data ImportDocumentationPartsResponse =
-  ImportDocumentationPartsResponse'
-    { _idprsIds            :: !(Maybe [Text])
-    , _idprsWarnings       :: !(Maybe [Text])
-    , _idprsResponseStatus :: !Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data ImportDocumentationPartsResponse = ImportDocumentationPartsResponse'{_idprsIds
+                                                                          ::
+                                                                          !(Maybe
+                                                                              [Text]),
+                                                                          _idprsWarnings
+                                                                          ::
+                                                                          !(Maybe
+                                                                              [Text]),
+                                                                          _idprsResponseStatus
+                                                                          ::
+                                                                          !Int}
+                                          deriving (Eq, Read, Show, Data,
+                                                    Typeable, Generic)
 
 -- | Creates a value of 'ImportDocumentationPartsResponse' with the minimum fields required to make a request.
 --
@@ -165,13 +165,11 @@ data ImportDocumentationPartsResponse =
 importDocumentationPartsResponse
     :: Int -- ^ 'idprsResponseStatus'
     -> ImportDocumentationPartsResponse
-importDocumentationPartsResponse pResponseStatus_ =
-  ImportDocumentationPartsResponse'
-    { _idprsIds = Nothing
-    , _idprsWarnings = Nothing
-    , _idprsResponseStatus = pResponseStatus_
-    }
-
+importDocumentationPartsResponse pResponseStatus_
+  = ImportDocumentationPartsResponse'{_idprsIds =
+                                        Nothing,
+                                      _idprsWarnings = Nothing,
+                                      _idprsResponseStatus = pResponseStatus_}
 
 -- | A list of the returned documentation part identifiers.
 idprsIds :: Lens' ImportDocumentationPartsResponse [Text]

@@ -96,97 +96,97 @@ module Network.AWS.WorkMail
     -- * Operations
     -- $operations
 
-    -- ** UpdatePrimaryEmailAddress
+    -- ** UpdatePrimaryEmailAddress 
     , module Network.AWS.WorkMail.UpdatePrimaryEmailAddress
 
-    -- ** DescribeResource
+    -- ** DescribeResource 
     , module Network.AWS.WorkMail.DescribeResource
 
-    -- ** CreateAlias
+    -- ** CreateAlias 
     , module Network.AWS.WorkMail.CreateAlias
 
-    -- ** ResetPassword
+    -- ** ResetPassword 
     , module Network.AWS.WorkMail.ResetPassword
 
-    -- ** DescribeGroup
+    -- ** DescribeGroup 
     , module Network.AWS.WorkMail.DescribeGroup
 
-    -- ** RegisterToWorkMail
+    -- ** RegisterToWorkMail 
     , module Network.AWS.WorkMail.RegisterToWorkMail
 
     -- ** ListAliases (Paginated)
     , module Network.AWS.WorkMail.ListAliases
 
-    -- ** PutMailboxPermissions
+    -- ** PutMailboxPermissions 
     , module Network.AWS.WorkMail.PutMailboxPermissions
 
-    -- ** DeleteMailboxPermissions
+    -- ** DeleteMailboxPermissions 
     , module Network.AWS.WorkMail.DeleteMailboxPermissions
 
     -- ** ListUsers (Paginated)
     , module Network.AWS.WorkMail.ListUsers
 
-    -- ** AssociateMemberToGroup
+    -- ** AssociateMemberToGroup 
     , module Network.AWS.WorkMail.AssociateMemberToGroup
 
-    -- ** DeleteResource
+    -- ** DeleteResource 
     , module Network.AWS.WorkMail.DeleteResource
 
-    -- ** UpdateResource
+    -- ** UpdateResource 
     , module Network.AWS.WorkMail.UpdateResource
 
-    -- ** DisassociateMemberFromGroup
+    -- ** DisassociateMemberFromGroup 
     , module Network.AWS.WorkMail.DisassociateMemberFromGroup
 
     -- ** ListResources (Paginated)
     , module Network.AWS.WorkMail.ListResources
 
-    -- ** DeregisterFromWorkMail
+    -- ** DeregisterFromWorkMail 
     , module Network.AWS.WorkMail.DeregisterFromWorkMail
 
-    -- ** ListMailboxPermissions
+    -- ** ListMailboxPermissions 
     , module Network.AWS.WorkMail.ListMailboxPermissions
 
     -- ** ListGroupMembers (Paginated)
     , module Network.AWS.WorkMail.ListGroupMembers
 
-    -- ** DisassociateDelegateFromResource
+    -- ** DisassociateDelegateFromResource 
     , module Network.AWS.WorkMail.DisassociateDelegateFromResource
 
-    -- ** ListResourceDelegates
+    -- ** ListResourceDelegates 
     , module Network.AWS.WorkMail.ListResourceDelegates
 
-    -- ** DescribeUser
+    -- ** DescribeUser 
     , module Network.AWS.WorkMail.DescribeUser
 
-    -- ** DeleteAlias
+    -- ** DeleteAlias 
     , module Network.AWS.WorkMail.DeleteAlias
 
     -- ** ListOrganizations (Paginated)
     , module Network.AWS.WorkMail.ListOrganizations
 
-    -- ** AssociateDelegateToResource
+    -- ** AssociateDelegateToResource 
     , module Network.AWS.WorkMail.AssociateDelegateToResource
 
-    -- ** CreateUser
+    -- ** CreateUser 
     , module Network.AWS.WorkMail.CreateUser
 
-    -- ** DeleteUser
+    -- ** DeleteUser 
     , module Network.AWS.WorkMail.DeleteUser
 
-    -- ** CreateGroup
+    -- ** CreateGroup 
     , module Network.AWS.WorkMail.CreateGroup
 
-    -- ** DeleteGroup
+    -- ** DeleteGroup 
     , module Network.AWS.WorkMail.DeleteGroup
 
     -- ** ListGroups (Paginated)
     , module Network.AWS.WorkMail.ListGroups
 
-    -- ** DescribeOrganization
+    -- ** DescribeOrganization 
     , module Network.AWS.WorkMail.DescribeOrganization
 
-    -- ** CreateResource
+    -- ** CreateResource 
     , module Network.AWS.WorkMail.CreateResource
 
     -- * Types

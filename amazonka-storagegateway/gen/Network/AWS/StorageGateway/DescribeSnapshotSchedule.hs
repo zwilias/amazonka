@@ -46,19 +46,16 @@ import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 import Network.AWS.StorageGateway.Types
-import Network.AWS.StorageGateway.Types.Product
 
 -- | A JSON object containing the 'DescribeSnapshotScheduleInput$VolumeARN' of the volume.
 --
 --
 --
 -- /See:/ 'describeSnapshotSchedule' smart constructor.
-newtype DescribeSnapshotSchedule =
-  DescribeSnapshotSchedule'
-    { _dssVolumeARN :: Text
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+newtype DescribeSnapshotSchedule = DescribeSnapshotSchedule'{_dssVolumeARN
+                                                             :: Text}
+                                     deriving (Eq, Read, Show, Data, Typeable,
+                                               Generic)
 
 -- | Creates a value of 'DescribeSnapshotSchedule' with the minimum fields required to make a request.
 --
@@ -68,9 +65,9 @@ newtype DescribeSnapshotSchedule =
 describeSnapshotSchedule
     :: Text -- ^ 'dssVolumeARN'
     -> DescribeSnapshotSchedule
-describeSnapshotSchedule pVolumeARN_ =
-  DescribeSnapshotSchedule' {_dssVolumeARN = pVolumeARN_}
-
+describeSnapshotSchedule pVolumeARN_
+  = DescribeSnapshotSchedule'{_dssVolumeARN =
+                                pVolumeARN_}
 
 -- | The Amazon Resource Name (ARN) of the volume. Use the 'ListVolumes' operation to return a list of gateway volumes.
 dssVolumeARN :: Lens' DescribeSnapshotSchedule Text
@@ -116,17 +113,31 @@ instance ToQuery DescribeSnapshotSchedule where
         toQuery = const mempty
 
 -- | /See:/ 'describeSnapshotScheduleResponse' smart constructor.
-data DescribeSnapshotScheduleResponse =
-  DescribeSnapshotScheduleResponse'
-    { _dssrsStartAt           :: !(Maybe Nat)
-    , _dssrsVolumeARN         :: !(Maybe Text)
-    , _dssrsRecurrenceInHours :: !(Maybe Nat)
-    , _dssrsTimezone          :: !(Maybe Text)
-    , _dssrsDescription       :: !(Maybe Text)
-    , _dssrsResponseStatus    :: !Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data DescribeSnapshotScheduleResponse = DescribeSnapshotScheduleResponse'{_dssrsStartAt
+                                                                          ::
+                                                                          !(Maybe
+                                                                              Nat),
+                                                                          _dssrsVolumeARN
+                                                                          ::
+                                                                          !(Maybe
+                                                                              Text),
+                                                                          _dssrsRecurrenceInHours
+                                                                          ::
+                                                                          !(Maybe
+                                                                              Nat),
+                                                                          _dssrsTimezone
+                                                                          ::
+                                                                          !(Maybe
+                                                                              Text),
+                                                                          _dssrsDescription
+                                                                          ::
+                                                                          !(Maybe
+                                                                              Text),
+                                                                          _dssrsResponseStatus
+                                                                          ::
+                                                                          !Int}
+                                          deriving (Eq, Read, Show, Data,
+                                                    Typeable, Generic)
 
 -- | Creates a value of 'DescribeSnapshotScheduleResponse' with the minimum fields required to make a request.
 --
@@ -146,16 +157,14 @@ data DescribeSnapshotScheduleResponse =
 describeSnapshotScheduleResponse
     :: Int -- ^ 'dssrsResponseStatus'
     -> DescribeSnapshotScheduleResponse
-describeSnapshotScheduleResponse pResponseStatus_ =
-  DescribeSnapshotScheduleResponse'
-    { _dssrsStartAt = Nothing
-    , _dssrsVolumeARN = Nothing
-    , _dssrsRecurrenceInHours = Nothing
-    , _dssrsTimezone = Nothing
-    , _dssrsDescription = Nothing
-    , _dssrsResponseStatus = pResponseStatus_
-    }
-
+describeSnapshotScheduleResponse pResponseStatus_
+  = DescribeSnapshotScheduleResponse'{_dssrsStartAt =
+                                        Nothing,
+                                      _dssrsVolumeARN = Nothing,
+                                      _dssrsRecurrenceInHours = Nothing,
+                                      _dssrsTimezone = Nothing,
+                                      _dssrsDescription = Nothing,
+                                      _dssrsResponseStatus = pResponseStatus_}
 
 -- | Undocumented member.
 dssrsStartAt :: Lens' DescribeSnapshotScheduleResponse (Maybe Natural)

@@ -63,7 +63,6 @@ module Network.AWS.IAM.SimulatePrincipalPolicy
     ) where
 
 import Network.AWS.IAM.Types
-import Network.AWS.IAM.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Pager
 import Network.AWS.Prelude
@@ -71,22 +70,30 @@ import Network.AWS.Request
 import Network.AWS.Response
 
 -- | /See:/ 'simulatePrincipalPolicy' smart constructor.
-data SimulatePrincipalPolicy =
-  SimulatePrincipalPolicy'
-    { _sppPolicyInputList        :: !(Maybe [Text])
-    , _sppResourcePolicy         :: !(Maybe Text)
-    , _sppCallerARN              :: !(Maybe Text)
-    , _sppResourceHandlingOption :: !(Maybe Text)
-    , _sppResourceARNs           :: !(Maybe [Text])
-    , _sppMarker                 :: !(Maybe Text)
-    , _sppMaxItems               :: !(Maybe Nat)
-    , _sppContextEntries         :: !(Maybe [ContextEntry])
-    , _sppResourceOwner          :: !(Maybe Text)
-    , _sppPolicySourceARN        :: !Text
-    , _sppActionNames            :: ![Text]
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data SimulatePrincipalPolicy = SimulatePrincipalPolicy'{_sppPolicyInputList
+                                                        :: !(Maybe [Text]),
+                                                        _sppResourcePolicy ::
+                                                        !(Maybe Text),
+                                                        _sppCallerARN ::
+                                                        !(Maybe Text),
+                                                        _sppResourceHandlingOption
+                                                        :: !(Maybe Text),
+                                                        _sppResourceARNs ::
+                                                        !(Maybe [Text]),
+                                                        _sppMarker ::
+                                                        !(Maybe Text),
+                                                        _sppMaxItems ::
+                                                        !(Maybe Nat),
+                                                        _sppContextEntries ::
+                                                        !(Maybe [ContextEntry]),
+                                                        _sppResourceOwner ::
+                                                        !(Maybe Text),
+                                                        _sppPolicySourceARN ::
+                                                        !Text,
+                                                        _sppActionNames ::
+                                                        ![Text]}
+                                 deriving (Eq, Read, Show, Data, Typeable,
+                                           Generic)
 
 -- | Creates a value of 'SimulatePrincipalPolicy' with the minimum fields required to make a request.
 --
@@ -116,21 +123,18 @@ data SimulatePrincipalPolicy =
 simulatePrincipalPolicy
     :: Text -- ^ 'sppPolicySourceARN'
     -> SimulatePrincipalPolicy
-simulatePrincipalPolicy pPolicySourceARN_ =
-  SimulatePrincipalPolicy'
-    { _sppPolicyInputList = Nothing
-    , _sppResourcePolicy = Nothing
-    , _sppCallerARN = Nothing
-    , _sppResourceHandlingOption = Nothing
-    , _sppResourceARNs = Nothing
-    , _sppMarker = Nothing
-    , _sppMaxItems = Nothing
-    , _sppContextEntries = Nothing
-    , _sppResourceOwner = Nothing
-    , _sppPolicySourceARN = pPolicySourceARN_
-    , _sppActionNames = mempty
-    }
-
+simulatePrincipalPolicy pPolicySourceARN_
+  = SimulatePrincipalPolicy'{_sppPolicyInputList =
+                               Nothing,
+                             _sppResourcePolicy = Nothing,
+                             _sppCallerARN = Nothing,
+                             _sppResourceHandlingOption = Nothing,
+                             _sppResourceARNs = Nothing, _sppMarker = Nothing,
+                             _sppMaxItems = Nothing,
+                             _sppContextEntries = Nothing,
+                             _sppResourceOwner = Nothing,
+                             _sppPolicySourceARN = pPolicySourceARN_,
+                             _sppActionNames = mempty}
 
 -- | An optional list of additional policy documents to include in the simulation. Each document is specified as a string containing the complete, valid JSON text of an IAM policy. The <http://wikipedia.org/wiki/regex regex pattern> used to validate this parameter is a string of characters consisting of the following:     * Any printable ASCII character ranging from the space character (\u0020) through the end of the ASCII character range     * The printable characters in the Basic Latin and Latin-1 Supplement character set (through \u00FF)     * The special characters tab (\u0009), line feed (\u000A), and carriage return (\u000D)
 sppPolicyInputList :: Lens' SimulatePrincipalPolicy [Text]

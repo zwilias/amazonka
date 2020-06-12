@@ -40,26 +40,24 @@ module Network.AWS.Budgets.UpdateNotification
     ) where
 
 import Network.AWS.Budgets.Types
-import Network.AWS.Budgets.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 
--- | Request of UpdateNotification
+-- | Request of UpdateNotification 
 --
 --
 --
 -- /See:/ 'updateNotification' smart constructor.
-data UpdateNotification =
-  UpdateNotification'
-    { _unAccountId       :: !Text
-    , _unBudgetName      :: !Text
-    , _unOldNotification :: !Notification
-    , _unNewNotification :: !Notification
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data UpdateNotification = UpdateNotification'{_unAccountId
+                                              :: !Text,
+                                              _unBudgetName :: !Text,
+                                              _unOldNotification ::
+                                              !Notification,
+                                              _unNewNotification ::
+                                              !Notification}
+                            deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'UpdateNotification' with the minimum fields required to make a request.
 --
@@ -78,14 +76,12 @@ updateNotification
     -> Notification -- ^ 'unOldNotification'
     -> Notification -- ^ 'unNewNotification'
     -> UpdateNotification
-updateNotification pAccountId_ pBudgetName_ pOldNotification_ pNewNotification_ =
-  UpdateNotification'
-    { _unAccountId = pAccountId_
-    , _unBudgetName = pBudgetName_
-    , _unOldNotification = pOldNotification_
-    , _unNewNotification = pNewNotification_
-    }
-
+updateNotification pAccountId_ pBudgetName_
+  pOldNotification_ pNewNotification_
+  = UpdateNotification'{_unAccountId = pAccountId_,
+                        _unBudgetName = pBudgetName_,
+                        _unOldNotification = pOldNotification_,
+                        _unNewNotification = pNewNotification_}
 
 -- | The @accountId@ that is associated with the budget whose notification you want to update.
 unAccountId :: Lens' UpdateNotification Text
@@ -141,17 +137,15 @@ instance ToPath UpdateNotification where
 instance ToQuery UpdateNotification where
         toQuery = const mempty
 
--- | Response of UpdateNotification
+-- | Response of UpdateNotification 
 --
 --
 --
 -- /See:/ 'updateNotificationResponse' smart constructor.
-newtype UpdateNotificationResponse =
-  UpdateNotificationResponse'
-    { _unrsResponseStatus :: Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+newtype UpdateNotificationResponse = UpdateNotificationResponse'{_unrsResponseStatus
+                                                                 :: Int}
+                                       deriving (Eq, Read, Show, Data, Typeable,
+                                                 Generic)
 
 -- | Creates a value of 'UpdateNotificationResponse' with the minimum fields required to make a request.
 --
@@ -161,9 +155,9 @@ newtype UpdateNotificationResponse =
 updateNotificationResponse
     :: Int -- ^ 'unrsResponseStatus'
     -> UpdateNotificationResponse
-updateNotificationResponse pResponseStatus_ =
-  UpdateNotificationResponse' {_unrsResponseStatus = pResponseStatus_}
-
+updateNotificationResponse pResponseStatus_
+  = UpdateNotificationResponse'{_unrsResponseStatus =
+                                  pResponseStatus_}
 
 -- | -- | The response status code.
 unrsResponseStatus :: Lens' UpdateNotificationResponse Int

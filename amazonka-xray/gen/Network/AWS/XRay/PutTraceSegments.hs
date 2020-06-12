@@ -23,7 +23,7 @@
 --
 -- Segments must include the following fields. For the full segment document schema, see <https://docs.aws.amazon.com/xray/latest/devguide/xray-api-segmentdocuments.html AWS X-Ray Segment Documents> in the /AWS X-Ray Developer Guide/ .
 --
--- __Required Segment Document Fields__
+-- __Required Segment Document Fields__ 
 --
 --     * @name@ - The name of the service that handled the request.
 --
@@ -41,7 +41,7 @@
 --
 -- A @trace_id@ consists of three numbers separated by hyphens. For example, 1-58406520-a006649127e371903a2de979. This includes:
 --
--- __Trace ID Format__
+-- __Trace ID Format__ 
 --
 --     * The version number, i.e. @1@ .
 --
@@ -72,15 +72,11 @@ import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 import Network.AWS.XRay.Types
-import Network.AWS.XRay.Types.Product
 
 -- | /See:/ 'putTraceSegments' smart constructor.
-newtype PutTraceSegments =
-  PutTraceSegments'
-    { _ptsTraceSegmentDocuments :: [Text]
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+newtype PutTraceSegments = PutTraceSegments'{_ptsTraceSegmentDocuments
+                                             :: [Text]}
+                             deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'PutTraceSegments' with the minimum fields required to make a request.
 --
@@ -89,8 +85,9 @@ newtype PutTraceSegments =
 -- * 'ptsTraceSegmentDocuments' - A string containing a JSON document defining one or more segments or subsegments.
 putTraceSegments
     :: PutTraceSegments
-putTraceSegments = PutTraceSegments' {_ptsTraceSegmentDocuments = mempty}
-
+putTraceSegments
+  = PutTraceSegments'{_ptsTraceSegmentDocuments =
+                        mempty}
 
 -- | A string containing a JSON document defining one or more segments or subsegments.
 ptsTraceSegmentDocuments :: Lens' PutTraceSegments [Text]
@@ -128,13 +125,14 @@ instance ToQuery PutTraceSegments where
         toQuery = const mempty
 
 -- | /See:/ 'putTraceSegmentsResponse' smart constructor.
-data PutTraceSegmentsResponse =
-  PutTraceSegmentsResponse'
-    { _ptsrsUnprocessedTraceSegments :: !(Maybe [UnprocessedTraceSegment])
-    , _ptsrsResponseStatus           :: !Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data PutTraceSegmentsResponse = PutTraceSegmentsResponse'{_ptsrsUnprocessedTraceSegments
+                                                          ::
+                                                          !(Maybe
+                                                              [UnprocessedTraceSegment]),
+                                                          _ptsrsResponseStatus
+                                                          :: !Int}
+                                  deriving (Eq, Read, Show, Data, Typeable,
+                                            Generic)
 
 -- | Creates a value of 'PutTraceSegmentsResponse' with the minimum fields required to make a request.
 --
@@ -146,12 +144,10 @@ data PutTraceSegmentsResponse =
 putTraceSegmentsResponse
     :: Int -- ^ 'ptsrsResponseStatus'
     -> PutTraceSegmentsResponse
-putTraceSegmentsResponse pResponseStatus_ =
-  PutTraceSegmentsResponse'
-    { _ptsrsUnprocessedTraceSegments = Nothing
-    , _ptsrsResponseStatus = pResponseStatus_
-    }
-
+putTraceSegmentsResponse pResponseStatus_
+  = PutTraceSegmentsResponse'{_ptsrsUnprocessedTraceSegments
+                                = Nothing,
+                              _ptsrsResponseStatus = pResponseStatus_}
 
 -- | Segments that failed processing.
 ptsrsUnprocessedTraceSegments :: Lens' PutTraceSegmentsResponse [UnprocessedTraceSegment]

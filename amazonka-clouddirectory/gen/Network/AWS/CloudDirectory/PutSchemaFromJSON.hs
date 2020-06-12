@@ -39,20 +39,16 @@ module Network.AWS.CloudDirectory.PutSchemaFromJSON
     ) where
 
 import Network.AWS.CloudDirectory.Types
-import Network.AWS.CloudDirectory.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 
 -- | /See:/ 'putSchemaFromJSON' smart constructor.
-data PutSchemaFromJSON =
-  PutSchemaFromJSON'
-    { _psfjSchemaARN :: !Text
-    , _psfjDocument  :: !Text
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data PutSchemaFromJSON = PutSchemaFromJSON'{_psfjSchemaARN
+                                            :: !Text,
+                                            _psfjDocument :: !Text}
+                           deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'PutSchemaFromJSON' with the minimum fields required to make a request.
 --
@@ -65,9 +61,9 @@ putSchemaFromJSON
     :: Text -- ^ 'psfjSchemaARN'
     -> Text -- ^ 'psfjDocument'
     -> PutSchemaFromJSON
-putSchemaFromJSON pSchemaARN_ pDocument_ =
-  PutSchemaFromJSON' {_psfjSchemaARN = pSchemaARN_, _psfjDocument = pDocument_}
-
+putSchemaFromJSON pSchemaARN_ pDocument_
+  = PutSchemaFromJSON'{_psfjSchemaARN = pSchemaARN_,
+                       _psfjDocument = pDocument_}
 
 -- | The ARN of the schema to update.
 psfjSchemaARN :: Lens' PutSchemaFromJSON Text
@@ -108,13 +104,12 @@ instance ToQuery PutSchemaFromJSON where
         toQuery = const mempty
 
 -- | /See:/ 'putSchemaFromJSONResponse' smart constructor.
-data PutSchemaFromJSONResponse =
-  PutSchemaFromJSONResponse'
-    { _psfjrsARN            :: !(Maybe Text)
-    , _psfjrsResponseStatus :: !Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data PutSchemaFromJSONResponse = PutSchemaFromJSONResponse'{_psfjrsARN
+                                                            :: !(Maybe Text),
+                                                            _psfjrsResponseStatus
+                                                            :: !Int}
+                                   deriving (Eq, Read, Show, Data, Typeable,
+                                             Generic)
 
 -- | Creates a value of 'PutSchemaFromJSONResponse' with the minimum fields required to make a request.
 --
@@ -126,10 +121,9 @@ data PutSchemaFromJSONResponse =
 putSchemaFromJSONResponse
     :: Int -- ^ 'psfjrsResponseStatus'
     -> PutSchemaFromJSONResponse
-putSchemaFromJSONResponse pResponseStatus_ =
-  PutSchemaFromJSONResponse'
-    {_psfjrsARN = Nothing, _psfjrsResponseStatus = pResponseStatus_}
-
+putSchemaFromJSONResponse pResponseStatus_
+  = PutSchemaFromJSONResponse'{_psfjrsARN = Nothing,
+                               _psfjrsResponseStatus = pResponseStatus_}
 
 -- | The ARN of the schema to update.
 psfjrsARN :: Lens' PutSchemaFromJSONResponse (Maybe Text)

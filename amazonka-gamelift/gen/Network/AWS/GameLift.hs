@@ -11,7 +11,7 @@
 -- Stability   : auto-generated
 -- Portability : non-portable (GHC extensions)
 --
--- __Amazon GameLift Service__
+-- __Amazon GameLift Service__ 
 --
 -- Amazon GameLift is a managed service for developers who need a scalable, dedicated server solution for their multiplayer games. Use Amazon GameLift for these tasks: (1) set up computing resources and deploy your game servers, (2) run game sessions and get players into games, (3) automatically scale your resources to meet player demand and manage costs, and (4) track in-depth metrics on game server performance and player usage.
 --
@@ -23,7 +23,7 @@
 --
 --
 --
--- This reference guide describes the low-level service API for Amazon GameLift. You can use the API functionality with these tools:
+-- This reference guide describes the low-level service API for Amazon GameLift. You can use the API functionality with these tools: 
 --
 --     * The Amazon Web Services software development kit (<http://aws.amazon.com/tools/#sdk AWS SDK> ) is available in <http://docs.aws.amazon.com/gamelift/latest/developerguide/gamelift-supported.html#gamelift-supported-clients multiple languages> including C++ and C#. Use the SDK to access the API programmatically from an application, such as a game client.
 --
@@ -35,9 +35,9 @@
 --
 --
 --
--- __Learn more__
+-- __Learn more__ 
 --
---     * <http://docs.aws.amazon.com/gamelift/latest/developerguide/ Developer Guide> -- Read about Amazon GameLift features and how to use them.
+--     * <http://docs.aws.amazon.com/gamelift/latest/developerguide/ Developer Guide> -- Read about Amazon GameLift features and how to use them. 
 --
 --     * <https://gamedev.amazon.com/forums/tutorials Tutorials> -- Get started fast with walkthroughs and sample projects.
 --
@@ -45,57 +45,57 @@
 --
 --     * <https://gamedev.amazon.com/forums/spaces/123/gamelift-discussion.html GameDev Forums> -- Connect with the GameDev community.
 --
---     * <http://aws.amazon.com/releasenotes/Amazon-GameLift/ Release notes> and <http://docs.aws.amazon.com/gamelift/latest/developerguide/doc-history.html document history> -- Stay current with updates to the Amazon GameLift service, SDKs, and documentation.
+--     * <http://aws.amazon.com/releasenotes/Amazon-GameLift/ Release notes> and <http://docs.aws.amazon.com/gamelift/latest/developerguide/doc-history.html document history> -- Stay current with updates to the Amazon GameLift service, SDKs, and documentation. 
 --
 --
 --
--- __API SUMMARY__
+-- __API SUMMARY__ 
 --
 -- This list offers a functional overview of the Amazon GameLift service API.
 --
--- __Managing Games and Players__
+-- __Managing Games and Players__ 
 --
 -- Use these actions to start new game sessions, find existing game sessions, track game session status and other information, and enable player access to game sessions.
 --
---     * __Discover existing game sessions__
+--     * __Discover existing game sessions__ 
 --
---     * 'SearchGameSessions' -- Retrieve all available game sessions or search for game sessions that match a set of criteria.
+--     * 'SearchGameSessions' -- Retrieve all available game sessions or search for game sessions that match a set of criteria. 
 --
 --
 --
---     * __Start new game sessions__
+--     * __Start new game sessions__ 
 --
---     * Start new games with Queues to find the best available hosting resources across multiple regions, minimize player latency, and balance game session activity for efficiency and cost effectiveness.
+--     * Start new games with Queues to find the best available hosting resources across multiple regions, minimize player latency, and balance game session activity for efficiency and cost effectiveness. 
 --
 --     * 'StartGameSessionPlacement' -- Request a new game session placement and add one or more players to it.
 --
 --     * 'DescribeGameSessionPlacement' -- Get details on a placement request, including status.
 --
---     * 'StopGameSessionPlacement' -- Cancel a placement request.
+--     * 'StopGameSessionPlacement' -- Cancel a placement request. 
 --
 --
 --
---     * 'CreateGameSession' -- Start a new game session on a specific fleet. /Available in Amazon GameLift Local./
+--     * 'CreateGameSession' -- Start a new game session on a specific fleet. /Available in Amazon GameLift Local./ 
 --
 --
 --
---     * __Match players to game sessions with FlexMatch matchmaking__
+--     * __Match players to game sessions with FlexMatch matchmaking__ 
 --
---     * 'StartMatchmaking' -- Request matchmaking for one players or a group who want to play together.
+--     * 'StartMatchmaking' -- Request matchmaking for one players or a group who want to play together. 
 --
---     * 'StartMatchBackfill' - Request additional player matches to fill empty slots in an existing game session.
+--     * 'StartMatchBackfill' - Request additional player matches to fill empty slots in an existing game session. 
 --
 --     * 'DescribeMatchmaking' -- Get details on a matchmaking request, including status.
 --
---     * 'AcceptMatch' -- Register that a player accepts a proposed match, for matches that require player acceptance.
+--     * 'AcceptMatch' -- Register that a player accepts a proposed match, for matches that require player acceptance. 
 --
---     * 'StopMatchmaking' -- Cancel a matchmaking request.
+--     * 'StopMatchmaking' -- Cancel a matchmaking request. 
 --
 --
 --
---     * __Manage game session data__
+--     * __Manage game session data__ 
 --
---     * 'DescribeGameSessions' -- Retrieve metadata for one or more game sessions, including length of time active and current player count. /Available in Amazon GameLift Local./
+--     * 'DescribeGameSessions' -- Retrieve metadata for one or more game sessions, including length of time active and current player count. /Available in Amazon GameLift Local./ 
 --
 --     * 'DescribeGameSessionDetails' -- Retrieve metadata and the game session protection setting for one or more game sessions.
 --
@@ -105,23 +105,23 @@
 --
 --
 --
---     * __Manage player sessions__
+--     * __Manage player sessions__ 
 --
---     * 'CreatePlayerSession' -- Send a request for a player to join a game session. /Available in Amazon GameLift Local./
+--     * 'CreatePlayerSession' -- Send a request for a player to join a game session. /Available in Amazon GameLift Local./ 
 --
---     * 'CreatePlayerSessions' -- Send a request for multiple players to join a game session. /Available in Amazon GameLift Local./
+--     * 'CreatePlayerSessions' -- Send a request for multiple players to join a game session. /Available in Amazon GameLift Local./ 
 --
---     * 'DescribePlayerSessions' -- Get details on player activity, including status, playing time, and player data. /Available in Amazon GameLift Local./
---
---
+--     * 'DescribePlayerSessions' -- Get details on player activity, including status, playing time, and player data. /Available in Amazon GameLift Local./ 
 --
 --
 --
--- __Setting Up and Managing Game Servers__
+--
+--
+-- __Setting Up and Managing Game Servers__ 
 --
 -- When setting up Amazon GameLift resources for your game, you first <http://docs.aws.amazon.com/gamelift/latest/developerguide/gamelift-build-intro.html create a game build> and upload it to Amazon GameLift. You can then use these actions to configure and manage a fleet of resources to run your game servers, scale capacity to meet player demand, access performance and utilization metrics, and more.
 --
---     * __Manage game builds__
+--     * __Manage game builds__ 
 --
 --     * 'CreateBuild' -- Create a new build using files stored in an Amazon S3 bucket. To create a build and upload files from a local path, use the AWS CLI command @upload-build@ .
 --
@@ -135,7 +135,7 @@
 --
 --
 --
---     * __Manage fleets__
+--     * __Manage fleets__ 
 --
 --     * 'CreateFleet' -- Configure and activate a new fleet to run a build's game servers.
 --
@@ -155,7 +155,7 @@
 --
 --
 --
---     * __Control fleet capacity__
+--     * __Control fleet capacity__ 
 --
 --     * 'DescribeEC2InstanceLimits' -- Retrieve maximum number of instances allowed for the current AWS account and the current usage level.
 --
@@ -177,11 +177,11 @@
 --
 --
 --
---     * __Manage VPC peering connections for fleets__
+--     * __Manage VPC peering connections for fleets__ 
 --
 --     * 'CreateVpcPeeringAuthorization' -- Authorize a peering connection to one of your VPCs.
 --
---     * 'DescribeVpcPeeringAuthorizations' -- Retrieve valid peering connection authorizations.
+--     * 'DescribeVpcPeeringAuthorizations' -- Retrieve valid peering connection authorizations. 
 --
 --     * 'DeleteVpcPeeringAuthorization' -- Delete a peering connection authorization.
 --
@@ -193,7 +193,7 @@
 --
 --
 --
---     * __Access fleet activity statistics__
+--     * __Access fleet activity statistics__ 
 --
 --     * 'DescribeFleetUtilization' -- Get current data on the number of server processes, game sessions, and players currently active on a fleet.
 --
@@ -203,7 +203,7 @@
 --
 --
 --
---     * __Remotely access an instance__
+--     * __Remotely access an instance__ 
 --
 --     * 'DescribeInstances' -- Get information on each instance in a fleet, including instance ID, IP address, and status.
 --
@@ -211,7 +211,7 @@
 --
 --
 --
---     * __Manage fleet aliases__
+--     * __Manage fleet aliases__ 
 --
 --     * 'CreateAlias' -- Define a new alias and optionally assign it to a fleet.
 --
@@ -227,9 +227,9 @@
 --
 --
 --
---     * __Manage game session queues__
+--     * __Manage game session queues__ 
 --
---     * 'CreateGameSessionQueue' -- Create a queue for processing requests for new game sessions.
+--     * 'CreateGameSessionQueue' -- Create a queue for processing requests for new game sessions. 
 --
 --     * 'DescribeGameSessionQueues' -- Retrieve game session queues defined in a Amazon GameLift region.
 --
@@ -239,9 +239,9 @@
 --
 --
 --
---     * __Manage FlexMatch resources__
+--     * __Manage FlexMatch resources__ 
 --
---     * 'CreateMatchmakingConfiguration' -- Create a matchmaking configuration with instructions for building a player group and placing in a new game session.
+--     * 'CreateMatchmakingConfiguration' -- Create a matchmaking configuration with instructions for building a player group and placing in a new game session. 
 --
 --     * 'DescribeMatchmakingConfigurations' -- Retrieve matchmaking configurations defined a Amazon GameLift region.
 --
@@ -249,11 +249,11 @@
 --
 --     * 'DeleteMatchmakingConfiguration' -- Remove a matchmaking configuration from the region.
 --
---     * 'CreateMatchmakingRuleSet' -- Create a set of rules to use when searching for player matches.
+--     * 'CreateMatchmakingRuleSet' -- Create a set of rules to use when searching for player matches. 
 --
 --     * 'DescribeMatchmakingRuleSets' -- Retrieve matchmaking rule sets defined in a Amazon GameLift region.
 --
---     * 'ValidateMatchmakingRuleSet' -- Verify syntax for a set of matchmaking rules.
+--     * 'ValidateMatchmakingRuleSet' -- Verify syntax for a set of matchmaking rules. 
 --
 --
 --
@@ -312,205 +312,205 @@ module Network.AWS.GameLift
     -- * Operations
     -- $operations
 
-    -- ** StopMatchmaking
+    -- ** StopMatchmaking 
     , module Network.AWS.GameLift.StopMatchmaking
 
-    -- ** CreateGameSession
+    -- ** CreateGameSession 
     , module Network.AWS.GameLift.CreateGameSession
 
-    -- ** DeleteScalingPolicy
+    -- ** DeleteScalingPolicy 
     , module Network.AWS.GameLift.DeleteScalingPolicy
 
-    -- ** PutScalingPolicy
+    -- ** PutScalingPolicy 
     , module Network.AWS.GameLift.PutScalingPolicy
 
-    -- ** ListBuilds
+    -- ** ListBuilds 
     , module Network.AWS.GameLift.ListBuilds
 
-    -- ** DeleteFleet
+    -- ** DeleteFleet 
     , module Network.AWS.GameLift.DeleteFleet
 
-    -- ** CreateBuild
+    -- ** CreateBuild 
     , module Network.AWS.GameLift.CreateBuild
 
-    -- ** RequestUploadCredentials
+    -- ** RequestUploadCredentials 
     , module Network.AWS.GameLift.RequestUploadCredentials
 
-    -- ** CreateAlias
+    -- ** CreateAlias 
     , module Network.AWS.GameLift.CreateAlias
 
-    -- ** ResolveAlias
+    -- ** ResolveAlias 
     , module Network.AWS.GameLift.ResolveAlias
 
-    -- ** ListAliases
+    -- ** ListAliases 
     , module Network.AWS.GameLift.ListAliases
 
-    -- ** UpdateRuntimeConfiguration
+    -- ** UpdateRuntimeConfiguration 
     , module Network.AWS.GameLift.UpdateRuntimeConfiguration
 
-    -- ** CreateVPCPeeringConnection
+    -- ** CreateVPCPeeringConnection 
     , module Network.AWS.GameLift.CreateVPCPeeringConnection
 
-    -- ** CreateGameSessionQueue
+    -- ** CreateGameSessionQueue 
     , module Network.AWS.GameLift.CreateGameSessionQueue
 
-    -- ** SearchGameSessions
+    -- ** SearchGameSessions 
     , module Network.AWS.GameLift.SearchGameSessions
 
-    -- ** CreateVPCPeeringAuthorization
+    -- ** CreateVPCPeeringAuthorization 
     , module Network.AWS.GameLift.CreateVPCPeeringAuthorization
 
-    -- ** UpdateGameSessionQueue
+    -- ** UpdateGameSessionQueue 
     , module Network.AWS.GameLift.UpdateGameSessionQueue
 
-    -- ** DeleteGameSessionQueue
+    -- ** DeleteGameSessionQueue 
     , module Network.AWS.GameLift.DeleteGameSessionQueue
 
-    -- ** DeleteVPCPeeringConnection
+    -- ** DeleteVPCPeeringConnection 
     , module Network.AWS.GameLift.DeleteVPCPeeringConnection
 
-    -- ** StartFleetActions
+    -- ** StartFleetActions 
     , module Network.AWS.GameLift.StartFleetActions
 
-    -- ** GetInstanceAccess
+    -- ** GetInstanceAccess 
     , module Network.AWS.GameLift.GetInstanceAccess
 
-    -- ** DescribeScalingPolicies
+    -- ** DescribeScalingPolicies 
     , module Network.AWS.GameLift.DescribeScalingPolicies
 
-    -- ** DescribeMatchmakingRuleSets
+    -- ** DescribeMatchmakingRuleSets 
     , module Network.AWS.GameLift.DescribeMatchmakingRuleSets
 
-    -- ** DescribeGameSessions
+    -- ** DescribeGameSessions 
     , module Network.AWS.GameLift.DescribeGameSessions
 
-    -- ** StartGameSessionPlacement
+    -- ** StartGameSessionPlacement 
     , module Network.AWS.GameLift.StartGameSessionPlacement
 
-    -- ** DescribeFleetUtilization
+    -- ** DescribeFleetUtilization 
     , module Network.AWS.GameLift.DescribeFleetUtilization
 
-    -- ** DescribeRuntimeConfiguration
+    -- ** DescribeRuntimeConfiguration 
     , module Network.AWS.GameLift.DescribeRuntimeConfiguration
 
-    -- ** GetGameSessionLogURL
+    -- ** GetGameSessionLogURL 
     , module Network.AWS.GameLift.GetGameSessionLogURL
 
-    -- ** DescribeFleetAttributes
+    -- ** DescribeFleetAttributes 
     , module Network.AWS.GameLift.DescribeFleetAttributes
 
-    -- ** DescribeGameSessionPlacement
+    -- ** DescribeGameSessionPlacement 
     , module Network.AWS.GameLift.DescribeGameSessionPlacement
 
-    -- ** DescribeFleetEvents
+    -- ** DescribeFleetEvents 
     , module Network.AWS.GameLift.DescribeFleetEvents
 
-    -- ** StartMatchmaking
+    -- ** StartMatchmaking 
     , module Network.AWS.GameLift.StartMatchmaking
 
-    -- ** CreateMatchmakingRuleSet
+    -- ** CreateMatchmakingRuleSet 
     , module Network.AWS.GameLift.CreateMatchmakingRuleSet
 
-    -- ** DescribeFleetCapacity
+    -- ** DescribeFleetCapacity 
     , module Network.AWS.GameLift.DescribeFleetCapacity
 
-    -- ** DeleteBuild
+    -- ** DeleteBuild 
     , module Network.AWS.GameLift.DeleteBuild
 
-    -- ** UpdateBuild
+    -- ** UpdateBuild 
     , module Network.AWS.GameLift.UpdateBuild
 
-    -- ** ListFleets
+    -- ** ListFleets 
     , module Network.AWS.GameLift.ListFleets
 
-    -- ** DeleteAlias
+    -- ** DeleteAlias 
     , module Network.AWS.GameLift.DeleteAlias
 
-    -- ** UpdateAlias
+    -- ** UpdateAlias 
     , module Network.AWS.GameLift.UpdateAlias
 
-    -- ** StartMatchBackfill
+    -- ** StartMatchBackfill 
     , module Network.AWS.GameLift.StartMatchBackfill
 
-    -- ** DescribeInstances
+    -- ** DescribeInstances 
     , module Network.AWS.GameLift.DescribeInstances
 
-    -- ** DescribeGameSessionDetails
+    -- ** DescribeGameSessionDetails 
     , module Network.AWS.GameLift.DescribeGameSessionDetails
 
-    -- ** DescribeFleetPortSettings
+    -- ** DescribeFleetPortSettings 
     , module Network.AWS.GameLift.DescribeFleetPortSettings
 
-    -- ** DescribeGameSessionQueues
+    -- ** DescribeGameSessionQueues 
     , module Network.AWS.GameLift.DescribeGameSessionQueues
 
-    -- ** DescribeVPCPeeringConnections
+    -- ** DescribeVPCPeeringConnections 
     , module Network.AWS.GameLift.DescribeVPCPeeringConnections
 
-    -- ** CreatePlayerSessions
+    -- ** CreatePlayerSessions 
     , module Network.AWS.GameLift.CreatePlayerSessions
 
-    -- ** DescribeMatchmakingConfigurations
+    -- ** DescribeMatchmakingConfigurations 
     , module Network.AWS.GameLift.DescribeMatchmakingConfigurations
 
-    -- ** DescribeVPCPeeringAuthorizations
+    -- ** DescribeVPCPeeringAuthorizations 
     , module Network.AWS.GameLift.DescribeVPCPeeringAuthorizations
 
-    -- ** CreateFleet
+    -- ** CreateFleet 
     , module Network.AWS.GameLift.CreateFleet
 
-    -- ** DeleteMatchmakingConfiguration
+    -- ** DeleteMatchmakingConfiguration 
     , module Network.AWS.GameLift.DeleteMatchmakingConfiguration
 
-    -- ** UpdateMatchmakingConfiguration
+    -- ** UpdateMatchmakingConfiguration 
     , module Network.AWS.GameLift.UpdateMatchmakingConfiguration
 
-    -- ** DeleteVPCPeeringAuthorization
+    -- ** DeleteVPCPeeringAuthorization 
     , module Network.AWS.GameLift.DeleteVPCPeeringAuthorization
 
-    -- ** UpdateFleetAttributes
+    -- ** UpdateFleetAttributes 
     , module Network.AWS.GameLift.UpdateFleetAttributes
 
-    -- ** CreateMatchmakingConfiguration
+    -- ** CreateMatchmakingConfiguration 
     , module Network.AWS.GameLift.CreateMatchmakingConfiguration
 
-    -- ** DescribePlayerSessions
+    -- ** DescribePlayerSessions 
     , module Network.AWS.GameLift.DescribePlayerSessions
 
-    -- ** StopFleetActions
+    -- ** StopFleetActions 
     , module Network.AWS.GameLift.StopFleetActions
 
-    -- ** DescribeBuild
+    -- ** DescribeBuild 
     , module Network.AWS.GameLift.DescribeBuild
 
-    -- ** UpdateFleetPortSettings
+    -- ** UpdateFleetPortSettings 
     , module Network.AWS.GameLift.UpdateFleetPortSettings
 
-    -- ** UpdateFleetCapacity
+    -- ** UpdateFleetCapacity 
     , module Network.AWS.GameLift.UpdateFleetCapacity
 
-    -- ** AcceptMatch
+    -- ** AcceptMatch 
     , module Network.AWS.GameLift.AcceptMatch
 
-    -- ** DescribeAlias
+    -- ** DescribeAlias 
     , module Network.AWS.GameLift.DescribeAlias
 
-    -- ** ValidateMatchmakingRuleSet
+    -- ** ValidateMatchmakingRuleSet 
     , module Network.AWS.GameLift.ValidateMatchmakingRuleSet
 
-    -- ** DescribeEC2InstanceLimits
+    -- ** DescribeEC2InstanceLimits 
     , module Network.AWS.GameLift.DescribeEC2InstanceLimits
 
-    -- ** StopGameSessionPlacement
+    -- ** StopGameSessionPlacement 
     , module Network.AWS.GameLift.StopGameSessionPlacement
 
-    -- ** UpdateGameSession
+    -- ** UpdateGameSession 
     , module Network.AWS.GameLift.UpdateGameSession
 
-    -- ** DescribeMatchmaking
+    -- ** DescribeMatchmaking 
     , module Network.AWS.GameLift.DescribeMatchmaking
 
-    -- ** CreatePlayerSession
+    -- ** CreatePlayerSession 
     , module Network.AWS.GameLift.CreatePlayerSession
 
     -- * Types

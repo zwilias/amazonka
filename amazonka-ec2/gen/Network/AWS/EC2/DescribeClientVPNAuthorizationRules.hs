@@ -45,7 +45,6 @@ module Network.AWS.EC2.DescribeClientVPNAuthorizationRules
     ) where
 
 import Network.AWS.EC2.Types
-import Network.AWS.EC2.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Pager
 import Network.AWS.Prelude
@@ -53,16 +52,27 @@ import Network.AWS.Request
 import Network.AWS.Response
 
 -- | /See:/ 'describeClientVPNAuthorizationRules' smart constructor.
-data DescribeClientVPNAuthorizationRules =
-  DescribeClientVPNAuthorizationRules'
-    { _dcvarFilters             :: !(Maybe [Filter])
-    , _dcvarNextToken           :: !(Maybe Text)
-    , _dcvarDryRun              :: !(Maybe Bool)
-    , _dcvarMaxResults          :: !(Maybe Nat)
-    , _dcvarClientVPNEndpointId :: !Text
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data DescribeClientVPNAuthorizationRules = DescribeClientVPNAuthorizationRules'{_dcvarFilters
+                                                                                ::
+                                                                                !(Maybe
+                                                                                    [Filter]),
+                                                                                _dcvarNextToken
+                                                                                ::
+                                                                                !(Maybe
+                                                                                    Text),
+                                                                                _dcvarDryRun
+                                                                                ::
+                                                                                !(Maybe
+                                                                                    Bool),
+                                                                                _dcvarMaxResults
+                                                                                ::
+                                                                                !(Maybe
+                                                                                    Nat),
+                                                                                _dcvarClientVPNEndpointId
+                                                                                ::
+                                                                                !Text}
+                                             deriving (Eq, Read, Show, Data,
+                                                       Typeable, Generic)
 
 -- | Creates a value of 'DescribeClientVPNAuthorizationRules' with the minimum fields required to make a request.
 --
@@ -80,15 +90,15 @@ data DescribeClientVPNAuthorizationRules =
 describeClientVPNAuthorizationRules
     :: Text -- ^ 'dcvarClientVPNEndpointId'
     -> DescribeClientVPNAuthorizationRules
-describeClientVPNAuthorizationRules pClientVPNEndpointId_ =
-  DescribeClientVPNAuthorizationRules'
-    { _dcvarFilters = Nothing
-    , _dcvarNextToken = Nothing
-    , _dcvarDryRun = Nothing
-    , _dcvarMaxResults = Nothing
-    , _dcvarClientVPNEndpointId = pClientVPNEndpointId_
-    }
-
+describeClientVPNAuthorizationRules
+  pClientVPNEndpointId_
+  = DescribeClientVPNAuthorizationRules'{_dcvarFilters
+                                           = Nothing,
+                                         _dcvarNextToken = Nothing,
+                                         _dcvarDryRun = Nothing,
+                                         _dcvarMaxResults = Nothing,
+                                         _dcvarClientVPNEndpointId =
+                                           pClientVPNEndpointId_}
 
 -- | One or more filters. Filter names and values are case-sensitive.     * @description@ - The description of the authorization rule.     * @destination-cidr@ - The CIDR of the network to which the authorization rule applies.     * @group-id@ - The ID of the Active Directory group to which the authorization rule grants access.
 dcvarFilters :: Lens' DescribeClientVPNAuthorizationRules [Filter]
@@ -163,14 +173,20 @@ instance ToQuery DescribeClientVPNAuthorizationRules
                "ClientVpnEndpointId" =: _dcvarClientVPNEndpointId]
 
 -- | /See:/ 'describeClientVPNAuthorizationRulesResponse' smart constructor.
-data DescribeClientVPNAuthorizationRulesResponse =
-  DescribeClientVPNAuthorizationRulesResponse'
-    { _dcvarrsAuthorizationRules :: !(Maybe [AuthorizationRule])
-    , _dcvarrsNextToken          :: !(Maybe Text)
-    , _dcvarrsResponseStatus     :: !Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data DescribeClientVPNAuthorizationRulesResponse = DescribeClientVPNAuthorizationRulesResponse'{_dcvarrsAuthorizationRules
+                                                                                                ::
+                                                                                                !(Maybe
+                                                                                                    [AuthorizationRule]),
+                                                                                                _dcvarrsNextToken
+                                                                                                ::
+                                                                                                !(Maybe
+                                                                                                    Text),
+                                                                                                _dcvarrsResponseStatus
+                                                                                                ::
+                                                                                                !Int}
+                                                     deriving (Eq, Read, Show,
+                                                               Data, Typeable,
+                                                               Generic)
 
 -- | Creates a value of 'DescribeClientVPNAuthorizationRulesResponse' with the minimum fields required to make a request.
 --
@@ -184,13 +200,13 @@ data DescribeClientVPNAuthorizationRulesResponse =
 describeClientVPNAuthorizationRulesResponse
     :: Int -- ^ 'dcvarrsResponseStatus'
     -> DescribeClientVPNAuthorizationRulesResponse
-describeClientVPNAuthorizationRulesResponse pResponseStatus_ =
-  DescribeClientVPNAuthorizationRulesResponse'
-    { _dcvarrsAuthorizationRules = Nothing
-    , _dcvarrsNextToken = Nothing
-    , _dcvarrsResponseStatus = pResponseStatus_
-    }
-
+describeClientVPNAuthorizationRulesResponse
+  pResponseStatus_
+  = DescribeClientVPNAuthorizationRulesResponse'{_dcvarrsAuthorizationRules
+                                                   = Nothing,
+                                                 _dcvarrsNextToken = Nothing,
+                                                 _dcvarrsResponseStatus =
+                                                   pResponseStatus_}
 
 -- | Information about the authorization rules.
 dcvarrsAuthorizationRules :: Lens' DescribeClientVPNAuthorizationRulesResponse [AuthorizationRule]

@@ -42,22 +42,21 @@ module Network.AWS.ApplicationAutoScaling.DeleteScheduledAction
     ) where
 
 import Network.AWS.ApplicationAutoScaling.Types
-import Network.AWS.ApplicationAutoScaling.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 
 -- | /See:/ 'deleteScheduledAction' smart constructor.
-data DeleteScheduledAction =
-  DeleteScheduledAction'
-    { _dsaServiceNamespace    :: !ServiceNamespace
-    , _dsaScheduledActionName :: !Text
-    , _dsaResourceId          :: !Text
-    , _dsaScalableDimension   :: !ScalableDimension
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data DeleteScheduledAction = DeleteScheduledAction'{_dsaServiceNamespace
+                                                    :: !ServiceNamespace,
+                                                    _dsaScheduledActionName ::
+                                                    !Text,
+                                                    _dsaResourceId :: !Text,
+                                                    _dsaScalableDimension ::
+                                                    !ScalableDimension}
+                               deriving (Eq, Read, Show, Data, Typeable,
+                                         Generic)
 
 -- | Creates a value of 'DeleteScheduledAction' with the minimum fields required to make a request.
 --
@@ -76,14 +75,14 @@ deleteScheduledAction
     -> Text -- ^ 'dsaResourceId'
     -> ScalableDimension -- ^ 'dsaScalableDimension'
     -> DeleteScheduledAction
-deleteScheduledAction pServiceNamespace_ pScheduledActionName_ pResourceId_ pScalableDimension_ =
-  DeleteScheduledAction'
-    { _dsaServiceNamespace = pServiceNamespace_
-    , _dsaScheduledActionName = pScheduledActionName_
-    , _dsaResourceId = pResourceId_
-    , _dsaScalableDimension = pScalableDimension_
-    }
-
+deleteScheduledAction pServiceNamespace_
+  pScheduledActionName_ pResourceId_
+  pScalableDimension_
+  = DeleteScheduledAction'{_dsaServiceNamespace =
+                             pServiceNamespace_,
+                           _dsaScheduledActionName = pScheduledActionName_,
+                           _dsaResourceId = pResourceId_,
+                           _dsaScalableDimension = pScalableDimension_}
 
 -- | The namespace of the AWS service that provides the resource. For a resource provided by your own application or service, use @custom-resource@ instead.
 dsaServiceNamespace :: Lens' DeleteScheduledAction ServiceNamespace
@@ -142,12 +141,10 @@ instance ToQuery DeleteScheduledAction where
         toQuery = const mempty
 
 -- | /See:/ 'deleteScheduledActionResponse' smart constructor.
-newtype DeleteScheduledActionResponse =
-  DeleteScheduledActionResponse'
-    { _delrsResponseStatus :: Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+newtype DeleteScheduledActionResponse = DeleteScheduledActionResponse'{_delrsResponseStatus
+                                                                       :: Int}
+                                          deriving (Eq, Read, Show, Data,
+                                                    Typeable, Generic)
 
 -- | Creates a value of 'DeleteScheduledActionResponse' with the minimum fields required to make a request.
 --
@@ -157,9 +154,9 @@ newtype DeleteScheduledActionResponse =
 deleteScheduledActionResponse
     :: Int -- ^ 'delrsResponseStatus'
     -> DeleteScheduledActionResponse
-deleteScheduledActionResponse pResponseStatus_ =
-  DeleteScheduledActionResponse' {_delrsResponseStatus = pResponseStatus_}
-
+deleteScheduledActionResponse pResponseStatus_
+  = DeleteScheduledActionResponse'{_delrsResponseStatus
+                                     = pResponseStatus_}
 
 -- | -- | The response status code.
 delrsResponseStatus :: Lens' DeleteScheduledActionResponse Int

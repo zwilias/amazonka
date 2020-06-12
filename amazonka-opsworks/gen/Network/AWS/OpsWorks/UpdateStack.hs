@@ -55,35 +55,35 @@ module Network.AWS.OpsWorks.UpdateStack
 
 import Network.AWS.Lens
 import Network.AWS.OpsWorks.Types
-import Network.AWS.OpsWorks.Types.Product
 import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 
 -- | /See:/ 'updateStack' smart constructor.
-data UpdateStack =
-  UpdateStack'
-    { _usDefaultInstanceProfileARN :: !(Maybe Text)
-    , _usServiceRoleARN :: !(Maybe Text)
-    , _usDefaultRootDeviceType :: !(Maybe RootDeviceType)
-    , _usChefConfiguration :: !(Maybe ChefConfiguration)
-    , _usAgentVersion :: !(Maybe Text)
-    , _usDefaultSSHKeyName :: !(Maybe Text)
-    , _usCustomJSON :: !(Maybe Text)
-    , _usCustomCookbooksSource :: !(Maybe Source)
-    , _usDefaultAvailabilityZone :: !(Maybe Text)
-    , _usAttributes :: !(Maybe (Map StackAttributesKeys (Maybe Text)))
-    , _usName :: !(Maybe Text)
-    , _usDefaultOS :: !(Maybe Text)
-    , _usUseOpsworksSecurityGroups :: !(Maybe Bool)
-    , _usUseCustomCookbooks :: !(Maybe Bool)
-    , _usDefaultSubnetId :: !(Maybe Text)
-    , _usConfigurationManager :: !(Maybe StackConfigurationManager)
-    , _usHostnameTheme :: !(Maybe Text)
-    , _usStackId :: !Text
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data UpdateStack = UpdateStack'{_usDefaultInstanceProfileARN
+                                :: !(Maybe Text),
+                                _usServiceRoleARN :: !(Maybe Text),
+                                _usDefaultRootDeviceType ::
+                                !(Maybe RootDeviceType),
+                                _usChefConfiguration ::
+                                !(Maybe ChefConfiguration),
+                                _usAgentVersion :: !(Maybe Text),
+                                _usDefaultSSHKeyName :: !(Maybe Text),
+                                _usCustomJSON :: !(Maybe Text),
+                                _usCustomCookbooksSource :: !(Maybe Source),
+                                _usDefaultAvailabilityZone :: !(Maybe Text),
+                                _usAttributes ::
+                                !(Maybe (Map StackAttributesKeys (Maybe Text))),
+                                _usName :: !(Maybe Text),
+                                _usDefaultOS :: !(Maybe Text),
+                                _usUseOpsworksSecurityGroups :: !(Maybe Bool),
+                                _usUseCustomCookbooks :: !(Maybe Bool),
+                                _usDefaultSubnetId :: !(Maybe Text),
+                                _usConfigurationManager ::
+                                !(Maybe StackConfigurationManager),
+                                _usHostnameTheme :: !(Maybe Text),
+                                _usStackId :: !Text}
+                     deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'UpdateStack' with the minimum fields required to make a request.
 --
@@ -99,13 +99,13 @@ data UpdateStack =
 --
 -- * 'usAgentVersion' - The default AWS OpsWorks Stacks agent version. You have the following options:     * Auto-update - Set this parameter to @LATEST@ . AWS OpsWorks Stacks automatically installs new agent versions on the stack's instances as soon as they are available.     * Fixed version - Set this parameter to your preferred agent version. To update the agent version, you must edit the stack configuration and specify a new version. AWS OpsWorks Stacks then automatically installs that version on the stack's instances. The default setting is @LATEST@ . To specify an agent version, you must use the complete version number, not the abbreviated number shown on the console. For a list of available agent version numbers, call 'DescribeAgentVersions' . AgentVersion cannot be set to Chef 12.2.
 --
--- * 'usDefaultSSHKeyName' - A default Amazon EC2 key-pair name. The default value is @none@ . If you specify a key-pair name, AWS OpsWorks Stacks installs the public key on the instance and you can use the private key with an SSH client to log in to the instance. For more information, see <http://docs.aws.amazon.com/opsworks/latest/userguide/workinginstances-ssh.html Using SSH to Communicate with an Instance> and <http://docs.aws.amazon.com/opsworks/latest/userguide/security-ssh-access.html Managing SSH Access> . You can override this setting by specifying a different key pair, or no key pair, when you <http://docs.aws.amazon.com/opsworks/latest/userguide/workinginstances-add.html create an instance> .
+-- * 'usDefaultSSHKeyName' - A default Amazon EC2 key-pair name. The default value is @none@ . If you specify a key-pair name, AWS OpsWorks Stacks installs the public key on the instance and you can use the private key with an SSH client to log in to the instance. For more information, see <http://docs.aws.amazon.com/opsworks/latest/userguide/workinginstances-ssh.html Using SSH to Communicate with an Instance> and <http://docs.aws.amazon.com/opsworks/latest/userguide/security-ssh-access.html Managing SSH Access> . You can override this setting by specifying a different key pair, or no key pair, when you <http://docs.aws.amazon.com/opsworks/latest/userguide/workinginstances-add.html create an instance> . 
 --
 -- * 'usCustomJSON' - A string that contains user-defined, custom JSON. It can be used to override the corresponding default stack configuration JSON values or to pass data to recipes. The string should be in the following format: @"{\"key1\": \"value1\", \"key2\": \"value2\",...}"@  For more information on custom JSON, see <http://docs.aws.amazon.com/opsworks/latest/userguide/workingstacks-json.html Use Custom JSON to Modify the Stack Configuration Attributes> .
 --
 -- * 'usCustomCookbooksSource' - Undocumented member.
 --
--- * 'usDefaultAvailabilityZone' - The stack's default Availability Zone, which must be in the stack's region. For more information, see <http://docs.aws.amazon.com/general/latest/gr/rande.html Regions and Endpoints> . If you also specify a value for @DefaultSubnetId@ , the subnet must be in the same zone. For more information, see 'CreateStack' .
+-- * 'usDefaultAvailabilityZone' - The stack's default Availability Zone, which must be in the stack's region. For more information, see <http://docs.aws.amazon.com/general/latest/gr/rande.html Regions and Endpoints> . If you also specify a value for @DefaultSubnetId@ , the subnet must be in the same zone. For more information, see 'CreateStack' . 
 --
 -- * 'usAttributes' - One or more user-defined key-value pairs to be added to the stack attributes.
 --
@@ -117,7 +117,7 @@ data UpdateStack =
 --
 -- * 'usUseCustomCookbooks' - Whether the stack uses custom cookbooks.
 --
--- * 'usDefaultSubnetId' - The stack's default VPC subnet ID. This parameter is required if you specify a value for the @VpcId@ parameter. All instances are launched into this subnet unless you specify otherwise when you create the instance. If you also specify a value for @DefaultAvailabilityZone@ , the subnet must be in that zone. For information on default values and when this parameter is required, see the @VpcId@ parameter description.
+-- * 'usDefaultSubnetId' - The stack's default VPC subnet ID. This parameter is required if you specify a value for the @VpcId@ parameter. All instances are launched into this subnet unless you specify otherwise when you create the instance. If you also specify a value for @DefaultAvailabilityZone@ , the subnet must be in that zone. For information on default values and when this parameter is required, see the @VpcId@ parameter description. 
 --
 -- * 'usConfigurationManager' - The configuration manager. When you update a stack, we recommend that you use the configuration manager to specify the Chef version: 12, 11.10, or 11.4 for Linux stacks, or 12.2 for Windows stacks. The default value for Linux stacks is currently 11.4.
 --
@@ -127,28 +127,24 @@ data UpdateStack =
 updateStack
     :: Text -- ^ 'usStackId'
     -> UpdateStack
-updateStack pStackId_ =
-  UpdateStack'
-    { _usDefaultInstanceProfileARN = Nothing
-    , _usServiceRoleARN = Nothing
-    , _usDefaultRootDeviceType = Nothing
-    , _usChefConfiguration = Nothing
-    , _usAgentVersion = Nothing
-    , _usDefaultSSHKeyName = Nothing
-    , _usCustomJSON = Nothing
-    , _usCustomCookbooksSource = Nothing
-    , _usDefaultAvailabilityZone = Nothing
-    , _usAttributes = Nothing
-    , _usName = Nothing
-    , _usDefaultOS = Nothing
-    , _usUseOpsworksSecurityGroups = Nothing
-    , _usUseCustomCookbooks = Nothing
-    , _usDefaultSubnetId = Nothing
-    , _usConfigurationManager = Nothing
-    , _usHostnameTheme = Nothing
-    , _usStackId = pStackId_
-    }
-
+updateStack pStackId_
+  = UpdateStack'{_usDefaultInstanceProfileARN =
+                   Nothing,
+                 _usServiceRoleARN = Nothing,
+                 _usDefaultRootDeviceType = Nothing,
+                 _usChefConfiguration = Nothing,
+                 _usAgentVersion = Nothing,
+                 _usDefaultSSHKeyName = Nothing,
+                 _usCustomJSON = Nothing,
+                 _usCustomCookbooksSource = Nothing,
+                 _usDefaultAvailabilityZone = Nothing,
+                 _usAttributes = Nothing, _usName = Nothing,
+                 _usDefaultOS = Nothing,
+                 _usUseOpsworksSecurityGroups = Nothing,
+                 _usUseCustomCookbooks = Nothing,
+                 _usDefaultSubnetId = Nothing,
+                 _usConfigurationManager = Nothing,
+                 _usHostnameTheme = Nothing, _usStackId = pStackId_}
 
 -- | The ARN of an IAM profile that is the default profile for all of the stack's EC2 instances. For more information about IAM ARNs, see <http://docs.aws.amazon.com/IAM/latest/UserGuide/Using_Identifiers.html Using Identifiers> .
 usDefaultInstanceProfileARN :: Lens' UpdateStack (Maybe Text)
@@ -170,7 +166,7 @@ usChefConfiguration = lens _usChefConfiguration (\ s a -> s{_usChefConfiguration
 usAgentVersion :: Lens' UpdateStack (Maybe Text)
 usAgentVersion = lens _usAgentVersion (\ s a -> s{_usAgentVersion = a})
 
--- | A default Amazon EC2 key-pair name. The default value is @none@ . If you specify a key-pair name, AWS OpsWorks Stacks installs the public key on the instance and you can use the private key with an SSH client to log in to the instance. For more information, see <http://docs.aws.amazon.com/opsworks/latest/userguide/workinginstances-ssh.html Using SSH to Communicate with an Instance> and <http://docs.aws.amazon.com/opsworks/latest/userguide/security-ssh-access.html Managing SSH Access> . You can override this setting by specifying a different key pair, or no key pair, when you <http://docs.aws.amazon.com/opsworks/latest/userguide/workinginstances-add.html create an instance> .
+-- | A default Amazon EC2 key-pair name. The default value is @none@ . If you specify a key-pair name, AWS OpsWorks Stacks installs the public key on the instance and you can use the private key with an SSH client to log in to the instance. For more information, see <http://docs.aws.amazon.com/opsworks/latest/userguide/workinginstances-ssh.html Using SSH to Communicate with an Instance> and <http://docs.aws.amazon.com/opsworks/latest/userguide/security-ssh-access.html Managing SSH Access> . You can override this setting by specifying a different key pair, or no key pair, when you <http://docs.aws.amazon.com/opsworks/latest/userguide/workinginstances-add.html create an instance> . 
 usDefaultSSHKeyName :: Lens' UpdateStack (Maybe Text)
 usDefaultSSHKeyName = lens _usDefaultSSHKeyName (\ s a -> s{_usDefaultSSHKeyName = a})
 
@@ -182,7 +178,7 @@ usCustomJSON = lens _usCustomJSON (\ s a -> s{_usCustomJSON = a})
 usCustomCookbooksSource :: Lens' UpdateStack (Maybe Source)
 usCustomCookbooksSource = lens _usCustomCookbooksSource (\ s a -> s{_usCustomCookbooksSource = a})
 
--- | The stack's default Availability Zone, which must be in the stack's region. For more information, see <http://docs.aws.amazon.com/general/latest/gr/rande.html Regions and Endpoints> . If you also specify a value for @DefaultSubnetId@ , the subnet must be in the same zone. For more information, see 'CreateStack' .
+-- | The stack's default Availability Zone, which must be in the stack's region. For more information, see <http://docs.aws.amazon.com/general/latest/gr/rande.html Regions and Endpoints> . If you also specify a value for @DefaultSubnetId@ , the subnet must be in the same zone. For more information, see 'CreateStack' . 
 usDefaultAvailabilityZone :: Lens' UpdateStack (Maybe Text)
 usDefaultAvailabilityZone = lens _usDefaultAvailabilityZone (\ s a -> s{_usDefaultAvailabilityZone = a})
 
@@ -206,7 +202,7 @@ usUseOpsworksSecurityGroups = lens _usUseOpsworksSecurityGroups (\ s a -> s{_usU
 usUseCustomCookbooks :: Lens' UpdateStack (Maybe Bool)
 usUseCustomCookbooks = lens _usUseCustomCookbooks (\ s a -> s{_usUseCustomCookbooks = a})
 
--- | The stack's default VPC subnet ID. This parameter is required if you specify a value for the @VpcId@ parameter. All instances are launched into this subnet unless you specify otherwise when you create the instance. If you also specify a value for @DefaultAvailabilityZone@ , the subnet must be in that zone. For information on default values and when this parameter is required, see the @VpcId@ parameter description.
+-- | The stack's default VPC subnet ID. This parameter is required if you specify a value for the @VpcId@ parameter. All instances are launched into this subnet unless you specify otherwise when you create the instance. If you also specify a value for @DefaultAvailabilityZone@ , the subnet must be in that zone. For information on default values and when this parameter is required, see the @VpcId@ parameter description. 
 usDefaultSubnetId :: Lens' UpdateStack (Maybe Text)
 usDefaultSubnetId = lens _usDefaultSubnetId (\ s a -> s{_usDefaultSubnetId = a})
 
@@ -276,16 +272,13 @@ instance ToQuery UpdateStack where
         toQuery = const mempty
 
 -- | /See:/ 'updateStackResponse' smart constructor.
-data UpdateStackResponse =
-  UpdateStackResponse'
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data UpdateStackResponse = UpdateStackResponse'
+                             deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'UpdateStackResponse' with the minimum fields required to make a request.
 --
 updateStackResponse
     :: UpdateStackResponse
 updateStackResponse = UpdateStackResponse'
-
 
 instance NFData UpdateStackResponse where

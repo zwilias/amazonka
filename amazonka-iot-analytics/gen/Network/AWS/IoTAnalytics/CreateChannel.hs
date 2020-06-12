@@ -41,20 +41,16 @@ module Network.AWS.IoTAnalytics.CreateChannel
     ) where
 
 import Network.AWS.IoTAnalytics.Types
-import Network.AWS.IoTAnalytics.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 
 -- | /See:/ 'createChannel' smart constructor.
-data CreateChannel =
-  CreateChannel'
-    { _ccRetentionPeriod :: !(Maybe RetentionPeriod)
-    , _ccChannelName     :: !Text
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data CreateChannel = CreateChannel'{_ccRetentionPeriod
+                                    :: !(Maybe RetentionPeriod),
+                                    _ccChannelName :: !Text}
+                       deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'CreateChannel' with the minimum fields required to make a request.
 --
@@ -66,9 +62,9 @@ data CreateChannel =
 createChannel
     :: Text -- ^ 'ccChannelName'
     -> CreateChannel
-createChannel pChannelName_ =
-  CreateChannel' {_ccRetentionPeriod = Nothing, _ccChannelName = pChannelName_}
-
+createChannel pChannelName_
+  = CreateChannel'{_ccRetentionPeriod = Nothing,
+                   _ccChannelName = pChannelName_}
 
 -- | How long, in days, message data is kept for the channel.
 ccRetentionPeriod :: Lens' CreateChannel (Maybe RetentionPeriod)
@@ -110,15 +106,15 @@ instance ToQuery CreateChannel where
         toQuery = const mempty
 
 -- | /See:/ 'createChannelResponse' smart constructor.
-data CreateChannelResponse =
-  CreateChannelResponse'
-    { _ccrsChannelARN      :: !(Maybe Text)
-    , _ccrsRetentionPeriod :: !(Maybe RetentionPeriod)
-    , _ccrsChannelName     :: !(Maybe Text)
-    , _ccrsResponseStatus  :: !Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data CreateChannelResponse = CreateChannelResponse'{_ccrsChannelARN
+                                                    :: !(Maybe Text),
+                                                    _ccrsRetentionPeriod ::
+                                                    !(Maybe RetentionPeriod),
+                                                    _ccrsChannelName ::
+                                                    !(Maybe Text),
+                                                    _ccrsResponseStatus :: !Int}
+                               deriving (Eq, Read, Show, Data, Typeable,
+                                         Generic)
 
 -- | Creates a value of 'CreateChannelResponse' with the minimum fields required to make a request.
 --
@@ -134,14 +130,11 @@ data CreateChannelResponse =
 createChannelResponse
     :: Int -- ^ 'ccrsResponseStatus'
     -> CreateChannelResponse
-createChannelResponse pResponseStatus_ =
-  CreateChannelResponse'
-    { _ccrsChannelARN = Nothing
-    , _ccrsRetentionPeriod = Nothing
-    , _ccrsChannelName = Nothing
-    , _ccrsResponseStatus = pResponseStatus_
-    }
-
+createChannelResponse pResponseStatus_
+  = CreateChannelResponse'{_ccrsChannelARN = Nothing,
+                           _ccrsRetentionPeriod = Nothing,
+                           _ccrsChannelName = Nothing,
+                           _ccrsResponseStatus = pResponseStatus_}
 
 -- | The ARN of the channel.
 ccrsChannelARN :: Lens' CreateChannelResponse (Maybe Text)

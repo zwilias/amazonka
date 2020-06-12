@@ -37,19 +37,16 @@ module Network.AWS.DeviceFarm.DeleteNetworkProfile
     ) where
 
 import Network.AWS.DeviceFarm.Types
-import Network.AWS.DeviceFarm.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 
 -- | /See:/ 'deleteNetworkProfile' smart constructor.
-newtype DeleteNetworkProfile =
-  DeleteNetworkProfile'
-    { _dnpArn :: Text
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+newtype DeleteNetworkProfile = DeleteNetworkProfile'{_dnpArn
+                                                     :: Text}
+                                 deriving (Eq, Read, Show, Data, Typeable,
+                                           Generic)
 
 -- | Creates a value of 'DeleteNetworkProfile' with the minimum fields required to make a request.
 --
@@ -59,8 +56,8 @@ newtype DeleteNetworkProfile =
 deleteNetworkProfile
     :: Text -- ^ 'dnpArn'
     -> DeleteNetworkProfile
-deleteNetworkProfile pArn_ = DeleteNetworkProfile' {_dnpArn = pArn_}
-
+deleteNetworkProfile pArn_
+  = DeleteNetworkProfile'{_dnpArn = pArn_}
 
 -- | The ARN of the network profile to delete.
 dnpArn :: Lens' DeleteNetworkProfile Text
@@ -101,12 +98,10 @@ instance ToQuery DeleteNetworkProfile where
         toQuery = const mempty
 
 -- | /See:/ 'deleteNetworkProfileResponse' smart constructor.
-newtype DeleteNetworkProfileResponse =
-  DeleteNetworkProfileResponse'
-    { _dnprsResponseStatus :: Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+newtype DeleteNetworkProfileResponse = DeleteNetworkProfileResponse'{_dnprsResponseStatus
+                                                                     :: Int}
+                                         deriving (Eq, Read, Show, Data,
+                                                   Typeable, Generic)
 
 -- | Creates a value of 'DeleteNetworkProfileResponse' with the minimum fields required to make a request.
 --
@@ -116,9 +111,9 @@ newtype DeleteNetworkProfileResponse =
 deleteNetworkProfileResponse
     :: Int -- ^ 'dnprsResponseStatus'
     -> DeleteNetworkProfileResponse
-deleteNetworkProfileResponse pResponseStatus_ =
-  DeleteNetworkProfileResponse' {_dnprsResponseStatus = pResponseStatus_}
-
+deleteNetworkProfileResponse pResponseStatus_
+  = DeleteNetworkProfileResponse'{_dnprsResponseStatus
+                                    = pResponseStatus_}
 
 -- | -- | The response status code.
 dnprsResponseStatus :: Lens' DeleteNetworkProfileResponse Int

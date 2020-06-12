@@ -39,20 +39,16 @@ module Network.AWS.EC2.DeleteFpgaImage
     ) where
 
 import Network.AWS.EC2.Types
-import Network.AWS.EC2.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 
 -- | /See:/ 'deleteFpgaImage' smart constructor.
-data DeleteFpgaImage =
-  DeleteFpgaImage'
-    { _dfiDryRun      :: !(Maybe Bool)
-    , _dfiFpgaImageId :: !Text
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data DeleteFpgaImage = DeleteFpgaImage'{_dfiDryRun ::
+                                        !(Maybe Bool),
+                                        _dfiFpgaImageId :: !Text}
+                         deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'DeleteFpgaImage' with the minimum fields required to make a request.
 --
@@ -64,9 +60,9 @@ data DeleteFpgaImage =
 deleteFpgaImage
     :: Text -- ^ 'dfiFpgaImageId'
     -> DeleteFpgaImage
-deleteFpgaImage pFpgaImageId_ =
-  DeleteFpgaImage' {_dfiDryRun = Nothing, _dfiFpgaImageId = pFpgaImageId_}
-
+deleteFpgaImage pFpgaImageId_
+  = DeleteFpgaImage'{_dfiDryRun = Nothing,
+                     _dfiFpgaImageId = pFpgaImageId_}
 
 -- | Checks whether you have the required permissions for the action, without actually making the request, and provides an error response. If you have the required permissions, the error response is @DryRunOperation@ . Otherwise, it is @UnauthorizedOperation@ .
 dfiDryRun :: Lens' DeleteFpgaImage (Maybe Bool)
@@ -104,13 +100,12 @@ instance ToQuery DeleteFpgaImage where
                "FpgaImageId" =: _dfiFpgaImageId]
 
 -- | /See:/ 'deleteFpgaImageResponse' smart constructor.
-data DeleteFpgaImageResponse =
-  DeleteFpgaImageResponse'
-    { _dfifrsReturn         :: !(Maybe Bool)
-    , _dfifrsResponseStatus :: !Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data DeleteFpgaImageResponse = DeleteFpgaImageResponse'{_dfifrsReturn
+                                                        :: !(Maybe Bool),
+                                                        _dfifrsResponseStatus ::
+                                                        !Int}
+                                 deriving (Eq, Read, Show, Data, Typeable,
+                                           Generic)
 
 -- | Creates a value of 'DeleteFpgaImageResponse' with the minimum fields required to make a request.
 --
@@ -122,10 +117,9 @@ data DeleteFpgaImageResponse =
 deleteFpgaImageResponse
     :: Int -- ^ 'dfifrsResponseStatus'
     -> DeleteFpgaImageResponse
-deleteFpgaImageResponse pResponseStatus_ =
-  DeleteFpgaImageResponse'
-    {_dfifrsReturn = Nothing, _dfifrsResponseStatus = pResponseStatus_}
-
+deleteFpgaImageResponse pResponseStatus_
+  = DeleteFpgaImageResponse'{_dfifrsReturn = Nothing,
+                             _dfifrsResponseStatus = pResponseStatus_}
 
 -- | Is @true@ if the request succeeds, and an error otherwise.
 dfifrsReturn :: Lens' DeleteFpgaImageResponse (Maybe Bool)

@@ -40,22 +40,19 @@ module Network.AWS.RDS.RemoveTagsFromResource
 import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.RDS.Types
-import Network.AWS.RDS.Types.Product
 import Network.AWS.Request
 import Network.AWS.Response
 
--- |
+-- | 
 --
 --
 --
 -- /See:/ 'removeTagsFromResource' smart constructor.
-data RemoveTagsFromResource =
-  RemoveTagsFromResource'
-    { _rtfrResourceName :: !Text
-    , _rtfrTagKeys      :: ![Text]
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data RemoveTagsFromResource = RemoveTagsFromResource'{_rtfrResourceName
+                                                      :: !Text,
+                                                      _rtfrTagKeys :: ![Text]}
+                                deriving (Eq, Read, Show, Data, Typeable,
+                                          Generic)
 
 -- | Creates a value of 'RemoveTagsFromResource' with the minimum fields required to make a request.
 --
@@ -67,10 +64,10 @@ data RemoveTagsFromResource =
 removeTagsFromResource
     :: Text -- ^ 'rtfrResourceName'
     -> RemoveTagsFromResource
-removeTagsFromResource pResourceName_ =
-  RemoveTagsFromResource'
-    {_rtfrResourceName = pResourceName_, _rtfrTagKeys = mempty}
-
+removeTagsFromResource pResourceName_
+  = RemoveTagsFromResource'{_rtfrResourceName =
+                              pResourceName_,
+                            _rtfrTagKeys = mempty}
 
 -- | The Amazon RDS resource that the tags are removed from. This value is an Amazon Resource Name (ARN). For information about creating an ARN, see <http://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/USER_Tagging.ARN.html#USER_Tagging.ARN.Constructing Constructing an RDS Amazon Resource Name (ARN)> .
 rtfrResourceName :: Lens' RemoveTagsFromResource Text
@@ -107,16 +104,15 @@ instance ToQuery RemoveTagsFromResource where
                "TagKeys" =: toQueryList "member" _rtfrTagKeys]
 
 -- | /See:/ 'removeTagsFromResourceResponse' smart constructor.
-data RemoveTagsFromResourceResponse =
-  RemoveTagsFromResourceResponse'
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data RemoveTagsFromResourceResponse = RemoveTagsFromResourceResponse'
+                                        deriving (Eq, Read, Show, Data,
+                                                  Typeable, Generic)
 
 -- | Creates a value of 'RemoveTagsFromResourceResponse' with the minimum fields required to make a request.
 --
 removeTagsFromResourceResponse
     :: RemoveTagsFromResourceResponse
-removeTagsFromResourceResponse = RemoveTagsFromResourceResponse'
-
+removeTagsFromResourceResponse
+  = RemoveTagsFromResourceResponse'
 
 instance NFData RemoveTagsFromResourceResponse where

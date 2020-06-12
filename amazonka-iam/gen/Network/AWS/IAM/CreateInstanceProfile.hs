@@ -41,20 +41,18 @@ module Network.AWS.IAM.CreateInstanceProfile
     ) where
 
 import Network.AWS.IAM.Types
-import Network.AWS.IAM.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 
 -- | /See:/ 'createInstanceProfile' smart constructor.
-data CreateInstanceProfile =
-  CreateInstanceProfile'
-    { _cipPath                :: !(Maybe Text)
-    , _cipInstanceProfileName :: !Text
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data CreateInstanceProfile = CreateInstanceProfile'{_cipPath
+                                                    :: !(Maybe Text),
+                                                    _cipInstanceProfileName ::
+                                                    !Text}
+                               deriving (Eq, Read, Show, Data, Typeable,
+                                         Generic)
 
 -- | Creates a value of 'CreateInstanceProfile' with the minimum fields required to make a request.
 --
@@ -66,10 +64,9 @@ data CreateInstanceProfile =
 createInstanceProfile
     :: Text -- ^ 'cipInstanceProfileName'
     -> CreateInstanceProfile
-createInstanceProfile pInstanceProfileName_ =
-  CreateInstanceProfile'
-    {_cipPath = Nothing, _cipInstanceProfileName = pInstanceProfileName_}
-
+createInstanceProfile pInstanceProfileName_
+  = CreateInstanceProfile'{_cipPath = Nothing,
+                           _cipInstanceProfileName = pInstanceProfileName_}
 
 -- | The path to the instance profile. For more information about paths, see <http://docs.aws.amazon.com/IAM/latest/UserGuide/Using_Identifiers.html IAM Identifiers> in the /IAM User Guide/ . This parameter is optional. If it is not included, it defaults to a slash (/). This parameter allows (per its <http://wikipedia.org/wiki/regex regex pattern> ) a string of characters consisting of either a forward slash (/) by itself or a string that must begin and end with forward slashes. In addition, it can contain any ASCII character from the ! (\u0021) through the DEL character (\u007F), including most punctuation characters, digits, and upper and lowercased letters.
 cipPath :: Lens' CreateInstanceProfile (Maybe Text)
@@ -107,18 +104,18 @@ instance ToQuery CreateInstanceProfile where
                "Path" =: _cipPath,
                "InstanceProfileName" =: _cipInstanceProfileName]
 
--- | Contains the response to a successful 'CreateInstanceProfile' request.
+-- | Contains the response to a successful 'CreateInstanceProfile' request. 
 --
 --
 --
 -- /See:/ 'createInstanceProfileResponse' smart constructor.
-data CreateInstanceProfileResponse =
-  CreateInstanceProfileResponse'
-    { _ciprsResponseStatus  :: !Int
-    , _ciprsInstanceProfile :: !InstanceProfile
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data CreateInstanceProfileResponse = CreateInstanceProfileResponse'{_ciprsResponseStatus
+                                                                    :: !Int,
+                                                                    _ciprsInstanceProfile
+                                                                    ::
+                                                                    !InstanceProfile}
+                                       deriving (Eq, Read, Show, Data, Typeable,
+                                                 Generic)
 
 -- | Creates a value of 'CreateInstanceProfileResponse' with the minimum fields required to make a request.
 --
@@ -131,12 +128,11 @@ createInstanceProfileResponse
     :: Int -- ^ 'ciprsResponseStatus'
     -> InstanceProfile -- ^ 'ciprsInstanceProfile'
     -> CreateInstanceProfileResponse
-createInstanceProfileResponse pResponseStatus_ pInstanceProfile_ =
-  CreateInstanceProfileResponse'
-    { _ciprsResponseStatus = pResponseStatus_
-    , _ciprsInstanceProfile = pInstanceProfile_
-    }
-
+createInstanceProfileResponse pResponseStatus_
+  pInstanceProfile_
+  = CreateInstanceProfileResponse'{_ciprsResponseStatus
+                                     = pResponseStatus_,
+                                   _ciprsInstanceProfile = pInstanceProfile_}
 
 -- | -- | The response status code.
 ciprsResponseStatus :: Lens' CreateInstanceProfileResponse Int

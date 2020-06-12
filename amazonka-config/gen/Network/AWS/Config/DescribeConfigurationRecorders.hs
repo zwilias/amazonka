@@ -38,7 +38,6 @@ module Network.AWS.Config.DescribeConfigurationRecorders
     ) where
 
 import Network.AWS.Config.Types
-import Network.AWS.Config.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.Request
@@ -49,12 +48,12 @@ import Network.AWS.Response
 --
 --
 -- /See:/ 'describeConfigurationRecorders' smart constructor.
-newtype DescribeConfigurationRecorders =
-  DescribeConfigurationRecorders'
-    { _dcrConfigurationRecorderNames :: Maybe [Text]
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+newtype DescribeConfigurationRecorders = DescribeConfigurationRecorders'{_dcrConfigurationRecorderNames
+                                                                         ::
+                                                                         Maybe
+                                                                           [Text]}
+                                           deriving (Eq, Read, Show, Data,
+                                                     Typeable, Generic)
 
 -- | Creates a value of 'DescribeConfigurationRecorders' with the minimum fields required to make a request.
 --
@@ -63,9 +62,9 @@ newtype DescribeConfigurationRecorders =
 -- * 'dcrConfigurationRecorderNames' - A list of configuration recorder names.
 describeConfigurationRecorders
     :: DescribeConfigurationRecorders
-describeConfigurationRecorders =
-  DescribeConfigurationRecorders' {_dcrConfigurationRecorderNames = Nothing}
-
+describeConfigurationRecorders
+  = DescribeConfigurationRecorders'{_dcrConfigurationRecorderNames
+                                      = Nothing}
 
 -- | A list of configuration recorder names.
 dcrConfigurationRecorderNames :: Lens' DescribeConfigurationRecorders [Text]
@@ -117,13 +116,15 @@ instance ToQuery DescribeConfigurationRecorders where
 --
 --
 -- /See:/ 'describeConfigurationRecordersResponse' smart constructor.
-data DescribeConfigurationRecordersResponse =
-  DescribeConfigurationRecordersResponse'
-    { _dcrsrsConfigurationRecorders :: !(Maybe [ConfigurationRecorder])
-    , _dcrsrsResponseStatus         :: !Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data DescribeConfigurationRecordersResponse = DescribeConfigurationRecordersResponse'{_dcrsrsConfigurationRecorders
+                                                                                      ::
+                                                                                      !(Maybe
+                                                                                          [ConfigurationRecorder]),
+                                                                                      _dcrsrsResponseStatus
+                                                                                      ::
+                                                                                      !Int}
+                                                deriving (Eq, Read, Show, Data,
+                                                          Typeable, Generic)
 
 -- | Creates a value of 'DescribeConfigurationRecordersResponse' with the minimum fields required to make a request.
 --
@@ -135,12 +136,12 @@ data DescribeConfigurationRecordersResponse =
 describeConfigurationRecordersResponse
     :: Int -- ^ 'dcrsrsResponseStatus'
     -> DescribeConfigurationRecordersResponse
-describeConfigurationRecordersResponse pResponseStatus_ =
-  DescribeConfigurationRecordersResponse'
-    { _dcrsrsConfigurationRecorders = Nothing
-    , _dcrsrsResponseStatus = pResponseStatus_
-    }
-
+describeConfigurationRecordersResponse
+  pResponseStatus_
+  = DescribeConfigurationRecordersResponse'{_dcrsrsConfigurationRecorders
+                                              = Nothing,
+                                            _dcrsrsResponseStatus =
+                                              pResponseStatus_}
 
 -- | A list that contains the descriptions of the specified configuration recorders.
 dcrsrsConfigurationRecorders :: Lens' DescribeConfigurationRecordersResponse [ConfigurationRecorder]

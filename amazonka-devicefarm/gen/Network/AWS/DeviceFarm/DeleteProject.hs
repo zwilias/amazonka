@@ -39,7 +39,6 @@ module Network.AWS.DeviceFarm.DeleteProject
     ) where
 
 import Network.AWS.DeviceFarm.Types
-import Network.AWS.DeviceFarm.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.Request
@@ -50,12 +49,9 @@ import Network.AWS.Response
 --
 --
 -- /See:/ 'deleteProject' smart constructor.
-newtype DeleteProject =
-  DeleteProject'
-    { _dpArn :: Text
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+newtype DeleteProject = DeleteProject'{_dpArn ::
+                                       Text}
+                          deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'DeleteProject' with the minimum fields required to make a request.
 --
@@ -65,8 +61,7 @@ newtype DeleteProject =
 deleteProject
     :: Text -- ^ 'dpArn'
     -> DeleteProject
-deleteProject pArn_ = DeleteProject' {_dpArn = pArn_}
-
+deleteProject pArn_ = DeleteProject'{_dpArn = pArn_}
 
 -- | Represents the Amazon Resource Name (ARN) of the Device Farm project to delete.
 dpArn :: Lens' DeleteProject Text
@@ -108,12 +103,10 @@ instance ToQuery DeleteProject where
 --
 --
 -- /See:/ 'deleteProjectResponse' smart constructor.
-newtype DeleteProjectResponse =
-  DeleteProjectResponse'
-    { _dprsResponseStatus :: Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+newtype DeleteProjectResponse = DeleteProjectResponse'{_dprsResponseStatus
+                                                       :: Int}
+                                  deriving (Eq, Read, Show, Data, Typeable,
+                                            Generic)
 
 -- | Creates a value of 'DeleteProjectResponse' with the minimum fields required to make a request.
 --
@@ -123,9 +116,9 @@ newtype DeleteProjectResponse =
 deleteProjectResponse
     :: Int -- ^ 'dprsResponseStatus'
     -> DeleteProjectResponse
-deleteProjectResponse pResponseStatus_ =
-  DeleteProjectResponse' {_dprsResponseStatus = pResponseStatus_}
-
+deleteProjectResponse pResponseStatus_
+  = DeleteProjectResponse'{_dprsResponseStatus =
+                             pResponseStatus_}
 
 -- | -- | The response status code.
 dprsResponseStatus :: Lens' DeleteProjectResponse Int

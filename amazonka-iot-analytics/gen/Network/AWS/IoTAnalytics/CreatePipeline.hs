@@ -40,20 +40,17 @@ module Network.AWS.IoTAnalytics.CreatePipeline
     ) where
 
 import Network.AWS.IoTAnalytics.Types
-import Network.AWS.IoTAnalytics.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 
 -- | /See:/ 'createPipeline' smart constructor.
-data CreatePipeline =
-  CreatePipeline'
-    { _cpPipelineName       :: !Text
-    , _cpPipelineActivities :: !(List1 PipelineActivity)
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data CreatePipeline = CreatePipeline'{_cpPipelineName
+                                      :: !Text,
+                                      _cpPipelineActivities ::
+                                      !(List1 PipelineActivity)}
+                        deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'CreatePipeline' with the minimum fields required to make a request.
 --
@@ -66,12 +63,10 @@ createPipeline
     :: Text -- ^ 'cpPipelineName'
     -> NonEmpty PipelineActivity -- ^ 'cpPipelineActivities'
     -> CreatePipeline
-createPipeline pPipelineName_ pPipelineActivities_ =
-  CreatePipeline'
-    { _cpPipelineName = pPipelineName_
-    , _cpPipelineActivities = _List1 # pPipelineActivities_
-    }
-
+createPipeline pPipelineName_ pPipelineActivities_
+  = CreatePipeline'{_cpPipelineName = pPipelineName_,
+                    _cpPipelineActivities =
+                      _List1 # pPipelineActivities_}
 
 -- | The name of the pipeline.
 cpPipelineName :: Lens' CreatePipeline Text
@@ -113,14 +108,14 @@ instance ToQuery CreatePipeline where
         toQuery = const mempty
 
 -- | /See:/ 'createPipelineResponse' smart constructor.
-data CreatePipelineResponse =
-  CreatePipelineResponse'
-    { _cprsPipelineName   :: !(Maybe Text)
-    , _cprsPipelineARN    :: !(Maybe Text)
-    , _cprsResponseStatus :: !Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data CreatePipelineResponse = CreatePipelineResponse'{_cprsPipelineName
+                                                      :: !(Maybe Text),
+                                                      _cprsPipelineARN ::
+                                                      !(Maybe Text),
+                                                      _cprsResponseStatus ::
+                                                      !Int}
+                                deriving (Eq, Read, Show, Data, Typeable,
+                                          Generic)
 
 -- | Creates a value of 'CreatePipelineResponse' with the minimum fields required to make a request.
 --
@@ -134,13 +129,11 @@ data CreatePipelineResponse =
 createPipelineResponse
     :: Int -- ^ 'cprsResponseStatus'
     -> CreatePipelineResponse
-createPipelineResponse pResponseStatus_ =
-  CreatePipelineResponse'
-    { _cprsPipelineName = Nothing
-    , _cprsPipelineARN = Nothing
-    , _cprsResponseStatus = pResponseStatus_
-    }
-
+createPipelineResponse pResponseStatus_
+  = CreatePipelineResponse'{_cprsPipelineName =
+                              Nothing,
+                            _cprsPipelineARN = Nothing,
+                            _cprsResponseStatus = pResponseStatus_}
 
 -- | The name of the pipeline.
 cprsPipelineName :: Lens' CreatePipelineResponse (Maybe Text)

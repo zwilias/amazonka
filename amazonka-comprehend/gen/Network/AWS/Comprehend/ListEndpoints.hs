@@ -41,21 +41,17 @@ module Network.AWS.Comprehend.ListEndpoints
     ) where
 
 import Network.AWS.Comprehend.Types
-import Network.AWS.Comprehend.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 
 -- | /See:/ 'listEndpoints' smart constructor.
-data ListEndpoints =
-  ListEndpoints'
-    { _leNextToken  :: !(Maybe Text)
-    , _leFilter     :: !(Maybe EndpointFilter)
-    , _leMaxResults :: !(Maybe Nat)
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data ListEndpoints = ListEndpoints'{_leNextToken ::
+                                    !(Maybe Text),
+                                    _leFilter :: !(Maybe EndpointFilter),
+                                    _leMaxResults :: !(Maybe Nat)}
+                       deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'ListEndpoints' with the minimum fields required to make a request.
 --
@@ -63,21 +59,20 @@ data ListEndpoints =
 --
 -- * 'leNextToken' - Identifies the next page of results to return.
 --
--- * 'leFilter' - Filters the endpoints that are returned. You can filter endpoints on their name, model, status, or the date and time that they were created. You can only set one filter at a time.
+-- * 'leFilter' - Filters the endpoints that are returned. You can filter endpoints on their name, model, status, or the date and time that they were created. You can only set one filter at a time. 
 --
 -- * 'leMaxResults' - The maximum number of results to return in each page. The default is 100.
 listEndpoints
     :: ListEndpoints
-listEndpoints =
-  ListEndpoints'
-    {_leNextToken = Nothing, _leFilter = Nothing, _leMaxResults = Nothing}
-
+listEndpoints
+  = ListEndpoints'{_leNextToken = Nothing,
+                   _leFilter = Nothing, _leMaxResults = Nothing}
 
 -- | Identifies the next page of results to return.
 leNextToken :: Lens' ListEndpoints (Maybe Text)
 leNextToken = lens _leNextToken (\ s a -> s{_leNextToken = a})
 
--- | Filters the endpoints that are returned. You can filter endpoints on their name, model, status, or the date and time that they were created. You can only set one filter at a time.
+-- | Filters the endpoints that are returned. You can filter endpoints on their name, model, status, or the date and time that they were created. You can only set one filter at a time. 
 leFilter :: Lens' ListEndpoints (Maybe EndpointFilter)
 leFilter = lens _leFilter (\ s a -> s{_leFilter = a})
 
@@ -124,14 +119,15 @@ instance ToQuery ListEndpoints where
         toQuery = const mempty
 
 -- | /See:/ 'listEndpointsResponse' smart constructor.
-data ListEndpointsResponse =
-  ListEndpointsResponse'
-    { _lersEndpointPropertiesList :: !(Maybe [EndpointProperties])
-    , _lersNextToken              :: !(Maybe Text)
-    , _lersResponseStatus         :: !Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data ListEndpointsResponse = ListEndpointsResponse'{_lersEndpointPropertiesList
+                                                    ::
+                                                    !(Maybe
+                                                        [EndpointProperties]),
+                                                    _lersNextToken ::
+                                                    !(Maybe Text),
+                                                    _lersResponseStatus :: !Int}
+                               deriving (Eq, Read, Show, Data, Typeable,
+                                         Generic)
 
 -- | Creates a value of 'ListEndpointsResponse' with the minimum fields required to make a request.
 --
@@ -145,13 +141,11 @@ data ListEndpointsResponse =
 listEndpointsResponse
     :: Int -- ^ 'lersResponseStatus'
     -> ListEndpointsResponse
-listEndpointsResponse pResponseStatus_ =
-  ListEndpointsResponse'
-    { _lersEndpointPropertiesList = Nothing
-    , _lersNextToken = Nothing
-    , _lersResponseStatus = pResponseStatus_
-    }
-
+listEndpointsResponse pResponseStatus_
+  = ListEndpointsResponse'{_lersEndpointPropertiesList
+                             = Nothing,
+                           _lersNextToken = Nothing,
+                           _lersResponseStatus = pResponseStatus_}
 
 -- | Displays a list of endpoint properties being retrieved by the service in response to the request.
 lersEndpointPropertiesList :: Lens' ListEndpointsResponse [EndpointProperties]

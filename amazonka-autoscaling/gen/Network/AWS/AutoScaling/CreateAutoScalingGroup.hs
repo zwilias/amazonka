@@ -58,40 +58,61 @@ module Network.AWS.AutoScaling.CreateAutoScalingGroup
     ) where
 
 import Network.AWS.AutoScaling.Types
-import Network.AWS.AutoScaling.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 
 -- | /See:/ 'createAutoScalingGroup' smart constructor.
-data CreateAutoScalingGroup =
-  CreateAutoScalingGroup'
-    { _casgInstanceId :: !(Maybe Text)
-    , _casgTerminationPolicies :: !(Maybe [Text])
-    , _casgHealthCheckGracePeriod :: !(Maybe Int)
-    , _casgServiceLinkedRoleARN :: !(Maybe Text)
-    , _casgNewInstancesProtectedFromScaleIn :: !(Maybe Bool)
-    , _casgVPCZoneIdentifier :: !(Maybe Text)
-    , _casgTargetGroupARNs :: !(Maybe [Text])
-    , _casgMaxInstanceLifetime :: !(Maybe Int)
-    , _casgDefaultCooldown :: !(Maybe Int)
-    , _casgAvailabilityZones :: !(Maybe (List1 Text))
-    , _casgDesiredCapacity :: !(Maybe Int)
-    , _casgMixedInstancesPolicy :: !(Maybe MixedInstancesPolicy)
-    , _casgLaunchConfigurationName :: !(Maybe Text)
-    , _casgLifecycleHookSpecificationList :: !(Maybe [LifecycleHookSpecification])
-    , _casgHealthCheckType :: !(Maybe Text)
-    , _casgLaunchTemplate :: !(Maybe LaunchTemplateSpecification)
-    , _casgPlacementGroup :: !(Maybe Text)
-    , _casgLoadBalancerNames :: !(Maybe [Text])
-    , _casgTags :: !(Maybe [Tag])
-    , _casgAutoScalingGroupName :: !Text
-    , _casgMinSize :: !Int
-    , _casgMaxSize :: !Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data CreateAutoScalingGroup = CreateAutoScalingGroup'{_casgInstanceId
+                                                      :: !(Maybe Text),
+                                                      _casgTerminationPolicies
+                                                      :: !(Maybe [Text]),
+                                                      _casgHealthCheckGracePeriod
+                                                      :: !(Maybe Int),
+                                                      _casgServiceLinkedRoleARN
+                                                      :: !(Maybe Text),
+                                                      _casgNewInstancesProtectedFromScaleIn
+                                                      :: !(Maybe Bool),
+                                                      _casgVPCZoneIdentifier ::
+                                                      !(Maybe Text),
+                                                      _casgTargetGroupARNs ::
+                                                      !(Maybe [Text]),
+                                                      _casgMaxInstanceLifetime
+                                                      :: !(Maybe Int),
+                                                      _casgDefaultCooldown ::
+                                                      !(Maybe Int),
+                                                      _casgAvailabilityZones ::
+                                                      !(Maybe (List1 Text)),
+                                                      _casgDesiredCapacity ::
+                                                      !(Maybe Int),
+                                                      _casgMixedInstancesPolicy
+                                                      ::
+                                                      !(Maybe
+                                                          MixedInstancesPolicy),
+                                                      _casgLaunchConfigurationName
+                                                      :: !(Maybe Text),
+                                                      _casgLifecycleHookSpecificationList
+                                                      ::
+                                                      !(Maybe
+                                                          [LifecycleHookSpecification]),
+                                                      _casgHealthCheckType ::
+                                                      !(Maybe Text),
+                                                      _casgLaunchTemplate ::
+                                                      !(Maybe
+                                                          LaunchTemplateSpecification),
+                                                      _casgPlacementGroup ::
+                                                      !(Maybe Text),
+                                                      _casgLoadBalancerNames ::
+                                                      !(Maybe [Text]),
+                                                      _casgTags ::
+                                                      !(Maybe [Tag]),
+                                                      _casgAutoScalingGroupName
+                                                      :: !Text,
+                                                      _casgMinSize :: !Int,
+                                                      _casgMaxSize :: !Int}
+                                deriving (Eq, Read, Show, Data, Typeable,
+                                          Generic)
 
 -- | Creates a value of 'CreateAutoScalingGroup' with the minimum fields required to make a request.
 --
@@ -145,32 +166,29 @@ createAutoScalingGroup
     -> Int -- ^ 'casgMinSize'
     -> Int -- ^ 'casgMaxSize'
     -> CreateAutoScalingGroup
-createAutoScalingGroup pAutoScalingGroupName_ pMinSize_ pMaxSize_ =
-  CreateAutoScalingGroup'
-    { _casgInstanceId = Nothing
-    , _casgTerminationPolicies = Nothing
-    , _casgHealthCheckGracePeriod = Nothing
-    , _casgServiceLinkedRoleARN = Nothing
-    , _casgNewInstancesProtectedFromScaleIn = Nothing
-    , _casgVPCZoneIdentifier = Nothing
-    , _casgTargetGroupARNs = Nothing
-    , _casgMaxInstanceLifetime = Nothing
-    , _casgDefaultCooldown = Nothing
-    , _casgAvailabilityZones = Nothing
-    , _casgDesiredCapacity = Nothing
-    , _casgMixedInstancesPolicy = Nothing
-    , _casgLaunchConfigurationName = Nothing
-    , _casgLifecycleHookSpecificationList = Nothing
-    , _casgHealthCheckType = Nothing
-    , _casgLaunchTemplate = Nothing
-    , _casgPlacementGroup = Nothing
-    , _casgLoadBalancerNames = Nothing
-    , _casgTags = Nothing
-    , _casgAutoScalingGroupName = pAutoScalingGroupName_
-    , _casgMinSize = pMinSize_
-    , _casgMaxSize = pMaxSize_
-    }
-
+createAutoScalingGroup pAutoScalingGroupName_
+  pMinSize_ pMaxSize_
+  = CreateAutoScalingGroup'{_casgInstanceId = Nothing,
+                            _casgTerminationPolicies = Nothing,
+                            _casgHealthCheckGracePeriod = Nothing,
+                            _casgServiceLinkedRoleARN = Nothing,
+                            _casgNewInstancesProtectedFromScaleIn = Nothing,
+                            _casgVPCZoneIdentifier = Nothing,
+                            _casgTargetGroupARNs = Nothing,
+                            _casgMaxInstanceLifetime = Nothing,
+                            _casgDefaultCooldown = Nothing,
+                            _casgAvailabilityZones = Nothing,
+                            _casgDesiredCapacity = Nothing,
+                            _casgMixedInstancesPolicy = Nothing,
+                            _casgLaunchConfigurationName = Nothing,
+                            _casgLifecycleHookSpecificationList = Nothing,
+                            _casgHealthCheckType = Nothing,
+                            _casgLaunchTemplate = Nothing,
+                            _casgPlacementGroup = Nothing,
+                            _casgLoadBalancerNames = Nothing,
+                            _casgTags = Nothing,
+                            _casgAutoScalingGroupName = pAutoScalingGroupName_,
+                            _casgMinSize = pMinSize_, _casgMaxSize = pMaxSize_}
 
 -- | The ID of the instance used to create a launch configuration for the group. When you specify an ID of an instance, Amazon EC2 Auto Scaling creates a new launch configuration and associates it with the group. This launch configuration derives its attributes from the specified instance, except for the block device mapping. For more information, see <https://docs.aws.amazon.com/autoscaling/ec2/userguide/create-asg-from-instance.html Create an Auto Scaling Group Using an EC2 Instance> in the /Amazon EC2 Auto Scaling User Guide/ . You must specify one of the following parameters in your request: @LaunchConfigurationName@ , @LaunchTemplate@ , @InstanceId@ , or @MixedInstancesPolicy@ .
 casgInstanceId :: Lens' CreateAutoScalingGroup (Maybe Text)
@@ -321,16 +339,15 @@ instance ToQuery CreateAutoScalingGroup where
                "MinSize" =: _casgMinSize, "MaxSize" =: _casgMaxSize]
 
 -- | /See:/ 'createAutoScalingGroupResponse' smart constructor.
-data CreateAutoScalingGroupResponse =
-  CreateAutoScalingGroupResponse'
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data CreateAutoScalingGroupResponse = CreateAutoScalingGroupResponse'
+                                        deriving (Eq, Read, Show, Data,
+                                                  Typeable, Generic)
 
 -- | Creates a value of 'CreateAutoScalingGroupResponse' with the minimum fields required to make a request.
 --
 createAutoScalingGroupResponse
     :: CreateAutoScalingGroupResponse
-createAutoScalingGroupResponse = CreateAutoScalingGroupResponse'
-
+createAutoScalingGroupResponse
+  = CreateAutoScalingGroupResponse'
 
 instance NFData CreateAutoScalingGroupResponse where

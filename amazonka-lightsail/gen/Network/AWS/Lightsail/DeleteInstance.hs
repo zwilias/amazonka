@@ -39,18 +39,14 @@ module Network.AWS.Lightsail.DeleteInstance
 
 import Network.AWS.Lens
 import Network.AWS.Lightsail.Types
-import Network.AWS.Lightsail.Types.Product
 import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 
 -- | /See:/ 'deleteInstance' smart constructor.
-newtype DeleteInstance =
-  DeleteInstance'
-    { _diInstanceName :: Text
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+newtype DeleteInstance = DeleteInstance'{_diInstanceName
+                                         :: Text}
+                           deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'DeleteInstance' with the minimum fields required to make a request.
 --
@@ -60,9 +56,8 @@ newtype DeleteInstance =
 deleteInstance
     :: Text -- ^ 'diInstanceName'
     -> DeleteInstance
-deleteInstance pInstanceName_ =
-  DeleteInstance' {_diInstanceName = pInstanceName_}
-
+deleteInstance pInstanceName_
+  = DeleteInstance'{_diInstanceName = pInstanceName_}
 
 -- | The name of the instance to delete.
 diInstanceName :: Lens' DeleteInstance Text
@@ -104,13 +99,12 @@ instance ToQuery DeleteInstance where
         toQuery = const mempty
 
 -- | /See:/ 'deleteInstanceResponse' smart constructor.
-data DeleteInstanceResponse =
-  DeleteInstanceResponse'
-    { _dirsOperations     :: !(Maybe [Operation])
-    , _dirsResponseStatus :: !Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data DeleteInstanceResponse = DeleteInstanceResponse'{_dirsOperations
+                                                      :: !(Maybe [Operation]),
+                                                      _dirsResponseStatus ::
+                                                      !Int}
+                                deriving (Eq, Read, Show, Data, Typeable,
+                                          Generic)
 
 -- | Creates a value of 'DeleteInstanceResponse' with the minimum fields required to make a request.
 --
@@ -122,10 +116,9 @@ data DeleteInstanceResponse =
 deleteInstanceResponse
     :: Int -- ^ 'dirsResponseStatus'
     -> DeleteInstanceResponse
-deleteInstanceResponse pResponseStatus_ =
-  DeleteInstanceResponse'
-    {_dirsOperations = Nothing, _dirsResponseStatus = pResponseStatus_}
-
+deleteInstanceResponse pResponseStatus_
+  = DeleteInstanceResponse'{_dirsOperations = Nothing,
+                            _dirsResponseStatus = pResponseStatus_}
 
 -- | An array of key-value pairs containing information about the results of your delete instance request.
 dirsOperations :: Lens' DeleteInstanceResponse [Operation]

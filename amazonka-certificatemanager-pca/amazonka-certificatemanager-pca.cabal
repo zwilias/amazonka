@@ -65,8 +65,22 @@ library
         , Network.AWS.CertificateManagerPCA.Waiters
 
     other-modules:
-          Network.AWS.CertificateManagerPCA.Types.Product
-        , Network.AWS.CertificateManagerPCA.Types.Sum
+          Network.AWS.CertificateManagerPCA.Types.ASN1Subject
+        , Network.AWS.CertificateManagerPCA.Types.AuditReportResponseFormat
+        , Network.AWS.CertificateManagerPCA.Types.AuditReportStatus
+        , Network.AWS.CertificateManagerPCA.Types.CertificateAuthority
+        , Network.AWS.CertificateManagerPCA.Types.CertificateAuthorityConfiguration
+        , Network.AWS.CertificateManagerPCA.Types.CertificateAuthorityStatus
+        , Network.AWS.CertificateManagerPCA.Types.CertificateAuthorityType
+        , Network.AWS.CertificateManagerPCA.Types.CrlConfiguration
+        , Network.AWS.CertificateManagerPCA.Types.FailureReason
+        , Network.AWS.CertificateManagerPCA.Types.KeyAlgorithm
+        , Network.AWS.CertificateManagerPCA.Types.RevocationConfiguration
+        , Network.AWS.CertificateManagerPCA.Types.RevocationReason
+        , Network.AWS.CertificateManagerPCA.Types.SigningAlgorithm
+        , Network.AWS.CertificateManagerPCA.Types.Tag
+        , Network.AWS.CertificateManagerPCA.Types.Validity
+        , Network.AWS.CertificateManagerPCA.Types.ValidityPeriodType
 
     build-depends:
           amazonka-core == 1.6.1.*

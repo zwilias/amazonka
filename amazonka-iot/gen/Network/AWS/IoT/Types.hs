@@ -1,4 +1,4 @@
-{-# LANGUAGE OverloadedStrings #-}
+{-# LANGUAGE OverloadedStrings  #-}
 
 -- Derived from AWS service descriptions, licensed under Apache 2.0.
 
@@ -716,253 +716,351 @@ module Network.AWS.IoT.Types
     , tdRejectReason
     ) where
 
-import Network.AWS.IoT.Types.Product
-import Network.AWS.IoT.Types.Sum
 import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.Sign.V4
+import Network.AWS.IoT.Types.ActionType
+import Network.AWS.IoT.Types.AuthDecision
+import Network.AWS.IoT.Types.AuthorizerStatus
+import Network.AWS.IoT.Types.AutoRegistrationStatus
+import Network.AWS.IoT.Types.CACertificateStatus
+import Network.AWS.IoT.Types.CannedAccessControlList
+import Network.AWS.IoT.Types.CertificateStatus
+import Network.AWS.IoT.Types.DynamoKeyType
+import Network.AWS.IoT.Types.EventType
+import Network.AWS.IoT.Types.IndexStatus
+import Network.AWS.IoT.Types.JobExecutionStatus
+import Network.AWS.IoT.Types.JobStatus
+import Network.AWS.IoT.Types.LogLevel
+import Network.AWS.IoT.Types.LogTargetType
+import Network.AWS.IoT.Types.MessageFormat
+import Network.AWS.IoT.Types.OTAUpdateStatus
+import Network.AWS.IoT.Types.ReportType
+import Network.AWS.IoT.Types.TargetSelection
+import Network.AWS.IoT.Types.TaskStatus
+import Network.AWS.IoT.Types.ThingIndexingMode
+import Network.AWS.IoT.Types.Action
+import Network.AWS.IoT.Types.Allowed
+import Network.AWS.IoT.Types.AttributePayload
+import Network.AWS.IoT.Types.AuthInfo
+import Network.AWS.IoT.Types.AuthResult
+import Network.AWS.IoT.Types.AuthorizerDescription
+import Network.AWS.IoT.Types.AuthorizerSummary
+import Network.AWS.IoT.Types.CACertificate
+import Network.AWS.IoT.Types.CACertificateDescription
+import Network.AWS.IoT.Types.Certificate
+import Network.AWS.IoT.Types.CertificateDescription
+import Network.AWS.IoT.Types.CloudwatchAlarmAction
+import Network.AWS.IoT.Types.CloudwatchMetricAction
+import Network.AWS.IoT.Types.CodeSigning
+import Network.AWS.IoT.Types.CodeSigningCertificateChain
+import Network.AWS.IoT.Types.CodeSigningSignature
+import Network.AWS.IoT.Types.Configuration
+import Network.AWS.IoT.Types.CustomCodeSigning
+import Network.AWS.IoT.Types.Denied
+import Network.AWS.IoT.Types.DynamoDBAction
+import Network.AWS.IoT.Types.DynamoDBv2Action
+import Network.AWS.IoT.Types.EffectivePolicy
+import Network.AWS.IoT.Types.ElasticsearchAction
+import Network.AWS.IoT.Types.ErrorInfo
+import Network.AWS.IoT.Types.ExplicitDeny
+import Network.AWS.IoT.Types.FirehoseAction
+import Network.AWS.IoT.Types.GroupNameAndARN
+import Network.AWS.IoT.Types.ImplicitDeny
+import Network.AWS.IoT.Types.IotAnalyticsAction
+import Network.AWS.IoT.Types.Job
+import Network.AWS.IoT.Types.JobExecution
+import Network.AWS.IoT.Types.JobExecutionStatusDetails
+import Network.AWS.IoT.Types.JobExecutionSummary
+import Network.AWS.IoT.Types.JobExecutionSummaryForJob
+import Network.AWS.IoT.Types.JobExecutionSummaryForThing
+import Network.AWS.IoT.Types.JobExecutionsRolloutConfig
+import Network.AWS.IoT.Types.JobProcessDetails
+import Network.AWS.IoT.Types.JobSummary
+import Network.AWS.IoT.Types.KeyPair
+import Network.AWS.IoT.Types.KinesisAction
+import Network.AWS.IoT.Types.LambdaAction
+import Network.AWS.IoT.Types.LogTarget
+import Network.AWS.IoT.Types.LogTargetConfiguration
+import Network.AWS.IoT.Types.LoggingOptionsPayload
+import Network.AWS.IoT.Types.OTAUpdateFile
+import Network.AWS.IoT.Types.OTAUpdateInfo
+import Network.AWS.IoT.Types.OTAUpdateSummary
+import Network.AWS.IoT.Types.OutgoingCertificate
+import Network.AWS.IoT.Types.Policy
+import Network.AWS.IoT.Types.PolicyVersion
+import Network.AWS.IoT.Types.PresignedURLConfig
+import Network.AWS.IoT.Types.PutItemInput
+import Network.AWS.IoT.Types.RegistrationConfig
+import Network.AWS.IoT.Types.RepublishAction
+import Network.AWS.IoT.Types.RoleAliasDescription
+import Network.AWS.IoT.Types.S3Action
+import Network.AWS.IoT.Types.S3Location
+import Network.AWS.IoT.Types.SNSAction
+import Network.AWS.IoT.Types.SalesforceAction
+import Network.AWS.IoT.Types.SqsAction
+import Network.AWS.IoT.Types.Stream
+import Network.AWS.IoT.Types.StreamFile
+import Network.AWS.IoT.Types.StreamInfo
+import Network.AWS.IoT.Types.StreamSummary
+import Network.AWS.IoT.Types.ThingAttribute
+import Network.AWS.IoT.Types.ThingDocument
+import Network.AWS.IoT.Types.ThingGroupMetadata
+import Network.AWS.IoT.Types.ThingGroupProperties
+import Network.AWS.IoT.Types.ThingIndexingConfiguration
+import Network.AWS.IoT.Types.ThingTypeDefinition
+import Network.AWS.IoT.Types.ThingTypeMetadata
+import Network.AWS.IoT.Types.ThingTypeProperties
+import Network.AWS.IoT.Types.TopicRule
+import Network.AWS.IoT.Types.TopicRuleListItem
+import Network.AWS.IoT.Types.TopicRulePayload
+import Network.AWS.IoT.Types.TransferData
 
 -- | API version @2015-05-28@ of the Amazon IoT SDK configuration.
 ioT :: Service
-ioT =
-  Service
-    { _svcAbbrev = "IoT"
-    , _svcSigner = v4
-    , _svcPrefix = "iot"
-    , _svcVersion = "2015-05-28"
-    , _svcEndpoint = defaultEndpoint ioT
-    , _svcTimeout = Just 70
-    , _svcCheck = statusSuccess
-    , _svcError = parseJSONError "IoT"
-    , _svcRetry = retry
-    }
-  where
-    retry =
-      Exponential
-        { _retryBase = 5.0e-2
-        , _retryGrowth = 2
-        , _retryAttempts = 5
-        , _retryCheck = check
-        }
-    check e
-      | has (hasCode "ThrottledException" . hasStatus 400) e =
-        Just "throttled_exception"
-      | has (hasStatus 429) e = Just "too_many_requests"
-      | has (hasCode "ThrottlingException" . hasStatus 400) e =
-        Just "throttling_exception"
-      | has (hasCode "Throttling" . hasStatus 400) e = Just "throttling"
-      | has (hasStatus 504) e = Just "gateway_timeout"
-      | has (hasCode "RequestThrottledException" . hasStatus 400) e =
-        Just "request_throttled_exception"
-      | has (hasStatus 502) e = Just "bad_gateway"
-      | has (hasStatus 503) e = Just "service_unavailable"
-      | has (hasStatus 500) e = Just "general_server_error"
-      | has (hasStatus 509) e = Just "limit_exceeded"
-      | otherwise = Nothing
-
+ioT
+  = Service{_svcAbbrev = "IoT", _svcSigner = v4,
+            _svcPrefix = "iot", _svcVersion = "2015-05-28",
+            _svcEndpoint = defaultEndpoint ioT,
+            _svcTimeout = Just 70, _svcCheck = statusSuccess,
+            _svcError = parseJSONError "IoT", _svcRetry = retry}
+  where retry
+          = Exponential{_retryBase = 5.0e-2, _retryGrowth = 2,
+                        _retryAttempts = 5, _retryCheck = check}
+        check e
+          | has (hasCode "ThrottledException" . hasStatus 400)
+              e
+            = Just "throttled_exception"
+          | has (hasStatus 429) e = Just "too_many_requests"
+          | has (hasCode "ThrottlingException" . hasStatus 400)
+              e
+            = Just "throttling_exception"
+          | has (hasCode "Throttling" . hasStatus 400) e =
+            Just "throttling"
+          | has (hasStatus 504) e = Just "gateway_timeout"
+          | has
+              (hasCode "RequestThrottledException" . hasStatus 400)
+              e
+            = Just "request_throttled_exception"
+          | has (hasStatus 502) e = Just "bad_gateway"
+          | has (hasStatus 503) e = Just "service_unavailable"
+          | has (hasStatus 500) e = Just "general_server_error"
+          | has (hasStatus 509) e = Just "limit_exceeded"
+          | otherwise = Nothing
 
 -- | Unable to verify the CA certificate used to sign the device certificate you are attempting to register. This is happens when you have registered more than one CA certificate that has the same subject field and public key.
 --
 --
 _CertificateConflictException :: AsError a => Getting (First ServiceError) a ServiceError
-_CertificateConflictException =
-  _MatchServiceError ioT "CertificateConflictException" . hasStatus 409
-
+_CertificateConflictException
+  = _MatchServiceError ioT
+      "CertificateConflictException"
+      . hasStatus 409
 
 -- | The Rule-SQL expression can't be parsed correctly.
 --
 --
 _SqlParseException :: AsError a => Getting (First ServiceError) a ServiceError
-_SqlParseException = _MatchServiceError ioT "SqlParseException" . hasStatus 400
-
+_SqlParseException
+  = _MatchServiceError ioT "SqlParseException" .
+      hasStatus 400
 
 -- | The index is not ready.
 --
 --
 _IndexNotReadyException :: AsError a => Getting (First ServiceError) a ServiceError
-_IndexNotReadyException =
-  _MatchServiceError ioT "IndexNotReadyException" . hasStatus 400
-
+_IndexNotReadyException
+  = _MatchServiceError ioT "IndexNotReadyException" .
+      hasStatus 400
 
 -- | The request is not valid.
 --
 --
 _InvalidRequestException :: AsError a => Getting (First ServiceError) a ServiceError
-_InvalidRequestException =
-  _MatchServiceError ioT "InvalidRequestException" . hasStatus 400
-
+_InvalidRequestException
+  = _MatchServiceError ioT "InvalidRequestException" .
+      hasStatus 400
 
 -- | You can't transfer the certificate because authorization policies are still attached.
 --
 --
 _TransferConflictException :: AsError a => Getting (First ServiceError) a ServiceError
-_TransferConflictException =
-  _MatchServiceError ioT "TransferConflictException" . hasStatus 409
-
+_TransferConflictException
+  = _MatchServiceError ioT "TransferConflictException"
+      . hasStatus 409
 
 -- | The certificate operation is not allowed.
 --
 --
 _CertificateStateException :: AsError a => Getting (First ServiceError) a ServiceError
-_CertificateStateException =
-  _MatchServiceError ioT "CertificateStateException" . hasStatus 406
-
+_CertificateStateException
+  = _MatchServiceError ioT "CertificateStateException"
+      . hasStatus 406
 
 -- | The response is invalid.
 --
 --
 _InvalidResponseException :: AsError a => Getting (First ServiceError) a ServiceError
-_InvalidResponseException =
-  _MatchServiceError ioT "InvalidResponseException" . hasStatus 400
-
+_InvalidResponseException
+  = _MatchServiceError ioT "InvalidResponseException" .
+      hasStatus 400
 
 -- | The registration code is invalid.
 --
 --
 _RegistrationCodeValidationException :: AsError a => Getting (First ServiceError) a ServiceError
-_RegistrationCodeValidationException =
-  _MatchServiceError ioT "RegistrationCodeValidationException" . hasStatus 400
-
+_RegistrationCodeValidationException
+  = _MatchServiceError ioT
+      "RegistrationCodeValidationException"
+      . hasStatus 400
 
 -- | The policy documentation is not valid.
 --
 --
 _MalformedPolicyException :: AsError a => Getting (First ServiceError) a ServiceError
-_MalformedPolicyException =
-  _MatchServiceError ioT "MalformedPolicyException" . hasStatus 400
-
+_MalformedPolicyException
+  = _MatchServiceError ioT "MalformedPolicyException" .
+      hasStatus 400
 
 -- | You can't delete the resource because it is attached to one or more resources.
 --
 --
 _DeleteConflictException :: AsError a => Getting (First ServiceError) a ServiceError
-_DeleteConflictException =
-  _MatchServiceError ioT "DeleteConflictException" . hasStatus 409
-
+_DeleteConflictException
+  = _MatchServiceError ioT "DeleteConflictException" .
+      hasStatus 409
 
 -- | The resource already exists.
 --
 --
 _ResourceAlreadyExistsException :: AsError a => Getting (First ServiceError) a ServiceError
-_ResourceAlreadyExistsException =
-  _MatchServiceError ioT "ResourceAlreadyExistsException" . hasStatus 409
-
+_ResourceAlreadyExistsException
+  = _MatchServiceError ioT
+      "ResourceAlreadyExistsException"
+      . hasStatus 409
 
 -- | The resource is not configured.
 --
 --
 _NotConfiguredException :: AsError a => Getting (First ServiceError) a ServiceError
-_NotConfiguredException =
-  _MatchServiceError ioT "NotConfiguredException" . hasStatus 404
-
+_NotConfiguredException
+  = _MatchServiceError ioT "NotConfiguredException" .
+      hasStatus 404
 
 -- | The certificate is invalid.
 --
 --
 _CertificateValidationException :: AsError a => Getting (First ServiceError) a ServiceError
-_CertificateValidationException =
-  _MatchServiceError ioT "CertificateValidationException" . hasStatus 400
-
+_CertificateValidationException
+  = _MatchServiceError ioT
+      "CertificateValidationException"
+      . hasStatus 400
 
 -- | The resource registration failed.
 --
 --
 _ResourceRegistrationFailureException :: AsError a => Getting (First ServiceError) a ServiceError
-_ResourceRegistrationFailureException =
-  _MatchServiceError ioT "ResourceRegistrationFailureException" . hasStatus 400
-
+_ResourceRegistrationFailureException
+  = _MatchServiceError ioT
+      "ResourceRegistrationFailureException"
+      . hasStatus 400
 
 -- | The query is invalid.
 --
 --
 _InvalidQueryException :: AsError a => Getting (First ServiceError) a ServiceError
-_InvalidQueryException =
-  _MatchServiceError ioT "InvalidQueryException" . hasStatus 400
-
+_InvalidQueryException
+  = _MatchServiceError ioT "InvalidQueryException" .
+      hasStatus 400
 
 -- | You can't revert the certificate transfer because the transfer is already complete.
 --
 --
 _TransferAlreadyCompletedException :: AsError a => Getting (First ServiceError) a ServiceError
-_TransferAlreadyCompletedException =
-  _MatchServiceError ioT "TransferAlreadyCompletedException" . hasStatus 410
-
+_TransferAlreadyCompletedException
+  = _MatchServiceError ioT
+      "TransferAlreadyCompletedException"
+      . hasStatus 410
 
 -- | The rate exceeds the limit.
 --
 --
 _ThrottlingException :: AsError a => Getting (First ServiceError) a ServiceError
-_ThrottlingException =
-  _MatchServiceError ioT "ThrottlingException" . hasStatus 429
-
+_ThrottlingException
+  = _MatchServiceError ioT "ThrottlingException" .
+      hasStatus 429
 
 -- | A conflicting resource update exception. This exception is thrown when two pending updates cause a conflict.
 --
 --
 _ConflictingResourceUpdateException :: AsError a => Getting (First ServiceError) a ServiceError
-_ConflictingResourceUpdateException =
-  _MatchServiceError ioT "ConflictingResourceUpdateException" . hasStatus 409
-
+_ConflictingResourceUpdateException
+  = _MatchServiceError ioT
+      "ConflictingResourceUpdateException"
+      . hasStatus 409
 
 -- | An unexpected error has occurred.
 --
 --
 _InternalFailureException :: AsError a => Getting (First ServiceError) a ServiceError
-_InternalFailureException =
-  _MatchServiceError ioT "InternalFailureException" . hasStatus 500
-
+_InternalFailureException
+  = _MatchServiceError ioT "InternalFailureException" .
+      hasStatus 500
 
 -- | The number of policy versions exceeds the limit.
 --
 --
 _VersionsLimitExceededException :: AsError a => Getting (First ServiceError) a ServiceError
-_VersionsLimitExceededException =
-  _MatchServiceError ioT "VersionsLimitExceededException" . hasStatus 409
-
+_VersionsLimitExceededException
+  = _MatchServiceError ioT
+      "VersionsLimitExceededException"
+      . hasStatus 409
 
 -- | The service is temporarily unavailable.
 --
 --
 _ServiceUnavailableException :: AsError a => Getting (First ServiceError) a ServiceError
-_ServiceUnavailableException =
-  _MatchServiceError ioT "ServiceUnavailableException" . hasStatus 503
-
+_ServiceUnavailableException
+  = _MatchServiceError ioT
+      "ServiceUnavailableException"
+      . hasStatus 503
 
 -- | An unexpected error has occurred.
 --
 --
 _InternalException :: AsError a => Getting (First ServiceError) a ServiceError
-_InternalException = _MatchServiceError ioT "InternalException" . hasStatus 500
-
+_InternalException
+  = _MatchServiceError ioT "InternalException" .
+      hasStatus 500
 
 -- | An exception thrown when the version of a thing passed to a command is different than the version specified with the --version parameter.
 --
 --
 _VersionConflictException :: AsError a => Getting (First ServiceError) a ServiceError
-_VersionConflictException =
-  _MatchServiceError ioT "VersionConflictException" . hasStatus 409
-
+_VersionConflictException
+  = _MatchServiceError ioT "VersionConflictException" .
+      hasStatus 409
 
 -- | You are not authorized to perform this operation.
 --
 --
 _UnauthorizedException :: AsError a => Getting (First ServiceError) a ServiceError
-_UnauthorizedException =
-  _MatchServiceError ioT "UnauthorizedException" . hasStatus 401
-
+_UnauthorizedException
+  = _MatchServiceError ioT "UnauthorizedException" .
+      hasStatus 401
 
 -- | The specified resource does not exist.
 --
 --
 _ResourceNotFoundException :: AsError a => Getting (First ServiceError) a ServiceError
-_ResourceNotFoundException =
-  _MatchServiceError ioT "ResourceNotFoundException" . hasStatus 404
-
+_ResourceNotFoundException
+  = _MatchServiceError ioT "ResourceNotFoundException"
+      . hasStatus 404
 
 -- | The number of attached entities exceeds the limit.
 --
 --
 _LimitExceededException :: AsError a => Getting (First ServiceError) a ServiceError
-_LimitExceededException =
-  _MatchServiceError ioT "LimitExceededException" . hasStatus 410
-
+_LimitExceededException
+  = _MatchServiceError ioT "LimitExceededException" .
+      hasStatus 410

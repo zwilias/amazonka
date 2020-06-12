@@ -40,20 +40,16 @@ module Network.AWS.Organizations.MoveAccount
 
 import Network.AWS.Lens
 import Network.AWS.Organizations.Types
-import Network.AWS.Organizations.Types.Product
 import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 
 -- | /See:/ 'moveAccount' smart constructor.
-data MoveAccount =
-  MoveAccount'
-    { _maAccountId           :: !Text
-    , _maSourceParentId      :: !Text
-    , _maDestinationParentId :: !Text
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data MoveAccount = MoveAccount'{_maAccountId ::
+                                !Text,
+                                _maSourceParentId :: !Text,
+                                _maDestinationParentId :: !Text}
+                     deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'MoveAccount' with the minimum fields required to make a request.
 --
@@ -69,13 +65,11 @@ moveAccount
     -> Text -- ^ 'maSourceParentId'
     -> Text -- ^ 'maDestinationParentId'
     -> MoveAccount
-moveAccount pAccountId_ pSourceParentId_ pDestinationParentId_ =
-  MoveAccount'
-    { _maAccountId = pAccountId_
-    , _maSourceParentId = pSourceParentId_
-    , _maDestinationParentId = pDestinationParentId_
-    }
-
+moveAccount pAccountId_ pSourceParentId_
+  pDestinationParentId_
+  = MoveAccount'{_maAccountId = pAccountId_,
+                 _maSourceParentId = pSourceParentId_,
+                 _maDestinationParentId = pDestinationParentId_}
 
 -- | The unique identifier (ID) of the account that you want to move. The <http://wikipedia.org/wiki/regex regex pattern> for an account ID string requires exactly 12 digits.
 maAccountId :: Lens' MoveAccount Text
@@ -124,16 +118,13 @@ instance ToQuery MoveAccount where
         toQuery = const mempty
 
 -- | /See:/ 'moveAccountResponse' smart constructor.
-data MoveAccountResponse =
-  MoveAccountResponse'
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data MoveAccountResponse = MoveAccountResponse'
+                             deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'MoveAccountResponse' with the minimum fields required to make a request.
 --
 moveAccountResponse
     :: MoveAccountResponse
 moveAccountResponse = MoveAccountResponse'
-
 
 instance NFData MoveAccountResponse where

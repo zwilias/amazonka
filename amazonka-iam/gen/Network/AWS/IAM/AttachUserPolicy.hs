@@ -40,20 +40,16 @@ module Network.AWS.IAM.AttachUserPolicy
     ) where
 
 import Network.AWS.IAM.Types
-import Network.AWS.IAM.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 
 -- | /See:/ 'attachUserPolicy' smart constructor.
-data AttachUserPolicy =
-  AttachUserPolicy'
-    { _aupUserName  :: !Text
-    , _aupPolicyARN :: !Text
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data AttachUserPolicy = AttachUserPolicy'{_aupUserName
+                                          :: !Text,
+                                          _aupPolicyARN :: !Text}
+                          deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'AttachUserPolicy' with the minimum fields required to make a request.
 --
@@ -66,9 +62,9 @@ attachUserPolicy
     :: Text -- ^ 'aupUserName'
     -> Text -- ^ 'aupPolicyARN'
     -> AttachUserPolicy
-attachUserPolicy pUserName_ pPolicyARN_ =
-  AttachUserPolicy' {_aupUserName = pUserName_, _aupPolicyARN = pPolicyARN_}
-
+attachUserPolicy pUserName_ pPolicyARN_
+  = AttachUserPolicy'{_aupUserName = pUserName_,
+                      _aupPolicyARN = pPolicyARN_}
 
 -- | The name (friendly name, not ARN) of the IAM user to attach the policy to. This parameter allows (per its <http://wikipedia.org/wiki/regex regex pattern> ) a string of characters consisting of upper and lowercase alphanumeric characters with no spaces. You can also include any of the following characters: _+=,.@-
 aupUserName :: Lens' AttachUserPolicy Text
@@ -102,16 +98,14 @@ instance ToQuery AttachUserPolicy where
                "PolicyArn" =: _aupPolicyARN]
 
 -- | /See:/ 'attachUserPolicyResponse' smart constructor.
-data AttachUserPolicyResponse =
-  AttachUserPolicyResponse'
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data AttachUserPolicyResponse = AttachUserPolicyResponse'
+                                  deriving (Eq, Read, Show, Data, Typeable,
+                                            Generic)
 
 -- | Creates a value of 'AttachUserPolicyResponse' with the minimum fields required to make a request.
 --
 attachUserPolicyResponse
     :: AttachUserPolicyResponse
 attachUserPolicyResponse = AttachUserPolicyResponse'
-
 
 instance NFData AttachUserPolicyResponse where

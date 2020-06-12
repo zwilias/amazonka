@@ -40,18 +40,15 @@ module Network.AWS.MigrationHub.DescribeApplicationState
 
 import Network.AWS.Lens
 import Network.AWS.MigrationHub.Types
-import Network.AWS.MigrationHub.Types.Product
 import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 
 -- | /See:/ 'describeApplicationState' smart constructor.
-newtype DescribeApplicationState =
-  DescribeApplicationState'
-    { _dasApplicationId :: Text
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+newtype DescribeApplicationState = DescribeApplicationState'{_dasApplicationId
+                                                             :: Text}
+                                     deriving (Eq, Read, Show, Data, Typeable,
+                                               Generic)
 
 -- | Creates a value of 'DescribeApplicationState' with the minimum fields required to make a request.
 --
@@ -61,9 +58,9 @@ newtype DescribeApplicationState =
 describeApplicationState
     :: Text -- ^ 'dasApplicationId'
     -> DescribeApplicationState
-describeApplicationState pApplicationId_ =
-  DescribeApplicationState' {_dasApplicationId = pApplicationId_}
-
+describeApplicationState pApplicationId_
+  = DescribeApplicationState'{_dasApplicationId =
+                                pApplicationId_}
 
 -- | The configurationId in ADS that uniquely identifies the grouped application.
 dasApplicationId :: Lens' DescribeApplicationState Text
@@ -108,14 +105,19 @@ instance ToQuery DescribeApplicationState where
         toQuery = const mempty
 
 -- | /See:/ 'describeApplicationStateResponse' smart constructor.
-data DescribeApplicationStateResponse =
-  DescribeApplicationStateResponse'
-    { _dasrsLastUpdatedTime   :: !(Maybe POSIX)
-    , _dasrsApplicationStatus :: !(Maybe ApplicationStatus)
-    , _dasrsResponseStatus    :: !Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data DescribeApplicationStateResponse = DescribeApplicationStateResponse'{_dasrsLastUpdatedTime
+                                                                          ::
+                                                                          !(Maybe
+                                                                              POSIX),
+                                                                          _dasrsApplicationStatus
+                                                                          ::
+                                                                          !(Maybe
+                                                                              ApplicationStatus),
+                                                                          _dasrsResponseStatus
+                                                                          ::
+                                                                          !Int}
+                                          deriving (Eq, Read, Show, Data,
+                                                    Typeable, Generic)
 
 -- | Creates a value of 'DescribeApplicationStateResponse' with the minimum fields required to make a request.
 --
@@ -129,13 +131,11 @@ data DescribeApplicationStateResponse =
 describeApplicationStateResponse
     :: Int -- ^ 'dasrsResponseStatus'
     -> DescribeApplicationStateResponse
-describeApplicationStateResponse pResponseStatus_ =
-  DescribeApplicationStateResponse'
-    { _dasrsLastUpdatedTime = Nothing
-    , _dasrsApplicationStatus = Nothing
-    , _dasrsResponseStatus = pResponseStatus_
-    }
-
+describeApplicationStateResponse pResponseStatus_
+  = DescribeApplicationStateResponse'{_dasrsLastUpdatedTime
+                                        = Nothing,
+                                      _dasrsApplicationStatus = Nothing,
+                                      _dasrsResponseStatus = pResponseStatus_}
 
 -- | The timestamp when the application status was last updated.
 dasrsLastUpdatedTime :: Lens' DescribeApplicationStateResponse (Maybe UTCTime)

@@ -51,18 +51,14 @@ import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 import Network.AWS.StepFunctions.Types
-import Network.AWS.StepFunctions.Types.Product
 
 -- | /See:/ 'listExecutions' smart constructor.
-data ListExecutions =
-  ListExecutions'
-    { _leStatusFilter    :: !(Maybe ExecutionStatus)
-    , _leNextToken       :: !(Maybe Text)
-    , _leMaxResults      :: !(Maybe Nat)
-    , _leStateMachineARN :: !Text
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data ListExecutions = ListExecutions'{_leStatusFilter
+                                      :: !(Maybe ExecutionStatus),
+                                      _leNextToken :: !(Maybe Text),
+                                      _leMaxResults :: !(Maybe Nat),
+                                      _leStateMachineARN :: !Text}
+                        deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'ListExecutions' with the minimum fields required to make a request.
 --
@@ -78,14 +74,10 @@ data ListExecutions =
 listExecutions
     :: Text -- ^ 'leStateMachineARN'
     -> ListExecutions
-listExecutions pStateMachineARN_ =
-  ListExecutions'
-    { _leStatusFilter = Nothing
-    , _leNextToken = Nothing
-    , _leMaxResults = Nothing
-    , _leStateMachineARN = pStateMachineARN_
-    }
-
+listExecutions pStateMachineARN_
+  = ListExecutions'{_leStatusFilter = Nothing,
+                    _leNextToken = Nothing, _leMaxResults = Nothing,
+                    _leStateMachineARN = pStateMachineARN_}
 
 -- | If specified, only list the executions whose current execution status matches the given filter.
 leStatusFilter :: Lens' ListExecutions (Maybe ExecutionStatus)
@@ -149,14 +141,14 @@ instance ToQuery ListExecutions where
         toQuery = const mempty
 
 -- | /See:/ 'listExecutionsResponse' smart constructor.
-data ListExecutionsResponse =
-  ListExecutionsResponse'
-    { _lersNextToken      :: !(Maybe Text)
-    , _lersResponseStatus :: !Int
-    , _lersExecutions     :: ![ExecutionListItem]
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data ListExecutionsResponse = ListExecutionsResponse'{_lersNextToken
+                                                      :: !(Maybe Text),
+                                                      _lersResponseStatus ::
+                                                      !Int,
+                                                      _lersExecutions ::
+                                                      ![ExecutionListItem]}
+                                deriving (Eq, Read, Show, Data, Typeable,
+                                          Generic)
 
 -- | Creates a value of 'ListExecutionsResponse' with the minimum fields required to make a request.
 --
@@ -170,13 +162,10 @@ data ListExecutionsResponse =
 listExecutionsResponse
     :: Int -- ^ 'lersResponseStatus'
     -> ListExecutionsResponse
-listExecutionsResponse pResponseStatus_ =
-  ListExecutionsResponse'
-    { _lersNextToken = Nothing
-    , _lersResponseStatus = pResponseStatus_
-    , _lersExecutions = mempty
-    }
-
+listExecutionsResponse pResponseStatus_
+  = ListExecutionsResponse'{_lersNextToken = Nothing,
+                            _lersResponseStatus = pResponseStatus_,
+                            _lersExecutions = mempty}
 
 -- | If a @nextToken@ is returned by a previous call, there are more results available. To retrieve the next page of results, make the call again using the returned token in @nextToken@ . Keep all other arguments unchanged. The configured @maxResults@ determines how many results can be returned in a single call.
 lersNextToken :: Lens' ListExecutionsResponse (Maybe Text)

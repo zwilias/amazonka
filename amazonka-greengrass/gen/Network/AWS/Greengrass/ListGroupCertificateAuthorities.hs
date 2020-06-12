@@ -36,19 +36,17 @@ module Network.AWS.Greengrass.ListGroupCertificateAuthorities
     ) where
 
 import Network.AWS.Greengrass.Types
-import Network.AWS.Greengrass.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 
 -- | /See:/ 'listGroupCertificateAuthorities' smart constructor.
-newtype ListGroupCertificateAuthorities =
-  ListGroupCertificateAuthorities'
-    { _lgcaGroupId :: Text
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+newtype ListGroupCertificateAuthorities = ListGroupCertificateAuthorities'{_lgcaGroupId
+                                                                           ::
+                                                                           Text}
+                                            deriving (Eq, Read, Show, Data,
+                                                      Typeable, Generic)
 
 -- | Creates a value of 'ListGroupCertificateAuthorities' with the minimum fields required to make a request.
 --
@@ -58,9 +56,9 @@ newtype ListGroupCertificateAuthorities =
 listGroupCertificateAuthorities
     :: Text -- ^ 'lgcaGroupId'
     -> ListGroupCertificateAuthorities
-listGroupCertificateAuthorities pGroupId_ =
-  ListGroupCertificateAuthorities' {_lgcaGroupId = pGroupId_}
-
+listGroupCertificateAuthorities pGroupId_
+  = ListGroupCertificateAuthorities'{_lgcaGroupId =
+                                       pGroupId_}
 
 -- | The ID of the AWS Greengrass group.
 lgcaGroupId :: Lens' ListGroupCertificateAuthorities Text
@@ -102,13 +100,15 @@ instance ToQuery ListGroupCertificateAuthorities
         toQuery = const mempty
 
 -- | /See:/ 'listGroupCertificateAuthoritiesResponse' smart constructor.
-data ListGroupCertificateAuthoritiesResponse =
-  ListGroupCertificateAuthoritiesResponse'
-    { _lgcarsGroupCertificateAuthorities :: !(Maybe [GroupCertificateAuthorityProperties])
-    , _lgcarsResponseStatus :: !Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data ListGroupCertificateAuthoritiesResponse = ListGroupCertificateAuthoritiesResponse'{_lgcarsGroupCertificateAuthorities
+                                                                                        ::
+                                                                                        !(Maybe
+                                                                                            [GroupCertificateAuthorityProperties]),
+                                                                                        _lgcarsResponseStatus
+                                                                                        ::
+                                                                                        !Int}
+                                                 deriving (Eq, Read, Show, Data,
+                                                           Typeable, Generic)
 
 -- | Creates a value of 'ListGroupCertificateAuthoritiesResponse' with the minimum fields required to make a request.
 --
@@ -120,12 +120,12 @@ data ListGroupCertificateAuthoritiesResponse =
 listGroupCertificateAuthoritiesResponse
     :: Int -- ^ 'lgcarsResponseStatus'
     -> ListGroupCertificateAuthoritiesResponse
-listGroupCertificateAuthoritiesResponse pResponseStatus_ =
-  ListGroupCertificateAuthoritiesResponse'
-    { _lgcarsGroupCertificateAuthorities = Nothing
-    , _lgcarsResponseStatus = pResponseStatus_
-    }
-
+listGroupCertificateAuthoritiesResponse
+  pResponseStatus_
+  = ListGroupCertificateAuthoritiesResponse'{_lgcarsGroupCertificateAuthorities
+                                               = Nothing,
+                                             _lgcarsResponseStatus =
+                                               pResponseStatus_}
 
 -- | A list of certificate authorities associated with the group.
 lgcarsGroupCertificateAuthorities :: Lens' ListGroupCertificateAuthoritiesResponse [GroupCertificateAuthorityProperties]

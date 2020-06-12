@@ -55,16 +55,11 @@ import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 import Network.AWS.Route53AutoNaming.Types
-import Network.AWS.Route53AutoNaming.Types.Product
 
 -- | /See:/ 'updateService' smart constructor.
-data UpdateService =
-  UpdateService'
-    { _usId      :: !Text
-    , _usService :: !ServiceChange
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data UpdateService = UpdateService'{_usId :: !Text,
+                                    _usService :: !ServiceChange}
+                       deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'UpdateService' with the minimum fields required to make a request.
 --
@@ -77,9 +72,9 @@ updateService
     :: Text -- ^ 'usId'
     -> ServiceChange -- ^ 'usService'
     -> UpdateService
-updateService pId_ pService_ =
-  UpdateService' {_usId = pId_, _usService = pService_}
-
+updateService pId_ pService_
+  = UpdateService'{_usId = pId_,
+                   _usService = pService_}
 
 -- | The ID of the service that you want to update.
 usId :: Lens' UpdateService Text
@@ -126,13 +121,11 @@ instance ToQuery UpdateService where
         toQuery = const mempty
 
 -- | /See:/ 'updateServiceResponse' smart constructor.
-data UpdateServiceResponse =
-  UpdateServiceResponse'
-    { _usrsOperationId    :: !(Maybe Text)
-    , _usrsResponseStatus :: !Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data UpdateServiceResponse = UpdateServiceResponse'{_usrsOperationId
+                                                    :: !(Maybe Text),
+                                                    _usrsResponseStatus :: !Int}
+                               deriving (Eq, Read, Show, Data, Typeable,
+                                         Generic)
 
 -- | Creates a value of 'UpdateServiceResponse' with the minimum fields required to make a request.
 --
@@ -144,10 +137,9 @@ data UpdateServiceResponse =
 updateServiceResponse
     :: Int -- ^ 'usrsResponseStatus'
     -> UpdateServiceResponse
-updateServiceResponse pResponseStatus_ =
-  UpdateServiceResponse'
-    {_usrsOperationId = Nothing, _usrsResponseStatus = pResponseStatus_}
-
+updateServiceResponse pResponseStatus_
+  = UpdateServiceResponse'{_usrsOperationId = Nothing,
+                           _usrsResponseStatus = pResponseStatus_}
 
 -- | A value that you can use to determine whether the request completed successfully. To get the status of the operation, see 'GetOperation' .
 usrsOperationId :: Lens' UpdateServiceResponse (Maybe Text)

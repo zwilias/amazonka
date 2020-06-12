@@ -50,17 +50,13 @@ import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 import Network.AWS.XRay.Types
-import Network.AWS.XRay.Types.Product
 
 -- | /See:/ 'getServiceGraph' smart constructor.
-data GetServiceGraph =
-  GetServiceGraph'
-    { _gsgNextToken :: !(Maybe Text)
-    , _gsgStartTime :: !POSIX
-    , _gsgEndTime   :: !POSIX
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data GetServiceGraph = GetServiceGraph'{_gsgNextToken
+                                        :: !(Maybe Text),
+                                        _gsgStartTime :: !POSIX,
+                                        _gsgEndTime :: !POSIX}
+                         deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'GetServiceGraph' with the minimum fields required to make a request.
 --
@@ -75,13 +71,10 @@ getServiceGraph
     :: UTCTime -- ^ 'gsgStartTime'
     -> UTCTime -- ^ 'gsgEndTime'
     -> GetServiceGraph
-getServiceGraph pStartTime_ pEndTime_ =
-  GetServiceGraph'
-    { _gsgNextToken = Nothing
-    , _gsgStartTime = _Time # pStartTime_
-    , _gsgEndTime = _Time # pEndTime_
-    }
-
+getServiceGraph pStartTime_ pEndTime_
+  = GetServiceGraph'{_gsgNextToken = Nothing,
+                     _gsgStartTime = _Time # pStartTime_,
+                     _gsgEndTime = _Time # pEndTime_}
 
 -- | Pagination token. Not used.
 gsgNextToken :: Lens' GetServiceGraph (Maybe Text)
@@ -136,16 +129,18 @@ instance ToQuery GetServiceGraph where
         toQuery = const mempty
 
 -- | /See:/ 'getServiceGraphResponse' smart constructor.
-data GetServiceGraphResponse =
-  GetServiceGraphResponse'
-    { _gsgrsStartTime      :: !(Maybe POSIX)
-    , _gsgrsNextToken      :: !(Maybe Text)
-    , _gsgrsEndTime        :: !(Maybe POSIX)
-    , _gsgrsServices       :: !(Maybe [ServiceInfo])
-    , _gsgrsResponseStatus :: !Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data GetServiceGraphResponse = GetServiceGraphResponse'{_gsgrsStartTime
+                                                        :: !(Maybe POSIX),
+                                                        _gsgrsNextToken ::
+                                                        !(Maybe Text),
+                                                        _gsgrsEndTime ::
+                                                        !(Maybe POSIX),
+                                                        _gsgrsServices ::
+                                                        !(Maybe [ServiceInfo]),
+                                                        _gsgrsResponseStatus ::
+                                                        !Int}
+                                 deriving (Eq, Read, Show, Data, Typeable,
+                                           Generic)
 
 -- | Creates a value of 'GetServiceGraphResponse' with the minimum fields required to make a request.
 --
@@ -163,15 +158,11 @@ data GetServiceGraphResponse =
 getServiceGraphResponse
     :: Int -- ^ 'gsgrsResponseStatus'
     -> GetServiceGraphResponse
-getServiceGraphResponse pResponseStatus_ =
-  GetServiceGraphResponse'
-    { _gsgrsStartTime = Nothing
-    , _gsgrsNextToken = Nothing
-    , _gsgrsEndTime = Nothing
-    , _gsgrsServices = Nothing
-    , _gsgrsResponseStatus = pResponseStatus_
-    }
-
+getServiceGraphResponse pResponseStatus_
+  = GetServiceGraphResponse'{_gsgrsStartTime = Nothing,
+                             _gsgrsNextToken = Nothing, _gsgrsEndTime = Nothing,
+                             _gsgrsServices = Nothing,
+                             _gsgrsResponseStatus = pResponseStatus_}
 
 -- | The start of the time frame for which the graph was generated.
 gsgrsStartTime :: Lens' GetServiceGraphResponse (Maybe UTCTime)

@@ -42,7 +42,6 @@ module Network.AWS.DeviceFarm.ListRemoteAccessSessions
     ) where
 
 import Network.AWS.DeviceFarm.Types
-import Network.AWS.DeviceFarm.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Pager
 import Network.AWS.Prelude
@@ -54,13 +53,11 @@ import Network.AWS.Response
 --
 --
 -- /See:/ 'listRemoteAccessSessions' smart constructor.
-data ListRemoteAccessSessions =
-  ListRemoteAccessSessions'
-    { _lrasNextToken :: !(Maybe Text)
-    , _lrasArn       :: !Text
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data ListRemoteAccessSessions = ListRemoteAccessSessions'{_lrasNextToken
+                                                          :: !(Maybe Text),
+                                                          _lrasArn :: !Text}
+                                  deriving (Eq, Read, Show, Data, Typeable,
+                                            Generic)
 
 -- | Creates a value of 'ListRemoteAccessSessions' with the minimum fields required to make a request.
 --
@@ -72,9 +69,9 @@ data ListRemoteAccessSessions =
 listRemoteAccessSessions
     :: Text -- ^ 'lrasArn'
     -> ListRemoteAccessSessions
-listRemoteAccessSessions pArn_ =
-  ListRemoteAccessSessions' {_lrasNextToken = Nothing, _lrasArn = pArn_}
-
+listRemoteAccessSessions pArn_
+  = ListRemoteAccessSessions'{_lrasNextToken = Nothing,
+                              _lrasArn = pArn_}
 
 -- | An identifier that was returned from the previous call to this operation, which can be used to return the next set of items in the list.
 lrasNextToken :: Lens' ListRemoteAccessSessions (Maybe Text)
@@ -135,14 +132,19 @@ instance ToQuery ListRemoteAccessSessions where
 --
 --
 -- /See:/ 'listRemoteAccessSessionsResponse' smart constructor.
-data ListRemoteAccessSessionsResponse =
-  ListRemoteAccessSessionsResponse'
-    { _lrasrsNextToken            :: !(Maybe Text)
-    , _lrasrsRemoteAccessSessions :: !(Maybe [RemoteAccessSession])
-    , _lrasrsResponseStatus       :: !Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data ListRemoteAccessSessionsResponse = ListRemoteAccessSessionsResponse'{_lrasrsNextToken
+                                                                          ::
+                                                                          !(Maybe
+                                                                              Text),
+                                                                          _lrasrsRemoteAccessSessions
+                                                                          ::
+                                                                          !(Maybe
+                                                                              [RemoteAccessSession]),
+                                                                          _lrasrsResponseStatus
+                                                                          ::
+                                                                          !Int}
+                                          deriving (Eq, Read, Show, Data,
+                                                    Typeable, Generic)
 
 -- | Creates a value of 'ListRemoteAccessSessionsResponse' with the minimum fields required to make a request.
 --
@@ -156,13 +158,11 @@ data ListRemoteAccessSessionsResponse =
 listRemoteAccessSessionsResponse
     :: Int -- ^ 'lrasrsResponseStatus'
     -> ListRemoteAccessSessionsResponse
-listRemoteAccessSessionsResponse pResponseStatus_ =
-  ListRemoteAccessSessionsResponse'
-    { _lrasrsNextToken = Nothing
-    , _lrasrsRemoteAccessSessions = Nothing
-    , _lrasrsResponseStatus = pResponseStatus_
-    }
-
+listRemoteAccessSessionsResponse pResponseStatus_
+  = ListRemoteAccessSessionsResponse'{_lrasrsNextToken
+                                        = Nothing,
+                                      _lrasrsRemoteAccessSessions = Nothing,
+                                      _lrasrsResponseStatus = pResponseStatus_}
 
 -- | An identifier that was returned from the previous call to this operation, which can be used to return the next set of items in the list.
 lrasrsNextToken :: Lens' ListRemoteAccessSessionsResponse (Maybe Text)

@@ -43,22 +43,28 @@ module Network.AWS.IoT.ListThingRegistrationTaskReports
     ) where
 
 import Network.AWS.IoT.Types
-import Network.AWS.IoT.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 
 -- | /See:/ 'listThingRegistrationTaskReports' smart constructor.
-data ListThingRegistrationTaskReports =
-  ListThingRegistrationTaskReports'
-    { _ltrtrNextToken  :: !(Maybe Text)
-    , _ltrtrMaxResults :: !(Maybe Nat)
-    , _ltrtrTaskId     :: !Text
-    , _ltrtrReportType :: !ReportType
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data ListThingRegistrationTaskReports = ListThingRegistrationTaskReports'{_ltrtrNextToken
+                                                                          ::
+                                                                          !(Maybe
+                                                                              Text),
+                                                                          _ltrtrMaxResults
+                                                                          ::
+                                                                          !(Maybe
+                                                                              Nat),
+                                                                          _ltrtrTaskId
+                                                                          ::
+                                                                          !Text,
+                                                                          _ltrtrReportType
+                                                                          ::
+                                                                          !ReportType}
+                                          deriving (Eq, Read, Show, Data,
+                                                    Typeable, Generic)
 
 -- | Creates a value of 'ListThingRegistrationTaskReports' with the minimum fields required to make a request.
 --
@@ -75,14 +81,13 @@ listThingRegistrationTaskReports
     :: Text -- ^ 'ltrtrTaskId'
     -> ReportType -- ^ 'ltrtrReportType'
     -> ListThingRegistrationTaskReports
-listThingRegistrationTaskReports pTaskId_ pReportType_ =
-  ListThingRegistrationTaskReports'
-    { _ltrtrNextToken = Nothing
-    , _ltrtrMaxResults = Nothing
-    , _ltrtrTaskId = pTaskId_
-    , _ltrtrReportType = pReportType_
-    }
-
+listThingRegistrationTaskReports pTaskId_
+  pReportType_
+  = ListThingRegistrationTaskReports'{_ltrtrNextToken =
+                                        Nothing,
+                                      _ltrtrMaxResults = Nothing,
+                                      _ltrtrTaskId = pTaskId_,
+                                      _ltrtrReportType = pReportType_}
 
 -- | The token to retrieve the next set of results.
 ltrtrNextToken :: Lens' ListThingRegistrationTaskReports (Maybe Text)
@@ -140,15 +145,24 @@ instance ToQuery ListThingRegistrationTaskReports
                "reportType" =: _ltrtrReportType]
 
 -- | /See:/ 'listThingRegistrationTaskReportsResponse' smart constructor.
-data ListThingRegistrationTaskReportsResponse =
-  ListThingRegistrationTaskReportsResponse'
-    { _ltrtrrsResourceLinks  :: !(Maybe [Text])
-    , _ltrtrrsNextToken      :: !(Maybe Text)
-    , _ltrtrrsReportType     :: !(Maybe ReportType)
-    , _ltrtrrsResponseStatus :: !Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data ListThingRegistrationTaskReportsResponse = ListThingRegistrationTaskReportsResponse'{_ltrtrrsResourceLinks
+                                                                                          ::
+                                                                                          !(Maybe
+                                                                                              [Text]),
+                                                                                          _ltrtrrsNextToken
+                                                                                          ::
+                                                                                          !(Maybe
+                                                                                              Text),
+                                                                                          _ltrtrrsReportType
+                                                                                          ::
+                                                                                          !(Maybe
+                                                                                              ReportType),
+                                                                                          _ltrtrrsResponseStatus
+                                                                                          ::
+                                                                                          !Int}
+                                                  deriving (Eq, Read, Show,
+                                                            Data, Typeable,
+                                                            Generic)
 
 -- | Creates a value of 'ListThingRegistrationTaskReportsResponse' with the minimum fields required to make a request.
 --
@@ -164,14 +178,14 @@ data ListThingRegistrationTaskReportsResponse =
 listThingRegistrationTaskReportsResponse
     :: Int -- ^ 'ltrtrrsResponseStatus'
     -> ListThingRegistrationTaskReportsResponse
-listThingRegistrationTaskReportsResponse pResponseStatus_ =
-  ListThingRegistrationTaskReportsResponse'
-    { _ltrtrrsResourceLinks = Nothing
-    , _ltrtrrsNextToken = Nothing
-    , _ltrtrrsReportType = Nothing
-    , _ltrtrrsResponseStatus = pResponseStatus_
-    }
-
+listThingRegistrationTaskReportsResponse
+  pResponseStatus_
+  = ListThingRegistrationTaskReportsResponse'{_ltrtrrsResourceLinks
+                                                = Nothing,
+                                              _ltrtrrsNextToken = Nothing,
+                                              _ltrtrrsReportType = Nothing,
+                                              _ltrtrrsResponseStatus =
+                                                pResponseStatus_}
 
 -- | Links to the task resources.
 ltrtrrsResourceLinks :: Lens' ListThingRegistrationTaskReportsResponse [Text]

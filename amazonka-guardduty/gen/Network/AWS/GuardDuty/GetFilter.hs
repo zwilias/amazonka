@@ -41,20 +41,15 @@ module Network.AWS.GuardDuty.GetFilter
     ) where
 
 import Network.AWS.GuardDuty.Types
-import Network.AWS.GuardDuty.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 
 -- | /See:/ 'getFilter' smart constructor.
-data GetFilter =
-  GetFilter'
-    { _gDetectorId :: !Text
-    , _gFilterName :: !Text
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data GetFilter = GetFilter'{_gDetectorId :: !Text,
+                            _gFilterName :: !Text}
+                   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'GetFilter' with the minimum fields required to make a request.
 --
@@ -67,9 +62,9 @@ getFilter
     :: Text -- ^ 'gDetectorId'
     -> Text -- ^ 'gFilterName'
     -> GetFilter
-getFilter pDetectorId_ pFilterName_ =
-  GetFilter' {_gDetectorId = pDetectorId_, _gFilterName = pFilterName_}
-
+getFilter pDetectorId_ pFilterName_
+  = GetFilter'{_gDetectorId = pDetectorId_,
+               _gFilterName = pFilterName_}
 
 -- | The detector ID that specifies the GuardDuty service where you want to list the details of the specified filter.
 gDetectorId :: Lens' GetFilter Text
@@ -113,17 +108,15 @@ instance ToQuery GetFilter where
         toQuery = const mempty
 
 -- | /See:/ 'getFilterResponse' smart constructor.
-data GetFilterResponse =
-  GetFilterResponse'
-    { _gfrsFindingCriteria :: !(Maybe FindingCriteria)
-    , _gfrsAction          :: !(Maybe FilterAction)
-    , _gfrsName            :: !(Maybe Text)
-    , _gfrsDescription     :: !(Maybe Text)
-    , _gfrsRank            :: !(Maybe Int)
-    , _gfrsResponseStatus  :: !Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data GetFilterResponse = GetFilterResponse'{_gfrsFindingCriteria
+                                            :: !(Maybe FindingCriteria),
+                                            _gfrsAction ::
+                                            !(Maybe FilterAction),
+                                            _gfrsName :: !(Maybe Text),
+                                            _gfrsDescription :: !(Maybe Text),
+                                            _gfrsRank :: !(Maybe Int),
+                                            _gfrsResponseStatus :: !Int}
+                           deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'GetFilterResponse' with the minimum fields required to make a request.
 --
@@ -143,16 +136,11 @@ data GetFilterResponse =
 getFilterResponse
     :: Int -- ^ 'gfrsResponseStatus'
     -> GetFilterResponse
-getFilterResponse pResponseStatus_ =
-  GetFilterResponse'
-    { _gfrsFindingCriteria = Nothing
-    , _gfrsAction = Nothing
-    , _gfrsName = Nothing
-    , _gfrsDescription = Nothing
-    , _gfrsRank = Nothing
-    , _gfrsResponseStatus = pResponseStatus_
-    }
-
+getFilterResponse pResponseStatus_
+  = GetFilterResponse'{_gfrsFindingCriteria = Nothing,
+                       _gfrsAction = Nothing, _gfrsName = Nothing,
+                       _gfrsDescription = Nothing, _gfrsRank = Nothing,
+                       _gfrsResponseStatus = pResponseStatus_}
 
 -- | Represents the criteria to be used in the filter for querying findings.
 gfrsFindingCriteria :: Lens' GetFilterResponse (Maybe FindingCriteria)

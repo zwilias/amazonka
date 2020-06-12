@@ -47,22 +47,18 @@ module Network.AWS.Organizations.ListChildren
 
 import Network.AWS.Lens
 import Network.AWS.Organizations.Types
-import Network.AWS.Organizations.Types.Product
 import Network.AWS.Pager
 import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 
 -- | /See:/ 'listChildren' smart constructor.
-data ListChildren =
-  ListChildren'
-    { _lcNextToken  :: !(Maybe Text)
-    , _lcMaxResults :: !(Maybe Nat)
-    , _lcParentId   :: !Text
-    , _lcChildType  :: !ChildType
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data ListChildren = ListChildren'{_lcNextToken ::
+                                  !(Maybe Text),
+                                  _lcMaxResults :: !(Maybe Nat),
+                                  _lcParentId :: !Text,
+                                  _lcChildType :: !ChildType}
+                      deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'ListChildren' with the minimum fields required to make a request.
 --
@@ -79,14 +75,10 @@ listChildren
     :: Text -- ^ 'lcParentId'
     -> ChildType -- ^ 'lcChildType'
     -> ListChildren
-listChildren pParentId_ pChildType_ =
-  ListChildren'
-    { _lcNextToken = Nothing
-    , _lcMaxResults = Nothing
-    , _lcParentId = pParentId_
-    , _lcChildType = pChildType_
-    }
-
+listChildren pParentId_ pChildType_
+  = ListChildren'{_lcNextToken = Nothing,
+                  _lcMaxResults = Nothing, _lcParentId = pParentId_,
+                  _lcChildType = pChildType_}
 
 -- | Use this parameter if you receive a @NextToken@ response in a previous request that indicates that there is more output available. Set it to the value of the previous call's @NextToken@ response to indicate where the output should continue from.
 lcNextToken :: Lens' ListChildren (Maybe Text)
@@ -151,14 +143,12 @@ instance ToQuery ListChildren where
         toQuery = const mempty
 
 -- | /See:/ 'listChildrenResponse' smart constructor.
-data ListChildrenResponse =
-  ListChildrenResponse'
-    { _lcrsChildren       :: !(Maybe [Child])
-    , _lcrsNextToken      :: !(Maybe Text)
-    , _lcrsResponseStatus :: !Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data ListChildrenResponse = ListChildrenResponse'{_lcrsChildren
+                                                  :: !(Maybe [Child]),
+                                                  _lcrsNextToken ::
+                                                  !(Maybe Text),
+                                                  _lcrsResponseStatus :: !Int}
+                              deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'ListChildrenResponse' with the minimum fields required to make a request.
 --
@@ -172,13 +162,10 @@ data ListChildrenResponse =
 listChildrenResponse
     :: Int -- ^ 'lcrsResponseStatus'
     -> ListChildrenResponse
-listChildrenResponse pResponseStatus_ =
-  ListChildrenResponse'
-    { _lcrsChildren = Nothing
-    , _lcrsNextToken = Nothing
-    , _lcrsResponseStatus = pResponseStatus_
-    }
-
+listChildrenResponse pResponseStatus_
+  = ListChildrenResponse'{_lcrsChildren = Nothing,
+                          _lcrsNextToken = Nothing,
+                          _lcrsResponseStatus = pResponseStatus_}
 
 -- | The list of children of the specified parent container.
 lcrsChildren :: Lens' ListChildrenResponse [Child]

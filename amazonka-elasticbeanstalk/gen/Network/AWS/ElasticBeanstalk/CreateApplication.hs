@@ -18,7 +18,7 @@
 -- Stability   : auto-generated
 -- Portability : non-portable (GHC extensions)
 --
--- Creates an application that has one configuration template named @default@ and no application versions.
+-- Creates an application that has one configuration template named @default@ and no application versions. 
 --
 --
 module Network.AWS.ElasticBeanstalk.CreateApplication
@@ -39,7 +39,6 @@ module Network.AWS.ElasticBeanstalk.CreateApplication
     ) where
 
 import Network.AWS.ElasticBeanstalk.Types
-import Network.AWS.ElasticBeanstalk.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.Request
@@ -50,14 +49,13 @@ import Network.AWS.Response
 --
 --
 -- /See:/ 'createApplication' smart constructor.
-data CreateApplication =
-  CreateApplication'
-    { _caResourceLifecycleConfig :: !(Maybe ApplicationResourceLifecycleConfig)
-    , _caDescription             :: !(Maybe Text)
-    , _caApplicationName         :: !Text
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data CreateApplication = CreateApplication'{_caResourceLifecycleConfig
+                                            ::
+                                            !(Maybe
+                                                ApplicationResourceLifecycleConfig),
+                                            _caDescription :: !(Maybe Text),
+                                            _caApplicationName :: !Text}
+                           deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'CreateApplication' with the minimum fields required to make a request.
 --
@@ -71,13 +69,11 @@ data CreateApplication =
 createApplication
     :: Text -- ^ 'caApplicationName'
     -> CreateApplication
-createApplication pApplicationName_ =
-  CreateApplication'
-    { _caResourceLifecycleConfig = Nothing
-    , _caDescription = Nothing
-    , _caApplicationName = pApplicationName_
-    }
-
+createApplication pApplicationName_
+  = CreateApplication'{_caResourceLifecycleConfig =
+                         Nothing,
+                       _caDescription = Nothing,
+                       _caApplicationName = pApplicationName_}
 
 -- | Specify an application resource lifecycle configuration to prevent your application from accumulating too many versions.
 caResourceLifecycleConfig :: Lens' CreateApplication (Maybe ApplicationResourceLifecycleConfig)

@@ -38,19 +38,14 @@ module Network.AWS.Glue.GetCrawler
     ) where
 
 import Network.AWS.Glue.Types
-import Network.AWS.Glue.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 
 -- | /See:/ 'getCrawler' smart constructor.
-newtype GetCrawler =
-  GetCrawler'
-    { _gccName :: Text
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+newtype GetCrawler = GetCrawler'{_gccName :: Text}
+                       deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'GetCrawler' with the minimum fields required to make a request.
 --
@@ -60,8 +55,7 @@ newtype GetCrawler =
 getCrawler
     :: Text -- ^ 'gccName'
     -> GetCrawler
-getCrawler pName_ = GetCrawler' {_gccName = pName_}
-
+getCrawler pName_ = GetCrawler'{_gccName = pName_}
 
 -- | Name of the crawler to retrieve metadata for.
 gccName :: Lens' GetCrawler Text
@@ -100,13 +94,10 @@ instance ToQuery GetCrawler where
         toQuery = const mempty
 
 -- | /See:/ 'getCrawlerResponse' smart constructor.
-data GetCrawlerResponse =
-  GetCrawlerResponse'
-    { _getersCrawler        :: !(Maybe Crawler)
-    , _getersResponseStatus :: !Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data GetCrawlerResponse = GetCrawlerResponse'{_getersCrawler
+                                              :: !(Maybe Crawler),
+                                              _getersResponseStatus :: !Int}
+                            deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'GetCrawlerResponse' with the minimum fields required to make a request.
 --
@@ -118,10 +109,9 @@ data GetCrawlerResponse =
 getCrawlerResponse
     :: Int -- ^ 'getersResponseStatus'
     -> GetCrawlerResponse
-getCrawlerResponse pResponseStatus_ =
-  GetCrawlerResponse'
-    {_getersCrawler = Nothing, _getersResponseStatus = pResponseStatus_}
-
+getCrawlerResponse pResponseStatus_
+  = GetCrawlerResponse'{_getersCrawler = Nothing,
+                        _getersResponseStatus = pResponseStatus_}
 
 -- | The metadata for the specified crawler.
 getersCrawler :: Lens' GetCrawlerResponse (Maybe Crawler)

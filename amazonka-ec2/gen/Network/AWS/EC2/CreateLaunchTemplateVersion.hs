@@ -46,25 +46,34 @@ module Network.AWS.EC2.CreateLaunchTemplateVersion
     ) where
 
 import Network.AWS.EC2.Types
-import Network.AWS.EC2.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 
 -- | /See:/ 'createLaunchTemplateVersion' smart constructor.
-data CreateLaunchTemplateVersion =
-  CreateLaunchTemplateVersion'
-    { _cltvLaunchTemplateName :: !(Maybe Text)
-    , _cltvClientToken        :: !(Maybe Text)
-    , _cltvLaunchTemplateId   :: !(Maybe Text)
-    , _cltvVersionDescription :: !(Maybe Text)
-    , _cltvSourceVersion      :: !(Maybe Text)
-    , _cltvDryRun             :: !(Maybe Bool)
-    , _cltvLaunchTemplateData :: !RequestLaunchTemplateData
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data CreateLaunchTemplateVersion = CreateLaunchTemplateVersion'{_cltvLaunchTemplateName
+                                                                ::
+                                                                !(Maybe Text),
+                                                                _cltvClientToken
+                                                                ::
+                                                                !(Maybe Text),
+                                                                _cltvLaunchTemplateId
+                                                                ::
+                                                                !(Maybe Text),
+                                                                _cltvVersionDescription
+                                                                ::
+                                                                !(Maybe Text),
+                                                                _cltvSourceVersion
+                                                                ::
+                                                                !(Maybe Text),
+                                                                _cltvDryRun ::
+                                                                !(Maybe Bool),
+                                                                _cltvLaunchTemplateData
+                                                                ::
+                                                                !RequestLaunchTemplateData}
+                                     deriving (Eq, Read, Show, Data, Typeable,
+                                               Generic)
 
 -- | Creates a value of 'CreateLaunchTemplateVersion' with the minimum fields required to make a request.
 --
@@ -86,17 +95,15 @@ data CreateLaunchTemplateVersion =
 createLaunchTemplateVersion
     :: RequestLaunchTemplateData -- ^ 'cltvLaunchTemplateData'
     -> CreateLaunchTemplateVersion
-createLaunchTemplateVersion pLaunchTemplateData_ =
-  CreateLaunchTemplateVersion'
-    { _cltvLaunchTemplateName = Nothing
-    , _cltvClientToken = Nothing
-    , _cltvLaunchTemplateId = Nothing
-    , _cltvVersionDescription = Nothing
-    , _cltvSourceVersion = Nothing
-    , _cltvDryRun = Nothing
-    , _cltvLaunchTemplateData = pLaunchTemplateData_
-    }
-
+createLaunchTemplateVersion pLaunchTemplateData_
+  = CreateLaunchTemplateVersion'{_cltvLaunchTemplateName
+                                   = Nothing,
+                                 _cltvClientToken = Nothing,
+                                 _cltvLaunchTemplateId = Nothing,
+                                 _cltvVersionDescription = Nothing,
+                                 _cltvSourceVersion = Nothing,
+                                 _cltvDryRun = Nothing,
+                                 _cltvLaunchTemplateData = pLaunchTemplateData_}
 
 -- | The name of the launch template. You must specify either the launch template ID or launch template name in the request.
 cltvLaunchTemplateName :: Lens' CreateLaunchTemplateVersion (Maybe Text)
@@ -162,13 +169,15 @@ instance ToQuery CreateLaunchTemplateVersion where
                "LaunchTemplateData" =: _cltvLaunchTemplateData]
 
 -- | /See:/ 'createLaunchTemplateVersionResponse' smart constructor.
-data CreateLaunchTemplateVersionResponse =
-  CreateLaunchTemplateVersionResponse'
-    { _cltvrsLaunchTemplateVersion :: !(Maybe LaunchTemplateVersion)
-    , _cltvrsResponseStatus        :: !Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data CreateLaunchTemplateVersionResponse = CreateLaunchTemplateVersionResponse'{_cltvrsLaunchTemplateVersion
+                                                                                ::
+                                                                                !(Maybe
+                                                                                    LaunchTemplateVersion),
+                                                                                _cltvrsResponseStatus
+                                                                                ::
+                                                                                !Int}
+                                             deriving (Eq, Read, Show, Data,
+                                                       Typeable, Generic)
 
 -- | Creates a value of 'CreateLaunchTemplateVersionResponse' with the minimum fields required to make a request.
 --
@@ -180,12 +189,11 @@ data CreateLaunchTemplateVersionResponse =
 createLaunchTemplateVersionResponse
     :: Int -- ^ 'cltvrsResponseStatus'
     -> CreateLaunchTemplateVersionResponse
-createLaunchTemplateVersionResponse pResponseStatus_ =
-  CreateLaunchTemplateVersionResponse'
-    { _cltvrsLaunchTemplateVersion = Nothing
-    , _cltvrsResponseStatus = pResponseStatus_
-    }
-
+createLaunchTemplateVersionResponse pResponseStatus_
+  = CreateLaunchTemplateVersionResponse'{_cltvrsLaunchTemplateVersion
+                                           = Nothing,
+                                         _cltvrsResponseStatus =
+                                           pResponseStatus_}
 
 -- | Information about the launch template version.
 cltvrsLaunchTemplateVersion :: Lens' CreateLaunchTemplateVersionResponse (Maybe LaunchTemplateVersion)

@@ -46,7 +46,6 @@ module Network.AWS.DirectoryService.ConnectDirectory
     ) where
 
 import Network.AWS.DirectoryService.Types
-import Network.AWS.DirectoryService.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.Request
@@ -57,18 +56,16 @@ import Network.AWS.Response
 --
 --
 -- /See:/ 'connectDirectory' smart constructor.
-data ConnectDirectory =
-  ConnectDirectory'
-    { _cdShortName       :: !(Maybe Text)
-    , _cdDescription     :: !(Maybe Text)
-    , _cdTags            :: !(Maybe [Tag])
-    , _cdName            :: !Text
-    , _cdPassword        :: !(Sensitive Text)
-    , _cdSize            :: !DirectorySize
-    , _cdConnectSettings :: !DirectoryConnectSettings
-    }
-  deriving (Eq, Show, Data, Typeable, Generic)
-
+data ConnectDirectory = ConnectDirectory'{_cdShortName
+                                          :: !(Maybe Text),
+                                          _cdDescription :: !(Maybe Text),
+                                          _cdTags :: !(Maybe [Tag]),
+                                          _cdName :: !Text,
+                                          _cdPassword :: !(Sensitive Text),
+                                          _cdSize :: !DirectorySize,
+                                          _cdConnectSettings ::
+                                          !DirectoryConnectSettings}
+                          deriving (Eq, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'ConnectDirectory' with the minimum fields required to make a request.
 --
@@ -93,17 +90,14 @@ connectDirectory
     -> DirectorySize -- ^ 'cdSize'
     -> DirectoryConnectSettings -- ^ 'cdConnectSettings'
     -> ConnectDirectory
-connectDirectory pName_ pPassword_ pSize_ pConnectSettings_ =
-  ConnectDirectory'
-    { _cdShortName = Nothing
-    , _cdDescription = Nothing
-    , _cdTags = Nothing
-    , _cdName = pName_
-    , _cdPassword = _Sensitive # pPassword_
-    , _cdSize = pSize_
-    , _cdConnectSettings = pConnectSettings_
-    }
-
+connectDirectory pName_ pPassword_ pSize_
+  pConnectSettings_
+  = ConnectDirectory'{_cdShortName = Nothing,
+                      _cdDescription = Nothing, _cdTags = Nothing,
+                      _cdName = pName_,
+                      _cdPassword = _Sensitive # pPassword_,
+                      _cdSize = pSize_,
+                      _cdConnectSettings = pConnectSettings_}
 
 -- | The NetBIOS name of the on-premises directory, such as @CORP@ .
 cdShortName :: Lens' ConnectDirectory (Maybe Text)
@@ -178,13 +172,12 @@ instance ToQuery ConnectDirectory where
 --
 --
 -- /See:/ 'connectDirectoryResponse' smart constructor.
-data ConnectDirectoryResponse =
-  ConnectDirectoryResponse'
-    { _cdrsDirectoryId    :: !(Maybe Text)
-    , _cdrsResponseStatus :: !Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data ConnectDirectoryResponse = ConnectDirectoryResponse'{_cdrsDirectoryId
+                                                          :: !(Maybe Text),
+                                                          _cdrsResponseStatus ::
+                                                          !Int}
+                                  deriving (Eq, Read, Show, Data, Typeable,
+                                            Generic)
 
 -- | Creates a value of 'ConnectDirectoryResponse' with the minimum fields required to make a request.
 --
@@ -196,10 +189,10 @@ data ConnectDirectoryResponse =
 connectDirectoryResponse
     :: Int -- ^ 'cdrsResponseStatus'
     -> ConnectDirectoryResponse
-connectDirectoryResponse pResponseStatus_ =
-  ConnectDirectoryResponse'
-    {_cdrsDirectoryId = Nothing, _cdrsResponseStatus = pResponseStatus_}
-
+connectDirectoryResponse pResponseStatus_
+  = ConnectDirectoryResponse'{_cdrsDirectoryId =
+                                Nothing,
+                              _cdrsResponseStatus = pResponseStatus_}
 
 -- | The identifier of the new directory.
 cdrsDirectoryId :: Lens' ConnectDirectoryResponse (Maybe Text)

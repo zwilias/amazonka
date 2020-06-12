@@ -46,7 +46,6 @@ module Network.AWS.IAM.ListMFADevices
     ) where
 
 import Network.AWS.IAM.Types
-import Network.AWS.IAM.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Pager
 import Network.AWS.Prelude
@@ -54,14 +53,11 @@ import Network.AWS.Request
 import Network.AWS.Response
 
 -- | /See:/ 'listMFADevices' smart constructor.
-data ListMFADevices =
-  ListMFADevices'
-    { _lmdUserName :: !(Maybe Text)
-    , _lmdMarker   :: !(Maybe Text)
-    , _lmdMaxItems :: !(Maybe Nat)
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data ListMFADevices = ListMFADevices'{_lmdUserName ::
+                                      !(Maybe Text),
+                                      _lmdMarker :: !(Maybe Text),
+                                      _lmdMaxItems :: !(Maybe Nat)}
+                        deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'ListMFADevices' with the minimum fields required to make a request.
 --
@@ -74,10 +70,9 @@ data ListMFADevices =
 -- * 'lmdMaxItems' - (Optional) Use this only when paginating results to indicate the maximum number of items you want in the response. If additional items exist beyond the maximum you specify, the @IsTruncated@ response element is @true@ . If you do not include this parameter, it defaults to 100. Note that IAM might return fewer results, even when there are more results available. In that case, the @IsTruncated@ response element returns @true@ and @Marker@ contains a value to include in the subsequent call that tells the service where to continue from.
 listMFADevices
     :: ListMFADevices
-listMFADevices =
-  ListMFADevices'
-    {_lmdUserName = Nothing, _lmdMarker = Nothing, _lmdMaxItems = Nothing}
-
+listMFADevices
+  = ListMFADevices'{_lmdUserName = Nothing,
+                    _lmdMarker = Nothing, _lmdMaxItems = Nothing}
 
 -- | The name of the user whose MFA devices you want to list. This parameter allows (per its <http://wikipedia.org/wiki/regex regex pattern> ) a string of characters consisting of upper and lowercase alphanumeric characters with no spaces. You can also include any of the following characters: _+=,.@-
 lmdUserName :: Lens' ListMFADevices (Maybe Text)
@@ -129,20 +124,21 @@ instance ToQuery ListMFADevices where
                "UserName" =: _lmdUserName, "Marker" =: _lmdMarker,
                "MaxItems" =: _lmdMaxItems]
 
--- | Contains the response to a successful 'ListMFADevices' request.
+-- | Contains the response to a successful 'ListMFADevices' request. 
 --
 --
 --
 -- /See:/ 'listMFADevicesResponse' smart constructor.
-data ListMFADevicesResponse =
-  ListMFADevicesResponse'
-    { _lmdrsMarker         :: !(Maybe Text)
-    , _lmdrsIsTruncated    :: !(Maybe Bool)
-    , _lmdrsResponseStatus :: !Int
-    , _lmdrsMFADevices     :: ![MFADevice]
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data ListMFADevicesResponse = ListMFADevicesResponse'{_lmdrsMarker
+                                                      :: !(Maybe Text),
+                                                      _lmdrsIsTruncated ::
+                                                      !(Maybe Bool),
+                                                      _lmdrsResponseStatus ::
+                                                      !Int,
+                                                      _lmdrsMFADevices ::
+                                                      ![MFADevice]}
+                                deriving (Eq, Read, Show, Data, Typeable,
+                                          Generic)
 
 -- | Creates a value of 'ListMFADevicesResponse' with the minimum fields required to make a request.
 --
@@ -158,14 +154,11 @@ data ListMFADevicesResponse =
 listMFADevicesResponse
     :: Int -- ^ 'lmdrsResponseStatus'
     -> ListMFADevicesResponse
-listMFADevicesResponse pResponseStatus_ =
-  ListMFADevicesResponse'
-    { _lmdrsMarker = Nothing
-    , _lmdrsIsTruncated = Nothing
-    , _lmdrsResponseStatus = pResponseStatus_
-    , _lmdrsMFADevices = mempty
-    }
-
+listMFADevicesResponse pResponseStatus_
+  = ListMFADevicesResponse'{_lmdrsMarker = Nothing,
+                            _lmdrsIsTruncated = Nothing,
+                            _lmdrsResponseStatus = pResponseStatus_,
+                            _lmdrsMFADevices = mempty}
 
 -- | When @IsTruncated@ is @true@ , this element is present and contains the value to use for the @Marker@ parameter in a subsequent pagination request.
 lmdrsMarker :: Lens' ListMFADevicesResponse (Maybe Text)

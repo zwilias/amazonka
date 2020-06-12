@@ -39,20 +39,16 @@ module Network.AWS.Pinpoint.GetCampaigns
 
 import Network.AWS.Lens
 import Network.AWS.Pinpoint.Types
-import Network.AWS.Pinpoint.Types.Product
 import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 
 -- | /See:/ 'getCampaigns' smart constructor.
-data GetCampaigns =
-  GetCampaigns'
-    { _gcsToken         :: !(Maybe Text)
-    , _gcsPageSize      :: !(Maybe Text)
-    , _gcsApplicationId :: !Text
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data GetCampaigns = GetCampaigns'{_gcsToken ::
+                                  !(Maybe Text),
+                                  _gcsPageSize :: !(Maybe Text),
+                                  _gcsApplicationId :: !Text}
+                      deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'GetCampaigns' with the minimum fields required to make a request.
 --
@@ -66,13 +62,10 @@ data GetCampaigns =
 getCampaigns
     :: Text -- ^ 'gcsApplicationId'
     -> GetCampaigns
-getCampaigns pApplicationId_ =
-  GetCampaigns'
-    { _gcsToken = Nothing
-    , _gcsPageSize = Nothing
-    , _gcsApplicationId = pApplicationId_
-    }
-
+getCampaigns pApplicationId_
+  = GetCampaigns'{_gcsToken = Nothing,
+                  _gcsPageSize = Nothing,
+                  _gcsApplicationId = pApplicationId_}
 
 -- | The NextToken string returned on a previous page that you use to get the next page of results in a paginated response.
 gcsToken :: Lens' GetCampaigns (Maybe Text)
@@ -117,13 +110,11 @@ instance ToQuery GetCampaigns where
               ["token" =: _gcsToken, "page-size" =: _gcsPageSize]
 
 -- | /See:/ 'getCampaignsResponse' smart constructor.
-data GetCampaignsResponse =
-  GetCampaignsResponse'
-    { _gcsrsResponseStatus    :: !Int
-    , _gcsrsCampaignsResponse :: !CampaignsResponse
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data GetCampaignsResponse = GetCampaignsResponse'{_gcsrsResponseStatus
+                                                  :: !Int,
+                                                  _gcsrsCampaignsResponse ::
+                                                  !CampaignsResponse}
+                              deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'GetCampaignsResponse' with the minimum fields required to make a request.
 --
@@ -136,12 +127,11 @@ getCampaignsResponse
     :: Int -- ^ 'gcsrsResponseStatus'
     -> CampaignsResponse -- ^ 'gcsrsCampaignsResponse'
     -> GetCampaignsResponse
-getCampaignsResponse pResponseStatus_ pCampaignsResponse_ =
-  GetCampaignsResponse'
-    { _gcsrsResponseStatus = pResponseStatus_
-    , _gcsrsCampaignsResponse = pCampaignsResponse_
-    }
-
+getCampaignsResponse pResponseStatus_
+  pCampaignsResponse_
+  = GetCampaignsResponse'{_gcsrsResponseStatus =
+                            pResponseStatus_,
+                          _gcsrsCampaignsResponse = pCampaignsResponse_}
 
 -- | -- | The response status code.
 gcsrsResponseStatus :: Lens' GetCampaignsResponse Int

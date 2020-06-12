@@ -18,7 +18,7 @@
 -- Stability   : auto-generated
 -- Portability : non-portable (GHC extensions)
 --
--- Inserts or deletes 'SizeConstraint' objects (filters) in a 'SizeConstraintSet' . For each @SizeConstraint@ object, you specify the following values:
+-- Inserts or deletes 'SizeConstraint' objects (filters) in a 'SizeConstraintSet' . For each @SizeConstraint@ object, you specify the following values: 
 --
 --
 --     * Whether to insert or delete the object from the array. If you want to change a @SizeConstraintSetUpdate@ object, you delete the existing object and add a new one.
@@ -70,17 +70,17 @@ import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 import Network.AWS.WAF.Types
-import Network.AWS.WAF.Types.Product
 
 -- | /See:/ 'updateSizeConstraintSet' smart constructor.
-data UpdateSizeConstraintSet =
-  UpdateSizeConstraintSet'
-    { _uscsSizeConstraintSetId :: !Text
-    , _uscsChangeToken         :: !Text
-    , _uscsUpdates             :: !(List1 SizeConstraintSetUpdate)
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data UpdateSizeConstraintSet = UpdateSizeConstraintSet'{_uscsSizeConstraintSetId
+                                                        :: !Text,
+                                                        _uscsChangeToken ::
+                                                        !Text,
+                                                        _uscsUpdates ::
+                                                        !(List1
+                                                            SizeConstraintSetUpdate)}
+                                 deriving (Eq, Read, Show, Data, Typeable,
+                                           Generic)
 
 -- | Creates a value of 'UpdateSizeConstraintSet' with the minimum fields required to make a request.
 --
@@ -90,19 +90,18 @@ data UpdateSizeConstraintSet =
 --
 -- * 'uscsChangeToken' - The value returned by the most recent call to 'GetChangeToken' .
 --
--- * 'uscsUpdates' - An array of @SizeConstraintSetUpdate@ objects that you want to insert into or delete from a 'SizeConstraintSet' . For more information, see the applicable data types:     * 'SizeConstraintSetUpdate' : Contains @Action@ and @SizeConstraint@      * 'SizeConstraint' : Contains @FieldToMatch@ , @TextTransformation@ , @ComparisonOperator@ , and @Size@      * 'FieldToMatch' : Contains @Data@ and @Type@
+-- * 'uscsUpdates' - An array of @SizeConstraintSetUpdate@ objects that you want to insert into or delete from a 'SizeConstraintSet' . For more information, see the applicable data types:     * 'SizeConstraintSetUpdate' : Contains @Action@ and @SizeConstraint@      * 'SizeConstraint' : Contains @FieldToMatch@ , @TextTransformation@ , @ComparisonOperator@ , and @Size@      * 'FieldToMatch' : Contains @Data@ and @Type@ 
 updateSizeConstraintSet
     :: Text -- ^ 'uscsSizeConstraintSetId'
     -> Text -- ^ 'uscsChangeToken'
     -> NonEmpty SizeConstraintSetUpdate -- ^ 'uscsUpdates'
     -> UpdateSizeConstraintSet
-updateSizeConstraintSet pSizeConstraintSetId_ pChangeToken_ pUpdates_ =
-  UpdateSizeConstraintSet'
-    { _uscsSizeConstraintSetId = pSizeConstraintSetId_
-    , _uscsChangeToken = pChangeToken_
-    , _uscsUpdates = _List1 # pUpdates_
-    }
-
+updateSizeConstraintSet pSizeConstraintSetId_
+  pChangeToken_ pUpdates_
+  = UpdateSizeConstraintSet'{_uscsSizeConstraintSetId =
+                               pSizeConstraintSetId_,
+                             _uscsChangeToken = pChangeToken_,
+                             _uscsUpdates = _List1 # pUpdates_}
 
 -- | The @SizeConstraintSetId@ of the 'SizeConstraintSet' that you want to update. @SizeConstraintSetId@ is returned by 'CreateSizeConstraintSet' and by 'ListSizeConstraintSets' .
 uscsSizeConstraintSetId :: Lens' UpdateSizeConstraintSet Text
@@ -112,7 +111,7 @@ uscsSizeConstraintSetId = lens _uscsSizeConstraintSetId (\ s a -> s{_uscsSizeCon
 uscsChangeToken :: Lens' UpdateSizeConstraintSet Text
 uscsChangeToken = lens _uscsChangeToken (\ s a -> s{_uscsChangeToken = a})
 
--- | An array of @SizeConstraintSetUpdate@ objects that you want to insert into or delete from a 'SizeConstraintSet' . For more information, see the applicable data types:     * 'SizeConstraintSetUpdate' : Contains @Action@ and @SizeConstraint@      * 'SizeConstraint' : Contains @FieldToMatch@ , @TextTransformation@ , @ComparisonOperator@ , and @Size@      * 'FieldToMatch' : Contains @Data@ and @Type@
+-- | An array of @SizeConstraintSetUpdate@ objects that you want to insert into or delete from a 'SizeConstraintSet' . For more information, see the applicable data types:     * 'SizeConstraintSetUpdate' : Contains @Action@ and @SizeConstraint@      * 'SizeConstraint' : Contains @FieldToMatch@ , @TextTransformation@ , @ComparisonOperator@ , and @Size@      * 'FieldToMatch' : Contains @Data@ and @Type@ 
 uscsUpdates :: Lens' UpdateSizeConstraintSet (NonEmpty SizeConstraintSetUpdate)
 uscsUpdates = lens _uscsUpdates (\ s a -> s{_uscsUpdates = a}) . _List1
 
@@ -156,13 +155,14 @@ instance ToQuery UpdateSizeConstraintSet where
         toQuery = const mempty
 
 -- | /See:/ 'updateSizeConstraintSetResponse' smart constructor.
-data UpdateSizeConstraintSetResponse =
-  UpdateSizeConstraintSetResponse'
-    { _uscsrsChangeToken    :: !(Maybe Text)
-    , _uscsrsResponseStatus :: !Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data UpdateSizeConstraintSetResponse = UpdateSizeConstraintSetResponse'{_uscsrsChangeToken
+                                                                        ::
+                                                                        !(Maybe
+                                                                            Text),
+                                                                        _uscsrsResponseStatus
+                                                                        :: !Int}
+                                         deriving (Eq, Read, Show, Data,
+                                                   Typeable, Generic)
 
 -- | Creates a value of 'UpdateSizeConstraintSetResponse' with the minimum fields required to make a request.
 --
@@ -174,10 +174,10 @@ data UpdateSizeConstraintSetResponse =
 updateSizeConstraintSetResponse
     :: Int -- ^ 'uscsrsResponseStatus'
     -> UpdateSizeConstraintSetResponse
-updateSizeConstraintSetResponse pResponseStatus_ =
-  UpdateSizeConstraintSetResponse'
-    {_uscsrsChangeToken = Nothing, _uscsrsResponseStatus = pResponseStatus_}
-
+updateSizeConstraintSetResponse pResponseStatus_
+  = UpdateSizeConstraintSetResponse'{_uscsrsChangeToken
+                                       = Nothing,
+                                     _uscsrsResponseStatus = pResponseStatus_}
 
 -- | The @ChangeToken@ that you used to submit the @UpdateSizeConstraintSet@ request. You can also use this value to query the status of the request. For more information, see 'GetChangeTokenStatus' .
 uscsrsChangeToken :: Lens' UpdateSizeConstraintSetResponse (Maybe Text)

@@ -45,24 +45,20 @@ module Network.AWS.ELBv2.ModifyListener
     ) where
 
 import Network.AWS.ELBv2.Types
-import Network.AWS.ELBv2.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 
 -- | /See:/ 'modifyListener' smart constructor.
-data ModifyListener =
-  ModifyListener'
-    { _mlSSLPolicy      :: !(Maybe Text)
-    , _mlProtocol       :: !(Maybe ProtocolEnum)
-    , _mlDefaultActions :: !(Maybe [Action])
-    , _mlCertificates   :: !(Maybe [Certificate])
-    , _mlPort           :: !(Maybe Nat)
-    , _mlListenerARN    :: !Text
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data ModifyListener = ModifyListener'{_mlSSLPolicy ::
+                                      !(Maybe Text),
+                                      _mlProtocol :: !(Maybe ProtocolEnum),
+                                      _mlDefaultActions :: !(Maybe [Action]),
+                                      _mlCertificates :: !(Maybe [Certificate]),
+                                      _mlPort :: !(Maybe Nat),
+                                      _mlListenerARN :: !Text}
+                        deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'ModifyListener' with the minimum fields required to make a request.
 --
@@ -82,16 +78,11 @@ data ModifyListener =
 modifyListener
     :: Text -- ^ 'mlListenerARN'
     -> ModifyListener
-modifyListener pListenerARN_ =
-  ModifyListener'
-    { _mlSSLPolicy = Nothing
-    , _mlProtocol = Nothing
-    , _mlDefaultActions = Nothing
-    , _mlCertificates = Nothing
-    , _mlPort = Nothing
-    , _mlListenerARN = pListenerARN_
-    }
-
+modifyListener pListenerARN_
+  = ModifyListener'{_mlSSLPolicy = Nothing,
+                    _mlProtocol = Nothing, _mlDefaultActions = Nothing,
+                    _mlCertificates = Nothing, _mlPort = Nothing,
+                    _mlListenerARN = pListenerARN_}
 
 -- | The security policy that defines which protocols and ciphers are supported. For more information, see <http://docs.aws.amazon.com/elasticloadbalancing/latest/application/create-https-listener.html#describe-ssl-policies Security Policies> in the /Application Load Balancers Guide/ .
 mlSSLPolicy :: Lens' ModifyListener (Maybe Text)
@@ -152,13 +143,12 @@ instance ToQuery ModifyListener where
                "Port" =: _mlPort, "ListenerArn" =: _mlListenerARN]
 
 -- | /See:/ 'modifyListenerResponse' smart constructor.
-data ModifyListenerResponse =
-  ModifyListenerResponse'
-    { _mlrsListeners      :: !(Maybe [Listener])
-    , _mlrsResponseStatus :: !Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data ModifyListenerResponse = ModifyListenerResponse'{_mlrsListeners
+                                                      :: !(Maybe [Listener]),
+                                                      _mlrsResponseStatus ::
+                                                      !Int}
+                                deriving (Eq, Read, Show, Data, Typeable,
+                                          Generic)
 
 -- | Creates a value of 'ModifyListenerResponse' with the minimum fields required to make a request.
 --
@@ -170,10 +160,9 @@ data ModifyListenerResponse =
 modifyListenerResponse
     :: Int -- ^ 'mlrsResponseStatus'
     -> ModifyListenerResponse
-modifyListenerResponse pResponseStatus_ =
-  ModifyListenerResponse'
-    {_mlrsListeners = Nothing, _mlrsResponseStatus = pResponseStatus_}
-
+modifyListenerResponse pResponseStatus_
+  = ModifyListenerResponse'{_mlrsListeners = Nothing,
+                            _mlrsResponseStatus = pResponseStatus_}
 
 -- | Information about the modified listeners.
 mlrsListeners :: Lens' ModifyListenerResponse [Listener]

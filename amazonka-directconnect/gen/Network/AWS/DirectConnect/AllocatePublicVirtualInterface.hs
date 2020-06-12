@@ -68,21 +68,21 @@ module Network.AWS.DirectConnect.AllocatePublicVirtualInterface
     ) where
 
 import Network.AWS.DirectConnect.Types
-import Network.AWS.DirectConnect.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 
 -- | /See:/ 'allocatePublicVirtualInterface' smart constructor.
-data AllocatePublicVirtualInterface =
-  AllocatePublicVirtualInterface'
-    { _aConnectionId :: !Text
-    , _aOwnerAccount :: !Text
-    , _aNewPublicVirtualInterfaceAllocation :: !NewPublicVirtualInterfaceAllocation
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data AllocatePublicVirtualInterface = AllocatePublicVirtualInterface'{_aConnectionId
+                                                                      :: !Text,
+                                                                      _aOwnerAccount
+                                                                      :: !Text,
+                                                                      _aNewPublicVirtualInterfaceAllocation
+                                                                      ::
+                                                                      !NewPublicVirtualInterfaceAllocation}
+                                        deriving (Eq, Read, Show, Data,
+                                                  Typeable, Generic)
 
 -- | Creates a value of 'AllocatePublicVirtualInterface' with the minimum fields required to make a request.
 --
@@ -98,14 +98,13 @@ allocatePublicVirtualInterface
     -> Text -- ^ 'aOwnerAccount'
     -> NewPublicVirtualInterfaceAllocation -- ^ 'aNewPublicVirtualInterfaceAllocation'
     -> AllocatePublicVirtualInterface
-allocatePublicVirtualInterface pConnectionId_ pOwnerAccount_ pNewPublicVirtualInterfaceAllocation_ =
-  AllocatePublicVirtualInterface'
-    { _aConnectionId = pConnectionId_
-    , _aOwnerAccount = pOwnerAccount_
-    , _aNewPublicVirtualInterfaceAllocation =
-        pNewPublicVirtualInterfaceAllocation_
-    }
-
+allocatePublicVirtualInterface pConnectionId_
+  pOwnerAccount_ pNewPublicVirtualInterfaceAllocation_
+  = AllocatePublicVirtualInterface'{_aConnectionId =
+                                      pConnectionId_,
+                                    _aOwnerAccount = pOwnerAccount_,
+                                    _aNewPublicVirtualInterfaceAllocation =
+                                      pNewPublicVirtualInterfaceAllocation_}
 
 -- | The ID of the connection on which the public virtual interface is provisioned.
 aConnectionId :: Lens' AllocatePublicVirtualInterface Text

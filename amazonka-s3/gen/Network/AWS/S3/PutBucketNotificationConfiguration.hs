@@ -38,16 +38,16 @@ import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 import Network.AWS.S3.Types
-import Network.AWS.S3.Types.Product
 
 -- | /See:/ 'putBucketNotificationConfiguration' smart constructor.
-data PutBucketNotificationConfiguration =
-  PutBucketNotificationConfiguration'
-    { _pbncBucket                    :: !BucketName
-    , _pbncNotificationConfiguration :: !NotificationConfiguration
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data PutBucketNotificationConfiguration = PutBucketNotificationConfiguration'{_pbncBucket
+                                                                              ::
+                                                                              !BucketName,
+                                                                              _pbncNotificationConfiguration
+                                                                              ::
+                                                                              !NotificationConfiguration}
+                                            deriving (Eq, Read, Show, Data,
+                                                      Typeable, Generic)
 
 -- | Creates a value of 'PutBucketNotificationConfiguration' with the minimum fields required to make a request.
 --
@@ -60,12 +60,12 @@ putBucketNotificationConfiguration
     :: BucketName -- ^ 'pbncBucket'
     -> NotificationConfiguration -- ^ 'pbncNotificationConfiguration'
     -> PutBucketNotificationConfiguration
-putBucketNotificationConfiguration pBucket_ pNotificationConfiguration_ =
-  PutBucketNotificationConfiguration'
-    { _pbncBucket = pBucket_
-    , _pbncNotificationConfiguration = pNotificationConfiguration_
-    }
-
+putBucketNotificationConfiguration pBucket_
+  pNotificationConfiguration_
+  = PutBucketNotificationConfiguration'{_pbncBucket =
+                                          pBucket_,
+                                        _pbncNotificationConfiguration =
+                                          pNotificationConfiguration_}
 
 -- | Undocumented member.
 pbncBucket :: Lens' PutBucketNotificationConfiguration BucketName
@@ -113,18 +113,17 @@ instance ToQuery PutBucketNotificationConfiguration
         toQuery = const (mconcat ["notification"])
 
 -- | /See:/ 'putBucketNotificationConfigurationResponse' smart constructor.
-data PutBucketNotificationConfigurationResponse =
-  PutBucketNotificationConfigurationResponse'
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data PutBucketNotificationConfigurationResponse = PutBucketNotificationConfigurationResponse'
+                                                    deriving (Eq, Read, Show,
+                                                              Data, Typeable,
+                                                              Generic)
 
 -- | Creates a value of 'PutBucketNotificationConfigurationResponse' with the minimum fields required to make a request.
 --
 putBucketNotificationConfigurationResponse
     :: PutBucketNotificationConfigurationResponse
-putBucketNotificationConfigurationResponse =
-  PutBucketNotificationConfigurationResponse'
-
+putBucketNotificationConfigurationResponse
+  = PutBucketNotificationConfigurationResponse'
 
 instance NFData
            PutBucketNotificationConfigurationResponse

@@ -52,7 +52,6 @@ module Network.AWS.APIGateway.PutRestAPI
     ) where
 
 import Network.AWS.APIGateway.Types
-import Network.AWS.APIGateway.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.Request
@@ -63,16 +62,12 @@ import Network.AWS.Response
 --
 --
 -- /See:/ 'putRestAPI' smart constructor.
-data PutRestAPI =
-  PutRestAPI'
-    { _praMode           :: !(Maybe PutMode)
-    , _praFailOnWarnings :: !(Maybe Bool)
-    , _praParameters     :: !(Maybe (Map Text Text))
-    , _praRestAPIId      :: !Text
-    , _praBody           :: !ByteString
-    }
-  deriving (Eq, Show, Data, Typeable, Generic)
-
+data PutRestAPI = PutRestAPI'{_praMode ::
+                              !(Maybe PutMode),
+                              _praFailOnWarnings :: !(Maybe Bool),
+                              _praParameters :: !(Maybe (Map Text Text)),
+                              _praRestAPIId :: !Text, _praBody :: !ByteString}
+                    deriving (Eq, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'PutRestAPI' with the minimum fields required to make a request.
 --
@@ -91,15 +86,11 @@ putRestAPI
     :: Text -- ^ 'praRestAPIId'
     -> ByteString -- ^ 'praBody'
     -> PutRestAPI
-putRestAPI pRestAPIId_ pBody_ =
-  PutRestAPI'
-    { _praMode = Nothing
-    , _praFailOnWarnings = Nothing
-    , _praParameters = Nothing
-    , _praRestAPIId = pRestAPIId_
-    , _praBody = pBody_
-    }
-
+putRestAPI pRestAPIId_ pBody_
+  = PutRestAPI'{_praMode = Nothing,
+                _praFailOnWarnings = Nothing,
+                _praParameters = Nothing,
+                _praRestAPIId = pRestAPIId_, _praBody = pBody_}
 
 -- | The @mode@ query parameter to specify the update mode. Valid values are "merge" and "overwrite". By default, the update mode is "merge".
 praMode :: Lens' PutRestAPI (Maybe PutMode)

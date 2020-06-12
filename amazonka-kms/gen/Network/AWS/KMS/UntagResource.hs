@@ -38,20 +38,16 @@ module Network.AWS.KMS.UntagResource
     ) where
 
 import Network.AWS.KMS.Types
-import Network.AWS.KMS.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 
 -- | /See:/ 'untagResource' smart constructor.
-data UntagResource =
-  UntagResource'
-    { _urKeyId   :: !Text
-    , _urTagKeys :: ![Text]
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data UntagResource = UntagResource'{_urKeyId ::
+                                    !Text,
+                                    _urTagKeys :: ![Text]}
+                       deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'UntagResource' with the minimum fields required to make a request.
 --
@@ -63,8 +59,9 @@ data UntagResource =
 untagResource
     :: Text -- ^ 'urKeyId'
     -> UntagResource
-untagResource pKeyId_ = UntagResource' {_urKeyId = pKeyId_, _urTagKeys = mempty}
-
+untagResource pKeyId_
+  = UntagResource'{_urKeyId = pKeyId_,
+                   _urTagKeys = mempty}
 
 -- | A unique identifier for the CMK from which you are removing tags. Specify the key ID or the Amazon Resource Name (ARN) of the CMK. For example:     * Key ID: @1234abcd-12ab-34cd-56ef-1234567890ab@      * Key ARN: @arn:aws:kms:us-east-2:111122223333:key/1234abcd-12ab-34cd-56ef-1234567890ab@  To get the key ID and key ARN for a CMK, use 'ListKeys' or 'DescribeKey' .
 urKeyId :: Lens' UntagResource Text
@@ -106,16 +103,14 @@ instance ToQuery UntagResource where
         toQuery = const mempty
 
 -- | /See:/ 'untagResourceResponse' smart constructor.
-data UntagResourceResponse =
-  UntagResourceResponse'
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data UntagResourceResponse = UntagResourceResponse'
+                               deriving (Eq, Read, Show, Data, Typeable,
+                                         Generic)
 
 -- | Creates a value of 'UntagResourceResponse' with the minimum fields required to make a request.
 --
 untagResourceResponse
     :: UntagResourceResponse
 untagResourceResponse = UntagResourceResponse'
-
 
 instance NFData UntagResourceResponse where

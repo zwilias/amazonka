@@ -39,19 +39,15 @@ module Network.AWS.CloudDirectory.GetSchemaAsJSON
     ) where
 
 import Network.AWS.CloudDirectory.Types
-import Network.AWS.CloudDirectory.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 
 -- | /See:/ 'getSchemaAsJSON' smart constructor.
-newtype GetSchemaAsJSON =
-  GetSchemaAsJSON'
-    { _gsajSchemaARN :: Text
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+newtype GetSchemaAsJSON = GetSchemaAsJSON'{_gsajSchemaARN
+                                           :: Text}
+                            deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'GetSchemaAsJSON' with the minimum fields required to make a request.
 --
@@ -61,8 +57,8 @@ newtype GetSchemaAsJSON =
 getSchemaAsJSON
     :: Text -- ^ 'gsajSchemaARN'
     -> GetSchemaAsJSON
-getSchemaAsJSON pSchemaARN_ = GetSchemaAsJSON' {_gsajSchemaARN = pSchemaARN_}
-
+getSchemaAsJSON pSchemaARN_
+  = GetSchemaAsJSON'{_gsajSchemaARN = pSchemaARN_}
 
 -- | The ARN of the schema to retrieve.
 gsajSchemaARN :: Lens' GetSchemaAsJSON Text
@@ -98,14 +94,14 @@ instance ToQuery GetSchemaAsJSON where
         toQuery = const mempty
 
 -- | /See:/ 'getSchemaAsJSONResponse' smart constructor.
-data GetSchemaAsJSONResponse =
-  GetSchemaAsJSONResponse'
-    { _gsajrsDocument       :: !(Maybe Text)
-    , _gsajrsName           :: !(Maybe Text)
-    , _gsajrsResponseStatus :: !Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data GetSchemaAsJSONResponse = GetSchemaAsJSONResponse'{_gsajrsDocument
+                                                        :: !(Maybe Text),
+                                                        _gsajrsName ::
+                                                        !(Maybe Text),
+                                                        _gsajrsResponseStatus ::
+                                                        !Int}
+                                 deriving (Eq, Read, Show, Data, Typeable,
+                                           Generic)
 
 -- | Creates a value of 'GetSchemaAsJSONResponse' with the minimum fields required to make a request.
 --
@@ -119,13 +115,10 @@ data GetSchemaAsJSONResponse =
 getSchemaAsJSONResponse
     :: Int -- ^ 'gsajrsResponseStatus'
     -> GetSchemaAsJSONResponse
-getSchemaAsJSONResponse pResponseStatus_ =
-  GetSchemaAsJSONResponse'
-    { _gsajrsDocument = Nothing
-    , _gsajrsName = Nothing
-    , _gsajrsResponseStatus = pResponseStatus_
-    }
-
+getSchemaAsJSONResponse pResponseStatus_
+  = GetSchemaAsJSONResponse'{_gsajrsDocument = Nothing,
+                             _gsajrsName = Nothing,
+                             _gsajrsResponseStatus = pResponseStatus_}
 
 -- | The JSON representation of the schema document.
 gsajrsDocument :: Lens' GetSchemaAsJSONResponse (Maybe Text)

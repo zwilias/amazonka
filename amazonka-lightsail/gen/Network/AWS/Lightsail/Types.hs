@@ -1,4 +1,4 @@
-{-# LANGUAGE OverloadedStrings #-}
+{-# LANGUAGE OverloadedStrings  #-}
 
 -- Derived from AWS service descriptions, licensed under Apache 2.0.
 
@@ -464,98 +464,152 @@ module Network.AWS.Lightsail.Types
     ) where
 
 import Network.AWS.Lens
-import Network.AWS.Lightsail.Types.Product
-import Network.AWS.Lightsail.Types.Sum
 import Network.AWS.Prelude
 import Network.AWS.Sign.V4
+import Network.AWS.Lightsail.Types.AccessDirection
+import Network.AWS.Lightsail.Types.BlueprintType
+import Network.AWS.Lightsail.Types.DiskSnapshotState
+import Network.AWS.Lightsail.Types.DiskState
+import Network.AWS.Lightsail.Types.InstanceAccessProtocol
+import Network.AWS.Lightsail.Types.InstanceHealthReason
+import Network.AWS.Lightsail.Types.InstanceHealthState
+import Network.AWS.Lightsail.Types.InstanceMetricName
+import Network.AWS.Lightsail.Types.InstancePlatform
+import Network.AWS.Lightsail.Types.InstanceSnapshotState
+import Network.AWS.Lightsail.Types.LoadBalancerAttributeName
+import Network.AWS.Lightsail.Types.LoadBalancerMetricName
+import Network.AWS.Lightsail.Types.LoadBalancerProtocol
+import Network.AWS.Lightsail.Types.LoadBalancerState
+import Network.AWS.Lightsail.Types.LoadBalancerTLSCertificateDomainStatus
+import Network.AWS.Lightsail.Types.LoadBalancerTLSCertificateFailureReason
+import Network.AWS.Lightsail.Types.LoadBalancerTLSCertificateRenewalStatus
+import Network.AWS.Lightsail.Types.LoadBalancerTLSCertificateRevocationReason
+import Network.AWS.Lightsail.Types.LoadBalancerTLSCertificateStatus
+import Network.AWS.Lightsail.Types.MetricStatistic
+import Network.AWS.Lightsail.Types.MetricUnit
+import Network.AWS.Lightsail.Types.NetworkProtocol
+import Network.AWS.Lightsail.Types.OperationStatus
+import Network.AWS.Lightsail.Types.OperationType
+import Network.AWS.Lightsail.Types.PortAccessType
+import Network.AWS.Lightsail.Types.PortState
+import Network.AWS.Lightsail.Types.RegionName
+import Network.AWS.Lightsail.Types.ResourceType
+import Network.AWS.Lightsail.Types.AvailabilityZone
+import Network.AWS.Lightsail.Types.Blueprint
+import Network.AWS.Lightsail.Types.Bundle
+import Network.AWS.Lightsail.Types.Disk
+import Network.AWS.Lightsail.Types.DiskMap
+import Network.AWS.Lightsail.Types.DiskSnapshot
+import Network.AWS.Lightsail.Types.Domain
+import Network.AWS.Lightsail.Types.DomainEntry
+import Network.AWS.Lightsail.Types.Instance
+import Network.AWS.Lightsail.Types.InstanceAccessDetails
+import Network.AWS.Lightsail.Types.InstanceHardware
+import Network.AWS.Lightsail.Types.InstanceHealthSummary
+import Network.AWS.Lightsail.Types.InstanceNetworking
+import Network.AWS.Lightsail.Types.InstancePortInfo
+import Network.AWS.Lightsail.Types.InstancePortState
+import Network.AWS.Lightsail.Types.InstanceSnapshot
+import Network.AWS.Lightsail.Types.InstanceState
+import Network.AWS.Lightsail.Types.KeyPair
+import Network.AWS.Lightsail.Types.LoadBalancer
+import Network.AWS.Lightsail.Types.LoadBalancerTLSCertificate
+import Network.AWS.Lightsail.Types.LoadBalancerTLSCertificateDomainValidationOption
+import Network.AWS.Lightsail.Types.LoadBalancerTLSCertificateDomainValidationRecord
+import Network.AWS.Lightsail.Types.LoadBalancerTLSCertificateRenewalSummary
+import Network.AWS.Lightsail.Types.LoadBalancerTLSCertificateSummary
+import Network.AWS.Lightsail.Types.MetricDatapoint
+import Network.AWS.Lightsail.Types.MonthlyTransfer
+import Network.AWS.Lightsail.Types.Operation
+import Network.AWS.Lightsail.Types.PasswordData
+import Network.AWS.Lightsail.Types.PortInfo
+import Network.AWS.Lightsail.Types.RegionInfo
+import Network.AWS.Lightsail.Types.ResourceLocation
+import Network.AWS.Lightsail.Types.StaticIP
 
 -- | API version @2016-11-28@ of the Amazon Lightsail SDK configuration.
 lightsail :: Service
-lightsail =
-  Service
-    { _svcAbbrev = "Lightsail"
-    , _svcSigner = v4
-    , _svcPrefix = "lightsail"
-    , _svcVersion = "2016-11-28"
-    , _svcEndpoint = defaultEndpoint lightsail
-    , _svcTimeout = Just 70
-    , _svcCheck = statusSuccess
-    , _svcError = parseJSONError "Lightsail"
-    , _svcRetry = retry
-    }
-  where
-    retry =
-      Exponential
-        { _retryBase = 5.0e-2
-        , _retryGrowth = 2
-        , _retryAttempts = 5
-        , _retryCheck = check
-        }
-    check e
-      | has (hasCode "ThrottledException" . hasStatus 400) e =
-        Just "throttled_exception"
-      | has (hasStatus 429) e = Just "too_many_requests"
-      | has (hasCode "ThrottlingException" . hasStatus 400) e =
-        Just "throttling_exception"
-      | has (hasCode "Throttling" . hasStatus 400) e = Just "throttling"
-      | has (hasStatus 504) e = Just "gateway_timeout"
-      | has (hasCode "RequestThrottledException" . hasStatus 400) e =
-        Just "request_throttled_exception"
-      | has (hasStatus 502) e = Just "bad_gateway"
-      | has (hasStatus 503) e = Just "service_unavailable"
-      | has (hasStatus 500) e = Just "general_server_error"
-      | has (hasStatus 509) e = Just "limit_exceeded"
-      | otherwise = Nothing
-
+lightsail
+  = Service{_svcAbbrev = "Lightsail", _svcSigner = v4,
+            _svcPrefix = "lightsail", _svcVersion = "2016-11-28",
+            _svcEndpoint = defaultEndpoint lightsail,
+            _svcTimeout = Just 70, _svcCheck = statusSuccess,
+            _svcError = parseJSONError "Lightsail",
+            _svcRetry = retry}
+  where retry
+          = Exponential{_retryBase = 5.0e-2, _retryGrowth = 2,
+                        _retryAttempts = 5, _retryCheck = check}
+        check e
+          | has (hasCode "ThrottledException" . hasStatus 400)
+              e
+            = Just "throttled_exception"
+          | has (hasStatus 429) e = Just "too_many_requests"
+          | has (hasCode "ThrottlingException" . hasStatus 400)
+              e
+            = Just "throttling_exception"
+          | has (hasCode "Throttling" . hasStatus 400) e =
+            Just "throttling"
+          | has (hasStatus 504) e = Just "gateway_timeout"
+          | has
+              (hasCode "RequestThrottledException" . hasStatus 400)
+              e
+            = Just "request_throttled_exception"
+          | has (hasStatus 502) e = Just "bad_gateway"
+          | has (hasStatus 503) e = Just "service_unavailable"
+          | has (hasStatus 500) e = Just "general_server_error"
+          | has (hasStatus 509) e = Just "limit_exceeded"
+          | otherwise = Nothing
 
 -- | Lightsail throws this exception when the user cannot be authenticated or uses invalid credentials to access a resource.
 --
 --
 _AccessDeniedException :: AsError a => Getting (First ServiceError) a ServiceError
-_AccessDeniedException = _MatchServiceError lightsail "AccessDeniedException"
-
+_AccessDeniedException
+  = _MatchServiceError lightsail
+      "AccessDeniedException"
 
 -- | Lightsail throws this exception when an account is still in the setup in progress state.
 --
 --
 _AccountSetupInProgressException :: AsError a => Getting (First ServiceError) a ServiceError
-_AccountSetupInProgressException =
-  _MatchServiceError lightsail "AccountSetupInProgressException"
-
+_AccountSetupInProgressException
+  = _MatchServiceError lightsail
+      "AccountSetupInProgressException"
 
 -- | Lightsail throws this exception when it cannot find a resource.
 --
 --
 _NotFoundException :: AsError a => Getting (First ServiceError) a ServiceError
-_NotFoundException = _MatchServiceError lightsail "NotFoundException"
-
+_NotFoundException
+  = _MatchServiceError lightsail "NotFoundException"
 
 -- | Lightsail throws this exception when an operation fails to execute.
 --
 --
 _OperationFailureException :: AsError a => Getting (First ServiceError) a ServiceError
-_OperationFailureException =
-  _MatchServiceError lightsail "OperationFailureException"
-
+_OperationFailureException
+  = _MatchServiceError lightsail
+      "OperationFailureException"
 
 -- | A general service exception.
 --
 --
 _ServiceException :: AsError a => Getting (First ServiceError) a ServiceError
-_ServiceException = _MatchServiceError lightsail "ServiceException"
-
+_ServiceException
+  = _MatchServiceError lightsail "ServiceException"
 
 -- | Lightsail throws this exception when the user has not been authenticated.
 --
 --
 _UnauthenticatedException :: AsError a => Getting (First ServiceError) a ServiceError
-_UnauthenticatedException =
-  _MatchServiceError lightsail "UnauthenticatedException"
-
+_UnauthenticatedException
+  = _MatchServiceError lightsail
+      "UnauthenticatedException"
 
 -- | Lightsail throws this exception when user input does not conform to the validation rules of an input field.
 --
 --
 _InvalidInputException :: AsError a => Getting (First ServiceError) a ServiceError
-_InvalidInputException = _MatchServiceError lightsail "InvalidInputException"
-
+_InvalidInputException
+  = _MatchServiceError lightsail
+      "InvalidInputException"

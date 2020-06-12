@@ -43,23 +43,20 @@ module Network.AWS.IoT.CreateAuthorizer
     ) where
 
 import Network.AWS.IoT.Types
-import Network.AWS.IoT.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 
 -- | /See:/ 'createAuthorizer' smart constructor.
-data CreateAuthorizer =
-  CreateAuthorizer'
-    { _caStatus                 :: !(Maybe AuthorizerStatus)
-    , _caAuthorizerName         :: !Text
-    , _caAuthorizerFunctionARN  :: !Text
-    , _caTokenKeyName           :: !Text
-    , _caTokenSigningPublicKeys :: !(Map Text Text)
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data CreateAuthorizer = CreateAuthorizer'{_caStatus
+                                          :: !(Maybe AuthorizerStatus),
+                                          _caAuthorizerName :: !Text,
+                                          _caAuthorizerFunctionARN :: !Text,
+                                          _caTokenKeyName :: !Text,
+                                          _caTokenSigningPublicKeys ::
+                                          !(Map Text Text)}
+                          deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'CreateAuthorizer' with the minimum fields required to make a request.
 --
@@ -79,15 +76,13 @@ createAuthorizer
     -> Text -- ^ 'caAuthorizerFunctionARN'
     -> Text -- ^ 'caTokenKeyName'
     -> CreateAuthorizer
-createAuthorizer pAuthorizerName_ pAuthorizerFunctionARN_ pTokenKeyName_ =
-  CreateAuthorizer'
-    { _caStatus = Nothing
-    , _caAuthorizerName = pAuthorizerName_
-    , _caAuthorizerFunctionARN = pAuthorizerFunctionARN_
-    , _caTokenKeyName = pTokenKeyName_
-    , _caTokenSigningPublicKeys = mempty
-    }
-
+createAuthorizer pAuthorizerName_
+  pAuthorizerFunctionARN_ pTokenKeyName_
+  = CreateAuthorizer'{_caStatus = Nothing,
+                      _caAuthorizerName = pAuthorizerName_,
+                      _caAuthorizerFunctionARN = pAuthorizerFunctionARN_,
+                      _caTokenKeyName = pTokenKeyName_,
+                      _caTokenSigningPublicKeys = mempty}
 
 -- | The status of the create authorizer request.
 caStatus :: Lens' CreateAuthorizer (Maybe AuthorizerStatus)
@@ -147,14 +142,14 @@ instance ToQuery CreateAuthorizer where
         toQuery = const mempty
 
 -- | /See:/ 'createAuthorizerResponse' smart constructor.
-data CreateAuthorizerResponse =
-  CreateAuthorizerResponse'
-    { _carsAuthorizerName :: !(Maybe Text)
-    , _carsAuthorizerARN  :: !(Maybe Text)
-    , _carsResponseStatus :: !Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data CreateAuthorizerResponse = CreateAuthorizerResponse'{_carsAuthorizerName
+                                                          :: !(Maybe Text),
+                                                          _carsAuthorizerARN ::
+                                                          !(Maybe Text),
+                                                          _carsResponseStatus ::
+                                                          !Int}
+                                  deriving (Eq, Read, Show, Data, Typeable,
+                                            Generic)
 
 -- | Creates a value of 'CreateAuthorizerResponse' with the minimum fields required to make a request.
 --
@@ -168,13 +163,11 @@ data CreateAuthorizerResponse =
 createAuthorizerResponse
     :: Int -- ^ 'carsResponseStatus'
     -> CreateAuthorizerResponse
-createAuthorizerResponse pResponseStatus_ =
-  CreateAuthorizerResponse'
-    { _carsAuthorizerName = Nothing
-    , _carsAuthorizerARN = Nothing
-    , _carsResponseStatus = pResponseStatus_
-    }
-
+createAuthorizerResponse pResponseStatus_
+  = CreateAuthorizerResponse'{_carsAuthorizerName =
+                                Nothing,
+                              _carsAuthorizerARN = Nothing,
+                              _carsResponseStatus = pResponseStatus_}
 
 -- | The authorizer's name.
 carsAuthorizerName :: Lens' CreateAuthorizerResponse (Maybe Text)

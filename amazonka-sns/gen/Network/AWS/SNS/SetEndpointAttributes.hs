@@ -18,7 +18,7 @@
 -- Stability   : auto-generated
 -- Portability : non-portable (GHC extensions)
 --
--- Sets the attributes for an endpoint for a device on one of the supported push notification services, such as GCM and APNS. For more information, see <http://docs.aws.amazon.com/sns/latest/dg/SNSMobilePush.html Using Amazon SNS Mobile Push Notifications> .
+-- Sets the attributes for an endpoint for a device on one of the supported push notification services, such as GCM and APNS. For more information, see <http://docs.aws.amazon.com/sns/latest/dg/SNSMobilePush.html Using Amazon SNS Mobile Push Notifications> . 
 --
 --
 module Network.AWS.SNS.SetEndpointAttributes
@@ -40,20 +40,18 @@ import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 import Network.AWS.SNS.Types
-import Network.AWS.SNS.Types.Product
 
 -- | Input for SetEndpointAttributes action.
 --
 --
 --
 -- /See:/ 'setEndpointAttributes' smart constructor.
-data SetEndpointAttributes =
-  SetEndpointAttributes'
-    { _seaEndpointARN :: !Text
-    , _seaAttributes  :: !(Map Text Text)
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data SetEndpointAttributes = SetEndpointAttributes'{_seaEndpointARN
+                                                    :: !Text,
+                                                    _seaAttributes ::
+                                                    !(Map Text Text)}
+                               deriving (Eq, Read, Show, Data, Typeable,
+                                         Generic)
 
 -- | Creates a value of 'SetEndpointAttributes' with the minimum fields required to make a request.
 --
@@ -65,10 +63,10 @@ data SetEndpointAttributes =
 setEndpointAttributes
     :: Text -- ^ 'seaEndpointARN'
     -> SetEndpointAttributes
-setEndpointAttributes pEndpointARN_ =
-  SetEndpointAttributes'
-    {_seaEndpointARN = pEndpointARN_, _seaAttributes = mempty}
-
+setEndpointAttributes pEndpointARN_
+  = SetEndpointAttributes'{_seaEndpointARN =
+                             pEndpointARN_,
+                           _seaAttributes = mempty}
 
 -- | EndpointArn used for SetEndpointAttributes action.
 seaEndpointARN :: Lens' SetEndpointAttributes Text
@@ -104,16 +102,15 @@ instance ToQuery SetEndpointAttributes where
                  toQueryMap "entry" "key" "value" _seaAttributes]
 
 -- | /See:/ 'setEndpointAttributesResponse' smart constructor.
-data SetEndpointAttributesResponse =
-  SetEndpointAttributesResponse'
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data SetEndpointAttributesResponse = SetEndpointAttributesResponse'
+                                       deriving (Eq, Read, Show, Data, Typeable,
+                                                 Generic)
 
 -- | Creates a value of 'SetEndpointAttributesResponse' with the minimum fields required to make a request.
 --
 setEndpointAttributesResponse
     :: SetEndpointAttributesResponse
-setEndpointAttributesResponse = SetEndpointAttributesResponse'
-
+setEndpointAttributesResponse
+  = SetEndpointAttributesResponse'
 
 instance NFData SetEndpointAttributesResponse where

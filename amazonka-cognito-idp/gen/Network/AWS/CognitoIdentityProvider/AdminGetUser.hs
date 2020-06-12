@@ -49,7 +49,6 @@ module Network.AWS.CognitoIdentityProvider.AdminGetUser
     ) where
 
 import Network.AWS.CognitoIdentityProvider.Types
-import Network.AWS.CognitoIdentityProvider.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.Request
@@ -60,13 +59,10 @@ import Network.AWS.Response
 --
 --
 -- /See:/ 'adminGetUser' smart constructor.
-data AdminGetUser =
-  AdminGetUser'
-    { _aguUserPoolId :: !Text
-    , _aguUsername   :: !(Sensitive Text)
-    }
-  deriving (Eq, Show, Data, Typeable, Generic)
-
+data AdminGetUser = AdminGetUser'{_aguUserPoolId ::
+                                  !Text,
+                                  _aguUsername :: !(Sensitive Text)}
+                      deriving (Eq, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'AdminGetUser' with the minimum fields required to make a request.
 --
@@ -79,10 +75,9 @@ adminGetUser
     :: Text -- ^ 'aguUserPoolId'
     -> Text -- ^ 'aguUsername'
     -> AdminGetUser
-adminGetUser pUserPoolId_ pUsername_ =
-  AdminGetUser'
-    {_aguUserPoolId = pUserPoolId_, _aguUsername = _Sensitive # pUsername_}
-
+adminGetUser pUserPoolId_ pUsername_
+  = AdminGetUser'{_aguUserPoolId = pUserPoolId_,
+                  _aguUsername = _Sensitive # pUsername_}
 
 -- | The user pool ID for the user pool where you want to get information about the user.
 aguUserPoolId :: Lens' AdminGetUser Text
@@ -141,21 +136,26 @@ instance ToQuery AdminGetUser where
 --
 --
 -- /See:/ 'adminGetUserResponse' smart constructor.
-data AdminGetUserResponse =
-  AdminGetUserResponse'
-    { _agursEnabled              :: !(Maybe Bool)
-    , _agursUserStatus           :: !(Maybe UserStatusType)
-    , _agursUserAttributes       :: !(Maybe [AttributeType])
-    , _agursUserCreateDate       :: !(Maybe POSIX)
-    , _agursUserMFASettingList   :: !(Maybe [Text])
-    , _agursMFAOptions           :: !(Maybe [MFAOptionType])
-    , _agursUserLastModifiedDate :: !(Maybe POSIX)
-    , _agursPreferredMFASetting  :: !(Maybe Text)
-    , _agursResponseStatus       :: !Int
-    , _agursUsername             :: !(Sensitive Text)
-    }
-  deriving (Eq, Show, Data, Typeable, Generic)
-
+data AdminGetUserResponse = AdminGetUserResponse'{_agursEnabled
+                                                  :: !(Maybe Bool),
+                                                  _agursUserStatus ::
+                                                  !(Maybe UserStatusType),
+                                                  _agursUserAttributes ::
+                                                  !(Maybe [AttributeType]),
+                                                  _agursUserCreateDate ::
+                                                  !(Maybe POSIX),
+                                                  _agursUserMFASettingList ::
+                                                  !(Maybe [Text]),
+                                                  _agursMFAOptions ::
+                                                  !(Maybe [MFAOptionType]),
+                                                  _agursUserLastModifiedDate ::
+                                                  !(Maybe POSIX),
+                                                  _agursPreferredMFASetting ::
+                                                  !(Maybe Text),
+                                                  _agursResponseStatus :: !Int,
+                                                  _agursUsername ::
+                                                  !(Sensitive Text)}
+                              deriving (Eq, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'AdminGetUserResponse' with the minimum fields required to make a request.
 --
@@ -163,7 +163,7 @@ data AdminGetUserResponse =
 --
 -- * 'agursEnabled' - Indicates that the status is enabled.
 --
--- * 'agursUserStatus' - The user status. Can be one of the following:     * UNCONFIRMED - User has been created but not confirmed.     * CONFIRMED - User has been confirmed.     * ARCHIVED - User is no longer active.     * COMPROMISED - User is disabled due to a potential security threat.     * UNKNOWN - User status is not known.     * RESET_REQUIRED - User is confirmed, but the user must request a code and reset his or her password before he or she can sign in.     * FORCE_CHANGE_PASSWORD - The user is confirmed and the user can sign in using a temporary password, but on first sign-in, the user must change his or her password to a new value before doing anything else.
+-- * 'agursUserStatus' - The user status. Can be one of the following:     * UNCONFIRMED - User has been created but not confirmed.     * CONFIRMED - User has been confirmed.     * ARCHIVED - User is no longer active.     * COMPROMISED - User is disabled due to a potential security threat.     * UNKNOWN - User status is not known.     * RESET_REQUIRED - User is confirmed, but the user must request a code and reset his or her password before he or she can sign in.     * FORCE_CHANGE_PASSWORD - The user is confirmed and the user can sign in using a temporary password, but on first sign-in, the user must change his or her password to a new value before doing anything else. 
 --
 -- * 'agursUserAttributes' - An array of name-value pairs representing user attributes.
 --
@@ -184,26 +184,23 @@ adminGetUserResponse
     :: Int -- ^ 'agursResponseStatus'
     -> Text -- ^ 'agursUsername'
     -> AdminGetUserResponse
-adminGetUserResponse pResponseStatus_ pUsername_ =
-  AdminGetUserResponse'
-    { _agursEnabled = Nothing
-    , _agursUserStatus = Nothing
-    , _agursUserAttributes = Nothing
-    , _agursUserCreateDate = Nothing
-    , _agursUserMFASettingList = Nothing
-    , _agursMFAOptions = Nothing
-    , _agursUserLastModifiedDate = Nothing
-    , _agursPreferredMFASetting = Nothing
-    , _agursResponseStatus = pResponseStatus_
-    , _agursUsername = _Sensitive # pUsername_
-    }
-
+adminGetUserResponse pResponseStatus_ pUsername_
+  = AdminGetUserResponse'{_agursEnabled = Nothing,
+                          _agursUserStatus = Nothing,
+                          _agursUserAttributes = Nothing,
+                          _agursUserCreateDate = Nothing,
+                          _agursUserMFASettingList = Nothing,
+                          _agursMFAOptions = Nothing,
+                          _agursUserLastModifiedDate = Nothing,
+                          _agursPreferredMFASetting = Nothing,
+                          _agursResponseStatus = pResponseStatus_,
+                          _agursUsername = _Sensitive # pUsername_}
 
 -- | Indicates that the status is enabled.
 agursEnabled :: Lens' AdminGetUserResponse (Maybe Bool)
 agursEnabled = lens _agursEnabled (\ s a -> s{_agursEnabled = a})
 
--- | The user status. Can be one of the following:     * UNCONFIRMED - User has been created but not confirmed.     * CONFIRMED - User has been confirmed.     * ARCHIVED - User is no longer active.     * COMPROMISED - User is disabled due to a potential security threat.     * UNKNOWN - User status is not known.     * RESET_REQUIRED - User is confirmed, but the user must request a code and reset his or her password before he or she can sign in.     * FORCE_CHANGE_PASSWORD - The user is confirmed and the user can sign in using a temporary password, but on first sign-in, the user must change his or her password to a new value before doing anything else.
+-- | The user status. Can be one of the following:     * UNCONFIRMED - User has been created but not confirmed.     * CONFIRMED - User has been confirmed.     * ARCHIVED - User is no longer active.     * COMPROMISED - User is disabled due to a potential security threat.     * UNKNOWN - User status is not known.     * RESET_REQUIRED - User is confirmed, but the user must request a code and reset his or her password before he or she can sign in.     * FORCE_CHANGE_PASSWORD - The user is confirmed and the user can sign in using a temporary password, but on first sign-in, the user must change his or her password to a new value before doing anything else. 
 agursUserStatus :: Lens' AdminGetUserResponse (Maybe UserStatusType)
 agursUserStatus = lens _agursUserStatus (\ s a -> s{_agursUserStatus = a})
 

@@ -47,20 +47,16 @@ module Network.AWS.EC2.AdvertiseByoipCidr
     ) where
 
 import Network.AWS.EC2.Types
-import Network.AWS.EC2.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 
 -- | /See:/ 'advertiseByoipCidr' smart constructor.
-data AdvertiseByoipCidr =
-  AdvertiseByoipCidr'
-    { _abcDryRun :: !(Maybe Bool)
-    , _abcCidr   :: !Text
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data AdvertiseByoipCidr = AdvertiseByoipCidr'{_abcDryRun
+                                              :: !(Maybe Bool),
+                                              _abcCidr :: !Text}
+                            deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'AdvertiseByoipCidr' with the minimum fields required to make a request.
 --
@@ -72,9 +68,9 @@ data AdvertiseByoipCidr =
 advertiseByoipCidr
     :: Text -- ^ 'abcCidr'
     -> AdvertiseByoipCidr
-advertiseByoipCidr pCidr_ =
-  AdvertiseByoipCidr' {_abcDryRun = Nothing, _abcCidr = pCidr_}
-
+advertiseByoipCidr pCidr_
+  = AdvertiseByoipCidr'{_abcDryRun = Nothing,
+                        _abcCidr = pCidr_}
 
 -- | Checks whether you have the required permissions for the action, without actually making the request, and provides an error response. If you have the required permissions, the error response is @DryRunOperation@ . Otherwise, it is @UnauthorizedOperation@ .
 abcDryRun :: Lens' AdvertiseByoipCidr (Maybe Bool)
@@ -112,13 +108,14 @@ instance ToQuery AdvertiseByoipCidr where
                "DryRun" =: _abcDryRun, "Cidr" =: _abcCidr]
 
 -- | /See:/ 'advertiseByoipCidrResponse' smart constructor.
-data AdvertiseByoipCidrResponse =
-  AdvertiseByoipCidrResponse'
-    { _abcrsByoipCidr      :: !(Maybe ByoipCidr)
-    , _abcrsResponseStatus :: !Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data AdvertiseByoipCidrResponse = AdvertiseByoipCidrResponse'{_abcrsByoipCidr
+                                                              ::
+                                                              !(Maybe
+                                                                  ByoipCidr),
+                                                              _abcrsResponseStatus
+                                                              :: !Int}
+                                    deriving (Eq, Read, Show, Data, Typeable,
+                                              Generic)
 
 -- | Creates a value of 'AdvertiseByoipCidrResponse' with the minimum fields required to make a request.
 --
@@ -130,10 +127,10 @@ data AdvertiseByoipCidrResponse =
 advertiseByoipCidrResponse
     :: Int -- ^ 'abcrsResponseStatus'
     -> AdvertiseByoipCidrResponse
-advertiseByoipCidrResponse pResponseStatus_ =
-  AdvertiseByoipCidrResponse'
-    {_abcrsByoipCidr = Nothing, _abcrsResponseStatus = pResponseStatus_}
-
+advertiseByoipCidrResponse pResponseStatus_
+  = AdvertiseByoipCidrResponse'{_abcrsByoipCidr =
+                                  Nothing,
+                                _abcrsResponseStatus = pResponseStatus_}
 
 -- | Information about the address range.
 abcrsByoipCidr :: Lens' AdvertiseByoipCidrResponse (Maybe ByoipCidr)

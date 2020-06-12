@@ -41,22 +41,18 @@ module Network.AWS.Glue.GetTableVersion
     ) where
 
 import Network.AWS.Glue.Types
-import Network.AWS.Glue.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 
 -- | /See:/ 'getTableVersion' smart constructor.
-data GetTableVersion =
-  GetTableVersion'
-    { _gtvVersionId    :: !(Maybe Text)
-    , _gtvCatalogId    :: !(Maybe Text)
-    , _gtvDatabaseName :: !Text
-    , _gtvTableName    :: !Text
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data GetTableVersion = GetTableVersion'{_gtvVersionId
+                                        :: !(Maybe Text),
+                                        _gtvCatalogId :: !(Maybe Text),
+                                        _gtvDatabaseName :: !Text,
+                                        _gtvTableName :: !Text}
+                         deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'GetTableVersion' with the minimum fields required to make a request.
 --
@@ -73,14 +69,11 @@ getTableVersion
     :: Text -- ^ 'gtvDatabaseName'
     -> Text -- ^ 'gtvTableName'
     -> GetTableVersion
-getTableVersion pDatabaseName_ pTableName_ =
-  GetTableVersion'
-    { _gtvVersionId = Nothing
-    , _gtvCatalogId = Nothing
-    , _gtvDatabaseName = pDatabaseName_
-    , _gtvTableName = pTableName_
-    }
-
+getTableVersion pDatabaseName_ pTableName_
+  = GetTableVersion'{_gtvVersionId = Nothing,
+                     _gtvCatalogId = Nothing,
+                     _gtvDatabaseName = pDatabaseName_,
+                     _gtvTableName = pTableName_}
 
 -- | The ID value of the table version to be retrieved.
 gtvVersionId :: Lens' GetTableVersion (Maybe Text)
@@ -136,13 +129,13 @@ instance ToQuery GetTableVersion where
         toQuery = const mempty
 
 -- | /See:/ 'getTableVersionResponse' smart constructor.
-data GetTableVersionResponse =
-  GetTableVersionResponse'
-    { _gtvrsTableVersion   :: !(Maybe TableVersion)
-    , _gtvrsResponseStatus :: !Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data GetTableVersionResponse = GetTableVersionResponse'{_gtvrsTableVersion
+                                                        ::
+                                                        !(Maybe TableVersion),
+                                                        _gtvrsResponseStatus ::
+                                                        !Int}
+                                 deriving (Eq, Read, Show, Data, Typeable,
+                                           Generic)
 
 -- | Creates a value of 'GetTableVersionResponse' with the minimum fields required to make a request.
 --
@@ -154,10 +147,10 @@ data GetTableVersionResponse =
 getTableVersionResponse
     :: Int -- ^ 'gtvrsResponseStatus'
     -> GetTableVersionResponse
-getTableVersionResponse pResponseStatus_ =
-  GetTableVersionResponse'
-    {_gtvrsTableVersion = Nothing, _gtvrsResponseStatus = pResponseStatus_}
-
+getTableVersionResponse pResponseStatus_
+  = GetTableVersionResponse'{_gtvrsTableVersion =
+                               Nothing,
+                             _gtvrsResponseStatus = pResponseStatus_}
 
 -- | The requested table version.
 gtvrsTableVersion :: Lens' GetTableVersionResponse (Maybe TableVersion)

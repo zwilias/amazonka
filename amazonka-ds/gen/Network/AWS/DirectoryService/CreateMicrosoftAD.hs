@@ -46,7 +46,6 @@ module Network.AWS.DirectoryService.CreateMicrosoftAD
     ) where
 
 import Network.AWS.DirectoryService.Types
-import Network.AWS.DirectoryService.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.Request
@@ -57,18 +56,16 @@ import Network.AWS.Response
 --
 --
 -- /See:/ 'createMicrosoftAD' smart constructor.
-data CreateMicrosoftAD =
-  CreateMicrosoftAD'
-    { _cmadEdition     :: !(Maybe DirectoryEdition)
-    , _cmadShortName   :: !(Maybe Text)
-    , _cmadDescription :: !(Maybe Text)
-    , _cmadTags        :: !(Maybe [Tag])
-    , _cmadName        :: !Text
-    , _cmadPassword    :: !(Sensitive Text)
-    , _cmadVPCSettings :: !DirectoryVPCSettings
-    }
-  deriving (Eq, Show, Data, Typeable, Generic)
-
+data CreateMicrosoftAD = CreateMicrosoftAD'{_cmadEdition
+                                            :: !(Maybe DirectoryEdition),
+                                            _cmadShortName :: !(Maybe Text),
+                                            _cmadDescription :: !(Maybe Text),
+                                            _cmadTags :: !(Maybe [Tag]),
+                                            _cmadName :: !Text,
+                                            _cmadPassword :: !(Sensitive Text),
+                                            _cmadVPCSettings ::
+                                            !DirectoryVPCSettings}
+                           deriving (Eq, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'CreateMicrosoftAD' with the minimum fields required to make a request.
 --
@@ -76,7 +73,7 @@ data CreateMicrosoftAD =
 --
 -- * 'cmadEdition' - AWS Managed Microsoft AD is available in two editions: @Standard@ and @Enterprise@ . @Enterprise@ is the default.
 --
--- * 'cmadShortName' - The NetBIOS name for your domain, such as @CORP@ . If you don't specify a NetBIOS name, it will default to the first part of your directory DNS. For example, @CORP@ for the directory DNS @corp.example.com@ .
+-- * 'cmadShortName' - The NetBIOS name for your domain, such as @CORP@ . If you don't specify a NetBIOS name, it will default to the first part of your directory DNS. For example, @CORP@ for the directory DNS @corp.example.com@ . 
 --
 -- * 'cmadDescription' - A description for the directory. This label will appear on the AWS console @Directory Details@ page after the directory is created.
 --
@@ -92,23 +89,18 @@ createMicrosoftAD
     -> Text -- ^ 'cmadPassword'
     -> DirectoryVPCSettings -- ^ 'cmadVPCSettings'
     -> CreateMicrosoftAD
-createMicrosoftAD pName_ pPassword_ pVPCSettings_ =
-  CreateMicrosoftAD'
-    { _cmadEdition = Nothing
-    , _cmadShortName = Nothing
-    , _cmadDescription = Nothing
-    , _cmadTags = Nothing
-    , _cmadName = pName_
-    , _cmadPassword = _Sensitive # pPassword_
-    , _cmadVPCSettings = pVPCSettings_
-    }
-
+createMicrosoftAD pName_ pPassword_ pVPCSettings_
+  = CreateMicrosoftAD'{_cmadEdition = Nothing,
+                       _cmadShortName = Nothing, _cmadDescription = Nothing,
+                       _cmadTags = Nothing, _cmadName = pName_,
+                       _cmadPassword = _Sensitive # pPassword_,
+                       _cmadVPCSettings = pVPCSettings_}
 
 -- | AWS Managed Microsoft AD is available in two editions: @Standard@ and @Enterprise@ . @Enterprise@ is the default.
 cmadEdition :: Lens' CreateMicrosoftAD (Maybe DirectoryEdition)
 cmadEdition = lens _cmadEdition (\ s a -> s{_cmadEdition = a})
 
--- | The NetBIOS name for your domain, such as @CORP@ . If you don't specify a NetBIOS name, it will default to the first part of your directory DNS. For example, @CORP@ for the directory DNS @corp.example.com@ .
+-- | The NetBIOS name for your domain, such as @CORP@ . If you don't specify a NetBIOS name, it will default to the first part of your directory DNS. For example, @CORP@ for the directory DNS @corp.example.com@ . 
 cmadShortName :: Lens' CreateMicrosoftAD (Maybe Text)
 cmadShortName = lens _cmadShortName (\ s a -> s{_cmadShortName = a})
 
@@ -178,13 +170,12 @@ instance ToQuery CreateMicrosoftAD where
 --
 --
 -- /See:/ 'createMicrosoftADResponse' smart constructor.
-data CreateMicrosoftADResponse =
-  CreateMicrosoftADResponse'
-    { _cmadrsDirectoryId    :: !(Maybe Text)
-    , _cmadrsResponseStatus :: !Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data CreateMicrosoftADResponse = CreateMicrosoftADResponse'{_cmadrsDirectoryId
+                                                            :: !(Maybe Text),
+                                                            _cmadrsResponseStatus
+                                                            :: !Int}
+                                   deriving (Eq, Read, Show, Data, Typeable,
+                                             Generic)
 
 -- | Creates a value of 'CreateMicrosoftADResponse' with the minimum fields required to make a request.
 --
@@ -196,10 +187,10 @@ data CreateMicrosoftADResponse =
 createMicrosoftADResponse
     :: Int -- ^ 'cmadrsResponseStatus'
     -> CreateMicrosoftADResponse
-createMicrosoftADResponse pResponseStatus_ =
-  CreateMicrosoftADResponse'
-    {_cmadrsDirectoryId = Nothing, _cmadrsResponseStatus = pResponseStatus_}
-
+createMicrosoftADResponse pResponseStatus_
+  = CreateMicrosoftADResponse'{_cmadrsDirectoryId =
+                                 Nothing,
+                               _cmadrsResponseStatus = pResponseStatus_}
 
 -- | The identifier of the directory that was created.
 cmadrsDirectoryId :: Lens' CreateMicrosoftADResponse (Maybe Text)

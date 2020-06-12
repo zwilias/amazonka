@@ -11,7 +11,7 @@
 -- Stability   : auto-generated
 -- Portability : non-portable (GHC extensions)
 --
--- __AWS Step Functions__
+-- __AWS Step Functions__ 
 --
 -- AWS Step Functions is a service that lets you coordinate the components of distributed applications and microservices using visual workflows.
 --
@@ -90,16 +90,16 @@ module Network.AWS.StepFunctions
     -- * Operations
     -- $operations
 
-    -- ** DeleteActivity
+    -- ** DeleteActivity 
     , module Network.AWS.StepFunctions.DeleteActivity
 
-    -- ** DescribeStateMachine
+    -- ** DescribeStateMachine 
     , module Network.AWS.StepFunctions.DescribeStateMachine
 
-    -- ** StopExecution
+    -- ** StopExecution 
     , module Network.AWS.StepFunctions.StopExecution
 
-    -- ** DescribeActivity
+    -- ** DescribeActivity 
     , module Network.AWS.StepFunctions.DescribeActivity
 
     -- ** ListStateMachines (Paginated)
@@ -108,43 +108,43 @@ module Network.AWS.StepFunctions
     -- ** ListExecutions (Paginated)
     , module Network.AWS.StepFunctions.ListExecutions
 
-    -- ** DeleteStateMachine
+    -- ** DeleteStateMachine 
     , module Network.AWS.StepFunctions.DeleteStateMachine
 
-    -- ** UpdateStateMachine
+    -- ** UpdateStateMachine 
     , module Network.AWS.StepFunctions.UpdateStateMachine
 
-    -- ** DescribeStateMachineForExecution
+    -- ** DescribeStateMachineForExecution 
     , module Network.AWS.StepFunctions.DescribeStateMachineForExecution
 
-    -- ** GetActivityTask
+    -- ** GetActivityTask 
     , module Network.AWS.StepFunctions.GetActivityTask
 
-    -- ** CreateActivity
+    -- ** CreateActivity 
     , module Network.AWS.StepFunctions.CreateActivity
 
     -- ** ListActivities (Paginated)
     , module Network.AWS.StepFunctions.ListActivities
 
-    -- ** SendTaskHeartbeat
+    -- ** SendTaskHeartbeat 
     , module Network.AWS.StepFunctions.SendTaskHeartbeat
 
-    -- ** SendTaskFailure
+    -- ** SendTaskFailure 
     , module Network.AWS.StepFunctions.SendTaskFailure
 
-    -- ** DescribeExecution
+    -- ** DescribeExecution 
     , module Network.AWS.StepFunctions.DescribeExecution
 
-    -- ** SendTaskSuccess
+    -- ** SendTaskSuccess 
     , module Network.AWS.StepFunctions.SendTaskSuccess
 
-    -- ** StartExecution
+    -- ** StartExecution 
     , module Network.AWS.StepFunctions.StartExecution
 
     -- ** GetExecutionHistory (Paginated)
     , module Network.AWS.StepFunctions.GetExecutionHistory
 
-    -- ** CreateStateMachine
+    -- ** CreateStateMachine 
     , module Network.AWS.StepFunctions.CreateStateMachine
 
     -- * Types

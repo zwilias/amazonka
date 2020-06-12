@@ -40,19 +40,17 @@ module Network.AWS.Lightsail.CloseInstancePublicPorts
 
 import Network.AWS.Lens
 import Network.AWS.Lightsail.Types
-import Network.AWS.Lightsail.Types.Product
 import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 
 -- | /See:/ 'closeInstancePublicPorts' smart constructor.
-data CloseInstancePublicPorts =
-  CloseInstancePublicPorts'
-    { _cippPortInfo     :: !PortInfo
-    , _cippInstanceName :: !Text
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data CloseInstancePublicPorts = CloseInstancePublicPorts'{_cippPortInfo
+                                                          :: !PortInfo,
+                                                          _cippInstanceName ::
+                                                          !Text}
+                                  deriving (Eq, Read, Show, Data, Typeable,
+                                            Generic)
 
 -- | Creates a value of 'CloseInstancePublicPorts' with the minimum fields required to make a request.
 --
@@ -65,10 +63,10 @@ closeInstancePublicPorts
     :: PortInfo -- ^ 'cippPortInfo'
     -> Text -- ^ 'cippInstanceName'
     -> CloseInstancePublicPorts
-closeInstancePublicPorts pPortInfo_ pInstanceName_ =
-  CloseInstancePublicPorts'
-    {_cippPortInfo = pPortInfo_, _cippInstanceName = pInstanceName_}
-
+closeInstancePublicPorts pPortInfo_ pInstanceName_
+  = CloseInstancePublicPorts'{_cippPortInfo =
+                                pPortInfo_,
+                              _cippInstanceName = pInstanceName_}
 
 -- | Information about the public port you are trying to close.
 cippPortInfo :: Lens' CloseInstancePublicPorts PortInfo
@@ -116,13 +114,15 @@ instance ToQuery CloseInstancePublicPorts where
         toQuery = const mempty
 
 -- | /See:/ 'closeInstancePublicPortsResponse' smart constructor.
-data CloseInstancePublicPortsResponse =
-  CloseInstancePublicPortsResponse'
-    { _cipprsOperation      :: !(Maybe Operation)
-    , _cipprsResponseStatus :: !Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data CloseInstancePublicPortsResponse = CloseInstancePublicPortsResponse'{_cipprsOperation
+                                                                          ::
+                                                                          !(Maybe
+                                                                              Operation),
+                                                                          _cipprsResponseStatus
+                                                                          ::
+                                                                          !Int}
+                                          deriving (Eq, Read, Show, Data,
+                                                    Typeable, Generic)
 
 -- | Creates a value of 'CloseInstancePublicPortsResponse' with the minimum fields required to make a request.
 --
@@ -134,10 +134,10 @@ data CloseInstancePublicPortsResponse =
 closeInstancePublicPortsResponse
     :: Int -- ^ 'cipprsResponseStatus'
     -> CloseInstancePublicPortsResponse
-closeInstancePublicPortsResponse pResponseStatus_ =
-  CloseInstancePublicPortsResponse'
-    {_cipprsOperation = Nothing, _cipprsResponseStatus = pResponseStatus_}
-
+closeInstancePublicPortsResponse pResponseStatus_
+  = CloseInstancePublicPortsResponse'{_cipprsOperation
+                                        = Nothing,
+                                      _cipprsResponseStatus = pResponseStatus_}
 
 -- | An array of key-value pairs that contains information about the operation.
 cipprsOperation :: Lens' CloseInstancePublicPortsResponse (Maybe Operation)

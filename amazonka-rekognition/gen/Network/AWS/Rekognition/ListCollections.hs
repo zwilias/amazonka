@@ -50,18 +50,14 @@ import Network.AWS.Lens
 import Network.AWS.Pager
 import Network.AWS.Prelude
 import Network.AWS.Rekognition.Types
-import Network.AWS.Rekognition.Types.Product
 import Network.AWS.Request
 import Network.AWS.Response
 
 -- | /See:/ 'listCollections' smart constructor.
-data ListCollections =
-  ListCollections'
-    { _lcNextToken  :: !(Maybe Text)
-    , _lcMaxResults :: !(Maybe Nat)
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data ListCollections = ListCollections'{_lcNextToken
+                                        :: !(Maybe Text),
+                                        _lcMaxResults :: !(Maybe Nat)}
+                         deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'ListCollections' with the minimum fields required to make a request.
 --
@@ -69,18 +65,18 @@ data ListCollections =
 --
 -- * 'lcNextToken' - Pagination token from the previous response.
 --
--- * 'lcMaxResults' - Maximum number of collection IDs to return.
+-- * 'lcMaxResults' - Maximum number of collection IDs to return. 
 listCollections
     :: ListCollections
-listCollections =
-  ListCollections' {_lcNextToken = Nothing, _lcMaxResults = Nothing}
-
+listCollections
+  = ListCollections'{_lcNextToken = Nothing,
+                     _lcMaxResults = Nothing}
 
 -- | Pagination token from the previous response.
 lcNextToken :: Lens' ListCollections (Maybe Text)
 lcNextToken = lens _lcNextToken (\ s a -> s{_lcNextToken = a})
 
--- | Maximum number of collection IDs to return.
+-- | Maximum number of collection IDs to return. 
 lcMaxResults :: Lens' ListCollections (Maybe Natural)
 lcMaxResults = lens _lcMaxResults (\ s a -> s{_lcMaxResults = a}) . mapping _Nat
 
@@ -131,15 +127,16 @@ instance ToQuery ListCollections where
         toQuery = const mempty
 
 -- | /See:/ 'listCollectionsResponse' smart constructor.
-data ListCollectionsResponse =
-  ListCollectionsResponse'
-    { _lcrsCollectionIds     :: !(Maybe [Text])
-    , _lcrsNextToken         :: !(Maybe Text)
-    , _lcrsFaceModelVersions :: !(Maybe [Text])
-    , _lcrsResponseStatus    :: !Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data ListCollectionsResponse = ListCollectionsResponse'{_lcrsCollectionIds
+                                                        :: !(Maybe [Text]),
+                                                        _lcrsNextToken ::
+                                                        !(Maybe Text),
+                                                        _lcrsFaceModelVersions
+                                                        :: !(Maybe [Text]),
+                                                        _lcrsResponseStatus ::
+                                                        !Int}
+                                 deriving (Eq, Read, Show, Data, Typeable,
+                                           Generic)
 
 -- | Creates a value of 'ListCollectionsResponse' with the minimum fields required to make a request.
 --
@@ -155,14 +152,12 @@ data ListCollectionsResponse =
 listCollectionsResponse
     :: Int -- ^ 'lcrsResponseStatus'
     -> ListCollectionsResponse
-listCollectionsResponse pResponseStatus_ =
-  ListCollectionsResponse'
-    { _lcrsCollectionIds = Nothing
-    , _lcrsNextToken = Nothing
-    , _lcrsFaceModelVersions = Nothing
-    , _lcrsResponseStatus = pResponseStatus_
-    }
-
+listCollectionsResponse pResponseStatus_
+  = ListCollectionsResponse'{_lcrsCollectionIds =
+                               Nothing,
+                             _lcrsNextToken = Nothing,
+                             _lcrsFaceModelVersions = Nothing,
+                             _lcrsResponseStatus = pResponseStatus_}
 
 -- | An array of collection IDs.
 lcrsCollectionIds :: Lens' ListCollectionsResponse [Text]

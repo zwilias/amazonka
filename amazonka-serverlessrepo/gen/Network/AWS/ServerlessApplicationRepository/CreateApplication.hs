@@ -65,28 +65,24 @@ import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 import Network.AWS.ServerlessApplicationRepository.Types
-import Network.AWS.ServerlessApplicationRepository.Types.Product
 
 -- | /See:/ 'createApplication' smart constructor.
-data CreateApplication =
-  CreateApplication'
-    { _caHomePageURL     :: !(Maybe Text)
-    , _caReadmeBody      :: !(Maybe Text)
-    , _caLicenseURL      :: !(Maybe Text)
-    , _caSemanticVersion :: !(Maybe Text)
-    , _caSourceCodeURL   :: !(Maybe Text)
-    , _caReadmeURL       :: !(Maybe Text)
-    , _caName            :: !(Maybe Text)
-    , _caAuthor          :: !(Maybe Text)
-    , _caLabels          :: !(Maybe [Text])
-    , _caTemplateBody    :: !(Maybe Text)
-    , _caTemplateURL     :: !(Maybe Text)
-    , _caLicenseBody     :: !(Maybe Text)
-    , _caDescription     :: !(Maybe Text)
-    , _caSpdxLicenseId   :: !(Maybe Text)
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data CreateApplication = CreateApplication'{_caHomePageURL
+                                            :: !(Maybe Text),
+                                            _caReadmeBody :: !(Maybe Text),
+                                            _caLicenseURL :: !(Maybe Text),
+                                            _caSemanticVersion :: !(Maybe Text),
+                                            _caSourceCodeURL :: !(Maybe Text),
+                                            _caReadmeURL :: !(Maybe Text),
+                                            _caName :: !(Maybe Text),
+                                            _caAuthor :: !(Maybe Text),
+                                            _caLabels :: !(Maybe [Text]),
+                                            _caTemplateBody :: !(Maybe Text),
+                                            _caTemplateURL :: !(Maybe Text),
+                                            _caLicenseBody :: !(Maybe Text),
+                                            _caDescription :: !(Maybe Text),
+                                            _caSpdxLicenseId :: !(Maybe Text)}
+                           deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'CreateApplication' with the minimum fields required to make a request.
 --
@@ -98,7 +94,7 @@ data CreateApplication =
 --
 -- * 'caLicenseURL' - A link to a license file of the app that matches the spdxLicenseID of your application. Max size 5 MB
 --
--- * 'caSemanticVersion' - The semantic version of the application: <https://semver.org/ https://semver.org/>
+-- * 'caSemanticVersion' - The semantic version of the application: <https://semver.org/ https://semver.org/> 
 --
 -- * 'caSourceCodeURL' - A link to a public repository for the source code of your application.
 --
@@ -121,24 +117,15 @@ data CreateApplication =
 -- * 'caSpdxLicenseId' - A valid identifier from <https://spdx.org/licenses/ https://spdx.org/licenses/> .
 createApplication
     :: CreateApplication
-createApplication =
-  CreateApplication'
-    { _caHomePageURL = Nothing
-    , _caReadmeBody = Nothing
-    , _caLicenseURL = Nothing
-    , _caSemanticVersion = Nothing
-    , _caSourceCodeURL = Nothing
-    , _caReadmeURL = Nothing
-    , _caName = Nothing
-    , _caAuthor = Nothing
-    , _caLabels = Nothing
-    , _caTemplateBody = Nothing
-    , _caTemplateURL = Nothing
-    , _caLicenseBody = Nothing
-    , _caDescription = Nothing
-    , _caSpdxLicenseId = Nothing
-    }
-
+createApplication
+  = CreateApplication'{_caHomePageURL = Nothing,
+                       _caReadmeBody = Nothing, _caLicenseURL = Nothing,
+                       _caSemanticVersion = Nothing,
+                       _caSourceCodeURL = Nothing, _caReadmeURL = Nothing,
+                       _caName = Nothing, _caAuthor = Nothing,
+                       _caLabels = Nothing, _caTemplateBody = Nothing,
+                       _caTemplateURL = Nothing, _caLicenseBody = Nothing,
+                       _caDescription = Nothing, _caSpdxLicenseId = Nothing}
 
 -- | A URL with more information about the application, for example  the location of your GitHub repository for the application.
 caHomePageURL :: Lens' CreateApplication (Maybe Text)
@@ -152,7 +139,7 @@ caReadmeBody = lens _caReadmeBody (\ s a -> s{_caReadmeBody = a})
 caLicenseURL :: Lens' CreateApplication (Maybe Text)
 caLicenseURL = lens _caLicenseURL (\ s a -> s{_caLicenseURL = a})
 
--- | The semantic version of the application: <https://semver.org/ https://semver.org/>
+-- | The semantic version of the application: <https://semver.org/ https://semver.org/> 
 caSemanticVersion :: Lens' CreateApplication (Maybe Text)
 caSemanticVersion = lens _caSemanticVersion (\ s a -> s{_caSemanticVersion = a})
 
@@ -251,23 +238,32 @@ instance ToQuery CreateApplication where
         toQuery = const mempty
 
 -- | /See:/ 'createApplicationResponse' smart constructor.
-data CreateApplicationResponse =
-  CreateApplicationResponse'
-    { _carsCreationTime   :: !(Maybe Text)
-    , _carsHomePageURL    :: !(Maybe Text)
-    , _carsLicenseURL     :: !(Maybe Text)
-    , _carsReadmeURL      :: !(Maybe Text)
-    , _carsApplicationId  :: !(Maybe Text)
-    , _carsName           :: !(Maybe Text)
-    , _carsVersion        :: !(Maybe Version)
-    , _carsAuthor         :: !(Maybe Text)
-    , _carsLabels         :: !(Maybe [Text])
-    , _carsDescription    :: !(Maybe Text)
-    , _carsSpdxLicenseId  :: !(Maybe Text)
-    , _carsResponseStatus :: !Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data CreateApplicationResponse = CreateApplicationResponse'{_carsCreationTime
+                                                            :: !(Maybe Text),
+                                                            _carsHomePageURL ::
+                                                            !(Maybe Text),
+                                                            _carsLicenseURL ::
+                                                            !(Maybe Text),
+                                                            _carsReadmeURL ::
+                                                            !(Maybe Text),
+                                                            _carsApplicationId
+                                                            :: !(Maybe Text),
+                                                            _carsName ::
+                                                            !(Maybe Text),
+                                                            _carsVersion ::
+                                                            !(Maybe Version),
+                                                            _carsAuthor ::
+                                                            !(Maybe Text),
+                                                            _carsLabels ::
+                                                            !(Maybe [Text]),
+                                                            _carsDescription ::
+                                                            !(Maybe Text),
+                                                            _carsSpdxLicenseId
+                                                            :: !(Maybe Text),
+                                                            _carsResponseStatus
+                                                            :: !Int}
+                                   deriving (Eq, Read, Show, Data, Typeable,
+                                             Generic)
 
 -- | Creates a value of 'CreateApplicationResponse' with the minimum fields required to make a request.
 --
@@ -299,22 +295,18 @@ data CreateApplicationResponse =
 createApplicationResponse
     :: Int -- ^ 'carsResponseStatus'
     -> CreateApplicationResponse
-createApplicationResponse pResponseStatus_ =
-  CreateApplicationResponse'
-    { _carsCreationTime = Nothing
-    , _carsHomePageURL = Nothing
-    , _carsLicenseURL = Nothing
-    , _carsReadmeURL = Nothing
-    , _carsApplicationId = Nothing
-    , _carsName = Nothing
-    , _carsVersion = Nothing
-    , _carsAuthor = Nothing
-    , _carsLabels = Nothing
-    , _carsDescription = Nothing
-    , _carsSpdxLicenseId = Nothing
-    , _carsResponseStatus = pResponseStatus_
-    }
-
+createApplicationResponse pResponseStatus_
+  = CreateApplicationResponse'{_carsCreationTime =
+                                 Nothing,
+                               _carsHomePageURL = Nothing,
+                               _carsLicenseURL = Nothing,
+                               _carsReadmeURL = Nothing,
+                               _carsApplicationId = Nothing,
+                               _carsName = Nothing, _carsVersion = Nothing,
+                               _carsAuthor = Nothing, _carsLabels = Nothing,
+                               _carsDescription = Nothing,
+                               _carsSpdxLicenseId = Nothing,
+                               _carsResponseStatus = pResponseStatus_}
 
 -- | The date/time this resource was created.
 carsCreationTime :: Lens' CreateApplicationResponse (Maybe Text)

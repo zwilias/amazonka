@@ -21,7 +21,7 @@
 -- Returns information about provisioned Aurora DB clusters. This API supports pagination.
 --
 --
--- For more information on Amazon Aurora, see <http://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/CHAP_Aurora.html Aurora on Amazon RDS> in the /Amazon RDS User Guide./
+-- For more information on Amazon Aurora, see <http://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/CHAP_Aurora.html Aurora on Amazon RDS> in the /Amazon RDS User Guide./ 
 --
 module Network.AWS.RDS.DescribeDBClusters
     (
@@ -46,24 +46,20 @@ module Network.AWS.RDS.DescribeDBClusters
 import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.RDS.Types
-import Network.AWS.RDS.Types.Product
 import Network.AWS.Request
 import Network.AWS.Response
 
--- |
+-- | 
 --
 --
 --
 -- /See:/ 'describeDBClusters' smart constructor.
-data DescribeDBClusters =
-  DescribeDBClusters'
-    { _ddcDBClusterIdentifier :: !(Maybe Text)
-    , _ddcFilters             :: !(Maybe [Filter])
-    , _ddcMarker              :: !(Maybe Text)
-    , _ddcMaxRecords          :: !(Maybe Int)
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data DescribeDBClusters = DescribeDBClusters'{_ddcDBClusterIdentifier
+                                              :: !(Maybe Text),
+                                              _ddcFilters :: !(Maybe [Filter]),
+                                              _ddcMarker :: !(Maybe Text),
+                                              _ddcMaxRecords :: !(Maybe Int)}
+                            deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'DescribeDBClusters' with the minimum fields required to make a request.
 --
@@ -73,19 +69,16 @@ data DescribeDBClusters =
 --
 -- * 'ddcFilters' - A filter that specifies one or more DB clusters to describe. Supported filters:     * @db-cluster-id@ - Accepts DB cluster identifiers and DB cluster Amazon Resource Names (ARNs). The results list will only include information about the DB clusters identified by these ARNs.
 --
--- * 'ddcMarker' - An optional pagination token provided by a previous 'DescribeDBClusters' request. If this parameter is specified, the response includes only records beyond the marker, up to the value specified by @MaxRecords@ .
+-- * 'ddcMarker' - An optional pagination token provided by a previous 'DescribeDBClusters' request. If this parameter is specified, the response includes only records beyond the marker, up to the value specified by @MaxRecords@ . 
 --
 -- * 'ddcMaxRecords' - The maximum number of records to include in the response. If more records exist than the specified @MaxRecords@ value, a pagination token called a marker is included in the response so that the remaining results can be retrieved.  Default: 100 Constraints: Minimum 20, maximum 100.
 describeDBClusters
     :: DescribeDBClusters
-describeDBClusters =
-  DescribeDBClusters'
-    { _ddcDBClusterIdentifier = Nothing
-    , _ddcFilters = Nothing
-    , _ddcMarker = Nothing
-    , _ddcMaxRecords = Nothing
-    }
-
+describeDBClusters
+  = DescribeDBClusters'{_ddcDBClusterIdentifier =
+                          Nothing,
+                        _ddcFilters = Nothing, _ddcMarker = Nothing,
+                        _ddcMaxRecords = Nothing}
 
 -- | The user-supplied DB cluster identifier. If this parameter is specified, information from only the specific DB cluster is returned. This parameter isn't case-sensitive. Constraints:     * If supplied, must match an existing DBClusterIdentifier.
 ddcDBClusterIdentifier :: Lens' DescribeDBClusters (Maybe Text)
@@ -95,7 +88,7 @@ ddcDBClusterIdentifier = lens _ddcDBClusterIdentifier (\ s a -> s{_ddcDBClusterI
 ddcFilters :: Lens' DescribeDBClusters [Filter]
 ddcFilters = lens _ddcFilters (\ s a -> s{_ddcFilters = a}) . _Default . _Coerce
 
--- | An optional pagination token provided by a previous 'DescribeDBClusters' request. If this parameter is specified, the response includes only records beyond the marker, up to the value specified by @MaxRecords@ .
+-- | An optional pagination token provided by a previous 'DescribeDBClusters' request. If this parameter is specified, the response includes only records beyond the marker, up to the value specified by @MaxRecords@ . 
 ddcMarker :: Lens' DescribeDBClusters (Maybe Text)
 ddcMarker = lens _ddcMarker (\ s a -> s{_ddcMarker = a})
 
@@ -142,14 +135,16 @@ instance ToQuery DescribeDBClusters where
 --
 --
 -- /See:/ 'describeDBClustersResponse' smart constructor.
-data DescribeDBClustersResponse =
-  DescribeDBClustersResponse'
-    { _ddcrsDBClusters     :: !(Maybe [DBCluster])
-    , _ddcrsMarker         :: !(Maybe Text)
-    , _ddcrsResponseStatus :: !Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data DescribeDBClustersResponse = DescribeDBClustersResponse'{_ddcrsDBClusters
+                                                              ::
+                                                              !(Maybe
+                                                                  [DBCluster]),
+                                                              _ddcrsMarker ::
+                                                              !(Maybe Text),
+                                                              _ddcrsResponseStatus
+                                                              :: !Int}
+                                    deriving (Eq, Read, Show, Data, Typeable,
+                                              Generic)
 
 -- | Creates a value of 'DescribeDBClustersResponse' with the minimum fields required to make a request.
 --
@@ -163,13 +158,11 @@ data DescribeDBClustersResponse =
 describeDBClustersResponse
     :: Int -- ^ 'ddcrsResponseStatus'
     -> DescribeDBClustersResponse
-describeDBClustersResponse pResponseStatus_ =
-  DescribeDBClustersResponse'
-    { _ddcrsDBClusters = Nothing
-    , _ddcrsMarker = Nothing
-    , _ddcrsResponseStatus = pResponseStatus_
-    }
-
+describeDBClustersResponse pResponseStatus_
+  = DescribeDBClustersResponse'{_ddcrsDBClusters =
+                                  Nothing,
+                                _ddcrsMarker = Nothing,
+                                _ddcrsResponseStatus = pResponseStatus_}
 
 -- | Contains a list of DB clusters for the user.
 ddcrsDBClusters :: Lens' DescribeDBClustersResponse [DBCluster]

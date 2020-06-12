@@ -40,7 +40,6 @@ module Network.AWS.CodePipeline.AcknowledgeThirdPartyJob
     ) where
 
 import Network.AWS.CodePipeline.Types
-import Network.AWS.CodePipeline.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.Request
@@ -51,14 +50,13 @@ import Network.AWS.Response
 --
 --
 -- /See:/ 'acknowledgeThirdPartyJob' smart constructor.
-data AcknowledgeThirdPartyJob =
-  AcknowledgeThirdPartyJob'
-    { _atpjJobId       :: !Text
-    , _atpjNonce       :: !Text
-    , _atpjClientToken :: !Text
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data AcknowledgeThirdPartyJob = AcknowledgeThirdPartyJob'{_atpjJobId
+                                                          :: !Text,
+                                                          _atpjNonce :: !Text,
+                                                          _atpjClientToken ::
+                                                          !Text}
+                                  deriving (Eq, Read, Show, Data, Typeable,
+                                            Generic)
 
 -- | Creates a value of 'AcknowledgeThirdPartyJob' with the minimum fields required to make a request.
 --
@@ -74,13 +72,11 @@ acknowledgeThirdPartyJob
     -> Text -- ^ 'atpjNonce'
     -> Text -- ^ 'atpjClientToken'
     -> AcknowledgeThirdPartyJob
-acknowledgeThirdPartyJob pJobId_ pNonce_ pClientToken_ =
-  AcknowledgeThirdPartyJob'
-    { _atpjJobId = pJobId_
-    , _atpjNonce = pNonce_
-    , _atpjClientToken = pClientToken_
-    }
-
+acknowledgeThirdPartyJob pJobId_ pNonce_
+  pClientToken_
+  = AcknowledgeThirdPartyJob'{_atpjJobId = pJobId_,
+                              _atpjNonce = pNonce_,
+                              _atpjClientToken = pClientToken_}
 
 -- | The unique system-generated ID of the job.
 atpjJobId :: Lens' AcknowledgeThirdPartyJob Text
@@ -137,13 +133,15 @@ instance ToQuery AcknowledgeThirdPartyJob where
 --
 --
 -- /See:/ 'acknowledgeThirdPartyJobResponse' smart constructor.
-data AcknowledgeThirdPartyJobResponse =
-  AcknowledgeThirdPartyJobResponse'
-    { _atpjrsStatus         :: !(Maybe JobStatus)
-    , _atpjrsResponseStatus :: !Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data AcknowledgeThirdPartyJobResponse = AcknowledgeThirdPartyJobResponse'{_atpjrsStatus
+                                                                          ::
+                                                                          !(Maybe
+                                                                              JobStatus),
+                                                                          _atpjrsResponseStatus
+                                                                          ::
+                                                                          !Int}
+                                          deriving (Eq, Read, Show, Data,
+                                                    Typeable, Generic)
 
 -- | Creates a value of 'AcknowledgeThirdPartyJobResponse' with the minimum fields required to make a request.
 --
@@ -155,10 +153,10 @@ data AcknowledgeThirdPartyJobResponse =
 acknowledgeThirdPartyJobResponse
     :: Int -- ^ 'atpjrsResponseStatus'
     -> AcknowledgeThirdPartyJobResponse
-acknowledgeThirdPartyJobResponse pResponseStatus_ =
-  AcknowledgeThirdPartyJobResponse'
-    {_atpjrsStatus = Nothing, _atpjrsResponseStatus = pResponseStatus_}
-
+acknowledgeThirdPartyJobResponse pResponseStatus_
+  = AcknowledgeThirdPartyJobResponse'{_atpjrsStatus =
+                                        Nothing,
+                                      _atpjrsResponseStatus = pResponseStatus_}
 
 -- | The status information for the third party job, if any.
 atpjrsStatus :: Lens' AcknowledgeThirdPartyJobResponse (Maybe JobStatus)

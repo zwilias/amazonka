@@ -40,21 +40,17 @@ module Network.AWS.EC2.DetachClassicLinkVPC
     ) where
 
 import Network.AWS.EC2.Types
-import Network.AWS.EC2.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 
 -- | /See:/ 'detachClassicLinkVPC' smart constructor.
-data DetachClassicLinkVPC =
-  DetachClassicLinkVPC'
-    { _dclvDryRun     :: !(Maybe Bool)
-    , _dclvInstanceId :: !Text
-    , _dclvVPCId      :: !Text
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data DetachClassicLinkVPC = DetachClassicLinkVPC'{_dclvDryRun
+                                                  :: !(Maybe Bool),
+                                                  _dclvInstanceId :: !Text,
+                                                  _dclvVPCId :: !Text}
+                              deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'DetachClassicLinkVPC' with the minimum fields required to make a request.
 --
@@ -69,13 +65,9 @@ detachClassicLinkVPC
     :: Text -- ^ 'dclvInstanceId'
     -> Text -- ^ 'dclvVPCId'
     -> DetachClassicLinkVPC
-detachClassicLinkVPC pInstanceId_ pVPCId_ =
-  DetachClassicLinkVPC'
-    { _dclvDryRun = Nothing
-    , _dclvInstanceId = pInstanceId_
-    , _dclvVPCId = pVPCId_
-    }
-
+detachClassicLinkVPC pInstanceId_ pVPCId_
+  = DetachClassicLinkVPC'{_dclvDryRun = Nothing,
+                          _dclvInstanceId = pInstanceId_, _dclvVPCId = pVPCId_}
 
 -- | Checks whether you have the required permissions for the action, without actually making the request, and provides an error response. If you have the required permissions, the error response is @DryRunOperation@ . Otherwise, it is @UnauthorizedOperation@ .
 dclvDryRun :: Lens' DetachClassicLinkVPC (Maybe Bool)
@@ -119,13 +111,13 @@ instance ToQuery DetachClassicLinkVPC where
                "VpcId" =: _dclvVPCId]
 
 -- | /See:/ 'detachClassicLinkVPCResponse' smart constructor.
-data DetachClassicLinkVPCResponse =
-  DetachClassicLinkVPCResponse'
-    { _dclvrsReturn         :: !(Maybe Bool)
-    , _dclvrsResponseStatus :: !Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data DetachClassicLinkVPCResponse = DetachClassicLinkVPCResponse'{_dclvrsReturn
+                                                                  ::
+                                                                  !(Maybe Bool),
+                                                                  _dclvrsResponseStatus
+                                                                  :: !Int}
+                                      deriving (Eq, Read, Show, Data, Typeable,
+                                                Generic)
 
 -- | Creates a value of 'DetachClassicLinkVPCResponse' with the minimum fields required to make a request.
 --
@@ -137,10 +129,10 @@ data DetachClassicLinkVPCResponse =
 detachClassicLinkVPCResponse
     :: Int -- ^ 'dclvrsResponseStatus'
     -> DetachClassicLinkVPCResponse
-detachClassicLinkVPCResponse pResponseStatus_ =
-  DetachClassicLinkVPCResponse'
-    {_dclvrsReturn = Nothing, _dclvrsResponseStatus = pResponseStatus_}
-
+detachClassicLinkVPCResponse pResponseStatus_
+  = DetachClassicLinkVPCResponse'{_dclvrsReturn =
+                                    Nothing,
+                                  _dclvrsResponseStatus = pResponseStatus_}
 
 -- | Returns @true@ if the request succeeds; otherwise, it returns an error.
 dclvrsReturn :: Lens' DetachClassicLinkVPCResponse (Maybe Bool)

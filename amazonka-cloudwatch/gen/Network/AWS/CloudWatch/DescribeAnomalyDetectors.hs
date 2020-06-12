@@ -43,23 +43,24 @@ module Network.AWS.CloudWatch.DescribeAnomalyDetectors
     ) where
 
 import Network.AWS.CloudWatch.Types
-import Network.AWS.CloudWatch.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 
 -- | /See:/ 'describeAnomalyDetectors' smart constructor.
-data DescribeAnomalyDetectors =
-  DescribeAnomalyDetectors'
-    { _dMetricName :: !(Maybe Text)
-    , _dNamespace  :: !(Maybe Text)
-    , _dNextToken  :: !(Maybe Text)
-    , _dDimensions :: !(Maybe [Dimension])
-    , _dMaxResults :: !(Maybe Nat)
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data DescribeAnomalyDetectors = DescribeAnomalyDetectors'{_dMetricName
+                                                          :: !(Maybe Text),
+                                                          _dNamespace ::
+                                                          !(Maybe Text),
+                                                          _dNextToken ::
+                                                          !(Maybe Text),
+                                                          _dDimensions ::
+                                                          !(Maybe [Dimension]),
+                                                          _dMaxResults ::
+                                                          !(Maybe Nat)}
+                                  deriving (Eq, Read, Show, Data, Typeable,
+                                            Generic)
 
 -- | Creates a value of 'DescribeAnomalyDetectors' with the minimum fields required to make a request.
 --
@@ -73,18 +74,13 @@ data DescribeAnomalyDetectors =
 --
 -- * 'dDimensions' - Limits the results to only the anomaly detection models that are associated with the specified metric dimensions. If there are multiple metrics that have these dimensions and have anomaly detection models associated, they're all returned.
 --
--- * 'dMaxResults' - The maximum number of results to return in one operation. The maximum value that you can specify is 100. To retrieve the remaining results, make another call with the returned @NextToken@ value.
+-- * 'dMaxResults' - The maximum number of results to return in one operation. The maximum value that you can specify is 100. To retrieve the remaining results, make another call with the returned @NextToken@ value. 
 describeAnomalyDetectors
     :: DescribeAnomalyDetectors
-describeAnomalyDetectors =
-  DescribeAnomalyDetectors'
-    { _dMetricName = Nothing
-    , _dNamespace = Nothing
-    , _dNextToken = Nothing
-    , _dDimensions = Nothing
-    , _dMaxResults = Nothing
-    }
-
+describeAnomalyDetectors
+  = DescribeAnomalyDetectors'{_dMetricName = Nothing,
+                              _dNamespace = Nothing, _dNextToken = Nothing,
+                              _dDimensions = Nothing, _dMaxResults = Nothing}
 
 -- | Limits the results to only the anomaly detection models that are associated with the specified metric name. If there are multiple metrics with this name in different namespaces that have anomaly detection models, they're all returned.
 dMetricName :: Lens' DescribeAnomalyDetectors (Maybe Text)
@@ -102,7 +98,7 @@ dNextToken = lens _dNextToken (\ s a -> s{_dNextToken = a})
 dDimensions :: Lens' DescribeAnomalyDetectors [Dimension]
 dDimensions = lens _dDimensions (\ s a -> s{_dDimensions = a}) . _Default . _Coerce
 
--- | The maximum number of results to return in one operation. The maximum value that you can specify is 100. To retrieve the remaining results, make another call with the returned @NextToken@ value.
+-- | The maximum number of results to return in one operation. The maximum value that you can specify is 100. To retrieve the remaining results, make another call with the returned @NextToken@ value. 
 dMaxResults :: Lens' DescribeAnomalyDetectors (Maybe Natural)
 dMaxResults = lens _dMaxResults (\ s a -> s{_dMaxResults = a}) . mapping _Nat
 
@@ -143,14 +139,19 @@ instance ToQuery DescribeAnomalyDetectors where
                "MaxResults" =: _dMaxResults]
 
 -- | /See:/ 'describeAnomalyDetectorsResponse' smart constructor.
-data DescribeAnomalyDetectorsResponse =
-  DescribeAnomalyDetectorsResponse'
-    { _dadrsAnomalyDetectors :: !(Maybe [AnomalyDetector])
-    , _dadrsNextToken        :: !(Maybe Text)
-    , _dadrsResponseStatus   :: !Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data DescribeAnomalyDetectorsResponse = DescribeAnomalyDetectorsResponse'{_dadrsAnomalyDetectors
+                                                                          ::
+                                                                          !(Maybe
+                                                                              [AnomalyDetector]),
+                                                                          _dadrsNextToken
+                                                                          ::
+                                                                          !(Maybe
+                                                                              Text),
+                                                                          _dadrsResponseStatus
+                                                                          ::
+                                                                          !Int}
+                                          deriving (Eq, Read, Show, Data,
+                                                    Typeable, Generic)
 
 -- | Creates a value of 'DescribeAnomalyDetectorsResponse' with the minimum fields required to make a request.
 --
@@ -164,13 +165,11 @@ data DescribeAnomalyDetectorsResponse =
 describeAnomalyDetectorsResponse
     :: Int -- ^ 'dadrsResponseStatus'
     -> DescribeAnomalyDetectorsResponse
-describeAnomalyDetectorsResponse pResponseStatus_ =
-  DescribeAnomalyDetectorsResponse'
-    { _dadrsAnomalyDetectors = Nothing
-    , _dadrsNextToken = Nothing
-    , _dadrsResponseStatus = pResponseStatus_
-    }
-
+describeAnomalyDetectorsResponse pResponseStatus_
+  = DescribeAnomalyDetectorsResponse'{_dadrsAnomalyDetectors
+                                        = Nothing,
+                                      _dadrsNextToken = Nothing,
+                                      _dadrsResponseStatus = pResponseStatus_}
 
 -- | The list of anomaly detection models returned by the operation.
 dadrsAnomalyDetectors :: Lens' DescribeAnomalyDetectorsResponse [AnomalyDetector]

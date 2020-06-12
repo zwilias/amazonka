@@ -14,11 +14,11 @@
 module Test.AWS.Gen.MediaStore where
 
 import Data.Proxy
-import Network.AWS.MediaStore
 import Test.AWS.Fixture
-import Test.AWS.MediaStore.Internal
 import Test.AWS.Prelude
 import Test.Tasty
+import Network.AWS.MediaStore
+import Test.AWS.MediaStore.Internal
 
 -- Auto-generated: the actual test selection needs to be manually placed into
 -- the top-level so that real test data can be incrementally added.

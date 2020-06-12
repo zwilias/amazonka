@@ -37,18 +37,14 @@ module Network.AWS.Pinpoint.GetEmailChannel
 
 import Network.AWS.Lens
 import Network.AWS.Pinpoint.Types
-import Network.AWS.Pinpoint.Types.Product
 import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 
 -- | /See:/ 'getEmailChannel' smart constructor.
-newtype GetEmailChannel =
-  GetEmailChannel'
-    { _gecApplicationId :: Text
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+newtype GetEmailChannel = GetEmailChannel'{_gecApplicationId
+                                           :: Text}
+                            deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'GetEmailChannel' with the minimum fields required to make a request.
 --
@@ -58,9 +54,9 @@ newtype GetEmailChannel =
 getEmailChannel
     :: Text -- ^ 'gecApplicationId'
     -> GetEmailChannel
-getEmailChannel pApplicationId_ =
-  GetEmailChannel' {_gecApplicationId = pApplicationId_}
-
+getEmailChannel pApplicationId_
+  = GetEmailChannel'{_gecApplicationId =
+                       pApplicationId_}
 
 -- | Undocumented member.
 gecApplicationId :: Lens' GetEmailChannel Text
@@ -96,13 +92,13 @@ instance ToQuery GetEmailChannel where
         toQuery = const mempty
 
 -- | /See:/ 'getEmailChannelResponse' smart constructor.
-data GetEmailChannelResponse =
-  GetEmailChannelResponse'
-    { _gecrsResponseStatus       :: !Int
-    , _gecrsEmailChannelResponse :: !EmailChannelResponse
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data GetEmailChannelResponse = GetEmailChannelResponse'{_gecrsResponseStatus
+                                                        :: !Int,
+                                                        _gecrsEmailChannelResponse
+                                                        ::
+                                                        !EmailChannelResponse}
+                                 deriving (Eq, Read, Show, Data, Typeable,
+                                           Generic)
 
 -- | Creates a value of 'GetEmailChannelResponse' with the minimum fields required to make a request.
 --
@@ -115,12 +111,12 @@ getEmailChannelResponse
     :: Int -- ^ 'gecrsResponseStatus'
     -> EmailChannelResponse -- ^ 'gecrsEmailChannelResponse'
     -> GetEmailChannelResponse
-getEmailChannelResponse pResponseStatus_ pEmailChannelResponse_ =
-  GetEmailChannelResponse'
-    { _gecrsResponseStatus = pResponseStatus_
-    , _gecrsEmailChannelResponse = pEmailChannelResponse_
-    }
-
+getEmailChannelResponse pResponseStatus_
+  pEmailChannelResponse_
+  = GetEmailChannelResponse'{_gecrsResponseStatus =
+                               pResponseStatus_,
+                             _gecrsEmailChannelResponse =
+                               pEmailChannelResponse_}
 
 -- | -- | The response status code.
 gecrsResponseStatus :: Lens' GetEmailChannelResponse Int

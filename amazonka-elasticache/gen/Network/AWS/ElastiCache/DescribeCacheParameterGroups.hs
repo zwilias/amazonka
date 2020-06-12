@@ -43,7 +43,6 @@ module Network.AWS.ElastiCache.DescribeCacheParameterGroups
     ) where
 
 import Network.AWS.ElastiCache.Types
-import Network.AWS.ElastiCache.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Pager
 import Network.AWS.Prelude
@@ -55,14 +54,16 @@ import Network.AWS.Response
 --
 --
 -- /See:/ 'describeCacheParameterGroups' smart constructor.
-data DescribeCacheParameterGroups =
-  DescribeCacheParameterGroups'
-    { _dcpgCacheParameterGroupName :: !(Maybe Text)
-    , _dcpgMarker                  :: !(Maybe Text)
-    , _dcpgMaxRecords              :: !(Maybe Int)
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data DescribeCacheParameterGroups = DescribeCacheParameterGroups'{_dcpgCacheParameterGroupName
+                                                                  ::
+                                                                  !(Maybe Text),
+                                                                  _dcpgMarker ::
+                                                                  !(Maybe Text),
+                                                                  _dcpgMaxRecords
+                                                                  ::
+                                                                  !(Maybe Int)}
+                                      deriving (Eq, Read, Show, Data, Typeable,
+                                                Generic)
 
 -- | Creates a value of 'DescribeCacheParameterGroups' with the minimum fields required to make a request.
 --
@@ -75,13 +76,11 @@ data DescribeCacheParameterGroups =
 -- * 'dcpgMaxRecords' - The maximum number of records to include in the response. If more records exist than the specified @MaxRecords@ value, a marker is included in the response so that the remaining results can be retrieved. Default: 100 Constraints: minimum 20; maximum 100.
 describeCacheParameterGroups
     :: DescribeCacheParameterGroups
-describeCacheParameterGroups =
-  DescribeCacheParameterGroups'
-    { _dcpgCacheParameterGroupName = Nothing
-    , _dcpgMarker = Nothing
-    , _dcpgMaxRecords = Nothing
-    }
-
+describeCacheParameterGroups
+  = DescribeCacheParameterGroups'{_dcpgCacheParameterGroupName
+                                    = Nothing,
+                                  _dcpgMarker = Nothing,
+                                  _dcpgMaxRecords = Nothing}
 
 -- | The name of a specific cache parameter group to return details for.
 dcpgCacheParameterGroupName :: Lens' DescribeCacheParameterGroups (Maybe Text)
@@ -143,14 +142,19 @@ instance ToQuery DescribeCacheParameterGroups where
 --
 --
 -- /See:/ 'describeCacheParameterGroupsResponse' smart constructor.
-data DescribeCacheParameterGroupsResponse =
-  DescribeCacheParameterGroupsResponse'
-    { _dcpgrsCacheParameterGroups :: !(Maybe [CacheParameterGroup])
-    , _dcpgrsMarker               :: !(Maybe Text)
-    , _dcpgrsResponseStatus       :: !Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data DescribeCacheParameterGroupsResponse = DescribeCacheParameterGroupsResponse'{_dcpgrsCacheParameterGroups
+                                                                                  ::
+                                                                                  !(Maybe
+                                                                                      [CacheParameterGroup]),
+                                                                                  _dcpgrsMarker
+                                                                                  ::
+                                                                                  !(Maybe
+                                                                                      Text),
+                                                                                  _dcpgrsResponseStatus
+                                                                                  ::
+                                                                                  !Int}
+                                              deriving (Eq, Read, Show, Data,
+                                                        Typeable, Generic)
 
 -- | Creates a value of 'DescribeCacheParameterGroupsResponse' with the minimum fields required to make a request.
 --
@@ -164,13 +168,12 @@ data DescribeCacheParameterGroupsResponse =
 describeCacheParameterGroupsResponse
     :: Int -- ^ 'dcpgrsResponseStatus'
     -> DescribeCacheParameterGroupsResponse
-describeCacheParameterGroupsResponse pResponseStatus_ =
-  DescribeCacheParameterGroupsResponse'
-    { _dcpgrsCacheParameterGroups = Nothing
-    , _dcpgrsMarker = Nothing
-    , _dcpgrsResponseStatus = pResponseStatus_
-    }
-
+describeCacheParameterGroupsResponse pResponseStatus_
+  = DescribeCacheParameterGroupsResponse'{_dcpgrsCacheParameterGroups
+                                            = Nothing,
+                                          _dcpgrsMarker = Nothing,
+                                          _dcpgrsResponseStatus =
+                                            pResponseStatus_}
 
 -- | A list of cache parameter groups. Each element in the list contains detailed information about one cache parameter group.
 dcpgrsCacheParameterGroups :: Lens' DescribeCacheParameterGroupsResponse [CacheParameterGroup]

@@ -58,21 +58,17 @@ import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 import Network.AWS.ServerlessApplicationRepository.Types
-import Network.AWS.ServerlessApplicationRepository.Types.Product
 
 -- | /See:/ 'updateApplication' smart constructor.
-data UpdateApplication =
-  UpdateApplication'
-    { _uaHomePageURL   :: !(Maybe Text)
-    , _uaReadmeBody    :: !(Maybe Text)
-    , _uaReadmeURL     :: !(Maybe Text)
-    , _uaAuthor        :: !(Maybe Text)
-    , _uaLabels        :: !(Maybe [Text])
-    , _uaDescription   :: !(Maybe Text)
-    , _uaApplicationId :: !Text
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data UpdateApplication = UpdateApplication'{_uaHomePageURL
+                                            :: !(Maybe Text),
+                                            _uaReadmeBody :: !(Maybe Text),
+                                            _uaReadmeURL :: !(Maybe Text),
+                                            _uaAuthor :: !(Maybe Text),
+                                            _uaLabels :: !(Maybe [Text]),
+                                            _uaDescription :: !(Maybe Text),
+                                            _uaApplicationId :: !Text}
+                           deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'UpdateApplication' with the minimum fields required to make a request.
 --
@@ -94,17 +90,12 @@ data UpdateApplication =
 updateApplication
     :: Text -- ^ 'uaApplicationId'
     -> UpdateApplication
-updateApplication pApplicationId_ =
-  UpdateApplication'
-    { _uaHomePageURL = Nothing
-    , _uaReadmeBody = Nothing
-    , _uaReadmeURL = Nothing
-    , _uaAuthor = Nothing
-    , _uaLabels = Nothing
-    , _uaDescription = Nothing
-    , _uaApplicationId = pApplicationId_
-    }
-
+updateApplication pApplicationId_
+  = UpdateApplication'{_uaHomePageURL = Nothing,
+                       _uaReadmeBody = Nothing, _uaReadmeURL = Nothing,
+                       _uaAuthor = Nothing, _uaLabels = Nothing,
+                       _uaDescription = Nothing,
+                       _uaApplicationId = pApplicationId_}
 
 -- | A URL with more information about the application, for example  the location of your GitHub repository for the application.
 uaHomePageURL :: Lens' UpdateApplication (Maybe Text)
@@ -183,23 +174,32 @@ instance ToQuery UpdateApplication where
         toQuery = const mempty
 
 -- | /See:/ 'updateApplicationResponse' smart constructor.
-data UpdateApplicationResponse =
-  UpdateApplicationResponse'
-    { _uarsCreationTime   :: !(Maybe Text)
-    , _uarsHomePageURL    :: !(Maybe Text)
-    , _uarsLicenseURL     :: !(Maybe Text)
-    , _uarsReadmeURL      :: !(Maybe Text)
-    , _uarsApplicationId  :: !(Maybe Text)
-    , _uarsName           :: !(Maybe Text)
-    , _uarsVersion        :: !(Maybe Version)
-    , _uarsAuthor         :: !(Maybe Text)
-    , _uarsLabels         :: !(Maybe [Text])
-    , _uarsDescription    :: !(Maybe Text)
-    , _uarsSpdxLicenseId  :: !(Maybe Text)
-    , _uarsResponseStatus :: !Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data UpdateApplicationResponse = UpdateApplicationResponse'{_uarsCreationTime
+                                                            :: !(Maybe Text),
+                                                            _uarsHomePageURL ::
+                                                            !(Maybe Text),
+                                                            _uarsLicenseURL ::
+                                                            !(Maybe Text),
+                                                            _uarsReadmeURL ::
+                                                            !(Maybe Text),
+                                                            _uarsApplicationId
+                                                            :: !(Maybe Text),
+                                                            _uarsName ::
+                                                            !(Maybe Text),
+                                                            _uarsVersion ::
+                                                            !(Maybe Version),
+                                                            _uarsAuthor ::
+                                                            !(Maybe Text),
+                                                            _uarsLabels ::
+                                                            !(Maybe [Text]),
+                                                            _uarsDescription ::
+                                                            !(Maybe Text),
+                                                            _uarsSpdxLicenseId
+                                                            :: !(Maybe Text),
+                                                            _uarsResponseStatus
+                                                            :: !Int}
+                                   deriving (Eq, Read, Show, Data, Typeable,
+                                             Generic)
 
 -- | Creates a value of 'UpdateApplicationResponse' with the minimum fields required to make a request.
 --
@@ -231,22 +231,18 @@ data UpdateApplicationResponse =
 updateApplicationResponse
     :: Int -- ^ 'uarsResponseStatus'
     -> UpdateApplicationResponse
-updateApplicationResponse pResponseStatus_ =
-  UpdateApplicationResponse'
-    { _uarsCreationTime = Nothing
-    , _uarsHomePageURL = Nothing
-    , _uarsLicenseURL = Nothing
-    , _uarsReadmeURL = Nothing
-    , _uarsApplicationId = Nothing
-    , _uarsName = Nothing
-    , _uarsVersion = Nothing
-    , _uarsAuthor = Nothing
-    , _uarsLabels = Nothing
-    , _uarsDescription = Nothing
-    , _uarsSpdxLicenseId = Nothing
-    , _uarsResponseStatus = pResponseStatus_
-    }
-
+updateApplicationResponse pResponseStatus_
+  = UpdateApplicationResponse'{_uarsCreationTime =
+                                 Nothing,
+                               _uarsHomePageURL = Nothing,
+                               _uarsLicenseURL = Nothing,
+                               _uarsReadmeURL = Nothing,
+                               _uarsApplicationId = Nothing,
+                               _uarsName = Nothing, _uarsVersion = Nothing,
+                               _uarsAuthor = Nothing, _uarsLabels = Nothing,
+                               _uarsDescription = Nothing,
+                               _uarsSpdxLicenseId = Nothing,
+                               _uarsResponseStatus = pResponseStatus_}
 
 -- | The date/time this resource was created.
 uarsCreationTime :: Lens' UpdateApplicationResponse (Maybe Text)

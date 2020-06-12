@@ -48,21 +48,26 @@ module Network.AWS.Organizations.ListHandshakesForOrganization
 
 import Network.AWS.Lens
 import Network.AWS.Organizations.Types
-import Network.AWS.Organizations.Types.Product
 import Network.AWS.Pager
 import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 
 -- | /See:/ 'listHandshakesForOrganization' smart constructor.
-data ListHandshakesForOrganization =
-  ListHandshakesForOrganization'
-    { _lhfoNextToken  :: !(Maybe Text)
-    , _lhfoFilter     :: !(Maybe HandshakeFilter)
-    , _lhfoMaxResults :: !(Maybe Nat)
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data ListHandshakesForOrganization = ListHandshakesForOrganization'{_lhfoNextToken
+                                                                    ::
+                                                                    !(Maybe
+                                                                        Text),
+                                                                    _lhfoFilter
+                                                                    ::
+                                                                    !(Maybe
+                                                                        HandshakeFilter),
+                                                                    _lhfoMaxResults
+                                                                    ::
+                                                                    !(Maybe
+                                                                        Nat)}
+                                       deriving (Eq, Read, Show, Data, Typeable,
+                                                 Generic)
 
 -- | Creates a value of 'ListHandshakesForOrganization' with the minimum fields required to make a request.
 --
@@ -75,10 +80,11 @@ data ListHandshakesForOrganization =
 -- * 'lhfoMaxResults' - (Optional) Use this to limit the number of results you want included in the response. If you do not include this parameter, it defaults to a value that is specific to the operation. If additional items exist beyond the maximum you specify, the @NextToken@ response element is present and has a value (is not null). Include that value as the @NextToken@ request parameter in the next call to the operation to get the next part of the results. Note that Organizations might return fewer results than the maximum even when there are more results available. You should check @NextToken@ after every operation to ensure that you receive all of the results.
 listHandshakesForOrganization
     :: ListHandshakesForOrganization
-listHandshakesForOrganization =
-  ListHandshakesForOrganization'
-    {_lhfoNextToken = Nothing, _lhfoFilter = Nothing, _lhfoMaxResults = Nothing}
-
+listHandshakesForOrganization
+  = ListHandshakesForOrganization'{_lhfoNextToken =
+                                     Nothing,
+                                   _lhfoFilter = Nothing,
+                                   _lhfoMaxResults = Nothing}
 
 -- | Use this parameter if you receive a @NextToken@ response in a previous request that indicates that there is more output available. Set it to the value of the previous call's @NextToken@ response to indicate where the output should continue from.
 lhfoNextToken :: Lens' ListHandshakesForOrganization (Maybe Text)
@@ -142,14 +148,19 @@ instance ToQuery ListHandshakesForOrganization where
         toQuery = const mempty
 
 -- | /See:/ 'listHandshakesForOrganizationResponse' smart constructor.
-data ListHandshakesForOrganizationResponse =
-  ListHandshakesForOrganizationResponse'
-    { _lhforsHandshakes     :: !(Maybe [Handshake])
-    , _lhforsNextToken      :: !(Maybe Text)
-    , _lhforsResponseStatus :: !Int
-    }
-  deriving (Eq, Show, Data, Typeable, Generic)
-
+data ListHandshakesForOrganizationResponse = ListHandshakesForOrganizationResponse'{_lhforsHandshakes
+                                                                                    ::
+                                                                                    !(Maybe
+                                                                                        [Handshake]),
+                                                                                    _lhforsNextToken
+                                                                                    ::
+                                                                                    !(Maybe
+                                                                                        Text),
+                                                                                    _lhforsResponseStatus
+                                                                                    ::
+                                                                                    !Int}
+                                               deriving (Eq, Show, Data,
+                                                         Typeable, Generic)
 
 -- | Creates a value of 'ListHandshakesForOrganizationResponse' with the minimum fields required to make a request.
 --
@@ -163,13 +174,13 @@ data ListHandshakesForOrganizationResponse =
 listHandshakesForOrganizationResponse
     :: Int -- ^ 'lhforsResponseStatus'
     -> ListHandshakesForOrganizationResponse
-listHandshakesForOrganizationResponse pResponseStatus_ =
-  ListHandshakesForOrganizationResponse'
-    { _lhforsHandshakes = Nothing
-    , _lhforsNextToken = Nothing
-    , _lhforsResponseStatus = pResponseStatus_
-    }
-
+listHandshakesForOrganizationResponse
+  pResponseStatus_
+  = ListHandshakesForOrganizationResponse'{_lhforsHandshakes
+                                             = Nothing,
+                                           _lhforsNextToken = Nothing,
+                                           _lhforsResponseStatus =
+                                             pResponseStatus_}
 
 -- | A list of 'Handshake' objects with details about each of the handshakes that are associated with an organization.
 lhforsHandshakes :: Lens' ListHandshakesForOrganizationResponse [Handshake]

@@ -52,31 +52,31 @@ import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 import Network.AWS.SageMaker.Types
-import Network.AWS.SageMaker.Types.Product
 
 -- | /See:/ 'listEndpointConfigs' smart constructor.
-data ListEndpointConfigs =
-  ListEndpointConfigs'
-    { _lecNameContains       :: !(Maybe Text)
-    , _lecCreationTimeAfter  :: !(Maybe POSIX)
-    , _lecNextToken          :: !(Maybe Text)
-    , _lecSortOrder          :: !(Maybe OrderKey)
-    , _lecCreationTimeBefore :: !(Maybe POSIX)
-    , _lecMaxResults         :: !(Maybe Nat)
-    , _lecSortBy             :: !(Maybe EndpointConfigSortKey)
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data ListEndpointConfigs = ListEndpointConfigs'{_lecNameContains
+                                                :: !(Maybe Text),
+                                                _lecCreationTimeAfter ::
+                                                !(Maybe POSIX),
+                                                _lecNextToken :: !(Maybe Text),
+                                                _lecSortOrder ::
+                                                !(Maybe OrderKey),
+                                                _lecCreationTimeBefore ::
+                                                !(Maybe POSIX),
+                                                _lecMaxResults :: !(Maybe Nat),
+                                                _lecSortBy ::
+                                                !(Maybe EndpointConfigSortKey)}
+                             deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'ListEndpointConfigs' with the minimum fields required to make a request.
 --
 -- Use one of the following lenses to modify other fields as desired:
 --
--- * 'lecNameContains' - A string in the endpoint configuration name. This filter returns only endpoint configurations whose name contains the specified string.
+-- * 'lecNameContains' - A string in the endpoint configuration name. This filter returns only endpoint configurations whose name contains the specified string. 
 --
 -- * 'lecCreationTimeAfter' - A filter that returns only endpoint configurations created after the specified time (timestamp).
 --
--- * 'lecNextToken' - If the result of the previous @ListEndpointConfig@ request was truncated, the response includes a @NextToken@ . To retrieve the next set of endpoint configurations, use the token in the next request.
+-- * 'lecNextToken' - If the result of the previous @ListEndpointConfig@ request was truncated, the response includes a @NextToken@ . To retrieve the next set of endpoint configurations, use the token in the next request. 
 --
 -- * 'lecSortOrder' - The sort order for results. The default is @Ascending@ .
 --
@@ -87,19 +87,14 @@ data ListEndpointConfigs =
 -- * 'lecSortBy' - The field to sort results by. The default is @CreationTime@ .
 listEndpointConfigs
     :: ListEndpointConfigs
-listEndpointConfigs =
-  ListEndpointConfigs'
-    { _lecNameContains = Nothing
-    , _lecCreationTimeAfter = Nothing
-    , _lecNextToken = Nothing
-    , _lecSortOrder = Nothing
-    , _lecCreationTimeBefore = Nothing
-    , _lecMaxResults = Nothing
-    , _lecSortBy = Nothing
-    }
+listEndpointConfigs
+  = ListEndpointConfigs'{_lecNameContains = Nothing,
+                         _lecCreationTimeAfter = Nothing,
+                         _lecNextToken = Nothing, _lecSortOrder = Nothing,
+                         _lecCreationTimeBefore = Nothing,
+                         _lecMaxResults = Nothing, _lecSortBy = Nothing}
 
-
--- | A string in the endpoint configuration name. This filter returns only endpoint configurations whose name contains the specified string.
+-- | A string in the endpoint configuration name. This filter returns only endpoint configurations whose name contains the specified string. 
 lecNameContains :: Lens' ListEndpointConfigs (Maybe Text)
 lecNameContains = lens _lecNameContains (\ s a -> s{_lecNameContains = a})
 
@@ -107,7 +102,7 @@ lecNameContains = lens _lecNameContains (\ s a -> s{_lecNameContains = a})
 lecCreationTimeAfter :: Lens' ListEndpointConfigs (Maybe UTCTime)
 lecCreationTimeAfter = lens _lecCreationTimeAfter (\ s a -> s{_lecCreationTimeAfter = a}) . mapping _Time
 
--- | If the result of the previous @ListEndpointConfig@ request was truncated, the response includes a @NextToken@ . To retrieve the next set of endpoint configurations, use the token in the next request.
+-- | If the result of the previous @ListEndpointConfig@ request was truncated, the response includes a @NextToken@ . To retrieve the next set of endpoint configurations, use the token in the next request. 
 lecNextToken :: Lens' ListEndpointConfigs (Maybe Text)
 lecNextToken = lens _lecNextToken (\ s a -> s{_lecNextToken = a})
 
@@ -177,20 +172,22 @@ instance ToQuery ListEndpointConfigs where
         toQuery = const mempty
 
 -- | /See:/ 'listEndpointConfigsResponse' smart constructor.
-data ListEndpointConfigsResponse =
-  ListEndpointConfigsResponse'
-    { _lecrsNextToken       :: !(Maybe Text)
-    , _lecrsResponseStatus  :: !Int
-    , _lecrsEndpointConfigs :: ![EndpointConfigSummary]
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data ListEndpointConfigsResponse = ListEndpointConfigsResponse'{_lecrsNextToken
+                                                                ::
+                                                                !(Maybe Text),
+                                                                _lecrsResponseStatus
+                                                                :: !Int,
+                                                                _lecrsEndpointConfigs
+                                                                ::
+                                                                ![EndpointConfigSummary]}
+                                     deriving (Eq, Read, Show, Data, Typeable,
+                                               Generic)
 
 -- | Creates a value of 'ListEndpointConfigsResponse' with the minimum fields required to make a request.
 --
 -- Use one of the following lenses to modify other fields as desired:
 --
--- * 'lecrsNextToken' - If the response is truncated, Amazon SageMaker returns this token. To retrieve the next set of endpoint configurations, use it in the subsequent request
+-- * 'lecrsNextToken' - If the response is truncated, Amazon SageMaker returns this token. To retrieve the next set of endpoint configurations, use it in the subsequent request 
 --
 -- * 'lecrsResponseStatus' - -- | The response status code.
 --
@@ -198,15 +195,13 @@ data ListEndpointConfigsResponse =
 listEndpointConfigsResponse
     :: Int -- ^ 'lecrsResponseStatus'
     -> ListEndpointConfigsResponse
-listEndpointConfigsResponse pResponseStatus_ =
-  ListEndpointConfigsResponse'
-    { _lecrsNextToken = Nothing
-    , _lecrsResponseStatus = pResponseStatus_
-    , _lecrsEndpointConfigs = mempty
-    }
+listEndpointConfigsResponse pResponseStatus_
+  = ListEndpointConfigsResponse'{_lecrsNextToken =
+                                   Nothing,
+                                 _lecrsResponseStatus = pResponseStatus_,
+                                 _lecrsEndpointConfigs = mempty}
 
-
--- | If the response is truncated, Amazon SageMaker returns this token. To retrieve the next set of endpoint configurations, use it in the subsequent request
+-- | If the response is truncated, Amazon SageMaker returns this token. To retrieve the next set of endpoint configurations, use it in the subsequent request 
 lecrsNextToken :: Lens' ListEndpointConfigsResponse (Maybe Text)
 lecrsNextToken = lens _lecrsNextToken (\ s a -> s{_lecrsNextToken = a})
 

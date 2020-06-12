@@ -41,22 +41,19 @@ module Network.AWS.DMS.ImportCertificate
     ) where
 
 import Network.AWS.DMS.Types
-import Network.AWS.DMS.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 
 -- | /See:/ 'importCertificate' smart constructor.
-data ImportCertificate =
-  ImportCertificate'
-    { _icCertificatePem        :: !(Maybe Text)
-    , _icCertificateWallet     :: !(Maybe Base64)
-    , _icTags                  :: !(Maybe [Tag])
-    , _icCertificateIdentifier :: !Text
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data ImportCertificate = ImportCertificate'{_icCertificatePem
+                                            :: !(Maybe Text),
+                                            _icCertificateWallet ::
+                                            !(Maybe Base64),
+                                            _icTags :: !(Maybe [Tag]),
+                                            _icCertificateIdentifier :: !Text}
+                           deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'ImportCertificate' with the minimum fields required to make a request.
 --
@@ -72,14 +69,10 @@ data ImportCertificate =
 importCertificate
     :: Text -- ^ 'icCertificateIdentifier'
     -> ImportCertificate
-importCertificate pCertificateIdentifier_ =
-  ImportCertificate'
-    { _icCertificatePem = Nothing
-    , _icCertificateWallet = Nothing
-    , _icTags = Nothing
-    , _icCertificateIdentifier = pCertificateIdentifier_
-    }
-
+importCertificate pCertificateIdentifier_
+  = ImportCertificate'{_icCertificatePem = Nothing,
+                       _icCertificateWallet = Nothing, _icTags = Nothing,
+                       _icCertificateIdentifier = pCertificateIdentifier_}
 
 -- | The contents of a @.pem@ file, which contains an X.509 certificate.
 icCertificatePem :: Lens' ImportCertificate (Maybe Text)
@@ -138,13 +131,14 @@ instance ToQuery ImportCertificate where
         toQuery = const mempty
 
 -- | /See:/ 'importCertificateResponse' smart constructor.
-data ImportCertificateResponse =
-  ImportCertificateResponse'
-    { _icrsCertificate    :: !(Maybe Certificate)
-    , _icrsResponseStatus :: !Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data ImportCertificateResponse = ImportCertificateResponse'{_icrsCertificate
+                                                            ::
+                                                            !(Maybe
+                                                                Certificate),
+                                                            _icrsResponseStatus
+                                                            :: !Int}
+                                   deriving (Eq, Read, Show, Data, Typeable,
+                                             Generic)
 
 -- | Creates a value of 'ImportCertificateResponse' with the minimum fields required to make a request.
 --
@@ -156,10 +150,10 @@ data ImportCertificateResponse =
 importCertificateResponse
     :: Int -- ^ 'icrsResponseStatus'
     -> ImportCertificateResponse
-importCertificateResponse pResponseStatus_ =
-  ImportCertificateResponse'
-    {_icrsCertificate = Nothing, _icrsResponseStatus = pResponseStatus_}
-
+importCertificateResponse pResponseStatus_
+  = ImportCertificateResponse'{_icrsCertificate =
+                                 Nothing,
+                               _icrsResponseStatus = pResponseStatus_}
 
 -- | The certificate to be uploaded.
 icrsCertificate :: Lens' ImportCertificateResponse (Maybe Certificate)

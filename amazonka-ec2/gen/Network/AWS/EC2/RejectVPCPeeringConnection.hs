@@ -39,20 +39,18 @@ module Network.AWS.EC2.RejectVPCPeeringConnection
     ) where
 
 import Network.AWS.EC2.Types
-import Network.AWS.EC2.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 
 -- | /See:/ 'rejectVPCPeeringConnection' smart constructor.
-data RejectVPCPeeringConnection =
-  RejectVPCPeeringConnection'
-    { _rvpcDryRun                 :: !(Maybe Bool)
-    , _rvpcVPCPeeringConnectionId :: !Text
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data RejectVPCPeeringConnection = RejectVPCPeeringConnection'{_rvpcDryRun
+                                                              :: !(Maybe Bool),
+                                                              _rvpcVPCPeeringConnectionId
+                                                              :: !Text}
+                                    deriving (Eq, Read, Show, Data, Typeable,
+                                              Generic)
 
 -- | Creates a value of 'RejectVPCPeeringConnection' with the minimum fields required to make a request.
 --
@@ -64,12 +62,10 @@ data RejectVPCPeeringConnection =
 rejectVPCPeeringConnection
     :: Text -- ^ 'rvpcVPCPeeringConnectionId'
     -> RejectVPCPeeringConnection
-rejectVPCPeeringConnection pVPCPeeringConnectionId_ =
-  RejectVPCPeeringConnection'
-    { _rvpcDryRun = Nothing
-    , _rvpcVPCPeeringConnectionId = pVPCPeeringConnectionId_
-    }
-
+rejectVPCPeeringConnection pVPCPeeringConnectionId_
+  = RejectVPCPeeringConnection'{_rvpcDryRun = Nothing,
+                                _rvpcVPCPeeringConnectionId =
+                                  pVPCPeeringConnectionId_}
 
 -- | Checks whether you have the required permissions for the action, without actually making the request, and provides an error response. If you have the required permissions, the error response is @DryRunOperation@ . Otherwise, it is @UnauthorizedOperation@ .
 rvpcDryRun :: Lens' RejectVPCPeeringConnection (Maybe Bool)
@@ -110,13 +106,15 @@ instance ToQuery RejectVPCPeeringConnection where
                  _rvpcVPCPeeringConnectionId]
 
 -- | /See:/ 'rejectVPCPeeringConnectionResponse' smart constructor.
-data RejectVPCPeeringConnectionResponse =
-  RejectVPCPeeringConnectionResponse'
-    { _rvpcrsReturn         :: !(Maybe Bool)
-    , _rvpcrsResponseStatus :: !Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data RejectVPCPeeringConnectionResponse = RejectVPCPeeringConnectionResponse'{_rvpcrsReturn
+                                                                              ::
+                                                                              !(Maybe
+                                                                                  Bool),
+                                                                              _rvpcrsResponseStatus
+                                                                              ::
+                                                                              !Int}
+                                            deriving (Eq, Read, Show, Data,
+                                                      Typeable, Generic)
 
 -- | Creates a value of 'RejectVPCPeeringConnectionResponse' with the minimum fields required to make a request.
 --
@@ -128,10 +126,11 @@ data RejectVPCPeeringConnectionResponse =
 rejectVPCPeeringConnectionResponse
     :: Int -- ^ 'rvpcrsResponseStatus'
     -> RejectVPCPeeringConnectionResponse
-rejectVPCPeeringConnectionResponse pResponseStatus_ =
-  RejectVPCPeeringConnectionResponse'
-    {_rvpcrsReturn = Nothing, _rvpcrsResponseStatus = pResponseStatus_}
-
+rejectVPCPeeringConnectionResponse pResponseStatus_
+  = RejectVPCPeeringConnectionResponse'{_rvpcrsReturn =
+                                          Nothing,
+                                        _rvpcrsResponseStatus =
+                                          pResponseStatus_}
 
 -- | Returns @true@ if the request succeeds; otherwise, it returns an error.
 rvpcrsReturn :: Lens' RejectVPCPeeringConnectionResponse (Maybe Bool)

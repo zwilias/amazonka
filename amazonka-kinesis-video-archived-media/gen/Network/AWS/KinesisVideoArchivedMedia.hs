@@ -11,7 +11,7 @@
 -- Stability   : auto-generated
 -- Portability : non-portable (GHC extensions)
 --
---
+-- 
 --
 --
 module Network.AWS.KinesisVideoArchivedMedia
@@ -40,10 +40,10 @@ module Network.AWS.KinesisVideoArchivedMedia
     -- * Operations
     -- $operations
 
-    -- ** GetMediaForFragmentList
+    -- ** GetMediaForFragmentList 
     , module Network.AWS.KinesisVideoArchivedMedia.GetMediaForFragmentList
 
-    -- ** ListFragments
+    -- ** ListFragments 
     , module Network.AWS.KinesisVideoArchivedMedia.ListFragments
 
     -- * Types

@@ -39,20 +39,16 @@ module Network.AWS.CloudWatchEvents.CreateEventBus
     ) where
 
 import Network.AWS.CloudWatchEvents.Types
-import Network.AWS.CloudWatchEvents.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 
 -- | /See:/ 'createEventBus' smart constructor.
-data CreateEventBus =
-  CreateEventBus'
-    { _cebEventSourceName :: !(Maybe Text)
-    , _cebName            :: !Text
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data CreateEventBus = CreateEventBus'{_cebEventSourceName
+                                      :: !(Maybe Text),
+                                      _cebName :: !Text}
+                        deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'CreateEventBus' with the minimum fields required to make a request.
 --
@@ -64,9 +60,9 @@ data CreateEventBus =
 createEventBus
     :: Text -- ^ 'cebName'
     -> CreateEventBus
-createEventBus pName_ =
-  CreateEventBus' {_cebEventSourceName = Nothing, _cebName = pName_}
-
+createEventBus pName_
+  = CreateEventBus'{_cebEventSourceName = Nothing,
+                    _cebName = pName_}
 
 -- | If you're creating a partner event bus, this specifies the partner event source that the new event bus will be matched with.
 cebEventSourceName :: Lens' CreateEventBus (Maybe Text)
@@ -112,13 +108,12 @@ instance ToQuery CreateEventBus where
         toQuery = const mempty
 
 -- | /See:/ 'createEventBusResponse' smart constructor.
-data CreateEventBusResponse =
-  CreateEventBusResponse'
-    { _cebrsEventBusARN    :: !(Maybe Text)
-    , _cebrsResponseStatus :: !Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data CreateEventBusResponse = CreateEventBusResponse'{_cebrsEventBusARN
+                                                      :: !(Maybe Text),
+                                                      _cebrsResponseStatus ::
+                                                      !Int}
+                                deriving (Eq, Read, Show, Data, Typeable,
+                                          Generic)
 
 -- | Creates a value of 'CreateEventBusResponse' with the minimum fields required to make a request.
 --
@@ -130,10 +125,10 @@ data CreateEventBusResponse =
 createEventBusResponse
     :: Int -- ^ 'cebrsResponseStatus'
     -> CreateEventBusResponse
-createEventBusResponse pResponseStatus_ =
-  CreateEventBusResponse'
-    {_cebrsEventBusARN = Nothing, _cebrsResponseStatus = pResponseStatus_}
-
+createEventBusResponse pResponseStatus_
+  = CreateEventBusResponse'{_cebrsEventBusARN =
+                              Nothing,
+                            _cebrsResponseStatus = pResponseStatus_}
 
 -- | The ARN of the new event bus.
 cebrsEventBusARN :: Lens' CreateEventBusResponse (Maybe Text)

@@ -44,7 +44,6 @@ module Network.AWS.DeviceFarm.ListUniqueProblems
     ) where
 
 import Network.AWS.DeviceFarm.Types
-import Network.AWS.DeviceFarm.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Pager
 import Network.AWS.Prelude
@@ -56,13 +55,10 @@ import Network.AWS.Response
 --
 --
 -- /See:/ 'listUniqueProblems' smart constructor.
-data ListUniqueProblems =
-  ListUniqueProblems'
-    { _lupNextToken :: !(Maybe Text)
-    , _lupArn       :: !Text
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data ListUniqueProblems = ListUniqueProblems'{_lupNextToken
+                                              :: !(Maybe Text),
+                                              _lupArn :: !Text}
+                            deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'ListUniqueProblems' with the minimum fields required to make a request.
 --
@@ -74,9 +70,9 @@ data ListUniqueProblems =
 listUniqueProblems
     :: Text -- ^ 'lupArn'
     -> ListUniqueProblems
-listUniqueProblems pArn_ =
-  ListUniqueProblems' {_lupNextToken = Nothing, _lupArn = pArn_}
-
+listUniqueProblems pArn_
+  = ListUniqueProblems'{_lupNextToken = Nothing,
+                        _lupArn = pArn_}
 
 -- | An identifier that was returned from the previous call to this operation, which can be used to return the next set of items in the list.
 lupNextToken :: Lens' ListUniqueProblems (Maybe Text)
@@ -137,14 +133,18 @@ instance ToQuery ListUniqueProblems where
 --
 --
 -- /See:/ 'listUniqueProblemsResponse' smart constructor.
-data ListUniqueProblemsResponse =
-  ListUniqueProblemsResponse'
-    { _luprsNextToken      :: !(Maybe Text)
-    , _luprsUniqueProblems :: !(Maybe (Map ExecutionResult [UniqueProblem]))
-    , _luprsResponseStatus :: !Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data ListUniqueProblemsResponse = ListUniqueProblemsResponse'{_luprsNextToken
+                                                              :: !(Maybe Text),
+                                                              _luprsUniqueProblems
+                                                              ::
+                                                              !(Maybe
+                                                                  (Map
+                                                                     ExecutionResult
+                                                                     [UniqueProblem])),
+                                                              _luprsResponseStatus
+                                                              :: !Int}
+                                    deriving (Eq, Read, Show, Data, Typeable,
+                                              Generic)
 
 -- | Creates a value of 'ListUniqueProblemsResponse' with the minimum fields required to make a request.
 --
@@ -158,13 +158,11 @@ data ListUniqueProblemsResponse =
 listUniqueProblemsResponse
     :: Int -- ^ 'luprsResponseStatus'
     -> ListUniqueProblemsResponse
-listUniqueProblemsResponse pResponseStatus_ =
-  ListUniqueProblemsResponse'
-    { _luprsNextToken = Nothing
-    , _luprsUniqueProblems = Nothing
-    , _luprsResponseStatus = pResponseStatus_
-    }
-
+listUniqueProblemsResponse pResponseStatus_
+  = ListUniqueProblemsResponse'{_luprsNextToken =
+                                  Nothing,
+                                _luprsUniqueProblems = Nothing,
+                                _luprsResponseStatus = pResponseStatus_}
 
 -- | If the number of items that are returned is significantly large, this is an identifier that is also returned. It can be used in a subsequent call to this operation to return the next set of items in the list.
 luprsNextToken :: Lens' ListUniqueProblemsResponse (Maybe Text)

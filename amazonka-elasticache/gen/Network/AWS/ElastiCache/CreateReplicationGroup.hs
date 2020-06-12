@@ -71,7 +71,6 @@ module Network.AWS.ElastiCache.CreateReplicationGroup
     ) where
 
 import Network.AWS.ElastiCache.Types
-import Network.AWS.ElastiCache.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.Request
@@ -82,39 +81,65 @@ import Network.AWS.Response
 --
 --
 -- /See:/ 'createReplicationGroup' smart constructor.
-data CreateReplicationGroup =
-  CreateReplicationGroup'
-    { _crgAutomaticFailoverEnabled    :: !(Maybe Bool)
-    , _crgEngineVersion               :: !(Maybe Text)
-    , _crgCacheNodeType               :: !(Maybe Text)
-    , _crgNodeGroupConfiguration      :: !(Maybe [NodeGroupConfiguration])
-    , _crgAtRestEncryptionEnabled     :: !(Maybe Bool)
-    , _crgSecurityGroupIds            :: !(Maybe [Text])
-    , _crgSnapshotARNs                :: !(Maybe [Text])
-    , _crgAutoMinorVersionUpgrade     :: !(Maybe Bool)
-    , _crgCacheParameterGroupName     :: !(Maybe Text)
-    , _crgTransitEncryptionEnabled    :: !(Maybe Bool)
-    , _crgSnapshotWindow              :: !(Maybe Text)
-    , _crgAuthToken                   :: !(Maybe Text)
-    , _crgPrimaryClusterId            :: !(Maybe Text)
-    , _crgEngine                      :: !(Maybe Text)
-    , _crgPreferredMaintenanceWindow  :: !(Maybe Text)
-    , _crgCacheSubnetGroupName        :: !(Maybe Text)
-    , _crgNumNodeGroups               :: !(Maybe Int)
-    , _crgSnapshotRetentionLimit      :: !(Maybe Int)
-    , _crgReplicasPerNodeGroup        :: !(Maybe Int)
-    , _crgNumCacheClusters            :: !(Maybe Int)
-    , _crgPreferredCacheClusterAZs    :: !(Maybe [Text])
-    , _crgSnapshotName                :: !(Maybe Text)
-    , _crgNotificationTopicARN        :: !(Maybe Text)
-    , _crgTags                        :: !(Maybe [Tag])
-    , _crgPort                        :: !(Maybe Int)
-    , _crgCacheSecurityGroupNames     :: !(Maybe [Text])
-    , _crgReplicationGroupId          :: !Text
-    , _crgReplicationGroupDescription :: !Text
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data CreateReplicationGroup = CreateReplicationGroup'{_crgAutomaticFailoverEnabled
+                                                      :: !(Maybe Bool),
+                                                      _crgEngineVersion ::
+                                                      !(Maybe Text),
+                                                      _crgCacheNodeType ::
+                                                      !(Maybe Text),
+                                                      _crgNodeGroupConfiguration
+                                                      ::
+                                                      !(Maybe
+                                                          [NodeGroupConfiguration]),
+                                                      _crgAtRestEncryptionEnabled
+                                                      :: !(Maybe Bool),
+                                                      _crgSecurityGroupIds ::
+                                                      !(Maybe [Text]),
+                                                      _crgSnapshotARNs ::
+                                                      !(Maybe [Text]),
+                                                      _crgAutoMinorVersionUpgrade
+                                                      :: !(Maybe Bool),
+                                                      _crgCacheParameterGroupName
+                                                      :: !(Maybe Text),
+                                                      _crgTransitEncryptionEnabled
+                                                      :: !(Maybe Bool),
+                                                      _crgSnapshotWindow ::
+                                                      !(Maybe Text),
+                                                      _crgAuthToken ::
+                                                      !(Maybe Text),
+                                                      _crgPrimaryClusterId ::
+                                                      !(Maybe Text),
+                                                      _crgEngine ::
+                                                      !(Maybe Text),
+                                                      _crgPreferredMaintenanceWindow
+                                                      :: !(Maybe Text),
+                                                      _crgCacheSubnetGroupName
+                                                      :: !(Maybe Text),
+                                                      _crgNumNodeGroups ::
+                                                      !(Maybe Int),
+                                                      _crgSnapshotRetentionLimit
+                                                      :: !(Maybe Int),
+                                                      _crgReplicasPerNodeGroup
+                                                      :: !(Maybe Int),
+                                                      _crgNumCacheClusters ::
+                                                      !(Maybe Int),
+                                                      _crgPreferredCacheClusterAZs
+                                                      :: !(Maybe [Text]),
+                                                      _crgSnapshotName ::
+                                                      !(Maybe Text),
+                                                      _crgNotificationTopicARN
+                                                      :: !(Maybe Text),
+                                                      _crgTags ::
+                                                      !(Maybe [Tag]),
+                                                      _crgPort :: !(Maybe Int),
+                                                      _crgCacheSecurityGroupNames
+                                                      :: !(Maybe [Text]),
+                                                      _crgReplicationGroupId ::
+                                                      !Text,
+                                                      _crgReplicationGroupDescription
+                                                      :: !Text}
+                                deriving (Eq, Read, Show, Data, Typeable,
+                                          Generic)
 
 -- | Creates a value of 'CreateReplicationGroup' with the minimum fields required to make a request.
 --
@@ -122,23 +147,23 @@ data CreateReplicationGroup =
 --
 -- * 'crgAutomaticFailoverEnabled' - Specifies whether a read-only replica is automatically promoted to read/write primary if the existing primary fails. If @true@ , Multi-AZ is enabled for this replication group. If @false@ , Multi-AZ is disabled for this replication group. @AutomaticFailoverEnabled@ must be enabled for Redis (cluster mode enabled) replication groups. Default: false Amazon ElastiCache for Redis does not support Multi-AZ with automatic failover on:     * Redis versions earlier than 2.8.6.     * Redis (cluster mode disabled): T1 and T2 cache node types.     * Redis (cluster mode enabled): T1 node types.
 --
--- * 'crgEngineVersion' - The version number of the cache engine to be used for the clusters in this replication group. To view the supported cache engine versions, use the @DescribeCacheEngineVersions@ operation. __Important:__ You can upgrade to a newer engine version (see <http://docs.aws.amazon.com/AmazonElastiCache/latest/UserGuide/SelectEngine.html#VersionManagement Selecting a Cache Engine and Version> ) in the /ElastiCache User Guide/ , but you cannot downgrade to an earlier engine version. If you want to use an earlier engine version, you must delete the existing cluster or replication group and create it anew with the earlier engine version.
+-- * 'crgEngineVersion' - The version number of the cache engine to be used for the clusters in this replication group. To view the supported cache engine versions, use the @DescribeCacheEngineVersions@ operation. __Important:__ You can upgrade to a newer engine version (see <http://docs.aws.amazon.com/AmazonElastiCache/latest/UserGuide/SelectEngine.html#VersionManagement Selecting a Cache Engine and Version> ) in the /ElastiCache User Guide/ , but you cannot downgrade to an earlier engine version. If you want to use an earlier engine version, you must delete the existing cluster or replication group and create it anew with the earlier engine version. 
 --
 -- * 'crgCacheNodeType' - The compute and memory capacity of the nodes in the node group (shard). The following node types are supported by ElastiCache. Generally speaking, the current generation types provide more memory and computational power at lower cost when compared to their equivalent previous generation counterparts.     * General purpose:     * Current generation:  __T2 node types:__ @cache.t2.micro@ , @cache.t2.small@ , @cache.t2.medium@  __M3 node types:__ @cache.m3.medium@ , @cache.m3.large@ , @cache.m3.xlarge@ , @cache.m3.2xlarge@  __M4 node types:__ @cache.m4.large@ , @cache.m4.xlarge@ , @cache.m4.2xlarge@ , @cache.m4.4xlarge@ , @cache.m4.10xlarge@      * Previous generation: (not recommended) __T1 node types:__ @cache.t1.micro@  __M1 node types:__ @cache.m1.small@ , @cache.m1.medium@ , @cache.m1.large@ , @cache.m1.xlarge@      * Compute optimized:     * Previous generation: (not recommended) __C1 node types:__ @cache.c1.xlarge@      * Memory optimized:     * Current generation:  __R3 node types:__ @cache.r3.large@ , @cache.r3.xlarge@ , @cache.r3.2xlarge@ , @cache.r3.4xlarge@ , @cache.r3.8xlarge@      * Previous generation: (not recommended) __M2 node types:__ @cache.m2.xlarge@ , @cache.m2.2xlarge@ , @cache.m2.4xlarge@  __Notes:__      * All T2 instances are created in an Amazon Virtual Private Cloud (Amazon VPC).     * Redis (cluster mode disabled): Redis backup/restore is not supported on T1 and T2 instances.      * Redis (cluster mode enabled): Backup/restore is not supported on T1 instances.     * Redis Append-only files (AOF) functionality is not supported for T1 or T2 instances. For a complete listing of node types and specifications, see <http://aws.amazon.com/elasticache/details Amazon ElastiCache Product Features and Details> and either <http://docs.aws.amazon.com/AmazonElastiCache/latest/UserGuide/CacheParameterGroups.Memcached.html#ParameterGroups.Memcached.NodeSpecific Cache Node Type-Specific Parameters for Memcached> or <http://docs.aws.amazon.com/AmazonElastiCache/latest/UserGuide/CacheParameterGroups.Redis.html#ParameterGroups.Redis.NodeSpecific Cache Node Type-Specific Parameters for Redis> .
 --
 -- * 'crgNodeGroupConfiguration' - A list of node group (shard) configuration options. Each node group (shard) configuration has the following: Slots, PrimaryAvailabilityZone, ReplicaAvailabilityZones, ReplicaCount. If you're creating a Redis (cluster mode disabled) or a Redis (cluster mode enabled) replication group, you can use this parameter to individually configure each node group (shard), or you can omit this parameter.
 --
--- * 'crgAtRestEncryptionEnabled' - A flag that enables encryption at rest when set to @true@ . You cannot modify the value of @AtRestEncryptionEnabled@ after the replication group is created. To enable encryption at rest on a replication group you must set @AtRestEncryptionEnabled@ to @true@ when you create the replication group.  Default: @false@
+-- * 'crgAtRestEncryptionEnabled' - A flag that enables encryption at rest when set to @true@ . You cannot modify the value of @AtRestEncryptionEnabled@ after the replication group is created. To enable encryption at rest on a replication group you must set @AtRestEncryptionEnabled@ to @true@ when you create the replication group.  Default: @false@ 
 --
 -- * 'crgSecurityGroupIds' - One or more Amazon VPC security groups associated with this replication group. Use this parameter only when you are creating a replication group in an Amazon Virtual Private Cloud (Amazon VPC).
 --
--- * 'crgSnapshotARNs' - A list of Amazon Resource Names (ARN) that uniquely identify the Redis RDB snapshot files stored in Amazon S3. The snapshot files are used to populate the new replication group. The Amazon S3 object name in the ARN cannot contain any commas. The new replication group will have the number of node groups (console: shards) specified by the parameter /NumNodeGroups/ or the number of node groups configured by /NodeGroupConfiguration/ regardless of the number of ARNs specified here. Example of an Amazon S3 ARN: @arn:aws:s3:::my_bucket/snapshot1.rdb@
+-- * 'crgSnapshotARNs' - A list of Amazon Resource Names (ARN) that uniquely identify the Redis RDB snapshot files stored in Amazon S3. The snapshot files are used to populate the new replication group. The Amazon S3 object name in the ARN cannot contain any commas. The new replication group will have the number of node groups (console: shards) specified by the parameter /NumNodeGroups/ or the number of node groups configured by /NodeGroupConfiguration/ regardless of the number of ARNs specified here. Example of an Amazon S3 ARN: @arn:aws:s3:::my_bucket/snapshot1.rdb@ 
 --
 -- * 'crgAutoMinorVersionUpgrade' - This parameter is currently disabled.
 --
 -- * 'crgCacheParameterGroupName' - The name of the parameter group to associate with this replication group. If this argument is omitted, the default cache parameter group for the specified engine is used. If you are running Redis version 3.2.4 or later, only one node group (shard), and want to use a default parameter group, we recommend that you specify the parameter group by name.      * To create a Redis (cluster mode disabled) replication group, use @CacheParameterGroupName=default.redis3.2@ .     * To create a Redis (cluster mode enabled) replication group, use @CacheParameterGroupName=default.redis3.2.cluster.on@ .
 --
--- * 'crgTransitEncryptionEnabled' - A flag that enables in-transit encryption when set to @true@ . You cannot modify the value of @TransitEncryptionEnabled@ after the cluster is created. To enable in-transit encryption on a cluster you must set @TransitEncryptionEnabled@ to @true@ when you create a cluster. This parameter is valid only if the @Engine@ parameter is @redis@ , the @EngineVersion@ parameter is @3.2.4@ or later, and the cluster is being created in an Amazon VPC. If you enable in-transit encryption, you must also specify a value for @CacheSubnetGroup@ . Default: @false@
+-- * 'crgTransitEncryptionEnabled' - A flag that enables in-transit encryption when set to @true@ . You cannot modify the value of @TransitEncryptionEnabled@ after the cluster is created. To enable in-transit encryption on a cluster you must set @TransitEncryptionEnabled@ to @true@ when you create a cluster. This parameter is valid only if the @Engine@ parameter is @redis@ , the @EngineVersion@ parameter is @3.2.4@ or later, and the cluster is being created in an Amazon VPC. If you enable in-transit encryption, you must also specify a value for @CacheSubnetGroup@ . Default: @false@ 
 --
 -- * 'crgSnapshotWindow' - The daily time range (in UTC) during which ElastiCache begins taking a daily snapshot of your node group (shard). Example: @05:00-09:00@  If you do not specify this parameter, ElastiCache automatically chooses an appropriate time range.
 --
@@ -148,7 +173,7 @@ data CreateReplicationGroup =
 --
 -- * 'crgEngine' - The name of the cache engine to be used for the clusters in this replication group.
 --
--- * 'crgPreferredMaintenanceWindow' - Specifies the weekly time range during which maintenance on the cluster is performed. It is specified as a range in the format ddd:hh24:mi-ddd:hh24:mi (24H Clock UTC). The minimum maintenance window is a 60 minute period. Valid values for @ddd@ are: Specifies the weekly time range during which maintenance on the cluster is performed. It is specified as a range in the format ddd:hh24:mi-ddd:hh24:mi (24H Clock UTC). The minimum maintenance window is a 60 minute period. Valid values for @ddd@ are:     * @sun@      * @mon@      * @tue@      * @wed@      * @thu@      * @fri@      * @sat@  Example: @sun:23:00-mon:01:30@
+-- * 'crgPreferredMaintenanceWindow' - Specifies the weekly time range during which maintenance on the cluster is performed. It is specified as a range in the format ddd:hh24:mi-ddd:hh24:mi (24H Clock UTC). The minimum maintenance window is a 60 minute period. Valid values for @ddd@ are: Specifies the weekly time range during which maintenance on the cluster is performed. It is specified as a range in the format ddd:hh24:mi-ddd:hh24:mi (24H Clock UTC). The minimum maintenance window is a 60 minute period. Valid values for @ddd@ are:     * @sun@      * @mon@      * @tue@      * @wed@      * @thu@      * @fri@      * @sat@  Example: @sun:23:00-mon:01:30@ 
 --
 -- * 'crgCacheSubnetGroupName' - The name of the cache subnet group to be used for the replication group. /Important:/ If you're going to launch your cluster in an Amazon VPC, you need to create a subnet group before you start creating a cluster. For more information, see <http://docs.aws.amazon.com/AmazonElastiCache/latest/UserGuide/SubnetGroups.html Subnets and Subnet Groups> .
 --
@@ -179,44 +204,43 @@ createReplicationGroup
     :: Text -- ^ 'crgReplicationGroupId'
     -> Text -- ^ 'crgReplicationGroupDescription'
     -> CreateReplicationGroup
-createReplicationGroup pReplicationGroupId_ pReplicationGroupDescription_ =
-  CreateReplicationGroup'
-    { _crgAutomaticFailoverEnabled = Nothing
-    , _crgEngineVersion = Nothing
-    , _crgCacheNodeType = Nothing
-    , _crgNodeGroupConfiguration = Nothing
-    , _crgAtRestEncryptionEnabled = Nothing
-    , _crgSecurityGroupIds = Nothing
-    , _crgSnapshotARNs = Nothing
-    , _crgAutoMinorVersionUpgrade = Nothing
-    , _crgCacheParameterGroupName = Nothing
-    , _crgTransitEncryptionEnabled = Nothing
-    , _crgSnapshotWindow = Nothing
-    , _crgAuthToken = Nothing
-    , _crgPrimaryClusterId = Nothing
-    , _crgEngine = Nothing
-    , _crgPreferredMaintenanceWindow = Nothing
-    , _crgCacheSubnetGroupName = Nothing
-    , _crgNumNodeGroups = Nothing
-    , _crgSnapshotRetentionLimit = Nothing
-    , _crgReplicasPerNodeGroup = Nothing
-    , _crgNumCacheClusters = Nothing
-    , _crgPreferredCacheClusterAZs = Nothing
-    , _crgSnapshotName = Nothing
-    , _crgNotificationTopicARN = Nothing
-    , _crgTags = Nothing
-    , _crgPort = Nothing
-    , _crgCacheSecurityGroupNames = Nothing
-    , _crgReplicationGroupId = pReplicationGroupId_
-    , _crgReplicationGroupDescription = pReplicationGroupDescription_
-    }
-
+createReplicationGroup pReplicationGroupId_
+  pReplicationGroupDescription_
+  = CreateReplicationGroup'{_crgAutomaticFailoverEnabled
+                              = Nothing,
+                            _crgEngineVersion = Nothing,
+                            _crgCacheNodeType = Nothing,
+                            _crgNodeGroupConfiguration = Nothing,
+                            _crgAtRestEncryptionEnabled = Nothing,
+                            _crgSecurityGroupIds = Nothing,
+                            _crgSnapshotARNs = Nothing,
+                            _crgAutoMinorVersionUpgrade = Nothing,
+                            _crgCacheParameterGroupName = Nothing,
+                            _crgTransitEncryptionEnabled = Nothing,
+                            _crgSnapshotWindow = Nothing,
+                            _crgAuthToken = Nothing,
+                            _crgPrimaryClusterId = Nothing,
+                            _crgEngine = Nothing,
+                            _crgPreferredMaintenanceWindow = Nothing,
+                            _crgCacheSubnetGroupName = Nothing,
+                            _crgNumNodeGroups = Nothing,
+                            _crgSnapshotRetentionLimit = Nothing,
+                            _crgReplicasPerNodeGroup = Nothing,
+                            _crgNumCacheClusters = Nothing,
+                            _crgPreferredCacheClusterAZs = Nothing,
+                            _crgSnapshotName = Nothing,
+                            _crgNotificationTopicARN = Nothing,
+                            _crgTags = Nothing, _crgPort = Nothing,
+                            _crgCacheSecurityGroupNames = Nothing,
+                            _crgReplicationGroupId = pReplicationGroupId_,
+                            _crgReplicationGroupDescription =
+                              pReplicationGroupDescription_}
 
 -- | Specifies whether a read-only replica is automatically promoted to read/write primary if the existing primary fails. If @true@ , Multi-AZ is enabled for this replication group. If @false@ , Multi-AZ is disabled for this replication group. @AutomaticFailoverEnabled@ must be enabled for Redis (cluster mode enabled) replication groups. Default: false Amazon ElastiCache for Redis does not support Multi-AZ with automatic failover on:     * Redis versions earlier than 2.8.6.     * Redis (cluster mode disabled): T1 and T2 cache node types.     * Redis (cluster mode enabled): T1 node types.
 crgAutomaticFailoverEnabled :: Lens' CreateReplicationGroup (Maybe Bool)
 crgAutomaticFailoverEnabled = lens _crgAutomaticFailoverEnabled (\ s a -> s{_crgAutomaticFailoverEnabled = a})
 
--- | The version number of the cache engine to be used for the clusters in this replication group. To view the supported cache engine versions, use the @DescribeCacheEngineVersions@ operation. __Important:__ You can upgrade to a newer engine version (see <http://docs.aws.amazon.com/AmazonElastiCache/latest/UserGuide/SelectEngine.html#VersionManagement Selecting a Cache Engine and Version> ) in the /ElastiCache User Guide/ , but you cannot downgrade to an earlier engine version. If you want to use an earlier engine version, you must delete the existing cluster or replication group and create it anew with the earlier engine version.
+-- | The version number of the cache engine to be used for the clusters in this replication group. To view the supported cache engine versions, use the @DescribeCacheEngineVersions@ operation. __Important:__ You can upgrade to a newer engine version (see <http://docs.aws.amazon.com/AmazonElastiCache/latest/UserGuide/SelectEngine.html#VersionManagement Selecting a Cache Engine and Version> ) in the /ElastiCache User Guide/ , but you cannot downgrade to an earlier engine version. If you want to use an earlier engine version, you must delete the existing cluster or replication group and create it anew with the earlier engine version. 
 crgEngineVersion :: Lens' CreateReplicationGroup (Maybe Text)
 crgEngineVersion = lens _crgEngineVersion (\ s a -> s{_crgEngineVersion = a})
 
@@ -228,7 +252,7 @@ crgCacheNodeType = lens _crgCacheNodeType (\ s a -> s{_crgCacheNodeType = a})
 crgNodeGroupConfiguration :: Lens' CreateReplicationGroup [NodeGroupConfiguration]
 crgNodeGroupConfiguration = lens _crgNodeGroupConfiguration (\ s a -> s{_crgNodeGroupConfiguration = a}) . _Default . _Coerce
 
--- | A flag that enables encryption at rest when set to @true@ . You cannot modify the value of @AtRestEncryptionEnabled@ after the replication group is created. To enable encryption at rest on a replication group you must set @AtRestEncryptionEnabled@ to @true@ when you create the replication group.  Default: @false@
+-- | A flag that enables encryption at rest when set to @true@ . You cannot modify the value of @AtRestEncryptionEnabled@ after the replication group is created. To enable encryption at rest on a replication group you must set @AtRestEncryptionEnabled@ to @true@ when you create the replication group.  Default: @false@ 
 crgAtRestEncryptionEnabled :: Lens' CreateReplicationGroup (Maybe Bool)
 crgAtRestEncryptionEnabled = lens _crgAtRestEncryptionEnabled (\ s a -> s{_crgAtRestEncryptionEnabled = a})
 
@@ -236,7 +260,7 @@ crgAtRestEncryptionEnabled = lens _crgAtRestEncryptionEnabled (\ s a -> s{_crgAt
 crgSecurityGroupIds :: Lens' CreateReplicationGroup [Text]
 crgSecurityGroupIds = lens _crgSecurityGroupIds (\ s a -> s{_crgSecurityGroupIds = a}) . _Default . _Coerce
 
--- | A list of Amazon Resource Names (ARN) that uniquely identify the Redis RDB snapshot files stored in Amazon S3. The snapshot files are used to populate the new replication group. The Amazon S3 object name in the ARN cannot contain any commas. The new replication group will have the number of node groups (console: shards) specified by the parameter /NumNodeGroups/ or the number of node groups configured by /NodeGroupConfiguration/ regardless of the number of ARNs specified here. Example of an Amazon S3 ARN: @arn:aws:s3:::my_bucket/snapshot1.rdb@
+-- | A list of Amazon Resource Names (ARN) that uniquely identify the Redis RDB snapshot files stored in Amazon S3. The snapshot files are used to populate the new replication group. The Amazon S3 object name in the ARN cannot contain any commas. The new replication group will have the number of node groups (console: shards) specified by the parameter /NumNodeGroups/ or the number of node groups configured by /NodeGroupConfiguration/ regardless of the number of ARNs specified here. Example of an Amazon S3 ARN: @arn:aws:s3:::my_bucket/snapshot1.rdb@ 
 crgSnapshotARNs :: Lens' CreateReplicationGroup [Text]
 crgSnapshotARNs = lens _crgSnapshotARNs (\ s a -> s{_crgSnapshotARNs = a}) . _Default . _Coerce
 
@@ -248,7 +272,7 @@ crgAutoMinorVersionUpgrade = lens _crgAutoMinorVersionUpgrade (\ s a -> s{_crgAu
 crgCacheParameterGroupName :: Lens' CreateReplicationGroup (Maybe Text)
 crgCacheParameterGroupName = lens _crgCacheParameterGroupName (\ s a -> s{_crgCacheParameterGroupName = a})
 
--- | A flag that enables in-transit encryption when set to @true@ . You cannot modify the value of @TransitEncryptionEnabled@ after the cluster is created. To enable in-transit encryption on a cluster you must set @TransitEncryptionEnabled@ to @true@ when you create a cluster. This parameter is valid only if the @Engine@ parameter is @redis@ , the @EngineVersion@ parameter is @3.2.4@ or later, and the cluster is being created in an Amazon VPC. If you enable in-transit encryption, you must also specify a value for @CacheSubnetGroup@ . Default: @false@
+-- | A flag that enables in-transit encryption when set to @true@ . You cannot modify the value of @TransitEncryptionEnabled@ after the cluster is created. To enable in-transit encryption on a cluster you must set @TransitEncryptionEnabled@ to @true@ when you create a cluster. This parameter is valid only if the @Engine@ parameter is @redis@ , the @EngineVersion@ parameter is @3.2.4@ or later, and the cluster is being created in an Amazon VPC. If you enable in-transit encryption, you must also specify a value for @CacheSubnetGroup@ . Default: @false@ 
 crgTransitEncryptionEnabled :: Lens' CreateReplicationGroup (Maybe Bool)
 crgTransitEncryptionEnabled = lens _crgTransitEncryptionEnabled (\ s a -> s{_crgTransitEncryptionEnabled = a})
 
@@ -268,7 +292,7 @@ crgPrimaryClusterId = lens _crgPrimaryClusterId (\ s a -> s{_crgPrimaryClusterId
 crgEngine :: Lens' CreateReplicationGroup (Maybe Text)
 crgEngine = lens _crgEngine (\ s a -> s{_crgEngine = a})
 
--- | Specifies the weekly time range during which maintenance on the cluster is performed. It is specified as a range in the format ddd:hh24:mi-ddd:hh24:mi (24H Clock UTC). The minimum maintenance window is a 60 minute period. Valid values for @ddd@ are: Specifies the weekly time range during which maintenance on the cluster is performed. It is specified as a range in the format ddd:hh24:mi-ddd:hh24:mi (24H Clock UTC). The minimum maintenance window is a 60 minute period. Valid values for @ddd@ are:     * @sun@      * @mon@      * @tue@      * @wed@      * @thu@      * @fri@      * @sat@  Example: @sun:23:00-mon:01:30@
+-- | Specifies the weekly time range during which maintenance on the cluster is performed. It is specified as a range in the format ddd:hh24:mi-ddd:hh24:mi (24H Clock UTC). The minimum maintenance window is a 60 minute period. Valid values for @ddd@ are: Specifies the weekly time range during which maintenance on the cluster is performed. It is specified as a range in the format ddd:hh24:mi-ddd:hh24:mi (24H Clock UTC). The minimum maintenance window is a 60 minute period. Valid values for @ddd@ are:     * @sun@      * @mon@      * @tue@      * @wed@      * @thu@      * @fri@      * @sat@  Example: @sun:23:00-mon:01:30@ 
 crgPreferredMaintenanceWindow :: Lens' CreateReplicationGroup (Maybe Text)
 crgPreferredMaintenanceWindow = lens _crgPreferredMaintenanceWindow (\ s a -> s{_crgPreferredMaintenanceWindow = a})
 
@@ -402,13 +426,14 @@ instance ToQuery CreateReplicationGroup where
                  _crgReplicationGroupDescription]
 
 -- | /See:/ 'createReplicationGroupResponse' smart constructor.
-data CreateReplicationGroupResponse =
-  CreateReplicationGroupResponse'
-    { _crgrsReplicationGroup :: !(Maybe ReplicationGroup)
-    , _crgrsResponseStatus   :: !Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data CreateReplicationGroupResponse = CreateReplicationGroupResponse'{_crgrsReplicationGroup
+                                                                      ::
+                                                                      !(Maybe
+                                                                          ReplicationGroup),
+                                                                      _crgrsResponseStatus
+                                                                      :: !Int}
+                                        deriving (Eq, Read, Show, Data,
+                                                  Typeable, Generic)
 
 -- | Creates a value of 'CreateReplicationGroupResponse' with the minimum fields required to make a request.
 --
@@ -420,10 +445,10 @@ data CreateReplicationGroupResponse =
 createReplicationGroupResponse
     :: Int -- ^ 'crgrsResponseStatus'
     -> CreateReplicationGroupResponse
-createReplicationGroupResponse pResponseStatus_ =
-  CreateReplicationGroupResponse'
-    {_crgrsReplicationGroup = Nothing, _crgrsResponseStatus = pResponseStatus_}
-
+createReplicationGroupResponse pResponseStatus_
+  = CreateReplicationGroupResponse'{_crgrsReplicationGroup
+                                      = Nothing,
+                                    _crgrsResponseStatus = pResponseStatus_}
 
 -- | Undocumented member.
 crgrsReplicationGroup :: Lens' CreateReplicationGroupResponse (Maybe ReplicationGroup)

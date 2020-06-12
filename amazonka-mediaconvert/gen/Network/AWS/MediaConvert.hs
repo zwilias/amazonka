@@ -44,64 +44,64 @@ module Network.AWS.MediaConvert
     -- * Operations
     -- $operations
 
-    -- ** DeletePreset
+    -- ** DeletePreset 
     , module Network.AWS.MediaConvert.DeletePreset
 
-    -- ** UpdatePreset
+    -- ** UpdatePreset 
     , module Network.AWS.MediaConvert.UpdatePreset
 
-    -- ** ListQueues
+    -- ** ListQueues 
     , module Network.AWS.MediaConvert.ListQueues
 
-    -- ** DeleteQueue
+    -- ** DeleteQueue 
     , module Network.AWS.MediaConvert.DeleteQueue
 
-    -- ** UpdateQueue
+    -- ** UpdateQueue 
     , module Network.AWS.MediaConvert.UpdateQueue
 
-    -- ** GetPreset
+    -- ** GetPreset 
     , module Network.AWS.MediaConvert.GetPreset
 
-    -- ** CreateJob
+    -- ** CreateJob 
     , module Network.AWS.MediaConvert.CreateJob
 
-    -- ** ListJobs
+    -- ** ListJobs 
     , module Network.AWS.MediaConvert.ListJobs
 
-    -- ** GetJob
+    -- ** GetJob 
     , module Network.AWS.MediaConvert.GetJob
 
-    -- ** CreatePreset
+    -- ** CreatePreset 
     , module Network.AWS.MediaConvert.CreatePreset
 
-    -- ** ListPresets
+    -- ** ListPresets 
     , module Network.AWS.MediaConvert.ListPresets
 
-    -- ** GetQueue
+    -- ** GetQueue 
     , module Network.AWS.MediaConvert.GetQueue
 
-    -- ** DescribeEndpoints
+    -- ** DescribeEndpoints 
     , module Network.AWS.MediaConvert.DescribeEndpoints
 
-    -- ** CreateQueue
+    -- ** CreateQueue 
     , module Network.AWS.MediaConvert.CreateQueue
 
-    -- ** CreateJobTemplate
+    -- ** CreateJobTemplate 
     , module Network.AWS.MediaConvert.CreateJobTemplate
 
-    -- ** DeleteJobTemplate
+    -- ** DeleteJobTemplate 
     , module Network.AWS.MediaConvert.DeleteJobTemplate
 
-    -- ** UpdateJobTemplate
+    -- ** UpdateJobTemplate 
     , module Network.AWS.MediaConvert.UpdateJobTemplate
 
-    -- ** ListJobTemplates
+    -- ** ListJobTemplates 
     , module Network.AWS.MediaConvert.ListJobTemplates
 
-    -- ** GetJobTemplate
+    -- ** GetJobTemplate 
     , module Network.AWS.MediaConvert.GetJobTemplate
 
-    -- ** CancelJob
+    -- ** CancelJob 
     , module Network.AWS.MediaConvert.CancelJob
 
     -- * Types
@@ -1682,8 +1682,8 @@ import Network.AWS.MediaConvert.GetJob
 import Network.AWS.MediaConvert.GetJobTemplate
 import Network.AWS.MediaConvert.GetPreset
 import Network.AWS.MediaConvert.GetQueue
-import Network.AWS.MediaConvert.ListJobs
 import Network.AWS.MediaConvert.ListJobTemplates
+import Network.AWS.MediaConvert.ListJobs
 import Network.AWS.MediaConvert.ListPresets
 import Network.AWS.MediaConvert.ListQueues
 import Network.AWS.MediaConvert.Types

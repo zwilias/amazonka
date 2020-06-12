@@ -39,7 +39,6 @@ module Network.AWS.CloudSearch.DescribeDomainEndpointOptions
     ) where
 
 import Network.AWS.CloudSearch.Types
-import Network.AWS.CloudSearch.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.Request
@@ -50,13 +49,14 @@ import Network.AWS.Response
 --
 --
 -- /See:/ 'describeDomainEndpointOptions' smart constructor.
-data DescribeDomainEndpointOptions =
-  DescribeDomainEndpointOptions'
-    { _ddeoDeployed   :: !(Maybe Bool)
-    , _ddeoDomainName :: !Text
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data DescribeDomainEndpointOptions = DescribeDomainEndpointOptions'{_ddeoDeployed
+                                                                    ::
+                                                                    !(Maybe
+                                                                        Bool),
+                                                                    _ddeoDomainName
+                                                                    :: !Text}
+                                       deriving (Eq, Read, Show, Data, Typeable,
+                                                 Generic)
 
 -- | Creates a value of 'DescribeDomainEndpointOptions' with the minimum fields required to make a request.
 --
@@ -68,10 +68,10 @@ data DescribeDomainEndpointOptions =
 describeDomainEndpointOptions
     :: Text -- ^ 'ddeoDomainName'
     -> DescribeDomainEndpointOptions
-describeDomainEndpointOptions pDomainName_ =
-  DescribeDomainEndpointOptions'
-    {_ddeoDeployed = Nothing, _ddeoDomainName = pDomainName_}
-
+describeDomainEndpointOptions pDomainName_
+  = DescribeDomainEndpointOptions'{_ddeoDeployed =
+                                     Nothing,
+                                   _ddeoDomainName = pDomainName_}
 
 -- | Whether to retrieve the latest configuration (which might be in a Processing state) or the current, active configuration. Defaults to @false@ .
 ddeoDeployed :: Lens' DescribeDomainEndpointOptions (Maybe Bool)
@@ -114,18 +114,20 @@ instance ToQuery DescribeDomainEndpointOptions where
                "Deployed" =: _ddeoDeployed,
                "DomainName" =: _ddeoDomainName]
 
--- | The result of a @DescribeDomainEndpointOptions@ request. Contains the status and configuration of a search domain's endpoint options.
+-- | The result of a @DescribeDomainEndpointOptions@ request. Contains the status and configuration of a search domain's endpoint options. 
 --
 --
 --
 -- /See:/ 'describeDomainEndpointOptionsResponse' smart constructor.
-data DescribeDomainEndpointOptionsResponse =
-  DescribeDomainEndpointOptionsResponse'
-    { _ddeorsDomainEndpointOptions :: !(Maybe DomainEndpointOptionsStatus)
-    , _ddeorsResponseStatus        :: !Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data DescribeDomainEndpointOptionsResponse = DescribeDomainEndpointOptionsResponse'{_ddeorsDomainEndpointOptions
+                                                                                    ::
+                                                                                    !(Maybe
+                                                                                        DomainEndpointOptionsStatus),
+                                                                                    _ddeorsResponseStatus
+                                                                                    ::
+                                                                                    !Int}
+                                               deriving (Eq, Read, Show, Data,
+                                                         Typeable, Generic)
 
 -- | Creates a value of 'DescribeDomainEndpointOptionsResponse' with the minimum fields required to make a request.
 --
@@ -137,12 +139,12 @@ data DescribeDomainEndpointOptionsResponse =
 describeDomainEndpointOptionsResponse
     :: Int -- ^ 'ddeorsResponseStatus'
     -> DescribeDomainEndpointOptionsResponse
-describeDomainEndpointOptionsResponse pResponseStatus_ =
-  DescribeDomainEndpointOptionsResponse'
-    { _ddeorsDomainEndpointOptions = Nothing
-    , _ddeorsResponseStatus = pResponseStatus_
-    }
-
+describeDomainEndpointOptionsResponse
+  pResponseStatus_
+  = DescribeDomainEndpointOptionsResponse'{_ddeorsDomainEndpointOptions
+                                             = Nothing,
+                                           _ddeorsResponseStatus =
+                                             pResponseStatus_}
 
 -- | The status and configuration of a search domain's endpoint options.
 ddeorsDomainEndpointOptions :: Lens' DescribeDomainEndpointOptionsResponse (Maybe DomainEndpointOptionsStatus)

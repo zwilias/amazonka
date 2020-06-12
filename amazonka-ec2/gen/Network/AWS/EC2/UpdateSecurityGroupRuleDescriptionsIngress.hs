@@ -43,22 +43,30 @@ module Network.AWS.EC2.UpdateSecurityGroupRuleDescriptionsIngress
     ) where
 
 import Network.AWS.EC2.Types
-import Network.AWS.EC2.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 
 -- | /See:/ 'updateSecurityGroupRuleDescriptionsIngress' smart constructor.
-data UpdateSecurityGroupRuleDescriptionsIngress =
-  UpdateSecurityGroupRuleDescriptionsIngress'
-    { _usgrdiGroupId       :: !(Maybe Text)
-    , _usgrdiGroupName     :: !(Maybe Text)
-    , _usgrdiDryRun        :: !(Maybe Bool)
-    , _usgrdiIPPermissions :: ![IPPermission]
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data UpdateSecurityGroupRuleDescriptionsIngress = UpdateSecurityGroupRuleDescriptionsIngress'{_usgrdiGroupId
+                                                                                              ::
+                                                                                              !(Maybe
+                                                                                                  Text),
+                                                                                              _usgrdiGroupName
+                                                                                              ::
+                                                                                              !(Maybe
+                                                                                                  Text),
+                                                                                              _usgrdiDryRun
+                                                                                              ::
+                                                                                              !(Maybe
+                                                                                                  Bool),
+                                                                                              _usgrdiIPPermissions
+                                                                                              ::
+                                                                                              ![IPPermission]}
+                                                    deriving (Eq, Read, Show,
+                                                              Data, Typeable,
+                                                              Generic)
 
 -- | Creates a value of 'UpdateSecurityGroupRuleDescriptionsIngress' with the minimum fields required to make a request.
 --
@@ -70,17 +78,15 @@ data UpdateSecurityGroupRuleDescriptionsIngress =
 --
 -- * 'usgrdiDryRun' - Checks whether you have the required permissions for the action, without actually making the request, and provides an error response. If you have the required permissions, the error response is @DryRunOperation@ . Otherwise, it is @UnauthorizedOperation@ .
 --
--- * 'usgrdiIPPermissions' - The IP permissions for the security group rule.
+-- * 'usgrdiIPPermissions' - The IP permissions for the security group rule. 
 updateSecurityGroupRuleDescriptionsIngress
     :: UpdateSecurityGroupRuleDescriptionsIngress
-updateSecurityGroupRuleDescriptionsIngress =
-  UpdateSecurityGroupRuleDescriptionsIngress'
-    { _usgrdiGroupId = Nothing
-    , _usgrdiGroupName = Nothing
-    , _usgrdiDryRun = Nothing
-    , _usgrdiIPPermissions = mempty
-    }
-
+updateSecurityGroupRuleDescriptionsIngress
+  = UpdateSecurityGroupRuleDescriptionsIngress'{_usgrdiGroupId
+                                                  = Nothing,
+                                                _usgrdiGroupName = Nothing,
+                                                _usgrdiDryRun = Nothing,
+                                                _usgrdiIPPermissions = mempty}
 
 -- | The ID of the security group. You must specify either the security group ID or the security group name in the request. For security groups in a nondefault VPC, you must specify the security group ID.
 usgrdiGroupId :: Lens' UpdateSecurityGroupRuleDescriptionsIngress (Maybe Text)
@@ -94,7 +100,7 @@ usgrdiGroupName = lens _usgrdiGroupName (\ s a -> s{_usgrdiGroupName = a})
 usgrdiDryRun :: Lens' UpdateSecurityGroupRuleDescriptionsIngress (Maybe Bool)
 usgrdiDryRun = lens _usgrdiDryRun (\ s a -> s{_usgrdiDryRun = a})
 
--- | The IP permissions for the security group rule.
+-- | The IP permissions for the security group rule. 
 usgrdiIPPermissions :: Lens' UpdateSecurityGroupRuleDescriptionsIngress [IPPermission]
 usgrdiIPPermissions = lens _usgrdiIPPermissions (\ s a -> s{_usgrdiIPPermissions = a}) . _Coerce
 
@@ -144,13 +150,18 @@ instance ToQuery
                toQueryList "IpPermissions" _usgrdiIPPermissions]
 
 -- | /See:/ 'updateSecurityGroupRuleDescriptionsIngressResponse' smart constructor.
-data UpdateSecurityGroupRuleDescriptionsIngressResponse =
-  UpdateSecurityGroupRuleDescriptionsIngressResponse'
-    { _usgrdirsReturn         :: !(Maybe Bool)
-    , _usgrdirsResponseStatus :: !Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data UpdateSecurityGroupRuleDescriptionsIngressResponse = UpdateSecurityGroupRuleDescriptionsIngressResponse'{_usgrdirsReturn
+                                                                                                              ::
+                                                                                                              !(Maybe
+                                                                                                                  Bool),
+                                                                                                              _usgrdirsResponseStatus
+                                                                                                              ::
+                                                                                                              !Int}
+                                                            deriving (Eq, Read,
+                                                                      Show,
+                                                                      Data,
+                                                                      Typeable,
+                                                                      Generic)
 
 -- | Creates a value of 'UpdateSecurityGroupRuleDescriptionsIngressResponse' with the minimum fields required to make a request.
 --
@@ -162,10 +173,12 @@ data UpdateSecurityGroupRuleDescriptionsIngressResponse =
 updateSecurityGroupRuleDescriptionsIngressResponse
     :: Int -- ^ 'usgrdirsResponseStatus'
     -> UpdateSecurityGroupRuleDescriptionsIngressResponse
-updateSecurityGroupRuleDescriptionsIngressResponse pResponseStatus_ =
-  UpdateSecurityGroupRuleDescriptionsIngressResponse'
-    {_usgrdirsReturn = Nothing, _usgrdirsResponseStatus = pResponseStatus_}
-
+updateSecurityGroupRuleDescriptionsIngressResponse
+  pResponseStatus_
+  = UpdateSecurityGroupRuleDescriptionsIngressResponse'{_usgrdirsReturn
+                                                          = Nothing,
+                                                        _usgrdirsResponseStatus
+                                                          = pResponseStatus_}
 
 -- | Returns @true@ if the request succeeds; otherwise, returns an error.
 usgrdirsReturn :: Lens' UpdateSecurityGroupRuleDescriptionsIngressResponse (Maybe Bool)

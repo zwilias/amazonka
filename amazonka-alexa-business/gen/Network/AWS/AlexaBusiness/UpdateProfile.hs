@@ -46,28 +46,25 @@ module Network.AWS.AlexaBusiness.UpdateProfile
     ) where
 
 import Network.AWS.AlexaBusiness.Types
-import Network.AWS.AlexaBusiness.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 
 -- | /See:/ 'updateProfile' smart constructor.
-data UpdateProfile =
-  UpdateProfile'
-    { _upSetupModeDisabled :: !(Maybe Bool)
-    , _upPSTNEnabled       :: !(Maybe Bool)
-    , _upDistanceUnit      :: !(Maybe DistanceUnit)
-    , _upAddress           :: !(Maybe Text)
-    , _upProfileARN        :: !(Maybe Text)
-    , _upWakeWord          :: !(Maybe WakeWord)
-    , _upProfileName       :: !(Maybe Text)
-    , _upTemperatureUnit   :: !(Maybe TemperatureUnit)
-    , _upTimezone          :: !(Maybe Text)
-    , _upMaxVolumeLimit    :: !(Maybe Int)
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data UpdateProfile = UpdateProfile'{_upSetupModeDisabled
+                                    :: !(Maybe Bool),
+                                    _upPSTNEnabled :: !(Maybe Bool),
+                                    _upDistanceUnit :: !(Maybe DistanceUnit),
+                                    _upAddress :: !(Maybe Text),
+                                    _upProfileARN :: !(Maybe Text),
+                                    _upWakeWord :: !(Maybe WakeWord),
+                                    _upProfileName :: !(Maybe Text),
+                                    _upTemperatureUnit ::
+                                    !(Maybe TemperatureUnit),
+                                    _upTimezone :: !(Maybe Text),
+                                    _upMaxVolumeLimit :: !(Maybe Int)}
+                       deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'UpdateProfile' with the minimum fields required to make a request.
 --
@@ -94,20 +91,13 @@ data UpdateProfile =
 -- * 'upMaxVolumeLimit' - The updated maximum volume limit for the room profile.
 updateProfile
     :: UpdateProfile
-updateProfile =
-  UpdateProfile'
-    { _upSetupModeDisabled = Nothing
-    , _upPSTNEnabled = Nothing
-    , _upDistanceUnit = Nothing
-    , _upAddress = Nothing
-    , _upProfileARN = Nothing
-    , _upWakeWord = Nothing
-    , _upProfileName = Nothing
-    , _upTemperatureUnit = Nothing
-    , _upTimezone = Nothing
-    , _upMaxVolumeLimit = Nothing
-    }
-
+updateProfile
+  = UpdateProfile'{_upSetupModeDisabled = Nothing,
+                   _upPSTNEnabled = Nothing, _upDistanceUnit = Nothing,
+                   _upAddress = Nothing, _upProfileARN = Nothing,
+                   _upWakeWord = Nothing, _upProfileName = Nothing,
+                   _upTemperatureUnit = Nothing, _upTimezone = Nothing,
+                   _upMaxVolumeLimit = Nothing}
 
 -- | Whether the setup mode of the profile is enabled.
 upSetupModeDisabled :: Lens' UpdateProfile (Maybe Bool)
@@ -192,12 +182,10 @@ instance ToQuery UpdateProfile where
         toQuery = const mempty
 
 -- | /See:/ 'updateProfileResponse' smart constructor.
-newtype UpdateProfileResponse =
-  UpdateProfileResponse'
-    { _uprsResponseStatus :: Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+newtype UpdateProfileResponse = UpdateProfileResponse'{_uprsResponseStatus
+                                                       :: Int}
+                                  deriving (Eq, Read, Show, Data, Typeable,
+                                            Generic)
 
 -- | Creates a value of 'UpdateProfileResponse' with the minimum fields required to make a request.
 --
@@ -207,9 +195,9 @@ newtype UpdateProfileResponse =
 updateProfileResponse
     :: Int -- ^ 'uprsResponseStatus'
     -> UpdateProfileResponse
-updateProfileResponse pResponseStatus_ =
-  UpdateProfileResponse' {_uprsResponseStatus = pResponseStatus_}
-
+updateProfileResponse pResponseStatus_
+  = UpdateProfileResponse'{_uprsResponseStatus =
+                             pResponseStatus_}
 
 -- | -- | The response status code.
 uprsResponseStatus :: Lens' UpdateProfileResponse Int

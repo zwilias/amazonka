@@ -37,20 +37,16 @@ import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 import Network.AWS.SMS.Types
-import Network.AWS.SMS.Types.Product
 
 -- | /See:/ 'importServerCatalog' smart constructor.
-data ImportServerCatalog =
-  ImportServerCatalog'
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data ImportServerCatalog = ImportServerCatalog'
+                             deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'ImportServerCatalog' with the minimum fields required to make a request.
 --
 importServerCatalog
     :: ImportServerCatalog
 importServerCatalog = ImportServerCatalog'
-
 
 instance AWSRequest ImportServerCatalog where
         type Rs ImportServerCatalog =
@@ -85,12 +81,10 @@ instance ToQuery ImportServerCatalog where
         toQuery = const mempty
 
 -- | /See:/ 'importServerCatalogResponse' smart constructor.
-newtype ImportServerCatalogResponse =
-  ImportServerCatalogResponse'
-    { _iscrsResponseStatus :: Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+newtype ImportServerCatalogResponse = ImportServerCatalogResponse'{_iscrsResponseStatus
+                                                                   :: Int}
+                                        deriving (Eq, Read, Show, Data,
+                                                  Typeable, Generic)
 
 -- | Creates a value of 'ImportServerCatalogResponse' with the minimum fields required to make a request.
 --
@@ -100,9 +94,9 @@ newtype ImportServerCatalogResponse =
 importServerCatalogResponse
     :: Int -- ^ 'iscrsResponseStatus'
     -> ImportServerCatalogResponse
-importServerCatalogResponse pResponseStatus_ =
-  ImportServerCatalogResponse' {_iscrsResponseStatus = pResponseStatus_}
-
+importServerCatalogResponse pResponseStatus_
+  = ImportServerCatalogResponse'{_iscrsResponseStatus =
+                                   pResponseStatus_}
 
 -- | -- | The response status code.
 iscrsResponseStatus :: Lens' ImportServerCatalogResponse Int

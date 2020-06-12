@@ -50,16 +50,12 @@ import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 import Network.AWS.WorkMail.Types
-import Network.AWS.WorkMail.Types.Product
 
 -- | /See:/ 'describeResource' smart constructor.
-data DescribeResource =
-  DescribeResource'
-    { _drOrganizationId :: !Text
-    , _drResourceId     :: !Text
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data DescribeResource = DescribeResource'{_drOrganizationId
+                                          :: !Text,
+                                          _drResourceId :: !Text}
+                          deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'DescribeResource' with the minimum fields required to make a request.
 --
@@ -72,10 +68,10 @@ describeResource
     :: Text -- ^ 'drOrganizationId'
     -> Text -- ^ 'drResourceId'
     -> DescribeResource
-describeResource pOrganizationId_ pResourceId_ =
-  DescribeResource'
-    {_drOrganizationId = pOrganizationId_, _drResourceId = pResourceId_}
-
+describeResource pOrganizationId_ pResourceId_
+  = DescribeResource'{_drOrganizationId =
+                        pOrganizationId_,
+                      _drResourceId = pResourceId_}
 
 -- | The identifier associated with the organization for which the resource is described.
 drOrganizationId :: Lens' DescribeResource Text
@@ -128,20 +124,27 @@ instance ToQuery DescribeResource where
         toQuery = const mempty
 
 -- | /See:/ 'describeResourceResponse' smart constructor.
-data DescribeResourceResponse =
-  DescribeResourceResponse'
-    { _drrsEmail          :: !(Maybe Text)
-    , _drrsState          :: !(Maybe EntityState)
-    , _drrsResourceId     :: !(Maybe Text)
-    , _drrsDisabledDate   :: !(Maybe POSIX)
-    , _drrsName           :: !(Maybe Text)
-    , _drrsType           :: !(Maybe ResourceType)
-    , _drrsEnabledDate    :: !(Maybe POSIX)
-    , _drrsBookingOptions :: !(Maybe BookingOptions)
-    , _drrsResponseStatus :: !Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data DescribeResourceResponse = DescribeResourceResponse'{_drrsEmail
+                                                          :: !(Maybe Text),
+                                                          _drrsState ::
+                                                          !(Maybe EntityState),
+                                                          _drrsResourceId ::
+                                                          !(Maybe Text),
+                                                          _drrsDisabledDate ::
+                                                          !(Maybe POSIX),
+                                                          _drrsName ::
+                                                          !(Maybe Text),
+                                                          _drrsType ::
+                                                          !(Maybe ResourceType),
+                                                          _drrsEnabledDate ::
+                                                          !(Maybe POSIX),
+                                                          _drrsBookingOptions ::
+                                                          !(Maybe
+                                                              BookingOptions),
+                                                          _drrsResponseStatus ::
+                                                          !Int}
+                                  deriving (Eq, Read, Show, Data, Typeable,
+                                            Generic)
 
 -- | Creates a value of 'DescribeResourceResponse' with the minimum fields required to make a request.
 --
@@ -167,19 +170,13 @@ data DescribeResourceResponse =
 describeResourceResponse
     :: Int -- ^ 'drrsResponseStatus'
     -> DescribeResourceResponse
-describeResourceResponse pResponseStatus_ =
-  DescribeResourceResponse'
-    { _drrsEmail = Nothing
-    , _drrsState = Nothing
-    , _drrsResourceId = Nothing
-    , _drrsDisabledDate = Nothing
-    , _drrsName = Nothing
-    , _drrsType = Nothing
-    , _drrsEnabledDate = Nothing
-    , _drrsBookingOptions = Nothing
-    , _drrsResponseStatus = pResponseStatus_
-    }
-
+describeResourceResponse pResponseStatus_
+  = DescribeResourceResponse'{_drrsEmail = Nothing,
+                              _drrsState = Nothing, _drrsResourceId = Nothing,
+                              _drrsDisabledDate = Nothing, _drrsName = Nothing,
+                              _drrsType = Nothing, _drrsEnabledDate = Nothing,
+                              _drrsBookingOptions = Nothing,
+                              _drrsResponseStatus = pResponseStatus_}
 
 -- | The email of the described resource.
 drrsEmail :: Lens' DescribeResourceResponse (Maybe Text)

@@ -42,20 +42,16 @@ module Network.AWS.EC2.ModifyIdFormat
     ) where
 
 import Network.AWS.EC2.Types
-import Network.AWS.EC2.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 
 -- | /See:/ 'modifyIdFormat' smart constructor.
-data ModifyIdFormat =
-  ModifyIdFormat'
-    { _mifResource   :: !Text
-    , _mifUseLongIds :: !Bool
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data ModifyIdFormat = ModifyIdFormat'{_mifResource ::
+                                      !Text,
+                                      _mifUseLongIds :: !Bool}
+                        deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'ModifyIdFormat' with the minimum fields required to make a request.
 --
@@ -68,9 +64,9 @@ modifyIdFormat
     :: Text -- ^ 'mifResource'
     -> Bool -- ^ 'mifUseLongIds'
     -> ModifyIdFormat
-modifyIdFormat pResource_ pUseLongIds_ =
-  ModifyIdFormat' {_mifResource = pResource_, _mifUseLongIds = pUseLongIds_}
-
+modifyIdFormat pResource_ pUseLongIds_
+  = ModifyIdFormat'{_mifResource = pResource_,
+                    _mifUseLongIds = pUseLongIds_}
 
 -- | The type of resource: @bundle@ | @conversion-task@ | @customer-gateway@ | @dhcp-options@ | @elastic-ip-allocation@ | @elastic-ip-association@ | @export-task@ | @flow-log@ | @image@ | @import-task@ | @internet-gateway@ | @network-acl@ | @network-acl-association@ | @network-interface@ | @network-interface-attachment@ | @prefix-list@ | @route-table@ | @route-table-association@ | @security-group@ | @subnet@ | @subnet-cidr-block-association@ | @vpc@ | @vpc-cidr-block-association@ | @vpc-endpoint@ | @vpc-peering-connection@ | @vpn-connection@ | @vpn-gateway@ . Alternatively, use the @all-current@ option to include all resource types that are currently within their opt-in period for longer IDs.
 mifResource :: Lens' ModifyIdFormat Text
@@ -104,16 +100,14 @@ instance ToQuery ModifyIdFormat where
                "UseLongIds" =: _mifUseLongIds]
 
 -- | /See:/ 'modifyIdFormatResponse' smart constructor.
-data ModifyIdFormatResponse =
-  ModifyIdFormatResponse'
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data ModifyIdFormatResponse = ModifyIdFormatResponse'
+                                deriving (Eq, Read, Show, Data, Typeable,
+                                          Generic)
 
 -- | Creates a value of 'ModifyIdFormatResponse' with the minimum fields required to make a request.
 --
 modifyIdFormatResponse
     :: ModifyIdFormatResponse
 modifyIdFormatResponse = ModifyIdFormatResponse'
-
 
 instance NFData ModifyIdFormatResponse where

@@ -47,28 +47,30 @@ module Network.AWS.AppSync.CreateDataSource
     ) where
 
 import Network.AWS.AppSync.Types
-import Network.AWS.AppSync.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 
 -- | /See:/ 'createDataSource' smart constructor.
-data CreateDataSource =
-  CreateDataSource'
-    { _cdsServiceRoleARN :: !(Maybe Text)
-    , _cdsRelationalDatabaseConfig :: !(Maybe RelationalDatabaseDataSourceConfig)
-    , _cdsDynamodbConfig :: !(Maybe DynamodbDataSourceConfig)
-    , _cdsHttpConfig :: !(Maybe HTTPDataSourceConfig)
-    , _cdsLambdaConfig :: !(Maybe LambdaDataSourceConfig)
-    , _cdsDescription :: !(Maybe Text)
-    , _cdsElasticsearchConfig :: !(Maybe ElasticsearchDataSourceConfig)
-    , _cdsApiId :: !Text
-    , _cdsName :: !Text
-    , _cdsType :: !DataSourceType
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data CreateDataSource = CreateDataSource'{_cdsServiceRoleARN
+                                          :: !(Maybe Text),
+                                          _cdsRelationalDatabaseConfig ::
+                                          !(Maybe
+                                              RelationalDatabaseDataSourceConfig),
+                                          _cdsDynamodbConfig ::
+                                          !(Maybe DynamodbDataSourceConfig),
+                                          _cdsHttpConfig ::
+                                          !(Maybe HTTPDataSourceConfig),
+                                          _cdsLambdaConfig ::
+                                          !(Maybe LambdaDataSourceConfig),
+                                          _cdsDescription :: !(Maybe Text),
+                                          _cdsElasticsearchConfig ::
+                                          !(Maybe
+                                              ElasticsearchDataSourceConfig),
+                                          _cdsApiId :: !Text, _cdsName :: !Text,
+                                          _cdsType :: !DataSourceType}
+                          deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'CreateDataSource' with the minimum fields required to make a request.
 --
@@ -98,20 +100,15 @@ createDataSource
     -> Text -- ^ 'cdsName'
     -> DataSourceType -- ^ 'cdsType'
     -> CreateDataSource
-createDataSource pApiId_ pName_ pType_ =
-  CreateDataSource'
-    { _cdsServiceRoleARN = Nothing
-    , _cdsRelationalDatabaseConfig = Nothing
-    , _cdsDynamodbConfig = Nothing
-    , _cdsHttpConfig = Nothing
-    , _cdsLambdaConfig = Nothing
-    , _cdsDescription = Nothing
-    , _cdsElasticsearchConfig = Nothing
-    , _cdsApiId = pApiId_
-    , _cdsName = pName_
-    , _cdsType = pType_
-    }
-
+createDataSource pApiId_ pName_ pType_
+  = CreateDataSource'{_cdsServiceRoleARN = Nothing,
+                      _cdsRelationalDatabaseConfig = Nothing,
+                      _cdsDynamodbConfig = Nothing,
+                      _cdsHttpConfig = Nothing, _cdsLambdaConfig = Nothing,
+                      _cdsDescription = Nothing,
+                      _cdsElasticsearchConfig = Nothing,
+                      _cdsApiId = pApiId_, _cdsName = pName_,
+                      _cdsType = pType_}
 
 -- | The AWS IAM service role ARN for the data source. The system assumes this role when accessing the data source.
 cdsServiceRoleARN :: Lens' CreateDataSource (Maybe Text)
@@ -198,13 +195,13 @@ instance ToQuery CreateDataSource where
         toQuery = const mempty
 
 -- | /See:/ 'createDataSourceResponse' smart constructor.
-data CreateDataSourceResponse =
-  CreateDataSourceResponse'
-    { _cdsrsDataSource     :: !(Maybe DataSource)
-    , _cdsrsResponseStatus :: !Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data CreateDataSourceResponse = CreateDataSourceResponse'{_cdsrsDataSource
+                                                          ::
+                                                          !(Maybe DataSource),
+                                                          _cdsrsResponseStatus
+                                                          :: !Int}
+                                  deriving (Eq, Read, Show, Data, Typeable,
+                                            Generic)
 
 -- | Creates a value of 'CreateDataSourceResponse' with the minimum fields required to make a request.
 --
@@ -216,10 +213,10 @@ data CreateDataSourceResponse =
 createDataSourceResponse
     :: Int -- ^ 'cdsrsResponseStatus'
     -> CreateDataSourceResponse
-createDataSourceResponse pResponseStatus_ =
-  CreateDataSourceResponse'
-    {_cdsrsDataSource = Nothing, _cdsrsResponseStatus = pResponseStatus_}
-
+createDataSourceResponse pResponseStatus_
+  = CreateDataSourceResponse'{_cdsrsDataSource =
+                                Nothing,
+                              _cdsrsResponseStatus = pResponseStatus_}
 
 -- | The @DataSource@ object.
 cdsrsDataSource :: Lens' CreateDataSourceResponse (Maybe DataSource)

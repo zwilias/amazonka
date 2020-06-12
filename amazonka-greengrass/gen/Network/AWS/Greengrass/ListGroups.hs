@@ -38,20 +38,16 @@ module Network.AWS.Greengrass.ListGroups
     ) where
 
 import Network.AWS.Greengrass.Types
-import Network.AWS.Greengrass.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 
 -- | /See:/ 'listGroups' smart constructor.
-data ListGroups =
-  ListGroups'
-    { _lgNextToken  :: !(Maybe Text)
-    , _lgMaxResults :: !(Maybe Text)
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data ListGroups = ListGroups'{_lgNextToken ::
+                              !(Maybe Text),
+                              _lgMaxResults :: !(Maybe Text)}
+                    deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'ListGroups' with the minimum fields required to make a request.
 --
@@ -62,8 +58,9 @@ data ListGroups =
 -- * 'lgMaxResults' - The maximum number of results to be returned per request.
 listGroups
     :: ListGroups
-listGroups = ListGroups' {_lgNextToken = Nothing, _lgMaxResults = Nothing}
-
+listGroups
+  = ListGroups'{_lgNextToken = Nothing,
+                _lgMaxResults = Nothing}
 
 -- | The token for the next set of results, or ''null'' if there are no additional results.
 lgNextToken :: Lens' ListGroups (Maybe Text)
@@ -104,14 +101,11 @@ instance ToQuery ListGroups where
                "MaxResults" =: _lgMaxResults]
 
 -- | /See:/ 'listGroupsResponse' smart constructor.
-data ListGroupsResponse =
-  ListGroupsResponse'
-    { _lgrsGroups         :: !(Maybe [GroupInformation])
-    , _lgrsNextToken      :: !(Maybe Text)
-    , _lgrsResponseStatus :: !Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data ListGroupsResponse = ListGroupsResponse'{_lgrsGroups
+                                              :: !(Maybe [GroupInformation]),
+                                              _lgrsNextToken :: !(Maybe Text),
+                                              _lgrsResponseStatus :: !Int}
+                            deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'ListGroupsResponse' with the minimum fields required to make a request.
 --
@@ -125,13 +119,10 @@ data ListGroupsResponse =
 listGroupsResponse
     :: Int -- ^ 'lgrsResponseStatus'
     -> ListGroupsResponse
-listGroupsResponse pResponseStatus_ =
-  ListGroupsResponse'
-    { _lgrsGroups = Nothing
-    , _lgrsNextToken = Nothing
-    , _lgrsResponseStatus = pResponseStatus_
-    }
-
+listGroupsResponse pResponseStatus_
+  = ListGroupsResponse'{_lgrsGroups = Nothing,
+                        _lgrsNextToken = Nothing,
+                        _lgrsResponseStatus = pResponseStatus_}
 
 -- | Information about a group.
 lgrsGroups :: Lens' ListGroupsResponse [GroupInformation]

@@ -23,9 +23,9 @@
 --
 --     * Gets the list of the created artifacts while migration is taking place.
 --
---     * Shows the artifacts created by the migration tool that was associated by the @AssociateCreatedArtifact@ API.
+--     * Shows the artifacts created by the migration tool that was associated by the @AssociateCreatedArtifact@ API. 
 --
---     * Lists created artifacts in a paginated interface.
+--     * Lists created artifacts in a paginated interface. 
 --
 --
 --
@@ -51,21 +51,20 @@ module Network.AWS.MigrationHub.ListCreatedArtifacts
 
 import Network.AWS.Lens
 import Network.AWS.MigrationHub.Types
-import Network.AWS.MigrationHub.Types.Product
 import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 
 -- | /See:/ 'listCreatedArtifacts' smart constructor.
-data ListCreatedArtifacts =
-  ListCreatedArtifacts'
-    { _lcaNextToken            :: !(Maybe Text)
-    , _lcaMaxResults           :: !(Maybe Nat)
-    , _lcaProgressUpdateStream :: !Text
-    , _lcaMigrationTaskName    :: !Text
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data ListCreatedArtifacts = ListCreatedArtifacts'{_lcaNextToken
+                                                  :: !(Maybe Text),
+                                                  _lcaMaxResults ::
+                                                  !(Maybe Nat),
+                                                  _lcaProgressUpdateStream ::
+                                                  !Text,
+                                                  _lcaMigrationTaskName ::
+                                                  !Text}
+                              deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'ListCreatedArtifacts' with the minimum fields required to make a request.
 --
@@ -75,21 +74,19 @@ data ListCreatedArtifacts =
 --
 -- * 'lcaMaxResults' - Maximum number of results to be returned per page.
 --
--- * 'lcaProgressUpdateStream' - The name of the ProgressUpdateStream.
+-- * 'lcaProgressUpdateStream' - The name of the ProgressUpdateStream. 
 --
 -- * 'lcaMigrationTaskName' - Unique identifier that references the migration task.
 listCreatedArtifacts
     :: Text -- ^ 'lcaProgressUpdateStream'
     -> Text -- ^ 'lcaMigrationTaskName'
     -> ListCreatedArtifacts
-listCreatedArtifacts pProgressUpdateStream_ pMigrationTaskName_ =
-  ListCreatedArtifacts'
-    { _lcaNextToken = Nothing
-    , _lcaMaxResults = Nothing
-    , _lcaProgressUpdateStream = pProgressUpdateStream_
-    , _lcaMigrationTaskName = pMigrationTaskName_
-    }
-
+listCreatedArtifacts pProgressUpdateStream_
+  pMigrationTaskName_
+  = ListCreatedArtifacts'{_lcaNextToken = Nothing,
+                          _lcaMaxResults = Nothing,
+                          _lcaProgressUpdateStream = pProgressUpdateStream_,
+                          _lcaMigrationTaskName = pMigrationTaskName_}
 
 -- | If a @NextToken@ was returned by a previous call, there are more results available. To retrieve the next page of results, make the call again using the returned token in @NextToken@ .
 lcaNextToken :: Lens' ListCreatedArtifacts (Maybe Text)
@@ -99,7 +96,7 @@ lcaNextToken = lens _lcaNextToken (\ s a -> s{_lcaNextToken = a})
 lcaMaxResults :: Lens' ListCreatedArtifacts (Maybe Natural)
 lcaMaxResults = lens _lcaMaxResults (\ s a -> s{_lcaMaxResults = a}) . mapping _Nat
 
--- | The name of the ProgressUpdateStream.
+-- | The name of the ProgressUpdateStream. 
 lcaProgressUpdateStream :: Lens' ListCreatedArtifacts Text
 lcaProgressUpdateStream = lens _lcaProgressUpdateStream (\ s a -> s{_lcaProgressUpdateStream = a})
 
@@ -150,14 +147,17 @@ instance ToQuery ListCreatedArtifacts where
         toQuery = const mempty
 
 -- | /See:/ 'listCreatedArtifactsResponse' smart constructor.
-data ListCreatedArtifactsResponse =
-  ListCreatedArtifactsResponse'
-    { _lcarsNextToken           :: !(Maybe Text)
-    , _lcarsCreatedArtifactList :: !(Maybe [CreatedArtifact])
-    , _lcarsResponseStatus      :: !Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data ListCreatedArtifactsResponse = ListCreatedArtifactsResponse'{_lcarsNextToken
+                                                                  ::
+                                                                  !(Maybe Text),
+                                                                  _lcarsCreatedArtifactList
+                                                                  ::
+                                                                  !(Maybe
+                                                                      [CreatedArtifact]),
+                                                                  _lcarsResponseStatus
+                                                                  :: !Int}
+                                      deriving (Eq, Read, Show, Data, Typeable,
+                                                Generic)
 
 -- | Creates a value of 'ListCreatedArtifactsResponse' with the minimum fields required to make a request.
 --
@@ -171,13 +171,11 @@ data ListCreatedArtifactsResponse =
 listCreatedArtifactsResponse
     :: Int -- ^ 'lcarsResponseStatus'
     -> ListCreatedArtifactsResponse
-listCreatedArtifactsResponse pResponseStatus_ =
-  ListCreatedArtifactsResponse'
-    { _lcarsNextToken = Nothing
-    , _lcarsCreatedArtifactList = Nothing
-    , _lcarsResponseStatus = pResponseStatus_
-    }
-
+listCreatedArtifactsResponse pResponseStatus_
+  = ListCreatedArtifactsResponse'{_lcarsNextToken =
+                                    Nothing,
+                                  _lcarsCreatedArtifactList = Nothing,
+                                  _lcarsResponseStatus = pResponseStatus_}
 
 -- | If there are more created artifacts than the max result, return the next token to be passed to the next call as a bookmark of where to start from.
 lcarsNextToken :: Lens' ListCreatedArtifactsResponse (Maybe Text)

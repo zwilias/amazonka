@@ -41,20 +41,16 @@ module Network.AWS.ELBv2.SetSecurityGroups
     ) where
 
 import Network.AWS.ELBv2.Types
-import Network.AWS.ELBv2.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 
 -- | /See:/ 'setSecurityGroups' smart constructor.
-data SetSecurityGroups =
-  SetSecurityGroups'
-    { _ssgLoadBalancerARN :: !Text
-    , _ssgSecurityGroups  :: ![Text]
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data SetSecurityGroups = SetSecurityGroups'{_ssgLoadBalancerARN
+                                            :: !Text,
+                                            _ssgSecurityGroups :: ![Text]}
+                           deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'SetSecurityGroups' with the minimum fields required to make a request.
 --
@@ -66,10 +62,10 @@ data SetSecurityGroups =
 setSecurityGroups
     :: Text -- ^ 'ssgLoadBalancerARN'
     -> SetSecurityGroups
-setSecurityGroups pLoadBalancerARN_ =
-  SetSecurityGroups'
-    {_ssgLoadBalancerARN = pLoadBalancerARN_, _ssgSecurityGroups = mempty}
-
+setSecurityGroups pLoadBalancerARN_
+  = SetSecurityGroups'{_ssgLoadBalancerARN =
+                         pLoadBalancerARN_,
+                       _ssgSecurityGroups = mempty}
 
 -- | The Amazon Resource Name (ARN) of the load balancer.
 ssgLoadBalancerARN :: Lens' SetSecurityGroups Text
@@ -110,13 +106,12 @@ instance ToQuery SetSecurityGroups where
                  toQueryList "member" _ssgSecurityGroups]
 
 -- | /See:/ 'setSecurityGroupsResponse' smart constructor.
-data SetSecurityGroupsResponse =
-  SetSecurityGroupsResponse'
-    { _ssgrsSecurityGroupIds :: !(Maybe [Text])
-    , _ssgrsResponseStatus   :: !Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data SetSecurityGroupsResponse = SetSecurityGroupsResponse'{_ssgrsSecurityGroupIds
+                                                            :: !(Maybe [Text]),
+                                                            _ssgrsResponseStatus
+                                                            :: !Int}
+                                   deriving (Eq, Read, Show, Data, Typeable,
+                                             Generic)
 
 -- | Creates a value of 'SetSecurityGroupsResponse' with the minimum fields required to make a request.
 --
@@ -128,10 +123,10 @@ data SetSecurityGroupsResponse =
 setSecurityGroupsResponse
     :: Int -- ^ 'ssgrsResponseStatus'
     -> SetSecurityGroupsResponse
-setSecurityGroupsResponse pResponseStatus_ =
-  SetSecurityGroupsResponse'
-    {_ssgrsSecurityGroupIds = Nothing, _ssgrsResponseStatus = pResponseStatus_}
-
+setSecurityGroupsResponse pResponseStatus_
+  = SetSecurityGroupsResponse'{_ssgrsSecurityGroupIds =
+                                 Nothing,
+                               _ssgrsResponseStatus = pResponseStatus_}
 
 -- | The IDs of the security groups associated with the load balancer.
 ssgrsSecurityGroupIds :: Lens' SetSecurityGroupsResponse [Text]

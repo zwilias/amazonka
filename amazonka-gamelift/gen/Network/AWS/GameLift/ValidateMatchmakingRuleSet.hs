@@ -23,19 +23,19 @@
 --
 -- Operations related to match configurations and rule sets include:
 --
---     * 'CreateMatchmakingConfiguration'
+--     * 'CreateMatchmakingConfiguration' 
 --
---     * 'DescribeMatchmakingConfigurations'
+--     * 'DescribeMatchmakingConfigurations' 
 --
---     * 'UpdateMatchmakingConfiguration'
+--     * 'UpdateMatchmakingConfiguration' 
 --
---     * 'DeleteMatchmakingConfiguration'
+--     * 'DeleteMatchmakingConfiguration' 
 --
---     * 'CreateMatchmakingRuleSet'
+--     * 'CreateMatchmakingRuleSet' 
 --
---     * 'DescribeMatchmakingRuleSets'
+--     * 'DescribeMatchmakingRuleSets' 
 --
---     * 'ValidateMatchmakingRuleSet'
+--     * 'ValidateMatchmakingRuleSet' 
 --
 --
 --
@@ -56,7 +56,6 @@ module Network.AWS.GameLift.ValidateMatchmakingRuleSet
     ) where
 
 import Network.AWS.GameLift.Types
-import Network.AWS.GameLift.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.Request
@@ -67,12 +66,10 @@ import Network.AWS.Response
 --
 --
 -- /See:/ 'validateMatchmakingRuleSet' smart constructor.
-newtype ValidateMatchmakingRuleSet =
-  ValidateMatchmakingRuleSet'
-    { _vmrsRuleSetBody :: Text
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+newtype ValidateMatchmakingRuleSet = ValidateMatchmakingRuleSet'{_vmrsRuleSetBody
+                                                                 :: Text}
+                                       deriving (Eq, Read, Show, Data, Typeable,
+                                                 Generic)
 
 -- | Creates a value of 'ValidateMatchmakingRuleSet' with the minimum fields required to make a request.
 --
@@ -82,9 +79,9 @@ newtype ValidateMatchmakingRuleSet =
 validateMatchmakingRuleSet
     :: Text -- ^ 'vmrsRuleSetBody'
     -> ValidateMatchmakingRuleSet
-validateMatchmakingRuleSet pRuleSetBody_ =
-  ValidateMatchmakingRuleSet' {_vmrsRuleSetBody = pRuleSetBody_}
-
+validateMatchmakingRuleSet pRuleSetBody_
+  = ValidateMatchmakingRuleSet'{_vmrsRuleSetBody =
+                                  pRuleSetBody_}
 
 -- | Collection of matchmaking rules to validate, formatted as a JSON string.
 vmrsRuleSetBody :: Lens' ValidateMatchmakingRuleSet Text
@@ -131,13 +128,15 @@ instance ToQuery ValidateMatchmakingRuleSet where
 --
 --
 -- /See:/ 'validateMatchmakingRuleSetResponse' smart constructor.
-data ValidateMatchmakingRuleSetResponse =
-  ValidateMatchmakingRuleSetResponse'
-    { _vmrsrsValid          :: !(Maybe Bool)
-    , _vmrsrsResponseStatus :: !Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data ValidateMatchmakingRuleSetResponse = ValidateMatchmakingRuleSetResponse'{_vmrsrsValid
+                                                                              ::
+                                                                              !(Maybe
+                                                                                  Bool),
+                                                                              _vmrsrsResponseStatus
+                                                                              ::
+                                                                              !Int}
+                                            deriving (Eq, Read, Show, Data,
+                                                      Typeable, Generic)
 
 -- | Creates a value of 'ValidateMatchmakingRuleSetResponse' with the minimum fields required to make a request.
 --
@@ -149,10 +148,11 @@ data ValidateMatchmakingRuleSetResponse =
 validateMatchmakingRuleSetResponse
     :: Int -- ^ 'vmrsrsResponseStatus'
     -> ValidateMatchmakingRuleSetResponse
-validateMatchmakingRuleSetResponse pResponseStatus_ =
-  ValidateMatchmakingRuleSetResponse'
-    {_vmrsrsValid = Nothing, _vmrsrsResponseStatus = pResponseStatus_}
-
+validateMatchmakingRuleSetResponse pResponseStatus_
+  = ValidateMatchmakingRuleSetResponse'{_vmrsrsValid =
+                                          Nothing,
+                                        _vmrsrsResponseStatus =
+                                          pResponseStatus_}
 
 -- | Response indicating whether or not the rule set is valid.
 vmrsrsValid :: Lens' ValidateMatchmakingRuleSetResponse (Maybe Bool)

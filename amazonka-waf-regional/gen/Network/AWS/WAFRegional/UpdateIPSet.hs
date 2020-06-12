@@ -18,14 +18,14 @@
 -- Stability   : auto-generated
 -- Portability : non-portable (GHC extensions)
 --
--- Inserts or deletes 'IPSetDescriptor' objects in an @IPSet@ . For each @IPSetDescriptor@ object, you specify the following values:
+-- Inserts or deletes 'IPSetDescriptor' objects in an @IPSet@ . For each @IPSetDescriptor@ object, you specify the following values: 
 --
 --
 --     * Whether to insert or delete the object from the array. If you want to change an @IPSetDescriptor@ object, you delete the existing object and add a new one.
 --
---     * The IP address version, @IPv4@ or @IPv6@ .
+--     * The IP address version, @IPv4@ or @IPv6@ . 
 --
---     * The IP address in CIDR notation, for example, @192.0.2.0/24@ (for the range of IP addresses from @192.0.2.0@ to @192.0.2.255@ ) or @192.0.2.44/32@ (for the individual IP address @192.0.2.44@ ).
+--     * The IP address in CIDR notation, for example, @192.0.2.0/24@ (for the range of IP addresses from @192.0.2.0@ to @192.0.2.255@ ) or @192.0.2.44/32@ (for the individual IP address @192.0.2.44@ ). 
 --
 --
 --
@@ -43,7 +43,7 @@
 --
 --
 --
--- You use an @IPSet@ to specify which web requests you want to allow or block based on the IP addresses that the requests originated from. For example, if you're receiving a lot of requests from one or a small number of IP addresses and you want to block the requests, you can create an @IPSet@ that specifies those IP addresses, and then configure AWS WAF to block the requests.
+-- You use an @IPSet@ to specify which web requests you want to allow or block based on the IP addresses that the requests originated from. For example, if you're receiving a lot of requests from one or a small number of IP addresses and you want to block the requests, you can create an @IPSet@ that specifies those IP addresses, and then configure AWS WAF to block the requests. 
 --
 -- To create and configure an @IPSet@ , perform the following steps:
 --
@@ -82,17 +82,12 @@ import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 import Network.AWS.WAFRegional.Types
-import Network.AWS.WAFRegional.Types.Product
 
 -- | /See:/ 'updateIPSet' smart constructor.
-data UpdateIPSet =
-  UpdateIPSet'
-    { _uisIPSetId     :: !Text
-    , _uisChangeToken :: !Text
-    , _uisUpdates     :: !(List1 IPSetUpdate)
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data UpdateIPSet = UpdateIPSet'{_uisIPSetId :: !Text,
+                                _uisChangeToken :: !Text,
+                                _uisUpdates :: !(List1 IPSetUpdate)}
+                     deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'UpdateIPSet' with the minimum fields required to make a request.
 --
@@ -102,19 +97,16 @@ data UpdateIPSet =
 --
 -- * 'uisChangeToken' - The value returned by the most recent call to 'GetChangeToken' .
 --
--- * 'uisUpdates' - An array of @IPSetUpdate@ objects that you want to insert into or delete from an 'IPSet' . For more information, see the applicable data types:     * 'IPSetUpdate' : Contains @Action@ and @IPSetDescriptor@      * 'IPSetDescriptor' : Contains @Type@ and @Value@
+-- * 'uisUpdates' - An array of @IPSetUpdate@ objects that you want to insert into or delete from an 'IPSet' . For more information, see the applicable data types:     * 'IPSetUpdate' : Contains @Action@ and @IPSetDescriptor@      * 'IPSetDescriptor' : Contains @Type@ and @Value@ 
 updateIPSet
     :: Text -- ^ 'uisIPSetId'
     -> Text -- ^ 'uisChangeToken'
     -> NonEmpty IPSetUpdate -- ^ 'uisUpdates'
     -> UpdateIPSet
-updateIPSet pIPSetId_ pChangeToken_ pUpdates_ =
-  UpdateIPSet'
-    { _uisIPSetId = pIPSetId_
-    , _uisChangeToken = pChangeToken_
-    , _uisUpdates = _List1 # pUpdates_
-    }
-
+updateIPSet pIPSetId_ pChangeToken_ pUpdates_
+  = UpdateIPSet'{_uisIPSetId = pIPSetId_,
+                 _uisChangeToken = pChangeToken_,
+                 _uisUpdates = _List1 # pUpdates_}
 
 -- | The @IPSetId@ of the 'IPSet' that you want to update. @IPSetId@ is returned by 'CreateIPSet' and by 'ListIPSets' .
 uisIPSetId :: Lens' UpdateIPSet Text
@@ -124,7 +116,7 @@ uisIPSetId = lens _uisIPSetId (\ s a -> s{_uisIPSetId = a})
 uisChangeToken :: Lens' UpdateIPSet Text
 uisChangeToken = lens _uisChangeToken (\ s a -> s{_uisChangeToken = a})
 
--- | An array of @IPSetUpdate@ objects that you want to insert into or delete from an 'IPSet' . For more information, see the applicable data types:     * 'IPSetUpdate' : Contains @Action@ and @IPSetDescriptor@      * 'IPSetDescriptor' : Contains @Type@ and @Value@
+-- | An array of @IPSetUpdate@ objects that you want to insert into or delete from an 'IPSet' . For more information, see the applicable data types:     * 'IPSetUpdate' : Contains @Action@ and @IPSetDescriptor@      * 'IPSetDescriptor' : Contains @Type@ and @Value@ 
 uisUpdates :: Lens' UpdateIPSet (NonEmpty IPSetUpdate)
 uisUpdates = lens _uisUpdates (\ s a -> s{_uisUpdates = a}) . _List1
 
@@ -166,13 +158,10 @@ instance ToQuery UpdateIPSet where
         toQuery = const mempty
 
 -- | /See:/ 'updateIPSetResponse' smart constructor.
-data UpdateIPSetResponse =
-  UpdateIPSetResponse'
-    { _uisrsChangeToken    :: !(Maybe Text)
-    , _uisrsResponseStatus :: !Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data UpdateIPSetResponse = UpdateIPSetResponse'{_uisrsChangeToken
+                                                :: !(Maybe Text),
+                                                _uisrsResponseStatus :: !Int}
+                             deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'UpdateIPSetResponse' with the minimum fields required to make a request.
 --
@@ -184,10 +173,9 @@ data UpdateIPSetResponse =
 updateIPSetResponse
     :: Int -- ^ 'uisrsResponseStatus'
     -> UpdateIPSetResponse
-updateIPSetResponse pResponseStatus_ =
-  UpdateIPSetResponse'
-    {_uisrsChangeToken = Nothing, _uisrsResponseStatus = pResponseStatus_}
-
+updateIPSetResponse pResponseStatus_
+  = UpdateIPSetResponse'{_uisrsChangeToken = Nothing,
+                         _uisrsResponseStatus = pResponseStatus_}
 
 -- | The @ChangeToken@ that you used to submit the @UpdateIPSet@ request. You can also use this value to query the status of the request. For more information, see 'GetChangeTokenStatus' .
 uisrsChangeToken :: Lens' UpdateIPSetResponse (Maybe Text)

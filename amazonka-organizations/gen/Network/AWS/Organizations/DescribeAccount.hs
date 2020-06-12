@@ -41,18 +41,14 @@ module Network.AWS.Organizations.DescribeAccount
 
 import Network.AWS.Lens
 import Network.AWS.Organizations.Types
-import Network.AWS.Organizations.Types.Product
 import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 
 -- | /See:/ 'describeAccount' smart constructor.
-newtype DescribeAccount =
-  DescribeAccount'
-    { _daAccountId :: Text
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+newtype DescribeAccount = DescribeAccount'{_daAccountId
+                                           :: Text}
+                            deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'DescribeAccount' with the minimum fields required to make a request.
 --
@@ -62,8 +58,8 @@ newtype DescribeAccount =
 describeAccount
     :: Text -- ^ 'daAccountId'
     -> DescribeAccount
-describeAccount pAccountId_ = DescribeAccount' {_daAccountId = pAccountId_}
-
+describeAccount pAccountId_
+  = DescribeAccount'{_daAccountId = pAccountId_}
 
 -- | The unique identifier (ID) of the AWS account that you want information about. You can get the ID from the 'ListAccounts' or 'ListAccountsForParent' operations. The <http://wikipedia.org/wiki/regex regex pattern> for an account ID string requires exactly 12 digits.
 daAccountId :: Lens' DescribeAccount Text
@@ -104,13 +100,11 @@ instance ToQuery DescribeAccount where
         toQuery = const mempty
 
 -- | /See:/ 'describeAccountResponse' smart constructor.
-data DescribeAccountResponse =
-  DescribeAccountResponse'
-    { _darsAccount        :: !(Maybe Account)
-    , _darsResponseStatus :: !Int
-    }
-  deriving (Eq, Show, Data, Typeable, Generic)
-
+data DescribeAccountResponse = DescribeAccountResponse'{_darsAccount
+                                                        :: !(Maybe Account),
+                                                        _darsResponseStatus ::
+                                                        !Int}
+                                 deriving (Eq, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'DescribeAccountResponse' with the minimum fields required to make a request.
 --
@@ -122,10 +116,9 @@ data DescribeAccountResponse =
 describeAccountResponse
     :: Int -- ^ 'darsResponseStatus'
     -> DescribeAccountResponse
-describeAccountResponse pResponseStatus_ =
-  DescribeAccountResponse'
-    {_darsAccount = Nothing, _darsResponseStatus = pResponseStatus_}
-
+describeAccountResponse pResponseStatus_
+  = DescribeAccountResponse'{_darsAccount = Nothing,
+                             _darsResponseStatus = pResponseStatus_}
 
 -- | A structure that contains information about the requested account.
 darsAccount :: Lens' DescribeAccountResponse (Maybe Account)

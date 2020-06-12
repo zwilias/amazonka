@@ -53,40 +53,36 @@ module Network.AWS.AppStream.CreateFleet
     ) where
 
 import Network.AWS.AppStream.Types
-import Network.AWS.AppStream.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 
 -- | /See:/ 'createFleet' smart constructor.
-data CreateFleet =
-  CreateFleet'
-    { _cfDomainJoinInfo                 :: !(Maybe DomainJoinInfo)
-    , _cfIAMRoleARN                     :: !(Maybe Text)
-    , _cfDisconnectTimeoutInSeconds     :: !(Maybe Int)
-    , _cfMaxUserDurationInSeconds       :: !(Maybe Int)
-    , _cfIdleDisconnectTimeoutInSeconds :: !(Maybe Int)
-    , _cfFleetType                      :: !(Maybe FleetType)
-    , _cfVPCConfig                      :: !(Maybe VPCConfig)
-    , _cfImageARN                       :: !(Maybe Text)
-    , _cfDisplayName                    :: !(Maybe Text)
-    , _cfEnableDefaultInternetAccess    :: !(Maybe Bool)
-    , _cfImageName                      :: !(Maybe Text)
-    , _cfDescription                    :: !(Maybe Text)
-    , _cfTags                           :: !(Maybe (Map Text Text))
-    , _cfName                           :: !Text
-    , _cfInstanceType                   :: !Text
-    , _cfComputeCapacity                :: !ComputeCapacity
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data CreateFleet = CreateFleet'{_cfDomainJoinInfo ::
+                                !(Maybe DomainJoinInfo),
+                                _cfIAMRoleARN :: !(Maybe Text),
+                                _cfDisconnectTimeoutInSeconds :: !(Maybe Int),
+                                _cfMaxUserDurationInSeconds :: !(Maybe Int),
+                                _cfIdleDisconnectTimeoutInSeconds ::
+                                !(Maybe Int),
+                                _cfFleetType :: !(Maybe FleetType),
+                                _cfVPCConfig :: !(Maybe VPCConfig),
+                                _cfImageARN :: !(Maybe Text),
+                                _cfDisplayName :: !(Maybe Text),
+                                _cfEnableDefaultInternetAccess :: !(Maybe Bool),
+                                _cfImageName :: !(Maybe Text),
+                                _cfDescription :: !(Maybe Text),
+                                _cfTags :: !(Maybe (Map Text Text)),
+                                _cfName :: !Text, _cfInstanceType :: !Text,
+                                _cfComputeCapacity :: !ComputeCapacity}
+                     deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'CreateFleet' with the minimum fields required to make a request.
 --
 -- Use one of the following lenses to modify other fields as desired:
 --
--- * 'cfDomainJoinInfo' - The name of the directory and organizational unit (OU) to use to join the fleet to a Microsoft Active Directory domain.
+-- * 'cfDomainJoinInfo' - The name of the directory and organizational unit (OU) to use to join the fleet to a Microsoft Active Directory domain. 
 --
 -- * 'cfIAMRoleARN' - The Amazon Resource Name (ARN) of the IAM role to apply to the fleet. To assume a role, a fleet instance calls the AWS Security Token Service (STS) @AssumeRole@ API operation and passes the ARN of the role to use. The operation creates a new session with temporary credentials. AppStream 2.0 retrieves the temporary credentials and creates the __AppStream_Machine_Role__ credential profile on the instance. For more information, see <https://docs.aws.amazon.com/appstream2/latest/developerguide/using-iam-roles-to-grant-permissions-to-applications-scripts-streaming-instances.html Using an IAM Role to Grant Permissions to Applications and Scripts Running on AppStream 2.0 Streaming Instances> in the /Amazon AppStream 2.0 Administration Guide/ .
 --
@@ -122,28 +118,21 @@ createFleet
     -> Text -- ^ 'cfInstanceType'
     -> ComputeCapacity -- ^ 'cfComputeCapacity'
     -> CreateFleet
-createFleet pName_ pInstanceType_ pComputeCapacity_ =
-  CreateFleet'
-    { _cfDomainJoinInfo = Nothing
-    , _cfIAMRoleARN = Nothing
-    , _cfDisconnectTimeoutInSeconds = Nothing
-    , _cfMaxUserDurationInSeconds = Nothing
-    , _cfIdleDisconnectTimeoutInSeconds = Nothing
-    , _cfFleetType = Nothing
-    , _cfVPCConfig = Nothing
-    , _cfImageARN = Nothing
-    , _cfDisplayName = Nothing
-    , _cfEnableDefaultInternetAccess = Nothing
-    , _cfImageName = Nothing
-    , _cfDescription = Nothing
-    , _cfTags = Nothing
-    , _cfName = pName_
-    , _cfInstanceType = pInstanceType_
-    , _cfComputeCapacity = pComputeCapacity_
-    }
+createFleet pName_ pInstanceType_ pComputeCapacity_
+  = CreateFleet'{_cfDomainJoinInfo = Nothing,
+                 _cfIAMRoleARN = Nothing,
+                 _cfDisconnectTimeoutInSeconds = Nothing,
+                 _cfMaxUserDurationInSeconds = Nothing,
+                 _cfIdleDisconnectTimeoutInSeconds = Nothing,
+                 _cfFleetType = Nothing, _cfVPCConfig = Nothing,
+                 _cfImageARN = Nothing, _cfDisplayName = Nothing,
+                 _cfEnableDefaultInternetAccess = Nothing,
+                 _cfImageName = Nothing, _cfDescription = Nothing,
+                 _cfTags = Nothing, _cfName = pName_,
+                 _cfInstanceType = pInstanceType_,
+                 _cfComputeCapacity = pComputeCapacity_}
 
-
--- | The name of the directory and organizational unit (OU) to use to join the fleet to a Microsoft Active Directory domain.
+-- | The name of the directory and organizational unit (OU) to use to join the fleet to a Microsoft Active Directory domain. 
 cfDomainJoinInfo :: Lens' CreateFleet (Maybe DomainJoinInfo)
 cfDomainJoinInfo = lens _cfDomainJoinInfo (\ s a -> s{_cfDomainJoinInfo = a})
 
@@ -261,13 +250,10 @@ instance ToQuery CreateFleet where
         toQuery = const mempty
 
 -- | /See:/ 'createFleetResponse' smart constructor.
-data CreateFleetResponse =
-  CreateFleetResponse'
-    { _cfrsFleet          :: !(Maybe Fleet)
-    , _cfrsResponseStatus :: !Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data CreateFleetResponse = CreateFleetResponse'{_cfrsFleet
+                                                :: !(Maybe Fleet),
+                                                _cfrsResponseStatus :: !Int}
+                             deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'CreateFleetResponse' with the minimum fields required to make a request.
 --
@@ -279,10 +265,9 @@ data CreateFleetResponse =
 createFleetResponse
     :: Int -- ^ 'cfrsResponseStatus'
     -> CreateFleetResponse
-createFleetResponse pResponseStatus_ =
-  CreateFleetResponse'
-    {_cfrsFleet = Nothing, _cfrsResponseStatus = pResponseStatus_}
-
+createFleetResponse pResponseStatus_
+  = CreateFleetResponse'{_cfrsFleet = Nothing,
+                         _cfrsResponseStatus = pResponseStatus_}
 
 -- | Information about the fleet.
 cfrsFleet :: Lens' CreateFleetResponse (Maybe Fleet)

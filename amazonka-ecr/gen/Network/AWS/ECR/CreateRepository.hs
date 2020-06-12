@@ -38,19 +38,15 @@ module Network.AWS.ECR.CreateRepository
     ) where
 
 import Network.AWS.ECR.Types
-import Network.AWS.ECR.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 
 -- | /See:/ 'createRepository' smart constructor.
-newtype CreateRepository =
-  CreateRepository'
-    { _crRepositoryName :: Text
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+newtype CreateRepository = CreateRepository'{_crRepositoryName
+                                             :: Text}
+                             deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'CreateRepository' with the minimum fields required to make a request.
 --
@@ -60,9 +56,9 @@ newtype CreateRepository =
 createRepository
     :: Text -- ^ 'crRepositoryName'
     -> CreateRepository
-createRepository pRepositoryName_ =
-  CreateRepository' {_crRepositoryName = pRepositoryName_}
-
+createRepository pRepositoryName_
+  = CreateRepository'{_crRepositoryName =
+                        pRepositoryName_}
 
 -- | The name to use for the repository. The repository name may be specified on its own (such as @nginx-web-app@ ) or it can be prepended with a namespace to group the repository into a category (such as @project-a/nginx-web-app@ ).
 crRepositoryName :: Lens' CreateRepository Text
@@ -104,13 +100,13 @@ instance ToQuery CreateRepository where
         toQuery = const mempty
 
 -- | /See:/ 'createRepositoryResponse' smart constructor.
-data CreateRepositoryResponse =
-  CreateRepositoryResponse'
-    { _crrsRepository     :: !(Maybe Repository)
-    , _crrsResponseStatus :: !Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data CreateRepositoryResponse = CreateRepositoryResponse'{_crrsRepository
+                                                          ::
+                                                          !(Maybe Repository),
+                                                          _crrsResponseStatus ::
+                                                          !Int}
+                                  deriving (Eq, Read, Show, Data, Typeable,
+                                            Generic)
 
 -- | Creates a value of 'CreateRepositoryResponse' with the minimum fields required to make a request.
 --
@@ -122,10 +118,10 @@ data CreateRepositoryResponse =
 createRepositoryResponse
     :: Int -- ^ 'crrsResponseStatus'
     -> CreateRepositoryResponse
-createRepositoryResponse pResponseStatus_ =
-  CreateRepositoryResponse'
-    {_crrsRepository = Nothing, _crrsResponseStatus = pResponseStatus_}
-
+createRepositoryResponse pResponseStatus_
+  = CreateRepositoryResponse'{_crrsRepository =
+                                Nothing,
+                              _crrsResponseStatus = pResponseStatus_}
 
 -- | The repository that was created.
 crrsRepository :: Lens' CreateRepositoryResponse (Maybe Repository)

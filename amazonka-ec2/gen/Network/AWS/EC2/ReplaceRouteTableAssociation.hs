@@ -43,21 +43,21 @@ module Network.AWS.EC2.ReplaceRouteTableAssociation
     ) where
 
 import Network.AWS.EC2.Types
-import Network.AWS.EC2.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 
 -- | /See:/ 'replaceRouteTableAssociation' smart constructor.
-data ReplaceRouteTableAssociation =
-  ReplaceRouteTableAssociation'
-    { _rrtaDryRun        :: !(Maybe Bool)
-    , _rrtaAssociationId :: !Text
-    , _rrtaRouteTableId  :: !Text
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data ReplaceRouteTableAssociation = ReplaceRouteTableAssociation'{_rrtaDryRun
+                                                                  ::
+                                                                  !(Maybe Bool),
+                                                                  _rrtaAssociationId
+                                                                  :: !Text,
+                                                                  _rrtaRouteTableId
+                                                                  :: !Text}
+                                      deriving (Eq, Read, Show, Data, Typeable,
+                                                Generic)
 
 -- | Creates a value of 'ReplaceRouteTableAssociation' with the minimum fields required to make a request.
 --
@@ -72,13 +72,12 @@ replaceRouteTableAssociation
     :: Text -- ^ 'rrtaAssociationId'
     -> Text -- ^ 'rrtaRouteTableId'
     -> ReplaceRouteTableAssociation
-replaceRouteTableAssociation pAssociationId_ pRouteTableId_ =
-  ReplaceRouteTableAssociation'
-    { _rrtaDryRun = Nothing
-    , _rrtaAssociationId = pAssociationId_
-    , _rrtaRouteTableId = pRouteTableId_
-    }
-
+replaceRouteTableAssociation pAssociationId_
+  pRouteTableId_
+  = ReplaceRouteTableAssociation'{_rrtaDryRun =
+                                    Nothing,
+                                  _rrtaAssociationId = pAssociationId_,
+                                  _rrtaRouteTableId = pRouteTableId_}
 
 -- | Checks whether you have the required permissions for the action, without actually making the request, and provides an error response. If you have the required permissions, the error response is @DryRunOperation@ . Otherwise, it is @UnauthorizedOperation@ .
 rrtaDryRun :: Lens' ReplaceRouteTableAssociation (Maybe Bool)
@@ -126,14 +125,19 @@ instance ToQuery ReplaceRouteTableAssociation where
                "RouteTableId" =: _rrtaRouteTableId]
 
 -- | /See:/ 'replaceRouteTableAssociationResponse' smart constructor.
-data ReplaceRouteTableAssociationResponse =
-  ReplaceRouteTableAssociationResponse'
-    { _rrtarsNewAssociationId :: !(Maybe Text)
-    , _rrtarsAssociationState :: !(Maybe RouteTableAssociationState)
-    , _rrtarsResponseStatus   :: !Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data ReplaceRouteTableAssociationResponse = ReplaceRouteTableAssociationResponse'{_rrtarsNewAssociationId
+                                                                                  ::
+                                                                                  !(Maybe
+                                                                                      Text),
+                                                                                  _rrtarsAssociationState
+                                                                                  ::
+                                                                                  !(Maybe
+                                                                                      RouteTableAssociationState),
+                                                                                  _rrtarsResponseStatus
+                                                                                  ::
+                                                                                  !Int}
+                                              deriving (Eq, Read, Show, Data,
+                                                        Typeable, Generic)
 
 -- | Creates a value of 'ReplaceRouteTableAssociationResponse' with the minimum fields required to make a request.
 --
@@ -147,13 +151,12 @@ data ReplaceRouteTableAssociationResponse =
 replaceRouteTableAssociationResponse
     :: Int -- ^ 'rrtarsResponseStatus'
     -> ReplaceRouteTableAssociationResponse
-replaceRouteTableAssociationResponse pResponseStatus_ =
-  ReplaceRouteTableAssociationResponse'
-    { _rrtarsNewAssociationId = Nothing
-    , _rrtarsAssociationState = Nothing
-    , _rrtarsResponseStatus = pResponseStatus_
-    }
-
+replaceRouteTableAssociationResponse pResponseStatus_
+  = ReplaceRouteTableAssociationResponse'{_rrtarsNewAssociationId
+                                            = Nothing,
+                                          _rrtarsAssociationState = Nothing,
+                                          _rrtarsResponseStatus =
+                                            pResponseStatus_}
 
 -- | The ID of the new association.
 rrtarsNewAssociationId :: Lens' ReplaceRouteTableAssociationResponse (Maybe Text)

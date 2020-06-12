@@ -40,22 +40,18 @@ module Network.AWS.Glue.UpdateTable
     ) where
 
 import Network.AWS.Glue.Types
-import Network.AWS.Glue.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 
 -- | /See:/ 'updateTable' smart constructor.
-data UpdateTable =
-  UpdateTable'
-    { _utSkipArchive  :: !(Maybe Bool)
-    , _utCatalogId    :: !(Maybe Text)
-    , _utDatabaseName :: !Text
-    , _utTableInput   :: !TableInput
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data UpdateTable = UpdateTable'{_utSkipArchive ::
+                                !(Maybe Bool),
+                                _utCatalogId :: !(Maybe Text),
+                                _utDatabaseName :: !Text,
+                                _utTableInput :: !TableInput}
+                     deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'UpdateTable' with the minimum fields required to make a request.
 --
@@ -72,14 +68,11 @@ updateTable
     :: Text -- ^ 'utDatabaseName'
     -> TableInput -- ^ 'utTableInput'
     -> UpdateTable
-updateTable pDatabaseName_ pTableInput_ =
-  UpdateTable'
-    { _utSkipArchive = Nothing
-    , _utCatalogId = Nothing
-    , _utDatabaseName = pDatabaseName_
-    , _utTableInput = pTableInput_
-    }
-
+updateTable pDatabaseName_ pTableInput_
+  = UpdateTable'{_utSkipArchive = Nothing,
+                 _utCatalogId = Nothing,
+                 _utDatabaseName = pDatabaseName_,
+                 _utTableInput = pTableInput_}
 
 -- | By default, @UpdateTable@ always creates an archived version of the table before updating it. If @skipArchive@ is set to true, however, @UpdateTable@ does not create the archived version.
 utSkipArchive :: Lens' UpdateTable (Maybe Bool)
@@ -134,12 +127,10 @@ instance ToQuery UpdateTable where
         toQuery = const mempty
 
 -- | /See:/ 'updateTableResponse' smart constructor.
-newtype UpdateTableResponse =
-  UpdateTableResponse'
-    { _utrsResponseStatus :: Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+newtype UpdateTableResponse = UpdateTableResponse'{_utrsResponseStatus
+                                                   :: Int}
+                                deriving (Eq, Read, Show, Data, Typeable,
+                                          Generic)
 
 -- | Creates a value of 'UpdateTableResponse' with the minimum fields required to make a request.
 --
@@ -149,9 +140,9 @@ newtype UpdateTableResponse =
 updateTableResponse
     :: Int -- ^ 'utrsResponseStatus'
     -> UpdateTableResponse
-updateTableResponse pResponseStatus_ =
-  UpdateTableResponse' {_utrsResponseStatus = pResponseStatus_}
-
+updateTableResponse pResponseStatus_
+  = UpdateTableResponse'{_utrsResponseStatus =
+                           pResponseStatus_}
 
 -- | -- | The response status code.
 utrsResponseStatus :: Lens' UpdateTableResponse Int

@@ -65,40 +65,41 @@ import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 import Network.AWS.Route53Domains.Types
-import Network.AWS.Route53Domains.Types.Product
 
 -- | The RegisterDomain request includes the following elements.
 --
 --
 --
 -- /See:/ 'registerDomain' smart constructor.
-data RegisterDomain =
-  RegisterDomain'
-    { _rPrivacyProtectTechContact       :: !(Maybe Bool)
-    , _rPrivacyProtectRegistrantContact :: !(Maybe Bool)
-    , _rAutoRenew                       :: !(Maybe Bool)
-    , _rPrivacyProtectAdminContact      :: !(Maybe Bool)
-    , _rIdNLangCode                     :: !(Maybe Text)
-    , _rDomainName                      :: !Text
-    , _rDurationInYears                 :: !Nat
-    , _rAdminContact                    :: !(Sensitive ContactDetail)
-    , _rRegistrantContact               :: !(Sensitive ContactDetail)
-    , _rTechContact                     :: !(Sensitive ContactDetail)
-    }
-  deriving (Eq, Show, Data, Typeable, Generic)
-
+data RegisterDomain = RegisterDomain'{_rPrivacyProtectTechContact
+                                      :: !(Maybe Bool),
+                                      _rPrivacyProtectRegistrantContact ::
+                                      !(Maybe Bool),
+                                      _rAutoRenew :: !(Maybe Bool),
+                                      _rPrivacyProtectAdminContact ::
+                                      !(Maybe Bool),
+                                      _rIdNLangCode :: !(Maybe Text),
+                                      _rDomainName :: !Text,
+                                      _rDurationInYears :: !Nat,
+                                      _rAdminContact ::
+                                      !(Sensitive ContactDetail),
+                                      _rRegistrantContact ::
+                                      !(Sensitive ContactDetail),
+                                      _rTechContact ::
+                                      !(Sensitive ContactDetail)}
+                        deriving (Eq, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'RegisterDomain' with the minimum fields required to make a request.
 --
 -- Use one of the following lenses to modify other fields as desired:
 --
--- * 'rPrivacyProtectTechContact' - Whether you want to conceal contact information from WHOIS queries. If you specify @true@ , WHOIS ("who is") queries return contact information either for Amazon Registrar (for .com, .net, and .org domains) or for our registrar associate, Gandi (for all other TLDs). If you specify @false@ , WHOIS queries return the information that you entered for the technical contact. Default: @true@
+-- * 'rPrivacyProtectTechContact' - Whether you want to conceal contact information from WHOIS queries. If you specify @true@ , WHOIS ("who is") queries return contact information either for Amazon Registrar (for .com, .net, and .org domains) or for our registrar associate, Gandi (for all other TLDs). If you specify @false@ , WHOIS queries return the information that you entered for the technical contact. Default: @true@ 
 --
--- * 'rPrivacyProtectRegistrantContact' - Whether you want to conceal contact information from WHOIS queries. If you specify @true@ , WHOIS ("who is") queries return contact information either for Amazon Registrar (for .com, .net, and .org domains) or for our registrar associate, Gandi (for all other TLDs). If you specify @false@ , WHOIS queries return the information that you entered for the registrant contact (the domain owner). Default: @true@
+-- * 'rPrivacyProtectRegistrantContact' - Whether you want to conceal contact information from WHOIS queries. If you specify @true@ , WHOIS ("who is") queries return contact information either for Amazon Registrar (for .com, .net, and .org domains) or for our registrar associate, Gandi (for all other TLDs). If you specify @false@ , WHOIS queries return the information that you entered for the registrant contact (the domain owner). Default: @true@ 
 --
--- * 'rAutoRenew' - Indicates whether the domain will be automatically renewed (@true@ ) or not (@false@ ). Autorenewal only takes effect after the account is charged. Default: @true@
+-- * 'rAutoRenew' - Indicates whether the domain will be automatically renewed (@true@ ) or not (@false@ ). Autorenewal only takes effect after the account is charged. Default: @true@ 
 --
--- * 'rPrivacyProtectAdminContact' - Whether you want to conceal contact information from WHOIS queries. If you specify @true@ , WHOIS ("who is") queries return contact information either for Amazon Registrar (for .com, .net, and .org domains) or for our registrar associate, Gandi (for all other TLDs). If you specify @false@ , WHOIS queries return the information that you entered for the admin contact. Default: @true@
+-- * 'rPrivacyProtectAdminContact' - Whether you want to conceal contact information from WHOIS queries. If you specify @true@ , WHOIS ("who is") queries return contact information either for Amazon Registrar (for .com, .net, and .org domains) or for our registrar associate, Gandi (for all other TLDs). If you specify @false@ , WHOIS queries return the information that you entered for the admin contact. Default: @true@ 
 --
 -- * 'rIdNLangCode' - Reserved for future use.
 --
@@ -118,34 +119,33 @@ registerDomain
     -> ContactDetail -- ^ 'rRegistrantContact'
     -> ContactDetail -- ^ 'rTechContact'
     -> RegisterDomain
-registerDomain pDomainName_ pDurationInYears_ pAdminContact_ pRegistrantContact_ pTechContact_ =
-  RegisterDomain'
-    { _rPrivacyProtectTechContact = Nothing
-    , _rPrivacyProtectRegistrantContact = Nothing
-    , _rAutoRenew = Nothing
-    , _rPrivacyProtectAdminContact = Nothing
-    , _rIdNLangCode = Nothing
-    , _rDomainName = pDomainName_
-    , _rDurationInYears = _Nat # pDurationInYears_
-    , _rAdminContact = _Sensitive # pAdminContact_
-    , _rRegistrantContact = _Sensitive # pRegistrantContact_
-    , _rTechContact = _Sensitive # pTechContact_
-    }
+registerDomain pDomainName_ pDurationInYears_
+  pAdminContact_ pRegistrantContact_ pTechContact_
+  = RegisterDomain'{_rPrivacyProtectTechContact =
+                      Nothing,
+                    _rPrivacyProtectRegistrantContact = Nothing,
+                    _rAutoRenew = Nothing,
+                    _rPrivacyProtectAdminContact = Nothing,
+                    _rIdNLangCode = Nothing, _rDomainName = pDomainName_,
+                    _rDurationInYears = _Nat # pDurationInYears_,
+                    _rAdminContact = _Sensitive # pAdminContact_,
+                    _rRegistrantContact =
+                      _Sensitive # pRegistrantContact_,
+                    _rTechContact = _Sensitive # pTechContact_}
 
-
--- | Whether you want to conceal contact information from WHOIS queries. If you specify @true@ , WHOIS ("who is") queries return contact information either for Amazon Registrar (for .com, .net, and .org domains) or for our registrar associate, Gandi (for all other TLDs). If you specify @false@ , WHOIS queries return the information that you entered for the technical contact. Default: @true@
+-- | Whether you want to conceal contact information from WHOIS queries. If you specify @true@ , WHOIS ("who is") queries return contact information either for Amazon Registrar (for .com, .net, and .org domains) or for our registrar associate, Gandi (for all other TLDs). If you specify @false@ , WHOIS queries return the information that you entered for the technical contact. Default: @true@ 
 rPrivacyProtectTechContact :: Lens' RegisterDomain (Maybe Bool)
 rPrivacyProtectTechContact = lens _rPrivacyProtectTechContact (\ s a -> s{_rPrivacyProtectTechContact = a})
 
--- | Whether you want to conceal contact information from WHOIS queries. If you specify @true@ , WHOIS ("who is") queries return contact information either for Amazon Registrar (for .com, .net, and .org domains) or for our registrar associate, Gandi (for all other TLDs). If you specify @false@ , WHOIS queries return the information that you entered for the registrant contact (the domain owner). Default: @true@
+-- | Whether you want to conceal contact information from WHOIS queries. If you specify @true@ , WHOIS ("who is") queries return contact information either for Amazon Registrar (for .com, .net, and .org domains) or for our registrar associate, Gandi (for all other TLDs). If you specify @false@ , WHOIS queries return the information that you entered for the registrant contact (the domain owner). Default: @true@ 
 rPrivacyProtectRegistrantContact :: Lens' RegisterDomain (Maybe Bool)
 rPrivacyProtectRegistrantContact = lens _rPrivacyProtectRegistrantContact (\ s a -> s{_rPrivacyProtectRegistrantContact = a})
 
--- | Indicates whether the domain will be automatically renewed (@true@ ) or not (@false@ ). Autorenewal only takes effect after the account is charged. Default: @true@
+-- | Indicates whether the domain will be automatically renewed (@true@ ) or not (@false@ ). Autorenewal only takes effect after the account is charged. Default: @true@ 
 rAutoRenew :: Lens' RegisterDomain (Maybe Bool)
 rAutoRenew = lens _rAutoRenew (\ s a -> s{_rAutoRenew = a})
 
--- | Whether you want to conceal contact information from WHOIS queries. If you specify @true@ , WHOIS ("who is") queries return contact information either for Amazon Registrar (for .com, .net, and .org domains) or for our registrar associate, Gandi (for all other TLDs). If you specify @false@ , WHOIS queries return the information that you entered for the admin contact. Default: @true@
+-- | Whether you want to conceal contact information from WHOIS queries. If you specify @true@ , WHOIS ("who is") queries return contact information either for Amazon Registrar (for .com, .net, and .org domains) or for our registrar associate, Gandi (for all other TLDs). If you specify @false@ , WHOIS queries return the information that you entered for the admin contact. Default: @true@ 
 rPrivacyProtectAdminContact :: Lens' RegisterDomain (Maybe Bool)
 rPrivacyProtectAdminContact = lens _rPrivacyProtectAdminContact (\ s a -> s{_rPrivacyProtectAdminContact = a})
 
@@ -225,13 +225,11 @@ instance ToQuery RegisterDomain where
 --
 --
 -- /See:/ 'registerDomainResponse' smart constructor.
-data RegisterDomainResponse =
-  RegisterDomainResponse'
-    { _rdrsResponseStatus :: !Int
-    , _rdrsOperationId    :: !Text
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data RegisterDomainResponse = RegisterDomainResponse'{_rdrsResponseStatus
+                                                      :: !Int,
+                                                      _rdrsOperationId :: !Text}
+                                deriving (Eq, Read, Show, Data, Typeable,
+                                          Generic)
 
 -- | Creates a value of 'RegisterDomainResponse' with the minimum fields required to make a request.
 --
@@ -244,10 +242,10 @@ registerDomainResponse
     :: Int -- ^ 'rdrsResponseStatus'
     -> Text -- ^ 'rdrsOperationId'
     -> RegisterDomainResponse
-registerDomainResponse pResponseStatus_ pOperationId_ =
-  RegisterDomainResponse'
-    {_rdrsResponseStatus = pResponseStatus_, _rdrsOperationId = pOperationId_}
-
+registerDomainResponse pResponseStatus_ pOperationId_
+  = RegisterDomainResponse'{_rdrsResponseStatus =
+                              pResponseStatus_,
+                            _rdrsOperationId = pOperationId_}
 
 -- | -- | The response status code.
 rdrsResponseStatus :: Lens' RegisterDomainResponse Int

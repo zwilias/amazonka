@@ -18,7 +18,7 @@
 -- Stability   : auto-generated
 -- Portability : non-portable (GHC extensions)
 --
--- Disassociates a CIDR block from a VPC. To disassociate the CIDR block, you must specify its association ID. You can get the association ID by using 'DescribeVpcs' . You must detach or delete all gateways and resources that are associated with the CIDR block before you can disassociate it.
+-- Disassociates a CIDR block from a VPC. To disassociate the CIDR block, you must specify its association ID. You can get the association ID by using 'DescribeVpcs' . You must detach or delete all gateways and resources that are associated with the CIDR block before you can disassociate it. 
 --
 --
 -- You cannot disassociate the CIDR block with which you originally created the VPC (the primary CIDR block).
@@ -42,19 +42,16 @@ module Network.AWS.EC2.DisassociateVPCCidrBlock
     ) where
 
 import Network.AWS.EC2.Types
-import Network.AWS.EC2.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 
 -- | /See:/ 'disassociateVPCCidrBlock' smart constructor.
-newtype DisassociateVPCCidrBlock =
-  DisassociateVPCCidrBlock'
-    { _dvcbAssociationId :: Text
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+newtype DisassociateVPCCidrBlock = DisassociateVPCCidrBlock'{_dvcbAssociationId
+                                                             :: Text}
+                                     deriving (Eq, Read, Show, Data, Typeable,
+                                               Generic)
 
 -- | Creates a value of 'DisassociateVPCCidrBlock' with the minimum fields required to make a request.
 --
@@ -64,9 +61,9 @@ newtype DisassociateVPCCidrBlock =
 disassociateVPCCidrBlock
     :: Text -- ^ 'dvcbAssociationId'
     -> DisassociateVPCCidrBlock
-disassociateVPCCidrBlock pAssociationId_ =
-  DisassociateVPCCidrBlock' {_dvcbAssociationId = pAssociationId_}
-
+disassociateVPCCidrBlock pAssociationId_
+  = DisassociateVPCCidrBlock'{_dvcbAssociationId =
+                                pAssociationId_}
 
 -- | The association ID for the CIDR block.
 dvcbAssociationId :: Lens' DisassociateVPCCidrBlock Text
@@ -103,15 +100,23 @@ instance ToQuery DisassociateVPCCidrBlock where
                "AssociationId" =: _dvcbAssociationId]
 
 -- | /See:/ 'disassociateVPCCidrBlockResponse' smart constructor.
-data DisassociateVPCCidrBlockResponse =
-  DisassociateVPCCidrBlockResponse'
-    { _dvcbrsVPCId                    :: !(Maybe Text)
-    , _dvcbrsCidrBlockAssociation     :: !(Maybe VPCCidrBlockAssociation)
-    , _dvcbrsIPv6CidrBlockAssociation :: !(Maybe VPCIPv6CidrBlockAssociation)
-    , _dvcbrsResponseStatus           :: !Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data DisassociateVPCCidrBlockResponse = DisassociateVPCCidrBlockResponse'{_dvcbrsVPCId
+                                                                          ::
+                                                                          !(Maybe
+                                                                              Text),
+                                                                          _dvcbrsCidrBlockAssociation
+                                                                          ::
+                                                                          !(Maybe
+                                                                              VPCCidrBlockAssociation),
+                                                                          _dvcbrsIPv6CidrBlockAssociation
+                                                                          ::
+                                                                          !(Maybe
+                                                                              VPCIPv6CidrBlockAssociation),
+                                                                          _dvcbrsResponseStatus
+                                                                          ::
+                                                                          !Int}
+                                          deriving (Eq, Read, Show, Data,
+                                                    Typeable, Generic)
 
 -- | Creates a value of 'DisassociateVPCCidrBlockResponse' with the minimum fields required to make a request.
 --
@@ -127,14 +132,12 @@ data DisassociateVPCCidrBlockResponse =
 disassociateVPCCidrBlockResponse
     :: Int -- ^ 'dvcbrsResponseStatus'
     -> DisassociateVPCCidrBlockResponse
-disassociateVPCCidrBlockResponse pResponseStatus_ =
-  DisassociateVPCCidrBlockResponse'
-    { _dvcbrsVPCId = Nothing
-    , _dvcbrsCidrBlockAssociation = Nothing
-    , _dvcbrsIPv6CidrBlockAssociation = Nothing
-    , _dvcbrsResponseStatus = pResponseStatus_
-    }
-
+disassociateVPCCidrBlockResponse pResponseStatus_
+  = DisassociateVPCCidrBlockResponse'{_dvcbrsVPCId =
+                                        Nothing,
+                                      _dvcbrsCidrBlockAssociation = Nothing,
+                                      _dvcbrsIPv6CidrBlockAssociation = Nothing,
+                                      _dvcbrsResponseStatus = pResponseStatus_}
 
 -- | The ID of the VPC.
 dvcbrsVPCId :: Lens' DisassociateVPCCidrBlockResponse (Maybe Text)

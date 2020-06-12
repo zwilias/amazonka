@@ -40,7 +40,6 @@ module Network.AWS.CodePipeline.GetJobDetails
     ) where
 
 import Network.AWS.CodePipeline.Types
-import Network.AWS.CodePipeline.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.Request
@@ -51,12 +50,9 @@ import Network.AWS.Response
 --
 --
 -- /See:/ 'getJobDetails' smart constructor.
-newtype GetJobDetails =
-  GetJobDetails'
-    { _gjdJobId :: Text
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+newtype GetJobDetails = GetJobDetails'{_gjdJobId ::
+                                       Text}
+                          deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'GetJobDetails' with the minimum fields required to make a request.
 --
@@ -66,8 +62,8 @@ newtype GetJobDetails =
 getJobDetails
     :: Text -- ^ 'gjdJobId'
     -> GetJobDetails
-getJobDetails pJobId_ = GetJobDetails' {_gjdJobId = pJobId_}
-
+getJobDetails pJobId_
+  = GetJobDetails'{_gjdJobId = pJobId_}
 
 -- | The unique system-generated ID for the job.
 gjdJobId :: Lens' GetJobDetails Text
@@ -111,13 +107,11 @@ instance ToQuery GetJobDetails where
 --
 --
 -- /See:/ 'getJobDetailsResponse' smart constructor.
-data GetJobDetailsResponse =
-  GetJobDetailsResponse'
-    { _gjdrsJobDetails     :: !(Maybe JobDetails)
-    , _gjdrsResponseStatus :: !Int
-    }
-  deriving (Eq, Show, Data, Typeable, Generic)
-
+data GetJobDetailsResponse = GetJobDetailsResponse'{_gjdrsJobDetails
+                                                    :: !(Maybe JobDetails),
+                                                    _gjdrsResponseStatus ::
+                                                    !Int}
+                               deriving (Eq, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'GetJobDetailsResponse' with the minimum fields required to make a request.
 --
@@ -129,10 +123,9 @@ data GetJobDetailsResponse =
 getJobDetailsResponse
     :: Int -- ^ 'gjdrsResponseStatus'
     -> GetJobDetailsResponse
-getJobDetailsResponse pResponseStatus_ =
-  GetJobDetailsResponse'
-    {_gjdrsJobDetails = Nothing, _gjdrsResponseStatus = pResponseStatus_}
-
+getJobDetailsResponse pResponseStatus_
+  = GetJobDetailsResponse'{_gjdrsJobDetails = Nothing,
+                           _gjdrsResponseStatus = pResponseStatus_}
 
 -- | The details of the job.
 gjdrsJobDetails :: Lens' GetJobDetailsResponse (Maybe JobDetails)

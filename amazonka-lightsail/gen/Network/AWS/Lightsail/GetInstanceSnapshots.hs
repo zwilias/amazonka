@@ -42,19 +42,16 @@ module Network.AWS.Lightsail.GetInstanceSnapshots
 
 import Network.AWS.Lens
 import Network.AWS.Lightsail.Types
-import Network.AWS.Lightsail.Types.Product
 import Network.AWS.Pager
 import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 
 -- | /See:/ 'getInstanceSnapshots' smart constructor.
-newtype GetInstanceSnapshots =
-  GetInstanceSnapshots'
-    { _gisPageToken :: Maybe Text
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+newtype GetInstanceSnapshots = GetInstanceSnapshots'{_gisPageToken
+                                                     :: Maybe Text}
+                                 deriving (Eq, Read, Show, Data, Typeable,
+                                           Generic)
 
 -- | Creates a value of 'GetInstanceSnapshots' with the minimum fields required to make a request.
 --
@@ -63,8 +60,8 @@ newtype GetInstanceSnapshots =
 -- * 'gisPageToken' - A token used for advancing to the next page of results from your get instance snapshots request.
 getInstanceSnapshots
     :: GetInstanceSnapshots
-getInstanceSnapshots = GetInstanceSnapshots' {_gisPageToken = Nothing}
-
+getInstanceSnapshots
+  = GetInstanceSnapshots'{_gisPageToken = Nothing}
 
 -- | A token used for advancing to the next page of results from your get instance snapshots request.
 gisPageToken :: Lens' GetInstanceSnapshots (Maybe Text)
@@ -115,14 +112,17 @@ instance ToQuery GetInstanceSnapshots where
         toQuery = const mempty
 
 -- | /See:/ 'getInstanceSnapshotsResponse' smart constructor.
-data GetInstanceSnapshotsResponse =
-  GetInstanceSnapshotsResponse'
-    { _gissrsNextPageToken     :: !(Maybe Text)
-    , _gissrsInstanceSnapshots :: !(Maybe [InstanceSnapshot])
-    , _gissrsResponseStatus    :: !Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data GetInstanceSnapshotsResponse = GetInstanceSnapshotsResponse'{_gissrsNextPageToken
+                                                                  ::
+                                                                  !(Maybe Text),
+                                                                  _gissrsInstanceSnapshots
+                                                                  ::
+                                                                  !(Maybe
+                                                                      [InstanceSnapshot]),
+                                                                  _gissrsResponseStatus
+                                                                  :: !Int}
+                                      deriving (Eq, Read, Show, Data, Typeable,
+                                                Generic)
 
 -- | Creates a value of 'GetInstanceSnapshotsResponse' with the minimum fields required to make a request.
 --
@@ -136,13 +136,11 @@ data GetInstanceSnapshotsResponse =
 getInstanceSnapshotsResponse
     :: Int -- ^ 'gissrsResponseStatus'
     -> GetInstanceSnapshotsResponse
-getInstanceSnapshotsResponse pResponseStatus_ =
-  GetInstanceSnapshotsResponse'
-    { _gissrsNextPageToken = Nothing
-    , _gissrsInstanceSnapshots = Nothing
-    , _gissrsResponseStatus = pResponseStatus_
-    }
-
+getInstanceSnapshotsResponse pResponseStatus_
+  = GetInstanceSnapshotsResponse'{_gissrsNextPageToken
+                                    = Nothing,
+                                  _gissrsInstanceSnapshots = Nothing,
+                                  _gissrsResponseStatus = pResponseStatus_}
 
 -- | A token used for advancing to the next page of results from your get instance snapshots request.
 gissrsNextPageToken :: Lens' GetInstanceSnapshotsResponse (Maybe Text)

@@ -54,20 +54,17 @@ import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 import Network.AWS.SES.Types
-import Network.AWS.SES.Types.Product
 
 -- | Represents a request to enable or disable Amazon SES Easy DKIM signing for an identity. For more information about setting up Easy DKIM, see the <http://docs.aws.amazon.com/ses/latest/DeveloperGuide/easy-dkim.html Amazon SES Developer Guide> .
 --
 --
 --
 -- /See:/ 'setIdentityDkimEnabled' smart constructor.
-data SetIdentityDkimEnabled =
-  SetIdentityDkimEnabled'
-    { _sideIdentity    :: !Text
-    , _sideDkimEnabled :: !Bool
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data SetIdentityDkimEnabled = SetIdentityDkimEnabled'{_sideIdentity
+                                                      :: !Text,
+                                                      _sideDkimEnabled :: !Bool}
+                                deriving (Eq, Read, Show, Data, Typeable,
+                                          Generic)
 
 -- | Creates a value of 'SetIdentityDkimEnabled' with the minimum fields required to make a request.
 --
@@ -75,21 +72,20 @@ data SetIdentityDkimEnabled =
 --
 -- * 'sideIdentity' - The identity for which DKIM signing should be enabled or disabled.
 --
--- * 'sideDkimEnabled' - Sets whether DKIM signing is enabled for an identity. Set to @true@ to enable DKIM signing for this identity; @false@ to disable it.
+-- * 'sideDkimEnabled' - Sets whether DKIM signing is enabled for an identity. Set to @true@ to enable DKIM signing for this identity; @false@ to disable it. 
 setIdentityDkimEnabled
     :: Text -- ^ 'sideIdentity'
     -> Bool -- ^ 'sideDkimEnabled'
     -> SetIdentityDkimEnabled
-setIdentityDkimEnabled pIdentity_ pDkimEnabled_ =
-  SetIdentityDkimEnabled'
-    {_sideIdentity = pIdentity_, _sideDkimEnabled = pDkimEnabled_}
-
+setIdentityDkimEnabled pIdentity_ pDkimEnabled_
+  = SetIdentityDkimEnabled'{_sideIdentity = pIdentity_,
+                            _sideDkimEnabled = pDkimEnabled_}
 
 -- | The identity for which DKIM signing should be enabled or disabled.
 sideIdentity :: Lens' SetIdentityDkimEnabled Text
 sideIdentity = lens _sideIdentity (\ s a -> s{_sideIdentity = a})
 
--- | Sets whether DKIM signing is enabled for an identity. Set to @true@ to enable DKIM signing for this identity; @false@ to disable it.
+-- | Sets whether DKIM signing is enabled for an identity. Set to @true@ to enable DKIM signing for this identity; @false@ to disable it. 
 sideDkimEnabled :: Lens' SetIdentityDkimEnabled Bool
 sideDkimEnabled = lens _sideDkimEnabled (\ s a -> s{_sideDkimEnabled = a})
 
@@ -127,12 +123,10 @@ instance ToQuery SetIdentityDkimEnabled where
 --
 --
 -- /See:/ 'setIdentityDkimEnabledResponse' smart constructor.
-newtype SetIdentityDkimEnabledResponse =
-  SetIdentityDkimEnabledResponse'
-    { _sidersResponseStatus :: Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+newtype SetIdentityDkimEnabledResponse = SetIdentityDkimEnabledResponse'{_sidersResponseStatus
+                                                                         :: Int}
+                                           deriving (Eq, Read, Show, Data,
+                                                     Typeable, Generic)
 
 -- | Creates a value of 'SetIdentityDkimEnabledResponse' with the minimum fields required to make a request.
 --
@@ -142,9 +136,9 @@ newtype SetIdentityDkimEnabledResponse =
 setIdentityDkimEnabledResponse
     :: Int -- ^ 'sidersResponseStatus'
     -> SetIdentityDkimEnabledResponse
-setIdentityDkimEnabledResponse pResponseStatus_ =
-  SetIdentityDkimEnabledResponse' {_sidersResponseStatus = pResponseStatus_}
-
+setIdentityDkimEnabledResponse pResponseStatus_
+  = SetIdentityDkimEnabledResponse'{_sidersResponseStatus
+                                      = pResponseStatus_}
 
 -- | -- | The response status code.
 sidersResponseStatus :: Lens' SetIdentityDkimEnabledResponse Int

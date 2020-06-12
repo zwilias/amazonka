@@ -44,7 +44,6 @@ module Network.AWS.CloudDirectory.LookupPolicy
     ) where
 
 import Network.AWS.CloudDirectory.Types
-import Network.AWS.CloudDirectory.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Pager
 import Network.AWS.Prelude
@@ -52,15 +51,12 @@ import Network.AWS.Request
 import Network.AWS.Response
 
 -- | /See:/ 'lookupPolicy' smart constructor.
-data LookupPolicy =
-  LookupPolicy'
-    { _lpNextToken       :: !(Maybe Text)
-    , _lpMaxResults      :: !(Maybe Nat)
-    , _lpDirectoryARN    :: !Text
-    , _lpObjectReference :: !ObjectReference
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data LookupPolicy = LookupPolicy'{_lpNextToken ::
+                                  !(Maybe Text),
+                                  _lpMaxResults :: !(Maybe Nat),
+                                  _lpDirectoryARN :: !Text,
+                                  _lpObjectReference :: !ObjectReference}
+                      deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'LookupPolicy' with the minimum fields required to make a request.
 --
@@ -77,14 +73,11 @@ lookupPolicy
     :: Text -- ^ 'lpDirectoryARN'
     -> ObjectReference -- ^ 'lpObjectReference'
     -> LookupPolicy
-lookupPolicy pDirectoryARN_ pObjectReference_ =
-  LookupPolicy'
-    { _lpNextToken = Nothing
-    , _lpMaxResults = Nothing
-    , _lpDirectoryARN = pDirectoryARN_
-    , _lpObjectReference = pObjectReference_
-    }
-
+lookupPolicy pDirectoryARN_ pObjectReference_
+  = LookupPolicy'{_lpNextToken = Nothing,
+                  _lpMaxResults = Nothing,
+                  _lpDirectoryARN = pDirectoryARN_,
+                  _lpObjectReference = pObjectReference_}
 
 -- | The token to request the next page of results.
 lpNextToken :: Lens' LookupPolicy (Maybe Text)
@@ -145,14 +138,12 @@ instance ToQuery LookupPolicy where
         toQuery = const mempty
 
 -- | /See:/ 'lookupPolicyResponse' smart constructor.
-data LookupPolicyResponse =
-  LookupPolicyResponse'
-    { _lprsNextToken        :: !(Maybe Text)
-    , _lprsPolicyToPathList :: !(Maybe [PolicyToPath])
-    , _lprsResponseStatus   :: !Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data LookupPolicyResponse = LookupPolicyResponse'{_lprsNextToken
+                                                  :: !(Maybe Text),
+                                                  _lprsPolicyToPathList ::
+                                                  !(Maybe [PolicyToPath]),
+                                                  _lprsResponseStatus :: !Int}
+                              deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'LookupPolicyResponse' with the minimum fields required to make a request.
 --
@@ -166,13 +157,10 @@ data LookupPolicyResponse =
 lookupPolicyResponse
     :: Int -- ^ 'lprsResponseStatus'
     -> LookupPolicyResponse
-lookupPolicyResponse pResponseStatus_ =
-  LookupPolicyResponse'
-    { _lprsNextToken = Nothing
-    , _lprsPolicyToPathList = Nothing
-    , _lprsResponseStatus = pResponseStatus_
-    }
-
+lookupPolicyResponse pResponseStatus_
+  = LookupPolicyResponse'{_lprsNextToken = Nothing,
+                          _lprsPolicyToPathList = Nothing,
+                          _lprsResponseStatus = pResponseStatus_}
 
 -- | The pagination token.
 lprsNextToken :: Lens' LookupPolicyResponse (Maybe Text)

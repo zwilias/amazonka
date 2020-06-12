@@ -45,17 +45,21 @@ import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 import Network.AWS.WorkDocs.Types
-import Network.AWS.WorkDocs.Types.Product
 
 -- | /See:/ 'describeNotificationSubscriptions' smart constructor.
-data DescribeNotificationSubscriptions =
-  DescribeNotificationSubscriptions'
-    { _dMarker         :: !(Maybe Text)
-    , _dLimit          :: !(Maybe Nat)
-    , _dOrganizationId :: !Text
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data DescribeNotificationSubscriptions = DescribeNotificationSubscriptions'{_dMarker
+                                                                            ::
+                                                                            !(Maybe
+                                                                                Text),
+                                                                            _dLimit
+                                                                            ::
+                                                                            !(Maybe
+                                                                                Nat),
+                                                                            _dOrganizationId
+                                                                            ::
+                                                                            !Text}
+                                           deriving (Eq, Read, Show, Data,
+                                                     Typeable, Generic)
 
 -- | Creates a value of 'DescribeNotificationSubscriptions' with the minimum fields required to make a request.
 --
@@ -69,10 +73,11 @@ data DescribeNotificationSubscriptions =
 describeNotificationSubscriptions
     :: Text -- ^ 'dOrganizationId'
     -> DescribeNotificationSubscriptions
-describeNotificationSubscriptions pOrganizationId_ =
-  DescribeNotificationSubscriptions'
-    {_dMarker = Nothing, _dLimit = Nothing, _dOrganizationId = pOrganizationId_}
-
+describeNotificationSubscriptions pOrganizationId_
+  = DescribeNotificationSubscriptions'{_dMarker =
+                                         Nothing,
+                                       _dLimit = Nothing,
+                                       _dOrganizationId = pOrganizationId_}
 
 -- | The marker for the next set of results. (You received this marker from a previous call.)
 dMarker :: Lens' DescribeNotificationSubscriptions (Maybe Text)
@@ -126,14 +131,20 @@ instance ToQuery DescribeNotificationSubscriptions
           = mconcat ["marker" =: _dMarker, "limit" =: _dLimit]
 
 -- | /See:/ 'describeNotificationSubscriptionsResponse' smart constructor.
-data DescribeNotificationSubscriptionsResponse =
-  DescribeNotificationSubscriptionsResponse'
-    { _dnsrsMarker         :: !(Maybe Text)
-    , _dnsrsSubscriptions  :: !(Maybe [Subscription])
-    , _dnsrsResponseStatus :: !Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data DescribeNotificationSubscriptionsResponse = DescribeNotificationSubscriptionsResponse'{_dnsrsMarker
+                                                                                            ::
+                                                                                            !(Maybe
+                                                                                                Text),
+                                                                                            _dnsrsSubscriptions
+                                                                                            ::
+                                                                                            !(Maybe
+                                                                                                [Subscription]),
+                                                                                            _dnsrsResponseStatus
+                                                                                            ::
+                                                                                            !Int}
+                                                   deriving (Eq, Read, Show,
+                                                             Data, Typeable,
+                                                             Generic)
 
 -- | Creates a value of 'DescribeNotificationSubscriptionsResponse' with the minimum fields required to make a request.
 --
@@ -147,13 +158,13 @@ data DescribeNotificationSubscriptionsResponse =
 describeNotificationSubscriptionsResponse
     :: Int -- ^ 'dnsrsResponseStatus'
     -> DescribeNotificationSubscriptionsResponse
-describeNotificationSubscriptionsResponse pResponseStatus_ =
-  DescribeNotificationSubscriptionsResponse'
-    { _dnsrsMarker = Nothing
-    , _dnsrsSubscriptions = Nothing
-    , _dnsrsResponseStatus = pResponseStatus_
-    }
-
+describeNotificationSubscriptionsResponse
+  pResponseStatus_
+  = DescribeNotificationSubscriptionsResponse'{_dnsrsMarker
+                                                 = Nothing,
+                                               _dnsrsSubscriptions = Nothing,
+                                               _dnsrsResponseStatus =
+                                                 pResponseStatus_}
 
 -- | The marker to use when requesting the next set of results. If there are no additional results, the string is empty.
 dnsrsMarker :: Lens' DescribeNotificationSubscriptionsResponse (Maybe Text)

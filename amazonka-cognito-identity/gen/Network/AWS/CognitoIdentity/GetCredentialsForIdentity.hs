@@ -43,7 +43,6 @@ module Network.AWS.CognitoIdentity.GetCredentialsForIdentity
     ) where
 
 import Network.AWS.CognitoIdentity.Types
-import Network.AWS.CognitoIdentity.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.Request
@@ -54,14 +53,16 @@ import Network.AWS.Response
 --
 --
 -- /See:/ 'getCredentialsForIdentity' smart constructor.
-data GetCredentialsForIdentity =
-  GetCredentialsForIdentity'
-    { _gcfiCustomRoleARN :: !(Maybe Text)
-    , _gcfiLogins        :: !(Maybe (Map Text Text))
-    , _gcfiIdentityId    :: !Text
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data GetCredentialsForIdentity = GetCredentialsForIdentity'{_gcfiCustomRoleARN
+                                                            :: !(Maybe Text),
+                                                            _gcfiLogins ::
+                                                            !(Maybe
+                                                                (Map Text
+                                                                   Text)),
+                                                            _gcfiIdentityId ::
+                                                            !Text}
+                                   deriving (Eq, Read, Show, Data, Typeable,
+                                             Generic)
 
 -- | Creates a value of 'GetCredentialsForIdentity' with the minimum fields required to make a request.
 --
@@ -75,13 +76,11 @@ data GetCredentialsForIdentity =
 getCredentialsForIdentity
     :: Text -- ^ 'gcfiIdentityId'
     -> GetCredentialsForIdentity
-getCredentialsForIdentity pIdentityId_ =
-  GetCredentialsForIdentity'
-    { _gcfiCustomRoleARN = Nothing
-    , _gcfiLogins = Nothing
-    , _gcfiIdentityId = pIdentityId_
-    }
-
+getCredentialsForIdentity pIdentityId_
+  = GetCredentialsForIdentity'{_gcfiCustomRoleARN =
+                                 Nothing,
+                               _gcfiLogins = Nothing,
+                               _gcfiIdentityId = pIdentityId_}
 
 -- | The Amazon Resource Name (ARN) of the role to be assumed when multiple roles were received in the token from the identity provider. For example, a SAML-based identity provider. This parameter is optional for identity providers that do not support role customization.
 gcfiCustomRoleARN :: Lens' GetCredentialsForIdentity (Maybe Text)
@@ -139,14 +138,19 @@ instance ToQuery GetCredentialsForIdentity where
 --
 --
 -- /See:/ 'getCredentialsForIdentityResponse' smart constructor.
-data GetCredentialsForIdentityResponse =
-  GetCredentialsForIdentityResponse'
-    { _gcfirsCredentials    :: !(Maybe Credentials)
-    , _gcfirsIdentityId     :: !(Maybe Text)
-    , _gcfirsResponseStatus :: !Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data GetCredentialsForIdentityResponse = GetCredentialsForIdentityResponse'{_gcfirsCredentials
+                                                                            ::
+                                                                            !(Maybe
+                                                                                Credentials),
+                                                                            _gcfirsIdentityId
+                                                                            ::
+                                                                            !(Maybe
+                                                                                Text),
+                                                                            _gcfirsResponseStatus
+                                                                            ::
+                                                                            !Int}
+                                           deriving (Eq, Read, Show, Data,
+                                                     Typeable, Generic)
 
 -- | Creates a value of 'GetCredentialsForIdentityResponse' with the minimum fields required to make a request.
 --
@@ -160,13 +164,11 @@ data GetCredentialsForIdentityResponse =
 getCredentialsForIdentityResponse
     :: Int -- ^ 'gcfirsResponseStatus'
     -> GetCredentialsForIdentityResponse
-getCredentialsForIdentityResponse pResponseStatus_ =
-  GetCredentialsForIdentityResponse'
-    { _gcfirsCredentials = Nothing
-    , _gcfirsIdentityId = Nothing
-    , _gcfirsResponseStatus = pResponseStatus_
-    }
-
+getCredentialsForIdentityResponse pResponseStatus_
+  = GetCredentialsForIdentityResponse'{_gcfirsCredentials
+                                         = Nothing,
+                                       _gcfirsIdentityId = Nothing,
+                                       _gcfirsResponseStatus = pResponseStatus_}
 
 -- | Credentials for the provided identity ID.
 gcfirsCredentials :: Lens' GetCredentialsForIdentityResponse (Maybe Credentials)

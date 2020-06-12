@@ -41,7 +41,6 @@ module Network.AWS.GuardDuty.ListIPSets
     ) where
 
 import Network.AWS.GuardDuty.Types
-import Network.AWS.GuardDuty.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Pager
 import Network.AWS.Prelude
@@ -49,14 +48,11 @@ import Network.AWS.Request
 import Network.AWS.Response
 
 -- | /See:/ 'listIPSets' smart constructor.
-data ListIPSets =
-  ListIPSets'
-    { _lisNextToken  :: !(Maybe Text)
-    , _lisMaxResults :: !(Maybe Nat)
-    , _lisDetectorId :: !Text
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data ListIPSets = ListIPSets'{_lisNextToken ::
+                              !(Maybe Text),
+                              _lisMaxResults :: !(Maybe Nat),
+                              _lisDetectorId :: !Text}
+                    deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'ListIPSets' with the minimum fields required to make a request.
 --
@@ -70,13 +66,10 @@ data ListIPSets =
 listIPSets
     :: Text -- ^ 'lisDetectorId'
     -> ListIPSets
-listIPSets pDetectorId_ =
-  ListIPSets'
-    { _lisNextToken = Nothing
-    , _lisMaxResults = Nothing
-    , _lisDetectorId = pDetectorId_
-    }
-
+listIPSets pDetectorId_
+  = ListIPSets'{_lisNextToken = Nothing,
+                _lisMaxResults = Nothing,
+                _lisDetectorId = pDetectorId_}
 
 -- | You can use this parameter when paginating results. Set the value of this parameter to null on your first call to the ListIPSet action. For subsequent calls to the action fill nextToken in the request with the value of NextToken from the previous response to continue listing data.
 lisNextToken :: Lens' ListIPSets (Maybe Text)
@@ -130,14 +123,11 @@ instance ToQuery ListIPSets where
                "maxResults" =: _lisMaxResults]
 
 -- | /See:/ 'listIPSetsResponse' smart constructor.
-data ListIPSetsResponse =
-  ListIPSetsResponse'
-    { _lisrsNextToken      :: !(Maybe Text)
-    , _lisrsIPSetIds       :: !(Maybe [Text])
-    , _lisrsResponseStatus :: !Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data ListIPSetsResponse = ListIPSetsResponse'{_lisrsNextToken
+                                              :: !(Maybe Text),
+                                              _lisrsIPSetIds :: !(Maybe [Text]),
+                                              _lisrsResponseStatus :: !Int}
+                            deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'ListIPSetsResponse' with the minimum fields required to make a request.
 --
@@ -151,13 +141,10 @@ data ListIPSetsResponse =
 listIPSetsResponse
     :: Int -- ^ 'lisrsResponseStatus'
     -> ListIPSetsResponse
-listIPSetsResponse pResponseStatus_ =
-  ListIPSetsResponse'
-    { _lisrsNextToken = Nothing
-    , _lisrsIPSetIds = Nothing
-    , _lisrsResponseStatus = pResponseStatus_
-    }
-
+listIPSetsResponse pResponseStatus_
+  = ListIPSetsResponse'{_lisrsNextToken = Nothing,
+                        _lisrsIPSetIds = Nothing,
+                        _lisrsResponseStatus = pResponseStatus_}
 
 -- | Undocumented member.
 lisrsNextToken :: Lens' ListIPSetsResponse (Maybe Text)

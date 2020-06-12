@@ -46,21 +46,17 @@ import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 import Network.AWS.Route53Domains.Types
-import Network.AWS.Route53Domains.Types.Product
 
 -- | A @RenewDomain@ request includes the number of years that you want to renew for and the current expiration year.
 --
 --
 --
 -- /See:/ 'renewDomain' smart constructor.
-data RenewDomain =
-  RenewDomain'
-    { _rdDurationInYears   :: !(Maybe Nat)
-    , _rdDomainName        :: !Text
-    , _rdCurrentExpiryYear :: !Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data RenewDomain = RenewDomain'{_rdDurationInYears ::
+                                !(Maybe Nat),
+                                _rdDomainName :: !Text,
+                                _rdCurrentExpiryYear :: !Int}
+                     deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'RenewDomain' with the minimum fields required to make a request.
 --
@@ -75,13 +71,10 @@ renewDomain
     :: Text -- ^ 'rdDomainName'
     -> Int -- ^ 'rdCurrentExpiryYear'
     -> RenewDomain
-renewDomain pDomainName_ pCurrentExpiryYear_ =
-  RenewDomain'
-    { _rdDurationInYears = Nothing
-    , _rdDomainName = pDomainName_
-    , _rdCurrentExpiryYear = pCurrentExpiryYear_
-    }
-
+renewDomain pDomainName_ pCurrentExpiryYear_
+  = RenewDomain'{_rdDurationInYears = Nothing,
+                 _rdDomainName = pDomainName_,
+                 _rdCurrentExpiryYear = pCurrentExpiryYear_}
 
 -- | The number of years that you want to renew the domain for. The maximum number of years depends on the top-level domain. For the range of valid values for your domain, see <http://docs.aws.amazon.com/Route53/latest/DeveloperGuide/registrar-tld-list.html Domains that You Can Register with Amazon Route 53> in the /Amazon Route 53 Developer Guide/ . Default: 1
 rdDurationInYears :: Lens' RenewDomain (Maybe Natural)
@@ -133,13 +126,10 @@ instance ToQuery RenewDomain where
         toQuery = const mempty
 
 -- | /See:/ 'renewDomainResponse' smart constructor.
-data RenewDomainResponse =
-  RenewDomainResponse'
-    { _rrsResponseStatus :: !Int
-    , _rrsOperationId    :: !Text
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data RenewDomainResponse = RenewDomainResponse'{_rrsResponseStatus
+                                                :: !Int,
+                                                _rrsOperationId :: !Text}
+                             deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'RenewDomainResponse' with the minimum fields required to make a request.
 --
@@ -152,10 +142,10 @@ renewDomainResponse
     :: Int -- ^ 'rrsResponseStatus'
     -> Text -- ^ 'rrsOperationId'
     -> RenewDomainResponse
-renewDomainResponse pResponseStatus_ pOperationId_ =
-  RenewDomainResponse'
-    {_rrsResponseStatus = pResponseStatus_, _rrsOperationId = pOperationId_}
-
+renewDomainResponse pResponseStatus_ pOperationId_
+  = RenewDomainResponse'{_rrsResponseStatus =
+                           pResponseStatus_,
+                         _rrsOperationId = pOperationId_}
 
 -- | -- | The response status code.
 rrsResponseStatus :: Lens' RenewDomainResponse Int

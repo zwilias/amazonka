@@ -43,23 +43,22 @@ module Network.AWS.CloudWatch.PutAnomalyDetector
     ) where
 
 import Network.AWS.CloudWatch.Types
-import Network.AWS.CloudWatch.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 
 -- | /See:/ 'putAnomalyDetector' smart constructor.
-data PutAnomalyDetector =
-  PutAnomalyDetector'
-    { _padConfiguration :: !(Maybe AnomalyDetectorConfiguration)
-    , _padDimensions    :: !(Maybe [Dimension])
-    , _padNamespace     :: !Text
-    , _padMetricName    :: !Text
-    , _padStat          :: !Text
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data PutAnomalyDetector = PutAnomalyDetector'{_padConfiguration
+                                              ::
+                                              !(Maybe
+                                                  AnomalyDetectorConfiguration),
+                                              _padDimensions ::
+                                              !(Maybe [Dimension]),
+                                              _padNamespace :: !Text,
+                                              _padMetricName :: !Text,
+                                              _padStat :: !Text}
+                            deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'PutAnomalyDetector' with the minimum fields required to make a request.
 --
@@ -79,15 +78,11 @@ putAnomalyDetector
     -> Text -- ^ 'padMetricName'
     -> Text -- ^ 'padStat'
     -> PutAnomalyDetector
-putAnomalyDetector pNamespace_ pMetricName_ pStat_ =
-  PutAnomalyDetector'
-    { _padConfiguration = Nothing
-    , _padDimensions = Nothing
-    , _padNamespace = pNamespace_
-    , _padMetricName = pMetricName_
-    , _padStat = pStat_
-    }
-
+putAnomalyDetector pNamespace_ pMetricName_ pStat_
+  = PutAnomalyDetector'{_padConfiguration = Nothing,
+                        _padDimensions = Nothing,
+                        _padNamespace = pNamespace_,
+                        _padMetricName = pMetricName_, _padStat = pStat_}
 
 -- | The configuration specifies details about how the anomaly detection model is to be trained, including time ranges to exclude when training and updating the model. You can specify as many as 10 time ranges. The configuration can also include the time zone to use for the metric. You can in
 padConfiguration :: Lens' PutAnomalyDetector (Maybe AnomalyDetectorConfiguration)
@@ -140,12 +135,10 @@ instance ToQuery PutAnomalyDetector where
                "MetricName" =: _padMetricName, "Stat" =: _padStat]
 
 -- | /See:/ 'putAnomalyDetectorResponse' smart constructor.
-newtype PutAnomalyDetectorResponse =
-  PutAnomalyDetectorResponse'
-    { _padrsResponseStatus :: Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+newtype PutAnomalyDetectorResponse = PutAnomalyDetectorResponse'{_padrsResponseStatus
+                                                                 :: Int}
+                                       deriving (Eq, Read, Show, Data, Typeable,
+                                                 Generic)
 
 -- | Creates a value of 'PutAnomalyDetectorResponse' with the minimum fields required to make a request.
 --
@@ -155,9 +148,9 @@ newtype PutAnomalyDetectorResponse =
 putAnomalyDetectorResponse
     :: Int -- ^ 'padrsResponseStatus'
     -> PutAnomalyDetectorResponse
-putAnomalyDetectorResponse pResponseStatus_ =
-  PutAnomalyDetectorResponse' {_padrsResponseStatus = pResponseStatus_}
-
+putAnomalyDetectorResponse pResponseStatus_
+  = PutAnomalyDetectorResponse'{_padrsResponseStatus =
+                                  pResponseStatus_}
 
 -- | -- | The response status code.
 padrsResponseStatus :: Lens' PutAnomalyDetectorResponse Int

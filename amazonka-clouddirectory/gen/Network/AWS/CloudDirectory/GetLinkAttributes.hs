@@ -41,22 +41,19 @@ module Network.AWS.CloudDirectory.GetLinkAttributes
     ) where
 
 import Network.AWS.CloudDirectory.Types
-import Network.AWS.CloudDirectory.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 
 -- | /See:/ 'getLinkAttributes' smart constructor.
-data GetLinkAttributes =
-  GetLinkAttributes'
-    { _glaConsistencyLevel   :: !(Maybe ConsistencyLevel)
-    , _glaDirectoryARN       :: !Text
-    , _glaTypedLinkSpecifier :: !TypedLinkSpecifier
-    , _glaAttributeNames     :: ![Text]
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data GetLinkAttributes = GetLinkAttributes'{_glaConsistencyLevel
+                                            :: !(Maybe ConsistencyLevel),
+                                            _glaDirectoryARN :: !Text,
+                                            _glaTypedLinkSpecifier ::
+                                            !TypedLinkSpecifier,
+                                            _glaAttributeNames :: ![Text]}
+                           deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'GetLinkAttributes' with the minimum fields required to make a request.
 --
@@ -73,14 +70,11 @@ getLinkAttributes
     :: Text -- ^ 'glaDirectoryARN'
     -> TypedLinkSpecifier -- ^ 'glaTypedLinkSpecifier'
     -> GetLinkAttributes
-getLinkAttributes pDirectoryARN_ pTypedLinkSpecifier_ =
-  GetLinkAttributes'
-    { _glaConsistencyLevel = Nothing
-    , _glaDirectoryARN = pDirectoryARN_
-    , _glaTypedLinkSpecifier = pTypedLinkSpecifier_
-    , _glaAttributeNames = mempty
-    }
-
+getLinkAttributes pDirectoryARN_ pTypedLinkSpecifier_
+  = GetLinkAttributes'{_glaConsistencyLevel = Nothing,
+                       _glaDirectoryARN = pDirectoryARN_,
+                       _glaTypedLinkSpecifier = pTypedLinkSpecifier_,
+                       _glaAttributeNames = mempty}
 
 -- | The consistency level at which to retrieve the attributes on a typed link.
 glaConsistencyLevel :: Lens' GetLinkAttributes (Maybe ConsistencyLevel)
@@ -135,13 +129,14 @@ instance ToQuery GetLinkAttributes where
         toQuery = const mempty
 
 -- | /See:/ 'getLinkAttributesResponse' smart constructor.
-data GetLinkAttributesResponse =
-  GetLinkAttributesResponse'
-    { _glarsAttributes     :: !(Maybe [AttributeKeyAndValue])
-    , _glarsResponseStatus :: !Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data GetLinkAttributesResponse = GetLinkAttributesResponse'{_glarsAttributes
+                                                            ::
+                                                            !(Maybe
+                                                                [AttributeKeyAndValue]),
+                                                            _glarsResponseStatus
+                                                            :: !Int}
+                                   deriving (Eq, Read, Show, Data, Typeable,
+                                             Generic)
 
 -- | Creates a value of 'GetLinkAttributesResponse' with the minimum fields required to make a request.
 --
@@ -153,10 +148,10 @@ data GetLinkAttributesResponse =
 getLinkAttributesResponse
     :: Int -- ^ 'glarsResponseStatus'
     -> GetLinkAttributesResponse
-getLinkAttributesResponse pResponseStatus_ =
-  GetLinkAttributesResponse'
-    {_glarsAttributes = Nothing, _glarsResponseStatus = pResponseStatus_}
-
+getLinkAttributesResponse pResponseStatus_
+  = GetLinkAttributesResponse'{_glarsAttributes =
+                                 Nothing,
+                               _glarsResponseStatus = pResponseStatus_}
 
 -- | The attributes that are associated with the typed link.
 glarsAttributes :: Lens' GetLinkAttributesResponse [AttributeKeyAndValue]

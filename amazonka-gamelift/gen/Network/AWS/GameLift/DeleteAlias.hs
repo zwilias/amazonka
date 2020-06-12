@@ -23,17 +23,17 @@
 --
 -- Alias-related operations include:
 --
---     * 'CreateAlias'
+--     * 'CreateAlias' 
 --
---     * 'ListAliases'
+--     * 'ListAliases' 
 --
---     * 'DescribeAlias'
+--     * 'DescribeAlias' 
 --
---     * 'UpdateAlias'
+--     * 'UpdateAlias' 
 --
---     * 'DeleteAlias'
+--     * 'DeleteAlias' 
 --
---     * 'ResolveAlias'
+--     * 'ResolveAlias' 
 --
 --
 --
@@ -51,7 +51,6 @@ module Network.AWS.GameLift.DeleteAlias
     ) where
 
 import Network.AWS.GameLift.Types
-import Network.AWS.GameLift.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.Request
@@ -62,12 +61,9 @@ import Network.AWS.Response
 --
 --
 -- /See:/ 'deleteAlias' smart constructor.
-newtype DeleteAlias =
-  DeleteAlias'
-    { _daAliasId :: Text
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+newtype DeleteAlias = DeleteAlias'{_daAliasId ::
+                                   Text}
+                        deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'DeleteAlias' with the minimum fields required to make a request.
 --
@@ -77,8 +73,8 @@ newtype DeleteAlias =
 deleteAlias
     :: Text -- ^ 'daAliasId'
     -> DeleteAlias
-deleteAlias pAliasId_ = DeleteAlias' {_daAliasId = pAliasId_}
-
+deleteAlias pAliasId_
+  = DeleteAlias'{_daAliasId = pAliasId_}
 
 -- | Unique identifier for a fleet alias. Specify the alias you want to delete.
 daAliasId :: Lens' DeleteAlias Text
@@ -113,16 +109,13 @@ instance ToQuery DeleteAlias where
         toQuery = const mempty
 
 -- | /See:/ 'deleteAliasResponse' smart constructor.
-data DeleteAliasResponse =
-  DeleteAliasResponse'
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data DeleteAliasResponse = DeleteAliasResponse'
+                             deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'DeleteAliasResponse' with the minimum fields required to make a request.
 --
 deleteAliasResponse
     :: DeleteAliasResponse
 deleteAliasResponse = DeleteAliasResponse'
-
 
 instance NFData DeleteAliasResponse where

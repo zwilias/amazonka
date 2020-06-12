@@ -38,19 +38,15 @@ module Network.AWS.Pinpoint.GetCampaign
 
 import Network.AWS.Lens
 import Network.AWS.Pinpoint.Types
-import Network.AWS.Pinpoint.Types.Product
 import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 
 -- | /See:/ 'getCampaign' smart constructor.
-data GetCampaign =
-  GetCampaign'
-    { _getCampaignId    :: !Text
-    , _getApplicationId :: !Text
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data GetCampaign = GetCampaign'{_getCampaignId ::
+                                !Text,
+                                _getApplicationId :: !Text}
+                     deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'GetCampaign' with the minimum fields required to make a request.
 --
@@ -63,10 +59,9 @@ getCampaign
     :: Text -- ^ 'getCampaignId'
     -> Text -- ^ 'getApplicationId'
     -> GetCampaign
-getCampaign pCampaignId_ pApplicationId_ =
-  GetCampaign'
-    {_getCampaignId = pCampaignId_, _getApplicationId = pApplicationId_}
-
+getCampaign pCampaignId_ pApplicationId_
+  = GetCampaign'{_getCampaignId = pCampaignId_,
+                 _getApplicationId = pApplicationId_}
 
 -- | Undocumented member.
 getCampaignId :: Lens' GetCampaign Text
@@ -106,13 +101,11 @@ instance ToQuery GetCampaign where
         toQuery = const mempty
 
 -- | /See:/ 'getCampaignResponse' smart constructor.
-data GetCampaignResponse =
-  GetCampaignResponse'
-    { _gcrsResponseStatus   :: !Int
-    , _gcrsCampaignResponse :: !CampaignResponse
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data GetCampaignResponse = GetCampaignResponse'{_gcrsResponseStatus
+                                                :: !Int,
+                                                _gcrsCampaignResponse ::
+                                                !CampaignResponse}
+                             deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'GetCampaignResponse' with the minimum fields required to make a request.
 --
@@ -125,12 +118,11 @@ getCampaignResponse
     :: Int -- ^ 'gcrsResponseStatus'
     -> CampaignResponse -- ^ 'gcrsCampaignResponse'
     -> GetCampaignResponse
-getCampaignResponse pResponseStatus_ pCampaignResponse_ =
-  GetCampaignResponse'
-    { _gcrsResponseStatus = pResponseStatus_
-    , _gcrsCampaignResponse = pCampaignResponse_
-    }
-
+getCampaignResponse pResponseStatus_
+  pCampaignResponse_
+  = GetCampaignResponse'{_gcrsResponseStatus =
+                           pResponseStatus_,
+                         _gcrsCampaignResponse = pCampaignResponse_}
 
 -- | -- | The response status code.
 gcrsResponseStatus :: Lens' GetCampaignResponse Int

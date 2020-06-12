@@ -40,20 +40,16 @@ module Network.AWS.AutoScaling.DeletePolicy
     ) where
 
 import Network.AWS.AutoScaling.Types
-import Network.AWS.AutoScaling.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 
 -- | /See:/ 'deletePolicy' smart constructor.
-data DeletePolicy =
-  DeletePolicy'
-    { _dpAutoScalingGroupName :: !(Maybe Text)
-    , _dpPolicyName           :: !Text
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data DeletePolicy = DeletePolicy'{_dpAutoScalingGroupName
+                                  :: !(Maybe Text),
+                                  _dpPolicyName :: !Text}
+                      deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'DeletePolicy' with the minimum fields required to make a request.
 --
@@ -65,10 +61,9 @@ data DeletePolicy =
 deletePolicy
     :: Text -- ^ 'dpPolicyName'
     -> DeletePolicy
-deletePolicy pPolicyName_ =
-  DeletePolicy'
-    {_dpAutoScalingGroupName = Nothing, _dpPolicyName = pPolicyName_}
-
+deletePolicy pPolicyName_
+  = DeletePolicy'{_dpAutoScalingGroupName = Nothing,
+                  _dpPolicyName = pPolicyName_}
 
 -- | The name of the Auto Scaling group.
 dpAutoScalingGroupName :: Lens' DeletePolicy (Maybe Text)
@@ -102,16 +97,13 @@ instance ToQuery DeletePolicy where
                "PolicyName" =: _dpPolicyName]
 
 -- | /See:/ 'deletePolicyResponse' smart constructor.
-data DeletePolicyResponse =
-  DeletePolicyResponse'
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data DeletePolicyResponse = DeletePolicyResponse'
+                              deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'DeletePolicyResponse' with the minimum fields required to make a request.
 --
 deletePolicyResponse
     :: DeletePolicyResponse
 deletePolicyResponse = DeletePolicyResponse'
-
 
 instance NFData DeletePolicyResponse where

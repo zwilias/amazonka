@@ -67,21 +67,34 @@ import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 import Network.AWS.SSM.Types
-import Network.AWS.SSM.Types.Product
 
 -- | /See:/ 'updateMaintenanceWindowTarget' smart constructor.
-data UpdateMaintenanceWindowTarget =
-  UpdateMaintenanceWindowTarget'
-    { _uReplace          :: !(Maybe Bool)
-    , _uOwnerInformation :: !(Maybe (Sensitive Text))
-    , _uName             :: !(Maybe Text)
-    , _uTargets          :: !(Maybe [Target])
-    , _uDescription      :: !(Maybe (Sensitive Text))
-    , _uWindowId         :: !Text
-    , _uWindowTargetId   :: !Text
-    }
-  deriving (Eq, Show, Data, Typeable, Generic)
-
+data UpdateMaintenanceWindowTarget = UpdateMaintenanceWindowTarget'{_uReplace
+                                                                    ::
+                                                                    !(Maybe
+                                                                        Bool),
+                                                                    _uOwnerInformation
+                                                                    ::
+                                                                    !(Maybe
+                                                                        (Sensitive
+                                                                           Text)),
+                                                                    _uName ::
+                                                                    !(Maybe
+                                                                        Text),
+                                                                    _uTargets ::
+                                                                    !(Maybe
+                                                                        [Target]),
+                                                                    _uDescription
+                                                                    ::
+                                                                    !(Maybe
+                                                                        (Sensitive
+                                                                           Text)),
+                                                                    _uWindowId
+                                                                    :: !Text,
+                                                                    _uWindowTargetId
+                                                                    :: !Text}
+                                       deriving (Eq, Show, Data, Typeable,
+                                                 Generic)
 
 -- | Creates a value of 'UpdateMaintenanceWindowTarget' with the minimum fields required to make a request.
 --
@@ -104,17 +117,14 @@ updateMaintenanceWindowTarget
     :: Text -- ^ 'uWindowId'
     -> Text -- ^ 'uWindowTargetId'
     -> UpdateMaintenanceWindowTarget
-updateMaintenanceWindowTarget pWindowId_ pWindowTargetId_ =
-  UpdateMaintenanceWindowTarget'
-    { _uReplace = Nothing
-    , _uOwnerInformation = Nothing
-    , _uName = Nothing
-    , _uTargets = Nothing
-    , _uDescription = Nothing
-    , _uWindowId = pWindowId_
-    , _uWindowTargetId = pWindowTargetId_
-    }
-
+updateMaintenanceWindowTarget pWindowId_
+  pWindowTargetId_
+  = UpdateMaintenanceWindowTarget'{_uReplace = Nothing,
+                                   _uOwnerInformation = Nothing,
+                                   _uName = Nothing, _uTargets = Nothing,
+                                   _uDescription = Nothing,
+                                   _uWindowId = pWindowId_,
+                                   _uWindowTargetId = pWindowTargetId_}
 
 -- | If True, then all fields that are required by the RegisterTargetWithMaintenanceWindow action are also required for this API request. Optional fields that are not specified are set to null.
 uReplace :: Lens' UpdateMaintenanceWindowTarget (Maybe Bool)
@@ -194,18 +204,37 @@ instance ToQuery UpdateMaintenanceWindowTarget where
         toQuery = const mempty
 
 -- | /See:/ 'updateMaintenanceWindowTargetResponse' smart constructor.
-data UpdateMaintenanceWindowTargetResponse =
-  UpdateMaintenanceWindowTargetResponse'
-    { _ursOwnerInformation :: !(Maybe (Sensitive Text))
-    , _ursWindowTargetId   :: !(Maybe Text)
-    , _ursName             :: !(Maybe Text)
-    , _ursTargets          :: !(Maybe [Target])
-    , _ursDescription      :: !(Maybe (Sensitive Text))
-    , _ursWindowId         :: !(Maybe Text)
-    , _ursResponseStatus   :: !Int
-    }
-  deriving (Eq, Show, Data, Typeable, Generic)
-
+data UpdateMaintenanceWindowTargetResponse = UpdateMaintenanceWindowTargetResponse'{_ursOwnerInformation
+                                                                                    ::
+                                                                                    !(Maybe
+                                                                                        (Sensitive
+                                                                                           Text)),
+                                                                                    _ursWindowTargetId
+                                                                                    ::
+                                                                                    !(Maybe
+                                                                                        Text),
+                                                                                    _ursName
+                                                                                    ::
+                                                                                    !(Maybe
+                                                                                        Text),
+                                                                                    _ursTargets
+                                                                                    ::
+                                                                                    !(Maybe
+                                                                                        [Target]),
+                                                                                    _ursDescription
+                                                                                    ::
+                                                                                    !(Maybe
+                                                                                        (Sensitive
+                                                                                           Text)),
+                                                                                    _ursWindowId
+                                                                                    ::
+                                                                                    !(Maybe
+                                                                                        Text),
+                                                                                    _ursResponseStatus
+                                                                                    ::
+                                                                                    !Int}
+                                               deriving (Eq, Show, Data,
+                                                         Typeable, Generic)
 
 -- | Creates a value of 'UpdateMaintenanceWindowTargetResponse' with the minimum fields required to make a request.
 --
@@ -227,17 +256,17 @@ data UpdateMaintenanceWindowTargetResponse =
 updateMaintenanceWindowTargetResponse
     :: Int -- ^ 'ursResponseStatus'
     -> UpdateMaintenanceWindowTargetResponse
-updateMaintenanceWindowTargetResponse pResponseStatus_ =
-  UpdateMaintenanceWindowTargetResponse'
-    { _ursOwnerInformation = Nothing
-    , _ursWindowTargetId = Nothing
-    , _ursName = Nothing
-    , _ursTargets = Nothing
-    , _ursDescription = Nothing
-    , _ursWindowId = Nothing
-    , _ursResponseStatus = pResponseStatus_
-    }
-
+updateMaintenanceWindowTargetResponse
+  pResponseStatus_
+  = UpdateMaintenanceWindowTargetResponse'{_ursOwnerInformation
+                                             = Nothing,
+                                           _ursWindowTargetId = Nothing,
+                                           _ursName = Nothing,
+                                           _ursTargets = Nothing,
+                                           _ursDescription = Nothing,
+                                           _ursWindowId = Nothing,
+                                           _ursResponseStatus =
+                                             pResponseStatus_}
 
 -- | The updated owner.
 ursOwnerInformation :: Lens' UpdateMaintenanceWindowTargetResponse (Maybe Text)

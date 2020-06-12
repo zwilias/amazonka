@@ -41,7 +41,6 @@ module Network.AWS.MediaLive.ListInputs
 
 import Network.AWS.Lens
 import Network.AWS.MediaLive.Types
-import Network.AWS.MediaLive.Types.Product
 import Network.AWS.Pager
 import Network.AWS.Prelude
 import Network.AWS.Request
@@ -50,13 +49,10 @@ import Network.AWS.Response
 -- | Placeholder documentation for ListInputsRequest
 --
 -- /See:/ 'listInputs' smart constructor.
-data ListInputs =
-  ListInputs'
-    { _liNextToken  :: !(Maybe Text)
-    , _liMaxResults :: !(Maybe Nat)
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data ListInputs = ListInputs'{_liNextToken ::
+                              !(Maybe Text),
+                              _liMaxResults :: !(Maybe Nat)}
+                    deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'ListInputs' with the minimum fields required to make a request.
 --
@@ -67,8 +63,9 @@ data ListInputs =
 -- * 'liMaxResults' - Undocumented member.
 listInputs
     :: ListInputs
-listInputs = ListInputs' {_liNextToken = Nothing, _liMaxResults = Nothing}
-
+listInputs
+  = ListInputs'{_liNextToken = Nothing,
+                _liMaxResults = Nothing}
 
 -- | Undocumented member.
 liNextToken :: Lens' ListInputs (Maybe Text)
@@ -118,14 +115,11 @@ instance ToQuery ListInputs where
 -- | Placeholder documentation for ListInputsResponse
 --
 -- /See:/ 'listInputsResponse' smart constructor.
-data ListInputsResponse =
-  ListInputsResponse'
-    { _lirsInputs         :: !(Maybe [Input])
-    , _lirsNextToken      :: !(Maybe Text)
-    , _lirsResponseStatus :: !Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data ListInputsResponse = ListInputsResponse'{_lirsInputs
+                                              :: !(Maybe [Input]),
+                                              _lirsNextToken :: !(Maybe Text),
+                                              _lirsResponseStatus :: !Int}
+                            deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'ListInputsResponse' with the minimum fields required to make a request.
 --
@@ -139,13 +133,10 @@ data ListInputsResponse =
 listInputsResponse
     :: Int -- ^ 'lirsResponseStatus'
     -> ListInputsResponse
-listInputsResponse pResponseStatus_ =
-  ListInputsResponse'
-    { _lirsInputs = Nothing
-    , _lirsNextToken = Nothing
-    , _lirsResponseStatus = pResponseStatus_
-    }
-
+listInputsResponse pResponseStatus_
+  = ListInputsResponse'{_lirsInputs = Nothing,
+                        _lirsNextToken = Nothing,
+                        _lirsResponseStatus = pResponseStatus_}
 
 -- | Undocumented member.
 lirsInputs :: Lens' ListInputsResponse [Input]

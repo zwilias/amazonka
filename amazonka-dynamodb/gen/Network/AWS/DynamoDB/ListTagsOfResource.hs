@@ -44,7 +44,6 @@ module Network.AWS.DynamoDB.ListTagsOfResource
     ) where
 
 import Network.AWS.DynamoDB.Types
-import Network.AWS.DynamoDB.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Pager
 import Network.AWS.Prelude
@@ -52,13 +51,10 @@ import Network.AWS.Request
 import Network.AWS.Response
 
 -- | /See:/ 'listTagsOfResource' smart constructor.
-data ListTagsOfResource =
-  ListTagsOfResource'
-    { _ltorNextToken   :: !(Maybe Text)
-    , _ltorResourceARN :: !Text
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data ListTagsOfResource = ListTagsOfResource'{_ltorNextToken
+                                              :: !(Maybe Text),
+                                              _ltorResourceARN :: !Text}
+                            deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'ListTagsOfResource' with the minimum fields required to make a request.
 --
@@ -70,10 +66,9 @@ data ListTagsOfResource =
 listTagsOfResource
     :: Text -- ^ 'ltorResourceARN'
     -> ListTagsOfResource
-listTagsOfResource pResourceARN_ =
-  ListTagsOfResource'
-    {_ltorNextToken = Nothing, _ltorResourceARN = pResourceARN_}
-
+listTagsOfResource pResourceARN_
+  = ListTagsOfResource'{_ltorNextToken = Nothing,
+                        _ltorResourceARN = pResourceARN_}
 
 -- | An optional string that, if supplied, must be copied from the output of a previous call to ListTagOfResource. When provided in this manner, this API fetches the next page of results.
 ltorNextToken :: Lens' ListTagsOfResource (Maybe Text)
@@ -129,14 +124,14 @@ instance ToQuery ListTagsOfResource where
         toQuery = const mempty
 
 -- | /See:/ 'listTagsOfResourceResponse' smart constructor.
-data ListTagsOfResourceResponse =
-  ListTagsOfResourceResponse'
-    { _ltorrsNextToken      :: !(Maybe Text)
-    , _ltorrsTags           :: !(Maybe [Tag])
-    , _ltorrsResponseStatus :: !Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data ListTagsOfResourceResponse = ListTagsOfResourceResponse'{_ltorrsNextToken
+                                                              :: !(Maybe Text),
+                                                              _ltorrsTags ::
+                                                              !(Maybe [Tag]),
+                                                              _ltorrsResponseStatus
+                                                              :: !Int}
+                                    deriving (Eq, Read, Show, Data, Typeable,
+                                              Generic)
 
 -- | Creates a value of 'ListTagsOfResourceResponse' with the minimum fields required to make a request.
 --
@@ -150,13 +145,11 @@ data ListTagsOfResourceResponse =
 listTagsOfResourceResponse
     :: Int -- ^ 'ltorrsResponseStatus'
     -> ListTagsOfResourceResponse
-listTagsOfResourceResponse pResponseStatus_ =
-  ListTagsOfResourceResponse'
-    { _ltorrsNextToken = Nothing
-    , _ltorrsTags = Nothing
-    , _ltorrsResponseStatus = pResponseStatus_
-    }
-
+listTagsOfResourceResponse pResponseStatus_
+  = ListTagsOfResourceResponse'{_ltorrsNextToken =
+                                  Nothing,
+                                _ltorrsTags = Nothing,
+                                _ltorrsResponseStatus = pResponseStatus_}
 
 -- | If this value is returned, there are additional results to be displayed. To retrieve them, call ListTagsOfResource again, with NextToken set to this value.
 ltorrsNextToken :: Lens' ListTagsOfResourceResponse (Maybe Text)

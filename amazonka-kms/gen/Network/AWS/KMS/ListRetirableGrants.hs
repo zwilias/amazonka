@@ -43,21 +43,17 @@ module Network.AWS.KMS.ListRetirableGrants
     ) where
 
 import Network.AWS.KMS.Types
-import Network.AWS.KMS.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 
 -- | /See:/ 'listRetirableGrants' smart constructor.
-data ListRetirableGrants =
-  ListRetirableGrants'
-    { _lrgMarker            :: !(Maybe Text)
-    , _lrgLimit             :: !(Maybe Nat)
-    , _lrgRetiringPrincipal :: !Text
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data ListRetirableGrants = ListRetirableGrants'{_lrgMarker
+                                                :: !(Maybe Text),
+                                                _lrgLimit :: !(Maybe Nat),
+                                                _lrgRetiringPrincipal :: !Text}
+                             deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'ListRetirableGrants' with the minimum fields required to make a request.
 --
@@ -71,13 +67,10 @@ data ListRetirableGrants =
 listRetirableGrants
     :: Text -- ^ 'lrgRetiringPrincipal'
     -> ListRetirableGrants
-listRetirableGrants pRetiringPrincipal_ =
-  ListRetirableGrants'
-    { _lrgMarker = Nothing
-    , _lrgLimit = Nothing
-    , _lrgRetiringPrincipal = pRetiringPrincipal_
-    }
-
+listRetirableGrants pRetiringPrincipal_
+  = ListRetirableGrants'{_lrgMarker = Nothing,
+                         _lrgLimit = Nothing,
+                         _lrgRetiringPrincipal = pRetiringPrincipal_}
 
 -- | Use this parameter in a subsequent request after you receive a response with truncated results. Set it to the value of @NextMarker@ from the truncated response you just received.
 lrgMarker :: Lens' ListRetirableGrants (Maybe Text)

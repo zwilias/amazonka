@@ -18,7 +18,7 @@
 -- Stability   : auto-generated
 -- Portability : non-portable (GHC extensions)
 --
--- Detects the key noun phrases found in the text.
+-- Detects the key noun phrases found in the text. 
 --
 --
 module Network.AWS.Comprehend.DetectKeyPhrases
@@ -39,20 +39,16 @@ module Network.AWS.Comprehend.DetectKeyPhrases
     ) where
 
 import Network.AWS.Comprehend.Types
-import Network.AWS.Comprehend.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 
 -- | /See:/ 'detectKeyPhrases' smart constructor.
-data DetectKeyPhrases =
-  DetectKeyPhrases'
-    { _dkpText         :: !Text
-    , _dkpLanguageCode :: !LanguageCode
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data DetectKeyPhrases = DetectKeyPhrases'{_dkpText ::
+                                          !Text,
+                                          _dkpLanguageCode :: !LanguageCode}
+                          deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'DetectKeyPhrases' with the minimum fields required to make a request.
 --
@@ -65,9 +61,9 @@ detectKeyPhrases
     :: Text -- ^ 'dkpText'
     -> LanguageCode -- ^ 'dkpLanguageCode'
     -> DetectKeyPhrases
-detectKeyPhrases pText_ pLanguageCode_ =
-  DetectKeyPhrases' {_dkpText = pText_, _dkpLanguageCode = pLanguageCode_}
-
+detectKeyPhrases pText_ pLanguageCode_
+  = DetectKeyPhrases'{_dkpText = pText_,
+                      _dkpLanguageCode = pLanguageCode_}
 
 -- | A UTF-8 text string. Each string must contain fewer that 5,000 bytes of UTF-8 encoded characters.
 dkpText :: Lens' DetectKeyPhrases Text
@@ -115,30 +111,30 @@ instance ToQuery DetectKeyPhrases where
         toQuery = const mempty
 
 -- | /See:/ 'detectKeyPhrasesResponse' smart constructor.
-data DetectKeyPhrasesResponse =
-  DetectKeyPhrasesResponse'
-    { _dkprsKeyPhrases     :: !(Maybe [KeyPhrase])
-    , _dkprsResponseStatus :: !Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data DetectKeyPhrasesResponse = DetectKeyPhrasesResponse'{_dkprsKeyPhrases
+                                                          ::
+                                                          !(Maybe [KeyPhrase]),
+                                                          _dkprsResponseStatus
+                                                          :: !Int}
+                                  deriving (Eq, Read, Show, Data, Typeable,
+                                            Generic)
 
 -- | Creates a value of 'DetectKeyPhrasesResponse' with the minimum fields required to make a request.
 --
 -- Use one of the following lenses to modify other fields as desired:
 --
--- * 'dkprsKeyPhrases' - A collection of key phrases that Amazon Comprehend identified in the input text. For each key phrase, the response provides the text of the key phrase, where the key phrase begins and ends, and the level of confidence that Amazon Comprehend has in the accuracy of the detection.
+-- * 'dkprsKeyPhrases' - A collection of key phrases that Amazon Comprehend identified in the input text. For each key phrase, the response provides the text of the key phrase, where the key phrase begins and ends, and the level of confidence that Amazon Comprehend has in the accuracy of the detection. 
 --
 -- * 'dkprsResponseStatus' - -- | The response status code.
 detectKeyPhrasesResponse
     :: Int -- ^ 'dkprsResponseStatus'
     -> DetectKeyPhrasesResponse
-detectKeyPhrasesResponse pResponseStatus_ =
-  DetectKeyPhrasesResponse'
-    {_dkprsKeyPhrases = Nothing, _dkprsResponseStatus = pResponseStatus_}
+detectKeyPhrasesResponse pResponseStatus_
+  = DetectKeyPhrasesResponse'{_dkprsKeyPhrases =
+                                Nothing,
+                              _dkprsResponseStatus = pResponseStatus_}
 
-
--- | A collection of key phrases that Amazon Comprehend identified in the input text. For each key phrase, the response provides the text of the key phrase, where the key phrase begins and ends, and the level of confidence that Amazon Comprehend has in the accuracy of the detection.
+-- | A collection of key phrases that Amazon Comprehend identified in the input text. For each key phrase, the response provides the text of the key phrase, where the key phrase begins and ends, and the level of confidence that Amazon Comprehend has in the accuracy of the detection. 
 dkprsKeyPhrases :: Lens' DetectKeyPhrasesResponse [KeyPhrase]
 dkprsKeyPhrases = lens _dkprsKeyPhrases (\ s a -> s{_dkprsKeyPhrases = a}) . _Default . _Coerce
 

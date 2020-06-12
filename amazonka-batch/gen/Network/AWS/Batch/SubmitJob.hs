@@ -48,28 +48,24 @@ module Network.AWS.Batch.SubmitJob
     ) where
 
 import Network.AWS.Batch.Types
-import Network.AWS.Batch.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 
 -- | /See:/ 'submitJob' smart constructor.
-data SubmitJob =
-  SubmitJob'
-    { _sjNodeOverrides      :: !(Maybe NodeOverrides)
-    , _sjContainerOverrides :: !(Maybe ContainerOverrides)
-    , _sjRetryStrategy      :: !(Maybe RetryStrategy)
-    , _sjDependsOn          :: !(Maybe [JobDependency])
-    , _sjParameters         :: !(Maybe (Map Text Text))
-    , _sjArrayProperties    :: !(Maybe ArrayProperties)
-    , _sjTimeout            :: !(Maybe JobTimeout)
-    , _sjJobName            :: !Text
-    , _sjJobQueue           :: !Text
-    , _sjJobDefinition      :: !Text
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data SubmitJob = SubmitJob'{_sjNodeOverrides ::
+                            !(Maybe NodeOverrides),
+                            _sjContainerOverrides ::
+                            !(Maybe ContainerOverrides),
+                            _sjRetryStrategy :: !(Maybe RetryStrategy),
+                            _sjDependsOn :: !(Maybe [JobDependency]),
+                            _sjParameters :: !(Maybe (Map Text Text)),
+                            _sjArrayProperties :: !(Maybe ArrayProperties),
+                            _sjTimeout :: !(Maybe JobTimeout),
+                            _sjJobName :: !Text, _sjJobQueue :: !Text,
+                            _sjJobDefinition :: !Text}
+                   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'SubmitJob' with the minimum fields required to make a request.
 --
@@ -99,20 +95,14 @@ submitJob
     -> Text -- ^ 'sjJobQueue'
     -> Text -- ^ 'sjJobDefinition'
     -> SubmitJob
-submitJob pJobName_ pJobQueue_ pJobDefinition_ =
-  SubmitJob'
-    { _sjNodeOverrides = Nothing
-    , _sjContainerOverrides = Nothing
-    , _sjRetryStrategy = Nothing
-    , _sjDependsOn = Nothing
-    , _sjParameters = Nothing
-    , _sjArrayProperties = Nothing
-    , _sjTimeout = Nothing
-    , _sjJobName = pJobName_
-    , _sjJobQueue = pJobQueue_
-    , _sjJobDefinition = pJobDefinition_
-    }
-
+submitJob pJobName_ pJobQueue_ pJobDefinition_
+  = SubmitJob'{_sjNodeOverrides = Nothing,
+               _sjContainerOverrides = Nothing,
+               _sjRetryStrategy = Nothing, _sjDependsOn = Nothing,
+               _sjParameters = Nothing,
+               _sjArrayProperties = Nothing, _sjTimeout = Nothing,
+               _sjJobName = pJobName_, _sjJobQueue = pJobQueue_,
+               _sjJobDefinition = pJobDefinition_}
 
 -- | A list of node overrides in JSON format that specify the node range to target and the container overrides for that node range.
 sjNodeOverrides :: Lens' SubmitJob (Maybe NodeOverrides)
@@ -197,14 +187,11 @@ instance ToQuery SubmitJob where
         toQuery = const mempty
 
 -- | /See:/ 'submitJobResponse' smart constructor.
-data SubmitJobResponse =
-  SubmitJobResponse'
-    { _sjrsResponseStatus :: !Int
-    , _sjrsJobName        :: !Text
-    , _sjrsJobId          :: !Text
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data SubmitJobResponse = SubmitJobResponse'{_sjrsResponseStatus
+                                            :: !Int,
+                                            _sjrsJobName :: !Text,
+                                            _sjrsJobId :: !Text}
+                           deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'SubmitJobResponse' with the minimum fields required to make a request.
 --
@@ -220,13 +207,10 @@ submitJobResponse
     -> Text -- ^ 'sjrsJobName'
     -> Text -- ^ 'sjrsJobId'
     -> SubmitJobResponse
-submitJobResponse pResponseStatus_ pJobName_ pJobId_ =
-  SubmitJobResponse'
-    { _sjrsResponseStatus = pResponseStatus_
-    , _sjrsJobName = pJobName_
-    , _sjrsJobId = pJobId_
-    }
-
+submitJobResponse pResponseStatus_ pJobName_ pJobId_
+  = SubmitJobResponse'{_sjrsResponseStatus =
+                         pResponseStatus_,
+                       _sjrsJobName = pJobName_, _sjrsJobId = pJobId_}
 
 -- | -- | The response status code.
 sjrsResponseStatus :: Lens' SubmitJobResponse Int

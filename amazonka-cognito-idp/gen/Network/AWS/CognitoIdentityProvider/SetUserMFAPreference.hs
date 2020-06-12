@@ -39,21 +39,22 @@ module Network.AWS.CognitoIdentityProvider.SetUserMFAPreference
     ) where
 
 import Network.AWS.CognitoIdentityProvider.Types
-import Network.AWS.CognitoIdentityProvider.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 
 -- | /See:/ 'setUserMFAPreference' smart constructor.
-data SetUserMFAPreference =
-  SetUserMFAPreference'
-    { _sumpSMSMFASettings           :: !(Maybe SMSMFASettingsType)
-    , _sumpSoftwareTokenMFASettings :: !(Maybe SoftwareTokenMFASettingsType)
-    , _sumpAccessToken              :: !(Sensitive Text)
-    }
-  deriving (Eq, Show, Data, Typeable, Generic)
-
+data SetUserMFAPreference = SetUserMFAPreference'{_sumpSMSMFASettings
+                                                  ::
+                                                  !(Maybe SMSMFASettingsType),
+                                                  _sumpSoftwareTokenMFASettings
+                                                  ::
+                                                  !(Maybe
+                                                      SoftwareTokenMFASettingsType),
+                                                  _sumpAccessToken ::
+                                                  !(Sensitive Text)}
+                              deriving (Eq, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'SetUserMFAPreference' with the minimum fields required to make a request.
 --
@@ -67,13 +68,11 @@ data SetUserMFAPreference =
 setUserMFAPreference
     :: Text -- ^ 'sumpAccessToken'
     -> SetUserMFAPreference
-setUserMFAPreference pAccessToken_ =
-  SetUserMFAPreference'
-    { _sumpSMSMFASettings = Nothing
-    , _sumpSoftwareTokenMFASettings = Nothing
-    , _sumpAccessToken = _Sensitive # pAccessToken_
-    }
-
+setUserMFAPreference pAccessToken_
+  = SetUserMFAPreference'{_sumpSMSMFASettings =
+                            Nothing,
+                          _sumpSoftwareTokenMFASettings = Nothing,
+                          _sumpAccessToken = _Sensitive # pAccessToken_}
 
 -- | The SMS text message multi-factor authentication (MFA) settings.
 sumpSMSMFASettings :: Lens' SetUserMFAPreference (Maybe SMSMFASettingsType)
@@ -127,12 +126,10 @@ instance ToQuery SetUserMFAPreference where
         toQuery = const mempty
 
 -- | /See:/ 'setUserMFAPreferenceResponse' smart constructor.
-newtype SetUserMFAPreferenceResponse =
-  SetUserMFAPreferenceResponse'
-    { _sumprsResponseStatus :: Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+newtype SetUserMFAPreferenceResponse = SetUserMFAPreferenceResponse'{_sumprsResponseStatus
+                                                                     :: Int}
+                                         deriving (Eq, Read, Show, Data,
+                                                   Typeable, Generic)
 
 -- | Creates a value of 'SetUserMFAPreferenceResponse' with the minimum fields required to make a request.
 --
@@ -142,9 +139,9 @@ newtype SetUserMFAPreferenceResponse =
 setUserMFAPreferenceResponse
     :: Int -- ^ 'sumprsResponseStatus'
     -> SetUserMFAPreferenceResponse
-setUserMFAPreferenceResponse pResponseStatus_ =
-  SetUserMFAPreferenceResponse' {_sumprsResponseStatus = pResponseStatus_}
-
+setUserMFAPreferenceResponse pResponseStatus_
+  = SetUserMFAPreferenceResponse'{_sumprsResponseStatus
+                                    = pResponseStatus_}
 
 -- | -- | The response status code.
 sumprsResponseStatus :: Lens' SetUserMFAPreferenceResponse Int

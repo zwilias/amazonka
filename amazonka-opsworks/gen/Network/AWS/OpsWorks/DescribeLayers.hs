@@ -42,19 +42,15 @@ module Network.AWS.OpsWorks.DescribeLayers
 
 import Network.AWS.Lens
 import Network.AWS.OpsWorks.Types
-import Network.AWS.OpsWorks.Types.Product
 import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 
 -- | /See:/ 'describeLayers' smart constructor.
-data DescribeLayers =
-  DescribeLayers'
-    { _dlLayerIds :: !(Maybe [Text])
-    , _dlStackId  :: !(Maybe Text)
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data DescribeLayers = DescribeLayers'{_dlLayerIds ::
+                                      !(Maybe [Text]),
+                                      _dlStackId :: !(Maybe Text)}
+                        deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'DescribeLayers' with the minimum fields required to make a request.
 --
@@ -65,8 +61,9 @@ data DescribeLayers =
 -- * 'dlStackId' - The stack ID.
 describeLayers
     :: DescribeLayers
-describeLayers = DescribeLayers' {_dlLayerIds = Nothing, _dlStackId = Nothing}
-
+describeLayers
+  = DescribeLayers'{_dlLayerIds = Nothing,
+                    _dlStackId = Nothing}
 
 -- | An array of layer IDs that specify the layers to be described. If you omit this parameter, @DescribeLayers@ returns a description of every layer in the specified stack.
 dlLayerIds :: Lens' DescribeLayers [Text]
@@ -116,13 +113,12 @@ instance ToQuery DescribeLayers where
 --
 --
 -- /See:/ 'describeLayersResponse' smart constructor.
-data DescribeLayersResponse =
-  DescribeLayersResponse'
-    { _dlrsLayers         :: !(Maybe [Layer])
-    , _dlrsResponseStatus :: !Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data DescribeLayersResponse = DescribeLayersResponse'{_dlrsLayers
+                                                      :: !(Maybe [Layer]),
+                                                      _dlrsResponseStatus ::
+                                                      !Int}
+                                deriving (Eq, Read, Show, Data, Typeable,
+                                          Generic)
 
 -- | Creates a value of 'DescribeLayersResponse' with the minimum fields required to make a request.
 --
@@ -134,10 +130,9 @@ data DescribeLayersResponse =
 describeLayersResponse
     :: Int -- ^ 'dlrsResponseStatus'
     -> DescribeLayersResponse
-describeLayersResponse pResponseStatus_ =
-  DescribeLayersResponse'
-    {_dlrsLayers = Nothing, _dlrsResponseStatus = pResponseStatus_}
-
+describeLayersResponse pResponseStatus_
+  = DescribeLayersResponse'{_dlrsLayers = Nothing,
+                            _dlrsResponseStatus = pResponseStatus_}
 
 -- | An array of @Layer@ objects that describe the layers.
 dlrsLayers :: Lens' DescribeLayersResponse [Layer]

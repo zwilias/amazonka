@@ -38,18 +38,14 @@ module Network.AWS.OpsWorks.UnassignVolume
 
 import Network.AWS.Lens
 import Network.AWS.OpsWorks.Types
-import Network.AWS.OpsWorks.Types.Product
 import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 
 -- | /See:/ 'unassignVolume' smart constructor.
-newtype UnassignVolume =
-  UnassignVolume'
-    { _uvVolumeId :: Text
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+newtype UnassignVolume = UnassignVolume'{_uvVolumeId
+                                         :: Text}
+                           deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'UnassignVolume' with the minimum fields required to make a request.
 --
@@ -59,8 +55,8 @@ newtype UnassignVolume =
 unassignVolume
     :: Text -- ^ 'uvVolumeId'
     -> UnassignVolume
-unassignVolume pVolumeId_ = UnassignVolume' {_uvVolumeId = pVolumeId_}
-
+unassignVolume pVolumeId_
+  = UnassignVolume'{_uvVolumeId = pVolumeId_}
 
 -- | The volume ID.
 uvVolumeId :: Lens' UnassignVolume Text
@@ -96,16 +92,14 @@ instance ToQuery UnassignVolume where
         toQuery = const mempty
 
 -- | /See:/ 'unassignVolumeResponse' smart constructor.
-data UnassignVolumeResponse =
-  UnassignVolumeResponse'
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data UnassignVolumeResponse = UnassignVolumeResponse'
+                                deriving (Eq, Read, Show, Data, Typeable,
+                                          Generic)
 
 -- | Creates a value of 'UnassignVolumeResponse' with the minimum fields required to make a request.
 --
 unassignVolumeResponse
     :: UnassignVolumeResponse
 unassignVolumeResponse = UnassignVolumeResponse'
-
 
 instance NFData UnassignVolumeResponse where

@@ -43,23 +43,20 @@ module Network.AWS.EC2.CreateNatGateway
     ) where
 
 import Network.AWS.EC2.Types
-import Network.AWS.EC2.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 
 -- | /See:/ 'createNatGateway' smart constructor.
-data CreateNatGateway =
-  CreateNatGateway'
-    { _cngClientToken       :: !(Maybe Text)
-    , _cngTagSpecifications :: !(Maybe [TagSpecification])
-    , _cngDryRun            :: !(Maybe Bool)
-    , _cngAllocationId      :: !Text
-    , _cngSubnetId          :: !Text
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data CreateNatGateway = CreateNatGateway'{_cngClientToken
+                                          :: !(Maybe Text),
+                                          _cngTagSpecifications ::
+                                          !(Maybe [TagSpecification]),
+                                          _cngDryRun :: !(Maybe Bool),
+                                          _cngAllocationId :: !Text,
+                                          _cngSubnetId :: !Text}
+                          deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'CreateNatGateway' with the minimum fields required to make a request.
 --
@@ -78,15 +75,12 @@ createNatGateway
     :: Text -- ^ 'cngAllocationId'
     -> Text -- ^ 'cngSubnetId'
     -> CreateNatGateway
-createNatGateway pAllocationId_ pSubnetId_ =
-  CreateNatGateway'
-    { _cngClientToken = Nothing
-    , _cngTagSpecifications = Nothing
-    , _cngDryRun = Nothing
-    , _cngAllocationId = pAllocationId_
-    , _cngSubnetId = pSubnetId_
-    }
-
+createNatGateway pAllocationId_ pSubnetId_
+  = CreateNatGateway'{_cngClientToken = Nothing,
+                      _cngTagSpecifications = Nothing,
+                      _cngDryRun = Nothing,
+                      _cngAllocationId = pAllocationId_,
+                      _cngSubnetId = pSubnetId_}
 
 -- | Unique, case-sensitive identifier that you provide to ensure the idempotency of the request. For more information, see <https://docs.aws.amazon.com/AWSEC2/latest/APIReference/Run_Instance_Idempotency.html How to Ensure Idempotency> . Constraint: Maximum 64 ASCII characters.
 cngClientToken :: Lens' CreateNatGateway (Maybe Text)
@@ -142,14 +136,14 @@ instance ToQuery CreateNatGateway where
                "SubnetId" =: _cngSubnetId]
 
 -- | /See:/ 'createNatGatewayResponse' smart constructor.
-data CreateNatGatewayResponse =
-  CreateNatGatewayResponse'
-    { _cngrsClientToken    :: !(Maybe Text)
-    , _cngrsNatGateway     :: !(Maybe NatGateway)
-    , _cngrsResponseStatus :: !Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data CreateNatGatewayResponse = CreateNatGatewayResponse'{_cngrsClientToken
+                                                          :: !(Maybe Text),
+                                                          _cngrsNatGateway ::
+                                                          !(Maybe NatGateway),
+                                                          _cngrsResponseStatus
+                                                          :: !Int}
+                                  deriving (Eq, Read, Show, Data, Typeable,
+                                            Generic)
 
 -- | Creates a value of 'CreateNatGatewayResponse' with the minimum fields required to make a request.
 --
@@ -163,13 +157,11 @@ data CreateNatGatewayResponse =
 createNatGatewayResponse
     :: Int -- ^ 'cngrsResponseStatus'
     -> CreateNatGatewayResponse
-createNatGatewayResponse pResponseStatus_ =
-  CreateNatGatewayResponse'
-    { _cngrsClientToken = Nothing
-    , _cngrsNatGateway = Nothing
-    , _cngrsResponseStatus = pResponseStatus_
-    }
-
+createNatGatewayResponse pResponseStatus_
+  = CreateNatGatewayResponse'{_cngrsClientToken =
+                                Nothing,
+                              _cngrsNatGateway = Nothing,
+                              _cngrsResponseStatus = pResponseStatus_}
 
 -- | Unique, case-sensitive identifier to ensure the idempotency of the request. Only returned if a client token was provided in the request.
 cngrsClientToken :: Lens' CreateNatGatewayResponse (Maybe Text)

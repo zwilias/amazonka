@@ -46,20 +46,17 @@ import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 import Network.AWS.Support.Types
-import Network.AWS.Support.Types.Product
 
--- |
+-- | 
 --
 --
 --
 -- /See:/ 'addAttachmentsToSet' smart constructor.
-data AddAttachmentsToSet =
-  AddAttachmentsToSet'
-    { _aatsAttachmentSetId :: !(Maybe Text)
-    , _aatsAttachments     :: ![Attachment]
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data AddAttachmentsToSet = AddAttachmentsToSet'{_aatsAttachmentSetId
+                                                :: !(Maybe Text),
+                                                _aatsAttachments ::
+                                                ![Attachment]}
+                             deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'AddAttachmentsToSet' with the minimum fields required to make a request.
 --
@@ -70,10 +67,10 @@ data AddAttachmentsToSet =
 -- * 'aatsAttachments' - One or more attachments to add to the set. The limit is 3 attachments per set, and the size limit is 5 MB per attachment.
 addAttachmentsToSet
     :: AddAttachmentsToSet
-addAttachmentsToSet =
-  AddAttachmentsToSet'
-    {_aatsAttachmentSetId = Nothing, _aatsAttachments = mempty}
-
+addAttachmentsToSet
+  = AddAttachmentsToSet'{_aatsAttachmentSetId =
+                           Nothing,
+                         _aatsAttachments = mempty}
 
 -- | The ID of the attachment set. If an @attachmentSetId@ is not specified, a new attachment set is created, and the ID of the set is returned in the response. If an @attachmentSetId@ is specified, the attachments are added to the specified set, if it exists.
 aatsAttachmentSetId :: Lens' AddAttachmentsToSet (Maybe Text)
@@ -126,14 +123,16 @@ instance ToQuery AddAttachmentsToSet where
 --
 --
 -- /See:/ 'addAttachmentsToSetResponse' smart constructor.
-data AddAttachmentsToSetResponse =
-  AddAttachmentsToSetResponse'
-    { _aatsrsExpiryTime      :: !(Maybe Text)
-    , _aatsrsAttachmentSetId :: !(Maybe Text)
-    , _aatsrsResponseStatus  :: !Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data AddAttachmentsToSetResponse = AddAttachmentsToSetResponse'{_aatsrsExpiryTime
+                                                                ::
+                                                                !(Maybe Text),
+                                                                _aatsrsAttachmentSetId
+                                                                ::
+                                                                !(Maybe Text),
+                                                                _aatsrsResponseStatus
+                                                                :: !Int}
+                                     deriving (Eq, Read, Show, Data, Typeable,
+                                               Generic)
 
 -- | Creates a value of 'AddAttachmentsToSetResponse' with the minimum fields required to make a request.
 --
@@ -147,13 +146,11 @@ data AddAttachmentsToSetResponse =
 addAttachmentsToSetResponse
     :: Int -- ^ 'aatsrsResponseStatus'
     -> AddAttachmentsToSetResponse
-addAttachmentsToSetResponse pResponseStatus_ =
-  AddAttachmentsToSetResponse'
-    { _aatsrsExpiryTime = Nothing
-    , _aatsrsAttachmentSetId = Nothing
-    , _aatsrsResponseStatus = pResponseStatus_
-    }
-
+addAttachmentsToSetResponse pResponseStatus_
+  = AddAttachmentsToSetResponse'{_aatsrsExpiryTime =
+                                   Nothing,
+                                 _aatsrsAttachmentSetId = Nothing,
+                                 _aatsrsResponseStatus = pResponseStatus_}
 
 -- | The time and date when the attachment set expires.
 aatsrsExpiryTime :: Lens' AddAttachmentsToSetResponse (Maybe Text)

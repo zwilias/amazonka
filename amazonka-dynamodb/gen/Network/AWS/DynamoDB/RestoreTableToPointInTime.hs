@@ -18,12 +18,12 @@
 -- Stability   : auto-generated
 -- Portability : non-portable (GHC extensions)
 --
--- Restores the specified table to the specified point in time within @EarliestRestorableDateTime@ and @LatestRestorableDateTime@ . You can restore your table to any point in time during the last 35 days. Any number of users can execute up to 4 concurrent restores (any type of restore) in a given account.
+-- Restores the specified table to the specified point in time within @EarliestRestorableDateTime@ and @LatestRestorableDateTime@ . You can restore your table to any point in time during the last 35 days. Any number of users can execute up to 4 concurrent restores (any type of restore) in a given account. 
 --
 --
--- When you restore using point in time recovery, DynamoDB restores your table data to the state based on the selected date and time (day:hour:minute:second) to a new table.
+-- When you restore using point in time recovery, DynamoDB restores your table data to the state based on the selected date and time (day:hour:minute:second) to a new table. 
 --
--- Along with data, the following are also included on the new restored table using point in time recovery:
+-- Along with data, the following are also included on the new restored table using point in time recovery: 
 --
 --     * Global secondary indexes (GSIs)
 --
@@ -33,7 +33,7 @@
 --
 --     * Encryption settings
 --
--- /Important:/ All these settings come from the current settings of the source table at the time of restore.
+-- /Important:/ All these settings come from the current settings of the source table at the time of restore. 
 --
 --
 --
@@ -81,28 +81,44 @@ module Network.AWS.DynamoDB.RestoreTableToPointInTime
     ) where
 
 import Network.AWS.DynamoDB.Types
-import Network.AWS.DynamoDB.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 
 -- | /See:/ 'restoreTableToPointInTime' smart constructor.
-data RestoreTableToPointInTime =
-  RestoreTableToPointInTime'
-    { _rttpitBillingModeOverride           :: !(Maybe BillingMode)
-    , _rttpitUseLatestRestorableTime       :: !(Maybe Bool)
-    , _rttpitGlobalSecondaryIndexOverride  :: !(Maybe [GlobalSecondaryIndex])
-    , _rttpitProvisionedThroughputOverride :: !(Maybe ProvisionedThroughput)
-    , _rttpitSourceTableARN                :: !(Maybe Text)
-    , _rttpitSSESpecificationOverride      :: !(Maybe SSESpecification)
-    , _rttpitSourceTableName               :: !(Maybe Text)
-    , _rttpitLocalSecondaryIndexOverride   :: !(Maybe [LocalSecondaryIndex])
-    , _rttpitRestoreDateTime               :: !(Maybe POSIX)
-    , _rttpitTargetTableName               :: !Text
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data RestoreTableToPointInTime = RestoreTableToPointInTime'{_rttpitBillingModeOverride
+                                                            ::
+                                                            !(Maybe
+                                                                BillingMode),
+                                                            _rttpitUseLatestRestorableTime
+                                                            :: !(Maybe Bool),
+                                                            _rttpitGlobalSecondaryIndexOverride
+                                                            ::
+                                                            !(Maybe
+                                                                [GlobalSecondaryIndex]),
+                                                            _rttpitProvisionedThroughputOverride
+                                                            ::
+                                                            !(Maybe
+                                                                ProvisionedThroughput),
+                                                            _rttpitSourceTableARN
+                                                            :: !(Maybe Text),
+                                                            _rttpitSSESpecificationOverride
+                                                            ::
+                                                            !(Maybe
+                                                                SSESpecification),
+                                                            _rttpitSourceTableName
+                                                            :: !(Maybe Text),
+                                                            _rttpitLocalSecondaryIndexOverride
+                                                            ::
+                                                            !(Maybe
+                                                                [LocalSecondaryIndex]),
+                                                            _rttpitRestoreDateTime
+                                                            :: !(Maybe POSIX),
+                                                            _rttpitTargetTableName
+                                                            :: !Text}
+                                   deriving (Eq, Read, Show, Data, Typeable,
+                                             Generic)
 
 -- | Creates a value of 'RestoreTableToPointInTime' with the minimum fields required to make a request.
 --
@@ -110,7 +126,7 @@ data RestoreTableToPointInTime =
 --
 -- * 'rttpitBillingModeOverride' - The billing mode of the restored table.
 --
--- * 'rttpitUseLatestRestorableTime' - Restore the table to the latest possible time. @LatestRestorableDateTime@ is typically 5 minutes before the current time.
+-- * 'rttpitUseLatestRestorableTime' - Restore the table to the latest possible time. @LatestRestorableDateTime@ is typically 5 minutes before the current time. 
 --
 -- * 'rttpitGlobalSecondaryIndexOverride' - List of global secondary indexes for the restored table. The indexes provided should match existing secondary indexes. You can choose to exclude some or all of the indexes at the time of restore.
 --
@@ -130,26 +146,24 @@ data RestoreTableToPointInTime =
 restoreTableToPointInTime
     :: Text -- ^ 'rttpitTargetTableName'
     -> RestoreTableToPointInTime
-restoreTableToPointInTime pTargetTableName_ =
-  RestoreTableToPointInTime'
-    { _rttpitBillingModeOverride = Nothing
-    , _rttpitUseLatestRestorableTime = Nothing
-    , _rttpitGlobalSecondaryIndexOverride = Nothing
-    , _rttpitProvisionedThroughputOverride = Nothing
-    , _rttpitSourceTableARN = Nothing
-    , _rttpitSSESpecificationOverride = Nothing
-    , _rttpitSourceTableName = Nothing
-    , _rttpitLocalSecondaryIndexOverride = Nothing
-    , _rttpitRestoreDateTime = Nothing
-    , _rttpitTargetTableName = pTargetTableName_
-    }
-
+restoreTableToPointInTime pTargetTableName_
+  = RestoreTableToPointInTime'{_rttpitBillingModeOverride
+                                 = Nothing,
+                               _rttpitUseLatestRestorableTime = Nothing,
+                               _rttpitGlobalSecondaryIndexOverride = Nothing,
+                               _rttpitProvisionedThroughputOverride = Nothing,
+                               _rttpitSourceTableARN = Nothing,
+                               _rttpitSSESpecificationOverride = Nothing,
+                               _rttpitSourceTableName = Nothing,
+                               _rttpitLocalSecondaryIndexOverride = Nothing,
+                               _rttpitRestoreDateTime = Nothing,
+                               _rttpitTargetTableName = pTargetTableName_}
 
 -- | The billing mode of the restored table.
 rttpitBillingModeOverride :: Lens' RestoreTableToPointInTime (Maybe BillingMode)
 rttpitBillingModeOverride = lens _rttpitBillingModeOverride (\ s a -> s{_rttpitBillingModeOverride = a})
 
--- | Restore the table to the latest possible time. @LatestRestorableDateTime@ is typically 5 minutes before the current time.
+-- | Restore the table to the latest possible time. @LatestRestorableDateTime@ is typically 5 minutes before the current time. 
 rttpitUseLatestRestorableTime :: Lens' RestoreTableToPointInTime (Maybe Bool)
 rttpitUseLatestRestorableTime = lens _rttpitUseLatestRestorableTime (\ s a -> s{_rttpitUseLatestRestorableTime = a})
 
@@ -237,13 +251,15 @@ instance ToQuery RestoreTableToPointInTime where
         toQuery = const mempty
 
 -- | /See:/ 'restoreTableToPointInTimeResponse' smart constructor.
-data RestoreTableToPointInTimeResponse =
-  RestoreTableToPointInTimeResponse'
-    { _rttpitrsTableDescription :: !(Maybe TableDescription)
-    , _rttpitrsResponseStatus   :: !Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data RestoreTableToPointInTimeResponse = RestoreTableToPointInTimeResponse'{_rttpitrsTableDescription
+                                                                            ::
+                                                                            !(Maybe
+                                                                                TableDescription),
+                                                                            _rttpitrsResponseStatus
+                                                                            ::
+                                                                            !Int}
+                                           deriving (Eq, Read, Show, Data,
+                                                     Typeable, Generic)
 
 -- | Creates a value of 'RestoreTableToPointInTimeResponse' with the minimum fields required to make a request.
 --
@@ -255,12 +271,11 @@ data RestoreTableToPointInTimeResponse =
 restoreTableToPointInTimeResponse
     :: Int -- ^ 'rttpitrsResponseStatus'
     -> RestoreTableToPointInTimeResponse
-restoreTableToPointInTimeResponse pResponseStatus_ =
-  RestoreTableToPointInTimeResponse'
-    { _rttpitrsTableDescription = Nothing
-    , _rttpitrsResponseStatus = pResponseStatus_
-    }
-
+restoreTableToPointInTimeResponse pResponseStatus_
+  = RestoreTableToPointInTimeResponse'{_rttpitrsTableDescription
+                                         = Nothing,
+                                       _rttpitrsResponseStatus =
+                                         pResponseStatus_}
 
 -- | Represents the properties of a table.
 rttpitrsTableDescription :: Lens' RestoreTableToPointInTimeResponse (Maybe TableDescription)

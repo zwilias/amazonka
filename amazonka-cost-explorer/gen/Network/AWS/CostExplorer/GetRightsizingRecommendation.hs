@@ -48,23 +48,29 @@ module Network.AWS.CostExplorer.GetRightsizingRecommendation
     ) where
 
 import Network.AWS.CostExplorer.Types
-import Network.AWS.CostExplorer.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 
 -- | /See:/ 'getRightsizingRecommendation' smart constructor.
-data GetRightsizingRecommendation =
-  GetRightsizingRecommendation'
-    { _grrNextPageToken :: !(Maybe Text)
-    , _grrConfiguration :: !(Maybe RightsizingRecommendationConfiguration)
-    , _grrFilter        :: !(Maybe Expression)
-    , _grrPageSize      :: !(Maybe Nat)
-    , _grrService       :: !Text
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data GetRightsizingRecommendation = GetRightsizingRecommendation'{_grrNextPageToken
+                                                                  ::
+                                                                  !(Maybe Text),
+                                                                  _grrConfiguration
+                                                                  ::
+                                                                  !(Maybe
+                                                                      RightsizingRecommendationConfiguration),
+                                                                  _grrFilter ::
+                                                                  !(Maybe
+                                                                      Expression),
+                                                                  _grrPageSize
+                                                                  ::
+                                                                  !(Maybe Nat),
+                                                                  _grrService ::
+                                                                  !Text}
+                                      deriving (Eq, Read, Show, Data, Typeable,
+                                                Generic)
 
 -- | Creates a value of 'GetRightsizingRecommendation' with the minimum fields required to make a request.
 --
@@ -72,7 +78,7 @@ data GetRightsizingRecommendation =
 --
 -- * 'grrNextPageToken' - The pagination token that indicates the next set of results that you want to retrieve.
 --
--- * 'grrConfiguration' - Enables you to customize recommendations across two attributes. You can choose to view recommendations for instances within the same instance families or across different instance families. You can also choose to view your estimated savings associated with recommendations with consideration of existing Savings Plans or RI benefits, or niether.
+-- * 'grrConfiguration' - Enables you to customize recommendations across two attributes. You can choose to view recommendations for instances within the same instance families or across different instance families. You can also choose to view your estimated savings associated with recommendations with consideration of existing Savings Plans or RI benefits, or niether. 
 --
 -- * 'grrFilter' - Undocumented member.
 --
@@ -82,21 +88,18 @@ data GetRightsizingRecommendation =
 getRightsizingRecommendation
     :: Text -- ^ 'grrService'
     -> GetRightsizingRecommendation
-getRightsizingRecommendation pService_ =
-  GetRightsizingRecommendation'
-    { _grrNextPageToken = Nothing
-    , _grrConfiguration = Nothing
-    , _grrFilter = Nothing
-    , _grrPageSize = Nothing
-    , _grrService = pService_
-    }
-
+getRightsizingRecommendation pService_
+  = GetRightsizingRecommendation'{_grrNextPageToken =
+                                    Nothing,
+                                  _grrConfiguration = Nothing,
+                                  _grrFilter = Nothing, _grrPageSize = Nothing,
+                                  _grrService = pService_}
 
 -- | The pagination token that indicates the next set of results that you want to retrieve.
 grrNextPageToken :: Lens' GetRightsizingRecommendation (Maybe Text)
 grrNextPageToken = lens _grrNextPageToken (\ s a -> s{_grrNextPageToken = a})
 
--- | Enables you to customize recommendations across two attributes. You can choose to view recommendations for instances within the same instance families or across different instance families. You can also choose to view your estimated savings associated with recommendations with consideration of existing Savings Plans or RI benefits, or niether.
+-- | Enables you to customize recommendations across two attributes. You can choose to view recommendations for instances within the same instance families or across different instance families. You can also choose to view your estimated savings associated with recommendations with consideration of existing Savings Plans or RI benefits, or niether. 
 grrConfiguration :: Lens' GetRightsizingRecommendation (Maybe RightsizingRecommendationConfiguration)
 grrConfiguration = lens _grrConfiguration (\ s a -> s{_grrConfiguration = a})
 
@@ -158,17 +161,31 @@ instance ToQuery GetRightsizingRecommendation where
         toQuery = const mempty
 
 -- | /See:/ 'getRightsizingRecommendationResponse' smart constructor.
-data GetRightsizingRecommendationResponse =
-  GetRightsizingRecommendationResponse'
-    { _grrrsSummary :: !(Maybe RightsizingRecommendationSummary)
-    , _grrrsNextPageToken :: !(Maybe Text)
-    , _grrrsRightsizingRecommendations :: !(Maybe [RightsizingRecommendation])
-    , _grrrsMetadata :: !(Maybe RightsizingRecommendationMetadata)
-    , _grrrsConfiguration :: !(Maybe RightsizingRecommendationConfiguration)
-    , _grrrsResponseStatus :: !Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data GetRightsizingRecommendationResponse = GetRightsizingRecommendationResponse'{_grrrsSummary
+                                                                                  ::
+                                                                                  !(Maybe
+                                                                                      RightsizingRecommendationSummary),
+                                                                                  _grrrsNextPageToken
+                                                                                  ::
+                                                                                  !(Maybe
+                                                                                      Text),
+                                                                                  _grrrsRightsizingRecommendations
+                                                                                  ::
+                                                                                  !(Maybe
+                                                                                      [RightsizingRecommendation]),
+                                                                                  _grrrsMetadata
+                                                                                  ::
+                                                                                  !(Maybe
+                                                                                      RightsizingRecommendationMetadata),
+                                                                                  _grrrsConfiguration
+                                                                                  ::
+                                                                                  !(Maybe
+                                                                                      RightsizingRecommendationConfiguration),
+                                                                                  _grrrsResponseStatus
+                                                                                  ::
+                                                                                  !Int}
+                                              deriving (Eq, Read, Show, Data,
+                                                        Typeable, Generic)
 
 -- | Creates a value of 'GetRightsizingRecommendationResponse' with the minimum fields required to make a request.
 --
@@ -182,22 +199,22 @@ data GetRightsizingRecommendationResponse =
 --
 -- * 'grrrsMetadata' - Information regarding this specific recommendation set.
 --
--- * 'grrrsConfiguration' - Enables you to customize recommendations across two attributes. You can choose to view recommendations for instances within the same instance families or across different instance families. You can also choose to view your estimated savings associated with recommendations with consideration of existing Savings Plans or RI benefits, or niether.
+-- * 'grrrsConfiguration' - Enables you to customize recommendations across two attributes. You can choose to view recommendations for instances within the same instance families or across different instance families. You can also choose to view your estimated savings associated with recommendations with consideration of existing Savings Plans or RI benefits, or niether. 
 --
 -- * 'grrrsResponseStatus' - -- | The response status code.
 getRightsizingRecommendationResponse
     :: Int -- ^ 'grrrsResponseStatus'
     -> GetRightsizingRecommendationResponse
-getRightsizingRecommendationResponse pResponseStatus_ =
-  GetRightsizingRecommendationResponse'
-    { _grrrsSummary = Nothing
-    , _grrrsNextPageToken = Nothing
-    , _grrrsRightsizingRecommendations = Nothing
-    , _grrrsMetadata = Nothing
-    , _grrrsConfiguration = Nothing
-    , _grrrsResponseStatus = pResponseStatus_
-    }
-
+getRightsizingRecommendationResponse pResponseStatus_
+  = GetRightsizingRecommendationResponse'{_grrrsSummary
+                                            = Nothing,
+                                          _grrrsNextPageToken = Nothing,
+                                          _grrrsRightsizingRecommendations =
+                                            Nothing,
+                                          _grrrsMetadata = Nothing,
+                                          _grrrsConfiguration = Nothing,
+                                          _grrrsResponseStatus =
+                                            pResponseStatus_}
 
 -- | Summary of this recommendation set.
 grrrsSummary :: Lens' GetRightsizingRecommendationResponse (Maybe RightsizingRecommendationSummary)
@@ -215,7 +232,7 @@ grrrsRightsizingRecommendations = lens _grrrsRightsizingRecommendations (\ s a -
 grrrsMetadata :: Lens' GetRightsizingRecommendationResponse (Maybe RightsizingRecommendationMetadata)
 grrrsMetadata = lens _grrrsMetadata (\ s a -> s{_grrrsMetadata = a})
 
--- | Enables you to customize recommendations across two attributes. You can choose to view recommendations for instances within the same instance families or across different instance families. You can also choose to view your estimated savings associated with recommendations with consideration of existing Savings Plans or RI benefits, or niether.
+-- | Enables you to customize recommendations across two attributes. You can choose to view recommendations for instances within the same instance families or across different instance families. You can also choose to view your estimated savings associated with recommendations with consideration of existing Savings Plans or RI benefits, or niether. 
 grrrsConfiguration :: Lens' GetRightsizingRecommendationResponse (Maybe RightsizingRecommendationConfiguration)
 grrrsConfiguration = lens _grrrsConfiguration (\ s a -> s{_grrrsConfiguration = a})
 

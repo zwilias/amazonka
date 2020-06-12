@@ -41,20 +41,21 @@ module Network.AWS.EC2.GetDefaultCreditSpecification
     ) where
 
 import Network.AWS.EC2.Types
-import Network.AWS.EC2.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 
 -- | /See:/ 'getDefaultCreditSpecification' smart constructor.
-data GetDefaultCreditSpecification =
-  GetDefaultCreditSpecification'
-    { _gdcsDryRun         :: !(Maybe Bool)
-    , _gdcsInstanceFamily :: !UnlimitedSupportedInstanceFamily
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data GetDefaultCreditSpecification = GetDefaultCreditSpecification'{_gdcsDryRun
+                                                                    ::
+                                                                    !(Maybe
+                                                                        Bool),
+                                                                    _gdcsInstanceFamily
+                                                                    ::
+                                                                    !UnlimitedSupportedInstanceFamily}
+                                       deriving (Eq, Read, Show, Data, Typeable,
+                                                 Generic)
 
 -- | Creates a value of 'GetDefaultCreditSpecification' with the minimum fields required to make a request.
 --
@@ -66,10 +67,10 @@ data GetDefaultCreditSpecification =
 getDefaultCreditSpecification
     :: UnlimitedSupportedInstanceFamily -- ^ 'gdcsInstanceFamily'
     -> GetDefaultCreditSpecification
-getDefaultCreditSpecification pInstanceFamily_ =
-  GetDefaultCreditSpecification'
-    {_gdcsDryRun = Nothing, _gdcsInstanceFamily = pInstanceFamily_}
-
+getDefaultCreditSpecification pInstanceFamily_
+  = GetDefaultCreditSpecification'{_gdcsDryRun =
+                                     Nothing,
+                                   _gdcsInstanceFamily = pInstanceFamily_}
 
 -- | Checks whether you have the required permissions for the action, without actually making the request, and provides an error response. If you have the required permissions, the error response is @DryRunOperation@ . Otherwise, it is @UnauthorizedOperation@ .
 gdcsDryRun :: Lens' GetDefaultCreditSpecification (Maybe Bool)
@@ -112,13 +113,15 @@ instance ToQuery GetDefaultCreditSpecification where
                "InstanceFamily" =: _gdcsInstanceFamily]
 
 -- | /See:/ 'getDefaultCreditSpecificationResponse' smart constructor.
-data GetDefaultCreditSpecificationResponse =
-  GetDefaultCreditSpecificationResponse'
-    { _gdcsrsInstanceFamilyCreditSpecification :: !(Maybe InstanceFamilyCreditSpecification)
-    , _gdcsrsResponseStatus :: !Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data GetDefaultCreditSpecificationResponse = GetDefaultCreditSpecificationResponse'{_gdcsrsInstanceFamilyCreditSpecification
+                                                                                    ::
+                                                                                    !(Maybe
+                                                                                        InstanceFamilyCreditSpecification),
+                                                                                    _gdcsrsResponseStatus
+                                                                                    ::
+                                                                                    !Int}
+                                               deriving (Eq, Read, Show, Data,
+                                                         Typeable, Generic)
 
 -- | Creates a value of 'GetDefaultCreditSpecificationResponse' with the minimum fields required to make a request.
 --
@@ -130,12 +133,12 @@ data GetDefaultCreditSpecificationResponse =
 getDefaultCreditSpecificationResponse
     :: Int -- ^ 'gdcsrsResponseStatus'
     -> GetDefaultCreditSpecificationResponse
-getDefaultCreditSpecificationResponse pResponseStatus_ =
-  GetDefaultCreditSpecificationResponse'
-    { _gdcsrsInstanceFamilyCreditSpecification = Nothing
-    , _gdcsrsResponseStatus = pResponseStatus_
-    }
-
+getDefaultCreditSpecificationResponse
+  pResponseStatus_
+  = GetDefaultCreditSpecificationResponse'{_gdcsrsInstanceFamilyCreditSpecification
+                                             = Nothing,
+                                           _gdcsrsResponseStatus =
+                                             pResponseStatus_}
 
 -- | The default credit option for CPU usage of the instance family.
 gdcsrsInstanceFamilyCreditSpecification :: Lens' GetDefaultCreditSpecificationResponse (Maybe InstanceFamilyCreditSpecification)

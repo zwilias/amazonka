@@ -47,7 +47,6 @@ module Network.AWS.ELBv2.DescribeTargetGroups
     ) where
 
 import Network.AWS.ELBv2.Types
-import Network.AWS.ELBv2.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Pager
 import Network.AWS.Prelude
@@ -55,16 +54,14 @@ import Network.AWS.Request
 import Network.AWS.Response
 
 -- | /See:/ 'describeTargetGroups' smart constructor.
-data DescribeTargetGroups =
-  DescribeTargetGroups'
-    { _dtgTargetGroupARNs :: !(Maybe [Text])
-    , _dtgNames           :: !(Maybe [Text])
-    , _dtgLoadBalancerARN :: !(Maybe Text)
-    , _dtgMarker          :: !(Maybe Text)
-    , _dtgPageSize        :: !(Maybe Nat)
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data DescribeTargetGroups = DescribeTargetGroups'{_dtgTargetGroupARNs
+                                                  :: !(Maybe [Text]),
+                                                  _dtgNames :: !(Maybe [Text]),
+                                                  _dtgLoadBalancerARN ::
+                                                  !(Maybe Text),
+                                                  _dtgMarker :: !(Maybe Text),
+                                                  _dtgPageSize :: !(Maybe Nat)}
+                              deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'DescribeTargetGroups' with the minimum fields required to make a request.
 --
@@ -81,15 +78,11 @@ data DescribeTargetGroups =
 -- * 'dtgPageSize' - The maximum number of results to return with this call.
 describeTargetGroups
     :: DescribeTargetGroups
-describeTargetGroups =
-  DescribeTargetGroups'
-    { _dtgTargetGroupARNs = Nothing
-    , _dtgNames = Nothing
-    , _dtgLoadBalancerARN = Nothing
-    , _dtgMarker = Nothing
-    , _dtgPageSize = Nothing
-    }
-
+describeTargetGroups
+  = DescribeTargetGroups'{_dtgTargetGroupARNs =
+                            Nothing,
+                          _dtgNames = Nothing, _dtgLoadBalancerARN = Nothing,
+                          _dtgMarker = Nothing, _dtgPageSize = Nothing}
 
 -- | The Amazon Resource Names (ARN) of the target groups.
 dtgTargetGroupARNs :: Lens' DescribeTargetGroups [Text]
@@ -155,14 +148,17 @@ instance ToQuery DescribeTargetGroups where
                "Marker" =: _dtgMarker, "PageSize" =: _dtgPageSize]
 
 -- | /See:/ 'describeTargetGroupsResponse' smart constructor.
-data DescribeTargetGroupsResponse =
-  DescribeTargetGroupsResponse'
-    { _dtgsrsNextMarker     :: !(Maybe Text)
-    , _dtgsrsTargetGroups   :: !(Maybe [TargetGroup])
-    , _dtgsrsResponseStatus :: !Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data DescribeTargetGroupsResponse = DescribeTargetGroupsResponse'{_dtgsrsNextMarker
+                                                                  ::
+                                                                  !(Maybe Text),
+                                                                  _dtgsrsTargetGroups
+                                                                  ::
+                                                                  !(Maybe
+                                                                      [TargetGroup]),
+                                                                  _dtgsrsResponseStatus
+                                                                  :: !Int}
+                                      deriving (Eq, Read, Show, Data, Typeable,
+                                                Generic)
 
 -- | Creates a value of 'DescribeTargetGroupsResponse' with the minimum fields required to make a request.
 --
@@ -176,13 +172,11 @@ data DescribeTargetGroupsResponse =
 describeTargetGroupsResponse
     :: Int -- ^ 'dtgsrsResponseStatus'
     -> DescribeTargetGroupsResponse
-describeTargetGroupsResponse pResponseStatus_ =
-  DescribeTargetGroupsResponse'
-    { _dtgsrsNextMarker = Nothing
-    , _dtgsrsTargetGroups = Nothing
-    , _dtgsrsResponseStatus = pResponseStatus_
-    }
-
+describeTargetGroupsResponse pResponseStatus_
+  = DescribeTargetGroupsResponse'{_dtgsrsNextMarker =
+                                    Nothing,
+                                  _dtgsrsTargetGroups = Nothing,
+                                  _dtgsrsResponseStatus = pResponseStatus_}
 
 -- | The marker to use when requesting the next set of results. If there are no additional results, the string is empty.
 dtgsrsNextMarker :: Lens' DescribeTargetGroupsResponse (Maybe Text)

@@ -38,20 +38,16 @@ module Network.AWS.AppStream.EnableUser
     ) where
 
 import Network.AWS.AppStream.Types
-import Network.AWS.AppStream.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 
 -- | /See:/ 'enableUser' smart constructor.
-data EnableUser =
-  EnableUser'
-    { _euUserName           :: !(Sensitive Text)
-    , _euAuthenticationType :: !AuthenticationType
-    }
-  deriving (Eq, Show, Data, Typeable, Generic)
-
+data EnableUser = EnableUser'{_euUserName ::
+                              !(Sensitive Text),
+                              _euAuthenticationType :: !AuthenticationType}
+                    deriving (Eq, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'EnableUser' with the minimum fields required to make a request.
 --
@@ -64,12 +60,9 @@ enableUser
     :: Text -- ^ 'euUserName'
     -> AuthenticationType -- ^ 'euAuthenticationType'
     -> EnableUser
-enableUser pUserName_ pAuthenticationType_ =
-  EnableUser'
-    { _euUserName = _Sensitive # pUserName_
-    , _euAuthenticationType = pAuthenticationType_
-    }
-
+enableUser pUserName_ pAuthenticationType_
+  = EnableUser'{_euUserName = _Sensitive # pUserName_,
+                _euAuthenticationType = pAuthenticationType_}
 
 -- | The email address of the user.
 euUserName :: Lens' EnableUser Text
@@ -115,12 +108,10 @@ instance ToQuery EnableUser where
         toQuery = const mempty
 
 -- | /See:/ 'enableUserResponse' smart constructor.
-newtype EnableUserResponse =
-  EnableUserResponse'
-    { _eursResponseStatus :: Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+newtype EnableUserResponse = EnableUserResponse'{_eursResponseStatus
+                                                 :: Int}
+                               deriving (Eq, Read, Show, Data, Typeable,
+                                         Generic)
 
 -- | Creates a value of 'EnableUserResponse' with the minimum fields required to make a request.
 --
@@ -130,9 +121,9 @@ newtype EnableUserResponse =
 enableUserResponse
     :: Int -- ^ 'eursResponseStatus'
     -> EnableUserResponse
-enableUserResponse pResponseStatus_ =
-  EnableUserResponse' {_eursResponseStatus = pResponseStatus_}
-
+enableUserResponse pResponseStatus_
+  = EnableUserResponse'{_eursResponseStatus =
+                          pResponseStatus_}
 
 -- | -- | The response status code.
 eursResponseStatus :: Lens' EnableUserResponse Int

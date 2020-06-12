@@ -47,7 +47,6 @@ module Network.AWS.AutoScaling.DescribeTags
     ) where
 
 import Network.AWS.AutoScaling.Types
-import Network.AWS.AutoScaling.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Pager
 import Network.AWS.Prelude
@@ -55,14 +54,11 @@ import Network.AWS.Request
 import Network.AWS.Response
 
 -- | /See:/ 'describeTags' smart constructor.
-data DescribeTags =
-  DescribeTags'
-    { _dtFilters    :: !(Maybe [Filter])
-    , _dtNextToken  :: !(Maybe Text)
-    , _dtMaxRecords :: !(Maybe Int)
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data DescribeTags = DescribeTags'{_dtFilters ::
+                                  !(Maybe [Filter]),
+                                  _dtNextToken :: !(Maybe Text),
+                                  _dtMaxRecords :: !(Maybe Int)}
+                      deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'DescribeTags' with the minimum fields required to make a request.
 --
@@ -75,10 +71,9 @@ data DescribeTags =
 -- * 'dtMaxRecords' - The maximum number of items to return with this call. The default value is @50@ and the maximum value is @100@ .
 describeTags
     :: DescribeTags
-describeTags =
-  DescribeTags'
-    {_dtFilters = Nothing, _dtNextToken = Nothing, _dtMaxRecords = Nothing}
-
+describeTags
+  = DescribeTags'{_dtFilters = Nothing,
+                  _dtNextToken = Nothing, _dtMaxRecords = Nothing}
 
 -- | One or more filters to scope the tags to return. The maximum number of filters per filter type (for example, @auto-scaling-group@ ) is 1000.
 dtFilters :: Lens' DescribeTags [Filter]
@@ -132,14 +127,12 @@ instance ToQuery DescribeTags where
                "MaxRecords" =: _dtMaxRecords]
 
 -- | /See:/ 'describeTagsResponse' smart constructor.
-data DescribeTagsResponse =
-  DescribeTagsResponse'
-    { _dtrsNextToken      :: !(Maybe Text)
-    , _dtrsTags           :: !(Maybe [TagDescription])
-    , _dtrsResponseStatus :: !Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data DescribeTagsResponse = DescribeTagsResponse'{_dtrsNextToken
+                                                  :: !(Maybe Text),
+                                                  _dtrsTags ::
+                                                  !(Maybe [TagDescription]),
+                                                  _dtrsResponseStatus :: !Int}
+                              deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'DescribeTagsResponse' with the minimum fields required to make a request.
 --
@@ -153,13 +146,10 @@ data DescribeTagsResponse =
 describeTagsResponse
     :: Int -- ^ 'dtrsResponseStatus'
     -> DescribeTagsResponse
-describeTagsResponse pResponseStatus_ =
-  DescribeTagsResponse'
-    { _dtrsNextToken = Nothing
-    , _dtrsTags = Nothing
-    , _dtrsResponseStatus = pResponseStatus_
-    }
-
+describeTagsResponse pResponseStatus_
+  = DescribeTagsResponse'{_dtrsNextToken = Nothing,
+                          _dtrsTags = Nothing,
+                          _dtrsResponseStatus = pResponseStatus_}
 
 -- | A string that indicates that the response contains more items than can be returned in a single response. To receive additional items, specify this string for the @NextToken@ value when requesting the next set of items. This value is null when there are no more items to return.
 dtrsNextToken :: Lens' DescribeTagsResponse (Maybe Text)

@@ -40,7 +40,6 @@ module Network.AWS.CognitoIdentityProvider.AdminEnableUser
     ) where
 
 import Network.AWS.CognitoIdentityProvider.Types
-import Network.AWS.CognitoIdentityProvider.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.Request
@@ -51,13 +50,10 @@ import Network.AWS.Response
 --
 --
 -- /See:/ 'adminEnableUser' smart constructor.
-data AdminEnableUser =
-  AdminEnableUser'
-    { _aeuUserPoolId :: !Text
-    , _aeuUsername   :: !(Sensitive Text)
-    }
-  deriving (Eq, Show, Data, Typeable, Generic)
-
+data AdminEnableUser = AdminEnableUser'{_aeuUserPoolId
+                                        :: !Text,
+                                        _aeuUsername :: !(Sensitive Text)}
+                         deriving (Eq, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'AdminEnableUser' with the minimum fields required to make a request.
 --
@@ -70,10 +66,9 @@ adminEnableUser
     :: Text -- ^ 'aeuUserPoolId'
     -> Text -- ^ 'aeuUsername'
     -> AdminEnableUser
-adminEnableUser pUserPoolId_ pUsername_ =
-  AdminEnableUser'
-    {_aeuUserPoolId = pUserPoolId_, _aeuUsername = _Sensitive # pUsername_}
-
+adminEnableUser pUserPoolId_ pUsername_
+  = AdminEnableUser'{_aeuUserPoolId = pUserPoolId_,
+                     _aeuUsername = _Sensitive # pUsername_}
 
 -- | The user pool ID for the user pool where you want to enable the user.
 aeuUserPoolId :: Lens' AdminEnableUser Text
@@ -123,12 +118,10 @@ instance ToQuery AdminEnableUser where
 --
 --
 -- /See:/ 'adminEnableUserResponse' smart constructor.
-newtype AdminEnableUserResponse =
-  AdminEnableUserResponse'
-    { _aeursResponseStatus :: Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+newtype AdminEnableUserResponse = AdminEnableUserResponse'{_aeursResponseStatus
+                                                           :: Int}
+                                    deriving (Eq, Read, Show, Data, Typeable,
+                                              Generic)
 
 -- | Creates a value of 'AdminEnableUserResponse' with the minimum fields required to make a request.
 --
@@ -138,9 +131,9 @@ newtype AdminEnableUserResponse =
 adminEnableUserResponse
     :: Int -- ^ 'aeursResponseStatus'
     -> AdminEnableUserResponse
-adminEnableUserResponse pResponseStatus_ =
-  AdminEnableUserResponse' {_aeursResponseStatus = pResponseStatus_}
-
+adminEnableUserResponse pResponseStatus_
+  = AdminEnableUserResponse'{_aeursResponseStatus =
+                               pResponseStatus_}
 
 -- | -- | The response status code.
 aeursResponseStatus :: Lens' AdminEnableUserResponse Int

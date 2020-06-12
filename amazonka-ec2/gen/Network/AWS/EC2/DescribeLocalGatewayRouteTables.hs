@@ -45,7 +45,6 @@ module Network.AWS.EC2.DescribeLocalGatewayRouteTables
     ) where
 
 import Network.AWS.EC2.Types
-import Network.AWS.EC2.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Pager
 import Network.AWS.Prelude
@@ -53,16 +52,28 @@ import Network.AWS.Request
 import Network.AWS.Response
 
 -- | /See:/ 'describeLocalGatewayRouteTables' smart constructor.
-data DescribeLocalGatewayRouteTables =
-  DescribeLocalGatewayRouteTables'
-    { _dlgrtFilters                   :: !(Maybe [Filter])
-    , _dlgrtNextToken                 :: !(Maybe Text)
-    , _dlgrtLocalGatewayRouteTableIds :: !(Maybe [Text])
-    , _dlgrtDryRun                    :: !(Maybe Bool)
-    , _dlgrtMaxResults                :: !(Maybe Nat)
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data DescribeLocalGatewayRouteTables = DescribeLocalGatewayRouteTables'{_dlgrtFilters
+                                                                        ::
+                                                                        !(Maybe
+                                                                            [Filter]),
+                                                                        _dlgrtNextToken
+                                                                        ::
+                                                                        !(Maybe
+                                                                            Text),
+                                                                        _dlgrtLocalGatewayRouteTableIds
+                                                                        ::
+                                                                        !(Maybe
+                                                                            [Text]),
+                                                                        _dlgrtDryRun
+                                                                        ::
+                                                                        !(Maybe
+                                                                            Bool),
+                                                                        _dlgrtMaxResults
+                                                                        ::
+                                                                        !(Maybe
+                                                                            Nat)}
+                                         deriving (Eq, Read, Show, Data,
+                                                   Typeable, Generic)
 
 -- | Creates a value of 'DescribeLocalGatewayRouteTables' with the minimum fields required to make a request.
 --
@@ -79,15 +90,13 @@ data DescribeLocalGatewayRouteTables =
 -- * 'dlgrtMaxResults' - The maximum number of results to return with a single call. To retrieve the remaining results, make another call with the returned @nextToken@ value.
 describeLocalGatewayRouteTables
     :: DescribeLocalGatewayRouteTables
-describeLocalGatewayRouteTables =
-  DescribeLocalGatewayRouteTables'
-    { _dlgrtFilters = Nothing
-    , _dlgrtNextToken = Nothing
-    , _dlgrtLocalGatewayRouteTableIds = Nothing
-    , _dlgrtDryRun = Nothing
-    , _dlgrtMaxResults = Nothing
-    }
-
+describeLocalGatewayRouteTables
+  = DescribeLocalGatewayRouteTables'{_dlgrtFilters =
+                                       Nothing,
+                                     _dlgrtNextToken = Nothing,
+                                     _dlgrtLocalGatewayRouteTableIds = Nothing,
+                                     _dlgrtDryRun = Nothing,
+                                     _dlgrtMaxResults = Nothing}
 
 -- | One or more filters.
 dlgrtFilters :: Lens' DescribeLocalGatewayRouteTables [Filter]
@@ -160,14 +169,19 @@ instance ToQuery DescribeLocalGatewayRouteTables
                "MaxResults" =: _dlgrtMaxResults]
 
 -- | /See:/ 'describeLocalGatewayRouteTablesResponse' smart constructor.
-data DescribeLocalGatewayRouteTablesResponse =
-  DescribeLocalGatewayRouteTablesResponse'
-    { _dlgrtrsNextToken               :: !(Maybe Text)
-    , _dlgrtrsLocalGatewayRouteTables :: !(Maybe [LocalGatewayRouteTable])
-    , _dlgrtrsResponseStatus          :: !Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data DescribeLocalGatewayRouteTablesResponse = DescribeLocalGatewayRouteTablesResponse'{_dlgrtrsNextToken
+                                                                                        ::
+                                                                                        !(Maybe
+                                                                                            Text),
+                                                                                        _dlgrtrsLocalGatewayRouteTables
+                                                                                        ::
+                                                                                        !(Maybe
+                                                                                            [LocalGatewayRouteTable]),
+                                                                                        _dlgrtrsResponseStatus
+                                                                                        ::
+                                                                                        !Int}
+                                                 deriving (Eq, Read, Show, Data,
+                                                           Typeable, Generic)
 
 -- | Creates a value of 'DescribeLocalGatewayRouteTablesResponse' with the minimum fields required to make a request.
 --
@@ -181,13 +195,14 @@ data DescribeLocalGatewayRouteTablesResponse =
 describeLocalGatewayRouteTablesResponse
     :: Int -- ^ 'dlgrtrsResponseStatus'
     -> DescribeLocalGatewayRouteTablesResponse
-describeLocalGatewayRouteTablesResponse pResponseStatus_ =
-  DescribeLocalGatewayRouteTablesResponse'
-    { _dlgrtrsNextToken = Nothing
-    , _dlgrtrsLocalGatewayRouteTables = Nothing
-    , _dlgrtrsResponseStatus = pResponseStatus_
-    }
-
+describeLocalGatewayRouteTablesResponse
+  pResponseStatus_
+  = DescribeLocalGatewayRouteTablesResponse'{_dlgrtrsNextToken
+                                               = Nothing,
+                                             _dlgrtrsLocalGatewayRouteTables =
+                                               Nothing,
+                                             _dlgrtrsResponseStatus =
+                                               pResponseStatus_}
 
 -- | The token to use to retrieve the next page of results. This value is @null@ when there are no more results to return.
 dlgrtrsNextToken :: Lens' DescribeLocalGatewayRouteTablesResponse (Maybe Text)

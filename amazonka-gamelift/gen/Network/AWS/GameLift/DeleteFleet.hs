@@ -25,47 +25,47 @@
 --
 -- Fleet-related operations include:
 --
---     * 'CreateFleet'
+--     * 'CreateFleet' 
 --
---     * 'ListFleets'
+--     * 'ListFleets' 
 --
---     * 'DeleteFleet'
+--     * 'DeleteFleet' 
 --
 --     * Describe fleets:
 --
---     * 'DescribeFleetAttributes'
+--     * 'DescribeFleetAttributes' 
 --
---     * 'DescribeFleetCapacity'
+--     * 'DescribeFleetCapacity' 
 --
---     * 'DescribeFleetPortSettings'
+--     * 'DescribeFleetPortSettings' 
 --
---     * 'DescribeFleetUtilization'
+--     * 'DescribeFleetUtilization' 
 --
---     * 'DescribeRuntimeConfiguration'
+--     * 'DescribeRuntimeConfiguration' 
 --
---     * 'DescribeEC2InstanceLimits'
+--     * 'DescribeEC2InstanceLimits' 
 --
---     * 'DescribeFleetEvents'
+--     * 'DescribeFleetEvents' 
 --
 --
 --
 --     * Update fleets:
 --
---     * 'UpdateFleetAttributes'
+--     * 'UpdateFleetAttributes' 
 --
---     * 'UpdateFleetCapacity'
+--     * 'UpdateFleetCapacity' 
 --
---     * 'UpdateFleetPortSettings'
+--     * 'UpdateFleetPortSettings' 
 --
---     * 'UpdateRuntimeConfiguration'
+--     * 'UpdateRuntimeConfiguration' 
 --
 --
 --
 --     * Manage fleet actions:
 --
---     * 'StartFleetActions'
+--     * 'StartFleetActions' 
 --
---     * 'StopFleetActions'
+--     * 'StopFleetActions' 
 --
 --
 --
@@ -85,7 +85,6 @@ module Network.AWS.GameLift.DeleteFleet
     ) where
 
 import Network.AWS.GameLift.Types
-import Network.AWS.GameLift.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.Request
@@ -96,12 +95,9 @@ import Network.AWS.Response
 --
 --
 -- /See:/ 'deleteFleet' smart constructor.
-newtype DeleteFleet =
-  DeleteFleet'
-    { _dfFleetId :: Text
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+newtype DeleteFleet = DeleteFleet'{_dfFleetId ::
+                                   Text}
+                        deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'DeleteFleet' with the minimum fields required to make a request.
 --
@@ -111,8 +107,8 @@ newtype DeleteFleet =
 deleteFleet
     :: Text -- ^ 'dfFleetId'
     -> DeleteFleet
-deleteFleet pFleetId_ = DeleteFleet' {_dfFleetId = pFleetId_}
-
+deleteFleet pFleetId_
+  = DeleteFleet'{_dfFleetId = pFleetId_}
 
 -- | Unique identifier for a fleet to be deleted.
 dfFleetId :: Lens' DeleteFleet Text
@@ -147,16 +143,13 @@ instance ToQuery DeleteFleet where
         toQuery = const mempty
 
 -- | /See:/ 'deleteFleetResponse' smart constructor.
-data DeleteFleetResponse =
-  DeleteFleetResponse'
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data DeleteFleetResponse = DeleteFleetResponse'
+                             deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'DeleteFleetResponse' with the minimum fields required to make a request.
 --
 deleteFleetResponse
     :: DeleteFleetResponse
 deleteFleetResponse = DeleteFleetResponse'
-
 
 instance NFData DeleteFleetResponse where

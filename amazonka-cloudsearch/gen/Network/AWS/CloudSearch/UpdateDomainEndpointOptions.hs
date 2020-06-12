@@ -39,7 +39,6 @@ module Network.AWS.CloudSearch.UpdateDomainEndpointOptions
     ) where
 
 import Network.AWS.CloudSearch.Types
-import Network.AWS.CloudSearch.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.Request
@@ -50,13 +49,13 @@ import Network.AWS.Response
 --
 --
 -- /See:/ 'updateDomainEndpointOptions' smart constructor.
-data UpdateDomainEndpointOptions =
-  UpdateDomainEndpointOptions'
-    { _udeoDomainName            :: !Text
-    , _udeoDomainEndpointOptions :: !DomainEndpointOptions
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data UpdateDomainEndpointOptions = UpdateDomainEndpointOptions'{_udeoDomainName
+                                                                :: !Text,
+                                                                _udeoDomainEndpointOptions
+                                                                ::
+                                                                !DomainEndpointOptions}
+                                     deriving (Eq, Read, Show, Data, Typeable,
+                                               Generic)
 
 -- | Creates a value of 'UpdateDomainEndpointOptions' with the minimum fields required to make a request.
 --
@@ -64,23 +63,23 @@ data UpdateDomainEndpointOptions =
 --
 -- * 'udeoDomainName' - A string that represents the name of a domain.
 --
--- * 'udeoDomainEndpointOptions' - Whether to require that all requests to the domain arrive over HTTPS. We recommend Policy-Min-TLS-1-2-2019-07 for TLSSecurityPolicy. For compatibility with older clients, the default is Policy-Min-TLS-1-0-2019-07.
+-- * 'udeoDomainEndpointOptions' - Whether to require that all requests to the domain arrive over HTTPS. We recommend Policy-Min-TLS-1-2-2019-07 for TLSSecurityPolicy. For compatibility with older clients, the default is Policy-Min-TLS-1-0-2019-07. 
 updateDomainEndpointOptions
     :: Text -- ^ 'udeoDomainName'
     -> DomainEndpointOptions -- ^ 'udeoDomainEndpointOptions'
     -> UpdateDomainEndpointOptions
-updateDomainEndpointOptions pDomainName_ pDomainEndpointOptions_ =
-  UpdateDomainEndpointOptions'
-    { _udeoDomainName = pDomainName_
-    , _udeoDomainEndpointOptions = pDomainEndpointOptions_
-    }
-
+updateDomainEndpointOptions pDomainName_
+  pDomainEndpointOptions_
+  = UpdateDomainEndpointOptions'{_udeoDomainName =
+                                   pDomainName_,
+                                 _udeoDomainEndpointOptions =
+                                   pDomainEndpointOptions_}
 
 -- | A string that represents the name of a domain.
 udeoDomainName :: Lens' UpdateDomainEndpointOptions Text
 udeoDomainName = lens _udeoDomainName (\ s a -> s{_udeoDomainName = a})
 
--- | Whether to require that all requests to the domain arrive over HTTPS. We recommend Policy-Min-TLS-1-2-2019-07 for TLSSecurityPolicy. For compatibility with older clients, the default is Policy-Min-TLS-1-0-2019-07.
+-- | Whether to require that all requests to the domain arrive over HTTPS. We recommend Policy-Min-TLS-1-2-2019-07 for TLSSecurityPolicy. For compatibility with older clients, the default is Policy-Min-TLS-1-0-2019-07. 
 udeoDomainEndpointOptions :: Lens' UpdateDomainEndpointOptions DomainEndpointOptions
 udeoDomainEndpointOptions = lens _udeoDomainEndpointOptions (\ s a -> s{_udeoDomainEndpointOptions = a})
 
@@ -116,18 +115,20 @@ instance ToQuery UpdateDomainEndpointOptions where
                "DomainEndpointOptions" =:
                  _udeoDomainEndpointOptions]
 
--- | The result of a @UpdateDomainEndpointOptions@ request. Contains the configuration and status of the domain's endpoint options.
+-- | The result of a @UpdateDomainEndpointOptions@ request. Contains the configuration and status of the domain's endpoint options. 
 --
 --
 --
 -- /See:/ 'updateDomainEndpointOptionsResponse' smart constructor.
-data UpdateDomainEndpointOptionsResponse =
-  UpdateDomainEndpointOptionsResponse'
-    { _udeorsDomainEndpointOptions :: !(Maybe DomainEndpointOptionsStatus)
-    , _udeorsResponseStatus        :: !Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data UpdateDomainEndpointOptionsResponse = UpdateDomainEndpointOptionsResponse'{_udeorsDomainEndpointOptions
+                                                                                ::
+                                                                                !(Maybe
+                                                                                    DomainEndpointOptionsStatus),
+                                                                                _udeorsResponseStatus
+                                                                                ::
+                                                                                !Int}
+                                             deriving (Eq, Read, Show, Data,
+                                                       Typeable, Generic)
 
 -- | Creates a value of 'UpdateDomainEndpointOptionsResponse' with the minimum fields required to make a request.
 --
@@ -139,12 +140,11 @@ data UpdateDomainEndpointOptionsResponse =
 updateDomainEndpointOptionsResponse
     :: Int -- ^ 'udeorsResponseStatus'
     -> UpdateDomainEndpointOptionsResponse
-updateDomainEndpointOptionsResponse pResponseStatus_ =
-  UpdateDomainEndpointOptionsResponse'
-    { _udeorsDomainEndpointOptions = Nothing
-    , _udeorsResponseStatus = pResponseStatus_
-    }
-
+updateDomainEndpointOptionsResponse pResponseStatus_
+  = UpdateDomainEndpointOptionsResponse'{_udeorsDomainEndpointOptions
+                                           = Nothing,
+                                         _udeorsResponseStatus =
+                                           pResponseStatus_}
 
 -- | The newly-configured domain endpoint options.
 udeorsDomainEndpointOptions :: Lens' UpdateDomainEndpointOptionsResponse (Maybe DomainEndpointOptionsStatus)

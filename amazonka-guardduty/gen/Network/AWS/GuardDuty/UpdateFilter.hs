@@ -41,7 +41,6 @@ module Network.AWS.GuardDuty.UpdateFilter
     ) where
 
 import Network.AWS.GuardDuty.Types
-import Network.AWS.GuardDuty.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.Request
@@ -50,17 +49,14 @@ import Network.AWS.Response
 -- | UpdateFilterRequest request body.
 --
 -- /See:/ 'updateFilter' smart constructor.
-data UpdateFilter =
-  UpdateFilter'
-    { _ufFindingCriteria :: !(Maybe FindingCriteria)
-    , _ufAction          :: !(Maybe FilterAction)
-    , _ufDescription     :: !(Maybe Text)
-    , _ufRank            :: !(Maybe Int)
-    , _ufDetectorId      :: !Text
-    , _ufFilterName      :: !Text
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data UpdateFilter = UpdateFilter'{_ufFindingCriteria
+                                  :: !(Maybe FindingCriteria),
+                                  _ufAction :: !(Maybe FilterAction),
+                                  _ufDescription :: !(Maybe Text),
+                                  _ufRank :: !(Maybe Int),
+                                  _ufDetectorId :: !Text,
+                                  _ufFilterName :: !Text}
+                      deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'UpdateFilter' with the minimum fields required to make a request.
 --
@@ -81,16 +77,11 @@ updateFilter
     :: Text -- ^ 'ufDetectorId'
     -> Text -- ^ 'ufFilterName'
     -> UpdateFilter
-updateFilter pDetectorId_ pFilterName_ =
-  UpdateFilter'
-    { _ufFindingCriteria = Nothing
-    , _ufAction = Nothing
-    , _ufDescription = Nothing
-    , _ufRank = Nothing
-    , _ufDetectorId = pDetectorId_
-    , _ufFilterName = pFilterName_
-    }
-
+updateFilter pDetectorId_ pFilterName_
+  = UpdateFilter'{_ufFindingCriteria = Nothing,
+                  _ufAction = Nothing, _ufDescription = Nothing,
+                  _ufRank = Nothing, _ufDetectorId = pDetectorId_,
+                  _ufFilterName = pFilterName_}
 
 -- | Represents the criteria to be used in the filter for querying findings.
 ufFindingCriteria :: Lens' UpdateFilter (Maybe FindingCriteria)
@@ -155,13 +146,10 @@ instance ToQuery UpdateFilter where
         toQuery = const mempty
 
 -- | /See:/ 'updateFilterResponse' smart constructor.
-data UpdateFilterResponse =
-  UpdateFilterResponse'
-    { _ufrsName           :: !(Maybe Text)
-    , _ufrsResponseStatus :: !Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data UpdateFilterResponse = UpdateFilterResponse'{_ufrsName
+                                                  :: !(Maybe Text),
+                                                  _ufrsResponseStatus :: !Int}
+                              deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'UpdateFilterResponse' with the minimum fields required to make a request.
 --
@@ -173,10 +161,9 @@ data UpdateFilterResponse =
 updateFilterResponse
     :: Int -- ^ 'ufrsResponseStatus'
     -> UpdateFilterResponse
-updateFilterResponse pResponseStatus_ =
-  UpdateFilterResponse'
-    {_ufrsName = Nothing, _ufrsResponseStatus = pResponseStatus_}
-
+updateFilterResponse pResponseStatus_
+  = UpdateFilterResponse'{_ufrsName = Nothing,
+                          _ufrsResponseStatus = pResponseStatus_}
 
 -- | The name of the filter.
 ufrsName :: Lens' UpdateFilterResponse (Maybe Text)

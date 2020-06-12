@@ -43,7 +43,6 @@ module Network.AWS.Connect.ListRoutingProfiles
     ) where
 
 import Network.AWS.Connect.Types
-import Network.AWS.Connect.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Pager
 import Network.AWS.Prelude
@@ -51,14 +50,11 @@ import Network.AWS.Request
 import Network.AWS.Response
 
 -- | /See:/ 'listRoutingProfiles' smart constructor.
-data ListRoutingProfiles =
-  ListRoutingProfiles'
-    { _lrpNextToken  :: !(Maybe Text)
-    , _lrpMaxResults :: !(Maybe Nat)
-    , _lrpInstanceId :: !Text
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data ListRoutingProfiles = ListRoutingProfiles'{_lrpNextToken
+                                                :: !(Maybe Text),
+                                                _lrpMaxResults :: !(Maybe Nat),
+                                                _lrpInstanceId :: !Text}
+                             deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'ListRoutingProfiles' with the minimum fields required to make a request.
 --
@@ -72,13 +68,10 @@ data ListRoutingProfiles =
 listRoutingProfiles
     :: Text -- ^ 'lrpInstanceId'
     -> ListRoutingProfiles
-listRoutingProfiles pInstanceId_ =
-  ListRoutingProfiles'
-    { _lrpNextToken = Nothing
-    , _lrpMaxResults = Nothing
-    , _lrpInstanceId = pInstanceId_
-    }
-
+listRoutingProfiles pInstanceId_
+  = ListRoutingProfiles'{_lrpNextToken = Nothing,
+                         _lrpMaxResults = Nothing,
+                         _lrpInstanceId = pInstanceId_}
 
 -- | The token for the next set of results. Use the value returned in the previous response in the next request to retrieve the next set of results.
 lrpNextToken :: Lens' ListRoutingProfiles (Maybe Text)
@@ -135,14 +128,17 @@ instance ToQuery ListRoutingProfiles where
                "maxResults" =: _lrpMaxResults]
 
 -- | /See:/ 'listRoutingProfilesResponse' smart constructor.
-data ListRoutingProfilesResponse =
-  ListRoutingProfilesResponse'
-    { _lrprsRoutingProfileSummaryList :: !(Maybe [RoutingProfileSummary])
-    , _lrprsNextToken                 :: !(Maybe Text)
-    , _lrprsResponseStatus            :: !Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data ListRoutingProfilesResponse = ListRoutingProfilesResponse'{_lrprsRoutingProfileSummaryList
+                                                                ::
+                                                                !(Maybe
+                                                                    [RoutingProfileSummary]),
+                                                                _lrprsNextToken
+                                                                ::
+                                                                !(Maybe Text),
+                                                                _lrprsResponseStatus
+                                                                :: !Int}
+                                     deriving (Eq, Read, Show, Data, Typeable,
+                                               Generic)
 
 -- | Creates a value of 'ListRoutingProfilesResponse' with the minimum fields required to make a request.
 --
@@ -156,13 +152,11 @@ data ListRoutingProfilesResponse =
 listRoutingProfilesResponse
     :: Int -- ^ 'lrprsResponseStatus'
     -> ListRoutingProfilesResponse
-listRoutingProfilesResponse pResponseStatus_ =
-  ListRoutingProfilesResponse'
-    { _lrprsRoutingProfileSummaryList = Nothing
-    , _lrprsNextToken = Nothing
-    , _lrprsResponseStatus = pResponseStatus_
-    }
-
+listRoutingProfilesResponse pResponseStatus_
+  = ListRoutingProfilesResponse'{_lrprsRoutingProfileSummaryList
+                                   = Nothing,
+                                 _lrprsNextToken = Nothing,
+                                 _lrprsResponseStatus = pResponseStatus_}
 
 -- | Information about the routing profiles.
 lrprsRoutingProfileSummaryList :: Lens' ListRoutingProfilesResponse [RoutingProfileSummary]

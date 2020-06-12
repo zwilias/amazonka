@@ -48,7 +48,6 @@ module Network.AWS.IAM.ListRolePolicies
     ) where
 
 import Network.AWS.IAM.Types
-import Network.AWS.IAM.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Pager
 import Network.AWS.Prelude
@@ -56,14 +55,11 @@ import Network.AWS.Request
 import Network.AWS.Response
 
 -- | /See:/ 'listRolePolicies' smart constructor.
-data ListRolePolicies =
-  ListRolePolicies'
-    { _lrpMarker   :: !(Maybe Text)
-    , _lrpMaxItems :: !(Maybe Nat)
-    , _lrpRoleName :: !Text
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data ListRolePolicies = ListRolePolicies'{_lrpMarker
+                                          :: !(Maybe Text),
+                                          _lrpMaxItems :: !(Maybe Nat),
+                                          _lrpRoleName :: !Text}
+                          deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'ListRolePolicies' with the minimum fields required to make a request.
 --
@@ -77,10 +73,9 @@ data ListRolePolicies =
 listRolePolicies
     :: Text -- ^ 'lrpRoleName'
     -> ListRolePolicies
-listRolePolicies pRoleName_ =
-  ListRolePolicies'
-    {_lrpMarker = Nothing, _lrpMaxItems = Nothing, _lrpRoleName = pRoleName_}
-
+listRolePolicies pRoleName_
+  = ListRolePolicies'{_lrpMarker = Nothing,
+                      _lrpMaxItems = Nothing, _lrpRoleName = pRoleName_}
 
 -- | Use this parameter only when paginating results and only after you receive a response indicating that the results are truncated. Set it to the value of the @Marker@ element in the response that you received to indicate where the next call should start.
 lrpMarker :: Lens' ListRolePolicies (Maybe Text)
@@ -132,20 +127,21 @@ instance ToQuery ListRolePolicies where
                "Marker" =: _lrpMarker, "MaxItems" =: _lrpMaxItems,
                "RoleName" =: _lrpRoleName]
 
--- | Contains the response to a successful 'ListRolePolicies' request.
+-- | Contains the response to a successful 'ListRolePolicies' request. 
 --
 --
 --
 -- /See:/ 'listRolePoliciesResponse' smart constructor.
-data ListRolePoliciesResponse =
-  ListRolePoliciesResponse'
-    { _lrprsMarker         :: !(Maybe Text)
-    , _lrprsIsTruncated    :: !(Maybe Bool)
-    , _lrprsResponseStatus :: !Int
-    , _lrprsPolicyNames    :: ![Text]
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data ListRolePoliciesResponse = ListRolePoliciesResponse'{_lrprsMarker
+                                                          :: !(Maybe Text),
+                                                          _lrprsIsTruncated ::
+                                                          !(Maybe Bool),
+                                                          _lrprsResponseStatus
+                                                          :: !Int,
+                                                          _lrprsPolicyNames ::
+                                                          ![Text]}
+                                  deriving (Eq, Read, Show, Data, Typeable,
+                                            Generic)
 
 -- | Creates a value of 'ListRolePoliciesResponse' with the minimum fields required to make a request.
 --
@@ -161,14 +157,11 @@ data ListRolePoliciesResponse =
 listRolePoliciesResponse
     :: Int -- ^ 'lrprsResponseStatus'
     -> ListRolePoliciesResponse
-listRolePoliciesResponse pResponseStatus_ =
-  ListRolePoliciesResponse'
-    { _lrprsMarker = Nothing
-    , _lrprsIsTruncated = Nothing
-    , _lrprsResponseStatus = pResponseStatus_
-    , _lrprsPolicyNames = mempty
-    }
-
+listRolePoliciesResponse pResponseStatus_
+  = ListRolePoliciesResponse'{_lrprsMarker = Nothing,
+                              _lrprsIsTruncated = Nothing,
+                              _lrprsResponseStatus = pResponseStatus_,
+                              _lrprsPolicyNames = mempty}
 
 -- | When @IsTruncated@ is @true@ , this element is present and contains the value to use for the @Marker@ parameter in a subsequent pagination request.
 lrprsMarker :: Lens' ListRolePoliciesResponse (Maybe Text)

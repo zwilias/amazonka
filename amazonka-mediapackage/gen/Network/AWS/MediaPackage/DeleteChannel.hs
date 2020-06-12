@@ -36,18 +36,13 @@ module Network.AWS.MediaPackage.DeleteChannel
 
 import Network.AWS.Lens
 import Network.AWS.MediaPackage.Types
-import Network.AWS.MediaPackage.Types.Product
 import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 
 -- | /See:/ 'deleteChannel' smart constructor.
-newtype DeleteChannel =
-  DeleteChannel'
-    { _dcId :: Text
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+newtype DeleteChannel = DeleteChannel'{_dcId :: Text}
+                          deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'DeleteChannel' with the minimum fields required to make a request.
 --
@@ -57,8 +52,7 @@ newtype DeleteChannel =
 deleteChannel
     :: Text -- ^ 'dcId'
     -> DeleteChannel
-deleteChannel pId_ = DeleteChannel' {_dcId = pId_}
-
+deleteChannel pId_ = DeleteChannel'{_dcId = pId_}
 
 -- | The ID of the Channel to delete.
 dcId :: Lens' DeleteChannel Text
@@ -91,12 +85,10 @@ instance ToQuery DeleteChannel where
         toQuery = const mempty
 
 -- | /See:/ 'deleteChannelResponse' smart constructor.
-newtype DeleteChannelResponse =
-  DeleteChannelResponse'
-    { _drsResponseStatus :: Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+newtype DeleteChannelResponse = DeleteChannelResponse'{_drsResponseStatus
+                                                       :: Int}
+                                  deriving (Eq, Read, Show, Data, Typeable,
+                                            Generic)
 
 -- | Creates a value of 'DeleteChannelResponse' with the minimum fields required to make a request.
 --
@@ -106,9 +98,9 @@ newtype DeleteChannelResponse =
 deleteChannelResponse
     :: Int -- ^ 'drsResponseStatus'
     -> DeleteChannelResponse
-deleteChannelResponse pResponseStatus_ =
-  DeleteChannelResponse' {_drsResponseStatus = pResponseStatus_}
-
+deleteChannelResponse pResponseStatus_
+  = DeleteChannelResponse'{_drsResponseStatus =
+                             pResponseStatus_}
 
 -- | -- | The response status code.
 drsResponseStatus :: Lens' DeleteChannelResponse Int

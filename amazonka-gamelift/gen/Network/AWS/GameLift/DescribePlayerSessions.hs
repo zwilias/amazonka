@@ -18,28 +18,28 @@
 -- Stability   : auto-generated
 -- Portability : non-portable (GHC extensions)
 --
--- Retrieves properties for one or more player sessions. This action can be used in several ways: (1) provide a @PlayerSessionId@ to request properties for a specific player session; (2) provide a @GameSessionId@ to request properties for all player sessions in the specified game session; (3) provide a @PlayerId@ to request properties for all player sessions of a specified player.
+-- Retrieves properties for one or more player sessions. This action can be used in several ways: (1) provide a @PlayerSessionId@ to request properties for a specific player session; (2) provide a @GameSessionId@ to request properties for all player sessions in the specified game session; (3) provide a @PlayerId@ to request properties for all player sessions of a specified player. 
 --
 --
 -- To get game session record(s), specify only one of the following: a player session ID, a game session ID, or a player ID. You can filter this request by player session status. Use the pagination parameters to retrieve results as a set of sequential pages. If successful, a 'PlayerSession' object is returned for each session matching the request.
 --
--- /Available in Amazon GameLift Local./
+-- /Available in Amazon GameLift Local./ 
 --
 -- Player-session-related operations include:
 --
---     * 'CreatePlayerSession'
+--     * 'CreatePlayerSession' 
 --
---     * 'CreatePlayerSessions'
+--     * 'CreatePlayerSessions' 
 --
---     * 'DescribePlayerSessions'
+--     * 'DescribePlayerSessions' 
 --
 --     * Game session placements
 --
---     * 'StartGameSessionPlacement'
+--     * 'StartGameSessionPlacement' 
 --
---     * 'DescribeGameSessionPlacement'
+--     * 'DescribeGameSessionPlacement' 
 --
---     * 'StopGameSessionPlacement'
+--     * 'StopGameSessionPlacement' 
 --
 --
 --
@@ -68,7 +68,6 @@ module Network.AWS.GameLift.DescribePlayerSessions
     ) where
 
 import Network.AWS.GameLift.Types
-import Network.AWS.GameLift.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.Request
@@ -79,17 +78,20 @@ import Network.AWS.Response
 --
 --
 -- /See:/ 'describePlayerSessions' smart constructor.
-data DescribePlayerSessions =
-  DescribePlayerSessions'
-    { _dpssGameSessionId             :: !(Maybe Text)
-    , _dpssNextToken                 :: !(Maybe Text)
-    , _dpssLimit                     :: !(Maybe Nat)
-    , _dpssPlayerSessionId           :: !(Maybe Text)
-    , _dpssPlayerId                  :: !(Maybe Text)
-    , _dpssPlayerSessionStatusFilter :: !(Maybe Text)
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data DescribePlayerSessions = DescribePlayerSessions'{_dpssGameSessionId
+                                                      :: !(Maybe Text),
+                                                      _dpssNextToken ::
+                                                      !(Maybe Text),
+                                                      _dpssLimit ::
+                                                      !(Maybe Nat),
+                                                      _dpssPlayerSessionId ::
+                                                      !(Maybe Text),
+                                                      _dpssPlayerId ::
+                                                      !(Maybe Text),
+                                                      _dpssPlayerSessionStatusFilter
+                                                      :: !(Maybe Text)}
+                                deriving (Eq, Read, Show, Data, Typeable,
+                                          Generic)
 
 -- | Creates a value of 'DescribePlayerSessions' with the minimum fields required to make a request.
 --
@@ -108,16 +110,13 @@ data DescribePlayerSessions =
 -- * 'dpssPlayerSessionStatusFilter' - Player session status to filter results on. Possible player session statuses include the following:     * __RESERVED__ -- The player session request has been received, but the player has not yet connected to the server process and/or been validated.      * __ACTIVE__ -- The player has been validated by the server process and is currently connected.     * __COMPLETED__ -- The player connection has been dropped.     * __TIMEDOUT__ -- A player session request was received, but the player did not connect and/or was not validated within the timeout limit (60 seconds).
 describePlayerSessions
     :: DescribePlayerSessions
-describePlayerSessions =
-  DescribePlayerSessions'
-    { _dpssGameSessionId = Nothing
-    , _dpssNextToken = Nothing
-    , _dpssLimit = Nothing
-    , _dpssPlayerSessionId = Nothing
-    , _dpssPlayerId = Nothing
-    , _dpssPlayerSessionStatusFilter = Nothing
-    }
-
+describePlayerSessions
+  = DescribePlayerSessions'{_dpssGameSessionId =
+                              Nothing,
+                            _dpssNextToken = Nothing, _dpssLimit = Nothing,
+                            _dpssPlayerSessionId = Nothing,
+                            _dpssPlayerId = Nothing,
+                            _dpssPlayerSessionStatusFilter = Nothing}
 
 -- | Unique identifier for the game session to retrieve player sessions for.
 dpssGameSessionId :: Lens' DescribePlayerSessions (Maybe Text)
@@ -191,14 +190,18 @@ instance ToQuery DescribePlayerSessions where
 --
 --
 -- /See:/ 'describePlayerSessionsResponse' smart constructor.
-data DescribePlayerSessionsResponse =
-  DescribePlayerSessionsResponse'
-    { _dpsrsNextToken      :: !(Maybe Text)
-    , _dpsrsPlayerSessions :: !(Maybe [PlayerSession])
-    , _dpsrsResponseStatus :: !Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data DescribePlayerSessionsResponse = DescribePlayerSessionsResponse'{_dpsrsNextToken
+                                                                      ::
+                                                                      !(Maybe
+                                                                          Text),
+                                                                      _dpsrsPlayerSessions
+                                                                      ::
+                                                                      !(Maybe
+                                                                          [PlayerSession]),
+                                                                      _dpsrsResponseStatus
+                                                                      :: !Int}
+                                        deriving (Eq, Read, Show, Data,
+                                                  Typeable, Generic)
 
 -- | Creates a value of 'DescribePlayerSessionsResponse' with the minimum fields required to make a request.
 --
@@ -212,13 +215,11 @@ data DescribePlayerSessionsResponse =
 describePlayerSessionsResponse
     :: Int -- ^ 'dpsrsResponseStatus'
     -> DescribePlayerSessionsResponse
-describePlayerSessionsResponse pResponseStatus_ =
-  DescribePlayerSessionsResponse'
-    { _dpsrsNextToken = Nothing
-    , _dpsrsPlayerSessions = Nothing
-    , _dpsrsResponseStatus = pResponseStatus_
-    }
-
+describePlayerSessionsResponse pResponseStatus_
+  = DescribePlayerSessionsResponse'{_dpsrsNextToken =
+                                      Nothing,
+                                    _dpsrsPlayerSessions = Nothing,
+                                    _dpsrsResponseStatus = pResponseStatus_}
 
 -- | Token that indicates where to resume retrieving results on the next call to this action. If no token is returned, these results represent the end of the list.
 dpsrsNextToken :: Lens' DescribePlayerSessionsResponse (Maybe Text)

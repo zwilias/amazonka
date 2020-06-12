@@ -43,7 +43,6 @@ module Network.AWS.DeviceFarm.ListDevicePools
     ) where
 
 import Network.AWS.DeviceFarm.Types
-import Network.AWS.DeviceFarm.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Pager
 import Network.AWS.Prelude
@@ -55,14 +54,11 @@ import Network.AWS.Response
 --
 --
 -- /See:/ 'listDevicePools' smart constructor.
-data ListDevicePools =
-  ListDevicePools'
-    { _ldpNextToken :: !(Maybe Text)
-    , _ldpType      :: !(Maybe DevicePoolType)
-    , _ldpArn       :: !Text
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data ListDevicePools = ListDevicePools'{_ldpNextToken
+                                        :: !(Maybe Text),
+                                        _ldpType :: !(Maybe DevicePoolType),
+                                        _ldpArn :: !Text}
+                         deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'ListDevicePools' with the minimum fields required to make a request.
 --
@@ -76,10 +72,9 @@ data ListDevicePools =
 listDevicePools
     :: Text -- ^ 'ldpArn'
     -> ListDevicePools
-listDevicePools pArn_ =
-  ListDevicePools'
-    {_ldpNextToken = Nothing, _ldpType = Nothing, _ldpArn = pArn_}
-
+listDevicePools pArn_
+  = ListDevicePools'{_ldpNextToken = Nothing,
+                     _ldpType = Nothing, _ldpArn = pArn_}
 
 -- | An identifier that was returned from the previous call to this operation, which can be used to return the next set of items in the list.
 ldpNextToken :: Lens' ListDevicePools (Maybe Text)
@@ -143,14 +138,15 @@ instance ToQuery ListDevicePools where
 --
 --
 -- /See:/ 'listDevicePoolsResponse' smart constructor.
-data ListDevicePoolsResponse =
-  ListDevicePoolsResponse'
-    { _ldprsDevicePools    :: !(Maybe [DevicePool])
-    , _ldprsNextToken      :: !(Maybe Text)
-    , _ldprsResponseStatus :: !Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data ListDevicePoolsResponse = ListDevicePoolsResponse'{_ldprsDevicePools
+                                                        ::
+                                                        !(Maybe [DevicePool]),
+                                                        _ldprsNextToken ::
+                                                        !(Maybe Text),
+                                                        _ldprsResponseStatus ::
+                                                        !Int}
+                                 deriving (Eq, Read, Show, Data, Typeable,
+                                           Generic)
 
 -- | Creates a value of 'ListDevicePoolsResponse' with the minimum fields required to make a request.
 --
@@ -164,13 +160,11 @@ data ListDevicePoolsResponse =
 listDevicePoolsResponse
     :: Int -- ^ 'ldprsResponseStatus'
     -> ListDevicePoolsResponse
-listDevicePoolsResponse pResponseStatus_ =
-  ListDevicePoolsResponse'
-    { _ldprsDevicePools = Nothing
-    , _ldprsNextToken = Nothing
-    , _ldprsResponseStatus = pResponseStatus_
-    }
-
+listDevicePoolsResponse pResponseStatus_
+  = ListDevicePoolsResponse'{_ldprsDevicePools =
+                               Nothing,
+                             _ldprsNextToken = Nothing,
+                             _ldprsResponseStatus = pResponseStatus_}
 
 -- | Information about the device pools.
 ldprsDevicePools :: Lens' ListDevicePoolsResponse [DevicePool]

@@ -23,7 +23,7 @@
 --
 -- This action returns the newly started workflow execution.
 --
--- __Access Control__
+-- __Access Control__ 
 --
 -- You can use IAM policies to control this action's access to Amazon SWF resources as follows:
 --
@@ -86,25 +86,29 @@ import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 import Network.AWS.SWF.Types
-import Network.AWS.SWF.Types.Product
 
 -- | /See:/ 'startWorkflowExecution' smart constructor.
-data StartWorkflowExecution =
-  StartWorkflowExecution'
-    { _sTagList                      :: !(Maybe [Text])
-    , _sTaskStartToCloseTimeout      :: !(Maybe Text)
-    , _sLambdaRole                   :: !(Maybe Text)
-    , _sInput                        :: !(Maybe Text)
-    , _sExecutionStartToCloseTimeout :: !(Maybe Text)
-    , _sTaskList                     :: !(Maybe TaskList)
-    , _sTaskPriority                 :: !(Maybe Text)
-    , _sChildPolicy                  :: !(Maybe ChildPolicy)
-    , _sDomain                       :: !Text
-    , _sWorkflowId                   :: !Text
-    , _sWorkflowType                 :: !WorkflowType
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data StartWorkflowExecution = StartWorkflowExecution'{_sTagList
+                                                      :: !(Maybe [Text]),
+                                                      _sTaskStartToCloseTimeout
+                                                      :: !(Maybe Text),
+                                                      _sLambdaRole ::
+                                                      !(Maybe Text),
+                                                      _sInput :: !(Maybe Text),
+                                                      _sExecutionStartToCloseTimeout
+                                                      :: !(Maybe Text),
+                                                      _sTaskList ::
+                                                      !(Maybe TaskList),
+                                                      _sTaskPriority ::
+                                                      !(Maybe Text),
+                                                      _sChildPolicy ::
+                                                      !(Maybe ChildPolicy),
+                                                      _sDomain :: !Text,
+                                                      _sWorkflowId :: !Text,
+                                                      _sWorkflowType ::
+                                                      !WorkflowType}
+                                deriving (Eq, Read, Show, Data, Typeable,
+                                          Generic)
 
 -- | Creates a value of 'StartWorkflowExecution' with the minimum fields required to make a request.
 --
@@ -136,21 +140,16 @@ startWorkflowExecution
     -> Text -- ^ 'sWorkflowId'
     -> WorkflowType -- ^ 'sWorkflowType'
     -> StartWorkflowExecution
-startWorkflowExecution pDomain_ pWorkflowId_ pWorkflowType_ =
-  StartWorkflowExecution'
-    { _sTagList = Nothing
-    , _sTaskStartToCloseTimeout = Nothing
-    , _sLambdaRole = Nothing
-    , _sInput = Nothing
-    , _sExecutionStartToCloseTimeout = Nothing
-    , _sTaskList = Nothing
-    , _sTaskPriority = Nothing
-    , _sChildPolicy = Nothing
-    , _sDomain = pDomain_
-    , _sWorkflowId = pWorkflowId_
-    , _sWorkflowType = pWorkflowType_
-    }
-
+startWorkflowExecution pDomain_ pWorkflowId_
+  pWorkflowType_
+  = StartWorkflowExecution'{_sTagList = Nothing,
+                            _sTaskStartToCloseTimeout = Nothing,
+                            _sLambdaRole = Nothing, _sInput = Nothing,
+                            _sExecutionStartToCloseTimeout = Nothing,
+                            _sTaskList = Nothing, _sTaskPriority = Nothing,
+                            _sChildPolicy = Nothing, _sDomain = pDomain_,
+                            _sWorkflowId = pWorkflowId_,
+                            _sWorkflowType = pWorkflowType_}
 
 -- | The list of tags to associate with the workflow execution. You can specify a maximum of 5 tags. You can list workflow executions with a specific tag by calling 'ListOpenWorkflowExecutions' or 'ListClosedWorkflowExecutions' and specifying a 'TagFilter' .
 sTagList :: Lens' StartWorkflowExecution [Text]
@@ -249,13 +248,14 @@ instance ToQuery StartWorkflowExecution where
 --
 --
 -- /See:/ 'startWorkflowExecutionResponse' smart constructor.
-data StartWorkflowExecutionResponse =
-  StartWorkflowExecutionResponse'
-    { _swersRunId          :: !(Maybe Text)
-    , _swersResponseStatus :: !Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data StartWorkflowExecutionResponse = StartWorkflowExecutionResponse'{_swersRunId
+                                                                      ::
+                                                                      !(Maybe
+                                                                          Text),
+                                                                      _swersResponseStatus
+                                                                      :: !Int}
+                                        deriving (Eq, Read, Show, Data,
+                                                  Typeable, Generic)
 
 -- | Creates a value of 'StartWorkflowExecutionResponse' with the minimum fields required to make a request.
 --
@@ -267,10 +267,10 @@ data StartWorkflowExecutionResponse =
 startWorkflowExecutionResponse
     :: Int -- ^ 'swersResponseStatus'
     -> StartWorkflowExecutionResponse
-startWorkflowExecutionResponse pResponseStatus_ =
-  StartWorkflowExecutionResponse'
-    {_swersRunId = Nothing, _swersResponseStatus = pResponseStatus_}
-
+startWorkflowExecutionResponse pResponseStatus_
+  = StartWorkflowExecutionResponse'{_swersRunId =
+                                      Nothing,
+                                    _swersResponseStatus = pResponseStatus_}
 
 -- | The @runId@ of a workflow execution. This ID is generated by the service and can be used to uniquely identify the workflow execution within a domain.
 swersRunId :: Lens' StartWorkflowExecutionResponse (Maybe Text)

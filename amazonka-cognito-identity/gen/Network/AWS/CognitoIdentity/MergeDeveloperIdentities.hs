@@ -45,7 +45,6 @@ module Network.AWS.CognitoIdentity.MergeDeveloperIdentities
     ) where
 
 import Network.AWS.CognitoIdentity.Types
-import Network.AWS.CognitoIdentity.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.Request
@@ -56,15 +55,16 @@ import Network.AWS.Response
 --
 --
 -- /See:/ 'mergeDeveloperIdentities' smart constructor.
-data MergeDeveloperIdentities =
-  MergeDeveloperIdentities'
-    { _mdiSourceUserIdentifier      :: !Text
-    , _mdiDestinationUserIdentifier :: !Text
-    , _mdiDeveloperProviderName     :: !Text
-    , _mdiIdentityPoolId            :: !Text
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data MergeDeveloperIdentities = MergeDeveloperIdentities'{_mdiSourceUserIdentifier
+                                                          :: !Text,
+                                                          _mdiDestinationUserIdentifier
+                                                          :: !Text,
+                                                          _mdiDeveloperProviderName
+                                                          :: !Text,
+                                                          _mdiIdentityPoolId ::
+                                                          !Text}
+                                  deriving (Eq, Read, Show, Data, Typeable,
+                                            Generic)
 
 -- | Creates a value of 'MergeDeveloperIdentities' with the minimum fields required to make a request.
 --
@@ -83,14 +83,16 @@ mergeDeveloperIdentities
     -> Text -- ^ 'mdiDeveloperProviderName'
     -> Text -- ^ 'mdiIdentityPoolId'
     -> MergeDeveloperIdentities
-mergeDeveloperIdentities pSourceUserIdentifier_ pDestinationUserIdentifier_ pDeveloperProviderName_ pIdentityPoolId_ =
-  MergeDeveloperIdentities'
-    { _mdiSourceUserIdentifier = pSourceUserIdentifier_
-    , _mdiDestinationUserIdentifier = pDestinationUserIdentifier_
-    , _mdiDeveloperProviderName = pDeveloperProviderName_
-    , _mdiIdentityPoolId = pIdentityPoolId_
-    }
-
+mergeDeveloperIdentities pSourceUserIdentifier_
+  pDestinationUserIdentifier_ pDeveloperProviderName_
+  pIdentityPoolId_
+  = MergeDeveloperIdentities'{_mdiSourceUserIdentifier
+                                = pSourceUserIdentifier_,
+                              _mdiDestinationUserIdentifier =
+                                pDestinationUserIdentifier_,
+                              _mdiDeveloperProviderName =
+                                pDeveloperProviderName_,
+                              _mdiIdentityPoolId = pIdentityPoolId_}
 
 -- | User identifier for the source user. The value should be a @DeveloperUserIdentifier@ .
 mdiSourceUserIdentifier :: Lens' MergeDeveloperIdentities Text
@@ -157,13 +159,15 @@ instance ToQuery MergeDeveloperIdentities where
 --
 --
 -- /See:/ 'mergeDeveloperIdentitiesResponse' smart constructor.
-data MergeDeveloperIdentitiesResponse =
-  MergeDeveloperIdentitiesResponse'
-    { _mdirsIdentityId     :: !(Maybe Text)
-    , _mdirsResponseStatus :: !Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data MergeDeveloperIdentitiesResponse = MergeDeveloperIdentitiesResponse'{_mdirsIdentityId
+                                                                          ::
+                                                                          !(Maybe
+                                                                              Text),
+                                                                          _mdirsResponseStatus
+                                                                          ::
+                                                                          !Int}
+                                          deriving (Eq, Read, Show, Data,
+                                                    Typeable, Generic)
 
 -- | Creates a value of 'MergeDeveloperIdentitiesResponse' with the minimum fields required to make a request.
 --
@@ -175,10 +179,10 @@ data MergeDeveloperIdentitiesResponse =
 mergeDeveloperIdentitiesResponse
     :: Int -- ^ 'mdirsResponseStatus'
     -> MergeDeveloperIdentitiesResponse
-mergeDeveloperIdentitiesResponse pResponseStatus_ =
-  MergeDeveloperIdentitiesResponse'
-    {_mdirsIdentityId = Nothing, _mdirsResponseStatus = pResponseStatus_}
-
+mergeDeveloperIdentitiesResponse pResponseStatus_
+  = MergeDeveloperIdentitiesResponse'{_mdirsIdentityId
+                                        = Nothing,
+                                      _mdirsResponseStatus = pResponseStatus_}
 
 -- | A unique identifier in the format REGION:GUID.
 mdirsIdentityId :: Lens' MergeDeveloperIdentitiesResponse (Maybe Text)

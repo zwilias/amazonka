@@ -42,7 +42,6 @@ module Network.AWS.IoT.CreateThing
     ) where
 
 import Network.AWS.IoT.Types
-import Network.AWS.IoT.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.Request
@@ -53,14 +52,12 @@ import Network.AWS.Response
 --
 --
 -- /See:/ 'createThing' smart constructor.
-data CreateThing =
-  CreateThing'
-    { _ctThingTypeName    :: !(Maybe Text)
-    , _ctAttributePayload :: !(Maybe AttributePayload)
-    , _ctThingName        :: !Text
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data CreateThing = CreateThing'{_ctThingTypeName ::
+                                !(Maybe Text),
+                                _ctAttributePayload ::
+                                !(Maybe AttributePayload),
+                                _ctThingName :: !Text}
+                     deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'CreateThing' with the minimum fields required to make a request.
 --
@@ -68,25 +65,22 @@ data CreateThing =
 --
 -- * 'ctThingTypeName' - The name of the thing type associated with the new thing.
 --
--- * 'ctAttributePayload' - The attribute payload, which consists of up to three name/value pairs in a JSON document. For example: @{\"attributes\":{\"string1\":\"string2\"}}@
+-- * 'ctAttributePayload' - The attribute payload, which consists of up to three name/value pairs in a JSON document. For example: @{\"attributes\":{\"string1\":\"string2\"}}@ 
 --
 -- * 'ctThingName' - The name of the thing to create.
 createThing
     :: Text -- ^ 'ctThingName'
     -> CreateThing
-createThing pThingName_ =
-  CreateThing'
-    { _ctThingTypeName = Nothing
-    , _ctAttributePayload = Nothing
-    , _ctThingName = pThingName_
-    }
-
+createThing pThingName_
+  = CreateThing'{_ctThingTypeName = Nothing,
+                 _ctAttributePayload = Nothing,
+                 _ctThingName = pThingName_}
 
 -- | The name of the thing type associated with the new thing.
 ctThingTypeName :: Lens' CreateThing (Maybe Text)
 ctThingTypeName = lens _ctThingTypeName (\ s a -> s{_ctThingTypeName = a})
 
--- | The attribute payload, which consists of up to three name/value pairs in a JSON document. For example: @{\"attributes\":{\"string1\":\"string2\"}}@
+-- | The attribute payload, which consists of up to three name/value pairs in a JSON document. For example: @{\"attributes\":{\"string1\":\"string2\"}}@ 
 ctAttributePayload :: Lens' CreateThing (Maybe AttributePayload)
 ctAttributePayload = lens _ctAttributePayload (\ s a -> s{_ctAttributePayload = a})
 
@@ -131,15 +125,12 @@ instance ToQuery CreateThing where
 --
 --
 -- /See:/ 'createThingResponse' smart constructor.
-data CreateThingResponse =
-  CreateThingResponse'
-    { _ctrsThingARN       :: !(Maybe Text)
-    , _ctrsThingName      :: !(Maybe Text)
-    , _ctrsThingId        :: !(Maybe Text)
-    , _ctrsResponseStatus :: !Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data CreateThingResponse = CreateThingResponse'{_ctrsThingARN
+                                                :: !(Maybe Text),
+                                                _ctrsThingName :: !(Maybe Text),
+                                                _ctrsThingId :: !(Maybe Text),
+                                                _ctrsResponseStatus :: !Int}
+                             deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'CreateThingResponse' with the minimum fields required to make a request.
 --
@@ -155,14 +146,10 @@ data CreateThingResponse =
 createThingResponse
     :: Int -- ^ 'ctrsResponseStatus'
     -> CreateThingResponse
-createThingResponse pResponseStatus_ =
-  CreateThingResponse'
-    { _ctrsThingARN = Nothing
-    , _ctrsThingName = Nothing
-    , _ctrsThingId = Nothing
-    , _ctrsResponseStatus = pResponseStatus_
-    }
-
+createThingResponse pResponseStatus_
+  = CreateThingResponse'{_ctrsThingARN = Nothing,
+                         _ctrsThingName = Nothing, _ctrsThingId = Nothing,
+                         _ctrsResponseStatus = pResponseStatus_}
 
 -- | The ARN of the new thing.
 ctrsThingARN :: Lens' CreateThingResponse (Maybe Text)

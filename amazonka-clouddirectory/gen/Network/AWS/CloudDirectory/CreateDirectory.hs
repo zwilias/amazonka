@@ -44,20 +44,16 @@ module Network.AWS.CloudDirectory.CreateDirectory
     ) where
 
 import Network.AWS.CloudDirectory.Types
-import Network.AWS.CloudDirectory.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 
 -- | /See:/ 'createDirectory' smart constructor.
-data CreateDirectory =
-  CreateDirectory'
-    { _cdName      :: !Text
-    , _cdSchemaARN :: !Text
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data CreateDirectory = CreateDirectory'{_cdName ::
+                                        !Text,
+                                        _cdSchemaARN :: !Text}
+                         deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'CreateDirectory' with the minimum fields required to make a request.
 --
@@ -70,9 +66,9 @@ createDirectory
     :: Text -- ^ 'cdName'
     -> Text -- ^ 'cdSchemaARN'
     -> CreateDirectory
-createDirectory pName_ pSchemaARN_ =
-  CreateDirectory' {_cdName = pName_, _cdSchemaARN = pSchemaARN_}
-
+createDirectory pName_ pSchemaARN_
+  = CreateDirectory'{_cdName = pName_,
+                     _cdSchemaARN = pSchemaARN_}
 
 -- | The name of the 'Directory' . Should be unique per account, per region.
 cdName :: Lens' CreateDirectory Text
@@ -115,16 +111,17 @@ instance ToQuery CreateDirectory where
         toQuery = const mempty
 
 -- | /See:/ 'createDirectoryResponse' smart constructor.
-data CreateDirectoryResponse =
-  CreateDirectoryResponse'
-    { _cdrsResponseStatus   :: !Int
-    , _cdrsDirectoryARN     :: !Text
-    , _cdrsName             :: !Text
-    , _cdrsObjectIdentifier :: !Text
-    , _cdrsAppliedSchemaARN :: !Text
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data CreateDirectoryResponse = CreateDirectoryResponse'{_cdrsResponseStatus
+                                                        :: !Int,
+                                                        _cdrsDirectoryARN ::
+                                                        !Text,
+                                                        _cdrsName :: !Text,
+                                                        _cdrsObjectIdentifier ::
+                                                        !Text,
+                                                        _cdrsAppliedSchemaARN ::
+                                                        !Text}
+                                 deriving (Eq, Read, Show, Data, Typeable,
+                                           Generic)
 
 -- | Creates a value of 'CreateDirectoryResponse' with the minimum fields required to make a request.
 --
@@ -146,15 +143,15 @@ createDirectoryResponse
     -> Text -- ^ 'cdrsObjectIdentifier'
     -> Text -- ^ 'cdrsAppliedSchemaARN'
     -> CreateDirectoryResponse
-createDirectoryResponse pResponseStatus_ pDirectoryARN_ pName_ pObjectIdentifier_ pAppliedSchemaARN_ =
-  CreateDirectoryResponse'
-    { _cdrsResponseStatus = pResponseStatus_
-    , _cdrsDirectoryARN = pDirectoryARN_
-    , _cdrsName = pName_
-    , _cdrsObjectIdentifier = pObjectIdentifier_
-    , _cdrsAppliedSchemaARN = pAppliedSchemaARN_
-    }
-
+createDirectoryResponse pResponseStatus_
+  pDirectoryARN_ pName_ pObjectIdentifier_
+  pAppliedSchemaARN_
+  = CreateDirectoryResponse'{_cdrsResponseStatus =
+                               pResponseStatus_,
+                             _cdrsDirectoryARN = pDirectoryARN_,
+                             _cdrsName = pName_,
+                             _cdrsObjectIdentifier = pObjectIdentifier_,
+                             _cdrsAppliedSchemaARN = pAppliedSchemaARN_}
 
 -- | -- | The response status code.
 cdrsResponseStatus :: Lens' CreateDirectoryResponse Int

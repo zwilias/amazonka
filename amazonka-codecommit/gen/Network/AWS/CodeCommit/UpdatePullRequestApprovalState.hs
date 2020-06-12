@@ -37,21 +37,21 @@ module Network.AWS.CodeCommit.UpdatePullRequestApprovalState
     ) where
 
 import Network.AWS.CodeCommit.Types
-import Network.AWS.CodeCommit.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 
 -- | /See:/ 'updatePullRequestApprovalState' smart constructor.
-data UpdatePullRequestApprovalState =
-  UpdatePullRequestApprovalState'
-    { _uprasPullRequestId :: !Text
-    , _uprasRevisionId    :: !Text
-    , _uprasApprovalState :: !ApprovalState
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data UpdatePullRequestApprovalState = UpdatePullRequestApprovalState'{_uprasPullRequestId
+                                                                      :: !Text,
+                                                                      _uprasRevisionId
+                                                                      :: !Text,
+                                                                      _uprasApprovalState
+                                                                      ::
+                                                                      !ApprovalState}
+                                        deriving (Eq, Read, Show, Data,
+                                                  Typeable, Generic)
 
 -- | Creates a value of 'UpdatePullRequestApprovalState' with the minimum fields required to make a request.
 --
@@ -67,13 +67,12 @@ updatePullRequestApprovalState
     -> Text -- ^ 'uprasRevisionId'
     -> ApprovalState -- ^ 'uprasApprovalState'
     -> UpdatePullRequestApprovalState
-updatePullRequestApprovalState pPullRequestId_ pRevisionId_ pApprovalState_ =
-  UpdatePullRequestApprovalState'
-    { _uprasPullRequestId = pPullRequestId_
-    , _uprasRevisionId = pRevisionId_
-    , _uprasApprovalState = pApprovalState_
-    }
-
+updatePullRequestApprovalState pPullRequestId_
+  pRevisionId_ pApprovalState_
+  = UpdatePullRequestApprovalState'{_uprasPullRequestId
+                                      = pPullRequestId_,
+                                    _uprasRevisionId = pRevisionId_,
+                                    _uprasApprovalState = pApprovalState_}
 
 -- | The system-generated ID of the pull request.
 uprasPullRequestId :: Lens' UpdatePullRequestApprovalState Text
@@ -126,17 +125,16 @@ instance ToQuery UpdatePullRequestApprovalState where
         toQuery = const mempty
 
 -- | /See:/ 'updatePullRequestApprovalStateResponse' smart constructor.
-data UpdatePullRequestApprovalStateResponse =
-  UpdatePullRequestApprovalStateResponse'
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data UpdatePullRequestApprovalStateResponse = UpdatePullRequestApprovalStateResponse'
+                                                deriving (Eq, Read, Show, Data,
+                                                          Typeable, Generic)
 
 -- | Creates a value of 'UpdatePullRequestApprovalStateResponse' with the minimum fields required to make a request.
 --
 updatePullRequestApprovalStateResponse
     :: UpdatePullRequestApprovalStateResponse
-updatePullRequestApprovalStateResponse = UpdatePullRequestApprovalStateResponse'
-
+updatePullRequestApprovalStateResponse
+  = UpdatePullRequestApprovalStateResponse'
 
 instance NFData
            UpdatePullRequestApprovalStateResponse

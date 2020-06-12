@@ -42,15 +42,12 @@ import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 import Network.AWS.Shield.Types
-import Network.AWS.Shield.Types.Product
 
 -- | /See:/ 'describeProtection' smart constructor.
-newtype DescribeProtection =
-  DescribeProtection'
-    { _dpProtectionId :: Text
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+newtype DescribeProtection = DescribeProtection'{_dpProtectionId
+                                                 :: Text}
+                               deriving (Eq, Read, Show, Data, Typeable,
+                                         Generic)
 
 -- | Creates a value of 'DescribeProtection' with the minimum fields required to make a request.
 --
@@ -60,9 +57,9 @@ newtype DescribeProtection =
 describeProtection
     :: Text -- ^ 'dpProtectionId'
     -> DescribeProtection
-describeProtection pProtectionId_ =
-  DescribeProtection' {_dpProtectionId = pProtectionId_}
-
+describeProtection pProtectionId_
+  = DescribeProtection'{_dpProtectionId =
+                          pProtectionId_}
 
 -- | The unique identifier (ID) for the 'Protection' object that is described.
 dpProtectionId :: Lens' DescribeProtection Text
@@ -105,13 +102,14 @@ instance ToQuery DescribeProtection where
         toQuery = const mempty
 
 -- | /See:/ 'describeProtectionResponse' smart constructor.
-data DescribeProtectionResponse =
-  DescribeProtectionResponse'
-    { _dprsProtection     :: !(Maybe Protection)
-    , _dprsResponseStatus :: !Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data DescribeProtectionResponse = DescribeProtectionResponse'{_dprsProtection
+                                                              ::
+                                                              !(Maybe
+                                                                  Protection),
+                                                              _dprsResponseStatus
+                                                              :: !Int}
+                                    deriving (Eq, Read, Show, Data, Typeable,
+                                              Generic)
 
 -- | Creates a value of 'DescribeProtectionResponse' with the minimum fields required to make a request.
 --
@@ -123,10 +121,10 @@ data DescribeProtectionResponse =
 describeProtectionResponse
     :: Int -- ^ 'dprsResponseStatus'
     -> DescribeProtectionResponse
-describeProtectionResponse pResponseStatus_ =
-  DescribeProtectionResponse'
-    {_dprsProtection = Nothing, _dprsResponseStatus = pResponseStatus_}
-
+describeProtectionResponse pResponseStatus_
+  = DescribeProtectionResponse'{_dprsProtection =
+                                  Nothing,
+                                _dprsResponseStatus = pResponseStatus_}
 
 -- | The 'Protection' object that is described.
 dprsProtection :: Lens' DescribeProtectionResponse (Maybe Protection)

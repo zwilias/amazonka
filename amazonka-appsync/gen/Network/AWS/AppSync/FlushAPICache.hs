@@ -37,7 +37,6 @@ module Network.AWS.AppSync.FlushAPICache
     ) where
 
 import Network.AWS.AppSync.Types
-import Network.AWS.AppSync.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.Request
@@ -48,12 +47,9 @@ import Network.AWS.Response
 --
 --
 -- /See:/ 'flushAPICache' smart constructor.
-newtype FlushAPICache =
-  FlushAPICache'
-    { _facApiId :: Text
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+newtype FlushAPICache = FlushAPICache'{_facApiId ::
+                                       Text}
+                          deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'FlushAPICache' with the minimum fields required to make a request.
 --
@@ -63,8 +59,8 @@ newtype FlushAPICache =
 flushAPICache
     :: Text -- ^ 'facApiId'
     -> FlushAPICache
-flushAPICache pApiId_ = FlushAPICache' {_facApiId = pApiId_}
-
+flushAPICache pApiId_
+  = FlushAPICache'{_facApiId = pApiId_}
 
 -- | The API ID.
 facApiId :: Lens' FlushAPICache Text
@@ -102,12 +98,10 @@ instance ToQuery FlushAPICache where
 --
 --
 -- /See:/ 'flushAPICacheResponse' smart constructor.
-newtype FlushAPICacheResponse =
-  FlushAPICacheResponse'
-    { _facrsResponseStatus :: Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+newtype FlushAPICacheResponse = FlushAPICacheResponse'{_facrsResponseStatus
+                                                       :: Int}
+                                  deriving (Eq, Read, Show, Data, Typeable,
+                                            Generic)
 
 -- | Creates a value of 'FlushAPICacheResponse' with the minimum fields required to make a request.
 --
@@ -117,9 +111,9 @@ newtype FlushAPICacheResponse =
 flushAPICacheResponse
     :: Int -- ^ 'facrsResponseStatus'
     -> FlushAPICacheResponse
-flushAPICacheResponse pResponseStatus_ =
-  FlushAPICacheResponse' {_facrsResponseStatus = pResponseStatus_}
-
+flushAPICacheResponse pResponseStatus_
+  = FlushAPICacheResponse'{_facrsResponseStatus =
+                             pResponseStatus_}
 
 -- | -- | The response status code.
 facrsResponseStatus :: Lens' FlushAPICacheResponse Int

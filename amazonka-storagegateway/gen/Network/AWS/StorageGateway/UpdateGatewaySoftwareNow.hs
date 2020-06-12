@@ -44,19 +44,16 @@ import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 import Network.AWS.StorageGateway.Types
-import Network.AWS.StorageGateway.Types.Product
 
 -- | A JSON object containing the of the gateway to update.
 --
 --
 --
 -- /See:/ 'updateGatewaySoftwareNow' smart constructor.
-newtype UpdateGatewaySoftwareNow =
-  UpdateGatewaySoftwareNow'
-    { _ugsnGatewayARN :: Text
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+newtype UpdateGatewaySoftwareNow = UpdateGatewaySoftwareNow'{_ugsnGatewayARN
+                                                             :: Text}
+                                     deriving (Eq, Read, Show, Data, Typeable,
+                                               Generic)
 
 -- | Creates a value of 'UpdateGatewaySoftwareNow' with the minimum fields required to make a request.
 --
@@ -66,9 +63,9 @@ newtype UpdateGatewaySoftwareNow =
 updateGatewaySoftwareNow
     :: Text -- ^ 'ugsnGatewayARN'
     -> UpdateGatewaySoftwareNow
-updateGatewaySoftwareNow pGatewayARN_ =
-  UpdateGatewaySoftwareNow' {_ugsnGatewayARN = pGatewayARN_}
-
+updateGatewaySoftwareNow pGatewayARN_
+  = UpdateGatewaySoftwareNow'{_ugsnGatewayARN =
+                                pGatewayARN_}
 
 -- | Undocumented member.
 ugsnGatewayARN :: Lens' UpdateGatewaySoftwareNow Text
@@ -114,13 +111,15 @@ instance ToQuery UpdateGatewaySoftwareNow where
 --
 --
 -- /See:/ 'updateGatewaySoftwareNowResponse' smart constructor.
-data UpdateGatewaySoftwareNowResponse =
-  UpdateGatewaySoftwareNowResponse'
-    { _ugsnrsGatewayARN     :: !(Maybe Text)
-    , _ugsnrsResponseStatus :: !Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data UpdateGatewaySoftwareNowResponse = UpdateGatewaySoftwareNowResponse'{_ugsnrsGatewayARN
+                                                                          ::
+                                                                          !(Maybe
+                                                                              Text),
+                                                                          _ugsnrsResponseStatus
+                                                                          ::
+                                                                          !Int}
+                                          deriving (Eq, Read, Show, Data,
+                                                    Typeable, Generic)
 
 -- | Creates a value of 'UpdateGatewaySoftwareNowResponse' with the minimum fields required to make a request.
 --
@@ -132,10 +131,10 @@ data UpdateGatewaySoftwareNowResponse =
 updateGatewaySoftwareNowResponse
     :: Int -- ^ 'ugsnrsResponseStatus'
     -> UpdateGatewaySoftwareNowResponse
-updateGatewaySoftwareNowResponse pResponseStatus_ =
-  UpdateGatewaySoftwareNowResponse'
-    {_ugsnrsGatewayARN = Nothing, _ugsnrsResponseStatus = pResponseStatus_}
-
+updateGatewaySoftwareNowResponse pResponseStatus_
+  = UpdateGatewaySoftwareNowResponse'{_ugsnrsGatewayARN
+                                        = Nothing,
+                                      _ugsnrsResponseStatus = pResponseStatus_}
 
 -- | Undocumented member.
 ugsnrsGatewayARN :: Lens' UpdateGatewaySoftwareNowResponse (Maybe Text)

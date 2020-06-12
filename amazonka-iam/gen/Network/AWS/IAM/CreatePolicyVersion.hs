@@ -44,21 +44,17 @@ module Network.AWS.IAM.CreatePolicyVersion
     ) where
 
 import Network.AWS.IAM.Types
-import Network.AWS.IAM.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 
 -- | /See:/ 'createPolicyVersion' smart constructor.
-data CreatePolicyVersion =
-  CreatePolicyVersion'
-    { _cpvSetAsDefault   :: !(Maybe Bool)
-    , _cpvPolicyARN      :: !Text
-    , _cpvPolicyDocument :: !Text
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data CreatePolicyVersion = CreatePolicyVersion'{_cpvSetAsDefault
+                                                :: !(Maybe Bool),
+                                                _cpvPolicyARN :: !Text,
+                                                _cpvPolicyDocument :: !Text}
+                             deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'CreatePolicyVersion' with the minimum fields required to make a request.
 --
@@ -73,13 +69,10 @@ createPolicyVersion
     :: Text -- ^ 'cpvPolicyARN'
     -> Text -- ^ 'cpvPolicyDocument'
     -> CreatePolicyVersion
-createPolicyVersion pPolicyARN_ pPolicyDocument_ =
-  CreatePolicyVersion'
-    { _cpvSetAsDefault = Nothing
-    , _cpvPolicyARN = pPolicyARN_
-    , _cpvPolicyDocument = pPolicyDocument_
-    }
-
+createPolicyVersion pPolicyARN_ pPolicyDocument_
+  = CreatePolicyVersion'{_cpvSetAsDefault = Nothing,
+                         _cpvPolicyARN = pPolicyARN_,
+                         _cpvPolicyDocument = pPolicyDocument_}
 
 -- | Specifies whether to set this version as the policy's default version. When this parameter is @true@ , the new policy version becomes the operative version. That is, it becomes the version that is in effect for the IAM users, groups, and roles that the policy is attached to. For more information about managed policy versions, see <http://docs.aws.amazon.com/IAM/latest/UserGuide/policies-managed-versions.html Versioning for Managed Policies> in the /IAM User Guide/ .
 cpvSetAsDefault :: Lens' CreatePolicyVersion (Maybe Bool)
@@ -122,18 +115,19 @@ instance ToQuery CreatePolicyVersion where
                "PolicyArn" =: _cpvPolicyARN,
                "PolicyDocument" =: _cpvPolicyDocument]
 
--- | Contains the response to a successful 'CreatePolicyVersion' request.
+-- | Contains the response to a successful 'CreatePolicyVersion' request. 
 --
 --
 --
 -- /See:/ 'createPolicyVersionResponse' smart constructor.
-data CreatePolicyVersionResponse =
-  CreatePolicyVersionResponse'
-    { _cpvrsPolicyVersion  :: !(Maybe PolicyVersion)
-    , _cpvrsResponseStatus :: !Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data CreatePolicyVersionResponse = CreatePolicyVersionResponse'{_cpvrsPolicyVersion
+                                                                ::
+                                                                !(Maybe
+                                                                    PolicyVersion),
+                                                                _cpvrsResponseStatus
+                                                                :: !Int}
+                                     deriving (Eq, Read, Show, Data, Typeable,
+                                               Generic)
 
 -- | Creates a value of 'CreatePolicyVersionResponse' with the minimum fields required to make a request.
 --
@@ -145,10 +139,10 @@ data CreatePolicyVersionResponse =
 createPolicyVersionResponse
     :: Int -- ^ 'cpvrsResponseStatus'
     -> CreatePolicyVersionResponse
-createPolicyVersionResponse pResponseStatus_ =
-  CreatePolicyVersionResponse'
-    {_cpvrsPolicyVersion = Nothing, _cpvrsResponseStatus = pResponseStatus_}
-
+createPolicyVersionResponse pResponseStatus_
+  = CreatePolicyVersionResponse'{_cpvrsPolicyVersion =
+                                   Nothing,
+                                 _cpvrsResponseStatus = pResponseStatus_}
 
 -- | A structure containing details about the new policy version.
 cpvrsPolicyVersion :: Lens' CreatePolicyVersionResponse (Maybe PolicyVersion)

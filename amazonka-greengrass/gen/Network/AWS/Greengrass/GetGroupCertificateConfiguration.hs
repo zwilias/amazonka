@@ -38,19 +38,17 @@ module Network.AWS.Greengrass.GetGroupCertificateConfiguration
     ) where
 
 import Network.AWS.Greengrass.Types
-import Network.AWS.Greengrass.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 
 -- | /See:/ 'getGroupCertificateConfiguration' smart constructor.
-newtype GetGroupCertificateConfiguration =
-  GetGroupCertificateConfiguration'
-    { _ggccGroupId :: Text
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+newtype GetGroupCertificateConfiguration = GetGroupCertificateConfiguration'{_ggccGroupId
+                                                                             ::
+                                                                             Text}
+                                             deriving (Eq, Read, Show, Data,
+                                                       Typeable, Generic)
 
 -- | Creates a value of 'GetGroupCertificateConfiguration' with the minimum fields required to make a request.
 --
@@ -60,9 +58,9 @@ newtype GetGroupCertificateConfiguration =
 getGroupCertificateConfiguration
     :: Text -- ^ 'ggccGroupId'
     -> GetGroupCertificateConfiguration
-getGroupCertificateConfiguration pGroupId_ =
-  GetGroupCertificateConfiguration' {_ggccGroupId = pGroupId_}
-
+getGroupCertificateConfiguration pGroupId_
+  = GetGroupCertificateConfiguration'{_ggccGroupId =
+                                        pGroupId_}
 
 -- | The ID of the AWS Greengrass group.
 ggccGroupId :: Lens' GetGroupCertificateConfiguration Text
@@ -108,15 +106,24 @@ instance ToQuery GetGroupCertificateConfiguration
         toQuery = const mempty
 
 -- | /See:/ 'getGroupCertificateConfigurationResponse' smart constructor.
-data GetGroupCertificateConfigurationResponse =
-  GetGroupCertificateConfigurationResponse'
-    { _ggccrsCertificateAuthorityExpiryInMilliseconds :: !(Maybe Text)
-    , _ggccrsGroupId                                  :: !(Maybe Text)
-    , _ggccrsCertificateExpiryInMilliseconds          :: !(Maybe Text)
-    , _ggccrsResponseStatus                           :: !Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data GetGroupCertificateConfigurationResponse = GetGroupCertificateConfigurationResponse'{_ggccrsCertificateAuthorityExpiryInMilliseconds
+                                                                                          ::
+                                                                                          !(Maybe
+                                                                                              Text),
+                                                                                          _ggccrsGroupId
+                                                                                          ::
+                                                                                          !(Maybe
+                                                                                              Text),
+                                                                                          _ggccrsCertificateExpiryInMilliseconds
+                                                                                          ::
+                                                                                          !(Maybe
+                                                                                              Text),
+                                                                                          _ggccrsResponseStatus
+                                                                                          ::
+                                                                                          !Int}
+                                                  deriving (Eq, Read, Show,
+                                                            Data, Typeable,
+                                                            Generic)
 
 -- | Creates a value of 'GetGroupCertificateConfigurationResponse' with the minimum fields required to make a request.
 --
@@ -132,14 +139,15 @@ data GetGroupCertificateConfigurationResponse =
 getGroupCertificateConfigurationResponse
     :: Int -- ^ 'ggccrsResponseStatus'
     -> GetGroupCertificateConfigurationResponse
-getGroupCertificateConfigurationResponse pResponseStatus_ =
-  GetGroupCertificateConfigurationResponse'
-    { _ggccrsCertificateAuthorityExpiryInMilliseconds = Nothing
-    , _ggccrsGroupId = Nothing
-    , _ggccrsCertificateExpiryInMilliseconds = Nothing
-    , _ggccrsResponseStatus = pResponseStatus_
-    }
-
+getGroupCertificateConfigurationResponse
+  pResponseStatus_
+  = GetGroupCertificateConfigurationResponse'{_ggccrsCertificateAuthorityExpiryInMilliseconds
+                                                = Nothing,
+                                              _ggccrsGroupId = Nothing,
+                                              _ggccrsCertificateExpiryInMilliseconds
+                                                = Nothing,
+                                              _ggccrsResponseStatus =
+                                                pResponseStatus_}
 
 -- | The amount of time remaining before the certificate authority expires, in milliseconds.
 ggccrsCertificateAuthorityExpiryInMilliseconds :: Lens' GetGroupCertificateConfigurationResponse (Maybe Text)

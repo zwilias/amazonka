@@ -51,22 +51,19 @@ module Network.AWS.EC2.ModifyFleet
     ) where
 
 import Network.AWS.EC2.Types
-import Network.AWS.EC2.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 
 -- | /See:/ 'modifyFleet' smart constructor.
-data ModifyFleet =
-  ModifyFleet'
-    { _mfExcessCapacityTerminationPolicy :: !(Maybe FleetExcessCapacityTerminationPolicy)
-    , _mfDryRun :: !(Maybe Bool)
-    , _mfFleetId :: !Text
-    , _mfTargetCapacitySpecification :: !TargetCapacitySpecificationRequest
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data ModifyFleet = ModifyFleet'{_mfExcessCapacityTerminationPolicy
+                                ::
+                                !(Maybe FleetExcessCapacityTerminationPolicy),
+                                _mfDryRun :: !(Maybe Bool), _mfFleetId :: !Text,
+                                _mfTargetCapacitySpecification ::
+                                !TargetCapacitySpecificationRequest}
+                     deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'ModifyFleet' with the minimum fields required to make a request.
 --
@@ -83,14 +80,12 @@ modifyFleet
     :: Text -- ^ 'mfFleetId'
     -> TargetCapacitySpecificationRequest -- ^ 'mfTargetCapacitySpecification'
     -> ModifyFleet
-modifyFleet pFleetId_ pTargetCapacitySpecification_ =
-  ModifyFleet'
-    { _mfExcessCapacityTerminationPolicy = Nothing
-    , _mfDryRun = Nothing
-    , _mfFleetId = pFleetId_
-    , _mfTargetCapacitySpecification = pTargetCapacitySpecification_
-    }
-
+modifyFleet pFleetId_ pTargetCapacitySpecification_
+  = ModifyFleet'{_mfExcessCapacityTerminationPolicy =
+                   Nothing,
+                 _mfDryRun = Nothing, _mfFleetId = pFleetId_,
+                 _mfTargetCapacitySpecification =
+                   pTargetCapacitySpecification_}
 
 -- | Indicates whether running instances should be terminated if the total target capacity of the EC2 Fleet is decreased below the current size of the EC2 Fleet.
 mfExcessCapacityTerminationPolicy :: Lens' ModifyFleet (Maybe FleetExcessCapacityTerminationPolicy)
@@ -139,13 +134,10 @@ instance ToQuery ModifyFleet where
                  _mfTargetCapacitySpecification]
 
 -- | /See:/ 'modifyFleetResponse' smart constructor.
-data ModifyFleetResponse =
-  ModifyFleetResponse'
-    { _mfrsReturn         :: !(Maybe Bool)
-    , _mfrsResponseStatus :: !Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data ModifyFleetResponse = ModifyFleetResponse'{_mfrsReturn
+                                                :: !(Maybe Bool),
+                                                _mfrsResponseStatus :: !Int}
+                             deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'ModifyFleetResponse' with the minimum fields required to make a request.
 --
@@ -157,10 +149,9 @@ data ModifyFleetResponse =
 modifyFleetResponse
     :: Int -- ^ 'mfrsResponseStatus'
     -> ModifyFleetResponse
-modifyFleetResponse pResponseStatus_ =
-  ModifyFleetResponse'
-    {_mfrsReturn = Nothing, _mfrsResponseStatus = pResponseStatus_}
-
+modifyFleetResponse pResponseStatus_
+  = ModifyFleetResponse'{_mfrsReturn = Nothing,
+                         _mfrsResponseStatus = pResponseStatus_}
 
 -- | Is @true@ if the request succeeds, and an error otherwise.
 mfrsReturn :: Lens' ModifyFleetResponse (Maybe Bool)

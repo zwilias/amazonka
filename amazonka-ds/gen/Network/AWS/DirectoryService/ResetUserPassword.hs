@@ -47,21 +47,18 @@ module Network.AWS.DirectoryService.ResetUserPassword
     ) where
 
 import Network.AWS.DirectoryService.Types
-import Network.AWS.DirectoryService.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 
 -- | /See:/ 'resetUserPassword' smart constructor.
-data ResetUserPassword =
-  ResetUserPassword'
-    { _rupDirectoryId :: !Text
-    , _rupUserName    :: !Text
-    , _rupNewPassword :: !(Sensitive Text)
-    }
-  deriving (Eq, Show, Data, Typeable, Generic)
-
+data ResetUserPassword = ResetUserPassword'{_rupDirectoryId
+                                            :: !Text,
+                                            _rupUserName :: !Text,
+                                            _rupNewPassword ::
+                                            !(Sensitive Text)}
+                           deriving (Eq, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'ResetUserPassword' with the minimum fields required to make a request.
 --
@@ -77,13 +74,11 @@ resetUserPassword
     -> Text -- ^ 'rupUserName'
     -> Text -- ^ 'rupNewPassword'
     -> ResetUserPassword
-resetUserPassword pDirectoryId_ pUserName_ pNewPassword_ =
-  ResetUserPassword'
-    { _rupDirectoryId = pDirectoryId_
-    , _rupUserName = pUserName_
-    , _rupNewPassword = _Sensitive # pNewPassword_
-    }
-
+resetUserPassword pDirectoryId_ pUserName_
+  pNewPassword_
+  = ResetUserPassword'{_rupDirectoryId = pDirectoryId_,
+                       _rupUserName = pUserName_,
+                       _rupNewPassword = _Sensitive # pNewPassword_}
 
 -- | Identifier of the AWS Managed Microsoft AD or Simple AD directory in which the user resides.
 rupDirectoryId :: Lens' ResetUserPassword Text
@@ -134,12 +129,10 @@ instance ToQuery ResetUserPassword where
         toQuery = const mempty
 
 -- | /See:/ 'resetUserPasswordResponse' smart constructor.
-newtype ResetUserPasswordResponse =
-  ResetUserPasswordResponse'
-    { _ruprsResponseStatus :: Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+newtype ResetUserPasswordResponse = ResetUserPasswordResponse'{_ruprsResponseStatus
+                                                               :: Int}
+                                      deriving (Eq, Read, Show, Data, Typeable,
+                                                Generic)
 
 -- | Creates a value of 'ResetUserPasswordResponse' with the minimum fields required to make a request.
 --
@@ -149,9 +142,9 @@ newtype ResetUserPasswordResponse =
 resetUserPasswordResponse
     :: Int -- ^ 'ruprsResponseStatus'
     -> ResetUserPasswordResponse
-resetUserPasswordResponse pResponseStatus_ =
-  ResetUserPasswordResponse' {_ruprsResponseStatus = pResponseStatus_}
-
+resetUserPasswordResponse pResponseStatus_
+  = ResetUserPasswordResponse'{_ruprsResponseStatus =
+                                 pResponseStatus_}
 
 -- | -- | The response status code.
 ruprsResponseStatus :: Lens' ResetUserPasswordResponse Int

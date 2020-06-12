@@ -40,7 +40,6 @@ module Network.AWS.Kinesis.EnableEnhancedMonitoring
     ) where
 
 import Network.AWS.Kinesis.Types
-import Network.AWS.Kinesis.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.Request
@@ -51,13 +50,12 @@ import Network.AWS.Response
 --
 --
 -- /See:/ 'enableEnhancedMonitoring' smart constructor.
-data EnableEnhancedMonitoring =
-  EnableEnhancedMonitoring'
-    { _eemStreamName        :: !Text
-    , _eemShardLevelMetrics :: ![MetricsName]
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data EnableEnhancedMonitoring = EnableEnhancedMonitoring'{_eemStreamName
+                                                          :: !Text,
+                                                          _eemShardLevelMetrics
+                                                          :: ![MetricsName]}
+                                  deriving (Eq, Read, Show, Data, Typeable,
+                                            Generic)
 
 -- | Creates a value of 'EnableEnhancedMonitoring' with the minimum fields required to make a request.
 --
@@ -69,10 +67,10 @@ data EnableEnhancedMonitoring =
 enableEnhancedMonitoring
     :: Text -- ^ 'eemStreamName'
     -> EnableEnhancedMonitoring
-enableEnhancedMonitoring pStreamName_ =
-  EnableEnhancedMonitoring'
-    {_eemStreamName = pStreamName_, _eemShardLevelMetrics = mempty}
-
+enableEnhancedMonitoring pStreamName_
+  = EnableEnhancedMonitoring'{_eemStreamName =
+                                pStreamName_,
+                              _eemShardLevelMetrics = mempty}
 
 -- | The name of the stream for which to enable enhanced monitoring.
 eemStreamName :: Lens' EnableEnhancedMonitoring Text

@@ -48,21 +48,17 @@ module Network.AWS.DeviceFarm.GetTestGridSession
     ) where
 
 import Network.AWS.DeviceFarm.Types
-import Network.AWS.DeviceFarm.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 
 -- | /See:/ 'getTestGridSession' smart constructor.
-data GetTestGridSession =
-  GetTestGridSession'
-    { _gtgsSessionARN :: !(Maybe Text)
-    , _gtgsProjectARN :: !(Maybe Text)
-    , _gtgsSessionId  :: !(Maybe Text)
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data GetTestGridSession = GetTestGridSession'{_gtgsSessionARN
+                                              :: !(Maybe Text),
+                                              _gtgsProjectARN :: !(Maybe Text),
+                                              _gtgsSessionId :: !(Maybe Text)}
+                            deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'GetTestGridSession' with the minimum fields required to make a request.
 --
@@ -75,13 +71,9 @@ data GetTestGridSession =
 -- * 'gtgsSessionId' - An ID associated with this session.
 getTestGridSession
     :: GetTestGridSession
-getTestGridSession =
-  GetTestGridSession'
-    { _gtgsSessionARN = Nothing
-    , _gtgsProjectARN = Nothing
-    , _gtgsSessionId = Nothing
-    }
-
+getTestGridSession
+  = GetTestGridSession'{_gtgsSessionARN = Nothing,
+                        _gtgsProjectARN = Nothing, _gtgsSessionId = Nothing}
 
 -- | An ARN that uniquely identifies a 'TestGridSession' .
 gtgsSessionARN :: Lens' GetTestGridSession (Maybe Text)
@@ -134,13 +126,14 @@ instance ToQuery GetTestGridSession where
         toQuery = const mempty
 
 -- | /See:/ 'getTestGridSessionResponse' smart constructor.
-data GetTestGridSessionResponse =
-  GetTestGridSessionResponse'
-    { _gtgsrsTestGridSession :: !(Maybe TestGridSession)
-    , _gtgsrsResponseStatus  :: !Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data GetTestGridSessionResponse = GetTestGridSessionResponse'{_gtgsrsTestGridSession
+                                                              ::
+                                                              !(Maybe
+                                                                  TestGridSession),
+                                                              _gtgsrsResponseStatus
+                                                              :: !Int}
+                                    deriving (Eq, Read, Show, Data, Typeable,
+                                              Generic)
 
 -- | Creates a value of 'GetTestGridSessionResponse' with the minimum fields required to make a request.
 --
@@ -152,10 +145,10 @@ data GetTestGridSessionResponse =
 getTestGridSessionResponse
     :: Int -- ^ 'gtgsrsResponseStatus'
     -> GetTestGridSessionResponse
-getTestGridSessionResponse pResponseStatus_ =
-  GetTestGridSessionResponse'
-    {_gtgsrsTestGridSession = Nothing, _gtgsrsResponseStatus = pResponseStatus_}
-
+getTestGridSessionResponse pResponseStatus_
+  = GetTestGridSessionResponse'{_gtgsrsTestGridSession
+                                  = Nothing,
+                                _gtgsrsResponseStatus = pResponseStatus_}
 
 -- | The 'TestGridSession' that was requested.
 gtgsrsTestGridSession :: Lens' GetTestGridSessionResponse (Maybe TestGridSession)

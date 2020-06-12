@@ -35,19 +35,15 @@ module Network.AWS.APIGatewayManagementAPI.DeleteConnection
     ) where
 
 import Network.AWS.APIGatewayManagementAPI.Types
-import Network.AWS.APIGatewayManagementAPI.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 
 -- | /See:/ 'deleteConnection' smart constructor.
-newtype DeleteConnection =
-  DeleteConnection'
-    { _dcConnectionId :: Text
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+newtype DeleteConnection = DeleteConnection'{_dcConnectionId
+                                             :: Text}
+                             deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'DeleteConnection' with the minimum fields required to make a request.
 --
@@ -57,9 +53,8 @@ newtype DeleteConnection =
 deleteConnection
     :: Text -- ^ 'dcConnectionId'
     -> DeleteConnection
-deleteConnection pConnectionId_ =
-  DeleteConnection' {_dcConnectionId = pConnectionId_}
-
+deleteConnection pConnectionId_
+  = DeleteConnection'{_dcConnectionId = pConnectionId_}
 
 -- | Undocumented member.
 dcConnectionId :: Lens' DeleteConnection Text
@@ -89,16 +84,14 @@ instance ToQuery DeleteConnection where
         toQuery = const mempty
 
 -- | /See:/ 'deleteConnectionResponse' smart constructor.
-data DeleteConnectionResponse =
-  DeleteConnectionResponse'
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data DeleteConnectionResponse = DeleteConnectionResponse'
+                                  deriving (Eq, Read, Show, Data, Typeable,
+                                            Generic)
 
 -- | Creates a value of 'DeleteConnectionResponse' with the minimum fields required to make a request.
 --
 deleteConnectionResponse
     :: DeleteConnectionResponse
 deleteConnectionResponse = DeleteConnectionResponse'
-
 
 instance NFData DeleteConnectionResponse where

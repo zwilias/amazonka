@@ -18,7 +18,7 @@
 -- Stability   : auto-generated
 -- Portability : non-portable (GHC extensions)
 --
--- Returns a data encryption key encrypted under a customer master key (CMK). This operation is identical to 'GenerateDataKey' but returns only the encrypted copy of the data key.
+-- Returns a data encryption key encrypted under a customer master key (CMK). This operation is identical to 'GenerateDataKey' but returns only the encrypted copy of the data key. 
 --
 --
 -- To perform this operation on a CMK in a different AWS account, specify the key ARN or alias ARN in the value of the KeyId parameter.
@@ -47,23 +47,35 @@ module Network.AWS.KMS.GenerateDataKeyWithoutPlaintext
     ) where
 
 import Network.AWS.KMS.Types
-import Network.AWS.KMS.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 
 -- | /See:/ 'generateDataKeyWithoutPlaintext' smart constructor.
-data GenerateDataKeyWithoutPlaintext =
-  GenerateDataKeyWithoutPlaintext'
-    { _gdkwpKeySpec           :: !(Maybe DataKeySpec)
-    , _gdkwpEncryptionContext :: !(Maybe (Map Text Text))
-    , _gdkwpNumberOfBytes     :: !(Maybe Nat)
-    , _gdkwpGrantTokens       :: !(Maybe [Text])
-    , _gdkwpKeyId             :: !Text
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data GenerateDataKeyWithoutPlaintext = GenerateDataKeyWithoutPlaintext'{_gdkwpKeySpec
+                                                                        ::
+                                                                        !(Maybe
+                                                                            DataKeySpec),
+                                                                        _gdkwpEncryptionContext
+                                                                        ::
+                                                                        !(Maybe
+                                                                            (Map
+                                                                               Text
+                                                                               Text)),
+                                                                        _gdkwpNumberOfBytes
+                                                                        ::
+                                                                        !(Maybe
+                                                                            Nat),
+                                                                        _gdkwpGrantTokens
+                                                                        ::
+                                                                        !(Maybe
+                                                                            [Text]),
+                                                                        _gdkwpKeyId
+                                                                        ::
+                                                                        !Text}
+                                         deriving (Eq, Read, Show, Data,
+                                                   Typeable, Generic)
 
 -- | Creates a value of 'GenerateDataKeyWithoutPlaintext' with the minimum fields required to make a request.
 --
@@ -81,15 +93,13 @@ data GenerateDataKeyWithoutPlaintext =
 generateDataKeyWithoutPlaintext
     :: Text -- ^ 'gdkwpKeyId'
     -> GenerateDataKeyWithoutPlaintext
-generateDataKeyWithoutPlaintext pKeyId_ =
-  GenerateDataKeyWithoutPlaintext'
-    { _gdkwpKeySpec = Nothing
-    , _gdkwpEncryptionContext = Nothing
-    , _gdkwpNumberOfBytes = Nothing
-    , _gdkwpGrantTokens = Nothing
-    , _gdkwpKeyId = pKeyId_
-    }
-
+generateDataKeyWithoutPlaintext pKeyId_
+  = GenerateDataKeyWithoutPlaintext'{_gdkwpKeySpec =
+                                       Nothing,
+                                     _gdkwpEncryptionContext = Nothing,
+                                     _gdkwpNumberOfBytes = Nothing,
+                                     _gdkwpGrantTokens = Nothing,
+                                     _gdkwpKeyId = pKeyId_}
 
 -- | The length of the data encryption key. Use @AES_128@ to generate a 128-bit symmetric key, or @AES_256@ to generate a 256-bit symmetric key.
 gdkwpKeySpec :: Lens' GenerateDataKeyWithoutPlaintext (Maybe DataKeySpec)
@@ -157,14 +167,19 @@ instance ToQuery GenerateDataKeyWithoutPlaintext
         toQuery = const mempty
 
 -- | /See:/ 'generateDataKeyWithoutPlaintextResponse' smart constructor.
-data GenerateDataKeyWithoutPlaintextResponse =
-  GenerateDataKeyWithoutPlaintextResponse'
-    { _gdkwprsKeyId          :: !(Maybe Text)
-    , _gdkwprsCiphertextBlob :: !(Maybe Base64)
-    , _gdkwprsResponseStatus :: !Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data GenerateDataKeyWithoutPlaintextResponse = GenerateDataKeyWithoutPlaintextResponse'{_gdkwprsKeyId
+                                                                                        ::
+                                                                                        !(Maybe
+                                                                                            Text),
+                                                                                        _gdkwprsCiphertextBlob
+                                                                                        ::
+                                                                                        !(Maybe
+                                                                                            Base64),
+                                                                                        _gdkwprsResponseStatus
+                                                                                        ::
+                                                                                        !Int}
+                                                 deriving (Eq, Read, Show, Data,
+                                                           Typeable, Generic)
 
 -- | Creates a value of 'GenerateDataKeyWithoutPlaintextResponse' with the minimum fields required to make a request.
 --
@@ -178,13 +193,13 @@ data GenerateDataKeyWithoutPlaintextResponse =
 generateDataKeyWithoutPlaintextResponse
     :: Int -- ^ 'gdkwprsResponseStatus'
     -> GenerateDataKeyWithoutPlaintextResponse
-generateDataKeyWithoutPlaintextResponse pResponseStatus_ =
-  GenerateDataKeyWithoutPlaintextResponse'
-    { _gdkwprsKeyId = Nothing
-    , _gdkwprsCiphertextBlob = Nothing
-    , _gdkwprsResponseStatus = pResponseStatus_
-    }
-
+generateDataKeyWithoutPlaintextResponse
+  pResponseStatus_
+  = GenerateDataKeyWithoutPlaintextResponse'{_gdkwprsKeyId
+                                               = Nothing,
+                                             _gdkwprsCiphertextBlob = Nothing,
+                                             _gdkwprsResponseStatus =
+                                               pResponseStatus_}
 
 -- | The identifier of the CMK under which the data encryption key was generated and encrypted.
 gdkwprsKeyId :: Lens' GenerateDataKeyWithoutPlaintextResponse (Maybe Text)

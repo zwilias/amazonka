@@ -18,7 +18,7 @@
 -- Stability   : auto-generated
 -- Portability : non-portable (GHC extensions)
 --
--- Sets the attributes of the platform application object for the supported push notification services, such as APNS and GCM. For more information, see <http://docs.aws.amazon.com/sns/latest/dg/SNSMobilePush.html Using Amazon SNS Mobile Push Notifications> . For information on configuring attributes for message delivery status, see <http://docs.aws.amazon.com/sns/latest/dg/sns-msg-status.html Using Amazon SNS Application Attributes for Message Delivery Status> .
+-- Sets the attributes of the platform application object for the supported push notification services, such as APNS and GCM. For more information, see <http://docs.aws.amazon.com/sns/latest/dg/SNSMobilePush.html Using Amazon SNS Mobile Push Notifications> . For information on configuring attributes for message delivery status, see <http://docs.aws.amazon.com/sns/latest/dg/sns-msg-status.html Using Amazon SNS Application Attributes for Message Delivery Status> . 
 --
 --
 module Network.AWS.SNS.SetPlatformApplicationAttributes
@@ -40,20 +40,22 @@ import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 import Network.AWS.SNS.Types
-import Network.AWS.SNS.Types.Product
 
 -- | Input for SetPlatformApplicationAttributes action.
 --
 --
 --
 -- /See:/ 'setPlatformApplicationAttributes' smart constructor.
-data SetPlatformApplicationAttributes =
-  SetPlatformApplicationAttributes'
-    { _spaaPlatformApplicationARN :: !Text
-    , _spaaAttributes             :: !(Map Text Text)
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data SetPlatformApplicationAttributes = SetPlatformApplicationAttributes'{_spaaPlatformApplicationARN
+                                                                          ::
+                                                                          !Text,
+                                                                          _spaaAttributes
+                                                                          ::
+                                                                          !(Map
+                                                                              Text
+                                                                              Text)}
+                                          deriving (Eq, Read, Show, Data,
+                                                    Typeable, Generic)
 
 -- | Creates a value of 'SetPlatformApplicationAttributes' with the minimum fields required to make a request.
 --
@@ -65,12 +67,11 @@ data SetPlatformApplicationAttributes =
 setPlatformApplicationAttributes
     :: Text -- ^ 'spaaPlatformApplicationARN'
     -> SetPlatformApplicationAttributes
-setPlatformApplicationAttributes pPlatformApplicationARN_ =
-  SetPlatformApplicationAttributes'
-    { _spaaPlatformApplicationARN = pPlatformApplicationARN_
-    , _spaaAttributes = mempty
-    }
-
+setPlatformApplicationAttributes
+  pPlatformApplicationARN_
+  = SetPlatformApplicationAttributes'{_spaaPlatformApplicationARN
+                                        = pPlatformApplicationARN_,
+                                      _spaaAttributes = mempty}
 
 -- | PlatformApplicationArn for SetPlatformApplicationAttributes action.
 spaaPlatformApplicationARN :: Lens' SetPlatformApplicationAttributes Text
@@ -116,18 +117,17 @@ instance ToQuery SetPlatformApplicationAttributes
                  toQueryMap "entry" "key" "value" _spaaAttributes]
 
 -- | /See:/ 'setPlatformApplicationAttributesResponse' smart constructor.
-data SetPlatformApplicationAttributesResponse =
-  SetPlatformApplicationAttributesResponse'
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data SetPlatformApplicationAttributesResponse = SetPlatformApplicationAttributesResponse'
+                                                  deriving (Eq, Read, Show,
+                                                            Data, Typeable,
+                                                            Generic)
 
 -- | Creates a value of 'SetPlatformApplicationAttributesResponse' with the minimum fields required to make a request.
 --
 setPlatformApplicationAttributesResponse
     :: SetPlatformApplicationAttributesResponse
-setPlatformApplicationAttributesResponse =
-  SetPlatformApplicationAttributesResponse'
-
+setPlatformApplicationAttributesResponse
+  = SetPlatformApplicationAttributesResponse'
 
 instance NFData
            SetPlatformApplicationAttributesResponse

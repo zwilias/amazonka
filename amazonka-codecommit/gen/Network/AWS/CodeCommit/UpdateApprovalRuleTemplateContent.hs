@@ -40,21 +40,24 @@ module Network.AWS.CodeCommit.UpdateApprovalRuleTemplateContent
     ) where
 
 import Network.AWS.CodeCommit.Types
-import Network.AWS.CodeCommit.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 
 -- | /See:/ 'updateApprovalRuleTemplateContent' smart constructor.
-data UpdateApprovalRuleTemplateContent =
-  UpdateApprovalRuleTemplateContent'
-    { _uartcExistingRuleContentSha256 :: !(Maybe Text)
-    , _uartcApprovalRuleTemplateName  :: !Text
-    , _uartcNewRuleContent            :: !Text
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data UpdateApprovalRuleTemplateContent = UpdateApprovalRuleTemplateContent'{_uartcExistingRuleContentSha256
+                                                                            ::
+                                                                            !(Maybe
+                                                                                Text),
+                                                                            _uartcApprovalRuleTemplateName
+                                                                            ::
+                                                                            !Text,
+                                                                            _uartcNewRuleContent
+                                                                            ::
+                                                                            !Text}
+                                           deriving (Eq, Read, Show, Data,
+                                                     Typeable, Generic)
 
 -- | Creates a value of 'UpdateApprovalRuleTemplateContent' with the minimum fields required to make a request.
 --
@@ -62,26 +65,26 @@ data UpdateApprovalRuleTemplateContent =
 --
 -- * 'uartcExistingRuleContentSha256' - The SHA-256 hash signature for the content of the approval rule. You can retrieve this information by using 'GetPullRequest' .
 --
--- * 'uartcApprovalRuleTemplateName' - The name of the approval rule template where you want to update the content of the rule.
+-- * 'uartcApprovalRuleTemplateName' - The name of the approval rule template where you want to update the content of the rule. 
 --
 -- * 'uartcNewRuleContent' - The content that replaces the existing content of the rule. Content statements must be complete. You cannot provide only the changes.
 updateApprovalRuleTemplateContent
     :: Text -- ^ 'uartcApprovalRuleTemplateName'
     -> Text -- ^ 'uartcNewRuleContent'
     -> UpdateApprovalRuleTemplateContent
-updateApprovalRuleTemplateContent pApprovalRuleTemplateName_ pNewRuleContent_ =
-  UpdateApprovalRuleTemplateContent'
-    { _uartcExistingRuleContentSha256 = Nothing
-    , _uartcApprovalRuleTemplateName = pApprovalRuleTemplateName_
-    , _uartcNewRuleContent = pNewRuleContent_
-    }
-
+updateApprovalRuleTemplateContent
+  pApprovalRuleTemplateName_ pNewRuleContent_
+  = UpdateApprovalRuleTemplateContent'{_uartcExistingRuleContentSha256
+                                         = Nothing,
+                                       _uartcApprovalRuleTemplateName =
+                                         pApprovalRuleTemplateName_,
+                                       _uartcNewRuleContent = pNewRuleContent_}
 
 -- | The SHA-256 hash signature for the content of the approval rule. You can retrieve this information by using 'GetPullRequest' .
 uartcExistingRuleContentSha256 :: Lens' UpdateApprovalRuleTemplateContent (Maybe Text)
 uartcExistingRuleContentSha256 = lens _uartcExistingRuleContentSha256 (\ s a -> s{_uartcExistingRuleContentSha256 = a})
 
--- | The name of the approval rule template where you want to update the content of the rule.
+-- | The name of the approval rule template where you want to update the content of the rule. 
 uartcApprovalRuleTemplateName :: Lens' UpdateApprovalRuleTemplateContent Text
 uartcApprovalRuleTemplateName = lens _uartcApprovalRuleTemplateName (\ s a -> s{_uartcApprovalRuleTemplateName = a})
 
@@ -139,13 +142,15 @@ instance ToQuery UpdateApprovalRuleTemplateContent
         toQuery = const mempty
 
 -- | /See:/ 'updateApprovalRuleTemplateContentResponse' smart constructor.
-data UpdateApprovalRuleTemplateContentResponse =
-  UpdateApprovalRuleTemplateContentResponse'
-    { _uartcrsResponseStatus       :: !Int
-    , _uartcrsApprovalRuleTemplate :: !ApprovalRuleTemplate
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data UpdateApprovalRuleTemplateContentResponse = UpdateApprovalRuleTemplateContentResponse'{_uartcrsResponseStatus
+                                                                                            ::
+                                                                                            !Int,
+                                                                                            _uartcrsApprovalRuleTemplate
+                                                                                            ::
+                                                                                            !ApprovalRuleTemplate}
+                                                   deriving (Eq, Read, Show,
+                                                             Data, Typeable,
+                                                             Generic)
 
 -- | Creates a value of 'UpdateApprovalRuleTemplateContentResponse' with the minimum fields required to make a request.
 --
@@ -158,12 +163,12 @@ updateApprovalRuleTemplateContentResponse
     :: Int -- ^ 'uartcrsResponseStatus'
     -> ApprovalRuleTemplate -- ^ 'uartcrsApprovalRuleTemplate'
     -> UpdateApprovalRuleTemplateContentResponse
-updateApprovalRuleTemplateContentResponse pResponseStatus_ pApprovalRuleTemplate_ =
-  UpdateApprovalRuleTemplateContentResponse'
-    { _uartcrsResponseStatus = pResponseStatus_
-    , _uartcrsApprovalRuleTemplate = pApprovalRuleTemplate_
-    }
-
+updateApprovalRuleTemplateContentResponse
+  pResponseStatus_ pApprovalRuleTemplate_
+  = UpdateApprovalRuleTemplateContentResponse'{_uartcrsResponseStatus
+                                                 = pResponseStatus_,
+                                               _uartcrsApprovalRuleTemplate =
+                                                 pApprovalRuleTemplate_}
 
 -- | -- | The response status code.
 uartcrsResponseStatus :: Lens' UpdateApprovalRuleTemplateContentResponse Int

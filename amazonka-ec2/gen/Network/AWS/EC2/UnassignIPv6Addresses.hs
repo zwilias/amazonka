@@ -40,20 +40,18 @@ module Network.AWS.EC2.UnassignIPv6Addresses
     ) where
 
 import Network.AWS.EC2.Types
-import Network.AWS.EC2.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 
 -- | /See:/ 'unassignIPv6Addresses' smart constructor.
-data UnassignIPv6Addresses =
-  UnassignIPv6Addresses'
-    { _uiaIPv6Addresses      :: ![Text]
-    , _uiaNetworkInterfaceId :: !Text
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data UnassignIPv6Addresses = UnassignIPv6Addresses'{_uiaIPv6Addresses
+                                                    :: ![Text],
+                                                    _uiaNetworkInterfaceId ::
+                                                    !Text}
+                               deriving (Eq, Read, Show, Data, Typeable,
+                                         Generic)
 
 -- | Creates a value of 'UnassignIPv6Addresses' with the minimum fields required to make a request.
 --
@@ -65,10 +63,9 @@ data UnassignIPv6Addresses =
 unassignIPv6Addresses
     :: Text -- ^ 'uiaNetworkInterfaceId'
     -> UnassignIPv6Addresses
-unassignIPv6Addresses pNetworkInterfaceId_ =
-  UnassignIPv6Addresses'
-    {_uiaIPv6Addresses = mempty, _uiaNetworkInterfaceId = pNetworkInterfaceId_}
-
+unassignIPv6Addresses pNetworkInterfaceId_
+  = UnassignIPv6Addresses'{_uiaIPv6Addresses = mempty,
+                           _uiaNetworkInterfaceId = pNetworkInterfaceId_}
 
 -- | The IPv6 addresses to unassign from the network interface.
 uiaIPv6Addresses :: Lens' UnassignIPv6Addresses [Text]
@@ -110,14 +107,18 @@ instance ToQuery UnassignIPv6Addresses where
                "NetworkInterfaceId" =: _uiaNetworkInterfaceId]
 
 -- | /See:/ 'unassignIPv6AddressesResponse' smart constructor.
-data UnassignIPv6AddressesResponse =
-  UnassignIPv6AddressesResponse'
-    { _uiarsNetworkInterfaceId      :: !(Maybe Text)
-    , _uiarsUnassignedIPv6Addresses :: !(Maybe [Text])
-    , _uiarsResponseStatus          :: !Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data UnassignIPv6AddressesResponse = UnassignIPv6AddressesResponse'{_uiarsNetworkInterfaceId
+                                                                    ::
+                                                                    !(Maybe
+                                                                        Text),
+                                                                    _uiarsUnassignedIPv6Addresses
+                                                                    ::
+                                                                    !(Maybe
+                                                                        [Text]),
+                                                                    _uiarsResponseStatus
+                                                                    :: !Int}
+                                       deriving (Eq, Read, Show, Data, Typeable,
+                                                 Generic)
 
 -- | Creates a value of 'UnassignIPv6AddressesResponse' with the minimum fields required to make a request.
 --
@@ -131,13 +132,11 @@ data UnassignIPv6AddressesResponse =
 unassignIPv6AddressesResponse
     :: Int -- ^ 'uiarsResponseStatus'
     -> UnassignIPv6AddressesResponse
-unassignIPv6AddressesResponse pResponseStatus_ =
-  UnassignIPv6AddressesResponse'
-    { _uiarsNetworkInterfaceId = Nothing
-    , _uiarsUnassignedIPv6Addresses = Nothing
-    , _uiarsResponseStatus = pResponseStatus_
-    }
-
+unassignIPv6AddressesResponse pResponseStatus_
+  = UnassignIPv6AddressesResponse'{_uiarsNetworkInterfaceId
+                                     = Nothing,
+                                   _uiarsUnassignedIPv6Addresses = Nothing,
+                                   _uiarsResponseStatus = pResponseStatus_}
 
 -- | The ID of the network interface.
 uiarsNetworkInterfaceId :: Lens' UnassignIPv6AddressesResponse (Maybe Text)

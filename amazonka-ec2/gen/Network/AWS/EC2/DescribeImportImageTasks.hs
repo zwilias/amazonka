@@ -45,7 +45,6 @@ module Network.AWS.EC2.DescribeImportImageTasks
     ) where
 
 import Network.AWS.EC2.Types
-import Network.AWS.EC2.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Pager
 import Network.AWS.Prelude
@@ -53,16 +52,18 @@ import Network.AWS.Request
 import Network.AWS.Response
 
 -- | /See:/ 'describeImportImageTasks' smart constructor.
-data DescribeImportImageTasks =
-  DescribeImportImageTasks'
-    { _diitFilters       :: !(Maybe [Filter])
-    , _diitImportTaskIds :: !(Maybe [Text])
-    , _diitNextToken     :: !(Maybe Text)
-    , _diitDryRun        :: !(Maybe Bool)
-    , _diitMaxResults    :: !(Maybe Int)
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data DescribeImportImageTasks = DescribeImportImageTasks'{_diitFilters
+                                                          :: !(Maybe [Filter]),
+                                                          _diitImportTaskIds ::
+                                                          !(Maybe [Text]),
+                                                          _diitNextToken ::
+                                                          !(Maybe Text),
+                                                          _diitDryRun ::
+                                                          !(Maybe Bool),
+                                                          _diitMaxResults ::
+                                                          !(Maybe Int)}
+                                  deriving (Eq, Read, Show, Data, Typeable,
+                                            Generic)
 
 -- | Creates a value of 'DescribeImportImageTasks' with the minimum fields required to make a request.
 --
@@ -79,15 +80,11 @@ data DescribeImportImageTasks =
 -- * 'diitMaxResults' - The maximum number of results to return in a single call.
 describeImportImageTasks
     :: DescribeImportImageTasks
-describeImportImageTasks =
-  DescribeImportImageTasks'
-    { _diitFilters = Nothing
-    , _diitImportTaskIds = Nothing
-    , _diitNextToken = Nothing
-    , _diitDryRun = Nothing
-    , _diitMaxResults = Nothing
-    }
-
+describeImportImageTasks
+  = DescribeImportImageTasks'{_diitFilters = Nothing,
+                              _diitImportTaskIds = Nothing,
+                              _diitNextToken = Nothing, _diitDryRun = Nothing,
+                              _diitMaxResults = Nothing}
 
 -- | Filter tasks using the @task-state@ filter and one of the following values: @active@ , @completed@ , @deleting@ , or @deleted@ .
 diitFilters :: Lens' DescribeImportImageTasks [Filter]
@@ -153,14 +150,19 @@ instance ToQuery DescribeImportImageTasks where
                "MaxResults" =: _diitMaxResults]
 
 -- | /See:/ 'describeImportImageTasksResponse' smart constructor.
-data DescribeImportImageTasksResponse =
-  DescribeImportImageTasksResponse'
-    { _diitrsNextToken        :: !(Maybe Text)
-    , _diitrsImportImageTasks :: !(Maybe [ImportImageTask])
-    , _diitrsResponseStatus   :: !Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data DescribeImportImageTasksResponse = DescribeImportImageTasksResponse'{_diitrsNextToken
+                                                                          ::
+                                                                          !(Maybe
+                                                                              Text),
+                                                                          _diitrsImportImageTasks
+                                                                          ::
+                                                                          !(Maybe
+                                                                              [ImportImageTask]),
+                                                                          _diitrsResponseStatus
+                                                                          ::
+                                                                          !Int}
+                                          deriving (Eq, Read, Show, Data,
+                                                    Typeable, Generic)
 
 -- | Creates a value of 'DescribeImportImageTasksResponse' with the minimum fields required to make a request.
 --
@@ -174,13 +176,11 @@ data DescribeImportImageTasksResponse =
 describeImportImageTasksResponse
     :: Int -- ^ 'diitrsResponseStatus'
     -> DescribeImportImageTasksResponse
-describeImportImageTasksResponse pResponseStatus_ =
-  DescribeImportImageTasksResponse'
-    { _diitrsNextToken = Nothing
-    , _diitrsImportImageTasks = Nothing
-    , _diitrsResponseStatus = pResponseStatus_
-    }
-
+describeImportImageTasksResponse pResponseStatus_
+  = DescribeImportImageTasksResponse'{_diitrsNextToken
+                                        = Nothing,
+                                      _diitrsImportImageTasks = Nothing,
+                                      _diitrsResponseStatus = pResponseStatus_}
 
 -- | The token to use to get the next page of results. This value is @null@ when there are no more results to return.
 diitrsNextToken :: Lens' DescribeImportImageTasksResponse (Maybe Text)

@@ -41,21 +41,20 @@ module Network.AWS.DynamoDB.ListContributorInsights
     ) where
 
 import Network.AWS.DynamoDB.Types
-import Network.AWS.DynamoDB.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 
 -- | /See:/ 'listContributorInsights' smart constructor.
-data ListContributorInsights =
-  ListContributorInsights'
-    { _lciNextToken  :: !(Maybe Text)
-    , _lciMaxResults :: !(Maybe Int)
-    , _lciTableName  :: !(Maybe Text)
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data ListContributorInsights = ListContributorInsights'{_lciNextToken
+                                                        :: !(Maybe Text),
+                                                        _lciMaxResults ::
+                                                        !(Maybe Int),
+                                                        _lciTableName ::
+                                                        !(Maybe Text)}
+                                 deriving (Eq, Read, Show, Data, Typeable,
+                                           Generic)
 
 -- | Creates a value of 'ListContributorInsights' with the minimum fields required to make a request.
 --
@@ -68,10 +67,9 @@ data ListContributorInsights =
 -- * 'lciTableName' - The name of the table.
 listContributorInsights
     :: ListContributorInsights
-listContributorInsights =
-  ListContributorInsights'
-    {_lciNextToken = Nothing, _lciMaxResults = Nothing, _lciTableName = Nothing}
-
+listContributorInsights
+  = ListContributorInsights'{_lciNextToken = Nothing,
+                             _lciMaxResults = Nothing, _lciTableName = Nothing}
 
 -- | A token to for the desired page, if there is one.
 lciNextToken :: Lens' ListContributorInsights (Maybe Text)
@@ -126,14 +124,18 @@ instance ToQuery ListContributorInsights where
         toQuery = const mempty
 
 -- | /See:/ 'listContributorInsightsResponse' smart constructor.
-data ListContributorInsightsResponse =
-  ListContributorInsightsResponse'
-    { _lcirsContributorInsightsSummaries :: !(Maybe [ContributorInsightsSummary])
-    , _lcirsNextToken :: !(Maybe Text)
-    , _lcirsResponseStatus :: !Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data ListContributorInsightsResponse = ListContributorInsightsResponse'{_lcirsContributorInsightsSummaries
+                                                                        ::
+                                                                        !(Maybe
+                                                                            [ContributorInsightsSummary]),
+                                                                        _lcirsNextToken
+                                                                        ::
+                                                                        !(Maybe
+                                                                            Text),
+                                                                        _lcirsResponseStatus
+                                                                        :: !Int}
+                                         deriving (Eq, Read, Show, Data,
+                                                   Typeable, Generic)
 
 -- | Creates a value of 'ListContributorInsightsResponse' with the minimum fields required to make a request.
 --
@@ -147,13 +149,11 @@ data ListContributorInsightsResponse =
 listContributorInsightsResponse
     :: Int -- ^ 'lcirsResponseStatus'
     -> ListContributorInsightsResponse
-listContributorInsightsResponse pResponseStatus_ =
-  ListContributorInsightsResponse'
-    { _lcirsContributorInsightsSummaries = Nothing
-    , _lcirsNextToken = Nothing
-    , _lcirsResponseStatus = pResponseStatus_
-    }
-
+listContributorInsightsResponse pResponseStatus_
+  = ListContributorInsightsResponse'{_lcirsContributorInsightsSummaries
+                                       = Nothing,
+                                     _lcirsNextToken = Nothing,
+                                     _lcirsResponseStatus = pResponseStatus_}
 
 -- | A list of ContributorInsightsSummary.
 lcirsContributorInsightsSummaries :: Lens' ListContributorInsightsResponse [ContributorInsightsSummary]

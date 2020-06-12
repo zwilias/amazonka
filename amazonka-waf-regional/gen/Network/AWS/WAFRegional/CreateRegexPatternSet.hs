@@ -58,16 +58,13 @@ import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 import Network.AWS.WAFRegional.Types
-import Network.AWS.WAFRegional.Types.Product
 
 -- | /See:/ 'createRegexPatternSet' smart constructor.
-data CreateRegexPatternSet =
-  CreateRegexPatternSet'
-    { _crpsName        :: !Text
-    , _crpsChangeToken :: !Text
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data CreateRegexPatternSet = CreateRegexPatternSet'{_crpsName
+                                                    :: !Text,
+                                                    _crpsChangeToken :: !Text}
+                               deriving (Eq, Read, Show, Data, Typeable,
+                                         Generic)
 
 -- | Creates a value of 'CreateRegexPatternSet' with the minimum fields required to make a request.
 --
@@ -80,9 +77,9 @@ createRegexPatternSet
     :: Text -- ^ 'crpsName'
     -> Text -- ^ 'crpsChangeToken'
     -> CreateRegexPatternSet
-createRegexPatternSet pName_ pChangeToken_ =
-  CreateRegexPatternSet' {_crpsName = pName_, _crpsChangeToken = pChangeToken_}
-
+createRegexPatternSet pName_ pChangeToken_
+  = CreateRegexPatternSet'{_crpsName = pName_,
+                           _crpsChangeToken = pChangeToken_}
 
 -- | A friendly name or description of the 'RegexPatternSet' . You can't change @Name@ after you create a @RegexPatternSet@ .
 crpsName :: Lens' CreateRegexPatternSet Text
@@ -131,14 +128,18 @@ instance ToQuery CreateRegexPatternSet where
         toQuery = const mempty
 
 -- | /See:/ 'createRegexPatternSetResponse' smart constructor.
-data CreateRegexPatternSetResponse =
-  CreateRegexPatternSetResponse'
-    { _crpsrsRegexPatternSet :: !(Maybe RegexPatternSet)
-    , _crpsrsChangeToken     :: !(Maybe Text)
-    , _crpsrsResponseStatus  :: !Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data CreateRegexPatternSetResponse = CreateRegexPatternSetResponse'{_crpsrsRegexPatternSet
+                                                                    ::
+                                                                    !(Maybe
+                                                                        RegexPatternSet),
+                                                                    _crpsrsChangeToken
+                                                                    ::
+                                                                    !(Maybe
+                                                                        Text),
+                                                                    _crpsrsResponseStatus
+                                                                    :: !Int}
+                                       deriving (Eq, Read, Show, Data, Typeable,
+                                                 Generic)
 
 -- | Creates a value of 'CreateRegexPatternSetResponse' with the minimum fields required to make a request.
 --
@@ -152,13 +153,11 @@ data CreateRegexPatternSetResponse =
 createRegexPatternSetResponse
     :: Int -- ^ 'crpsrsResponseStatus'
     -> CreateRegexPatternSetResponse
-createRegexPatternSetResponse pResponseStatus_ =
-  CreateRegexPatternSetResponse'
-    { _crpsrsRegexPatternSet = Nothing
-    , _crpsrsChangeToken = Nothing
-    , _crpsrsResponseStatus = pResponseStatus_
-    }
-
+createRegexPatternSetResponse pResponseStatus_
+  = CreateRegexPatternSetResponse'{_crpsrsRegexPatternSet
+                                     = Nothing,
+                                   _crpsrsChangeToken = Nothing,
+                                   _crpsrsResponseStatus = pResponseStatus_}
 
 -- | A 'RegexPatternSet' that contains no objects.
 crpsrsRegexPatternSet :: Lens' CreateRegexPatternSetResponse (Maybe RegexPatternSet)

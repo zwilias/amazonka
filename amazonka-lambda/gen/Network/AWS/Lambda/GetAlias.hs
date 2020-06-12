@@ -45,20 +45,15 @@ module Network.AWS.Lambda.GetAlias
     ) where
 
 import Network.AWS.Lambda.Types
-import Network.AWS.Lambda.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 
 -- | /See:/ 'getAlias' smart constructor.
-data GetAlias =
-  GetAlias'
-    { _gaFunctionName :: !Text
-    , _gaName         :: !Text
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data GetAlias = GetAlias'{_gaFunctionName :: !Text,
+                          _gaName :: !Text}
+                  deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'GetAlias' with the minimum fields required to make a request.
 --
@@ -71,9 +66,9 @@ getAlias
     :: Text -- ^ 'gaFunctionName'
     -> Text -- ^ 'gaName'
     -> GetAlias
-getAlias pFunctionName_ pName_ =
-  GetAlias' {_gaFunctionName = pFunctionName_, _gaName = pName_}
-
+getAlias pFunctionName_ pName_
+  = GetAlias'{_gaFunctionName = pFunctionName_,
+              _gaName = pName_}
 
 -- | Function name for which the alias is created. An alias is a subresource that exists only in the context of an existing Lambda function so you must specify the function name. Note that the length constraint applies only to the ARN. If you specify only the function name, it is limited to 64 characters in length.
 gaFunctionName :: Lens' GetAlias Text

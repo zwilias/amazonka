@@ -41,23 +41,18 @@ module Network.AWS.CloudDirectory.CreateFacet
     ) where
 
 import Network.AWS.CloudDirectory.Types
-import Network.AWS.CloudDirectory.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 
 -- | /See:/ 'createFacet' smart constructor.
-data CreateFacet =
-  CreateFacet'
-    { _cfFacetStyle :: !(Maybe FacetStyle)
-    , _cfObjectType :: !(Maybe ObjectType)
-    , _cfAttributes :: !(Maybe [FacetAttribute])
-    , _cfSchemaARN  :: !Text
-    , _cfName       :: !Text
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data CreateFacet = CreateFacet'{_cfFacetStyle ::
+                                !(Maybe FacetStyle),
+                                _cfObjectType :: !(Maybe ObjectType),
+                                _cfAttributes :: !(Maybe [FacetAttribute]),
+                                _cfSchemaARN :: !Text, _cfName :: !Text}
+                     deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'CreateFacet' with the minimum fields required to make a request.
 --
@@ -76,15 +71,10 @@ createFacet
     :: Text -- ^ 'cfSchemaARN'
     -> Text -- ^ 'cfName'
     -> CreateFacet
-createFacet pSchemaARN_ pName_ =
-  CreateFacet'
-    { _cfFacetStyle = Nothing
-    , _cfObjectType = Nothing
-    , _cfAttributes = Nothing
-    , _cfSchemaARN = pSchemaARN_
-    , _cfName = pName_
-    }
-
+createFacet pSchemaARN_ pName_
+  = CreateFacet'{_cfFacetStyle = Nothing,
+                 _cfObjectType = Nothing, _cfAttributes = Nothing,
+                 _cfSchemaARN = pSchemaARN_, _cfName = pName_}
 
 -- | There are two different styles that you can define on any given facet, @Static@ and @Dynamic@ . For static facets, all attributes must be defined in the schema. For dynamic facets, attributes can be defined during data plane operations.
 cfFacetStyle :: Lens' CreateFacet (Maybe FacetStyle)
@@ -140,12 +130,10 @@ instance ToQuery CreateFacet where
         toQuery = const mempty
 
 -- | /See:/ 'createFacetResponse' smart constructor.
-newtype CreateFacetResponse =
-  CreateFacetResponse'
-    { _cfrsResponseStatus :: Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+newtype CreateFacetResponse = CreateFacetResponse'{_cfrsResponseStatus
+                                                   :: Int}
+                                deriving (Eq, Read, Show, Data, Typeable,
+                                          Generic)
 
 -- | Creates a value of 'CreateFacetResponse' with the minimum fields required to make a request.
 --
@@ -155,9 +143,9 @@ newtype CreateFacetResponse =
 createFacetResponse
     :: Int -- ^ 'cfrsResponseStatus'
     -> CreateFacetResponse
-createFacetResponse pResponseStatus_ =
-  CreateFacetResponse' {_cfrsResponseStatus = pResponseStatus_}
-
+createFacetResponse pResponseStatus_
+  = CreateFacetResponse'{_cfrsResponseStatus =
+                           pResponseStatus_}
 
 -- | -- | The response status code.
 cfrsResponseStatus :: Lens' CreateFacetResponse Int

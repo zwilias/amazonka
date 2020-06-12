@@ -39,17 +39,13 @@ import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 import Network.AWS.S3.Types
-import Network.AWS.S3.Types.Product
 
 -- | /See:/ 'putBucketTagging' smart constructor.
-data PutBucketTagging =
-  PutBucketTagging'
-    { _pbtContentMD5 :: !(Maybe Text)
-    , _pbtBucket     :: !BucketName
-    , _pbtTagging    :: !Tagging
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data PutBucketTagging = PutBucketTagging'{_pbtContentMD5
+                                          :: !(Maybe Text),
+                                          _pbtBucket :: !BucketName,
+                                          _pbtTagging :: !Tagging}
+                          deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'PutBucketTagging' with the minimum fields required to make a request.
 --
@@ -64,10 +60,9 @@ putBucketTagging
     :: BucketName -- ^ 'pbtBucket'
     -> Tagging -- ^ 'pbtTagging'
     -> PutBucketTagging
-putBucketTagging pBucket_ pTagging_ =
-  PutBucketTagging'
-    {_pbtContentMD5 = Nothing, _pbtBucket = pBucket_, _pbtTagging = pTagging_}
-
+putBucketTagging pBucket_ pTagging_
+  = PutBucketTagging'{_pbtContentMD5 = Nothing,
+                      _pbtBucket = pBucket_, _pbtTagging = pTagging_}
 
 -- | Undocumented member.
 pbtContentMD5 :: Lens' PutBucketTagging (Maybe Text)
@@ -109,16 +104,14 @@ instance ToQuery PutBucketTagging where
         toQuery = const (mconcat ["tagging"])
 
 -- | /See:/ 'putBucketTaggingResponse' smart constructor.
-data PutBucketTaggingResponse =
-  PutBucketTaggingResponse'
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data PutBucketTaggingResponse = PutBucketTaggingResponse'
+                                  deriving (Eq, Read, Show, Data, Typeable,
+                                            Generic)
 
 -- | Creates a value of 'PutBucketTaggingResponse' with the minimum fields required to make a request.
 --
 putBucketTaggingResponse
     :: PutBucketTaggingResponse
 putBucketTaggingResponse = PutBucketTaggingResponse'
-
 
 instance NFData PutBucketTaggingResponse where

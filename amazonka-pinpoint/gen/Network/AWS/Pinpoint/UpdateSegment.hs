@@ -39,20 +39,17 @@ module Network.AWS.Pinpoint.UpdateSegment
 
 import Network.AWS.Lens
 import Network.AWS.Pinpoint.Types
-import Network.AWS.Pinpoint.Types.Product
 import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 
 -- | /See:/ 'updateSegment' smart constructor.
-data UpdateSegment =
-  UpdateSegment'
-    { _usSegmentId           :: !Text
-    , _usApplicationId       :: !Text
-    , _usWriteSegmentRequest :: !WriteSegmentRequest
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data UpdateSegment = UpdateSegment'{_usSegmentId ::
+                                    !Text,
+                                    _usApplicationId :: !Text,
+                                    _usWriteSegmentRequest ::
+                                    !WriteSegmentRequest}
+                       deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'UpdateSegment' with the minimum fields required to make a request.
 --
@@ -68,13 +65,11 @@ updateSegment
     -> Text -- ^ 'usApplicationId'
     -> WriteSegmentRequest -- ^ 'usWriteSegmentRequest'
     -> UpdateSegment
-updateSegment pSegmentId_ pApplicationId_ pWriteSegmentRequest_ =
-  UpdateSegment'
-    { _usSegmentId = pSegmentId_
-    , _usApplicationId = pApplicationId_
-    , _usWriteSegmentRequest = pWriteSegmentRequest_
-    }
-
+updateSegment pSegmentId_ pApplicationId_
+  pWriteSegmentRequest_
+  = UpdateSegment'{_usSegmentId = pSegmentId_,
+                   _usApplicationId = pApplicationId_,
+                   _usWriteSegmentRequest = pWriteSegmentRequest_}
 
 -- | Undocumented member.
 usSegmentId :: Lens' UpdateSegment Text
@@ -125,13 +120,12 @@ instance ToQuery UpdateSegment where
         toQuery = const mempty
 
 -- | /See:/ 'updateSegmentResponse' smart constructor.
-data UpdateSegmentResponse =
-  UpdateSegmentResponse'
-    { _usrsResponseStatus  :: !Int
-    , _usrsSegmentResponse :: !SegmentResponse
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data UpdateSegmentResponse = UpdateSegmentResponse'{_usrsResponseStatus
+                                                    :: !Int,
+                                                    _usrsSegmentResponse ::
+                                                    !SegmentResponse}
+                               deriving (Eq, Read, Show, Data, Typeable,
+                                         Generic)
 
 -- | Creates a value of 'UpdateSegmentResponse' with the minimum fields required to make a request.
 --
@@ -144,12 +138,11 @@ updateSegmentResponse
     :: Int -- ^ 'usrsResponseStatus'
     -> SegmentResponse -- ^ 'usrsSegmentResponse'
     -> UpdateSegmentResponse
-updateSegmentResponse pResponseStatus_ pSegmentResponse_ =
-  UpdateSegmentResponse'
-    { _usrsResponseStatus = pResponseStatus_
-    , _usrsSegmentResponse = pSegmentResponse_
-    }
-
+updateSegmentResponse pResponseStatus_
+  pSegmentResponse_
+  = UpdateSegmentResponse'{_usrsResponseStatus =
+                             pResponseStatus_,
+                           _usrsSegmentResponse = pSegmentResponse_}
 
 -- | -- | The response status code.
 usrsResponseStatus :: Lens' UpdateSegmentResponse Int

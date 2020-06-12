@@ -25,7 +25,7 @@
 --
 -- /Important:/ If you use tags as part of your security strategy, then removing a tag can change permissions. If successfully completing this operation would result in you losing your permissions for this secret, then the operation is blocked and returns an Access Denied error.
 --
--- __Minimum permissions__
+-- __Minimum permissions__ 
 --
 -- To run this command, you must have the following permissions:
 --
@@ -33,7 +33,7 @@
 --
 --
 --
--- __Related operations__
+-- __Related operations__ 
 --
 --     * To add one or more tags to the collection attached to a secret, use 'TagResource' .
 --
@@ -60,16 +60,12 @@ import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 import Network.AWS.SecretsManager.Types
-import Network.AWS.SecretsManager.Types.Product
 
 -- | /See:/ 'untagResource' smart constructor.
-data UntagResource =
-  UntagResource'
-    { _urSecretId :: !Text
-    , _urTagKeys  :: ![Text]
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data UntagResource = UntagResource'{_urSecretId ::
+                                    !Text,
+                                    _urTagKeys :: ![Text]}
+                       deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'UntagResource' with the minimum fields required to make a request.
 --
@@ -81,9 +77,9 @@ data UntagResource =
 untagResource
     :: Text -- ^ 'urSecretId'
     -> UntagResource
-untagResource pSecretId_ =
-  UntagResource' {_urSecretId = pSecretId_, _urTagKeys = mempty}
-
+untagResource pSecretId_
+  = UntagResource'{_urSecretId = pSecretId_,
+                   _urTagKeys = mempty}
 
 -- | The identifier for the secret that you want to remove tags from. You can specify either the Amazon Resource Name (ARN) or the friendly name of the secret.
 urSecretId :: Lens' UntagResource Text
@@ -125,16 +121,14 @@ instance ToQuery UntagResource where
         toQuery = const mempty
 
 -- | /See:/ 'untagResourceResponse' smart constructor.
-data UntagResourceResponse =
-  UntagResourceResponse'
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data UntagResourceResponse = UntagResourceResponse'
+                               deriving (Eq, Read, Show, Data, Typeable,
+                                         Generic)
 
 -- | Creates a value of 'UntagResourceResponse' with the minimum fields required to make a request.
 --
 untagResourceResponse
     :: UntagResourceResponse
 untagResourceResponse = UntagResourceResponse'
-
 
 instance NFData UntagResourceResponse where

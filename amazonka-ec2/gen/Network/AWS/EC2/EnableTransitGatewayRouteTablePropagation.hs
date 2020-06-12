@@ -40,21 +40,25 @@ module Network.AWS.EC2.EnableTransitGatewayRouteTablePropagation
     ) where
 
 import Network.AWS.EC2.Types
-import Network.AWS.EC2.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 
 -- | /See:/ 'enableTransitGatewayRouteTablePropagation' smart constructor.
-data EnableTransitGatewayRouteTablePropagation =
-  EnableTransitGatewayRouteTablePropagation'
-    { _etgrtpDryRun                     :: !(Maybe Bool)
-    , _etgrtpTransitGatewayRouteTableId :: !Text
-    , _etgrtpTransitGatewayAttachmentId :: !Text
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data EnableTransitGatewayRouteTablePropagation = EnableTransitGatewayRouteTablePropagation'{_etgrtpDryRun
+                                                                                            ::
+                                                                                            !(Maybe
+                                                                                                Bool),
+                                                                                            _etgrtpTransitGatewayRouteTableId
+                                                                                            ::
+                                                                                            !Text,
+                                                                                            _etgrtpTransitGatewayAttachmentId
+                                                                                            ::
+                                                                                            !Text}
+                                                   deriving (Eq, Read, Show,
+                                                             Data, Typeable,
+                                                             Generic)
 
 -- | Creates a value of 'EnableTransitGatewayRouteTablePropagation' with the minimum fields required to make a request.
 --
@@ -69,13 +73,15 @@ enableTransitGatewayRouteTablePropagation
     :: Text -- ^ 'etgrtpTransitGatewayRouteTableId'
     -> Text -- ^ 'etgrtpTransitGatewayAttachmentId'
     -> EnableTransitGatewayRouteTablePropagation
-enableTransitGatewayRouteTablePropagation pTransitGatewayRouteTableId_ pTransitGatewayAttachmentId_ =
-  EnableTransitGatewayRouteTablePropagation'
-    { _etgrtpDryRun = Nothing
-    , _etgrtpTransitGatewayRouteTableId = pTransitGatewayRouteTableId_
-    , _etgrtpTransitGatewayAttachmentId = pTransitGatewayAttachmentId_
-    }
-
+enableTransitGatewayRouteTablePropagation
+  pTransitGatewayRouteTableId_
+  pTransitGatewayAttachmentId_
+  = EnableTransitGatewayRouteTablePropagation'{_etgrtpDryRun
+                                                 = Nothing,
+                                               _etgrtpTransitGatewayRouteTableId
+                                                 = pTransitGatewayRouteTableId_,
+                                               _etgrtpTransitGatewayAttachmentId
+                                                 = pTransitGatewayAttachmentId_}
 
 -- | Checks whether you have the required permissions for the action, without actually making the request, and provides an error response. If you have the required permissions, the error response is @DryRunOperation@ . Otherwise, it is @UnauthorizedOperation@ .
 etgrtpDryRun :: Lens' EnableTransitGatewayRouteTablePropagation (Maybe Bool)
@@ -136,13 +142,17 @@ instance ToQuery
                  _etgrtpTransitGatewayAttachmentId]
 
 -- | /See:/ 'enableTransitGatewayRouteTablePropagationResponse' smart constructor.
-data EnableTransitGatewayRouteTablePropagationResponse =
-  EnableTransitGatewayRouteTablePropagationResponse'
-    { _etgrtprsPropagation    :: !(Maybe TransitGatewayPropagation)
-    , _etgrtprsResponseStatus :: !Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data EnableTransitGatewayRouteTablePropagationResponse = EnableTransitGatewayRouteTablePropagationResponse'{_etgrtprsPropagation
+                                                                                                            ::
+                                                                                                            !(Maybe
+                                                                                                                TransitGatewayPropagation),
+                                                                                                            _etgrtprsResponseStatus
+                                                                                                            ::
+                                                                                                            !Int}
+                                                           deriving (Eq, Read,
+                                                                     Show, Data,
+                                                                     Typeable,
+                                                                     Generic)
 
 -- | Creates a value of 'EnableTransitGatewayRouteTablePropagationResponse' with the minimum fields required to make a request.
 --
@@ -154,10 +164,12 @@ data EnableTransitGatewayRouteTablePropagationResponse =
 enableTransitGatewayRouteTablePropagationResponse
     :: Int -- ^ 'etgrtprsResponseStatus'
     -> EnableTransitGatewayRouteTablePropagationResponse
-enableTransitGatewayRouteTablePropagationResponse pResponseStatus_ =
-  EnableTransitGatewayRouteTablePropagationResponse'
-    {_etgrtprsPropagation = Nothing, _etgrtprsResponseStatus = pResponseStatus_}
-
+enableTransitGatewayRouteTablePropagationResponse
+  pResponseStatus_
+  = EnableTransitGatewayRouteTablePropagationResponse'{_etgrtprsPropagation
+                                                         = Nothing,
+                                                       _etgrtprsResponseStatus =
+                                                         pResponseStatus_}
 
 -- | Information about route propagation.
 etgrtprsPropagation :: Lens' EnableTransitGatewayRouteTablePropagationResponse (Maybe TransitGatewayPropagation)

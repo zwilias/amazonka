@@ -1,4 +1,4 @@
-{-# LANGUAGE OverloadedStrings #-}
+{-# LANGUAGE OverloadedStrings  #-}
 
 -- Derived from AWS service descriptions, licensed under Apache 2.0.
 
@@ -501,192 +501,233 @@ module Network.AWS.DMS.Types
     , vsgmVPCSecurityGroupId
     ) where
 
-import Network.AWS.DMS.Types.Product
-import Network.AWS.DMS.Types.Sum
 import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.Sign.V4
+import Network.AWS.DMS.Types.AuthMechanismValue
+import Network.AWS.DMS.Types.AuthTypeValue
+import Network.AWS.DMS.Types.CompressionTypeValue
+import Network.AWS.DMS.Types.DataFormatValue
+import Network.AWS.DMS.Types.DmsSSLModeValue
+import Network.AWS.DMS.Types.EncodingTypeValue
+import Network.AWS.DMS.Types.EncryptionModeValue
+import Network.AWS.DMS.Types.MessageFormatValue
+import Network.AWS.DMS.Types.MigrationTypeValue
+import Network.AWS.DMS.Types.NestingLevelValue
+import Network.AWS.DMS.Types.ParquetVersionValue
+import Network.AWS.DMS.Types.RefreshSchemasStatusTypeValue
+import Network.AWS.DMS.Types.ReleaseStatusValues
+import Network.AWS.DMS.Types.ReloadOptionValue
+import Network.AWS.DMS.Types.ReplicationEndpointTypeValue
+import Network.AWS.DMS.Types.SourceType
+import Network.AWS.DMS.Types.StartReplicationTaskTypeValue
+import Network.AWS.DMS.Types.AccountQuota
+import Network.AWS.DMS.Types.AvailabilityZone
+import Network.AWS.DMS.Types.Certificate
+import Network.AWS.DMS.Types.Connection
+import Network.AWS.DMS.Types.DmsTransferSettings
+import Network.AWS.DMS.Types.DynamoDBSettings
+import Network.AWS.DMS.Types.ElasticsearchSettings
+import Network.AWS.DMS.Types.Endpoint
+import Network.AWS.DMS.Types.Event
+import Network.AWS.DMS.Types.EventCategoryGroup
+import Network.AWS.DMS.Types.EventSubscription
+import Network.AWS.DMS.Types.Filter
+import Network.AWS.DMS.Types.KafkaSettings
+import Network.AWS.DMS.Types.KinesisSettings
+import Network.AWS.DMS.Types.MongoDBSettings
+import Network.AWS.DMS.Types.NeptuneSettings
+import Network.AWS.DMS.Types.OrderableReplicationInstance
+import Network.AWS.DMS.Types.PendingMaintenanceAction
+import Network.AWS.DMS.Types.RedshiftSettings
+import Network.AWS.DMS.Types.RefreshSchemasStatus
+import Network.AWS.DMS.Types.ReplicationInstance
+import Network.AWS.DMS.Types.ReplicationInstanceTaskLog
+import Network.AWS.DMS.Types.ReplicationPendingModifiedValues
+import Network.AWS.DMS.Types.ReplicationSubnetGroup
+import Network.AWS.DMS.Types.ReplicationTask
+import Network.AWS.DMS.Types.ReplicationTaskAssessmentResult
+import Network.AWS.DMS.Types.ReplicationTaskStats
+import Network.AWS.DMS.Types.ResourcePendingMaintenanceActions
+import Network.AWS.DMS.Types.S3Settings
+import Network.AWS.DMS.Types.Subnet
+import Network.AWS.DMS.Types.SupportedEndpointType
+import Network.AWS.DMS.Types.TableStatistics
+import Network.AWS.DMS.Types.TableToReload
+import Network.AWS.DMS.Types.Tag
+import Network.AWS.DMS.Types.VPCSecurityGroupMembership
 
 -- | API version @2016-01-01@ of the Amazon Database Migration Service SDK configuration.
 dms :: Service
-dms =
-  Service
-    { _svcAbbrev = "DMS"
-    , _svcSigner = v4
-    , _svcPrefix = "dms"
-    , _svcVersion = "2016-01-01"
-    , _svcEndpoint = defaultEndpoint dms
-    , _svcTimeout = Just 70
-    , _svcCheck = statusSuccess
-    , _svcError = parseJSONError "DMS"
-    , _svcRetry = retry
-    }
-  where
-    retry =
-      Exponential
-        { _retryBase = 5.0e-2
-        , _retryGrowth = 2
-        , _retryAttempts = 5
-        , _retryCheck = check
-        }
-    check e
-      | has (hasCode "ThrottledException" . hasStatus 400) e =
-        Just "throttled_exception"
-      | has (hasStatus 429) e = Just "too_many_requests"
-      | has (hasCode "ThrottlingException" . hasStatus 400) e =
-        Just "throttling_exception"
-      | has (hasCode "Throttling" . hasStatus 400) e = Just "throttling"
-      | has (hasStatus 504) e = Just "gateway_timeout"
-      | has (hasCode "RequestThrottledException" . hasStatus 400) e =
-        Just "request_throttled_exception"
-      | has (hasStatus 502) e = Just "bad_gateway"
-      | has (hasStatus 503) e = Just "service_unavailable"
-      | has (hasStatus 500) e = Just "general_server_error"
-      | has (hasStatus 509) e = Just "limit_exceeded"
-      | otherwise = Nothing
-
+dms
+  = Service{_svcAbbrev = "DMS", _svcSigner = v4,
+            _svcPrefix = "dms", _svcVersion = "2016-01-01",
+            _svcEndpoint = defaultEndpoint dms,
+            _svcTimeout = Just 70, _svcCheck = statusSuccess,
+            _svcError = parseJSONError "DMS", _svcRetry = retry}
+  where retry
+          = Exponential{_retryBase = 5.0e-2, _retryGrowth = 2,
+                        _retryAttempts = 5, _retryCheck = check}
+        check e
+          | has (hasCode "ThrottledException" . hasStatus 400)
+              e
+            = Just "throttled_exception"
+          | has (hasStatus 429) e = Just "too_many_requests"
+          | has (hasCode "ThrottlingException" . hasStatus 400)
+              e
+            = Just "throttling_exception"
+          | has (hasCode "Throttling" . hasStatus 400) e =
+            Just "throttling"
+          | has (hasStatus 504) e = Just "gateway_timeout"
+          | has
+              (hasCode "RequestThrottledException" . hasStatus 400)
+              e
+            = Just "request_throttled_exception"
+          | has (hasStatus 502) e = Just "bad_gateway"
+          | has (hasStatus 503) e = Just "service_unavailable"
+          | has (hasStatus 500) e = Just "general_server_error"
+          | has (hasStatus 509) e = Just "limit_exceeded"
+          | otherwise = Nothing
 
 -- | The ciphertext references a key that doesn't exist or that the DMS account doesn't have access to.
 --
 --
 _KMSAccessDeniedFault :: AsError a => Getting (First ServiceError) a ServiceError
-_KMSAccessDeniedFault = _MatchServiceError dms "KMSAccessDeniedFault"
-
+_KMSAccessDeniedFault
+  = _MatchServiceError dms "KMSAccessDeniedFault"
 
 -- | The specified master key (CMK) isn't enabled.
 --
 --
 _KMSDisabledFault :: AsError a => Getting (First ServiceError) a ServiceError
-_KMSDisabledFault = _MatchServiceError dms "KMSDisabledFault"
-
+_KMSDisabledFault
+  = _MatchServiceError dms "KMSDisabledFault"
 
 -- | The subnet provided is invalid.
 --
 --
 _InvalidSubnet :: AsError a => Getting (First ServiceError) a ServiceError
-_InvalidSubnet = _MatchServiceError dms "InvalidSubnet"
-
+_InvalidSubnet
+  = _MatchServiceError dms "InvalidSubnet"
 
 -- | AWS DMS cannot access the AWS KMS key.
 --
 --
 _KMSKeyNotAccessibleFault :: AsError a => Getting (First ServiceError) a ServiceError
-_KMSKeyNotAccessibleFault = _MatchServiceError dms "KMSKeyNotAccessibleFault"
-
+_KMSKeyNotAccessibleFault
+  = _MatchServiceError dms "KMSKeyNotAccessibleFault"
 
 -- | The replication subnet group does not cover enough Availability Zones (AZs). Edit the replication subnet group and add more AZs.
 --
 --
 _ReplicationSubnetGroupDoesNotCoverEnoughAZs :: AsError a => Getting (First ServiceError) a ServiceError
-_ReplicationSubnetGroupDoesNotCoverEnoughAZs =
-  _MatchServiceError dms "ReplicationSubnetGroupDoesNotCoverEnoughAZs"
-
+_ReplicationSubnetGroupDoesNotCoverEnoughAZs
+  = _MatchServiceError dms
+      "ReplicationSubnetGroupDoesNotCoverEnoughAZs"
 
 -- | The resource is in a state that prevents it from being used for database migration.
 --
 --
 _InvalidResourceStateFault :: AsError a => Getting (First ServiceError) a ServiceError
-_InvalidResourceStateFault = _MatchServiceError dms "InvalidResourceStateFault"
-
+_InvalidResourceStateFault
+  = _MatchServiceError dms "InvalidResourceStateFault"
 
 -- | The certificate was not valid.
 --
 --
 _InvalidCertificateFault :: AsError a => Getting (First ServiceError) a ServiceError
-_InvalidCertificateFault = _MatchServiceError dms "InvalidCertificateFault"
-
+_InvalidCertificateFault
+  = _MatchServiceError dms "InvalidCertificateFault"
 
 -- | You are not authorized for the SNS subscription.
 --
 --
 _SNSNoAuthorizationFault :: AsError a => Getting (First ServiceError) a ServiceError
-_SNSNoAuthorizationFault = _MatchServiceError dms "SNSNoAuthorizationFault"
-
+_SNSNoAuthorizationFault
+  = _MatchServiceError dms "SNSNoAuthorizationFault"
 
 -- | The resource you are attempting to create already exists.
 --
 --
 _ResourceAlreadyExistsFault :: AsError a => Getting (First ServiceError) a ServiceError
-_ResourceAlreadyExistsFault =
-  _MatchServiceError dms "ResourceAlreadyExistsFault"
-
+_ResourceAlreadyExistsFault
+  = _MatchServiceError dms "ResourceAlreadyExistsFault"
 
 -- | There are not enough resources allocated to the database migration.
 --
 --
 _InsufficientResourceCapacityFault :: AsError a => Getting (First ServiceError) a ServiceError
-_InsufficientResourceCapacityFault =
-  _MatchServiceError dms "InsufficientResourceCapacityFault"
-
+_InsufficientResourceCapacityFault
+  = _MatchServiceError dms
+      "InsufficientResourceCapacityFault"
 
 -- | The SNS topic is invalid.
 --
 --
 _SNSInvalidTopicFault :: AsError a => Getting (First ServiceError) a ServiceError
-_SNSInvalidTopicFault = _MatchServiceError dms "SNSInvalidTopicFault"
-
+_SNSInvalidTopicFault
+  = _MatchServiceError dms "SNSInvalidTopicFault"
 
 -- | The specified AWS KMS entity or resource can't be found.
 --
 --
 _KMSNotFoundFault :: AsError a => Getting (First ServiceError) a ServiceError
-_KMSNotFoundFault = _MatchServiceError dms "KMSNotFoundFault"
-
+_KMSNotFoundFault
+  = _MatchServiceError dms "KMSNotFoundFault"
 
 -- | This request triggered AWS KMS request throttling.
 --
 --
 _KMSThrottlingFault :: AsError a => Getting (First ServiceError) a ServiceError
-_KMSThrottlingFault = _MatchServiceError dms "KMSThrottlingFault"
-
+_KMSThrottlingFault
+  = _MatchServiceError dms "KMSThrottlingFault"
 
 -- | The quota for this resource quota has been exceeded.
 --
 --
 _ResourceQuotaExceededFault :: AsError a => Getting (First ServiceError) a ServiceError
-_ResourceQuotaExceededFault =
-  _MatchServiceError dms "ResourceQuotaExceededFault"
-
+_ResourceQuotaExceededFault
+  = _MatchServiceError dms "ResourceQuotaExceededFault"
 
 -- | An upgrade dependency is preventing the database migration.
 --
 --
 _UpgradeDependencyFailureFault :: AsError a => Getting (First ServiceError) a ServiceError
-_UpgradeDependencyFailureFault =
-  _MatchServiceError dms "UpgradeDependencyFailureFault"
-
+_UpgradeDependencyFailureFault
+  = _MatchServiceError dms
+      "UpgradeDependencyFailureFault"
 
 -- | The resource could not be found.
 --
 --
 _ResourceNotFoundFault :: AsError a => Getting (First ServiceError) a ServiceError
-_ResourceNotFoundFault = _MatchServiceError dms "ResourceNotFoundFault"
-
+_ResourceNotFoundFault
+  = _MatchServiceError dms "ResourceNotFoundFault"
 
 -- | The storage quota has been exceeded.
 --
 --
 _StorageQuotaExceededFault :: AsError a => Getting (First ServiceError) a ServiceError
-_StorageQuotaExceededFault = _MatchServiceError dms "StorageQuotaExceededFault"
-
+_StorageQuotaExceededFault
+  = _MatchServiceError dms "StorageQuotaExceededFault"
 
 -- | AWS DMS was denied access to the endpoint. Check that the role is correctly configured.
 --
 --
 _AccessDeniedFault :: AsError a => Getting (First ServiceError) a ServiceError
-_AccessDeniedFault = _MatchServiceError dms "AccessDeniedFault"
-
+_AccessDeniedFault
+  = _MatchServiceError dms "AccessDeniedFault"
 
 -- | The specified subnet is already in use.
 --
 --
 _SubnetAlreadyInUse :: AsError a => Getting (First ServiceError) a ServiceError
-_SubnetAlreadyInUse = _MatchServiceError dms "SubnetAlreadyInUse"
-
+_SubnetAlreadyInUse
+  = _MatchServiceError dms "SubnetAlreadyInUse"
 
 -- | The state of the specified AWS KMS resource isn't valid for this request.
 --
 --
 _KMSInvalidStateFault :: AsError a => Getting (First ServiceError) a ServiceError
-_KMSInvalidStateFault = _MatchServiceError dms "KMSInvalidStateFault"
-
+_KMSInvalidStateFault
+  = _MatchServiceError dms "KMSInvalidStateFault"

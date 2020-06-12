@@ -40,20 +40,18 @@ module Network.AWS.CodeCommit.GetPullRequestOverrideState
     ) where
 
 import Network.AWS.CodeCommit.Types
-import Network.AWS.CodeCommit.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 
 -- | /See:/ 'getPullRequestOverrideState' smart constructor.
-data GetPullRequestOverrideState =
-  GetPullRequestOverrideState'
-    { _gprosPullRequestId :: !Text
-    , _gprosRevisionId    :: !Text
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data GetPullRequestOverrideState = GetPullRequestOverrideState'{_gprosPullRequestId
+                                                                :: !Text,
+                                                                _gprosRevisionId
+                                                                :: !Text}
+                                     deriving (Eq, Read, Show, Data, Typeable,
+                                               Generic)
 
 -- | Creates a value of 'GetPullRequestOverrideState' with the minimum fields required to make a request.
 --
@@ -66,10 +64,11 @@ getPullRequestOverrideState
     :: Text -- ^ 'gprosPullRequestId'
     -> Text -- ^ 'gprosRevisionId'
     -> GetPullRequestOverrideState
-getPullRequestOverrideState pPullRequestId_ pRevisionId_ =
-  GetPullRequestOverrideState'
-    {_gprosPullRequestId = pPullRequestId_, _gprosRevisionId = pRevisionId_}
-
+getPullRequestOverrideState pPullRequestId_
+  pRevisionId_
+  = GetPullRequestOverrideState'{_gprosPullRequestId =
+                                   pPullRequestId_,
+                                 _gprosRevisionId = pRevisionId_}
 
 -- | The ID of the pull request for which you want to get information about whether approval rules have been set aside (overridden).
 gprosPullRequestId :: Lens' GetPullRequestOverrideState Text
@@ -118,14 +117,19 @@ instance ToQuery GetPullRequestOverrideState where
         toQuery = const mempty
 
 -- | /See:/ 'getPullRequestOverrideStateResponse' smart constructor.
-data GetPullRequestOverrideStateResponse =
-  GetPullRequestOverrideStateResponse'
-    { _gprosrsOverridden     :: !(Maybe Bool)
-    , _gprosrsOverrider      :: !(Maybe Text)
-    , _gprosrsResponseStatus :: !Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data GetPullRequestOverrideStateResponse = GetPullRequestOverrideStateResponse'{_gprosrsOverridden
+                                                                                ::
+                                                                                !(Maybe
+                                                                                    Bool),
+                                                                                _gprosrsOverrider
+                                                                                ::
+                                                                                !(Maybe
+                                                                                    Text),
+                                                                                _gprosrsResponseStatus
+                                                                                ::
+                                                                                !Int}
+                                             deriving (Eq, Read, Show, Data,
+                                                       Typeable, Generic)
 
 -- | Creates a value of 'GetPullRequestOverrideStateResponse' with the minimum fields required to make a request.
 --
@@ -139,13 +143,12 @@ data GetPullRequestOverrideStateResponse =
 getPullRequestOverrideStateResponse
     :: Int -- ^ 'gprosrsResponseStatus'
     -> GetPullRequestOverrideStateResponse
-getPullRequestOverrideStateResponse pResponseStatus_ =
-  GetPullRequestOverrideStateResponse'
-    { _gprosrsOverridden = Nothing
-    , _gprosrsOverrider = Nothing
-    , _gprosrsResponseStatus = pResponseStatus_
-    }
-
+getPullRequestOverrideStateResponse pResponseStatus_
+  = GetPullRequestOverrideStateResponse'{_gprosrsOverridden
+                                           = Nothing,
+                                         _gprosrsOverrider = Nothing,
+                                         _gprosrsResponseStatus =
+                                           pResponseStatus_}
 
 -- | A Boolean value that indicates whether a pull request has had its rules set aside (TRUE) or whether all approval rules still apply (FALSE).
 gprosrsOverridden :: Lens' GetPullRequestOverrideStateResponse (Maybe Bool)

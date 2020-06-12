@@ -41,7 +41,6 @@ module Network.AWS.CodeDeploy.ListApplications
     ) where
 
 import Network.AWS.CodeDeploy.Types
-import Network.AWS.CodeDeploy.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Pager
 import Network.AWS.Prelude
@@ -53,12 +52,9 @@ import Network.AWS.Response
 --
 --
 -- /See:/ 'listApplications' smart constructor.
-newtype ListApplications =
-  ListApplications'
-    { _laNextToken :: Maybe Text
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+newtype ListApplications = ListApplications'{_laNextToken
+                                             :: Maybe Text}
+                             deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'ListApplications' with the minimum fields required to make a request.
 --
@@ -67,8 +63,8 @@ newtype ListApplications =
 -- * 'laNextToken' - An identifier returned from the previous list applications call. It can be used to return the next set of applications in the list.
 listApplications
     :: ListApplications
-listApplications = ListApplications' {_laNextToken = Nothing}
-
+listApplications
+  = ListApplications'{_laNextToken = Nothing}
 
 -- | An identifier returned from the previous list applications call. It can be used to return the next set of applications in the list.
 laNextToken :: Lens' ListApplications (Maybe Text)
@@ -122,14 +118,14 @@ instance ToQuery ListApplications where
 --
 --
 -- /See:/ 'listApplicationsResponse' smart constructor.
-data ListApplicationsResponse =
-  ListApplicationsResponse'
-    { _larsNextToken      :: !(Maybe Text)
-    , _larsApplications   :: !(Maybe [Text])
-    , _larsResponseStatus :: !Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data ListApplicationsResponse = ListApplicationsResponse'{_larsNextToken
+                                                          :: !(Maybe Text),
+                                                          _larsApplications ::
+                                                          !(Maybe [Text]),
+                                                          _larsResponseStatus ::
+                                                          !Int}
+                                  deriving (Eq, Read, Show, Data, Typeable,
+                                            Generic)
 
 -- | Creates a value of 'ListApplicationsResponse' with the minimum fields required to make a request.
 --
@@ -143,13 +139,10 @@ data ListApplicationsResponse =
 listApplicationsResponse
     :: Int -- ^ 'larsResponseStatus'
     -> ListApplicationsResponse
-listApplicationsResponse pResponseStatus_ =
-  ListApplicationsResponse'
-    { _larsNextToken = Nothing
-    , _larsApplications = Nothing
-    , _larsResponseStatus = pResponseStatus_
-    }
-
+listApplicationsResponse pResponseStatus_
+  = ListApplicationsResponse'{_larsNextToken = Nothing,
+                              _larsApplications = Nothing,
+                              _larsResponseStatus = pResponseStatus_}
 
 -- | If a large amount of information is returned, an identifier is also returned. It can be used in a subsequent list applications call to return the next set of applications in the list.
 larsNextToken :: Lens' ListApplicationsResponse (Maybe Text)

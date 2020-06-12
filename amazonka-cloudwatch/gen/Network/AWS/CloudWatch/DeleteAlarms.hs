@@ -37,19 +37,15 @@ module Network.AWS.CloudWatch.DeleteAlarms
     ) where
 
 import Network.AWS.CloudWatch.Types
-import Network.AWS.CloudWatch.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 
 -- | /See:/ 'deleteAlarms' smart constructor.
-newtype DeleteAlarms =
-  DeleteAlarms'
-    { _dAlarmNames :: [Text]
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+newtype DeleteAlarms = DeleteAlarms'{_dAlarmNames ::
+                                     [Text]}
+                         deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'DeleteAlarms' with the minimum fields required to make a request.
 --
@@ -58,8 +54,7 @@ newtype DeleteAlarms =
 -- * 'dAlarmNames' - The alarms to be deleted.
 deleteAlarms
     :: DeleteAlarms
-deleteAlarms = DeleteAlarms' {_dAlarmNames = mempty}
-
+deleteAlarms = DeleteAlarms'{_dAlarmNames = mempty}
 
 -- | The alarms to be deleted.
 dAlarmNames :: Lens' DeleteAlarms [Text]
@@ -88,16 +83,13 @@ instance ToQuery DeleteAlarms where
                "AlarmNames" =: toQueryList "member" _dAlarmNames]
 
 -- | /See:/ 'deleteAlarmsResponse' smart constructor.
-data DeleteAlarmsResponse =
-  DeleteAlarmsResponse'
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data DeleteAlarmsResponse = DeleteAlarmsResponse'
+                              deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'DeleteAlarmsResponse' with the minimum fields required to make a request.
 --
 deleteAlarmsResponse
     :: DeleteAlarmsResponse
 deleteAlarmsResponse = DeleteAlarmsResponse'
-
 
 instance NFData DeleteAlarmsResponse where

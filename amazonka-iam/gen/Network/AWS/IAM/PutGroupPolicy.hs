@@ -41,21 +41,17 @@ module Network.AWS.IAM.PutGroupPolicy
     ) where
 
 import Network.AWS.IAM.Types
-import Network.AWS.IAM.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 
 -- | /See:/ 'putGroupPolicy' smart constructor.
-data PutGroupPolicy =
-  PutGroupPolicy'
-    { _pgpGroupName      :: !Text
-    , _pgpPolicyName     :: !Text
-    , _pgpPolicyDocument :: !Text
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data PutGroupPolicy = PutGroupPolicy'{_pgpGroupName
+                                      :: !Text,
+                                      _pgpPolicyName :: !Text,
+                                      _pgpPolicyDocument :: !Text}
+                        deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'PutGroupPolicy' with the minimum fields required to make a request.
 --
@@ -71,13 +67,11 @@ putGroupPolicy
     -> Text -- ^ 'pgpPolicyName'
     -> Text -- ^ 'pgpPolicyDocument'
     -> PutGroupPolicy
-putGroupPolicy pGroupName_ pPolicyName_ pPolicyDocument_ =
-  PutGroupPolicy'
-    { _pgpGroupName = pGroupName_
-    , _pgpPolicyName = pPolicyName_
-    , _pgpPolicyDocument = pPolicyDocument_
-    }
-
+putGroupPolicy pGroupName_ pPolicyName_
+  pPolicyDocument_
+  = PutGroupPolicy'{_pgpGroupName = pGroupName_,
+                    _pgpPolicyName = pPolicyName_,
+                    _pgpPolicyDocument = pPolicyDocument_}
 
 -- | The name of the group to associate the policy with. This parameter allows (per its <http://wikipedia.org/wiki/regex regex pattern> ) a string of characters consisting of upper and lowercase alphanumeric characters with no spaces. You can also include any of the following characters: _+=,.@-
 pgpGroupName :: Lens' PutGroupPolicy Text
@@ -116,16 +110,14 @@ instance ToQuery PutGroupPolicy where
                "PolicyDocument" =: _pgpPolicyDocument]
 
 -- | /See:/ 'putGroupPolicyResponse' smart constructor.
-data PutGroupPolicyResponse =
-  PutGroupPolicyResponse'
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data PutGroupPolicyResponse = PutGroupPolicyResponse'
+                                deriving (Eq, Read, Show, Data, Typeable,
+                                          Generic)
 
 -- | Creates a value of 'PutGroupPolicyResponse' with the minimum fields required to make a request.
 --
 putGroupPolicyResponse
     :: PutGroupPolicyResponse
 putGroupPolicyResponse = PutGroupPolicyResponse'
-
 
 instance NFData PutGroupPolicyResponse where

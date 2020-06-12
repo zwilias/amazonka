@@ -23,47 +23,47 @@
 --
 -- Fleet-related operations include:
 --
---     * 'CreateFleet'
+--     * 'CreateFleet' 
 --
---     * 'ListFleets'
+--     * 'ListFleets' 
 --
---     * 'DeleteFleet'
+--     * 'DeleteFleet' 
 --
 --     * Describe fleets:
 --
---     * 'DescribeFleetAttributes'
+--     * 'DescribeFleetAttributes' 
 --
---     * 'DescribeFleetCapacity'
+--     * 'DescribeFleetCapacity' 
 --
---     * 'DescribeFleetPortSettings'
+--     * 'DescribeFleetPortSettings' 
 --
---     * 'DescribeFleetUtilization'
+--     * 'DescribeFleetUtilization' 
 --
---     * 'DescribeRuntimeConfiguration'
+--     * 'DescribeRuntimeConfiguration' 
 --
---     * 'DescribeEC2InstanceLimits'
+--     * 'DescribeEC2InstanceLimits' 
 --
---     * 'DescribeFleetEvents'
+--     * 'DescribeFleetEvents' 
 --
 --
 --
 --     * Update fleets:
 --
---     * 'UpdateFleetAttributes'
+--     * 'UpdateFleetAttributes' 
 --
---     * 'UpdateFleetCapacity'
+--     * 'UpdateFleetCapacity' 
 --
---     * 'UpdateFleetPortSettings'
+--     * 'UpdateFleetPortSettings' 
 --
---     * 'UpdateRuntimeConfiguration'
+--     * 'UpdateRuntimeConfiguration' 
 --
 --
 --
 --     * Manage fleet actions:
 --
---     * 'StartFleetActions'
+--     * 'StartFleetActions' 
 --
---     * 'StopFleetActions'
+--     * 'StopFleetActions' 
 --
 --
 --
@@ -88,7 +88,6 @@ module Network.AWS.GameLift.UpdateFleetPortSettings
     ) where
 
 import Network.AWS.GameLift.Types
-import Network.AWS.GameLift.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.Request
@@ -99,14 +98,15 @@ import Network.AWS.Response
 --
 --
 -- /See:/ 'updateFleetPortSettings' smart constructor.
-data UpdateFleetPortSettings =
-  UpdateFleetPortSettings'
-    { _ufpsInboundPermissionRevocations    :: !(Maybe [IPPermission])
-    , _ufpsInboundPermissionAuthorizations :: !(Maybe [IPPermission])
-    , _ufpsFleetId                         :: !Text
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data UpdateFleetPortSettings = UpdateFleetPortSettings'{_ufpsInboundPermissionRevocations
+                                                        ::
+                                                        !(Maybe [IPPermission]),
+                                                        _ufpsInboundPermissionAuthorizations
+                                                        ::
+                                                        !(Maybe [IPPermission]),
+                                                        _ufpsFleetId :: !Text}
+                                 deriving (Eq, Read, Show, Data, Typeable,
+                                           Generic)
 
 -- | Creates a value of 'UpdateFleetPortSettings' with the minimum fields required to make a request.
 --
@@ -120,13 +120,11 @@ data UpdateFleetPortSettings =
 updateFleetPortSettings
     :: Text -- ^ 'ufpsFleetId'
     -> UpdateFleetPortSettings
-updateFleetPortSettings pFleetId_ =
-  UpdateFleetPortSettings'
-    { _ufpsInboundPermissionRevocations = Nothing
-    , _ufpsInboundPermissionAuthorizations = Nothing
-    , _ufpsFleetId = pFleetId_
-    }
-
+updateFleetPortSettings pFleetId_
+  = UpdateFleetPortSettings'{_ufpsInboundPermissionRevocations
+                               = Nothing,
+                             _ufpsInboundPermissionAuthorizations = Nothing,
+                             _ufpsFleetId = pFleetId_}
 
 -- | Collection of port settings to be removed from the fleet record.
 ufpsInboundPermissionRevocations :: Lens' UpdateFleetPortSettings [IPPermission]
@@ -184,13 +182,14 @@ instance ToQuery UpdateFleetPortSettings where
 --
 --
 -- /See:/ 'updateFleetPortSettingsResponse' smart constructor.
-data UpdateFleetPortSettingsResponse =
-  UpdateFleetPortSettingsResponse'
-    { _ufpsrsFleetId        :: !(Maybe Text)
-    , _ufpsrsResponseStatus :: !Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data UpdateFleetPortSettingsResponse = UpdateFleetPortSettingsResponse'{_ufpsrsFleetId
+                                                                        ::
+                                                                        !(Maybe
+                                                                            Text),
+                                                                        _ufpsrsResponseStatus
+                                                                        :: !Int}
+                                         deriving (Eq, Read, Show, Data,
+                                                   Typeable, Generic)
 
 -- | Creates a value of 'UpdateFleetPortSettingsResponse' with the minimum fields required to make a request.
 --
@@ -202,10 +201,10 @@ data UpdateFleetPortSettingsResponse =
 updateFleetPortSettingsResponse
     :: Int -- ^ 'ufpsrsResponseStatus'
     -> UpdateFleetPortSettingsResponse
-updateFleetPortSettingsResponse pResponseStatus_ =
-  UpdateFleetPortSettingsResponse'
-    {_ufpsrsFleetId = Nothing, _ufpsrsResponseStatus = pResponseStatus_}
-
+updateFleetPortSettingsResponse pResponseStatus_
+  = UpdateFleetPortSettingsResponse'{_ufpsrsFleetId =
+                                       Nothing,
+                                     _ufpsrsResponseStatus = pResponseStatus_}
 
 -- | Unique identifier for a fleet that was updated.
 ufpsrsFleetId :: Lens' UpdateFleetPortSettingsResponse (Maybe Text)

@@ -37,7 +37,6 @@ module Network.AWS.EC2.DisableVGWRoutePropagation
     ) where
 
 import Network.AWS.EC2.Types
-import Network.AWS.EC2.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.Request
@@ -48,14 +47,14 @@ import Network.AWS.Response
 --
 --
 -- /See:/ 'disableVGWRoutePropagation' smart constructor.
-data DisableVGWRoutePropagation =
-  DisableVGWRoutePropagation'
-    { _dvrpDryRun       :: !(Maybe Bool)
-    , _dvrpGatewayId    :: !Text
-    , _dvrpRouteTableId :: !Text
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data DisableVGWRoutePropagation = DisableVGWRoutePropagation'{_dvrpDryRun
+                                                              :: !(Maybe Bool),
+                                                              _dvrpGatewayId ::
+                                                              !Text,
+                                                              _dvrpRouteTableId
+                                                              :: !Text}
+                                    deriving (Eq, Read, Show, Data, Typeable,
+                                              Generic)
 
 -- | Creates a value of 'DisableVGWRoutePropagation' with the minimum fields required to make a request.
 --
@@ -70,13 +69,10 @@ disableVGWRoutePropagation
     :: Text -- ^ 'dvrpGatewayId'
     -> Text -- ^ 'dvrpRouteTableId'
     -> DisableVGWRoutePropagation
-disableVGWRoutePropagation pGatewayId_ pRouteTableId_ =
-  DisableVGWRoutePropagation'
-    { _dvrpDryRun = Nothing
-    , _dvrpGatewayId = pGatewayId_
-    , _dvrpRouteTableId = pRouteTableId_
-    }
-
+disableVGWRoutePropagation pGatewayId_ pRouteTableId_
+  = DisableVGWRoutePropagation'{_dvrpDryRun = Nothing,
+                                _dvrpGatewayId = pGatewayId_,
+                                _dvrpRouteTableId = pRouteTableId_}
 
 -- | Checks whether you have the required permissions for the action, without actually making the request, and provides an error response. If you have the required permissions, the error response is @DryRunOperation@ . Otherwise, it is @UnauthorizedOperation@ .
 dvrpDryRun :: Lens' DisableVGWRoutePropagation (Maybe Bool)
@@ -118,17 +114,16 @@ instance ToQuery DisableVGWRoutePropagation where
                "RouteTableId" =: _dvrpRouteTableId]
 
 -- | /See:/ 'disableVGWRoutePropagationResponse' smart constructor.
-data DisableVGWRoutePropagationResponse =
-  DisableVGWRoutePropagationResponse'
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data DisableVGWRoutePropagationResponse = DisableVGWRoutePropagationResponse'
+                                            deriving (Eq, Read, Show, Data,
+                                                      Typeable, Generic)
 
 -- | Creates a value of 'DisableVGWRoutePropagationResponse' with the minimum fields required to make a request.
 --
 disableVGWRoutePropagationResponse
     :: DisableVGWRoutePropagationResponse
-disableVGWRoutePropagationResponse = DisableVGWRoutePropagationResponse'
-
+disableVGWRoutePropagationResponse
+  = DisableVGWRoutePropagationResponse'
 
 instance NFData DisableVGWRoutePropagationResponse
          where

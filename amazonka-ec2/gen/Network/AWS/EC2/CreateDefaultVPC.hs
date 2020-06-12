@@ -42,19 +42,15 @@ module Network.AWS.EC2.CreateDefaultVPC
     ) where
 
 import Network.AWS.EC2.Types
-import Network.AWS.EC2.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 
 -- | /See:/ 'createDefaultVPC' smart constructor.
-newtype CreateDefaultVPC =
-  CreateDefaultVPC'
-    { _cdvDryRun :: Maybe Bool
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+newtype CreateDefaultVPC = CreateDefaultVPC'{_cdvDryRun
+                                             :: Maybe Bool}
+                             deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'CreateDefaultVPC' with the minimum fields required to make a request.
 --
@@ -63,8 +59,8 @@ newtype CreateDefaultVPC =
 -- * 'cdvDryRun' - Checks whether you have the required permissions for the action, without actually making the request, and provides an error response. If you have the required permissions, the error response is @DryRunOperation@ . Otherwise, it is @UnauthorizedOperation@ .
 createDefaultVPC
     :: CreateDefaultVPC
-createDefaultVPC = CreateDefaultVPC' {_cdvDryRun = Nothing}
-
+createDefaultVPC
+  = CreateDefaultVPC'{_cdvDryRun = Nothing}
 
 -- | Checks whether you have the required permissions for the action, without actually making the request, and provides an error response. If you have the required permissions, the error response is @DryRunOperation@ . Otherwise, it is @UnauthorizedOperation@ .
 cdvDryRun :: Lens' CreateDefaultVPC (Maybe Bool)
@@ -97,13 +93,12 @@ instance ToQuery CreateDefaultVPC where
                "DryRun" =: _cdvDryRun]
 
 -- | /See:/ 'createDefaultVPCResponse' smart constructor.
-data CreateDefaultVPCResponse =
-  CreateDefaultVPCResponse'
-    { _cdvrsVPC            :: !(Maybe VPC)
-    , _cdvrsResponseStatus :: !Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data CreateDefaultVPCResponse = CreateDefaultVPCResponse'{_cdvrsVPC
+                                                          :: !(Maybe VPC),
+                                                          _cdvrsResponseStatus
+                                                          :: !Int}
+                                  deriving (Eq, Read, Show, Data, Typeable,
+                                            Generic)
 
 -- | Creates a value of 'CreateDefaultVPCResponse' with the minimum fields required to make a request.
 --
@@ -115,10 +110,9 @@ data CreateDefaultVPCResponse =
 createDefaultVPCResponse
     :: Int -- ^ 'cdvrsResponseStatus'
     -> CreateDefaultVPCResponse
-createDefaultVPCResponse pResponseStatus_ =
-  CreateDefaultVPCResponse'
-    {_cdvrsVPC = Nothing, _cdvrsResponseStatus = pResponseStatus_}
-
+createDefaultVPCResponse pResponseStatus_
+  = CreateDefaultVPCResponse'{_cdvrsVPC = Nothing,
+                              _cdvrsResponseStatus = pResponseStatus_}
 
 -- | Information about the VPC.
 cdvrsVPC :: Lens' CreateDefaultVPCResponse (Maybe VPC)

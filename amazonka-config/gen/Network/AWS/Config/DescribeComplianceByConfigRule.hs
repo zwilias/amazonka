@@ -55,26 +55,31 @@ module Network.AWS.Config.DescribeComplianceByConfigRule
     ) where
 
 import Network.AWS.Config.Types
-import Network.AWS.Config.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Pager
 import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 
--- |
+-- | 
 --
 --
 --
 -- /See:/ 'describeComplianceByConfigRule' smart constructor.
-data DescribeComplianceByConfigRule =
-  DescribeComplianceByConfigRule'
-    { _dcbcrConfigRuleNames :: !(Maybe [Text])
-    , _dcbcrComplianceTypes :: !(Maybe [ComplianceType])
-    , _dcbcrNextToken       :: !(Maybe Text)
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data DescribeComplianceByConfigRule = DescribeComplianceByConfigRule'{_dcbcrConfigRuleNames
+                                                                      ::
+                                                                      !(Maybe
+                                                                          [Text]),
+                                                                      _dcbcrComplianceTypes
+                                                                      ::
+                                                                      !(Maybe
+                                                                          [ComplianceType]),
+                                                                      _dcbcrNextToken
+                                                                      ::
+                                                                      !(Maybe
+                                                                          Text)}
+                                        deriving (Eq, Read, Show, Data,
+                                                  Typeable, Generic)
 
 -- | Creates a value of 'DescribeComplianceByConfigRule' with the minimum fields required to make a request.
 --
@@ -87,13 +92,11 @@ data DescribeComplianceByConfigRule =
 -- * 'dcbcrNextToken' - The @nextToken@ string returned on a previous page that you use to get the next page of results in a paginated response.
 describeComplianceByConfigRule
     :: DescribeComplianceByConfigRule
-describeComplianceByConfigRule =
-  DescribeComplianceByConfigRule'
-    { _dcbcrConfigRuleNames = Nothing
-    , _dcbcrComplianceTypes = Nothing
-    , _dcbcrNextToken = Nothing
-    }
-
+describeComplianceByConfigRule
+  = DescribeComplianceByConfigRule'{_dcbcrConfigRuleNames
+                                      = Nothing,
+                                    _dcbcrComplianceTypes = Nothing,
+                                    _dcbcrNextToken = Nothing}
 
 -- | Specify one or more AWS Config rule names to filter the results by rule.
 dcbcrConfigRuleNames :: Lens' DescribeComplianceByConfigRule [Text]
@@ -159,19 +162,24 @@ instance ToPath DescribeComplianceByConfigRule where
 instance ToQuery DescribeComplianceByConfigRule where
         toQuery = const mempty
 
--- |
+-- | 
 --
 --
 --
 -- /See:/ 'describeComplianceByConfigRuleResponse' smart constructor.
-data DescribeComplianceByConfigRuleResponse =
-  DescribeComplianceByConfigRuleResponse'
-    { _dcbcrrsComplianceByConfigRules :: !(Maybe [ComplianceByConfigRule])
-    , _dcbcrrsNextToken               :: !(Maybe Text)
-    , _dcbcrrsResponseStatus          :: !Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data DescribeComplianceByConfigRuleResponse = DescribeComplianceByConfigRuleResponse'{_dcbcrrsComplianceByConfigRules
+                                                                                      ::
+                                                                                      !(Maybe
+                                                                                          [ComplianceByConfigRule]),
+                                                                                      _dcbcrrsNextToken
+                                                                                      ::
+                                                                                      !(Maybe
+                                                                                          Text),
+                                                                                      _dcbcrrsResponseStatus
+                                                                                      ::
+                                                                                      !Int}
+                                                deriving (Eq, Read, Show, Data,
+                                                          Typeable, Generic)
 
 -- | Creates a value of 'DescribeComplianceByConfigRuleResponse' with the minimum fields required to make a request.
 --
@@ -185,13 +193,13 @@ data DescribeComplianceByConfigRuleResponse =
 describeComplianceByConfigRuleResponse
     :: Int -- ^ 'dcbcrrsResponseStatus'
     -> DescribeComplianceByConfigRuleResponse
-describeComplianceByConfigRuleResponse pResponseStatus_ =
-  DescribeComplianceByConfigRuleResponse'
-    { _dcbcrrsComplianceByConfigRules = Nothing
-    , _dcbcrrsNextToken = Nothing
-    , _dcbcrrsResponseStatus = pResponseStatus_
-    }
-
+describeComplianceByConfigRuleResponse
+  pResponseStatus_
+  = DescribeComplianceByConfigRuleResponse'{_dcbcrrsComplianceByConfigRules
+                                              = Nothing,
+                                            _dcbcrrsNextToken = Nothing,
+                                            _dcbcrrsResponseStatus =
+                                              pResponseStatus_}
 
 -- | Indicates whether each of the specified AWS Config rules is compliant.
 dcbcrrsComplianceByConfigRules :: Lens' DescribeComplianceByConfigRuleResponse [ComplianceByConfigRule]

@@ -41,20 +41,19 @@ module Network.AWS.DirectConnect.CreateTransitVirtualInterface
     ) where
 
 import Network.AWS.DirectConnect.Types
-import Network.AWS.DirectConnect.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 
 -- | /See:/ 'createTransitVirtualInterface' smart constructor.
-data CreateTransitVirtualInterface =
-  CreateTransitVirtualInterface'
-    { _ctviConnectionId               :: !Text
-    , _ctviNewTransitVirtualInterface :: !NewTransitVirtualInterface
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data CreateTransitVirtualInterface = CreateTransitVirtualInterface'{_ctviConnectionId
+                                                                    :: !Text,
+                                                                    _ctviNewTransitVirtualInterface
+                                                                    ::
+                                                                    !NewTransitVirtualInterface}
+                                       deriving (Eq, Read, Show, Data, Typeable,
+                                                 Generic)
 
 -- | Creates a value of 'CreateTransitVirtualInterface' with the minimum fields required to make a request.
 --
@@ -67,12 +66,12 @@ createTransitVirtualInterface
     :: Text -- ^ 'ctviConnectionId'
     -> NewTransitVirtualInterface -- ^ 'ctviNewTransitVirtualInterface'
     -> CreateTransitVirtualInterface
-createTransitVirtualInterface pConnectionId_ pNewTransitVirtualInterface_ =
-  CreateTransitVirtualInterface'
-    { _ctviConnectionId = pConnectionId_
-    , _ctviNewTransitVirtualInterface = pNewTransitVirtualInterface_
-    }
-
+createTransitVirtualInterface pConnectionId_
+  pNewTransitVirtualInterface_
+  = CreateTransitVirtualInterface'{_ctviConnectionId =
+                                     pConnectionId_,
+                                   _ctviNewTransitVirtualInterface =
+                                     pNewTransitVirtualInterface_}
 
 -- | The ID of the connection.
 ctviConnectionId :: Lens' CreateTransitVirtualInterface Text
@@ -124,13 +123,15 @@ instance ToQuery CreateTransitVirtualInterface where
         toQuery = const mempty
 
 -- | /See:/ 'createTransitVirtualInterfaceResponse' smart constructor.
-data CreateTransitVirtualInterfaceResponse =
-  CreateTransitVirtualInterfaceResponse'
-    { _ctvirsVirtualInterface :: !(Maybe VirtualInterface)
-    , _ctvirsResponseStatus   :: !Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data CreateTransitVirtualInterfaceResponse = CreateTransitVirtualInterfaceResponse'{_ctvirsVirtualInterface
+                                                                                    ::
+                                                                                    !(Maybe
+                                                                                        VirtualInterface),
+                                                                                    _ctvirsResponseStatus
+                                                                                    ::
+                                                                                    !Int}
+                                               deriving (Eq, Read, Show, Data,
+                                                         Typeable, Generic)
 
 -- | Creates a value of 'CreateTransitVirtualInterfaceResponse' with the minimum fields required to make a request.
 --
@@ -142,12 +143,12 @@ data CreateTransitVirtualInterfaceResponse =
 createTransitVirtualInterfaceResponse
     :: Int -- ^ 'ctvirsResponseStatus'
     -> CreateTransitVirtualInterfaceResponse
-createTransitVirtualInterfaceResponse pResponseStatus_ =
-  CreateTransitVirtualInterfaceResponse'
-    { _ctvirsVirtualInterface = Nothing
-    , _ctvirsResponseStatus = pResponseStatus_
-    }
-
+createTransitVirtualInterfaceResponse
+  pResponseStatus_
+  = CreateTransitVirtualInterfaceResponse'{_ctvirsVirtualInterface
+                                             = Nothing,
+                                           _ctvirsResponseStatus =
+                                             pResponseStatus_}
 
 -- | Undocumented member.
 ctvirsVirtualInterface :: Lens' CreateTransitVirtualInterfaceResponse (Maybe VirtualInterface)

@@ -42,22 +42,18 @@ module Network.AWS.ELBv2.DescribeRules
     ) where
 
 import Network.AWS.ELBv2.Types
-import Network.AWS.ELBv2.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 
 -- | /See:/ 'describeRules' smart constructor.
-data DescribeRules =
-  DescribeRules'
-    { _drListenerARN :: !(Maybe Text)
-    , _drMarker      :: !(Maybe Text)
-    , _drRuleARNs    :: !(Maybe [Text])
-    , _drPageSize    :: !(Maybe Nat)
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data DescribeRules = DescribeRules'{_drListenerARN ::
+                                    !(Maybe Text),
+                                    _drMarker :: !(Maybe Text),
+                                    _drRuleARNs :: !(Maybe [Text]),
+                                    _drPageSize :: !(Maybe Nat)}
+                       deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'DescribeRules' with the minimum fields required to make a request.
 --
@@ -72,14 +68,10 @@ data DescribeRules =
 -- * 'drPageSize' - The maximum number of results to return with this call.
 describeRules
     :: DescribeRules
-describeRules =
-  DescribeRules'
-    { _drListenerARN = Nothing
-    , _drMarker = Nothing
-    , _drRuleARNs = Nothing
-    , _drPageSize = Nothing
-    }
-
+describeRules
+  = DescribeRules'{_drListenerARN = Nothing,
+                   _drMarker = Nothing, _drRuleARNs = Nothing,
+                   _drPageSize = Nothing}
 
 -- | The Amazon Resource Name (ARN) of the listener.
 drListenerARN :: Lens' DescribeRules (Maybe Text)
@@ -131,14 +123,14 @@ instance ToQuery DescribeRules where
                "PageSize" =: _drPageSize]
 
 -- | /See:/ 'describeRulesResponse' smart constructor.
-data DescribeRulesResponse =
-  DescribeRulesResponse'
-    { _drsrsRules          :: !(Maybe [Rule])
-    , _drsrsNextMarker     :: !(Maybe Text)
-    , _drsrsResponseStatus :: !Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data DescribeRulesResponse = DescribeRulesResponse'{_drsrsRules
+                                                    :: !(Maybe [Rule]),
+                                                    _drsrsNextMarker ::
+                                                    !(Maybe Text),
+                                                    _drsrsResponseStatus ::
+                                                    !Int}
+                               deriving (Eq, Read, Show, Data, Typeable,
+                                         Generic)
 
 -- | Creates a value of 'DescribeRulesResponse' with the minimum fields required to make a request.
 --
@@ -152,13 +144,10 @@ data DescribeRulesResponse =
 describeRulesResponse
     :: Int -- ^ 'drsrsResponseStatus'
     -> DescribeRulesResponse
-describeRulesResponse pResponseStatus_ =
-  DescribeRulesResponse'
-    { _drsrsRules = Nothing
-    , _drsrsNextMarker = Nothing
-    , _drsrsResponseStatus = pResponseStatus_
-    }
-
+describeRulesResponse pResponseStatus_
+  = DescribeRulesResponse'{_drsrsRules = Nothing,
+                           _drsrsNextMarker = Nothing,
+                           _drsrsResponseStatus = pResponseStatus_}
 
 -- | Information about the rules.
 drsrsRules :: Lens' DescribeRulesResponse [Rule]

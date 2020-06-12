@@ -41,21 +41,26 @@ module Network.AWS.Config.DescribeOrganizationConformancePacks
     ) where
 
 import Network.AWS.Config.Types
-import Network.AWS.Config.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 
 -- | /See:/ 'describeOrganizationConformancePacks' smart constructor.
-data DescribeOrganizationConformancePacks =
-  DescribeOrganizationConformancePacks'
-    { _docpNextToken                        :: !(Maybe Text)
-    , _docpLimit                            :: !(Maybe Nat)
-    , _docpOrganizationConformancePackNames :: !(Maybe [Text])
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data DescribeOrganizationConformancePacks = DescribeOrganizationConformancePacks'{_docpNextToken
+                                                                                  ::
+                                                                                  !(Maybe
+                                                                                      Text),
+                                                                                  _docpLimit
+                                                                                  ::
+                                                                                  !(Maybe
+                                                                                      Nat),
+                                                                                  _docpOrganizationConformancePackNames
+                                                                                  ::
+                                                                                  !(Maybe
+                                                                                      [Text])}
+                                              deriving (Eq, Read, Show, Data,
+                                                        Typeable, Generic)
 
 -- | Creates a value of 'DescribeOrganizationConformancePacks' with the minimum fields required to make a request.
 --
@@ -68,13 +73,12 @@ data DescribeOrganizationConformancePacks =
 -- * 'docpOrganizationConformancePackNames' - The name that you assign to an organization conformance pack.
 describeOrganizationConformancePacks
     :: DescribeOrganizationConformancePacks
-describeOrganizationConformancePacks =
-  DescribeOrganizationConformancePacks'
-    { _docpNextToken = Nothing
-    , _docpLimit = Nothing
-    , _docpOrganizationConformancePackNames = Nothing
-    }
-
+describeOrganizationConformancePacks
+  = DescribeOrganizationConformancePacks'{_docpNextToken
+                                            = Nothing,
+                                          _docpLimit = Nothing,
+                                          _docpOrganizationConformancePackNames
+                                            = Nothing}
 
 -- | The nextToken string returned on a previous page that you use to get the next page of results in a paginated response.
 docpNextToken :: Lens' DescribeOrganizationConformancePacks (Maybe Text)
@@ -140,14 +144,20 @@ instance ToQuery DescribeOrganizationConformancePacks
         toQuery = const mempty
 
 -- | /See:/ 'describeOrganizationConformancePacksResponse' smart constructor.
-data DescribeOrganizationConformancePacksResponse =
-  DescribeOrganizationConformancePacksResponse'
-    { _docprsOrganizationConformancePacks :: !(Maybe [OrganizationConformancePack])
-    , _docprsNextToken :: !(Maybe Text)
-    , _docprsResponseStatus :: !Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data DescribeOrganizationConformancePacksResponse = DescribeOrganizationConformancePacksResponse'{_docprsOrganizationConformancePacks
+                                                                                                  ::
+                                                                                                  !(Maybe
+                                                                                                      [OrganizationConformancePack]),
+                                                                                                  _docprsNextToken
+                                                                                                  ::
+                                                                                                  !(Maybe
+                                                                                                      Text),
+                                                                                                  _docprsResponseStatus
+                                                                                                  ::
+                                                                                                  !Int}
+                                                      deriving (Eq, Read, Show,
+                                                                Data, Typeable,
+                                                                Generic)
 
 -- | Creates a value of 'DescribeOrganizationConformancePacksResponse' with the minimum fields required to make a request.
 --
@@ -161,13 +171,13 @@ data DescribeOrganizationConformancePacksResponse =
 describeOrganizationConformancePacksResponse
     :: Int -- ^ 'docprsResponseStatus'
     -> DescribeOrganizationConformancePacksResponse
-describeOrganizationConformancePacksResponse pResponseStatus_ =
-  DescribeOrganizationConformancePacksResponse'
-    { _docprsOrganizationConformancePacks = Nothing
-    , _docprsNextToken = Nothing
-    , _docprsResponseStatus = pResponseStatus_
-    }
-
+describeOrganizationConformancePacksResponse
+  pResponseStatus_
+  = DescribeOrganizationConformancePacksResponse'{_docprsOrganizationConformancePacks
+                                                    = Nothing,
+                                                  _docprsNextToken = Nothing,
+                                                  _docprsResponseStatus =
+                                                    pResponseStatus_}
 
 -- | Returns a list of OrganizationConformancePacks objects.
 docprsOrganizationConformancePacks :: Lens' DescribeOrganizationConformancePacksResponse [OrganizationConformancePack]

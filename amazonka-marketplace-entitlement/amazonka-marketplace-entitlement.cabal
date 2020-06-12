@@ -50,8 +50,9 @@ library
         , Network.AWS.MarketplaceEntitlement.Waiters
 
     other-modules:
-          Network.AWS.MarketplaceEntitlement.Types.Product
-        , Network.AWS.MarketplaceEntitlement.Types.Sum
+          Network.AWS.MarketplaceEntitlement.Types.Entitlement
+        , Network.AWS.MarketplaceEntitlement.Types.EntitlementValue
+        , Network.AWS.MarketplaceEntitlement.Types.GetEntitlementFilterName
 
     build-depends:
           amazonka-core == 1.6.1.*

@@ -40,19 +40,15 @@ module Network.AWS.IAM.GetSAMLProvider
     ) where
 
 import Network.AWS.IAM.Types
-import Network.AWS.IAM.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 
 -- | /See:/ 'getSAMLProvider' smart constructor.
-newtype GetSAMLProvider =
-  GetSAMLProvider'
-    { _gsamlpSAMLProviderARN :: Text
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+newtype GetSAMLProvider = GetSAMLProvider'{_gsamlpSAMLProviderARN
+                                           :: Text}
+                            deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'GetSAMLProvider' with the minimum fields required to make a request.
 --
@@ -62,9 +58,9 @@ newtype GetSAMLProvider =
 getSAMLProvider
     :: Text -- ^ 'gsamlpSAMLProviderARN'
     -> GetSAMLProvider
-getSAMLProvider pSAMLProviderARN_ =
-  GetSAMLProvider' {_gsamlpSAMLProviderARN = pSAMLProviderARN_}
-
+getSAMLProvider pSAMLProviderARN_
+  = GetSAMLProvider'{_gsamlpSAMLProviderARN =
+                       pSAMLProviderARN_}
 
 -- | The Amazon Resource Name (ARN) of the SAML provider resource object in IAM to get information about. For more information about ARNs, see <http://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html Amazon Resource Names (ARNs) and AWS Service Namespaces> in the /AWS General Reference/ .
 gsamlpSAMLProviderARN :: Lens' GetSAMLProvider Text
@@ -98,20 +94,21 @@ instance ToQuery GetSAMLProvider where
                "Version" =: ("2010-05-08" :: ByteString),
                "SAMLProviderArn" =: _gsamlpSAMLProviderARN]
 
--- | Contains the response to a successful 'GetSAMLProvider' request.
+-- | Contains the response to a successful 'GetSAMLProvider' request. 
 --
 --
 --
 -- /See:/ 'getSAMLProviderResponse' smart constructor.
-data GetSAMLProviderResponse =
-  GetSAMLProviderResponse'
-    { _gsamlprsCreateDate           :: !(Maybe ISO8601)
-    , _gsamlprsValidUntil           :: !(Maybe ISO8601)
-    , _gsamlprsSAMLMetadataDocument :: !(Maybe Text)
-    , _gsamlprsResponseStatus       :: !Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data GetSAMLProviderResponse = GetSAMLProviderResponse'{_gsamlprsCreateDate
+                                                        :: !(Maybe ISO8601),
+                                                        _gsamlprsValidUntil ::
+                                                        !(Maybe ISO8601),
+                                                        _gsamlprsSAMLMetadataDocument
+                                                        :: !(Maybe Text),
+                                                        _gsamlprsResponseStatus
+                                                        :: !Int}
+                                 deriving (Eq, Read, Show, Data, Typeable,
+                                           Generic)
 
 -- | Creates a value of 'GetSAMLProviderResponse' with the minimum fields required to make a request.
 --
@@ -127,14 +124,12 @@ data GetSAMLProviderResponse =
 getSAMLProviderResponse
     :: Int -- ^ 'gsamlprsResponseStatus'
     -> GetSAMLProviderResponse
-getSAMLProviderResponse pResponseStatus_ =
-  GetSAMLProviderResponse'
-    { _gsamlprsCreateDate = Nothing
-    , _gsamlprsValidUntil = Nothing
-    , _gsamlprsSAMLMetadataDocument = Nothing
-    , _gsamlprsResponseStatus = pResponseStatus_
-    }
-
+getSAMLProviderResponse pResponseStatus_
+  = GetSAMLProviderResponse'{_gsamlprsCreateDate =
+                               Nothing,
+                             _gsamlprsValidUntil = Nothing,
+                             _gsamlprsSAMLMetadataDocument = Nothing,
+                             _gsamlprsResponseStatus = pResponseStatus_}
 
 -- | The date and time when the SAML provider was created.
 gsamlprsCreateDate :: Lens' GetSAMLProviderResponse (Maybe UTCTime)

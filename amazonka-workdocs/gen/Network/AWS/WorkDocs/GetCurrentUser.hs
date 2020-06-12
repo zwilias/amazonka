@@ -42,15 +42,11 @@ import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 import Network.AWS.WorkDocs.Types
-import Network.AWS.WorkDocs.Types.Product
 
 -- | /See:/ 'getCurrentUser' smart constructor.
-newtype GetCurrentUser =
-  GetCurrentUser'
-    { _gcuAuthenticationToken :: Sensitive Text
-    }
-  deriving (Eq, Show, Data, Typeable, Generic)
-
+newtype GetCurrentUser = GetCurrentUser'{_gcuAuthenticationToken
+                                         :: Sensitive Text}
+                           deriving (Eq, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'GetCurrentUser' with the minimum fields required to make a request.
 --
@@ -60,9 +56,9 @@ newtype GetCurrentUser =
 getCurrentUser
     :: Text -- ^ 'gcuAuthenticationToken'
     -> GetCurrentUser
-getCurrentUser pAuthenticationToken_ =
-  GetCurrentUser' {_gcuAuthenticationToken = _Sensitive # pAuthenticationToken_}
-
+getCurrentUser pAuthenticationToken_
+  = GetCurrentUser'{_gcuAuthenticationToken =
+                      _Sensitive # pAuthenticationToken_}
 
 -- | Amazon WorkDocs authentication token. Do not set this field when using administrative API actions, as in accessing the API using AWS credentials.
 gcuAuthenticationToken :: Lens' GetCurrentUser Text
@@ -95,13 +91,12 @@ instance ToQuery GetCurrentUser where
         toQuery = const mempty
 
 -- | /See:/ 'getCurrentUserResponse' smart constructor.
-data GetCurrentUserResponse =
-  GetCurrentUserResponse'
-    { _gcursUser           :: !(Maybe User)
-    , _gcursResponseStatus :: !Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data GetCurrentUserResponse = GetCurrentUserResponse'{_gcursUser
+                                                      :: !(Maybe User),
+                                                      _gcursResponseStatus ::
+                                                      !Int}
+                                deriving (Eq, Read, Show, Data, Typeable,
+                                          Generic)
 
 -- | Creates a value of 'GetCurrentUserResponse' with the minimum fields required to make a request.
 --
@@ -113,10 +108,9 @@ data GetCurrentUserResponse =
 getCurrentUserResponse
     :: Int -- ^ 'gcursResponseStatus'
     -> GetCurrentUserResponse
-getCurrentUserResponse pResponseStatus_ =
-  GetCurrentUserResponse'
-    {_gcursUser = Nothing, _gcursResponseStatus = pResponseStatus_}
-
+getCurrentUserResponse pResponseStatus_
+  = GetCurrentUserResponse'{_gcursUser = Nothing,
+                            _gcursResponseStatus = pResponseStatus_}
 
 -- | Metadata of the user.
 gcursUser :: Lens' GetCurrentUserResponse (Maybe User)

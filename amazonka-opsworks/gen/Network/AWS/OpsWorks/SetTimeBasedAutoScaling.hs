@@ -39,19 +39,19 @@ module Network.AWS.OpsWorks.SetTimeBasedAutoScaling
 
 import Network.AWS.Lens
 import Network.AWS.OpsWorks.Types
-import Network.AWS.OpsWorks.Types.Product
 import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 
 -- | /See:/ 'setTimeBasedAutoScaling' smart constructor.
-data SetTimeBasedAutoScaling =
-  SetTimeBasedAutoScaling'
-    { _stbasAutoScalingSchedule :: !(Maybe WeeklyAutoScalingSchedule)
-    , _stbasInstanceId          :: !Text
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data SetTimeBasedAutoScaling = SetTimeBasedAutoScaling'{_stbasAutoScalingSchedule
+                                                        ::
+                                                        !(Maybe
+                                                            WeeklyAutoScalingSchedule),
+                                                        _stbasInstanceId ::
+                                                        !Text}
+                                 deriving (Eq, Read, Show, Data, Typeable,
+                                           Generic)
 
 -- | Creates a value of 'SetTimeBasedAutoScaling' with the minimum fields required to make a request.
 --
@@ -63,10 +63,10 @@ data SetTimeBasedAutoScaling =
 setTimeBasedAutoScaling
     :: Text -- ^ 'stbasInstanceId'
     -> SetTimeBasedAutoScaling
-setTimeBasedAutoScaling pInstanceId_ =
-  SetTimeBasedAutoScaling'
-    {_stbasAutoScalingSchedule = Nothing, _stbasInstanceId = pInstanceId_}
-
+setTimeBasedAutoScaling pInstanceId_
+  = SetTimeBasedAutoScaling'{_stbasAutoScalingSchedule
+                               = Nothing,
+                             _stbasInstanceId = pInstanceId_}
 
 -- | An @AutoScalingSchedule@ with the instance schedule.
 stbasAutoScalingSchedule :: Lens' SetTimeBasedAutoScaling (Maybe WeeklyAutoScalingSchedule)
@@ -112,16 +112,15 @@ instance ToQuery SetTimeBasedAutoScaling where
         toQuery = const mempty
 
 -- | /See:/ 'setTimeBasedAutoScalingResponse' smart constructor.
-data SetTimeBasedAutoScalingResponse =
-  SetTimeBasedAutoScalingResponse'
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data SetTimeBasedAutoScalingResponse = SetTimeBasedAutoScalingResponse'
+                                         deriving (Eq, Read, Show, Data,
+                                                   Typeable, Generic)
 
 -- | Creates a value of 'SetTimeBasedAutoScalingResponse' with the minimum fields required to make a request.
 --
 setTimeBasedAutoScalingResponse
     :: SetTimeBasedAutoScalingResponse
-setTimeBasedAutoScalingResponse = SetTimeBasedAutoScalingResponse'
-
+setTimeBasedAutoScalingResponse
+  = SetTimeBasedAutoScalingResponse'
 
 instance NFData SetTimeBasedAutoScalingResponse where

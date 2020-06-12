@@ -46,25 +46,41 @@ module Network.AWS.EC2.ModifyVPCEndpointServiceConfiguration
     ) where
 
 import Network.AWS.EC2.Types
-import Network.AWS.EC2.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 
 -- | /See:/ 'modifyVPCEndpointServiceConfiguration' smart constructor.
-data ModifyVPCEndpointServiceConfiguration =
-  ModifyVPCEndpointServiceConfiguration'
-    { _mvescRemovePrivateDNSName          :: !(Maybe Bool)
-    , _mvescRemoveNetworkLoadBalancerARNs :: !(Maybe [Text])
-    , _mvescAcceptanceRequired            :: !(Maybe Bool)
-    , _mvescAddNetworkLoadBalancerARNs    :: !(Maybe [Text])
-    , _mvescPrivateDNSName                :: !(Maybe Text)
-    , _mvescDryRun                        :: !(Maybe Bool)
-    , _mvescServiceId                     :: !Text
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data ModifyVPCEndpointServiceConfiguration = ModifyVPCEndpointServiceConfiguration'{_mvescRemovePrivateDNSName
+                                                                                    ::
+                                                                                    !(Maybe
+                                                                                        Bool),
+                                                                                    _mvescRemoveNetworkLoadBalancerARNs
+                                                                                    ::
+                                                                                    !(Maybe
+                                                                                        [Text]),
+                                                                                    _mvescAcceptanceRequired
+                                                                                    ::
+                                                                                    !(Maybe
+                                                                                        Bool),
+                                                                                    _mvescAddNetworkLoadBalancerARNs
+                                                                                    ::
+                                                                                    !(Maybe
+                                                                                        [Text]),
+                                                                                    _mvescPrivateDNSName
+                                                                                    ::
+                                                                                    !(Maybe
+                                                                                        Text),
+                                                                                    _mvescDryRun
+                                                                                    ::
+                                                                                    !(Maybe
+                                                                                        Bool),
+                                                                                    _mvescServiceId
+                                                                                    ::
+                                                                                    !Text}
+                                               deriving (Eq, Read, Show, Data,
+                                                         Typeable, Generic)
 
 -- | Creates a value of 'ModifyVPCEndpointServiceConfiguration' with the minimum fields required to make a request.
 --
@@ -86,17 +102,17 @@ data ModifyVPCEndpointServiceConfiguration =
 modifyVPCEndpointServiceConfiguration
     :: Text -- ^ 'mvescServiceId'
     -> ModifyVPCEndpointServiceConfiguration
-modifyVPCEndpointServiceConfiguration pServiceId_ =
-  ModifyVPCEndpointServiceConfiguration'
-    { _mvescRemovePrivateDNSName = Nothing
-    , _mvescRemoveNetworkLoadBalancerARNs = Nothing
-    , _mvescAcceptanceRequired = Nothing
-    , _mvescAddNetworkLoadBalancerARNs = Nothing
-    , _mvescPrivateDNSName = Nothing
-    , _mvescDryRun = Nothing
-    , _mvescServiceId = pServiceId_
-    }
-
+modifyVPCEndpointServiceConfiguration pServiceId_
+  = ModifyVPCEndpointServiceConfiguration'{_mvescRemovePrivateDNSName
+                                             = Nothing,
+                                           _mvescRemoveNetworkLoadBalancerARNs =
+                                             Nothing,
+                                           _mvescAcceptanceRequired = Nothing,
+                                           _mvescAddNetworkLoadBalancerARNs =
+                                             Nothing,
+                                           _mvescPrivateDNSName = Nothing,
+                                           _mvescDryRun = Nothing,
+                                           _mvescServiceId = pServiceId_}
 
 -- | Removes the private DNS name of the endpoint service.
 mvescRemovePrivateDNSName :: Lens' ModifyVPCEndpointServiceConfiguration (Maybe Bool)
@@ -176,13 +192,16 @@ instance ToQuery
                "ServiceId" =: _mvescServiceId]
 
 -- | /See:/ 'modifyVPCEndpointServiceConfigurationResponse' smart constructor.
-data ModifyVPCEndpointServiceConfigurationResponse =
-  ModifyVPCEndpointServiceConfigurationResponse'
-    { _mvescrsReturn         :: !(Maybe Bool)
-    , _mvescrsResponseStatus :: !Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data ModifyVPCEndpointServiceConfigurationResponse = ModifyVPCEndpointServiceConfigurationResponse'{_mvescrsReturn
+                                                                                                    ::
+                                                                                                    !(Maybe
+                                                                                                        Bool),
+                                                                                                    _mvescrsResponseStatus
+                                                                                                    ::
+                                                                                                    !Int}
+                                                       deriving (Eq, Read, Show,
+                                                                 Data, Typeable,
+                                                                 Generic)
 
 -- | Creates a value of 'ModifyVPCEndpointServiceConfigurationResponse' with the minimum fields required to make a request.
 --
@@ -194,10 +213,12 @@ data ModifyVPCEndpointServiceConfigurationResponse =
 modifyVPCEndpointServiceConfigurationResponse
     :: Int -- ^ 'mvescrsResponseStatus'
     -> ModifyVPCEndpointServiceConfigurationResponse
-modifyVPCEndpointServiceConfigurationResponse pResponseStatus_ =
-  ModifyVPCEndpointServiceConfigurationResponse'
-    {_mvescrsReturn = Nothing, _mvescrsResponseStatus = pResponseStatus_}
-
+modifyVPCEndpointServiceConfigurationResponse
+  pResponseStatus_
+  = ModifyVPCEndpointServiceConfigurationResponse'{_mvescrsReturn
+                                                     = Nothing,
+                                                   _mvescrsResponseStatus =
+                                                     pResponseStatus_}
 
 -- | Returns @true@ if the request succeeds; otherwise, it returns an error.
 mvescrsReturn :: Lens' ModifyVPCEndpointServiceConfigurationResponse (Maybe Bool)

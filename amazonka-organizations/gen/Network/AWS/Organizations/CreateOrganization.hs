@@ -43,18 +43,16 @@ module Network.AWS.Organizations.CreateOrganization
 
 import Network.AWS.Lens
 import Network.AWS.Organizations.Types
-import Network.AWS.Organizations.Types.Product
 import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 
 -- | /See:/ 'createOrganization' smart constructor.
-newtype CreateOrganization =
-  CreateOrganization'
-    { _coFeatureSet :: Maybe OrganizationFeatureSet
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+newtype CreateOrganization = CreateOrganization'{_coFeatureSet
+                                                 ::
+                                                 Maybe OrganizationFeatureSet}
+                               deriving (Eq, Read, Show, Data, Typeable,
+                                         Generic)
 
 -- | Creates a value of 'CreateOrganization' with the minimum fields required to make a request.
 --
@@ -63,8 +61,8 @@ newtype CreateOrganization =
 -- * 'coFeatureSet' - Specifies the feature set supported by the new organization. Each feature set supports different levels of functionality.     * /CONSOLIDATED_BILLING/ : All member accounts have their bills consolidated to and paid by the master account. For more information, see <http://docs.aws.amazon.com/organizations/latest/userguide/orgs_getting-started_concepts.html#feature-set-cb-only Consolidated Billing> in the /AWS Organizations User Guide/ .     * /ALL/ : In addition to all the features supported by the consolidated billing feature set, the master account can also apply any type of policy to any member account in the organization. For more information, see <http://docs.aws.amazon.com/organizations/latest/userguide/orgs_getting-started_concepts.html#feature-set-all All features> in the /AWS Organizations User Guide/ .
 createOrganization
     :: CreateOrganization
-createOrganization = CreateOrganization' {_coFeatureSet = Nothing}
-
+createOrganization
+  = CreateOrganization'{_coFeatureSet = Nothing}
 
 -- | Specifies the feature set supported by the new organization. Each feature set supports different levels of functionality.     * /CONSOLIDATED_BILLING/ : All member accounts have their bills consolidated to and paid by the master account. For more information, see <http://docs.aws.amazon.com/organizations/latest/userguide/orgs_getting-started_concepts.html#feature-set-cb-only Consolidated Billing> in the /AWS Organizations User Guide/ .     * /ALL/ : In addition to all the features supported by the consolidated billing feature set, the master account can also apply any type of policy to any member account in the organization. For more information, see <http://docs.aws.amazon.com/organizations/latest/userguide/orgs_getting-started_concepts.html#feature-set-all All features> in the /AWS Organizations User Guide/ .
 coFeatureSet :: Lens' CreateOrganization (Maybe OrganizationFeatureSet)
@@ -106,13 +104,13 @@ instance ToQuery CreateOrganization where
         toQuery = const mempty
 
 -- | /See:/ 'createOrganizationResponse' smart constructor.
-data CreateOrganizationResponse =
-  CreateOrganizationResponse'
-    { _corsOrganization   :: !(Maybe Organization)
-    , _corsResponseStatus :: !Int
-    }
-  deriving (Eq, Show, Data, Typeable, Generic)
-
+data CreateOrganizationResponse = CreateOrganizationResponse'{_corsOrganization
+                                                              ::
+                                                              !(Maybe
+                                                                  Organization),
+                                                              _corsResponseStatus
+                                                              :: !Int}
+                                    deriving (Eq, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'CreateOrganizationResponse' with the minimum fields required to make a request.
 --
@@ -124,10 +122,10 @@ data CreateOrganizationResponse =
 createOrganizationResponse
     :: Int -- ^ 'corsResponseStatus'
     -> CreateOrganizationResponse
-createOrganizationResponse pResponseStatus_ =
-  CreateOrganizationResponse'
-    {_corsOrganization = Nothing, _corsResponseStatus = pResponseStatus_}
-
+createOrganizationResponse pResponseStatus_
+  = CreateOrganizationResponse'{_corsOrganization =
+                                  Nothing,
+                                _corsResponseStatus = pResponseStatus_}
 
 -- | A structure that contains details about the newly created organization.
 corsOrganization :: Lens' CreateOrganizationResponse (Maybe Organization)

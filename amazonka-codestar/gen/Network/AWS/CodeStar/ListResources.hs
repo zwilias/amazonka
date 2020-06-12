@@ -43,7 +43,6 @@ module Network.AWS.CodeStar.ListResources
     ) where
 
 import Network.AWS.CodeStar.Types
-import Network.AWS.CodeStar.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Pager
 import Network.AWS.Prelude
@@ -51,14 +50,11 @@ import Network.AWS.Request
 import Network.AWS.Response
 
 -- | /See:/ 'listResources' smart constructor.
-data ListResources =
-  ListResources'
-    { _lrNextToken  :: !(Maybe Text)
-    , _lrMaxResults :: !(Maybe Nat)
-    , _lrProjectId  :: !Text
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data ListResources = ListResources'{_lrNextToken ::
+                                    !(Maybe Text),
+                                    _lrMaxResults :: !(Maybe Nat),
+                                    _lrProjectId :: !Text}
+                       deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'ListResources' with the minimum fields required to make a request.
 --
@@ -72,13 +68,9 @@ data ListResources =
 listResources
     :: Text -- ^ 'lrProjectId'
     -> ListResources
-listResources pProjectId_ =
-  ListResources'
-    { _lrNextToken = Nothing
-    , _lrMaxResults = Nothing
-    , _lrProjectId = pProjectId_
-    }
-
+listResources pProjectId_
+  = ListResources'{_lrNextToken = Nothing,
+                   _lrMaxResults = Nothing, _lrProjectId = pProjectId_}
 
 -- | The continuation token for the next set of results, if the results cannot be returned in one response.
 lrNextToken :: Lens' ListResources (Maybe Text)
@@ -138,20 +130,19 @@ instance ToQuery ListResources where
         toQuery = const mempty
 
 -- | /See:/ 'listResourcesResponse' smart constructor.
-data ListResourcesResponse =
-  ListResourcesResponse'
-    { _lrrsResources      :: !(Maybe [Resource])
-    , _lrrsNextToken      :: !(Maybe Text)
-    , _lrrsResponseStatus :: !Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data ListResourcesResponse = ListResourcesResponse'{_lrrsResources
+                                                    :: !(Maybe [Resource]),
+                                                    _lrrsNextToken ::
+                                                    !(Maybe Text),
+                                                    _lrrsResponseStatus :: !Int}
+                               deriving (Eq, Read, Show, Data, Typeable,
+                                         Generic)
 
 -- | Creates a value of 'ListResourcesResponse' with the minimum fields required to make a request.
 --
 -- Use one of the following lenses to modify other fields as desired:
 --
--- * 'lrrsResources' - An array of resources associated with the project.
+-- * 'lrrsResources' - An array of resources associated with the project. 
 --
 -- * 'lrrsNextToken' - The continuation token to use when requesting the next set of results, if there are more results to be returned.
 --
@@ -159,15 +150,12 @@ data ListResourcesResponse =
 listResourcesResponse
     :: Int -- ^ 'lrrsResponseStatus'
     -> ListResourcesResponse
-listResourcesResponse pResponseStatus_ =
-  ListResourcesResponse'
-    { _lrrsResources = Nothing
-    , _lrrsNextToken = Nothing
-    , _lrrsResponseStatus = pResponseStatus_
-    }
+listResourcesResponse pResponseStatus_
+  = ListResourcesResponse'{_lrrsResources = Nothing,
+                           _lrrsNextToken = Nothing,
+                           _lrrsResponseStatus = pResponseStatus_}
 
-
--- | An array of resources associated with the project.
+-- | An array of resources associated with the project. 
 lrrsResources :: Lens' ListResourcesResponse [Resource]
 lrrsResources = lens _lrrsResources (\ s a -> s{_lrrsResources = a}) . _Default . _Coerce
 

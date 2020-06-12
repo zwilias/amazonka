@@ -39,20 +39,18 @@ module Network.AWS.CodeCommit.DeletePullRequestApprovalRule
     ) where
 
 import Network.AWS.CodeCommit.Types
-import Network.AWS.CodeCommit.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 
 -- | /See:/ 'deletePullRequestApprovalRule' smart constructor.
-data DeletePullRequestApprovalRule =
-  DeletePullRequestApprovalRule'
-    { _dprarPullRequestId    :: !Text
-    , _dprarApprovalRuleName :: !Text
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data DeletePullRequestApprovalRule = DeletePullRequestApprovalRule'{_dprarPullRequestId
+                                                                    :: !Text,
+                                                                    _dprarApprovalRuleName
+                                                                    :: !Text}
+                                       deriving (Eq, Read, Show, Data, Typeable,
+                                                 Generic)
 
 -- | Creates a value of 'DeletePullRequestApprovalRule' with the minimum fields required to make a request.
 --
@@ -65,12 +63,11 @@ deletePullRequestApprovalRule
     :: Text -- ^ 'dprarPullRequestId'
     -> Text -- ^ 'dprarApprovalRuleName'
     -> DeletePullRequestApprovalRule
-deletePullRequestApprovalRule pPullRequestId_ pApprovalRuleName_ =
-  DeletePullRequestApprovalRule'
-    { _dprarPullRequestId = pPullRequestId_
-    , _dprarApprovalRuleName = pApprovalRuleName_
-    }
-
+deletePullRequestApprovalRule pPullRequestId_
+  pApprovalRuleName_
+  = DeletePullRequestApprovalRule'{_dprarPullRequestId
+                                     = pPullRequestId_,
+                                   _dprarApprovalRuleName = pApprovalRuleName_}
 
 -- | The system-generated ID of the pull request that contains the approval rule you want to delete.
 dprarPullRequestId :: Lens' DeletePullRequestApprovalRule Text
@@ -120,13 +117,14 @@ instance ToQuery DeletePullRequestApprovalRule where
         toQuery = const mempty
 
 -- | /See:/ 'deletePullRequestApprovalRuleResponse' smart constructor.
-data DeletePullRequestApprovalRuleResponse =
-  DeletePullRequestApprovalRuleResponse'
-    { _dprarrsResponseStatus :: !Int
-    , _dprarrsApprovalRuleId :: !Text
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data DeletePullRequestApprovalRuleResponse = DeletePullRequestApprovalRuleResponse'{_dprarrsResponseStatus
+                                                                                    ::
+                                                                                    !Int,
+                                                                                    _dprarrsApprovalRuleId
+                                                                                    ::
+                                                                                    !Text}
+                                               deriving (Eq, Read, Show, Data,
+                                                         Typeable, Generic)
 
 -- | Creates a value of 'DeletePullRequestApprovalRuleResponse' with the minimum fields required to make a request.
 --
@@ -134,23 +132,23 @@ data DeletePullRequestApprovalRuleResponse =
 --
 -- * 'dprarrsResponseStatus' - -- | The response status code.
 --
--- * 'dprarrsApprovalRuleId' - The ID of the deleted approval rule.
+-- * 'dprarrsApprovalRuleId' - The ID of the deleted approval rule. 
 deletePullRequestApprovalRuleResponse
     :: Int -- ^ 'dprarrsResponseStatus'
     -> Text -- ^ 'dprarrsApprovalRuleId'
     -> DeletePullRequestApprovalRuleResponse
-deletePullRequestApprovalRuleResponse pResponseStatus_ pApprovalRuleId_ =
-  DeletePullRequestApprovalRuleResponse'
-    { _dprarrsResponseStatus = pResponseStatus_
-    , _dprarrsApprovalRuleId = pApprovalRuleId_
-    }
-
+deletePullRequestApprovalRuleResponse
+  pResponseStatus_ pApprovalRuleId_
+  = DeletePullRequestApprovalRuleResponse'{_dprarrsResponseStatus
+                                             = pResponseStatus_,
+                                           _dprarrsApprovalRuleId =
+                                             pApprovalRuleId_}
 
 -- | -- | The response status code.
 dprarrsResponseStatus :: Lens' DeletePullRequestApprovalRuleResponse Int
 dprarrsResponseStatus = lens _dprarrsResponseStatus (\ s a -> s{_dprarrsResponseStatus = a})
 
--- | The ID of the deleted approval rule.
+-- | The ID of the deleted approval rule. 
 dprarrsApprovalRuleId :: Lens' DeletePullRequestApprovalRuleResponse Text
 dprarrsApprovalRuleId = lens _dprarrsApprovalRuleId (\ s a -> s{_dprarrsApprovalRuleId = a})
 

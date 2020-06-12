@@ -43,7 +43,6 @@ module Network.AWS.ELB.DisableAvailabilityZonesForLoadBalancer
     ) where
 
 import Network.AWS.ELB.Types
-import Network.AWS.ELB.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.Request
@@ -54,13 +53,14 @@ import Network.AWS.Response
 --
 --
 -- /See:/ 'disableAvailabilityZonesForLoadBalancer' smart constructor.
-data DisableAvailabilityZonesForLoadBalancer =
-  DisableAvailabilityZonesForLoadBalancer'
-    { _dazflbLoadBalancerName  :: !Text
-    , _dazflbAvailabilityZones :: ![Text]
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data DisableAvailabilityZonesForLoadBalancer = DisableAvailabilityZonesForLoadBalancer'{_dazflbLoadBalancerName
+                                                                                        ::
+                                                                                        !Text,
+                                                                                        _dazflbAvailabilityZones
+                                                                                        ::
+                                                                                        ![Text]}
+                                                 deriving (Eq, Read, Show, Data,
+                                                           Typeable, Generic)
 
 -- | Creates a value of 'DisableAvailabilityZonesForLoadBalancer' with the minimum fields required to make a request.
 --
@@ -72,12 +72,11 @@ data DisableAvailabilityZonesForLoadBalancer =
 disableAvailabilityZonesForLoadBalancer
     :: Text -- ^ 'dazflbLoadBalancerName'
     -> DisableAvailabilityZonesForLoadBalancer
-disableAvailabilityZonesForLoadBalancer pLoadBalancerName_ =
-  DisableAvailabilityZonesForLoadBalancer'
-    { _dazflbLoadBalancerName = pLoadBalancerName_
-    , _dazflbAvailabilityZones = mempty
-    }
-
+disableAvailabilityZonesForLoadBalancer
+  pLoadBalancerName_
+  = DisableAvailabilityZonesForLoadBalancer'{_dazflbLoadBalancerName
+                                               = pLoadBalancerName_,
+                                             _dazflbAvailabilityZones = mempty}
 
 -- | The name of the load balancer.
 dazflbLoadBalancerName :: Lens' DisableAvailabilityZonesForLoadBalancer Text
@@ -138,13 +137,17 @@ instance ToQuery
 --
 --
 -- /See:/ 'disableAvailabilityZonesForLoadBalancerResponse' smart constructor.
-data DisableAvailabilityZonesForLoadBalancerResponse =
-  DisableAvailabilityZonesForLoadBalancerResponse'
-    { _dazflbrsAvailabilityZones :: !(Maybe [Text])
-    , _dazflbrsResponseStatus    :: !Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data DisableAvailabilityZonesForLoadBalancerResponse = DisableAvailabilityZonesForLoadBalancerResponse'{_dazflbrsAvailabilityZones
+                                                                                                        ::
+                                                                                                        !(Maybe
+                                                                                                            [Text]),
+                                                                                                        _dazflbrsResponseStatus
+                                                                                                        ::
+                                                                                                        !Int}
+                                                         deriving (Eq, Read,
+                                                                   Show, Data,
+                                                                   Typeable,
+                                                                   Generic)
 
 -- | Creates a value of 'DisableAvailabilityZonesForLoadBalancerResponse' with the minimum fields required to make a request.
 --
@@ -156,12 +159,12 @@ data DisableAvailabilityZonesForLoadBalancerResponse =
 disableAvailabilityZonesForLoadBalancerResponse
     :: Int -- ^ 'dazflbrsResponseStatus'
     -> DisableAvailabilityZonesForLoadBalancerResponse
-disableAvailabilityZonesForLoadBalancerResponse pResponseStatus_ =
-  DisableAvailabilityZonesForLoadBalancerResponse'
-    { _dazflbrsAvailabilityZones = Nothing
-    , _dazflbrsResponseStatus = pResponseStatus_
-    }
-
+disableAvailabilityZonesForLoadBalancerResponse
+  pResponseStatus_
+  = DisableAvailabilityZonesForLoadBalancerResponse'{_dazflbrsAvailabilityZones
+                                                       = Nothing,
+                                                     _dazflbrsResponseStatus =
+                                                       pResponseStatus_}
 
 -- | The remaining Availability Zones for the load balancer.
 dazflbrsAvailabilityZones :: Lens' DisableAvailabilityZonesForLoadBalancerResponse [Text]

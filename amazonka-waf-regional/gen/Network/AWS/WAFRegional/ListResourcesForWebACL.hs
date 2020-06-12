@@ -42,15 +42,12 @@ import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 import Network.AWS.WAFRegional.Types
-import Network.AWS.WAFRegional.Types.Product
 
 -- | /See:/ 'listResourcesForWebACL' smart constructor.
-newtype ListResourcesForWebACL =
-  ListResourcesForWebACL'
-    { _lrfwaWebACLId :: Text
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+newtype ListResourcesForWebACL = ListResourcesForWebACL'{_lrfwaWebACLId
+                                                         :: Text}
+                                   deriving (Eq, Read, Show, Data, Typeable,
+                                             Generic)
 
 -- | Creates a value of 'ListResourcesForWebACL' with the minimum fields required to make a request.
 --
@@ -60,9 +57,9 @@ newtype ListResourcesForWebACL =
 listResourcesForWebACL
     :: Text -- ^ 'lrfwaWebACLId'
     -> ListResourcesForWebACL
-listResourcesForWebACL pWebACLId_ =
-  ListResourcesForWebACL' {_lrfwaWebACLId = pWebACLId_}
-
+listResourcesForWebACL pWebACLId_
+  = ListResourcesForWebACL'{_lrfwaWebACLId =
+                              pWebACLId_}
 
 -- | The unique identifier (ID) of the web ACL for which to list the associated resources.
 lrfwaWebACLId :: Lens' ListResourcesForWebACL Text
@@ -105,13 +102,14 @@ instance ToQuery ListResourcesForWebACL where
         toQuery = const mempty
 
 -- | /See:/ 'listResourcesForWebACLResponse' smart constructor.
-data ListResourcesForWebACLResponse =
-  ListResourcesForWebACLResponse'
-    { _lrfwarsResourceARNs   :: !(Maybe [Text])
-    , _lrfwarsResponseStatus :: !Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data ListResourcesForWebACLResponse = ListResourcesForWebACLResponse'{_lrfwarsResourceARNs
+                                                                      ::
+                                                                      !(Maybe
+                                                                          [Text]),
+                                                                      _lrfwarsResponseStatus
+                                                                      :: !Int}
+                                        deriving (Eq, Read, Show, Data,
+                                                  Typeable, Generic)
 
 -- | Creates a value of 'ListResourcesForWebACLResponse' with the minimum fields required to make a request.
 --
@@ -123,10 +121,10 @@ data ListResourcesForWebACLResponse =
 listResourcesForWebACLResponse
     :: Int -- ^ 'lrfwarsResponseStatus'
     -> ListResourcesForWebACLResponse
-listResourcesForWebACLResponse pResponseStatus_ =
-  ListResourcesForWebACLResponse'
-    {_lrfwarsResourceARNs = Nothing, _lrfwarsResponseStatus = pResponseStatus_}
-
+listResourcesForWebACLResponse pResponseStatus_
+  = ListResourcesForWebACLResponse'{_lrfwarsResourceARNs
+                                      = Nothing,
+                                    _lrfwarsResponseStatus = pResponseStatus_}
 
 -- | An array of ARNs (Amazon Resource Names) of the resources associated with the specified web ACL. An array with zero elements is returned if there are no resources associated with the web ACL.
 lrfwarsResourceARNs :: Lens' ListResourcesForWebACLResponse [Text]

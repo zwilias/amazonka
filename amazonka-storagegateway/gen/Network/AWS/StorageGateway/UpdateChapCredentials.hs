@@ -48,32 +48,30 @@ import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 import Network.AWS.StorageGateway.Types
-import Network.AWS.StorageGateway.Types.Product
 
 -- | A JSON object containing one or more of the following fields:
 --
 --
---     * 'UpdateChapCredentialsInput$InitiatorName'
+--     * 'UpdateChapCredentialsInput$InitiatorName' 
 --
---     * 'UpdateChapCredentialsInput$SecretToAuthenticateInitiator'
+--     * 'UpdateChapCredentialsInput$SecretToAuthenticateInitiator' 
 --
---     * 'UpdateChapCredentialsInput$SecretToAuthenticateTarget'
+--     * 'UpdateChapCredentialsInput$SecretToAuthenticateTarget' 
 --
---     * 'UpdateChapCredentialsInput$TargetARN'
+--     * 'UpdateChapCredentialsInput$TargetARN' 
 --
 --
 --
 --
 -- /See:/ 'updateChapCredentials' smart constructor.
-data UpdateChapCredentials =
-  UpdateChapCredentials'
-    { _uccSecretToAuthenticateTarget    :: !(Maybe Text)
-    , _uccTargetARN                     :: !Text
-    , _uccSecretToAuthenticateInitiator :: !Text
-    , _uccInitiatorName                 :: !Text
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data UpdateChapCredentials = UpdateChapCredentials'{_uccSecretToAuthenticateTarget
+                                                    :: !(Maybe Text),
+                                                    _uccTargetARN :: !Text,
+                                                    _uccSecretToAuthenticateInitiator
+                                                    :: !Text,
+                                                    _uccInitiatorName :: !Text}
+                               deriving (Eq, Read, Show, Data, Typeable,
+                                         Generic)
 
 -- | Creates a value of 'UpdateChapCredentials' with the minimum fields required to make a request.
 --
@@ -91,14 +89,14 @@ updateChapCredentials
     -> Text -- ^ 'uccSecretToAuthenticateInitiator'
     -> Text -- ^ 'uccInitiatorName'
     -> UpdateChapCredentials
-updateChapCredentials pTargetARN_ pSecretToAuthenticateInitiator_ pInitiatorName_ =
-  UpdateChapCredentials'
-    { _uccSecretToAuthenticateTarget = Nothing
-    , _uccTargetARN = pTargetARN_
-    , _uccSecretToAuthenticateInitiator = pSecretToAuthenticateInitiator_
-    , _uccInitiatorName = pInitiatorName_
-    }
-
+updateChapCredentials pTargetARN_
+  pSecretToAuthenticateInitiator_ pInitiatorName_
+  = UpdateChapCredentials'{_uccSecretToAuthenticateTarget
+                             = Nothing,
+                           _uccTargetARN = pTargetARN_,
+                           _uccSecretToAuthenticateInitiator =
+                             pSecretToAuthenticateInitiator_,
+                           _uccInitiatorName = pInitiatorName_}
 
 -- | The secret key that the target must provide to participate in mutual CHAP with the initiator (e.g. Windows client). Byte constraints: Minimum bytes of 12. Maximum bytes of 16.
 uccSecretToAuthenticateTarget :: Lens' UpdateChapCredentials (Maybe Text)
@@ -164,14 +162,18 @@ instance ToQuery UpdateChapCredentials where
 --
 --
 -- /See:/ 'updateChapCredentialsResponse' smart constructor.
-data UpdateChapCredentialsResponse =
-  UpdateChapCredentialsResponse'
-    { _uccrsTargetARN      :: !(Maybe Text)
-    , _uccrsInitiatorName  :: !(Maybe Text)
-    , _uccrsResponseStatus :: !Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data UpdateChapCredentialsResponse = UpdateChapCredentialsResponse'{_uccrsTargetARN
+                                                                    ::
+                                                                    !(Maybe
+                                                                        Text),
+                                                                    _uccrsInitiatorName
+                                                                    ::
+                                                                    !(Maybe
+                                                                        Text),
+                                                                    _uccrsResponseStatus
+                                                                    :: !Int}
+                                       deriving (Eq, Read, Show, Data, Typeable,
+                                                 Generic)
 
 -- | Creates a value of 'UpdateChapCredentialsResponse' with the minimum fields required to make a request.
 --
@@ -185,13 +187,11 @@ data UpdateChapCredentialsResponse =
 updateChapCredentialsResponse
     :: Int -- ^ 'uccrsResponseStatus'
     -> UpdateChapCredentialsResponse
-updateChapCredentialsResponse pResponseStatus_ =
-  UpdateChapCredentialsResponse'
-    { _uccrsTargetARN = Nothing
-    , _uccrsInitiatorName = Nothing
-    , _uccrsResponseStatus = pResponseStatus_
-    }
-
+updateChapCredentialsResponse pResponseStatus_
+  = UpdateChapCredentialsResponse'{_uccrsTargetARN =
+                                     Nothing,
+                                   _uccrsInitiatorName = Nothing,
+                                   _uccrsResponseStatus = pResponseStatus_}
 
 -- | The Amazon Resource Name (ARN) of the target. This is the same target specified in the request.
 uccrsTargetARN :: Lens' UpdateChapCredentialsResponse (Maybe Text)

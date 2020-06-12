@@ -58,20 +58,16 @@ module Network.AWS.Firehose.PutRecordBatch
     ) where
 
 import Network.AWS.Firehose.Types
-import Network.AWS.Firehose.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 
 -- | /See:/ 'putRecordBatch' smart constructor.
-data PutRecordBatch =
-  PutRecordBatch'
-    { _prbDeliveryStreamName :: !Text
-    , _prbRecords            :: !(List1 Record)
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data PutRecordBatch = PutRecordBatch'{_prbDeliveryStreamName
+                                      :: !Text,
+                                      _prbRecords :: !(List1 Record)}
+                        deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'PutRecordBatch' with the minimum fields required to make a request.
 --
@@ -84,12 +80,10 @@ putRecordBatch
     :: Text -- ^ 'prbDeliveryStreamName'
     -> NonEmpty Record -- ^ 'prbRecords'
     -> PutRecordBatch
-putRecordBatch pDeliveryStreamName_ pRecords_ =
-  PutRecordBatch'
-    { _prbDeliveryStreamName = pDeliveryStreamName_
-    , _prbRecords = _List1 # pRecords_
-    }
-
+putRecordBatch pDeliveryStreamName_ pRecords_
+  = PutRecordBatch'{_prbDeliveryStreamName =
+                      pDeliveryStreamName_,
+                    _prbRecords = _List1 # pRecords_}
 
 -- | The name of the delivery stream.
 prbDeliveryStreamName :: Lens' PutRecordBatch Text
@@ -137,14 +131,15 @@ instance ToQuery PutRecordBatch where
         toQuery = const mempty
 
 -- | /See:/ 'putRecordBatchResponse' smart constructor.
-data PutRecordBatchResponse =
-  PutRecordBatchResponse'
-    { _prbrsResponseStatus   :: !Int
-    , _prbrsFailedPutCount   :: !Nat
-    , _prbrsRequestResponses :: !(List1 PutRecordBatchResponseEntry)
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data PutRecordBatchResponse = PutRecordBatchResponse'{_prbrsResponseStatus
+                                                      :: !Int,
+                                                      _prbrsFailedPutCount ::
+                                                      !Nat,
+                                                      _prbrsRequestResponses ::
+                                                      !(List1
+                                                          PutRecordBatchResponseEntry)}
+                                deriving (Eq, Read, Show, Data, Typeable,
+                                          Generic)
 
 -- | Creates a value of 'PutRecordBatchResponse' with the minimum fields required to make a request.
 --
@@ -160,13 +155,13 @@ putRecordBatchResponse
     -> Natural -- ^ 'prbrsFailedPutCount'
     -> NonEmpty PutRecordBatchResponseEntry -- ^ 'prbrsRequestResponses'
     -> PutRecordBatchResponse
-putRecordBatchResponse pResponseStatus_ pFailedPutCount_ pRequestResponses_ =
-  PutRecordBatchResponse'
-    { _prbrsResponseStatus = pResponseStatus_
-    , _prbrsFailedPutCount = _Nat # pFailedPutCount_
-    , _prbrsRequestResponses = _List1 # pRequestResponses_
-    }
-
+putRecordBatchResponse pResponseStatus_
+  pFailedPutCount_ pRequestResponses_
+  = PutRecordBatchResponse'{_prbrsResponseStatus =
+                              pResponseStatus_,
+                            _prbrsFailedPutCount = _Nat # pFailedPutCount_,
+                            _prbrsRequestResponses =
+                              _List1 # pRequestResponses_}
 
 -- | -- | The response status code.
 prbrsResponseStatus :: Lens' PutRecordBatchResponse Int

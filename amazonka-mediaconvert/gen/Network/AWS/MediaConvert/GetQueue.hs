@@ -37,18 +37,13 @@ module Network.AWS.MediaConvert.GetQueue
 
 import Network.AWS.Lens
 import Network.AWS.MediaConvert.Types
-import Network.AWS.MediaConvert.Types.Product
 import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 
 -- | /See:/ 'getQueue' smart constructor.
-newtype GetQueue =
-  GetQueue'
-    { _gqName :: Text
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+newtype GetQueue = GetQueue'{_gqName :: Text}
+                     deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'GetQueue' with the minimum fields required to make a request.
 --
@@ -58,8 +53,7 @@ newtype GetQueue =
 getQueue
     :: Text -- ^ 'gqName'
     -> GetQueue
-getQueue pName_ = GetQueue' {_gqName = pName_}
-
+getQueue pName_ = GetQueue'{_gqName = pName_}
 
 -- | The name of the queue.
 gqName :: Lens' GetQueue Text
@@ -93,13 +87,10 @@ instance ToQuery GetQueue where
         toQuery = const mempty
 
 -- | /See:/ 'getQueueResponse' smart constructor.
-data GetQueueResponse =
-  GetQueueResponse'
-    { _gqrsQueue          :: !(Maybe Queue)
-    , _gqrsResponseStatus :: !Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data GetQueueResponse = GetQueueResponse'{_gqrsQueue
+                                          :: !(Maybe Queue),
+                                          _gqrsResponseStatus :: !Int}
+                          deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'GetQueueResponse' with the minimum fields required to make a request.
 --
@@ -111,10 +102,9 @@ data GetQueueResponse =
 getQueueResponse
     :: Int -- ^ 'gqrsResponseStatus'
     -> GetQueueResponse
-getQueueResponse pResponseStatus_ =
-  GetQueueResponse'
-    {_gqrsQueue = Nothing, _gqrsResponseStatus = pResponseStatus_}
-
+getQueueResponse pResponseStatus_
+  = GetQueueResponse'{_gqrsQueue = Nothing,
+                      _gqrsResponseStatus = pResponseStatus_}
 
 -- | Undocumented member.
 gqrsQueue :: Lens' GetQueueResponse (Maybe Queue)

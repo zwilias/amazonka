@@ -40,21 +40,19 @@ module Network.AWS.Pinpoint.GetCampaignActivities
 
 import Network.AWS.Lens
 import Network.AWS.Pinpoint.Types
-import Network.AWS.Pinpoint.Types.Product
 import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 
 -- | /See:/ 'getCampaignActivities' smart constructor.
-data GetCampaignActivities =
-  GetCampaignActivities'
-    { _gcaToken         :: !(Maybe Text)
-    , _gcaPageSize      :: !(Maybe Text)
-    , _gcaApplicationId :: !Text
-    , _gcaCampaignId    :: !Text
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data GetCampaignActivities = GetCampaignActivities'{_gcaToken
+                                                    :: !(Maybe Text),
+                                                    _gcaPageSize ::
+                                                    !(Maybe Text),
+                                                    _gcaApplicationId :: !Text,
+                                                    _gcaCampaignId :: !Text}
+                               deriving (Eq, Read, Show, Data, Typeable,
+                                         Generic)
 
 -- | Creates a value of 'GetCampaignActivities' with the minimum fields required to make a request.
 --
@@ -71,14 +69,11 @@ getCampaignActivities
     :: Text -- ^ 'gcaApplicationId'
     -> Text -- ^ 'gcaCampaignId'
     -> GetCampaignActivities
-getCampaignActivities pApplicationId_ pCampaignId_ =
-  GetCampaignActivities'
-    { _gcaToken = Nothing
-    , _gcaPageSize = Nothing
-    , _gcaApplicationId = pApplicationId_
-    , _gcaCampaignId = pCampaignId_
-    }
-
+getCampaignActivities pApplicationId_ pCampaignId_
+  = GetCampaignActivities'{_gcaToken = Nothing,
+                           _gcaPageSize = Nothing,
+                           _gcaApplicationId = pApplicationId_,
+                           _gcaCampaignId = pCampaignId_}
 
 -- | The NextToken string returned on a previous page that you use to get the next page of results in a paginated response.
 gcaToken :: Lens' GetCampaignActivities (Maybe Text)
@@ -129,13 +124,13 @@ instance ToQuery GetCampaignActivities where
               ["token" =: _gcaToken, "page-size" =: _gcaPageSize]
 
 -- | /See:/ 'getCampaignActivitiesResponse' smart constructor.
-data GetCampaignActivitiesResponse =
-  GetCampaignActivitiesResponse'
-    { _gcarsResponseStatus     :: !Int
-    , _gcarsActivitiesResponse :: !ActivitiesResponse
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data GetCampaignActivitiesResponse = GetCampaignActivitiesResponse'{_gcarsResponseStatus
+                                                                    :: !Int,
+                                                                    _gcarsActivitiesResponse
+                                                                    ::
+                                                                    !ActivitiesResponse}
+                                       deriving (Eq, Read, Show, Data, Typeable,
+                                                 Generic)
 
 -- | Creates a value of 'GetCampaignActivitiesResponse' with the minimum fields required to make a request.
 --
@@ -148,12 +143,12 @@ getCampaignActivitiesResponse
     :: Int -- ^ 'gcarsResponseStatus'
     -> ActivitiesResponse -- ^ 'gcarsActivitiesResponse'
     -> GetCampaignActivitiesResponse
-getCampaignActivitiesResponse pResponseStatus_ pActivitiesResponse_ =
-  GetCampaignActivitiesResponse'
-    { _gcarsResponseStatus = pResponseStatus_
-    , _gcarsActivitiesResponse = pActivitiesResponse_
-    }
-
+getCampaignActivitiesResponse pResponseStatus_
+  pActivitiesResponse_
+  = GetCampaignActivitiesResponse'{_gcarsResponseStatus
+                                     = pResponseStatus_,
+                                   _gcarsActivitiesResponse =
+                                     pActivitiesResponse_}
 
 -- | -- | The response status code.
 gcarsResponseStatus :: Lens' GetCampaignActivitiesResponse Int

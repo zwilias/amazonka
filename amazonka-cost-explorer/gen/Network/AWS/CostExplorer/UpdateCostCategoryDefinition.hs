@@ -41,21 +41,22 @@ module Network.AWS.CostExplorer.UpdateCostCategoryDefinition
     ) where
 
 import Network.AWS.CostExplorer.Types
-import Network.AWS.CostExplorer.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 
 -- | /See:/ 'updateCostCategoryDefinition' smart constructor.
-data UpdateCostCategoryDefinition =
-  UpdateCostCategoryDefinition'
-    { _uccdCostCategoryARN :: !Text
-    , _uccdRuleVersion     :: !CostCategoryRuleVersion
-    , _uccdRules           :: !(List1 CostCategoryRule)
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data UpdateCostCategoryDefinition = UpdateCostCategoryDefinition'{_uccdCostCategoryARN
+                                                                  :: !Text,
+                                                                  _uccdRuleVersion
+                                                                  ::
+                                                                  !CostCategoryRuleVersion,
+                                                                  _uccdRules ::
+                                                                  !(List1
+                                                                      CostCategoryRule)}
+                                      deriving (Eq, Read, Show, Data, Typeable,
+                                                Generic)
 
 -- | Creates a value of 'UpdateCostCategoryDefinition' with the minimum fields required to make a request.
 --
@@ -65,19 +66,18 @@ data UpdateCostCategoryDefinition =
 --
 -- * 'uccdRuleVersion' - Undocumented member.
 --
--- * 'uccdRules' - The @Expression@ object used to categorize costs. For more information, see <https://docs.aws.amazon.com/aws-cost-management/latest/APIReference/API_CostCategoryRule.html CostCategoryRule > .
+-- * 'uccdRules' - The @Expression@ object used to categorize costs. For more information, see <https://docs.aws.amazon.com/aws-cost-management/latest/APIReference/API_CostCategoryRule.html CostCategoryRule > . 
 updateCostCategoryDefinition
     :: Text -- ^ 'uccdCostCategoryARN'
     -> CostCategoryRuleVersion -- ^ 'uccdRuleVersion'
     -> NonEmpty CostCategoryRule -- ^ 'uccdRules'
     -> UpdateCostCategoryDefinition
-updateCostCategoryDefinition pCostCategoryARN_ pRuleVersion_ pRules_ =
-  UpdateCostCategoryDefinition'
-    { _uccdCostCategoryARN = pCostCategoryARN_
-    , _uccdRuleVersion = pRuleVersion_
-    , _uccdRules = _List1 # pRules_
-    }
-
+updateCostCategoryDefinition pCostCategoryARN_
+  pRuleVersion_ pRules_
+  = UpdateCostCategoryDefinition'{_uccdCostCategoryARN
+                                    = pCostCategoryARN_,
+                                  _uccdRuleVersion = pRuleVersion_,
+                                  _uccdRules = _List1 # pRules_}
 
 -- | The unique identifier for your Cost Category.
 uccdCostCategoryARN :: Lens' UpdateCostCategoryDefinition Text
@@ -87,7 +87,7 @@ uccdCostCategoryARN = lens _uccdCostCategoryARN (\ s a -> s{_uccdCostCategoryARN
 uccdRuleVersion :: Lens' UpdateCostCategoryDefinition CostCategoryRuleVersion
 uccdRuleVersion = lens _uccdRuleVersion (\ s a -> s{_uccdRuleVersion = a})
 
--- | The @Expression@ object used to categorize costs. For more information, see <https://docs.aws.amazon.com/aws-cost-management/latest/APIReference/API_CostCategoryRule.html CostCategoryRule > .
+-- | The @Expression@ object used to categorize costs. For more information, see <https://docs.aws.amazon.com/aws-cost-management/latest/APIReference/API_CostCategoryRule.html CostCategoryRule > . 
 uccdRules :: Lens' UpdateCostCategoryDefinition (NonEmpty CostCategoryRule)
 uccdRules = lens _uccdRules (\ s a -> s{_uccdRules = a}) . _List1
 
@@ -133,40 +133,44 @@ instance ToQuery UpdateCostCategoryDefinition where
         toQuery = const mempty
 
 -- | /See:/ 'updateCostCategoryDefinitionResponse' smart constructor.
-data UpdateCostCategoryDefinitionResponse =
-  UpdateCostCategoryDefinitionResponse'
-    { _uccdrsEffectiveStart  :: !(Maybe Text)
-    , _uccdrsCostCategoryARN :: !(Maybe Text)
-    , _uccdrsResponseStatus  :: !Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data UpdateCostCategoryDefinitionResponse = UpdateCostCategoryDefinitionResponse'{_uccdrsEffectiveStart
+                                                                                  ::
+                                                                                  !(Maybe
+                                                                                      Text),
+                                                                                  _uccdrsCostCategoryARN
+                                                                                  ::
+                                                                                  !(Maybe
+                                                                                      Text),
+                                                                                  _uccdrsResponseStatus
+                                                                                  ::
+                                                                                  !Int}
+                                              deriving (Eq, Read, Show, Data,
+                                                        Typeable, Generic)
 
 -- | Creates a value of 'UpdateCostCategoryDefinitionResponse' with the minimum fields required to make a request.
 --
 -- Use one of the following lenses to modify other fields as desired:
 --
--- * 'uccdrsEffectiveStart' - The Cost Category's effective start date.
+-- * 'uccdrsEffectiveStart' - The Cost Category's effective start date. 
 --
--- * 'uccdrsCostCategoryARN' - The unique identifier for your Cost Category.
+-- * 'uccdrsCostCategoryARN' - The unique identifier for your Cost Category. 
 --
 -- * 'uccdrsResponseStatus' - -- | The response status code.
 updateCostCategoryDefinitionResponse
     :: Int -- ^ 'uccdrsResponseStatus'
     -> UpdateCostCategoryDefinitionResponse
-updateCostCategoryDefinitionResponse pResponseStatus_ =
-  UpdateCostCategoryDefinitionResponse'
-    { _uccdrsEffectiveStart = Nothing
-    , _uccdrsCostCategoryARN = Nothing
-    , _uccdrsResponseStatus = pResponseStatus_
-    }
+updateCostCategoryDefinitionResponse pResponseStatus_
+  = UpdateCostCategoryDefinitionResponse'{_uccdrsEffectiveStart
+                                            = Nothing,
+                                          _uccdrsCostCategoryARN = Nothing,
+                                          _uccdrsResponseStatus =
+                                            pResponseStatus_}
 
-
--- | The Cost Category's effective start date.
+-- | The Cost Category's effective start date. 
 uccdrsEffectiveStart :: Lens' UpdateCostCategoryDefinitionResponse (Maybe Text)
 uccdrsEffectiveStart = lens _uccdrsEffectiveStart (\ s a -> s{_uccdrsEffectiveStart = a})
 
--- | The unique identifier for your Cost Category.
+-- | The unique identifier for your Cost Category. 
 uccdrsCostCategoryARN :: Lens' UpdateCostCategoryDefinitionResponse (Maybe Text)
 uccdrsCostCategoryARN = lens _uccdrsCostCategoryARN (\ s a -> s{_uccdrsCostCategoryARN = a})
 

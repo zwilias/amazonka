@@ -37,18 +37,15 @@ module Network.AWS.Pinpoint.GetAPNSVoipChannel
 
 import Network.AWS.Lens
 import Network.AWS.Pinpoint.Types
-import Network.AWS.Pinpoint.Types.Product
 import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 
 -- | /See:/ 'getAPNSVoipChannel' smart constructor.
-newtype GetAPNSVoipChannel =
-  GetAPNSVoipChannel'
-    { _gavcApplicationId :: Text
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+newtype GetAPNSVoipChannel = GetAPNSVoipChannel'{_gavcApplicationId
+                                                 :: Text}
+                               deriving (Eq, Read, Show, Data, Typeable,
+                                         Generic)
 
 -- | Creates a value of 'GetAPNSVoipChannel' with the minimum fields required to make a request.
 --
@@ -58,9 +55,9 @@ newtype GetAPNSVoipChannel =
 getAPNSVoipChannel
     :: Text -- ^ 'gavcApplicationId'
     -> GetAPNSVoipChannel
-getAPNSVoipChannel pApplicationId_ =
-  GetAPNSVoipChannel' {_gavcApplicationId = pApplicationId_}
-
+getAPNSVoipChannel pApplicationId_
+  = GetAPNSVoipChannel'{_gavcApplicationId =
+                          pApplicationId_}
 
 -- | Undocumented member.
 gavcApplicationId :: Lens' GetAPNSVoipChannel Text
@@ -97,13 +94,13 @@ instance ToQuery GetAPNSVoipChannel where
         toQuery = const mempty
 
 -- | /See:/ 'getAPNSVoipChannelResponse' smart constructor.
-data GetAPNSVoipChannelResponse =
-  GetAPNSVoipChannelResponse'
-    { _gavcrsResponseStatus          :: !Int
-    , _gavcrsAPNSVoipChannelResponse :: !APNSVoipChannelResponse
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data GetAPNSVoipChannelResponse = GetAPNSVoipChannelResponse'{_gavcrsResponseStatus
+                                                              :: !Int,
+                                                              _gavcrsAPNSVoipChannelResponse
+                                                              ::
+                                                              !APNSVoipChannelResponse}
+                                    deriving (Eq, Read, Show, Data, Typeable,
+                                              Generic)
 
 -- | Creates a value of 'GetAPNSVoipChannelResponse' with the minimum fields required to make a request.
 --
@@ -116,12 +113,12 @@ getAPNSVoipChannelResponse
     :: Int -- ^ 'gavcrsResponseStatus'
     -> APNSVoipChannelResponse -- ^ 'gavcrsAPNSVoipChannelResponse'
     -> GetAPNSVoipChannelResponse
-getAPNSVoipChannelResponse pResponseStatus_ pAPNSVoipChannelResponse_ =
-  GetAPNSVoipChannelResponse'
-    { _gavcrsResponseStatus = pResponseStatus_
-    , _gavcrsAPNSVoipChannelResponse = pAPNSVoipChannelResponse_
-    }
-
+getAPNSVoipChannelResponse pResponseStatus_
+  pAPNSVoipChannelResponse_
+  = GetAPNSVoipChannelResponse'{_gavcrsResponseStatus =
+                                  pResponseStatus_,
+                                _gavcrsAPNSVoipChannelResponse =
+                                  pAPNSVoipChannelResponse_}
 
 -- | -- | The response status code.
 gavcrsResponseStatus :: Lens' GetAPNSVoipChannelResponse Int

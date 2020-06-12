@@ -36,7 +36,6 @@ module Network.AWS.EC2.DeleteCustomerGateway
     ) where
 
 import Network.AWS.EC2.Types
-import Network.AWS.EC2.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.Request
@@ -47,13 +46,12 @@ import Network.AWS.Response
 --
 --
 -- /See:/ 'deleteCustomerGateway' smart constructor.
-data DeleteCustomerGateway =
-  DeleteCustomerGateway'
-    { _dcgcDryRun            :: !(Maybe Bool)
-    , _dcgcCustomerGatewayId :: !Text
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data DeleteCustomerGateway = DeleteCustomerGateway'{_dcgcDryRun
+                                                    :: !(Maybe Bool),
+                                                    _dcgcCustomerGatewayId ::
+                                                    !Text}
+                               deriving (Eq, Read, Show, Data, Typeable,
+                                         Generic)
 
 -- | Creates a value of 'DeleteCustomerGateway' with the minimum fields required to make a request.
 --
@@ -65,10 +63,9 @@ data DeleteCustomerGateway =
 deleteCustomerGateway
     :: Text -- ^ 'dcgcCustomerGatewayId'
     -> DeleteCustomerGateway
-deleteCustomerGateway pCustomerGatewayId_ =
-  DeleteCustomerGateway'
-    {_dcgcDryRun = Nothing, _dcgcCustomerGatewayId = pCustomerGatewayId_}
-
+deleteCustomerGateway pCustomerGatewayId_
+  = DeleteCustomerGateway'{_dcgcDryRun = Nothing,
+                           _dcgcCustomerGatewayId = pCustomerGatewayId_}
 
 -- | Checks whether you have the required permissions for the action, without actually making the request, and provides an error response. If you have the required permissions, the error response is @DryRunOperation@ . Otherwise, it is @UnauthorizedOperation@ .
 dcgcDryRun :: Lens' DeleteCustomerGateway (Maybe Bool)
@@ -103,16 +100,15 @@ instance ToQuery DeleteCustomerGateway where
                "CustomerGatewayId" =: _dcgcCustomerGatewayId]
 
 -- | /See:/ 'deleteCustomerGatewayResponse' smart constructor.
-data DeleteCustomerGatewayResponse =
-  DeleteCustomerGatewayResponse'
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data DeleteCustomerGatewayResponse = DeleteCustomerGatewayResponse'
+                                       deriving (Eq, Read, Show, Data, Typeable,
+                                                 Generic)
 
 -- | Creates a value of 'DeleteCustomerGatewayResponse' with the minimum fields required to make a request.
 --
 deleteCustomerGatewayResponse
     :: DeleteCustomerGatewayResponse
-deleteCustomerGatewayResponse = DeleteCustomerGatewayResponse'
-
+deleteCustomerGatewayResponse
+  = DeleteCustomerGatewayResponse'
 
 instance NFData DeleteCustomerGatewayResponse where

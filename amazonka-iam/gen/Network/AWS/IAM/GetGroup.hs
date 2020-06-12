@@ -45,7 +45,6 @@ module Network.AWS.IAM.GetGroup
     ) where
 
 import Network.AWS.IAM.Types
-import Network.AWS.IAM.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Pager
 import Network.AWS.Prelude
@@ -53,14 +52,9 @@ import Network.AWS.Request
 import Network.AWS.Response
 
 -- | /See:/ 'getGroup' smart constructor.
-data GetGroup =
-  GetGroup'
-    { _ggMarker    :: !(Maybe Text)
-    , _ggMaxItems  :: !(Maybe Nat)
-    , _ggGroupName :: !Text
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data GetGroup = GetGroup'{_ggMarker :: !(Maybe Text),
+                          _ggMaxItems :: !(Maybe Nat), _ggGroupName :: !Text}
+                  deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'GetGroup' with the minimum fields required to make a request.
 --
@@ -74,10 +68,9 @@ data GetGroup =
 getGroup
     :: Text -- ^ 'ggGroupName'
     -> GetGroup
-getGroup pGroupName_ =
-  GetGroup'
-    {_ggMarker = Nothing, _ggMaxItems = Nothing, _ggGroupName = pGroupName_}
-
+getGroup pGroupName_
+  = GetGroup'{_ggMarker = Nothing,
+              _ggMaxItems = Nothing, _ggGroupName = pGroupName_}
 
 -- | Use this parameter only when paginating results and only after you receive a response indicating that the results are truncated. Set it to the value of the @Marker@ element in the response that you received to indicate where the next call should start.
 ggMarker :: Lens' GetGroup (Maybe Text)
@@ -129,21 +122,18 @@ instance ToQuery GetGroup where
                "Marker" =: _ggMarker, "MaxItems" =: _ggMaxItems,
                "GroupName" =: _ggGroupName]
 
--- | Contains the response to a successful 'GetGroup' request.
+-- | Contains the response to a successful 'GetGroup' request. 
 --
 --
 --
 -- /See:/ 'getGroupResponse' smart constructor.
-data GetGroupResponse =
-  GetGroupResponse'
-    { _ggrsMarker         :: !(Maybe Text)
-    , _ggrsIsTruncated    :: !(Maybe Bool)
-    , _ggrsResponseStatus :: !Int
-    , _ggrsGroup          :: !Group
-    , _ggrsUsers          :: ![User]
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data GetGroupResponse = GetGroupResponse'{_ggrsMarker
+                                          :: !(Maybe Text),
+                                          _ggrsIsTruncated :: !(Maybe Bool),
+                                          _ggrsResponseStatus :: !Int,
+                                          _ggrsGroup :: !Group,
+                                          _ggrsUsers :: ![User]}
+                          deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'GetGroupResponse' with the minimum fields required to make a request.
 --
@@ -162,15 +152,11 @@ getGroupResponse
     :: Int -- ^ 'ggrsResponseStatus'
     -> Group -- ^ 'ggrsGroup'
     -> GetGroupResponse
-getGroupResponse pResponseStatus_ pGroup_ =
-  GetGroupResponse'
-    { _ggrsMarker = Nothing
-    , _ggrsIsTruncated = Nothing
-    , _ggrsResponseStatus = pResponseStatus_
-    , _ggrsGroup = pGroup_
-    , _ggrsUsers = mempty
-    }
-
+getGroupResponse pResponseStatus_ pGroup_
+  = GetGroupResponse'{_ggrsMarker = Nothing,
+                      _ggrsIsTruncated = Nothing,
+                      _ggrsResponseStatus = pResponseStatus_,
+                      _ggrsGroup = pGroup_, _ggrsUsers = mempty}
 
 -- | When @IsTruncated@ is @true@ , this element is present and contains the value to use for the @Marker@ parameter in a subsequent pagination request.
 ggrsMarker :: Lens' GetGroupResponse (Maybe Text)

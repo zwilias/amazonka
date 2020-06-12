@@ -47,20 +47,21 @@ import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 import Network.AWS.Transcribe.Types
-import Network.AWS.Transcribe.Types.Product
 
 -- | /See:/ 'startTranscriptionJob' smart constructor.
-data StartTranscriptionJob =
-  StartTranscriptionJob'
-    { _stjSettings             :: !(Maybe Settings)
-    , _stjMediaSampleRateHertz :: !(Maybe Nat)
-    , _stjTranscriptionJobName :: !Text
-    , _stjLanguageCode         :: !LanguageCode
-    , _stjMediaFormat          :: !MediaFormat
-    , _stjMedia                :: !Media
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data StartTranscriptionJob = StartTranscriptionJob'{_stjSettings
+                                                    :: !(Maybe Settings),
+                                                    _stjMediaSampleRateHertz ::
+                                                    !(Maybe Nat),
+                                                    _stjTranscriptionJobName ::
+                                                    !Text,
+                                                    _stjLanguageCode ::
+                                                    !LanguageCode,
+                                                    _stjMediaFormat ::
+                                                    !MediaFormat,
+                                                    _stjMedia :: !Media}
+                               deriving (Eq, Read, Show, Data, Typeable,
+                                         Generic)
 
 -- | Creates a value of 'StartTranscriptionJob' with the minimum fields required to make a request.
 --
@@ -68,7 +69,7 @@ data StartTranscriptionJob =
 --
 -- * 'stjSettings' - A @Settings@ object that provides optional settings for a transcription job.
 --
--- * 'stjMediaSampleRateHertz' - The sample rate, in Hertz, of the audio track in the input media file.
+-- * 'stjMediaSampleRateHertz' - The sample rate, in Hertz, of the audio track in the input media file. 
 --
 -- * 'stjTranscriptionJobName' - The name of the job. The name must be unique within an AWS account.
 --
@@ -83,22 +84,19 @@ startTranscriptionJob
     -> MediaFormat -- ^ 'stjMediaFormat'
     -> Media -- ^ 'stjMedia'
     -> StartTranscriptionJob
-startTranscriptionJob pTranscriptionJobName_ pLanguageCode_ pMediaFormat_ pMedia_ =
-  StartTranscriptionJob'
-    { _stjSettings = Nothing
-    , _stjMediaSampleRateHertz = Nothing
-    , _stjTranscriptionJobName = pTranscriptionJobName_
-    , _stjLanguageCode = pLanguageCode_
-    , _stjMediaFormat = pMediaFormat_
-    , _stjMedia = pMedia_
-    }
-
+startTranscriptionJob pTranscriptionJobName_
+  pLanguageCode_ pMediaFormat_ pMedia_
+  = StartTranscriptionJob'{_stjSettings = Nothing,
+                           _stjMediaSampleRateHertz = Nothing,
+                           _stjTranscriptionJobName = pTranscriptionJobName_,
+                           _stjLanguageCode = pLanguageCode_,
+                           _stjMediaFormat = pMediaFormat_, _stjMedia = pMedia_}
 
 -- | A @Settings@ object that provides optional settings for a transcription job.
 stjSettings :: Lens' StartTranscriptionJob (Maybe Settings)
 stjSettings = lens _stjSettings (\ s a -> s{_stjSettings = a})
 
--- | The sample rate, in Hertz, of the audio track in the input media file.
+-- | The sample rate, in Hertz, of the audio track in the input media file. 
 stjMediaSampleRateHertz :: Lens' StartTranscriptionJob (Maybe Natural)
 stjMediaSampleRateHertz = lens _stjMediaSampleRateHertz (\ s a -> s{_stjMediaSampleRateHertz = a}) . mapping _Nat
 
@@ -161,13 +159,14 @@ instance ToQuery StartTranscriptionJob where
         toQuery = const mempty
 
 -- | /See:/ 'startTranscriptionJobResponse' smart constructor.
-data StartTranscriptionJobResponse =
-  StartTranscriptionJobResponse'
-    { _stjrsTranscriptionJob :: !(Maybe TranscriptionJob)
-    , _stjrsResponseStatus   :: !Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data StartTranscriptionJobResponse = StartTranscriptionJobResponse'{_stjrsTranscriptionJob
+                                                                    ::
+                                                                    !(Maybe
+                                                                        TranscriptionJob),
+                                                                    _stjrsResponseStatus
+                                                                    :: !Int}
+                                       deriving (Eq, Read, Show, Data, Typeable,
+                                                 Generic)
 
 -- | Creates a value of 'StartTranscriptionJobResponse' with the minimum fields required to make a request.
 --
@@ -179,10 +178,10 @@ data StartTranscriptionJobResponse =
 startTranscriptionJobResponse
     :: Int -- ^ 'stjrsResponseStatus'
     -> StartTranscriptionJobResponse
-startTranscriptionJobResponse pResponseStatus_ =
-  StartTranscriptionJobResponse'
-    {_stjrsTranscriptionJob = Nothing, _stjrsResponseStatus = pResponseStatus_}
-
+startTranscriptionJobResponse pResponseStatus_
+  = StartTranscriptionJobResponse'{_stjrsTranscriptionJob
+                                     = Nothing,
+                                   _stjrsResponseStatus = pResponseStatus_}
 
 -- | An object containing details of the asynchronous transcription job.
 stjrsTranscriptionJob :: Lens' StartTranscriptionJobResponse (Maybe TranscriptionJob)

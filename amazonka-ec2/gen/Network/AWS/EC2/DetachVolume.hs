@@ -50,23 +50,19 @@ module Network.AWS.EC2.DetachVolume
     ) where
 
 import Network.AWS.EC2.Types
-import Network.AWS.EC2.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 
 -- | /See:/ 'detachVolume' smart constructor.
-data DetachVolume =
-  DetachVolume'
-    { _dvInstanceId :: !(Maybe Text)
-    , _dvForce      :: !(Maybe Bool)
-    , _dvDevice     :: !(Maybe Text)
-    , _dvDryRun     :: !(Maybe Bool)
-    , _dvVolumeId   :: !Text
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data DetachVolume = DetachVolume'{_dvInstanceId ::
+                                  !(Maybe Text),
+                                  _dvForce :: !(Maybe Bool),
+                                  _dvDevice :: !(Maybe Text),
+                                  _dvDryRun :: !(Maybe Bool),
+                                  _dvVolumeId :: !Text}
+                      deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'DetachVolume' with the minimum fields required to make a request.
 --
@@ -84,15 +80,10 @@ data DetachVolume =
 detachVolume
     :: Text -- ^ 'dvVolumeId'
     -> DetachVolume
-detachVolume pVolumeId_ =
-  DetachVolume'
-    { _dvInstanceId = Nothing
-    , _dvForce = Nothing
-    , _dvDevice = Nothing
-    , _dvDryRun = Nothing
-    , _dvVolumeId = pVolumeId_
-    }
-
+detachVolume pVolumeId_
+  = DetachVolume'{_dvInstanceId = Nothing,
+                  _dvForce = Nothing, _dvDevice = Nothing,
+                  _dvDryRun = Nothing, _dvVolumeId = pVolumeId_}
 
 -- | The ID of the instance. If you are detaching a Multi-Attach enabled volume, you must specify an instance ID.
 dvInstanceId :: Lens' DetachVolume (Maybe Text)

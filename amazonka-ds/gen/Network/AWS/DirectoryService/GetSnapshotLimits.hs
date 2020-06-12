@@ -38,7 +38,6 @@ module Network.AWS.DirectoryService.GetSnapshotLimits
     ) where
 
 import Network.AWS.DirectoryService.Types
-import Network.AWS.DirectoryService.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.Request
@@ -49,12 +48,9 @@ import Network.AWS.Response
 --
 --
 -- /See:/ 'getSnapshotLimits' smart constructor.
-newtype GetSnapshotLimits =
-  GetSnapshotLimits'
-    { _gslDirectoryId :: Text
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+newtype GetSnapshotLimits = GetSnapshotLimits'{_gslDirectoryId
+                                               :: Text}
+                              deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'GetSnapshotLimits' with the minimum fields required to make a request.
 --
@@ -64,9 +60,8 @@ newtype GetSnapshotLimits =
 getSnapshotLimits
     :: Text -- ^ 'gslDirectoryId'
     -> GetSnapshotLimits
-getSnapshotLimits pDirectoryId_ =
-  GetSnapshotLimits' {_gslDirectoryId = pDirectoryId_}
-
+getSnapshotLimits pDirectoryId_
+  = GetSnapshotLimits'{_gslDirectoryId = pDirectoryId_}
 
 -- | Contains the identifier of the directory to obtain the limits for.
 gslDirectoryId :: Lens' GetSnapshotLimits Text
@@ -111,13 +106,14 @@ instance ToQuery GetSnapshotLimits where
 --
 --
 -- /See:/ 'getSnapshotLimitsResponse' smart constructor.
-data GetSnapshotLimitsResponse =
-  GetSnapshotLimitsResponse'
-    { _gslrsSnapshotLimits :: !(Maybe SnapshotLimits)
-    , _gslrsResponseStatus :: !Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data GetSnapshotLimitsResponse = GetSnapshotLimitsResponse'{_gslrsSnapshotLimits
+                                                            ::
+                                                            !(Maybe
+                                                                SnapshotLimits),
+                                                            _gslrsResponseStatus
+                                                            :: !Int}
+                                   deriving (Eq, Read, Show, Data, Typeable,
+                                             Generic)
 
 -- | Creates a value of 'GetSnapshotLimitsResponse' with the minimum fields required to make a request.
 --
@@ -129,10 +125,10 @@ data GetSnapshotLimitsResponse =
 getSnapshotLimitsResponse
     :: Int -- ^ 'gslrsResponseStatus'
     -> GetSnapshotLimitsResponse
-getSnapshotLimitsResponse pResponseStatus_ =
-  GetSnapshotLimitsResponse'
-    {_gslrsSnapshotLimits = Nothing, _gslrsResponseStatus = pResponseStatus_}
-
+getSnapshotLimitsResponse pResponseStatus_
+  = GetSnapshotLimitsResponse'{_gslrsSnapshotLimits =
+                                 Nothing,
+                               _gslrsResponseStatus = pResponseStatus_}
 
 -- | A 'SnapshotLimits' object that contains the manual snapshot limits for the specified directory.
 gslrsSnapshotLimits :: Lens' GetSnapshotLimitsResponse (Maybe SnapshotLimits)

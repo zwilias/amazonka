@@ -38,19 +38,16 @@ module Network.AWS.CodeCommit.GetApprovalRuleTemplate
     ) where
 
 import Network.AWS.CodeCommit.Types
-import Network.AWS.CodeCommit.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 
 -- | /See:/ 'getApprovalRuleTemplate' smart constructor.
-newtype GetApprovalRuleTemplate =
-  GetApprovalRuleTemplate'
-    { _gartApprovalRuleTemplateName :: Text
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+newtype GetApprovalRuleTemplate = GetApprovalRuleTemplate'{_gartApprovalRuleTemplateName
+                                                           :: Text}
+                                    deriving (Eq, Read, Show, Data, Typeable,
+                                              Generic)
 
 -- | Creates a value of 'GetApprovalRuleTemplate' with the minimum fields required to make a request.
 --
@@ -60,10 +57,9 @@ newtype GetApprovalRuleTemplate =
 getApprovalRuleTemplate
     :: Text -- ^ 'gartApprovalRuleTemplateName'
     -> GetApprovalRuleTemplate
-getApprovalRuleTemplate pApprovalRuleTemplateName_ =
-  GetApprovalRuleTemplate'
-    {_gartApprovalRuleTemplateName = pApprovalRuleTemplateName_}
-
+getApprovalRuleTemplate pApprovalRuleTemplateName_
+  = GetApprovalRuleTemplate'{_gartApprovalRuleTemplateName
+                               = pApprovalRuleTemplateName_}
 
 -- | The name of the approval rule template for which you want to get information.
 gartApprovalRuleTemplateName :: Lens' GetApprovalRuleTemplate Text
@@ -109,13 +105,13 @@ instance ToQuery GetApprovalRuleTemplate where
         toQuery = const mempty
 
 -- | /See:/ 'getApprovalRuleTemplateResponse' smart constructor.
-data GetApprovalRuleTemplateResponse =
-  GetApprovalRuleTemplateResponse'
-    { _gartrsResponseStatus       :: !Int
-    , _gartrsApprovalRuleTemplate :: !ApprovalRuleTemplate
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data GetApprovalRuleTemplateResponse = GetApprovalRuleTemplateResponse'{_gartrsResponseStatus
+                                                                        :: !Int,
+                                                                        _gartrsApprovalRuleTemplate
+                                                                        ::
+                                                                        !ApprovalRuleTemplate}
+                                         deriving (Eq, Read, Show, Data,
+                                                   Typeable, Generic)
 
 -- | Creates a value of 'GetApprovalRuleTemplateResponse' with the minimum fields required to make a request.
 --
@@ -128,12 +124,12 @@ getApprovalRuleTemplateResponse
     :: Int -- ^ 'gartrsResponseStatus'
     -> ApprovalRuleTemplate -- ^ 'gartrsApprovalRuleTemplate'
     -> GetApprovalRuleTemplateResponse
-getApprovalRuleTemplateResponse pResponseStatus_ pApprovalRuleTemplate_ =
-  GetApprovalRuleTemplateResponse'
-    { _gartrsResponseStatus = pResponseStatus_
-    , _gartrsApprovalRuleTemplate = pApprovalRuleTemplate_
-    }
-
+getApprovalRuleTemplateResponse pResponseStatus_
+  pApprovalRuleTemplate_
+  = GetApprovalRuleTemplateResponse'{_gartrsResponseStatus
+                                       = pResponseStatus_,
+                                     _gartrsApprovalRuleTemplate =
+                                       pApprovalRuleTemplate_}
 
 -- | -- | The response status code.
 gartrsResponseStatus :: Lens' GetApprovalRuleTemplateResponse Int

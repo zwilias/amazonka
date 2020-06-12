@@ -44,7 +44,6 @@ module Network.AWS.EC2.PurchaseScheduledInstances
     ) where
 
 import Network.AWS.EC2.Types
-import Network.AWS.EC2.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.Request
@@ -55,14 +54,16 @@ import Network.AWS.Response
 --
 --
 -- /See:/ 'purchaseScheduledInstances' smart constructor.
-data PurchaseScheduledInstances =
-  PurchaseScheduledInstances'
-    { _psiClientToken      :: !(Maybe Text)
-    , _psiDryRun           :: !(Maybe Bool)
-    , _psiPurchaseRequests :: !(List1 PurchaseRequest)
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data PurchaseScheduledInstances = PurchaseScheduledInstances'{_psiClientToken
+                                                              :: !(Maybe Text),
+                                                              _psiDryRun ::
+                                                              !(Maybe Bool),
+                                                              _psiPurchaseRequests
+                                                              ::
+                                                              !(List1
+                                                                  PurchaseRequest)}
+                                    deriving (Eq, Read, Show, Data, Typeable,
+                                              Generic)
 
 -- | Creates a value of 'PurchaseScheduledInstances' with the minimum fields required to make a request.
 --
@@ -76,13 +77,12 @@ data PurchaseScheduledInstances =
 purchaseScheduledInstances
     :: NonEmpty PurchaseRequest -- ^ 'psiPurchaseRequests'
     -> PurchaseScheduledInstances
-purchaseScheduledInstances pPurchaseRequests_ =
-  PurchaseScheduledInstances'
-    { _psiClientToken = Nothing
-    , _psiDryRun = Nothing
-    , _psiPurchaseRequests = _List1 # pPurchaseRequests_
-    }
-
+purchaseScheduledInstances pPurchaseRequests_
+  = PurchaseScheduledInstances'{_psiClientToken =
+                                  Nothing,
+                                _psiDryRun = Nothing,
+                                _psiPurchaseRequests =
+                                  _List1 # pPurchaseRequests_}
 
 -- | Unique, case-sensitive identifier that ensures the idempotency of the request. For more information, see <https://docs.aws.amazon.com/AWSEC2/latest/APIReference/Run_Instance_Idempotency.html Ensuring Idempotency> .
 psiClientToken :: Lens' PurchaseScheduledInstances (Maybe Text)
@@ -133,13 +133,15 @@ instance ToQuery PurchaseScheduledInstances where
 --
 --
 -- /See:/ 'purchaseScheduledInstancesResponse' smart constructor.
-data PurchaseScheduledInstancesResponse =
-  PurchaseScheduledInstancesResponse'
-    { _psirsScheduledInstanceSet :: !(Maybe [ScheduledInstance])
-    , _psirsResponseStatus       :: !Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data PurchaseScheduledInstancesResponse = PurchaseScheduledInstancesResponse'{_psirsScheduledInstanceSet
+                                                                              ::
+                                                                              !(Maybe
+                                                                                  [ScheduledInstance]),
+                                                                              _psirsResponseStatus
+                                                                              ::
+                                                                              !Int}
+                                            deriving (Eq, Read, Show, Data,
+                                                      Typeable, Generic)
 
 -- | Creates a value of 'PurchaseScheduledInstancesResponse' with the minimum fields required to make a request.
 --
@@ -151,12 +153,10 @@ data PurchaseScheduledInstancesResponse =
 purchaseScheduledInstancesResponse
     :: Int -- ^ 'psirsResponseStatus'
     -> PurchaseScheduledInstancesResponse
-purchaseScheduledInstancesResponse pResponseStatus_ =
-  PurchaseScheduledInstancesResponse'
-    { _psirsScheduledInstanceSet = Nothing
-    , _psirsResponseStatus = pResponseStatus_
-    }
-
+purchaseScheduledInstancesResponse pResponseStatus_
+  = PurchaseScheduledInstancesResponse'{_psirsScheduledInstanceSet
+                                          = Nothing,
+                                        _psirsResponseStatus = pResponseStatus_}
 
 -- | Information about the Scheduled Instances.
 psirsScheduledInstanceSet :: Lens' PurchaseScheduledInstancesResponse [ScheduledInstance]

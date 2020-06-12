@@ -36,20 +36,16 @@ module Network.AWS.CloudWatchEvents.RemovePermission
     ) where
 
 import Network.AWS.CloudWatchEvents.Types
-import Network.AWS.CloudWatchEvents.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 
 -- | /See:/ 'removePermission' smart constructor.
-data RemovePermission =
-  RemovePermission'
-    { _rpEventBusName :: !(Maybe Text)
-    , _rpStatementId  :: !Text
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data RemovePermission = RemovePermission'{_rpEventBusName
+                                          :: !(Maybe Text),
+                                          _rpStatementId :: !Text}
+                          deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'RemovePermission' with the minimum fields required to make a request.
 --
@@ -61,9 +57,9 @@ data RemovePermission =
 removePermission
     :: Text -- ^ 'rpStatementId'
     -> RemovePermission
-removePermission pStatementId_ =
-  RemovePermission' {_rpEventBusName = Nothing, _rpStatementId = pStatementId_}
-
+removePermission pStatementId_
+  = RemovePermission'{_rpEventBusName = Nothing,
+                      _rpStatementId = pStatementId_}
 
 -- | The name of the event bus to revoke permissions for. If you omit this, the default event bus is used.
 rpEventBusName :: Lens' RemovePermission (Maybe Text)
@@ -105,16 +101,14 @@ instance ToQuery RemovePermission where
         toQuery = const mempty
 
 -- | /See:/ 'removePermissionResponse' smart constructor.
-data RemovePermissionResponse =
-  RemovePermissionResponse'
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data RemovePermissionResponse = RemovePermissionResponse'
+                                  deriving (Eq, Read, Show, Data, Typeable,
+                                            Generic)
 
 -- | Creates a value of 'RemovePermissionResponse' with the minimum fields required to make a request.
 --
 removePermissionResponse
     :: RemovePermissionResponse
 removePermissionResponse = RemovePermissionResponse'
-
 
 instance NFData RemovePermissionResponse where

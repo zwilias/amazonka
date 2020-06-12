@@ -38,19 +38,17 @@ module Network.AWS.ELBv2.DescribeLoadBalancerAttributes
     ) where
 
 import Network.AWS.ELBv2.Types
-import Network.AWS.ELBv2.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 
 -- | /See:/ 'describeLoadBalancerAttributes' smart constructor.
-newtype DescribeLoadBalancerAttributes =
-  DescribeLoadBalancerAttributes'
-    { _dlbaLoadBalancerARN :: Text
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+newtype DescribeLoadBalancerAttributes = DescribeLoadBalancerAttributes'{_dlbaLoadBalancerARN
+                                                                         ::
+                                                                         Text}
+                                           deriving (Eq, Read, Show, Data,
+                                                     Typeable, Generic)
 
 -- | Creates a value of 'DescribeLoadBalancerAttributes' with the minimum fields required to make a request.
 --
@@ -60,9 +58,9 @@ newtype DescribeLoadBalancerAttributes =
 describeLoadBalancerAttributes
     :: Text -- ^ 'dlbaLoadBalancerARN'
     -> DescribeLoadBalancerAttributes
-describeLoadBalancerAttributes pLoadBalancerARN_ =
-  DescribeLoadBalancerAttributes' {_dlbaLoadBalancerARN = pLoadBalancerARN_}
-
+describeLoadBalancerAttributes pLoadBalancerARN_
+  = DescribeLoadBalancerAttributes'{_dlbaLoadBalancerARN
+                                      = pLoadBalancerARN_}
 
 -- | The Amazon Resource Name (ARN) of the load balancer.
 dlbaLoadBalancerARN :: Lens' DescribeLoadBalancerAttributes Text
@@ -103,13 +101,15 @@ instance ToQuery DescribeLoadBalancerAttributes where
                "LoadBalancerArn" =: _dlbaLoadBalancerARN]
 
 -- | /See:/ 'describeLoadBalancerAttributesResponse' smart constructor.
-data DescribeLoadBalancerAttributesResponse =
-  DescribeLoadBalancerAttributesResponse'
-    { _dlbarsAttributes     :: !(Maybe [LoadBalancerAttribute])
-    , _dlbarsResponseStatus :: !Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data DescribeLoadBalancerAttributesResponse = DescribeLoadBalancerAttributesResponse'{_dlbarsAttributes
+                                                                                      ::
+                                                                                      !(Maybe
+                                                                                          [LoadBalancerAttribute]),
+                                                                                      _dlbarsResponseStatus
+                                                                                      ::
+                                                                                      !Int}
+                                                deriving (Eq, Read, Show, Data,
+                                                          Typeable, Generic)
 
 -- | Creates a value of 'DescribeLoadBalancerAttributesResponse' with the minimum fields required to make a request.
 --
@@ -121,10 +121,12 @@ data DescribeLoadBalancerAttributesResponse =
 describeLoadBalancerAttributesResponse
     :: Int -- ^ 'dlbarsResponseStatus'
     -> DescribeLoadBalancerAttributesResponse
-describeLoadBalancerAttributesResponse pResponseStatus_ =
-  DescribeLoadBalancerAttributesResponse'
-    {_dlbarsAttributes = Nothing, _dlbarsResponseStatus = pResponseStatus_}
-
+describeLoadBalancerAttributesResponse
+  pResponseStatus_
+  = DescribeLoadBalancerAttributesResponse'{_dlbarsAttributes
+                                              = Nothing,
+                                            _dlbarsResponseStatus =
+                                              pResponseStatus_}
 
 -- | Information about the load balancer attributes.
 dlbarsAttributes :: Lens' DescribeLoadBalancerAttributesResponse [LoadBalancerAttribute]

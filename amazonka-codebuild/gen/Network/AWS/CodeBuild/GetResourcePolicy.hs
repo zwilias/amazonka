@@ -18,7 +18,7 @@
 -- Stability   : auto-generated
 -- Portability : non-portable (GHC extensions)
 --
--- Gets a resource policy that is identified by its resource ARN.
+-- Gets a resource policy that is identified by its resource ARN. 
 --
 --
 module Network.AWS.CodeBuild.GetResourcePolicy
@@ -38,33 +38,28 @@ module Network.AWS.CodeBuild.GetResourcePolicy
     ) where
 
 import Network.AWS.CodeBuild.Types
-import Network.AWS.CodeBuild.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 
 -- | /See:/ 'getResourcePolicy' smart constructor.
-newtype GetResourcePolicy =
-  GetResourcePolicy'
-    { _grpResourceARN :: Text
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+newtype GetResourcePolicy = GetResourcePolicy'{_grpResourceARN
+                                               :: Text}
+                              deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'GetResourcePolicy' with the minimum fields required to make a request.
 --
 -- Use one of the following lenses to modify other fields as desired:
 --
--- * 'grpResourceARN' - The ARN of the resource that is associated with the resource policy.
+-- * 'grpResourceARN' - The ARN of the resource that is associated with the resource policy. 
 getResourcePolicy
     :: Text -- ^ 'grpResourceARN'
     -> GetResourcePolicy
-getResourcePolicy pResourceARN_ =
-  GetResourcePolicy' {_grpResourceARN = pResourceARN_}
+getResourcePolicy pResourceARN_
+  = GetResourcePolicy'{_grpResourceARN = pResourceARN_}
 
-
--- | The ARN of the resource that is associated with the resource policy.
+-- | The ARN of the resource that is associated with the resource policy. 
 grpResourceARN :: Lens' GetResourcePolicy Text
 grpResourceARN = lens _grpResourceARN (\ s a -> s{_grpResourceARN = a})
 
@@ -103,30 +98,28 @@ instance ToQuery GetResourcePolicy where
         toQuery = const mempty
 
 -- | /See:/ 'getResourcePolicyResponse' smart constructor.
-data GetResourcePolicyResponse =
-  GetResourcePolicyResponse'
-    { _grprsPolicy         :: !(Maybe Text)
-    , _grprsResponseStatus :: !Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data GetResourcePolicyResponse = GetResourcePolicyResponse'{_grprsPolicy
+                                                            :: !(Maybe Text),
+                                                            _grprsResponseStatus
+                                                            :: !Int}
+                                   deriving (Eq, Read, Show, Data, Typeable,
+                                             Generic)
 
 -- | Creates a value of 'GetResourcePolicyResponse' with the minimum fields required to make a request.
 --
 -- Use one of the following lenses to modify other fields as desired:
 --
--- * 'grprsPolicy' - The resource policy for the resource identified by the input ARN parameter.
+-- * 'grprsPolicy' - The resource policy for the resource identified by the input ARN parameter. 
 --
 -- * 'grprsResponseStatus' - -- | The response status code.
 getResourcePolicyResponse
     :: Int -- ^ 'grprsResponseStatus'
     -> GetResourcePolicyResponse
-getResourcePolicyResponse pResponseStatus_ =
-  GetResourcePolicyResponse'
-    {_grprsPolicy = Nothing, _grprsResponseStatus = pResponseStatus_}
+getResourcePolicyResponse pResponseStatus_
+  = GetResourcePolicyResponse'{_grprsPolicy = Nothing,
+                               _grprsResponseStatus = pResponseStatus_}
 
-
--- | The resource policy for the resource identified by the input ARN parameter.
+-- | The resource policy for the resource identified by the input ARN parameter. 
 grprsPolicy :: Lens' GetResourcePolicyResponse (Maybe Text)
 grprsPolicy = lens _grprsPolicy (\ s a -> s{_grprsPolicy = a})
 

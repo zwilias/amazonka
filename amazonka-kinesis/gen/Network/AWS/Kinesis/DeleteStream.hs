@@ -45,7 +45,6 @@ module Network.AWS.Kinesis.DeleteStream
     ) where
 
 import Network.AWS.Kinesis.Types
-import Network.AWS.Kinesis.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.Request
@@ -56,12 +55,9 @@ import Network.AWS.Response
 --
 --
 -- /See:/ 'deleteStream' smart constructor.
-newtype DeleteStream =
-  DeleteStream'
-    { _dsStreamName :: Text
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+newtype DeleteStream = DeleteStream'{_dsStreamName ::
+                                     Text}
+                         deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'DeleteStream' with the minimum fields required to make a request.
 --
@@ -71,8 +67,8 @@ newtype DeleteStream =
 deleteStream
     :: Text -- ^ 'dsStreamName'
     -> DeleteStream
-deleteStream pStreamName_ = DeleteStream' {_dsStreamName = pStreamName_}
-
+deleteStream pStreamName_
+  = DeleteStream'{_dsStreamName = pStreamName_}
 
 -- | The name of the stream to delete.
 dsStreamName :: Lens' DeleteStream Text
@@ -108,16 +104,13 @@ instance ToQuery DeleteStream where
         toQuery = const mempty
 
 -- | /See:/ 'deleteStreamResponse' smart constructor.
-data DeleteStreamResponse =
-  DeleteStreamResponse'
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data DeleteStreamResponse = DeleteStreamResponse'
+                              deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'DeleteStreamResponse' with the minimum fields required to make a request.
 --
 deleteStreamResponse
     :: DeleteStreamResponse
 deleteStreamResponse = DeleteStreamResponse'
-
 
 instance NFData DeleteStreamResponse where

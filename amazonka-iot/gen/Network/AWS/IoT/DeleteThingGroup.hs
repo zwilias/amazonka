@@ -38,20 +38,16 @@ module Network.AWS.IoT.DeleteThingGroup
     ) where
 
 import Network.AWS.IoT.Types
-import Network.AWS.IoT.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 
 -- | /See:/ 'deleteThingGroup' smart constructor.
-data DeleteThingGroup =
-  DeleteThingGroup'
-    { _dExpectedVersion :: !(Maybe Integer)
-    , _dThingGroupName  :: !Text
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data DeleteThingGroup = DeleteThingGroup'{_dExpectedVersion
+                                          :: !(Maybe Integer),
+                                          _dThingGroupName :: !Text}
+                          deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'DeleteThingGroup' with the minimum fields required to make a request.
 --
@@ -63,10 +59,9 @@ data DeleteThingGroup =
 deleteThingGroup
     :: Text -- ^ 'dThingGroupName'
     -> DeleteThingGroup
-deleteThingGroup pThingGroupName_ =
-  DeleteThingGroup'
-    {_dExpectedVersion = Nothing, _dThingGroupName = pThingGroupName_}
-
+deleteThingGroup pThingGroupName_
+  = DeleteThingGroup'{_dExpectedVersion = Nothing,
+                      _dThingGroupName = pThingGroupName_}
 
 -- | The expected version of the thing group to delete.
 dExpectedVersion :: Lens' DeleteThingGroup (Maybe Integer)
@@ -100,12 +95,10 @@ instance ToQuery DeleteThingGroup where
           = mconcat ["expectedVersion" =: _dExpectedVersion]
 
 -- | /See:/ 'deleteThingGroupResponse' smart constructor.
-newtype DeleteThingGroupResponse =
-  DeleteThingGroupResponse'
-    { _dtgtrsResponseStatus :: Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+newtype DeleteThingGroupResponse = DeleteThingGroupResponse'{_dtgtrsResponseStatus
+                                                             :: Int}
+                                     deriving (Eq, Read, Show, Data, Typeable,
+                                               Generic)
 
 -- | Creates a value of 'DeleteThingGroupResponse' with the minimum fields required to make a request.
 --
@@ -115,9 +108,9 @@ newtype DeleteThingGroupResponse =
 deleteThingGroupResponse
     :: Int -- ^ 'dtgtrsResponseStatus'
     -> DeleteThingGroupResponse
-deleteThingGroupResponse pResponseStatus_ =
-  DeleteThingGroupResponse' {_dtgtrsResponseStatus = pResponseStatus_}
-
+deleteThingGroupResponse pResponseStatus_
+  = DeleteThingGroupResponse'{_dtgtrsResponseStatus =
+                                pResponseStatus_}
 
 -- | -- | The response status code.
 dtgtrsResponseStatus :: Lens' DeleteThingGroupResponse Int

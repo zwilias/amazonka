@@ -45,17 +45,14 @@ import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 import Network.AWS.WorkDocs.Types
-import Network.AWS.WorkDocs.Types.Product
 
 -- | /See:/ 'describeRootFolders' smart constructor.
-data DescribeRootFolders =
-  DescribeRootFolders'
-    { _drfMarker              :: !(Maybe Text)
-    , _drfLimit               :: !(Maybe Nat)
-    , _drfAuthenticationToken :: !(Sensitive Text)
-    }
-  deriving (Eq, Show, Data, Typeable, Generic)
-
+data DescribeRootFolders = DescribeRootFolders'{_drfMarker
+                                                :: !(Maybe Text),
+                                                _drfLimit :: !(Maybe Nat),
+                                                _drfAuthenticationToken ::
+                                                !(Sensitive Text)}
+                             deriving (Eq, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'DescribeRootFolders' with the minimum fields required to make a request.
 --
@@ -69,13 +66,11 @@ data DescribeRootFolders =
 describeRootFolders
     :: Text -- ^ 'drfAuthenticationToken'
     -> DescribeRootFolders
-describeRootFolders pAuthenticationToken_ =
-  DescribeRootFolders'
-    { _drfMarker = Nothing
-    , _drfLimit = Nothing
-    , _drfAuthenticationToken = _Sensitive # pAuthenticationToken_
-    }
-
+describeRootFolders pAuthenticationToken_
+  = DescribeRootFolders'{_drfMarker = Nothing,
+                         _drfLimit = Nothing,
+                         _drfAuthenticationToken =
+                           _Sensitive # pAuthenticationToken_}
 
 -- | The marker for the next set of results. (You received this marker from a previous call.)
 drfMarker :: Lens' DescribeRootFolders (Maybe Text)
@@ -120,14 +115,16 @@ instance ToQuery DescribeRootFolders where
               ["marker" =: _drfMarker, "limit" =: _drfLimit]
 
 -- | /See:/ 'describeRootFoldersResponse' smart constructor.
-data DescribeRootFoldersResponse =
-  DescribeRootFoldersResponse'
-    { _drfrsFolders        :: !(Maybe [FolderMetadata])
-    , _drfrsMarker         :: !(Maybe Text)
-    , _drfrsResponseStatus :: !Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data DescribeRootFoldersResponse = DescribeRootFoldersResponse'{_drfrsFolders
+                                                                ::
+                                                                !(Maybe
+                                                                    [FolderMetadata]),
+                                                                _drfrsMarker ::
+                                                                !(Maybe Text),
+                                                                _drfrsResponseStatus
+                                                                :: !Int}
+                                     deriving (Eq, Read, Show, Data, Typeable,
+                                               Generic)
 
 -- | Creates a value of 'DescribeRootFoldersResponse' with the minimum fields required to make a request.
 --
@@ -141,13 +138,11 @@ data DescribeRootFoldersResponse =
 describeRootFoldersResponse
     :: Int -- ^ 'drfrsResponseStatus'
     -> DescribeRootFoldersResponse
-describeRootFoldersResponse pResponseStatus_ =
-  DescribeRootFoldersResponse'
-    { _drfrsFolders = Nothing
-    , _drfrsMarker = Nothing
-    , _drfrsResponseStatus = pResponseStatus_
-    }
-
+describeRootFoldersResponse pResponseStatus_
+  = DescribeRootFoldersResponse'{_drfrsFolders =
+                                   Nothing,
+                                 _drfrsMarker = Nothing,
+                                 _drfrsResponseStatus = pResponseStatus_}
 
 -- | The user's special folders.
 drfrsFolders :: Lens' DescribeRootFoldersResponse [FolderMetadata]

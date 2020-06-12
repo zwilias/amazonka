@@ -11,15 +11,15 @@
 -- Stability   : auto-generated
 -- Portability : non-portable (GHC extensions)
 --
--- __AWS Application Discovery Service__
+-- __AWS Application Discovery Service__ 
 --
 -- AWS Application Discovery Service helps you plan application migration projects by automatically identifying servers, virtual machines (VMs), software, and software dependencies running in your on-premises data centers. Application Discovery Service also collects application performance data, which can help you assess the outcome of your migration. The data collected by Application Discovery Service is securely retained in an AWS-hosted and managed database in the cloud. You can export the data as a CSV or XML file into your preferred visualization tool or cloud-migration solution to plan your migration. For more information, see <http://aws.amazon.com/application-discovery/faqs/ AWS Application Discovery Service FAQ> .
 --
 -- Application Discovery Service offers two modes of operation:
 --
---     * __Agentless discovery__ mode is recommended for environments that use VMware vCenter Server. This mode doesn't require you to install an agent on each host. Agentless discovery gathers server information regardless of the operating systems, which minimizes the time required for initial on-premises infrastructure assessment. Agentless discovery doesn't collect information about software and software dependencies. It also doesn't work in non-VMware environments.
+--     * __Agentless discovery__ mode is recommended for environments that use VMware vCenter Server. This mode doesn't require you to install an agent on each host. Agentless discovery gathers server information regardless of the operating systems, which minimizes the time required for initial on-premises infrastructure assessment. Agentless discovery doesn't collect information about software and software dependencies. It also doesn't work in non-VMware environments. 
 --
---     * __Agent-based discovery__ mode collects a richer set of data than agentless discovery by using the AWS Application Discovery Agent, which you install on one or more hosts in your data center. The agent captures infrastructure and application information, including an inventory of installed software applications, system and process performance, resource utilization, and network dependencies between workloads. The information collected by agents is secured at rest and in transit to the Application Discovery Service database in the cloud.
+--     * __Agent-based discovery__ mode collects a richer set of data than agentless discovery by using the AWS Application Discovery Agent, which you install on one or more hosts in your data center. The agent captures infrastructure and application information, including an inventory of installed software applications, system and process performance, resource utilization, and network dependencies between workloads. The information collected by agents is secured at rest and in transit to the Application Discovery Service database in the cloud. 
 --
 --
 --
@@ -29,7 +29,7 @@
 --
 -- /Important:/ Application Discovery Service doesn't gather sensitive information. All data is handled according to the <http://aws.amazon.com/privacy/ AWS Privacy Policy> . You can operate Application Discovery Service offline to inspect collected data before it is shared with the service.
 --
--- Your AWS account must be granted access to Application Discovery Service, a process called /whitelisting/ . This is true for AWS partners and customers alike. To request access, <http://aws.amazon.com/application-discovery/ sign up for Application Discovery Service> .
+-- Your AWS account must be granted access to Application Discovery Service, a process called /whitelisting/ . This is true for AWS partners and customers alike. To request access, <http://aws.amazon.com/application-discovery/ sign up for Application Discovery Service> . 
 --
 -- This API reference provides descriptions, syntax, and usage examples for each of the actions and data types for Application Discovery Service. The topic for each action shows the API request parameters and the response. Alternatively, you can use one of the AWS SDKs to access an API that is tailored to the programming language or platform that you're using. For more information, see <http://aws.amazon.com/tools/#SDKs AWS SDKs> .
 --
@@ -67,55 +67,55 @@ module Network.AWS.Discovery
     -- * Operations
     -- $operations
 
-    -- ** DescribeTags
+    -- ** DescribeTags 
     , module Network.AWS.Discovery.DescribeTags
 
-    -- ** StopDataCollectionByAgentIds
+    -- ** StopDataCollectionByAgentIds 
     , module Network.AWS.Discovery.StopDataCollectionByAgentIds
 
-    -- ** CreateTags
+    -- ** CreateTags 
     , module Network.AWS.Discovery.CreateTags
 
-    -- ** DeleteTags
+    -- ** DeleteTags 
     , module Network.AWS.Discovery.DeleteTags
 
-    -- ** DeleteApplications
+    -- ** DeleteApplications 
     , module Network.AWS.Discovery.DeleteApplications
 
-    -- ** UpdateApplication
+    -- ** UpdateApplication 
     , module Network.AWS.Discovery.UpdateApplication
 
-    -- ** DescribeConfigurations
+    -- ** DescribeConfigurations 
     , module Network.AWS.Discovery.DescribeConfigurations
 
-    -- ** CreateApplication
+    -- ** CreateApplication 
     , module Network.AWS.Discovery.CreateApplication
 
-    -- ** ListConfigurations
+    -- ** ListConfigurations 
     , module Network.AWS.Discovery.ListConfigurations
 
-    -- ** DescribeAgents
+    -- ** DescribeAgents 
     , module Network.AWS.Discovery.DescribeAgents
 
-    -- ** DescribeExportTasks
+    -- ** DescribeExportTasks 
     , module Network.AWS.Discovery.DescribeExportTasks
 
-    -- ** StartDataCollectionByAgentIds
+    -- ** StartDataCollectionByAgentIds 
     , module Network.AWS.Discovery.StartDataCollectionByAgentIds
 
-    -- ** GetDiscoverySummary
+    -- ** GetDiscoverySummary 
     , module Network.AWS.Discovery.GetDiscoverySummary
 
-    -- ** DisassociateConfigurationItemsFromApplication
+    -- ** DisassociateConfigurationItemsFromApplication 
     , module Network.AWS.Discovery.DisassociateConfigurationItemsFromApplication
 
-    -- ** AssociateConfigurationItemsToApplication
+    -- ** AssociateConfigurationItemsToApplication 
     , module Network.AWS.Discovery.AssociateConfigurationItemsToApplication
 
-    -- ** ListServerNeighbors
+    -- ** ListServerNeighbors 
     , module Network.AWS.Discovery.ListServerNeighbors
 
-    -- ** StartExportTask
+    -- ** StartExportTask 
     , module Network.AWS.Discovery.StartExportTask
 
     -- * Types

@@ -39,20 +39,18 @@ module Network.AWS.EC2.DeleteVPCPeeringConnection
     ) where
 
 import Network.AWS.EC2.Types
-import Network.AWS.EC2.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 
 -- | /See:/ 'deleteVPCPeeringConnection' smart constructor.
-data DeleteVPCPeeringConnection =
-  DeleteVPCPeeringConnection'
-    { _dvpcDryRun                 :: !(Maybe Bool)
-    , _dvpcVPCPeeringConnectionId :: !Text
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data DeleteVPCPeeringConnection = DeleteVPCPeeringConnection'{_dvpcDryRun
+                                                              :: !(Maybe Bool),
+                                                              _dvpcVPCPeeringConnectionId
+                                                              :: !Text}
+                                    deriving (Eq, Read, Show, Data, Typeable,
+                                              Generic)
 
 -- | Creates a value of 'DeleteVPCPeeringConnection' with the minimum fields required to make a request.
 --
@@ -64,12 +62,10 @@ data DeleteVPCPeeringConnection =
 deleteVPCPeeringConnection
     :: Text -- ^ 'dvpcVPCPeeringConnectionId'
     -> DeleteVPCPeeringConnection
-deleteVPCPeeringConnection pVPCPeeringConnectionId_ =
-  DeleteVPCPeeringConnection'
-    { _dvpcDryRun = Nothing
-    , _dvpcVPCPeeringConnectionId = pVPCPeeringConnectionId_
-    }
-
+deleteVPCPeeringConnection pVPCPeeringConnectionId_
+  = DeleteVPCPeeringConnection'{_dvpcDryRun = Nothing,
+                                _dvpcVPCPeeringConnectionId =
+                                  pVPCPeeringConnectionId_}
 
 -- | Checks whether you have the required permissions for the action, without actually making the request, and provides an error response. If you have the required permissions, the error response is @DryRunOperation@ . Otherwise, it is @UnauthorizedOperation@ .
 dvpcDryRun :: Lens' DeleteVPCPeeringConnection (Maybe Bool)
@@ -110,13 +106,15 @@ instance ToQuery DeleteVPCPeeringConnection where
                  _dvpcVPCPeeringConnectionId]
 
 -- | /See:/ 'deleteVPCPeeringConnectionResponse' smart constructor.
-data DeleteVPCPeeringConnectionResponse =
-  DeleteVPCPeeringConnectionResponse'
-    { _dvpcrsReturn         :: !(Maybe Bool)
-    , _dvpcrsResponseStatus :: !Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data DeleteVPCPeeringConnectionResponse = DeleteVPCPeeringConnectionResponse'{_dvpcrsReturn
+                                                                              ::
+                                                                              !(Maybe
+                                                                                  Bool),
+                                                                              _dvpcrsResponseStatus
+                                                                              ::
+                                                                              !Int}
+                                            deriving (Eq, Read, Show, Data,
+                                                      Typeable, Generic)
 
 -- | Creates a value of 'DeleteVPCPeeringConnectionResponse' with the minimum fields required to make a request.
 --
@@ -128,10 +126,11 @@ data DeleteVPCPeeringConnectionResponse =
 deleteVPCPeeringConnectionResponse
     :: Int -- ^ 'dvpcrsResponseStatus'
     -> DeleteVPCPeeringConnectionResponse
-deleteVPCPeeringConnectionResponse pResponseStatus_ =
-  DeleteVPCPeeringConnectionResponse'
-    {_dvpcrsReturn = Nothing, _dvpcrsResponseStatus = pResponseStatus_}
-
+deleteVPCPeeringConnectionResponse pResponseStatus_
+  = DeleteVPCPeeringConnectionResponse'{_dvpcrsReturn =
+                                          Nothing,
+                                        _dvpcrsResponseStatus =
+                                          pResponseStatus_}
 
 -- | Returns @true@ if the request succeeds; otherwise, it returns an error.
 dvpcrsReturn :: Lens' DeleteVPCPeeringConnectionResponse (Maybe Bool)

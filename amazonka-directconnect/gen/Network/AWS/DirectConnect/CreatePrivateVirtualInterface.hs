@@ -61,20 +61,19 @@ module Network.AWS.DirectConnect.CreatePrivateVirtualInterface
     ) where
 
 import Network.AWS.DirectConnect.Types
-import Network.AWS.DirectConnect.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 
 -- | /See:/ 'createPrivateVirtualInterface' smart constructor.
-data CreatePrivateVirtualInterface =
-  CreatePrivateVirtualInterface'
-    { _creConnectionId               :: !Text
-    , _creNewPrivateVirtualInterface :: !NewPrivateVirtualInterface
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data CreatePrivateVirtualInterface = CreatePrivateVirtualInterface'{_creConnectionId
+                                                                    :: !Text,
+                                                                    _creNewPrivateVirtualInterface
+                                                                    ::
+                                                                    !NewPrivateVirtualInterface}
+                                       deriving (Eq, Read, Show, Data, Typeable,
+                                                 Generic)
 
 -- | Creates a value of 'CreatePrivateVirtualInterface' with the minimum fields required to make a request.
 --
@@ -87,12 +86,12 @@ createPrivateVirtualInterface
     :: Text -- ^ 'creConnectionId'
     -> NewPrivateVirtualInterface -- ^ 'creNewPrivateVirtualInterface'
     -> CreatePrivateVirtualInterface
-createPrivateVirtualInterface pConnectionId_ pNewPrivateVirtualInterface_ =
-  CreatePrivateVirtualInterface'
-    { _creConnectionId = pConnectionId_
-    , _creNewPrivateVirtualInterface = pNewPrivateVirtualInterface_
-    }
-
+createPrivateVirtualInterface pConnectionId_
+  pNewPrivateVirtualInterface_
+  = CreatePrivateVirtualInterface'{_creConnectionId =
+                                     pConnectionId_,
+                                   _creNewPrivateVirtualInterface =
+                                     pNewPrivateVirtualInterface_}
 
 -- | The ID of the connection.
 creConnectionId :: Lens' CreatePrivateVirtualInterface Text

@@ -41,24 +41,21 @@ module Network.AWS.AutoScaling.DescribeAccountLimits
     ) where
 
 import Network.AWS.AutoScaling.Types
-import Network.AWS.AutoScaling.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 
 -- | /See:/ 'describeAccountLimits' smart constructor.
-data DescribeAccountLimits =
-  DescribeAccountLimits'
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data DescribeAccountLimits = DescribeAccountLimits'
+                               deriving (Eq, Read, Show, Data, Typeable,
+                                         Generic)
 
 -- | Creates a value of 'DescribeAccountLimits' with the minimum fields required to make a request.
 --
 describeAccountLimits
     :: DescribeAccountLimits
 describeAccountLimits = DescribeAccountLimits'
-
 
 instance AWSRequest DescribeAccountLimits where
         type Rs DescribeAccountLimits =
@@ -92,16 +89,26 @@ instance ToQuery DescribeAccountLimits where
                   "Version" =: ("2011-01-01" :: ByteString)])
 
 -- | /See:/ 'describeAccountLimitsResponse' smart constructor.
-data DescribeAccountLimitsResponse =
-  DescribeAccountLimitsResponse'
-    { _dalrsNumberOfLaunchConfigurations    :: !(Maybe Int)
-    , _dalrsNumberOfAutoScalingGroups       :: !(Maybe Int)
-    , _dalrsMaxNumberOfAutoScalingGroups    :: !(Maybe Int)
-    , _dalrsMaxNumberOfLaunchConfigurations :: !(Maybe Int)
-    , _dalrsResponseStatus                  :: !Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data DescribeAccountLimitsResponse = DescribeAccountLimitsResponse'{_dalrsNumberOfLaunchConfigurations
+                                                                    ::
+                                                                    !(Maybe
+                                                                        Int),
+                                                                    _dalrsNumberOfAutoScalingGroups
+                                                                    ::
+                                                                    !(Maybe
+                                                                        Int),
+                                                                    _dalrsMaxNumberOfAutoScalingGroups
+                                                                    ::
+                                                                    !(Maybe
+                                                                        Int),
+                                                                    _dalrsMaxNumberOfLaunchConfigurations
+                                                                    ::
+                                                                    !(Maybe
+                                                                        Int),
+                                                                    _dalrsResponseStatus
+                                                                    :: !Int}
+                                       deriving (Eq, Read, Show, Data, Typeable,
+                                                 Generic)
 
 -- | Creates a value of 'DescribeAccountLimitsResponse' with the minimum fields required to make a request.
 --
@@ -119,15 +126,14 @@ data DescribeAccountLimitsResponse =
 describeAccountLimitsResponse
     :: Int -- ^ 'dalrsResponseStatus'
     -> DescribeAccountLimitsResponse
-describeAccountLimitsResponse pResponseStatus_ =
-  DescribeAccountLimitsResponse'
-    { _dalrsNumberOfLaunchConfigurations = Nothing
-    , _dalrsNumberOfAutoScalingGroups = Nothing
-    , _dalrsMaxNumberOfAutoScalingGroups = Nothing
-    , _dalrsMaxNumberOfLaunchConfigurations = Nothing
-    , _dalrsResponseStatus = pResponseStatus_
-    }
-
+describeAccountLimitsResponse pResponseStatus_
+  = DescribeAccountLimitsResponse'{_dalrsNumberOfLaunchConfigurations
+                                     = Nothing,
+                                   _dalrsNumberOfAutoScalingGroups = Nothing,
+                                   _dalrsMaxNumberOfAutoScalingGroups = Nothing,
+                                   _dalrsMaxNumberOfLaunchConfigurations =
+                                     Nothing,
+                                   _dalrsResponseStatus = pResponseStatus_}
 
 -- | The current number of launch configurations for your AWS account.
 dalrsNumberOfLaunchConfigurations :: Lens' DescribeAccountLimitsResponse (Maybe Int)

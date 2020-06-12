@@ -49,112 +49,112 @@ module Network.AWS.AlexaBusiness
     -- ** SearchUsers (Paginated)
     , module Network.AWS.AlexaBusiness.SearchUsers
 
-    -- ** AssociateSkillGroupWithRoom
+    -- ** AssociateSkillGroupWithRoom 
     , module Network.AWS.AlexaBusiness.AssociateSkillGroupWithRoom
 
-    -- ** DeleteProfile
+    -- ** DeleteProfile 
     , module Network.AWS.AlexaBusiness.DeleteProfile
 
-    -- ** UpdateProfile
+    -- ** UpdateProfile 
     , module Network.AWS.AlexaBusiness.UpdateProfile
 
     -- ** SearchRooms (Paginated)
     , module Network.AWS.AlexaBusiness.SearchRooms
 
-    -- ** DisassociateContactFromAddressBook
+    -- ** DisassociateContactFromAddressBook 
     , module Network.AWS.AlexaBusiness.DisassociateContactFromAddressBook
 
-    -- ** CreateAddressBook
+    -- ** CreateAddressBook 
     , module Network.AWS.AlexaBusiness.CreateAddressBook
 
-    -- ** DeleteAddressBook
+    -- ** DeleteAddressBook 
     , module Network.AWS.AlexaBusiness.DeleteAddressBook
 
-    -- ** UpdateAddressBook
+    -- ** UpdateAddressBook 
     , module Network.AWS.AlexaBusiness.UpdateAddressBook
 
-    -- ** UpdateRoom
+    -- ** UpdateRoom 
     , module Network.AWS.AlexaBusiness.UpdateRoom
 
-    -- ** DeleteRoom
+    -- ** DeleteRoom 
     , module Network.AWS.AlexaBusiness.DeleteRoom
 
-    -- ** GetDevice
+    -- ** GetDevice 
     , module Network.AWS.AlexaBusiness.GetDevice
 
-    -- ** GetContact
+    -- ** GetContact 
     , module Network.AWS.AlexaBusiness.GetContact
 
-    -- ** AssociateDeviceWithRoom
+    -- ** AssociateDeviceWithRoom 
     , module Network.AWS.AlexaBusiness.AssociateDeviceWithRoom
 
-    -- ** GetRoomSkillParameter
+    -- ** GetRoomSkillParameter 
     , module Network.AWS.AlexaBusiness.GetRoomSkillParameter
 
-    -- ** DeleteContact
+    -- ** DeleteContact 
     , module Network.AWS.AlexaBusiness.DeleteContact
 
-    -- ** UpdateContact
+    -- ** UpdateContact 
     , module Network.AWS.AlexaBusiness.UpdateContact
 
-    -- ** GetAddressBook
+    -- ** GetAddressBook 
     , module Network.AWS.AlexaBusiness.GetAddressBook
 
-    -- ** CreateContact
+    -- ** CreateContact 
     , module Network.AWS.AlexaBusiness.CreateContact
 
-    -- ** CreateProfile
+    -- ** CreateProfile 
     , module Network.AWS.AlexaBusiness.CreateProfile
 
-    -- ** DeleteSkillGroup
+    -- ** DeleteSkillGroup 
     , module Network.AWS.AlexaBusiness.DeleteSkillGroup
 
-    -- ** UpdateSkillGroup
+    -- ** UpdateSkillGroup 
     , module Network.AWS.AlexaBusiness.UpdateSkillGroup
 
-    -- ** StartDeviceSync
+    -- ** StartDeviceSync 
     , module Network.AWS.AlexaBusiness.StartDeviceSync
 
-    -- ** SearchAddressBooks
+    -- ** SearchAddressBooks 
     , module Network.AWS.AlexaBusiness.SearchAddressBooks
 
-    -- ** CreateSkillGroup
+    -- ** CreateSkillGroup 
     , module Network.AWS.AlexaBusiness.CreateSkillGroup
 
-    -- ** GetProfile
+    -- ** GetProfile 
     , module Network.AWS.AlexaBusiness.GetProfile
 
-    -- ** DisassociateSkillGroupFromRoom
+    -- ** DisassociateSkillGroupFromRoom 
     , module Network.AWS.AlexaBusiness.DisassociateSkillGroupFromRoom
 
-    -- ** SendInvitation
+    -- ** SendInvitation 
     , module Network.AWS.AlexaBusiness.SendInvitation
 
-    -- ** ListDeviceEvents
+    -- ** ListDeviceEvents 
     , module Network.AWS.AlexaBusiness.ListDeviceEvents
 
-    -- ** CreateUser
+    -- ** CreateUser 
     , module Network.AWS.AlexaBusiness.CreateUser
 
     -- ** SearchDevices (Paginated)
     , module Network.AWS.AlexaBusiness.SearchDevices
 
-    -- ** SearchContacts
+    -- ** SearchContacts 
     , module Network.AWS.AlexaBusiness.SearchContacts
 
-    -- ** DeleteUser
+    -- ** DeleteUser 
     , module Network.AWS.AlexaBusiness.DeleteUser
 
-    -- ** GetSkillGroup
+    -- ** GetSkillGroup 
     , module Network.AWS.AlexaBusiness.GetSkillGroup
 
     -- ** ListSkills (Paginated)
     , module Network.AWS.AlexaBusiness.ListSkills
 
-    -- ** TagResource
+    -- ** TagResource 
     , module Network.AWS.AlexaBusiness.TagResource
 
-    -- ** DisassociateDeviceFromRoom
+    -- ** DisassociateDeviceFromRoom 
     , module Network.AWS.AlexaBusiness.DisassociateDeviceFromRoom
 
     -- ** SearchSkillGroups (Paginated)
@@ -163,34 +163,34 @@ module Network.AWS.AlexaBusiness
     -- ** ListTags (Paginated)
     , module Network.AWS.AlexaBusiness.ListTags
 
-    -- ** UntagResource
+    -- ** UntagResource 
     , module Network.AWS.AlexaBusiness.UntagResource
 
-    -- ** ResolveRoom
+    -- ** ResolveRoom 
     , module Network.AWS.AlexaBusiness.ResolveRoom
 
-    -- ** CreateRoom
+    -- ** CreateRoom 
     , module Network.AWS.AlexaBusiness.CreateRoom
 
-    -- ** DeleteRoomSkillParameter
+    -- ** DeleteRoomSkillParameter 
     , module Network.AWS.AlexaBusiness.DeleteRoomSkillParameter
 
-    -- ** PutRoomSkillParameter
+    -- ** PutRoomSkillParameter 
     , module Network.AWS.AlexaBusiness.PutRoomSkillParameter
 
     -- ** SearchProfiles (Paginated)
     , module Network.AWS.AlexaBusiness.SearchProfiles
 
-    -- ** RevokeInvitation
+    -- ** RevokeInvitation 
     , module Network.AWS.AlexaBusiness.RevokeInvitation
 
-    -- ** UpdateDevice
+    -- ** UpdateDevice 
     , module Network.AWS.AlexaBusiness.UpdateDevice
 
-    -- ** GetRoom
+    -- ** GetRoom 
     , module Network.AWS.AlexaBusiness.GetRoom
 
-    -- ** AssociateContactWithAddressBook
+    -- ** AssociateContactWithAddressBook 
     , module Network.AWS.AlexaBusiness.AssociateContactWithAddressBook
 
     -- * Types

@@ -40,16 +40,12 @@ import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 import Network.AWS.WorkDocs.Types
-import Network.AWS.WorkDocs.Types.Product
 
 -- | /See:/ 'deleteDocument' smart constructor.
-data DeleteDocument =
-  DeleteDocument'
-    { _ddAuthenticationToken :: !(Maybe (Sensitive Text))
-    , _ddDocumentId          :: !Text
-    }
-  deriving (Eq, Show, Data, Typeable, Generic)
-
+data DeleteDocument = DeleteDocument'{_ddAuthenticationToken
+                                      :: !(Maybe (Sensitive Text)),
+                                      _ddDocumentId :: !Text}
+                        deriving (Eq, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'DeleteDocument' with the minimum fields required to make a request.
 --
@@ -61,10 +57,9 @@ data DeleteDocument =
 deleteDocument
     :: Text -- ^ 'ddDocumentId'
     -> DeleteDocument
-deleteDocument pDocumentId_ =
-  DeleteDocument'
-    {_ddAuthenticationToken = Nothing, _ddDocumentId = pDocumentId_}
-
+deleteDocument pDocumentId_
+  = DeleteDocument'{_ddAuthenticationToken = Nothing,
+                    _ddDocumentId = pDocumentId_}
 
 -- | Amazon WorkDocs authentication token. Do not set this field when using administrative API actions, as in accessing the API using AWS credentials.
 ddAuthenticationToken :: Lens' DeleteDocument (Maybe Text)
@@ -98,16 +93,14 @@ instance ToQuery DeleteDocument where
         toQuery = const mempty
 
 -- | /See:/ 'deleteDocumentResponse' smart constructor.
-data DeleteDocumentResponse =
-  DeleteDocumentResponse'
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data DeleteDocumentResponse = DeleteDocumentResponse'
+                                deriving (Eq, Read, Show, Data, Typeable,
+                                          Generic)
 
 -- | Creates a value of 'DeleteDocumentResponse' with the minimum fields required to make a request.
 --
 deleteDocumentResponse
     :: DeleteDocumentResponse
 deleteDocumentResponse = DeleteDocumentResponse'
-
 
 instance NFData DeleteDocumentResponse where

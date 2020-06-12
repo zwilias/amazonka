@@ -36,20 +36,16 @@ module Network.AWS.EC2.DeleteRouteTable
     ) where
 
 import Network.AWS.EC2.Types
-import Network.AWS.EC2.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 
 -- | /See:/ 'deleteRouteTable' smart constructor.
-data DeleteRouteTable =
-  DeleteRouteTable'
-    { _drtrDryRun       :: !(Maybe Bool)
-    , _drtrRouteTableId :: !Text
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data DeleteRouteTable = DeleteRouteTable'{_drtrDryRun
+                                          :: !(Maybe Bool),
+                                          _drtrRouteTableId :: !Text}
+                          deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'DeleteRouteTable' with the minimum fields required to make a request.
 --
@@ -61,9 +57,9 @@ data DeleteRouteTable =
 deleteRouteTable
     :: Text -- ^ 'drtrRouteTableId'
     -> DeleteRouteTable
-deleteRouteTable pRouteTableId_ =
-  DeleteRouteTable' {_drtrDryRun = Nothing, _drtrRouteTableId = pRouteTableId_}
-
+deleteRouteTable pRouteTableId_
+  = DeleteRouteTable'{_drtrDryRun = Nothing,
+                      _drtrRouteTableId = pRouteTableId_}
 
 -- | Checks whether you have the required permissions for the action, without actually making the request, and provides an error response. If you have the required permissions, the error response is @DryRunOperation@ . Otherwise, it is @UnauthorizedOperation@ .
 drtrDryRun :: Lens' DeleteRouteTable (Maybe Bool)
@@ -97,16 +93,14 @@ instance ToQuery DeleteRouteTable where
                "RouteTableId" =: _drtrRouteTableId]
 
 -- | /See:/ 'deleteRouteTableResponse' smart constructor.
-data DeleteRouteTableResponse =
-  DeleteRouteTableResponse'
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data DeleteRouteTableResponse = DeleteRouteTableResponse'
+                                  deriving (Eq, Read, Show, Data, Typeable,
+                                            Generic)
 
 -- | Creates a value of 'DeleteRouteTableResponse' with the minimum fields required to make a request.
 --
 deleteRouteTableResponse
     :: DeleteRouteTableResponse
 deleteRouteTableResponse = DeleteRouteTableResponse'
-
 
 instance NFData DeleteRouteTableResponse where

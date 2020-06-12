@@ -46,21 +46,19 @@ module Network.AWS.Organizations.ListAccountsForParent
 
 import Network.AWS.Lens
 import Network.AWS.Organizations.Types
-import Network.AWS.Organizations.Types.Product
 import Network.AWS.Pager
 import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 
 -- | /See:/ 'listAccountsForParent' smart constructor.
-data ListAccountsForParent =
-  ListAccountsForParent'
-    { _lafpNextToken  :: !(Maybe Text)
-    , _lafpMaxResults :: !(Maybe Nat)
-    , _lafpParentId   :: !Text
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data ListAccountsForParent = ListAccountsForParent'{_lafpNextToken
+                                                    :: !(Maybe Text),
+                                                    _lafpMaxResults ::
+                                                    !(Maybe Nat),
+                                                    _lafpParentId :: !Text}
+                               deriving (Eq, Read, Show, Data, Typeable,
+                                         Generic)
 
 -- | Creates a value of 'ListAccountsForParent' with the minimum fields required to make a request.
 --
@@ -74,13 +72,10 @@ data ListAccountsForParent =
 listAccountsForParent
     :: Text -- ^ 'lafpParentId'
     -> ListAccountsForParent
-listAccountsForParent pParentId_ =
-  ListAccountsForParent'
-    { _lafpNextToken = Nothing
-    , _lafpMaxResults = Nothing
-    , _lafpParentId = pParentId_
-    }
-
+listAccountsForParent pParentId_
+  = ListAccountsForParent'{_lafpNextToken = Nothing,
+                           _lafpMaxResults = Nothing,
+                           _lafpParentId = pParentId_}
 
 -- | Use this parameter if you receive a @NextToken@ response in a previous request that indicates that there is more output available. Set it to the value of the previous call's @NextToken@ response to indicate where the output should continue from.
 lafpNextToken :: Lens' ListAccountsForParent (Maybe Text)
@@ -141,14 +136,18 @@ instance ToQuery ListAccountsForParent where
         toQuery = const mempty
 
 -- | /See:/ 'listAccountsForParentResponse' smart constructor.
-data ListAccountsForParentResponse =
-  ListAccountsForParentResponse'
-    { _lafprsAccounts       :: !(Maybe [Account])
-    , _lafprsNextToken      :: !(Maybe Text)
-    , _lafprsResponseStatus :: !Int
-    }
-  deriving (Eq, Show, Data, Typeable, Generic)
-
+data ListAccountsForParentResponse = ListAccountsForParentResponse'{_lafprsAccounts
+                                                                    ::
+                                                                    !(Maybe
+                                                                        [Account]),
+                                                                    _lafprsNextToken
+                                                                    ::
+                                                                    !(Maybe
+                                                                        Text),
+                                                                    _lafprsResponseStatus
+                                                                    :: !Int}
+                                       deriving (Eq, Show, Data, Typeable,
+                                                 Generic)
 
 -- | Creates a value of 'ListAccountsForParentResponse' with the minimum fields required to make a request.
 --
@@ -162,13 +161,11 @@ data ListAccountsForParentResponse =
 listAccountsForParentResponse
     :: Int -- ^ 'lafprsResponseStatus'
     -> ListAccountsForParentResponse
-listAccountsForParentResponse pResponseStatus_ =
-  ListAccountsForParentResponse'
-    { _lafprsAccounts = Nothing
-    , _lafprsNextToken = Nothing
-    , _lafprsResponseStatus = pResponseStatus_
-    }
-
+listAccountsForParentResponse pResponseStatus_
+  = ListAccountsForParentResponse'{_lafprsAccounts =
+                                     Nothing,
+                                   _lafprsNextToken = Nothing,
+                                   _lafprsResponseStatus = pResponseStatus_}
 
 -- | A list of the accounts in the specified root or OU.
 lafprsAccounts :: Lens' ListAccountsForParentResponse [Account]

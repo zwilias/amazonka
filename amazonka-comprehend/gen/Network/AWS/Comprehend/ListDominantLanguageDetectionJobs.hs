@@ -43,7 +43,6 @@ module Network.AWS.Comprehend.ListDominantLanguageDetectionJobs
     ) where
 
 import Network.AWS.Comprehend.Types
-import Network.AWS.Comprehend.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Pager
 import Network.AWS.Prelude
@@ -51,14 +50,20 @@ import Network.AWS.Request
 import Network.AWS.Response
 
 -- | /See:/ 'listDominantLanguageDetectionJobs' smart constructor.
-data ListDominantLanguageDetectionJobs =
-  ListDominantLanguageDetectionJobs'
-    { _ldldjNextToken  :: !(Maybe Text)
-    , _ldldjFilter     :: !(Maybe DominantLanguageDetectionJobFilter)
-    , _ldldjMaxResults :: !(Maybe Nat)
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data ListDominantLanguageDetectionJobs = ListDominantLanguageDetectionJobs'{_ldldjNextToken
+                                                                            ::
+                                                                            !(Maybe
+                                                                                Text),
+                                                                            _ldldjFilter
+                                                                            ::
+                                                                            !(Maybe
+                                                                                DominantLanguageDetectionJobFilter),
+                                                                            _ldldjMaxResults
+                                                                            ::
+                                                                            !(Maybe
+                                                                                Nat)}
+                                           deriving (Eq, Read, Show, Data,
+                                                     Typeable, Generic)
 
 -- | Creates a value of 'ListDominantLanguageDetectionJobs' with the minimum fields required to make a request.
 --
@@ -71,13 +76,11 @@ data ListDominantLanguageDetectionJobs =
 -- * 'ldldjMaxResults' - The maximum number of results to return in each page. The default is 100.
 listDominantLanguageDetectionJobs
     :: ListDominantLanguageDetectionJobs
-listDominantLanguageDetectionJobs =
-  ListDominantLanguageDetectionJobs'
-    { _ldldjNextToken = Nothing
-    , _ldldjFilter = Nothing
-    , _ldldjMaxResults = Nothing
-    }
-
+listDominantLanguageDetectionJobs
+  = ListDominantLanguageDetectionJobs'{_ldldjNextToken
+                                         = Nothing,
+                                       _ldldjFilter = Nothing,
+                                       _ldldjMaxResults = Nothing}
 
 -- | Identifies the next page of results to return.
 ldldjNextToken :: Lens' ListDominantLanguageDetectionJobs (Maybe Text)
@@ -151,14 +154,20 @@ instance ToQuery ListDominantLanguageDetectionJobs
         toQuery = const mempty
 
 -- | /See:/ 'listDominantLanguageDetectionJobsResponse' smart constructor.
-data ListDominantLanguageDetectionJobsResponse =
-  ListDominantLanguageDetectionJobsResponse'
-    { _ldldjrsNextToken :: !(Maybe Text)
-    , _ldldjrsDominantLanguageDetectionJobPropertiesList :: !(Maybe [DominantLanguageDetectionJobProperties])
-    , _ldldjrsResponseStatus :: !Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data ListDominantLanguageDetectionJobsResponse = ListDominantLanguageDetectionJobsResponse'{_ldldjrsNextToken
+                                                                                            ::
+                                                                                            !(Maybe
+                                                                                                Text),
+                                                                                            _ldldjrsDominantLanguageDetectionJobPropertiesList
+                                                                                            ::
+                                                                                            !(Maybe
+                                                                                                [DominantLanguageDetectionJobProperties]),
+                                                                                            _ldldjrsResponseStatus
+                                                                                            ::
+                                                                                            !Int}
+                                                   deriving (Eq, Read, Show,
+                                                             Data, Typeable,
+                                                             Generic)
 
 -- | Creates a value of 'ListDominantLanguageDetectionJobsResponse' with the minimum fields required to make a request.
 --
@@ -172,13 +181,14 @@ data ListDominantLanguageDetectionJobsResponse =
 listDominantLanguageDetectionJobsResponse
     :: Int -- ^ 'ldldjrsResponseStatus'
     -> ListDominantLanguageDetectionJobsResponse
-listDominantLanguageDetectionJobsResponse pResponseStatus_ =
-  ListDominantLanguageDetectionJobsResponse'
-    { _ldldjrsNextToken = Nothing
-    , _ldldjrsDominantLanguageDetectionJobPropertiesList = Nothing
-    , _ldldjrsResponseStatus = pResponseStatus_
-    }
-
+listDominantLanguageDetectionJobsResponse
+  pResponseStatus_
+  = ListDominantLanguageDetectionJobsResponse'{_ldldjrsNextToken
+                                                 = Nothing,
+                                               _ldldjrsDominantLanguageDetectionJobPropertiesList
+                                                 = Nothing,
+                                               _ldldjrsResponseStatus =
+                                                 pResponseStatus_}
 
 -- | Identifies the next page of results to return.
 ldldjrsNextToken :: Lens' ListDominantLanguageDetectionJobsResponse (Maybe Text)

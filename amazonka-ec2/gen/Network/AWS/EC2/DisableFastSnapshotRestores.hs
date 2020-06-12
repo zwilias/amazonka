@@ -41,21 +41,21 @@ module Network.AWS.EC2.DisableFastSnapshotRestores
     ) where
 
 import Network.AWS.EC2.Types
-import Network.AWS.EC2.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 
 -- | /See:/ 'disableFastSnapshotRestores' smart constructor.
-data DisableFastSnapshotRestores =
-  DisableFastSnapshotRestores'
-    { _dfsrsDryRun            :: !(Maybe Bool)
-    , _dfsrsAvailabilityZones :: ![Text]
-    , _dfsrsSourceSnapshotIds :: ![Text]
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data DisableFastSnapshotRestores = DisableFastSnapshotRestores'{_dfsrsDryRun
+                                                                ::
+                                                                !(Maybe Bool),
+                                                                _dfsrsAvailabilityZones
+                                                                :: ![Text],
+                                                                _dfsrsSourceSnapshotIds
+                                                                :: ![Text]}
+                                     deriving (Eq, Read, Show, Data, Typeable,
+                                               Generic)
 
 -- | Creates a value of 'DisableFastSnapshotRestores' with the minimum fields required to make a request.
 --
@@ -68,13 +68,11 @@ data DisableFastSnapshotRestores =
 -- * 'dfsrsSourceSnapshotIds' - The IDs of one or more snapshots. For example, @snap-1234567890abcdef0@ .
 disableFastSnapshotRestores
     :: DisableFastSnapshotRestores
-disableFastSnapshotRestores =
-  DisableFastSnapshotRestores'
-    { _dfsrsDryRun = Nothing
-    , _dfsrsAvailabilityZones = mempty
-    , _dfsrsSourceSnapshotIds = mempty
-    }
-
+disableFastSnapshotRestores
+  = DisableFastSnapshotRestores'{_dfsrsDryRun =
+                                   Nothing,
+                                 _dfsrsAvailabilityZones = mempty,
+                                 _dfsrsSourceSnapshotIds = mempty}
 
 -- | Checks whether you have the required permissions for the action, without actually making the request, and provides an error response. If you have the required permissions, the error response is @DryRunOperation@ . Otherwise, it is @UnauthorizedOperation@ .
 dfsrsDryRun :: Lens' DisableFastSnapshotRestores (Maybe Bool)
@@ -126,14 +124,19 @@ instance ToQuery DisableFastSnapshotRestores where
                  _dfsrsSourceSnapshotIds]
 
 -- | /See:/ 'disableFastSnapshotRestoresResponse' smart constructor.
-data DisableFastSnapshotRestoresResponse =
-  DisableFastSnapshotRestoresResponse'
-    { _dfsrrsUnsuccessful   :: !(Maybe [DisableFastSnapshotRestoreErrorItem])
-    , _dfsrrsSuccessful     :: !(Maybe [DisableFastSnapshotRestoreSuccessItem])
-    , _dfsrrsResponseStatus :: !Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data DisableFastSnapshotRestoresResponse = DisableFastSnapshotRestoresResponse'{_dfsrrsUnsuccessful
+                                                                                ::
+                                                                                !(Maybe
+                                                                                    [DisableFastSnapshotRestoreErrorItem]),
+                                                                                _dfsrrsSuccessful
+                                                                                ::
+                                                                                !(Maybe
+                                                                                    [DisableFastSnapshotRestoreSuccessItem]),
+                                                                                _dfsrrsResponseStatus
+                                                                                ::
+                                                                                !Int}
+                                             deriving (Eq, Read, Show, Data,
+                                                       Typeable, Generic)
 
 -- | Creates a value of 'DisableFastSnapshotRestoresResponse' with the minimum fields required to make a request.
 --
@@ -147,13 +150,12 @@ data DisableFastSnapshotRestoresResponse =
 disableFastSnapshotRestoresResponse
     :: Int -- ^ 'dfsrrsResponseStatus'
     -> DisableFastSnapshotRestoresResponse
-disableFastSnapshotRestoresResponse pResponseStatus_ =
-  DisableFastSnapshotRestoresResponse'
-    { _dfsrrsUnsuccessful = Nothing
-    , _dfsrrsSuccessful = Nothing
-    , _dfsrrsResponseStatus = pResponseStatus_
-    }
-
+disableFastSnapshotRestoresResponse pResponseStatus_
+  = DisableFastSnapshotRestoresResponse'{_dfsrrsUnsuccessful
+                                           = Nothing,
+                                         _dfsrrsSuccessful = Nothing,
+                                         _dfsrrsResponseStatus =
+                                           pResponseStatus_}
 
 -- | Information about the snapshots for which fast snapshot restores could not be disabled.
 dfsrrsUnsuccessful :: Lens' DisableFastSnapshotRestoresResponse [DisableFastSnapshotRestoreErrorItem]

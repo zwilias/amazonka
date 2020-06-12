@@ -78,7 +78,6 @@ module Network.AWS.CloudTrail.LookupEvents
     ) where
 
 import Network.AWS.CloudTrail.Types
-import Network.AWS.CloudTrail.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Pager
 import Network.AWS.Prelude
@@ -90,17 +89,15 @@ import Network.AWS.Response
 --
 --
 -- /See:/ 'lookupEvents' smart constructor.
-data LookupEvents =
-  LookupEvents'
-    { _leEventCategory    :: !(Maybe EventCategory)
-    , _leStartTime        :: !(Maybe POSIX)
-    , _leLookupAttributes :: !(Maybe [LookupAttribute])
-    , _leNextToken        :: !(Maybe Text)
-    , _leEndTime          :: !(Maybe POSIX)
-    , _leMaxResults       :: !(Maybe Nat)
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data LookupEvents = LookupEvents'{_leEventCategory ::
+                                  !(Maybe EventCategory),
+                                  _leStartTime :: !(Maybe POSIX),
+                                  _leLookupAttributes ::
+                                  !(Maybe [LookupAttribute]),
+                                  _leNextToken :: !(Maybe Text),
+                                  _leEndTime :: !(Maybe POSIX),
+                                  _leMaxResults :: !(Maybe Nat)}
+                      deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'LookupEvents' with the minimum fields required to make a request.
 --
@@ -119,16 +116,12 @@ data LookupEvents =
 -- * 'leMaxResults' - The number of events to return. Possible values are 1 through 50. The default is 50.
 lookupEvents
     :: LookupEvents
-lookupEvents =
-  LookupEvents'
-    { _leEventCategory = Nothing
-    , _leStartTime = Nothing
-    , _leLookupAttributes = Nothing
-    , _leNextToken = Nothing
-    , _leEndTime = Nothing
-    , _leMaxResults = Nothing
-    }
-
+lookupEvents
+  = LookupEvents'{_leEventCategory = Nothing,
+                  _leStartTime = Nothing,
+                  _leLookupAttributes = Nothing,
+                  _leNextToken = Nothing, _leEndTime = Nothing,
+                  _leMaxResults = Nothing}
 
 -- | Specifies the event category. If you do not specify an event category, events of the category are not returned in the response. For example, if you do not specify @insight@ as the value of @EventCategory@ , no Insights events are returned.
 leEventCategory :: Lens' LookupEvents (Maybe EventCategory)
@@ -207,14 +200,12 @@ instance ToQuery LookupEvents where
 --
 --
 -- /See:/ 'lookupEventsResponse' smart constructor.
-data LookupEventsResponse =
-  LookupEventsResponse'
-    { _lersNextToken      :: !(Maybe Text)
-    , _lersEvents         :: !(Maybe [Event])
-    , _lersResponseStatus :: !Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data LookupEventsResponse = LookupEventsResponse'{_lersNextToken
+                                                  :: !(Maybe Text),
+                                                  _lersEvents ::
+                                                  !(Maybe [Event]),
+                                                  _lersResponseStatus :: !Int}
+                              deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'LookupEventsResponse' with the minimum fields required to make a request.
 --
@@ -228,13 +219,10 @@ data LookupEventsResponse =
 lookupEventsResponse
     :: Int -- ^ 'lersResponseStatus'
     -> LookupEventsResponse
-lookupEventsResponse pResponseStatus_ =
-  LookupEventsResponse'
-    { _lersNextToken = Nothing
-    , _lersEvents = Nothing
-    , _lersResponseStatus = pResponseStatus_
-    }
-
+lookupEventsResponse pResponseStatus_
+  = LookupEventsResponse'{_lersNextToken = Nothing,
+                          _lersEvents = Nothing,
+                          _lersResponseStatus = pResponseStatus_}
 
 -- | The token to use to get the next page of results after a previous API call. If the token does not appear, there are no more results to return. The token must be passed in with the same parameters as the previous call. For example, if the original call specified an AttributeKey of 'Username' with a value of 'root', the call with NextToken should include those same parameters.
 lersNextToken :: Lens' LookupEventsResponse (Maybe Text)

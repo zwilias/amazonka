@@ -42,22 +42,22 @@ module Network.AWS.CodeCommit.MergeBranchesByFastForward
     ) where
 
 import Network.AWS.CodeCommit.Types
-import Network.AWS.CodeCommit.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 
 -- | /See:/ 'mergeBranchesByFastForward' smart constructor.
-data MergeBranchesByFastForward =
-  MergeBranchesByFastForward'
-    { _mbbffTargetBranch               :: !(Maybe Text)
-    , _mbbffRepositoryName             :: !Text
-    , _mbbffSourceCommitSpecifier      :: !Text
-    , _mbbffDestinationCommitSpecifier :: !Text
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data MergeBranchesByFastForward = MergeBranchesByFastForward'{_mbbffTargetBranch
+                                                              :: !(Maybe Text),
+                                                              _mbbffRepositoryName
+                                                              :: !Text,
+                                                              _mbbffSourceCommitSpecifier
+                                                              :: !Text,
+                                                              _mbbffDestinationCommitSpecifier
+                                                              :: !Text}
+                                    deriving (Eq, Read, Show, Data, Typeable,
+                                              Generic)
 
 -- | Creates a value of 'MergeBranchesByFastForward' with the minimum fields required to make a request.
 --
@@ -75,14 +75,15 @@ mergeBranchesByFastForward
     -> Text -- ^ 'mbbffSourceCommitSpecifier'
     -> Text -- ^ 'mbbffDestinationCommitSpecifier'
     -> MergeBranchesByFastForward
-mergeBranchesByFastForward pRepositoryName_ pSourceCommitSpecifier_ pDestinationCommitSpecifier_ =
-  MergeBranchesByFastForward'
-    { _mbbffTargetBranch = Nothing
-    , _mbbffRepositoryName = pRepositoryName_
-    , _mbbffSourceCommitSpecifier = pSourceCommitSpecifier_
-    , _mbbffDestinationCommitSpecifier = pDestinationCommitSpecifier_
-    }
-
+mergeBranchesByFastForward pRepositoryName_
+  pSourceCommitSpecifier_ pDestinationCommitSpecifier_
+  = MergeBranchesByFastForward'{_mbbffTargetBranch =
+                                  Nothing,
+                                _mbbffRepositoryName = pRepositoryName_,
+                                _mbbffSourceCommitSpecifier =
+                                  pSourceCommitSpecifier_,
+                                _mbbffDestinationCommitSpecifier =
+                                  pDestinationCommitSpecifier_}
 
 -- | The branch where the merge is applied.
 mbbffTargetBranch :: Lens' MergeBranchesByFastForward (Maybe Text)
@@ -145,14 +146,19 @@ instance ToQuery MergeBranchesByFastForward where
         toQuery = const mempty
 
 -- | /See:/ 'mergeBranchesByFastForwardResponse' smart constructor.
-data MergeBranchesByFastForwardResponse =
-  MergeBranchesByFastForwardResponse'
-    { _mbbffrsCommitId       :: !(Maybe Text)
-    , _mbbffrsTreeId         :: !(Maybe Text)
-    , _mbbffrsResponseStatus :: !Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data MergeBranchesByFastForwardResponse = MergeBranchesByFastForwardResponse'{_mbbffrsCommitId
+                                                                              ::
+                                                                              !(Maybe
+                                                                                  Text),
+                                                                              _mbbffrsTreeId
+                                                                              ::
+                                                                              !(Maybe
+                                                                                  Text),
+                                                                              _mbbffrsResponseStatus
+                                                                              ::
+                                                                              !Int}
+                                            deriving (Eq, Read, Show, Data,
+                                                      Typeable, Generic)
 
 -- | Creates a value of 'MergeBranchesByFastForwardResponse' with the minimum fields required to make a request.
 --
@@ -166,13 +172,12 @@ data MergeBranchesByFastForwardResponse =
 mergeBranchesByFastForwardResponse
     :: Int -- ^ 'mbbffrsResponseStatus'
     -> MergeBranchesByFastForwardResponse
-mergeBranchesByFastForwardResponse pResponseStatus_ =
-  MergeBranchesByFastForwardResponse'
-    { _mbbffrsCommitId = Nothing
-    , _mbbffrsTreeId = Nothing
-    , _mbbffrsResponseStatus = pResponseStatus_
-    }
-
+mergeBranchesByFastForwardResponse pResponseStatus_
+  = MergeBranchesByFastForwardResponse'{_mbbffrsCommitId
+                                          = Nothing,
+                                        _mbbffrsTreeId = Nothing,
+                                        _mbbffrsResponseStatus =
+                                          pResponseStatus_}
 
 -- | The commit ID of the merge in the destination or target branch.
 mbbffrsCommitId :: Lens' MergeBranchesByFastForwardResponse (Maybe Text)

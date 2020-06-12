@@ -60,31 +60,35 @@ module Network.AWS.ELBv2.CreateTargetGroup
     ) where
 
 import Network.AWS.ELBv2.Types
-import Network.AWS.ELBv2.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 
 -- | /See:/ 'createTargetGroup' smart constructor.
-data CreateTargetGroup =
-  CreateTargetGroup'
-    { _ctgMatcher                    :: !(Maybe Matcher)
-    , _ctgHealthCheckPath            :: !(Maybe Text)
-    , _ctgUnhealthyThresholdCount    :: !(Maybe Nat)
-    , _ctgHealthCheckIntervalSeconds :: !(Maybe Nat)
-    , _ctgTargetType                 :: !(Maybe TargetTypeEnum)
-    , _ctgHealthyThresholdCount      :: !(Maybe Nat)
-    , _ctgHealthCheckProtocol        :: !(Maybe ProtocolEnum)
-    , _ctgHealthCheckTimeoutSeconds  :: !(Maybe Nat)
-    , _ctgHealthCheckPort            :: !(Maybe Text)
-    , _ctgName                       :: !Text
-    , _ctgProtocol                   :: !ProtocolEnum
-    , _ctgPort                       :: !Nat
-    , _ctgVPCId                      :: !Text
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data CreateTargetGroup = CreateTargetGroup'{_ctgMatcher
+                                            :: !(Maybe Matcher),
+                                            _ctgHealthCheckPath ::
+                                            !(Maybe Text),
+                                            _ctgUnhealthyThresholdCount ::
+                                            !(Maybe Nat),
+                                            _ctgHealthCheckIntervalSeconds ::
+                                            !(Maybe Nat),
+                                            _ctgTargetType ::
+                                            !(Maybe TargetTypeEnum),
+                                            _ctgHealthyThresholdCount ::
+                                            !(Maybe Nat),
+                                            _ctgHealthCheckProtocol ::
+                                            !(Maybe ProtocolEnum),
+                                            _ctgHealthCheckTimeoutSeconds ::
+                                            !(Maybe Nat),
+                                            _ctgHealthCheckPort ::
+                                            !(Maybe Text),
+                                            _ctgName :: !Text,
+                                            _ctgProtocol :: !ProtocolEnum,
+                                            _ctgPort :: !Nat,
+                                            _ctgVPCId :: !Text}
+                           deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'CreateTargetGroup' with the minimum fields required to make a request.
 --
@@ -121,23 +125,18 @@ createTargetGroup
     -> Natural -- ^ 'ctgPort'
     -> Text -- ^ 'ctgVPCId'
     -> CreateTargetGroup
-createTargetGroup pName_ pProtocol_ pPort_ pVPCId_ =
-  CreateTargetGroup'
-    { _ctgMatcher = Nothing
-    , _ctgHealthCheckPath = Nothing
-    , _ctgUnhealthyThresholdCount = Nothing
-    , _ctgHealthCheckIntervalSeconds = Nothing
-    , _ctgTargetType = Nothing
-    , _ctgHealthyThresholdCount = Nothing
-    , _ctgHealthCheckProtocol = Nothing
-    , _ctgHealthCheckTimeoutSeconds = Nothing
-    , _ctgHealthCheckPort = Nothing
-    , _ctgName = pName_
-    , _ctgProtocol = pProtocol_
-    , _ctgPort = _Nat # pPort_
-    , _ctgVPCId = pVPCId_
-    }
-
+createTargetGroup pName_ pProtocol_ pPort_ pVPCId_
+  = CreateTargetGroup'{_ctgMatcher = Nothing,
+                       _ctgHealthCheckPath = Nothing,
+                       _ctgUnhealthyThresholdCount = Nothing,
+                       _ctgHealthCheckIntervalSeconds = Nothing,
+                       _ctgTargetType = Nothing,
+                       _ctgHealthyThresholdCount = Nothing,
+                       _ctgHealthCheckProtocol = Nothing,
+                       _ctgHealthCheckTimeoutSeconds = Nothing,
+                       _ctgHealthCheckPort = Nothing, _ctgName = pName_,
+                       _ctgProtocol = pProtocol_, _ctgPort = _Nat # pPort_,
+                       _ctgVPCId = pVPCId_}
 
 -- | [HTTP/HTTPS health checks] The HTTP codes to use when checking for a successful response from a target.
 ctgMatcher :: Lens' CreateTargetGroup (Maybe Matcher)
@@ -233,13 +232,14 @@ instance ToQuery CreateTargetGroup where
                "Port" =: _ctgPort, "VpcId" =: _ctgVPCId]
 
 -- | /See:/ 'createTargetGroupResponse' smart constructor.
-data CreateTargetGroupResponse =
-  CreateTargetGroupResponse'
-    { _ctgrsTargetGroups   :: !(Maybe [TargetGroup])
-    , _ctgrsResponseStatus :: !Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data CreateTargetGroupResponse = CreateTargetGroupResponse'{_ctgrsTargetGroups
+                                                            ::
+                                                            !(Maybe
+                                                                [TargetGroup]),
+                                                            _ctgrsResponseStatus
+                                                            :: !Int}
+                                   deriving (Eq, Read, Show, Data, Typeable,
+                                             Generic)
 
 -- | Creates a value of 'CreateTargetGroupResponse' with the minimum fields required to make a request.
 --
@@ -251,10 +251,10 @@ data CreateTargetGroupResponse =
 createTargetGroupResponse
     :: Int -- ^ 'ctgrsResponseStatus'
     -> CreateTargetGroupResponse
-createTargetGroupResponse pResponseStatus_ =
-  CreateTargetGroupResponse'
-    {_ctgrsTargetGroups = Nothing, _ctgrsResponseStatus = pResponseStatus_}
-
+createTargetGroupResponse pResponseStatus_
+  = CreateTargetGroupResponse'{_ctgrsTargetGroups =
+                                 Nothing,
+                               _ctgrsResponseStatus = pResponseStatus_}
 
 -- | Information about the target group.
 ctgrsTargetGroups :: Lens' CreateTargetGroupResponse [TargetGroup]

@@ -47,28 +47,26 @@ module Network.AWS.AppSync.UpdateResolver
     ) where
 
 import Network.AWS.AppSync.Types
-import Network.AWS.AppSync.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 
 -- | /See:/ 'updateResolver' smart constructor.
-data UpdateResolver =
-  UpdateResolver'
-    { _urDataSourceName          :: !(Maybe Text)
-    , _urKind                    :: !(Maybe ResolverKind)
-    , _urCachingConfig           :: !(Maybe CachingConfig)
-    , _urResponseMappingTemplate :: !(Maybe Text)
-    , _urSyncConfig              :: !(Maybe SyncConfig)
-    , _urPipelineConfig          :: !(Maybe PipelineConfig)
-    , _urApiId                   :: !Text
-    , _urTypeName                :: !Text
-    , _urFieldName               :: !Text
-    , _urRequestMappingTemplate  :: !Text
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data UpdateResolver = UpdateResolver'{_urDataSourceName
+                                      :: !(Maybe Text),
+                                      _urKind :: !(Maybe ResolverKind),
+                                      _urCachingConfig ::
+                                      !(Maybe CachingConfig),
+                                      _urResponseMappingTemplate ::
+                                      !(Maybe Text),
+                                      _urSyncConfig :: !(Maybe SyncConfig),
+                                      _urPipelineConfig ::
+                                      !(Maybe PipelineConfig),
+                                      _urApiId :: !Text, _urTypeName :: !Text,
+                                      _urFieldName :: !Text,
+                                      _urRequestMappingTemplate :: !Text}
+                        deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'UpdateResolver' with the minimum fields required to make a request.
 --
@@ -99,20 +97,15 @@ updateResolver
     -> Text -- ^ 'urFieldName'
     -> Text -- ^ 'urRequestMappingTemplate'
     -> UpdateResolver
-updateResolver pApiId_ pTypeName_ pFieldName_ pRequestMappingTemplate_ =
-  UpdateResolver'
-    { _urDataSourceName = Nothing
-    , _urKind = Nothing
-    , _urCachingConfig = Nothing
-    , _urResponseMappingTemplate = Nothing
-    , _urSyncConfig = Nothing
-    , _urPipelineConfig = Nothing
-    , _urApiId = pApiId_
-    , _urTypeName = pTypeName_
-    , _urFieldName = pFieldName_
-    , _urRequestMappingTemplate = pRequestMappingTemplate_
-    }
-
+updateResolver pApiId_ pTypeName_ pFieldName_
+  pRequestMappingTemplate_
+  = UpdateResolver'{_urDataSourceName = Nothing,
+                    _urKind = Nothing, _urCachingConfig = Nothing,
+                    _urResponseMappingTemplate = Nothing,
+                    _urSyncConfig = Nothing, _urPipelineConfig = Nothing,
+                    _urApiId = pApiId_, _urTypeName = pTypeName_,
+                    _urFieldName = pFieldName_,
+                    _urRequestMappingTemplate = pRequestMappingTemplate_}
 
 -- | The new data source name.
 urDataSourceName :: Lens' UpdateResolver (Maybe Text)
@@ -199,13 +192,12 @@ instance ToQuery UpdateResolver where
         toQuery = const mempty
 
 -- | /See:/ 'updateResolverResponse' smart constructor.
-data UpdateResolverResponse =
-  UpdateResolverResponse'
-    { _urrsResolver       :: !(Maybe Resolver)
-    , _urrsResponseStatus :: !Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data UpdateResolverResponse = UpdateResolverResponse'{_urrsResolver
+                                                      :: !(Maybe Resolver),
+                                                      _urrsResponseStatus ::
+                                                      !Int}
+                                deriving (Eq, Read, Show, Data, Typeable,
+                                          Generic)
 
 -- | Creates a value of 'UpdateResolverResponse' with the minimum fields required to make a request.
 --
@@ -217,10 +209,9 @@ data UpdateResolverResponse =
 updateResolverResponse
     :: Int -- ^ 'urrsResponseStatus'
     -> UpdateResolverResponse
-updateResolverResponse pResponseStatus_ =
-  UpdateResolverResponse'
-    {_urrsResolver = Nothing, _urrsResponseStatus = pResponseStatus_}
-
+updateResolverResponse pResponseStatus_
+  = UpdateResolverResponse'{_urrsResolver = Nothing,
+                            _urrsResponseStatus = pResponseStatus_}
 
 -- | The updated @Resolver@ object.
 urrsResolver :: Lens' UpdateResolverResponse (Maybe Resolver)

@@ -46,23 +46,19 @@ module Network.AWS.EC2.DescribeImages
     ) where
 
 import Network.AWS.EC2.Types
-import Network.AWS.EC2.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 
 -- | /See:/ 'describeImages' smart constructor.
-data DescribeImages =
-  DescribeImages'
-    { _deseOwners          :: !(Maybe [Text])
-    , _deseExecutableUsers :: !(Maybe [Text])
-    , _deseFilters         :: !(Maybe [Filter])
-    , _deseImageIds        :: !(Maybe [Text])
-    , _deseDryRun          :: !(Maybe Bool)
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data DescribeImages = DescribeImages'{_deseOwners ::
+                                      !(Maybe [Text]),
+                                      _deseExecutableUsers :: !(Maybe [Text]),
+                                      _deseFilters :: !(Maybe [Filter]),
+                                      _deseImageIds :: !(Maybe [Text]),
+                                      _deseDryRun :: !(Maybe Bool)}
+                        deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'DescribeImages' with the minimum fields required to make a request.
 --
@@ -79,15 +75,11 @@ data DescribeImages =
 -- * 'deseDryRun' - Checks whether you have the required permissions for the action, without actually making the request, and provides an error response. If you have the required permissions, the error response is @DryRunOperation@ . Otherwise, it is @UnauthorizedOperation@ .
 describeImages
     :: DescribeImages
-describeImages =
-  DescribeImages'
-    { _deseOwners = Nothing
-    , _deseExecutableUsers = Nothing
-    , _deseFilters = Nothing
-    , _deseImageIds = Nothing
-    , _deseDryRun = Nothing
-    }
-
+describeImages
+  = DescribeImages'{_deseOwners = Nothing,
+                    _deseExecutableUsers = Nothing,
+                    _deseFilters = Nothing, _deseImageIds = Nothing,
+                    _deseDryRun = Nothing}
 
 -- | Filters the images by the owner. Specify an AWS account ID, @self@ (owner is the sender of the request), or an AWS owner alias (valid values are @amazon@ | @aws-marketplace@ | @microsoft@ ). Omitting this option returns all images for which you have launch permissions, regardless of ownership.
 deseOwners :: Lens' DescribeImages [Text]
@@ -144,13 +136,12 @@ instance ToQuery DescribeImages where
                "DryRun" =: _deseDryRun]
 
 -- | /See:/ 'describeImagesResponse' smart constructor.
-data DescribeImagesResponse =
-  DescribeImagesResponse'
-    { _diirsImages         :: !(Maybe [Image])
-    , _diirsResponseStatus :: !Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data DescribeImagesResponse = DescribeImagesResponse'{_diirsImages
+                                                      :: !(Maybe [Image]),
+                                                      _diirsResponseStatus ::
+                                                      !Int}
+                                deriving (Eq, Read, Show, Data, Typeable,
+                                          Generic)
 
 -- | Creates a value of 'DescribeImagesResponse' with the minimum fields required to make a request.
 --
@@ -162,10 +153,9 @@ data DescribeImagesResponse =
 describeImagesResponse
     :: Int -- ^ 'diirsResponseStatus'
     -> DescribeImagesResponse
-describeImagesResponse pResponseStatus_ =
-  DescribeImagesResponse'
-    {_diirsImages = Nothing, _diirsResponseStatus = pResponseStatus_}
-
+describeImagesResponse pResponseStatus_
+  = DescribeImagesResponse'{_diirsImages = Nothing,
+                            _diirsResponseStatus = pResponseStatus_}
 
 -- | Information about the images.
 diirsImages :: Lens' DescribeImagesResponse [Image]

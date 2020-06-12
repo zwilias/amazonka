@@ -42,22 +42,22 @@ module Network.AWS.EC2.DescribePublicIPv4Pools
     ) where
 
 import Network.AWS.EC2.Types
-import Network.AWS.EC2.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 
 -- | /See:/ 'describePublicIPv4Pools' smart constructor.
-data DescribePublicIPv4Pools =
-  DescribePublicIPv4Pools'
-    { _dpipPoolIds    :: !(Maybe [Text])
-    , _dpipFilters    :: !(Maybe [Filter])
-    , _dpipNextToken  :: !(Maybe Text)
-    , _dpipMaxResults :: !(Maybe Nat)
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data DescribePublicIPv4Pools = DescribePublicIPv4Pools'{_dpipPoolIds
+                                                        :: !(Maybe [Text]),
+                                                        _dpipFilters ::
+                                                        !(Maybe [Filter]),
+                                                        _dpipNextToken ::
+                                                        !(Maybe Text),
+                                                        _dpipMaxResults ::
+                                                        !(Maybe Nat)}
+                                 deriving (Eq, Read, Show, Data, Typeable,
+                                           Generic)
 
 -- | Creates a value of 'DescribePublicIPv4Pools' with the minimum fields required to make a request.
 --
@@ -72,14 +72,10 @@ data DescribePublicIPv4Pools =
 -- * 'dpipMaxResults' - The maximum number of results to return with a single call. To retrieve the remaining results, make another call with the returned @nextToken@ value.
 describePublicIPv4Pools
     :: DescribePublicIPv4Pools
-describePublicIPv4Pools =
-  DescribePublicIPv4Pools'
-    { _dpipPoolIds = Nothing
-    , _dpipFilters = Nothing
-    , _dpipNextToken = Nothing
-    , _dpipMaxResults = Nothing
-    }
-
+describePublicIPv4Pools
+  = DescribePublicIPv4Pools'{_dpipPoolIds = Nothing,
+                             _dpipFilters = Nothing, _dpipNextToken = Nothing,
+                             _dpipMaxResults = Nothing}
 
 -- | The IDs of the address pools.
 dpipPoolIds :: Lens' DescribePublicIPv4Pools [Text]
@@ -132,14 +128,18 @@ instance ToQuery DescribePublicIPv4Pools where
                "MaxResults" =: _dpipMaxResults]
 
 -- | /See:/ 'describePublicIPv4PoolsResponse' smart constructor.
-data DescribePublicIPv4PoolsResponse =
-  DescribePublicIPv4PoolsResponse'
-    { _dpiprsPublicIPv4Pools :: !(Maybe [PublicIPv4Pool])
-    , _dpiprsNextToken       :: !(Maybe Text)
-    , _dpiprsResponseStatus  :: !Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data DescribePublicIPv4PoolsResponse = DescribePublicIPv4PoolsResponse'{_dpiprsPublicIPv4Pools
+                                                                        ::
+                                                                        !(Maybe
+                                                                            [PublicIPv4Pool]),
+                                                                        _dpiprsNextToken
+                                                                        ::
+                                                                        !(Maybe
+                                                                            Text),
+                                                                        _dpiprsResponseStatus
+                                                                        :: !Int}
+                                         deriving (Eq, Read, Show, Data,
+                                                   Typeable, Generic)
 
 -- | Creates a value of 'DescribePublicIPv4PoolsResponse' with the minimum fields required to make a request.
 --
@@ -153,13 +153,11 @@ data DescribePublicIPv4PoolsResponse =
 describePublicIPv4PoolsResponse
     :: Int -- ^ 'dpiprsResponseStatus'
     -> DescribePublicIPv4PoolsResponse
-describePublicIPv4PoolsResponse pResponseStatus_ =
-  DescribePublicIPv4PoolsResponse'
-    { _dpiprsPublicIPv4Pools = Nothing
-    , _dpiprsNextToken = Nothing
-    , _dpiprsResponseStatus = pResponseStatus_
-    }
-
+describePublicIPv4PoolsResponse pResponseStatus_
+  = DescribePublicIPv4PoolsResponse'{_dpiprsPublicIPv4Pools
+                                       = Nothing,
+                                     _dpiprsNextToken = Nothing,
+                                     _dpiprsResponseStatus = pResponseStatus_}
 
 -- | Information about the address pools.
 dpiprsPublicIPv4Pools :: Lens' DescribePublicIPv4PoolsResponse [PublicIPv4Pool]

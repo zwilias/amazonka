@@ -40,7 +40,6 @@ module Network.AWS.DeviceFarm.PurchaseOffering
     ) where
 
 import Network.AWS.DeviceFarm.Types
-import Network.AWS.DeviceFarm.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.Request
@@ -51,14 +50,12 @@ import Network.AWS.Response
 --
 --
 -- /See:/ 'purchaseOffering' smart constructor.
-data PurchaseOffering =
-  PurchaseOffering'
-    { _poQuantity            :: !(Maybe Int)
-    , _poOfferingId          :: !(Maybe Text)
-    , _poOfferingPromotionId :: !(Maybe Text)
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data PurchaseOffering = PurchaseOffering'{_poQuantity
+                                          :: !(Maybe Int),
+                                          _poOfferingId :: !(Maybe Text),
+                                          _poOfferingPromotionId ::
+                                          !(Maybe Text)}
+                          deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'PurchaseOffering' with the minimum fields required to make a request.
 --
@@ -71,13 +68,10 @@ data PurchaseOffering =
 -- * 'poOfferingPromotionId' - The ID of the offering promotion to be applied to the purchase.
 purchaseOffering
     :: PurchaseOffering
-purchaseOffering =
-  PurchaseOffering'
-    { _poQuantity = Nothing
-    , _poOfferingId = Nothing
-    , _poOfferingPromotionId = Nothing
-    }
-
+purchaseOffering
+  = PurchaseOffering'{_poQuantity = Nothing,
+                      _poOfferingId = Nothing,
+                      _poOfferingPromotionId = Nothing}
 
 -- | The number of device slots to purchase in an offering request.
 poQuantity :: Lens' PurchaseOffering (Maybe Int)
@@ -135,13 +129,14 @@ instance ToQuery PurchaseOffering where
 --
 --
 -- /See:/ 'purchaseOfferingResponse' smart constructor.
-data PurchaseOfferingResponse =
-  PurchaseOfferingResponse'
-    { _porsOfferingTransaction :: !(Maybe OfferingTransaction)
-    , _porsResponseStatus      :: !Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data PurchaseOfferingResponse = PurchaseOfferingResponse'{_porsOfferingTransaction
+                                                          ::
+                                                          !(Maybe
+                                                              OfferingTransaction),
+                                                          _porsResponseStatus ::
+                                                          !Int}
+                                  deriving (Eq, Read, Show, Data, Typeable,
+                                            Generic)
 
 -- | Creates a value of 'PurchaseOfferingResponse' with the minimum fields required to make a request.
 --
@@ -153,10 +148,10 @@ data PurchaseOfferingResponse =
 purchaseOfferingResponse
     :: Int -- ^ 'porsResponseStatus'
     -> PurchaseOfferingResponse
-purchaseOfferingResponse pResponseStatus_ =
-  PurchaseOfferingResponse'
-    {_porsOfferingTransaction = Nothing, _porsResponseStatus = pResponseStatus_}
-
+purchaseOfferingResponse pResponseStatus_
+  = PurchaseOfferingResponse'{_porsOfferingTransaction
+                                = Nothing,
+                              _porsResponseStatus = pResponseStatus_}
 
 -- | Represents the offering transaction for the purchase result.
 porsOfferingTransaction :: Lens' PurchaseOfferingResponse (Maybe OfferingTransaction)

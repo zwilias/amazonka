@@ -43,23 +43,19 @@ module Network.AWS.IoT.ListThingGroups
     ) where
 
 import Network.AWS.IoT.Types
-import Network.AWS.IoT.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 
 -- | /See:/ 'listThingGroups' smart constructor.
-data ListThingGroups =
-  ListThingGroups'
-    { _ltgNamePrefixFilter :: !(Maybe Text)
-    , _ltgParentGroup      :: !(Maybe Text)
-    , _ltgNextToken        :: !(Maybe Text)
-    , _ltgRecursive        :: !(Maybe Bool)
-    , _ltgMaxResults       :: !(Maybe Nat)
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data ListThingGroups = ListThingGroups'{_ltgNamePrefixFilter
+                                        :: !(Maybe Text),
+                                        _ltgParentGroup :: !(Maybe Text),
+                                        _ltgNextToken :: !(Maybe Text),
+                                        _ltgRecursive :: !(Maybe Bool),
+                                        _ltgMaxResults :: !(Maybe Nat)}
+                         deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'ListThingGroups' with the minimum fields required to make a request.
 --
@@ -76,15 +72,10 @@ data ListThingGroups =
 -- * 'ltgMaxResults' - The maximum number of results to return at one time.
 listThingGroups
     :: ListThingGroups
-listThingGroups =
-  ListThingGroups'
-    { _ltgNamePrefixFilter = Nothing
-    , _ltgParentGroup = Nothing
-    , _ltgNextToken = Nothing
-    , _ltgRecursive = Nothing
-    , _ltgMaxResults = Nothing
-    }
-
+listThingGroups
+  = ListThingGroups'{_ltgNamePrefixFilter = Nothing,
+                     _ltgParentGroup = Nothing, _ltgNextToken = Nothing,
+                     _ltgRecursive = Nothing, _ltgMaxResults = Nothing}
 
 -- | A filter that limits the results to those with the specified name prefix.
 ltgNamePrefixFilter :: Lens' ListThingGroups (Maybe Text)
@@ -137,14 +128,16 @@ instance ToQuery ListThingGroups where
                "maxResults" =: _ltgMaxResults]
 
 -- | /See:/ 'listThingGroupsResponse' smart constructor.
-data ListThingGroupsResponse =
-  ListThingGroupsResponse'
-    { _ltgrsThingGroups    :: !(Maybe [GroupNameAndARN])
-    , _ltgrsNextToken      :: !(Maybe Text)
-    , _ltgrsResponseStatus :: !Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data ListThingGroupsResponse = ListThingGroupsResponse'{_ltgrsThingGroups
+                                                        ::
+                                                        !(Maybe
+                                                            [GroupNameAndARN]),
+                                                        _ltgrsNextToken ::
+                                                        !(Maybe Text),
+                                                        _ltgrsResponseStatus ::
+                                                        !Int}
+                                 deriving (Eq, Read, Show, Data, Typeable,
+                                           Generic)
 
 -- | Creates a value of 'ListThingGroupsResponse' with the minimum fields required to make a request.
 --
@@ -158,13 +151,11 @@ data ListThingGroupsResponse =
 listThingGroupsResponse
     :: Int -- ^ 'ltgrsResponseStatus'
     -> ListThingGroupsResponse
-listThingGroupsResponse pResponseStatus_ =
-  ListThingGroupsResponse'
-    { _ltgrsThingGroups = Nothing
-    , _ltgrsNextToken = Nothing
-    , _ltgrsResponseStatus = pResponseStatus_
-    }
-
+listThingGroupsResponse pResponseStatus_
+  = ListThingGroupsResponse'{_ltgrsThingGroups =
+                               Nothing,
+                             _ltgrsNextToken = Nothing,
+                             _ltgrsResponseStatus = pResponseStatus_}
 
 -- | The thing groups.
 ltgrsThingGroups :: Lens' ListThingGroupsResponse [GroupNameAndARN]

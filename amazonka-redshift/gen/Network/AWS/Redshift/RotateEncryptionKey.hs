@@ -40,21 +40,18 @@ module Network.AWS.Redshift.RotateEncryptionKey
 import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.Redshift.Types
-import Network.AWS.Redshift.Types.Product
 import Network.AWS.Request
 import Network.AWS.Response
 
--- |
+-- | 
 --
 --
 --
 -- /See:/ 'rotateEncryptionKey' smart constructor.
-newtype RotateEncryptionKey =
-  RotateEncryptionKey'
-    { _rekClusterIdentifier :: Text
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+newtype RotateEncryptionKey = RotateEncryptionKey'{_rekClusterIdentifier
+                                                   :: Text}
+                                deriving (Eq, Read, Show, Data, Typeable,
+                                          Generic)
 
 -- | Creates a value of 'RotateEncryptionKey' with the minimum fields required to make a request.
 --
@@ -64,9 +61,9 @@ newtype RotateEncryptionKey =
 rotateEncryptionKey
     :: Text -- ^ 'rekClusterIdentifier'
     -> RotateEncryptionKey
-rotateEncryptionKey pClusterIdentifier_ =
-  RotateEncryptionKey' {_rekClusterIdentifier = pClusterIdentifier_}
-
+rotateEncryptionKey pClusterIdentifier_
+  = RotateEncryptionKey'{_rekClusterIdentifier =
+                           pClusterIdentifier_}
 
 -- | The unique identifier of the cluster that you want to rotate the encryption keys for. Constraints: Must be the name of valid cluster that has encryption enabled.
 rekClusterIdentifier :: Lens' RotateEncryptionKey Text
@@ -100,13 +97,14 @@ instance ToQuery RotateEncryptionKey where
                "ClusterIdentifier" =: _rekClusterIdentifier]
 
 -- | /See:/ 'rotateEncryptionKeyResponse' smart constructor.
-data RotateEncryptionKeyResponse =
-  RotateEncryptionKeyResponse'
-    { _rekrsCluster        :: !(Maybe Cluster)
-    , _rekrsResponseStatus :: !Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data RotateEncryptionKeyResponse = RotateEncryptionKeyResponse'{_rekrsCluster
+                                                                ::
+                                                                !(Maybe
+                                                                    Cluster),
+                                                                _rekrsResponseStatus
+                                                                :: !Int}
+                                     deriving (Eq, Read, Show, Data, Typeable,
+                                               Generic)
 
 -- | Creates a value of 'RotateEncryptionKeyResponse' with the minimum fields required to make a request.
 --
@@ -118,10 +116,10 @@ data RotateEncryptionKeyResponse =
 rotateEncryptionKeyResponse
     :: Int -- ^ 'rekrsResponseStatus'
     -> RotateEncryptionKeyResponse
-rotateEncryptionKeyResponse pResponseStatus_ =
-  RotateEncryptionKeyResponse'
-    {_rekrsCluster = Nothing, _rekrsResponseStatus = pResponseStatus_}
-
+rotateEncryptionKeyResponse pResponseStatus_
+  = RotateEncryptionKeyResponse'{_rekrsCluster =
+                                   Nothing,
+                                 _rekrsResponseStatus = pResponseStatus_}
 
 -- | Undocumented member.
 rekrsCluster :: Lens' RotateEncryptionKeyResponse (Maybe Cluster)

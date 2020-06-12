@@ -80,8 +80,19 @@ library
         , Network.AWS.WorkMail.Waiters
 
     other-modules:
-          Network.AWS.WorkMail.Types.Product
-        , Network.AWS.WorkMail.Types.Sum
+          Network.AWS.WorkMail.Types.BookingOptions
+        , Network.AWS.WorkMail.Types.Delegate
+        , Network.AWS.WorkMail.Types.EntityState
+        , Network.AWS.WorkMail.Types.Group
+        , Network.AWS.WorkMail.Types.Member
+        , Network.AWS.WorkMail.Types.MemberType
+        , Network.AWS.WorkMail.Types.OrganizationSummary
+        , Network.AWS.WorkMail.Types.Permission
+        , Network.AWS.WorkMail.Types.PermissionType
+        , Network.AWS.WorkMail.Types.Resource
+        , Network.AWS.WorkMail.Types.ResourceType
+        , Network.AWS.WorkMail.Types.User
+        , Network.AWS.WorkMail.Types.UserRole
 
     build-depends:
           amazonka-core == 1.6.1.*

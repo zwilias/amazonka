@@ -106,8 +106,56 @@ library
         , Network.AWS.DirectoryService.Waiters
 
     other-modules:
-          Network.AWS.DirectoryService.Types.Product
-        , Network.AWS.DirectoryService.Types.Sum
+          Network.AWS.DirectoryService.Types.Attribute
+        , Network.AWS.DirectoryService.Types.Certificate
+        , Network.AWS.DirectoryService.Types.CertificateInfo
+        , Network.AWS.DirectoryService.Types.CertificateState
+        , Network.AWS.DirectoryService.Types.Computer
+        , Network.AWS.DirectoryService.Types.ConditionalForwarder
+        , Network.AWS.DirectoryService.Types.DirectoryConnectSettings
+        , Network.AWS.DirectoryService.Types.DirectoryConnectSettingsDescription
+        , Network.AWS.DirectoryService.Types.DirectoryDescription
+        , Network.AWS.DirectoryService.Types.DirectoryEdition
+        , Network.AWS.DirectoryService.Types.DirectoryLimits
+        , Network.AWS.DirectoryService.Types.DirectorySize
+        , Network.AWS.DirectoryService.Types.DirectoryStage
+        , Network.AWS.DirectoryService.Types.DirectoryType
+        , Network.AWS.DirectoryService.Types.DirectoryVPCSettings
+        , Network.AWS.DirectoryService.Types.DirectoryVPCSettingsDescription
+        , Network.AWS.DirectoryService.Types.DomainController
+        , Network.AWS.DirectoryService.Types.DomainControllerStatus
+        , Network.AWS.DirectoryService.Types.EventTopic
+        , Network.AWS.DirectoryService.Types.IPRoute
+        , Network.AWS.DirectoryService.Types.IPRouteInfo
+        , Network.AWS.DirectoryService.Types.IPRouteStatusMsg
+        , Network.AWS.DirectoryService.Types.LDAPSSettingInfo
+        , Network.AWS.DirectoryService.Types.LDAPSStatus
+        , Network.AWS.DirectoryService.Types.LDAPSType
+        , Network.AWS.DirectoryService.Types.LogSubscription
+        , Network.AWS.DirectoryService.Types.OwnerDirectoryDescription
+        , Network.AWS.DirectoryService.Types.RadiusAuthenticationProtocol
+        , Network.AWS.DirectoryService.Types.RadiusSettings
+        , Network.AWS.DirectoryService.Types.RadiusStatus
+        , Network.AWS.DirectoryService.Types.ReplicationScope
+        , Network.AWS.DirectoryService.Types.SchemaExtensionInfo
+        , Network.AWS.DirectoryService.Types.SchemaExtensionStatus
+        , Network.AWS.DirectoryService.Types.SelectiveAuth
+        , Network.AWS.DirectoryService.Types.ShareMethod
+        , Network.AWS.DirectoryService.Types.ShareStatus
+        , Network.AWS.DirectoryService.Types.ShareTarget
+        , Network.AWS.DirectoryService.Types.SharedDirectory
+        , Network.AWS.DirectoryService.Types.Snapshot
+        , Network.AWS.DirectoryService.Types.SnapshotLimits
+        , Network.AWS.DirectoryService.Types.SnapshotStatus
+        , Network.AWS.DirectoryService.Types.SnapshotType
+        , Network.AWS.DirectoryService.Types.Tag
+        , Network.AWS.DirectoryService.Types.TargetType
+        , Network.AWS.DirectoryService.Types.TopicStatus
+        , Network.AWS.DirectoryService.Types.Trust
+        , Network.AWS.DirectoryService.Types.TrustDirection
+        , Network.AWS.DirectoryService.Types.TrustState
+        , Network.AWS.DirectoryService.Types.TrustType
+        , Network.AWS.DirectoryService.Types.UnshareTarget
 
     build-depends:
           amazonka-core == 1.6.1.*

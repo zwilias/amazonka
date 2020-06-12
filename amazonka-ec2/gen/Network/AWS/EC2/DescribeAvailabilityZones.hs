@@ -44,23 +44,24 @@ module Network.AWS.EC2.DescribeAvailabilityZones
     ) where
 
 import Network.AWS.EC2.Types
-import Network.AWS.EC2.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 
 -- | /See:/ 'describeAvailabilityZones' smart constructor.
-data DescribeAvailabilityZones =
-  DescribeAvailabilityZones'
-    { _dazZoneNames            :: !(Maybe [Text])
-    , _dazAllAvailabilityZones :: !(Maybe Bool)
-    , _dazZoneIds              :: !(Maybe [Text])
-    , _dazFilters              :: !(Maybe [Filter])
-    , _dazDryRun               :: !(Maybe Bool)
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data DescribeAvailabilityZones = DescribeAvailabilityZones'{_dazZoneNames
+                                                            :: !(Maybe [Text]),
+                                                            _dazAllAvailabilityZones
+                                                            :: !(Maybe Bool),
+                                                            _dazZoneIds ::
+                                                            !(Maybe [Text]),
+                                                            _dazFilters ::
+                                                            !(Maybe [Filter]),
+                                                            _dazDryRun ::
+                                                            !(Maybe Bool)}
+                                   deriving (Eq, Read, Show, Data, Typeable,
+                                             Generic)
 
 -- | Creates a value of 'DescribeAvailabilityZones' with the minimum fields required to make a request.
 --
@@ -77,15 +78,11 @@ data DescribeAvailabilityZones =
 -- * 'dazDryRun' - Checks whether you have the required permissions for the action, without actually making the request, and provides an error response. If you have the required permissions, the error response is @DryRunOperation@ . Otherwise, it is @UnauthorizedOperation@ .
 describeAvailabilityZones
     :: DescribeAvailabilityZones
-describeAvailabilityZones =
-  DescribeAvailabilityZones'
-    { _dazZoneNames = Nothing
-    , _dazAllAvailabilityZones = Nothing
-    , _dazZoneIds = Nothing
-    , _dazFilters = Nothing
-    , _dazDryRun = Nothing
-    }
-
+describeAvailabilityZones
+  = DescribeAvailabilityZones'{_dazZoneNames = Nothing,
+                               _dazAllAvailabilityZones = Nothing,
+                               _dazZoneIds = Nothing, _dazFilters = Nothing,
+                               _dazDryRun = Nothing}
 
 -- | The names of the Availability Zones and Local Zones.
 dazZoneNames :: Lens' DescribeAvailabilityZones [Text]
@@ -142,13 +139,15 @@ instance ToQuery DescribeAvailabilityZones where
                "DryRun" =: _dazDryRun]
 
 -- | /See:/ 'describeAvailabilityZonesResponse' smart constructor.
-data DescribeAvailabilityZonesResponse =
-  DescribeAvailabilityZonesResponse'
-    { _dazrsAvailabilityZones :: !(Maybe [AvailabilityZone])
-    , _dazrsResponseStatus    :: !Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data DescribeAvailabilityZonesResponse = DescribeAvailabilityZonesResponse'{_dazrsAvailabilityZones
+                                                                            ::
+                                                                            !(Maybe
+                                                                                [AvailabilityZone]),
+                                                                            _dazrsResponseStatus
+                                                                            ::
+                                                                            !Int}
+                                           deriving (Eq, Read, Show, Data,
+                                                     Typeable, Generic)
 
 -- | Creates a value of 'DescribeAvailabilityZonesResponse' with the minimum fields required to make a request.
 --
@@ -160,10 +159,10 @@ data DescribeAvailabilityZonesResponse =
 describeAvailabilityZonesResponse
     :: Int -- ^ 'dazrsResponseStatus'
     -> DescribeAvailabilityZonesResponse
-describeAvailabilityZonesResponse pResponseStatus_ =
-  DescribeAvailabilityZonesResponse'
-    {_dazrsAvailabilityZones = Nothing, _dazrsResponseStatus = pResponseStatus_}
-
+describeAvailabilityZonesResponse pResponseStatus_
+  = DescribeAvailabilityZonesResponse'{_dazrsAvailabilityZones
+                                         = Nothing,
+                                       _dazrsResponseStatus = pResponseStatus_}
 
 -- | Information about the Availability Zones and Local Zones.
 dazrsAvailabilityZones :: Lens' DescribeAvailabilityZonesResponse [AvailabilityZone]

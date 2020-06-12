@@ -41,16 +41,16 @@ import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 import Network.AWS.S3.Types
-import Network.AWS.S3.Types.Product
 
 -- | /See:/ 'getBucketAnalyticsConfiguration' smart constructor.
-data GetBucketAnalyticsConfiguration =
-  GetBucketAnalyticsConfiguration'
-    { _getBucket :: !BucketName
-    , _getId     :: !Text
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data GetBucketAnalyticsConfiguration = GetBucketAnalyticsConfiguration'{_getBucket
+                                                                        ::
+                                                                        !BucketName,
+                                                                        _getId
+                                                                        ::
+                                                                        !Text}
+                                         deriving (Eq, Read, Show, Data,
+                                                   Typeable, Generic)
 
 -- | Creates a value of 'GetBucketAnalyticsConfiguration' with the minimum fields required to make a request.
 --
@@ -63,9 +63,10 @@ getBucketAnalyticsConfiguration
     :: BucketName -- ^ 'getBucket'
     -> Text -- ^ 'getId'
     -> GetBucketAnalyticsConfiguration
-getBucketAnalyticsConfiguration pBucket_ pId_ =
-  GetBucketAnalyticsConfiguration' {_getBucket = pBucket_, _getId = pId_}
-
+getBucketAnalyticsConfiguration pBucket_ pId_
+  = GetBucketAnalyticsConfiguration'{_getBucket =
+                                       pBucket_,
+                                     _getId = pId_}
 
 -- | The name of the bucket from which an analytics configuration is retrieved.
 getBucket :: Lens' GetBucketAnalyticsConfiguration BucketName
@@ -105,13 +106,15 @@ instance ToQuery GetBucketAnalyticsConfiguration
           = mconcat ["id" =: _getId, "analytics"]
 
 -- | /See:/ 'getBucketAnalyticsConfigurationResponse' smart constructor.
-data GetBucketAnalyticsConfigurationResponse =
-  GetBucketAnalyticsConfigurationResponse'
-    { _gbacrsAnalyticsConfiguration :: !(Maybe AnalyticsConfiguration)
-    , _gbacrsResponseStatus         :: !Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data GetBucketAnalyticsConfigurationResponse = GetBucketAnalyticsConfigurationResponse'{_gbacrsAnalyticsConfiguration
+                                                                                        ::
+                                                                                        !(Maybe
+                                                                                            AnalyticsConfiguration),
+                                                                                        _gbacrsResponseStatus
+                                                                                        ::
+                                                                                        !Int}
+                                                 deriving (Eq, Read, Show, Data,
+                                                           Typeable, Generic)
 
 -- | Creates a value of 'GetBucketAnalyticsConfigurationResponse' with the minimum fields required to make a request.
 --
@@ -123,12 +126,12 @@ data GetBucketAnalyticsConfigurationResponse =
 getBucketAnalyticsConfigurationResponse
     :: Int -- ^ 'gbacrsResponseStatus'
     -> GetBucketAnalyticsConfigurationResponse
-getBucketAnalyticsConfigurationResponse pResponseStatus_ =
-  GetBucketAnalyticsConfigurationResponse'
-    { _gbacrsAnalyticsConfiguration = Nothing
-    , _gbacrsResponseStatus = pResponseStatus_
-    }
-
+getBucketAnalyticsConfigurationResponse
+  pResponseStatus_
+  = GetBucketAnalyticsConfigurationResponse'{_gbacrsAnalyticsConfiguration
+                                               = Nothing,
+                                             _gbacrsResponseStatus =
+                                               pResponseStatus_}
 
 -- | The configuration and any analyses for the analytics filter.
 gbacrsAnalyticsConfiguration :: Lens' GetBucketAnalyticsConfigurationResponse (Maybe AnalyticsConfiguration)

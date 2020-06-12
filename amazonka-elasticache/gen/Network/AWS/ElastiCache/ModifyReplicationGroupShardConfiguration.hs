@@ -21,7 +21,7 @@
 -- Performs horizontal scaling on a Redis (cluster mode enabled) cluster with no downtime. Requires Redis engine version 3.2.10 or newer. For information on upgrading your engine to a newer version, see <http://docs.aws.amazon.com/AmazonElastiCache/latest/UserGuide/VersionManagement.html Upgrading Engine Versions> in the Amazon ElastiCache User Guide.
 --
 --
--- For more information on ElastiCache for Redis online horizontal scaling, see <http://docs.aws.amazon.com/AmazonElastiCache/latest/UserGuide/redis-cluster-resharding-online.html ElastiCache for Redis Horizontal Scaling>
+-- For more information on ElastiCache for Redis online horizontal scaling, see <http://docs.aws.amazon.com/AmazonElastiCache/latest/UserGuide/redis-cluster-resharding-online.html ElastiCache for Redis Horizontal Scaling> 
 --
 module Network.AWS.ElastiCache.ModifyReplicationGroupShardConfiguration
     (
@@ -44,7 +44,6 @@ module Network.AWS.ElastiCache.ModifyReplicationGroupShardConfiguration
     ) where
 
 import Network.AWS.ElastiCache.Types
-import Network.AWS.ElastiCache.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.Request
@@ -55,16 +54,26 @@ import Network.AWS.Response
 --
 --
 -- /See:/ 'modifyReplicationGroupShardConfiguration' smart constructor.
-data ModifyReplicationGroupShardConfiguration =
-  ModifyReplicationGroupShardConfiguration'
-    { _mrgscReshardingConfiguration :: !(Maybe [ReshardingConfiguration])
-    , _mrgscNodeGroupsToRemove      :: !(Maybe [Text])
-    , _mrgscReplicationGroupId      :: !Text
-    , _mrgscNodeGroupCount          :: !Int
-    , _mrgscApplyImmediately        :: !Bool
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data ModifyReplicationGroupShardConfiguration = ModifyReplicationGroupShardConfiguration'{_mrgscReshardingConfiguration
+                                                                                          ::
+                                                                                          !(Maybe
+                                                                                              [ReshardingConfiguration]),
+                                                                                          _mrgscNodeGroupsToRemove
+                                                                                          ::
+                                                                                          !(Maybe
+                                                                                              [Text]),
+                                                                                          _mrgscReplicationGroupId
+                                                                                          ::
+                                                                                          !Text,
+                                                                                          _mrgscNodeGroupCount
+                                                                                          ::
+                                                                                          !Int,
+                                                                                          _mrgscApplyImmediately
+                                                                                          ::
+                                                                                          !Bool}
+                                                  deriving (Eq, Read, Show,
+                                                            Data, Typeable,
+                                                            Generic)
 
 -- | Creates a value of 'ModifyReplicationGroupShardConfiguration' with the minimum fields required to make a request.
 --
@@ -84,15 +93,19 @@ modifyReplicationGroupShardConfiguration
     -> Int -- ^ 'mrgscNodeGroupCount'
     -> Bool -- ^ 'mrgscApplyImmediately'
     -> ModifyReplicationGroupShardConfiguration
-modifyReplicationGroupShardConfiguration pReplicationGroupId_ pNodeGroupCount_ pApplyImmediately_ =
-  ModifyReplicationGroupShardConfiguration'
-    { _mrgscReshardingConfiguration = Nothing
-    , _mrgscNodeGroupsToRemove = Nothing
-    , _mrgscReplicationGroupId = pReplicationGroupId_
-    , _mrgscNodeGroupCount = pNodeGroupCount_
-    , _mrgscApplyImmediately = pApplyImmediately_
-    }
-
+modifyReplicationGroupShardConfiguration
+  pReplicationGroupId_ pNodeGroupCount_
+  pApplyImmediately_
+  = ModifyReplicationGroupShardConfiguration'{_mrgscReshardingConfiguration
+                                                = Nothing,
+                                              _mrgscNodeGroupsToRemove =
+                                                Nothing,
+                                              _mrgscReplicationGroupId =
+                                                pReplicationGroupId_,
+                                              _mrgscNodeGroupCount =
+                                                pNodeGroupCount_,
+                                              _mrgscApplyImmediately =
+                                                pApplyImmediately_}
 
 -- | Specifies the preferred availability zones for each node group in the cluster. If the value of @NodeGroupCount@ is greater than the current number of node groups (shards), you can use this parameter to specify the preferred availability zones of the cluster's shards. If you omit this parameter ElastiCache selects availability zones for you. You can specify this parameter only if the value of @NodeGroupCount@ is greater than the current number of node groups (shards).
 mrgscReshardingConfiguration :: Lens' ModifyReplicationGroupShardConfiguration [ReshardingConfiguration]
@@ -167,13 +180,17 @@ instance ToQuery
                "ApplyImmediately" =: _mrgscApplyImmediately]
 
 -- | /See:/ 'modifyReplicationGroupShardConfigurationResponse' smart constructor.
-data ModifyReplicationGroupShardConfigurationResponse =
-  ModifyReplicationGroupShardConfigurationResponse'
-    { _mrgscrsReplicationGroup :: !(Maybe ReplicationGroup)
-    , _mrgscrsResponseStatus   :: !Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data ModifyReplicationGroupShardConfigurationResponse = ModifyReplicationGroupShardConfigurationResponse'{_mrgscrsReplicationGroup
+                                                                                                          ::
+                                                                                                          !(Maybe
+                                                                                                              ReplicationGroup),
+                                                                                                          _mrgscrsResponseStatus
+                                                                                                          ::
+                                                                                                          !Int}
+                                                          deriving (Eq, Read,
+                                                                    Show, Data,
+                                                                    Typeable,
+                                                                    Generic)
 
 -- | Creates a value of 'ModifyReplicationGroupShardConfigurationResponse' with the minimum fields required to make a request.
 --
@@ -185,12 +202,12 @@ data ModifyReplicationGroupShardConfigurationResponse =
 modifyReplicationGroupShardConfigurationResponse
     :: Int -- ^ 'mrgscrsResponseStatus'
     -> ModifyReplicationGroupShardConfigurationResponse
-modifyReplicationGroupShardConfigurationResponse pResponseStatus_ =
-  ModifyReplicationGroupShardConfigurationResponse'
-    { _mrgscrsReplicationGroup = Nothing
-    , _mrgscrsResponseStatus = pResponseStatus_
-    }
-
+modifyReplicationGroupShardConfigurationResponse
+  pResponseStatus_
+  = ModifyReplicationGroupShardConfigurationResponse'{_mrgscrsReplicationGroup
+                                                        = Nothing,
+                                                      _mrgscrsResponseStatus =
+                                                        pResponseStatus_}
 
 -- | Undocumented member.
 mrgscrsReplicationGroup :: Lens' ModifyReplicationGroupShardConfigurationResponse (Maybe ReplicationGroup)

@@ -41,21 +41,18 @@ module Network.AWS.DynamoDB.ListGlobalTables
     ) where
 
 import Network.AWS.DynamoDB.Types
-import Network.AWS.DynamoDB.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 
 -- | /See:/ 'listGlobalTables' smart constructor.
-data ListGlobalTables =
-  ListGlobalTables'
-    { _lgtRegionName                    :: !(Maybe Text)
-    , _lgtExclusiveStartGlobalTableName :: !(Maybe Text)
-    , _lgtLimit                         :: !(Maybe Nat)
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data ListGlobalTables = ListGlobalTables'{_lgtRegionName
+                                          :: !(Maybe Text),
+                                          _lgtExclusiveStartGlobalTableName ::
+                                          !(Maybe Text),
+                                          _lgtLimit :: !(Maybe Nat)}
+                          deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'ListGlobalTables' with the minimum fields required to make a request.
 --
@@ -68,13 +65,10 @@ data ListGlobalTables =
 -- * 'lgtLimit' - The maximum number of table names to return, if the parameter is not specified DynamoDB defaults to 100. If the number of global tables DynamoDB finds reaches this limit, it stops the operation and returns the table names collected up to that point, with a table name in the @LastEvaluatedGlobalTableName@ to apply in a subsequent operation to the @ExclusiveStartGlobalTableName@ parameter.
 listGlobalTables
     :: ListGlobalTables
-listGlobalTables =
-  ListGlobalTables'
-    { _lgtRegionName = Nothing
-    , _lgtExclusiveStartGlobalTableName = Nothing
-    , _lgtLimit = Nothing
-    }
-
+listGlobalTables
+  = ListGlobalTables'{_lgtRegionName = Nothing,
+                      _lgtExclusiveStartGlobalTableName = Nothing,
+                      _lgtLimit = Nothing}
 
 -- | Lists the global tables in a specific Region.
 lgtRegionName :: Lens' ListGlobalTables (Maybe Text)
@@ -128,14 +122,15 @@ instance ToQuery ListGlobalTables where
         toQuery = const mempty
 
 -- | /See:/ 'listGlobalTablesResponse' smart constructor.
-data ListGlobalTablesResponse =
-  ListGlobalTablesResponse'
-    { _lgtrsLastEvaluatedGlobalTableName :: !(Maybe Text)
-    , _lgtrsGlobalTables                 :: !(Maybe [GlobalTable])
-    , _lgtrsResponseStatus               :: !Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data ListGlobalTablesResponse = ListGlobalTablesResponse'{_lgtrsLastEvaluatedGlobalTableName
+                                                          :: !(Maybe Text),
+                                                          _lgtrsGlobalTables ::
+                                                          !(Maybe
+                                                              [GlobalTable]),
+                                                          _lgtrsResponseStatus
+                                                          :: !Int}
+                                  deriving (Eq, Read, Show, Data, Typeable,
+                                            Generic)
 
 -- | Creates a value of 'ListGlobalTablesResponse' with the minimum fields required to make a request.
 --
@@ -149,13 +144,11 @@ data ListGlobalTablesResponse =
 listGlobalTablesResponse
     :: Int -- ^ 'lgtrsResponseStatus'
     -> ListGlobalTablesResponse
-listGlobalTablesResponse pResponseStatus_ =
-  ListGlobalTablesResponse'
-    { _lgtrsLastEvaluatedGlobalTableName = Nothing
-    , _lgtrsGlobalTables = Nothing
-    , _lgtrsResponseStatus = pResponseStatus_
-    }
-
+listGlobalTablesResponse pResponseStatus_
+  = ListGlobalTablesResponse'{_lgtrsLastEvaluatedGlobalTableName
+                                = Nothing,
+                              _lgtrsGlobalTables = Nothing,
+                              _lgtrsResponseStatus = pResponseStatus_}
 
 -- | Last evaluated global table name.
 lgtrsLastEvaluatedGlobalTableName :: Lens' ListGlobalTablesResponse (Maybe Text)

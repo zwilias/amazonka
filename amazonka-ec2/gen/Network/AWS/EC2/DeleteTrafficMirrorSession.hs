@@ -39,20 +39,18 @@ module Network.AWS.EC2.DeleteTrafficMirrorSession
     ) where
 
 import Network.AWS.EC2.Types
-import Network.AWS.EC2.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 
 -- | /See:/ 'deleteTrafficMirrorSession' smart constructor.
-data DeleteTrafficMirrorSession =
-  DeleteTrafficMirrorSession'
-    { _dtmstDryRun                 :: !(Maybe Bool)
-    , _dtmstTrafficMirrorSessionId :: !Text
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data DeleteTrafficMirrorSession = DeleteTrafficMirrorSession'{_dtmstDryRun
+                                                              :: !(Maybe Bool),
+                                                              _dtmstTrafficMirrorSessionId
+                                                              :: !Text}
+                                    deriving (Eq, Read, Show, Data, Typeable,
+                                              Generic)
 
 -- | Creates a value of 'DeleteTrafficMirrorSession' with the minimum fields required to make a request.
 --
@@ -64,12 +62,10 @@ data DeleteTrafficMirrorSession =
 deleteTrafficMirrorSession
     :: Text -- ^ 'dtmstTrafficMirrorSessionId'
     -> DeleteTrafficMirrorSession
-deleteTrafficMirrorSession pTrafficMirrorSessionId_ =
-  DeleteTrafficMirrorSession'
-    { _dtmstDryRun = Nothing
-    , _dtmstTrafficMirrorSessionId = pTrafficMirrorSessionId_
-    }
-
+deleteTrafficMirrorSession pTrafficMirrorSessionId_
+  = DeleteTrafficMirrorSession'{_dtmstDryRun = Nothing,
+                                _dtmstTrafficMirrorSessionId =
+                                  pTrafficMirrorSessionId_}
 
 -- | Checks whether you have the required permissions for the action, without actually making the request, and provides an error response. If you have the required permissions, the error response is @DryRunOperation@ . Otherwise, it is @UnauthorizedOperation@ .
 dtmstDryRun :: Lens' DeleteTrafficMirrorSession (Maybe Bool)
@@ -111,13 +107,15 @@ instance ToQuery DeleteTrafficMirrorSession where
                  _dtmstTrafficMirrorSessionId]
 
 -- | /See:/ 'deleteTrafficMirrorSessionResponse' smart constructor.
-data DeleteTrafficMirrorSessionResponse =
-  DeleteTrafficMirrorSessionResponse'
-    { _dtmstrsTrafficMirrorSessionId :: !(Maybe Text)
-    , _dtmstrsResponseStatus         :: !Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data DeleteTrafficMirrorSessionResponse = DeleteTrafficMirrorSessionResponse'{_dtmstrsTrafficMirrorSessionId
+                                                                              ::
+                                                                              !(Maybe
+                                                                                  Text),
+                                                                              _dtmstrsResponseStatus
+                                                                              ::
+                                                                              !Int}
+                                            deriving (Eq, Read, Show, Data,
+                                                      Typeable, Generic)
 
 -- | Creates a value of 'DeleteTrafficMirrorSessionResponse' with the minimum fields required to make a request.
 --
@@ -129,12 +127,11 @@ data DeleteTrafficMirrorSessionResponse =
 deleteTrafficMirrorSessionResponse
     :: Int -- ^ 'dtmstrsResponseStatus'
     -> DeleteTrafficMirrorSessionResponse
-deleteTrafficMirrorSessionResponse pResponseStatus_ =
-  DeleteTrafficMirrorSessionResponse'
-    { _dtmstrsTrafficMirrorSessionId = Nothing
-    , _dtmstrsResponseStatus = pResponseStatus_
-    }
-
+deleteTrafficMirrorSessionResponse pResponseStatus_
+  = DeleteTrafficMirrorSessionResponse'{_dtmstrsTrafficMirrorSessionId
+                                          = Nothing,
+                                        _dtmstrsResponseStatus =
+                                          pResponseStatus_}
 
 -- | The ID of the deleted Traffic Mirror session.
 dtmstrsTrafficMirrorSessionId :: Lens' DeleteTrafficMirrorSessionResponse (Maybe Text)

@@ -60,8 +60,12 @@ library
         , Network.AWS.EFS.Waiters
 
     other-modules:
-          Network.AWS.EFS.Types.Product
-        , Network.AWS.EFS.Types.Sum
+          Network.AWS.EFS.Types.FileSystemDescription
+        , Network.AWS.EFS.Types.FileSystemSize
+        , Network.AWS.EFS.Types.LifeCycleState
+        , Network.AWS.EFS.Types.MountTargetDescription
+        , Network.AWS.EFS.Types.PerformanceMode
+        , Network.AWS.EFS.Types.Tag
 
     build-depends:
           amazonka-core == 1.6.1.*

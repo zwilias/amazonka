@@ -39,17 +39,14 @@ import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 import Network.AWS.S3.Types
-import Network.AWS.S3.Types.Product
 
 -- | /See:/ 'putBucketReplication' smart constructor.
-data PutBucketReplication =
-  PutBucketReplication'
-    { _pbrContentMD5               :: !(Maybe Text)
-    , _pbrBucket                   :: !BucketName
-    , _pbrReplicationConfiguration :: !ReplicationConfiguration
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data PutBucketReplication = PutBucketReplication'{_pbrContentMD5
+                                                  :: !(Maybe Text),
+                                                  _pbrBucket :: !BucketName,
+                                                  _pbrReplicationConfiguration
+                                                  :: !ReplicationConfiguration}
+                              deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'PutBucketReplication' with the minimum fields required to make a request.
 --
@@ -64,13 +61,12 @@ putBucketReplication
     :: BucketName -- ^ 'pbrBucket'
     -> ReplicationConfiguration -- ^ 'pbrReplicationConfiguration'
     -> PutBucketReplication
-putBucketReplication pBucket_ pReplicationConfiguration_ =
-  PutBucketReplication'
-    { _pbrContentMD5 = Nothing
-    , _pbrBucket = pBucket_
-    , _pbrReplicationConfiguration = pReplicationConfiguration_
-    }
-
+putBucketReplication pBucket_
+  pReplicationConfiguration_
+  = PutBucketReplication'{_pbrContentMD5 = Nothing,
+                          _pbrBucket = pBucket_,
+                          _pbrReplicationConfiguration =
+                            pReplicationConfiguration_}
 
 -- | Undocumented member.
 pbrContentMD5 :: Lens' PutBucketReplication (Maybe Text)
@@ -113,16 +109,15 @@ instance ToQuery PutBucketReplication where
         toQuery = const (mconcat ["replication"])
 
 -- | /See:/ 'putBucketReplicationResponse' smart constructor.
-data PutBucketReplicationResponse =
-  PutBucketReplicationResponse'
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data PutBucketReplicationResponse = PutBucketReplicationResponse'
+                                      deriving (Eq, Read, Show, Data, Typeable,
+                                                Generic)
 
 -- | Creates a value of 'PutBucketReplicationResponse' with the minimum fields required to make a request.
 --
 putBucketReplicationResponse
     :: PutBucketReplicationResponse
-putBucketReplicationResponse = PutBucketReplicationResponse'
-
+putBucketReplicationResponse
+  = PutBucketReplicationResponse'
 
 instance NFData PutBucketReplicationResponse where

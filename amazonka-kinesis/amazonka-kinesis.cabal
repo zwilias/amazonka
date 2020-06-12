@@ -72,8 +72,22 @@ library
         , Network.AWS.Kinesis.Waiters
 
     other-modules:
-          Network.AWS.Kinesis.Types.Product
-        , Network.AWS.Kinesis.Types.Sum
+          Network.AWS.Kinesis.Types.EncryptionType
+        , Network.AWS.Kinesis.Types.EnhancedMetrics
+        , Network.AWS.Kinesis.Types.EnhancedMonitoringOutput
+        , Network.AWS.Kinesis.Types.HashKeyRange
+        , Network.AWS.Kinesis.Types.MetricsName
+        , Network.AWS.Kinesis.Types.PutRecordsRequestEntry
+        , Network.AWS.Kinesis.Types.PutRecordsResultEntry
+        , Network.AWS.Kinesis.Types.Record
+        , Network.AWS.Kinesis.Types.ScalingType
+        , Network.AWS.Kinesis.Types.SequenceNumberRange
+        , Network.AWS.Kinesis.Types.Shard
+        , Network.AWS.Kinesis.Types.ShardIteratorType
+        , Network.AWS.Kinesis.Types.StreamDescription
+        , Network.AWS.Kinesis.Types.StreamDescriptionSummary
+        , Network.AWS.Kinesis.Types.StreamStatus
+        , Network.AWS.Kinesis.Types.Tag
 
     build-depends:
           amazonka-core == 1.6.1.*

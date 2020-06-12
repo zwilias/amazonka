@@ -18,7 +18,7 @@
 -- Stability   : auto-generated
 -- Portability : non-portable (GHC extensions)
 --
--- Retrieves a forecast for how much Amazon Web Services predicts that you will use over the forecast time period that you select, based on your past usage.
+-- Retrieves a forecast for how much Amazon Web Services predicts that you will use over the forecast time period that you select, based on your past usage. 
 --
 --
 module Network.AWS.CostExplorer.GetUsageForecast
@@ -43,23 +43,19 @@ module Network.AWS.CostExplorer.GetUsageForecast
     ) where
 
 import Network.AWS.CostExplorer.Types
-import Network.AWS.CostExplorer.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 
 -- | /See:/ 'getUsageForecast' smart constructor.
-data GetUsageForecast =
-  GetUsageForecast'
-    { _gufPredictionIntervalLevel :: !(Maybe Nat)
-    , _gufFilter                  :: !(Maybe Expression)
-    , _gufTimePeriod              :: !DateInterval
-    , _gufMetric                  :: !Metric
-    , _gufGranularity             :: !Granularity
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data GetUsageForecast = GetUsageForecast'{_gufPredictionIntervalLevel
+                                          :: !(Maybe Nat),
+                                          _gufFilter :: !(Maybe Expression),
+                                          _gufTimePeriod :: !DateInterval,
+                                          _gufMetric :: !Metric,
+                                          _gufGranularity :: !Granularity}
+                          deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'GetUsageForecast' with the minimum fields required to make a request.
 --
@@ -79,15 +75,12 @@ getUsageForecast
     -> Metric -- ^ 'gufMetric'
     -> Granularity -- ^ 'gufGranularity'
     -> GetUsageForecast
-getUsageForecast pTimePeriod_ pMetric_ pGranularity_ =
-  GetUsageForecast'
-    { _gufPredictionIntervalLevel = Nothing
-    , _gufFilter = Nothing
-    , _gufTimePeriod = pTimePeriod_
-    , _gufMetric = pMetric_
-    , _gufGranularity = pGranularity_
-    }
-
+getUsageForecast pTimePeriod_ pMetric_ pGranularity_
+  = GetUsageForecast'{_gufPredictionIntervalLevel =
+                        Nothing,
+                      _gufFilter = Nothing, _gufTimePeriod = pTimePeriod_,
+                      _gufMetric = pMetric_,
+                      _gufGranularity = pGranularity_}
 
 -- | Cost Explorer always returns the mean forecast as a single point. You can request a prediction interval around the mean by specifying a confidence level. The higher the confidence level, the more confident Cost Explorer is about the actual value falling in the prediction interval. Higher confidence levels result in wider prediction intervals.
 gufPredictionIntervalLevel :: Lens' GetUsageForecast (Maybe Natural)
@@ -152,14 +145,16 @@ instance ToQuery GetUsageForecast where
         toQuery = const mempty
 
 -- | /See:/ 'getUsageForecastResponse' smart constructor.
-data GetUsageForecastResponse =
-  GetUsageForecastResponse'
-    { _gufrsForecastResultsByTime :: !(Maybe [ForecastResult])
-    , _gufrsTotal                 :: !(Maybe MetricValue)
-    , _gufrsResponseStatus        :: !Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data GetUsageForecastResponse = GetUsageForecastResponse'{_gufrsForecastResultsByTime
+                                                          ::
+                                                          !(Maybe
+                                                              [ForecastResult]),
+                                                          _gufrsTotal ::
+                                                          !(Maybe MetricValue),
+                                                          _gufrsResponseStatus
+                                                          :: !Int}
+                                  deriving (Eq, Read, Show, Data, Typeable,
+                                            Generic)
 
 -- | Creates a value of 'GetUsageForecastResponse' with the minimum fields required to make a request.
 --
@@ -173,13 +168,11 @@ data GetUsageForecastResponse =
 getUsageForecastResponse
     :: Int -- ^ 'gufrsResponseStatus'
     -> GetUsageForecastResponse
-getUsageForecastResponse pResponseStatus_ =
-  GetUsageForecastResponse'
-    { _gufrsForecastResultsByTime = Nothing
-    , _gufrsTotal = Nothing
-    , _gufrsResponseStatus = pResponseStatus_
-    }
-
+getUsageForecastResponse pResponseStatus_
+  = GetUsageForecastResponse'{_gufrsForecastResultsByTime
+                                = Nothing,
+                              _gufrsTotal = Nothing,
+                              _gufrsResponseStatus = pResponseStatus_}
 
 -- | The forecasts for your query, in order. For @DAILY@ forecasts, this is a list of days. For @MONTHLY@ forecasts, this is a list of months.
 gufrsForecastResultsByTime :: Lens' GetUsageForecastResponse [ForecastResult]

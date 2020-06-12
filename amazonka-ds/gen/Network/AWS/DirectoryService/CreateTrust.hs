@@ -46,7 +46,6 @@ module Network.AWS.DirectoryService.CreateTrust
     ) where
 
 import Network.AWS.DirectoryService.Types
-import Network.AWS.DirectoryService.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.Request
@@ -59,18 +58,15 @@ import Network.AWS.Response
 --
 --
 -- /See:/ 'createTrust' smart constructor.
-data CreateTrust =
-  CreateTrust'
-    { _ctConditionalForwarderIPAddrs :: !(Maybe [Text])
-    , _ctTrustType                   :: !(Maybe TrustType)
-    , _ctSelectiveAuth               :: !(Maybe SelectiveAuth)
-    , _ctDirectoryId                 :: !Text
-    , _ctRemoteDomainName            :: !Text
-    , _ctTrustPassword               :: !(Sensitive Text)
-    , _ctTrustDirection              :: !TrustDirection
-    }
-  deriving (Eq, Show, Data, Typeable, Generic)
-
+data CreateTrust = CreateTrust'{_ctConditionalForwarderIPAddrs
+                                :: !(Maybe [Text]),
+                                _ctTrustType :: !(Maybe TrustType),
+                                _ctSelectiveAuth :: !(Maybe SelectiveAuth),
+                                _ctDirectoryId :: !Text,
+                                _ctRemoteDomainName :: !Text,
+                                _ctTrustPassword :: !(Sensitive Text),
+                                _ctTrustDirection :: !TrustDirection}
+                     deriving (Eq, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'CreateTrust' with the minimum fields required to make a request.
 --
@@ -95,17 +91,15 @@ createTrust
     -> Text -- ^ 'ctTrustPassword'
     -> TrustDirection -- ^ 'ctTrustDirection'
     -> CreateTrust
-createTrust pDirectoryId_ pRemoteDomainName_ pTrustPassword_ pTrustDirection_ =
-  CreateTrust'
-    { _ctConditionalForwarderIPAddrs = Nothing
-    , _ctTrustType = Nothing
-    , _ctSelectiveAuth = Nothing
-    , _ctDirectoryId = pDirectoryId_
-    , _ctRemoteDomainName = pRemoteDomainName_
-    , _ctTrustPassword = _Sensitive # pTrustPassword_
-    , _ctTrustDirection = pTrustDirection_
-    }
-
+createTrust pDirectoryId_ pRemoteDomainName_
+  pTrustPassword_ pTrustDirection_
+  = CreateTrust'{_ctConditionalForwarderIPAddrs =
+                   Nothing,
+                 _ctTrustType = Nothing, _ctSelectiveAuth = Nothing,
+                 _ctDirectoryId = pDirectoryId_,
+                 _ctRemoteDomainName = pRemoteDomainName_,
+                 _ctTrustPassword = _Sensitive # pTrustPassword_,
+                 _ctTrustDirection = pTrustDirection_}
 
 -- | The IP addresses of the remote DNS server associated with RemoteDomainName.
 ctConditionalForwarderIPAddrs :: Lens' CreateTrust [Text]
@@ -182,13 +176,10 @@ instance ToQuery CreateTrust where
 --
 --
 -- /See:/ 'createTrustResponse' smart constructor.
-data CreateTrustResponse =
-  CreateTrustResponse'
-    { _ctrsTrustId        :: !(Maybe Text)
-    , _ctrsResponseStatus :: !Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data CreateTrustResponse = CreateTrustResponse'{_ctrsTrustId
+                                                :: !(Maybe Text),
+                                                _ctrsResponseStatus :: !Int}
+                             deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'CreateTrustResponse' with the minimum fields required to make a request.
 --
@@ -200,10 +191,9 @@ data CreateTrustResponse =
 createTrustResponse
     :: Int -- ^ 'ctrsResponseStatus'
     -> CreateTrustResponse
-createTrustResponse pResponseStatus_ =
-  CreateTrustResponse'
-    {_ctrsTrustId = Nothing, _ctrsResponseStatus = pResponseStatus_}
-
+createTrustResponse pResponseStatus_
+  = CreateTrustResponse'{_ctrsTrustId = Nothing,
+                         _ctrsResponseStatus = pResponseStatus_}
 
 -- | A unique identifier for the trust relationship that was created.
 ctrsTrustId :: Lens' CreateTrustResponse (Maybe Text)

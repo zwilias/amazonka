@@ -45,7 +45,6 @@ module Network.AWS.Batch.DescribeComputeEnvironments
     ) where
 
 import Network.AWS.Batch.Types
-import Network.AWS.Batch.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Pager
 import Network.AWS.Prelude
@@ -53,14 +52,15 @@ import Network.AWS.Request
 import Network.AWS.Response
 
 -- | /See:/ 'describeComputeEnvironments' smart constructor.
-data DescribeComputeEnvironments =
-  DescribeComputeEnvironments'
-    { _dceComputeEnvironments :: !(Maybe [Text])
-    , _dceNextToken           :: !(Maybe Text)
-    , _dceMaxResults          :: !(Maybe Int)
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data DescribeComputeEnvironments = DescribeComputeEnvironments'{_dceComputeEnvironments
+                                                                ::
+                                                                !(Maybe [Text]),
+                                                                _dceNextToken ::
+                                                                !(Maybe Text),
+                                                                _dceMaxResults
+                                                                :: !(Maybe Int)}
+                                     deriving (Eq, Read, Show, Data, Typeable,
+                                               Generic)
 
 -- | Creates a value of 'DescribeComputeEnvironments' with the minimum fields required to make a request.
 --
@@ -73,13 +73,11 @@ data DescribeComputeEnvironments =
 -- * 'dceMaxResults' - The maximum number of cluster results returned by @DescribeComputeEnvironments@ in paginated output. When this parameter is used, @DescribeComputeEnvironments@ only returns @maxResults@ results in a single page along with a @nextToken@ response element. The remaining results of the initial request can be seen by sending another @DescribeComputeEnvironments@ request with the returned @nextToken@ value. This value can be between 1 and 100. If this parameter is not used, then @DescribeComputeEnvironments@ returns up to 100 results and a @nextToken@ value if applicable.
 describeComputeEnvironments
     :: DescribeComputeEnvironments
-describeComputeEnvironments =
-  DescribeComputeEnvironments'
-    { _dceComputeEnvironments = Nothing
-    , _dceNextToken = Nothing
-    , _dceMaxResults = Nothing
-    }
-
+describeComputeEnvironments
+  = DescribeComputeEnvironments'{_dceComputeEnvironments
+                                   = Nothing,
+                                 _dceNextToken = Nothing,
+                                 _dceMaxResults = Nothing}
 
 -- | A list of up to 100 compute environment names or full Amazon Resource Name (ARN) entries.
 dceComputeEnvironments :: Lens' DescribeComputeEnvironments [Text]
@@ -139,14 +137,19 @@ instance ToQuery DescribeComputeEnvironments where
         toQuery = const mempty
 
 -- | /See:/ 'describeComputeEnvironmentsResponse' smart constructor.
-data DescribeComputeEnvironmentsResponse =
-  DescribeComputeEnvironmentsResponse'
-    { _drsComputeEnvironments :: !(Maybe [ComputeEnvironmentDetail])
-    , _drsNextToken           :: !(Maybe Text)
-    , _drsResponseStatus      :: !Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data DescribeComputeEnvironmentsResponse = DescribeComputeEnvironmentsResponse'{_drsComputeEnvironments
+                                                                                ::
+                                                                                !(Maybe
+                                                                                    [ComputeEnvironmentDetail]),
+                                                                                _drsNextToken
+                                                                                ::
+                                                                                !(Maybe
+                                                                                    Text),
+                                                                                _drsResponseStatus
+                                                                                ::
+                                                                                !Int}
+                                             deriving (Eq, Read, Show, Data,
+                                                       Typeable, Generic)
 
 -- | Creates a value of 'DescribeComputeEnvironmentsResponse' with the minimum fields required to make a request.
 --
@@ -160,13 +163,11 @@ data DescribeComputeEnvironmentsResponse =
 describeComputeEnvironmentsResponse
     :: Int -- ^ 'drsResponseStatus'
     -> DescribeComputeEnvironmentsResponse
-describeComputeEnvironmentsResponse pResponseStatus_ =
-  DescribeComputeEnvironmentsResponse'
-    { _drsComputeEnvironments = Nothing
-    , _drsNextToken = Nothing
-    , _drsResponseStatus = pResponseStatus_
-    }
-
+describeComputeEnvironmentsResponse pResponseStatus_
+  = DescribeComputeEnvironmentsResponse'{_drsComputeEnvironments
+                                           = Nothing,
+                                         _drsNextToken = Nothing,
+                                         _drsResponseStatus = pResponseStatus_}
 
 -- | The list of compute environments.
 drsComputeEnvironments :: Lens' DescribeComputeEnvironmentsResponse [ComputeEnvironmentDetail]

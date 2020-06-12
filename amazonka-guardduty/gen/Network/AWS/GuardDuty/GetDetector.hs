@@ -39,19 +39,15 @@ module Network.AWS.GuardDuty.GetDetector
     ) where
 
 import Network.AWS.GuardDuty.Types
-import Network.AWS.GuardDuty.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 
 -- | /See:/ 'getDetector' smart constructor.
-newtype GetDetector =
-  GetDetector'
-    { _gdDetectorId :: Text
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+newtype GetDetector = GetDetector'{_gdDetectorId ::
+                                   Text}
+                        deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'GetDetector' with the minimum fields required to make a request.
 --
@@ -61,8 +57,8 @@ newtype GetDetector =
 getDetector
     :: Text -- ^ 'gdDetectorId'
     -> GetDetector
-getDetector pDetectorId_ = GetDetector' {_gdDetectorId = pDetectorId_}
-
+getDetector pDetectorId_
+  = GetDetector'{_gdDetectorId = pDetectorId_}
 
 -- | The unique ID of the detector that you want to retrieve.
 gdDetectorId :: Lens' GetDetector Text
@@ -99,16 +95,14 @@ instance ToQuery GetDetector where
         toQuery = const mempty
 
 -- | /See:/ 'getDetectorResponse' smart constructor.
-data GetDetectorResponse =
-  GetDetectorResponse'
-    { _gdrsStatus         :: !(Maybe DetectorStatus)
-    , _gdrsCreatedAt      :: !(Maybe Text)
-    , _gdrsUpdatedAt      :: !(Maybe Text)
-    , _gdrsServiceRole    :: !(Maybe Text)
-    , _gdrsResponseStatus :: !Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data GetDetectorResponse = GetDetectorResponse'{_gdrsStatus
+                                                :: !(Maybe DetectorStatus),
+                                                _gdrsCreatedAt :: !(Maybe Text),
+                                                _gdrsUpdatedAt :: !(Maybe Text),
+                                                _gdrsServiceRole ::
+                                                !(Maybe Text),
+                                                _gdrsResponseStatus :: !Int}
+                             deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'GetDetectorResponse' with the minimum fields required to make a request.
 --
@@ -126,15 +120,11 @@ data GetDetectorResponse =
 getDetectorResponse
     :: Int -- ^ 'gdrsResponseStatus'
     -> GetDetectorResponse
-getDetectorResponse pResponseStatus_ =
-  GetDetectorResponse'
-    { _gdrsStatus = Nothing
-    , _gdrsCreatedAt = Nothing
-    , _gdrsUpdatedAt = Nothing
-    , _gdrsServiceRole = Nothing
-    , _gdrsResponseStatus = pResponseStatus_
-    }
-
+getDetectorResponse pResponseStatus_
+  = GetDetectorResponse'{_gdrsStatus = Nothing,
+                         _gdrsCreatedAt = Nothing, _gdrsUpdatedAt = Nothing,
+                         _gdrsServiceRole = Nothing,
+                         _gdrsResponseStatus = pResponseStatus_}
 
 -- | Undocumented member.
 gdrsStatus :: Lens' GetDetectorResponse (Maybe DetectorStatus)

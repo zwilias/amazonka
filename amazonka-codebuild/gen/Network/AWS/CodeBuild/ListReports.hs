@@ -18,7 +18,7 @@
 -- Stability   : auto-generated
 -- Portability : non-portable (GHC extensions)
 --
--- Returns a list of ARNs for the reports in the current AWS account.
+-- Returns a list of ARNs for the reports in the current AWS account. 
 --
 --
 module Network.AWS.CodeBuild.ListReports
@@ -42,58 +42,50 @@ module Network.AWS.CodeBuild.ListReports
     ) where
 
 import Network.AWS.CodeBuild.Types
-import Network.AWS.CodeBuild.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 
 -- | /See:/ 'listReports' smart constructor.
-data ListReports =
-  ListReports'
-    { _lrSortOrder  :: !(Maybe SortOrderType)
-    , _lrNextToken  :: !(Maybe Text)
-    , _lrFilter     :: !(Maybe ReportFilter)
-    , _lrMaxResults :: !(Maybe Nat)
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data ListReports = ListReports'{_lrSortOrder ::
+                                !(Maybe SortOrderType),
+                                _lrNextToken :: !(Maybe Text),
+                                _lrFilter :: !(Maybe ReportFilter),
+                                _lrMaxResults :: !(Maybe Nat)}
+                     deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'ListReports' with the minimum fields required to make a request.
 --
 -- Use one of the following lenses to modify other fields as desired:
 --
--- * 'lrSortOrder' - Specifies the sort order for the list of returned reports. Valid values are:      * @ASCENDING@ : return reports in chronological order based on their creation date.      * @DESCENDING@ : return reports in the reverse chronological order based on their creation date.
+-- * 'lrSortOrder' - Specifies the sort order for the list of returned reports. Valid values are:      * @ASCENDING@ : return reports in chronological order based on their creation date.      * @DESCENDING@ : return reports in the reverse chronological order based on their creation date. 
 --
--- * 'lrNextToken' - During a previous call, the maximum number of items that can be returned is the value specified in @maxResults@ . If there more items in the list, then a unique string called a /nextToken/ is returned. To get the next batch of items in the list, call this operation again, adding the next token to the call. To get all of the items in the list, keep calling this operation with each subsequent next token that is returned, until no more next tokens are returned.
+-- * 'lrNextToken' - During a previous call, the maximum number of items that can be returned is the value specified in @maxResults@ . If there more items in the list, then a unique string called a /nextToken/ is returned. To get the next batch of items in the list, call this operation again, adding the next token to the call. To get all of the items in the list, keep calling this operation with each subsequent next token that is returned, until no more next tokens are returned. 
 --
--- * 'lrFilter' - A @ReportFilter@ object used to filter the returned reports.
+-- * 'lrFilter' - A @ReportFilter@ object used to filter the returned reports. 
 --
--- * 'lrMaxResults' - The maximum number of paginated reports returned per response. Use @nextToken@ to iterate pages in the list of returned @Report@ objects. The default value is 100.
+-- * 'lrMaxResults' - The maximum number of paginated reports returned per response. Use @nextToken@ to iterate pages in the list of returned @Report@ objects. The default value is 100. 
 listReports
     :: ListReports
-listReports =
-  ListReports'
-    { _lrSortOrder = Nothing
-    , _lrNextToken = Nothing
-    , _lrFilter = Nothing
-    , _lrMaxResults = Nothing
-    }
+listReports
+  = ListReports'{_lrSortOrder = Nothing,
+                 _lrNextToken = Nothing, _lrFilter = Nothing,
+                 _lrMaxResults = Nothing}
 
-
--- | Specifies the sort order for the list of returned reports. Valid values are:      * @ASCENDING@ : return reports in chronological order based on their creation date.      * @DESCENDING@ : return reports in the reverse chronological order based on their creation date.
+-- | Specifies the sort order for the list of returned reports. Valid values are:      * @ASCENDING@ : return reports in chronological order based on their creation date.      * @DESCENDING@ : return reports in the reverse chronological order based on their creation date. 
 lrSortOrder :: Lens' ListReports (Maybe SortOrderType)
 lrSortOrder = lens _lrSortOrder (\ s a -> s{_lrSortOrder = a})
 
--- | During a previous call, the maximum number of items that can be returned is the value specified in @maxResults@ . If there more items in the list, then a unique string called a /nextToken/ is returned. To get the next batch of items in the list, call this operation again, adding the next token to the call. To get all of the items in the list, keep calling this operation with each subsequent next token that is returned, until no more next tokens are returned.
+-- | During a previous call, the maximum number of items that can be returned is the value specified in @maxResults@ . If there more items in the list, then a unique string called a /nextToken/ is returned. To get the next batch of items in the list, call this operation again, adding the next token to the call. To get all of the items in the list, keep calling this operation with each subsequent next token that is returned, until no more next tokens are returned. 
 lrNextToken :: Lens' ListReports (Maybe Text)
 lrNextToken = lens _lrNextToken (\ s a -> s{_lrNextToken = a})
 
--- | A @ReportFilter@ object used to filter the returned reports.
+-- | A @ReportFilter@ object used to filter the returned reports. 
 lrFilter :: Lens' ListReports (Maybe ReportFilter)
 lrFilter = lens _lrFilter (\ s a -> s{_lrFilter = a})
 
--- | The maximum number of paginated reports returned per response. Use @nextToken@ to iterate pages in the list of returned @Report@ objects. The default value is 100.
+-- | The maximum number of paginated reports returned per response. Use @nextToken@ to iterate pages in the list of returned @Report@ objects. The default value is 100. 
 lrMaxResults :: Lens' ListReports (Maybe Natural)
 lrMaxResults = lens _lrMaxResults (\ s a -> s{_lrMaxResults = a}) . mapping _Nat
 
@@ -136,40 +128,34 @@ instance ToQuery ListReports where
         toQuery = const mempty
 
 -- | /See:/ 'listReportsResponse' smart constructor.
-data ListReportsResponse =
-  ListReportsResponse'
-    { _lrrsReports        :: !(Maybe (List1 Text))
-    , _lrrsNextToken      :: !(Maybe Text)
-    , _lrrsResponseStatus :: !Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data ListReportsResponse = ListReportsResponse'{_lrrsReports
+                                                :: !(Maybe (List1 Text)),
+                                                _lrrsNextToken :: !(Maybe Text),
+                                                _lrrsResponseStatus :: !Int}
+                             deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'ListReportsResponse' with the minimum fields required to make a request.
 --
 -- Use one of the following lenses to modify other fields as desired:
 --
--- * 'lrrsReports' - The list of returned ARNs for the reports in the current AWS account.
+-- * 'lrrsReports' - The list of returned ARNs for the reports in the current AWS account. 
 --
--- * 'lrrsNextToken' - During a previous call, the maximum number of items that can be returned is the value specified in @maxResults@ . If there more items in the list, then a unique string called a /nextToken/ is returned. To get the next batch of items in the list, call this operation again, adding the next token to the call. To get all of the items in the list, keep calling this operation with each subsequent next token that is returned, until no more next tokens are returned.
+-- * 'lrrsNextToken' - During a previous call, the maximum number of items that can be returned is the value specified in @maxResults@ . If there more items in the list, then a unique string called a /nextToken/ is returned. To get the next batch of items in the list, call this operation again, adding the next token to the call. To get all of the items in the list, keep calling this operation with each subsequent next token that is returned, until no more next tokens are returned. 
 --
 -- * 'lrrsResponseStatus' - -- | The response status code.
 listReportsResponse
     :: Int -- ^ 'lrrsResponseStatus'
     -> ListReportsResponse
-listReportsResponse pResponseStatus_ =
-  ListReportsResponse'
-    { _lrrsReports = Nothing
-    , _lrrsNextToken = Nothing
-    , _lrrsResponseStatus = pResponseStatus_
-    }
+listReportsResponse pResponseStatus_
+  = ListReportsResponse'{_lrrsReports = Nothing,
+                         _lrrsNextToken = Nothing,
+                         _lrrsResponseStatus = pResponseStatus_}
 
-
--- | The list of returned ARNs for the reports in the current AWS account.
+-- | The list of returned ARNs for the reports in the current AWS account. 
 lrrsReports :: Lens' ListReportsResponse (Maybe (NonEmpty Text))
 lrrsReports = lens _lrrsReports (\ s a -> s{_lrrsReports = a}) . mapping _List1
 
--- | During a previous call, the maximum number of items that can be returned is the value specified in @maxResults@ . If there more items in the list, then a unique string called a /nextToken/ is returned. To get the next batch of items in the list, call this operation again, adding the next token to the call. To get all of the items in the list, keep calling this operation with each subsequent next token that is returned, until no more next tokens are returned.
+-- | During a previous call, the maximum number of items that can be returned is the value specified in @maxResults@ . If there more items in the list, then a unique string called a /nextToken/ is returned. To get the next batch of items in the list, call this operation again, adding the next token to the call. To get all of the items in the list, keep calling this operation with each subsequent next token that is returned, until no more next tokens are returned. 
 lrrsNextToken :: Lens' ListReportsResponse (Maybe Text)
 lrrsNextToken = lens _lrrsNextToken (\ s a -> s{_lrrsNextToken = a})
 

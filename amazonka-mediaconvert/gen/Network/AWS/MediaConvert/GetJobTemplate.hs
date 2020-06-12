@@ -37,18 +37,14 @@ module Network.AWS.MediaConvert.GetJobTemplate
 
 import Network.AWS.Lens
 import Network.AWS.MediaConvert.Types
-import Network.AWS.MediaConvert.Types.Product
 import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 
 -- | /See:/ 'getJobTemplate' smart constructor.
-newtype GetJobTemplate =
-  GetJobTemplate'
-    { _gjtName :: Text
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+newtype GetJobTemplate = GetJobTemplate'{_gjtName ::
+                                         Text}
+                           deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'GetJobTemplate' with the minimum fields required to make a request.
 --
@@ -58,8 +54,8 @@ newtype GetJobTemplate =
 getJobTemplate
     :: Text -- ^ 'gjtName'
     -> GetJobTemplate
-getJobTemplate pName_ = GetJobTemplate' {_gjtName = pName_}
-
+getJobTemplate pName_
+  = GetJobTemplate'{_gjtName = pName_}
 
 -- | The name of the job template.
 gjtName :: Lens' GetJobTemplate Text
@@ -94,13 +90,12 @@ instance ToQuery GetJobTemplate where
         toQuery = const mempty
 
 -- | /See:/ 'getJobTemplateResponse' smart constructor.
-data GetJobTemplateResponse =
-  GetJobTemplateResponse'
-    { _gjtrsJobTemplate    :: !(Maybe JobTemplate)
-    , _gjtrsResponseStatus :: !Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data GetJobTemplateResponse = GetJobTemplateResponse'{_gjtrsJobTemplate
+                                                      :: !(Maybe JobTemplate),
+                                                      _gjtrsResponseStatus ::
+                                                      !Int}
+                                deriving (Eq, Read, Show, Data, Typeable,
+                                          Generic)
 
 -- | Creates a value of 'GetJobTemplateResponse' with the minimum fields required to make a request.
 --
@@ -112,10 +107,10 @@ data GetJobTemplateResponse =
 getJobTemplateResponse
     :: Int -- ^ 'gjtrsResponseStatus'
     -> GetJobTemplateResponse
-getJobTemplateResponse pResponseStatus_ =
-  GetJobTemplateResponse'
-    {_gjtrsJobTemplate = Nothing, _gjtrsResponseStatus = pResponseStatus_}
-
+getJobTemplateResponse pResponseStatus_
+  = GetJobTemplateResponse'{_gjtrsJobTemplate =
+                              Nothing,
+                            _gjtrsResponseStatus = pResponseStatus_}
 
 -- | Undocumented member.
 gjtrsJobTemplate :: Lens' GetJobTemplateResponse (Maybe JobTemplate)

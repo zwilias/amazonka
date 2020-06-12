@@ -36,19 +36,15 @@ module Network.AWS.GuardDuty.GetMasterAccount
     ) where
 
 import Network.AWS.GuardDuty.Types
-import Network.AWS.GuardDuty.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 
 -- | /See:/ 'getMasterAccount' smart constructor.
-newtype GetMasterAccount =
-  GetMasterAccount'
-    { _gmaDetectorId :: Text
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+newtype GetMasterAccount = GetMasterAccount'{_gmaDetectorId
+                                             :: Text}
+                             deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'GetMasterAccount' with the minimum fields required to make a request.
 --
@@ -58,9 +54,8 @@ newtype GetMasterAccount =
 getMasterAccount
     :: Text -- ^ 'gmaDetectorId'
     -> GetMasterAccount
-getMasterAccount pDetectorId_ =
-  GetMasterAccount' {_gmaDetectorId = pDetectorId_}
-
+getMasterAccount pDetectorId_
+  = GetMasterAccount'{_gmaDetectorId = pDetectorId_}
 
 -- | The unique ID of the detector of the GuardDuty member account.
 gmaDetectorId :: Lens' GetMasterAccount Text
@@ -95,13 +90,12 @@ instance ToQuery GetMasterAccount where
         toQuery = const mempty
 
 -- | /See:/ 'getMasterAccountResponse' smart constructor.
-data GetMasterAccountResponse =
-  GetMasterAccountResponse'
-    { _gmarsMaster         :: !(Maybe Master)
-    , _gmarsResponseStatus :: !Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data GetMasterAccountResponse = GetMasterAccountResponse'{_gmarsMaster
+                                                          :: !(Maybe Master),
+                                                          _gmarsResponseStatus
+                                                          :: !Int}
+                                  deriving (Eq, Read, Show, Data, Typeable,
+                                            Generic)
 
 -- | Creates a value of 'GetMasterAccountResponse' with the minimum fields required to make a request.
 --
@@ -113,10 +107,9 @@ data GetMasterAccountResponse =
 getMasterAccountResponse
     :: Int -- ^ 'gmarsResponseStatus'
     -> GetMasterAccountResponse
-getMasterAccountResponse pResponseStatus_ =
-  GetMasterAccountResponse'
-    {_gmarsMaster = Nothing, _gmarsResponseStatus = pResponseStatus_}
-
+getMasterAccountResponse pResponseStatus_
+  = GetMasterAccountResponse'{_gmarsMaster = Nothing,
+                              _gmarsResponseStatus = pResponseStatus_}
 
 -- | Undocumented member.
 gmarsMaster :: Lens' GetMasterAccountResponse (Maybe Master)

@@ -40,20 +40,16 @@ module Network.AWS.GuardDuty.GetThreatIntelSet
     ) where
 
 import Network.AWS.GuardDuty.Types
-import Network.AWS.GuardDuty.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 
 -- | /See:/ 'getThreatIntelSet' smart constructor.
-data GetThreatIntelSet =
-  GetThreatIntelSet'
-    { _gtisThreatIntelSetId :: !Text
-    , _gtisDetectorId       :: !Text
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data GetThreatIntelSet = GetThreatIntelSet'{_gtisThreatIntelSetId
+                                            :: !Text,
+                                            _gtisDetectorId :: !Text}
+                           deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'GetThreatIntelSet' with the minimum fields required to make a request.
 --
@@ -66,10 +62,10 @@ getThreatIntelSet
     :: Text -- ^ 'gtisThreatIntelSetId'
     -> Text -- ^ 'gtisDetectorId'
     -> GetThreatIntelSet
-getThreatIntelSet pThreatIntelSetId_ pDetectorId_ =
-  GetThreatIntelSet'
-    {_gtisThreatIntelSetId = pThreatIntelSetId_, _gtisDetectorId = pDetectorId_}
-
+getThreatIntelSet pThreatIntelSetId_ pDetectorId_
+  = GetThreatIntelSet'{_gtisThreatIntelSetId =
+                         pThreatIntelSetId_,
+                       _gtisDetectorId = pDetectorId_}
 
 -- | The unique ID that specifies the ThreatIntelSet that you want to describe.
 gtisThreatIntelSetId :: Lens' GetThreatIntelSet Text
@@ -112,16 +108,21 @@ instance ToQuery GetThreatIntelSet where
         toQuery = const mempty
 
 -- | /See:/ 'getThreatIntelSetResponse' smart constructor.
-data GetThreatIntelSetResponse =
-  GetThreatIntelSetResponse'
-    { _gtisrsStatus         :: !(Maybe ThreatIntelSetStatus)
-    , _gtisrsLocation       :: !(Maybe Text)
-    , _gtisrsFormat         :: !(Maybe ThreatIntelSetFormat)
-    , _gtisrsName           :: !(Maybe Text)
-    , _gtisrsResponseStatus :: !Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data GetThreatIntelSetResponse = GetThreatIntelSetResponse'{_gtisrsStatus
+                                                            ::
+                                                            !(Maybe
+                                                                ThreatIntelSetStatus),
+                                                            _gtisrsLocation ::
+                                                            !(Maybe Text),
+                                                            _gtisrsFormat ::
+                                                            !(Maybe
+                                                                ThreatIntelSetFormat),
+                                                            _gtisrsName ::
+                                                            !(Maybe Text),
+                                                            _gtisrsResponseStatus
+                                                            :: !Int}
+                                   deriving (Eq, Read, Show, Data, Typeable,
+                                             Generic)
 
 -- | Creates a value of 'GetThreatIntelSetResponse' with the minimum fields required to make a request.
 --
@@ -139,15 +140,11 @@ data GetThreatIntelSetResponse =
 getThreatIntelSetResponse
     :: Int -- ^ 'gtisrsResponseStatus'
     -> GetThreatIntelSetResponse
-getThreatIntelSetResponse pResponseStatus_ =
-  GetThreatIntelSetResponse'
-    { _gtisrsStatus = Nothing
-    , _gtisrsLocation = Nothing
-    , _gtisrsFormat = Nothing
-    , _gtisrsName = Nothing
-    , _gtisrsResponseStatus = pResponseStatus_
-    }
-
+getThreatIntelSetResponse pResponseStatus_
+  = GetThreatIntelSetResponse'{_gtisrsStatus = Nothing,
+                               _gtisrsLocation = Nothing,
+                               _gtisrsFormat = Nothing, _gtisrsName = Nothing,
+                               _gtisrsResponseStatus = pResponseStatus_}
 
 -- | The status of threatIntelSet file uploaded.
 gtisrsStatus :: Lens' GetThreatIntelSetResponse (Maybe ThreatIntelSetStatus)

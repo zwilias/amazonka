@@ -23,47 +23,47 @@
 --
 -- Fleet-related operations include:
 --
---     * 'CreateFleet'
+--     * 'CreateFleet' 
 --
---     * 'ListFleets'
+--     * 'ListFleets' 
 --
---     * 'DeleteFleet'
+--     * 'DeleteFleet' 
 --
 --     * Describe fleets:
 --
---     * 'DescribeFleetAttributes'
+--     * 'DescribeFleetAttributes' 
 --
---     * 'DescribeFleetCapacity'
+--     * 'DescribeFleetCapacity' 
 --
---     * 'DescribeFleetPortSettings'
+--     * 'DescribeFleetPortSettings' 
 --
---     * 'DescribeFleetUtilization'
+--     * 'DescribeFleetUtilization' 
 --
---     * 'DescribeRuntimeConfiguration'
+--     * 'DescribeRuntimeConfiguration' 
 --
---     * 'DescribeEC2InstanceLimits'
+--     * 'DescribeEC2InstanceLimits' 
 --
---     * 'DescribeFleetEvents'
+--     * 'DescribeFleetEvents' 
 --
 --
 --
 --     * Update fleets:
 --
---     * 'UpdateFleetAttributes'
+--     * 'UpdateFleetAttributes' 
 --
---     * 'UpdateFleetCapacity'
+--     * 'UpdateFleetCapacity' 
 --
---     * 'UpdateFleetPortSettings'
+--     * 'UpdateFleetPortSettings' 
 --
---     * 'UpdateRuntimeConfiguration'
+--     * 'UpdateRuntimeConfiguration' 
 --
 --
 --
 --     * Manage fleet actions:
 --
---     * 'StartFleetActions'
+--     * 'StartFleetActions' 
 --
---     * 'StopFleetActions'
+--     * 'StopFleetActions' 
 --
 --
 --
@@ -89,7 +89,6 @@ module Network.AWS.GameLift.ListFleets
     ) where
 
 import Network.AWS.GameLift.Types
-import Network.AWS.GameLift.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.Request
@@ -100,14 +99,11 @@ import Network.AWS.Response
 --
 --
 -- /See:/ 'listFleets' smart constructor.
-data ListFleets =
-  ListFleets'
-    { _lfBuildId   :: !(Maybe Text)
-    , _lfNextToken :: !(Maybe Text)
-    , _lfLimit     :: !(Maybe Nat)
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data ListFleets = ListFleets'{_lfBuildId ::
+                              !(Maybe Text),
+                              _lfNextToken :: !(Maybe Text),
+                              _lfLimit :: !(Maybe Nat)}
+                    deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'ListFleets' with the minimum fields required to make a request.
 --
@@ -120,9 +116,9 @@ data ListFleets =
 -- * 'lfLimit' - Maximum number of results to return. Use this parameter with @NextToken@ to get results as a set of sequential pages.
 listFleets
     :: ListFleets
-listFleets =
-  ListFleets' {_lfBuildId = Nothing, _lfNextToken = Nothing, _lfLimit = Nothing}
-
+listFleets
+  = ListFleets'{_lfBuildId = Nothing,
+                _lfNextToken = Nothing, _lfLimit = Nothing}
 
 -- | Unique identifier for a build to return fleets for. Use this parameter to return only fleets using the specified build. To retrieve all fleets, leave this parameter empty.
 lfBuildId :: Lens' ListFleets (Maybe Text)
@@ -178,14 +174,12 @@ instance ToQuery ListFleets where
 --
 --
 -- /See:/ 'listFleetsResponse' smart constructor.
-data ListFleetsResponse =
-  ListFleetsResponse'
-    { _lfrsNextToken      :: !(Maybe Text)
-    , _lfrsFleetIds       :: !(Maybe (List1 Text))
-    , _lfrsResponseStatus :: !Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data ListFleetsResponse = ListFleetsResponse'{_lfrsNextToken
+                                              :: !(Maybe Text),
+                                              _lfrsFleetIds ::
+                                              !(Maybe (List1 Text)),
+                                              _lfrsResponseStatus :: !Int}
+                            deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'ListFleetsResponse' with the minimum fields required to make a request.
 --
@@ -199,13 +193,10 @@ data ListFleetsResponse =
 listFleetsResponse
     :: Int -- ^ 'lfrsResponseStatus'
     -> ListFleetsResponse
-listFleetsResponse pResponseStatus_ =
-  ListFleetsResponse'
-    { _lfrsNextToken = Nothing
-    , _lfrsFleetIds = Nothing
-    , _lfrsResponseStatus = pResponseStatus_
-    }
-
+listFleetsResponse pResponseStatus_
+  = ListFleetsResponse'{_lfrsNextToken = Nothing,
+                        _lfrsFleetIds = Nothing,
+                        _lfrsResponseStatus = pResponseStatus_}
 
 -- | Token that indicates where to resume retrieving results on the next call to this action. If no token is returned, these results represent the end of the list.
 lfrsNextToken :: Lens' ListFleetsResponse (Maybe Text)

@@ -46,7 +46,6 @@ module Network.AWS.AWSHealth.DescribeEvents
     ) where
 
 import Network.AWS.AWSHealth.Types
-import Network.AWS.AWSHealth.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Pager
 import Network.AWS.Prelude
@@ -54,15 +53,12 @@ import Network.AWS.Request
 import Network.AWS.Response
 
 -- | /See:/ 'describeEvents' smart constructor.
-data DescribeEvents =
-  DescribeEvents'
-    { _deLocale     :: !(Maybe Text)
-    , _deNextToken  :: !(Maybe Text)
-    , _deFilter     :: !(Maybe EventFilter)
-    , _deMaxResults :: !(Maybe Nat)
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data DescribeEvents = DescribeEvents'{_deLocale ::
+                                      !(Maybe Text),
+                                      _deNextToken :: !(Maybe Text),
+                                      _deFilter :: !(Maybe EventFilter),
+                                      _deMaxResults :: !(Maybe Nat)}
+                        deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'DescribeEvents' with the minimum fields required to make a request.
 --
@@ -77,14 +73,10 @@ data DescribeEvents =
 -- * 'deMaxResults' - The maximum number of items to return in one batch, between 10 and 100, inclusive.
 describeEvents
     :: DescribeEvents
-describeEvents =
-  DescribeEvents'
-    { _deLocale = Nothing
-    , _deNextToken = Nothing
-    , _deFilter = Nothing
-    , _deMaxResults = Nothing
-    }
-
+describeEvents
+  = DescribeEvents'{_deLocale = Nothing,
+                    _deNextToken = Nothing, _deFilter = Nothing,
+                    _deMaxResults = Nothing}
 
 -- | The locale (language) to return information in. English (en) is the default and the only supported value at this time.
 deLocale :: Lens' DescribeEvents (Maybe Text)
@@ -148,14 +140,14 @@ instance ToQuery DescribeEvents where
         toQuery = const mempty
 
 -- | /See:/ 'describeEventsResponse' smart constructor.
-data DescribeEventsResponse =
-  DescribeEventsResponse'
-    { _dersNextToken      :: !(Maybe Text)
-    , _dersEvents         :: !(Maybe [Event])
-    , _dersResponseStatus :: !Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data DescribeEventsResponse = DescribeEventsResponse'{_dersNextToken
+                                                      :: !(Maybe Text),
+                                                      _dersEvents ::
+                                                      !(Maybe [Event]),
+                                                      _dersResponseStatus ::
+                                                      !Int}
+                                deriving (Eq, Read, Show, Data, Typeable,
+                                          Generic)
 
 -- | Creates a value of 'DescribeEventsResponse' with the minimum fields required to make a request.
 --
@@ -169,13 +161,10 @@ data DescribeEventsResponse =
 describeEventsResponse
     :: Int -- ^ 'dersResponseStatus'
     -> DescribeEventsResponse
-describeEventsResponse pResponseStatus_ =
-  DescribeEventsResponse'
-    { _dersNextToken = Nothing
-    , _dersEvents = Nothing
-    , _dersResponseStatus = pResponseStatus_
-    }
-
+describeEventsResponse pResponseStatus_
+  = DescribeEventsResponse'{_dersNextToken = Nothing,
+                            _dersEvents = Nothing,
+                            _dersResponseStatus = pResponseStatus_}
 
 -- | If the results of a search are large, only a portion of the results are returned, and a @nextToken@ pagination token is returned in the response. To retrieve the next batch of results, reissue the search request and include the returned token. When all results have been returned, the response does not contain a pagination token value.
 dersNextToken :: Lens' DescribeEventsResponse (Maybe Text)

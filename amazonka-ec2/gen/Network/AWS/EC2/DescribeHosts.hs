@@ -46,7 +46,6 @@ module Network.AWS.EC2.DescribeHosts
     ) where
 
 import Network.AWS.EC2.Types
-import Network.AWS.EC2.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Pager
 import Network.AWS.Prelude
@@ -54,15 +53,12 @@ import Network.AWS.Request
 import Network.AWS.Response
 
 -- | /See:/ 'describeHosts' smart constructor.
-data DescribeHosts =
-  DescribeHosts'
-    { _dhNextToken  :: !(Maybe Text)
-    , _dhFilter     :: !(Maybe [Filter])
-    , _dhHostIds    :: !(Maybe [Text])
-    , _dhMaxResults :: !(Maybe Int)
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data DescribeHosts = DescribeHosts'{_dhNextToken ::
+                                    !(Maybe Text),
+                                    _dhFilter :: !(Maybe [Filter]),
+                                    _dhHostIds :: !(Maybe [Text]),
+                                    _dhMaxResults :: !(Maybe Int)}
+                       deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'DescribeHosts' with the minimum fields required to make a request.
 --
@@ -77,14 +73,10 @@ data DescribeHosts =
 -- * 'dhMaxResults' - The maximum number of results to return for the request in a single page. The remaining results can be seen by sending another request with the returned @nextToken@ value. This value can be between 5 and 500. If @maxResults@ is given a larger value than 500, you receive an error. You cannot specify this parameter and the host IDs parameter in the same request.
 describeHosts
     :: DescribeHosts
-describeHosts =
-  DescribeHosts'
-    { _dhNextToken = Nothing
-    , _dhFilter = Nothing
-    , _dhHostIds = Nothing
-    , _dhMaxResults = Nothing
-    }
-
+describeHosts
+  = DescribeHosts'{_dhNextToken = Nothing,
+                   _dhFilter = Nothing, _dhHostIds = Nothing,
+                   _dhMaxResults = Nothing}
 
 -- | The token to use to retrieve the next page of results.
 dhNextToken :: Lens' DescribeHosts (Maybe Text)
@@ -142,14 +134,13 @@ instance ToQuery DescribeHosts where
                "MaxResults" =: _dhMaxResults]
 
 -- | /See:/ 'describeHostsResponse' smart constructor.
-data DescribeHostsResponse =
-  DescribeHostsResponse'
-    { _dhrsHosts          :: !(Maybe [Host])
-    , _dhrsNextToken      :: !(Maybe Text)
-    , _dhrsResponseStatus :: !Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data DescribeHostsResponse = DescribeHostsResponse'{_dhrsHosts
+                                                    :: !(Maybe [Host]),
+                                                    _dhrsNextToken ::
+                                                    !(Maybe Text),
+                                                    _dhrsResponseStatus :: !Int}
+                               deriving (Eq, Read, Show, Data, Typeable,
+                                         Generic)
 
 -- | Creates a value of 'DescribeHostsResponse' with the minimum fields required to make a request.
 --
@@ -163,13 +154,10 @@ data DescribeHostsResponse =
 describeHostsResponse
     :: Int -- ^ 'dhrsResponseStatus'
     -> DescribeHostsResponse
-describeHostsResponse pResponseStatus_ =
-  DescribeHostsResponse'
-    { _dhrsHosts = Nothing
-    , _dhrsNextToken = Nothing
-    , _dhrsResponseStatus = pResponseStatus_
-    }
-
+describeHostsResponse pResponseStatus_
+  = DescribeHostsResponse'{_dhrsHosts = Nothing,
+                           _dhrsNextToken = Nothing,
+                           _dhrsResponseStatus = pResponseStatus_}
 
 -- | Information about the Dedicated Hosts.
 dhrsHosts :: Lens' DescribeHostsResponse [Host]

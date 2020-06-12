@@ -39,20 +39,16 @@ module Network.AWS.FMS.GetComplianceDetail
     ) where
 
 import Network.AWS.FMS.Types
-import Network.AWS.FMS.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 
 -- | /See:/ 'getComplianceDetail' smart constructor.
-data GetComplianceDetail =
-  GetComplianceDetail'
-    { _gcdPolicyId      :: !Text
-    , _gcdMemberAccount :: !Text
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data GetComplianceDetail = GetComplianceDetail'{_gcdPolicyId
+                                                :: !Text,
+                                                _gcdMemberAccount :: !Text}
+                             deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'GetComplianceDetail' with the minimum fields required to make a request.
 --
@@ -65,10 +61,9 @@ getComplianceDetail
     :: Text -- ^ 'gcdPolicyId'
     -> Text -- ^ 'gcdMemberAccount'
     -> GetComplianceDetail
-getComplianceDetail pPolicyId_ pMemberAccount_ =
-  GetComplianceDetail'
-    {_gcdPolicyId = pPolicyId_, _gcdMemberAccount = pMemberAccount_}
-
+getComplianceDetail pPolicyId_ pMemberAccount_
+  = GetComplianceDetail'{_gcdPolicyId = pPolicyId_,
+                         _gcdMemberAccount = pMemberAccount_}
 
 -- | The ID of the policy that you want to get the details for. @PolicyId@ is returned by @PutPolicy@ and by @ListPolicies@ .
 gcdPolicyId :: Lens' GetComplianceDetail Text
@@ -117,13 +112,14 @@ instance ToQuery GetComplianceDetail where
         toQuery = const mempty
 
 -- | /See:/ 'getComplianceDetailResponse' smart constructor.
-data GetComplianceDetailResponse =
-  GetComplianceDetailResponse'
-    { _gcdrsPolicyComplianceDetail :: !(Maybe PolicyComplianceDetail)
-    , _gcdrsResponseStatus         :: !Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data GetComplianceDetailResponse = GetComplianceDetailResponse'{_gcdrsPolicyComplianceDetail
+                                                                ::
+                                                                !(Maybe
+                                                                    PolicyComplianceDetail),
+                                                                _gcdrsResponseStatus
+                                                                :: !Int}
+                                     deriving (Eq, Read, Show, Data, Typeable,
+                                               Generic)
 
 -- | Creates a value of 'GetComplianceDetailResponse' with the minimum fields required to make a request.
 --
@@ -135,12 +131,10 @@ data GetComplianceDetailResponse =
 getComplianceDetailResponse
     :: Int -- ^ 'gcdrsResponseStatus'
     -> GetComplianceDetailResponse
-getComplianceDetailResponse pResponseStatus_ =
-  GetComplianceDetailResponse'
-    { _gcdrsPolicyComplianceDetail = Nothing
-    , _gcdrsResponseStatus = pResponseStatus_
-    }
-
+getComplianceDetailResponse pResponseStatus_
+  = GetComplianceDetailResponse'{_gcdrsPolicyComplianceDetail
+                                   = Nothing,
+                                 _gcdrsResponseStatus = pResponseStatus_}
 
 -- | Information about the resources and the policy that you specified in the @GetComplianceDetail@ request.
 gcdrsPolicyComplianceDetail :: Lens' GetComplianceDetailResponse (Maybe PolicyComplianceDetail)

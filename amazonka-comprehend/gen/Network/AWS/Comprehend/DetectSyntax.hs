@@ -39,20 +39,15 @@ module Network.AWS.Comprehend.DetectSyntax
     ) where
 
 import Network.AWS.Comprehend.Types
-import Network.AWS.Comprehend.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 
 -- | /See:/ 'detectSyntax' smart constructor.
-data DetectSyntax =
-  DetectSyntax'
-    { _dText         :: !Text
-    , _dLanguageCode :: !SyntaxLanguageCode
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data DetectSyntax = DetectSyntax'{_dText :: !Text,
+                                  _dLanguageCode :: !SyntaxLanguageCode}
+                      deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'DetectSyntax' with the minimum fields required to make a request.
 --
@@ -65,9 +60,9 @@ detectSyntax
     :: Text -- ^ 'dText'
     -> SyntaxLanguageCode -- ^ 'dLanguageCode'
     -> DetectSyntax
-detectSyntax pText_ pLanguageCode_ =
-  DetectSyntax' {_dText = pText_, _dLanguageCode = pLanguageCode_}
-
+detectSyntax pText_ pLanguageCode_
+  = DetectSyntax'{_dText = pText_,
+                  _dLanguageCode = pLanguageCode_}
 
 -- | A UTF-8 string. Each string must contain fewer that 5,000 bytes of UTF encoded characters.
 dText :: Lens' DetectSyntax Text
@@ -114,13 +109,10 @@ instance ToQuery DetectSyntax where
         toQuery = const mempty
 
 -- | /See:/ 'detectSyntaxResponse' smart constructor.
-data DetectSyntaxResponse =
-  DetectSyntaxResponse'
-    { _dsrsSyntaxTokens   :: !(Maybe [SyntaxToken])
-    , _dsrsResponseStatus :: !Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data DetectSyntaxResponse = DetectSyntaxResponse'{_dsrsSyntaxTokens
+                                                  :: !(Maybe [SyntaxToken]),
+                                                  _dsrsResponseStatus :: !Int}
+                              deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'DetectSyntaxResponse' with the minimum fields required to make a request.
 --
@@ -132,10 +124,9 @@ data DetectSyntaxResponse =
 detectSyntaxResponse
     :: Int -- ^ 'dsrsResponseStatus'
     -> DetectSyntaxResponse
-detectSyntaxResponse pResponseStatus_ =
-  DetectSyntaxResponse'
-    {_dsrsSyntaxTokens = Nothing, _dsrsResponseStatus = pResponseStatus_}
-
+detectSyntaxResponse pResponseStatus_
+  = DetectSyntaxResponse'{_dsrsSyntaxTokens = Nothing,
+                          _dsrsResponseStatus = pResponseStatus_}
 
 -- | A collection of syntax tokens describing the text. For each token, the response provides the text, the token type, where the text begins and ends, and the level of confidence that Amazon Comprehend has that the token is correct. For a list of token types, see 'how-syntax' .
 dsrsSyntaxTokens :: Lens' DetectSyntaxResponse [SyntaxToken]

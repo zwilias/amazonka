@@ -42,22 +42,19 @@ module Network.AWS.AutoScalingPlans.UpdateScalingPlan
     ) where
 
 import Network.AWS.AutoScalingPlans.Types
-import Network.AWS.AutoScalingPlans.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 
 -- | /See:/ 'updateScalingPlan' smart constructor.
-data UpdateScalingPlan =
-  UpdateScalingPlan'
-    { _uspScalingInstructions :: !(Maybe [ScalingInstruction])
-    , _uspApplicationSource   :: !(Maybe ApplicationSource)
-    , _uspScalingPlanName     :: !Text
-    , _uspScalingPlanVersion  :: !Integer
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data UpdateScalingPlan = UpdateScalingPlan'{_uspScalingInstructions
+                                            :: !(Maybe [ScalingInstruction]),
+                                            _uspApplicationSource ::
+                                            !(Maybe ApplicationSource),
+                                            _uspScalingPlanName :: !Text,
+                                            _uspScalingPlanVersion :: !Integer}
+                           deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'UpdateScalingPlan' with the minimum fields required to make a request.
 --
@@ -74,14 +71,13 @@ updateScalingPlan
     :: Text -- ^ 'uspScalingPlanName'
     -> Integer -- ^ 'uspScalingPlanVersion'
     -> UpdateScalingPlan
-updateScalingPlan pScalingPlanName_ pScalingPlanVersion_ =
-  UpdateScalingPlan'
-    { _uspScalingInstructions = Nothing
-    , _uspApplicationSource = Nothing
-    , _uspScalingPlanName = pScalingPlanName_
-    , _uspScalingPlanVersion = pScalingPlanVersion_
-    }
-
+updateScalingPlan pScalingPlanName_
+  pScalingPlanVersion_
+  = UpdateScalingPlan'{_uspScalingInstructions =
+                         Nothing,
+                       _uspApplicationSource = Nothing,
+                       _uspScalingPlanName = pScalingPlanName_,
+                       _uspScalingPlanVersion = pScalingPlanVersion_}
 
 -- | The scaling instructions.
 uspScalingInstructions :: Lens' UpdateScalingPlan [ScalingInstruction]
@@ -139,12 +135,10 @@ instance ToQuery UpdateScalingPlan where
         toQuery = const mempty
 
 -- | /See:/ 'updateScalingPlanResponse' smart constructor.
-newtype UpdateScalingPlanResponse =
-  UpdateScalingPlanResponse'
-    { _usprsResponseStatus :: Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+newtype UpdateScalingPlanResponse = UpdateScalingPlanResponse'{_usprsResponseStatus
+                                                               :: Int}
+                                      deriving (Eq, Read, Show, Data, Typeable,
+                                                Generic)
 
 -- | Creates a value of 'UpdateScalingPlanResponse' with the minimum fields required to make a request.
 --
@@ -154,9 +148,9 @@ newtype UpdateScalingPlanResponse =
 updateScalingPlanResponse
     :: Int -- ^ 'usprsResponseStatus'
     -> UpdateScalingPlanResponse
-updateScalingPlanResponse pResponseStatus_ =
-  UpdateScalingPlanResponse' {_usprsResponseStatus = pResponseStatus_}
-
+updateScalingPlanResponse pResponseStatus_
+  = UpdateScalingPlanResponse'{_usprsResponseStatus =
+                                 pResponseStatus_}
 
 -- | -- | The response status code.
 usprsResponseStatus :: Lens' UpdateScalingPlanResponse Int

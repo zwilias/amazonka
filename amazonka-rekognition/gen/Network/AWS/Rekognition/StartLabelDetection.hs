@@ -52,31 +52,30 @@ module Network.AWS.Rekognition.StartLabelDetection
 import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.Rekognition.Types
-import Network.AWS.Rekognition.Types.Product
 import Network.AWS.Request
 import Network.AWS.Response
 
 -- | /See:/ 'startLabelDetection' smart constructor.
-data StartLabelDetection =
-  StartLabelDetection'
-    { _sldJobTag              :: !(Maybe Text)
-    , _sldNotificationChannel :: !(Maybe NotificationChannel)
-    , _sldClientRequestToken  :: !(Maybe Text)
-    , _sldMinConfidence       :: !(Maybe Double)
-    , _sldVideo               :: !Video
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data StartLabelDetection = StartLabelDetection'{_sldJobTag
+                                                :: !(Maybe Text),
+                                                _sldNotificationChannel ::
+                                                !(Maybe NotificationChannel),
+                                                _sldClientRequestToken ::
+                                                !(Maybe Text),
+                                                _sldMinConfidence ::
+                                                !(Maybe Double),
+                                                _sldVideo :: !Video}
+                             deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'StartLabelDetection' with the minimum fields required to make a request.
 --
 -- Use one of the following lenses to modify other fields as desired:
 --
--- * 'sldJobTag' - Unique identifier you specify to identify the job in the completion status published to the Amazon Simple Notification Service topic.
+-- * 'sldJobTag' - Unique identifier you specify to identify the job in the completion status published to the Amazon Simple Notification Service topic. 
 --
--- * 'sldNotificationChannel' - The Amazon SNS topic ARN you want Rekognition Video to publish the completion status of the label detection operation to.
+-- * 'sldNotificationChannel' - The Amazon SNS topic ARN you want Rekognition Video to publish the completion status of the label detection operation to. 
 --
--- * 'sldClientRequestToken' - Idempotent token used to identify the start request. If you use the same token with multiple @StartLabelDetection@ requests, the same @JobId@ is returned. Use @ClientRequestToken@ to prevent the same job from being accidently started more than once.
+-- * 'sldClientRequestToken' - Idempotent token used to identify the start request. If you use the same token with multiple @StartLabelDetection@ requests, the same @JobId@ is returned. Use @ClientRequestToken@ to prevent the same job from being accidently started more than once. 
 --
 -- * 'sldMinConfidence' - Specifies the minimum confidence that Rekognition Video must have in order to return a detected label. Confidence represents how certain Amazon Rekognition is that a label is correctly identified.0 is the lowest confidence. 100 is the highest confidence. Rekognition Video doesn't return any labels with a confidence level lower than this specified value. If you don't specify @MinConfidence@ , the operation returns labels with confidence values greater than or equal to 50 percent.
 --
@@ -84,25 +83,21 @@ data StartLabelDetection =
 startLabelDetection
     :: Video -- ^ 'sldVideo'
     -> StartLabelDetection
-startLabelDetection pVideo_ =
-  StartLabelDetection'
-    { _sldJobTag = Nothing
-    , _sldNotificationChannel = Nothing
-    , _sldClientRequestToken = Nothing
-    , _sldMinConfidence = Nothing
-    , _sldVideo = pVideo_
-    }
+startLabelDetection pVideo_
+  = StartLabelDetection'{_sldJobTag = Nothing,
+                         _sldNotificationChannel = Nothing,
+                         _sldClientRequestToken = Nothing,
+                         _sldMinConfidence = Nothing, _sldVideo = pVideo_}
 
-
--- | Unique identifier you specify to identify the job in the completion status published to the Amazon Simple Notification Service topic.
+-- | Unique identifier you specify to identify the job in the completion status published to the Amazon Simple Notification Service topic. 
 sldJobTag :: Lens' StartLabelDetection (Maybe Text)
 sldJobTag = lens _sldJobTag (\ s a -> s{_sldJobTag = a})
 
--- | The Amazon SNS topic ARN you want Rekognition Video to publish the completion status of the label detection operation to.
+-- | The Amazon SNS topic ARN you want Rekognition Video to publish the completion status of the label detection operation to. 
 sldNotificationChannel :: Lens' StartLabelDetection (Maybe NotificationChannel)
 sldNotificationChannel = lens _sldNotificationChannel (\ s a -> s{_sldNotificationChannel = a})
 
--- | Idempotent token used to identify the start request. If you use the same token with multiple @StartLabelDetection@ requests, the same @JobId@ is returned. Use @ClientRequestToken@ to prevent the same job from being accidently started more than once.
+-- | Idempotent token used to identify the start request. If you use the same token with multiple @StartLabelDetection@ requests, the same @JobId@ is returned. Use @ClientRequestToken@ to prevent the same job from being accidently started more than once. 
 sldClientRequestToken :: Lens' StartLabelDetection (Maybe Text)
 sldClientRequestToken = lens _sldClientRequestToken (\ s a -> s{_sldClientRequestToken = a})
 
@@ -156,30 +151,29 @@ instance ToQuery StartLabelDetection where
         toQuery = const mempty
 
 -- | /See:/ 'startLabelDetectionResponse' smart constructor.
-data StartLabelDetectionResponse =
-  StartLabelDetectionResponse'
-    { _sldrsJobId          :: !(Maybe Text)
-    , _sldrsResponseStatus :: !Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data StartLabelDetectionResponse = StartLabelDetectionResponse'{_sldrsJobId
+                                                                ::
+                                                                !(Maybe Text),
+                                                                _sldrsResponseStatus
+                                                                :: !Int}
+                                     deriving (Eq, Read, Show, Data, Typeable,
+                                               Generic)
 
 -- | Creates a value of 'StartLabelDetectionResponse' with the minimum fields required to make a request.
 --
 -- Use one of the following lenses to modify other fields as desired:
 --
--- * 'sldrsJobId' - The identifier for the label detection job. Use @JobId@ to identify the job in a subsequent call to @GetLabelDetection@ .
+-- * 'sldrsJobId' - The identifier for the label detection job. Use @JobId@ to identify the job in a subsequent call to @GetLabelDetection@ . 
 --
 -- * 'sldrsResponseStatus' - -- | The response status code.
 startLabelDetectionResponse
     :: Int -- ^ 'sldrsResponseStatus'
     -> StartLabelDetectionResponse
-startLabelDetectionResponse pResponseStatus_ =
-  StartLabelDetectionResponse'
-    {_sldrsJobId = Nothing, _sldrsResponseStatus = pResponseStatus_}
+startLabelDetectionResponse pResponseStatus_
+  = StartLabelDetectionResponse'{_sldrsJobId = Nothing,
+                                 _sldrsResponseStatus = pResponseStatus_}
 
-
--- | The identifier for the label detection job. Use @JobId@ to identify the job in a subsequent call to @GetLabelDetection@ .
+-- | The identifier for the label detection job. Use @JobId@ to identify the job in a subsequent call to @GetLabelDetection@ . 
 sldrsJobId :: Lens' StartLabelDetectionResponse (Maybe Text)
 sldrsJobId = lens _sldrsJobId (\ s a -> s{_sldrsJobId = a})
 

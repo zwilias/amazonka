@@ -38,24 +38,21 @@ module Network.AWS.DirectConnect.DescribeVirtualGateways
     ) where
 
 import Network.AWS.DirectConnect.Types
-import Network.AWS.DirectConnect.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 
 -- | /See:/ 'describeVirtualGateways' smart constructor.
-data DescribeVirtualGateways =
-  DescribeVirtualGateways'
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data DescribeVirtualGateways = DescribeVirtualGateways'
+                                 deriving (Eq, Read, Show, Data, Typeable,
+                                           Generic)
 
 -- | Creates a value of 'DescribeVirtualGateways' with the minimum fields required to make a request.
 --
 describeVirtualGateways
     :: DescribeVirtualGateways
 describeVirtualGateways = DescribeVirtualGateways'
-
 
 instance AWSRequest DescribeVirtualGateways where
         type Rs DescribeVirtualGateways =
@@ -92,13 +89,14 @@ instance ToQuery DescribeVirtualGateways where
         toQuery = const mempty
 
 -- | /See:/ 'describeVirtualGatewaysResponse' smart constructor.
-data DescribeVirtualGatewaysResponse =
-  DescribeVirtualGatewaysResponse'
-    { _dvgrsVirtualGateways :: !(Maybe [VirtualGateway])
-    , _dvgrsResponseStatus  :: !Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data DescribeVirtualGatewaysResponse = DescribeVirtualGatewaysResponse'{_dvgrsVirtualGateways
+                                                                        ::
+                                                                        !(Maybe
+                                                                            [VirtualGateway]),
+                                                                        _dvgrsResponseStatus
+                                                                        :: !Int}
+                                         deriving (Eq, Read, Show, Data,
+                                                   Typeable, Generic)
 
 -- | Creates a value of 'DescribeVirtualGatewaysResponse' with the minimum fields required to make a request.
 --
@@ -110,10 +108,10 @@ data DescribeVirtualGatewaysResponse =
 describeVirtualGatewaysResponse
     :: Int -- ^ 'dvgrsResponseStatus'
     -> DescribeVirtualGatewaysResponse
-describeVirtualGatewaysResponse pResponseStatus_ =
-  DescribeVirtualGatewaysResponse'
-    {_dvgrsVirtualGateways = Nothing, _dvgrsResponseStatus = pResponseStatus_}
-
+describeVirtualGatewaysResponse pResponseStatus_
+  = DescribeVirtualGatewaysResponse'{_dvgrsVirtualGateways
+                                       = Nothing,
+                                     _dvgrsResponseStatus = pResponseStatus_}
 
 -- | The virtual private gateways.
 dvgrsVirtualGateways :: Lens' DescribeVirtualGatewaysResponse [VirtualGateway]

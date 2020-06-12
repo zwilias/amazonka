@@ -46,21 +46,16 @@ module Network.AWS.CodeCommit.GetFolder
     ) where
 
 import Network.AWS.CodeCommit.Types
-import Network.AWS.CodeCommit.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 
 -- | /See:/ 'getFolder' smart constructor.
-data GetFolder =
-  GetFolder'
-    { _gfCommitSpecifier :: !(Maybe Text)
-    , _gfRepositoryName  :: !Text
-    , _gfFolderPath      :: !Text
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data GetFolder = GetFolder'{_gfCommitSpecifier ::
+                            !(Maybe Text),
+                            _gfRepositoryName :: !Text, _gfFolderPath :: !Text}
+                   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'GetFolder' with the minimum fields required to make a request.
 --
@@ -70,18 +65,15 @@ data GetFolder =
 --
 -- * 'gfRepositoryName' - The name of the repository.
 --
--- * 'gfFolderPath' - The fully qualified path to the folder whose contents are returned, including the folder name. For example, /examples is a fully-qualified path to a folder named examples that was created off of the root directory (/) of a repository.
+-- * 'gfFolderPath' - The fully qualified path to the folder whose contents are returned, including the folder name. For example, /examples is a fully-qualified path to a folder named examples that was created off of the root directory (/) of a repository. 
 getFolder
     :: Text -- ^ 'gfRepositoryName'
     -> Text -- ^ 'gfFolderPath'
     -> GetFolder
-getFolder pRepositoryName_ pFolderPath_ =
-  GetFolder'
-    { _gfCommitSpecifier = Nothing
-    , _gfRepositoryName = pRepositoryName_
-    , _gfFolderPath = pFolderPath_
-    }
-
+getFolder pRepositoryName_ pFolderPath_
+  = GetFolder'{_gfCommitSpecifier = Nothing,
+               _gfRepositoryName = pRepositoryName_,
+               _gfFolderPath = pFolderPath_}
 
 -- | A fully qualified reference used to identify a commit that contains the version of the folder's content to return. A fully qualified reference can be a commit ID, branch name, tag, or reference such as HEAD. If no specifier is provided, the folder content is returned as it exists in the HEAD commit.
 gfCommitSpecifier :: Lens' GetFolder (Maybe Text)
@@ -91,7 +83,7 @@ gfCommitSpecifier = lens _gfCommitSpecifier (\ s a -> s{_gfCommitSpecifier = a})
 gfRepositoryName :: Lens' GetFolder Text
 gfRepositoryName = lens _gfRepositoryName (\ s a -> s{_gfRepositoryName = a})
 
--- | The fully qualified path to the folder whose contents are returned, including the folder name. For example, /examples is a fully-qualified path to a folder named examples that was created off of the root directory (/) of a repository.
+-- | The fully qualified path to the folder whose contents are returned, including the folder name. For example, /examples is a fully-qualified path to a folder named examples that was created off of the root directory (/) of a repository. 
 gfFolderPath :: Lens' GetFolder Text
 gfFolderPath = lens _gfFolderPath (\ s a -> s{_gfFolderPath = a})
 
@@ -138,19 +130,18 @@ instance ToQuery GetFolder where
         toQuery = const mempty
 
 -- | /See:/ 'getFolderResponse' smart constructor.
-data GetFolderResponse =
-  GetFolderResponse'
-    { _gfrsSubModules     :: !(Maybe [SubModule])
-    , _gfrsTreeId         :: !(Maybe Text)
-    , _gfrsSubFolders     :: !(Maybe [Folder])
-    , _gfrsSymbolicLinks  :: !(Maybe [SymbolicLink])
-    , _gfrsFiles          :: !(Maybe [File])
-    , _gfrsResponseStatus :: !Int
-    , _gfrsCommitId       :: !Text
-    , _gfrsFolderPath     :: !Text
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data GetFolderResponse = GetFolderResponse'{_gfrsSubModules
+                                            :: !(Maybe [SubModule]),
+                                            _gfrsTreeId :: !(Maybe Text),
+                                            _gfrsSubFolders ::
+                                            !(Maybe [Folder]),
+                                            _gfrsSymbolicLinks ::
+                                            !(Maybe [SymbolicLink]),
+                                            _gfrsFiles :: !(Maybe [File]),
+                                            _gfrsResponseStatus :: !Int,
+                                            _gfrsCommitId :: !Text,
+                                            _gfrsFolderPath :: !Text}
+                           deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'GetFolderResponse' with the minimum fields required to make a request.
 --
@@ -176,18 +167,14 @@ getFolderResponse
     -> Text -- ^ 'gfrsCommitId'
     -> Text -- ^ 'gfrsFolderPath'
     -> GetFolderResponse
-getFolderResponse pResponseStatus_ pCommitId_ pFolderPath_ =
-  GetFolderResponse'
-    { _gfrsSubModules = Nothing
-    , _gfrsTreeId = Nothing
-    , _gfrsSubFolders = Nothing
-    , _gfrsSymbolicLinks = Nothing
-    , _gfrsFiles = Nothing
-    , _gfrsResponseStatus = pResponseStatus_
-    , _gfrsCommitId = pCommitId_
-    , _gfrsFolderPath = pFolderPath_
-    }
-
+getFolderResponse pResponseStatus_ pCommitId_
+  pFolderPath_
+  = GetFolderResponse'{_gfrsSubModules = Nothing,
+                       _gfrsTreeId = Nothing, _gfrsSubFolders = Nothing,
+                       _gfrsSymbolicLinks = Nothing, _gfrsFiles = Nothing,
+                       _gfrsResponseStatus = pResponseStatus_,
+                       _gfrsCommitId = pCommitId_,
+                       _gfrsFolderPath = pFolderPath_}
 
 -- | The list of submodules in the specified folder, if any.
 gfrsSubModules :: Lens' GetFolderResponse [SubModule]

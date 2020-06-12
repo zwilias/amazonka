@@ -38,7 +38,6 @@ module Network.AWS.EC2.DeleteVPNConnection
     ) where
 
 import Network.AWS.EC2.Types
-import Network.AWS.EC2.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.Request
@@ -49,13 +48,10 @@ import Network.AWS.Response
 --
 --
 -- /See:/ 'deleteVPNConnection' smart constructor.
-data DeleteVPNConnection =
-  DeleteVPNConnection'
-    { _dvcDryRun          :: !(Maybe Bool)
-    , _dvcVPNConnectionId :: !Text
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data DeleteVPNConnection = DeleteVPNConnection'{_dvcDryRun
+                                                :: !(Maybe Bool),
+                                                _dvcVPNConnectionId :: !Text}
+                             deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'DeleteVPNConnection' with the minimum fields required to make a request.
 --
@@ -67,10 +63,9 @@ data DeleteVPNConnection =
 deleteVPNConnection
     :: Text -- ^ 'dvcVPNConnectionId'
     -> DeleteVPNConnection
-deleteVPNConnection pVPNConnectionId_ =
-  DeleteVPNConnection'
-    {_dvcDryRun = Nothing, _dvcVPNConnectionId = pVPNConnectionId_}
-
+deleteVPNConnection pVPNConnectionId_
+  = DeleteVPNConnection'{_dvcDryRun = Nothing,
+                         _dvcVPNConnectionId = pVPNConnectionId_}
 
 -- | Checks whether you have the required permissions for the action, without actually making the request, and provides an error response. If you have the required permissions, the error response is @DryRunOperation@ . Otherwise, it is @UnauthorizedOperation@ .
 dvcDryRun :: Lens' DeleteVPNConnection (Maybe Bool)
@@ -105,16 +100,15 @@ instance ToQuery DeleteVPNConnection where
                "VpnConnectionId" =: _dvcVPNConnectionId]
 
 -- | /See:/ 'deleteVPNConnectionResponse' smart constructor.
-data DeleteVPNConnectionResponse =
-  DeleteVPNConnectionResponse'
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data DeleteVPNConnectionResponse = DeleteVPNConnectionResponse'
+                                     deriving (Eq, Read, Show, Data, Typeable,
+                                               Generic)
 
 -- | Creates a value of 'DeleteVPNConnectionResponse' with the minimum fields required to make a request.
 --
 deleteVPNConnectionResponse
     :: DeleteVPNConnectionResponse
-deleteVPNConnectionResponse = DeleteVPNConnectionResponse'
-
+deleteVPNConnectionResponse
+  = DeleteVPNConnectionResponse'
 
 instance NFData DeleteVPNConnectionResponse where

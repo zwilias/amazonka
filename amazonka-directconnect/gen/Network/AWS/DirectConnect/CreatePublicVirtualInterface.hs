@@ -63,20 +63,19 @@ module Network.AWS.DirectConnect.CreatePublicVirtualInterface
     ) where
 
 import Network.AWS.DirectConnect.Types
-import Network.AWS.DirectConnect.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 
 -- | /See:/ 'createPublicVirtualInterface' smart constructor.
-data CreatePublicVirtualInterface =
-  CreatePublicVirtualInterface'
-    { _cpviConnectionId              :: !Text
-    , _cpviNewPublicVirtualInterface :: !NewPublicVirtualInterface
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data CreatePublicVirtualInterface = CreatePublicVirtualInterface'{_cpviConnectionId
+                                                                  :: !Text,
+                                                                  _cpviNewPublicVirtualInterface
+                                                                  ::
+                                                                  !NewPublicVirtualInterface}
+                                      deriving (Eq, Read, Show, Data, Typeable,
+                                                Generic)
 
 -- | Creates a value of 'CreatePublicVirtualInterface' with the minimum fields required to make a request.
 --
@@ -89,12 +88,12 @@ createPublicVirtualInterface
     :: Text -- ^ 'cpviConnectionId'
     -> NewPublicVirtualInterface -- ^ 'cpviNewPublicVirtualInterface'
     -> CreatePublicVirtualInterface
-createPublicVirtualInterface pConnectionId_ pNewPublicVirtualInterface_ =
-  CreatePublicVirtualInterface'
-    { _cpviConnectionId = pConnectionId_
-    , _cpviNewPublicVirtualInterface = pNewPublicVirtualInterface_
-    }
-
+createPublicVirtualInterface pConnectionId_
+  pNewPublicVirtualInterface_
+  = CreatePublicVirtualInterface'{_cpviConnectionId =
+                                    pConnectionId_,
+                                  _cpviNewPublicVirtualInterface =
+                                    pNewPublicVirtualInterface_}
 
 -- | The ID of the connection.
 cpviConnectionId :: Lens' CreatePublicVirtualInterface Text

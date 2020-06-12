@@ -39,19 +39,14 @@ module Network.AWS.FMS.PutPolicy
     ) where
 
 import Network.AWS.FMS.Types
-import Network.AWS.FMS.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 
 -- | /See:/ 'putPolicy' smart constructor.
-newtype PutPolicy =
-  PutPolicy'
-    { _ppPolicy :: Policy
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+newtype PutPolicy = PutPolicy'{_ppPolicy :: Policy}
+                      deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'PutPolicy' with the minimum fields required to make a request.
 --
@@ -61,8 +56,7 @@ newtype PutPolicy =
 putPolicy
     :: Policy -- ^ 'ppPolicy'
     -> PutPolicy
-putPolicy pPolicy_ = PutPolicy' {_ppPolicy = pPolicy_}
-
+putPolicy pPolicy_ = PutPolicy'{_ppPolicy = pPolicy_}
 
 -- | The details of the AWS Firewall Manager policy to be created.
 ppPolicy :: Lens' PutPolicy Policy
@@ -102,14 +96,11 @@ instance ToQuery PutPolicy where
         toQuery = const mempty
 
 -- | /See:/ 'putPolicyResponse' smart constructor.
-data PutPolicyResponse =
-  PutPolicyResponse'
-    { _pprsPolicyARN      :: !(Maybe Text)
-    , _pprsPolicy         :: !(Maybe Policy)
-    , _pprsResponseStatus :: !Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data PutPolicyResponse = PutPolicyResponse'{_pprsPolicyARN
+                                            :: !(Maybe Text),
+                                            _pprsPolicy :: !(Maybe Policy),
+                                            _pprsResponseStatus :: !Int}
+                           deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'PutPolicyResponse' with the minimum fields required to make a request.
 --
@@ -123,13 +114,10 @@ data PutPolicyResponse =
 putPolicyResponse
     :: Int -- ^ 'pprsResponseStatus'
     -> PutPolicyResponse
-putPolicyResponse pResponseStatus_ =
-  PutPolicyResponse'
-    { _pprsPolicyARN = Nothing
-    , _pprsPolicy = Nothing
-    , _pprsResponseStatus = pResponseStatus_
-    }
-
+putPolicyResponse pResponseStatus_
+  = PutPolicyResponse'{_pprsPolicyARN = Nothing,
+                       _pprsPolicy = Nothing,
+                       _pprsResponseStatus = pResponseStatus_}
 
 -- | The Amazon Resource Name (ARN) of the policy that was created.
 pprsPolicyARN :: Lens' PutPolicyResponse (Maybe Text)

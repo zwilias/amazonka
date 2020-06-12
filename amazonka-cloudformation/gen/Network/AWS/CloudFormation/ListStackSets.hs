@@ -41,21 +41,17 @@ module Network.AWS.CloudFormation.ListStackSets
     ) where
 
 import Network.AWS.CloudFormation.Types
-import Network.AWS.CloudFormation.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 
 -- | /See:/ 'listStackSets' smart constructor.
-data ListStackSets =
-  ListStackSets'
-    { _lssStatus     :: !(Maybe StackSetStatus)
-    , _lssNextToken  :: !(Maybe Text)
-    , _lssMaxResults :: !(Maybe Nat)
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data ListStackSets = ListStackSets'{_lssStatus ::
+                                    !(Maybe StackSetStatus),
+                                    _lssNextToken :: !(Maybe Text),
+                                    _lssMaxResults :: !(Maybe Nat)}
+                       deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'ListStackSets' with the minimum fields required to make a request.
 --
@@ -68,10 +64,9 @@ data ListStackSets =
 -- * 'lssMaxResults' - The maximum number of results to be returned with a single call. If the number of available results exceeds this maximum, the response includes a @NextToken@ value that you can assign to the @NextToken@ request parameter to get the next set of results.
 listStackSets
     :: ListStackSets
-listStackSets =
-  ListStackSets'
-    {_lssStatus = Nothing, _lssNextToken = Nothing, _lssMaxResults = Nothing}
-
+listStackSets
+  = ListStackSets'{_lssStatus = Nothing,
+                   _lssNextToken = Nothing, _lssMaxResults = Nothing}
 
 -- | The status of the stack sets that you want to get summary information about.
 lssStatus :: Lens' ListStackSets (Maybe StackSetStatus)
@@ -116,14 +111,14 @@ instance ToQuery ListStackSets where
                "MaxResults" =: _lssMaxResults]
 
 -- | /See:/ 'listStackSetsResponse' smart constructor.
-data ListStackSetsResponse =
-  ListStackSetsResponse'
-    { _lssrsNextToken      :: !(Maybe Text)
-    , _lssrsSummaries      :: !(Maybe [StackSetSummary])
-    , _lssrsResponseStatus :: !Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data ListStackSetsResponse = ListStackSetsResponse'{_lssrsNextToken
+                                                    :: !(Maybe Text),
+                                                    _lssrsSummaries ::
+                                                    !(Maybe [StackSetSummary]),
+                                                    _lssrsResponseStatus ::
+                                                    !Int}
+                               deriving (Eq, Read, Show, Data, Typeable,
+                                         Generic)
 
 -- | Creates a value of 'ListStackSetsResponse' with the minimum fields required to make a request.
 --
@@ -137,13 +132,10 @@ data ListStackSetsResponse =
 listStackSetsResponse
     :: Int -- ^ 'lssrsResponseStatus'
     -> ListStackSetsResponse
-listStackSetsResponse pResponseStatus_ =
-  ListStackSetsResponse'
-    { _lssrsNextToken = Nothing
-    , _lssrsSummaries = Nothing
-    , _lssrsResponseStatus = pResponseStatus_
-    }
-
+listStackSetsResponse pResponseStatus_
+  = ListStackSetsResponse'{_lssrsNextToken = Nothing,
+                           _lssrsSummaries = Nothing,
+                           _lssrsResponseStatus = pResponseStatus_}
 
 -- | If the request doesn't return all of the remaining results, @NextToken@ is set to a token. To retrieve the next set of results, call @ListStackInstances@ again and assign that token to the request object's @NextToken@ parameter. If the request returns all results, @NextToken@ is set to @null@ .
 lssrsNextToken :: Lens' ListStackSetsResponse (Maybe Text)

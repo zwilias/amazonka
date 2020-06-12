@@ -43,17 +43,16 @@ import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 import Network.AWS.WorkMail.Types
-import Network.AWS.WorkMail.Types.Product
 
 -- | /See:/ 'associateDelegateToResource' smart constructor.
-data AssociateDelegateToResource =
-  AssociateDelegateToResource'
-    { _adtrOrganizationId :: !Text
-    , _adtrResourceId     :: !Text
-    , _adtrEntityId       :: !Text
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data AssociateDelegateToResource = AssociateDelegateToResource'{_adtrOrganizationId
+                                                                :: !Text,
+                                                                _adtrResourceId
+                                                                :: !Text,
+                                                                _adtrEntityId ::
+                                                                !Text}
+                                     deriving (Eq, Read, Show, Data, Typeable,
+                                               Generic)
 
 -- | Creates a value of 'AssociateDelegateToResource' with the minimum fields required to make a request.
 --
@@ -69,13 +68,12 @@ associateDelegateToResource
     -> Text -- ^ 'adtrResourceId'
     -> Text -- ^ 'adtrEntityId'
     -> AssociateDelegateToResource
-associateDelegateToResource pOrganizationId_ pResourceId_ pEntityId_ =
-  AssociateDelegateToResource'
-    { _adtrOrganizationId = pOrganizationId_
-    , _adtrResourceId = pResourceId_
-    , _adtrEntityId = pEntityId_
-    }
-
+associateDelegateToResource pOrganizationId_
+  pResourceId_ pEntityId_
+  = AssociateDelegateToResource'{_adtrOrganizationId =
+                                   pOrganizationId_,
+                                 _adtrResourceId = pResourceId_,
+                                 _adtrEntityId = pEntityId_}
 
 -- | The organization under which the resource exists.
 adtrOrganizationId :: Lens' AssociateDelegateToResource Text
@@ -128,12 +126,11 @@ instance ToQuery AssociateDelegateToResource where
         toQuery = const mempty
 
 -- | /See:/ 'associateDelegateToResourceResponse' smart constructor.
-newtype AssociateDelegateToResourceResponse =
-  AssociateDelegateToResourceResponse'
-    { _adtrrsResponseStatus :: Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+newtype AssociateDelegateToResourceResponse = AssociateDelegateToResourceResponse'{_adtrrsResponseStatus
+                                                                                   ::
+                                                                                   Int}
+                                                deriving (Eq, Read, Show, Data,
+                                                          Typeable, Generic)
 
 -- | Creates a value of 'AssociateDelegateToResourceResponse' with the minimum fields required to make a request.
 --
@@ -143,10 +140,9 @@ newtype AssociateDelegateToResourceResponse =
 associateDelegateToResourceResponse
     :: Int -- ^ 'adtrrsResponseStatus'
     -> AssociateDelegateToResourceResponse
-associateDelegateToResourceResponse pResponseStatus_ =
-  AssociateDelegateToResourceResponse'
-    {_adtrrsResponseStatus = pResponseStatus_}
-
+associateDelegateToResourceResponse pResponseStatus_
+  = AssociateDelegateToResourceResponse'{_adtrrsResponseStatus
+                                           = pResponseStatus_}
 
 -- | -- | The response status code.
 adtrrsResponseStatus :: Lens' AssociateDelegateToResourceResponse Int

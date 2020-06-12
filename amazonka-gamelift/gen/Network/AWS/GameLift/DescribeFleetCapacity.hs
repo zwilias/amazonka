@@ -18,52 +18,52 @@
 -- Stability   : auto-generated
 -- Portability : non-portable (GHC extensions)
 --
--- Retrieves the current status of fleet capacity for one or more fleets. This information includes the number of instances that have been requested for the fleet and the number currently active. You can request capacity for all fleets, or specify a list of one or more fleet IDs. When requesting multiple fleets, use the pagination parameters to retrieve results as a set of sequential pages. If successful, a 'FleetCapacity' object is returned for each requested fleet ID. When specifying a list of fleet IDs, attribute objects are returned only for fleets that currently exist.
+-- Retrieves the current status of fleet capacity for one or more fleets. This information includes the number of instances that have been requested for the fleet and the number currently active. You can request capacity for all fleets, or specify a list of one or more fleet IDs. When requesting multiple fleets, use the pagination parameters to retrieve results as a set of sequential pages. If successful, a 'FleetCapacity' object is returned for each requested fleet ID. When specifying a list of fleet IDs, attribute objects are returned only for fleets that currently exist. 
 --
 --
 -- Fleet-related operations include:
 --
---     * 'CreateFleet'
+--     * 'CreateFleet' 
 --
---     * 'ListFleets'
+--     * 'ListFleets' 
 --
---     * 'DeleteFleet'
+--     * 'DeleteFleet' 
 --
 --     * Describe fleets:
 --
---     * 'DescribeFleetAttributes'
+--     * 'DescribeFleetAttributes' 
 --
---     * 'DescribeFleetCapacity'
+--     * 'DescribeFleetCapacity' 
 --
---     * 'DescribeFleetPortSettings'
+--     * 'DescribeFleetPortSettings' 
 --
---     * 'DescribeFleetUtilization'
+--     * 'DescribeFleetUtilization' 
 --
---     * 'DescribeRuntimeConfiguration'
+--     * 'DescribeRuntimeConfiguration' 
 --
---     * 'DescribeEC2InstanceLimits'
+--     * 'DescribeEC2InstanceLimits' 
 --
---     * 'DescribeFleetEvents'
+--     * 'DescribeFleetEvents' 
 --
 --
 --
 --     * Update fleets:
 --
---     * 'UpdateFleetAttributes'
+--     * 'UpdateFleetAttributes' 
 --
---     * 'UpdateFleetCapacity'
+--     * 'UpdateFleetCapacity' 
 --
---     * 'UpdateFleetPortSettings'
+--     * 'UpdateFleetPortSettings' 
 --
---     * 'UpdateRuntimeConfiguration'
+--     * 'UpdateRuntimeConfiguration' 
 --
 --
 --
 --     * Manage fleet actions:
 --
---     * 'StartFleetActions'
+--     * 'StartFleetActions' 
 --
---     * 'StopFleetActions'
+--     * 'StopFleetActions' 
 --
 --
 --
@@ -89,7 +89,6 @@ module Network.AWS.GameLift.DescribeFleetCapacity
     ) where
 
 import Network.AWS.GameLift.Types
-import Network.AWS.GameLift.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.Request
@@ -100,14 +99,13 @@ import Network.AWS.Response
 --
 --
 -- /See:/ 'describeFleetCapacity' smart constructor.
-data DescribeFleetCapacity =
-  DescribeFleetCapacity'
-    { _dfcNextToken :: !(Maybe Text)
-    , _dfcLimit     :: !(Maybe Nat)
-    , _dfcFleetIds  :: !(Maybe (List1 Text))
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data DescribeFleetCapacity = DescribeFleetCapacity'{_dfcNextToken
+                                                    :: !(Maybe Text),
+                                                    _dfcLimit :: !(Maybe Nat),
+                                                    _dfcFleetIds ::
+                                                    !(Maybe (List1 Text))}
+                               deriving (Eq, Read, Show, Data, Typeable,
+                                         Generic)
 
 -- | Creates a value of 'DescribeFleetCapacity' with the minimum fields required to make a request.
 --
@@ -120,10 +118,9 @@ data DescribeFleetCapacity =
 -- * 'dfcFleetIds' - Unique identifier for a fleet(s) to retrieve capacity information for. To request capacity information for all fleets, leave this parameter empty.
 describeFleetCapacity
     :: DescribeFleetCapacity
-describeFleetCapacity =
-  DescribeFleetCapacity'
-    {_dfcNextToken = Nothing, _dfcLimit = Nothing, _dfcFleetIds = Nothing}
-
+describeFleetCapacity
+  = DescribeFleetCapacity'{_dfcNextToken = Nothing,
+                           _dfcLimit = Nothing, _dfcFleetIds = Nothing}
 
 -- | Token that indicates the start of the next sequential page of results. Use the token that is returned with a previous call to this action. To start at the beginning of the result set, do not specify a value. This parameter is ignored when the request specifies one or a list of fleet IDs.
 dfcNextToken :: Lens' DescribeFleetCapacity (Maybe Text)
@@ -181,14 +178,18 @@ instance ToQuery DescribeFleetCapacity where
 --
 --
 -- /See:/ 'describeFleetCapacityResponse' smart constructor.
-data DescribeFleetCapacityResponse =
-  DescribeFleetCapacityResponse'
-    { _dfcrsNextToken      :: !(Maybe Text)
-    , _dfcrsFleetCapacity  :: !(Maybe [FleetCapacity])
-    , _dfcrsResponseStatus :: !Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data DescribeFleetCapacityResponse = DescribeFleetCapacityResponse'{_dfcrsNextToken
+                                                                    ::
+                                                                    !(Maybe
+                                                                        Text),
+                                                                    _dfcrsFleetCapacity
+                                                                    ::
+                                                                    !(Maybe
+                                                                        [FleetCapacity]),
+                                                                    _dfcrsResponseStatus
+                                                                    :: !Int}
+                                       deriving (Eq, Read, Show, Data, Typeable,
+                                                 Generic)
 
 -- | Creates a value of 'DescribeFleetCapacityResponse' with the minimum fields required to make a request.
 --
@@ -202,13 +203,11 @@ data DescribeFleetCapacityResponse =
 describeFleetCapacityResponse
     :: Int -- ^ 'dfcrsResponseStatus'
     -> DescribeFleetCapacityResponse
-describeFleetCapacityResponse pResponseStatus_ =
-  DescribeFleetCapacityResponse'
-    { _dfcrsNextToken = Nothing
-    , _dfcrsFleetCapacity = Nothing
-    , _dfcrsResponseStatus = pResponseStatus_
-    }
-
+describeFleetCapacityResponse pResponseStatus_
+  = DescribeFleetCapacityResponse'{_dfcrsNextToken =
+                                     Nothing,
+                                   _dfcrsFleetCapacity = Nothing,
+                                   _dfcrsResponseStatus = pResponseStatus_}
 
 -- | Token that indicates where to resume retrieving results on the next call to this action. If no token is returned, these results represent the end of the list.
 dfcrsNextToken :: Lens' DescribeFleetCapacityResponse (Maybe Text)

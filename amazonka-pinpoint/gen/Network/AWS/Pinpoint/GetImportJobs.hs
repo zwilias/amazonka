@@ -39,20 +39,16 @@ module Network.AWS.Pinpoint.GetImportJobs
 
 import Network.AWS.Lens
 import Network.AWS.Pinpoint.Types
-import Network.AWS.Pinpoint.Types.Product
 import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 
 -- | /See:/ 'getImportJobs' smart constructor.
-data GetImportJobs =
-  GetImportJobs'
-    { _gijsToken         :: !(Maybe Text)
-    , _gijsPageSize      :: !(Maybe Text)
-    , _gijsApplicationId :: !Text
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data GetImportJobs = GetImportJobs'{_gijsToken ::
+                                    !(Maybe Text),
+                                    _gijsPageSize :: !(Maybe Text),
+                                    _gijsApplicationId :: !Text}
+                       deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'GetImportJobs' with the minimum fields required to make a request.
 --
@@ -66,13 +62,10 @@ data GetImportJobs =
 getImportJobs
     :: Text -- ^ 'gijsApplicationId'
     -> GetImportJobs
-getImportJobs pApplicationId_ =
-  GetImportJobs'
-    { _gijsToken = Nothing
-    , _gijsPageSize = Nothing
-    , _gijsApplicationId = pApplicationId_
-    }
-
+getImportJobs pApplicationId_
+  = GetImportJobs'{_gijsToken = Nothing,
+                   _gijsPageSize = Nothing,
+                   _gijsApplicationId = pApplicationId_}
 
 -- | The NextToken string returned on a previous page that you use to get the next page of results in a paginated response.
 gijsToken :: Lens' GetImportJobs (Maybe Text)
@@ -118,13 +111,12 @@ instance ToQuery GetImportJobs where
               ["token" =: _gijsToken, "page-size" =: _gijsPageSize]
 
 -- | /See:/ 'getImportJobsResponse' smart constructor.
-data GetImportJobsResponse =
-  GetImportJobsResponse'
-    { _gijsrsResponseStatus     :: !Int
-    , _gijsrsImportJobsResponse :: !ImportJobsResponse
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data GetImportJobsResponse = GetImportJobsResponse'{_gijsrsResponseStatus
+                                                    :: !Int,
+                                                    _gijsrsImportJobsResponse ::
+                                                    !ImportJobsResponse}
+                               deriving (Eq, Read, Show, Data, Typeable,
+                                         Generic)
 
 -- | Creates a value of 'GetImportJobsResponse' with the minimum fields required to make a request.
 --
@@ -137,12 +129,11 @@ getImportJobsResponse
     :: Int -- ^ 'gijsrsResponseStatus'
     -> ImportJobsResponse -- ^ 'gijsrsImportJobsResponse'
     -> GetImportJobsResponse
-getImportJobsResponse pResponseStatus_ pImportJobsResponse_ =
-  GetImportJobsResponse'
-    { _gijsrsResponseStatus = pResponseStatus_
-    , _gijsrsImportJobsResponse = pImportJobsResponse_
-    }
-
+getImportJobsResponse pResponseStatus_
+  pImportJobsResponse_
+  = GetImportJobsResponse'{_gijsrsResponseStatus =
+                             pResponseStatus_,
+                           _gijsrsImportJobsResponse = pImportJobsResponse_}
 
 -- | -- | The response status code.
 gijsrsResponseStatus :: Lens' GetImportJobsResponse Int

@@ -38,20 +38,16 @@ module Network.AWS.IAM.DeleteGroupPolicy
     ) where
 
 import Network.AWS.IAM.Types
-import Network.AWS.IAM.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 
 -- | /See:/ 'deleteGroupPolicy' smart constructor.
-data DeleteGroupPolicy =
-  DeleteGroupPolicy'
-    { _dGroupName  :: !Text
-    , _dPolicyName :: !Text
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data DeleteGroupPolicy = DeleteGroupPolicy'{_dGroupName
+                                            :: !Text,
+                                            _dPolicyName :: !Text}
+                           deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'DeleteGroupPolicy' with the minimum fields required to make a request.
 --
@@ -64,9 +60,9 @@ deleteGroupPolicy
     :: Text -- ^ 'dGroupName'
     -> Text -- ^ 'dPolicyName'
     -> DeleteGroupPolicy
-deleteGroupPolicy pGroupName_ pPolicyName_ =
-  DeleteGroupPolicy' {_dGroupName = pGroupName_, _dPolicyName = pPolicyName_}
-
+deleteGroupPolicy pGroupName_ pPolicyName_
+  = DeleteGroupPolicy'{_dGroupName = pGroupName_,
+                       _dPolicyName = pPolicyName_}
 
 -- | The name (friendly name, not ARN) identifying the group that the policy is embedded in. This parameter allows (per its <http://wikipedia.org/wiki/regex regex pattern> ) a string of characters consisting of upper and lowercase alphanumeric characters with no spaces. You can also include any of the following characters: _+=,.@-
 dGroupName :: Lens' DeleteGroupPolicy Text
@@ -100,16 +96,15 @@ instance ToQuery DeleteGroupPolicy where
                "PolicyName" =: _dPolicyName]
 
 -- | /See:/ 'deleteGroupPolicyResponse' smart constructor.
-data DeleteGroupPolicyResponse =
-  DeleteGroupPolicyResponse'
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data DeleteGroupPolicyResponse = DeleteGroupPolicyResponse'
+                                   deriving (Eq, Read, Show, Data, Typeable,
+                                             Generic)
 
 -- | Creates a value of 'DeleteGroupPolicyResponse' with the minimum fields required to make a request.
 --
 deleteGroupPolicyResponse
     :: DeleteGroupPolicyResponse
-deleteGroupPolicyResponse = DeleteGroupPolicyResponse'
-
+deleteGroupPolicyResponse
+  = DeleteGroupPolicyResponse'
 
 instance NFData DeleteGroupPolicyResponse where

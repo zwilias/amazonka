@@ -48,19 +48,15 @@ import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 import Network.AWS.StorageGateway.Types
-import Network.AWS.StorageGateway.Types.Product
 
 -- | A JSON object containing the of the gateway to shut down.
 --
 --
 --
 -- /See:/ 'shutdownGateway' smart constructor.
-newtype ShutdownGateway =
-  ShutdownGateway'
-    { _sGatewayARN :: Text
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+newtype ShutdownGateway = ShutdownGateway'{_sGatewayARN
+                                           :: Text}
+                            deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'ShutdownGateway' with the minimum fields required to make a request.
 --
@@ -70,8 +66,8 @@ newtype ShutdownGateway =
 shutdownGateway
     :: Text -- ^ 'sGatewayARN'
     -> ShutdownGateway
-shutdownGateway pGatewayARN_ = ShutdownGateway' {_sGatewayARN = pGatewayARN_}
-
+shutdownGateway pGatewayARN_
+  = ShutdownGateway'{_sGatewayARN = pGatewayARN_}
 
 -- | Undocumented member.
 sGatewayARN :: Lens' ShutdownGateway Text
@@ -116,13 +112,12 @@ instance ToQuery ShutdownGateway where
 --
 --
 -- /See:/ 'shutdownGatewayResponse' smart constructor.
-data ShutdownGatewayResponse =
-  ShutdownGatewayResponse'
-    { _srsGatewayARN     :: !(Maybe Text)
-    , _srsResponseStatus :: !Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data ShutdownGatewayResponse = ShutdownGatewayResponse'{_srsGatewayARN
+                                                        :: !(Maybe Text),
+                                                        _srsResponseStatus ::
+                                                        !Int}
+                                 deriving (Eq, Read, Show, Data, Typeable,
+                                           Generic)
 
 -- | Creates a value of 'ShutdownGatewayResponse' with the minimum fields required to make a request.
 --
@@ -134,10 +129,9 @@ data ShutdownGatewayResponse =
 shutdownGatewayResponse
     :: Int -- ^ 'srsResponseStatus'
     -> ShutdownGatewayResponse
-shutdownGatewayResponse pResponseStatus_ =
-  ShutdownGatewayResponse'
-    {_srsGatewayARN = Nothing, _srsResponseStatus = pResponseStatus_}
-
+shutdownGatewayResponse pResponseStatus_
+  = ShutdownGatewayResponse'{_srsGatewayARN = Nothing,
+                             _srsResponseStatus = pResponseStatus_}
 
 -- | Undocumented member.
 srsGatewayARN :: Lens' ShutdownGatewayResponse (Maybe Text)

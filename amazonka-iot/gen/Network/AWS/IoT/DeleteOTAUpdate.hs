@@ -37,19 +37,15 @@ module Network.AWS.IoT.DeleteOTAUpdate
     ) where
 
 import Network.AWS.IoT.Types
-import Network.AWS.IoT.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 
 -- | /See:/ 'deleteOTAUpdate' smart constructor.
-newtype DeleteOTAUpdate =
-  DeleteOTAUpdate'
-    { _dotauOtaUpdateId :: Text
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+newtype DeleteOTAUpdate = DeleteOTAUpdate'{_dotauOtaUpdateId
+                                           :: Text}
+                            deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'DeleteOTAUpdate' with the minimum fields required to make a request.
 --
@@ -59,9 +55,8 @@ newtype DeleteOTAUpdate =
 deleteOTAUpdate
     :: Text -- ^ 'dotauOtaUpdateId'
     -> DeleteOTAUpdate
-deleteOTAUpdate pOtaUpdateId_ =
-  DeleteOTAUpdate' {_dotauOtaUpdateId = pOtaUpdateId_}
-
+deleteOTAUpdate pOtaUpdateId_
+  = DeleteOTAUpdate'{_dotauOtaUpdateId = pOtaUpdateId_}
 
 -- | The OTA update ID to delete.
 dotauOtaUpdateId :: Lens' DeleteOTAUpdate Text
@@ -90,12 +85,10 @@ instance ToQuery DeleteOTAUpdate where
         toQuery = const mempty
 
 -- | /See:/ 'deleteOTAUpdateResponse' smart constructor.
-newtype DeleteOTAUpdateResponse =
-  DeleteOTAUpdateResponse'
-    { _dotaursResponseStatus :: Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+newtype DeleteOTAUpdateResponse = DeleteOTAUpdateResponse'{_dotaursResponseStatus
+                                                           :: Int}
+                                    deriving (Eq, Read, Show, Data, Typeable,
+                                              Generic)
 
 -- | Creates a value of 'DeleteOTAUpdateResponse' with the minimum fields required to make a request.
 --
@@ -105,9 +98,9 @@ newtype DeleteOTAUpdateResponse =
 deleteOTAUpdateResponse
     :: Int -- ^ 'dotaursResponseStatus'
     -> DeleteOTAUpdateResponse
-deleteOTAUpdateResponse pResponseStatus_ =
-  DeleteOTAUpdateResponse' {_dotaursResponseStatus = pResponseStatus_}
-
+deleteOTAUpdateResponse pResponseStatus_
+  = DeleteOTAUpdateResponse'{_dotaursResponseStatus =
+                               pResponseStatus_}
 
 -- | -- | The response status code.
 dotaursResponseStatus :: Lens' DeleteOTAUpdateResponse Int

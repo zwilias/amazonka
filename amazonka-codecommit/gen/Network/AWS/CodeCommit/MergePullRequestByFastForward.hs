@@ -40,21 +40,22 @@ module Network.AWS.CodeCommit.MergePullRequestByFastForward
     ) where
 
 import Network.AWS.CodeCommit.Types
-import Network.AWS.CodeCommit.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 
 -- | /See:/ 'mergePullRequestByFastForward' smart constructor.
-data MergePullRequestByFastForward =
-  MergePullRequestByFastForward'
-    { _mprbffSourceCommitId :: !(Maybe Text)
-    , _mprbffPullRequestId  :: !Text
-    , _mprbffRepositoryName :: !Text
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data MergePullRequestByFastForward = MergePullRequestByFastForward'{_mprbffSourceCommitId
+                                                                    ::
+                                                                    !(Maybe
+                                                                        Text),
+                                                                    _mprbffPullRequestId
+                                                                    :: !Text,
+                                                                    _mprbffRepositoryName
+                                                                    :: !Text}
+                                       deriving (Eq, Read, Show, Data, Typeable,
+                                                 Generic)
 
 -- | Creates a value of 'MergePullRequestByFastForward' with the minimum fields required to make a request.
 --
@@ -69,13 +70,12 @@ mergePullRequestByFastForward
     :: Text -- ^ 'mprbffPullRequestId'
     -> Text -- ^ 'mprbffRepositoryName'
     -> MergePullRequestByFastForward
-mergePullRequestByFastForward pPullRequestId_ pRepositoryName_ =
-  MergePullRequestByFastForward'
-    { _mprbffSourceCommitId = Nothing
-    , _mprbffPullRequestId = pPullRequestId_
-    , _mprbffRepositoryName = pRepositoryName_
-    }
-
+mergePullRequestByFastForward pPullRequestId_
+  pRepositoryName_
+  = MergePullRequestByFastForward'{_mprbffSourceCommitId
+                                     = Nothing,
+                                   _mprbffPullRequestId = pPullRequestId_,
+                                   _mprbffRepositoryName = pRepositoryName_}
 
 -- | The full commit ID of the original or updated commit in the pull request source branch. Pass this value if you want an exception thrown if the current commit ID of the tip of the source branch does not match this commit ID.
 mprbffSourceCommitId :: Lens' MergePullRequestByFastForward (Maybe Text)
@@ -130,13 +130,15 @@ instance ToQuery MergePullRequestByFastForward where
         toQuery = const mempty
 
 -- | /See:/ 'mergePullRequestByFastForwardResponse' smart constructor.
-data MergePullRequestByFastForwardResponse =
-  MergePullRequestByFastForwardResponse'
-    { _mprbffrsPullRequest    :: !(Maybe PullRequest)
-    , _mprbffrsResponseStatus :: !Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data MergePullRequestByFastForwardResponse = MergePullRequestByFastForwardResponse'{_mprbffrsPullRequest
+                                                                                    ::
+                                                                                    !(Maybe
+                                                                                        PullRequest),
+                                                                                    _mprbffrsResponseStatus
+                                                                                    ::
+                                                                                    !Int}
+                                               deriving (Eq, Read, Show, Data,
+                                                         Typeable, Generic)
 
 -- | Creates a value of 'MergePullRequestByFastForwardResponse' with the minimum fields required to make a request.
 --
@@ -148,10 +150,12 @@ data MergePullRequestByFastForwardResponse =
 mergePullRequestByFastForwardResponse
     :: Int -- ^ 'mprbffrsResponseStatus'
     -> MergePullRequestByFastForwardResponse
-mergePullRequestByFastForwardResponse pResponseStatus_ =
-  MergePullRequestByFastForwardResponse'
-    {_mprbffrsPullRequest = Nothing, _mprbffrsResponseStatus = pResponseStatus_}
-
+mergePullRequestByFastForwardResponse
+  pResponseStatus_
+  = MergePullRequestByFastForwardResponse'{_mprbffrsPullRequest
+                                             = Nothing,
+                                           _mprbffrsResponseStatus =
+                                             pResponseStatus_}
 
 -- | Information about the specified pull request, including the merge.
 mprbffrsPullRequest :: Lens' MergePullRequestByFastForwardResponse (Maybe PullRequest)

@@ -38,7 +38,6 @@ module Network.AWS.GuardDuty.UpdateFindingsFeedback
     ) where
 
 import Network.AWS.GuardDuty.Types
-import Network.AWS.GuardDuty.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.Request
@@ -47,15 +46,15 @@ import Network.AWS.Response
 -- | UpdateFindingsFeedback request body.
 --
 -- /See:/ 'updateFindingsFeedback' smart constructor.
-data UpdateFindingsFeedback =
-  UpdateFindingsFeedback'
-    { _uffFindingIds :: !(Maybe [Text])
-    , _uffComments   :: !(Maybe Text)
-    , _uffFeedback   :: !(Maybe Feedback)
-    , _uffDetectorId :: !Text
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data UpdateFindingsFeedback = UpdateFindingsFeedback'{_uffFindingIds
+                                                      :: !(Maybe [Text]),
+                                                      _uffComments ::
+                                                      !(Maybe Text),
+                                                      _uffFeedback ::
+                                                      !(Maybe Feedback),
+                                                      _uffDetectorId :: !Text}
+                                deriving (Eq, Read, Show, Data, Typeable,
+                                          Generic)
 
 -- | Creates a value of 'UpdateFindingsFeedback' with the minimum fields required to make a request.
 --
@@ -71,14 +70,10 @@ data UpdateFindingsFeedback =
 updateFindingsFeedback
     :: Text -- ^ 'uffDetectorId'
     -> UpdateFindingsFeedback
-updateFindingsFeedback pDetectorId_ =
-  UpdateFindingsFeedback'
-    { _uffFindingIds = Nothing
-    , _uffComments = Nothing
-    , _uffFeedback = Nothing
-    , _uffDetectorId = pDetectorId_
-    }
-
+updateFindingsFeedback pDetectorId_
+  = UpdateFindingsFeedback'{_uffFindingIds = Nothing,
+                            _uffComments = Nothing, _uffFeedback = Nothing,
+                            _uffDetectorId = pDetectorId_}
 
 -- | IDs of the findings that you want to mark as useful or not useful.
 uffFindingIds :: Lens' UpdateFindingsFeedback [Text]
@@ -135,12 +130,10 @@ instance ToQuery UpdateFindingsFeedback where
         toQuery = const mempty
 
 -- | /See:/ 'updateFindingsFeedbackResponse' smart constructor.
-newtype UpdateFindingsFeedbackResponse =
-  UpdateFindingsFeedbackResponse'
-    { _uffrsResponseStatus :: Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+newtype UpdateFindingsFeedbackResponse = UpdateFindingsFeedbackResponse'{_uffrsResponseStatus
+                                                                         :: Int}
+                                           deriving (Eq, Read, Show, Data,
+                                                     Typeable, Generic)
 
 -- | Creates a value of 'UpdateFindingsFeedbackResponse' with the minimum fields required to make a request.
 --
@@ -150,9 +143,9 @@ newtype UpdateFindingsFeedbackResponse =
 updateFindingsFeedbackResponse
     :: Int -- ^ 'uffrsResponseStatus'
     -> UpdateFindingsFeedbackResponse
-updateFindingsFeedbackResponse pResponseStatus_ =
-  UpdateFindingsFeedbackResponse' {_uffrsResponseStatus = pResponseStatus_}
-
+updateFindingsFeedbackResponse pResponseStatus_
+  = UpdateFindingsFeedbackResponse'{_uffrsResponseStatus
+                                      = pResponseStatus_}
 
 -- | -- | The response status code.
 uffrsResponseStatus :: Lens' UpdateFindingsFeedbackResponse Int

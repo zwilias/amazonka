@@ -48,28 +48,24 @@ module Network.AWS.OpsWorks.UpdateApp
 
 import Network.AWS.Lens
 import Network.AWS.OpsWorks.Types
-import Network.AWS.OpsWorks.Types.Product
 import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 
 -- | /See:/ 'updateApp' smart constructor.
-data UpdateApp =
-  UpdateApp'
-    { _uaSSLConfiguration :: !(Maybe SSLConfiguration)
-    , _uaEnvironment      :: !(Maybe [EnvironmentVariable])
-    , _uaEnableSSL        :: !(Maybe Bool)
-    , _uaDataSources      :: !(Maybe [DataSource])
-    , _uaAppSource        :: !(Maybe Source)
-    , _uaAttributes       :: !(Maybe (Map AppAttributesKeys Text))
-    , _uaName             :: !(Maybe Text)
-    , _uaType             :: !(Maybe AppType)
-    , _uaDomains          :: !(Maybe [Text])
-    , _uaDescription      :: !(Maybe Text)
-    , _uaAppId            :: !Text
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data UpdateApp = UpdateApp'{_uaSSLConfiguration ::
+                            !(Maybe SSLConfiguration),
+                            _uaEnvironment :: !(Maybe [EnvironmentVariable]),
+                            _uaEnableSSL :: !(Maybe Bool),
+                            _uaDataSources :: !(Maybe [DataSource]),
+                            _uaAppSource :: !(Maybe Source),
+                            _uaAttributes ::
+                            !(Maybe (Map AppAttributesKeys Text)),
+                            _uaName :: !(Maybe Text),
+                            _uaType :: !(Maybe AppType),
+                            _uaDomains :: !(Maybe [Text]),
+                            _uaDescription :: !(Maybe Text), _uaAppId :: !Text}
+                   deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'UpdateApp' with the minimum fields required to make a request.
 --
@@ -91,7 +87,7 @@ data UpdateApp =
 --
 -- * 'uaType' - The app type.
 --
--- * 'uaDomains' - The app's virtual host settings, with multiple domains separated by commas. For example: @'www.example.com, example.com'@
+-- * 'uaDomains' - The app's virtual host settings, with multiple domains separated by commas. For example: @'www.example.com, example.com'@ 
 --
 -- * 'uaDescription' - A description of the app.
 --
@@ -99,21 +95,13 @@ data UpdateApp =
 updateApp
     :: Text -- ^ 'uaAppId'
     -> UpdateApp
-updateApp pAppId_ =
-  UpdateApp'
-    { _uaSSLConfiguration = Nothing
-    , _uaEnvironment = Nothing
-    , _uaEnableSSL = Nothing
-    , _uaDataSources = Nothing
-    , _uaAppSource = Nothing
-    , _uaAttributes = Nothing
-    , _uaName = Nothing
-    , _uaType = Nothing
-    , _uaDomains = Nothing
-    , _uaDescription = Nothing
-    , _uaAppId = pAppId_
-    }
-
+updateApp pAppId_
+  = UpdateApp'{_uaSSLConfiguration = Nothing,
+               _uaEnvironment = Nothing, _uaEnableSSL = Nothing,
+               _uaDataSources = Nothing, _uaAppSource = Nothing,
+               _uaAttributes = Nothing, _uaName = Nothing,
+               _uaType = Nothing, _uaDomains = Nothing,
+               _uaDescription = Nothing, _uaAppId = pAppId_}
 
 -- | An @SslConfiguration@ object with the SSL configuration.
 uaSSLConfiguration :: Lens' UpdateApp (Maybe SSLConfiguration)
@@ -147,7 +135,7 @@ uaName = lens _uaName (\ s a -> s{_uaName = a})
 uaType :: Lens' UpdateApp (Maybe AppType)
 uaType = lens _uaType (\ s a -> s{_uaType = a})
 
--- | The app's virtual host settings, with multiple domains separated by commas. For example: @'www.example.com, example.com'@
+-- | The app's virtual host settings, with multiple domains separated by commas. For example: @'www.example.com, example.com'@ 
 uaDomains :: Lens' UpdateApp [Text]
 uaDomains = lens _uaDomains (\ s a -> s{_uaDomains = a}) . _Default . _Coerce
 
@@ -199,16 +187,13 @@ instance ToQuery UpdateApp where
         toQuery = const mempty
 
 -- | /See:/ 'updateAppResponse' smart constructor.
-data UpdateAppResponse =
-  UpdateAppResponse'
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data UpdateAppResponse = UpdateAppResponse'
+                           deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'UpdateAppResponse' with the minimum fields required to make a request.
 --
 updateAppResponse
     :: UpdateAppResponse
 updateAppResponse = UpdateAppResponse'
-
 
 instance NFData UpdateAppResponse where

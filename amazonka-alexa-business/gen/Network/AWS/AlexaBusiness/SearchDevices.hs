@@ -45,7 +45,6 @@ module Network.AWS.AlexaBusiness.SearchDevices
     ) where
 
 import Network.AWS.AlexaBusiness.Types
-import Network.AWS.AlexaBusiness.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Pager
 import Network.AWS.Prelude
@@ -53,15 +52,12 @@ import Network.AWS.Request
 import Network.AWS.Response
 
 -- | /See:/ 'searchDevices' smart constructor.
-data SearchDevices =
-  SearchDevices'
-    { _sdFilters      :: !(Maybe [Filter])
-    , _sdSortCriteria :: !(Maybe [Sort])
-    , _sdNextToken    :: !(Maybe Text)
-    , _sdMaxResults   :: !(Maybe Nat)
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data SearchDevices = SearchDevices'{_sdFilters ::
+                                    !(Maybe [Filter]),
+                                    _sdSortCriteria :: !(Maybe [Sort]),
+                                    _sdNextToken :: !(Maybe Text),
+                                    _sdMaxResults :: !(Maybe Nat)}
+                       deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'SearchDevices' with the minimum fields required to make a request.
 --
@@ -76,14 +72,10 @@ data SearchDevices =
 -- * 'sdMaxResults' - The maximum number of results to include in the response. If more results exist than the specified @MaxResults@ value, a token is included in the response so that the remaining results can be retrieved.
 searchDevices
     :: SearchDevices
-searchDevices =
-  SearchDevices'
-    { _sdFilters = Nothing
-    , _sdSortCriteria = Nothing
-    , _sdNextToken = Nothing
-    , _sdMaxResults = Nothing
-    }
-
+searchDevices
+  = SearchDevices'{_sdFilters = Nothing,
+                   _sdSortCriteria = Nothing, _sdNextToken = Nothing,
+                   _sdMaxResults = Nothing}
 
 -- | The filters to use to list a specified set of devices. Supported filter keys are DeviceName, DeviceStatus, DeviceStatusDetailCode, RoomName, DeviceType, DeviceSerialNumber, UnassociatedOnly, and ConnectionStatus (ONLINE and OFFLINE).
 sdFilters :: Lens' SearchDevices [Filter]
@@ -148,15 +140,15 @@ instance ToQuery SearchDevices where
         toQuery = const mempty
 
 -- | /See:/ 'searchDevicesResponse' smart constructor.
-data SearchDevicesResponse =
-  SearchDevicesResponse'
-    { _sdrsNextToken      :: !(Maybe Text)
-    , _sdrsDevices        :: !(Maybe [DeviceData])
-    , _sdrsTotalCount     :: !(Maybe Int)
-    , _sdrsResponseStatus :: !Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data SearchDevicesResponse = SearchDevicesResponse'{_sdrsNextToken
+                                                    :: !(Maybe Text),
+                                                    _sdrsDevices ::
+                                                    !(Maybe [DeviceData]),
+                                                    _sdrsTotalCount ::
+                                                    !(Maybe Int),
+                                                    _sdrsResponseStatus :: !Int}
+                               deriving (Eq, Read, Show, Data, Typeable,
+                                         Generic)
 
 -- | Creates a value of 'SearchDevicesResponse' with the minimum fields required to make a request.
 --
@@ -172,14 +164,10 @@ data SearchDevicesResponse =
 searchDevicesResponse
     :: Int -- ^ 'sdrsResponseStatus'
     -> SearchDevicesResponse
-searchDevicesResponse pResponseStatus_ =
-  SearchDevicesResponse'
-    { _sdrsNextToken = Nothing
-    , _sdrsDevices = Nothing
-    , _sdrsTotalCount = Nothing
-    , _sdrsResponseStatus = pResponseStatus_
-    }
-
+searchDevicesResponse pResponseStatus_
+  = SearchDevicesResponse'{_sdrsNextToken = Nothing,
+                           _sdrsDevices = Nothing, _sdrsTotalCount = Nothing,
+                           _sdrsResponseStatus = pResponseStatus_}
 
 -- | The token returned to indicate that there is more data available.
 sdrsNextToken :: Lens' SearchDevicesResponse (Maybe Text)

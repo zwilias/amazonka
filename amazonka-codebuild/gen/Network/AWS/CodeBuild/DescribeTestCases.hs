@@ -18,7 +18,7 @@
 -- Stability   : auto-generated
 -- Portability : non-portable (GHC extensions)
 --
--- Returns a list of details about test cases for a report.
+-- Returns a list of details about test cases for a report. 
 --
 --
 module Network.AWS.CodeBuild.DescribeTestCases
@@ -42,59 +42,52 @@ module Network.AWS.CodeBuild.DescribeTestCases
     ) where
 
 import Network.AWS.CodeBuild.Types
-import Network.AWS.CodeBuild.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 
 -- | /See:/ 'describeTestCases' smart constructor.
-data DescribeTestCases =
-  DescribeTestCases'
-    { _dtcNextToken  :: !(Maybe Text)
-    , _dtcFilter     :: !(Maybe TestCaseFilter)
-    , _dtcMaxResults :: !(Maybe Nat)
-    , _dtcReportARN  :: !Text
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data DescribeTestCases = DescribeTestCases'{_dtcNextToken
+                                            :: !(Maybe Text),
+                                            _dtcFilter ::
+                                            !(Maybe TestCaseFilter),
+                                            _dtcMaxResults :: !(Maybe Nat),
+                                            _dtcReportARN :: !Text}
+                           deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'DescribeTestCases' with the minimum fields required to make a request.
 --
 -- Use one of the following lenses to modify other fields as desired:
 --
--- * 'dtcNextToken' - During a previous call, the maximum number of items that can be returned is the value specified in @maxResults@ . If there more items in the list, then a unique string called a /nextToken/ is returned. To get the next batch of items in the list, call this operation again, adding the next token to the call. To get all of the items in the list, keep calling this operation with each subsequent next token that is returned, until no more next tokens are returned.
+-- * 'dtcNextToken' - During a previous call, the maximum number of items that can be returned is the value specified in @maxResults@ . If there more items in the list, then a unique string called a /nextToken/ is returned. To get the next batch of items in the list, call this operation again, adding the next token to the call. To get all of the items in the list, keep calling this operation with each subsequent next token that is returned, until no more next tokens are returned. 
 --
--- * 'dtcFilter' - A @TestCaseFilter@ object used to filter the returned reports.
+-- * 'dtcFilter' - A @TestCaseFilter@ object used to filter the returned reports. 
 --
--- * 'dtcMaxResults' - The maximum number of paginated test cases returned per response. Use @nextToken@ to iterate pages in the list of returned @TestCase@ objects. The default value is 100.
+-- * 'dtcMaxResults' - The maximum number of paginated test cases returned per response. Use @nextToken@ to iterate pages in the list of returned @TestCase@ objects. The default value is 100. 
 --
--- * 'dtcReportARN' - The ARN of the report for which test cases are returned.
+-- * 'dtcReportARN' - The ARN of the report for which test cases are returned. 
 describeTestCases
     :: Text -- ^ 'dtcReportARN'
     -> DescribeTestCases
-describeTestCases pReportARN_ =
-  DescribeTestCases'
-    { _dtcNextToken = Nothing
-    , _dtcFilter = Nothing
-    , _dtcMaxResults = Nothing
-    , _dtcReportARN = pReportARN_
-    }
+describeTestCases pReportARN_
+  = DescribeTestCases'{_dtcNextToken = Nothing,
+                       _dtcFilter = Nothing, _dtcMaxResults = Nothing,
+                       _dtcReportARN = pReportARN_}
 
-
--- | During a previous call, the maximum number of items that can be returned is the value specified in @maxResults@ . If there more items in the list, then a unique string called a /nextToken/ is returned. To get the next batch of items in the list, call this operation again, adding the next token to the call. To get all of the items in the list, keep calling this operation with each subsequent next token that is returned, until no more next tokens are returned.
+-- | During a previous call, the maximum number of items that can be returned is the value specified in @maxResults@ . If there more items in the list, then a unique string called a /nextToken/ is returned. To get the next batch of items in the list, call this operation again, adding the next token to the call. To get all of the items in the list, keep calling this operation with each subsequent next token that is returned, until no more next tokens are returned. 
 dtcNextToken :: Lens' DescribeTestCases (Maybe Text)
 dtcNextToken = lens _dtcNextToken (\ s a -> s{_dtcNextToken = a})
 
--- | A @TestCaseFilter@ object used to filter the returned reports.
+-- | A @TestCaseFilter@ object used to filter the returned reports. 
 dtcFilter :: Lens' DescribeTestCases (Maybe TestCaseFilter)
 dtcFilter = lens _dtcFilter (\ s a -> s{_dtcFilter = a})
 
--- | The maximum number of paginated test cases returned per response. Use @nextToken@ to iterate pages in the list of returned @TestCase@ objects. The default value is 100.
+-- | The maximum number of paginated test cases returned per response. Use @nextToken@ to iterate pages in the list of returned @TestCase@ objects. The default value is 100. 
 dtcMaxResults :: Lens' DescribeTestCases (Maybe Natural)
 dtcMaxResults = lens _dtcMaxResults (\ s a -> s{_dtcMaxResults = a}) . mapping _Nat
 
--- | The ARN of the report for which test cases are returned.
+-- | The ARN of the report for which test cases are returned. 
 dtcReportARN :: Lens' DescribeTestCases Text
 dtcReportARN = lens _dtcReportARN (\ s a -> s{_dtcReportARN = a})
 
@@ -139,40 +132,38 @@ instance ToQuery DescribeTestCases where
         toQuery = const mempty
 
 -- | /See:/ 'describeTestCasesResponse' smart constructor.
-data DescribeTestCasesResponse =
-  DescribeTestCasesResponse'
-    { _dtcrsNextToken      :: !(Maybe Text)
-    , _dtcrsTestCases      :: !(Maybe [TestCase])
-    , _dtcrsResponseStatus :: !Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data DescribeTestCasesResponse = DescribeTestCasesResponse'{_dtcrsNextToken
+                                                            :: !(Maybe Text),
+                                                            _dtcrsTestCases ::
+                                                            !(Maybe [TestCase]),
+                                                            _dtcrsResponseStatus
+                                                            :: !Int}
+                                   deriving (Eq, Read, Show, Data, Typeable,
+                                             Generic)
 
 -- | Creates a value of 'DescribeTestCasesResponse' with the minimum fields required to make a request.
 --
 -- Use one of the following lenses to modify other fields as desired:
 --
--- * 'dtcrsNextToken' - During a previous call, the maximum number of items that can be returned is the value specified in @maxResults@ . If there more items in the list, then a unique string called a /nextToken/ is returned. To get the next batch of items in the list, call this operation again, adding the next token to the call. To get all of the items in the list, keep calling this operation with each subsequent next token that is returned, until no more next tokens are returned.
+-- * 'dtcrsNextToken' - During a previous call, the maximum number of items that can be returned is the value specified in @maxResults@ . If there more items in the list, then a unique string called a /nextToken/ is returned. To get the next batch of items in the list, call this operation again, adding the next token to the call. To get all of the items in the list, keep calling this operation with each subsequent next token that is returned, until no more next tokens are returned. 
 --
--- * 'dtcrsTestCases' - The returned list of test cases.
+-- * 'dtcrsTestCases' - The returned list of test cases. 
 --
 -- * 'dtcrsResponseStatus' - -- | The response status code.
 describeTestCasesResponse
     :: Int -- ^ 'dtcrsResponseStatus'
     -> DescribeTestCasesResponse
-describeTestCasesResponse pResponseStatus_ =
-  DescribeTestCasesResponse'
-    { _dtcrsNextToken = Nothing
-    , _dtcrsTestCases = Nothing
-    , _dtcrsResponseStatus = pResponseStatus_
-    }
+describeTestCasesResponse pResponseStatus_
+  = DescribeTestCasesResponse'{_dtcrsNextToken =
+                                 Nothing,
+                               _dtcrsTestCases = Nothing,
+                               _dtcrsResponseStatus = pResponseStatus_}
 
-
--- | During a previous call, the maximum number of items that can be returned is the value specified in @maxResults@ . If there more items in the list, then a unique string called a /nextToken/ is returned. To get the next batch of items in the list, call this operation again, adding the next token to the call. To get all of the items in the list, keep calling this operation with each subsequent next token that is returned, until no more next tokens are returned.
+-- | During a previous call, the maximum number of items that can be returned is the value specified in @maxResults@ . If there more items in the list, then a unique string called a /nextToken/ is returned. To get the next batch of items in the list, call this operation again, adding the next token to the call. To get all of the items in the list, keep calling this operation with each subsequent next token that is returned, until no more next tokens are returned. 
 dtcrsNextToken :: Lens' DescribeTestCasesResponse (Maybe Text)
 dtcrsNextToken = lens _dtcrsNextToken (\ s a -> s{_dtcrsNextToken = a})
 
--- | The returned list of test cases.
+-- | The returned list of test cases. 
 dtcrsTestCases :: Lens' DescribeTestCasesResponse [TestCase]
 dtcrsTestCases = lens _dtcrsTestCases (\ s a -> s{_dtcrsTestCases = a}) . _Default . _Coerce
 

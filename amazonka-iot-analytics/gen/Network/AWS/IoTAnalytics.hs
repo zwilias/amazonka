@@ -14,7 +14,7 @@
 -- AWS IoT Analytics provides advanced data analysis for AWS IoT. It allows you to collect large amounts of device data, process messages, store them, and then query the data and run sophisticated analytics to make accurate decisions in your IoT applications and machine learning use cases. AWS IoT Analytics enables advanced data exploration through integration with Jupyter Notebooks and data visualization through integration with Amazon QuickSight.
 --
 --
--- Traditional analytics and business intelligence tools are designed to process structured data. IoT data often comes from devices that record noisy processes (such as temperature, motion, or sound). As a result, the data from these devices can have significant gaps, corrupted messages, and false readings that must be cleaned up before analysis can occur. Also, IoT data is often only meaningful in the context of other data from external sources.
+-- Traditional analytics and business intelligence tools are designed to process structured data. IoT data often comes from devices that record noisy processes (such as temperature, motion, or sound). As a result, the data from these devices can have significant gaps, corrupted messages, and false readings that must be cleaned up before analysis can occur. Also, IoT data is often only meaningful in the context of other data from external sources. 
 --
 -- AWS IoT Analytics automates each of the steps required to analyze data from IoT devices. AWS IoT Analytics filters, transforms, and enriches IoT data before storing it in a time-series data store for analysis. You can set up the service to collect only the data you need from your devices, apply mathematical transforms to process the data, and enrich the data with device-specific metadata such as device type and location before storing it. Then, you can analyze your data by running queries using the built-in SQL query engine, or perform more complex analytics and machine learning inference. AWS IoT Analytics includes models for common IoT use cases so you can answer questions like which devices are about to fail or which customers are at risk of abandoning their wearable devices.
 --
@@ -53,94 +53,94 @@ module Network.AWS.IoTAnalytics
     -- * Operations
     -- $operations
 
-    -- ** DescribePipeline
+    -- ** DescribePipeline 
     , module Network.AWS.IoTAnalytics.DescribePipeline
 
-    -- ** DescribeDataset
+    -- ** DescribeDataset 
     , module Network.AWS.IoTAnalytics.DescribeDataset
 
-    -- ** ListChannels
+    -- ** ListChannels 
     , module Network.AWS.IoTAnalytics.ListChannels
 
-    -- ** PutLoggingOptions
+    -- ** PutLoggingOptions 
     , module Network.AWS.IoTAnalytics.PutLoggingOptions
 
-    -- ** DeleteChannel
+    -- ** DeleteChannel 
     , module Network.AWS.IoTAnalytics.DeleteChannel
 
-    -- ** UpdateChannel
+    -- ** UpdateChannel 
     , module Network.AWS.IoTAnalytics.UpdateChannel
 
-    -- ** SampleChannelData
+    -- ** SampleChannelData 
     , module Network.AWS.IoTAnalytics.SampleChannelData
 
-    -- ** CancelPipelineReprocessing
+    -- ** CancelPipelineReprocessing 
     , module Network.AWS.IoTAnalytics.CancelPipelineReprocessing
 
-    -- ** CreateDatastore
+    -- ** CreateDatastore 
     , module Network.AWS.IoTAnalytics.CreateDatastore
 
-    -- ** UpdatePipeline
+    -- ** UpdatePipeline 
     , module Network.AWS.IoTAnalytics.UpdatePipeline
 
-    -- ** DeletePipeline
+    -- ** DeletePipeline 
     , module Network.AWS.IoTAnalytics.DeletePipeline
 
-    -- ** DeleteDataset
+    -- ** DeleteDataset 
     , module Network.AWS.IoTAnalytics.DeleteDataset
 
-    -- ** UpdateDataset
+    -- ** UpdateDataset 
     , module Network.AWS.IoTAnalytics.UpdateDataset
 
-    -- ** ListPipelines
+    -- ** ListPipelines 
     , module Network.AWS.IoTAnalytics.ListPipelines
 
-    -- ** DeleteDatastore
+    -- ** DeleteDatastore 
     , module Network.AWS.IoTAnalytics.DeleteDatastore
 
-    -- ** UpdateDatastore
+    -- ** UpdateDatastore 
     , module Network.AWS.IoTAnalytics.UpdateDatastore
 
-    -- ** CreateDataset
+    -- ** CreateDataset 
     , module Network.AWS.IoTAnalytics.CreateDataset
 
-    -- ** BatchPutMessage
+    -- ** BatchPutMessage 
     , module Network.AWS.IoTAnalytics.BatchPutMessage
 
-    -- ** ListDatastores
+    -- ** ListDatastores 
     , module Network.AWS.IoTAnalytics.ListDatastores
 
-    -- ** CreateDatasetContent
+    -- ** CreateDatasetContent 
     , module Network.AWS.IoTAnalytics.CreateDatasetContent
 
-    -- ** CreateChannel
+    -- ** CreateChannel 
     , module Network.AWS.IoTAnalytics.CreateChannel
 
-    -- ** DeleteDatasetContent
+    -- ** DeleteDatasetContent 
     , module Network.AWS.IoTAnalytics.DeleteDatasetContent
 
-    -- ** DescribeDatastore
+    -- ** DescribeDatastore 
     , module Network.AWS.IoTAnalytics.DescribeDatastore
 
-    -- ** GetDatasetContent
+    -- ** GetDatasetContent 
     , module Network.AWS.IoTAnalytics.GetDatasetContent
 
-    -- ** ListDatasets
+    -- ** ListDatasets 
     , module Network.AWS.IoTAnalytics.ListDatasets
 
-    -- ** RunPipelineActivity
+    -- ** RunPipelineActivity 
     , module Network.AWS.IoTAnalytics.RunPipelineActivity
 
-    -- ** DescribeChannel
+    -- ** DescribeChannel 
     , module Network.AWS.IoTAnalytics.DescribeChannel
 
-    -- ** CreatePipeline
+    -- ** CreatePipeline 
     , module Network.AWS.IoTAnalytics.CreatePipeline
 
-    -- ** StartPipelineReprocessing
+    -- ** StartPipelineReprocessing 
     , module Network.AWS.IoTAnalytics.StartPipelineReprocessing
 
-    -- ** DescribeLoggingOptions
+    -- ** DescribeLoggingOptions 
     , module Network.AWS.IoTAnalytics.DescribeLoggingOptions
 
     -- * Types

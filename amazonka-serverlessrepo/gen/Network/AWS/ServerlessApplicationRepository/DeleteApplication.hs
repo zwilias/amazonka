@@ -39,15 +39,11 @@ import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 import Network.AWS.ServerlessApplicationRepository.Types
-import Network.AWS.ServerlessApplicationRepository.Types.Product
 
 -- | /See:/ 'deleteApplication' smart constructor.
-newtype DeleteApplication =
-  DeleteApplication'
-    { _daApplicationId :: Text
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+newtype DeleteApplication = DeleteApplication'{_daApplicationId
+                                               :: Text}
+                              deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'DeleteApplication' with the minimum fields required to make a request.
 --
@@ -57,9 +53,9 @@ newtype DeleteApplication =
 deleteApplication
     :: Text -- ^ 'daApplicationId'
     -> DeleteApplication
-deleteApplication pApplicationId_ =
-  DeleteApplication' {_daApplicationId = pApplicationId_}
-
+deleteApplication pApplicationId_
+  = DeleteApplication'{_daApplicationId =
+                         pApplicationId_}
 
 -- | The ID of the application to get.
 daApplicationId :: Lens' DeleteApplication Text
@@ -89,16 +85,15 @@ instance ToQuery DeleteApplication where
         toQuery = const mempty
 
 -- | /See:/ 'deleteApplicationResponse' smart constructor.
-data DeleteApplicationResponse =
-  DeleteApplicationResponse'
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data DeleteApplicationResponse = DeleteApplicationResponse'
+                                   deriving (Eq, Read, Show, Data, Typeable,
+                                             Generic)
 
 -- | Creates a value of 'DeleteApplicationResponse' with the minimum fields required to make a request.
 --
 deleteApplicationResponse
     :: DeleteApplicationResponse
-deleteApplicationResponse = DeleteApplicationResponse'
-
+deleteApplicationResponse
+  = DeleteApplicationResponse'
 
 instance NFData DeleteApplicationResponse where

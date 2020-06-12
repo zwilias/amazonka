@@ -46,44 +46,40 @@ module Network.AWS.Lambda.GetFunction
     ) where
 
 import Network.AWS.Lambda.Types
-import Network.AWS.Lambda.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 
--- |
+-- | 
 --
 --
 --
 -- /See:/ 'getFunction' smart constructor.
-data GetFunction =
-  GetFunction'
-    { _gfQualifier    :: !(Maybe Text)
-    , _gfFunctionName :: !Text
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data GetFunction = GetFunction'{_gfQualifier ::
+                                !(Maybe Text),
+                                _gfFunctionName :: !Text}
+                     deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'GetFunction' with the minimum fields required to make a request.
 --
 -- Use one of the following lenses to modify other fields as desired:
 --
--- * 'gfQualifier' - Use this optional parameter to specify a function version or an alias name. If you specify function version, the API uses qualified function ARN for the request and returns information about the specific Lambda function version. If you specify an alias name, the API uses the alias ARN and returns information about the function version to which the alias points. If you don't provide this parameter, the API uses unqualified function ARN and returns information about the @> LATEST@ version of the Lambda function.
+-- * 'gfQualifier' - Use this optional parameter to specify a function version or an alias name. If you specify function version, the API uses qualified function ARN for the request and returns information about the specific Lambda function version. If you specify an alias name, the API uses the alias ARN and returns information about the function version to which the alias points. If you don't provide this parameter, the API uses unqualified function ARN and returns information about the @> LATEST@ version of the Lambda function. 
 --
--- * 'gfFunctionName' - The Lambda function name. You can specify a function name (for example, @Thumbnail@ ) or you can specify Amazon Resource Name (ARN) of the function (for example, @arn:aws:lambda:us-west-2:account-id:function:ThumbNail@ ). AWS Lambda also allows you to specify a partial ARN (for example, @account-id:Thumbnail@ ). Note that the length constraint applies only to the ARN. If you specify only the function name, it is limited to 64 characters in length.
+-- * 'gfFunctionName' - The Lambda function name. You can specify a function name (for example, @Thumbnail@ ) or you can specify Amazon Resource Name (ARN) of the function (for example, @arn:aws:lambda:us-west-2:account-id:function:ThumbNail@ ). AWS Lambda also allows you to specify a partial ARN (for example, @account-id:Thumbnail@ ). Note that the length constraint applies only to the ARN. If you specify only the function name, it is limited to 64 characters in length. 
 getFunction
     :: Text -- ^ 'gfFunctionName'
     -> GetFunction
-getFunction pFunctionName_ =
-  GetFunction' {_gfQualifier = Nothing, _gfFunctionName = pFunctionName_}
+getFunction pFunctionName_
+  = GetFunction'{_gfQualifier = Nothing,
+                 _gfFunctionName = pFunctionName_}
 
-
--- | Use this optional parameter to specify a function version or an alias name. If you specify function version, the API uses qualified function ARN for the request and returns information about the specific Lambda function version. If you specify an alias name, the API uses the alias ARN and returns information about the function version to which the alias points. If you don't provide this parameter, the API uses unqualified function ARN and returns information about the @> LATEST@ version of the Lambda function.
+-- | Use this optional parameter to specify a function version or an alias name. If you specify function version, the API uses qualified function ARN for the request and returns information about the specific Lambda function version. If you specify an alias name, the API uses the alias ARN and returns information about the function version to which the alias points. If you don't provide this parameter, the API uses unqualified function ARN and returns information about the @> LATEST@ version of the Lambda function. 
 gfQualifier :: Lens' GetFunction (Maybe Text)
 gfQualifier = lens _gfQualifier (\ s a -> s{_gfQualifier = a})
 
--- | The Lambda function name. You can specify a function name (for example, @Thumbnail@ ) or you can specify Amazon Resource Name (ARN) of the function (for example, @arn:aws:lambda:us-west-2:account-id:function:ThumbNail@ ). AWS Lambda also allows you to specify a partial ARN (for example, @account-id:Thumbnail@ ). Note that the length constraint applies only to the ARN. If you specify only the function name, it is limited to 64 characters in length.
+-- | The Lambda function name. You can specify a function name (for example, @Thumbnail@ ) or you can specify Amazon Resource Name (ARN) of the function (for example, @arn:aws:lambda:us-west-2:account-id:function:ThumbNail@ ). AWS Lambda also allows you to specify a partial ARN (for example, @account-id:Thumbnail@ ). Note that the length constraint applies only to the ARN. If you specify only the function name, it is limited to 64 characters in length. 
 gfFunctionName :: Lens' GetFunction Text
 gfFunctionName = lens _gfFunctionName (\ s a -> s{_gfFunctionName = a})
 
@@ -120,16 +116,16 @@ instance ToQuery GetFunction where
 --
 --
 -- /See:/ 'getFunctionResponse' smart constructor.
-data GetFunctionResponse =
-  GetFunctionResponse'
-    { _gfrsConcurrency    :: !(Maybe Concurrency)
-    , _gfrsCode           :: !(Maybe FunctionCodeLocation)
-    , _gfrsConfiguration  :: !(Maybe FunctionConfiguration)
-    , _gfrsTags           :: !(Maybe (Map Text Text))
-    , _gfrsResponseStatus :: !Int
-    }
-  deriving (Eq, Show, Data, Typeable, Generic)
-
+data GetFunctionResponse = GetFunctionResponse'{_gfrsConcurrency
+                                                :: !(Maybe Concurrency),
+                                                _gfrsCode ::
+                                                !(Maybe FunctionCodeLocation),
+                                                _gfrsConfiguration ::
+                                                !(Maybe FunctionConfiguration),
+                                                _gfrsTags ::
+                                                !(Maybe (Map Text Text)),
+                                                _gfrsResponseStatus :: !Int}
+                             deriving (Eq, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'GetFunctionResponse' with the minimum fields required to make a request.
 --
@@ -147,15 +143,11 @@ data GetFunctionResponse =
 getFunctionResponse
     :: Int -- ^ 'gfrsResponseStatus'
     -> GetFunctionResponse
-getFunctionResponse pResponseStatus_ =
-  GetFunctionResponse'
-    { _gfrsConcurrency = Nothing
-    , _gfrsCode = Nothing
-    , _gfrsConfiguration = Nothing
-    , _gfrsTags = Nothing
-    , _gfrsResponseStatus = pResponseStatus_
-    }
-
+getFunctionResponse pResponseStatus_
+  = GetFunctionResponse'{_gfrsConcurrency = Nothing,
+                         _gfrsCode = Nothing, _gfrsConfiguration = Nothing,
+                         _gfrsTags = Nothing,
+                         _gfrsResponseStatus = pResponseStatus_}
 
 -- | The concurrent execution limit set for this function. For more information, see 'concurrent-executions' .
 gfrsConcurrency :: Lens' GetFunctionResponse (Maybe Concurrency)

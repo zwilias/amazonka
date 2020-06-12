@@ -38,18 +38,15 @@ module Network.AWS.OpsWorks.DeregisterEcsCluster
 
 import Network.AWS.Lens
 import Network.AWS.OpsWorks.Types
-import Network.AWS.OpsWorks.Types.Product
 import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 
 -- | /See:/ 'deregisterEcsCluster' smart constructor.
-newtype DeregisterEcsCluster =
-  DeregisterEcsCluster'
-    { _decEcsClusterARN :: Text
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+newtype DeregisterEcsCluster = DeregisterEcsCluster'{_decEcsClusterARN
+                                                     :: Text}
+                                 deriving (Eq, Read, Show, Data, Typeable,
+                                           Generic)
 
 -- | Creates a value of 'DeregisterEcsCluster' with the minimum fields required to make a request.
 --
@@ -59,9 +56,9 @@ newtype DeregisterEcsCluster =
 deregisterEcsCluster
     :: Text -- ^ 'decEcsClusterARN'
     -> DeregisterEcsCluster
-deregisterEcsCluster pEcsClusterARN_ =
-  DeregisterEcsCluster' {_decEcsClusterARN = pEcsClusterARN_}
-
+deregisterEcsCluster pEcsClusterARN_
+  = DeregisterEcsCluster'{_decEcsClusterARN =
+                            pEcsClusterARN_}
 
 -- | The cluster's ARN.
 decEcsClusterARN :: Lens' DeregisterEcsCluster Text
@@ -100,16 +97,15 @@ instance ToQuery DeregisterEcsCluster where
         toQuery = const mempty
 
 -- | /See:/ 'deregisterEcsClusterResponse' smart constructor.
-data DeregisterEcsClusterResponse =
-  DeregisterEcsClusterResponse'
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data DeregisterEcsClusterResponse = DeregisterEcsClusterResponse'
+                                      deriving (Eq, Read, Show, Data, Typeable,
+                                                Generic)
 
 -- | Creates a value of 'DeregisterEcsClusterResponse' with the minimum fields required to make a request.
 --
 deregisterEcsClusterResponse
     :: DeregisterEcsClusterResponse
-deregisterEcsClusterResponse = DeregisterEcsClusterResponse'
-
+deregisterEcsClusterResponse
+  = DeregisterEcsClusterResponse'
 
 instance NFData DeregisterEcsClusterResponse where

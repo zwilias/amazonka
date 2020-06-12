@@ -41,20 +41,16 @@ module Network.AWS.IoTAnalytics.GetDatasetContent
     ) where
 
 import Network.AWS.IoTAnalytics.Types
-import Network.AWS.IoTAnalytics.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 
 -- | /See:/ 'getDatasetContent' smart constructor.
-data GetDatasetContent =
-  GetDatasetContent'
-    { _gdcVersionId   :: !(Maybe Text)
-    , _gdcDatasetName :: !Text
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data GetDatasetContent = GetDatasetContent'{_gdcVersionId
+                                            :: !(Maybe Text),
+                                            _gdcDatasetName :: !Text}
+                           deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'GetDatasetContent' with the minimum fields required to make a request.
 --
@@ -66,9 +62,9 @@ data GetDatasetContent =
 getDatasetContent
     :: Text -- ^ 'gdcDatasetName'
     -> GetDatasetContent
-getDatasetContent pDatasetName_ =
-  GetDatasetContent' {_gdcVersionId = Nothing, _gdcDatasetName = pDatasetName_}
-
+getDatasetContent pDatasetName_
+  = GetDatasetContent'{_gdcVersionId = Nothing,
+                       _gdcDatasetName = pDatasetName_}
 
 -- | The version of the data set whose contents are retrieved. You can also use the strings "$LATEST" or "$LATEST_SUCCEEDED" to retrieve the contents of the latest or latest successfully completed data set. If not specified, "$LATEST_SUCCEEDED" is the default.
 gdcVersionId :: Lens' GetDatasetContent (Maybe Text)
@@ -106,15 +102,19 @@ instance ToQuery GetDatasetContent where
           = mconcat ["versionId" =: _gdcVersionId]
 
 -- | /See:/ 'getDatasetContentResponse' smart constructor.
-data GetDatasetContentResponse =
-  GetDatasetContentResponse'
-    { _gdcrsStatus         :: !(Maybe DatasetContentStatus)
-    , _gdcrsEntries        :: !(Maybe [DatasetEntry])
-    , _gdcrsTimestamp      :: !(Maybe POSIX)
-    , _gdcrsResponseStatus :: !Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data GetDatasetContentResponse = GetDatasetContentResponse'{_gdcrsStatus
+                                                            ::
+                                                            !(Maybe
+                                                                DatasetContentStatus),
+                                                            _gdcrsEntries ::
+                                                            !(Maybe
+                                                                [DatasetEntry]),
+                                                            _gdcrsTimestamp ::
+                                                            !(Maybe POSIX),
+                                                            _gdcrsResponseStatus
+                                                            :: !Int}
+                                   deriving (Eq, Read, Show, Data, Typeable,
+                                             Generic)
 
 -- | Creates a value of 'GetDatasetContentResponse' with the minimum fields required to make a request.
 --
@@ -130,14 +130,11 @@ data GetDatasetContentResponse =
 getDatasetContentResponse
     :: Int -- ^ 'gdcrsResponseStatus'
     -> GetDatasetContentResponse
-getDatasetContentResponse pResponseStatus_ =
-  GetDatasetContentResponse'
-    { _gdcrsStatus = Nothing
-    , _gdcrsEntries = Nothing
-    , _gdcrsTimestamp = Nothing
-    , _gdcrsResponseStatus = pResponseStatus_
-    }
-
+getDatasetContentResponse pResponseStatus_
+  = GetDatasetContentResponse'{_gdcrsStatus = Nothing,
+                               _gdcrsEntries = Nothing,
+                               _gdcrsTimestamp = Nothing,
+                               _gdcrsResponseStatus = pResponseStatus_}
 
 -- | The status of the data set content.
 gdcrsStatus :: Lens' GetDatasetContentResponse (Maybe DatasetContentStatus)

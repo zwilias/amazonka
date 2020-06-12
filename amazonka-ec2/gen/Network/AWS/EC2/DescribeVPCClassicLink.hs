@@ -40,21 +40,20 @@ module Network.AWS.EC2.DescribeVPCClassicLink
     ) where
 
 import Network.AWS.EC2.Types
-import Network.AWS.EC2.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 
 -- | /See:/ 'describeVPCClassicLink' smart constructor.
-data DescribeVPCClassicLink =
-  DescribeVPCClassicLink'
-    { _dvclFilters :: !(Maybe [Filter])
-    , _dvclVPCIds  :: !(Maybe [Text])
-    , _dvclDryRun  :: !(Maybe Bool)
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data DescribeVPCClassicLink = DescribeVPCClassicLink'{_dvclFilters
+                                                      :: !(Maybe [Filter]),
+                                                      _dvclVPCIds ::
+                                                      !(Maybe [Text]),
+                                                      _dvclDryRun ::
+                                                      !(Maybe Bool)}
+                                deriving (Eq, Read, Show, Data, Typeable,
+                                          Generic)
 
 -- | Creates a value of 'DescribeVPCClassicLink' with the minimum fields required to make a request.
 --
@@ -67,10 +66,9 @@ data DescribeVPCClassicLink =
 -- * 'dvclDryRun' - Checks whether you have the required permissions for the action, without actually making the request, and provides an error response. If you have the required permissions, the error response is @DryRunOperation@ . Otherwise, it is @UnauthorizedOperation@ .
 describeVPCClassicLink
     :: DescribeVPCClassicLink
-describeVPCClassicLink =
-  DescribeVPCClassicLink'
-    {_dvclFilters = Nothing, _dvclVPCIds = Nothing, _dvclDryRun = Nothing}
-
+describeVPCClassicLink
+  = DescribeVPCClassicLink'{_dvclFilters = Nothing,
+                            _dvclVPCIds = Nothing, _dvclDryRun = Nothing}
 
 -- | One or more filters.     * @is-classic-link-enabled@ - Whether the VPC is enabled for ClassicLink (@true@ | @false@ ).     * @tag@ :<key> - The key/value combination of a tag assigned to the resource. Use the tag key in the filter name and the tag value as the filter value. For example, to find all resources that have a tag with the key @Owner@ and the value @TeamA@ , specify @tag:Owner@ for the filter name and @TeamA@ for the filter value.     * @tag-key@ - The key of a tag assigned to the resource. Use this filter to find all resources assigned a tag with a specific key, regardless of the tag value.
 dvclFilters :: Lens' DescribeVPCClassicLink [Filter]
@@ -117,13 +115,14 @@ instance ToQuery DescribeVPCClassicLink where
                "DryRun" =: _dvclDryRun]
 
 -- | /See:/ 'describeVPCClassicLinkResponse' smart constructor.
-data DescribeVPCClassicLinkResponse =
-  DescribeVPCClassicLinkResponse'
-    { _dvclrsVPCs           :: !(Maybe [VPCClassicLink])
-    , _dvclrsResponseStatus :: !Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data DescribeVPCClassicLinkResponse = DescribeVPCClassicLinkResponse'{_dvclrsVPCs
+                                                                      ::
+                                                                      !(Maybe
+                                                                          [VPCClassicLink]),
+                                                                      _dvclrsResponseStatus
+                                                                      :: !Int}
+                                        deriving (Eq, Read, Show, Data,
+                                                  Typeable, Generic)
 
 -- | Creates a value of 'DescribeVPCClassicLinkResponse' with the minimum fields required to make a request.
 --
@@ -135,10 +134,10 @@ data DescribeVPCClassicLinkResponse =
 describeVPCClassicLinkResponse
     :: Int -- ^ 'dvclrsResponseStatus'
     -> DescribeVPCClassicLinkResponse
-describeVPCClassicLinkResponse pResponseStatus_ =
-  DescribeVPCClassicLinkResponse'
-    {_dvclrsVPCs = Nothing, _dvclrsResponseStatus = pResponseStatus_}
-
+describeVPCClassicLinkResponse pResponseStatus_
+  = DescribeVPCClassicLinkResponse'{_dvclrsVPCs =
+                                      Nothing,
+                                    _dvclrsResponseStatus = pResponseStatus_}
 
 -- | The ClassicLink status of one or more VPCs.
 dvclrsVPCs :: Lens' DescribeVPCClassicLinkResponse [VPCClassicLink]

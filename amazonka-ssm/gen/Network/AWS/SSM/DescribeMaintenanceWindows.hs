@@ -45,17 +45,18 @@ import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 import Network.AWS.SSM.Types
-import Network.AWS.SSM.Types.Product
 
 -- | /See:/ 'describeMaintenanceWindows' smart constructor.
-data DescribeMaintenanceWindows =
-  DescribeMaintenanceWindows'
-    { _dmwFilters    :: !(Maybe [MaintenanceWindowFilter])
-    , _dmwNextToken  :: !(Maybe Text)
-    , _dmwMaxResults :: !(Maybe Nat)
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data DescribeMaintenanceWindows = DescribeMaintenanceWindows'{_dmwFilters
+                                                              ::
+                                                              !(Maybe
+                                                                  [MaintenanceWindowFilter]),
+                                                              _dmwNextToken ::
+                                                              !(Maybe Text),
+                                                              _dmwMaxResults ::
+                                                              !(Maybe Nat)}
+                                    deriving (Eq, Read, Show, Data, Typeable,
+                                              Generic)
 
 -- | Creates a value of 'DescribeMaintenanceWindows' with the minimum fields required to make a request.
 --
@@ -68,10 +69,10 @@ data DescribeMaintenanceWindows =
 -- * 'dmwMaxResults' - The maximum number of items to return for this call. The call also returns a token that you can specify in a subsequent call to get the next set of results.
 describeMaintenanceWindows
     :: DescribeMaintenanceWindows
-describeMaintenanceWindows =
-  DescribeMaintenanceWindows'
-    {_dmwFilters = Nothing, _dmwNextToken = Nothing, _dmwMaxResults = Nothing}
-
+describeMaintenanceWindows
+  = DescribeMaintenanceWindows'{_dmwFilters = Nothing,
+                                _dmwNextToken = Nothing,
+                                _dmwMaxResults = Nothing}
 
 -- | Optional filters used to narrow down the scope of the returned Maintenance Windows. Supported filter keys are Name and Enabled.
 dmwFilters :: Lens' DescribeMaintenanceWindows [MaintenanceWindowFilter]
@@ -126,14 +127,19 @@ instance ToQuery DescribeMaintenanceWindows where
         toQuery = const mempty
 
 -- | /See:/ 'describeMaintenanceWindowsResponse' smart constructor.
-data DescribeMaintenanceWindowsResponse =
-  DescribeMaintenanceWindowsResponse'
-    { _dmwsrsWindowIdentities :: !(Maybe [MaintenanceWindowIdentity])
-    , _dmwsrsNextToken        :: !(Maybe Text)
-    , _dmwsrsResponseStatus   :: !Int
-    }
-  deriving (Eq, Show, Data, Typeable, Generic)
-
+data DescribeMaintenanceWindowsResponse = DescribeMaintenanceWindowsResponse'{_dmwsrsWindowIdentities
+                                                                              ::
+                                                                              !(Maybe
+                                                                                  [MaintenanceWindowIdentity]),
+                                                                              _dmwsrsNextToken
+                                                                              ::
+                                                                              !(Maybe
+                                                                                  Text),
+                                                                              _dmwsrsResponseStatus
+                                                                              ::
+                                                                              !Int}
+                                            deriving (Eq, Show, Data, Typeable,
+                                                      Generic)
 
 -- | Creates a value of 'DescribeMaintenanceWindowsResponse' with the minimum fields required to make a request.
 --
@@ -147,13 +153,12 @@ data DescribeMaintenanceWindowsResponse =
 describeMaintenanceWindowsResponse
     :: Int -- ^ 'dmwsrsResponseStatus'
     -> DescribeMaintenanceWindowsResponse
-describeMaintenanceWindowsResponse pResponseStatus_ =
-  DescribeMaintenanceWindowsResponse'
-    { _dmwsrsWindowIdentities = Nothing
-    , _dmwsrsNextToken = Nothing
-    , _dmwsrsResponseStatus = pResponseStatus_
-    }
-
+describeMaintenanceWindowsResponse pResponseStatus_
+  = DescribeMaintenanceWindowsResponse'{_dmwsrsWindowIdentities
+                                          = Nothing,
+                                        _dmwsrsNextToken = Nothing,
+                                        _dmwsrsResponseStatus =
+                                          pResponseStatus_}
 
 -- | Information about the Maintenance Windows.
 dmwsrsWindowIdentities :: Lens' DescribeMaintenanceWindowsResponse [MaintenanceWindowIdentity]

@@ -21,7 +21,7 @@
 -- Retrieves the forecast data for a scalable resource.
 --
 --
--- Capacity forecasts are represented as predicted values, or data points, that are calculated using historical data points from a specified CloudWatch load metric. Data points are available for up to 56 days.
+-- Capacity forecasts are represented as predicted values, or data points, that are calculated using historical data points from a specified CloudWatch load metric. Data points are available for up to 56 days. 
 --
 module Network.AWS.AutoScalingPlans.GetScalingPlanResourceForecastData
     (
@@ -47,26 +47,38 @@ module Network.AWS.AutoScalingPlans.GetScalingPlanResourceForecastData
     ) where
 
 import Network.AWS.AutoScalingPlans.Types
-import Network.AWS.AutoScalingPlans.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 
 -- | /See:/ 'getScalingPlanResourceForecastData' smart constructor.
-data GetScalingPlanResourceForecastData =
-  GetScalingPlanResourceForecastData'
-    { _gsprfdScalingPlanName    :: !Text
-    , _gsprfdScalingPlanVersion :: !Integer
-    , _gsprfdServiceNamespace   :: !ServiceNamespace
-    , _gsprfdResourceId         :: !Text
-    , _gsprfdScalableDimension  :: !ScalableDimension
-    , _gsprfdForecastDataType   :: !ForecastDataType
-    , _gsprfdStartTime          :: !POSIX
-    , _gsprfdEndTime            :: !POSIX
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data GetScalingPlanResourceForecastData = GetScalingPlanResourceForecastData'{_gsprfdScalingPlanName
+                                                                              ::
+                                                                              !Text,
+                                                                              _gsprfdScalingPlanVersion
+                                                                              ::
+                                                                              !Integer,
+                                                                              _gsprfdServiceNamespace
+                                                                              ::
+                                                                              !ServiceNamespace,
+                                                                              _gsprfdResourceId
+                                                                              ::
+                                                                              !Text,
+                                                                              _gsprfdScalableDimension
+                                                                              ::
+                                                                              !ScalableDimension,
+                                                                              _gsprfdForecastDataType
+                                                                              ::
+                                                                              !ForecastDataType,
+                                                                              _gsprfdStartTime
+                                                                              ::
+                                                                              !POSIX,
+                                                                              _gsprfdEndTime
+                                                                              ::
+                                                                              !POSIX}
+                                            deriving (Eq, Read, Show, Data,
+                                                      Typeable, Generic)
 
 -- | Creates a value of 'GetScalingPlanResourceForecastData' with the minimum fields required to make a request.
 --
@@ -84,7 +96,7 @@ data GetScalingPlanResourceForecastData =
 --
 -- * 'gsprfdForecastDataType' - The type of forecast data to get.     * @LoadForecast@ : The load metric forecast.      * @CapacityForecast@ : The capacity forecast.      * @ScheduledActionMinCapacity@ : The minimum capacity for each scheduled scaling action. This data is calculated as the larger of two values: the capacity forecast or the minimum capacity in the scaling instruction.     * @ScheduledActionMaxCapacity@ : The maximum capacity for each scheduled scaling action. The calculation used is determined by the predictive scaling maximum capacity behavior setting in the scaling instruction.
 --
--- * 'gsprfdStartTime' - The inclusive start time of the time range for the forecast data to get. The date and time can be at most 56 days before the current date and time.
+-- * 'gsprfdStartTime' - The inclusive start time of the time range for the forecast data to get. The date and time can be at most 56 days before the current date and time. 
 --
 -- * 'gsprfdEndTime' - The exclusive end time of the time range for the forecast data to get. The maximum time duration between the start and end time is seven days.  Although this parameter can accept a date and time that is more than two days in the future, the availability of forecast data has limits. AWS Auto Scaling only issues forecasts for periods of two days in advance.
 getScalingPlanResourceForecastData
@@ -97,18 +109,23 @@ getScalingPlanResourceForecastData
     -> UTCTime -- ^ 'gsprfdStartTime'
     -> UTCTime -- ^ 'gsprfdEndTime'
     -> GetScalingPlanResourceForecastData
-getScalingPlanResourceForecastData pScalingPlanName_ pScalingPlanVersion_ pServiceNamespace_ pResourceId_ pScalableDimension_ pForecastDataType_ pStartTime_ pEndTime_ =
-  GetScalingPlanResourceForecastData'
-    { _gsprfdScalingPlanName = pScalingPlanName_
-    , _gsprfdScalingPlanVersion = pScalingPlanVersion_
-    , _gsprfdServiceNamespace = pServiceNamespace_
-    , _gsprfdResourceId = pResourceId_
-    , _gsprfdScalableDimension = pScalableDimension_
-    , _gsprfdForecastDataType = pForecastDataType_
-    , _gsprfdStartTime = _Time # pStartTime_
-    , _gsprfdEndTime = _Time # pEndTime_
-    }
-
+getScalingPlanResourceForecastData pScalingPlanName_
+  pScalingPlanVersion_ pServiceNamespace_ pResourceId_
+  pScalableDimension_ pForecastDataType_ pStartTime_
+  pEndTime_
+  = GetScalingPlanResourceForecastData'{_gsprfdScalingPlanName
+                                          = pScalingPlanName_,
+                                        _gsprfdScalingPlanVersion =
+                                          pScalingPlanVersion_,
+                                        _gsprfdServiceNamespace =
+                                          pServiceNamespace_,
+                                        _gsprfdResourceId = pResourceId_,
+                                        _gsprfdScalableDimension =
+                                          pScalableDimension_,
+                                        _gsprfdForecastDataType =
+                                          pForecastDataType_,
+                                        _gsprfdStartTime = _Time # pStartTime_,
+                                        _gsprfdEndTime = _Time # pEndTime_}
 
 -- | The name of the scaling plan.
 gsprfdScalingPlanName :: Lens' GetScalingPlanResourceForecastData Text
@@ -134,7 +151,7 @@ gsprfdScalableDimension = lens _gsprfdScalableDimension (\ s a -> s{_gsprfdScala
 gsprfdForecastDataType :: Lens' GetScalingPlanResourceForecastData ForecastDataType
 gsprfdForecastDataType = lens _gsprfdForecastDataType (\ s a -> s{_gsprfdForecastDataType = a})
 
--- | The inclusive start time of the time range for the forecast data to get. The date and time can be at most 56 days before the current date and time.
+-- | The inclusive start time of the time range for the forecast data to get. The date and time can be at most 56 days before the current date and time. 
 gsprfdStartTime :: Lens' GetScalingPlanResourceForecastData UTCTime
 gsprfdStartTime = lens _gsprfdStartTime (\ s a -> s{_gsprfdStartTime = a}) . _Time
 
@@ -197,13 +214,15 @@ instance ToQuery GetScalingPlanResourceForecastData
         toQuery = const mempty
 
 -- | /See:/ 'getScalingPlanResourceForecastDataResponse' smart constructor.
-data GetScalingPlanResourceForecastDataResponse =
-  GetScalingPlanResourceForecastDataResponse'
-    { _gsprfdrsResponseStatus :: !Int
-    , _gsprfdrsDatapoints     :: ![Datapoint]
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data GetScalingPlanResourceForecastDataResponse = GetScalingPlanResourceForecastDataResponse'{_gsprfdrsResponseStatus
+                                                                                              ::
+                                                                                              !Int,
+                                                                                              _gsprfdrsDatapoints
+                                                                                              ::
+                                                                                              ![Datapoint]}
+                                                    deriving (Eq, Read, Show,
+                                                              Data, Typeable,
+                                                              Generic)
 
 -- | Creates a value of 'GetScalingPlanResourceForecastDataResponse' with the minimum fields required to make a request.
 --
@@ -215,10 +234,11 @@ data GetScalingPlanResourceForecastDataResponse =
 getScalingPlanResourceForecastDataResponse
     :: Int -- ^ 'gsprfdrsResponseStatus'
     -> GetScalingPlanResourceForecastDataResponse
-getScalingPlanResourceForecastDataResponse pResponseStatus_ =
-  GetScalingPlanResourceForecastDataResponse'
-    {_gsprfdrsResponseStatus = pResponseStatus_, _gsprfdrsDatapoints = mempty}
-
+getScalingPlanResourceForecastDataResponse
+  pResponseStatus_
+  = GetScalingPlanResourceForecastDataResponse'{_gsprfdrsResponseStatus
+                                                  = pResponseStatus_,
+                                                _gsprfdrsDatapoints = mempty}
 
 -- | -- | The response status code.
 gsprfdrsResponseStatus :: Lens' GetScalingPlanResourceForecastDataResponse Int

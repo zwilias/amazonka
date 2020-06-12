@@ -39,19 +39,17 @@ module Network.AWS.CloudFront.GetFieldLevelEncryptionProfile
     ) where
 
 import Network.AWS.CloudFront.Types
-import Network.AWS.CloudFront.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 
 -- | /See:/ 'getFieldLevelEncryptionProfile' smart constructor.
-newtype GetFieldLevelEncryptionProfile =
-  GetFieldLevelEncryptionProfile'
-    { _gflepId :: Text
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+newtype GetFieldLevelEncryptionProfile = GetFieldLevelEncryptionProfile'{_gflepId
+                                                                         ::
+                                                                         Text}
+                                           deriving (Eq, Read, Show, Data,
+                                                     Typeable, Generic)
 
 -- | Creates a value of 'GetFieldLevelEncryptionProfile' with the minimum fields required to make a request.
 --
@@ -61,9 +59,8 @@ newtype GetFieldLevelEncryptionProfile =
 getFieldLevelEncryptionProfile
     :: Text -- ^ 'gflepId'
     -> GetFieldLevelEncryptionProfile
-getFieldLevelEncryptionProfile pId_ =
-  GetFieldLevelEncryptionProfile' {_gflepId = pId_}
-
+getFieldLevelEncryptionProfile pId_
+  = GetFieldLevelEncryptionProfile'{_gflepId = pId_}
 
 -- | Get the ID for the field-level encryption profile information.
 gflepId :: Lens' GetFieldLevelEncryptionProfile Text
@@ -100,14 +97,19 @@ instance ToQuery GetFieldLevelEncryptionProfile where
         toQuery = const mempty
 
 -- | /See:/ 'getFieldLevelEncryptionProfileResponse' smart constructor.
-data GetFieldLevelEncryptionProfileResponse =
-  GetFieldLevelEncryptionProfileResponse'
-    { _gfleprsETag :: !(Maybe Text)
-    , _gfleprsFieldLevelEncryptionProfile :: !(Maybe FieldLevelEncryptionProfile)
-    , _gfleprsResponseStatus :: !Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data GetFieldLevelEncryptionProfileResponse = GetFieldLevelEncryptionProfileResponse'{_gfleprsETag
+                                                                                      ::
+                                                                                      !(Maybe
+                                                                                          Text),
+                                                                                      _gfleprsFieldLevelEncryptionProfile
+                                                                                      ::
+                                                                                      !(Maybe
+                                                                                          FieldLevelEncryptionProfile),
+                                                                                      _gfleprsResponseStatus
+                                                                                      ::
+                                                                                      !Int}
+                                                deriving (Eq, Read, Show, Data,
+                                                          Typeable, Generic)
 
 -- | Creates a value of 'GetFieldLevelEncryptionProfileResponse' with the minimum fields required to make a request.
 --
@@ -121,13 +123,14 @@ data GetFieldLevelEncryptionProfileResponse =
 getFieldLevelEncryptionProfileResponse
     :: Int -- ^ 'gfleprsResponseStatus'
     -> GetFieldLevelEncryptionProfileResponse
-getFieldLevelEncryptionProfileResponse pResponseStatus_ =
-  GetFieldLevelEncryptionProfileResponse'
-    { _gfleprsETag = Nothing
-    , _gfleprsFieldLevelEncryptionProfile = Nothing
-    , _gfleprsResponseStatus = pResponseStatus_
-    }
-
+getFieldLevelEncryptionProfileResponse
+  pResponseStatus_
+  = GetFieldLevelEncryptionProfileResponse'{_gfleprsETag
+                                              = Nothing,
+                                            _gfleprsFieldLevelEncryptionProfile
+                                              = Nothing,
+                                            _gfleprsResponseStatus =
+                                              pResponseStatus_}
 
 -- | The current version of the field level encryption profile. For example: @E2QWRUHAPOMQZL@ .
 gfleprsETag :: Lens' GetFieldLevelEncryptionProfileResponse (Maybe Text)

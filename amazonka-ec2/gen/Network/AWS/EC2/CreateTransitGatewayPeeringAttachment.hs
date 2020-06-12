@@ -18,7 +18,7 @@
 -- Stability   : auto-generated
 -- Portability : non-portable (GHC extensions)
 --
--- Requests a transit gateway peering attachment between the specified transit gateway (requester) and a peer transit gateway (accepter). The transit gateways must be in different Regions. The peer transit gateway can be in your account or a different AWS account.
+-- Requests a transit gateway peering attachment between the specified transit gateway (requester) and a peer transit gateway (accepter). The transit gateways must be in different Regions. The peer transit gateway can be in your account or a different AWS account. 
 --
 --
 -- After you create the peering attachment, the owner of the accepter transit gateway must accept the attachment request.
@@ -45,24 +45,34 @@ module Network.AWS.EC2.CreateTransitGatewayPeeringAttachment
     ) where
 
 import Network.AWS.EC2.Types
-import Network.AWS.EC2.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 
 -- | /See:/ 'createTransitGatewayPeeringAttachment' smart constructor.
-data CreateTransitGatewayPeeringAttachment =
-  CreateTransitGatewayPeeringAttachment'
-    { _ctgpaTagSpecifications    :: !(Maybe [TagSpecification])
-    , _ctgpaDryRun               :: !(Maybe Bool)
-    , _ctgpaTransitGatewayId     :: !Text
-    , _ctgpaPeerTransitGatewayId :: !Text
-    , _ctgpaPeerAccountId        :: !Text
-    , _ctgpaPeerRegion           :: !Text
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data CreateTransitGatewayPeeringAttachment = CreateTransitGatewayPeeringAttachment'{_ctgpaTagSpecifications
+                                                                                    ::
+                                                                                    !(Maybe
+                                                                                        [TagSpecification]),
+                                                                                    _ctgpaDryRun
+                                                                                    ::
+                                                                                    !(Maybe
+                                                                                        Bool),
+                                                                                    _ctgpaTransitGatewayId
+                                                                                    ::
+                                                                                    !Text,
+                                                                                    _ctgpaPeerTransitGatewayId
+                                                                                    ::
+                                                                                    !Text,
+                                                                                    _ctgpaPeerAccountId
+                                                                                    ::
+                                                                                    !Text,
+                                                                                    _ctgpaPeerRegion
+                                                                                    ::
+                                                                                    !Text}
+                                               deriving (Eq, Read, Show, Data,
+                                                         Typeable, Generic)
 
 -- | Creates a value of 'CreateTransitGatewayPeeringAttachment' with the minimum fields required to make a request.
 --
@@ -85,16 +95,19 @@ createTransitGatewayPeeringAttachment
     -> Text -- ^ 'ctgpaPeerAccountId'
     -> Text -- ^ 'ctgpaPeerRegion'
     -> CreateTransitGatewayPeeringAttachment
-createTransitGatewayPeeringAttachment pTransitGatewayId_ pPeerTransitGatewayId_ pPeerAccountId_ pPeerRegion_ =
-  CreateTransitGatewayPeeringAttachment'
-    { _ctgpaTagSpecifications = Nothing
-    , _ctgpaDryRun = Nothing
-    , _ctgpaTransitGatewayId = pTransitGatewayId_
-    , _ctgpaPeerTransitGatewayId = pPeerTransitGatewayId_
-    , _ctgpaPeerAccountId = pPeerAccountId_
-    , _ctgpaPeerRegion = pPeerRegion_
-    }
-
+createTransitGatewayPeeringAttachment
+  pTransitGatewayId_ pPeerTransitGatewayId_
+  pPeerAccountId_ pPeerRegion_
+  = CreateTransitGatewayPeeringAttachment'{_ctgpaTagSpecifications
+                                             = Nothing,
+                                           _ctgpaDryRun = Nothing,
+                                           _ctgpaTransitGatewayId =
+                                             pTransitGatewayId_,
+                                           _ctgpaPeerTransitGatewayId =
+                                             pPeerTransitGatewayId_,
+                                           _ctgpaPeerAccountId =
+                                             pPeerAccountId_,
+                                           _ctgpaPeerRegion = pPeerRegion_}
 
 -- | The tags to apply to the transit gateway peering attachment.
 ctgpaTagSpecifications :: Lens' CreateTransitGatewayPeeringAttachment [TagSpecification]
@@ -168,13 +181,16 @@ instance ToQuery
                "PeerRegion" =: _ctgpaPeerRegion]
 
 -- | /See:/ 'createTransitGatewayPeeringAttachmentResponse' smart constructor.
-data CreateTransitGatewayPeeringAttachmentResponse =
-  CreateTransitGatewayPeeringAttachmentResponse'
-    { _ctgparsTransitGatewayPeeringAttachment :: !(Maybe TransitGatewayPeeringAttachment)
-    , _ctgparsResponseStatus :: !Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data CreateTransitGatewayPeeringAttachmentResponse = CreateTransitGatewayPeeringAttachmentResponse'{_ctgparsTransitGatewayPeeringAttachment
+                                                                                                    ::
+                                                                                                    !(Maybe
+                                                                                                        TransitGatewayPeeringAttachment),
+                                                                                                    _ctgparsResponseStatus
+                                                                                                    ::
+                                                                                                    !Int}
+                                                       deriving (Eq, Read, Show,
+                                                                 Data, Typeable,
+                                                                 Generic)
 
 -- | Creates a value of 'CreateTransitGatewayPeeringAttachmentResponse' with the minimum fields required to make a request.
 --
@@ -186,12 +202,12 @@ data CreateTransitGatewayPeeringAttachmentResponse =
 createTransitGatewayPeeringAttachmentResponse
     :: Int -- ^ 'ctgparsResponseStatus'
     -> CreateTransitGatewayPeeringAttachmentResponse
-createTransitGatewayPeeringAttachmentResponse pResponseStatus_ =
-  CreateTransitGatewayPeeringAttachmentResponse'
-    { _ctgparsTransitGatewayPeeringAttachment = Nothing
-    , _ctgparsResponseStatus = pResponseStatus_
-    }
-
+createTransitGatewayPeeringAttachmentResponse
+  pResponseStatus_
+  = CreateTransitGatewayPeeringAttachmentResponse'{_ctgparsTransitGatewayPeeringAttachment
+                                                     = Nothing,
+                                                   _ctgparsResponseStatus =
+                                                     pResponseStatus_}
 
 -- | The transit gateway peering attachment.
 ctgparsTransitGatewayPeeringAttachment :: Lens' CreateTransitGatewayPeeringAttachmentResponse (Maybe TransitGatewayPeeringAttachment)

@@ -11,7 +11,7 @@
 -- Stability   : auto-generated
 -- Portability : non-portable (GHC extensions)
 --
--- __Amazon Elasticsearch Configuration Service__
+-- __Amazon Elasticsearch Configuration Service__ 
 --
 -- Use the Amazon Elasticsearch configuration API to create, configure, and manage Elasticsearch domains.
 --
@@ -55,55 +55,55 @@ module Network.AWS.ElasticSearch
     -- * Operations
     -- $operations
 
-    -- ** CreateElasticsearchDomain
+    -- ** CreateElasticsearchDomain 
     , module Network.AWS.ElasticSearch.CreateElasticsearchDomain
 
-    -- ** RemoveTags
+    -- ** RemoveTags 
     , module Network.AWS.ElasticSearch.RemoveTags
 
-    -- ** DescribeElasticsearchDomains
+    -- ** DescribeElasticsearchDomains 
     , module Network.AWS.ElasticSearch.DescribeElasticsearchDomains
 
     -- ** ListElasticsearchInstanceTypes (Paginated)
     , module Network.AWS.ElasticSearch.ListElasticsearchInstanceTypes
 
-    -- ** DeleteElasticsearchServiceRole
+    -- ** DeleteElasticsearchServiceRole 
     , module Network.AWS.ElasticSearch.DeleteElasticsearchServiceRole
 
-    -- ** DescribeElasticsearchDomain
+    -- ** DescribeElasticsearchDomain 
     , module Network.AWS.ElasticSearch.DescribeElasticsearchDomain
 
-    -- ** ListDomainNames
+    -- ** ListDomainNames 
     , module Network.AWS.ElasticSearch.ListDomainNames
 
-    -- ** DescribeElasticsearchInstanceTypeLimits
+    -- ** DescribeElasticsearchInstanceTypeLimits 
     , module Network.AWS.ElasticSearch.DescribeElasticsearchInstanceTypeLimits
 
-    -- ** DescribeElasticsearchDomainConfig
+    -- ** DescribeElasticsearchDomainConfig 
     , module Network.AWS.ElasticSearch.DescribeElasticsearchDomainConfig
 
-    -- ** DeleteElasticsearchDomain
+    -- ** DeleteElasticsearchDomain 
     , module Network.AWS.ElasticSearch.DeleteElasticsearchDomain
 
-    -- ** PurchaseReservedElasticsearchInstanceOffering
+    -- ** PurchaseReservedElasticsearchInstanceOffering 
     , module Network.AWS.ElasticSearch.PurchaseReservedElasticsearchInstanceOffering
 
-    -- ** DescribeReservedElasticsearchInstances
+    -- ** DescribeReservedElasticsearchInstances 
     , module Network.AWS.ElasticSearch.DescribeReservedElasticsearchInstances
 
-    -- ** UpdateElasticsearchDomainConfig
+    -- ** UpdateElasticsearchDomainConfig 
     , module Network.AWS.ElasticSearch.UpdateElasticsearchDomainConfig
 
     -- ** ListElasticsearchVersions (Paginated)
     , module Network.AWS.ElasticSearch.ListElasticsearchVersions
 
-    -- ** AddTags
+    -- ** AddTags 
     , module Network.AWS.ElasticSearch.AddTags
 
-    -- ** DescribeReservedElasticsearchInstanceOfferings
+    -- ** DescribeReservedElasticsearchInstanceOfferings 
     , module Network.AWS.ElasticSearch.DescribeReservedElasticsearchInstanceOfferings
 
-    -- ** ListTags
+    -- ** ListTags 
     , module Network.AWS.ElasticSearch.ListTags
 
     -- * Types

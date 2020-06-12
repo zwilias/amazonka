@@ -39,19 +39,15 @@ import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 import Network.AWS.SNS.Types
-import Network.AWS.SNS.Types.Product
 
 -- | Input for Unsubscribe action.
 --
 --
 --
 -- /See:/ 'unsubscribe' smart constructor.
-newtype Unsubscribe =
-  Unsubscribe'
-    { _uSubscriptionARN :: Text
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+newtype Unsubscribe = Unsubscribe'{_uSubscriptionARN
+                                   :: Text}
+                        deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'Unsubscribe' with the minimum fields required to make a request.
 --
@@ -61,9 +57,8 @@ newtype Unsubscribe =
 unsubscribe
     :: Text -- ^ 'uSubscriptionARN'
     -> Unsubscribe
-unsubscribe pSubscriptionARN_ =
-  Unsubscribe' {_uSubscriptionARN = pSubscriptionARN_}
-
+unsubscribe pSubscriptionARN_
+  = Unsubscribe'{_uSubscriptionARN = pSubscriptionARN_}
 
 -- | The ARN of the subscription to be deleted.
 uSubscriptionARN :: Lens' Unsubscribe Text
@@ -92,16 +87,13 @@ instance ToQuery Unsubscribe where
                "SubscriptionArn" =: _uSubscriptionARN]
 
 -- | /See:/ 'unsubscribeResponse' smart constructor.
-data UnsubscribeResponse =
-  UnsubscribeResponse'
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data UnsubscribeResponse = UnsubscribeResponse'
+                             deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'UnsubscribeResponse' with the minimum fields required to make a request.
 --
 unsubscribeResponse
     :: UnsubscribeResponse
 unsubscribeResponse = UnsubscribeResponse'
-
 
 instance NFData UnsubscribeResponse where

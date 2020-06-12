@@ -52,25 +52,22 @@ module Network.AWS.EC2.ExportImage
     ) where
 
 import Network.AWS.EC2.Types
-import Network.AWS.EC2.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 
 -- | /See:/ 'exportImage' smart constructor.
-data ExportImage =
-  ExportImage'
-    { _eiClientToken      :: !(Maybe Text)
-    , _eiRoleName         :: !(Maybe Text)
-    , _eiDescription      :: !(Maybe Text)
-    , _eiDryRun           :: !(Maybe Bool)
-    , _eiDiskImageFormat  :: !DiskImageFormat
-    , _eiImageId          :: !Text
-    , _eiS3ExportLocation :: !ExportTaskS3LocationRequest
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data ExportImage = ExportImage'{_eiClientToken ::
+                                !(Maybe Text),
+                                _eiRoleName :: !(Maybe Text),
+                                _eiDescription :: !(Maybe Text),
+                                _eiDryRun :: !(Maybe Bool),
+                                _eiDiskImageFormat :: !DiskImageFormat,
+                                _eiImageId :: !Text,
+                                _eiS3ExportLocation ::
+                                !ExportTaskS3LocationRequest}
+                     deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'ExportImage' with the minimum fields required to make a request.
 --
@@ -94,17 +91,14 @@ exportImage
     -> Text -- ^ 'eiImageId'
     -> ExportTaskS3LocationRequest -- ^ 'eiS3ExportLocation'
     -> ExportImage
-exportImage pDiskImageFormat_ pImageId_ pS3ExportLocation_ =
-  ExportImage'
-    { _eiClientToken = Nothing
-    , _eiRoleName = Nothing
-    , _eiDescription = Nothing
-    , _eiDryRun = Nothing
-    , _eiDiskImageFormat = pDiskImageFormat_
-    , _eiImageId = pImageId_
-    , _eiS3ExportLocation = pS3ExportLocation_
-    }
-
+exportImage pDiskImageFormat_ pImageId_
+  pS3ExportLocation_
+  = ExportImage'{_eiClientToken = Nothing,
+                 _eiRoleName = Nothing, _eiDescription = Nothing,
+                 _eiDryRun = Nothing,
+                 _eiDiskImageFormat = pDiskImageFormat_,
+                 _eiImageId = pImageId_,
+                 _eiS3ExportLocation = pS3ExportLocation_}
 
 -- | Token to enable idempotency for export image requests.
 eiClientToken :: Lens' ExportImage (Maybe Text)
@@ -175,21 +169,23 @@ instance ToQuery ExportImage where
                "S3ExportLocation" =: _eiS3ExportLocation]
 
 -- | /See:/ 'exportImageResponse' smart constructor.
-data ExportImageResponse =
-  ExportImageResponse'
-    { _eirsStatus            :: !(Maybe Text)
-    , _eirsProgress          :: !(Maybe Text)
-    , _eirsExportImageTaskId :: !(Maybe Text)
-    , _eirsRoleName          :: !(Maybe Text)
-    , _eirsStatusMessage     :: !(Maybe Text)
-    , _eirsImageId           :: !(Maybe Text)
-    , _eirsDescription       :: !(Maybe Text)
-    , _eirsS3ExportLocation  :: !(Maybe ExportTaskS3Location)
-    , _eirsDiskImageFormat   :: !(Maybe DiskImageFormat)
-    , _eirsResponseStatus    :: !Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data ExportImageResponse = ExportImageResponse'{_eirsStatus
+                                                :: !(Maybe Text),
+                                                _eirsProgress :: !(Maybe Text),
+                                                _eirsExportImageTaskId ::
+                                                !(Maybe Text),
+                                                _eirsRoleName :: !(Maybe Text),
+                                                _eirsStatusMessage ::
+                                                !(Maybe Text),
+                                                _eirsImageId :: !(Maybe Text),
+                                                _eirsDescription ::
+                                                !(Maybe Text),
+                                                _eirsS3ExportLocation ::
+                                                !(Maybe ExportTaskS3Location),
+                                                _eirsDiskImageFormat ::
+                                                !(Maybe DiskImageFormat),
+                                                _eirsResponseStatus :: !Int}
+                             deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'ExportImageResponse' with the minimum fields required to make a request.
 --
@@ -217,20 +213,16 @@ data ExportImageResponse =
 exportImageResponse
     :: Int -- ^ 'eirsResponseStatus'
     -> ExportImageResponse
-exportImageResponse pResponseStatus_ =
-  ExportImageResponse'
-    { _eirsStatus = Nothing
-    , _eirsProgress = Nothing
-    , _eirsExportImageTaskId = Nothing
-    , _eirsRoleName = Nothing
-    , _eirsStatusMessage = Nothing
-    , _eirsImageId = Nothing
-    , _eirsDescription = Nothing
-    , _eirsS3ExportLocation = Nothing
-    , _eirsDiskImageFormat = Nothing
-    , _eirsResponseStatus = pResponseStatus_
-    }
-
+exportImageResponse pResponseStatus_
+  = ExportImageResponse'{_eirsStatus = Nothing,
+                         _eirsProgress = Nothing,
+                         _eirsExportImageTaskId = Nothing,
+                         _eirsRoleName = Nothing,
+                         _eirsStatusMessage = Nothing, _eirsImageId = Nothing,
+                         _eirsDescription = Nothing,
+                         _eirsS3ExportLocation = Nothing,
+                         _eirsDiskImageFormat = Nothing,
+                         _eirsResponseStatus = pResponseStatus_}
 
 -- | The status of the export image task. The possible values are @active@ , @completed@ , @deleting@ , and @deleted@ .
 eirsStatus :: Lens' ExportImageResponse (Maybe Text)

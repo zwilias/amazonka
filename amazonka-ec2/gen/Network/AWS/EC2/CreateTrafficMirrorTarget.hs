@@ -50,24 +50,28 @@ module Network.AWS.EC2.CreateTrafficMirrorTarget
     ) where
 
 import Network.AWS.EC2.Types
-import Network.AWS.EC2.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 
 -- | /See:/ 'createTrafficMirrorTarget' smart constructor.
-data CreateTrafficMirrorTarget =
-  CreateTrafficMirrorTarget'
-    { _ctmtClientToken            :: !(Maybe Text)
-    , _ctmtNetworkInterfaceId     :: !(Maybe Text)
-    , _ctmtNetworkLoadBalancerARN :: !(Maybe Text)
-    , _ctmtTagSpecifications      :: !(Maybe [TagSpecification])
-    , _ctmtDescription            :: !(Maybe Text)
-    , _ctmtDryRun                 :: !(Maybe Bool)
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data CreateTrafficMirrorTarget = CreateTrafficMirrorTarget'{_ctmtClientToken
+                                                            :: !(Maybe Text),
+                                                            _ctmtNetworkInterfaceId
+                                                            :: !(Maybe Text),
+                                                            _ctmtNetworkLoadBalancerARN
+                                                            :: !(Maybe Text),
+                                                            _ctmtTagSpecifications
+                                                            ::
+                                                            !(Maybe
+                                                                [TagSpecification]),
+                                                            _ctmtDescription ::
+                                                            !(Maybe Text),
+                                                            _ctmtDryRun ::
+                                                            !(Maybe Bool)}
+                                   deriving (Eq, Read, Show, Data, Typeable,
+                                             Generic)
 
 -- | Creates a value of 'CreateTrafficMirrorTarget' with the minimum fields required to make a request.
 --
@@ -86,16 +90,14 @@ data CreateTrafficMirrorTarget =
 -- * 'ctmtDryRun' - Checks whether you have the required permissions for the action, without actually making the request, and provides an error response. If you have the required permissions, the error response is @DryRunOperation@ . Otherwise, it is @UnauthorizedOperation@ .
 createTrafficMirrorTarget
     :: CreateTrafficMirrorTarget
-createTrafficMirrorTarget =
-  CreateTrafficMirrorTarget'
-    { _ctmtClientToken = Nothing
-    , _ctmtNetworkInterfaceId = Nothing
-    , _ctmtNetworkLoadBalancerARN = Nothing
-    , _ctmtTagSpecifications = Nothing
-    , _ctmtDescription = Nothing
-    , _ctmtDryRun = Nothing
-    }
-
+createTrafficMirrorTarget
+  = CreateTrafficMirrorTarget'{_ctmtClientToken =
+                                 Nothing,
+                               _ctmtNetworkInterfaceId = Nothing,
+                               _ctmtNetworkLoadBalancerARN = Nothing,
+                               _ctmtTagSpecifications = Nothing,
+                               _ctmtDescription = Nothing,
+                               _ctmtDryRun = Nothing}
 
 -- | Unique, case-sensitive identifier that you provide to ensure the idempotency of the request. For more information, see <https://docs.aws.amazon.com/AWSEC2/latest/APIReference/Run_Instance_Idempotency.html How to Ensure Idempotency> .
 ctmtClientToken :: Lens' CreateTrafficMirrorTarget (Maybe Text)
@@ -160,14 +162,19 @@ instance ToQuery CreateTrafficMirrorTarget where
                "DryRun" =: _ctmtDryRun]
 
 -- | /See:/ 'createTrafficMirrorTargetResponse' smart constructor.
-data CreateTrafficMirrorTargetResponse =
-  CreateTrafficMirrorTargetResponse'
-    { _ctmtrsClientToken         :: !(Maybe Text)
-    , _ctmtrsTrafficMirrorTarget :: !(Maybe TrafficMirrorTarget)
-    , _ctmtrsResponseStatus      :: !Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data CreateTrafficMirrorTargetResponse = CreateTrafficMirrorTargetResponse'{_ctmtrsClientToken
+                                                                            ::
+                                                                            !(Maybe
+                                                                                Text),
+                                                                            _ctmtrsTrafficMirrorTarget
+                                                                            ::
+                                                                            !(Maybe
+                                                                                TrafficMirrorTarget),
+                                                                            _ctmtrsResponseStatus
+                                                                            ::
+                                                                            !Int}
+                                           deriving (Eq, Read, Show, Data,
+                                                     Typeable, Generic)
 
 -- | Creates a value of 'CreateTrafficMirrorTargetResponse' with the minimum fields required to make a request.
 --
@@ -181,13 +188,11 @@ data CreateTrafficMirrorTargetResponse =
 createTrafficMirrorTargetResponse
     :: Int -- ^ 'ctmtrsResponseStatus'
     -> CreateTrafficMirrorTargetResponse
-createTrafficMirrorTargetResponse pResponseStatus_ =
-  CreateTrafficMirrorTargetResponse'
-    { _ctmtrsClientToken = Nothing
-    , _ctmtrsTrafficMirrorTarget = Nothing
-    , _ctmtrsResponseStatus = pResponseStatus_
-    }
-
+createTrafficMirrorTargetResponse pResponseStatus_
+  = CreateTrafficMirrorTargetResponse'{_ctmtrsClientToken
+                                         = Nothing,
+                                       _ctmtrsTrafficMirrorTarget = Nothing,
+                                       _ctmtrsResponseStatus = pResponseStatus_}
 
 -- | Unique, case-sensitive identifier that you provide to ensure the idempotency of the request. For more information, see <https://docs.aws.amazon.com/AWSEC2/latest/APIReference/Run_Instance_Idempotency.html How to Ensure Idempotency> .
 ctmtrsClientToken :: Lens' CreateTrafficMirrorTargetResponse (Maybe Text)

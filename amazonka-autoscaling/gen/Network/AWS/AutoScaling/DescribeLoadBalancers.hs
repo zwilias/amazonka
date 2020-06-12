@@ -45,7 +45,6 @@ module Network.AWS.AutoScaling.DescribeLoadBalancers
     ) where
 
 import Network.AWS.AutoScaling.Types
-import Network.AWS.AutoScaling.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Pager
 import Network.AWS.Prelude
@@ -53,14 +52,14 @@ import Network.AWS.Request
 import Network.AWS.Response
 
 -- | /See:/ 'describeLoadBalancers' smart constructor.
-data DescribeLoadBalancers =
-  DescribeLoadBalancers'
-    { _dlbNextToken            :: !(Maybe Text)
-    , _dlbMaxRecords           :: !(Maybe Int)
-    , _dlbAutoScalingGroupName :: !Text
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data DescribeLoadBalancers = DescribeLoadBalancers'{_dlbNextToken
+                                                    :: !(Maybe Text),
+                                                    _dlbMaxRecords ::
+                                                    !(Maybe Int),
+                                                    _dlbAutoScalingGroupName ::
+                                                    !Text}
+                               deriving (Eq, Read, Show, Data, Typeable,
+                                         Generic)
 
 -- | Creates a value of 'DescribeLoadBalancers' with the minimum fields required to make a request.
 --
@@ -74,13 +73,10 @@ data DescribeLoadBalancers =
 describeLoadBalancers
     :: Text -- ^ 'dlbAutoScalingGroupName'
     -> DescribeLoadBalancers
-describeLoadBalancers pAutoScalingGroupName_ =
-  DescribeLoadBalancers'
-    { _dlbNextToken = Nothing
-    , _dlbMaxRecords = Nothing
-    , _dlbAutoScalingGroupName = pAutoScalingGroupName_
-    }
-
+describeLoadBalancers pAutoScalingGroupName_
+  = DescribeLoadBalancers'{_dlbNextToken = Nothing,
+                           _dlbMaxRecords = Nothing,
+                           _dlbAutoScalingGroupName = pAutoScalingGroupName_}
 
 -- | The token for the next set of items to return. (You received this token from a previous call.)
 dlbNextToken :: Lens' DescribeLoadBalancers (Maybe Text)
@@ -134,14 +130,18 @@ instance ToQuery DescribeLoadBalancers where
                "AutoScalingGroupName" =: _dlbAutoScalingGroupName]
 
 -- | /See:/ 'describeLoadBalancersResponse' smart constructor.
-data DescribeLoadBalancersResponse =
-  DescribeLoadBalancersResponse'
-    { _dlbrsLoadBalancers  :: !(Maybe [LoadBalancerState])
-    , _dlbrsNextToken      :: !(Maybe Text)
-    , _dlbrsResponseStatus :: !Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data DescribeLoadBalancersResponse = DescribeLoadBalancersResponse'{_dlbrsLoadBalancers
+                                                                    ::
+                                                                    !(Maybe
+                                                                        [LoadBalancerState]),
+                                                                    _dlbrsNextToken
+                                                                    ::
+                                                                    !(Maybe
+                                                                        Text),
+                                                                    _dlbrsResponseStatus
+                                                                    :: !Int}
+                                       deriving (Eq, Read, Show, Data, Typeable,
+                                                 Generic)
 
 -- | Creates a value of 'DescribeLoadBalancersResponse' with the minimum fields required to make a request.
 --
@@ -155,13 +155,11 @@ data DescribeLoadBalancersResponse =
 describeLoadBalancersResponse
     :: Int -- ^ 'dlbrsResponseStatus'
     -> DescribeLoadBalancersResponse
-describeLoadBalancersResponse pResponseStatus_ =
-  DescribeLoadBalancersResponse'
-    { _dlbrsLoadBalancers = Nothing
-    , _dlbrsNextToken = Nothing
-    , _dlbrsResponseStatus = pResponseStatus_
-    }
-
+describeLoadBalancersResponse pResponseStatus_
+  = DescribeLoadBalancersResponse'{_dlbrsLoadBalancers
+                                     = Nothing,
+                                   _dlbrsNextToken = Nothing,
+                                   _dlbrsResponseStatus = pResponseStatus_}
 
 -- | The load balancers.
 dlbrsLoadBalancers :: Lens' DescribeLoadBalancersResponse [LoadBalancerState]

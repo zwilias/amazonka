@@ -37,19 +37,16 @@ module Network.AWS.Glue.StopCrawlerSchedule
     ) where
 
 import Network.AWS.Glue.Types
-import Network.AWS.Glue.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 
 -- | /See:/ 'stopCrawlerSchedule' smart constructor.
-newtype StopCrawlerSchedule =
-  StopCrawlerSchedule'
-    { _sCrawlerName :: Text
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+newtype StopCrawlerSchedule = StopCrawlerSchedule'{_sCrawlerName
+                                                   :: Text}
+                                deriving (Eq, Read, Show, Data, Typeable,
+                                          Generic)
 
 -- | Creates a value of 'StopCrawlerSchedule' with the minimum fields required to make a request.
 --
@@ -59,9 +56,8 @@ newtype StopCrawlerSchedule =
 stopCrawlerSchedule
     :: Text -- ^ 'sCrawlerName'
     -> StopCrawlerSchedule
-stopCrawlerSchedule pCrawlerName_ =
-  StopCrawlerSchedule' {_sCrawlerName = pCrawlerName_}
-
+stopCrawlerSchedule pCrawlerName_
+  = StopCrawlerSchedule'{_sCrawlerName = pCrawlerName_}
 
 -- | Name of the crawler whose schedule state to set.
 sCrawlerName :: Lens' StopCrawlerSchedule Text
@@ -101,12 +97,10 @@ instance ToQuery StopCrawlerSchedule where
         toQuery = const mempty
 
 -- | /See:/ 'stopCrawlerScheduleResponse' smart constructor.
-newtype StopCrawlerScheduleResponse =
-  StopCrawlerScheduleResponse'
-    { _storsResponseStatus :: Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+newtype StopCrawlerScheduleResponse = StopCrawlerScheduleResponse'{_storsResponseStatus
+                                                                   :: Int}
+                                        deriving (Eq, Read, Show, Data,
+                                                  Typeable, Generic)
 
 -- | Creates a value of 'StopCrawlerScheduleResponse' with the minimum fields required to make a request.
 --
@@ -116,9 +110,9 @@ newtype StopCrawlerScheduleResponse =
 stopCrawlerScheduleResponse
     :: Int -- ^ 'storsResponseStatus'
     -> StopCrawlerScheduleResponse
-stopCrawlerScheduleResponse pResponseStatus_ =
-  StopCrawlerScheduleResponse' {_storsResponseStatus = pResponseStatus_}
-
+stopCrawlerScheduleResponse pResponseStatus_
+  = StopCrawlerScheduleResponse'{_storsResponseStatus =
+                                   pResponseStatus_}
 
 -- | -- | The response status code.
 storsResponseStatus :: Lens' StopCrawlerScheduleResponse Int

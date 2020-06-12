@@ -66,8 +66,23 @@ library
         , Network.AWS.MQ.Waiters
 
     other-modules:
-          Network.AWS.MQ.Types.Product
-        , Network.AWS.MQ.Types.Sum
+          Network.AWS.MQ.Types.BrokerInstance
+        , Network.AWS.MQ.Types.BrokerState
+        , Network.AWS.MQ.Types.BrokerSummary
+        , Network.AWS.MQ.Types.ChangeType
+        , Network.AWS.MQ.Types.Configuration
+        , Network.AWS.MQ.Types.ConfigurationId
+        , Network.AWS.MQ.Types.ConfigurationRevision
+        , Network.AWS.MQ.Types.Configurations
+        , Network.AWS.MQ.Types.DayOfWeek
+        , Network.AWS.MQ.Types.DeploymentMode
+        , Network.AWS.MQ.Types.EngineType
+        , Network.AWS.MQ.Types.SanitizationWarning
+        , Network.AWS.MQ.Types.SanitizationWarningReason
+        , Network.AWS.MQ.Types.User
+        , Network.AWS.MQ.Types.UserPendingChanges
+        , Network.AWS.MQ.Types.UserSummary
+        , Network.AWS.MQ.Types.WeeklyStartTime
 
     build-depends:
           amazonka-core == 1.6.1.*

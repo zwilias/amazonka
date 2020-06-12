@@ -38,19 +38,15 @@ module Network.AWS.Pinpoint.PutEventStream
 
 import Network.AWS.Lens
 import Network.AWS.Pinpoint.Types
-import Network.AWS.Pinpoint.Types.Product
 import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 
 -- | /See:/ 'putEventStream' smart constructor.
-data PutEventStream =
-  PutEventStream'
-    { _pesApplicationId    :: !Text
-    , _pesWriteEventStream :: !WriteEventStream
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data PutEventStream = PutEventStream'{_pesApplicationId
+                                      :: !Text,
+                                      _pesWriteEventStream :: !WriteEventStream}
+                        deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'PutEventStream' with the minimum fields required to make a request.
 --
@@ -63,12 +59,10 @@ putEventStream
     :: Text -- ^ 'pesApplicationId'
     -> WriteEventStream -- ^ 'pesWriteEventStream'
     -> PutEventStream
-putEventStream pApplicationId_ pWriteEventStream_ =
-  PutEventStream'
-    { _pesApplicationId = pApplicationId_
-    , _pesWriteEventStream = pWriteEventStream_
-    }
-
+putEventStream pApplicationId_ pWriteEventStream_
+  = PutEventStream'{_pesApplicationId =
+                      pApplicationId_,
+                    _pesWriteEventStream = pWriteEventStream_}
 
 -- | ApplicationId
 pesApplicationId :: Lens' PutEventStream Text
@@ -113,13 +107,12 @@ instance ToQuery PutEventStream where
         toQuery = const mempty
 
 -- | /See:/ 'putEventStreamResponse' smart constructor.
-data PutEventStreamResponse =
-  PutEventStreamResponse'
-    { _pesrsResponseStatus :: !Int
-    , _pesrsEventStream    :: !EventStream
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data PutEventStreamResponse = PutEventStreamResponse'{_pesrsResponseStatus
+                                                      :: !Int,
+                                                      _pesrsEventStream ::
+                                                      !EventStream}
+                                deriving (Eq, Read, Show, Data, Typeable,
+                                          Generic)
 
 -- | Creates a value of 'PutEventStreamResponse' with the minimum fields required to make a request.
 --
@@ -132,10 +125,10 @@ putEventStreamResponse
     :: Int -- ^ 'pesrsResponseStatus'
     -> EventStream -- ^ 'pesrsEventStream'
     -> PutEventStreamResponse
-putEventStreamResponse pResponseStatus_ pEventStream_ =
-  PutEventStreamResponse'
-    {_pesrsResponseStatus = pResponseStatus_, _pesrsEventStream = pEventStream_}
-
+putEventStreamResponse pResponseStatus_ pEventStream_
+  = PutEventStreamResponse'{_pesrsResponseStatus =
+                              pResponseStatus_,
+                            _pesrsEventStream = pEventStream_}
 
 -- | -- | The response status code.
 pesrsResponseStatus :: Lens' PutEventStreamResponse Int

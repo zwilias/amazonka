@@ -36,7 +36,6 @@ module Network.AWS.IoT.ReplaceTopicRule
     ) where
 
 import Network.AWS.IoT.Types
-import Network.AWS.IoT.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.Request
@@ -47,13 +46,11 @@ import Network.AWS.Response
 --
 --
 -- /See:/ 'replaceTopicRule' smart constructor.
-data ReplaceTopicRule =
-  ReplaceTopicRule'
-    { _rtrRuleName         :: !Text
-    , _rtrTopicRulePayload :: !TopicRulePayload
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data ReplaceTopicRule = ReplaceTopicRule'{_rtrRuleName
+                                          :: !Text,
+                                          _rtrTopicRulePayload ::
+                                          !TopicRulePayload}
+                          deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'ReplaceTopicRule' with the minimum fields required to make a request.
 --
@@ -66,10 +63,9 @@ replaceTopicRule
     :: Text -- ^ 'rtrRuleName'
     -> TopicRulePayload -- ^ 'rtrTopicRulePayload'
     -> ReplaceTopicRule
-replaceTopicRule pRuleName_ pTopicRulePayload_ =
-  ReplaceTopicRule'
-    {_rtrRuleName = pRuleName_, _rtrTopicRulePayload = pTopicRulePayload_}
-
+replaceTopicRule pRuleName_ pTopicRulePayload_
+  = ReplaceTopicRule'{_rtrRuleName = pRuleName_,
+                      _rtrTopicRulePayload = pTopicRulePayload_}
 
 -- | The name of the rule.
 rtrRuleName :: Lens' ReplaceTopicRule Text
@@ -105,16 +101,14 @@ instance ToQuery ReplaceTopicRule where
         toQuery = const mempty
 
 -- | /See:/ 'replaceTopicRuleResponse' smart constructor.
-data ReplaceTopicRuleResponse =
-  ReplaceTopicRuleResponse'
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data ReplaceTopicRuleResponse = ReplaceTopicRuleResponse'
+                                  deriving (Eq, Read, Show, Data, Typeable,
+                                            Generic)
 
 -- | Creates a value of 'ReplaceTopicRuleResponse' with the minimum fields required to make a request.
 --
 replaceTopicRuleResponse
     :: ReplaceTopicRuleResponse
 replaceTopicRuleResponse = ReplaceTopicRuleResponse'
-
 
 instance NFData ReplaceTopicRuleResponse where

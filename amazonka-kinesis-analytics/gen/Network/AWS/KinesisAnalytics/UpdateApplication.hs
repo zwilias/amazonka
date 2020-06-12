@@ -18,10 +18,10 @@
 -- Stability   : auto-generated
 -- Portability : non-portable (GHC extensions)
 --
--- Updates an existing Amazon Kinesis Analytics application. Using this API, you can update application code, input configuration, and output configuration.
+-- Updates an existing Amazon Kinesis Analytics application. Using this API, you can update application code, input configuration, and output configuration. 
 --
 --
--- Note that Amazon Kinesis Analytics updates the @CurrentApplicationVersionId@ each time you update your application.
+-- Note that Amazon Kinesis Analytics updates the @CurrentApplicationVersionId@ each time you update your application. 
 --
 -- This operation requires permission for the @kinesisanalytics:UpdateApplication@ action.
 --
@@ -43,21 +43,19 @@ module Network.AWS.KinesisAnalytics.UpdateApplication
     ) where
 
 import Network.AWS.KinesisAnalytics.Types
-import Network.AWS.KinesisAnalytics.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 
 -- | /See:/ 'updateApplication' smart constructor.
-data UpdateApplication =
-  UpdateApplication'
-    { _uaApplicationName             :: !Text
-    , _uaCurrentApplicationVersionId :: !Nat
-    , _uaApplicationUpdate           :: !ApplicationUpdate
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data UpdateApplication = UpdateApplication'{_uaApplicationName
+                                            :: !Text,
+                                            _uaCurrentApplicationVersionId ::
+                                            !Nat,
+                                            _uaApplicationUpdate ::
+                                            !ApplicationUpdate}
+                           deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'UpdateApplication' with the minimum fields required to make a request.
 --
@@ -73,13 +71,13 @@ updateApplication
     -> Natural -- ^ 'uaCurrentApplicationVersionId'
     -> ApplicationUpdate -- ^ 'uaApplicationUpdate'
     -> UpdateApplication
-updateApplication pApplicationName_ pCurrentApplicationVersionId_ pApplicationUpdate_ =
-  UpdateApplication'
-    { _uaApplicationName = pApplicationName_
-    , _uaCurrentApplicationVersionId = _Nat # pCurrentApplicationVersionId_
-    , _uaApplicationUpdate = pApplicationUpdate_
-    }
-
+updateApplication pApplicationName_
+  pCurrentApplicationVersionId_ pApplicationUpdate_
+  = UpdateApplication'{_uaApplicationName =
+                         pApplicationName_,
+                       _uaCurrentApplicationVersionId =
+                         _Nat # pCurrentApplicationVersionId_,
+                       _uaApplicationUpdate = pApplicationUpdate_}
 
 -- | Name of the Amazon Kinesis Analytics application to update.
 uaApplicationName :: Lens' UpdateApplication Text
@@ -132,12 +130,10 @@ instance ToQuery UpdateApplication where
         toQuery = const mempty
 
 -- | /See:/ 'updateApplicationResponse' smart constructor.
-newtype UpdateApplicationResponse =
-  UpdateApplicationResponse'
-    { _uarsResponseStatus :: Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+newtype UpdateApplicationResponse = UpdateApplicationResponse'{_uarsResponseStatus
+                                                               :: Int}
+                                      deriving (Eq, Read, Show, Data, Typeable,
+                                                Generic)
 
 -- | Creates a value of 'UpdateApplicationResponse' with the minimum fields required to make a request.
 --
@@ -147,9 +143,9 @@ newtype UpdateApplicationResponse =
 updateApplicationResponse
     :: Int -- ^ 'uarsResponseStatus'
     -> UpdateApplicationResponse
-updateApplicationResponse pResponseStatus_ =
-  UpdateApplicationResponse' {_uarsResponseStatus = pResponseStatus_}
-
+updateApplicationResponse pResponseStatus_
+  = UpdateApplicationResponse'{_uarsResponseStatus =
+                                 pResponseStatus_}
 
 -- | -- | The response status code.
 uarsResponseStatus :: Lens' UpdateApplicationResponse Int

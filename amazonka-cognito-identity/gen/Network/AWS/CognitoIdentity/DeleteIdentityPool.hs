@@ -37,7 +37,6 @@ module Network.AWS.CognitoIdentity.DeleteIdentityPool
     ) where
 
 import Network.AWS.CognitoIdentity.Types
-import Network.AWS.CognitoIdentity.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.Request
@@ -48,12 +47,10 @@ import Network.AWS.Response
 --
 --
 -- /See:/ 'deleteIdentityPool' smart constructor.
-newtype DeleteIdentityPool =
-  DeleteIdentityPool'
-    { _dIdentityPoolId :: Text
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+newtype DeleteIdentityPool = DeleteIdentityPool'{_dIdentityPoolId
+                                                 :: Text}
+                               deriving (Eq, Read, Show, Data, Typeable,
+                                         Generic)
 
 -- | Creates a value of 'DeleteIdentityPool' with the minimum fields required to make a request.
 --
@@ -63,9 +60,9 @@ newtype DeleteIdentityPool =
 deleteIdentityPool
     :: Text -- ^ 'dIdentityPoolId'
     -> DeleteIdentityPool
-deleteIdentityPool pIdentityPoolId_ =
-  DeleteIdentityPool' {_dIdentityPoolId = pIdentityPoolId_}
-
+deleteIdentityPool pIdentityPoolId_
+  = DeleteIdentityPool'{_dIdentityPoolId =
+                          pIdentityPoolId_}
 
 -- | An identity pool ID in the format REGION:GUID.
 dIdentityPoolId :: Lens' DeleteIdentityPool Text
@@ -104,16 +101,15 @@ instance ToQuery DeleteIdentityPool where
         toQuery = const mempty
 
 -- | /See:/ 'deleteIdentityPoolResponse' smart constructor.
-data DeleteIdentityPoolResponse =
-  DeleteIdentityPoolResponse'
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data DeleteIdentityPoolResponse = DeleteIdentityPoolResponse'
+                                    deriving (Eq, Read, Show, Data, Typeable,
+                                              Generic)
 
 -- | Creates a value of 'DeleteIdentityPoolResponse' with the minimum fields required to make a request.
 --
 deleteIdentityPoolResponse
     :: DeleteIdentityPoolResponse
-deleteIdentityPoolResponse = DeleteIdentityPoolResponse'
-
+deleteIdentityPoolResponse
+  = DeleteIdentityPoolResponse'
 
 instance NFData DeleteIdentityPoolResponse where

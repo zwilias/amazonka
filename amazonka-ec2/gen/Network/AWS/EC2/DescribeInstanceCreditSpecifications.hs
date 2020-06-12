@@ -55,7 +55,6 @@ module Network.AWS.EC2.DescribeInstanceCreditSpecifications
     ) where
 
 import Network.AWS.EC2.Types
-import Network.AWS.EC2.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Pager
 import Network.AWS.Prelude
@@ -63,16 +62,28 @@ import Network.AWS.Request
 import Network.AWS.Response
 
 -- | /See:/ 'describeInstanceCreditSpecifications' smart constructor.
-data DescribeInstanceCreditSpecifications =
-  DescribeInstanceCreditSpecifications'
-    { _dicsFilters     :: !(Maybe [Filter])
-    , _dicsNextToken   :: !(Maybe Text)
-    , _dicsInstanceIds :: !(Maybe [Text])
-    , _dicsDryRun      :: !(Maybe Bool)
-    , _dicsMaxResults  :: !(Maybe Nat)
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data DescribeInstanceCreditSpecifications = DescribeInstanceCreditSpecifications'{_dicsFilters
+                                                                                  ::
+                                                                                  !(Maybe
+                                                                                      [Filter]),
+                                                                                  _dicsNextToken
+                                                                                  ::
+                                                                                  !(Maybe
+                                                                                      Text),
+                                                                                  _dicsInstanceIds
+                                                                                  ::
+                                                                                  !(Maybe
+                                                                                      [Text]),
+                                                                                  _dicsDryRun
+                                                                                  ::
+                                                                                  !(Maybe
+                                                                                      Bool),
+                                                                                  _dicsMaxResults
+                                                                                  ::
+                                                                                  !(Maybe
+                                                                                      Nat)}
+                                              deriving (Eq, Read, Show, Data,
+                                                        Typeable, Generic)
 
 -- | Creates a value of 'DescribeInstanceCreditSpecifications' with the minimum fields required to make a request.
 --
@@ -89,15 +100,13 @@ data DescribeInstanceCreditSpecifications =
 -- * 'dicsMaxResults' - The maximum number of results to return in a single call. To retrieve the remaining results, make another call with the returned @NextToken@ value. This value can be between 5 and 1000. You cannot specify this parameter and the instance IDs parameter in the same call.
 describeInstanceCreditSpecifications
     :: DescribeInstanceCreditSpecifications
-describeInstanceCreditSpecifications =
-  DescribeInstanceCreditSpecifications'
-    { _dicsFilters = Nothing
-    , _dicsNextToken = Nothing
-    , _dicsInstanceIds = Nothing
-    , _dicsDryRun = Nothing
-    , _dicsMaxResults = Nothing
-    }
-
+describeInstanceCreditSpecifications
+  = DescribeInstanceCreditSpecifications'{_dicsFilters
+                                            = Nothing,
+                                          _dicsNextToken = Nothing,
+                                          _dicsInstanceIds = Nothing,
+                                          _dicsDryRun = Nothing,
+                                          _dicsMaxResults = Nothing}
 
 -- | The filters.     * @instance-id@ - The ID of the instance.
 dicsFilters :: Lens' DescribeInstanceCreditSpecifications [Filter]
@@ -176,14 +185,20 @@ instance ToQuery DescribeInstanceCreditSpecifications
                "MaxResults" =: _dicsMaxResults]
 
 -- | /See:/ 'describeInstanceCreditSpecificationsResponse' smart constructor.
-data DescribeInstanceCreditSpecificationsResponse =
-  DescribeInstanceCreditSpecificationsResponse'
-    { _dicsrsNextToken :: !(Maybe Text)
-    , _dicsrsInstanceCreditSpecifications :: !(Maybe [InstanceCreditSpecification])
-    , _dicsrsResponseStatus :: !Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data DescribeInstanceCreditSpecificationsResponse = DescribeInstanceCreditSpecificationsResponse'{_dicsrsNextToken
+                                                                                                  ::
+                                                                                                  !(Maybe
+                                                                                                      Text),
+                                                                                                  _dicsrsInstanceCreditSpecifications
+                                                                                                  ::
+                                                                                                  !(Maybe
+                                                                                                      [InstanceCreditSpecification]),
+                                                                                                  _dicsrsResponseStatus
+                                                                                                  ::
+                                                                                                  !Int}
+                                                      deriving (Eq, Read, Show,
+                                                                Data, Typeable,
+                                                                Generic)
 
 -- | Creates a value of 'DescribeInstanceCreditSpecificationsResponse' with the minimum fields required to make a request.
 --
@@ -197,13 +212,14 @@ data DescribeInstanceCreditSpecificationsResponse =
 describeInstanceCreditSpecificationsResponse
     :: Int -- ^ 'dicsrsResponseStatus'
     -> DescribeInstanceCreditSpecificationsResponse
-describeInstanceCreditSpecificationsResponse pResponseStatus_ =
-  DescribeInstanceCreditSpecificationsResponse'
-    { _dicsrsNextToken = Nothing
-    , _dicsrsInstanceCreditSpecifications = Nothing
-    , _dicsrsResponseStatus = pResponseStatus_
-    }
-
+describeInstanceCreditSpecificationsResponse
+  pResponseStatus_
+  = DescribeInstanceCreditSpecificationsResponse'{_dicsrsNextToken
+                                                    = Nothing,
+                                                  _dicsrsInstanceCreditSpecifications
+                                                    = Nothing,
+                                                  _dicsrsResponseStatus =
+                                                    pResponseStatus_}
 
 -- | The token to use to retrieve the next page of results. This value is @null@ when there are no more results to return.
 dicsrsNextToken :: Lens' DescribeInstanceCreditSpecificationsResponse (Maybe Text)

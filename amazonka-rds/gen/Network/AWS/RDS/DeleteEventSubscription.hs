@@ -40,21 +40,18 @@ module Network.AWS.RDS.DeleteEventSubscription
 import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.RDS.Types
-import Network.AWS.RDS.Types.Product
 import Network.AWS.Request
 import Network.AWS.Response
 
--- |
+-- | 
 --
 --
 --
 -- /See:/ 'deleteEventSubscription' smart constructor.
-newtype DeleteEventSubscription =
-  DeleteEventSubscription'
-    { _desSubscriptionName :: Text
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+newtype DeleteEventSubscription = DeleteEventSubscription'{_desSubscriptionName
+                                                           :: Text}
+                                    deriving (Eq, Read, Show, Data, Typeable,
+                                              Generic)
 
 -- | Creates a value of 'DeleteEventSubscription' with the minimum fields required to make a request.
 --
@@ -64,9 +61,9 @@ newtype DeleteEventSubscription =
 deleteEventSubscription
     :: Text -- ^ 'desSubscriptionName'
     -> DeleteEventSubscription
-deleteEventSubscription pSubscriptionName_ =
-  DeleteEventSubscription' {_desSubscriptionName = pSubscriptionName_}
-
+deleteEventSubscription pSubscriptionName_
+  = DeleteEventSubscription'{_desSubscriptionName =
+                               pSubscriptionName_}
 
 -- | The name of the RDS event notification subscription you want to delete.
 desSubscriptionName :: Lens' DeleteEventSubscription Text
@@ -101,13 +98,14 @@ instance ToQuery DeleteEventSubscription where
                "SubscriptionName" =: _desSubscriptionName]
 
 -- | /See:/ 'deleteEventSubscriptionResponse' smart constructor.
-data DeleteEventSubscriptionResponse =
-  DeleteEventSubscriptionResponse'
-    { _drsEventSubscription :: !(Maybe EventSubscription)
-    , _drsResponseStatus    :: !Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data DeleteEventSubscriptionResponse = DeleteEventSubscriptionResponse'{_drsEventSubscription
+                                                                        ::
+                                                                        !(Maybe
+                                                                            EventSubscription),
+                                                                        _drsResponseStatus
+                                                                        :: !Int}
+                                         deriving (Eq, Read, Show, Data,
+                                                   Typeable, Generic)
 
 -- | Creates a value of 'DeleteEventSubscriptionResponse' with the minimum fields required to make a request.
 --
@@ -119,10 +117,10 @@ data DeleteEventSubscriptionResponse =
 deleteEventSubscriptionResponse
     :: Int -- ^ 'drsResponseStatus'
     -> DeleteEventSubscriptionResponse
-deleteEventSubscriptionResponse pResponseStatus_ =
-  DeleteEventSubscriptionResponse'
-    {_drsEventSubscription = Nothing, _drsResponseStatus = pResponseStatus_}
-
+deleteEventSubscriptionResponse pResponseStatus_
+  = DeleteEventSubscriptionResponse'{_drsEventSubscription
+                                       = Nothing,
+                                     _drsResponseStatus = pResponseStatus_}
 
 -- | Undocumented member.
 drsEventSubscription :: Lens' DeleteEventSubscriptionResponse (Maybe EventSubscription)

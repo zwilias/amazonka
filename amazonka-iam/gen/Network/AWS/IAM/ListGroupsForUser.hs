@@ -46,7 +46,6 @@ module Network.AWS.IAM.ListGroupsForUser
     ) where
 
 import Network.AWS.IAM.Types
-import Network.AWS.IAM.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Pager
 import Network.AWS.Prelude
@@ -54,14 +53,11 @@ import Network.AWS.Request
 import Network.AWS.Response
 
 -- | /See:/ 'listGroupsForUser' smart constructor.
-data ListGroupsForUser =
-  ListGroupsForUser'
-    { _lgfuMarker   :: !(Maybe Text)
-    , _lgfuMaxItems :: !(Maybe Nat)
-    , _lgfuUserName :: !Text
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data ListGroupsForUser = ListGroupsForUser'{_lgfuMarker
+                                            :: !(Maybe Text),
+                                            _lgfuMaxItems :: !(Maybe Nat),
+                                            _lgfuUserName :: !Text}
+                           deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'ListGroupsForUser' with the minimum fields required to make a request.
 --
@@ -75,10 +71,9 @@ data ListGroupsForUser =
 listGroupsForUser
     :: Text -- ^ 'lgfuUserName'
     -> ListGroupsForUser
-listGroupsForUser pUserName_ =
-  ListGroupsForUser'
-    {_lgfuMarker = Nothing, _lgfuMaxItems = Nothing, _lgfuUserName = pUserName_}
-
+listGroupsForUser pUserName_
+  = ListGroupsForUser'{_lgfuMarker = Nothing,
+                       _lgfuMaxItems = Nothing, _lgfuUserName = pUserName_}
 
 -- | Use this parameter only when paginating results and only after you receive a response indicating that the results are truncated. Set it to the value of the @Marker@ element in the response that you received to indicate where the next call should start.
 lgfuMarker :: Lens' ListGroupsForUser (Maybe Text)
@@ -130,20 +125,21 @@ instance ToQuery ListGroupsForUser where
                "Marker" =: _lgfuMarker, "MaxItems" =: _lgfuMaxItems,
                "UserName" =: _lgfuUserName]
 
--- | Contains the response to a successful 'ListGroupsForUser' request.
+-- | Contains the response to a successful 'ListGroupsForUser' request. 
 --
 --
 --
 -- /See:/ 'listGroupsForUserResponse' smart constructor.
-data ListGroupsForUserResponse =
-  ListGroupsForUserResponse'
-    { _lgfursMarker         :: !(Maybe Text)
-    , _lgfursIsTruncated    :: !(Maybe Bool)
-    , _lgfursResponseStatus :: !Int
-    , _lgfursGroups         :: ![Group]
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data ListGroupsForUserResponse = ListGroupsForUserResponse'{_lgfursMarker
+                                                            :: !(Maybe Text),
+                                                            _lgfursIsTruncated
+                                                            :: !(Maybe Bool),
+                                                            _lgfursResponseStatus
+                                                            :: !Int,
+                                                            _lgfursGroups ::
+                                                            ![Group]}
+                                   deriving (Eq, Read, Show, Data, Typeable,
+                                             Generic)
 
 -- | Creates a value of 'ListGroupsForUserResponse' with the minimum fields required to make a request.
 --
@@ -159,14 +155,11 @@ data ListGroupsForUserResponse =
 listGroupsForUserResponse
     :: Int -- ^ 'lgfursResponseStatus'
     -> ListGroupsForUserResponse
-listGroupsForUserResponse pResponseStatus_ =
-  ListGroupsForUserResponse'
-    { _lgfursMarker = Nothing
-    , _lgfursIsTruncated = Nothing
-    , _lgfursResponseStatus = pResponseStatus_
-    , _lgfursGroups = mempty
-    }
-
+listGroupsForUserResponse pResponseStatus_
+  = ListGroupsForUserResponse'{_lgfursMarker = Nothing,
+                               _lgfursIsTruncated = Nothing,
+                               _lgfursResponseStatus = pResponseStatus_,
+                               _lgfursGroups = mempty}
 
 -- | When @IsTruncated@ is @true@ , this element is present and contains the value to use for the @Marker@ parameter in a subsequent pagination request.
 lgfursMarker :: Lens' ListGroupsForUserResponse (Maybe Text)

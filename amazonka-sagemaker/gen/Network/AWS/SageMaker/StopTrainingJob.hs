@@ -18,10 +18,10 @@
 -- Stability   : auto-generated
 -- Portability : non-portable (GHC extensions)
 --
--- Stops a training job. To stop a job, Amazon SageMaker sends the algorithm the @SIGTERM@ signal, which delays job termination for 120 seconds. Algorithms might use this 120-second window to save the model artifacts, so the results of the training is not lost.
+-- Stops a training job. To stop a job, Amazon SageMaker sends the algorithm the @SIGTERM@ signal, which delays job termination for 120 seconds. Algorithms might use this 120-second window to save the model artifacts, so the results of the training is not lost. 
 --
 --
--- Training algorithms provided by Amazon SageMaker save the intermediate results of a model training job. This intermediate data is a valid model artifact. You can use the model artifacts that are saved when Amazon SageMaker stops a training job to create a model.
+-- Training algorithms provided by Amazon SageMaker save the intermediate results of a model training job. This intermediate data is a valid model artifact. You can use the model artifacts that are saved when Amazon SageMaker stops a training job to create a model. 
 --
 -- When it receives a @StopTrainingJob@ request, Amazon SageMaker changes the status of the job to @Stopping@ . After Amazon SageMaker stops the job, it sets the status to @Stopped@ .
 --
@@ -43,15 +43,11 @@ import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 import Network.AWS.SageMaker.Types
-import Network.AWS.SageMaker.Types.Product
 
 -- | /See:/ 'stopTrainingJob' smart constructor.
-newtype StopTrainingJob =
-  StopTrainingJob'
-    { _stjTrainingJobName :: Text
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+newtype StopTrainingJob = StopTrainingJob'{_stjTrainingJobName
+                                           :: Text}
+                            deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'StopTrainingJob' with the minimum fields required to make a request.
 --
@@ -61,9 +57,9 @@ newtype StopTrainingJob =
 stopTrainingJob
     :: Text -- ^ 'stjTrainingJobName'
     -> StopTrainingJob
-stopTrainingJob pTrainingJobName_ =
-  StopTrainingJob' {_stjTrainingJobName = pTrainingJobName_}
-
+stopTrainingJob pTrainingJobName_
+  = StopTrainingJob'{_stjTrainingJobName =
+                       pTrainingJobName_}
 
 -- | The name of the training job to stop.
 stjTrainingJobName :: Lens' StopTrainingJob Text
@@ -100,16 +96,14 @@ instance ToQuery StopTrainingJob where
         toQuery = const mempty
 
 -- | /See:/ 'stopTrainingJobResponse' smart constructor.
-data StopTrainingJobResponse =
-  StopTrainingJobResponse'
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data StopTrainingJobResponse = StopTrainingJobResponse'
+                                 deriving (Eq, Read, Show, Data, Typeable,
+                                           Generic)
 
 -- | Creates a value of 'StopTrainingJobResponse' with the minimum fields required to make a request.
 --
 stopTrainingJobResponse
     :: StopTrainingJobResponse
 stopTrainingJobResponse = StopTrainingJobResponse'
-
 
 instance NFData StopTrainingJobResponse where

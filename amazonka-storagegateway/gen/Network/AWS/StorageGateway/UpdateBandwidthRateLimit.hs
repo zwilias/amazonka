@@ -48,27 +48,26 @@ import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 import Network.AWS.StorageGateway.Types
-import Network.AWS.StorageGateway.Types.Product
 
 -- | A JSON object containing one or more of the following fields:
 --
 --
---     * 'UpdateBandwidthRateLimitInput$AverageDownloadRateLimitInBitsPerSec'
+--     * 'UpdateBandwidthRateLimitInput$AverageDownloadRateLimitInBitsPerSec' 
 --
---     * 'UpdateBandwidthRateLimitInput$AverageUploadRateLimitInBitsPerSec'
+--     * 'UpdateBandwidthRateLimitInput$AverageUploadRateLimitInBitsPerSec' 
 --
 --
 --
 --
 -- /See:/ 'updateBandwidthRateLimit' smart constructor.
-data UpdateBandwidthRateLimit =
-  UpdateBandwidthRateLimit'
-    { _ubrlAverageUploadRateLimitInBitsPerSec   :: !(Maybe Nat)
-    , _ubrlAverageDownloadRateLimitInBitsPerSec :: !(Maybe Nat)
-    , _ubrlGatewayARN                           :: !Text
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data UpdateBandwidthRateLimit = UpdateBandwidthRateLimit'{_ubrlAverageUploadRateLimitInBitsPerSec
+                                                          :: !(Maybe Nat),
+                                                          _ubrlAverageDownloadRateLimitInBitsPerSec
+                                                          :: !(Maybe Nat),
+                                                          _ubrlGatewayARN ::
+                                                          !Text}
+                                  deriving (Eq, Read, Show, Data, Typeable,
+                                            Generic)
 
 -- | Creates a value of 'UpdateBandwidthRateLimit' with the minimum fields required to make a request.
 --
@@ -82,13 +81,12 @@ data UpdateBandwidthRateLimit =
 updateBandwidthRateLimit
     :: Text -- ^ 'ubrlGatewayARN'
     -> UpdateBandwidthRateLimit
-updateBandwidthRateLimit pGatewayARN_ =
-  UpdateBandwidthRateLimit'
-    { _ubrlAverageUploadRateLimitInBitsPerSec = Nothing
-    , _ubrlAverageDownloadRateLimitInBitsPerSec = Nothing
-    , _ubrlGatewayARN = pGatewayARN_
-    }
-
+updateBandwidthRateLimit pGatewayARN_
+  = UpdateBandwidthRateLimit'{_ubrlAverageUploadRateLimitInBitsPerSec
+                                = Nothing,
+                              _ubrlAverageDownloadRateLimitInBitsPerSec =
+                                Nothing,
+                              _ubrlGatewayARN = pGatewayARN_}
 
 -- | The average upload bandwidth rate limit in bits per second.
 ubrlAverageUploadRateLimitInBitsPerSec :: Lens' UpdateBandwidthRateLimit (Maybe Natural)
@@ -147,13 +145,15 @@ instance ToQuery UpdateBandwidthRateLimit where
 --
 --
 -- /See:/ 'updateBandwidthRateLimitResponse' smart constructor.
-data UpdateBandwidthRateLimitResponse =
-  UpdateBandwidthRateLimitResponse'
-    { _ubrlrsGatewayARN     :: !(Maybe Text)
-    , _ubrlrsResponseStatus :: !Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data UpdateBandwidthRateLimitResponse = UpdateBandwidthRateLimitResponse'{_ubrlrsGatewayARN
+                                                                          ::
+                                                                          !(Maybe
+                                                                              Text),
+                                                                          _ubrlrsResponseStatus
+                                                                          ::
+                                                                          !Int}
+                                          deriving (Eq, Read, Show, Data,
+                                                    Typeable, Generic)
 
 -- | Creates a value of 'UpdateBandwidthRateLimitResponse' with the minimum fields required to make a request.
 --
@@ -165,10 +165,10 @@ data UpdateBandwidthRateLimitResponse =
 updateBandwidthRateLimitResponse
     :: Int -- ^ 'ubrlrsResponseStatus'
     -> UpdateBandwidthRateLimitResponse
-updateBandwidthRateLimitResponse pResponseStatus_ =
-  UpdateBandwidthRateLimitResponse'
-    {_ubrlrsGatewayARN = Nothing, _ubrlrsResponseStatus = pResponseStatus_}
-
+updateBandwidthRateLimitResponse pResponseStatus_
+  = UpdateBandwidthRateLimitResponse'{_ubrlrsGatewayARN
+                                        = Nothing,
+                                      _ubrlrsResponseStatus = pResponseStatus_}
 
 -- | Undocumented member.
 ubrlrsGatewayARN :: Lens' UpdateBandwidthRateLimitResponse (Maybe Text)

@@ -42,7 +42,6 @@ module Network.AWS.DeviceFarm.ListSuites
     ) where
 
 import Network.AWS.DeviceFarm.Types
-import Network.AWS.DeviceFarm.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Pager
 import Network.AWS.Prelude
@@ -54,13 +53,10 @@ import Network.AWS.Response
 --
 --
 -- /See:/ 'listSuites' smart constructor.
-data ListSuites =
-  ListSuites'
-    { _lssNextToken :: !(Maybe Text)
-    , _lssArn       :: !Text
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data ListSuites = ListSuites'{_lssNextToken ::
+                              !(Maybe Text),
+                              _lssArn :: !Text}
+                    deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'ListSuites' with the minimum fields required to make a request.
 --
@@ -72,8 +68,9 @@ data ListSuites =
 listSuites
     :: Text -- ^ 'lssArn'
     -> ListSuites
-listSuites pArn_ = ListSuites' {_lssNextToken = Nothing, _lssArn = pArn_}
-
+listSuites pArn_
+  = ListSuites'{_lssNextToken = Nothing,
+                _lssArn = pArn_}
 
 -- | An identifier that was returned from the previous call to this operation, which can be used to return the next set of items in the list.
 lssNextToken :: Lens' ListSuites (Maybe Text)
@@ -131,14 +128,11 @@ instance ToQuery ListSuites where
 --
 --
 -- /See:/ 'listSuitesResponse' smart constructor.
-data ListSuitesResponse =
-  ListSuitesResponse'
-    { _lsrsNextToken      :: !(Maybe Text)
-    , _lsrsSuites         :: !(Maybe [Suite])
-    , _lsrsResponseStatus :: !Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data ListSuitesResponse = ListSuitesResponse'{_lsrsNextToken
+                                              :: !(Maybe Text),
+                                              _lsrsSuites :: !(Maybe [Suite]),
+                                              _lsrsResponseStatus :: !Int}
+                            deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'ListSuitesResponse' with the minimum fields required to make a request.
 --
@@ -152,13 +146,10 @@ data ListSuitesResponse =
 listSuitesResponse
     :: Int -- ^ 'lsrsResponseStatus'
     -> ListSuitesResponse
-listSuitesResponse pResponseStatus_ =
-  ListSuitesResponse'
-    { _lsrsNextToken = Nothing
-    , _lsrsSuites = Nothing
-    , _lsrsResponseStatus = pResponseStatus_
-    }
-
+listSuitesResponse pResponseStatus_
+  = ListSuitesResponse'{_lsrsNextToken = Nothing,
+                        _lsrsSuites = Nothing,
+                        _lsrsResponseStatus = pResponseStatus_}
 
 -- | If the number of items that are returned is significantly large, this is an identifier that is also returned. It can be used in a subsequent call to this operation to return the next set of items in the list.
 lsrsNextToken :: Lens' ListSuitesResponse (Maybe Text)

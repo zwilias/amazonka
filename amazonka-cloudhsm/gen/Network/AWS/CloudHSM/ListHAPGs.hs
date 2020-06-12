@@ -47,7 +47,6 @@ module Network.AWS.CloudHSM.ListHAPGs
     ) where
 
 import Network.AWS.CloudHSM.Types
-import Network.AWS.CloudHSM.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Pager
 import Network.AWS.Prelude
@@ -55,12 +54,9 @@ import Network.AWS.Request
 import Network.AWS.Response
 
 -- | /See:/ 'listHAPGs' smart constructor.
-newtype ListHAPGs =
-  ListHAPGs'
-    { _lhNextToken :: Maybe Text
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+newtype ListHAPGs = ListHAPGs'{_lhNextToken ::
+                               Maybe Text}
+                      deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'ListHAPGs' with the minimum fields required to make a request.
 --
@@ -69,8 +65,7 @@ newtype ListHAPGs =
 -- * 'lhNextToken' - The @NextToken@ value from a previous call to @ListHapgs@ . Pass null if this is the first call.
 listHAPGs
     :: ListHAPGs
-listHAPGs = ListHAPGs' {_lhNextToken = Nothing}
-
+listHAPGs = ListHAPGs'{_lhNextToken = Nothing}
 
 -- | The @NextToken@ value from a previous call to @ListHapgs@ . Pass null if this is the first call.
 lhNextToken :: Lens' ListHAPGs (Maybe Text)
@@ -118,14 +113,11 @@ instance ToQuery ListHAPGs where
         toQuery = const mempty
 
 -- | /See:/ 'listHAPGsResponse' smart constructor.
-data ListHAPGsResponse =
-  ListHAPGsResponse'
-    { _lhrsNextToken      :: !(Maybe Text)
-    , _lhrsResponseStatus :: !Int
-    , _lhrsHAPGList       :: ![Text]
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data ListHAPGsResponse = ListHAPGsResponse'{_lhrsNextToken
+                                            :: !(Maybe Text),
+                                            _lhrsResponseStatus :: !Int,
+                                            _lhrsHAPGList :: ![Text]}
+                           deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'ListHAPGsResponse' with the minimum fields required to make a request.
 --
@@ -139,13 +131,10 @@ data ListHAPGsResponse =
 listHAPGsResponse
     :: Int -- ^ 'lhrsResponseStatus'
     -> ListHAPGsResponse
-listHAPGsResponse pResponseStatus_ =
-  ListHAPGsResponse'
-    { _lhrsNextToken = Nothing
-    , _lhrsResponseStatus = pResponseStatus_
-    , _lhrsHAPGList = mempty
-    }
-
+listHAPGsResponse pResponseStatus_
+  = ListHAPGsResponse'{_lhrsNextToken = Nothing,
+                       _lhrsResponseStatus = pResponseStatus_,
+                       _lhrsHAPGList = mempty}
 
 -- | If not null, more results are available. Pass this value to @ListHapgs@ to retrieve the next set of items.
 lhrsNextToken :: Lens' ListHAPGsResponse (Maybe Text)

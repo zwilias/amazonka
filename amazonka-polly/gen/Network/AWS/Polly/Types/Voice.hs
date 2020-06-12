@@ -1,0 +1,90 @@
+{-# LANGUAGE DeriveDataTypeable #-}
+{-# LANGUAGE DeriveGeneric      #-}
+{-# LANGUAGE OverloadedStrings  #-}
+{-# LANGUAGE RecordWildCards    #-}
+
+{-# OPTIONS_GHC -fno-warn-unused-imports #-}
+
+-- Derived from AWS service descriptions, licensed under Apache 2.0.
+
+-- |
+-- Module      : Network.AWS.Polly.Types.Voice
+-- Copyright   : (c) 2013-2018 Brendan Hay
+-- License     : Mozilla Public License, v. 2.0.
+-- Maintainer  : Brendan Hay <brendan.g.hay+amazonka@gmail.com>
+-- Stability   : auto-generated
+-- Portability : non-portable (GHC extensions)
+--
+module Network.AWS.Polly.Types.Voice where
+
+import Network.AWS.Lens
+import Network.AWS.Polly.Types.Gender
+import Network.AWS.Polly.Types.LanguageCode
+import Network.AWS.Polly.Types.VoiceId
+import Network.AWS.Prelude
+
+-- | Description of the voice.
+--
+--
+--
+-- /See:/ 'voice' smart constructor.
+data Voice = Voice'{_vLanguageCode ::
+                    !(Maybe LanguageCode),
+                    _vLanguageName :: !(Maybe Text),
+                    _vGender :: !(Maybe Gender), _vName :: !(Maybe Text),
+                    _vId :: !(Maybe VoiceId)}
+               deriving (Eq, Read, Show, Data, Typeable, Generic)
+
+-- | Creates a value of 'Voice' with the minimum fields required to make a request.
+--
+-- Use one of the following lenses to modify other fields as desired:
+--
+-- * 'vLanguageCode' - Language code of the voice.
+--
+-- * 'vLanguageName' - Human readable name of the language in English.
+--
+-- * 'vGender' - Gender of the voice.
+--
+-- * 'vName' - Name of the voice (for example, Salli, Kendra, etc.). This provides a human readable voice name that you might display in your application.
+--
+-- * 'vId' - Amazon Polly assigned voice ID. This is the ID that you specify when calling the @SynthesizeSpeech@ operation.
+voice
+    :: Voice
+voice
+  = Voice'{_vLanguageCode = Nothing,
+           _vLanguageName = Nothing, _vGender = Nothing,
+           _vName = Nothing, _vId = Nothing}
+
+-- | Language code of the voice.
+vLanguageCode :: Lens' Voice (Maybe LanguageCode)
+vLanguageCode = lens _vLanguageCode (\ s a -> s{_vLanguageCode = a})
+
+-- | Human readable name of the language in English.
+vLanguageName :: Lens' Voice (Maybe Text)
+vLanguageName = lens _vLanguageName (\ s a -> s{_vLanguageName = a})
+
+-- | Gender of the voice.
+vGender :: Lens' Voice (Maybe Gender)
+vGender = lens _vGender (\ s a -> s{_vGender = a})
+
+-- | Name of the voice (for example, Salli, Kendra, etc.). This provides a human readable voice name that you might display in your application.
+vName :: Lens' Voice (Maybe Text)
+vName = lens _vName (\ s a -> s{_vName = a})
+
+-- | Amazon Polly assigned voice ID. This is the ID that you specify when calling the @SynthesizeSpeech@ operation.
+vId :: Lens' Voice (Maybe VoiceId)
+vId = lens _vId (\ s a -> s{_vId = a})
+
+instance FromJSON Voice where
+        parseJSON
+          = withObject "Voice"
+              (\ x ->
+                 Voice' <$>
+                   (x .:? "LanguageCode") <*> (x .:? "LanguageName") <*>
+                     (x .:? "Gender")
+                     <*> (x .:? "Name")
+                     <*> (x .:? "Id"))
+
+instance Hashable Voice where
+
+instance NFData Voice where

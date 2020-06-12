@@ -43,7 +43,6 @@ module Network.AWS.DeviceFarm.ListUploads
     ) where
 
 import Network.AWS.DeviceFarm.Types
-import Network.AWS.DeviceFarm.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Pager
 import Network.AWS.Prelude
@@ -55,14 +54,10 @@ import Network.AWS.Response
 --
 --
 -- /See:/ 'listUploads' smart constructor.
-data ListUploads =
-  ListUploads'
-    { _luNextToken :: !(Maybe Text)
-    , _luType      :: !(Maybe UploadType)
-    , _luArn       :: !Text
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data ListUploads = ListUploads'{_luNextToken ::
+                                !(Maybe Text),
+                                _luType :: !(Maybe UploadType), _luArn :: !Text}
+                     deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'ListUploads' with the minimum fields required to make a request.
 --
@@ -76,9 +71,9 @@ data ListUploads =
 listUploads
     :: Text -- ^ 'luArn'
     -> ListUploads
-listUploads pArn_ =
-  ListUploads' {_luNextToken = Nothing, _luType = Nothing, _luArn = pArn_}
-
+listUploads pArn_
+  = ListUploads'{_luNextToken = Nothing,
+                 _luType = Nothing, _luArn = pArn_}
 
 -- | An identifier that was returned from the previous call to this operation, which can be used to return the next set of items in the list.
 luNextToken :: Lens' ListUploads (Maybe Text)
@@ -140,14 +135,12 @@ instance ToQuery ListUploads where
 --
 --
 -- /See:/ 'listUploadsResponse' smart constructor.
-data ListUploadsResponse =
-  ListUploadsResponse'
-    { _lursNextToken      :: !(Maybe Text)
-    , _lursUploads        :: !(Maybe [Upload])
-    , _lursResponseStatus :: !Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data ListUploadsResponse = ListUploadsResponse'{_lursNextToken
+                                                :: !(Maybe Text),
+                                                _lursUploads ::
+                                                !(Maybe [Upload]),
+                                                _lursResponseStatus :: !Int}
+                             deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'ListUploadsResponse' with the minimum fields required to make a request.
 --
@@ -161,13 +154,10 @@ data ListUploadsResponse =
 listUploadsResponse
     :: Int -- ^ 'lursResponseStatus'
     -> ListUploadsResponse
-listUploadsResponse pResponseStatus_ =
-  ListUploadsResponse'
-    { _lursNextToken = Nothing
-    , _lursUploads = Nothing
-    , _lursResponseStatus = pResponseStatus_
-    }
-
+listUploadsResponse pResponseStatus_
+  = ListUploadsResponse'{_lursNextToken = Nothing,
+                         _lursUploads = Nothing,
+                         _lursResponseStatus = pResponseStatus_}
 
 -- | If the number of items that are returned is significantly large, this is an identifier that is also returned. It can be used in a subsequent call to this operation to return the next set of items in the list.
 lursNextToken :: Lens' ListUploadsResponse (Maybe Text)

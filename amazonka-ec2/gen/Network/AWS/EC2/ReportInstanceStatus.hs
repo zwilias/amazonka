@@ -43,25 +43,25 @@ module Network.AWS.EC2.ReportInstanceStatus
     ) where
 
 import Network.AWS.EC2.Types
-import Network.AWS.EC2.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 
 -- | /See:/ 'reportInstanceStatus' smart constructor.
-data ReportInstanceStatus =
-  ReportInstanceStatus'
-    { _rissStartTime   :: !(Maybe ISO8601)
-    , _rissEndTime     :: !(Maybe ISO8601)
-    , _rissDescription :: !(Maybe Text)
-    , _rissDryRun      :: !(Maybe Bool)
-    , _rissInstances   :: ![Text]
-    , _rissReasonCodes :: ![ReportInstanceReasonCodes]
-    , _rissStatus      :: !ReportStatusType
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data ReportInstanceStatus = ReportInstanceStatus'{_rissStartTime
+                                                  :: !(Maybe ISO8601),
+                                                  _rissEndTime ::
+                                                  !(Maybe ISO8601),
+                                                  _rissDescription ::
+                                                  !(Maybe Text),
+                                                  _rissDryRun :: !(Maybe Bool),
+                                                  _rissInstances :: ![Text],
+                                                  _rissReasonCodes ::
+                                                  ![ReportInstanceReasonCodes],
+                                                  _rissStatus ::
+                                                  !ReportStatusType}
+                              deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'ReportInstanceStatus' with the minimum fields required to make a request.
 --
@@ -83,17 +83,11 @@ data ReportInstanceStatus =
 reportInstanceStatus
     :: ReportStatusType -- ^ 'rissStatus'
     -> ReportInstanceStatus
-reportInstanceStatus pStatus_ =
-  ReportInstanceStatus'
-    { _rissStartTime = Nothing
-    , _rissEndTime = Nothing
-    , _rissDescription = Nothing
-    , _rissDryRun = Nothing
-    , _rissInstances = mempty
-    , _rissReasonCodes = mempty
-    , _rissStatus = pStatus_
-    }
-
+reportInstanceStatus pStatus_
+  = ReportInstanceStatus'{_rissStartTime = Nothing,
+                          _rissEndTime = Nothing, _rissDescription = Nothing,
+                          _rissDryRun = Nothing, _rissInstances = mempty,
+                          _rissReasonCodes = mempty, _rissStatus = pStatus_}
 
 -- | The time at which the reported instance health state began.
 rissStartTime :: Lens' ReportInstanceStatus (Maybe UTCTime)
@@ -153,16 +147,15 @@ instance ToQuery ReportInstanceStatus where
                "Status" =: _rissStatus]
 
 -- | /See:/ 'reportInstanceStatusResponse' smart constructor.
-data ReportInstanceStatusResponse =
-  ReportInstanceStatusResponse'
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data ReportInstanceStatusResponse = ReportInstanceStatusResponse'
+                                      deriving (Eq, Read, Show, Data, Typeable,
+                                                Generic)
 
 -- | Creates a value of 'ReportInstanceStatusResponse' with the minimum fields required to make a request.
 --
 reportInstanceStatusResponse
     :: ReportInstanceStatusResponse
-reportInstanceStatusResponse = ReportInstanceStatusResponse'
-
+reportInstanceStatusResponse
+  = ReportInstanceStatusResponse'
 
 instance NFData ReportInstanceStatusResponse where

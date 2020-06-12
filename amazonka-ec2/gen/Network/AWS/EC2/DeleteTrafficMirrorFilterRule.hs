@@ -39,20 +39,20 @@ module Network.AWS.EC2.DeleteTrafficMirrorFilterRule
     ) where
 
 import Network.AWS.EC2.Types
-import Network.AWS.EC2.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 
 -- | /See:/ 'deleteTrafficMirrorFilterRule' smart constructor.
-data DeleteTrafficMirrorFilterRule =
-  DeleteTrafficMirrorFilterRule'
-    { _dtmfrDryRun                    :: !(Maybe Bool)
-    , _dtmfrTrafficMirrorFilterRuleId :: !Text
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data DeleteTrafficMirrorFilterRule = DeleteTrafficMirrorFilterRule'{_dtmfrDryRun
+                                                                    ::
+                                                                    !(Maybe
+                                                                        Bool),
+                                                                    _dtmfrTrafficMirrorFilterRuleId
+                                                                    :: !Text}
+                                       deriving (Eq, Read, Show, Data, Typeable,
+                                                 Generic)
 
 -- | Creates a value of 'DeleteTrafficMirrorFilterRule' with the minimum fields required to make a request.
 --
@@ -64,12 +64,12 @@ data DeleteTrafficMirrorFilterRule =
 deleteTrafficMirrorFilterRule
     :: Text -- ^ 'dtmfrTrafficMirrorFilterRuleId'
     -> DeleteTrafficMirrorFilterRule
-deleteTrafficMirrorFilterRule pTrafficMirrorFilterRuleId_ =
-  DeleteTrafficMirrorFilterRule'
-    { _dtmfrDryRun = Nothing
-    , _dtmfrTrafficMirrorFilterRuleId = pTrafficMirrorFilterRuleId_
-    }
-
+deleteTrafficMirrorFilterRule
+  pTrafficMirrorFilterRuleId_
+  = DeleteTrafficMirrorFilterRule'{_dtmfrDryRun =
+                                     Nothing,
+                                   _dtmfrTrafficMirrorFilterRuleId =
+                                     pTrafficMirrorFilterRuleId_}
 
 -- | Checks whether you have the required permissions for the action, without actually making the request, and provides an error response. If you have the required permissions, the error response is @DryRunOperation@ . Otherwise, it is @UnauthorizedOperation@ .
 dtmfrDryRun :: Lens' DeleteTrafficMirrorFilterRule (Maybe Bool)
@@ -113,13 +113,15 @@ instance ToQuery DeleteTrafficMirrorFilterRule where
                  _dtmfrTrafficMirrorFilterRuleId]
 
 -- | /See:/ 'deleteTrafficMirrorFilterRuleResponse' smart constructor.
-data DeleteTrafficMirrorFilterRuleResponse =
-  DeleteTrafficMirrorFilterRuleResponse'
-    { _dtmfrrsTrafficMirrorFilterRuleId :: !(Maybe Text)
-    , _dtmfrrsResponseStatus            :: !Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data DeleteTrafficMirrorFilterRuleResponse = DeleteTrafficMirrorFilterRuleResponse'{_dtmfrrsTrafficMirrorFilterRuleId
+                                                                                    ::
+                                                                                    !(Maybe
+                                                                                        Text),
+                                                                                    _dtmfrrsResponseStatus
+                                                                                    ::
+                                                                                    !Int}
+                                               deriving (Eq, Read, Show, Data,
+                                                         Typeable, Generic)
 
 -- | Creates a value of 'DeleteTrafficMirrorFilterRuleResponse' with the minimum fields required to make a request.
 --
@@ -131,12 +133,12 @@ data DeleteTrafficMirrorFilterRuleResponse =
 deleteTrafficMirrorFilterRuleResponse
     :: Int -- ^ 'dtmfrrsResponseStatus'
     -> DeleteTrafficMirrorFilterRuleResponse
-deleteTrafficMirrorFilterRuleResponse pResponseStatus_ =
-  DeleteTrafficMirrorFilterRuleResponse'
-    { _dtmfrrsTrafficMirrorFilterRuleId = Nothing
-    , _dtmfrrsResponseStatus = pResponseStatus_
-    }
-
+deleteTrafficMirrorFilterRuleResponse
+  pResponseStatus_
+  = DeleteTrafficMirrorFilterRuleResponse'{_dtmfrrsTrafficMirrorFilterRuleId
+                                             = Nothing,
+                                           _dtmfrrsResponseStatus =
+                                             pResponseStatus_}
 
 -- | The ID of the deleted Traffic Mirror rule.
 dtmfrrsTrafficMirrorFilterRuleId :: Lens' DeleteTrafficMirrorFilterRuleResponse (Maybe Text)

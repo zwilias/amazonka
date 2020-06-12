@@ -45,26 +45,28 @@ module Network.AWS.AppSync.CreateGraphqlAPI
     ) where
 
 import Network.AWS.AppSync.Types
-import Network.AWS.AppSync.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 
 -- | /See:/ 'createGraphqlAPI' smart constructor.
-data CreateGraphqlAPI =
-  CreateGraphqlAPI'
-    { _cgaXrayEnabled :: !(Maybe Bool)
-    , _cgaOpenIdConnectConfig :: !(Maybe OpenIdConnectConfig)
-    , _cgaAdditionalAuthenticationProviders :: !(Maybe [AdditionalAuthenticationProvider])
-    , _cgaUserPoolConfig :: !(Maybe UserPoolConfig)
-    , _cgaLogConfig :: !(Maybe LogConfig)
-    , _cgaTags :: !(Maybe (Map Text Text))
-    , _cgaName :: !Text
-    , _cgaAuthenticationType :: !AuthenticationType
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data CreateGraphqlAPI = CreateGraphqlAPI'{_cgaXrayEnabled
+                                          :: !(Maybe Bool),
+                                          _cgaOpenIdConnectConfig ::
+                                          !(Maybe OpenIdConnectConfig),
+                                          _cgaAdditionalAuthenticationProviders
+                                          ::
+                                          !(Maybe
+                                              [AdditionalAuthenticationProvider]),
+                                          _cgaUserPoolConfig ::
+                                          !(Maybe UserPoolConfig),
+                                          _cgaLogConfig :: !(Maybe LogConfig),
+                                          _cgaTags :: !(Maybe (Map Text Text)),
+                                          _cgaName :: !Text,
+                                          _cgaAuthenticationType ::
+                                          !AuthenticationType}
+                          deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'CreateGraphqlAPI' with the minimum fields required to make a request.
 --
@@ -89,18 +91,14 @@ createGraphqlAPI
     :: Text -- ^ 'cgaName'
     -> AuthenticationType -- ^ 'cgaAuthenticationType'
     -> CreateGraphqlAPI
-createGraphqlAPI pName_ pAuthenticationType_ =
-  CreateGraphqlAPI'
-    { _cgaXrayEnabled = Nothing
-    , _cgaOpenIdConnectConfig = Nothing
-    , _cgaAdditionalAuthenticationProviders = Nothing
-    , _cgaUserPoolConfig = Nothing
-    , _cgaLogConfig = Nothing
-    , _cgaTags = Nothing
-    , _cgaName = pName_
-    , _cgaAuthenticationType = pAuthenticationType_
-    }
-
+createGraphqlAPI pName_ pAuthenticationType_
+  = CreateGraphqlAPI'{_cgaXrayEnabled = Nothing,
+                      _cgaOpenIdConnectConfig = Nothing,
+                      _cgaAdditionalAuthenticationProviders = Nothing,
+                      _cgaUserPoolConfig = Nothing,
+                      _cgaLogConfig = Nothing, _cgaTags = Nothing,
+                      _cgaName = pName_,
+                      _cgaAuthenticationType = pAuthenticationType_}
 
 -- | A flag indicating whether to enable X-Ray tracing for the @GraphqlApi@ .
 cgaXrayEnabled :: Lens' CreateGraphqlAPI (Maybe Bool)
@@ -176,13 +174,13 @@ instance ToQuery CreateGraphqlAPI where
         toQuery = const mempty
 
 -- | /See:/ 'createGraphqlAPIResponse' smart constructor.
-data CreateGraphqlAPIResponse =
-  CreateGraphqlAPIResponse'
-    { _cgarsGraphqlAPI     :: !(Maybe GraphqlAPI)
-    , _cgarsResponseStatus :: !Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data CreateGraphqlAPIResponse = CreateGraphqlAPIResponse'{_cgarsGraphqlAPI
+                                                          ::
+                                                          !(Maybe GraphqlAPI),
+                                                          _cgarsResponseStatus
+                                                          :: !Int}
+                                  deriving (Eq, Read, Show, Data, Typeable,
+                                            Generic)
 
 -- | Creates a value of 'CreateGraphqlAPIResponse' with the minimum fields required to make a request.
 --
@@ -194,10 +192,10 @@ data CreateGraphqlAPIResponse =
 createGraphqlAPIResponse
     :: Int -- ^ 'cgarsResponseStatus'
     -> CreateGraphqlAPIResponse
-createGraphqlAPIResponse pResponseStatus_ =
-  CreateGraphqlAPIResponse'
-    {_cgarsGraphqlAPI = Nothing, _cgarsResponseStatus = pResponseStatus_}
-
+createGraphqlAPIResponse pResponseStatus_
+  = CreateGraphqlAPIResponse'{_cgarsGraphqlAPI =
+                                Nothing,
+                              _cgarsResponseStatus = pResponseStatus_}
 
 -- | The @GraphqlApi@ .
 cgarsGraphqlAPI :: Lens' CreateGraphqlAPIResponse (Maybe GraphqlAPI)

@@ -39,20 +39,17 @@ module Network.AWS.EC2.DisableVPCClassicLink
     ) where
 
 import Network.AWS.EC2.Types
-import Network.AWS.EC2.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 
 -- | /See:/ 'disableVPCClassicLink' smart constructor.
-data DisableVPCClassicLink =
-  DisableVPCClassicLink'
-    { _dvpcclDryRun :: !(Maybe Bool)
-    , _dvpcclVPCId  :: !Text
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data DisableVPCClassicLink = DisableVPCClassicLink'{_dvpcclDryRun
+                                                    :: !(Maybe Bool),
+                                                    _dvpcclVPCId :: !Text}
+                               deriving (Eq, Read, Show, Data, Typeable,
+                                         Generic)
 
 -- | Creates a value of 'DisableVPCClassicLink' with the minimum fields required to make a request.
 --
@@ -64,9 +61,9 @@ data DisableVPCClassicLink =
 disableVPCClassicLink
     :: Text -- ^ 'dvpcclVPCId'
     -> DisableVPCClassicLink
-disableVPCClassicLink pVPCId_ =
-  DisableVPCClassicLink' {_dvpcclDryRun = Nothing, _dvpcclVPCId = pVPCId_}
-
+disableVPCClassicLink pVPCId_
+  = DisableVPCClassicLink'{_dvpcclDryRun = Nothing,
+                           _dvpcclVPCId = pVPCId_}
 
 -- | Checks whether you have the required permissions for the action, without actually making the request, and provides an error response. If you have the required permissions, the error response is @DryRunOperation@ . Otherwise, it is @UnauthorizedOperation@ .
 dvpcclDryRun :: Lens' DisableVPCClassicLink (Maybe Bool)
@@ -104,13 +101,14 @@ instance ToQuery DisableVPCClassicLink where
                "DryRun" =: _dvpcclDryRun, "VpcId" =: _dvpcclVPCId]
 
 -- | /See:/ 'disableVPCClassicLinkResponse' smart constructor.
-data DisableVPCClassicLinkResponse =
-  DisableVPCClassicLinkResponse'
-    { _dvpcclrsReturn         :: !(Maybe Bool)
-    , _dvpcclrsResponseStatus :: !Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data DisableVPCClassicLinkResponse = DisableVPCClassicLinkResponse'{_dvpcclrsReturn
+                                                                    ::
+                                                                    !(Maybe
+                                                                        Bool),
+                                                                    _dvpcclrsResponseStatus
+                                                                    :: !Int}
+                                       deriving (Eq, Read, Show, Data, Typeable,
+                                                 Generic)
 
 -- | Creates a value of 'DisableVPCClassicLinkResponse' with the minimum fields required to make a request.
 --
@@ -122,10 +120,10 @@ data DisableVPCClassicLinkResponse =
 disableVPCClassicLinkResponse
     :: Int -- ^ 'dvpcclrsResponseStatus'
     -> DisableVPCClassicLinkResponse
-disableVPCClassicLinkResponse pResponseStatus_ =
-  DisableVPCClassicLinkResponse'
-    {_dvpcclrsReturn = Nothing, _dvpcclrsResponseStatus = pResponseStatus_}
-
+disableVPCClassicLinkResponse pResponseStatus_
+  = DisableVPCClassicLinkResponse'{_dvpcclrsReturn =
+                                     Nothing,
+                                   _dvpcclrsResponseStatus = pResponseStatus_}
 
 -- | Returns @true@ if the request succeeds; otherwise, it returns an error.
 dvpcclrsReturn :: Lens' DisableVPCClassicLinkResponse (Maybe Bool)

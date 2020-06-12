@@ -39,7 +39,6 @@ module Network.AWS.ElasticBeanstalk.CheckDNSAvailability
     ) where
 
 import Network.AWS.ElasticBeanstalk.Types
-import Network.AWS.ElasticBeanstalk.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.Request
@@ -50,12 +49,10 @@ import Network.AWS.Response
 --
 --
 -- /See:/ 'checkDNSAvailability' smart constructor.
-newtype CheckDNSAvailability =
-  CheckDNSAvailability'
-    { _cdaCNAMEPrefix :: Text
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+newtype CheckDNSAvailability = CheckDNSAvailability'{_cdaCNAMEPrefix
+                                                     :: Text}
+                                 deriving (Eq, Read, Show, Data, Typeable,
+                                           Generic)
 
 -- | Creates a value of 'CheckDNSAvailability' with the minimum fields required to make a request.
 --
@@ -65,9 +62,9 @@ newtype CheckDNSAvailability =
 checkDNSAvailability
     :: Text -- ^ 'cdaCNAMEPrefix'
     -> CheckDNSAvailability
-checkDNSAvailability pCNAMEPrefix_ =
-  CheckDNSAvailability' {_cdaCNAMEPrefix = pCNAMEPrefix_}
-
+checkDNSAvailability pCNAMEPrefix_
+  = CheckDNSAvailability'{_cdaCNAMEPrefix =
+                            pCNAMEPrefix_}
 
 -- | The prefix used when this CNAME is reserved.
 cdaCNAMEPrefix :: Lens' CheckDNSAvailability Text
@@ -106,14 +103,16 @@ instance ToQuery CheckDNSAvailability where
 --
 --
 -- /See:/ 'checkDNSAvailabilityResponse' smart constructor.
-data CheckDNSAvailabilityResponse =
-  CheckDNSAvailabilityResponse'
-    { _cdarsFullyQualifiedCNAME :: !(Maybe Text)
-    , _cdarsAvailable           :: !(Maybe Bool)
-    , _cdarsResponseStatus      :: !Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data CheckDNSAvailabilityResponse = CheckDNSAvailabilityResponse'{_cdarsFullyQualifiedCNAME
+                                                                  ::
+                                                                  !(Maybe Text),
+                                                                  _cdarsAvailable
+                                                                  ::
+                                                                  !(Maybe Bool),
+                                                                  _cdarsResponseStatus
+                                                                  :: !Int}
+                                      deriving (Eq, Read, Show, Data, Typeable,
+                                                Generic)
 
 -- | Creates a value of 'CheckDNSAvailabilityResponse' with the minimum fields required to make a request.
 --
@@ -127,13 +126,11 @@ data CheckDNSAvailabilityResponse =
 checkDNSAvailabilityResponse
     :: Int -- ^ 'cdarsResponseStatus'
     -> CheckDNSAvailabilityResponse
-checkDNSAvailabilityResponse pResponseStatus_ =
-  CheckDNSAvailabilityResponse'
-    { _cdarsFullyQualifiedCNAME = Nothing
-    , _cdarsAvailable = Nothing
-    , _cdarsResponseStatus = pResponseStatus_
-    }
-
+checkDNSAvailabilityResponse pResponseStatus_
+  = CheckDNSAvailabilityResponse'{_cdarsFullyQualifiedCNAME
+                                    = Nothing,
+                                  _cdarsAvailable = Nothing,
+                                  _cdarsResponseStatus = pResponseStatus_}
 
 -- | The fully qualified CNAME to reserve when 'CreateEnvironment' is called with the provided prefix.
 cdarsFullyQualifiedCNAME :: Lens' CheckDNSAvailabilityResponse (Maybe Text)

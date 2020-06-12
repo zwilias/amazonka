@@ -43,17 +43,12 @@ import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 import Network.AWS.WorkDocs.Types
-import Network.AWS.WorkDocs.Types.Product
 
 -- | /See:/ 'createLabels' smart constructor.
-data CreateLabels =
-  CreateLabels'
-    { _clAuthenticationToken :: !(Maybe (Sensitive Text))
-    , _clResourceId          :: !Text
-    , _clLabels              :: ![Text]
-    }
-  deriving (Eq, Show, Data, Typeable, Generic)
-
+data CreateLabels = CreateLabels'{_clAuthenticationToken
+                                  :: !(Maybe (Sensitive Text)),
+                                  _clResourceId :: !Text, _clLabels :: ![Text]}
+                      deriving (Eq, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'CreateLabels' with the minimum fields required to make a request.
 --
@@ -67,13 +62,9 @@ data CreateLabels =
 createLabels
     :: Text -- ^ 'clResourceId'
     -> CreateLabels
-createLabels pResourceId_ =
-  CreateLabels'
-    { _clAuthenticationToken = Nothing
-    , _clResourceId = pResourceId_
-    , _clLabels = mempty
-    }
-
+createLabels pResourceId_
+  = CreateLabels'{_clAuthenticationToken = Nothing,
+                  _clResourceId = pResourceId_, _clLabels = mempty}
 
 -- | Amazon WorkDocs authentication token. Do not set this field when using administrative API actions, as in accessing the API using AWS credentials.
 clAuthenticationToken :: Lens' CreateLabels (Maybe Text)
@@ -119,12 +110,10 @@ instance ToQuery CreateLabels where
         toQuery = const mempty
 
 -- | /See:/ 'createLabelsResponse' smart constructor.
-newtype CreateLabelsResponse =
-  CreateLabelsResponse'
-    { _clrsResponseStatus :: Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+newtype CreateLabelsResponse = CreateLabelsResponse'{_clrsResponseStatus
+                                                     :: Int}
+                                 deriving (Eq, Read, Show, Data, Typeable,
+                                           Generic)
 
 -- | Creates a value of 'CreateLabelsResponse' with the minimum fields required to make a request.
 --
@@ -134,9 +123,9 @@ newtype CreateLabelsResponse =
 createLabelsResponse
     :: Int -- ^ 'clrsResponseStatus'
     -> CreateLabelsResponse
-createLabelsResponse pResponseStatus_ =
-  CreateLabelsResponse' {_clrsResponseStatus = pResponseStatus_}
-
+createLabelsResponse pResponseStatus_
+  = CreateLabelsResponse'{_clrsResponseStatus =
+                            pResponseStatus_}
 
 -- | -- | The response status code.
 clrsResponseStatus :: Lens' CreateLabelsResponse Int

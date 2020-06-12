@@ -46,23 +46,21 @@ module Network.AWS.Redshift.CopyClusterSnapshot
 import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.Redshift.Types
-import Network.AWS.Redshift.Types.Product
 import Network.AWS.Request
 import Network.AWS.Response
 
--- |
+-- | 
 --
 --
 --
 -- /See:/ 'copyClusterSnapshot' smart constructor.
-data CopyClusterSnapshot =
-  CopyClusterSnapshot'
-    { _ccsSourceSnapshotClusterIdentifier :: !(Maybe Text)
-    , _ccsSourceSnapshotIdentifier        :: !Text
-    , _ccsTargetSnapshotIdentifier        :: !Text
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data CopyClusterSnapshot = CopyClusterSnapshot'{_ccsSourceSnapshotClusterIdentifier
+                                                :: !(Maybe Text),
+                                                _ccsSourceSnapshotIdentifier ::
+                                                !Text,
+                                                _ccsTargetSnapshotIdentifier ::
+                                                !Text}
+                             deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'CopyClusterSnapshot' with the minimum fields required to make a request.
 --
@@ -77,13 +75,14 @@ copyClusterSnapshot
     :: Text -- ^ 'ccsSourceSnapshotIdentifier'
     -> Text -- ^ 'ccsTargetSnapshotIdentifier'
     -> CopyClusterSnapshot
-copyClusterSnapshot pSourceSnapshotIdentifier_ pTargetSnapshotIdentifier_ =
-  CopyClusterSnapshot'
-    { _ccsSourceSnapshotClusterIdentifier = Nothing
-    , _ccsSourceSnapshotIdentifier = pSourceSnapshotIdentifier_
-    , _ccsTargetSnapshotIdentifier = pTargetSnapshotIdentifier_
-    }
-
+copyClusterSnapshot pSourceSnapshotIdentifier_
+  pTargetSnapshotIdentifier_
+  = CopyClusterSnapshot'{_ccsSourceSnapshotClusterIdentifier
+                           = Nothing,
+                         _ccsSourceSnapshotIdentifier =
+                           pSourceSnapshotIdentifier_,
+                         _ccsTargetSnapshotIdentifier =
+                           pTargetSnapshotIdentifier_}
 
 -- | The identifier of the cluster the source snapshot was created from. This parameter is required if your IAM user has a policy containing a snapshot resource element that specifies anything other than * for the cluster name. Constraints:     * Must be the identifier for a valid cluster.
 ccsSourceSnapshotClusterIdentifier :: Lens' CopyClusterSnapshot (Maybe Text)
@@ -130,13 +129,14 @@ instance ToQuery CopyClusterSnapshot where
                  _ccsTargetSnapshotIdentifier]
 
 -- | /See:/ 'copyClusterSnapshotResponse' smart constructor.
-data CopyClusterSnapshotResponse =
-  CopyClusterSnapshotResponse'
-    { _ccsrsSnapshot       :: !(Maybe Snapshot)
-    , _ccsrsResponseStatus :: !Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data CopyClusterSnapshotResponse = CopyClusterSnapshotResponse'{_ccsrsSnapshot
+                                                                ::
+                                                                !(Maybe
+                                                                    Snapshot),
+                                                                _ccsrsResponseStatus
+                                                                :: !Int}
+                                     deriving (Eq, Read, Show, Data, Typeable,
+                                               Generic)
 
 -- | Creates a value of 'CopyClusterSnapshotResponse' with the minimum fields required to make a request.
 --
@@ -148,10 +148,10 @@ data CopyClusterSnapshotResponse =
 copyClusterSnapshotResponse
     :: Int -- ^ 'ccsrsResponseStatus'
     -> CopyClusterSnapshotResponse
-copyClusterSnapshotResponse pResponseStatus_ =
-  CopyClusterSnapshotResponse'
-    {_ccsrsSnapshot = Nothing, _ccsrsResponseStatus = pResponseStatus_}
-
+copyClusterSnapshotResponse pResponseStatus_
+  = CopyClusterSnapshotResponse'{_ccsrsSnapshot =
+                                   Nothing,
+                                 _ccsrsResponseStatus = pResponseStatus_}
 
 -- | Undocumented member.
 ccsrsSnapshot :: Lens' CopyClusterSnapshotResponse (Maybe Snapshot)

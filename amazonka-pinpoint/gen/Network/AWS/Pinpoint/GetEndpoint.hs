@@ -38,19 +38,15 @@ module Network.AWS.Pinpoint.GetEndpoint
 
 import Network.AWS.Lens
 import Network.AWS.Pinpoint.Types
-import Network.AWS.Pinpoint.Types.Product
 import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 
 -- | /See:/ 'getEndpoint' smart constructor.
-data GetEndpoint =
-  GetEndpoint'
-    { _geApplicationId :: !Text
-    , _geEndpointId    :: !Text
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data GetEndpoint = GetEndpoint'{_geApplicationId ::
+                                !Text,
+                                _geEndpointId :: !Text}
+                     deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'GetEndpoint' with the minimum fields required to make a request.
 --
@@ -63,10 +59,9 @@ getEndpoint
     :: Text -- ^ 'geApplicationId'
     -> Text -- ^ 'geEndpointId'
     -> GetEndpoint
-getEndpoint pApplicationId_ pEndpointId_ =
-  GetEndpoint'
-    {_geApplicationId = pApplicationId_, _geEndpointId = pEndpointId_}
-
+getEndpoint pApplicationId_ pEndpointId_
+  = GetEndpoint'{_geApplicationId = pApplicationId_,
+                 _geEndpointId = pEndpointId_}
 
 -- | Undocumented member.
 geApplicationId :: Lens' GetEndpoint Text
@@ -106,13 +101,11 @@ instance ToQuery GetEndpoint where
         toQuery = const mempty
 
 -- | /See:/ 'getEndpointResponse' smart constructor.
-data GetEndpointResponse =
-  GetEndpointResponse'
-    { _gersResponseStatus   :: !Int
-    , _gersEndpointResponse :: !EndpointResponse
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data GetEndpointResponse = GetEndpointResponse'{_gersResponseStatus
+                                                :: !Int,
+                                                _gersEndpointResponse ::
+                                                !EndpointResponse}
+                             deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'GetEndpointResponse' with the minimum fields required to make a request.
 --
@@ -125,12 +118,11 @@ getEndpointResponse
     :: Int -- ^ 'gersResponseStatus'
     -> EndpointResponse -- ^ 'gersEndpointResponse'
     -> GetEndpointResponse
-getEndpointResponse pResponseStatus_ pEndpointResponse_ =
-  GetEndpointResponse'
-    { _gersResponseStatus = pResponseStatus_
-    , _gersEndpointResponse = pEndpointResponse_
-    }
-
+getEndpointResponse pResponseStatus_
+  pEndpointResponse_
+  = GetEndpointResponse'{_gersResponseStatus =
+                           pResponseStatus_,
+                         _gersEndpointResponse = pEndpointResponse_}
 
 -- | -- | The response status code.
 gersResponseStatus :: Lens' GetEndpointResponse Int

@@ -43,20 +43,18 @@ module Network.AWS.ELBv2.AddListenerCertificates
     ) where
 
 import Network.AWS.ELBv2.Types
-import Network.AWS.ELBv2.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 
 -- | /See:/ 'addListenerCertificates' smart constructor.
-data AddListenerCertificates =
-  AddListenerCertificates'
-    { _alcListenerARN  :: !Text
-    , _alcCertificates :: ![Certificate]
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data AddListenerCertificates = AddListenerCertificates'{_alcListenerARN
+                                                        :: !Text,
+                                                        _alcCertificates ::
+                                                        ![Certificate]}
+                                 deriving (Eq, Read, Show, Data, Typeable,
+                                           Generic)
 
 -- | Creates a value of 'AddListenerCertificates' with the minimum fields required to make a request.
 --
@@ -68,10 +66,10 @@ data AddListenerCertificates =
 addListenerCertificates
     :: Text -- ^ 'alcListenerARN'
     -> AddListenerCertificates
-addListenerCertificates pListenerARN_ =
-  AddListenerCertificates'
-    {_alcListenerARN = pListenerARN_, _alcCertificates = mempty}
-
+addListenerCertificates pListenerARN_
+  = AddListenerCertificates'{_alcListenerARN =
+                               pListenerARN_,
+                             _alcCertificates = mempty}
 
 -- | The Amazon Resource Name (ARN) of the listener.
 alcListenerARN :: Lens' AddListenerCertificates Text
@@ -114,13 +112,14 @@ instance ToQuery AddListenerCertificates where
                  toQueryList "member" _alcCertificates]
 
 -- | /See:/ 'addListenerCertificatesResponse' smart constructor.
-data AddListenerCertificatesResponse =
-  AddListenerCertificatesResponse'
-    { _alcrsCertificates   :: !(Maybe [Certificate])
-    , _alcrsResponseStatus :: !Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data AddListenerCertificatesResponse = AddListenerCertificatesResponse'{_alcrsCertificates
+                                                                        ::
+                                                                        !(Maybe
+                                                                            [Certificate]),
+                                                                        _alcrsResponseStatus
+                                                                        :: !Int}
+                                         deriving (Eq, Read, Show, Data,
+                                                   Typeable, Generic)
 
 -- | Creates a value of 'AddListenerCertificatesResponse' with the minimum fields required to make a request.
 --
@@ -132,10 +131,10 @@ data AddListenerCertificatesResponse =
 addListenerCertificatesResponse
     :: Int -- ^ 'alcrsResponseStatus'
     -> AddListenerCertificatesResponse
-addListenerCertificatesResponse pResponseStatus_ =
-  AddListenerCertificatesResponse'
-    {_alcrsCertificates = Nothing, _alcrsResponseStatus = pResponseStatus_}
-
+addListenerCertificatesResponse pResponseStatus_
+  = AddListenerCertificatesResponse'{_alcrsCertificates
+                                       = Nothing,
+                                     _alcrsResponseStatus = pResponseStatus_}
 
 -- | Information about the certificates.
 alcrsCertificates :: Lens' AddListenerCertificatesResponse [Certificate]

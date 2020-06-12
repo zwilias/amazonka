@@ -45,7 +45,6 @@ module Network.AWS.IoT.ListCertificates
     ) where
 
 import Network.AWS.IoT.Types
-import Network.AWS.IoT.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Pager
 import Network.AWS.Prelude
@@ -57,14 +56,11 @@ import Network.AWS.Response
 --
 --
 -- /See:/ 'listCertificates' smart constructor.
-data ListCertificates =
-  ListCertificates'
-    { _lcMarker         :: !(Maybe Text)
-    , _lcAscendingOrder :: !(Maybe Bool)
-    , _lcPageSize       :: !(Maybe Nat)
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data ListCertificates = ListCertificates'{_lcMarker
+                                          :: !(Maybe Text),
+                                          _lcAscendingOrder :: !(Maybe Bool),
+                                          _lcPageSize :: !(Maybe Nat)}
+                          deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'ListCertificates' with the minimum fields required to make a request.
 --
@@ -77,10 +73,9 @@ data ListCertificates =
 -- * 'lcPageSize' - The result page size.
 listCertificates
     :: ListCertificates
-listCertificates =
-  ListCertificates'
-    {_lcMarker = Nothing, _lcAscendingOrder = Nothing, _lcPageSize = Nothing}
-
+listCertificates
+  = ListCertificates'{_lcMarker = Nothing,
+                      _lcAscendingOrder = Nothing, _lcPageSize = Nothing}
 
 -- | The marker for the next set of results.
 lcMarker :: Lens' ListCertificates (Maybe Text)
@@ -134,14 +129,16 @@ instance ToQuery ListCertificates where
 --
 --
 -- /See:/ 'listCertificatesResponse' smart constructor.
-data ListCertificatesResponse =
-  ListCertificatesResponse'
-    { _lcrsCertificates   :: !(Maybe [Certificate])
-    , _lcrsNextMarker     :: !(Maybe Text)
-    , _lcrsResponseStatus :: !Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data ListCertificatesResponse = ListCertificatesResponse'{_lcrsCertificates
+                                                          ::
+                                                          !(Maybe
+                                                              [Certificate]),
+                                                          _lcrsNextMarker ::
+                                                          !(Maybe Text),
+                                                          _lcrsResponseStatus ::
+                                                          !Int}
+                                  deriving (Eq, Read, Show, Data, Typeable,
+                                            Generic)
 
 -- | Creates a value of 'ListCertificatesResponse' with the minimum fields required to make a request.
 --
@@ -155,13 +152,11 @@ data ListCertificatesResponse =
 listCertificatesResponse
     :: Int -- ^ 'lcrsResponseStatus'
     -> ListCertificatesResponse
-listCertificatesResponse pResponseStatus_ =
-  ListCertificatesResponse'
-    { _lcrsCertificates = Nothing
-    , _lcrsNextMarker = Nothing
-    , _lcrsResponseStatus = pResponseStatus_
-    }
-
+listCertificatesResponse pResponseStatus_
+  = ListCertificatesResponse'{_lcrsCertificates =
+                                Nothing,
+                              _lcrsNextMarker = Nothing,
+                              _lcrsResponseStatus = pResponseStatus_}
 
 -- | The descriptions of the certificates.
 lcrsCertificates :: Lens' ListCertificatesResponse [Certificate]

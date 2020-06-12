@@ -56,16 +56,11 @@ import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 import Network.AWS.SQS.Types
-import Network.AWS.SQS.Types.Product
 
 -- | /See:/ 'untagQueue' smart constructor.
-data UntagQueue =
-  UntagQueue'
-    { _uqQueueURL :: !Text
-    , _uqTagKeys  :: ![Text]
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data UntagQueue = UntagQueue'{_uqQueueURL :: !Text,
+                              _uqTagKeys :: ![Text]}
+                    deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'UntagQueue' with the minimum fields required to make a request.
 --
@@ -77,9 +72,9 @@ data UntagQueue =
 untagQueue
     :: Text -- ^ 'uqQueueURL'
     -> UntagQueue
-untagQueue pQueueURL_ =
-  UntagQueue' {_uqQueueURL = pQueueURL_, _uqTagKeys = mempty}
-
+untagQueue pQueueURL_
+  = UntagQueue'{_uqQueueURL = pQueueURL_,
+                _uqTagKeys = mempty}
 
 -- | The URL of the queue.
 uqQueueURL :: Lens' UntagQueue Text
@@ -113,16 +108,13 @@ instance ToQuery UntagQueue where
                toQueryList "TagKey" _uqTagKeys]
 
 -- | /See:/ 'untagQueueResponse' smart constructor.
-data UntagQueueResponse =
-  UntagQueueResponse'
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data UntagQueueResponse = UntagQueueResponse'
+                            deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'UntagQueueResponse' with the minimum fields required to make a request.
 --
 untagQueueResponse
     :: UntagQueueResponse
 untagQueueResponse = UntagQueueResponse'
-
 
 instance NFData UntagQueueResponse where

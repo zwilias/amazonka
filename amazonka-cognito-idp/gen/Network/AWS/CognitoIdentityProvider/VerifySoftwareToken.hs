@@ -42,22 +42,19 @@ module Network.AWS.CognitoIdentityProvider.VerifySoftwareToken
     ) where
 
 import Network.AWS.CognitoIdentityProvider.Types
-import Network.AWS.CognitoIdentityProvider.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 
 -- | /See:/ 'verifySoftwareToken' smart constructor.
-data VerifySoftwareToken =
-  VerifySoftwareToken'
-    { _vstAccessToken        :: !(Maybe (Sensitive Text))
-    , _vstFriendlyDeviceName :: !(Maybe Text)
-    , _vstSession            :: !(Maybe Text)
-    , _vstUserCode           :: !Text
-    }
-  deriving (Eq, Show, Data, Typeable, Generic)
-
+data VerifySoftwareToken = VerifySoftwareToken'{_vstAccessToken
+                                                :: !(Maybe (Sensitive Text)),
+                                                _vstFriendlyDeviceName ::
+                                                !(Maybe Text),
+                                                _vstSession :: !(Maybe Text),
+                                                _vstUserCode :: !Text}
+                             deriving (Eq, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'VerifySoftwareToken' with the minimum fields required to make a request.
 --
@@ -69,18 +66,14 @@ data VerifySoftwareToken =
 --
 -- * 'vstSession' - The session which should be passed both ways in challenge-response calls to the service.
 --
--- * 'vstUserCode' - The one time password computed using the secret code returned by
+-- * 'vstUserCode' - The one time password computed using the secret code returned by 
 verifySoftwareToken
     :: Text -- ^ 'vstUserCode'
     -> VerifySoftwareToken
-verifySoftwareToken pUserCode_ =
-  VerifySoftwareToken'
-    { _vstAccessToken = Nothing
-    , _vstFriendlyDeviceName = Nothing
-    , _vstSession = Nothing
-    , _vstUserCode = pUserCode_
-    }
-
+verifySoftwareToken pUserCode_
+  = VerifySoftwareToken'{_vstAccessToken = Nothing,
+                         _vstFriendlyDeviceName = Nothing,
+                         _vstSession = Nothing, _vstUserCode = pUserCode_}
 
 -- | The access token.
 vstAccessToken :: Lens' VerifySoftwareToken (Maybe Text)
@@ -94,7 +87,7 @@ vstFriendlyDeviceName = lens _vstFriendlyDeviceName (\ s a -> s{_vstFriendlyDevi
 vstSession :: Lens' VerifySoftwareToken (Maybe Text)
 vstSession = lens _vstSession (\ s a -> s{_vstSession = a})
 
--- | The one time password computed using the secret code returned by
+-- | The one time password computed using the secret code returned by 
 vstUserCode :: Lens' VerifySoftwareToken Text
 vstUserCode = lens _vstUserCode (\ s a -> s{_vstUserCode = a})
 
@@ -139,14 +132,16 @@ instance ToQuery VerifySoftwareToken where
         toQuery = const mempty
 
 -- | /See:/ 'verifySoftwareTokenResponse' smart constructor.
-data VerifySoftwareTokenResponse =
-  VerifySoftwareTokenResponse'
-    { _vstrsStatus         :: !(Maybe VerifySoftwareTokenResponseType)
-    , _vstrsSession        :: !(Maybe Text)
-    , _vstrsResponseStatus :: !Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data VerifySoftwareTokenResponse = VerifySoftwareTokenResponse'{_vstrsStatus
+                                                                ::
+                                                                !(Maybe
+                                                                    VerifySoftwareTokenResponseType),
+                                                                _vstrsSession ::
+                                                                !(Maybe Text),
+                                                                _vstrsResponseStatus
+                                                                :: !Int}
+                                     deriving (Eq, Read, Show, Data, Typeable,
+                                               Generic)
 
 -- | Creates a value of 'VerifySoftwareTokenResponse' with the minimum fields required to make a request.
 --
@@ -160,13 +155,11 @@ data VerifySoftwareTokenResponse =
 verifySoftwareTokenResponse
     :: Int -- ^ 'vstrsResponseStatus'
     -> VerifySoftwareTokenResponse
-verifySoftwareTokenResponse pResponseStatus_ =
-  VerifySoftwareTokenResponse'
-    { _vstrsStatus = Nothing
-    , _vstrsSession = Nothing
-    , _vstrsResponseStatus = pResponseStatus_
-    }
-
+verifySoftwareTokenResponse pResponseStatus_
+  = VerifySoftwareTokenResponse'{_vstrsStatus =
+                                   Nothing,
+                                 _vstrsSession = Nothing,
+                                 _vstrsResponseStatus = pResponseStatus_}
 
 -- | The status of the verify software token.
 vstrsStatus :: Lens' VerifySoftwareTokenResponse (Maybe VerifySoftwareTokenResponseType)

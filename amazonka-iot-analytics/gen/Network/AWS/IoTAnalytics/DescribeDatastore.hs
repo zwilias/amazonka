@@ -38,19 +38,15 @@ module Network.AWS.IoTAnalytics.DescribeDatastore
     ) where
 
 import Network.AWS.IoTAnalytics.Types
-import Network.AWS.IoTAnalytics.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 
 -- | /See:/ 'describeDatastore' smart constructor.
-newtype DescribeDatastore =
-  DescribeDatastore'
-    { _dDatastoreName :: Text
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+newtype DescribeDatastore = DescribeDatastore'{_dDatastoreName
+                                               :: Text}
+                              deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'DescribeDatastore' with the minimum fields required to make a request.
 --
@@ -60,9 +56,9 @@ newtype DescribeDatastore =
 describeDatastore
     :: Text -- ^ 'dDatastoreName'
     -> DescribeDatastore
-describeDatastore pDatastoreName_ =
-  DescribeDatastore' {_dDatastoreName = pDatastoreName_}
-
+describeDatastore pDatastoreName_
+  = DescribeDatastore'{_dDatastoreName =
+                         pDatastoreName_}
 
 -- | The name of the data store
 dDatastoreName :: Lens' DescribeDatastore Text
@@ -92,13 +88,13 @@ instance ToQuery DescribeDatastore where
         toQuery = const mempty
 
 -- | /See:/ 'describeDatastoreResponse' smart constructor.
-data DescribeDatastoreResponse =
-  DescribeDatastoreResponse'
-    { _drsDatastore      :: !(Maybe Datastore)
-    , _drsResponseStatus :: !Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data DescribeDatastoreResponse = DescribeDatastoreResponse'{_drsDatastore
+                                                            ::
+                                                            !(Maybe Datastore),
+                                                            _drsResponseStatus
+                                                            :: !Int}
+                                   deriving (Eq, Read, Show, Data, Typeable,
+                                             Generic)
 
 -- | Creates a value of 'DescribeDatastoreResponse' with the minimum fields required to make a request.
 --
@@ -110,10 +106,9 @@ data DescribeDatastoreResponse =
 describeDatastoreResponse
     :: Int -- ^ 'drsResponseStatus'
     -> DescribeDatastoreResponse
-describeDatastoreResponse pResponseStatus_ =
-  DescribeDatastoreResponse'
-    {_drsDatastore = Nothing, _drsResponseStatus = pResponseStatus_}
-
+describeDatastoreResponse pResponseStatus_
+  = DescribeDatastoreResponse'{_drsDatastore = Nothing,
+                               _drsResponseStatus = pResponseStatus_}
 
 -- | Information about the data store.
 drsDatastore :: Lens' DescribeDatastoreResponse (Maybe Datastore)

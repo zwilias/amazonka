@@ -18,7 +18,7 @@
 -- Stability   : auto-generated
 -- Portability : non-portable (GHC extensions)
 --
--- Adds a grant to a customer master key (CMK). The grant specifies who can use the CMK and under what conditions. When setting permissions, grants are an alternative to key policies.
+-- Adds a grant to a customer master key (CMK). The grant specifies who can use the CMK and under what conditions. When setting permissions, grants are an alternative to key policies. 
 --
 --
 -- To perform this operation on a CMK in a different AWS account, specify the key ARN in the value of the KeyId parameter. For more information about grants, see <http://docs.aws.amazon.com/kms/latest/developerguide/grants.html Grants> in the /AWS Key Management Service Developer Guide/ .
@@ -47,25 +47,20 @@ module Network.AWS.KMS.CreateGrant
     ) where
 
 import Network.AWS.KMS.Types
-import Network.AWS.KMS.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 
 -- | /See:/ 'createGrant' smart constructor.
-data CreateGrant =
-  CreateGrant'
-    { _cgRetiringPrincipal :: !(Maybe Text)
-    , _cgGrantTokens       :: !(Maybe [Text])
-    , _cgConstraints       :: !(Maybe GrantConstraints)
-    , _cgName              :: !(Maybe Text)
-    , _cgKeyId             :: !Text
-    , _cgGranteePrincipal  :: !Text
-    , _cgOperations        :: ![GrantOperation]
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data CreateGrant = CreateGrant'{_cgRetiringPrincipal
+                                :: !(Maybe Text),
+                                _cgGrantTokens :: !(Maybe [Text]),
+                                _cgConstraints :: !(Maybe GrantConstraints),
+                                _cgName :: !(Maybe Text), _cgKeyId :: !Text,
+                                _cgGranteePrincipal :: !Text,
+                                _cgOperations :: ![GrantOperation]}
+                     deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'CreateGrant' with the minimum fields required to make a request.
 --
@@ -88,17 +83,12 @@ createGrant
     :: Text -- ^ 'cgKeyId'
     -> Text -- ^ 'cgGranteePrincipal'
     -> CreateGrant
-createGrant pKeyId_ pGranteePrincipal_ =
-  CreateGrant'
-    { _cgRetiringPrincipal = Nothing
-    , _cgGrantTokens = Nothing
-    , _cgConstraints = Nothing
-    , _cgName = Nothing
-    , _cgKeyId = pKeyId_
-    , _cgGranteePrincipal = pGranteePrincipal_
-    , _cgOperations = mempty
-    }
-
+createGrant pKeyId_ pGranteePrincipal_
+  = CreateGrant'{_cgRetiringPrincipal = Nothing,
+                 _cgGrantTokens = Nothing, _cgConstraints = Nothing,
+                 _cgName = Nothing, _cgKeyId = pKeyId_,
+                 _cgGranteePrincipal = pGranteePrincipal_,
+                 _cgOperations = mempty}
 
 -- | The principal that is given permission to retire the grant by using 'RetireGrant' operation. To specify the principal, use the <http://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html Amazon Resource Name (ARN)> of an AWS principal. Valid AWS principals include AWS accounts (root), IAM users, federated users, and assumed role users. For examples of the ARN syntax to use for specifying a principal, see <http://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html#arn-syntax-iam AWS Identity and Access Management (IAM)> in the Example ARNs section of the /AWS General Reference/ .
 cgRetiringPrincipal :: Lens' CreateGrant (Maybe Text)
@@ -169,14 +159,12 @@ instance ToQuery CreateGrant where
         toQuery = const mempty
 
 -- | /See:/ 'createGrantResponse' smart constructor.
-data CreateGrantResponse =
-  CreateGrantResponse'
-    { _cgrsGrantId        :: !(Maybe Text)
-    , _cgrsGrantToken     :: !(Maybe Text)
-    , _cgrsResponseStatus :: !Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data CreateGrantResponse = CreateGrantResponse'{_cgrsGrantId
+                                                :: !(Maybe Text),
+                                                _cgrsGrantToken ::
+                                                !(Maybe Text),
+                                                _cgrsResponseStatus :: !Int}
+                             deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'CreateGrantResponse' with the minimum fields required to make a request.
 --
@@ -190,13 +178,10 @@ data CreateGrantResponse =
 createGrantResponse
     :: Int -- ^ 'cgrsResponseStatus'
     -> CreateGrantResponse
-createGrantResponse pResponseStatus_ =
-  CreateGrantResponse'
-    { _cgrsGrantId = Nothing
-    , _cgrsGrantToken = Nothing
-    , _cgrsResponseStatus = pResponseStatus_
-    }
-
+createGrantResponse pResponseStatus_
+  = CreateGrantResponse'{_cgrsGrantId = Nothing,
+                         _cgrsGrantToken = Nothing,
+                         _cgrsResponseStatus = pResponseStatus_}
 
 -- | The unique identifier for the grant. You can use the @GrantId@ in a subsequent 'RetireGrant' or 'RevokeGrant' operation.
 cgrsGrantId :: Lens' CreateGrantResponse (Maybe Text)

@@ -39,21 +39,19 @@ module Network.AWS.CloudDirectory.UpdateLinkAttributes
     ) where
 
 import Network.AWS.CloudDirectory.Types
-import Network.AWS.CloudDirectory.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 
 -- | /See:/ 'updateLinkAttributes' smart constructor.
-data UpdateLinkAttributes =
-  UpdateLinkAttributes'
-    { _ulaDirectoryARN       :: !Text
-    , _ulaTypedLinkSpecifier :: !TypedLinkSpecifier
-    , _ulaAttributeUpdates   :: ![LinkAttributeUpdate]
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data UpdateLinkAttributes = UpdateLinkAttributes'{_ulaDirectoryARN
+                                                  :: !Text,
+                                                  _ulaTypedLinkSpecifier ::
+                                                  !TypedLinkSpecifier,
+                                                  _ulaAttributeUpdates ::
+                                                  ![LinkAttributeUpdate]}
+                              deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'UpdateLinkAttributes' with the minimum fields required to make a request.
 --
@@ -68,13 +66,12 @@ updateLinkAttributes
     :: Text -- ^ 'ulaDirectoryARN'
     -> TypedLinkSpecifier -- ^ 'ulaTypedLinkSpecifier'
     -> UpdateLinkAttributes
-updateLinkAttributes pDirectoryARN_ pTypedLinkSpecifier_ =
-  UpdateLinkAttributes'
-    { _ulaDirectoryARN = pDirectoryARN_
-    , _ulaTypedLinkSpecifier = pTypedLinkSpecifier_
-    , _ulaAttributeUpdates = mempty
-    }
-
+updateLinkAttributes pDirectoryARN_
+  pTypedLinkSpecifier_
+  = UpdateLinkAttributes'{_ulaDirectoryARN =
+                            pDirectoryARN_,
+                          _ulaTypedLinkSpecifier = pTypedLinkSpecifier_,
+                          _ulaAttributeUpdates = mempty}
 
 -- | The Amazon Resource Name (ARN) that is associated with the Directory where the updated typed link resides. For more information, see 'arns' or <https://docs.aws.amazon.com/clouddirectory/latest/developerguide/directory_objects_links.html#directory_objects_links_typedlink Typed Links> .
 ulaDirectoryARN :: Lens' UpdateLinkAttributes Text
@@ -124,12 +121,10 @@ instance ToQuery UpdateLinkAttributes where
         toQuery = const mempty
 
 -- | /See:/ 'updateLinkAttributesResponse' smart constructor.
-newtype UpdateLinkAttributesResponse =
-  UpdateLinkAttributesResponse'
-    { _ularsResponseStatus :: Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+newtype UpdateLinkAttributesResponse = UpdateLinkAttributesResponse'{_ularsResponseStatus
+                                                                     :: Int}
+                                         deriving (Eq, Read, Show, Data,
+                                                   Typeable, Generic)
 
 -- | Creates a value of 'UpdateLinkAttributesResponse' with the minimum fields required to make a request.
 --
@@ -139,9 +134,9 @@ newtype UpdateLinkAttributesResponse =
 updateLinkAttributesResponse
     :: Int -- ^ 'ularsResponseStatus'
     -> UpdateLinkAttributesResponse
-updateLinkAttributesResponse pResponseStatus_ =
-  UpdateLinkAttributesResponse' {_ularsResponseStatus = pResponseStatus_}
-
+updateLinkAttributesResponse pResponseStatus_
+  = UpdateLinkAttributesResponse'{_ularsResponseStatus
+                                    = pResponseStatus_}
 
 -- | -- | The response status code.
 ularsResponseStatus :: Lens' UpdateLinkAttributesResponse Int

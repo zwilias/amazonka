@@ -42,7 +42,6 @@ module Network.AWS.IoT.DescribeThingType
     ) where
 
 import Network.AWS.IoT.Types
-import Network.AWS.IoT.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.Request
@@ -53,12 +52,9 @@ import Network.AWS.Response
 --
 --
 -- /See:/ 'describeThingType' smart constructor.
-newtype DescribeThingType =
-  DescribeThingType'
-    { _dThingTypeName :: Text
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+newtype DescribeThingType = DescribeThingType'{_dThingTypeName
+                                               :: Text}
+                              deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'DescribeThingType' with the minimum fields required to make a request.
 --
@@ -68,9 +64,9 @@ newtype DescribeThingType =
 describeThingType
     :: Text -- ^ 'dThingTypeName'
     -> DescribeThingType
-describeThingType pThingTypeName_ =
-  DescribeThingType' {_dThingTypeName = pThingTypeName_}
-
+describeThingType pThingTypeName_
+  = DescribeThingType'{_dThingTypeName =
+                         pThingTypeName_}
 
 -- | The name of the thing type.
 dThingTypeName :: Lens' DescribeThingType Text
@@ -109,17 +105,24 @@ instance ToQuery DescribeThingType where
 --
 --
 -- /See:/ 'describeThingTypeResponse' smart constructor.
-data DescribeThingTypeResponse =
-  DescribeThingTypeResponse'
-    { _desrsThingTypeProperties :: !(Maybe ThingTypeProperties)
-    , _desrsThingTypeName       :: !(Maybe Text)
-    , _desrsThingTypeId         :: !(Maybe Text)
-    , _desrsThingTypeMetadata   :: !(Maybe ThingTypeMetadata)
-    , _desrsThingTypeARN        :: !(Maybe Text)
-    , _desrsResponseStatus      :: !Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data DescribeThingTypeResponse = DescribeThingTypeResponse'{_desrsThingTypeProperties
+                                                            ::
+                                                            !(Maybe
+                                                                ThingTypeProperties),
+                                                            _desrsThingTypeName
+                                                            :: !(Maybe Text),
+                                                            _desrsThingTypeId ::
+                                                            !(Maybe Text),
+                                                            _desrsThingTypeMetadata
+                                                            ::
+                                                            !(Maybe
+                                                                ThingTypeMetadata),
+                                                            _desrsThingTypeARN
+                                                            :: !(Maybe Text),
+                                                            _desrsResponseStatus
+                                                            :: !Int}
+                                   deriving (Eq, Read, Show, Data, Typeable,
+                                             Generic)
 
 -- | Creates a value of 'DescribeThingTypeResponse' with the minimum fields required to make a request.
 --
@@ -139,16 +142,14 @@ data DescribeThingTypeResponse =
 describeThingTypeResponse
     :: Int -- ^ 'desrsResponseStatus'
     -> DescribeThingTypeResponse
-describeThingTypeResponse pResponseStatus_ =
-  DescribeThingTypeResponse'
-    { _desrsThingTypeProperties = Nothing
-    , _desrsThingTypeName = Nothing
-    , _desrsThingTypeId = Nothing
-    , _desrsThingTypeMetadata = Nothing
-    , _desrsThingTypeARN = Nothing
-    , _desrsResponseStatus = pResponseStatus_
-    }
-
+describeThingTypeResponse pResponseStatus_
+  = DescribeThingTypeResponse'{_desrsThingTypeProperties
+                                 = Nothing,
+                               _desrsThingTypeName = Nothing,
+                               _desrsThingTypeId = Nothing,
+                               _desrsThingTypeMetadata = Nothing,
+                               _desrsThingTypeARN = Nothing,
+                               _desrsResponseStatus = pResponseStatus_}
 
 -- | The ThingTypeProperties contains information about the thing type including description, and a list of searchable thing attribute names.
 desrsThingTypeProperties :: Lens' DescribeThingTypeResponse (Maybe ThingTypeProperties)

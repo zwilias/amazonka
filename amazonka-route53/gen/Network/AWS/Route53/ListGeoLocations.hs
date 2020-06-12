@@ -52,22 +52,19 @@ import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 import Network.AWS.Route53.Types
-import Network.AWS.Route53.Types.Product
 
--- | A request to get a list of geographic locations that Amazon Route 53 supports for geolocation resource record sets.
+-- | A request to get a list of geographic locations that Amazon Route 53 supports for geolocation resource record sets. 
 --
 --
 --
 -- /See:/ 'listGeoLocations' smart constructor.
-data ListGeoLocations =
-  ListGeoLocations'
-    { _lglStartSubdivisionCode :: !(Maybe Text)
-    , _lglMaxItems             :: !(Maybe Text)
-    , _lglStartCountryCode     :: !(Maybe Text)
-    , _lglStartContinentCode   :: !(Maybe Text)
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data ListGeoLocations = ListGeoLocations'{_lglStartSubdivisionCode
+                                          :: !(Maybe Text),
+                                          _lglMaxItems :: !(Maybe Text),
+                                          _lglStartCountryCode :: !(Maybe Text),
+                                          _lglStartContinentCode ::
+                                          !(Maybe Text)}
+                          deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'ListGeoLocations' with the minimum fields required to make a request.
 --
@@ -82,14 +79,12 @@ data ListGeoLocations =
 -- * 'lglStartContinentCode' - The code for the continent with which you want to start listing locations that Amazon Route 53 supports for geolocation. If Amazon Route 53 has already returned a page or more of results, if @IsTruncated@ is true, and if @NextContinentCode@ from the previous response has a value, enter that value in @StartContinentCode@ to return the next page of results. Include @StartContinentCode@ only if you want to list continents. Don't include @StartContinentCode@ when you're listing countries or countries with their subdivisions.
 listGeoLocations
     :: ListGeoLocations
-listGeoLocations =
-  ListGeoLocations'
-    { _lglStartSubdivisionCode = Nothing
-    , _lglMaxItems = Nothing
-    , _lglStartCountryCode = Nothing
-    , _lglStartContinentCode = Nothing
-    }
-
+listGeoLocations
+  = ListGeoLocations'{_lglStartSubdivisionCode =
+                        Nothing,
+                      _lglMaxItems = Nothing,
+                      _lglStartCountryCode = Nothing,
+                      _lglStartContinentCode = Nothing}
 
 -- | The code for the subdivision (for example, state or province) with which you want to start listing locations that Amazon Route 53 supports for geolocation. If Amazon Route 53 has already returned a page or more of results, if @IsTruncated@ is @true@ , and if @NextSubdivisionCode@ from the previous response has a value, enter that value in @StartSubdivisionCode@ to return the next page of results. To list subdivisions of a country, you must include both @StartCountryCode@ and @StartSubdivisionCode@ .
 lglStartSubdivisionCode :: Lens' ListGeoLocations (Maybe Text)
@@ -147,18 +142,23 @@ instance ToQuery ListGeoLocations where
 --
 --
 -- /See:/ 'listGeoLocationsResponse' smart constructor.
-data ListGeoLocationsResponse =
-  ListGeoLocationsResponse'
-    { _lglrsNextContinentCode      :: !(Maybe Text)
-    , _lglrsNextCountryCode        :: !(Maybe Text)
-    , _lglrsNextSubdivisionCode    :: !(Maybe Text)
-    , _lglrsResponseStatus         :: !Int
-    , _lglrsGeoLocationDetailsList :: ![GeoLocationDetails]
-    , _lglrsIsTruncated            :: !Bool
-    , _lglrsMaxItems               :: !Text
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data ListGeoLocationsResponse = ListGeoLocationsResponse'{_lglrsNextContinentCode
+                                                          :: !(Maybe Text),
+                                                          _lglrsNextCountryCode
+                                                          :: !(Maybe Text),
+                                                          _lglrsNextSubdivisionCode
+                                                          :: !(Maybe Text),
+                                                          _lglrsResponseStatus
+                                                          :: !Int,
+                                                          _lglrsGeoLocationDetailsList
+                                                          ::
+                                                          ![GeoLocationDetails],
+                                                          _lglrsIsTruncated ::
+                                                          !Bool,
+                                                          _lglrsMaxItems ::
+                                                          !Text}
+                                  deriving (Eq, Read, Show, Data, Typeable,
+                                            Generic)
 
 -- | Creates a value of 'ListGeoLocationsResponse' with the minimum fields required to make a request.
 --
@@ -182,17 +182,16 @@ listGeoLocationsResponse
     -> Bool -- ^ 'lglrsIsTruncated'
     -> Text -- ^ 'lglrsMaxItems'
     -> ListGeoLocationsResponse
-listGeoLocationsResponse pResponseStatus_ pIsTruncated_ pMaxItems_ =
-  ListGeoLocationsResponse'
-    { _lglrsNextContinentCode = Nothing
-    , _lglrsNextCountryCode = Nothing
-    , _lglrsNextSubdivisionCode = Nothing
-    , _lglrsResponseStatus = pResponseStatus_
-    , _lglrsGeoLocationDetailsList = mempty
-    , _lglrsIsTruncated = pIsTruncated_
-    , _lglrsMaxItems = pMaxItems_
-    }
-
+listGeoLocationsResponse pResponseStatus_
+  pIsTruncated_ pMaxItems_
+  = ListGeoLocationsResponse'{_lglrsNextContinentCode =
+                                Nothing,
+                              _lglrsNextCountryCode = Nothing,
+                              _lglrsNextSubdivisionCode = Nothing,
+                              _lglrsResponseStatus = pResponseStatus_,
+                              _lglrsGeoLocationDetailsList = mempty,
+                              _lglrsIsTruncated = pIsTruncated_,
+                              _lglrsMaxItems = pMaxItems_}
 
 -- | If @IsTruncated@ is @true@ , you can make a follow-up request to display more locations. Enter the value of @NextContinentCode@ in the @StartContinentCode@ parameter in another @ListGeoLocations@ request.
 lglrsNextContinentCode :: Lens' ListGeoLocationsResponse (Maybe Text)

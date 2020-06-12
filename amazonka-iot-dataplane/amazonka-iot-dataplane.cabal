@@ -53,8 +53,6 @@ library
         , Network.AWS.IoTData.Waiters
 
     other-modules:
-          Network.AWS.IoTData.Types.Product
-        , Network.AWS.IoTData.Types.Sum
 
     build-depends:
           amazonka-core == 1.6.1.*

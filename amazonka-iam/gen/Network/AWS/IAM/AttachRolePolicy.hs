@@ -38,20 +38,16 @@ module Network.AWS.IAM.AttachRolePolicy
     ) where
 
 import Network.AWS.IAM.Types
-import Network.AWS.IAM.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 
 -- | /See:/ 'attachRolePolicy' smart constructor.
-data AttachRolePolicy =
-  AttachRolePolicy'
-    { _arpRoleName  :: !Text
-    , _arpPolicyARN :: !Text
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data AttachRolePolicy = AttachRolePolicy'{_arpRoleName
+                                          :: !Text,
+                                          _arpPolicyARN :: !Text}
+                          deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'AttachRolePolicy' with the minimum fields required to make a request.
 --
@@ -64,9 +60,9 @@ attachRolePolicy
     :: Text -- ^ 'arpRoleName'
     -> Text -- ^ 'arpPolicyARN'
     -> AttachRolePolicy
-attachRolePolicy pRoleName_ pPolicyARN_ =
-  AttachRolePolicy' {_arpRoleName = pRoleName_, _arpPolicyARN = pPolicyARN_}
-
+attachRolePolicy pRoleName_ pPolicyARN_
+  = AttachRolePolicy'{_arpRoleName = pRoleName_,
+                      _arpPolicyARN = pPolicyARN_}
 
 -- | The name (friendly name, not ARN) of the role to attach the policy to. This parameter allows (per its <http://wikipedia.org/wiki/regex regex pattern> ) a string of characters consisting of upper and lowercase alphanumeric characters with no spaces. You can also include any of the following characters: _+=,.@-
 arpRoleName :: Lens' AttachRolePolicy Text
@@ -100,16 +96,14 @@ instance ToQuery AttachRolePolicy where
                "PolicyArn" =: _arpPolicyARN]
 
 -- | /See:/ 'attachRolePolicyResponse' smart constructor.
-data AttachRolePolicyResponse =
-  AttachRolePolicyResponse'
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data AttachRolePolicyResponse = AttachRolePolicyResponse'
+                                  deriving (Eq, Read, Show, Data, Typeable,
+                                            Generic)
 
 -- | Creates a value of 'AttachRolePolicyResponse' with the minimum fields required to make a request.
 --
 attachRolePolicyResponse
     :: AttachRolePolicyResponse
 attachRolePolicyResponse = AttachRolePolicyResponse'
-
 
 instance NFData AttachRolePolicyResponse where

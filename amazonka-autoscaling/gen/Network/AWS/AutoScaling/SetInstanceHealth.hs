@@ -39,21 +39,17 @@ module Network.AWS.AutoScaling.SetInstanceHealth
     ) where
 
 import Network.AWS.AutoScaling.Types
-import Network.AWS.AutoScaling.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 
 -- | /See:/ 'setInstanceHealth' smart constructor.
-data SetInstanceHealth =
-  SetInstanceHealth'
-    { _sihShouldRespectGracePeriod :: !(Maybe Bool)
-    , _sihInstanceId               :: !Text
-    , _sihHealthStatus             :: !Text
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data SetInstanceHealth = SetInstanceHealth'{_sihShouldRespectGracePeriod
+                                            :: !(Maybe Bool),
+                                            _sihInstanceId :: !Text,
+                                            _sihHealthStatus :: !Text}
+                           deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'SetInstanceHealth' with the minimum fields required to make a request.
 --
@@ -68,13 +64,11 @@ setInstanceHealth
     :: Text -- ^ 'sihInstanceId'
     -> Text -- ^ 'sihHealthStatus'
     -> SetInstanceHealth
-setInstanceHealth pInstanceId_ pHealthStatus_ =
-  SetInstanceHealth'
-    { _sihShouldRespectGracePeriod = Nothing
-    , _sihInstanceId = pInstanceId_
-    , _sihHealthStatus = pHealthStatus_
-    }
-
+setInstanceHealth pInstanceId_ pHealthStatus_
+  = SetInstanceHealth'{_sihShouldRespectGracePeriod =
+                         Nothing,
+                       _sihInstanceId = pInstanceId_,
+                       _sihHealthStatus = pHealthStatus_}
 
 -- | If the Auto Scaling group of the specified instance has a @HealthCheckGracePeriod@ specified for the group, by default, this call respects the grace period. Set this to @False@ , to have the call not respect the grace period associated with the group. For more information about the health check grace period, see 'CreateAutoScalingGroup' .
 sihShouldRespectGracePeriod :: Lens' SetInstanceHealth (Maybe Bool)
@@ -114,16 +108,15 @@ instance ToQuery SetInstanceHealth where
                "HealthStatus" =: _sihHealthStatus]
 
 -- | /See:/ 'setInstanceHealthResponse' smart constructor.
-data SetInstanceHealthResponse =
-  SetInstanceHealthResponse'
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data SetInstanceHealthResponse = SetInstanceHealthResponse'
+                                   deriving (Eq, Read, Show, Data, Typeable,
+                                             Generic)
 
 -- | Creates a value of 'SetInstanceHealthResponse' with the minimum fields required to make a request.
 --
 setInstanceHealthResponse
     :: SetInstanceHealthResponse
-setInstanceHealthResponse = SetInstanceHealthResponse'
-
+setInstanceHealthResponse
+  = SetInstanceHealthResponse'
 
 instance NFData SetInstanceHealthResponse where

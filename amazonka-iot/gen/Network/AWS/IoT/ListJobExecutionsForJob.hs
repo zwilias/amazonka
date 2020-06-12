@@ -42,22 +42,23 @@ module Network.AWS.IoT.ListJobExecutionsForJob
     ) where
 
 import Network.AWS.IoT.Types
-import Network.AWS.IoT.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 
 -- | /See:/ 'listJobExecutionsForJob' smart constructor.
-data ListJobExecutionsForJob =
-  ListJobExecutionsForJob'
-    { _ljefjStatus     :: !(Maybe JobExecutionStatus)
-    , _ljefjNextToken  :: !(Maybe Text)
-    , _ljefjMaxResults :: !(Maybe Nat)
-    , _ljefjJobId      :: !Text
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data ListJobExecutionsForJob = ListJobExecutionsForJob'{_ljefjStatus
+                                                        ::
+                                                        !(Maybe
+                                                            JobExecutionStatus),
+                                                        _ljefjNextToken ::
+                                                        !(Maybe Text),
+                                                        _ljefjMaxResults ::
+                                                        !(Maybe Nat),
+                                                        _ljefjJobId :: !Text}
+                                 deriving (Eq, Read, Show, Data, Typeable,
+                                           Generic)
 
 -- | Creates a value of 'ListJobExecutionsForJob' with the minimum fields required to make a request.
 --
@@ -73,14 +74,10 @@ data ListJobExecutionsForJob =
 listJobExecutionsForJob
     :: Text -- ^ 'ljefjJobId'
     -> ListJobExecutionsForJob
-listJobExecutionsForJob pJobId_ =
-  ListJobExecutionsForJob'
-    { _ljefjStatus = Nothing
-    , _ljefjNextToken = Nothing
-    , _ljefjMaxResults = Nothing
-    , _ljefjJobId = pJobId_
-    }
-
+listJobExecutionsForJob pJobId_
+  = ListJobExecutionsForJob'{_ljefjStatus = Nothing,
+                             _ljefjNextToken = Nothing,
+                             _ljefjMaxResults = Nothing, _ljefjJobId = pJobId_}
 
 -- | The status of the job.
 ljefjStatus :: Lens' ListJobExecutionsForJob (Maybe JobExecutionStatus)
@@ -129,14 +126,18 @@ instance ToQuery ListJobExecutionsForJob where
                "maxResults" =: _ljefjMaxResults]
 
 -- | /See:/ 'listJobExecutionsForJobResponse' smart constructor.
-data ListJobExecutionsForJobResponse =
-  ListJobExecutionsForJobResponse'
-    { _ljefjrsExecutionSummaries :: !(Maybe [JobExecutionSummaryForJob])
-    , _ljefjrsNextToken          :: !(Maybe Text)
-    , _ljefjrsResponseStatus     :: !Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data ListJobExecutionsForJobResponse = ListJobExecutionsForJobResponse'{_ljefjrsExecutionSummaries
+                                                                        ::
+                                                                        !(Maybe
+                                                                            [JobExecutionSummaryForJob]),
+                                                                        _ljefjrsNextToken
+                                                                        ::
+                                                                        !(Maybe
+                                                                            Text),
+                                                                        _ljefjrsResponseStatus
+                                                                        :: !Int}
+                                         deriving (Eq, Read, Show, Data,
+                                                   Typeable, Generic)
 
 -- | Creates a value of 'ListJobExecutionsForJobResponse' with the minimum fields required to make a request.
 --
@@ -150,13 +151,11 @@ data ListJobExecutionsForJobResponse =
 listJobExecutionsForJobResponse
     :: Int -- ^ 'ljefjrsResponseStatus'
     -> ListJobExecutionsForJobResponse
-listJobExecutionsForJobResponse pResponseStatus_ =
-  ListJobExecutionsForJobResponse'
-    { _ljefjrsExecutionSummaries = Nothing
-    , _ljefjrsNextToken = Nothing
-    , _ljefjrsResponseStatus = pResponseStatus_
-    }
-
+listJobExecutionsForJobResponse pResponseStatus_
+  = ListJobExecutionsForJobResponse'{_ljefjrsExecutionSummaries
+                                       = Nothing,
+                                     _ljefjrsNextToken = Nothing,
+                                     _ljefjrsResponseStatus = pResponseStatus_}
 
 -- | A list of job execution summaries.
 ljefjrsExecutionSummaries :: Lens' ListJobExecutionsForJobResponse [JobExecutionSummaryForJob]

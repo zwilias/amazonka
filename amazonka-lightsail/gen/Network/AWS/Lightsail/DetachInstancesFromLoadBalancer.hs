@@ -42,19 +42,19 @@ module Network.AWS.Lightsail.DetachInstancesFromLoadBalancer
 
 import Network.AWS.Lens
 import Network.AWS.Lightsail.Types
-import Network.AWS.Lightsail.Types.Product
 import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 
 -- | /See:/ 'detachInstancesFromLoadBalancer' smart constructor.
-data DetachInstancesFromLoadBalancer =
-  DetachInstancesFromLoadBalancer'
-    { _diflbLoadBalancerName :: !Text
-    , _diflbInstanceNames    :: ![Text]
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data DetachInstancesFromLoadBalancer = DetachInstancesFromLoadBalancer'{_diflbLoadBalancerName
+                                                                        ::
+                                                                        !Text,
+                                                                        _diflbInstanceNames
+                                                                        ::
+                                                                        ![Text]}
+                                         deriving (Eq, Read, Show, Data,
+                                                   Typeable, Generic)
 
 -- | Creates a value of 'DetachInstancesFromLoadBalancer' with the minimum fields required to make a request.
 --
@@ -66,10 +66,10 @@ data DetachInstancesFromLoadBalancer =
 detachInstancesFromLoadBalancer
     :: Text -- ^ 'diflbLoadBalancerName'
     -> DetachInstancesFromLoadBalancer
-detachInstancesFromLoadBalancer pLoadBalancerName_ =
-  DetachInstancesFromLoadBalancer'
-    {_diflbLoadBalancerName = pLoadBalancerName_, _diflbInstanceNames = mempty}
-
+detachInstancesFromLoadBalancer pLoadBalancerName_
+  = DetachInstancesFromLoadBalancer'{_diflbLoadBalancerName
+                                       = pLoadBalancerName_,
+                                     _diflbInstanceNames = mempty}
 
 -- | The name of the Lightsail load balancer.
 diflbLoadBalancerName :: Lens' DetachInstancesFromLoadBalancer Text
@@ -122,13 +122,15 @@ instance ToQuery DetachInstancesFromLoadBalancer
         toQuery = const mempty
 
 -- | /See:/ 'detachInstancesFromLoadBalancerResponse' smart constructor.
-data DetachInstancesFromLoadBalancerResponse =
-  DetachInstancesFromLoadBalancerResponse'
-    { _diflbrsOperations     :: !(Maybe [Operation])
-    , _diflbrsResponseStatus :: !Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data DetachInstancesFromLoadBalancerResponse = DetachInstancesFromLoadBalancerResponse'{_diflbrsOperations
+                                                                                        ::
+                                                                                        !(Maybe
+                                                                                            [Operation]),
+                                                                                        _diflbrsResponseStatus
+                                                                                        ::
+                                                                                        !Int}
+                                                 deriving (Eq, Read, Show, Data,
+                                                           Typeable, Generic)
 
 -- | Creates a value of 'DetachInstancesFromLoadBalancerResponse' with the minimum fields required to make a request.
 --
@@ -140,10 +142,12 @@ data DetachInstancesFromLoadBalancerResponse =
 detachInstancesFromLoadBalancerResponse
     :: Int -- ^ 'diflbrsResponseStatus'
     -> DetachInstancesFromLoadBalancerResponse
-detachInstancesFromLoadBalancerResponse pResponseStatus_ =
-  DetachInstancesFromLoadBalancerResponse'
-    {_diflbrsOperations = Nothing, _diflbrsResponseStatus = pResponseStatus_}
-
+detachInstancesFromLoadBalancerResponse
+  pResponseStatus_
+  = DetachInstancesFromLoadBalancerResponse'{_diflbrsOperations
+                                               = Nothing,
+                                             _diflbrsResponseStatus =
+                                               pResponseStatus_}
 
 -- | An object describing the API operations.
 diflbrsOperations :: Lens' DetachInstancesFromLoadBalancerResponse [Operation]

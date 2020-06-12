@@ -41,16 +41,11 @@ import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.ResourceGroups.Types
-import Network.AWS.ResourceGroups.Types.Product
 import Network.AWS.Response
 
 -- | /See:/ 'getGroup' smart constructor.
-newtype GetGroup =
-  GetGroup'
-    { _ggGroupName :: Text
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+newtype GetGroup = GetGroup'{_ggGroupName :: Text}
+                     deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'GetGroup' with the minimum fields required to make a request.
 --
@@ -60,8 +55,8 @@ newtype GetGroup =
 getGroup
     :: Text -- ^ 'ggGroupName'
     -> GetGroup
-getGroup pGroupName_ = GetGroup' {_ggGroupName = pGroupName_}
-
+getGroup pGroupName_
+  = GetGroup'{_ggGroupName = pGroupName_}
 
 -- | The name of the resource group.
 ggGroupName :: Lens' GetGroup Text
@@ -91,13 +86,10 @@ instance ToQuery GetGroup where
         toQuery = const mempty
 
 -- | /See:/ 'getGroupResponse' smart constructor.
-data GetGroupResponse =
-  GetGroupResponse'
-    { _ggrsGroup          :: !(Maybe Group)
-    , _ggrsResponseStatus :: !Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data GetGroupResponse = GetGroupResponse'{_ggrsGroup
+                                          :: !(Maybe Group),
+                                          _ggrsResponseStatus :: !Int}
+                          deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'GetGroupResponse' with the minimum fields required to make a request.
 --
@@ -109,10 +101,9 @@ data GetGroupResponse =
 getGroupResponse
     :: Int -- ^ 'ggrsResponseStatus'
     -> GetGroupResponse
-getGroupResponse pResponseStatus_ =
-  GetGroupResponse'
-    {_ggrsGroup = Nothing, _ggrsResponseStatus = pResponseStatus_}
-
+getGroupResponse pResponseStatus_
+  = GetGroupResponse'{_ggrsGroup = Nothing,
+                      _ggrsResponseStatus = pResponseStatus_}
 
 -- | A full description of the resource group.
 ggrsGroup :: Lens' GetGroupResponse (Maybe Group)

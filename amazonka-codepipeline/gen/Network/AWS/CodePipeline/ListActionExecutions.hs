@@ -44,7 +44,6 @@ module Network.AWS.CodePipeline.ListActionExecutions
     ) where
 
 import Network.AWS.CodePipeline.Types
-import Network.AWS.CodePipeline.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Pager
 import Network.AWS.Prelude
@@ -52,15 +51,15 @@ import Network.AWS.Request
 import Network.AWS.Response
 
 -- | /See:/ 'listActionExecutions' smart constructor.
-data ListActionExecutions =
-  ListActionExecutions'
-    { _laeNextToken    :: !(Maybe Text)
-    , _laeFilter       :: !(Maybe ActionExecutionFilter)
-    , _laeMaxResults   :: !(Maybe Nat)
-    , _laePipelineName :: !Text
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data ListActionExecutions = ListActionExecutions'{_laeNextToken
+                                                  :: !(Maybe Text),
+                                                  _laeFilter ::
+                                                  !(Maybe
+                                                      ActionExecutionFilter),
+                                                  _laeMaxResults ::
+                                                  !(Maybe Nat),
+                                                  _laePipelineName :: !Text}
+                              deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'ListActionExecutions' with the minimum fields required to make a request.
 --
@@ -70,20 +69,16 @@ data ListActionExecutions =
 --
 -- * 'laeFilter' - Input information used to filter action execution history.
 --
--- * 'laeMaxResults' - The maximum number of results to return in a single call. To retrieve the remaining results, make another call with the returned nextToken value. Action execution history is retained for up to 12 months, based on action execution start times. Default value is 100.
+-- * 'laeMaxResults' - The maximum number of results to return in a single call. To retrieve the remaining results, make another call with the returned nextToken value. Action execution history is retained for up to 12 months, based on action execution start times. Default value is 100. 
 --
 -- * 'laePipelineName' - The name of the pipeline for which you want to list action execution history.
 listActionExecutions
     :: Text -- ^ 'laePipelineName'
     -> ListActionExecutions
-listActionExecutions pPipelineName_ =
-  ListActionExecutions'
-    { _laeNextToken = Nothing
-    , _laeFilter = Nothing
-    , _laeMaxResults = Nothing
-    , _laePipelineName = pPipelineName_
-    }
-
+listActionExecutions pPipelineName_
+  = ListActionExecutions'{_laeNextToken = Nothing,
+                          _laeFilter = Nothing, _laeMaxResults = Nothing,
+                          _laePipelineName = pPipelineName_}
 
 -- | The token that was returned from the previous @ListActionExecutions@ call, which can be used to return the next set of action executions in the list.
 laeNextToken :: Lens' ListActionExecutions (Maybe Text)
@@ -93,7 +88,7 @@ laeNextToken = lens _laeNextToken (\ s a -> s{_laeNextToken = a})
 laeFilter :: Lens' ListActionExecutions (Maybe ActionExecutionFilter)
 laeFilter = lens _laeFilter (\ s a -> s{_laeFilter = a})
 
--- | The maximum number of results to return in a single call. To retrieve the remaining results, make another call with the returned nextToken value. Action execution history is retained for up to 12 months, based on action execution start times. Default value is 100.
+-- | The maximum number of results to return in a single call. To retrieve the remaining results, make another call with the returned nextToken value. Action execution history is retained for up to 12 months, based on action execution start times. Default value is 100. 
 laeMaxResults :: Lens' ListActionExecutions (Maybe Natural)
 laeMaxResults = lens _laeMaxResults (\ s a -> s{_laeMaxResults = a}) . mapping _Nat
 
@@ -150,14 +145,17 @@ instance ToQuery ListActionExecutions where
         toQuery = const mempty
 
 -- | /See:/ 'listActionExecutionsResponse' smart constructor.
-data ListActionExecutionsResponse =
-  ListActionExecutionsResponse'
-    { _laersActionExecutionDetails :: !(Maybe [ActionExecutionDetail])
-    , _laersNextToken              :: !(Maybe Text)
-    , _laersResponseStatus         :: !Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data ListActionExecutionsResponse = ListActionExecutionsResponse'{_laersActionExecutionDetails
+                                                                  ::
+                                                                  !(Maybe
+                                                                      [ActionExecutionDetail]),
+                                                                  _laersNextToken
+                                                                  ::
+                                                                  !(Maybe Text),
+                                                                  _laersResponseStatus
+                                                                  :: !Int}
+                                      deriving (Eq, Read, Show, Data, Typeable,
+                                                Generic)
 
 -- | Creates a value of 'ListActionExecutionsResponse' with the minimum fields required to make a request.
 --
@@ -171,13 +169,11 @@ data ListActionExecutionsResponse =
 listActionExecutionsResponse
     :: Int -- ^ 'laersResponseStatus'
     -> ListActionExecutionsResponse
-listActionExecutionsResponse pResponseStatus_ =
-  ListActionExecutionsResponse'
-    { _laersActionExecutionDetails = Nothing
-    , _laersNextToken = Nothing
-    , _laersResponseStatus = pResponseStatus_
-    }
-
+listActionExecutionsResponse pResponseStatus_
+  = ListActionExecutionsResponse'{_laersActionExecutionDetails
+                                    = Nothing,
+                                  _laersNextToken = Nothing,
+                                  _laersResponseStatus = pResponseStatus_}
 
 -- | The details for a list of recent executions, such as action execution ID.
 laersActionExecutionDetails :: Lens' ListActionExecutionsResponse [ActionExecutionDetail]

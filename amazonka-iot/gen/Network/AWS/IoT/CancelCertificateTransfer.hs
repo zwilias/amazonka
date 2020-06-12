@@ -39,7 +39,6 @@ module Network.AWS.IoT.CancelCertificateTransfer
     ) where
 
 import Network.AWS.IoT.Types
-import Network.AWS.IoT.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.Request
@@ -50,12 +49,10 @@ import Network.AWS.Response
 --
 --
 -- /See:/ 'cancelCertificateTransfer' smart constructor.
-newtype CancelCertificateTransfer =
-  CancelCertificateTransfer'
-    { _cctCertificateId :: Text
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+newtype CancelCertificateTransfer = CancelCertificateTransfer'{_cctCertificateId
+                                                               :: Text}
+                                      deriving (Eq, Read, Show, Data, Typeable,
+                                                Generic)
 
 -- | Creates a value of 'CancelCertificateTransfer' with the minimum fields required to make a request.
 --
@@ -65,9 +62,9 @@ newtype CancelCertificateTransfer =
 cancelCertificateTransfer
     :: Text -- ^ 'cctCertificateId'
     -> CancelCertificateTransfer
-cancelCertificateTransfer pCertificateId_ =
-  CancelCertificateTransfer' {_cctCertificateId = pCertificateId_}
-
+cancelCertificateTransfer pCertificateId_
+  = CancelCertificateTransfer'{_cctCertificateId =
+                                 pCertificateId_}
 
 -- | The ID of the certificate. (The last part of the certificate ARN contains the certificate ID.)
 cctCertificateId :: Lens' CancelCertificateTransfer Text
@@ -100,17 +97,16 @@ instance ToQuery CancelCertificateTransfer where
         toQuery = const mempty
 
 -- | /See:/ 'cancelCertificateTransferResponse' smart constructor.
-data CancelCertificateTransferResponse =
-  CancelCertificateTransferResponse'
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data CancelCertificateTransferResponse = CancelCertificateTransferResponse'
+                                           deriving (Eq, Read, Show, Data,
+                                                     Typeable, Generic)
 
 -- | Creates a value of 'CancelCertificateTransferResponse' with the minimum fields required to make a request.
 --
 cancelCertificateTransferResponse
     :: CancelCertificateTransferResponse
-cancelCertificateTransferResponse = CancelCertificateTransferResponse'
-
+cancelCertificateTransferResponse
+  = CancelCertificateTransferResponse'
 
 instance NFData CancelCertificateTransferResponse
          where

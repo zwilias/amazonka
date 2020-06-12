@@ -37,23 +37,19 @@ module Network.AWS.Lightsail.PeerVPC
 
 import Network.AWS.Lens
 import Network.AWS.Lightsail.Types
-import Network.AWS.Lightsail.Types.Product
 import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 
 -- | /See:/ 'peerVPC' smart constructor.
-data PeerVPC =
-  PeerVPC'
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data PeerVPC = PeerVPC'
+                 deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'PeerVPC' with the minimum fields required to make a request.
 --
 peerVPC
     :: PeerVPC
 peerVPC = PeerVPC'
-
 
 instance AWSRequest PeerVPC where
         type Rs PeerVPC = PeerVPCResponse
@@ -87,13 +83,10 @@ instance ToQuery PeerVPC where
         toQuery = const mempty
 
 -- | /See:/ 'peerVPCResponse' smart constructor.
-data PeerVPCResponse =
-  PeerVPCResponse'
-    { _pvrsOperation      :: !(Maybe Operation)
-    , _pvrsResponseStatus :: !Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data PeerVPCResponse = PeerVPCResponse'{_pvrsOperation
+                                        :: !(Maybe Operation),
+                                        _pvrsResponseStatus :: !Int}
+                         deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'PeerVPCResponse' with the minimum fields required to make a request.
 --
@@ -105,10 +98,9 @@ data PeerVPCResponse =
 peerVPCResponse
     :: Int -- ^ 'pvrsResponseStatus'
     -> PeerVPCResponse
-peerVPCResponse pResponseStatus_ =
-  PeerVPCResponse'
-    {_pvrsOperation = Nothing, _pvrsResponseStatus = pResponseStatus_}
-
+peerVPCResponse pResponseStatus_
+  = PeerVPCResponse'{_pvrsOperation = Nothing,
+                     _pvrsResponseStatus = pResponseStatus_}
 
 -- | An array of key-value pairs containing information about the request operation.
 pvrsOperation :: Lens' PeerVPCResponse (Maybe Operation)

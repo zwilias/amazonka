@@ -40,20 +40,16 @@ module Network.AWS.OpsWorks.UpdateVolume
 
 import Network.AWS.Lens
 import Network.AWS.OpsWorks.Types
-import Network.AWS.OpsWorks.Types.Product
 import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 
 -- | /See:/ 'updateVolume' smart constructor.
-data UpdateVolume =
-  UpdateVolume'
-    { _uName       :: !(Maybe Text)
-    , _uMountPoint :: !(Maybe Text)
-    , _uVolumeId   :: !Text
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data UpdateVolume = UpdateVolume'{_uName ::
+                                  !(Maybe Text),
+                                  _uMountPoint :: !(Maybe Text),
+                                  _uVolumeId :: !Text}
+                      deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'UpdateVolume' with the minimum fields required to make a request.
 --
@@ -67,10 +63,9 @@ data UpdateVolume =
 updateVolume
     :: Text -- ^ 'uVolumeId'
     -> UpdateVolume
-updateVolume pVolumeId_ =
-  UpdateVolume'
-    {_uName = Nothing, _uMountPoint = Nothing, _uVolumeId = pVolumeId_}
-
+updateVolume pVolumeId_
+  = UpdateVolume'{_uName = Nothing,
+                  _uMountPoint = Nothing, _uVolumeId = pVolumeId_}
 
 -- | The new name.
 uName :: Lens' UpdateVolume (Maybe Text)
@@ -117,16 +112,13 @@ instance ToQuery UpdateVolume where
         toQuery = const mempty
 
 -- | /See:/ 'updateVolumeResponse' smart constructor.
-data UpdateVolumeResponse =
-  UpdateVolumeResponse'
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data UpdateVolumeResponse = UpdateVolumeResponse'
+                              deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'UpdateVolumeResponse' with the minimum fields required to make a request.
 --
 updateVolumeResponse
     :: UpdateVolumeResponse
 updateVolumeResponse = UpdateVolumeResponse'
-
 
 instance NFData UpdateVolumeResponse where

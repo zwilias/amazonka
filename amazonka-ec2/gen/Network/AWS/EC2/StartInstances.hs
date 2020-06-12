@@ -48,21 +48,17 @@ module Network.AWS.EC2.StartInstances
     ) where
 
 import Network.AWS.EC2.Types
-import Network.AWS.EC2.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 
 -- | /See:/ 'startInstances' smart constructor.
-data StartInstances =
-  StartInstances'
-    { _sAdditionalInfo :: !(Maybe Text)
-    , _sDryRun         :: !(Maybe Bool)
-    , _sInstanceIds    :: ![Text]
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data StartInstances = StartInstances'{_sAdditionalInfo
+                                      :: !(Maybe Text),
+                                      _sDryRun :: !(Maybe Bool),
+                                      _sInstanceIds :: ![Text]}
+                        deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'StartInstances' with the minimum fields required to make a request.
 --
@@ -75,10 +71,9 @@ data StartInstances =
 -- * 'sInstanceIds' - The IDs of the instances.
 startInstances
     :: StartInstances
-startInstances =
-  StartInstances'
-    {_sAdditionalInfo = Nothing, _sDryRun = Nothing, _sInstanceIds = mempty}
-
+startInstances
+  = StartInstances'{_sAdditionalInfo = Nothing,
+                    _sDryRun = Nothing, _sInstanceIds = mempty}
 
 -- | Reserved.
 sAdditionalInfo :: Lens' StartInstances (Maybe Text)
@@ -123,13 +118,14 @@ instance ToQuery StartInstances where
                toQueryList "InstanceId" _sInstanceIds]
 
 -- | /See:/ 'startInstancesResponse' smart constructor.
-data StartInstancesResponse =
-  StartInstancesResponse'
-    { _srsStartingInstances :: !(Maybe [InstanceStateChange])
-    , _srsResponseStatus    :: !Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data StartInstancesResponse = StartInstancesResponse'{_srsStartingInstances
+                                                      ::
+                                                      !(Maybe
+                                                          [InstanceStateChange]),
+                                                      _srsResponseStatus ::
+                                                      !Int}
+                                deriving (Eq, Read, Show, Data, Typeable,
+                                          Generic)
 
 -- | Creates a value of 'StartInstancesResponse' with the minimum fields required to make a request.
 --
@@ -141,10 +137,10 @@ data StartInstancesResponse =
 startInstancesResponse
     :: Int -- ^ 'srsResponseStatus'
     -> StartInstancesResponse
-startInstancesResponse pResponseStatus_ =
-  StartInstancesResponse'
-    {_srsStartingInstances = Nothing, _srsResponseStatus = pResponseStatus_}
-
+startInstancesResponse pResponseStatus_
+  = StartInstancesResponse'{_srsStartingInstances =
+                              Nothing,
+                            _srsResponseStatus = pResponseStatus_}
 
 -- | Information about the started instances.
 srsStartingInstances :: Lens' StartInstancesResponse [InstanceStateChange]

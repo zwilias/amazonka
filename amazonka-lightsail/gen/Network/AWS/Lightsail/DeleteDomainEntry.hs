@@ -40,19 +40,15 @@ module Network.AWS.Lightsail.DeleteDomainEntry
 
 import Network.AWS.Lens
 import Network.AWS.Lightsail.Types
-import Network.AWS.Lightsail.Types.Product
 import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 
 -- | /See:/ 'deleteDomainEntry' smart constructor.
-data DeleteDomainEntry =
-  DeleteDomainEntry'
-    { _ddeDomainName  :: !Text
-    , _ddeDomainEntry :: !DomainEntry
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data DeleteDomainEntry = DeleteDomainEntry'{_ddeDomainName
+                                            :: !Text,
+                                            _ddeDomainEntry :: !DomainEntry}
+                           deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'DeleteDomainEntry' with the minimum fields required to make a request.
 --
@@ -65,10 +61,9 @@ deleteDomainEntry
     :: Text -- ^ 'ddeDomainName'
     -> DomainEntry -- ^ 'ddeDomainEntry'
     -> DeleteDomainEntry
-deleteDomainEntry pDomainName_ pDomainEntry_ =
-  DeleteDomainEntry'
-    {_ddeDomainName = pDomainName_, _ddeDomainEntry = pDomainEntry_}
-
+deleteDomainEntry pDomainName_ pDomainEntry_
+  = DeleteDomainEntry'{_ddeDomainName = pDomainName_,
+                       _ddeDomainEntry = pDomainEntry_}
 
 -- | The name of the domain entry to delete.
 ddeDomainName :: Lens' DeleteDomainEntry Text
@@ -115,13 +110,13 @@ instance ToQuery DeleteDomainEntry where
         toQuery = const mempty
 
 -- | /See:/ 'deleteDomainEntryResponse' smart constructor.
-data DeleteDomainEntryResponse =
-  DeleteDomainEntryResponse'
-    { _ddersOperation      :: !(Maybe Operation)
-    , _ddersResponseStatus :: !Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data DeleteDomainEntryResponse = DeleteDomainEntryResponse'{_ddersOperation
+                                                            ::
+                                                            !(Maybe Operation),
+                                                            _ddersResponseStatus
+                                                            :: !Int}
+                                   deriving (Eq, Read, Show, Data, Typeable,
+                                             Generic)
 
 -- | Creates a value of 'DeleteDomainEntryResponse' with the minimum fields required to make a request.
 --
@@ -133,10 +128,10 @@ data DeleteDomainEntryResponse =
 deleteDomainEntryResponse
     :: Int -- ^ 'ddersResponseStatus'
     -> DeleteDomainEntryResponse
-deleteDomainEntryResponse pResponseStatus_ =
-  DeleteDomainEntryResponse'
-    {_ddersOperation = Nothing, _ddersResponseStatus = pResponseStatus_}
-
+deleteDomainEntryResponse pResponseStatus_
+  = DeleteDomainEntryResponse'{_ddersOperation =
+                                 Nothing,
+                               _ddersResponseStatus = pResponseStatus_}
 
 -- | An array of key-value pairs containing information about the results of your delete domain entry request.
 ddersOperation :: Lens' DeleteDomainEntryResponse (Maybe Operation)

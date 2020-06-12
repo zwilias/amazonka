@@ -46,25 +46,30 @@ module Network.AWS.Connect.StartOutboundVoiceContact
     ) where
 
 import Network.AWS.Connect.Types
-import Network.AWS.Connect.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 
 -- | /See:/ 'startOutboundVoiceContact' smart constructor.
-data StartOutboundVoiceContact =
-  StartOutboundVoiceContact'
-    { _sovcClientToken            :: !(Maybe Text)
-    , _sovcQueueId                :: !(Maybe Text)
-    , _sovcAttributes             :: !(Maybe (Map Text Text))
-    , _sovcSourcePhoneNumber      :: !(Maybe Text)
-    , _sovcDestinationPhoneNumber :: !Text
-    , _sovcContactFlowId          :: !Text
-    , _sovcInstanceId             :: !Text
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data StartOutboundVoiceContact = StartOutboundVoiceContact'{_sovcClientToken
+                                                            :: !(Maybe Text),
+                                                            _sovcQueueId ::
+                                                            !(Maybe Text),
+                                                            _sovcAttributes ::
+                                                            !(Maybe
+                                                                (Map Text
+                                                                   Text)),
+                                                            _sovcSourcePhoneNumber
+                                                            :: !(Maybe Text),
+                                                            _sovcDestinationPhoneNumber
+                                                            :: !Text,
+                                                            _sovcContactFlowId
+                                                            :: !Text,
+                                                            _sovcInstanceId ::
+                                                            !Text}
+                                   deriving (Eq, Read, Show, Data, Typeable,
+                                             Generic)
 
 -- | Creates a value of 'StartOutboundVoiceContact' with the minimum fields required to make a request.
 --
@@ -88,17 +93,17 @@ startOutboundVoiceContact
     -> Text -- ^ 'sovcContactFlowId'
     -> Text -- ^ 'sovcInstanceId'
     -> StartOutboundVoiceContact
-startOutboundVoiceContact pDestinationPhoneNumber_ pContactFlowId_ pInstanceId_ =
-  StartOutboundVoiceContact'
-    { _sovcClientToken = Nothing
-    , _sovcQueueId = Nothing
-    , _sovcAttributes = Nothing
-    , _sovcSourcePhoneNumber = Nothing
-    , _sovcDestinationPhoneNumber = pDestinationPhoneNumber_
-    , _sovcContactFlowId = pContactFlowId_
-    , _sovcInstanceId = pInstanceId_
-    }
-
+startOutboundVoiceContact pDestinationPhoneNumber_
+  pContactFlowId_ pInstanceId_
+  = StartOutboundVoiceContact'{_sovcClientToken =
+                                 Nothing,
+                               _sovcQueueId = Nothing,
+                               _sovcAttributes = Nothing,
+                               _sovcSourcePhoneNumber = Nothing,
+                               _sovcDestinationPhoneNumber =
+                                 pDestinationPhoneNumber_,
+                               _sovcContactFlowId = pContactFlowId_,
+                               _sovcInstanceId = pInstanceId_}
 
 -- | A unique, case-sensitive identifier that you provide to ensure the idempotency of the request. The token is valid for 7 days after creation. If a contact is already started, the contact ID is returned. If the contact is disconnected, a new contact is started.
 sovcClientToken :: Lens' StartOutboundVoiceContact (Maybe Text)
@@ -170,13 +175,15 @@ instance ToQuery StartOutboundVoiceContact where
         toQuery = const mempty
 
 -- | /See:/ 'startOutboundVoiceContactResponse' smart constructor.
-data StartOutboundVoiceContactResponse =
-  StartOutboundVoiceContactResponse'
-    { _sovcrsContactId      :: !(Maybe Text)
-    , _sovcrsResponseStatus :: !Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data StartOutboundVoiceContactResponse = StartOutboundVoiceContactResponse'{_sovcrsContactId
+                                                                            ::
+                                                                            !(Maybe
+                                                                                Text),
+                                                                            _sovcrsResponseStatus
+                                                                            ::
+                                                                            !Int}
+                                           deriving (Eq, Read, Show, Data,
+                                                     Typeable, Generic)
 
 -- | Creates a value of 'StartOutboundVoiceContactResponse' with the minimum fields required to make a request.
 --
@@ -188,10 +195,10 @@ data StartOutboundVoiceContactResponse =
 startOutboundVoiceContactResponse
     :: Int -- ^ 'sovcrsResponseStatus'
     -> StartOutboundVoiceContactResponse
-startOutboundVoiceContactResponse pResponseStatus_ =
-  StartOutboundVoiceContactResponse'
-    {_sovcrsContactId = Nothing, _sovcrsResponseStatus = pResponseStatus_}
-
+startOutboundVoiceContactResponse pResponseStatus_
+  = StartOutboundVoiceContactResponse'{_sovcrsContactId
+                                         = Nothing,
+                                       _sovcrsResponseStatus = pResponseStatus_}
 
 -- | The identifier of this contact within the Amazon Connect instance.
 sovcrsContactId :: Lens' StartOutboundVoiceContactResponse (Maybe Text)

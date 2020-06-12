@@ -40,21 +40,20 @@ module Network.AWS.AppStream.UpdateDirectoryConfig
     ) where
 
 import Network.AWS.AppStream.Types
-import Network.AWS.AppStream.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 
 -- | /See:/ 'updateDirectoryConfig' smart constructor.
-data UpdateDirectoryConfig =
-  UpdateDirectoryConfig'
-    { _udcServiceAccountCredentials :: !(Maybe ServiceAccountCredentials)
-    , _udcOrganizationalUnitDistinguishedNames :: !(Maybe [Text])
-    , _udcDirectoryName :: !Text
-    }
-  deriving (Eq, Show, Data, Typeable, Generic)
-
+data UpdateDirectoryConfig = UpdateDirectoryConfig'{_udcServiceAccountCredentials
+                                                    ::
+                                                    !(Maybe
+                                                        ServiceAccountCredentials),
+                                                    _udcOrganizationalUnitDistinguishedNames
+                                                    :: !(Maybe [Text]),
+                                                    _udcDirectoryName :: !Text}
+                               deriving (Eq, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'UpdateDirectoryConfig' with the minimum fields required to make a request.
 --
@@ -68,13 +67,11 @@ data UpdateDirectoryConfig =
 updateDirectoryConfig
     :: Text -- ^ 'udcDirectoryName'
     -> UpdateDirectoryConfig
-updateDirectoryConfig pDirectoryName_ =
-  UpdateDirectoryConfig'
-    { _udcServiceAccountCredentials = Nothing
-    , _udcOrganizationalUnitDistinguishedNames = Nothing
-    , _udcDirectoryName = pDirectoryName_
-    }
-
+updateDirectoryConfig pDirectoryName_
+  = UpdateDirectoryConfig'{_udcServiceAccountCredentials
+                             = Nothing,
+                           _udcOrganizationalUnitDistinguishedNames = Nothing,
+                           _udcDirectoryName = pDirectoryName_}
 
 -- | The credentials for the service account used by the fleet or image builder to connect to the directory.
 udcServiceAccountCredentials :: Lens' UpdateDirectoryConfig (Maybe ServiceAccountCredentials)
@@ -129,13 +126,14 @@ instance ToQuery UpdateDirectoryConfig where
         toQuery = const mempty
 
 -- | /See:/ 'updateDirectoryConfigResponse' smart constructor.
-data UpdateDirectoryConfigResponse =
-  UpdateDirectoryConfigResponse'
-    { _udcrsDirectoryConfig :: !(Maybe DirectoryConfig)
-    , _udcrsResponseStatus  :: !Int
-    }
-  deriving (Eq, Show, Data, Typeable, Generic)
-
+data UpdateDirectoryConfigResponse = UpdateDirectoryConfigResponse'{_udcrsDirectoryConfig
+                                                                    ::
+                                                                    !(Maybe
+                                                                        DirectoryConfig),
+                                                                    _udcrsResponseStatus
+                                                                    :: !Int}
+                                       deriving (Eq, Show, Data, Typeable,
+                                                 Generic)
 
 -- | Creates a value of 'UpdateDirectoryConfigResponse' with the minimum fields required to make a request.
 --
@@ -147,10 +145,10 @@ data UpdateDirectoryConfigResponse =
 updateDirectoryConfigResponse
     :: Int -- ^ 'udcrsResponseStatus'
     -> UpdateDirectoryConfigResponse
-updateDirectoryConfigResponse pResponseStatus_ =
-  UpdateDirectoryConfigResponse'
-    {_udcrsDirectoryConfig = Nothing, _udcrsResponseStatus = pResponseStatus_}
-
+updateDirectoryConfigResponse pResponseStatus_
+  = UpdateDirectoryConfigResponse'{_udcrsDirectoryConfig
+                                     = Nothing,
+                                   _udcrsResponseStatus = pResponseStatus_}
 
 -- | Information about the Directory Config object.
 udcrsDirectoryConfig :: Lens' UpdateDirectoryConfigResponse (Maybe DirectoryConfig)

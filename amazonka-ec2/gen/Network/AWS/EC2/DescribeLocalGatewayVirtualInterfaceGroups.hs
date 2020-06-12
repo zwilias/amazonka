@@ -45,7 +45,6 @@ module Network.AWS.EC2.DescribeLocalGatewayVirtualInterfaceGroups
     ) where
 
 import Network.AWS.EC2.Types
-import Network.AWS.EC2.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Pager
 import Network.AWS.Prelude
@@ -53,16 +52,29 @@ import Network.AWS.Request
 import Network.AWS.Response
 
 -- | /See:/ 'describeLocalGatewayVirtualInterfaceGroups' smart constructor.
-data DescribeLocalGatewayVirtualInterfaceGroups =
-  DescribeLocalGatewayVirtualInterfaceGroups'
-    { _dlgvigFilters                              :: !(Maybe [Filter])
-    , _dlgvigNextToken                            :: !(Maybe Text)
-    , _dlgvigLocalGatewayVirtualInterfaceGroupIds :: !(Maybe [Text])
-    , _dlgvigDryRun                               :: !(Maybe Bool)
-    , _dlgvigMaxResults                           :: !(Maybe Nat)
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data DescribeLocalGatewayVirtualInterfaceGroups = DescribeLocalGatewayVirtualInterfaceGroups'{_dlgvigFilters
+                                                                                              ::
+                                                                                              !(Maybe
+                                                                                                  [Filter]),
+                                                                                              _dlgvigNextToken
+                                                                                              ::
+                                                                                              !(Maybe
+                                                                                                  Text),
+                                                                                              _dlgvigLocalGatewayVirtualInterfaceGroupIds
+                                                                                              ::
+                                                                                              !(Maybe
+                                                                                                  [Text]),
+                                                                                              _dlgvigDryRun
+                                                                                              ::
+                                                                                              !(Maybe
+                                                                                                  Bool),
+                                                                                              _dlgvigMaxResults
+                                                                                              ::
+                                                                                              !(Maybe
+                                                                                                  Nat)}
+                                                    deriving (Eq, Read, Show,
+                                                              Data, Typeable,
+                                                              Generic)
 
 -- | Creates a value of 'DescribeLocalGatewayVirtualInterfaceGroups' with the minimum fields required to make a request.
 --
@@ -79,15 +91,14 @@ data DescribeLocalGatewayVirtualInterfaceGroups =
 -- * 'dlgvigMaxResults' - The maximum number of results to return with a single call. To retrieve the remaining results, make another call with the returned @nextToken@ value.
 describeLocalGatewayVirtualInterfaceGroups
     :: DescribeLocalGatewayVirtualInterfaceGroups
-describeLocalGatewayVirtualInterfaceGroups =
-  DescribeLocalGatewayVirtualInterfaceGroups'
-    { _dlgvigFilters = Nothing
-    , _dlgvigNextToken = Nothing
-    , _dlgvigLocalGatewayVirtualInterfaceGroupIds = Nothing
-    , _dlgvigDryRun = Nothing
-    , _dlgvigMaxResults = Nothing
-    }
-
+describeLocalGatewayVirtualInterfaceGroups
+  = DescribeLocalGatewayVirtualInterfaceGroups'{_dlgvigFilters
+                                                  = Nothing,
+                                                _dlgvigNextToken = Nothing,
+                                                _dlgvigLocalGatewayVirtualInterfaceGroupIds
+                                                  = Nothing,
+                                                _dlgvigDryRun = Nothing,
+                                                _dlgvigMaxResults = Nothing}
 
 -- | One or more filters.
 dlgvigFilters :: Lens' DescribeLocalGatewayVirtualInterfaceGroups [Filter]
@@ -176,14 +187,22 @@ instance ToQuery
                "MaxResults" =: _dlgvigMaxResults]
 
 -- | /See:/ 'describeLocalGatewayVirtualInterfaceGroupsResponse' smart constructor.
-data DescribeLocalGatewayVirtualInterfaceGroupsResponse =
-  DescribeLocalGatewayVirtualInterfaceGroupsResponse'
-    { _dlgvigrsNextToken :: !(Maybe Text)
-    , _dlgvigrsLocalGatewayVirtualInterfaceGroups :: !(Maybe [LocalGatewayVirtualInterfaceGroup])
-    , _dlgvigrsResponseStatus :: !Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data DescribeLocalGatewayVirtualInterfaceGroupsResponse = DescribeLocalGatewayVirtualInterfaceGroupsResponse'{_dlgvigrsNextToken
+                                                                                                              ::
+                                                                                                              !(Maybe
+                                                                                                                  Text),
+                                                                                                              _dlgvigrsLocalGatewayVirtualInterfaceGroups
+                                                                                                              ::
+                                                                                                              !(Maybe
+                                                                                                                  [LocalGatewayVirtualInterfaceGroup]),
+                                                                                                              _dlgvigrsResponseStatus
+                                                                                                              ::
+                                                                                                              !Int}
+                                                            deriving (Eq, Read,
+                                                                      Show,
+                                                                      Data,
+                                                                      Typeable,
+                                                                      Generic)
 
 -- | Creates a value of 'DescribeLocalGatewayVirtualInterfaceGroupsResponse' with the minimum fields required to make a request.
 --
@@ -197,13 +216,14 @@ data DescribeLocalGatewayVirtualInterfaceGroupsResponse =
 describeLocalGatewayVirtualInterfaceGroupsResponse
     :: Int -- ^ 'dlgvigrsResponseStatus'
     -> DescribeLocalGatewayVirtualInterfaceGroupsResponse
-describeLocalGatewayVirtualInterfaceGroupsResponse pResponseStatus_ =
-  DescribeLocalGatewayVirtualInterfaceGroupsResponse'
-    { _dlgvigrsNextToken = Nothing
-    , _dlgvigrsLocalGatewayVirtualInterfaceGroups = Nothing
-    , _dlgvigrsResponseStatus = pResponseStatus_
-    }
-
+describeLocalGatewayVirtualInterfaceGroupsResponse
+  pResponseStatus_
+  = DescribeLocalGatewayVirtualInterfaceGroupsResponse'{_dlgvigrsNextToken
+                                                          = Nothing,
+                                                        _dlgvigrsLocalGatewayVirtualInterfaceGroups
+                                                          = Nothing,
+                                                        _dlgvigrsResponseStatus
+                                                          = pResponseStatus_}
 
 -- | The token to use to retrieve the next page of results. This value is @null@ when there are no more results to return.
 dlgvigrsNextToken :: Lens' DescribeLocalGatewayVirtualInterfaceGroupsResponse (Maybe Text)

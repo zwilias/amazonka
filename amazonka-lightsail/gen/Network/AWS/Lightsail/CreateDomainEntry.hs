@@ -40,19 +40,15 @@ module Network.AWS.Lightsail.CreateDomainEntry
 
 import Network.AWS.Lens
 import Network.AWS.Lightsail.Types
-import Network.AWS.Lightsail.Types.Product
 import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 
 -- | /See:/ 'createDomainEntry' smart constructor.
-data CreateDomainEntry =
-  CreateDomainEntry'
-    { _cdeDomainName  :: !Text
-    , _cdeDomainEntry :: !DomainEntry
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data CreateDomainEntry = CreateDomainEntry'{_cdeDomainName
+                                            :: !Text,
+                                            _cdeDomainEntry :: !DomainEntry}
+                           deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'CreateDomainEntry' with the minimum fields required to make a request.
 --
@@ -65,10 +61,9 @@ createDomainEntry
     :: Text -- ^ 'cdeDomainName'
     -> DomainEntry -- ^ 'cdeDomainEntry'
     -> CreateDomainEntry
-createDomainEntry pDomainName_ pDomainEntry_ =
-  CreateDomainEntry'
-    {_cdeDomainName = pDomainName_, _cdeDomainEntry = pDomainEntry_}
-
+createDomainEntry pDomainName_ pDomainEntry_
+  = CreateDomainEntry'{_cdeDomainName = pDomainName_,
+                       _cdeDomainEntry = pDomainEntry_}
 
 -- | The domain name (e.g., @example.com@ ) for which you want to create the domain entry.
 cdeDomainName :: Lens' CreateDomainEntry Text
@@ -115,13 +110,13 @@ instance ToQuery CreateDomainEntry where
         toQuery = const mempty
 
 -- | /See:/ 'createDomainEntryResponse' smart constructor.
-data CreateDomainEntryResponse =
-  CreateDomainEntryResponse'
-    { _cdersOperation      :: !(Maybe Operation)
-    , _cdersResponseStatus :: !Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data CreateDomainEntryResponse = CreateDomainEntryResponse'{_cdersOperation
+                                                            ::
+                                                            !(Maybe Operation),
+                                                            _cdersResponseStatus
+                                                            :: !Int}
+                                   deriving (Eq, Read, Show, Data, Typeable,
+                                             Generic)
 
 -- | Creates a value of 'CreateDomainEntryResponse' with the minimum fields required to make a request.
 --
@@ -133,10 +128,10 @@ data CreateDomainEntryResponse =
 createDomainEntryResponse
     :: Int -- ^ 'cdersResponseStatus'
     -> CreateDomainEntryResponse
-createDomainEntryResponse pResponseStatus_ =
-  CreateDomainEntryResponse'
-    {_cdersOperation = Nothing, _cdersResponseStatus = pResponseStatus_}
-
+createDomainEntryResponse pResponseStatus_
+  = CreateDomainEntryResponse'{_cdersOperation =
+                                 Nothing,
+                               _cdersResponseStatus = pResponseStatus_}
 
 -- | An array of key-value pairs containing information about the operation.
 cdersOperation :: Lens' CreateDomainEntryResponse (Maybe Operation)

@@ -18,10 +18,10 @@
 -- Stability   : auto-generated
 -- Portability : non-portable (GHC extensions)
 --
--- Creates a budget and, if included, notifications and subscribers.
+-- Creates a budget and, if included, notifications and subscribers. 
 --
 --
--- /Important:/ Only one of @BudgetLimit@ or @PlannedBudgetLimits@ can be present in the syntax at one time. Use the syntax that matches your case. The Request Syntax section shows the @BudgetLimit@ syntax. For @PlannedBudgetLimits@ , see the <https://docs.aws.amazon.com/aws-cost-management/latest/APIReference/API_budgets_CreateBudget.html#API_CreateBudget_Examples Examples> section.
+-- /Important:/ Only one of @BudgetLimit@ or @PlannedBudgetLimits@ can be present in the syntax at one time. Use the syntax that matches your case. The Request Syntax section shows the @BudgetLimit@ syntax. For @PlannedBudgetLimits@ , see the <https://docs.aws.amazon.com/aws-cost-management/latest/APIReference/API_budgets_CreateBudget.html#API_CreateBudget_Examples Examples> section. 
 --
 module Network.AWS.Budgets.CreateBudget
     (
@@ -41,25 +41,20 @@ module Network.AWS.Budgets.CreateBudget
     ) where
 
 import Network.AWS.Budgets.Types
-import Network.AWS.Budgets.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 
--- | Request of CreateBudget
+-- | Request of CreateBudget 
 --
 --
 --
 -- /See:/ 'createBudget' smart constructor.
-data CreateBudget =
-  CreateBudget'
-    { _cbNotificationsWithSubscribers :: !(Maybe [NotificationWithSubscribers])
-    , _cbAccountId                    :: !Text
-    , _cbBudget                       :: !Budget
-    }
-  deriving (Eq, Show, Data, Typeable, Generic)
-
+data CreateBudget = CreateBudget'{_cbNotificationsWithSubscribers
+                                  :: !(Maybe [NotificationWithSubscribers]),
+                                  _cbAccountId :: !Text, _cbBudget :: !Budget}
+                      deriving (Eq, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'CreateBudget' with the minimum fields required to make a request.
 --
@@ -74,13 +69,10 @@ createBudget
     :: Text -- ^ 'cbAccountId'
     -> Budget -- ^ 'cbBudget'
     -> CreateBudget
-createBudget pAccountId_ pBudget_ =
-  CreateBudget'
-    { _cbNotificationsWithSubscribers = Nothing
-    , _cbAccountId = pAccountId_
-    , _cbBudget = pBudget_
-    }
-
+createBudget pAccountId_ pBudget_
+  = CreateBudget'{_cbNotificationsWithSubscribers =
+                    Nothing,
+                  _cbAccountId = pAccountId_, _cbBudget = pBudget_}
 
 -- | A notification that you want to associate with a budget. A budget can have up to five notifications, and each notification can have one SNS subscriber and up to 10 email subscribers. If you include notifications and subscribers in your @CreateBudget@ call, AWS creates the notifications and subscribers for you.
 cbNotificationsWithSubscribers :: Lens' CreateBudget [NotificationWithSubscribers]
@@ -131,17 +123,15 @@ instance ToPath CreateBudget where
 instance ToQuery CreateBudget where
         toQuery = const mempty
 
--- | Response of CreateBudget
+-- | Response of CreateBudget 
 --
 --
 --
 -- /See:/ 'createBudgetResponse' smart constructor.
-newtype CreateBudgetResponse =
-  CreateBudgetResponse'
-    { _cbrsResponseStatus :: Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+newtype CreateBudgetResponse = CreateBudgetResponse'{_cbrsResponseStatus
+                                                     :: Int}
+                                 deriving (Eq, Read, Show, Data, Typeable,
+                                           Generic)
 
 -- | Creates a value of 'CreateBudgetResponse' with the minimum fields required to make a request.
 --
@@ -151,9 +141,9 @@ newtype CreateBudgetResponse =
 createBudgetResponse
     :: Int -- ^ 'cbrsResponseStatus'
     -> CreateBudgetResponse
-createBudgetResponse pResponseStatus_ =
-  CreateBudgetResponse' {_cbrsResponseStatus = pResponseStatus_}
-
+createBudgetResponse pResponseStatus_
+  = CreateBudgetResponse'{_cbrsResponseStatus =
+                            pResponseStatus_}
 
 -- | -- | The response status code.
 cbrsResponseStatus :: Lens' CreateBudgetResponse Int

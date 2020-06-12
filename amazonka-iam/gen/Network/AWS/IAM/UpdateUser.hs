@@ -39,21 +39,16 @@ module Network.AWS.IAM.UpdateUser
     ) where
 
 import Network.AWS.IAM.Types
-import Network.AWS.IAM.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 
 -- | /See:/ 'updateUser' smart constructor.
-data UpdateUser =
-  UpdateUser'
-    { _uuNewUserName :: !(Maybe Text)
-    , _uuNewPath     :: !(Maybe Text)
-    , _uuUserName    :: !Text
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data UpdateUser = UpdateUser'{_uuNewUserName ::
+                              !(Maybe Text),
+                              _uuNewPath :: !(Maybe Text), _uuUserName :: !Text}
+                    deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'UpdateUser' with the minimum fields required to make a request.
 --
@@ -67,10 +62,9 @@ data UpdateUser =
 updateUser
     :: Text -- ^ 'uuUserName'
     -> UpdateUser
-updateUser pUserName_ =
-  UpdateUser'
-    {_uuNewUserName = Nothing, _uuNewPath = Nothing, _uuUserName = pUserName_}
-
+updateUser pUserName_
+  = UpdateUser'{_uuNewUserName = Nothing,
+                _uuNewPath = Nothing, _uuUserName = pUserName_}
 
 -- | New name for the user. Include this parameter only if you're changing the user's name. This parameter allows (per its <http://wikipedia.org/wiki/regex regex pattern> ) a string of characters consisting of upper and lowercase alphanumeric characters with no spaces. You can also include any of the following characters: _+=,.@-
 uuNewUserName :: Lens' UpdateUser (Maybe Text)
@@ -108,16 +102,13 @@ instance ToQuery UpdateUser where
                "NewPath" =: _uuNewPath, "UserName" =: _uuUserName]
 
 -- | /See:/ 'updateUserResponse' smart constructor.
-data UpdateUserResponse =
-  UpdateUserResponse'
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data UpdateUserResponse = UpdateUserResponse'
+                            deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'UpdateUserResponse' with the minimum fields required to make a request.
 --
 updateUserResponse
     :: UpdateUserResponse
 updateUserResponse = UpdateUserResponse'
-
 
 instance NFData UpdateUserResponse where

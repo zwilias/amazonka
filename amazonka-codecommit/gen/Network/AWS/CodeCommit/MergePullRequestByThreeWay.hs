@@ -47,28 +47,40 @@ module Network.AWS.CodeCommit.MergePullRequestByThreeWay
     ) where
 
 import Network.AWS.CodeCommit.Types
-import Network.AWS.CodeCommit.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 
 -- | /See:/ 'mergePullRequestByThreeWay' smart constructor.
-data MergePullRequestByThreeWay =
-  MergePullRequestByThreeWay'
-    { _mprbtwEmail :: !(Maybe Text)
-    , _mprbtwAuthorName :: !(Maybe Text)
-    , _mprbtwConflictDetailLevel :: !(Maybe ConflictDetailLevelTypeEnum)
-    , _mprbtwCommitMessage :: !(Maybe Text)
-    , _mprbtwConflictResolution :: !(Maybe ConflictResolution)
-    , _mprbtwConflictResolutionStrategy :: !(Maybe ConflictResolutionStrategyTypeEnum)
-    , _mprbtwKeepEmptyFolders :: !(Maybe Bool)
-    , _mprbtwSourceCommitId :: !(Maybe Text)
-    , _mprbtwPullRequestId :: !Text
-    , _mprbtwRepositoryName :: !Text
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data MergePullRequestByThreeWay = MergePullRequestByThreeWay'{_mprbtwEmail
+                                                              :: !(Maybe Text),
+                                                              _mprbtwAuthorName
+                                                              :: !(Maybe Text),
+                                                              _mprbtwConflictDetailLevel
+                                                              ::
+                                                              !(Maybe
+                                                                  ConflictDetailLevelTypeEnum),
+                                                              _mprbtwCommitMessage
+                                                              :: !(Maybe Text),
+                                                              _mprbtwConflictResolution
+                                                              ::
+                                                              !(Maybe
+                                                                  ConflictResolution),
+                                                              _mprbtwConflictResolutionStrategy
+                                                              ::
+                                                              !(Maybe
+                                                                  ConflictResolutionStrategyTypeEnum),
+                                                              _mprbtwKeepEmptyFolders
+                                                              :: !(Maybe Bool),
+                                                              _mprbtwSourceCommitId
+                                                              :: !(Maybe Text),
+                                                              _mprbtwPullRequestId
+                                                              :: !Text,
+                                                              _mprbtwRepositoryName
+                                                              :: !Text}
+                                    deriving (Eq, Read, Show, Data, Typeable,
+                                              Generic)
 
 -- | Creates a value of 'MergePullRequestByThreeWay' with the minimum fields required to make a request.
 --
@@ -97,20 +109,18 @@ mergePullRequestByThreeWay
     :: Text -- ^ 'mprbtwPullRequestId'
     -> Text -- ^ 'mprbtwRepositoryName'
     -> MergePullRequestByThreeWay
-mergePullRequestByThreeWay pPullRequestId_ pRepositoryName_ =
-  MergePullRequestByThreeWay'
-    { _mprbtwEmail = Nothing
-    , _mprbtwAuthorName = Nothing
-    , _mprbtwConflictDetailLevel = Nothing
-    , _mprbtwCommitMessage = Nothing
-    , _mprbtwConflictResolution = Nothing
-    , _mprbtwConflictResolutionStrategy = Nothing
-    , _mprbtwKeepEmptyFolders = Nothing
-    , _mprbtwSourceCommitId = Nothing
-    , _mprbtwPullRequestId = pPullRequestId_
-    , _mprbtwRepositoryName = pRepositoryName_
-    }
-
+mergePullRequestByThreeWay pPullRequestId_
+  pRepositoryName_
+  = MergePullRequestByThreeWay'{_mprbtwEmail = Nothing,
+                                _mprbtwAuthorName = Nothing,
+                                _mprbtwConflictDetailLevel = Nothing,
+                                _mprbtwCommitMessage = Nothing,
+                                _mprbtwConflictResolution = Nothing,
+                                _mprbtwConflictResolutionStrategy = Nothing,
+                                _mprbtwKeepEmptyFolders = Nothing,
+                                _mprbtwSourceCommitId = Nothing,
+                                _mprbtwPullRequestId = pPullRequestId_,
+                                _mprbtwRepositoryName = pRepositoryName_}
 
 -- | The email address of the person merging the branches. This information is used in the commit information for the merge.
 mprbtwEmail :: Lens' MergePullRequestByThreeWay (Maybe Text)
@@ -201,13 +211,15 @@ instance ToQuery MergePullRequestByThreeWay where
         toQuery = const mempty
 
 -- | /See:/ 'mergePullRequestByThreeWayResponse' smart constructor.
-data MergePullRequestByThreeWayResponse =
-  MergePullRequestByThreeWayResponse'
-    { _mprbtwrsPullRequest    :: !(Maybe PullRequest)
-    , _mprbtwrsResponseStatus :: !Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data MergePullRequestByThreeWayResponse = MergePullRequestByThreeWayResponse'{_mprbtwrsPullRequest
+                                                                              ::
+                                                                              !(Maybe
+                                                                                  PullRequest),
+                                                                              _mprbtwrsResponseStatus
+                                                                              ::
+                                                                              !Int}
+                                            deriving (Eq, Read, Show, Data,
+                                                      Typeable, Generic)
 
 -- | Creates a value of 'MergePullRequestByThreeWayResponse' with the minimum fields required to make a request.
 --
@@ -219,10 +231,11 @@ data MergePullRequestByThreeWayResponse =
 mergePullRequestByThreeWayResponse
     :: Int -- ^ 'mprbtwrsResponseStatus'
     -> MergePullRequestByThreeWayResponse
-mergePullRequestByThreeWayResponse pResponseStatus_ =
-  MergePullRequestByThreeWayResponse'
-    {_mprbtwrsPullRequest = Nothing, _mprbtwrsResponseStatus = pResponseStatus_}
-
+mergePullRequestByThreeWayResponse pResponseStatus_
+  = MergePullRequestByThreeWayResponse'{_mprbtwrsPullRequest
+                                          = Nothing,
+                                        _mprbtwrsResponseStatus =
+                                          pResponseStatus_}
 
 -- | Undocumented member.
 mprbtwrsPullRequest :: Lens' MergePullRequestByThreeWayResponse (Maybe PullRequest)

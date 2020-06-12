@@ -23,7 +23,7 @@
 --
 -- A Traffic Mirror session actively copies packets from a Traffic Mirror source to a Traffic Mirror target. Create a filter, and then assign it to the session to define a subset of the traffic to mirror, for example all TCP traffic.
 --
--- The Traffic Mirror source and the Traffic Mirror target (monitoring appliances) can be in the same VPC, or in a different VPC connected via VPC peering or a transit gateway.
+-- The Traffic Mirror source and the Traffic Mirror target (monitoring appliances) can be in the same VPC, or in a different VPC connected via VPC peering or a transit gateway. 
 --
 -- By default, no traffic is mirrored. Use <https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_CreateTrafficMirrorFilter.htm CreateTrafficMirrorFilter> to create filter rules that specify the traffic to mirror.
 --
@@ -54,28 +54,36 @@ module Network.AWS.EC2.CreateTrafficMirrorSession
     ) where
 
 import Network.AWS.EC2.Types
-import Network.AWS.EC2.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 
 -- | /See:/ 'createTrafficMirrorSession' smart constructor.
-data CreateTrafficMirrorSession =
-  CreateTrafficMirrorSession'
-    { _ctmsClientToken           :: !(Maybe Text)
-    , _ctmsPacketLength          :: !(Maybe Int)
-    , _ctmsTagSpecifications     :: !(Maybe [TagSpecification])
-    , _ctmsVirtualNetworkId      :: !(Maybe Int)
-    , _ctmsDescription           :: !(Maybe Text)
-    , _ctmsDryRun                :: !(Maybe Bool)
-    , _ctmsNetworkInterfaceId    :: !Text
-    , _ctmsTrafficMirrorTargetId :: !Text
-    , _ctmsTrafficMirrorFilterId :: !Text
-    , _ctmsSessionNumber         :: !Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data CreateTrafficMirrorSession = CreateTrafficMirrorSession'{_ctmsClientToken
+                                                              :: !(Maybe Text),
+                                                              _ctmsPacketLength
+                                                              :: !(Maybe Int),
+                                                              _ctmsTagSpecifications
+                                                              ::
+                                                              !(Maybe
+                                                                  [TagSpecification]),
+                                                              _ctmsVirtualNetworkId
+                                                              :: !(Maybe Int),
+                                                              _ctmsDescription
+                                                              :: !(Maybe Text),
+                                                              _ctmsDryRun ::
+                                                              !(Maybe Bool),
+                                                              _ctmsNetworkInterfaceId
+                                                              :: !Text,
+                                                              _ctmsTrafficMirrorTargetId
+                                                              :: !Text,
+                                                              _ctmsTrafficMirrorFilterId
+                                                              :: !Text,
+                                                              _ctmsSessionNumber
+                                                              :: !Int}
+                                    deriving (Eq, Read, Show, Data, Typeable,
+                                              Generic)
 
 -- | Creates a value of 'CreateTrafficMirrorSession' with the minimum fields required to make a request.
 --
@@ -106,20 +114,22 @@ createTrafficMirrorSession
     -> Text -- ^ 'ctmsTrafficMirrorFilterId'
     -> Int -- ^ 'ctmsSessionNumber'
     -> CreateTrafficMirrorSession
-createTrafficMirrorSession pNetworkInterfaceId_ pTrafficMirrorTargetId_ pTrafficMirrorFilterId_ pSessionNumber_ =
-  CreateTrafficMirrorSession'
-    { _ctmsClientToken = Nothing
-    , _ctmsPacketLength = Nothing
-    , _ctmsTagSpecifications = Nothing
-    , _ctmsVirtualNetworkId = Nothing
-    , _ctmsDescription = Nothing
-    , _ctmsDryRun = Nothing
-    , _ctmsNetworkInterfaceId = pNetworkInterfaceId_
-    , _ctmsTrafficMirrorTargetId = pTrafficMirrorTargetId_
-    , _ctmsTrafficMirrorFilterId = pTrafficMirrorFilterId_
-    , _ctmsSessionNumber = pSessionNumber_
-    }
-
+createTrafficMirrorSession pNetworkInterfaceId_
+  pTrafficMirrorTargetId_ pTrafficMirrorFilterId_
+  pSessionNumber_
+  = CreateTrafficMirrorSession'{_ctmsClientToken =
+                                  Nothing,
+                                _ctmsPacketLength = Nothing,
+                                _ctmsTagSpecifications = Nothing,
+                                _ctmsVirtualNetworkId = Nothing,
+                                _ctmsDescription = Nothing,
+                                _ctmsDryRun = Nothing,
+                                _ctmsNetworkInterfaceId = pNetworkInterfaceId_,
+                                _ctmsTrafficMirrorTargetId =
+                                  pTrafficMirrorTargetId_,
+                                _ctmsTrafficMirrorFilterId =
+                                  pTrafficMirrorFilterId_,
+                                _ctmsSessionNumber = pSessionNumber_}
 
 -- | Unique, case-sensitive identifier that you provide to ensure the idempotency of the request. For more information, see <https://docs.aws.amazon.com/AWSEC2/latest/APIReference/Run_Instance_Idempotency.html How to Ensure Idempotency> .
 ctmsClientToken :: Lens' CreateTrafficMirrorSession (Maybe Text)
@@ -205,14 +215,19 @@ instance ToQuery CreateTrafficMirrorSession where
                "SessionNumber" =: _ctmsSessionNumber]
 
 -- | /See:/ 'createTrafficMirrorSessionResponse' smart constructor.
-data CreateTrafficMirrorSessionResponse =
-  CreateTrafficMirrorSessionResponse'
-    { _ctmsrsTrafficMirrorSession :: !(Maybe TrafficMirrorSession)
-    , _ctmsrsClientToken          :: !(Maybe Text)
-    , _ctmsrsResponseStatus       :: !Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data CreateTrafficMirrorSessionResponse = CreateTrafficMirrorSessionResponse'{_ctmsrsTrafficMirrorSession
+                                                                              ::
+                                                                              !(Maybe
+                                                                                  TrafficMirrorSession),
+                                                                              _ctmsrsClientToken
+                                                                              ::
+                                                                              !(Maybe
+                                                                                  Text),
+                                                                              _ctmsrsResponseStatus
+                                                                              ::
+                                                                              !Int}
+                                            deriving (Eq, Read, Show, Data,
+                                                      Typeable, Generic)
 
 -- | Creates a value of 'CreateTrafficMirrorSessionResponse' with the minimum fields required to make a request.
 --
@@ -226,13 +241,12 @@ data CreateTrafficMirrorSessionResponse =
 createTrafficMirrorSessionResponse
     :: Int -- ^ 'ctmsrsResponseStatus'
     -> CreateTrafficMirrorSessionResponse
-createTrafficMirrorSessionResponse pResponseStatus_ =
-  CreateTrafficMirrorSessionResponse'
-    { _ctmsrsTrafficMirrorSession = Nothing
-    , _ctmsrsClientToken = Nothing
-    , _ctmsrsResponseStatus = pResponseStatus_
-    }
-
+createTrafficMirrorSessionResponse pResponseStatus_
+  = CreateTrafficMirrorSessionResponse'{_ctmsrsTrafficMirrorSession
+                                          = Nothing,
+                                        _ctmsrsClientToken = Nothing,
+                                        _ctmsrsResponseStatus =
+                                          pResponseStatus_}
 
 -- | Information about the Traffic Mirror session.
 ctmsrsTrafficMirrorSession :: Lens' CreateTrafficMirrorSessionResponse (Maybe TrafficMirrorSession)

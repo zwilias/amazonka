@@ -43,17 +43,16 @@ import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 import Network.AWS.SageMaker.Types
-import Network.AWS.SageMaker.Types.Product
 
 -- | /See:/ 'updateNotebookInstance' smart constructor.
-data UpdateNotebookInstance =
-  UpdateNotebookInstance'
-    { _uniInstanceType         :: !(Maybe InstanceType)
-    , _uniRoleARN              :: !(Maybe Text)
-    , _uniNotebookInstanceName :: !Text
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data UpdateNotebookInstance = UpdateNotebookInstance'{_uniInstanceType
+                                                      :: !(Maybe InstanceType),
+                                                      _uniRoleARN ::
+                                                      !(Maybe Text),
+                                                      _uniNotebookInstanceName
+                                                      :: !Text}
+                                deriving (Eq, Read, Show, Data, Typeable,
+                                          Generic)
 
 -- | Creates a value of 'UpdateNotebookInstance' with the minimum fields required to make a request.
 --
@@ -67,13 +66,10 @@ data UpdateNotebookInstance =
 updateNotebookInstance
     :: Text -- ^ 'uniNotebookInstanceName'
     -> UpdateNotebookInstance
-updateNotebookInstance pNotebookInstanceName_ =
-  UpdateNotebookInstance'
-    { _uniInstanceType = Nothing
-    , _uniRoleARN = Nothing
-    , _uniNotebookInstanceName = pNotebookInstanceName_
-    }
-
+updateNotebookInstance pNotebookInstanceName_
+  = UpdateNotebookInstance'{_uniInstanceType = Nothing,
+                            _uniRoleARN = Nothing,
+                            _uniNotebookInstanceName = pNotebookInstanceName_}
 
 -- | The Amazon ML compute instance type.
 uniInstanceType :: Lens' UpdateNotebookInstance (Maybe InstanceType)
@@ -127,12 +123,10 @@ instance ToQuery UpdateNotebookInstance where
         toQuery = const mempty
 
 -- | /See:/ 'updateNotebookInstanceResponse' smart constructor.
-newtype UpdateNotebookInstanceResponse =
-  UpdateNotebookInstanceResponse'
-    { _unirsResponseStatus :: Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+newtype UpdateNotebookInstanceResponse = UpdateNotebookInstanceResponse'{_unirsResponseStatus
+                                                                         :: Int}
+                                           deriving (Eq, Read, Show, Data,
+                                                     Typeable, Generic)
 
 -- | Creates a value of 'UpdateNotebookInstanceResponse' with the minimum fields required to make a request.
 --
@@ -142,9 +136,9 @@ newtype UpdateNotebookInstanceResponse =
 updateNotebookInstanceResponse
     :: Int -- ^ 'unirsResponseStatus'
     -> UpdateNotebookInstanceResponse
-updateNotebookInstanceResponse pResponseStatus_ =
-  UpdateNotebookInstanceResponse' {_unirsResponseStatus = pResponseStatus_}
-
+updateNotebookInstanceResponse pResponseStatus_
+  = UpdateNotebookInstanceResponse'{_unirsResponseStatus
+                                      = pResponseStatus_}
 
 -- | -- | The response status code.
 unirsResponseStatus :: Lens' UpdateNotebookInstanceResponse Int

@@ -50,19 +50,16 @@ import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 import Network.AWS.StorageGateway.Types
-import Network.AWS.StorageGateway.Types.Product
 
 -- | A JSON object containing the ID of the gateway.
 --
 --
 --
 -- /See:/ 'describeGatewayInformation' smart constructor.
-newtype DescribeGatewayInformation =
-  DescribeGatewayInformation'
-    { _dgiGatewayARN :: Text
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+newtype DescribeGatewayInformation = DescribeGatewayInformation'{_dgiGatewayARN
+                                                                 :: Text}
+                                       deriving (Eq, Read, Show, Data, Typeable,
+                                                 Generic)
 
 -- | Creates a value of 'DescribeGatewayInformation' with the minimum fields required to make a request.
 --
@@ -72,9 +69,9 @@ newtype DescribeGatewayInformation =
 describeGatewayInformation
     :: Text -- ^ 'dgiGatewayARN'
     -> DescribeGatewayInformation
-describeGatewayInformation pGatewayARN_ =
-  DescribeGatewayInformation' {_dgiGatewayARN = pGatewayARN_}
-
+describeGatewayInformation pGatewayARN_
+  = DescribeGatewayInformation'{_dgiGatewayARN =
+                                  pGatewayARN_}
 
 -- | Undocumented member.
 dgiGatewayARN :: Lens' DescribeGatewayInformation Text
@@ -128,21 +125,47 @@ instance ToQuery DescribeGatewayInformation where
 --
 --
 -- /See:/ 'describeGatewayInformationResponse' smart constructor.
-data DescribeGatewayInformationResponse =
-  DescribeGatewayInformationResponse'
-    { _dgirsGatewayState               :: !(Maybe Text)
-    , _dgirsGatewayARN                 :: !(Maybe Text)
-    , _dgirsGatewayNetworkInterfaces   :: !(Maybe [NetworkInterface])
-    , _dgirsNextUpdateAvailabilityDate :: !(Maybe Text)
-    , _dgirsLastSoftwareUpdate         :: !(Maybe Text)
-    , _dgirsGatewayName                :: !(Maybe Text)
-    , _dgirsGatewayId                  :: !(Maybe Text)
-    , _dgirsGatewayType                :: !(Maybe Text)
-    , _dgirsGatewayTimezone            :: !(Maybe Text)
-    , _dgirsResponseStatus             :: !Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data DescribeGatewayInformationResponse = DescribeGatewayInformationResponse'{_dgirsGatewayState
+                                                                              ::
+                                                                              !(Maybe
+                                                                                  Text),
+                                                                              _dgirsGatewayARN
+                                                                              ::
+                                                                              !(Maybe
+                                                                                  Text),
+                                                                              _dgirsGatewayNetworkInterfaces
+                                                                              ::
+                                                                              !(Maybe
+                                                                                  [NetworkInterface]),
+                                                                              _dgirsNextUpdateAvailabilityDate
+                                                                              ::
+                                                                              !(Maybe
+                                                                                  Text),
+                                                                              _dgirsLastSoftwareUpdate
+                                                                              ::
+                                                                              !(Maybe
+                                                                                  Text),
+                                                                              _dgirsGatewayName
+                                                                              ::
+                                                                              !(Maybe
+                                                                                  Text),
+                                                                              _dgirsGatewayId
+                                                                              ::
+                                                                              !(Maybe
+                                                                                  Text),
+                                                                              _dgirsGatewayType
+                                                                              ::
+                                                                              !(Maybe
+                                                                                  Text),
+                                                                              _dgirsGatewayTimezone
+                                                                              ::
+                                                                              !(Maybe
+                                                                                  Text),
+                                                                              _dgirsResponseStatus
+                                                                              ::
+                                                                              !Int}
+                                            deriving (Eq, Read, Show, Data,
+                                                      Typeable, Generic)
 
 -- | Creates a value of 'DescribeGatewayInformationResponse' with the minimum fields required to make a request.
 --
@@ -170,20 +193,20 @@ data DescribeGatewayInformationResponse =
 describeGatewayInformationResponse
     :: Int -- ^ 'dgirsResponseStatus'
     -> DescribeGatewayInformationResponse
-describeGatewayInformationResponse pResponseStatus_ =
-  DescribeGatewayInformationResponse'
-    { _dgirsGatewayState = Nothing
-    , _dgirsGatewayARN = Nothing
-    , _dgirsGatewayNetworkInterfaces = Nothing
-    , _dgirsNextUpdateAvailabilityDate = Nothing
-    , _dgirsLastSoftwareUpdate = Nothing
-    , _dgirsGatewayName = Nothing
-    , _dgirsGatewayId = Nothing
-    , _dgirsGatewayType = Nothing
-    , _dgirsGatewayTimezone = Nothing
-    , _dgirsResponseStatus = pResponseStatus_
-    }
-
+describeGatewayInformationResponse pResponseStatus_
+  = DescribeGatewayInformationResponse'{_dgirsGatewayState
+                                          = Nothing,
+                                        _dgirsGatewayARN = Nothing,
+                                        _dgirsGatewayNetworkInterfaces =
+                                          Nothing,
+                                        _dgirsNextUpdateAvailabilityDate =
+                                          Nothing,
+                                        _dgirsLastSoftwareUpdate = Nothing,
+                                        _dgirsGatewayName = Nothing,
+                                        _dgirsGatewayId = Nothing,
+                                        _dgirsGatewayType = Nothing,
+                                        _dgirsGatewayTimezone = Nothing,
+                                        _dgirsResponseStatus = pResponseStatus_}
 
 -- | A value that indicates the operating state of the gateway.
 dgirsGatewayState :: Lens' DescribeGatewayInformationResponse (Maybe Text)

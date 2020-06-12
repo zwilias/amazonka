@@ -42,16 +42,12 @@ import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 import Network.AWS.WorkMail.Types
-import Network.AWS.WorkMail.Types.Product
 
 -- | /See:/ 'deleteGroup' smart constructor.
-data DeleteGroup =
-  DeleteGroup'
-    { _dggOrganizationId :: !Text
-    , _dggGroupId        :: !Text
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data DeleteGroup = DeleteGroup'{_dggOrganizationId ::
+                                !Text,
+                                _dggGroupId :: !Text}
+                     deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'DeleteGroup' with the minimum fields required to make a request.
 --
@@ -64,9 +60,9 @@ deleteGroup
     :: Text -- ^ 'dggOrganizationId'
     -> Text -- ^ 'dggGroupId'
     -> DeleteGroup
-deleteGroup pOrganizationId_ pGroupId_ =
-  DeleteGroup' {_dggOrganizationId = pOrganizationId_, _dggGroupId = pGroupId_}
-
+deleteGroup pOrganizationId_ pGroupId_
+  = DeleteGroup'{_dggOrganizationId = pOrganizationId_,
+                 _dggGroupId = pGroupId_}
 
 -- | The organization that contains the group.
 dggOrganizationId :: Lens' DeleteGroup Text
@@ -111,12 +107,10 @@ instance ToQuery DeleteGroup where
         toQuery = const mempty
 
 -- | /See:/ 'deleteGroupResponse' smart constructor.
-newtype DeleteGroupResponse =
-  DeleteGroupResponse'
-    { _dgrsResponseStatus :: Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+newtype DeleteGroupResponse = DeleteGroupResponse'{_dgrsResponseStatus
+                                                   :: Int}
+                                deriving (Eq, Read, Show, Data, Typeable,
+                                          Generic)
 
 -- | Creates a value of 'DeleteGroupResponse' with the minimum fields required to make a request.
 --
@@ -126,9 +120,9 @@ newtype DeleteGroupResponse =
 deleteGroupResponse
     :: Int -- ^ 'dgrsResponseStatus'
     -> DeleteGroupResponse
-deleteGroupResponse pResponseStatus_ =
-  DeleteGroupResponse' {_dgrsResponseStatus = pResponseStatus_}
-
+deleteGroupResponse pResponseStatus_
+  = DeleteGroupResponse'{_dgrsResponseStatus =
+                           pResponseStatus_}
 
 -- | -- | The response status code.
 dgrsResponseStatus :: Lens' DeleteGroupResponse Int

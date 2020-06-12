@@ -37,19 +37,14 @@ module Network.AWS.Glue.StopCrawler
     ) where
 
 import Network.AWS.Glue.Types
-import Network.AWS.Glue.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 
 -- | /See:/ 'stopCrawler' smart constructor.
-newtype StopCrawler =
-  StopCrawler'
-    { _sName :: Text
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+newtype StopCrawler = StopCrawler'{_sName :: Text}
+                        deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'StopCrawler' with the minimum fields required to make a request.
 --
@@ -59,8 +54,7 @@ newtype StopCrawler =
 stopCrawler
     :: Text -- ^ 'sName'
     -> StopCrawler
-stopCrawler pName_ = StopCrawler' {_sName = pName_}
-
+stopCrawler pName_ = StopCrawler'{_sName = pName_}
 
 -- | Name of the crawler to stop.
 sName :: Lens' StopCrawler Text
@@ -98,12 +92,10 @@ instance ToQuery StopCrawler where
         toQuery = const mempty
 
 -- | /See:/ 'stopCrawlerResponse' smart constructor.
-newtype StopCrawlerResponse =
-  StopCrawlerResponse'
-    { _srsResponseStatus :: Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+newtype StopCrawlerResponse = StopCrawlerResponse'{_srsResponseStatus
+                                                   :: Int}
+                                deriving (Eq, Read, Show, Data, Typeable,
+                                          Generic)
 
 -- | Creates a value of 'StopCrawlerResponse' with the minimum fields required to make a request.
 --
@@ -113,9 +105,9 @@ newtype StopCrawlerResponse =
 stopCrawlerResponse
     :: Int -- ^ 'srsResponseStatus'
     -> StopCrawlerResponse
-stopCrawlerResponse pResponseStatus_ =
-  StopCrawlerResponse' {_srsResponseStatus = pResponseStatus_}
-
+stopCrawlerResponse pResponseStatus_
+  = StopCrawlerResponse'{_srsResponseStatus =
+                           pResponseStatus_}
 
 -- | -- | The response status code.
 srsResponseStatus :: Lens' StopCrawlerResponse Int

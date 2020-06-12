@@ -43,16 +43,12 @@ import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 import Network.AWS.Shield.Types
-import Network.AWS.Shield.Types.Product
 
 -- | /See:/ 'createProtection' smart constructor.
-data CreateProtection =
-  CreateProtection'
-    { _cpName        :: !Text
-    , _cpResourceARN :: !Text
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data CreateProtection = CreateProtection'{_cpName ::
+                                          !Text,
+                                          _cpResourceARN :: !Text}
+                          deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'CreateProtection' with the minimum fields required to make a request.
 --
@@ -60,20 +56,20 @@ data CreateProtection =
 --
 -- * 'cpName' - Friendly name for the @Protection@ you are creating.
 --
--- * 'cpResourceARN' - The ARN (Amazon Resource Name) of the resource to be protected. The ARN should be in one of the following formats:     * For an Application Load Balancer: @arn:aws:elasticloadbalancing:/region/ :/account-id/ :loadbalancer/app//load-balancer-name/ //load-balancer-id/ @      * For an Elastic Load Balancer (Classic Load Balancer): @arn:aws:elasticloadbalancing:/region/ :/account-id/ :loadbalancer//load-balancer-name/ @      * For AWS CloudFront distribution: @arn:aws:cloudfront::/account-id/ :distribution//distribution-id/ @      * For Amazon Route 53: @arn:aws:route53::/account-id/ :hostedzone//hosted-zone-id/ @      * For an Elastic IP address: @arn:aws:ec2:/region/ :/account-id/ :eip-allocation//allocation-id/ @
+-- * 'cpResourceARN' - The ARN (Amazon Resource Name) of the resource to be protected. The ARN should be in one of the following formats:     * For an Application Load Balancer: @arn:aws:elasticloadbalancing:/region/ :/account-id/ :loadbalancer/app//load-balancer-name/ //load-balancer-id/ @      * For an Elastic Load Balancer (Classic Load Balancer): @arn:aws:elasticloadbalancing:/region/ :/account-id/ :loadbalancer//load-balancer-name/ @      * For AWS CloudFront distribution: @arn:aws:cloudfront::/account-id/ :distribution//distribution-id/ @      * For Amazon Route 53: @arn:aws:route53::/account-id/ :hostedzone//hosted-zone-id/ @      * For an Elastic IP address: @arn:aws:ec2:/region/ :/account-id/ :eip-allocation//allocation-id/ @ 
 createProtection
     :: Text -- ^ 'cpName'
     -> Text -- ^ 'cpResourceARN'
     -> CreateProtection
-createProtection pName_ pResourceARN_ =
-  CreateProtection' {_cpName = pName_, _cpResourceARN = pResourceARN_}
-
+createProtection pName_ pResourceARN_
+  = CreateProtection'{_cpName = pName_,
+                      _cpResourceARN = pResourceARN_}
 
 -- | Friendly name for the @Protection@ you are creating.
 cpName :: Lens' CreateProtection Text
 cpName = lens _cpName (\ s a -> s{_cpName = a})
 
--- | The ARN (Amazon Resource Name) of the resource to be protected. The ARN should be in one of the following formats:     * For an Application Load Balancer: @arn:aws:elasticloadbalancing:/region/ :/account-id/ :loadbalancer/app//load-balancer-name/ //load-balancer-id/ @      * For an Elastic Load Balancer (Classic Load Balancer): @arn:aws:elasticloadbalancing:/region/ :/account-id/ :loadbalancer//load-balancer-name/ @      * For AWS CloudFront distribution: @arn:aws:cloudfront::/account-id/ :distribution//distribution-id/ @      * For Amazon Route 53: @arn:aws:route53::/account-id/ :hostedzone//hosted-zone-id/ @      * For an Elastic IP address: @arn:aws:ec2:/region/ :/account-id/ :eip-allocation//allocation-id/ @
+-- | The ARN (Amazon Resource Name) of the resource to be protected. The ARN should be in one of the following formats:     * For an Application Load Balancer: @arn:aws:elasticloadbalancing:/region/ :/account-id/ :loadbalancer/app//load-balancer-name/ //load-balancer-id/ @      * For an Elastic Load Balancer (Classic Load Balancer): @arn:aws:elasticloadbalancing:/region/ :/account-id/ :loadbalancer//load-balancer-name/ @      * For AWS CloudFront distribution: @arn:aws:cloudfront::/account-id/ :distribution//distribution-id/ @      * For Amazon Route 53: @arn:aws:route53::/account-id/ :hostedzone//hosted-zone-id/ @      * For an Elastic IP address: @arn:aws:ec2:/region/ :/account-id/ :eip-allocation//allocation-id/ @ 
 cpResourceARN :: Lens' CreateProtection Text
 cpResourceARN = lens _cpResourceARN (\ s a -> s{_cpResourceARN = a})
 
@@ -114,13 +110,12 @@ instance ToQuery CreateProtection where
         toQuery = const mempty
 
 -- | /See:/ 'createProtectionResponse' smart constructor.
-data CreateProtectionResponse =
-  CreateProtectionResponse'
-    { _cprsProtectionId   :: !(Maybe Text)
-    , _cprsResponseStatus :: !Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data CreateProtectionResponse = CreateProtectionResponse'{_cprsProtectionId
+                                                          :: !(Maybe Text),
+                                                          _cprsResponseStatus ::
+                                                          !Int}
+                                  deriving (Eq, Read, Show, Data, Typeable,
+                                            Generic)
 
 -- | Creates a value of 'CreateProtectionResponse' with the minimum fields required to make a request.
 --
@@ -132,10 +127,10 @@ data CreateProtectionResponse =
 createProtectionResponse
     :: Int -- ^ 'cprsResponseStatus'
     -> CreateProtectionResponse
-createProtectionResponse pResponseStatus_ =
-  CreateProtectionResponse'
-    {_cprsProtectionId = Nothing, _cprsResponseStatus = pResponseStatus_}
-
+createProtectionResponse pResponseStatus_
+  = CreateProtectionResponse'{_cprsProtectionId =
+                                Nothing,
+                              _cprsResponseStatus = pResponseStatus_}
 
 -- | The unique identifier (ID) for the 'Protection' object that is created.
 cprsProtectionId :: Lens' CreateProtectionResponse (Maybe Text)

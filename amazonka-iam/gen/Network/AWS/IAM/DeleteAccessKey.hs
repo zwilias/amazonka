@@ -38,20 +38,16 @@ module Network.AWS.IAM.DeleteAccessKey
     ) where
 
 import Network.AWS.IAM.Types
-import Network.AWS.IAM.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 
 -- | /See:/ 'deleteAccessKey' smart constructor.
-data DeleteAccessKey =
-  DeleteAccessKey'
-    { _dakUserName    :: !(Maybe Text)
-    , _dakAccessKeyId :: !AccessKey
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data DeleteAccessKey = DeleteAccessKey'{_dakUserName
+                                        :: !(Maybe Text),
+                                        _dakAccessKeyId :: !AccessKey}
+                         deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'DeleteAccessKey' with the minimum fields required to make a request.
 --
@@ -63,9 +59,9 @@ data DeleteAccessKey =
 deleteAccessKey
     :: AccessKey -- ^ 'dakAccessKeyId'
     -> DeleteAccessKey
-deleteAccessKey pAccessKeyId_ =
-  DeleteAccessKey' {_dakUserName = Nothing, _dakAccessKeyId = pAccessKeyId_}
-
+deleteAccessKey pAccessKeyId_
+  = DeleteAccessKey'{_dakUserName = Nothing,
+                     _dakAccessKeyId = pAccessKeyId_}
 
 -- | The name of the user whose access key pair you want to delete. This parameter allows (per its <http://wikipedia.org/wiki/regex regex pattern> ) a string of characters consisting of upper and lowercase alphanumeric characters with no spaces. You can also include any of the following characters: _+=,.@-
 dakUserName :: Lens' DeleteAccessKey (Maybe Text)
@@ -99,16 +95,14 @@ instance ToQuery DeleteAccessKey where
                "AccessKeyId" =: _dakAccessKeyId]
 
 -- | /See:/ 'deleteAccessKeyResponse' smart constructor.
-data DeleteAccessKeyResponse =
-  DeleteAccessKeyResponse'
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data DeleteAccessKeyResponse = DeleteAccessKeyResponse'
+                                 deriving (Eq, Read, Show, Data, Typeable,
+                                           Generic)
 
 -- | Creates a value of 'DeleteAccessKeyResponse' with the minimum fields required to make a request.
 --
 deleteAccessKeyResponse
     :: DeleteAccessKeyResponse
 deleteAccessKeyResponse = DeleteAccessKeyResponse'
-
 
 instance NFData DeleteAccessKeyResponse where

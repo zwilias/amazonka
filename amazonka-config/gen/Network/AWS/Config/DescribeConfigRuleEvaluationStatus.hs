@@ -43,26 +43,31 @@ module Network.AWS.Config.DescribeConfigRuleEvaluationStatus
     ) where
 
 import Network.AWS.Config.Types
-import Network.AWS.Config.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Pager
 import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 
--- |
+-- | 
 --
 --
 --
 -- /See:/ 'describeConfigRuleEvaluationStatus' smart constructor.
-data DescribeConfigRuleEvaluationStatus =
-  DescribeConfigRuleEvaluationStatus'
-    { _dcresConfigRuleNames :: !(Maybe [Text])
-    , _dcresNextToken       :: !(Maybe Text)
-    , _dcresLimit           :: !(Maybe Nat)
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data DescribeConfigRuleEvaluationStatus = DescribeConfigRuleEvaluationStatus'{_dcresConfigRuleNames
+                                                                              ::
+                                                                              !(Maybe
+                                                                                  [Text]),
+                                                                              _dcresNextToken
+                                                                              ::
+                                                                              !(Maybe
+                                                                                  Text),
+                                                                              _dcresLimit
+                                                                              ::
+                                                                              !(Maybe
+                                                                                  Nat)}
+                                            deriving (Eq, Read, Show, Data,
+                                                      Typeable, Generic)
 
 -- | Creates a value of 'DescribeConfigRuleEvaluationStatus' with the minimum fields required to make a request.
 --
@@ -75,13 +80,11 @@ data DescribeConfigRuleEvaluationStatus =
 -- * 'dcresLimit' - The number of rule evaluation results that you want returned. This parameter is required if the rule limit for your account is more than the default of 150 rules. For information about requesting a rule limit increase, see <http://docs.aws.amazon.com/general/latest/gr/aws_service_limits.html#limits_config AWS Config Limits> in the /AWS General Reference Guide/ .
 describeConfigRuleEvaluationStatus
     :: DescribeConfigRuleEvaluationStatus
-describeConfigRuleEvaluationStatus =
-  DescribeConfigRuleEvaluationStatus'
-    { _dcresConfigRuleNames = Nothing
-    , _dcresNextToken = Nothing
-    , _dcresLimit = Nothing
-    }
-
+describeConfigRuleEvaluationStatus
+  = DescribeConfigRuleEvaluationStatus'{_dcresConfigRuleNames
+                                          = Nothing,
+                                        _dcresNextToken = Nothing,
+                                        _dcresLimit = Nothing}
 
 -- | The name of the AWS managed Config rules for which you want status information. If you do not specify any names, AWS Config returns status information for all AWS managed Config rules that you use.
 dcresConfigRuleNames :: Lens' DescribeConfigRuleEvaluationStatus [Text]
@@ -152,19 +155,25 @@ instance ToQuery DescribeConfigRuleEvaluationStatus
          where
         toQuery = const mempty
 
--- |
+-- | 
 --
 --
 --
 -- /See:/ 'describeConfigRuleEvaluationStatusResponse' smart constructor.
-data DescribeConfigRuleEvaluationStatusResponse =
-  DescribeConfigRuleEvaluationStatusResponse'
-    { _dcresrsConfigRulesEvaluationStatus :: !(Maybe [ConfigRuleEvaluationStatus])
-    , _dcresrsNextToken :: !(Maybe Text)
-    , _dcresrsResponseStatus :: !Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data DescribeConfigRuleEvaluationStatusResponse = DescribeConfigRuleEvaluationStatusResponse'{_dcresrsConfigRulesEvaluationStatus
+                                                                                              ::
+                                                                                              !(Maybe
+                                                                                                  [ConfigRuleEvaluationStatus]),
+                                                                                              _dcresrsNextToken
+                                                                                              ::
+                                                                                              !(Maybe
+                                                                                                  Text),
+                                                                                              _dcresrsResponseStatus
+                                                                                              ::
+                                                                                              !Int}
+                                                    deriving (Eq, Read, Show,
+                                                              Data, Typeable,
+                                                              Generic)
 
 -- | Creates a value of 'DescribeConfigRuleEvaluationStatusResponse' with the minimum fields required to make a request.
 --
@@ -178,13 +187,13 @@ data DescribeConfigRuleEvaluationStatusResponse =
 describeConfigRuleEvaluationStatusResponse
     :: Int -- ^ 'dcresrsResponseStatus'
     -> DescribeConfigRuleEvaluationStatusResponse
-describeConfigRuleEvaluationStatusResponse pResponseStatus_ =
-  DescribeConfigRuleEvaluationStatusResponse'
-    { _dcresrsConfigRulesEvaluationStatus = Nothing
-    , _dcresrsNextToken = Nothing
-    , _dcresrsResponseStatus = pResponseStatus_
-    }
-
+describeConfigRuleEvaluationStatusResponse
+  pResponseStatus_
+  = DescribeConfigRuleEvaluationStatusResponse'{_dcresrsConfigRulesEvaluationStatus
+                                                  = Nothing,
+                                                _dcresrsNextToken = Nothing,
+                                                _dcresrsResponseStatus =
+                                                  pResponseStatus_}
 
 -- | Status information about your AWS managed Config rules.
 dcresrsConfigRulesEvaluationStatus :: Lens' DescribeConfigRuleEvaluationStatusResponse [ConfigRuleEvaluationStatus]

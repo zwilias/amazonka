@@ -40,7 +40,6 @@ module Network.AWS.EC2.CreateSpotDatafeedSubscription
     ) where
 
 import Network.AWS.EC2.Types
-import Network.AWS.EC2.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.Request
@@ -51,14 +50,18 @@ import Network.AWS.Response
 --
 --
 -- /See:/ 'createSpotDatafeedSubscription' smart constructor.
-data CreateSpotDatafeedSubscription =
-  CreateSpotDatafeedSubscription'
-    { _csdsPrefix :: !(Maybe Text)
-    , _csdsDryRun :: !(Maybe Bool)
-    , _csdsBucket :: !Text
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data CreateSpotDatafeedSubscription = CreateSpotDatafeedSubscription'{_csdsPrefix
+                                                                      ::
+                                                                      !(Maybe
+                                                                          Text),
+                                                                      _csdsDryRun
+                                                                      ::
+                                                                      !(Maybe
+                                                                          Bool),
+                                                                      _csdsBucket
+                                                                      :: !Text}
+                                        deriving (Eq, Read, Show, Data,
+                                                  Typeable, Generic)
 
 -- | Creates a value of 'CreateSpotDatafeedSubscription' with the minimum fields required to make a request.
 --
@@ -72,10 +75,11 @@ data CreateSpotDatafeedSubscription =
 createSpotDatafeedSubscription
     :: Text -- ^ 'csdsBucket'
     -> CreateSpotDatafeedSubscription
-createSpotDatafeedSubscription pBucket_ =
-  CreateSpotDatafeedSubscription'
-    {_csdsPrefix = Nothing, _csdsDryRun = Nothing, _csdsBucket = pBucket_}
-
+createSpotDatafeedSubscription pBucket_
+  = CreateSpotDatafeedSubscription'{_csdsPrefix =
+                                      Nothing,
+                                    _csdsDryRun = Nothing,
+                                    _csdsBucket = pBucket_}
 
 -- | A prefix for the data feed file names.
 csdsPrefix :: Lens' CreateSpotDatafeedSubscription (Maybe Text)
@@ -127,13 +131,15 @@ instance ToQuery CreateSpotDatafeedSubscription where
 --
 --
 -- /See:/ 'createSpotDatafeedSubscriptionResponse' smart constructor.
-data CreateSpotDatafeedSubscriptionResponse =
-  CreateSpotDatafeedSubscriptionResponse'
-    { _csdsrsSpotDatafeedSubscription :: !(Maybe SpotDatafeedSubscription)
-    , _csdsrsResponseStatus           :: !Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data CreateSpotDatafeedSubscriptionResponse = CreateSpotDatafeedSubscriptionResponse'{_csdsrsSpotDatafeedSubscription
+                                                                                      ::
+                                                                                      !(Maybe
+                                                                                          SpotDatafeedSubscription),
+                                                                                      _csdsrsResponseStatus
+                                                                                      ::
+                                                                                      !Int}
+                                                deriving (Eq, Read, Show, Data,
+                                                          Typeable, Generic)
 
 -- | Creates a value of 'CreateSpotDatafeedSubscriptionResponse' with the minimum fields required to make a request.
 --
@@ -145,12 +151,12 @@ data CreateSpotDatafeedSubscriptionResponse =
 createSpotDatafeedSubscriptionResponse
     :: Int -- ^ 'csdsrsResponseStatus'
     -> CreateSpotDatafeedSubscriptionResponse
-createSpotDatafeedSubscriptionResponse pResponseStatus_ =
-  CreateSpotDatafeedSubscriptionResponse'
-    { _csdsrsSpotDatafeedSubscription = Nothing
-    , _csdsrsResponseStatus = pResponseStatus_
-    }
-
+createSpotDatafeedSubscriptionResponse
+  pResponseStatus_
+  = CreateSpotDatafeedSubscriptionResponse'{_csdsrsSpotDatafeedSubscription
+                                              = Nothing,
+                                            _csdsrsResponseStatus =
+                                              pResponseStatus_}
 
 -- | The Spot Instance data feed subscription.
 csdsrsSpotDatafeedSubscription :: Lens' CreateSpotDatafeedSubscriptionResponse (Maybe SpotDatafeedSubscription)

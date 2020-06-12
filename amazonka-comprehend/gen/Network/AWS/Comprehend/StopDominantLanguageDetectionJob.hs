@@ -23,7 +23,7 @@
 --
 -- If the job state is @IN_PROGRESS@ the job is marked for termination and put into the @STOP_REQUESTED@ state. If the job completes before it can be stopped, it is put into the @COMPLETED@ state; otherwise the job is stopped and put into the @STOPPED@ state.
 --
--- If the job is in the @COMPLETED@ or @FAILED@ state when you call the @StopDominantLanguageDetectionJob@ operation, the operation returns a 400 Internal Request Exception.
+-- If the job is in the @COMPLETED@ or @FAILED@ state when you call the @StopDominantLanguageDetectionJob@ operation, the operation returns a 400 Internal Request Exception. 
 --
 -- When a job is stopped, any documents already processed are written to the output location.
 --
@@ -45,19 +45,17 @@ module Network.AWS.Comprehend.StopDominantLanguageDetectionJob
     ) where
 
 import Network.AWS.Comprehend.Types
-import Network.AWS.Comprehend.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 
 -- | /See:/ 'stopDominantLanguageDetectionJob' smart constructor.
-newtype StopDominantLanguageDetectionJob =
-  StopDominantLanguageDetectionJob'
-    { _sdldjJobId :: Text
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+newtype StopDominantLanguageDetectionJob = StopDominantLanguageDetectionJob'{_sdldjJobId
+                                                                             ::
+                                                                             Text}
+                                             deriving (Eq, Read, Show, Data,
+                                                       Typeable, Generic)
 
 -- | Creates a value of 'StopDominantLanguageDetectionJob' with the minimum fields required to make a request.
 --
@@ -67,9 +65,9 @@ newtype StopDominantLanguageDetectionJob =
 stopDominantLanguageDetectionJob
     :: Text -- ^ 'sdldjJobId'
     -> StopDominantLanguageDetectionJob
-stopDominantLanguageDetectionJob pJobId_ =
-  StopDominantLanguageDetectionJob' {_sdldjJobId = pJobId_}
-
+stopDominantLanguageDetectionJob pJobId_
+  = StopDominantLanguageDetectionJob'{_sdldjJobId =
+                                        pJobId_}
 
 -- | The identifier of the dominant language detection job to stop.
 sdldjJobId :: Lens' StopDominantLanguageDetectionJob Text
@@ -118,14 +116,20 @@ instance ToQuery StopDominantLanguageDetectionJob
         toQuery = const mempty
 
 -- | /See:/ 'stopDominantLanguageDetectionJobResponse' smart constructor.
-data StopDominantLanguageDetectionJobResponse =
-  StopDominantLanguageDetectionJobResponse'
-    { _storsJobId          :: !(Maybe Text)
-    , _storsJobStatus      :: !(Maybe JobStatus)
-    , _storsResponseStatus :: !Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data StopDominantLanguageDetectionJobResponse = StopDominantLanguageDetectionJobResponse'{_storsJobId
+                                                                                          ::
+                                                                                          !(Maybe
+                                                                                              Text),
+                                                                                          _storsJobStatus
+                                                                                          ::
+                                                                                          !(Maybe
+                                                                                              JobStatus),
+                                                                                          _storsResponseStatus
+                                                                                          ::
+                                                                                          !Int}
+                                                  deriving (Eq, Read, Show,
+                                                            Data, Typeable,
+                                                            Generic)
 
 -- | Creates a value of 'StopDominantLanguageDetectionJobResponse' with the minimum fields required to make a request.
 --
@@ -139,13 +143,13 @@ data StopDominantLanguageDetectionJobResponse =
 stopDominantLanguageDetectionJobResponse
     :: Int -- ^ 'storsResponseStatus'
     -> StopDominantLanguageDetectionJobResponse
-stopDominantLanguageDetectionJobResponse pResponseStatus_ =
-  StopDominantLanguageDetectionJobResponse'
-    { _storsJobId = Nothing
-    , _storsJobStatus = Nothing
-    , _storsResponseStatus = pResponseStatus_
-    }
-
+stopDominantLanguageDetectionJobResponse
+  pResponseStatus_
+  = StopDominantLanguageDetectionJobResponse'{_storsJobId
+                                                = Nothing,
+                                              _storsJobStatus = Nothing,
+                                              _storsResponseStatus =
+                                                pResponseStatus_}
 
 -- | The identifier of the dominant language detection job to stop.
 storsJobId :: Lens' StopDominantLanguageDetectionJobResponse (Maybe Text)

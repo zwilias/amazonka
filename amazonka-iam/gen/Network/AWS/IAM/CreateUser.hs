@@ -41,20 +41,16 @@ module Network.AWS.IAM.CreateUser
     ) where
 
 import Network.AWS.IAM.Types
-import Network.AWS.IAM.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 
 -- | /See:/ 'createUser' smart constructor.
-data CreateUser =
-  CreateUser'
-    { _cuPath     :: !(Maybe Text)
-    , _cuUserName :: !Text
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data CreateUser = CreateUser'{_cuPath ::
+                              !(Maybe Text),
+                              _cuUserName :: !Text}
+                    deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'CreateUser' with the minimum fields required to make a request.
 --
@@ -66,9 +62,9 @@ data CreateUser =
 createUser
     :: Text -- ^ 'cuUserName'
     -> CreateUser
-createUser pUserName_ =
-  CreateUser' {_cuPath = Nothing, _cuUserName = pUserName_}
-
+createUser pUserName_
+  = CreateUser'{_cuPath = Nothing,
+                _cuUserName = pUserName_}
 
 -- | The path for the user name. For more information about paths, see <http://docs.aws.amazon.com/IAM/latest/UserGuide/Using_Identifiers.html IAM Identifiers> in the /IAM User Guide/ . This parameter is optional. If it is not included, it defaults to a slash (/). This parameter allows (per its <http://wikipedia.org/wiki/regex regex pattern> ) a string of characters consisting of either a forward slash (/) by itself or a string that must begin and end with forward slashes. In addition, it can contain any ASCII character from the ! (\u0021) through the DEL character (\u007F), including most punctuation characters, digits, and upper and lowercased letters.
 cuPath :: Lens' CreateUser (Maybe Text)
@@ -104,18 +100,15 @@ instance ToQuery CreateUser where
                "Version" =: ("2010-05-08" :: ByteString),
                "Path" =: _cuPath, "UserName" =: _cuUserName]
 
--- | Contains the response to a successful 'CreateUser' request.
+-- | Contains the response to a successful 'CreateUser' request. 
 --
 --
 --
 -- /See:/ 'createUserResponse' smart constructor.
-data CreateUserResponse =
-  CreateUserResponse'
-    { _cursUser           :: !(Maybe User)
-    , _cursResponseStatus :: !Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data CreateUserResponse = CreateUserResponse'{_cursUser
+                                              :: !(Maybe User),
+                                              _cursResponseStatus :: !Int}
+                            deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'CreateUserResponse' with the minimum fields required to make a request.
 --
@@ -127,10 +120,9 @@ data CreateUserResponse =
 createUserResponse
     :: Int -- ^ 'cursResponseStatus'
     -> CreateUserResponse
-createUserResponse pResponseStatus_ =
-  CreateUserResponse'
-    {_cursUser = Nothing, _cursResponseStatus = pResponseStatus_}
-
+createUserResponse pResponseStatus_
+  = CreateUserResponse'{_cursUser = Nothing,
+                        _cursResponseStatus = pResponseStatus_}
 
 -- | A structure with details about the new IAM user.
 cursUser :: Lens' CreateUserResponse (Maybe User)

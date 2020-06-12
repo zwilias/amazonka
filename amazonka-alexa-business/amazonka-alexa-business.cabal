@@ -98,8 +98,37 @@ library
         , Network.AWS.AlexaBusiness.Waiters
 
     other-modules:
-          Network.AWS.AlexaBusiness.Types.Product
-        , Network.AWS.AlexaBusiness.Types.Sum
+          Network.AWS.AlexaBusiness.Types.AddressBook
+        , Network.AWS.AlexaBusiness.Types.AddressBookData
+        , Network.AWS.AlexaBusiness.Types.ConnectionStatus
+        , Network.AWS.AlexaBusiness.Types.Contact
+        , Network.AWS.AlexaBusiness.Types.ContactData
+        , Network.AWS.AlexaBusiness.Types.Device
+        , Network.AWS.AlexaBusiness.Types.DeviceData
+        , Network.AWS.AlexaBusiness.Types.DeviceEvent
+        , Network.AWS.AlexaBusiness.Types.DeviceEventType
+        , Network.AWS.AlexaBusiness.Types.DeviceStatus
+        , Network.AWS.AlexaBusiness.Types.DeviceStatusDetail
+        , Network.AWS.AlexaBusiness.Types.DeviceStatusDetailCode
+        , Network.AWS.AlexaBusiness.Types.DeviceStatusInfo
+        , Network.AWS.AlexaBusiness.Types.DistanceUnit
+        , Network.AWS.AlexaBusiness.Types.EnrollmentStatus
+        , Network.AWS.AlexaBusiness.Types.Feature
+        , Network.AWS.AlexaBusiness.Types.Filter
+        , Network.AWS.AlexaBusiness.Types.Profile
+        , Network.AWS.AlexaBusiness.Types.ProfileData
+        , Network.AWS.AlexaBusiness.Types.Room
+        , Network.AWS.AlexaBusiness.Types.RoomData
+        , Network.AWS.AlexaBusiness.Types.RoomSkillParameter
+        , Network.AWS.AlexaBusiness.Types.SkillGroup
+        , Network.AWS.AlexaBusiness.Types.SkillGroupData
+        , Network.AWS.AlexaBusiness.Types.SkillSummary
+        , Network.AWS.AlexaBusiness.Types.Sort
+        , Network.AWS.AlexaBusiness.Types.SortValue
+        , Network.AWS.AlexaBusiness.Types.Tag
+        , Network.AWS.AlexaBusiness.Types.TemperatureUnit
+        , Network.AWS.AlexaBusiness.Types.UserData
+        , Network.AWS.AlexaBusiness.Types.WakeWord
 
     build-depends:
           amazonka-core == 1.6.1.*

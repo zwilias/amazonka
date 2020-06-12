@@ -47,18 +47,14 @@ import Network.AWS.Pager
 import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.ResourceGroups.Types
-import Network.AWS.ResourceGroups.Types.Product
 import Network.AWS.Response
 
 -- | /See:/ 'listGroupResources' smart constructor.
-data ListGroupResources =
-  ListGroupResources'
-    { _lgrNextToken  :: !(Maybe Text)
-    , _lgrMaxResults :: !(Maybe Nat)
-    , _lgrGroupName  :: !Text
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data ListGroupResources = ListGroupResources'{_lgrNextToken
+                                              :: !(Maybe Text),
+                                              _lgrMaxResults :: !(Maybe Nat),
+                                              _lgrGroupName :: !Text}
+                            deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'ListGroupResources' with the minimum fields required to make a request.
 --
@@ -72,13 +68,10 @@ data ListGroupResources =
 listGroupResources
     :: Text -- ^ 'lgrGroupName'
     -> ListGroupResources
-listGroupResources pGroupName_ =
-  ListGroupResources'
-    { _lgrNextToken = Nothing
-    , _lgrMaxResults = Nothing
-    , _lgrGroupName = pGroupName_
-    }
-
+listGroupResources pGroupName_
+  = ListGroupResources'{_lgrNextToken = Nothing,
+                        _lgrMaxResults = Nothing,
+                        _lgrGroupName = pGroupName_}
 
 -- | The NextToken value that is returned in a paginated ListGroupResources request. To get the next page of results, run the call again, add the NextToken parameter, and specify the NextToken value.
 lgrNextToken :: Lens' ListGroupResources (Maybe Text)
@@ -131,14 +124,16 @@ instance ToQuery ListGroupResources where
                "maxResults" =: _lgrMaxResults]
 
 -- | /See:/ 'listGroupResourcesResponse' smart constructor.
-data ListGroupResourcesResponse =
-  ListGroupResourcesResponse'
-    { _lgrrsNextToken           :: !(Maybe Text)
-    , _lgrrsResourceIdentifiers :: !(Maybe [ResourceIdentifier])
-    , _lgrrsResponseStatus      :: !Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data ListGroupResourcesResponse = ListGroupResourcesResponse'{_lgrrsNextToken
+                                                              :: !(Maybe Text),
+                                                              _lgrrsResourceIdentifiers
+                                                              ::
+                                                              !(Maybe
+                                                                  [ResourceIdentifier]),
+                                                              _lgrrsResponseStatus
+                                                              :: !Int}
+                                    deriving (Eq, Read, Show, Data, Typeable,
+                                              Generic)
 
 -- | Creates a value of 'ListGroupResourcesResponse' with the minimum fields required to make a request.
 --
@@ -152,13 +147,11 @@ data ListGroupResourcesResponse =
 listGroupResourcesResponse
     :: Int -- ^ 'lgrrsResponseStatus'
     -> ListGroupResourcesResponse
-listGroupResourcesResponse pResponseStatus_ =
-  ListGroupResourcesResponse'
-    { _lgrrsNextToken = Nothing
-    , _lgrrsResourceIdentifiers = Nothing
-    , _lgrrsResponseStatus = pResponseStatus_
-    }
-
+listGroupResourcesResponse pResponseStatus_
+  = ListGroupResourcesResponse'{_lgrrsNextToken =
+                                  Nothing,
+                                _lgrrsResourceIdentifiers = Nothing,
+                                _lgrrsResponseStatus = pResponseStatus_}
 
 -- | The NextToken value to include in a subsequent @ListGroupResources@ request, to get more results.
 lgrrsNextToken :: Lens' ListGroupResourcesResponse (Maybe Text)

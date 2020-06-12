@@ -41,7 +41,6 @@ module Network.AWS.ELB.SetLoadBalancerListenerSSLCertificate
     ) where
 
 import Network.AWS.ELB.Types
-import Network.AWS.ELB.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.Request
@@ -52,14 +51,17 @@ import Network.AWS.Response
 --
 --
 -- /See:/ 'setLoadBalancerListenerSSLCertificate' smart constructor.
-data SetLoadBalancerListenerSSLCertificate =
-  SetLoadBalancerListenerSSLCertificate'
-    { _slblscLoadBalancerName :: !Text
-    , _slblscLoadBalancerPort :: !Int
-    , _slblscSSLCertificateId :: !Text
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data SetLoadBalancerListenerSSLCertificate = SetLoadBalancerListenerSSLCertificate'{_slblscLoadBalancerName
+                                                                                    ::
+                                                                                    !Text,
+                                                                                    _slblscLoadBalancerPort
+                                                                                    ::
+                                                                                    !Int,
+                                                                                    _slblscSSLCertificateId
+                                                                                    ::
+                                                                                    !Text}
+                                               deriving (Eq, Read, Show, Data,
+                                                         Typeable, Generic)
 
 -- | Creates a value of 'SetLoadBalancerListenerSSLCertificate' with the minimum fields required to make a request.
 --
@@ -75,13 +77,15 @@ setLoadBalancerListenerSSLCertificate
     -> Int -- ^ 'slblscLoadBalancerPort'
     -> Text -- ^ 'slblscSSLCertificateId'
     -> SetLoadBalancerListenerSSLCertificate
-setLoadBalancerListenerSSLCertificate pLoadBalancerName_ pLoadBalancerPort_ pSSLCertificateId_ =
-  SetLoadBalancerListenerSSLCertificate'
-    { _slblscLoadBalancerName = pLoadBalancerName_
-    , _slblscLoadBalancerPort = pLoadBalancerPort_
-    , _slblscSSLCertificateId = pSSLCertificateId_
-    }
-
+setLoadBalancerListenerSSLCertificate
+  pLoadBalancerName_ pLoadBalancerPort_
+  pSSLCertificateId_
+  = SetLoadBalancerListenerSSLCertificate'{_slblscLoadBalancerName
+                                             = pLoadBalancerName_,
+                                           _slblscLoadBalancerPort =
+                                             pLoadBalancerPort_,
+                                           _slblscSSLCertificateId =
+                                             pSSLCertificateId_}
 
 -- | The name of the load balancer.
 slblscLoadBalancerName :: Lens' SetLoadBalancerListenerSSLCertificate Text
@@ -142,12 +146,13 @@ instance ToQuery
 --
 --
 -- /See:/ 'setLoadBalancerListenerSSLCertificateResponse' smart constructor.
-newtype SetLoadBalancerListenerSSLCertificateResponse =
-  SetLoadBalancerListenerSSLCertificateResponse'
-    { _slblscrsResponseStatus :: Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+newtype SetLoadBalancerListenerSSLCertificateResponse = SetLoadBalancerListenerSSLCertificateResponse'{_slblscrsResponseStatus
+                                                                                                       ::
+                                                                                                       Int}
+                                                          deriving (Eq, Read,
+                                                                    Show, Data,
+                                                                    Typeable,
+                                                                    Generic)
 
 -- | Creates a value of 'SetLoadBalancerListenerSSLCertificateResponse' with the minimum fields required to make a request.
 --
@@ -157,10 +162,10 @@ newtype SetLoadBalancerListenerSSLCertificateResponse =
 setLoadBalancerListenerSSLCertificateResponse
     :: Int -- ^ 'slblscrsResponseStatus'
     -> SetLoadBalancerListenerSSLCertificateResponse
-setLoadBalancerListenerSSLCertificateResponse pResponseStatus_ =
-  SetLoadBalancerListenerSSLCertificateResponse'
-    {_slblscrsResponseStatus = pResponseStatus_}
-
+setLoadBalancerListenerSSLCertificateResponse
+  pResponseStatus_
+  = SetLoadBalancerListenerSSLCertificateResponse'{_slblscrsResponseStatus
+                                                     = pResponseStatus_}
 
 -- | -- | The response status code.
 slblscrsResponseStatus :: Lens' SetLoadBalancerListenerSSLCertificateResponse Int

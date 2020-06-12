@@ -40,16 +40,12 @@ import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 import Network.AWS.WorkDocs.Types
-import Network.AWS.WorkDocs.Types.Product
 
 -- | /See:/ 'deactivateUser' smart constructor.
-data DeactivateUser =
-  DeactivateUser'
-    { _dAuthenticationToken :: !(Maybe (Sensitive Text))
-    , _dUserId              :: !Text
-    }
-  deriving (Eq, Show, Data, Typeable, Generic)
-
+data DeactivateUser = DeactivateUser'{_dAuthenticationToken
+                                      :: !(Maybe (Sensitive Text)),
+                                      _dUserId :: !Text}
+                        deriving (Eq, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'DeactivateUser' with the minimum fields required to make a request.
 --
@@ -61,9 +57,9 @@ data DeactivateUser =
 deactivateUser
     :: Text -- ^ 'dUserId'
     -> DeactivateUser
-deactivateUser pUserId_ =
-  DeactivateUser' {_dAuthenticationToken = Nothing, _dUserId = pUserId_}
-
+deactivateUser pUserId_
+  = DeactivateUser'{_dAuthenticationToken = Nothing,
+                    _dUserId = pUserId_}
 
 -- | Amazon WorkDocs authentication token. Do not set this field when using administrative API actions, as in accessing the API using AWS credentials.
 dAuthenticationToken :: Lens' DeactivateUser (Maybe Text)
@@ -98,16 +94,14 @@ instance ToQuery DeactivateUser where
         toQuery = const mempty
 
 -- | /See:/ 'deactivateUserResponse' smart constructor.
-data DeactivateUserResponse =
-  DeactivateUserResponse'
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data DeactivateUserResponse = DeactivateUserResponse'
+                                deriving (Eq, Read, Show, Data, Typeable,
+                                          Generic)
 
 -- | Creates a value of 'DeactivateUserResponse' with the minimum fields required to make a request.
 --
 deactivateUserResponse
     :: DeactivateUserResponse
 deactivateUserResponse = DeactivateUserResponse'
-
 
 instance NFData DeactivateUserResponse where

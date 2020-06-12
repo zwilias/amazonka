@@ -11,7 +11,7 @@
 -- Stability   : auto-generated
 -- Portability : non-portable (GHC extensions)
 --
--- __AWS IoT__
+-- __AWS IoT__ 
 --
 -- AWS IoT provides secure, bi-directional communication between Internet-connected devices (such as sensors, actuators, embedded devices, or smart appliances) and the AWS cloud. You can discover your custom IoT-Data endpoint to communicate with, configure rules for data processing and integration with other services, organize resources associated with each device (Registry), configure logging, and create and manage policies and credentials to authenticate devices.
 --
@@ -112,358 +112,358 @@ module Network.AWS.IoT
     -- ** ListPolicies (Paginated)
     , module Network.AWS.IoT.ListPolicies
 
-    -- ** CreatePolicy
+    -- ** CreatePolicy 
     , module Network.AWS.IoT.CreatePolicy
 
-    -- ** RegisterCertificate
+    -- ** RegisterCertificate 
     , module Network.AWS.IoT.RegisterCertificate
 
-    -- ** ListThingPrincipals
+    -- ** ListThingPrincipals 
     , module Network.AWS.IoT.ListThingPrincipals
 
-    -- ** DescribeRoleAlias
+    -- ** DescribeRoleAlias 
     , module Network.AWS.IoT.DescribeRoleAlias
 
-    -- ** CreateOTAUpdate
+    -- ** CreateOTAUpdate 
     , module Network.AWS.IoT.CreateOTAUpdate
 
-    -- ** DescribeDefaultAuthorizer
+    -- ** DescribeDefaultAuthorizer 
     , module Network.AWS.IoT.DescribeDefaultAuthorizer
 
-    -- ** ListThingRegistrationTaskReports
+    -- ** ListThingRegistrationTaskReports 
     , module Network.AWS.IoT.ListThingRegistrationTaskReports
 
     -- ** ListPrincipalThings (Paginated)
     , module Network.AWS.IoT.ListPrincipalThings
 
-    -- ** RemoveThingFromThingGroup
+    -- ** RemoveThingFromThingGroup 
     , module Network.AWS.IoT.RemoveThingFromThingGroup
 
-    -- ** DescribeEventConfigurations
+    -- ** DescribeEventConfigurations 
     , module Network.AWS.IoT.DescribeEventConfigurations
 
-    -- ** ListThingGroups
+    -- ** ListThingGroups 
     , module Network.AWS.IoT.ListThingGroups
 
-    -- ** DescribeThingRegistrationTask
+    -- ** DescribeThingRegistrationTask 
     , module Network.AWS.IoT.DescribeThingRegistrationTask
 
-    -- ** GetLoggingOptions
+    -- ** GetLoggingOptions 
     , module Network.AWS.IoT.GetLoggingOptions
 
-    -- ** GetOTAUpdate
+    -- ** GetOTAUpdate 
     , module Network.AWS.IoT.GetOTAUpdate
 
-    -- ** GetEffectivePolicies
+    -- ** GetEffectivePolicies 
     , module Network.AWS.IoT.GetEffectivePolicies
 
     -- ** ListThingTypes (Paginated)
     , module Network.AWS.IoT.ListThingTypes
 
-    -- ** SetV2LoggingOptions
+    -- ** SetV2LoggingOptions 
     , module Network.AWS.IoT.SetV2LoggingOptions
 
-    -- ** ListThingGroupsForThing
+    -- ** ListThingGroupsForThing 
     , module Network.AWS.IoT.ListThingGroupsForThing
 
-    -- ** CreateCertificateFromCSR
+    -- ** CreateCertificateFromCSR 
     , module Network.AWS.IoT.CreateCertificateFromCSR
 
-    -- ** DeleteThing
+    -- ** DeleteThing 
     , module Network.AWS.IoT.DeleteThing
 
-    -- ** UpdateThing
+    -- ** UpdateThing 
     , module Network.AWS.IoT.UpdateThing
 
-    -- ** StartThingRegistrationTask
+    -- ** StartThingRegistrationTask 
     , module Network.AWS.IoT.StartThingRegistrationTask
 
-    -- ** ListAuthorizers
+    -- ** ListAuthorizers 
     , module Network.AWS.IoT.ListAuthorizers
 
-    -- ** ListJobExecutionsForJob
+    -- ** ListJobExecutionsForJob 
     , module Network.AWS.IoT.ListJobExecutionsForJob
 
-    -- ** SearchIndex
+    -- ** SearchIndex 
     , module Network.AWS.IoT.SearchIndex
 
-    -- ** CreateThingType
+    -- ** CreateThingType 
     , module Network.AWS.IoT.CreateThingType
 
-    -- ** DeleteV2LoggingLevel
+    -- ** DeleteV2LoggingLevel 
     , module Network.AWS.IoT.DeleteV2LoggingLevel
 
-    -- ** SetDefaultAuthorizer
+    -- ** SetDefaultAuthorizer 
     , module Network.AWS.IoT.SetDefaultAuthorizer
 
-    -- ** DescribeJobExecution
+    -- ** DescribeJobExecution 
     , module Network.AWS.IoT.DescribeJobExecution
 
-    -- ** CancelCertificateTransfer
+    -- ** CancelCertificateTransfer 
     , module Network.AWS.IoT.CancelCertificateTransfer
 
-    -- ** GetIndexingConfiguration
+    -- ** GetIndexingConfiguration 
     , module Network.AWS.IoT.GetIndexingConfiguration
 
-    -- ** DeleteRoleAlias
+    -- ** DeleteRoleAlias 
     , module Network.AWS.IoT.DeleteRoleAlias
 
-    -- ** UpdateRoleAlias
+    -- ** UpdateRoleAlias 
     , module Network.AWS.IoT.UpdateRoleAlias
 
-    -- ** DeletePolicyVersion
+    -- ** DeletePolicyVersion 
     , module Network.AWS.IoT.DeletePolicyVersion
 
-    -- ** DisableTopicRule
+    -- ** DisableTopicRule 
     , module Network.AWS.IoT.DisableTopicRule
 
-    -- ** CreateTopicRule
+    -- ** CreateTopicRule 
     , module Network.AWS.IoT.CreateTopicRule
 
-    -- ** CreateJob
+    -- ** CreateJob 
     , module Network.AWS.IoT.CreateJob
 
-    -- ** DescribeIndex
+    -- ** DescribeIndex 
     , module Network.AWS.IoT.DescribeIndex
 
-    -- ** AssociateTargetsWithJob
+    -- ** AssociateTargetsWithJob 
     , module Network.AWS.IoT.AssociateTargetsWithJob
 
-    -- ** ListAttachedPolicies
+    -- ** ListAttachedPolicies 
     , module Network.AWS.IoT.ListAttachedPolicies
 
-    -- ** CreatePolicyVersion
+    -- ** CreatePolicyVersion 
     , module Network.AWS.IoT.CreatePolicyVersion
 
     -- ** ListCACertificates (Paginated)
     , module Network.AWS.IoT.ListCACertificates
 
-    -- ** DeleteTopicRule
+    -- ** DeleteTopicRule 
     , module Network.AWS.IoT.DeleteTopicRule
 
-    -- ** GetJobDocument
+    -- ** GetJobDocument 
     , module Network.AWS.IoT.GetJobDocument
 
-    -- ** CreateRoleAlias
+    -- ** CreateRoleAlias 
     , module Network.AWS.IoT.CreateRoleAlias
 
-    -- ** DeleteCACertificate
+    -- ** DeleteCACertificate 
     , module Network.AWS.IoT.DeleteCACertificate
 
-    -- ** UpdateCACertificate
+    -- ** UpdateCACertificate 
     , module Network.AWS.IoT.UpdateCACertificate
 
     -- ** ListTopicRules (Paginated)
     , module Network.AWS.IoT.ListTopicRules
 
-    -- ** TransferCertificate
+    -- ** TransferCertificate 
     , module Network.AWS.IoT.TransferCertificate
 
-    -- ** ListJobs
+    -- ** ListJobs 
     , module Network.AWS.IoT.ListJobs
 
-    -- ** ListRoleAliases
+    -- ** ListRoleAliases 
     , module Network.AWS.IoT.ListRoleAliases
 
-    -- ** DescribeThingGroup
+    -- ** DescribeThingGroup 
     , module Network.AWS.IoT.DescribeThingGroup
 
-    -- ** GetTopicRule
+    -- ** GetTopicRule 
     , module Network.AWS.IoT.GetTopicRule
 
-    -- ** DescribeThing
+    -- ** DescribeThing 
     , module Network.AWS.IoT.DescribeThing
 
-    -- ** DeletePolicy
+    -- ** DeletePolicy 
     , module Network.AWS.IoT.DeletePolicy
 
-    -- ** ListThingsInThingGroup
+    -- ** ListThingsInThingGroup 
     , module Network.AWS.IoT.ListThingsInThingGroup
 
     -- ** ListCertificates (Paginated)
     , module Network.AWS.IoT.ListCertificates
 
-    -- ** DescribeAuthorizer
+    -- ** DescribeAuthorizer 
     , module Network.AWS.IoT.DescribeAuthorizer
 
-    -- ** GetPolicyVersion
+    -- ** GetPolicyVersion 
     , module Network.AWS.IoT.GetPolicyVersion
 
-    -- ** DeleteCertificate
+    -- ** DeleteCertificate 
     , module Network.AWS.IoT.DeleteCertificate
 
-    -- ** UpdateCertificate
+    -- ** UpdateCertificate 
     , module Network.AWS.IoT.UpdateCertificate
 
-    -- ** UpdateIndexingConfiguration
+    -- ** UpdateIndexingConfiguration 
     , module Network.AWS.IoT.UpdateIndexingConfiguration
 
-    -- ** TestInvokeAuthorizer
+    -- ** TestInvokeAuthorizer 
     , module Network.AWS.IoT.TestInvokeAuthorizer
 
-    -- ** CreateThingGroup
+    -- ** CreateThingGroup 
     , module Network.AWS.IoT.CreateThingGroup
 
-    -- ** DetachPolicy
+    -- ** DetachPolicy 
     , module Network.AWS.IoT.DetachPolicy
 
-    -- ** DescribeJob
+    -- ** DescribeJob 
     , module Network.AWS.IoT.DescribeJob
 
-    -- ** DeleteThingGroup
+    -- ** DeleteThingGroup 
     , module Network.AWS.IoT.DeleteThingGroup
 
-    -- ** UpdateThingGroup
+    -- ** UpdateThingGroup 
     , module Network.AWS.IoT.UpdateThingGroup
 
-    -- ** ListOTAUpdates
+    -- ** ListOTAUpdates 
     , module Network.AWS.IoT.ListOTAUpdates
 
-    -- ** DeleteOTAUpdate
+    -- ** DeleteOTAUpdate 
     , module Network.AWS.IoT.DeleteOTAUpdate
 
     -- ** ListOutgoingCertificates (Paginated)
     , module Network.AWS.IoT.ListOutgoingCertificates
 
-    -- ** DescribeCACertificate
+    -- ** DescribeCACertificate 
     , module Network.AWS.IoT.DescribeCACertificate
 
-    -- ** GetRegistrationCode
+    -- ** GetRegistrationCode 
     , module Network.AWS.IoT.GetRegistrationCode
 
-    -- ** DeleteThingType
+    -- ** DeleteThingType 
     , module Network.AWS.IoT.DeleteThingType
 
-    -- ** AddThingToThingGroup
+    -- ** AddThingToThingGroup 
     , module Network.AWS.IoT.AddThingToThingGroup
 
     -- ** ListCertificatesByCA (Paginated)
     , module Network.AWS.IoT.ListCertificatesByCA
 
-    -- ** AttachThingPrincipal
+    -- ** AttachThingPrincipal 
     , module Network.AWS.IoT.AttachThingPrincipal
 
     -- ** ListThings (Paginated)
     , module Network.AWS.IoT.ListThings
 
-    -- ** RegisterThing
+    -- ** RegisterThing 
     , module Network.AWS.IoT.RegisterThing
 
-    -- ** DeleteRegistrationCode
+    -- ** DeleteRegistrationCode 
     , module Network.AWS.IoT.DeleteRegistrationCode
 
-    -- ** UpdateStream
+    -- ** UpdateStream 
     , module Network.AWS.IoT.UpdateStream
 
-    -- ** DeleteStream
+    -- ** DeleteStream 
     , module Network.AWS.IoT.DeleteStream
 
-    -- ** ListStreams
+    -- ** ListStreams 
     , module Network.AWS.IoT.ListStreams
 
-    -- ** CreateAuthorizer
+    -- ** CreateAuthorizer 
     , module Network.AWS.IoT.CreateAuthorizer
 
-    -- ** TestAuthorization
+    -- ** TestAuthorization 
     , module Network.AWS.IoT.TestAuthorization
 
-    -- ** ListIndices
+    -- ** ListIndices 
     , module Network.AWS.IoT.ListIndices
 
-    -- ** UpdateAuthorizer
+    -- ** UpdateAuthorizer 
     , module Network.AWS.IoT.UpdateAuthorizer
 
-    -- ** DeleteAuthorizer
+    -- ** DeleteAuthorizer 
     , module Network.AWS.IoT.DeleteAuthorizer
 
-    -- ** CreateThing
+    -- ** CreateThing 
     , module Network.AWS.IoT.CreateThing
 
-    -- ** CreateStream
+    -- ** CreateStream 
     , module Network.AWS.IoT.CreateStream
 
-    -- ** ListV2LoggingLevels
+    -- ** ListV2LoggingLevels 
     , module Network.AWS.IoT.ListV2LoggingLevels
 
-    -- ** StopThingRegistrationTask
+    -- ** StopThingRegistrationTask 
     , module Network.AWS.IoT.StopThingRegistrationTask
 
-    -- ** DescribeCertificate
+    -- ** DescribeCertificate 
     , module Network.AWS.IoT.DescribeCertificate
 
-    -- ** ListTargetsForPolicy
+    -- ** ListTargetsForPolicy 
     , module Network.AWS.IoT.ListTargetsForPolicy
 
-    -- ** ClearDefaultAuthorizer
+    -- ** ClearDefaultAuthorizer 
     , module Network.AWS.IoT.ClearDefaultAuthorizer
 
-    -- ** ReplaceTopicRule
+    -- ** ReplaceTopicRule 
     , module Network.AWS.IoT.ReplaceTopicRule
 
-    -- ** SetDefaultPolicyVersion
+    -- ** SetDefaultPolicyVersion 
     , module Network.AWS.IoT.SetDefaultPolicyVersion
 
-    -- ** ListPolicyVersions
+    -- ** ListPolicyVersions 
     , module Network.AWS.IoT.ListPolicyVersions
 
-    -- ** SetV2LoggingLevel
+    -- ** SetV2LoggingLevel 
     , module Network.AWS.IoT.SetV2LoggingLevel
 
-    -- ** ListJobExecutionsForThing
+    -- ** ListJobExecutionsForThing 
     , module Network.AWS.IoT.ListJobExecutionsForThing
 
-    -- ** AttachPolicy
+    -- ** AttachPolicy 
     , module Network.AWS.IoT.AttachPolicy
 
-    -- ** CreateKeysAndCertificate
+    -- ** CreateKeysAndCertificate 
     , module Network.AWS.IoT.CreateKeysAndCertificate
 
-    -- ** UpdateThingGroupsForThing
+    -- ** UpdateThingGroupsForThing 
     , module Network.AWS.IoT.UpdateThingGroupsForThing
 
-    -- ** EnableTopicRule
+    -- ** EnableTopicRule 
     , module Network.AWS.IoT.EnableTopicRule
 
-    -- ** AcceptCertificateTransfer
+    -- ** AcceptCertificateTransfer 
     , module Network.AWS.IoT.AcceptCertificateTransfer
 
-    -- ** GetPolicy
+    -- ** GetPolicy 
     , module Network.AWS.IoT.GetPolicy
 
-    -- ** DescribeEndpoint
+    -- ** DescribeEndpoint 
     , module Network.AWS.IoT.DescribeEndpoint
 
-    -- ** UpdateEventConfigurations
+    -- ** UpdateEventConfigurations 
     , module Network.AWS.IoT.UpdateEventConfigurations
 
-    -- ** RegisterCACertificate
+    -- ** RegisterCACertificate 
     , module Network.AWS.IoT.RegisterCACertificate
 
-    -- ** SetLoggingOptions
+    -- ** SetLoggingOptions 
     , module Network.AWS.IoT.SetLoggingOptions
 
-    -- ** DescribeThingType
+    -- ** DescribeThingType 
     , module Network.AWS.IoT.DescribeThingType
 
-    -- ** GetV2LoggingOptions
+    -- ** GetV2LoggingOptions 
     , module Network.AWS.IoT.GetV2LoggingOptions
 
-    -- ** ListThingRegistrationTasks
+    -- ** ListThingRegistrationTasks 
     , module Network.AWS.IoT.ListThingRegistrationTasks
 
-    -- ** RejectCertificateTransfer
+    -- ** RejectCertificateTransfer 
     , module Network.AWS.IoT.RejectCertificateTransfer
 
-    -- ** DescribeStream
+    -- ** DescribeStream 
     , module Network.AWS.IoT.DescribeStream
 
-    -- ** DetachThingPrincipal
+    -- ** DetachThingPrincipal 
     , module Network.AWS.IoT.DetachThingPrincipal
 
-    -- ** CancelJob
+    -- ** CancelJob 
     , module Network.AWS.IoT.CancelJob
 
-    -- ** DeprecateThingType
+    -- ** DeprecateThingType 
     , module Network.AWS.IoT.DeprecateThingType
 
     -- * Types
@@ -1228,9 +1228,9 @@ import Network.AWS.IoT.ListThingGroupsForThing
 import Network.AWS.IoT.ListThingPrincipals
 import Network.AWS.IoT.ListThingRegistrationTaskReports
 import Network.AWS.IoT.ListThingRegistrationTasks
+import Network.AWS.IoT.ListThingTypes
 import Network.AWS.IoT.ListThings
 import Network.AWS.IoT.ListThingsInThingGroup
-import Network.AWS.IoT.ListThingTypes
 import Network.AWS.IoT.ListTopicRules
 import Network.AWS.IoT.ListV2LoggingLevels
 import Network.AWS.IoT.RegisterCACertificate

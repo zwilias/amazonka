@@ -27,7 +27,7 @@
 --
 --     * The message must be sent from a verified email address or domain.
 --
---     * If your account is still in the Amazon SES sandbox, you may only send to verified addresses or domains, or to email addresses associated with the Amazon SES Mailbox Simulator. For more information, see <http://docs.aws.amazon.com/ses/latest/DeveloperGuide/verify-addresses-and-domains.html Verifying Email Addresses and Domains> in the /Amazon SES Developer Guide./
+--     * If your account is still in the Amazon SES sandbox, you may only send to verified addresses or domains, or to email addresses associated with the Amazon SES Mailbox Simulator. For more information, see <http://docs.aws.amazon.com/ses/latest/DeveloperGuide/verify-addresses-and-domains.html Verifying Email Addresses and Domains> in the /Amazon SES Developer Guide./ 
 --
 --     * The total size of the message, including attachments, must be less than 10 MB.
 --
@@ -66,35 +66,40 @@ import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 import Network.AWS.SES.Types
-import Network.AWS.SES.Types.Product
 
 -- | Represents a request to send a templated email to multiple destinations using Amazon SES. For more information, see the <http://docs.aws.amazon.com/ses/latest/DeveloperGuide/send-personalized-email-api.html Amazon SES Developer Guide> .
 --
 --
 --
 -- /See:/ 'sendBulkTemplatedEmail' smart constructor.
-data SendBulkTemplatedEmail =
-  SendBulkTemplatedEmail'
-    { _sbteReturnPath           :: !(Maybe Text)
-    , _sbteConfigurationSetName :: !(Maybe Text)
-    , _sbteSourceARN            :: !(Maybe Text)
-    , _sbteDefaultTags          :: !(Maybe [MessageTag])
-    , _sbteReturnPathARN        :: !(Maybe Text)
-    , _sbteTemplateARN          :: !(Maybe Text)
-    , _sbteDefaultTemplateData  :: !(Maybe Text)
-    , _sbteReplyToAddresses     :: !(Maybe [Text])
-    , _sbteSource               :: !Text
-    , _sbteTemplate             :: !Text
-    , _sbteDestinations         :: ![BulkEmailDestination]
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data SendBulkTemplatedEmail = SendBulkTemplatedEmail'{_sbteReturnPath
+                                                      :: !(Maybe Text),
+                                                      _sbteConfigurationSetName
+                                                      :: !(Maybe Text),
+                                                      _sbteSourceARN ::
+                                                      !(Maybe Text),
+                                                      _sbteDefaultTags ::
+                                                      !(Maybe [MessageTag]),
+                                                      _sbteReturnPathARN ::
+                                                      !(Maybe Text),
+                                                      _sbteTemplateARN ::
+                                                      !(Maybe Text),
+                                                      _sbteDefaultTemplateData
+                                                      :: !(Maybe Text),
+                                                      _sbteReplyToAddresses ::
+                                                      !(Maybe [Text]),
+                                                      _sbteSource :: !Text,
+                                                      _sbteTemplate :: !Text,
+                                                      _sbteDestinations ::
+                                                      ![BulkEmailDestination]}
+                                deriving (Eq, Read, Show, Data, Typeable,
+                                          Generic)
 
 -- | Creates a value of 'SendBulkTemplatedEmail' with the minimum fields required to make a request.
 --
 -- Use one of the following lenses to modify other fields as desired:
 --
--- * 'sbteReturnPath' - The email address that bounces and complaints will be forwarded to when feedback forwarding is enabled. If the message cannot be delivered to the recipient, then an error message will be returned from the recipient's ISP; this message will then be forwarded to the email address specified by the @ReturnPath@ parameter. The @ReturnPath@ parameter is never overwritten. This email address must be either individually verified with Amazon SES, or from a domain that has been verified with Amazon SES.
+-- * 'sbteReturnPath' - The email address that bounces and complaints will be forwarded to when feedback forwarding is enabled. If the message cannot be delivered to the recipient, then an error message will be returned from the recipient's ISP; this message will then be forwarded to the email address specified by the @ReturnPath@ parameter. The @ReturnPath@ parameter is never overwritten. This email address must be either individually verified with Amazon SES, or from a domain that has been verified with Amazon SES. 
 --
 -- * 'sbteConfigurationSetName' - The name of the configuration set to use when you send an email using @SendBulkTemplatedEmail@ .
 --
@@ -119,23 +124,19 @@ sendBulkTemplatedEmail
     :: Text -- ^ 'sbteSource'
     -> Text -- ^ 'sbteTemplate'
     -> SendBulkTemplatedEmail
-sendBulkTemplatedEmail pSource_ pTemplate_ =
-  SendBulkTemplatedEmail'
-    { _sbteReturnPath = Nothing
-    , _sbteConfigurationSetName = Nothing
-    , _sbteSourceARN = Nothing
-    , _sbteDefaultTags = Nothing
-    , _sbteReturnPathARN = Nothing
-    , _sbteTemplateARN = Nothing
-    , _sbteDefaultTemplateData = Nothing
-    , _sbteReplyToAddresses = Nothing
-    , _sbteSource = pSource_
-    , _sbteTemplate = pTemplate_
-    , _sbteDestinations = mempty
-    }
+sendBulkTemplatedEmail pSource_ pTemplate_
+  = SendBulkTemplatedEmail'{_sbteReturnPath = Nothing,
+                            _sbteConfigurationSetName = Nothing,
+                            _sbteSourceARN = Nothing,
+                            _sbteDefaultTags = Nothing,
+                            _sbteReturnPathARN = Nothing,
+                            _sbteTemplateARN = Nothing,
+                            _sbteDefaultTemplateData = Nothing,
+                            _sbteReplyToAddresses = Nothing,
+                            _sbteSource = pSource_, _sbteTemplate = pTemplate_,
+                            _sbteDestinations = mempty}
 
-
--- | The email address that bounces and complaints will be forwarded to when feedback forwarding is enabled. If the message cannot be delivered to the recipient, then an error message will be returned from the recipient's ISP; this message will then be forwarded to the email address specified by the @ReturnPath@ parameter. The @ReturnPath@ parameter is never overwritten. This email address must be either individually verified with Amazon SES, or from a domain that has been verified with Amazon SES.
+-- | The email address that bounces and complaints will be forwarded to when feedback forwarding is enabled. If the message cannot be delivered to the recipient, then an error message will be returned from the recipient's ISP; this message will then be forwarded to the email address specified by the @ReturnPath@ parameter. The @ReturnPath@ parameter is never overwritten. This email address must be either individually verified with Amazon SES, or from a domain that has been verified with Amazon SES. 
 sbteReturnPath :: Lens' SendBulkTemplatedEmail (Maybe Text)
 sbteReturnPath = lens _sbteReturnPath (\ s a -> s{_sbteReturnPath = a})
 
@@ -223,13 +224,13 @@ instance ToQuery SendBulkTemplatedEmail where
                  toQueryList "member" _sbteDestinations]
 
 -- | /See:/ 'sendBulkTemplatedEmailResponse' smart constructor.
-data SendBulkTemplatedEmailResponse =
-  SendBulkTemplatedEmailResponse'
-    { _sbtersResponseStatus :: !Int
-    , _sbtersStatus         :: ![BulkEmailDestinationStatus]
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data SendBulkTemplatedEmailResponse = SendBulkTemplatedEmailResponse'{_sbtersResponseStatus
+                                                                      :: !Int,
+                                                                      _sbtersStatus
+                                                                      ::
+                                                                      ![BulkEmailDestinationStatus]}
+                                        deriving (Eq, Read, Show, Data,
+                                                  Typeable, Generic)
 
 -- | Creates a value of 'SendBulkTemplatedEmailResponse' with the minimum fields required to make a request.
 --
@@ -241,10 +242,10 @@ data SendBulkTemplatedEmailResponse =
 sendBulkTemplatedEmailResponse
     :: Int -- ^ 'sbtersResponseStatus'
     -> SendBulkTemplatedEmailResponse
-sendBulkTemplatedEmailResponse pResponseStatus_ =
-  SendBulkTemplatedEmailResponse'
-    {_sbtersResponseStatus = pResponseStatus_, _sbtersStatus = mempty}
-
+sendBulkTemplatedEmailResponse pResponseStatus_
+  = SendBulkTemplatedEmailResponse'{_sbtersResponseStatus
+                                      = pResponseStatus_,
+                                    _sbtersStatus = mempty}
 
 -- | -- | The response status code.
 sbtersResponseStatus :: Lens' SendBulkTemplatedEmailResponse Int

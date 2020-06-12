@@ -45,7 +45,6 @@ module Network.AWS.ELB.SetLoadBalancerPoliciesForBackendServer
     ) where
 
 import Network.AWS.ELB.Types
-import Network.AWS.ELB.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.Request
@@ -56,14 +55,17 @@ import Network.AWS.Response
 --
 --
 -- /See:/ 'setLoadBalancerPoliciesForBackendServer' smart constructor.
-data SetLoadBalancerPoliciesForBackendServer =
-  SetLoadBalancerPoliciesForBackendServer'
-    { _slbpfbsLoadBalancerName :: !Text
-    , _slbpfbsInstancePort     :: !Int
-    , _slbpfbsPolicyNames      :: ![Text]
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data SetLoadBalancerPoliciesForBackendServer = SetLoadBalancerPoliciesForBackendServer'{_slbpfbsLoadBalancerName
+                                                                                        ::
+                                                                                        !Text,
+                                                                                        _slbpfbsInstancePort
+                                                                                        ::
+                                                                                        !Int,
+                                                                                        _slbpfbsPolicyNames
+                                                                                        ::
+                                                                                        ![Text]}
+                                                 deriving (Eq, Read, Show, Data,
+                                                           Typeable, Generic)
 
 -- | Creates a value of 'SetLoadBalancerPoliciesForBackendServer' with the minimum fields required to make a request.
 --
@@ -78,13 +80,13 @@ setLoadBalancerPoliciesForBackendServer
     :: Text -- ^ 'slbpfbsLoadBalancerName'
     -> Int -- ^ 'slbpfbsInstancePort'
     -> SetLoadBalancerPoliciesForBackendServer
-setLoadBalancerPoliciesForBackendServer pLoadBalancerName_ pInstancePort_ =
-  SetLoadBalancerPoliciesForBackendServer'
-    { _slbpfbsLoadBalancerName = pLoadBalancerName_
-    , _slbpfbsInstancePort = pInstancePort_
-    , _slbpfbsPolicyNames = mempty
-    }
-
+setLoadBalancerPoliciesForBackendServer
+  pLoadBalancerName_ pInstancePort_
+  = SetLoadBalancerPoliciesForBackendServer'{_slbpfbsLoadBalancerName
+                                               = pLoadBalancerName_,
+                                             _slbpfbsInstancePort =
+                                               pInstancePort_,
+                                             _slbpfbsPolicyNames = mempty}
 
 -- | The name of the load balancer.
 slbpfbsLoadBalancerName :: Lens' SetLoadBalancerPoliciesForBackendServer Text
@@ -148,12 +150,14 @@ instance ToQuery
 --
 --
 -- /See:/ 'setLoadBalancerPoliciesForBackendServerResponse' smart constructor.
-newtype SetLoadBalancerPoliciesForBackendServerResponse =
-  SetLoadBalancerPoliciesForBackendServerResponse'
-    { _slbpfbsrsResponseStatus :: Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+newtype SetLoadBalancerPoliciesForBackendServerResponse = SetLoadBalancerPoliciesForBackendServerResponse'{_slbpfbsrsResponseStatus
+                                                                                                           ::
+                                                                                                           Int}
+                                                            deriving (Eq, Read,
+                                                                      Show,
+                                                                      Data,
+                                                                      Typeable,
+                                                                      Generic)
 
 -- | Creates a value of 'SetLoadBalancerPoliciesForBackendServerResponse' with the minimum fields required to make a request.
 --
@@ -163,10 +167,10 @@ newtype SetLoadBalancerPoliciesForBackendServerResponse =
 setLoadBalancerPoliciesForBackendServerResponse
     :: Int -- ^ 'slbpfbsrsResponseStatus'
     -> SetLoadBalancerPoliciesForBackendServerResponse
-setLoadBalancerPoliciesForBackendServerResponse pResponseStatus_ =
-  SetLoadBalancerPoliciesForBackendServerResponse'
-    {_slbpfbsrsResponseStatus = pResponseStatus_}
-
+setLoadBalancerPoliciesForBackendServerResponse
+  pResponseStatus_
+  = SetLoadBalancerPoliciesForBackendServerResponse'{_slbpfbsrsResponseStatus
+                                                       = pResponseStatus_}
 
 -- | -- | The response status code.
 slbpfbsrsResponseStatus :: Lens' SetLoadBalancerPoliciesForBackendServerResponse Int

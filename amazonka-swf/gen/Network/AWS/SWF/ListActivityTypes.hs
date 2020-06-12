@@ -21,7 +21,7 @@
 -- Returns information about all activities registered in the specified domain that match the specified name and registration status. The result includes information like creation date, current status of the activity, etc. The results may be split into multiple pages. To retrieve subsequent pages, make the call again using the @nextPageToken@ returned by the initial call.
 --
 --
--- __Access Control__
+-- __Access Control__ 
 --
 -- You can use IAM policies to control this action's access to Amazon SWF resources as follows:
 --
@@ -65,20 +65,17 @@ import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 import Network.AWS.SWF.Types
-import Network.AWS.SWF.Types.Product
 
 -- | /See:/ 'listActivityTypes' smart constructor.
-data ListActivityTypes =
-  ListActivityTypes'
-    { _latNextPageToken      :: !(Maybe Text)
-    , _latReverseOrder       :: !(Maybe Bool)
-    , _latName               :: !(Maybe Text)
-    , _latMaximumPageSize    :: !(Maybe Nat)
-    , _latDomain             :: !Text
-    , _latRegistrationStatus :: !RegistrationStatus
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data ListActivityTypes = ListActivityTypes'{_latNextPageToken
+                                            :: !(Maybe Text),
+                                            _latReverseOrder :: !(Maybe Bool),
+                                            _latName :: !(Maybe Text),
+                                            _latMaximumPageSize :: !(Maybe Nat),
+                                            _latDomain :: !Text,
+                                            _latRegistrationStatus ::
+                                            !RegistrationStatus}
+                           deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'ListActivityTypes' with the minimum fields required to make a request.
 --
@@ -99,16 +96,11 @@ listActivityTypes
     :: Text -- ^ 'latDomain'
     -> RegistrationStatus -- ^ 'latRegistrationStatus'
     -> ListActivityTypes
-listActivityTypes pDomain_ pRegistrationStatus_ =
-  ListActivityTypes'
-    { _latNextPageToken = Nothing
-    , _latReverseOrder = Nothing
-    , _latName = Nothing
-    , _latMaximumPageSize = Nothing
-    , _latDomain = pDomain_
-    , _latRegistrationStatus = pRegistrationStatus_
-    }
-
+listActivityTypes pDomain_ pRegistrationStatus_
+  = ListActivityTypes'{_latNextPageToken = Nothing,
+                       _latReverseOrder = Nothing, _latName = Nothing,
+                       _latMaximumPageSize = Nothing, _latDomain = pDomain_,
+                       _latRegistrationStatus = pRegistrationStatus_}
 
 -- | If a @NextPageToken@ was returned by a previous call, there are more results available. To retrieve the next page of results, make the call again using the returned token in @nextPageToken@ . Keep all other arguments unchanged. The configured @maximumPageSize@ determines how many results can be returned in a single call.
 latNextPageToken :: Lens' ListActivityTypes (Maybe Text)
@@ -189,14 +181,14 @@ instance ToQuery ListActivityTypes where
 --
 --
 -- /See:/ 'listActivityTypesResponse' smart constructor.
-data ListActivityTypesResponse =
-  ListActivityTypesResponse'
-    { _latrsNextPageToken  :: !(Maybe Text)
-    , _latrsResponseStatus :: !Int
-    , _latrsTypeInfos      :: ![ActivityTypeInfo]
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data ListActivityTypesResponse = ListActivityTypesResponse'{_latrsNextPageToken
+                                                            :: !(Maybe Text),
+                                                            _latrsResponseStatus
+                                                            :: !Int,
+                                                            _latrsTypeInfos ::
+                                                            ![ActivityTypeInfo]}
+                                   deriving (Eq, Read, Show, Data, Typeable,
+                                             Generic)
 
 -- | Creates a value of 'ListActivityTypesResponse' with the minimum fields required to make a request.
 --
@@ -210,13 +202,11 @@ data ListActivityTypesResponse =
 listActivityTypesResponse
     :: Int -- ^ 'latrsResponseStatus'
     -> ListActivityTypesResponse
-listActivityTypesResponse pResponseStatus_ =
-  ListActivityTypesResponse'
-    { _latrsNextPageToken = Nothing
-    , _latrsResponseStatus = pResponseStatus_
-    , _latrsTypeInfos = mempty
-    }
-
+listActivityTypesResponse pResponseStatus_
+  = ListActivityTypesResponse'{_latrsNextPageToken =
+                                 Nothing,
+                               _latrsResponseStatus = pResponseStatus_,
+                               _latrsTypeInfos = mempty}
 
 -- | If a @NextPageToken@ was returned by a previous call, there are more results available. To retrieve the next page of results, make the call again using the returned token in @nextPageToken@ . Keep all other arguments unchanged. The configured @maximumPageSize@ determines how many results can be returned in a single call.
 latrsNextPageToken :: Lens' ListActivityTypesResponse (Maybe Text)

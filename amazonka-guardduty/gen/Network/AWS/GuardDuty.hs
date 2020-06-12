@@ -32,70 +32,70 @@ module Network.AWS.GuardDuty
     -- * Operations
     -- $operations
 
-    -- ** CreateFilter
+    -- ** CreateFilter 
     , module Network.AWS.GuardDuty.CreateFilter
 
     -- ** ListFindings (Paginated)
     , module Network.AWS.GuardDuty.ListFindings
 
-    -- ** CreateIPSet
+    -- ** CreateIPSet 
     , module Network.AWS.GuardDuty.CreateIPSet
 
-    -- ** DeleteThreatIntelSet
+    -- ** DeleteThreatIntelSet 
     , module Network.AWS.GuardDuty.DeleteThreatIntelSet
 
-    -- ** UpdateThreatIntelSet
+    -- ** UpdateThreatIntelSet 
     , module Network.AWS.GuardDuty.UpdateThreatIntelSet
 
-    -- ** StopMonitoringMembers
+    -- ** StopMonitoringMembers 
     , module Network.AWS.GuardDuty.StopMonitoringMembers
 
     -- ** ListThreatIntelSets (Paginated)
     , module Network.AWS.GuardDuty.ListThreatIntelSets
 
-    -- ** CreateThreatIntelSet
+    -- ** CreateThreatIntelSet 
     , module Network.AWS.GuardDuty.CreateThreatIntelSet
 
-    -- ** DeleteMembers
+    -- ** DeleteMembers 
     , module Network.AWS.GuardDuty.DeleteMembers
 
-    -- ** GetFindingsStatistics
+    -- ** GetFindingsStatistics 
     , module Network.AWS.GuardDuty.GetFindingsStatistics
 
-    -- ** GetIPSet
+    -- ** GetIPSet 
     , module Network.AWS.GuardDuty.GetIPSet
 
     -- ** ListInvitations (Paginated)
     , module Network.AWS.GuardDuty.ListInvitations
 
-    -- ** GetThreatIntelSet
+    -- ** GetThreatIntelSet 
     , module Network.AWS.GuardDuty.GetThreatIntelSet
 
-    -- ** DeleteInvitations
+    -- ** DeleteInvitations 
     , module Network.AWS.GuardDuty.DeleteInvitations
 
-    -- ** GetMasterAccount
+    -- ** GetMasterAccount 
     , module Network.AWS.GuardDuty.GetMasterAccount
 
-    -- ** CreateDetector
+    -- ** CreateDetector 
     , module Network.AWS.GuardDuty.CreateDetector
 
-    -- ** DeclineInvitations
+    -- ** DeclineInvitations 
     , module Network.AWS.GuardDuty.DeclineInvitations
 
-    -- ** UpdateFilter
+    -- ** UpdateFilter 
     , module Network.AWS.GuardDuty.UpdateFilter
 
-    -- ** DeleteFilter
+    -- ** DeleteFilter 
     , module Network.AWS.GuardDuty.DeleteFilter
 
-    -- ** DisassociateMembers
+    -- ** DisassociateMembers 
     , module Network.AWS.GuardDuty.DisassociateMembers
 
-    -- ** DisassociateFromMasterAccount
+    -- ** DisassociateFromMasterAccount 
     , module Network.AWS.GuardDuty.DisassociateFromMasterAccount
 
-    -- ** AcceptInvitation
+    -- ** AcceptInvitation 
     , module Network.AWS.GuardDuty.AcceptInvitation
 
     -- ** ListFilters (Paginated)
@@ -104,58 +104,58 @@ module Network.AWS.GuardDuty
     -- ** ListMembers (Paginated)
     , module Network.AWS.GuardDuty.ListMembers
 
-    -- ** GetDetector
+    -- ** GetDetector 
     , module Network.AWS.GuardDuty.GetDetector
 
-    -- ** CreateSampleFindings
+    -- ** CreateSampleFindings 
     , module Network.AWS.GuardDuty.CreateSampleFindings
 
-    -- ** ArchiveFindings
+    -- ** ArchiveFindings 
     , module Network.AWS.GuardDuty.ArchiveFindings
 
-    -- ** CreateMembers
+    -- ** CreateMembers 
     , module Network.AWS.GuardDuty.CreateMembers
 
-    -- ** UnarchiveFindings
+    -- ** UnarchiveFindings 
     , module Network.AWS.GuardDuty.UnarchiveFindings
 
-    -- ** GetInvitationsCount
+    -- ** GetInvitationsCount 
     , module Network.AWS.GuardDuty.GetInvitationsCount
 
-    -- ** StartMonitoringMembers
+    -- ** StartMonitoringMembers 
     , module Network.AWS.GuardDuty.StartMonitoringMembers
 
-    -- ** InviteMembers
+    -- ** InviteMembers 
     , module Network.AWS.GuardDuty.InviteMembers
 
-    -- ** DeleteIPSet
+    -- ** DeleteIPSet 
     , module Network.AWS.GuardDuty.DeleteIPSet
 
-    -- ** UpdateIPSet
+    -- ** UpdateIPSet 
     , module Network.AWS.GuardDuty.UpdateIPSet
 
     -- ** ListIPSets (Paginated)
     , module Network.AWS.GuardDuty.ListIPSets
 
-    -- ** GetMembers
+    -- ** GetMembers 
     , module Network.AWS.GuardDuty.GetMembers
 
-    -- ** GetFindings
+    -- ** GetFindings 
     , module Network.AWS.GuardDuty.GetFindings
 
     -- ** ListDetectors (Paginated)
     , module Network.AWS.GuardDuty.ListDetectors
 
-    -- ** UpdateDetector
+    -- ** UpdateDetector 
     , module Network.AWS.GuardDuty.UpdateDetector
 
-    -- ** DeleteDetector
+    -- ** DeleteDetector 
     , module Network.AWS.GuardDuty.DeleteDetector
 
-    -- ** UpdateFindingsFeedback
+    -- ** UpdateFindingsFeedback 
     , module Network.AWS.GuardDuty.UpdateFindingsFeedback
 
-    -- ** GetFilter
+    -- ** GetFilter 
     , module Network.AWS.GuardDuty.GetFilter
 
     -- * Types
@@ -466,8 +466,8 @@ import Network.AWS.GuardDuty.CreateThreatIntelSet
 import Network.AWS.GuardDuty.DeclineInvitations
 import Network.AWS.GuardDuty.DeleteDetector
 import Network.AWS.GuardDuty.DeleteFilter
-import Network.AWS.GuardDuty.DeleteInvitations
 import Network.AWS.GuardDuty.DeleteIPSet
+import Network.AWS.GuardDuty.DeleteInvitations
 import Network.AWS.GuardDuty.DeleteMembers
 import Network.AWS.GuardDuty.DeleteThreatIntelSet
 import Network.AWS.GuardDuty.DisassociateFromMasterAccount
@@ -476,8 +476,8 @@ import Network.AWS.GuardDuty.GetDetector
 import Network.AWS.GuardDuty.GetFilter
 import Network.AWS.GuardDuty.GetFindings
 import Network.AWS.GuardDuty.GetFindingsStatistics
-import Network.AWS.GuardDuty.GetInvitationsCount
 import Network.AWS.GuardDuty.GetIPSet
+import Network.AWS.GuardDuty.GetInvitationsCount
 import Network.AWS.GuardDuty.GetMasterAccount
 import Network.AWS.GuardDuty.GetMembers
 import Network.AWS.GuardDuty.GetThreatIntelSet
@@ -485,8 +485,8 @@ import Network.AWS.GuardDuty.InviteMembers
 import Network.AWS.GuardDuty.ListDetectors
 import Network.AWS.GuardDuty.ListFilters
 import Network.AWS.GuardDuty.ListFindings
-import Network.AWS.GuardDuty.ListInvitations
 import Network.AWS.GuardDuty.ListIPSets
+import Network.AWS.GuardDuty.ListInvitations
 import Network.AWS.GuardDuty.ListMembers
 import Network.AWS.GuardDuty.ListThreatIntelSets
 import Network.AWS.GuardDuty.StartMonitoringMembers

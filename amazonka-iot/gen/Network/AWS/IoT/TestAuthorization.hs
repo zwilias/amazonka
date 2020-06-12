@@ -43,24 +43,23 @@ module Network.AWS.IoT.TestAuthorization
     ) where
 
 import Network.AWS.IoT.Types
-import Network.AWS.IoT.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 
 -- | /See:/ 'testAuthorization' smart constructor.
-data TestAuthorization =
-  TestAuthorization'
-    { _taClientId              :: !(Maybe Text)
-    , _taPolicyNamesToAdd      :: !(Maybe [Text])
-    , _taPrincipal             :: !(Maybe Text)
-    , _taCognitoIdentityPoolId :: !(Maybe Text)
-    , _taPolicyNamesToSkip     :: !(Maybe [Text])
-    , _taAuthInfos             :: !(List1 AuthInfo)
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data TestAuthorization = TestAuthorization'{_taClientId
+                                            :: !(Maybe Text),
+                                            _taPolicyNamesToAdd ::
+                                            !(Maybe [Text]),
+                                            _taPrincipal :: !(Maybe Text),
+                                            _taCognitoIdentityPoolId ::
+                                            !(Maybe Text),
+                                            _taPolicyNamesToSkip ::
+                                            !(Maybe [Text]),
+                                            _taAuthInfos :: !(List1 AuthInfo)}
+                           deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'TestAuthorization' with the minimum fields required to make a request.
 --
@@ -80,16 +79,13 @@ data TestAuthorization =
 testAuthorization
     :: NonEmpty AuthInfo -- ^ 'taAuthInfos'
     -> TestAuthorization
-testAuthorization pAuthInfos_ =
-  TestAuthorization'
-    { _taClientId = Nothing
-    , _taPolicyNamesToAdd = Nothing
-    , _taPrincipal = Nothing
-    , _taCognitoIdentityPoolId = Nothing
-    , _taPolicyNamesToSkip = Nothing
-    , _taAuthInfos = _List1 # pAuthInfos_
-    }
-
+testAuthorization pAuthInfos_
+  = TestAuthorization'{_taClientId = Nothing,
+                       _taPolicyNamesToAdd = Nothing,
+                       _taPrincipal = Nothing,
+                       _taCognitoIdentityPoolId = Nothing,
+                       _taPolicyNamesToSkip = Nothing,
+                       _taAuthInfos = _List1 # pAuthInfos_}
 
 -- | The MQTT client ID.
 taClientId :: Lens' TestAuthorization (Maybe Text)
@@ -151,13 +147,14 @@ instance ToQuery TestAuthorization where
           = mconcat ["clientId" =: _taClientId]
 
 -- | /See:/ 'testAuthorizationResponse' smart constructor.
-data TestAuthorizationResponse =
-  TestAuthorizationResponse'
-    { _tarsAuthResults    :: !(Maybe [AuthResult])
-    , _tarsResponseStatus :: !Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data TestAuthorizationResponse = TestAuthorizationResponse'{_tarsAuthResults
+                                                            ::
+                                                            !(Maybe
+                                                                [AuthResult]),
+                                                            _tarsResponseStatus
+                                                            :: !Int}
+                                   deriving (Eq, Read, Show, Data, Typeable,
+                                             Generic)
 
 -- | Creates a value of 'TestAuthorizationResponse' with the minimum fields required to make a request.
 --
@@ -169,10 +166,10 @@ data TestAuthorizationResponse =
 testAuthorizationResponse
     :: Int -- ^ 'tarsResponseStatus'
     -> TestAuthorizationResponse
-testAuthorizationResponse pResponseStatus_ =
-  TestAuthorizationResponse'
-    {_tarsAuthResults = Nothing, _tarsResponseStatus = pResponseStatus_}
-
+testAuthorizationResponse pResponseStatus_
+  = TestAuthorizationResponse'{_tarsAuthResults =
+                                 Nothing,
+                               _tarsResponseStatus = pResponseStatus_}
 
 -- | The authentication results.
 tarsAuthResults :: Lens' TestAuthorizationResponse [AuthResult]

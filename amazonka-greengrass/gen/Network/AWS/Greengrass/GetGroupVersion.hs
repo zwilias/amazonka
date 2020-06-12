@@ -41,20 +41,16 @@ module Network.AWS.Greengrass.GetGroupVersion
     ) where
 
 import Network.AWS.Greengrass.Types
-import Network.AWS.Greengrass.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 
 -- | /See:/ 'getGroupVersion' smart constructor.
-data GetGroupVersion =
-  GetGroupVersion'
-    { _ggvGroupVersionId :: !Text
-    , _ggvGroupId        :: !Text
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data GetGroupVersion = GetGroupVersion'{_ggvGroupVersionId
+                                        :: !Text,
+                                        _ggvGroupId :: !Text}
+                         deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'GetGroupVersion' with the minimum fields required to make a request.
 --
@@ -67,10 +63,10 @@ getGroupVersion
     :: Text -- ^ 'ggvGroupVersionId'
     -> Text -- ^ 'ggvGroupId'
     -> GetGroupVersion
-getGroupVersion pGroupVersionId_ pGroupId_ =
-  GetGroupVersion'
-    {_ggvGroupVersionId = pGroupVersionId_, _ggvGroupId = pGroupId_}
-
+getGroupVersion pGroupVersionId_ pGroupId_
+  = GetGroupVersion'{_ggvGroupVersionId =
+                       pGroupVersionId_,
+                     _ggvGroupId = pGroupId_}
 
 -- | The ID of the group version.
 ggvGroupVersionId :: Lens' GetGroupVersion Text
@@ -114,17 +110,21 @@ instance ToQuery GetGroupVersion where
         toQuery = const mempty
 
 -- | /See:/ 'getGroupVersionResponse' smart constructor.
-data GetGroupVersionResponse =
-  GetGroupVersionResponse'
-    { _ggvrsDefinition        :: !(Maybe GroupVersion)
-    , _ggvrsARN               :: !(Maybe Text)
-    , _ggvrsCreationTimestamp :: !(Maybe Text)
-    , _ggvrsVersion           :: !(Maybe Text)
-    , _ggvrsId                :: !(Maybe Text)
-    , _ggvrsResponseStatus    :: !Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data GetGroupVersionResponse = GetGroupVersionResponse'{_ggvrsDefinition
+                                                        ::
+                                                        !(Maybe GroupVersion),
+                                                        _ggvrsARN ::
+                                                        !(Maybe Text),
+                                                        _ggvrsCreationTimestamp
+                                                        :: !(Maybe Text),
+                                                        _ggvrsVersion ::
+                                                        !(Maybe Text),
+                                                        _ggvrsId ::
+                                                        !(Maybe Text),
+                                                        _ggvrsResponseStatus ::
+                                                        !Int}
+                                 deriving (Eq, Read, Show, Data, Typeable,
+                                           Generic)
 
 -- | Creates a value of 'GetGroupVersionResponse' with the minimum fields required to make a request.
 --
@@ -144,16 +144,13 @@ data GetGroupVersionResponse =
 getGroupVersionResponse
     :: Int -- ^ 'ggvrsResponseStatus'
     -> GetGroupVersionResponse
-getGroupVersionResponse pResponseStatus_ =
-  GetGroupVersionResponse'
-    { _ggvrsDefinition = Nothing
-    , _ggvrsARN = Nothing
-    , _ggvrsCreationTimestamp = Nothing
-    , _ggvrsVersion = Nothing
-    , _ggvrsId = Nothing
-    , _ggvrsResponseStatus = pResponseStatus_
-    }
-
+getGroupVersionResponse pResponseStatus_
+  = GetGroupVersionResponse'{_ggvrsDefinition =
+                               Nothing,
+                             _ggvrsARN = Nothing,
+                             _ggvrsCreationTimestamp = Nothing,
+                             _ggvrsVersion = Nothing, _ggvrsId = Nothing,
+                             _ggvrsResponseStatus = pResponseStatus_}
 
 -- | Information about the group version definition.
 ggvrsDefinition :: Lens' GetGroupVersionResponse (Maybe GroupVersion)

@@ -51,7 +51,6 @@ module Network.AWS.EC2.RequestSpotFleet
     ) where
 
 import Network.AWS.EC2.Types
-import Network.AWS.EC2.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.Request
@@ -62,13 +61,11 @@ import Network.AWS.Response
 --
 --
 -- /See:/ 'requestSpotFleet' smart constructor.
-data RequestSpotFleet =
-  RequestSpotFleet'
-    { _rsfDryRun                 :: !(Maybe Bool)
-    , _rsfSpotFleetRequestConfig :: !SpotFleetRequestConfigData
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data RequestSpotFleet = RequestSpotFleet'{_rsfDryRun
+                                          :: !(Maybe Bool),
+                                          _rsfSpotFleetRequestConfig ::
+                                          !SpotFleetRequestConfigData}
+                          deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'RequestSpotFleet' with the minimum fields required to make a request.
 --
@@ -80,12 +77,10 @@ data RequestSpotFleet =
 requestSpotFleet
     :: SpotFleetRequestConfigData -- ^ 'rsfSpotFleetRequestConfig'
     -> RequestSpotFleet
-requestSpotFleet pSpotFleetRequestConfig_ =
-  RequestSpotFleet'
-    { _rsfDryRun = Nothing
-    , _rsfSpotFleetRequestConfig = pSpotFleetRequestConfig_
-    }
-
+requestSpotFleet pSpotFleetRequestConfig_
+  = RequestSpotFleet'{_rsfDryRun = Nothing,
+                      _rsfSpotFleetRequestConfig =
+                        pSpotFleetRequestConfig_}
 
 -- | Checks whether you have the required permissions for the action, without actually making the request, and provides an error response. If you have the required permissions, the error response is @DryRunOperation@ . Otherwise, it is @UnauthorizedOperation@ .
 rsfDryRun :: Lens' RequestSpotFleet (Maybe Bool)
@@ -128,13 +123,12 @@ instance ToQuery RequestSpotFleet where
 --
 --
 -- /See:/ 'requestSpotFleetResponse' smart constructor.
-data RequestSpotFleetResponse =
-  RequestSpotFleetResponse'
-    { _rsfrsSpotFleetRequestId :: !(Maybe Text)
-    , _rsfrsResponseStatus     :: !Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data RequestSpotFleetResponse = RequestSpotFleetResponse'{_rsfrsSpotFleetRequestId
+                                                          :: !(Maybe Text),
+                                                          _rsfrsResponseStatus
+                                                          :: !Int}
+                                  deriving (Eq, Read, Show, Data, Typeable,
+                                            Generic)
 
 -- | Creates a value of 'RequestSpotFleetResponse' with the minimum fields required to make a request.
 --
@@ -146,12 +140,10 @@ data RequestSpotFleetResponse =
 requestSpotFleetResponse
     :: Int -- ^ 'rsfrsResponseStatus'
     -> RequestSpotFleetResponse
-requestSpotFleetResponse pResponseStatus_ =
-  RequestSpotFleetResponse'
-    { _rsfrsSpotFleetRequestId = Nothing
-    , _rsfrsResponseStatus = pResponseStatus_
-    }
-
+requestSpotFleetResponse pResponseStatus_
+  = RequestSpotFleetResponse'{_rsfrsSpotFleetRequestId
+                                = Nothing,
+                              _rsfrsResponseStatus = pResponseStatus_}
 
 -- | The ID of the Spot Fleet request.
 rsfrsSpotFleetRequestId :: Lens' RequestSpotFleetResponse (Maybe Text)

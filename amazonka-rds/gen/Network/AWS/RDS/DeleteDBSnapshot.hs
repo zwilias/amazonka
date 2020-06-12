@@ -40,21 +40,17 @@ module Network.AWS.RDS.DeleteDBSnapshot
 import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.RDS.Types
-import Network.AWS.RDS.Types.Product
 import Network.AWS.Request
 import Network.AWS.Response
 
--- |
+-- | 
 --
 --
 --
 -- /See:/ 'deleteDBSnapshot' smart constructor.
-newtype DeleteDBSnapshot =
-  DeleteDBSnapshot'
-    { _ddbsDBSnapshotIdentifier :: Text
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+newtype DeleteDBSnapshot = DeleteDBSnapshot'{_ddbsDBSnapshotIdentifier
+                                             :: Text}
+                             deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'DeleteDBSnapshot' with the minimum fields required to make a request.
 --
@@ -64,9 +60,9 @@ newtype DeleteDBSnapshot =
 deleteDBSnapshot
     :: Text -- ^ 'ddbsDBSnapshotIdentifier'
     -> DeleteDBSnapshot
-deleteDBSnapshot pDBSnapshotIdentifier_ =
-  DeleteDBSnapshot' {_ddbsDBSnapshotIdentifier = pDBSnapshotIdentifier_}
-
+deleteDBSnapshot pDBSnapshotIdentifier_
+  = DeleteDBSnapshot'{_ddbsDBSnapshotIdentifier =
+                        pDBSnapshotIdentifier_}
 
 -- | The DBSnapshot identifier. Constraints: Must be the name of an existing DB snapshot in the @available@ state.
 ddbsDBSnapshotIdentifier :: Lens' DeleteDBSnapshot Text
@@ -99,13 +95,13 @@ instance ToQuery DeleteDBSnapshot where
                "DBSnapshotIdentifier" =: _ddbsDBSnapshotIdentifier]
 
 -- | /See:/ 'deleteDBSnapshotResponse' smart constructor.
-data DeleteDBSnapshotResponse =
-  DeleteDBSnapshotResponse'
-    { _ddbsrsDBSnapshot     :: !(Maybe DBSnapshot)
-    , _ddbsrsResponseStatus :: !Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data DeleteDBSnapshotResponse = DeleteDBSnapshotResponse'{_ddbsrsDBSnapshot
+                                                          ::
+                                                          !(Maybe DBSnapshot),
+                                                          _ddbsrsResponseStatus
+                                                          :: !Int}
+                                  deriving (Eq, Read, Show, Data, Typeable,
+                                            Generic)
 
 -- | Creates a value of 'DeleteDBSnapshotResponse' with the minimum fields required to make a request.
 --
@@ -117,10 +113,10 @@ data DeleteDBSnapshotResponse =
 deleteDBSnapshotResponse
     :: Int -- ^ 'ddbsrsResponseStatus'
     -> DeleteDBSnapshotResponse
-deleteDBSnapshotResponse pResponseStatus_ =
-  DeleteDBSnapshotResponse'
-    {_ddbsrsDBSnapshot = Nothing, _ddbsrsResponseStatus = pResponseStatus_}
-
+deleteDBSnapshotResponse pResponseStatus_
+  = DeleteDBSnapshotResponse'{_ddbsrsDBSnapshot =
+                                Nothing,
+                              _ddbsrsResponseStatus = pResponseStatus_}
 
 -- | Undocumented member.
 ddbsrsDBSnapshot :: Lens' DeleteDBSnapshotResponse (Maybe DBSnapshot)

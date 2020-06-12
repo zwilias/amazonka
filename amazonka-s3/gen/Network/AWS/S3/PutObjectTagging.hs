@@ -44,19 +44,15 @@ import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 import Network.AWS.S3.Types
-import Network.AWS.S3.Types.Product
 
 -- | /See:/ 'putObjectTagging' smart constructor.
-data PutObjectTagging =
-  PutObjectTagging'
-    { _potVersionId  :: !(Maybe ObjectVersionId)
-    , _potContentMD5 :: !(Maybe Text)
-    , _potBucket     :: !BucketName
-    , _potKey        :: !ObjectKey
-    , _potTagging    :: !Tagging
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data PutObjectTagging = PutObjectTagging'{_potVersionId
+                                          :: !(Maybe ObjectVersionId),
+                                          _potContentMD5 :: !(Maybe Text),
+                                          _potBucket :: !BucketName,
+                                          _potKey :: !ObjectKey,
+                                          _potTagging :: !Tagging}
+                          deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'PutObjectTagging' with the minimum fields required to make a request.
 --
@@ -76,15 +72,10 @@ putObjectTagging
     -> ObjectKey -- ^ 'potKey'
     -> Tagging -- ^ 'potTagging'
     -> PutObjectTagging
-putObjectTagging pBucket_ pKey_ pTagging_ =
-  PutObjectTagging'
-    { _potVersionId = Nothing
-    , _potContentMD5 = Nothing
-    , _potBucket = pBucket_
-    , _potKey = pKey_
-    , _potTagging = pTagging_
-    }
-
+putObjectTagging pBucket_ pKey_ pTagging_
+  = PutObjectTagging'{_potVersionId = Nothing,
+                      _potContentMD5 = Nothing, _potBucket = pBucket_,
+                      _potKey = pKey_, _potTagging = pTagging_}
 
 -- | Undocumented member.
 potVersionId :: Lens' PutObjectTagging (Maybe ObjectVersionId)
@@ -139,13 +130,14 @@ instance ToQuery PutObjectTagging where
           = mconcat ["versionId" =: _potVersionId, "tagging"]
 
 -- | /See:/ 'putObjectTaggingResponse' smart constructor.
-data PutObjectTaggingResponse =
-  PutObjectTaggingResponse'
-    { _potrsVersionId      :: !(Maybe ObjectVersionId)
-    , _potrsResponseStatus :: !Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data PutObjectTaggingResponse = PutObjectTaggingResponse'{_potrsVersionId
+                                                          ::
+                                                          !(Maybe
+                                                              ObjectVersionId),
+                                                          _potrsResponseStatus
+                                                          :: !Int}
+                                  deriving (Eq, Read, Show, Data, Typeable,
+                                            Generic)
 
 -- | Creates a value of 'PutObjectTaggingResponse' with the minimum fields required to make a request.
 --
@@ -157,10 +149,10 @@ data PutObjectTaggingResponse =
 putObjectTaggingResponse
     :: Int -- ^ 'potrsResponseStatus'
     -> PutObjectTaggingResponse
-putObjectTaggingResponse pResponseStatus_ =
-  PutObjectTaggingResponse'
-    {_potrsVersionId = Nothing, _potrsResponseStatus = pResponseStatus_}
-
+putObjectTaggingResponse pResponseStatus_
+  = PutObjectTaggingResponse'{_potrsVersionId =
+                                Nothing,
+                              _potrsResponseStatus = pResponseStatus_}
 
 -- | Undocumented member.
 potrsVersionId :: Lens' PutObjectTaggingResponse (Maybe ObjectVersionId)

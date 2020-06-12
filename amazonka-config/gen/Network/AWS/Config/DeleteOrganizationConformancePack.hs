@@ -21,7 +21,7 @@
 -- Deletes the specified organization conformance pack and all of the config rules and remediation actions from all member accounts in that organization. Only a master account can delete an organization conformance pack.
 --
 --
--- AWS Config sets the state of a conformance pack to DELETE_IN_PROGRESS until the deletion is complete. You cannot update a conformance pack while it is in this state.
+-- AWS Config sets the state of a conformance pack to DELETE_IN_PROGRESS until the deletion is complete. You cannot update a conformance pack while it is in this state. 
 --
 module Network.AWS.Config.DeleteOrganizationConformancePack
     (
@@ -37,19 +37,17 @@ module Network.AWS.Config.DeleteOrganizationConformancePack
     ) where
 
 import Network.AWS.Config.Types
-import Network.AWS.Config.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 
 -- | /See:/ 'deleteOrganizationConformancePack' smart constructor.
-newtype DeleteOrganizationConformancePack =
-  DeleteOrganizationConformancePack'
-    { _docpOrganizationConformancePackName :: Text
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+newtype DeleteOrganizationConformancePack = DeleteOrganizationConformancePack'{_docpOrganizationConformancePackName
+                                                                               ::
+                                                                               Text}
+                                              deriving (Eq, Read, Show, Data,
+                                                        Typeable, Generic)
 
 -- | Creates a value of 'DeleteOrganizationConformancePack' with the minimum fields required to make a request.
 --
@@ -59,10 +57,10 @@ newtype DeleteOrganizationConformancePack =
 deleteOrganizationConformancePack
     :: Text -- ^ 'docpOrganizationConformancePackName'
     -> DeleteOrganizationConformancePack
-deleteOrganizationConformancePack pOrganizationConformancePackName_ =
-  DeleteOrganizationConformancePack'
-    {_docpOrganizationConformancePackName = pOrganizationConformancePackName_}
-
+deleteOrganizationConformancePack
+  pOrganizationConformancePackName_
+  = DeleteOrganizationConformancePack'{_docpOrganizationConformancePackName
+                                         = pOrganizationConformancePackName_}
 
 -- | The name of organization conformance pack that you want to delete.
 docpOrganizationConformancePackName :: Lens' DeleteOrganizationConformancePack Text
@@ -112,18 +110,17 @@ instance ToQuery DeleteOrganizationConformancePack
         toQuery = const mempty
 
 -- | /See:/ 'deleteOrganizationConformancePackResponse' smart constructor.
-data DeleteOrganizationConformancePackResponse =
-  DeleteOrganizationConformancePackResponse'
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data DeleteOrganizationConformancePackResponse = DeleteOrganizationConformancePackResponse'
+                                                   deriving (Eq, Read, Show,
+                                                             Data, Typeable,
+                                                             Generic)
 
 -- | Creates a value of 'DeleteOrganizationConformancePackResponse' with the minimum fields required to make a request.
 --
 deleteOrganizationConformancePackResponse
     :: DeleteOrganizationConformancePackResponse
-deleteOrganizationConformancePackResponse =
-  DeleteOrganizationConformancePackResponse'
-
+deleteOrganizationConformancePackResponse
+  = DeleteOrganizationConformancePackResponse'
 
 instance NFData
            DeleteOrganizationConformancePackResponse

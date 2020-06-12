@@ -42,21 +42,20 @@ module Network.AWS.Lightsail.CreateDiskFromSnapshot
 
 import Network.AWS.Lens
 import Network.AWS.Lightsail.Types
-import Network.AWS.Lightsail.Types.Product
 import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 
 -- | /See:/ 'createDiskFromSnapshot' smart constructor.
-data CreateDiskFromSnapshot =
-  CreateDiskFromSnapshot'
-    { _cdfsDiskName         :: !Text
-    , _cdfsDiskSnapshotName :: !Text
-    , _cdfsAvailabilityZone :: !Text
-    , _cdfsSizeInGb         :: !Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data CreateDiskFromSnapshot = CreateDiskFromSnapshot'{_cdfsDiskName
+                                                      :: !Text,
+                                                      _cdfsDiskSnapshotName ::
+                                                      !Text,
+                                                      _cdfsAvailabilityZone ::
+                                                      !Text,
+                                                      _cdfsSizeInGb :: !Int}
+                                deriving (Eq, Read, Show, Data, Typeable,
+                                          Generic)
 
 -- | Creates a value of 'CreateDiskFromSnapshot' with the minimum fields required to make a request.
 --
@@ -75,14 +74,12 @@ createDiskFromSnapshot
     -> Text -- ^ 'cdfsAvailabilityZone'
     -> Int -- ^ 'cdfsSizeInGb'
     -> CreateDiskFromSnapshot
-createDiskFromSnapshot pDiskName_ pDiskSnapshotName_ pAvailabilityZone_ pSizeInGb_ =
-  CreateDiskFromSnapshot'
-    { _cdfsDiskName = pDiskName_
-    , _cdfsDiskSnapshotName = pDiskSnapshotName_
-    , _cdfsAvailabilityZone = pAvailabilityZone_
-    , _cdfsSizeInGb = pSizeInGb_
-    }
-
+createDiskFromSnapshot pDiskName_ pDiskSnapshotName_
+  pAvailabilityZone_ pSizeInGb_
+  = CreateDiskFromSnapshot'{_cdfsDiskName = pDiskName_,
+                            _cdfsDiskSnapshotName = pDiskSnapshotName_,
+                            _cdfsAvailabilityZone = pAvailabilityZone_,
+                            _cdfsSizeInGb = pSizeInGb_}
 
 -- | The unique Lightsail disk name (e.g., @my-disk@ ).
 cdfsDiskName :: Lens' CreateDiskFromSnapshot Text
@@ -141,13 +138,14 @@ instance ToQuery CreateDiskFromSnapshot where
         toQuery = const mempty
 
 -- | /See:/ 'createDiskFromSnapshotResponse' smart constructor.
-data CreateDiskFromSnapshotResponse =
-  CreateDiskFromSnapshotResponse'
-    { _cdfsrsOperations     :: !(Maybe [Operation])
-    , _cdfsrsResponseStatus :: !Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data CreateDiskFromSnapshotResponse = CreateDiskFromSnapshotResponse'{_cdfsrsOperations
+                                                                      ::
+                                                                      !(Maybe
+                                                                          [Operation]),
+                                                                      _cdfsrsResponseStatus
+                                                                      :: !Int}
+                                        deriving (Eq, Read, Show, Data,
+                                                  Typeable, Generic)
 
 -- | Creates a value of 'CreateDiskFromSnapshotResponse' with the minimum fields required to make a request.
 --
@@ -159,10 +157,10 @@ data CreateDiskFromSnapshotResponse =
 createDiskFromSnapshotResponse
     :: Int -- ^ 'cdfsrsResponseStatus'
     -> CreateDiskFromSnapshotResponse
-createDiskFromSnapshotResponse pResponseStatus_ =
-  CreateDiskFromSnapshotResponse'
-    {_cdfsrsOperations = Nothing, _cdfsrsResponseStatus = pResponseStatus_}
-
+createDiskFromSnapshotResponse pResponseStatus_
+  = CreateDiskFromSnapshotResponse'{_cdfsrsOperations =
+                                      Nothing,
+                                    _cdfsrsResponseStatus = pResponseStatus_}
 
 -- | An object describing the API operations.
 cdfsrsOperations :: Lens' CreateDiskFromSnapshotResponse [Operation]

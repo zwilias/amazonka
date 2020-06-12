@@ -45,7 +45,6 @@ module Network.AWS.EC2.DescribeVPCEndpointServiceConfigurations
     ) where
 
 import Network.AWS.EC2.Types
-import Network.AWS.EC2.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Pager
 import Network.AWS.Prelude
@@ -53,16 +52,29 @@ import Network.AWS.Request
 import Network.AWS.Response
 
 -- | /See:/ 'describeVPCEndpointServiceConfigurations' smart constructor.
-data DescribeVPCEndpointServiceConfigurations =
-  DescribeVPCEndpointServiceConfigurations'
-    { _dvescFilters    :: !(Maybe [Filter])
-    , _dvescServiceIds :: !(Maybe [Text])
-    , _dvescNextToken  :: !(Maybe Text)
-    , _dvescDryRun     :: !(Maybe Bool)
-    , _dvescMaxResults :: !(Maybe Int)
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data DescribeVPCEndpointServiceConfigurations = DescribeVPCEndpointServiceConfigurations'{_dvescFilters
+                                                                                          ::
+                                                                                          !(Maybe
+                                                                                              [Filter]),
+                                                                                          _dvescServiceIds
+                                                                                          ::
+                                                                                          !(Maybe
+                                                                                              [Text]),
+                                                                                          _dvescNextToken
+                                                                                          ::
+                                                                                          !(Maybe
+                                                                                              Text),
+                                                                                          _dvescDryRun
+                                                                                          ::
+                                                                                          !(Maybe
+                                                                                              Bool),
+                                                                                          _dvescMaxResults
+                                                                                          ::
+                                                                                          !(Maybe
+                                                                                              Int)}
+                                                  deriving (Eq, Read, Show,
+                                                            Data, Typeable,
+                                                            Generic)
 
 -- | Creates a value of 'DescribeVPCEndpointServiceConfigurations' with the minimum fields required to make a request.
 --
@@ -79,15 +91,13 @@ data DescribeVPCEndpointServiceConfigurations =
 -- * 'dvescMaxResults' - The maximum number of results to return for the request in a single page. The remaining results of the initial request can be seen by sending another request with the returned @NextToken@ value. This value can be between 5 and 1,000; if @MaxResults@ is given a value larger than 1,000, only 1,000 results are returned.
 describeVPCEndpointServiceConfigurations
     :: DescribeVPCEndpointServiceConfigurations
-describeVPCEndpointServiceConfigurations =
-  DescribeVPCEndpointServiceConfigurations'
-    { _dvescFilters = Nothing
-    , _dvescServiceIds = Nothing
-    , _dvescNextToken = Nothing
-    , _dvescDryRun = Nothing
-    , _dvescMaxResults = Nothing
-    }
-
+describeVPCEndpointServiceConfigurations
+  = DescribeVPCEndpointServiceConfigurations'{_dvescFilters
+                                                = Nothing,
+                                              _dvescServiceIds = Nothing,
+                                              _dvescNextToken = Nothing,
+                                              _dvescDryRun = Nothing,
+                                              _dvescMaxResults = Nothing}
 
 -- | One or more filters.     * @service-name@ - The name of the service.     * @service-id@ - The ID of the service.     * @service-state@ - The state of the service (@Pending@ | @Available@ | @Deleting@ | @Deleted@ | @Failed@ ).      * @tag@ :<key> - The key/value combination of a tag assigned to the resource. Use the tag key in the filter name and the tag value as the filter value. For example, to find all resources that have a tag with the key @Owner@ and the value @TeamA@ , specify @tag:Owner@ for the filter name and @TeamA@ for the filter value.     * @tag-key@ - The key of a tag assigned to the resource. Use this filter to find all resources assigned a tag with a specific key, regardless of the tag value.
 dvescFilters :: Lens' DescribeVPCEndpointServiceConfigurations [Filter]
@@ -168,14 +178,21 @@ instance ToQuery
                "MaxResults" =: _dvescMaxResults]
 
 -- | /See:/ 'describeVPCEndpointServiceConfigurationsResponse' smart constructor.
-data DescribeVPCEndpointServiceConfigurationsResponse =
-  DescribeVPCEndpointServiceConfigurationsResponse'
-    { _dvescrsNextToken             :: !(Maybe Text)
-    , _dvescrsServiceConfigurations :: !(Maybe [ServiceConfiguration])
-    , _dvescrsResponseStatus        :: !Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data DescribeVPCEndpointServiceConfigurationsResponse = DescribeVPCEndpointServiceConfigurationsResponse'{_dvescrsNextToken
+                                                                                                          ::
+                                                                                                          !(Maybe
+                                                                                                              Text),
+                                                                                                          _dvescrsServiceConfigurations
+                                                                                                          ::
+                                                                                                          !(Maybe
+                                                                                                              [ServiceConfiguration]),
+                                                                                                          _dvescrsResponseStatus
+                                                                                                          ::
+                                                                                                          !Int}
+                                                          deriving (Eq, Read,
+                                                                    Show, Data,
+                                                                    Typeable,
+                                                                    Generic)
 
 -- | Creates a value of 'DescribeVPCEndpointServiceConfigurationsResponse' with the minimum fields required to make a request.
 --
@@ -189,13 +206,14 @@ data DescribeVPCEndpointServiceConfigurationsResponse =
 describeVPCEndpointServiceConfigurationsResponse
     :: Int -- ^ 'dvescrsResponseStatus'
     -> DescribeVPCEndpointServiceConfigurationsResponse
-describeVPCEndpointServiceConfigurationsResponse pResponseStatus_ =
-  DescribeVPCEndpointServiceConfigurationsResponse'
-    { _dvescrsNextToken = Nothing
-    , _dvescrsServiceConfigurations = Nothing
-    , _dvescrsResponseStatus = pResponseStatus_
-    }
-
+describeVPCEndpointServiceConfigurationsResponse
+  pResponseStatus_
+  = DescribeVPCEndpointServiceConfigurationsResponse'{_dvescrsNextToken
+                                                        = Nothing,
+                                                      _dvescrsServiceConfigurations
+                                                        = Nothing,
+                                                      _dvescrsResponseStatus =
+                                                        pResponseStatus_}
 
 -- | The token to use to retrieve the next page of results. This value is @null@ when there are no more results to return.
 dvescrsNextToken :: Lens' DescribeVPCEndpointServiceConfigurationsResponse (Maybe Text)

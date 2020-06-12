@@ -47,21 +47,20 @@ module Network.AWS.KMS.GetParametersForImport
     ) where
 
 import Network.AWS.KMS.Types
-import Network.AWS.KMS.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 
 -- | /See:/ 'getParametersForImport' smart constructor.
-data GetParametersForImport =
-  GetParametersForImport'
-    { _gpfiKeyId             :: !Text
-    , _gpfiWrappingAlgorithm :: !AlgorithmSpec
-    , _gpfiWrappingKeySpec   :: !WrappingKeySpec
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data GetParametersForImport = GetParametersForImport'{_gpfiKeyId
+                                                      :: !Text,
+                                                      _gpfiWrappingAlgorithm ::
+                                                      !AlgorithmSpec,
+                                                      _gpfiWrappingKeySpec ::
+                                                      !WrappingKeySpec}
+                                deriving (Eq, Read, Show, Data, Typeable,
+                                          Generic)
 
 -- | Creates a value of 'GetParametersForImport' with the minimum fields required to make a request.
 --
@@ -77,13 +76,11 @@ getParametersForImport
     -> AlgorithmSpec -- ^ 'gpfiWrappingAlgorithm'
     -> WrappingKeySpec -- ^ 'gpfiWrappingKeySpec'
     -> GetParametersForImport
-getParametersForImport pKeyId_ pWrappingAlgorithm_ pWrappingKeySpec_ =
-  GetParametersForImport'
-    { _gpfiKeyId = pKeyId_
-    , _gpfiWrappingAlgorithm = pWrappingAlgorithm_
-    , _gpfiWrappingKeySpec = pWrappingKeySpec_
-    }
-
+getParametersForImport pKeyId_ pWrappingAlgorithm_
+  pWrappingKeySpec_
+  = GetParametersForImport'{_gpfiKeyId = pKeyId_,
+                            _gpfiWrappingAlgorithm = pWrappingAlgorithm_,
+                            _gpfiWrappingKeySpec = pWrappingKeySpec_}
 
 -- | The identifier of the CMK into which you will import key material. The CMK's @Origin@ must be @EXTERNAL@ . Specify the key ID or the Amazon Resource Name (ARN) of the CMK. For example:     * Key ID: @1234abcd-12ab-34cd-56ef-1234567890ab@      * Key ARN: @arn:aws:kms:us-east-2:111122223333:key/1234abcd-12ab-34cd-56ef-1234567890ab@  To get the key ID and key ARN for a CMK, use 'ListKeys' or 'DescribeKey' .
 gpfiKeyId :: Lens' GetParametersForImport Text
@@ -139,16 +136,27 @@ instance ToQuery GetParametersForImport where
         toQuery = const mempty
 
 -- | /See:/ 'getParametersForImportResponse' smart constructor.
-data GetParametersForImportResponse =
-  GetParametersForImportResponse'
-    { _gpfirsKeyId             :: !(Maybe Text)
-    , _gpfirsPublicKey         :: !(Maybe (Sensitive Base64))
-    , _gpfirsParametersValidTo :: !(Maybe POSIX)
-    , _gpfirsImportToken       :: !(Maybe Base64)
-    , _gpfirsResponseStatus    :: !Int
-    }
-  deriving (Eq, Show, Data, Typeable, Generic)
-
+data GetParametersForImportResponse = GetParametersForImportResponse'{_gpfirsKeyId
+                                                                      ::
+                                                                      !(Maybe
+                                                                          Text),
+                                                                      _gpfirsPublicKey
+                                                                      ::
+                                                                      !(Maybe
+                                                                          (Sensitive
+                                                                             Base64)),
+                                                                      _gpfirsParametersValidTo
+                                                                      ::
+                                                                      !(Maybe
+                                                                          POSIX),
+                                                                      _gpfirsImportToken
+                                                                      ::
+                                                                      !(Maybe
+                                                                          Base64),
+                                                                      _gpfirsResponseStatus
+                                                                      :: !Int}
+                                        deriving (Eq, Show, Data, Typeable,
+                                                  Generic)
 
 -- | Creates a value of 'GetParametersForImportResponse' with the minimum fields required to make a request.
 --
@@ -166,15 +174,13 @@ data GetParametersForImportResponse =
 getParametersForImportResponse
     :: Int -- ^ 'gpfirsResponseStatus'
     -> GetParametersForImportResponse
-getParametersForImportResponse pResponseStatus_ =
-  GetParametersForImportResponse'
-    { _gpfirsKeyId = Nothing
-    , _gpfirsPublicKey = Nothing
-    , _gpfirsParametersValidTo = Nothing
-    , _gpfirsImportToken = Nothing
-    , _gpfirsResponseStatus = pResponseStatus_
-    }
-
+getParametersForImportResponse pResponseStatus_
+  = GetParametersForImportResponse'{_gpfirsKeyId =
+                                      Nothing,
+                                    _gpfirsPublicKey = Nothing,
+                                    _gpfirsParametersValidTo = Nothing,
+                                    _gpfirsImportToken = Nothing,
+                                    _gpfirsResponseStatus = pResponseStatus_}
 
 -- | The identifier of the CMK to use in a subsequent 'ImportKeyMaterial' request. This is the same CMK specified in the @GetParametersForImport@ request.
 gpfirsKeyId :: Lens' GetParametersForImportResponse (Maybe Text)

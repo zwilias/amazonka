@@ -38,7 +38,6 @@ module Network.AWS.ElasticSearch.DescribeElasticsearchDomains
     ) where
 
 import Network.AWS.ElasticSearch.Types
-import Network.AWS.ElasticSearch.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.Request
@@ -49,12 +48,10 @@ import Network.AWS.Response
 --
 --
 -- /See:/ 'describeElasticsearchDomains' smart constructor.
-newtype DescribeElasticsearchDomains =
-  DescribeElasticsearchDomains'
-    { _dedDomainNames :: [Text]
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+newtype DescribeElasticsearchDomains = DescribeElasticsearchDomains'{_dedDomainNames
+                                                                     :: [Text]}
+                                         deriving (Eq, Read, Show, Data,
+                                                   Typeable, Generic)
 
 -- | Creates a value of 'DescribeElasticsearchDomains' with the minimum fields required to make a request.
 --
@@ -63,9 +60,9 @@ newtype DescribeElasticsearchDomains =
 -- * 'dedDomainNames' - The Elasticsearch domains for which you want information.
 describeElasticsearchDomains
     :: DescribeElasticsearchDomains
-describeElasticsearchDomains =
-  DescribeElasticsearchDomains' {_dedDomainNames = mempty}
-
+describeElasticsearchDomains
+  = DescribeElasticsearchDomains'{_dedDomainNames =
+                                    mempty}
 
 -- | The Elasticsearch domains for which you want information.
 dedDomainNames :: Lens' DescribeElasticsearchDomains [Text]
@@ -106,13 +103,14 @@ instance ToQuery DescribeElasticsearchDomains where
 --
 --
 -- /See:/ 'describeElasticsearchDomainsResponse' smart constructor.
-data DescribeElasticsearchDomainsResponse =
-  DescribeElasticsearchDomainsResponse'
-    { _drsResponseStatus   :: !Int
-    , _drsDomainStatusList :: ![ElasticsearchDomainStatus]
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data DescribeElasticsearchDomainsResponse = DescribeElasticsearchDomainsResponse'{_drsResponseStatus
+                                                                                  ::
+                                                                                  !Int,
+                                                                                  _drsDomainStatusList
+                                                                                  ::
+                                                                                  ![ElasticsearchDomainStatus]}
+                                              deriving (Eq, Read, Show, Data,
+                                                        Typeable, Generic)
 
 -- | Creates a value of 'DescribeElasticsearchDomainsResponse' with the minimum fields required to make a request.
 --
@@ -124,10 +122,10 @@ data DescribeElasticsearchDomainsResponse =
 describeElasticsearchDomainsResponse
     :: Int -- ^ 'drsResponseStatus'
     -> DescribeElasticsearchDomainsResponse
-describeElasticsearchDomainsResponse pResponseStatus_ =
-  DescribeElasticsearchDomainsResponse'
-    {_drsResponseStatus = pResponseStatus_, _drsDomainStatusList = mempty}
-
+describeElasticsearchDomainsResponse pResponseStatus_
+  = DescribeElasticsearchDomainsResponse'{_drsResponseStatus
+                                            = pResponseStatus_,
+                                          _drsDomainStatusList = mempty}
 
 -- | -- | The response status code.
 drsResponseStatus :: Lens' DescribeElasticsearchDomainsResponse Int

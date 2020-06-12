@@ -44,21 +44,17 @@ module Network.AWS.ELBv2.ModifyRule
     ) where
 
 import Network.AWS.ELBv2.Types
-import Network.AWS.ELBv2.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 
 -- | /See:/ 'modifyRule' smart constructor.
-data ModifyRule =
-  ModifyRule'
-    { _mrActions    :: !(Maybe [Action])
-    , _mrConditions :: !(Maybe [RuleCondition])
-    , _mrRuleARN    :: !Text
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data ModifyRule = ModifyRule'{_mrActions ::
+                              !(Maybe [Action]),
+                              _mrConditions :: !(Maybe [RuleCondition]),
+                              _mrRuleARN :: !Text}
+                    deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'ModifyRule' with the minimum fields required to make a request.
 --
@@ -72,10 +68,9 @@ data ModifyRule =
 modifyRule
     :: Text -- ^ 'mrRuleARN'
     -> ModifyRule
-modifyRule pRuleARN_ =
-  ModifyRule'
-    {_mrActions = Nothing, _mrConditions = Nothing, _mrRuleARN = pRuleARN_}
-
+modifyRule pRuleARN_
+  = ModifyRule'{_mrActions = Nothing,
+                _mrConditions = Nothing, _mrRuleARN = pRuleARN_}
 
 -- | The actions. The target group must use the HTTP or HTTPS protocol.
 mrActions :: Lens' ModifyRule [Action]
@@ -122,13 +117,10 @@ instance ToQuery ModifyRule where
                "RuleArn" =: _mrRuleARN]
 
 -- | /See:/ 'modifyRuleResponse' smart constructor.
-data ModifyRuleResponse =
-  ModifyRuleResponse'
-    { _mrrsRules          :: !(Maybe [Rule])
-    , _mrrsResponseStatus :: !Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data ModifyRuleResponse = ModifyRuleResponse'{_mrrsRules
+                                              :: !(Maybe [Rule]),
+                                              _mrrsResponseStatus :: !Int}
+                            deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'ModifyRuleResponse' with the minimum fields required to make a request.
 --
@@ -140,10 +132,9 @@ data ModifyRuleResponse =
 modifyRuleResponse
     :: Int -- ^ 'mrrsResponseStatus'
     -> ModifyRuleResponse
-modifyRuleResponse pResponseStatus_ =
-  ModifyRuleResponse'
-    {_mrrsRules = Nothing, _mrrsResponseStatus = pResponseStatus_}
-
+modifyRuleResponse pResponseStatus_
+  = ModifyRuleResponse'{_mrrsRules = Nothing,
+                        _mrrsResponseStatus = pResponseStatus_}
 
 -- | Information about the rule.
 mrrsRules :: Lens' ModifyRuleResponse [Rule]

@@ -45,18 +45,13 @@ import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 import Network.AWS.WorkMail.Types
-import Network.AWS.WorkMail.Types.Product
 
 -- | /See:/ 'createUser' smart constructor.
-data CreateUser =
-  CreateUser'
-    { _cuOrganizationId :: !Text
-    , _cuName           :: !Text
-    , _cuDisplayName    :: !Text
-    , _cuPassword       :: !(Sensitive Text)
-    }
-  deriving (Eq, Show, Data, Typeable, Generic)
-
+data CreateUser = CreateUser'{_cuOrganizationId ::
+                              !Text,
+                              _cuName :: !Text, _cuDisplayName :: !Text,
+                              _cuPassword :: !(Sensitive Text)}
+                    deriving (Eq, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'CreateUser' with the minimum fields required to make a request.
 --
@@ -75,14 +70,11 @@ createUser
     -> Text -- ^ 'cuDisplayName'
     -> Text -- ^ 'cuPassword'
     -> CreateUser
-createUser pOrganizationId_ pName_ pDisplayName_ pPassword_ =
-  CreateUser'
-    { _cuOrganizationId = pOrganizationId_
-    , _cuName = pName_
-    , _cuDisplayName = pDisplayName_
-    , _cuPassword = _Sensitive # pPassword_
-    }
-
+createUser pOrganizationId_ pName_ pDisplayName_
+  pPassword_
+  = CreateUser'{_cuOrganizationId = pOrganizationId_,
+                _cuName = pName_, _cuDisplayName = pDisplayName_,
+                _cuPassword = _Sensitive # pPassword_}
 
 -- | The identifier of the organization for which the user is created.
 cuOrganizationId :: Lens' CreateUser Text
@@ -138,13 +130,10 @@ instance ToQuery CreateUser where
         toQuery = const mempty
 
 -- | /See:/ 'createUserResponse' smart constructor.
-data CreateUserResponse =
-  CreateUserResponse'
-    { _cursUserId         :: !(Maybe Text)
-    , _cursResponseStatus :: !Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data CreateUserResponse = CreateUserResponse'{_cursUserId
+                                              :: !(Maybe Text),
+                                              _cursResponseStatus :: !Int}
+                            deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'CreateUserResponse' with the minimum fields required to make a request.
 --
@@ -156,10 +145,9 @@ data CreateUserResponse =
 createUserResponse
     :: Int -- ^ 'cursResponseStatus'
     -> CreateUserResponse
-createUserResponse pResponseStatus_ =
-  CreateUserResponse'
-    {_cursUserId = Nothing, _cursResponseStatus = pResponseStatus_}
-
+createUserResponse pResponseStatus_
+  = CreateUserResponse'{_cursUserId = Nothing,
+                        _cursResponseStatus = pResponseStatus_}
 
 -- | The information regarding the newly created user.
 cursUserId :: Lens' CreateUserResponse (Maybe Text)

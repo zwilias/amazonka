@@ -47,19 +47,25 @@ import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 import Network.AWS.ServiceCatalog.Types
-import Network.AWS.ServiceCatalog.Types.Product
 
 -- | /See:/ 'listProvisionedProductPlans' smart constructor.
-data ListProvisionedProductPlans =
-  ListProvisionedProductPlans'
-    { _lpppProvisionProductId :: !(Maybe Text)
-    , _lpppAcceptLanguage     :: !(Maybe Text)
-    , _lpppAccessLevelFilter  :: !(Maybe AccessLevelFilter)
-    , _lpppPageToken          :: !(Maybe Text)
-    , _lpppPageSize           :: !(Maybe Nat)
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data ListProvisionedProductPlans = ListProvisionedProductPlans'{_lpppProvisionProductId
+                                                                ::
+                                                                !(Maybe Text),
+                                                                _lpppAcceptLanguage
+                                                                ::
+                                                                !(Maybe Text),
+                                                                _lpppAccessLevelFilter
+                                                                ::
+                                                                !(Maybe
+                                                                    AccessLevelFilter),
+                                                                _lpppPageToken
+                                                                ::
+                                                                !(Maybe Text),
+                                                                _lpppPageSize ::
+                                                                !(Maybe Nat)}
+                                     deriving (Eq, Read, Show, Data, Typeable,
+                                               Generic)
 
 -- | Creates a value of 'ListProvisionedProductPlans' with the minimum fields required to make a request.
 --
@@ -76,15 +82,13 @@ data ListProvisionedProductPlans =
 -- * 'lpppPageSize' - The maximum number of items to return with this call.
 listProvisionedProductPlans
     :: ListProvisionedProductPlans
-listProvisionedProductPlans =
-  ListProvisionedProductPlans'
-    { _lpppProvisionProductId = Nothing
-    , _lpppAcceptLanguage = Nothing
-    , _lpppAccessLevelFilter = Nothing
-    , _lpppPageToken = Nothing
-    , _lpppPageSize = Nothing
-    }
-
+listProvisionedProductPlans
+  = ListProvisionedProductPlans'{_lpppProvisionProductId
+                                   = Nothing,
+                                 _lpppAcceptLanguage = Nothing,
+                                 _lpppAccessLevelFilter = Nothing,
+                                 _lpppPageToken = Nothing,
+                                 _lpppPageSize = Nothing}
 
 -- | The product identifier.
 lpppProvisionProductId :: Lens' ListProvisionedProductPlans (Maybe Text)
@@ -150,14 +154,19 @@ instance ToQuery ListProvisionedProductPlans where
         toQuery = const mempty
 
 -- | /See:/ 'listProvisionedProductPlansResponse' smart constructor.
-data ListProvisionedProductPlansResponse =
-  ListProvisionedProductPlansResponse'
-    { _lppprsNextPageToken           :: !(Maybe Text)
-    , _lppprsProvisionedProductPlans :: !(Maybe [ProvisionedProductPlanSummary])
-    , _lppprsResponseStatus          :: !Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data ListProvisionedProductPlansResponse = ListProvisionedProductPlansResponse'{_lppprsNextPageToken
+                                                                                ::
+                                                                                !(Maybe
+                                                                                    Text),
+                                                                                _lppprsProvisionedProductPlans
+                                                                                ::
+                                                                                !(Maybe
+                                                                                    [ProvisionedProductPlanSummary]),
+                                                                                _lppprsResponseStatus
+                                                                                ::
+                                                                                !Int}
+                                             deriving (Eq, Read, Show, Data,
+                                                       Typeable, Generic)
 
 -- | Creates a value of 'ListProvisionedProductPlansResponse' with the minimum fields required to make a request.
 --
@@ -171,13 +180,13 @@ data ListProvisionedProductPlansResponse =
 listProvisionedProductPlansResponse
     :: Int -- ^ 'lppprsResponseStatus'
     -> ListProvisionedProductPlansResponse
-listProvisionedProductPlansResponse pResponseStatus_ =
-  ListProvisionedProductPlansResponse'
-    { _lppprsNextPageToken = Nothing
-    , _lppprsProvisionedProductPlans = Nothing
-    , _lppprsResponseStatus = pResponseStatus_
-    }
-
+listProvisionedProductPlansResponse pResponseStatus_
+  = ListProvisionedProductPlansResponse'{_lppprsNextPageToken
+                                           = Nothing,
+                                         _lppprsProvisionedProductPlans =
+                                           Nothing,
+                                         _lppprsResponseStatus =
+                                           pResponseStatus_}
 
 -- | The page token to use to retrieve the next set of results. If there are no additional results, this value is null.
 lppprsNextPageToken :: Lens' ListProvisionedProductPlansResponse (Maybe Text)

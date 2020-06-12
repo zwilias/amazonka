@@ -38,19 +38,15 @@ module Network.AWS.Comprehend.DescribeEndpoint
     ) where
 
 import Network.AWS.Comprehend.Types
-import Network.AWS.Comprehend.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 
 -- | /See:/ 'describeEndpoint' smart constructor.
-newtype DescribeEndpoint =
-  DescribeEndpoint'
-    { _dEndpointARN :: Text
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+newtype DescribeEndpoint = DescribeEndpoint'{_dEndpointARN
+                                             :: Text}
+                             deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'DescribeEndpoint' with the minimum fields required to make a request.
 --
@@ -60,9 +56,8 @@ newtype DescribeEndpoint =
 describeEndpoint
     :: Text -- ^ 'dEndpointARN'
     -> DescribeEndpoint
-describeEndpoint pEndpointARN_ =
-  DescribeEndpoint' {_dEndpointARN = pEndpointARN_}
-
+describeEndpoint pEndpointARN_
+  = DescribeEndpoint'{_dEndpointARN = pEndpointARN_}
 
 -- | The Amazon Resource Number (ARN) of the endpoint being described.
 dEndpointARN :: Lens' DescribeEndpoint Text
@@ -103,13 +98,14 @@ instance ToQuery DescribeEndpoint where
         toQuery = const mempty
 
 -- | /See:/ 'describeEndpointResponse' smart constructor.
-data DescribeEndpointResponse =
-  DescribeEndpointResponse'
-    { _dersEndpointProperties :: !(Maybe EndpointProperties)
-    , _dersResponseStatus     :: !Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data DescribeEndpointResponse = DescribeEndpointResponse'{_dersEndpointProperties
+                                                          ::
+                                                          !(Maybe
+                                                              EndpointProperties),
+                                                          _dersResponseStatus ::
+                                                          !Int}
+                                  deriving (Eq, Read, Show, Data, Typeable,
+                                            Generic)
 
 -- | Creates a value of 'DescribeEndpointResponse' with the minimum fields required to make a request.
 --
@@ -121,10 +117,10 @@ data DescribeEndpointResponse =
 describeEndpointResponse
     :: Int -- ^ 'dersResponseStatus'
     -> DescribeEndpointResponse
-describeEndpointResponse pResponseStatus_ =
-  DescribeEndpointResponse'
-    {_dersEndpointProperties = Nothing, _dersResponseStatus = pResponseStatus_}
-
+describeEndpointResponse pResponseStatus_
+  = DescribeEndpointResponse'{_dersEndpointProperties =
+                                Nothing,
+                              _dersResponseStatus = pResponseStatus_}
 
 -- | Describes information associated with the specific endpoint.
 dersEndpointProperties :: Lens' DescribeEndpointResponse (Maybe EndpointProperties)

@@ -72,22 +72,22 @@ module Network.AWS.Polly
     -- * Operations
     -- $operations
 
-    -- ** GetLexicon
+    -- ** GetLexicon 
     , module Network.AWS.Polly.GetLexicon
 
     -- ** DescribeVoices (Paginated)
     , module Network.AWS.Polly.DescribeVoices
 
-    -- ** ListLexicons
+    -- ** ListLexicons 
     , module Network.AWS.Polly.ListLexicons
 
-    -- ** SynthesizeSpeech
+    -- ** SynthesizeSpeech 
     , module Network.AWS.Polly.SynthesizeSpeech
 
-    -- ** PutLexicon
+    -- ** PutLexicon 
     , module Network.AWS.Polly.PutLexicon
 
-    -- ** DeleteLexicon
+    -- ** DeleteLexicon 
     , module Network.AWS.Polly.DeleteLexicon
 
     -- * Types

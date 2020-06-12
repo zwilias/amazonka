@@ -38,7 +38,6 @@ module Network.AWS.IoT.DescribeEndpoint
     ) where
 
 import Network.AWS.IoT.Types
-import Network.AWS.IoT.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.Request
@@ -49,12 +48,9 @@ import Network.AWS.Response
 --
 --
 -- /See:/ 'describeEndpoint' smart constructor.
-newtype DescribeEndpoint =
-  DescribeEndpoint'
-    { _deEndpointType :: Maybe Text
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+newtype DescribeEndpoint = DescribeEndpoint'{_deEndpointType
+                                             :: Maybe Text}
+                             deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'DescribeEndpoint' with the minimum fields required to make a request.
 --
@@ -63,8 +59,8 @@ newtype DescribeEndpoint =
 -- * 'deEndpointType' - The endpoint type.
 describeEndpoint
     :: DescribeEndpoint
-describeEndpoint = DescribeEndpoint' {_deEndpointType = Nothing}
-
+describeEndpoint
+  = DescribeEndpoint'{_deEndpointType = Nothing}
 
 -- | The endpoint type.
 deEndpointType :: Lens' DescribeEndpoint (Maybe Text)
@@ -98,13 +94,12 @@ instance ToQuery DescribeEndpoint where
 --
 --
 -- /See:/ 'describeEndpointResponse' smart constructor.
-data DescribeEndpointResponse =
-  DescribeEndpointResponse'
-    { _dersEndpointAddress :: !(Maybe Text)
-    , _dersResponseStatus  :: !Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data DescribeEndpointResponse = DescribeEndpointResponse'{_dersEndpointAddress
+                                                          :: !(Maybe Text),
+                                                          _dersResponseStatus ::
+                                                          !Int}
+                                  deriving (Eq, Read, Show, Data, Typeable,
+                                            Generic)
 
 -- | Creates a value of 'DescribeEndpointResponse' with the minimum fields required to make a request.
 --
@@ -116,10 +111,10 @@ data DescribeEndpointResponse =
 describeEndpointResponse
     :: Int -- ^ 'dersResponseStatus'
     -> DescribeEndpointResponse
-describeEndpointResponse pResponseStatus_ =
-  DescribeEndpointResponse'
-    {_dersEndpointAddress = Nothing, _dersResponseStatus = pResponseStatus_}
-
+describeEndpointResponse pResponseStatus_
+  = DescribeEndpointResponse'{_dersEndpointAddress =
+                                Nothing,
+                              _dersResponseStatus = pResponseStatus_}
 
 -- | The endpoint. The format of the endpoint is as follows: /identifier/ .iot./region/ .amazonaws.com.
 dersEndpointAddress :: Lens' DescribeEndpointResponse (Maybe Text)

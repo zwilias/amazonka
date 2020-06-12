@@ -38,19 +38,16 @@ module Network.AWS.Connect.GetFederationToken
     ) where
 
 import Network.AWS.Connect.Types
-import Network.AWS.Connect.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 
 -- | /See:/ 'getFederationToken' smart constructor.
-newtype GetFederationToken =
-  GetFederationToken'
-    { _gftInstanceId :: Text
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+newtype GetFederationToken = GetFederationToken'{_gftInstanceId
+                                                 :: Text}
+                               deriving (Eq, Read, Show, Data, Typeable,
+                                         Generic)
 
 -- | Creates a value of 'GetFederationToken' with the minimum fields required to make a request.
 --
@@ -60,9 +57,8 @@ newtype GetFederationToken =
 getFederationToken
     :: Text -- ^ 'gftInstanceId'
     -> GetFederationToken
-getFederationToken pInstanceId_ =
-  GetFederationToken' {_gftInstanceId = pInstanceId_}
-
+getFederationToken pInstanceId_
+  = GetFederationToken'{_gftInstanceId = pInstanceId_}
 
 -- | The identifier of the Amazon Connect instance.
 gftInstanceId :: Lens' GetFederationToken Text
@@ -97,13 +93,13 @@ instance ToQuery GetFederationToken where
         toQuery = const mempty
 
 -- | /See:/ 'getFederationTokenResponse' smart constructor.
-data GetFederationTokenResponse =
-  GetFederationTokenResponse'
-    { _gftrsCredentials    :: !(Maybe Credentials)
-    , _gftrsResponseStatus :: !Int
-    }
-  deriving (Eq, Show, Data, Typeable, Generic)
-
+data GetFederationTokenResponse = GetFederationTokenResponse'{_gftrsCredentials
+                                                              ::
+                                                              !(Maybe
+                                                                  Credentials),
+                                                              _gftrsResponseStatus
+                                                              :: !Int}
+                                    deriving (Eq, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'GetFederationTokenResponse' with the minimum fields required to make a request.
 --
@@ -115,10 +111,10 @@ data GetFederationTokenResponse =
 getFederationTokenResponse
     :: Int -- ^ 'gftrsResponseStatus'
     -> GetFederationTokenResponse
-getFederationTokenResponse pResponseStatus_ =
-  GetFederationTokenResponse'
-    {_gftrsCredentials = Nothing, _gftrsResponseStatus = pResponseStatus_}
-
+getFederationTokenResponse pResponseStatus_
+  = GetFederationTokenResponse'{_gftrsCredentials =
+                                  Nothing,
+                                _gftrsResponseStatus = pResponseStatus_}
 
 -- | The credentials to use for federation.
 gftrsCredentials :: Lens' GetFederationTokenResponse (Maybe Credentials)

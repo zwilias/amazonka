@@ -38,19 +38,16 @@ module Network.AWS.Pinpoint.UpdateBaiduChannel
 
 import Network.AWS.Lens
 import Network.AWS.Pinpoint.Types
-import Network.AWS.Pinpoint.Types.Product
 import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 
 -- | /See:/ 'updateBaiduChannel' smart constructor.
-data UpdateBaiduChannel =
-  UpdateBaiduChannel'
-    { _ubcApplicationId       :: !Text
-    , _ubcBaiduChannelRequest :: !BaiduChannelRequest
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data UpdateBaiduChannel = UpdateBaiduChannel'{_ubcApplicationId
+                                              :: !Text,
+                                              _ubcBaiduChannelRequest ::
+                                              !BaiduChannelRequest}
+                            deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'UpdateBaiduChannel' with the minimum fields required to make a request.
 --
@@ -63,12 +60,11 @@ updateBaiduChannel
     :: Text -- ^ 'ubcApplicationId'
     -> BaiduChannelRequest -- ^ 'ubcBaiduChannelRequest'
     -> UpdateBaiduChannel
-updateBaiduChannel pApplicationId_ pBaiduChannelRequest_ =
-  UpdateBaiduChannel'
-    { _ubcApplicationId = pApplicationId_
-    , _ubcBaiduChannelRequest = pBaiduChannelRequest_
-    }
-
+updateBaiduChannel pApplicationId_
+  pBaiduChannelRequest_
+  = UpdateBaiduChannel'{_ubcApplicationId =
+                          pApplicationId_,
+                        _ubcBaiduChannelRequest = pBaiduChannelRequest_}
 
 -- | Undocumented member.
 ubcApplicationId :: Lens' UpdateBaiduChannel Text
@@ -116,13 +112,13 @@ instance ToQuery UpdateBaiduChannel where
         toQuery = const mempty
 
 -- | /See:/ 'updateBaiduChannelResponse' smart constructor.
-data UpdateBaiduChannelResponse =
-  UpdateBaiduChannelResponse'
-    { _ubcrsResponseStatus       :: !Int
-    , _ubcrsBaiduChannelResponse :: !BaiduChannelResponse
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data UpdateBaiduChannelResponse = UpdateBaiduChannelResponse'{_ubcrsResponseStatus
+                                                              :: !Int,
+                                                              _ubcrsBaiduChannelResponse
+                                                              ::
+                                                              !BaiduChannelResponse}
+                                    deriving (Eq, Read, Show, Data, Typeable,
+                                              Generic)
 
 -- | Creates a value of 'UpdateBaiduChannelResponse' with the minimum fields required to make a request.
 --
@@ -135,12 +131,12 @@ updateBaiduChannelResponse
     :: Int -- ^ 'ubcrsResponseStatus'
     -> BaiduChannelResponse -- ^ 'ubcrsBaiduChannelResponse'
     -> UpdateBaiduChannelResponse
-updateBaiduChannelResponse pResponseStatus_ pBaiduChannelResponse_ =
-  UpdateBaiduChannelResponse'
-    { _ubcrsResponseStatus = pResponseStatus_
-    , _ubcrsBaiduChannelResponse = pBaiduChannelResponse_
-    }
-
+updateBaiduChannelResponse pResponseStatus_
+  pBaiduChannelResponse_
+  = UpdateBaiduChannelResponse'{_ubcrsResponseStatus =
+                                  pResponseStatus_,
+                                _ubcrsBaiduChannelResponse =
+                                  pBaiduChannelResponse_}
 
 -- | -- | The response status code.
 ubcrsResponseStatus :: Lens' UpdateBaiduChannelResponse Int

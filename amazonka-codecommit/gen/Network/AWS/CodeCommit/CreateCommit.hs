@@ -51,28 +51,24 @@ module Network.AWS.CodeCommit.CreateCommit
     ) where
 
 import Network.AWS.CodeCommit.Types
-import Network.AWS.CodeCommit.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 
 -- | /See:/ 'createCommit' smart constructor.
-data CreateCommit =
-  CreateCommit'
-    { _ccSetFileModes     :: !(Maybe [SetFileModeEntry])
-    , _ccEmail            :: !(Maybe Text)
-    , _ccAuthorName       :: !(Maybe Text)
-    , _ccParentCommitId   :: !(Maybe Text)
-    , _ccDeleteFiles      :: !(Maybe [DeleteFileEntry])
-    , _ccPutFiles         :: !(Maybe [PutFileEntry])
-    , _ccCommitMessage    :: !(Maybe Text)
-    , _ccKeepEmptyFolders :: !(Maybe Bool)
-    , _ccRepositoryName   :: !Text
-    , _ccBranchName       :: !Text
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data CreateCommit = CreateCommit'{_ccSetFileModes ::
+                                  !(Maybe [SetFileModeEntry]),
+                                  _ccEmail :: !(Maybe Text),
+                                  _ccAuthorName :: !(Maybe Text),
+                                  _ccParentCommitId :: !(Maybe Text),
+                                  _ccDeleteFiles :: !(Maybe [DeleteFileEntry]),
+                                  _ccPutFiles :: !(Maybe [PutFileEntry]),
+                                  _ccCommitMessage :: !(Maybe Text),
+                                  _ccKeepEmptyFolders :: !(Maybe Bool),
+                                  _ccRepositoryName :: !Text,
+                                  _ccBranchName :: !Text}
+                      deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'CreateCommit' with the minimum fields required to make a request.
 --
@@ -101,20 +97,15 @@ createCommit
     :: Text -- ^ 'ccRepositoryName'
     -> Text -- ^ 'ccBranchName'
     -> CreateCommit
-createCommit pRepositoryName_ pBranchName_ =
-  CreateCommit'
-    { _ccSetFileModes = Nothing
-    , _ccEmail = Nothing
-    , _ccAuthorName = Nothing
-    , _ccParentCommitId = Nothing
-    , _ccDeleteFiles = Nothing
-    , _ccPutFiles = Nothing
-    , _ccCommitMessage = Nothing
-    , _ccKeepEmptyFolders = Nothing
-    , _ccRepositoryName = pRepositoryName_
-    , _ccBranchName = pBranchName_
-    }
-
+createCommit pRepositoryName_ pBranchName_
+  = CreateCommit'{_ccSetFileModes = Nothing,
+                  _ccEmail = Nothing, _ccAuthorName = Nothing,
+                  _ccParentCommitId = Nothing,
+                  _ccDeleteFiles = Nothing, _ccPutFiles = Nothing,
+                  _ccCommitMessage = Nothing,
+                  _ccKeepEmptyFolders = Nothing,
+                  _ccRepositoryName = pRepositoryName_,
+                  _ccBranchName = pBranchName_}
 
 -- | The file modes to update for files in this commit.
 ccSetFileModes :: Lens' CreateCommit [SetFileModeEntry]
@@ -204,17 +195,17 @@ instance ToQuery CreateCommit where
         toQuery = const mempty
 
 -- | /See:/ 'createCommitResponse' smart constructor.
-data CreateCommitResponse =
-  CreateCommitResponse'
-    { _ccrsCommitId       :: !(Maybe Text)
-    , _ccrsTreeId         :: !(Maybe Text)
-    , _ccrsFilesAdded     :: !(Maybe [FileMetadata])
-    , _ccrsFilesUpdated   :: !(Maybe [FileMetadata])
-    , _ccrsFilesDeleted   :: !(Maybe [FileMetadata])
-    , _ccrsResponseStatus :: !Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data CreateCommitResponse = CreateCommitResponse'{_ccrsCommitId
+                                                  :: !(Maybe Text),
+                                                  _ccrsTreeId :: !(Maybe Text),
+                                                  _ccrsFilesAdded ::
+                                                  !(Maybe [FileMetadata]),
+                                                  _ccrsFilesUpdated ::
+                                                  !(Maybe [FileMetadata]),
+                                                  _ccrsFilesDeleted ::
+                                                  !(Maybe [FileMetadata]),
+                                                  _ccrsResponseStatus :: !Int}
+                              deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'CreateCommitResponse' with the minimum fields required to make a request.
 --
@@ -234,16 +225,12 @@ data CreateCommitResponse =
 createCommitResponse
     :: Int -- ^ 'ccrsResponseStatus'
     -> CreateCommitResponse
-createCommitResponse pResponseStatus_ =
-  CreateCommitResponse'
-    { _ccrsCommitId = Nothing
-    , _ccrsTreeId = Nothing
-    , _ccrsFilesAdded = Nothing
-    , _ccrsFilesUpdated = Nothing
-    , _ccrsFilesDeleted = Nothing
-    , _ccrsResponseStatus = pResponseStatus_
-    }
-
+createCommitResponse pResponseStatus_
+  = CreateCommitResponse'{_ccrsCommitId = Nothing,
+                          _ccrsTreeId = Nothing, _ccrsFilesAdded = Nothing,
+                          _ccrsFilesUpdated = Nothing,
+                          _ccrsFilesDeleted = Nothing,
+                          _ccrsResponseStatus = pResponseStatus_}
 
 -- | The full commit ID of the commit that contains your committed file changes.
 ccrsCommitId :: Lens' CreateCommitResponse (Maybe Text)

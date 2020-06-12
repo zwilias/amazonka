@@ -36,19 +36,18 @@ module Network.AWS.Greengrass.AssociateServiceRoleToAccount
     ) where
 
 import Network.AWS.Greengrass.Types
-import Network.AWS.Greengrass.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 
 -- | /See:/ 'associateServiceRoleToAccount' smart constructor.
-newtype AssociateServiceRoleToAccount =
-  AssociateServiceRoleToAccount'
-    { _asrtaRoleARN :: Maybe Text
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+newtype AssociateServiceRoleToAccount = AssociateServiceRoleToAccount'{_asrtaRoleARN
+                                                                       ::
+                                                                       Maybe
+                                                                         Text}
+                                          deriving (Eq, Read, Show, Data,
+                                                    Typeable, Generic)
 
 -- | Creates a value of 'AssociateServiceRoleToAccount' with the minimum fields required to make a request.
 --
@@ -57,9 +56,9 @@ newtype AssociateServiceRoleToAccount =
 -- * 'asrtaRoleARN' - The ARN of the service role you wish to associate with your account.
 associateServiceRoleToAccount
     :: AssociateServiceRoleToAccount
-associateServiceRoleToAccount =
-  AssociateServiceRoleToAccount' {_asrtaRoleARN = Nothing}
-
+associateServiceRoleToAccount
+  = AssociateServiceRoleToAccount'{_asrtaRoleARN =
+                                     Nothing}
 
 -- | The ARN of the service role you wish to associate with your account.
 asrtaRoleARN :: Lens' AssociateServiceRoleToAccount (Maybe Text)
@@ -100,13 +99,15 @@ instance ToQuery AssociateServiceRoleToAccount where
         toQuery = const mempty
 
 -- | /See:/ 'associateServiceRoleToAccountResponse' smart constructor.
-data AssociateServiceRoleToAccountResponse =
-  AssociateServiceRoleToAccountResponse'
-    { _asrtarsAssociatedAt   :: !(Maybe Text)
-    , _asrtarsResponseStatus :: !Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data AssociateServiceRoleToAccountResponse = AssociateServiceRoleToAccountResponse'{_asrtarsAssociatedAt
+                                                                                    ::
+                                                                                    !(Maybe
+                                                                                        Text),
+                                                                                    _asrtarsResponseStatus
+                                                                                    ::
+                                                                                    !Int}
+                                               deriving (Eq, Read, Show, Data,
+                                                         Typeable, Generic)
 
 -- | Creates a value of 'AssociateServiceRoleToAccountResponse' with the minimum fields required to make a request.
 --
@@ -118,10 +119,12 @@ data AssociateServiceRoleToAccountResponse =
 associateServiceRoleToAccountResponse
     :: Int -- ^ 'asrtarsResponseStatus'
     -> AssociateServiceRoleToAccountResponse
-associateServiceRoleToAccountResponse pResponseStatus_ =
-  AssociateServiceRoleToAccountResponse'
-    {_asrtarsAssociatedAt = Nothing, _asrtarsResponseStatus = pResponseStatus_}
-
+associateServiceRoleToAccountResponse
+  pResponseStatus_
+  = AssociateServiceRoleToAccountResponse'{_asrtarsAssociatedAt
+                                             = Nothing,
+                                           _asrtarsResponseStatus =
+                                             pResponseStatus_}
 
 -- | The time when the service role was associated with the account.
 asrtarsAssociatedAt :: Lens' AssociateServiceRoleToAccountResponse (Maybe Text)

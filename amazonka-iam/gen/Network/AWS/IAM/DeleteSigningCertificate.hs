@@ -38,20 +38,18 @@ module Network.AWS.IAM.DeleteSigningCertificate
     ) where
 
 import Network.AWS.IAM.Types
-import Network.AWS.IAM.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 
 -- | /See:/ 'deleteSigningCertificate' smart constructor.
-data DeleteSigningCertificate =
-  DeleteSigningCertificate'
-    { _dscUserName      :: !(Maybe Text)
-    , _dscCertificateId :: !Text
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data DeleteSigningCertificate = DeleteSigningCertificate'{_dscUserName
+                                                          :: !(Maybe Text),
+                                                          _dscCertificateId ::
+                                                          !Text}
+                                  deriving (Eq, Read, Show, Data, Typeable,
+                                            Generic)
 
 -- | Creates a value of 'DeleteSigningCertificate' with the minimum fields required to make a request.
 --
@@ -63,10 +61,9 @@ data DeleteSigningCertificate =
 deleteSigningCertificate
     :: Text -- ^ 'dscCertificateId'
     -> DeleteSigningCertificate
-deleteSigningCertificate pCertificateId_ =
-  DeleteSigningCertificate'
-    {_dscUserName = Nothing, _dscCertificateId = pCertificateId_}
-
+deleteSigningCertificate pCertificateId_
+  = DeleteSigningCertificate'{_dscUserName = Nothing,
+                              _dscCertificateId = pCertificateId_}
 
 -- | The name of the user the signing certificate belongs to. This parameter allows (per its <http://wikipedia.org/wiki/regex regex pattern> ) a string of characters consisting of upper and lowercase alphanumeric characters with no spaces. You can also include any of the following characters: _+=,.@-
 dscUserName :: Lens' DeleteSigningCertificate (Maybe Text)
@@ -103,17 +100,16 @@ instance ToQuery DeleteSigningCertificate where
                "CertificateId" =: _dscCertificateId]
 
 -- | /See:/ 'deleteSigningCertificateResponse' smart constructor.
-data DeleteSigningCertificateResponse =
-  DeleteSigningCertificateResponse'
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data DeleteSigningCertificateResponse = DeleteSigningCertificateResponse'
+                                          deriving (Eq, Read, Show, Data,
+                                                    Typeable, Generic)
 
 -- | Creates a value of 'DeleteSigningCertificateResponse' with the minimum fields required to make a request.
 --
 deleteSigningCertificateResponse
     :: DeleteSigningCertificateResponse
-deleteSigningCertificateResponse = DeleteSigningCertificateResponse'
-
+deleteSigningCertificateResponse
+  = DeleteSigningCertificateResponse'
 
 instance NFData DeleteSigningCertificateResponse
          where

@@ -37,18 +37,15 @@ module Network.AWS.Pinpoint.DeleteBaiduChannel
 
 import Network.AWS.Lens
 import Network.AWS.Pinpoint.Types
-import Network.AWS.Pinpoint.Types.Product
 import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 
 -- | /See:/ 'deleteBaiduChannel' smart constructor.
-newtype DeleteBaiduChannel =
-  DeleteBaiduChannel'
-    { _dbcApplicationId :: Text
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+newtype DeleteBaiduChannel = DeleteBaiduChannel'{_dbcApplicationId
+                                                 :: Text}
+                               deriving (Eq, Read, Show, Data, Typeable,
+                                         Generic)
 
 -- | Creates a value of 'DeleteBaiduChannel' with the minimum fields required to make a request.
 --
@@ -58,9 +55,9 @@ newtype DeleteBaiduChannel =
 deleteBaiduChannel
     :: Text -- ^ 'dbcApplicationId'
     -> DeleteBaiduChannel
-deleteBaiduChannel pApplicationId_ =
-  DeleteBaiduChannel' {_dbcApplicationId = pApplicationId_}
-
+deleteBaiduChannel pApplicationId_
+  = DeleteBaiduChannel'{_dbcApplicationId =
+                          pApplicationId_}
 
 -- | Undocumented member.
 dbcApplicationId :: Lens' DeleteBaiduChannel Text
@@ -97,13 +94,13 @@ instance ToQuery DeleteBaiduChannel where
         toQuery = const mempty
 
 -- | /See:/ 'deleteBaiduChannelResponse' smart constructor.
-data DeleteBaiduChannelResponse =
-  DeleteBaiduChannelResponse'
-    { _dbcrsResponseStatus       :: !Int
-    , _dbcrsBaiduChannelResponse :: !BaiduChannelResponse
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data DeleteBaiduChannelResponse = DeleteBaiduChannelResponse'{_dbcrsResponseStatus
+                                                              :: !Int,
+                                                              _dbcrsBaiduChannelResponse
+                                                              ::
+                                                              !BaiduChannelResponse}
+                                    deriving (Eq, Read, Show, Data, Typeable,
+                                              Generic)
 
 -- | Creates a value of 'DeleteBaiduChannelResponse' with the minimum fields required to make a request.
 --
@@ -116,12 +113,12 @@ deleteBaiduChannelResponse
     :: Int -- ^ 'dbcrsResponseStatus'
     -> BaiduChannelResponse -- ^ 'dbcrsBaiduChannelResponse'
     -> DeleteBaiduChannelResponse
-deleteBaiduChannelResponse pResponseStatus_ pBaiduChannelResponse_ =
-  DeleteBaiduChannelResponse'
-    { _dbcrsResponseStatus = pResponseStatus_
-    , _dbcrsBaiduChannelResponse = pBaiduChannelResponse_
-    }
-
+deleteBaiduChannelResponse pResponseStatus_
+  pBaiduChannelResponse_
+  = DeleteBaiduChannelResponse'{_dbcrsResponseStatus =
+                                  pResponseStatus_,
+                                _dbcrsBaiduChannelResponse =
+                                  pBaiduChannelResponse_}
 
 -- | -- | The response status code.
 dbcrsResponseStatus :: Lens' DeleteBaiduChannelResponse Int

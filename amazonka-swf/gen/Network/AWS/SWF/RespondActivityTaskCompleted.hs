@@ -25,7 +25,7 @@
 --
 -- A task is considered open from the time that it is scheduled until it is closed. Therefore a task is reported as open while a worker is processing it. A task is closed after it has been specified in a call to RespondActivityTaskCompleted, 'RespondActivityTaskCanceled' , 'RespondActivityTaskFailed' , or the task has <http://docs.aws.amazon.com/amazonswf/latest/developerguide/swf-dg-basic.html#swf-dev-timeout-types timed out> .
 --
--- __Access Control__
+-- __Access Control__ 
 --
 -- You can use IAM policies to control this action's access to Amazon SWF resources as follows:
 --
@@ -58,16 +58,15 @@ import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 import Network.AWS.SWF.Types
-import Network.AWS.SWF.Types.Product
 
 -- | /See:/ 'respondActivityTaskCompleted' smart constructor.
-data RespondActivityTaskCompleted =
-  RespondActivityTaskCompleted'
-    { _ratcResult    :: !(Maybe Text)
-    , _ratcTaskToken :: !Text
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data RespondActivityTaskCompleted = RespondActivityTaskCompleted'{_ratcResult
+                                                                  ::
+                                                                  !(Maybe Text),
+                                                                  _ratcTaskToken
+                                                                  :: !Text}
+                                      deriving (Eq, Read, Show, Data, Typeable,
+                                                Generic)
 
 -- | Creates a value of 'RespondActivityTaskCompleted' with the minimum fields required to make a request.
 --
@@ -79,10 +78,10 @@ data RespondActivityTaskCompleted =
 respondActivityTaskCompleted
     :: Text -- ^ 'ratcTaskToken'
     -> RespondActivityTaskCompleted
-respondActivityTaskCompleted pTaskToken_ =
-  RespondActivityTaskCompleted'
-    {_ratcResult = Nothing, _ratcTaskToken = pTaskToken_}
-
+respondActivityTaskCompleted pTaskToken_
+  = RespondActivityTaskCompleted'{_ratcResult =
+                                    Nothing,
+                                  _ratcTaskToken = pTaskToken_}
 
 -- | The result of the activity task. It is a free form string that is implementation specific.
 ratcResult :: Lens' RespondActivityTaskCompleted (Maybe Text)
@@ -128,17 +127,16 @@ instance ToQuery RespondActivityTaskCompleted where
         toQuery = const mempty
 
 -- | /See:/ 'respondActivityTaskCompletedResponse' smart constructor.
-data RespondActivityTaskCompletedResponse =
-  RespondActivityTaskCompletedResponse'
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data RespondActivityTaskCompletedResponse = RespondActivityTaskCompletedResponse'
+                                              deriving (Eq, Read, Show, Data,
+                                                        Typeable, Generic)
 
 -- | Creates a value of 'RespondActivityTaskCompletedResponse' with the minimum fields required to make a request.
 --
 respondActivityTaskCompletedResponse
     :: RespondActivityTaskCompletedResponse
-respondActivityTaskCompletedResponse = RespondActivityTaskCompletedResponse'
-
+respondActivityTaskCompletedResponse
+  = RespondActivityTaskCompletedResponse'
 
 instance NFData RespondActivityTaskCompletedResponse
          where

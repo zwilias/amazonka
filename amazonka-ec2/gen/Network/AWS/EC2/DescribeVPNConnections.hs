@@ -42,7 +42,6 @@ module Network.AWS.EC2.DescribeVPNConnections
     ) where
 
 import Network.AWS.EC2.Types
-import Network.AWS.EC2.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.Request
@@ -53,14 +52,14 @@ import Network.AWS.Response
 --
 --
 -- /See:/ 'describeVPNConnections' smart constructor.
-data DescribeVPNConnections =
-  DescribeVPNConnections'
-    { _dvpncFilters          :: !(Maybe [Filter])
-    , _dvpncVPNConnectionIds :: !(Maybe [Text])
-    , _dvpncDryRun           :: !(Maybe Bool)
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data DescribeVPNConnections = DescribeVPNConnections'{_dvpncFilters
+                                                      :: !(Maybe [Filter]),
+                                                      _dvpncVPNConnectionIds ::
+                                                      !(Maybe [Text]),
+                                                      _dvpncDryRun ::
+                                                      !(Maybe Bool)}
+                                deriving (Eq, Read, Show, Data, Typeable,
+                                          Generic)
 
 -- | Creates a value of 'DescribeVPNConnections' with the minimum fields required to make a request.
 --
@@ -73,13 +72,10 @@ data DescribeVPNConnections =
 -- * 'dvpncDryRun' - Checks whether you have the required permissions for the action, without actually making the request, and provides an error response. If you have the required permissions, the error response is @DryRunOperation@ . Otherwise, it is @UnauthorizedOperation@ .
 describeVPNConnections
     :: DescribeVPNConnections
-describeVPNConnections =
-  DescribeVPNConnections'
-    { _dvpncFilters = Nothing
-    , _dvpncVPNConnectionIds = Nothing
-    , _dvpncDryRun = Nothing
-    }
-
+describeVPNConnections
+  = DescribeVPNConnections'{_dvpncFilters = Nothing,
+                            _dvpncVPNConnectionIds = Nothing,
+                            _dvpncDryRun = Nothing}
 
 -- | One or more filters.     * @customer-gateway-configuration@ - The configuration information for the customer gateway.     * @customer-gateway-id@ - The ID of a customer gateway associated with the VPN connection.     * @state@ - The state of the VPN connection (@pending@ | @available@ | @deleting@ | @deleted@ ).     * @option.static-routes-only@ - Indicates whether the connection has static routes only. Used for devices that do not support Border Gateway Protocol (BGP).     * @route.destination-cidr-block@ - The destination CIDR block. This corresponds to the subnet used in a customer data center.     * @bgp-asn@ - The BGP Autonomous System Number (ASN) associated with a BGP device.     * @tag@ :<key> - The key/value combination of a tag assigned to the resource. Use the tag key in the filter name and the tag value as the filter value. For example, to find all resources that have a tag with the key @Owner@ and the value @TeamA@ , specify @tag:Owner@ for the filter name and @TeamA@ for the filter value.     * @tag-key@ - The key of a tag assigned to the resource. Use this filter to find all resources assigned a tag with a specific key, regardless of the tag value.     * @type@ - The type of VPN connection. Currently the only supported type is @ipsec.1@ .     * @vpn-connection-id@ - The ID of the VPN connection.     * @vpn-gateway-id@ - The ID of a virtual private gateway associated with the VPN connection.     * @transit-gateway-id@ - The ID of a transit gateway associated with the VPN connection.
 dvpncFilters :: Lens' DescribeVPNConnections [Filter]
@@ -132,13 +128,14 @@ instance ToQuery DescribeVPNConnections where
 --
 --
 -- /See:/ 'describeVPNConnectionsResponse' smart constructor.
-data DescribeVPNConnectionsResponse =
-  DescribeVPNConnectionsResponse'
-    { _dvcrsVPNConnections :: !(Maybe [VPNConnection])
-    , _dvcrsResponseStatus :: !Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data DescribeVPNConnectionsResponse = DescribeVPNConnectionsResponse'{_dvcrsVPNConnections
+                                                                      ::
+                                                                      !(Maybe
+                                                                          [VPNConnection]),
+                                                                      _dvcrsResponseStatus
+                                                                      :: !Int}
+                                        deriving (Eq, Read, Show, Data,
+                                                  Typeable, Generic)
 
 -- | Creates a value of 'DescribeVPNConnectionsResponse' with the minimum fields required to make a request.
 --
@@ -150,10 +147,10 @@ data DescribeVPNConnectionsResponse =
 describeVPNConnectionsResponse
     :: Int -- ^ 'dvcrsResponseStatus'
     -> DescribeVPNConnectionsResponse
-describeVPNConnectionsResponse pResponseStatus_ =
-  DescribeVPNConnectionsResponse'
-    {_dvcrsVPNConnections = Nothing, _dvcrsResponseStatus = pResponseStatus_}
-
+describeVPNConnectionsResponse pResponseStatus_
+  = DescribeVPNConnectionsResponse'{_dvcrsVPNConnections
+                                      = Nothing,
+                                    _dvcrsResponseStatus = pResponseStatus_}
 
 -- | Information about one or more VPN connections.
 dvcrsVPNConnections :: Lens' DescribeVPNConnectionsResponse [VPNConnection]

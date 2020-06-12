@@ -41,21 +41,23 @@ module Network.AWS.MigrationHub.DisassociateDiscoveredResource
 
 import Network.AWS.Lens
 import Network.AWS.MigrationHub.Types
-import Network.AWS.MigrationHub.Types.Product
 import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 
 -- | /See:/ 'disassociateDiscoveredResource' smart constructor.
-data DisassociateDiscoveredResource =
-  DisassociateDiscoveredResource'
-    { _ddrDryRun               :: !(Maybe Bool)
-    , _ddrProgressUpdateStream :: !Text
-    , _ddrMigrationTaskName    :: !Text
-    , _ddrConfigurationId      :: !Text
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data DisassociateDiscoveredResource = DisassociateDiscoveredResource'{_ddrDryRun
+                                                                      ::
+                                                                      !(Maybe
+                                                                          Bool),
+                                                                      _ddrProgressUpdateStream
+                                                                      :: !Text,
+                                                                      _ddrMigrationTaskName
+                                                                      :: !Text,
+                                                                      _ddrConfigurationId
+                                                                      :: !Text}
+                                        deriving (Eq, Read, Show, Data,
+                                                  Typeable, Generic)
 
 -- | Creates a value of 'DisassociateDiscoveredResource' with the minimum fields required to make a request.
 --
@@ -73,14 +75,14 @@ disassociateDiscoveredResource
     -> Text -- ^ 'ddrMigrationTaskName'
     -> Text -- ^ 'ddrConfigurationId'
     -> DisassociateDiscoveredResource
-disassociateDiscoveredResource pProgressUpdateStream_ pMigrationTaskName_ pConfigurationId_ =
-  DisassociateDiscoveredResource'
-    { _ddrDryRun = Nothing
-    , _ddrProgressUpdateStream = pProgressUpdateStream_
-    , _ddrMigrationTaskName = pMigrationTaskName_
-    , _ddrConfigurationId = pConfigurationId_
-    }
-
+disassociateDiscoveredResource pProgressUpdateStream_
+  pMigrationTaskName_ pConfigurationId_
+  = DisassociateDiscoveredResource'{_ddrDryRun =
+                                      Nothing,
+                                    _ddrProgressUpdateStream =
+                                      pProgressUpdateStream_,
+                                    _ddrMigrationTaskName = pMigrationTaskName_,
+                                    _ddrConfigurationId = pConfigurationId_}
 
 -- | Optional boolean flag to indicate whether any effect should take place. Used to test if the caller has permission to make the call.
 ddrDryRun :: Lens' DisassociateDiscoveredResource (Maybe Bool)
@@ -142,12 +144,12 @@ instance ToQuery DisassociateDiscoveredResource where
         toQuery = const mempty
 
 -- | /See:/ 'disassociateDiscoveredResourceResponse' smart constructor.
-newtype DisassociateDiscoveredResourceResponse =
-  DisassociateDiscoveredResourceResponse'
-    { _ddrrsResponseStatus :: Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+newtype DisassociateDiscoveredResourceResponse = DisassociateDiscoveredResourceResponse'{_ddrrsResponseStatus
+                                                                                         ::
+                                                                                         Int}
+                                                   deriving (Eq, Read, Show,
+                                                             Data, Typeable,
+                                                             Generic)
 
 -- | Creates a value of 'DisassociateDiscoveredResourceResponse' with the minimum fields required to make a request.
 --
@@ -157,10 +159,10 @@ newtype DisassociateDiscoveredResourceResponse =
 disassociateDiscoveredResourceResponse
     :: Int -- ^ 'ddrrsResponseStatus'
     -> DisassociateDiscoveredResourceResponse
-disassociateDiscoveredResourceResponse pResponseStatus_ =
-  DisassociateDiscoveredResourceResponse'
-    {_ddrrsResponseStatus = pResponseStatus_}
-
+disassociateDiscoveredResourceResponse
+  pResponseStatus_
+  = DisassociateDiscoveredResourceResponse'{_ddrrsResponseStatus
+                                              = pResponseStatus_}
 
 -- | -- | The response status code.
 ddrrsResponseStatus :: Lens' DisassociateDiscoveredResourceResponse Int

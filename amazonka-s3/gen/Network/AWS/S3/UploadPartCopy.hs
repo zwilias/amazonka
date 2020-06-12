@@ -62,31 +62,33 @@ import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 import Network.AWS.S3.Types
-import Network.AWS.S3.Types.Product
 
 -- | /See:/ 'uploadPartCopy' smart constructor.
-data UploadPartCopy =
-  UploadPartCopy'
-    { _upcCopySourceIfModifiedSince      :: !(Maybe RFC822)
-    , _upcCopySourceIfUnmodifiedSince    :: !(Maybe RFC822)
-    , _upcCopySourceRange                :: !(Maybe Text)
-    , _upcCopySourceSSECustomerKeyMD5    :: !(Maybe Text)
-    , _upcCopySourceIfNoneMatch          :: !(Maybe Text)
-    , _upcSSECustomerAlgorithm           :: !(Maybe Text)
-    , _upcSSECustomerKey                 :: !(Maybe (Sensitive Text))
-    , _upcRequestPayer                   :: !(Maybe RequestPayer)
-    , _upcCopySourceIfMatch              :: !(Maybe Text)
-    , _upcSSECustomerKeyMD5              :: !(Maybe Text)
-    , _upcCopySourceSSECustomerKey       :: !(Maybe (Sensitive Text))
-    , _upcCopySourceSSECustomerAlgorithm :: !(Maybe Text)
-    , _upcBucket                         :: !BucketName
-    , _upcCopySource                     :: !Text
-    , _upcKey                            :: !ObjectKey
-    , _upcPartNumber                     :: !Int
-    , _upcUploadId                       :: !Text
-    }
-  deriving (Eq, Show, Data, Typeable, Generic)
-
+data UploadPartCopy = UploadPartCopy'{_upcCopySourceIfModifiedSince
+                                      :: !(Maybe RFC822),
+                                      _upcCopySourceIfUnmodifiedSince ::
+                                      !(Maybe RFC822),
+                                      _upcCopySourceRange :: !(Maybe Text),
+                                      _upcCopySourceSSECustomerKeyMD5 ::
+                                      !(Maybe Text),
+                                      _upcCopySourceIfNoneMatch ::
+                                      !(Maybe Text),
+                                      _upcSSECustomerAlgorithm :: !(Maybe Text),
+                                      _upcSSECustomerKey ::
+                                      !(Maybe (Sensitive Text)),
+                                      _upcRequestPayer :: !(Maybe RequestPayer),
+                                      _upcCopySourceIfMatch :: !(Maybe Text),
+                                      _upcSSECustomerKeyMD5 :: !(Maybe Text),
+                                      _upcCopySourceSSECustomerKey ::
+                                      !(Maybe (Sensitive Text)),
+                                      _upcCopySourceSSECustomerAlgorithm ::
+                                      !(Maybe Text),
+                                      _upcBucket :: !BucketName,
+                                      _upcCopySource :: !Text,
+                                      _upcKey :: !ObjectKey,
+                                      _upcPartNumber :: !Int,
+                                      _upcUploadId :: !Text}
+                        deriving (Eq, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'UploadPartCopy' with the minimum fields required to make a request.
 --
@@ -132,27 +134,24 @@ uploadPartCopy
     -> Int -- ^ 'upcPartNumber'
     -> Text -- ^ 'upcUploadId'
     -> UploadPartCopy
-uploadPartCopy pBucket_ pCopySource_ pKey_ pPartNumber_ pUploadId_ =
-  UploadPartCopy'
-    { _upcCopySourceIfModifiedSince = Nothing
-    , _upcCopySourceIfUnmodifiedSince = Nothing
-    , _upcCopySourceRange = Nothing
-    , _upcCopySourceSSECustomerKeyMD5 = Nothing
-    , _upcCopySourceIfNoneMatch = Nothing
-    , _upcSSECustomerAlgorithm = Nothing
-    , _upcSSECustomerKey = Nothing
-    , _upcRequestPayer = Nothing
-    , _upcCopySourceIfMatch = Nothing
-    , _upcSSECustomerKeyMD5 = Nothing
-    , _upcCopySourceSSECustomerKey = Nothing
-    , _upcCopySourceSSECustomerAlgorithm = Nothing
-    , _upcBucket = pBucket_
-    , _upcCopySource = pCopySource_
-    , _upcKey = pKey_
-    , _upcPartNumber = pPartNumber_
-    , _upcUploadId = pUploadId_
-    }
-
+uploadPartCopy pBucket_ pCopySource_ pKey_
+  pPartNumber_ pUploadId_
+  = UploadPartCopy'{_upcCopySourceIfModifiedSince =
+                      Nothing,
+                    _upcCopySourceIfUnmodifiedSince = Nothing,
+                    _upcCopySourceRange = Nothing,
+                    _upcCopySourceSSECustomerKeyMD5 = Nothing,
+                    _upcCopySourceIfNoneMatch = Nothing,
+                    _upcSSECustomerAlgorithm = Nothing,
+                    _upcSSECustomerKey = Nothing,
+                    _upcRequestPayer = Nothing,
+                    _upcCopySourceIfMatch = Nothing,
+                    _upcSSECustomerKeyMD5 = Nothing,
+                    _upcCopySourceSSECustomerKey = Nothing,
+                    _upcCopySourceSSECustomerAlgorithm = Nothing,
+                    _upcBucket = pBucket_, _upcCopySource = pCopySource_,
+                    _upcKey = pKey_, _upcPartNumber = pPartNumber_,
+                    _upcUploadId = pUploadId_}
 
 -- | Copies the object if it has been modified since the specified time.
 upcCopySourceIfModifiedSince :: Lens' UploadPartCopy (Maybe UTCTime)
@@ -283,19 +282,26 @@ instance ToQuery UploadPartCopy where
                "uploadId" =: _upcUploadId]
 
 -- | /See:/ 'uploadPartCopyResponse' smart constructor.
-data UploadPartCopyResponse =
-  UploadPartCopyResponse'
-    { _upcrsRequestCharged       :: !(Maybe RequestCharged)
-    , _upcrsCopyPartResult       :: !(Maybe CopyPartResult)
-    , _upcrsSSECustomerAlgorithm :: !(Maybe Text)
-    , _upcrsCopySourceVersionId  :: !(Maybe Text)
-    , _upcrsSSECustomerKeyMD5    :: !(Maybe Text)
-    , _upcrsSSEKMSKeyId          :: !(Maybe (Sensitive Text))
-    , _upcrsServerSideEncryption :: !(Maybe ServerSideEncryption)
-    , _upcrsResponseStatus       :: !Int
-    }
-  deriving (Eq, Show, Data, Typeable, Generic)
-
+data UploadPartCopyResponse = UploadPartCopyResponse'{_upcrsRequestCharged
+                                                      ::
+                                                      !(Maybe RequestCharged),
+                                                      _upcrsCopyPartResult ::
+                                                      !(Maybe CopyPartResult),
+                                                      _upcrsSSECustomerAlgorithm
+                                                      :: !(Maybe Text),
+                                                      _upcrsCopySourceVersionId
+                                                      :: !(Maybe Text),
+                                                      _upcrsSSECustomerKeyMD5 ::
+                                                      !(Maybe Text),
+                                                      _upcrsSSEKMSKeyId ::
+                                                      !(Maybe (Sensitive Text)),
+                                                      _upcrsServerSideEncryption
+                                                      ::
+                                                      !(Maybe
+                                                          ServerSideEncryption),
+                                                      _upcrsResponseStatus ::
+                                                      !Int}
+                                deriving (Eq, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'UploadPartCopyResponse' with the minimum fields required to make a request.
 --
@@ -319,18 +325,16 @@ data UploadPartCopyResponse =
 uploadPartCopyResponse
     :: Int -- ^ 'upcrsResponseStatus'
     -> UploadPartCopyResponse
-uploadPartCopyResponse pResponseStatus_ =
-  UploadPartCopyResponse'
-    { _upcrsRequestCharged = Nothing
-    , _upcrsCopyPartResult = Nothing
-    , _upcrsSSECustomerAlgorithm = Nothing
-    , _upcrsCopySourceVersionId = Nothing
-    , _upcrsSSECustomerKeyMD5 = Nothing
-    , _upcrsSSEKMSKeyId = Nothing
-    , _upcrsServerSideEncryption = Nothing
-    , _upcrsResponseStatus = pResponseStatus_
-    }
-
+uploadPartCopyResponse pResponseStatus_
+  = UploadPartCopyResponse'{_upcrsRequestCharged =
+                              Nothing,
+                            _upcrsCopyPartResult = Nothing,
+                            _upcrsSSECustomerAlgorithm = Nothing,
+                            _upcrsCopySourceVersionId = Nothing,
+                            _upcrsSSECustomerKeyMD5 = Nothing,
+                            _upcrsSSEKMSKeyId = Nothing,
+                            _upcrsServerSideEncryption = Nothing,
+                            _upcrsResponseStatus = pResponseStatus_}
 
 -- | Undocumented member.
 upcrsRequestCharged :: Lens' UploadPartCopyResponse (Maybe RequestCharged)

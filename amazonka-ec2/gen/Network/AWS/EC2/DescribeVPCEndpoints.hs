@@ -45,7 +45,6 @@ module Network.AWS.EC2.DescribeVPCEndpoints
     ) where
 
 import Network.AWS.EC2.Types
-import Network.AWS.EC2.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Pager
 import Network.AWS.Prelude
@@ -57,16 +56,16 @@ import Network.AWS.Response
 --
 --
 -- /See:/ 'describeVPCEndpoints' smart constructor.
-data DescribeVPCEndpoints =
-  DescribeVPCEndpoints'
-    { _dvpceFilters        :: !(Maybe [Filter])
-    , _dvpceNextToken      :: !(Maybe Text)
-    , _dvpceVPCEndpointIds :: !(Maybe [Text])
-    , _dvpceDryRun         :: !(Maybe Bool)
-    , _dvpceMaxResults     :: !(Maybe Int)
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data DescribeVPCEndpoints = DescribeVPCEndpoints'{_dvpceFilters
+                                                  :: !(Maybe [Filter]),
+                                                  _dvpceNextToken ::
+                                                  !(Maybe Text),
+                                                  _dvpceVPCEndpointIds ::
+                                                  !(Maybe [Text]),
+                                                  _dvpceDryRun :: !(Maybe Bool),
+                                                  _dvpceMaxResults ::
+                                                  !(Maybe Int)}
+                              deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'DescribeVPCEndpoints' with the minimum fields required to make a request.
 --
@@ -83,15 +82,11 @@ data DescribeVPCEndpoints =
 -- * 'dvpceMaxResults' - The maximum number of items to return for this request. The request returns a token that you can specify in a subsequent call to get the next set of results. Constraint: If the value is greater than 1,000, we return only 1,000 items.
 describeVPCEndpoints
     :: DescribeVPCEndpoints
-describeVPCEndpoints =
-  DescribeVPCEndpoints'
-    { _dvpceFilters = Nothing
-    , _dvpceNextToken = Nothing
-    , _dvpceVPCEndpointIds = Nothing
-    , _dvpceDryRun = Nothing
-    , _dvpceMaxResults = Nothing
-    }
-
+describeVPCEndpoints
+  = DescribeVPCEndpoints'{_dvpceFilters = Nothing,
+                          _dvpceNextToken = Nothing,
+                          _dvpceVPCEndpointIds = Nothing,
+                          _dvpceDryRun = Nothing, _dvpceMaxResults = Nothing}
 
 -- | One or more filters.     * @service-name@ - The name of the service.     * @vpc-id@ - The ID of the VPC in which the endpoint resides.     * @vpc-endpoint-id@ - The ID of the endpoint.     * @vpc-endpoint-state@ - The state of the endpoint (@pendingAcceptance@ | @pending@ | @available@ | @deleting@ | @deleted@ | @rejected@ | @failed@ ).     * @tag@ :<key> - The key/value combination of a tag assigned to the resource. Use the tag key in the filter name and the tag value as the filter value. For example, to find all resources that have a tag with the key @Owner@ and the value @TeamA@ , specify @tag:Owner@ for the filter name and @TeamA@ for the filter value.     * @tag-key@ - The key of a tag assigned to the resource. Use this filter to find all resources assigned a tag with a specific key, regardless of the tag value.
 dvpceFilters :: Lens' DescribeVPCEndpoints [Filter]
@@ -161,14 +156,17 @@ instance ToQuery DescribeVPCEndpoints where
 --
 --
 -- /See:/ 'describeVPCEndpointsResponse' smart constructor.
-data DescribeVPCEndpointsResponse =
-  DescribeVPCEndpointsResponse'
-    { _dvpcersNextToken      :: !(Maybe Text)
-    , _dvpcersVPCEndpoints   :: !(Maybe [VPCEndpoint])
-    , _dvpcersResponseStatus :: !Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data DescribeVPCEndpointsResponse = DescribeVPCEndpointsResponse'{_dvpcersNextToken
+                                                                  ::
+                                                                  !(Maybe Text),
+                                                                  _dvpcersVPCEndpoints
+                                                                  ::
+                                                                  !(Maybe
+                                                                      [VPCEndpoint]),
+                                                                  _dvpcersResponseStatus
+                                                                  :: !Int}
+                                      deriving (Eq, Read, Show, Data, Typeable,
+                                                Generic)
 
 -- | Creates a value of 'DescribeVPCEndpointsResponse' with the minimum fields required to make a request.
 --
@@ -182,13 +180,11 @@ data DescribeVPCEndpointsResponse =
 describeVPCEndpointsResponse
     :: Int -- ^ 'dvpcersResponseStatus'
     -> DescribeVPCEndpointsResponse
-describeVPCEndpointsResponse pResponseStatus_ =
-  DescribeVPCEndpointsResponse'
-    { _dvpcersNextToken = Nothing
-    , _dvpcersVPCEndpoints = Nothing
-    , _dvpcersResponseStatus = pResponseStatus_
-    }
-
+describeVPCEndpointsResponse pResponseStatus_
+  = DescribeVPCEndpointsResponse'{_dvpcersNextToken =
+                                    Nothing,
+                                  _dvpcersVPCEndpoints = Nothing,
+                                  _dvpcersResponseStatus = pResponseStatus_}
 
 -- | The token to use when requesting the next set of items. If there are no additional items to return, the string is empty.
 dvpcersNextToken :: Lens' DescribeVPCEndpointsResponse (Maybe Text)

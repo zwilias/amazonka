@@ -36,24 +36,20 @@ module Network.AWS.DynamoDB.DescribeEndpoints
     ) where
 
 import Network.AWS.DynamoDB.Types
-import Network.AWS.DynamoDB.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 
 -- | /See:/ 'describeEndpoints' smart constructor.
-data DescribeEndpoints =
-  DescribeEndpoints'
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data DescribeEndpoints = DescribeEndpoints'
+                           deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'DescribeEndpoints' with the minimum fields required to make a request.
 --
 describeEndpoints
     :: DescribeEndpoints
 describeEndpoints = DescribeEndpoints'
-
 
 instance AWSRequest DescribeEndpoints where
         type Rs DescribeEndpoints = DescribeEndpointsResponse
@@ -89,13 +85,12 @@ instance ToQuery DescribeEndpoints where
         toQuery = const mempty
 
 -- | /See:/ 'describeEndpointsResponse' smart constructor.
-data DescribeEndpointsResponse =
-  DescribeEndpointsResponse'
-    { _dersResponseStatus :: !Int
-    , _dersEndpoints      :: ![Endpoint]
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data DescribeEndpointsResponse = DescribeEndpointsResponse'{_dersResponseStatus
+                                                            :: !Int,
+                                                            _dersEndpoints ::
+                                                            ![Endpoint]}
+                                   deriving (Eq, Read, Show, Data, Typeable,
+                                             Generic)
 
 -- | Creates a value of 'DescribeEndpointsResponse' with the minimum fields required to make a request.
 --
@@ -107,10 +102,10 @@ data DescribeEndpointsResponse =
 describeEndpointsResponse
     :: Int -- ^ 'dersResponseStatus'
     -> DescribeEndpointsResponse
-describeEndpointsResponse pResponseStatus_ =
-  DescribeEndpointsResponse'
-    {_dersResponseStatus = pResponseStatus_, _dersEndpoints = mempty}
-
+describeEndpointsResponse pResponseStatus_
+  = DescribeEndpointsResponse'{_dersResponseStatus =
+                                 pResponseStatus_,
+                               _dersEndpoints = mempty}
 
 -- | -- | The response status code.
 dersResponseStatus :: Lens' DescribeEndpointsResponse Int

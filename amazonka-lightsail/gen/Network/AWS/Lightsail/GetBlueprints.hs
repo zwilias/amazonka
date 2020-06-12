@@ -43,20 +43,16 @@ module Network.AWS.Lightsail.GetBlueprints
 
 import Network.AWS.Lens
 import Network.AWS.Lightsail.Types
-import Network.AWS.Lightsail.Types.Product
 import Network.AWS.Pager
 import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 
 -- | /See:/ 'getBlueprints' smart constructor.
-data GetBlueprints =
-  GetBlueprints'
-    { _gbIncludeInactive :: !(Maybe Bool)
-    , _gbPageToken       :: !(Maybe Text)
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data GetBlueprints = GetBlueprints'{_gbIncludeInactive
+                                    :: !(Maybe Bool),
+                                    _gbPageToken :: !(Maybe Text)}
+                       deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'GetBlueprints' with the minimum fields required to make a request.
 --
@@ -67,9 +63,9 @@ data GetBlueprints =
 -- * 'gbPageToken' - A token used for advancing to the next page of results from your get blueprints request.
 getBlueprints
     :: GetBlueprints
-getBlueprints =
-  GetBlueprints' {_gbIncludeInactive = Nothing, _gbPageToken = Nothing}
-
+getBlueprints
+  = GetBlueprints'{_gbIncludeInactive = Nothing,
+                   _gbPageToken = Nothing}
 
 -- | A Boolean value indicating whether to include inactive results in your request.
 gbIncludeInactive :: Lens' GetBlueprints (Maybe Bool)
@@ -124,14 +120,14 @@ instance ToQuery GetBlueprints where
         toQuery = const mempty
 
 -- | /See:/ 'getBlueprintsResponse' smart constructor.
-data GetBlueprintsResponse =
-  GetBlueprintsResponse'
-    { _gbsrsBlueprints     :: !(Maybe [Blueprint])
-    , _gbsrsNextPageToken  :: !(Maybe Text)
-    , _gbsrsResponseStatus :: !Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data GetBlueprintsResponse = GetBlueprintsResponse'{_gbsrsBlueprints
+                                                    :: !(Maybe [Blueprint]),
+                                                    _gbsrsNextPageToken ::
+                                                    !(Maybe Text),
+                                                    _gbsrsResponseStatus ::
+                                                    !Int}
+                               deriving (Eq, Read, Show, Data, Typeable,
+                                         Generic)
 
 -- | Creates a value of 'GetBlueprintsResponse' with the minimum fields required to make a request.
 --
@@ -145,13 +141,10 @@ data GetBlueprintsResponse =
 getBlueprintsResponse
     :: Int -- ^ 'gbsrsResponseStatus'
     -> GetBlueprintsResponse
-getBlueprintsResponse pResponseStatus_ =
-  GetBlueprintsResponse'
-    { _gbsrsBlueprints = Nothing
-    , _gbsrsNextPageToken = Nothing
-    , _gbsrsResponseStatus = pResponseStatus_
-    }
-
+getBlueprintsResponse pResponseStatus_
+  = GetBlueprintsResponse'{_gbsrsBlueprints = Nothing,
+                           _gbsrsNextPageToken = Nothing,
+                           _gbsrsResponseStatus = pResponseStatus_}
 
 -- | An array of key-value pairs that contains information about the available blueprints.
 gbsrsBlueprints :: Lens' GetBlueprintsResponse [Blueprint]

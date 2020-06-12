@@ -39,7 +39,6 @@ module Network.AWS.CloudFront.GetDistribution
     ) where
 
 import Network.AWS.CloudFront.Types
-import Network.AWS.CloudFront.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.Request
@@ -50,12 +49,9 @@ import Network.AWS.Response
 --
 --
 -- /See:/ 'getDistribution' smart constructor.
-newtype GetDistribution =
-  GetDistribution'
-    { _gdId :: Text
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+newtype GetDistribution = GetDistribution'{_gdId ::
+                                           Text}
+                            deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'GetDistribution' with the minimum fields required to make a request.
 --
@@ -65,8 +61,7 @@ newtype GetDistribution =
 getDistribution
     :: Text -- ^ 'gdId'
     -> GetDistribution
-getDistribution pId_ = GetDistribution' {_gdId = pId_}
-
+getDistribution pId_ = GetDistribution'{_gdId = pId_}
 
 -- | The distribution's ID. If the ID is empty, an empty distribution configuration is returned.
 gdId :: Lens' GetDistribution Text
@@ -101,14 +96,13 @@ instance ToQuery GetDistribution where
 --
 --
 -- /See:/ 'getDistributionResponse' smart constructor.
-data GetDistributionResponse =
-  GetDistributionResponse'
-    { _gdrsETag           :: !(Maybe Text)
-    , _gdrsDistribution   :: !(Maybe Distribution)
-    , _gdrsResponseStatus :: !Int
-    }
-  deriving (Eq, Show, Data, Typeable, Generic)
-
+data GetDistributionResponse = GetDistributionResponse'{_gdrsETag
+                                                        :: !(Maybe Text),
+                                                        _gdrsDistribution ::
+                                                        !(Maybe Distribution),
+                                                        _gdrsResponseStatus ::
+                                                        !Int}
+                                 deriving (Eq, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'GetDistributionResponse' with the minimum fields required to make a request.
 --
@@ -122,13 +116,10 @@ data GetDistributionResponse =
 getDistributionResponse
     :: Int -- ^ 'gdrsResponseStatus'
     -> GetDistributionResponse
-getDistributionResponse pResponseStatus_ =
-  GetDistributionResponse'
-    { _gdrsETag = Nothing
-    , _gdrsDistribution = Nothing
-    , _gdrsResponseStatus = pResponseStatus_
-    }
-
+getDistributionResponse pResponseStatus_
+  = GetDistributionResponse'{_gdrsETag = Nothing,
+                             _gdrsDistribution = Nothing,
+                             _gdrsResponseStatus = pResponseStatus_}
 
 -- | The current version of the distribution's information. For example: @E2QWRUHAPOMQZL@ .
 gdrsETag :: Lens' GetDistributionResponse (Maybe Text)

@@ -42,7 +42,6 @@ module Network.AWS.CodePipeline.PutActionRevision
     ) where
 
 import Network.AWS.CodePipeline.Types
-import Network.AWS.CodePipeline.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.Request
@@ -53,15 +52,12 @@ import Network.AWS.Response
 --
 --
 -- /See:/ 'putActionRevision' smart constructor.
-data PutActionRevision =
-  PutActionRevision'
-    { _pPipelineName   :: !Text
-    , _pStageName      :: !Text
-    , _pActionName     :: !Text
-    , _pActionRevision :: !ActionRevision
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data PutActionRevision = PutActionRevision'{_pPipelineName
+                                            :: !Text,
+                                            _pStageName :: !Text,
+                                            _pActionName :: !Text,
+                                            _pActionRevision :: !ActionRevision}
+                           deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'PutActionRevision' with the minimum fields required to make a request.
 --
@@ -80,14 +76,12 @@ putActionRevision
     -> Text -- ^ 'pActionName'
     -> ActionRevision -- ^ 'pActionRevision'
     -> PutActionRevision
-putActionRevision pPipelineName_ pStageName_ pActionName_ pActionRevision_ =
-  PutActionRevision'
-    { _pPipelineName = pPipelineName_
-    , _pStageName = pStageName_
-    , _pActionName = pActionName_
-    , _pActionRevision = pActionRevision_
-    }
-
+putActionRevision pPipelineName_ pStageName_
+  pActionName_ pActionRevision_
+  = PutActionRevision'{_pPipelineName = pPipelineName_,
+                       _pStageName = pStageName_,
+                       _pActionName = pActionName_,
+                       _pActionRevision = pActionRevision_}
 
 -- | The name of the pipeline that starts processing the revision to the source.
 pPipelineName :: Lens' PutActionRevision Text
@@ -150,14 +144,14 @@ instance ToQuery PutActionRevision where
 --
 --
 -- /See:/ 'putActionRevisionResponse' smart constructor.
-data PutActionRevisionResponse =
-  PutActionRevisionResponse'
-    { _prsNewRevision         :: !(Maybe Bool)
-    , _prsPipelineExecutionId :: !(Maybe Text)
-    , _prsResponseStatus      :: !Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data PutActionRevisionResponse = PutActionRevisionResponse'{_prsNewRevision
+                                                            :: !(Maybe Bool),
+                                                            _prsPipelineExecutionId
+                                                            :: !(Maybe Text),
+                                                            _prsResponseStatus
+                                                            :: !Int}
+                                   deriving (Eq, Read, Show, Data, Typeable,
+                                             Generic)
 
 -- | Creates a value of 'PutActionRevisionResponse' with the minimum fields required to make a request.
 --
@@ -171,13 +165,11 @@ data PutActionRevisionResponse =
 putActionRevisionResponse
     :: Int -- ^ 'prsResponseStatus'
     -> PutActionRevisionResponse
-putActionRevisionResponse pResponseStatus_ =
-  PutActionRevisionResponse'
-    { _prsNewRevision = Nothing
-    , _prsPipelineExecutionId = Nothing
-    , _prsResponseStatus = pResponseStatus_
-    }
-
+putActionRevisionResponse pResponseStatus_
+  = PutActionRevisionResponse'{_prsNewRevision =
+                                 Nothing,
+                               _prsPipelineExecutionId = Nothing,
+                               _prsResponseStatus = pResponseStatus_}
 
 -- | Indicates whether the artifact revision was previously used in an execution of the specified pipeline.
 prsNewRevision :: Lens' PutActionRevisionResponse (Maybe Bool)

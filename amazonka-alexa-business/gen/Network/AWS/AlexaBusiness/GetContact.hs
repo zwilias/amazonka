@@ -38,19 +38,15 @@ module Network.AWS.AlexaBusiness.GetContact
     ) where
 
 import Network.AWS.AlexaBusiness.Types
-import Network.AWS.AlexaBusiness.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 
 -- | /See:/ 'getContact' smart constructor.
-newtype GetContact =
-  GetContact'
-    { _gcContactARN :: Text
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+newtype GetContact = GetContact'{_gcContactARN ::
+                                 Text}
+                       deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'GetContact' with the minimum fields required to make a request.
 --
@@ -60,8 +56,8 @@ newtype GetContact =
 getContact
     :: Text -- ^ 'gcContactARN'
     -> GetContact
-getContact pContactARN_ = GetContact' {_gcContactARN = pContactARN_}
-
+getContact pContactARN_
+  = GetContact'{_gcContactARN = pContactARN_}
 
 -- | The ARN of the contact for which to request details.
 gcContactARN :: Lens' GetContact Text
@@ -101,13 +97,10 @@ instance ToQuery GetContact where
         toQuery = const mempty
 
 -- | /See:/ 'getContactResponse' smart constructor.
-data GetContactResponse =
-  GetContactResponse'
-    { _gcrsContact        :: !(Maybe Contact)
-    , _gcrsResponseStatus :: !Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data GetContactResponse = GetContactResponse'{_gcrsContact
+                                              :: !(Maybe Contact),
+                                              _gcrsResponseStatus :: !Int}
+                            deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'GetContactResponse' with the minimum fields required to make a request.
 --
@@ -119,10 +112,9 @@ data GetContactResponse =
 getContactResponse
     :: Int -- ^ 'gcrsResponseStatus'
     -> GetContactResponse
-getContactResponse pResponseStatus_ =
-  GetContactResponse'
-    {_gcrsContact = Nothing, _gcrsResponseStatus = pResponseStatus_}
-
+getContactResponse pResponseStatus_
+  = GetContactResponse'{_gcrsContact = Nothing,
+                        _gcrsResponseStatus = pResponseStatus_}
 
 -- | The details of the requested contact.
 gcrsContact :: Lens' GetContactResponse (Maybe Contact)

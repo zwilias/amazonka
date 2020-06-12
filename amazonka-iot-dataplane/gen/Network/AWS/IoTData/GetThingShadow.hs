@@ -40,7 +40,6 @@ module Network.AWS.IoTData.GetThingShadow
     ) where
 
 import Network.AWS.IoTData.Types
-import Network.AWS.IoTData.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.Request
@@ -51,12 +50,9 @@ import Network.AWS.Response
 --
 --
 -- /See:/ 'getThingShadow' smart constructor.
-newtype GetThingShadow =
-  GetThingShadow'
-    { _gtsThingName :: Text
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+newtype GetThingShadow = GetThingShadow'{_gtsThingName
+                                         :: Text}
+                           deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'GetThingShadow' with the minimum fields required to make a request.
 --
@@ -66,8 +62,8 @@ newtype GetThingShadow =
 getThingShadow
     :: Text -- ^ 'gtsThingName'
     -> GetThingShadow
-getThingShadow pThingName_ = GetThingShadow' {_gtsThingName = pThingName_}
-
+getThingShadow pThingName_
+  = GetThingShadow'{_gtsThingName = pThingName_}
 
 -- | The name of the thing.
 gtsThingName :: Lens' GetThingShadow Text
@@ -101,13 +97,11 @@ instance ToQuery GetThingShadow where
 --
 --
 -- /See:/ 'getThingShadowResponse' smart constructor.
-data GetThingShadowResponse =
-  GetThingShadowResponse'
-    { _gtsrsPayload        :: !(Maybe ByteString)
-    , _gtsrsResponseStatus :: !Int
-    }
-  deriving (Eq, Show, Data, Typeable, Generic)
-
+data GetThingShadowResponse = GetThingShadowResponse'{_gtsrsPayload
+                                                      :: !(Maybe ByteString),
+                                                      _gtsrsResponseStatus ::
+                                                      !Int}
+                                deriving (Eq, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'GetThingShadowResponse' with the minimum fields required to make a request.
 --
@@ -119,10 +113,9 @@ data GetThingShadowResponse =
 getThingShadowResponse
     :: Int -- ^ 'gtsrsResponseStatus'
     -> GetThingShadowResponse
-getThingShadowResponse pResponseStatus_ =
-  GetThingShadowResponse'
-    {_gtsrsPayload = Nothing, _gtsrsResponseStatus = pResponseStatus_}
-
+getThingShadowResponse pResponseStatus_
+  = GetThingShadowResponse'{_gtsrsPayload = Nothing,
+                            _gtsrsResponseStatus = pResponseStatus_}
 
 -- | The state information, in JSON format.
 gtsrsPayload :: Lens' GetThingShadowResponse (Maybe ByteString)

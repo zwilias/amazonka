@@ -39,21 +39,24 @@ module Network.AWS.Greengrass.ListResourceDefinitionVersions
     ) where
 
 import Network.AWS.Greengrass.Types
-import Network.AWS.Greengrass.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 
 -- | /See:/ 'listResourceDefinitionVersions' smart constructor.
-data ListResourceDefinitionVersions =
-  ListResourceDefinitionVersions'
-    { _lrdvNextToken            :: !(Maybe Text)
-    , _lrdvMaxResults           :: !(Maybe Text)
-    , _lrdvResourceDefinitionId :: !Text
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data ListResourceDefinitionVersions = ListResourceDefinitionVersions'{_lrdvNextToken
+                                                                      ::
+                                                                      !(Maybe
+                                                                          Text),
+                                                                      _lrdvMaxResults
+                                                                      ::
+                                                                      !(Maybe
+                                                                          Text),
+                                                                      _lrdvResourceDefinitionId
+                                                                      :: !Text}
+                                        deriving (Eq, Read, Show, Data,
+                                                  Typeable, Generic)
 
 -- | Creates a value of 'ListResourceDefinitionVersions' with the minimum fields required to make a request.
 --
@@ -67,13 +70,12 @@ data ListResourceDefinitionVersions =
 listResourceDefinitionVersions
     :: Text -- ^ 'lrdvResourceDefinitionId'
     -> ListResourceDefinitionVersions
-listResourceDefinitionVersions pResourceDefinitionId_ =
-  ListResourceDefinitionVersions'
-    { _lrdvNextToken = Nothing
-    , _lrdvMaxResults = Nothing
-    , _lrdvResourceDefinitionId = pResourceDefinitionId_
-    }
-
+listResourceDefinitionVersions pResourceDefinitionId_
+  = ListResourceDefinitionVersions'{_lrdvNextToken =
+                                      Nothing,
+                                    _lrdvMaxResults = Nothing,
+                                    _lrdvResourceDefinitionId =
+                                      pResourceDefinitionId_}
 
 -- | The token for the next set of results, or ''null'' if there are no additional results.
 lrdvNextToken :: Lens' ListResourceDefinitionVersions (Maybe Text)
@@ -125,14 +127,19 @@ instance ToQuery ListResourceDefinitionVersions where
                "MaxResults" =: _lrdvMaxResults]
 
 -- | /See:/ 'listResourceDefinitionVersionsResponse' smart constructor.
-data ListResourceDefinitionVersionsResponse =
-  ListResourceDefinitionVersionsResponse'
-    { _lrdvrsVersions       :: !(Maybe [VersionInformation])
-    , _lrdvrsNextToken      :: !(Maybe Text)
-    , _lrdvrsResponseStatus :: !Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data ListResourceDefinitionVersionsResponse = ListResourceDefinitionVersionsResponse'{_lrdvrsVersions
+                                                                                      ::
+                                                                                      !(Maybe
+                                                                                          [VersionInformation]),
+                                                                                      _lrdvrsNextToken
+                                                                                      ::
+                                                                                      !(Maybe
+                                                                                          Text),
+                                                                                      _lrdvrsResponseStatus
+                                                                                      ::
+                                                                                      !Int}
+                                                deriving (Eq, Read, Show, Data,
+                                                          Typeable, Generic)
 
 -- | Creates a value of 'ListResourceDefinitionVersionsResponse' with the minimum fields required to make a request.
 --
@@ -146,13 +153,13 @@ data ListResourceDefinitionVersionsResponse =
 listResourceDefinitionVersionsResponse
     :: Int -- ^ 'lrdvrsResponseStatus'
     -> ListResourceDefinitionVersionsResponse
-listResourceDefinitionVersionsResponse pResponseStatus_ =
-  ListResourceDefinitionVersionsResponse'
-    { _lrdvrsVersions = Nothing
-    , _lrdvrsNextToken = Nothing
-    , _lrdvrsResponseStatus = pResponseStatus_
-    }
-
+listResourceDefinitionVersionsResponse
+  pResponseStatus_
+  = ListResourceDefinitionVersionsResponse'{_lrdvrsVersions
+                                              = Nothing,
+                                            _lrdvrsNextToken = Nothing,
+                                            _lrdvrsResponseStatus =
+                                              pResponseStatus_}
 
 -- | Information about a version.
 lrdvrsVersions :: Lens' ListResourceDefinitionVersionsResponse [VersionInformation]

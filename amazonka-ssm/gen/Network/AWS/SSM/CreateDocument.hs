@@ -48,19 +48,15 @@ import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 import Network.AWS.SSM.Types
-import Network.AWS.SSM.Types.Product
 
 -- | /See:/ 'createDocument' smart constructor.
-data CreateDocument =
-  CreateDocument'
-    { _cdDocumentType   :: !(Maybe DocumentType)
-    , _cdTargetType     :: !(Maybe Text)
-    , _cdDocumentFormat :: !(Maybe DocumentFormat)
-    , _cdContent        :: !Text
-    , _cdName           :: !Text
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data CreateDocument = CreateDocument'{_cdDocumentType
+                                      :: !(Maybe DocumentType),
+                                      _cdTargetType :: !(Maybe Text),
+                                      _cdDocumentFormat ::
+                                      !(Maybe DocumentFormat),
+                                      _cdContent :: !Text, _cdName :: !Text}
+                        deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'CreateDocument' with the minimum fields required to make a request.
 --
@@ -68,32 +64,27 @@ data CreateDocument =
 --
 -- * 'cdDocumentType' - The type of document to create. Valid document types include: Policy, Automation, and Command.
 --
--- * 'cdTargetType' - Specify a target type to define the kinds of resources the document can run on. For example, to run a document on EC2 instances, specify the following value: /AWS::EC2::Instance. If you specify a value of '/' the document can run on all types of resources. If you don't specify a value, the document can't run on any resources. For a list of valid resource types, see <http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-template-resource-type-ref.html AWS Resource Types Reference> in the /AWS CloudFormation User Guide/ .
+-- * 'cdTargetType' - Specify a target type to define the kinds of resources the document can run on. For example, to run a document on EC2 instances, specify the following value: /AWS::EC2::Instance. If you specify a value of '/' the document can run on all types of resources. If you don't specify a value, the document can't run on any resources. For a list of valid resource types, see <http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-template-resource-type-ref.html AWS Resource Types Reference> in the /AWS CloudFormation User Guide/ . 
 --
 -- * 'cdDocumentFormat' - Specify the document format for the request. The document format can be either JSON or YAML. JSON is the default format.
 --
 -- * 'cdContent' - A valid JSON or YAML string.
 --
--- * 'cdName' - A name for the Systems Manager document. /Important:/ Do not use the following to begin the names of documents you create. They are reserved by AWS for use as document prefixes:     * @aws@      * @amazon@      * @amzn@
+-- * 'cdName' - A name for the Systems Manager document. /Important:/ Do not use the following to begin the names of documents you create. They are reserved by AWS for use as document prefixes:     * @aws@      * @amazon@      * @amzn@ 
 createDocument
     :: Text -- ^ 'cdContent'
     -> Text -- ^ 'cdName'
     -> CreateDocument
-createDocument pContent_ pName_ =
-  CreateDocument'
-    { _cdDocumentType = Nothing
-    , _cdTargetType = Nothing
-    , _cdDocumentFormat = Nothing
-    , _cdContent = pContent_
-    , _cdName = pName_
-    }
-
+createDocument pContent_ pName_
+  = CreateDocument'{_cdDocumentType = Nothing,
+                    _cdTargetType = Nothing, _cdDocumentFormat = Nothing,
+                    _cdContent = pContent_, _cdName = pName_}
 
 -- | The type of document to create. Valid document types include: Policy, Automation, and Command.
 cdDocumentType :: Lens' CreateDocument (Maybe DocumentType)
 cdDocumentType = lens _cdDocumentType (\ s a -> s{_cdDocumentType = a})
 
--- | Specify a target type to define the kinds of resources the document can run on. For example, to run a document on EC2 instances, specify the following value: /AWS::EC2::Instance. If you specify a value of '/' the document can run on all types of resources. If you don't specify a value, the document can't run on any resources. For a list of valid resource types, see <http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-template-resource-type-ref.html AWS Resource Types Reference> in the /AWS CloudFormation User Guide/ .
+-- | Specify a target type to define the kinds of resources the document can run on. For example, to run a document on EC2 instances, specify the following value: /AWS::EC2::Instance. If you specify a value of '/' the document can run on all types of resources. If you don't specify a value, the document can't run on any resources. For a list of valid resource types, see <http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-template-resource-type-ref.html AWS Resource Types Reference> in the /AWS CloudFormation User Guide/ . 
 cdTargetType :: Lens' CreateDocument (Maybe Text)
 cdTargetType = lens _cdTargetType (\ s a -> s{_cdTargetType = a})
 
@@ -105,7 +96,7 @@ cdDocumentFormat = lens _cdDocumentFormat (\ s a -> s{_cdDocumentFormat = a})
 cdContent :: Lens' CreateDocument Text
 cdContent = lens _cdContent (\ s a -> s{_cdContent = a})
 
--- | A name for the Systems Manager document. /Important:/ Do not use the following to begin the names of documents you create. They are reserved by AWS for use as document prefixes:     * @aws@      * @amazon@      * @amzn@
+-- | A name for the Systems Manager document. /Important:/ Do not use the following to begin the names of documents you create. They are reserved by AWS for use as document prefixes:     * @aws@      * @amazon@      * @amzn@ 
 cdName :: Lens' CreateDocument Text
 cdName = lens _cdName (\ s a -> s{_cdName = a})
 
@@ -149,13 +140,14 @@ instance ToQuery CreateDocument where
         toQuery = const mempty
 
 -- | /See:/ 'createDocumentResponse' smart constructor.
-data CreateDocumentResponse =
-  CreateDocumentResponse'
-    { _cdrsDocumentDescription :: !(Maybe DocumentDescription)
-    , _cdrsResponseStatus      :: !Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data CreateDocumentResponse = CreateDocumentResponse'{_cdrsDocumentDescription
+                                                      ::
+                                                      !(Maybe
+                                                          DocumentDescription),
+                                                      _cdrsResponseStatus ::
+                                                      !Int}
+                                deriving (Eq, Read, Show, Data, Typeable,
+                                          Generic)
 
 -- | Creates a value of 'CreateDocumentResponse' with the minimum fields required to make a request.
 --
@@ -167,10 +159,10 @@ data CreateDocumentResponse =
 createDocumentResponse
     :: Int -- ^ 'cdrsResponseStatus'
     -> CreateDocumentResponse
-createDocumentResponse pResponseStatus_ =
-  CreateDocumentResponse'
-    {_cdrsDocumentDescription = Nothing, _cdrsResponseStatus = pResponseStatus_}
-
+createDocumentResponse pResponseStatus_
+  = CreateDocumentResponse'{_cdrsDocumentDescription =
+                              Nothing,
+                            _cdrsResponseStatus = pResponseStatus_}
 
 -- | Information about the Systems Manager document.
 cdrsDocumentDescription :: Lens' CreateDocumentResponse (Maybe DocumentDescription)

@@ -50,21 +50,18 @@ import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 import Network.AWS.StorageGateway.Types
-import Network.AWS.StorageGateway.Types.Product
 
 -- | DescribeTapeArchivesInput
 --
 --
 --
 -- /See:/ 'describeTapeArchives' smart constructor.
-data DescribeTapeArchives =
-  DescribeTapeArchives'
-    { _dtaMarker   :: !(Maybe Text)
-    , _dtaLimit    :: !(Maybe Nat)
-    , _dtaTapeARNs :: !(Maybe [Text])
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data DescribeTapeArchives = DescribeTapeArchives'{_dtaMarker
+                                                  :: !(Maybe Text),
+                                                  _dtaLimit :: !(Maybe Nat),
+                                                  _dtaTapeARNs ::
+                                                  !(Maybe [Text])}
+                              deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'DescribeTapeArchives' with the minimum fields required to make a request.
 --
@@ -77,10 +74,9 @@ data DescribeTapeArchives =
 -- * 'dtaTapeARNs' - Specifies one or more unique Amazon Resource Names (ARNs) that represent the virtual tapes you want to describe.
 describeTapeArchives
     :: DescribeTapeArchives
-describeTapeArchives =
-  DescribeTapeArchives'
-    {_dtaMarker = Nothing, _dtaLimit = Nothing, _dtaTapeARNs = Nothing}
-
+describeTapeArchives
+  = DescribeTapeArchives'{_dtaMarker = Nothing,
+                          _dtaLimit = Nothing, _dtaTapeARNs = Nothing}
 
 -- | An opaque string that indicates the position at which to begin describing virtual tapes.
 dtaMarker :: Lens' DescribeTapeArchives (Maybe Text)
@@ -146,14 +142,17 @@ instance ToQuery DescribeTapeArchives where
 --
 --
 -- /See:/ 'describeTapeArchivesResponse' smart constructor.
-data DescribeTapeArchivesResponse =
-  DescribeTapeArchivesResponse'
-    { _dtarsTapeArchives   :: !(Maybe [TapeArchive])
-    , _dtarsMarker         :: !(Maybe Text)
-    , _dtarsResponseStatus :: !Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data DescribeTapeArchivesResponse = DescribeTapeArchivesResponse'{_dtarsTapeArchives
+                                                                  ::
+                                                                  !(Maybe
+                                                                      [TapeArchive]),
+                                                                  _dtarsMarker
+                                                                  ::
+                                                                  !(Maybe Text),
+                                                                  _dtarsResponseStatus
+                                                                  :: !Int}
+                                      deriving (Eq, Read, Show, Data, Typeable,
+                                                Generic)
 
 -- | Creates a value of 'DescribeTapeArchivesResponse' with the minimum fields required to make a request.
 --
@@ -167,13 +166,11 @@ data DescribeTapeArchivesResponse =
 describeTapeArchivesResponse
     :: Int -- ^ 'dtarsResponseStatus'
     -> DescribeTapeArchivesResponse
-describeTapeArchivesResponse pResponseStatus_ =
-  DescribeTapeArchivesResponse'
-    { _dtarsTapeArchives = Nothing
-    , _dtarsMarker = Nothing
-    , _dtarsResponseStatus = pResponseStatus_
-    }
-
+describeTapeArchivesResponse pResponseStatus_
+  = DescribeTapeArchivesResponse'{_dtarsTapeArchives =
+                                    Nothing,
+                                  _dtarsMarker = Nothing,
+                                  _dtarsResponseStatus = pResponseStatus_}
 
 -- | An array of virtual tape objects in the virtual tape shelf (VTS). The description includes of the Amazon Resource Name(ARN) of the virtual tapes. The information returned includes the Amazon Resource Names (ARNs) of the tapes, size of the tapes, status of the tapes, progress of the description and tape barcode.
 dtarsTapeArchives :: Lens' DescribeTapeArchivesResponse [TapeArchive]

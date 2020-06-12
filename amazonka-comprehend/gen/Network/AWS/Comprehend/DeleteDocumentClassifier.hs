@@ -23,7 +23,7 @@
 --
 -- Only those classifiers that are in terminated states (IN_ERROR, TRAINED) will be deleted. If an active inference job is using the model, a @ResourceInUseException@ will be returned.
 --
--- This is an asynchronous action that puts the classifier into a DELETING state, and it is then removed by a background job. Once removed, the classifier disappears from your account and is no longer available for use.
+-- This is an asynchronous action that puts the classifier into a DELETING state, and it is then removed by a background job. Once removed, the classifier disappears from your account and is no longer available for use. 
 --
 module Network.AWS.Comprehend.DeleteDocumentClassifier
     (
@@ -41,33 +41,30 @@ module Network.AWS.Comprehend.DeleteDocumentClassifier
     ) where
 
 import Network.AWS.Comprehend.Types
-import Network.AWS.Comprehend.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 
 -- | /See:/ 'deleteDocumentClassifier' smart constructor.
-newtype DeleteDocumentClassifier =
-  DeleteDocumentClassifier'
-    { _dDocumentClassifierARN :: Text
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+newtype DeleteDocumentClassifier = DeleteDocumentClassifier'{_dDocumentClassifierARN
+                                                             :: Text}
+                                     deriving (Eq, Read, Show, Data, Typeable,
+                                               Generic)
 
 -- | Creates a value of 'DeleteDocumentClassifier' with the minimum fields required to make a request.
 --
 -- Use one of the following lenses to modify other fields as desired:
 --
--- * 'dDocumentClassifierARN' - The Amazon Resource Name (ARN) that identifies the document classifier.
+-- * 'dDocumentClassifierARN' - The Amazon Resource Name (ARN) that identifies the document classifier. 
 deleteDocumentClassifier
     :: Text -- ^ 'dDocumentClassifierARN'
     -> DeleteDocumentClassifier
-deleteDocumentClassifier pDocumentClassifierARN_ =
-  DeleteDocumentClassifier' {_dDocumentClassifierARN = pDocumentClassifierARN_}
+deleteDocumentClassifier pDocumentClassifierARN_
+  = DeleteDocumentClassifier'{_dDocumentClassifierARN =
+                                pDocumentClassifierARN_}
 
-
--- | The Amazon Resource Name (ARN) that identifies the document classifier.
+-- | The Amazon Resource Name (ARN) that identifies the document classifier. 
 dDocumentClassifierARN :: Lens' DeleteDocumentClassifier Text
 dDocumentClassifierARN = lens _dDocumentClassifierARN (\ s a -> s{_dDocumentClassifierARN = a})
 
@@ -110,12 +107,11 @@ instance ToQuery DeleteDocumentClassifier where
         toQuery = const mempty
 
 -- | /See:/ 'deleteDocumentClassifierResponse' smart constructor.
-newtype DeleteDocumentClassifierResponse =
-  DeleteDocumentClassifierResponse'
-    { _ddcdrsResponseStatus :: Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+newtype DeleteDocumentClassifierResponse = DeleteDocumentClassifierResponse'{_ddcdrsResponseStatus
+                                                                             ::
+                                                                             Int}
+                                             deriving (Eq, Read, Show, Data,
+                                                       Typeable, Generic)
 
 -- | Creates a value of 'DeleteDocumentClassifierResponse' with the minimum fields required to make a request.
 --
@@ -125,9 +121,9 @@ newtype DeleteDocumentClassifierResponse =
 deleteDocumentClassifierResponse
     :: Int -- ^ 'ddcdrsResponseStatus'
     -> DeleteDocumentClassifierResponse
-deleteDocumentClassifierResponse pResponseStatus_ =
-  DeleteDocumentClassifierResponse' {_ddcdrsResponseStatus = pResponseStatus_}
-
+deleteDocumentClassifierResponse pResponseStatus_
+  = DeleteDocumentClassifierResponse'{_ddcdrsResponseStatus
+                                        = pResponseStatus_}
 
 -- | -- | The response status code.
 ddcdrsResponseStatus :: Lens' DeleteDocumentClassifierResponse Int

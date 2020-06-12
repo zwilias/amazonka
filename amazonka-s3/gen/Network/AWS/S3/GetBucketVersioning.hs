@@ -41,15 +41,12 @@ import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 import Network.AWS.S3.Types
-import Network.AWS.S3.Types.Product
 
 -- | /See:/ 'getBucketVersioning' smart constructor.
-newtype GetBucketVersioning =
-  GetBucketVersioning'
-    { _gbvBucket :: BucketName
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+newtype GetBucketVersioning = GetBucketVersioning'{_gbvBucket
+                                                   :: BucketName}
+                                deriving (Eq, Read, Show, Data, Typeable,
+                                          Generic)
 
 -- | Creates a value of 'GetBucketVersioning' with the minimum fields required to make a request.
 --
@@ -59,8 +56,8 @@ newtype GetBucketVersioning =
 getBucketVersioning
     :: BucketName -- ^ 'gbvBucket'
     -> GetBucketVersioning
-getBucketVersioning pBucket_ = GetBucketVersioning' {_gbvBucket = pBucket_}
-
+getBucketVersioning pBucket_
+  = GetBucketVersioning'{_gbvBucket = pBucket_}
 
 -- | Undocumented member.
 gbvBucket :: Lens' GetBucketVersioning BucketName
@@ -92,14 +89,18 @@ instance ToQuery GetBucketVersioning where
         toQuery = const (mconcat ["versioning"])
 
 -- | /See:/ 'getBucketVersioningResponse' smart constructor.
-data GetBucketVersioningResponse =
-  GetBucketVersioningResponse'
-    { _gbvrsStatus         :: !(Maybe BucketVersioningStatus)
-    , _gbvrsMFADelete      :: !(Maybe MFADeleteStatus)
-    , _gbvrsResponseStatus :: !Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data GetBucketVersioningResponse = GetBucketVersioningResponse'{_gbvrsStatus
+                                                                ::
+                                                                !(Maybe
+                                                                    BucketVersioningStatus),
+                                                                _gbvrsMFADelete
+                                                                ::
+                                                                !(Maybe
+                                                                    MFADeleteStatus),
+                                                                _gbvrsResponseStatus
+                                                                :: !Int}
+                                     deriving (Eq, Read, Show, Data, Typeable,
+                                               Generic)
 
 -- | Creates a value of 'GetBucketVersioningResponse' with the minimum fields required to make a request.
 --
@@ -113,13 +114,11 @@ data GetBucketVersioningResponse =
 getBucketVersioningResponse
     :: Int -- ^ 'gbvrsResponseStatus'
     -> GetBucketVersioningResponse
-getBucketVersioningResponse pResponseStatus_ =
-  GetBucketVersioningResponse'
-    { _gbvrsStatus = Nothing
-    , _gbvrsMFADelete = Nothing
-    , _gbvrsResponseStatus = pResponseStatus_
-    }
-
+getBucketVersioningResponse pResponseStatus_
+  = GetBucketVersioningResponse'{_gbvrsStatus =
+                                   Nothing,
+                                 _gbvrsMFADelete = Nothing,
+                                 _gbvrsResponseStatus = pResponseStatus_}
 
 -- | The versioning state of the bucket.
 gbvrsStatus :: Lens' GetBucketVersioningResponse (Maybe BucketVersioningStatus)

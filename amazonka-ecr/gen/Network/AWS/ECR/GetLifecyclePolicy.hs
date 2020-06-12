@@ -42,20 +42,16 @@ module Network.AWS.ECR.GetLifecyclePolicy
     ) where
 
 import Network.AWS.ECR.Types
-import Network.AWS.ECR.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 
 -- | /See:/ 'getLifecyclePolicy' smart constructor.
-data GetLifecyclePolicy =
-  GetLifecyclePolicy'
-    { _glpRegistryId     :: !(Maybe Text)
-    , _glpRepositoryName :: !Text
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data GetLifecyclePolicy = GetLifecyclePolicy'{_glpRegistryId
+                                              :: !(Maybe Text),
+                                              _glpRepositoryName :: !Text}
+                            deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'GetLifecyclePolicy' with the minimum fields required to make a request.
 --
@@ -67,10 +63,9 @@ data GetLifecyclePolicy =
 getLifecyclePolicy
     :: Text -- ^ 'glpRepositoryName'
     -> GetLifecyclePolicy
-getLifecyclePolicy pRepositoryName_ =
-  GetLifecyclePolicy'
-    {_glpRegistryId = Nothing, _glpRepositoryName = pRepositoryName_}
-
+getLifecyclePolicy pRepositoryName_
+  = GetLifecyclePolicy'{_glpRegistryId = Nothing,
+                        _glpRepositoryName = pRepositoryName_}
 
 -- | The AWS account ID associated with the registry that contains the repository. If you do not specify a registry, the default registry is assumed.
 glpRegistryId :: Lens' GetLifecyclePolicy (Maybe Text)
@@ -121,16 +116,18 @@ instance ToQuery GetLifecyclePolicy where
         toQuery = const mempty
 
 -- | /See:/ 'getLifecyclePolicyResponse' smart constructor.
-data GetLifecyclePolicyResponse =
-  GetLifecyclePolicyResponse'
-    { _glprsRegistryId          :: !(Maybe Text)
-    , _glprsLastEvaluatedAt     :: !(Maybe POSIX)
-    , _glprsLifecyclePolicyText :: !(Maybe Text)
-    , _glprsRepositoryName      :: !(Maybe Text)
-    , _glprsResponseStatus      :: !Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data GetLifecyclePolicyResponse = GetLifecyclePolicyResponse'{_glprsRegistryId
+                                                              :: !(Maybe Text),
+                                                              _glprsLastEvaluatedAt
+                                                              :: !(Maybe POSIX),
+                                                              _glprsLifecyclePolicyText
+                                                              :: !(Maybe Text),
+                                                              _glprsRepositoryName
+                                                              :: !(Maybe Text),
+                                                              _glprsResponseStatus
+                                                              :: !Int}
+                                    deriving (Eq, Read, Show, Data, Typeable,
+                                              Generic)
 
 -- | Creates a value of 'GetLifecyclePolicyResponse' with the minimum fields required to make a request.
 --
@@ -148,15 +145,13 @@ data GetLifecyclePolicyResponse =
 getLifecyclePolicyResponse
     :: Int -- ^ 'glprsResponseStatus'
     -> GetLifecyclePolicyResponse
-getLifecyclePolicyResponse pResponseStatus_ =
-  GetLifecyclePolicyResponse'
-    { _glprsRegistryId = Nothing
-    , _glprsLastEvaluatedAt = Nothing
-    , _glprsLifecyclePolicyText = Nothing
-    , _glprsRepositoryName = Nothing
-    , _glprsResponseStatus = pResponseStatus_
-    }
-
+getLifecyclePolicyResponse pResponseStatus_
+  = GetLifecyclePolicyResponse'{_glprsRegistryId =
+                                  Nothing,
+                                _glprsLastEvaluatedAt = Nothing,
+                                _glprsLifecyclePolicyText = Nothing,
+                                _glprsRepositoryName = Nothing,
+                                _glprsResponseStatus = pResponseStatus_}
 
 -- | The registry ID associated with the request.
 glprsRegistryId :: Lens' GetLifecyclePolicyResponse (Maybe Text)

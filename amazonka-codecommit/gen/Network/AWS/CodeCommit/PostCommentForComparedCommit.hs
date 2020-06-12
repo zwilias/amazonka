@@ -49,24 +49,30 @@ module Network.AWS.CodeCommit.PostCommentForComparedCommit
     ) where
 
 import Network.AWS.CodeCommit.Types
-import Network.AWS.CodeCommit.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 
 -- | /See:/ 'postCommentForComparedCommit' smart constructor.
-data PostCommentForComparedCommit =
-  PostCommentForComparedCommit'
-    { _pcfccLocation           :: !(Maybe Location)
-    , _pcfccBeforeCommitId     :: !(Maybe Text)
-    , _pcfccClientRequestToken :: !(Maybe Text)
-    , _pcfccRepositoryName     :: !Text
-    , _pcfccAfterCommitId      :: !Text
-    , _pcfccContent            :: !Text
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data PostCommentForComparedCommit = PostCommentForComparedCommit'{_pcfccLocation
+                                                                  ::
+                                                                  !(Maybe
+                                                                      Location),
+                                                                  _pcfccBeforeCommitId
+                                                                  ::
+                                                                  !(Maybe Text),
+                                                                  _pcfccClientRequestToken
+                                                                  ::
+                                                                  !(Maybe Text),
+                                                                  _pcfccRepositoryName
+                                                                  :: !Text,
+                                                                  _pcfccAfterCommitId
+                                                                  :: !Text,
+                                                                  _pcfccContent
+                                                                  :: !Text}
+                                      deriving (Eq, Read, Show, Data, Typeable,
+                                                Generic)
 
 -- | Creates a value of 'PostCommentForComparedCommit' with the minimum fields required to make a request.
 --
@@ -88,16 +94,15 @@ postCommentForComparedCommit
     -> Text -- ^ 'pcfccAfterCommitId'
     -> Text -- ^ 'pcfccContent'
     -> PostCommentForComparedCommit
-postCommentForComparedCommit pRepositoryName_ pAfterCommitId_ pContent_ =
-  PostCommentForComparedCommit'
-    { _pcfccLocation = Nothing
-    , _pcfccBeforeCommitId = Nothing
-    , _pcfccClientRequestToken = Nothing
-    , _pcfccRepositoryName = pRepositoryName_
-    , _pcfccAfterCommitId = pAfterCommitId_
-    , _pcfccContent = pContent_
-    }
-
+postCommentForComparedCommit pRepositoryName_
+  pAfterCommitId_ pContent_
+  = PostCommentForComparedCommit'{_pcfccLocation =
+                                    Nothing,
+                                  _pcfccBeforeCommitId = Nothing,
+                                  _pcfccClientRequestToken = Nothing,
+                                  _pcfccRepositoryName = pRepositoryName_,
+                                  _pcfccAfterCommitId = pAfterCommitId_,
+                                  _pcfccContent = pContent_}
 
 -- | The location of the comparison where you want to comment.
 pcfccLocation :: Lens' PostCommentForComparedCommit (Maybe Location)
@@ -173,19 +178,39 @@ instance ToQuery PostCommentForComparedCommit where
         toQuery = const mempty
 
 -- | /See:/ 'postCommentForComparedCommitResponse' smart constructor.
-data PostCommentForComparedCommitResponse =
-  PostCommentForComparedCommitResponse'
-    { _pcfccrsBeforeBlobId   :: !(Maybe Text)
-    , _pcfccrsLocation       :: !(Maybe Location)
-    , _pcfccrsAfterCommitId  :: !(Maybe Text)
-    , _pcfccrsAfterBlobId    :: !(Maybe Text)
-    , _pcfccrsBeforeCommitId :: !(Maybe Text)
-    , _pcfccrsRepositoryName :: !(Maybe Text)
-    , _pcfccrsComment        :: !(Maybe Comment)
-    , _pcfccrsResponseStatus :: !Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data PostCommentForComparedCommitResponse = PostCommentForComparedCommitResponse'{_pcfccrsBeforeBlobId
+                                                                                  ::
+                                                                                  !(Maybe
+                                                                                      Text),
+                                                                                  _pcfccrsLocation
+                                                                                  ::
+                                                                                  !(Maybe
+                                                                                      Location),
+                                                                                  _pcfccrsAfterCommitId
+                                                                                  ::
+                                                                                  !(Maybe
+                                                                                      Text),
+                                                                                  _pcfccrsAfterBlobId
+                                                                                  ::
+                                                                                  !(Maybe
+                                                                                      Text),
+                                                                                  _pcfccrsBeforeCommitId
+                                                                                  ::
+                                                                                  !(Maybe
+                                                                                      Text),
+                                                                                  _pcfccrsRepositoryName
+                                                                                  ::
+                                                                                  !(Maybe
+                                                                                      Text),
+                                                                                  _pcfccrsComment
+                                                                                  ::
+                                                                                  !(Maybe
+                                                                                      Comment),
+                                                                                  _pcfccrsResponseStatus
+                                                                                  ::
+                                                                                  !Int}
+                                              deriving (Eq, Read, Show, Data,
+                                                        Typeable, Generic)
 
 -- | Creates a value of 'PostCommentForComparedCommitResponse' with the minimum fields required to make a request.
 --
@@ -209,18 +234,17 @@ data PostCommentForComparedCommitResponse =
 postCommentForComparedCommitResponse
     :: Int -- ^ 'pcfccrsResponseStatus'
     -> PostCommentForComparedCommitResponse
-postCommentForComparedCommitResponse pResponseStatus_ =
-  PostCommentForComparedCommitResponse'
-    { _pcfccrsBeforeBlobId = Nothing
-    , _pcfccrsLocation = Nothing
-    , _pcfccrsAfterCommitId = Nothing
-    , _pcfccrsAfterBlobId = Nothing
-    , _pcfccrsBeforeCommitId = Nothing
-    , _pcfccrsRepositoryName = Nothing
-    , _pcfccrsComment = Nothing
-    , _pcfccrsResponseStatus = pResponseStatus_
-    }
-
+postCommentForComparedCommitResponse pResponseStatus_
+  = PostCommentForComparedCommitResponse'{_pcfccrsBeforeBlobId
+                                            = Nothing,
+                                          _pcfccrsLocation = Nothing,
+                                          _pcfccrsAfterCommitId = Nothing,
+                                          _pcfccrsAfterBlobId = Nothing,
+                                          _pcfccrsBeforeCommitId = Nothing,
+                                          _pcfccrsRepositoryName = Nothing,
+                                          _pcfccrsComment = Nothing,
+                                          _pcfccrsResponseStatus =
+                                            pResponseStatus_}
 
 -- | In the directionality you established, the blob ID of the before blob.
 pcfccrsBeforeBlobId :: Lens' PostCommentForComparedCommitResponse (Maybe Text)

@@ -36,20 +36,18 @@ module Network.AWS.IAM.UpdateAssumeRolePolicy
     ) where
 
 import Network.AWS.IAM.Types
-import Network.AWS.IAM.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 
 -- | /See:/ 'updateAssumeRolePolicy' smart constructor.
-data UpdateAssumeRolePolicy =
-  UpdateAssumeRolePolicy'
-    { _uarpRoleName       :: !Text
-    , _uarpPolicyDocument :: !Text
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data UpdateAssumeRolePolicy = UpdateAssumeRolePolicy'{_uarpRoleName
+                                                      :: !Text,
+                                                      _uarpPolicyDocument ::
+                                                      !Text}
+                                deriving (Eq, Read, Show, Data, Typeable,
+                                          Generic)
 
 -- | Creates a value of 'UpdateAssumeRolePolicy' with the minimum fields required to make a request.
 --
@@ -62,10 +60,9 @@ updateAssumeRolePolicy
     :: Text -- ^ 'uarpRoleName'
     -> Text -- ^ 'uarpPolicyDocument'
     -> UpdateAssumeRolePolicy
-updateAssumeRolePolicy pRoleName_ pPolicyDocument_ =
-  UpdateAssumeRolePolicy'
-    {_uarpRoleName = pRoleName_, _uarpPolicyDocument = pPolicyDocument_}
-
+updateAssumeRolePolicy pRoleName_ pPolicyDocument_
+  = UpdateAssumeRolePolicy'{_uarpRoleName = pRoleName_,
+                            _uarpPolicyDocument = pPolicyDocument_}
 
 -- | The name of the role to update with the new policy. This parameter allows (per its <http://wikipedia.org/wiki/regex regex pattern> ) a string of characters consisting of upper and lowercase alphanumeric characters with no spaces. You can also include any of the following characters: _+=,.@-
 uarpRoleName :: Lens' UpdateAssumeRolePolicy Text
@@ -102,16 +99,15 @@ instance ToQuery UpdateAssumeRolePolicy where
                "PolicyDocument" =: _uarpPolicyDocument]
 
 -- | /See:/ 'updateAssumeRolePolicyResponse' smart constructor.
-data UpdateAssumeRolePolicyResponse =
-  UpdateAssumeRolePolicyResponse'
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data UpdateAssumeRolePolicyResponse = UpdateAssumeRolePolicyResponse'
+                                        deriving (Eq, Read, Show, Data,
+                                                  Typeable, Generic)
 
 -- | Creates a value of 'UpdateAssumeRolePolicyResponse' with the minimum fields required to make a request.
 --
 updateAssumeRolePolicyResponse
     :: UpdateAssumeRolePolicyResponse
-updateAssumeRolePolicyResponse = UpdateAssumeRolePolicyResponse'
-
+updateAssumeRolePolicyResponse
+  = UpdateAssumeRolePolicyResponse'
 
 instance NFData UpdateAssumeRolePolicyResponse where

@@ -39,24 +39,20 @@ module Network.AWS.Lambda.GetAccountSettings
     ) where
 
 import Network.AWS.Lambda.Types
-import Network.AWS.Lambda.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 
 -- | /See:/ 'getAccountSettings' smart constructor.
-data GetAccountSettings =
-  GetAccountSettings'
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data GetAccountSettings = GetAccountSettings'
+                            deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'GetAccountSettings' with the minimum fields required to make a request.
 --
 getAccountSettings
     :: GetAccountSettings
 getAccountSettings = GetAccountSettings'
-
 
 instance AWSRequest GetAccountSettings where
         type Rs GetAccountSettings =
@@ -83,14 +79,18 @@ instance ToQuery GetAccountSettings where
         toQuery = const mempty
 
 -- | /See:/ 'getAccountSettingsResponse' smart constructor.
-data GetAccountSettingsResponse =
-  GetAccountSettingsResponse'
-    { _gasrsAccountLimit   :: !(Maybe AccountLimit)
-    , _gasrsAccountUsage   :: !(Maybe AccountUsage)
-    , _gasrsResponseStatus :: !Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data GetAccountSettingsResponse = GetAccountSettingsResponse'{_gasrsAccountLimit
+                                                              ::
+                                                              !(Maybe
+                                                                  AccountLimit),
+                                                              _gasrsAccountUsage
+                                                              ::
+                                                              !(Maybe
+                                                                  AccountUsage),
+                                                              _gasrsResponseStatus
+                                                              :: !Int}
+                                    deriving (Eq, Read, Show, Data, Typeable,
+                                              Generic)
 
 -- | Creates a value of 'GetAccountSettingsResponse' with the minimum fields required to make a request.
 --
@@ -104,13 +104,11 @@ data GetAccountSettingsResponse =
 getAccountSettingsResponse
     :: Int -- ^ 'gasrsResponseStatus'
     -> GetAccountSettingsResponse
-getAccountSettingsResponse pResponseStatus_ =
-  GetAccountSettingsResponse'
-    { _gasrsAccountLimit = Nothing
-    , _gasrsAccountUsage = Nothing
-    , _gasrsResponseStatus = pResponseStatus_
-    }
-
+getAccountSettingsResponse pResponseStatus_
+  = GetAccountSettingsResponse'{_gasrsAccountLimit =
+                                  Nothing,
+                                _gasrsAccountUsage = Nothing,
+                                _gasrsResponseStatus = pResponseStatus_}
 
 -- | Undocumented member.
 gasrsAccountLimit :: Lens' GetAccountSettingsResponse (Maybe AccountLimit)

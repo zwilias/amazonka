@@ -38,19 +38,15 @@ module Network.AWS.ECS.CreateCluster
     ) where
 
 import Network.AWS.ECS.Types
-import Network.AWS.ECS.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 
 -- | /See:/ 'createCluster' smart constructor.
-newtype CreateCluster =
-  CreateCluster'
-    { _ccClusterName :: Maybe Text
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+newtype CreateCluster = CreateCluster'{_ccClusterName
+                                       :: Maybe Text}
+                          deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'CreateCluster' with the minimum fields required to make a request.
 --
@@ -59,8 +55,8 @@ newtype CreateCluster =
 -- * 'ccClusterName' - The name of your cluster. If you do not specify a name for your cluster, you create a cluster named @default@ . Up to 255 letters (uppercase and lowercase), numbers, hyphens, and underscores are allowed.
 createCluster
     :: CreateCluster
-createCluster = CreateCluster' {_ccClusterName = Nothing}
-
+createCluster
+  = CreateCluster'{_ccClusterName = Nothing}
 
 -- | The name of your cluster. If you do not specify a name for your cluster, you create a cluster named @default@ . Up to 255 letters (uppercase and lowercase), numbers, hyphens, and underscores are allowed.
 ccClusterName :: Lens' CreateCluster (Maybe Text)
@@ -101,13 +97,11 @@ instance ToQuery CreateCluster where
         toQuery = const mempty
 
 -- | /See:/ 'createClusterResponse' smart constructor.
-data CreateClusterResponse =
-  CreateClusterResponse'
-    { _ccrsCluster        :: !(Maybe Cluster)
-    , _ccrsResponseStatus :: !Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data CreateClusterResponse = CreateClusterResponse'{_ccrsCluster
+                                                    :: !(Maybe Cluster),
+                                                    _ccrsResponseStatus :: !Int}
+                               deriving (Eq, Read, Show, Data, Typeable,
+                                         Generic)
 
 -- | Creates a value of 'CreateClusterResponse' with the minimum fields required to make a request.
 --
@@ -119,10 +113,9 @@ data CreateClusterResponse =
 createClusterResponse
     :: Int -- ^ 'ccrsResponseStatus'
     -> CreateClusterResponse
-createClusterResponse pResponseStatus_ =
-  CreateClusterResponse'
-    {_ccrsCluster = Nothing, _ccrsResponseStatus = pResponseStatus_}
-
+createClusterResponse pResponseStatus_
+  = CreateClusterResponse'{_ccrsCluster = Nothing,
+                           _ccrsResponseStatus = pResponseStatus_}
 
 -- | The full description of your new cluster.
 ccrsCluster :: Lens' CreateClusterResponse (Maybe Cluster)

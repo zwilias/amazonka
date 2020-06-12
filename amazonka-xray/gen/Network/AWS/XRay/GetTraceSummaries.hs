@@ -23,11 +23,11 @@
 --
 -- A filter expression can target traced requests that hit specific service nodes or edges, have errors, or come from a known user. For example, the following filter expression targets traces that pass through @api.example.com@ :
 --
--- @service("api.example.com")@
+-- @service("api.example.com")@ 
 --
 -- This filter expression finds traces that have an annotation named @account@ with the value @12345@ :
 --
--- @annotation.account = "12345"@
+-- @annotation.account = "12345"@ 
 --
 -- For a full list of indexed fields and keywords that you can use in filter expressions, see <http://docs.aws.amazon.com/xray/latest/devguide/xray-console-filters.html Using Filter Expressions> in the /AWS X-Ray Developer Guide/ .
 --
@@ -62,19 +62,15 @@ import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 import Network.AWS.XRay.Types
-import Network.AWS.XRay.Types.Product
 
 -- | /See:/ 'getTraceSummaries' smart constructor.
-data GetTraceSummaries =
-  GetTraceSummaries'
-    { _gtsFilterExpression :: !(Maybe Text)
-    , _gtsNextToken        :: !(Maybe Text)
-    , _gtsSampling         :: !(Maybe Bool)
-    , _gtsStartTime        :: !POSIX
-    , _gtsEndTime          :: !POSIX
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data GetTraceSummaries = GetTraceSummaries'{_gtsFilterExpression
+                                            :: !(Maybe Text),
+                                            _gtsNextToken :: !(Maybe Text),
+                                            _gtsSampling :: !(Maybe Bool),
+                                            _gtsStartTime :: !POSIX,
+                                            _gtsEndTime :: !POSIX}
+                           deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'GetTraceSummaries' with the minimum fields required to make a request.
 --
@@ -93,15 +89,11 @@ getTraceSummaries
     :: UTCTime -- ^ 'gtsStartTime'
     -> UTCTime -- ^ 'gtsEndTime'
     -> GetTraceSummaries
-getTraceSummaries pStartTime_ pEndTime_ =
-  GetTraceSummaries'
-    { _gtsFilterExpression = Nothing
-    , _gtsNextToken = Nothing
-    , _gtsSampling = Nothing
-    , _gtsStartTime = _Time # pStartTime_
-    , _gtsEndTime = _Time # pEndTime_
-    }
-
+getTraceSummaries pStartTime_ pEndTime_
+  = GetTraceSummaries'{_gtsFilterExpression = Nothing,
+                       _gtsNextToken = Nothing, _gtsSampling = Nothing,
+                       _gtsStartTime = _Time # pStartTime_,
+                       _gtsEndTime = _Time # pEndTime_}
 
 -- | Specify a filter expression to retrieve trace summaries for services or requests that meet certain requirements.
 gtsFilterExpression :: Lens' GetTraceSummaries (Maybe Text)
@@ -167,16 +159,20 @@ instance ToQuery GetTraceSummaries where
         toQuery = const mempty
 
 -- | /See:/ 'getTraceSummariesResponse' smart constructor.
-data GetTraceSummariesResponse =
-  GetTraceSummariesResponse'
-    { _gtsrsTracesProcessedCount :: !(Maybe Integer)
-    , _gtsrsNextToken            :: !(Maybe Text)
-    , _gtsrsApproximateTime      :: !(Maybe POSIX)
-    , _gtsrsTraceSummaries       :: !(Maybe [TraceSummary])
-    , _gtsrsResponseStatus       :: !Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data GetTraceSummariesResponse = GetTraceSummariesResponse'{_gtsrsTracesProcessedCount
+                                                            :: !(Maybe Integer),
+                                                            _gtsrsNextToken ::
+                                                            !(Maybe Text),
+                                                            _gtsrsApproximateTime
+                                                            :: !(Maybe POSIX),
+                                                            _gtsrsTraceSummaries
+                                                            ::
+                                                            !(Maybe
+                                                                [TraceSummary]),
+                                                            _gtsrsResponseStatus
+                                                            :: !Int}
+                                   deriving (Eq, Read, Show, Data, Typeable,
+                                             Generic)
 
 -- | Creates a value of 'GetTraceSummariesResponse' with the minimum fields required to make a request.
 --
@@ -194,15 +190,13 @@ data GetTraceSummariesResponse =
 getTraceSummariesResponse
     :: Int -- ^ 'gtsrsResponseStatus'
     -> GetTraceSummariesResponse
-getTraceSummariesResponse pResponseStatus_ =
-  GetTraceSummariesResponse'
-    { _gtsrsTracesProcessedCount = Nothing
-    , _gtsrsNextToken = Nothing
-    , _gtsrsApproximateTime = Nothing
-    , _gtsrsTraceSummaries = Nothing
-    , _gtsrsResponseStatus = pResponseStatus_
-    }
-
+getTraceSummariesResponse pResponseStatus_
+  = GetTraceSummariesResponse'{_gtsrsTracesProcessedCount
+                                 = Nothing,
+                               _gtsrsNextToken = Nothing,
+                               _gtsrsApproximateTime = Nothing,
+                               _gtsrsTraceSummaries = Nothing,
+                               _gtsrsResponseStatus = pResponseStatus_}
 
 -- | The total number of traces processed, including traces that did not match the specified filter expression.
 gtsrsTracesProcessedCount :: Lens' GetTraceSummariesResponse (Maybe Integer)

@@ -40,20 +40,16 @@ module Network.AWS.ECS.DescribeServices
     ) where
 
 import Network.AWS.ECS.Types
-import Network.AWS.ECS.Types.Product
 import Network.AWS.Lens
 import Network.AWS.Prelude
 import Network.AWS.Request
 import Network.AWS.Response
 
 -- | /See:/ 'describeServices' smart constructor.
-data DescribeServices =
-  DescribeServices'
-    { _dCluster  :: !(Maybe Text)
-    , _dServices :: ![Text]
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data DescribeServices = DescribeServices'{_dCluster
+                                          :: !(Maybe Text),
+                                          _dServices :: ![Text]}
+                          deriving (Eq, Read, Show, Data, Typeable, Generic)
 
 -- | Creates a value of 'DescribeServices' with the minimum fields required to make a request.
 --
@@ -64,8 +60,9 @@ data DescribeServices =
 -- * 'dServices' - A list of services to describe. You may specify up to 10 services to describe in a single operation.
 describeServices
     :: DescribeServices
-describeServices = DescribeServices' {_dCluster = Nothing, _dServices = mempty}
-
+describeServices
+  = DescribeServices'{_dCluster = Nothing,
+                      _dServices = mempty}
 
 -- | The short name or full Amazon Resource Name (ARN)the cluster that hosts the service to describe. If you do not specify a cluster, the default cluster is assumed.
 dCluster :: Lens' DescribeServices (Maybe Text)
@@ -114,14 +111,15 @@ instance ToQuery DescribeServices where
         toQuery = const mempty
 
 -- | /See:/ 'describeServicesResponse' smart constructor.
-data DescribeServicesResponse =
-  DescribeServicesResponse'
-    { _dssrsFailures       :: !(Maybe [Failure])
-    , _dssrsServices       :: !(Maybe [ContainerService])
-    , _dssrsResponseStatus :: !Int
-    }
-  deriving (Eq, Read, Show, Data, Typeable, Generic)
-
+data DescribeServicesResponse = DescribeServicesResponse'{_dssrsFailures
+                                                          :: !(Maybe [Failure]),
+                                                          _dssrsServices ::
+                                                          !(Maybe
+                                                              [ContainerService]),
+                                                          _dssrsResponseStatus
+                                                          :: !Int}
+                                  deriving (Eq, Read, Show, Data, Typeable,
+                                            Generic)
 
 -- | Creates a value of 'DescribeServicesResponse' with the minimum fields required to make a request.
 --
@@ -135,13 +133,10 @@ data DescribeServicesResponse =
 describeServicesResponse
     :: Int -- ^ 'dssrsResponseStatus'
     -> DescribeServicesResponse
-describeServicesResponse pResponseStatus_ =
-  DescribeServicesResponse'
-    { _dssrsFailures = Nothing
-    , _dssrsServices = Nothing
-    , _dssrsResponseStatus = pResponseStatus_
-    }
-
+describeServicesResponse pResponseStatus_
+  = DescribeServicesResponse'{_dssrsFailures = Nothing,
+                              _dssrsServices = Nothing,
+                              _dssrsResponseStatus = pResponseStatus_}
 
 -- | Any failures associated with the call.
 dssrsFailures :: Lens' DescribeServicesResponse [Failure]
